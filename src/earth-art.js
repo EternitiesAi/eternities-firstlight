@@ -156,17 +156,11 @@ function story(out,sim,t,a){
  const box=(x,y,z,w,ht,d,c,r)=>out.box.push({p:[x,y,z],s:[w,ht,d],c,r:r||[0,0,0],rough:.9,cameraSolid:false});
  const round=(x,y,z,w,ht,d,c)=>out.round.push({p:[x,y,z],s:[w,ht,d],c,rough:.9});
  // Residents stand beside supported paths. They never own progression or collision.
- const fx=s.dispatch?2:8.8,fz=s.dispatch?-43:5;
- a.person(out,fx,fz,-.6,'#bd8963',clock,false,'drover',false,h(fx,fz));
+ a.droverFrame=G.RealmDroverArt.draw(out,{state:s,time:sim.elapsed,reducedMotion:quiet,ground:h});
  const ansel=G.RealmMillwrightArt.ANCHOR;
  a.millwrightFrame=G.RealmMillwrightArt.draw(out,{base:h(ansel.x,ansel.z),time:sim.elapsed,reducedMotion:quiet});
  a.person(out,14.3,-26,-.8,'#989478',clock,false,'reeve',false,h(14.3,-26));
- // The load changes place only after explicit dispatch; arrival dresses the shared table.
- const cx=s.dispatch?-3:9.3,cz=s.dispatch?-43:7,b=h(cx,cz);
- box(cx,b+.63,cz,1.7,.18,2.5,col.wood);for(const x of [-.98,.98])for(const z of [-.78,.78])round(cx+x,b+.48,cz+z,.18,.65,.65,0x514436);
- for(const x of [-.8,.8])box(cx+x,b+.99,cz,.12,.55,2.45,0x9a7851);
- for(let i=0;i<4;i++)round(cx+(i%2?-.38:.38),b+1.02,cz+Math.floor(i/2)*.68-.48,.68,.68,.6,0xc3b795);
- box(cx,b+1.23,cz-.86,1.35,.25,.38,0x7a6748);for(let i=0;i<5;i++)round(cx-.48+i*.23,b+1.42,cz-.86,.21,.20,.20,0xb9694b);
+ // The drover module projects dispatch/arrival; only the rules can move the load.
  // Small headrace machinery remains on the bank; it does not open collision through the pond.
  const gy=h(5.2,-6);a.millGateFrame=G.RealmMillGateArt.draw(out,done('mill-gate'),gy);
  if(!done('mill-root')){box(5.15,gy+.2,-4.5,.28,.25,1.9,0x5a503d,[0,.5,.25]);box(5.55,gy+.23,-4.4,.8,.14,.18,0x5a503d,[0,-.5,0]);}
