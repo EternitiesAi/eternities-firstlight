@@ -1,0 +1,23 @@
+[
+  {
+    "variant": "fresh-blade-detour",
+    "file": "fresh-blade-detour_SOURCE.json",
+    "sha256": "a02b0f9bbbacc7811f0106a3ad165a9e29a74dd609b336913a728cc324485c20",
+    "method": "Command-earned by node tests/gathering_journey.cjs",
+    "kind": "Automation fixture, not personal data; arrived unpaid before accepting gathering"
+  },
+  {
+    "variant": "fresh-bow-quarry",
+    "file": "fresh-bow-quarry_SOURCE.json",
+    "sha256": "5f6287982a3adba9d64d5ae0b3d15b79f2d31599d5135a21ba2a726547eedc5b",
+    "method": "Command-earned by node tests/gathering_journey.cjs --bow",
+    "kind": "Automation fixture, not personal data; arrived unpaid before accepting gathering"
+  },
+  {
+    "variant": "veteran-mill",
+    "file": "veteran-mill_SOURCE.json",
+    "sha256": "881cf82f66f0d0e5cb734507810ce91a8125599d4ec7028c3447f895ffc91254",
+    "method": "Command-earned by node tests/gathering_journey.cjs --veteran",
+    "kind": "Automation fixture, not personal data; arrived unpaid before accepting gathering"
+  }
+]

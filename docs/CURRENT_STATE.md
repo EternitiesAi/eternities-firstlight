@@ -1,3 +1,35 @@
+# Current checkpoint: Living world and a table after the rain
+
+Updated 2026-09-30. Active worktree `C:/dev/firstlight-artifacts/living-world-2026-09-30/gameplay`, branch `gameplay/living-world-art-direction`, stacked on PR20 at 7434c950b8801a03217af2d6ad82e4caffc0c033. The final implementation PR records pushed head and exact-head fresh clone evidence. Main remains unmerged.
+
+Read [task](development/LIVING_WORLD_TASK_2026-09-30.md), [executed results](development/LIVING_WORLD_RESULTS_2026-09-30.md), [art direction](art/living-world-2026-09-30/ART_DIRECTION.md), NEXT_TASK and evidence/living-world. This is native integration of the newer staged gathering plus substantive playable scenery and original concept art. New adaptations remain prototype choices, not final founder branding.
+
+## Play
+
+Launch this checkout's `PLAY_FIRSTLIGHT_WINDOWS.cmd` or `python tools/play_local.py`. Original save origin is `http://127.0.0.1:8780/`; do not automatically change ports or stop unrelated servers. Exact served-build receipt is reported at delivery. The previous preview was absent during current intake, so starting this build does not require stopping it.
+
+1. Take Oren's expedition kit and finish Fenna's Road After Rain delivery in Hearthwater. Any route works; leave payment unclaimed if desired.
+2. At Bellweather's west-road boundary, walk just east/south of Fenna to the visible roadside table and press E. Read and explicitly accept A Table After the Rain.
+3. Lay Nella's cloth from the nearby cart, bring the lane lantern and open Oren's music stand at the table. Follow journal/map directions or explore; each preparation is a normal accepted event.
+4. Compare Ilan's three arrangements, deliberately confirm one, then share the evening. Sound is optional. Previewing never chooses a verse or overwrites your personal score.
+5. The cloth, lit-place dressing and chosen arrangement stay with this character. There is no extra payout or main-chapter advance. Fenna's payment and Oren's once-only/repeat-project systems remain separate.
+
+V swaps diorama/third person; M keeps local routes. Enjoy the refined orchard, shelter, timber/stone houses and mill. More -> Realms opens the offline concept atlas; its Earth/Cosmos actions use existing invitations. Heaven/Hell/Atlantis are future concepts.
+
+## Save and verification
+
+World/storage keys 9 unchanged; adventure 10 requires earthGathering 1, migrating 9 to empty/unaccepted state. Stored XP/curve, chapters/explicit choices, identity/sockets/fittings, companion, housing, music/notes/exports and complete character worlds remain. Future/malformed saves refuse. Personal browser data was not used in tests.
+
+Local full gate passed 51 syntax, 607 Node tests, 26 Python passes/1 existing Windows symlink skip, 24 command-earned journeys, 1297 browser assertions across 16 suites. Generated HTMLs identical 2,054,945 bytes SHA256 adc2137a2635a5302276a021cfa8f33781f8ad9559eb5b4c2275fc59fafcd0c8. Read results for scope and initial corrected failures.
+
+Actual normal-time GPU footage is 73.32s at 1280x720; separate 1920x1080 balanced RTX 3080/Chrome 154 sample across 6 scenes gives P95 7.0ms, worst 7.3ms with no sampled interval above 33.333ms. These are short headless browser-frame receipts, not monitor/FPS/human qualification. Hosted Actions were blocked by account billing before any steps ran; final PR reports current hosted status separately.
+
+Human feel/beauty/pacing remains pending. Both cameras remain; next technical art slice is one measured mesh/material import, not an unproved asset pipeline. No automatic merge/public deployment/online participants/paid external provider/Unreal rewrite.
+
+---
+
+Prior checkpoint retained below as history:
+
 # Current checkpoint: Marks Beneath the Rain
 
 Updated 2026-09-20. Branch `gameplay/marks-beneath-the-rain` is stacked on PR #18 (`gameplay/road-after-rain`) at **4e57ad6028bc30b0c52b43de9ddf679bf373fbbf**. Origin, review comments, current records and connected canon were checked before branching. The implementation PR records exact pushed head, hosted checks and fresh independent clone evidence.

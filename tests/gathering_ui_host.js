@@ -7,15 +7,15 @@ const audio={enabled:false,ctx:null,master:null,enable(){if(!this.ctx){this.ctx=
 globalThis.RealmEarthStory={DESTINATION:{x:0,z:-43},at:(sim,p)=>sim.room===RealmEarth.ROOM&&RealmEarth.walkable(sim.state.player.x,sim.state.player.z)&&RealmEarth.near(sim,p,2.3)&&RealmEarth.line(sim.state.player,p)};
 class HostRPG{
  constructor(){this.dialog=document.querySelector('#rpg-window');this.tab='gathering';this.api={audio:()=>audio,panel:()=>false,toast:t=>{message=t;},walkLocal:(x,z)=>{active.state.player={x,z};},sim:()=>active};
- this.dialog.addEventListener('cancel',()=>this.close());this.dialog.addEventListener('click',e=>{const button=e.target.closest('[data-rpg]');if(button)this.action(button);});}
+ this.gathering=new RealmGatheringUI.GatheringUI(this);this.dialog.addEventListener('cancel',()=>this.close());this.dialog.addEventListener('click',e=>{const button=e.target.closest('[data-rpg]');if(button)this.action(button);});}
  get sim(){return active;}
- open(tab='gathering'){this.tab=tab;if(!this.dialog.open)this.dialog.showModal();this.paint();}
- close(){this.dialog.close();}
- reset(){}
- paint(){document.querySelector('#rpg-content').innerHTML='';}
- action(){}
- interact(){return false;}
- tick(){}
+ open(tab='gathering'){if(tab!=='gathering')this.gathering.reset();this.tab=tab;if(!this.dialog.open)this.dialog.showModal();this.paint();}
+ close(){this.gathering.reset();this.dialog.close();}
+ reset(){this.gathering.reset();}
+ paint(){document.querySelector('#rpg-heading').textContent='A Table After the Rain';document.querySelector('#rpg-content').innerHTML=this.tab==='gathering'?this.gathering.page():this.gathering.invitation();}
+ action(el){this.gathering.action(el);}
+ interact(){return this.gathering.interact();}
+ tick(){this.gathering.tick();}
  run(type,payload){const r=RealmGathering.handle(active,type,payload);commandCount++;if(r.ok)active.state.adventure.revision++;this.api.toast(r.text||r.error);this.paint();return r;}
 }
 globalThis.RealmRPGUI={RPGUI:HostRPG};globalThis.RealmEarthArt={draw(){}};

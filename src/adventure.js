@@ -13,8 +13,9 @@ const H=G.RealmPursuit||(typeof require==='function'?require('./pursuit.js'):nul
 const K=G.RealmClasses||(typeof require==='function'?require('./classes.js'):null);
 const ES=G.RealmEarthStory||(typeof require==='function'?require('./earth-story.js'):null);
 const EN=G.RealmEarthNotes||(typeof require==='function'?require('./earth-notes.js'):null);
+const EG=G.RealmGathering||(typeof require==='function'?require('./gathering.js'):null);
 const FORGE=Object.freeze({ore:4,coins:4});
-const VERSION=9,CELL=2,LIMIT=7,REACH=2.8,dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
+const VERSION=10,CELL=2,LIMIT=7,REACH=2.8,dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 const MINE={id:'mine',name:'The Rootbound Underways',x:0,z:-48},ENTRANCE={x:0,z:11,yaw:Math.PI},FOX={x:-8,z:2},RELIC={x:9,z:-10};
 const GEAR=Object.freeze({
  ...AR.GEAR,...CROSS.GEAR,...Q.GEAR,
@@ -41,10 +42,11 @@ function mineral(x,z){return!initialFloor(x,z)&&((x*13+z*7)%5===0||x<=-3&&z<=-2)
 function wallHP(x,z){return mineral(x,z)?3:2;}
 function walkable(s,x,z,r=.31){if(!s||!Number.isFinite(x)||!Number.isFinite(z))return false;for(const[dx,dz]of[[-r,-r],[-r,r],[r,-r],[r,r],[0,0]]){const c=cellAt(x+dx,z+dz);if(!isFloor(s,c.gx,c.gz))return false;}return true;}
 function line(s,a,b){const n=Math.ceil(dist(a,b)/.18);for(let i=0;i<=n;i++){const t=n?i/n:0;if(!walkable(s,a.x+(b.x-a.x)*t,a.z+(b.z-a.z)*t,.04))return false;}return true;}
-function fresh(){return{version:VERSION,earthNotes:EN.fresh(),earthStory:ES.fresh(),classPath:K.fresh(),pursuit:H.fresh(),starter:Q.fresh(),crossing:CROSS.fresh(),beacon:B.fresh(),arsenal:AR.fresh(),road:ROAD.fresh(),elapsed:0,revision:0,started:false,dug:[],chips:[],defeated:[],drops:[],ore:0,coins:0,xp:0,hp:100,stamina:100,tonics:3,equipment:{weapon:null,armor:null,charm:null},owned:[],companion:{bonded:false,name:'Briar',mode:'follow'},relic:false,angelSeen:false,reward:null,deaths:0,receipts:[]};}
+function fresh(){return{version:VERSION,earthGathering:EG.fresh(),earthNotes:EN.fresh(),earthStory:ES.fresh(),classPath:K.fresh(),pursuit:H.fresh(),starter:Q.fresh(),crossing:CROSS.fresh(),beacon:B.fresh(),arsenal:AR.fresh(),road:ROAD.fresh(),elapsed:0,revision:0,started:false,dug:[],chips:[],defeated:[],drops:[],ore:0,coins:0,xp:0,hp:100,stamina:100,tonics:3,equipment:{weapon:null,armor:null,charm:null},owned:[],companion:{bonded:false,name:'Briar',mode:'follow'},relic:false,angelSeen:false,reward:null,deaths:0,receipts:[]};}
 function level(s){return 1+[30,80,150,260].filter(n=>s.xp>=n).length;}
 function stats(s){let l=level(s),o={level:l,attack:4+(l-1)*2,defense:0,maxHP:100+(l-1)*10};for(const id of Object.values(s.equipment)){const g=GEAR[id];if(g){o.attack+=g.attack+Q.bonus(s,id)+H.bonus(s,id);o.defense+=g.defense;o.maxHP+=g.hp;}}const gem=AR.activeGem(s);if(gem){o.attack+=gem.attack;o.maxHP+=gem.hp;}return o;}
 function validate(raw){
+ if(raw&&raw.version>VERSION)throw Error('Unsupported future adventure version. Keep a backup and use a newer build.');
  if(raw&&raw.version===1)raw={...raw,version:3,arsenal:AR.fresh(),road:ROAD.fresh()};
  if(raw&&raw.version===2)raw={...raw,version:3,arsenal:AR.fresh()};
  if(raw&&raw.version===3)raw={...raw,version:4,beacon:B.fresh()};
@@ -53,6 +55,7 @@ function validate(raw){
  if(raw&&raw.version===6)raw={...raw,version:7,classPath:K.fresh()};
  if(raw&&raw.version===7)raw={...raw,version:8,earthStory:ES.fresh()};
  if(raw&&raw.version===8)raw={...raw,version:9,earthNotes:EN.fresh()};
+ if(raw&&raw.version===9)raw={...raw,version:10,earthGathering:EG.fresh()};
  const no=f=>{throw Error('Invalid adventure: '+f);};if(!raw||raw.version!==VERSION)no('version');const s=fresh();
  for(const k of['elapsed','hp','stamina']){if(!Number.isFinite(raw[k])||raw[k]<0||raw[k]>1e9)no(k);s[k]=raw[k];}
  for(const k of['revision','ore','coins','xp','tonics','deaths']){if(!Number.isSafeInteger(raw[k])||raw[k]<0||raw[k]>(k==='revision'?1e9:9999))no(k);s[k]=raw[k];}
@@ -72,6 +75,7 @@ function validate(raw){
  s.classPath=K.validate(raw.classPath,s);
  s.earthStory=ES.validate(raw.earthStory,s);
  s.earthNotes=EN.validate(raw.earthNotes,s);
+ s.earthGathering=EG.validate(raw.earthGathering,s);
  s.starter=Q.validate(raw.starter,s);
  s.pursuit=H.validate(raw.pursuit,s);
  s.arsenal=AR.validate(raw.arsenal,s);
@@ -173,7 +177,7 @@ function command(sim,id,type,payload={}){
   if(sim.room!=='road'||dist(p,ROAD.BEACON)>3||s.road.beaconLit||!ROAD.ENEMIES.every(e=>s.defeated.includes(e.id)))return fail('Clear the three road encounters and approach the northern beacon.');s.road.beaconLit=true;awardXP(sim,20);sim.event('quest','The Sunward Beacon is alight. Return home after helping Tessa.');result=yes('The beacon answers. A light is visible through the trees.');break;
  case'road-report':
   if(!surfaceNear(sim,{x:0,z:3},4)||!s.road.beaconLit||!s.road.cartRepaired||s.road.reported)return fail('Repair the cart, light the beacon, then return to the envoy at the spring.');s.road.reported=true;if(!s.owned.includes('wayfarer_band'))s.owned.push('wayfarer_band');awardXP(sim,20);sim.event('quest','You brought the road’s light home. The envoy gave you the Band of the returning light.');result=yes('Chapter II complete · A wayfarer’s band and a light at the Commons.');break;
- default:result=EN.handle(sim,type,payload)||ES.handle(sim,type,payload)||K.handle(sim,type,payload)||H.handle(sim,type,payload)||Q.handle(sim,type,payload)||CROSS.handle(sim,type,payload)||T.handle(sim,type,payload)||B.handle(sim,type,payload)||AR.handle(sim,type,payload);if(!result)return fail('Unknown adventure command.');if(!result.ok)return result;
+ default:result=EG.handle(sim,type,payload)||EN.handle(sim,type,payload)||ES.handle(sim,type,payload)||K.handle(sim,type,payload)||H.handle(sim,type,payload)||Q.handle(sim,type,payload)||CROSS.handle(sim,type,payload)||T.handle(sim,type,payload)||B.handle(sim,type,payload)||AR.handle(sim,type,payload);if(!result)return fail('Unknown adventure command.');if(!result.ok)return result;
  }
  s.revision++;s.receipts.push({id,fp,ok:true});if(s.receipts.length>100)s.receipts.shift();return result;
 }

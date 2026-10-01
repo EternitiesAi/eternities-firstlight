@@ -39,7 +39,7 @@ try:
   def image(name,view=None):
    if view:ev('(v)=>Realm.test.view(v)',view)
    ev('Realm.test.quality("balanced");Realm.test.render()');p.wait_for_timeout(100);p.screenshot(path=str(O/name));ev('Realm.test.quality("low");Realm.test.render()')
-  ck('Edition10 and migrated world/adventure versions',dg()['version']=='10.0.0' and state()['version']==9 and state()['adventure']['version']==9)
+  ck('Edition10 and migrated world/adventure versions',dg()['version']=='10.0.0' and state()['version']==9 and state()['adventure']['version']==10)
   ck('Existing three chapters preserved',state()['adventure']['beacon']['complete'] and not state()['adventure']['crossing']['entered'])
   ck('Camera cutaway default enabled',dg()['cutaway']['enabled'])
   key('m');ck('M opens a real map workspace',p.locator('#rpg-heading').inner_text()=='The roads you know')

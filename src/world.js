@@ -4,15 +4,74 @@ class WorldArt{
  constructor(engine){this.e=engine;this.room=null;this.time=0;this.map={};this.makeExterior();}
  add(kind,x,y,z,sx,sy,sz,c,opt={}){let a=this.map[kind]||(this.map[kind]=[]);a.push({p:[x,y,z],s:[sx,sy,sz],c,cutaway:y>2.2&&sy>1,...opt});}
  box(x,y,z,sx,sy,sz,c,opt){this.add('box',x,y,z,sx,sy,sz,c,opt);}
+ // Detail beams share the box instance buffer. Their endpoints keep joinery on
+ // the authored walls instead of enlarging navigation or camera obstacles.
+ beam(from,to,width,c,opt={}){const d=to.map((v,i)=>v-from[i]),len=Math.hypot(...d);if(len<.001)return;const yy=d.map(v=>v/len),ref=Math.abs(yy[1])>.95?[1,0,0]:[0,1,0],xx=[ref[1]*yy[2]-ref[2]*yy[1],ref[2]*yy[0]-ref[0]*yy[2],ref[0]*yy[1]-ref[1]*yy[0]],n=Math.hypot(...xx);for(let i=0;i<3;i++)xx[i]/=n;const zz=[xx[1]*yy[2]-xx[2]*yy[1],xx[2]*yy[0]-xx[0]*yy[2],xx[0]*yy[1]-xx[1]*yy[0]],p=from.map((v,i)=>(v+to[i])/2);this.box(...p,width,len,width,c,{cameraSolid:false,cutaway:true,...opt,m:new Float32Array([...xx.map(v=>v*width),0,...yy.map(v=>v*len),0,...zz.map(v=>v*width),0,...p,1])});}
  commit(){if(!this.room&&G.RealmEarthArt)G.RealmEarthArt.gate(this);if(!this.room&&G.RealmCosmosArt)G.RealmCosmosArt.gate(this);if(!this.room&&G.RealmRoadArt)G.RealmRoadArt.gate(this);if(!this.room&&G.RealmAdventureArt)G.RealmAdventureArt.entrance(this);if(!this.room&&G.RealmSandboxArt)G.RealmSandboxArt.scenery(this);for(let[k,a]of Object.entries(this.map))this.e.batch(k,a);this.dynamicBox=this.e.batch('box',[],true);this.dynamicOcta=this.e.batch('octa',[],true);this.dynamicRound=this.e.batch('round',[],true);this.dynamicDisc=this.e.batch('disc',[],true);}
  begin(room){this.e.theme=null;this.e.noWater=false;this.e.surfacePick=null;this.e.ambientOverride=null;this.e.reflectionStrength=1;this.e.clear();this.e.isInterior=!!room;this.room=room;this.map={};}
  tree(x,z,s=1,style=0,base=1.2){let bark=0x68503c;this.add('cylinder',x,base,z,.42*s,2.6*s,.42*s,bark);for(let a of[-.6,.8,2.3])this.box(x+Math.sin(a)*.45*s,base+2*s,z+Math.cos(a)*.45*s,.18*s,1.2*s,.18*s,bark,{r:[.3,a,.55]});let colors=style===3?[0xd9a4ba,0xc489a5,0xe9bdbe]:style===1?[0xaab961,0x8fa856,0xbdc16f]:style===2?[0x87a897,0x669586,0xa0b59b]:[0x557d65,0x638f69,0x779c73];if(style===0){for(let i=0;i<3;i++)this.add('cone',x,base+(1.6+i*.85)*s,z,(3.2-i*.6)*s,2.2*s,(3.2-i*.6)*s,colors[i],{wind:2});}else{for(let i=0;i<7;i++){let a=i*2.4,r=i===0?0:1.05;this.add(style===3?'round':style===1?'round':'octa',x+Math.cos(a)*r*s,base+(3.25+(i%3)*.42)*s,z+Math.sin(a)*r*s,(2.25+(i%2)*.3)*s,(2.1+(i%3)*.23)*s,(2.15+(i%2)*.35)*s,colors[i%3],{r:[0,a,0],wind:2});}}}
  lamp(x,z,height=3.4,base=1.2){this.box(x,base+height/2,z,.13,height,.13,0x5a4735);this.box(x,base+height,z,.55,.12,.55,0x443c32);this.box(x,base+height-.35,z,.32,.54,.32,0xffd185,{em:1.4,rough:.35});this.add('cone',x,base+height+.07,z,.77,.37,.77,0x594739);this.box(x,base+.09,z,.48,.18,.48,0x777565);}
- bench(x,z,yaw=0,base=1.2){let at=(a,b,c,sx,sy,sz,col)=>this.box(x+a*Math.cos(yaw)+c*Math.sin(yaw),base+b,z-a*Math.sin(yaw)+c*Math.cos(yaw),sx,sy,sz,col,{r:[0,yaw,0]});for(let a of[-.72,.72])at(a,.38,0,.14,.75,.5,0x514c43);at(0,.74,0,1.95,.16,.68,0xa88d62);at(0,1.24,-.31,1.95,.52,.11,0xa68b62);}
- flowers(x,z,s=.7){for(let i=0;i<5;i++){let a=i*2.4;this.add('leaf',x+Math.cos(a)*.28,1.35,z+Math.sin(a)*.28,.11,s*.8,.1,0x547a48,{r:[0,a,0],wind:1});this.add('octa',x+Math.cos(a)*.28,1.35+s*.7,z+Math.sin(a)*.28,.22,.24,.22,[0xdbc18c,0xbca5b4,0xf0dfb4][i%3]);}}
- building(x,z,w,d,roof,wall=0xc8c0a5){let y=1.2,wood=0x665542,stone=0x777d72;this.box(x,y+.17,z,w+.5,.34,d+.5,stone);this.box(x,y+1.75,z,w,3.3,d,wall);this.add('roof',x,y+3.42,z,w+1.1,2,d+1,roof,{rough:.7});this.box(x,y+3.45,z,w+1.2,.18,d+1.05,wood);for(let a of[-1,1]){this.box(x+a*(w/2-.12),y+1.7,z+d/2+.035,.19,3.4,.16,wood);for(let j=0;j<2;j++){let zz=z+(j?1:-1)*d*.29;this.box(x+a*(w/2+.018),y+2,zz,.045,1.1,1.08,0xfad099,{em:.42});this.box(x+a*(w/2+.046),y+2,zz,.05,1.2,.08,wood);this.box(x+a*(w/2+.046),y+2,zz,.05,.08,1.16,wood);}}
- this.box(x,y+1.17,z+d/2+.08,1.38,2.35,.18,0x515b58);this.box(x,y+1.72,z+d/2+.19,.94,.53,.03,0xbdd1c0,{em:.1});this.box(x+.45,y+1.05,z+d/2+.20,.09,.09,.06,0xd3b979);this.box(x,y+.12,z+d/2+.63,1.95,.24,1.2,0x8f968b,{wet:1});for(let a of[-1,1]){let xx=x+a*w*.32;this.box(xx,y+1.9,z+d/2+.06,1.06,1.08,.04,0xffd496,{em:.48});for(let sx of[-.58,.58])this.box(xx+sx,y+1.9,z+d/2+.12,.09,1.28,.11,wood);this.box(xx,y+1.9,z+d/2+.14,.07,1.12,.11,wood);this.box(xx,y+1.9,z+d/2+.14,1.18,.08,.11,wood);this.box(xx,y+1.2,z+d/2+.25,1.36,.3,.45,0x8e6551);this.flowers(xx,z+d/2+.25,.62);}
- for(let i=0;i<9;i++){let t=(i+.5)/9,a=Math.abs(t-.5)*2,xx=x+(t-.5)*(w+1.1),yy=y+3.45+(1-a)*2;this.box(xx,yy+.04,z,.10,.10,d+1.1,blend(hex(roof),hex(0xe8d5bc),.12),{r:[0,0,t<.5?-.54:.54]});}this.box(x-w*.28,y+4.6,z-d*.23,.63,2.1,.74,0x939482);this.box(x-w*.28,y+5.72,z-d*.23,.8,.17,.9,stone);this.box(x,y+2.72,z+d/2+.19,1.8,.37,.2,wood);for(let j=0;j<3;j++)this.box(x-.55+j*.55,y+2.74,z+d/2+.30,.18,.10,.02,0xc3b47c);}
+ bench(x,z,yaw=0,base=1.2,opt={}){let at=(a,b,c,sx,sy,sz,col)=>this.box(x+a*Math.cos(yaw)+c*Math.sin(yaw),base+b,z-a*Math.sin(yaw)+c*Math.cos(yaw),sx,sy,sz,col,{r:[0,yaw,0],...opt});for(let a of[-.72,.72])at(a,.38,0,.14,.75,.5,0x514c43);at(0,.74,0,1.95,.16,.68,0xa88d62);at(0,1.24,-.31,1.95,.52,.11,0xa68b62);}
+ flowers(x,z,s=.7,base=1.35){for(let i=0;i<5;i++){let a=i*2.4;this.add('leaf',x+Math.cos(a)*.28,base,z+Math.sin(a)*.28,.11,s*.8,.1,0x547a48,{r:[0,a,0],wind:1,cameraSolid:false});this.add('octa',x+Math.cos(a)*.28,base+s*.7,z+Math.sin(a)*.28,.18,.20,.18,[0xdbc18c,0xbca5b4,0xf0dfb4][i%3],{cameraSolid:false});}}
+ building(x,z,w,d,roof,wall=0xc8c0a5){
+  const y=1.2,wood=0x5b4936,edge=0x8b7350,stone=0xa7a38c,detail={rough:.94,cameraSolid:false,cutaway:true},front=z+d/2;
+  // Original wall, threshold and roof envelopes remain the camera authorities.
+  this.box(x,y+.17,z,w+.5,.34,d+.5,0x767d71);
+  this.box(x,y+1.75,z,w,3.3,d,wall,{rough:.95});
+  this.add('roof',x,y+3.42,z,w+1.1,2,d+1,roof,{rough:.91,cutaway:true});
+  // Pale, coursed river stone and substantial timber explain how it is built.
+  for(let row=0;row<2;row++)for(let i=0;i<Math.ceil(w/.85);i++){const n=Math.ceil(w/.85),xx=x-w/2+(i+.5)*w/n;for(const side of[-1,1])this.box(xx,y+.16+row*.19,z+side*(d/2+.045),w/n-.045,.16,.14,blend(hex(stone),hex(0x7f8775),((i+row)%4)*.1),detail);}
+  for(const side of[-1,1]){
+   const zz=z+side*(d/2+.055);
+   for(const xx of[x-w/2+.1,x,x+w/2-.1])this.box(xx,y+1.89,zz,.18,3.18,.18,wood,detail);
+   for(const yy of[y+.55,y+2.65,y+3.39])this.box(x,yy,zz,w,.16,.18,wood,detail);
+   this.beam([x-w/2+.18,y+.66,zz],[x-w*.20,y+2.57,zz],.115,edge);
+   this.beam([x+w/2-.18,y+.66,zz],[x+w*.20,y+2.57,zz],.115,edge);
+   for(const dir of[-1,1])this.beam([x+dir*(w/2+.45),y+3.49,zz+side*.35],[x,y+5.46,zz+side*.35],.16,wood);
+   this.box(x,y+4.16,zz+side*.1,.14,1.48,.13,wood,detail);
+   for(let i=-2;i<=2;i++)this.box(x+i*.23,y+3.76,zz+side*.12,.12,.53,.11,edge,detail);
+  }
+  for(const side of[-1,1]){
+   const xx=x+side*(w/2+.04);
+   for(const zz of[z-d/2+.1,z,z+d/2-.1])this.box(xx,y+1.88,zz,.17,3.2,.17,wood,detail);
+   for(const yy of[y+.55,y+2.66,y+3.4])this.box(xx,yy,z,.17,.16,d,wood,detail);
+   for(const dir of[-1,1]){
+    const zz=z+dir*d*.28;this.box(xx,y+1.88,zz,.06,1.04,1.08,0x405650,detail);
+    this.box(xx+side*.045,y+1.9,zz,.07,.81,.85,0xb4c8b3,{...detail,em:.06,rough:.45});
+    this.box(xx+side*.09,y+1.9,zz,.08,1.17,.09,wood,detail);this.box(xx+side*.09,y+1.9,zz,.08,.08,1.16,wood,detail);
+    for(const dz of[-.61,.61])this.box(xx+side*.08,y+1.9,zz+dz,.1,1.17,.16,edge,detail);
+   }
+  }
+  // Individual shingle courses add value variation at both camera distances.
+  const rw=w+1.1,rd=d+1,slope=Math.atan2(2,rw/2),run=Math.hypot(rw/2,2);
+  for(const side of[-1,1])for(let row=0;row<4;row++)for(let tile=0;tile<6;tile++){
+   const f=(row+.5)/4,xx=x+side*(rw/2)*(1-f),yy=y+3.42+2*f+.055,zz=z-rd/2+(tile+.5)*rd/6;
+   this.box(xx,yy,zz,run/4+.04,.065,rd/6-.028,blend(hex(roof),hex((row+tile)%3?0xd1b691:0x423e3c),((row*3+tile)%5)*.035),{...detail,r:[0,0,-side*slope]});
+  }
+  this.box(x,y+5.47,z,.18,.14,d+1.16,edge,detail);
+  for(const side of[-1,1])this.box(x+side*rw/2,y+3.42,z,.16,.2,d+1.14,wood,detail);
+  // The door stays in its established place; daylight windows are restrained.
+  this.box(x,y+1.17,front+.08,1.38,2.35,.18,0x384a44,{rough:.92});
+  for(let i=0;i<6;i++)this.box(x-.55+i*.22,y+1.16,front+.185,.20,2.18,.045,i%2?0x64775e:0x596b54,detail);
+  for(const dx of[-.79,.79])this.box(x+dx,y+1.23,front+.13,.19,2.46,.22,wood,detail);
+  this.box(x,y+2.44,front+.14,1.8,.19,.24,wood,detail);
+  for(const yy of[y+.52,y+1.92])this.box(x,yy,front+.222,1.25,.075,.045,0x46463c,detail);
+  this.box(x+.45,y+1.05,front+.24,.10,.10,.07,0xc3a15d,{...detail,rough:.38});
+  this.box(x,y+.12,front+.63,1.95,.24,1.2,0xa7aa94,{wet:1,rough:.8});
+  for(const side of[-1,1]){
+   const xx=x+side*w*.32;
+   this.box(xx,y+1.9,front+.07,1.06,1.08,.05,0x3e554e,detail);
+   this.box(xx,y+1.9,front+.11,.9,.9,.04,0xc7d2b7,{...detail,rough:.4,em:.08});
+   for(const dx of[-.58,0,.58])this.box(xx+dx,y+1.9,front+.16,.08,1.22,.12,wood,detail);
+   this.box(xx,y+1.9,front+.17,1.18,.08,.12,wood,detail);
+   for(const dx of[-.78,.78]){this.box(xx+dx,y+1.9,front+.11,.28,1.18,.12,0x77846a,detail);for(const dy of[-.37,0,.37])this.box(xx+dx,y+1.9+dy,front+.18,.25,.065,.055,0x54624c,detail);}
+   this.box(xx,y+1.2,front+.25,1.36,.3,.45,0x89664b,detail);this.flowers(xx,front+.25,.45,y+1.36);
+  }
+  const cx=x-w*.28,cz=z-d*.23;this.box(cx,y+4.6,cz,.63,2.1,.74,0x929380,{rough:1});
+  for(let row=0;row<6;row++)for(let i=0;i<2;i++)this.box(cx+(i-.5)*.30,y+3.72+row*.31,cz+.38,.27,.26,.05,(i+row)%3?0xa4a28d:0x797e70,detail);
+  this.box(cx,y+5.72,cz,.8,.17,.9,stone,{rough:1});this.box(cx,y+5.82,cz,.45,.025,.55,0x45493f,detail);
+  this.box(x,y+2.78,front+.2,1.8,.33,.18,wood,detail);for(let i=0;i<3;i++)this.box(x-.55+i*.55,y+2.78,front+.30,.17,.085,.02,0xc3b47c,detail);
+ }
  makeExterior(){this.begin(null);let random=C.rng(2317);let c=1.45;for(let z=-26;z<=26;z+=c)for(let x=-26;x<=26;x+=c){let radius=Math.hypot(x,z),edge=C.landRadius(x,z)-radius;if(edge<-.4)continue;let top=edge<.9?.55:1.2,col=blend(hex(0x5e8259),hex(0x879970),random()*.6);this.box(x,top/2,z,c+.04,top,c+.04,col,{rough:.97});if(edge<1.2)this.box(x,-.22,z,c+.02,.55,c+.02,0x657968);}
 
  // The new eastern garden is actual navigable terrain, not a backdrop.
@@ -45,6 +104,15 @@ class WorldArt{
  this.box(9,2.45,-7.61,1.23,2.2,.18,0x526765);this.box(9,1.35,-6.9,2,.3,1.7,0x8d9b8d);this.add('cylinder',13,1.2,-5.2,.18,1.7,.18,0x8c7750);this.add('cylinder',13,2.75,-5.2,.42,1.7,.42,0xc3ba8c,{r:[.86,0,0],rough:.3});
  // Work tables, barrels and flower boxes.
  for(let x of[9.1,12.5]){this.box(x,2.05,8,.95,.16,1.6,0x9c8157);for(let z of[7.4,8.6])this.box(x,1.62,z,.14,.75,.14,0x625542);}for(let[x,z]of[[-15,-3],[-8,-3],[14,7],[-16,9]]){this.add('cylinder',x,1.2,z,.8,.9,.8,0x897053);this.add('cylinder',x,1.36,z,.82,.07,.82,0x50534b);this.add('cylinder',x,1.85,z,.82,.07,.82,0x50534b);}
+ // Tools and work-in-progress belong to Oren's existing table surfaces.
+ // They add an occupation to the workshop without another interaction target.
+ const small={cameraSolid:false,rough:.94};
+ this.box(12.5,2.22,8,.48,.18,.61,0x53584c,small);this.box(12.5,2.4,8,.30,.26,.39,0x5e6356,small);this.box(12.5,2.54,8,.64,.12,.46,0x7b8170,{...small,rough:.55});
+ for(let i=0;i<3;i++)this.box(8.83+i*.22,2.17,8.36,.17,.08,.47,[0x8d7956,0xb6a279,0x9d8863][i],small);
+ this.box(9.12,2.23,7.53,.45,.06,.34,0xd0c29b,{...small,r:[0,.17,0]});this.box(9.1,2.30,7.88,.12,.10,.40,0x676e5b,small);this.box(9.22,2.22,8,.40,.06,.065,0x765a3a,{...small,r:[0,.3,0]});
+ // A water jug and folded linen occupy the already authored barrel tops.
+ this.add('round',-15,2.23,-3,.32,.42,.32,0x957752,small);this.add('cylinder',-15,2.35,-3,.16,.12,.16,0x957752,small);this.add('ring',-14.83,2.26,-3,.2,.28,.2,0x957752,small);
+ this.box(-8,2.12,-3,.51,.04,.44,0xbcb899,small);this.box(-8,2.15,-3.06,.46,.035,.27,0x9aa68c,small);
  // Performance space.
  for(let i=0;i<3;i++)this.box(0,1.25+i*.18,-14.65,8-i*.4,.22,3.5-i*.35,0x8e9888);for(let a of[-1,1]){this.box(a*3.6,3.35,-15.5,.16,4.1,.16,0x756347);this.box(a*3.25,4.07,-15.42,.82,1.9,.07,0x825567);this.box(a*3.25,3.1,-15.41,.9,.15,.08,0xc5ad77);}for(let i=0;i<11;i++)this.box(-3.3+i*.66,4.6-Math.sin(i/10*Math.PI)*.7,-15.1,.11,.16,.11,0xffcf7f,{em:2});
  // Garden beds, sculpted supports.
@@ -140,7 +208,7 @@ class WorldArt{
   if(role==='musician'){add('octa',.31,.8,.22,.34,.48,.14,0xbd955f);add('box',.38,1.08,.24,.06,.47,.06,0x806747);}
   if(role==='researcher')add('box',.27,.9,.23,.24,.30,.07,0xb8c8be);
  }
- update(sim,t,target){sim.presentation=sim.presentation||{};sim.presentation.perspective=this.e.camera.projection==='perspective';this.e.cutaway=sim.state.settings.cameraCutaway!==false;this.e.cutawayFocus=[sim.state.player.x,sim.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(sim.state.player.x,sim.state.player.z)+.88:sim.room?2.45:2.18,sim.state.player.z];let out={box:[],octa:[],disc:[],round:[]},p=sim.state.player;this.person(out,p.x,p.z,p.yaw,X.CLOAKS[sim.state.visitor.cloak],t,sim.walking,'visitor',true,this.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(p.x,p.z):this.room===G.RealmEarth?.ROOM?G.RealmEarth.height(p.x,p.z):this.room?1.57:1.3,sim.state.visitor);for(let i=0;i<C.PROFILES.length;i++){let info=C.PROFILES[i],r=sim.state.residents.find(r=>r.id===info.id),run=sim.runs.get(info.id);if(this.room){if(this.room==='home'&&run.inside){let pos=[[-3.1,1.1],[3.2,1.1],[2,3.2]][i];this.person(out,pos[0],pos[1],i?-.7:.7,info.color,t+i,false,info.role.toLowerCase(),false,1.57);}else if(this.room==='atelier'&&info.id==='ilan'&&run.goal==='atelier')this.person(out,2.5,1.1,-1,info.color,t,false,'musician',false,1.57);else if(this.room==='observatory'&&info.id==='mara'&&run.goal==='observatory')this.person(out,2.5,1.1,-1,info.color,t,false,'researcher',false,1.57);}else if(!run.inside)this.person(out,r.x,r.z,r.yaw,info.color,t+i,run.walking,info.role.toLowerCase());}
+ update(sim,t,target){sim.presentation=sim.presentation||{};sim.presentation.perspective=this.e.camera.projection==='perspective';this.e.cutaway=sim.state.settings.cameraCutaway!==false;this.e.cutawayFocus=[sim.state.player.x,sim.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(sim.state.player.x,sim.state.player.z)+.88:sim.room===G.RealmEarth?.ROOM?G.RealmEarth.height(sim.state.player.x,sim.state.player.z)+.88:sim.room?2.45:2.18,sim.state.player.z];let out={box:[],octa:[],disc:[],round:[]},p=sim.state.player;this.person(out,p.x,p.z,p.yaw,X.CLOAKS[sim.state.visitor.cloak],t,sim.walking,'visitor',true,this.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(p.x,p.z):this.room===G.RealmEarth?.ROOM?G.RealmEarth.height(p.x,p.z):this.room?1.57:1.3,sim.state.visitor);for(let i=0;i<C.PROFILES.length;i++){let info=C.PROFILES[i],r=sim.state.residents.find(r=>r.id===info.id),run=sim.runs.get(info.id);if(this.room){if(this.room==='home'&&run.inside){let pos=[[-3.1,1.1],[3.2,1.1],[2,3.2]][i];this.person(out,pos[0],pos[1],i?-.7:.7,info.color,t+i,false,info.role.toLowerCase(),false,1.57);}else if(this.room==='atelier'&&info.id==='ilan'&&run.goal==='atelier')this.person(out,2.5,1.1,-1,info.color,t,false,'musician',false,1.57);else if(this.room==='observatory'&&info.id==='mara'&&run.goal==='observatory')this.person(out,2.5,1.1,-1,info.color,t,false,'researcher',false,1.57);}else if(!run.inside)this.person(out,r.x,r.z,r.yaw,info.color,t+i,run.walking,info.role.toLowerCase());}
  if(!this.room){if(sim.state.weather==='rain'&&!sim.state.settings.reducedMotion){for(let i=0;i<110;i++){let x=((i*17.13)%42)-21,z=((i*23.77)%42)-21,y=1.4+((i*.61-t*10)%9+9)%9;out.box.push({p:[x,y,z],s:[.017,.32,.017],r:[0,0,-.13],c:0x9ebdc1,em:.2});}}for(let f of sim.state.flowers){out.box.push({p:[f.x,1.72,f.z],s:[.055,.48,.055],c:0x57784c});out.octa.push({p:[f.x,1.99,f.z],s:[.29,.3,.29],c:[0xe5bb94,0xc49fac,0xe5d29d,0xb7cad0][f.color]});}for(let i=0;i<13;i++){let a=t*.11+i*.8,r=26+i%3*4,x=Math.sin(a)*r,z=Math.cos(a)*r,y=9+i%4*1.3;for(let s of[-1,1])out.box.push({p:[x+s*.18,y,z],s:[.45,.055,.15],r:[0,a,s*(.25+Math.sin(t*3+i)*.2)],c:0x4a646b});}for(let j=0;j<3;j++)for(let i=0;i<4;i++){let u=(t*.3+i*.8)%3.7,x=[-13,-14.6,9.4][j],z=[-7.3,5.75,3.7][j];out.octa.push({p:[x+Math.sin(u+j)*.2,6.4+u,z],s:[.3+u*.16,.4+u*.19,.3+u*.16],c:blend(hex(0xb5bbb0),hex(0x9faeac),u/4),rough:1});}let w=t*.5;out.octa.push({p:[7+Math.cos(w)*.7,2+Math.sin(t)*.14,10+Math.sin(w)*.7],s:[.3,.43,.3],c:0x8ad6d1,em:1.3});}
  if(target)for(let i=0;i<16;i++){let a=i/16*TAU;out.box.push({p:[target.x+Math.cos(a)*.4,this.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(target.x,target.z)+.02:this.room?1.59:1.31,target.z+Math.sin(a)*.4],s:[.12,.025,.05],r:[0,-a,0],c:0xe5ce93,em:.35});}
 

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Firstlight third-person",
+    "expression": "()=>{document.querySelector('[data-rpg=\"camera\"][data-id=\"follow\"]').click();Realm.test.view({yaw:.5,elevation:.32,distance:8});Realm.test.render();return Realm.diagnostics.scene}"
+  },
+  {
+    "name": "Firstlight diorama",
+    "expression": "()=>{document.querySelector('[data-rpg=\"camera\"][data-id=\"adventure\"]').click();Realm.test.render();return Realm.diagnostics.scene}"
+  },
+  {
+    "name": "Hearthwater orchard third-person",
+    "expression": "async()=>{document.querySelector('[data-rpg=\"camera\"][data-id=\"follow\"]').click();const walk=async(x,z)=>{const r=Realm.test.move(x,z);if(!r.ok)throw Error(r.error);const start=performance.now();while(Realm.test.path.length){if(performance.now()-start>60000)throw Error('walk timeout');await new Promise(r=>setTimeout(r,50));}};await walk(0,23);document.dispatchEvent(new KeyboardEvent('keydown',{key:'e',bubbles:true}));document.dispatchEvent(new KeyboardEvent('keyup',{key:'e',bubbles:true}));document.querySelector('[data-rpg=earth-confirm]').click();await walk(-13,1);Realm.test.view({yaw:1.8,elevation:.32,distance:8});Realm.test.render();return Realm.diagnostics.scene}"
+  },
+  {
+    "name": "Hearthwater mill third-person",
+    "expression": "async()=>{const r=Realm.test.move(7,3);if(!r.ok)throw Error(r.error);while(Realm.test.path.length)await new Promise(r=>setTimeout(r,50));Realm.test.view({yaw:2.8,elevation:.3,distance:8});Realm.test.render();return Realm.diagnostics.scene}"
+  },
+  {
+    "name": "Hearthwater shelter third-person",
+    "expression": "async()=>{const r=Realm.test.move(-12,-23);if(!r.ok)throw Error(r.error);while(Realm.test.path.length)await new Promise(r=>setTimeout(r,50));Realm.test.view({yaw:.7,elevation:.3,distance:7.5});Realm.test.render();return Realm.diagnostics.scene}"
+  },
+  {
+    "name": "Hearthwater shelter diorama",
+    "expression": "()=>{document.querySelector('[data-rpg=\"camera\"][data-id=\"adventure\"]').click();Realm.test.render();return Realm.diagnostics.scene}"
+  }
+]

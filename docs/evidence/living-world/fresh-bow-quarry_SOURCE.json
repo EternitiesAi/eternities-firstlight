@@ -1,0 +1,1001 @@
+{
+  "adventure": {
+    "version": 10,
+    "earthGathering": {
+      "version": 1,
+      "accepted": false,
+      "prepared": [],
+      "verse": null,
+      "shared": false
+    },
+    "earthNotes": {
+      "version": 1,
+      "accepted": false,
+      "marks": [],
+      "compared": false,
+      "interpretation": null
+    },
+    "earthStory": {
+      "version": 1,
+      "accepted": true,
+      "steps": [
+        "quarry-reserve",
+        "quarry-grade"
+      ],
+      "dispatch": "quarry",
+      "arrived": true,
+      "claimed": false
+    },
+    "classPath": {
+      "version": 1,
+      "choice": null,
+      "readyAt": 0
+    },
+    "pursuit": {
+      "version": 1,
+      "pinned": null,
+      "claimed": 0,
+      "active": null,
+      "fittings": {}
+    },
+    "starter": {
+      "version": 1,
+      "accepted": false,
+      "bundles": [],
+      "reward": null
+    },
+    "crossing": {
+      "version": 1,
+      "entered": false,
+      "met": false,
+      "inscription": false,
+      "clapperRevealed": false,
+      "clapper": false,
+      "repaired": false,
+      "complete": false,
+      "reward": false,
+      "attuned": false,
+      "projects": []
+    },
+    "beacon": {
+      "version": 1,
+      "introduced": false,
+      "complete": false,
+      "status": "dormant",
+      "attempts": 0,
+      "failures": 0,
+      "reward": false,
+      "relic": "undecided",
+      "route": null,
+      "soul": {
+        "grace": false,
+        "equipped": null,
+        "radiance": 0,
+        "corruption": 0,
+        "scars": []
+      }
+    },
+    "arsenal": {
+      "version": 1,
+      "gems": {
+        "ruby": 0,
+        "moonstone": 0,
+        "amber": 0
+      },
+      "sockets": {},
+      "rangeMedal": false,
+      "bestTime": null
+    },
+    "road": {
+      "version": 1,
+      "entered": false,
+      "revealed": [],
+      "claimed": [],
+      "cartRepaired": false,
+      "beaconLit": false,
+      "reported": false
+    },
+    "elapsed": 128.1999999999949,
+    "revision": 8,
+    "started": true,
+    "dug": [],
+    "chips": [],
+    "defeated": [],
+    "drops": [],
+    "ore": 0,
+    "coins": 0,
+    "xp": 0,
+    "hp": 100,
+    "stamina": 100,
+    "tonics": 3,
+    "equipment": {
+      "weapon": "trail_bow",
+      "armor": "travel_coat",
+      "charm": null
+    },
+    "owned": [
+      "trail_blade",
+      "travel_coat",
+      "trail_bow"
+    ],
+    "companion": {
+      "bonded": false,
+      "name": "Briar",
+      "mode": "follow"
+    },
+    "relic": false,
+    "angelSeen": false,
+    "reward": null,
+    "deaths": 0,
+    "receipts": [
+      {
+        "id": "earned-rain-fresh-bow-quarry-1",
+        "fp": "[\"start\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-rain-fresh-bow-quarry-16",
+        "fp": "[\"arsenal-craft\",{\"id\":\"trail_bow\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-rain-fresh-bow-quarry-17",
+        "fp": "[\"equip\",{\"id\":\"trail_bow\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-rain-fresh-bow-quarry-18",
+        "fp": "[\"earth-story-accept\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-rain-fresh-bow-quarry-19",
+        "fp": "[\"earth-story-step\",{\"id\":\"quarry-reserve\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-rain-fresh-bow-quarry-20",
+        "fp": "[\"earth-story-step\",{\"id\":\"quarry-grade\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-rain-fresh-bow-quarry-21",
+        "fp": "[\"earth-story-dispatch\",{\"route\":\"quarry\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-rain-fresh-bow-quarry-22",
+        "fp": "[\"earth-story-arrive\",{}]",
+        "ok": true
+      }
+    ]
+  },
+  "sandbox": {
+    "version": 1,
+    "elapsed": 128.1999999999949,
+    "revision": 15,
+    "inventory": {
+      "wood": 4,
+      "stone": 3,
+      "fiber": 2,
+      "crystal": 0,
+      "plank": 0,
+      "block": 0,
+      "seeds": 6,
+      "berry": 0,
+      "axe": 0,
+      "pick": 0,
+      "floor": 0,
+      "wall": 0,
+      "masonry": 0,
+      "lantern": 0,
+      "bench": 0,
+      "bed": 0,
+      "fire": 0,
+      "workbench": 0
+    },
+    "nodes": [
+      {
+        "id": "timber-1",
+        "hp": 0,
+        "readyAt": 135.7000000000001
+      },
+      {
+        "id": "timber-2",
+        "hp": 0,
+        "readyAt": 141.90000000000018
+      },
+      {
+        "id": "timber-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "timber-4",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-1",
+        "hp": 0,
+        "readyAt": 143.24999999999912
+      },
+      {
+        "id": "stone-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-1",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-2",
+        "hp": 0,
+        "readyAt": 130.94999999999982
+      },
+      {
+        "id": "fibre-3",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-stone-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-stone-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-fibre",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "crystal-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "crystal-2",
+        "hp": 4,
+        "readyAt": 0
+      }
+    ],
+    "bridge": false,
+    "placed": [],
+    "nextId": 1,
+    "stats": {
+      "gathered": 21,
+      "crafted": 0,
+      "harvested": 0
+    },
+    "milestones": [
+      "gather"
+    ],
+    "recentCommands": [
+      {
+        "id": "rain-gather-2",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop · 3 strength remaining"
+        }
+      },
+      {
+        "id": "rain-gather-3",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop · 2 strength remaining"
+        }
+      },
+      {
+        "id": "rain-gather-4",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop · 1 strength remaining"
+        }
+      },
+      {
+        "id": "rain-gather-5",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "+5 Timber"
+        }
+      },
+      {
+        "id": "rain-gather-6",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop · 3 strength remaining"
+        }
+      },
+      {
+        "id": "rain-gather-7",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop · 2 strength remaining"
+        }
+      },
+      {
+        "id": "rain-gather-8",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop · 1 strength remaining"
+        }
+      },
+      {
+        "id": "rain-gather-9",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "+5 Timber"
+        }
+      },
+      {
+        "id": "rain-gather-10",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"fibre-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "+3 Meadow fibre · +1 seed"
+        }
+      },
+      {
+        "id": "rain-gather-11",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"fibre-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "+3 Meadow fibre · +1 seed"
+        }
+      },
+      {
+        "id": "rain-gather-12",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Mine · 3 strength remaining"
+        }
+      },
+      {
+        "id": "rain-gather-13",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Mine · 2 strength remaining"
+        }
+      },
+      {
+        "id": "rain-gather-14",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Mine · 1 strength remaining"
+        }
+      },
+      {
+        "id": "rain-gather-15",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "+5 Stone"
+        }
+      }
+    ],
+    "cooldownUntil": 53.64999999999911
+  },
+  "score": {
+    "format": "eternities.score.v1",
+    "title": "A Window Left Open",
+    "bpm": 88,
+    "voice": "felt",
+    "melody": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    ],
+    "bass": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "drums": [
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    ]
+  },
+  "scoreRevision": 0,
+  "retreat": {
+    "version": 1,
+    "revision": 0,
+    "wall": "moss",
+    "floor": "oak",
+    "items": [
+      {
+        "slot": "nw",
+        "kind": "shelf",
+        "rotation": 0
+      },
+      {
+        "slot": "ne",
+        "kind": "piano",
+        "rotation": 0
+      },
+      {
+        "slot": "w",
+        "kind": "sofa",
+        "rotation": 1
+      },
+      {
+        "slot": "e",
+        "kind": "plant",
+        "rotation": 0
+      },
+      {
+        "slot": "c",
+        "kind": "rug",
+        "rotation": 0
+      }
+    ]
+  },
+  "visitor": {
+    "name": "Visitor",
+    "skin": 0,
+    "cloak": 0,
+    "hair": 0
+  },
+  "version": 9,
+  "seed": 2317,
+  "day": 1,
+  "hour": 17.776900000000932,
+  "weather": "clear",
+  "player": {
+    "x": 0,
+    "z": 23,
+    "yaw": -0.34555558058172114
+  },
+  "visited": [
+    "market",
+    "commons"
+  ],
+  "flowers": [],
+  "notes": [],
+  "journal": [
+    {
+      "seq": 1,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 2,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 3,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 4,
+      "day": 1,
+      "hour": 17.209000000000014,
+      "kind": "discovery",
+      "text": "You found The makers’ exchange."
+    },
+    {
+      "seq": 5,
+      "day": 1,
+      "hour": 17.21305000000002,
+      "kind": "quest",
+      "text": "Oren supplied a trail blade, a lantern, three tonics and a salve for an injured animal. Find the northern mine."
+    },
+    {
+      "seq": 6,
+      "day": 1,
+      "hour": 17.25647500000009,
+      "kind": "sandbox",
+      "text": "Chop · 3 strength remaining"
+    },
+    {
+      "seq": 7,
+      "day": 1,
+      "hour": 17.2612000000001,
+      "kind": "sandbox",
+      "text": "Chop · 2 strength remaining"
+    },
+    {
+      "seq": 8,
+      "day": 1,
+      "hour": 17.265925000000106,
+      "kind": "sandbox",
+      "text": "Chop · 1 strength remaining"
+    },
+    {
+      "seq": 9,
+      "day": 1,
+      "hour": 17.270650000000114,
+      "kind": "sandbox",
+      "text": "+5 Timber"
+    },
+    {
+      "seq": 10,
+      "day": 1,
+      "hour": 17.284375000000136,
+      "kind": "sandbox",
+      "text": "Chop · 3 strength remaining"
+    },
+    {
+      "seq": 11,
+      "day": 1,
+      "hour": 17.289100000000143,
+      "kind": "sandbox",
+      "text": "Chop · 2 strength remaining"
+    },
+    {
+      "seq": 12,
+      "day": 1,
+      "hour": 17.29382500000015,
+      "kind": "sandbox",
+      "text": "Chop · 1 strength remaining"
+    },
+    {
+      "seq": 13,
+      "day": 1,
+      "hour": 17.29855000000016,
+      "kind": "sandbox",
+      "text": "+5 Timber"
+    },
+    {
+      "seq": 14,
+      "day": 1,
+      "hour": 17.33072500000021,
+      "kind": "discovery",
+      "text": "You found The Firstlight Commons."
+    },
+    {
+      "seq": 15,
+      "day": 1,
+      "hour": 17.346700000000236,
+      "kind": "sandbox",
+      "text": "+3 Meadow fibre · +1 seed"
+    },
+    {
+      "seq": 16,
+      "day": 1,
+      "hour": 17.384275000000297,
+      "kind": "sandbox",
+      "text": "+3 Meadow fibre · +1 seed"
+    },
+    {
+      "seq": 17,
+      "day": 1,
+      "hour": 17.425450000000364,
+      "kind": "sandbox",
+      "text": "Mine · 3 strength remaining"
+    },
+    {
+      "seq": 18,
+      "day": 1,
+      "hour": 17.43017500000037,
+      "kind": "sandbox",
+      "text": "Mine · 2 strength remaining"
+    },
+    {
+      "seq": 19,
+      "day": 1,
+      "hour": 17.43490000000038,
+      "kind": "sandbox",
+      "text": "Mine · 1 strength remaining"
+    },
+    {
+      "seq": 20,
+      "day": 1,
+      "hour": 17.439625000000387,
+      "kind": "sandbox",
+      "text": "+5 Stone"
+    },
+    {
+      "seq": 21,
+      "day": 1,
+      "hour": 17.512525000000505,
+      "kind": "quest",
+      "text": "Road After Rain accepted: prepare one route, send Fenna’s flour and apples, and meet her on the west road. One payment: 3 copper, 4 sunmarks, 2 fibre; no XP."
+    },
+    {
+      "seq": 22,
+      "day": 1,
+      "hour": 17.512750000000505,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 23,
+      "day": 1,
+      "hour": 17.512750000000505,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 24,
+      "day": 1,
+      "hour": 17.512750000000505,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 25,
+      "day": 1,
+      "hour": 17.586550000000624,
+      "kind": "quest",
+      "text": "Collect Darric’s designated repair blocks completed."
+    },
+    {
+      "seq": 26,
+      "day": 1,
+      "hour": 17.586775000000625,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 27,
+      "day": 1,
+      "hour": 17.586775000000625,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 28,
+      "day": 1,
+      "hour": 17.586775000000625,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 29,
+      "day": 1,
+      "hour": 17.644600000000718,
+      "kind": "quest",
+      "text": "Pack the washed cart grade completed."
+    },
+    {
+      "seq": 30,
+      "day": 1,
+      "hour": 17.64482500000072,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 31,
+      "day": 1,
+      "hour": 17.64482500000072,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 32,
+      "day": 1,
+      "hour": 17.64482500000072,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 33,
+      "day": 1,
+      "hour": 17.67677500000077,
+      "kind": "quest",
+      "text": "Fenna takes Darric’s cart road with the flour and apples. Meet her at the Bellweather west-road handoff."
+    },
+    {
+      "seq": 34,
+      "day": 1,
+      "hour": 17.67700000000077,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 35,
+      "day": 1,
+      "hour": 17.67700000000077,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 36,
+      "day": 1,
+      "hour": 17.67700000000077,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 37,
+      "day": 1,
+      "hour": 17.776900000000932,
+      "kind": "quest",
+      "text": "Fenna’s flour and apples reached the west road. The delivery is complete; its payment is still unclaimed."
+    }
+  ],
+  "nextEvent": 38,
+  "residents": [
+    {
+      "id": "ilan",
+      "x": 0,
+      "z": -11.6,
+      "yaw": 1.5707963267948966,
+      "progress": 0.07299499999999717,
+      "conversations": 0
+    },
+    {
+      "id": "mara",
+      "x": 9,
+      "z": -5.8,
+      "yaw": 0,
+      "progress": 0.07307599999999713,
+      "conversations": 0
+    },
+    {
+      "id": "oren",
+      "x": 11,
+      "z": 9,
+      "yaw": -1.5707963267948966,
+      "progress": 0.07299499999999717,
+      "conversations": 0
+    }
+  ],
+  "settings": {
+    "quality": "balanced",
+    "cameraMode": "adventure",
+    "cameraFov": 60,
+    "cameraViews": {
+      "version": 1,
+      "lastDiorama": "follow",
+      "profiles": {}
+    },
+    "cameraCutaway": true,
+    "reducedMotion": false,
+    "labels": true,
+    "timeFlow": true,
+    "sound": false
+  }
+}
