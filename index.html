@@ -2552,6 +2552,322 @@ class WriterLock{
 const api={VERSION,KEY,MAX_SLOTS,MAX_CHARS,validate,Store,WriterLock};
 G.RealmCharacters=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
+</script><script>/* Original instanced traveller rig. Local +Z is forward, +X right, +Y up.
+ * Presentation only: callers supply movement, combat and canonical colours.
+ * Sampling is pure; the parent owns one motion state per simulation identity. */
+(function(G){'use strict';
+const TAU=Math.PI*2,STRIDE=1.35,MAX_DT=.10,RESET_DT=.75;
+const finite=(n,fallback=0)=>Number.isFinite(n)?n:fallback;
+const clamp=(n,lo,hi)=>Math.max(lo,Math.min(hi,n));
+const unit=n=>clamp(finite(n),0,1);
+const vec=(a,b)=>a.map((v,i)=>v-b[i]);
+const dot=(a,b)=>a.reduce((s,v,i)=>s+v*b[i],0);
+const scale=(a,n)=>a.map(v=>v*n);
+const plus=(a,b)=>a.map((v,i)=>v+b[i]);
+const mix=(a,b,t)=>a.map((v,i)=>v+(b[i]-v)*t);
+const norm=a=>scale(a,1/(Math.hypot(...a)||1));
+const smooth=n=>n*n*(3-2*n);
+
+function motion(previous,input={}){
+ const x=finite(input.x),z=finite(input.z),now=finite(input.time),scene=input.scene??null;
+ const paused=!!input.paused,reducedMotion=!!input.reducedMotion;
+ const valid=previous&&[previous.phase,previous.blend,previous.lastX,previous.lastZ,previous.lastTime,previous.time].every(Number.isFinite);
+ const state={phase:valid?previous.phase:0,blend:valid?unit(previous.blend):0,lastX:x,lastZ:z,lastTime:now,scene,
+  time:valid?previous.time:now,paused,reducedMotion};
+ if(!valid)return state;
+ const clockDelta=now-previous.lastTime,elapsed=Math.abs(clockDelta)<1e-9?0:clockDelta;
+ const distance=Math.hypot(x-previous.lastX,z-previous.lastZ);
+ if(paused&&scene===previous.scene)return state;
+ // A changed scene, clock restart, hidden-tab gap or teleport starts a clean
+ // stance. The distance gate tolerates normal frame subdivision at game speed.
+ if(scene!==previous.scene||elapsed<0||elapsed>RESET_DT||distance>Math.max(.65,elapsed*8)||(!elapsed&&distance>1e-7)){
+  state.phase=0;state.blend=0;state.time=paused?previous.time:now;return state;
+ }
+ // Consume sampling coordinates during pause without adding animation time.
+ // This prevents a resumed frame from walking the distance skipped by a menu.
+ if(paused||elapsed===0)return state;
+ const dt=Math.min(elapsed,MAX_DT);
+ state.time+=dt;
+ const moved=!!input.walking&&distance>1e-7;
+ if(moved)state.phase=(state.phase+distance/STRIDE*TAU)%TAU;
+ // A stationary actor cannot keep shuffling because its intent says walking.
+ // Phase is held while blend eases the actual last stride back into a stance.
+ const target=moved?1:0;
+ state.blend=target+(state.blend-target)*Math.exp(-dt*(moved?16:20));
+ if(state.blend<.001)state.blend=0;
+ return state;
+}
+
+// Analytic two-bone solve with a stable local bend direction. The returned end
+// is the reachable hand/ankle anchor, shared by skin and equipment geometry.
+function twoBone(start,target,upper,lower,hint){
+ let delta=vec(target,start),distance=Math.hypot(...delta);
+ const direction=distance>1e-8?scale(delta,1/distance):[0,-1,0];
+ distance=clamp(distance,Math.abs(upper-lower)+.0001,upper+lower-.0001);
+ const end=plus(start,scale(direction,distance));
+ const along=(upper*upper-lower*lower+distance*distance)/(2*distance);
+ const bend=Math.sqrt(Math.max(0,upper*upper-along*along));
+ let side=vec(hint,scale(direction,dot(hint,direction)));
+ if(Math.hypot(...side)<1e-6){const fallback=Math.abs(direction[0])<.9?[1,0,0]:[0,0,1];side=vec(fallback,scale(direction,dot(fallback,direction)));}
+ return {middle:plus(plus(start,scale(direction,along)),scale(norm(side),bend)),end};
+}
+
+function pose(options={}){
+ const phase=finite(options.phase),walkingBlend=unit(options.blend),time=finite(options.time);
+ const reducedMotion=!!options.reducedMotion,combatScene=!!options.combatScene;
+ const style=['blade','bow'].includes(options.style)?options.style:'none';
+ const combatPhase=combatScene&&['anticipate','recover'].includes(options.combatPhase)?options.combatPhase:'idle';
+ const combatProgress=combatPhase==='idle'?0:unit(options.combatProgress),guarded=combatScene&&!!options.guarded;
+ const gait=walkingBlend*(reducedMotion?.55:1),stride=Math.sin(phase)*gait;
+ const bob=reducedMotion?0:Math.abs(Math.sin(phase*2))*.012*walkingBlend;
+ const breath=reducedMotion?0:Math.sin(time*1.35)*.003*(1-walkingBlend);
+ const torsoY=bob+breath;
+ const joints={hip:[0,.90+torsoY,0],pelvis:[0,.885+torsoY,0],spine:[0,1.13+torsoY,0],
+  chest:[0,1.265+torsoY,0],neck:[0,1.475+torsoY,0],head:[0,1.610+torsoY,.008],back:[0,1.25+torsoY,-.17]};
+ for(const [name,side]of [['left',-1],['right',1]]){
+  const hip=[side*.115,.885+torsoY,0],step=side*stride;
+  const lift=Math.max(0,side*Math.cos(phase))**2*gait*(reducedMotion?.055:.105);
+  const leg=twoBone(hip,[side*.115,.115+lift,step*.22],.41,.41,[0,0,1]);
+  joints[name+'Hip']=hip;joints[name+'Knee']=leg.middle;joints[name+'Ankle']=leg.end;
+  joints[name+'Foot']=plus(leg.end,[0,-.052,.06]);
+  joints[name+'Shoulder']=[side*.235,1.365+torsoY,0];
+ }
+ const swing=reducedMotion?0:stride*.16;
+ let left=[-.265,.845+torsoY,swing],right=[.265,.845+torsoY,-swing];
+ const p=smooth(combatProgress);
+ if(combatScene&&style==='bow'){
+  const readyLeft=[-.30,1.30+torsoY,.48],readyRight=[.16,1.26+torsoY,.32];
+  left=readyLeft;right=readyRight;
+  if(combatPhase==='anticipate'){
+   left=mix(readyLeft,[-.34,1.37+torsoY,.49],p);
+   right=mix(readyRight,[.13,1.46+torsoY,.10],p);
+  }else if(combatPhase==='recover'){
+   // A released string relaxes directly to ready; secondary recoil is omitted
+   // in reduced motion, while the essential two-hand bow alignment remains.
+   right=reducedMotion?readyRight:mix([.16,1.26+torsoY,.35],readyRight,p);
+  }
+  if(guarded){left=[-.30,1.28+torsoY,.40];right=[.15,1.26+torsoY,.24];}
+ }else if(combatScene&&style==='blade'){
+  const readyRight=[.29,.94+torsoY,.23],readyLeft=[-.27,1.02+torsoY,.13];
+  right=readyRight;left=readyLeft;
+  if(combatPhase==='anticipate'){
+   right=mix(readyRight,[.34,1.45+torsoY,.12],p);
+   left=mix(readyLeft,[-.29,1.11+torsoY,.20],p*.5);
+  }else if(combatPhase==='recover'){
+   right=mix([.055,1.08+torsoY,.48],readyRight,p);
+  }
+  if(guarded){right=[.25,1.25+torsoY,.29];left=[-.24,1.26+torsoY,.25];}
+ }else if(guarded){left=[-.23,1.20+torsoY,.24];right=[.23,1.20+torsoY,.24];}
+ for(const [name,side,target]of [['left',-1,left],['right',1,right]]){
+  const arm=twoBone(joints[name+'Shoulder'],target,.305,.285,[side,-.3,-.25]);
+  joints[name+'Elbow']=arm.middle;joints[name+'Hand']=arm.end;
+ }
+ return {joints,phase,walkingBlend,time,reducedMotion,style,combatScene,combatPhase,combatProgress,guarded,
+  bob:torsoY,cloakSwing:reducedMotion?0:Math.sin(phase)*walkingBlend*.025};
+}
+
+function draw(out,input={},posed=pose()){
+ const {M,hex,blend}=G.RealmEngine;
+ const x=finite(input.x),z=finite(input.z),base=finite(input.base),yaw=finite(input.yaw);
+ const root=M.compose(x,base,z,1,1,1,0,yaw,0),j=posed.joints;
+ const profile=input.profile||{},pal=G.RealmCreative||{};
+ const pick=(list,key,fallback)=>Array.isArray(list)&&Number.isInteger(key)&&list[key]!=null?list[key]:fallback;
+ const skin=hex(pick(pal.SKINS,profile.skin,0xd2ac8e)),hair=hex(pick(pal.HAIR,profile.hair,0x5a4334));
+ const cloth=hex(input.color??pick(pal.CLOAKS,profile.cloak,0x6c9790));
+ const cloak=hex(pick(pal.CLOAKS,profile.cloak,input.color??0x6c9790));
+ const armored=input.armorColor!=null,coat=armored?hex(input.armorColor):blend(cloth,hex(0xe2d6b7),.12);
+ const darkCoat=blend(coat,hex(0x263932),.20),seam=blend(coat,hex(0xe2d6b7),.32);
+ const trousers=hex(0x414b45),leather=hex(0x4f4336),sole=hex(0x302f2b),metal=hex(0xc4af7b);
+ const add=(kind,name,position,size,color,rotation=[0,0,0],extra={})=>{
+  const local=M.compose(...position,...size,...rotation);
+  out[kind].push({p:M.transform(root,position),s:size.slice(),m:M.mul(root,local),c:color,rough:.84,
+   cameraSolid:false,cutaway:false,travelerPart:name,...extra});
+ };
+ // Columns of this basis point along a 3D segment. Unlike the old Y/Z-only
+ // rotation, it can connect a cross-body wrist to its elbow without a gap.
+ const limb=(name,a,b,width,depth,color)=>{
+  const length=Math.hypot(...vec(b,a)),up=norm(vec(b,a));
+  const reference=Math.abs(up[2])<.9?[0,0,1]:[1,0,0];
+  const across=norm([up[1]*reference[2]-up[2]*reference[1],up[2]*reference[0]-up[0]*reference[2],up[0]*reference[1]-up[1]*reference[0]]);
+  const forward=[across[1]*up[2]-across[2]*up[1],across[2]*up[0]-across[0]*up[2],across[0]*up[1]-across[1]*up[0]];
+  const center=mix(a,b,.5),local=new Float32Array([...scale(across,width),0,...scale(up,length),0,...scale(forward,depth),0,...center,1]);
+  out.box.push({p:M.transform(root,center),s:[width,length,depth],m:M.mul(root,local),c:color,rough:.87,
+   cameraSolid:false,cutaway:false,travelerPart:name,travelerJoints:[a.slice(),b.slice()]});
+ };
+ const y=posed.bob;
+ // Narrow waist, broader shoulder line and a split hem make fitted clothing
+ // with existing primitives, rather than a stack of rounded doll volumes.
+ add('box','jacket-waist',[0,1.035+y,0],[.335,.27,.24],darkCoat);
+ add('box','jacket-chest',[0,1.255+y,0],[.425,.245,.255],coat);
+ add('octa','jacket-left-side',[-.155,1.13+y,0],[.155,.35,.245],coat);
+ add('octa','jacket-right-side',[.155,1.13+y,0],[.155,.35,.245],coat);
+ add('box','jacket-front-seam',[0,1.18+y,.132],[.025,.30,.022],seam);
+ add('box','jacket-left-hem',[-.096,.89+y,.008],[.18,.20,.245],darkCoat,[0,0,-.045]);
+ add('box','jacket-right-hem',[.096,.89+y,.008],[.18,.20,.245],darkCoat,[0,0,.045]);
+ add('box','belt',[0,.985+y,.008],[.355,.063,.267],leather);
+ add('box','belt-buckle',[0,.985+y,.152],[.065,.060,.028],metal);
+ add('box','collar-left',[-.09,1.407+y,.042],[.09,.10,.18],seam,[0,0,-.18]);
+ add('box','collar-right',[.09,1.407+y,.042],[.09,.10,.18],seam,[0,0,.18]);
+ add('round','neck',j.neck,[.105,.15,.115],skin);
+ add('round','head',j.head,[.245,.27,.235],skin);
+ add('box','hair-crown',[0,1.721+y,-.015],[.226,.062,.207],hair);
+ add('box','hair-back',[0,1.620+y,-.105],[.220,.205,.072],hair);
+ for(const [name,side]of [['left',-1],['right',1]]){
+  add('round',name+'-ear',[side*.122,1.610+y,.003],[.046,.071,.05],skin);
+  add('box',name+'-eye',[side*.050,1.633+y,.119],[.025,.016,.012],0x303b37);
+  add('box',name+'-brow',[side*.051,1.654+y,.118],[.043,.012,.013],hair);
+  limb(name+'-thigh',j[name+'Hip'],j[name+'Knee'],.165,.18,trousers);
+  limb(name+'-shin',j[name+'Knee'],j[name+'Ankle'],.125,.145,trousers);
+  add('round',name+'-knee',j[name+'Knee'],[.151,.13,.155],trousers);
+  add('box',name+'-boot',j[name+'Foot'],[.165,.126,.285],leather);
+  add('box',name+'-sole',plus(j[name+'Foot'],[0,-.049,0]),[.177,.036,.299],sole);
+  add('round',name+'-boot-cuff',plus(j[name+'Ankle'],[0,.045,-.007]),[.152,.15,.172],leather);
+  add('box',name+'-shoulder',j[name+'Shoulder'],[.18,.15,.255],coat,[0,0,side*.10]);
+  limb(name+'-upper-arm',j[name+'Shoulder'],j[name+'Elbow'],.132,.144,coat);
+  add('round',name+'-elbow',j[name+'Elbow'],[.125,.125,.129],darkCoat);
+  limb(name+'-forearm',j[name+'Elbow'],j[name+'Hand'],.107,.119,darkCoat);
+  add('round',name+'-hand',j[name+'Hand'],[.104,.116,.102],skin);
+ }
+ add('octa','nose',[0,1.614+y,.137],[.052,.066,.074],skin);
+ const sweep=posed.cloakSwing;
+ for(const [name,side]of [['left',-1],['center',0],['right',1]]){
+  add('box','cloak-'+name,[side*.133,1.10+y,-.189-Math.abs(side)*.020+sweep],[.150,.61,.045],
+   side?cloak:blend(cloak,hex(0x2d4039),.12),[.105+sweep,0,-side*.07]);
+ }
+ add('box','cloak-clasp',[.10,1.383+y,.145],[.046,.050,.028],metal);
+ add('disc','ground-marker',[0,.013,0],[.88,1,.88],0xcebc87,[0,0,0],{rough:.65,em:.05});
+ // Copy anchors into the frame; later attachment code cannot mutate a pose.
+ const joints=Object.fromEntries(Object.entries(j).map(([name,v])=>[name,v.slice()]));
+ return {root,joints,style:posed.style,combatScene:posed.combatScene,combatPhase:posed.combatPhase,
+  combatProgress:posed.combatProgress,guarded:posed.guarded,reducedMotion:posed.reducedMotion,walkingBlend:posed.walkingBlend};
+}
+const api={motion,pose,draw};G.RealmTravelerArt=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* Original traveller equipment silhouettes, attached to the articulated rig.
+ * This is a read-only projection of the equipped catalogue item. Quiver arrows,
+ * sheath and the retained cave lantern are decoration, never inventory grants. */
+(function(G){'use strict';
+const add=(a,b)=>a.map((n,i)=>n+b[i]),sub=(a,b)=>a.map((n,i)=>n-b[i]),scale=(a,n)=>a.map(v=>v*n);
+const dot=(a,b)=>a.reduce((n,v,i)=>n+v*b[i],0),cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+const unit=a=>scale(a,1/(Math.hypot(...a)||1)),offset=(p,axis,n)=>add(p,scale(axis,n));
+const point=p=>p?.length===3&&Array.from(p).every(Number.isFinite);
+// These bounded art dimensions describe authored silhouettes, not attack/reach.
+const BLADES=Object.freeze({
+ trail_blade:{length:.64,width:.082,guard:.25,grip:0x695343,metal:0xadb39d,sheath:0x4e594c,edge:0xe5dfcc},
+ copper_blade:{length:.69,width:.112,guard:.32,grip:0x715242,metal:0xbb8c61,sheath:0x63513d,edge:0xf0d0a3,sweep:-.045},
+ oren_sunblade:{length:.71,width:.089,guard:.29,grip:0x477e6c,metal:0x528a78,sheath:0x426452,edge:0xd6e5cd,sweep:.035},
+ dawn_edge:{length:.76,width:.081,guard:.38,grip:0x5c5350,metal:0xd9b272,sheath:0x534f45,edge:0xffe5b3,sweep:.07}
+});
+const BOWS=Object.freeze({
+ trail_bow:{half:.57,curve:.16,width:.066,grip:0x735b43,tip:0xa2926d},
+ copper_bow:{half:.65,curve:.20,width:.088,grip:0x735443,tip:0xe5c68e},
+ oren_reedbow:{half:.61,curve:.14,width:.072,grip:0x467762,tip:0xc9d5ad}
+});
+
+function draw(out,sim,frame){
+ const none={weaponId:null,style:null,mode:'none',gripLocal:null,gripWorld:null,gem:null,temper:0,stage:0,instances:0};
+ const A=G.RealmAdventure,AR=G.RealmArsenal,M=G.RealmEngine?.M,a=sim?.state?.adventure,id=a?.equipment?.weapon;
+ if(!a?.started||!A||!AR||!M||typeof id!=='string'||!Object.hasOwn(A.GEAR,id)||A.GEAR[id].slot!=='weapon'||!a.owned.includes(id))return none;
+ if(!frame?.root||frame.root.length!==16||!Array.from(frame.root).every(Number.isFinite))return none;
+ const joints=frame.joints||{},style=AR.weapon(a).style,ready=!!frame.combatScene,carryMode=ready?'ready':'stowed';
+ const hip=point(joints.hip)?joints.hip:point(joints.spine)?add(joints.spine,[0,-.15,0]):[0,.90,0];
+ const back=point(joints.back)?joints.back:point(joints.spine)?add(joints.spine,[0,.25,-.20]):[0,1.25,-.17];
+ const stowGrip=style==='bow'?add(back,[-.06,-.26,-.19]):add(hip,[-.31,.09,.01]);
+ const grip=ready?joints[style==='bow'?'leftHand':'rightHand']:stowGrip;
+ if(!point(grip)||ready&&style==='bow'&&!point(joints.rightHand))return none;
+ const gear=A.GEAR[id],colour=typeof gear.color==='string'?parseInt(gear.color.slice(1),16):gear.color;
+ const gem=AR.activeGem(a),gemId=gem?a.arsenal.sockets[id]:null,stage=Math.max(0,Math.min(2,G.RealmPursuit?.stage(a,id)||0)),temper=G.RealmStarter?.bonus(a,id)||0;
+ const summary={weaponId:id,style,mode:ready?'held':'stowed',gripLocal:Array.from(grip),gripWorld:M.transform(frame.root,grip),gem:gemId,temper,stage,instances:0};
+ const attachment=ready?(style==='bow'?'leftHand':'rightHand'):(style==='bow'?'back':'hip');
+
+ // A complete orthonormal basis handles beams with arbitrary X/Y/Z endpoints.
+ // Local +Y spans the exact segment; multiplying by the rig root preserves both
+ // attachment points across facing changes and height-aware terrain.
+ function form(kind,center,axis,width,length,depth,c,weaponPart,extra={}){
+  const y=unit(axis),reference=Math.abs(y[2])<.85?[0,0,1]:[1,0,0],x=unit(cross(y,reference)),z=cross(x,y);
+  const local=new Float32Array([x[0]*width,x[1]*width,x[2]*width,0,y[0]*length,y[1]*length,y[2]*length,0,z[0]*depth,z[1]*depth,z[2]*depth,0,...center,1]);
+  out[kind].push({p:M.transform(frame.root,center),s:[width,length,depth],m:M.mul(frame.root,local),c,rough:.76,travelerPart:'equipment',weaponPart,weaponId:id,carryMode,attachment,...extra});summary.instances++;
+ }
+ function beam(start,end,width,depth,c,weaponPart,extra={},kind='box'){
+  const direction=sub(end,start),length=Math.hypot(...direction);if(length<1e-7)return;
+  form(kind,scale(add(start,end),.5),direction,width,length,depth,c,weaponPart,extra);
+ }
+ function block(center,size,c,weaponPart,extra={},axis=[0,1,0],kind='box'){form(kind,center,axis,...size,c,weaponPart,extra);}
+ function markers(axis,front,width){
+  const mount=add(offset(grip,axis,-.17),scale(front,.067));
+  block(mount,[.13,.11,.044],0xb0a07a,'socket-mount',{},axis);
+  if(gem)block(add(mount,scale(front,.025)),[.096,.12,.061],gem.color,'socket',{gemId,em:.35},axis,'octa');
+  for(let i=0;i<stage;i++)block(offset(grip,axis,.24+i*.10),[width,.061,.13],i?0xece0b6:0xd39366,'fitting',{fittingStage:i+1},axis);
+  if(temper)block(offset(grip,axis,.16),[width+.025,.07,.12],0x82beb0,'temper',{temper},axis);
+ }
+ function sheath(anchor,spec){
+  const axis=unit([-.08,-.93,-.35]),start=offset(anchor,axis,.20),end=offset(anchor,axis,spec.length+.26);
+  beam(start,end,spec.width*1.65,.102,spec.sheath,'scabbard',{attachment:'hip'});
+  // An exposed catalogue-colour inlay makes the carried weapon identifiable.
+  beam(add(start,[0,0,.061]),add(end,[0,0,.061]),.033,.022,colour,'scabbard-inlay',{attachment:'hip'});
+  block(start,[spec.width*1.9,.084,.13],spec.metal,'scabbard-throat',{attachment:'hip'},axis);
+  beam(add(hip,[-.18,0,0]),add(anchor,[0,-.03,-.01]),.049,.056,0x6e5a42,'sheath-hanger',{attachment:'hip'});
+ }
+ function blade(){
+  const spec=Object.hasOwn(BLADES,id)?BLADES[id]:BLADES.trail_blade,phase=frame.combatPhase,progress=Number.isFinite(frame.combatProgress)?Math.max(0,Math.min(1,frame.combatProgress)):0;
+  let axis=unit([-.10,.92,.37]);
+  if(!ready)axis=unit([-.08,-.93,-.35]);
+  else if(frame.guarded)axis=unit([-.63,.72,.19]);
+  else if(!frame.reducedMotion&&phase==='anticipate')axis=unit([-.25,.84-.50*progress,-.12-.65*progress]);
+  else if(!frame.reducedMotion&&phase==='recover')axis=unit([-.30+.20*progress,.25+.67*progress,.94-.57*progress]);
+  const lateral=unit(cross(axis,[0,0,1])),front=unit(cross(lateral,axis));
+  beam(offset(grip,axis,-.12),offset(grip,axis,.12),.095,.088,spec.grip,'grip',{},'round');
+  block(offset(grip,axis,-.155),[.13,.10,.11],spec.metal,'pommel',{},axis,'round');
+  const guard=offset(grip,axis,.17);
+  if(spec.sweep)for(const sign of [-1,1])beam(guard,add(offset(guard,lateral,sign*spec.guard*.5),scale(axis,spec.sweep)),.063,.094,spec.metal,'guard');
+  else beam(offset(guard,lateral,-spec.guard*.5),offset(guard,lateral,spec.guard*.5),.065,.094,spec.metal,'guard');
+  if(ready){
+   const start=offset(grip,axis,.215),end=offset(start,axis,spec.length);
+   beam(start,end,spec.width,.035,colour,'blade');
+   for(const side of [-1,1])beam(offset(start,lateral,side*spec.width*.46),offset(end,lateral,side*spec.width*.36),.020,.039,spec.edge,'blade-edge');
+   block(offset(end,axis,.055),[spec.width,.115,.039],colour,'blade-tip',{},axis,'octa');
+   sheath(stowGrip,spec);
+  }else sheath(grip,spec);
+  markers(axis,front,.17);
+  // The original cave hand-light stays on the available left palm. Its fixed
+  // glow represents the existing lantern presentation, never a hit result.
+  if(ready&&sim.room==='mine'&&point(joints.leftHand)){
+   const hand=joints.leftHand,body=add(hand,[0,-.20,0]);
+   beam(hand,add(body,[0,.08,0]),.025,.025,0x8b7b5e,'lantern-handle',{attachment:'leftHand'});
+   block(body,[.17,.20,.15],0xf7d49e,'lantern',{attachment:'leftHand',em:1.1},[0,1,0],'octa');
+   for(const y of [-.11,.10])block(add(body,[0,y,0]),[.20,.045,.18],0x756951,'lantern-cap',{attachment:'leftHand'});
+  }
+ }
+ function quiver(){
+  const center=add(back,[.25,-.16,-.17]),axis=unit([.20,.97,.03]),top=offset(center,axis,.31);
+  beam(offset(center,axis,-.32),top,.20,.15,0x675b45,'quiver',{attachment:'back'},'round');
+  block(top,[.24,.078,.18],0x9a8157,'quiver-rim',{attachment:'back'},axis,'round');
+  for(let i=0;i<3;i++){
+   const foot=add(top,[(i-1)*.048,-.10,(i%2)*.038]),tip=offset(foot,axis,.27+i*.025);
+   beam(foot,tip,.018,.018,0xcebd8f,'quiver-shaft',{attachment:'back',decorative:true});
+   block(offset(tip,axis,-.027),[.052,.12,.051],i===1?0x83a28d:0xddd1ac,'quiver-feather',{attachment:'back',decorative:true},axis,'octa');
+  }
+  beam(add(back,[-.15,.02,.06]),add(center,[.04,-.27,.04]),.056,.027,0x726148,'quiver-strap',{attachment:'back'});
+ }
+ function bow(){
+  const spec=Object.hasOwn(BOWS,id)?BOWS[id]:BOWS.trail_bow,up=ready?[0,1,0]:unit([.29,.95,.025]);
+  const pull=ready?sub(joints.rightHand,grip):[0,0,-1],backward=ready?unit([pull[0],0,pull[2]]):[0,0,-1];
+  const bend=dot(backward,backward)>.5?backward:[0,0,-1],front=scale(bend,-1),tips=[];
+  beam(offset(grip,up,-.10),offset(grip,up,.10),.103,.104,spec.grip,'grip',{},'round');
+  for(const sign of [-1,1]){
+   const nodes=[[.10,0],[.27,.22],[.55,.67],[.82,1],[1,.81]].map(([height,curve])=>add(offset(grip,up,sign*height*spec.half),scale(bend,curve*spec.curve)));
+   for(let i=1;i<nodes.length;i++)beam(nodes[i-1],nodes[i],spec.width,.060,colour,'bow-limb',{limbSide:sign,limbSegment:i-1},'round');
+   block(nodes[4],[spec.width+.025,.09,.076],spec.tip,'bow-tip',{},up,'round');tips.push(nodes[4]);
+  }
+  const stringGrip=ready?joints.rightHand:add(grip,scale(bend,spec.curve*.81));
+  for(let i=0;i<tips.length;i++)beam(tips[i],stringGrip,.017,.017,0xe4d3ae,'bow-string',{stringSide:i,drawAttachment:ready?'rightHand':null});
+  markers(up,front,.15);
+  quiver();
+ }
+ if(style==='bow')bow();else blade();return summary;
+}
+const api={draw};G.RealmTravelerEquipmentArt=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
 </script><script>/* Authored procedural geometry; the mill uses embedded licensed timber maps. */
 (function(G){'use strict';const{M,hex,blend}=RealmEngine,C=RealmCore,X=RealmCreative,TAU=Math.PI*2;
 class WorldArt{
@@ -2562,7 +2878,7 @@ class WorldArt{
  // the authored walls instead of enlarging navigation or camera obstacles.
  beam(from,to,width,c,opt={}){const d=to.map((v,i)=>v-from[i]),len=Math.hypot(...d);if(len<.001)return;const yy=d.map(v=>v/len),ref=Math.abs(yy[1])>.95?[1,0,0]:[0,1,0],xx=[ref[1]*yy[2]-ref[2]*yy[1],ref[2]*yy[0]-ref[0]*yy[2],ref[0]*yy[1]-ref[1]*yy[0]],n=Math.hypot(...xx);for(let i=0;i<3;i++)xx[i]/=n;const zz=[xx[1]*yy[2]-xx[2]*yy[1],xx[2]*yy[0]-xx[0]*yy[2],xx[0]*yy[1]-xx[1]*yy[0]],p=from.map((v,i)=>(v+to[i])/2);this.box(...p,width,len,width,c,{cameraSolid:false,cutaway:true,...opt,m:new Float32Array([...xx.map(v=>v*width),0,...yy.map(v=>v*len),0,...zz.map(v=>v*width),0,...p,1])});}
  commit(){if(!this.room&&G.RealmEarthArt)G.RealmEarthArt.gate(this);if(!this.room&&G.RealmCosmosArt)G.RealmCosmosArt.gate(this);if(!this.room&&G.RealmRoadArt)G.RealmRoadArt.gate(this);if(!this.room&&G.RealmAdventureArt)G.RealmAdventureArt.entrance(this);if(!this.room&&G.RealmSandboxArt)G.RealmSandboxArt.scenery(this);for(let[k,a]of Object.entries(this.map))this.e.batch(k,a);this.dynamicBox=this.e.batch('box',[],true);this.dynamicOcta=this.e.batch('octa',[],true);this.dynamicRound=this.e.batch('round',[],true);this.dynamicDisc=this.e.batch('disc',[],true);}
- begin(room){this.e.theme=null;this.e.noWater=false;this.e.surfacePick=null;this.e.ambientOverride=null;this.e.reflectionStrength=1;this.e.clear();this.e.isInterior=!!room;this.room=room;this.map={};}
+ begin(room){this.travelerPoseOwner=null;this.travelerMotion=null;this.travelerFrame=null;this.travelerParts=null;this.e.theme=null;this.e.noWater=false;this.e.surfacePick=null;this.e.ambientOverride=null;this.e.reflectionStrength=1;this.e.clear();this.e.isInterior=!!room;this.room=room;this.map={};}
  tree(x,z,s=1,style=0,base=1.2){let bark=0x68503c;this.add('cylinder',x,base,z,.42*s,2.6*s,.42*s,bark);for(let a of[-.6,.8,2.3])this.box(x+Math.sin(a)*.45*s,base+2*s,z+Math.cos(a)*.45*s,.18*s,1.2*s,.18*s,bark,{r:[.3,a,.55]});let colors=style===3?[0xd9a4ba,0xc489a5,0xe9bdbe]:style===1?[0xaab961,0x8fa856,0xbdc16f]:style===2?[0x87a897,0x669586,0xa0b59b]:[0x557d65,0x638f69,0x779c73];if(style===0){for(let i=0;i<3;i++)this.add('cone',x,base+(1.6+i*.85)*s,z,(3.2-i*.6)*s,2.2*s,(3.2-i*.6)*s,colors[i],{wind:2});}else{for(let i=0;i<7;i++){let a=i*2.4,r=i===0?0:1.05;this.add(style===3?'round':style===1?'round':'octa',x+Math.cos(a)*r*s,base+(3.25+(i%3)*.42)*s,z+Math.sin(a)*r*s,(2.25+(i%2)*.3)*s,(2.1+(i%3)*.23)*s,(2.15+(i%2)*.35)*s,colors[i%3],{r:[0,a,0],wind:2});}}}
  lamp(x,z,height=3.4,base=1.2){this.box(x,base+height/2,z,.13,height,.13,0x5a4735);this.box(x,base+height,z,.55,.12,.55,0x443c32);this.box(x,base+height-.35,z,.32,.54,.32,0xffd185,{em:1.4,rough:.35});this.add('cone',x,base+height+.07,z,.77,.37,.77,0x594739);this.box(x,base+.09,z,.48,.18,.48,0x777565);}
  bench(x,z,yaw=0,base=1.2,opt={}){let at=(a,b,c,sx,sy,sz,col)=>this.box(x+a*Math.cos(yaw)+c*Math.sin(yaw),base+b,z-a*Math.sin(yaw)+c*Math.cos(yaw),sx,sy,sz,col,{r:[0,yaw,0],...opt});for(let a of[-.72,.72])at(a,.38,0,.14,.75,.5,0x514c43);at(0,.74,0,1.95,.16,.68,0xa88d62);at(0,1.24,-.31,1.95,.52,.11,0xa68b62);}
@@ -2762,7 +3078,65 @@ class WorldArt{
   if(role==='musician'){add('octa',.31,.8,.22,.34,.48,.14,0xbd955f);add('box',.38,1.08,.24,.06,.47,.06,0x806747);}
   if(role==='researcher')add('box',.27,.9,.23,.24,.30,.07,0xb8c8be);
  }
- update(sim,t,target){sim.presentation=sim.presentation||{};sim.presentation.perspective=this.e.camera.projection==='perspective';this.e.cutaway=sim.state.settings.cameraCutaway!==false;this.e.cutawayFocus=[sim.state.player.x,sim.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(sim.state.player.x,sim.state.player.z)+.88:sim.room===G.RealmEarth?.ROOM?G.RealmEarth.height(sim.state.player.x,sim.state.player.z)+.88:sim.room?2.45:2.18,sim.state.player.z];let out={box:[],octa:[],disc:[],round:[]},p=sim.state.player;this.person(out,p.x,p.z,p.yaw,X.CLOAKS[sim.state.visitor.cloak],t,sim.walking,'visitor',true,this.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(p.x,p.z):this.room===G.RealmEarth?.ROOM?G.RealmEarth.height(p.x,p.z):this.room?1.57:1.3,sim.state.visitor);for(let i=0;i<C.PROFILES.length;i++){let info=C.PROFILES[i],r=sim.state.residents.find(r=>r.id===info.id),run=sim.runs.get(info.id);if(this.room){if(this.room==='home'&&run.inside){let pos=[[-3.1,1.1],[3.2,1.1],[2,3.2]][i];this.person(out,pos[0],pos[1],i?-.7:.7,info.color,t+i,false,info.role.toLowerCase(),false,1.57);}else if(this.room==='atelier'&&info.id==='ilan'&&run.goal==='atelier')this.person(out,2.5,1.1,-1,info.color,t,false,'musician',false,1.57);else if(this.room==='observatory'&&info.id==='mara'&&run.goal==='observatory')this.person(out,2.5,1.1,-1,info.color,t,false,'researcher',false,1.57);}else if(!run.inside)this.person(out,r.x,r.z,r.yaw,info.color,t+i,run.walking,info.role.toLowerCase());}
+ traveler(out,sim){
+  if(this.travelerSim!==sim){this.travelerPoseOwner=null;this.travelerMotion=null;this.travelerSim=sim;}
+  const p=sim.state.player,a=sim.state.adventure,reducedMotion=!!sim.state.settings.reducedMotion;
+  const base=this.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(p.x,p.z):this.room===G.RealmEarth?.ROOM?G.RealmEarth.height(p.x,p.z):this.room?1.57:1.3;
+  const combatScene=!!(a.started&&a.hp>0&&G.RealmAdventure.combatScene(sim));
+  const weapon=a.equipment.weapon?G.RealmArsenal.weapon(a):{style:'none'};
+  const r=G.RealmAdventure.runtime(sim),tactics=G.RealmCombat.runtime(sim),prior=this.travelerPoseOwner;
+  // Accepted receipts establish ordering even when equip and attack both occur
+  // between frames. Failed/replayed inputs never create a new weapon epoch.
+  const tail=a.receipts[a.receipts.length-1]?.id;
+  if(!prior||prior.receiptTail!==tail){
+   let equipReceipt=prior?.equipReceipt||null,releaseAfterEquip=false,enteredScene=false,releaseAfterScene=false;
+   const entries={enter:'mine','road-enter':'road','range-enter':'range','starter-enter':'riverbank','cross-enter':'crossing'};
+   for(const receipt of a.receipts){
+    if(!receipt.ok)continue;
+    let type,payload;try{[type,payload]=JSON.parse(receipt.fp);}catch{continue;}
+    if(Object.hasOwn(entries,type)||type==='waystone-travel'){
+     const destination=type==='waystone-travel'?G.RealmCrossing.WAYSTONES[payload?.id]?.room:entries[type];
+     enteredScene=destination===this.room;releaseAfterScene=false;
+    }
+    if(type==='equip'&&G.RealmAdventure.GEAR[payload?.id]?.slot==='weapon'){equipReceipt=receipt.id;releaseAfterEquip=false;}
+    else if(type==='attack'||type==='pulse'){releaseAfterEquip=true;if(enteredScene)releaseAfterScene=true;}
+   }
+   this.travelerReceiptInfo={equipReceipt,releaseAfterEquip,releaseAfterScene};
+  }
+  const receiptInfo=this.travelerReceiptInfo;
+  if(!prior||prior.weapon!==a.equipment.weapon||prior.scene!==this.room||prior.equipReceipt!==receiptInfo.equipReceipt){
+   // Scene sync already clears current FX/arrows; a weapon change in the same
+   // scene fences the old item, but retains an accepted release after equip.
+   const freshRelease=!!(prior&&prior.equipReceipt!==receiptInfo.equipReceipt&&receiptInfo.releaseAfterEquip);
+   const latestFx=weapon.style!=='bow'&&freshRelease?[...r.fx].reverse().find(f=>f.kind==='slash'||f.kind==='pulse'):null;
+   const releaseAt=freshRelease?(weapon.style==='bow'?r.lastShot:latestFx?.at):null;
+   this.travelerPoseOwner={weapon:a.equipment.weapon,scene:this.room,equipReceipt:receiptInfo.equipReceipt,blockedMotion:prior&&tactics.motion?.at!==releaseAt?tactics.motion:null,blockedFx:new Set(prior?r.fx.filter(f=>f!==latestFx):[]),blockedShot:prior?(freshRelease?null:r.lastShot):(!r.arrows.length&&!receiptInfo.releaseAfterScene?r.lastShot:null)};
+  }
+  const owner=this.travelerPoseOwner;
+  owner.receiptTail=tail;
+  let combat=combatScene?G.RealmCombat.pose(sim):{phase:'idle',progress:0};
+  if(combat.style&&combat.style!==weapon.style||combat.phase==='anticipate'&&tactics.windup?.weapon!==owner.weapon||combat.phase==='recover'&&tactics.motion===owner.blockedMotion)combat={phase:'idle',progress:0};
+  // Project only an accepted release belonging to this scene and weapon epoch.
+  // Neither an input press nor this recovery pose implies a successful hit.
+  if(combatScene&&combat.phase==='idle'){
+   let release=weapon.style==='bow'&&r.lastShot!==owner.blockedShot?r.lastShot:null;
+   if(weapon.style!=='bow')for(let i=r.fx.length-1;i>=0;i--)if(!owner.blockedFx.has(r.fx[i])&&(r.fx[i].kind==='slash'||r.fx[i].kind==='pulse')){release=r.fx[i].at;break;}
+   if(Number.isFinite(release)&&a.elapsed>=release&&a.elapsed-release<.28)combat={phase:'recover',progress:(a.elapsed-release)/.28};
+  }
+  this.travelerMotion=G.RealmTravelerArt.motion(this.travelerMotion,{x:p.x,z:p.z,scene:this.room,time:sim.elapsed,walking:sim.walking,paused:sim.paused,reducedMotion});
+  const pose=G.RealmTravelerArt.pose({...this.travelerMotion,time:this.travelerMotion.time,reducedMotion,style:weapon.style,combatScene,combatPhase:combat.phase,combatProgress:combat.progress,guarded:combatScene&&a.elapsed<G.RealmCombat.runtime(sim).guardUntil});
+  const starts=Object.fromEntries(Object.entries(out).map(([k,v])=>[k,v.length]));
+  const armorColor=G.RealmAdventure.GEAR[a.equipment.armor]?.color||null;
+  this.travelerFrame=G.RealmTravelerArt.draw(out,{x:p.x,z:p.z,yaw:p.yaw,base,profile:sim.state.visitor,color:X.CLOAKS[sim.state.visitor.cloak],armorColor},pose);
+  this.travelerEquipment=G.RealmTravelerEquipmentArt.draw(out,sim,this.travelerFrame);
+  this.travelerParts=Object.fromEntries(Object.entries(out).map(([k,v])=>[k,v.slice(starts[k])]));
+ }
+ travelerSnapshot(){
+  if(!this.travelerFrame)return null;
+  const f=this.travelerFrame;
+  return JSON.parse(JSON.stringify({motion:this.travelerMotion,frame:{...f,root:Array.from(f.root)},equipment:this.travelerEquipment,parts:Object.entries(this.travelerParts).flatMap(([kind,v])=>v.map(it=>({kind,p:it.p,s:it.s,m:it.m?Array.from(it.m):null,c:it.c,part:it.travelerPart||null,weaponPart:it.weaponPart||null,weaponId:it.weaponId||null,attachment:it.attachment||null,gemId:it.gemId||null,fittingStage:it.fittingStage||null,temper:it.temper||null})))}));
+ }
+ update(sim,t,target){sim.presentation=sim.presentation||{};sim.presentation.perspective=this.e.camera.projection==='perspective';this.e.cutaway=sim.state.settings.cameraCutaway!==false;this.e.cutawayFocus=[sim.state.player.x,sim.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(sim.state.player.x,sim.state.player.z)+.88:sim.room===G.RealmEarth?.ROOM?G.RealmEarth.height(sim.state.player.x,sim.state.player.z)+.88:sim.room?2.45:2.18,sim.state.player.z];let out={box:[],octa:[],disc:[],round:[]},p=sim.state.player;this.traveler(out,sim);for(let i=0;i<C.PROFILES.length;i++){let info=C.PROFILES[i],r=sim.state.residents.find(r=>r.id===info.id),run=sim.runs.get(info.id);if(this.room){if(this.room==='home'&&run.inside){let pos=[[-3.1,1.1],[3.2,1.1],[2,3.2]][i];this.person(out,pos[0],pos[1],i?-.7:.7,info.color,t+i,false,info.role.toLowerCase(),false,1.57);}else if(this.room==='atelier'&&info.id==='ilan'&&run.goal==='atelier')this.person(out,2.5,1.1,-1,info.color,t,false,'musician',false,1.57);else if(this.room==='observatory'&&info.id==='mara'&&run.goal==='observatory')this.person(out,2.5,1.1,-1,info.color,t,false,'researcher',false,1.57);}else if(!run.inside)this.person(out,r.x,r.z,r.yaw,info.color,t+i,run.walking,info.role.toLowerCase());}
  if(!this.room){if(sim.state.weather==='rain'&&!sim.state.settings.reducedMotion){for(let i=0;i<110;i++){let x=((i*17.13)%42)-21,z=((i*23.77)%42)-21,y=1.4+((i*.61-t*10)%9+9)%9;out.box.push({p:[x,y,z],s:[.017,.32,.017],r:[0,0,-.13],c:0x9ebdc1,em:.2});}}for(let f of sim.state.flowers){out.box.push({p:[f.x,1.72,f.z],s:[.055,.48,.055],c:0x57784c});out.octa.push({p:[f.x,1.99,f.z],s:[.29,.3,.29],c:[0xe5bb94,0xc49fac,0xe5d29d,0xb7cad0][f.color]});}for(let i=0;i<13;i++){let a=t*.11+i*.8,r=26+i%3*4,x=Math.sin(a)*r,z=Math.cos(a)*r,y=9+i%4*1.3;for(let s of[-1,1])out.box.push({p:[x+s*.18,y,z],s:[.45,.055,.15],r:[0,a,s*(.25+Math.sin(t*3+i)*.2)],c:0x4a646b});}for(let j=0;j<3;j++)for(let i=0;i<4;i++){let u=(t*.3+i*.8)%3.7,x=[-13,-14.6,9.4][j],z=[-7.3,5.75,3.7][j];out.octa.push({p:[x+Math.sin(u+j)*.2,6.4+u,z],s:[.3+u*.16,.4+u*.19,.3+u*.16],c:blend(hex(0xb5bbb0),hex(0x9faeac),u/4),rough:1});}let w=t*.5;out.octa.push({p:[7+Math.cos(w)*.7,2+Math.sin(t)*.14,10+Math.sin(w)*.7],s:[.3,.43,.3],c:0x8ad6d1,em:1.3});}
  if(target)for(let i=0;i<16;i++){let a=i/16*TAU;out.box.push({p:[target.x+Math.cos(a)*.4,this.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(target.x,target.z)+.02:this.room?1.59:1.31,target.z+Math.sin(a)*.4],s:[.12,.025,.05],r:[0,-a,0],c:0xe5ce93,em:.35});}
 
@@ -2988,7 +3362,6 @@ function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;let r=A.runtime(
  }
  const fox=(x,z,yaw,bonded)=>{const base=sim.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(x,z):sim.room?1.58:1.31;const at=(kind,dx,y,dz,w,h,d,c,opt={})=>add(kind,x+dx*Math.cos(yaw)+dz*Math.sin(yaw),base+y,z-dx*Math.sin(yaw)+dz*Math.cos(yaw),w,h,d,c,{...opt,r:[0,yaw,0]});at('round',0,.48,0,.58,.5,.95,0xcba271);at('octa',0,.77,.42,.5,.51,.55,0xe0c093);at('octa',0,.69,.70,.25,.19,.35,0xeee0ba);for(const sign of[-1,1]){at('octa',sign*.18,1.02,.35,.17,.47,.18,0xcb976d);at('round',sign*.17,.79,.62,.065,.065,.04,0x343d3b);for(const z of[-.25,.25])at('box',sign*.2,.17,z,.11,.30,.13,0x716556);}at('octa',0,.56,-.67,.31,.48,.9,0xe4cb99);at('octa',0,.65,-.96,.29,.29,.38,0xf0e2bb);if(bonded)at('box',0,.61,.29,.50,.10,.13,0x648e89);else add('octa',x,base+1.5,z,.17,.30,.17,0xf1d3a3,{em:.8});};
  if(s.companion.bonded){if(r.companion.room===sim.room)fox(r.companion.x,r.companion.z,r.companion.yaw,true);}else if(sim.room==='mine')fox(A.FOX.x,A.FOX.z,Math.PI*.4,false);
- if(s.started&&A.combatScene(sim)&&G.RealmArsenal.weapon(s).style!=='bow'){const pose=G.RealmCombat.pose(sim),id=s.equipment.weapon,col=parseInt((A.GEAR[id]?.color||'#e4cc95').slice(1),16),motion=sim.state.settings.reducedMotion?0:pose.phase==='anticipate'?-.7*pose.progress:pose.phase==='recover'?(1-pose.progress)*1.5:Math.max(0,(r.cooldowns.attack-s.elapsed)/.52)*1.5;let angle=p.yaw,x=p.x+Math.cos(angle)*.42,z=p.z-Math.sin(angle)*.42;box(x,base+.95,z,.10,.92,.10,col,{r:[motion,angle,-.25]});box(x,base+1.08,z,.36,.08,.14,id==='oren_sunblade'?0x528a78:0xa38f65,{r:[0,angle,0]});if(G.RealmStarter.bonus(s,id))box(x,base+.71,z,.19,.10,.17,0x82beb0,{r:[0,angle,0],em:.35});for(let i=0;i<G.RealmPursuit.stage(s,id);i++)box(x,base+.88+i*.13,z,.18,.065,.16,i?0xece0b6:0xd39366,{r:[0,angle,0],em:.18});const gem=G.RealmArsenal.activeGem(s);if(gem)add('octa',x,base+.61,z,.15,.20,.15,gem.color,{em:.65});add('octa',p.x-Math.cos(angle)*.40,base+.75,p.z+Math.sin(angle)*.4,.23,.32,.23,0xf7d49e,{em:1.5});}
  if(!sim.room&&s.road.reported){box(2.2,1.8,3,.55,1,.55,0x959a85);add('octa',2.2,2.65,3,.42,.85,.42,0xffd59e,{em:1.4});}
  if(!sim.room&&s.angelSeen){let x=-2.3,z=4.7;add('round',x,2.6,z,.57,1.8,.51,0xebe3c8);box(x,3.55,z,.35,.40,.34,0xe4c7a4);box(x,3.77,z-.02,.40,.16,.37,0xe9cf94);for(const sign of[-1,1])for(let j=0;j<7;j++)box(x+sign*(.4+j*.15),3.22+j*.11,z-.18-j*.025,.23,1.1-j*.065,.12,0xf4ecda,{r:[0,.1,-sign*(.4+j*.09)]});for(let i=0;i<22;i++){let a=i/22*TAU;box(x+Math.cos(a)*.39,4.15,z+Math.sin(a)*.39,.13,.045,.05,0xf3d8a2,{r:[0,-a,0],em:1});}for(let i=0;i<10;i++){let a=t*.45+i*2.4;add('octa',x+Math.cos(a)*1.15,1.7+(t*.25+i*.23)%2.6,z+Math.sin(a)*1.15,.065,.12,.065,i%2?0xf1dba8:0xe4c3d3,{em:1});}}
  const mark=G.RealmClasses.runtime(sim).mark;if(mark){ring(mark.enemy.x,mark.enemy.z,.95,0xa8d68d,base+.08);add('octa',mark.enemy.x,base+2.8,mark.enemy.z,.18,.35,.18,0xa8d68d,{em:.6});}
@@ -3124,13 +3497,6 @@ function draw(out,sim,t){const A=G.RealmAdventure,s=sim.state.adventure,r=AR.run
  const add=(k,x,y,z,w,h,d,c,o={})=>out[k].push({p:[x,y,z],s:[w,h,d],c,...o}),box=(...a)=>add('box',...a);
  function ring(x,y,z,rad,col,yaw=0){for(let i=0;i<26;i++){const q=i*TAU/26;const xx=Math.sin(q)*rad,yy=Math.cos(q)*rad;box(x+xx*Math.cos(yaw),y+yy,z-xx*Math.sin(yaw),.12,.19,.07,col,{r:[0,yaw,-q],em:.15});}}
  if(sim.room==='range')for(const e of r.enemies){const col=e.id==='range-west'?0xc99165:e.id==='range-mid'?0x9acbd8:0xe2c875;for(const x of[-.42,.42])box(e.x+x,2.0,e.z,.12,1,.15,0x796953,{r:[0,0,x*.35]});box(e.x,2.5,e.z,.12,1.8,.16,0x8c785c);ring(e.x,2.9,e.z,.78,e.flash>s.elapsed?0xffeed1:col);ring(e.x,2.9,e.z+.04,.46,0xe5dbc0);ring(e.x,2.9,e.z+.08,.18,col);add('disc',e.x,2.9,e.z-.02,1.44,.08,1.44,0x7c6c55,{r:[Math.PI/2,0,0]});for(let j=0;j<(r.range.hits[e.id]||0);j++)add('octa',e.x-.17+j*.34,4.0,e.z,.18,.3,.14,0xf6d38a,{em:.8});if(e.id==='range-east')box(6,1.63,-5,5,.12,.18,0x90877a);}
- if(s.started&&AR.weapon(s).style==='bow'&&A.combatScene(sim)){
-  const yaw=p.yaw,hand={x:p.x+Math.cos(yaw)*.28+Math.sin(yaw)*.22,z:p.z-Math.sin(yaw)*.28+Math.cos(yaw)*.22};const pose=G.RealmCombat.pose(sim),pull=sim.state.settings.reducedMotion?0:pose.phase==='anticipate'?pose.progress:Math.max(0,1-(s.elapsed-(r.lastShot??-9))/.32),col=parseInt((A.GEAR[s.equipment.weapon]?.color||'#bca477').slice(1),16);
-  for(let i=0;i<10;i++){const q=-1.1+i*.244,dx=Math.cos(q)*.3,dz=Math.sin(q)*.66;box(hand.x+Math.sin(yaw)*dx,base+1.12+dz,hand.z+Math.cos(yaw)*dx,.09,.18,.09,col,{r:[0,yaw,q]});}
-  for(let i=0;i<G.RealmPursuit.stage(s,s.equipment.weapon);i++)box(hand.x,base+1.04+i*.14,hand.z,.18,.065,.18,i?0xece0b6:0xd39366,{em:.18});
-  if(G.RealmStarter.bonus(s,s.equipment.weapon))box(hand.x,base+.9,hand.z,.18,.12,.18,0x82beb0,{em:.35});
-  box(hand.x-Math.sin(yaw)*pull*.16,base+1.12,hand.z-Math.cos(yaw)*pull*.16,.025,1.22,.025,0xe6d5af);const gem=AR.activeGem(s);if(gem)add('octa',hand.x,base+1.12,hand.z,.14,.22,.14,gem.color,{em:.8});
- }
  for(const shot of r.arrows){const yaw=Math.atan2(shot.dx,shot.dz),y=base+1.25;box(shot.x,y,shot.z,.045,.045,.8,0xdac6a0,{r:[0,yaw,0],em:.2});add('octa',shot.x+shot.dx*.40,y,shot.z+shot.dz*.40,.13,.09,.24,shot.color,{r:[0,yaw,0],em:.7});for(let i=1;i<5;i++)box(shot.x-shot.dx*i*.23,y,shot.z-shot.dz*i*.23,.045,.045,.15,shot.special?0xaedbdf:0xf1d295,{r:[0,yaw,0],em:1-i*.1});}
 }
 G.RealmArsenalArt={court,draw};})(globalThis);
@@ -4704,7 +5070,7 @@ function frame(now){let dt=lastFrame?Math.min((now-lastFrame)/1000,.1):.016;last
 // Keep a read-only-ish diagnostics surface for inspection; this local prototype is not a security boundary.
 const G_CAPTURE=!!window.__ETERNITIES_CAPTURE_MODE;
 window.Realm={get state(){return sim.snapshot();},get diagnostics(){let g=engine?.gl,dbg=g?.getExtension('WEBGL_debug_renderer_info');return{version:'10.0.0',mode:engine?'webgl2':'map',scene:sim.room||'valley',earth:sim.room===RealmEarth.ROOM?{trip:sim.earthTrip,height:sceneHeight(),walkable:RealmEarth.walkable(sim.state.player.x,sim.state.player.z)}:null,cosmos:sim.room===RealmCosmos.ROOM?{trip:sim.cosmosTrip,height:sceneHeight(),walkable:RealmCosmos.walkable(sim.state.player.x,sim.state.player.z)}:null,networkDependencies:0,liveAI:false,multiplayer:false,adventure:{tactics:JSON.parse(JSON.stringify(RealmCombat.runtime(sim))),beacon:JSON.parse(JSON.stringify(RealmBeacon.runtime(sim))),crossing:JSON.parse(JSON.stringify(RealmCrossing.runtime(sim))),player:{...sim.state.player},paused:sim.paused,intent:adventure?.intent||null,stats:RealmAdventure.stats(sim.state.adventure),weapon:RealmArsenal.weapon(sim.state.adventure),arrows:RealmArsenal.runtime(sim).arrows.map(a=>({...a})),range:{...RealmArsenal.runtime(sim).range},enemies:RealmAdventure.runtime(sim).enemies.map(e=>({id:e.id,x:e.x,z:e.z,hp:e.hp,maxHP:e.maxHP,hidden:!!e.hidden,eventEnemy:!!e.eventEnemy,kind:e.kind,ringMode:e.ringMode,custom:e.custom,mode:e.mode,timer:e.timer,aim:e.aim})),companion:{...RealmAdventure.runtime(sim).companion}},sandbox:{bridge:sim.state.sandbox.bridge,objects:sim.state.sandbox.placed.length,elapsed:sim.state.sandbox.elapsed,autoGather:sandbox?.auto||null,buildMode:sandbox?.build||null},saveState,characters:{mode:characterStore.blocked?'blocked':characterStore.managed?'managed':'legacy',active:characterStore.active,revision:characterStore.revision,count:characterStore.record?.slots.length||1,writer:characterStore.writer,error:characterStore.error},fps,errors:errors.slice(),camera:{...camera,projection:engine?.camera.projection||'orthographic',eye:engine?.camera.eye,target:engine?.camera.target},metrics:engine?.metrics||null,reflection:engine?.reflectionInfo||null,cutaway:{enabled:!!engine?.cutaway,focus:engine?.cutawayFocus||null},renderer:dbg?g.getParameter(dbg.UNMASKED_RENDERER_WEBGL):null,music:{playing:experience?.playing||false,scoreRevision:sim.state.scoreRevision,playingRevision:experience?.playingRevision,step:experience?.step},gathering:sim.gathering?{...sim.gathering}:null,layoutRevision:sim.state.retreat.revision,roadsideGathering:{status:rpg?.gathering?.player.status||'idle',playing:!!rpg?.gathering?.player.source,pending:!!rpg?.gathering?.pending},audio:{enabled:audio.enabled,state:audio.ctx?.state||'not-created'}};},navigate,export:()=>JSON.stringify(sim.snapshot(),null,2),project:(x,y,z)=>engine?.project(x,y,z)};
-if(window.__ETERNITIES_TEST_MODE||location.search.includes('test'))window.Realm.test={step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){sim.tick(.05);adventure?.tick();arsenal?.tick();rpg?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
+if(window.__ETERNITIES_TEST_MODE||location.search.includes('test'))window.Realm.test={step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){sim.tick(.05);adventure?.tick();arsenal?.tick();rpg?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,traveler:()=>art?.travelerSnapshot()||null,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
 window.addEventListener('resize',resize);window.addEventListener('pagehide',()=>{save();characterStore.writer=false;characterLock.release();});window.addEventListener('pageshow',e=>{if(e.persisted&&characterStore.managed)acquireCharacterWriter().then(()=>save());});ui.canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();fallback('Graphics context lost. Your local state is intact; use the map and export a backup.');toast('Graphics paused; world state preserved.');});document.body.classList.toggle('reduced',sim.state.settings.reducedMotion);cameraPreset(sim.state.settings.cameraMode,false);if(camera.preset==='adventure'&&!sim.state.settings.cameraViews.profiles.adventure)camera.yaw=.22;labelsRebuild();resize();refreshUI();if(characterStore.managed){acquireCharacterWriter().then(ok=>{if(ok)save();else{saveState='unavailable';toast(characterLock.error);renderStatus();}});}else save();if(loaded.status==='migrated')toast('Your earlier world was copied into Realm 10. The original save was not changed.');setTimeout(()=>$('#loading').classList.add('hidden'),400);if(G_CAPTURE){if(window.Realm.test)window.Realm.test.render();}else requestAnimationFrame(frame);
 })();
 </script></body></html>

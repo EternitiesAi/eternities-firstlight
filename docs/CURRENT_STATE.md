@@ -1,3 +1,35 @@
+# Current checkpoint: a connected traveller in both views
+
+Updated 2026-10-01. Branch `gameplay/traveler-silhouette-motion` starts at
+PR23 `f5c0211348668a37e7e5efc038ed5bf610bf0e9d` and is stacked against
+`gameplay/timber-material-proof`. Worktree remains
+`D:/07-GAMES/Firstlight/authoring/texture-intake-review`.
+Read [task](development/TRAVELER_ART_TASK_2026-09-30.md) and
+[executed results](art/TRAVELER_BROWSER_RESULTS_2026-09-30.md).
+
+The player has an original fitted silhouette, connected distance-driven walking,
+blade/bow attack and guard poses, hand-held combat gear and stowed travel gear.
+Actual saved palette, armor, socket, one-time temper and finite fittings are
+visible. Existing primitive batches remain; no imported rig or new engine is
+claimed. Camera settings, combat rules, world/key9, adventure10 and every saved
+system keep their existing owners. Animation is transient; no migration.
+
+The current verifier includes `traveler_browser`. Its submitted grip/string
+checks, isolated framebuffer probe, accepted blade/bow release ordering,
+character switching and reload evidence remain separate from human acceptance.
+Exact pushed head, local/remote-clone counts and hosted status belong in the
+implementation PR and delivery receipts. Heavy captures/clones stay on D.
+
+The older PR21 preview was absent after session resumption and port8780 was
+free. The standard launcher now serves this exact build at the established
+`http://127.0.0.1:8780/` origin; no personal browser was opened or storage read.
+Open this checkout's `index.html` for a separate file-origin preview, or use
+the normal launcher if this server has stopped. Take Oren's expedition kit, enter the nearby riverbank
+and try the practice bundle; craft a bow through the existing workbench.
+**V** swaps third person and diorama; **R** resets the current view.
+
+Prior checkpoints retained as history:
+
 # Current checkpoint: timber maps in the playable mill
 
 Updated 2026-09-30. Branch `gameplay/timber-material-proof` starts at PR22

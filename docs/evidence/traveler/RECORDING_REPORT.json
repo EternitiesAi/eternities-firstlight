@@ -1,0 +1,1674 @@
+{
+  "origin": "http://127.0.0.1:65287/FIRSTLIGHT_VALLEY.html",
+  "html_sha256": "19ce36ab88a87d24114c9d11dd4190c7aaaf0d8c75ae96694705822b22a110b9",
+  "default_duration_requested_seconds": null,
+  "performance_claim": false,
+  "browser_version": "143.0.7499.4",
+  "fixture": "evidence10\\starter\\fresh-bow\\02_BOW_CRAFTED_EARNED.json",
+  "fixture_sha256": "852a27d8ae56dc62a4381c8c0a2511d6774cc68410ec11a68bad11d13f3f2cae",
+  "method": "Automated accepted commands and UI on normal real-time RAF; command-earned checkpoint, no gameplay state grants; video is not an FPS measurement.",
+  "actions": [
+    {
+      "action": {
+        "evaluate": "()=>{Realm.test.setTime(16);Realm.test.view({yaw:2.8,elevation:.24,distance:6.5});Realm.test.render()}",
+        "wait_ms": 800
+      },
+      "result": null
+    },
+    {
+      "action": {
+        "evaluate": "()=>Realm.test.view({yaw:2.3,elevation:.23,distance:5.7})",
+        "wait_ms": 2000
+      },
+      "result": null
+    },
+    {
+      "action": {
+        "evaluate": "()=>{const r=Realm.test.adventure(\"traveler-video-equip-\"+performance.now(),\"equip\",{\"id\": \"trail_blade\"});if(!r.ok)throw Error(r.error);Realm.test.render();return r}",
+        "wait_ms": 800
+      },
+      "result": {
+        "ok": true,
+        "text": "Trail blade equipped."
+      }
+    },
+    {
+      "action": {
+        "evaluate": "()=>{Realm.test.view({yaw:2.7,elevation:.25,distance:5.8});Realm.test.render()}",
+        "wait_ms": 700
+      },
+      "result": null
+    },
+    {
+      "action": {
+        "evaluate": "()=>{const r=Realm.test.adventure(\"traveler-video-target-select-\"+performance.now(),\"target-select\",{\"id\": \"river-practice\"});if(!r.ok)throw Error(r.error);Realm.test.render();return r}",
+        "wait_ms": 800
+      },
+      "result": {
+        "ok": true,
+        "text": "Target: Oren’s practice bundle"
+      }
+    },
+    {
+      "action": {
+        "evaluate": "()=>{const r=Realm.test.adventure(\"traveler-video-equip-\"+performance.now(),\"equip\",{\"id\": \"trail_bow\"});if(!r.ok)throw Error(r.error);Realm.test.render();return r}",
+        "wait_ms": 800
+      },
+      "result": {
+        "ok": true,
+        "text": "Ashwood trail bow equipped."
+      }
+    },
+    {
+      "action": {
+        "evaluate": "()=>{const r=Realm.test.adventure(\"traveler-video-target-select-\"+performance.now(),\"target-select\",{\"id\": \"river-practice\"});if(!r.ok)throw Error(r.error);Realm.test.render();return r}",
+        "wait_ms": 800
+      },
+      "result": {
+        "ok": true,
+        "text": "Target: Oren’s practice bundle"
+      }
+    },
+    {
+      "action": {
+        "evaluate": "()=>({scene:Realm.diagnostics.scene,renderer:Realm.diagnostics.renderer,weapon:Realm.state.adventure.equipment.weapon,traveler:Realm.test.traveler().equipment})"
+      },
+      "result": {
+        "scene": "riverbank",
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "weapon": "trail_bow",
+        "traveler": {
+          "weaponId": "trail_bow",
+          "style": "bow",
+          "mode": "held",
+          "gripLocal": [
+            -0.3,
+            1.2974609460723225,
+            0.48000000000000004
+          ],
+          "gripWorld": [
+            -4.7,
+            2.86746099852441,
+            11.02
+          ],
+          "gem": null,
+          "temper": 0,
+          "stage": 0,
+          "instances": 23
+        }
+      }
+    }
+  ],
+  "browser_errors": [],
+  "completed_actions": 23,
+  "last_checkpoint": {
+    "world": {
+      "adventure": {
+        "version": 10,
+        "earthGathering": {
+          "version": 1,
+          "accepted": false,
+          "prepared": [],
+          "verse": null,
+          "shared": false
+        },
+        "earthNotes": {
+          "version": 1,
+          "accepted": false,
+          "marks": [],
+          "compared": false,
+          "interpretation": null
+        },
+        "earthStory": {
+          "version": 1,
+          "accepted": false,
+          "steps": [],
+          "dispatch": null,
+          "arrived": false,
+          "claimed": false
+        },
+        "classPath": {
+          "version": 1,
+          "choice": null,
+          "readyAt": 0
+        },
+        "pursuit": {
+          "version": 1,
+          "pinned": null,
+          "claimed": 0,
+          "active": null,
+          "fittings": {}
+        },
+        "starter": {
+          "version": 1,
+          "accepted": false,
+          "bundles": [],
+          "reward": null
+        },
+        "crossing": {
+          "version": 1,
+          "entered": false,
+          "met": false,
+          "inscription": false,
+          "clapperRevealed": false,
+          "clapper": false,
+          "repaired": false,
+          "complete": false,
+          "reward": false,
+          "attuned": false,
+          "projects": []
+        },
+        "beacon": {
+          "version": 1,
+          "introduced": false,
+          "complete": false,
+          "status": "dormant",
+          "attempts": 0,
+          "failures": 0,
+          "reward": false,
+          "relic": "undecided",
+          "route": null,
+          "soul": {
+            "grace": false,
+            "equipped": null,
+            "radiance": 0,
+            "corruption": 0,
+            "scars": []
+          }
+        },
+        "arsenal": {
+          "version": 1,
+          "gems": {
+            "ruby": 0,
+            "moonstone": 0,
+            "amber": 0
+          },
+          "sockets": {},
+          "rangeMedal": false,
+          "bestTime": null
+        },
+        "road": {
+          "version": 1,
+          "entered": false,
+          "revealed": [],
+          "claimed": [],
+          "cartRepaired": false,
+          "beaconLit": false,
+          "reported": false
+        },
+        "elapsed": 96.53199999999661,
+        "revision": 34,
+        "started": true,
+        "dug": [],
+        "chips": [],
+        "defeated": [],
+        "drops": [],
+        "ore": 0,
+        "coins": 0,
+        "xp": 0,
+        "hp": 100,
+        "stamina": 100,
+        "tonics": 3,
+        "equipment": {
+          "weapon": "trail_bow",
+          "armor": "travel_coat",
+          "charm": null
+        },
+        "owned": [
+          "trail_blade",
+          "travel_coat",
+          "trail_bow"
+        ],
+        "companion": {
+          "bonded": false,
+          "name": "Briar",
+          "mode": "follow"
+        },
+        "relic": false,
+        "angelSeen": false,
+        "reward": null,
+        "deaths": 0,
+        "receipts": [
+          {
+            "id": "starter-journey-1",
+            "fp": "[\"start\",{}]",
+            "ok": true
+          },
+          {
+            "id": "starter-journey-20",
+            "fp": "[\"arsenal-craft\",{\"id\":\"trail_bow\"}]",
+            "ok": true
+          },
+          {
+            "id": "starter-journey-21",
+            "fp": "[\"equip\",{\"id\":\"trail_bow\"}]",
+            "ok": true
+          },
+          {
+            "id": "traveler-video-equip-6158",
+            "fp": "[\"equip\",{\"id\":\"trail_blade\"}]",
+            "ok": true
+          },
+          {
+            "id": "adv-1790831843097-1",
+            "fp": "[\"starter-enter\",{}]",
+            "ok": true
+          },
+          {
+            "id": "traveler-video-target-select-16519.599999964237",
+            "fp": "[\"target-select\",{\"id\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "adv-1790831847876-2",
+            "fp": "[\"auto-toggle\",{}]",
+            "ok": true
+          },
+          {
+            "id": "auto-1-7",
+            "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "auto-3-8",
+            "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "auto-5-9",
+            "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "auto-7-10",
+            "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "auto-9-11",
+            "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "auto-11-12",
+            "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "adv-1790831851096-3",
+            "fp": "[\"guard\",{}]",
+            "ok": true
+          },
+          {
+            "id": "auto-13-14",
+            "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "auto-15-15",
+            "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "adv-1790831852122-4",
+            "fp": "[\"pulse\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "auto-18-17",
+            "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "auto-20-18",
+            "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "auto-22-19",
+            "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "adv-1790831853549-5",
+            "fp": "[\"auto-toggle\",{}]",
+            "ok": true
+          },
+          {
+            "id": "traveler-video-equip-23631.30000001192",
+            "fp": "[\"equip\",{\"id\":\"trail_bow\"}]",
+            "ok": true
+          },
+          {
+            "id": "traveler-video-target-select-24455.69999998808",
+            "fp": "[\"target-select\",{\"id\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "adv-1790831855842-6",
+            "fp": "[\"auto-toggle\",{}]",
+            "ok": true
+          },
+          {
+            "id": "auto-24-24",
+            "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "auto-26-25",
+            "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "auto-28-26",
+            "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "auto-30-27",
+            "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "auto-32-28",
+            "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "auto-34-29",
+            "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "auto-36-30",
+            "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "auto-38-31",
+            "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "auto-40-32",
+            "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+            "ok": true
+          },
+          {
+            "id": "adv-1790831862247-7",
+            "fp": "[\"auto-toggle\",{}]",
+            "ok": true
+          }
+        ]
+      },
+      "sandbox": {
+        "version": 1,
+        "elapsed": 96.53199999999661,
+        "revision": 18,
+        "inventory": {
+          "wood": 4,
+          "stone": 8,
+          "fiber": 2,
+          "crystal": 0,
+          "plank": 0,
+          "block": 0,
+          "seeds": 6,
+          "berry": 0,
+          "axe": 0,
+          "pick": 0,
+          "floor": 0,
+          "wall": 0,
+          "masonry": 0,
+          "lantern": 0,
+          "bench": 0,
+          "bed": 0,
+          "fire": 0,
+          "workbench": 0
+        },
+        "nodes": [
+          {
+            "id": "timber-1",
+            "hp": 0,
+            "readyAt": 135.5500000000001
+          },
+          {
+            "id": "timber-2",
+            "hp": 0,
+            "readyAt": 141.55000000000018
+          },
+          {
+            "id": "timber-3",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "timber-4",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "stone-1",
+            "hp": 0,
+            "readyAt": 142.59999999999914
+          },
+          {
+            "id": "stone-2",
+            "hp": 0,
+            "readyAt": 149.29999999999876
+          },
+          {
+            "id": "stone-3",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "fibre-1",
+            "hp": 0,
+            "readyAt": 122.2000000000003
+          },
+          {
+            "id": "fibre-2",
+            "hp": 0,
+            "readyAt": 130.49999999999983
+          },
+          {
+            "id": "fibre-3",
+            "hp": 1,
+            "readyAt": 0
+          },
+          {
+            "id": "wild-timber-1",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "wild-timber-2",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "wild-timber-3",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "wild-stone-1",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "wild-stone-2",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "wild-fibre",
+            "hp": 1,
+            "readyAt": 0
+          },
+          {
+            "id": "crystal-1",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "crystal-2",
+            "hp": 4,
+            "readyAt": 0
+          }
+        ],
+        "bridge": false,
+        "placed": [],
+        "nextId": 1,
+        "stats": {
+          "gathered": 26,
+          "crafted": 0,
+          "harvested": 0
+        },
+        "milestones": [
+          "gather"
+        ],
+        "recentCommands": [
+          {
+            "id": "starter-gather-2",
+            "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+            "result": {
+              "ok": true,
+              "text": "Chop · 3 strength remaining"
+            }
+          },
+          {
+            "id": "starter-gather-3",
+            "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+            "result": {
+              "ok": true,
+              "text": "Chop · 2 strength remaining"
+            }
+          },
+          {
+            "id": "starter-gather-4",
+            "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+            "result": {
+              "ok": true,
+              "text": "Chop · 1 strength remaining"
+            }
+          },
+          {
+            "id": "starter-gather-5",
+            "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+            "result": {
+              "ok": true,
+              "text": "+5 Timber"
+            }
+          },
+          {
+            "id": "starter-gather-6",
+            "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+            "result": {
+              "ok": true,
+              "text": "Chop · 3 strength remaining"
+            }
+          },
+          {
+            "id": "starter-gather-7",
+            "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+            "result": {
+              "ok": true,
+              "text": "Chop · 2 strength remaining"
+            }
+          },
+          {
+            "id": "starter-gather-8",
+            "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+            "result": {
+              "ok": true,
+              "text": "Chop · 1 strength remaining"
+            }
+          },
+          {
+            "id": "starter-gather-9",
+            "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+            "result": {
+              "ok": true,
+              "text": "+5 Timber"
+            }
+          },
+          {
+            "id": "starter-gather-10",
+            "fingerprint": "{\"type\":\"gather\",\"node\":\"fibre-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+            "result": {
+              "ok": true,
+              "text": "+3 Meadow fibre · +1 seed"
+            }
+          },
+          {
+            "id": "starter-gather-11",
+            "fingerprint": "{\"type\":\"gather\",\"node\":\"fibre-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+            "result": {
+              "ok": true,
+              "text": "+3 Meadow fibre · +1 seed"
+            }
+          },
+          {
+            "id": "starter-gather-12",
+            "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+            "result": {
+              "ok": true,
+              "text": "Mine · 3 strength remaining"
+            }
+          },
+          {
+            "id": "starter-gather-13",
+            "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+            "result": {
+              "ok": true,
+              "text": "Mine · 2 strength remaining"
+            }
+          },
+          {
+            "id": "starter-gather-14",
+            "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+            "result": {
+              "ok": true,
+              "text": "Mine · 1 strength remaining"
+            }
+          },
+          {
+            "id": "starter-gather-15",
+            "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+            "result": {
+              "ok": true,
+              "text": "+5 Stone"
+            }
+          },
+          {
+            "id": "starter-gather-16",
+            "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+            "result": {
+              "ok": true,
+              "text": "Mine · 3 strength remaining"
+            }
+          },
+          {
+            "id": "starter-gather-17",
+            "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+            "result": {
+              "ok": true,
+              "text": "Mine · 2 strength remaining"
+            }
+          },
+          {
+            "id": "starter-gather-18",
+            "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+            "result": {
+              "ok": true,
+              "text": "Mine · 1 strength remaining"
+            }
+          },
+          {
+            "id": "starter-gather-19",
+            "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+            "result": {
+              "ok": true,
+              "text": "+5 Stone"
+            }
+          }
+        ],
+        "cooldownUntil": 59.69999999999877
+      },
+      "score": {
+        "format": "eternities.score.v1",
+        "title": "A Window Left Open",
+        "bpm": 88,
+        "voice": "felt",
+        "melody": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "bass": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "drums": [
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0
+          ]
+        ]
+      },
+      "scoreRevision": 0,
+      "retreat": {
+        "version": 1,
+        "revision": 0,
+        "wall": "moss",
+        "floor": "oak",
+        "items": [
+          {
+            "slot": "nw",
+            "kind": "shelf",
+            "rotation": 0
+          },
+          {
+            "slot": "ne",
+            "kind": "piano",
+            "rotation": 0
+          },
+          {
+            "slot": "w",
+            "kind": "sofa",
+            "rotation": 1
+          },
+          {
+            "slot": "e",
+            "kind": "plant",
+            "rotation": 0
+          },
+          {
+            "slot": "c",
+            "kind": "rug",
+            "rotation": 0
+          }
+        ]
+      },
+      "visitor": {
+        "name": "Visitor",
+        "skin": 0,
+        "cloak": 0,
+        "hair": 0
+      },
+      "version": 9,
+      "seed": 2317,
+      "day": 1,
+      "hour": 16.141668999999908,
+      "weather": "clear",
+      "player": {
+        "x": 15,
+        "z": 7,
+        "yaw": 3.141592653589793
+      },
+      "visited": [
+        "market",
+        "commons"
+      ],
+      "flowers": [],
+      "notes": [],
+      "journal": [
+        {
+          "seq": 1,
+          "day": 1,
+          "hour": 17.200225,
+          "kind": "routine",
+          "text": "Ilan is heading to amphitheatre."
+        },
+        {
+          "seq": 2,
+          "day": 1,
+          "hour": 17.200225,
+          "kind": "routine",
+          "text": "Mara is heading to observatory."
+        },
+        {
+          "seq": 3,
+          "day": 1,
+          "hour": 17.200225,
+          "kind": "routine",
+          "text": "Oren is heading to workshop."
+        },
+        {
+          "seq": 4,
+          "day": 1,
+          "hour": 17.209000000000014,
+          "kind": "discovery",
+          "text": "You found The makers’ exchange."
+        },
+        {
+          "seq": 5,
+          "day": 1,
+          "hour": 17.21305000000002,
+          "kind": "quest",
+          "text": "Oren supplied a trail blade, a lantern, three tonics and a salve for an injured animal. Find the northern mine."
+        },
+        {
+          "seq": 6,
+          "day": 1,
+          "hour": 17.25647500000009,
+          "kind": "sandbox",
+          "text": "Chop · 3 strength remaining"
+        },
+        {
+          "seq": 7,
+          "day": 1,
+          "hour": 17.260975000000098,
+          "kind": "sandbox",
+          "text": "Chop · 2 strength remaining"
+        },
+        {
+          "seq": 8,
+          "day": 1,
+          "hour": 17.265475000000105,
+          "kind": "sandbox",
+          "text": "Chop · 1 strength remaining"
+        },
+        {
+          "seq": 9,
+          "day": 1,
+          "hour": 17.269975000000112,
+          "kind": "sandbox",
+          "text": "+5 Timber"
+        },
+        {
+          "seq": 10,
+          "day": 1,
+          "hour": 17.283475000000134,
+          "kind": "sandbox",
+          "text": "Chop · 3 strength remaining"
+        },
+        {
+          "seq": 11,
+          "day": 1,
+          "hour": 17.28797500000014,
+          "kind": "sandbox",
+          "text": "Chop · 2 strength remaining"
+        },
+        {
+          "seq": 12,
+          "day": 1,
+          "hour": 17.29247500000015,
+          "kind": "sandbox",
+          "text": "Chop · 1 strength remaining"
+        },
+        {
+          "seq": 13,
+          "day": 1,
+          "hour": 17.296975000000156,
+          "kind": "sandbox",
+          "text": "+5 Timber"
+        },
+        {
+          "seq": 14,
+          "day": 1,
+          "hour": 17.328925000000208,
+          "kind": "discovery",
+          "text": "You found The Firstlight Commons."
+        },
+        {
+          "seq": 15,
+          "day": 1,
+          "hour": 17.344900000000234,
+          "kind": "sandbox",
+          "text": "+3 Meadow fibre · +1 seed"
+        },
+        {
+          "seq": 16,
+          "day": 1,
+          "hour": 17.382250000000294,
+          "kind": "sandbox",
+          "text": "+3 Meadow fibre · +1 seed"
+        },
+        {
+          "seq": 17,
+          "day": 1,
+          "hour": 17.42320000000036,
+          "kind": "sandbox",
+          "text": "Mine · 3 strength remaining"
+        },
+        {
+          "seq": 18,
+          "day": 1,
+          "hour": 17.427700000000367,
+          "kind": "sandbox",
+          "text": "Mine · 2 strength remaining"
+        },
+        {
+          "seq": 19,
+          "day": 1,
+          "hour": 17.432200000000375,
+          "kind": "sandbox",
+          "text": "Mine · 1 strength remaining"
+        },
+        {
+          "seq": 20,
+          "day": 1,
+          "hour": 17.436700000000382,
+          "kind": "sandbox",
+          "text": "+5 Stone"
+        },
+        {
+          "seq": 21,
+          "day": 1,
+          "hour": 17.45335000000041,
+          "kind": "sandbox",
+          "text": "Mine · 3 strength remaining"
+        },
+        {
+          "seq": 22,
+          "day": 1,
+          "hour": 17.457850000000416,
+          "kind": "sandbox",
+          "text": "Mine · 2 strength remaining"
+        },
+        {
+          "seq": 23,
+          "day": 1,
+          "hour": 17.462350000000423,
+          "kind": "sandbox",
+          "text": "Mine · 1 strength remaining"
+        },
+        {
+          "seq": 24,
+          "day": 1,
+          "hour": 17.46685000000043,
+          "kind": "sandbox",
+          "text": "+5 Stone"
+        },
+        {
+          "seq": 25,
+          "day": 1,
+          "hour": 17.49160000000047,
+          "kind": "routine",
+          "text": "Ilan is heading to amphitheatre."
+        },
+        {
+          "seq": 26,
+          "day": 1,
+          "hour": 17.49160000000047,
+          "kind": "routine",
+          "text": "Mara is heading to observatory."
+        },
+        {
+          "seq": 27,
+          "day": 1,
+          "hour": 17.49160000000047,
+          "kind": "routine",
+          "text": "Oren is heading to workshop."
+        }
+      ],
+      "nextEvent": 28,
+      "residents": [
+        {
+          "id": "ilan",
+          "x": 0,
+          "z": -11.6,
+          "yaw": 1.5707963267948966,
+          "progress": 0.06729476000000037,
+          "conversations": 0
+        },
+        {
+          "id": "mara",
+          "x": 9,
+          "z": -5.8,
+          "yaw": 0,
+          "progress": 0.06737576000000033,
+          "conversations": 0
+        },
+        {
+          "id": "oren",
+          "x": 11,
+          "z": 9,
+          "yaw": -1.5707963267948966,
+          "progress": 0.06729476000000037,
+          "conversations": 0
+        }
+      ],
+      "settings": {
+        "quality": "balanced",
+        "cameraMode": "follow",
+        "cameraFov": 60,
+        "cameraViews": {
+          "version": 1,
+          "lastDiorama": "follow",
+          "profiles": {
+            "adventure": {
+              "yaw": 2.6999999999999993,
+              "elevation": 0.25,
+              "distance": 5.8
+            },
+            "follow": {
+              "yaw": 0.7599999999999998,
+              "elevation": 0.88,
+              "zoom": 1
+            }
+          }
+        },
+        "cameraCutaway": true,
+        "reducedMotion": false,
+        "labels": true,
+        "timeFlow": true,
+        "sound": false
+      }
+    },
+    "diagnostics": {
+      "version": "10.0.0",
+      "mode": "webgl2",
+      "scene": "riverbank",
+      "earth": null,
+      "cosmos": null,
+      "networkDependencies": 0,
+      "liveAI": false,
+      "multiplayer": false,
+      "adventure": {
+        "tactics": {
+          "scene": "riverbank",
+          "target": "river-practice",
+          "auto": false,
+          "nextAttack": 0,
+          "guardUntil": 87.8491999999973,
+          "shield": 0,
+          "shieldUntil": 0,
+          "cooldowns": {
+            "guard": 92.8491999999973,
+            "insight": 0,
+            "spirit": 0
+          },
+          "hits": [
+            {
+              "x": -5,
+              "z": 10,
+              "n": 13,
+              "at": 95.93199999999665,
+              "id": 41
+            }
+          ],
+          "serial": 41,
+          "windup": null,
+          "motion": {
+            "style": "bow",
+            "at": 95.88199999999665
+          }
+        },
+        "beacon": {
+          "phase": "idle",
+          "time": 0,
+          "wave": 0,
+          "ward": 100,
+          "actors": [],
+          "serial": 0,
+          "notice": "",
+          "repairAt": 0,
+          "maraAt": 0,
+          "ilanAt": 0,
+          "playerRepairAt": 0,
+          "defeats": 0
+        },
+        "crossing": {
+          "room": "riverbank",
+          "tones": [],
+          "seek": false,
+          "rangAt": -10,
+          "tone": null,
+          "toneSerial": 0
+        },
+        "player": {
+          "x": -5,
+          "z": 11.5,
+          "yaw": 3.141592653589793
+        },
+        "paused": false,
+        "intent": null,
+        "stats": {
+          "level": 1,
+          "attack": 13,
+          "defense": 1,
+          "maxHP": 100
+        },
+        "weapon": {
+          "style": "bow",
+          "reach": 11,
+          "cooldown": 0.75,
+          "stamina": 6,
+          "primary": "Loose arrow",
+          "special": "Piercing light"
+        },
+        "arrows": [],
+        "range": {
+          "active": false,
+          "start": 0,
+          "hits": {},
+          "shots": 0,
+          "message": "A calm place to learn a different rhythm."
+        },
+        "enemies": [
+          {
+            "id": "river-practice",
+            "x": -5,
+            "z": 10,
+            "hp": 100,
+            "maxHP": 100,
+            "hidden": false,
+            "eventEnemy": false,
+            "kind": "practice",
+            "ringMode": null,
+            "custom": null,
+            "mode": "idle",
+            "timer": 0,
+            "aim": null
+          }
+        ],
+        "companion": {
+          "room": "riverbank",
+          "x": 0,
+          "z": 12,
+          "yaw": 3.141592653589793,
+          "path": [],
+          "nextPath": 0,
+          "nextHit": 0,
+          "seek": null,
+          "status": "Beside you"
+        }
+      },
+      "sandbox": {
+        "bridge": false,
+        "objects": 0,
+        "elapsed": 96.53199999999661,
+        "autoGather": null,
+        "buildMode": null
+      },
+      "saveState": "saved",
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "fps": 60.0026374785704,
+      "errors": [],
+      "camera": {
+        "yaw": 0.7599999999999998,
+        "elevation": 0.88,
+        "half": 17,
+        "distance": 5.8,
+        "actualDistance": 5.799999999999999,
+        "fov": 60,
+        "center": [
+          -5,
+          2.0000404581945004,
+          11.5
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "baseHalf": 17,
+        "zoom": 1,
+        "projection": "orthographic",
+        "eye": [
+          27.921031526134534,
+          59.8054563756172,
+          46.13725701999267
+        ],
+        "target": [
+          -5,
+          2.0000404581945004,
+          11.5
+        ]
+      },
+      "metrics": {
+        "drawCalls": 23,
+        "texturedDrawCalls": 0,
+        "texturedInstances": 0,
+        "surfaceMaterials": {
+          "version": 1,
+          "id": "earth-weathered-timber-v1",
+          "status": "ready",
+          "ready": true,
+          "error": null,
+          "width": 512,
+          "height": 512,
+          "colorFormat": "SRGB8_ALPHA8",
+          "roughnessFormat": "R8",
+          "textureBytes": 1310720,
+          "mipmapBytes": 436905,
+          "totalTextureBytes": 1747625,
+          "decodedImageBytes": 2097152,
+          "decodeWallMs": 60.30000001192093,
+          "uploadCpuMs": 84.30000001192093,
+          "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+          "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+          "enabled": true
+        },
+        "instances": 958,
+        "triangles": 79764
+      },
+      "reflection": {
+        "method": "world-plane P*V*H",
+        "height": 0.01,
+        "horizontalFlip": false
+      },
+      "cutaway": {
+        "enabled": true,
+        "focus": [
+          -5,
+          2.45,
+          11.5
+        ]
+      },
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "gathering": null,
+      "layoutRevision": 0,
+      "roadsideGathering": {
+        "status": "idle",
+        "playing": false,
+        "pending": false
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      }
+    },
+    "practiceText": "Last confirmed impact: 13 · no XP or loot"
+  },
+  "final_diagnostics": {
+    "version": "10.0.0",
+    "mode": "webgl2",
+    "scene": "riverbank",
+    "earth": null,
+    "cosmos": null,
+    "networkDependencies": 0,
+    "liveAI": false,
+    "multiplayer": false,
+    "adventure": {
+      "tactics": {
+        "scene": "riverbank",
+        "target": "river-practice",
+        "auto": false,
+        "nextAttack": 0,
+        "guardUntil": 87.8491999999973,
+        "shield": 0,
+        "shieldUntil": 0,
+        "cooldowns": {
+          "guard": 92.8491999999973,
+          "insight": 0,
+          "spirit": 0
+        },
+        "hits": [
+          {
+            "x": -5,
+            "z": 10,
+            "n": 13,
+            "at": 95.93199999999665,
+            "id": 41
+          }
+        ],
+        "serial": 41,
+        "windup": null,
+        "motion": {
+          "style": "bow",
+          "at": 95.88199999999665
+        }
+      },
+      "beacon": {
+        "phase": "idle",
+        "time": 0,
+        "wave": 0,
+        "ward": 100,
+        "actors": [],
+        "serial": 0,
+        "notice": "",
+        "repairAt": 0,
+        "maraAt": 0,
+        "ilanAt": 0,
+        "playerRepairAt": 0,
+        "defeats": 0
+      },
+      "crossing": {
+        "room": "riverbank",
+        "tones": [],
+        "seek": false,
+        "rangAt": -10,
+        "tone": null,
+        "toneSerial": 0
+      },
+      "player": {
+        "x": -5,
+        "z": 11.5,
+        "yaw": 3.141592653589793
+      },
+      "paused": false,
+      "intent": null,
+      "stats": {
+        "level": 1,
+        "attack": 13,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "weapon": {
+        "style": "bow",
+        "reach": 11,
+        "cooldown": 0.75,
+        "stamina": 6,
+        "primary": "Loose arrow",
+        "special": "Piercing light"
+      },
+      "arrows": [],
+      "range": {
+        "active": false,
+        "start": 0,
+        "hits": {},
+        "shots": 0,
+        "message": "A calm place to learn a different rhythm."
+      },
+      "enemies": [
+        {
+          "id": "river-practice",
+          "x": -5,
+          "z": 10,
+          "hp": 100,
+          "maxHP": 100,
+          "hidden": false,
+          "eventEnemy": false,
+          "kind": "practice",
+          "ringMode": null,
+          "custom": null,
+          "mode": "idle",
+          "timer": 0,
+          "aim": null
+        }
+      ],
+      "companion": {
+        "room": "riverbank",
+        "x": 0,
+        "z": 12,
+        "yaw": 3.141592653589793,
+        "path": [],
+        "nextPath": 0,
+        "nextHit": 0,
+        "seek": null,
+        "status": "Beside you"
+      }
+    },
+    "sandbox": {
+      "bridge": false,
+      "objects": 0,
+      "elapsed": 96.54869999999661,
+      "autoGather": null,
+      "buildMode": null
+    },
+    "saveState": "saved",
+    "characters": {
+      "mode": "legacy",
+      "active": "legacy",
+      "revision": 0,
+      "count": 1,
+      "writer": false,
+      "error": null
+    },
+    "fps": 60.0026374785704,
+    "errors": [],
+    "camera": {
+      "yaw": 0.7599999999999998,
+      "elevation": 0.88,
+      "half": 17,
+      "distance": 5.8,
+      "actualDistance": 5.799999999999999,
+      "fov": 60,
+      "center": [
+        -5,
+        2.0000387390914978,
+        11.5
+      ],
+      "overview": false,
+      "preset": "follow",
+      "tour": false,
+      "ready": true,
+      "baseHalf": 17,
+      "zoom": 1,
+      "projection": "orthographic",
+      "eye": [
+        27.921031526134534,
+        59.8054546565142,
+        46.13725701999267
+      ],
+      "target": [
+        -5,
+        2.0000387390914978,
+        11.5
+      ]
+    },
+    "metrics": {
+      "drawCalls": 23,
+      "texturedDrawCalls": 0,
+      "texturedInstances": 0,
+      "surfaceMaterials": {
+        "version": 1,
+        "id": "earth-weathered-timber-v1",
+        "status": "ready",
+        "ready": true,
+        "error": null,
+        "width": 512,
+        "height": 512,
+        "colorFormat": "SRGB8_ALPHA8",
+        "roughnessFormat": "R8",
+        "textureBytes": 1310720,
+        "mipmapBytes": 436905,
+        "totalTextureBytes": 1747625,
+        "decodedImageBytes": 2097152,
+        "decodeWallMs": 60.30000001192093,
+        "uploadCpuMs": 84.30000001192093,
+        "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+        "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+        "enabled": true
+      },
+      "instances": 958,
+      "triangles": 79764
+    },
+    "reflection": {
+      "method": "world-plane P*V*H",
+      "height": 0.01,
+      "horizontalFlip": false
+    },
+    "cutaway": {
+      "enabled": true,
+      "focus": [
+        -5,
+        2.45,
+        11.5
+      ]
+    },
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "music": {
+      "playing": false,
+      "scoreRevision": 0,
+      "playingRevision": -1,
+      "step": -1
+    },
+    "gathering": null,
+    "layoutRevision": 0,
+    "roadsideGathering": {
+      "status": "idle",
+      "playing": false,
+      "pending": false
+    },
+    "audio": {
+      "enabled": false,
+      "state": "not-created"
+    }
+  },
+  "final_quest": {
+    "version": 1,
+    "accepted": false,
+    "bundles": [],
+    "reward": null
+  },
+  "final_pursuit": {
+    "version": 1,
+    "pinned": null,
+    "claimed": 0,
+    "active": null,
+    "fittings": {}
+  },
+  "video_path": "D:\\07-GAMES\\Firstlight\\artifacts\\traveler-art-2026-09-30\\gameplay-video-delivery\\be2e346db9ef86f461c4d5d16ae358fd.webm"
+}

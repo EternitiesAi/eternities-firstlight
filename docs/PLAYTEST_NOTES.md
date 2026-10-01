@@ -1,3 +1,27 @@
+# Traveller silhouette and motion, 2026-10-01
+
+No new Dom playtest was observed. The fitted body, split cloak, two-hand bow
+and blade stance are original prototype choices, not approved final canon.
+Try the existing riverbank practice with a fresh blade/bow and a returning
+strongest-gear character, switching **V** between both views. Does the body
+feel like your traveller? Do walking, guard and weapon recovery read clearly?
+Does either view hide important movement or feel uncomfortable?
+
+Engineering review caught old release poses crossing scene/weapon changes and
+new accepted attacks being lost when equip/attack shared one frame. Existing
+accepted-command receipts now distinguish those orders without changing combat
+rules. The old starter material test was updated to the new attachment owner,
+preserving material and no-grant checks. Actual submitted grip/string geometry,
+saved palette/advanced gear, native character switching/reload and isolated
+framebuffer evidence are recorded separately from enjoyment.
+
+Normal-time automated footage uses an explicitly labelled command-earned bow
+checkpoint. A matched RTX sample is headless browser frame-interval evidence,
+not monitor presentation, human comfort or an FPS guarantee. Previous fresh/
+returning outing, reward, discovery, gathering and timber questions remain.
+
+Prior notes retained:
+
 # Marks Beneath the Rain — human acceptance pending, 2026-09-20
 
 No new Dom playtest was observed. The optional post-delivery mystery comes from the recovered Earth prototype's Mara clue. Game dialogue, carved stones, tracing and chart are authored adaptations, not founder-approved additions to final mythology.
