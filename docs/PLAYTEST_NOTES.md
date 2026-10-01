@@ -123,3 +123,9 @@ Concept paintings are targets, not renders of the current world. The prototype s
 ## 2026-09-30: material study, human acceptance still pending
 
 The new CC0 library and Blender house-corner study are authoring evidence. They do not show the current browser game using texture maps, and no new Dom playtest was observed. Judge grain/roof scale, warmth and surface readability from the study; judge camera comfort, navigation and playable beauty only after a browser integration is available. Existing gathering, combat/equipment and discovery questions remain pending.
+
+## 2026-09-30: timber surface in both playable views
+
+Engineering evidence: one material appears on the mill landing/chest through normal accepted travel. The silent 44.40-second desktop browser recording shows a fresh production-created character and both camera presets, with no fixture/state grants or accelerated ticks. Actual software-WebGL readback checks sRGB sampling, scalar roughness, visible flat fallback, cutaway and reflected wood. The separate RTX frame-interval sample alternates mapped/plain states; neither recording nor green checks establish human beauty or comfort.
+
+Pending Dom: **Does the grain feel natural nearby in third person? Does it stay quiet/readable in the diorama?** Look for stretched seams on the chest, shimmer on the boards or an unexpected change in the village palette. Bespoke chest joinery/end-grain and the other four materials remain future work. Older fresh/returning combat, equipment, route, discovery and music-table questions still need actual human answers.

@@ -1,5 +1,7 @@
 # Firstlight material library and D-drive authoring
 
+Current continuation: [timber browser proof](TIMBER_BROWSER_RESULTS_2026-09-30.md) installs one measured color/roughness pair on the existing mill. The authoring checkpoint below remains historical.
+
 Prepared 2026-09-30 from gameplay head
 `f85bd690466b6be9b2b438f4e06eddb264f3ec13`, PR #21. This separate authoring
 branch stages a small material library and a Blender proof. The playable

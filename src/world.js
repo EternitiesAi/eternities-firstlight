@@ -1,4 +1,4 @@
-/* Original procedural art. No models, textures, fonts or sounds downloaded. */
+/* Authored procedural geometry; the mill uses embedded licensed timber maps. */
 (function(G){'use strict';const{M,hex,blend}=RealmEngine,C=RealmCore,X=RealmCreative,TAU=Math.PI*2;
 class WorldArt{
  constructor(engine){this.e=engine;this.room=null;this.time=0;this.map={};this.makeExterior();}
