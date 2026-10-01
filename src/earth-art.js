@@ -158,7 +158,8 @@ function story(out,sim,t,a){
  // Residents stand beside supported paths. They never own progression or collision.
  const fx=s.dispatch?2:8.8,fz=s.dispatch?-43:5;
  a.person(out,fx,fz,-.6,'#bd8963',clock,false,'drover',false,h(fx,fz));
- a.person(out,8.7,-6.6,-1.0,'#819b98',clock,false,'millwright',false,h(8.7,-6.6));
+ const ansel=G.RealmMillwrightArt.ANCHOR;
+ a.millwrightFrame=G.RealmMillwrightArt.draw(out,{base:h(ansel.x,ansel.z),time:sim.elapsed,reducedMotion:quiet});
  a.person(out,14.3,-26,-.8,'#989478',clock,false,'reeve',false,h(14.3,-26));
  // The load changes place only after explicit dispatch; arrival dresses the shared table.
  const cx=s.dispatch?-3:9.3,cz=s.dispatch?-43:7,b=h(cx,cz);

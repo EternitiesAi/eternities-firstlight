@@ -53,7 +53,18 @@ try:
         check('task navigation uses real path to '+id,ev('([x,z])=>Math.hypot(Realm.diagnostics.adventure.player.x-x,Realm.diagnostics.adventure.player.z-z)<.3',[point['x'],point['z']]))
         if id=='detour-ridge':check('ridge prompt favors available scouting over a blocked repair','Survey the ridge' in page.locator('#context').inner_text())
         if id=='mill-gate':
-          jammed=ev('()=>Realm.test.millGate()');before_work=state()
+          jammed=ev('()=>Realm.test.millGate()');before_work=state();ansel=ev('()=>Realm.test.millwright()')
+          check('Ansel retains his supported reachable mill anchor',ansel['frame']['anchor']['x']==8.7 and ansel['frame']['anchor']['z']==-6.6 and ev('()=>RealmEarth.walkable(8.7,-6.6)&&RealmEarth.line({x:7,z:-7},{x:8.7,z:-6.6})'))
+          check('dedicated apron cap and square submit finite actor parts within budget',len(ansel['parts'])<=64 and len(ansel['parts'])==ansel['frame']['partCount'] and all(__import__('math').isfinite(v) for p in ansel['parts'] for v in p['m']+p['p']+p['s']) and all(not p['cameraSolid'] and not p['cutaway'] for p in ansel['parts']) and {'apron-bib','cap-brim','square-stock','square-blade'}.issubset({p['millwrightPart'] for p in ansel['parts']}))
+          check('actor drawing cannot replay repair or payment',state()['adventure']==before_work['adventure'] and state()['sandbox']==before_work['sandbox'])
+          # Isolated labelled framebuffer probe of the production submitted NPC.
+          pixels=ev("""()=>{const s=Realm.test.millwright(),root=s.frame.root,c=document.createElement('canvas'),e=new RealmEngine.Engine(c);e.resize(384,384,1);e.quality='low';e.noWater=true;const g=e.gl,read=()=>{g.bindFramebuffer(g.FRAMEBUFFER,e.mainF.f);const a=new Uint8Array(384*384*4);g.readPixels(0,0,384,384,g.RGBA,g.UNSIGNED_BYTE,a);g.bindFramebuffer(g.FRAMEBUFFER,null);return a;},diff=(a,b)=>a.reduce((n,v,i)=>n+(v!==b[i]),0);const results=[];for(const mode of['perspective','orthographic']){e.clear();e.setCamera({eye:[2.5,2.5,4.5],target:[0,.95,0],projection:mode,half:1.25,fov:45,aspect:1});e.render(0,16,false);const empty=read();const render=tool=>{e.clear();for(const kind of['box','round','octa'])e.batch(kind,s.parts.filter(it=>it.kind===kind&&(tool||!it.millwrightPart.startsWith('square-'))).map(it=>{const p=it.p.map((v,i)=>v-root[12+i]),m=new Float32Array(it.m);for(let i=0;i<3;i++)m[12+i]-=root[12+i];return{p,s:it.s,m,c:it.c,rough:it.rough};}));e.render(0,16,false);return read();};const body=render(false),full=render(true);results.push({mode,bodyChannels:diff(empty,body),toolChannels:diff(body,full)});}const result={cases:results,error:g.getError(),image:c.toDataURL('image/png')};e.disposeSurfaceMaterials();g.getExtension('WEBGL_lose_context').loseContext();return result;}""")
+          import base64
+          (OUT/'ANSEL_ISOLATED.png').write_bytes(base64.b64decode(pixels.pop('image').split(',')[1]));report['millwright_framebuffer']=pixels
+          for sample in pixels['cases']:
+            check('actual millwright body produces isolated pixels in '+sample['mode'],sample['bodyChannels']>1000)
+            check('actual held square contributes isolated pixels in '+sample['mode'],sample['toolChannels']>20)
+          check('isolated millwright framebuffer has no WebGL error',pixels['error']==0)
           check('gate remains jammed after root clearance',not jammed['gate']['repaired'] and any(p['millPart']=='jammed-brace' for p in jammed['parts']))
           check('mapped gate has five vertical planks and three fixed members',sum(p['kind']=='timber-panel' for p in jammed['parts'])==8 and sum(p['millPart']=='leaf-plank' for p in jammed['parts'])==5)
           check('gate details stay out of camera and walking authority',all(not p['cameraSolid'] for p in jammed['parts']) and ev('()=>RealmEarth.walkable(7,-7)&&RealmEarth.walkable(5.6,-5.6)&&!RealmEarth.walkable(0,-12)'))
@@ -78,6 +89,13 @@ try:
           for mode in ['third','diorama']:
             if (ev('()=>Realm.diagnostics.camera.projection')=='orthographic')!=(mode=='diorama'):page.keyboard.press('v')
             ev('()=>Realm.test.view({yaw:.95,elevation:.36,distance:7.2})');render();page.screenshot(path=str(OUT/('GATE_REPAIRED_'+mode.upper()+'.png')))
+          walk(9.7,-4.8)
+          for mode in ['third','diorama']:
+            if (ev('()=>Realm.diagnostics.camera.projection')=='orthographic')!=(mode=='diorama'):page.keyboard.press('v')
+            ev('()=>Realm.test.view({yaw:1.4,elevation:Realm.diagnostics.camera.projection==="orthographic"?.78:.28,distance:5.5,half:8,zoom:.35})');render();page.screenshot(path=str(OUT/('ANSEL_'+mode.upper()+'.png')))
+            check('millwright presentation stays submitted in '+mode,ev('()=>Realm.test.millwright().parts.length')==len(ansel['parts']))
+            ev('()=>Realm.test.view({yaw:-1.2,elevation:Realm.diagnostics.camera.projection==="orthographic"?.78:.28,distance:5.5,zoom:.35})');render();page.screenshot(path=str(OUT/('ANSEL_FRONT_'+mode.upper()+'.png')))
+          walk(7,-7)
           ev('()=>Realm.test.pause(true)');page.keyboard.press('e');render();click('watch','mill-gate')
           check('watch preserves an explicitly paused game',ev('()=>Realm.diagnostics.adventure.paused'));ev('()=>Realm.test.pause(false)')
           page.keyboard.press('e');render()
@@ -89,13 +107,18 @@ try:
       if route=='mill':
         # Normal RAF in a separate page, derived from the command-earned repair.
         normal_context=context.browser.new_context(viewport={'width':1280,'height':800});normal=normal_context.new_page();normal.on('pageerror',lambda e:report['browser_errors'].append('normal-time gate: '+str(e)));normal.add_init_script('window.__ETERNITIES_TEST_MODE=true;');normal.goto(f'http://127.0.0.1:{server.server_port}/',wait_until='load');normal.wait_for_function('()=>!!window.Realm');normal.evaluate('(w)=>Realm.test.replace(w)',state())
+        def normal_frames():
+          normal.evaluate('''()=>new Promise(resolve=>{let start;requestAnimationFrame(function sample(t){if(start===undefined)start=t;if(t-start>=300)resolve();else requestAnimationFrame(sample)})})''')
         def nw(x,z):
           result=normal.evaluate('([x,z])=>{const r=Realm.test.move(x,z);if(!r.ok)return r;for(let i=0;i<4500&&Realm.test.path.length;i++)Realm.test.step(.05);Realm.test.render();return r}',[x,z]);assert result['ok']
-        nw(0,23);normal.keyboard.press('e');normal.locator('[data-rpg="earth-confirm"]').click();nw(7,-7)
-        normal.keyboard.press('e');normal.locator('[data-rpg="rain-watch"]').click();normal.evaluate('()=>Realm.test.render()');w1=normal.evaluate('()=>Realm.test.millGate().wheel');normal.wait_for_timeout(300);w2=normal.evaluate('()=>Realm.test.millGate().wheel')
+        nw(0,23);normal.keyboard.press('e');normal.locator('[data-rpg="earth-confirm"]').click();nw(7,-7);normal.bring_to_front();check('normal-time actor page is visible before sampling',normal.evaluate('()=>!document.hidden'))
+        normal.keyboard.press('e');normal.locator('[data-rpg="rain-watch"]').click();normal.evaluate('()=>Realm.test.render()');w1=normal.evaluate('()=>Realm.test.millGate().wheel');normal_frames();w2=normal.evaluate('()=>Realm.test.millGate().wheel')
         check('normal-time watch advances the actually submitted repaired wheel',w1!=w2)
-        normal.evaluate('()=>{Realm.test.pause(true);Realm.test.render()}');w1=normal.evaluate('()=>Realm.test.millGate().wheel');normal.wait_for_timeout(300);w2=normal.evaluate('()=>Realm.test.millGate().wheel');check('normal-time explicit pause freezes the submitted wheel',w1==w2)
-        normal.evaluate("()=>{Realm.test.pause(false);let w=Realm.state;w.settings.reducedMotion=true;Realm.test.replace(w)}");nw(0,23);normal.keyboard.press('e');normal.locator('[data-rpg="earth-confirm"]').click();nw(7,-7);normal.evaluate('()=>Realm.test.render()');w1=normal.evaluate('()=>Realm.test.millGate().wheel');normal.wait_for_timeout(300);w2=normal.evaluate('()=>Realm.test.millGate().wheel');check('normal-time reduced motion freezes the repaired silhouette',w1==w2);normal_context.close()
+        n1=normal.evaluate('()=>({actor:Realm.test.millwright(),paused:Realm.diagnostics.adventure.paused,reduced:Realm.state.settings.reducedMotion,hidden:document.hidden,visibility:document.visibilityState,wheel:Realm.test.millGate().wheel})');normal_frames();n2=normal.evaluate('()=>({actor:Realm.test.millwright(),paused:Realm.diagnostics.adventure.paused,reduced:Realm.state.settings.reducedMotion,hidden:document.hidden,visibility:document.visibilityState,wheel:Realm.test.millGate().wheel})');report['normal_millwright']={'before':n1,'after':n2};check('normal-time Ansel adjusts the actually submitted hand and square frame',n1['actor']['parts']!=n2['actor']['parts'])
+        normal.keyboard.press('e');normal.evaluate('()=>Realm.test.render()');a1=normal.evaluate('()=>Realm.test.millwright().parts');normal_frames();a2=normal.evaluate('()=>Realm.test.millwright().parts');check('repair dialog pauses the complete millwright stance',a1==a2);normal.locator('#rpg-close').click()
+        normal.evaluate('()=>{Realm.test.pause(true);Realm.test.render()}');w1=normal.evaluate('()=>Realm.test.millGate().wheel');normal_frames();w2=normal.evaluate('()=>Realm.test.millGate().wheel');check('normal-time explicit pause freezes the submitted wheel',w1==w2)
+        a1=normal.evaluate('()=>Realm.test.millwright().parts');normal_frames();a2=normal.evaluate('()=>Realm.test.millwright().parts');check('explicit pause freezes the complete millwright frame',a1==a2)
+        normal.evaluate("()=>{Realm.test.pause(false);let w=Realm.state;w.settings.reducedMotion=true;Realm.test.replace(w)}");nw(0,23);normal.keyboard.press('e');normal.locator('[data-rpg="earth-confirm"]').click();nw(7,-7);normal.evaluate('()=>Realm.test.render()');w1=normal.evaluate('()=>Realm.test.millGate().wheel');normal_frames();w2=normal.evaluate('()=>Realm.test.millGate().wheel');check('normal-time reduced motion freezes the repaired silhouette',w1==w2);a1=normal.evaluate('()=>Realm.test.millwright().parts');normal_frames();a2=normal.evaluate('()=>Realm.test.millwright().parts');check('reduced motion holds one connected millwright stance',a1==a2);normal.keyboard.press('e');normal.locator('#rpg-close').click();normal_context.close()
       walk(7,5);page.keyboard.press('e');render()
       if route=='mill':check('remote repaired-gate action offers actual walking rather than watch',page.locator('[data-rpg="rain-watch"]').count()==0 and page.locator('[data-rpg="rain-walk"][data-id="mill-gate"]').count()==1)
       check('only completed route can be dispatched',page.locator('[data-rpg="rain-dispatch"]').count()==1);click('dispatch',route);check('explicit dispatch keeps payment unpaid',not state()['adventure']['earthStory']['claimed']);reload();walk(0,-43);page.keyboard.press('e');render();click('arrive');check('arrival is visible before payment',state()['adventure']['earthStory']['arrived'] and not state()['adventure']['earthStory']['claimed']);reload();walk(0,-43);page.keyboard.press('e');render();click('claim');paid=state()
@@ -120,6 +143,7 @@ try:
     check('new character inherits neither accepted work nor claimed reward',not state()['adventure']['earthStory']['accepted'] and state()['adventure']['ore']==0)
     restored='character-1' if original=='legacy' else original;library();page.locator(f'[data-rpg="chars-switch"][data-id="{restored}"]').click();page.wait_for_function('(id)=>Realm.diagnostics.characters.active===id',arg=restored);render()
     check('returning character retains its own completed story',state()['adventure']['earthStory']==old['adventure']['earthStory']);close();enter();page.set_viewport_size({'width':390,'height':844});page.keyboard.press('m');render();click('open');check('compact story actions have no horizontal overflow',page.locator('#rpg-content').evaluate('(e)=>e.scrollWidth<=e.clientWidth+1'));page.screenshot(path=str(OUT/'COMPACT_STORY.png'))
+    close();ev('()=>Realm.test.leave()');render();check('millwright frame is absent outside its Earth scene',ev('()=>Realm.test.millwright()') is None)
     check('no runtime errors',not report['browser_errors']);context.close()
 except Exception as e:
   report['errors'].append(str(e));traceback.print_exc()
