@@ -1,5 +1,5 @@
 {
-  "method": "Original capture bytes stay on D. Review JSON uses UTF-8/LF; semantic equality is verified. Media is byte-identical.",
+  "method": "Original capture bytes stay on D. Review JSON and the text log use UTF-8/LF; equal JSON values and normalized text are verified. Media is byte-identical.",
   "files": [
     {
       "source": "D:\\07-GAMES\\Firstlight\\artifacts\\traveler-art-2026-09-30\\GPU_BEFORE.json",
@@ -96,9 +96,10 @@
       "review": "EARNED_BOW_JOURNEY.log",
       "source_bytes": 532,
       "source_sha256": "59d5528055276521b536a01d0c441629c1d5863bc5ed3a0e44fc93bbbf99947e",
-      "review_bytes": 532,
-      "review_sha256": "59d5528055276521b536a01d0c441629c1d5863bc5ed3a0e44fc93bbbf99947e",
-      "json_semantically_equal": null
+      "review_bytes": 503,
+      "review_sha256": "2496bd1b1ba568c3ff951073bede4e7625f178d4aa75780f9ab122264bf8b37f",
+      "json_semantically_equal": null,
+      "text_normalized_equal": true
     },
     {
       "source": "D:\\07-GAMES\\Firstlight\\artifacts\\traveler-art-2026-09-30\\BROWSER_REPORT_ORIGINAL.json",
