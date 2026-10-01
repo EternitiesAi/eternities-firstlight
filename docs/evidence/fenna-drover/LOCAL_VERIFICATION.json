@@ -1,0 +1,58 @@
+{
+  "scope": "Full corrected-runtime local verifier, plus complete final Node refresh after test-only octa bound refinement. Exact final pushed-head remote clone is separate.",
+  "completion": {
+    "started_at_utc": "2026-10-01T15:33:30.722796+00:00",
+    "completed_at_utc": "2026-10-01T15:43:07.121983+00:00",
+    "command": [
+      "C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Scripts\\python.exe",
+      "tools/verify.py",
+      "--browser",
+      "--output",
+      "D:\\07-GAMES\\Firstlight\\artifacts\\fenna-drover-2026-10-01\\verification-local-final"
+    ],
+    "root": "D:\\07-GAMES\\Firstlight\\authoring\\texture-intake-review",
+    "exit_code": 0,
+    "head": "fd56ca00c0b66e65e3df05bdb0326918fa6c72b7",
+    "html_sha256": "80acee81727b5a030f6569e41ff1966cc3330400223bfda2df1d1155774fe079"
+  },
+  "python": "3.13.15",
+  "node": "24.18.0",
+  "syntax_modules": 57,
+  "node_tests": 665,
+  "node_passed": 665,
+  "python_passed": 53,
+  "python_skipped": 1,
+  "skip_reason": "Existing Windows symlink-boundary test unavailable without privilege.",
+  "journeys": 24,
+  "browser_suites": {
+    "crossing_browser": 115,
+    "regression09_browser": 107,
+    "cutaway_browser": 6,
+    "reflection_browser": 8,
+    "native_origin_browser": 11,
+    "starter_browser": 147,
+    "camera_browser": 51,
+    "pursuit_browser": 145,
+    "characters_browser": 67,
+    "classes_browser": 45,
+    "cosmos_browser": 75,
+    "earth_browser": 89,
+    "earth_story_browser": 233,
+    "earth_notes_browser": 134,
+    "gathering_browser": 118,
+    "realm_atlas_browser": 37,
+    "timber_browser": 40,
+    "traveler_browser": 116
+  },
+  "browser_assertions": 1544,
+  "failures": 0,
+  "html_bytes": 2236278,
+  "html_sha256": "80acee81727b5a030f6569e41ff1966cc3330400223bfda2df1d1155774fe079",
+  "logs": "D:\\07-GAMES\\Firstlight\\artifacts\\fenna-drover-2026-10-01\\verification-local-final",
+  "rules_refresh": {
+    "command": "node --test --test-reporter=tap tests/*.test.cjs",
+    "reason": "Exact shape bounds test refined after initial source stage; browser runtime/build unchanged",
+    "exit_code": 0,
+    "checked_utc": "2026-10-01T15:43:19.0529975Z"
+  }
+}

@@ -1,3 +1,25 @@
+# Fenna drover and delivered load, 2026-10-01
+
+Review branch `gameplay/fenna-drover`, stacked on PR 26 `gameplay/ansel-millwright`
+at `fd56ca00c0b66e65e3df05bdb0326918fa6c72b7`. Source `927ca4eead04844da6c717c8db923083d685209e`. Final pushed head,
+exact-head remote clone, hosted status and stable 8780 receipt belong in the PR.
+
+Fenna's coat/scarf/satchel/boots and connected held coil replace her generic body.
+The grounded cart gains slats/axles/spokes/readable cargo. Existing dispatch moves
+both to the west road; explicit arrival opens the load. Original positions,
+interactions, once-only payment and all save owners remain unchanged. No migration:
+world/key 9, adventure 10. Both cameras and reduced-motion/pause routes remain.
+
+Local full gate: 57 syntax modules, 665/665 Node tests, 53 Python passes + 1 existing Windows skip, 24 command-earned journeys and 1,544 browser assertions across 18 suites; zero failures. See [task](development/FENNA_TASK_2026-10-01.md),
+[executed results](art/FENNA_RESULTS_2026-10-01.md), and
+[actual screenshots/video](evidence/fenna-drover/README.md). The shaft overlap was
+found, reproduced and corrected; interrupted proof remains separate from final.
+Full fresh clone and hosted receipts are delivery requirements, not historical claims.
+Heavy work stays on D. Dom is away; screenshot review is available, human gameplay
+acceptance stays pending. No main merge/public deployment/billing change.
+
+Prior checkpoint retained:
+
 # Ansel millwright presentation delivered,2026-10-01
 
 Review branch `gameplay/ansel-millwright`, stacked on PR 25

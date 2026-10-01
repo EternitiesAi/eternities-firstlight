@@ -162,3 +162,20 @@ test-owned callback alone is not evidence that app.js rendered a new frame.
 Keep isolated pixel contribution, full-scene readability, actual video, GPU frame
 intervals and human recognition/comfort as distinct evidence. Both cameras and
 all existing suites plus exact-head fresh clone remain delivery requirements.
+
+## Fenna drover presentation extension
+
+Read the dated Fenna task/results and actual screenshot receipts. `drover-art.js`
+is pure presentation: existing dispatch/arrival state chooses exact resident/cart
+anchors and opened cargo. `earth-story.js` retains consent, route and payment.
+No schedule, escort, material grant, player-appearance owner or save field moved.
+Simulation time freezes through pause/dialog; reduced motion retains one pose.
+The holding hand/coil and proper 3D limbs share actual transforms. Four wheel rims
+meet per-footprint ground; shafts must clear both actor and gathering approach.
+
+Preserve shape kinds when checking conservative actor bounds: Engine octa Y uses
+plus/minus 0.65 rather than box 0.5. Source/math tests alone missed the initial
+shaft overlap. Keep reproduced failures, interrupted proof, final exact-source
+gates and real full-scene screenshots distinct. Both cameras, all current suites
+and exact-head clean clone remain required. World/key 9, adventure 10 unchanged.
+Heavy work stays on D; no paid-provider/billing/personal-profile/merge/deploy action.

@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Fenna loaded at the mill fork \u00b7 third person",
+    "expression": "async()=>{const walk=async(x,z)=>{const r=Realm.test.move(x,z);if(!r.ok)throw Error(r.error);const start=performance.now();while(Realm.test.path.length){if(performance.now()-start>45000)throw Error('Walk timeout');await new Promise(r=>setTimeout(r,50));}};const key=k=>{document.dispatchEvent(new KeyboardEvent('keydown',{key:k,bubbles:true}));document.dispatchEvent(new KeyboardEvent('keyup',{key:k,bubbles:true}));};Realm.test.setTime(16);document.querySelector('[data-rpg=\"camera\"][data-id=\"adventure\"]').click();key('e');document.querySelector('[data-rpg=\"earth-confirm\"]').click();await walk(0,10);await walk(7,5);key('e');document.querySelector('[data-rpg=\"rain-accept\"]').click();document.querySelector('#rpg-close').click();await walk(7,4.2);Realm.test.view({yaw:-.15,elevation:.28,distance:8.2});Realm.test.render();return{story:Realm.state.adventure.earthStory,projection:Realm.diagnostics.camera.projection};}"
+  },
+  {
+    "name": "Fenna loaded at the mill fork \u00b7 diorama",
+    "expression": "()=>{document.querySelector('[data-rpg=\"camera\"][data-id=\"follow\"]').click();Realm.test.view({yaw:-.15,elevation:.78,zoom:.35,half:8});Realm.test.render();return{story:Realm.state.adventure.earthStory,projection:Realm.diagnostics.camera.projection,half:Realm.diagnostics.camera.half};}"
+  },
+  {
+    "name": "Fenna delivered at the west road \u00b7 third person",
+    "expression": "async()=>{const walk=async(x,z)=>{const r=Realm.test.move(x,z);if(!r.ok)throw Error(r.error);const start=performance.now();while(Realm.test.path.length){if(performance.now()-start>45000)throw Error('Walk timeout');await new Promise(r=>setTimeout(r,50));}};const key=k=>{document.dispatchEvent(new KeyboardEvent('keydown',{key:k,bubbles:true}));document.dispatchEvent(new KeyboardEvent('keyup',{key:k,bubbles:true}));};document.querySelector('[data-rpg=\"camera\"][data-id=\"adventure\"]').click();await walk(6,-3);key('e');document.querySelector('[data-rpg=\"rain-step\"][data-id=\"mill-root\"]').click();document.querySelector('#rpg-close').click();await walk(7,-7);key('e');document.querySelector('[data-rpg=\"rain-step\"][data-id=\"mill-gate\"]').click();document.querySelector('#rpg-close').click();await walk(7,5);key('e');document.querySelector('[data-rpg=\"rain-dispatch\"][data-id=\"mill\"]').click();document.querySelector('#rpg-close').click();await walk(13,-13);await walk(13,-32);await walk(0,-43);key('e');document.querySelector('[data-rpg=\"rain-arrive\"]').click();document.querySelector('#rpg-close').click();Realm.test.setTime(16);Realm.test.view({yaw:-.15,elevation:.28,distance:7.8});Realm.test.render();return{story:Realm.state.adventure.earthStory,wood:Realm.state.sandbox.inventory.wood,projection:Realm.diagnostics.camera.projection};}"
+  },
+  {
+    "name": "Fenna delivered at the west road \u00b7 diorama",
+    "expression": "()=>{document.querySelector('[data-rpg=\"camera\"][data-id=\"follow\"]').click();Realm.test.view({yaw:-.15,elevation:.78,zoom:.35,half:8});Realm.test.render();return{story:Realm.state.adventure.earthStory,projection:Realm.diagnostics.camera.projection,half:Realm.diagnostics.camera.half};}"
+  }
+]

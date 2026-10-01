@@ -1,0 +1,154 @@
+{
+  "base": "fd56ca00c0b66e65e3df05bdb0326918fa6c72b7",
+  "source_commit": "927ca4eead04844da6c717c8db923083d685209e",
+  "before_html": "cea685600e29dfffd6ac68f18e6e1364ff89bc57adba98382792fdbb6b6abe68",
+  "after_html": "80acee81727b5a030f6569e41ff1966cc3330400223bfda2df1d1155774fe079",
+  "hardware": "NVIDIA GeForce RTX 3080, 610.74, 10240",
+  "browser": "143.0.7499.4",
+  "webgl": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "vendor": "Google Inc. (NVIDIA)",
+    "drawing_buffer": {
+      "width": 1920,
+      "height": 1080
+    },
+    "device_pixel_ratio": 1,
+    "mode": "webgl2"
+  },
+  "samples_per_build": 1440,
+  "cases": [
+    {
+      "scene": "Fenna loaded at the mill fork \u00b7 third person",
+      "before_ms": {
+        "p50": 16.69999999999891,
+        "p90": 16.700000000000728,
+        "p95": 16.799999999999272,
+        "p99": 16.80000000000109,
+        "max": 16.80000000000109
+      },
+      "after_ms": {
+        "p50": 16.69999999999891,
+        "p90": 16.700000000000728,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000109,
+        "max": 16.80000000000109
+      },
+      "before_over33": 0,
+      "after_over33": 0,
+      "before_geometry": {
+        "instances": 2734,
+        "triangles": 111746,
+        "drawCalls": 33,
+        "texturedInstances": 16,
+        "texturedDrawCalls": 4
+      },
+      "after_geometry": {
+        "instances": 2831,
+        "triangles": 112590,
+        "drawCalls": 33,
+        "texturedInstances": 16,
+        "texturedDrawCalls": 4
+      }
+    },
+    {
+      "scene": "Fenna loaded at the mill fork \u00b7 diorama",
+      "before_ms": {
+        "p50": 16.700000000000728,
+        "p90": 16.700000000000728,
+        "p95": 16.700000000000728,
+        "p99": 16.799999999999272,
+        "max": 16.80000000000291
+      },
+      "after_ms": {
+        "p50": 16.700000000000728,
+        "p90": 16.700000000000728,
+        "p95": 16.799999999999272,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291
+      },
+      "before_over33": 0,
+      "after_over33": 0,
+      "before_geometry": {
+        "instances": 2734,
+        "triangles": 111746,
+        "drawCalls": 33,
+        "texturedInstances": 16,
+        "texturedDrawCalls": 4
+      },
+      "after_geometry": {
+        "instances": 2831,
+        "triangles": 112590,
+        "drawCalls": 33,
+        "texturedInstances": 16,
+        "texturedDrawCalls": 4
+      }
+    },
+    {
+      "scene": "Fenna delivered at the west road \u00b7 third person",
+      "before_ms": {
+        "p50": 16.69999999999709,
+        "p90": 16.700000000004366,
+        "p95": 16.700000000004366,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291
+      },
+      "after_ms": {
+        "p50": 16.69999999999709,
+        "p90": 16.700000000004366,
+        "p95": 16.700000000004366,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291
+      },
+      "before_over33": 0,
+      "after_over33": 0,
+      "before_geometry": {
+        "instances": 2746,
+        "triangles": 113430,
+        "drawCalls": 33,
+        "texturedInstances": 16,
+        "texturedDrawCalls": 4
+      },
+      "after_geometry": {
+        "instances": 2834,
+        "triangles": 112010,
+        "drawCalls": 48,
+        "texturedInstances": 16,
+        "texturedDrawCalls": 4
+      }
+    },
+    {
+      "scene": "Fenna delivered at the west road \u00b7 diorama",
+      "before_ms": {
+        "p50": 16.69999999999709,
+        "p90": 16.700000000004366,
+        "p95": 16.700000000004366,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291
+      },
+      "after_ms": {
+        "p50": 16.69999999999709,
+        "p90": 16.700000000004366,
+        "p95": 16.700000000004366,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291
+      },
+      "before_over33": 0,
+      "after_over33": 0,
+      "before_geometry": {
+        "instances": 2746,
+        "triangles": 113430,
+        "drawCalls": 33,
+        "texturedInstances": 16,
+        "texturedDrawCalls": 4
+      },
+      "after_geometry": {
+        "instances": 2834,
+        "triangles": 112010,
+        "drawCalls": 33,
+        "texturedInstances": 16,
+        "texturedDrawCalls": 4
+      }
+    }
+  ],
+  "limits": "Normal RAF intervals in isolated headless Chromium, device scale 1; 1.5-second setup warmup excluded. No video capture or accelerated ticks during sampling. Browser-frame intervals are not GPU render time, monitor presentation timing or human qualification."
+}
