@@ -6,9 +6,12 @@ const ROOM='earth-hearthwater-approach';
 const GATE=Object.freeze({x:0,z:23});
 const ENTRY=Object.freeze({x:0,z:24,yaw:Math.PI});
 const RIVER_GATE=Object.freeze({x:-13,z:4});
+// Rules and art share the supported deck. Its flanking channel is water.
+const BRIDGE=Object.freeze({id:'hearthwater-lake-bridge-v1',x:0,z:19.5,w:3.7,walkWidth:3.22,d:15,from:12,to:27,deck:1.57,piers:Object.freeze([12,15.75,19.5,23.25,27])});
 const PATCHES=Object.freeze([
- {id:'arrival',x:0,z:21,w:10,d:14},
- {id:'south-meadow',x:0,z:10,w:22,d:12},
+ {id:'arrival',x:0,z:27.5,w:10,d:1},
+ {id:'bridge',x:BRIDGE.x,z:BRIDGE.z,w:BRIDGE.walkWidth,d:BRIDGE.d},
+ {id:'south-meadow',x:0,z:8,w:22,d:8},
  {id:'orchard-lane',x:-9,z:-1,w:14,d:16},
  {id:'mill-road',x:8,z:-2,w:14,d:16},
  {id:'west-track',x:-13,z:-17,w:10,d:26},
@@ -137,6 +140,6 @@ function pick(start,ray,max=420){
  }
  return null;
 }
-const api={ROOM,GATE,ENTRY,RIVER_GATE,PATCHES,SOLIDS,POINTS,height,land,walkable,segment,line,near,preview,cancel,enter,leave,riverTrip,backToApproach,recover,pick};
+const api={ROOM,GATE,ENTRY,RIVER_GATE,BRIDGE,PATCHES,SOLIDS,POINTS,height,land,walkable,segment,line,near,preview,cancel,enter,leave,riverTrip,backToApproach,recover,pick};
 G.RealmEarth=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

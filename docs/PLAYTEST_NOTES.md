@@ -1,3 +1,26 @@
+# A crossing to remember, 2026-10-01
+
+Dom imagined realistic water beneath a long bridge, a traveller running from the
+side, mountains and a cloudy sky. His continuation authorized a playable prototype
+interpretation. Actual third-person/diorama RTX screenshots and a normal-time
+32.52-second gameplay video show that implementation; the previous generated
+image remains aspirational concept material, not gameplay or final canon.
+
+No new human playtest occurred. Screenshot questions: does this crossing make you
+want to pause and look? Can you read the running traveller? Which view feels best?
+Later fresh/returning play should check route/control/camera comfort. Earlier
+ordinary combat/reward/discovery/gathering questions remain pending.
+
+Review confirms the larger separated-leg traveller, open arches, moved sign,
+ridged mountains and broken water reflections. Remaining visible limits: near
+rail masks some feet, arrival bank is abruptly rectangular, water is mirror-like,
+mountains densely faceted. No image-level realism/memorability claim follows.
+Source/full-gate tests, actual submitted RAF state and isolated framebuffer pixels,
+actual gameplay recording, short RTX intervals and human approval are separate.
+Geometry failures/interrupted proof were fixed and retained before final gates.
+
+Prior checkpoint retained:
+
 # Fenna and a cart you can read, 2026-10-01
 
 Dom is away and asked for screenshots while development continues. Actual loaded

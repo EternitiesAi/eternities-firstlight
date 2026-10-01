@@ -1,3 +1,31 @@
+# Bridge readability and a natural bank transition
+
+Read `docs/art/BRIDGE_MOMENT_RESULTS_2026-10-01.md`, the actual gameplay evidence
+and current stacked `gameplay/bridge-moment` PR. Fetch newer heads/comments first.
+Dom's vision was implemented as a bounded prototype crossing, preserving both
+camera styles. It has not received a new founder playtest or final beauty approval.
+
+Review the screenshots/clip while away: does this feel like a place to remember?
+Is the running traveller readable through the rails? Which camera frames it best?
+When available, try one fresh and one returning character, explicit bridge-side
+framing, V/R/orbit and the existing controls; retain prior combat/reward/discovery/
+gathering/comfort questions.
+
+Next bounded visual refinement: blend the square arrival landing into a natural
+continuing bank, soften reflection dominance and add depth between mountain layers.
+Keep the authoritative supported corridor, anchors and actual outward vault geometry.
+Measure any material/geometry change against the current exact build. Do not
+promise image-level photorealism, swimming or a new region from backdrop art.
+Darric's earlier quarry/cast proposal remains a separate candidate after feedback.
+
+World/key9, adventure10 and all save/economy/story/equipment/companion/roster/creative
+owners stay protected. No paid pipeline, engine rewrite or material-pack expansion
+without scope and measured import proof. Heavy work stays on D. Preserve stable
+8780 origin and verify launcher ownership/build before refreshing. No automatic
+main merge/public deployment/billing changes/personal-profile access.
+
+Prior checkpoint retained:
+
 # A coherent cast and screenshot acceptance
 
 Read `docs/art/FENNA_RESULTS_2026-10-01.md` and the current

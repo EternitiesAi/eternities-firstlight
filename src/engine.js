@@ -29,12 +29,42 @@ M.reflectY = function(height=WATER_HEIGHT) {
 function reflectionVP(viewProjection,height=WATER_HEIGHT) {
  return M.mul(viewProjection,M.reflectY(height));
 }
+// Clouds and their reflection share world rays. Mirroring an already-derived
+// basis preserves horizontal handedness, unlike rebuilding a mirrored lookAt.
+function skyFrame(camera,reflected=false){
+ const forward=norm(sub(camera.target,camera.eye)),right=norm(cross(forward,[0,1,0])),up=cross(right,forward);
+ const mirror=v=>v.map((n,i)=>i===1&&reflected?-n:n);
+ return{eye:camera.eye.map((n,i)=>i===1&&reflected?2*WATER_HEIGHT-n:n),right:mirror(right),up:mirror(up),forward:mirror(forward),perspective:camera.projection==='perspective',spread:camera.projection==='perspective'?Math.tan(camera.fov*Math.PI/360):camera.half,aspect:camera.aspect};
+}
 function geometry(kind){let v=[],timber=kind==='timber-panel';function tri(a,b,c){let n=norm(cross(sub(b,a),sub(c,a)));for(let p of[a,b,c]){v.push(...p,...(kind==='round'?norm(p):n));if(timber){
  // One board strip, with grain along local X; end faces use local Z. Deriving
  // UVs from position keeps both triangles and opposite faces in phase.
  const along=Math.abs(n[0])>.5?p[2]:p[0],across=Math.abs(n[1])>.5?p[2]:p[1];v.push(.1+(across+.5)*.1,along+.5);
  }}}function q(a,b,c,d){tri(a,b,c);tri(a,c,d);}
  if(kind==='box'||timber){let n=-.5,p=.5;q([n,n,p],[p,n,p],[p,p,p],[n,p,p]);q([p,n,n],[n,n,n],[n,p,n],[p,p,n]);q([p,n,p],[p,n,n],[p,p,n],[p,p,p]);q([n,n,n],[n,n,p],[n,p,p],[n,p,n]);q([n,p,p],[p,p,p],[p,p,n],[n,p,n]);q([n,n,n],[p,n,n],[p,n,p],[n,n,p]);}
+ else if(kind==='bridge-vault'){
+  // Metre-sized ellipse/spandrel in Y/Z, unit-width extrusion in X. The open
+  // underside reaches y=1.1; its flat crown meets the deck at y=1.27.
+  const point=(i,x,outer)=>{const t=i/12*Math.PI;return[x,outer?1.27:Math.sin(t)*1.1,Math.cos(t)*(outer?1.875:1.595)];};
+  for(let i=0;i<12;i++){
+   q(point(i,.5,false),point(i+1,.5,false),point(i+1,.5,true),point(i,.5,true));
+   q(point(i,-.5,true),point(i+1,-.5,true),point(i+1,-.5,false),point(i,-.5,false));
+   q(point(i+1,-.5,false),point(i+1,.5,false),point(i,.5,false),point(i,-.5,false));
+   q(point(i,.5,true),point(i+1,.5,true),point(i+1,-.5,true),point(i,-.5,true));
+  }
+  q(point(0,.5,false),point(0,.5,true),point(0,-.5,true),point(0,-.5,false));
+  q(point(12,-.5,false),point(12,-.5,true),point(12,.5,true),point(12,.5,false));
+ }
+ else if(kind==='mountain-ridge'){
+  // Original bounded height mesh: asymmetric ridges, saddles and rock facets.
+  // No texture/asset/importer; unlike cones the silhouette has multiple peaks.
+  const p=(i,j)=>{const x=i/14-.5,z=j/12-.5,u=x*2,w=z*2;
+   const ridge=Math.max(.94*Math.exp(-((u+.28)**2/.30+(w-.12)**2/.8)),.78*Math.exp(-((u-.36)**2/.18+(w+.36)**2/.25)),.64*Math.exp(-((u+.04)**2/.1+(w+.55)**2/.18)));
+   const edge=Math.pow(Math.max(0,(1-Math.abs(u))*(1-Math.abs(w))),.28),rock=.88+.075*Math.sin(u*18+w*8)+.045*Math.sin(u*35-w*15);
+   return[x,ridge*edge*rock,z];
+  };
+  for(let i=0;i<14;i++)for(let j=0;j<12;j++)q(p(i,j),p(i,j+1),p(i+1,j+1),p(i+1,j));
+ }
  else if(kind==='round'){let n=16,m=10,p=(i,j)=>{let a=i/n*Math.PI*2,b=-Math.PI/2+j/m*Math.PI;return[Math.cos(a)*Math.cos(b)*.5,Math.sin(b)*.5,Math.sin(a)*Math.cos(b)*.5];};for(let i=0;i<n;i++)for(let j=0;j<m;j++)q(p(i,j),p(i,j+1),p(i+1,j+1),p(i+1,j));}
  else if(kind==='ring'){let n=24,m=6,p=(i,j)=>{let a=i/n*Math.PI*2,b=j/m*Math.PI*2,r=.44+.055*Math.cos(b);return[Math.cos(a)*r,Math.sin(a)*r,Math.sin(b)*.055];};for(let i=0;i<n;i++)for(let j=0;j<m;j++)q(p(i,j),p(i+1,j),p(i+1,j+1),p(i,j+1));}
  else if(kind==='roof'){let a=[-.5,0,-.5],b=[.5,0,-.5],c=[.5,0,.5],d=[-.5,0,.5],e=[0,1,-.5],f=[0,1,.5];tri(a,e,b);tri(d,c,f);q(a,d,f,e);q(b,e,f,c);q(a,b,c,d);}
@@ -60,7 +90,29 @@ void main(){if(uClip>.5&&vPos.y<.025)discard;
 const FULL=`#version 300 es
 precision highp float;out vec2 vUV;void main(){vec2 p=vec2((gl_VertexID<<1)&2,gl_VertexID&2);vUV=p;gl_Position=vec4(p*2.-1.,0.,1.);}`;
 const SKY=`#version 300 es
-precision highp float;in vec2 vUV;out vec4 frag;uniform vec3 uTop;uniform vec3 uBottom;uniform float uNight;uniform float uTime;void main(){vec3 c=mix(uBottom,uTop,pow(clamp(vUV.y,0.,1.),.65));vec2 st=floor(vUV*vec2(600.,340.));float s=step(.9982,fract(sin(dot(st,vec2(127.1,311.7)))*43758.5453));vec2 sp=fract(vUV*vec2(600.,340.))-.5;c+=s*exp(-dot(sp,sp)*22.)*uNight*.6;frag=vec4(c,1.);}`;
+precision highp float;in vec2 vUV;out vec4 frag;
+uniform vec3 uTop,uBottom,uSkyEye,uSkyRight,uSkyUp,uSkyForward;
+uniform float uNight,uTime,uEarthClouds,uSkyPerspective;uniform vec2 uSkySpread;
+float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);vec2 k=vec2(127.1,311.7);return mix(mix(fract(sin(dot(i,k))*43758.5453),fract(sin(dot(i+vec2(1.,0.),k))*43758.5453),f.x),mix(fract(sin(dot(i+vec2(0.,1.),k))*43758.5453),fract(sin(dot(i+1.,k))*43758.5453),f.x),f.y);}
+float cloud(vec2 p){return noise(p)*.53+noise(p*2.03+13.1)*.27+noise(p*4.07+31.7)*.13+noise(p*8.11)*.07;}
+void main(){
+ vec3 c=mix(uBottom,uTop,pow(clamp(vUV.y,0.,1.),.65));
+ vec2 st=floor(vUV*vec2(600.,340.));float s=step(.9982,fract(sin(dot(st,vec2(127.1,311.7)))*43758.5453));vec2 sp=fract(vUV*vec2(600.,340.))-.5;c+=s*exp(-dot(sp,sp)*22.)*uNight*.6;
+ if(uEarthClouds>.5){
+  vec2 ndc=vUV*2.-1.,offset=ndc*uSkySpread.x*vec2(uSkySpread.y,1.);
+  vec3 ray=normalize(uSkyForward+(uSkyRight*offset.x+uSkyUp*offset.y)*uSkyPerspective);
+  vec3 origin=uSkyEye+(uSkyRight*offset.x+uSkyUp*offset.y)*(1.-uSkyPerspective);
+  c=mix(uBottom,uTop,pow(max(ray.y,0.),.45));
+  if(ray.y>.015){
+   vec2 p=(origin.xz+ray.xz*(85.-origin.y)/ray.y)*.012+vec2(uTime*.003,0.);
+   float n=cloud(p),mask=smoothstep(.34,.61,n)*smoothstep(.015,.08,ray.y);
+   vec3 shade=mix(vec3(.46,.53,.55),vec3(.94,.93,.86),smoothstep(.37,.66,n));
+   shade=mix(shade,vec3(.12,.17,.24),uNight*.84);
+   c=mix(c,shade,mask*.92);
+  }
+ }
+ frag=vec4(c,1.);
+}`;
 const WV=`#version 300 es
 precision highp float;
 layout(location=0)in vec3 aPos;
@@ -74,23 +126,27 @@ precision highp float;
 in vec3 vPos;in vec4 vReflect;out vec4 frag;
 uniform sampler2D uReflect;
 uniform vec3 uEye,uSun,uSunColor,uFog;
-uniform float uTime,uSunPower,uNight,uReflectionOn,uCelestial,uReflectionStrength,uWaterStill,uRoad,uCrossing;
+uniform float uTime,uSunPower,uNight,uReflectionOn,uCelestial,uReflectionStrength,uWaterStill,uRoad,uCrossing,uEarth,uEarthCurrent,uPierCount;
+uniform vec4 uEarthChannel;
 uniform vec2 uReflectionTexel;
-float coast(vec2 p){if(uCrossing>.5)return max(max(abs(p.x)-21.,abs(p.y+1.)-29.),1.5-abs(p.x-16.-sin(p.y*.13)*.6));if(uRoad>.5)return max((length(vec2(p.x,p.y+3.)/vec2(18.,26.))-1.)*18.,1.8-abs(p.y-sin(p.x*.13)*.6));float a=atan(p.y,p.x);float r=23.4+sin(3.*a+.3)*1.25+sin(7.*a)*.6;float first=length(p)-r;float second=length((p-vec2(37.,2.))*vec2(.95,1.))-11.6;float third=length((p-vec2(0.,-40.))*vec2(1.,.92))-11.4;return min(min(first,second),third);}
+float coast(vec2 p){if(uEarth>.5)return min(abs(p.y-uEarthChannel.x),abs(p.y-uEarthChannel.y));if(uCrossing>.5)return max(max(abs(p.x)-21.,abs(p.y+1.)-29.),1.5-abs(p.x-16.-sin(p.y*.13)*.6));if(uRoad>.5)return max((length(vec2(p.x,p.y+3.)/vec2(18.,26.))-1.)*18.,1.8-abs(p.y-sin(p.x*.13)*.6));float a=atan(p.y,p.x);float r=23.4+sin(3.*a+.3)*1.25+sin(7.*a)*.6;float first=length(p)-r;float second=length((p-vec2(37.,2.))*vec2(.95,1.))-11.6;float third=length((p-vec2(0.,-40.))*vec2(1.,.92))-11.4;return min(min(first,second),third);}
 void main(){
  vec2 p=vPos.xz;
  float a=dot(p,vec2(.58,.23))+uTime*.75;
  float b=dot(p,vec2(-.29,1.13))-uTime*.51;
  float c=dot(p,vec2(1.41,.72))+uTime*.29;
  vec2 slope=(vec2(.58,.23)*cos(a)*.05+vec2(-.29,1.13)*cos(b)*.024+vec2(1.41,.72)*cos(c)*.009)*(1.-uWaterStill);
+ // Earth current has layered short ripples; it remains a surface approximation,
+ // with the same physical reflection plane, rather than a fluid simulation.
+ if(uEarth>.5&&uEarthCurrent>.5)slope+=(vec2(3.7,.9)*cos(dot(p,vec2(3.7,.9))-uTime*2.2)*.007+vec2(-1.8,6.1)*cos(dot(p,vec2(-1.8,6.1))-uTime*1.7)*.003)*(1.-uWaterStill);
  vec3 N=normalize(vec3(-slope.x,1.,-slope.y)),V=normalize(uEye-vPos);
  // Project into the SAME reflected VP used to render the texture. Do not flip x or y.
  vec2 uv=vReflect.xy/vReflect.w*.5+.5;
- vec2 drift=slope*.017;
+ vec2 drift=slope*(uEarth>.5?.055:.017);
  vec2 sampleUV=uv+drift;
  float edge=smoothstep(0.,.018,min(min(sampleUV.x,sampleUV.y),min(1.-sampleUV.x,1.-sampleUV.y)));
  vec3 ref=texture(uReflect,clamp(sampleUV,vec2(.001),vec2(.999))).rgb;
- vec2 blur=uReflectionTexel*(.45+length(uEye-vPos)*.004)*(1.-uWaterStill);
+ vec2 blur=uReflectionTexel*(.45+length(uEye-vPos)*.004+(uEarth>.5?1.4:0.))*(1.-uWaterStill);
  ref=ref*.60+(texture(uReflect,clamp(sampleUV+vec2(blur.x,0.),vec2(.001),vec2(.999))).rgb+texture(uReflect,clamp(sampleUV-vec2(blur.x,0.),vec2(.001),vec2(.999))).rgb+texture(uReflect,clamp(sampleUV+vec2(0.,blur.y),vec2(.001),vec2(.999))).rgb+texture(uReflect,clamp(sampleUV-vec2(0.,blur.y),vec2(.001),vec2(.999))).rgb)*.10;
  float shore=coast(p);
  vec3 deep=mix(vec3(.032,.135,.165),vec3(.012,.035,.073),uNight);
@@ -103,6 +159,12 @@ void main(){
  col+=uSunColor*spark*uSunPower*.38;
  float wave=.5+.5*sin(shore*8.-uTime*1.3+sin(p.x*.4)*.6);
  float foam=exp(-max(shore,0.)*2.4)*smoothstep(-.12,.32,shore)*pow(wave,5.);
+ if(uEarth>.5){
+  foam*=1.-smoothstep(14.,25.,abs(p.x));
+  float dx=max(0.,p.x-2.05),wake=0.;
+  for(int i=0;i<8;i++){if(float(i)>=uPierCount)break;float z=uEarthChannel.z+float(i)*uEarthChannel.w;float width=.15+dx*.13;float trail=exp(-pow((p.y-z)/width,2.))*exp(-dx*.29)*smoothstep(0.,.5,p.x-2.05);wake=max(wake,trail);}
+  foam+=wake*(.45+.35*sin(p.x*6.3-p.y*4.1-uTime*2.))*uEarthCurrent;
+ }
  col+=mix(vec3(.13,.22,.19),vec3(.05,.10,.13),uNight)*foam*(1.-uCelestial);
  // Small surface variation, not the opaque parallel stripes of the old water.
  col+=vec3(.012,.022,.023)*pow(max(0.,sin(a+b*.4)),18.)*(.2+uSunPower*.3);
@@ -210,7 +272,7 @@ class Engine{
  }
  singleVAO(data,n){let g=this.gl,v=g.createVertexArray(),b=g.createBuffer();g.bindVertexArray(v);g.bindBuffer(g.ARRAY_BUFFER,b);g.bufferData(g.ARRAY_BUFFER,data,g.STATIC_DRAW);g.enableVertexAttribArray(0);g.vertexAttribPointer(0,n,g.FLOAT,false,n*4,0);g.bindVertexArray(null);return v;}
  programOf(vs,fs){let g=this.gl;function c(type,s){let o=g.createShader(type);g.shaderSource(o,s);g.compileShader(o);if(!g.getShaderParameter(o,g.COMPILE_STATUS))throw new Error(g.getShaderInfoLog(o));return o;}let p=g.createProgram(),v=c(g.VERTEX_SHADER,vs),f=c(g.FRAGMENT_SHADER,fs);g.attachShader(p,v);g.attachShader(p,f);g.linkProgram(p);if(!g.getProgramParameter(p,g.LINK_STATUS))throw new Error(g.getProgramInfoLog(p));g.deleteShader(v);g.deleteShader(f);return p;}
- uni(p,n,t,v){let g=this.gl,c=this.cache.get(p);if(!c){c=new Map();this.cache.set(p,c);}if(!c.has(n))c.set(n,g.getUniformLocation(p,n));let l=c.get(n);if(l===null)return;if(t==='m')g.uniformMatrix4fv(l,false,v);else if(t==='3')g.uniform3fv(l,v);else if(t==='2')g.uniform2fv(l,v);else if(t==='i')g.uniform1i(l,v);else g.uniform1f(l,v);}
+ uni(p,n,t,v){let g=this.gl,c=this.cache.get(p);if(!c){c=new Map();this.cache.set(p,c);}if(!c.has(n))c.set(n,g.getUniformLocation(p,n));let l=c.get(n);if(l===null)return;if(t==='m')g.uniformMatrix4fv(l,false,v);else if(t==='4')g.uniform4fv(l,v);else if(t==='3')g.uniform3fv(l,v);else if(t==='2')g.uniform2fv(l,v);else if(t==='i')g.uniform1i(l,v);else g.uniform1f(l,v);}
  framebuffer(w,h){let g=this.gl,f=g.createFramebuffer(),tex=g.createTexture(),depth=g.createRenderbuffer();g.bindTexture(g.TEXTURE_2D,tex);g.texImage2D(g.TEXTURE_2D,0,g.RGBA,w,h,0,g.RGBA,g.UNSIGNED_BYTE,null);for(let p of[g.TEXTURE_MIN_FILTER,g.TEXTURE_MAG_FILTER])g.texParameteri(g.TEXTURE_2D,p,g.LINEAR);for(let p of[g.TEXTURE_WRAP_S,g.TEXTURE_WRAP_T])g.texParameteri(g.TEXTURE_2D,p,g.CLAMP_TO_EDGE);g.bindRenderbuffer(g.RENDERBUFFER,depth);g.renderbufferStorage(g.RENDERBUFFER,g.DEPTH_COMPONENT16,w,h);g.bindFramebuffer(g.FRAMEBUFFER,f);g.framebufferTexture2D(g.FRAMEBUFFER,g.COLOR_ATTACHMENT0,g.TEXTURE_2D,tex,0);g.framebufferRenderbuffer(g.FRAMEBUFFER,g.DEPTH_ATTACHMENT,g.RENDERBUFFER,depth);g.bindFramebuffer(g.FRAMEBUFFER,null);return{f,tex,depth,w,h};}
  resizeFB(f,w,h){if(f.w===w&&f.h===h)return;let g=this.gl;f.w=w;f.h=h;g.bindTexture(g.TEXTURE_2D,f.tex);g.texImage2D(g.TEXTURE_2D,0,g.RGBA,w,h,0,g.RGBA,g.UNSIGNED_BYTE,null);g.bindRenderbuffer(g.RENDERBUFFER,f.depth);g.renderbufferStorage(g.RENDERBUFFER,g.DEPTH_COMPONENT16,w,h);}
  createShadow(){let g=this.gl;this.shadowF=g.createFramebuffer();this.shadowTex=g.createTexture();g.bindTexture(g.TEXTURE_2D,this.shadowTex);g.texImage2D(g.TEXTURE_2D,0,g.DEPTH_COMPONENT24,this.shadowSize,this.shadowSize,0,g.DEPTH_COMPONENT,g.UNSIGNED_INT,null);for(let p of[g.TEXTURE_MIN_FILTER,g.TEXTURE_MAG_FILTER])g.texParameteri(g.TEXTURE_2D,p,g.NEAREST);for(let p of[g.TEXTURE_WRAP_S,g.TEXTURE_WRAP_T])g.texParameteri(g.TEXTURE_2D,p,g.CLAMP_TO_EDGE);g.bindFramebuffer(g.FRAMEBUFFER,this.shadowF);g.framebufferTexture2D(g.FRAMEBUFFER,g.DEPTH_ATTACHMENT,g.TEXTURE_2D,this.shadowTex,0);g.drawBuffers([g.NONE]);g.readBuffer(g.NONE);g.bindFramebuffer(g.FRAMEBUFFER,null);}
@@ -236,13 +298,13 @@ class Engine{
  batch(kind,items,dynamic=false){let g=this.gl,geom=this.meshes.get(kind);if(!geom){let data=geometry(kind),buffer=g.createBuffer();g.bindBuffer(g.ARRAY_BUFFER,buffer);g.bufferData(g.ARRAY_BUFFER,data,g.STATIC_DRAW);geom={buffer,stride:kind==='timber-panel'?8:6,count:data.length/(kind==='timber-panel'?8:6)};this.meshes.set(kind,geom);}let vao=g.createVertexArray(),buf=g.createBuffer();g.bindVertexArray(vao);g.bindBuffer(g.ARRAY_BUFFER,geom.buffer);for(let i=0;i<2;i++){g.enableVertexAttribArray(i);g.vertexAttribPointer(i,3,g.FLOAT,false,geom.stride*4,i*12);}if(kind==='timber-panel'){g.enableVertexAttribArray(8);g.vertexAttribPointer(8,2,g.FLOAT,false,32,24);}g.bindBuffer(g.ARRAY_BUFFER,buf);for(let i=0;i<4;i++){g.enableVertexAttribArray(i+2);g.vertexAttribPointer(i+2,4,g.FLOAT,false,96,i*16);g.vertexAttribDivisor(i+2,1);}for(let i=6;i<8;i++){g.enableVertexAttribArray(i);g.vertexAttribPointer(i,4,g.FLOAT,false,96,i===6?64:80);g.vertexAttribDivisor(i,1);}g.bindVertexArray(null);let b={kind,vao,buf,geom,items,dynamic,count:items.length};this.updateBatch(b);if(!dynamic){this.cameraSolids=this.cameraSolids||[];this.cameraSolids.push(...items.map(it=>solidBounds(kind,it)).filter(Boolean));}(dynamic?this.dynamic:this.batches).push(b);return b;}
  updateBatch(b){let g=this.gl;if(!b.data||b.data.length!==b.items.length*24)b.data=new Float32Array(b.items.length*24);for(let i=0;i<b.items.length;i++){let it=b.items[i],o=i*24;b.data.set(it.m||M.compose(...it.p,...it.s,...(it.r||[0,0,0])),o);b.data.set([...hex(it.c),it.cutaway?0:(it.alpha??1)],o+16);b.data.set([it.rough??.8,it.em??0,it.skyImage?3:(it.wind??0),it.terrain?-1:(it.wet??0)],o+20);}g.bindBuffer(g.ARRAY_BUFFER,b.buf);g.bufferData(g.ARRAY_BUFFER,b.data,b.dynamic?g.DYNAMIC_DRAW:g.STATIC_DRAW);b.count=b.items.length;if(b.dynamic)b.cameraSolids=b.items.filter(it=>it.cameraSolid).map(it=>solidBounds(b.kind,it)).filter(Boolean);}
  clear(){let g=this.gl;for(let b of[...this.batches,...this.dynamic]){g.deleteBuffer(b.buf);g.deleteVertexArray(b.vao);}this.batches=[];this.dynamic=[];this.cameraSolids=[];this.lastShadow=-1;}
- sky(pal,t){let g=this.gl,p=this.skyP;g.disable(g.DEPTH_TEST);g.depthMask(false);g.useProgram(p);this.uni(p,'uTop','3',pal.top);this.uni(p,'uBottom','3',pal.fog);this.uni(p,'uNight','f',this.theme==='cosmos'?0:pal.night);this.uni(p,'uTime','f',t);g.bindVertexArray(this.emptyVAO);g.drawArrays(g.TRIANGLES,0,3);g.enable(g.DEPTH_TEST);g.depthMask(true);}
+ sky(pal,t,reflected=false){let g=this.gl,p=this.skyP;const frame=skyFrame(this.camera,reflected);g.useProgram(p);this.uni(p,'uEarthClouds','f',this.theme==='earth'&&this.cloudsEnabled!==false?1:0);this.uni(p,'uSkyPerspective','f',frame.perspective?1:0);this.uni(p,'uSkySpread','2',[frame.spread,frame.aspect]);for(const [n,v]of[['uSkyEye',frame.eye],['uSkyRight',frame.right],['uSkyUp',frame.up],['uSkyForward',frame.forward]])this.uni(p,n,'3',v);g.disable(g.DEPTH_TEST);g.depthMask(false);g.useProgram(p);this.uni(p,'uTop','3',pal.top);this.uni(p,'uBottom','3',pal.fog);this.uni(p,'uNight','f',this.theme==='cosmos'?0:pal.night);this.uni(p,'uTime','f',this.reducedMotion?0:t);g.bindVertexArray(this.emptyVAO);g.drawArrays(g.TRIANGLES,0,3);g.enable(g.DEPTH_TEST);g.depthMask(true);}
  geometryPass(p,vp,pal,t,eye,ref=false,depth=false){if(this._contextLost)return;let g=this.gl;g.useProgram(p);this.uni(p,'uVP','m',vp);this.uni(p,'uLight','m',this.lightVP);this.uni(p,'uTime','f',this.reducedMotion?0:t);if(!depth){this.uni(p,'uCutaway','f',!ref&&this.cutaway?1:0);this.uni(p,'uFocus','3',this.cutawayFocus||this.camera.target);this.uni(p,'uTorch','3',this.torch||[0,0,0]);this.uni(p,'uTorchPower','f',this.theme==='underways'?1.8:0);for(let [n,v]of[['uEye',eye],['uSun',pal.sun],['uSunColor',pal.sunColor],['uFog',pal.fog]])this.uni(p,n,'3',v);for(let[n,v]of[['uSunPower',pal.power],['uAmbient',this.ambientOverride??(this.isInterior?.62:pal.ambient)],['uShadowSize',this.shadowSize],['uShadowOn',this.quality==='low'?0:1],['uWet',pal.wet],['uNight',pal.night],['uClip',ref?1:0]])this.uni(p,n,'f',v);g.activeTexture(g.TEXTURE0);g.bindTexture(g.TEXTURE_2D,this.shadowTex);this.uni(p,'uShadow','i',0);this.uni(p,'uTimberColor','i',3);this.uni(p,'uTimberRoughness','i',4);this.uni(p,'uTimberReference','3',this._surfaceReference||TIMBER_REFERENCE);if(this._surfaceTextures){g.activeTexture(g.TEXTURE3);g.bindTexture(g.TEXTURE_2D,this._surfaceTextures.color);g.activeTexture(g.TEXTURE4);g.bindTexture(g.TEXTURE_2D,this._surfaceTextures.roughness);}}for(let b of[...this.batches,...this.dynamic]){if(depth&&b.kind==='leaf')continue;if(!depth){const textured=b.kind==='timber-panel'&&this.surfaceMaterialsEnabled!==false&&this.surfaceMaterialInfo.ready;this.uni(p,'uTimberOn','f',textured?1:0);if(textured&&b.count){this.texturedCalls=(this.texturedCalls||0)+1;if(!ref)this.texturedInstances=(this.texturedInstances||0)+b.count;}}g.bindVertexArray(b.vao);g.drawArraysInstanced(g.TRIANGLES,0,b.geom.count,b.count);this.calls++;}}
  palette(hour,rain){let n=hour>=20||hour<5.5?1:hour<7?(7-hour)/1.5:hour>18?(hour-18)/2:0,w=hour>15&&hour<20?Math.max(0,1-Math.abs(hour-17.6)/2.5):.16,top=blend(hex(0x718e9a),hex(0x111c37),n),fog=blend(blend(hex(0xa8b5ac),hex(0xe0c297),w*.55),hex(0x1c304a),n);if(rain){top=blend(top,hex(0x3d5568),.48);fog=blend(fog,hex(0x667f88),.46);}return{night:n,top,fog,sun:norm([-.55,.9,.52]),sunColor:blend(hex(0xffecd0),hex(0xb0d0ff),n),power:(1.28-n*.99)*(rain?.55:1),ambient:(.50-n*.16)*(rain?.88:1),wet:rain?1:.4};}
  render(time,hour,rain){let g=this.gl,pal=this.palette(hour,rain);if(this._contextLost)return pal;if(this.siege){pal={...pal,top:blend(pal.top,hex(0x4b2d48),this.siege*.5),fog:blend(pal.fog,hex(0xa0798a),this.siege*.25)};}if(this.theme==='underways'){pal={...pal,top:hex(0x101d30),fog:hex(0x152e3b),night:.8,power:.24,ambient:.34,sunColor:hex(0xb7d4d4),wet:.7};}if(this.theme==='cosmos'){pal={...pal,top:hex(0x111c38),fog:hex(0x44455f),night:.62,power:.72,ambient:.55,sun: norm([-.4,.75,.35]),sunColor:hex(0xf0dcc2),wet:0};}this.calls=0;this.texturedCalls=0;this.texturedInstances=0;for(let b of this.dynamic)this.updateBatch(b);g.enable(g.DEPTH_TEST);g.depthFunc(g.LEQUAL);g.disable(g.CULL_FACE);g.disable(g.BLEND);let close=this.camera.projection==='perspective',focus=close?this.camera.target.map(v=>Math.round(v*16)/16):this.isInterior?[0,0,0]:[12,0,0],le=pal.sun.map((v,i)=>v*85+focus[i]);if(this.quality!=='low'&&(time-this.lastShadow>(close?.08:.18)||this.lastShadow<0)){this.lightVP=M.mul(M.ortho(close?-24:-52,close?24:52,close?-24:-43,close?24:43,1,210),M.look(le,focus));g.bindFramebuffer(g.FRAMEBUFFER,this.shadowF);g.viewport(0,0,this.shadowSize,this.shadowSize);g.clear(g.DEPTH_BUFFER_BIT);g.colorMask(false,false,false,false);g.enable(g.POLYGON_OFFSET_FILL);g.polygonOffset(1.2,2.0);this.geometryPass(this.depthP,this.lightVP,pal,time,le,false,true);g.disable(g.POLYGON_OFFSET_FILL);g.colorMask(true,true,true,true);this.lastShadow=time;}
- let reflection=!this.isInterior&&!this.noWater&&this.quality!=='low';if(reflection){g.bindFramebuffer(g.FRAMEBUFFER,this.refF.f);g.viewport(0,0,this.refF.w,this.refF.h);g.clearColor(...pal.fog,1);g.clear(g.COLOR_BUFFER_BIT|g.DEPTH_BUFFER_BIT);this.sky(pal,time);let eye=[this.camera.eye[0],2*WATER_HEIGHT-this.camera.eye[1],this.camera.eye[2]];this.reflectionMatrix=reflectionVP(this.vp);this.reflectionInfo={method:'world-plane P*V*H',height:WATER_HEIGHT,horizontalFlip:false};this.geometryPass(this.program,this.reflectionMatrix,pal,time,eye,true);}
+ let reflection=!this.isInterior&&!this.noWater&&this.quality!=='low';if(reflection){g.bindFramebuffer(g.FRAMEBUFFER,this.refF.f);g.viewport(0,0,this.refF.w,this.refF.h);g.clearColor(...pal.fog,1);g.clear(g.COLOR_BUFFER_BIT|g.DEPTH_BUFFER_BIT);this.sky(pal,time,true);let eye=[this.camera.eye[0],2*WATER_HEIGHT-this.camera.eye[1],this.camera.eye[2]];this.reflectionMatrix=reflectionVP(this.vp);this.reflectionInfo={method:'world-plane P*V*H',height:WATER_HEIGHT,horizontalFlip:false};this.geometryPass(this.program,this.reflectionMatrix,pal,time,eye,true);}
  g.bindFramebuffer(g.FRAMEBUFFER,this.mainF.f);g.viewport(0,0,this.mainF.w,this.mainF.h);g.clearColor(...pal.fog,1);g.clear(g.COLOR_BUFFER_BIT|g.DEPTH_BUFFER_BIT);this.sky(pal,time);this.geometryPass(this.program,this.vp,pal,time,this.camera.eye);
- if(!this.isInterior&&!this.noWater){let p=this.waterP;g.useProgram(p);this.uni(p,'uVP','m',this.vp);this.uni(p,'uReflectionVP','m',reflectionVP(this.vp));this.uni(p,'uReflectionTexel','2',[1/this.refF.w,1/this.refF.h]);this.uni(p,'uCelestial','f',this.theme==='heaven'?1:0);this.uni(p,'uRoad','f',this.theme==='sunward'?1:0);this.uni(p,'uCrossing','f',this.theme==='bellweather'?1:0);this.uni(p,'uReflectionStrength','f',this.reflectionStrength??1);this.uni(p,'uWaterStill','f',this.waterStill?1:0);for(let[n,v]of[['uEye',this.camera.eye],['uSun',pal.sun],['uSunColor',pal.sunColor],['uFog',pal.fog]])this.uni(p,n,'3',v);for(let[n,v]of[['uTime',this.reducedMotion?0:time],['uSunPower',pal.power],['uNight',pal.night],['uReflectionOn',reflection?1:0]])this.uni(p,n,'f',v);g.activeTexture(g.TEXTURE1);g.bindTexture(g.TEXTURE_2D,this.refF.tex);this.uni(p,'uReflect','i',1);g.bindVertexArray(this.waterVAO);g.drawArrays(g.TRIANGLES,0,6);this.calls++;p=this.particleP;g.useProgram(p);this.uni(p,'uVP','m',this.vp);this.uni(p,'uTime','f',this.reducedMotion?0:time);this.uni(p,'uSize','f',this.canvas.width/500*3);this.uni(p,'uNight','f',pal.night);g.enable(g.BLEND);g.blendFunc(g.SRC_ALPHA,g.ONE);g.depthMask(false);g.bindVertexArray(this.particleVAO);g.drawArrays(g.POINTS,0,140);g.depthMask(true);g.disable(g.BLEND);}
+ if(!this.isInterior&&!this.noWater){let p=this.waterP;g.useProgram(p);this.uni(p,'uVP','m',this.vp);this.uni(p,'uReflectionVP','m',reflectionVP(this.vp));this.uni(p,'uReflectionTexel','2',[1/this.refF.w,1/this.refF.h]);this.uni(p,'uCelestial','f',this.theme==='heaven'?1:0);this.uni(p,'uRoad','f',this.theme==='sunward'?1:0);this.uni(p,'uCrossing','f',this.theme==='bellweather'?1:0);this.uni(p,'uReflectionStrength','f',this.reflectionStrength??1);this.uni(p,'uWaterStill','f',this.waterStill?1:0);const channel=this.earthWater;this.uni(p,'uEarth','f',this.theme==='earth'&&channel?1:0);this.uni(p,'uEarthCurrent','f',this.earthCurrentEnabled===false?0:1);this.uni(p,'uEarthChannel','4',channel?[channel.from,channel.to,channel.piers[0],channel.piers[1]-channel.piers[0]]:[0,0,0,1]);this.uni(p,'uPierCount','f',channel?channel.piers.length:0);for(let[n,v]of[['uEye',this.camera.eye],['uSun',pal.sun],['uSunColor',pal.sunColor],['uFog',pal.fog]])this.uni(p,n,'3',v);for(let[n,v]of[['uTime',this.reducedMotion?0:time],['uSunPower',pal.power],['uNight',pal.night],['uReflectionOn',reflection?1:0]])this.uni(p,n,'f',v);g.activeTexture(g.TEXTURE1);g.bindTexture(g.TEXTURE_2D,this.refF.tex);this.uni(p,'uReflect','i',1);g.bindVertexArray(this.waterVAO);g.drawArrays(g.TRIANGLES,0,6);this.calls++;p=this.particleP;g.useProgram(p);this.uni(p,'uVP','m',this.vp);this.uni(p,'uTime','f',this.reducedMotion?0:time);this.uni(p,'uSize','f',this.canvas.width/500*3);this.uni(p,'uNight','f',pal.night);g.enable(g.BLEND);g.blendFunc(g.SRC_ALPHA,g.ONE);g.depthMask(false);g.bindVertexArray(this.particleVAO);g.drawArrays(g.POINTS,0,140);g.depthMask(true);g.disable(g.BLEND);}
  g.bindFramebuffer(g.FRAMEBUFFER,null);g.viewport(0,0,this.canvas.width,this.canvas.height);g.disable(g.DEPTH_TEST);g.useProgram(this.postP);g.activeTexture(g.TEXTURE2);g.bindTexture(g.TEXTURE_2D,this.mainF.tex);this.uni(this.postP,'uColor','i',2);this.uni(this.postP,'uResolution','2',[this.canvas.width,this.canvas.height]);this.uni(this.postP,'uBloom','f',this.quality==='low'?0:1);this.uni(this.postP,'uTime','f',time);g.bindVertexArray(this.emptyVAO);g.drawArrays(g.TRIANGLES,0,3);g.bindVertexArray(null);this.metrics={drawCalls:this.calls,texturedDrawCalls:this.texturedCalls,texturedInstances:this.texturedInstances,surfaceMaterials:{...this.surfaceMaterialInfo,enabled:this.surfaceMaterialsEnabled!==false},instances:[...this.batches,...this.dynamic].reduce((s,b)=>s+b.count,0),triangles:[...this.batches,...this.dynamic].reduce((s,b)=>s+b.count*b.geom.count/3,0)};return pal;}
 }
-G.RealmEngine={Engine,M,hex,blend,norm,sub,dot,cross,reflectionVP,WATER_HEIGHT,solidBounds};if(typeof module!=='undefined')module.exports=G.RealmEngine;})(globalThis);
+G.RealmEngine={Engine,M,hex,blend,norm,sub,dot,cross,reflectionVP,WATER_HEIGHT,solidBounds,skyFrame,geometry};if(typeof module!=='undefined')module.exports=G.RealmEngine;})(globalThis);

@@ -179,3 +179,26 @@ shaft overlap. Keep reproduced failures, interrupted proof, final exact-source
 gates and real full-scene screenshots distinct. Both cameras, all current suites
 and exact-head clean clone remain required. World/key 9, adventure 10 unchanged.
 Heavy work stays on D; no paid-provider/billing/personal-profile/merge/deploy action.
+
+
+## Hearthwater bridge and world-oriented weather
+
+Read the 2026-10-01 bridge task/results and actual screenshots/video. `earth.js`
+owns one frozen bridge ground/span/deck definition. Pure `bridge-art.js` reads it;
+Earth art omits filled terrain beneath the crossing. Preserve entry/return/bridge
+anchors and supported movement/picking segments. The rail-mounted visual marker
+must clear the full actual traveller corridor, not only isolated bridge parts.
+
+The two bounded vault/ridge meshes require outward normals and exact visible
+clearance checks. Clouds use the real reflected P×V×H ray basis; Earth current/wakes
+read shared channel uniforms. Keep water y0.01, low fallback, reduced-motion time,
+non-Earth rendering and material lifetime. No backdrop/camera action can grant
+progression or own saved state; side framing closes the existing dialog path and
+retains both V/R/orbit camera contracts. World/key9, adventure10 are unchanged.
+
+The verifier/isolated CI matrix adds bridge_browser. Keep independent same-time
+framebuffer cloud/current toggles, separate normal visible app RAF walking/pause,
+all older suites and exact-head clean clone. Report source geometry, software pixels,
+normal-time actual video, short hardware intervals and human taste separately.
+No concept art presented as gameplay or implied photorealism. Heavy work stays on D;
+preserve stable8780 save origin, personal data and no automatic merge/deployment.

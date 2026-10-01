@@ -1,0 +1,58 @@
+{
+  "scope": "Historical diagnostics and interrupted preliminary gate, excluded from final pass counts; raw receipts/logs stay on D.",
+  "root": "D:\\07-GAMES\\Firstlight\\artifacts\\bridge-playable-2026-10-01",
+  "receipts": {
+    "INITIAL_DIAGNOSTIC_FAILURE.json": {
+      "bytes": 3613,
+      "sha256": "cdf831e7fba99d94965bed0ccaa9c2562f7e5351580b8cdb83d4f7c8bc54c643"
+    },
+    "INITIAL_CLEANUP_FAILURE.json": {
+      "bytes": 146309,
+      "sha256": "c1c7925c510d1d5283c6e5a80dae9d4fed18e481b07ca51e1e3ce77da1fdf41c"
+    },
+    "PRELIMINARY_GATE_INTERRUPTED.json": {
+      "bytes": 1687,
+      "sha256": "8deecaddf51e92af71b984c2b18dc14dcaee5757211d45a2ef3e061cc958a205"
+    },
+    "NORMAL_RAF_CSP_FAILURE.json": {
+      "bytes": 155540,
+      "sha256": "c1b08eff14ff4183e79b9aa1e049bd34a2f7bc36dcf709f0bf527de9c4da214f"
+    },
+    "NORMAL_RAF_NAVIGATION_FAILURE.json": {
+      "bytes": 154587,
+      "sha256": "79985a0ca63cb967134802c3c71d61c565f79c327a909c596d9545b4552337d1"
+    },
+    "PYTHON_TIMEOUT_GATE.log": {
+      "bytes": 3746,
+      "sha256": "7ffec92400018760d76c696942738a13ca43c7aded5899f58b4e68ac1a918be6"
+    },
+    "PYTHON_TIMEOUT_UNITTEST.log": {
+      "bytes": 182,
+      "sha256": "1dffe7f8465b8bce473544ca1804bf3666ca52b59167261b5b6083cf890c6c7c"
+    },
+    "FAST_TEMP_D_BUILDER_TIMEOUT_GATE.log": {
+      "bytes": 3746,
+      "sha256": "1128eac111b4b15e9060b1a48a53a3d93a5425700758959cf76f2c760793b4b0"
+    },
+    "FAST_TEMP_D_BUILDER_TIMEOUT_UNITTEST.log": {
+      "bytes": 4703,
+      "sha256": "f1d387c35702a944fa7b24255bba01a019320cab5618b515b6b13ce4d4acdc5c"
+    }
+  },
+  "summary": [
+    "Initial UTF-8 source-edit helper failed before applying the diagnostic; browser reported missing Realm.test.bridge. Corrected encoding and regenerated.",
+    "Initial independent framebuffer cleanup called nonexistent dispose(); corrected to the production disposeSurfaceMaterials and explicit context loss.",
+    "Initial simpler cone mountains and wider camera were replaced after actual screenshot review.",
+    "Early green focused source/browser checks missed a generic center sign and inward vault normals. Collaborating review reproduced both. Moved marker to rail and fixed winding; added full-scene clearance/outward-normal tests.",
+    "Stopped only verified owned preliminary verifier/browser descendants for corrections. Retained partial gate and interruption receipt; final full gate reran.",
+    "New full-scene clearance test first failed at an exact touching boundary due to a 1e-16 float difference. Added 1e-7 arithmetic tolerance, preserving the physical supported corridor.",
+    "Reviewer first read-only full-scene helper omitted its required batch map; helper corrected without product edits.",
+    "The first completed full gate passed the 18 older browser suites but the new ordinary-RAF wait used a CSP-blocked string expression. Corrected to function-form waits; no security policy changed. Preserved failed full-gate log.",
+    "A focused rerun timed out at the ordinary second-page 30-second navigation. The bounded 60-second navigation retry completed exit 0; root cause was not demonstrated.",
+    "Review tightened ordinary walk destination, explicit paused/visible state, elapsed RAF duration and local leg-joint checks. Selected Low through the actual UI for the software ordinary-RAF walk; balanced effects and RTX capture remain separate.",
+    "The subsequent full gate timed out in an unchanged import-helper Python test at 180s. A diagnostic single test passed in 226.243s on D; the same Git init on disposable C scratch took 36.9586ms while D queue depth was32. Used small disposable C test/profile scratch for the same complete verifier without changing timeouts/assertions; heavy artifacts/clones remain D. A further build-output write timeout required a clean 24,772,234-byte sparse source checkout on C, at the exact implementation commit, excluding only historical evidence images/videos. Source/test/runtime assets and fixtures stay present and immutable; outputs promoted to D.",
+    "Evidence aggregation initially counted only PASS log lines; cutaway/reflection emit structured JSON instead. Corrected the helper to validate and count their actual passed checks; no test or criterion changed.",
+    "The successful focused run finished slowly during cleanup. An attempted owned-process interruption was refused because the process had already exited; no unrelated process was stopped and exit 0 was then collected.",
+    "Initial evidence manifest used copied CRLF JSON bytes; Git normalizes JSON to LF. Before push, normalized all records explicitly and recomputed/verified the manifest against committed Git blobs. Media bytes were unchanged."
+  ]
+}

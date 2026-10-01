@@ -1,3 +1,31 @@
+# The playable Hearthwater bridge moment, 2026-10-01
+
+Review branch `gameplay/bridge-moment`, stacked on PR 27 `gameplay/fenna-drover`
+at `ac1533ac48c70a065d28ce0745a055c5d15899ef`. Verified source `e8ab7228b465b1a728304ddbee297d1a78d5f4b2`. Delivery PR records final pushed
+head, exact-head clean remote clone, hosted status and stable 8780 build receipt.
+
+Dom's bridge/water/side-running/mountains/clouds concept now has a bounded game
+interpretation: 15 m four-vault crossing over supported water edges, layered ridges,
+Earth current/clouds and an explicit side-framing action in both retained cameras.
+V/R/orbit remain. Existing route/marker coordinates and gameplay/save owners remain;
+no migration: world/key 9, adventure 10. No XP/equipment/story rewards added.
+
+Local full gate on clean exact-commit temporary sparse checkout: 58 syntax, 672 Node passes, 53 Python passes + 1 existing
+Windows skip, 24 earned journeys, 1,590 browser assertions in 19 suites;
+zero failures. See [task](development/BRIDGE_MOMENT_TASK_2026-10-01.md),
+[executed results](art/BRIDGE_MOMENT_RESULTS_2026-10-01.md) and
+[actual screenshots/32.52-second gameplay](evidence/bridge-moment/README.md).
+Matched 1920×1080 RTX samples: P95 16.7–16.8 ms, maximum 16.8 ms, no >33.333 ms in
+two 360-sample cases/build; headless intervals are not sustained FPS qualification.
+
+Source review caught/verified correction of a center post and inward vault normals;
+partial gate/failures are retained separately from final evidence. Human acceptance
+is pending. D I/O timeouts and the 24.8 MB temporary C verification source checkout
+are recorded; main authoring/objects/heavy artifacts remain D. Banks remain square, water mirror-like and mountains faceted. Main is
+unmerged; no deployment/billing/provider/personal-profile action. Heavy work on D.
+
+Prior checkpoint retained:
+
 # Fenna drover and delivered load, 2026-10-01
 
 Review branch `gameplay/fenna-drover`, stacked on PR 26 `gameplay/ansel-millwright`
