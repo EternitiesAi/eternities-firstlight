@@ -20,3 +20,6 @@ body.in-earth .place-title #place-kicker{color:#d7bd83}
 
 /* Mara's field notebook: evidence and interpretation occupy distinct columns. */
 .notes-ledgers{display:grid;grid-template-columns:1fr 1fr;gap:24px}.notes-ledgers>section{min-width:0}.notes-ledgers ol{padding:0;list-style:none}.notes-ledgers li{padding:14px 0;border-bottom:1px solid #ffffff20}.notes-ledgers li h4{margin:0 0 6px}#rpg-content .notes-tracing svg{display:block;width:100%!important;height:auto!important;max-height:330px;stroke:none}.notes-turns{display:flex;gap:8px;flex-wrap:wrap}.notes-answer{padding:18px;border-left:3px solid #d1b67c;background:#d1b67c0b;margin-top:18px}.notes-invitation{border-color:#d1b67c70}.notes-reading button{margin:4px;white-space:normal;max-width:100%}@media(max-width:700px){.notes-ledgers{grid-template-columns:1fr}.notes-reading .earth-terms{grid-template-columns:1fr}}
+
+/* A readable comparison of the existing public repair. */
+.mill-comparison{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}.mill-comparison section{min-width:0;padding:12px;border:1px solid #bcaa7750;border-radius:10px;background:#d8bc8610}.mill-comparison h5{font-size:1rem;margin:8px 0}.mill-comparison small{font-size:.72rem}.rain-task button{white-space:normal;max-width:100%}@media(max-width:560px){.mill-comparison{grid-template-columns:1fr}}

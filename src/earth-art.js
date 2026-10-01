@@ -59,6 +59,7 @@ function orchard(a){
  const by=h(-5.54,1.13);a.box(-5.54,by+.83,1.13,.73,.12,1.38,0x9f8258,decor);for(const zz of[.65,1.62])a.box(-5.54,by+.42,zz,.62,.78,.12,col.wood,decor);a.box(-5.54,by+.93,1.13,.39,.06,.6,0xc8bb8c,decor);
 }
 function mill(a){
+ G.RealmMillGateArt.frame(a,h(5.2,-6));
  // The wheel and its covered bearing are entirely within the already blocked
  // pond. This is visual machinery, with no new building or route authority.
  const x=3.55,z=-10.9,b=1.36,cy=b+1.35;
@@ -166,14 +167,11 @@ function story(out,sim,t,a){
  for(let i=0;i<4;i++)round(cx+(i%2?-.38:.38),b+1.02,cz+Math.floor(i/2)*.68-.48,.68,.68,.6,0xc3b795);
  box(cx,b+1.23,cz-.86,1.35,.25,.38,0x7a6748);for(let i=0;i<5;i++)round(cx-.48+i*.23,b+1.42,cz-.86,.21,.20,.20,0xb9694b);
  // Small headrace machinery remains on the bank; it does not open collision through the pond.
- const gy=h(5.2,-6);for(const z of [-5.5,-6.5])box(5.2,gy+.8,z,.18,1.6,.18,col.wood);
- box(5.2,gy+(done('mill-gate')?1.25:.55),-6,.16,.85,.9,done('mill-gate')?0xc0a174:0x70634f);
- box(5.2,gy+1.65,-6,.25,.16,1.4,col.wood);
+ const gy=h(5.2,-6);a.millGateFrame=G.RealmMillGateArt.draw(out,done('mill-gate'),gy);
  if(!done('mill-root')){box(5.15,gy+.2,-4.5,.28,.25,1.9,0x5a503d,[0,.5,.25]);box(5.55,gy+.23,-4.4,.8,.14,.18,0x5a503d,[0,-.5,0]);}
- if(done('mill-gate'))box(5.2,gy+.75,-6,.2,1.1,.16,0xcaa877,[.55,0,0]);
  // Only the repaired mechanism turns. Reduced motion freezes a clear wheel
  // silhouette; this presentation never completes or pays the repair itself.
- const phase=done('mill-gate')?clock*.35:0;
+ const phase=done('mill-gate')?(quiet?0:sim.elapsed)*.35:0;
  for(let i=0;i<10;i++){const angle=i/10*TAU+phase,x=3.55,y=2.71,z=-10.9;box(x,y+Math.sin(angle)*1.2,z+Math.cos(angle)*1.2,.65,.15,.43,0xa08454,[angle,0,0]);box(x,y,z,.10,.11,2.38,col.wood,[-angle,0,0]);}
  // Reserved blocks disappear only after collection; road packing then remains visible.
  if(!done('quarry-reserve'))for(let i=0;i<3;i++){const x=10.8+i*.62,z=-27;box(x,h(x,z)+.2,z,.55,.4,.6,0xaba185);box(x,h(x,z)+.42,z,.4,.03,.10,0xdac386);}
