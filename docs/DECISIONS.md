@@ -195,3 +195,19 @@ page visibility are explicit in the final probe. Geometry/pixel/source evidence,
 normal-time video, short GPU intervals and human taste remain separate. Save
 versions and once-only repair/payment rules remain unchanged. No automatic
 merge/deployment or account billing change.
+
+## 2026-10-01: Fenna's appearance follows existing delivery authority
+
+Dom is away and authorizes continued development with screenshots. Refine a
+bounded original drover and cart from current PR 26, in existing primitive groups.
+Keep resident/cart/rule anchors, dispatch versus explicit arrival, and one-time
+payment separate. Opened cargo is visual shorthand, never normal inventory or a
+new reward. Coil and hand share a frame; no unsupported pushing/horse/escort claim.
+Simulation time respects pause/dialog/reduced motion. No new state or migration.
+
+Wheels meet actual terrain; short stowed shafts avoid both Fenna and gathering
+approach. A real coat/thigh overlap was reproduced before repair; full geometry
+bounds, final source/browser gate, matched hardware captures and exact-head clone
+are separate delivery evidence. Test-only bounds refinement gets a refreshed
+complete Node gate. Human acceptance remains pending. Preserve both cameras and
+all saved systems; no automatic merge/deployment/paid-provider/billing action.

@@ -38,6 +38,21 @@ try:
       walk(0,23);page.keyboard.press('e');render();page.locator('[data-rpg="earth-confirm"]').click();render();walk(0,10)
     def reload():
       close();ev('()=>Realm.test.save()');before=state();page.reload();page.wait_for_function('()=>!!window.Realm');render();check('reload preserves story and unpaid entitlement at valley checkpoint',state()['adventure']['earthStory']==before['adventure']['earthStory'] and ev('()=>Realm.diagnostics.scene')=='valley');enter()
+    def drover_probe(label,sent=False,arrived=False):
+      before=state();render();d=ev('()=>Realm.test.drover()');f=d['frame'];parts=d['parts'];report.setdefault('drover_states',{})[label]=d
+      check(label+' one drover and cart use their existing story locations',f['anchor']['x']==(2 if sent else 8.8) and f['anchor']['z']==(-43 if sent else 5) and f['cart']['x']==(-3 if sent else 9.3) and f['cart']['z']==(-43 if sent else 7))
+      check(label+' readable load follows confirmed arrival only',sum(p['droverPart']=='flour-sack' for p in parts)==(2 if arrived else 4) and sum(p['droverPart']=='apple' for p in parts)==(0 if arrived else 5) and any(p['droverPart']=='folded-cover' for p in parts)==arrived)
+      check(label+' bounded finite submitted parts exclude camera and cutaway authority',len(parts)==f['partCount'] and len(parts)<=160 and all(__import__('math').isfinite(v) for p in parts for v in p['m']+p['p']+p['s']) and all(not p['cameraSolid'] and not p['cutaway'] for p in parts))
+      check(label+' wheel rims meet actual terrain',ev('()=>Realm.test.drover().parts.filter(p=>p.droverPart==="wheel-rim").every(p=>Math.abs(p.p[1]-p.s[1]/2-RealmEarth.height(p.p[0],p.p[2]))<.00001)'))
+      check(label+' coil grasp shares its submitted transform',ev('()=>{const d=Realm.test.drover(),p=d.parts.find(p=>p.droverPart==="right-hand"),w=RealmEngine.M.transform(d.frame.coilRoot,[.14,.06,0]);return p.p.every((v,i)=>Math.abs(v-w[i])<.00001)}'))
+      check(label+' art cannot change consent inventory or payment',state()==before)
+      return d
+    def drover_photo(label,sent=False):
+      close();walk(0 if sent else 7,-43 if sent else 4.2);ev('()=>Realm.test.setTime(16)')
+      for mode in ['third','diorama']:
+        if (ev('()=>Realm.diagnostics.camera.projection')=='orthographic')!=(mode=='diorama'):page.keyboard.press('v')
+        ev('()=>Realm.test.view({yaw:-.15,elevation:Realm.diagnostics.camera.projection==="orthographic"?.78:.28,distance:8.2,zoom:.35,half:8})');render();page.screenshot(path=str(OUT/('FENNA_'+label+'_'+mode.upper()+'.png')))
+        check(label+' drover and cart submit in '+mode,ev('()=>Realm.test.drover().frame.partCount')<=160)
     routes={'fresh-blade-detour':('detour',['detour-ridge','detour-shelter','detour-mark']),'fresh-bow-quarry':('quarry',['quarry-reserve','quarry-grade']),'veteran-mill':('mill',['mill-root','mill-gate'])}
     for variant,(route,steps) in routes.items():
       close();fixture=json.loads((ROOT/'docs/evidence/road-after-rain'/f'{variant}_SOURCE.json').read_text(encoding='utf-8'));ev('(w)=>Realm.test.replace(w)',fixture);render();before=state();enter();walk(7,5);page.keyboard.press('e');render()
@@ -46,7 +61,19 @@ try:
       check(variant+' inspection grants no hidden progress',not state()['adventure']['earthStory']['accepted'])
       if route=='detour':
         page.screenshot(path=str(OUT/'CONTRACT.png'));camera=ev('()=>Realm.diagnostics.camera.preset');page.keyboard.press('v');render();check('dialog consumes camera shortcut',ev('()=>Realm.diagnostics.camera.preset')==camera)
-      click('accept');check(variant+' explicit accept preserves inventory',state()['sandbox']['inventory']==before['sandbox']['inventory']);reload()
+      if route=='detour':drover_probe('unaccepted')
+      click('accept');check(variant+' explicit accept preserves inventory',state()['sandbox']['inventory']==before['sandbox']['inventory'])
+      if route=='detour':
+        drover_probe('accepted');drover_photo('DEPARTURE')
+        # Actual submitted actor and held coil, rendered in isolation; not gameplay.
+        pixels=ev('''()=>{const d=Realm.test.drover(),root=d.frame.root,c=document.createElement('canvas'),e=new RealmEngine.Engine(c);e.resize(384,384,1);e.quality='low';e.noWater=true;const g=e.gl,read=()=>{g.bindFramebuffer(g.FRAMEBUFFER,e.mainF.f);const a=new Uint8Array(384*384*4);g.readPixels(0,0,384,384,g.RGBA,g.UNSIGNED_BYTE,a);g.bindFramebuffer(g.FRAMEBUFFER,null);return a;},diff=(a,b)=>a.reduce((n,v,i)=>n+(v!==b[i]),0),cases=[];for(const projection of['perspective','orthographic']){e.clear();e.setCamera({eye:[2.5,2.5,4.5],target:[0,.95,0],projection,half:1.25,fov:45,aspect:1});e.render(0,16,false);const empty=read();const render=coil=>{e.clear();for(const kind of['box','round','octa'])e.batch(kind,d.parts.filter(p=>p.kind===kind&&p.droverGroup==='actor'&&(coil||!p.droverPart.startsWith('rope-'))).map(p=>{const m=new Float32Array(p.m),v=p.p.map((n,i)=>n-root[12+i]);for(let i=0;i<3;i++)m[12+i]-=root[12+i];return{p:v,s:p.s,m,c:p.c,rough:p.rough};}));e.render(0,16,false);return read();};const body=render(false),full=render(true);cases.push({projection,bodyChannels:diff(empty,body),coilChannels:diff(body,full)});}const result={cases,error:g.getError(),image:c.toDataURL('image/png')};e.disposeSurfaceMaterials();g.getExtension('WEBGL_lose_context').loseContext();return result;}''')
+        import base64
+        (OUT/'FENNA_ISOLATED.png').write_bytes(base64.b64decode(pixels.pop('image').split(',')[1]));report['drover_framebuffer']=pixels
+        for sample in pixels['cases']:
+          check('submitted Fenna body contributes isolated pixels in '+sample['projection'],sample['bodyChannels']>1000)
+          check('submitted rope coil contributes isolated pixels in '+sample['projection'],sample['coilChannels']>20)
+        check('isolated Fenna framebuffer has no WebGL error',pixels['error']==0)
+      reload()
       for i,id in enumerate(steps):
         walk(7,5);page.keyboard.press('e');render();click('walk',id)
         ev('()=>{for(let i=0;i<4500&&Realm.test.path.length;i++)Realm.test.step(.05);Realm.test.render()}');point=ev('(id)=>RealmEarthStory.STEPS.find(s=>s.id===id)',id)
@@ -118,10 +145,26 @@ try:
         normal.keyboard.press('e');normal.evaluate('()=>Realm.test.render()');a1=normal.evaluate('()=>Realm.test.millwright().parts');normal_frames();a2=normal.evaluate('()=>Realm.test.millwright().parts');check('repair dialog pauses the complete millwright stance',a1==a2);normal.locator('#rpg-close').click()
         normal.evaluate('()=>{Realm.test.pause(true);Realm.test.render()}');w1=normal.evaluate('()=>Realm.test.millGate().wheel');normal_frames();w2=normal.evaluate('()=>Realm.test.millGate().wheel');check('normal-time explicit pause freezes the submitted wheel',w1==w2)
         a1=normal.evaluate('()=>Realm.test.millwright().parts');normal_frames();a2=normal.evaluate('()=>Realm.test.millwright().parts');check('explicit pause freezes the complete millwright frame',a1==a2)
-        normal.evaluate("()=>{Realm.test.pause(false);let w=Realm.state;w.settings.reducedMotion=true;Realm.test.replace(w)}");nw(0,23);normal.keyboard.press('e');normal.locator('[data-rpg="earth-confirm"]').click();nw(7,-7);normal.evaluate('()=>Realm.test.render()');w1=normal.evaluate('()=>Realm.test.millGate().wheel');normal_frames();w2=normal.evaluate('()=>Realm.test.millGate().wheel');check('normal-time reduced motion freezes the repaired silhouette',w1==w2);a1=normal.evaluate('()=>Realm.test.millwright().parts');normal_frames();a2=normal.evaluate('()=>Realm.test.millwright().parts');check('reduced motion holds one connected millwright stance',a1==a2);normal.keyboard.press('e');normal.locator('#rpg-close').click();normal_context.close()
+        normal.evaluate("()=>{Realm.test.pause(false);let w=Realm.state;w.settings.reducedMotion=true;Realm.test.replace(w)}");nw(0,23);normal.keyboard.press('e');normal.locator('[data-rpg="earth-confirm"]').click();nw(7,-7);normal.evaluate('()=>Realm.test.render()');w1=normal.evaluate('()=>Realm.test.millGate().wheel');normal_frames();w2=normal.evaluate('()=>Realm.test.millGate().wheel');check('normal-time reduced motion freezes the repaired silhouette',w1==w2);a1=normal.evaluate('()=>Realm.test.millwright().parts');normal_frames();a2=normal.evaluate('()=>Realm.test.millwright().parts');check('reduced motion holds one connected millwright stance',a1==a2);normal.keyboard.press('e');normal.locator('#rpg-close').click()
+        # Fenna uses the same normal-time app clock, independent of personal saves.
+        normal.evaluate('()=>{Realm.test.pause(false);let w=Realm.state;w.settings.reducedMotion=false;Realm.test.replace(w)}');nw(0,23);normal.keyboard.press('e');normal.locator('[data-rpg="earth-confirm"]').click();nw(7,5);normal.bring_to_front();normal.evaluate('()=>Realm.test.render()')
+        d1=normal.evaluate('()=>({actor:Realm.test.drover(),paused:Realm.diagnostics.adventure.paused,reduced:Realm.state.settings.reducedMotion,hidden:document.hidden})');normal_frames();d2=normal.evaluate('()=>({actor:Realm.test.drover(),paused:Realm.diagnostics.adventure.paused,reduced:Realm.state.settings.reducedMotion,hidden:document.hidden})');report['normal_drover']={'before':d1,'after':d2}
+        check('normal-time visible Fenna moves the actually submitted hand and coil',not d1['hidden'] and not d2['hidden'] and d1['actor']['parts']!=d2['actor']['parts'])
+        normal.keyboard.press('e');normal.evaluate('()=>Realm.test.render()');d1=normal.evaluate('()=>Realm.test.drover().parts');normal_frames();d2=normal.evaluate('()=>Realm.test.drover().parts');check('delivery dialog pauses the whole drover and load',d1==d2);normal.locator('#rpg-close').click()
+        normal.evaluate('()=>{Realm.test.pause(true);Realm.test.render()}');d1=normal.evaluate('()=>Realm.test.drover().parts');normal_frames();d2=normal.evaluate('()=>Realm.test.drover().parts');check('explicit pause freezes whole drover and load',d1==d2)
+        normal.evaluate('()=>{Realm.test.pause(false);let w=Realm.state;w.settings.reducedMotion=true;Realm.test.replace(w)}');nw(0,23);normal.keyboard.press('e');normal.locator('[data-rpg="earth-confirm"]').click();nw(7,5);normal.evaluate('()=>Realm.test.render()');d1=normal.evaluate('()=>Realm.test.drover().parts');normal_frames();d2=normal.evaluate('()=>Realm.test.drover().parts');check('reduced motion holds one complete drover stance',d1==d2);normal_context.close()
       walk(7,5);page.keyboard.press('e');render()
       if route=='mill':check('remote repaired-gate action offers actual walking rather than watch',page.locator('[data-rpg="rain-watch"]').count()==0 and page.locator('[data-rpg="rain-walk"][data-id="mill-gate"]').count()==1)
-      check('only completed route can be dispatched',page.locator('[data-rpg="rain-dispatch"]').count()==1);click('dispatch',route);check('explicit dispatch keeps payment unpaid',not state()['adventure']['earthStory']['claimed']);reload();walk(0,-43);page.keyboard.press('e');render();click('arrive');check('arrival is visible before payment',state()['adventure']['earthStory']['arrived'] and not state()['adventure']['earthStory']['claimed']);reload();walk(0,-43);page.keyboard.press('e');render();click('claim');paid=state()
+      check('only completed route can be dispatched',page.locator('[data-rpg="rain-dispatch"]').count()==1);click('dispatch',route);check('explicit dispatch keeps payment unpaid',not state()['adventure']['earthStory']['claimed'])
+      if route=='detour':drover_probe('dispatched-not-confirmed',sent=True)
+      reload();walk(0,-43);page.keyboard.press('e');render()
+      if route=='detour':drover_probe('dispatched-reloaded',sent=True)
+      click('arrive');check('arrival is visible before payment',state()['adventure']['earthStory']['arrived'] and not state()['adventure']['earthStory']['claimed'])
+      if route=='detour':drover_probe('arrived-unpaid',sent=True,arrived=True);drover_photo('ARRIVAL',sent=True)
+      reload();walk(0,-43);page.keyboard.press('e');render()
+      if route=='detour':drover_probe('arrived-reloaded',sent=True,arrived=True)
+      click('claim');paid=state()
+      if route=='detour':drover_probe('paid',sent=True,arrived=True)
       check(variant+' one exact payment',paid['adventure']['ore']==before['adventure']['ore']+3 and paid['adventure']['coins']==before['adventure']['coins']+4 and paid['sandbox']['inventory']['fiber']==before['sandbox']['inventory']['fiber']+2)
       check(variant+' only declared timber cost',paid['sandbox']['inventory']['wood']==before['sandbox']['inventory']['wood']-(2 if route=='mill' else 0))
       check(variant+' gear and prior systems unchanged',all(paid['adventure'][k]==before['adventure'][k] for k in ['xp','equipment','owned','arsenal','starter','pursuit','classPath','road','beacon','crossing','companion']))
@@ -143,7 +186,7 @@ try:
     check('new character inherits neither accepted work nor claimed reward',not state()['adventure']['earthStory']['accepted'] and state()['adventure']['ore']==0)
     restored='character-1' if original=='legacy' else original;library();page.locator(f'[data-rpg="chars-switch"][data-id="{restored}"]').click();page.wait_for_function('(id)=>Realm.diagnostics.characters.active===id',arg=restored);render()
     check('returning character retains its own completed story',state()['adventure']['earthStory']==old['adventure']['earthStory']);close();enter();page.set_viewport_size({'width':390,'height':844});page.keyboard.press('m');render();click('open');check('compact story actions have no horizontal overflow',page.locator('#rpg-content').evaluate('(e)=>e.scrollWidth<=e.clientWidth+1'));page.screenshot(path=str(OUT/'COMPACT_STORY.png'))
-    close();ev('()=>Realm.test.leave()');render();check('millwright frame is absent outside its Earth scene',ev('()=>Realm.test.millwright()') is None)
+    close();ev('()=>Realm.test.leave()');render();check('millwright frame is absent outside its Earth scene',ev('()=>Realm.test.millwright()') is None);check('drover frame is absent outside its Earth scene',ev('()=>Realm.test.drover()') is None)
     check('no runtime errors',not report['browser_errors']);context.close()
 except Exception as e:
   report['errors'].append(str(e));traceback.print_exc()

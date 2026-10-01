@@ -1,0 +1,145 @@
+[
+  {
+    "evaluate": "()=>{Realm.test.pause(false);Realm.test.setTime(16);Realm.test.quality('balanced');if(!/RTX 3080/.test(Realm.diagnostics.renderer||''))throw Error('RTX not confirmed');return {renderer:Realm.diagnostics.renderer,wood:Realm.state.sandbox.inventory.wood};}"
+  },
+  {
+    "click": "[data-rpg=\"camera\"][data-id=\"adventure\"]"
+  },
+  {
+    "key": "e",
+    "wait_ms": 600
+  },
+  {
+    "click": "[data-rpg=\"earth-confirm\"]"
+  },
+  {
+    "walk": [
+      0,
+      10
+    ]
+  },
+  {
+    "walk": [
+      7,
+      5
+    ]
+  },
+  {
+    "key": "e",
+    "wait_ms": 700
+  },
+  {
+    "click": "[data-rpg=\"rain-accept\"]"
+  },
+  {
+    "click": "#rpg-close"
+  },
+  {
+    "walk": [
+      7,
+      4.2
+    ]
+  },
+  {
+    "evaluate": "()=>{Realm.test.view({yaw:-.15,elevation:.28,distance:8.2});Realm.test.render();return Realm.test.drover().frame;}",
+    "wait_ms": 2000
+  },
+  {
+    "key": "v"
+  },
+  {
+    "evaluate": "()=>{Realm.test.view({yaw:-.15,elevation:.78,zoom:.35,half:8});Realm.test.render();return Realm.diagnostics.camera;}",
+    "wait_ms": 1600
+  },
+  {
+    "key": "v"
+  },
+  {
+    "walk": [
+      6,
+      -3
+    ]
+  },
+  {
+    "key": "e"
+  },
+  {
+    "click": "[data-rpg=\"rain-step\"][data-id=\"mill-root\"]"
+  },
+  {
+    "click": "#rpg-close"
+  },
+  {
+    "walk": [
+      7,
+      -7
+    ]
+  },
+  {
+    "key": "e"
+  },
+  {
+    "click": "[data-rpg=\"rain-step\"][data-id=\"mill-gate\"]"
+  },
+  {
+    "click": "#rpg-close"
+  },
+  {
+    "walk": [
+      7,
+      5
+    ]
+  },
+  {
+    "key": "e"
+  },
+  {
+    "click": "[data-rpg=\"rain-dispatch\"][data-id=\"mill\"]"
+  },
+  {
+    "click": "#rpg-close"
+  },
+  {
+    "walk": [
+      13,
+      -13
+    ]
+  },
+  {
+    "walk": [
+      13,
+      -32
+    ]
+  },
+  {
+    "walk": [
+      0,
+      -43
+    ]
+  },
+  {
+    "key": "e",
+    "wait_ms": 600
+  },
+  {
+    "click": "[data-rpg=\"rain-arrive\"]",
+    "wait_ms": 700
+  },
+  {
+    "click": "#rpg-close"
+  },
+  {
+    "evaluate": "()=>{Realm.test.setTime(16);Realm.test.view({yaw:-.15,elevation:.28,distance:7.8});Realm.test.render();return Realm.test.drover().frame;}",
+    "wait_ms": 2400
+  },
+  {
+    "key": "v"
+  },
+  {
+    "evaluate": "()=>{Realm.test.view({yaw:-.15,elevation:.78,zoom:.35,half:8});Realm.test.render();return Realm.test.drover().frame;}",
+    "wait_ms": 2000
+  },
+  {
+    "evaluate": "()=>{const w=Realm.state,d=Realm.test.drover().frame;if(!w.adventure.earthStory.arrived||w.adventure.earthStory.claimed||w.sandbox.inventory.wood!==2||d.sackCount!==2||d.appleCount)throw Error('Unexpected delivery/cost/load');return{story:w.adventure.earthStory,wood:w.sandbox.inventory.wood,drover:d};}"
+  }
+]

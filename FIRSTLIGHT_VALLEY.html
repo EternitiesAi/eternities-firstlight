@@ -2881,7 +2881,7 @@ class WorldArt{
  // the authored walls instead of enlarging navigation or camera obstacles.
  beam(from,to,width,c,opt={}){const d=to.map((v,i)=>v-from[i]),len=Math.hypot(...d);if(len<.001)return;const yy=d.map(v=>v/len),ref=Math.abs(yy[1])>.95?[1,0,0]:[0,1,0],xx=[ref[1]*yy[2]-ref[2]*yy[1],ref[2]*yy[0]-ref[0]*yy[2],ref[0]*yy[1]-ref[1]*yy[0]],n=Math.hypot(...xx);for(let i=0;i<3;i++)xx[i]/=n;const zz=[xx[1]*yy[2]-xx[2]*yy[1],xx[2]*yy[0]-xx[0]*yy[2],xx[0]*yy[1]-xx[1]*yy[0]],p=from.map((v,i)=>(v+to[i])/2);this.box(...p,width,len,width,c,{cameraSolid:false,cutaway:true,...opt,m:new Float32Array([...xx.map(v=>v*width),0,...yy.map(v=>v*len),0,...zz.map(v=>v*width),0,...p,1])});}
  commit(){if(!this.room&&G.RealmEarthArt)G.RealmEarthArt.gate(this);if(!this.room&&G.RealmCosmosArt)G.RealmCosmosArt.gate(this);if(!this.room&&G.RealmRoadArt)G.RealmRoadArt.gate(this);if(!this.room&&G.RealmAdventureArt)G.RealmAdventureArt.entrance(this);if(!this.room&&G.RealmSandboxArt)G.RealmSandboxArt.scenery(this);for(let[k,a]of Object.entries(this.map))this.e.batch(k,a);this.dynamicBox=this.e.batch('box',[],true);this.dynamicOcta=this.e.batch('octa',[],true);this.dynamicRound=this.e.batch('round',[],true);this.dynamicDisc=this.e.batch('disc',[],true);this.dynamicTimber=this.room===G.RealmEarth?.ROOM?this.e.batch('timber-panel',[],true):null;}
- begin(room){this.millwrightFrame=null;this.millGateFrame=null;this.travelerPoseOwner=null;this.travelerMotion=null;this.travelerFrame=null;this.travelerParts=null;this.e.theme=null;this.e.noWater=false;this.e.surfacePick=null;this.e.ambientOverride=null;this.e.reflectionStrength=1;this.e.clear();this.e.isInterior=!!room;this.room=room;this.map={};}
+ begin(room){this.droverFrame=null;this.millwrightFrame=null;this.millGateFrame=null;this.travelerPoseOwner=null;this.travelerMotion=null;this.travelerFrame=null;this.travelerParts=null;this.e.theme=null;this.e.noWater=false;this.e.surfacePick=null;this.e.ambientOverride=null;this.e.reflectionStrength=1;this.e.clear();this.e.isInterior=!!room;this.room=room;this.map={};}
  tree(x,z,s=1,style=0,base=1.2){let bark=0x68503c;this.add('cylinder',x,base,z,.42*s,2.6*s,.42*s,bark);for(let a of[-.6,.8,2.3])this.box(x+Math.sin(a)*.45*s,base+2*s,z+Math.cos(a)*.45*s,.18*s,1.2*s,.18*s,bark,{r:[.3,a,.55]});let colors=style===3?[0xd9a4ba,0xc489a5,0xe9bdbe]:style===1?[0xaab961,0x8fa856,0xbdc16f]:style===2?[0x87a897,0x669586,0xa0b59b]:[0x557d65,0x638f69,0x779c73];if(style===0){for(let i=0;i<3;i++)this.add('cone',x,base+(1.6+i*.85)*s,z,(3.2-i*.6)*s,2.2*s,(3.2-i*.6)*s,colors[i],{wind:2});}else{for(let i=0;i<7;i++){let a=i*2.4,r=i===0?0:1.05;this.add(style===3?'round':style===1?'round':'octa',x+Math.cos(a)*r*s,base+(3.25+(i%3)*.42)*s,z+Math.sin(a)*r*s,(2.25+(i%2)*.3)*s,(2.1+(i%3)*.23)*s,(2.15+(i%2)*.35)*s,colors[i%3],{r:[0,a,0],wind:2});}}}
  lamp(x,z,height=3.4,base=1.2){this.box(x,base+height/2,z,.13,height,.13,0x5a4735);this.box(x,base+height,z,.55,.12,.55,0x443c32);this.box(x,base+height-.35,z,.32,.54,.32,0xffd185,{em:1.4,rough:.35});this.add('cone',x,base+height+.07,z,.77,.37,.77,0x594739);this.box(x,base+.09,z,.48,.18,.48,0x777565);}
  bench(x,z,yaw=0,base=1.2,opt={}){let at=(a,b,c,sx,sy,sz,col)=>this.box(x+a*Math.cos(yaw)+c*Math.sin(yaw),base+b,z-a*Math.sin(yaw)+c*Math.cos(yaw),sx,sy,sz,col,{r:[0,yaw,0],...opt});for(let a of[-.72,.72])at(a,.38,0,.14,.75,.5,0x514c43);at(0,.74,0,1.95,.16,.68,0xa88d62);at(0,1.24,-.31,1.95,.52,.11,0xa68b62);}
@@ -4535,6 +4535,137 @@ function draw(out,sim,t,art){
 }
 G.RealmGatheringArt={draw};
 })(globalThis);
+</script><script>/* Fenna's original drover and load. Read-only projection, never an escort.
+ * +Z faces forward; the coil and holding hand share the same local frame. */
+(function(G){'use strict';
+const WAIT=Object.freeze({x:8.8,z:5,yaw:-.6}),SENT=Object.freeze({x:2,z:-43,yaw:-.6});
+const CART_WAIT=Object.freeze({x:9.3,z:7}),CART_SENT=Object.freeze({x:-3,z:-43});
+const sub=(a,b)=>a.map((v,i)=>v-b[i]),add=(a,b)=>a.map((v,i)=>v+b[i]),mul=(a,s)=>a.map(v=>v*s);
+const dot=(a,b)=>a.reduce((s,v,i)=>s+v*b[i],0),norm=a=>mul(a,1/(Math.hypot(...a)||1));
+const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+function arm(start,end,side){
+ const upper=.315,lower=.285,delta=sub(end,start),distance=Math.hypot(...delta),dir=norm(delta);
+ const along=(upper*upper-lower*lower+distance*distance)/(2*distance),bend=Math.sqrt(Math.max(0,upper*upper-along*along));
+ const hint=[side,-.3,-.3],plane=norm(sub(hint,mul(dir,dot(hint,dir))));
+ return add(add(start,mul(dir,along)),mul(plane,bend));
+}
+function pose(time=0,reducedMotion=false,arrived=false){
+ const {M}=G.RealmEngine,t=Number.isFinite(time)?time:0,sway=reducedMotion?0:Math.sin(t*.53);
+ const coilRoot=M.compose(.02,arrived?.93:1.04+sway*.014,.32,1,1,1,0,sway*.06,arrived?-.14:sway*.04);
+ const joints={leftShoulder:[-.25,1.35,-.015],rightShoulder:[.25,1.35,-.015],
+  leftHand:[-.32,.89,.08],rightHand:M.transform(coilRoot,[.14,.06,0]),
+  leftHip:[-.13,.87,0],rightHip:[.13,.87,0],leftKnee:[-.15,.48,.035],rightKnee:[.15,.48,.035],
+  leftAnkle:[-.16,.13,.015],rightAnkle:[.16,.13,.015]};
+ for(const [name,side]of[['left',-1],['right',1]])joints[name+'Elbow']=arm(joints[name+'Shoulder'],joints[name+'Hand'],side);
+ return{coilRoot,joints,reducedMotion:!!reducedMotion};
+}
+function draw(out,{state={},time=0,reducedMotion=false,ground=()=>0}={}){
+ const {M,hex}=G.RealmEngine,sent=!!state.dispatch,arrived=!!state.arrived,anchor=sent?SENT:WAIT,cart=sent?CART_SENT:CART_WAIT;
+ const height=(x,z)=>{const v=ground(x,z);return Number.isFinite(v)?v:0;},base=height(anchor.x,anchor.z);
+ const root=M.compose(anchor.x,base,anchor.z,1,1,1,0,anchor.yaw,0),posed=pose(time,reducedMotion,arrived),j=posed.joints;
+ const coat=hex(0xa47954),edge=hex(0xc4a982),shirt=hex(0x647e79),skin=hex(0xc99e80),hair=hex(0x514839),boots=hex(0x4b493b);
+ const wood=hex(0x806647),dark=hex(0x504739),canvas=hex(0xc6b99c),rope=hex(0xc6aa76),parts=[];let group='actor';
+ const part=(kind,name,p,s,c,rotation=[0,0,0],frame=root)=>{
+  const item={p:M.transform(frame,p),s:s.slice(),m:M.mul(frame,M.compose(...p,...s,...rotation)),c,rough:.9,
+   cameraSolid:false,cutaway:false,droverPart:name,droverGroup:group};out[kind].push(item);parts.push(item);return item;
+ };
+ const segment=(name,a,b,width,depth,color,frame=root)=>{
+  const delta=sub(b,a),length=Math.hypot(...delta),up=norm(delta),across=norm(cross(up,Math.abs(up[2])<.9?[0,0,1]:[1,0,0]));
+  const forward=cross(across,up),center=mul(add(a,b),.5),local=new Float32Array([...mul(across,width),0,...mul(up,length),0,...mul(forward,depth),0,...center,1]);
+  const item={p:M.transform(frame,center),s:[width,length,depth],m:M.mul(frame,local),c:color,rough:.9,
+   cameraSolid:false,cutaway:false,droverPart:name,droverGroup:group,droverJoints:[M.transform(frame,a),M.transform(frame,b)]};out.box.push(item);parts.push(item);
+ };
+ part('box','shirt-waist',[0,1.04,0],[.36,.28,.255],shirt);
+ part('box','shirt-chest',[0,1.28,-.015],[.45,.24,.27],shirt);
+ part('box','coat-back',[0,1.14,-.169],[.49,.57,.065],coat);
+ for(const side of[-1,1]){
+  part('octa','coat-side',[side*.205,1.09,0],[.18,.66,.34],coat);
+  part('box','coat-lapel',[side*.177,1.30,.145],[.09,.23,.046],edge,[0,0,side*-.08]);
+  part('box','coat-hem',[side*.107,.825,-.035],[.207,.28,.29],coat,[0,0,side*-.035]);
+ }
+ part('box','belt',[0,.99,0],[.40,.053,.29],dark);
+ part('box','belt-buckle',[.12,.99,.159],[.06,.05,.025],0xbca980);
+ segment('satchel-strap',[-.17,1.42,.169],[.27,.87,.17],.043,.027,dark);
+ part('box','satchel',[.29,.89,.03],[.22,.26,.15],0x9b8962,[0,0,.05]);
+ part('box','satchel-flap',[.29,.97,.11],[.23,.11,.027],edge);
+ part('round','neck',[0,1.46,-.008],[.115,.14,.12],skin);
+ part('round','head',[0,1.60,0],[.25,.28,.24],skin);
+ part('box','hair-back',[0,1.63,-.11],[.23,.19,.055],hair);
+ part('round','tied-hair',[0,1.60,-.161],[.15,.15,.13],hair);
+ part('octa','nose',[0,1.605,.143],[.05,.065,.065],skin);
+ part('round','headscarf-crown',[0,1.738,-.025],[.29,.13,.26],coat);
+ part('box','headscarf-band',[0,1.686,.002],[.274,.06,.235],edge);
+ part('box','scarf-collar',[0,1.45,.045],[.32,.075,.21],edge);
+ part('box','scarf-tail',[-.09,1.34,.19],[.10,.25,.035],edge,[0,0,-.09]);
+ for(const [name,side]of[['left',-1],['right',1]]){
+  part('round',name+'-ear',[side*.124,1.60,0],[.045,.068,.05],skin);
+  part('box',name+'-eye',[side*.048,1.627,.119],[.023,.014,.016],dark);
+  part('box',name+'-brow',[side*.048,1.65,.12],[.043,.012,.013],hair);
+  segment(name+'-thigh',j[name+'Hip'],j[name+'Knee'],.175,.19,0x596057);
+  segment(name+'-shin',j[name+'Knee'],j[name+'Ankle'],.14,.15,0x596057);
+  part('round',name+'-knee',j[name+'Knee'],[.16,.14,.16],0x596057);
+  part('box',name+'-boot',[side*.16,.088,.07],[.19,.14,.30],boots);
+  part('box',name+'-sole',[side*.16,.020,.07],[.202,.04,.312],dark);
+  part('round',name+'-boot-cuff',[side*.16,.21,.015],[.17,.22,.18],boots);
+  part('box',name+'-shoulder',j[name+'Shoulder'],[.18,.17,.27],coat);
+  segment(name+'-sleeve',j[name+'Shoulder'],j[name+'Elbow'],.147,.155,coat);
+  part('round',name+'-cuff',j[name+'Elbow'],[.16,.10,.16],edge);
+  segment(name+'-forearm',j[name+'Elbow'],j[name+'Hand'],.10,.11,coat);
+  part('round',name+'-hand',j[name+'Hand'],[.107,.10,.096],skin);
+ }
+ const coilRoot=M.mul(root,posed.coilRoot);
+ for(let i=0;i<12;i++){
+  const angle=i*Math.PI/6,next=(i+1)*Math.PI/6;
+  segment('rope-coil',[Math.cos(angle)*.145,Math.sin(angle)*.18,0],[Math.cos(next)*.145,Math.sin(next)*.18,0],.032,.049,rope,coilRoot);
+ }
+ part('box','rope-wrap',[0,.135,.014],[.07,.09,.075],dark,[0,0,0],coilRoot);
+ segment('rope-tail',[-.06,-.16,0],[-.11,-.30,.005],.025,.025,rope,coilRoot);
+ segment('rope-end',[-.11,-.30,.005],[-.06,-.34,.008],.025,.025,rope,coilRoot);
+ const actorCount=parts.length;group='cart';const b=height(cart.x,cart.z),cartRoot=M.compose(cart.x,b,cart.z,1,1,1);
+ const cp=(kind,name,p,s,c,r)=>part(kind,name,p,s,c,r||[0,0,0],cartRoot),wheelContacts=[];
+ for(const wz of[-.78,.78]){
+  const ends=[];
+  for(const wx of[-.98,.98]){
+   const groundY=height(cart.x+wx,cart.z+wz),cy=groundY-b+.36;ends.push([wx,cy,wz]);
+   cp('round','wheel-rim',[wx,cy,wz],[.16,.72,.72],dark);
+   cp('round','wheel-wood',[wx+(wx<0?-.013:.013),cy,wz],[.171,.57,.57],wood);
+   cp('round','wheel-hub',[wx+(wx<0?-.04:.04),cy,wz],[.22,.145,.145],0xaba383);
+   for(let i=0;i<6;i++){
+    const angle=i*Math.PI/3,side=wx<0?-.092:.092;
+    segment('wheel-spoke',[wx+side,cy,wz],[wx+side,cy+Math.sin(angle)*.28,wz+Math.cos(angle)*.28],.034,.032,dark,cartRoot);
+   }
+   wheelContacts.push({x:cart.x+wx,z:cart.z+wz,ground:groundY,center:groundY+.36,radius:.36});
+  }
+  segment('cart-axle',ends[0],ends[1],.095,.095,dark,cartRoot);
+ }
+ for(let i=0;i<5;i++)cp('box','bed-plank',[-.67+i*.335,.63,0],[.326,.16,2.45],i%2?0x987955:wood);
+ for(const dx of[-.63,.63]){
+  cp('box','bed-beam',[dx,.51,0],[.13,.16,2.53],dark);
+  cp('box','side-rail',[dx*1.27,1.04,0],[.11,.17,2.45],wood);
+  for(const dz of[-1.08,1.08])cp('box','rail-post',[dx*1.27,.87,dz],[.12,.62,.12],wood);
+  cp('box','short-shaft',[dx,.72,-1.43],[.095,.09,.44],dark,[.04,0,0]);
+ }
+ const sackCount=arrived?2:4;
+ for(let i=0;i<sackCount;i++){
+  const p=[i%2?-.37:.37,1.025,Math.floor(i/2)*.67-.26];
+  cp('round','flour-sack',p,[.64,.63,.57],canvas);
+  cp('box','sack-seam',[p[0],1.25,p[2]+.12],[.43,.025,.04],rope);
+ }
+ cp('box','apple-crate-bed',[0,1.005,-.93],[1.33,.11,.42],wood);
+ for(const dx of[-.64,.64])cp('box','apple-crate-end',[dx,1.17,-.93],[.065,.24,.42],0x9e805a);
+ for(const dz of[-1.12,-.73])cp('box','apple-crate-side',[0,1.14,dz],[1.33,.16,.045],0x9e805a);
+ if(!arrived){
+  for(let i=0;i<5;i++)cp('round','apple',[ -.47+i*.235,1.19,-.93],[.20,.20,.20],0xb86847);
+  for(const dx of[-.37,.37])cp('box','load-strap',[dx,1.355,.1],[.035,.035,1.67],dark);
+ }else{
+  cp('box','folded-cover',[0,.89,.57],[1.26,.28,.55],shirt);
+  cp('box','cover-fold',[0,1.036,.57],[1.23,.021,.35],edge);
+ }
+ return{anchor:{...anchor,base},cart:{...cart,base:b},root,coilRoot,joints:j,actorCount,partCount:parts.length,
+  reducedMotion:posed.reducedMotion,phase:arrived?'arrived':sent?'dispatched':state.accepted?'accepted':'waiting',sackCount,appleCount:arrived?0:5,wheelContacts};
+}
+const api={WAIT,SENT,CART_WAIT,CART_SENT,pose,draw};G.RealmDroverArt=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
 </script><script>/* Ansel's original prototype silhouette. Presentation only; +Z faces forward.
  * A carpenter's square and both hands share one frame, never player equipment. */
 (function(G){'use strict';
@@ -4833,17 +4964,11 @@ function story(out,sim,t,a){
  const box=(x,y,z,w,ht,d,c,r)=>out.box.push({p:[x,y,z],s:[w,ht,d],c,r:r||[0,0,0],rough:.9,cameraSolid:false});
  const round=(x,y,z,w,ht,d,c)=>out.round.push({p:[x,y,z],s:[w,ht,d],c,rough:.9});
  // Residents stand beside supported paths. They never own progression or collision.
- const fx=s.dispatch?2:8.8,fz=s.dispatch?-43:5;
- a.person(out,fx,fz,-.6,'#bd8963',clock,false,'drover',false,h(fx,fz));
+ a.droverFrame=G.RealmDroverArt.draw(out,{state:s,time:sim.elapsed,reducedMotion:quiet,ground:h});
  const ansel=G.RealmMillwrightArt.ANCHOR;
  a.millwrightFrame=G.RealmMillwrightArt.draw(out,{base:h(ansel.x,ansel.z),time:sim.elapsed,reducedMotion:quiet});
  a.person(out,14.3,-26,-.8,'#989478',clock,false,'reeve',false,h(14.3,-26));
- // The load changes place only after explicit dispatch; arrival dresses the shared table.
- const cx=s.dispatch?-3:9.3,cz=s.dispatch?-43:7,b=h(cx,cz);
- box(cx,b+.63,cz,1.7,.18,2.5,col.wood);for(const x of [-.98,.98])for(const z of [-.78,.78])round(cx+x,b+.48,cz+z,.18,.65,.65,0x514436);
- for(const x of [-.8,.8])box(cx+x,b+.99,cz,.12,.55,2.45,0x9a7851);
- for(let i=0;i<4;i++)round(cx+(i%2?-.38:.38),b+1.02,cz+Math.floor(i/2)*.68-.48,.68,.68,.6,0xc3b795);
- box(cx,b+1.23,cz-.86,1.35,.25,.38,0x7a6748);for(let i=0;i<5;i++)round(cx-.48+i*.23,b+1.42,cz-.86,.21,.20,.20,0xb9694b);
+ // The drover module projects dispatch/arrival; only the rules can move the load.
  // Small headrace machinery remains on the bank; it does not open collision through the pond.
  const gy=h(5.2,-6);a.millGateFrame=G.RealmMillGateArt.draw(out,done('mill-gate'),gy);
  if(!done('mill-root')){box(5.15,gy+.2,-4.5,.28,.25,1.9,0x5a503d,[0,.5,.25]);box(5.55,gy+.23,-4.4,.8,.14,.18,0x5a503d,[0,-.5,0]);}
@@ -5214,7 +5339,7 @@ function frame(now){let dt=lastFrame?Math.min((now-lastFrame)/1000,.1):.016;last
 // Keep a read-only-ish diagnostics surface for inspection; this local prototype is not a security boundary.
 const G_CAPTURE=!!window.__ETERNITIES_CAPTURE_MODE;
 window.Realm={get state(){return sim.snapshot();},get diagnostics(){let g=engine?.gl,dbg=g?.getExtension('WEBGL_debug_renderer_info');return{version:'10.0.0',mode:engine?'webgl2':'map',scene:sim.room||'valley',earth:sim.room===RealmEarth.ROOM?{trip:sim.earthTrip,height:sceneHeight(),walkable:RealmEarth.walkable(sim.state.player.x,sim.state.player.z)}:null,cosmos:sim.room===RealmCosmos.ROOM?{trip:sim.cosmosTrip,height:sceneHeight(),walkable:RealmCosmos.walkable(sim.state.player.x,sim.state.player.z)}:null,networkDependencies:0,liveAI:false,multiplayer:false,adventure:{tactics:JSON.parse(JSON.stringify(RealmCombat.runtime(sim))),beacon:JSON.parse(JSON.stringify(RealmBeacon.runtime(sim))),crossing:JSON.parse(JSON.stringify(RealmCrossing.runtime(sim))),player:{...sim.state.player},paused:sim.paused,intent:adventure?.intent||null,stats:RealmAdventure.stats(sim.state.adventure),weapon:RealmArsenal.weapon(sim.state.adventure),arrows:RealmArsenal.runtime(sim).arrows.map(a=>({...a})),range:{...RealmArsenal.runtime(sim).range},enemies:RealmAdventure.runtime(sim).enemies.map(e=>({id:e.id,x:e.x,z:e.z,hp:e.hp,maxHP:e.maxHP,hidden:!!e.hidden,eventEnemy:!!e.eventEnemy,kind:e.kind,ringMode:e.ringMode,custom:e.custom,mode:e.mode,timer:e.timer,aim:e.aim})),companion:{...RealmAdventure.runtime(sim).companion}},sandbox:{bridge:sim.state.sandbox.bridge,objects:sim.state.sandbox.placed.length,elapsed:sim.state.sandbox.elapsed,autoGather:sandbox?.auto||null,buildMode:sandbox?.build||null},saveState,characters:{mode:characterStore.blocked?'blocked':characterStore.managed?'managed':'legacy',active:characterStore.active,revision:characterStore.revision,count:characterStore.record?.slots.length||1,writer:characterStore.writer,error:characterStore.error},fps,errors:errors.slice(),camera:{...camera,projection:engine?.camera.projection||'orthographic',eye:engine?.camera.eye,target:engine?.camera.target},metrics:engine?.metrics||null,reflection:engine?.reflectionInfo||null,cutaway:{enabled:!!engine?.cutaway,focus:engine?.cutawayFocus||null},renderer:dbg?g.getParameter(dbg.UNMASKED_RENDERER_WEBGL):null,music:{playing:experience?.playing||false,scoreRevision:sim.state.scoreRevision,playingRevision:experience?.playingRevision,step:experience?.step},gathering:sim.gathering?{...sim.gathering}:null,layoutRevision:sim.state.retreat.revision,roadsideGathering:{status:rpg?.gathering?.player.status||'idle',playing:!!rpg?.gathering?.player.source,pending:!!rpg?.gathering?.pending},audio:{enabled:audio.enabled,state:audio.ctx?.state||'not-created'}};},navigate,export:()=>JSON.stringify(sim.snapshot(),null,2),project:(x,y,z)=>engine?.project(x,y,z)};
-if(window.__ETERNITIES_TEST_MODE||location.search.includes('test'))window.Realm.test={step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){sim.tick(.05);adventure?.tick();arsenal?.tick();rpg?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,traveler:()=>art?.travelerSnapshot()||null,millwright:()=>sim.room===RealmEarth.ROOM&&art?.millwrightFrame?JSON.parse(JSON.stringify({frame:{...art.millwrightFrame,root:Array.from(art.millwrightFrame.root),toolRoot:Array.from(art.millwrightFrame.toolRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.millwrightPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millGate:()=>sim.room===RealmEarth.ROOM&&art?.millGateFrame?JSON.parse(JSON.stringify({gate:art.millGateFrame,parts:[...engine.batches,...engine.dynamic].flatMap(b=>b.items.filter(i=>i.millPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null}))),wheel:art.dynamicBox.items.filter(i=>i.p[0]===3.55&&i.p[1]===2.71)})):null,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
+if(window.__ETERNITIES_TEST_MODE||location.search.includes('test'))window.Realm.test={step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){sim.tick(.05);adventure?.tick();arsenal?.tick();rpg?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,traveler:()=>art?.travelerSnapshot()||null,drover:()=>sim.room===RealmEarth.ROOM&&art?.droverFrame?JSON.parse(JSON.stringify({frame:{...art.droverFrame,root:Array.from(art.droverFrame.root),coilRoot:Array.from(art.droverFrame.coilRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.droverPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millwright:()=>sim.room===RealmEarth.ROOM&&art?.millwrightFrame?JSON.parse(JSON.stringify({frame:{...art.millwrightFrame,root:Array.from(art.millwrightFrame.root),toolRoot:Array.from(art.millwrightFrame.toolRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.millwrightPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millGate:()=>sim.room===RealmEarth.ROOM&&art?.millGateFrame?JSON.parse(JSON.stringify({gate:art.millGateFrame,parts:[...engine.batches,...engine.dynamic].flatMap(b=>b.items.filter(i=>i.millPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null}))),wheel:art.dynamicBox.items.filter(i=>i.p[0]===3.55&&i.p[1]===2.71)})):null,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
 window.addEventListener('resize',resize);window.addEventListener('pagehide',()=>{save();characterStore.writer=false;characterLock.release();});window.addEventListener('pageshow',e=>{if(e.persisted&&characterStore.managed)acquireCharacterWriter().then(()=>save());});ui.canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();fallback('Graphics context lost. Your local state is intact; use the map and export a backup.');toast('Graphics paused; world state preserved.');});document.body.classList.toggle('reduced',sim.state.settings.reducedMotion);cameraPreset(sim.state.settings.cameraMode,false);if(camera.preset==='adventure'&&!sim.state.settings.cameraViews.profiles.adventure)camera.yaw=.22;labelsRebuild();resize();refreshUI();if(characterStore.managed){acquireCharacterWriter().then(ok=>{if(ok)save();else{saveState='unavailable';toast(characterLock.error);renderStatus();}});}else save();if(loaded.status==='migrated')toast('Your earlier world was copied into Realm 10. The original save was not changed.');setTimeout(()=>$('#loading').classList.add('hidden'),400);if(G_CAPTURE){if(window.Realm.test)window.Realm.test.render();}else requestAnimationFrame(frame);
 })();
 </script></body></html>

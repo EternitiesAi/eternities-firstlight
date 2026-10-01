@@ -1,3 +1,31 @@
+# A coherent cast and screenshot acceptance
+
+Read `docs/art/FENNA_RESULTS_2026-10-01.md` and the current
+`gameplay/fenna-drover` review. Fetch current heads/comments before branching.
+Dom is away and requested actual screenshots, so the delivery shows Fenna/load
+at the mill fork and after arrival in both cameras. The artwork is a prototype
+choice; no new founder playtest or final costume approval has been observed.
+
+Review the screenshots: is Fenna distinct from the traveller and Ansel? Is the
+loaded versus opened cart clear? Does the west-road scene feel inhabited?
+When available, revisit with fresh and returning characters, switch V and keep
+the older route/combat/equipment/discovery/gathering/comfort questions pending.
+
+Next bounded candidate: Darric's public-works silhouette at the existing quarry,
+using the same accepted reserved-block/road-packing state and current interaction.
+Improve the local cast and useful work before expanding unrelated scenery.
+Do not add a profession grind, schedule, payout or automatic story consent to
+make a worker look recognizable. Address any screenshot feedback first.
+
+Keep world/key 9, adventure 10, nested save owners, stored XP, explicit choices,
+equipment/sockets/fittings, independent characters, companion, housing/crafting,
+music/exports and both cameras. Larger mesh/skin/material pipelines still require
+measured import proof. Heavy storage stays on D; retain stable 8780 save origin
+and verify helper ownership/build before refresh. No automatic main merge,
+public deployment, paid provider, billing change or personal-profile access.
+
+Prior checkpoint retained:
+
 # Ansel proof delivered; next is a coherent local cast
 
 Read `docs/art/ANSEL_RESULTS_2026-10-01.md` and current

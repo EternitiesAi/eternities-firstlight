@@ -1,3 +1,25 @@
+# Fenna and a cart you can read, 2026-10-01
+
+Dom is away and asked for screenshots while development continues. Actual loaded
+departure and confirmed-arrival images in both cameras are supplied. They show
+new coat/scarf/satchel/coil, grounded wheels, flour/apple cargo and the opened
+arrival load. These original art choices await founder taste; automated images
+do not count as human playtesting.
+
+Pending screenshot questions: does Fenna read as a drover, distinct from Ansel
+and the player? Is loaded versus delivered clear? Does this handoff feel more
+inhabited? Pending later play: one fresh and one returning character, both views,
+with existing controls and once-only payment. Older combat/reward/discovery/
+gathering/camera-comfort questions remain pending.
+
+Geometry/state/full-gate checks, visible normal-time submitted frames, isolated
+pixels, actual normal-time video and matched RTX intervals establish their
+labelled technical scopes. No new enjoyment, pacing, monitor FPS or finished
+realistic animation claim. The shaft overlap and earlier cropped image were
+corrected; failures/partial verification remain recorded.
+
+Prior checkpoint retained:
+
 # Recognizable millwright,2026-10-01
 
 No new Dom playtest was observed. Ansel's clothes, cap/beard and carpenter's
