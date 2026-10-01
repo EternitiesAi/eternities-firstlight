@@ -1,3 +1,19 @@
+# Mill joinery and remembered repair, 2026-10-01
+
+No new Dom playtest was observed. The gate is original prototype art; human
+visual/feel acceptance remains pending. With a fresh kit character, inspect
+the comparison, clear the root and spend exactly two timber. With an already
+repaired character, revisit the work. Is the result clear in both cameras?
+Does returning to the mill view feel natural? Does the grain fit the scene?
+
+Engineering checks demonstrate submitted geometry, cost/payment preservation,
+watch/focus/pause behavior, reload and whole-character ownership. Actual
+normal-time footage and short headless RTX intervals establish their labelled
+technical scopes; they do not establish enjoyment, comfort or monitor FPS.
+Earlier outing, equipment, clue, gathering and traveller questions remain.
+
+Prior notes retained:
+
 # Traveller silhouette and motion, 2026-10-01
 
 No new Dom playtest was observed. The fitted body, split cloak, two-hand bow

@@ -159,3 +159,22 @@ combat rule, camera, save version, level/economy or founder story change.
 Full local/remote-clone verification, real footage and labelled GPU evidence
 remain separate from pending founder visual/comfort acceptance. Heavy files
 stay on D; main and the older live preview remain untouched.
+
+
+## 2026-10-01: crafted mill repair through existing authority
+
+Dom requested continued development. Use PR24's current646d56f3 gameplay head,
+fetch/review current remote work and refine the existing headrace gate as a
+bounded timber-door proof. Keep `mill-root`/`mill-gate`, their physical stance,
+two-timber charge and once-only delivery/payment owners. No new payout or
+physical water/door traversal authority belongs in this art refinement.
+
+Use three fixed and five moving mapped timber members in existing instance
+geometry; a dynamic timber group exists only in Earth. Read the saved repair
+directly. Preserve camera/cutaway/material fallback and explicit user pause;
+the existing wheel reads simulation time. Panel comparison distinguishes
+future from completed work, and local viewing uses the ordinary close/focus
+path while remote review offers accepted walking. No camera preference or
+save version changes. Actual footage and matched RTX evidence remain distinct
+from pending founder approval. Exact-head clean clone and review PR remain
+delivery gates; no main merge/public deployment/paid-provider/billing action.

@@ -1,3 +1,33 @@
+# Mill repair delivered; next is visual acceptance and a named resident
+
+Read `docs/art/MILL_GATE_RESULTS_2026-10-01.md` and the current stacked
+`gameplay/mill-gate-craft` review. Fetch newer heads/comments before branching.
+Dom's continuation authorized this bounded timber-door refinement without
+claiming new human feedback. It makes the existing mill work more tangible;
+it does not add another errand, reward, realm or unqualified asset importer.
+
+Try one new kit character with two timber and one already-repaired character.
+Is the difference clear before and after repair? Is returning from the panel
+to see the mill work natural? Does the timber fit this place in both views?
+Keep all earlier traveller/combat/equipment/curiosity/gathering/comfort questions
+pending until actual founder play; automated checks cannot settle them.
+
+The next bounded art candidate is Ansel's recognizable millwright silhouette
+and work stance beside this same reachable landing, through the existing
+primitive pipeline. Measure it and preserve his story anchor; no new resident
+schedule or progression system is required merely to refine his presentation.
+Wider mesh/skin import and additional material families need separate measured
+proof. Do not silently expand power, classes, XP or disconnected worlds.
+
+World/key9, adventure10 and all existing character worlds, saved equipment,
+sockets/fittings, companion, housing/crafting and music/exports stay protected.
+Keep both cameras and current combat controls. Heavy work stays on D. No
+automatic main merge/public deployment/billing change/personal-profile access.
+Preserve the stable8780 save origin and inspect ownership before changing an
+active preview. The final delivery receipt identifies the served build.
+
+Prior checkpoint retained as history:
+
 # Traveller proof delivered; next is founder feel and a useful art refinement
 
 Read `docs/art/TRAVELER_BROWSER_RESULTS_2026-09-30.md` and the current

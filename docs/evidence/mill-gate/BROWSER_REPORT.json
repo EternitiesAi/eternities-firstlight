@@ -1,0 +1,3166 @@
+{
+  "method": "Road After Rain production UI with command-earned worlds and isolated storage.\nAccelerated walking and setup verify rules/controls, not human pacing or enjoyment.\n",
+  "checks": [
+    {
+      "name": "browser loaded exact current build",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 7,5",
+      "passed": true
+    },
+    {
+      "name": "fresh-blade-detour contract declares all routes, cost, reward and escort method",
+      "passed": true
+    },
+    {
+      "name": "fresh-blade-detour inspection grants no hidden progress",
+      "passed": true
+    },
+    {
+      "name": "dialog consumes camera shortcut",
+      "passed": true
+    },
+    {
+      "name": "fresh-blade-detour explicit accept preserves inventory",
+      "passed": true
+    },
+    {
+      "name": "reload preserves story and unpaid entitlement at valley checkpoint",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 7,5",
+      "passed": true
+    },
+    {
+      "name": "task navigation uses real path to detour-ridge",
+      "passed": true
+    },
+    {
+      "name": "ridge prompt favors available scouting over a blocked repair",
+      "passed": true
+    },
+    {
+      "name": "accepted local interaction completes detour-ridge",
+      "passed": true
+    },
+    {
+      "name": "camera switch retains detour-ridge",
+      "passed": true
+    },
+    {
+      "name": "reload preserves story and unpaid entitlement at valley checkpoint",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 7,5",
+      "passed": true
+    },
+    {
+      "name": "task navigation uses real path to detour-shelter",
+      "passed": true
+    },
+    {
+      "name": "accepted local interaction completes detour-shelter",
+      "passed": true
+    },
+    {
+      "name": "camera switch retains detour-shelter",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 7,5",
+      "passed": true
+    },
+    {
+      "name": "task navigation uses real path to detour-mark",
+      "passed": true
+    },
+    {
+      "name": "accepted local interaction completes detour-mark",
+      "passed": true
+    },
+    {
+      "name": "camera switch retains detour-mark",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 7,5",
+      "passed": true
+    },
+    {
+      "name": "only completed route can be dispatched",
+      "passed": true
+    },
+    {
+      "name": "explicit dispatch keeps payment unpaid",
+      "passed": true
+    },
+    {
+      "name": "reload preserves story and unpaid entitlement at valley checkpoint",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,-43",
+      "passed": true
+    },
+    {
+      "name": "arrival is visible before payment",
+      "passed": true
+    },
+    {
+      "name": "reload preserves story and unpaid entitlement at valley checkpoint",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,-43",
+      "passed": true
+    },
+    {
+      "name": "fresh-blade-detour one exact payment",
+      "passed": true
+    },
+    {
+      "name": "fresh-blade-detour only declared timber cost",
+      "passed": true
+    },
+    {
+      "name": "fresh-blade-detour gear and prior systems unchanged",
+      "passed": true
+    },
+    {
+      "name": "fresh-blade-detour changed request cannot repay",
+      "passed": true
+    },
+    {
+      "name": "reload preserves story and unpaid entitlement at valley checkpoint",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "fresh-blade-detour paid story survives reload",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 7,5",
+      "passed": true
+    },
+    {
+      "name": "fresh-bow-quarry contract declares all routes, cost, reward and escort method",
+      "passed": true
+    },
+    {
+      "name": "fresh-bow-quarry inspection grants no hidden progress",
+      "passed": true
+    },
+    {
+      "name": "fresh-bow-quarry explicit accept preserves inventory",
+      "passed": true
+    },
+    {
+      "name": "reload preserves story and unpaid entitlement at valley checkpoint",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 7,5",
+      "passed": true
+    },
+    {
+      "name": "task navigation uses real path to quarry-reserve",
+      "passed": true
+    },
+    {
+      "name": "accepted local interaction completes quarry-reserve",
+      "passed": true
+    },
+    {
+      "name": "camera switch retains quarry-reserve",
+      "passed": true
+    },
+    {
+      "name": "reload preserves story and unpaid entitlement at valley checkpoint",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 7,5",
+      "passed": true
+    },
+    {
+      "name": "task navigation uses real path to quarry-grade",
+      "passed": true
+    },
+    {
+      "name": "accepted local interaction completes quarry-grade",
+      "passed": true
+    },
+    {
+      "name": "camera switch retains quarry-grade",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 7,5",
+      "passed": true
+    },
+    {
+      "name": "only completed route can be dispatched",
+      "passed": true
+    },
+    {
+      "name": "explicit dispatch keeps payment unpaid",
+      "passed": true
+    },
+    {
+      "name": "reload preserves story and unpaid entitlement at valley checkpoint",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,-43",
+      "passed": true
+    },
+    {
+      "name": "arrival is visible before payment",
+      "passed": true
+    },
+    {
+      "name": "reload preserves story and unpaid entitlement at valley checkpoint",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,-43",
+      "passed": true
+    },
+    {
+      "name": "fresh-bow-quarry one exact payment",
+      "passed": true
+    },
+    {
+      "name": "fresh-bow-quarry only declared timber cost",
+      "passed": true
+    },
+    {
+      "name": "fresh-bow-quarry gear and prior systems unchanged",
+      "passed": true
+    },
+    {
+      "name": "fresh-bow-quarry changed request cannot repay",
+      "passed": true
+    },
+    {
+      "name": "reload preserves story and unpaid entitlement at valley checkpoint",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "fresh-bow-quarry paid story survives reload",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 7,5",
+      "passed": true
+    },
+    {
+      "name": "veteran-mill contract declares all routes, cost, reward and escort method",
+      "passed": true
+    },
+    {
+      "name": "veteran-mill inspection grants no hidden progress",
+      "passed": true
+    },
+    {
+      "name": "veteran-mill explicit accept preserves inventory",
+      "passed": true
+    },
+    {
+      "name": "reload preserves story and unpaid entitlement at valley checkpoint",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 7,5",
+      "passed": true
+    },
+    {
+      "name": "task navigation uses real path to mill-root",
+      "passed": true
+    },
+    {
+      "name": "accepted local interaction completes mill-root",
+      "passed": true
+    },
+    {
+      "name": "camera switch retains mill-root",
+      "passed": true
+    },
+    {
+      "name": "reload preserves story and unpaid entitlement at valley checkpoint",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 7,5",
+      "passed": true
+    },
+    {
+      "name": "task navigation uses real path to mill-gate",
+      "passed": true
+    },
+    {
+      "name": "gate remains jammed after root clearance",
+      "passed": true
+    },
+    {
+      "name": "mapped gate has five vertical planks and three fixed members",
+      "passed": true
+    },
+    {
+      "name": "gate details stay out of camera and walking authority",
+      "passed": true
+    },
+    {
+      "name": "repair comparison identifies present and proposed change with explicit cost",
+      "passed": true
+    },
+    {
+      "name": "inspection and camera selection grant no repair",
+      "passed": true
+    },
+    {
+      "name": "accepted local interaction completes mill-gate",
+      "passed": true
+    },
+    {
+      "name": "accepted repair raises leaf and adds braced hardware",
+      "passed": true
+    },
+    {
+      "name": "completed comparison does not offer another timber spend",
+      "passed": true
+    },
+    {
+      "name": "completed introduction recognizes repaired gate",
+      "passed": true
+    },
+    {
+      "name": "local watch restores game focus and prior running state",
+      "passed": true
+    },
+    {
+      "name": "watch changes no earned state or camera preferences",
+      "passed": true
+    },
+    {
+      "name": "watch preserves an explicitly paused game",
+      "passed": true
+    },
+    {
+      "name": "camera switch retains mill-gate",
+      "passed": true
+    },
+    {
+      "name": "normal-time watch advances the actually submitted repaired wheel",
+      "passed": true
+    },
+    {
+      "name": "normal-time explicit pause freezes the submitted wheel",
+      "passed": true
+    },
+    {
+      "name": "normal-time reduced motion freezes the repaired silhouette",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 7,5",
+      "passed": true
+    },
+    {
+      "name": "remote repaired-gate action offers actual walking rather than watch",
+      "passed": true
+    },
+    {
+      "name": "only completed route can be dispatched",
+      "passed": true
+    },
+    {
+      "name": "explicit dispatch keeps payment unpaid",
+      "passed": true
+    },
+    {
+      "name": "reload preserves story and unpaid entitlement at valley checkpoint",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,-43",
+      "passed": true
+    },
+    {
+      "name": "arrival is visible before payment",
+      "passed": true
+    },
+    {
+      "name": "reload preserves story and unpaid entitlement at valley checkpoint",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,-43",
+      "passed": true
+    },
+    {
+      "name": "veteran-mill one exact payment",
+      "passed": true
+    },
+    {
+      "name": "veteran-mill only declared timber cost",
+      "passed": true
+    },
+    {
+      "name": "veteran-mill gear and prior systems unchanged",
+      "passed": true
+    },
+    {
+      "name": "veteran-mill changed request cannot repay",
+      "passed": true
+    },
+    {
+      "name": "reload preserves story and unpaid entitlement at valley checkpoint",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "veteran-mill paid story survives reload",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,-43",
+      "passed": true
+    },
+    {
+      "name": "capacity-blocked UI preserves all inventory and unpaid story",
+      "passed": true
+    },
+    {
+      "name": "capacity refusal explains how to retry",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,-43",
+      "passed": true
+    },
+    {
+      "name": "cleared capacity allows the same earned entitlement once",
+      "passed": true
+    },
+    {
+      "name": "new character inherits neither accepted work nor claimed reward",
+      "passed": true
+    },
+    {
+      "name": "returning character retains its own completed story",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "walk reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "compact story actions have no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "no runtime errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "browser_errors": [],
+  "html_sha256": "19dae01e07854d3bef5cef07ba3efacad4d77a81fa9a023938803cda3a236c52",
+  "pre_repair_ui": "Ansel \u00b7 millwright\nRepair and test the headrace gate\n\nFit a timber brace and test the gate. Ansel can keep the mill track dry for Fenna\u2019s load.\n\nCost: 2 timber \u00b7 you carry 2. Spent only when you choose the repair.\n\nCURRENT \u00b7 JAMMED\nA gate caught low\n\nThe leaf sits low in its guides, the brace is twisted and the wheel is still.\n\nAFTER YOUR REPAIR\nA braced, lifted gate\n\nFive timber planks, iron straps and a new brace hold the raised leaf. The mill wheel can turn again.\n\nYour completed repair will remain here when you return. The watercourse stays off the walking route. Viewing the work earns no extra payment.\n\nSpend 2 timber \u00b7 repair & test",
+  "mill_gate": {
+    "before": {
+      "gate": {
+        "repaired": false,
+        "center": [
+          5.2,
+          2.285428474333888,
+          -6
+        ],
+        "lift": 0,
+        "planks": 5
+      },
+      "parts": [
+        {
+          "kind": "box",
+          "p": [
+            5.2,
+            1.8854284743338883,
+            -6.65
+          ],
+          "s": [
+            0.46,
+            0.26,
+            0.38
+          ],
+          "c": 10132358,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "footing",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.32,
+            2.7754284743338884,
+            -6.5
+          ],
+          "s": [
+            0.065,
+            1.54,
+            0.065
+          ],
+          "c": 5266257,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "guide",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.2,
+            3.6554284743338883,
+            -6.6
+          ],
+          "s": [
+            0.3,
+            0.1,
+            0.3
+          ],
+          "c": 10849638,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "post-cap",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.32,
+            2.0854284743338884,
+            -6.6
+          ],
+          "s": [
+            0.035,
+            0.12,
+            0.25
+          ],
+          "c": 5266257,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "post-band",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.32,
+            3.3654284743338883,
+            -6.6
+          ],
+          "s": [
+            0.035,
+            0.12,
+            0.25
+          ],
+          "c": 5266257,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "post-band",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.2,
+            1.8854284743338883,
+            -5.35
+          ],
+          "s": [
+            0.46,
+            0.26,
+            0.38
+          ],
+          "c": 10132358,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "footing",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.32,
+            2.7754284743338884,
+            -5.5
+          ],
+          "s": [
+            0.065,
+            1.54,
+            0.065
+          ],
+          "c": 5266257,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "guide",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.2,
+            3.6554284743338883,
+            -5.4
+          ],
+          "s": [
+            0.3,
+            0.1,
+            0.3
+          ],
+          "c": 10849638,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "post-cap",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.32,
+            2.0854284743338884,
+            -5.4
+          ],
+          "s": [
+            0.035,
+            0.12,
+            0.25
+          ],
+          "c": 5266257,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "post-band",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.32,
+            3.3654284743338883,
+            -5.4
+          ],
+          "s": [
+            0.035,
+            0.12,
+            0.25
+          ],
+          "c": 5266257,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "post-band",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.2,
+            1.8454284743338885,
+            -6
+          ],
+          "s": [
+            0.42,
+            0.14,
+            1.14
+          ],
+          "c": 7634800,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "sill",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.2,
+            3.535428474333888,
+            -6
+          ],
+          "s": [
+            0.27,
+            0.3,
+            0.32
+          ],
+          "c": 5266257,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "bearing",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.51,
+            3.5454284743338884,
+            -6
+          ],
+          "s": [
+            0.19,
+            0.065,
+            0.065
+          ],
+          "c": 5266257,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "axle",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.6000000000000005,
+            3.6854284743338885,
+            -6
+          ],
+          "s": [
+            0.07,
+            0.34,
+            0.07
+          ],
+          "c": 5266257,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "crank",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.2,
+            3.3004284743338883,
+            -6.455
+          ],
+          "s": [
+            0.1,
+            0.4244997055358222,
+            0.1
+          ],
+          "c": 10520416,
+          "cutaway": true,
+          "cameraSolid": false,
+          "millPart": "knee",
+          "m": [
+            0.10000000149011612,
+            0,
+            0,
+            0,
+            0,
+            0.3100000023841858,
+            0.28999999165534973,
+            0,
+            0,
+            -0.06831571459770203,
+            0.07302714139223099,
+            0,
+            5.199999809265137,
+            3.3004283905029297,
+            -6.454999923706055,
+            1
+          ]
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.2,
+            3.3004284743338883,
+            -5.545
+          ],
+          "s": [
+            0.1,
+            0.4244997055358222,
+            0.1
+          ],
+          "c": 10520416,
+          "cutaway": true,
+          "cameraSolid": false,
+          "millPart": "knee",
+          "m": [
+            -0.10000000149011612,
+            0,
+            0,
+            0,
+            0,
+            0.3100000023841858,
+            -0.28999999165534973,
+            0,
+            0,
+            -0.06831571459770203,
+            -0.07302714139223099,
+            0,
+            5.199999809265137,
+            3.3004283905029297,
+            -5.545000076293945,
+            1
+          ]
+        },
+        {
+          "kind": "round",
+          "p": [
+            5.348,
+            3.4754284743338886,
+            -6.6
+          ],
+          "s": [
+            0.048,
+            0.048,
+            0.048
+          ],
+          "c": 12430720,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "peg",
+          "m": null
+        },
+        {
+          "kind": "round",
+          "p": [
+            5.348,
+            3.4754284743338886,
+            -5.4
+          ],
+          "s": [
+            0.048,
+            0.048,
+            0.048
+          ],
+          "c": 12430720,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "peg",
+          "m": null
+        },
+        {
+          "kind": "round",
+          "p": [
+            5.390000000000001,
+            3.5454284743338884,
+            -6
+          ],
+          "s": [
+            0.16,
+            0.28,
+            0.28
+          ],
+          "c": 10652510,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "pinion",
+          "m": null
+        },
+        {
+          "kind": "round",
+          "p": [
+            5.6000000000000005,
+            3.8754284743338885,
+            -6
+          ],
+          "s": [
+            0.11,
+            0.15,
+            0.11
+          ],
+          "c": 12625273,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "crank-grip",
+          "m": null
+        },
+        {
+          "kind": "timber-panel",
+          "p": [
+            5.2,
+            2.7754284743338884,
+            -6.6
+          ],
+          "s": [
+            1.88,
+            0.19,
+            0.22
+          ],
+          "c": 7888964,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "upright",
+          "r": [
+            0,
+            0,
+            1.5707963267948966
+          ],
+          "m": null
+        },
+        {
+          "kind": "timber-panel",
+          "p": [
+            5.2,
+            2.7754284743338884,
+            -5.4
+          ],
+          "s": [
+            1.88,
+            0.19,
+            0.22
+          ],
+          "c": 7888964,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "upright",
+          "r": [
+            0,
+            0,
+            1.5707963267948966
+          ],
+          "m": null
+        },
+        {
+          "kind": "timber-panel",
+          "p": [
+            5.2,
+            3.535428474333888,
+            -6
+          ],
+          "s": [
+            1.47,
+            0.19,
+            0.28
+          ],
+          "c": 9861456,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "lintel",
+          "r": [
+            0,
+            1.5707963267948966,
+            0
+          ],
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.282,
+            2.0254284743338884,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.1,
+            1.1
+          ],
+          "c": 5266257,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "leaf-strap",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.282,
+            2.545428474333888,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.1,
+            1.1
+          ],
+          "c": 5266257,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "leaf-strap",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.2,
+            3.335428474333888,
+            -6
+          ],
+          "s": [
+            0.085,
+            1.3,
+            0.095
+          ],
+          "c": 5266257,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "lift-rack",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.265000000000001,
+            2.765428474333888,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.035,
+            0.11
+          ],
+          "c": 10789771,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "rack-tooth",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.265000000000001,
+            2.8854284743338883,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.035,
+            0.11
+          ],
+          "c": 10789771,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "rack-tooth",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.265000000000001,
+            3.005428474333888,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.035,
+            0.11
+          ],
+          "c": 10789771,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "rack-tooth",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.265000000000001,
+            3.125428474333888,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.035,
+            0.11
+          ],
+          "c": 10789771,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "rack-tooth",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.265000000000001,
+            3.245428474333888,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.035,
+            0.11
+          ],
+          "c": 10789771,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "rack-tooth",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.265000000000001,
+            3.3654284743338883,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.035,
+            0.11
+          ],
+          "c": 10789771,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "rack-tooth",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.265000000000001,
+            3.4854284743338884,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.035,
+            0.11
+          ],
+          "c": 10789771,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "rack-tooth",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.265000000000001,
+            3.605428474333888,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.035,
+            0.11
+          ],
+          "c": 10789771,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "rack-tooth",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.265000000000001,
+            3.725428474333888,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.035,
+            0.11
+          ],
+          "c": 10789771,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "rack-tooth",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.265000000000001,
+            3.8454284743338882,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.035,
+            0.11
+          ],
+          "c": 10789771,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "rack-tooth",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.3500000000000005,
+            2.2554284743338884,
+            -5.89
+          ],
+          "s": [
+            0.065,
+            0.57,
+            0.08
+          ],
+          "c": 5593417,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "jammed-brace",
+          "r": [
+            0.3,
+            0,
+            0
+          ],
+          "m": null
+        },
+        {
+          "kind": "round",
+          "p": [
+            5.317,
+            2.0254284743338884,
+            -6.42
+          ],
+          "s": [
+            0.045,
+            0.045,
+            0.045
+          ],
+          "c": 12693638,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "strap-rivet",
+          "m": null
+        },
+        {
+          "kind": "round",
+          "p": [
+            5.317,
+            2.0254284743338884,
+            -5.58
+          ],
+          "s": [
+            0.045,
+            0.045,
+            0.045
+          ],
+          "c": 12693638,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "strap-rivet",
+          "m": null
+        },
+        {
+          "kind": "round",
+          "p": [
+            5.317,
+            2.545428474333888,
+            -6.42
+          ],
+          "s": [
+            0.045,
+            0.045,
+            0.045
+          ],
+          "c": 12693638,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "strap-rivet",
+          "m": null
+        },
+        {
+          "kind": "round",
+          "p": [
+            5.317,
+            2.545428474333888,
+            -5.58
+          ],
+          "s": [
+            0.045,
+            0.045,
+            0.045
+          ],
+          "c": 12693638,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "strap-rivet",
+          "m": null
+        },
+        {
+          "kind": "timber-panel",
+          "p": [
+            5.2,
+            2.285428474333888,
+            -6.41
+          ],
+          "s": [
+            0.84,
+            0.19,
+            0.12
+          ],
+          "c": 7891022,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "leaf-plank",
+          "m": [
+            0,
+            0.8399999737739563,
+            0,
+            0,
+            0,
+            0,
+            0.1899999976158142,
+            0,
+            0.11999999731779099,
+            0,
+            0,
+            0,
+            5.199999809265137,
+            2.285428524017334,
+            -6.409999847412109,
+            1
+          ]
+        },
+        {
+          "kind": "timber-panel",
+          "p": [
+            5.2,
+            2.285428474333888,
+            -6.205
+          ],
+          "s": [
+            0.84,
+            0.19,
+            0.12
+          ],
+          "c": 7891022,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "leaf-plank",
+          "m": [
+            0,
+            0.8399999737739563,
+            0,
+            0,
+            0,
+            0,
+            0.1899999976158142,
+            0,
+            0.11999999731779099,
+            0,
+            0,
+            0,
+            5.199999809265137,
+            2.285428524017334,
+            -6.204999923706055,
+            1
+          ]
+        },
+        {
+          "kind": "timber-panel",
+          "p": [
+            5.2,
+            2.285428474333888,
+            -6
+          ],
+          "s": [
+            0.84,
+            0.19,
+            0.12
+          ],
+          "c": 7891022,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "leaf-plank",
+          "m": [
+            0,
+            0.8399999737739563,
+            0,
+            0,
+            0,
+            0,
+            0.1899999976158142,
+            0,
+            0.11999999731779099,
+            0,
+            0,
+            0,
+            5.199999809265137,
+            2.285428524017334,
+            -6,
+            1
+          ]
+        },
+        {
+          "kind": "timber-panel",
+          "p": [
+            5.2,
+            2.285428474333888,
+            -5.795
+          ],
+          "s": [
+            0.84,
+            0.19,
+            0.12
+          ],
+          "c": 7891022,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "leaf-plank",
+          "m": [
+            0,
+            0.8399999737739563,
+            0,
+            0,
+            0,
+            0,
+            0.1899999976158142,
+            0,
+            0.11999999731779099,
+            0,
+            0,
+            0,
+            5.199999809265137,
+            2.285428524017334,
+            -5.795000076293945,
+            1
+          ]
+        },
+        {
+          "kind": "timber-panel",
+          "p": [
+            5.2,
+            2.285428474333888,
+            -5.59
+          ],
+          "s": [
+            0.84,
+            0.19,
+            0.12
+          ],
+          "c": 7891022,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "leaf-plank",
+          "m": [
+            0,
+            0.8399999737739563,
+            0,
+            0,
+            0,
+            0,
+            0.1899999976158142,
+            0,
+            0.11999999731779099,
+            0,
+            0,
+            0,
+            5.199999809265137,
+            2.285428524017334,
+            -5.590000152587891,
+            1
+          ]
+        }
+      ],
+      "wheel": [
+        {
+          "p": [
+            3.55,
+            2.71,
+            -9.700000000000001
+          ],
+          "s": [
+            0.65,
+            0.15,
+            0.43
+          ],
+          "c": 10519636,
+          "r": [
+            0,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        },
+        {
+          "p": [
+            3.55,
+            2.71,
+            -10.9
+          ],
+          "s": [
+            0.1,
+            0.11,
+            2.38
+          ],
+          "c": 6771002,
+          "r": [
+            0,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        },
+        {
+          "p": [
+            3.55,
+            2.71,
+            -10.9
+          ],
+          "s": [
+            0.1,
+            0.11,
+            2.38
+          ],
+          "c": 6771002,
+          "r": [
+            -0.6283185307179586,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        },
+        {
+          "p": [
+            3.55,
+            2.71,
+            -10.9
+          ],
+          "s": [
+            0.1,
+            0.11,
+            2.38
+          ],
+          "c": 6771002,
+          "r": [
+            -1.2566370614359172,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        },
+        {
+          "p": [
+            3.55,
+            2.71,
+            -10.9
+          ],
+          "s": [
+            0.1,
+            0.11,
+            2.38
+          ],
+          "c": 6771002,
+          "r": [
+            -1.8849555921538759,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        },
+        {
+          "p": [
+            3.55,
+            2.71,
+            -10.9
+          ],
+          "s": [
+            0.1,
+            0.11,
+            2.38
+          ],
+          "c": 6771002,
+          "r": [
+            -2.5132741228718345,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        },
+        {
+          "p": [
+            3.55,
+            2.71,
+            -12.1
+          ],
+          "s": [
+            0.65,
+            0.15,
+            0.43
+          ],
+          "c": 10519636,
+          "r": [
+            3.141592653589793,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        },
+        {
+          "p": [
+            3.55,
+            2.71,
+            -10.9
+          ],
+          "s": [
+            0.1,
+            0.11,
+            2.38
+          ],
+          "c": 6771002,
+          "r": [
+            -3.141592653589793,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        },
+        {
+          "p": [
+            3.55,
+            2.71,
+            -10.9
+          ],
+          "s": [
+            0.1,
+            0.11,
+            2.38
+          ],
+          "c": 6771002,
+          "r": [
+            -3.7699111843077517,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        },
+        {
+          "p": [
+            3.55,
+            2.71,
+            -10.9
+          ],
+          "s": [
+            0.1,
+            0.11,
+            2.38
+          ],
+          "c": 6771002,
+          "r": [
+            -4.39822971502571,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        },
+        {
+          "p": [
+            3.55,
+            2.71,
+            -10.9
+          ],
+          "s": [
+            0.1,
+            0.11,
+            2.38
+          ],
+          "c": 6771002,
+          "r": [
+            -5.026548245743669,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        },
+        {
+          "p": [
+            3.55,
+            2.71,
+            -10.9
+          ],
+          "s": [
+            0.1,
+            0.11,
+            2.38
+          ],
+          "c": 6771002,
+          "r": [
+            -5.654866776461628,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        }
+      ]
+    },
+    "after": {
+      "gate": {
+        "repaired": true,
+        "center": [
+          5.2,
+          3.0254284743338884,
+          -6
+        ],
+        "lift": 0.74,
+        "planks": 5
+      },
+      "parts": [
+        {
+          "kind": "box",
+          "p": [
+            5.2,
+            1.8854284743338883,
+            -6.65
+          ],
+          "s": [
+            0.46,
+            0.26,
+            0.38
+          ],
+          "c": 10132358,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "footing",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.32,
+            2.7754284743338884,
+            -6.5
+          ],
+          "s": [
+            0.065,
+            1.54,
+            0.065
+          ],
+          "c": 5266257,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "guide",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.2,
+            3.6554284743338883,
+            -6.6
+          ],
+          "s": [
+            0.3,
+            0.1,
+            0.3
+          ],
+          "c": 10849638,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "post-cap",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.32,
+            2.0854284743338884,
+            -6.6
+          ],
+          "s": [
+            0.035,
+            0.12,
+            0.25
+          ],
+          "c": 5266257,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "post-band",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.32,
+            3.3654284743338883,
+            -6.6
+          ],
+          "s": [
+            0.035,
+            0.12,
+            0.25
+          ],
+          "c": 5266257,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "post-band",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.2,
+            1.8854284743338883,
+            -5.35
+          ],
+          "s": [
+            0.46,
+            0.26,
+            0.38
+          ],
+          "c": 10132358,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "footing",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.32,
+            2.7754284743338884,
+            -5.5
+          ],
+          "s": [
+            0.065,
+            1.54,
+            0.065
+          ],
+          "c": 5266257,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "guide",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.2,
+            3.6554284743338883,
+            -5.4
+          ],
+          "s": [
+            0.3,
+            0.1,
+            0.3
+          ],
+          "c": 10849638,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "post-cap",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.32,
+            2.0854284743338884,
+            -5.4
+          ],
+          "s": [
+            0.035,
+            0.12,
+            0.25
+          ],
+          "c": 5266257,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "post-band",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.32,
+            3.3654284743338883,
+            -5.4
+          ],
+          "s": [
+            0.035,
+            0.12,
+            0.25
+          ],
+          "c": 5266257,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "post-band",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.2,
+            1.8454284743338885,
+            -6
+          ],
+          "s": [
+            0.42,
+            0.14,
+            1.14
+          ],
+          "c": 7634800,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "sill",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.2,
+            3.535428474333888,
+            -6
+          ],
+          "s": [
+            0.27,
+            0.3,
+            0.32
+          ],
+          "c": 5266257,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "bearing",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.51,
+            3.5454284743338884,
+            -6
+          ],
+          "s": [
+            0.19,
+            0.065,
+            0.065
+          ],
+          "c": 5266257,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "axle",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.6000000000000005,
+            3.6854284743338885,
+            -6
+          ],
+          "s": [
+            0.07,
+            0.34,
+            0.07
+          ],
+          "c": 5266257,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "crank",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.2,
+            3.3004284743338883,
+            -6.455
+          ],
+          "s": [
+            0.1,
+            0.4244997055358222,
+            0.1
+          ],
+          "c": 10520416,
+          "cutaway": true,
+          "cameraSolid": false,
+          "millPart": "knee",
+          "m": [
+            0.10000000149011612,
+            0,
+            0,
+            0,
+            0,
+            0.3100000023841858,
+            0.28999999165534973,
+            0,
+            0,
+            -0.06831571459770203,
+            0.07302714139223099,
+            0,
+            5.199999809265137,
+            3.3004283905029297,
+            -6.454999923706055,
+            1
+          ]
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.2,
+            3.3004284743338883,
+            -5.545
+          ],
+          "s": [
+            0.1,
+            0.4244997055358222,
+            0.1
+          ],
+          "c": 10520416,
+          "cutaway": true,
+          "cameraSolid": false,
+          "millPart": "knee",
+          "m": [
+            -0.10000000149011612,
+            0,
+            0,
+            0,
+            0,
+            0.3100000023841858,
+            -0.28999999165534973,
+            0,
+            0,
+            -0.06831571459770203,
+            -0.07302714139223099,
+            0,
+            5.199999809265137,
+            3.3004283905029297,
+            -5.545000076293945,
+            1
+          ]
+        },
+        {
+          "kind": "round",
+          "p": [
+            5.348,
+            3.4754284743338886,
+            -6.6
+          ],
+          "s": [
+            0.048,
+            0.048,
+            0.048
+          ],
+          "c": 12430720,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "peg",
+          "m": null
+        },
+        {
+          "kind": "round",
+          "p": [
+            5.348,
+            3.4754284743338886,
+            -5.4
+          ],
+          "s": [
+            0.048,
+            0.048,
+            0.048
+          ],
+          "c": 12430720,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "peg",
+          "m": null
+        },
+        {
+          "kind": "round",
+          "p": [
+            5.390000000000001,
+            3.5454284743338884,
+            -6
+          ],
+          "s": [
+            0.16,
+            0.28,
+            0.28
+          ],
+          "c": 10652510,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "pinion",
+          "m": null
+        },
+        {
+          "kind": "round",
+          "p": [
+            5.6000000000000005,
+            3.8754284743338885,
+            -6
+          ],
+          "s": [
+            0.11,
+            0.15,
+            0.11
+          ],
+          "c": 12625273,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "crank-grip",
+          "m": null
+        },
+        {
+          "kind": "timber-panel",
+          "p": [
+            5.2,
+            2.7754284743338884,
+            -6.6
+          ],
+          "s": [
+            1.88,
+            0.19,
+            0.22
+          ],
+          "c": 7888964,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "upright",
+          "r": [
+            0,
+            0,
+            1.5707963267948966
+          ],
+          "m": null
+        },
+        {
+          "kind": "timber-panel",
+          "p": [
+            5.2,
+            2.7754284743338884,
+            -5.4
+          ],
+          "s": [
+            1.88,
+            0.19,
+            0.22
+          ],
+          "c": 7888964,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "upright",
+          "r": [
+            0,
+            0,
+            1.5707963267948966
+          ],
+          "m": null
+        },
+        {
+          "kind": "timber-panel",
+          "p": [
+            5.2,
+            3.535428474333888,
+            -6
+          ],
+          "s": [
+            1.47,
+            0.19,
+            0.28
+          ],
+          "c": 9861456,
+          "cutaway": true,
+          "cameraSolid": false,
+          "rough": 0.94,
+          "millPart": "lintel",
+          "r": [
+            0,
+            1.5707963267948966,
+            0
+          ],
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.282,
+            2.7654284743338886,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.1,
+            1.1
+          ],
+          "c": 5266257,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "leaf-strap",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.282,
+            3.285428474333888,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.1,
+            1.1
+          ],
+          "c": 5266257,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "leaf-strap",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.2,
+            4.075428474333888,
+            -6
+          ],
+          "s": [
+            0.085,
+            1.3,
+            0.095
+          ],
+          "c": 5266257,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "lift-rack",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.265000000000001,
+            3.5054284743338884,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.035,
+            0.11
+          ],
+          "c": 10789771,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "rack-tooth",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.265000000000001,
+            3.6254284743338885,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.035,
+            0.11
+          ],
+          "c": 10789771,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "rack-tooth",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.265000000000001,
+            3.745428474333888,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.035,
+            0.11
+          ],
+          "c": 10789771,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "rack-tooth",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.265000000000001,
+            3.8654284743338883,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.035,
+            0.11
+          ],
+          "c": 10789771,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "rack-tooth",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.265000000000001,
+            3.9854284743338884,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.035,
+            0.11
+          ],
+          "c": 10789771,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "rack-tooth",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.265000000000001,
+            4.1054284743338885,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.035,
+            0.11
+          ],
+          "c": 10789771,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "rack-tooth",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.265000000000001,
+            4.225428474333889,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.035,
+            0.11
+          ],
+          "c": 10789771,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "rack-tooth",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.265000000000001,
+            4.345428474333889,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.035,
+            0.11
+          ],
+          "c": 10789771,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "rack-tooth",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.265000000000001,
+            4.465428474333889,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.035,
+            0.11
+          ],
+          "c": 10789771,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "rack-tooth",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.265000000000001,
+            4.585428474333888,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.035,
+            0.11
+          ],
+          "c": 10789771,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "rack-tooth",
+          "m": null
+        },
+        {
+          "kind": "box",
+          "p": [
+            5.29,
+            3.0254284743338884,
+            -6
+          ],
+          "s": [
+            0.055,
+            0.72,
+            0.1
+          ],
+          "c": 12163942,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "repair-brace",
+          "m": null
+        },
+        {
+          "kind": "round",
+          "p": [
+            5.317,
+            2.7654284743338886,
+            -6.42
+          ],
+          "s": [
+            0.045,
+            0.045,
+            0.045
+          ],
+          "c": 12693638,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "strap-rivet",
+          "m": null
+        },
+        {
+          "kind": "round",
+          "p": [
+            5.317,
+            2.7654284743338886,
+            -5.58
+          ],
+          "s": [
+            0.045,
+            0.045,
+            0.045
+          ],
+          "c": 12693638,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "strap-rivet",
+          "m": null
+        },
+        {
+          "kind": "round",
+          "p": [
+            5.317,
+            3.285428474333888,
+            -6.42
+          ],
+          "s": [
+            0.045,
+            0.045,
+            0.045
+          ],
+          "c": 12693638,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "strap-rivet",
+          "m": null
+        },
+        {
+          "kind": "round",
+          "p": [
+            5.317,
+            3.285428474333888,
+            -5.58
+          ],
+          "s": [
+            0.045,
+            0.045,
+            0.045
+          ],
+          "c": 12693638,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "strap-rivet",
+          "m": null
+        },
+        {
+          "kind": "round",
+          "p": [
+            5.325,
+            2.7054284743338886,
+            -6
+          ],
+          "s": [
+            0.05,
+            0.05,
+            0.05
+          ],
+          "c": 13679750,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "brace-peg",
+          "m": null
+        },
+        {
+          "kind": "round",
+          "p": [
+            5.325,
+            3.3454284743338882,
+            -6
+          ],
+          "s": [
+            0.05,
+            0.05,
+            0.05
+          ],
+          "c": 13679750,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "brace-peg",
+          "m": null
+        },
+        {
+          "kind": "timber-panel",
+          "p": [
+            5.2,
+            3.0254284743338884,
+            -6.41
+          ],
+          "s": [
+            0.84,
+            0.19,
+            0.12
+          ],
+          "c": 10586720,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "leaf-plank",
+          "m": [
+            0,
+            0.8399999737739563,
+            0,
+            0,
+            0,
+            0,
+            0.1899999976158142,
+            0,
+            0.11999999731779099,
+            0,
+            0,
+            0,
+            5.199999809265137,
+            3.025428533554077,
+            -6.409999847412109,
+            1
+          ]
+        },
+        {
+          "kind": "timber-panel",
+          "p": [
+            5.2,
+            3.0254284743338884,
+            -6.205
+          ],
+          "s": [
+            0.84,
+            0.19,
+            0.12
+          ],
+          "c": 10586720,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "leaf-plank",
+          "m": [
+            0,
+            0.8399999737739563,
+            0,
+            0,
+            0,
+            0,
+            0.1899999976158142,
+            0,
+            0.11999999731779099,
+            0,
+            0,
+            0,
+            5.199999809265137,
+            3.025428533554077,
+            -6.204999923706055,
+            1
+          ]
+        },
+        {
+          "kind": "timber-panel",
+          "p": [
+            5.2,
+            3.0254284743338884,
+            -6
+          ],
+          "s": [
+            0.84,
+            0.19,
+            0.12
+          ],
+          "c": 10586720,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "leaf-plank",
+          "m": [
+            0,
+            0.8399999737739563,
+            0,
+            0,
+            0,
+            0,
+            0.1899999976158142,
+            0,
+            0.11999999731779099,
+            0,
+            0,
+            0,
+            5.199999809265137,
+            3.025428533554077,
+            -6,
+            1
+          ]
+        },
+        {
+          "kind": "timber-panel",
+          "p": [
+            5.2,
+            3.0254284743338884,
+            -5.795
+          ],
+          "s": [
+            0.84,
+            0.19,
+            0.12
+          ],
+          "c": 10586720,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "leaf-plank",
+          "m": [
+            0,
+            0.8399999737739563,
+            0,
+            0,
+            0,
+            0,
+            0.1899999976158142,
+            0,
+            0.11999999731779099,
+            0,
+            0,
+            0,
+            5.199999809265137,
+            3.025428533554077,
+            -5.795000076293945,
+            1
+          ]
+        },
+        {
+          "kind": "timber-panel",
+          "p": [
+            5.2,
+            3.0254284743338884,
+            -5.59
+          ],
+          "s": [
+            0.84,
+            0.19,
+            0.12
+          ],
+          "c": 10586720,
+          "cameraSolid": false,
+          "cutaway": true,
+          "rough": 0.94,
+          "millPart": "leaf-plank",
+          "m": [
+            0,
+            0.8399999737739563,
+            0,
+            0,
+            0,
+            0,
+            0.1899999976158142,
+            0,
+            0.11999999731779099,
+            0,
+            0,
+            0,
+            5.199999809265137,
+            3.025428533554077,
+            -5.590000152587891,
+            1
+          ]
+        }
+      ],
+      "wheel": [
+        {
+          "p": [
+            3.55,
+            2.71,
+            -10.9
+          ],
+          "s": [
+            0.1,
+            0.11,
+            2.38
+          ],
+          "c": 6771002,
+          "r": [
+            -3.8150000000000066,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        },
+        {
+          "p": [
+            3.55,
+            2.71,
+            -10.9
+          ],
+          "s": [
+            0.1,
+            0.11,
+            2.38
+          ],
+          "c": 6771002,
+          "r": [
+            -4.443318530717965,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        },
+        {
+          "p": [
+            3.55,
+            2.71,
+            -10.9
+          ],
+          "s": [
+            0.1,
+            0.11,
+            2.38
+          ],
+          "c": 6771002,
+          "r": [
+            -5.071637061435924,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        },
+        {
+          "p": [
+            3.55,
+            2.71,
+            -10.9
+          ],
+          "s": [
+            0.1,
+            0.11,
+            2.38
+          ],
+          "c": 6771002,
+          "r": [
+            -5.6999555921538825,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        },
+        {
+          "p": [
+            3.55,
+            2.71,
+            -10.9
+          ],
+          "s": [
+            0.1,
+            0.11,
+            2.38
+          ],
+          "c": 6771002,
+          "r": [
+            -6.328274122871841,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        },
+        {
+          "p": [
+            3.55,
+            2.71,
+            -10.9
+          ],
+          "s": [
+            0.1,
+            0.11,
+            2.38
+          ],
+          "c": 6771002,
+          "r": [
+            -6.9565926535898,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        },
+        {
+          "p": [
+            3.55,
+            2.71,
+            -10.9
+          ],
+          "s": [
+            0.1,
+            0.11,
+            2.38
+          ],
+          "c": 6771002,
+          "r": [
+            -7.584911184307758,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        },
+        {
+          "p": [
+            3.55,
+            2.71,
+            -10.9
+          ],
+          "s": [
+            0.1,
+            0.11,
+            2.38
+          ],
+          "c": 6771002,
+          "r": [
+            -8.213229715025717,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        },
+        {
+          "p": [
+            3.55,
+            2.71,
+            -10.9
+          ],
+          "s": [
+            0.1,
+            0.11,
+            2.38
+          ],
+          "c": 6771002,
+          "r": [
+            -8.841548245743676,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        },
+        {
+          "p": [
+            3.55,
+            2.71,
+            -10.9
+          ],
+          "s": [
+            0.1,
+            0.11,
+            2.38
+          ],
+          "c": 6771002,
+          "r": [
+            -9.469866776461634,
+            0,
+            0
+          ],
+          "rough": 0.9,
+          "cameraSolid": false
+        }
+      ]
+    }
+  }
+}
