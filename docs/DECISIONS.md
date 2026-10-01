@@ -128,3 +128,10 @@ Audio getters stay pure. Explicit personal Play and roadside Listen relinquish t
 Scenery follows painterly mythic realism through the existing instance renderer. Navigation remains canonical; the live table's visible center must lie within interaction reach. Earth camera focus uses actual terrain height; the shelter bench is decoration and must not collapse the follow camera. Material/character import stays a separate measured slice, not an assumed Blender/GLB capability.
 
 Generated five-realm paintings form a read-only offline atlas. They do not make future realms playable or finalize cosmic architecture. Earth and Cosmos expose existing invitation flows only; Heaven/Hell/Atlantis remain design. Preserve source references/hashes and label the board aspirational. Paid power, offline-loss severity, rare-pet allocation, construction scale, online authority, engine migration and final founder taste decisions remain unresolved.
+
+
+## 2026-09-30: acquire a small material library and use D for heavy work
+
+Dom authorized online texture/asset acquisition and moving appropriate heavy Firstlight storage to D. Choose five official Poly Haven CC0 surfaces (wood, pale boulder stone, plaster, clay tiles, mud), three 1k maps each, with frozen provenance and checksum receipts. Use authored Firstlight geometry for silhouettes and architecture. This selection is an art experiment, not additional canon or approval of final materials.
+
+Use `D:/07-GAMES/Firstlight` for new authoring and artifacts. Move only audited completed standalone clones/media with verified copies, retained original data and C junctions; keep active linked worktrees, shared browser tools and personal data in place. The current live origin stays 127.0.0.1:8780. A separate authoring branch leaves gameplay/save versions and generated HTML unchanged. Material-map/mesh integration remains a bounded next proof, as described in the material-library record.

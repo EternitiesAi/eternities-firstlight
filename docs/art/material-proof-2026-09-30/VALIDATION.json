@@ -1,0 +1,48 @@
+{
+  "status": "Readback and guard verification; no render or gameplay integration",
+  "blender_version": "5.2.1 LTS",
+  "checks": [
+    {
+      "check": "Existing artifacts refused before nonexistent source is read",
+      "ok": true,
+      "refusal": "Existing proof artifacts are preserved. Choose fresh directories or explicitly use --replace-proof for an author-owned rerender: D:\\07-GAMES\\Firstlight\\authoring\\blender\\final\\HEARTHWATER_MATERIAL_PROOF.blend, D:\\07-GAMES\\Firstlight\\renders\\material-proof-2026-09-30\\final\\HEARTHWATER_DAYLIGHT.png, D:\\07-GAMES\\Firstlight\\renders\\material-proof-2026-09-30\\final\\HEARTHWATER_EVENING.png, D:\\07-GAMES\\Firstlight\\renders\\material-proof-2026-09-30\\final\\MATERIAL_SWATCHES_DAYLIGHT.png, D:\\07-GAMES\\Firstlight\\renders\\material-proof-2026-09-30\\final\\REPORT.json, D:\\07-GAMES\\Firstlight\\renders\\material-proof-2026-09-30\\final\\EXECUTED_SCRIPT.py"
+    },
+    {
+      "check": "Missing factory-startup refused before scene mutation",
+      "ok": true,
+      "refusal": "Use a separate Blender process with --factory-startup --background. Do not run inside a personal scene."
+    },
+    {
+      "check": "Loaded input blend refused despite factory-startup flag",
+      "ok": true,
+      "refusal": "Start from the factory scene with no input .blend. Loaded scenes are preserved."
+    },
+    {
+      "check": "All 15 used 1k images reopen packed with exact source bytes and correct colorspaces",
+      "ok": true
+    },
+    {
+      "check": "Both roof fields have outward upward normals",
+      "ok": true
+    },
+    {
+      "check": "Five three-map materials have no displacement; saved backend is Cycles CPU4",
+      "ok": true
+    },
+    {
+      "check": "Executed source, blend and render hashes match report; verification changed no proof artifacts",
+      "ok": true
+    }
+  ],
+  "executed_render_source_sha256": "6cd4bd70450871e31060bccd9d797e22d9f64e07da4940003234b004cf6043f4",
+  "current_reusable_source_sha256": "92cc3ca55a3d98dd628d9b176b1793852c1d467722fd4b8079c283e1fb3ebdb3",
+  "post_render_source_change": "Only added guard rejecting any loaded input .blend",
+  "protected_artifact_sha256": {
+    "D:\\07-GAMES\\Firstlight\\authoring\\blender\\final\\HEARTHWATER_MATERIAL_PROOF.blend": "649d87f43f0cc85ab1ec94d7493b8703f677a44433efd7f4280b2160ea2193ff",
+    "D:\\07-GAMES\\Firstlight\\renders\\material-proof-2026-09-30\\final\\REPORT.json": "15a3b276ae22bc742c065554b85b497a805f9c4d45a598dd0ff03a537eb0feaa",
+    "D:\\07-GAMES\\Firstlight\\renders\\material-proof-2026-09-30\\final\\EXECUTED_SCRIPT.py": "6cd4bd70450871e31060bccd9d797e22d9f64e07da4940003234b004cf6043f4",
+    "D:\\07-GAMES\\Firstlight\\renders\\material-proof-2026-09-30\\final\\HEARTHWATER_DAYLIGHT.png": "7108fe629ec89b50b9f9c924f4c5761e58b01198b5fdc57b9858c889a0afc8a3",
+    "D:\\07-GAMES\\Firstlight\\renders\\material-proof-2026-09-30\\final\\HEARTHWATER_EVENING.png": "99da16dd9003718272a432dbc499edbc6ed0ddde8507e2146fc883986902b58b",
+    "D:\\07-GAMES\\Firstlight\\renders\\material-proof-2026-09-30\\final\\MATERIAL_SWATCHES_DAYLIGHT.png": "dcaf9f1f59cf1c50468bf6b0cb32af73f95b3f68e075e7dfd8a805c53310a75f"
+  }
+}

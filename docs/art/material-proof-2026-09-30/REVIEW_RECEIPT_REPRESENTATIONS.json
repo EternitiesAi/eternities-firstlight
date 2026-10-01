@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "purpose": "Preserve original source hashes separately from normalized review text",
+  "representations": [
+    {
+      "review_file": "REPORT.json",
+      "original_file": "D:\\07-GAMES\\Firstlight\\renders\\material-proof-2026-09-30\\final\\REPORT.json",
+      "transformation": "CRLF to repository LF only; JSON values unchanged",
+      "original_bytes": 12312,
+      "review_bytes": 11917,
+      "original_sha256": "15a3b276ae22bc742c065554b85b497a805f9c4d45a598dd0ff03a537eb0feaa",
+      "review_sha256": "c25d83a6dec4a3a96369af9cee6fb44f1cc13cf222399cd54e914bb450fc690c"
+    },
+    {
+      "review_file": "VALIDATION.json",
+      "original_file": "D:\\07-GAMES\\Firstlight\\renders\\material-proof-2026-09-30\\final\\VALIDATION.json",
+      "transformation": "CRLF to repository LF only; JSON values unchanged",
+      "original_bytes": 3233,
+      "review_bytes": 3185,
+      "original_sha256": "c5cb42e1156dff8a6a38ef853d1893f1139fa4ea4899cdc73f8d8fa1e9d2610e",
+      "review_sha256": "b41b38490da833e7c6a2a4765d551339b62b2e5f94c906ccb675407a6cdeaa36"
+    },
+    {
+      "review_file": "STORAGE_SUMMARY.json",
+      "original_file": "D:\\07-GAMES\\Firstlight\\storage-receipts\\migration-42-20260930\\audit-summary.json",
+      "transformation": "CRLF to repository LF only; JSON values unchanged",
+      "original_bytes": 2785,
+      "review_bytes": 2711,
+      "original_sha256": "c431d55d612edbe978519c7eafd2edf91da0deee71cf5d885f011f226e60ab05",
+      "review_sha256": "6cf59e75fd880f26a0956491d510a402d8694010d6e5b09c8074d9115a608bc5"
+    }
+  ]
+}

@@ -1,0 +1,395 @@
+{
+  "proof_id": "firstlight-hearthwater-material-proof-v1",
+  "status": "Authored material proof, not browser integration or production approval",
+  "blender_version": "5.2.1 LTS",
+  "blender_build_hash": "9e2066aef7ef",
+  "render_backend": "CYCLES",
+  "device": "CPU",
+  "cpu_threads": 4,
+  "samples_max": 48,
+  "adaptive_threshold": 0.05000000074505806,
+  "denoising": true,
+  "color_management": {
+    "view_transform": "AgX",
+    "look": "None",
+    "exposure": 0.0
+  },
+  "units": "meters",
+  "swatch_face_dimensions_meters": [
+    1.2,
+    1.1
+  ],
+  "source_root": "D:\\07-GAMES\\Firstlight\\assets\\sources\\polyhaven",
+  "geometry": "Original script-authored; no imported meshes",
+  "mesh_objects": 168,
+  "text_objects": 12,
+  "displacement": false,
+  "external_hdris": false,
+  "materials": [
+    {
+      "asset_id": "weathered_planks",
+      "label": "WEATHERED TIMBER",
+      "repeat_meters": 2.0,
+      "normal_strength": 0.24,
+      "source_page": "https://polyhaven.com/a/weathered_planks",
+      "license": "CC0"
+    },
+    {
+      "asset_id": "rock_boulder_dry",
+      "label": "PALE STONE",
+      "repeat_meters": 1.8,
+      "normal_strength": 0.28,
+      "source_page": "https://polyhaven.com/a/rock_boulder_dry",
+      "license": "CC0"
+    },
+    {
+      "asset_id": "white_plaster_02",
+      "label": "PLASTER",
+      "repeat_meters": 1.0,
+      "normal_strength": 0.16,
+      "source_page": "https://polyhaven.com/a/white_plaster_02",
+      "license": "CC0"
+    },
+    {
+      "asset_id": "clay_roof_tiles_02",
+      "label": "CLAY ROOF",
+      "repeat_meters": 2.5,
+      "normal_strength": 0.32,
+      "source_page": "https://polyhaven.com/a/clay_roof_tiles_02",
+      "license": "CC0"
+    },
+    {
+      "asset_id": "brown_mud_02",
+      "label": "WORKED GROUND",
+      "repeat_meters": 1.3,
+      "normal_strength": 0.25,
+      "source_page": "https://polyhaven.com/a/brown_mud_02",
+      "license": "CC0"
+    }
+  ],
+  "inputs": [
+    {
+      "asset": "weathered_planks",
+      "map": "diff",
+      "path": "D:\\07-GAMES\\Firstlight\\assets\\sources\\polyhaven\\weathered_planks\\weathered_planks_diff_1k.jpg",
+      "bytes": 599581,
+      "sha256": "01c9a372cfd7a7bf471b59c2458ed3ccecc93448aebf7ba0cc5b3b5b6ed24349",
+      "color_space": "sRGB"
+    },
+    {
+      "asset": "weathered_planks",
+      "map": "nor_gl",
+      "path": "D:\\07-GAMES\\Firstlight\\assets\\sources\\polyhaven\\weathered_planks\\weathered_planks_nor_gl_1k.png",
+      "bytes": 5414916,
+      "sha256": "29a0a65faa6f06a733a0dcb8f5854fa62b9850aaae05aa11566a17703f4e38fc",
+      "color_space": "Non-Color"
+    },
+    {
+      "asset": "weathered_planks",
+      "map": "rough",
+      "path": "D:\\07-GAMES\\Firstlight\\assets\\sources\\polyhaven\\weathered_planks\\weathered_planks_rough_1k.jpg",
+      "bytes": 218802,
+      "sha256": "a017728183597417a350d1846a5a46db9702ee6d472a21c5da2f23015d606aa3",
+      "color_space": "Non-Color"
+    },
+    {
+      "asset": "rock_boulder_dry",
+      "map": "diff",
+      "path": "D:\\07-GAMES\\Firstlight\\assets\\sources\\polyhaven\\rock_boulder_dry\\rock_boulder_dry_diff_1k.jpg",
+      "bytes": 859211,
+      "sha256": "20f653a42fb24f42aa40641663070d578678da49af18cc1049dbdd4ed8679f3c",
+      "color_space": "sRGB"
+    },
+    {
+      "asset": "rock_boulder_dry",
+      "map": "nor_gl",
+      "path": "D:\\07-GAMES\\Firstlight\\assets\\sources\\polyhaven\\rock_boulder_dry\\rock_boulder_dry_nor_gl_1k.png",
+      "bytes": 5462248,
+      "sha256": "7ae21a2702d613d9d3eedcfb8b42d212b69302c07e2c4fd94ecaa91d52e9345b",
+      "color_space": "Non-Color"
+    },
+    {
+      "asset": "rock_boulder_dry",
+      "map": "rough",
+      "path": "D:\\07-GAMES\\Firstlight\\assets\\sources\\polyhaven\\rock_boulder_dry\\rock_boulder_dry_rough_1k.jpg",
+      "bytes": 668127,
+      "sha256": "cc5229dd6bbdc4e817cb647e60242224b8e4f0237473ac018861ea243f2e8130",
+      "color_space": "Non-Color"
+    },
+    {
+      "asset": "white_plaster_02",
+      "map": "diff",
+      "path": "D:\\07-GAMES\\Firstlight\\assets\\sources\\polyhaven\\white_plaster_02\\white_plaster_02_diff_1k.jpg",
+      "bytes": 527219,
+      "sha256": "a1ebbe091bd1ae93d2abd5de8d69f9003a8d0ee6532bcf9a87c2492c97051f23",
+      "color_space": "sRGB"
+    },
+    {
+      "asset": "white_plaster_02",
+      "map": "nor_gl",
+      "path": "D:\\07-GAMES\\Firstlight\\assets\\sources\\polyhaven\\white_plaster_02\\white_plaster_02_nor_gl_1k.png",
+      "bytes": 6075625,
+      "sha256": "36ac2eec35a5678eda0c1ccfd81f6ab8a2e2fed0ca3e77d6e1d44e372e130450",
+      "color_space": "Non-Color"
+    },
+    {
+      "asset": "white_plaster_02",
+      "map": "rough",
+      "path": "D:\\07-GAMES\\Firstlight\\assets\\sources\\polyhaven\\white_plaster_02\\white_plaster_02_rough_1k.jpg",
+      "bytes": 295900,
+      "sha256": "4ff1fe957cd161b07f721fe6c28a9459c8c2e8ec65627a26c16e483a07c80d85",
+      "color_space": "Non-Color"
+    },
+    {
+      "asset": "clay_roof_tiles_02",
+      "map": "diff",
+      "path": "D:\\07-GAMES\\Firstlight\\assets\\sources\\polyhaven\\clay_roof_tiles_02\\clay_roof_tiles_02_diff_1k.jpg",
+      "bytes": 903929,
+      "sha256": "227a062b38b170e02c27eaa513dae45dc8bc893a62cbd8d0c08e2c32b381fc25",
+      "color_space": "sRGB"
+    },
+    {
+      "asset": "clay_roof_tiles_02",
+      "map": "nor_gl",
+      "path": "D:\\07-GAMES\\Firstlight\\assets\\sources\\polyhaven\\clay_roof_tiles_02\\clay_roof_tiles_02_nor_gl_1k.png",
+      "bytes": 5640394,
+      "sha256": "c7b859bf83efb4d431536337e737435e324d95a3c8cdf06f04e384c21e941809",
+      "color_space": "Non-Color"
+    },
+    {
+      "asset": "clay_roof_tiles_02",
+      "map": "rough",
+      "path": "D:\\07-GAMES\\Firstlight\\assets\\sources\\polyhaven\\clay_roof_tiles_02\\clay_roof_tiles_02_rough_1k.jpg",
+      "bytes": 341520,
+      "sha256": "6d7596c4f3644ac50237381aeadf58f9b68a6dddeb66b6eef4f64462dcbbf82f",
+      "color_space": "Non-Color"
+    },
+    {
+      "asset": "brown_mud_02",
+      "map": "diff",
+      "path": "D:\\07-GAMES\\Firstlight\\assets\\sources\\polyhaven\\brown_mud_02\\brown_mud_02_diff_1k.jpg",
+      "bytes": 527741,
+      "sha256": "058b6f12493305ec6b47cb5ea77f013c9e7e58216b34af3700a3d3d7d821732d",
+      "color_space": "sRGB"
+    },
+    {
+      "asset": "brown_mud_02",
+      "map": "nor_gl",
+      "path": "D:\\07-GAMES\\Firstlight\\assets\\sources\\polyhaven\\brown_mud_02\\brown_mud_02_nor_gl_1k.png",
+      "bytes": 2490837,
+      "sha256": "6ab08dc4d8b6ff3a7d8407a5a0fe0af0ed324e7734f18b649c3e211cc820e1df",
+      "color_space": "Non-Color"
+    },
+    {
+      "asset": "brown_mud_02",
+      "map": "rough",
+      "path": "D:\\07-GAMES\\Firstlight\\assets\\sources\\polyhaven\\brown_mud_02\\brown_mud_02_rough_1k.jpg",
+      "bytes": 422119,
+      "sha256": "c6d5891f090554c8f51172b2c4056f490ab1ed1a69127f1f876f9d58c46f0f23",
+      "color_space": "Non-Color"
+    }
+  ],
+  "packed_images": [
+    {
+      "name": "brown_mud_02_diff_1k.jpg",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "color_space": "sRGB",
+      "packed": true,
+      "packed_bytes": 527741
+    },
+    {
+      "name": "brown_mud_02_nor_gl_1k.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "color_space": "Non-Color",
+      "packed": true,
+      "packed_bytes": 2490837
+    },
+    {
+      "name": "brown_mud_02_rough_1k.jpg",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "color_space": "Non-Color",
+      "packed": true,
+      "packed_bytes": 422119
+    },
+    {
+      "name": "clay_roof_tiles_02_diff_1k.jpg",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "color_space": "sRGB",
+      "packed": true,
+      "packed_bytes": 903929
+    },
+    {
+      "name": "clay_roof_tiles_02_nor_gl_1k.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "color_space": "Non-Color",
+      "packed": true,
+      "packed_bytes": 5640394
+    },
+    {
+      "name": "clay_roof_tiles_02_rough_1k.jpg",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "color_space": "Non-Color",
+      "packed": true,
+      "packed_bytes": 341520
+    },
+    {
+      "name": "rock_boulder_dry_diff_1k.jpg",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "color_space": "sRGB",
+      "packed": true,
+      "packed_bytes": 859211
+    },
+    {
+      "name": "rock_boulder_dry_nor_gl_1k.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "color_space": "Non-Color",
+      "packed": true,
+      "packed_bytes": 5462248
+    },
+    {
+      "name": "rock_boulder_dry_rough_1k.jpg",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "color_space": "Non-Color",
+      "packed": true,
+      "packed_bytes": 668127
+    },
+    {
+      "name": "weathered_planks_diff_1k.jpg",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "color_space": "sRGB",
+      "packed": true,
+      "packed_bytes": 599581
+    },
+    {
+      "name": "weathered_planks_nor_gl_1k.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "color_space": "Non-Color",
+      "packed": true,
+      "packed_bytes": 5414916
+    },
+    {
+      "name": "weathered_planks_rough_1k.jpg",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "color_space": "Non-Color",
+      "packed": true,
+      "packed_bytes": 218802
+    },
+    {
+      "name": "white_plaster_02_diff_1k.jpg",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "color_space": "sRGB",
+      "packed": true,
+      "packed_bytes": 527219
+    },
+    {
+      "name": "white_plaster_02_nor_gl_1k.png",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "color_space": "Non-Color",
+      "packed": true,
+      "packed_bytes": 6075625
+    },
+    {
+      "name": "white_plaster_02_rough_1k.jpg",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "color_space": "Non-Color",
+      "packed": true,
+      "packed_bytes": 295900
+    }
+  ],
+  "renders": [
+    {
+      "file": "D:\\07-GAMES\\Firstlight\\renders\\material-proof-2026-09-30\\final\\HEARTHWATER_DAYLIGHT.png",
+      "dimensions": [
+        1400,
+        1000
+      ],
+      "seconds": 29.675,
+      "bytes": 1614577,
+      "sha256": "7108fe629ec89b50b9f9c924f4c5761e58b01198b5fdc57b9858c889a0afc8a3"
+    },
+    {
+      "file": "D:\\07-GAMES\\Firstlight\\renders\\material-proof-2026-09-30\\final\\HEARTHWATER_EVENING.png",
+      "dimensions": [
+        1400,
+        1000
+      ],
+      "seconds": 30.702,
+      "bytes": 1542753,
+      "sha256": "99da16dd9003718272a432dbc499edbc6ed0ddde8507e2146fc883986902b58b"
+    },
+    {
+      "file": "D:\\07-GAMES\\Firstlight\\renders\\material-proof-2026-09-30\\final\\MATERIAL_SWATCHES_DAYLIGHT.png",
+      "dimensions": [
+        1600,
+        600
+      ],
+      "seconds": 23.033,
+      "bytes": 1183042,
+      "sha256": "dcaf9f1f59cf1c50468bf6b0cb32af73f95b3f68e075e7dfd8a805c53310a75f"
+    }
+  ],
+  "limits": [
+    "CPU study timings are not gameplay performance benchmarks.",
+    "No collision, animation, game export, browser material support or production asset approval.",
+    "Pale stone source is a boulder surface applied to authored riverstone forms.",
+    "White Plaster 02 current metadata dimensions are 1 m; its legacy scale text says 1.5 m.",
+    "Roof tile orientation and material scale require human art-direction review."
+  ],
+  "blend": {
+    "file": "D:\\07-GAMES\\Firstlight\\authoring\\blender\\final\\HEARTHWATER_MATERIAL_PROOF.blend",
+    "bytes": 30638327,
+    "sha256": "649d87f43f0cc85ab1ec94d7493b8703f677a44433efd7f4280b2160ea2193ff"
+  },
+  "script": {
+    "file": "D:\\07-GAMES\\Firstlight\\authoring\\blender\\material_proof.py",
+    "sha256": "6cd4bd70450871e31060bccd9d797e22d9f64e07da4940003234b004cf6043f4",
+    "executed_copy": "D:\\07-GAMES\\Firstlight\\renders\\material-proof-2026-09-30\\final\\EXECUTED_SCRIPT.py",
+    "hash_captured": "Before scene mutation and rendering"
+  },
+  "total_seconds": 84.526
+}

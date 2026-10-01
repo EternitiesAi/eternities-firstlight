@@ -1,3 +1,7 @@
+# Authoring follow-up, 2026-09-30
+
+A separate `art/cc0-material-proof` branch starts at the gameplay head `f85bd690466b6be9b2b438f4e06eddb264f3ec13` (PR #21). See [material library](art/MATERIAL_LIBRARY.md) for the verified five-material CC0 intake and D-drive authoring/storage policy. This follow-up does not change the playable renderer, identical HTML, save schemas or live preview. Its results record Blender proof and storage receipts separately from gameplay verification.
+
 # Current checkpoint: Living world and a table after the rain
 
 Updated 2026-09-30. Active worktree `C:/dev/firstlight-artifacts/living-world-2026-09-30/gameplay`, branch `gameplay/living-world-art-direction`, stacked on PR20 at 7434c950b8801a03217af2d6ad82e4caffc0c033. The final implementation PR records pushed head and exact-head fresh clone evidence. Main remains unmerged.

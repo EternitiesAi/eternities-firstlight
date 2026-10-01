@@ -100,3 +100,10 @@ Art must share reachable interaction anchors, read rules and preserve navigation
 The realm atlas is read-only concept direction. Available Earth/Cosmos actions use existing invitations; Heaven/Hell/Atlantis remain future realms. Preserve original generated rasters/provenance, committed compressed runtime assets, dependency-free offline assembly and exact identical HTML. Do not add network fetches, infer canon from a painting or claim Blender/GLB support without proving an import path.
 
 The verifier includes three native gathering continuations, gathering_browser and realm_atlas_browser alongside all older suites. Keep real-time GPU footage, software-WebGL regression evidence, source review and human acceptance distinct. No automatic main merge or public deployment.
+
+
+## CC0 material authoring and heavy storage
+
+Dom authorized Firstlight asset acquisition and heavy storage on D: on 2026-09-30. New source maps, Blender files, caches, captures and verification clones belong under `D:/07-GAMES/Firstlight`; keep lightweight source and current live checkout paths stable unless a separate checked worktree move is needed. Read `docs/art/MATERIAL_LIBRARY.md`. Selected completed C artifact leaves move only with exact manifests, verified D copies, retained originals and C junctions. Never move personal profiles, the canonical repository or active/shared tools implicitly.
+
+`tools/authoring` is an optional authoring workflow, not a runtime dependency. The five Poly Haven surfaces are CC0; website example renders/logos are excluded. Freeze membership and verify publisher sizes/checksums plus local SHA256; replay must not download or overwrite acquired files. Source maps and packed .blend files stay outside Git. A Blender material study is not browser texture support, gameplay footage or founder art approval. The existing offline renderer still needs a measured UV/material integration proof before these maps enter gameplay. Keep both cameras and all save/progression contracts.

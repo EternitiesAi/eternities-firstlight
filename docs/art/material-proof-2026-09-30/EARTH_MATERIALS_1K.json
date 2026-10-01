@@ -1,0 +1,229 @@
+{
+  "schema": 1,
+  "frozen_at_utc": "2026-10-01T01:29:50Z",
+  "provider": "Poly Haven",
+  "credit": "Powered by Poly Haven",
+  "license": "CC0-1.0",
+  "license_url": "https://polyhaven.com/license",
+  "api_terms_url": "https://github.com/Poly-Haven/Public-API/blob/master/ToS.md",
+  "intake_user_agent": "FirstlightAssetIntake/1.0 (local game authoring; Powered by Poly Haven)",
+  "purpose": "Offline authoring, not browser integration",
+  "assets": [
+    {
+      "id": "weathered_planks",
+      "name": "Weathered Planks",
+      "authors": {
+        "Dario Barresi": "Processing",
+        "Dimitrios Savva": "Photography"
+      },
+      "page": "https://polyhaven.com/a/weathered_planks",
+      "metadata_sha256": {
+        "info": "3083f06ea04132a9af964d46a3fffea1ce456d7cba87fe4ae76f8df62aeb955c",
+        "files": "15e8015c210b05a06679c2dde52dabaaff6941f8c2572839bf85271f9dd2a6d5"
+      }
+    },
+    {
+      "id": "rock_boulder_dry",
+      "name": "Rock Boulder Dry",
+      "authors": {
+        "Dimitrios Savva": "Photography",
+        "Rico Cilliers": "Processing"
+      },
+      "page": "https://polyhaven.com/a/rock_boulder_dry",
+      "metadata_sha256": {
+        "info": "ddc586a3a44ebcb4f4c524519ac9ee76724bceef845a716e9b119d97cfd503c9",
+        "files": "c413c5c8ceeed4e92f9456a8785f06c96123e21dcd8da0d1b782c50fb4432fe5"
+      }
+    },
+    {
+      "id": "white_plaster_02",
+      "name": "White Plaster 02",
+      "authors": {
+        "Rob Tuytel": "All"
+      },
+      "page": "https://polyhaven.com/a/white_plaster_02",
+      "metadata_sha256": {
+        "info": "95ef6154f6780b371dbbb8629d73fd7e31f1d5f8cbbd631a487a7ebad14d1008",
+        "files": "d25695d1a2a7ee4b3e6563bcb9c17dfe3d29a9b54e1e352555214b99c6803287"
+      }
+    },
+    {
+      "id": "clay_roof_tiles_02",
+      "name": "Clay Roof Tiles 02",
+      "authors": {
+        "Amal Kumar": "All"
+      },
+      "page": "https://polyhaven.com/a/clay_roof_tiles_02",
+      "metadata_sha256": {
+        "info": "cc47ff774af23b18110b1e929809a8807616f904c686de1e9a04feeb709da81b",
+        "files": "ca2c28956b8f4da5d7c3e50b5f099406805569e504b9dad64a0f37bba54b132d"
+      }
+    },
+    {
+      "id": "brown_mud_02",
+      "name": "Brown Mud 02",
+      "authors": {
+        "Rob Tuytel": "All"
+      },
+      "page": "https://polyhaven.com/a/brown_mud_02",
+      "metadata_sha256": {
+        "info": "bc43a66af58dc5feea56adfce7da2b9fd45902319ac48eebc645f410850d1cf5",
+        "files": "5c3ef300a47279975772c5c18c328b6d696cd8c46a2463c19c7c2fcc46382a79"
+      }
+    }
+  ],
+  "objects": [
+    {
+      "id": "weathered_planks",
+      "channel": "Diffuse",
+      "resolution": "1k",
+      "format": "jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/weathered_planks/weathered_planks_diff_1k.jpg",
+      "expected_bytes": 599581,
+      "publisher_md5": "5d7c9e7088bfa54490ba03ba15b660d8",
+      "relative_path": "weathered_planks/weathered_planks_diff_1k.jpg"
+    },
+    {
+      "id": "weathered_planks",
+      "channel": "nor_gl",
+      "resolution": "1k",
+      "format": "png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/weathered_planks/weathered_planks_nor_gl_1k.png",
+      "expected_bytes": 5414916,
+      "publisher_md5": "60576e594edad5cd2712f9817788d237",
+      "relative_path": "weathered_planks/weathered_planks_nor_gl_1k.png"
+    },
+    {
+      "id": "weathered_planks",
+      "channel": "Rough",
+      "resolution": "1k",
+      "format": "jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/weathered_planks/weathered_planks_rough_1k.jpg",
+      "expected_bytes": 218802,
+      "publisher_md5": "4ca50b076e1fc58f6862a5b039a7d5c9",
+      "relative_path": "weathered_planks/weathered_planks_rough_1k.jpg"
+    },
+    {
+      "id": "rock_boulder_dry",
+      "channel": "Diffuse",
+      "resolution": "1k",
+      "format": "jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rock_boulder_dry/rock_boulder_dry_diff_1k.jpg",
+      "expected_bytes": 859211,
+      "publisher_md5": "da794cd9be3db91e3160cf081109f322",
+      "relative_path": "rock_boulder_dry/rock_boulder_dry_diff_1k.jpg"
+    },
+    {
+      "id": "rock_boulder_dry",
+      "channel": "nor_gl",
+      "resolution": "1k",
+      "format": "png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/rock_boulder_dry/rock_boulder_dry_nor_gl_1k.png",
+      "expected_bytes": 5462248,
+      "publisher_md5": "90a2f0d635e2216aa6ce4ac927459c7f",
+      "relative_path": "rock_boulder_dry/rock_boulder_dry_nor_gl_1k.png"
+    },
+    {
+      "id": "rock_boulder_dry",
+      "channel": "Rough",
+      "resolution": "1k",
+      "format": "jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rock_boulder_dry/rock_boulder_dry_rough_1k.jpg",
+      "expected_bytes": 668127,
+      "publisher_md5": "0c8b15df3e31c15256da5f8e1b0d0759",
+      "relative_path": "rock_boulder_dry/rock_boulder_dry_rough_1k.jpg"
+    },
+    {
+      "id": "white_plaster_02",
+      "channel": "Diffuse",
+      "resolution": "1k",
+      "format": "jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/white_plaster_02/white_plaster_02_diff_1k.jpg",
+      "expected_bytes": 527219,
+      "publisher_md5": "7b10c2686bcfd76d1f309a20fd06b57e",
+      "relative_path": "white_plaster_02/white_plaster_02_diff_1k.jpg"
+    },
+    {
+      "id": "white_plaster_02",
+      "channel": "nor_gl",
+      "resolution": "1k",
+      "format": "png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/white_plaster_02/white_plaster_02_nor_gl_1k.png",
+      "expected_bytes": 6075625,
+      "publisher_md5": "576d036eb85d0887c7613f8d3f5e13df",
+      "relative_path": "white_plaster_02/white_plaster_02_nor_gl_1k.png"
+    },
+    {
+      "id": "white_plaster_02",
+      "channel": "Rough",
+      "resolution": "1k",
+      "format": "jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/white_plaster_02/white_plaster_02_rough_1k.jpg",
+      "expected_bytes": 295900,
+      "publisher_md5": "8b28f263360b8c4ddbdc4f7c650c4eeb",
+      "relative_path": "white_plaster_02/white_plaster_02_rough_1k.jpg"
+    },
+    {
+      "id": "clay_roof_tiles_02",
+      "channel": "Diffuse",
+      "resolution": "1k",
+      "format": "jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/clay_roof_tiles_02/clay_roof_tiles_02_diff_1k.jpg",
+      "expected_bytes": 903929,
+      "publisher_md5": "43c45fa3ac4c68ffb28aa813cec32608",
+      "relative_path": "clay_roof_tiles_02/clay_roof_tiles_02_diff_1k.jpg"
+    },
+    {
+      "id": "clay_roof_tiles_02",
+      "channel": "nor_gl",
+      "resolution": "1k",
+      "format": "png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/clay_roof_tiles_02/clay_roof_tiles_02_nor_gl_1k.png",
+      "expected_bytes": 5640394,
+      "publisher_md5": "929933df9ee11da6352d214919f45234",
+      "relative_path": "clay_roof_tiles_02/clay_roof_tiles_02_nor_gl_1k.png"
+    },
+    {
+      "id": "clay_roof_tiles_02",
+      "channel": "Rough",
+      "resolution": "1k",
+      "format": "jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/clay_roof_tiles_02/clay_roof_tiles_02_rough_1k.jpg",
+      "expected_bytes": 341520,
+      "publisher_md5": "f26a67aa20fbdcb7b70b85ccf4153245",
+      "relative_path": "clay_roof_tiles_02/clay_roof_tiles_02_rough_1k.jpg"
+    },
+    {
+      "id": "brown_mud_02",
+      "channel": "Diffuse",
+      "resolution": "1k",
+      "format": "jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/brown_mud_02/brown_mud_02_diff_1k.jpg",
+      "expected_bytes": 527741,
+      "publisher_md5": "c3842f023e11a08c8cf521c947ce08c8",
+      "relative_path": "brown_mud_02/brown_mud_02_diff_1k.jpg"
+    },
+    {
+      "id": "brown_mud_02",
+      "channel": "nor_gl",
+      "resolution": "1k",
+      "format": "png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/brown_mud_02/brown_mud_02_nor_gl_1k.png",
+      "expected_bytes": 2490837,
+      "publisher_md5": "1647fc3058cbf5f3424e2ddc29faf0c4",
+      "relative_path": "brown_mud_02/brown_mud_02_nor_gl_1k.png"
+    },
+    {
+      "id": "brown_mud_02",
+      "channel": "Rough",
+      "resolution": "1k",
+      "format": "jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/brown_mud_02/brown_mud_02_rough_1k.jpg",
+      "expected_bytes": 422119,
+      "publisher_md5": "a9d397c45a366da1c62d78ca72340ab0",
+      "relative_path": "brown_mud_02/brown_mud_02_rough_1k.jpg"
+    }
+  ],
+  "object_count": 15,
+  "expected_total_bytes": 30448169
+}
