@@ -83,3 +83,8 @@ python tests/reflection_browser.py
 `regression09_browser.py` runs the prior edition's UI workflows against the **current** HTML. Its historical screenshot names do not mean the prior HTML was substituted. Evidence10 contains this edition's actual reports. Evidence09, when included, is historical; its old pass counts are not counted again. Native file/loopback browser navigation was blocked here; successful browser storage checks use an explicitly labeled fixture. Read VALIDATION.md for exact counts and limitations.
 
 Full source is in this package. SOURCE.bundle contains local Git history, **not evidence of a GitHub push**. See START_HERE_FOR_CODEX.md before importing into a repository.
+
+
+## Current creative milestone
+
+The living-world review branch integrates the roadside gathering into the normal game, refines Firstlight/Earth scenery and includes an offline five-realm concept atlas. Read [current state](docs/CURRENT_STATE.md), [executed results](docs/development/LIVING_WORLD_RESULTS_2026-09-30.md) and [original art direction](docs/art/living-world-2026-09-30/ART_DIRECTION.md). Both cameras remain available. Concepts for future realms are labelled separately from playable journeys.

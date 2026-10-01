@@ -117,3 +117,14 @@ Dom requested creative implementation from his ChatGPT canon. After a bounded Gi
 Accept at the existing observatory field table after Fenna's arrival, including an unpaid arrival. Collect three identified rubbings along the existing western Earth road in any order. Compare a north/south tracing at the table and record one of two tentative explanations. Both directions of the axis are valid; neither interpretation is a hidden morality/class choice. The chart and Mara's reply are the declared reward; no economy or combat change is needed to make every outing worthwhile.
 
 Adventure8 → 9 adds required earthNotes1, empty and unaccepted. Current/future malformed state refuses. Durable observation and comparison authority stays separate from art and transient tracing angle. Old choices, notebooks, music, inventory and Fenna's unpaid entitlement remain. The chart does not prove these stones belong to the Roads of Light or make Beacons a source of the uncreated First Light. New game text is a Codex-authored proposal in playable form. Human curiosity and pacing remain pending.
+
+
+## 2026-09-30: Inhabitation, explicit music and visible anchors
+
+Dom authorized creative building and two Sol 6.1 xhigh agents. Use newer PR20 gathering as the continuation, with native adventure 10 integration and complete character/world ownership. The gathering's persistent memory is its finite reward; it grants no XP/items/currency or campaign completion and cannot turn Oren/Fenna payouts into repeat rewards. Silent completion is equally valid. Its arrangements never replace a personal composition.
+
+Audio getters stay pure. Explicit personal Play and roadside Listen relinquish the other sound source; mute, departure, hidden/blur, restore and character switch cancel playback/pending resumes. Choice confirmation belongs to the current simulation and revision. Test actual UI transitions, not merely component mocks.
+
+Scenery follows painterly mythic realism through the existing instance renderer. Navigation remains canonical; the live table's visible center must lie within interaction reach. Earth camera focus uses actual terrain height; the shelter bench is decoration and must not collapse the follow camera. Material/character import stays a separate measured slice, not an assumed Blender/GLB capability.
+
+Generated five-realm paintings form a read-only offline atlas. They do not make future realms playable or finalize cosmic architecture. Earth and Cosmos expose existing invitation flows only; Heaven/Hell/Atlantis remain design. Preserve source references/hashes and label the board aspirational. Paid power, offline-loss severity, rare-pet allocation, construction scale, online authority, engine migration and final founder taste decisions remain unresolved.

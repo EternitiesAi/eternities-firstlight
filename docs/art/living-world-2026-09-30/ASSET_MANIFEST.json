@@ -1,0 +1,59 @@
+{
+  "date": "2026-09-30",
+  "generator": "Built-in image_gen imagegen",
+  "mode": "Original referenced-image concept generation",
+  "assets": [
+    {
+      "path": "docs/art/living-world-2026-09-30/FIVE_REALMS.png",
+      "bytes": 3285102,
+      "sha256": "1258e2008fff6e193ca6a16e77f0c956216d601a92666ea2d9e12c8cd24673c2"
+    },
+    {
+      "path": "docs/art/living-world-2026-09-30/HEARTHWATER_KIT.png",
+      "bytes": 3725167,
+      "sha256": "163b79b7d32fc098015e7b8fe2cfc494448aaa5bff040eabe5448d138d21004f"
+    },
+    {
+      "path": "assets/concept-art/five-realms.webp",
+      "bytes": 467918,
+      "sha256": "cf2fa3aca7fac20199567ca879ee42e47ce67aa63da5acf1905f6403d7ec323f"
+    },
+    {
+      "path": "assets/concept-art/hearthwater-kit.webp",
+      "bytes": 504988,
+      "sha256": "88bb9ea69284ffa7a517f47691442df5ff38eff44ec62c382fe3df8ec8e9566a"
+    }
+  ],
+  "inputs": [
+    {
+      "realm": "Earth",
+      "archive_relative_path": "realms/earth-design-2026-09-14/reference/EARTH_EXISTING_CONCEPT.png",
+      "sha256": "d5f5f00d9177fce124983c1ce62eff36ef5901f5dfcacea6b37fc4bed066e497",
+      "role": "User-supplied visual ancestry; not copied as a runtime texture"
+    },
+    {
+      "realm": "Hell",
+      "archive_relative_path": "realms/hell-design-2026-09-14/reference-art/firstlight_infernal_citadel_realm.png",
+      "sha256": "884e18b62af90530fb2b13f7b36fe9a097bd145d46991192e48c017fee522dca",
+      "role": "User-supplied visual ancestry; not copied as a runtime texture"
+    },
+    {
+      "realm": "Atlantis",
+      "archive_relative_path": "realms/atlantis-design-2026-09-14/reference/OCEANIC_EARLIER_CONCEPT.png",
+      "sha256": "614a1e7113b143a8db28fd5732305b93d989d885e3c576fa711b8f4869dac1eb",
+      "role": "User-supplied visual ancestry; not copied as a runtime texture"
+    },
+    {
+      "realm": "Cosmos",
+      "archive_relative_path": "cosmos-design-2026-09-14/reference/COSMOS_EARLIER_CONCEPT.png",
+      "sha256": "6d5d5e3634af94a86f3c987155e8541e1dae43ee28809c1e5d92e69d3e76b456",
+      "role": "User-supplied visual ancestry; not copied as a runtime texture"
+    }
+  ],
+  "conversion": "FFmpeg7.1 libwebp quality82, no cropping, no resizing, no painted edits. Compression only. Runtime uses committed WebP; build uses stdlib base64.",
+  "boundaries": [
+    "Concept art is aspirational, not gameplay footage or final founder approval.",
+    "No external asset library downloads, proprietary extraction or external paid generation provider.",
+    "Existing reference slogans are excluded; no copied declaration that Hell is beyond redemption."
+  ]
+}

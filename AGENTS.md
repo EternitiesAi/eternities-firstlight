@@ -87,3 +87,16 @@ Read the Marks Beneath the Rain task/results and fresh canon intake. `earth-note
 Both 0° and180° match the north–south axis. Physical proximity/line and all three observations are required at comparison. The chart grants no XP, item or currency and does not overwrite personal notes/music. Distinguish observed marks, Mara's hypotheses and world truth; do not silently turn an optional mystery into confirmed cosmology. Her existing schedule stays intact; a field note does not claim she is always present.
 
 The portable verifier adds three command-earned continuations and `earth_notes_browser.py`, including diagram dimensions, both camera presets, save/reload and character ownership. Keep actual normal-time GPU footage separate from accelerated coverage and human playtesting. Preserve all prior systems and no automatic merge/deploy.
+
+
+## Living world, native gathering and visual atlas
+
+The active integration uses adventure10 and required earthGathering1. Native Adventure validation/commands own this state; the historical adapter and staged candidate builder do not patch the normal app. Migration9 adds empty, unaccepted hospitality only. Preserve strict future refusal, each character's complete world, Fenna's separate unpaid claim, existing XP and all personal creations.
+
+Arrangement confirmation captures simulation/revision and rechecks proximity. Audio preview is optional and cancellable across mute, menu departure, blur, hidden page, restore and character switch. Audio getters must remain pure: mutual exclusion belongs at explicit personal/gathering play entrypoints. Previewing or muting never writes the player's score.
+
+Art must share reachable interaction anchors, read rules and preserve navigation solids; test the visible location as well as canonical point constants. Decorative details stay out of camera bounds as appropriate. Keep Earth height-aware cutaways, both camera styles and reduced-motion wheel behavior. Report geometry count and measured hardware cost separately.
+
+The realm atlas is read-only concept direction. Available Earth/Cosmos actions use existing invitations; Heaven/Hell/Atlantis remain future realms. Preserve original generated rasters/provenance, committed compressed runtime assets, dependency-free offline assembly and exact identical HTML. Do not add network fetches, infer canon from a painting or claim Blender/GLB support without proving an import path.
+
+The verifier includes three native gathering continuations, gathering_browser and realm_atlas_browser alongside all older suites. Keep real-time GPU footage, software-WebGL regression evidence, source review and human acceptance distinct. No automatic main merge or public deployment.

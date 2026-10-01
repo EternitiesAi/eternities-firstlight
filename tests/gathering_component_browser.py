@@ -31,8 +31,8 @@ try:
   # component bytes into a blank page; this does NOT exercise native app routing
   # or origin persistence. No browser policy flags are disabled.
   import re
-  rendered=html.replace('<link rel="stylesheet" href="/src/gathering.css">','<style>'+(ROOT/'src/gathering.css').read_text()+'</style>')
-  rendered=re.sub(r'<script src="/([^"]+)"></script>',lambda m:'<script>'+(ROOT/m.group(1)).read_text()+'</script>',rendered)
+  rendered=html.replace('<link rel="stylesheet" href="/src/gathering.css">','<style>'+(ROOT/'src/gathering.css').read_text(encoding='utf-8')+'</style>')
+  rendered=re.sub(r'<script src="/([^"]+)"></script>',lambda m:'<script>'+(ROOT/m.group(1)).read_text(encoding='utf-8')+'</script>',rendered)
   report['document_method']='page.set_content with owned component bytes; local navigation refused by environment policy'
   page.set_content(rendered);page.wait_for_function('()=>!!window.Component?.rpg?.gathering')
   def ev(s):return page.evaluate(s)

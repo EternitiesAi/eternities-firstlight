@@ -1,13 +1,10 @@
-/* Reviewed extension adapter for the existing RPG workspace and Earth renderer.
- * No scene replacement, teleports, external media or connected residents.
- */
+/* Native optional gathering panel. Commands own progress; sound stays opt-in. */
 (function(G){'use strict';
 const Q=G.RealmGathering,M=G.RealmGatheringMusic,E=G.RealmEarth,$=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const button=(label,act,id='',disabled=false)=>'<button data-rpg="table-'+act+'" data-id="'+esc(id)+'" '+(disabled?'disabled':'')+'>'+label+'</button>';
 class GatheringUI{
  constructor(rpg){this.rpg=rpg;this.player=new M.Player();this.pending=null;this.caption='Sound is optional. Reading and silent completion are equally complete.';this.boundary=null;this.playRequest=0;this.lastAudioStatus='idle';
-  this.hint=document.createElement('button');this.hint.id='table-context';this.hint.hidden=true;this.hint.onclick=()=>this.interact();$('#rpg-hud').append(this.hint);
   this.stop=()=>{this.playRequest++;this.player.stop();};document.addEventListener('visibilitychange',()=>{if(document.hidden)this.stop();});window.addEventListener('blur',this.stop);window.addEventListener('pagehide',this.stop);
  }
  get sim(){return this.rpg.sim;}get state(){return this.sim.state.adventure.earthGathering;}
@@ -21,6 +18,7 @@ class GatheringUI{
   if(act==='table-stop'){this.stop();this.caption='Music stopped. Your composed score has not changed.';this.rpg.paint();return true;}
   if(act==='table-play'){
    if(!Q.at(this.sim,Q.TABLE)||!Q.validVerse(id)||this.state.prepared.length!==Q.TASKS.length){this.rpg.api.toast('Approach the table to hear its instrument.');return true;}
+   this.rpg.api.stopPersonalMusic?.();
    const owner=this.sim,audio=this.rpg.api.audio(),request=++this.playRequest;
    this.caption='Starting '+Q.VERSES[id].name+'… Sound is optional.';
    const eligible=()=>owner===this.sim&&this.rpg.dialog.open&&this.rpg.tab==='gathering'&&!document.hidden&&Q.at(this.sim,Q.TABLE)&&this.rpg.api.audio()===audio;
@@ -64,8 +62,8 @@ class GatheringUI{
   }
   return h+'<p class="table-note">An authored single-player gathering. No online players, live AI, forced grief, offline neglect, or player-composed music is involved.</p></article>';
  }
- tick(){const sim=this.sim,show=!this.rpg.dialog.open&&!!Q.point(sim)&&!this.rpg.api.panel();this.hint.hidden=!show;if(show)this.hint.textContent='E · '+Q.point(sim).name;
-  if(this.player.owner&&(document.hidden||this.player.owner!==sim||sim.room!==E.ROOM||!Q.at(sim,Q.TABLE)||!this.rpg.api.audio()?.enabled))this.stop();
+ tick(){const sim=this.sim;
+  if(this.player.owner&&(document.hidden||!this.rpg.dialog.open||this.rpg.tab!=='gathering'||this.rpg.api.panel()||this.player.owner!==sim||sim.room!==E.ROOM||!Q.at(sim,Q.TABLE)||!this.rpg.api.audio()?.enabled))this.stop();
   if(this.lastAudioStatus==='playing'&&this.player.status==='idle'){
    this.caption='Preview finished or stopped. Your arrangement and composed score are unchanged.';
    if(this.rpg.dialog.open&&this.rpg.tab==='gathering'){const status=$('#rpg-content .table-audio');if(status)status.textContent=this.caption;}
@@ -74,24 +72,5 @@ class GatheringUI{
  }
 }
 function get(rpg){return rpg.gathering||(rpg.gathering=new GatheringUI(rpg));}
-const P=G.RealmRPGUI.RPGUI.prototype,original={open:P.open,close:P.close,reset:P.reset,paint:P.paint,action:P.action,interact:P.interact,tick:P.tick};
-P.open=function(tab){if(tab!=='gathering')get(this).reset();return original.open.apply(this,arguments);};
-P.close=function(){get(this).reset();return original.close.apply(this,arguments);};
-P.reset=function(){get(this).reset();return original.reset.apply(this,arguments);};
-P.action=function(el){if(get(this).action(el))return;return original.action.apply(this,arguments);};
-P.interact=function(){if(get(this).interact())return true;return original.interact.apply(this,arguments);};
-P.paint=function(){original.paint.apply(this,arguments);const u=get(this);if(this.tab==='gathering'){$('#rpg-heading').textContent='A Table After the Rain';$('#rpg-content').innerHTML=u.page();}else if(['more','atlas','journal'].includes(this.tab))$('#rpg-content').insertAdjacentHTML('beforeend',u.invitation());};
-P.tick=function(){original.tick.apply(this,arguments);get(this).tick();};
-const drawBase=G.RealmEarthArt.draw;
-G.RealmEarthArt.draw=function(out,sim,t,art){drawBase.apply(this,arguments);if(sim.room!==E.ROOM||!Q.available(sim.state.adventure))return;const s=sim.state.adventure.earthGathering,h=E.height;
- const box=(x,y,z,w,ht,d,c,extra={})=>out.box.push({p:[x,y,z],s:[w,ht,d],c,rough:.8,...extra});
- const ball=(x,y,z,w,ht,d,c)=>out.round.push({p:[x,y,z],s:[w,ht,d],c,rough:.8});
- const y=h(3.8,-45);
- if(s.prepared.includes('cloth')){box(3.8,y+.95,-45,2.35,.025,1.24,'#ded1af');for(let i=0;i<4;i++)ball(2.98+i*.54,y+1.01,-44.8,.29,.065,.29,'#b9c6bc');}
- const lx=s.prepared.includes('lantern')?5.4:Q.LANTERN.x,lz=s.prepared.includes('lantern')?-45.3:Q.LANTERN.z,ly=h(lx,lz);
- box(lx,ly+1.15,lz,.09,2.3,.09,'#665743');box(lx,ly+2.08,lz,.28,.44,.28,'#ffe0a0',{em:.7});box(lx,ly+2.35,lz,.4,.08,.4,'#6e5942');
- if(s.prepared.includes('stand')){box(3.8,y+1.1,-45.2,.68,.17,.4,'#725039');box(3.8,y+1.23,-45.2,.54,.07,.34,'#c5a56a');for(let i=0;i<5;i++)box(3.56+i*.12,y+1.28,-45.2,.025,.02,.24,'#e7dcb8');}
- if(s.shared){box(5.4,ly+1.4,lz,.03,.7,.62,Q.VERSES[s.verse].color);box(5.425,ly+1.4,lz,.012,.045,.4,'#f1ddb7');}
-};
 G.RealmGatheringUI={GatheringUI,get};
 })(globalThis);

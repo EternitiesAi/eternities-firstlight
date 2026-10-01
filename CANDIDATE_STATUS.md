@@ -1,3 +1,9 @@
+# Gathering integrated on a later gameplay branch
+
+On `gameplay/living-world-art-direction`, the normal entrypoints now include native gathering and adventure10. Read [current results](docs/development/LIVING_WORLD_RESULTS_2026-09-30.md) and CURRENT_STATE for the applicable verification. The old staged builder is historical and must not be activated as the launcher or used to overwrite this newer checkout.
+
+The following describes PR20 before this integration, retained as provenance:
+
 # A Table After the Rain — development candidate
 
 The normal `index.html`, `FIRSTLIGHT_VALLEY.html`, `build.py`, launcher and trusted save origin remain the reviewed PR19 build. This branch's gathering extension is **not yet a whole-game-qualified release**.

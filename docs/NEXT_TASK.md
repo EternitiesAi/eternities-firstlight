@@ -1,3 +1,19 @@
+# Next playable acceptance: a world to belong to
+
+Current branch `gameplay/living-world-art-direction`, stacked on PR20 `gameplay/a-table-after-the-rain` at 7434c950b8801a03217af2d6ad82e4caffc0c033. Fetch origin/review comments before editing and preserve concurrent changes. Read CURRENT_STATE and the 2026-09-30 task/results/art direction.
+
+First play the integrated table and refined scenery with one fresh blade/bow character and one returning character. Both cameras matter. Ask whether the route is clear, the place feels inhabited, and the evening makes another visit appealing. Older combat/equipment/clue playtest questions remain unanswered unless Dom has actually played them.
+
+Next technical slice: prove one small authored mesh/material import for the existing offline renderer, using a house corner or orchard tree from the Hearthwater concept. Measure file/instance/triangle/frame cost and validate both cameras/low/reduced motion before adopting a kit. A GLB or installed Blender alone does not establish compatibility. Improve a useful visible piece of the playable Earth, then revisit traveler silhouette/animation. Do not replace the renderer or open a huge asset pipeline to make a door.
+
+A later local quest can use human feedback about Oren equipment progress, Fenna route choice, Mara discovery and Ilan's music. Preserve one-time payments, deliberate equipment choices and honest veteran usefulness. Future Heaven/Hell/Atlantis and Cosmos expansions retain their own scene/control/progression gates; paintings are not those implementations.
+
+Keep adventure 10/earthGathering 1 forward refusal, world keys 9, XP 1-5/stored 0..9999, choices, socket/fittings, companion, housing, scores/exports and each character's world. No automatic merge/deploy, paid assets, online participants or resurrected timed automation.
+
+---
+
+The prior next-task record is retained below as history:
+
 # Next playable acceptance
 
 Current review branch: `gameplay/marks-beneath-the-rain`, stacked on PR #18 at `4e57ad6028bc30b0c52b43de9ddf679bf373fbbf`. Fetch newer gameplay and review comments before continuing. Read CURRENT_STATE, the dated field-note results and comprehensive vision index. Canon archives inform design; their old code is not a gameplay checkout.
@@ -14,4 +30,4 @@ Address observed clue/readability/pacing friction first. The comparison currentl
 
 Then consider one inhabited Earth continuation: Nella's gathering or Ilan's folk-song variants, grounded in the recovered Earth atlas and Living Canticle. Tie any new work to existing people, route and return rather than adding a disconnected realm. Do not overwrite the player's composed score, force a gathering through Bellweather's chapter gate, introduce a raw-power tier or turn once-only discoveries/deliveries into repeat payouts. Any repeatable work needs declared terms and run/claim authority.
 
-Keep adventure9/earthNotes1/earthStory1 forward refusal, both cameras, stored XP, old story and soul choices, unpaid surveys, sockets/fittings, companion, housing and exports. Heaven H0/H1, Hell D0/D1, Atlantis A0 and Cosmos M2+ remain separate gates. Paid power, offline loss, rare pets, construction scale, final naming, native engine, respec and online authority remain unresolved. No automatic merge, deployment or restarted timed automation.
+Keep adventure 9/earthNotes1/earthStory1 forward refusal, both cameras, stored XP, old story and soul choices, unpaid surveys, sockets/fittings, companion, housing and exports. Heaven H0/H1, Hell D0/D1, Atlantis A0 and Cosmos M2+ remain separate gates. Paid power, offline loss, rare pets, construction scale, final naming, native engine, respec and online authority remain unresolved. No automatic merge, deployment or restarted timed automation.
