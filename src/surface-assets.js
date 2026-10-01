@@ -1,0 +1,2 @@
+/* Verified local texture derivatives are embedded by the offline builder. */
+(function(G){'use strict';G.RealmSurfaceAssets=Object.freeze({version:1,timber:Object.freeze({id:'earth-weathered-timber-v1',width:512,height:512,maps:Object.freeze({color:'data:image/jpeg;base64,__TIMBER_COLOR_BASE64__',roughness:'data:image/png;base64,__TIMBER_ROUGHNESS_BASE64__'}),calibration:Object.freeze({stripMeanLinearRGB:Object.freeze(__TIMBER_STRIP_MEAN_LINEAR_RGB__),crop:Object.freeze([.10,.20,0,1])})})});})(window);

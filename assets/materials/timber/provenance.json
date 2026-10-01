@@ -1,0 +1,140 @@
+{
+  "schema": 1,
+  "material_id": "earth-weathered-timber-v1",
+  "width": 512,
+  "height": 512,
+  "prepared_at_utc": "2026-10-01T02:41:42+00:00",
+  "provider": "Poly Haven",
+  "credit": "Powered by Poly Haven",
+  "source_asset": {
+    "id": "weathered_planks",
+    "page": "https://polyhaven.com/a/weathered_planks",
+    "authors": {
+      "Dario Barresi": "Processing",
+      "Dimitrios Savva": "Photography"
+    }
+  },
+  "license": "CC0-1.0",
+  "license_url": "https://polyhaven.com/license",
+  "source_manifest_sha256": "b8d6319edb01e4be075b348f22d15be5870b9cad804cb20901291566b1850f46",
+  "sources": {
+    "color": {
+      "asset_id": "weathered_planks",
+      "relative_path": "weathered_planks/weathered_planks_diff_1k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/weathered_planks/weathered_planks_diff_1k.jpg",
+      "bytes": 599581,
+      "sha256": "01c9a372cfd7a7bf471b59c2458ed3ccecc93448aebf7ba0cc5b3b5b6ed24349",
+      "publisher_md5": "5d7c9e7088bfa54490ba03ba15b660d8",
+      "width": 1024,
+      "height": 1024,
+      "color_space": "sRGB"
+    },
+    "roughness": {
+      "asset_id": "weathered_planks",
+      "relative_path": "weathered_planks/weathered_planks_rough_1k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/weathered_planks/weathered_planks_rough_1k.jpg",
+      "bytes": 218802,
+      "sha256": "a017728183597417a350d1846a5a46db9702ee6d472a21c5da2f23015d606aa3",
+      "publisher_md5": "4ca50b076e1fc58f6862a5b039a7d5c9",
+      "width": 1024,
+      "height": 1024,
+      "color_space": "scalar; no gamma conversion"
+    }
+  },
+  "derivatives": {
+    "color": {
+      "file": "color-512.jpg",
+      "mime": "image/jpeg",
+      "bytes": 33138,
+      "sha256": "5f88f449fc017a78efdd07b3e3358788350a9132a438246e948cb0ada052c80a",
+      "width": 512,
+      "height": 512,
+      "channels": 3,
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "settings": {
+        "resize": "Blender Image.scale default resampling; 1024 to 512 on both axes",
+        "view_transform": "Standard",
+        "look": "None",
+        "exposure": 0,
+        "gamma": 1,
+        "format": "JPEG",
+        "color_mode": "RGB",
+        "jpeg_quality": 82
+      }
+    },
+    "roughness": {
+      "file": "roughness-512.png",
+      "mime": "image/png",
+      "bytes": 61548,
+      "sha256": "020f6844c6232cfc7b060bbead37b6a173cda077ad0960cea59a8932d35c6994",
+      "width": 512,
+      "height": 512,
+      "channels": 1,
+      "bit_depth": 8,
+      "color_space": "scalar; no gamma conversion",
+      "settings": {
+        "resize": "Blender Image.scale default resampling; 1024 to 512 on both axes",
+        "view_transform": "Raw",
+        "look": "None",
+        "exposure": 0,
+        "gamma": 1,
+        "format": "PNG",
+        "color_mode": "BW",
+        "png_compression": 100
+      },
+      "removed_png_metadata": [
+        "sRGB",
+        "gAMA",
+        "cHRM",
+        "eXIf",
+        "oFFs",
+        "pHYs"
+      ],
+      "scalar_verification": {
+        "compared_pixels": 262144,
+        "max_scalar_error_in_8bit_steps": 0,
+        "comparison": "decoded PNG versus resized Blender Non-Color pixels; no gamma curve"
+      }
+    }
+  },
+  "combined_bytes": 94686,
+  "budget_bytes": 184320,
+  "calibration": {
+    "stripMeanLinearRGB": [
+      0.08197384378316076,
+      0.057887511954654886,
+      0.044554639163410466
+    ],
+    "crop": [
+      0.1,
+      0.2,
+      0,
+      1
+    ]
+  },
+  "calibration_measurement": {
+    "image": "color-512.jpg",
+    "pixel_bounds": {
+      "x_start": 51,
+      "x_end_exclusive": 103,
+      "y_start": 0,
+      "y_end_exclusive": 512
+    },
+    "sample_count": 26624,
+    "decoder": "Blender byte JPEG Image.pixels (encoded sRGB) then per-sample standard sRGB transfer to linear RGB",
+    "srgb_transfer": "c/12.92 when c<=0.04045; ((c+0.055)/1.055)^2.4 otherwise; average after conversion"
+  },
+  "software": {
+    "name": "Blender",
+    "version": "5.2.1 LTS",
+    "build_hash": "9e2066aef7ef",
+    "preparation_script_sha256": "2988fc5709ba9c8f12bda7f4d4fd0e6b1ea5b4dde86b7cd33d38e5da41db42a4"
+  },
+  "limitations": [
+    "One 512x512 timber surface pair for an offline renderer proof; no normal or displacement map.",
+    "JPEG color is lossy. Maps preserve the source orientation and tile field without cropping.",
+    "Color is sRGB for renderer decoding; roughness is an 8-bit single-channel scalar.",
+    "Blender authoring and source checks do not prove browser upload, visual quality, GPU cost or human approval."
+  ]
+}
