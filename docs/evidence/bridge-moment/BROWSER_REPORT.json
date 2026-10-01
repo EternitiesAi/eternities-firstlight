@@ -1,0 +1,8631 @@
+{
+  "method": "Actual bridge UI, supported walking, both cameras and GPU framebuffer effects.\n\nIsolated software WebGL engineering coverage. Accelerated rule walking and\nlabelled command-earned returning fixtures are not human feel or RTX timing.\nThe separate ordinary-RAF walk selects Low through the real graphics control;\nbalanced effects are covered by independent framebuffer probes above it.\n",
+  "html_sha256": "7b2a49fb38c49d660c391debe109f4eaddd31d74c363f6da98d2f84f118c2851",
+  "checks": [
+    {
+      "name": "exact generated build loads",
+      "passed": true
+    },
+    {
+      "name": "production walk reaches (0, 23)",
+      "passed": true
+    },
+    {
+      "name": "entry remains explicit",
+      "passed": true
+    },
+    {
+      "name": "production walk reaches (0, 16)",
+      "passed": true
+    },
+    {
+      "name": "bridge text and optional side framing are legible",
+      "passed": true
+    },
+    {
+      "name": "camera shortcut is consumed inside marker dialog",
+      "passed": true
+    },
+    {
+      "name": "explicit framing keeps third-person style and closes ordinary pause dialog",
+      "passed": true
+    },
+    {
+      "name": "four vaults are actually submitted above the physical water plane",
+      "passed": true
+    },
+    {
+      "name": "bounded bridge and mountain pieces never block the camera or cut away",
+      "passed": true
+    },
+    {
+      "name": "flanking water has no navigation target",
+      "passed": true
+    },
+    {
+      "name": "production walk reaches (0, 27.5)",
+      "passed": true
+    },
+    {
+      "name": "production walk reaches (0, 10)",
+      "passed": true
+    },
+    {
+      "name": "production walk reaches (0, 16)",
+      "passed": true
+    },
+    {
+      "name": "same explicit framing retains diorama style",
+      "passed": true
+    },
+    {
+      "name": "world cloud layer changes actual main framebuffer pixels",
+      "passed": true
+    },
+    {
+      "name": "same cloud layer changes actual reflected framebuffer pixels",
+      "passed": true
+    },
+    {
+      "name": "isolated Earth current/wake toggle changes actual pixels with clouds disabled",
+      "passed": true
+    },
+    {
+      "name": "combined current/cloud motion contributes actual pixels",
+      "passed": true
+    },
+    {
+      "name": "reduced-motion rendering freezes the added motion exactly",
+      "passed": true
+    },
+    {
+      "name": "low-quality water/cloud fallback remains rendered without GL errors",
+      "passed": true
+    },
+    {
+      "name": "R resets current diorama style",
+      "passed": true
+    },
+    {
+      "name": "V returns to saved third-person side orbit",
+      "passed": true
+    },
+    {
+      "name": "bridge sightseeing changes no XP, ownership, story or equipment",
+      "passed": true
+    },
+    {
+      "name": "reload resumes at acknowledged lake checkpoint preserving camera profiles",
+      "passed": true
+    },
+    {
+      "name": "bridge diagnostic is absent outside Earth",
+      "passed": true
+    },
+    {
+      "name": "production walk reaches (0, 23)",
+      "passed": true
+    },
+    {
+      "name": "entry remains explicit",
+      "passed": true
+    },
+    {
+      "name": "production walk reaches (0, 10)",
+      "passed": true
+    },
+    {
+      "name": "production walk reaches (0, 24)",
+      "passed": true
+    },
+    {
+      "name": "command-earned returning bow crosses without reward/history changes",
+      "passed": true
+    },
+    {
+      "name": "all browser runtime errors remain visible and absent",
+      "passed": true
+    },
+    {
+      "name": "normal RAF page is visible",
+      "passed": true
+    },
+    {
+      "name": "ordinary RAF walking uses explicitly selected low graphics",
+      "passed": true
+    },
+    {
+      "name": "normal-time walk accepted (0, 23)",
+      "passed": true
+    },
+    {
+      "name": "normal-time walk arrives (0, 23)",
+      "passed": true
+    },
+    {
+      "name": "normal-time walk accepted (0, 16)",
+      "passed": true
+    },
+    {
+      "name": "normal-time walk arrives (0, 16)",
+      "passed": true
+    },
+    {
+      "name": "normal-time crossing move is accepted",
+      "passed": true
+    },
+    {
+      "name": "actual visible app RAF advances bridge position and submitted stride",
+      "passed": true
+    },
+    {
+      "name": "submitted local leg joints change during ordinary crossing",
+      "passed": true
+    },
+    {
+      "name": "normal app pause preserves bridge position and stride",
+      "passed": true
+    },
+    {
+      "name": "visible normal app resumes and reaches opposite bridge bank",
+      "passed": true
+    },
+    {
+      "name": "actual reduced-motion control reaches the bridge traveller",
+      "passed": true
+    },
+    {
+      "name": "normal-time walk accepted (0, 19.5)",
+      "passed": true
+    },
+    {
+      "name": "normal-time walk arrives (0, 19.5)",
+      "passed": true
+    },
+    {
+      "name": "normal and accelerated browser runtime errors are absent",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "browser_errors": [],
+  "submitted": {
+    "definition": {
+      "id": "hearthwater-lake-bridge-v1",
+      "x": 0,
+      "z": 19.5,
+      "w": 3.7,
+      "walkWidth": 3.22,
+      "d": 15,
+      "from": 12,
+      "to": 27,
+      "deck": 1.57,
+      "piers": [
+        12,
+        15.75,
+        19.5,
+        23.25,
+        27
+      ]
+    },
+    "waterHeight": 0.01,
+    "parts": [
+      {
+        "kind": "box",
+        "p": [
+          0,
+          1.48,
+          19.5
+        ],
+        "s": [
+          3.7,
+          0.18,
+          15
+        ],
+        "c": 9672577,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          12.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          12.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          12.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          12.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          12.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          12.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          12.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          12.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          13.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          13.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          13.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          13.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          13.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          13.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          13.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          13.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          14.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          14.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          14.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          14.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          14.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          14.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          14.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          14.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          15.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          15.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          15.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          15.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          15.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          15.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          15.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          15.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          16.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          16.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          16.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          16.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          16.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          16.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          16.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          16.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          17.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          17.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          17.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          17.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          17.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          17.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          17.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          17.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          18.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          18.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          18.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          18.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          18.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          18.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          18.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          18.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          19.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          19.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          19.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          19.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          19.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          19.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          19.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          19.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          20.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          20.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          20.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          20.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          20.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          20.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          20.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          20.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          21.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          21.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          21.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          21.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          21.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          21.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          21.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          21.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          22.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          22.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          22.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          22.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          22.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          22.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          22.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          22.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          23.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          23.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          23.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          23.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          23.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          23.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          23.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          23.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          24.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          24.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          24.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          24.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          24.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          24.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          24.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          24.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          25.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          25.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          25.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          25.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          25.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          25.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          25.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          25.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          26.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          26.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          26.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          26.25
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.32,
+          1.548,
+          26.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.44,
+          1.548,
+          26.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.44,
+          1.548,
+          26.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.32,
+          1.548,
+          26.75
+        ],
+        "s": [
+          0.85,
+          0.044,
+          0.47
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0,
+          0.47,
+          12
+        ],
+        "s": [
+          3.7,
+          1.08,
+          0.56
+        ],
+        "c": 8687233,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.79,
+          0.97,
+          12
+        ],
+        "s": [
+          0.24,
+          0.17,
+          0.68
+        ],
+        "c": 10989210,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          1.9300000000000002,
+          12
+        ],
+        "s": [
+          0.16,
+          0.72,
+          0.23
+        ],
+        "c": 10791317,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          2.3200000000000003,
+          12
+        ],
+        "s": [
+          0.24,
+          0.11,
+          0.31
+        ],
+        "c": 12631715,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.79,
+          0.97,
+          12
+        ],
+        "s": [
+          0.24,
+          0.17,
+          0.68
+        ],
+        "c": 10989210,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          1.9300000000000002,
+          12
+        ],
+        "s": [
+          0.16,
+          0.72,
+          0.23
+        ],
+        "c": 10791317,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          2.3200000000000003,
+          12
+        ],
+        "s": [
+          0.24,
+          0.11,
+          0.31
+        ],
+        "c": 12631715,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0,
+          0.47,
+          15.75
+        ],
+        "s": [
+          3.7,
+          1.08,
+          0.56
+        ],
+        "c": 8687233,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.79,
+          0.97,
+          15.75
+        ],
+        "s": [
+          0.24,
+          0.17,
+          0.68
+        ],
+        "c": 10989210,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          1.9300000000000002,
+          15.75
+        ],
+        "s": [
+          0.16,
+          0.72,
+          0.23
+        ],
+        "c": 10791317,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          2.3200000000000003,
+          15.75
+        ],
+        "s": [
+          0.24,
+          0.11,
+          0.31
+        ],
+        "c": 12631715,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.79,
+          0.97,
+          15.75
+        ],
+        "s": [
+          0.24,
+          0.17,
+          0.68
+        ],
+        "c": 10989210,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          1.9300000000000002,
+          15.75
+        ],
+        "s": [
+          0.16,
+          0.72,
+          0.23
+        ],
+        "c": 10791317,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          2.3200000000000003,
+          15.75
+        ],
+        "s": [
+          0.24,
+          0.11,
+          0.31
+        ],
+        "c": 12631715,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0,
+          0.47,
+          19.5
+        ],
+        "s": [
+          3.7,
+          1.08,
+          0.56
+        ],
+        "c": 8687233,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.79,
+          0.97,
+          19.5
+        ],
+        "s": [
+          0.24,
+          0.17,
+          0.68
+        ],
+        "c": 10989210,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          1.9300000000000002,
+          19.5
+        ],
+        "s": [
+          0.16,
+          0.72,
+          0.23
+        ],
+        "c": 10791317,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          2.3200000000000003,
+          19.5
+        ],
+        "s": [
+          0.24,
+          0.11,
+          0.31
+        ],
+        "c": 12631715,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.79,
+          0.97,
+          19.5
+        ],
+        "s": [
+          0.24,
+          0.17,
+          0.68
+        ],
+        "c": 10989210,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          1.9300000000000002,
+          19.5
+        ],
+        "s": [
+          0.16,
+          0.72,
+          0.23
+        ],
+        "c": 10791317,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          2.3200000000000003,
+          19.5
+        ],
+        "s": [
+          0.24,
+          0.11,
+          0.31
+        ],
+        "c": 12631715,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0,
+          0.47,
+          23.25
+        ],
+        "s": [
+          3.7,
+          1.08,
+          0.56
+        ],
+        "c": 8687233,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.79,
+          0.97,
+          23.25
+        ],
+        "s": [
+          0.24,
+          0.17,
+          0.68
+        ],
+        "c": 10989210,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          1.9300000000000002,
+          23.25
+        ],
+        "s": [
+          0.16,
+          0.72,
+          0.23
+        ],
+        "c": 10791317,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          2.3200000000000003,
+          23.25
+        ],
+        "s": [
+          0.24,
+          0.11,
+          0.31
+        ],
+        "c": 12631715,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.79,
+          0.97,
+          23.25
+        ],
+        "s": [
+          0.24,
+          0.17,
+          0.68
+        ],
+        "c": 10989210,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          1.9300000000000002,
+          23.25
+        ],
+        "s": [
+          0.16,
+          0.72,
+          0.23
+        ],
+        "c": 10791317,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          2.3200000000000003,
+          23.25
+        ],
+        "s": [
+          0.24,
+          0.11,
+          0.31
+        ],
+        "c": 12631715,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0,
+          0.47,
+          27
+        ],
+        "s": [
+          3.7,
+          1.08,
+          0.56
+        ],
+        "c": 8687233,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.79,
+          0.97,
+          27
+        ],
+        "s": [
+          0.24,
+          0.17,
+          0.68
+        ],
+        "c": 10989210,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          1.9300000000000002,
+          27
+        ],
+        "s": [
+          0.16,
+          0.72,
+          0.23
+        ],
+        "c": 10791317,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          2.3200000000000003,
+          27
+        ],
+        "s": [
+          0.24,
+          0.11,
+          0.31
+        ],
+        "c": 12631715,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.79,
+          0.97,
+          27
+        ],
+        "s": [
+          0.24,
+          0.17,
+          0.68
+        ],
+        "c": 10989210,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          1.9300000000000002,
+          27
+        ],
+        "s": [
+          0.16,
+          0.72,
+          0.23
+        ],
+        "c": 10791317,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          2.3200000000000003,
+          27
+        ],
+        "s": [
+          0.24,
+          0.11,
+          0.31
+        ],
+        "c": 12631715,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.2886430833538429,
+          15.528001807941157
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          1.4279966607226333,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.6122667904072354,
+          15.394085432242045
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          1.1423973285781066,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.8960099697251628,
+          15.137101789171611
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.85679799643358,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          1.1168854364049496,
+          14.777870165150848
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.5711986642890533,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          1.2569991737331794,
+          14.345493369925187
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.2855993321445265,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          1.3050000000000002,
+          13.875
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          1.2569991737331794,
+          13.404506630074813
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.2855993321445267,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          1.11688543640495,
+          12.972129834849152
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.571198664289053,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.896009969725163,
+          12.612898210828389
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.8567979964335799,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.6122667904072353,
+          12.355914567757955
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -1.1423973285781068,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.2886430833538429,
+          12.221998192058843
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -1.4279966607226333,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          2.21,
+          13.875
+        ],
+        "s": [
+          0.12,
+          0.1,
+          3.54
+        ],
+        "c": 10922643,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          1.8900000000000001,
+          13.25
+        ],
+        "s": [
+          0.1,
+          0.64,
+          0.13
+        ],
+        "c": 9608840,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          1.8900000000000001,
+          14.5
+        ],
+        "s": [
+          0.1,
+          0.64,
+          0.13
+        ],
+        "c": 9608840,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.2886430833538429,
+          15.528001807941157
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          1.4279966607226333,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.6122667904072354,
+          15.394085432242045
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          1.1423973285781066,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.8960099697251628,
+          15.137101789171611
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.85679799643358,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          1.1168854364049496,
+          14.777870165150848
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.5711986642890533,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          1.2569991737331794,
+          14.345493369925187
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.2855993321445265,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          1.3050000000000002,
+          13.875
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          1.2569991737331794,
+          13.404506630074813
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.2855993321445267,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          1.11688543640495,
+          12.972129834849152
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.571198664289053,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.896009969725163,
+          12.612898210828389
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.8567979964335799,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.6122667904072353,
+          12.355914567757955
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -1.1423973285781068,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.2886430833538429,
+          12.221998192058843
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -1.4279966607226333,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          2.21,
+          13.875
+        ],
+        "s": [
+          0.12,
+          0.1,
+          3.54
+        ],
+        "c": 10922643,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          1.8900000000000001,
+          13.25
+        ],
+        "s": [
+          0.1,
+          0.64,
+          0.13
+        ],
+        "c": 9608840,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          1.8900000000000001,
+          14.5
+        ],
+        "s": [
+          0.1,
+          0.64,
+          0.13
+        ],
+        "c": 9608840,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.2886430833538429,
+          19.27800180794116
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          1.4279966607226333,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.6122667904072354,
+          19.144085432242047
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          1.1423973285781066,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.8960099697251628,
+          18.887101789171613
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.85679799643358,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          1.1168854364049496,
+          18.527870165150848
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.5711986642890533,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          1.2569991737331794,
+          18.095493369925187
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.2855993321445265,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          1.3050000000000002,
+          17.625
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          1.2569991737331794,
+          17.154506630074813
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.2855993321445267,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          1.11688543640495,
+          16.722129834849152
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.571198664289053,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.896009969725163,
+          16.36289821082839
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.8567979964335799,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.6122667904072353,
+          16.105914567757953
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -1.1423973285781068,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.2886430833538429,
+          15.971998192058843
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -1.4279966607226333,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          2.21,
+          17.625
+        ],
+        "s": [
+          0.12,
+          0.1,
+          3.54
+        ],
+        "c": 10922643,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          1.8900000000000001,
+          17
+        ],
+        "s": [
+          0.1,
+          0.64,
+          0.13
+        ],
+        "c": 9608840,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          1.8900000000000001,
+          18.25
+        ],
+        "s": [
+          0.1,
+          0.64,
+          0.13
+        ],
+        "c": 9608840,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.2886430833538429,
+          19.27800180794116
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          1.4279966607226333,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.6122667904072354,
+          19.144085432242047
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          1.1423973285781066,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.8960099697251628,
+          18.887101789171613
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.85679799643358,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          1.1168854364049496,
+          18.527870165150848
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.5711986642890533,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          1.2569991737331794,
+          18.095493369925187
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.2855993321445265,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          1.3050000000000002,
+          17.625
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          1.2569991737331794,
+          17.154506630074813
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.2855993321445267,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          1.11688543640495,
+          16.722129834849152
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.571198664289053,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.896009969725163,
+          16.36289821082839
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.8567979964335799,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.6122667904072353,
+          16.105914567757953
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -1.1423973285781068,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.2886430833538429,
+          15.971998192058843
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -1.4279966607226333,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          2.21,
+          17.625
+        ],
+        "s": [
+          0.12,
+          0.1,
+          3.54
+        ],
+        "c": 10922643,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          1.8900000000000001,
+          17
+        ],
+        "s": [
+          0.1,
+          0.64,
+          0.13
+        ],
+        "c": 9608840,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          1.8900000000000001,
+          18.25
+        ],
+        "s": [
+          0.1,
+          0.64,
+          0.13
+        ],
+        "c": 9608840,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.2886430833538429,
+          23.02800180794116
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          1.4279966607226333,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.6122667904072354,
+          22.894085432242047
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          1.1423973285781066,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.8960099697251628,
+          22.637101789171613
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.85679799643358,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          1.1168854364049496,
+          22.277870165150848
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.5711986642890533,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          1.2569991737331794,
+          21.845493369925187
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.2855993321445265,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          1.3050000000000002,
+          21.375
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          1.2569991737331794,
+          20.904506630074813
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.2855993321445267,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          1.11688543640495,
+          20.472129834849152
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.571198664289053,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.896009969725163,
+          20.11289821082839
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.8567979964335799,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.6122667904072353,
+          19.855914567757953
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -1.1423973285781068,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.2886430833538429,
+          19.72199819205884
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -1.4279966607226333,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          2.21,
+          21.375
+        ],
+        "s": [
+          0.12,
+          0.1,
+          3.54
+        ],
+        "c": 10922643,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          1.8900000000000001,
+          20.75
+        ],
+        "s": [
+          0.1,
+          0.64,
+          0.13
+        ],
+        "c": 9608840,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          1.8900000000000001,
+          22
+        ],
+        "s": [
+          0.1,
+          0.64,
+          0.13
+        ],
+        "c": 9608840,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.2886430833538429,
+          23.02800180794116
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          1.4279966607226333,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.6122667904072354,
+          22.894085432242047
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          1.1423973285781066,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.8960099697251628,
+          22.637101789171613
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.85679799643358,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          1.1168854364049496,
+          22.277870165150848
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.5711986642890533,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          1.2569991737331794,
+          21.845493369925187
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.2855993321445265,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          1.3050000000000002,
+          21.375
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          1.2569991737331794,
+          20.904506630074813
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.2855993321445267,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          1.11688543640495,
+          20.472129834849152
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.571198664289053,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.896009969725163,
+          20.11289821082839
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.8567979964335799,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.6122667904072353,
+          19.855914567757953
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -1.1423973285781068,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.2886430833538429,
+          19.72199819205884
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -1.4279966607226333,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          2.21,
+          21.375
+        ],
+        "s": [
+          0.12,
+          0.1,
+          3.54
+        ],
+        "c": 10922643,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          1.8900000000000001,
+          20.75
+        ],
+        "s": [
+          0.1,
+          0.64,
+          0.13
+        ],
+        "c": 9608840,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          1.8900000000000001,
+          22
+        ],
+        "s": [
+          0.1,
+          0.64,
+          0.13
+        ],
+        "c": 9608840,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.2886430833538429,
+          26.77800180794116
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          1.4279966607226333,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.6122667904072354,
+          26.644085432242047
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          1.1423973285781066,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.8960099697251628,
+          26.387101789171613
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.85679799643358,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          1.1168854364049496,
+          26.027870165150848
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.5711986642890533,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          1.2569991737331794,
+          25.595493369925187
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.2855993321445265,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          1.3050000000000002,
+          25.125
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          1.2569991737331794,
+          24.654506630074813
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.2855993321445267,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          1.11688543640495,
+          24.222129834849152
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.571198664289053,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.896009969725163,
+          23.86289821082839
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.8567979964335799,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.6122667904072353,
+          23.605914567757953
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -1.1423973285781068,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.867,
+          0.2886430833538429,
+          23.47199819205884
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -1.4279966607226333,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          2.21,
+          25.125
+        ],
+        "s": [
+          0.12,
+          0.1,
+          3.54
+        ],
+        "c": 10922643,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          1.8900000000000001,
+          24.5
+        ],
+        "s": [
+          0.1,
+          0.64,
+          0.13
+        ],
+        "c": 9608840,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.73,
+          1.8900000000000001,
+          25.75
+        ],
+        "s": [
+          0.1,
+          0.64,
+          0.13
+        ],
+        "c": 9608840,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.2886430833538429,
+          26.77800180794116
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          1.4279966607226333,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.6122667904072354,
+          26.644085432242047
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          1.1423973285781066,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.8960099697251628,
+          26.387101789171613
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.85679799643358,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          1.1168854364049496,
+          26.027870165150848
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.5711986642890533,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          1.2569991737331794,
+          25.595493369925187
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0.2855993321445265,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          1.3050000000000002,
+          25.125
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          0,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          1.2569991737331794,
+          24.654506630074813
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.2855993321445267,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          1.11688543640495,
+          24.222129834849152
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 11842718,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.571198664289053,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.896009969725163,
+          23.86289821082839
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10264461,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -0.8567979964335799,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.6122667904072353,
+          23.605914567757953
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 9541769,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -1.1423973285781068,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.867,
+          0.2886430833538429,
+          23.47199819205884
+        ],
+        "s": [
+          0.035,
+          0.19,
+          0.35
+        ],
+        "c": 10593940,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "r": [
+          -1.4279966607226333,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          2.21,
+          25.125
+        ],
+        "s": [
+          0.12,
+          0.1,
+          3.54
+        ],
+        "c": 10922643,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          1.8900000000000001,
+          24.5
+        ],
+        "s": [
+          0.1,
+          0.64,
+          0.13
+        ],
+        "c": 9608840,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.73,
+          1.8900000000000001,
+          25.75
+        ],
+        "s": [
+          0.1,
+          0.64,
+          0.13
+        ],
+        "c": 9608840,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.89,
+          1.73,
+          12
+        ],
+        "s": [
+          0.42,
+          0.32,
+          0.64
+        ],
+        "c": 11711900,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.89,
+          1.73,
+          12
+        ],
+        "s": [
+          0.42,
+          0.32,
+          0.64
+        ],
+        "c": 11711900,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.89,
+          1.73,
+          27
+        ],
+        "s": [
+          0.42,
+          0.32,
+          0.64
+        ],
+        "c": 11711900,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.89,
+          1.73,
+          27
+        ],
+        "s": [
+          0.42,
+          0.32,
+          0.64
+        ],
+        "c": 11711900,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -2.66,
+          0.2,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.9,
+          0.2,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.1400000000000001,
+          0.2,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.38,
+          0.2,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.38,
+          0.2,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.1400000000000001,
+          0.2,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.9,
+          0.2,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          2.66,
+          0.2,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -2.66,
+          0.63,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.9,
+          0.63,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.1400000000000001,
+          0.63,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.38,
+          0.63,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.38,
+          0.63,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.1400000000000001,
+          0.63,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.9,
+          0.63,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          2.66,
+          0.63,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -2.66,
+          1.06,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.9,
+          1.06,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -1.1400000000000001,
+          1.06,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          -0.38,
+          1.06,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          0.38,
+          1.06,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.1400000000000001,
+          1.06,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.9,
+          1.06,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          2.66,
+          1.06,
+          27.47
+        ],
+        "s": [
+          0.71,
+          0.39,
+          1.01
+        ],
+        "c": 9608587,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.72,
+          2.19,
+          16
+        ],
+        "s": [
+          0.1,
+          1.24,
+          0.1
+        ],
+        "c": 7693129,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "markerPart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.72,
+          2.68,
+          16
+        ],
+        "s": [
+          0.1,
+          0.44,
+          1.38
+        ],
+        "c": 9533780,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "markerPart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.72,
+          2.68,
+          15.35
+        ],
+        "s": [
+          0.14,
+          0.48,
+          0.06
+        ],
+        "c": 12165495,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "markerPart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.72,
+          2.68,
+          16.65
+        ],
+        "s": [
+          0.14,
+          0.48,
+          0.06
+        ],
+        "c": 12165495,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "markerPart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.656,
+          2.5,
+          16
+        ],
+        "s": [
+          0.03,
+          0.045,
+          1.27
+        ],
+        "c": 12495223,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "markerPart": true,
+        "m": null
+      },
+      {
+        "kind": "box",
+        "p": [
+          1.656,
+          2.8600000000000003,
+          16
+        ],
+        "s": [
+          0.03,
+          0.045,
+          1.27
+        ],
+        "c": 12495223,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "markerPart": true,
+        "m": null
+      },
+      {
+        "kind": "octa",
+        "p": [
+          -1.86,
+          0.24,
+          12
+        ],
+        "s": [
+          0.82,
+          0.58,
+          0.58
+        ],
+        "c": 8030334,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "octa",
+        "p": [
+          1.86,
+          0.24,
+          12
+        ],
+        "s": [
+          0.82,
+          0.58,
+          0.58
+        ],
+        "c": 8030334,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "octa",
+        "p": [
+          -1.86,
+          0.24,
+          15.75
+        ],
+        "s": [
+          0.82,
+          0.58,
+          0.58
+        ],
+        "c": 8030334,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "octa",
+        "p": [
+          1.86,
+          0.24,
+          15.75
+        ],
+        "s": [
+          0.82,
+          0.58,
+          0.58
+        ],
+        "c": 8030334,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "octa",
+        "p": [
+          -1.86,
+          0.24,
+          19.5
+        ],
+        "s": [
+          0.82,
+          0.58,
+          0.58
+        ],
+        "c": 8030334,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "octa",
+        "p": [
+          1.86,
+          0.24,
+          19.5
+        ],
+        "s": [
+          0.82,
+          0.58,
+          0.58
+        ],
+        "c": 8030334,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "octa",
+        "p": [
+          -1.86,
+          0.24,
+          23.25
+        ],
+        "s": [
+          0.82,
+          0.58,
+          0.58
+        ],
+        "c": 8030334,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "octa",
+        "p": [
+          1.86,
+          0.24,
+          23.25
+        ],
+        "s": [
+          0.82,
+          0.58,
+          0.58
+        ],
+        "c": 8030334,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "octa",
+        "p": [
+          -1.86,
+          0.24,
+          27
+        ],
+        "s": [
+          0.82,
+          0.58,
+          0.58
+        ],
+        "c": 8030334,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "octa",
+        "p": [
+          1.86,
+          0.24,
+          27
+        ],
+        "s": [
+          0.82,
+          0.58,
+          0.58
+        ],
+        "c": 8030334,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "octa",
+        "p": [
+          1.653,
+          2.68,
+          16
+        ],
+        "s": [
+          0.03,
+          0.15,
+          0.15
+        ],
+        "c": 12757100,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "markerPart": true,
+        "em": 0.08,
+        "m": null
+      },
+      {
+        "kind": "bridge-vault",
+        "p": [
+          0,
+          0.12,
+          13.875
+        ],
+        "s": [
+          3.7,
+          1,
+          1
+        ],
+        "c": 10134157,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "bridge-vault",
+        "p": [
+          0,
+          0.12,
+          17.625
+        ],
+        "s": [
+          3.7,
+          1,
+          1
+        ],
+        "c": 10134157,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "bridge-vault",
+        "p": [
+          0,
+          0.12,
+          21.375
+        ],
+        "s": [
+          3.7,
+          1,
+          1
+        ],
+        "c": 10134157,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "bridge-vault",
+        "p": [
+          0,
+          0.12,
+          25.125
+        ],
+        "s": [
+          3.7,
+          1,
+          1
+        ],
+        "c": 10134157,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 0.9,
+        "bridgePart": true,
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          58,
+          -1.2,
+          -75
+        ],
+        "s": [
+          31,
+          25,
+          34.1
+        ],
+        "c": 6518899,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          0,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          54,
+          -1.2,
+          -70
+        ],
+        "s": [
+          21.7,
+          17.5,
+          24.8
+        ],
+        "c": 6518899,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          1,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          63,
+          -1.2,
+          -53
+        ],
+        "s": [
+          31,
+          33.92498329407222,
+          34.1
+        ],
+        "c": 6518899,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          0.8,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          59,
+          -1.2,
+          -48
+        ],
+        "s": [
+          21.7,
+          23.747488305850553,
+          24.8
+        ],
+        "c": 6518899,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          1.5,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          68,
+          -1.2,
+          -31
+        ],
+        "s": [
+          31,
+          22.70013008175852,
+          34.1
+        ],
+        "c": 6518899,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          1.6,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          64,
+          -1.2,
+          -26
+        ],
+        "s": [
+          21.7,
+          15.890091057230963,
+          24.8
+        ],
+        "c": 6518899,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          2,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          58,
+          -1.2,
+          -9
+        ],
+        "s": [
+          31,
+          16.667667859050407,
+          34.1
+        ],
+        "c": 6518899,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          2.4000000000000004,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          54,
+          -1.2,
+          -4
+        ],
+        "s": [
+          21.7,
+          11.667367501335285,
+          24.8
+        ],
+        "c": 6518899,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          2.5,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          63,
+          -1.2,
+          13
+        ],
+        "s": [
+          31,
+          29.447020160247472,
+          34.1
+        ],
+        "c": 6518899,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          3.2,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          59,
+          -1.2,
+          18
+        ],
+        "s": [
+          21.7,
+          20.61291411217323,
+          24.8
+        ],
+        "c": 6518899,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          3,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          68,
+          -1.2,
+          35
+        ],
+        "s": [
+          31,
+          32.186384013611416,
+          34.1
+        ],
+        "c": 6518899,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          4,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          64,
+          -1.2,
+          40
+        ],
+        "s": [
+          21.7,
+          22.53046880952799,
+          24.8
+        ],
+        "c": 6518899,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          3.5,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          58,
+          -1.2,
+          57
+        ],
+        "s": [
+          31,
+          18.701127811658118,
+          34.1
+        ],
+        "c": 6518899,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          4.800000000000001,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          54,
+          -1.2,
+          62
+        ],
+        "s": [
+          21.7,
+          13.090789468160683,
+          24.8
+        ],
+        "c": 6518899,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          4,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          63,
+          -1.2,
+          79
+        ],
+        "s": [
+          31,
+          19.4367659898667,
+          34.1
+        ],
+        "c": 6518899,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          5.6000000000000005,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          59,
+          -1.2,
+          84
+        ],
+        "s": [
+          21.7,
+          13.60573619290669,
+          24.8
+        ],
+        "c": 6518899,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          4.5,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          68,
+          -1.2,
+          101
+        ],
+        "s": [
+          31,
+          32.73245633370846,
+          34.1
+        ],
+        "c": 6518899,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          6.4,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          64,
+          -1.2,
+          106
+        ],
+        "s": [
+          21.7,
+          22.91271943359592,
+          24.8
+        ],
+        "c": 6518899,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          5,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          88,
+          -1.2,
+          -72
+        ],
+        "s": [
+          40,
+          42.57323886327107,
+          44
+        ],
+        "c": 8229520,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          1,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          84,
+          -1.2,
+          -67
+        ],
+        "s": [
+          28,
+          29.801267204289747,
+          32
+        ],
+        "c": 8229520,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          1,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          93,
+          -1.2,
+          -50
+        ],
+        "s": [
+          40,
+          38.84641892210447,
+          44
+        ],
+        "c": 8229520,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          1.8,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          89,
+          -1.2,
+          -45
+        ],
+        "s": [
+          28,
+          27.192493245473127,
+          32
+        ],
+        "c": 8229520,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          1.5,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          98,
+          -1.2,
+          -28
+        ],
+        "s": [
+          40,
+          26.435581334994357,
+          44
+        ],
+        "c": 8229520,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          2.6,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          94,
+          -1.2,
+          -23
+        ],
+        "s": [
+          28,
+          18.50490693449605,
+          32
+        ],
+        "c": 8229520,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          2,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          88,
+          -1.2,
+          -6
+        ],
+        "s": [
+          40,
+          33.36053746155114,
+          44
+        ],
+        "c": 8229520,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          3.4000000000000004,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          84,
+          -1.2,
+          -1
+        ],
+        "s": [
+          28,
+          23.352376223085795,
+          32
+        ],
+        "c": 8229520,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          2.5,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          93,
+          -1.2,
+          16
+        ],
+        "s": [
+          40,
+          43.98689010837144,
+          44
+        ],
+        "c": 8229520,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          4.2,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          89,
+          -1.2,
+          21
+        ],
+        "s": [
+          28,
+          30.790823075860008,
+          32
+        ],
+        "c": 8229520,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          3,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          98,
+          -1.2,
+          38
+        ],
+        "s": [
+          40,
+          34.323639915843714,
+          44
+        ],
+        "c": 8229520,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          5,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          94,
+          -1.2,
+          43
+        ],
+        "s": [
+          28,
+          24.026547941090598,
+          32
+        ],
+        "c": 8229520,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          3.5,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          88,
+          -1.2,
+          60
+        ],
+        "s": [
+          40,
+          26.187400437638143,
+          44
+        ],
+        "c": 8229520,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          5.800000000000001,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          84,
+          -1.2,
+          65
+        ],
+        "s": [
+          28,
+          18.3311803063467,
+          32
+        ],
+        "c": 8229520,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          4,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          93,
+          -1.2,
+          82
+        ],
+        "s": [
+          40,
+          37.94726995223924,
+          44
+        ],
+        "c": 8229520,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          6.6000000000000005,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          89,
+          -1.2,
+          87
+        ],
+        "s": [
+          28,
+          26.563088966567467,
+          32
+        ],
+        "c": 8229520,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          4.5,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          98,
+          -1.2,
+          104
+        ],
+        "s": [
+          40,
+          43.053120549264534,
+          44
+        ],
+        "c": 8229520,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          7.4,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          94,
+          -1.2,
+          109
+        ],
+        "s": [
+          28,
+          30.13718438448517,
+          32
+        ],
+        "c": 8229520,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          5,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          118,
+          -1.2,
+          -69
+        ],
+        "s": [
+          49,
+          53.18367684143114,
+          53.900000000000006
+        ],
+        "c": 10201763,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          2,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          114,
+          -1.2,
+          -64
+        ],
+        "s": [
+          34.3,
+          37.22857378900179,
+          39.2
+        ],
+        "c": 10201763,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          1,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          123,
+          -1.2,
+          -47
+        ],
+        "s": [
+          49,
+          40.23147473182356,
+          53.900000000000006
+        ],
+        "c": 10201763,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          2.8,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          119,
+          -1.2,
+          -42
+        ],
+        "s": [
+          34.3,
+          28.16203231227649,
+          39.2
+        ],
+        "c": 10201763,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          1.5,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          128,
+          -1.2,
+          -25
+        ],
+        "s": [
+          49,
+          38.045119611996114,
+          53.900000000000006
+        ],
+        "c": 10201763,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          3.6,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          124,
+          -1.2,
+          -20
+        ],
+        "s": [
+          34.3,
+          26.631583728397278,
+          39.2
+        ],
+        "c": 10201763,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          2,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          118,
+          -1.2,
+          -3
+        ],
+        "s": [
+          49,
+          51.560721361132885,
+          53.900000000000006
+        ],
+        "c": 10201763,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          4.4,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          114,
+          -1.2,
+          2
+        ],
+        "s": [
+          34.3,
+          36.092504952793014,
+          39.2
+        ],
+        "c": 10201763,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          2.5,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          123,
+          -1.2,
+          19
+        ],
+        "s": [
+          49,
+          50.264254736025855,
+          53.900000000000006
+        ],
+        "c": 10201763,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          5.2,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          119,
+          -1.2,
+          24
+        ],
+        "s": [
+          34.3,
+          35.184978315218096,
+          39.2
+        ],
+        "c": 10201763,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          3,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          128,
+          -1.2,
+          41
+        ],
+        "s": [
+          49,
+          37.08273816025497,
+          53.900000000000006
+        ],
+        "c": 10201763,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          6,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          124,
+          -1.2,
+          46
+        ],
+        "s": [
+          34.3,
+          25.957916712178477,
+          39.2
+        ],
+        "c": 10201763,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          3.5,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          118,
+          -1.2,
+          63
+        ],
+        "s": [
+          49,
+          41.77593645986854,
+          53.900000000000006
+        ],
+        "c": 10201763,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          6.800000000000001,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          114,
+          -1.2,
+          68
+        ],
+        "s": [
+          34.3,
+          29.243155521907976,
+          39.2
+        ],
+        "c": 10201763,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          4,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          123,
+          -1.2,
+          85
+        ],
+        "s": [
+          49,
+          53.74806751255478,
+          53.900000000000006
+        ],
+        "c": 10201763,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          7.6000000000000005,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          119,
+          -1.2,
+          90
+        ],
+        "s": [
+          34.3,
+          37.623647258788345,
+          39.2
+        ],
+        "c": 10201763,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          4.5,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          128,
+          -1.2,
+          107
+        ],
+        "s": [
+          49,
+          45.969782870695,
+          53.900000000000006
+        ],
+        "c": 10201763,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          8.4,
+          0
+        ],
+        "m": null
+      },
+      {
+        "kind": "mountain-ridge",
+        "p": [
+          124,
+          -1.2,
+          112
+        ],
+        "s": [
+          34.3,
+          32.1788480094865,
+          39.2
+        ],
+        "c": 10201763,
+        "cutaway": false,
+        "cameraSolid": false,
+        "rough": 1,
+        "mountainPart": true,
+        "r": [
+          0,
+          5,
+          0
+        ],
+        "m": null
+      }
+    ]
+  },
+  "framebuffer": {
+    "cloudMain": 262840,
+    "cloudReflection": 830926,
+    "earthCurrentPixels": 199556,
+    "motion": 262751,
+    "frozen": 0,
+    "lowNonBlack": 488384,
+    "glError": 0,
+    "reflection": {
+      "method": "world-plane P*V*H",
+      "height": 0.01,
+      "horizontalFlip": false
+    },
+    "meshes": {
+      "drawCalls": 5,
+      "texturedDrawCalls": 0,
+      "texturedInstances": 0,
+      "surfaceMaterials": {
+        "version": 1,
+        "id": "earth-weathered-timber-v1",
+        "status": "loading",
+        "ready": false,
+        "error": null,
+        "width": 512,
+        "height": 512,
+        "colorFormat": "SRGB8_ALPHA8",
+        "roughnessFormat": "R8",
+        "textureBytes": 0,
+        "mipmapBytes": 0,
+        "totalTextureBytes": 0,
+        "decodedImageBytes": 0,
+        "decodeWallMs": 0,
+        "uploadCpuMs": 0,
+        "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+        "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+        "enabled": true
+      },
+      "instances": 371,
+      "triangles": 22256
+    }
+  },
+  "returning_fixture": {
+    "path": "docs\\evidence\\classes\\HUNTER_SOURCE.json",
+    "sha256": "405247931795051c08a1daaedf47aeda7c13df7c72080ec625b00d42f41989f6",
+    "label": "command-earned bow checkpoint"
+  },
+  "normal_raf": [
+    {
+      "stamp": 29580.9,
+      "elapsed": 0,
+      "z": 16.320639999999994,
+      "phase": 5.8147854780577255,
+      "blend": 0.8254272044526364,
+      "time": 8.749169999999983,
+      "leftFoot": [
+        -0.115,
+        0.063,
+        0.1419822469565635
+      ],
+      "rightFoot": [
+        0.115,
+        0.13200521636484014,
+        -0.02198224695656352
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 29614.3,
+      "elapsed": 33.39999999999782,
+      "z": 16.427519999999987,
+      "phase": 0.029042278753184547,
+      "blend": 0.8976967111908051,
+      "time": 8.782569999999982,
+      "leftFoot": [
+        -0.115,
+        0.063,
+        0.054265151472561224
+      ],
+      "rightFoot": [
+        0.115,
+        0.15717867461136087,
+        0.06573484852743877
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 30664.2,
+      "elapsed": 1083.2999999999993,
+      "z": 16.747519999999987,
+      "phase": 1.5183899071216804,
+      "blend": 0.9793453222100218,
+      "time": 8.882569999999982,
+      "leftFoot": [
+        -0.115,
+        0.063,
+        -0.15516017091989096
+      ],
+      "rightFoot": [
+        0.115,
+        0.06328216069073994,
+        0.2751601709198909
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 30680.9,
+      "elapsed": 1100,
+      "z": 16.80095999999999,
+      "phase": 1.767110961059228,
+      "blend": 0.9841884320462629,
+      "time": 8.899269999999982,
+      "leftFoot": [
+        -0.115,
+        0.06693175607180696,
+        -0.15236253037277558
+      ],
+      "rightFoot": [
+        0.115,
+        0.063,
+        0.2723625303727756
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 31080.8,
+      "elapsed": 1499.8999999999978,
+      "z": 17.12095999999999,
+      "phase": 3.256458589427724,
+      "blend": 0.9968076994861046,
+      "time": 8.999269999999981,
+      "leftFoot": [
+        -0.115,
+        0.1662899046881297,
+        0.0851344781513583
+      ],
+      "rightFoot": [
+        0.115,
+        0.063,
+        0.034865521848641695
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 31097.6,
+      "elapsed": 1516.699999999997,
+      "z": 17.174719999999986,
+      "phase": 3.5066689909936164,
+      "blend": 0.9975601371685322,
+      "time": 9.016069999999981,
+      "leftFoot": [
+        -0.115,
+        0.15439277919147093,
+        0.13835289455898084
+      ],
+      "rightFoot": [
+        0.115,
+        0.063,
+        -0.01835289455898083
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 31447.6,
+      "elapsed": 1866.699999999997,
+      "z": 17.494719999999987,
+      "phase": 4.996016619362113,
+      "blend": 0.9995074001899421,
+      "time": 9.116069999999981,
+      "leftFoot": [
+        -0.115,
+        0.063,
+        0.2711062095099135
+      ],
+      "rightFoot": [
+        0.115,
+        0.0712185550881907,
+        -0.15110620950991352
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 31464.2,
+      "elapsed": 1883.2999999999993,
+      "z": 17.547839999999994,
+      "phase": 5.243248325671315,
+      "blend": 0.9996223011820567,
+      "time": 9.132669999999983,
+      "leftFoot": [
+        -0.115,
+        0.063,
+        0.24965025360298765
+      ],
+      "rightFoot": [
+        0.115,
+        0.08990280230473086,
+        -0.12965025360298768
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 31630.8,
+      "elapsed": 2049.899999999998,
+      "z": 17.867839999999994,
+      "phase": 0.44941064686022436,
+      "blend": 0.9999237439238066,
+      "time": 9.232669999999983,
+      "leftFoot": [
+        -0.115,
+        0.063,
+        -0.03556836277640614
+      ],
+      "rightFoot": [
+        0.115,
+        0.14817647883146173,
+        0.15556836277640612
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 31814.2,
+      "elapsed": 2233.2999999999993,
+      "z": 18.187839999999994,
+      "phase": 1.9387582752287202,
+      "blend": 0.9999846041637406,
+      "time": 9.332669999999982,
+      "leftFoot": [
+        -0.115,
+        0.07658621944129712,
+        -0.14527056757577847
+      ],
+      "rightFoot": [
+        0.115,
+        0.063,
+        0.26527056757577844
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 31980.8,
+      "elapsed": 2399.899999999998,
+      "z": 18.507839999999995,
+      "phase": 3.428105903597216,
+      "blend": 0.9999968916342676,
+      "time": 9.432669999999982,
+      "leftFoot": [
+        -0.115,
+        0.15961355577617525,
+        0.12217386084274696
+      ],
+      "rightFoot": [
+        0.115,
+        0.06300000000000011,
+        -0.002173860842746969
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 32164.2,
+      "elapsed": 2583.2999999999993,
+      "z": 18.827839999999995,
+      "phase": 4.917453531965712,
+      "blend": 0.9999993724317819,
+      "time": 9.532669999999982,
+      "leftFoot": [
+        -0.115,
+        0.063,
+        0.27539039004523935
+      ],
+      "rightFoot": [
+        0.115,
+        0.06735385621158546,
+        -0.15539039004523938
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 32330.9,
+      "elapsed": 2750,
+      "z": 19.147839999999995,
+      "phase": 0.12361585315462165,
+      "blend": 0.999999873296162,
+      "time": 9.632669999999981,
+      "leftFoot": [
+        -0.115,
+        0.063,
+        0.0328737246699742
+      ],
+      "rightFoot": [
+        0.115,
+        0.16640365063857815,
+        0.08712627533002579
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 32514.1,
+      "elapsed": 2933.199999999997,
+      "z": 19.467839999999995,
+      "phase": 1.6129634815231175,
+      "blend": 0.9999999744189363,
+      "time": 9.732669999999981,
+      "leftFoot": [
+        -0.115,
+        0.06318658660641346,
+        -0.15980443577296868
+      ],
+      "rightFoot": [
+        0.115,
+        0.063,
+        0.2798044357729687
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 32697.5,
+      "elapsed": 3116.5999999999985,
+      "z": 19.787839999999996,
+      "phase": 3.1023111098916134,
+      "blend": 0.9999999948352724,
+      "time": 9.83266999999998,
+      "leftFoot": [
+        -0.115,
+        0.16783806360948944,
+        0.05136028273550933
+      ],
+      "rightFoot": [
+        0.115,
+        0.063,
+        0.06863971726449067
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 32864.1,
+      "elapsed": 3283.199999999997,
+      "z": 20.107839999999996,
+      "phase": 4.59165873826011,
+      "blend": 0.9999999989572594,
+      "time": 9.93266999999998,
+      "leftFoot": [
+        -0.115,
+        0.06452303664843057,
+        0.2783986092685184
+      ],
+      "rightFoot": [
+        0.115,
+        0.063,
+        -0.1583986092685184
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 33030.8,
+      "elapsed": 3449.9000000000015,
+      "z": 20.427839999999996,
+      "phase": 6.081006366628605,
+      "blend": 0.9999999997894743,
+      "time": 10.03266999999998,
+      "leftFoot": [
+        -0.115,
+        0.063,
+        0.10417696013564778
+      ],
+      "rightFoot": [
+        0.115,
+        0.16376614874318546,
+        0.015823039864352205
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 33180.8,
+      "elapsed": 3599.9000000000015,
+      "z": 20.747839999999997,
+      "phase": 1.2871686878175144,
+      "blend": 0.9999999999574956,
+      "time": 10.13266999999998,
+      "leftFoot": [
+        -0.115,
+        0.06300000000000011,
+        -0.1512102516307786
+      ],
+      "rightFoot": [
+        0.115,
+        0.07122260554176724,
+        0.2712102516307786
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 33347.5,
+      "elapsed": 3766.5999999999985,
+      "z": 21.067839999999997,
+      "phase": 2.7765163161860102,
+      "blend": 0.9999999999914185,
+      "time": 10.23266999999998,
+      "leftFoot": [
+        -0.115,
+        0.15461631042124252,
+        -0.01854453244362443
+      ],
+      "rightFoot": [
+        0.115,
+        0.063,
+        0.1385445324436244
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 33514.2,
+      "elapsed": 3933.2999999999956,
+      "z": 21.387839999999997,
+      "phase": 4.265863944554506,
+      "blend": 0.9999999999982674,
+      "time": 10.332669999999979,
+      "leftFoot": [
+        -0.115,
+        0.08258045365258487,
+        0.25842969351526296
+      ],
+      "rightFoot": [
+        0.115,
+        0.063,
+        -0.138429693515263
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 33680.7,
+      "elapsed": 4099.799999999996,
+      "z": 21.707839999999997,
+      "phase": 5.7552115729230024,
+      "blend": 0.9999999999996502,
+      "time": 10.432669999999979,
+      "leftFoot": [
+        -0.115,
+        0.063,
+        0.17083248620261726
+      ],
+      "rightFoot": [
+        0.115,
+        0.14135117355833,
+        -0.05083248620261728
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 33697.4,
+      "elapsed": 4116.5,
+      "z": 21.76128000000001,
+      "phase": 6.0039326268606,
+      "blend": 0.9999999999997322,
+      "time": 10.449369999999982,
+      "leftFoot": [
+        -0.115,
+        0.06299999999999989,
+        0.12064021827970117
+      ],
+      "rightFoot": [
+        0.115,
+        0.1600225250481923,
+        -0.0006402182797011768
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 33997.4,
+      "elapsed": 4416.5,
+      "z": 22.08128000000001,
+      "phase": 1.210094948049509,
+      "blend": 0.9999999999999459,
+      "time": 10.549369999999982,
+      "leftFoot": [
+        -0.115,
+        0.063,
+        -0.1458428934846941
+      ],
+      "rightFoot": [
+        0.115,
+        0.07607879826846314,
+        0.26584289348469414
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 34014.1,
+      "elapsed": 4433.199999999997,
+      "z": 22.13472,
+      "phase": 1.458816001987007,
+      "blend": 0.9999999999999586,
+      "time": 10.566069999999979,
+      "leftFoot": [
+        -0.115,
+        0.063,
+        -0.15862208553126525
+      ],
+      "rightFoot": [
+        0.115,
+        0.06431116302449164,
+        0.2786220855312652
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 34280.7,
+      "elapsed": 4699.799999999996,
+      "z": 22.454720000000002,
+      "phase": 2.948163630355503,
+      "blend": 0.9999999999999917,
+      "time": 10.666069999999978,
+      "leftFoot": [
+        -0.115,
+        0.16412019891420565,
+        0.017710479452728287
+      ],
+      "rightFoot": [
+        0.115,
+        0.063,
+        0.10228952054727171
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 34430.8,
+      "elapsed": 4849.9000000000015,
+      "z": 22.774720000000002,
+      "phase": 4.437511258723999,
+      "blend": 0.9999999999999983,
+      "time": 10.766069999999978,
+      "leftFoot": [
+        -0.115,
+        0.07073575303110674,
+        0.2717408468431437
+      ],
+      "rightFoot": [
+        0.115,
+        0.06299999999999989,
+        -0.1517408468431437
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 34580.8,
+      "elapsed": 4999.9000000000015,
+      "z": 23.094720000000002,
+      "phase": 5.926858887092495,
+      "blend": 0.9999999999999997,
+      "time": 10.866069999999977,
+      "leftFoot": [
+        -0.115,
+        0.06300000000000011,
+        0.1367434298916878
+      ],
+      "rightFoot": [
+        0.115,
+        0.15522307493157556,
+        -0.01674342989168781
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 34730.7,
+      "elapsed": 5149.799999999996,
+      "z": 23.414720000000003,
+      "phase": 1.133021208281404,
+      "blend": 0.9999999999999999,
+      "time": 10.966069999999977,
+      "leftFoot": [
+        -0.115,
+        0.063,
+        -0.1392533593522373
+      ],
+      "rightFoot": [
+        0.115,
+        0.08186984240948475,
+        0.25925335935223726
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 34880.7,
+      "elapsed": 5299.799999999996,
+      "z": 23.734720000000003,
+      "phase": 2.6223688366499,
+      "blend": 1,
+      "time": 11.066069999999977,
+      "leftFoot": [
+        -0.115,
+        0.14214681672683332,
+        -0.04916540837172041
+      ],
+      "rightFoot": [
+        0.115,
+        0.063,
+        0.16916540837172042
+      ],
+      "visible": "visible",
+      "paused": false
+    },
+    {
+      "stamp": 34897.4,
+      "elapsed": 5316.5,
+      "z": 23.788160000000016,
+      "phase": 2.871089890587497,
+      "blend": 1,
+      "time": 11.08276999999998,
+      "leftFoot": [
+        -0.115,
+        0.16050254171355266,
+        0.0012124907124899942
+      ],
+      "rightFoot": [
+        0.115,
+        0.063,
+        0.11878750928751
+      ],
+      "visible": "visible",
+      "paused": false
+    }
+  ],
+  "passed": true
+}

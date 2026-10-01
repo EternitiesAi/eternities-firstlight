@@ -1,0 +1,29 @@
+{
+  "recorded_at_utc": "2026-10-01T20:36:12.577879+00:00",
+  "scope": "Temporary-fixture I/O diagnosis; correlation and a controlled init comparison, not disk health certification. No shared writer stopped or data moved.",
+  "D_sample": {
+    "queue_depth": 32,
+    "write_bytes_per_second": 155160,
+    "free_bytes": 284767666176
+  },
+  "D_single_import_test": {
+    "exit_code": 0,
+    "elapsed_seconds": 226.243,
+    "log": "import-test-diagnostic.log"
+  },
+  "C_git_init_control": {
+    "exit": 0,
+    "elapsedMs": 36.9586,
+    "fixture": "C:/dev/firstlight-artifacts/bridge-unit-temp-2026-10-01/git-init-control-1535",
+    "method": "Same Git init on a new disposable C fixture, compared with queued D diagnostic"
+  },
+  "resolution": "Small disposable test fixtures and Chromium temporary profiles use C:/dev/firstlight-artifacts/bridge-unit-temp-2026-10-01. Durable game checkout, artifacts, videos, archives and fresh clone stay on D. Same verifier/timeouts/assertions.",
+  "later_failure": "Fast scratch alone still timed out during writes from the builder on D; both failed full-gate logs retained.",
+  "verification_checkout": {
+    "path": "C:/dev/firstlight-artifacts/bridge-unit-temp-2026-10-01/source-check-e8ab",
+    "commit": "e8ab7228b465b1a728304ddbee297d1a78d5f4b2",
+    "initial_tracked_bytes": 24772234,
+    "kind": "Clean disposable linked Git worktree, sparse only to omit historical docs/evidence images/videos",
+    "full_verifier_exit": 0
+  }
+}

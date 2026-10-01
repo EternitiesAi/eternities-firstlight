@@ -211,3 +211,27 @@ bounds, final source/browser gate, matched hardware captures and exact-head clon
 are separate delivery evidence. Test-only bounds refinement gets a refreshed
 complete Node gate. Human acceptance remains pending. Preserve both cameras and
 all saved systems; no automatic merge/deployment/paid-provider/billing action.
+
+
+## 2026-10-01: the founder's bridge vision as a bounded playable place
+
+Dom's vision and continuation authorize the existing Hearthwater crossing to
+become a 15 m, four-vault side-running moment over visible water with mountains
+and cloudy sky. The generated concept is aspiration; a new castle, new realm or
+photorealism claim does not become canon through an image. Prototype dimensions,
+mountain forms and camera distances are implementation choices awaiting taste.
+
+Share frozen span/deck/ground between Earth rules and pure bridge art. Remove
+filled terrain under the span and reject flanking water in movement/picking;
+preserve all existing interaction coordinates. Offset the visual bridge marker
+onto the rail while keeping the canonical anchor. Two finite original meshes and
+Earth-only procedural current/cloud changes require actual framebuffer/reflection
+coverage, ordinary visible RAF walking and matched hardware evidence.
+
+Side framing is an explicit local action retaining the selected camera; V/R/orbit
+and both saved profiles remain. No automatic camera/FOV trigger, new saved field,
+reward, migration or level cap. Reduced motion freezes renderer additions through
+the existing contract. Correct actual normals/corridor geometry after review even
+when earlier narrower source/browser checks were green; retain failures and partial
+gates separately. Next natural-bank/material work follows screenshot feedback.
+Review PR and exact-head fresh clone remain delivery gates, no merge/deployment.
