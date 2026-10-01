@@ -1,7 +1,7 @@
 /* Physical crossing, actual vault mesh and shared world/reflection sky rays. */
 const{test}=require('node:test'),assert=require('node:assert/strict');
 const C=require('../src/core.js'),E=require('../src/earth.js'),R=require('../src/engine.js'),B=require('../src/bridge-art.js');
-const capture=()=>{const parts=[];const a={box:(...v)=>a.add('box',...v),add:(kind,x,y,z,sx,sy,sz,color,options)=>parts.push({kind,p:[x,y,z],s:[sx,sy,sz],color,...options})};B.crossing(a);B.mountains(a);return parts;};
+const capture=()=>{const parts=[];const a={box:(...v)=>a.add('box',...v),add:(kind,x,y,z,sx,sy,sz,color,options)=>parts.push({kind,p:[x,y,z],s:[sx,sy,sz],color,...options})};B.crossing(a);B.shoreline(a);B.mountains(a);return parts;};
 test('bridge floor is a continuous narrow supported corridor; flanking water rejects movement and picking',()=>{
  for(let z=12.4;z<27;z+=.19){assert.ok(E.walkable(0,z));assert.equal(E.walkable(3,z),false);assert.equal(E.pick([3,20,z],[0,-1,0]),null);assert.ok(E.pick([0,20,z],[0,-1,0]));assert.equal(E.height(0,z),E.BRIDGE.deck);}
  assert.ok(E.segment({x:0,z:27.5},{x:0,z:10}));assert.equal(E.segment({x:0,z:24},{x:3,z:20}),false);
@@ -47,6 +47,11 @@ test('Earth submits the bridge instead of terrain columns inside its water span'
  assert.equal(a.e.earthWater,E.BRIDGE);
  const solids=parts.filter(p=>p.kind==='box'&&p.p[2]>E.BRIDGE.from&&p.p[2]<E.BRIDGE.to&&p.p[1]-p.s[1]/2>E.BRIDGE.deck+.1);
  for(const p of solids)assert.ok(Math.abs(p.p[0])-p.s[0]/2+1e-7>=E.BRIDGE.walkWidth/2,'actual Earth marker/rail occupies the walking corridor');
+ // Lowering the ridge silhouette exposes these older hill crowns. Each
+ // smaller crown must intersect its actual parent mass rather than float.
+ const crowns=parts.filter(p=>p.kind==='round'&&p.s[0]===7&&p.s[1]===4&&p.s[2]===7&&Math.hypot(p.p[0],p.p[2])>60);
+ assert.equal(crowns.length,13);
+ for(const crown of crowns){const parent=parts.find(p=>p.kind==='round'&&p.p[0]===crown.p[0]&&p.p[2]===crown.p[2]&&p.s[0]>=14&&p.s[1]>=8);assert.ok(parent);assert.ok(crown.p[1]-2<parent.p[1]+parent.s[1]/2,'distant hill crown floats above its parent');}
 });
 test('asymmetric mountain mesh is bounded finite original ground rather than cone peaks',()=>{
  const mesh=R.geometry('mountain-ridge');assert.equal(mesh.length/18,336);
@@ -60,4 +65,37 @@ test('world cloud basis preserves the exact reflected VP horizontal handedness i
   assert.equal(b.eye[1],2*R.WATER_HEIGHT-a.eye[1]);assert.ok(Math.abs(R.dot(a.forward,a.right))<1e-8);assert.ok(Math.abs(R.dot(a.forward,a.up))<1e-8);
   assert.equal(a.perspective,projection==='perspective');assert.equal(a.spread,b.spread);
  }
+});
+test('rock skirt has outward finite faces, a straight upper seam and submerged irregular lower edge',()=>{
+ const mesh=R.geometry('bank-slope');assert.equal(mesh.length/18,72);
+ let upper=0,lower=0;
+ for(let i=0;i<mesh.length;i+=18){
+  const n=Array.from(mesh.slice(i+3,i+6));assert.ok(n.every(Number.isFinite));assert.ok(Math.hypot(...n)>.99);
+  if(Math.abs(n[2])>.99)assert.equal(Math.sign(n[2]),Math.sign(mesh[i+2]));else assert.ok(n[1]>0&&n[0]>0,'exposed surface points upward/outward');
+  for(let j=i;j<i+18;j+=6){const[x,y,z]=mesh.slice(j,j+3);assert.ok(x>=0&&x<=1.141&&y>=-.030001&&y<=1&&Math.abs(z)<=.5);if(y===1){assert.equal(x,0);upper++;}if(y<0)lower++;}
+ }
+ assert.ok(upper>8&&lower>8);
+});
+test('actual shoreline world triangles leave vaults and supported walking floor clear without fake flat ground',()=>{
+ const parts=capture().filter(p=>p.shorelinePart);assert.ok(parts.length>0&&parts.length<=100);
+ const slopes=parts.filter(p=>p.kind==='bank-slope');assert.equal(slopes.length,7);
+ for(const p of parts){
+  const matrix=R.M.compose(...p.p,...p.s,...(p.r||[0,0,0])),mesh=R.geometry(p.kind);
+  assert.equal(p.cameraSolid,false);assert.equal(p.cutaway,false);
+  for(let i=0;i<mesh.length;i+=18){
+   const vs=[0,6,12].map(o=>R.M.transform(matrix,Array.from(mesh.slice(i+o,i+o+3))));assert.ok(vs.flat().every(Number.isFinite));
+   const bounds=axis=>[Math.min(...vs.map(v=>v[axis])),Math.max(...vs.map(v=>v[axis]))],x=bounds(0),y=bounds(1),z=bounds(2);
+   assert.ok(y[1]<E.BRIDGE.deck-.03,'bank dressing extends above supported feet');
+   assert.ok(x[1]<-E.BRIDGE.w/2||x[0]>E.BRIDGE.w/2||z[1]<=E.BRIDGE.from||z[0]>=E.BRIDGE.to||y[1]<=R.WATER_HEIGHT,'bank fills an actual open vault');
+  }
+ }
+ for(const p of slopes){assert.ok(p.s[0]<=.85&&p.s[1]/p.s[0]>1.7);assert.equal(p.p[1],R.WATER_HEIGHT);assert.equal(p.p[1]+p.s[1],E.height(p.p[0],p.p[2])-.04);assert.ok(p.p[1]-.03*p.s[1]<R.WATER_HEIGHT);}
+ // Decorative slopes are not secretly accepted land or click targets.
+ for(const [x,z]of[[5.4,27.5],[-5.4,27.5],[0,28.4],[4,26.5],[4,12.5]]){assert.equal(E.walkable(x,z),false);assert.equal(E.pick([x,20,z],[0,-1,0]),null);}
+ assert.ok(E.segment({x:0,z:10},{x:0,z:27.5}));
+});
+test('mountain spacing leaves three receding layers and fits the existing scenery budget',()=>{
+ const mountains=capture().filter(p=>p.mountainPart);assert.equal(mountains.length,36);
+ const fronts=[];for(let layer=0;layer<3;layer++){const parts=mountains.filter(p=>p.mountainLayer===layer);assert.equal(parts.length,12);fronts.push(Math.min(...parts.map(p=>p.p[0])));}
+ assert.ok(fronts[1]>fronts[0]+30&&fronts[2]>fronts[1]+30);
 });

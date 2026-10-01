@@ -43,6 +43,7 @@ try:
   art=ev('()=>Realm.test.bridge()');report['submitted']=art
   check('four vaults are actually submitted above the physical water plane',sum(p['kind']=='bridge-vault' for p in art['parts'])==4 and art['waterHeight']==.01)
   check('bounded bridge and mountain pieces never block the camera or cut away',len([p for p in art['parts'] if p.get('bridgePart')])<=420 and all(not p['cameraSolid'] and not p['cutaway'] for p in art['parts']))
+  check('actual submitted shoreline is bounded steep dressing, with no camera or cutaway authority',len([p for p in art['parts'] if p.get('shorelinePart')])==19 and all(p['s'][0]<=.85 for p in art['parts'] if p['kind']=='bank-slope'))
   check('flanking water has no navigation target',not ev('()=>Realm.test.move(3,20).ok'))
   walk(0,27.5);walk(0,10);walk(0,16)
   page.keyboard.press('v');render();page.keyboard.press('e');render();page.locator('[data-rpg="earth-bridge-view"]').click();render()
@@ -57,6 +58,15 @@ try:
   check('combined current/cloud motion contributes actual pixels',pixels['motion']>1000)
   check('reduced-motion rendering freezes the added motion exactly',pixels['frozen']==0)
   check('low-quality water/cloud fallback remains rendered without GL errors',pixels['lowNonBlack']>10000 and pixels['glError']==0)
+  optics=ev('''()=>{const e=new RealmEngine.Engine(document.createElement('canvas'));e.resize(512,320,1);e.clear();e.theme='earth';e.earthWater=RealmEarth.BRIDGE;e.quality='balanced';e.cloudsEnabled=false;const parts=Realm.test.bridge().parts;for(const kind of new Set(parts.map(p=>p.kind)))e.batch(kind,parts.filter(p=>p.kind===kind));const g=e.gl,read=f=>{g.bindFramebuffer(g.FRAMEBUFFER,f.f);const a=new Uint8Array(f.w*f.h*4);g.readPixels(0,0,f.w,f.h,g.RGBA,g.UNSIGNED_BYTE,a);g.bindFramebuffer(g.FRAMEBUFFER,null);return a;},diff=(a,b)=>a.reduce((n,v,i)=>n+(v!==b[i]),0),views=[];
+   for(const projection of['perspective','orthographic']){e.setCamera({eye:[projection==='perspective'?-20:-75,projection==='perspective'?5:24,19.5],target:[0,2,19.5],projection,fov:60,half:10,aspect:1.6});e.earthOpticsEnabled=true;e.mountainHazeEnabled=true;e.render(1,16,false);const on=read(e.mainF),ref=read(e.refF);e.earthOpticsEnabled=false;e.render(1,16,false);const water=diff(on,read(e.mainF));e.earthOpticsEnabled=true;e.mountainHazeEnabled=false;e.render(1,16,false);views.push({projection,waterPixels:water,mountainPixels:diff(on,read(e.mainF)),reflectedMountainPixels:diff(ref,read(e.refF))});}
+   e.theme='valley';e.mountainHazeEnabled=true;e.earthOpticsEnabled=true;e.render(1,16,false);const outside=read(e.mainF);e.mountainHazeEnabled=false;e.earthOpticsEnabled=false;e.render(1,16,false);const out={views,nonEarthPixels:diff(outside,read(e.mainF)),glError:g.getError()};e.disposeSurfaceMaterials();g.getExtension('WEBGL_lose_context')?.loseContext();return out;}''')
+  report['optical_profile']=optics
+  for view in optics['views']:
+   check(view['projection']+' Earth optical profile changes actual same-time water pixels',view['waterPixels']>1000)
+   check(view['projection']+' authored mountain depth changes actual same-time main pixels',view['mountainPixels']>1000)
+   check(view['projection']+' mountain depth also changes the actual reflected framebuffer',view['reflectedMountainPixels']>1000)
+  check('Earth optics and mountain-only haze do not change non-Earth pixels or leak GL errors',optics['nonEarthPixels']==0 and optics['glError']==0)
   # Explicit reset and input/persistence keep the original contracts.
   page.keyboard.press('r');render();check('R resets current diorama style',ev('()=>Realm.diagnostics.camera.projection')=='orthographic' and abs(ev('()=>Realm.diagnostics.camera.yaw')-.76)<.001)
   page.keyboard.press('v');render();check('V returns to saved third-person side orbit',ev('()=>Realm.diagnostics.camera.projection')=='perspective' and abs(ev('()=>Realm.diagnostics.camera.yaw')-4.71238898)<.001)

@@ -51,15 +51,35 @@ function crossing(a){
 function mountains(a){
  // Positive-X layers sit across the channel in the optional western side view.
  // Distant scenery has no collision/interaction or borrowed castle canon.
- for(let layer=0;layer<3;layer++)for(let i=0;i<9;i++){
-  const x=58+layer*30+(i%3)*5,z=-75+i*22+layer*3;
-  const height=25+layer*10+Math.sin(i*1.7+layer)*9,width=31+layer*9;
-  const color=[0x637873,0x7d9290,0x9baaa3][layer];
-  const opts={cameraSolid:false,cutaway:false,rough:1,mountainPart:true};
+ for(let layer=0;layer<3;layer++)for(let i=0;i<6;i++){
+  const x=62+layer*38+(i%3)*5,z=-75+i*32+layer*7;
+  const height=18+layer*8+Math.sin(i*1.7+layer)*6,width=35+layer*11;
+  const color=[0x637873,0x819591,0xa4b1ac][layer];
+  const opts={cameraSolid:false,cutaway:false,rough:1,mountainPart:true,mountainLayer:layer};
   a.add('mountain-ridge',x,-1.2,z,width,height,width*1.1,color,{...opts,r:[0,i*.8+layer,0]});
   a.add('mountain-ridge',x-4,-1.2,z+5,width*.7,height*.7,width*.8,color,{...opts,r:[0,i*.5+1,0]});
  }
 }
-const api={crossing,mountains,bridge:B};G.RealmBridgeArt=api;
+function shoreline(a){
+ // Steep bare skirts descend from existing support, without decorative flat
+ // ground or any change to movement/picking. Leave the whole bridge mouth open.
+ const arrival=E.PATCHES.find(p=>p.id==='arrival'),meadow=E.PATCHES.find(p=>p.id==='south-meadow'),water=.01;
+ const opts={cameraSolid:false,cutaway:false,rough:1,shorelinePart:true};
+ const edge=(x,z,length,yaw,width=.85)=>a.add('bank-slope',x,water,z,width,E.height(x,z)-water-.04,length,0x6d7564,{...opts,r:[0,yaw,0]});
+ for(const side of[-1,1])edge(arrival.x+side*arrival.w/2,arrival.z,arrival.d,side>0?0:Math.PI);
+ edge(arrival.x,arrival.z+arrival.d/2,arrival.w,-Math.PI/2);
+ const notch=B.w/2+.10;
+ for(const bank of[arrival,meadow]){
+  const front=bank===arrival?bank.z-bank.d/2:bank.z+bank.d/2;
+  const len=bank.w/2-notch;
+  for(const side of[-1,1])edge(side*(notch+len/2),front,len,bank===arrival?Math.PI/2:-Math.PI/2);
+ }
+ // Low irregular stones close the corner joins; no stone reaches actor height.
+ for(const side of[-1,1])for(const end of[-1,1]){
+  const x=arrival.x+side*(arrival.w/2+.16),z=arrival.z+end*(arrival.d/2+.13);
+  for(let i=0;i<3;i++)a.add('octa',x+side*i*.20,.52-i*.16,z+end*i*.19,1.08-i*.20,.95-i*.21,.96-i*.17,i%2?0x808978:0x687463,{...opts,r:[0,side*.45+i*.8,0]});
+ }
+}
+const api={crossing,mountains,shoreline,bridge:B};G.RealmBridgeArt=api;
 if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);
