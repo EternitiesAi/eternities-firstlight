@@ -1,3 +1,27 @@
+# Timber browser proof delivered; next is human visual acceptance
+
+Read `docs/art/TIMBER_BROWSER_RESULTS_2026-09-30.md` and the current
+implementation PR before continuing. One weathered-timber surface now works
+on eight existing mill pieces, offline and in both cameras. Source maps,
+Blender studies, captures and fresh clones stay on D. Four other acquired
+surfaces remain unintegrated; a small successful timber proof does not
+qualify a full material/mesh pipeline.
+
+Dom can inspect the mill in third person and diorama: does the grain feel
+natural nearby, and quiet/readable from above? Preserve the still-pending
+fresh/returning combat, equipment, discovery and table-gathering questions.
+Next bounded art step: apply the proven surface to one useful door with
+appropriate grain/end details, or improve the traveler's silhouette/animation
+after visual feedback. Do not expand materials across every scene blindly.
+
+Fetch current gameplay head/review comments first. Keep world9/adventure10,
+stored XP, save ownership, equipment, classes, story consent, music and all
+creative systems. No engine replacement, automatic merge/public deployment
+or billing action. The unchanged older live preview is separate from this
+branch's isolated tests and captures.
+
+Prior checkpoint retained as history:
+
 # Material intake completed; browser integration remains next
 
 The five-material 1k CC0 library is verified at `D:/07-GAMES/Firstlight/assets/sources/polyhaven`. Read [material library](art/MATERIAL_LIBRARY.md) and its executed results. Full maps, Blender files, caches and new captures stay on D. The existing renderer still needs one measured timber-panel UV/material proof before adopting these surfaces in the game. Preserve authored geometry, instancing, offline assembly, both cameras, low quality, reduced motion and save history.

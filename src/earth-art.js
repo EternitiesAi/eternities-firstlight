@@ -73,8 +73,10 @@ function mill(a){
  for(let i=0;i<12;i++){const zz=-7.4-i*1.45;a.box(4.02,1.48,zz,.35,.28,1.31,i%3?0xa3a58d:0x858e7b,{...decor,wet:1});a.box(-4.02,1.49,zz,.38,.3,1.32,0x8d9c84,{...decor,wet:1});}
  // A boardwalk landing beside Ansel, flush with the road rather than a new
  // obstacle. Tools stay well away from the live root and gate cues.
- for(let i=0;i<7;i++)a.box(7.8,h(7.8,-8.1)+.035,-8.65+i*.18,2.25,.07,.16,i%2?0x8f7753:0x9c855e,decor);
- a.box(8.75,h(8.75,-9.1)+.35,-9.1,.8,.7,.7,0x927751,decor);a.box(8.75,h(8.75,-9.1)+.73,-9.1,.5,.08,.42,0xc1b79b,decor);
+ // One measured surface proof, keeping the eight original boxes and their
+ // transforms. The narrow UV strip follows each landing board's long axis.
+ for(let i=0;i<7;i++)a.add('timber-panel',7.8,h(7.8,-8.1)+.035,-8.65+i*.18,2.25,.07,.16,i%2?0x8f7753:0x9c855e,decor);
+ a.add('timber-panel',8.75,h(8.75,-9.1)+.35,-9.1,.8,.7,.7,0x927751,decor);a.box(8.75,h(8.75,-9.1)+.73,-9.1,.5,.08,.42,0xc1b79b,decor);
 }
 function shelter(a){
  const x=-12,z=-25,b=h(x,z),stone=0xaca68e;

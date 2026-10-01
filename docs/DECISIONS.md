@@ -135,3 +135,11 @@ Generated five-realm paintings form a read-only offline atlas. They do not make 
 Dom authorized online texture/asset acquisition and moving appropriate heavy Firstlight storage to D. Choose five official Poly Haven CC0 surfaces (wood, pale boulder stone, plaster, clay tiles, mud), three 1k maps each, with frozen provenance and checksum receipts. Use authored Firstlight geometry for silhouettes and architecture. This selection is an art experiment, not additional canon or approval of final materials.
 
 Use `D:/07-GAMES/Firstlight` for new authoring and artifacts. Move only audited completed standalone clones/media with verified copies, retained original data and C junctions; keep active linked worktrees, shared browser tools and personal data in place. The current live origin stays 127.0.0.1:8780. A separate authoring branch leaves gameplay/save versions and generated HTML unchanged. Material-map/mesh integration remains a bounded next proof, as described in the material-library record.
+
+## 2026-09-30: one timber surface in the existing browser renderer
+
+Continue from PR22's exact f6e41b62 head, preserving PR21 gameplay and the material/storage records. Install only the verified weathered-timber color/roughness pair on seven existing mill landing boards and one chest. Keep geometry, collision/navigation and saves unchanged. New UV material grouping may add one submission per geometry pass; measure it and texture storage rather than implying free detail.
+
+Keep scans near the authored painterly palette through a measured, bounded linear color reference. Native sRGB color and non-color R8 roughness need actual GPU-value checks; diagnostic labels alone are insufficient. Do not claim normal mapping, physically based lighting or GLB support from this first proof. Both valid maps form one atomic presentation state; a failed decode must show the same visible ordinary wood.
+
+Test the production map/save/export fallback as well as isolated Engine context-loss retirement. Keep the stable older loopback preview untouched during isolated verification and footage. Full source/browser checks and a fresh remote clone remain delivery gates. No merge, deployment, billing change or inferred human art acceptance.

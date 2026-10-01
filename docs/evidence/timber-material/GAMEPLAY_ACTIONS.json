@@ -1,0 +1,78 @@
+[
+  {
+    "click": "[data-rpg=\"camera\"][data-id=\"follow\"]"
+  },
+  {
+    "evaluate": "()=>{Realm.test.setTime(16);Realm.test.quality('balanced');Realm.test.view({yaw:.5,elevation:.32,distance:8});Realm.test.render()}",
+    "wait_ms": 1500
+  },
+  {
+    "walk": [
+      0,
+      23
+    ]
+  },
+  {
+    "key": "e",
+    "wait_ms": 1200
+  },
+  {
+    "click": "[data-rpg=\"earth-confirm\"]",
+    "wait_ms": 1500
+  },
+  {
+    "walk": [
+      0,
+      10
+    ]
+  },
+  {
+    "walk": [
+      7,
+      2
+    ]
+  },
+  {
+    "walk": [
+      8.9,
+      -7.9
+    ]
+  },
+  {
+    "evaluate": "()=>Realm.test.view({yaw:.95,elevation:.32,distance:6.5})",
+    "wait_ms": 4500
+  },
+  {
+    "key": "h",
+    "wait_ms": 1500
+  },
+  {
+    "evaluate": "()=>Realm.test.view({yaw:1.4,elevation:.4,distance:5.5})",
+    "wait_ms": 4500
+  },
+  {
+    "key": "v",
+    "wait_ms": 4500
+  },
+  {
+    "key": "h",
+    "wait_ms": 700
+  },
+  {
+    "key": "v",
+    "wait_ms": 700
+  },
+  {
+    "walk": [
+      10,
+      -10.5
+    ]
+  },
+  {
+    "evaluate": "()=>Realm.test.view({yaw:1.3,elevation:.42,distance:6})",
+    "wait_ms": 4000
+  },
+  {
+    "evaluate": "()=>({scene:Realm.diagnostics.scene,material:Realm.diagnostics.metrics.surfaceMaterials,player:Realm.diagnostics.adventure.player})"
+  }
+]

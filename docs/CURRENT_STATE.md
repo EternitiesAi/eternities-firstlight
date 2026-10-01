@@ -1,3 +1,32 @@
+# Current checkpoint: timber maps in the playable mill
+
+Updated 2026-09-30. Branch `gameplay/timber-material-proof` starts at PR22
+`f6e41b62addda91ba50a93cbca60e6aac009de18` and is stacked against
+`art/cc0-material-proof`. Worktree:
+`D:/07-GAMES/Firstlight/authoring/texture-intake-review`. Read
+[task](development/TIMBER_MATERIAL_TASK_2026-09-30.md) and
+[executed art results](art/TIMBER_BROWSER_RESULTS_2026-09-30.md).
+
+The seven existing landing boards and tool chest at the Hearthwater mill now
+have embedded 512px color/roughness maps. Both cameras, instancing, offline
+play, shadows/reflection/cutaway and a visible plain-material fallback remain.
+World9/adventure10 and all saved progression/creations remain unchanged;
+there is no migration. The other acquired materials remain authoring sources.
+
+Actual map-value/pixel/lifecycle checks and labelled RTX footage/measurement
+are in `docs/evidence/timber-material`. Final full-gate counts and exact-head
+remote-clone receipts are in the implementation PR. Hosted jobs have an
+account-billing block. Human taste/camera acceptance is pending.
+
+The live port8780 server still serves PR21; it was not restarted. Open this
+checkout's identical `index.html` for an isolated preview, or use the normal
+launcher after the owner closes the older server. A file-origin preview has
+its own browser storage; it is not evidence about Dom's loopback saves.
+Walk to the lake marker, explicitly enter Hearthwater and follow the eastern
+mill road. V swaps views. New heavy artifacts/verification clones stay on D.
+
+Prior checkpoints retained as history:
+
 # Authoring follow-up, 2026-09-30
 
 A separate `art/cc0-material-proof` branch starts at the gameplay head `f85bd690466b6be9b2b438f4e06eddb264f3ec13` (PR #21). See [material library](art/MATERIAL_LIBRARY.md) for the verified five-material CC0 intake and D-drive authoring/storage policy. This follow-up does not change the playable renderer, identical HTML, save schemas or live preview. Its results record Blender proof and storage receipts separately from gameplay verification.
