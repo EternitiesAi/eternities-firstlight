@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Fresh expedition kit third person",
+    "expression": "async()=>{Realm.test.setTime(16);document.querySelector('[data-rpg=\"camera\"][data-id=\"adventure\"]').click();const r=Realm.test.move(11,9);if(!r.ok)throw Error(r.error);const start=performance.now();while(Realm.test.path.length){if(performance.now()-start>45000)throw Error('walk timeout');await new Promise(r=>setTimeout(r,50));}document.dispatchEvent(new KeyboardEvent('keydown',{key:'e',bubbles:true}));document.dispatchEvent(new KeyboardEvent('keyup',{key:'e',bubbles:true}));if(!Realm.state.adventure.started)throw Error('kit not accepted');Realm.test.view({yaw:2.8,elevation:.22,distance:5.2});Realm.test.render();if(Realm.diagnostics.camera.projection!=='perspective')throw Error('wrong camera');return{scene:Realm.diagnostics.scene,projection:Realm.diagnostics.camera.projection,weapon:Realm.state.adventure.equipment.weapon}}"
+  },
+  {
+    "name": "Fresh expedition kit diorama",
+    "expression": "()=>{document.querySelector('[data-rpg=\"camera\"][data-id=\"follow\"]').click();Realm.test.render();if(Realm.diagnostics.camera.projection!=='orthographic')throw Error('wrong camera');return{scene:Realm.diagnostics.scene,projection:Realm.diagnostics.camera.projection}}"
+  },
+  {
+    "name": "Fresh expedition kit third person repeat",
+    "expression": "()=>{document.querySelector('[data-rpg=\"camera\"][data-id=\"adventure\"]').click();Realm.test.render();return{scene:Realm.diagnostics.scene,projection:Realm.diagnostics.camera.projection}}"
+  }
+]

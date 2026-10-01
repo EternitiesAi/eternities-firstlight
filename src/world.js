@@ -8,7 +8,7 @@ class WorldArt{
  // the authored walls instead of enlarging navigation or camera obstacles.
  beam(from,to,width,c,opt={}){const d=to.map((v,i)=>v-from[i]),len=Math.hypot(...d);if(len<.001)return;const yy=d.map(v=>v/len),ref=Math.abs(yy[1])>.95?[1,0,0]:[0,1,0],xx=[ref[1]*yy[2]-ref[2]*yy[1],ref[2]*yy[0]-ref[0]*yy[2],ref[0]*yy[1]-ref[1]*yy[0]],n=Math.hypot(...xx);for(let i=0;i<3;i++)xx[i]/=n;const zz=[xx[1]*yy[2]-xx[2]*yy[1],xx[2]*yy[0]-xx[0]*yy[2],xx[0]*yy[1]-xx[1]*yy[0]],p=from.map((v,i)=>(v+to[i])/2);this.box(...p,width,len,width,c,{cameraSolid:false,cutaway:true,...opt,m:new Float32Array([...xx.map(v=>v*width),0,...yy.map(v=>v*len),0,...zz.map(v=>v*width),0,...p,1])});}
  commit(){if(!this.room&&G.RealmEarthArt)G.RealmEarthArt.gate(this);if(!this.room&&G.RealmCosmosArt)G.RealmCosmosArt.gate(this);if(!this.room&&G.RealmRoadArt)G.RealmRoadArt.gate(this);if(!this.room&&G.RealmAdventureArt)G.RealmAdventureArt.entrance(this);if(!this.room&&G.RealmSandboxArt)G.RealmSandboxArt.scenery(this);for(let[k,a]of Object.entries(this.map))this.e.batch(k,a);this.dynamicBox=this.e.batch('box',[],true);this.dynamicOcta=this.e.batch('octa',[],true);this.dynamicRound=this.e.batch('round',[],true);this.dynamicDisc=this.e.batch('disc',[],true);}
- begin(room){this.e.theme=null;this.e.noWater=false;this.e.surfacePick=null;this.e.ambientOverride=null;this.e.reflectionStrength=1;this.e.clear();this.e.isInterior=!!room;this.room=room;this.map={};}
+ begin(room){this.travelerPoseOwner=null;this.travelerMotion=null;this.travelerFrame=null;this.travelerParts=null;this.e.theme=null;this.e.noWater=false;this.e.surfacePick=null;this.e.ambientOverride=null;this.e.reflectionStrength=1;this.e.clear();this.e.isInterior=!!room;this.room=room;this.map={};}
  tree(x,z,s=1,style=0,base=1.2){let bark=0x68503c;this.add('cylinder',x,base,z,.42*s,2.6*s,.42*s,bark);for(let a of[-.6,.8,2.3])this.box(x+Math.sin(a)*.45*s,base+2*s,z+Math.cos(a)*.45*s,.18*s,1.2*s,.18*s,bark,{r:[.3,a,.55]});let colors=style===3?[0xd9a4ba,0xc489a5,0xe9bdbe]:style===1?[0xaab961,0x8fa856,0xbdc16f]:style===2?[0x87a897,0x669586,0xa0b59b]:[0x557d65,0x638f69,0x779c73];if(style===0){for(let i=0;i<3;i++)this.add('cone',x,base+(1.6+i*.85)*s,z,(3.2-i*.6)*s,2.2*s,(3.2-i*.6)*s,colors[i],{wind:2});}else{for(let i=0;i<7;i++){let a=i*2.4,r=i===0?0:1.05;this.add(style===3?'round':style===1?'round':'octa',x+Math.cos(a)*r*s,base+(3.25+(i%3)*.42)*s,z+Math.sin(a)*r*s,(2.25+(i%2)*.3)*s,(2.1+(i%3)*.23)*s,(2.15+(i%2)*.35)*s,colors[i%3],{r:[0,a,0],wind:2});}}}
  lamp(x,z,height=3.4,base=1.2){this.box(x,base+height/2,z,.13,height,.13,0x5a4735);this.box(x,base+height,z,.55,.12,.55,0x443c32);this.box(x,base+height-.35,z,.32,.54,.32,0xffd185,{em:1.4,rough:.35});this.add('cone',x,base+height+.07,z,.77,.37,.77,0x594739);this.box(x,base+.09,z,.48,.18,.48,0x777565);}
  bench(x,z,yaw=0,base=1.2,opt={}){let at=(a,b,c,sx,sy,sz,col)=>this.box(x+a*Math.cos(yaw)+c*Math.sin(yaw),base+b,z-a*Math.sin(yaw)+c*Math.cos(yaw),sx,sy,sz,col,{r:[0,yaw,0],...opt});for(let a of[-.72,.72])at(a,.38,0,.14,.75,.5,0x514c43);at(0,.74,0,1.95,.16,.68,0xa88d62);at(0,1.24,-.31,1.95,.52,.11,0xa68b62);}
@@ -208,7 +208,65 @@ class WorldArt{
   if(role==='musician'){add('octa',.31,.8,.22,.34,.48,.14,0xbd955f);add('box',.38,1.08,.24,.06,.47,.06,0x806747);}
   if(role==='researcher')add('box',.27,.9,.23,.24,.30,.07,0xb8c8be);
  }
- update(sim,t,target){sim.presentation=sim.presentation||{};sim.presentation.perspective=this.e.camera.projection==='perspective';this.e.cutaway=sim.state.settings.cameraCutaway!==false;this.e.cutawayFocus=[sim.state.player.x,sim.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(sim.state.player.x,sim.state.player.z)+.88:sim.room===G.RealmEarth?.ROOM?G.RealmEarth.height(sim.state.player.x,sim.state.player.z)+.88:sim.room?2.45:2.18,sim.state.player.z];let out={box:[],octa:[],disc:[],round:[]},p=sim.state.player;this.person(out,p.x,p.z,p.yaw,X.CLOAKS[sim.state.visitor.cloak],t,sim.walking,'visitor',true,this.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(p.x,p.z):this.room===G.RealmEarth?.ROOM?G.RealmEarth.height(p.x,p.z):this.room?1.57:1.3,sim.state.visitor);for(let i=0;i<C.PROFILES.length;i++){let info=C.PROFILES[i],r=sim.state.residents.find(r=>r.id===info.id),run=sim.runs.get(info.id);if(this.room){if(this.room==='home'&&run.inside){let pos=[[-3.1,1.1],[3.2,1.1],[2,3.2]][i];this.person(out,pos[0],pos[1],i?-.7:.7,info.color,t+i,false,info.role.toLowerCase(),false,1.57);}else if(this.room==='atelier'&&info.id==='ilan'&&run.goal==='atelier')this.person(out,2.5,1.1,-1,info.color,t,false,'musician',false,1.57);else if(this.room==='observatory'&&info.id==='mara'&&run.goal==='observatory')this.person(out,2.5,1.1,-1,info.color,t,false,'researcher',false,1.57);}else if(!run.inside)this.person(out,r.x,r.z,r.yaw,info.color,t+i,run.walking,info.role.toLowerCase());}
+ traveler(out,sim){
+  if(this.travelerSim!==sim){this.travelerPoseOwner=null;this.travelerMotion=null;this.travelerSim=sim;}
+  const p=sim.state.player,a=sim.state.adventure,reducedMotion=!!sim.state.settings.reducedMotion;
+  const base=this.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(p.x,p.z):this.room===G.RealmEarth?.ROOM?G.RealmEarth.height(p.x,p.z):this.room?1.57:1.3;
+  const combatScene=!!(a.started&&a.hp>0&&G.RealmAdventure.combatScene(sim));
+  const weapon=a.equipment.weapon?G.RealmArsenal.weapon(a):{style:'none'};
+  const r=G.RealmAdventure.runtime(sim),tactics=G.RealmCombat.runtime(sim),prior=this.travelerPoseOwner;
+  // Accepted receipts establish ordering even when equip and attack both occur
+  // between frames. Failed/replayed inputs never create a new weapon epoch.
+  const tail=a.receipts[a.receipts.length-1]?.id;
+  if(!prior||prior.receiptTail!==tail){
+   let equipReceipt=prior?.equipReceipt||null,releaseAfterEquip=false,enteredScene=false,releaseAfterScene=false;
+   const entries={enter:'mine','road-enter':'road','range-enter':'range','starter-enter':'riverbank','cross-enter':'crossing'};
+   for(const receipt of a.receipts){
+    if(!receipt.ok)continue;
+    let type,payload;try{[type,payload]=JSON.parse(receipt.fp);}catch{continue;}
+    if(Object.hasOwn(entries,type)||type==='waystone-travel'){
+     const destination=type==='waystone-travel'?G.RealmCrossing.WAYSTONES[payload?.id]?.room:entries[type];
+     enteredScene=destination===this.room;releaseAfterScene=false;
+    }
+    if(type==='equip'&&G.RealmAdventure.GEAR[payload?.id]?.slot==='weapon'){equipReceipt=receipt.id;releaseAfterEquip=false;}
+    else if(type==='attack'||type==='pulse'){releaseAfterEquip=true;if(enteredScene)releaseAfterScene=true;}
+   }
+   this.travelerReceiptInfo={equipReceipt,releaseAfterEquip,releaseAfterScene};
+  }
+  const receiptInfo=this.travelerReceiptInfo;
+  if(!prior||prior.weapon!==a.equipment.weapon||prior.scene!==this.room||prior.equipReceipt!==receiptInfo.equipReceipt){
+   // Scene sync already clears current FX/arrows; a weapon change in the same
+   // scene fences the old item, but retains an accepted release after equip.
+   const freshRelease=!!(prior&&prior.equipReceipt!==receiptInfo.equipReceipt&&receiptInfo.releaseAfterEquip);
+   const latestFx=weapon.style!=='bow'&&freshRelease?[...r.fx].reverse().find(f=>f.kind==='slash'||f.kind==='pulse'):null;
+   const releaseAt=freshRelease?(weapon.style==='bow'?r.lastShot:latestFx?.at):null;
+   this.travelerPoseOwner={weapon:a.equipment.weapon,scene:this.room,equipReceipt:receiptInfo.equipReceipt,blockedMotion:prior&&tactics.motion?.at!==releaseAt?tactics.motion:null,blockedFx:new Set(prior?r.fx.filter(f=>f!==latestFx):[]),blockedShot:prior?(freshRelease?null:r.lastShot):(!r.arrows.length&&!receiptInfo.releaseAfterScene?r.lastShot:null)};
+  }
+  const owner=this.travelerPoseOwner;
+  owner.receiptTail=tail;
+  let combat=combatScene?G.RealmCombat.pose(sim):{phase:'idle',progress:0};
+  if(combat.style&&combat.style!==weapon.style||combat.phase==='anticipate'&&tactics.windup?.weapon!==owner.weapon||combat.phase==='recover'&&tactics.motion===owner.blockedMotion)combat={phase:'idle',progress:0};
+  // Project only an accepted release belonging to this scene and weapon epoch.
+  // Neither an input press nor this recovery pose implies a successful hit.
+  if(combatScene&&combat.phase==='idle'){
+   let release=weapon.style==='bow'&&r.lastShot!==owner.blockedShot?r.lastShot:null;
+   if(weapon.style!=='bow')for(let i=r.fx.length-1;i>=0;i--)if(!owner.blockedFx.has(r.fx[i])&&(r.fx[i].kind==='slash'||r.fx[i].kind==='pulse')){release=r.fx[i].at;break;}
+   if(Number.isFinite(release)&&a.elapsed>=release&&a.elapsed-release<.28)combat={phase:'recover',progress:(a.elapsed-release)/.28};
+  }
+  this.travelerMotion=G.RealmTravelerArt.motion(this.travelerMotion,{x:p.x,z:p.z,scene:this.room,time:sim.elapsed,walking:sim.walking,paused:sim.paused,reducedMotion});
+  const pose=G.RealmTravelerArt.pose({...this.travelerMotion,time:this.travelerMotion.time,reducedMotion,style:weapon.style,combatScene,combatPhase:combat.phase,combatProgress:combat.progress,guarded:combatScene&&a.elapsed<G.RealmCombat.runtime(sim).guardUntil});
+  const starts=Object.fromEntries(Object.entries(out).map(([k,v])=>[k,v.length]));
+  const armorColor=G.RealmAdventure.GEAR[a.equipment.armor]?.color||null;
+  this.travelerFrame=G.RealmTravelerArt.draw(out,{x:p.x,z:p.z,yaw:p.yaw,base,profile:sim.state.visitor,color:X.CLOAKS[sim.state.visitor.cloak],armorColor},pose);
+  this.travelerEquipment=G.RealmTravelerEquipmentArt.draw(out,sim,this.travelerFrame);
+  this.travelerParts=Object.fromEntries(Object.entries(out).map(([k,v])=>[k,v.slice(starts[k])]));
+ }
+ travelerSnapshot(){
+  if(!this.travelerFrame)return null;
+  const f=this.travelerFrame;
+  return JSON.parse(JSON.stringify({motion:this.travelerMotion,frame:{...f,root:Array.from(f.root)},equipment:this.travelerEquipment,parts:Object.entries(this.travelerParts).flatMap(([kind,v])=>v.map(it=>({kind,p:it.p,s:it.s,m:it.m?Array.from(it.m):null,c:it.c,part:it.travelerPart||null,weaponPart:it.weaponPart||null,weaponId:it.weaponId||null,attachment:it.attachment||null,gemId:it.gemId||null,fittingStage:it.fittingStage||null,temper:it.temper||null})))}));
+ }
+ update(sim,t,target){sim.presentation=sim.presentation||{};sim.presentation.perspective=this.e.camera.projection==='perspective';this.e.cutaway=sim.state.settings.cameraCutaway!==false;this.e.cutawayFocus=[sim.state.player.x,sim.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(sim.state.player.x,sim.state.player.z)+.88:sim.room===G.RealmEarth?.ROOM?G.RealmEarth.height(sim.state.player.x,sim.state.player.z)+.88:sim.room?2.45:2.18,sim.state.player.z];let out={box:[],octa:[],disc:[],round:[]},p=sim.state.player;this.traveler(out,sim);for(let i=0;i<C.PROFILES.length;i++){let info=C.PROFILES[i],r=sim.state.residents.find(r=>r.id===info.id),run=sim.runs.get(info.id);if(this.room){if(this.room==='home'&&run.inside){let pos=[[-3.1,1.1],[3.2,1.1],[2,3.2]][i];this.person(out,pos[0],pos[1],i?-.7:.7,info.color,t+i,false,info.role.toLowerCase(),false,1.57);}else if(this.room==='atelier'&&info.id==='ilan'&&run.goal==='atelier')this.person(out,2.5,1.1,-1,info.color,t,false,'musician',false,1.57);else if(this.room==='observatory'&&info.id==='mara'&&run.goal==='observatory')this.person(out,2.5,1.1,-1,info.color,t,false,'researcher',false,1.57);}else if(!run.inside)this.person(out,r.x,r.z,r.yaw,info.color,t+i,run.walking,info.role.toLowerCase());}
  if(!this.room){if(sim.state.weather==='rain'&&!sim.state.settings.reducedMotion){for(let i=0;i<110;i++){let x=((i*17.13)%42)-21,z=((i*23.77)%42)-21,y=1.4+((i*.61-t*10)%9+9)%9;out.box.push({p:[x,y,z],s:[.017,.32,.017],r:[0,0,-.13],c:0x9ebdc1,em:.2});}}for(let f of sim.state.flowers){out.box.push({p:[f.x,1.72,f.z],s:[.055,.48,.055],c:0x57784c});out.octa.push({p:[f.x,1.99,f.z],s:[.29,.3,.29],c:[0xe5bb94,0xc49fac,0xe5d29d,0xb7cad0][f.color]});}for(let i=0;i<13;i++){let a=t*.11+i*.8,r=26+i%3*4,x=Math.sin(a)*r,z=Math.cos(a)*r,y=9+i%4*1.3;for(let s of[-1,1])out.box.push({p:[x+s*.18,y,z],s:[.45,.055,.15],r:[0,a,s*(.25+Math.sin(t*3+i)*.2)],c:0x4a646b});}for(let j=0;j<3;j++)for(let i=0;i<4;i++){let u=(t*.3+i*.8)%3.7,x=[-13,-14.6,9.4][j],z=[-7.3,5.75,3.7][j];out.octa.push({p:[x+Math.sin(u+j)*.2,6.4+u,z],s:[.3+u*.16,.4+u*.19,.3+u*.16],c:blend(hex(0xb5bbb0),hex(0x9faeac),u/4),rough:1});}let w=t*.5;out.octa.push({p:[7+Math.cos(w)*.7,2+Math.sin(t)*.14,10+Math.sin(w)*.7],s:[.3,.43,.3],c:0x8ad6d1,em:1.3});}
  if(target)for(let i=0;i<16;i++){let a=i/16*TAU;out.box.push({p:[target.x+Math.cos(a)*.4,this.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(target.x,target.z)+.02:this.room?1.59:1.31,target.z+Math.sin(a)*.4],s:[.12,.025,.05],r:[0,-a,0],c:0xe5ce93,em:.35});}
 

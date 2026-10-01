@@ -143,3 +143,19 @@ Continue from PR22's exact f6e41b62 head, preserving PR21 gameplay and the mater
 Keep scans near the authored painterly palette through a measured, bounded linear color reference. Native sRGB color and non-color R8 roughness need actual GPU-value checks; diagnostic labels alone are insufficient. Do not claim normal mapping, physically based lighting or GLB support from this first proof. Both valid maps form one atomic presentation state; a failed decode must show the same visible ordinary wood.
 
 Test the production map/save/export fallback as well as isolated Engine context-loss retirement. Keep the stable older loopback preview untouched during isolated verification and footage. Full source/browser checks and a fresh remote clone remain delivery gates. No merge, deployment, billing change or inferred human art acceptance.
+## 2026-10-01: connected traveller art with existing rule owners
+
+Continue from PR23's exact f5c02113 head on a stacked gameplay branch. Use an
+original fitted human silhouette and analytic connected joints in the existing
+box/round/octa/disc batches. Accepted distance drives stride; pause and repeated
+draws cannot advance it. Secondary motion respects reduced motion. Project
+canonical blade/bow, armor color, sockets, one-time temper and finite fittings
+onto the same frame, held in combat and stowed on travel. NPCs keep their models.
+
+WorldArt uses existing successful weapon-equip/attack receipts to distinguish
+release order between frames. Input or a recovery pose cannot grant a hit;
+actual combat/arrow events keep their original owners. No renderer replacement,
+combat rule, camera, save version, level/economy or founder story change.
+Full local/remote-clone verification, real footage and labelled GPU evidence
+remain separate from pending founder visual/comfort acceptance. Heavy files
+stay on D; main and the older live preview remain untouched.

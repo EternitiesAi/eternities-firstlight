@@ -1,0 +1,52 @@
+{
+  "scope": "Executed full verifier on integrated source. Local HEAD before integration commit is separate from the final pushed-head clone receipt.",
+  "completion": {
+    "started_at_utc": "2026-10-01T05:41:00.929030+00:00",
+    "completed_at_utc": "2026-10-01T05:50:24.069241+00:00",
+    "command": [
+      "C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Scripts\\python.exe",
+      "tools/verify.py",
+      "--browser",
+      "--output",
+      "D:\\07-GAMES\\Firstlight\\artifacts\\traveler-art-2026-09-30\\verification-local-delivery"
+    ],
+    "root": "D:\\07-GAMES\\Firstlight\\authoring\\texture-intake-review",
+    "exit_code": 0,
+    "head": "c78c013c6302d605daaf4778ed618a8722ff25a3",
+    "html_sha256": "19ce36ab88a87d24114c9d11dd4190c7aaaf0d8c75ae96694705822b22a110b9"
+  },
+  "python": "3.13.15",
+  "node": "24.18.0",
+  "syntax_modules": 54,
+  "node_tests": 645,
+  "node_passed": 645,
+  "python_passed": 53,
+  "python_skipped": 1,
+  "skip_reason": "Existing Windows symlink-boundary test unavailable without privilege.",
+  "journeys": 24,
+  "browser_suites": {
+    "crossing_browser": 115,
+    "regression09_browser": 107,
+    "cutaway_browser": 6,
+    "reflection_browser": 8,
+    "native_origin_browser": 11,
+    "starter_browser": 147,
+    "camera_browser": 51,
+    "pursuit_browser": 145,
+    "characters_browser": 67,
+    "classes_browser": 45,
+    "cosmos_browser": 75,
+    "earth_browser": 89,
+    "earth_story_browser": 142,
+    "earth_notes_browser": 134,
+    "gathering_browser": 118,
+    "realm_atlas_browser": 37,
+    "timber_browser": 40,
+    "traveler_browser": 116
+  },
+  "browser_assertions": 1453,
+  "failures": 0,
+  "html_bytes": 2216075,
+  "html_sha256": "19ce36ab88a87d24114c9d11dd4190c7aaaf0d8c75ae96694705822b22a110b9",
+  "logs": "D:\\07-GAMES\\Firstlight\\artifacts\\traveler-art-2026-09-30\\verification-local-delivery"
+}

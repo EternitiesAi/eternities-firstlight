@@ -1,0 +1,100 @@
+[
+  {
+    "click": "[data-rpg=\"camera\"][data-id=\"adventure\"]"
+  },
+  {
+    "evaluate": "()=>{Realm.test.setTime(16);Realm.test.view({yaw:2.8,elevation:.24,distance:6.5});Realm.test.render()}",
+    "wait_ms": 800
+  },
+  {
+    "walk": [
+      7,
+      5
+    ]
+  },
+  {
+    "evaluate": "()=>Realm.test.view({yaw:2.3,elevation:.23,distance:5.7})",
+    "wait_ms": 2000
+  },
+  {
+    "evaluate": "()=>{const r=Realm.test.adventure(\"traveler-video-equip-\"+performance.now(),\"equip\",{\"id\": \"trail_blade\"});if(!r.ok)throw Error(r.error);Realm.test.render();return r}",
+    "wait_ms": 800
+  },
+  {
+    "walk": [
+      15,
+      7
+    ]
+  },
+  {
+    "key": "v",
+    "wait_ms": 1500
+  },
+  {
+    "walk": [
+      15,
+      7
+    ]
+  },
+  {
+    "key": "e",
+    "wait_ms": 1000
+  },
+  {
+    "walk": [
+      -5,
+      11.5
+    ]
+  },
+  {
+    "key": "v",
+    "wait_ms": 600
+  },
+  {
+    "evaluate": "()=>{Realm.test.view({yaw:2.7,elevation:.25,distance:5.8});Realm.test.render()}",
+    "wait_ms": 700
+  },
+  {
+    "evaluate": "()=>{const r=Realm.test.adventure(\"traveler-video-target-select-\"+performance.now(),\"target-select\",{\"id\": \"river-practice\"});if(!r.ok)throw Error(r.error);Realm.test.render();return r}",
+    "wait_ms": 800
+  },
+  {
+    "key": "1",
+    "wait_ms": 3200
+  },
+  {
+    "key": "3",
+    "wait_ms": 1000
+  },
+  {
+    "key": "2",
+    "wait_ms": 1400
+  },
+  {
+    "key": "1",
+    "wait_ms": 600
+  },
+  {
+    "evaluate": "()=>{const r=Realm.test.adventure(\"traveler-video-equip-\"+performance.now(),\"equip\",{\"id\": \"trail_bow\"});if(!r.ok)throw Error(r.error);Realm.test.render();return r}",
+    "wait_ms": 800
+  },
+  {
+    "evaluate": "()=>{const r=Realm.test.adventure(\"traveler-video-target-select-\"+performance.now(),\"target-select\",{\"id\": \"river-practice\"});if(!r.ok)throw Error(r.error);Realm.test.render();return r}",
+    "wait_ms": 800
+  },
+  {
+    "key": "1",
+    "wait_ms": 4000
+  },
+  {
+    "key": "v",
+    "wait_ms": 2200
+  },
+  {
+    "key": "1",
+    "wait_ms": 500
+  },
+  {
+    "evaluate": "()=>({scene:Realm.diagnostics.scene,renderer:Realm.diagnostics.renderer,weapon:Realm.state.adventure.equipment.weapon,traveler:Realm.test.traveler().equipment})"
+  }
+]

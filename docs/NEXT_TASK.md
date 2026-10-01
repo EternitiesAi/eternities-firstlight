@@ -1,3 +1,31 @@
+# Traveller proof delivered; next is founder feel and a useful art refinement
+
+Read `docs/art/TRAVELER_BROWSER_RESULTS_2026-09-30.md` and the current
+`gameplay/traveler-silhouette-motion` review. Fetch newer heads/comments first.
+The procedural traveller and actual held/stowed equipment are now connected
+in both existing cameras. This is prototype art, not final character canon.
+
+Dom's next acceptance is one fresh blade/bow and one returning equipped case:
+does the traveller look like someone you want to inhabit, do stance/recovery
+read clearly, and does either view hide the body or make walking uncomfortable?
+Keep the older outing, upgrade, clue, gathering and timber questions pending
+until played. Automated green checks cannot supply these answers.
+
+After observed feedback, refine one useful nearby piece: a bespoke timber door
+with readable joinery, or one named villager's silhouette. Keep this original
+small primitive pipeline measured before claiming authored mesh/skin import.
+Do not add gear power, global material replacement or a disconnected realm to
+solve an art issue. Both cameras, current combat controls and saves remain.
+
+World/key9 and adventure10, stored XP, classes/consent, sockets/fittings,
+companion, crafting/housing, independent worlds and music/exports retain their
+owners. No automatic merge/deploy, billing change or personal-profile access.
+Heavy authoring/evidence stays on D. The standard port8780 preview now serves
+this build after the older process was found absent; never stop a conflicting
+server or change origins automatically. See CURRENT_STATE and delivery receipts.
+
+Prior checkpoint retained as history:
+
 # Timber browser proof delivered; next is human visual acceptance
 
 Read `docs/art/TIMBER_BROWSER_RESULTS_2026-09-30.md` and the current

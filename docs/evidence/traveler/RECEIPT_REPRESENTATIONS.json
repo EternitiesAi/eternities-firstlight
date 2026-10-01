@@ -1,0 +1,113 @@
+{
+  "method": "Original capture bytes stay on D. Review JSON uses UTF-8/LF; semantic equality is verified. Media is byte-identical.",
+  "files": [
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\traveler-art-2026-09-30\\GPU_BEFORE.json",
+      "review": "GPU_BEFORE.json",
+      "source_bytes": 78205,
+      "source_sha256": "50fb10f87f6d771d1c09400d7dd190e3c6834599020a7d540d692b1dc253df11",
+      "review_bytes": 75734,
+      "review_sha256": "98df65c16617a3984f6ed5330c355bb6804095ce9e8313264d0348b7dba2a0ac",
+      "json_semantically_equal": true
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\traveler-art-2026-09-30\\GPU_DELIVERY.json",
+      "review": "GPU_AFTER.json",
+      "source_bytes": 78091,
+      "source_sha256": "3b30b67409660f19d6cc5394f5e9f8b95a3cd5eac72aec1b1a629964a5356923",
+      "review_bytes": 75620,
+      "review_sha256": "8475fa6cd57c2188515a778a7b3591ad74e78583f262bd08866cd9cc7881b181",
+      "json_semantically_equal": true
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\traveler-art-2026-09-30\\GPU_SCENES.json",
+      "review": "GPU_SCENES.json",
+      "source_bytes": 1552,
+      "source_sha256": "358b337b7704e6be76700b23d4e4aefc0e3167cbd7c7cc2f62883b9543e07c96",
+      "review_bytes": 1538,
+      "review_sha256": "ce9216fbd6d616580d1af82221ac7c89ea8d5c46d1dc941aea8561273e27d699",
+      "json_semantically_equal": true
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\traveler-art-2026-09-30\\GAMEPLAY_ACTIONS_COMPLETE.json",
+      "review": "GAMEPLAY_ACTIONS.json",
+      "source_bytes": 2304,
+      "source_sha256": "bec08b1274e78956f7d8bbd6bb8146d3121d53658e9b082c96fe53913bd416a2",
+      "review_bytes": 2204,
+      "review_sha256": "912a97cc720ea8d9e5874614fe32899f57e453f79d384300e78a93f8a02ffaf7",
+      "json_semantically_equal": true
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\traveler-art-2026-09-30\\gameplay-video-delivery\\REPORT.json",
+      "review": "RECORDING_REPORT.json",
+      "source_bytes": 44170,
+      "source_sha256": "9cad74277c0429ca2de91304e71d247d75214ab8cf256025da0edaeb3f8f17bd",
+      "review_bytes": 42373,
+      "review_sha256": "4cbce75e9beae08e33f488afed42f2fd7a8279e039414f28d3dfe6cc4f62e893",
+      "json_semantically_equal": true
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\authoring\\texture-intake-review\\evidence10\\starter\\fresh-bow\\02_BOW_CRAFTED_EARNED.json",
+      "review": "BOW_CRAFTED_EARNED.json",
+      "source_bytes": 18413,
+      "source_sha256": "852a27d8ae56dc62a4381c8c0a2511d6774cc68410ec11a68bad11d13f3f2cae",
+      "review_bytes": 18414,
+      "review_sha256": "6904687017daf408e096149bc365b4186a7b1b43be08271269333e463f046e1e",
+      "json_semantically_equal": true
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\traveler-art-2026-09-30\\TRAVELER_GAMEPLAY_DELIVERY.mp4",
+      "review": "TRAVELER_GAMEPLAY.mp4",
+      "source_bytes": 2837246,
+      "source_sha256": "9db7dbeb8bd8935cccde0a697465e11e2db7accf1e7e8203e952fc5fd9358919",
+      "review_bytes": 2837246,
+      "review_sha256": "9db7dbeb8bd8935cccde0a697465e11e2db7accf1e7e8203e952fc5fd9358919",
+      "json_semantically_equal": null
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\traveler-art-2026-09-30\\VIDEO_DELIVERY_14.png",
+      "review": "DIORAMA.png",
+      "source_bytes": 889244,
+      "source_sha256": "3f5bdc4d94b774d63d4c5a96e7229ee7196ad13e061d89a6283fc7fbd8f04322",
+      "review_bytes": 889244,
+      "review_sha256": "3f5bdc4d94b774d63d4c5a96e7229ee7196ad13e061d89a6283fc7fbd8f04322",
+      "json_semantically_equal": null
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\traveler-art-2026-09-30\\VIDEO_DELIVERY_22.png",
+      "review": "BLADE_PRACTICE.png",
+      "source_bytes": 596802,
+      "source_sha256": "48512b353029be690c35ce129026fbf156d8c653473ae77abb58536941265b69",
+      "review_bytes": 596802,
+      "review_sha256": "48512b353029be690c35ce129026fbf156d8c653473ae77abb58536941265b69",
+      "json_semantically_equal": null
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\traveler-art-2026-09-30\\VIDEO_DELIVERY_27.png",
+      "review": "BOW_PRACTICE.png",
+      "source_bytes": 601594,
+      "source_sha256": "6690729f9c55aeb8865e1dc926cc568b7403c8d448b934b1bf355948b7df7b82",
+      "review_bytes": 601594,
+      "review_sha256": "6690729f9c55aeb8865e1dc926cc568b7403c8d448b934b1bf355948b7df7b82",
+      "json_semantically_equal": null
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\traveler-art-2026-09-30\\earned-bow-journey.log",
+      "review": "EARNED_BOW_JOURNEY.log",
+      "source_bytes": 532,
+      "source_sha256": "59d5528055276521b536a01d0c441629c1d5863bc5ed3a0e44fc93bbbf99947e",
+      "review_bytes": 532,
+      "review_sha256": "59d5528055276521b536a01d0c441629c1d5863bc5ed3a0e44fc93bbbf99947e",
+      "json_semantically_equal": null
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\traveler-art-2026-09-30\\BROWSER_REPORT_ORIGINAL.json",
+      "review": "BROWSER_REPORT.json",
+      "source_bytes": 74541,
+      "source_sha256": "378c820c28fbaf086359d4ec17741c9364dcf908812f5729745a534864266c70",
+      "review_bytes": 71296,
+      "review_sha256": "ebb404e6e2afa0be88b37b01443024f32c0226daadaa08c48bcf2619a6adac45",
+      "json_semantically_equal": true
+    }
+  ]
+}

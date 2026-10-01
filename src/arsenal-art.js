@@ -19,13 +19,6 @@ function draw(out,sim,t){const A=G.RealmAdventure,s=sim.state.adventure,r=AR.run
  const add=(k,x,y,z,w,h,d,c,o={})=>out[k].push({p:[x,y,z],s:[w,h,d],c,...o}),box=(...a)=>add('box',...a);
  function ring(x,y,z,rad,col,yaw=0){for(let i=0;i<26;i++){const q=i*TAU/26;const xx=Math.sin(q)*rad,yy=Math.cos(q)*rad;box(x+xx*Math.cos(yaw),y+yy,z-xx*Math.sin(yaw),.12,.19,.07,col,{r:[0,yaw,-q],em:.15});}}
  if(sim.room==='range')for(const e of r.enemies){const col=e.id==='range-west'?0xc99165:e.id==='range-mid'?0x9acbd8:0xe2c875;for(const x of[-.42,.42])box(e.x+x,2.0,e.z,.12,1,.15,0x796953,{r:[0,0,x*.35]});box(e.x,2.5,e.z,.12,1.8,.16,0x8c785c);ring(e.x,2.9,e.z,.78,e.flash>s.elapsed?0xffeed1:col);ring(e.x,2.9,e.z+.04,.46,0xe5dbc0);ring(e.x,2.9,e.z+.08,.18,col);add('disc',e.x,2.9,e.z-.02,1.44,.08,1.44,0x7c6c55,{r:[Math.PI/2,0,0]});for(let j=0;j<(r.range.hits[e.id]||0);j++)add('octa',e.x-.17+j*.34,4.0,e.z,.18,.3,.14,0xf6d38a,{em:.8});if(e.id==='range-east')box(6,1.63,-5,5,.12,.18,0x90877a);}
- if(s.started&&AR.weapon(s).style==='bow'&&A.combatScene(sim)){
-  const yaw=p.yaw,hand={x:p.x+Math.cos(yaw)*.28+Math.sin(yaw)*.22,z:p.z-Math.sin(yaw)*.28+Math.cos(yaw)*.22};const pose=G.RealmCombat.pose(sim),pull=sim.state.settings.reducedMotion?0:pose.phase==='anticipate'?pose.progress:Math.max(0,1-(s.elapsed-(r.lastShot??-9))/.32),col=parseInt((A.GEAR[s.equipment.weapon]?.color||'#bca477').slice(1),16);
-  for(let i=0;i<10;i++){const q=-1.1+i*.244,dx=Math.cos(q)*.3,dz=Math.sin(q)*.66;box(hand.x+Math.sin(yaw)*dx,base+1.12+dz,hand.z+Math.cos(yaw)*dx,.09,.18,.09,col,{r:[0,yaw,q]});}
-  for(let i=0;i<G.RealmPursuit.stage(s,s.equipment.weapon);i++)box(hand.x,base+1.04+i*.14,hand.z,.18,.065,.18,i?0xece0b6:0xd39366,{em:.18});
-  if(G.RealmStarter.bonus(s,s.equipment.weapon))box(hand.x,base+.9,hand.z,.18,.12,.18,0x82beb0,{em:.35});
-  box(hand.x-Math.sin(yaw)*pull*.16,base+1.12,hand.z-Math.cos(yaw)*pull*.16,.025,1.22,.025,0xe6d5af);const gem=AR.activeGem(s);if(gem)add('octa',hand.x,base+1.12,hand.z,.14,.22,.14,gem.color,{em:.8});
- }
  for(const shot of r.arrows){const yaw=Math.atan2(shot.dx,shot.dz),y=base+1.25;box(shot.x,y,shot.z,.045,.045,.8,0xdac6a0,{r:[0,yaw,0],em:.2});add('octa',shot.x+shot.dx*.40,y,shot.z+shot.dz*.40,.13,.09,.24,shot.color,{r:[0,yaw,0],em:.7});for(let i=1;i<5;i++)box(shot.x-shot.dx*i*.23,y,shot.z-shot.dz*i*.23,.045,.045,.15,shot.special?0xaedbdf:0xf1d295,{r:[0,yaw,0],em:1-i*.1});}
 }
 G.RealmArsenalArt={court,draw};})(globalThis);
