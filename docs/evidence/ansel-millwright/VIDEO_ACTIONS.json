@@ -1,0 +1,119 @@
+[
+  {
+    "evaluate": "()=>{Realm.test.pause(false);Realm.test.setTime(16);Realm.test.quality('balanced');if(!/RTX 3080/.test(Realm.diagnostics.renderer||''))throw Error('RTX not confirmed');return {renderer:Realm.diagnostics.renderer,wood:Realm.state.sandbox.inventory.wood};}"
+  },
+  {
+    "click": "[data-rpg=\"camera\"][data-id=\"adventure\"]"
+  },
+  {
+    "key": "e",
+    "wait_ms": 600
+  },
+  {
+    "click": "[data-rpg=\"earth-confirm\"]"
+  },
+  {
+    "walk": [
+      0,
+      10
+    ]
+  },
+  {
+    "walk": [
+      7,
+      5
+    ]
+  },
+  {
+    "key": "e",
+    "wait_ms": 700
+  },
+  {
+    "click": "[data-rpg=\"rain-accept\"]"
+  },
+  {
+    "click": "#rpg-close"
+  },
+  {
+    "walk": [
+      6,
+      -3
+    ]
+  },
+  {
+    "key": "e"
+  },
+  {
+    "click": "[data-rpg=\"rain-step\"][data-id=\"mill-root\"]"
+  },
+  {
+    "click": "#rpg-close"
+  },
+  {
+    "walk": [
+      7,
+      -7
+    ]
+  },
+  {
+    "evaluate": "()=>{Realm.test.view({yaw:.95,elevation:.36,distance:7.2});Realm.test.render();return Realm.test.millGate().gate;}",
+    "wait_ms": 2200
+  },
+  {
+    "key": "v",
+    "wait_ms": 1400
+  },
+  {
+    "key": "v"
+  },
+  {
+    "key": "e"
+  },
+  {
+    "scroll": "[data-rain-task=\"mill-gate\"]",
+    "wait_ms": 2400
+  },
+  {
+    "click": "[data-rpg=\"rain-step\"][data-id=\"mill-gate\"]",
+    "wait_ms": 800
+  },
+  {
+    "click": "[data-rpg=\"rain-watch\"]",
+    "wait_ms": 2200
+  },
+  {
+    "key": "v",
+    "wait_ms": 2200
+  },
+  {
+    "key": "v",
+    "wait_ms": 1300
+  },
+  {
+    "walk": [
+      9.7,
+      -4.8
+    ]
+  },
+  {
+    "evaluate": "()=>{Realm.test.view({yaw:-1.2,elevation:.28,distance:5.5});Realm.test.render();return Realm.test.millwright().frame;}",
+    "wait_ms": 2600
+  },
+  {
+    "key": "v"
+  },
+  {
+    "evaluate": "()=>{Realm.test.view({yaw:-1.2,elevation:.78,zoom:.3});Realm.test.render();return Realm.diagnostics.camera;}",
+    "wait_ms": 2200
+  },
+  {
+    "key": "v"
+  },
+  {
+    "evaluate": "()=>{Realm.test.view({yaw:1.4,elevation:.28,distance:5.5});Realm.test.render();return Realm.test.millwright().frame;}",
+    "wait_ms": 1800
+  },
+  {
+    "evaluate": "()=>{const s=Realm.state;const g=Realm.test.millGate();if(!g.gate.repaired||s.sandbox.inventory.wood!==2||s.adventure.earthStory.claimed)throw Error('Unexpected repair/cost/payment');return {gate:g.gate,story:s.adventure.earthStory,wood:s.sandbox.inventory.wood};}"
+  }
+]

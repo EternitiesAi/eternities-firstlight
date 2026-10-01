@@ -140,3 +140,25 @@ static-eight material assertions alongside explicit gate-member coverage.
 Normal-RAF animation probes need separate storage and runtime-error listeners;
 submitted transforms are not framebuffer motion or GPU timing. Both views,
 all existing suites and exact-head fresh clone remain delivery requirements.
+
+
+## Dedicated millwright presentation
+
+Read `docs/art/ANSEL_RESULTS_2026-10-01.md` and the dated task. `millwright-art.js`
+owns Ansel's pure body/tool frame at his existing anchor. Earth art supplies
+simulation time, ground height and reduced motion; WorldArt clears the transient
+frame on scene rebuild. Keep palms and square in one matrix frame and connect
+limbs through full3D segment bases. Do not reuse player appearance, equipment,
+accepted-release epochs or stored quest data as NPC animation state.
+
+Every body/tool part excludes camera solids and actor cutaway. Preserve the 64
+instance budget and existing box/round/octa groups. A held measuring tool does
+not imply repair progress or contact with the distant sluice. Quest acceptance,
+cost, retry and payment retain their existing rule owners; no migration in art.
+
+Normal-time browser probes foreground their separate page, assert visibility and
+record hidden/pause/reduced state. Await actual normal RAF samples; a timeout or
+test-owned callback alone is not evidence that app.js rendered a new frame.
+Keep isolated pixel contribution, full-scene readability, actual video, GPU frame
+intervals and human recognition/comfort as distinct evidence. Both cameras and
+all existing suites plus exact-head fresh clone remain delivery requirements.

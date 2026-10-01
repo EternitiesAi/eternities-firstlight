@@ -1,3 +1,31 @@
+# Ansel millwright presentation delivered,2026-10-01
+
+Review branch `gameplay/ansel-millwright`, stacked on PR 25
+`gameplay/mill-gate-craft` at `4126edad7d65265e93389409520dae2d28c10d26`. Implementation
+`1864aed88703b28cb3149ffe525c29700512cf36`. Current delivery PR identifies the final pushed
+head, exact-head clean remote clone, hosted block and stable 8780 preview receipt.
+
+Ansel's apron/cap/boots and both-hand square replace only his generic body at
+the existing reachable anchor.53 parts, connected3D arms, grounded feet;
+simulation-time inspection respects pause/dialog/reduced motion. No schedule,
+quest/cost/payment/camera/save rule changes. World/key 9 and adventure 10 remain.
+
+Full local verifier:56 syntax,657 source tests,53 Python passes+1 existing
+Windows skip,24 journeys,1,486 browser assertions/18 suites, zero failures.
+Earth story 175/175; six new pure geometry tests. See
+[actual results](art/ANSEL_RESULTS_2026-10-01.md) and
+[35-second gameplay/receipts](evidence/ansel-millwright/README.md).
+Matched RTX samples: same source/fixture/renderer across 3×360 intervals/build,
+P 95 16.7–16.8 ms, worst 16.8, no>33.333 ms.28 extra instances,2,448 fewer triangles;
+no new texture/batch/pass. Short headless intervals are not monitor/FPS approval.
+
+The collaborating reviewer ran 54 focused source tests and inspected front/rear,
+isolated pixels and normal-time state. No new Dom playtest; art/feel acceptance
+stays pending. Main remains unmerged; no public deployment or personal-profile
+inspection. Heavy work stays on D; hosted billing changes are outside this task.
+
+Prior checkpoint retained:
+
 # Current checkpoint: a mill repair you can see working
 
 Updated 2026-10-01. `gameplay/mill-gate-craft` starts at PR24

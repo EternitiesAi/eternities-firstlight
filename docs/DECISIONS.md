@@ -178,3 +178,20 @@ path while remote review offers accepted walking. No camera preference or
 save version changes. Actual footage and matched RTX evidence remain distinct
 from pending founder approval. Exact-head clean clone and review PR remain
 delivery gates; no main merge/public deployment/paid-provider/billing action.
+
+## 2026-10-01: Ansel through a dedicated presentation owner
+
+Dom's continuation authorizes original bounded resident art on a stacked review
+branch from the current PR 25 head. Keep Ansel's exact reachable location and
+Earth-story interaction. A dedicated pure frame connects both hands to a
+carpenter's try square without using player palettes, equipment or combat epochs.
+Inspection avoids claiming contact with the distant sluice/work surface.
+Simulation time respects dialog/explicit pause; reduced motion keeps a neutral
+stance.53 existing-batch parts remain below 64; triangles drop 2,448 while instances
+rise 28. No texture, shader, render pass, NPC schedule or saved state is added.
+
+Failed test snapshots and timeout samples are retained; actual normal RAF and
+page visibility are explicit in the final probe. Geometry/pixel/source evidence,
+normal-time video, short GPU intervals and human taste remain separate. Save
+versions and once-only repair/payment rules remain unchanged. No automatic
+merge/deployment or account billing change.
