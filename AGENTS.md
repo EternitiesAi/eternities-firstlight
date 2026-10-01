@@ -121,3 +121,22 @@ The Engine owns the image pair and texture lifetime. Both images validate before
 Read `docs/art/TRAVELER_BROWSER_RESULTS_2026-09-30.md` and its task note. `traveler-art.js` owns pure distance-driven motion/pose and existing-batch body geometry; `traveler-equipment-art.js` projects canonical owned equipment onto that same joint frame. WorldArt owns transient motion and accepted release ordering. Reset on simulation/scene/restore discontinuity; never serialize animation or derive successful hits from pose. Existing adventure/arsenal art retains enemies, projectiles, hit effects and range scenery, without duplicate held weapons.
 
 Successful existing weapon-equip receipts delimit presentation epochs, including multiple commands before one frame. Preserve new accepted releases after equip, fence old releases before equip and same-frame re-equips, and respect scene/paused-command refusal. Read actual command ordering rather than requiring a render between inputs. A finite transform is not proof of live visibility; keep submitted matrix checks, isolated framebuffer probes, gameplay footage and human visual acceptance distinct. No combat rule, camera or save migration belongs in this art slice.
+
+
+## Crafted mill gate projection
+
+Read the 2026-10-01 mill task/results. `mill-gate-art.js` owns pure fixed frame
+and moving leaf geometry, projecting the existing saved `mill-gate` objective.
+Keep root/repair prerequisites, two-timber charge, once-only payment and
+navigation in their current rule owners. WorldArt's dynamic timber group exists
+only in Earth; local X follows vertical plank grain through positive-determinant
+matrices. Preserve map/fallback/shadow/reflection/cutaway ownership and exclude
+decorative joinery from camera solids. No new save/migration authority in art.
+
+Completed local inspection closes through RPGUI's ordinary pause/focus path;
+remote inspection offers real walking. Never force resume or camera preferences.
+The wheel uses simulation time and respects reduced motion. Keep original
+static-eight material assertions alongside explicit gate-member coverage.
+Normal-RAF animation probes need separate storage and runtime-error listeners;
+submitted transforms are not framebuffer motion or GPU timing. Both views,
+all existing suites and exact-head fresh clone remain delivery requirements.

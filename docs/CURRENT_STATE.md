@@ -1,3 +1,37 @@
+# Current checkpoint: a mill repair you can see working
+
+Updated 2026-10-01. `gameplay/mill-gate-craft` starts at PR24
+`646d56f3a621e14a8cd3b69fe614bc66e96e4807`, stacked against
+`gameplay/traveler-silhouette-motion`. Worktree remains on D at
+`D:/07-GAMES/Firstlight/authoring/texture-intake-review`.
+Read [task](development/MILL_GATE_TASK_2026-10-01.md),
+[actual results](art/MILL_GATE_RESULTS_2026-10-01.md) and
+[evidence](evidence/mill-gate/README.md). The implementation PR carries the
+final exact pushed head, fresh clone and hosted status.
+
+Ansel's existing sluice gate now has crafted timber joinery and a readable
+jammed/repaired leaf. Fenna's panel compares the two states, recognizes the
+already-spent two timber and offers a local return to the working mill view.
+Remote review walks back. The wheel respects explicit pause and reduced motion.
+Original two-timber repair/payment rules, ground, both cameras and all saved
+systems retain their owners. World/key9, adventure10; no migration.
+
+To play: take Oren's kit, explicitly enter Hearthwater at the lake marker,
+accept Fenna's Road After Rain at the mill-road fork, clear the lodged root
+and choose the two-timber gate repair. Reopen the completed task and return
+to the mill view. V swaps views. The existing work remains after reload.
+An already-repaired character sees the completed work without another charge.
+
+Local full gate passed 55 syntax, 651 Node, 53 Python passes/1 existing Windows
+symlink skip, 24 journeys and 1,468 browser assertions across18 suites.
+Actual 27.40s normal-time gameplay and serialized matched RTX measurements
+are committed evidence, separate from pending Dom beauty/feel acceptance.
+Heavy outputs stay on D. No main merge, public deployment or billing change.
+The existing owned port8780 helper served PR24 during isolated verification;
+the final delivery receipt states the exact preview actually served.
+
+Prior checkpoints retained as history:
+
 # Current checkpoint: a connected traveller in both views
 
 Updated 2026-10-01. Branch `gameplay/traveler-silhouette-motion` starts at

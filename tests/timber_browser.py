@@ -51,7 +51,7 @@ try:
         enter(); walk(0, 10); walk(7, 2); walk(8.9, -7.9)
         ev("()=>{Realm.test.setTime(16);Realm.test.quality('balanced');Realm.test.view({yaw:.95,elevation:.32,distance:8});Realm.test.render()}")
         totals = ev('()=>Realm.diagnostics.metrics'); report['earth_metrics'] = totals
-        check('eight existing mill pieces use one instanced surface group', totals['texturedInstances'] == 8 and 1 <= totals['texturedDrawCalls'] <= 2)
+        check('original eight mill pieces plus eight gate parts use static and dynamic groups', totals['texturedInstances'] == 16 and 2 <= totals['texturedDrawCalls'] <= 4 and ev("()=>Realm.test.millGate().parts.filter(i=>i.kind==='timber-panel').length") == 8)
         saved = ev('()=>Realm.state')
         for mode in ['third', 'diorama']:
             if (ev('()=>Realm.diagnostics.camera.projection') == 'orthographic') != (mode == 'diorama'):
@@ -63,7 +63,7 @@ try:
             check(mode + ' fallback preserves draw geometry', all(off[k] == on[k] for k in ['instances', 'triangles', 'drawCalls']) and off['texturedDrawCalls'] == 0)
         check('material toggle cannot mutate adventure, creations or choices', all(ev('()=>Realm.state')[k] == saved[k] for k in ['adventure', 'notes', 'score', 'retreat', 'sandbox']))
         ev("()=>{Realm.test.quality('low');Realm.test.render()}")
-        check('low mode keeps valid surface sampling', ev('()=>Realm.diagnostics.metrics.texturedInstances') == 8 and ev('()=>document.querySelector("#world").getContext("webgl2").getError()') == 0)
+        check('low mode keeps valid surface sampling', ev('()=>Realm.diagnostics.metrics.texturedInstances') == 16 and ev('()=>document.querySelector("#world").getContext("webgl2").getError()') == 0)
         ev('()=>{Realm.test.save();Realm.test.render()}'); adventure = ev('()=>Realm.state.adventure')
         for _ in range(3):
             page.locator('#earth-home').click(); render(); enter()

@@ -1,0 +1,26 @@
+{
+  "html_sha256": "19dae01e07854d3bef5cef07ba3efacad4d77a81fa9a023938803cda3a236c52",
+  "source_fixture": "docs\\evidence\\road-after-rain\\fresh-bow-quarry_SOURCE.json",
+  "source_fixture_sha256": "25b8bab3efbf3cdf97b8cc8e8d93171db73ed2b18ae40ca2bf97fd37aa928cb9",
+  "browser_version": "143.0.7499.4",
+  "method": "Automated accepted commands and UI on normal real-time RAF; command-earned checkpoint, no gameplay state grants; video is not an FPS measurement.",
+  "completed_actions": 24,
+  "video_duration": "00:00:27.40",
+  "video_bytes": 3813641,
+  "video_sha256": "71edd7a6fba8e12b927005ddd33837320554355a319dc3dcaee959c4e5879492",
+  "encode_exit": 0,
+  "full_decode_exit": 0,
+  "browser_errors": [],
+  "final_quest": {
+    "version": 1,
+    "accepted": true,
+    "steps": [
+      "mill-root",
+      "mill-gate"
+    ],
+    "dispatch": null,
+    "arrived": false,
+    "claimed": false
+  },
+  "final_wood": 2
+}

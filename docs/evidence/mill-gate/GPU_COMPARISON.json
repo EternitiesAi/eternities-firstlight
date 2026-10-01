@@ -1,0 +1,121 @@
+{
+  "base": "646d56f3a621e14a8cd3b69fe614bc66e96e4807",
+  "source_commit": "2bc753f70cff50738675c217a9bddb4c871fcd27",
+  "before_html": "19ce36ab88a87d24114c9d11dd4190c7aaaf0d8c75ae96694705822b22a110b9",
+  "after_html": "19dae01e07854d3bef5cef07ba3efacad4d77a81fa9a023938803cda3a236c52",
+  "hardware": "NVIDIA GeForce RTX 3080, 610.74, 10240",
+  "browser": "143.0.7499.4",
+  "webgl": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "vendor": "Google Inc. (NVIDIA)",
+    "drawing_buffer": {
+      "width": 1920,
+      "height": 1080
+    },
+    "device_pixel_ratio": 1,
+    "mode": "webgl2"
+  },
+  "samples_per_build": 1080,
+  "cases": [
+    {
+      "scene": "Jammed gate third person",
+      "before_ms": {
+        "p50": 16.69999999999891,
+        "p90": 16.700000000000728,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000109,
+        "max": 16.80000000000291
+      },
+      "after_ms": {
+        "p50": 16.69999999999891,
+        "p90": 16.700000000000728,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000109,
+        "max": 16.80000000000291
+      },
+      "before_over33": 0,
+      "after_over33": 0,
+      "before_geometry": {
+        "instances": 2662,
+        "triangles": 111202,
+        "drawCalls": 31,
+        "texturedInstances": 8,
+        "texturedDrawCalls": 2
+      },
+      "after_geometry": {
+        "instances": 2704,
+        "triangles": 114170,
+        "drawCalls": 33,
+        "texturedInstances": 16,
+        "texturedDrawCalls": 4
+      }
+    },
+    {
+      "scene": "Repaired gate third person",
+      "before_ms": {
+        "p50": 16.69999999999709,
+        "p90": 16.700000000000728,
+        "p95": 16.799999999999272,
+        "p99": 16.799999999999272,
+        "max": 16.80000000000291
+      },
+      "after_ms": {
+        "p50": 16.700000000000728,
+        "p90": 16.700000000000728,
+        "p95": 16.700000000000728,
+        "p99": 16.799999999999272,
+        "max": 16.80000000000291
+      },
+      "before_over33": 0,
+      "after_over33": 0,
+      "before_geometry": {
+        "instances": 2663,
+        "triangles": 111214,
+        "drawCalls": 45,
+        "texturedInstances": 8,
+        "texturedDrawCalls": 2
+      },
+      "after_geometry": {
+        "instances": 2706,
+        "triangles": 114810,
+        "drawCalls": 33,
+        "texturedInstances": 16,
+        "texturedDrawCalls": 4
+      }
+    },
+    {
+      "scene": "Repaired gate diorama",
+      "before_ms": {
+        "p50": 16.69999999999709,
+        "p90": 16.700000000004366,
+        "p95": 16.700000000004366,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291
+      },
+      "after_ms": {
+        "p50": 16.69999999999709,
+        "p90": 16.700000000004366,
+        "p95": 16.799999999995634,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291
+      },
+      "before_over33": 0,
+      "after_over33": 0,
+      "before_geometry": {
+        "instances": 2663,
+        "triangles": 111214,
+        "drawCalls": 31,
+        "texturedInstances": 8,
+        "texturedDrawCalls": 2
+      },
+      "after_geometry": {
+        "instances": 2706,
+        "triangles": 114810,
+        "drawCalls": 33,
+        "texturedInstances": 16,
+        "texturedDrawCalls": 4
+      }
+    }
+  ],
+  "limits": "Normal RAF intervals in isolated headless Chromium, device scale 1; 1.5-second setup warmup excluded. No video capture or accelerated ticks during sampling. Browser-frame intervals are not GPU render time, monitor presentation timing or human qualification."
+}
