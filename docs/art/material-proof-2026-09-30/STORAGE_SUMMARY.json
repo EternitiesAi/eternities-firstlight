@@ -1,0 +1,74 @@
+{
+  "scope": "42 exact audited Firstlight standalone clone/media leaves",
+  "destinationRoot": "D:\\07-GAMES\\Firstlight\\firstlight-artifacts",
+  "sourceCompatibilityRoot": "C:\\dev\\firstlight-artifacts",
+  "manifestPath": "D:\\07-GAMES\\Firstlight\\storage-receipts\\migration-42-20260930\\manifest-set.json",
+  "manifestSHA256": "2e820e9725f2067404cd709db29bc8b0d890bc502d7402e9e23c7c22b11c05bf",
+  "clones": 19,
+  "mediaDirectories": 23,
+  "files": 9352.0,
+  "directories": 1152.0,
+  "fileBytes": 2857406525,
+  "status": "all42 verified with C junctions",
+  "retention": "23 intact media originals;19 clone originals accounted as two fragments each; full verified recovery copies are authoritative",
+  "excluded": [
+    "all 19 linked artifact worktrees",
+    "living-world-2026-09-30/gameplay",
+    "bootstrap-2026-09-12/browser-env",
+    "C:/dev/eternities-firstlight",
+    "personal browser data",
+    "ZIP files"
+  ],
+  "protectedGameplayIsJunction": false,
+  "protectedBrowserEnvIsJunction": false,
+  "protectedGameplayGitReference": "gitdir: C:/dev/eternities-firstlight/.git/worktrees/gameplay5",
+  "preview": {
+    "url": "http://127.0.0.1:8780/",
+    "bytes": 2054945,
+    "sha256": "adc2137a2635a5302276a021cfa8f33781f8ad9559eb5b4c2275fc59fafcd0c8",
+    "pid": 24708
+  },
+  "initialFailureReport": "D:\\07-GAMES\\Firstlight\\storage-receipts\\migration-42-20260930\\migration-report.json",
+  "recoveredReport": "D:\\07-GAMES\\Firstlight\\storage-receipts\\migration-42-20260930\\migration-report-recovered.json",
+  "replayReceipt": "D:\\07-GAMES\\Firstlight\\storage-receipts\\migration-42-20260930\\replay-20260930-205027-dd48380a.json",
+  "replayMode": "verified-no-op",
+  "replayNewCopies": 0,
+  "replayMoves": 0,
+  "beforeLogicalPhysicalScope": 4612077297,
+  "afterLogicalPhysicalScope": 1754670772,
+  "driveFreeBefore": [
+    {
+      "DriveLetter": "C",
+      "FileSystem": "NTFS",
+      "Size": 510921797632,
+      "SizeRemaining": 21435076608,
+      "HealthStatus": "Healthy"
+    },
+    {
+      "DriveLetter": "D",
+      "FileSystem": "NTFS",
+      "Size": 2000347459584,
+      "SizeRemaining": 296687968256,
+      "HealthStatus": "Healthy"
+    }
+  ],
+  "driveFreeAfter": [
+    {
+      "DriveLetter": "C",
+      "FileSystem": "NTFS",
+      "Size": 510921797632,
+      "SizeRemaining": 24167804928,
+      "HealthStatus": "Healthy"
+    },
+    {
+      "DriveLetter": "D",
+      "FileSystem": "NTFS",
+      "Size": 2000347459584,
+      "SizeRemaining": 290874376192,
+      "HealthStatus": "Healthy"
+    }
+  ],
+  "observedCFreeIncrease": 2732728320,
+  "otherMachineActivityMayAffectFreeSpace": true,
+  "validationBoundary": "storage validation only; no source change or new full-suite claim"
+}

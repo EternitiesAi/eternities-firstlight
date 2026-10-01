@@ -118,3 +118,8 @@ Pending human play, not an acceptance result. Try one fresh blade/bow delivery s
 Ask: **Did you know where to go? Did the new buildings and orchard make the place feel more alive? Did the evening feel worth coming back for?** Try both cameras at the shelter, table and mill. Tell us if the scenery hides a route, the camera feels cramped, or a musical choice reads like a story obligation.
 
 Concept paintings are targets, not renders of the current world. The prototype still has simple character animation/materials and only bounded Earth/Cosmos openings. Art admiration and automated screenshots do not settle comfort, beauty, pacing or fun. Separate normal-time GPU video from accelerated rule/UI coverage.
+
+
+## 2026-09-30: material study, human acceptance still pending
+
+The new CC0 library and Blender house-corner study are authoring evidence. They do not show the current browser game using texture maps, and no new Dom playtest was observed. Judge grain/roof scale, warmth and surface readability from the study; judge camera comfort, navigation and playable beauty only after a browser integration is available. Existing gathering, combat/equipment and discovery questions remain pending.

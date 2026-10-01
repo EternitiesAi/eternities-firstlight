@@ -1,3 +1,7 @@
+# Material intake completed; browser integration remains next
+
+The five-material 1k CC0 library is verified at `D:/07-GAMES/Firstlight/assets/sources/polyhaven`. Read [material library](art/MATERIAL_LIBRARY.md) and its executed results. Full maps, Blender files, caches and new captures stay on D. The existing renderer still needs one measured timber-panel UV/material proof before adopting these surfaces in the game. Preserve authored geometry, instancing, offline assembly, both cameras, low quality, reduced motion and save history.
+
 # Next playable acceptance: a world to belong to
 
 Current branch `gameplay/living-world-art-direction`, stacked on PR20 `gameplay/a-table-after-the-rain` at 7434c950b8801a03217af2d6ad82e4caffc0c033. Fetch origin/review comments before editing and preserve concurrent changes. Read CURRENT_STATE and the 2026-09-30 task/results/art direction.
