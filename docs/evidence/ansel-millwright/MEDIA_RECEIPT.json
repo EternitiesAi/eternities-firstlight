@@ -1,0 +1,29 @@
+{
+  "duration_seconds": 35.08,
+  "resolution": [
+    1280,
+    720
+  ],
+  "silent": true,
+  "mp4_sha256": "bcb3d1d9a29d16c8b48fd470641e28f828f88c250e946e29e5072b9985f4d551",
+  "html_sha256": "cea685600e29dfffd6ac68f18e6e1364ff89bc57adba98382792fdbb6b6abe68",
+  "fixture_sha256": "25b8bab3efbf3cdf97b8cc8e8d93171db73ed2b18ae40ca2bf97fd37aa928cb9",
+  "method": "Automated accepted commands and UI on normal real-time RAF; command-earned checkpoint, no gameplay state grants; video is not an FPS measurement.",
+  "browser_version": "143.0.7499.4",
+  "completed_actions": 30,
+  "browser_errors": [],
+  "full_decode_exit_code": 0,
+  "final_story": {
+    "version": 1,
+    "accepted": true,
+    "steps": [
+      "mill-root",
+      "mill-gate"
+    ],
+    "dispatch": null,
+    "arrived": false,
+    "claimed": false
+  },
+  "final_wood": 2,
+  "encoded_frame_rate_is_not_game_fps": true
+}

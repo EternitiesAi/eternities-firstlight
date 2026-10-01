@@ -1,3 +1,20 @@
+# Recognizable millwright,2026-10-01
+
+No new Dom playtest was observed. Ansel's clothes, cap/beard and carpenter's
+square are original prototype art choices, not final founder-approved designs.
+Visit with a fresh and returning character, view front/side and switch V.
+Is Ansel distinct from the traveller? Are his apron and held tool clear in both
+views? Does this place feel more occupied? Prior combat/reward, discovery,
+gathering and comfort questions remain pending.
+
+Source tests and actual submitted geometry/framebuffers support connected arms,
+grips, floor, reachable anchor and rendering. Normal RAF with explicit visible
+page supports pose advance/pause/reduced motion. Actual 35.08-second gameplay
+and matched headless RTX samples establish their labelled technical scopes;
+they do not establish enjoyment, monitor FPS or final artistic acceptance.
+
+Prior checkpoint retained:
+
 # Mill joinery and remembered repair, 2026-10-01
 
 No new Dom playtest was observed. The gate is original prototype art; human

@@ -1,3 +1,31 @@
+# Ansel proof delivered; next is a coherent local cast
+
+Read `docs/art/ANSEL_RESULTS_2026-10-01.md` and current
+`gameplay/ansel-millwright` review. Fetch newer heads/comments before branching.
+Dom's continuation authorized a bounded recognizable millwright beside the
+repaired gate; the art remains an original prototype choice awaiting taste.
+
+Visit Ansel in one fresh kit and one returning character, switch V, and inspect
+front/side framing. Is he distinct from the traveller? Is the apron/held tool
+clear in both views? Does this spot feel more occupied? Keep the older ordinary
+combat/reward, discovery, gathering and camera comfort questions pending.
+
+The next bounded art candidate is Fenna's drover silhouette, connected to her
+existing load and the same accepted dispatch/arrival state. Preserve her current
+locations and interactions; no new schedule, escort simulation, progression,
+reward or power is required to refine presentation. Prefer a coherent starter
+cast over unrelated decorative scenes. A larger Blender mesh/skin pipeline and
+new material families still need separate measured import proof.
+
+World/key 9, adventure 10, storedXP, equipment/sockets/fittings, independent
+worlds, companion, housing/crafting and music/exports stay protected. Both
+cameras and current combat controls remain. Heavy work stays on D. Preserve
+stable 8780 save origin and verify owned-process/build identity before preview
+refresh. No automatic main merge, public deployment, billing change, paid
+provider or personal-profile access.
+
+Prior checkpoint retained:
+
 # Mill repair delivered; next is visual acceptance and a named resident
 
 Read `docs/art/MILL_GATE_RESULTS_2026-10-01.md` and the current stacked
