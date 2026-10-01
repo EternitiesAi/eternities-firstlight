@@ -37,7 +37,7 @@ scalar source, maximum error zero steps in 8-bit values.
 receipt hashes and size bounds, and refuses unresolved placeholders or external
 resource markup. The generated HTML pair is identical **2,191,489 bytes**,
 SHA256 `5d60dc44290caef667ab30e2ddb715cf951406da21853fc1c47d7c10c7102131`.
-Increase over the baseline is 136,544 bytes per standalone output. Normal game
+Increase over the baseline is 136,544 bytes per standalone output. Windows JSON evidence is normalized to LF in Git under the existing attributes; [representation receipts](../evidence/timber-material/RECEIPT_REPRESENTATIONS.json) distinguish retained original bytes from review-copy hashes, with identical JSON values. Normal game
 build/play needs no Blender or third-party Python package.
 
 ## Ownership and failure behavior
