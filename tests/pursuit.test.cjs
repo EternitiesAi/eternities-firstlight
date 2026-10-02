@@ -46,6 +46,65 @@ test('guide projects real craft sources and honest comparisons for an unowned we
  const c=H().compare(a,'copper_bow');assert.equal(c.current.attack,16);assert.equal(c.next.attack,21);assert.equal(c.afterWeapon.style,'bow');assert.equal(c.afterWeapon.cooldown,.75);assert.equal(c.afterWeapon.stamina,6);
  assert.equal(H().catalogue(a).find(q=>q.id==='dawn_edge').pinnable,false);
 });
+
+test('next-step preview resolves the Ashwood prerequisite separately from the longbow target',()=>{
+ const s=kit(),a=s.state.adventure,before=frozen(s),q=H().nextStep(a,'copper_bow');
+ assert.equal(q.weapon,'trail_bow');assert.equal(q.prerequisite,true);assert.equal(q.recipe.id,'craft:trail_bow');
+ assert.deepEqual(q.recipe.materials,{wood:6,fiber:4,stone:2});assert.equal(q.recipe.ore,0);assert.equal(q.recipe.coins,0);
+ assert.equal(q.current.attack,16);assert.equal(q.after.attack,13);assert.equal(H().compare(a,'copper_bow').selected.attack,21);
+ assert.deepEqual(q.beforeWeapon,AR.weapon(a));assert.equal(q.afterWeapon.style,'bow');assert.equal(q.afterWeapon.cooldown,.75);assert.equal(q.afterWeapon.reach,11);assert.equal(q.afterWeapon.stamina,6);
+ assert.equal(q.after.defense,1);assert.equal(q.after.maxHP,100);assert.equal(q.socket,null);assert.equal(frozen(s),before);
+});
+
+test('each prerequisite and target preview matches the actual craft then deliberate equip',()=>{
+ const s=kit(),a=s.state.adventure,inv=s.state.sandbox.inventory;inv.wood=6;inv.fiber=4;inv.stone=2;inv.plank=2;a.ore=4;a.coins=6;
+ assert.ok(act(s,'pursuit-pin',{weapon:'copper_bow'}).ok);
+ for(const weapon of ['trail_bow','copper_bow']){
+  const before=frozen(s),q=H().nextStep(a,'copper_bow'),equipped=a.equipment.weapon;assert.equal(q.weapon,weapon);assert.equal(frozen(s),before);
+  assert.ok(act(s,q.recipe.type,q.recipe.payload).ok);assert.equal(a.equipment.weapon,equipped);assert.equal(a.pursuit.pinned,'copper_bow');
+  assert.ok(act(s,'equip',{id:q.weapon}).ok);assert.deepEqual(A.stats(a),q.after);assert.deepEqual(AR.weapon(a),q.afterWeapon);
+ }
+ assert.equal(a.owned.includes('trail_bow'),true);assert.equal(a.owned.includes('trail_blade'),true);assert.equal(A.stats(a).attack,21);
+});
+
+test('next-step forge and both finite fittings match accepted commands without spending during preview',()=>{
+ const s=kit(),a=s.state.adventure;a.ore=13;a.coins=16;s.state.sandbox.inventory.fiber=6;
+ for(const type of ['forge','pursuit-fit','pursuit-fit']){
+  const before=frozen(s),q=H().nextStep(a,'copper_blade');assert.equal(q.recipe.type,type);assert.equal(q.weapon,'copper_blade');assert.equal(q.prerequisite,false);assert.equal(frozen(s),before);
+  const old=a.equipment.weapon;assert.ok(act(s,q.recipe.type,q.recipe.payload).ok);assert.equal(a.equipment.weapon,old);assert.ok(act(s,'equip',{id:q.weapon}).ok);
+  assert.deepEqual(A.stats(a),q.after);assert.deepEqual(AR.weapon(a),q.afterWeapon);
+ }
+ assert.equal(A.stats(a).attack,27);assert.equal(H().nextStep(a,'copper_blade'),null);assert.equal(a.ore,0);assert.equal(a.coins,0);assert.equal(s.state.sandbox.inventory.fiber,0);
+});
+
+test('unequipped bow fitting preview keeps distinct sockets, health and Oren temper',()=>{
+ const s=kit(),a=s.state.adventure;a.owned.push('trail_bow');a.arsenal.sockets.trail_blade='moonstone';a.arsenal.sockets.trail_bow='ruby';
+ a.starter.accepted=true;a.starter.bundles=Q.BUNDLES.map(b=>b.id);a.defeated.push('river-old-bristle');a.starter.reward={choice:'temper',weapon:'trail_bow'};a.ore=3;a.coins=4;s.state.sandbox.inventory.fiber=2;
+ const before=frozen(s),q=H().nextStep(a,'trail_bow');assert.equal(q.currentSocket,'moonstone');assert.equal(q.socket,'ruby');assert.equal(q.current.maxHP,118);assert.equal(q.after.maxHP,100);assert.equal(q.after.attack,21);assert.equal(frozen(s),before);
+ assert.ok(act(s,q.recipe.type,q.recipe.payload).ok);assert.equal(a.equipment.weapon,'trail_blade');assert.equal(A.stats(a).maxHP,118);
+ assert.ok(act(s,'equip',{id:q.weapon}).ok);assert.deepEqual(A.stats(a),q.after);assert.deepEqual(a.arsenal.sockets,{trail_blade:'moonstone',trail_bow:'ruby'});
+});
+
+test('finished, uncraftable and invalid project IDs have no invented next step',()=>{
+ const s=kit(),a=s.state.adventure;a.pursuit.fittings.trail_blade=2;const before=frozen(s);
+ for(const id of ['trail_blade','dawn_edge','oren_reedbow','travel_coat','__proto__','toString','missing',null])assert.equal(H().nextStep(a,id),null,String(id));
+ assert.equal(frozen(s),before);
+});
+
+test('repeated immutable next-step previews keep XP, all history, cost, vitals and selected socket unchanged',()=>{
+ const s=paid(),a=s.state.adventure;a.arsenal.sockets.trail_blade='moonstone';const raw=structuredClone(a);
+ function freeze(o){if(o&&typeof o==='object'){Object.values(o).forEach(freeze);Object.freeze(o);}return o;}freeze(raw);
+ const before=JSON.stringify(raw);for(let i=0;i<100;i++){const q=H().nextStep(raw,'copper_bow');assert.equal(q.after.maxHP,100);assert.equal(q.current.maxHP,118);assert.equal(q.socket,null);}
+ assert.equal(JSON.stringify(raw),before);
+});
+
+test('Oren comparisons explicitly use current XP and do not project or award the separate XP reward',()=>{
+ require('../src/starter-ui.js');const compare=globalThis.RealmStarterUI.StarterUI.prototype.compare;
+ for(const xp of [0,29,30,79,80,149,150,259,260,9990,9999]){
+  const s=kit(),a=s.state.adventure;a.xp=xp;const before=frozen(s),html=compare.call({a},'oren_sunblade','oren_sunblade');
+  assert.match(html,/at your current XP/);assert.match(html,/separate 25 XP reward may also raise your level/);assert.equal(frozen(s),before);
+ }
+});
 test('survey cannot be accepted remotely or before kit, and failed start is atomic',()=>{
  for(const s of [new C.Simulation(),kit()]){s.state.player={x:0,z:3,yaw:0};const before=frozen(s);assert.equal(act(s,'pursuit-start',{after:0}).ok,false);assert.equal(frozen(s),before);}
  const s=kit();for(const after of [undefined,-1,1,.1,'0']){const before=frozen(s);assert.equal(act(s,'pursuit-start',{after}).ok,false);assert.equal(frozen(s),before);}

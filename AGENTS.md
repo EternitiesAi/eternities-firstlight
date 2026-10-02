@@ -235,3 +235,21 @@ adds combat_cue_browser; all older gates and fresh pushed-head clone remain.
 World/key9/adventure10 unchanged. Dom approved the bridge appearance and stated
 future open-world/massive-water ambition; that is direction, not implemented scale
 or a combat/comfort playtest. Saves, cameras and review/deployment boundaries stay.
+
+## Honest equipment-step projection
+
+Read the 2026-10-02 equipment-step task/results. `pursuit.nextStep` projects the
+actual recipe result on a cloned adventure, separately from the selected project
+in `compare`. Forge, prerequisite bow craft and finite fittings use their real
+result identity/stage and canonical stats/weapon/socket. Presentation never spends,
+equips, transfers gems, changes XP or invents a third fitting. Keep prerequisite
+ownership and the pinned final goal distinct. Owned equipped fittings apply on
+explicit confirmation; unequipped fitting/crafting retains the current loadout.
+
+Oren equipment comparisons explicitly use current XP; the separate once-only
+25 XP reward can change base stats and is not included in those tables. No reward,
+level curve, save version or migration changes. Extend the existing pursuit/starter
+browser gates and command-earned journeys; retain every earlier suite and exact
+pushed-head fresh clone. Actual UI/media and human legibility/usefulness remain
+separate. Both cameras, personal saves, stable preview guard, heavy-D storage and
+no automatic main merge/deployment remain protected.

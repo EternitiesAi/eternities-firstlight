@@ -45,6 +45,16 @@ function compare(a,id){
  if(a.owned.includes(id)&&stage(a,id)<2)next.attack+=2;
  return{current:A.stats(a),selected,next,beforeWeapon:AR.weapon(a),afterWeapon:AR.weapon(copy),socket:a.arsenal.sockets[id]||null,step};
 }
+function nextStep(a,id){
+ const q=recipe(a,id);if(!q)return null;
+ const result=q.type==='forge'?'copper_blade':q.type==='arsenal-craft'?q.payload.id:q.type==='pursuit-fit'?q.payload.weapon:null;
+ if(!weapon(result))return null;
+ const A=G.RealmAdventure,AR=G.RealmArsenal,copy=JSON.parse(JSON.stringify(a));
+ if(q.type==='pursuit-fit')copy.pursuit.fittings[result]=q.payload.step;
+ else if(!copy.owned.includes(result))copy.owned.push(result);
+ copy.equipment.weapon=result;
+ return{recipe:q,weapon:result,prerequisite:result!==id,current:A.stats(a),after:A.stats(copy),beforeWeapon:AR.weapon(a),afterWeapon:AR.weapon(copy),currentSocket:a.arsenal.sockets[a.equipment.weapon]||null,socket:copy.arsenal.sockets[result]||null};
+}
 function complete(a){const r=a.pursuit?.active;return !!r&&ENEMIES.every(e=>r.defeated.includes(e.objective))&&SAMPLES.every(s=>r.samples.includes(s.id));}
 function validate(raw,a){
  if(raw===undefined)return fresh();
@@ -110,6 +120,6 @@ function handle(sim,type,p={}){
  default:return fail('Unknown equipment project command.');
  }
 }
-const api={VERSION,CONTRACT,TERMS,REWARD,ENEMIES,SAMPLES,FITTINGS,fresh,stage,bonus,source,catalogue,recipe,compare,complete,validate,enemies,points,defeat,handle};
+const api={VERSION,CONTRACT,TERMS,REWARD,ENEMIES,SAMPLES,FITTINGS,fresh,stage,bonus,source,catalogue,recipe,compare,nextStep,complete,validate,enemies,points,defeat,handle};
 G.RealmPursuit=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

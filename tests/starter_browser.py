@@ -40,6 +40,7 @@ try:
         walk(11,9);key('e');check('Initial kit collected through E',ev('Realm.state.adventure.started'))
         key('e');check('Oren offers explicit outing acceptance',page.locator('[data-rpg="starter-accept"]').count()==1)
         check('Reward comparisons are visible before acceptance',page.locator('.starter-reward').count()==3 and page.locator('.starter-compare').count()==3)
+        check('Every Oren reward comparison declares current-XP equipment scope',all('at your current XP' in s for s in page.locator('.starter-compare caption').all_text_contents()) and page.locator('.starter-xp-preview').count()==3)
         check('Exact route and objective counts are disclosed','three' in page.locator('#rpg-content').inner_text().lower() and 'Old Bristle' in page.locator('#rpg-content').inner_text())
         check('World pauses for reward review',ev('Realm.diagnostics.adventure.paused'))
         page.locator('[data-rpg="starter-accept"]').click();render();check('Acceptance uses persistent quest state',ev('Realm.state.adventure.starter.accepted'))

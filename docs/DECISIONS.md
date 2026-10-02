@@ -1,3 +1,25 @@
+# Equipment target and real next recipe, 2026-10-02
+
+- Preserve the long-term project comparison and add a pure canonical next-step
+  projection from the actual recipe. Resolve prerequisite/result identity before
+  stats; clone-local fitting stage/ownership never writes live state or costs.
+- Show next-step outcome prominently; keep a distinct expandable target only
+  when the result is a different prerequisite. Three-column tables retain attack,
+  guard, health, cooldown, reach, stamina and own socket at current XP. Lower
+  attack is an honest tradeoff, with an actually available owned-fitting option.
+- Keep both finite +2 fittings, Oren temper, socket identity, explicit equip and
+  atomic accepted command authority. Label have/required quantities and immediate
+  effect when an equipped weapon is deliberately fitted.
+- Label Oren comparisons as current-XP equipment and exclude its separate25XP
+  explicitly. Do not change reward, curve/cap or stored XP to repair a preview.
+- Keep pre-legend full verification separate from final-source rendered evidence
+  and exact-final-head remote proof. Source review, GPU actual footage, software
+  layout probes and human usefulness/readability remain different evidence.
+- No save migration, renderer change, main merge, deployment, personal data,
+  billing/paid pipeline or bypass of the old preview approval guard.
+
+Prior checkpoint retained:
+
 # Combat-opening projection and bridge scale direction,2026-10-01
 
 - Dom approved bridge appearance and described a future true open world/bridge
