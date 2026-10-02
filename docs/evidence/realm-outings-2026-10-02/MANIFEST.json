@@ -1,5 +1,5 @@
 {
-  "html_sha256": "8ad7e3f020eb93b79b2d812e51a86248780c54b28593face9a115412f7e7b5bf",
+  "html_sha256": "989d1b74c29de735ccf0a557cc1d4264f4730539dc4a9365424ce9b70c7df8a8",
   "policy": "Portable bytes; excludes this manifest itself. Text is LF; exact filming script .snapshot byte archives are binary. Original-heavy provenance hashes inside reports remain separate.",
   "files": [
     {
@@ -46,6 +46,31 @@
       "path": "ADDENDUM_SOUTH.md",
       "sha256": "25ac0db65556abaf709a0df4254f109f495190df6edc0cda84bcc74bd6644da1",
       "bytes": 4675
+    },
+    {
+      "path": "atlantis-chart-corrected-bellglass-terms.png",
+      "sha256": "2f68bb3866eafeaa3fa90f1f4eac3589fc239927c7beb2db5b164f6ece5f6dd2",
+      "bytes": 387100
+    },
+    {
+      "path": "atlantis-chart-corrected-depth-chart-diorama.png",
+      "sha256": "c56a34c04d0b16628ea8e9c792a6452eff80f9795e29b4b6b8b8426f6ba62bc8",
+      "bytes": 546796
+    },
+    {
+      "path": "atlantis-chart-corrected-lower-masonry-third.png",
+      "sha256": "50dda6e8f5e59f4342cf29f7fbbd41a96ff8f0bbb9405df605f59e86abf4617d",
+      "bytes": 307909
+    },
+    {
+      "path": "atlantis-chart-corrected-RTX.json",
+      "sha256": "fd105705dbda1bffb92332e86fd94ef842623a718b51d11bd61406d4154fb8f3",
+      "bytes": 108463
+    },
+    {
+      "path": "atlantis-chart-corrected.mp4",
+      "sha256": "aee3e1aea3108c971264454ef2d697891d026465ef6c055d56697d6a5c1388fa",
+      "bytes": 8383151
     },
     {
       "path": "atlantis-chart-depth-chart-diorama.png",
@@ -118,6 +143,11 @@
       "bytes": 17304
     },
     {
+      "path": "capture-harness-b8e8919ac894.snapshot",
+      "sha256": "b8e8919ac8944d38fad9c6b2721ee22d7e51c9f51bdc9d26ec12881e8bc2dfb5",
+      "bytes": 17163
+    },
+    {
       "path": "coastward-materials-coastward-channel-diorama.png",
       "sha256": "557e42548a5d4752620d2f15d64a7ce6132e8babd435e56ec1f56bd08b190fbd",
       "bytes": 709049
@@ -159,8 +189,8 @@
     },
     {
       "path": "FAILED_ATTEMPTS.json",
-      "sha256": "78893bd83ec504b6e781807c0f67da33f6ad7741919417f3c2997b93d37ae248",
-      "bytes": 3445
+      "sha256": "f830c5d0c0a4d20530ade916370b405f7922b178c95516550f2ebb871c4ebf30",
+      "bytes": 4005
     },
     {
       "path": "FINDING-001.json",
@@ -554,8 +584,8 @@
     },
     {
       "path": "MEDIA.json",
-      "sha256": "4e8e897cae59ed45baa32ce84b3488e27f667f7278788bf5aba944dddf19f33a",
-      "bytes": 10857
+      "sha256": "fa4a39b2f6ab82e3fafccd4c71a1d5544fd4c3b0000ecd26dcc19ab4aa4d9ac9",
+      "bytes": 13283
     },
     {
       "path": "PROBES-FIRST-FIXTURE-FAILURE.json",
@@ -569,8 +599,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "eeaa58d684e2b538ea91a758446263c73a6630f27a5b6bd49f6dc1e04c9bef65",
-      "bytes": 6451
+      "sha256": "b66e0bee5e5c8264187dc70399e4531d13346727472dd6b3d056076c04dafccb",
+      "bytes": 7438
     },
     {
       "path": "realm-trails-ui-before-fix.js",
@@ -641,6 +671,16 @@
       "path": "veteran-fitting.mp4",
       "sha256": "788deaad355ef7401c3e0cf92dde28437223f30d22dd3f15c0632433f1f51bce",
       "bytes": 6565033
+    },
+    {
+      "path": "VIDEO_DECODE_REVIEW.json",
+      "sha256": "29308f796e9b73675da77a751ced551c127a94be347ffc3c9c6528eced3dd3c2",
+      "bytes": 23103
+    },
+    {
+      "path": "VIDEO_DECODE_REVIEW.md",
+      "sha256": "ea4e60c375afbc0db29bc9e51e799f111f018032818bad4eaec80cd8c2690410",
+      "bytes": 3464
     },
     {
       "path": "VISUAL_REVIEW.md",

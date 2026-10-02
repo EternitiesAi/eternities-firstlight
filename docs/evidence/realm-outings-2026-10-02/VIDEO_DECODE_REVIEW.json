@@ -1,0 +1,705 @@
+{
+  "method": "Complete sequential CPU-only FFmpeg decode to the null muxer. Input decoder threads capped at2; output/filter threads capped at1. MP4 mvhd/mdhd/stts metadata parsed directly for exact container/media duration and sample-derived average frame rate. No browser/GPU/media modification; no inference of human enjoyment or pacing.",
+  "ffmpeg": "C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\imageio_ffmpeg\\binaries\\ffmpeg-win-x86_64-v7.1.exe",
+  "ffmpeg_version": "ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers",
+  "source_directory": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\realm-outings-2026-10-02",
+  "clips": [
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\realm-outings-2026-10-02\\atlantis-chart.mp4",
+      "name": "atlantis-chart.mp4",
+      "bytes": 7892672,
+      "sha256": "1c385effb4ce2cbc135178d1ca4c541a3b7864dc71d50892bc71f877e2e63256",
+      "container": {
+        "movie_duration": {
+          "timescale": 1000,
+          "duration_units": 66840,
+          "seconds": 66.84,
+          "exact_seconds": "1671/25"
+        },
+        "streams": [
+          {
+            "handler_type": "vide",
+            "media_duration": {
+              "timescale": 12800,
+              "duration_units": 855552,
+              "seconds": 66.84,
+              "exact_seconds": "1671/25"
+            },
+            "sample_entry_codec": "avc1",
+            "sample_count": 1671,
+            "sample_timing_units": 855552,
+            "sample_delta_values": [
+              512
+            ],
+            "constant_sample_rate": true,
+            "width": 1280.0,
+            "height": 720.0,
+            "average_frame_rate": 25.0,
+            "exact_average_frame_rate": "25",
+            "ffmpeg_codec": "h264"
+          }
+        ]
+      },
+      "ffmpeg_stream_descriptions": [
+        "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt470bg/unknown/unknown, progressive), 1280x720 [SAR 1:1 DAR 16:9], 942 kb/s, 25 fps, 25 tbr, 12800 tbn (default)"
+      ],
+      "ffmpeg_duration_description": "Duration: 00:01:06.84, start: 0.000000, bitrate: 944 kb/s",
+      "metadata_probe_exit": 1,
+      "decode": {
+        "command": [
+          "C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\imageio_ffmpeg\\binaries\\ffmpeg-win-x86_64-v7.1.exe",
+          "-nostdin",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-hwaccel",
+          "none",
+          "-threads",
+          "2",
+          "-filter_threads",
+          "1",
+          "-filter_complex_threads",
+          "1",
+          "-i",
+          "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\realm-outings-2026-10-02\\atlantis-chart.mp4",
+          "-map",
+          "0:v?",
+          "-map",
+          "0:a?",
+          "-sn",
+          "-dn",
+          "-threads",
+          "1",
+          "-fps_mode",
+          "passthrough",
+          "-progress",
+          "pipe:1",
+          "-nostats",
+          "-f",
+          "null",
+          "-"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "terminal_progress": {
+          "frame": "1671",
+          "fps": "0.00",
+          "stream_0_0_q": "-0.0",
+          "bitrate": "N/A",
+          "total_size": "N/A",
+          "out_time_us": "66840000",
+          "out_time_ms": "66840000",
+          "out_time": "00:01:06.840000",
+          "dup_frames": "0",
+          "drop_frames": "0",
+          "speed": "69.5x",
+          "progress": "end"
+        },
+        "decoded_video_frames": 1671,
+        "expected_video_sample_count": 1671,
+        "frame_count_matches": true,
+        "elapsed_decode_wall_seconds": 0.9907325000094716,
+        "input_unchanged": true
+      },
+      "passed": true
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\realm-outings-2026-10-02\\bow-fitting.mp4",
+      "name": "bow-fitting.mp4",
+      "bytes": 6371374,
+      "sha256": "716c54fe8a3dd2f2367e58a9ecc2489eea7f8d3f30ea07876c5aa54798ebb463",
+      "container": {
+        "movie_duration": {
+          "timescale": 1000,
+          "duration_units": 38000,
+          "seconds": 38.0,
+          "exact_seconds": "38"
+        },
+        "streams": [
+          {
+            "handler_type": "vide",
+            "media_duration": {
+              "timescale": 12800,
+              "duration_units": 486400,
+              "seconds": 38.0,
+              "exact_seconds": "38"
+            },
+            "sample_entry_codec": "avc1",
+            "sample_count": 950,
+            "sample_timing_units": 486400,
+            "sample_delta_values": [
+              512
+            ],
+            "constant_sample_rate": true,
+            "width": 1280.0,
+            "height": 720.0,
+            "average_frame_rate": 25.0,
+            "exact_average_frame_rate": "25",
+            "ffmpeg_codec": "h264"
+          }
+        ]
+      },
+      "ffmpeg_stream_descriptions": [
+        "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt470bg/unknown/unknown, progressive), 1280x720 [SAR 1:1 DAR 16:9], 1338 kb/s, 25 fps, 25 tbr, 12800 tbn (default)"
+      ],
+      "ffmpeg_duration_description": "Duration: 00:00:38.00, start: 0.000000, bitrate: 1341 kb/s",
+      "metadata_probe_exit": 1,
+      "decode": {
+        "command": [
+          "C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\imageio_ffmpeg\\binaries\\ffmpeg-win-x86_64-v7.1.exe",
+          "-nostdin",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-hwaccel",
+          "none",
+          "-threads",
+          "2",
+          "-filter_threads",
+          "1",
+          "-filter_complex_threads",
+          "1",
+          "-i",
+          "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\realm-outings-2026-10-02\\bow-fitting.mp4",
+          "-map",
+          "0:v?",
+          "-map",
+          "0:a?",
+          "-sn",
+          "-dn",
+          "-threads",
+          "1",
+          "-fps_mode",
+          "passthrough",
+          "-progress",
+          "pipe:1",
+          "-nostats",
+          "-f",
+          "null",
+          "-"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "terminal_progress": {
+          "frame": "950",
+          "fps": "0.00",
+          "stream_0_0_q": "-0.0",
+          "bitrate": "N/A",
+          "total_size": "N/A",
+          "out_time_us": "38000000",
+          "out_time_ms": "38000000",
+          "out_time": "00:00:38.000000",
+          "dup_frames": "0",
+          "drop_frames": "0",
+          "speed": "54.4x",
+          "progress": "end"
+        },
+        "decoded_video_frames": 950,
+        "expected_video_sample_count": 950,
+        "frame_count_matches": true,
+        "elapsed_decode_wall_seconds": 0.7197393999958877,
+        "input_unchanged": true
+      },
+      "passed": true
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\realm-outings-2026-10-02\\coastward-materials.mp4",
+      "name": "coastward-materials.mp4",
+      "bytes": 18742199,
+      "sha256": "2e902b6ff59a5ef540d3b428cc6c0e9dc46a00cca386f087107a87de60cbb681",
+      "container": {
+        "movie_duration": {
+          "timescale": 1000,
+          "duration_units": 147200,
+          "seconds": 147.2,
+          "exact_seconds": "736/5"
+        },
+        "streams": [
+          {
+            "handler_type": "vide",
+            "media_duration": {
+              "timescale": 12800,
+              "duration_units": 1884160,
+              "seconds": 147.2,
+              "exact_seconds": "736/5"
+            },
+            "sample_entry_codec": "avc1",
+            "sample_count": 3680,
+            "sample_timing_units": 1884160,
+            "sample_delta_values": [
+              512
+            ],
+            "constant_sample_rate": true,
+            "width": 1280.0,
+            "height": 720.0,
+            "average_frame_rate": 25.0,
+            "exact_average_frame_rate": "25",
+            "ffmpeg_codec": "h264"
+          }
+        ]
+      },
+      "ffmpeg_stream_descriptions": [
+        "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt470bg/unknown/unknown, progressive), 1280x720 [SAR 1:1 DAR 16:9], 1016 kb/s, 25 fps, 25 tbr, 12800 tbn (default)"
+      ],
+      "ffmpeg_duration_description": "Duration: 00:02:27.20, start: 0.000000, bitrate: 1018 kb/s",
+      "metadata_probe_exit": 1,
+      "decode": {
+        "command": [
+          "C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\imageio_ffmpeg\\binaries\\ffmpeg-win-x86_64-v7.1.exe",
+          "-nostdin",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-hwaccel",
+          "none",
+          "-threads",
+          "2",
+          "-filter_threads",
+          "1",
+          "-filter_complex_threads",
+          "1",
+          "-i",
+          "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\realm-outings-2026-10-02\\coastward-materials.mp4",
+          "-map",
+          "0:v?",
+          "-map",
+          "0:a?",
+          "-sn",
+          "-dn",
+          "-threads",
+          "1",
+          "-fps_mode",
+          "passthrough",
+          "-progress",
+          "pipe:1",
+          "-nostats",
+          "-f",
+          "null",
+          "-"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "terminal_progress": {
+          "frame": "3680",
+          "fps": "1586.09",
+          "stream_0_0_q": "-0.0",
+          "bitrate": "N/A",
+          "total_size": "N/A",
+          "out_time_us": "147200000",
+          "out_time_ms": "147200000",
+          "out_time": "00:02:27.200000",
+          "dup_frames": "0",
+          "drop_frames": "0",
+          "speed": "63.4x",
+          "progress": "end"
+        },
+        "decoded_video_frames": 3680,
+        "expected_video_sample_count": 3680,
+        "frame_count_matches": true,
+        "elapsed_decode_wall_seconds": 2.3407653000031132,
+        "input_unchanged": true
+      },
+      "passed": true
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\realm-outings-2026-10-02\\cosmos-comparator.mp4",
+      "name": "cosmos-comparator.mp4",
+      "bytes": 11223333,
+      "sha256": "dfffe94d2f6145d84382c6e4e290900705c2bd1854b037555e5e961faaf2497f",
+      "container": {
+        "movie_duration": {
+          "timescale": 1000,
+          "duration_units": 68520,
+          "seconds": 68.52,
+          "exact_seconds": "1713/25"
+        },
+        "streams": [
+          {
+            "handler_type": "vide",
+            "media_duration": {
+              "timescale": 12800,
+              "duration_units": 877056,
+              "seconds": 68.52,
+              "exact_seconds": "1713/25"
+            },
+            "sample_entry_codec": "avc1",
+            "sample_count": 1713,
+            "sample_timing_units": 877056,
+            "sample_delta_values": [
+              512
+            ],
+            "constant_sample_rate": true,
+            "width": 1280.0,
+            "height": 800.0,
+            "average_frame_rate": 25.0,
+            "exact_average_frame_rate": "25",
+            "ffmpeg_codec": "h264"
+          }
+        ]
+      },
+      "ffmpeg_stream_descriptions": [
+        "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt470bg/unknown/unknown, progressive), 1280x800 [SAR 1:1 DAR 8:5], 1307 kb/s, 25 fps, 25 tbr, 12800 tbn (default)"
+      ],
+      "ffmpeg_duration_description": "Duration: 00:01:08.52, start: 0.000000, bitrate: 1310 kb/s",
+      "metadata_probe_exit": 1,
+      "decode": {
+        "command": [
+          "C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\imageio_ffmpeg\\binaries\\ffmpeg-win-x86_64-v7.1.exe",
+          "-nostdin",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-hwaccel",
+          "none",
+          "-threads",
+          "2",
+          "-filter_threads",
+          "1",
+          "-filter_complex_threads",
+          "1",
+          "-i",
+          "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\realm-outings-2026-10-02\\cosmos-comparator.mp4",
+          "-map",
+          "0:v?",
+          "-map",
+          "0:a?",
+          "-sn",
+          "-dn",
+          "-threads",
+          "1",
+          "-fps_mode",
+          "passthrough",
+          "-progress",
+          "pipe:1",
+          "-nostats",
+          "-f",
+          "null",
+          "-"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "terminal_progress": {
+          "frame": "1713",
+          "fps": "1271.78",
+          "stream_0_0_q": "-0.0",
+          "bitrate": "N/A",
+          "total_size": "N/A",
+          "out_time_us": "68520000",
+          "out_time_ms": "68520000",
+          "out_time": "00:01:08.520000",
+          "dup_frames": "0",
+          "drop_frames": "0",
+          "speed": "50.9x",
+          "progress": "end"
+        },
+        "decoded_video_frames": 1713,
+        "expected_video_sample_count": 1713,
+        "frame_count_matches": true,
+        "elapsed_decode_wall_seconds": 1.36712599999737,
+        "input_unchanged": true
+      },
+      "passed": true
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\realm-outings-2026-10-02\\heaven-repair-bow.mp4",
+      "name": "heaven-repair-bow.mp4",
+      "bytes": 6130869,
+      "sha256": "4d9754272c585f97f2282fe566e451079f6011f873dad94190d6be56ab852b93",
+      "container": {
+        "movie_duration": {
+          "timescale": 1000,
+          "duration_units": 51720,
+          "seconds": 51.72,
+          "exact_seconds": "1293/25"
+        },
+        "streams": [
+          {
+            "handler_type": "vide",
+            "media_duration": {
+              "timescale": 12800,
+              "duration_units": 662016,
+              "seconds": 51.72,
+              "exact_seconds": "1293/25"
+            },
+            "sample_entry_codec": "avc1",
+            "sample_count": 1293,
+            "sample_timing_units": 662016,
+            "sample_delta_values": [
+              512
+            ],
+            "constant_sample_rate": true,
+            "width": 1280.0,
+            "height": 720.0,
+            "average_frame_rate": 25.0,
+            "exact_average_frame_rate": "25",
+            "ffmpeg_codec": "h264"
+          }
+        ]
+      },
+      "ffmpeg_stream_descriptions": [
+        "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt470bg/unknown/unknown, progressive), 1280x720 [SAR 1:1 DAR 16:9], 945 kb/s, 25 fps, 25 tbr, 12800 tbn (default)"
+      ],
+      "ffmpeg_duration_description": "Duration: 00:00:51.72, start: 0.000000, bitrate: 948 kb/s",
+      "metadata_probe_exit": 1,
+      "decode": {
+        "command": [
+          "C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\imageio_ffmpeg\\binaries\\ffmpeg-win-x86_64-v7.1.exe",
+          "-nostdin",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-hwaccel",
+          "none",
+          "-threads",
+          "2",
+          "-filter_threads",
+          "1",
+          "-filter_complex_threads",
+          "1",
+          "-i",
+          "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\realm-outings-2026-10-02\\heaven-repair-bow.mp4",
+          "-map",
+          "0:v?",
+          "-map",
+          "0:a?",
+          "-sn",
+          "-dn",
+          "-threads",
+          "1",
+          "-fps_mode",
+          "passthrough",
+          "-progress",
+          "pipe:1",
+          "-nostats",
+          "-f",
+          "null",
+          "-"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "terminal_progress": {
+          "frame": "1293",
+          "fps": "0.00",
+          "stream_0_0_q": "-0.0",
+          "bitrate": "N/A",
+          "total_size": "N/A",
+          "out_time_us": "51720000",
+          "out_time_ms": "51720000",
+          "out_time": "00:00:51.720000",
+          "dup_frames": "0",
+          "drop_frames": "0",
+          "speed": "64.2x",
+          "progress": "end"
+        },
+        "decoded_video_frames": 1293,
+        "expected_video_sample_count": 1293,
+        "frame_count_matches": true,
+        "elapsed_decode_wall_seconds": 0.8302846000005957,
+        "input_unchanged": true
+      },
+      "passed": true
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\realm-outings-2026-10-02\\hell-walked-rescue.mp4",
+      "name": "hell-walked-rescue.mp4",
+      "bytes": 7230195,
+      "sha256": "785b022f1997d226f1475ec291b25960001a470bd5748dddfb56dd220f413db3",
+      "container": {
+        "movie_duration": {
+          "timescale": 1000,
+          "duration_units": 70400,
+          "seconds": 70.4,
+          "exact_seconds": "352/5"
+        },
+        "streams": [
+          {
+            "handler_type": "vide",
+            "media_duration": {
+              "timescale": 12800,
+              "duration_units": 900608,
+              "seconds": 70.36,
+              "exact_seconds": "1759/25"
+            },
+            "sample_entry_codec": "avc1",
+            "sample_count": 1759,
+            "sample_timing_units": 900608,
+            "sample_delta_values": [
+              512
+            ],
+            "constant_sample_rate": true,
+            "width": 1280.0,
+            "height": 720.0,
+            "average_frame_rate": 25.0,
+            "exact_average_frame_rate": "25",
+            "ffmpeg_codec": "h264"
+          }
+        ]
+      },
+      "ffmpeg_stream_descriptions": [
+        "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt470bg/unknown/unknown, progressive), 1280x720 [SAR 1:1 DAR 16:9], 819 kb/s, 25 fps, 25 tbr, 12800 tbn (default)"
+      ],
+      "ffmpeg_duration_description": "Duration: 00:01:10.36, start: 0.040000, bitrate: 822 kb/s",
+      "metadata_probe_exit": 1,
+      "decode": {
+        "command": [
+          "C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\imageio_ffmpeg\\binaries\\ffmpeg-win-x86_64-v7.1.exe",
+          "-nostdin",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-hwaccel",
+          "none",
+          "-threads",
+          "2",
+          "-filter_threads",
+          "1",
+          "-filter_complex_threads",
+          "1",
+          "-i",
+          "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\realm-outings-2026-10-02\\hell-walked-rescue.mp4",
+          "-map",
+          "0:v?",
+          "-map",
+          "0:a?",
+          "-sn",
+          "-dn",
+          "-threads",
+          "1",
+          "-fps_mode",
+          "passthrough",
+          "-progress",
+          "pipe:1",
+          "-nostats",
+          "-f",
+          "null",
+          "-"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "terminal_progress": {
+          "frame": "1759",
+          "fps": "1746.45",
+          "stream_0_0_q": "-0.0",
+          "bitrate": "N/A",
+          "total_size": "N/A",
+          "out_time_us": "70360000",
+          "out_time_ms": "70360000",
+          "out_time": "00:01:10.360000",
+          "dup_frames": "0",
+          "drop_frames": "0",
+          "speed": "69.9x",
+          "progress": "end"
+        },
+        "decoded_video_frames": 1759,
+        "expected_video_sample_count": 1759,
+        "frame_count_matches": true,
+        "elapsed_decode_wall_seconds": 1.0303473999956623,
+        "input_unchanged": true
+      },
+      "passed": true
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\realm-outings-2026-10-02\\veteran-fitting.mp4",
+      "name": "veteran-fitting.mp4",
+      "bytes": 6565033,
+      "sha256": "788deaad355ef7401c3e0cf92dde28437223f30d22dd3f15c0632433f1f51bce",
+      "container": {
+        "movie_duration": {
+          "timescale": 1000,
+          "duration_units": 38520,
+          "seconds": 38.52,
+          "exact_seconds": "963/25"
+        },
+        "streams": [
+          {
+            "handler_type": "vide",
+            "media_duration": {
+              "timescale": 12800,
+              "duration_units": 493056,
+              "seconds": 38.52,
+              "exact_seconds": "963/25"
+            },
+            "sample_entry_codec": "avc1",
+            "sample_count": 963,
+            "sample_timing_units": 493056,
+            "sample_delta_values": [
+              512
+            ],
+            "constant_sample_rate": true,
+            "width": 1280.0,
+            "height": 720.0,
+            "average_frame_rate": 25.0,
+            "exact_average_frame_rate": "25",
+            "ffmpeg_codec": "h264"
+          }
+        ]
+      },
+      "ffmpeg_stream_descriptions": [
+        "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt470bg/unknown/unknown, progressive), 1280x720 [SAR 1:1 DAR 16:9], 1360 kb/s, 25 fps, 25 tbr, 12800 tbn (default)"
+      ],
+      "ffmpeg_duration_description": "Duration: 00:00:38.52, start: 0.000000, bitrate: 1363 kb/s",
+      "metadata_probe_exit": 1,
+      "decode": {
+        "command": [
+          "C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\imageio_ffmpeg\\binaries\\ffmpeg-win-x86_64-v7.1.exe",
+          "-nostdin",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-hwaccel",
+          "none",
+          "-threads",
+          "2",
+          "-filter_threads",
+          "1",
+          "-filter_complex_threads",
+          "1",
+          "-i",
+          "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\realm-outings-2026-10-02\\veteran-fitting.mp4",
+          "-map",
+          "0:v?",
+          "-map",
+          "0:a?",
+          "-sn",
+          "-dn",
+          "-threads",
+          "1",
+          "-fps_mode",
+          "passthrough",
+          "-progress",
+          "pipe:1",
+          "-nostats",
+          "-f",
+          "null",
+          "-"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "terminal_progress": {
+          "frame": "963",
+          "fps": "0.00",
+          "stream_0_0_q": "-0.0",
+          "bitrate": "N/A",
+          "total_size": "N/A",
+          "out_time_us": "38520000",
+          "out_time_ms": "38520000",
+          "out_time": "00:00:38.520000",
+          "dup_frames": "0",
+          "drop_frames": "0",
+          "speed": "55.5x",
+          "progress": "end"
+        },
+        "decoded_video_frames": 963,
+        "expected_video_sample_count": 963,
+        "frame_count_matches": true,
+        "elapsed_decode_wall_seconds": 0.7136699999973644,
+        "input_unchanged": true
+      },
+      "passed": true
+    }
+  ],
+  "started_utc": "2026-10-02T21:22:47Z",
+  "finished_utc": "2026-10-02T21:22:56Z",
+  "status": "passed",
+  "clip_count": 7
+}

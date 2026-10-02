@@ -1,6 +1,4 @@
 {
-  "html_sha256": "8ad7e3f020eb93b79b2d812e51a86248780c54b28593face9a115412f7e7b5bf",
-  "runtime_commit": "329caa5aea6d90bdafc639e7535ad3699f2840a6",
   "media": [
     {
       "label": "cosmos-comparator",
@@ -253,9 +251,66 @@
         }
       ],
       "capture_harness_snapshot": "capture-harness-84262d04a910.snapshot"
+    },
+    {
+      "label": "atlantis-chart-corrected",
+      "html_sha256": "989d1b74c29de735ccf0a557cc1d4264f4730539dc4a9365424ce9b70c7df8a8",
+      "video": "atlantis-chart-corrected.mp4",
+      "video_sha256": "aee3e1aea3108c971264454ef2d697891d026465ef6c055d56697d6a5c1388fa",
+      "video_bytes": 8383151,
+      "raw_video_sha256": "a31781cc567df2efc5bc71bad2d02991f92608c163c8fb0c252f55a56fc8b37c",
+      "source_save_sha256": "3acffb19cd9aa7194b172af33898a10036c1e67303d9bb49488f020403eeb32f",
+      "capture_harness_sha256": "b8e8919ac8944d38fad9c6b2721ee22d7e51c9f51bdc9d26ec12881e8bc2dfb5",
+      "capture_harness_snapshot": "capture-harness-b8e8919ac894.snapshot",
+      "clip_start_seconds": 0,
+      "clip_is_real_time": true,
+      "speed_change": false,
+      "audio": "silent Playwright capture",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "browser": "143.0.7499.4",
+      "normal_time_seconds": 74.79280009999638,
+      "paired_unfitted_fitted": false,
+      "samples": [
+        {
+          "label": "Atlantis upper-gauge",
+          "median_ms": 16.700000000000728,
+          "p95_nearest_rank_ms": 16.700000000000728,
+          "maximum_ms": 16.80000000000291,
+          "over_33_333_ms": 0
+        },
+        {
+          "label": "Atlantis lower-masonry",
+          "median_ms": 16.69999999999709,
+          "p95_nearest_rank_ms": 16.700000000004366,
+          "maximum_ms": 16.80000000000291,
+          "over_33_333_ms": 0
+        },
+        {
+          "label": "Atlantis depth-chart",
+          "median_ms": 16.69999999999709,
+          "p95_nearest_rank_ms": 16.80000000000291,
+          "maximum_ms": 16.80000000000291,
+          "over_33_333_ms": 0
+        },
+        {
+          "label": "Atlantis modern-marker",
+          "median_ms": 16.69999999999709,
+          "p95_nearest_rank_ms": 16.700000000004366,
+          "maximum_ms": 16.80000000000291,
+          "over_33_333_ms": 0
+        }
+      ]
     }
   ],
   "frame_samples_are_short_raf_cadence": true,
   "sustained_performance_qualification": false,
-  "human_acceptance": false
+  "human_acceptance": false,
+  "initial_capture_html_sha256": "8ad7e3f020eb93b79b2d812e51a86248780c54b28593face9a115412f7e7b5bf",
+  "initial_runtime_commit": "329caa5aea6d90bdafc639e7535ad3699f2840a6",
+  "current_html_sha256": "989d1b74c29de735ccf0a557cc1d4264f4730539dc4a9365424ce9b70c7df8a8",
+  "epoch_policy": "The first seven clips remain exact frozen 8ad gameplay. The added corrected Atlantis clip uses final 989 invitation text; intervening runtime change is that one truthful paragraph, not changed mechanics or geometry."
 }

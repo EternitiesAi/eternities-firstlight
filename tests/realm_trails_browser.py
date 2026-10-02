@@ -78,7 +78,7 @@ try:
   close();ev('Realm.test.worldReturn()');inspect_accepted_chart();close();ev('Realm.test.save()');page.reload(wait_until='load');page.wait_for_function('window.Realm');render();inspect_accepted_chart()
   check('accepted unpaid chart survives native home reload',state()['realmTrails']['records'][d['id']]['accepted'] and not state()['realmTrails']['records'][d['id']]['claimed'])
   enter('earthlands');inspect_accepted_chart();close();ev('Realm.test.worldReturn()');enter('atlantis')
-  landing=ev('RealmWorldFoundations.definition("atlantis").points.find(p=>p.id==="tide-steps")');walk(landing['x'],landing['z']);page.keyboard.press('e');page.locator('[data-rpg="world-dive"]').click();render()
+  landing=ev('RealmWorldFoundations.definition("atlantis").points.find(p=>p.id==="tide-steps")');walk(landing['x'],landing['z']);page.keyboard.press('e');check('gallery invitation distinguishes dry survey from submerged chart work',all(t in page.locator('#rpg-window').inner_text() for t in ['routine visitor survey stays on dry civic ground','Bellglass chart trail uses two submerged depths and the air court']));page.locator('[data-rpg="world-dive"]').click();render()
   for target in gallery_route:
    close();r=ev('target=>{for(let i=0;i<2000;i++){const p=Realm.diagnostics.adventure.player,v=Realm.test.worldDiveStatus(),dx=target[0]-p.x,dz=target[2]-p.z,dy=target[1]-v.y;if(Math.hypot(dx,dz)<.015&&Math.abs(dy)<.015){Realm.test.render();return true;}const h=Math.hypot(dx,dz),dt=h>.005?Math.min(.05,h/2.6):Math.min(.05,Math.abs(dy)/2.6),step=dt*2.6;Realm.test.worldSwim(h>.005?dx:0,h>.005?dz:0,step?dy/step:0,dt);}return false}',target)
    check('actual swim reaches '+str(target),r)
