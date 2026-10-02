@@ -156,7 +156,7 @@ for a base-origin roof mesh; it was repaired to inspect actual engine vertices.
 
 ## Focused verification and cost
 
-Fresh focused commands on this worker's final source:
+Initial foundation checks, before the visual readability follow-up below:
 
 - `node --check src/world-heaven-hell.js` — passed.
 - `node --check tests/world_heaven_hell.test.cjs` — passed.
@@ -201,3 +201,54 @@ render the supplied material colors, walk each intended loop and return in
 both cameras, confirm actual dialogue/proximity and optional sentinel behavior,
 exercise the first claim and saved record, then inspect actual integrated
 screenshots. Final source integration and evidence remain owned by Root.
+
+## Visual readability follow-up
+
+Root requested this bounded follow-up after inspecting actual browser captures.
+The Heaven lower fork now has a short paved connection from `(0,17)` to
+Rielle's existing west route at `(-14,5)`. Narrow ruby inlays identify the
+Ruby Arcade route; cool silver inlays identify the central Mirror Causeway
+route. Two small matching chips sit on the existing fork paving. These are
+original static cosmetic meshes, without new points, objectives, movement
+authority or collision. They are placed only over supported, clear native
+paving and ground. Their bottom is ground +`0.0265`, touching the paving top;
+their highest surface is ground +`0.0385`, below the requested `0.04` limit.
+
+The Hell Refuge's existing roof slab and six patched ribs now carry
+`worldRoof:'hell-refuge'`. Their geometry, material, overhead clearance and
+camera participation remain unchanged. The tag is confined to the actual
+shelter roof footprint: X `-22..2`, Z `9.5..28.5`, ground-relative Y
+`4.24..4.62`. Root owns the conditional main-view reveal when the traveller
+is under that roof and camera cutaway is enabled; reflection and shadow
+participation remain with the shared renderer. This module does not remove
+the roof or inspect the player's location to toggle it.
+
+An isolated comparison with the preceding committed module confirmed exact
+JSON equality of all canonical realm data. Hell's complete submitted art is
+also identical after removing only the seven new metadata fields. Quest,
+reward, point, entry, patch, solid and enemy identities are unchanged.
+
+Current default internal RNG, no survey record:
+
+| Static geometry | Heaven | Hell |
+|---|---:|---:|
+| Local decoration instances | 825 | 546 |
+| Local plus generic physical/ground boxes | 883 | 590 |
+| Local decoration triangles | 26,350 | 7,070 |
+| Distant instances | 74 | 106 |
+| Distant triangles | 7,812 | 17,284 |
+| Flat route inlays / fork chips | 113 / 2 | 0 / 0 |
+| Existing roof surfaces tagged | 0 | 7 |
+
+Focused verification on this follow-up source:
+
+- `node --test tests/world_heaven_hell.test.cjs`: 15 passed, 0 failed,
+  0 skipped. New checks inspect actual transformed inlay vertices, complete
+  fork backing, solid body clearance, the cosmetic height limit, and tags
+  confined to actual roof surfaces. Existing geometry, route, deterministic
+  art, height projection and mutation checks remain in the focused file.
+- Both source/test syntax checks and `git diff --check`: passed.
+- No browser, GPU or full suite was run for this follow-up. The tags and
+  geometry checks do not establish that the main-view reveal has been
+  integrated or that the new cues are readable on the target device;
+  those rendered checks remain owned by Root.

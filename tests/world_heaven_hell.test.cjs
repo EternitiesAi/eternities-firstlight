@@ -69,6 +69,32 @@ test('Heaven: both actual causeway/arcade loops fit a traveller without stepping
  const def=realms[0],lines=[[[0,31],[0,17],[6,2],[6,-13],[0,-20],[0,-79],[0,-99]],[[-14,5],[-24,5],[-35,-10],[-35,-52],[-24,-76],[0,-89]]];
  for(const line of lines)for(let i=1;i<line.length;i++)sampleSegment(def,line[i-1],line[i]);assert.equal((def.enemies||[]).length,0);
 });
+test('Heaven: distinct narrow route inlays sit on supported paving and the fork remains flat and clear',()=>{
+ const def=realms[0],all=scene(def).all,inlays=all.filter(p=>p.routeInlay),fork=all.filter(p=>p.routeFork),colors=new Map([['ruby-arcade',0x8f1538],['mirror-causeway',0x88b6c5]]);
+ sampleSegment(def,[0,17],[-14,5]);
+ for(const tag of colors.keys())assert.ok(inlays.filter(p=>p.routeInlay===tag).length>20,'readable route extent: '+tag);
+ assert.deepEqual(fork.map(p=>p.routeFork),['ruby-arcade','mirror-causeway']);
+ for(const p of [...inlays,...fork]){
+  assert.equal(p.kind,'box');assert.equal(p.c,colors.get(p.routeInlay||p.routeFork));assert.equal(p.cameraSolid,false);assert.equal(p.cutaway,false);
+  assert.ok(p.s[0]<=.32,'modest narrow route accent');
+  assert.ok(p.p[1]-p.s[1]/2>=FLOOR+.0265-1e-6&&p.p[1]+p.s[1]/2<=FLOOR+.04+1e-6,'cosmetic top stays within ground +.04');
+  if(p.routeInlay){const backing=all.find(tile=>tile.paving&&tile.p[0]===p.p[0]&&tile.p[2]===p.p[2]&&JSON.stringify(tile.r)===JSON.stringify(p.r));assert.ok(backing,'inlay has native paving beneath it');assert.ok(p.s[0]<backing.s[0]&&p.s[2]<backing.s[2]);assert.ok(Math.abs(p.p[1]-p.s[1]/2-backing.p[1]-backing.s[1]/2)<1e-6);}
+  const mesh=Engine.geometry(p.kind),matrix=Engine.M.compose(...p.p,...p.s,...(p.r||[0,0,0]));
+  for(let i=0;i<mesh.length;i+=6){const v=Engine.M.transform(matrix,Array.from(mesh.slice(i,i+3)));assert.ok(grounded(def,v[0],v[2]),'route accent has native supported ground');assert.ok(!blocked(def,v[0],v[2],.31),'route accent avoids solid body intrusion');
+   if(p.routeFork)assert.ok(all.some(tile=>{if(!tile.paving)return false;const angle=tile.r?.[1]||0,dx=v[0]-tile.p[0],dz=v[2]-tile.p[2],c=Math.cos(angle),s=Math.sin(angle);return Math.abs(c*dx-s*dz)<=tile.s[0]/2+1e-6&&Math.abs(s*dx+c*dz)<=tile.s[2]/2+1e-6;}),'fork chip has native paving beneath its whole footprint');
+  }
+ }
+});
+test('Hell: only the existing Refuge roof slab and patched ribs carry the bounded reveal tag',()=>{
+ const tagged=scene(realms[1]).all.filter(p=>p.worldRoof);
+ assert.equal(tagged.length,7,'existing slab plus six roof ribs');assert.equal(tagged.filter(p=>p.s[0]===24&&p.s[2]===19).length,1,'complete roof remains authored');
+ assert.equal(scene(realms[0]).all.some(p=>p.worldRoof),false);
+ for(const p of tagged){
+  assert.equal(p.worldRoof,'hell-refuge');assert.equal(p.kind,'box');assert.equal(p.overhead,true);assert.equal(p.cutaway,true);assert.equal(p.cameraSolid,false);assert.equal(p.skyImage,undefined);assert.equal(p.worldSolidId,undefined);
+  const mesh=Engine.geometry(p.kind),matrix=Engine.M.compose(...p.p,...p.s,...(p.r||[0,0,0]));
+  for(let i=0;i<mesh.length;i+=6){const v=Engine.M.transform(matrix,Array.from(mesh.slice(i,i+3)));assert.ok(v[0]>=-22-1e-6&&v[0]<=2+1e-6&&v[2]>=9.5-1e-6&&v[2]<=28.5+1e-6,'tag never escapes the shelter roof footprint');assert.ok(v[1]>=FLOOR+4.2-1e-6&&v[1]<=FLOOR+4.65+1e-6,'tag denotes actual overhead roof surfaces');}
+ }
+});
 test('Hell: distinct east/west approaches and the free home path avoid the optional sentinel even within an eleven-unit threat pocket',()=>{
  const def=realms[1],lines=[[[0,35],[0,24],[14,9],[24,-4],[24,-35],[20,-38],[20,-53],[24,-65],[16,-80],[-12,-95]],[[0,24],[-10,24],[-10,32],[-29,32],[-31,4],[-31,-15],[-27,-37],[-27,-54],[-31,-70],[-31,-82],[-15,-82],[-12,-95]]];
  for(const line of lines)for(let i=1;i<line.length;i++)sampleSegment(def,line[i-1],line[i]);

@@ -115,7 +115,7 @@ freeze(realms);
 
 // Route lines are original decorative paving over the supplied flat ground.
 // They are not a second movement graph, raised floor or interaction authority.
-const routes={heaven:[[[0,31],[0,17],[6,2],[6,-13],[0,-20],[0,-79],[0,-99]],[[-14,5],[-24,5],[-35,-10],[-35,-52],[-24,-76],[0,-89]],[[0,17],[25,5],[29,-26],[27,-66],[0,-89]]],
+const routes={heaven:[[[0,31],[0,17],[6,2],[6,-13],[0,-20],[0,-79],[0,-99]],[[0,17],[-14,5],[-24,5],[-35,-10],[-35,-52],[-24,-76],[0,-89]],[[0,17],[25,5],[29,-26],[27,-66],[0,-89]]],
  hell:[[[0,35],[0,24],[14,9],[24,-4],[24,-35],[20,-38],[20,-53],[24,-65],[16,-80],[-12,-95]],[[0,24],[-10,24],[-10,32],[-29,32],[-31,4],[-31,-15],[-27,-37],[-27,-54],[-31,-70],[-31,-82],[-15,-82],[-12,-95]],[[16,-80],[30,-93],[44,-104]]]};
 function fallbackRng(seed){return()=>{seed=(Math.imul(1664525,seed)+1013904223)>>>0;return seed/4294967296;};}
 function onGround(def,x,z,r=0){return def.patches.some(p=>Math.abs(x-p.x)<=p.w/2-r&&Math.abs(z-p.z)<=p.d/2-r);}
@@ -128,7 +128,7 @@ function decorate(art,def,options={}){
  const at=(kind,x,y,z,sx,sy,sz,c,opt={})=>{art.add(kind,x,y,z,sx,sy,sz,c,{cameraSolid:false,cutaway:false,...opt});instances++;if(opt.skyImage)distantInstances++;};
  const box=(x,y,z,w,hh,d,c,opt)=>at('box',x,y,z,w,hh,d,c,opt);
  const detail=(s,x,y,z,w,hh,d,c,opt={})=>box(x,y,z,w,hh,d,c,{worldSolidId:s.id,cutaway:true,...opt});
- const gold=0xbe914c,ruby=0x8f1538,bone=0xe8dfc9,iron=0x5b6268,amber=0xe7bb74;
+ const gold=0xbe914c,ruby=0x8f1538,silver=0x88b6c5,bone=0xe8dfc9,iron=0x5b6268,amber=0xe7bb74;
  // Shared art renders each actual box once. Surface dressing differs by at
  // most .025 cosmetic units; it supplies no additional invisible cover.
  for(const s of def.solids){const base=h(s.x,s.z),top=base+s.h;
@@ -162,7 +162,19 @@ function decorate(art,def,options={}){
  }
  // Flush paving and arrow stones show both directions. No raised art can
  // masquerade as a supported terrace or change the canonical flat surface.
- for(const line of routes[def.id])for(let i=1;i<line.length;i++){const a=line[i-1],b=line[i],length=Math.hypot(b[0]-a[0],b[1]-a[1]);for(let d=0;d<length;d+=2.6){const t=d/length,x=a[0]+(b[0]-a[0])*t,z=a[1]+(b[1]-a[1])*t;if(clear(def,x,z,1.6))box(x,h(x,z)+.014,z,2.4,.025,1.8,isHeaven?0xd8ceb4:0x8b8a7c,{r:[0,Math.atan2(b[0]-a[0],b[1]-a[1]),0],paving:true,rough:1});}}
+ for(const [lineIndex,line]of routes[def.id].entries())for(let i=1;i<line.length;i++){
+  const a=line[i-1],b=line[i],length=Math.hypot(b[0]-a[0],b[1]-a[1]);
+  for(let distance=0;distance<length;distance+=2.6){
+   const t=distance/length,x=a[0]+(b[0]-a[0])*t,z=a[1]+(b[1]-a[1])*t;
+   if(!clear(def,x,z,1.6))continue;
+   const r=[0,Math.atan2(b[0]-a[0],b[1]-a[1]),0];
+   box(x,h(x,z)+.014,z,2.4,.025,1.8,isHeaven?0xd8ceb4:0x8b8a7c,{r,paving:true,rough:1});
+   // A narrow craft inlay rests on the paving top. Its color indicates the
+   // existing lower route, without creating a waypoint or interaction.
+   if(isHeaven&&lineIndex<2)box(x,h(x,z)+.0325,z,.28,.012,1.56,lineIndex===0?silver:ruby,{r,routeInlay:lineIndex===0?'mirror-causeway':'ruby-arcade',rough:.9});
+  }
+ }
+ if(isHeaven)for(const [tag,x,color]of[['ruby-arcade',-.6,ruby],['mirror-causeway',.6,silver]])box(x,h(x,17)+.0325,17,.32,.012,.85,color,{routeFork:tag,rough:.9});
  for(const p of def.points){at('disc',p.x,h(p.x,p.z)+.035,p.z,p.kind==='return'?3:1.5,1,p.kind==='return'?3:1.5,p.kind==='return'?(isHeaven?gold:amber):(isHeaven?0xc5b385:0xaca99a),{markerId:p.id,rough:.65});}
  // A public instrument and two response fittings use solid-backed frames.
  if(isHeaven){
@@ -177,8 +189,10 @@ function decorate(art,def,options={}){
   at('octa',0,h(0,-102)+15.8,-102,1.8,2.1,1.2,ruby,{ornament:true,em:.15});
  }else{
   // The retired kiln's patched open front faces the arrival and return road.
-  box(-10,h(-10,19)+4.38,19,24,.28,19,0x5b6268,{overhead:true,cutaway:true});
-  for(let i=0;i<6;i++)box(-20+i*4,h(-10,19)+4.56,19,.18,.12,19,0x8b867b,{overhead:true,cutaway:true});
+  // The shared renderer can reveal this complete roof in the main view.
+  // The slab and patched ribs remain present for reflection and shadow art.
+  box(-10,h(-10,19)+4.38,19,24,.28,19,0x5b6268,{overhead:true,cutaway:true,worldRoof:'hell-refuge'});
+  for(let i=0;i<6;i++)box(-20+i*4,h(-10,19)+4.56,19,.18,.12,19,0x8b867b,{overhead:true,cutaway:true,worldRoof:'hell-refuge'});
   const s=def.solids.find(s=>s.id==='hell-refuge-ember-hearth');
   box(s.x,h(s.x,s.z)+s.h-.09,s.z,s.w*.8,.12,s.d*.8,0xb96e43,{worldSolidId:s.id,em:.5});
   // The bell is suspended high above its closed physical base, with credible
