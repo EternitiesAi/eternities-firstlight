@@ -3010,7 +3010,7 @@ class WorldArt{
  // the authored walls instead of enlarging navigation or camera obstacles.
  beam(from,to,width,c,opt={}){const d=to.map((v,i)=>v-from[i]),len=Math.hypot(...d);if(len<.001)return;const yy=d.map(v=>v/len),ref=Math.abs(yy[1])>.95?[1,0,0]:[0,1,0],xx=[ref[1]*yy[2]-ref[2]*yy[1],ref[2]*yy[0]-ref[0]*yy[2],ref[0]*yy[1]-ref[1]*yy[0]],n=Math.hypot(...xx);for(let i=0;i<3;i++)xx[i]/=n;const zz=[xx[1]*yy[2]-xx[2]*yy[1],xx[2]*yy[0]-xx[0]*yy[2],xx[0]*yy[1]-xx[1]*yy[0]],p=from.map((v,i)=>(v+to[i])/2);this.box(...p,width,len,width,c,{cameraSolid:false,cutaway:true,...opt,m:new Float32Array([...xx.map(v=>v*width),0,...yy.map(v=>v*len),0,...zz.map(v=>v*width),0,...p,1])});}
  commit(){if(!this.room&&G.RealmEarthArt)G.RealmEarthArt.gate(this);if(!this.room&&G.RealmCosmosArt)G.RealmCosmosArt.gate(this);if(!this.room&&G.RealmRoadArt)G.RealmRoadArt.gate(this);if(!this.room&&G.RealmAdventureArt)G.RealmAdventureArt.entrance(this);if(!this.room&&G.RealmSandboxArt)G.RealmSandboxArt.scenery(this);for(let[k,a]of Object.entries(this.map)){const rails=k==='box'?a.filter(i=>i.bridgeRail===true):[];this.e.batch(k,rails.length?a.filter(i=>i.bridgeRail!==true):a);if(rails.length)this.e.batch(k,rails,false,{railCutaway:true});}this.dynamicBox=this.e.batch('box',[],true);this.dynamicOcta=this.e.batch('octa',[],true);this.dynamicRound=this.e.batch('round',[],true);this.dynamicDisc=this.e.batch('disc',[],true);this.dynamicTimber=this.room===G.RealmEarth?.ROOM?this.e.batch('timber-panel',[],true):null;}
- begin(room){this.droverFrame=null;this.millwrightFrame=null;this.millGateFrame=null;this.travelerPoseOwner=null;this.travelerMotion=null;this.travelerFrame=null;this.travelerParts=null;this.e.theme=null;this.e.earthWater=null;this.e.railCutawayActive=false;this.e.noWater=false;this.e.surfacePick=null;this.e.ambientOverride=null;this.e.reflectionStrength=1;this.e.clear();this.e.isInterior=!!room;this.room=room;this.map={};}
+ begin(room){this.quarryFrame=null;this.droverFrame=null;this.millwrightFrame=null;this.millGateFrame=null;this.travelerPoseOwner=null;this.travelerMotion=null;this.travelerFrame=null;this.travelerParts=null;this.e.theme=null;this.e.earthWater=null;this.e.railCutawayActive=false;this.e.noWater=false;this.e.surfacePick=null;this.e.ambientOverride=null;this.e.reflectionStrength=1;this.e.clear();this.e.isInterior=!!room;this.room=room;this.map={};}
  tree(x,z,s=1,style=0,base=1.2){let bark=0x68503c;this.add('cylinder',x,base,z,.42*s,2.6*s,.42*s,bark);for(let a of[-.6,.8,2.3])this.box(x+Math.sin(a)*.45*s,base+2*s,z+Math.cos(a)*.45*s,.18*s,1.2*s,.18*s,bark,{r:[.3,a,.55]});let colors=style===3?[0xd9a4ba,0xc489a5,0xe9bdbe]:style===1?[0xaab961,0x8fa856,0xbdc16f]:style===2?[0x87a897,0x669586,0xa0b59b]:[0x557d65,0x638f69,0x779c73];if(style===0){for(let i=0;i<3;i++)this.add('cone',x,base+(1.6+i*.85)*s,z,(3.2-i*.6)*s,2.2*s,(3.2-i*.6)*s,colors[i],{wind:2});}else{for(let i=0;i<7;i++){let a=i*2.4,r=i===0?0:1.05;this.add(style===3?'round':style===1?'round':'octa',x+Math.cos(a)*r*s,base+(3.25+(i%3)*.42)*s,z+Math.sin(a)*r*s,(2.25+(i%2)*.3)*s,(2.1+(i%3)*.23)*s,(2.15+(i%2)*.35)*s,colors[i%3],{r:[0,a,0],wind:2});}}}
  lamp(x,z,height=3.4,base=1.2){this.box(x,base+height/2,z,.13,height,.13,0x5a4735);this.box(x,base+height,z,.55,.12,.55,0x443c32);this.box(x,base+height-.35,z,.32,.54,.32,0xffd185,{em:1.4,rough:.35});this.add('cone',x,base+height+.07,z,.77,.37,.77,0x594739);this.box(x,base+.09,z,.48,.18,.48,0x777565);}
  bench(x,z,yaw=0,base=1.2,opt={}){let at=(a,b,c,sx,sy,sz,col)=>this.box(x+a*Math.cos(yaw)+c*Math.sin(yaw),base+b,z-a*Math.sin(yaw)+c*Math.cos(yaw),sx,sy,sz,col,{r:[0,yaw,0],...opt});for(let a of[-.72,.72])at(a,.38,0,.14,.75,.5,0x514c43);at(0,.74,0,1.95,.16,.68,0xa88d62);at(0,1.24,-.31,1.95,.52,.11,0xa68b62);}
@@ -4684,6 +4684,107 @@ function draw(out,sim,t,art){
 }
 G.RealmGatheringArt={draw};
 })(globalThis);
+</script><script>/* Darric and designated public stone. Read-only prototype art; +Z forward.
+ * A resting mallet is not a simulated quarry job or permission to take stock. */
+(function(G){'use strict';
+const ANCHOR=Object.freeze({x:14.3,z:-26,yaw:-.8});
+const sub=(a,b)=>a.map((v,i)=>v-b[i]),add=(a,b)=>a.map((v,i)=>v+b[i]),mul=(a,s)=>a.map(v=>v*s);
+const dot=(a,b)=>a.reduce((s,v,i)=>s+v*b[i],0),norm=a=>mul(a,1/(Math.hypot(...a)||1));
+const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+function phase(state){return state.steps?.includes('quarry-grade')?'packed':state.steps?.includes('quarry-reserve')?'released':state.accepted?'reserved':'waiting';}
+function elbow(start,end,side){
+ const upper=.34,lower=.32,delta=sub(end,start),distance=Math.hypot(...delta),dir=norm(delta);
+ const along=(upper*upper-lower*lower+distance*distance)/(2*distance),bend=Math.sqrt(Math.max(0,upper*upper-along*along));
+ const hint=[side,-.3,-.3],plane=norm(sub(hint,mul(dir,dot(hint,dir))));
+ return add(add(start,mul(dir,along)),mul(plane,bend));
+}
+function pose(time=0,reducedMotion=false,state={}){
+ const {M}=G.RealmEngine,t=Number.isFinite(time)?time:0,stage=phase(state);
+ const sway=reducedMotion?0:Math.sin(t*.43),lift=stage==='reserved'?.045:stage==='packed'?-.055:0;
+ const toolRoot=M.compose(-.015,1.09+lift+sway*.012,.46,1,1,1,0,sway*.04,-.12+sway*.035);
+ const joints={leftShoulder:[-.28,1.39,-.015],rightShoulder:[.28,1.39,-.015],
+  leftHip:[-.15,.89,0],rightHip:[.15,.89,0],leftKnee:[-.18,.50,.025],rightKnee:[.18,.50,.025],
+  leftAnkle:[-.19,.13,.015],rightAnkle:[.19,.13,.015]};
+ for(const [name,side,grip]of[['left',-1,-.20],['right',1,.055]]){
+  joints[name+'Hand']=M.transform(toolRoot,[grip,0,0]);joints[name+'Elbow']=elbow(joints[name+'Shoulder'],joints[name+'Hand'],side);
+ }
+ return{toolRoot,joints,phase:stage,reducedMotion:!!reducedMotion};
+}
+function draw(out,{state={},time=0,reducedMotion=false,ground=()=>0}={}){
+ const {M,hex}=G.RealmEngine,{x,z,yaw}=ANCHOR,raw=ground(x,z),base=Number.isFinite(raw)?raw:0;
+ const root=M.compose(x,base,z,1,1,1,0,yaw,0),posed=pose(time,reducedMotion,state),j=posed.joints,parts=[];
+ const shirt=hex(0xc1b797),vest=hex(0x737e79),leather=hex(0x786047),dark=hex(0x474b42);
+ const skin=hex(0xba9377),hair=hex(0x554a3d),cloth=hex(0xa2674b),pants=hex(0x616457);
+ const part=(kind,name,p,s,c,rotation=[0,0,0],frame=root)=>{
+  const item={p:M.transform(frame,p),s:s.slice(),m:M.mul(frame,M.compose(...p,...s,...rotation)),c,rough:.91,
+   cameraSolid:false,cutaway:false,stoneworkerPart:name};out[kind].push(item);parts.push(item);
+ };
+ const segment=(name,a,b,width,depth,color)=>{
+  const up=norm(sub(b,a)),length=Math.hypot(...sub(b,a)),across=norm(cross(up,Math.abs(up[2])<.9?[0,0,1]:[1,0,0]));
+  const forward=cross(across,up),center=mul(add(a,b),.5),local=new Float32Array([...mul(across,width),0,...mul(up,length),0,...mul(forward,depth),0,...center,1]);
+  const item={p:M.transform(root,center),s:[width,length,depth],m:M.mul(root,local),c:color,rough:.91,
+   cameraSolid:false,cutaway:false,stoneworkerPart:name,stoneworkerJoints:[a.slice(),b.slice()]};out.box.push(item);parts.push(item);
+ };
+ part('box','shirt-waist',[0,1.075,0],[.41,.30,.285],shirt);
+ part('box','shirt-chest',[0,1.31,-.015],[.51,.25,.30],shirt);
+ part('box','vest-back',[0,1.255,-.176],[.52,.42,.035],vest);
+ for(const side of[-1,1]){
+  part('box','vest-front',[side*.15,1.25,.156],[.205,.40,.038],vest,[0,0,side*.045]);
+  part('box','vest-pocket',[side*.15,1.105,.186],[.135,.10,.028],leather);
+  part('box','leather-hem',[side*.11,.85,.156],[.212,.27,.035],leather,[0,0,side*-.035]);
+ }
+ part('box','belt',[0,.985,0],[.46,.062,.32],dark);
+ part('box','buckle',[.09,.985,.177],[.075,.061,.028],0xb3ab8d);
+ part('round','neck',[0,1.49,-.008],[.14,.16,.14],skin);
+ part('round','head',[0,1.63,0],[.285,.29,.26],skin);
+ part('round','cropped-hair',[0,1.743,-.025],[.30,.11,.27],hair);
+ part('box','hair-back',[0,1.64,-.119],[.263,.16,.035],hair);
+ part('round','short-beard',[0,1.552,.123],[.23,.11,.056],hair);
+ part('octa','nose',[0,1.633,.153],[.057,.068,.075],skin);
+ part('box','neck-cloth',[0,1.474,.025],[.32,.068,.22],cloth);
+ part('box','cloth-knot',[-.12,1.46,.146],[.09,.095,.07],cloth,[0,0,.2]);
+ part('box','cloth-tail',[-.095,1.366,.16],[.09,.16,.031],cloth,[0,0,-.13]);
+ for(const [name,side]of[['left',-1],['right',1]]){
+  part('round',name+'-ear',[side*.142,1.63,0],[.045,.077,.053],skin);
+  part('box',name+'-eye',[side*.055,1.653,.126],[.024,.014,.016],dark);
+  part('box',name+'-brow',[side*.054,1.676,.127],[.048,.014,.013],hair,[0,0,side*.07]);
+  segment(name+'-thigh',j[name+'Hip'],j[name+'Knee'],.21,.21,pants);
+  segment(name+'-shin',j[name+'Knee'],j[name+'Ankle'],.155,.17,pants);
+  part('round',name+'-knee',j[name+'Knee'],[.183,.15,.18],pants);
+  part('box',name+'-knee-patch',[side*.18,.51,.12],[.13,.14,.025],leather);
+  part('box',name+'-boot',[side*.19,.088,.08],[.218,.14,.32],leather);
+  part('box',name+'-sole',[side*.19,.020,.08],[.23,.04,.33],dark);
+  part('round',name+'-boot-cuff',[side*.19,.21,.015],[.18,.21,.19],leather);
+  part('box',name+'-shoulder',j[name+'Shoulder'],[.18,.18,.30],shirt);
+  segment(name+'-sleeve',j[name+'Shoulder'],j[name+'Elbow'],.161,.17,shirt);
+  part('round',name+'-rolled-cuff',j[name+'Elbow'],[.179,.11,.18],shirt);
+  segment(name+'-forearm',j[name+'Elbow'],j[name+'Hand'],.11,.116,skin);
+  part('round',name+'-glove',j[name+'Hand'],[.12,.11,.11],leather);
+ }
+ const toolRoot=M.mul(root,posed.toolRoot);
+ part('box','mallet-handle',[.045,0,0],[.86,.065,.065],0x9b8058,[0,0,0],toolRoot);
+ part('box','mallet-head',[.415,0,0],[.14,.225,.195],0x657268,[0,0,0],toolRoot);
+ return{anchor:{x,z,yaw,base},root,joints:j,toolRoot,phase:posed.phase,reducedMotion:posed.reducedMotion,partCount:parts.length};
+}
+function works(out,{state={},ground=()=>0}={}){
+ const blockIds=[],gradeIds=[],height=(x,z)=>{const n=ground(x,z);return Number.isFinite(n)?n:0;};
+ const box=(name,id,x,y,z,w,ht,d,c)=>out.box.push({p:[x,y,z],s:[w,ht,d],c,rough:1,cameraSolid:false,cutaway:false,quarryPart:name,quarryId:id});
+ if(!state.steps?.includes('quarry-reserve'))for(let i=0;i<3;i++){
+  const id='public-repair-block-'+(i+1),x=10.8+i*.62,z=-27,b=height(x,z);blockIds.push(id);
+  box('reserved-block',id,x,b+.20,z,.55,.40,.60,0xaba185);
+  box('split-face',id,x,b+.404,z,.49,.012,.54,0xc8bea0);
+  for(let k=0;k<=i;k++)box('chalk-tally',id,x-.10+k*.10,b+.414,z,.033,.012,.18,0xf0d99c);
+  for(const dx of[-.15,.15])box('split-score',id,x+dx,b+.21,z+.302,.018,.22,.014,0x818570);
+ }
+ if(state.steps?.includes('quarry-grade'))for(let i=0;i<12;i++){
+  const id='packed-grade-'+(i+1),x=13.1+(i%3)*.63,z=-14.4+Math.floor(i/3)*.65;gradeIds.push(id);
+  // Above the existing .025-high visual paving, embedded in the same ground.
+  box('packed-grade',id,x,height(x,z)-.005,z,.60,.08,.58,i%3?0xc2b89a:0xa4a88e);
+ }
+ return{blockIds,gradeIds,phase:phase(state)};
+}
+const api={ANCHOR,phase,pose,draw,works};G.RealmQuarryArt=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
 </script><script>/* Fenna's original drover and load. Read-only projection, never an escort.
  * +Z faces forward; the coil and holding hand share the same local frame. */
 (function(G){'use strict';
@@ -5202,7 +5303,7 @@ function story(out,sim,t,a){
  a.droverFrame=G.RealmDroverArt.draw(out,{state:s,time:sim.elapsed,reducedMotion:quiet,ground:h});
  const ansel=G.RealmMillwrightArt.ANCHOR;
  a.millwrightFrame=G.RealmMillwrightArt.draw(out,{base:h(ansel.x,ansel.z),time:sim.elapsed,reducedMotion:quiet});
- a.person(out,14.3,-26,-.8,'#989478',clock,false,'reeve',false,h(14.3,-26));
+ a.quarryFrame={actor:G.RealmQuarryArt.draw(out,{state:s,time:sim.elapsed,reducedMotion:quiet,ground:h}),works:G.RealmQuarryArt.works(out,{state:s,ground:h})};
  // The drover module projects dispatch/arrival; only the rules can move the load.
  // Small headrace machinery remains on the bank; it does not open collision through the pond.
  const gy=h(5.2,-6);a.millGateFrame=G.RealmMillGateArt.draw(out,done('mill-gate'),gy);
@@ -5211,9 +5312,7 @@ function story(out,sim,t,a){
  // silhouette; this presentation never completes or pays the repair itself.
  const phase=done('mill-gate')?(quiet?0:sim.elapsed)*.35:0;
  for(let i=0;i<10;i++){const angle=i/10*TAU+phase,x=3.55,y=2.71,z=-10.9;box(x,y+Math.sin(angle)*1.2,z+Math.cos(angle)*1.2,.65,.15,.43,0xa08454,[angle,0,0]);box(x,y,z,.10,.11,2.38,col.wood,[-angle,0,0]);}
- // Reserved blocks disappear only after collection; road packing then remains visible.
- if(!done('quarry-reserve'))for(let i=0;i<3;i++){const x=10.8+i*.62,z=-27;box(x,h(x,z)+.2,z,.55,.4,.6,0xaba185);box(x,h(x,z)+.42,z,.4,.03,.10,0xdac386);}
- if(done('quarry-grade'))for(let i=0;i<12;i++){const x=13.1+(i%3)*.63,z=-14.4+Math.floor(i/3)*.65;box(x,h(x,z)+.055,z,.6,.1,.58,0xb6ab91);}
+ // Quarry presentation reads accepted release/packing; story rules own the work.
  if(done('detour-mark'))for(const [x,z]of [[11.4,-13],[-10.1,-22],[2,-35]]){const y=h(x,z);box(x,y+.6,z,.09,1.2,.09,col.wood);box(x+.25,y+1.08,z,.62,.3,.07,0xc4aa69);}
  // The rule point is the approach stance, one metre south of the tabletop.
  // Both base table and remembered preparations derive from that same anchor.
@@ -5233,7 +5332,7 @@ class EarthStoryUI{
  context(){const p=this.local();return p?'E · '+p.name:null;}
  interact(){const local=this.local();if(!local)return false;this.rpg.open('earth-story');if(local.id)document.querySelector('[data-rain-task="'+local.id+'"]')?.scrollIntoView({block:'center'});return true;}
  action(el){const act=el.dataset.rpg,id=el.dataset.id;if(!act?.startsWith('rain-'))return false;
-  if(act==='rain-watch'){const gate=S.STEPS.find(s=>s.id==='mill-gate');if(this.state.steps.includes(gate.id)&&S.at(this.sim,gate))this.rpg.close();return true;}
+  if(act==='rain-watch'){const step=S.STEPS.find(s=>s.id===id);if(['mill-gate','quarry-reserve','quarry-grade'].includes(id)&&step&&this.state.steps.includes(id)&&S.at(this.sim,step))this.rpg.close();return true;}
   if(act==='rain-open'){this.rpg.open('earth-story');return true;}
   if(act==='rain-walk'){const p=id==='fenna'?S.GIVER:id==='delivery'?S.DESTINATION:S.STEPS.find(s=>s.id===id);if(p&&this.sim.room===E.ROOM){this.rpg.close();this.rpg.api.walkLocal(p.x,p.z);}return true;}
   const type=act.slice(5);if(['accept','step','dispatch','arrive','claim'].includes(type))this.rpg.run('earth-story-'+type,type==='step'?{id}:type==='dispatch'?{route:id}:{});
@@ -5241,8 +5340,9 @@ class EarthStoryUI{
  }
  invitation(){const s=this.state;return '<section class="earth-invitation"><small>LOCAL STORY · ONE DELIVERY</small><h3>Road After Rain</h3><p>'+(s.claimed?'Fenna’s load has arrived. Your public improvements remain.':s.accepted?'Ansel’s mill, Darric’s road, or Fenna’s detour. Your completed work is remembered.':'A flour-and-apples cart waits at the mill-road fork. Help it reach the west road by a route you prepare.')+'</p>'+btn(s.accepted?'Review delivery & remaining work':'Read Fenna’s request','open')+'</section>';}
  gateComparison(){const done=this.state.steps.includes('mill-gate');return '<div class="mill-comparison" aria-label="Headrace repair comparison"><section><small>'+(done?'BEFORE THE REPAIR':'CURRENT · JAMMED')+'</small><h5>A gate caught low</h5><p>The leaf sits low in its guides, the brace is twisted and the wheel is still.</p></section><section><small>'+(done?'CURRENT · REPAIRED':'AFTER YOUR REPAIR')+'</small><h5>A braced, lifted gate</h5><p>Five timber planks, iron straps and a new brace hold the raised leaf. The mill wheel can turn again.</p></section></div><p class="earth-note">'+(done?'Your completed repair remains here when you return.':'Your completed repair will remain here when you return.')+' The watercourse stays off the walking route. Viewing the work earns no extra payment.</p>';}
+ quarryComparison(id){const released=this.state.steps.includes('quarry-reserve'),packed=this.state.steps.includes('quarry-grade');return id==='quarry-reserve'?'<div class="mill-comparison" aria-label="Reserved public stone comparison"><section><small>'+(released?'BEFORE COLLECTION':'CURRENT · RESERVED')+'</small><h5>Three blocks for this road</h5><p>Pale split faces carry one, two and three chalk strokes. The general quarry stock stays here.</p></section><section><small>'+(released?'CURRENT · RELEASED':'AFTER COLLECTION')+'</small><h5>Stone ready for the grade</h5><p>Darric releases only these marked blocks. They are quest supplies, not items added to your inventory.</p></section></div>':'<div class="mill-comparison" aria-label="Cart road repair comparison"><section><small>'+(packed?'BEFORE PACKING':'CURRENT · WASHED OUT')+'</small><h5>A rutted cart grade</h5><p>The reserved stone is needed here before the load can take this route.</p></section><section><small>'+(packed?'CURRENT · PACKED':'AFTER YOUR WORK')+'</small><h5>Twelve fitted stones</h5><p>Close rows sit flush along the cart grade. Your completed road work remains on return.</p></section></div>'; }
  task(step){const s=this.state,done=s.steps.includes(step.id),near=S.at(this.sim,step),ready=step.needs.every(id=>s.steps.includes(id));
-  return '<li data-rain-task="'+step.id+'" class="rain-task '+(done?'is-done':'')+'"><div><small>'+step.who+'</small><h4>'+(done?'✓ ':'')+step.name+'</h4><p>'+step.text+'</p>'+(step.wood?(done?'<p><strong>Repair completed · 2 timber already spent.</strong> Viewing the work costs nothing.</p>':'<p><strong>Cost: 2 timber</strong> · you carry '+this.sim.state.sandbox.inventory.wood+'. Spent only when you choose the repair.</p>'):'<p>No personal materials consumed.</p>')+(step.id==='mill-gate'?this.gateComparison():'')+(!ready?'<p class="earth-note">First: '+step.needs.filter(id=>!s.steps.includes(id)).map(id=>S.STEPS.find(d=>d.id===id).name).join(' and ')+'.</p>':'')+'</div>'+(!done?(near&&ready?btn(step.wood?'Spend 2 timber · repair & test':'Complete this task','step',step.id):btn('Walk to '+step.name.toLowerCase(),'walk',step.id)):'<span class="rain-complete">Work complete · persists on return</span>'+(step.id==='mill-gate'?btn(near?'Return to the mill view':'Walk to the repaired gate',near?'watch':'walk',step.id):''))+'</li>';
+  return '<li data-rain-task="'+step.id+'" class="rain-task '+(done?'is-done':'')+'"><div><small>'+step.who+'</small><h4>'+(done?'✓ ':'')+step.name+'</h4><p>'+step.text+'</p>'+(step.wood?(done?'<p><strong>Repair completed · 2 timber already spent.</strong> Viewing the work costs nothing.</p>':'<p><strong>Cost: 2 timber</strong> · you carry '+this.sim.state.sandbox.inventory.wood+'. Spent only when you choose the repair.</p>'):'<p>No personal materials consumed.</p>')+(step.id==='mill-gate'?this.gateComparison():step.id.startsWith('quarry-')?this.quarryComparison(step.id):'')+(!ready?'<p class="earth-note">First: '+step.needs.filter(id=>!s.steps.includes(id)).map(id=>S.STEPS.find(d=>d.id===id).name).join(' and ')+'.</p>':'')+'</div>'+(!done?(near&&ready?btn(step.wood?'Spend 2 timber · repair & test':'Complete this task','step',step.id):btn('Walk to '+step.name.toLowerCase(),'walk',step.id)):'<span class="rain-complete">Work complete · persists on return</span>'+(['mill-gate','quarry-reserve','quarry-grade'].includes(step.id)?btn(near?(step.id==='mill-gate'?'Return to the mill view':step.id==='quarry-grade'?'Return to the road view':'Return to the quarry view'):'Walk to the completed work',near?'watch':'walk',step.id):''))+'</li>';
  }
  page(tab){if(tab!=='earth-story')return null;const s=this.state,a=this.sim.state.adventure,near=S.at(this.sim,S.GIVER),here=this.sim.room===E.ROOM;
   let html='<article class="earth-reading rain-reading"><small>HEARTHWATER · ROAD AFTER RAIN</small><h2>'+(s.claimed?'A load brought safely through.':s.arrived?'Dry flour. Sound apples.':s.dispatch?'Meet Fenna on the west road.':'Three ways to get a cart through.')+'</h2><p class="earth-quote">“The gathering needs flour and apples, not another tale about why they never arrived.” — Fenna, drover</p><p>'+ (s.steps.includes('mill-gate')?'Ansel’s headrace gate is braced and working.':'Ansel’s headrace gate is jammed.')+' '+(s.steps.includes('quarry-grade')?'The cart grade is packed and firm.':'The cart grade has washed out.')+' Darric can release designated stone, or you can survey a quiet detour. Prepare <strong>any one route</strong>, return to Fenna at the mill-road fork, then meet the delivery at the west-road handoff.</p><div class="rain-reward"><strong>One payment: 3 copper ore · 4 sunmarks · 2 fibre · 0 XP</strong><p>Materials for existing equipment projects, for blade or bow. No new power tier; fully fitted veterans may prefer to keep the materials. No item equips itself. Oren’s supplies and repeated surveys stay separate.</p></div><p class="earth-note">Quiet roads, no required fights or timed escort. The cart travels offscreen after you send it. No chapter advances. The Sunward Beacon and existing Bellweather prerequisites still govern entry into town. Reload resumes at the Firstlight lake with this work remembered.</p>';
@@ -5584,7 +5684,7 @@ function frame(now){let dt=lastFrame?Math.min((now-lastFrame)/1000,.1):.016;last
 // Keep a read-only-ish diagnostics surface for inspection; this local prototype is not a security boundary.
 const G_CAPTURE=!!window.__ETERNITIES_CAPTURE_MODE;
 window.Realm={get state(){return sim.snapshot();},get diagnostics(){let g=engine?.gl,dbg=g?.getExtension('WEBGL_debug_renderer_info');return{version:'10.0.0',mode:engine?'webgl2':'map',scene:sim.room||'valley',earth:sim.room===RealmEarth.ROOM?{trip:sim.earthTrip,height:sceneHeight(),walkable:RealmEarth.walkable(sim.state.player.x,sim.state.player.z)}:null,cosmos:sim.room===RealmCosmos.ROOM?{trip:sim.cosmosTrip,height:sceneHeight(),walkable:RealmCosmos.walkable(sim.state.player.x,sim.state.player.z)}:null,networkDependencies:0,liveAI:false,multiplayer:false,adventure:{tactics:JSON.parse(JSON.stringify(RealmCombat.runtime(sim))),beacon:JSON.parse(JSON.stringify(RealmBeacon.runtime(sim))),crossing:JSON.parse(JSON.stringify(RealmCrossing.runtime(sim))),player:{...sim.state.player},paused:sim.paused,intent:adventure?.intent||null,stats:RealmAdventure.stats(sim.state.adventure),weapon:RealmArsenal.weapon(sim.state.adventure),arrows:RealmArsenal.runtime(sim).arrows.map(a=>({...a})),range:{...RealmArsenal.runtime(sim).range},enemies:RealmAdventure.runtime(sim).enemies.map(e=>({id:e.id,x:e.x,z:e.z,hp:e.hp,maxHP:e.maxHP,hidden:!!e.hidden,eventEnemy:!!e.eventEnemy,kind:e.kind,ringMode:e.ringMode,custom:e.custom,mode:e.mode,timer:e.timer,aim:e.aim})),companion:{...RealmAdventure.runtime(sim).companion}},sandbox:{bridge:sim.state.sandbox.bridge,objects:sim.state.sandbox.placed.length,elapsed:sim.state.sandbox.elapsed,autoGather:sandbox?.auto||null,buildMode:sandbox?.build||null},saveState,characters:{mode:characterStore.blocked?'blocked':characterStore.managed?'managed':'legacy',active:characterStore.active,revision:characterStore.revision,count:characterStore.record?.slots.length||1,writer:characterStore.writer,error:characterStore.error},fps,errors:errors.slice(),camera:{...camera,projection:engine?.camera.projection||'orthographic',eye:engine?.camera.eye,target:engine?.camera.target},metrics:engine?.metrics||null,reflection:engine?.reflectionInfo||null,cutaway:{enabled:!!engine?.cutaway,focus:engine?.cutawayFocus||null},renderer:dbg?g.getParameter(dbg.UNMASKED_RENDERER_WEBGL):null,music:{playing:experience?.playing||false,scoreRevision:sim.state.scoreRevision,playingRevision:experience?.playingRevision,step:experience?.step},gathering:sim.gathering?{...sim.gathering}:null,layoutRevision:sim.state.retreat.revision,roadsideGathering:{status:rpg?.gathering?.player.status||'idle',playing:!!rpg?.gathering?.player.source,pending:!!rpg?.gathering?.pending},audio:{enabled:audio.enabled,state:audio.ctx?.state||'not-created'}};},navigate,export:()=>JSON.stringify(sim.snapshot(),null,2),project:(x,y,z)=>engine?.project(x,y,z)};
-if(window.__ETERNITIES_TEST_MODE||location.search.includes('test'))window.Realm.test={step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){sim.tick(.05);adventure?.tick();arsenal?.tick();rpg?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,bridge:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({definition:RealmEarth.BRIDGE,waterHeight:RealmEngine.WATER_HEIGHT,railCutaway:{eligible:engine?.railCutawayActive===true,enabled:engine?.cutaway===true},parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.bridgePart||i.mountainPart||i.shorelinePart).map(i=>({kind:b.kind,railBatch:b.railCutaway===true,...i,m:i.m?Array.from(i.m):null})))||[]})):null,traveler:()=>art?.travelerSnapshot()||null,drover:()=>sim.room===RealmEarth.ROOM&&art?.droverFrame?JSON.parse(JSON.stringify({frame:{...art.droverFrame,root:Array.from(art.droverFrame.root),coilRoot:Array.from(art.droverFrame.coilRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.droverPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millwright:()=>sim.room===RealmEarth.ROOM&&art?.millwrightFrame?JSON.parse(JSON.stringify({frame:{...art.millwrightFrame,root:Array.from(art.millwrightFrame.root),toolRoot:Array.from(art.millwrightFrame.toolRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.millwrightPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millGate:()=>sim.room===RealmEarth.ROOM&&art?.millGateFrame?JSON.parse(JSON.stringify({gate:art.millGateFrame,parts:[...engine.batches,...engine.dynamic].flatMap(b=>b.items.filter(i=>i.millPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null}))),wheel:art.dynamicBox.items.filter(i=>i.p[0]===3.55&&i.p[1]===2.71)})):null,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
+if(window.__ETERNITIES_TEST_MODE||location.search.includes('test'))window.Realm.test={step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){sim.tick(.05);adventure?.tick();arsenal?.tick();rpg?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,bridge:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({definition:RealmEarth.BRIDGE,waterHeight:RealmEngine.WATER_HEIGHT,railCutaway:{eligible:engine?.railCutawayActive===true,enabled:engine?.cutaway===true},parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.bridgePart||i.mountainPart||i.shorelinePart).map(i=>({kind:b.kind,railBatch:b.railCutaway===true,...i,m:i.m?Array.from(i.m):null})))||[]})):null,traveler:()=>art?.travelerSnapshot()||null,drover:()=>sim.room===RealmEarth.ROOM&&art?.droverFrame?JSON.parse(JSON.stringify({frame:{...art.droverFrame,root:Array.from(art.droverFrame.root),coilRoot:Array.from(art.droverFrame.coilRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.droverPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,quarry:()=>sim.room===RealmEarth.ROOM&&art?.quarryFrame?JSON.parse(JSON.stringify({frame:{actor:{...art.quarryFrame.actor,root:Array.from(art.quarryFrame.actor.root),toolRoot:Array.from(art.quarryFrame.actor.toolRoot)},works:art.quarryFrame.works},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.stoneworkerPart||i.quarryPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))})):null,millwright:()=>sim.room===RealmEarth.ROOM&&art?.millwrightFrame?JSON.parse(JSON.stringify({frame:{...art.millwrightFrame,root:Array.from(art.millwrightFrame.root),toolRoot:Array.from(art.millwrightFrame.toolRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.millwrightPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millGate:()=>sim.room===RealmEarth.ROOM&&art?.millGateFrame?JSON.parse(JSON.stringify({gate:art.millGateFrame,parts:[...engine.batches,...engine.dynamic].flatMap(b=>b.items.filter(i=>i.millPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null}))),wheel:art.dynamicBox.items.filter(i=>i.p[0]===3.55&&i.p[1]===2.71)})):null,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
 window.addEventListener('resize',resize);window.addEventListener('pagehide',()=>{save();characterStore.writer=false;characterLock.release();});window.addEventListener('pageshow',e=>{if(e.persisted&&characterStore.managed)acquireCharacterWriter().then(()=>save());});ui.canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();fallback('Graphics context lost. Your local state is intact; use the map and export a backup.');toast('Graphics paused; world state preserved.');});document.body.classList.toggle('reduced',sim.state.settings.reducedMotion);cameraPreset(sim.state.settings.cameraMode,false);if(camera.preset==='adventure'&&!sim.state.settings.cameraViews.profiles.adventure)camera.yaw=.22;labelsRebuild();resize();refreshUI();if(characterStore.managed){acquireCharacterWriter().then(ok=>{if(ok)save();else{saveState='unavailable';toast(characterLock.error);renderStatus();}});}else save();if(loaded.status==='migrated')toast('Your earlier world was copied into Realm 10. The original save was not changed.');setTimeout(()=>$('#loading').classList.add('hidden'),400);if(G_CAPTURE){if(window.Realm.test)window.Realm.test.render();}else requestAnimationFrame(frame);
 })();
 </script></body></html>

@@ -53,6 +53,19 @@ try:
         if (ev('()=>Realm.diagnostics.camera.projection')=='orthographic')!=(mode=='diorama'):page.keyboard.press('v')
         ev('()=>Realm.test.view({yaw:-.15,elevation:Realm.diagnostics.camera.projection==="orthographic"?.78:.28,distance:8.2,zoom:.35,half:8})');render();page.screenshot(path=str(OUT/('FENNA_'+label+'_'+mode.upper()+'.png')))
         check(label+' drover and cart submit in '+mode,ev('()=>Realm.test.drover().frame.partCount')<=160)
+    def quarry_probe(label,phase,blocks,grade):
+      before=state();render();q=ev('()=>Realm.test.quarry()');f=q['frame'];parts=q['parts'];actor=[p for p in parts if p.get('stoneworkerPart')];report.setdefault('quarry_states',{})[label]=q
+      check(label+' Darric retains existing supported quarry anchor',f['actor']['anchor']['x']==14.3 and f['actor']['anchor']['z']==-26 and ev('()=>RealmEarth.walkable(14.3,-26)&&RealmEarth.line({x:12,z:-26},{x:14.3,z:-26})'))
+      check(label+' one bounded finite actor submits vest cloth gloves and mallet',len(actor)==f['actor']['partCount'] and len(actor)<=64 and {'vest-back','cloth-knot','left-glove','right-glove','mallet-handle','mallet-head'}.issubset({p['stoneworkerPart'] for p in actor}) and all(__import__('math').isfinite(v) for p in actor for v in p['m']+p['p']+p['s']))
+      check(label+' saved work alone selects reserved blocks and flush grade',f['actor']['phase']==phase and len(f['works']['blockIds'])==blocks and len(f['works']['gradeIds'])==grade and sum(p.get('quarryPart')=='reserved-block' for p in parts)==blocks and sum(p.get('quarryPart')=='packed-grade' for p in parts)==grade)
+      check(label+' art stays out of camera cutaway and consent authority',all(not p['cameraSolid'] and not p['cutaway'] for p in parts) and state()==before)
+      check(label+' both submitted gloves meet the actual mallet handle',ev('()=>{const q=Realm.test.quarry(),a=q.frame.actor;return [["left",-.20],["right",.055]].every(([name,x])=>{const p=q.parts.find(p=>p.stoneworkerPart===name+"-glove"),v=RealmEngine.M.transform(a.toolRoot,[x,0,0]);return p.p.every((n,i)=>Math.abs(n-v[i])<.00001)})}'))
+    def quarry_photo(label):
+      close();walk(16.4,-24.7);ev('()=>Realm.test.setTime(16)')
+      for mode in ['third','diorama']:
+        if (ev('()=>Realm.diagnostics.camera.projection')=='orthographic')!=(mode=='diorama'):page.keyboard.press('v')
+        ev('()=>Realm.test.view({yaw:-.95,elevation:Realm.diagnostics.camera.projection==="orthographic"?.65:.28,distance:6.2,zoom:.35,half:6})');render();page.screenshot(path=str(OUT/('DARRIC_'+label+'_'+mode.upper()+'.png')))
+        check(label+' quarry actor submits in '+mode,ev('()=>Realm.test.quarry().frame.actor.partCount')<=64)
     routes={'fresh-blade-detour':('detour',['detour-ridge','detour-shelter','detour-mark']),'fresh-bow-quarry':('quarry',['quarry-reserve','quarry-grade']),'veteran-mill':('mill',['mill-root','mill-gate'])}
     for variant,(route,steps) in routes.items():
       close();fixture=json.loads((ROOT/'docs/evidence/road-after-rain'/f'{variant}_SOURCE.json').read_text(encoding='utf-8'));ev('(w)=>Realm.test.replace(w)',fixture);render();before=state();enter();walk(7,5);page.keyboard.press('e');render()
@@ -62,6 +75,7 @@ try:
       if route=='detour':
         page.screenshot(path=str(OUT/'CONTRACT.png'));camera=ev('()=>Realm.diagnostics.camera.preset');page.keyboard.press('v');render();check('dialog consumes camera shortcut',ev('()=>Realm.diagnostics.camera.preset')==camera)
       if route=='detour':drover_probe('unaccepted')
+      if route=='quarry':quarry_probe('unaccepted','waiting',3,0)
       click('accept');check(variant+' explicit accept preserves inventory',state()['sandbox']['inventory']==before['sandbox']['inventory'])
       if route=='detour':
         drover_probe('accepted');drover_photo('DEPARTURE')
@@ -74,6 +88,7 @@ try:
           check('submitted rope coil contributes isolated pixels in '+sample['projection'],sample['coilChannels']>20)
         check('isolated Fenna framebuffer has no WebGL error',pixels['error']==0)
       reload()
+      if route=='quarry':quarry_probe('accepted-reloaded','reserved',3,0);quarry_photo('RESERVED')
       for i,id in enumerate(steps):
         walk(7,5);page.keyboard.press('e');render();click('walk',id)
         ev('()=>{for(let i=0;i<4500&&Realm.test.path.length;i++)Realm.test.step(.05);Realm.test.render()}');point=ev('(id)=>RealmEarthStory.STEPS.find(s=>s.id===id)',id)
@@ -105,6 +120,26 @@ try:
           page.screenshot(path=str(OUT/'GATE_COMPARISON.png'))
         else:page.keyboard.press('e');render()
         click('step',id);check('accepted local interaction completes '+id,id in state()['adventure']['earthStory']['steps'])
+        if id.startswith('quarry-'):
+          released=id=='quarry-reserve';quarry_probe(id+'-complete','released' if released else 'packed',0,0 if released else 12)
+          content=page.locator('[data-rain-task="'+id+'"]').inner_text();check(id+' comparison describes only accepted visual work',('CURRENT · RELEASED' if released else 'CURRENT · PACKED') in content and page.locator('[data-rpg="rain-step"][data-id="'+id+'"]').count()==0)
+          earned=state();camera=ev('()=>Realm.state.settings.cameraViews');click('watch',id)
+          check(id+' local view restores focus and preserves state',not page.locator('#rpg-window').evaluate('(e)=>e.open') and not ev('()=>Realm.diagnostics.adventure.paused') and ev('()=>document.activeElement.id')=='world' and state()==earned and ev('()=>Realm.state.settings.cameraViews')==camera)
+          if released:
+            quarry_photo('RELEASED');walk(12,-26)
+            pixels=ev("""()=>{const q=Realm.test.quarry(),root=q.frame.actor.root,c=document.createElement('canvas'),e=new RealmEngine.Engine(c);e.resize(384,384,1);e.quality='low';e.noWater=true;const g=e.gl,read=()=>{g.bindFramebuffer(g.FRAMEBUFFER,e.mainF.f);const a=new Uint8Array(384*384*4);g.readPixels(0,0,384,384,g.RGBA,g.UNSIGNED_BYTE,a);g.bindFramebuffer(g.FRAMEBUFFER,null);return a;},diff=(a,b)=>a.reduce((n,v,i)=>n+(v!==b[i]),0),cases=[];for(const projection of['perspective','orthographic']){e.clear();e.setCamera({eye:[2.5,2.5,4.5],target:[0,.95,0],projection,half:1.25,fov:45,aspect:1});e.render(0,16,false);const empty=read();const render=tool=>{e.clear();for(const kind of['box','round','octa'])e.batch(kind,q.parts.filter(p=>p.kind===kind&&p.stoneworkerPart&&(tool||!p.stoneworkerPart.startsWith('mallet-'))).map(p=>{const m=new Float32Array(p.m),v=p.p.map((n,i)=>n-root[12+i]);for(let i=0;i<3;i++)m[12+i]-=root[12+i];return{p:v,s:p.s,m,c:p.c,rough:p.rough};}));e.render(0,16,false);return read();};const body=render(false),full=render(true);cases.push({projection,bodyChannels:diff(empty,body),toolChannels:diff(body,full)});}const result={cases,error:g.getError(),image:c.toDataURL('image/png')};e.disposeSurfaceMaterials();g.getExtension('WEBGL_lose_context').loseContext();return result;}""")
+            import base64
+            (OUT/'DARRIC_ISOLATED.png').write_bytes(base64.b64decode(pixels.pop('image').split(',')[1]));report['quarry_framebuffer']=pixels
+            for case in pixels['cases']:
+              check('submitted quarry body contributes pixels in '+case['projection'],case['bodyChannels']>1000);check('actual mallet contributes pixels in '+case['projection'],case['toolChannels']>20)
+            check('isolated quarry pixels have no WebGL error',pixels['error']==0)
+          else:
+            walk(16.4,-11.3)
+            for mode in ['third','diorama']:
+              if (ev('()=>Realm.diagnostics.camera.projection')=='orthographic')!=(mode=='diorama'):page.keyboard.press('v')
+              ev('()=>Realm.test.view({yaw:1.15,elevation:Realm.diagnostics.camera.projection==="orthographic"?.65:.55,distance:7.8,zoom:.35,half:6})');render();page.screenshot(path=str(OUT/('QUARRY_PACKED_'+mode.upper()+'.png')))
+          reload();quarry_probe(id+'-reloaded','released' if released else 'packed',0,0 if released else 12);walk(point['x'],point['z'])
+          page.keyboard.press('e');render()
         if id=='mill-gate':
           repaired=ev('()=>Realm.test.millGate()');earned=state();report['mill_gate']={'before':jammed,'after':repaired}
           check('accepted repair raises leaf and adds braced hardware',repaired['gate']['repaired'] and abs(repaired['gate']['center'][1]-jammed['gate']['center'][1]-.74)<1e-6 and any(p['millPart']=='repair-brace' for p in repaired['parts']) and not any(p['millPart']=='jammed-brace' for p in repaired['parts']))
@@ -152,7 +187,12 @@ try:
         check('normal-time visible Fenna moves the actually submitted hand and coil',not d1['hidden'] and not d2['hidden'] and d1['actor']['parts']!=d2['actor']['parts'])
         normal.keyboard.press('e');normal.evaluate('()=>Realm.test.render()');d1=normal.evaluate('()=>Realm.test.drover().parts');normal_frames();d2=normal.evaluate('()=>Realm.test.drover().parts');check('delivery dialog pauses the whole drover and load',d1==d2);normal.locator('#rpg-close').click()
         normal.evaluate('()=>{Realm.test.pause(true);Realm.test.render()}');d1=normal.evaluate('()=>Realm.test.drover().parts');normal_frames();d2=normal.evaluate('()=>Realm.test.drover().parts');check('explicit pause freezes whole drover and load',d1==d2)
-        normal.evaluate('()=>{Realm.test.pause(false);let w=Realm.state;w.settings.reducedMotion=true;Realm.test.replace(w)}');nw(0,23);normal.keyboard.press('e');normal.locator('[data-rpg="earth-confirm"]').click();nw(7,5);normal.evaluate('()=>Realm.test.render()');d1=normal.evaluate('()=>Realm.test.drover().parts');normal_frames();d2=normal.evaluate('()=>Realm.test.drover().parts');check('reduced motion holds one complete drover stance',d1==d2);normal_context.close()
+        normal.evaluate('()=>{Realm.test.pause(false);let w=Realm.state;w.settings.reducedMotion=true;Realm.test.replace(w)}');nw(0,23);normal.keyboard.press('e');normal.locator('[data-rpg="earth-confirm"]').click();nw(7,5);normal.evaluate('()=>Realm.test.render()');d1=normal.evaluate('()=>Realm.test.drover().parts');normal_frames();d2=normal.evaluate('()=>Realm.test.drover().parts');check('reduced motion holds one complete drover stance',d1==d2)
+        normal.evaluate('()=>{Realm.test.pause(false);let w=Realm.state;w.settings.reducedMotion=false;Realm.test.replace(w)}');nw(0,23);normal.keyboard.press('e');normal.locator('[data-rpg="earth-confirm"]').click();nw(12,-26);normal.bring_to_front();normal.evaluate('()=>Realm.test.render()')
+        q1=normal.evaluate('()=>({q:Realm.test.quarry(),hidden:document.hidden,paused:Realm.diagnostics.adventure.paused})');normal_frames();q2=normal.evaluate('()=>({q:Realm.test.quarry(),hidden:document.hidden,paused:Realm.diagnostics.adventure.paused})');report['normal_quarry']={'before':q1,'after':q2};check('ordinary visible app RAF moves submitted quarry hands and mallet',not q1['hidden'] and not q2['hidden'] and not q1['paused'] and not q2['paused'] and q1['q']['parts']!=q2['q']['parts'])
+        normal.keyboard.press('e');normal.evaluate('()=>Realm.test.render()');q1=normal.evaluate('()=>Realm.test.quarry().parts');normal_frames();q2=normal.evaluate('()=>Realm.test.quarry().parts');check('task dialog freezes the whole connected quarry stance',q1==q2);normal.locator('#rpg-close').click()
+        normal.evaluate('()=>{Realm.test.pause(true);Realm.test.render()}');q1=normal.evaluate('()=>Realm.test.quarry().parts');normal_frames();q2=normal.evaluate('()=>Realm.test.quarry().parts');check('explicit pause freezes quarry tool and hands',q1==q2)
+        normal.evaluate('()=>{Realm.test.pause(false);let w=Realm.state;w.settings.reducedMotion=true;Realm.test.replace(w)}');nw(0,23);normal.keyboard.press('e');normal.locator('[data-rpg="earth-confirm"]').click();nw(12,-26);normal.evaluate('()=>Realm.test.render()');q1=normal.evaluate('()=>Realm.test.quarry().parts');normal_frames();q2=normal.evaluate('()=>Realm.test.quarry().parts');check('reduced motion retains one complete quarry stance',q1==q2);normal_context.close()
       walk(7,5);page.keyboard.press('e');render()
       if route=='mill':check('remote repaired-gate action offers actual walking rather than watch',page.locator('[data-rpg="rain-watch"]').count()==0 and page.locator('[data-rpg="rain-walk"][data-id="mill-gate"]').count()==1)
       check('only completed route can be dispatched',page.locator('[data-rpg="rain-dispatch"]').count()==1);click('dispatch',route);check('explicit dispatch keeps payment unpaid',not state()['adventure']['earthStory']['claimed'])
@@ -187,6 +227,7 @@ try:
     restored='character-1' if original=='legacy' else original;library();page.locator(f'[data-rpg="chars-switch"][data-id="{restored}"]').click();page.wait_for_function('(id)=>Realm.diagnostics.characters.active===id',arg=restored);render()
     check('returning character retains its own completed story',state()['adventure']['earthStory']==old['adventure']['earthStory']);close();enter();page.set_viewport_size({'width':390,'height':844});page.keyboard.press('m');render();click('open');check('compact story actions have no horizontal overflow',page.locator('#rpg-content').evaluate('(e)=>e.scrollWidth<=e.clientWidth+1'));page.screenshot(path=str(OUT/'COMPACT_STORY.png'))
     close();ev('()=>Realm.test.leave()');render();check('millwright frame is absent outside its Earth scene',ev('()=>Realm.test.millwright()') is None);check('drover frame is absent outside its Earth scene',ev('()=>Realm.test.drover()') is None)
+    check('quarry diagnostic frame clears on leaving Earth',ev('()=>Realm.test.quarry()') is None)
     check('no runtime errors',not report['browser_errors']);context.close()
 except Exception as e:
   report['errors'].append(str(e));traceback.print_exc()

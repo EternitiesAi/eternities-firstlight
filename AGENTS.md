@@ -253,3 +253,21 @@ browser gates and command-earned journeys; retain every earlier suite and exact
 pushed-head fresh clone. Actual UI/media and human legibility/usefulness remain
 separate. Both cameras, personal saves, stable preview guard, heavy-D storage and
 no automatic main merge/deployment remain protected.
+
+## Darric and reserved public stone
+
+Read the dated Darric task/results. Pure `quarry-art.js` reads existing earthStory
+release/packing state; Earth art supplies simulation time and canonical ground.
+Keep the existing actor/task anchors, designated three block identities and twelve
+grade locations separate from general quarry stock, costs and consent. WorldArt
+clears the transient frame. Art cannot collect, pack, dispatch, equip or pay.
+
+The52-part actor holds an aligned mallet in one full hand/tool frame. Test actual
+OBBs and conservative round bounds across valid stages/time, not just external
+clearance or centerlines. Packed stone tops at ground+.035 clear existing+.025
+visual paving without creating ground/collision. Both cameras and normal visible
+RAF, pause/dialog/reduced motion, real UI/reload/claim boundaries, all earlier gates
+and exact final remote clone remain required. Inspect unobscured full-scene images;
+isolated pixels and translated/accelerated setup do not establish human feel.
+Local completed-work view closes through existing pause/focus ownership and must
+recheck allowed step, current completion and proximity. No save migration.
