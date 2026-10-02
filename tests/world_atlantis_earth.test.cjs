@@ -76,7 +76,7 @@ test('every entry and interaction anchor has full actor clearance on bounded dry
   assert.ok(walkable(d,p.x,p.z),`${d.id}:${p.id} is reachable dry ground`);
  }
  assert.ok(walkable(earth,0,55));assert.equal(walkable(earth,12,55),false,'bridge side is water, not an invisible shelf');
- assert.equal(walkable(earth,0,-20),false,'two woodland approaches remain geographically distinct');
+ assert.equal(walkable(earth,0,-20),true,'the authored woodland floor now physically joins both retained approaches');
  assert.equal(walkable(sea,8,-29),false,'scenic gallery is not a dry walking patch');
 });
 

@@ -18,6 +18,10 @@
    patch('arrival-bank',0,102,26,24,0x809665),
    patch('channel-bridge',0,55,8,76,0x9b7952),
    patch('far-bank',0,23,34,20,0x829768),
+   // A real connected woodland floor between the original lanes. Ground,
+   // picking, paths and the visible partition all read this same definition.
+   // Existing work, people, hazards and bridge footprints remain in place.
+   patch('woodland-country',1,-8,42,48,0x81966a),
    patch('woodland-west',-10,-8,8,48,0x85966b),
    patch('woodland-east',14,-8,9,48,0x8c9c6e),
    patch('field-approach',1,-35,40,14,0x9d9673),

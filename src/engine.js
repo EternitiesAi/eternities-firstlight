@@ -66,6 +66,21 @@ function geometry(kind){let v=[],timber=kind==='timber-panel';function tri(a,b,c
    tri([0,-.03,.5],p(i+1,8),p(i,8));
   }
  }
+ else if(kind==='coast-bank'){
+  // Continuous original soil profile. One instance spans an entire exposed
+  // shore interval, avoiding repeated capped rock sections. Only this mesh
+  // receives shared analytic surface normals; all earlier geometry is intact.
+  const point=(t,z)=>[t*(1+.07*Math.sin(z*Math.PI*2)*Math.sin(t*Math.PI)),1-1.04*Math.pow(t,1.25)+.018*Math.sin(t*Math.PI)*Math.sin(z*Math.PI*2),z];
+  const normal=(t,z)=>{const e=.0001,lo=Math.max(0,t-e),hi=Math.min(1,t+e),dt=sub(point(hi,z),point(lo,z)),dz=sub(point(t,z+e),point(t,z-e));return norm(cross(dz,dt));};
+  const surface=(a,b,c)=>{for(const [t,z]of[a,b,c])v.push(...point(t,z),...normal(t,z));};
+  for(let i=0;i<4;i++)for(let j=0;j<16;j++){
+   const a=[i/4,j/16-.5],b=[i/4,(j+1)/16-.5],c=[(i+1)/4,(j+1)/16-.5],d=[(i+1)/4,j/16-.5];surface(a,b,c);surface(a,c,d);
+  }
+  for(let i=0;i<4;i++){
+   tri([0,-.04,-.5],point(i/4,-.5),point((i+1)/4,-.5));
+   tri([0,-.04,.5],point((i+1)/4,.5),point(i/4,.5));
+  }
+ }
  else if(kind==='mountain-ridge'){
   // Original bounded height mesh: asymmetric ridges, saddles and rock facets.
   // No texture/asset/importer; unlike cones the silhouette has multiple peaks.

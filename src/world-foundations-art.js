@@ -7,13 +7,50 @@ function partitions(def){
   if(p)out.push({x,z,w:xs[i]-xs[i-1],d:zs[j]-zs[j-1],y:p.y,color:p.color??def.palette.ground,source:p.id});
  }return out;
 }
+// Only exposed Coastward land receives a skirt. Derive its seam from the same
+// partition cells actually drawn above, including bridge cells as neighbours.
+// Internal patch/grid edges therefore never become walls, and this function
+// cannot enlarge physical ground, move a task or invent a collision solid.
+function coastBanks(cells){
+ const eps=1e-6,groups=new Map(),contains=(x,z)=>cells.some(p=>x>p.x-p.w/2-eps/4&&x<p.x+p.w/2+eps/4&&z>p.z-p.d/2-eps/4&&z<p.z+p.d/2+eps/4);
+ for(const p of cells){
+  if(p.source==='channel-bridge')continue;
+  const x0=p.x-p.w/2,x1=p.x+p.w/2,z0=p.z-p.d/2,z1=p.z+p.d/2;
+  for(const e of [{axis:'z',at:x0,from:z0,to:z1,nx:-1,nz:0},{axis:'z',at:x1,from:z0,to:z1,nx:1,nz:0},{axis:'x',at:z0,from:x0,to:x1,nx:0,nz:-1},{axis:'x',at:z1,from:x0,to:x1,nx:0,nz:1}]){
+   const center=(e.from+e.to)/2,x=e.axis==='z'?e.at:center,z=e.axis==='z'?center:e.at;
+   if(contains(x+e.nx*eps,z+e.nz*eps))continue;
+   const seamY=p.y-.11,key=[e.axis,e.at,e.nx,e.nz,seamY].join('|');
+   if(!groups.has(key))groups.set(key,[]);groups.get(key).push({...e,seamY});
+  }
+ }
+ const edges=[];
+ for(const rows of groups.values()){
+  rows.sort((a,b)=>a.from-b.from);
+  let merged=null;
+  for(const e of rows){if(merged&&Math.abs(merged.to-e.from)<eps)merged.to=e.to;else{merged={...e};edges.push(merged);}}
+ }
+ edges.sort((a,b)=>a.axis.localeCompare(b.axis)||a.at-b.at||a.from-b.from||a.nx-b.nx||a.nz-b.nz);
+ const water=G.RealmEngine.WATER_HEIGHT,base=water-.18,colors=[0x858872,0x898b75,0x7e846e,0x8c8c77],parts=[];
+ edges.forEach((e,index)=>{
+  const length=e.to-e.from,n=1,span=length;
+  for(let i=0;i<n;i++){
+   const from=e.from+i*span,to=e.from+(i+1)*span,center=(from+to)/2,t=(i+.5)/n;
+   const width=1.35+.22*Math.sin(index*2.7);
+   const p=e.axis==='z'?[e.at,base,center]:[center,base,e.at],s=[width,e.seamY-base,span],r=[0,Math.atan2(-e.nz,e.nx),0];
+   parts.push({kind:'coast-bank',p,s,r,c:colors[index%colors.length],rough:1,cameraSolid:false,cutaway:false,coastBank:true,id:'coast-bank-'+index,seam:{...e,from,to}});
+  }
+ });
+ return parts;
+}
 function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isInterior=false;a.e.theme=def.theme||null;a.e.noWater=!def.water;a.e.ambientOverride=def.id==='hell'?.6:def.id==='heaven'?.87:.76;a.e.worldAtmosphere=def.id==='heaven'?{top:0x9fb8bd,fog:0xe4cdbd,night:.12,power:.85,sunColor:0xffe5c2}:def.id==='hell'?{top:0x32292f,fog:0x75605a,night:.38,power:.68,sunColor:0xffc185}:null;
- for(const p of partitions(def)){
+ const cells=partitions(def);
+ for(const p of cells){
   const gallery=def.dive&&Math.abs(p.x-def.dive.volume.x)<def.dive.volume.w/2&&Math.abs(p.z-def.dive.volume.z)<def.dive.volume.d/2;
   a.box(p.x,p.y-.055,p.z,p.w,.11,p.d,p.color,{...decor,cutaway:!!gallery,terrain:true,worldGround:p.source});
   // Bridge decks have open water underneath. Other ground has a closed shore.
   if(!gallery&&!/bridge/.test(p.source))a.box(p.x,(p.y-.11-.5)/2,p.z,p.w,p.y-.11+.5,p.d,def.palette.stone,decor);
  }
+ if(def.id==='earthlands')for(const bank of coastBanks(cells)){const{kind,p,s,c,...opt}=bank;a.add(kind,...p,...s,c,opt);}
  for(const p of def.solids)a.box(p.x,W.height(def.room,p.x,p.z)+p.h/2,p.z,p.w,p.h,p.d,p.color??def.palette.stone,{rough:.96,cameraSolid:true,cutaway:true,worldSolid:true,worldSolidId:p.id});
  if(def.dive){const d=def.dive,v=d.volume;
   a.box(v.x,d.minY-.36,v.z,v.w,.12,v.d,0x638b84,decor);
@@ -41,5 +78,5 @@ function draw(out,sim,t,a){const d=W.definition(sim.room);if(!d)return;const qui
  if(r.firstClaimed&&giver&&d.existing){const y=W.height(d.room,giver.x,giver.z);out.box.push({p:[giver.x+.7,y+.015,giver.z+.3],s:[.65,.03,.48],c:0xe3d4ad,...decor});for(let i=0;i<3;i++)out.box.push({p:[giver.x+.48+i*.22,y+.036,giver.z+.3],s:[.06,.012,.3],c:[0xb6ac69,0x80a9a0,0xa89dbe][i],...decor});}
  if(sim.worldDive&&W.medium(sim,[sim.state.player.x,W.playerHeight(sim)+.85,sim.state.player.z])==='water'){const p=sim.state.player,y=W.playerHeight(sim);out.octa.push({p:[p.x,y+1.85,p.z],s:[.08,.08,.08],c:0xb4e7dd,em:.4,...decor});}
 }
-G.RealmWorldFoundationsArt={make,gate,draw,partitions};if(typeof module!=='undefined')module.exports=G.RealmWorldFoundationsArt;
+G.RealmWorldFoundationsArt={make,gate,draw,partitions,coastBanks};if(typeof module!=='undefined')module.exports=G.RealmWorldFoundationsArt;
 })(globalThis);
