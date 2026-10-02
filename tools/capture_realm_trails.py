@@ -13,12 +13,12 @@ from browser_support import launch_kwargs
 ROOT=Path(__file__).resolve().parents[1]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
- parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--variant',choices=['heaven','hell','cosmos','fit-veteran'],required=True);parser.add_argument('--source',type=Path,required=True);parser.add_argument('--output',type=Path,required=True);args=parser.parse_args()
+ parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--variant',choices=['heaven','hell','cosmos','atlantis','earthlands','fit-veteran'],required=True);parser.add_argument('--source',type=Path,required=True);parser.add_argument('--output',type=Path,required=True);args=parser.parse_args()
  out=args.output.resolve();source=args.source.resolve()
  if out.drive.lower()!='d:' or not args.output.is_absolute():parser.error('heavy footage must stay on D:')
  if out.exists() and any(out.iterdir()):parser.error('preserve previous takes: choose an empty output directory')
  initial=json.loads(source.read_text(encoding='utf-8'));assert initial['adventure']['started'];out.mkdir(parents=True,exist_ok=True)
- report={'method':__doc__,'variant':args.variant,'source':str(source),'source_sha256':sha(source),'html_sha256':sha(ROOT/'index.html'),'viewport':{'width':1280,'height':720},'quality':'balanced','events':[],'samples':[],'browser_errors':[],'external_requests':[],'human_acceptance':False,'sustained_performance_qualification':False,'artificial_ticks':0,'position_edits':0,'manual_damage':0,'inventory_grants':0}
+ report={'capture_harness_sha256':sha(Path(__file__)), 'method':__doc__,'variant':args.variant,'source':str(source),'source_sha256':sha(source),'html_sha256':sha(ROOT/'index.html'),'viewport':{'width':1280,'height':720},'quality':'balanced','events':[],'samples':[],'browser_errors':[],'external_requests':[],'human_acceptance':False,'sustained_performance_qualification':False,'artificial_ticks':0,'position_edits':0,'manual_damage':0,'inventory_grants':0}
  class Handler(SimpleHTTPRequestHandler):
   def __init__(self,*a,**kw):super().__init__(*a,directory=str(ROOT),**kw)
   def log_message(self,*a):pass
@@ -72,9 +72,46 @@ def main():
      else:
       assert d['enemy']['defeatStep'] in r['steps'] and d['escort']['startStep'] not in r['steps'];act(d,d['escort']['startStep']);local();page.locator('[data-rpg="trail-escort-wait"]').click();shot('neris-wait');page.locator('[data-rpg="trail-escort-follow"]').click();close();view('third',yaw=.35,distance=10)
       for index,p in enumerate(d['escort']['route'][1:],1):
-       walk(p['x'],p['z']);page.wait_for_function('([q,n])=>Realm.state.realmTrails.records[q].checkpoint>=n',arg=[d['id'],index],timeout=45000)
+       walk(p['x'],p['z']);leg_start=time.monotonic()
+       while state()['realmTrails']['records'][d['id']]['checkpoint']<index:
+        assert time.monotonic()-leg_start<90,'return to waiting Neris before continuing'
+        actor=ev('()=>({...RealmTrails.escort(Realm.test.worldContext().sim)})');player=ev('Realm.diagnostics.adventure.player')
+        if ((actor['x']-player['x'])**2+(actor['z']-player['z'])**2)**.5>8:
+         mark('real return to waiting Neris');walk(actor['x'],actor['z']);walk(p['x'],p['z'])
+        else:page.wait_for_timeout(250)
        if index==2:view('diorama',yaw=.85);shot('walked-rescue-diorama');view('third',yaw=.35)
       r=state()['realmTrails']['records'][d['id']];assert r['checkpoint']==5 and not r['assisted'];walk(-10,27);shot('neris-safe-separate');measure('Hell refuge with actual arrived Neris');claim(d)
+    elif args.variant=='atlantis':
+     enter('atlantis');d=ev('RealmTrails.definitions().find(d=>d.realm==="atlantis")');walk(d['giver']['x'],d['giver']['z']);local();shot('bellglass-terms')
+     if not state()['realmTrails']['records'][d['id']]['accepted']:page.locator('[data-rpg="trail-accept"]').click()
+     close();walk(8,-16);page.keyboard.press('e');page.locator('[data-rpg="world-dive"]').click();view('third',yaw=0,distance=5)
+     def swim_to(target):
+      close();ev('Realm.test.view({yaw:0})')
+      for axis,wanted in [('y',target[1]),('x',target[0]),('z',target[2])]:
+       current=ev('(axis)=>axis==="y"?Realm.test.worldDiveStatus().y:Realm.diagnostics.adventure.player[axis]',axis)
+       if abs(current-wanted)<.065:continue
+       direction=1 if wanted>current else -1;key={'y':('g','f'),'x':('a','d'),'z':('w','s')}[axis][1 if direction>0 else 0]
+       page.keyboard.down(key)
+       try:page.wait_for_function('([axis,wanted,direction])=>{const v=axis==="y"?Realm.test.worldDiveStatus().y:Realm.diagnostics.adventure.player[axis];return direction>0?v>=wanted-.045:v<=wanted+.045;}',arg=[axis,wanted,direction],timeout=15000,polling=16)
+       finally:page.keyboard.up(key)
+      v=ev('Realm.test.worldDiveStatus()');p=ev('Realm.diagnostics.adventure.player');assert abs(v['y']-target[1])<.15 and abs(p['x']-target[0])<.15 and abs(p['z']-target[2])<.15;assert ev('()=>{const p=Realm.diagnostics.adventure.player;return RealmWorldFoundations.swimClear(RealmWorldFoundations.definition("atlantis").dive,p.x,Realm.test.worldDiveStatus().y,p.z)}');mark('actual held-key swim '+str(target))
+     route=[[8,-.5,-19.5],[8,-1.05,-22],[8,-2.55,-28],[8,-2.7,-29.5],[8,-2.7,-32],[8,-2.7,-35],[8,-2.7,-32],[8,-2.7,-29.5],[8,-1.8,-29],[12,-1.8,-29],[12,-1.4,-38.4],[12,-1.4,-39.3]]
+     for target in route:
+      swim_to(target);step=next((s for s in d['steps'] if [s['x'],s['y'],s['z']]==target),None)
+      if step:
+       local();shot(step['id']+'-inspection');suffix=':'+step['correctChoice'] if step.get('correctChoice') else '';page.locator('[data-rpg="trail-step"][data-id="'+step['id']+suffix+'"]').click();assert step['id'] in state()['realmTrails']['records'][d['id']]['steps'];close()
+       page.keyboard.press('v');shot(step['id']+'-diorama');page.keyboard.press('v');shot(step['id']+'-third');measure('Atlantis '+step['id'])
+     page.keyboard.press('e');assert ev('Realm.diagnostics.world.dive') is None;claim(d)
+    elif args.variant=='earthlands':
+     enter('earthlands');d=ev('RealmTrails.definitions().find(d=>d.realm==="earthlands")');walk(d['giver']['x'],d['giver']['z']);local();shot('coastward-terms')
+     if not state()['realmTrails']['records'][d['id']]['accepted']:page.locator('[data-rpg="trail-accept"]').click()
+     close();view('third',yaw=.25)
+     route=[[-7,97],[0,97],[0,92],[0,16],[-10,15],[-10,-12],[-25,-12],[-25,-11],[-25,-12],[-10,-12],[-10,-34],[1,-35],[14,-34],[14,-19],[28,-19],[28,-16],[30,-25],[28,-19],[14,-19],[14,15],[0,16],[0,92],[0,97],[-3,97],[-7,97]]
+     for x,z in route:
+      walk(x,z);step=next((s for s in d['steps'] if s['x']==x and s['z']==z and s['id'] not in state()['realmTrails']['records'][d['id']]['steps']),None)
+      if step:local();page.locator('[data-rpg="trail-step"][data-id="'+step['id']+'"]').click();assert step['id'] in state()['realmTrails']['records'][d['id']]['steps'];close();shot(step['id']+'-collected')
+      if (x,z)==(0,16):view('diorama',yaw=1.25);shot('coastward-channel-diorama');view('third',yaw=.25)
+     measure('Coastward settlement after actual materials circuit');claim(d)
     elif args.variant=='cosmos':
      enter('cosmos');d=ev('RealmTrails.definitions().find(d=>d.realm==="cosmos")');walk(d['giver']['x'],d['giver']['z']);local();shot('cosmos-terms');page.locator('[data-rpg="trail-accept"]').click();close();view('third',yaw=.3)
      for s in d['steps']:
