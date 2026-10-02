@@ -207,13 +207,13 @@
    for(const [x,z] of [[-3,25],[3,25],[-10,-4],[10,-4],[-3,-25],[-3,-39],[15,-43]]) lamp(x,z);
    roof('pilot-school',-9,23,6,7,3.3,0x658e88);
    // Open-front civic canopy; the three actual walls are supplied solids.
-   box(0,height(0,-12)+4.1,-12,27,.2,19,0x839b90,{cutaway:true,structureId:'farwake-civic-canopy'});
+   box(0,height(0,-12)+4.1,-12,27,.2,19.7,0x839b90,{cutaway:true,structureId:'farwake-civic-canopy'});
    for(const x of [-13.5,13.5]) {
     box(x,height(x,-12)+3.7,-12,.5,.22,16,0xb7a46e,{solidId:x<0?'farwake-court-west':'farwake-court-east'});
    }
    for(let x=-11;x<=11;x+=2.75) box(x,height(x,-21.8)+4.27,-21.8,1.8,.2,.65,0xbaa26b,{cutaway:true});
-   for(const z of [-8,-14,-20]) for(const x of [-13.5,13.5]) {
-    box(x,height(x,z)+2.1,z,.5,3.6,.55,0x94a99d,{solidId:x<0?'farwake-court-west':'farwake-court-east'});
+   for(const z of [-8,-14,-19.6]) for(const x of [-13.5,13.5]) {
+    box(x,height(x,z)+1.8,z,.5,3.6,.55,0x94a99d,{solidId:x<0?'farwake-court-west':'farwake-court-east'});
    }
    add('ring',9.5,height(9.5,-12)+1.8,-12,1.25,1.25,.22,0xd6bc7a,{solidId:'tide-dial-base',r:[0,Math.PI/2,0]});
    box(9.5,height(9.5,-12)+1.8,-12,.07,.9,.12,claimed?0x77c6bb:0xc7cda2,{solidId:'tide-dial-base',em:.2});
