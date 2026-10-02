@@ -53,7 +53,7 @@ test('Oren supplies earned through the orchard persist without consuming ordinar
  const reopened=new C.Simulation(before);assert.equal(reopened.room,null);assert.equal(reopened.earthTrip,undefined);assert.deepEqual(reopened.state.adventure.starter.bundles,['river-rope']);assert.equal(reopened.state.adventure.starter.reward,null);
 });
 test('Earth scenery cannot overlap walking ground or the close third-person camera corridor',()=>{
- require('../src/engine.js');require('../src/drover-art.js');require('../src/millwright-art.js');require('../src/mill-gate-art.js');require('../src/bridge-art.js');require('../src/earth-art.js');const hills=[];
+ require('../src/engine.js');require('../src/drover-art.js');require('../src/millwright-art.js');require('../src/mill-gate-art.js');require('../src/bridge-art.js');require('../src/quarry-art.js');require('../src/earth-art.js');const hills=[];
  const art={e:{},map:{},begin(){},commit(){},box(){},beam(){},bench(){},add(shape,x,y,z,sx,sy,sz){(this.map[shape]||(this.map[shape]=[])).push({});if(y===-1.2)hills.push({x,z,sx,sz});}};
  globalThis.RealmEarthArt.make(art);assert.ok(hills.length>=10);
  for(const hill of hills)for(const ground of E.PATCHES)assert.ok(Math.abs(hill.x-ground.x)>hill.sx+ground.w/2+8||Math.abs(hill.z-ground.z)>hill.sz+ground.d/2+8,'distant scenery overlaps the ground or camera corridor: '+JSON.stringify(hill));
