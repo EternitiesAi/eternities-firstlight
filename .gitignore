@@ -40,3 +40,6 @@ evidence10/
 
 # Temporary standalone host emitted by the gathering component browser test.
 /COMPONENT_FIXTURE.html
+
+# The portable review evidence needs its own checked-in byte inventory.
+!docs/evidence/realm-outings-2026-10-02/MANIFEST.json

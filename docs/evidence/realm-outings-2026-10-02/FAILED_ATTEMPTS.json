@@ -46,6 +46,16 @@
       "name": "first north browser selector/catchup",
       "type": "browser driver failure",
       "result": "selector and actual catch-up repaired; failed attempts01/02 and successful03 retained on D"
+    },
+    {
+      "name": "portable receipt update locale decode",
+      "type": "delivery helper failure",
+      "result": "The first documentation update used the Windows default cp1252 read, which refused an existing UTF-8 character. Explicit UTF-8 reads repaired the bounded update. Gameplay and personal data were untouched."
+    },
+    {
+      "name": "first remote evidence preflight at b2a055c",
+      "type": "delivery packaging omission",
+      "result": "The fresh remote clone correctly failed preflight because the inherited broad MANIFEST.json ignore rule excluded the portable manifest. A narrow path exception now includes it; the original b2a055c clone is retained. No fresh gameplay verification ran in that failed preflight, and its result is not reported as a game pass."
     }
   ],
   "remaining_limits": [
