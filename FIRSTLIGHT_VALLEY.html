@@ -209,6 +209,14 @@ body.in-earth .place-title #place-kicker{color:#d7bd83}
 .in-world-foundation #tracked-open small{letter-spacing:.08em}.in-world-foundation #tracked-open strong{font-size:19px}.in-world-dive #world-depth{top:82px;bottom:auto;text-align:center;max-width:530px;font-size:12px}.in-world-dive .combat-help{visibility:hidden}.in-world-dive #skillbar{pointer-events:none}.in-world-dive #context{max-width:460px}.photo-mode #world-home,.photo-mode #world-labels,.photo-mode #world-depth{display:none!important}@media(max-width:700px){.in-world-dive #world-depth{top:auto;bottom:252px;max-width:85vw;font-size:10px;padding:8px 11px}.in-world-foundation #tracked-open strong{font-size:16px}}
 .rpg-edition.in-world-dive #toast{bottom:225px}@media(max-width:700px){.in-world-dive #world-depth{top:265px;bottom:auto;max-width:calc(100vw - 34px);width:calc(100vw - 54px);box-sizing:border-box}.rpg-edition.in-world-dive #toast{bottom:230px}}
 
+.realm-trail details summary,.world-surveys>summary{cursor:pointer;color:#e1cca3;line-height:1.6}.realm-trail li.done:after{content:none}.realm-trail li>details{margin:2px 0 6px}.realm-trail details[open] p{border-left:2px solid #bba981;padding-left:12px}.trail-brief{font-size:.94em}.world-surveys{margin:18px 0;padding:12px 16px;border:1px solid #657c7466;border-radius:12px}.world-surveys>.world-work{margin-bottom:0}.realm-fitting{max-width:920px;margin:12px auto}.realm-fitting button{margin:6px 8px 6px 0}
+
+.trail-instrument{max-width:520px;padding:15px 18px;background:#263d3c;border:1px solid #698982;border-radius:10px}.trail-instrument svg{display:block;width:220px;height:135px;margin:auto}.trail-instrument label,.trail-instrument output{display:block;margin:12px 0}.trail-instrument input{display:block;width:100%;margin-top:10px;accent-color:#aaccc0}.trail-instrument.aligned{border-color:#c8d99a}.trail-instrument output{font-variant-numeric:tabular-nums;color:#d4e6cb;font-size:.95em}
+
+/* Workspace icon defaults must not shrink route maps or real instruments. */
+#rpg-window .world-atlas svg{display:block;width:100%;height:auto;max-height:530px}
+#rpg-window .trail-instrument svg{display:block;width:220px;height:135px;margin:auto}
+
 </style></head>
 <body><canvas tabindex="0" id="world" aria-label="Interactive isometric Firstlight Valley. Click to walk, drag to orbit, scroll to zoom. Use the Explore menu for accessible destinations."></canvas><canvas tabindex="0" id="map-fallback" aria-label="Interactive map fallback. Click to move or choose a destination in Explore."></canvas><div id="labels" aria-hidden="true"></div>
 <div id="hud"><header class="brand"><span class="seal" aria-hidden="true">Σ</span><div><div class="wordmark">ETERNITIES</div><div class="tagline">A window into another life.</div></div></header>
@@ -1361,6 +1369,432 @@ function divingStatus(sim,cameraEye){return sim.worldDive?{y:sim.worldDive.y,dep
 const api={IDS,OBJECTIVES,GATE,definitions,definition,handles,fresh,validate,height,playerHeight,land,walkable,segment,near,atRoad,preview,cancel,enter,leave,rewards,command,enemies,defeat,recover,pick,diveEnter,diveExit,swim,swimClear,medium,divingStatus};
 G.RealmWorldFoundations=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
+</script><script>/* Original, bounded adaptations of the 2026-09-14 Heaven/Hell designs.
+ * These provisional names are game-fiction proposals, not founder-ratified
+ * manuscript identities. Shared trail rules own acceptance, proximity,
+ * combat windows, escort movement, persistence and every explicit claim.
+ * Loading this catalogue never starts a task, grants property or changes a
+ * survey. The existing upper terraces and inner foundry remain closed. */
+(function(G){'use strict';
+const FLOOR=1.57;
+const step=(id,name,kind,x,z,requires,optional,text)=>({id,name,kind,x,z,y:FLOOR,medium:'dry',requires,optional,text});
+const definitions=[{
+ id:'heaven-broken-choir-v1',realm:'heaven',title:'The Broken Choir · a garden answer',
+ summary:'Rielle: “The public instrument still misses its last stroke. Three grounded relays will isolate the foreign bearing. Disable the service core, then fit the Garden return arm.” Accept this bounded repair explicitly. Its once-only fee is 30 XP, 12 coins and 2 ore, claimed from Rielle after the physical repair. Any first trail claim opens the separate, once-per-character workshop fitting: 3 ore and 8 coins for +3 attack on your selected owned blade or bow. Regional names and this compressed maintenance encounter remain provisional.',
+ danger:'The core wakes only after this accepted task’s three relays are set. It is a malfunctioning maintenance construct, not a civilian. Its pulse has a visible windup and locked direction; move or Brace, then strike the exposed bearing during its real recovery. Attacks outside recovery do not damage the bearing. The optional spillway extends each recovery opening by 0.8 seconds. Sound is optional; shape and text carry the cues. The road home remains free before, during and after the encounter.',
+ giver:{id:'heaven-rielle',name:'Rielle · bellwright',x:-14,z:5},
+ reward:{xp:30,coins:12,ore:2},
+ completionText:'Rielle: “A full return stroke. Someone with tired hands can use it now.” The Garden instrument answers with a complete visible stroke and a modest restored fitting. The service core stays disabled for this story. Claim the declared 30 XP, 12 coins and 2 ore explicitly from Rielle; the separate finite workshop fitting is now available if this is your first trail claim. The summit, maker’s larger history and full Crownkeeper expedition remain ahead.',
+ steps:[
+  step('spillway','Set Yselle’s service spillway','interact',25,-15,[],true,
+   'Optional preparation. Yselle: “Send the return pressure into the side basin; the bearing will take longer to rise.” Operate the marked service handle east of the Garden. This costs no material and extends the core’s actual recovery opening by 0.8 seconds. You can omit it and still finish; continue north to the three relay handles.'),
+  step('relay-west','Set the west relay','interact',-8,-88,[],false,
+   'Operate the west handle on the broad grounded apron beyond the Mirror Causeway. Its single notch marks the first isolated support. Set the east and crown relays in either order; all three are required before the service core wakes. The west Arcade service walk remains another way back to the Garden.'),
+  step('relay-east','Set the east relay','interact',8,-88,[],false,
+   'Operate the east handle opposite the west relay. Its two notches identify it without pitch or color alone. Set the west and crown relays if either is still unset. The bearing is isolated only when all three supports have been recorded for this accepted repair.'),
+  step('relay-crown','Set the crown relay','interact',0,-102,[],false,
+   'Operate the three-notch handle on the grounded northern apron, south of the closed terrace. Complete any remaining west/east relay. When the third handle is set, the service core at (0, -95) becomes the declared encounter; the summit road stays closed and the route south stays open.'),
+  step('disable-core','Disable the imposed bearing','defeat',0,-95,['relay-west','relay-east','relay-crown'],false,
+   'Target the Crownkeeper service core through ordinary combat controls. Its stability falls only during its recovery after a real pulse. Move or Brace through the telegraphed attack, then use your owned blade or bow on the exposed bearing. The optional spillway adds 0.8 seconds to that window. At zero stability the construct folds; return south to the Garden return arm.'),
+  step('garden-repair','Fit the Garden return arm','interact',0,-1,['disable-core'],false,
+   'At the Garden response plate, physically fit the released return arm. Rielle: “Leave the hinge where the next pair of hands can reach it.” The repair stops at this useful local instrument; it opens no summit terrain. Return to Rielle at the nearby west bench and choose the explicit claim for the stated fee.')
+ ],
+ enemy:{id:'heaven-choir-core-v1',name:'Crownkeeper service core',kind:'sentinel',x:0,z:-95,hp:90,damage:9,
+  spawnAfter:['relay-west','relay-east','relay-crown'],defeatStep:'disable-core',openingBonusStep:'spillway'}
+},{
+ id:'hell-open-cage-v1',realm:'hell',title:'The Open Cage · a return that holds',
+ summary:'Istra: “Neris can leave the open cell. The claim-marked route is what she does not trust. Hear her account, cool the service branch and set both return clamps. Then disable the route Reeve and walk with her to this Refuge.” Accept this bounded rescue explicitly. Its once-only fee is 35 XP, 14 coins and 3 ore, claimed from Istra only after Neris reaches safety. Any first trail claim opens the separate, once-per-character workshop fitting: 3 ore and 8 coins for +3 attack on your selected owned blade or bow. Names and the compressed route adaptation remain provisional.',
+ danger:'A separate route Reeve activates near the west return leg only after contact, cooling and both clamps. It is not the optional eastern salvage sentinel, and disabling it grants no enemy loot. Its windup, direction and recovery use ordinary combat cues. No fight seals the player’s free road home. Neris waits when you are more than 10 route units away; walk back to her to continue. After safety is established, an explicitly labelled assisted extraction is a fallback if escort routing fails; it must bring Neris into the Refuge and never pretend she walked a route she did not.',
+ giver:{id:'hell-istra',name:'Istra · return keeper',x:-10,z:24},
+ reward:{xp:35,coins:14,ore:3},
+ completionText:'Neris: “Keep the measurements as they are, including the ones I once helped conceal.” Istra records her safe arrival at the Kiln Refuge. Safety is not a verdict on her earlier complicity. Claim the declared 35 XP, 14 coins and 3 ore explicitly from Istra; the separate finite workshop fitting is now available if this is your first trail claim. The witness remains safe for this completed story. Veyr, the Writ Engine and any allegiance or restitution choice remain unresolved.',
+ steps:[
+  step('contact-neris','Hear Neris at the open cell','interact',-36,-102,[],false,
+   'Reach Neris on the west Bell Yard apron, outside the closed foundry wall. Neris: “The door is open. The route still records me as theirs. Check it before asking me to run.” Her preserved measurements identify a cooling handle and two return clamps. Leave her here while you establish safety; first operate cooling at (-34, -70).'),
+  step('cooling','Cool the return service branch','interact',-34,-70,['contact-neris'],false,
+   'Operate the marked cooling handle beside Moth Cut’s dry service route. Tovan’s measurement sets a finite safe pressure state; this is required route preparation, not an optional steam effect or a new water-diversion choice. Continue to the west clamp at (-30, -86) and east clamp at (14, -100), in either order.'),
+  step('clamp-west','Set the west return clamp','interact',-30,-86,['contact-neris','cooling'],false,
+   'Seat the west clamp’s paired pins at the service approach to Bell Yard. One set clamp is insufficient: inspect the east clamp as well. When both are set after cooling, the route Reeve at (-35, -90) activates visibly. Keep the open western road behind you; no door closes.'),
+  step('clamp-east','Set the east return clamp','interact',14,-100,['contact-neris','cooling'],false,
+   'Seat the east clamp on the Bell Yard’s grounded loading apron. Return across the open yard to the west clamp if it remains unset. Both verified clamps and cooling make the rescue route usable; the Reeve at (-35, -90) must then be disabled before Neris is asked to follow.'),
+  step('disable-reeve','Disable the route Reeve','defeat',-35,-90,['contact-neris','cooling','clamp-west','clamp-east'],false,
+   'Target the newly activated route Reeve with ordinary blade or bow combat. Read its windup, move or Brace, and attack during its recovery. This local machine grants no separate XP, coins, ore or drop. The eastern salvage sentinel is unrelated. After the Reeve folds, return to Neris at (-36, -102) and explicitly ask her to follow.'),
+  step('escort-start','Invite Neris onto the verified route','interact',-36,-102,['contact-neris','cooling','clamp-west','clamp-east','disable-reeve'],false,
+   'Neris: “Two clamps, cooling, and the inspector quiet. I can try that road with you.” Ask her to follow only after all declared safety work is complete. Walk south along Moth Cut, around the culvert and down the western service road, then enter the Refuge by its open south side. She moves at 2.5 route units per second and waits beyond 10; stay close or walk back. The explicit assisted-extraction fallback is available after this safety checkpoint if the route fails.'),
+  step('refuge-arrival','Bring Neris into Kiln Refuge','escort',-12,27,['escort-start'],false,
+   'Automatic only when Neris herself reaches the marked safe arrival beside Istra inside the Refuge. Your arrival alone cannot complete the rescue. If she has waited, return along the service path to her; if routing has failed, use the explicitly labelled assisted extraction and verify her actual Refuge arrival. Then speak to Istra and choose the explicit claim. Your own road home remains free even while this work is unfinished.')
+ ],
+ enemy:{id:'hell-return-reeve-v1',name:'Route Reeve',kind:'sentinel',x:-35,z:-90,hp:90,damage:9,
+  spawnAfter:['contact-neris','cooling','clamp-west','clamp-east'],defeatStep:'disable-reeve'},
+ escort:{startStep:'escort-start',arrivalStep:'refuge-arrival',route:[
+  {x:-36,z:-102},{x:-31,z:-83},{x:-31,z:-58},{x:-31,z:-15},{x:-29,z:32},{x:-12,z:27}
+ ],name:'Neris',waitDistance:10,speed:2.5}
+}];
+function freeze(value){if(value&&typeof value==='object'){Object.values(value).forEach(freeze);Object.freeze(value);}return value;}
+const api=freeze({definitions});
+G.RealmTrailsNorth=api;
+if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* Finite Coastward and Bellglass outings. Pure authored terms, never save authority.
+ * Recovered design packages supply the civic/landscape premise; these local
+ * commissions, coordinates and reward values are original implementation terms.
+ */
+(function(G){'use strict';
+function freeze(value){
+ if(value&&typeof value==='object'&&!Object.isFrozen(value)){
+  Object.values(value).forEach(freeze);Object.freeze(value);
+ }
+ return value;
+}
+const definitions=freeze([
+ {
+  id:'atlantis-bellglass-chart-v1',realm:'atlantis',
+  title:'A Chart With Room for Depth',
+  summary:'Sahra needs one visitor chart that distinguishes the old lower road, the modern wet lane and Bellglass’s air court. Read both depth marks, correct the chart in the court, and add a modern marker beside the old masonry.',
+  danger:'This job enters the existing bounded gallery. F ascends, G descends, and depth holds when released. The visitor envelope has no breath timer. Bellglass’s doorway and the east wet lane remain the way out; free passage home remains available.',
+  giver:{id:'sahra',name:'Sahra · instrument-maker',x:-5,z:-10},
+  reward:{xp:30,coins:12,ore:2},
+  completionText:'“There. A traveler can see the depth before choosing the lane. The older mark keeps its place, and the new one says what is safe today.” Sahra keeps the corrected visitor chart. This small commission does not settle the missing cargo or the harbour’s disputed receipts.',
+  steps:[
+   {id:'upper-gauge',name:'Read the upper visitor gauge',kind:'interact',x:8,z:-22,y:-1.05,medium:'water',requires:[],optional:false,
+    text:'The bronze gauge labels a shallower visitor depth. Read it from the water at this level; the public deck overhead is a separate road. Sahra’s instrument records this first depth without taking any material.'},
+   {id:'lower-masonry',name:'Compare the old lower-road mark',kind:'interact',x:8,z:-28,y:-2.55,medium:'water',requires:[],optional:false,
+    text:'Descend to the older worked-stone mark. Its lower depth differs from the visitor gauge. The old address is still useful history: copy the mark, leave the masonry intact, and carry both readings to Bellglass.'},
+   {id:'depth-chart',name:'Correct the chart in the Bellglass air court',kind:'interact',x:8,z:-35,y:-2.7,medium:'court',requires:['upper-gauge','lower-masonry'],optional:false,
+    text:'The two readings cannot share one flat route line. At the dry court desk, choose a chart that names both depth layers, marks their connection and shows the court’s doorway. You can correct a mistaken choice without spending supplies.',
+    choices:[
+     {id:'one-flat-line',label:'Draw one flat line through every marker',text:'The marks have different measured depths. One flat line hides the change and makes the court look like part of the wet lane. Keep the readings and try another chart.'},
+     {id:'depth-layers',label:'Show two depth layers, their connection and the air-court doorway',text:'The chart distinguishes the shallower visitor gauge, the lower old road and the dry court. It also marks the east wet lane to the far landing. These lines describe the actual bounded passage.'},
+     {id:'erase-old-road',label:'Erase the old mark and draw only the modern lane',text:'The modern lane needs a clear marker, but the old address is still evidence. Add the present safe route without deleting the lower-road record. No supplies are spent by this choice.'}
+    ],correctChoice:'depth-layers'},
+   {id:'modern-marker',name:'Fit the modern landing marker',kind:'interact',x:12,z:-38.4,y:-1.4,medium:'water',requires:['depth-chart'],optional:false,
+    text:'Leave through Bellglass’s open doorway, follow the wet east lane, and place the new marker beside the far landing. It names today’s visitor route; the old lower-road mark remains. Return to Sahra on the dry civic road to claim the declared payment.'}
+  ]
+ },
+ {
+  id:'earthlands-coastward-materials-v1',realm:'earthlands',
+  title:'Wood, Reed and a Road Home',
+  summary:'Vessa offers one supply commission across Coastward’s coppice and shore spurs. Prepare a fallen bough, a small reed bundle and loose shore stone, then pack the job supplies beside the bridge. The paid bundle uses existing crafting materials.',
+  danger:'The coppice has one territorial skitter farther south. The northern lip of the spur gives a clear approach to the fallen bough. No fight is required. Stay on the supported road and shore overlook; this outing adds no Earth swimming, boats or harvesting of standing trees.',
+  giver:{id:'vessa',name:'Vessa · bridge keeper',x:-7,z:97},
+  reward:{xp:25,coins:10,ore:0,materials:{wood:6,fiber:4,stone:2}},
+  completionText:'“Sound bough, tied reeds, loose stone. You brought back useful things without taking the shelter trees.” Vessa releases the six timber, four meadow fibre and two stone from this one commission. They can supply an ashwood trail bow at an existing workbench, or another existing recipe you choose. The road and bridge stay open.',
+  steps:[
+   {id:'fallen-bough',name:'Prepare the fallen coppice bough',kind:'interact',x:-25,z:-11,y:1.57,medium:'dry',requires:[],optional:false,
+    text:'Follow the north side of the coppice spur to the loose fallen bough. Trim and tie the sound pieces for Vessa’s order. The standing woodland trees and the existing homestead resource nodes are untouched; these pieces belong to the accepted job until its claim.'},
+   {id:'shore-reeds',name:'Tie the shore reed bundle',kind:'interact',x:28,z:-16,y:1.57,medium:'dry',requires:[],optional:false,
+    text:'On the supported shore overlook, gather the marked cut reeds and tie them above the damp ground. Keep the living bank cover in place. This finite bundle is an ordinary meadow-fibre supply, not a new currency or an unlimited harvest.'},
+   {id:'shore-stone',name:'Sort the loose shore stone',kind:'interact',x:30,z:-25,y:1.57,medium:'dry',requires:[],optional:false,
+    text:'Sort the small loose stones from the marked dry stack. Leave the overlook foundation where it is. These two pieces are for Vessa’s order; Darric’s reserved public stone, the quarry story and all earlier payouts keep their separate ownership.'},
+   {id:'road-pack',name:'Pack the three supplies by the bridge',kind:'interact',x:-3,z:97,y:1.57,medium:'dry',requires:['fallen-bough','shore-reeds','shore-stone'],optional:false,
+    text:'Return by the east woodland road and the physical timber bridge. Tie the three prepared supplies into one load at the arrival bank, then speak to Vessa nearby. Packing records the completed job; the declared materials enter your ordinary inventory only when its once-only claim succeeds.'}
+  ]
+ }
+]);
+const api={definitions};G.RealmTrailsSouth=api;
+if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* A finite Near Expanse comparator commission. Pure authored terms, not save
+ * authority or an astronomical model. The fixed image and crown are existing
+ * submitted art anchors; their local XZ separation supplies the dial readings.
+ */
+(function(G){'use strict';
+function freeze(value){
+ if(value&&typeof value==='object'&&!Object.isFrozen(value)){
+  Object.values(value).forEach(freeze);Object.freeze(value);
+ }
+ return value;
+}
+const targets=[{x:-52,z:-110},{x:3,z:-49}];
+function separation(x,z){
+ const a=Math.atan2(targets[0].x-x,targets[0].z-z);
+ const b=Math.atan2(targets[1].x-x,targets[1].z-z);
+ return Math.abs(Math.atan2(Math.sin(a-b),Math.cos(a-b)))*180/Math.PI;
+}
+function instrument(x,z){
+ return {min:0,max:90,target:separation(x,z),tolerance:2,initial:45,
+  targetLabels:['fixed sky image','observatory crown'],
+  targets:targets.map(p=>({...p}))};
+}
+const definitions=freeze([
+ {
+  id:'cosmos-split-bearing-v1',realm:'cosmos',
+  title:'Two Stations, One Honest Bearing',
+  summary:'Teren needs a comparator scale that names the observer’s station. Adjust a real sight frame on each road, compare the fixed sky image with the observatory crown, then fit the two accepted readings at the service arm. Return to Three Lamps for one declared payment.',
+  danger:'Both sight stations and the service arm stand on the existing dry roads. Walk around the central ridge and visible cover; the sky image supplies a view, not ground or a road. There is no timed alignment, telescope journey or requirement to leave the Near Expanse.',
+  giver:{id:'lamps',name:'Teren · route keeper',x:3,z:7},
+  reward:{xp:25,coins:10,ore:2},
+  completionText:'“Two stations, two readings, and both named. That is a scale another traveler can use.” Teren pays for this local comparator fitting once. The image’s changed relation to the crown is recorded; its distance, origin and any road beyond it remain unknown.',
+  steps:[
+   {id:'west-sight',name:'Align the west-road comparator',kind:'interact',x:-14,z:-28,y:4.343333333333334,medium:'dry',requires:[],optional:false,
+    text:'Stand at the west sight frame and turn its comparator scale. The two arms refer to the fixed sky image’s centre and the observatory crown’s axis. Match their local horizontal separation within two scale degrees, then record the setting. A mismatched setting keeps the job open and spends nothing.',
+    instrument:instrument(-14,-28)},
+   {id:'east-sight',name:'Align the east-road comparator',kind:'interact',x:14,z:-28,y:4.343333333333334,medium:'dry',requires:[],optional:false,
+    text:'Reach the east sight frame by the supported road and Common Landing. Adjust this scale from the new station: the same authored image and crown have a different local separation here. Match the two arms within two scale degrees and record this station’s reading. The first reading does not stand in for the second.',
+    instrument:instrument(14,-28)},
+   {id:'service-arm',name:'Fit both readings at the observatory service arm',kind:'interact',x:-1,z:-43,y:4.77,medium:'dry',requires:['west-sight','east-sight'],optional:false,
+    text:'At the open service arm beside the observatory, fit the two accepted station scales to one comparator chart. Keep the station names beside their readings. This is a local view comparison, not a measurement of astronomical distance or proof of a sky road. Return down either grounded approach to Teren at Three Lamps for the declared once-only payment.'}
+  ]
+ }
+]);
+const api={definitions};G.RealmTrailsCosmos=api;
+if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* Bounded once-only realm stories. Presentation never manufactures accepted facts. */
+(function(G){'use strict';
+const clone=o=>JSON.parse(JSON.stringify(o)),actors=new WeakMap(),dials=new WeakMap(),dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
+const fail=error=>({ok:false,error});
+function definitions(){const north=G.RealmTrailsNorth||(typeof require==='function'?require('./realm-trails-north.js'):null),south=G.RealmTrailsSouth||(typeof require==='function'?require('./realm-trails-south.js'):null),cosmos=G.RealmTrailsCosmos||(typeof require==='function'?require('./realm-trails-cosmos.js'):null);return[...north.definitions,...south.definitions,...cosmos.definitions];}
+const definition=id=>definitions().find(d=>d.id===id)||null;
+const record=()=>({accepted:false,steps:[],settings:{},checkpoint:0,escortMode:'follow',assisted:false,claimed:false});
+function fresh(){return{version:1,records:Object.fromEntries(definitions().map(d=>[d.id,record()]))};}
+function required(d){return d.steps.filter(s=>!s.optional).map(s=>s.id);}
+function validate(raw){
+ if(raw===undefined)return fresh();const no=why=>{throw Error('Invalid realm trails: '+why);};
+ if(!raw||raw.version!==1||!raw.records||typeof raw.records!=='object'||Array.isArray(raw.records)||Object.keys(raw.records).some(id=>!definition(id)))no('version or records');
+ const out=fresh();for(const d of definitions()){
+  const r=raw.records[d.id];if(!r||typeof r!=='object')no(d.id);
+  for(const k of['accepted','claimed','assisted'])if(typeof r[k]!=='boolean')no(k);
+  if(!Array.isArray(r.steps)||new Set(r.steps).size!==r.steps.length||r.steps.some(id=>!d.steps.some(s=>s.id===id)))no('steps');
+  if(r.steps.some(id=>d.steps.find(s=>s.id===id).requires.some(p=>!r.steps.includes(p))))no('prerequisites');
+  if(!['follow','wait'].includes(r.escortMode)||!Number.isSafeInteger(r.checkpoint)||r.checkpoint<0||r.checkpoint>=(d.escort?.route.length||1))no('escort checkpoint');
+  if(!r.accepted&&(r.steps.length||r.claimed||r.checkpoint||r.assisted))no('unaccepted history');
+  if(d.escort){if(r.checkpoint>0&&!r.steps.includes(d.escort.startStep)||r.assisted&&!r.steps.includes(d.escort.arrivalStep)||r.steps.includes(d.escort.arrivalStep)!==(r.checkpoint===d.escort.route.length-1))no('arrival history');}
+  else if(r.checkpoint||r.assisted||r.escortMode!=='follow')no('foreign escort');
+  const settings=r.settings===undefined?{}:r.settings;if(!settings||typeof settings!=='object'||Array.isArray(settings))no('instrument settings');
+  for(const[id,value]of Object.entries(settings)){const instrument=d.steps.find(s=>s.id===id)?.instrument;if(!instrument||!r.steps.includes(id)||!Number.isFinite(value)||value<instrument.min||value>instrument.max||Math.abs(value-instrument.target)>instrument.tolerance)no('unearned calibration');}
+  if(d.steps.some(s=>s.instrument&&r.steps.includes(s.id)&&!Object.hasOwn(settings,s.id)))no('missing calibration');
+  if(r.claimed&&!required(d).every(id=>r.steps.includes(id)))no('unearned claim');
+  out.records[d.id]={accepted:r.accepted,steps:d.steps.filter(s=>r.steps.includes(s.id)).map(s=>s.id),settings:{...settings},checkpoint:r.checkpoint,escortMode:r.escortMode,assisted:r.assisted,claimed:r.claimed};
+ }return out;
+}
+function at(sim,p,radius=2.8){
+ if(!p||![sim.state.player.x,sim.state.player.z,p.x,p.z,radius].every(Number.isFinite)||radius<0||radius>10||dist(sim.state.player,p)>radius)return false;const W=G.RealmWorldFoundations;
+ if(p.medium==='water'||p.medium==='court'){
+  if(!sim.worldDive||![W.playerHeight(sim),p.y].every(Number.isFinite)||Math.abs(W.playerHeight(sim)-p.y)>.38||!W.definition(sim.room)?.dive||!W.swimClear(W.definition(sim.room).dive,sim.state.player.x,W.playerHeight(sim),sim.state.player.z))return false;
+  const body=W.medium(sim,[sim.state.player.x,W.playerHeight(sim)+.85,sim.state.player.z]);
+  return p.medium==='water'?body==='water':body==='air';
+ }
+ return !sim.worldDive&&W.walkable(sim.room,sim.state.player.x,sim.state.player.z);
+}
+function commit(sim,candidate,io,text){
+ if(candidate.adventure.revision>=1e9||candidate.nextEvent>=Number.MAX_SAFE_INTEGER-1)return fail('Export this world before continuing: record limit reached.');
+ candidate.adventure.revision++;candidate.journal.push({seq:candidate.nextEvent++,day:candidate.day,hour:candidate.hour,kind:'realm-trail',text:text.slice(0,350)});if(candidate.journal.length>200)candidate.journal.shift();
+ let checked,saved;try{checked=G.RealmCore.validate(candidate);saved=io.save(checked);}catch(e){return fail('Trail save refused: '+e.message);}if(!saved?.ok)return fail(saved?.error||'Trail save refused. Nothing was paid or spent.');
+ sim.state.realmTrails=checked.realmTrails;Object.assign(sim.state.adventure,checked.adventure);Object.assign(sim.state.sandbox,checked.sandbox);sim.state.journal=checked.journal;sim.state.nextEvent=checked.nextEvent;
+ return{ok:true,text};
+}
+function setting(sim,quest,step){const d=definition(quest),s=d?.steps.find(s=>s.id===step);return sim.state.realmTrails.records[quest]?.settings?.[step]??dials.get(sim)?.[quest+':'+step]??s?.instrument?.initial;}
+function adjust(ctx,quest,step,value){
+ const sim=ctx.sim,d=definition(quest),s=d?.steps.find(s=>s.id===step),r=d&&sim.state.realmTrails.records[d.id],instrument=s?.instrument;
+ if(!instrument||!r?.accepted||r.steps.includes(step)||G.RealmWorldFoundations.definition(sim.room)?.id!==d.realm||sim.state.adventure.hp<=0||!at(sim,s)||!s.requires.every(id=>r.steps.includes(id)))return fail('Reach the accepted sight frame before turning its scale.');
+ if(!Number.isFinite(value)||value<instrument.min||value>instrument.max)return fail('Keep this comparator within its declared scale.');
+ const values=dials.get(sim)||{};values[quest+':'+step]=value;dials.set(sim,values);return{ok:true,setting:value,offset:value-instrument.target,aligned:Math.abs(value-instrument.target)<=instrument.tolerance};
+}
+function command(ctx,type,payload,io){
+ const sim=ctx.sim,d=definition(payload?.quest),W=G.RealmWorldFoundations;
+ if(!d||W.definition(sim.room)?.id!==d.realm||sim.state.adventure.hp<=0)return fail('Reach this trail’s realm while able to act.');
+ if(!sim.state.adventure.started)return fail('Collect Oren’s initial expedition kit before taking this trail.');
+ const candidate=sim.snapshot(),r=candidate.realmTrails.records[d.id],beforeLevel=G.RealmAdventure.level(sim.state.adventure);let text,paidReward=null;
+ if(type==='accept'){
+  if(!at(sim,{...d.giver,medium:'dry'}))return fail('Speak to '+d.giver.name+' to accept this work.');
+  if(r.accepted)return{ok:true,duplicate:true,text:'This trail is already accepted. Its progress is retained.'};
+  r.accepted=true;text=d.title+' accepted. Read the route, danger and fixed reward.';
+ }else if(type==='step'){
+  const s=d.steps.find(s=>s.id===payload.step);if(!r.accepted||!s||s.kind!=='interact')return fail('Only an accepted physical interaction can be recorded here.');
+  if(r.steps.includes(s.id))return{ok:true,duplicate:true,text:'This accepted action is already recorded.'};
+  if(!at(sim,s)||!s.requires.every(id=>r.steps.includes(id)))return fail('Reach '+s.name+' and finish its stated preparations.');
+  if(s.correctChoice&&payload.choice!==s.correctChoice)return fail('That chart does not match the measured depth. Compare the two gauges; no materials were spent.');
+  if(s.instrument){const value=payload.setting;if(!Number.isFinite(value)||value<s.instrument.min||value>s.instrument.max||Math.abs(value-s.instrument.target)>s.instrument.tolerance||value!==setting(sim,d.id,s.id))return fail('The split scale is not aligned yet. Turn the physical comparator and check its visible offset before recording.');r.settings[s.id]=value;}
+  r.steps.push(s.id);text=s.text;
+ }else if(type==='claim'){
+  if(r.claimed)return{ok:true,duplicate:true,text:'This trail has already been paid once.'};
+  if(!r.accepted||!required(d).every(id=>r.steps.includes(id))||!at(sim,{...d.giver,medium:'dry'}))return fail('Complete the accepted trail and return to '+d.giver.name+'.');
+  const a=candidate.adventure,inv=candidate.sandbox.inventory,reward=d.reward;
+  if(a.coins+reward.coins>9999||a.ore+reward.ore>9999||Object.entries(reward.materials||{}).some(([k,n])=>!Object.hasOwn(inv,k)||inv[k]+n>G.RealmSandbox.MAX))return fail('Make room for the complete declared reward. Your finished trail remains ready; nothing was changed.');
+  const creditedXP=Math.min(9999-a.xp,reward.xp);a.coins+=reward.coins;a.ore+=reward.ore;a.xp+=creditedXP;for(const[k,n]of Object.entries(reward.materials||{}))inv[k]+=n;
+  paidReward={...reward,xp:creditedXP};r.claimed=true;text=d.title+' complete · +'+creditedXP+' XP · +'+reward.coins+' sunmarks'+(reward.ore?' · +'+reward.ore+' ore':'')+Object.entries(reward.materials||{}).map(([k,n])=>' · +'+n+' '+k).join('')+'. '+(creditedXP<reward.xp?'Stored XP remains at its existing 9999 cap. ':'')+'The declared fee is claimed once.';
+ }else if(type==='escort-wait'||type==='escort-follow'||type==='assist'){
+  if(!d.escort||!r.steps.includes(d.escort.startStep)||r.steps.includes(d.escort.arrivalStep))return fail('There is no active escort on this trail.');
+  const actor=escort(sim);if(!actor||dist(sim.state.player,actor)>3)return fail('Reach Neris at her current safe checkpoint before changing the plan.');
+  if(type==='assist'){r.checkpoint=d.escort.route.length-1;r.steps.push(d.escort.arrivalStep);r.assisted=true;text='You request an assisted extraction over the stabilized route. Neris is safely at the refuge; this was not a walked escort.';}
+  else{r.escortMode=type==='escort-wait'?'wait':'follow';text=r.escortMode==='wait'?'Neris waits here. Speak to her to resume.':'Neris resumes the safe route. Stay within ten paces.';}
+ }else return fail('Unknown trail action.');
+ const result=commit(sim,candidate,io,text);if(result.ok){if(paidReward){result.reward=paidReward;const afterLevel=G.RealmAdventure.level(sim.state.adventure);if(afterLevel>beforeLevel)G.RealmAdventure.notify(sim,'Level '+afterLevel+' · useful work beyond the valley.');}if(type==='assist')actors.delete(sim);G.RealmAdventure.syncScene(sim);}return result;
+}
+function enemies(sim){
+ if(sim.worldDive)return[];const realm=G.RealmWorldFoundations.definition(sim.room)?.id;
+ return definitions().filter(d=>d.realm===realm&&d.enemy).flatMap(d=>{const r=sim.state.realmTrails.records[d.id],e=d.enemy;if(!r.accepted||r.steps.includes(e.defeatStep)||!e.spawnAfter.every(id=>r.steps.includes(id)))return[];
+  return[{...e,trailQuest:d.id,xp:0,coins:0,ore:0,windup:1.35,recovery:1.8+(e.openingBonusStep&&r.steps.includes(e.openingBonusStep)?.8:0)}];});
+}
+function signature(sim){return enemies(sim).map(e=>e.id).join('|');}
+function canDamage(sim,e){return !e.trailQuest||definition(e.trailQuest)?.realm!=='heaven'||e.mode==='recover'&&e.timer>0;}
+function defeat(sim,e){
+ const d=definition(e?.trailQuest),r=d&&sim.state.realmTrails.records[d.id];
+ if(!d||!r.accepted||e.hp!==0||!G.RealmAdventure.runtime(sim).enemies.includes(e)||d.enemy.id!==e.id||G.RealmWorldFoundations.definition(sim.room)?.id!==d.realm)return false;
+ if(r.steps.includes(d.enemy.defeatStep))return true;
+ const candidate=sim.snapshot();candidate.realmTrails.records[d.id].steps.push(d.enemy.defeatStep);
+ const result=commit(sim,candidate,{save:sim.realmTrailSave||(()=>({ok:false,error:"A durable trail saver is required; no checkpoint was recorded."}))},e.name+' disabled through its actual combat opening.');
+ if(!result.ok){e.hp=1;G.RealmAdventure.notify(sim,result.error);return false;}return true;
+}
+function escort(sim){
+ const d=definitions().find(d=>d.escort&&G.RealmWorldFoundations.definition(sim.room)?.id===d.realm),r=d&&sim.state.realmTrails.records[d.id];if(!r?.steps.includes(d.escort.startStep))return null;
+ if(r.steps.includes(d.escort.arrivalStep))return{...d.escort.route.at(-1),yaw:0,walking:false,status:r.assisted?'Arrived by assisted extraction':'Safe at the refuge',quest:d.id};
+ let a=actors.get(sim);if(!a||a.quest!==d.id||a.checkpoint!==r.checkpoint){a={...d.escort.route[r.checkpoint],quest:d.id,checkpoint:r.checkpoint,yaw:0,path:[],walking:false,status:'Stay near Neris',retry:0};actors.set(sim,a);}return a;
+}
+function tick(sim,dt){
+ if(sim.paused||sim.state.adventure.hp<=0)return;const a=escort(sim);if(!a)return;
+ const d=definition(a.quest),r=sim.state.realmTrails.records[d.id];if(r.steps.includes(d.escort.arrivalStep))return;
+ const next=d.escort.route[r.checkpoint+1];if(!next)return;
+ a.walking=false;if(r.escortMode==='wait'){a.status='Waiting · speak to resume';return;}if(dist(a,sim.state.player)>d.escort.waitDistance){a.status='Waiting for you · return to Neris';return;}
+ a.status='Following the stabilized route';
+ if(dist(a,next)>.3){if(!a.path.length)a.path=G.RealmCore.pathfind(a,next,sim.navRoom)||[];if(a.path.length){a.walking=sim.advance(a,a.path,dt,d.escort.speed);}else a.status='Route blocked · speak for assisted extraction';return;}
+ if(sim.state.adventure.elapsed<a.retry)return;a.retry=sim.state.adventure.elapsed+1;
+ const candidate=sim.snapshot(),q=candidate.realmTrails.records[d.id];q.checkpoint++;if(q.checkpoint===d.escort.route.length-1)q.steps.push(d.escort.arrivalStep);
+ const result=commit(sim,candidate,{save:sim.realmTrailSave||(()=>({ok:false,error:"A durable trail saver is required; no checkpoint was recorded."}))},q.steps.includes(d.escort.arrivalStep)?'Neris reached the Kiln Refuge on the walked route.':'Neris reached a safe route checkpoint.');
+ if(result.ok)actors.delete(sim);else a.status='Checkpoint save refused · retrying safely';
+}
+const api={definitions,definition,required,fresh,validate,at,commit,setting,adjust,command,enemies,signature,canDamage,defeat,escort,tick};G.RealmTrails=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* One deliberate finite fitting. Canonical weapon identity and prior work survive. */
+(function(G){'use strict';
+const COST=Object.freeze({ore:3,coins:8}),BONUS=3;
+const fresh=()=>({version:1,weapon:null});
+function validate(raw,a,gear){
+ if(!raw||raw.version!==1||!(raw.weapon===null||typeof raw.weapon==='string'&&a.owned.includes(raw.weapon)&&gear[raw.weapon]?.slot==='weapon'))throw Error('Invalid realm fitting');
+ return{version:1,weapon:raw.weapon};
+}
+function bonus(a,id){return a.realmCraft?.weapon===id?BONUS:0;}
+function command(ctx,weapon,io){
+ const sim=ctx.sim,A=G.RealmAdventure,R=G.RealmTrails,a=sim.state.adventure;
+ const fail=error=>({ok:false,error});
+ if(sim.room||sim.worldDive||!G.RealmSandbox.station(sim.state.sandbox,sim.state.player)||a.hp<=0)return fail('Use an outdoor workbench in Firstlight for this fitting.');
+ if(!R.definitions().some(d=>sim.state.realmTrails.records[d.id].claimed))return fail('Complete and claim a realm trail before fitting its workshop lesson.');
+ if(a.realmCraft.weapon)return fail('This character’s one realm fitting is already on '+A.GEAR[a.realmCraft.weapon].name+'.');
+ if(typeof weapon!=='string'||!Object.hasOwn(A.GEAR,weapon)||A.GEAR[weapon].slot!=='weapon'||!a.owned.includes(weapon))return fail('Choose an owned blade or bow.');
+ if(a.ore<COST.ore||a.coins<COST.coins)return fail('The fitting needs 3 ore and 8 sunmarks. Nothing was spent.');
+ const candidate=sim.snapshot();candidate.adventure.ore-=COST.ore;candidate.adventure.coins-=COST.coins;candidate.adventure.realmCraft={version:1,weapon};
+ return R.commit(sim,candidate,io,'Realm fitting applied to '+A.GEAR[weapon].name+' · +3 attack. Identity, socket and earlier work retained.');
+}
+const api={COST,BONUS,fresh,validate,bonus,command};G.RealmCraft=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* Original read-only work props and ally projection, sharing the rule anchors. */
+(function(G){'use strict';
+const decor={cameraSolid:false,cutaway:false,rough:.88};
+function draw(out,sim,t,art){
+ const realm=G.RealmWorldFoundations.definition(sim.room)?.id,d=G.RealmTrails.definitions().find(d=>d.realm===realm);if(!d)return;
+ const r=sim.state.realmTrails.records[d.id],box=(x,y,z,w,h,depth,c,part)=>out.box.push({p:[x,y,z],s:[w,h,depth],c,...decor,trailPart:part,trailQuest:d.id}),octa=(x,y,z,s,c,part)=>out.octa.push({p:[x,y,z],s:[s,s,s],c,...decor,trailPart:part,trailQuest:d.id});
+ for(const step of d.steps.filter(s=>s.kind==='interact'&&s.id!==d.escort?.startStep)){
+  const complete=r.steps.includes(step.id),c=complete?0x8ec3ad:realm==='hell'?0xc49868:realm==='heaven'?0xc4af7d:0xb0c9c3,y=step.y;
+  if(step.instrument){
+   const i=step.instrument,value=G.RealmTrails.setting(sim,d.id,step.id),bearing=p=>Math.atan2(p.x-step.x,p.z-step.z),ref=bearing(i.targets[1]),signed=Math.atan2(Math.sin(bearing(i.targets[0])-ref),Math.cos(bearing(i.targets[0])-ref)),angle=ref+Math.sign(signed)*value*Math.PI/180,target=ref+signed;
+   box(step.x,y+.48,step.z,.17,.96,.17,0x6c6252,'sight-post');out.disc.push({p:[step.x,y+.96,step.z],s:[.9,.035,.9],c:0xaaa07c,...decor,trailPart:'sight-scale',trailQuest:d.id});
+   for(const[a,c,part]of[[ref,0x927d59,'crown-arm'],[target,0xdac58e,'image-arm'],[angle,complete?0xa7cdb0:0x97c4cd,'comparator-arm']])out.box.push({p:[step.x+Math.sin(a)*.38,y+1.03,step.z+Math.cos(a)*.38],s:[.055,.055,.76],r:[0,a,0],c,...decor,trailPart:part,trailQuest:d.id,setting:value});
+   for(let n=0;n<4;n++){const a=ref+n*Math.PI/6;box(step.x+Math.sin(a)*.43,y+.99,step.z+Math.cos(a)*.43,.05,.055,.05,0xcdbd91,'scale-notch');}
+  }else if(realm==='heaven'){
+   if(step.id==='garden-repair'){box(step.x,y+.12,step.z,.9,.24,.6,c,'repaired-instrument');for(let i=0;i<3;i++)box(step.x-.28+i*.28,y+.3,step.z,.08,.2+i*.07,.48,complete?0xc4ddd0:0x73695a,'instrument-key');out.box.push({p:[step.x,y+.48,step.z-.1],s:[.8,.06,.1],r:[0,0,complete&&!sim.state.settings.reducedMotion ? .22*Math.sin(t*.9) : 0],c:complete?0xd3c294:0x766b57,...decor,trailPart:'garden-return-arm',trailQuest:d.id});}
+   else{box(step.x,y+.22,step.z,.9,.44,.9,0xb5aa91,'relay-base');box(step.x,y+.7,step.z,.2,.6,.2,0x947b55,'relay-lever');octa(step.x,y+1.05,step.z,.22,c,'relay-state');const notches={'relay-west':1,'relay-east':2,'relay-crown':3}[step.id]||0;for(let n=0;n<notches;n++)box(step.x+(n-(notches-1)/2)*.2,y+.28,step.z+.46,.08,.2,.025,0x574f42,'relay-notch');}
+  }else if(realm==='hell'){
+   if(step.id.includes('contact'))continue;
+   box(step.x,y+.2,step.z,1.1,.4,.8,0x494b49,'route-clamp');box(step.x,y+.58,step.z,.16,.5,.18,0x989587,'clamp-handle');box(step.x,y+.7,step.z,.75,.12,.16,c,'safety-bar');
+  }else if(realm==='atlantis'){
+   box(step.x-.5,y+.5,step.z,.12,1,.12,0x4e7371,'depth-post');box(step.x,y+.62,step.z,.9,.55,.05,c,'depth-plate');for(let i=0;i<3;i++)box(step.x-.28+i*.26,y+.63,step.z+.04,.055,.25,.018,0xf1dfb1,'depth-notch');
+  }else if(realm==='cosmos'){
+   box(step.x,y+.38,step.z,.65,.76,.7,0x74756b,'service-stand');box(step.x,y+.81,step.z,.9,.12,.65,complete?0xcac19b:0x907d60,'split-scale-fitting');
+  }else{
+   box(step.x,y+.15,step.z,1.15,.3,.55,step.id.includes('stone')?0xa8a49a:0xa78b5f,'job-supply');box(step.x,y+.32,step.z,.12,.12,.58,c,'supply-binding');
+  }
+  if(r.accepted&&!complete&&step.requires.every(id=>r.steps.includes(id)))out.disc.push({p:[step.x,y+.025,step.z],s:[.65,1,.65],c:0xd5bd86,...decor,trailPart:'action-ring',trailQuest:d.id});
+ }
+ if(d.escort){const actor=G.RealmTrails.escort(sim)||{x:-36,z:-102,yaw:0,walking:false,status:'At the open cage'};
+  art.person(out,actor.x,actor.z,actor.yaw||0,0x9eb29f,sim.state.settings.reducedMotion?0:t,actor.walking,'traveler',false,1.57);
+  box(actor.x,3.75,actor.z,.12,.12,.12,r.steps.includes(d.escort.arrivalStep)?0x9dd5ad:0xe9cd99,'neris-marker');
+  if(!r.steps.includes(d.escort.startStep)){box(-37.15,2.72,-102,.14,2.3,.14,0x78746a,'open-cell-post');box(-34.85,2.72,-102,.14,2.3,.14,0x78746a,'open-cell-post');box(-36,3.85,-102,2.45,.16,.16,0x8c8372,'open-cell-frame');}
+ }
+ if(d.enemy){
+  const live=G.RealmAdventure.runtime(sim).enemies.find(e=>e.id===d.enemy.id&&e.hp>0),dead=r.steps.includes(d.enemy.defeatStep);
+  if(!live){const p=d.enemy,y=G.RealmWorldFoundations.height(sim.room,p.x,p.z);box(p.x,y+(dead?.18:.35),p.z,dead?1.05:.75,dead?.36:.7,.7,dead?0x666d68:0x918c78,dead?'folded-service-core':'dormant-service-core');octa(p.x,y+(dead?.32:.8),p.z,.18,dead?0x727a70:0xc8af75,'service-bearing');}
+  else if(d.realm==='heaven'){const y=G.RealmWorldFoundations.height(sim.room,live.x,live.z),open=G.RealmTrails.canDamage(sim,live);octa(live.x,y+1.7,live.z,.23,open?0xabe3bc:0xd0b275,open?'exposed-bearing':'closed-bearing');box(live.x,y+1.3,live.z+.34,.48,.48,.055,open?0x7fbc9d:0x857556,'bearing-socket');}
+ }
+ if(realm==='heaven'&&r.steps.includes('garden-repair')){for(let i=0;i<3;i++)octa(-.4+i*.4,2.02,-1,.08,0xc6dfbd,'restored-note');}
+ if(r.claimed)box(d.giver.x+.85,1.61,d.giver.z,.6,.06,.42,0xd0c3a2,'completed-record');
+}
+G.RealmTrailsArt={draw};if(typeof module!=='undefined')module.exports=G.RealmTrailsArt;
+})(globalThis);
+</script><script>/* UI submits deliberate choices to realm owners; it cannot grant story facts. */
+(function(G){'use strict';
+const R=G.RealmTrails,W=G.RealmWorldFoundations,esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const button=(label,action,id='')=>'<button data-rpg="'+action+'" data-id="'+esc(id)+'">'+esc(label)+'</button>';
+function approach(sim,p){
+ for(const[dx,dz]of[[0,1.7],[1.7,0],[-1.7,0],[0,-1.7]]){const q={x:p.x+dx,z:p.z+dz};if(W.walkable(sim.room,q.x,q.z)&&W.segment(sim.room,q,p))return q;}return{x:p.x,z:p.z};
+}
+class TrailsUI{
+ constructor(rpg){this.rpg=rpg;this.pendingFit=null;this.reading=null;rpg.dialog.addEventListener('input',e=>{const input=e.target;if(!input.matches('[data-trail-dial]'))return;const d=this.local(),s=d?.steps.find(s=>s.id===input.dataset.trailDial);if(!s)return;const result=R.adjust(this.rpg.api.worldContext(),d.id,s.id,Number(input.value));if(!result.ok){this.rpg.api.toast(result.error);return;}const root=input.closest('.trail-instrument');root.querySelector('output').textContent=this.dialText(s,result.setting);const arm=root.querySelector('.dial-arm');arm.setAttribute('transform','rotate('+result.setting+' 110 112)');root.classList.toggle('aligned',result.aligned);});}
+ get sim(){return this.rpg.sim;}
+ local(){const realm=W.definition(this.sim.room)?.id;return R.definitions().find(d=>d.realm===realm)||null;}
+ point(){
+  const d=this.local();if(!d)return null;const r=this.sim.state.realmTrails.records[d.id];if(d.realm==='cosmos'&&!r.accepted&&!this.rpg.worlds.local())return null;
+  const points=[{...d.giver,kind:'giver',medium:'dry'},...(r.accepted?d.steps.filter(s=>s.kind==='interact'&&!r.steps.includes(s.id)):[])];
+  const actor=R.escort(this.sim);if(actor&&!r.steps.includes(d.escort?.arrivalStep))points.push({...actor,id:'escort-person',name:'Neris',medium:'dry',kind:'ally'});
+  return points.filter(p=>R.at(this.sim,p)).sort((a,b)=>Math.hypot(a.x-this.sim.state.player.x,a.z-this.sim.state.player.z)-Math.hypot(b.x-this.sim.state.player.x,b.z-this.sim.state.player.z))[0]||null;
+ }
+ context(){const p=this.point();return p?'E · '+p.name:null;}
+ interact(){const p=this.point();if(!p)return false;this.reading=p.id;this.rpg.worlds.selected=this.local().realm;this.rpg.worlds.reading=p.kind==='giver'?p.id:null;this.rpg.open('worlds');const frame=this.rpg.dialog.querySelector('[data-trail-dial="'+p.id+'"]')?.closest('.trail-instrument');frame?.scrollIntoView({block:'center'});return true;}
+ action(el){
+  const action=el.dataset.rpg,id=el.dataset.id;if(!action?.startsWith('trail-'))return false;
+  if(action==='trail-fit-preview'){this.pendingFit=id;this.fitContext={sim:this.sim,active:this.rpg.api.worldContext().active,revision:this.sim.state.adventure.revision};this.rpg.paint();return true;}
+  if(action==='trail-fit-cancel'){this.pendingFit=null;this.rpg.paint();return true;}
+  if(action==='trail-fit-confirm'){if(this.pendingFit!==id||this.fitContext?.sim!==this.sim||this.fitContext?.active!==this.rpg.api.worldContext().active||this.fitContext?.revision!==this.sim.state.adventure.revision){this.pendingFit=null;this.rpg.paint();this.rpg.api.toast('Inspect this weapon and its cost again.');return true;}const result=this.rpg.api.realmFit(id);this.rpg.api.toast(result.text||result.error);if(result.ok)this.pendingFit=null;this.rpg.paint();return true;}
+  const d=this.local();if(!d)return true;
+  if(action==='trail-walk'){if(this.sim.worldDive){this.rpg.api.toast('Swim to the gallery landing before walking on dry civic ground. F / G changes depth; Return to Firstlight remains free.');return true;}const p=d.steps.find(s=>s.id===id)||d.giver;if(p.medium==='water'||p.medium==='court'){this.rpg.api.toast('Swim to this marked depth with F / G; the map shows the route.');return true;}this.rpg.close();const q=approach(this.sim,p);this.rpg.api.walkLocal(q.x,q.z);return true;}
+  let type=action.slice(6),payload={quest:d.id};
+  if(type==='step'){const[step,choice]=id.split(':');payload={...payload,step,choice};if(d.steps.find(s=>s.id===step)?.instrument)payload.setting=R.setting(this.sim,d.id,step);}
+  if(['accept','step','claim','escort-wait','escort-follow','assist'].includes(type)){const result=this.rpg.api.trailCommand(type,payload);let feedback=result.text||result.error;if(result.ok&&!result.duplicate){if(type==='step')feedback='Recorded · '+d.steps.find(s=>s.id===payload.step).name;else if(type==='accept')feedback=d.title+' accepted · M routes · J work';else if(type==='claim')feedback='Trail complete · +'+result.reward.xp+' XP · +'+result.reward.coins+' sunmarks'+(result.reward.ore?' · +'+result.reward.ore+' ore':'')+Object.entries(result.reward.materials||{}).map(([k,n])=>' · +'+n+' '+k).join('');}this.rpg.api.toast(feedback);this.rpg.paint();}
+  return true;
+ }
+ dialText(s,value){const offset=value-s.instrument.target;return value.toFixed(1)+'° selected · '+(Math.abs(offset)<=s.instrument.tolerance?'split scale aligned':Math.abs(offset).toFixed(1)+'° '+(offset<0?'short of':'beyond')+' the observed image arm')+' · tolerance ±'+s.instrument.tolerance+'°';}
+ instrument(d,s){const value=R.setting(this.sim,d.id,s.id),target=s.instrument.target,aligned=Math.abs(value-target)<=s.instrument.tolerance;
+  return'<section class="trail-instrument '+(aligned?'aligned':'')+'"><h4>Turn the horizontal comparator</h4><p>The fixed frame compares the authored sky image with the observatory crown. This is an angular view from this station; it does not measure astronomical distance or open a sky road.</p><svg viewBox="0 0 220 135" role="img" aria-label="Fixed image arm and adjustable comparator"><path d="M110 22 A90 90 0 0 1 200 112" fill="none" stroke="#697f7b" stroke-width="2"/><line x1="110" y1="112" x2="110" y2="24" stroke="#dcc68d" stroke-width="4" transform="rotate('+target+' 110 112)"/><line class="dial-arm" x1="110" y1="112" x2="110" y2="34" stroke="#a4c9c5" stroke-width="5" transform="rotate('+value+' 110 112)"/><circle cx="110" cy="112" r="7" fill="#d4c4a0"/></svg><label>Comparator setting <input type="range" min="'+s.instrument.min+'" max="'+s.instrument.max+'" step="0.1" value="'+value+'" data-trail-dial="'+s.id+'" aria-label="'+esc(s.name)+' angle"></label><output aria-live="polite">'+esc(this.dialText(s,value))+'</output><p>Turning is a preview. Record only when the split scale aligns; an unrecorded setting is lost on reload.</p></section>';
+ }
+ page(realm){
+  const d=R.definitions().find(d=>d.realm===realm);if(!d)return'';const r=this.sim.state.realmTrails.records[d.id],here=W.definition(this.sim.room)?.id===realm;
+  const reward=d.reward,materials=Object.entries(reward.materials||{}).map(([k,n])=>n+' '+k).join(' · ');
+  let html='<section class="world-work realm-trail" data-trail="'+d.id+'"><small>'+(r.claimed?'TRAIL COMPLETE · ONCE-ONLY CLAIM':r.accepted?'ACCEPTED REALM TRAIL':'A DEEPER OPTIONAL TRAIL')+'</small><h3>'+esc(d.title)+'</h3><p>'+esc(d.summary)+'</p><p><strong>Danger and route:</strong> '+esc(d.danger)+'</p><p><strong>Exact reward:</strong> '+reward.xp+' XP (credited up to the existing 9999 stored cap) · '+reward.coins+' sunmarks'+(reward.ore?' · '+reward.ore+' ore':'')+(materials?' · '+materials:'')+'. Any one claimed trail unlocks the one-time workshop fitting; subsequent trails pay only these stated rewards.</p>';
+  if(!r.accepted){html+='<ol class="trail-brief">'+d.steps.map(step=>'<li>'+esc(step.name)+(step.optional?' · optional':'')+'</li>').join('')+'</ol><p>Available after the initial kit. No earlier survey, campaign chapter, class or allegiance is required.</p>'+(here&&R.at(this.sim,{...d.giver,medium:'dry'})?button('Accept '+d.title,'trail-accept'):here?button('Walk to '+d.giver.name,'trail-walk'):'');}
+  else{
+   html+='<ol>'+d.steps.map(s=>{
+    const done=r.steps.includes(s.id),ready=s.requires.every(id=>r.steps.includes(id));let controls='';
+    if(!done&&here&&s.kind==='interact'&&ready&&R.at(this.sim,s))controls=s.instrument?this.instrument(d,s)+button('Record the aligned comparator','trail-step',s.id):s.choices?s.choices.map(c=>button(c.label,'trail-step',s.id+':'+c.id)).join(''):button(s.name,'trail-step',s.id);
+    else if(!done&&here&&!this.sim.worldDive&&s.medium==='dry')controls=button('Walk to '+s.name,'trail-walk',s.id);
+    return'<li class="'+(done?'done':'')+'"><details'+(this.reading===s.id?' open':'')+'><summary>'+esc(s.name)+(s.optional?' · optional':'')+(done?' · complete':'')+'</summary><p>'+esc(done?s.text:!ready?'First: '+s.requires.map(id=>d.steps.find(s=>s.id===id).name).join(' · '):s.kind==='defeat'?'Select the mechanism with Tab or click. Read its pulse, brace or step clear, then attack the recovery opening.':s.kind==='escort'?'Stay within ten paces of Neris on the safe route. Her arrival counts; your arrival alone does not.':s.medium==='water'?'Swim to the visible marker at '+(W.definition(realm).dive.surfaceY-s.y).toFixed(2)+' m foot depth. F ascends, G descends; compare the depth display.':s.medium==='court'?'Enter the Bellglass air court through the actual doorway. Compare your measured readings before choosing the chart.':s.text)+'</p></details>'+controls+'</li>';
+   }).join('')+'</ol>';
+   if(d.escort&&r.steps.includes(d.escort.startStep)&&!r.steps.includes(d.escort.arrivalStep)){
+    const actor=R.escort(this.sim);html+='<p><strong>Neris:</strong> '+esc(actor?.status)+' · safe checkpoint '+(r.checkpoint+1)+'/'+d.escort.route.length+'. She has no separate combat health in this bounded rescue; the route must already be stabilized.</p>';
+    if(actor&&R.at(this.sim,{...actor,medium:'dry'},3))html+=button(r.escortMode==='wait'?'Resume the escort':'Ask Neris to wait',r.escortMode==='wait'?'trail-escort-follow':'trail-escort-wait')+button('Request assisted extraction over the safe route','trail-assist')+'<p>Assisted extraction is an explicit alternative. It records an assisted return and places Neris at the refuge; it does not claim a walked escort.</p>';
+   }
+   html+=r.claimed?'<p>'+esc(d.completionText)+'</p>':here&&R.at(this.sim,{...d.giver,medium:'dry'})?button('Return the completed trail · claim once','trail-claim'):here&&!this.sim.worldDive?button('Return to '+d.giver.name,'trail-walk'):'';
+  }
+  return html+'<p class="world-note">Accepted facts survive reload. Reopening starts at your home checkpoint; revisit this realm to resume. Full reward pouches or a refused save retain unpaid completion. Ordinary repeat surveys remain separate.</p></section>';
+ }
+ fitting(){
+  const a=this.sim.state.adventure,A=G.RealmAdventure,RC=G.RealmCraft,unlocked=R.definitions().some(d=>this.sim.state.realmTrails.records[d.id].claimed);
+  let html='<section class="world-work realm-fitting"><small>ONE FINITE WORKSHOP LESSON PER CHARACTER</small><h3>A realm-work fitting</h3><p>Complete any realm trail, then deliberately fit one owned blade or bow at an outdoor Firstlight workbench. Cost: 3 ore and 8 sunmarks. Result: +3 attack. Range, cooldown, stamina, guard and health stay the same; your weapon identity, socket and earlier fittings remain.</p>';
+  if(a.realmCraft.weapon)return html+'<p>Applied to <strong>'+esc(A.GEAR[a.realmCraft.weapon].name)+'</strong>. Equip it deliberately from Character if it is not already equipped.</p></section>';
+  if(!unlocked)return html+'<p>Unlock by completing and claiming one of the realm trails. Stored campaign XP and level cap remain unchanged.</p></section>';
+  if(this.pendingFit&&a.owned.includes(this.pendingFit)){
+   const id=this.pendingFit,copy=JSON.parse(JSON.stringify(a));copy.equipment.weapon=id;const before=A.stats(copy);copy.realmCraft.weapon=id;const after=A.stats(copy),weapon=G.RealmArsenal.weapon(copy);
+   html+='<p><strong>'+esc(A.GEAR[id].name)+':</strong> '+before.attack+' → '+after.attack+' attack when equipped. '+weapon.reach+' reach · '+weapon.cooldown+' s cooldown · '+weapon.stamina+' stamina. The violet-brass band is visible on the held or carried weapon.</p>'+button('Spend 3 ore + 8 sunmarks · fit this weapon once','trail-fit-confirm',id)+button('Choose another weapon','trail-fit-cancel');
+  }else html+=a.owned.filter(id=>A.GEAR[id].slot==='weapon').map(id=>button('Inspect '+A.GEAR[id].name,'trail-fit-preview',id)).join('');
+  return html+'</section>';
+ }
+ tick(){
+  const d=this.local();if(!d)return;const r=this.sim.state.realmTrails.records[d.id];if(!r.accepted||r.claimed)return;
+  const next=d.steps.find(s=>!s.optional&&!r.steps.includes(s.id)),q=s=>document.querySelector(s);
+  q('#tracked-chapter').textContent='ACCEPTED REALM TRAIL';q('#tracked-title').textContent=d.title;q('#tracked-detail').textContent=next?.name||'Return to '+d.giver.name;q('#tracked-progress').textContent=r.steps.filter(id=>!d.steps.find(s=>s.id===id).optional).length+'/'+R.required(d).length+' · J work · M routes · free return';
+ }
+}
+G.RealmTrailsUI={TrailsUI,approach};
+})(globalThis);
 </script><script>/* One local outing. Definitions, durable state and atomic accepted commands. */
 (function(G){'use strict';
 const VERSION=1,ROOM='riverbank',ID='oren_riverbank_supplies';
@@ -1688,7 +2122,7 @@ function update(sim,dt){const A=G.RealmAdventure,a=sim.state.adventure,r=runtime
  const keep=[];
  for(const shot of r.arrows){if(shot.room!==sim.room||a.hp<=0)continue;const step=Math.min(shot.left,dt*22),end={x:shot.x+shot.dx*step,z:shot.z+shot.dz*step},hit=trace(shot,end,r.enemies,(x,z)=>projectileGround(sim,x,z),shot.hit);let stopped=false;
   for(const {e,u}of hit.hits){shot.hit.push(e.id);shot.pierce--;if(e.kind==='practice'&&sim.room!=='riverbank')practiceHit(sim,e);else{A.damageEnemy(sim,e,shot.damage,'weapon');e.awareness=a.elapsed+3;e.lastKnown={x:sim.state.player.x,z:sim.state.player.z};}
-   A.fx(sim,'arrow-hit',shot.x+(end.x-shot.x)*u,shot.z+(end.z-shot.z)*u,shot.color);
+   A.fx(sim,e.trailQuest&&!G.RealmTrails.canDamage(sim,e)?'arrow-wall':'arrow-hit',shot.x+(end.x-shot.x)*u,shot.z+(end.z-shot.z)*u,shot.color);
    if(shot.pierce<=0){stopped=true;break;}}
   if(!stopped&&hit.wall!==null){A.fx(sim,'arrow-wall',shot.x+(end.x-shot.x)*hit.wall,shot.z+(end.z-shot.z)*hit.wall,0xb4bab0);stopped=true;}
   shot.x=end.x;shot.z=end.z;shot.left-=step;shot.age+=dt;if(!stopped&&shot.left>1e-5&&shot.age<2)keep.push(shot);
@@ -2214,7 +2648,8 @@ const ES=G.RealmEarthStory||(typeof require==='function'?require('./earth-story.
 const EN=G.RealmEarthNotes||(typeof require==='function'?require('./earth-notes.js'):null);
 const EG=G.RealmGathering||(typeof require==='function'?require('./gathering.js'):null);
 const FORGE=Object.freeze({ore:4,coins:4});
-const VERSION=10,CELL=2,LIMIT=7,REACH=2.8,dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
+const RC=G.RealmCraft||(typeof require==='function'?require('./realm-craft.js'):null);
+const VERSION=11,CELL=2,LIMIT=7,REACH=2.8,dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 const MINE={id:'mine',name:'The Rootbound Underways',x:0,z:-48},ENTRANCE={x:0,z:11,yaw:Math.PI},FOX={x:-8,z:2},RELIC={x:9,z:-10};
 const GEAR=Object.freeze({
  ...AR.GEAR,...CROSS.GEAR,...Q.GEAR,
@@ -2241,9 +2676,9 @@ function mineral(x,z){return!initialFloor(x,z)&&((x*13+z*7)%5===0||x<=-3&&z<=-2)
 function wallHP(x,z){return mineral(x,z)?3:2;}
 function walkable(s,x,z,r=.31){if(!s||!Number.isFinite(x)||!Number.isFinite(z))return false;for(const[dx,dz]of[[-r,-r],[-r,r],[r,-r],[r,r],[0,0]]){const c=cellAt(x+dx,z+dz);if(!isFloor(s,c.gx,c.gz))return false;}return true;}
 function line(s,a,b){const n=Math.ceil(dist(a,b)/.18);for(let i=0;i<=n;i++){const t=n?i/n:0;if(!walkable(s,a.x+(b.x-a.x)*t,a.z+(b.z-a.z)*t,.04))return false;}return true;}
-function fresh(){return{version:VERSION,earthGathering:EG.fresh(),earthNotes:EN.fresh(),earthStory:ES.fresh(),classPath:K.fresh(),pursuit:H.fresh(),starter:Q.fresh(),crossing:CROSS.fresh(),beacon:B.fresh(),arsenal:AR.fresh(),road:ROAD.fresh(),elapsed:0,revision:0,started:false,dug:[],chips:[],defeated:[],drops:[],ore:0,coins:0,xp:0,hp:100,stamina:100,tonics:3,equipment:{weapon:null,armor:null,charm:null},owned:[],companion:{bonded:false,name:'Briar',mode:'follow'},relic:false,angelSeen:false,reward:null,deaths:0,receipts:[]};}
+function fresh(){return{version:VERSION,realmCraft:RC.fresh(),earthGathering:EG.fresh(),earthNotes:EN.fresh(),earthStory:ES.fresh(),classPath:K.fresh(),pursuit:H.fresh(),starter:Q.fresh(),crossing:CROSS.fresh(),beacon:B.fresh(),arsenal:AR.fresh(),road:ROAD.fresh(),elapsed:0,revision:0,started:false,dug:[],chips:[],defeated:[],drops:[],ore:0,coins:0,xp:0,hp:100,stamina:100,tonics:3,equipment:{weapon:null,armor:null,charm:null},owned:[],companion:{bonded:false,name:'Briar',mode:'follow'},relic:false,angelSeen:false,reward:null,deaths:0,receipts:[]};}
 function level(s){return 1+[30,80,150,260].filter(n=>s.xp>=n).length;}
-function stats(s){let l=level(s),o={level:l,attack:4+(l-1)*2,defense:0,maxHP:100+(l-1)*10};for(const id of Object.values(s.equipment)){const g=GEAR[id];if(g){o.attack+=g.attack+Q.bonus(s,id)+H.bonus(s,id);o.defense+=g.defense;o.maxHP+=g.hp;}}const gem=AR.activeGem(s);if(gem){o.attack+=gem.attack;o.maxHP+=gem.hp;}return o;}
+function stats(s){let l=level(s),o={level:l,attack:4+(l-1)*2,defense:0,maxHP:100+(l-1)*10};for(const id of Object.values(s.equipment)){const g=GEAR[id];if(g){o.attack+=g.attack+Q.bonus(s,id)+H.bonus(s,id)+RC.bonus(s,id);o.defense+=g.defense;o.maxHP+=g.hp;}}const gem=AR.activeGem(s);if(gem){o.attack+=gem.attack;o.maxHP+=gem.hp;}return o;}
 function validate(raw){
  if(raw&&raw.version>VERSION)throw Error('Unsupported future adventure version. Keep a backup and use a newer build.');
  if(raw&&raw.version===1)raw={...raw,version:3,arsenal:AR.fresh(),road:ROAD.fresh()};
@@ -2255,6 +2690,7 @@ function validate(raw){
  if(raw&&raw.version===7)raw={...raw,version:8,earthStory:ES.fresh()};
  if(raw&&raw.version===8)raw={...raw,version:9,earthNotes:EN.fresh()};
  if(raw&&raw.version===9)raw={...raw,version:10,earthGathering:EG.fresh()};
+ if(raw&&raw.version===10)raw={...raw,version:11,realmCraft:RC.fresh()};
  const no=f=>{throw Error('Invalid adventure: '+f);};if(!raw||raw.version!==VERSION)no('version');const s=fresh();
  for(const k of['elapsed','hp','stamina']){if(!Number.isFinite(raw[k])||raw[k]<0||raw[k]>1e9)no(k);s[k]=raw[k];}
  for(const k of['revision','ore','coins','xp','tonics','deaths']){if(!Number.isSafeInteger(raw[k])||raw[k]<0||raw[k]>(k==='revision'?1e9:9999))no(k);s[k]=raw[k];}
@@ -2271,6 +2707,7 @@ function validate(raw){
  if(raw.reward!==null&&!['dawn_edge','warden_stone'].includes(raw.reward))no('reward');s.reward=raw.reward;
  if(s.relic&&!s.defeated.includes('hart')||s.angelSeen&&!s.relic||s.reward&&(!s.angelSeen||!s.owned.includes(s.reward)))no('story prerequisites');
  if(!s.started&&(s.defeated.length||s.dug.length||s.companion.bonded||s.relic||s.owned.length))no('unstarted progression');
+ s.realmCraft=RC.validate(raw.realmCraft,s,GEAR);
  s.classPath=K.validate(raw.classPath,s);
  s.earthStory=ES.validate(raw.earthStory,s);
  s.earthNotes=EN.validate(raw.earthNotes,s);
@@ -2282,8 +2719,8 @@ function validate(raw){
  if(!Array.isArray(raw.receipts)||raw.receipts.length>100||new Set(raw.receipts.map(r=>r?.id)).size!==raw.receipts.length)no('receipts');
  s.receipts=raw.receipts.map(r=>{if(!r||typeof r.id!=='string'||!r.id||r.id.length>100||typeof r.fp!=='string'||r.fp.length>500||typeof r.ok!=='boolean')no('receipt');return{id:r.id,fp:r.fp,ok:r.ok};});s.road=ROAD.validate(raw.road,s);s.beacon=B.validate(raw.beacon,s);s.crossing=CROSS.validate(raw.crossing,s);return s;
 }
-function combatScene(sim){if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&!!G.RealmWorldFoundations.definition(sim.room)?.enemies?.length;return sim.room===Q.ROOM||sim.room==='mine'||sim.room==='road'||sim.room==='range'||sim.room==='crossing';}
-function roster(sim){if(G.RealmWorldFoundations?.handles(sim.room))return G.RealmWorldFoundations.enemies(sim);return sim.room===Q.ROOM?[Q.PRACTICE,...(sim.state.adventure.pursuit.active?H.enemies(sim.state.adventure):sim.state.adventure.starter.accepted?Q.ENEMIES:[])]:sim.room==='crossing'?CROSS.ENEMIES:sim.room==='range'?AR.RANGE.targets.map(d=>({...d,hp:100,maxHP:100})):sim.room==='road'?ROAD.ENEMIES:sim.room==='mine'?ENEMIES:[];}
+function combatScene(sim){if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&(!!G.RealmWorldFoundations.definition(sim.room)?.enemies?.length||!!G.RealmTrails?.enemies(sim).length);return sim.room===Q.ROOM||sim.room==='mine'||sim.room==='road'||sim.room==='range'||sim.room==='crossing';}
+function roster(sim){if(G.RealmWorldFoundations?.handles(sim.room))return[...G.RealmWorldFoundations.enemies(sim),...(G.RealmTrails?.enemies(sim)||[])];return sim.room===Q.ROOM?[Q.PRACTICE,...(sim.state.adventure.pursuit.active?H.enemies(sim.state.adventure):sim.state.adventure.starter.accepted?Q.ENEMIES:[])]:sim.room==='crossing'?CROSS.ENEMIES:sim.room==='range'?AR.RANGE.targets.map(d=>({...d,hp:100,maxHP:100})):sim.room==='road'?ROAD.ENEMIES:sim.room==='mine'?ENEMIES:[];}
 function visible(sim,a,b){if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&G.RealmWorldFoundations.segment(sim.room,a,b,.04);if(sim.room===G.RealmCosmos?.ROOM)return G.RealmCosmos.line(a,b);return sim.room===Q.ROOM?Q.line(a,b):sim.room==='crossing'?CROSS.line(a,b):sim.room==='range'?AR.aimClear(sim,a,b):sim.room==='road'?ROAD.line(a,b):sim.room==='mine'?line(sim.state.adventure,a,b):G.RealmCore.segment(a,b,sim.navRoom);}
 function ground(sim,x,z,r=.31){if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&G.RealmWorldFoundations.walkable(sim.room,x,z,r);if(sim.room===G.RealmCosmos?.ROOM)return G.RealmCosmos.walkable(x,z,r);return sim.room===Q.ROOM?Q.walkable(x,z,r):sim.room==='crossing'?CROSS.walkable(x,z,r):sim.room==='range'?AR.rangeWalkable(x,z,r):sim.room==='road'?ROAD.walkable(x,z,r):sim.room==='mine'?walkable(sim.state.adventure,x,z,r):G.RealmCore.walkable(x,z,sim.navRoom,r);}
 function safeNear(sim,p,radius=.7){const options=[{x:p.x,z:p.z},...Array.from({length:12},(_,i)=>({x:p.x+Math.sin(i*Math.PI/6)*radius,z:p.z+Math.cos(i*Math.PI/6)*radius}))];return options.find(q=>ground(sim,q.x,q.z))||{x:p.x,z:p.z};}
@@ -2295,10 +2732,10 @@ function followPath(sim,actor,target,dt,speed){
 }
 function runtime(sim){if(!sim.adventureRuntime)sim.adventureRuntime={room:undefined,enemies:[],fx:[],cooldowns:{attack:0,pulse:0,dodge:0,heal:0,dig:0},invincible:0,companion:newFox(sim),notices:[]};return sim.adventureRuntime;}
 function notify(sim,text){let r=runtime(sim);r.notices.push(text);if(r.notices.length>20)r.notices.shift();}
-function syncScene(sim){let r=runtime(sim);const survey=sim.room===Q.ROOM?sim.state.adventure.pursuit.active?.id:null;if(r.room===sim.room&&r.pursuitRun===survey)return;r.room=sim.room;r.pursuitRun=survey;r.enemies=combatScene(sim)?roster(sim).filter(e=>!sim.state.adventure.defeated.includes(e.id)).map(e=>({...e,maxHP:e.hp,mode:'idle',timer:0,yaw:0,aim:null,flash:0,path:[],nextPath:0,awareness:0,home:{x:e.x,z:e.z}})):[];r.fx=[];r.arrows=[];r.range={active:false,start:0,hits:{},shots:0,message:'A calm place to learn a different rhythm.'};if(!sim.state.adventure.companion.bonded||sim.state.adventure.companion.mode==='follow')r.companion=newFox(sim);r.invincible=sim.state.adventure.elapsed+1;}
+function syncScene(sim){let r=runtime(sim);const survey=sim.room===Q.ROOM?sim.state.adventure.pursuit.active?.id:null;const trail=G.RealmTrails?.signature(sim)||'',sameRoom=r.room===sim.room,sameRun=sameRoom&&r.pursuitRun===survey;if(sameRoom&&r.pursuitRun===survey&&r.trailSignature===trail){for(const e of r.enemies.filter(e=>e.trailQuest)){const terms=G.RealmTrails.enemies(sim).find(v=>v.id===e.id);if(terms)e.recovery=terms.recovery;}return;}const prior=sameRoom?r.enemies:[];r.room=sim.room;r.pursuitRun=survey;r.trailSignature=trail;r.enemies=combatScene(sim)?roster(sim).filter(e=>!sim.state.adventure.defeated.includes(e.id)).map(e=>prior.find(p=>p.id===e.id&&p.hp>0)||({...e,maxHP:e.hp,mode:'idle',timer:0,yaw:0,aim:null,flash:0,path:[],nextPath:0,awareness:0,home:{x:e.x,z:e.z}})):[];if(sameRun)return;r.fx=[];r.arrows=[];r.range={active:false,start:0,hits:{},shots:0,message:'A calm place to learn a different rhythm.'};if(!sim.state.adventure.companion.bonded||sim.state.adventure.companion.mode==='follow')r.companion=newFox(sim);r.invincible=sim.state.adventure.elapsed+1;}
 function fx(sim,kind,x,z,color=0xf2c891){let r=runtime(sim);r.fx.push({kind,x,z,color,at:sim.state.adventure.elapsed});if(r.fx.length>48)r.fx.shift();}
 function awardXP(sim,n){let s=sim.state.adventure,l=level(s);s.xp=Math.min(9999,s.xp+n);if(level(s)>l){s.hp=Math.min(stats(s).maxHP,s.hp+10*(level(s)-l));notify(sim,'Level '+level(s)+' · Your journey is changing you.');sim.event('adventure','You reached level '+level(s)+'.');}}
-function damageEnemy(sim,e,n,source='other'){let s=sim.state.adventure;if(!e||e.hp<=0||e.hidden||!Number.isFinite(n)||n<=0)return;n=K.weaponDamage(sim,e,n,source);if(e.kind==='practice'){if(sim.room===Q.ROOM)Q.practiceHit(sim,e,n);else AR.practiceHit(sim,e);return;}if(e.exposedUntil>s.elapsed)n=Math.round(n*1.2);T.hit(sim,e,n);if(B.damage(sim,e,n))return;e.hp=Math.max(0,e.hp-n);e.flash=s.elapsed+.16;fx(sim,'hit',e.x,e.z);if(e.hp===0&&e.worldRealm){G.RealmWorldFoundations.defeat(sim,e);return;}if(e.hp===0&&e.contractRun){H.defeat(sim,e);return;}if(e.hp===0&&!s.defeated.includes(e.id)){s.defeated.push(e.id);s.drops.push(e.id);s.revision++;awardXP(sim,e.xp);sim.event('adventure',e.name+' defeated. A cache remains at its original position.');notify(sim,e.kind==='boss'?'The Hollow Hart is free. The feather is waiting.':e.name+' defeated · +'+e.xp+' experience');}}
+function damageEnemy(sim,e,n,source='other'){let s=sim.state.adventure;if(!e||e.hp<=0||e.hidden||!Number.isFinite(n)||n<=0)return;if(e.trailQuest&&!G.RealmTrails.canDamage(sim,e))return;n=K.weaponDamage(sim,e,n,source);if(e.kind==='practice'){if(sim.room===Q.ROOM)Q.practiceHit(sim,e,n);else AR.practiceHit(sim,e);return;}if(e.exposedUntil>s.elapsed)n=Math.round(n*1.2);T.hit(sim,e,n);if(B.damage(sim,e,n))return;e.hp=Math.max(0,e.hp-n);e.flash=s.elapsed+.16;fx(sim,'hit',e.x,e.z);if(e.hp===0&&e.trailQuest){G.RealmTrails.defeat(sim,e);return;}if(e.hp===0&&e.worldRealm){G.RealmWorldFoundations.defeat(sim,e);return;}if(e.hp===0&&e.contractRun){H.defeat(sim,e);return;}if(e.hp===0&&!s.defeated.includes(e.id)){s.defeated.push(e.id);s.drops.push(e.id);s.revision++;awardXP(sim,e.xp);sim.event('adventure',e.name+' defeated. A cache remains at its original position.');notify(sim,e.kind==='boss'?'The Hollow Hart is free. The feather is waiting.':e.name+' defeated · +'+e.xp+' experience');}}
 function takeDamage(sim,n){let s=sim.state.adventure,r=runtime(sim);if(s.hp<=0||s.elapsed<r.invincible)return false;s.hp=Math.max(0,s.hp-T.mitigate(sim,Math.max(1,n-stats(s).defense)));r.invincible=s.elapsed+.28;fx(sim,'hurt',sim.state.player.x,sim.state.player.z,0xd57f88);if(s.hp===0){sim.playerPath=[];s.deaths=Math.min(9999,s.deaths+1);sim.event('adventure','You fell on an expedition. Your home and belongings are safe.');notify(sim,'You have fallen. Return to the spring to try again.');}return true;}
 function diggableFrom(s,p,gx,gz){return validCell(gx,gz)&&!isFloor(s,gx,gz)&&dist(p,cellPoint(gx,gz))<=REACH&&[[1,0],[-1,0],[0,1],[0,-1]].some(([dx,dz])=>isFloor(s,gx+dx,gz+dz)&&dist(p,cellPoint(gx+dx,gz+dz))<2.2);}
 function nearbyWall(s,p){let best=null,c=cellAt(p.x,p.z);for(let x=c.gx-2;x<=c.gx+2;x++)for(let z=c.gz-2;z<=c.gz+2;z++)if(diggableFrom(s,p,x,z)){let q=cellPoint(x,z),d=dist(p,q);if(!best||d<best.d)best={gx:x,gz:z,d,...q};}return best;}
@@ -3103,6 +3540,7 @@ const S=G.RealmSandbox||(typeof require==='function'?require('./sandbox.js'):nul
 const A=G.RealmAdventure||(typeof require==='function'?require('./adventure.js'):null);
 const N=G.RealmCosmos||(typeof require==='function'?require('./cosmos.js'):null);
 const E=G.RealmEarth||(typeof require==='function'?require('./earth.js'):null);
+const RT=G.RealmTrails||(typeof require==='function'?require('./realm-trails.js'):null);
 const W=G.RealmWorldFoundations||(typeof require==='function'?require('./world-foundations.js'):null);
 const VERSION=9,KEY='eternities.realm10.save.v9',LEGACY_KEY='eternities.realm09.save.v8',TAU=Math.PI*2,clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),finite=Number.isFinite,clone=o=>JSON.parse(JSON.stringify(o));
 const LANDMARKS=[
@@ -3172,8 +3610,8 @@ function validateCameraViews(raw){
  }
  return out;
 }
-function fresh(){return{journeys:W.fresh(),adventure:A.fresh(),sandbox:S.fresh(),score:X.preset(),scoreRevision:0,retreat:X.freshHome(),visitor:X.freshVisitor(),version:VERSION,seed:2317,day:1,hour:17.2,weather:'clear',player:{x:2.5,z:6,yaw:0},visited:[],flowers:[],notes:[],journal:[],nextEvent:1,residents:PROFILES.map((p,i)=>{let l=LANDMARKS.find(x=>x.id===schedule(p.id,17.2));return{id:p.id,x:l.x+(i-1)*.5,z:l.z,yaw:0,progress:.05,conversations:0};}),settings:{quality:'balanced',cameraMode:'adventure',cameraFov:60,cameraViews:validateCameraViews(null),cameraCutaway:true,reducedMotion:false,labels:true,timeFlow:true,sound:false}};}
-function validate(raw){if(raw&&raw.version===2)raw={...clone(raw),version:3,score:X.preset(),scoreRevision:0,retreat:X.freshHome(),visitor:X.freshVisitor()};if(raw&&raw.version===3)raw={...clone(raw),version:4,sandbox:S.fresh()};if(raw&&raw.version===4)raw={...clone(raw),version:5,adventure:A.fresh()};if(raw&&raw.version===5)raw={...clone(raw),version:6};if(raw&&raw.version===6)raw={...clone(raw),version:7};if(raw&&raw.version===7)raw={...clone(raw),version:8};if(raw&&raw.version===8)raw={...clone(raw),version:9};function no(s){throw new Error('Invalid save: '+s);}if(!raw||typeof raw!=='object'||raw.version!==VERSION)no('unsupported version');let s=fresh();s.adventure=A.validate(raw.adventure);s.journeys=W.validate(raw.journeys);s.sandbox=S.validate(raw.sandbox);const outdoors={id:'outdoors',sandbox:s.sandbox};if(!Number.isSafeInteger(raw.day)||raw.day<1||raw.day>100000||!finite(raw.hour)||raw.hour<0||raw.hour>=24)no('clock');s.day=raw.day;s.hour=raw.hour;if(!['clear','rain'].includes(raw.weather))no('weather');s.weather=raw.weather;if(!raw.player||!walkable(raw.player.x,raw.player.z,outdoors)||!finite(raw.player.yaw))no('player position');s.player={x:raw.player.x,z:raw.player.z,yaw:raw.player.yaw};for(let k of['visited','flowers','notes','journal','residents'])if(!Array.isArray(raw[k]))no(k);if(raw.visited.length>LANDMARKS.length||raw.visited.some(id=>!LANDMARKS.some(l=>l.id===id)))no('places');s.visited=[...new Set(raw.visited)];if(raw.flowers.length>12)no('garden');s.flowers=raw.flowers.map(f=>{if(!f||!finite(f.x)||!finite(f.z)||Math.hypot(f.x+6,f.z-13)>5||!Number.isInteger(f.color)||f.color<0||f.color>3)no('flower');return{x:f.x,z:f.z,color:f.color};});if(raw.notes.length>20)no('notes');s.notes=raw.notes.map(n=>{if(!n||typeof n.text!=='string'||n.text.length>1200||!Number.isInteger(n.day)||n.day<1)no('note');return{text:n.text,day:n.day};});if(raw.journal.length>200)no('journal');let last=0;s.journal=raw.journal.map(j=>{if(!j||!Number.isSafeInteger(j.seq)||j.seq<=last||!Number.isInteger(j.day)||j.day<1||j.day>100000||!finite(j.hour)||j.hour<0||j.hour>=24||typeof j.kind!=='string'||j.kind.length>40||typeof j.text!=='string'||j.text.length>350)no('event');last=j.seq;return{seq:j.seq,day:j.day,hour:j.hour,kind:j.kind,text:j.text};});if(!Number.isSafeInteger(raw.nextEvent)||raw.nextEvent<=last)no('event sequence');s.nextEvent=raw.nextEvent;if(raw.residents.length!==3||new Set(raw.residents.map(r=>r.id)).size!==3)no('roster');s.residents=PROFILES.map(p=>{let r=raw.residents.find(r=>r.id===p.id);if(!r||!walkable(r.x,r.z)||!finite(r.yaw)||!finite(r.progress)||r.progress<0||r.progress>1||!Number.isSafeInteger(r.conversations)||r.conversations<0)no('inhabitant');return{id:p.id,x:r.x,z:r.z,yaw:r.yaw,progress:r.progress,conversations:r.conversations};});if(raw.settings){s.settings.cameraViews=validateCameraViews(raw.settings.cameraViews);if(['adventure','follow','tactical','wide'].includes(raw.settings.cameraMode))s.settings.cameraMode=raw.settings.cameraMode;if(finite(raw.settings.cameraFov)&&raw.settings.cameraFov>=45&&raw.settings.cameraFov<=80)s.settings.cameraFov=raw.settings.cameraFov;for(let k of['reducedMotion','labels','timeFlow','cameraCutaway'])if(typeof raw.settings[k]==='boolean')s.settings[k]=raw.settings[k];if(['low','balanced','high'].includes(raw.settings.quality))s.settings.quality=raw.settings.quality;}s.settings.sound=false;s.score=X.validateScore(raw.score);s.retreat=X.validateHome(raw.retreat);s.visitor=X.validateVisitor(raw.visitor);if(!Number.isSafeInteger(raw.scoreRevision)||raw.scoreRevision<0||raw.scoreRevision>1e8)no('score revision');s.scoreRevision=raw.scoreRevision;return s;}
+function fresh(){return{realmTrails:RT.fresh(),journeys:W.fresh(),adventure:A.fresh(),sandbox:S.fresh(),score:X.preset(),scoreRevision:0,retreat:X.freshHome(),visitor:X.freshVisitor(),version:VERSION,seed:2317,day:1,hour:17.2,weather:'clear',player:{x:2.5,z:6,yaw:0},visited:[],flowers:[],notes:[],journal:[],nextEvent:1,residents:PROFILES.map((p,i)=>{let l=LANDMARKS.find(x=>x.id===schedule(p.id,17.2));return{id:p.id,x:l.x+(i-1)*.5,z:l.z,yaw:0,progress:.05,conversations:0};}),settings:{quality:'balanced',cameraMode:'adventure',cameraFov:60,cameraViews:validateCameraViews(null),cameraCutaway:true,reducedMotion:false,labels:true,timeFlow:true,sound:false}};}
+function validate(raw){if(raw&&raw.version===2)raw={...clone(raw),version:3,score:X.preset(),scoreRevision:0,retreat:X.freshHome(),visitor:X.freshVisitor()};if(raw&&raw.version===3)raw={...clone(raw),version:4,sandbox:S.fresh()};if(raw&&raw.version===4)raw={...clone(raw),version:5,adventure:A.fresh()};if(raw&&raw.version===5)raw={...clone(raw),version:6};if(raw&&raw.version===6)raw={...clone(raw),version:7};if(raw&&raw.version===7)raw={...clone(raw),version:8};if(raw&&raw.version===8)raw={...clone(raw),version:9};function no(s){throw new Error('Invalid save: '+s);}if(!raw||typeof raw!=='object'||raw.version!==VERSION)no('unsupported version');let s=fresh();s.adventure=A.validate(raw.adventure);s.journeys=W.validate(raw.journeys);s.realmTrails=RT.validate(raw.realmTrails);if(!s.adventure.started&&Object.values(s.realmTrails.records).some(r=>r.accepted))no('trail without initial kit');if(s.adventure.realmCraft.weapon&&!Object.values(s.realmTrails.records).some(r=>r.claimed))no('realm fitting without earned trail');s.sandbox=S.validate(raw.sandbox);const outdoors={id:'outdoors',sandbox:s.sandbox};if(!Number.isSafeInteger(raw.day)||raw.day<1||raw.day>100000||!finite(raw.hour)||raw.hour<0||raw.hour>=24)no('clock');s.day=raw.day;s.hour=raw.hour;if(!['clear','rain'].includes(raw.weather))no('weather');s.weather=raw.weather;if(!raw.player||!walkable(raw.player.x,raw.player.z,outdoors)||!finite(raw.player.yaw))no('player position');s.player={x:raw.player.x,z:raw.player.z,yaw:raw.player.yaw};for(let k of['visited','flowers','notes','journal','residents'])if(!Array.isArray(raw[k]))no(k);if(raw.visited.length>LANDMARKS.length||raw.visited.some(id=>!LANDMARKS.some(l=>l.id===id)))no('places');s.visited=[...new Set(raw.visited)];if(raw.flowers.length>12)no('garden');s.flowers=raw.flowers.map(f=>{if(!f||!finite(f.x)||!finite(f.z)||Math.hypot(f.x+6,f.z-13)>5||!Number.isInteger(f.color)||f.color<0||f.color>3)no('flower');return{x:f.x,z:f.z,color:f.color};});if(raw.notes.length>20)no('notes');s.notes=raw.notes.map(n=>{if(!n||typeof n.text!=='string'||n.text.length>1200||!Number.isInteger(n.day)||n.day<1)no('note');return{text:n.text,day:n.day};});if(raw.journal.length>200)no('journal');let last=0;s.journal=raw.journal.map(j=>{if(!j||!Number.isSafeInteger(j.seq)||j.seq<=last||!Number.isInteger(j.day)||j.day<1||j.day>100000||!finite(j.hour)||j.hour<0||j.hour>=24||typeof j.kind!=='string'||j.kind.length>40||typeof j.text!=='string'||j.text.length>350)no('event');last=j.seq;return{seq:j.seq,day:j.day,hour:j.hour,kind:j.kind,text:j.text};});if(!Number.isSafeInteger(raw.nextEvent)||raw.nextEvent<=last)no('event sequence');s.nextEvent=raw.nextEvent;if(raw.residents.length!==3||new Set(raw.residents.map(r=>r.id)).size!==3)no('roster');s.residents=PROFILES.map(p=>{let r=raw.residents.find(r=>r.id===p.id);if(!r||!walkable(r.x,r.z)||!finite(r.yaw)||!finite(r.progress)||r.progress<0||r.progress>1||!Number.isSafeInteger(r.conversations)||r.conversations<0)no('inhabitant');return{id:p.id,x:r.x,z:r.z,yaw:r.yaw,progress:r.progress,conversations:r.conversations};});if(raw.settings){s.settings.cameraViews=validateCameraViews(raw.settings.cameraViews);if(['adventure','follow','tactical','wide'].includes(raw.settings.cameraMode))s.settings.cameraMode=raw.settings.cameraMode;if(finite(raw.settings.cameraFov)&&raw.settings.cameraFov>=45&&raw.settings.cameraFov<=80)s.settings.cameraFov=raw.settings.cameraFov;for(let k of['reducedMotion','labels','timeFlow','cameraCutaway'])if(typeof raw.settings[k]==='boolean')s.settings[k]=raw.settings[k];if(['low','balanced','high'].includes(raw.settings.quality))s.settings.quality=raw.settings.quality;}s.settings.sound=false;s.score=X.validateScore(raw.score);s.retreat=X.validateHome(raw.retreat);s.visitor=X.validateVisitor(raw.visitor);if(!Number.isSafeInteger(raw.scoreRevision)||raw.scoreRevision<0||raw.scoreRevision>1e8)no('score revision');s.scoreRevision=raw.scoreRevision;return s;}
 function load(storage){try{let data=storage.getItem(KEY),legacy=false;if(!data){data=storage.getItem(LEGACY_KEY);legacy=!!data;}if(!data){data=storage.getItem('eternities.realm08.save.v7');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm07.save.v6');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm06.save.v5');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm05.save.v4');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm03.save.v3');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm02.save.v2');legacy=!!data;}if(!data)return{state:fresh(),status:'new'};return{state:validate(JSON.parse(data)),status:legacy?'migrated':'loaded'};}catch(e){return{state:fresh(),status:'unavailable-or-corrupt',preserveExisting:true,error:String(e.message)};}}
 class Simulation{
  constructor(state=fresh()){this.state=validate(state);this.room=null;this.returnPos=null;this.playerPath=[];this.runs=new Map();this.elapsed=0;this.paused=false;this.gathering=null;this.homeUndo=[];this.homeRedo=[];this.commands=new Map();for(let r of this.state.residents)this.runs.set(r.id,{goal:schedule(r.id,this.state.hour),path:[],walking:false,inside:false});}
@@ -3183,7 +3621,7 @@ class Simulation{
  moveTo(x,z){if(this.worldDive)return{ok:false,error:'Use movement and depth controls inside the gallery.'};if(this.state.adventure.hp<=0)return{ok:false,error:'Return to the spring first.'};let p=pathfind(this.state.player,{x,z},this.navRoom);if(!p)return{ok:false,error:'There is no walkable path to that point.'};this.playerPath=p;return{ok:true,waypoints:p.length};}
  manual(dx,dz,dt){if(this.state.adventure.hp<=0)return;if(!finite(dx)||!finite(dz)||!finite(dt))return;this.playerPath=[];let p=this.state.player,l=Math.hypot(dx,dz);if(!l)return;let step=Math.min(dt,.1)*3.2;dx=dx/l*step;dz=dz/l*step;let nx=p.x+dx,nz=p.z+dz,can=(x,z)=>W.handles(this.room)?W.segment(this.room,p,{x,z}):this.room===N.ROOM?N.segment(p,{x,z}):this.room===E.ROOM?E.segment(p,{x,z}):walkable(x,z,this.navRoom);if(can(nx,nz)){p.x=nx;p.z=nz;}else if(can(nx,p.z))p.x=nx;else if(can(p.x,nz))p.z=nz;p.yaw=Math.atan2(dx,dz);}
  advance(p,path,dt,speed){if(!path.length)return false;let q=path[0],dx=q.x-p.x,dz=q.z-p.z,l=Math.hypot(dx,dz),step=Math.min(l,dt*speed);if(l>.001){p.x+=dx/l*step;p.z+=dz/l*step;p.yaw=Math.atan2(dx,dz);}if(l<=dt*speed+.001)path.shift();return l>.01;}
- tick(dt){if(!finite(dt)||dt<0||this.paused)return;dt=Math.min(dt,.1);if(W.handles(this.room))W.recover(this);if(this.room===N.ROOM)N.recover(this);if(this.room===E.ROOM)E.recover(this);this.elapsed+=dt;let s=this.state;S.tick(s.sandbox,dt);if(s.settings.timeFlow){s.hour+=dt*.0045;if(s.hour>=24){s.hour-=24;s.day=Math.min(100000,s.day+1);this.event('day','Another day begins in Firstlight Valley.');}}if(this.gathering){this.gathering.elapsed+=dt;if(this.gathering.elapsed>=180){this.event('gathering','The family’s visit to the stage ended. Ordinary routines resume.');this.gathering=null;}}if(s.adventure.hp<=0)this.playerPath=[];this.walking=this.worldDive?false:this.advance(s.player,this.playerPath,dt,3.2);A.tick(this,dt);G.RealmCombat.tick(this);for(let r of s.residents){let run=this.runs.get(r.id),goal=this.gathering?'stage':schedule(r.id,s.hour),cue=!!this.gathering;if(run.goal!==goal||run.cue!==cue){run.goal=goal;run.cue=cue;run.inside=false;let l=LANDMARKS.find(x=>x.id===goal);let spot=cue?{x:[-2.3,2.3,0][PROFILES.findIndex(p=>p.id===r.id)],z:[-10.3,-10.3,-8.7][PROFILES.findIndex(p=>p.id===r.id)]}:l;run.path=pathfind(r,spot)||[];this.event('routine',PROFILES.find(p=>p.id===r.id).name+' is heading to '+l.short.toLowerCase()+'.');}run.walking=this.advance(r,run.path,dt,1.1);if(!run.path.length){run.inside=goal==='home';r.progress=Math.min(1,r.progress+dt*.00018);}}if(!this.room)for(let l of LANDMARKS)if(!s.visited.includes(l.id)&&Math.hypot(s.player.x-l.x,s.player.z-l.z)<2.8){s.visited.push(l.id);this.event('discovery','You found '+l.name+'.');}}
+ tick(dt){if(!finite(dt)||dt<0||this.paused)return;dt=Math.min(dt,.1);if(W.handles(this.room))W.recover(this);if(this.room===N.ROOM)N.recover(this);if(this.room===E.ROOM)E.recover(this);this.elapsed+=dt;let s=this.state;S.tick(s.sandbox,dt);if(s.settings.timeFlow){s.hour+=dt*.0045;if(s.hour>=24){s.hour-=24;s.day=Math.min(100000,s.day+1);this.event('day','Another day begins in Firstlight Valley.');}}if(this.gathering){this.gathering.elapsed+=dt;if(this.gathering.elapsed>=180){this.event('gathering','The family’s visit to the stage ended. Ordinary routines resume.');this.gathering=null;}}if(s.adventure.hp<=0)this.playerPath=[];this.walking=this.worldDive?false:this.advance(s.player,this.playerPath,dt,3.2);A.tick(this,dt);RT.tick(this,dt);G.RealmCombat.tick(this);for(let r of s.residents){let run=this.runs.get(r.id),goal=this.gathering?'stage':schedule(r.id,s.hour),cue=!!this.gathering;if(run.goal!==goal||run.cue!==cue){run.goal=goal;run.cue=cue;run.inside=false;let l=LANDMARKS.find(x=>x.id===goal);let spot=cue?{x:[-2.3,2.3,0][PROFILES.findIndex(p=>p.id===r.id)],z:[-10.3,-10.3,-8.7][PROFILES.findIndex(p=>p.id===r.id)]}:l;run.path=pathfind(r,spot)||[];this.event('routine',PROFILES.find(p=>p.id===r.id).name+' is heading to '+l.short.toLowerCase()+'.');}run.walking=this.advance(r,run.path,dt,1.1);if(!run.path.length){run.inside=goal==='home';r.progress=Math.min(1,r.progress+dt*.00018);}}if(!this.room)for(let l of LANDMARKS)if(!s.visited.includes(l.id)&&Math.hypot(s.player.x-l.x,s.player.z-l.z)<2.8){s.visited.push(l.id);this.event('discovery','You found '+l.name+'.');}}
  setTime(h){if(!finite(h)||h<0||h>=24)return false;this.state.hour=h;return true;}
  enter(id){let l=LANDMARKS.find(l=>l.id===id);if(this.room||!l||l.kind!=='interior')return{ok:false,error:'That place has no accessible interior.'};if(Math.hypot(this.state.player.x-l.x,this.state.player.z-l.z)>3.4)return{ok:false,error:'Walk to the door first.'};this.returnPos={...this.state.player};this.room=id;this.state.player={x:0,z:3.5,yaw:Math.PI};this.playerPath=[];this.event('visit','You entered '+l.name+'.');return{ok:true};}
  leave(){if(!this.room)return{ok:false};delete this.cosmosTrip;delete this.earthTrip;delete this.worldTrip;delete this.worldDive;this.state.player={...this.returnPos};this.room=null;this.returnPos=null;this.playerPath=[];return{ok:true};}
@@ -3568,8 +4006,8 @@ function draw(out,sim,frame){
  const grip=ready?joints[style==='bow'?'leftHand':'rightHand']:stowGrip;
  if(!point(grip)||ready&&style==='bow'&&!point(joints.rightHand))return none;
  const gear=A.GEAR[id],colour=typeof gear.color==='string'?parseInt(gear.color.slice(1),16):gear.color;
- const gem=AR.activeGem(a),gemId=gem?a.arsenal.sockets[id]:null,stage=Math.max(0,Math.min(2,G.RealmPursuit?.stage(a,id)||0)),temper=G.RealmStarter?.bonus(a,id)||0;
- const summary={weaponId:id,style,mode:ready?'held':'stowed',gripLocal:Array.from(grip),gripWorld:M.transform(frame.root,grip),gem:gemId,temper,stage,instances:0};
+ const gem=AR.activeGem(a),gemId=gem?a.arsenal.sockets[id]:null,stage=Math.max(0,Math.min(2,G.RealmPursuit?.stage(a,id)||0)),temper=G.RealmStarter?.bonus(a,id)||0,realmFitting=G.RealmCraft?.bonus(a,id)||0;
+ const summary={weaponId:id,style,mode:ready?'held':'stowed',gripLocal:Array.from(grip),gripWorld:M.transform(frame.root,grip),gem:gemId,temper,stage,realmFitting,instances:0};
  const attachment=ready?(style==='bow'?'leftHand':'rightHand'):(style==='bow'?'back':'hip');
 
  // A complete orthonormal basis handles beams with arbitrary X/Y/Z endpoints.
@@ -3590,6 +4028,7 @@ function draw(out,sim,frame){
   block(mount,[.13,.11,.044],0xb0a07a,'socket-mount',{},axis);
   if(gem)block(add(mount,scale(front,.025)),[.096,.12,.061],gem.color,'socket',{gemId,em:.35},axis,'octa');
   for(let i=0;i<stage;i++)block(offset(grip,axis,.24+i*.10),[width,.061,.13],i?0xece0b6:0xd39366,'fitting',{fittingStage:i+1},axis);
+  if(realmFitting)block(offset(grip,axis,.36),[width+.04,.08,.14],0xa997cc,'realm-fitting',{realmFitting},axis);
   if(temper)block(offset(grip,axis,.16),[width+.025,.07,.12],0x82beb0,'temper',{temper},axis);
  }
  function sheath(anchor,spec){
@@ -3944,7 +4383,7 @@ class WorldArt{
  if(G.RealmAdventureArt)G.RealmAdventureArt.draw(out,sim,t);
  if(G.RealmStarterArt)G.RealmStarterArt.draw(out,sim,t);
  if(G.RealmCosmosArt)G.RealmCosmosArt.draw(out,sim,t,this);
- if(G.RealmWorldFoundationsArt)G.RealmWorldFoundationsArt.draw(out,sim,t,this);
+ if(G.RealmWorldFoundationsArt)G.RealmWorldFoundationsArt.draw(out,sim,t,this);if(G.RealmTrailsArt)G.RealmTrailsArt.draw(out,sim,t,this);
  if(G.RealmEarthArt)G.RealmEarthArt.draw(out,sim,t,this);if(G.RealmEarthNotesArt)G.RealmEarthNotesArt.draw(out,sim);
  if(G.RealmArsenalArt)G.RealmArsenalArt.draw(out,sim,t);
  if(this.room==='mine')this.e.torch=[p.x,2.6,p.z];
@@ -4546,16 +4985,22 @@ G.RealmGatheringUI={GatheringUI,get};
 </script><script>/* The Roads of Light: invitations, physical routes and explicitly accepted work. */
 (function(G){'use strict';const W=G.RealmWorldFoundations,$=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),button=(s,a,id='')=>'<button data-rpg="'+a+'" data-id="'+esc(id)+'">'+s+'</button>';
 function projection(def,w,h){const b=def.bounds,scale=Math.min((w-28)/(b.maxX-b.minX),(h-40)/(b.maxZ-b.minZ));return{scale,x:w/2-(b.minX+b.maxX)*scale/2,y:h/2-(b.minZ+b.maxZ)*scale/2};}
-function mapCanvas(canvas,sim){const d=W.definition(sim.room),g=canvas.getContext('2d');if(!d||!g)return;const w=canvas.width,h=canvas.height,{scale:s,x:ox,y:oy}=projection(d,w,h);g.fillStyle='#182728';g.fillRect(0,0,w,h);g.fillStyle='#889783';for(const p of d.patches)g.fillRect(ox+(p.x-p.w/2)*s,oy+(p.z-p.d/2)*s,p.w*s,p.d*s);g.fillStyle='#344549';for(const p of d.solids)g.fillRect(ox+(p.x-p.w/2)*s,oy+(p.z-p.d/2)*s,p.w*s,p.d*s);if(d.dive){const p=d.dive.volume;g.fillStyle='#408585';g.fillRect(ox+(p.x-p.w/2)*s,oy+(p.z-p.d/2)*s,p.w*s,p.d*s);}for(const p of d.points){g.fillStyle=p.kind==='return'?'#ffda9c':'#d5dec9';g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,2.5,0,Math.PI*2);g.fill();}g.fillStyle='#ffffff';g.beginPath();g.arc(ox+sim.state.player.x*s,oy+sim.state.player.z*s,4,0,Math.PI*2);g.fill();}
-function mapSVG(d,sim){const{scale:s,x:ox,y:oy}=projection(d,420,500);let v='<rect width="420" height="500" rx="12" fill="#182728"/>';for(const p of d.patches)v+='<rect x="'+(ox+(p.x-p.w/2)*s)+'" y="'+(oy+(p.z-p.d/2)*s)+'" width="'+p.w*s+'" height="'+p.d*s+'" fill="#889783"/>';for(const p of d.solids)v+='<rect x="'+(ox+(p.x-p.w/2)*s)+'" y="'+(oy+(p.z-p.d/2)*s)+'" width="'+p.w*s+'" height="'+p.d*s+'" fill="#344549"/>';if(d.dive&&sim.worldDive){for(const[p,c]of [[d.dive.volume,'#408585'],...(d.dive.dryCourts||[]).map(p=>[p,'#d2c6a0'])])v+='<rect x="'+(ox+(p.x-p.w/2)*s)+'" y="'+(oy+(p.z-p.d/2)*s)+'" width="'+p.w*s+'" height="'+p.d*s+'" fill="'+c+'"/>';for(const line of d.dive.routes||[])v+='<polyline points="'+line.points.map(p=>(ox+p[0]*s)+','+(oy+p[2]*s)).join(' ')+'" fill="none" stroke="#f2ead2" stroke-width="1.5" stroke-dasharray="4 3"/>';}for(const[i,p]of d.points.entries()){if(sim.worldDive&&p.kind!=='dive')continue;v+='<circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="7" fill="#e8cc98"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#172e2b" text-anchor="middle" font-size="9">'+(i+1)+'</text>';}const p=sim.state.player;return'<svg viewBox="0 0 420 500" role="img" aria-label="'+esc(d.name)+' physical routes">'+v+'<circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="4" fill="white"/></svg>';}
+function trailPoints(sim){
+ const R=G.RealmTrails,d=R?.definitions().find(d=>d.realm===W.definition(sim.room)?.id),r=d&&sim.state.realmTrails.records[d.id];if(!r?.accepted||r.claimed)return[];
+ if(R.required(d).every(id=>r.steps.includes(id)))return[{...d.giver,name:'Return to '+d.giver.name,kind:'giver',mark:'A'}];
+ return d.steps.filter(s=>!r.steps.includes(s.id)&&s.requires.every(id=>r.steps.includes(id))).map(s=>s.kind==='escort'?{...s,...R.escort(sim),name:'Neris · current safe position'}:s).slice(0,6).map((p,i)=>({...p,mark:String.fromCharCode(65+i)}));
+}
+function trailLegend(sim){const points=trailPoints(sim);return points.length?'<section class="trail-map-key"><h3>Accepted trail · available actions</h3><p>Lettered violet rings show the actions available now. White is you; numbered brass points are ordinary local stops.</p><ul>'+points.map(p=>'<li><strong>'+p.mark+'</strong> · '+esc(p.name)+(p.optional?' · optional':'')+(p.medium==='water'||p.medium==='court'?' · foot height '+p.y.toFixed(2)+' m':'')+'</li>').join('')+'</ul></section>':'';}
+function mapCanvas(canvas,sim){const d=W.definition(sim.room),g=canvas.getContext('2d');if(!d||!g)return;const w=canvas.width,h=canvas.height,{scale:s,x:ox,y:oy}=projection(d,w,h);g.fillStyle='#182728';g.fillRect(0,0,w,h);g.fillStyle='#889783';for(const p of d.patches)g.fillRect(ox+(p.x-p.w/2)*s,oy+(p.z-p.d/2)*s,p.w*s,p.d*s);g.fillStyle='#344549';for(const p of d.solids)g.fillRect(ox+(p.x-p.w/2)*s,oy+(p.z-p.d/2)*s,p.w*s,p.d*s);if(d.dive){const p=d.dive.volume;g.fillStyle='#408585';g.fillRect(ox+(p.x-p.w/2)*s,oy+(p.z-p.d/2)*s,p.w*s,p.d*s);}for(const p of d.points){g.fillStyle=p.kind==='return'?'#ffda9c':'#d5dec9';g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,2.5,0,Math.PI*2);g.fill();}for(const p of trailPoints(sim)){g.strokeStyle='#d2b5f0';g.lineWidth=2;g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,5,0,Math.PI*2);g.stroke();}g.fillStyle='#ffffff';g.beginPath();g.arc(ox+sim.state.player.x*s,oy+sim.state.player.z*s,4,0,Math.PI*2);g.fill();}
+function mapSVG(d,sim){const{scale:s,x:ox,y:oy}=projection(d,420,500);let v='<rect width="420" height="500" rx="12" fill="#182728"/>';for(const p of d.patches)v+='<rect x="'+(ox+(p.x-p.w/2)*s)+'" y="'+(oy+(p.z-p.d/2)*s)+'" width="'+p.w*s+'" height="'+p.d*s+'" fill="#889783"/>';for(const p of d.solids)v+='<rect x="'+(ox+(p.x-p.w/2)*s)+'" y="'+(oy+(p.z-p.d/2)*s)+'" width="'+p.w*s+'" height="'+p.d*s+'" fill="#344549"/>';if(d.dive&&sim.worldDive){for(const[p,c]of [[d.dive.volume,'#408585'],...(d.dive.dryCourts||[]).map(p=>[p,'#d2c6a0'])])v+='<rect x="'+(ox+(p.x-p.w/2)*s)+'" y="'+(oy+(p.z-p.d/2)*s)+'" width="'+p.w*s+'" height="'+p.d*s+'" fill="'+c+'"/>';for(const line of d.dive.routes||[])v+='<polyline points="'+line.points.map(p=>(ox+p[0]*s)+','+(oy+p[2]*s)).join(' ')+'" fill="none" stroke="#f2ead2" stroke-width="1.5" stroke-dasharray="4 3"/>';}for(const[i,p]of d.points.entries()){if(sim.worldDive&&p.kind!=='dive')continue;v+='<circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="7" fill="#e8cc98"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#172e2b" text-anchor="middle" font-size="9">'+(i+1)+'</text>';}for(const p of trailPoints(sim)){v+='<g data-trail-marker="'+esc(p.id||'escort-person')+'"><circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="10" fill="#27303c" stroke="#d2b5f0" stroke-width="2"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#f8e8ff" text-anchor="middle" font-size="10">'+p.mark+'</text></g>';}const p=sim.state.player;return'<svg viewBox="0 0 420 500" role="img" aria-label="'+esc(d.name)+' physical routes">'+v+'<circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" '+(trailPoints(sim).some(q=>Math.hypot(q.x-p.x,q.z-p.z)*s<14)?'r="13" fill="none" stroke="white" stroke-width="2"':'r="4" fill="white"')+'/></svg>';}
 class WorldUI{
  constructor(rpg){this.rpg=rpg;this.selected=null;this.reading=null;this.ticket=null;const labels=document.createElement('div');labels.id='world-labels';labels.setAttribute('aria-hidden','true');$('#hud').append(labels);const home=document.createElement('button');home.id='world-home';home.hidden=true;home.textContent='Return to Firstlight';home.onclick=()=>this.returnHome();$('#rpg-hud').append(home);const depth=document.createElement('section');depth.id='world-depth';depth.hidden=true;$('#rpg-hud').append(depth);}
  get sim(){return this.rpg.sim;}
  reset(){W.cancel(this.ticket);this.ticket=null;this.reading=null;}
  current(){return W.definition(this.sim.room);}
- local(){return W.handles(this.sim.room)||this.sim.room===G.RealmCosmos.ROOM&&(this.sim.worldTrip?.realm==='cosmos'||!!this.sim.state.journeys.realms.cosmos.active);}
+ local(){return W.handles(this.sim.room)||this.sim.room===G.RealmCosmos.ROOM&&(this.sim.worldTrip?.realm==='cosmos'||!!this.sim.state.journeys.realms.cosmos.active||Object.entries(this.sim.state.realmTrails.records).some(([id,r])=>G.RealmTrails.definition(id)?.realm==='cosmos'&&r.accepted&&!r.claimed));}
  point(){const d=this.current();if(!d)return null;return d.points.filter(p=>W.near(this.sim,p,p.kind==='return'?2.7:2.8)).sort((a,b)=>Math.hypot(a.x-this.sim.state.player.x,a.z-this.sim.state.player.z)-Math.hypot(b.x-this.sim.state.player.x,b.z-this.sim.state.player.z))[0]||null;}
- context(){if(this.sim.worldDive)return W.near(this.sim,this.current()?.points.find(p=>p.id===this.current()?.dive?.exitId),3.5)?'E · Dry gallery landing':this.rpg.api.worldDiveStatus()?.dryCourt?'WASD · air courtyard · doorway leads back to the water':'F / G · change depth · E at the gallery landing';if(this.local()){const p=this.point();return p?'E · '+p.name:'M · local routes and work';}return !this.sim.room&&W.near(this.sim,W.GATE)?'E · Roads of Light':null;}
+ context(){const trail=this.rpg.trails?.context();if(trail)return trail;if(this.sim.worldDive)return W.near(this.sim,this.current()?.points.find(p=>p.id===this.current()?.dive?.exitId),3.5)?'E · Dry gallery landing':this.rpg.api.worldDiveStatus()?.dryCourt?'WASD · air courtyard · doorway leads back to the water':'F / G · change depth · E at the gallery landing';if(this.local()){const p=this.point();return p?'E · '+p.name:'M · local routes and work';}return !this.sim.room&&W.near(this.sim,W.GATE)?'E · Roads of Light':null;}
  interact(){if(this.sim.worldDive){const r=this.rpg.api.worldDiveExit();this.rpg.api.toast(r.text||r.error);return true;}if(!this.context())return false;const p=this.point();if(p?.kind==='return'){this.returnHome();return true;}this.selected=this.current()?.id||null;this.reading=p?.id||null;this.rpg.open('worlds');return true;}
  returnHome(){const r=this.rpg.api.worldReturn();if(r.ok){this.rpg.close();this.reset();}else this.rpg.api.toast(r.error);}
  action(el){const a=el.dataset.rpg,id=el.dataset.id;if(typeof a!=='string'||!a.startsWith('world-'))return false;
@@ -4574,23 +5019,23 @@ class WorldUI{
  }
  invitation(){return'<section class="world-invitation"><small>THE ROADS OF LIGHT</small><h3>A world larger than the valley</h3><p>Heaven’s gardens. Hell’s refuge. Coastward fields. Atlantis’s living quays. Work under the lamps of Cosmos. Every opening has a way home.</p>'+button('Read the roads and local work','open','worlds')+'</section>';}
  work(d){const r=this.sim.state.journeys.realms[d.id],a=r.active,reward=W.rewards(d,r),giver=d.points.find(p=>p.id===d.quest.giverId),here=this.sim.room===d.room,dry=here&&!this.sim.worldDive,near=dry&&W.near(this.sim,giver);return'<section class="world-work"><small>'+esc(a?.kind==='survey'?'REPEAT SURVEY · RUN '+a.run:r.firstClaimed?'FIRST OUTING COMPLETE · REPEAT WORK AVAILABLE':'OPTIONAL LOCAL WORK')+'</small><h3>'+esc(d.quest.title)+'</h3><p>'+esc(giver?.name)+' keeps this work. Collect Oren’s initial expedition kit before accepting; no campaign chapter is required.</p><ol>'+d.quest.objectives.map(o=>'<li class="'+(a?.observed.includes(o.id)?'done':'')+'">'+esc(o.text)+(here&&!this.sim.worldDive?(a&&!a.observed.includes(o.id)&&W.near(this.sim,d.points.find(p=>p.id===o.pointId))?button('Record for run '+a.run,'world-observe',o.id):button('Walk to '+esc(d.points.find(p=>p.id===o.pointId)?.name),'world-walk',o.pointId)):'')+'</li>').join('')+'</ol><p><strong>Declared payout:</strong> '+reward.xp+' XP · '+reward.coins+' sunmarks'+(reward.ore?' · '+reward.ore+' ore':'')+'. '+(r.firstClaimed?'An intentional new accepted survey pays this smaller reward once.':'First completion also leaves a modest work record at the local bench.')+' Equipment remains your choice.</p><p>'+(d.enemies?.length?'Optional creatures occupy side ground; the three work objectives have a clear route around them.':'This opening is peaceful field work.')+'</p>'+(near?(a?button('Turn in completed run '+a.run,'world-claim'):button(r.firstClaimed?'Accept a new repeat survey':'Accept this local outing','world-accept')):dry?button('Walk to the work giver','world-walk',d.quest.giverId):'')+'<p class="world-note">Reloads retain accepted objectives and claim history. Reopening resumes at your Firstlight checkpoint. Full reward pouches leave completed work ready for retry.</p></section>';}
- page(tab){const current=this.current(),diving=!!this.sim.worldDive;if(tab==='atlas'&&this.local())return{title:current.name+' · routes and work',html:'<div class="world-atlas"><section>'+mapSVG(current,this.sim)+'</section><section><small>'+esc(current.kicker)+'</small><h2>'+esc(current.name)+'</h2><p>'+esc(current.description)+'</p>'+(diving?'<p><strong>Plan view:</strong> teal is the wet gallery; cream is the Bellglass air court. Follow the dashed visitor route. The court has one doorway back to the water; the east wet lane leads to the gallery landing.</p><p>F ascends, G descends. Return to the dry quay before continuing field work.</p>':'')+current.points.map((p,i)=>({p,i})).filter(({p})=>!(diving&&p.kind!=='dive')).map(({p,i})=>button((i+1)+'. '+(diving?'Read ':'')+esc(p.name),diving?'world-inspect':'world-walk',p.id)).join('')+button('Read local work','world-select',current.id)+button('Return to Firstlight','world-return')+'</section></div>'};
+ page(tab){const current=this.current(),diving=!!this.sim.worldDive;if(tab==='atlas'&&this.local())return{title:current.name+' · routes and work',html:'<div class="world-atlas"><section>'+mapSVG(current,this.sim)+trailLegend(this.sim)+'</section><section><small>'+esc(current.kicker)+'</small><h2>'+esc(current.name)+'</h2><p>'+esc(current.description)+'</p>'+(diving?'<p><strong>Plan view:</strong> teal is the wet gallery; cream is the Bellglass air court. Follow the dashed visitor route. The court has one doorway back to the water; the east wet lane leads to the gallery landing.</p><p>F ascends, G descends. Return to the dry quay before continuing field work.</p>':'')+current.points.map((p,i)=>({p,i})).filter(({p})=>!(diving&&p.kind!=='dive')).map(({p,i})=>button((i+1)+'. '+(diving?'Read ':'')+esc(p.name),diving?'world-inspect':'world-walk',p.id)).join('')+button('Read local work','world-select',current.id)+button('Return to Firstlight','world-return')+'</section></div>'};
   if(tab!=='worlds')return null;const d=this.selected==='all'?null:W.definition(this.selected)||current;
   if(!d)return{title:'The Roads of Light',html:this.invitation()+'<div class="world-cards">'+W.definitions().map(d=>'<article><small>'+esc(d.kicker)+'</small><h2>'+esc(d.name)+'</h2><p>'+esc(d.description)+'</p>'+button('Read this opening','world-select',d.id)+'</article>').join('')+'</div><p class="world-note">Travel from the five-light marker east of Firstlight’s workshop. Entering is optional; each realm has a free return. Your home, gear, story choices and stored XP remain yours.</p>'+button('Walk to the Roads of Light marker','world-road')};
   const here=this.sim.room===d.room,p=d.points.find(p=>p.id===this.reading);let html='<article class="world-reading"><small>'+esc(d.kicker)+'</small><h2>'+esc(d.name)+'</h2><p class="world-quote">'+esc(d.description)+'</p>';
   if(p){const record=this.sim.state.journeys.realms[d.id],recognized=here&&p.id===d.quest.giverId&&record.firstClaimed&&!record.active;html+='<section><h3>'+esc(p.name)+'</h3><p class="world-dialogue">'+esc(recognized?d.quest.completionText:p.text)+'</p></section>';}
-  html+='<p><strong>Return to Firstlight:</strong> available at any time, free. Reopening or switching characters resumes your saved home checkpoint, retaining accepted work. Crossing makes no allegiance, class or main-story choice.</p>'+this.work(d)+'<section><h3>Bring useful progress home</h3><p>Use sunmarks and ore at Oren’s workbench. The item guide compares blade and bow projects with your current equipment before you choose what to pursue.</p>'+button('Inspect item & recipe guide','open','pursuit')+'</section>';
+  html+='<p><strong>Return to Firstlight:</strong> available at any time, free. Reopening or switching characters resumes your saved home checkpoint, retaining accepted work. Crossing makes no allegiance, class or main-story choice.</p>'+(this.rpg.trails?.page(d.id)||'')+'<details class="world-surveys"'+(!this.sim.state.realmTrails.records[G.RealmTrails.definitions().find(q=>q.realm===d.id)?.id]?.accepted||this.sim.state.realmTrails.records[G.RealmTrails.definitions().find(q=>q.realm===d.id)?.id]?.claimed||this.sim.state.journeys.realms[d.id].active?' open':'')+'><summary>Routine local survey · first fee and intentional repeat work</summary>'+this.work(d)+'</details><section><h3>Bring useful progress home</h3><p>Use sunmarks and ore at Oren’s workbench. The item guide compares blade and bow projects with your current equipment before you choose what to pursue.</p>'+button('Inspect item & recipe guide','open','pursuit')+'</section>';
   if(d.dive)html+='<section><h3>Bellglass visitor gallery</h3><p>A small optional submerged route. F ascends, G descends; releasing holds depth. A supplied breath envelope covers this gallery, with no air timer. The air court is a real dry volume; your companion waits on the quay.</p><p>The required outing stays on dry civic ground. Swim to the gallery landing for the dry return, or use Return to Firstlight at any time.</p>'+(here&&!diving&&p?.id===d.dive.entryId?button('Enter the visitor gallery','world-dive'):'')+'</section>';
   html+='<div class="world-actions">'+(here?button('Local map','open','atlas')+button('Return to Firstlight','world-return'):this.ticket?'<p>Cross to '+esc(d.name)+' and keep a saved home checkpoint. Local work must be accepted separately.</p>'+button('Save checkpoint & cross','world-confirm'):W.atRoad(this.sim)?button('Read crossing terms','world-preview',d.id):button('Walk to Firstlight’s five-light marker','world-road'))+button('All five roads','world-list')+'</div><p class="world-note">V exchanges third person and your diorama. R resets the current view. These are opening regions; the distant landscape and later capitals remain beyond the current route.</p></article>';
   return{title:d.name+' · local work',html};
  }
  tick(){const d=this.current(),inside=this.local(),diving=!!this.sim.worldDive;$('#world-home').hidden=!inside&&!this.sim.worldTrip;$('#world-depth').hidden=!diving;document.body.classList.toggle('in-world-foundation',inside);document.body.classList.toggle('in-world-dive',diving);if(diving){const s=this.rpg.api.worldDiveStatus();$('#world-depth').textContent=s.dryCourt?'BELLGLASS AIR COURT · breathable dry ground · doorway returns to water':'VISITOR GALLERY · '+s.depth.toFixed(1)+' m below surface · F ascend / G descend · depth holds';}
   if(d&&(inside||d.id==='cosmos'&&this.sim.state.journeys.realms.cosmos.active)){const r=this.sim.state.journeys.realms[d.id],a=r.active,next=d.quest.objectives.find(o=>!a?.observed.includes(o.id));$('#tracked-chapter').textContent=r.firstClaimed?'LOCAL OUTING COMPLETE':'OPTIONAL LOCAL WORK';$('#tracked-title').textContent=a?d.quest.title:d.name;$('#tracked-detail').textContent=a?(next?.text||'Return to '+d.points.find(p=>p.id===d.quest.giverId)?.name):r.firstClaimed?'A new survey is available from '+d.points.find(p=>p.id===d.quest.giverId)?.name:'Speak to '+d.points.find(p=>p.id===d.quest.giverId)?.name;$('#tracked-progress').textContent=a?a.observed.length+'/3 recorded · M routes · free return':this.sim.state.adventure.started?'J · Roads · inspect the work and reward':'J · Roads · collect the initial kit before accepting';}
-  const root=$('#world-labels');root.replaceChildren();if(this.rpg.dialog.open||!this.sim.state.settings.labels||diving)return;const points=inside?d.points:!this.sim.room?[{...W.GATE,name:'Roads of Light · five realm openings'}]:[],player=this.sim.state.player,shown=[];
+  const root=$('#world-labels');root.replaceChildren();if(this.rpg.dialog.open||!this.sim.state.settings.labels||diving)return;const trail=this.rpg.trails?.local(),record=trail&&this.sim.state.realmTrails.records[trail.id],trailPoints=record?.accepted&&!record.claimed?trail.steps.filter(s=>!record.steps.includes(s.id)&&s.medium==='dry'&&s.requires.every(id=>record.steps.includes(id))).map(s=>({...s,name:s.name})):[];const points=inside?[...trailPoints,...d.points]:!this.sim.room?[{...W.GATE,name:'Roads of Light · five realm openings'}]:[],player=this.sim.state.player,shown=[];
   for(const p of points.map(p=>({...p,dist:Math.hypot(p.x-player.x,p.z-player.z)})).sort((a,b)=>a.dist-b.dist)){if(p.dist>29||p.dist<2.5||shown.length>=3)continue;const q=this.rpg.api.project(p.x,(inside?W.height(d.room,p.x,p.z):1.3)+2.2,p.z);if(!q?.visible||shown.some(v=>Math.abs(v.x-q.x)<190&&Math.abs(v.y-q.y)<35))continue;const e=document.createElement('span');e.textContent=p.name;e.style.left=q.x+'px';e.style.top=q.y+'px';root.append(e);shown.push(q);}
  }
 }
-G.RealmWorldFoundationsUI={WorldUI,projection,mapCanvas,mapSVG};
+G.RealmWorldFoundationsUI={WorldUI,projection,mapCanvas,mapSVG,trailPoints,trailLegend};
 })(globalThis);
 </script><script>/* Firstlight 09 player-facing interface. One paused workspace, one skill bar.
  * Visual item catalogue is a projection of the real three-slot inventory. */
@@ -4656,7 +5101,7 @@ class RPGUI{
   d.addEventListener('input',e=>{if(e.target.id==='bag-search'){this.search=e.target.value;this.paintBag();}});
   $('#tracked-open').onclick=()=>this.open(this.worlds.local()?'worlds':this.earth.notes.active()&&[null,G.RealmEarth.ROOM,'observatory'].includes(this.sim.room)?'earth-notes':this.sim.room===G.RealmEarth.ROOM&&this.state.earthStory.accepted?'earth-story':this.quest==='project'?'pursuit':'journal');$('#beacon-menu').onclick=()=>{if(B.runtime(this.sim).phase==='assault')this.run('beacon-repair');else this.open('beacon');};$('#target-clear').onclick=()=>this.run('target-clear');$('#health-orb').onclick=()=>this.open('equipment');
   for(const el of hud.querySelectorAll('[data-skill]'))el.onclick=()=>this.skill(el.dataset.skill);
-  this.crossing=new G.RealmCrossingUI.CrossingUI(this);this.starter=new G.RealmStarterUI.StarterUI(this);this.pursuit=new G.RealmPursuitUI.PursuitUI(this);this.characters=new G.RealmCharactersUI.CharactersUI(this);this.classes=new G.RealmClassesUI.ClassesUI(this);this.cosmos=new G.RealmCosmosUI.CosmosUI(this);this.realmAtlas=new G.RealmVisualAtlas(this);this.gathering=new G.RealmGatheringUI.GatheringUI(this);this.earth=new G.RealmEarthUI.EarthUI(this);this.worlds=new G.RealmWorldFoundationsUI.WorldUI(this);if(this.state.starter.accepted&&!this.state.starter.reward)this.quest='starter';
+  this.crossing=new G.RealmCrossingUI.CrossingUI(this);this.starter=new G.RealmStarterUI.StarterUI(this);this.pursuit=new G.RealmPursuitUI.PursuitUI(this);this.characters=new G.RealmCharactersUI.CharactersUI(this);this.classes=new G.RealmClassesUI.ClassesUI(this);this.cosmos=new G.RealmCosmosUI.CosmosUI(this);this.realmAtlas=new G.RealmVisualAtlas(this);this.gathering=new G.RealmGatheringUI.GatheringUI(this);this.earth=new G.RealmEarthUI.EarthUI(this);this.worlds=new G.RealmWorldFoundationsUI.WorldUI(this);this.trails=new G.RealmTrailsUI.TrailsUI(this);if(this.state.starter.accepted&&!this.state.starter.reward)this.quest='starter';
  }
  get sim(){return this.api.sim();} get state(){return this.sim.state.adventure;}
  run(t,p={},quiet=false){const paused=this.sim.paused;try{if(this.dialog.open)this.sim.paused=false;const r=this.api.adventure().run(t,p,quiet);if(r.ok&&this.dialog.open)this.paint();return r;}finally{this.sim.paused=paused;}}
@@ -4668,7 +5113,7 @@ class RPGUI{
  close(){this.worlds?.reset();this.gathering?.reset();this.cosmos?.reset();this.earth?.reset();if(!this.dialog.open)return;this.dialog.close();this.sim.paused=this.wasPaused;this.api.clearKeys();this.api.focusWorld();}
  cameraPaint(mode){for(const el of document.querySelectorAll('[data-rpg="camera"]'))el.setAttribute('aria-pressed',String(el.dataset.id===mode));}
  reset(){this.realmAtlas?.reset();this.gathering?.reset();if(this.dialog.open)this.close();this.item=null;this.seenPhase='';this.filter='all';this.search='';this.recipe='trail_bow';this.craftFilter='weapons';this.avatarDrag=null;this.lastPreview=-1;this.pursuit.selected=null;this.starter.temper=null;this.starter.destination=null;this.starter.lastSound=0;this.starter.lastSoundScene=null;this.crossing.destination=null;this.crossing.uiRoom=null;this.characters.reset();this.classes.reset();this.earth?.notes.reset();this.earth?.reset();}
- action(el){if(this.worlds.action(el))return;if(this.realmAtlas.action(el))return;if(this.gathering.action(el))return;if(this.earth.action(el))return;if(this.cosmos.action(el))return;if(this.classes.action(el))return;if(this.characters.action(el))return;if(this.starter.action(el))return;if(this.crossing.action(el))return;if(this.pursuit.action(el))return;const act=el.dataset.rpg,id=el.dataset.id,a=this.state;
+ action(el){if(this.trails.action(el))return;if(this.worlds.action(el))return;if(this.realmAtlas.action(el))return;if(this.gathering.action(el))return;if(this.earth.action(el))return;if(this.cosmos.action(el))return;if(this.classes.action(el))return;if(this.characters.action(el))return;if(this.starter.action(el))return;if(this.crossing.action(el))return;if(this.pursuit.action(el))return;const act=el.dataset.rpg,id=el.dataset.id,a=this.state;
   if(act==='open'){this.open(id);return;}
   if(act==='track'){this.quest=id;if(this.dialog.open)this.paint();this.tick();return;}
   if(act==='camera'){this.api.camera(id);return;}
@@ -4738,7 +5183,7 @@ class RPGUI{
  }
  intercept(name){const map={armory:'craft',craft:'craft',pack:'bag',adventure:'journal',journey:'journal'};if(map[name]){if(name==='journey')this.quest='homestead';this.open(map[name]);return true;}return false;}
  interact(){
-  if(this.worlds.interact())return true;
+  if(this.trails.interact())return true;if(this.worlds.interact())return true;
   if(this.gathering.interact())return true;
   if(this.earth.interact())return true;
   if(this.cosmos.interact())return true;
@@ -4770,6 +5215,7 @@ class RPGUI{
   else if(this.tab==='merchant')body.innerHTML=this.merchant();
   else body.innerHTML=this.more();
   if(['journal','more'].includes(this.tab))body.insertAdjacentHTML('beforeend',this.gathering.invitation());
+  if(['pursuit','craft'].includes(this.tab))body.insertAdjacentHTML('afterbegin',this.trails.fitting());
   if(!this.sim.room&&['atlas','more'].includes(this.tab))body.insertAdjacentHTML('afterbegin',this.worlds.invitation()+this.earth.invitation()+this.cosmos.invitation());
   if(this.tab==='journal')body.insertAdjacentHTML('afterbegin',this.starter.journal());if(this.tab==='characters')this.characters.attach();if(this.tab==='classes')this.classes.attach();
  }
@@ -4797,7 +5243,7 @@ class RPGUI{
    h+='<p>'+esc(it.desc)+'</p><dl class="compare-stats">'+[['attack','Attack'],['defense','Guard'],['maxHP','Max health']].map(([k,n])=>'<div><dt>'+n+'</dt><dd>'+now[k]+' → '+next[k]+' <em class="'+(next[k]<now[k]?'negative':'positive')+'">'+(next[k]===now[k]?'—':(next[k]>now[k]?'+':'')+(next[k]-now[k]))+'</em></dd></div>').join('')+'</dl>'+button(on?'Equipped':'Equip '+it.slot,'equip',it.id,on,'class="primary"');
    if(it.slot==='weapon'){
     const gem=a.arsenal.sockets[it.id],station=AR.atBench(this.sim);
-    h+='<p>River fittings: '+G.RealmPursuit.stage(a,it.id)+'/2 · +'+G.RealmPursuit.bonus(a,it.id)+' attack. Oren temper: +'+G.RealmStarter.bonus(a,it.id)+'.</p>'+button('Inspect equipment project','open','pursuit');
+    h+='<p>River fittings: '+G.RealmPursuit.stage(a,it.id)+'/2 · +'+G.RealmPursuit.bonus(a,it.id)+' attack. Oren temper: +'+G.RealmStarter.bonus(a,it.id)+'. Realm fitting: +'+G.RealmCraft.bonus(a,it.id)+'.</p>'+button('Inspect equipment project','open','pursuit');
     h+='<div class="socket-detail"><h4>◆ Weapon socket</h4><p>'+(gem?esc(AR.GEMS[gem].name)+' · '+esc(AR.GEMS[gem].desc):'Empty. A fitted gem applies only while this weapon is equipped.')+'</p><label for="rpg-socket">Fit or reclaim</label><select id="rpg-socket"><option value="">Empty · reclaim fitted gem</option>'+Object.entries(AR.GEMS).map(([id,g])=>'<option value="'+id+'" '+(gem===id?'selected':'')+'>'+g.name+' · '+a.arsenal.gems[id]+' loose</option>').join('')+'</select>'+button(station?'Apply socket':'Visit a workbench to socket','socket',it.id,!station)+'</div>';
    }
   }else if(it.category==='gems')h+='<p>'+esc(AR.GEMS[it.id].desc)+'</p><p>Select an owned weapon and fit this at a workbench. Removing it returns the gem intact.</p><b>'+it.n+' in your pouch</b>';
@@ -4862,6 +5308,7 @@ class RPGUI{
   G.RealmArt.WorldArt.prototype.person(out,0,0,yaw,A.GEAR[a.equipment.armor]?.color||G.RealmCreative.CLOAKS[x.cloak],0,false,'visitor',true,0,x);
   const col=A.GEAR[a.equipment.weapon]?.color||'#bcb590';
   if(a.equipment.weapon){const add=(xx,y,z,sx,sy,sz,c)=>out.box.push({p:[xx*Math.cos(yaw)+z*Math.sin(yaw),y,-xx*Math.sin(yaw)+z*Math.cos(yaw)],s:[sx,sy,sz],c,r:[0,yaw,0]});
+   if(G.RealmCraft.bonus(a,a.equipment.weapon))add(.52,.96,.08,.22,.09,.18,'#a997cc');
    if(G.RealmStarter.bonus(a,a.equipment.weapon))add(.52,.52,.08,.20,.1,.17,'#82beb0');
    for(let i=0;i<G.RealmPursuit.stage(a,a.equipment.weapon);i++)add(.52,.69+i*.16,.09,.18,.065,.17,i?'#ece0b6':'#d39366');
    if(AR.weapon(a).style==='bow'){for(let i=0;i<11;i++){let u=i/10*Math.PI;add(.52+Math.sin(u)*.24,.24+i*.112,.12,.065,.14,.07,col);}add(.52,.8,.12,.022,1.1,.022,'#ddd5b8');}else{add(.52,.84,.08,.10,1.1,.10,col);add(.52,.58,.08,.4,.07,.13,'#c4a66f');}
@@ -4904,7 +5351,7 @@ class RPGUI{
   const bm=$('#beacon-menu');bm.textContent=b.phase==='assault'?'Repair ward · E · 20 stamina':'Speak with the envoy · E';bm.disabled=b.phase==='assault'&&(!B.near(sim)||b.ward>=100||b.time<b.playerRepairAt||a.stamina<20);
   sim.presentation=sim.presentation||{};sim.presentation.attackTarget=t.target||(this.api.adventure().intent?.kind==='attack'?this.api.adventure().intent.id:null);
   const lastHit=t.hits.at(-1);if(lastHit&&this.soundedHit!==lastHit){this.soundedHit=lastHit;if(a.elapsed-lastHit.at<.25)this.api.adventure().sound('confirmed-hit');}
-  this.targetCue();this.numbers();this.worldHealth();this.crossing.tick();this.starter.tick();this.pursuit.tick();this.cosmos.tick();this.earth.tick();this.gathering.tick();this.worlds.tick();
+  this.targetCue();this.numbers();this.worldHealth();this.crossing.tick();this.starter.tick();this.pursuit.tick();this.cosmos.tick();this.earth.tick();this.gathering.tick();this.worlds.tick();this.trails.tick();
  }
  worldHealth(){
   const root=$('#enemy-health');root.replaceChildren();if(!this.sim.presentation?.perspective||!A.combatScene(this.sim))return;
@@ -6280,11 +6727,14 @@ function toast(text){ui.toast.textContent=text;ui.toast.classList.add('show');cl
 function fallback(reason){engine=null;art=null;ui.canvas.style.display='none';ui.map.style.display='block';$('#fallback-banner').style.display='block';$('#fallback-banner').textContent=reason||'3D is unavailable. Explore the same local world using this map.';document.getElementById('labels').replaceChildren();resize();}
 try{engine=new RealmEngine.Engine(ui.canvas);engine.quality=sim.state.settings.quality;art=new RealmArt.WorldArt(engine);}catch(e){errors.push('Handled graphics fallback: '+e.message);fallback();}
 function sceneHeight(x=sim.state.player.x,z=sim.state.player.z){if(RealmWorldFoundations.handles(sim.room))return sim.worldDive?RealmWorldFoundations.playerHeight(sim):RealmWorldFoundations.height(sim.room,x,z);return sim.room===RealmEarth.ROOM?RealmEarth.height(x,z):sim.room===RealmCosmos.ROOM?RealmCosmos.height(x,z):sim.room?1.57:1.3;}
-function worldContext(){return{sim,active:characterStore.active,revision:characterStore.revision};}
+function worldContext(){sim.realmTrailSave=worldSave;return{sim,active:characterStore.active,revision:characterStore.revision};}
 function worldTravel(ticket){return RealmWorldFoundations.enter(ticket,worldContext(),{available:!!engine&&!!RealmWorldFoundationsArt,save,build:()=>switchScene(),restore:()=>{scene=Symbol('world-rollback');switchScene();}});}
 function worldReturn(){if(sim.room===RealmCosmos.ROOM&&!sim.worldTrip)return cosmosReturn();const r=RealmWorldFoundations.leave(sim);if(r.ok){switchScene();save();toast('Back at your Firstlight checkpoint.');}return r;}
 function worldSave(candidate){if(preserveExisting)return{ok:false,error:'Existing storage is preserved. Export before continuing.'};const r=characterStore.save(candidate);saveState=r.ok?'saved':'unavailable';renderStatus();return r;}
 function worldCommand(type,payload){const r=RealmWorldFoundations.command(worldContext(),type,payload,{save:worldSave});if(r.ok&&!r.duplicate&&type==='claim'&&RealmWorldFoundations.handles(sim.room)&&engine)RealmWorldFoundationsArt.make(art,sim);if(r.ok&&!r.duplicate&&type==='observe'&&payload.realm==='heaven'&&audio.enabled)audio.note([261.63,329.63,392][RealmWorldFoundations.OBJECTIVES.indexOf(payload.objective)],audio.ctx.currentTime,.7,.035);return r;}
+function trailCommand(type,payload){return RealmTrails.command(worldContext(),type,payload,{save:worldSave});}
+function trailAdjust(quest,step,value){return RealmTrails.adjust(worldContext(),quest,step,value);}
+function realmFit(weapon){return RealmCraft.command(worldContext(),weapon,{save:worldSave});}
 function worldDiveEnter(){return RealmWorldFoundations.diveEnter(sim);}
 function worldDiveExit(){return RealmWorldFoundations.diveExit(sim);}
 function worldDiveStatus(){return RealmWorldFoundations.divingStatus(sim,engine?.camera.eye);}
@@ -6427,7 +6877,7 @@ adventure=new RealmAdventureUI.AdventureUI({earthRiverReturn,sim:()=>sim,save,to
 
 arsenal=new RealmArsenalUI.ArsenalUI({sim:()=>sim,adventure:()=>adventure,openPanel,closePanel,renderPanel,panel:()=>panel,walk:walkAdventure,endBuild:()=>{sandbox?.endBuild();sandbox?.stopAuto();keys.clear();}});
 
-rpg=new RealmRPGUI.RPGUI({worldContext,worldTravel,worldReturn,worldCommand,worldDiveEnter,worldDiveExit,worldDiveStatus,earthContext,earthTravel,earthReturn,bridgeView,cosmosContext,cosmosTravel,cosmosReturn,sim:()=>sim,adventure:()=>adventure,closePanel,openPanel,endBuild:()=>{sandbox.endBuild();sandbox.stopAuto();},clearKeys:()=>keys.clear(),focusWorld:()=>ui.canvas.focus({preventScroll:true}),toast,save,exportWorld,characters:()=>characterStore.describe(sim.snapshot()),characterAction,characterExport,characterImport,characterReload,characterRecovery,panel:()=>panel,camera:cameraPreset,resetCamera,rotate:a=>{camera.yaw+=a;camera.tour=false;},direction:()=>adventure.api.direction(),music:()=>experience.open(),gather:id=>sandbox.seek(id),walkLocal:walkAdventure,stopPersonalMusic:()=>experience?.stop(),audio:()=>audio,project:(x,y,z)=>engine?.project(x,y,z)});
+rpg=new RealmRPGUI.RPGUI({worldContext,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,earthContext,earthTravel,earthReturn,bridgeView,cosmosContext,cosmosTravel,cosmosReturn,sim:()=>sim,adventure:()=>adventure,closePanel,openPanel,endBuild:()=>{sandbox.endBuild();sandbox.stopAuto();},clearKeys:()=>keys.clear(),focusWorld:()=>ui.canvas.focus({preventScroll:true}),toast,save,exportWorld,characters:()=>characterStore.describe(sim.snapshot()),characterAction,characterExport,characterImport,characterReload,characterRecovery,panel:()=>panel,camera:cameraPreset,resetCamera,rotate:a=>{camera.yaw+=a;camera.tour=false;},direction:()=>adventure.api.direction(),music:()=>experience.open(),gather:id=>sandbox.seek(id),walkLocal:walkAdventure,stopPersonalMusic:()=>experience?.stop(),audio:()=>audio,project:(x,y,z)=>engine?.project(x,y,z)});
 // Input distinguishes clicks from drags, with two-finger zoom on touch screens.
 let pointers=new Map(),gesture=null,keys=new Set();function zoom(k){camera.tour=false;if(camera.preset==='adventure'){camera.distance=Math.max(3.5,Math.min(20,camera.distance*k));return;}camera.half=C.clamp?C.clamp(camera.half*k,6,52):Math.max(6,Math.min(52,camera.half*k));camera.zoom=camera.half/camera.baseHalf;camera.overview=false;}
 function pointerDown(e){e.currentTarget.focus({preventScroll:true});camera.tour=false;if(e.button!==0&&e.button!==2&&e.pointerType!=='touch')return;e.preventDefault();e.currentTarget.setPointerCapture(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size===1)gesture={x:e.clientX,y:e.clientY,lastX:e.clientX,lastY:e.clientY,moved:false,pinch:false,orbitOnly:e.button===2};else if(pointers.size===2){let p=[...pointers.values()];gesture.pinch=true;gesture.moved=true;gesture.distance=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y);}}
@@ -6476,7 +6926,7 @@ function frame(now){let dt=lastFrame?Math.min((now-lastFrame)/1000,.1):.016;last
 // Keep a read-only-ish diagnostics surface for inspection; this local prototype is not a security boundary.
 const G_CAPTURE=!!window.__ETERNITIES_CAPTURE_MODE;
 window.Realm={get state(){return sim.snapshot();},get diagnostics(){let g=engine?.gl,dbg=g?.getExtension('WEBGL_debug_renderer_info');return{version:'10.0.0',mode:engine?'webgl2':'map',scene:sim.room||'valley',world:RealmWorldFoundations.definition(sim.room)?{id:RealmWorldFoundations.definition(sim.room).id,height:sceneHeight(),dive:worldDiveStatus(),journey:JSON.parse(JSON.stringify(sim.state.journeys.realms[RealmWorldFoundations.definition(sim.room).id]))}:null,earth:sim.room===RealmEarth.ROOM?{trip:sim.earthTrip,height:sceneHeight(),walkable:RealmEarth.walkable(sim.state.player.x,sim.state.player.z)}:null,cosmos:sim.room===RealmCosmos.ROOM?{trip:sim.cosmosTrip,height:sceneHeight(),walkable:RealmCosmos.walkable(sim.state.player.x,sim.state.player.z)}:null,networkDependencies:0,liveAI:false,multiplayer:false,adventure:{tactics:JSON.parse(JSON.stringify(RealmCombat.runtime(sim))),beacon:JSON.parse(JSON.stringify(RealmBeacon.runtime(sim))),crossing:JSON.parse(JSON.stringify(RealmCrossing.runtime(sim))),player:{...sim.state.player},paused:sim.paused,intent:adventure?.intent||null,stats:RealmAdventure.stats(sim.state.adventure),weapon:RealmArsenal.weapon(sim.state.adventure),arrows:RealmArsenal.runtime(sim).arrows.map(a=>({...a})),range:{...RealmArsenal.runtime(sim).range},enemies:RealmAdventure.runtime(sim).enemies.map(e=>({id:e.id,x:e.x,z:e.z,hp:e.hp,maxHP:e.maxHP,hidden:!!e.hidden,eventEnemy:!!e.eventEnemy,kind:e.kind,ringMode:e.ringMode,custom:e.custom,mode:e.mode,timer:e.timer,aim:e.aim})),companion:{...RealmAdventure.runtime(sim).companion}},sandbox:{bridge:sim.state.sandbox.bridge,objects:sim.state.sandbox.placed.length,elapsed:sim.state.sandbox.elapsed,autoGather:sandbox?.auto||null,buildMode:sandbox?.build||null},saveState,characters:{mode:characterStore.blocked?'blocked':characterStore.managed?'managed':'legacy',active:characterStore.active,revision:characterStore.revision,count:characterStore.record?.slots.length||1,writer:characterStore.writer,error:characterStore.error},fps,errors:errors.slice(),camera:{...camera,projection:engine?.camera.projection||'orthographic',eye:engine?.camera.eye,target:engine?.camera.target},metrics:engine?.metrics||null,reflection:engine?.reflectionInfo||null,cutaway:{enabled:!!engine?.cutaway,focus:engine?.cutawayFocus||null},renderer:dbg?g.getParameter(dbg.UNMASKED_RENDERER_WEBGL):null,music:{playing:experience?.playing||false,scoreRevision:sim.state.scoreRevision,playingRevision:experience?.playingRevision,step:experience?.step},gathering:sim.gathering?{...sim.gathering}:null,layoutRevision:sim.state.retreat.revision,roadsideGathering:{status:rpg?.gathering?.player.status||'idle',playing:!!rpg?.gathering?.player.source,pending:!!rpg?.gathering?.pending},audio:{enabled:audio.enabled,state:audio.ctx?.state||'not-created'}};},navigate,export:()=>JSON.stringify(sim.snapshot(),null,2),project:(x,y,z)=>engine?.project(x,y,z)};
-if(window.__ETERNITIES_TEST_MODE||location.search.includes('test'))window.Realm.test={worldContext,worldTravel,worldReturn,worldCommand,worldDiveEnter,worldDiveExit,worldDiveStatus,worldSwim:(...a)=>RealmWorldFoundations.swim(sim,...a),step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){sim.tick(.05);adventure?.tick();arsenal?.tick();rpg?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,bridge:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({definition:RealmEarth.BRIDGE,waterHeight:RealmEngine.WATER_HEIGHT,railCutaway:{eligible:engine?.railCutawayActive===true,enabled:engine?.cutaway===true},parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.bridgePart||i.mountainPart||i.shorelinePart).map(i=>({kind:b.kind,railBatch:b.railCutaway===true,...i,m:i.m?Array.from(i.m):null})))||[]})):null,traveler:()=>art?.travelerSnapshot()||null,drover:()=>sim.room===RealmEarth.ROOM&&art?.droverFrame?JSON.parse(JSON.stringify({frame:{...art.droverFrame,root:Array.from(art.droverFrame.root),coilRoot:Array.from(art.droverFrame.coilRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.droverPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,earthShoulder:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({frame:art?.earthShoulderFrame,parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.quarryShoulder||i.terrain).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,quarry:()=>sim.room===RealmEarth.ROOM&&art?.quarryFrame?JSON.parse(JSON.stringify({frame:{actor:{...art.quarryFrame.actor,root:Array.from(art.quarryFrame.actor.root),toolRoot:Array.from(art.quarryFrame.actor.toolRoot)},works:art.quarryFrame.works},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.stoneworkerPart||i.quarryPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))})):null,millwright:()=>sim.room===RealmEarth.ROOM&&art?.millwrightFrame?JSON.parse(JSON.stringify({frame:{...art.millwrightFrame,root:Array.from(art.millwrightFrame.root),toolRoot:Array.from(art.millwrightFrame.toolRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.millwrightPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millGate:()=>sim.room===RealmEarth.ROOM&&art?.millGateFrame?JSON.parse(JSON.stringify({gate:art.millGateFrame,parts:[...engine.batches,...engine.dynamic].flatMap(b=>b.items.filter(i=>i.millPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null}))),wheel:art.dynamicBox.items.filter(i=>i.p[0]===3.55&&i.p[1]===2.71)})):null,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
+if(window.__ETERNITIES_TEST_MODE||location.search.includes('test'))window.Realm.test={worldContext,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,worldSwim:(...a)=>RealmWorldFoundations.swim(sim,...a),step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){sim.tick(.05);adventure?.tick();arsenal?.tick();rpg?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,bridge:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({definition:RealmEarth.BRIDGE,waterHeight:RealmEngine.WATER_HEIGHT,railCutaway:{eligible:engine?.railCutawayActive===true,enabled:engine?.cutaway===true},parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.bridgePart||i.mountainPart||i.shorelinePart).map(i=>({kind:b.kind,railBatch:b.railCutaway===true,...i,m:i.m?Array.from(i.m):null})))||[]})):null,traveler:()=>art?.travelerSnapshot()||null,drover:()=>sim.room===RealmEarth.ROOM&&art?.droverFrame?JSON.parse(JSON.stringify({frame:{...art.droverFrame,root:Array.from(art.droverFrame.root),coilRoot:Array.from(art.droverFrame.coilRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.droverPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,earthShoulder:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({frame:art?.earthShoulderFrame,parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.quarryShoulder||i.terrain).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,quarry:()=>sim.room===RealmEarth.ROOM&&art?.quarryFrame?JSON.parse(JSON.stringify({frame:{actor:{...art.quarryFrame.actor,root:Array.from(art.quarryFrame.actor.root),toolRoot:Array.from(art.quarryFrame.actor.toolRoot)},works:art.quarryFrame.works},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.stoneworkerPart||i.quarryPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))})):null,millwright:()=>sim.room===RealmEarth.ROOM&&art?.millwrightFrame?JSON.parse(JSON.stringify({frame:{...art.millwrightFrame,root:Array.from(art.millwrightFrame.root),toolRoot:Array.from(art.millwrightFrame.toolRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.millwrightPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millGate:()=>sim.room===RealmEarth.ROOM&&art?.millGateFrame?JSON.parse(JSON.stringify({gate:art.millGateFrame,parts:[...engine.batches,...engine.dynamic].flatMap(b=>b.items.filter(i=>i.millPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null}))),wheel:art.dynamicBox.items.filter(i=>i.p[0]===3.55&&i.p[1]===2.71)})):null,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
 window.addEventListener('resize',resize);window.addEventListener('pagehide',()=>{save();characterStore.writer=false;characterLock.release();});window.addEventListener('pageshow',e=>{if(e.persisted&&characterStore.managed)acquireCharacterWriter().then(()=>save());});ui.canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();fallback('Graphics context lost. Your local state is intact; use the map and export a backup.');toast('Graphics paused; world state preserved.');});document.body.classList.toggle('reduced',sim.state.settings.reducedMotion);cameraPreset(sim.state.settings.cameraMode,false);if(camera.preset==='adventure'&&!sim.state.settings.cameraViews.profiles.adventure)camera.yaw=.22;labelsRebuild();resize();refreshUI();if(characterStore.managed){acquireCharacterWriter().then(ok=>{if(ok)save();else{saveState='unavailable';toast(characterLock.error);renderStatus();}});}else save();if(loaded.status==='migrated')toast('Your earlier world was copied into Realm 10. The original save was not changed.');setTimeout(()=>$('#loading').classList.add('hidden'),400);if(G_CAPTURE){if(window.Realm.test)window.Realm.test.render();}else requestAnimationFrame(frame);
 })();
 </script></body></html>

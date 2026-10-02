@@ -1,3 +1,11 @@
+# Finish the five-trail delivery, then tune the connected game
+
+The active October2 task is five hours of autonomous development from PR35, ending22:09:14UTC. The five deeper trails and finite fitting are implemented on `gameplay/realm-outings-20261002`. Finish exact-build normal-RTX footage, the review push/stacked PR, clean remote-clone full verifier and final current-state receipts. Preserve failures and skips. No main merge, public deployment, obsolete import activation or personal-save inspection.
+
+After delivery, the next acceptance is Dom's fresh and returning playthrough: route understanding, combat feel and whether the reward motivates another outing. Screenshots and recordings are useful while he is away; automated green checks do not answer those questions. Resolve concrete readability and controls defects first. Further countries, capital-scale geography, faction endings, full harvesting/economy expansion and seamless streaming need separate working slices. The authored Cosmos image comparison does not establish physical sky travel; Hell's larger verdict/allegiance and Heaven's summit remain unresolved.
+
+Maintain the home anchor and both views. Start later work from the actual delivered review head, fetch concurrent work and preserve this branch's saves and evidence. Keep founder uncertainty about paid power, offline loss, rare-pet allocation and construction scale unresolved.
+
 # Make each realm worth returning to
 
 Fetch current gameplay/review comments first. The five-road foundation is the

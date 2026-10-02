@@ -1,3 +1,13 @@
+# Different work in five realms, one safe home, 2026-10-02
+
+- Deepen the existing five-road openings with complete bounded mechanics drawn from attributed canon: a repair, a rescue, a layered chart, ordinary supplies and an observer-dependent comparator. Do not substitute another archive or silently resolve capital/faction/founder decisions.
+- Keep each trail once-only with stable objective IDs and one durable claim. Earlier surveys retain intentional repeat run identities and payouts. Job supplies are quest facts until the declared material claim, not fake inventory slots or consumption of personal timber/crops.
+- Use one finite home fitting per character:3ore+8sunmarks, +3attack on one owned blade or bow; no equip, socket erasure, scaling, infinite reforge or new campaign-best item. Measured strongest prior gear48→51 makes the veteran option explicit.
+- World9 adds optional `realmTrails1`; adventure10→11 adds `realmCraft1` only. Keep banked XP and the1–5 curve. Reject malformed/future states without replacing personal data. Initial unpublished four-record test worlds are not an alternate published schema.
+- Actual relay preparation changes the real Heaven recovery from1.8 to2.6s. Actual closed arrow collision is obstruction only. Actual Neris navigation and checkpoint arrival earn rescue; assistance is an explicit different recorded path. The comparator records only a deliberate physical setting within its declared tolerance, never an astronomy claim.
+- Keep original journal accounts, but use concise success notices and supported nearby approaches so the player and work prop remain visible. Workspace maps/diagrams override icon-sized SVG defaults; lettered available-action markers remain legible at the player's position.
+- Current review, software automation, RTX footage/cadence, fresh remote reproduction and human judgment remain distinct. Main merge and public deployment remain unapproved.
+
 # A shared road, distinct realm ownership, 2026-10-02
 
 - Dom's new overnight realm-building authority supersedes the earlier bounded

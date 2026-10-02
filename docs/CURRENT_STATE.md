@@ -1,3 +1,11 @@
+# Five deeper realm trails, 2026-10-02
+
+Current implementation branch: `gameplay/realm-outings-20261002`, based on PR35 at `56d4c25b389d6f93941f32aafc0469a14e89cf32`. The five openings now have distinct once-only accepted stories: Broken Choir repair and recovery-window encounter; Open Cage safety work and actual Neris return; depth-aware Bellglass chart; Coastward recipe materials; and two physically adjusted Cosmos frames. Declared fixed fees and the existing repeat surveys remain separate. Any claimed trail unlocks one deliberately selected +3 fitting for3ore/8sunmarks at home, including an honest strongest-gear path. Both cameras, free return and all earlier campaign/creative systems remain.
+
+World/key9 stays. Optional `realmTrails1` adds five unaccepted records to the published older world. Adventure10 migrates to11 with an empty `realmCraft1`; XP, gear, sockets, prior work and story choices remain. Current11 missing its field and future versions refuse safely. Four-record development fixtures were not a published save contract. Chapter flags, classes and soul choices are not activated by visiting or taking work.
+
+See `docs/development/REALM_OUTINGS_2026-10-02.md` for fixed IDs, declared fees, ownership and the command-earned reward matrix. Strongest earned Dawn Edge practice was48→51 after the new fitting, retaining its prior temper and two River fittings. Current candidate HTML is `b1ea59a19c9be1b784f1a85bfe1bb5ea8f1ed1b880b1c805b92b339f80bf9325`; final publication/fresh-clone receipts are still being prepared. Do not present older pass totals below as this candidate's complete remote gate.
+
 # Five playable realm openings, 2026-10-02
 
 `gameplay/world-foundations-night-20261002` is stacked against PR34 at

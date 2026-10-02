@@ -31,8 +31,8 @@ function draw(out,sim,frame){
  const grip=ready?joints[style==='bow'?'leftHand':'rightHand']:stowGrip;
  if(!point(grip)||ready&&style==='bow'&&!point(joints.rightHand))return none;
  const gear=A.GEAR[id],colour=typeof gear.color==='string'?parseInt(gear.color.slice(1),16):gear.color;
- const gem=AR.activeGem(a),gemId=gem?a.arsenal.sockets[id]:null,stage=Math.max(0,Math.min(2,G.RealmPursuit?.stage(a,id)||0)),temper=G.RealmStarter?.bonus(a,id)||0;
- const summary={weaponId:id,style,mode:ready?'held':'stowed',gripLocal:Array.from(grip),gripWorld:M.transform(frame.root,grip),gem:gemId,temper,stage,instances:0};
+ const gem=AR.activeGem(a),gemId=gem?a.arsenal.sockets[id]:null,stage=Math.max(0,Math.min(2,G.RealmPursuit?.stage(a,id)||0)),temper=G.RealmStarter?.bonus(a,id)||0,realmFitting=G.RealmCraft?.bonus(a,id)||0;
+ const summary={weaponId:id,style,mode:ready?'held':'stowed',gripLocal:Array.from(grip),gripWorld:M.transform(frame.root,grip),gem:gemId,temper,stage,realmFitting,instances:0};
  const attachment=ready?(style==='bow'?'leftHand':'rightHand'):(style==='bow'?'back':'hip');
 
  // A complete orthonormal basis handles beams with arbitrary X/Y/Z endpoints.
@@ -53,6 +53,7 @@ function draw(out,sim,frame){
   block(mount,[.13,.11,.044],0xb0a07a,'socket-mount',{},axis);
   if(gem)block(add(mount,scale(front,.025)),[.096,.12,.061],gem.color,'socket',{gemId,em:.35},axis,'octa');
   for(let i=0;i<stage;i++)block(offset(grip,axis,.24+i*.10),[width,.061,.13],i?0xece0b6:0xd39366,'fitting',{fittingStage:i+1},axis);
+  if(realmFitting)block(offset(grip,axis,.36),[width+.04,.08,.14],0xa997cc,'realm-fitting',{realmFitting},axis);
   if(temper)block(offset(grip,axis,.16),[width+.025,.07,.12],0x82beb0,'temper',{temper},axis);
  }
  function sheath(anchor,spec){

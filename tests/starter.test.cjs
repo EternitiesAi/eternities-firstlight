@@ -16,17 +16,17 @@ function objectives(s=accepted()){
 }
 
 test('new quest state is explicit, versioned and round trips',()=>{
- const s=A.fresh();assert.equal(A.VERSION,10);assert.deepEqual(s.starter,{version:1,accepted:false,bundles:[],reward:null});assert.deepEqual(A.validate(s),s);
+ const s=A.fresh();assert.equal(A.VERSION,11);assert.deepEqual(s.starter,{version:1,accepted:false,bundles:[],reward:null});assert.deepEqual(A.validate(s),s);
 });
 test('version-five adventure migrates without altering existing campaign or creative data',()=>{
  const raw=new C.Simulation().snapshot();raw.adventure.version=5;delete raw.adventure.starter;raw.notes=[{text:'intact notebook',day:1}];raw.score.title='intact composition';
- const before=JSON.stringify(raw),out=C.validate(raw);assert.equal(out.adventure.version,10);assert.deepEqual(out.adventure.starter,A.fresh().starter);
+ const before=JSON.stringify(raw),out=C.validate(raw);assert.equal(out.adventure.version,11);assert.deepEqual(out.adventure.starter,A.fresh().starter);
  for(const k of Object.keys(raw))if(k!=='adventure')assert.deepEqual(out[k],raw[k],k);
  for(const k of Object.keys(raw.adventure))if(k!=='version')assert.deepEqual(out.adventure[k],raw.adventure[k],k);
  assert.equal(JSON.stringify(raw),before);
 });
 test('all banked XP boundaries retain XP and the existing five-level curve',()=>{
- for(const xp of [0,29,30,79,80,149,150,259,260,9999]){const a=A.fresh();a.version=5;delete a.starter;a.xp=xp;const out=A.validate(a);assert.equal(out.xp,xp);assert.equal(out.version,10);assert.equal(A.level(out),1+[30,80,150,260].filter(n=>xp>=n).length);}
+ for(const xp of [0,29,30,79,80,149,150,259,260,9999]){const a=A.fresh();a.version=5;delete a.starter;a.xp=xp;const out=A.validate(a);assert.equal(out.xp,xp);assert.equal(out.version,11);assert.equal(A.level(out),1+[30,80,150,260].filter(n=>xp>=n).length);}
 });
 test('acceptance requires kit and actual Oren proximity without campaign consent',()=>{
  const raw=new C.Simulation();raw.state.player={x:11,z:9,yaw:0};const before=snapshot(raw);assert.equal(act(raw,'starter-accept').ok,false);assert.equal(snapshot(raw),before);
