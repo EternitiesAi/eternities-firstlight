@@ -131,7 +131,7 @@ for(const realm of ['hell','earthlands'])for(const style of ['blade','bow'])test
  assert.equal(enemy.hp,partialHP,'retreat does not invent further attacks');
  assert.deepEqual(sim.state.journeys.realms[realm].defeated,[],'living threat is not recorded dead');
  assert.deepEqual(legacy(sim),before,'retreat never creates legacy rewards');freeHome(sim,home);
- walk(sim,0,3);command(sim,'rest');walk(sim,home.x,home.z);enter(sim,realm);
+ walk(sim,0,3);command(sim,'rest');walk(sim,home.x,home.z);const secondHome={...sim.state.player};enter(sim,realm);
  enemy=A.runtime(sim).enemies.find(e=>e.id===d.enemies[0].id);assert.equal(enemy.hp,d.enemies[0].hp,'unresolved encounter returns with its declared health');
  approach(sim,enemy,style);const secondBrace=braceAgainstRealTell(sim,enemy);
  const battle=autoUntil(sim,enemy,style,()=>enemy.hp===0,'actual optional enemy defeat');
@@ -142,12 +142,12 @@ for(const realm of ['hell','earthlands'])for(const style of ['blade','bow'])test
  assert.equal(sim.adventureCommand('world-combat-no-loot-'+(++serial),'loot',{id:enemy.id}).ok,false);
  assert.deepEqual(legacy(sim),before,'dead target and loot commands cannot replay a legacy payout');
  const saved=sim.snapshot();sim=new C.Simulation(saved);
- assert.equal(sim.room,null,'cold reload uses the home checkpoint');assert.deepEqual(sim.state.player,home);
+ assert.equal(sim.room,null,'cold reload uses the home checkpoint');assert.deepEqual(sim.state.player,secondHome);
  assert.deepEqual(sim.state.journeys.realms[realm].defeated,[enemy.id],'earned local dead record survives cold reload');
  assert.deepEqual(legacy(sim),before);enter(sim,realm);
  assert.equal(A.runtime(sim).enemies.some(e=>e.id===enemy.id),false,'dead local enemy is absent after re-entry');
  assert.equal(T.candidates(sim).some(e=>e.id===enemy.id),false,'targeting cannot replay the encounter');
- assert.deepEqual(legacy(sim),before);freeHome(sim,home);
+ assert.deepEqual(legacy(sim),before);freeHome(sim,secondHome);
  assert.deepEqual(sim.state.journeys.realms[realm],{counter:0,lastClaim:0,firstClaimed:false,active:null,defeated:[enemy.id]},'combat does not accept or pay a survey');
  t.diagnostic(JSON.stringify({realm,style,weapon:before.equipment.weapon,entry:d.entry,stage:{x:d.enemies[0].x,z:d.enemies[0].z+12},battle:{x:d.enemies[0].x,z:d.enemies[0].z+(style==='bow'?4:1.1)},refuge,firstBrace,firstAttack,secondBrace,battleResult:battle,tickSeconds:.05}));
 });
