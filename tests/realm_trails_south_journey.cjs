@@ -5,6 +5,8 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto');
 const {createHarness,earnedKit}=require('./realm_trails_journey.cjs'),W=require('../src/world-foundations.js'),R=require('../src/realm-trails.js');
 const ROOT=path.resolve(__dirname,'..'),copy=structuredClone;
+const sha=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+function sourceEpoch(){const files=Object.keys(require.cache).filter(file=>file.startsWith(ROOT+path.sep)).sort();return{htmlSha256:sha(path.join(ROOT,'index.html')),sourceSha256:Object.fromEntries(files.map(file=>[path.relative(ROOT,file).split(path.sep).join('/'),sha(file)]))};}
 const earthRoute=[[-7,97],[0,97],[0,92],[0,16],[-10,15],[-10,-12],[-25,-12],[-25,-11],[-25,-12],[-10,-12],[-10,-34],[1,-35],[14,-34],[14,-19],[28,-19],[28,-16],[30,-25],[28,-19],[14,-19],[14,15],[0,16],[0,92],[0,97],[-3,97],[-7,97]];
 const galleryRoute=[[8,-.5,-19.5],[8,-1.05,-22],[8,-2.55,-28],[8,-2.7,-29.5],[8,-2.7,-32],[8,-2.7,-35],[8,-2.7,-32],[8,-2.7,-29.5],[8,-1.8,-29],[12,-1.8,-29],[12,-1.4,-38.4],[12,-1.4,-39.3]];
 function journey({bow=false,output=null}={}){
@@ -27,7 +29,7 @@ function journey({bow=false,output=null}={}){
  for(const k of ['owned','equipment','arsenal','starter','pursuit','classPath','road','beacon','crossing','earthStory','earthNotes','earthGathering','companion','defeated','drops','reward'])assert.deepEqual(final.adventure[k],original.adventure[k],k+' retained');
  for(const k of ['notes','score','scoreRevision','retreat','visitor','journeys'])assert.deepEqual(final[k],original[k]);
  assert.equal(final.adventure.xp-original.adventure.xp,55);assert.equal(final.adventure.coins-original.adventure.coins,22);assert.equal(final.adventure.ore-original.adventure.ore,2);
- const report={status:'passed',variant,method:'accepted production commands, actual Core paths and full-body World swimming; accelerated ticks, in-memory saver',humanPacing:false,browserPersistence:false,positionEdits:0,inventoryGrants:0,manualDamage:0,plantedDefeats:0,claims,swims,walkedLegs:h.routes.length,saveCount:h.checkpoints.length,canonicalPreservation:true,harnessSha256:crypto.createHash('sha256').update(fs.readFileSync(__filename)).digest('hex'),events:h.events,routes:h.routes};
+ const report={status:'passed',variant,method:'accepted production commands, actual Core paths and full-body World swimming; accelerated ticks, in-memory saver',humanPacing:false,browserPersistence:false,positionEdits:0,inventoryGrants:0,manualDamage:0,plantedDefeats:0,claims,swims,walkedLegs:h.routes.length,saveCount:h.checkpoints.length,canonicalPreservation:true,...sourceEpoch(),harnessSha256:sha(__filename),events:h.events,routes:h.routes};
  if(output)fs.writeFileSync(path.join(output,variant,'SOUTH_TRAILS_JOURNEY_REPORT.json'),JSON.stringify(report,null,2)+'\n');return report;
 }
 if(require.main===module){const i=process.argv.indexOf('--output'),output=i>=0?path.resolve(process.argv[i+1]):null;if(output&&process.platform==='win32')assert.match(output,/^D:[\\/]/i);const r=journey({bow:process.argv.includes('--bow'),output});console.log(JSON.stringify({...r,events:undefined,routes:undefined,swims:undefined},null,2));}
