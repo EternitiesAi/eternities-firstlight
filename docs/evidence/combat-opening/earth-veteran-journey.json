@@ -1,0 +1,1018 @@
+{
+  "status": "passed",
+  "variant": "veteran",
+  "earthRoute": true,
+  "classPath": "hunter",
+  "commands": 53,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedDefeats": 0,
+  "acceleratedTick": true,
+  "source": {
+    "path": "C:\\dev\\firstlight-artifacts\\combat-opening-proof-2026-10-01\\source\\evidence10\\starter\\veteran\\03_TEMPER_EQUIPPED_RELOADED.json",
+    "sha256": "1bbd98b27da1c9760b9788c1d6391938ee16d4ca4cfb0b5ba2c8159c6e747875"
+  },
+  "claimed": 3,
+  "beforeDamage": 44,
+  "afterDamage": 48,
+  "equipped": "dawn_edge",
+  "stats": {
+    "level": 5,
+    "attack": 48,
+    "defense": 13,
+    "maxHP": 200
+  },
+  "xp": 563,
+  "economy": {
+    "initial": {
+      "ore": 17,
+      "coins": 92,
+      "fiber": 0,
+      "wood": 2,
+      "stone": 0,
+      "plank": 0
+    },
+    "end": {
+      "ore": 17,
+      "coins": 92,
+      "fiber": 0,
+      "wood": 2,
+      "stone": 0,
+      "plank": 0
+    },
+    "net": {
+      "ore": 0,
+      "coins": 0,
+      "fiber": 0,
+      "wood": 0,
+      "stone": 0,
+      "plank": 0
+    },
+    "surveys": {
+      "count": 3,
+      "ore": 9,
+      "coins": 12,
+      "fiber": 6
+    },
+    "transactions": [
+      {
+        "type": "pursuit-claim",
+        "p": {
+          "run": "riverbank-survey/1"
+        },
+        "before": {
+          "ore": 17,
+          "coins": 92,
+          "fiber": 0,
+          "wood": 2,
+          "stone": 0,
+          "plank": 0
+        },
+        "after": {
+          "ore": 20,
+          "coins": 96,
+          "fiber": 2,
+          "wood": 2,
+          "stone": 0,
+          "plank": 0
+        }
+      },
+      {
+        "type": "pursuit-claim",
+        "p": {
+          "run": "riverbank-survey/2"
+        },
+        "before": {
+          "ore": 20,
+          "coins": 96,
+          "fiber": 2,
+          "wood": 2,
+          "stone": 0,
+          "plank": 0
+        },
+        "after": {
+          "ore": 23,
+          "coins": 100,
+          "fiber": 4,
+          "wood": 2,
+          "stone": 0,
+          "plank": 0
+        }
+      },
+      {
+        "type": "pursuit-claim",
+        "p": {
+          "run": "riverbank-survey/3"
+        },
+        "before": {
+          "ore": 23,
+          "coins": 100,
+          "fiber": 4,
+          "wood": 2,
+          "stone": 0,
+          "plank": 0
+        },
+        "after": {
+          "ore": 26,
+          "coins": 104,
+          "fiber": 6,
+          "wood": 2,
+          "stone": 0,
+          "plank": 0
+        }
+      },
+      {
+        "type": "pursuit-fit",
+        "p": {
+          "weapon": "dawn_edge",
+          "step": 1
+        },
+        "before": {
+          "ore": 26,
+          "coins": 104,
+          "fiber": 6,
+          "wood": 2,
+          "stone": 0,
+          "plank": 0
+        },
+        "after": {
+          "ore": 23,
+          "coins": 100,
+          "fiber": 4,
+          "wood": 2,
+          "stone": 0,
+          "plank": 0
+        }
+      },
+      {
+        "type": "pursuit-fit",
+        "p": {
+          "weapon": "dawn_edge",
+          "step": 2
+        },
+        "before": {
+          "ore": 23,
+          "coins": 100,
+          "fiber": 4,
+          "wood": 2,
+          "stone": 0,
+          "plank": 0
+        },
+        "after": {
+          "ore": 17,
+          "coins": 92,
+          "fiber": 0,
+          "wood": 2,
+          "stone": 0,
+          "plank": 0
+        }
+      }
+    ]
+  },
+  "claims": [
+    {
+      "run": "riverbank-survey/1",
+      "before": {
+        "ore": 17,
+        "coins": 92,
+        "fiber": 0,
+        "wood": 2,
+        "stone": 0,
+        "plank": 0
+      },
+      "after": {
+        "ore": 20,
+        "coins": 96,
+        "fiber": 2,
+        "wood": 2,
+        "stone": 0,
+        "plank": 0
+      }
+    },
+    {
+      "run": "riverbank-survey/2",
+      "before": {
+        "ore": 20,
+        "coins": 96,
+        "fiber": 2,
+        "wood": 2,
+        "stone": 0,
+        "plank": 0
+      },
+      "after": {
+        "ore": 23,
+        "coins": 100,
+        "fiber": 4,
+        "wood": 2,
+        "stone": 0,
+        "plank": 0
+      }
+    },
+    {
+      "run": "riverbank-survey/3",
+      "before": {
+        "ore": 23,
+        "coins": 100,
+        "fiber": 4,
+        "wood": 2,
+        "stone": 0,
+        "plank": 0
+      },
+      "after": {
+        "ore": 26,
+        "coins": 104,
+        "fiber": 6,
+        "wood": 2,
+        "stone": 0,
+        "plank": 0
+      }
+    }
+  ],
+  "combats": [
+    {
+      "id": "riverbank-survey/1:west",
+      "ticks": 2,
+      "guards": 1,
+      "hp": 200,
+      "phases": {
+        "windup": {
+          "kind": "strike",
+          "remaining": 0.44999999999999984,
+          "enemyHP": 38,
+          "playerHP": 200,
+          "readiness": "Autoattack active"
+        }
+      }
+    },
+    {
+      "id": "riverbank-survey/1:east",
+      "ticks": 8,
+      "guards": 1,
+      "hp": 199,
+      "phases": {
+        "windup": {
+          "kind": "strike",
+          "remaining": 0.7499999999999998,
+          "enemyHP": 56,
+          "playerHP": 200,
+          "readiness": "Autoattack active"
+        }
+      }
+    },
+    {
+      "id": "riverbank-survey/2:west",
+      "ticks": 2,
+      "guards": 1,
+      "hp": 200,
+      "phases": {
+        "windup": {
+          "kind": "strike",
+          "remaining": 0.44999999999999984,
+          "enemyHP": 38,
+          "playerHP": 200,
+          "readiness": "Autoattack active"
+        }
+      }
+    },
+    {
+      "id": "riverbank-survey/2:east",
+      "ticks": 8,
+      "guards": 0,
+      "hp": 200,
+      "phases": {
+        "windup": {
+          "kind": "strike",
+          "remaining": 0.34999999999999964,
+          "enemyHP": 46,
+          "playerHP": 200,
+          "readiness": "Autoattack active"
+        },
+        "recover": {
+          "kind": "opening",
+          "remaining": 1.55,
+          "enemyHP": 2,
+          "playerHP": 200,
+          "readiness": "Weapon recovering"
+        }
+      }
+    },
+    {
+      "id": "riverbank-survey/3:west",
+      "ticks": 2,
+      "guards": 1,
+      "hp": 200,
+      "phases": {
+        "windup": {
+          "kind": "strike",
+          "remaining": 0.44999999999999984,
+          "enemyHP": 38,
+          "playerHP": 200,
+          "readiness": "Autoattack active"
+        }
+      }
+    },
+    {
+      "id": "riverbank-survey/3:east",
+      "ticks": 8,
+      "guards": 0,
+      "hp": 200,
+      "phases": {
+        "windup": {
+          "kind": "strike",
+          "remaining": 0.34999999999999964,
+          "enemyHP": 46,
+          "playerHP": 200,
+          "readiness": "Autoattack active"
+        },
+        "recover": {
+          "kind": "opening",
+          "remaining": 1.55,
+          "enemyHP": 2,
+          "playerHP": 200,
+          "readiness": "Weapon recovering"
+        }
+      }
+    }
+  ],
+  "actions": [
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "class-choose",
+      "p": {
+        "id": "hunter",
+        "confirm": true
+      }
+    },
+    {
+      "type": "pursuit-pin",
+      "p": {
+        "weapon": "dawn_edge"
+      }
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "crossing": "earth-hearthwater-approach"
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        -13,
+        4
+      ]
+    },
+    {
+      "crossing": "riverbank"
+    },
+    {
+      "walk": [
+        -5,
+        11.5
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "river-practice"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        0,
+        12
+      ]
+    },
+    {
+      "type": "starter-leave",
+      "p": {}
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        0,
+        24
+      ]
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "walk": [
+        0,
+        3
+      ]
+    },
+    {
+      "type": "rest",
+      "p": {}
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "pursuit-start",
+      "p": {
+        "after": 0
+      }
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "crossing": "earth-hearthwater-approach"
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        -13,
+        4
+      ]
+    },
+    {
+      "crossing": "riverbank"
+    },
+    {
+      "walk": [
+        -7,
+        3
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "riverbank-survey/1:west"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "guard",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7,
+        3
+      ]
+    },
+    {
+      "type": "pursuit-sample",
+      "p": {
+        "run": "riverbank-survey/1",
+        "id": "west-sample"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "crossing": "earth-hearthwater-approach"
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        -13,
+        4
+      ]
+    },
+    {
+      "crossing": "riverbank"
+    },
+    {
+      "walk": [
+        5,
+        -3
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "riverbank-survey/1:east"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "guard",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        5,
+        -11
+      ]
+    },
+    {
+      "type": "pursuit-sample",
+      "p": {
+        "run": "riverbank-survey/1",
+        "id": "east-sample"
+      }
+    },
+    {
+      "walk": [
+        0,
+        12
+      ]
+    },
+    {
+      "type": "starter-leave",
+      "p": {}
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        0,
+        24
+      ]
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "reload": true
+    },
+    {
+      "type": "pursuit-claim",
+      "p": {
+        "run": "riverbank-survey/1"
+      }
+    },
+    {
+      "walk": [
+        0,
+        3
+      ]
+    },
+    {
+      "type": "rest",
+      "p": {}
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "pursuit-start",
+      "p": {
+        "after": 1
+      }
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "crossing": "earth-hearthwater-approach"
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        -13,
+        4
+      ]
+    },
+    {
+      "crossing": "riverbank"
+    },
+    {
+      "walk": [
+        -7,
+        3
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "riverbank-survey/2:west"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "guard",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7,
+        3
+      ]
+    },
+    {
+      "type": "pursuit-sample",
+      "p": {
+        "run": "riverbank-survey/2",
+        "id": "west-sample"
+      }
+    },
+    {
+      "walk": [
+        5,
+        -3
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "riverbank-survey/2:east"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        5,
+        -11
+      ]
+    },
+    {
+      "type": "pursuit-sample",
+      "p": {
+        "run": "riverbank-survey/2",
+        "id": "east-sample"
+      }
+    },
+    {
+      "walk": [
+        0,
+        12
+      ]
+    },
+    {
+      "type": "starter-leave",
+      "p": {}
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        0,
+        24
+      ]
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "reload": true
+    },
+    {
+      "type": "pursuit-claim",
+      "p": {
+        "run": "riverbank-survey/2"
+      }
+    },
+    {
+      "walk": [
+        0,
+        3
+      ]
+    },
+    {
+      "type": "rest",
+      "p": {}
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "pursuit-start",
+      "p": {
+        "after": 2
+      }
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "crossing": "earth-hearthwater-approach"
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        -13,
+        4
+      ]
+    },
+    {
+      "crossing": "riverbank"
+    },
+    {
+      "walk": [
+        -7,
+        3
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "riverbank-survey/3:west"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "guard",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7,
+        3
+      ]
+    },
+    {
+      "type": "pursuit-sample",
+      "p": {
+        "run": "riverbank-survey/3",
+        "id": "west-sample"
+      }
+    },
+    {
+      "walk": [
+        5,
+        -3
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "riverbank-survey/3:east"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        5,
+        -11
+      ]
+    },
+    {
+      "type": "pursuit-sample",
+      "p": {
+        "run": "riverbank-survey/3",
+        "id": "east-sample"
+      }
+    },
+    {
+      "walk": [
+        0,
+        12
+      ]
+    },
+    {
+      "type": "starter-leave",
+      "p": {}
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        0,
+        24
+      ]
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "reload": true
+    },
+    {
+      "type": "pursuit-claim",
+      "p": {
+        "run": "riverbank-survey/3"
+      }
+    },
+    {
+      "type": "pursuit-fit",
+      "p": {
+        "weapon": "dawn_edge",
+        "step": 1
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "type": "pursuit-fit",
+      "p": {
+        "weapon": "dawn_edge",
+        "step": 2
+      }
+    },
+    {
+      "type": "equip",
+      "p": {
+        "id": "dawn_edge"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "crossing": "earth-hearthwater-approach"
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        -13,
+        4
+      ]
+    },
+    {
+      "crossing": "riverbank"
+    },
+    {
+      "walk": [
+        -5,
+        11.5
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "river-practice"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        0,
+        12
+      ]
+    },
+    {
+      "type": "starter-leave",
+      "p": {}
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        0,
+        24
+      ]
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    }
+  ]
+}

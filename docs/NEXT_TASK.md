@@ -1,3 +1,31 @@
+# An honest next equipment step
+
+Read combat-opening results,actual footage and latest review comments;fetch
+current gameplay before branching. The selected-foe warning/opening now retains
+HP/readiness,with real owner/timer/Brace status and responsive ward clearance.
+Human reaction/readability/fun remains pending,especially the smallest390px text.
+
+Next measured gap: the guide's initial longbow target projects21attack while its
+next accepted prerequisite recipe crafts Ashwood at13,against currentblade16.
+Keep the long-term target preview and separately show the actual next step/cost/
+if-equipped comparison. Test fresh blade/bow and veteran,finite owned fittings,
+finished projects,cooldown/reach/stamina/guard/HP/socket and no preview mutation.
+Review Oren's25XP reward preview near existing level boundaries; explicitly label
+current-XP equipment or compute a pure bounded claim preview. Never alter balance,
+stored XP, sockets, finite upgrade ownership or once-only/repeat-run contracts.
+
+Dom approved the bridge's appearance and described future true open-world scale
+over massive water. Keep that ambition in canon. Supported geography and swimming
+have not grown from this feedback; a larger connected-world slice needs its own
+actual navigation/scale/camera proof. Both cameras remain interchangeable.
+
+World/key9/adventure10 and all existing systems/saves/choices remain. Heavy work
+stays onD. Exact-head fresh verification and actual media remain required. No
+automatic main merge,deploy,billing/paid provider,persistent-preview bypass or
+personal-profile access. Darric remains a separate candidate.
+
+Prior checkpoint retained:
+
 # Return to the satisfying local outing
 
 Read traveller-rail results/actual footage and latest review comments;fetch

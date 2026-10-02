@@ -1,3 +1,23 @@
+# Combat-opening projection and bridge scale direction,2026-10-01
+
+- Dom approved bridge appearance and described a future true open world/bridge
+  over massive water. Preserve the ambition as founder direction; no automatic
+  geography expansion, swimming or human combat/comfort acceptance follows.
+- Fix the observed Reedback text-cue gap through one read-only selected-foe
+  projection. Encounter owners retain AI/timers/damage; HP/readiness stay visible.
+  Timed strikes/recovery,untimed charge,Bell rings and ward-directed attacks have
+  explicit distinct copy. Brace advice follows actual active/cooldown/cost state.
+- Narrow ward uses actual target border-box size on ResizeObserver changes,
+  retaining baseline top and12px separation. No per-frame layout measurement,
+  sound/shake/geometry/render-pass/save/economy/control addition. No migration.
+- Full source verification,earned all-equipment journeys,actual normal-time
+  footage,short hardware intervals and read-only independent review remain
+  distinct from founder play. Exact pushed-head clone is recorded in delivery.
+- Defer the concrete longbow target-versus-prerequisite preview mismatch to the
+  next bounded equipment step. Never repair a preview by changing costs/power/XP.
+
+Prior decisions retained:
+
 # Rail visibility stays a local presentation rule,2026-10-01
 
 Use a dedicated44-box static instance batch sharing the existing mesh and a

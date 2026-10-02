@@ -30,6 +30,12 @@
 @media(max-width:650px){#range-round{top:133px;width:calc(100% - 24px);min-width:0;padding:9px 8px}#range-round strong{font-size:15px}#range-round button{min-height:40px;font-size:11px;padding:5px 9px}#range-progress{font-size:11px;margin:5px 0}.in-range .place-title{bottom:176px}.in-range .map-widget{display:none}.gem-pouch{gap:4px}.panel-open #range-round{display:none}#armory-open{min-width:48px}}
 
 /* Realm 09 · quieter field HUD and a single, readable RPG workspace. */
+#target-cue{border-top:1px solid rgba(221,190,139,.3);margin-top:7px;padding-top:6px;font-size:11px;line-height:1.45;overflow-wrap:anywhere}
+#target-cue b,#target-cue span{display:block}#target-cue b{color:#f0c58d;font-weight:650}#target-cue span{color:#ded8c4;font-size:10px}
+#target-cue[data-phase="recover"] b{color:#a4d8b9}#target-cue[data-phase="recover"]{border-color:rgba(164,216,185,.3)}
+@media(max-width:550px){#target-cue{font-size:9px;margin-top:5px;padding-top:4px}#target-cue span{font-size:8px}}
+@media(max-width:820px){#rpg-hud #beacon-tracker{top:max(185px,calc(76px + var(--target-frame-height,0px) + 12px))}}
+@media(max-width:550px){#rpg-hud #beacon-tracker{top:max(180px,calc(69px + var(--target-frame-height,0px) + 12px))}}
 body.rpg-edition{--gold:#dbc18c;--ink:#111d21;--pane:rgba(15,29,33,.94);--muted:#abbcb7;--line:rgba(205,215,190,.22)}
 .rpg-edition [hidden]{display:none!important}
 .rpg-edition #dock,.rpg-edition #chapter-hud,.rpg-edition #battle-hud,.rpg-edition #journey-hud,.rpg-edition #pocket-hud,.rpg-edition .brand .eyebrow,.rpg-edition .brand p,.rpg-edition #place-description,.rpg-edition #place-kicker,.rpg-edition #discovery{display:none!important}
@@ -1270,6 +1276,22 @@ function readiness(sim){
  if(a.elapsed<r.cooldowns.attack)return 'Weapon recovering';
  return t.auto?'Autoattack active':'Ready · 1 to autoattack';
 }
+// Read current AI intent only. Timers and damage remain with their encounter owner.
+function threat(sim){
+ const a=sim.state.adventure;if(sim.paused||!a.started||a.hp<=0||!G.RealmAdventure.combatScene(sim))return null;
+ const e=selected(sim);if(!e||e.kind==='practice')return null;
+ const known=e.custom==='bell'?e.kind==='bellwarden':e.eventEnemy?['invader','chanter','saboteur','siegeboss'].includes(e.kind):['skitter','sentinel','boss','charger'].includes(e.kind);
+ if(!known)return null;
+ if(e.mode==='charge')return e.kind==='charger'&&Number.isFinite(e.chargeLeft)&&e.chargeLeft>0?{phase:'charge',kind:'charge',remaining:null}:null;
+ if(!['windup','recover'].includes(e.mode)||!Number.isFinite(e.timer)||e.timer<=0)return null;
+ if(e.mode==='recover')return{phase:'recover',kind:'opening',remaining:e.timer};
+ if(!e.aim||!Number.isFinite(e.aim.x)||!Number.isFinite(e.aim.z))return null;
+ let kind='strike';
+ if(e.custom==='bell'){if(!['inner','outer'].includes(e.ringMode))return null;kind='bell-'+e.ringMode;}
+ else if(e.eventEnemy&&e.aimWard)kind='ward';
+ else if(e.kind==='charger')kind='charge';
+ return{phase:'windup',kind,remaining:e.timer};
+}
 function handle(sim,type,p={}){
  const A=G.RealmAdventure,a=sim.state.adventure,r=A.runtime(sim),t=runtime(sim),fail=error=>({ok:false,error}),yes=text=>({ok:true,text});
  if(type==='target-cycle'){
@@ -1343,7 +1365,7 @@ function tick(sim){
  const result=sim.adventureCommand('auto-'+(++t.serial)+'-'+a.revision,'attack',{target:e.id});
  if(result.ok)t.motion={style:w.style,at:a.elapsed};t.windup=null;
 }
-G.RealmCombat={skills,runtime,candidates,selected,stop,pose,readiness,handle,mitigate,hit,tick};
+G.RealmCombat={skills,runtime,candidates,selected,stop,pose,readiness,threat,handle,mitigate,hit,tick};
 if(typeof module!=='undefined')module.exports=G.RealmCombat;
 })(globalThis);
 </script><script>/* Local equipment projects. A contiguous paid-run ledger is separate from story rewards. */
@@ -3892,7 +3914,7 @@ class RPGUI{
     ${button(icon('grid')+'<span>More</span>','open','more')}
    </nav>
    <section id="quest-tracker" aria-label="Tracked quest"><div class="tracker-switch">${button('Story','track','story')}${button('Homestead','track','homestead')}</div><button id="tracked-open"><small id="tracked-chapter"></small><strong id="tracked-title"></strong><span id="tracked-detail"></span><i id="tracked-progress"></i></button></section>
-   <section id="target-frame" hidden aria-label="Selected enemy"><div id="target-icon">${icon('shield')}</div><div><small id="target-rank"></small><strong id="target-name"></strong><div class="target-health"><i id="target-health-fill"></i></div><span id="target-state"></span></div><button id="target-clear" aria-label="Clear target">×</button></section>
+   <section id="target-frame" hidden aria-label="Selected enemy"><div id="target-icon">${icon('shield')}</div><div><small id="target-rank"></small><strong id="target-name"></strong><div class="target-health"><i id="target-health-fill"></i></div><span id="target-state"></span><div id="target-cue" hidden aria-label="Selected foe action"><b id="target-cue-title"></b><span id="target-cue-detail"></span></div></div><button id="target-clear" aria-label="Clear target">×</button></section>
    <section id="beacon-tracker" hidden aria-label="Beacon defense"><small>CHAPTER III · THE BEACON ANSWERS</small><strong id="beacon-phase"></strong><div class="ward-meter"><i id="ward-fill"></i></div><span id="beacon-status"></span><button id="beacon-menu">Approach & speak · E</button></section>
    <div class="camera-presets" aria-label="Camera styles: V switches, R resets the current view">${button('3rd person','camera','adventure')}${button('Diorama','camera','follow')}${button('Tactical','camera','tactical')}${button('Wide','camera','wide')}</div>
    <div id="enemy-health" aria-hidden="true"></div><div id="combat-numbers" aria-hidden="true"></div>
@@ -3903,6 +3925,9 @@ class RPGUI{
     <button class="skill skill-class" id="skill-class" data-skill="class-technique"><kbd>X</kbd><span class="skill-icon">✦</span><small>Path</small><b class="skill-cooldown"></b></button></div><div class="combat-help" id="combat-help">TAB selects · 1 toggles autoattack · 2–6 skills · X path · SPACE dodge</div></div>
    </section>`;
   $('#hud').append(hud);
+  // Size changes only: narrow layouts stack the ward below the actual target panel.
+  this.targetSize=new ResizeObserver(entries=>{const e=entries[0],height=e.borderBoxSize?.[0]?.blockSize??e.target.getBoundingClientRect().height;hud.style.setProperty('--target-frame-height',height+'px');});
+  this.targetSize.observe($('#target-frame'));
   const d=document.createElement('dialog');d.id='rpg-window';d.setAttribute('aria-labelledby','rpg-heading');d.innerHTML='<header><div><small>FIRSTLIGHT · YOUR JOURNEY</small><h2 id="rpg-heading">Character</h2></div><span class="paused-note">World paused while open</span><button id="rpg-close" aria-label="Close character workspace">×</button></header><nav id="rpg-tabs" aria-label="Character sections"></nav><div id="rpg-content"></div>';document.body.append(d);this.dialog=d;
   $('#rpg-close').onclick=()=>this.close();d.addEventListener('cancel',e=>{e.preventDefault();this.close();});
   const click=e=>{const b=e.target.closest('[data-rpg],[data-realm-art]');if(b)this.action(b);};d.addEventListener('click',click);hud.addEventListener('click',click);
@@ -4121,6 +4146,20 @@ class RPGUI{
   out.disc.push({p:[0,-.08,0],s:[2.0,.12,2.0],c:0x566864});
   const e=this.preview.e,mount=$('#avatar-mount'),width=Math.max(100,Math.round(mount.clientWidth)),height=Math.max(140,Math.round(mount.clientHeight));if(this.preview.width!==width||this.preview.height!==height){e.resize(width,height,1);this.preview.width=width;this.preview.height=height;}for(const [k,b]of Object.entries(this.preview.batches))b.items=out[k];e.setCamera({eye:[3,2.1,6],target:[0,.8,0],half:Math.max(1.18,.83/(width/height)),aspect:width/height});e.render(0,10,false);
  }
+ targetCue(){
+  const cue=T.threat(this.sim),root=$('#target-cue');root.hidden=!cue;
+  root.dataset.phase=cue?.phase||'';$('#target-cue-title').textContent='';$('#target-cue-detail').textContent='';if(!cue)return;
+  const a=this.state,t=T.runtime(this.sim),braced=t.guardUntil>a.elapsed,ready=a.stamina>=T.skills.guard.cost&&a.elapsed>=t.cooldowns.guard;
+  const defense=braced?'Braced · move clear if needed':ready?'Brace (3) or move clear':'Move clear · Brace unavailable';
+  const copy=cue.phase==='recover'?['Recovery opening','Strike if ready; close if out of range']:cue.phase==='charge'?['Charging',defense]:({
+   strike:['Marked strike',defense],charge:['Charge incoming',defense],
+   'bell-outer':['Wide ring','Step into its quiet center'],
+   'bell-inner':['Inner strike','Step out of the circle'],
+   ward:['Beacon strike','The marked strike targets the ward']
+  })[cue.kind];
+  $('#target-cue-title').textContent=copy[0]+(cue.remaining===null?'':' · '+(Math.ceil(cue.remaining*10)/10).toFixed(1)+'s');
+  $('#target-cue-detail').textContent=copy[1];
+ }
  tick(){
   const sim=this.sim,a=this.state,t=T.runtime(sim),r=A.runtime(sim),b=B.runtime(sim),st=A.stats(a),e=T.selected(sim),w=AR.weapon(a),now=a.elapsed;
   document.body.classList.toggle('has-equipment',a.started);document.body.classList.toggle('rpg-battle',A.combatScene(sim));
@@ -4142,7 +4181,7 @@ class RPGUI{
   const bm=$('#beacon-menu');bm.textContent=b.phase==='assault'?'Repair ward · E · 20 stamina':'Speak with the envoy · E';bm.disabled=b.phase==='assault'&&(!B.near(sim)||b.ward>=100||b.time<b.playerRepairAt||a.stamina<20);
   sim.presentation=sim.presentation||{};sim.presentation.attackTarget=t.target||(this.api.adventure().intent?.kind==='attack'?this.api.adventure().intent.id:null);
   const lastHit=t.hits.at(-1);if(lastHit&&this.soundedHit!==lastHit){this.soundedHit=lastHit;if(a.elapsed-lastHit.at<.25)this.api.adventure().sound('confirmed-hit');}
-  this.numbers();this.worldHealth();this.crossing.tick();this.starter.tick();this.pursuit.tick();this.cosmos.tick();this.earth.tick();this.gathering.tick();
+  this.targetCue();this.numbers();this.worldHealth();this.crossing.tick();this.starter.tick();this.pursuit.tick();this.cosmos.tick();this.earth.tick();this.gathering.tick();
  }
  worldHealth(){
   const root=$('#enemy-health');root.replaceChildren();if(!this.sim.presentation?.perspective||!A.combatScene(this.sim))return;
@@ -4310,7 +4349,7 @@ class CrossingUI{
  tick(){const sim=this.sim,a=this.rpg.state,s=this.state,r=X.runtime(sim),sel=T.selected(sim);
  if(this.uiRoom!==sim.room){this.uiRoom=sim.room;this.destination=null;this.toneSerial=r.toneSerial;}
  if(a.beacon.complete&&this.rpg.quest==='story'){const tasks=X.objectives(a),next=tasks.find(q=>!q.done)||{title:'The bell is ringing again',detail:'Return home, help with the common works, or test a new build. M opens discovered roads.'};$('#tracked-chapter').textContent='CHAPTER IV · THE BELL ROAD';$('#tracked-title').textContent=next.title;$('#tracked-detail').textContent=next.detail;$('#tracked-progress').textContent=tasks.filter(q=>q.done).length+' / '+tasks.length+' · Journal J';}
- if(sel?.custom==='bell'){ $('#target-rank').textContent='ELITE · HUSHBOUND KEEPER';if(sel.mode==='windup')$('#target-state').textContent=sel.ringMode==='outer'?'WIDE RING — step INTO its quiet center':'INNER STRIKE — step OUT of the circle';}
+ if(sel?.custom==='bell')$('#target-rank').textContent='ELITE · HUSHBOUND KEEPER';
  if(sim.room==='crossing'){$('#skill-insight').title='Briar exposes an enemy; away from combat, seeks the lost clapper. The map also has an explicit Seek action.';if(s.met&&!s.clapperRevealed&&r.seek)$('#combat-help').textContent='Briar has a scent. Follow your companion into the north-west thicket.';}
  if(r.toneSerial!==this.toneSerial){this.toneSerial=r.toneSerial;const au=this.rpg.api.audio(),b=X.BELLS.find(b=>b.id===r.tone);if(b&&au?.enabled&&au.ctx?.state==='running'){for(const[ratio,amp]of[[1,.12],[2.01,.045],[2.72,.018]])au.note(b.note*ratio,au.ctx.currentTime,1.6,amp);}}
  const root=$('#cross-place-labels');root.replaceChildren();if(sim.room==='crossing'&&sim.state.settings.labels&&!this.rpg.dialog.open){const near=points(sim).filter(q=>q.id!=='thicket'||s.met).map(q=>({...q,d:distance(q,sim.state.player)})).filter(q=>q.d<10).sort((a,b)=>a.d-b.d).slice(0,3);for(const q of near){const pos=this.rpg.api.project(q.x,q.kind==='person'?3.5:2.8,q.z);if(!pos?.visible)continue;const el=document.createElement('span');el.textContent=q.name;el.style.left=pos.x+'px';el.style.top=pos.y+'px';root.append(el);}}
@@ -4414,7 +4453,7 @@ class StarterUI{
  }
  tick(){const a=this.a,q=this.q,sim=this.sim;$('.tracker-switch [data-id="starter"]').hidden=!a.started;
   if(this.rpg.quest==='starter'){const next=!q.accepted?'Speak to Oren at the workshop':q.reward?'Try your reward, then choose another outing':Q.complete(a)?'Return to Oren and choose your reward':q.bundles.length<3?'Recover the riverbank supplies':'Drive away Old Bristle';$('#tracked-chapter').textContent='CLOSE TO HOME · OPTIONAL';$('#tracked-title').textContent=next;$('#tracked-detail').textContent=q.reward?'Your old equipment is kept. Character shows the real changes.':'M maps the route · J keeps all objectives';$('#tracked-progress').textContent=q.bundles.length+'/3 bundles · '+(a.defeated.includes('river-old-bristle')?'beast cleared':'beast remains');}
-  const e=T.selected(sim);if(e?.custom==='river-bristle')$('#target-state').textContent=(e.mode==='windup'?'Marked strike · Brace or move clear ('+e.timer.toFixed(1)+'s)':e.mode==='recover'?'Recovery opening · strike now':Math.ceil(e.hp)+' / '+e.maxHP)+' · '+T.readiness(sim);
+  const e=T.selected(sim);
   if(e?.id===Q.PRACTICE.id&&A.runtime(sim).training)$('#target-state').textContent='Last confirmed impact: '+A.runtime(sim).training.lastDamage+' · no XP or loot';
   const root=$('#starter-labels');root.replaceChildren();if(sim.room!==Q.ROOM||!sim.state.settings.labels||this.rpg.dialog.open)return;
   const perspective=sim.presentation?.perspective,shown=[],points=Q.points(sim).map(p=>({...p,d:Math.hypot(p.x-sim.state.player.x,p.z-sim.state.player.z)})).sort((a,b)=>a.d-b.d);

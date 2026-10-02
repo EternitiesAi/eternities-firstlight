@@ -1,4 +1,10 @@
 /* Realm 09 · quieter field HUD and a single, readable RPG workspace. */
+#target-cue{border-top:1px solid rgba(221,190,139,.3);margin-top:7px;padding-top:6px;font-size:11px;line-height:1.45;overflow-wrap:anywhere}
+#target-cue b,#target-cue span{display:block}#target-cue b{color:#f0c58d;font-weight:650}#target-cue span{color:#ded8c4;font-size:10px}
+#target-cue[data-phase="recover"] b{color:#a4d8b9}#target-cue[data-phase="recover"]{border-color:rgba(164,216,185,.3)}
+@media(max-width:550px){#target-cue{font-size:9px;margin-top:5px;padding-top:4px}#target-cue span{font-size:8px}}
+@media(max-width:820px){#rpg-hud #beacon-tracker{top:max(185px,calc(76px + var(--target-frame-height,0px) + 12px))}}
+@media(max-width:550px){#rpg-hud #beacon-tracker{top:max(180px,calc(69px + var(--target-frame-height,0px) + 12px))}}
 body.rpg-edition{--gold:#dbc18c;--ink:#111d21;--pane:rgba(15,29,33,.94);--muted:#abbcb7;--line:rgba(205,215,190,.22)}
 .rpg-edition [hidden]{display:none!important}
 .rpg-edition #dock,.rpg-edition #chapter-hud,.rpg-edition #battle-hud,.rpg-edition #journey-hud,.rpg-edition #pocket-hud,.rpg-edition .brand .eyebrow,.rpg-edition .brand p,.rpg-edition #place-description,.rpg-edition #place-kicker,.rpg-edition #discovery{display:none!important}

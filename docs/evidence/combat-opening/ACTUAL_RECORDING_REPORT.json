@@ -1,0 +1,1817 @@
+{
+  "method": "Actual normal-time GPU browser outing from a command-earned accepted survey.\nThe controller reacts to visible target cues; no simulation stepping or grants.\n",
+  "source": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\evidence10\\pursuit\\fresh-blade\\run1_01_STARTED.json",
+  "source_sha256": "77fcec4bdea7511373fb8068fa1cd0d45af374e2ea431feb68626c863d7905dc",
+  "html_sha256": "f5d5405ceb4ea0e116c45eb18af3009bc94c91f378d36d5a6739de57e2b01088",
+  "actions": [
+    {
+      "label": "Accepted walk 15,7",
+      "seconds": 1.7156795000046259,
+      "result": {
+        "scene": "valley",
+        "player": {
+          "x": 15,
+          "z": 7,
+          "yaw": 3.141592653589793
+        },
+        "hp": 100,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [],
+            "samples": []
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "UI key e",
+      "seconds": 1.7386885000014445,
+      "result": {
+        "scene": "riverbank",
+        "player": {
+          "x": 0,
+          "z": 12,
+          "yaw": 3.141592653589793
+        },
+        "hp": 100,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [],
+            "samples": []
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "Accepted walk -7,3",
+      "seconds": 5.329875900002662,
+      "result": {
+        "scene": "riverbank",
+        "player": {
+          "x": -7,
+          "z": 3,
+          "yaw": -2.480549484739093
+        },
+        "hp": 100,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [],
+            "samples": []
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "UI key 1",
+      "seconds": 5.363648800004739,
+      "result": {
+        "scene": "riverbank",
+        "player": {
+          "x": -7,
+          "z": 3,
+          "yaw": -2.480549484739093
+        },
+        "hp": 100,
+        "weapon": "trail_blade",
+        "phase": "windup",
+        "title": "Marked strike \u00b7 0.5s",
+        "detail": "Brace (3) or move clear",
+        "state": "38 / 38 \u00b7 Ready \u00b7 1 to autoattack",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [],
+            "samples": []
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "Actual combat defeated riverbank-survey/1:west",
+      "seconds": 6.62205730000278,
+      "result": {
+        "scene": "riverbank",
+        "player": {
+          "x": -7,
+          "z": 3,
+          "yaw": 2.5515931129645515
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "6 / 38 \u00b7 Weapon recovering",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [
+              "west"
+            ],
+            "samples": []
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "Defeated target cleared by combat authority",
+      "seconds": 6.854330400004983,
+      "result": {
+        "scene": "riverbank",
+        "player": {
+          "x": -7,
+          "z": 3,
+          "yaw": 2.5515931129645515
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "6 / 38 \u00b7 Weapon recovering",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [
+              "west"
+            ],
+            "samples": []
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "Accepted walk -7,3",
+      "seconds": 6.914588999992702,
+      "result": {
+        "scene": "riverbank",
+        "player": {
+          "x": -7,
+          "z": 3,
+          "yaw": 2.5515931129645515
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "6 / 38 \u00b7 Weapon recovering",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [
+              "west"
+            ],
+            "samples": []
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "UI key e",
+      "seconds": 6.930611599993426,
+      "result": {
+        "scene": "riverbank",
+        "player": {
+          "x": -7,
+          "z": 3,
+          "yaw": 2.5515931129645515
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "6 / 38 \u00b7 Weapon recovering",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [
+              "west"
+            ],
+            "samples": [
+              "west-sample"
+            ]
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "Accepted walk 5,-3",
+      "seconds": 11.230369600001723,
+      "result": {
+        "scene": "riverbank",
+        "player": {
+          "x": 5,
+          "z": -3,
+          "yaw": 1.7561442767905295
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "6 / 38 \u00b7 Weapon recovering",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [
+              "west"
+            ],
+            "samples": [
+              "west-sample"
+            ]
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "UI key Tab",
+      "seconds": 11.251265400002012,
+      "result": {
+        "scene": "riverbank",
+        "player": {
+          "x": 5,
+          "z": -3,
+          "yaw": 1.7561442767905295
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "windup",
+        "title": "Marked strike \u00b7 0.4s",
+        "detail": "Brace (3) or move clear",
+        "state": "56 / 56 \u00b7 Ready \u00b7 1 to autoattack",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [
+              "west"
+            ],
+            "samples": [
+              "west-sample"
+            ]
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "Actual screenshot 01-real-warning-third-person.png",
+      "seconds": 11.513840500003425,
+      "result": {
+        "scene": "riverbank",
+        "player": {
+          "x": 5,
+          "z": -3,
+          "yaw": 1.7561442767905295
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "windup",
+        "title": "Marked strike \u00b7 0.1s",
+        "detail": "Brace (3) or move clear",
+        "state": "56 / 56 \u00b7 Ready \u00b7 1 to autoattack",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [
+              "west"
+            ],
+            "samples": [
+              "west-sample"
+            ]
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "UI key 3",
+      "seconds": 11.527946500005783,
+      "result": {
+        "scene": "riverbank",
+        "player": {
+          "x": 5,
+          "z": -3,
+          "yaw": 1.7561442767905295
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "windup",
+        "title": "Marked strike \u00b7 0.1s",
+        "detail": "Braced \u00b7 move clear if needed",
+        "state": "56 / 56 \u00b7 Ready \u00b7 1 to autoattack",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [
+              "west"
+            ],
+            "samples": [
+              "west-sample"
+            ]
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "Actual screenshot 02-real-opening-third-person.png",
+      "seconds": 11.88071559999662,
+      "result": {
+        "scene": "riverbank",
+        "player": {
+          "x": 5,
+          "z": -3,
+          "yaw": 1.7561442767905295
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "recover",
+        "title": "Recovery opening \u00b7 1.3s",
+        "detail": "Strike if ready; close if out of range",
+        "state": "56 / 56 \u00b7 Ready \u00b7 1 to autoattack",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [
+              "west"
+            ],
+            "samples": [
+              "west-sample"
+            ]
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "UI key v",
+      "seconds": 11.892894499993417,
+      "result": {
+        "scene": "riverbank",
+        "player": {
+          "x": 5,
+          "z": -3,
+          "yaw": 1.7561442767905295
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "recover",
+        "title": "Recovery opening \u00b7 1.3s",
+        "detail": "Strike if ready; close if out of range",
+        "state": "56 / 56 \u00b7 Ready \u00b7 1 to autoattack",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [
+              "west"
+            ],
+            "samples": [
+              "west-sample"
+            ]
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "Actual screenshot 03-real-opening-diorama.png",
+      "seconds": 12.11820219999936,
+      "result": {
+        "scene": "riverbank",
+        "player": {
+          "x": 5,
+          "z": -3,
+          "yaw": 1.7561442767905295
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "recover",
+        "title": "Recovery opening \u00b7 1.1s",
+        "detail": "Strike if ready; close if out of range",
+        "state": "56 / 56 \u00b7 Ready \u00b7 1 to autoattack",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [
+              "west"
+            ],
+            "samples": [
+              "west-sample"
+            ]
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "UI key 1",
+      "seconds": 12.5486302000063,
+      "result": {
+        "scene": "riverbank",
+        "player": {
+          "x": 5,
+          "z": -3,
+          "yaw": 1.7561442767905295
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "recover",
+        "title": "Recovery opening \u00b7 0.7s",
+        "detail": "Strike if ready; close if out of range",
+        "state": "56 / 56 \u00b7 Ready \u00b7 1 to autoattack",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [
+              "west"
+            ],
+            "samples": [
+              "west-sample"
+            ]
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "Actual combat defeated riverbank-survey/1:east",
+      "seconds": 14.401975400003721,
+      "result": {
+        "scene": "riverbank",
+        "player": {
+          "x": 5,
+          "z": -3,
+          "yaw": -2.2448751338935633
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "8 / 56 \u00b7 Autoattack active",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [
+              "west",
+              "east"
+            ],
+            "samples": [
+              "west-sample"
+            ]
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "Defeated target cleared by combat authority",
+      "seconds": 14.4133479000011,
+      "result": {
+        "scene": "riverbank",
+        "player": {
+          "x": 5,
+          "z": -3,
+          "yaw": -2.2448751338935633
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "8 / 56 \u00b7 Autoattack active",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [
+              "west",
+              "east"
+            ],
+            "samples": [
+              "west-sample"
+            ]
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "Accepted walk 5,-11",
+      "seconds": 16.928799200002686,
+      "result": {
+        "scene": "riverbank",
+        "player": {
+          "x": 5,
+          "z": -10.999999999999984,
+          "yaw": 3.141592653589793
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "8 / 56 \u00b7 Autoattack active",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [
+              "west",
+              "east"
+            ],
+            "samples": [
+              "west-sample"
+            ]
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "UI key e",
+      "seconds": 16.94469940000272,
+      "result": {
+        "scene": "riverbank",
+        "player": {
+          "x": 5,
+          "z": -10.999999999999984,
+          "yaw": 3.141592653589793
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "8 / 56 \u00b7 Autoattack active",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [
+              "west",
+              "east"
+            ],
+            "samples": [
+              "west-sample",
+              "east-sample"
+            ]
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "Accepted walk 0,12",
+      "seconds": 24.34522439999273,
+      "result": {
+        "scene": "riverbank",
+        "player": {
+          "x": 0,
+          "z": 12,
+          "yaw": -0.21406068356383265
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "8 / 56 \u00b7 Autoattack active",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [
+              "west",
+              "east"
+            ],
+            "samples": [
+              "west-sample",
+              "east-sample"
+            ]
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "UI key e",
+      "seconds": 24.38477600000624,
+      "result": {
+        "scene": "valley",
+        "player": {
+          "x": 15,
+          "z": 7,
+          "yaw": 3.141592653589793
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "8 / 56 \u00b7 Autoattack active",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [
+              "west",
+              "east"
+            ],
+            "samples": [
+              "west-sample",
+              "east-sample"
+            ]
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "Accepted walk 11,9",
+      "seconds": 26.009122599993134,
+      "result": {
+        "scene": "valley",
+        "player": {
+          "x": 11,
+          "z": 9,
+          "yaw": -1.3961241277866543
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "8 / 56 \u00b7 Autoattack active",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [
+              "west",
+              "east"
+            ],
+            "samples": [
+              "west-sample",
+              "east-sample"
+            ]
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "UI key e",
+      "seconds": 26.06743359999382,
+      "result": {
+        "scene": "valley",
+        "player": {
+          "x": 11,
+          "z": 9,
+          "yaw": -1.3961241277866543
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "8 / 56 \u00b7 Autoattack active",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 0,
+          "active": {
+            "id": "riverbank-survey/1",
+            "terms": 1,
+            "defeated": [
+              "west",
+              "east"
+            ],
+            "samples": [
+              "west-sample",
+              "east-sample"
+            ]
+          },
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "UI survey claim",
+      "seconds": 26.130319499992765,
+      "result": {
+        "scene": "valley",
+        "player": {
+          "x": 11,
+          "z": 9,
+          "yaw": -1.3961241277866543
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "8 / 56 \u00b7 Autoattack active",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 1,
+          "active": null,
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "UI trail-blade project",
+      "seconds": 26.185981799993897,
+      "result": {
+        "scene": "valley",
+        "player": {
+          "x": 11,
+          "z": 9,
+          "yaw": -1.3961241277866543
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "8 / 56 \u00b7 Autoattack active",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 1,
+          "active": null,
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "Actual screenshot 04-real-reward-comparison.png",
+      "seconds": 26.362142500001937,
+      "result": {
+        "scene": "valley",
+        "player": {
+          "x": 11,
+          "z": 9,
+          "yaw": -1.3961241277866543
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "8 / 56 \u00b7 Autoattack active",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 1,
+          "active": null,
+          "fittings": {}
+        }
+      }
+    },
+    {
+      "label": "UI finite first fitting",
+      "seconds": 26.42183120000118,
+      "result": {
+        "scene": "valley",
+        "player": {
+          "x": 11,
+          "z": 9,
+          "yaw": -1.3961241277866543
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "8 / 56 \u00b7 Autoattack active",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 1,
+          "active": null,
+          "fittings": {
+            "trail_blade": 1
+          }
+        }
+      }
+    },
+    {
+      "label": "Actual screenshot 05-real-fitted-blade.png",
+      "seconds": 26.575987400006852,
+      "result": {
+        "scene": "valley",
+        "player": {
+          "x": 11,
+          "z": 9,
+          "yaw": -1.3961241277866543
+        },
+        "hp": 92,
+        "weapon": "trail_blade",
+        "phase": "",
+        "title": "",
+        "detail": "",
+        "state": "8 / 56 \u00b7 Autoattack active",
+        "pursuit": {
+          "version": 1,
+          "pinned": "copper_blade",
+          "claimed": 1,
+          "active": null,
+          "fittings": {
+            "trail_blade": 1
+          }
+        }
+      }
+    }
+  ],
+  "browser_errors": [],
+  "status": "passed",
+  "browser_version": "143.0.7499.4",
+  "webgl": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "width": 1280,
+    "height": 720
+  },
+  "final_world": {
+    "adventure": {
+      "version": 10,
+      "earthGathering": {
+        "version": 1,
+        "accepted": false,
+        "prepared": [],
+        "verse": null,
+        "shared": false
+      },
+      "earthNotes": {
+        "version": 1,
+        "accepted": false,
+        "marks": [],
+        "compared": false,
+        "interpretation": null
+      },
+      "earthStory": {
+        "version": 1,
+        "accepted": false,
+        "steps": [],
+        "dispatch": null,
+        "arrived": false,
+        "claimed": false
+      },
+      "classPath": {
+        "version": 1,
+        "choice": null,
+        "readyAt": 0
+      },
+      "pursuit": {
+        "version": 1,
+        "pinned": "copper_blade",
+        "claimed": 1,
+        "active": null,
+        "fittings": {
+          "trail_blade": 1
+        }
+      },
+      "starter": {
+        "version": 1,
+        "accepted": false,
+        "bundles": [],
+        "reward": null
+      },
+      "crossing": {
+        "version": 1,
+        "entered": false,
+        "met": false,
+        "inscription": false,
+        "clapperRevealed": false,
+        "clapper": false,
+        "repaired": false,
+        "complete": false,
+        "reward": false,
+        "attuned": false,
+        "projects": []
+      },
+      "beacon": {
+        "version": 1,
+        "introduced": false,
+        "complete": false,
+        "status": "dormant",
+        "attempts": 0,
+        "failures": 0,
+        "reward": false,
+        "relic": "undecided",
+        "route": null,
+        "soul": {
+          "grace": false,
+          "equipped": null,
+          "radiance": 0,
+          "corruption": 0,
+          "scars": []
+        }
+      },
+      "arsenal": {
+        "version": 1,
+        "gems": {
+          "ruby": 0,
+          "moonstone": 0,
+          "amber": 0
+        },
+        "sockets": {},
+        "rangeMedal": false,
+        "bestTime": null
+      },
+      "road": {
+        "version": 1,
+        "entered": false,
+        "revealed": [],
+        "claimed": [],
+        "cartRepaired": false,
+        "beaconLit": false,
+        "reported": false
+      },
+      "elapsed": 45.28220000000009,
+      "revision": 33,
+      "started": true,
+      "dug": [],
+      "chips": [],
+      "defeated": [],
+      "drops": [],
+      "ore": 0,
+      "coins": 0,
+      "xp": 0,
+      "hp": 92,
+      "stamina": 100,
+      "tonics": 3,
+      "equipment": {
+        "weapon": "trail_blade",
+        "armor": "travel_coat",
+        "charm": null
+      },
+      "owned": [
+        "trail_blade",
+        "travel_coat"
+      ],
+      "companion": {
+        "bonded": false,
+        "name": "Briar",
+        "mode": "follow"
+      },
+      "relic": false,
+      "angelSeen": false,
+      "reward": null,
+      "deaths": 0,
+      "receipts": [
+        {
+          "id": "earned-pursuit-fresh-blade-1",
+          "fp": "[\"start\",{}]",
+          "ok": true
+        },
+        {
+          "id": "earned-pursuit-fresh-blade-2",
+          "fp": "[\"pursuit-pin\",{\"weapon\":\"copper_blade\"}]",
+          "ok": true
+        },
+        {
+          "id": "earned-pursuit-fresh-blade-3",
+          "fp": "[\"starter-enter\",{}]",
+          "ok": true
+        },
+        {
+          "id": "earned-pursuit-fresh-blade-4",
+          "fp": "[\"target-select\",{\"id\":\"river-practice\"}]",
+          "ok": true
+        },
+        {
+          "id": "earned-pursuit-fresh-blade-5",
+          "fp": "[\"auto-toggle\",{}]",
+          "ok": true
+        },
+        {
+          "id": "auto-1-5",
+          "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+          "ok": true
+        },
+        {
+          "id": "auto-3-6",
+          "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+          "ok": true
+        },
+        {
+          "id": "auto-5-7",
+          "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+          "ok": true
+        },
+        {
+          "id": "earned-pursuit-fresh-blade-6",
+          "fp": "[\"target-clear\",{}]",
+          "ok": true
+        },
+        {
+          "id": "earned-pursuit-fresh-blade-7",
+          "fp": "[\"starter-leave\",{}]",
+          "ok": true
+        },
+        {
+          "id": "earned-pursuit-fresh-blade-8",
+          "fp": "[\"rest\",{}]",
+          "ok": true
+        },
+        {
+          "id": "earned-pursuit-fresh-blade-9",
+          "fp": "[\"pursuit-start\",{\"after\":0}]",
+          "ok": true
+        },
+        {
+          "id": "adv-1790911540118-1",
+          "fp": "[\"starter-enter\",{}]",
+          "ok": true
+        },
+        {
+          "id": "film-select-riverbank-survey/1:west",
+          "fp": "[\"target-select\",{\"id\":\"riverbank-survey/1:west\"}]",
+          "ok": true
+        },
+        {
+          "id": "adv-1790911543744-2",
+          "fp": "[\"auto-toggle\",{}]",
+          "ok": true
+        },
+        {
+          "id": "auto-1-15",
+          "fp": "[\"attack\",{\"target\":\"riverbank-survey/1:west\"}]",
+          "ok": true
+        },
+        {
+          "id": "auto-3-16",
+          "fp": "[\"attack\",{\"target\":\"riverbank-survey/1:west\"}]",
+          "ok": true
+        },
+        {
+          "id": "auto-5-17",
+          "fp": "[\"attack\",{\"target\":\"riverbank-survey/1:west\"}]",
+          "ok": true
+        },
+        {
+          "id": "adv-1790911545316-3",
+          "fp": "[\"pursuit-sample\",{\"run\":\"riverbank-survey/1\",\"id\":\"west-sample\"}]",
+          "ok": true
+        },
+        {
+          "id": "adv-1790911549631-4",
+          "fp": "[\"target-cycle\",{\"reverse\":false}]",
+          "ok": true
+        },
+        {
+          "id": "adv-1790911549915-5",
+          "fp": "[\"guard\",{}]",
+          "ok": true
+        },
+        {
+          "id": "film-select-riverbank-survey/1:east",
+          "fp": "[\"target-select\",{\"id\":\"riverbank-survey/1:east\"}]",
+          "ok": true
+        },
+        {
+          "id": "adv-1790911550938-6",
+          "fp": "[\"auto-toggle\",{}]",
+          "ok": true
+        },
+        {
+          "id": "auto-7-24",
+          "fp": "[\"attack\",{\"target\":\"riverbank-survey/1:east\"}]",
+          "ok": true
+        },
+        {
+          "id": "auto-9-25",
+          "fp": "[\"attack\",{\"target\":\"riverbank-survey/1:east\"}]",
+          "ok": true
+        },
+        {
+          "id": "auto-11-26",
+          "fp": "[\"attack\",{\"target\":\"riverbank-survey/1:east\"}]",
+          "ok": true
+        },
+        {
+          "id": "auto-13-27",
+          "fp": "[\"attack\",{\"target\":\"riverbank-survey/1:east\"}]",
+          "ok": true
+        },
+        {
+          "id": "adv-1790911555330-7",
+          "fp": "[\"pursuit-sample\",{\"run\":\"riverbank-survey/1\",\"id\":\"east-sample\"}]",
+          "ok": true
+        },
+        {
+          "id": "adv-1790911562747-8",
+          "fp": "[\"starter-leave\",{}]",
+          "ok": true
+        },
+        {
+          "id": "adv-1790911564510-9",
+          "fp": "[\"pursuit-claim\",{\"run\":\"riverbank-survey/1\"}]",
+          "ok": true
+        },
+        {
+          "id": "adv-1790911564807-10",
+          "fp": "[\"pursuit-fit\",{\"weapon\":\"trail_blade\",\"step\":1}]",
+          "ok": true
+        }
+      ]
+    },
+    "sandbox": {
+      "version": 1,
+      "elapsed": 45.28220000000009,
+      "revision": 0,
+      "inventory": {
+        "wood": 0,
+        "stone": 0,
+        "fiber": 0,
+        "crystal": 0,
+        "plank": 0,
+        "block": 0,
+        "seeds": 4,
+        "berry": 0,
+        "axe": 0,
+        "pick": 0,
+        "floor": 0,
+        "wall": 0,
+        "masonry": 0,
+        "lantern": 0,
+        "bench": 0,
+        "bed": 0,
+        "fire": 0,
+        "workbench": 0
+      },
+      "nodes": [
+        {
+          "id": "timber-1",
+          "hp": 4,
+          "readyAt": 0
+        },
+        {
+          "id": "timber-2",
+          "hp": 4,
+          "readyAt": 0
+        },
+        {
+          "id": "timber-3",
+          "hp": 4,
+          "readyAt": 0
+        },
+        {
+          "id": "timber-4",
+          "hp": 4,
+          "readyAt": 0
+        },
+        {
+          "id": "stone-1",
+          "hp": 4,
+          "readyAt": 0
+        },
+        {
+          "id": "stone-2",
+          "hp": 4,
+          "readyAt": 0
+        },
+        {
+          "id": "stone-3",
+          "hp": 4,
+          "readyAt": 0
+        },
+        {
+          "id": "fibre-1",
+          "hp": 1,
+          "readyAt": 0
+        },
+        {
+          "id": "fibre-2",
+          "hp": 1,
+          "readyAt": 0
+        },
+        {
+          "id": "fibre-3",
+          "hp": 1,
+          "readyAt": 0
+        },
+        {
+          "id": "wild-timber-1",
+          "hp": 4,
+          "readyAt": 0
+        },
+        {
+          "id": "wild-timber-2",
+          "hp": 4,
+          "readyAt": 0
+        },
+        {
+          "id": "wild-timber-3",
+          "hp": 4,
+          "readyAt": 0
+        },
+        {
+          "id": "wild-stone-1",
+          "hp": 4,
+          "readyAt": 0
+        },
+        {
+          "id": "wild-stone-2",
+          "hp": 4,
+          "readyAt": 0
+        },
+        {
+          "id": "wild-fibre",
+          "hp": 1,
+          "readyAt": 0
+        },
+        {
+          "id": "crystal-1",
+          "hp": 4,
+          "readyAt": 0
+        },
+        {
+          "id": "crystal-2",
+          "hp": 4,
+          "readyAt": 0
+        }
+      ],
+      "bridge": false,
+      "placed": [],
+      "nextId": 1,
+      "stats": {
+        "gathered": 0,
+        "crafted": 0,
+        "harvested": 0
+      },
+      "milestones": [],
+      "recentCommands": [],
+      "cooldownUntil": 0
+    },
+    "score": {
+      "format": "eternities.score.v1",
+      "title": "A Window Left Open",
+      "bpm": 88,
+      "voice": "felt",
+      "melody": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "bass": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "drums": [
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      ]
+    },
+    "scoreRevision": 0,
+    "retreat": {
+      "version": 1,
+      "revision": 0,
+      "wall": "moss",
+      "floor": "oak",
+      "items": [
+        {
+          "slot": "nw",
+          "kind": "shelf",
+          "rotation": 0
+        },
+        {
+          "slot": "ne",
+          "kind": "piano",
+          "rotation": 0
+        },
+        {
+          "slot": "w",
+          "kind": "sofa",
+          "rotation": 1
+        },
+        {
+          "slot": "e",
+          "kind": "plant",
+          "rotation": 0
+        },
+        {
+          "slot": "c",
+          "kind": "rug",
+          "rotation": 0
+        }
+      ]
+    },
+    "visitor": {
+      "name": "Visitor",
+      "skin": 0,
+      "cloak": 0,
+      "hair": 0
+    },
+    "version": 9,
+    "seed": 2317,
+    "day": 1,
+    "hour": 17.40376990000008,
+    "weather": "clear",
+    "player": {
+      "x": 11,
+      "z": 9,
+      "yaw": -1.3961241277866543
+    },
+    "visited": [
+      "market",
+      "commons"
+    ],
+    "flowers": [],
+    "notes": [],
+    "journal": [
+      {
+        "seq": 1,
+        "day": 1,
+        "hour": 17.200225,
+        "kind": "routine",
+        "text": "Ilan is heading to amphitheatre."
+      },
+      {
+        "seq": 2,
+        "day": 1,
+        "hour": 17.200225,
+        "kind": "routine",
+        "text": "Mara is heading to observatory."
+      },
+      {
+        "seq": 3,
+        "day": 1,
+        "hour": 17.200225,
+        "kind": "routine",
+        "text": "Oren is heading to workshop."
+      },
+      {
+        "seq": 4,
+        "day": 1,
+        "hour": 17.209000000000014,
+        "kind": "discovery",
+        "text": "You found The makers\u2019 exchange."
+      },
+      {
+        "seq": 5,
+        "day": 1,
+        "hour": 17.21305000000002,
+        "kind": "quest",
+        "text": "Oren supplied a trail blade, a lantern, three tonics and a salve for an injured animal. Find the northern mine."
+      },
+      {
+        "seq": 6,
+        "day": 1,
+        "hour": 17.263675000000102,
+        "kind": "discovery",
+        "text": "You found The Firstlight Commons."
+      },
+      {
+        "seq": 7,
+        "day": 1,
+        "hour": 17.28617500000014,
+        "kind": "survey",
+        "text": "Accepted riverbank-survey/1: two skitters and two samples for 3 copper, 4 sunmarks and 2 fibre. Oren\u2019s once-only quest is paused, not reset."
+      },
+      {
+        "seq": 8,
+        "day": 1,
+        "hour": 17.28662500000014,
+        "kind": "routine",
+        "text": "Ilan is heading to amphitheatre."
+      },
+      {
+        "seq": 9,
+        "day": 1,
+        "hour": 17.28662500000014,
+        "kind": "routine",
+        "text": "Mara is heading to observatory."
+      },
+      {
+        "seq": 10,
+        "day": 1,
+        "hour": 17.28662500000014,
+        "kind": "routine",
+        "text": "Oren is heading to workshop."
+      },
+      {
+        "seq": 11,
+        "day": 1,
+        "hour": 17.316324100000116,
+        "kind": "survey",
+        "text": "Bankroot skitter cleared for riverbank-survey/1. The declared materials are paid once when this survey is returned."
+      },
+      {
+        "seq": 12,
+        "day": 1,
+        "hour": 17.317823500000117,
+        "kind": "survey",
+        "text": "Copper gravel sample recorded for riverbank-survey/1. 1/2 samples."
+      },
+      {
+        "seq": 13,
+        "day": 1,
+        "hour": 17.351272450000085,
+        "kind": "survey",
+        "text": "Reedback skitter cleared for riverbank-survey/1. The declared materials are paid once when this survey is returned."
+      },
+      {
+        "seq": 14,
+        "day": 1,
+        "hour": 17.362897300000075,
+        "kind": "survey",
+        "text": "Reed-fibre sample recorded for riverbank-survey/1. 2/2 samples."
+      },
+      {
+        "seq": 15,
+        "day": 1,
+        "hour": 17.40376990000008,
+        "kind": "survey",
+        "text": "riverbank-survey/1 paid: 3 copper, 4 sunmarks, 2 fibre. All surveys through 1 are claimed."
+      },
+      {
+        "seq": 16,
+        "day": 1,
+        "hour": 17.40376990000008,
+        "kind": "craft",
+        "text": "River fitting I fitted to Trail blade for 3 copper, 4 sunmarks and 2 fibre. Identity and socket retained."
+      }
+    ],
+    "nextEvent": 17,
+    "residents": [
+      {
+        "id": "ilan",
+        "x": 0,
+        "z": -11.6,
+        "yaw": 1.5707963267948966,
+        "progress": 0.058069796000001804,
+        "conversations": 0
+      },
+      {
+        "id": "mara",
+        "x": 9,
+        "z": -5.8,
+        "yaw": 0,
+        "progress": 0.05815079600000182,
+        "conversations": 0
+      },
+      {
+        "id": "oren",
+        "x": 11,
+        "z": 9,
+        "yaw": -1.5707963267948966,
+        "progress": 0.058069796000001804,
+        "conversations": 0
+      }
+    ],
+    "settings": {
+      "quality": "balanced",
+      "cameraMode": "follow",
+      "cameraFov": 60,
+      "cameraViews": {
+        "version": 1,
+        "lastDiorama": "follow",
+        "profiles": {
+          "adventure": {
+            "yaw": 4.555787103402583,
+            "elevation": 0.28,
+            "distance": 7.5
+          },
+          "follow": {
+            "yaw": 0.7599999999999998,
+            "elevation": 0.88,
+            "zoom": 1
+          }
+        }
+      },
+      "cameraCutaway": true,
+      "reducedMotion": false,
+      "labels": true,
+      "timeFlow": true,
+      "sound": false
+    }
+  },
+  "real_time_seconds": 27.590569599997252,
+  "video_path": "D:\\07-GAMES\\Firstlight\\artifacts\\combat-opening-2026-10-01\\capture-reviewed\\62c62e64915e9cbb5f4ecdda92e48730.webm"
+}

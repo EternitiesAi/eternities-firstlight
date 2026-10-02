@@ -1,0 +1,81 @@
+{
+  "before_head": "de3ffb654cd1661d49b6d26ebcd866c09f1b2310",
+  "after_source": "5633cef5aaf1d25f4eecb5664acb4608c17fd806",
+  "before_html": "d9210043af4a480d67486b06e3834180deee1d5218d69252b3b8d8bf9f4ccbcc",
+  "after_html": "f5d5405ceb4ea0e116c45eb18af3009bc94c91f378d36d5a6739de57e2b01088",
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "dpr": 1,
+  "quality": "balanced",
+  "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "browser": "143.0.7499.4",
+  "driver": "NVIDIA GeForce RTX 3080, 610.74, 10240",
+  "scenes": [
+    {
+      "name": "selected-survey-third-person",
+      "samples_each": 360,
+      "before_ms": {
+        "p50": 16.69999999999891,
+        "p90": 16.700000000000728,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000109,
+        "max": 16.80000000000109
+      },
+      "after_ms": {
+        "p50": 16.69999999999891,
+        "p90": 16.700000000000728,
+        "p95": 16.799999999999272,
+        "p99": 16.80000000000109,
+        "max": 16.80000000000109
+      },
+      "before_over_33_333ms": 0,
+      "after_over_33_333ms": 0,
+      "selected_phase_after": "recover",
+      "before_dynamic_metrics": {
+        "drawCalls": 23,
+        "instances": 996,
+        "triangles": 82992
+      },
+      "after_dynamic_metrics": {
+        "drawCalls": 23,
+        "instances": 996,
+        "triangles": 82992
+      }
+    },
+    {
+      "name": "selected-survey-diorama",
+      "samples_each": 360,
+      "before_ms": {
+        "p50": 16.69999999999709,
+        "p90": 16.700000000000728,
+        "p95": 16.799999999999272,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291
+      },
+      "after_ms": {
+        "p50": 16.69999999999709,
+        "p90": 16.700000000000728,
+        "p95": 16.799999999999272,
+        "p99": 16.799999999999272,
+        "max": 16.80000000000291
+      },
+      "before_over_33_333ms": 0,
+      "after_over_33_333ms": 0,
+      "selected_phase_after": "recover",
+      "before_dynamic_metrics": {
+        "drawCalls": 33,
+        "instances": 1000,
+        "triangles": 83040
+      },
+      "after_dynamic_metrics": {
+        "drawCalls": 33,
+        "instances": 1000,
+        "triangles": 83040
+      }
+    }
+  ],
+  "scope": "Normal RAF intervals in isolated headless Chromium, device scale 1; 1.5-second setup warmup excluded. No video capture or accelerated ticks during sampling. Browser-frame intervals are not GPU render time, monitor presentation timing or human qualification.",
+  "limits": "Short headless ordinary-RAF intervals with real selected survey AI; no simultaneous video/full browser suite during sampling. Dynamic FX/shadow snapshots differ in time. Not GPU completion, monitor timing, sustained FPS or human reaction/comfort."
+}
