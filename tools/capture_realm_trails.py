@@ -13,12 +13,12 @@ from browser_support import launch_kwargs
 ROOT=Path(__file__).resolve().parents[1]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
- parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--variant',choices=['heaven','hell','cosmos','atlantis','earthlands','fit-veteran'],required=True);parser.add_argument('--source',type=Path,required=True);parser.add_argument('--output',type=Path,required=True);args=parser.parse_args()
+ parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--variant',choices=['heaven','hell','cosmos','atlantis','earthlands','fit-veteran'],required=True);parser.add_argument('--source',type=Path,required=True);parser.add_argument('--output',type=Path,required=True);parser.add_argument('--height',type=int,default=720,choices=range(600,1081));args=parser.parse_args()
  out=args.output.resolve();source=args.source.resolve()
  if out.drive.lower()!='d:' or not args.output.is_absolute():parser.error('heavy footage must stay on D:')
  if out.exists() and any(out.iterdir()):parser.error('preserve previous takes: choose an empty output directory')
  initial=json.loads(source.read_text(encoding='utf-8'));assert initial['adventure']['started'];out.mkdir(parents=True,exist_ok=True)
- report={'capture_harness_sha256':sha(Path(__file__)), 'method':__doc__,'variant':args.variant,'source':str(source),'source_sha256':sha(source),'html_sha256':sha(ROOT/'index.html'),'viewport':{'width':1280,'height':720},'quality':'balanced','events':[],'samples':[],'browser_errors':[],'external_requests':[],'human_acceptance':False,'sustained_performance_qualification':False,'artificial_ticks':0,'position_edits':0,'manual_damage':0,'inventory_grants':0}
+ report={'capture_harness_sha256':sha(Path(__file__)), 'method':__doc__,'variant':args.variant,'source':str(source),'source_sha256':sha(source),'html_sha256':sha(ROOT/'index.html'),'viewport':{'width':1280,'height':args.height},'quality':'balanced','events':[],'samples':[],'browser_errors':[],'external_requests':[],'human_acceptance':False,'sustained_performance_qualification':False,'artificial_ticks':0,'position_edits':0,'manual_damage':0,'inventory_grants':0}
  class Handler(SimpleHTTPRequestHandler):
   def __init__(self,*a,**kw):super().__init__(*a,directory=str(ROOT),**kw)
   def log_message(self,*a):pass
@@ -39,9 +39,9 @@ def main():
     def mark(name):
      d=ev('Realm.diagnostics');assert not ev('document.hidden');event={'name':name,'seconds':time.monotonic()-started,'scene':d['scene'],'player':d['adventure']['player'],'camera':d['camera'],'paused':d['adventure']['paused'],'realm_trails':state()['realmTrails']};report['events'].append(event);print(name,round(event['seconds'],2),flush=True)
     def shot(name):page.screenshot(path=str(out/(name+'.png')));mark(name)
-    def view(mode,yaw=.25,distance=9):
+    def view(mode,yaw=.25,distance=9,half=16):
      if (ev('Realm.diagnostics.camera.projection')=='orthographic')!=(mode=='diorama'):page.keyboard.press('v')
-     ev('v=>Realm.test.view(v)',{'yaw':yaw,'elevation':.66 if mode=='diorama' else .18,'half':16,'distance':distance,'zoom':16/17.5,'overview':False});page.wait_for_timeout(350);mark(mode+' camera')
+     ev('v=>Realm.test.view(v)',{'yaw':yaw,'elevation':.66 if mode=='diorama' else .18,'half':half,'distance':distance,'zoom':half/17.5,'overview':False});page.wait_for_timeout(350);mark(mode+' camera')
     def walk(x,z):
      close();assert ev('([x,z])=>Realm.test.move(x,z)',[x,z])['ok'];page.wait_for_function('()=>Realm.test.path.length===0',timeout=90000);p=ev('Realm.diagnostics.adventure.player');assert ((p['x']-x)**2+(p['z']-z)**2)**.5<.3;assert state()['adventure']['hp']>0;mark('normal walk '+str([x,z]))
     def local():close();page.locator('#tracked-open').click()
@@ -126,7 +126,7 @@ def main():
     else:
      assert initial['adventure']['equipment']['weapon']=='dawn_edge' and initial['adventure']['realmCraft']['weapon'] is None
      walk(11,9);page.keyboard.press('k');page.locator('[data-rpg="trail-fit-preview"][data-id="dawn_edge"]').click();shot('veteran-48-to-51-preview');old=state();attack=ev('RealmAdventure.stats(Realm.state.adventure).attack');page.locator('[data-rpg="trail-fit-confirm"][data-id="dawn_edge"]').click();close();after=state();assert ev('RealmAdventure.stats(Realm.state.adventure).attack')==attack+3;assert old['adventure']['equipment']==after['adventure']['equipment'];report['fitting']={'before':attack,'after':attack+3,'weapon':'dawn_edge'}
-     view('third',yaw=2.7,distance=5);shot('veteran-fitted-band-third');view('diorama',yaw=1.3);shot('veteran-fitted-band-diorama');walk(15,7);assert ev('Realm.test.adventure("hardware-fitting-enter","starter-enter")')['ok'];walk(-5,11.5);view('third',yaw=2.8,distance=6);assert ev('Realm.test.adventure("hardware-practice-target","target-select",{id:"river-practice"})')['ok'];page.keyboard.press('1');page.wait_for_function('()=>RealmAdventure.runtime(Realm.test.worldContext().sim).training?.lastDamage===51');shot('actual-51-damage-practice');report['measured_practice_damage']=51;page.keyboard.press('Tab');measure('Fitted campaign blade at real practice target')
+     walk(4,8);page.wait_for_timeout(3800);view('third',yaw=.8,distance=5);shot('veteran-fitted-band-third');view('diorama',yaw=1.1,half=6);shot('veteran-fitted-band-diorama');walk(15,7);assert ev('Realm.test.adventure("hardware-fitting-enter","starter-enter")')['ok'];walk(-5,11.5);view('third',yaw=2.8,distance=6);assert ev('Realm.test.adventure("hardware-practice-target","target-select",{id:"river-practice"})')['ok'];page.keyboard.press('1');page.wait_for_function('()=>RealmAdventure.runtime(Realm.test.worldContext().sim).training?.lastDamage===51');shot('actual-51-damage-practice');report['measured_practice_damage']=51;page.keyboard.press('Tab');measure('Fitted campaign blade at real practice target')
     final=state();(out/'FINAL_WORLD.json').write_text(json.dumps(final,indent=2)+'\n',encoding='utf-8');assert not report['browser_errors'] and not ev('Realm.diagnostics.errors');assert not report['external_requests'];assert sha(ROOT/'index.html')==report['html_sha256'];assert sha(source)==report['source_sha256'];report['status']='passed';report['normal_time_seconds']=time.monotonic()-started
    finally:
     if context:
