@@ -43,8 +43,8 @@
     },
     {
       "path": "ACTUAL_CAPTURE_REPORT.json",
-      "bytes": 565478,
-      "sha256": "d5c2eece0fbe93d9dc4ba9c7a825b5c54d2c1b906ecdfd4b8681b88673864649"
+      "bytes": 544442,
+      "sha256": "915fba17354b665f3762b0ec034eef6349cbf5971e48d15f42b4d0396cddb9e6"
     },
     {
       "path": "DARRIC_PACKED_DIORAMA.png",
@@ -78,8 +78,8 @@
     },
     {
       "path": "GPU_REPORT.json",
-      "bytes": 31016,
-      "sha256": "e768fb8c34b95d109f8962cefb8806ecbf60bcac68ccf4b61210ab3b62feb0bb"
+      "bytes": 29966,
+      "sha256": "90d34f88baf1694930b5f34b2c76b03d170aaacc6340660836d60068b838655d"
     },
     {
       "path": "GRADE_PACKED_DIORAMA.png",
@@ -118,8 +118,8 @@
     },
     {
       "path": "SOURCE_VERIFICATION.json",
-      "bytes": 2212,
-      "sha256": "036aa4b6bce9cfdc0fa67f8e64e12cde522466417928ffd5f1d08507822a5348"
+      "bytes": 2143,
+      "sha256": "8a085090dd0c9c397520449f1a7bfca07f5c9ca5969476789f8a13bd5d8d8e15"
     },
     {
       "path": "TALLY_RESERVED_DIORAMA.png",
@@ -133,9 +133,10 @@
     },
     {
       "path": "VIDEO_RECEIPT.json",
-      "bytes": 1104,
-      "sha256": "907399af77befc526603be07ea8d14611fb54f2b9bf45acb8d0360fbc5cd471c"
+      "bytes": 1083,
+      "sha256": "e790929067cbe0dd39d4c5e256f0b12c683a900694c11a71f63d98265c44116a"
     }
   ],
-  "inventory_excludes_itself": true
+  "inventory_excludes_itself": true,
+  "bytes_source": "Exact committed Git blobs; text LF, raster/video binary."
 }
