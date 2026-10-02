@@ -157,7 +157,7 @@ function story(out,sim,t,a){
  a.droverFrame=G.RealmDroverArt.draw(out,{state:s,time:sim.elapsed,reducedMotion:quiet,ground:h});
  const ansel=G.RealmMillwrightArt.ANCHOR;
  a.millwrightFrame=G.RealmMillwrightArt.draw(out,{base:h(ansel.x,ansel.z),time:sim.elapsed,reducedMotion:quiet});
- a.person(out,14.3,-26,-.8,'#989478',clock,false,'reeve',false,h(14.3,-26));
+ a.quarryFrame={actor:G.RealmQuarryArt.draw(out,{state:s,time:sim.elapsed,reducedMotion:quiet,ground:h}),works:G.RealmQuarryArt.works(out,{state:s,ground:h})};
  // The drover module projects dispatch/arrival; only the rules can move the load.
  // Small headrace machinery remains on the bank; it does not open collision through the pond.
  const gy=h(5.2,-6);a.millGateFrame=G.RealmMillGateArt.draw(out,done('mill-gate'),gy);
@@ -166,9 +166,7 @@ function story(out,sim,t,a){
  // silhouette; this presentation never completes or pays the repair itself.
  const phase=done('mill-gate')?(quiet?0:sim.elapsed)*.35:0;
  for(let i=0;i<10;i++){const angle=i/10*TAU+phase,x=3.55,y=2.71,z=-10.9;box(x,y+Math.sin(angle)*1.2,z+Math.cos(angle)*1.2,.65,.15,.43,0xa08454,[angle,0,0]);box(x,y,z,.10,.11,2.38,col.wood,[-angle,0,0]);}
- // Reserved blocks disappear only after collection; road packing then remains visible.
- if(!done('quarry-reserve'))for(let i=0;i<3;i++){const x=10.8+i*.62,z=-27;box(x,h(x,z)+.2,z,.55,.4,.6,0xaba185);box(x,h(x,z)+.42,z,.4,.03,.10,0xdac386);}
- if(done('quarry-grade'))for(let i=0;i<12;i++){const x=13.1+(i%3)*.63,z=-14.4+Math.floor(i/3)*.65;box(x,h(x,z)+.055,z,.6,.1,.58,0xb6ab91);}
+ // Quarry presentation reads accepted release/packing; story rules own the work.
  if(done('detour-mark'))for(const [x,z]of [[11.4,-13],[-10.1,-22],[2,-35]]){const y=h(x,z);box(x,y+.6,z,.09,1.2,.09,col.wood);box(x+.25,y+1.08,z,.62,.3,.07,0xc4aa69);}
  // The rule point is the approach stance, one metre south of the tabletop.
  // Both base table and remembered preparations derive from that same anchor.
