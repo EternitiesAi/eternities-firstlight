@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "sourceCommit": "aeec64232804dc6325fb11fd8ac5ed39f7893d26",
+  "fixturePath": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\evidence10\\world-foundations\\journey\\fresh-blade\\00_INITIAL_KIT.json",
+  "fixtureSha256": "d5dae74922159450b291054999ca6f1bc0600e26f1bca566d05b2815db2c457c",
+  "method": "Production domain/Core/Store; isolated in-memory storage. Direct labelled boundary positioning; no UI/browser/GPU or normal-time claim.",
+  "results": [
+    {
+      "name": "managed accept/three observations/claim quota refusal, successful write ordering, exact reward, preservation and cold replay",
+      "passed": true,
+      "successfulCandidateWrites": 5,
+      "quotaRefusals": 5,
+      "claimReplays": 3
+    },
+    {
+      "name": "character switch persists outgoing partial work and restores independent home checkpoint",
+      "passed": true
+    },
+    {
+      "name": "stale travel consent after actual managed save or simulation replacement rejects before save/build",
+      "passed": true,
+      "cases": 2
+    },
+    {
+      "name": "cross-realm post-sync failure retains original runtime object/trip/path/home with managed checkpoint and free return",
+      "passed": true
+    },
+    {
+      "name": "external library write fences pending work without changing live accepted history or foreign bytes",
+      "passed": true
+    },
+    {
+      "name": "strict missing/malformed/future/impossible/duplicate/foreign history rejects; omitted old optional field migrates empty",
+      "passed": true,
+      "refusals": 7
+    }
+  ]
+}

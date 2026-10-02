@@ -1,0 +1,593 @@
+{
+  "method": "Normal-time gameplay in an isolated hardware Chromium profile.\n\nOnly setup imports a labelled command-earned save. The selected tour or bow-combat\nvariant records its actual production movement, UI, combat and camera events.\nThe tour also records swimming and one Heaven objective. Short tour-only RAF\nsamples measure presentation cadence, not sustained GPU throughput.\n",
+  "variant": "bow-combat",
+  "source": "evidence10\\pursuit\\fresh-bow\\02_SOURCE_READY.json",
+  "source_sha256": "0478bb4d0b3d49df2254dc1d42aa7320fcd4ccabb3ca0833f15740316b407ecf",
+  "html_sha256": "12a44af65c53e80e9e57175e85c63d683421797c33e22da935134a3df9368b1b",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "quality": "balanced",
+  "events": [
+    {
+      "name": "Normal accepted walk 18,6",
+      "seconds": 4.811240499999258,
+      "scene": "valley",
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.245537269018323
+      },
+      "camera": {
+        "yaw": 1.7454685258031262,
+        "elevation": 0.28,
+        "half": 17,
+        "distance": 7.5,
+        "actualDistance": 0.8767796684022253,
+        "fov": 60,
+        "center": [
+          17.834815278904582,
+          2.8,
+          6.132145081570589
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "projection": "perspective",
+        "eye": [
+          18.664627258724533,
+          3.0423030139091254,
+          5.985707673367076
+        ],
+        "target": [
+          17.834815278904582,
+          2.8,
+          6.132145081570589
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Deliberate crossing hell",
+      "seconds": 5.103915700005018,
+      "scene": "world-hell",
+      "player": {
+        "x": 0,
+        "z": 31,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 1.7454685258031262,
+        "elevation": 0.28,
+        "half": 17,
+        "distance": 7.5,
+        "actualDistance": 7.5,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          31
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "projection": "perspective",
+        "eye": [
+          7.098236960707611,
+          5.142667364230853,
+          29.747369948110496
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          31
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk 44,-82",
+      "seconds": 43.055786299999454,
+      "scene": "world-hell",
+      "player": {
+        "x": 44,
+        "z": -82,
+        "yaw": 2.7702743793206084
+      },
+      "camera": {
+        "yaw": 1.7454685258031262,
+        "elevation": 0.28,
+        "half": 17,
+        "distance": 7.5,
+        "actualDistance": 7.499999999999995,
+        "fov": 60,
+        "center": [
+          43.9139411162069,
+          3.0700000000000003,
+          -81.77898513934957
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "projection": "perspective",
+        "eye": [
+          51.01217807691451,
+          5.142667364230852,
+          -83.03161519123907
+        ],
+        "target": [
+          43.9139411162069,
+          3.0700000000000003,
+          -81.77898513934957
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "third view",
+      "seconds": 43.46776630000386,
+      "scene": "world-hell",
+      "player": {
+        "x": 44,
+        "z": -82,
+        "yaw": 2.7702743793206084
+      },
+      "camera": {
+        "yaw": 0.12,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999544059017223,
+        "fov": 60,
+        "center": [
+          43.99999970980813,
+          3.0700000000000003,
+          -81.99999925473452
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          44.943838138251266,
+          4.423381655369466,
+          -74.17246884801867
+        ],
+        "target": [
+          43.99999970980813,
+          3.0700000000000003,
+          -81.99999925473452
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk 44,-90",
+      "seconds": 46.54418599999917,
+      "scene": "world-hell",
+      "player": {
+        "x": 44,
+        "z": -90,
+        "yaw": 2.8706458032508704
+      },
+      "camera": {
+        "yaw": 0.12,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.896837758030877,
+        "fov": 60,
+        "center": [
+          43.942724952218214,
+          3.0700000000000003,
+          -89.79380982744462
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          44.87444542081276,
+          4.406005562104614,
+          -82.0667772351043
+        ],
+        "target": [
+          43.942724952218214,
+          3.0700000000000003,
+          -89.79380982744462
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Real Tab selects sentinel",
+      "seconds": 46.558244300002116,
+      "scene": "world-hell",
+      "player": {
+        "x": 44,
+        "z": -90,
+        "yaw": 2.8706458032508704
+      },
+      "camera": {
+        "yaw": 0.12,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.905101973131581,
+        "fov": 60,
+        "center": [
+          43.95071769643308,
+          3.0700000000000003,
+          -89.82258370669365
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          44.88341323107333,
+          4.407403721428547,
+          -82.08746460410835
+        ],
+        "target": [
+          43.95071769643308,
+          3.0700000000000003,
+          -89.82258370669365
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Real Brace during sentinel tell",
+      "seconds": 47.697616699995706,
+      "scene": "world-hell",
+      "player": {
+        "x": 44,
+        "z": -90,
+        "yaw": 2.8706458032508704
+      },
+      "camera": {
+        "yaw": 0.12,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999671657197336,
+        "fov": 60,
+        "center": [
+          43.99999816761144,
+          3.0700000000000003,
+          -89.99999340340116
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          44.94385165092081,
+          4.423403242729314,
+          -82.17233814224019
+        ],
+        "target": [
+          43.99999816761144,
+          3.0700000000000003,
+          -89.99999340340116
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Screenshot hell-bow-guarded-hit",
+      "seconds": 48.94534940000449,
+      "scene": "world-hell",
+      "player": {
+        "x": 44,
+        "z": -90,
+        "yaw": 2.8706458032508704
+      },
+      "camera": {
+        "yaw": 0.12,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999365832274,
+        "fov": 60,
+        "center": [
+          43.99999999997615,
+          3.0700000000000003,
+          -89.99999999991414
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          44.943892148489525,
+          4.423458685245983,
+          -82.17202407681475
+        ],
+        "target": [
+          43.99999999997615,
+          3.0700000000000003,
+          -89.99999999991414
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Real stationary autoattack starts",
+      "seconds": 48.95886359999713,
+      "scene": "world-hell",
+      "player": {
+        "x": 44,
+        "z": -90,
+        "yaw": -3.1129489760037736
+      },
+      "camera": {
+        "yaw": 0.12,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999416343005,
+        "fov": 60,
+        "center": [
+          43.99999999997946,
+          3.0700000000000003,
+          -89.99999999992605
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          44.94389215445243,
+          4.423458693791507,
+          -82.17202402740205
+        ],
+        "target": [
+          43.99999999997946,
+          3.0700000000000003,
+          -89.99999999992605
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Actual sentinel defeat recorded",
+      "seconds": 53.876377599997795,
+      "scene": "world-hell",
+      "player": {
+        "x": 44,
+        "z": -90,
+        "yaw": -3.1129489760037736
+      },
+      "camera": {
+        "yaw": 0.12,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999995,
+        "fov": 60,
+        "center": [
+          43.99999999999998,
+          3.0700000000000003,
+          -89.99999999999996
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          44.943892223336604,
+          4.423458792535968,
+          -82.1720234563693
+        ],
+        "target": [
+          43.99999999999998,
+          3.0700000000000003,
+          -89.99999999999996
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Screenshot hell-bow-defeated",
+      "seconds": 54.03713090000383,
+      "scene": "world-hell",
+      "player": {
+        "x": 44,
+        "z": -90,
+        "yaw": -3.1129489760037736
+      },
+      "camera": {
+        "yaw": 0.12,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999995,
+        "fov": 60,
+        "center": [
+          43.99999999999998,
+          3.0700000000000003,
+          -89.99999999999996
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          44.943892223336604,
+          4.423458792535968,
+          -82.1720234563693
+        ],
+        "target": [
+          43.99999999999998,
+          3.0700000000000003,
+          -89.99999999999996
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk 18,6",
+      "seconds": 54.162894099994446,
+      "scene": "valley",
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.245537269018323
+      },
+      "camera": {
+        "yaw": 0.1200000000000001,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 8.000000000000002,
+        "fov": 60,
+        "center": [
+          18,
+          2.8,
+          6
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          18.94389222333663,
+          4.153458792535968,
+          13.827976543630655
+        ],
+        "target": [
+          18,
+          2.8,
+          6
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Free home return",
+      "seconds": 54.16792569999234,
+      "scene": "valley",
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.245537269018323
+      },
+      "camera": {
+        "yaw": 0.1200000000000001,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 8.000000000000002,
+        "fov": 60,
+        "center": [
+          18,
+          2.8,
+          6
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          18.94389222333663,
+          4.153458792535968,
+          13.827976543630655
+        ],
+        "target": [
+          18,
+          2.8,
+          6
+        ]
+      },
+      "dive": null
+    }
+  ],
+  "samples": [],
+  "browser_errors": [],
+  "human_acceptance": false,
+  "sustained_performance_qualification": false,
+  "browser": "143.0.7499.4",
+  "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "footage_start_seconds": 4.813319399996544,
+  "combat": {
+    "style": "bow",
+    "health_before_guarded_hit": 100,
+    "health_after_guarded_hit": 96,
+    "enemy_id": "hell-salvage-sentinel",
+    "impact_events": [
+      {
+        "seconds": 0.32373410000582226,
+        "hp_before": 90,
+        "hp_after": 77,
+        "projectiles": 0
+      },
+      {
+        "seconds": 1.0419625000067754,
+        "hp_before": 77,
+        "hp_after": 64,
+        "projectiles": 0
+      },
+      {
+        "seconds": 1.810372300009476,
+        "hp_before": 64,
+        "hp_after": 51,
+        "projectiles": 0
+      },
+      {
+        "seconds": 2.5771196999994572,
+        "hp_before": 51,
+        "hp_after": 38,
+        "projectiles": 0
+      },
+      {
+        "seconds": 3.375344900006894,
+        "hp_before": 38,
+        "hp_after": 25,
+        "projectiles": 0
+      },
+      {
+        "seconds": 4.0981693000067025,
+        "hp_before": 25,
+        "hp_after": 12,
+        "projectiles": 0
+      },
+      {
+        "seconds": 4.908672200006549,
+        "hp_before": 12,
+        "hp_after": 0,
+        "projectiles": 0
+      }
+    ]
+  },
+  "canonical_ownership_preserved": true,
+  "status": "passed",
+  "normal_time_seconds": 54.17927779999445,
+  "footage_end_seconds": 54.179278800002066,
+  "video_path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-bow-delivery\\9f8bd79ff81714417106c9dd1731519d.webm"
+}

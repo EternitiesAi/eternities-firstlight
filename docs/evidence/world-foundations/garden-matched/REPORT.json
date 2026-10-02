@@ -1,0 +1,3053 @@
+{
+  "method": "Four static software-WebGL garden views; no gameplay or performance claim.",
+  "setup": "Labelled initial-kit import; explicit UI Heaven crossing; accepted moveTo plus 3 accelerated setup seconds; paused capture mode; fixed art time 12. Static software comparison only.",
+  "source": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\evidence10\\world-foundations\\journey\\fresh-blade\\00_INITIAL_KIT.json",
+  "source_sha256": "d5dae74922159450b291054999ca6f1bc0600e26f1bca566d05b2815db2c457c",
+  "html_sha256": {
+    "before": "92fb503cd080f68275c6d1ca24308daca15e013a101a1777fa22b86c19aafbd0",
+    "after": "3a5f18e04056d0d78ad7ccac3b3e0ac2c4058bf60b774b584b78d7611d97c7dc"
+  },
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "quality": "balanced",
+  "hour": 17,
+  "player": {
+    "x": 0,
+    "z": 20
+  },
+  "views": {
+    "before-third": {
+      "camera": {
+        "yaw": -0.55,
+        "elevation": 0.2,
+        "half": 17,
+        "distance": 10,
+        "actualDistance": 9.999886500175592,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          20.000000000013156
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "projection": "perspective",
+        "eye": [
+          -5.122624695033673,
+          5.056670759016452,
+          28.355213076021105
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          20.000000000013156
+        ]
+      },
+      "metrics": {
+        "drawCalls": 27,
+        "texturedDrawCalls": 0,
+        "texturedInstances": 0,
+        "surfaceMaterials": {
+          "version": 1,
+          "id": "earth-weathered-timber-v1",
+          "status": "ready",
+          "ready": true,
+          "error": null,
+          "width": 512,
+          "height": 512,
+          "colorFormat": "SRGB8_ALPHA8",
+          "roughnessFormat": "R8",
+          "textureBytes": 1310720,
+          "mipmapBytes": 436905,
+          "totalTextureBytes": 1747625,
+          "decodedImageBytes": 2097152,
+          "decodeWallMs": 45.29999999701977,
+          "uploadCpuMs": 32,
+          "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+          "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+          "enabled": true
+        },
+        "instances": 1112,
+        "triangles": 62592
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "setup_view": {
+        "yaw": -0.55,
+        "elevation": 0.2,
+        "distance": 10,
+        "overview": false
+      },
+      "state": {
+        "journeys": {
+          "version": 1,
+          "realms": {
+            "heaven": {
+              "counter": 0,
+              "lastClaim": 0,
+              "firstClaimed": false,
+              "active": null,
+              "defeated": []
+            },
+            "hell": {
+              "counter": 0,
+              "lastClaim": 0,
+              "firstClaimed": false,
+              "active": null,
+              "defeated": []
+            },
+            "earthlands": {
+              "counter": 0,
+              "lastClaim": 0,
+              "firstClaimed": false,
+              "active": null,
+              "defeated": []
+            },
+            "atlantis": {
+              "counter": 0,
+              "lastClaim": 0,
+              "firstClaimed": false,
+              "active": null,
+              "defeated": []
+            },
+            "cosmos": {
+              "counter": 0,
+              "lastClaim": 0,
+              "firstClaimed": false,
+              "active": null,
+              "defeated": []
+            }
+          }
+        },
+        "adventure": {
+          "version": 10,
+          "earthGathering": {
+            "version": 1,
+            "accepted": false,
+            "prepared": [],
+            "verse": null,
+            "shared": false
+          },
+          "earthNotes": {
+            "version": 1,
+            "accepted": false,
+            "marks": [],
+            "compared": false,
+            "interpretation": null
+          },
+          "earthStory": {
+            "version": 1,
+            "accepted": false,
+            "steps": [],
+            "dispatch": null,
+            "arrived": false,
+            "claimed": false
+          },
+          "classPath": {
+            "version": 1,
+            "choice": null,
+            "readyAt": 0
+          },
+          "pursuit": {
+            "version": 1,
+            "pinned": null,
+            "claimed": 0,
+            "active": null,
+            "fittings": {}
+          },
+          "starter": {
+            "version": 1,
+            "accepted": false,
+            "bundles": [],
+            "reward": null
+          },
+          "crossing": {
+            "version": 1,
+            "entered": false,
+            "met": false,
+            "inscription": false,
+            "clapperRevealed": false,
+            "clapper": false,
+            "repaired": false,
+            "complete": false,
+            "reward": false,
+            "attuned": false,
+            "projects": []
+          },
+          "beacon": {
+            "version": 1,
+            "introduced": false,
+            "complete": false,
+            "status": "dormant",
+            "attempts": 0,
+            "failures": 0,
+            "reward": false,
+            "relic": "undecided",
+            "route": null,
+            "soul": {
+              "grace": false,
+              "equipped": null,
+              "radiance": 0,
+              "corruption": 0,
+              "scars": []
+            }
+          },
+          "arsenal": {
+            "version": 1,
+            "gems": {
+              "ruby": 0,
+              "moonstone": 0,
+              "amber": 0
+            },
+            "sockets": {},
+            "rangeMedal": false,
+            "bestTime": null
+          },
+          "road": {
+            "version": 1,
+            "entered": false,
+            "revealed": [],
+            "claimed": [],
+            "cartRepaired": false,
+            "beaconLit": false,
+            "reported": false
+          },
+          "elapsed": 8.499999999999986,
+          "revision": 1,
+          "started": true,
+          "dug": [],
+          "chips": [],
+          "defeated": [],
+          "drops": [],
+          "ore": 0,
+          "coins": 0,
+          "xp": 0,
+          "hp": 100,
+          "stamina": 100,
+          "tonics": 3,
+          "equipment": {
+            "weapon": "trail_blade",
+            "armor": "travel_coat",
+            "charm": null
+          },
+          "owned": [
+            "trail_blade",
+            "travel_coat"
+          ],
+          "companion": {
+            "bonded": false,
+            "name": "Briar",
+            "mode": "follow"
+          },
+          "relic": false,
+          "angelSeen": false,
+          "reward": null,
+          "deaths": 0,
+          "receipts": [
+            {
+              "id": "earned-world-kit",
+              "fp": "[\"start\",{}]",
+              "ok": true
+            }
+          ]
+        },
+        "sandbox": {
+          "version": 1,
+          "elapsed": 8.499999999999986,
+          "revision": 0,
+          "inventory": {
+            "wood": 0,
+            "stone": 0,
+            "fiber": 0,
+            "crystal": 0,
+            "plank": 0,
+            "block": 0,
+            "seeds": 4,
+            "berry": 0,
+            "axe": 0,
+            "pick": 0,
+            "floor": 0,
+            "wall": 0,
+            "masonry": 0,
+            "lantern": 0,
+            "bench": 0,
+            "bed": 0,
+            "fire": 0,
+            "workbench": 0
+          },
+          "nodes": [
+            {
+              "id": "timber-1",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "timber-2",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "timber-3",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "timber-4",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "stone-1",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "stone-2",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "stone-3",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "fibre-1",
+              "hp": 1,
+              "readyAt": 0
+            },
+            {
+              "id": "fibre-2",
+              "hp": 1,
+              "readyAt": 0
+            },
+            {
+              "id": "fibre-3",
+              "hp": 1,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-timber-1",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-timber-2",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-timber-3",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-stone-1",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-stone-2",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-fibre",
+              "hp": 1,
+              "readyAt": 0
+            },
+            {
+              "id": "crystal-1",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "crystal-2",
+              "hp": 4,
+              "readyAt": 0
+            }
+          ],
+          "bridge": false,
+          "placed": [],
+          "nextId": 1,
+          "stats": {
+            "gathered": 0,
+            "crafted": 0,
+            "harvested": 0
+          },
+          "milestones": [],
+          "recentCommands": [],
+          "cooldownUntil": 0
+        },
+        "score": {
+          "format": "eternities.score.v1",
+          "title": "A Window Left Open",
+          "bpm": 88,
+          "voice": "felt",
+          "melody": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          ],
+          "bass": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          "drums": [
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0
+            ]
+          ]
+        },
+        "scoreRevision": 0,
+        "retreat": {
+          "version": 1,
+          "revision": 0,
+          "wall": "moss",
+          "floor": "oak",
+          "items": [
+            {
+              "slot": "nw",
+              "kind": "shelf",
+              "rotation": 0
+            },
+            {
+              "slot": "ne",
+              "kind": "piano",
+              "rotation": 0
+            },
+            {
+              "slot": "w",
+              "kind": "sofa",
+              "rotation": 1
+            },
+            {
+              "slot": "e",
+              "kind": "plant",
+              "rotation": 0
+            },
+            {
+              "slot": "c",
+              "kind": "rug",
+              "rotation": 0
+            }
+          ]
+        },
+        "visitor": {
+          "name": "Visitor",
+          "skin": 0,
+          "cloak": 0,
+          "hair": 0
+        },
+        "version": 9,
+        "seed": 2317,
+        "day": 1,
+        "hour": 17,
+        "weather": "clear",
+        "player": {
+          "x": 18,
+          "z": 6,
+          "yaw": 2.2455372690188193
+        },
+        "visited": [
+          "market"
+        ],
+        "flowers": [],
+        "notes": [],
+        "journal": [
+          {
+            "seq": 1,
+            "day": 1,
+            "hour": 17.200225,
+            "kind": "routine",
+            "text": "Ilan is heading to amphitheatre."
+          },
+          {
+            "seq": 2,
+            "day": 1,
+            "hour": 17.200225,
+            "kind": "routine",
+            "text": "Mara is heading to observatory."
+          },
+          {
+            "seq": 3,
+            "day": 1,
+            "hour": 17.200225,
+            "kind": "routine",
+            "text": "Oren is heading to workshop."
+          },
+          {
+            "seq": 4,
+            "day": 1,
+            "hour": 17.209000000000014,
+            "kind": "discovery",
+            "text": "You found The makers\u2019 exchange."
+          },
+          {
+            "seq": 5,
+            "day": 1,
+            "hour": 17.21305000000002,
+            "kind": "quest",
+            "text": "Oren supplied a trail blade, a lantern, three tonics and a salve for an injured animal. Find the northern mine."
+          },
+          {
+            "seq": 6,
+            "day": 1,
+            "hour": 17.22475000000004,
+            "kind": "routine",
+            "text": "Ilan is heading to amphitheatre."
+          },
+          {
+            "seq": 7,
+            "day": 1,
+            "hour": 17.22475000000004,
+            "kind": "routine",
+            "text": "Mara is heading to observatory."
+          },
+          {
+            "seq": 8,
+            "day": 1,
+            "hour": 17.22475000000004,
+            "kind": "routine",
+            "text": "Oren is heading to workshop."
+          }
+        ],
+        "nextEvent": 9,
+        "residents": [
+          {
+            "id": "ilan",
+            "x": 0,
+            "z": -11.6,
+            "yaw": 1.5707963267948966,
+            "progress": 0.051449000000000335,
+            "conversations": 0
+          },
+          {
+            "id": "mara",
+            "x": 9,
+            "z": -5.8,
+            "yaw": 0,
+            "progress": 0.05153000000000035,
+            "conversations": 0
+          },
+          {
+            "id": "oren",
+            "x": 11,
+            "z": 9,
+            "yaw": -1.5707963267948966,
+            "progress": 0.051449000000000335,
+            "conversations": 0
+          }
+        ],
+        "settings": {
+          "quality": "balanced",
+          "cameraMode": "adventure",
+          "cameraFov": 60,
+          "cameraViews": {
+            "version": 1,
+            "lastDiorama": "follow",
+            "profiles": {
+              "adventure": {
+                "yaw": 5.387129922608612,
+                "elevation": 0.28,
+                "distance": 7.5
+              }
+            }
+          },
+          "cameraCutaway": true,
+          "reducedMotion": false,
+          "labels": true,
+          "timeFlow": true,
+          "sound": false
+        }
+      }
+    },
+    "before-diorama": {
+      "camera": {
+        "yaw": 0.6,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 10,
+        "actualDistance": 9.999886500175592,
+        "fov": 60,
+        "center": [
+          0,
+          2.1703687614810816,
+          20.000000000000004
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "baseHalf": 17,
+        "zoom": 1,
+        "projection": "orthographic",
+        "eye": [
+          33.45473756666517,
+          48.15413265948862,
+          68.900654311756
+        ],
+        "target": [
+          0,
+          2.1703687614810816,
+          20.000000000000004
+        ]
+      },
+      "metrics": {
+        "drawCalls": 27,
+        "texturedDrawCalls": 0,
+        "texturedInstances": 0,
+        "surfaceMaterials": {
+          "version": 1,
+          "id": "earth-weathered-timber-v1",
+          "status": "ready",
+          "ready": true,
+          "error": null,
+          "width": 512,
+          "height": 512,
+          "colorFormat": "SRGB8_ALPHA8",
+          "roughnessFormat": "R8",
+          "textureBytes": 1310720,
+          "mipmapBytes": 436905,
+          "totalTextureBytes": 1747625,
+          "decodedImageBytes": 2097152,
+          "decodeWallMs": 45.29999999701977,
+          "uploadCpuMs": 32,
+          "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+          "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+          "enabled": true
+        },
+        "instances": 1112,
+        "triangles": 62592
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "setup_view": {
+        "yaw": 0.6,
+        "elevation": 0.66,
+        "half": 16,
+        "overview": false
+      },
+      "state": {
+        "journeys": {
+          "version": 1,
+          "realms": {
+            "heaven": {
+              "counter": 0,
+              "lastClaim": 0,
+              "firstClaimed": false,
+              "active": null,
+              "defeated": []
+            },
+            "hell": {
+              "counter": 0,
+              "lastClaim": 0,
+              "firstClaimed": false,
+              "active": null,
+              "defeated": []
+            },
+            "earthlands": {
+              "counter": 0,
+              "lastClaim": 0,
+              "firstClaimed": false,
+              "active": null,
+              "defeated": []
+            },
+            "atlantis": {
+              "counter": 0,
+              "lastClaim": 0,
+              "firstClaimed": false,
+              "active": null,
+              "defeated": []
+            },
+            "cosmos": {
+              "counter": 0,
+              "lastClaim": 0,
+              "firstClaimed": false,
+              "active": null,
+              "defeated": []
+            }
+          }
+        },
+        "adventure": {
+          "version": 10,
+          "earthGathering": {
+            "version": 1,
+            "accepted": false,
+            "prepared": [],
+            "verse": null,
+            "shared": false
+          },
+          "earthNotes": {
+            "version": 1,
+            "accepted": false,
+            "marks": [],
+            "compared": false,
+            "interpretation": null
+          },
+          "earthStory": {
+            "version": 1,
+            "accepted": false,
+            "steps": [],
+            "dispatch": null,
+            "arrived": false,
+            "claimed": false
+          },
+          "classPath": {
+            "version": 1,
+            "choice": null,
+            "readyAt": 0
+          },
+          "pursuit": {
+            "version": 1,
+            "pinned": null,
+            "claimed": 0,
+            "active": null,
+            "fittings": {}
+          },
+          "starter": {
+            "version": 1,
+            "accepted": false,
+            "bundles": [],
+            "reward": null
+          },
+          "crossing": {
+            "version": 1,
+            "entered": false,
+            "met": false,
+            "inscription": false,
+            "clapperRevealed": false,
+            "clapper": false,
+            "repaired": false,
+            "complete": false,
+            "reward": false,
+            "attuned": false,
+            "projects": []
+          },
+          "beacon": {
+            "version": 1,
+            "introduced": false,
+            "complete": false,
+            "status": "dormant",
+            "attempts": 0,
+            "failures": 0,
+            "reward": false,
+            "relic": "undecided",
+            "route": null,
+            "soul": {
+              "grace": false,
+              "equipped": null,
+              "radiance": 0,
+              "corruption": 0,
+              "scars": []
+            }
+          },
+          "arsenal": {
+            "version": 1,
+            "gems": {
+              "ruby": 0,
+              "moonstone": 0,
+              "amber": 0
+            },
+            "sockets": {},
+            "rangeMedal": false,
+            "bestTime": null
+          },
+          "road": {
+            "version": 1,
+            "entered": false,
+            "revealed": [],
+            "claimed": [],
+            "cartRepaired": false,
+            "beaconLit": false,
+            "reported": false
+          },
+          "elapsed": 8.499999999999986,
+          "revision": 1,
+          "started": true,
+          "dug": [],
+          "chips": [],
+          "defeated": [],
+          "drops": [],
+          "ore": 0,
+          "coins": 0,
+          "xp": 0,
+          "hp": 100,
+          "stamina": 100,
+          "tonics": 3,
+          "equipment": {
+            "weapon": "trail_blade",
+            "armor": "travel_coat",
+            "charm": null
+          },
+          "owned": [
+            "trail_blade",
+            "travel_coat"
+          ],
+          "companion": {
+            "bonded": false,
+            "name": "Briar",
+            "mode": "follow"
+          },
+          "relic": false,
+          "angelSeen": false,
+          "reward": null,
+          "deaths": 0,
+          "receipts": [
+            {
+              "id": "earned-world-kit",
+              "fp": "[\"start\",{}]",
+              "ok": true
+            }
+          ]
+        },
+        "sandbox": {
+          "version": 1,
+          "elapsed": 8.499999999999986,
+          "revision": 0,
+          "inventory": {
+            "wood": 0,
+            "stone": 0,
+            "fiber": 0,
+            "crystal": 0,
+            "plank": 0,
+            "block": 0,
+            "seeds": 4,
+            "berry": 0,
+            "axe": 0,
+            "pick": 0,
+            "floor": 0,
+            "wall": 0,
+            "masonry": 0,
+            "lantern": 0,
+            "bench": 0,
+            "bed": 0,
+            "fire": 0,
+            "workbench": 0
+          },
+          "nodes": [
+            {
+              "id": "timber-1",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "timber-2",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "timber-3",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "timber-4",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "stone-1",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "stone-2",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "stone-3",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "fibre-1",
+              "hp": 1,
+              "readyAt": 0
+            },
+            {
+              "id": "fibre-2",
+              "hp": 1,
+              "readyAt": 0
+            },
+            {
+              "id": "fibre-3",
+              "hp": 1,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-timber-1",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-timber-2",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-timber-3",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-stone-1",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-stone-2",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-fibre",
+              "hp": 1,
+              "readyAt": 0
+            },
+            {
+              "id": "crystal-1",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "crystal-2",
+              "hp": 4,
+              "readyAt": 0
+            }
+          ],
+          "bridge": false,
+          "placed": [],
+          "nextId": 1,
+          "stats": {
+            "gathered": 0,
+            "crafted": 0,
+            "harvested": 0
+          },
+          "milestones": [],
+          "recentCommands": [],
+          "cooldownUntil": 0
+        },
+        "score": {
+          "format": "eternities.score.v1",
+          "title": "A Window Left Open",
+          "bpm": 88,
+          "voice": "felt",
+          "melody": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          ],
+          "bass": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          "drums": [
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0
+            ]
+          ]
+        },
+        "scoreRevision": 0,
+        "retreat": {
+          "version": 1,
+          "revision": 0,
+          "wall": "moss",
+          "floor": "oak",
+          "items": [
+            {
+              "slot": "nw",
+              "kind": "shelf",
+              "rotation": 0
+            },
+            {
+              "slot": "ne",
+              "kind": "piano",
+              "rotation": 0
+            },
+            {
+              "slot": "w",
+              "kind": "sofa",
+              "rotation": 1
+            },
+            {
+              "slot": "e",
+              "kind": "plant",
+              "rotation": 0
+            },
+            {
+              "slot": "c",
+              "kind": "rug",
+              "rotation": 0
+            }
+          ]
+        },
+        "visitor": {
+          "name": "Visitor",
+          "skin": 0,
+          "cloak": 0,
+          "hair": 0
+        },
+        "version": 9,
+        "seed": 2317,
+        "day": 1,
+        "hour": 17,
+        "weather": "clear",
+        "player": {
+          "x": 18,
+          "z": 6,
+          "yaw": 2.2455372690188193
+        },
+        "visited": [
+          "market"
+        ],
+        "flowers": [],
+        "notes": [],
+        "journal": [
+          {
+            "seq": 1,
+            "day": 1,
+            "hour": 17.200225,
+            "kind": "routine",
+            "text": "Ilan is heading to amphitheatre."
+          },
+          {
+            "seq": 2,
+            "day": 1,
+            "hour": 17.200225,
+            "kind": "routine",
+            "text": "Mara is heading to observatory."
+          },
+          {
+            "seq": 3,
+            "day": 1,
+            "hour": 17.200225,
+            "kind": "routine",
+            "text": "Oren is heading to workshop."
+          },
+          {
+            "seq": 4,
+            "day": 1,
+            "hour": 17.209000000000014,
+            "kind": "discovery",
+            "text": "You found The makers\u2019 exchange."
+          },
+          {
+            "seq": 5,
+            "day": 1,
+            "hour": 17.21305000000002,
+            "kind": "quest",
+            "text": "Oren supplied a trail blade, a lantern, three tonics and a salve for an injured animal. Find the northern mine."
+          },
+          {
+            "seq": 6,
+            "day": 1,
+            "hour": 17.22475000000004,
+            "kind": "routine",
+            "text": "Ilan is heading to amphitheatre."
+          },
+          {
+            "seq": 7,
+            "day": 1,
+            "hour": 17.22475000000004,
+            "kind": "routine",
+            "text": "Mara is heading to observatory."
+          },
+          {
+            "seq": 8,
+            "day": 1,
+            "hour": 17.22475000000004,
+            "kind": "routine",
+            "text": "Oren is heading to workshop."
+          }
+        ],
+        "nextEvent": 9,
+        "residents": [
+          {
+            "id": "ilan",
+            "x": 0,
+            "z": -11.6,
+            "yaw": 1.5707963267948966,
+            "progress": 0.051449000000000335,
+            "conversations": 0
+          },
+          {
+            "id": "mara",
+            "x": 9,
+            "z": -5.8,
+            "yaw": 0,
+            "progress": 0.05153000000000035,
+            "conversations": 0
+          },
+          {
+            "id": "oren",
+            "x": 11,
+            "z": 9,
+            "yaw": -1.5707963267948966,
+            "progress": 0.051449000000000335,
+            "conversations": 0
+          }
+        ],
+        "settings": {
+          "quality": "balanced",
+          "cameraMode": "follow",
+          "cameraFov": 60,
+          "cameraViews": {
+            "version": 1,
+            "lastDiorama": "follow",
+            "profiles": {
+              "adventure": {
+                "yaw": 5.733185307179586,
+                "elevation": 0.2,
+                "distance": 10
+              },
+              "follow": {
+                "yaw": 0.7599999999999998,
+                "elevation": 0.88,
+                "zoom": 1
+              }
+            }
+          },
+          "cameraCutaway": true,
+          "reducedMotion": false,
+          "labels": true,
+          "timeFlow": true,
+          "sound": false
+        }
+      }
+    },
+    "after-third": {
+      "camera": {
+        "yaw": -0.55,
+        "elevation": 0.2,
+        "half": 17,
+        "distance": 10,
+        "actualDistance": 9.999886500175592,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          20.000000000013156
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "projection": "perspective",
+        "eye": [
+          -5.122624695033673,
+          5.056670759016452,
+          28.355213076021105
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          20.000000000013156
+        ]
+      },
+      "metrics": {
+        "drawCalls": 27,
+        "texturedDrawCalls": 0,
+        "texturedInstances": 0,
+        "surfaceMaterials": {
+          "version": 1,
+          "id": "earth-weathered-timber-v1",
+          "status": "ready",
+          "ready": true,
+          "error": null,
+          "width": 512,
+          "height": 512,
+          "colorFormat": "SRGB8_ALPHA8",
+          "roughnessFormat": "R8",
+          "textureBytes": 1310720,
+          "mipmapBytes": 436905,
+          "totalTextureBytes": 1747625,
+          "decodedImageBytes": 2097152,
+          "decodeWallMs": 42.70000000298023,
+          "uploadCpuMs": 59,
+          "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+          "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+          "enabled": true
+        },
+        "instances": 1319,
+        "triangles": 64788
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "setup_view": {
+        "yaw": -0.55,
+        "elevation": 0.2,
+        "distance": 10,
+        "overview": false
+      },
+      "state": {
+        "journeys": {
+          "version": 1,
+          "realms": {
+            "heaven": {
+              "counter": 0,
+              "lastClaim": 0,
+              "firstClaimed": false,
+              "active": null,
+              "defeated": []
+            },
+            "hell": {
+              "counter": 0,
+              "lastClaim": 0,
+              "firstClaimed": false,
+              "active": null,
+              "defeated": []
+            },
+            "earthlands": {
+              "counter": 0,
+              "lastClaim": 0,
+              "firstClaimed": false,
+              "active": null,
+              "defeated": []
+            },
+            "atlantis": {
+              "counter": 0,
+              "lastClaim": 0,
+              "firstClaimed": false,
+              "active": null,
+              "defeated": []
+            },
+            "cosmos": {
+              "counter": 0,
+              "lastClaim": 0,
+              "firstClaimed": false,
+              "active": null,
+              "defeated": []
+            }
+          }
+        },
+        "adventure": {
+          "version": 10,
+          "earthGathering": {
+            "version": 1,
+            "accepted": false,
+            "prepared": [],
+            "verse": null,
+            "shared": false
+          },
+          "earthNotes": {
+            "version": 1,
+            "accepted": false,
+            "marks": [],
+            "compared": false,
+            "interpretation": null
+          },
+          "earthStory": {
+            "version": 1,
+            "accepted": false,
+            "steps": [],
+            "dispatch": null,
+            "arrived": false,
+            "claimed": false
+          },
+          "classPath": {
+            "version": 1,
+            "choice": null,
+            "readyAt": 0
+          },
+          "pursuit": {
+            "version": 1,
+            "pinned": null,
+            "claimed": 0,
+            "active": null,
+            "fittings": {}
+          },
+          "starter": {
+            "version": 1,
+            "accepted": false,
+            "bundles": [],
+            "reward": null
+          },
+          "crossing": {
+            "version": 1,
+            "entered": false,
+            "met": false,
+            "inscription": false,
+            "clapperRevealed": false,
+            "clapper": false,
+            "repaired": false,
+            "complete": false,
+            "reward": false,
+            "attuned": false,
+            "projects": []
+          },
+          "beacon": {
+            "version": 1,
+            "introduced": false,
+            "complete": false,
+            "status": "dormant",
+            "attempts": 0,
+            "failures": 0,
+            "reward": false,
+            "relic": "undecided",
+            "route": null,
+            "soul": {
+              "grace": false,
+              "equipped": null,
+              "radiance": 0,
+              "corruption": 0,
+              "scars": []
+            }
+          },
+          "arsenal": {
+            "version": 1,
+            "gems": {
+              "ruby": 0,
+              "moonstone": 0,
+              "amber": 0
+            },
+            "sockets": {},
+            "rangeMedal": false,
+            "bestTime": null
+          },
+          "road": {
+            "version": 1,
+            "entered": false,
+            "revealed": [],
+            "claimed": [],
+            "cartRepaired": false,
+            "beaconLit": false,
+            "reported": false
+          },
+          "elapsed": 8.499999999999986,
+          "revision": 1,
+          "started": true,
+          "dug": [],
+          "chips": [],
+          "defeated": [],
+          "drops": [],
+          "ore": 0,
+          "coins": 0,
+          "xp": 0,
+          "hp": 100,
+          "stamina": 100,
+          "tonics": 3,
+          "equipment": {
+            "weapon": "trail_blade",
+            "armor": "travel_coat",
+            "charm": null
+          },
+          "owned": [
+            "trail_blade",
+            "travel_coat"
+          ],
+          "companion": {
+            "bonded": false,
+            "name": "Briar",
+            "mode": "follow"
+          },
+          "relic": false,
+          "angelSeen": false,
+          "reward": null,
+          "deaths": 0,
+          "receipts": [
+            {
+              "id": "earned-world-kit",
+              "fp": "[\"start\",{}]",
+              "ok": true
+            }
+          ]
+        },
+        "sandbox": {
+          "version": 1,
+          "elapsed": 8.499999999999986,
+          "revision": 0,
+          "inventory": {
+            "wood": 0,
+            "stone": 0,
+            "fiber": 0,
+            "crystal": 0,
+            "plank": 0,
+            "block": 0,
+            "seeds": 4,
+            "berry": 0,
+            "axe": 0,
+            "pick": 0,
+            "floor": 0,
+            "wall": 0,
+            "masonry": 0,
+            "lantern": 0,
+            "bench": 0,
+            "bed": 0,
+            "fire": 0,
+            "workbench": 0
+          },
+          "nodes": [
+            {
+              "id": "timber-1",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "timber-2",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "timber-3",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "timber-4",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "stone-1",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "stone-2",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "stone-3",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "fibre-1",
+              "hp": 1,
+              "readyAt": 0
+            },
+            {
+              "id": "fibre-2",
+              "hp": 1,
+              "readyAt": 0
+            },
+            {
+              "id": "fibre-3",
+              "hp": 1,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-timber-1",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-timber-2",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-timber-3",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-stone-1",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-stone-2",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-fibre",
+              "hp": 1,
+              "readyAt": 0
+            },
+            {
+              "id": "crystal-1",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "crystal-2",
+              "hp": 4,
+              "readyAt": 0
+            }
+          ],
+          "bridge": false,
+          "placed": [],
+          "nextId": 1,
+          "stats": {
+            "gathered": 0,
+            "crafted": 0,
+            "harvested": 0
+          },
+          "milestones": [],
+          "recentCommands": [],
+          "cooldownUntil": 0
+        },
+        "score": {
+          "format": "eternities.score.v1",
+          "title": "A Window Left Open",
+          "bpm": 88,
+          "voice": "felt",
+          "melody": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          ],
+          "bass": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          "drums": [
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0
+            ]
+          ]
+        },
+        "scoreRevision": 0,
+        "retreat": {
+          "version": 1,
+          "revision": 0,
+          "wall": "moss",
+          "floor": "oak",
+          "items": [
+            {
+              "slot": "nw",
+              "kind": "shelf",
+              "rotation": 0
+            },
+            {
+              "slot": "ne",
+              "kind": "piano",
+              "rotation": 0
+            },
+            {
+              "slot": "w",
+              "kind": "sofa",
+              "rotation": 1
+            },
+            {
+              "slot": "e",
+              "kind": "plant",
+              "rotation": 0
+            },
+            {
+              "slot": "c",
+              "kind": "rug",
+              "rotation": 0
+            }
+          ]
+        },
+        "visitor": {
+          "name": "Visitor",
+          "skin": 0,
+          "cloak": 0,
+          "hair": 0
+        },
+        "version": 9,
+        "seed": 2317,
+        "day": 1,
+        "hour": 17,
+        "weather": "clear",
+        "player": {
+          "x": 18,
+          "z": 6,
+          "yaw": 2.2455372690188193
+        },
+        "visited": [
+          "market"
+        ],
+        "flowers": [],
+        "notes": [],
+        "journal": [
+          {
+            "seq": 1,
+            "day": 1,
+            "hour": 17.200225,
+            "kind": "routine",
+            "text": "Ilan is heading to amphitheatre."
+          },
+          {
+            "seq": 2,
+            "day": 1,
+            "hour": 17.200225,
+            "kind": "routine",
+            "text": "Mara is heading to observatory."
+          },
+          {
+            "seq": 3,
+            "day": 1,
+            "hour": 17.200225,
+            "kind": "routine",
+            "text": "Oren is heading to workshop."
+          },
+          {
+            "seq": 4,
+            "day": 1,
+            "hour": 17.209000000000014,
+            "kind": "discovery",
+            "text": "You found The makers\u2019 exchange."
+          },
+          {
+            "seq": 5,
+            "day": 1,
+            "hour": 17.21305000000002,
+            "kind": "quest",
+            "text": "Oren supplied a trail blade, a lantern, three tonics and a salve for an injured animal. Find the northern mine."
+          },
+          {
+            "seq": 6,
+            "day": 1,
+            "hour": 17.22475000000004,
+            "kind": "routine",
+            "text": "Ilan is heading to amphitheatre."
+          },
+          {
+            "seq": 7,
+            "day": 1,
+            "hour": 17.22475000000004,
+            "kind": "routine",
+            "text": "Mara is heading to observatory."
+          },
+          {
+            "seq": 8,
+            "day": 1,
+            "hour": 17.22475000000004,
+            "kind": "routine",
+            "text": "Oren is heading to workshop."
+          }
+        ],
+        "nextEvent": 9,
+        "residents": [
+          {
+            "id": "ilan",
+            "x": 0,
+            "z": -11.6,
+            "yaw": 1.5707963267948966,
+            "progress": 0.051449000000000335,
+            "conversations": 0
+          },
+          {
+            "id": "mara",
+            "x": 9,
+            "z": -5.8,
+            "yaw": 0,
+            "progress": 0.05153000000000035,
+            "conversations": 0
+          },
+          {
+            "id": "oren",
+            "x": 11,
+            "z": 9,
+            "yaw": -1.5707963267948966,
+            "progress": 0.051449000000000335,
+            "conversations": 0
+          }
+        ],
+        "settings": {
+          "quality": "balanced",
+          "cameraMode": "adventure",
+          "cameraFov": 60,
+          "cameraViews": {
+            "version": 1,
+            "lastDiorama": "follow",
+            "profiles": {
+              "adventure": {
+                "yaw": 5.387129922608612,
+                "elevation": 0.28,
+                "distance": 7.5
+              }
+            }
+          },
+          "cameraCutaway": true,
+          "reducedMotion": false,
+          "labels": true,
+          "timeFlow": true,
+          "sound": false
+        }
+      }
+    },
+    "after-diorama": {
+      "camera": {
+        "yaw": 0.6,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 10,
+        "actualDistance": 9.999886500175592,
+        "fov": 60,
+        "center": [
+          0,
+          2.1703687614810816,
+          20.000000000000004
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "baseHalf": 17,
+        "zoom": 1,
+        "projection": "orthographic",
+        "eye": [
+          33.45473756666517,
+          48.15413265948862,
+          68.900654311756
+        ],
+        "target": [
+          0,
+          2.1703687614810816,
+          20.000000000000004
+        ]
+      },
+      "metrics": {
+        "drawCalls": 27,
+        "texturedDrawCalls": 0,
+        "texturedInstances": 0,
+        "surfaceMaterials": {
+          "version": 1,
+          "id": "earth-weathered-timber-v1",
+          "status": "ready",
+          "ready": true,
+          "error": null,
+          "width": 512,
+          "height": 512,
+          "colorFormat": "SRGB8_ALPHA8",
+          "roughnessFormat": "R8",
+          "textureBytes": 1310720,
+          "mipmapBytes": 436905,
+          "totalTextureBytes": 1747625,
+          "decodedImageBytes": 2097152,
+          "decodeWallMs": 42.70000000298023,
+          "uploadCpuMs": 59,
+          "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+          "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+          "enabled": true
+        },
+        "instances": 1319,
+        "triangles": 64788
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "setup_view": {
+        "yaw": 0.6,
+        "elevation": 0.66,
+        "half": 16,
+        "overview": false
+      },
+      "state": {
+        "journeys": {
+          "version": 1,
+          "realms": {
+            "heaven": {
+              "counter": 0,
+              "lastClaim": 0,
+              "firstClaimed": false,
+              "active": null,
+              "defeated": []
+            },
+            "hell": {
+              "counter": 0,
+              "lastClaim": 0,
+              "firstClaimed": false,
+              "active": null,
+              "defeated": []
+            },
+            "earthlands": {
+              "counter": 0,
+              "lastClaim": 0,
+              "firstClaimed": false,
+              "active": null,
+              "defeated": []
+            },
+            "atlantis": {
+              "counter": 0,
+              "lastClaim": 0,
+              "firstClaimed": false,
+              "active": null,
+              "defeated": []
+            },
+            "cosmos": {
+              "counter": 0,
+              "lastClaim": 0,
+              "firstClaimed": false,
+              "active": null,
+              "defeated": []
+            }
+          }
+        },
+        "adventure": {
+          "version": 10,
+          "earthGathering": {
+            "version": 1,
+            "accepted": false,
+            "prepared": [],
+            "verse": null,
+            "shared": false
+          },
+          "earthNotes": {
+            "version": 1,
+            "accepted": false,
+            "marks": [],
+            "compared": false,
+            "interpretation": null
+          },
+          "earthStory": {
+            "version": 1,
+            "accepted": false,
+            "steps": [],
+            "dispatch": null,
+            "arrived": false,
+            "claimed": false
+          },
+          "classPath": {
+            "version": 1,
+            "choice": null,
+            "readyAt": 0
+          },
+          "pursuit": {
+            "version": 1,
+            "pinned": null,
+            "claimed": 0,
+            "active": null,
+            "fittings": {}
+          },
+          "starter": {
+            "version": 1,
+            "accepted": false,
+            "bundles": [],
+            "reward": null
+          },
+          "crossing": {
+            "version": 1,
+            "entered": false,
+            "met": false,
+            "inscription": false,
+            "clapperRevealed": false,
+            "clapper": false,
+            "repaired": false,
+            "complete": false,
+            "reward": false,
+            "attuned": false,
+            "projects": []
+          },
+          "beacon": {
+            "version": 1,
+            "introduced": false,
+            "complete": false,
+            "status": "dormant",
+            "attempts": 0,
+            "failures": 0,
+            "reward": false,
+            "relic": "undecided",
+            "route": null,
+            "soul": {
+              "grace": false,
+              "equipped": null,
+              "radiance": 0,
+              "corruption": 0,
+              "scars": []
+            }
+          },
+          "arsenal": {
+            "version": 1,
+            "gems": {
+              "ruby": 0,
+              "moonstone": 0,
+              "amber": 0
+            },
+            "sockets": {},
+            "rangeMedal": false,
+            "bestTime": null
+          },
+          "road": {
+            "version": 1,
+            "entered": false,
+            "revealed": [],
+            "claimed": [],
+            "cartRepaired": false,
+            "beaconLit": false,
+            "reported": false
+          },
+          "elapsed": 8.499999999999986,
+          "revision": 1,
+          "started": true,
+          "dug": [],
+          "chips": [],
+          "defeated": [],
+          "drops": [],
+          "ore": 0,
+          "coins": 0,
+          "xp": 0,
+          "hp": 100,
+          "stamina": 100,
+          "tonics": 3,
+          "equipment": {
+            "weapon": "trail_blade",
+            "armor": "travel_coat",
+            "charm": null
+          },
+          "owned": [
+            "trail_blade",
+            "travel_coat"
+          ],
+          "companion": {
+            "bonded": false,
+            "name": "Briar",
+            "mode": "follow"
+          },
+          "relic": false,
+          "angelSeen": false,
+          "reward": null,
+          "deaths": 0,
+          "receipts": [
+            {
+              "id": "earned-world-kit",
+              "fp": "[\"start\",{}]",
+              "ok": true
+            }
+          ]
+        },
+        "sandbox": {
+          "version": 1,
+          "elapsed": 8.499999999999986,
+          "revision": 0,
+          "inventory": {
+            "wood": 0,
+            "stone": 0,
+            "fiber": 0,
+            "crystal": 0,
+            "plank": 0,
+            "block": 0,
+            "seeds": 4,
+            "berry": 0,
+            "axe": 0,
+            "pick": 0,
+            "floor": 0,
+            "wall": 0,
+            "masonry": 0,
+            "lantern": 0,
+            "bench": 0,
+            "bed": 0,
+            "fire": 0,
+            "workbench": 0
+          },
+          "nodes": [
+            {
+              "id": "timber-1",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "timber-2",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "timber-3",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "timber-4",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "stone-1",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "stone-2",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "stone-3",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "fibre-1",
+              "hp": 1,
+              "readyAt": 0
+            },
+            {
+              "id": "fibre-2",
+              "hp": 1,
+              "readyAt": 0
+            },
+            {
+              "id": "fibre-3",
+              "hp": 1,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-timber-1",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-timber-2",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-timber-3",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-stone-1",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-stone-2",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "wild-fibre",
+              "hp": 1,
+              "readyAt": 0
+            },
+            {
+              "id": "crystal-1",
+              "hp": 4,
+              "readyAt": 0
+            },
+            {
+              "id": "crystal-2",
+              "hp": 4,
+              "readyAt": 0
+            }
+          ],
+          "bridge": false,
+          "placed": [],
+          "nextId": 1,
+          "stats": {
+            "gathered": 0,
+            "crafted": 0,
+            "harvested": 0
+          },
+          "milestones": [],
+          "recentCommands": [],
+          "cooldownUntil": 0
+        },
+        "score": {
+          "format": "eternities.score.v1",
+          "title": "A Window Left Open",
+          "bpm": 88,
+          "voice": "felt",
+          "melody": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          ],
+          "bass": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          "drums": [
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0
+            ]
+          ]
+        },
+        "scoreRevision": 0,
+        "retreat": {
+          "version": 1,
+          "revision": 0,
+          "wall": "moss",
+          "floor": "oak",
+          "items": [
+            {
+              "slot": "nw",
+              "kind": "shelf",
+              "rotation": 0
+            },
+            {
+              "slot": "ne",
+              "kind": "piano",
+              "rotation": 0
+            },
+            {
+              "slot": "w",
+              "kind": "sofa",
+              "rotation": 1
+            },
+            {
+              "slot": "e",
+              "kind": "plant",
+              "rotation": 0
+            },
+            {
+              "slot": "c",
+              "kind": "rug",
+              "rotation": 0
+            }
+          ]
+        },
+        "visitor": {
+          "name": "Visitor",
+          "skin": 0,
+          "cloak": 0,
+          "hair": 0
+        },
+        "version": 9,
+        "seed": 2317,
+        "day": 1,
+        "hour": 17,
+        "weather": "clear",
+        "player": {
+          "x": 18,
+          "z": 6,
+          "yaw": 2.2455372690188193
+        },
+        "visited": [
+          "market"
+        ],
+        "flowers": [],
+        "notes": [],
+        "journal": [
+          {
+            "seq": 1,
+            "day": 1,
+            "hour": 17.200225,
+            "kind": "routine",
+            "text": "Ilan is heading to amphitheatre."
+          },
+          {
+            "seq": 2,
+            "day": 1,
+            "hour": 17.200225,
+            "kind": "routine",
+            "text": "Mara is heading to observatory."
+          },
+          {
+            "seq": 3,
+            "day": 1,
+            "hour": 17.200225,
+            "kind": "routine",
+            "text": "Oren is heading to workshop."
+          },
+          {
+            "seq": 4,
+            "day": 1,
+            "hour": 17.209000000000014,
+            "kind": "discovery",
+            "text": "You found The makers\u2019 exchange."
+          },
+          {
+            "seq": 5,
+            "day": 1,
+            "hour": 17.21305000000002,
+            "kind": "quest",
+            "text": "Oren supplied a trail blade, a lantern, three tonics and a salve for an injured animal. Find the northern mine."
+          },
+          {
+            "seq": 6,
+            "day": 1,
+            "hour": 17.22475000000004,
+            "kind": "routine",
+            "text": "Ilan is heading to amphitheatre."
+          },
+          {
+            "seq": 7,
+            "day": 1,
+            "hour": 17.22475000000004,
+            "kind": "routine",
+            "text": "Mara is heading to observatory."
+          },
+          {
+            "seq": 8,
+            "day": 1,
+            "hour": 17.22475000000004,
+            "kind": "routine",
+            "text": "Oren is heading to workshop."
+          }
+        ],
+        "nextEvent": 9,
+        "residents": [
+          {
+            "id": "ilan",
+            "x": 0,
+            "z": -11.6,
+            "yaw": 1.5707963267948966,
+            "progress": 0.051449000000000335,
+            "conversations": 0
+          },
+          {
+            "id": "mara",
+            "x": 9,
+            "z": -5.8,
+            "yaw": 0,
+            "progress": 0.05153000000000035,
+            "conversations": 0
+          },
+          {
+            "id": "oren",
+            "x": 11,
+            "z": 9,
+            "yaw": -1.5707963267948966,
+            "progress": 0.051449000000000335,
+            "conversations": 0
+          }
+        ],
+        "settings": {
+          "quality": "balanced",
+          "cameraMode": "follow",
+          "cameraFov": 60,
+          "cameraViews": {
+            "version": 1,
+            "lastDiorama": "follow",
+            "profiles": {
+              "adventure": {
+                "yaw": 5.733185307179586,
+                "elevation": 0.2,
+                "distance": 10
+              },
+              "follow": {
+                "yaw": 0.7599999999999998,
+                "elevation": 0.88,
+                "zoom": 1
+              }
+            }
+          },
+          "cameraCutaway": true,
+          "reducedMotion": false,
+          "labels": true,
+          "timeFlow": true,
+          "sound": false
+        }
+      }
+    }
+  },
+  "browser_errors": [],
+  "performance_claim": false,
+  "gameplay_claim": false,
+  "browser": "143.0.7499.4",
+  "status": "passed"
+}

@@ -1,0 +1,127 @@
+{
+  "html_sha256": "12a44af65c53e80e9e57175e85c63d683421797c33e22da935134a3df9368b1b",
+  "basis": "Decoded source timestamps, not report wall-clock. Original speed and native frames; no interpolation or extra holds.",
+  "trims": [
+    {
+      "video": "firstlight-full-tour-12a44af6.mp4",
+      "segments_video_seconds": null,
+      "decoded_duration_seconds": 172.36
+    },
+    {
+      "video": "firstlight-five-roads-12a44af6.mp4",
+      "segments_video_seconds": [
+        [
+          5,
+          10.5,
+          "Earth bridge approach"
+        ],
+        [
+          17,
+          20.5,
+          "Earth channel third person"
+        ],
+        [
+          27,
+          31,
+          "Earth bridge diorama"
+        ],
+        [
+          51.8,
+          55.45,
+          "Heaven planted fork and camera exchange"
+        ],
+        [
+          65,
+          71.5,
+          "Heaven garden approach"
+        ],
+        [
+          75,
+          76.8,
+          "Hell refuge open roof"
+        ],
+        [
+          89.5,
+          93.2,
+          "Hell industrial road"
+        ],
+        [
+          123.8,
+          128.8,
+          "Hell real brace and blade fight"
+        ],
+        [
+          141,
+          144,
+          "Atlantis civic court"
+        ],
+        [
+          149.5,
+          160.52,
+          "Atlantis depth controls, gallery diorama and breathable air court"
+        ],
+        [
+          162,
+          170.55,
+          "Cosmos lamps with one presentation owner"
+        ]
+      ],
+      "decoded_duration_seconds": 56.24
+    },
+    {
+      "video": "firstlight-bow-guard-fight-12a44af6-cut.mp4",
+      "segments_video_seconds": [
+        [
+          43.64,
+          52.64,
+          "Real sentinel tell, brace, seven projectile hits and defeat; ends before actual home transition"
+        ]
+      ],
+      "decoded_duration_seconds": 8.96
+    },
+    {
+      "video": "firstlight-coastward-work-12a44af6.mp4",
+      "segments_video_seconds": [
+        [
+          56.5,
+          62.5,
+          "Merren approach invitation and explicit acceptance"
+        ],
+        [
+          66.5,
+          71.5,
+          "Field-water objective and explicit record"
+        ],
+        [
+          78,
+          83,
+          "Produce objective and explicit record"
+        ],
+        [
+          85.5,
+          90.5,
+          "Delivery register and explicit record"
+        ],
+        [
+          92.6,
+          100.5,
+          "Continuous unpaid page to claim, balances, recognition and paid diorama"
+        ],
+        [
+          104.5,
+          108,
+          "Paid produce detail"
+        ],
+        [
+          115,
+          123.1,
+          "Paid field water, free home return and blade/bow project guide"
+        ]
+      ],
+      "decoded_duration_seconds": 40.48
+    }
+  ],
+  "alignment": "Report time starts before browser/video creation, so event alignment remains approximate. Exact requested video bounds and selected source/output frames establish scenes. Native recorder boundaries quantize cuts.",
+  "work_payment": "Source92.6-100.5 is continuous unpaid page to payment, balances, recognition and paid diorama.",
+  "bow": "Source52.60 shows defeat; selected clip stops52.64 before actual home transition at52.72. Original WebM and wider first encode retain the briefly stale Hell HUD at that transition."
+}

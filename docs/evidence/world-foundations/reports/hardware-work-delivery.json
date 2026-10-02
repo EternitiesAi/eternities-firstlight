@@ -1,0 +1,4317 @@
+{
+  "method": "Record one command-earned Coastward outing through production UI and real RAF.\n\nThe only imported source is the labelled initial expedition kit. Crossing,\nacceptance, walking, three records, explicit payment and free return use the\nordinary UI. RPG workspaces pause normally while read; movement never advances\nartificial time. Time, quality and camera setup are labelled presentation only.\nThis records playable progression, not human pacing or the complete Earth world.\n",
+  "source": "evidence10\\world-foundations\\journey\\fresh-blade\\00_INITIAL_KIT.json",
+  "source_sha256": "d5dae74922159450b291054999ca6f1bc0600e26f1bca566d05b2815db2c457c",
+  "html_sha256": "12a44af65c53e80e9e57175e85c63d683421797c33e22da935134a3df9368b1b",
+  "sources_sha256": {
+    "src/core.js": "5b71d282bfbc5e47d2f9a67cbedacb08ba19d18fc0c705b301dbbe52ccd60a8a",
+    "src/adventure.js": "c3142f345b29080137b45d821393458f2a534a4b1700c7fe92c80bb1dadfa6ae",
+    "src/combat.js": "1f53c2ee7bdeb54fec2cb9ecc1a0769fa4d90df97babdbe545d847f767d0fd23",
+    "src/arsenal.js": "281a28165d610fedc70e55b4b7b50e7f9e7cf5de16d973fa1ace99ecd47cc270",
+    "src/world-atlantis-earth.js": "9b5bbefe0da2177b6c1cff08837632bdfa9f6b87fd2ca285f23a209107564ce0",
+    "src/world-foundations.js": "97f445690fccea753c860e96bf54d4e33a3c8551e8738a31d3d947ce30d1465d",
+    "src/world-foundations-art.js": "665c5c22ffa1fa6eb7fba14b6ca78658abe51fe41f7a78bc20fb4f7a323311cb",
+    "src/world-foundations-ui.js": "0eedcc460382ecf996ba0a0634571df11248ef835a2e536b246900a3053a7b51",
+    "src/pursuit-ui.js": "f8c6bab82d88b6e4dcbf05f3e78701d489f31e224c80211b94f8acc8b70b4224",
+    "src/rpg-ui.js": "a7da1cd73d310e11de2d72b89041b41ad080f5ed8d38a8abf7c32d2994b37137",
+    "src/world.js": "ac3cdfab5b9d6f740b694a3383db5608f918df2419165291b8a47962ea19ee1e",
+    "src/engine.js": "6b334a5d081cf4140d2fa1d5c3108dbd7f8bcdd81ae53b62ff9ed3545c4e5e7f",
+    "src/app.js": "51b22f54e4a6b542f2f54341d6cba15a9f597fa1b9d47b67bdb164af13b8bc2d",
+    "tools/browser_support.py": "cb5b8227f4c5e99e89b5ec40a75a3cacc471bd60c287316501c4b2de6cfecaa5",
+    "tools/capture_world_work.py": "66c030ea26065215ebc8ad84e3485bcb2db7d4e923bb52ea5a9f464a1d8c2269"
+  },
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "quality": "balanced",
+  "presentation_setup": [
+    "Import labelled command-earned initial kit",
+    "Balanced quality; evening hour 17",
+    "Camera framing only; V exchanges actual modes"
+  ],
+  "events": [
+    {
+      "name": "Imported command-earned initial kit at home road",
+      "seconds": 1.8649944000062533,
+      "state_file": "00_STATE.json",
+      "scene": "valley",
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "camera": {
+        "yaw": 5.3871299226086125,
+        "elevation": 0.28,
+        "half": 17,
+        "distance": 7.5,
+        "actualDistance": 7.5,
+        "fov": 60,
+        "center": [
+          18,
+          2.8,
+          6
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "projection": "perspective",
+        "eye": [
+          12.371563380583055,
+          4.872667364230853,
+          10.50274929553697
+        ],
+        "target": [
+          18,
+          2.8,
+          6
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 62,
+        "first": 111.8,
+        "last": 1528.4
+      }
+    },
+    {
+      "name": "Screenshot 01-travel-and-reward-terms",
+      "seconds": 2.85852850000083,
+      "state_file": "01_STATE.json",
+      "scene": "valley",
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "camera": {
+        "yaw": 5.3871299226086125,
+        "elevation": 0.28,
+        "half": 17,
+        "distance": 7.5,
+        "actualDistance": 7.5,
+        "fov": 60,
+        "center": [
+          18,
+          2.8,
+          6
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "projection": "perspective",
+        "eye": [
+          12.371563380583055,
+          4.872667364230853,
+          10.50274929553697
+        ],
+        "target": [
+          18,
+          2.8,
+          6
+        ]
+      },
+      "paused_by_workspace": true,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 121,
+        "first": 111.8,
+        "last": 2528.3
+      }
+    },
+    {
+      "name": "Screenshot 02-crossing-confirmation",
+      "seconds": 3.714176099994802,
+      "state_file": "02_STATE.json",
+      "scene": "valley",
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "camera": {
+        "yaw": 5.3871299226086125,
+        "elevation": 0.28,
+        "half": 17,
+        "distance": 7.5,
+        "actualDistance": 7.5,
+        "fov": 60,
+        "center": [
+          18,
+          2.8,
+          6
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "projection": "perspective",
+        "eye": [
+          12.371563380583055,
+          4.872667364230853,
+          10.50274929553697
+        ],
+        "target": [
+          18,
+          2.8,
+          6
+        ]
+      },
+      "paused_by_workspace": true,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 173,
+        "first": 111.8,
+        "last": 3395
+      }
+    },
+    {
+      "name": "Explicit crossing with saved home checkpoint",
+      "seconds": 3.7783983999979682,
+      "state_file": "03_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 5.387129922608612,
+        "elevation": 0.28,
+        "half": 17,
+        "distance": 7.5,
+        "actualDistance": 7.5000000000000036,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          104
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "projection": "perspective",
+        "eye": [
+          -5.628436619416951,
+          5.142667364230855,
+          108.50274929553697
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          104
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 176,
+        "first": 111.8,
+        "last": 3445
+      }
+    },
+    {
+      "name": "Presentation framing third",
+      "seconds": 4.234181899999385,
+      "state_file": "04_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.4,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.996810008515116,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          104
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          4.1969974439676925,
+          5.2547288852721294,
+          113.92683245131923
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          104
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 204,
+        "first": 111.8,
+        "last": 3911.6
+      }
+    },
+    {
+      "name": "Screenshot 03-coastward-before-work",
+      "seconds": 5.075687500007916,
+      "state_file": "05_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.4,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999958100515384,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          104
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          4.198198931859933,
+          5.255354314603105,
+          113.92967423741936
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          104
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 254,
+        "first": 111.8,
+        "last": 4745
+      }
+    },
+    {
+      "name": "Normal accepted walk to Merren \u00b7 field steward",
+      "seconds": 59.372382300003665,
+      "state_file": "06_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -5.940733723250427,
+        "z": -66.3010333998456,
+        "yaw": 3.1257543565916364
+      },
+      "camera": {
+        "yaw": 0.4,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999995,
+        "fov": 60,
+        "center": [
+          -5.945874146908562,
+          3.0700000000000003,
+          -65.97650394925978
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          -1.7476592238630326,
+          5.255362638745673,
+          -56.04679188912972
+        ],
+        "target": [
+          -5.945874146908562,
+          3.0700000000000003,
+          -65.97650394925978
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 3512,
+        "first": 111.8,
+        "last": 59042.7
+      }
+    },
+    {
+      "name": "Presentation framing third",
+      "seconds": 59.81927550000546,
+      "state_file": "07_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -5.940733723250427,
+        "z": -66.3010333998456,
+        "yaw": 3.1257543565916364
+      },
+      "camera": {
+        "yaw": 0.1,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 8.000000000000002,
+        "fov": 60,
+        "center": [
+          -5.940733734312762,
+          3.0700000000000003,
+          -66.3010327014492
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          -5.157986574254717,
+          4.659354646360491,
+          -58.49967008383467
+        ],
+        "target": [
+          -5.940733734312762,
+          3.0700000000000003,
+          -66.3010327014492
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 3539,
+        "first": 111.8,
+        "last": 59492.8
+      }
+    },
+    {
+      "name": "Screenshot 04-merren-readable-approach",
+      "seconds": 60.70004749999498,
+      "state_file": "08_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -5.940733723250427,
+        "z": -66.3010333998456,
+        "yaw": 3.1257543565916364
+      },
+      "camera": {
+        "yaw": 0.1,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 8.000000000000002,
+        "fov": 60,
+        "center": [
+          -5.9407337232543265,
+          3.0700000000000003,
+          -66.30103339959945
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          -5.157986563196281,
+          4.659354646360491,
+          -58.49967078198492
+        ],
+        "target": [
+          -5.9407337232543265,
+          3.0700000000000003,
+          -66.30103339959945
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 3592,
+        "first": 111.8,
+        "last": 60376
+      }
+    },
+    {
+      "name": "Screenshot 05-merren-acceptance",
+      "seconds": 61.52954909999971,
+      "state_file": "09_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -5.940733723250427,
+        "z": -66.3010333998456,
+        "yaw": 3.1257543565916364
+      },
+      "camera": {
+        "yaw": 0.1,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 8.000000000000002,
+        "fov": 60,
+        "center": [
+          -5.94073372325043,
+          3.0700000000000003,
+          -66.30103339984547
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          -5.1579865631923845,
+          4.659354646360491,
+          -58.499670782230936
+        ],
+        "target": [
+          -5.94073372325043,
+          3.0700000000000003,
+          -66.30103339984547
+        ]
+      },
+      "paused_by_workspace": true,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 3641,
+        "first": 111.8,
+        "last": 61192.6
+      }
+    },
+    {
+      "name": "Explicit acceptance; no reward paid",
+      "seconds": 61.589663399994606,
+      "state_file": "10_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -5.940733723250427,
+        "z": -66.3010333998456,
+        "yaw": 3.1257543565916364
+      },
+      "camera": {
+        "yaw": 0.1,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 8.000000000000002,
+        "fov": 60,
+        "center": [
+          -5.94073372325043,
+          3.0700000000000003,
+          -66.30103339984551
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          -5.1579865631923845,
+          4.659354646360491,
+          -58.49967078223098
+        ],
+        "target": [
+          -5.94073372325043,
+          3.0700000000000003,
+          -66.30103339984551
+        ]
+      },
+      "paused_by_workspace": true,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": {
+          "run": 1,
+          "kind": "opening",
+          "observed": []
+        },
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 3645,
+        "first": 111.8,
+        "last": 61259.3
+      }
+    },
+    {
+      "name": "Normal accepted walk to Field-water catch",
+      "seconds": 68.70610239999951,
+      "state_file": "11_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -15,
+        "z": -46,
+        "yaw": -0.4197281802692597
+      },
+      "camera": {
+        "yaw": 0.1,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 8.000000000000002,
+        "fov": 60,
+        "center": [
+          -14.86863670115603,
+          3.0700000000000003,
+          -46.29437380863722
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          -14.085889541097984,
+          4.659354646360491,
+          -38.49301119102269
+        ],
+        "target": [
+          -14.86863670115603,
+          3.0700000000000003,
+          -46.29437380863722
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": {
+          "run": 1,
+          "kind": "opening",
+          "observed": []
+        },
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 4072,
+        "first": 111.8,
+        "last": 68375.7
+      }
+    },
+    {
+      "name": "Presentation framing third",
+      "seconds": 69.14239660000021,
+      "state_file": "12_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -15,
+        "z": -46,
+        "yaw": -0.4197281802692597
+      },
+      "camera": {
+        "yaw": 0.65,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999997,
+        "fov": 60,
+        "center": [
+          -14.999999717556841,
+          3.0700000000000003,
+          -46.00000063293073
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          -10.255015960550752,
+          4.659354646360489,
+          -39.758279639980096
+        ],
+        "target": [
+          -14.999999717556841,
+          3.0700000000000003,
+          -46.00000063293073
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": {
+          "run": 1,
+          "kind": "opening",
+          "observed": []
+        },
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 4098,
+        "first": 111.8,
+        "last": 68809
+      }
+    },
+    {
+      "name": "Screenshot 06-1-objective-before-record",
+      "seconds": 70.03347520000534,
+      "state_file": "13_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -15,
+        "z": -46,
+        "yaw": -0.4197281802692597
+      },
+      "camera": {
+        "yaw": 0.65,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.9999999999999964,
+        "fov": 60,
+        "center": [
+          -14.999999999900362,
+          3.0700000000000003,
+          -46.00000000022328
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          -10.255016242894273,
+          4.659354646360489,
+          -39.75827900727265
+        ],
+        "target": [
+          -14.999999999900362,
+          3.0700000000000003,
+          -46.00000000022328
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": {
+          "run": 1,
+          "kind": "opening",
+          "observed": []
+        },
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 4152,
+        "first": 111.8,
+        "last": 69709
+      }
+    },
+    {
+      "name": "Screenshot 07-1-objective-record-ui",
+      "seconds": 70.86404689999472,
+      "state_file": "14_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -15,
+        "z": -46,
+        "yaw": -0.4197281802692597
+      },
+      "camera": {
+        "yaw": 0.65,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999997,
+        "fov": 60,
+        "center": [
+          -14.999999999999945,
+          3.0700000000000003,
+          -46.00000000000012
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          -10.255016242993856,
+          4.659354646360489,
+          -39.75827900704949
+        ],
+        "target": [
+          -14.999999999999945,
+          3.0700000000000003,
+          -46.00000000000012
+        ]
+      },
+      "paused_by_workspace": true,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": {
+          "run": 1,
+          "kind": "opening",
+          "observed": []
+        },
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 4202,
+        "first": 111.8,
+        "last": 70542.3
+      }
+    },
+    {
+      "name": "Explicitly recorded objective first",
+      "seconds": 70.92352430000028,
+      "state_file": "15_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -15,
+        "z": -46,
+        "yaw": -0.4197281802692597
+      },
+      "camera": {
+        "yaw": 0.65,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          -14.999999999999964,
+          3.0700000000000003,
+          -46.00000000000008
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          -10.255016242993875,
+          4.659354646360489,
+          -39.758279007049445
+        ],
+        "target": [
+          -14.999999999999964,
+          3.0700000000000003,
+          -46.00000000000008
+        ]
+      },
+      "paused_by_workspace": true,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": {
+          "run": 1,
+          "kind": "opening",
+          "observed": [
+            "first"
+          ]
+        },
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 4205,
+        "first": 111.8,
+        "last": 70592.2
+      }
+    },
+    {
+      "name": "Normal accepted walk to The evening produce load",
+      "seconds": 80.19512720000057,
+      "state_file": "16_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": 13,
+        "z": -54,
+        "yaw": 1.8490959858011433
+      },
+      "camera": {
+        "yaw": 0.65,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.9999999999999964,
+        "fov": 60,
+        "center": [
+          12.764158816154463,
+          3.0700000000000003,
+          -53.93261680461557
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          17.509142573160553,
+          4.659354646360489,
+          -47.69089581166494
+        ],
+        "target": [
+          12.764158816154463,
+          3.0700000000000003,
+          -53.93261680461557
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": {
+          "run": 1,
+          "kind": "opening",
+          "observed": [
+            "first"
+          ]
+        },
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 4761,
+        "first": 111.8,
+        "last": 79858.6
+      }
+    },
+    {
+      "name": "Presentation framing third",
+      "seconds": 80.62884279999707,
+      "state_file": "17_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": 13,
+        "z": -54,
+        "yaw": 1.8490959858011433
+      },
+      "camera": {
+        "yaw": -0.45,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          12.999999410680086,
+          3.0700000000000003,
+          -53.99999983162288
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          9.589637950717837,
+          4.659354646360489,
+          -46.94001495058408
+        ],
+        "target": [
+          12.999999410680086,
+          3.0700000000000003,
+          -53.99999983162288
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": {
+          "run": 1,
+          "kind": "opening",
+          "observed": [
+            "first"
+          ]
+        },
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 4787,
+        "first": 111.8,
+        "last": 80291.9
+      }
+    },
+    {
+      "name": "Screenshot 06-2-objective-before-record",
+      "seconds": 81.50450949999504,
+      "state_file": "18_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": 13,
+        "z": -54,
+        "yaw": 1.8490959858011433
+      },
+      "camera": {
+        "yaw": -0.45,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          12.999999999758607,
+          3.0700000000000003,
+          -53.99999999993103
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          9.589638539796358,
+          4.659354646360489,
+          -46.94001511889223
+        ],
+        "target": [
+          12.999999999758607,
+          3.0700000000000003,
+          -53.99999999993103
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": {
+          "run": 1,
+          "kind": "opening",
+          "observed": [
+            "first"
+          ]
+        },
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 4840,
+        "first": 111.8,
+        "last": 81175.2
+      }
+    },
+    {
+      "name": "Screenshot 07-2-objective-record-ui",
+      "seconds": 82.3567144999979,
+      "state_file": "19_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": 13,
+        "z": -54,
+        "yaw": 1.8490959858011433
+      },
+      "camera": {
+        "yaw": -0.45,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          12.999999999999865,
+          3.0700000000000003,
+          -53.99999999999996
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          9.589638540037615,
+          4.659354646360489,
+          -46.940015118961156
+        ],
+        "target": [
+          12.999999999999865,
+          3.0700000000000003,
+          -53.99999999999996
+        ]
+      },
+      "paused_by_workspace": true,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": {
+          "run": 1,
+          "kind": "opening",
+          "observed": [
+            "first"
+          ]
+        },
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 4891,
+        "first": 111.8,
+        "last": 82025.2
+      }
+    },
+    {
+      "name": "Explicitly recorded objective second",
+      "seconds": 82.40136790000543,
+      "state_file": "20_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": 13,
+        "z": -54,
+        "yaw": 1.8490959858011433
+      },
+      "camera": {
+        "yaw": -0.45,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          12.999999999999927,
+          3.0700000000000003,
+          -53.99999999999998
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          9.589638540037678,
+          4.659354646360489,
+          -46.94001511896118
+        ],
+        "target": [
+          12.999999999999927,
+          3.0700000000000003,
+          -53.99999999999998
+        ]
+      },
+      "paused_by_workspace": true,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": {
+          "run": 1,
+          "kind": "opening",
+          "observed": [
+            "first",
+            "second"
+          ]
+        },
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 4894,
+        "first": 111.8,
+        "last": 82075.2
+      }
+    },
+    {
+      "name": "Normal accepted walk to Roadside delivery register",
+      "seconds": 87.50434490000771,
+      "state_file": "21_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": 8,
+        "z": -69,
+        "yaw": -2.8198420991931066
+      },
+      "camera": {
+        "yaw": -0.45,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          8.096597436277682,
+          3.0700000000000003,
+          -68.71020769116691
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          4.686235976315432,
+          4.659354646360489,
+          -61.65022281012811
+        ],
+        "target": [
+          8.096597436277682,
+          3.0700000000000003,
+          -68.71020769116691
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": {
+          "run": 1,
+          "kind": "opening",
+          "observed": [
+            "first",
+            "second"
+          ]
+        },
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 5200,
+        "first": 111.8,
+        "last": 87175
+      }
+    },
+    {
+      "name": "Presentation framing third",
+      "seconds": 87.93348140000307,
+      "state_file": "22_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": 8,
+        "z": -69,
+        "yaw": -2.8198420991931066
+      },
+      "camera": {
+        "yaw": -0.45,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          8.00000024137766,
+          3.0700000000000003,
+          -68.99999927586703
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          4.58963878141541,
+          4.659354646360489,
+          -61.940014394828225
+        ],
+        "target": [
+          8.00000024137766,
+          3.0700000000000003,
+          -68.99999927586703
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": {
+          "run": 1,
+          "kind": "opening",
+          "observed": [
+            "first",
+            "second"
+          ]
+        },
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 5226,
+        "first": 111.8,
+        "last": 87608.3
+      }
+    },
+    {
+      "name": "Screenshot 06-3-objective-before-record",
+      "seconds": 88.82060570000613,
+      "state_file": "23_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": 8,
+        "z": -69,
+        "yaw": -2.8198420991931066
+      },
+      "camera": {
+        "yaw": -0.45,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          8.00000000008515,
+          3.0700000000000003,
+          -68.99999999974455
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          4.5896385401229,
+          4.659354646360489,
+          -61.940015118705745
+        ],
+        "target": [
+          8.00000000008515,
+          3.0700000000000003,
+          -68.99999999974455
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": {
+          "run": 1,
+          "kind": "opening",
+          "observed": [
+            "first",
+            "second"
+          ]
+        },
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 5279,
+        "first": 111.8,
+        "last": 88491.6
+      }
+    },
+    {
+      "name": "Screenshot 07-3-objective-record-ui",
+      "seconds": 89.64702250000846,
+      "state_file": "24_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": 8,
+        "z": -69,
+        "yaw": -2.8198420991931066
+      },
+      "camera": {
+        "yaw": -0.45,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          8.000000000000046,
+          3.0700000000000003,
+          -68.99999999999986
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          4.589638540037797,
+          4.659354646360489,
+          -61.94001511896106
+        ],
+        "target": [
+          8.000000000000046,
+          3.0700000000000003,
+          -68.99999999999986
+        ]
+      },
+      "paused_by_workspace": true,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": {
+          "run": 1,
+          "kind": "opening",
+          "observed": [
+            "first",
+            "second"
+          ]
+        },
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 5329,
+        "first": 111.8,
+        "last": 89324.8
+      }
+    },
+    {
+      "name": "Explicitly recorded objective third",
+      "seconds": 89.70944249999593,
+      "state_file": "25_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": 8,
+        "z": -69,
+        "yaw": -2.8198420991931066
+      },
+      "camera": {
+        "yaw": -0.45,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          8.000000000000028,
+          3.0700000000000003,
+          -68.9999999999999
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          4.589638540037779,
+          4.659354646360489,
+          -61.9400151189611
+        ],
+        "target": [
+          8.000000000000028,
+          3.0700000000000003,
+          -68.9999999999999
+        ]
+      },
+      "paused_by_workspace": true,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": {
+          "run": 1,
+          "kind": "opening",
+          "observed": [
+            "first",
+            "second",
+            "third"
+          ]
+        },
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 5332,
+        "first": 111.8,
+        "last": 89374.8
+      }
+    },
+    {
+      "name": "Normal accepted walk to Merren \u00b7 field steward",
+      "seconds": 93.72334539999429,
+      "state_file": "26_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -4.3043202102877505,
+        "z": -68.12111998497944,
+        "yaw": -1.499488862009634
+      },
+      "camera": {
+        "yaw": -0.45,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          -4.007498054436604,
+          3.0700000000000003,
+          -68.14232156754024
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          -7.417859514398852,
+          4.659354646360489,
+          -61.082336686501435
+        ],
+        "target": [
+          -4.007498054436604,
+          3.0700000000000003,
+          -68.14232156754024
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": {
+          "run": 1,
+          "kind": "opening",
+          "observed": [
+            "first",
+            "second",
+            "third"
+          ]
+        },
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 5573,
+        "first": 111.8,
+        "last": 93391.4
+      }
+    },
+    {
+      "name": "All three complete; explicitly unpaid at Merren",
+      "seconds": 93.7465446999995,
+      "state_file": "27_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -4.3043202102877505,
+        "z": -68.12111998497944,
+        "yaw": -1.499488862009634
+      },
+      "camera": {
+        "yaw": -0.45,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          -4.0845608441155115,
+          3.0700000000000003,
+          -68.13681708256317
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          -7.494922304077761,
+          4.659354646360489,
+          -61.07683220152437
+        ],
+        "target": [
+          -4.0845608441155115,
+          3.0700000000000003,
+          -68.13681708256317
+        ]
+      },
+      "paused_by_workspace": true,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": {
+          "run": 1,
+          "kind": "opening",
+          "observed": [
+            "first",
+            "second",
+            "third"
+          ]
+        },
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 5575,
+        "first": 111.8,
+        "last": 93424.7
+      }
+    },
+    {
+      "name": "Screenshot 08-completed-unpaid",
+      "seconds": 94.59505289999652,
+      "state_file": "28_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -4.3043202102877505,
+        "z": -68.12111998497944,
+        "yaw": -1.499488862009634
+      },
+      "camera": {
+        "yaw": -0.45,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          -4.3041985188750145,
+          3.0700000000000003,
+          -68.1211286772232
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          -7.714559978837263,
+          4.659354646360489,
+          -61.061143796184396
+        ],
+        "target": [
+          -4.3041985188750145,
+          3.0700000000000003,
+          -68.1211286772232
+        ]
+      },
+      "paused_by_workspace": true,
+      "balances": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": {
+          "run": 1,
+          "kind": "opening",
+          "observed": [
+            "first",
+            "second",
+            "third"
+          ]
+        },
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 5625,
+        "first": 111.8,
+        "last": 94258.1
+      }
+    },
+    {
+      "name": "Explicit claim of 28 XP, 12 sunmarks and 2 ore",
+      "seconds": 94.65588449999632,
+      "state_file": "29_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -4.3043202102877505,
+        "z": -68.12111998497944,
+        "yaw": -1.499488862009634
+      },
+      "camera": {
+        "yaw": -0.45,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          -4.304253504719157,
+          3.0700000000000003,
+          -68.12112474966291
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          -7.714614964681406,
+          4.659354646360489,
+          -61.06113986862411
+        ],
+        "target": [
+          -4.304253504719157,
+          3.0700000000000003,
+          -68.12112474966291
+        ]
+      },
+      "paused_by_workspace": true,
+      "balances": {
+        "xp": 28,
+        "coins": 12,
+        "ore": 2
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 5629,
+        "first": 111.8,
+        "last": 94324.7
+      }
+    },
+    {
+      "name": "Screenshot 09-explicit-payment",
+      "seconds": 95.46726020000642,
+      "state_file": "30_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -4.3043202102877505,
+        "z": -68.12111998497944,
+        "yaw": -1.499488862009634
+      },
+      "camera": {
+        "yaw": -0.45,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          -4.3043201673975355,
+          3.0700000000000003,
+          -68.12111998804303
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          -7.714681627359784,
+          4.659354646360489,
+          -61.06113510700423
+        ],
+        "target": [
+          -4.3043201673975355,
+          3.0700000000000003,
+          -68.12111998804303
+        ]
+      },
+      "paused_by_workspace": true,
+      "balances": {
+        "xp": 28,
+        "coins": 12,
+        "ore": 2
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 5678,
+        "first": 111.8,
+        "last": 95141.4
+      }
+    },
+    {
+      "name": "Screenshot 09b-earned-balances-and-kept-equipment",
+      "seconds": 96.61844310000015,
+      "state_file": "31_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -4.3043202102877505,
+        "z": -68.12111998497944,
+        "yaw": -1.499488862009634
+      },
+      "camera": {
+        "yaw": -0.45,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          -4.304320210284372,
+          3.0700000000000003,
+          -68.12111998497967
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          -7.714681670246621,
+          4.659354646360489,
+          -61.06113510394087
+        ],
+        "target": [
+          -4.304320210284372,
+          3.0700000000000003,
+          -68.12111998497967
+        ]
+      },
+      "paused_by_workspace": true,
+      "balances": {
+        "xp": 28,
+        "coins": 12,
+        "ore": 2
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 5735,
+        "first": 111.8,
+        "last": 96291.2
+      }
+    },
+    {
+      "name": "Screenshot 10-giver-recognition",
+      "seconds": 97.57859259999532,
+      "state_file": "32_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -4.3043202102877505,
+        "z": -68.12111998497944,
+        "yaw": -1.499488862009634
+      },
+      "camera": {
+        "yaw": -0.45,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          -4.304320210287748,
+          3.0700000000000003,
+          -68.12111998497949
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          -7.7146816702499965,
+          4.659354646360489,
+          -61.061135103940686
+        ],
+        "target": [
+          -4.304320210287748,
+          3.0700000000000003,
+          -68.12111998497949
+        ]
+      },
+      "paused_by_workspace": true,
+      "balances": {
+        "xp": 28,
+        "coins": 12,
+        "ore": 2
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 5792,
+        "first": 111.8,
+        "last": 97241.2
+      }
+    },
+    {
+      "name": "Actual V exchange to diorama",
+      "seconds": 97.65395340000396,
+      "state_file": "33_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -4.3043202102877505,
+        "z": -68.12111998497944,
+        "yaw": -1.499488862009634
+      },
+      "camera": {
+        "yaw": 0.76,
+        "elevation": 0.88,
+        "half": 17,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          -4.3043202102877505,
+          2.2368462203929003,
+          -68.12111998497944
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 1,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          28.616711315846786,
+          60.0422621378156,
+          -33.483862964986784
+        ],
+        "target": [
+          -4.3043202102877505,
+          2.2368462203929003,
+          -68.12111998497944
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 28,
+        "coins": 12,
+        "ore": 2
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 5797,
+        "first": 111.8,
+        "last": 97324.5
+      }
+    },
+    {
+      "name": "Presentation framing diorama",
+      "seconds": 98.07846479999716,
+      "state_file": "34_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -4.3043202102877505,
+        "z": -68.12111998497944,
+        "yaw": -1.499488862009634
+      },
+      "camera": {
+        "yaw": 0.6,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 10,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          -4.3043202102877505,
+          2.1716803040569594,
+          -68.12111998497944
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          29.150417356377424,
+          48.1554442020645,
+          -19.220465673223444
+        ],
+        "target": [
+          -4.3043202102877505,
+          2.1716803040569594,
+          -68.12111998497944
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 28,
+        "coins": 12,
+        "ore": 2
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 5822,
+        "first": 111.8,
+        "last": 97741.2
+      }
+    },
+    {
+      "name": "Screenshot 11-paid-settlement-diorama",
+      "seconds": 98.9727944000042,
+      "state_file": "35_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -4.3043202102877505,
+        "z": -68.12111998497944,
+        "yaw": -1.499488862009634
+      },
+      "camera": {
+        "yaw": 0.6,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 10,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          -4.3043202102877505,
+          2.170161901810314,
+          -68.12111998497944
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          29.150417356377424,
+          48.153925799817856,
+          -19.220465673223444
+        ],
+        "target": [
+          -4.3043202102877505,
+          2.170161901810314,
+          -68.12111998497944
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 28,
+        "coins": 12,
+        "ore": 2
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 5876,
+        "first": 111.8,
+        "last": 98641.2
+      }
+    },
+    {
+      "name": "Normal accepted walk to The evening produce load",
+      "seconds": 106.07312299999467,
+      "state_file": "36_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": 13,
+        "z": -54,
+        "yaw": 0.886347577312956
+      },
+      "camera": {
+        "yaw": 0.6,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 10,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          12.074924181905951,
+          2.1700000000015573,
+          -54.75490435126966
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          45.52966174857112,
+          48.153763898009096,
+          -5.8542500395136585
+        ],
+        "target": [
+          12.074924181905951,
+          2.1700000000015573,
+          -54.75490435126966
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 28,
+        "coins": 12,
+        "ore": 2
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 6302,
+        "first": 111.8,
+        "last": 105740.9
+      }
+    },
+    {
+      "name": "Actual V exchange to third",
+      "seconds": 106.105223999999,
+      "state_file": "37_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": 13,
+        "z": -54,
+        "yaw": 0.886347577312956
+      },
+      "camera": {
+        "yaw": 5.833185307179586,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 8,
+        "fov": 60,
+        "center": [
+          12.999895305040056,
+          3.0698889311763224,
+          -54.000085435895386
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          9.589533845077803,
+          4.659243577536812,
+          -46.940100554856585
+        ],
+        "target": [
+          12.999895305040056,
+          3.0698889311763224,
+          -54.000085435895386
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 28,
+        "coins": 12,
+        "ore": 2
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 6304,
+        "first": 111.8,
+        "last": 105774.2
+      }
+    },
+    {
+      "name": "Presentation framing third",
+      "seconds": 106.54000370000722,
+      "state_file": "38_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": 13,
+        "z": -54,
+        "yaw": 0.886347577312956
+      },
+      "camera": {
+        "yaw": -0.45,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          12.999999999738623,
+          3.0699999997227114,
+          -54.0000000002133
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          9.589638539776374,
+          4.659354646083201,
+          -46.9400151191745
+        ],
+        "target": [
+          12.999999999738623,
+          3.0699999997227114,
+          -54.0000000002133
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 28,
+        "coins": 12,
+        "ore": 2
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 6330,
+        "first": 111.8,
+        "last": 106207.5
+      }
+    },
+    {
+      "name": "Screenshot 12-paid-produce-work",
+      "seconds": 107.42249569999694,
+      "state_file": "39_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": 13,
+        "z": -54,
+        "yaw": 0.886347577312956
+      },
+      "camera": {
+        "yaw": -0.45,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          12.999999999999908,
+          3.069999999999902,
+          -54.00000000000007
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          9.589638540037658,
+          4.659354646360391,
+          -46.94001511896127
+        ],
+        "target": [
+          12.999999999999908,
+          3.069999999999902,
+          -54.00000000000007
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 28,
+        "coins": 12,
+        "ore": 2
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 6383,
+        "first": 111.8,
+        "last": 107090.9
+      }
+    },
+    {
+      "name": "Normal accepted walk to Field-water catch",
+      "seconds": 116.66308640000352,
+      "state_file": "40_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -15,
+        "z": -46,
+        "yaw": -1.29249666778865
+      },
+      "camera": {
+        "yaw": -0.45,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999998,
+        "fov": 60,
+        "center": [
+          -14.76415944401206,
+          3.069999999999999,
+          -46.06738301599655
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -18.174520903974308,
+          4.659354646360488,
+          -39.00739813495775
+        ],
+        "target": [
+          -14.76415944401206,
+          3.069999999999999,
+          -46.06738301599655
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 28,
+        "coins": 12,
+        "ore": 2
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 6938,
+        "first": 111.8,
+        "last": 116340.5
+      }
+    },
+    {
+      "name": "Presentation framing third",
+      "seconds": 117.10066520000692,
+      "state_file": "41_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -15,
+        "z": -46,
+        "yaw": -1.29249666778865
+      },
+      "camera": {
+        "yaw": 0.65,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.9999999999999964,
+        "fov": 60,
+        "center": [
+          -14.999999410681653,
+          3.0700000000000003,
+          -46.00000016837667
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -10.255015653675564,
+          4.659354646360489,
+          -39.75827917542604
+        ],
+        "target": [
+          -14.999999410681653,
+          3.0700000000000003,
+          -46.00000016837667
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 28,
+        "coins": 12,
+        "ore": 2
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 6964,
+        "first": 111.8,
+        "last": 116773.8
+      }
+    },
+    {
+      "name": "Screenshot 13-paid-field-water-work",
+      "seconds": 118.03070640000806,
+      "state_file": "42_STATE.json",
+      "scene": "world-earthlands",
+      "player": {
+        "x": -15,
+        "z": -46,
+        "yaw": -1.29249666778865
+      },
+      "camera": {
+        "yaw": 0.65,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.9999999999999964,
+        "fov": 60,
+        "center": [
+          -14.999999999845945,
+          3.0700000000000003,
+          -46.000000000044025
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -10.255016242839856,
+          4.659354646360489,
+          -39.75827900709339
+        ],
+        "target": [
+          -14.999999999845945,
+          3.0700000000000003,
+          -46.000000000044025
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 28,
+        "coins": 12,
+        "ore": 2
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 7020,
+        "first": 111.8,
+        "last": 117707.1
+      }
+    },
+    {
+      "name": "Free home return retains paid work and exact balances",
+      "seconds": 118.13447370000358,
+      "state_file": "43_STATE.json",
+      "scene": "valley",
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "camera": {
+        "yaw": 0.6500000000000004,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999999,
+        "fov": 60,
+        "center": [
+          18,
+          2.8,
+          6
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          22.744983757006093,
+          4.3893546463604896,
+          12.241720992950633
+        ],
+        "target": [
+          18,
+          2.8,
+          6
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 28,
+        "coins": 12,
+        "ore": 2
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 7026,
+        "first": 111.8,
+        "last": 117807.1
+      }
+    },
+    {
+      "name": "Screenshot 14-free-home-with-earned-progress",
+      "seconds": 119.05697350000264,
+      "state_file": "44_STATE.json",
+      "scene": "valley",
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "camera": {
+        "yaw": 0.6500000000000004,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999999999999999,
+        "fov": 60,
+        "center": [
+          18,
+          2.8,
+          6
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          22.744983757006093,
+          4.3893546463604896,
+          12.241720992950633
+        ],
+        "target": [
+          18,
+          2.8,
+          6
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 28,
+        "coins": 12,
+        "ore": 2
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 7081,
+        "first": 111.8,
+        "last": 118723.7
+      }
+    },
+    {
+      "name": "Normal accepted walk to Oren workbench",
+      "seconds": 121.68249099999957,
+      "state_file": "45_STATE.json",
+      "scene": "valley",
+      "player": {
+        "x": 11,
+        "z": 9,
+        "yaw": -1.396124127786662
+      },
+      "camera": {
+        "yaw": 0.6500000000000004,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.649828307911492,
+        "fov": 60,
+        "center": [
+          11.269262026778167,
+          2.8,
+          8.952477245808831
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          15.806550909893847,
+          4.3197862706298915,
+          14.92098898855373
+        ],
+        "target": [
+          11.269262026778167,
+          2.8,
+          8.952477245808831
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 28,
+        "coins": 12,
+        "ore": 2
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 7239,
+        "first": 111.8,
+        "last": 121356.9
+      }
+    },
+    {
+      "name": "Screenshot 15-home-blade-guide",
+      "seconds": 122.6089728000079,
+      "state_file": "46_STATE.json",
+      "scene": "valley",
+      "player": {
+        "x": 11,
+        "z": 9,
+        "yaw": -1.396124127786662
+      },
+      "camera": {
+        "yaw": 0.6500000000000004,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.996421572052975,
+        "fov": 60,
+        "center": [
+          11.000070325907716,
+          2.8,
+          8.99998758799796
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          15.742931635103279,
+          4.388643722474956,
+          15.238916637343756
+        ],
+        "target": [
+          11.000070325907716,
+          2.8,
+          8.99998758799796
+        ]
+      },
+      "paused_by_workspace": true,
+      "balances": {
+        "xp": 28,
+        "coins": 12,
+        "ore": 2
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 7294,
+        "first": 111.8,
+        "last": 122273.5
+      }
+    },
+    {
+      "name": "Screenshot 16-home-bow-guide",
+      "seconds": 123.50659449999512,
+      "state_file": "47_STATE.json",
+      "scene": "valley",
+      "player": {
+        "x": 11,
+        "z": 9,
+        "yaw": -1.396124127786662
+      },
+      "camera": {
+        "yaw": 0.6500000000000004,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999960247256324,
+        "fov": 60,
+        "center": [
+          11.000000021346667,
+          2.8,
+          8.999999996232471
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          15.74496020008738,
+          4.389346748709507,
+          15.241689973491265
+        ],
+        "target": [
+          11.000000021346667,
+          2.8,
+          8.999999996232471
+        ]
+      },
+      "paused_by_workspace": true,
+      "balances": {
+        "xp": 28,
+        "coins": 12,
+        "ore": 2
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 7348,
+        "first": 111.8,
+        "last": 123173.6
+      }
+    },
+    {
+      "name": "Finished at home with unchanged gear and music",
+      "seconds": 123.59063649999734,
+      "state_file": "48_STATE.json",
+      "scene": "valley",
+      "player": {
+        "x": 11,
+        "z": 9,
+        "yaw": -1.396124127786662
+      },
+      "camera": {
+        "yaw": 0.6500000000000004,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 7.999973789008072,
+        "fov": 60,
+        "center": [
+          11.000000010086477,
+          2.8,
+          8.999999998219812
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          15.744968220751202,
+          4.389349439040264,
+          15.241700540958126
+        ],
+        "target": [
+          11.000000010086477,
+          2.8,
+          8.999999998219812
+        ]
+      },
+      "paused_by_workspace": false,
+      "balances": {
+        "xp": 28,
+        "coins": 12,
+        "ore": 2
+      },
+      "journey": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created"
+      },
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "raf": {
+        "frames": 7353,
+        "first": 111.8,
+        "last": 123256.9
+      }
+    }
+  ],
+  "walks": [
+    {
+      "name": "Normal accepted walk to Merren \u00b7 field steward",
+      "target": {
+        "id": "merren",
+        "name": "Merren \u00b7 field steward",
+        "x": -6,
+        "z": -68,
+        "kind": "person",
+        "text": "Check the water, pack the named load, then register it. I would rather have one dependable evening than a heroic story about ruined cabbages.",
+        "detail": "Merren is an original provisional local. The field-water and produce commission is ordinary work; it does not advance the prophecy or replace Fenna\u2019s existing delivery."
+      },
+      "endpoint": {
+        "x": -5.940733723250427,
+        "z": -66.3010333998456,
+        "yaw": 3.1257543565916364
+      },
+      "endpoint_distance": 1.6999999999999942,
+      "raf_frames": 3254,
+      "wall_seconds": 54.2326303999871,
+      "ordinary_simulation_seconds": 54.18120000000128,
+      "caller": "production UI walkLocal \u2192 Simulation.moveTo"
+    },
+    {
+      "name": "Normal accepted walk to Field-water catch",
+      "target": {
+        "id": "field-water",
+        "name": "Field-water catch",
+        "x": -15,
+        "z": -46,
+        "kind": "objective",
+        "text": "Check the catch and record the working field-water gauge.",
+        "detail": "The catch belongs to these fields. This is a bounded work interaction, not a fluid simulation or a repair of Ansel\u2019s existing mill."
+      },
+      "endpoint": {
+        "x": -15,
+        "z": -46,
+        "yaw": -0.4197281802692597
+      },
+      "endpoint_distance": 0.0,
+      "raf_frames": 420,
+      "wall_seconds": 6.999743899999885,
+      "ordinary_simulation_seconds": 6.9497000000007105,
+      "caller": "production UI walkLocal \u2192 Simulation.moveTo"
+    },
+    {
+      "name": "Normal accepted walk to The evening produce load",
+      "target": {
+        "id": "produce-packing",
+        "name": "The evening produce load",
+        "x": 13,
+        "z": -54,
+        "kind": "objective",
+        "text": "Pack the declared roadside produce load.",
+        "detail": "Work applies only to this commission. Decorative vegetables do not become free inventory or an unlimited harvest."
+      },
+      "endpoint": {
+        "x": 13,
+        "z": -54,
+        "yaw": 1.8490959858011433
+      },
+      "endpoint_distance": 0.0,
+      "raf_frames": 550,
+      "wall_seconds": 9.157533800011151,
+      "ordinary_simulation_seconds": 9.116300000002056,
+      "caller": "production UI walkLocal \u2192 Simulation.moveTo"
+    },
+    {
+      "name": "Normal accepted walk to Roadside delivery register",
+      "target": {
+        "id": "delivery-register",
+        "name": "Roadside delivery register",
+        "x": 8,
+        "z": -69,
+        "kind": "objective",
+        "text": "Enter the named load and its field-water check in the local register.",
+        "detail": "This register records the local work. It does not invent online trading or replay Bellweather\u2019s existing story reward."
+      },
+      "endpoint": {
+        "x": 8,
+        "z": -69,
+        "yaw": -2.8198420991931066
+      },
+      "endpoint_distance": 0.0,
+      "raf_frames": 300,
+      "wall_seconds": 5.001016199996229,
+      "ordinary_simulation_seconds": 4.949800000001133,
+      "caller": "production UI walkLocal \u2192 Simulation.moveTo"
+    },
+    {
+      "name": "Normal accepted walk to Merren \u00b7 field steward",
+      "target": {
+        "id": "merren",
+        "name": "Merren \u00b7 field steward",
+        "x": -6,
+        "z": -68,
+        "kind": "person",
+        "text": "Check the water, pack the named load, then register it. I would rather have one dependable evening than a heroic story about ruined cabbages.",
+        "detail": "Merren is an original provisional local. The field-water and produce commission is ordinary work; it does not advance the prophecy or replace Fenna\u2019s existing delivery."
+      },
+      "endpoint": {
+        "x": -4.3043202102877505,
+        "z": -68.12111998497944,
+        "yaw": -1.499488862009634
+      },
+      "endpoint_distance": 1.6999999999999997,
+      "raf_frames": 234,
+      "wall_seconds": 3.9020337000110885,
+      "ordinary_simulation_seconds": 3.866500000000883,
+      "caller": "production UI walkLocal \u2192 Simulation.moveTo"
+    },
+    {
+      "name": "Normal accepted walk to The evening produce load",
+      "target": {
+        "id": "produce-packing",
+        "name": "The evening produce load",
+        "x": 13,
+        "z": -54,
+        "kind": "objective",
+        "text": "Pack the declared roadside produce load.",
+        "detail": "Work applies only to this commission. Decorative vegetables do not become free inventory or an unlimited harvest."
+      },
+      "endpoint": {
+        "x": 13,
+        "z": -54,
+        "yaw": 0.886347577312956
+      },
+      "endpoint_distance": 0.0,
+      "raf_frames": 422,
+      "wall_seconds": 7.033112000004621,
+      "ordinary_simulation_seconds": 6.983000000001567,
+      "caller": "production UI walkLocal \u2192 Simulation.moveTo"
+    },
+    {
+      "name": "Normal accepted walk to Field-water catch",
+      "target": {
+        "id": "field-water",
+        "name": "Field-water catch",
+        "x": -15,
+        "z": -46,
+        "kind": "objective",
+        "text": "Check the catch and record the working field-water gauge.",
+        "detail": "The catch belongs to these fields. This is a bounded work interaction, not a fluid simulation or a repair of Ansel\u2019s existing mill."
+      },
+      "endpoint": {
+        "x": -15,
+        "z": -46,
+        "yaw": -1.29249666778865
+      },
+      "endpoint_distance": 0.0,
+      "raf_frames": 551,
+      "wall_seconds": 9.172958100010874,
+      "ordinary_simulation_seconds": 9.116300000002028,
+      "caller": "production UI walkLocal \u2192 Simulation.moveTo"
+    },
+    {
+      "name": "Normal accepted walk to Oren workbench",
+      "target": {
+        "x": 11,
+        "z": 9
+      },
+      "endpoint": {
+        "x": 11,
+        "z": 9,
+        "yaw": -1.396124127786662
+      },
+      "endpoint_distance": 0.0,
+      "raf_frames": 147,
+      "wall_seconds": 2.450550400011707,
+      "ordinary_simulation_seconds": 2.4500000000005286,
+      "caller": "production UI walkLocal \u2192 Simulation.moveTo"
+    }
+  ],
+  "ui_readings": [
+    {
+      "name": "Declared travel and first payout terms",
+      "text": "Broader Earth foundation \u00b7 provisional local geography\nEarth \u00b7 Coastward Road\n\nA long channel bridge opens onto woodland lanes, working fields and a small roadside settlement. Coastward Road is a provisional extension; Hearthwater and its people retain their existing places and history.\n\nReturn to Firstlight: available at any time, free. Reopening or switching characters resumes your saved home checkpoint, retaining accepted work. Crossing makes no allegiance, class or main-story choice.\n\nOPTIONAL LOCAL WORK\nWater, fields and the evening load\n\nMerren \u00b7 field steward keeps this work. Collect Oren\u2019s initial expedition kit before accepting; no campaign chapter is required.\n\nCheck the field-water catch\nPack the evening produce load\nRegister the named load\n\nDeclared payout: 28 XP \u00b7 12 sunmarks \u00b7 2 ore. First completion also leaves a modest work record at the local bench. Equipment remains your choice.\n\nOptional creatures occupy side ground; the three work objectives have a clear route around them.\n\nReloads retain accepted objectives and claim history. Reopening resumes at your Firstlight checkpoint. Full reward pouches leave completed work ready for retry.\n\nBring useful progress home\n\nUse sunmarks and ore at Oren\u2019s workbench. The item guide compares blade and bow projects with your current equipment before you choose what to pursue.\n\nInspect item & recipe guide\nRead crossing terms\nAll five roads\n\nV exchanges third person and your diorama. R resets the current view. These are opening regions; the distant landscape and later capitals remain beyond the current route.",
+      "seconds": 1.996883900006651
+    },
+    {
+      "name": "Explicit crossing confirmation",
+      "text": "Broader Earth foundation \u00b7 provisional local geography\nEarth \u00b7 Coastward Road\n\nA long channel bridge opens onto woodland lanes, working fields and a small roadside settlement. Coastward Road is a provisional extension; Hearthwater and its people retain their existing places and history.\n\nReturn to Firstlight: available at any time, free. Reopening or switching characters resumes your saved home checkpoint, retaining accepted work. Crossing makes no allegiance, class or main-story choice.\n\nOPTIONAL LOCAL WORK\nWater, fields and the evening load\n\nMerren \u00b7 field steward keeps this work. Collect Oren\u2019s initial expedition kit before accepting; no campaign chapter is required.\n\nCheck the field-water catch\nPack the evening produce load\nRegister the named load\n\nDeclared payout: 28 XP \u00b7 12 sunmarks \u00b7 2 ore. First completion also leaves a modest work record at the local bench. Equipment remains your choice.\n\nOptional creatures occupy side ground; the three work objectives have a clear route around them.\n\nReloads retain accepted objectives and claim history. Reopening resumes at your Firstlight checkpoint. Full reward pouches leave completed work ready for retry.\n\nBring useful progress home\n\nUse sunmarks and ore at Oren\u2019s workbench. The item guide compares blade and bow projects with your current equipment before you choose what to pursue.\n\nInspect item & recipe guide\n\nCross to Earth \u00b7 Coastward Road and keep a saved home checkpoint. Local work must be accepted separately.\n\nSave checkpoint & cross\nAll five roads\n\nV exchanges third person and your diorama. R resets the current view. These are opening regions; the distant landscape and later capitals remain beyond the current route.",
+      "seconds": 2.894957800002885
+    },
+    {
+      "name": "Merren first invitation",
+      "text": "Broader Earth foundation \u00b7 provisional local geography\nEarth \u00b7 Coastward Road\n\nA long channel bridge opens onto woodland lanes, working fields and a small roadside settlement. Coastward Road is a provisional extension; Hearthwater and its people retain their existing places and history.\n\nMerren \u00b7 field steward\n\nCheck the water, pack the named load, then register it. I would rather have one dependable evening than a heroic story about ruined cabbages.\n\nReturn to Firstlight: available at any time, free. Reopening or switching characters resumes your saved home checkpoint, retaining accepted work. Crossing makes no allegiance, class or main-story choice.\n\nOPTIONAL LOCAL WORK\nWater, fields and the evening load\n\nMerren \u00b7 field steward keeps this work. Collect Oren\u2019s initial expedition kit before accepting; no campaign chapter is required.\n\nCheck the field-water catch\nWalk to Field-water catch\nPack the evening produce load\nWalk to The evening produce load\nRegister the named load\nWalk to Roadside delivery register\n\nDeclared payout: 28 XP \u00b7 12 sunmarks \u00b7 2 ore. First completion also leaves a modest work record at the local bench. Equipment remains your choice.\n\nOptional creatures occupy side ground; the three work objectives have a clear route around them.\n\nAccept this local outing\n\nReloads retain accepted objectives and claim history. Reopening resumes at your Firstlight checkpoint. Full reward pouches leave completed work ready for retry.\n\nBring useful progress home\n\nUse sunmarks and ore at Oren\u2019s workbench. The item guide compares blade and bow projects with your current equipment before you choose what to pursue.\n\nInspect item & recipe guide\nLocal map\nReturn to Firstlight\nAll five roads\n\nV exchanges third person and your diorama. R resets the current view. These are opening regions; the distant landscape and later capitals remain beyond the current route.",
+      "seconds": 60.709497000003466
+    },
+    {
+      "name": "Objective first",
+      "text": "Broader Earth foundation \u00b7 provisional local geography\nEarth \u00b7 Coastward Road\n\nA long channel bridge opens onto woodland lanes, working fields and a small roadside settlement. Coastward Road is a provisional extension; Hearthwater and its people retain their existing places and history.\n\nField-water catch\n\nCheck the catch and record the working field-water gauge.\n\nReturn to Firstlight: available at any time, free. Reopening or switching characters resumes your saved home checkpoint, retaining accepted work. Crossing makes no allegiance, class or main-story choice.\n\nOPTIONAL LOCAL WORK\nWater, fields and the evening load\n\nMerren \u00b7 field steward keeps this work. Collect Oren\u2019s initial expedition kit before accepting; no campaign chapter is required.\n\nCheck the field-water catch\nRecord for run 1\nPack the evening produce load\nWalk to The evening produce load\nRegister the named load\nWalk to Roadside delivery register\n\nDeclared payout: 28 XP \u00b7 12 sunmarks \u00b7 2 ore. First completion also leaves a modest work record at the local bench. Equipment remains your choice.\n\nOptional creatures occupy side ground; the three work objectives have a clear route around them.\n\nWalk to the work giver\n\nReloads retain accepted objectives and claim history. Reopening resumes at your Firstlight checkpoint. Full reward pouches leave completed work ready for retry.\n\nBring useful progress home\n\nUse sunmarks and ore at Oren\u2019s workbench. The item guide compares blade and bow projects with your current equipment before you choose what to pursue.\n\nInspect item & recipe guide\nLocal map\nReturn to Firstlight\nAll five roads\n\nV exchanges third person and your diorama. R resets the current view. These are opening regions; the distant landscape and later capitals remain beyond the current route.",
+      "seconds": 70.0432054999983
+    },
+    {
+      "name": "Objective second",
+      "text": "Broader Earth foundation \u00b7 provisional local geography\nEarth \u00b7 Coastward Road\n\nA long channel bridge opens onto woodland lanes, working fields and a small roadside settlement. Coastward Road is a provisional extension; Hearthwater and its people retain their existing places and history.\n\nThe evening produce load\n\nPack the declared roadside produce load.\n\nReturn to Firstlight: available at any time, free. Reopening or switching characters resumes your saved home checkpoint, retaining accepted work. Crossing makes no allegiance, class or main-story choice.\n\nOPTIONAL LOCAL WORK\nWater, fields and the evening load\n\nMerren \u00b7 field steward keeps this work. Collect Oren\u2019s initial expedition kit before accepting; no campaign chapter is required.\n\nCheck the field-water catch\nWalk to Field-water catch\nPack the evening produce load\nRecord for run 1\nRegister the named load\nWalk to Roadside delivery register\n\nDeclared payout: 28 XP \u00b7 12 sunmarks \u00b7 2 ore. First completion also leaves a modest work record at the local bench. Equipment remains your choice.\n\nOptional creatures occupy side ground; the three work objectives have a clear route around them.\n\nWalk to the work giver\n\nReloads retain accepted objectives and claim history. Reopening resumes at your Firstlight checkpoint. Full reward pouches leave completed work ready for retry.\n\nBring useful progress home\n\nUse sunmarks and ore at Oren\u2019s workbench. The item guide compares blade and bow projects with your current equipment before you choose what to pursue.\n\nInspect item & recipe guide\nLocal map\nReturn to Firstlight\nAll five roads\n\nV exchanges third person and your diorama. R resets the current view. These are opening regions; the distant landscape and later capitals remain beyond the current route.",
+      "seconds": 81.51710630000161
+    },
+    {
+      "name": "Objective third",
+      "text": "Broader Earth foundation \u00b7 provisional local geography\nEarth \u00b7 Coastward Road\n\nA long channel bridge opens onto woodland lanes, working fields and a small roadside settlement. Coastward Road is a provisional extension; Hearthwater and its people retain their existing places and history.\n\nRoadside delivery register\n\nEnter the named load and its field-water check in the local register.\n\nReturn to Firstlight: available at any time, free. Reopening or switching characters resumes your saved home checkpoint, retaining accepted work. Crossing makes no allegiance, class or main-story choice.\n\nOPTIONAL LOCAL WORK\nWater, fields and the evening load\n\nMerren \u00b7 field steward keeps this work. Collect Oren\u2019s initial expedition kit before accepting; no campaign chapter is required.\n\nCheck the field-water catch\nWalk to Field-water catch\nPack the evening produce load\nWalk to The evening produce load\nRegister the named load\nRecord for run 1\n\nDeclared payout: 28 XP \u00b7 12 sunmarks \u00b7 2 ore. First completion also leaves a modest work record at the local bench. Equipment remains your choice.\n\nOptional creatures occupy side ground; the three work objectives have a clear route around them.\n\nWalk to the work giver\n\nReloads retain accepted objectives and claim history. Reopening resumes at your Firstlight checkpoint. Full reward pouches leave completed work ready for retry.\n\nBring useful progress home\n\nUse sunmarks and ore at Oren\u2019s workbench. The item guide compares blade and bow projects with your current equipment before you choose what to pursue.\n\nInspect item & recipe guide\nLocal map\nReturn to Firstlight\nAll five roads\n\nV exchanges third person and your diorama. R resets the current view. These are opening regions; the distant landscape and later capitals remain beyond the current route.",
+      "seconds": 88.82916039999691
+    },
+    {
+      "name": "Completed run ready for deliberate turn-in",
+      "text": "Broader Earth foundation \u00b7 provisional local geography\nEarth \u00b7 Coastward Road\n\nA long channel bridge opens onto woodland lanes, working fields and a small roadside settlement. Coastward Road is a provisional extension; Hearthwater and its people retain their existing places and history.\n\nMerren \u00b7 field steward\n\nCheck the water, pack the named load, then register it. I would rather have one dependable evening than a heroic story about ruined cabbages.\n\nReturn to Firstlight: available at any time, free. Reopening or switching characters resumes your saved home checkpoint, retaining accepted work. Crossing makes no allegiance, class or main-story choice.\n\nOPTIONAL LOCAL WORK\nWater, fields and the evening load\n\nMerren \u00b7 field steward keeps this work. Collect Oren\u2019s initial expedition kit before accepting; no campaign chapter is required.\n\nCheck the field-water catch\nWalk to Field-water catch\nPack the evening produce load\nWalk to The evening produce load\nRegister the named load\nWalk to Roadside delivery register\n\nDeclared payout: 28 XP \u00b7 12 sunmarks \u00b7 2 ore. First completion also leaves a modest work record at the local bench. Equipment remains your choice.\n\nOptional creatures occupy side ground; the three work objectives have a clear route around them.\n\nTurn in completed run 1\n\nReloads retain accepted objectives and claim history. Reopening resumes at your Firstlight checkpoint. Full reward pouches leave completed work ready for retry.\n\nBring useful progress home\n\nUse sunmarks and ore at Oren\u2019s workbench. The item guide compares blade and bow projects with your current equipment before you choose what to pursue.\n\nInspect item & recipe guide\nLocal map\nReturn to Firstlight\nAll five roads\n\nV exchanges third person and your diorama. R resets the current view. These are opening regions; the distant landscape and later capitals remain beyond the current route.",
+      "seconds": 93.75487859999703
+    },
+    {
+      "name": "Earned balances and retained trail blade/travel coat",
+      "text": "LEVEL 1 \u00b7 UNASSIGNED PATH\nVisitor\n\u21bb\nWEAPON\nTrail blade\nARMOR\nTravel coat\nCHARM\nEmpty slot\n16\nAttack\n1\nGuard\n100\nMax health\n28\nExperience\n\nThree real slots. More equipment types come with their gameplay, not empty promises.\n\nInventory\n12 sunmarks\nAll\nGear\nMaterials\nGems\nTrail blade\nEQUIPPED\nTravel coat\nEQUIPPED\nCopper ore\n2\nSunberry seeds\n4\nTrail tonic\n3\n\nSelect an item to inspect and compare. No items are destroyed by this screen.\n\nCOMMON\nTrail blade\n\nA dependable blade from Oren\u2019s workshop.\n\nAttack\n16 \u2192 16 \u2014\nGuard\n1 \u2192 1 \u2014\nMax health\n100 \u2192 100 \u2014\nEquipped\n\nRiver fittings: 0/2 \u00b7 +0 attack. Oren temper: +0.\n\nInspect equipment project\n\u25c6 Weapon socket\n\nEmpty. A fitted gem applies only while this weapon is equipped.\n\nFit or reclaim\nEmpty \u00b7 reclaim fitted gem\nEmber ruby \u00b7 0 loose\nPearl moonstone \u00b7 0 loose\nWildwood amber \u00b7 0 loose\nVisit a workbench to socket",
+      "seconds": 95.78485759999603
+    },
+    {
+      "name": "Merren recognizes this paid outing",
+      "text": "Broader Earth foundation \u00b7 provisional local geography\nEarth \u00b7 Coastward Road\n\nA long channel bridge opens onto woodland lanes, working fields and a small roadside settlement. Coastward Road is a provisional extension; Hearthwater and its people retain their existing places and history.\n\nMerren \u00b7 field steward\n\nThe local field-water check, produce packing and delivery record are complete. Merren can account for this evening\u2019s work; the older Hearthwater delivery keeps its own history.\n\nReturn to Firstlight: available at any time, free. Reopening or switching characters resumes your saved home checkpoint, retaining accepted work. Crossing makes no allegiance, class or main-story choice.\n\nFIRST OUTING COMPLETE \u00b7 REPEAT WORK AVAILABLE\nWater, fields and the evening load\n\nMerren \u00b7 field steward keeps this work. Collect Oren\u2019s initial expedition kit before accepting; no campaign chapter is required.\n\nCheck the field-water catch\nWalk to Field-water catch\nPack the evening produce load\nWalk to The evening produce load\nRegister the named load\nWalk to Roadside delivery register\n\nDeclared payout: 5 XP \u00b7 2 sunmarks. An intentional new accepted survey pays this smaller reward once. Equipment remains your choice.\n\nOptional creatures occupy side ground; the three work objectives have a clear route around them.\n\nAccept a new repeat survey\n\nReloads retain accepted objectives and claim history. Reopening resumes at your Firstlight checkpoint. Full reward pouches leave completed work ready for retry.\n\nBring useful progress home\n\nUse sunmarks and ore at Oren\u2019s workbench. The item guide compares blade and bow projects with your current equipment before you choose what to pursue.\n\nInspect item & recipe guide\nLocal map\nReturn to Firstlight\nAll five roads\n\nV exchanges third person and your diorama. R resets the current view. These are opening regions; the distant landscape and later capitals remain beyond the current route.",
+      "seconds": 96.6768305000005
+    },
+    {
+      "name": "Read existing copper_blade costs and comparison; no craft",
+      "text": "AN UPGRADE WORTH HUNTING\nA project of your own.\n\nGather, make and improve without advancing the main campaign.\n\nCHOOSE ONE PROJECT\nChoose an equipment project\n\nInspect a weapon\u2019s real source, costs and effects in the field guide.\n\nAshwood trail bow\nLocal recipe\nCopper-limbed longbow\nLocal recipe\nOren\u2019s riversteel blade\nOnce-only source\nOren\u2019s reedbound bow\nOnce-only source\nTrail blade\nOwned \u00b7 0/2 fittings\nCopper-edged blade\nLocal recipe\nDawn\u2019s edge\nOnce-only source\nBLADE \u00b7 SOURCE GUIDE\nCopper-edged blade\n\nForged from four copper ore and four sunmarks.\n\nForge at an outdoor workbench\n\nPin this project\nNEXT REAL STEP\nCopper-edged blade\nAfter this step, if equipped \u00b7 at your current XP\nEffect\tEquipped now\tAfter step\nAttack\t16\t23\nGuard\t1\t1\nMax health\t100\t100\nStrike cooldown\t0.52s\t0.52s\nReach\t2.65\t2.65\nStamina / strike\t0\t0\nSocket\tEmpty\tEmpty\n\nMaterials \u00b7 have / required\n\nCopper ore\n2 / 4\nSunmarks\n12 / 4\nCraft Copper-edged blade\n\nGather the missing materials below. Costs are spent together only on success. Existing weapons are kept. New equipment is never auto-equipped.\n\nUse the materials survey below for copper, sunmarks and fibre.\n\nTwo fittings per weapon, +2 attack each. Cadence, range, stamina, health and socket stay intact. Oren\u2019s separate temper on this weapon: none.\n\nREPEATABLE \u00b7 INITIAL KIT ONLY\nRiverbank materials survey\n\nClear the Bankroot and Reedback skitters, and record the copper gravel and reed-fibre samples. Start at the sign east of Oren. Return to the workshop to collect your materials.\n\n3 copper \u00b7 4 sunmarks \u00b7 2 fibre\nEvery completed survey \u00b7 0 XP \u00b7 no individual caches\n\nDanger: two ordinary skitters. Reedback marks its strike for 1.1 seconds, then recovers for 1.6. Brace or move clear; retreat south to practice or leave.\n\nAccept next materials survey\n\n0 paid surveys. A new run starts only when you accept it. Oren\u2019s supply quest and unique rewards stay once-only.",
+      "seconds": 121.81774199999927
+    },
+    {
+      "name": "Read existing trail_bow costs and comparison; no craft",
+      "text": "AN UPGRADE WORTH HUNTING\nA project of your own.\n\nGather, make and improve without advancing the main campaign.\n\nCHOOSE ONE PROJECT\nChoose an equipment project\n\nInspect a weapon\u2019s real source, costs and effects in the field guide.\n\nAshwood trail bow\nLocal recipe\nCopper-limbed longbow\nLocal recipe\nOren\u2019s riversteel blade\nOnce-only source\nOren\u2019s reedbound bow\nOnce-only source\nTrail blade\nOwned \u00b7 0/2 fittings\nCopper-edged blade\nLocal recipe\nDawn\u2019s edge\nOnce-only source\nBOW \u00b7 SOURCE GUIDE\nAshwood trail bow\n\nA nimble bow. Arrows travel, miss moving targets, and stop at stone. No ammunition grind.\n\nCraft at an outdoor workbench\n\nPin this project\nNEXT REAL STEP\nAshwood trail bow\nAfter this step, if equipped \u00b7 at your current XP\nEffect\tEquipped now\tAfter step\nAttack\t16\t13\nGuard\t1\t1\nMax health\t100\t100\nStrike cooldown\t0.52s\t0.75s\nReach\t2.65\t11\nStamina / strike\t0\t6\nSocket\tEmpty\tEmpty\n\nIf equipped after this step, Ashwood trail bow has less attack than your current loadout. Compare reach, cadence, stamina and socket before switching. Enemies and rewards do not scale to your gear.\n\nInspect fittings for Trail blade\n\nMaterials \u00b7 have / required\n\nTimber\n0 / 6\nMeadow fibre\n0 / 4\nStone\n0 / 2\nCraft Ashwood trail bow\n\nGather the missing materials below. Costs are spent together only on success. Existing weapons are kept. New equipment is never auto-equipped.\n\nFind TimberFind Meadow fibreFind Stone\n\nUse the materials survey below for copper, sunmarks and fibre.\n\nTwo fittings per weapon, +2 attack each. Cadence, range, stamina, health and socket stay intact. Oren\u2019s separate temper on this weapon: none.\n\nREPEATABLE \u00b7 INITIAL KIT ONLY\nRiverbank materials survey\n\nClear the Bankroot and Reedback skitters, and record the copper gravel and reed-fibre samples. Start at the sign east of Oren. Return to the workshop to collect your materials.\n\n3 copper \u00b7 4 sunmarks \u00b7 2 fibre\nEvery completed survey \u00b7 0 XP \u00b7 no individual caches\n\nDanger: two ordinary skitters. Reedback marks its strike for 1.1 seconds, then recovers for 1.6. Brace or move clear; retreat south to practice or leave.\n\nAccept next materials survey\n\n0 paid surveys. A new run starts only when you accept it. Oren\u2019s supply quest and unique rewards stay once-only.",
+      "seconds": 122.68448609999905
+    }
+  ],
+  "browser_errors": [],
+  "external_requests": [],
+  "human_acceptance": false,
+  "sustained_performance_qualification": false,
+  "workspace_pause": "Production RPG panels pause; outdoor walking uses ordinary RAF",
+  "origin": "http://127.0.0.1:57613",
+  "browser": "143.0.7499.4",
+  "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "work_art_before": [
+    {
+      "kind": "box",
+      "p": [
+        -18,
+        2.6100000000000003,
+        -46
+      ],
+      "s": [
+        0.12,
+        0.42,
+        1.5
+      ],
+      "c": 9927508,
+      "cameraSolid": false,
+      "cutaway": false,
+      "rough": 0.92,
+      "solidId": "field-sluice",
+      "r": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "kind": "round",
+      "p": [
+        16.3,
+        3.12,
+        -54
+      ],
+      "s": [
+        0.58,
+        0.3,
+        0.5
+      ],
+      "c": 13285749,
+      "cameraSolid": false,
+      "cutaway": false,
+      "rough": 0.92,
+      "solidId": "produce-load"
+    },
+    {
+      "kind": "round",
+      "p": [
+        17,
+        3.12,
+        -54
+      ],
+      "s": [
+        0.58,
+        0.3,
+        0.5
+      ],
+      "c": 13285749,
+      "cameraSolid": false,
+      "cutaway": false,
+      "rough": 0.92,
+      "solidId": "produce-load"
+    },
+    {
+      "kind": "round",
+      "p": [
+        17.7,
+        3.12,
+        -54
+      ],
+      "s": [
+        0.58,
+        0.3,
+        0.5
+      ],
+      "c": 13285749,
+      "cameraSolid": false,
+      "cutaway": false,
+      "rough": 0.92,
+      "solidId": "produce-load"
+    }
+  ],
+  "actual_reward_delta": {
+    "xp": 28,
+    "coins": 12,
+    "ore": 2
+  },
+  "paid_persistence": {
+    "mode": "legacy",
+    "revision": null,
+    "active": null,
+    "balances": {
+      "xp": 28,
+      "coins": 12,
+      "ore": 2
+    },
+    "journey": {
+      "counter": 1,
+      "lastClaim": 1,
+      "firstClaimed": true,
+      "active": null,
+      "defeated": []
+    },
+    "method": "Read actual localStorage record after production explicit claim; no reload"
+  },
+  "work_art_after": [
+    {
+      "kind": "box",
+      "p": [
+        -18,
+        2.6100000000000003,
+        -46
+      ],
+      "s": [
+        0.12,
+        0.42,
+        1.5
+      ],
+      "c": 9927508,
+      "cameraSolid": false,
+      "cutaway": false,
+      "rough": 0.92,
+      "solidId": "field-sluice",
+      "r": [
+        0,
+        0,
+        0.3
+      ]
+    },
+    {
+      "kind": "round",
+      "p": [
+        16.3,
+        3.12,
+        -54
+      ],
+      "s": [
+        0.58,
+        0.3,
+        0.5
+      ],
+      "c": 13219211,
+      "cameraSolid": false,
+      "cutaway": false,
+      "rough": 0.92,
+      "solidId": "produce-load"
+    },
+    {
+      "kind": "round",
+      "p": [
+        17,
+        3.12,
+        -54
+      ],
+      "s": [
+        0.58,
+        0.3,
+        0.5
+      ],
+      "c": 13219211,
+      "cameraSolid": false,
+      "cutaway": false,
+      "rough": 0.92,
+      "solidId": "produce-load"
+    },
+    {
+      "kind": "round",
+      "p": [
+        17.7,
+        3.12,
+        -54
+      ],
+      "s": [
+        0.58,
+        0.3,
+        0.5
+      ],
+      "c": 13219211,
+      "cameraSolid": false,
+      "cutaway": false,
+      "rough": 0.92,
+      "solidId": "produce-load"
+    }
+  ],
+  "canonical_ownership_preserved": true,
+  "active_simulation_seconds": 109.67930000001229,
+  "normal_time_seconds": 123.59387919999426,
+  "raf_observer": {
+    "frames": 7353,
+    "first": 111.8,
+    "last": 123256.9
+  },
+  "status": "passed",
+  "video_path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\a9c1a807abc53998c9284dc932a0341b.webm"
+}
