@@ -55,3 +55,10 @@ test('clearance sees opted-in dynamic construction and keeps actor batches out',
  assert.ok(e.clearCameraDistance([0,2,0],[0,2,8])<3.9);
  e.dynamic=[{items:[{p:[0,2,1],s:[.5,1.5,.5]}]}];near(e.clearCameraDistance([0,2,0],[0,2,8]),8);
 });
+test('explicit realm walls keep camera clearance below the legacy floor cutoff',()=>{
+ const wall={p:[8,-1.1,-37.38],s:[7,3.2,.24],cameraSolid:true,worldSolid:true};
+ const bounds=solidBounds('box',wall);assert.ok(bounds);near(bounds.min[1],-2.7);near(bounds.max[1],.5);
+ const e=camera(0);e.cameraSolids=[bounds];e.dynamic=[];
+ assert.ok(e.clearCameraDistance([8,-1.2,-34],[8,-1.2,-40])<3.1,'underwater wall limits the actual camera ray');
+ assert.equal(solidBounds('box',{...wall,worldSolid:false}),null,'legacy low decoration keeps its existing contract');
+});

@@ -18,6 +18,17 @@ function walk(parts,distance=1.08,duration=.36){
 test('CommonJS and browser globals expose the same bounded rig API',()=>{
  assert.equal(global.RealmTravelerArt,T);assert.deepEqual(Object.keys(T),['motion','pose','draw']);
 });
+test('gallery stroke keeps limbs connected and reduced motion settles the arms',()=>{
+ const poses=[T.pose({swimming:true,time:0,blend:1,phase:1}),T.pose({swimming:true,time:1,blend:1,phase:2})];
+ assert.notDeepEqual(poses[0].joints.leftHand,poses[1].joints.leftHand);
+ for(const p of poses)for(const side of ['left','right']){
+  close(Math.hypot(...p.joints[side+'Elbow'].map((v,i)=>v-p.joints[side+'Shoulder'][i])),.305,1e-6);
+  close(Math.hypot(...p.joints[side+'Hand'].map((v,i)=>v-p.joints[side+'Elbow'][i])),.285,1e-6);
+  assert.ok(Object.values(p.joints).flat().every(Number.isFinite));
+ }
+ const a=T.pose({swimming:true,reducedMotion:true,time:0}),b=T.pose({swimming:true,reducedMotion:true,time:100});
+ assert.deepEqual(a.joints,b.joints);assert.equal(a.combatScene,false);
+});
 test('gait phase follows accepted distance and survives frame subdivision',()=>{
  const coarse=walk(6),fine=walk(36);
  close(coarse.phase,fine.phase,1e-12);close(coarse.blend,fine.blend,1e-12);
