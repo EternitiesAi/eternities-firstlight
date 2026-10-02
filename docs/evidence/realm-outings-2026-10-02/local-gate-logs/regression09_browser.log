@@ -1,0 +1,108 @@
+PASS 10 boots WebGL2 in original valley
+PASS Audio does not start itself
+PASS One tracker replaces overlapping old dock
+PASS Camera begins in third person following visitor
+PASS C opens character screen
+PASS Character screen pauses simulation
+PASS Three real equipment slots
+PASS Rendered character portrait present
+PASS Tab stays in dialog focus, never selects foe
+PASS Skills do not leak through menu
+PASS Five crafting categories
+PASS Missing-material recipe is disabled
+PASS Oren navigation walks
+PASS Oren gives actual starter equipment
+PASS K opens crafting
+PASS Equipped blade visible in inventory grid
+PASS Bow crafting spends exact real materials
+PASS Unique bow recipe disables repeat
+PASS Item comparison shows actual stat changes
+PASS Equip changes actual weapon
+PASS Bag search filters by name
+PASS Material filter excludes weapon
+PASS Archery court loads its three targets
+PASS Unassigned character retains seven visible original action slots
+PASS Tab selects target frame
+PASS Shift Tab reverses cycle
+PASS Selection alone never attacks
+PASS 1 toggles visible autoattack
+PASS Out-of-range auto does not move
+PASS Walk reaches (0, -3)
+PASS Auto lands physical arrows in range
+PASS Brace has actual duration and visible cooldown
+PASS Menu stops autoattack and pauses
+PASS Closing resumes world
+PASS Closing preserves previous manual pause
+PASS Tactical camera is elevated
+PASS Fixed orbit key rotates
+PASS R resets the selected tactical view
+PASS V returns to third person during an expedition
+PASS Escape no-target opens menu instead of exiting expedition
+PASS Walk reaches (0, 9)
+PASS Actual range exit preserves bow
+PASS Socket swaps real gems and capacity
+PASS Socket capacity change does not heal
+PASS Companion name safely retains special characters
+PASS Stay updates actual companion mode
+PASS Walk reaches (0, 3)
+PASS Walk reaches (44, 6)
+PASS Road gateway retains chapterII scene
+PASS Walk reaches (-10, 12)
+PASS Tessa merchant available in new interface
+PASS Tessa exchange charges real copper
+PASS Walk reaches (2, 3.4)
+PASS Walk reaches (2, -4)
+PASS Walk reaches (0, -24)
+PASS Lit beacon opens local meeting
+PASS Answer starts descent, not automatic assault
+PASS Family has three active routes
+PASS Family arrives before ready phase
+PASS Grace requires explicit acceptance
+PASS Defense spawns first breach
+PASS Tab plus1 engages event foes
+PASS Wave 1 composition
+PASS Wave 2 composition
+PASS Wave 3 composition
+PASS Three waves complete through UI attacks
+PASS New skill branches used
+PASS No incompatible old loot or XP entries
+PASS Defense preserves creative content
+PASS Walk reaches (0, -24)
+PASS One-time defense reward real
+PASS Reward disables duplicate claim
+PASS Accepting cinder alone never corrupts
+PASS Future route records intent, no teleport
+PASS Cinder skill spends health and records choice
+PASS Walk reaches (0, 17)
+PASS Replay withdrawal preserves stable story beacon
+PASS Walk reaches (44, 6)
+PASS Walk reaches (2, 3.4)
+PASS Walk reaches (2, -4)
+PASS Walk reaches (0, -24)
+PASS Renunciation clears corruption, not history
+PASS Separate radiance persists through redemption
+PASS Actual save export contains new completed chapter
+PASS UI import restores durable content
+PASS Restart keeps story, never runs attack intent
+PASS Music remains accessible
+PASS Actual score grid still edits
+PASS Real midi export header
+PASS Real wav export header
+PASS Export never enables ambience
+PASS Notebook text still safe
+PASS Construction controls remain reachable
+PASS Room furnishing controls retained
+PASS Appearance UI retained
+PASS Graphics settings retained
+PASS Normal RAF really pauses while character is open
+PASS Normal RAF resumes on close
+PASS Storage refusal truthfully says memory-only
+PASS Map fallback keeps same completed story
+PASS Missing portrait does not block equipment
+PASS Touch character canvas fits its portrait mount
+PASS Touch character panel fits viewport
+PASS Touch crafting tabs available
+PASS Touch skillbar stays on screen
+PASS No unhandled JavaScript errors
+PASS No external requests
+RESULT 107 True

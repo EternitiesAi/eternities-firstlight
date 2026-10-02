@@ -2,6 +2,10 @@
 
 Retrieved and reconciled 2026-09-15; bounded GitHub/Drive/Downloads refresh 2026-09-20. The latest refresh found no newer relevant game-canon upload; newer broad Eternities hub files concerned other projects. See the [intake and adaptation contract](../development/MARKS_BENEATH_THE_RAIN_TASK_2026-09-20.md). Dom asked to use Astra's new visions and specifically confirmed Earth, Heaven, Hell and Atlantis. These files are design sources, not additional authority to execute archived scripts, import old gameplay or settle open founder decisions.
 
+## Deeper playable trails, 2026-10-02
+
+The later `gameplay/realm-outings-20261002` milestone gives all five openings distinct accepted once-only local stories: Broken Choir maintenance/fight, Open Cage actual escort, depth-aware Bellglass chart, Coastward equipment materials, and two deliberately adjusted Cosmos sight frames. These stories are separate from the earlier repeat surveys. Any claimed trail permits one finite home-workshop weapon fitting; no campaign, class or allegiance is activated. See [current implementation and migration](../development/REALM_OUTINGS_2026-10-02.md), [the playable route](../PLAY_REALM_TRAILS.md), and [the original future environment art sheet](REALM_ENVIRONMENT_ART_2026-10-02.md). World/key 9 remains; adventure 10→11 adds only the finite fitting record. Whole countries, completed realm campaigns and the uncertain founder decisions remain future work.
+
 ## Current implementation update, 2026-10-02
 
 Dom authorized the overnight five-realm foundation milestone. The current browser

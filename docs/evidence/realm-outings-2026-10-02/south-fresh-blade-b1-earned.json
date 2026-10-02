@@ -1,0 +1,814 @@
+{
+  "status": "passed",
+  "variant": "fresh-blade",
+  "method": "accepted production commands, actual Core paths and full-body World swimming; accelerated ticks, in-memory saver",
+  "humanPacing": false,
+  "browserPersistence": false,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "manualDamage": 0,
+  "plantedDefeats": 0,
+  "claims": [
+    {
+      "quest": "earthlands-coastward-materials-v1",
+      "reward": {
+        "xp": 25,
+        "coins": 10,
+        "ore": 0,
+        "materials": {
+          "wood": 6,
+          "fiber": 4,
+          "stone": 2
+        }
+      }
+    },
+    {
+      "quest": "atlantis-bellglass-chart-v1",
+      "reward": {
+        "xp": 30,
+        "coins": 12,
+        "ore": 2
+      }
+    }
+  ],
+  "swims": [
+    {
+      "target": [
+        8,
+        -0.5,
+        -19.5
+      ],
+      "frames": 0,
+      "body": "air"
+    },
+    {
+      "target": [
+        8,
+        -1.05,
+        -22
+      ],
+      "frames": 20,
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -2.55,
+        -28
+      ],
+      "frames": 47,
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -2.7,
+        -29.5
+      ],
+      "frames": 12,
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -2.7,
+        -32
+      ],
+      "frames": 20,
+      "body": "air"
+    },
+    {
+      "target": [
+        8,
+        -2.7,
+        -35
+      ],
+      "frames": 23,
+      "body": "air"
+    },
+    {
+      "target": [
+        8,
+        -2.7,
+        -32
+      ],
+      "frames": 23,
+      "body": "air"
+    },
+    {
+      "target": [
+        8,
+        -2.7,
+        -29.5
+      ],
+      "frames": 20,
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -1.8,
+        -29
+      ],
+      "frames": 7,
+      "body": "water"
+    },
+    {
+      "target": [
+        12,
+        -1.8,
+        -29
+      ],
+      "frames": 31,
+      "body": "water"
+    },
+    {
+      "target": [
+        12,
+        -1.4,
+        -38.4
+      ],
+      "frames": 73,
+      "body": "water"
+    },
+    {
+      "target": [
+        12,
+        -1.4,
+        -39.3
+      ],
+      "frames": 7,
+      "body": "water"
+    }
+  ],
+  "walkedLegs": 36,
+  "saveCount": 24,
+  "canonicalPreservation": true,
+  "htmlSha256": "b1ea59a19c9be1b784f1a85bfe1bb5ea8f1ed1b880b1c805b92b339f80bf9325",
+  "sourceSha256": {
+    "src/adventure.js": "dc40531e41d5195da81377747feb843d320a5a39c71935f73b29ed51138d3015",
+    "src/arsenal.js": "1a8fcedd261165900d04f366ffedb08457c4f3a724befe28b8ec1b35c3ae9163",
+    "src/beacon.js": "2aded7272a8d50cbfbdb4421f0140d00401a49788a3bb465260e30f501a2bf13",
+    "src/classes.js": "15da8e8f26c234a5903e5321d9cbcadea773037c9536911a5dc85cb9da2aaa97",
+    "src/combat.js": "1f53c2ee7bdeb54fec2cb9ecc1a0769fa4d90df97babdbe545d847f767d0fd23",
+    "src/core.js": "b700bd1da555f2882fc76f2cc0f73aad6b5d7184b734ea88e37306ebb2c4f09e",
+    "src/cosmos.js": "dc646ba254ad4c482685c58d342e50c696832f479c8a13526faeed089fe4d3c5",
+    "src/creative.js": "8df100a6c4097bc7d26e99633eaeba4729274947195ee01211b675db08c99df6",
+    "src/crossing.js": "b666c4e6e20483ad267293578020876c8791bbbf23f8116803936658400d1a8f",
+    "src/earth-notes.js": "4ab5807020f65086b190591414c871ee76412791ac0c97dca5447c595840e9e0",
+    "src/earth-story.js": "fd0ced6f17f1b15b2aee4e31aa00be249bc8e1fb08c4e735416d95c173fd52d0",
+    "src/earth.js": "1623be8382f2d05dbf16cac886951752e6d193dafd97353c4df29ecd21fa3735",
+    "src/gathering.js": "256a33c52f2b31c2c421f72a74aae543feb6c554ebae863aee55d31f0c68eb54",
+    "src/pursuit.js": "b77e1874f8278971f41d4b62551df40c81126f2a35e02958958e802ab9c8b5ff",
+    "src/realm-craft.js": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+    "src/realm-trails-cosmos.js": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+    "src/realm-trails-north.js": "4e0fc692cee329ab259230685b3b8ce068e6dc1cc7dd287b67143d2460859e6f",
+    "src/realm-trails-south.js": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+    "src/realm-trails.js": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+    "src/road.js": "d18106f1a2147d623680b285dc5882cae8d2b74c5ef8b500d75de35d20c86dbc",
+    "src/sandbox.js": "ad11196c12363b650f2697ab8fb30eb657ff0bf65953274942ce36eb28131e85",
+    "src/starter.js": "353f2e54b48cec87f87e19ae3c2219debc40cfb2754c2a88b4746748164231bf",
+    "src/world-atlantis-earth.js": "9b5bbefe0da2177b6c1cff08837632bdfa9f6b87fd2ca285f23a209107564ce0",
+    "src/world-foundations.js": "97f445690fccea753c860e96bf54d4e33a3c8551e8738a31d3d947ce30d1465d",
+    "src/world-heaven-hell.js": "7192efdcce877e359865c43d39d03fc1a2a54ebad960fd2d2a378880033f4cbd",
+    "tests/realm_trails_journey.cjs": "dfb80cecd9ba2d1ec22d93cd1aface73cd65fbdab1aff923674944970a865727",
+    "tests/realm_trails_south_journey.cjs": "350604432271b88ae6f8737f9eab1a875ed785df3c42c1a74a1086ec61e132bb"
+  },
+  "harnessSha256": "350604432271b88ae6f8737f9eab1a875ed785df3c42c1a74a1086ec61e132bb",
+  "events": [
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-1",
+      "type": "start",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Expedition ready · Blade, lantern, tonics and a trail salve."
+      }
+    },
+    {
+      "owner": "travel",
+      "enter": "earthlands"
+    },
+    {
+      "owner": "trail",
+      "type": "accept",
+      "quest": "earthlands-coastward-materials-v1",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Wood, Reed and a Road Home accepted. Read the route, danger and fixed reward."
+      }
+    },
+    {
+      "owner": "reload",
+      "realm": "earthlands"
+    },
+    {
+      "owner": "travel",
+      "enter": "earthlands"
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "earthlands-coastward-materials-v1",
+      "payload": {
+        "step": "fallen-bough"
+      },
+      "result": {
+        "ok": true,
+        "text": "Follow the north side of the coppice spur to the loose fallen bough. Trim and tie the sound pieces for Vessa’s order. The standing woodland trees and the existing homestead resource nodes are untouched; these pieces belong to the accepted job until its claim."
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "earthlands-coastward-materials-v1",
+      "payload": {
+        "step": "shore-reeds"
+      },
+      "result": {
+        "ok": true,
+        "text": "On the supported shore overlook, gather the marked cut reeds and tie them above the damp ground. Keep the living bank cover in place. This finite bundle is an ordinary meadow-fibre supply, not a new currency or an unlimited harvest."
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "earthlands-coastward-materials-v1",
+      "payload": {
+        "step": "shore-stone"
+      },
+      "result": {
+        "ok": true,
+        "text": "Sort the small loose stones from the marked dry stack. Leave the overlook foundation where it is. These two pieces are for Vessa’s order; Darric’s reserved public stone, the quarry story and all earlier payouts keep their separate ownership."
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "earthlands-coastward-materials-v1",
+      "payload": {
+        "step": "road-pack"
+      },
+      "result": {
+        "ok": true,
+        "text": "Return by the east woodland road and the physical timber bridge. Tie the three prepared supplies into one load at the arrival bank, then speak to Vessa nearby. Packing records the completed job; the declared materials enter your ordinary inventory only when its once-only claim succeeds."
+      }
+    },
+    {
+      "owner": "reload",
+      "realm": "earthlands"
+    },
+    {
+      "owner": "travel",
+      "enter": "earthlands"
+    },
+    {
+      "owner": "trail",
+      "type": "claim",
+      "quest": "earthlands-coastward-materials-v1",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Wood, Reed and a Road Home complete · +25 XP · +10 sunmarks · +6 wood · +4 fiber · +2 stone. The declared fee is claimed once.",
+        "reward": {
+          "xp": 25,
+          "coins": 10,
+          "ore": 0,
+          "materials": {
+            "wood": 6,
+            "fiber": 4,
+            "stone": 2
+          }
+        }
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "claim",
+      "quest": "earthlands-coastward-materials-v1",
+      "payload": {
+        "request": "other"
+      },
+      "result": {
+        "ok": true,
+        "duplicate": true,
+        "text": "This trail has already been paid once."
+      }
+    },
+    {
+      "owner": "travel",
+      "freeHome": true
+    },
+    {
+      "owner": "travel",
+      "enter": "atlantis"
+    },
+    {
+      "owner": "trail",
+      "type": "accept",
+      "quest": "atlantis-bellglass-chart-v1",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "A Chart With Room for Depth accepted. Read the route, danger and fixed reward."
+      }
+    },
+    {
+      "owner": "reload",
+      "realm": "atlantis"
+    },
+    {
+      "owner": "travel",
+      "enter": "atlantis"
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "atlantis-bellglass-chart-v1",
+      "payload": {
+        "step": "upper-gauge"
+      },
+      "result": {
+        "ok": true,
+        "text": "The bronze gauge labels a shallower visitor depth. Read it from the water at this level; the public deck overhead is a separate road. Sahra’s instrument records this first depth without taking any material."
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "atlantis-bellglass-chart-v1",
+      "payload": {
+        "step": "lower-masonry"
+      },
+      "result": {
+        "ok": true,
+        "text": "Descend to the older worked-stone mark. Its lower depth differs from the visitor gauge. The old address is still useful history: copy the mark, leave the masonry intact, and carry both readings to Bellglass."
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "atlantis-bellglass-chart-v1",
+      "payload": {
+        "step": "depth-chart",
+        "choice": "depth-layers"
+      },
+      "result": {
+        "ok": true,
+        "text": "The two readings cannot share one flat route line. At the dry court desk, choose a chart that names both depth layers, marks their connection and shows the court’s doorway. You can correct a mistaken choice without spending supplies."
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "atlantis-bellglass-chart-v1",
+      "payload": {
+        "step": "modern-marker"
+      },
+      "result": {
+        "ok": true,
+        "text": "Leave through Bellglass’s open doorway, follow the wet east lane, and place the new marker beside the far landing. It names today’s visitor route; the old lower-road mark remains. Return to Sahra on the dry civic road to claim the declared payment."
+      }
+    },
+    {
+      "owner": "reload",
+      "realm": "atlantis"
+    },
+    {
+      "owner": "travel",
+      "enter": "atlantis"
+    },
+    {
+      "owner": "trail",
+      "type": "claim",
+      "quest": "atlantis-bellglass-chart-v1",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "A Chart With Room for Depth complete · +30 XP · +12 sunmarks · +2 ore. The declared fee is claimed once.",
+        "reward": {
+          "xp": 30,
+          "coins": 12,
+          "ore": 2
+        }
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "claim",
+      "quest": "atlantis-bellglass-chart-v1",
+      "payload": {
+        "request": "other"
+      },
+      "result": {
+        "ok": true,
+        "duplicate": true,
+        "text": "This trail has already been paid once."
+      }
+    },
+    {
+      "owner": "travel",
+      "freeHome": true
+    }
+  ],
+  "routes": [
+    {
+      "room": "valley",
+      "start": {
+        "x": 2.5,
+        "z": 6,
+        "yaw": 0
+      },
+      "x": 11,
+      "z": 9,
+      "frames": 58
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 11,
+        "z": 9,
+        "yaw": 1.385448376799188
+      },
+      "x": 18,
+      "z": 6,
+      "frames": 51
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "x": -7,
+      "z": 97,
+      "frames": 62
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "x": -7,
+      "z": 97,
+      "frames": 62
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -7,
+        "z": 97,
+        "yaw": -2.3561944901923537
+      },
+      "x": 0,
+      "z": 97,
+      "frames": 44
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 97,
+        "yaw": 1.5707963267948966
+      },
+      "x": 0,
+      "z": 92,
+      "frames": 32
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 92,
+        "yaw": 3.141592653589793
+      },
+      "x": 0,
+      "z": 16,
+      "frames": 475
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 16.000000000001265,
+        "yaw": 3.141592653589793
+      },
+      "x": -10,
+      "z": 15,
+      "frames": 63
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -10,
+        "z": 15,
+        "yaw": -1.6704649792861934
+      },
+      "x": -10,
+      "z": -12,
+      "frames": 169
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -10,
+        "z": -12,
+        "yaw": 3.141592653589793
+      },
+      "x": -25,
+      "z": -12,
+      "frames": 94
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -25,
+        "z": -12,
+        "yaw": -1.5707963267948966
+      },
+      "x": -25,
+      "z": -11,
+      "frames": 7
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -25,
+        "z": -11,
+        "yaw": 0
+      },
+      "x": -25,
+      "z": -12,
+      "frames": 7
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -25,
+        "z": -12,
+        "yaw": 3.141592653589793
+      },
+      "x": -10,
+      "z": -12,
+      "frames": 94
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -10,
+        "z": -12,
+        "yaw": 1.5707963267948966
+      },
+      "x": -10,
+      "z": -34,
+      "frames": 138
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -10,
+        "z": -34,
+        "yaw": 3.141592653589793
+      },
+      "x": 1,
+      "z": -35,
+      "frames": 70
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 1,
+        "z": -35,
+        "yaw": 1.6614562139951468
+      },
+      "x": 14,
+      "z": -34,
+      "frames": 82
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 14,
+        "z": -34,
+        "yaw": 1.494024435525129
+      },
+      "x": 14,
+      "z": -19,
+      "frames": 94
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 14,
+        "z": -19,
+        "yaw": 0
+      },
+      "x": 28,
+      "z": -19,
+      "frames": 88
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 28,
+        "z": -19,
+        "yaw": 1.5707963267948966
+      },
+      "x": 28,
+      "z": -16,
+      "frames": 19
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 28,
+        "z": -16,
+        "yaw": 0
+      },
+      "x": 30,
+      "z": -25,
+      "frames": 58
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 30,
+        "z": -25,
+        "yaw": 2.922923707715859
+      },
+      "x": 28,
+      "z": -19,
+      "frames": 40
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 28,
+        "z": -19,
+        "yaw": -0.3217505543966422
+      },
+      "x": 14,
+      "z": -19,
+      "frames": 88
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 14,
+        "z": -19,
+        "yaw": -1.5707963267948966
+      },
+      "x": 14,
+      "z": 15,
+      "frames": 213
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 14,
+        "z": 15,
+        "yaw": 0
+      },
+      "x": 0,
+      "z": 16,
+      "frames": 88
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 16,
+        "yaw": -1.4994888620096185
+      },
+      "x": 0,
+      "z": 92,
+      "frames": 475
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 91.99999999999874,
+        "yaw": 0
+      },
+      "x": 0,
+      "z": 97,
+      "frames": 32
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 97,
+        "yaw": 0
+      },
+      "x": -3,
+      "z": 97,
+      "frames": 19
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -3,
+        "z": 97,
+        "yaw": -1.5707963267948966
+      },
+      "x": -7,
+      "z": 97,
+      "frames": 25
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -7,
+        "z": 97,
+        "yaw": -1.5707963267948966
+      },
+      "x": -7,
+      "z": 97,
+      "frames": 1
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "x": -7,
+      "z": 97,
+      "frames": 62
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "x": 18,
+      "z": 6,
+      "frames": 1
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": 0,
+        "z": 39,
+        "yaw": 3.141592653589793
+      },
+      "x": -5,
+      "z": -10,
+      "frames": 308
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": 0,
+        "z": 39,
+        "yaw": 3.141592653589793
+      },
+      "x": 8,
+      "z": -16,
+      "frames": 358
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": 8,
+        "z": -43,
+        "yaw": 0
+      },
+      "x": -5,
+      "z": -10,
+      "frames": 245
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": 0,
+        "z": 39,
+        "yaw": 3.141592653589793
+      },
+      "x": -5,
+      "z": -10,
+      "frames": 308
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "x": 18,
+      "z": 6,
+      "frames": 1
+    }
+  ]
+}

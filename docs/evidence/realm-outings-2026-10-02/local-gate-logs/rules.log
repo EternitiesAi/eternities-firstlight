@@ -1,0 +1,5150 @@
+TAP version 13
+# Subtest: adventure defaults round trip without equipment or story
+ok 1 - adventure defaults round trip without equipment or story
+  ---
+  duration_ms: 2.3154
+  type: 'test'
+  ...
+# Subtest: v4 migration preserves sandbox, composition, notes, appearance without source mutation
+ok 2 - v4 migration preserves sandbox, composition, notes, appearance without source mutation
+  ---
+  duration_ms: 3.4615
+  type: 'test'
+  ...
+# Subtest: realm05 browser key is copied without overwriting previous save
+ok 3 - realm05 browser key is copied without overwriting previous save
+  ---
+  duration_ms: 1.8177
+  type: 'test'
+  ...
+# Subtest: starter supplies require actual workshop proximity
+ok 4 - starter supplies require actual workshop proximity
+  ---
+  duration_ms: 3.9704
+  type: 'test'
+  ...
+# Subtest: starter kit is one claim and equips owned items
+ok 5 - starter kit is one claim and equips owned items
+  ---
+  duration_ms: 0.4731
+  type: 'test'
+  ...
+# Subtest: retry is idempotent while changed terms under same ID are rejected
+ok 6 - retry is idempotent while changed terms under same ID are rejected
+  ---
+  duration_ms: 0.8011
+  type: 'test'
+  ...
+# Subtest: entry requires supplies, repaired crossing, pickaxe and proximity
+ok 7 - entry requires supplies, repaired crossing, pickaxe and proximity
+  ---
+  duration_ms: 0.4903
+  type: 'test'
+  ...
+# Subtest: interior saves retain safe exterior return position
+ok 8 - interior saves retain safe exterior return position
+  ---
+  duration_ms: 1.113
+  type: 'test'
+  ...
+# Subtest: authored entry, fox and encounter positions are walkable
+ok 9 - authored entry, fox and encounter positions are walkable
+  ---
+  duration_ms: 0.2078
+  type: 'test'
+  ...
+# Subtest: outer walls and NaN cannot be walked through
+ok 10 - outer walls and NaN cannot be walked through
+  ---
+  duration_ms: 0.1849
+  type: 'test'
+  ...
+# Subtest: digging checks scene, tool and reach before mutation
+ok 11 - digging checks scene, tool and reach before mutation
+  ---
+  duration_ms: 1.07
+  type: 'test'
+  ...
+# Subtest: two actual strikes excavate rock and open a path
+ok 12 - two actual strikes excavate rock and open a path
+  ---
+  duration_ms: 6.6935
+  type: 'test'
+  ...
+# Subtest: pick cooldown prevents duplicate immediate strokes
+ok 13 - pick cooldown prevents duplicate immediate strokes
+  ---
+  duration_ms: 4.3832
+  type: 'test'
+  ...
+# Subtest: outer cells refuse excavation
+ok 14 - outer cells refuse excavation
+  ---
+  duration_ms: 0.291
+  type: 'test'
+  ...
+# Subtest: removed stone cannot pay again
+ok 15 - removed stone cannot pay again
+  ---
+  duration_ms: 2.7194
+  type: 'test'
+  ...
+# Subtest: cold reopening reconstructs excavation but restarts outside
+ok 16 - cold reopening reconstructs excavation but restarts outside
+  ---
+  duration_ms: 2.6246
+  type: 'test'
+  ...
+# Subtest: attacks cannot damage distant targets
+ok 17 - attacks cannot damage distant targets
+  ---
+  duration_ms: 0.4265
+  type: 'test'
+  ...
+# Subtest: line of sight blocks attacks through rock
+ok 18 - line of sight blocks attacks through rock
+  ---
+  duration_ms: 0.3068
+  type: 'test'
+  ...
+# Subtest: melee decreases health, respects cooldown and creates one defeat/cache
+ok 19 - melee decreases health, respects cooldown and creates one defeat/cache
+  ---
+  duration_ms: 3.8781
+  type: 'test'
+  ...
+# Subtest: sweep consumes stamina only once per cooldown
+ok 20 - sweep consumes stamina only once per cooldown
+  ---
+  duration_ms: 0.468
+  type: 'test'
+  ...
+# Subtest: insufficient stamina refuses without mutation
+ok 21 - insufficient stamina refuses without mutation
+  ---
+  duration_ms: 0.5683
+  type: 'test'
+  ...
+# Subtest: dodge respects cave collision instead of tunneling
+ok 22 - dodge respects cave collision instead of tunneling
+  ---
+  duration_ms: 0.2231
+  type: 'test'
+  ...
+# Subtest: dodge avoidance protects against imminent impact
+ok 23 - dodge avoidance protects against imminent impact
+  ---
+  duration_ms: 2.1534
+  type: 'test'
+  ...
+# Subtest: telegraph hits its declared destination, not a tracking player
+ok 24 - telegraph hits its declared destination, not a tracking player
+  ---
+  duration_ms: 0.5366
+  type: 'test'
+  ...
+# Subtest: failed evasion incurs damage reduced by armor
+ok 25 - failed evasion incurs damage reduced by armor
+  ---
+  duration_ms: 0.3867
+  type: 'test'
+  ...
+# Subtest: pause stops actual timers and combat
+ok 26 - pause stops actual timers and combat
+  ---
+  duration_ms: 0.6045
+  type: 'test'
+  ...
+# Subtest: daylight slider is not a cooldown cheat
+ok 27 - daylight slider is not a cooldown cheat
+  ---
+  duration_ms: 0.3169
+  type: 'test'
+  ...
+# Subtest: healing consumes tonic, caps at maximum and has cooldown
+ok 28 - healing consumes tonic, caps at maximum and has cooldown
+  ---
+  duration_ms: 0.3098
+  type: 'test'
+  ...
+# Subtest: rest requires spring and is not available in combat
+ok 29 - rest requires spring and is not available in combat
+  ---
+  duration_ms: 0.2945
+  type: 'test'
+  ...
+# Subtest: death stops movement and resurrection preserves loot
+ok 30 - death stops movement and resurrection preserves loot
+  ---
+  duration_ms: 0.2801
+  type: 'test'
+  ...
+# Subtest: paused resurrection is possible without resuming time implicitly
+ok 31 - paused resurrection is possible without resuming time implicitly
+  ---
+  duration_ms: 0.2302
+  type: 'test'
+  ...
+# Subtest: living players cannot resurrect for a free teleport
+ok 32 - living players cannot resurrect for a free teleport
+  ---
+  duration_ms: 0.2158
+  type: 'test'
+  ...
+# Subtest: loot is proximity checked and cannot be claimed twice
+ok 33 - loot is proximity checked and cannot be claimed twice
+  ---
+  duration_ms: 0.2358
+  type: 'test'
+  ...
+# Subtest: full pouch rejects atomically and preserves cache
+ok 34 - full pouch rejects atomically and preserves cache
+  ---
+  duration_ms: 0.5665
+  type: 'test'
+  ...
+# Subtest: equipment must be owned and goes into the declared slot
+ok 35 - equipment must be owned and goes into the declared slot
+  ---
+  duration_ms: 0.2538
+  type: 'test'
+  ...
+# Subtest: increased health capacity does not heal on equip
+ok 36 - increased health capacity does not heal on equip
+  ---
+  duration_ms: 0.1612
+  type: 'test'
+  ...
+# Subtest: forge consumes exact inputs once
+ok 37 - forge consumes exact inputs once
+  ---
+  duration_ms: 0.2267
+  type: 'test'
+  ...
+# Subtest: forge outside workbench fails without cost
+ok 38 - forge outside workbench fails without cost
+  ---
+  duration_ms: 0.8841
+  type: 'test'
+  ...
+# Subtest: rescue requires proximity and threat clearance
+ok 39 - rescue requires proximity and threat clearance
+  ---
+  duration_ms: 0.2429
+  type: 'test'
+  ...
+# Subtest: companion naming is bounded data and mode is enumerated
+ok 40 - companion naming is bounded data and mode is enumerated
+  ---
+  duration_ms: 0.2642
+  type: 'test'
+  ...
+# Subtest: Stay retains fox in its scene during active session
+ok 41 - Stay retains fox in its scene during active session
+  ---
+  duration_ms: 0.2513
+  type: 'test'
+  ...
+# Subtest: Follow explicitly recalls across a scene boundary
+ok 42 - Follow explicitly recalls across a scene boundary
+  ---
+  duration_ms: 0.2638
+  type: 'test'
+  ...
+# Subtest: defeated enemies stay defeated on re-entry
+ok 43 - defeated enemies stay defeated on re-entry
+  ---
+  duration_ms: 0.2897
+  type: 'test'
+  ...
+# Subtest: unfinished enemies reset on re-entry; partial health is not a win
+ok 44 - unfinished enemies reset on re-entry; partial health is not a win
+  ---
+  duration_ms: 0.2816
+  type: 'test'
+  ...
+# Subtest: relic requires guardian defeat and proximity, with single claim
+ok 45 - relic requires guardian defeat and proximity, with single claim
+  ---
+  duration_ms: 0.3032
+  type: 'test'
+  ...
+# Subtest: envoy requires relic at the spring
+ok 46 - envoy requires relic at the spring
+  ---
+  duration_ms: 0.2874
+  type: 'test'
+  ...
+# Subtest: final choice stays single across command IDs and cold reload
+ok 47 - final choice stays single across command IDs and cold reload
+  ---
+  duration_ms: 0.6112
+  type: 'test'
+  ...
+# Subtest: import rejects negative ore
+ok 48 - import rejects negative ore
+  ---
+  duration_ms: 0.773
+  type: 'test'
+  ...
+# Subtest: import rejects NaN stamina
+ok 49 - import rejects NaN stamina
+  ---
+  duration_ms: 0.0739
+  type: 'test'
+  ...
+# Subtest: import rejects foreign gear
+ok 50 - import rejects foreign gear
+  ---
+  duration_ms: 0.0533
+  type: 'test'
+  ...
+# Subtest: import rejects non-owned equip
+ok 51 - import rejects non-owned equip
+  ---
+  duration_ms: 0.0486
+  type: 'test'
+  ...
+# Subtest: import rejects duplicate cells
+ok 52 - import rejects duplicate cells
+  ---
+  duration_ms: 0.0539
+  type: 'test'
+  ...
+# Subtest: import rejects outer excavation
+ok 53 - import rejects outer excavation
+  ---
+  duration_ms: 0.0453
+  type: 'test'
+  ...
+# Subtest: import rejects noncanonical cell
+ok 54 - import rejects noncanonical cell
+  ---
+  duration_ms: 0.0388
+  type: 'test'
+  ...
+# Subtest: import rejects relic without defeat
+ok 55 - import rejects relic without defeat
+  ---
+  duration_ms: 0.0419
+  type: 'test'
+  ...
+# Subtest: import rejects gift without envoy
+ok 56 - import rejects gift without envoy
+  ---
+  duration_ms: 0.0438
+  type: 'test'
+  ...
+# Subtest: import rejects oversized name
+ok 57 - import rejects oversized name
+  ---
+  duration_ms: 0.0459
+  type: 'test'
+  ...
+# Subtest: import rejects duplicate drop
+ok 58 - import rejects duplicate drop
+  ---
+  duration_ms: 0.0496
+  type: 'test'
+  ...
+# Subtest: import rejects impossible chips
+ok 59 - import rejects impossible chips
+  ---
+  duration_ms: 0.0489
+  type: 'test'
+  ...
+# Subtest: import rejects excess health
+ok 60 - import rejects excess health
+  ---
+  duration_ms: 0.0593
+  type: 'test'
+  ...
+# Subtest: import rejects foreign enemy
+ok 61 - import rejects foreign enemy
+  ---
+  duration_ms: 0.0387
+  type: 'test'
+  ...
+# Subtest: import rejects unstarted rescue
+ok 62 - import rejects unstarted rescue
+  ---
+  duration_ms: 0.0354
+  type: 'test'
+  ...
+# Subtest: invalid command envelope cannot mutate persistent state
+ok 63 - invalid command envelope cannot mutate persistent state
+  ---
+  duration_ms: 0.5379
+  type: 'test'
+  ...
+# Subtest: prototype-looking item key safely refuses
+ok 64 - prototype-looking item key safely refuses
+  ---
+  duration_ms: 0.6128
+  type: 'test'
+  ...
+# Subtest: circular command data is safely refused
+ok 65 - circular command data is safely refused
+  ---
+  duration_ms: 0.5712
+  type: 'test'
+  ...
+# Subtest: no private memory or credentials enter save
+ok 66 - no private memory or credentials enter save
+  ---
+  duration_ms: 0.3645
+  type: 'test'
+  ...
+# Subtest: version07 raw save migrates without losing road or creative state
+ok 67 - version07 raw save migrates without losing road or creative state
+  ---
+  duration_ms: 251.5923
+  type: 'test'
+  ...
+# Subtest: legacy storage key is copied not overwritten
+ok 68 - legacy storage key is copied not overwritten
+  ---
+  duration_ms: 5.0243
+  type: 'test'
+  ...
+# Subtest: fresh arsenal has no free bows gems or medals
+ok 69 - fresh arsenal has no free bows gems or medals
+  ---
+  duration_ms: 0.3461
+  type: 'test'
+  ...
+# Subtest: gem records reject invalid quantities and unknown fields
+ok 70 - gem records reject invalid quantities and unknown fields
+  ---
+  duration_ms: 11.3173
+  type: 'test'
+  ...
+# Subtest: socket validation needs owned weapon and known gem
+ok 71 - socket validation needs owned weapon and known gem
+  ---
+  duration_ms: 3.6575
+  type: 'test'
+  ...
+# Subtest: medal requires bounded completion time and vice versa
+ok 72 - medal requires bounded completion time and vice versa
+  ---
+  duration_ms: 2.9912
+  type: 'test'
+  ...
+# Subtest: unstarted record cannot mint loose gems or a medal
+ok 73 - unstarted record cannot mint loose gems or a medal
+  ---
+  duration_ms: 0.3781
+  type: 'test'
+  ...
+# Subtest: craft refuses before supplies, remote bench, paused or unknown recipe
+ok 74 - craft refuses before supplies, remote bench, paused or unknown recipe
+  ---
+  duration_ms: 4.3831
+  type: 'test'
+  ...
+# Subtest: bow recipe consumes exact wood fiber stone and creates a unique item
+ok 75 - bow recipe consumes exact wood fiber stone and creates a unique item
+  ---
+  duration_ms: 0.8043
+  type: 'test'
+  ...
+# Subtest: insufficient material on any ingredient causes no partial charge
+ok 76 - insufficient material on any ingredient causes no partial charge
+  ---
+  duration_ms: 2.8485
+  type: 'test'
+  ...
+# Subtest: longbow requires original bow then keeps it and charges exact components
+ok 77 - longbow requires original bow then keeps it and charges exact components
+  ---
+  duration_ms: 1.1552
+  type: 'test'
+  ...
+# Subtest: craft duplicate id never charges twice and changed content is refused
+ok 78 - craft duplicate id never charges twice and changed content is refused
+  ---
+  duration_ms: 1.7979
+  type: 'test'
+  ...
+# Subtest: gem crafting charges correct actual material and currency balances
+ok 79 - gem crafting charges correct actual material and currency balances
+  ---
+  duration_ms: 0.4042
+  type: 'test'
+  ...
+# Subtest: gem capacity, ore and coin refusals are atomic
+ok 80 - gem capacity, ore and coin refusals are atomic
+  ---
+  duration_ms: 1.6932
+  type: 'test'
+  ...
+# Subtest: socket requires actual outdoor workbench and loose gem
+ok 81 - socket requires actual outdoor workbench and loose gem
+  ---
+  duration_ms: 2.9429
+  type: 'test'
+  ...
+# Subtest: fitting replacing reclaiming preserves total gem quantities
+ok 82 - fitting replacing reclaiming preserves total gem quantities
+  ---
+  duration_ms: 0.4732
+  type: 'test'
+  ...
+# Subtest: socket changes stats only for currently equipped weapon
+ok 83 - socket changes stats only for currently equipped weapon
+  ---
+  duration_ms: 0.3779
+  type: 'test'
+  ...
+# Subtest: moonstone raises capacity without healing and removal clamps current HP
+ok 84 - moonstone raises capacity without healing and removal clamps current HP
+  ---
+  duration_ms: 0.3926
+  type: 'test'
+  ...
+# Subtest: socket rejects same setting, wrong slot, foreign weapon, unknown gem
+ok 85 - socket rejects same setting, wrong slot, foreign weapon, unknown gem
+  ---
+  duration_ms: 2.9728
+  type: 'test'
+  ...
+# Subtest: full reclaim pouch prevents swap without consuming new gem
+ok 86 - full reclaim pouch prevents swap without consuming new gem
+  ---
+  duration_ms: 2.131
+  type: 'test'
+  ...
+# Subtest: socket duplicate cannot charge, reclaim or alter stats twice
+ok 87 - socket duplicate cannot charge, reclaim or alter stats twice
+  ---
+  duration_ms: 1.3271
+  type: 'test'
+  ...
+# Subtest: range entry checks workshop proximity and prepared character
+ok 88 - range entry checks workshop proximity and prepared character
+  ---
+  duration_ms: 2.3498
+  type: 'test'
+  ...
+# Subtest: range collision bounds and pillars affect real walking
+ok 89 - range collision bounds and pillars affect real walking
+  ---
+  duration_ms: 1.2711
+  type: 'test'
+  ...
+# Subtest: range path routes around a pillar, not through it
+ok 90 - range path routes around a pillar, not through it
+  ---
+  duration_ms: 4.5286
+  type: 'test'
+  ...
+# Subtest: range south exit requires proximity and restores workshop position
+ok 91 - range south exit requires proximity and restores workshop position
+  ---
+  duration_ms: 1.335
+  type: 'test'
+  ...
+# Subtest: save inside court restores outside without unfinished arrows or round
+ok 92 - save inside court restores outside without unfinished arrows or round
+  ---
+  duration_ms: 1.7724
+  type: 'test'
+  ...
+# Subtest: bow provides ranged profile while all previous blades keep their reach
+ok 93 - bow provides ranged profile while all previous blades keep their reach
+  ---
+  duration_ms: 0.3642
+  type: 'test'
+  ...
+# Subtest: bows refuse village shots and blades refuse practice target attacks
+ok 94 - bows refuse village shots and blades refuse practice target attacks
+  ---
+  duration_ms: 2.1702
+  type: 'test'
+  ...
+# Subtest: launch spends exact stamina and damage is delayed until actual travel
+ok 95 - launch spends exact stamina and damage is delayed until actual travel
+  ---
+  duration_ms: 6.0764
+  type: 'test'
+  ...
+# Subtest: cooldown and low stamina refusals do not consume resources
+ok 96 - cooldown and low stamina refusals do not consume resources
+  ---
+  duration_ms: 4.4057
+  type: 'test'
+  ...
+# Subtest: unknown out of range and obstructed targets do not launch
+ok 97 - unknown out of range and obstructed targets do not launch
+  ---
+  duration_ms: 2.0922
+  type: 'test'
+  ...
+# Subtest: arrow direction is fixed and can miss a moving enemy
+ok 98 - arrow direction is fixed and can miss a moving enemy
+  ---
+  duration_ms: 1.6313
+  type: 'test'
+  ...
+# Subtest: damage snapshots the launch gear, not later equipped weapon
+ok 99 - damage snapshots the launch gear, not later equipped weapon
+  ---
+  duration_ms: 1.8534
+  type: 'test'
+  ...
+# Subtest: incoming arrow grants timed enemy awareness at current world time
+ok 100 - incoming arrow grants timed enemy awareness at current world time
+  ---
+  duration_ms: 0.952
+  type: 'test'
+  ...
+# Subtest: line trace chooses first target regardless of requested target order
+ok 101 - line trace chooses first target regardless of requested target order
+  ---
+  duration_ms: 0.2306
+  type: 'test'
+  ...
+# Subtest: wall precedes targets behind it and already-hit ids are ignored
+ok 102 - wall precedes targets behind it and already-hit ids are ignored
+  ---
+  duration_ms: 0.1439
+  type: 'test'
+  ...
+# Subtest: swept segments catch a target between endpoints
+ok 103 - swept segments catch a target between endpoints
+  ---
+  duration_ms: 0.0955
+  type: 'test'
+  ...
+# Subtest: degenerate and invalid geometry is bounded
+ok 104 - degenerate and invalid geometry is bounded
+  ---
+  duration_ms: 0.5276
+  type: 'test'
+  ...
+# Subtest: projectiles cross road water but not real obstacles
+ok 105 - projectiles cross road water but not real obstacles
+  ---
+  duration_ms: 0.6327
+  type: 'test'
+  ...
+# Subtest: mine stone and court pillars stop arrows
+ok 106 - mine stone and court pillars stop arrows
+  ---
+  duration_ms: 0.5448
+  type: 'test'
+  ...
+# Subtest: piercing light can hit at most two bodies and each at most once
+ok 107 - piercing light can hit at most two bodies and each at most once
+  ---
+  duration_ms: 1.1615
+  type: 'test'
+  ...
+# Subtest: ordinary arrow only hits first intervening target
+ok 108 - ordinary arrow only hits first intervening target
+  ---
+  duration_ms: 0.8896
+  type: 'test'
+  ...
+# Subtest: leaving and dying discard transient arrows
+ok 109 - leaving and dying discard transient arrows
+  ---
+  duration_ms: 1.1615
+  type: 'test'
+  ...
+# Subtest: no arrow follows an enemy forever
+ok 110 - no arrow follows an enemy forever
+  ---
+  duration_ms: 1.3407
+  type: 'test'
+  ...
+# Subtest: a fired arrow reaching zero HP creates one ordinary cache and XP result
+ok 111 - a fired arrow reaching zero HP creates one ordinary cache and XP result
+  ---
+  duration_ms: 1.9405
+  type: 'test'
+  ...
+# Subtest: target motion is reproducible and only the sun moves
+ok 112 - target motion is reproducible and only the sun moves
+  ---
+  duration_ms: 0.1863
+  type: 'test'
+  ...
+# Subtest: round requires range and bow and cannot restart a running clock
+ok 113 - round requires range and bow and cannot restart a running clock
+  ---
+  duration_ms: 2.478
+  type: 'test'
+  ...
+# Subtest: practice arrows hit real targets without XP harm defeat or loot
+ok 114 - practice arrows hit real targets without XP harm defeat or loot
+  ---
+  duration_ms: 0.9386
+  type: 'test'
+  ...
+# Subtest: untimed target hits cannot mint a practice reward
+ok 115 - untimed target hits cannot mint a practice reward
+  ---
+  duration_ms: 0.328
+  type: 'test'
+  ...
+# Subtest: known-answer six hits award one medal five coins one amber
+ok 116 - known-answer six hits award one medal five coins one amber
+  ---
+  duration_ms: 0.4022
+  type: 'test'
+  ...
+# Subtest: repeated completed rounds improve best but never pay again
+ok 117 - repeated completed rounds improve best but never pay again
+  ---
+  duration_ms: 0.3215
+  type: 'test'
+  ...
+# Subtest: longer round preserves faster recorded time
+ok 118 - longer round preserves faster recorded time
+  ---
+  duration_ms: 0.3449
+  type: 'test'
+  ...
+# Subtest: partial hits and timeout have no reward; new round starts empty
+ok 119 - partial hits and timeout have no reward; new round starts empty
+  ---
+  duration_ms: 7.7461
+  type: 'test'
+  ...
+# Subtest: pause freezes timer projectile and moving target
+ok 120 - pause freezes timer projectile and moving target
+  ---
+  duration_ms: 2.0717
+  type: 'test'
+  ...
+# Subtest: daylight adjustment does not advance practice clock
+ok 121 - daylight adjustment does not advance practice clock
+  ---
+  duration_ms: 0.3859
+  type: 'test'
+  ...
+# Subtest: round stop preserves prior medal and clears arrows
+ok 122 - round stop preserves prior medal and clears arrows
+  ---
+  duration_ms: 0.9446
+  type: 'test'
+  ...
+# Subtest: reward overflow does not mark medal or partly pay
+ok 123 - reward overflow does not mark medal or partly pay
+  ---
+  duration_ms: 0.5609
+  type: 'test'
+  ...
+# Subtest: saved medal sockets and health validate in a cold restart
+ok 124 - saved medal sockets and health validate in a cold restart
+  ---
+  duration_ms: 1.1523
+  type: 'test'
+  ...
+# Subtest: equipped amber modifies actual fox damage, unequipped amber does not
+ok 125 - equipped amber modifies actual fox damage, unequipped amber does not
+  ---
+  duration_ms: 1.544
+  type: 'test'
+  ...
+# Subtest: Realm08 world migrates to current schema without changing supported content
+ok 126 - Realm08 world migrates to current schema without changing supported content
+  ---
+  duration_ms: 248.815
+  type: 'test'
+  ...
+# Subtest: fresh beacon contains no earned alignment or free story completion
+ok 127 - fresh beacon contains no earned alignment or free story completion
+  ---
+  duration_ms: 0.3214
+  type: 'test'
+  ...
+# Subtest: beacon import rejects version
+ok 128 - beacon import rejects version
+  ---
+  duration_ms: 0.5042
+  type: 'test'
+  ...
+# Subtest: beacon import rejects missingSoul
+ok 129 - beacon import rejects missingSoul
+  ---
+  duration_ms: 0.4746
+  type: 'test'
+  ...
+# Subtest: beacon import rejects badStatus
+ok 130 - beacon import rejects badStatus
+  ---
+  duration_ms: 0.3222
+  type: 'test'
+  ...
+# Subtest: beacon import rejects badCounts
+ok 131 - beacon import rejects badCounts
+  ---
+  duration_ms: 0.2824
+  type: 'test'
+  ...
+# Subtest: beacon import rejects unknownRoute
+ok 132 - beacon import rejects unknownRoute
+  ---
+  duration_ms: 0.2678
+  type: 'test'
+  ...
+# Subtest: beacon import rejects unearnedCompletion
+ok 133 - beacon import rejects unearnedCompletion
+  ---
+  duration_ms: 0.2203
+  type: 'test'
+  ...
+# Subtest: beacon import rejects rewardEarly
+ok 134 - beacon import rejects rewardEarly
+  ---
+  duration_ms: 0.4036
+  type: 'test'
+  ...
+# Subtest: beacon import rejects graceEarly
+ok 135 - beacon import rejects graceEarly
+  ---
+  duration_ms: 0.439
+  type: 'test'
+  ...
+# Subtest: beacon import rejects negativeRadiance
+ok 136 - beacon import rejects negativeRadiance
+  ---
+  duration_ms: 0.3458
+  type: 'test'
+  ...
+# Subtest: beacon import rejects corruptionNoHistory
+ok 137 - beacon import rejects corruptionNoHistory
+  ---
+  duration_ms: 0.1987
+  type: 'test'
+  ...
+# Subtest: beacon import rejects falsePower
+ok 138 - beacon import rejects falsePower
+  ---
+  duration_ms: 0.1868
+  type: 'test'
+  ...
+# Subtest: beacon import rejects fakeScar
+ok 139 - beacon import rejects fakeScar
+  ---
+  duration_ms: 0.2309
+  type: 'test'
+  ...
+# Subtest: beacon import rejects duplicatedScars
+ok 140 - beacon import rejects duplicatedScars
+  ---
+  duration_ms: 0.2445
+  type: 'test'
+  ...
+# Subtest: beacon import rejects unearnedRelic
+ok 141 - beacon import rejects unearnedRelic
+  ---
+  duration_ms: 0.2031
+  type: 'test'
+  ...
+# Subtest: beacon import rejects nonintegerAttempts
+ok 142 - beacon import rejects nonintegerAttempts
+  ---
+  duration_ms: 0.2735
+  type: 'test'
+  ...
+# Subtest: beacon opening requires story and physical scene
+ok 143 - beacon opening requires story and physical scene
+  ---
+  duration_ms: 16.5378
+  type: 'test'
+  ...
+# Subtest: answer at beacon settles an unreported chapter II exactly once
+ok 144 - answer at beacon settles an unreported chapter II exactly once
+  ---
+  duration_ms: 4.8006
+  type: 'test'
+  ...
+# Subtest: arrival has three actual valid paths and does not start combat automatically
+ok 145 - arrival has three actual valid paths and does not start combat automatically
+  ---
+  duration_ms: 8.7416
+  type: 'test'
+  ...
+# Subtest: cannot accept Grace or start battle during the descent
+ok 146 - cannot accept Grace or start battle during the descent
+  ---
+  duration_ms: 5.6234
+  type: 'test'
+  ...
+# Subtest: Grace is optional and a deliberate single claim
+ok 147 - Grace is optional and a deliberate single claim
+  ---
+  duration_ms: 7.4258
+  type: 'test'
+  ...
+# Subtest: first defense can start without accepting a Grace
+ok 148 - first defense can start without accepting a Grace
+  ---
+  duration_ms: 6.8543
+  type: 'test'
+  ...
+# Subtest: new events never insert their IDs into ordinary defeat or cache persistence
+ok 149 - new events never insert their IDs into ordinary defeat or cache persistence
+  ---
+  duration_ms: 6.6376
+  type: 'test'
+  ...
+# Subtest: complete waves opens exactly one reward, replaying request cannot double pay
+ok 150 - complete waves opens exactly one reward, replaying request cannot double pay
+  ---
+  duration_ms: 74.1853
+  type: 'test'
+  ...
+# Subtest: full pouch refuses defense reward atomically
+ok 151 - full pouch refuses defense reward atomically
+  ---
+  duration_ms: 93.1252
+  type: 'test'
+  ...
+# Subtest: ordinary failure is recoverable and protects completed content
+ok 152 - ordinary failure is recoverable and protects completed content
+  ---
+  duration_ms: 4.5265
+  type: 'test'
+  ...
+# Subtest: withdrawal loses the encounter but a reload does not invent a win
+ok 153 - withdrawal loses the encounter but a reload does not invent a win
+  ---
+  duration_ms: 3.4604
+  type: 'test'
+  ...
+# Subtest: pause stops arrival movement, enemy windups, ward and timers
+ok 154 - pause stops arrival movement, enemy windups, ward and timers
+  ---
+  duration_ms: 5.219
+  type: 'test'
+  ...
+# Subtest: repair spends actual stamina, obeys position cooldown and maximum
+ok 155 - repair spends actual stamina, obeys position cooldown and maximum
+  ---
+  duration_ms: 9.7179
+  type: 'test'
+  ...
+# Subtest: Oren repairs, Mara reveals and Ilan replenishes stamina on active schedules
+ok 156 - Oren repairs, Mara reveals and Ilan replenishes stamina on active schedules
+  ---
+  duration_ms: 3.4295
+  type: 'test'
+  ...
+# Subtest: passive presence is not a guaranteed defense win
+ok 157 - passive presence is not a guaranteed defense win
+  ---
+  duration_ms: 59.3214
+  type: 'test'
+  ...
+# Subtest: attempt cap refuses before healing or spending resources
+ok 158 - attempt cap refuses before healing or spending resources
+  ---
+  duration_ms: 4.6295
+  type: 'test'
+  ...
+# Subtest: cinder is an explicit exclusive choice and acceptance does not corrupt
+ok 159 - cinder is an explicit exclusive choice and acceptance does not corrupt
+  ---
+  duration_ms: 56.2615
+  type: 'test'
+  ...
+# Subtest: sealing a cinder imposes neither power nor corruption
+ok 160 - sealing a cinder imposes neither power nor corruption
+  ---
+  duration_ms: 44.4443
+  type: 'test'
+  ...
+# Subtest: replay rewards and failures cannot damage a completed chapter
+ok 161 - replay rewards and failures cannot damage a completed chapter
+  ---
+  duration_ms: 42.8129
+  type: 'test'
+  ...
+# Subtest: future route records do not teleport or unlock nonexistent geography
+ok 162 - future route records do not teleport or unlock nonexistent geography
+  ---
+  duration_ms: 51.1559
+  type: 'test'
+  ...
+# Subtest: target cycling is nearest-first, reversible and never starts attacking
+ok 163 - target cycling is nearest-first, reversible and never starts attacking
+  ---
+  duration_ms: 1.8562
+  type: 'test'
+  ...
+# Subtest: hidden dead and very distant targets are not selectable
+ok 164 - hidden dead and very distant targets are not selectable
+  ---
+  duration_ms: 4.0456
+  type: 'test'
+  ...
+# Subtest: autoattack repeatedly uses real cooldowns without moving the player
+ok 165 - autoattack repeatedly uses real cooldowns without moving the player
+  ---
+  duration_ms: 2.1117
+  type: 'test'
+  ...
+# Subtest: out of range autoattack waits rather than walking or spending stamina
+ok 166 - out of range autoattack waits rather than walking or spending stamina
+  ---
+  duration_ms: 1.5776
+  type: 'test'
+  ...
+# Subtest: selected target death stops autoattack instead of pulling a new foe
+ok 167 - selected target death stops autoattack instead of pulling a new foe
+  ---
+  duration_ms: 1.4858
+  type: 'test'
+  ...
+# Subtest: clear target, scene changes and restart never retain autoattack
+ok 168 - clear target, scene changes and restart never retain autoattack
+  ---
+  duration_ms: 1.9761
+  type: 'test'
+  ...
+# Subtest: Brace halves guarded damage for its actual timed window
+ok 169 - Brace halves guarded damage for its actual timed window
+  ---
+  duration_ms: 3.8381
+  type: 'test'
+  ...
+# Subtest: Brace refuses insufficient stamina without charging a cooldown
+ok 170 - Brace refuses insufficient stamina without charging a cooldown
+  ---
+  duration_ms: 2.3698
+  type: 'test'
+  ...
+# Subtest: Briar reveals a cloaked foe, exposes and interrupts a locked windup
+ok 171 - Briar reveals a cloaked foe, exposes and interrupts a locked windup
+  ---
+  duration_ms: 3.5355
+  type: 'test'
+  ...
+# Subtest: Briar Stay prevents the companion skill
+ok 172 - Briar Stay prevents the companion skill
+  ---
+  duration_ms: 2.7674
+  type: 'test'
+  ...
+# Subtest: Aegis is a finite barrier, not immortality, and needs accepted Grace
+ok 173 - Aegis is a finite barrier, not immortality, and needs accepted Grace
+  ---
+  duration_ms: 7.5545
+  type: 'test'
+  ...
+# Subtest: Cinder health cost is nonlethal and its scar is persistent but not repeated
+ok 174 - Cinder health cost is nonlethal and its scar is persistent but not repeated
+  ---
+  duration_ms: 50.335
+  type: 'test'
+  ...
+# Subtest: renouncing the cinder removes power and present corruption, not its history
+ok 175 - renouncing the cinder removes power and present corruption, not its history
+  ---
+  duration_ms: 49.9897
+  type: 'test'
+  ...
+# Subtest: choice switching never grants damage by itself or silently starts PvP
+ok 176 - choice switching never grants damage by itself or silently starts PvP
+  ---
+  duration_ms: 3.6184
+  type: 'test'
+  ...
+# Subtest: mutation receipts protect identical retries and reject changed choices
+ok 177 - mutation receipts protect identical retries and reject changed choices
+  ---
+  duration_ms: 6.466
+  type: 'test'
+  ...
+# Subtest: first target selected after a scene change survives the next tick
+ok 178 - first target selected after a scene change survives the next tick
+  ---
+  duration_ms: 2.6908
+  type: 'test'
+  ...
+# Subtest: rail eligibility preserves every reviewed bridge transform, color and mesh
+ok 179 - rail eligibility preserves every reviewed bridge transform, color and mesh
+  ---
+  duration_ms: 8.4493
+  type: 'test'
+  ...
+# Subtest: rail visibility uniform resets per batch and remains off in reflection, other realms and off-span
+ok 180 - rail visibility uniform resets per batch and remains off in reflection, other realms and off-span
+  ---
+  duration_ms: 1.9157
+  type: 'test'
+  ...
+# Subtest: bridge floor is a continuous narrow supported corridor; flanking water rejects movement and picking
+ok 181 - bridge floor is a continuous narrow supported corridor; flanking water rejects movement and picking
+  ---
+  duration_ms: 298.6272
+  type: 'test'
+  ...
+# Subtest: fresh and returning movement crosses both banks and retains canonical ownership
+ok 182 - fresh and returning movement crosses both banks and retains canonical ownership
+  ---
+  duration_ms: 54.9478
+  type: 'test'
+  ...
+# Subtest: bridge pieces respect finite budgets, floor, open rails and per-pier water contact
+ok 183 - bridge pieces respect finite budgets, floor, open rails and per-pier water contact
+  ---
+  duration_ms: 1.0296
+  type: 'test'
+  ...
+# Subtest: vault is actual finite open elliptic geometry, not a filled box or floating ring
+ok 184 - vault is actual finite open elliptic geometry, not a filled box or floating ring
+  ---
+  duration_ms: 1.83
+  type: 'test'
+  ...
+# Subtest: Earth submits the bridge instead of terrain columns inside its water span
+ok 185 - Earth submits the bridge instead of terrain columns inside its water span
+  ---
+  duration_ms: 17.4374
+  type: 'test'
+  ...
+# Subtest: asymmetric mountain mesh is bounded finite original ground rather than cone peaks
+ok 186 - asymmetric mountain mesh is bounded finite original ground rather than cone peaks
+  ---
+  duration_ms: 2.2286
+  type: 'test'
+  ...
+# Subtest: world cloud basis preserves the exact reflected VP horizontal handedness in both cameras
+ok 187 - world cloud basis preserves the exact reflected VP horizontal handedness in both cameras
+  ---
+  duration_ms: 0.6058
+  type: 'test'
+  ...
+# Subtest: rock skirt has outward finite faces, a straight upper seam and submerged irregular lower edge
+ok 188 - rock skirt has outward finite faces, a straight upper seam and submerged irregular lower edge
+  ---
+  duration_ms: 0.5566
+  type: 'test'
+  ...
+# Subtest: actual shoreline world triangles leave vaults and supported walking floor clear without fake flat ground
+ok 189 - actual shoreline world triangles leave vaults and supported walking floor clear without fake flat ground
+  ---
+  duration_ms: 24.1648
+  type: 'test'
+  ...
+# Subtest: mountain spacing leaves three receding layers and fits the existing scenery budget
+ok 190 - mountain spacing leaves three receding layers and fits the existing scenery budget
+  ---
+  duration_ms: 0.4264
+  type: 'test'
+  ...
+# Subtest: per-view preferences roundtrip without changing progression or creative content
+ok 191 - per-view preferences roundtrip without changing progression or creative content
+  ---
+  duration_ms: 5.5209
+  type: 'test'
+  ...
+# Subtest: old camera preferences acquire empty view memory and keep their selected mode
+ok 192 - old camera preferences acquire empty view memory and keep their selected mode
+  ---
+  duration_ms: 0.6133
+  type: 'test'
+  ...
+# Subtest: invalid optional view profiles cannot inject nonfinite camera state or discard valid peers
+ok 193 - invalid optional view profiles cannot inject nonfinite camera state or discard valid peers
+  ---
+  duration_ms: 0.5411
+  type: 'test'
+  ...
+# Subtest: unknown view-memory versions fall back while keeping ordinary settings and saves
+ok 194 - unknown view-memory versions fall back while keeping ordinary settings and saves
+  ---
+  duration_ms: 0.5091
+  type: 'test'
+  ...
+# Subtest: perspective has depth and the requested vertical field of view
+ok 195 - perspective has depth and the requested vertical field of view
+  ---
+  duration_ms: 0.7304
+  type: 'test'
+  ...
+# Subtest: production picking inverts ground projection across orbit, FOV and aspect
+ok 196 - production picking inverts ground projection across orbit, FOV and aspect
+  ---
+  duration_ms: 2.4169
+  type: 'test'
+  ...
+# Subtest: perspective sky and behind-camera points never become movement destinations
+ok 197 - perspective sky and behind-camera points never become movement destinations
+  ---
+  duration_ms: 0.1651
+  type: 'test'
+  ...
+# Subtest: obstruction sweep pulls in before a wall, ignores a clear ray and handles a grazing near plane
+ok 198 - obstruction sweep pulls in before a wall, ignores a clear ray and handles a grazing near plane
+  ---
+  duration_ms: 0.2256
+  type: 'test'
+  ...
+# Subtest: perspective water reflection retains contact UV and actual world mirror
+ok 199 - perspective water reflection retains contact UV and actual world mirror
+  ---
+  duration_ms: 0.1576
+  type: 'test'
+  ...
+# Subtest: presentation preferences roundtrip without modifying old progression or creative state
+ok 200 - presentation preferences roundtrip without modifying old progression or creative state
+  ---
+  duration_ms: 5.721
+  type: 'test'
+  ...
+# Subtest: clearance bounds preserve rotated wall extents and explicitly exclude foliage and low ground
+ok 201 - clearance bounds preserve rotated wall extents and explicitly exclude foliage and low ground
+  ---
+  duration_ms: 0.2876
+  type: 'test'
+  ...
+# Subtest: clearance sees opted-in dynamic construction and keeps actor batches out
+ok 202 - clearance sees opted-in dynamic construction and keeps actor batches out
+  ---
+  duration_ms: 0.1445
+  type: 'test'
+  ...
+# Subtest: explicit realm walls keep camera clearance below the legacy floor cutoff
+ok 203 - explicit realm walls keep camera clearance below the legacy floor cutoff
+  ---
+  duration_ms: 0.1317
+  type: 'test'
+  ...
+# Subtest: legacy load leaves every stored byte untouched until explicit character creation
+ok 204 - legacy load leaves every stored byte untouched until explicit character creation
+  ---
+  duration_ms: 10.2955
+  type: 'test'
+  ...
+# Subtest: switching saves outgoing state and restores complete independent characters
+ok 205 - switching saves outgoing state and restores complete independent characters
+  ---
+  duration_ms: 4.2424
+  type: 'test'
+  ...
+# Subtest: quota failures never switch identity, spend state, or create partial slots
+ok 206 - quota failures never switch identity, spend state, or create partial slots
+  ---
+  duration_ms: 2.9709
+  type: 'test'
+  ...
+# Subtest: imports copy a validated character into a new slot and full capacity is atomic
+ok 207 - imports copy a validated character into a new slot and full capacity is atomic
+  ---
+  duration_ms: 3.2016
+  type: 'test'
+  ...
+# Subtest: deletion requires the exact inactive target name and never reuses its identity
+ok 208 - deletion requires the exact inactive target name and never reuses its identity
+  ---
+  duration_ms: 3.6757
+  type: 'test'
+  ...
+# Subtest: stale UI revisions and external storage changes refuse mutations
+ok 209 - stale UI revisions and external storage changes refuse mutations
+  ---
+  duration_ms: 0.9271
+  type: 'test'
+  ...
+# Subtest: a present corrupt library cannot silently restore or overwrite an old world
+ok 210 - a present corrupt library cannot silently restore or overwrite an old world
+  ---
+  duration_ms: 0.2809
+  type: 'test'
+  ...
+# Subtest: managed writes require ownership of the browser editing lock
+ok 211 - managed writes require ownership of the browser editing lock
+  ---
+  duration_ms: 0.5213
+  type: 'test'
+  ...
+# Subtest: a legacy tab detects another writer before save, migration, or explicit replacement
+ok 212 - a legacy tab detects another writer before save, migration, or explicit replacement
+  ---
+  duration_ms: 0.4987
+  type: 'test'
+  ...
+# Subtest: invalid imported state and invalid library identities reject before any write
+ok 213 - invalid imported state and invalid library identities reject before any write
+  ---
+  duration_ms: 2.0296
+  type: 'test'
+  ...
+# Subtest: failed legacy replacement retains the loaded runtime and original bytes
+ok 214 - failed legacy replacement retains the loaded runtime and original bytes
+  ---
+  duration_ms: 0.3962
+  type: 'test'
+  ...
+# Subtest: editing lock is held until release and a competing owner must retry explicitly
+ok 215 - editing lock is held until release and a competing owner must retry explicitly
+  ---
+  duration_ms: 5.7127
+  type: 'test'
+  ...
+# Subtest: version6 migrates to current schema with no inferred class and all banked XP intact
+ok 216 - version6 migrates to current schema with no inferred class and all banked XP intact
+  ---
+  duration_ms: 9.1584
+  type: 'test'
+  ...
+# Subtest: class choice requires kit, proximity, known ID and explicit confirmation atomically
+ok 217 - class choice requires kit, proximity, known ID and explicit confirmation atomically
+  ---
+  duration_ms: 7.8618
+  type: 'test'
+  ...
+# Subtest: hunter is deliberate, one-time, reloadable and grants no gear/history/XP
+ok 218 - hunter is deliberate, one-time, reloadable and grants no gear/history/XP
+  ---
+  duration_ms: 2.3746
+  type: 'test'
+  ...
+# Subtest: magician is deliberate, one-time, reloadable and grants no gear/history/XP
+ok 219 - magician is deliberate, one-time, reloadable and grants no gear/history/XP
+  ---
+  duration_ms: 1.3891
+  type: 'test'
+  ...
+# Subtest: invalid class state and impossible unstarted class are refused
+ok 220 - invalid class state and impossible unstarted class are refused
+  ---
+  duration_ms: 0.7447
+  type: 'test'
+  ...
+# Subtest: technique refuses unassigned, wrong scene, pause, death and absent target
+ok 221 - technique refuses unassigned, wrong scene, pause, death and absent target
+  ---
+  duration_ms: 4.908
+  type: 'test'
+  ...
+# Subtest: hunter validates range, LOS, stamina and durable cooldown before paying
+ok 222 - hunter validates range, LOS, stamina and durable cooldown before paying
+  ---
+  duration_ms: 4.2608
+  type: 'test'
+  ...
+# Subtest: magician validates range, LOS, stamina and durable cooldown before paying
+ok 223 - magician validates range, LOS, stamina and durable cooldown before paying
+  ---
+  duration_ms: 3.8015
+  type: 'test'
+  ...
+# Subtest: hunter marks without a hit and only the next actual blade impact gains bounded damage
+ok 224 - hunter marks without a hit and only the next actual blade impact gains bounded damage
+  ---
+  duration_ms: 1.1567
+  type: 'test'
+  ...
+# Subtest: hunter mark is not consumed by another target, companion or soul damage
+ok 225 - hunter mark is not consumed by another target, companion or soul damage
+  ---
+  duration_ms: 0.5816
+  type: 'test'
+  ...
+# Subtest: bow mark follows swept collision, with no payout on a missed arrow
+ok 226 - bow mark follows swept collision, with no payout on a missed arrow
+  ---
+  duration_ms: 1.1559
+  type: 'test'
+  ...
+# Subtest: an obstructed arrow cannot consume mark or make confirmed-hit feedback
+ok 227 - an obstructed arrow cannot consume mark or make confirmed-hit feedback
+  ---
+  duration_ms: 0.4243
+  type: 'test'
+  ...
+# Subtest: marks expire and cannot cross scene, run identity or reload
+ok 228 - marks expire and cannot cross scene, run identity or reload
+  ---
+  duration_ms: 1.0271
+  type: 'test'
+  ...
+# Subtest: magician creates one actual damage event, faces target and never spawns an arrow
+ok 229 - magician creates one actual damage event, faces target and never spawns an arrow
+  ---
+  duration_ms: 0.3525
+  type: 'test'
+  ...
+# Subtest: class techniques do not earn the archery medal and leave weapon family free
+ok 230 - class techniques do not earn the archery medal and leave weapon family free
+  ---
+  duration_ms: 1.4785
+  type: 'test'
+  ...
+# Subtest: selected real-time strike and recovery status retain their actual timer without writes
+ok 231 - selected real-time strike and recovery status retain their actual timer without writes
+  ---
+  duration_ms: 11.0281
+  type: 'test'
+  ...
+# Subtest: owner-aware warning charge
+ok 232 - owner-aware warning charge
+  ---
+  duration_ms: 0.6188
+  type: 'test'
+  ...
+# Subtest: owner-aware warning bell-outer
+ok 233 - owner-aware warning bell-outer
+  ---
+  duration_ms: 0.35
+  type: 'test'
+  ...
+# Subtest: owner-aware warning bell-inner
+ok 234 - owner-aware warning bell-inner
+  ---
+  duration_ms: 1.0955
+  type: 'test'
+  ...
+# Subtest: owner-aware warning ward
+ok 235 - owner-aware warning ward
+  ---
+  duration_ms: 0.4143
+  type: 'test'
+  ...
+# Subtest: owner-aware warning strike
+ok 236 - owner-aware warning strike
+  ---
+  duration_ms: 0.2701
+  type: 'test'
+  ...
+# Subtest: active charge is untimed and distinct from its preceding warning and later opening
+ok 237 - active charge is untimed and distinct from its preceding warning and later opening
+  ---
+  duration_ms: 0.3648
+  type: 'test'
+  ...
+# Subtest: clears cue at idle
+ok 238 - clears cue at idle
+  ---
+  duration_ms: 0.3879
+  type: 'test'
+  ...
+# Subtest: clears cue at pursue
+ok 239 - clears cue at pursue
+  ---
+  duration_ms: 0.3262
+  type: 'test'
+  ...
+# Subtest: clears cue at return
+ok 240 - clears cue at return
+  ---
+  duration_ms: 0.3419
+  type: 'test'
+  ...
+# Subtest: clears cue at practice
+ok 241 - clears cue at practice
+  ---
+  duration_ms: 0.219
+  type: 'test'
+  ...
+# Subtest: clears cue at hidden
+ok 242 - clears cue at hidden
+  ---
+  duration_ms: 0.2098
+  type: 'test'
+  ...
+# Subtest: clears cue at defeated
+ok 243 - clears cue at defeated
+  ---
+  duration_ms: 0.5154
+  type: 'test'
+  ...
+# Subtest: clears cue at unselected
+ok 244 - clears cue at unselected
+  ---
+  duration_ms: 0.2069
+  type: 'test'
+  ...
+# Subtest: clears cue at far
+ok 245 - clears cue at far
+  ---
+  duration_ms: 0.2044
+  type: 'test'
+  ...
+# Subtest: clears cue at paused
+ok 246 - clears cue at paused
+  ---
+  duration_ms: 0.2076
+  type: 'test'
+  ...
+# Subtest: clears cue at dead-player
+ok 247 - clears cue at dead-player
+  ---
+  duration_ms: 0.1784
+  type: 'test'
+  ...
+# Subtest: clears cue at noncombat
+ok 248 - clears cue at noncombat
+  ---
+  duration_ms: 0.1649
+  type: 'test'
+  ...
+# Subtest: clears cue at invalid-timer
+ok 249 - clears cue at invalid-timer
+  ---
+  duration_ms: 0.1347
+  type: 'test'
+  ...
+# Subtest: clears cue at expired-timer
+ok 250 - clears cue at expired-timer
+  ---
+  duration_ms: 0.1597
+  type: 'test'
+  ...
+# Subtest: clears cue at unknown-ring
+ok 251 - clears cue at unknown-ring
+  ---
+  duration_ms: 0.1405
+  type: 'test'
+  ...
+# Subtest: clears cue at missing-aim
+ok 252 - clears cue at missing-aim
+  ---
+  duration_ms: 0.1323
+  type: 'test'
+  ...
+# Subtest: clears cue at unknown-charge
+ok 253 - clears cue at unknown-charge
+  ---
+  duration_ms: 0.136
+  type: 'test'
+  ...
+# Subtest: clears cue at unknown-owner
+ok 254 - clears cue at unknown-owner
+  ---
+  duration_ms: 0.1464
+  type: 'test'
+  ...
+# Subtest: clears cue at invalid-event-kind
+ok 255 - clears cue at invalid-event-kind
+  ---
+  duration_ms: 0.1534
+  type: 'test'
+  ...
+# Subtest: clears cue at invalid-bell-kind
+ok 256 - clears cue at invalid-bell-kind
+  ---
+  duration_ms: 0.1327
+  type: 'test'
+  ...
+# Subtest: opening cue never promises weapon readiness across reach, stamina or obstruction
+ok 257 - opening cue never promises weapon readiness across reach, stamina or obstruction
+  ---
+  duration_ms: 0.7382
+  type: 'test'
+  ...
+# Subtest: blade anticipates then repeatedly hits at its actual cadence, without walking
+ok 258 - blade anticipates then repeatedly hits at its actual cadence, without walking
+  ---
+  duration_ms: 14.652
+  type: 'test'
+  ...
+# Subtest: bow anticipates then repeatedly hits at its actual cadence, without walking
+ok 259 - bow anticipates then repeatedly hits at its actual cadence, without walking
+  ---
+  duration_ms: 4.8198
+  type: 'test'
+  ...
+# Subtest: pending attack cancels on stop
+ok 260 - pending attack cancels on stop
+  ---
+  duration_ms: 1.2323
+  type: 'test'
+  ...
+# Subtest: pending attack cancels on range
+ok 261 - pending attack cancels on range
+  ---
+  duration_ms: 0.7125
+  type: 'test'
+  ...
+# Subtest: pending attack cancels on target
+ok 262 - pending attack cancels on target
+  ---
+  duration_ms: 0.7801
+  type: 'test'
+  ...
+# Subtest: pending attack cancels on pause
+ok 263 - pending attack cancels on pause
+  ---
+  duration_ms: 0.3949
+  type: 'test'
+  ...
+# Subtest: pending attack cancels on death
+ok 264 - pending attack cancels on death
+  ---
+  duration_ms: 0.5182
+  type: 'test'
+  ...
+# Subtest: blocked arrow has no confirmed hit number or hit reaction
+ok 265 - blocked arrow has no confirmed hit number or hit reaction
+  ---
+  duration_ms: 1.2152
+  type: 'test'
+  ...
+# Subtest: projectile that misses moving target cannot create confirmed feedback
+ok 266 - projectile that misses moving target cannot create confirmed feedback
+  ---
+  duration_ms: 1.0397
+  type: 'test'
+  ...
+# Subtest: confirmed hit stamps the damaged target once and scene change clears transient feedback
+ok 267 - confirmed hit stamps the damaged target once and scene change clears transient feedback
+  ---
+  duration_ms: 1.1579
+  type: 'test'
+  ...
+# Subtest: fresh world is valid and round trips
+ok 268 - fresh world is valid and round trips
+  ---
+  duration_ms: 4.3019
+  type: 'test'
+  ...
+# Subtest: seeded world decoration is repeatable
+ok 269 - seeded world decoration is repeatable
+  ---
+  duration_ms: 0.1768
+  type: 'test'
+  ...
+# Subtest: water and nonfinite ground are not walkable
+ok 270 - water and nonfinite ground are not walkable
+  ---
+  duration_ms: 0.0768
+  type: 'test'
+  ...
+# Subtest: buildings and the spring are obstacles
+ok 271 - buildings and the spring are obstacles
+  ---
+  duration_ms: 0.0711
+  type: 'test'
+  ...
+# Subtest: every landmark has walkable admission
+ok 272 - every landmark has walkable admission
+  ---
+  duration_ms: 0.1725
+  type: 'test'
+  ...
+# Subtest: all 121 landmark routes exist and sampled segments avoid obstacles
+ok 273 - all 121 landmark routes exist and sampled segments avoid obstacles
+  ---
+  duration_ms: 1633.1053
+  type: 'test'
+  ...
+# Subtest: click movement arrives without overshooting
+ok 274 - click movement arrives without overshooting
+  ---
+  duration_ms: 10.1026
+  type: 'test'
+  ...
+# Subtest: manual motion is bounded at terrain edge
+ok 275 - manual motion is bounded at terrain edge
+  ---
+  duration_ms: 7.6928
+  type: 'test'
+  ...
+# Subtest: invalid move does not replace current route
+ok 276 - invalid move does not replace current route
+  ---
+  duration_ms: 0.7067
+  type: 'test'
+  ...
+# Subtest: invalid tick cannot corrupt time
+ok 277 - invalid tick cannot corrupt time
+  ---
+  duration_ms: 0.6002
+  type: 'test'
+  ...
+# Subtest: pause stops simulation
+ok 278 - pause stops simulation
+  ---
+  duration_ms: 1.6812
+  type: 'test'
+  ...
+# Subtest: time flow setting stops only the clock
+ok 279 - time flow setting stops only the clock
+  ---
+  duration_ms: 2.0526
+  type: 'test'
+  ...
+# Subtest: day rolls over with a new event
+ok 280 - day rolls over with a new event
+  ---
+  duration_ms: 36.1315
+  type: 'test'
+  ...
+# Subtest: all three share home during supper
+ok 281 - all three share home during supper
+  ---
+  duration_ms: 0.1977
+  type: 'test'
+  ...
+# Subtest: daytime projects have different destinations
+ok 282 - daytime projects have different destinations
+  ---
+  duration_ms: 0.1771
+  type: 'test'
+  ...
+# Subtest: routines travel to the shared house
+ok 283 - routines travel to the shared house
+  ---
+  duration_ms: 34.0754
+  type: 'test'
+  ...
+# Subtest: enter requires proximity
+ok 284 - enter requires proximity
+  ---
+  duration_ms: 0.4247
+  type: 'test'
+  ...
+# Subtest: enter, save and leave preserve outside position
+ok 285 - enter, save and leave preserve outside position
+  ---
+  duration_ms: 3.2222
+  type: 'test'
+  ...
+# Subtest: interior table and walls collide
+ok 286 - interior table and walls collide
+  ---
+  duration_ms: 0.2142
+  type: 'test'
+  ...
+# Subtest: non-interior locations cannot be entered
+ok 287 - non-interior locations cannot be entered
+  ---
+  duration_ms: 0.3195
+  type: 'test'
+  ...
+# Subtest: planting requires being in the garden
+ok 288 - planting requires being in the garden
+  ---
+  duration_ms: 0.482
+  type: 'test'
+  ...
+# Subtest: twelve flowers are bounded and recoverable
+ok 289 - twelve flowers are bounded and recoverable
+  ---
+  duration_ms: 3.4159
+  type: 'test'
+  ...
+# Subtest: duplicate accepted command does not duplicate a note
+ok 290 - duplicate accepted command does not duplicate a note
+  ---
+  duration_ms: 0.4541
+  type: 'test'
+  ...
+# Subtest: same id with changed payload conflicts
+ok 291 - same id with changed payload conflicts
+  ---
+  duration_ms: 0.3642
+  type: 'test'
+  ...
+# Subtest: duplicate refusal remains refusal
+ok 292 - duplicate refusal remains refusal
+  ---
+  duration_ms: 3.9323
+  type: 'test'
+  ...
+# Subtest: notes are data, not markup
+ok 293 - notes are data, not markup
+  ---
+  duration_ms: 0.3486
+  type: 'test'
+  ...
+# Subtest: notebook enforces length and capacity
+ok 294 - notebook enforces length and capacity
+  ---
+  duration_ms: 0.3417
+  type: 'test'
+  ...
+# Subtest: authored conversation records encounter without a network request
+ok 295 - authored conversation records encounter without a network request
+  ---
+  duration_ms: 0.3274
+  type: 'test'
+  ...
+# Subtest: unknown resident is rejected
+ok 296 - unknown resident is rejected
+  ---
+  duration_ms: 0.2128
+  type: 'test'
+  ...
+# Subtest: journal retains 200 ordered entries
+ok 297 - journal retains 200 ordered entries
+  ---
+  duration_ms: 0.9956
+  type: 'test'
+  ...
+# Subtest: save and load accept acknowledged storage
+ok 298 - save and load accept acknowledged storage
+  ---
+  duration_ms: 1.3371
+  type: 'test'
+  ...
+# Subtest: quota refusal is not a saved success
+ok 299 - quota refusal is not a saved success
+  ---
+  duration_ms: 0.5016
+  type: 'test'
+  ...
+# Subtest: corrupt storage is preserved rather than overwritten on load
+ok 300 - corrupt storage is preserved rather than overwritten on load
+  ---
+  duration_ms: 0.12
+  type: 'test'
+  ...
+# Subtest: import rejects invalid locations and malformed versions
+ok 301 - import rejects invalid locations and malformed versions
+  ---
+  duration_ms: 0.4808
+  type: 'test'
+  ...
+# Subtest: import roster is exact and extra prototype properties are discarded
+ok 302 - import roster is exact and extra prototype properties are discarded
+  ---
+  duration_ms: 0.3734
+  type: 'test'
+  ...
+# Subtest: import cannot enable audio and rejects invalid event sequence
+ok 303 - import cannot enable audio and rejects invalid event sequence
+  ---
+  duration_ms: 0.3025
+  type: 'test'
+  ...
+# Subtest: both ground approaches connect arrival to occupied observatory with radius clearance
+ok 304 - both ground approaches connect arrival to occupied observatory with radius clearance
+  ---
+  duration_ms: 54.1979
+  type: 'test'
+  ...
+# Subtest: entry saves the exact source before changing scenes, and reload returns to that source
+ok 305 - entry saves the exact source before changing scenes, and reload returns to that source
+  ---
+  duration_ms: 14.4331
+  type: 'test'
+  ...
+# Subtest: a failed save or unavailable scene refuses travel atomically
+ok 306 - a failed save or unavailable scene refuses travel atomically
+  ---
+  duration_ms: 2.1831
+  type: 'test'
+  ...
+# Subtest: stale character, revision, simulation, position and cancelled tickets cannot enter
+ok 307 - stale character, revision, simulation, position and cancelled tickets cannot enter
+  ---
+  duration_ms: 1.3429
+  type: 'test'
+  ...
+# Subtest: scene build failure restores the source and a consumed ticket cannot retry
+ok 308 - scene build failure restores the source and a consumed ticket cannot retry
+  ---
+  duration_ms: 1.3312
+  type: 'test'
+  ...
+# Subtest: fall recovery recalls to safe ground and normal return works from the far end
+ok 309 - fall recovery recalls to safe ground and normal return works from the far end
+  ---
+  duration_ms: 1.707
+  type: 'test'
+  ...
+# Subtest: height-aware ray picks real support and refuses sky, the ridge and cover
+ok 310 - height-aware ray picks real support and refuses sky, the ridge and cover
+  ---
+  duration_ms: 11.4565
+  type: 'test'
+  ...
+# Subtest: manual walking slides along boundaries without crossing unsupported corner segments
+ok 311 - manual walking slides along boundaries without crossing unsupported corner segments
+  ---
+  duration_ms: 14.0166
+  type: 'test'
+  ...
+# Subtest: all original scores have bounded notes and serialize exactly
+ok 312 - all original scores have bounded notes and serialize exactly
+  ---
+  duration_ms: 3.6947
+  type: 'test'
+  ...
+# Subtest: tempo, voice, dimensions and boolean impostors rejected
+ok 313 - tempo, voice, dimensions and boolean impostors rejected
+  ---
+  duration_ms: 1.1385
+  type: 'test'
+  ...
+# Subtest: scores discard imported authority and execution fields
+ok 314 - scores discard imported authority and execution fields
+  ---
+  duration_ms: 0.2756
+  type: 'test'
+  ...
+# Subtest: unknown composition does not silently substitute another
+ok 315 - unknown composition does not silently substitute another
+  ---
+  duration_ms: 0.1678
+  type: 'test'
+  ...
+# Subtest: score revision compare-and-swap refuses stale changes atomically
+ok 316 - score revision compare-and-swap refuses stale changes atomically
+  ---
+  duration_ms: 13.1564
+  type: 'test'
+  ...
+# Subtest: accepted score edit increments revision and survives cold reconstruction
+ok 317 - accepted score edit increments revision and survives cold reconstruction
+  ---
+  duration_ms: 2.1668
+  type: 'test'
+  ...
+# Subtest: invalid score command does not partially change title or revision
+ok 318 - invalid score command does not partially change title or revision
+  ---
+  duration_ms: 2.572
+  type: 'test'
+  ...
+# Subtest: duplicate score edit is not applied twice
+ok 319 - duplicate score edit is not applied twice
+  ---
+  duration_ms: 0.4491
+  type: 'test'
+  ...
+# Subtest: version-two import preserves old notes, flowers and user coordinates
+ok 320 - version-two import preserves old notes, flowers and user coordinates
+  ---
+  duration_ms: 1.0445
+  type: 'test'
+  ...
+# Subtest: legacy localStorage is read but never overwritten by a v3 save
+ok 321 - legacy localStorage is read but never overwritten by a v3 save
+  ---
+  duration_ms: 2.1111
+  type: 'test'
+  ...
+# Subtest: corrupt v3 does not fall back to and overwrite an older save
+ok 322 - corrupt v3 does not fall back to and overwrite an older save
+  ---
+  duration_ms: 0.2991
+  type: 'test'
+  ...
+# Subtest: default retreat is schema-valid and entry is clear
+ok 323 - default retreat is schema-valid and entry is clear
+  ---
+  duration_ms: 0.2258
+  type: 'test'
+  ...
+# Subtest: new island is connected while the water alongside bridge is not walkable
+ok 324 - new island is connected while the water alongside bridge is not walkable
+  ---
+  duration_ms: 24.4519
+  type: 'test'
+  ...
+# Subtest: all new destinations are reachable without jumping over obstacles
+ok 325 - all new destinations are reachable without jumping over obstacles
+  ---
+  duration_ms: 29.3267
+  type: 'test'
+  ...
+# Subtest: retreat opens, closes and saves the outside return position
+ok 326 - retreat opens, closes and saves the outside return position
+  ---
+  duration_ms: 36.3619
+  type: 'test'
+  ...
+# Subtest: placement is a real collision obstacle
+ok 327 - placement is a real collision obstacle
+  ---
+  duration_ms: 0.187
+  type: 'test'
+  ...
+# Subtest: rotated furniture footprint rotates with the mesh contract
+ok 328 - rotated furniture footprint rotates with the mesh contract
+  ---
+  duration_ms: 0.1199
+  type: 'test'
+  ...
+# Subtest: rug is visible furniture but not a blocking volume
+ok 329 - rug is visible furniture but not a blocking volume
+  ---
+  duration_ms: 0.0774
+  type: 'test'
+  ...
+# Subtest: duplicate slots, unknown types, invalid rotations and palettes rejected
+ok 330 - duplicate slots, unknown types, invalid rotations and palettes rejected
+  ---
+  duration_ms: 0.2273
+  type: 'test'
+  ...
+# Subtest: edit, undo and redo retain monotonic layout revisions
+ok 331 - edit, undo and redo retain monotonic layout revisions
+  ---
+  duration_ms: 0.4432
+  type: 'test'
+  ...
+# Subtest: stale layout mutation leaves full state unchanged
+ok 332 - stale layout mutation leaves full state unchanged
+  ---
+  duration_ms: 1.3149
+  type: 'test'
+  ...
+# Subtest: furniture cannot be placed on the visitor
+ok 333 - furniture cannot be placed on the visitor
+  ---
+  duration_ms: 1.1927
+  type: 'test'
+  ...
+# Subtest: every furniture kind in every slot preserves an entry escape route
+ok 334 - every furniture kind in every slot preserves an entry escape route
+  ---
+  duration_ms: 1.8323
+  type: 'test'
+  ...
+# Subtest: visitor appearance and exact name are exportable data
+ok 335 - visitor appearance and exact name are exportable data
+  ---
+  duration_ms: 0.8644
+  type: 'test'
+  ...
+# Subtest: invalid appearance refuses unknown indexes and does not mutate
+ok 336 - invalid appearance refuses unknown indexes and does not mutate
+  ---
+  duration_ms: 0.8245
+  type: 'test'
+  ...
+# Subtest: family gathering requires proximity to real stage
+ok 337 - family gathering requires proximity to real stage
+  ---
+  duration_ms: 0.3108
+  type: 'test'
+  ...
+# Subtest: gathering routes three inhabitants rather than teleporting
+ok 338 - gathering routes three inhabitants rather than teleporting
+  ---
+  duration_ms: 29.7593
+  type: 'test'
+  ...
+# Subtest: gathering expires and does not resume as a false persisted performance
+ok 339 - gathering expires and does not resume as a false persisted performance
+  ---
+  duration_ms: 37.1901
+  type: 'test'
+  ...
+# Subtest: event timing matches 16 eighth-notes and MIDI two-bar length
+ok 340 - event timing matches 16 eighth-notes and MIDI two-bar length
+  ---
+  duration_ms: 0.6285
+  type: 'test'
+  ...
+# Subtest: all voices synthesize finite stereo data and bounded peaks
+ok 341 - all voices synthesize finite stereo data and bounded peaks
+  ---
+  duration_ms: 123.062
+  type: 'test'
+  ...
+# Subtest: an empty score produces actual silence, not a hidden soundtrack
+ok 342 - an empty score produces actual silence, not a hidden soundtrack
+  ---
+  duration_ms: 4.5947
+  type: 'test'
+  ...
+# Subtest: synthesized output is reproducible for identical scores
+ok 343 - synthesized output is reproducible for identical scores
+  ---
+  duration_ms: 64.7964
+  type: 'test'
+  ...
+# Subtest: different edited notes change actual rendered audio
+ok 344 - different edited notes change actual rendered audio
+  ---
+  duration_ms: 55.6127
+  type: 'test'
+  ...
+# Subtest: WAV header, byte length and final samples are correct
+ok 345 - WAV header, byte length and final samples are correct
+  ---
+  duration_ms: 43.9509
+  type: 'test'
+  ...
+# Subtest: WAV encoder refuses malformed or nonfinite channels
+ok 346 - WAV encoder refuses malformed or nonfinite channels
+  ---
+  duration_ms: 0.2889
+  type: 'test'
+  ...
+# Subtest: MIDI has one type-zero track, valid length, tempo and end marker
+ok 347 - MIDI has one type-zero track, valid length, tempo and end marker
+  ---
+  duration_ms: 0.6516
+  type: 'test'
+  ...
+# Subtest: 09 save migrates without mutating original or losing chapters
+ok 348 - 09 save migrates without mutating original or losing chapters
+  ---
+  duration_ms: 119.7482
+  type: 'test'
+  ...
+# Subtest: new world has no free entry, equipment, attunement or chapter rewards
+ok 349 - new world has no free entry, equipment, attunement or chapter rewards
+  ---
+  duration_ms: 0.3898
+  type: 'test'
+  ...
+# Subtest: strict crossing save rejects wrongVersion
+ok 350 - strict crossing save rejects wrongVersion
+  ---
+  duration_ms: 0.6655
+  type: 'test'
+  ...
+# Subtest: strict crossing save rejects missingField
+ok 351 - strict crossing save rejects missingField
+  ---
+  duration_ms: 0.4288
+  type: 'test'
+  ...
+# Subtest: strict crossing save rejects nonbool
+ok 352 - strict crossing save rejects nonbool
+  ---
+  duration_ms: 0.3882
+  type: 'test'
+  ...
+# Subtest: strict crossing save rejects unvisitedAttune
+ok 353 - strict crossing save rejects unvisitedAttune
+  ---
+  duration_ms: 0.3831
+  type: 'test'
+  ...
+# Subtest: strict crossing save rejects unvisitedProject
+ok 354 - strict crossing save rejects unvisitedProject
+  ---
+  duration_ms: 0.3282
+  type: 'test'
+  ...
+# Subtest: strict crossing save rejects unknownProject
+ok 355 - strict crossing save rejects unknownProject
+  ---
+  duration_ms: 0.754
+  type: 'test'
+  ...
+# Subtest: strict crossing save rejects duplicateProject
+ok 356 - strict crossing save rejects duplicateProject
+  ---
+  duration_ms: 0.442
+  type: 'test'
+  ...
+# Subtest: strict crossing save rejects earlyRepair
+ok 357 - strict crossing save rejects earlyRepair
+  ---
+  duration_ms: 0.3895
+  type: 'test'
+  ...
+# Subtest: strict crossing save rejects earlyComplete
+ok 358 - strict crossing save rejects earlyComplete
+  ---
+  duration_ms: 0.4159
+  type: 'test'
+  ...
+# Subtest: strict crossing save rejects earlyReward
+ok 359 - strict crossing save rejects earlyReward
+  ---
+  duration_ms: 0.2768
+  type: 'test'
+  ...
+# Subtest: entry requires the defended beacon and actual gate location
+ok 360 - entry requires the defended beacon and actual gate location
+  ---
+  duration_ms: 19.1014
+  type: 'test'
+  ...
+# Subtest: entry resets target/auto and gives no items or health
+ok 361 - entry resets target/auto and gives no items or health
+  ---
+  duration_ms: 4.9217
+  type: 'test'
+  ...
+# Subtest: all named places, bells, encounter homes, clapper and entry are reachable
+ok 362 - all named places, bells, encounter homes, clapper and entry are reachable
+  ---
+  duration_ms: 75.8926
+  type: 'test'
+  ...
+# Subtest: buildings and outer bounds stop walking and arrows
+ok 363 - buildings and outer bounds stop walking and arrows
+  ---
+  duration_ms: 0.3044
+  type: 'test'
+  ...
+# Subtest: stream blocks walking except bridge but not travelling arrows
+ok 364 - stream blocks walking except bridge but not travelling arrows
+  ---
+  duration_ms: 1.408
+  type: 'test'
+  ...
+# Subtest: outdoor construction and gathering cannot mutate village geography
+ok 365 - outdoor construction and gathering cannot mutate village geography
+  ---
+  duration_ms: 2.0692
+  type: 'test'
+  ...
+# Subtest: public forge is a true workbench; components cost actual material
+ok 366 - public forge is a true workbench; components cost actual material
+  ---
+  duration_ms: 1.4844
+  type: 'test'
+  ...
+# Subtest: meeting and clue require local proximity and are single claim
+ok 367 - meeting and clue require local proximity and are single claim
+  ---
+  duration_ms: 5.3878
+  type: 'test'
+  ...
+# Subtest: Briar search has real location, bond, follow and route prerequisites
+ok 368 - Briar search has real location, bond, follow and route prerequisites
+  ---
+  duration_ms: 22.8557
+  type: 'test'
+  ...
+# Subtest: manual close inspection works when Briar stays behind
+ok 369 - manual close inspection works when Briar stays behind
+  ---
+  duration_ms: 4.6554
+  type: 'test'
+  ...
+# Subtest: search pause keeps discovery and companion motion frozen
+ok 370 - search pause keeps discovery and companion motion frozen
+  ---
+  duration_ms: 4.2861
+  type: 'test'
+  ...
+# Subtest: new guardian uses distinct ring and circle impact rules
+ok 371 - new guardian uses distinct ring and circle impact rules
+  ---
+  duration_ms: 0.1664
+  type: 'test'
+  ...
+# Subtest: wide ring rewards entering center; next tell alternates to inner strike
+ok 372 - wide ring rewards entering center; next tell alternates to inner strike
+  ---
+  duration_ms: 105.504
+  type: 'test'
+  ...
+# Subtest: new encounters are targetable and respond to real autoattack
+ok 373 - new encounters are targetable and respond to real autoattack
+  ---
+  duration_ms: 17.756
+  type: 'test'
+  ...
+# Subtest: clear event caches pay the new roster once and persist separately
+ok 374 - clear event caches pay the new roster once and persist separately
+  ---
+  duration_ms: 4.2023
+  type: 'test'
+  ...
+# Subtest: bell repair requires clapper and all three clearances
+ok 375 - bell repair requires clapper and all three clearances
+  ---
+  duration_ms: 2.3614
+  type: 'test'
+  ...
+# Subtest: wrong bell order restarts sequence without taking inventory
+ok 376 - wrong bell order restarts sequence without taking inventory
+  ---
+  duration_ms: 2.2171
+  type: 'test'
+  ...
+# Subtest: bell cannot be played remotely or faster than its cooldown
+ok 377 - bell cannot be played remotely or faster than its cooldown
+  ---
+  duration_ms: 3.4411
+  type: 'test'
+  ...
+# Subtest: three local ordered tones complete the bell but not the reward
+ok 378 - three local ordered tones complete the bell but not the reward
+  ---
+  duration_ms: 3.7811
+  type: 'test'
+  ...
+# Subtest: Rowan reward is atomic, local and cannot be duplicated
+ok 379 - Rowan reward is atomic, local and cannot be duplicated
+  ---
+  duration_ms: 5.745
+  type: 'test'
+  ...
+# Subtest: free bell playing after completion cannot reset quest or pay loot
+ok 380 - free bell playing after completion cannot reset quest or pay loot
+  ---
+  duration_ms: 3.7353
+  type: 'test'
+  ...
+# Subtest: tone entry is transient; repair, kills and clues survive reload
+ok 381 - tone entry is transient; repair, kills and clues survive reload
+  ---
+  duration_ms: 2.7536
+  type: 'test'
+  ...
+# Subtest: merchant exchanges fail cleanly when funds, quantities or scope fail
+ok 382 - merchant exchanges fail cleanly when funds, quantities or scope fail
+  ---
+  duration_ms: 6.5562
+  type: 'test'
+  ...
+# Subtest: merchant armor retains proper slot and does not heal on purchase/equip
+ok 383 - merchant armor retains proper slot and does not heal on purchase/equip
+  ---
+  duration_ms: 2.7886
+  type: 'test'
+  ...
+# Subtest: ore and berries exchange deduct exactly, overflow is refused
+ok 384 - ore and berries exchange deduct exactly, overflow is refused
+  ---
+  duration_ms: 3.0158
+  type: 'test'
+  ...
+# Subtest: inn restores actual vitals and denies service outside its porch
+ok 385 - inn restores actual vitals and denies service outside its porch
+  ---
+  duration_ms: 3.108
+  type: 'test'
+  ...
+# Subtest: common works deduct actual materials once and preserve home layout
+ok 386 - common works deduct actual materials once and preserve home layout
+  ---
+  duration_ms: 3.3046
+  type: 'test'
+  ...
+# Subtest: commission failure leaves supplies and flags untouched
+ok 387 - commission failure leaves supplies and flags untouched
+  ---
+  duration_ms: 3.5669
+  type: 'test'
+  ...
+# Subtest: waystone needs discovery and physical origin, does not heal or charge
+ok 388 - waystone needs discovery and physical origin, does not heal or charge
+  ---
+  duration_ms: 6.3445
+  type: 'test'
+  ...
+# Subtest: unattuned village cannot be fast-travelled to
+ok 389 - unattuned village cannot be fast-travelled to
+  ---
+  duration_ms: 2.7876
+  type: 'test'
+  ...
+# Subtest: travel refuses active attack modes and beacon assault
+ok 390 - travel refuses active attack modes and beacon assault
+  ---
+  duration_ms: 4.7341
+  type: 'test'
+  ...
+# Subtest: ordinary departure is local and preserves progress
+ok 391 - ordinary departure is local and preserves progress
+  ---
+  duration_ms: 2.9899
+  type: 'test'
+  ...
+# Subtest: same command receipt cannot be repurposed or pay twice
+ok 392 - same command receipt cannot be repurposed or pay twice
+  ---
+  duration_ms: 3.6614
+  type: 'test'
+  ...
+# Subtest: defeat recovery preserves crossing facts and revives outside
+ok 393 - defeat recovery preserves crossing facts and revives outside
+  ---
+  duration_ms: 8.7483
+  type: 'test'
+  ...
+# Subtest: cutaway preference is persisted and old migration defaults on
+ok 394 - cutaway preference is persisted and old migration defaults on
+  ---
+  duration_ms: 5.6142
+  type: 'test'
+  ...
+# Subtest: Fenna retains exact supported rule-adjacent anchors and does not invent consent
+ok 395 - Fenna retains exact supported rule-adjacent anchors and does not invent consent
+  ---
+  duration_ms: 7.4983
+  type: 'test'
+  ...
+# Subtest: confirmed arrival alone opens the load, and payment cannot redraw or repay it
+ok 396 - confirmed arrival alone opens the load, and payment cannot redraw or repay it
+  ---
+  duration_ms: 2.8238
+  type: 'test'
+  ...
+# Subtest: bounded complete drover and cart transforms remain positive and finite
+ok 397 - bounded complete drover and cart transforms remain positive and finite
+  ---
+  duration_ms: 144.6755
+  type: 'test'
+  ...
+# Subtest: rope grasp shares the actual coil frame, with connected upper and lower arms
+ok 398 - rope grasp shares the actual coil frame, with connected upper and lower arms
+  ---
+  duration_ms: 7.0458
+  type: 'test'
+  ...
+# Subtest: feet and four cart wheel rims meet actual terrain at both existing sites
+ok 399 - feet and four cart wheel rims meet actual terrain at both existing sites
+  ---
+  duration_ms: 1.1697
+  type: 'test'
+  ...
+# Subtest: short cart shafts stay clear of the established gathering cloth approach
+ok 400 - short cart shafts stay clear of the established gathering cloth approach
+  ---
+  duration_ms: 0.3312
+  type: 'test'
+  ...
+# Subtest: cart shafts cannot pass through Fenna at either existing waiting or delivered stance
+ok 401 - cart shafts cannot pass through Fenna at either existing waiting or delivered stance
+  ---
+  duration_ms: 8.0896
+  type: 'test'
+  ...
+# Subtest: sampling has no hidden clock, and reduced motion holds a connected complete pose
+ok 402 - sampling has no hidden clock, and reduced motion holds a connected complete pose
+  ---
+  duration_ms: 6.7103
+  type: 'test'
+  ...
+# Subtest: entry requires resolved delivery and physical field table; unpaid arrival is eligible
+ok 403 - entry requires resolved delivery and physical field table; unpaid arrival is eligible
+  ---
+  duration_ms: 18.4311
+  type: 'test'
+  ...
+# Subtest: table and all marks have real connected, walkable approaches
+ok 404 - table and all marks have real connected, walkable approaches
+  ---
+  duration_ms: 206.4038
+  type: 'test'
+  ...
+# Subtest: no pre-accept backfill; each accepted physical observation occurs once
+ok 405 - no pre-accept backfill; each accepted physical observation occurs once
+  ---
+  duration_ms: 8.3903
+  type: 'test'
+  ...
+# Subtest: table comparison rejects missing clues, obstructed or distant approach and malformed bearings atomically
+ok 406 - table comparison rejects missing clues, obstructed or distant approach and malformed bearings atomically
+  ---
+  duration_ms: 10.7126
+  type: 'test'
+  ...
+# Subtest: axis 0 and honest old-road preserve every reward and earlier system
+ok 407 - axis 0 and honest old-road preserve every reward and earlier system
+  ---
+  duration_ms: 3.9662
+  type: 'test'
+  ...
+# Subtest: axis 0 and honest waterworks preserve every reward and earlier system
+ok 408 - axis 0 and honest waterworks preserve every reward and earlier system
+  ---
+  duration_ms: 4.6538
+  type: 'test'
+  ...
+# Subtest: axis 180 and honest old-road preserve every reward and earlier system
+ok 409 - axis 180 and honest old-road preserve every reward and earlier system
+  ---
+  duration_ms: 3.853
+  type: 'test'
+  ...
+# Subtest: axis 180 and honest waterworks preserve every reward and earlier system
+ok 410 - axis 180 and honest waterworks preserve every reward and earlier system
+  ---
+  duration_ms: 5.5112
+  type: 'test'
+  ...
+# Subtest: each accepted, partly observed, compared and recorded stage survives reload
+ok 411 - each accepted, partly observed, compared and recorded stage survives reload
+  ---
+  duration_ms: 5.0646
+  type: 'test'
+  ...
+# Subtest: schema8 migration preserves unpaid delivery and all prior fields at XP boundaries without changing input
+ok 412 - schema8 migration preserves unpaid delivery and all prior fields at XP boundaries without changing input
+  ---
+  duration_ms: 7.5379
+  type: 'test'
+  ...
+# Subtest: missing, future, unknown and inconsistent notes refuse without erasing state
+ok 413 - missing, future, unknown and inconsistent notes refuse without erasing state
+  ---
+  duration_ms: 4.5519
+  type: 'test'
+  ...
+# Subtest: array-coerced interpretation cannot masquerade as a stable ID in a completed save
+ok 414 - array-coerced interpretation cannot masquerade as a stable ID in a completed save
+  ---
+  duration_ms: 0.899
+  type: 'test'
+  ...
+# Subtest: inspection and declined job create no progress; acceptance needs kit and proximity
+ok 415 - inspection and declined job create no progress; acceptance needs kit and proximity
+  ---
+  duration_ms: 13.3127
+  type: 'test'
+  ...
+# Subtest: every task uses supported reachable Earth ground
+ok 416 - every task uses supported reachable Earth ground
+  ---
+  duration_ms: 812.1824
+  type: 'test'
+  ...
+# Subtest: mill prerequisites and timber cost are atomic and charged once
+ok 417 - mill prerequisites and timber cost are atomic and charged once
+  ---
+  duration_ms: 5.9441
+  type: 'test'
+  ...
+# Subtest: mill completes with one finite payout and no gear, XP or chapter changes
+ok 418 - mill completes with one finite payout and no gear, XP or chapter changes
+  ---
+  duration_ms: 3.0481
+  type: 'test'
+  ...
+# Subtest: quarry completes with one finite payout and no gear, XP or chapter changes
+ok 419 - quarry completes with one finite payout and no gear, XP or chapter changes
+  ---
+  duration_ms: 2.3163
+  type: 'test'
+  ...
+# Subtest: detour completes with one finite payout and no gear, XP or chapter changes
+ok 420 - detour completes with one finite payout and no gear, XP or chapter changes
+  ---
+  duration_ms: 1.5919
+  type: 'test'
+  ...
+# Subtest: quarry and detour never consume personal materials; both observations precede lane marking
+ok 421 - quarry and detour never consume personal materials; both observations precede lane marking
+  ---
+  duration_ms: 1.0004
+  type: 'test'
+  ...
+# Subtest: full ore refuses entire payout and preserves completed entitlement
+ok 422 - full ore refuses entire payout and preserves completed entitlement
+  ---
+  duration_ms: 1.644
+  type: 'test'
+  ...
+# Subtest: full coins refuses entire payout and preserves completed entitlement
+ok 423 - full coins refuses entire payout and preserves completed entitlement
+  ---
+  duration_ms: 5.6671
+  type: 'test'
+  ...
+# Subtest: full fiber refuses entire payout and preserves completed entitlement
+ok 424 - full fiber refuses entire payout and preserves completed entitlement
+  ---
+  duration_ms: 1.7996
+  type: 'test'
+  ...
+# Subtest: all durable stages survive canonical reload with no implicit rewards or reacceptance
+ok 425 - all durable stages survive canonical reload with no implicit rewards or reacceptance
+  ---
+  duration_ms: 6.2163
+  type: 'test'
+  ...
+# Subtest: schema7 migration preserves banked XP and every older canonical field without mutating input
+ok 426 - schema7 migration preserves banked XP and every older canonical field without mutating input
+  ---
+  duration_ms: 6.695
+  type: 'test'
+  ...
+# Subtest: current-schema missing, future and inconsistent story state refuses instead of erasing
+ok 427 - current-schema missing, future and inconsistent story state refuses instead of erasing
+  ---
+  duration_ms: 5.3916
+  type: 'test'
+  ...
+# Subtest: other improvements remain available after claim without replaying delivery or payment
+ok 428 - other improvements remain available after claim without replaying delivery or payment
+  ---
+  duration_ms: 1.4993
+  type: 'test'
+  ...
+# Subtest: new trail marker does not steal the existing Lantern Pier interaction radius
+ok 429 - new trail marker does not steal the existing Lantern Pier interaction radius
+  ---
+  duration_ms: 4.407
+  type: 'test'
+  ...
+# Subtest: orchard and ridge approaches connect the lake to Bellweather west road
+ok 430 - orchard and ridge approaches connect the lake to Bellweather west road
+  ---
+  duration_ms: 71.7237
+  type: 'test'
+  ...
+# Subtest: entry saves exact lake checkpoint and transient Earth room never becomes persisted position
+ok 431 - entry saves exact lake checkpoint and transient Earth room never becomes persisted position
+  ---
+  duration_ms: 12.6574
+  type: 'test'
+  ...
+# Subtest: travel refusal and scene failure are atomic
+ok 432 - travel refusal and scene failure are atomic
+  ---
+  duration_ms: 2.8065
+  type: 'test'
+  ...
+# Subtest: stale character, revision, position and cancellation cannot enter
+ok 433 - stale character, revision, position and cancellation cannot enter
+  ---
+  duration_ms: 1.2368
+  type: 'test'
+  ...
+# Subtest: fall recovery uses supported entry and return works from the far road
+ok 434 - fall recovery uses supported entry and return works from the far road
+  ---
+  duration_ms: 2.2365
+  type: 'test'
+  ...
+# Subtest: height-aware surface pick accepts ground and refuses watercourse, solids and sky
+ok 435 - height-aware surface pick accepts ground and refuses watercourse, solids and sky
+  ---
+  duration_ms: 12.0571
+  type: 'test'
+  ...
+# Subtest: manual movement slides without crossing unsupported segments
+ok 436 - manual movement slides without crossing unsupported segments
+  ---
+  duration_ms: 11.0139
+  type: 'test'
+  ...
+# Subtest: orchard worksite crossing preserves outer save checkpoint and returns to the orchard
+ok 437 - orchard worksite crossing preserves outer save checkpoint and returns to the orchard
+  ---
+  duration_ms: 34.2215
+  type: 'test'
+  ...
+# Subtest: initial kit and physical orchard arrival are required; the scene cannot bypass old chapter gates
+ok 438 - initial kit and physical orchard arrival are required; the scene cannot bypass old chapter gates
+  ---
+  duration_ms: 2.4279
+  type: 'test'
+  ...
+# Subtest: worksite travel write and construction failures preserve the exact active source
+ok 439 - worksite travel write and construction failures preserve the exact active source
+  ---
+  duration_ms: 4.0975
+  type: 'test'
+  ...
+# Subtest: worksite preview rejects stale identity, source revision, source position and simulation
+ok 440 - worksite preview rejects stale identity, source revision, source position and simulation
+  ---
+  duration_ms: 4.3136
+  type: 'test'
+  ...
+# Subtest: river exit only returns to Earth for an active Earth trip; the old workshop route is unchanged
+ok 441 - river exit only returns to Earth for an active Earth trip; the old workshop route is unchanged
+  ---
+  duration_ms: 0.7412
+  type: 'test'
+  ...
+# Subtest: a completed unclaimed survey, class cooldown and companion survive both route boundaries
+ok 442 - a completed unclaimed survey, class cooldown and companion survive both route boundaries
+  ---
+  duration_ms: 3.1965
+  type: 'test'
+  ...
+# Subtest: death recovery from the connected worksite clears all transient route state
+ok 443 - death recovery from the connected worksite clears all transient route state
+  ---
+  duration_ms: 1.5587
+  type: 'test'
+  ...
+# Subtest: browser return protocol rolls back failed construction with live encounter state intact
+ok 444 - browser return protocol rolls back failed construction with live encounter state intact
+  ---
+  duration_ms: 2.4652
+  type: 'test'
+  ...
+# Subtest: Oren supplies earned through the orchard persist without consuming ordinary materials
+ok 445 - Oren supplies earned through the orchard persist without consuming ordinary materials
+  ---
+  duration_ms: 2.7227
+  type: 'test'
+  ...
+# Subtest: Earth scenery cannot overlap walking ground or the close third-person camera corridor
+ok 446 - Earth scenery cannot overlap walking ground or the close third-person camera corridor
+  ---
+  duration_ms: 21.3136
+  type: 'test'
+  ...
+# Subtest: Cosmos invitation labels belong only to the valley, never Earth or the riverbank
+ok 447 - Cosmos invitation labels belong only to the valley, never Earth or the riverbank
+  ---
+  duration_ms: 1.3666
+  type: 'test'
+  ...
+# Subtest: captured terrain, field random sequence, static scenery, camera solids and bridge remain byte-identical to PR33
+ok 448 - captured terrain, field random sequence, static scenery, camera solids and bridge remain byte-identical to PR33
+  ---
+  duration_ms: 16.1599
+  type: 'test'
+  ...
+# Subtest: nine bounded tapering rock sections dress thirty-six actual grass strips in the existing batch
+ok 449 - nine bounded tapering rock sections dress thirty-six actual grass strips in the existing batch
+  ---
+  duration_ms: 9.5926
+  type: 'test'
+  ...
+# Subtest: upper rock seam matches every transformed grass underside rather than canonical edge height
+ok 450 - upper rock seam matches every transformed grass underside rather than canonical edge height
+  ---
+  duration_ms: 7.028
+  type: 'test'
+  ...
+# Subtest: orthogonal positive bases preserve renderer normals without a shear shortcut
+ok 451 - orthogonal positive bases preserve renderer normals without a shear shortcut
+  ---
+  duration_ms: 5.5995
+  type: 'test'
+  ...
+# Subtest: every actual slope vertex stays outside ground below the lip and within measured endpoint margin
+ok 452 - every actual slope vertex stays outside ground below the lip and within measured endpoint margin
+  ---
+  duration_ms: 13.2382
+  type: 'test'
+  ...
+# Subtest: actual non-cap faces have outward normals and never create a horizontal walking shelf
+ok 453 - actual non-cap faces have outward normals and never create a horizontal walking shelf
+  ---
+  duration_ms: 9.1403
+  type: 'test'
+  ...
+# Subtest: actual adjacent cap planes retain overlap at every exposed height, not only the top endpoints
+ok 454 - actual adjacent cap planes retain overlap at every exposed height, not only the top endpoints
+  ---
+  duration_ms: 6.853
+  type: 'test'
+  ...
+# Subtest: near-edge road movement and old task approaches survive while outside ground and picking stay refused
+ok 455 - near-edge road movement and old task approaches survive while outside ground and picking stay refused
+  ---
+  duration_ms: 42.9655
+  type: 'test'
+  ...
+# Subtest: projection never mutates its source strips and is independent of simulation time or task state
+ok 456 - projection never mutates its source strips and is independent of simulation time or task state
+  ---
+  duration_ms: 7.183
+  type: 'test'
+  ...
+# Subtest: schema 9 migrates non-destructively with an unaccepted invitation
+ok 457 - schema 9 migrates non-destructively with an unaccepted invitation
+  ---
+  duration_ms: 13.807
+  type: 'test'
+  ...
+# Subtest: missing current record and forward schema are refused
+ok 458 - missing current record and forward schema are refused
+  ---
+  duration_ms: 1.0671
+  type: 'test'
+  ...
+# Subtest: arrival not payment opens the invitation
+ok 459 - arrival not payment opens the invitation
+  ---
+  duration_ms: 8.3699
+  type: 'test'
+  ...
+# Subtest: supported places are reachable by actual pathfinder
+ok 460 - supported places are reachable by actual pathfinder
+  ---
+  duration_ms: 3.5206
+  type: 'test'
+  ...
+# Subtest: all arrangements complete silently without economy, score or campaign changes
+ok 461 - all arrangements complete silently without economy, score or campaign changes
+  ---
+  duration_ms: 6.1097
+  type: 'test'
+  ...
+# Subtest: early or unknown actions change nothing
+ok 462 - early or unknown actions change nothing
+  ---
+  duration_ms: 2.8082
+  type: 'test'
+  ...
+# Subtest: prototype and non-string choices are refused atomically
+ok 463 - prototype and non-string choices are refused atomically
+  ---
+  duration_ms: 8.4405
+  type: 'test'
+  ...
+# Subtest: completion cannot be repeated after receipt eviction
+ok 464 - completion cannot be repeated after receipt eviction
+  ---
+  duration_ms: 5.3269
+  type: 'test'
+  ...
+# Subtest: changed terms cannot reuse an accepted command identity
+ok 465 - changed terms cannot reuse an accepted command identity
+  ---
+  duration_ms: 2.9355
+  type: 'test'
+  ...
+# Subtest: paused, fallen and revision-saturated characters cannot progress
+ok 466 - paused, fallen and revision-saturated characters cannot progress
+  ---
+  duration_ms: 3.7608
+  type: 'test'
+  ...
+# Subtest: malformed durable combinations do not load
+ok 467 - malformed durable combinations do not load
+  ---
+  duration_ms: 0.4776
+  type: 'test'
+  ...
+# Subtest: original arrangements are deterministic, finite, stereo and bounded
+ok 468 - original arrangements are deterministic, finite, stereo and bounded
+  ---
+  duration_ms: 399.3794
+  type: 'test'
+  ...
+# Subtest: full schema9 world migration preserves unpaid delivery, personal creations and every XP boundary
+ok 469 - full schema9 world migration preserves unpaid delivery, personal creations and every XP boundary
+  ---
+  duration_ms: 10.2918
+  type: 'test'
+  ...
+# Subtest: native character library migrates each world without sharing the table memory
+ok 470 - native character library migrates each world without sharing the table memory
+  ---
+  duration_ms: 3.6464
+  type: 'test'
+  ...
+# Subtest: forward adventure saves stay refused by native storage and leave exact bytes intact
+ok 471 - forward adventure saves stay refused by native storage and leave exact bytes intact
+  ---
+  duration_ms: 1.337
+  type: 'test'
+  ...
+# Subtest: the actual drawn tabletop is reachable and supports the gathering interaction
+ok 472 - the actual drawn tabletop is reachable and supports the gathering interaction
+  ---
+  duration_ms: 2.4073
+  type: 'test'
+  ...
+# Subtest: prepared cloth and the actual Earth tabletop share one reachable location
+ok 473 - prepared cloth and the actual Earth tabletop share one reachable location
+  ---
+  duration_ms: 12.0106
+  type: 'test'
+  ...
+# Subtest: silent completion: mill; cloth→lantern→stand
+ok 474 - silent completion: mill; cloth→lantern→stand
+  ---
+  duration_ms: 5.7084
+  type: 'test'
+  ...
+# Subtest: silent completion: mill; cloth→stand→lantern
+ok 475 - silent completion: mill; cloth→stand→lantern
+  ---
+  duration_ms: 1.0471
+  type: 'test'
+  ...
+# Subtest: silent completion: mill; lantern→cloth→stand
+ok 476 - silent completion: mill; lantern→cloth→stand
+  ---
+  duration_ms: 1.3894
+  type: 'test'
+  ...
+# Subtest: silent completion: mill; lantern→stand→cloth
+ok 477 - silent completion: mill; lantern→stand→cloth
+  ---
+  duration_ms: 0.8038
+  type: 'test'
+  ...
+# Subtest: silent completion: mill; stand→cloth→lantern
+ok 478 - silent completion: mill; stand→cloth→lantern
+  ---
+  duration_ms: 0.8901
+  type: 'test'
+  ...
+# Subtest: silent completion: mill; stand→lantern→cloth
+ok 479 - silent completion: mill; stand→lantern→cloth
+  ---
+  duration_ms: 1.1082
+  type: 'test'
+  ...
+# Subtest: silent completion: quarry; cloth→lantern→stand
+ok 480 - silent completion: quarry; cloth→lantern→stand
+  ---
+  duration_ms: 0.6077
+  type: 'test'
+  ...
+# Subtest: silent completion: quarry; cloth→stand→lantern
+ok 481 - silent completion: quarry; cloth→stand→lantern
+  ---
+  duration_ms: 0.7432
+  type: 'test'
+  ...
+# Subtest: silent completion: quarry; lantern→cloth→stand
+ok 482 - silent completion: quarry; lantern→cloth→stand
+  ---
+  duration_ms: 0.9236
+  type: 'test'
+  ...
+# Subtest: silent completion: quarry; lantern→stand→cloth
+ok 483 - silent completion: quarry; lantern→stand→cloth
+  ---
+  duration_ms: 1.393
+  type: 'test'
+  ...
+# Subtest: silent completion: quarry; stand→cloth→lantern
+ok 484 - silent completion: quarry; stand→cloth→lantern
+  ---
+  duration_ms: 1.3593
+  type: 'test'
+  ...
+# Subtest: silent completion: quarry; stand→lantern→cloth
+ok 485 - silent completion: quarry; stand→lantern→cloth
+  ---
+  duration_ms: 0.7555
+  type: 'test'
+  ...
+# Subtest: silent completion: detour; cloth→lantern→stand
+ok 486 - silent completion: detour; cloth→lantern→stand
+  ---
+  duration_ms: 0.6438
+  type: 'test'
+  ...
+# Subtest: silent completion: detour; cloth→stand→lantern
+ok 487 - silent completion: detour; cloth→stand→lantern
+  ---
+  duration_ms: 0.7942
+  type: 'test'
+  ...
+# Subtest: silent completion: detour; lantern→cloth→stand
+ok 488 - silent completion: detour; lantern→cloth→stand
+  ---
+  duration_ms: 0.4764
+  type: 'test'
+  ...
+# Subtest: silent completion: detour; lantern→stand→cloth
+ok 489 - silent completion: detour; lantern→stand→cloth
+  ---
+  duration_ms: 0.4484
+  type: 'test'
+  ...
+# Subtest: silent completion: detour; stand→cloth→lantern
+ok 490 - silent completion: detour; stand→cloth→lantern
+  ---
+  duration_ms: 0.7715
+  type: 'test'
+  ...
+# Subtest: silent completion: detour; stand→lantern→cloth
+ok 491 - silent completion: detour; stand→lantern→cloth
+  ---
+  duration_ms: 0.5372
+  type: 'test'
+  ...
+# Subtest: new table never captures unpaid-delivery interaction on the overlap edge
+ok 492 - new table never captures unpaid-delivery interaction on the overlap edge
+  ---
+  duration_ms: 0.552
+  type: 'test'
+  ...
+# Subtest: finished preparation relinquishes its contextual interaction
+ok 493 - finished preparation relinquishes its contextual interaction
+  ---
+  duration_ms: 0.5949
+  type: 'test'
+  ...
+# Subtest: arrival is a boolean fact, not arbitrary truthy data
+ok 494 - arrival is a boolean fact, not arbitrary truthy data
+  ---
+  duration_ms: 0.102
+  type: 'test'
+  ...
+# Subtest: missing arrival cannot grant invitation
+ok 495 - missing arrival cannot grant invitation
+  ---
+  duration_ms: 0.0563
+  type: 'test'
+  ...
+# Subtest: invalid choice refuses without mutation: null
+ok 496 - invalid choice refuses without mutation: null
+  ---
+  duration_ms: 0.6963
+  type: 'test'
+  ...
+# Subtest: invalid choice refuses without mutation: 1
+ok 497 - invalid choice refuses without mutation: 1
+  ---
+  duration_ms: 0.364
+  type: 'test'
+  ...
+# Subtest: invalid choice refuses without mutation: ["mill"]
+ok 498 - invalid choice refuses without mutation: ["mill"]
+  ---
+  duration_ms: 0.3361
+  type: 'test'
+  ...
+# Subtest: invalid choice refuses without mutation: {}
+ok 499 - invalid choice refuses without mutation: {}
+  ---
+  duration_ms: 0.3977
+  type: 'test'
+  ...
+# Subtest: invalid choice refuses without mutation: "constructor"
+ok 500 - invalid choice refuses without mutation: "constructor"
+  ---
+  duration_ms: 0.3537
+  type: 'test'
+  ...
+# Subtest: invalid choice refuses without mutation: "__proto__"
+ok 501 - invalid choice refuses without mutation: "__proto__"
+  ---
+  duration_ms: 0.5962
+  type: 'test'
+  ...
+# Subtest: invalid choice refuses without mutation: "unknown"
+ok 502 - invalid choice refuses without mutation: "unknown"
+  ---
+  duration_ms: 0.3236
+  type: 'test'
+  ...
+# Subtest: distant or wrong-scene acceptance cannot mutate state
+ok 503 - distant or wrong-scene acceptance cannot mutate state
+  ---
+  duration_ms: 0.1892
+  type: 'test'
+  ...
+# Subtest: distant or wrong-scene acceptance cannot mutate state
+ok 504 - distant or wrong-scene acceptance cannot mutate state
+  ---
+  duration_ms: 0.1327
+  type: 'test'
+  ...
+# Subtest: distant or wrong-scene acceptance cannot mutate state
+ok 505 - distant or wrong-scene acceptance cannot mutate state
+  ---
+  duration_ms: 0.1529
+  type: 'test'
+  ...
+# Subtest: impossible saved gathering is refused
+ok 506 - impossible saved gathering is refused
+  ---
+  duration_ms: 0.2628
+  type: 'test'
+  ...
+# Subtest: impossible saved gathering is refused
+ok 507 - impossible saved gathering is refused
+  ---
+  duration_ms: 0.0751
+  type: 'test'
+  ...
+# Subtest: impossible saved gathering is refused
+ok 508 - impossible saved gathering is refused
+  ---
+  duration_ms: 0.0785
+  type: 'test'
+  ...
+# Subtest: impossible saved gathering is refused
+ok 509 - impossible saved gathering is refused
+  ---
+  duration_ms: 0.0677
+  type: 'test'
+  ...
+# Subtest: impossible saved gathering is refused
+ok 510 - impossible saved gathering is refused
+  ---
+  duration_ms: 0.0631
+  type: 'test'
+  ...
+# Subtest: stop is safe even when an audio node already disconnected
+ok 511 - stop is safe even when an audio node already disconnected
+  ---
+  duration_ms: 219.4948
+  type: 'test'
+  ...
+# Subtest: suspended context starts no source until resume succeeds
+ok 512 - suspended context starts no source until resume succeeds
+  ---
+  duration_ms: 181.3569
+  type: 'test'
+  ...
+# Subtest: stopping while resume is pending prevents late music
+ok 513 - stopping while resume is pending prevents late music
+  ---
+  duration_ms: 0.2381
+  type: 'test'
+  ...
+# Subtest: a newer preview cannot be replaced by an older resume completion
+ok 514 - a newer preview cannot be replaced by an older resume completion
+  ---
+  duration_ms: 192.5898
+  type: 'test'
+  ...
+# Subtest: denied resume resolves false with no source or unhandled rejection
+ok 515 - denied resume resolves false with no source or unhandled rejection
+  ---
+  duration_ms: 0.3334
+  type: 'test'
+  ...
+# Subtest: failed source startup cleans every newly created node
+ok 516 - failed source startup cleans every newly created node
+  ---
+  duration_ms: 216.266
+  type: 'test'
+  ...
+# Subtest: owner eligibility is rechecked after a delayed resume
+ok 517 - owner eligibility is rechecked after a delayed resume
+  ---
+  duration_ms: 0.304
+  type: 'test'
+  ...
+# Subtest: an ended callback from an old source cannot stop new audio
+ok 518 - an ended callback from an old source cannot stop new audio
+  ---
+  duration_ms: 396.6925
+  type: 'test'
+  ...
+# Subtest: deterministic, finite, stereo music: mill
+ok 519 - deterministic, finite, stereo music: mill
+  ---
+  duration_ms: 110.1014
+  type: 'test'
+  ...
+# Subtest: deterministic, finite, stereo music: quarry
+ok 520 - deterministic, finite, stereo music: quarry
+  ---
+  duration_ms: 113.5634
+  type: 'test'
+  ...
+# Subtest: deterministic, finite, stereo music: detour
+ok 521 - deterministic, finite, stereo music: detour
+  ---
+  duration_ms: 92.7195
+  type: 'test'
+  ...
+# Subtest: gate lift is a pure projection of the existing saved repair
+ok 522 - gate lift is a pure projection of the existing saved repair
+  ---
+  duration_ms: 1.356
+  type: 'test'
+  ...
+# Subtest: five separated timber planks have positive connected transforms and vertical grain
+ok 523 - five separated timber planks have positive connected transforms and vertical grain
+  ---
+  duration_ms: 0.2764
+  type: 'test'
+  ...
+# Subtest: jammed and repaired hardware differ without becoming navigation or camera authorities
+ok 524 - jammed and repaired hardware differ without becoming navigation or camera authorities
+  ---
+  duration_ms: 0.1925
+  type: 'test'
+  ...
+# Subtest: rack stays engaged with the fixed pinion in both leaf positions
+ok 525 - rack stays engaged with the fixed pinion in both leaf positions
+  ---
+  duration_ms: 0.1255
+  type: 'test'
+  ...
+# Subtest: fixed frame stays around the established bank anchor with three mapped members
+ok 526 - fixed frame stays around the established bank anchor with three mapped members
+  ---
+  duration_ms: 0.2953
+  type: 'test'
+  ...
+# Subtest: gate projection remains bounded to 29 moving parts and five timber instances
+ok 527 - gate projection remains bounded to 29 moving parts and five timber instances
+  ---
+  duration_ms: 0.1223
+  type: 'test'
+  ...
+# Subtest: Ansel keeps the exact Earth resident anchor and excludes navigation/camera ownership
+ok 528 - Ansel keeps the exact Earth resident anchor and excludes navigation/camera ownership
+  ---
+  duration_ms: 3.5095
+  type: 'test'
+  ...
+# Subtest: bounded body and tool transforms remain finite and positive through the full work cycle
+ok 529 - bounded body and tool transforms remain finite and positive through the full work cycle
+  ---
+  duration_ms: 27.05
+  type: 'test'
+  ...
+# Subtest: both hands belong to the actual square frame throughout inspection
+ok 530 - both hands belong to the actual square frame throughout inspection
+  ---
+  duration_ms: 0.9987
+  type: 'test'
+  ...
+# Subtest: proper 3D segments connect both elbows, hands and legs without cross-body gaps
+ok 531 - proper 3D segments connect both elbows, hands and legs without cross-body gaps
+  ---
+  duration_ms: 0.4376
+  type: 'test'
+  ...
+# Subtest: feet meet the supplied ground and the square has a real right angle
+ok 532 - feet meet the supplied ground and the square has a real right angle
+  ---
+  duration_ms: 0.266
+  type: 'test'
+  ...
+# Subtest: pure sampling changes only with supplied time and reduced motion keeps one complete stance
+ok 533 - pure sampling changes only with supplied time and reduced motion keeps one complete stance
+  ---
+  duration_ms: 2.0329
+  type: 'test'
+  ...
+# Subtest: creative presentation tick preserves sandbox blueprint and grid
+ok 534 - creative presentation tick preserves sandbox blueprint and grid
+  ---
+  duration_ms: 11.4733
+  type: 'test'
+  ...
+# Subtest: creative tick still clears its own stale playing and room-selection fields
+ok 535 - creative tick still clears its own stale playing and room-selection fields
+  ---
+  duration_ms: 4.5476
+  type: 'test'
+  ...
+# Subtest: selected slot and active music never replace another presentation owner
+ok 536 - selected slot and active music never replace another presentation owner
+  ---
+  duration_ms: 2.9795
+  type: 'test'
+  ...
+# Subtest: placement confirmation stays disabled before a tile is selected
+ok 537 - placement confirmation stays disabled before a tile is selected
+  ---
+  duration_ms: 2.4836
+  type: 'test'
+  ...
+# Subtest: explicit survey acceptance uses kit and the next expected sequence
+ok 538 - explicit survey acceptance uses kit and the next expected sequence
+  ---
+  duration_ms: 14.5234
+  type: 'test'
+  ...
+# Subtest: older saves acquire empty project data without changing XP or creative work
+ok 539 - older saves acquire empty project data without changing XP or creative work
+  ---
+  duration_ms: 13.9652
+  type: 'test'
+  ...
+# Subtest: a pin is a persisted attainable choice, not ownership or campaign consent
+ok 540 - a pin is a persisted attainable choice, not ownership or campaign consent
+  ---
+  duration_ms: 3.6509
+  type: 'test'
+  ...
+# Subtest: guide projects real craft sources and honest comparisons for an unowned weapon
+ok 541 - guide projects real craft sources and honest comparisons for an unowned weapon
+  ---
+  duration_ms: 1.128
+  type: 'test'
+  ...
+# Subtest: next-step preview resolves the Ashwood prerequisite separately from the longbow target
+ok 542 - next-step preview resolves the Ashwood prerequisite separately from the longbow target
+  ---
+  duration_ms: 1.6845
+  type: 'test'
+  ...
+# Subtest: each prerequisite and target preview matches the actual craft then deliberate equip
+ok 543 - each prerequisite and target preview matches the actual craft then deliberate equip
+  ---
+  duration_ms: 2.922
+  type: 'test'
+  ...
+# Subtest: next-step forge and both finite fittings match accepted commands without spending during preview
+ok 544 - next-step forge and both finite fittings match accepted commands without spending during preview
+  ---
+  duration_ms: 2.636
+  type: 'test'
+  ...
+# Subtest: unequipped bow fitting preview keeps distinct sockets, health and Oren temper
+ok 545 - unequipped bow fitting preview keeps distinct sockets, health and Oren temper
+  ---
+  duration_ms: 1.6935
+  type: 'test'
+  ...
+# Subtest: finished, uncraftable and invalid project IDs have no invented next step
+ok 546 - finished, uncraftable and invalid project IDs have no invented next step
+  ---
+  duration_ms: 1.0324
+  type: 'test'
+  ...
+# Subtest: repeated immutable next-step previews keep XP, all history, cost, vitals and selected socket unchanged
+ok 547 - repeated immutable next-step previews keep XP, all history, cost, vitals and selected socket unchanged
+  ---
+  duration_ms: 4.0284
+  type: 'test'
+  ...
+# Subtest: Oren comparisons explicitly use current XP and do not project or award the separate XP reward
+ok 548 - Oren comparisons explicitly use current XP and do not project or award the separate XP reward
+  ---
+  duration_ms: 5.7265
+  type: 'test'
+  ...
+# Subtest: survey cannot be accepted remotely or before kit, and failed start is atomic
+ok 549 - survey cannot be accepted remotely or before kit, and failed start is atomic
+  ---
+  duration_ms: 4.3312
+  type: 'test'
+  ...
+# Subtest: survey temporarily owns encounters without replaying the once-only quest
+ok 550 - survey temporarily owns encounters without replaying the once-only quest
+  ---
+  duration_ms: 2.2491
+  type: 'test'
+  ...
+# Subtest: accepted sample events require run identity, proximity and once-per-run ownership
+ok 551 - accepted sample events require run identity, proximity and once-per-run ownership
+  ---
+  duration_ms: 2.5503
+  type: 'test'
+  ...
+# Subtest: actual defeat progresses the active run but creates no story defeat, cache or XP
+ok 552 - actual defeat progresses the active run but creates no story defeat, cache or XP
+  ---
+  duration_ms: 0.8372
+  type: 'test'
+  ...
+# Subtest: each deliberate completed run pays once, including after reload and receipt eviction
+ok 553 - each deliberate completed run pays once, including after reload and receipt eviction
+  ---
+  duration_ms: 3.8593
+  type: 'test'
+  ...
+# Subtest: changed request IDs cannot claim an incomplete run or a stale entitlement
+ok 554 - changed request IDs cannot claim an incomplete run or a stale entitlement
+  ---
+  duration_ms: 1.7613
+  type: 'test'
+  ...
+# Subtest: full ore refuses the entire claim and preserves earned entitlement
+ok 555 - full ore refuses the entire claim and preserves earned entitlement
+  ---
+  duration_ms: 1.2181
+  type: 'test'
+  ...
+# Subtest: full coins refuses the entire claim and preserves earned entitlement
+ok 556 - full coins refuses the entire claim and preserves earned entitlement
+  ---
+  duration_ms: 0.8694
+  type: 'test'
+  ...
+# Subtest: full fiber refuses the entire claim and preserves earned entitlement
+ok 557 - full fiber refuses the entire claim and preserves earned entitlement
+  ---
+  duration_ms: 1.3707
+  type: 'test'
+  ...
+# Subtest: finite fittings consume whole costs, keep equipped identity and preserve sockets
+ok 558 - finite fittings consume whole costs, keep equipped identity and preserve sockets
+  ---
+  duration_ms: 1.0214
+  type: 'test'
+  ...
+# Subtest: invalid, distant, out-of-order and missing-cost fittings never partly spend materials
+ok 559 - invalid, distant, out-of-order and missing-cost fittings never partly spend materials
+  ---
+  duration_ms: 2.3259
+  type: 'test'
+  ...
+# Subtest: improving an unequipped bow never equips it or changes the equipped socket
+ok 560 - improving an unequipped bow never equips it or changes the equipped socket
+  ---
+  duration_ms: 0.3033
+  type: 'test'
+  ...
+# Subtest: fittings affect both real damage paths and leave obstruction rules intact
+ok 561 - fittings affect both real damage paths and leave obstruction rules intact
+  ---
+  duration_ms: 4.4245
+  type: 'test'
+  ...
+# Subtest: present malformed ledgers refuse import instead of resetting paid history
+ok 562 - present malformed ledgers refuse import instead of resetting paid history
+  ---
+  duration_ms: 4.7784
+  type: 'test'
+  ...
+# Subtest: Darric remains at the supported existing anchor beside the real collection approach
+ok 563 - Darric remains at the supported existing anchor beside the real collection approach
+  ---
+  duration_ms: 2.5836
+  type: 'test'
+  ...
+# Subtest: complete actor and actual tool matrices remain finite positive and bounded across every stage
+ok 564 - complete actor and actual tool matrices remain finite positive and bounded across every stage
+  ---
+  duration_ms: 98.6957
+  type: 'test'
+  ...
+# Subtest: both gloved hands meet the real resting handle through every pose and stage
+ok 565 - both gloved hands meet the real resting handle through every pose and stage
+  ---
+  duration_ms: 2.9816
+  type: 'test'
+  ...
+# Subtest: full 3D limb bases connect submitted endpoints instead of rotating only in one plane
+ok 566 - full 3D limb bases connect submitted endpoints instead of rotating only in one plane
+  ---
+  duration_ms: 1.0647
+  type: 'test'
+  ...
+# Subtest: transformed soles meet canonical shallow ground within six millimetres
+ok 567 - transformed soles meet canonical shallow ground within six millimetres
+  ---
+  duration_ms: 0.6309
+  type: 'test'
+  ...
+# Subtest: actual actor and mallet volumes clear collection stance sign and reserved blocks at pose extremes
+ok 568 - actual actor and mallet volumes clear collection stance sign and reserved blocks at pose extremes
+  ---
+  duration_ms: 48.7058
+  type: 'test'
+  ...
+# Subtest: actual mallet head clears body boxes and conservative round bounds through the full posing cycle
+ok 569 - actual mallet head clears body boxes and conservative round bounds through the full posing cycle
+  ---
+  duration_ms: 473.4724
+  type: 'test'
+  ...
+# Subtest: three stable individually tallied blocks project release only and twelve flush stones project packing only
+ok 570 - three stable individually tallied blocks project release only and twelve flush stones project packing only
+  ---
+  duration_ms: 3.9529
+  type: 'test'
+  ...
+# Subtest: pure pose uses only supplied simulation time and reduced motion freezes each complete stage
+ok 571 - pure pose uses only supplied simulation time and reduced motion freezes each complete stage
+  ---
+  duration_ms: 6.8061
+  type: 'test'
+  ...
+# Subtest: adventure 10 and missing optional trails preserve all ten XP boundaries and source input
+ok 572 - adventure 10 and missing optional trails preserve all ten XP boundaries and source input
+  ---
+  duration_ms: 34.5207
+  type: 'test'
+  ...
+# Subtest: current/future schemas refuse missing fields, foreign steps and impossible histories
+ok 573 - current/future schemas refuse missing fields, foreign steps and impossible histories
+  ---
+  duration_ms: 10.0927
+  type: 'test'
+  ...
+# Subtest: trail acceptance and realm fitting require their cross-owner earned histories on import
+ok 574 - trail acceptance and realm fitting require their cross-owner earned histories on import
+  ---
+  duration_ms: 1.2407
+  type: 'test'
+  ...
+# Subtest: acceptance requires the kit, correct realm, physical giver and living dry character
+ok 575 - acceptance requires the kit, correct realm, physical giver and living dry character
+  ---
+  duration_ms: 5.6456
+  type: 'test'
+  ...
+# Subtest: malformed transient XZ and depth cannot qualify a physical trail action
+ok 576 - malformed transient XZ and depth cannot qualify a physical trail action
+  ---
+  duration_ms: 5.2447
+  type: 'test'
+  ...
+# Subtest: accept/step refusal from throwing or unavailable persistence changes no live state
+ok 577 - accept/step refusal from throwing or unavailable persistence changes no live state
+  ---
+  duration_ms: 5.0232
+  type: 'test'
+  ...
+# Subtest: supply preparation is physical, dependency-checked and grants nothing before claim
+ok 578 - supply preparation is physical, dependency-checked and grants nothing before claim
+  ---
+  duration_ms: 4.1997
+  type: 'test'
+  ...
+# Subtest: wet readings need actual depth/body medium and cannot be recorded on the overhead deck
+ok 579 - wet readings need actual depth/body medium and cannot be recorded on the overhead deck
+  ---
+  duration_ms: 3.7902
+  type: 'test'
+  ...
+# Subtest: Bellglass chart works in the actual air court and wrong choices are costless refusals
+ok 580 - Bellglass chart works in the actual air court and wrong choices are costless refusals
+  ---
+  duration_ms: 5.6283
+  type: 'test'
+  ...
+# Subtest: each material slot and currency limit refuses the whole declared claim, then exact capacity succeeds
+ok 581 - each material slot and currency limit refuses the whole declared claim, then exact capacity succeeds
+  ---
+  duration_ms: 15.9554
+  type: 'test'
+  ...
+# Subtest: claim validates/saves the full paid candidate before applying it and retains live owner objects
+ok 582 - claim validates/saves the full paid candidate before applying it and retains live owner objects
+  ---
+  duration_ms: 8.5596
+  type: 'test'
+  ...
+# Subtest: claim clamps XP at 9999 without replacing the retained five-level curve
+ok 583 - claim clamps XP at 9999 without replacing the retained five-level curve
+  ---
+  duration_ms: 3.1695
+  type: 'test'
+  ...
+# Subtest: partial, ready and paid records survive snapshot/reload without accepting or paying again
+ok 584 - partial, ready and paid records survive snapshot/reload without accepting or paying again
+  ---
+  duration_ms: 4.4047
+  type: 'test'
+  ...
+# Subtest: a real in-memory character Store makes quota refusal atomic and pays one saved entitlement
+ok 585 - a real in-memory character Store makes quota refusal atomic and pays one saved entitlement
+  ---
+  duration_ms: 4.6934
+  type: 'test'
+  ...
+# Subtest: a missing saver refuses claim and fitting without recording a false durable success
+ok 586 - a missing saver refuses claim and fitting without recording a false durable success
+  ---
+  duration_ms: 6.4195
+  type: 'test'
+  ...
+# Subtest: managed Store writer and changed-source refusals preserve the complete unpaid trail
+ok 587 - managed Store writer and changed-source refusals preserve the complete unpaid trail
+  ---
+  duration_ms: 8.9692
+  type: 'test'
+  ...
+# Subtest: independent character worlds keep trail claims and the fitting entitlement separate
+ok 588 - independent character worlds keep trail claims and the fitting entitlement separate
+  ---
+  duration_ms: 7.115
+  type: 'test'
+  ...
+# Subtest: a fitting requires claimed work, an outdoor bench, life, an owned weapon and complete cost
+ok 589 - a fitting requires claimed work, an outdoor bench, life, an owned weapon and complete cost
+  ---
+  duration_ms: 29.9441
+  type: 'test'
+  ...
+# Subtest: finite fitting spends only after persistence and adds exactly three to the selected equipped blade
+ok 590 - finite fitting spends only after persistence and adds exactly three to the selected equipped blade
+  ---
+  duration_ms: 4.3747
+  type: 'test'
+  ...
+# Subtest: fitting an unequipped canonical bow never equips it and the one global spend excludes another weapon
+ok 591 - fitting an unequipped canonical bow never equips it and the one global spend excludes another weapon
+  ---
+  duration_ms: 6.178
+  type: 'test'
+  ...
+# Subtest: returning finite starter/river work, ruby, pinned project, banked XP and weapon behavior survive fitting
+ok 592 - returning finite starter/river work, ruby, pinned project, banked XP and weapon behavior survive fitting
+  ---
+  duration_ms: 3.9877
+  type: 'test'
+  ...
+# Subtest: accepted Atlantis pages are readable at home and from another realm after cold reload
+ok 593 - accepted Atlantis pages are readable at home and from another realm after cold reload
+  ---
+  duration_ms: 3.3809
+  type: 'test'
+  ...
+# Subtest: one stable finite definition has supported schema and exact declared payment
+ok 594 - one stable finite definition has supported schema and exact declared payment
+  ---
+  duration_ms: 2.1278
+  type: 'test'
+  ...
+# Subtest: every nested catalogue value is immutable, including target anchors
+ok 595 - every nested catalogue value is immutable, including target anchors
+  ---
+  duration_ms: 0.3836
+  type: 'test'
+  ...
+# Subtest: instrument readings follow the actual authored XZ anchors and strict finite scale
+ok 596 - instrument readings follow the actual authored XZ anchors and strict finite scale
+  ---
+  duration_ms: 0.3867
+  type: 'test'
+  ...
+# Subtest: both optical targets agree with geometry actually submitted by CosmosArt
+ok 597 - both optical targets agree with geometry actually submitted by CosmosArt
+  ---
+  duration_ms: 27.9607
+  type: 'test'
+  ...
+# Subtest: giver and all three actions use actual dry floor, radius clearance and line access
+ok 598 - giver and all three actions use actual dry floor, radius clearance and line access
+  ---
+  duration_ms: 0.7846
+  type: 'test'
+  ...
+# Subtest: complete out-and-back circuit follows production segments with dense radius-safe samples
+ok 599 - complete out-and-back circuit follows production segments with dense radius-safe samples
+  ---
+  duration_ms: 19.3976
+  type: 'test'
+  ...
+# Subtest: data loading and browser export do not invoke save, simulation, reward or art authority
+ok 600 - data loading and browser export do not invoke save, simulation, reward or art authority
+  ---
+  duration_ms: 7.7381
+  type: 'test'
+  ...
+# Subtest: two real sight stations expose earned comparator preview without mutating the world
+ok 601 - two real sight stations expose earned comparator preview without mutating the world
+  ---
+  duration_ms: 121.2343
+  type: 'test'
+  ...
+# Subtest: misaligned, absent, remote, nonfinite and out-of-scale calibration cannot record or spend
+ok 602 - misaligned, absent, remote, nonfinite and out-of-scale calibration cannot record or spend
+  ---
+  duration_ms: 112.5751
+  type: 'test'
+  ...
+# Subtest: unrecorded dial resets on cold reload; recorded values, prerequisites and once-only claim survive
+ok 603 - unrecorded dial resets on cold reload; recorded values, prerequisites and once-only claim survive
+  ---
+  duration_ms: 560.9941
+  type: 'test'
+  ...
+# Subtest: save refusal leaves an aligned physical comparator retryable and its earned state unchanged
+ok 604 - save refusal leaves an aligned physical comparator retryable and its earned state unchanged
+  ---
+  duration_ms: 52.3455
+  type: 'test'
+  ...
+# Subtest: import refuses fabricated instrument histories while preserving source objects
+ok 605 - import refuses fabricated instrument histories while preserving source objects
+  ---
+  duration_ms: 10.7462
+  type: 'test'
+  ...
+# Subtest: north trails: exact frozen catalogue contract and distinct persistent namespaces
+ok 606 - north trails: exact frozen catalogue contract and distinct persistent namespaces
+  ---
+  duration_ms: 7.3574
+  type: 'test'
+  ...
+# Subtest: Heaven: three independent relay actions, optional real opening and post-defeat physical repair
+ok 607 - Heaven: three independent relay actions, optional real opening and post-defeat physical repair
+  ---
+  duration_ms: 0.6807
+  type: 'test'
+  ...
+# Subtest: Hell: all route safety is required; actual ally arrival follows separate defeat and explicit invitation
+ok 608 - Hell: all route safety is required; actual ally arrival follows separate defeat and explicit invitation
+  ---
+  duration_ms: 0.716
+  type: 'test'
+  ...
+# Subtest: graph guard detects cycles, unknown prerequisites, optional completion gates and encounter mismatch
+ok 609 - graph guard detects cycles, unknown prerequisites, optional completion gates and encounter mismatch
+  ---
+  duration_ms: 3.4306
+  type: 'test'
+  ...
+# Subtest: heaven: production ground, exact collision and navigation provide every action a giver/home return
+ok 610 - heaven: production ground, exact collision and navigation provide every action a giver/home return
+  ---
+  duration_ms: 944.5168
+  type: 'test'
+  ...
+# Subtest: heaven: production accepted movement physically walks ordered work and freely returns home
+ok 611 - heaven: production accepted movement physically walks ordered work and freely returns home
+  ---
+  duration_ms: 194.5487
+  type: 'test'
+  ...
+# Subtest: hell: production ground, exact collision and navigation provide every action a giver/home return
+ok 612 - hell: production ground, exact collision and navigation provide every action a giver/home return
+  ---
+  duration_ms: 2286.1418
+  type: 'test'
+  ...
+# Subtest: hell: production accepted movement physically walks ordered work and freely returns home
+ok 613 - hell: production accepted movement physically walks ordered work and freely returns home
+  ---
+  duration_ms: 320.7716
+  type: 'test'
+  ...
+# Subtest: Hell: supported escorted macro route uses a real culvert detour and remains within Refuge at its endpoint
+ok 614 - Hell: supported escorted macro route uses a real culvert detour and remains within Refuge at its endpoint
+  ---
+  duration_ms: 166.8314
+  type: 'test'
+  ...
+# Subtest: catalogue is deterministic inert data in browser and CommonJS hosts, with no save/scene/reward effects
+ok 615 - catalogue is deterministic inert data in browser and CommonJS hosts, with no save/scene/reward effects
+  ---
+  duration_ms: 5.3814
+  type: 'test'
+  ...
+# Subtest: acceptance needs the correct realm, initial kit and physical giver; inspecting/failed actions remain inert
+ok 616 - acceptance needs the correct realm, initial kit and physical giver; inspecting/failed actions remain inert
+  ---
+  duration_ms: 38.8489
+  type: 'test'
+  ...
+# Subtest: interactions require actual proximity and all DAG preparations; combat/escort steps cannot be clicked complete
+ok 617 - interactions require actual proximity and all DAG preparations; combat/escort steps cannot be clicked complete
+  ---
+  duration_ms: 8.8337
+  type: 'test'
+  ...
+# Subtest: strict escort history rejects impossible arrival/checkpoint records while legacy saves migrate without trail credit
+ok 618 - strict escort history rejects impossible arrival/checkpoint records while legacy saves migrate without trail credit
+  ---
+  duration_ms: 2.714
+  type: 'test'
+  ...
+# Subtest: story death accepts only the current actual zero-HP actor; replay has no legacy loot or payout
+ok 619 - story death accepts only the current actual zero-HP actor; replay has no legacy loot or payout
+  ---
+  duration_ms: 18.802
+  type: 'test'
+  ...
+# Subtest: Heaven closed bearing records no hit; actual pulse recovery is 1.8 and preparation changes a later real opening to 2.6
+ok 620 - Heaven closed bearing records no hit; actual pulse recovery is 1.8 and preparation changes a later real opening to 2.6
+  ---
+  duration_ms: 9.7115
+  type: 'test'
+  ...
+# Subtest: same-room story roster update preserves current enemy HP/intent, real arrow, companion, effects and invincibility
+ok 621 - same-room story roster update preserves current enemy HP/intent, real arrow, companion, effects and invincibility
+  ---
+  duration_ms: 111.2863
+  type: 'test'
+  ...
+# Subtest: missing or refused durable combat saver cannot manufacture a defeat; successful retry records it once
+ok 622 - missing or refused durable combat saver cannot manufacture a defeat; successful retry records it once
+  ---
+  duration_ms: 25.9713
+  type: 'test'
+  ...
+# Subtest: real Neris waits for distance and explicit wait/follow; player-only arrival cannot finish rescue
+ok 623 - real Neris waits for distance and explicit wait/follow; player-only arrival cannot finish rescue
+  ---
+  duration_ms: 136.1616
+  type: 'test'
+  ...
+# Subtest: actual ordinary sentinel death stops escort; cold reload/revive resumes durable safe checkpoint and owns a fresh actor
+ok 624 - actual ordinary sentinel death stops escort; cold reload/revive resumes durable safe checkpoint and owns a fresh actor
+  ---
+  duration_ms: 100.5405
+  type: 'test'
+  ...
+# Subtest: refused checkpoint save stays retryable; actual arrival can only be adopted after saver accepts
+ok 625 - refused checkpoint save stays retryable; actual arrival can only be adopted after saver accepts
+  ---
+  duration_ms: 25.4825
+  type: 'test'
+  ...
+# Subtest: explicit assisted extraction is distinct, actual Refuge placement and save-atomic; completion survives unpaid reload
+ok 626 - explicit assisted extraction is distinct, actual Refuge placement and save-atomic; completion survives unpaid reload
+  ---
+  duration_ms: 10.9184
+  type: 'test'
+  ...
+# Subtest: ready claim is physical, atomic, once-only and retained on capacity/save refusal and cold replay
+ok 627 - ready claim is physical, atomic, once-only and retained on capacity/save refusal and cold replay
+  ---
+  duration_ms: 21.5445
+  type: 'test'
+  ...
+# Subtest: finite fitting preserves selected identity, actual prior socket, validated prior pursuit bonus and global once limit
+ok 628 - finite fitting preserves selected identity, actual prior socket, validated prior pursuit bonus and global once limit
+  ---
+  duration_ms: 21.9956
+  type: 'test'
+  ...
+# Subtest: both terms are deeply frozen and browser/CommonJS exports agree without mutable service access
+ok 629 - both terms are deeply frozen and browser/CommonJS exports agree without mutable service access
+  ---
+  duration_ms: 3.2786
+  type: 'test'
+  ...
+# Subtest: stable terms, finite step topology and choice references match the approved data contract
+ok 630 - stable terms, finite step topology and choice references match the approved data contract
+  ---
+  duration_ms: 0.6357
+  type: 'test'
+  ...
+# Subtest: givers retain current canonical point ownership and every dry step has supported collision-free ground
+ok 631 - givers retain current canonical point ownership and every dry step has supported collision-free ground
+  ---
+  duration_ms: 3.9534
+  type: 'test'
+  ...
+# Subtest: the complete dry circuit follows real supported segments and stays outside the optional foe detection radius
+ok 632 - the complete dry circuit follows real supported segments and stays outside the optional foe detection radius
+  ---
+  duration_ms: 41.6589
+  type: 'test'
+  ...
+# Subtest: underwater and air-court anchors agree with actual full-body clearance and character medium
+ok 633 - underwater and air-court anchors agree with actual full-body clearance and character medium
+  ---
+  duration_ms: 8.4361
+  type: 'test'
+  ...
+# Subtest: production depth movement reaches every new anchor through the real doorway and east lane, then exits
+ok 634 - production depth movement reaches every new anchor through the real doorway and east lane, then exits
+  ---
+  duration_ms: 3.8486
+  type: 'test'
+  ...
+# Subtest: the material claim supports an existing recipe without a new item, resource node or weapon stat
+ok 635 - the material claim supports an existing recipe without a new item, resource node or weapon stat
+  ---
+  duration_ms: 0.7079
+  type: 'test'
+  ...
+# Subtest: labels distinguish job supplies, physical depth, protected history and finite claimed materials
+ok 636 - labels distinguish job supplies, physical depth, protected history and finite claimed materials
+  ---
+  duration_ms: 0.3276
+  type: 'test'
+  ...
+# Subtest: horizontal reflection keeps every point on its plane fixed
+ok 637 - horizontal reflection keeps every point on its plane fixed
+  ---
+  duration_ms: 1.1847
+  type: 'test'
+  ...
+# Subtest: reflection applied twice restores a point
+ok 638 - reflection applied twice restores a point
+  ---
+  duration_ms: 0.2421
+  type: 'test'
+  ...
+# Subtest: actual render matrix keeps contact UV invariant at many view angles
+ok 639 - actual render matrix keeps contact UV invariant at many view angles
+  ---
+  duration_ms: 2.2495
+  type: 'test'
+  ...
+# Subtest: reflected height changes vertical position but not lateral direction
+ok 640 - reflected height changes vertical position but not lateral direction
+  ---
+  duration_ms: 0.3959
+  type: 'test'
+  ...
+# Subtest: regression specimen detects the previous reflected-lookAt defect
+ok 641 - regression specimen detects the previous reflected-lookAt defect
+  ---
+  duration_ms: 0.2147
+  type: 'test'
+  ...
+# Subtest: non-finite reflection height is rejected
+ok 642 - non-finite reflection height is rejected
+  ---
+  duration_ms: 0.269
+  type: 'test'
+  ...
+# Subtest: road defaults are distinct records and start without progress
+ok 643 - road defaults are distinct records and start without progress
+  ---
+  duration_ms: 1.3948
+  type: 'test'
+  ...
+# Subtest: all route destinations are on terrain; river and trunks are obstacles
+ok 644 - all route destinations are on terrain; river and trunks are obstacles
+  ---
+  duration_ms: 1.5341
+  type: 'test'
+  ...
+# Subtest: visibility rejects invalid endpoints, extreme inputs, and water crossing
+ok 645 - visibility rejects invalid endpoints, extreme inputs, and water crossing
+  ---
+  duration_ms: 0.6615
+  type: 'test'
+  ...
+# Subtest: consistent completed road validates and all objectives complete
+ok 646 - consistent completed road validates and all objectives complete
+  ---
+  duration_ms: 0.6098
+  type: 'test'
+  ...
+# Subtest: unearned and duplicate facts are rejected rather than reset
+ok 647 - unearned and duplicate facts are rejected rather than reset
+  ---
+  duration_ms: 0.6394
+  type: 'test'
+  ...
+# Subtest: road validation requires story, companion, and encounter prerequisites
+ok 648 - road validation requires story, companion, and encounter prerequisites
+  ---
+  duration_ms: 0.259
+  type: 'test'
+  ...
+# Subtest: world05 migrates without changing any prior creative/sandbox fields
+ok 649 - world05 migrates without changing any prior creative/sandbox fields
+  ---
+  duration_ms: 138.2092
+  type: 'test'
+  ...
+# Subtest: all supported previous schemas migrate without road wins
+ok 650 - all supported previous schemas migrate without road wins
+  ---
+  duration_ms: 5.0366
+  type: 'test'
+  ...
+# Subtest: adapter migration writes new key and leaves previous key unchanged
+ok 651 - adapter migration writes new key and leaves previous key unchanged
+  ---
+  duration_ms: 1.8537
+  type: 'test'
+  ...
+# Subtest: gate refuses unfinished chapter without mutation
+ok 652 - gate refuses unfinished chapter without mutation
+  ---
+  duration_ms: 6.3058
+  type: 'test'
+  ...
+# Subtest: gate refuses remote and wrong-scene entry
+ok 653 - gate refuses remote and wrong-scene entry
+  ---
+  duration_ms: 9.6197
+  type: 'test'
+  ...
+# Subtest: earned gift allows entry and preserves exterior restart
+ok 654 - earned gift allows entry and preserves exterior restart
+  ---
+  duration_ms: 3.4025
+  type: 'test'
+  ...
+# Subtest: normal road return is restricted to southern gate
+ok 655 - normal road return is restricted to southern gate
+  ---
+  duration_ms: 7.7113
+  type: 'test'
+  ...
+# Subtest: road save reopens safely outside with progress retained
+ok 656 - road save reopens safely outside with progress retained
+  ---
+  duration_ms: 4.5992
+  type: 'test'
+  ...
+# Subtest: all map landmarks and encounter origins walkable
+ok 657 - all map landmarks and encounter origins walkable
+  ---
+  duration_ms: 0.5988
+  type: 'test'
+  ...
+# Subtest: river blocks nonbridge crossings and rejects nonfinite coordinates
+ok 658 - river blocks nonbridge crossings and rejects nonfinite coordinates
+  ---
+  duration_ms: 0.2741
+  type: 'test'
+  ...
+# Subtest: boulders cart tower and trunks all participate in collision
+ok 659 - boulders cart tower and trunks all participate in collision
+  ---
+  duration_ms: 0.2684
+  type: 'test'
+  ...
+# Subtest: path crosses bridge instead of cutting across water
+ok 660 - path crosses bridge instead of cutting across water
+  ---
+  duration_ms: 21.906
+  type: 'test'
+  ...
+# Subtest: dodge does not tunnel through the river
+ok 661 - dodge does not tunnel through the river
+  ---
+  duration_ms: 2.8815
+  type: 'test'
+  ...
+# Subtest: new encounters do not enable village combat
+ok 662 - new encounters do not enable village combat
+  ---
+  duration_ms: 3.9539
+  type: 'test'
+  ...
+# Subtest: melee cannot hit through solid road geometry
+ok 663 - melee cannot hit through solid road geometry
+  ---
+  duration_ms: 3.3294
+  type: 'test'
+  ...
+# Subtest: Seek needs bonded Follow fox and a nearby discoverable scent
+ok 664 - Seek needs bonded Follow fox and a nearby discoverable scent
+  ---
+  duration_ms: 6.6961
+  type: 'test'
+  ...
+# Subtest: discovery only occurs after physical path travel
+ok 665 - discovery only occurs after physical path travel
+  ---
+  duration_ms: 20.0893
+  type: 'test'
+  ...
+# Subtest: Stay cancels pending scent without issuing discovery
+ok 666 - Stay cancels pending scent without issuing discovery
+  ---
+  duration_ms: 12.2835
+  type: 'test'
+  ...
+# Subtest: leaving cancels scent instead of revealing cache remotely
+ok 667 - leaving cancels scent instead of revealing cache remotely
+  ---
+  duration_ms: 4.0542
+  type: 'test'
+  ...
+# Subtest: unrevealed distant or already claimed cache refuses without mutation
+ok 668 - unrevealed distant or already claimed cache refuses without mutation
+  ---
+  duration_ms: 6.0286
+  type: 'test'
+  ...
+# Subtest: cache overflow keeps balances and unclaimed discovery
+ok 669 - cache overflow keeps balances and unclaimed discovery
+  ---
+  duration_ms: 4.2364
+  type: 'test'
+  ...
+# Subtest: cache retry does not duplicate rewards
+ok 670 - cache retry does not duplicate rewards
+  ---
+  duration_ms: 3.237
+  type: 'test'
+  ...
+# Subtest: repair needs latch prowler ore and proximity
+ok 671 - repair needs latch prowler ore and proximity
+  ---
+  duration_ms: 7.4985
+  type: 'test'
+  ...
+# Subtest: repair charges exactly once under any command id
+ok 672 - repair charges exactly once under any command id
+  ---
+  duration_ms: 3.3492
+  type: 'test'
+  ...
+# Subtest: shop refuses unopened remote and wrong-scene trades
+ok 673 - shop refuses unopened remote and wrong-scene trades
+  ---
+  duration_ms: 7.5186
+  type: 'test'
+  ...
+# Subtest: tonic purchase obeys cost capacity and idempotency
+ok 674 - tonic purchase obeys cost capacity and idempotency
+  ---
+  duration_ms: 3.1139
+  type: 'test'
+  ...
+# Subtest: changed trade offer under same id is refused
+ok 675 - changed trade offer under same id is refused
+  ---
+  duration_ms: 3.6506
+  type: 'test'
+  ...
+# Subtest: unique mantle costs 18 and can be equipped not repurchased
+ok 676 - unique mantle costs 18 and can be equipped not repurchased
+  ---
+  duration_ms: 2.6261
+  type: 'test'
+  ...
+# Subtest: insufficient currency preserves equipment and balance
+ok 677 - insufficient currency preserves equipment and balance
+  ---
+  duration_ms: 3.2137
+  type: 'test'
+  ...
+# Subtest: copper sale exact and bounded
+ok 678 - copper sale exact and bounded
+  ---
+  duration_ms: 2.5585
+  type: 'test'
+  ...
+# Subtest: sunberry sale consumes actual sandbox garden produce
+ok 679 - sunberry sale consumes actual sandbox garden produce
+  ---
+  duration_ms: 2.6281
+  type: 'test'
+  ...
+# Subtest: unknown trade never falls through to an offer
+ok 680 - unknown trade never falls through to an offer
+  ---
+  duration_ms: 3.8935
+  type: 'test'
+  ...
+# Subtest: pause freezes scent movement and time and refuses actions
+ok 681 - pause freezes scent movement and time and refuses actions
+  ---
+  duration_ms: 3.3575
+  type: 'test'
+  ...
+# Subtest: charge direction locks during windup rather than tracking evasion
+ok 682 - charge direction locks during windup rather than tracking evasion
+  ---
+  duration_ms: 18.8379
+  type: 'test'
+  ...
+# Subtest: charge sweep respects banks and hits at most once per charge
+ok 683 - charge sweep respects banks and hits at most once per charge
+  ---
+  duration_ms: 26.866
+  type: 'test'
+  ...
+# Subtest: leaving charge lane avoids damage
+ok 684 - leaving charge lane avoids damage
+  ---
+  duration_ms: 5.8465
+  type: 'test'
+  ...
+# Subtest: path follower routes around rock and never enters it
+ok 685 - path follower routes around rock and never enters it
+  ---
+  duration_ms: 5.8482
+  type: 'test'
+  ...
+# Subtest: fox on invalid ground explicitly recalled rather than stranded
+ok 686 - fox on invalid ground explicitly recalled rather than stranded
+  ---
+  duration_ms: 3.2274
+  type: 'test'
+  ...
+# Subtest: beacon requires three encounters and only rewards once
+ok 687 - beacon requires three encounters and only rewards once
+  ---
+  duration_ms: 4.6351
+  type: 'test'
+  ...
+# Subtest: return reward requires cart beacon and actual spring
+ok 688 - return reward requires cart beacon and actual spring
+  ---
+  duration_ms: 4.6152
+  type: 'test'
+  ...
+# Subtest: new equipment and chapter facts survive round trip
+ok 689 - new equipment and chapter facts survive round trip
+  ---
+  duration_ms: 3.0805
+  type: 'test'
+  ...
+# Subtest: inconsistent completion duplicate IDs and hidden cache claims reject
+ok 690 - inconsistent completion duplicate IDs and hidden cache claims reject
+  ---
+  duration_ms: 4.862
+  type: 'test'
+  ...
+# Subtest: invalid nested road data refuses rather than silently resetting
+ok 691 - invalid nested road data refuses rather than silently resetting
+  ---
+  duration_ms: 0.5626
+  type: 'test'
+  ...
+# Subtest: road defeat permits explicit recovery without erasing quest or inventory
+ok 692 - road defeat permits explicit recovery without erasing quest or inventory
+  ---
+  duration_ms: 2.2336
+  type: 'test'
+  ...
+# Subtest: sandbox starts empty except four seeds and round trips
+ok 693 - sandbox starts empty except four seeds and round trips
+  ---
+  duration_ms: 8.7522
+  type: 'test'
+  ...
+# Subtest: all village resource nodes have a walkable approach
+ok 694 - all village resource nodes have a walkable approach
+  ---
+  duration_ms: 0.3461
+  type: 'test'
+  ...
+# Subtest: rejected gather leaves inventory and resource unchanged
+ok 695 - rejected gather leaves inventory and resource unchanged
+  ---
+  duration_ms: 1.5495
+  type: 'test'
+  ...
+# Subtest: wood takes four hand swings and yields five timber once
+ok 696 - wood takes four hand swings and yields five timber once
+  ---
+  duration_ms: 6.7752
+  type: 'test'
+  ...
+# Subtest: cooldown rejects fast repeated swings without damage
+ok 697 - cooldown rejects fast repeated swings without damage
+  ---
+  duration_ms: 0.8585
+  type: 'test'
+  ...
+# Subtest: axe reduces timber harvest to two swings
+ok 698 - axe reduces timber harvest to two swings
+  ---
+  duration_ms: 0.8644
+  type: 'test'
+  ...
+# Subtest: fibre supplies actual resource and one seed
+ok 699 - fibre supplies actual resource and one seed
+  ---
+  duration_ms: 0.5093
+  type: 'test'
+  ...
+# Subtest: resource reappears after active time, not clock slider
+ok 700 - resource reappears after active time, not clock slider
+  ---
+  duration_ms: 64.4532
+  type: 'test'
+  ...
+# Subtest: pause stops regrowth
+ok 701 - pause stops regrowth
+  ---
+  duration_ms: 1.1451
+  type: 'test'
+  ...
+# Subtest: craft atomically consumes exact recipe and produces count
+ok 702 - craft atomically consumes exact recipe and produces count
+  ---
+  duration_ms: 0.7968
+  type: 'test'
+  ...
+# Subtest: insufficient recipe never partially consumes
+ok 703 - insufficient recipe never partially consumes
+  ---
+  duration_ms: 0.6575
+  type: 'test'
+  ...
+# Subtest: advanced tool requires proximity to workbench
+ok 704 - advanced tool requires proximity to workbench
+  ---
+  duration_ms: 0.4923
+  type: 'test'
+  ...
+# Subtest: inventory capacity refuses complete recipe before debit
+ok 705 - inventory capacity refuses complete recipe before debit
+  ---
+  duration_ms: 0.3357
+  type: 'test'
+  ...
+# Subtest: old accepted command cannot be replayed after save reload
+ok 706 - old accepted command cannot be replayed after save reload
+  ---
+  duration_ms: 1.2101
+  type: 'test'
+  ...
+# Subtest: old refusal is stable inside bounded deduplication window
+ok 707 - old refusal is stable inside bounded deduplication window
+  ---
+  duration_ms: 0.3992
+  type: 'test'
+  ...
+# Subtest: deduplication ledger is bounded and validated
+ok 708 - deduplication ledger is bounded and validated
+  ---
+  duration_ms: 3.5853
+  type: 'test'
+  ...
+# Subtest: unknown and prototype inventory properties are refused
+ok 709 - unknown and prototype inventory properties are refused
+  ---
+  duration_ms: 0.8975
+  type: 'test'
+  ...
+# Subtest: forged negative or non-finite counts are refused
+ok 710 - forged negative or non-finite counts are refused
+  ---
+  duration_ms: 1.1281
+  type: 'test'
+  ...
+# Subtest: forged bridge and resource rosters are refused
+ok 711 - forged bridge and resource rosters are refused
+  ---
+  duration_ms: 0.1876
+  type: 'test'
+  ...
+# Subtest: bridge is gated until paid repair
+ok 712 - bridge is gated until paid repair
+  ---
+  duration_ms: 0.5781
+  type: 'test'
+  ...
+# Subtest: unlocked bridge has a route to the homestead and back
+ok 713 - unlocked bridge has a route to the homestead and back
+  ---
+  duration_ms: 35.6823
+  type: 'test'
+  ...
+# Subtest: all frontier resources have an accessible approach after repair
+ok 714 - all frontier resources have an accessible approach after repair
+  ---
+  duration_ms: 0.7558
+  type: 'test'
+  ...
+# Subtest: crystal requires the crafted pick
+ok 715 - crystal requires the crafted pick
+  ---
+  duration_ms: 0.3891
+  type: 'test'
+  ...
+# Subtest: building only in marked bounds and within reach
+ok 716 - building only in marked bounds and within reach
+  ---
+  duration_ms: 0.8379
+  type: 'test'
+  ...
+# Subtest: a block on the player is refused without consuming inventory
+ok 717 - a block on the player is refused without consuming inventory
+  ---
+  duration_ms: 0.4391
+  type: 'test'
+  ...
+# Subtest: gold lane admits deck but rejects blocking wall
+ok 718 - gold lane admits deck but rejects blocking wall
+  ---
+  duration_ms: 1.2491
+  type: 'test'
+  ...
+# Subtest: actual building changes pathfinding and reclaim restores it
+ok 719 - actual building changes pathfinding and reclaim restores it
+  ---
+  duration_ms: 1.7449
+  type: 'test'
+  ...
+# Subtest: deck and block layers may coexist; stone stacks to three only
+ok 720 - deck and block layers may coexist; stone stacks to three only
+  ---
+  duration_ms: 7.3107
+  type: 'test'
+  ...
+# Subtest: reclaim returns exactly the topmost crafted item
+ok 721 - reclaim returns exactly the topmost crafted item
+  ---
+  duration_ms: 2.4929
+  type: 'test'
+  ...
+# Subtest: different furniture cannot overlap the same occupied layer
+ok 722 - different furniture cannot overlap the same occupied layer
+  ---
+  duration_ms: 1.0296
+  type: 'test'
+  ...
+# Subtest: unsupported stacks and duplicate layers fail import
+ok 723 - unsupported stacks and duplicate layers fail import
+  ---
+  duration_ms: 2.5222
+  type: 'test'
+  ...
+# Subtest: construction cannot trap a player in a closed enclosure
+ok 724 - construction cannot trap a player in a closed enclosure
+  ---
+  duration_ms: 2.2885
+  type: 'test'
+  ...
+# Subtest: harvest follows plant, water, growth, then yields food and seeds
+ok 725 - harvest follows plant, water, growth, then yields food and seeds
+  ---
+  duration_ms: 17.5346
+  type: 'test'
+  ...
+# Subtest: growing bed cannot be recycled to silently lose crop state
+ok 726 - growing bed cannot be recycled to silently lose crop state
+  ---
+  duration_ms: 1.0715
+  type: 'test'
+  ...
+# Subtest: placed workbench unlocks workbench recipes locally
+ok 727 - placed workbench unlocks workbench recipes locally
+  ---
+  duration_ms: 1.729
+  type: 'test'
+  ...
+# Subtest: save on unlocked shore preserves player, crops and builds
+ok 728 - save on unlocked shore preserves player, crops and builds
+  ---
+  duration_ms: 1.8921
+  type: 'test'
+  ...
+# Subtest: version-three save migration preserves creative data, starts clean inventory
+ok 729 - version-three save migration preserves creative data, starts clean inventory
+  ---
+  duration_ms: 0.9472
+  type: 'test'
+  ...
+# Subtest: migration never overwrites earlier storage key
+ok 730 - migration never overwrites earlier storage key
+  ---
+  duration_ms: 1.8441
+  type: 'test'
+  ...
+# Subtest: invalid bridge-state save cannot place player beyond locked crossing
+ok 731 - invalid bridge-state save cannot place player beyond locked crossing
+  ---
+  duration_ms: 1.4812
+  type: 'test'
+  ...
+# Subtest: sandbox rejects gameplay in interiors
+ok 732 - sandbox rejects gameplay in interiors
+  ---
+  duration_ms: 0.4613
+  type: 'test'
+  ...
+# Subtest: an oversized delta cannot fast-forward the sandbox
+ok 733 - an oversized delta cannot fast-forward the sandbox
+  ---
+  duration_ms: 0.4863
+  type: 'test'
+  ...
+# Subtest: a full end-to-end milestone fixture is consistent and restorable
+ok 734 - a full end-to-end milestone fixture is consistent and restorable
+  ---
+  duration_ms: 13.6389
+  type: 'test'
+  ...
+# Subtest: reward blade and bow use actual equipment material in world geometry
+ok 735 - reward blade and bow use actual equipment material in world geometry
+  ---
+  duration_ms: 21.7362
+  type: 'test'
+  ...
+# Subtest: named warning geometry includes the exact rule-defined strike radius
+ok 736 - named warning geometry includes the exact rule-defined strike radius
+  ---
+  duration_ms: 2.1093
+  type: 'test'
+  ...
+# Subtest: riverbank rendering enables existing outdoor water and matches collision obstacles
+ok 737 - riverbank rendering enables existing outdoor water and matches collision obstacles
+  ---
+  duration_ms: 2.876
+  type: 'test'
+  ...
+# Subtest: new quest state is explicit, versioned and round trips
+ok 738 - new quest state is explicit, versioned and round trips
+  ---
+  duration_ms: 3.9035
+  type: 'test'
+  ...
+# Subtest: version-five adventure migrates without altering existing campaign or creative data
+ok 739 - version-five adventure migrates without altering existing campaign or creative data
+  ---
+  duration_ms: 7.4717
+  type: 'test'
+  ...
+# Subtest: all banked XP boundaries retain XP and the existing five-level curve
+ok 740 - all banked XP boundaries retain XP and the existing five-level curve
+  ---
+  duration_ms: 1.5714
+  type: 'test'
+  ...
+# Subtest: acceptance requires kit and actual Oren proximity without campaign consent
+ok 741 - acceptance requires kit and actual Oren proximity without campaign consent
+  ---
+  duration_ms: 10.7393
+  type: 'test'
+  ...
+# Subtest: acceptance is one explicit event and survives cold reload
+ok 742 - acceptance is one explicit event and survives cold reload
+  ---
+  duration_ms: 2.1115
+  type: 'test'
+  ...
+# Subtest: pre-acceptance pocket has no quest kills or pickups to backfill
+ok 743 - pre-acceptance pocket has no quest kills or pickups to backfill
+  ---
+  duration_ms: 2.5525
+  type: 'test'
+  ...
+# Subtest: room dispatch and each objective use real collision-valid routes
+ok 744 - room dispatch and each objective use real collision-valid routes
+  ---
+  duration_ms: 41.3498
+  type: 'test'
+  ...
+# Subtest: each bundle is unique, proximity checked and never spends ordinary materials
+ok 745 - each bundle is unique, proximity checked and never spends ordinary materials
+  ---
+  duration_ms: 5.1071
+  type: 'test'
+  ...
+# Subtest: named defeat can precede bundles and stays resolved after returning/re-entry
+ok 746 - named defeat can precede bundles and stays resolved after returning/re-entry
+  ---
+  duration_ms: 1.8466
+  type: 'test'
+  ...
+# Subtest: incomplete, distant and unknown-reward turn-ins refuse atomically
+ok 747 - incomplete, distant and unknown-reward turn-ins refuse atomically
+  ---
+  duration_ms: 15.0738
+  type: 'test'
+  ...
+# Subtest: full currency capacity preserves every objective and reward for retry
+ok 748 - full currency capacity preserves every objective and reward for retry
+  ---
+  duration_ms: 5.5998
+  type: 'test'
+  ...
+# Subtest: oren_sunblade is awarded once, deliberately equipped, and saved with correct mechanics
+ok 749 - oren_sunblade is awarded once, deliberately equipped, and saved with correct mechanics
+  ---
+  duration_ms: 3.5037
+  type: 'test'
+  ...
+# Subtest: oren_reedbow is awarded once, deliberately equipped, and saved with correct mechanics
+ok 750 - oren_reedbow is awarded once, deliberately equipped, and saved with correct mechanics
+  ---
+  duration_ms: 2.5023
+  type: 'test'
+  ...
+# Subtest: single veteran temper preserves weapon identity, socket, cadence and health
+ok 751 - single veteran temper preserves weapon identity, socket, cadence and health
+  ---
+  duration_ms: 1.4162
+  type: 'test'
+  ...
+# Subtest: temper refuses unknown, unowned and armor targets without a partial payout
+ok 752 - temper refuses unknown, unowned and armor targets without a partial payout
+  ---
+  duration_ms: 6.1218
+  type: 'test'
+  ...
+# Subtest: new bow really launches primary and piercing projectiles with costs and hit events
+ok 753 - new bow really launches primary and piercing projectiles with costs and hit events
+  ---
+  duration_ms: 7.1971
+  type: 'test'
+  ...
+# Subtest: practice target supports blade and yields no XP, loot, coins or quest progress
+ok 754 - practice target supports blade and yields no XP, loot, coins or quest progress
+  ---
+  duration_ms: 1.0982
+  type: 'test'
+  ...
+# Subtest: new equipment keeps independent removable socket and validates after reload
+ok 755 - new equipment keeps independent removable socket and validates after reload
+  ---
+  duration_ms: 2.695
+  type: 'test'
+  ...
+# Subtest: named tell locks aim and allows both a guarded hit and a movement response
+ok 756 - named tell locks aim and allows both a guarded hit and a movement response
+  ---
+  duration_ms: 14.3919
+  type: 'test'
+  ...
+# Subtest: save validation rejects impossible quest state and reward combinations
+ok 757 - save validation rejects impossible quest state and reward combinations
+  ---
+  duration_ms: 3.2098
+  type: 'test'
+  ...
+# Subtest: both decoded maps are required; scene clear neither cancels nor reloads engine maps
+ok 758 - both decoded maps are required; scene clear neither cancels nor reloads engine maps
+  ---
+  duration_ms: 8.6541
+  type: 'test'
+  ...
+# Subtest: missing maps and incompatible contracts stay usable with untextured fallback
+ok 759 - missing maps and incompatible contracts stay usable with untextured fallback
+  ---
+  duration_ms: 17.0928
+  type: 'test'
+  ...
+# Subtest: PNG payload type and grayscale header are checked before decoding
+ok 760 - PNG payload type and grayscale header are checked before decoding
+  ---
+  duration_ms: 1.4823
+  type: 'test'
+  ...
+# Subtest: decode errors and wrong decoded dimensions cancel peers and stale completions
+ok 761 - decode errors and wrong decoded dimensions cancel peers and stale completions
+  ---
+  duration_ms: 6.4951
+  type: 'test'
+  ...
+# Subtest: failed uploads free temporary maps and restore shared texture/unpack state
+ok 762 - failed uploads free temporary maps and restore shared texture/unpack state
+  ---
+  duration_ms: 3.1772
+  type: 'test'
+  ...
+# Subtest: map-only disposal invalidates in-flight completions and deletes only owned ready textures
+ok 763 - map-only disposal invalidates in-flight completions and deletes only owned ready textures
+  ---
+  duration_ms: 5.1911
+  type: 'test'
+  ...
+# Subtest: two engines independently own their decoders and uploaded maps
+ok 764 - two engines independently own their decoders and uploaded maps
+  ---
+  duration_ms: 3.5629
+  type: 'test'
+  ...
+# Subtest: context loss invalidates images and maps with no restoration or later upload
+ok 765 - context loss invalidates images and maps with no restoration or later upload
+  ---
+  duration_ms: 5.0568
+  type: 'test'
+  ...
+# Subtest: timber shares exact box geometry and collision extent with complete grain-oriented face UVs
+ok 766 - timber shares exact box geometry and collision extent with complete grain-oriented face UVs
+  ---
+  duration_ms: 1.9296
+  type: 'test'
+  ...
+# Subtest: material flags stay per batch; reflection uses material while depth and cutaway retain their scope
+ok 767 - material flags stay per batch; reflection uses material while depth and cutaway retain their scope
+  ---
+  duration_ms: 3.092
+  type: 'test'
+  ...
+# Subtest: unstarted, absent, unknown and unowned equipment produce no gear
+ok 768 - unstarted, absent, unknown and unowned equipment produce no gear
+  ---
+  duration_ms: 49.7775
+  type: 'test'
+  ...
+# Subtest: read-only attachment summary reports exactly the rendered grip and actual markers
+ok 769 - read-only attachment summary reports exactly the rendered grip and actual markers
+  ---
+  duration_ms: 20.582
+  type: 'test'
+  ...
+# Subtest: a command-earned kit is held at the right palm through actual root yaw and terrain height
+ok 770 - a command-earned kit is held at the right palm through actual root yaw and terrain height
+  ---
+  duration_ms: 4.784
+  type: 'test'
+  ...
+# Subtest: curved bow grip and both string segments attach to the two moving palms
+ok 771 - curved bow grip and both string segments attach to the two moving palms
+  ---
+  duration_ms: 5.6004
+  type: 'test'
+  ...
+# Subtest: ordinary travel stows blade at hip and bow at back without hand-held copies
+ok 772 - ordinary travel stows blade at hip and bow at back without hand-held copies
+  ---
+  duration_ms: 40.705
+  type: 'test'
+  ...
+# Subtest: each catalogue weapon preserves its own colour, gem, fittings and separate Oren temper
+ok 773 - each catalogue weapon preserves its own colour, gem, fittings and separate Oren temper
+  ---
+  duration_ms: 176.3875
+  type: 'test'
+  ...
+# Subtest: markers project only the selected weapon rather than another owned weapon
+ok 774 - markers project only the selected weapon rather than another owned weapon
+  ---
+  duration_ms: 2.4922
+  type: 'test'
+  ...
+# Subtest: family silhouettes differ within a bounded traveller scale
+ok 775 - family silhouettes differ within a bounded traveller scale
+  ---
+  duration_ms: 22.3716
+  type: 'test'
+  ...
+# Subtest: blade anticipation, recovery and guard keep the grip connected while changing orientation
+ok 776 - blade anticipation, recovery and guard keep the grip connected while changing orientation
+  ---
+  duration_ms: 3.504
+  type: 'test'
+  ...
+# Subtest: reduced motion keeps essential palm connections without phase-driven blade flourishes
+ok 777 - reduced motion keeps essential palm connections without phase-driven blade flourishes
+  ---
+  duration_ms: 7.437
+  type: 'test'
+  ...
+# Subtest: all equipment transforms stay finite, orthogonal and under forty instances
+ok 778 - all equipment transforms stay finite, orthogonal and under forty instances
+  ---
+  duration_ms: 44.2495
+  type: 'test'
+  ...
+# Subtest: read-only rendering does not create runtime, commands, effects or arrows
+ok 779 - read-only rendering does not create runtime, commands, effects or arrows
+  ---
+  duration_ms: 4.7107
+  type: 'test'
+  ...
+# Subtest: gathered and command-crafted bow projects the actual equipped item
+ok 780 - gathered and command-crafted bow projects the actual equipped item
+  ---
+  duration_ms: 65.8972
+  type: 'test'
+  ...
+# Subtest: finite realm collars preserve prior markers and follow the actual blade or curved bow segment
+ok 781 - finite realm collars preserve prior markers and follow the actual blade or curved bow segment
+  ---
+  duration_ms: 277.5778
+  type: 'test'
+  ...
+# Subtest: CommonJS and browser globals expose the same bounded rig API
+ok 782 - CommonJS and browser globals expose the same bounded rig API
+  ---
+  duration_ms: 1.4565
+  type: 'test'
+  ...
+# Subtest: gallery stroke keeps limbs connected and reduced motion settles the arms
+ok 783 - gallery stroke keeps limbs connected and reduced motion settles the arms
+  ---
+  duration_ms: 1.3049
+  type: 'test'
+  ...
+# Subtest: gait phase follows accepted distance and survives frame subdivision
+ok 784 - gait phase follows accepted distance and survives frame subdivision
+  ---
+  duration_ms: 0.6949
+  type: 'test'
+  ...
+# Subtest: stationary walking intent never drives foot shuffling
+ok 785 - stationary walking intent never drives foot shuffling
+  ---
+  duration_ms: 1.3097
+  type: 'test'
+  ...
+# Subtest: stopping holds phase and eases the feet into a settled stance
+ok 786 - stopping holds phase and eases the feet into a settled stance
+  ---
+  duration_ms: 0.4074
+  type: 'test'
+  ...
+# Subtest: repeated samples and long pauses preserve the complete drawable pose
+ok 787 - repeated samples and long pauses preserve the complete drawable pose
+  ---
+  duration_ms: 2.0946
+  type: 'test'
+  ...
+# Subtest: paused coordinates are consumed without turning skipped travel into steps
+ok 788 - paused coordinates are consumed without turning skipped travel into steps
+  ---
+  duration_ms: 0.2029
+  type: 'test'
+  ...
+# Subtest: scene changes, teleports and clock discontinuities reset the stance
+ok 789 - scene changes, teleports and clock discontinuities reset the stance
+  ---
+  duration_ms: 0.258
+  type: 'test'
+  ...
+# Subtest: reduced motion keeps essential gait and weapon alignment without secondary drift
+ok 790 - reduced motion keeps essential gait and weapon alignment without secondary drift
+  ---
+  duration_ms: 0.4819
+  type: 'test'
+  ...
+# Subtest: walking has visible foot clearance and preserves fixed limb lengths
+ok 791 - walking has visible foot clearance and preserves fixed limb lengths
+  ---
+  duration_ms: 2.0956
+  type: 'test'
+  ...
+# Subtest: blade/bow anticipation, recovery and guard are connected and distinct
+ok 792 - blade/bow anticipation, recovery and guard are connected and distinct
+  ---
+  duration_ms: 0.6612
+  type: 'test'
+  ...
+# Subtest: draw segments actually connect the named joints under root translation and yaw
+ok 793 - draw segments actually connect the named joints under root translation and yaw
+  ---
+  duration_ms: 4.8376
+  type: 'test'
+  ...
+# Subtest: palette choices and explicitly supplied armor colour are retained
+ok 794 - palette choices and explicitly supplied armor colour are retained
+  ---
+  duration_ms: 1.7509
+  type: 'test'
+  ...
+# Subtest: all transforms stay finite, actor geometry has no camera authority, and budget stays bounded
+ok 795 - all transforms stay finite, actor geometry has no camera authority, and budget stays bounded
+  ---
+  duration_ms: 42.2706
+  type: 'test'
+  ...
+# Subtest: malformed numerical motion inputs cannot poison matrices
+ok 796 - malformed numerical motion inputs cannot poison matrices
+  ---
+  duration_ms: 0.533
+  type: 'test'
+  ...
+# Subtest: sampling, posing and drawing leave input rules, motion and profiles immutable
+ok 797 - sampling, posing and drawing leave input rules, motion and profiles immutable
+  ---
+  duration_ms: 1.6875
+  type: 'test'
+  ...
+# Subtest: all new static scenery uses supported finite meshes instead of silent cylinder fallback
+ok 798 - all new static scenery uses supported finite meshes instead of silent cylinder fallback
+  ---
+  duration_ms: 223.4296
+  type: 'test'
+  ...
+# Subtest: visible solid boxes match canonical body collision footprints and heights
+ok 799 - visible solid boxes match canonical body collision footprints and heights
+  ---
+  duration_ms: 12.7158
+  type: 'test'
+  ...
+# Subtest: submitted opaque geometry leaves the actual 3D gallery body route clear
+ok 800 - submitted opaque geometry leaves the actual 3D gallery body route clear
+  ---
+  duration_ms: 41.6839
+  type: 'test'
+  ...
+# Subtest: wet volume under the civic deck retains actual head clearance
+ok 801 - wet volume under the civic deck retains actual head clearance
+  ---
+  duration_ms: 1.3771
+  type: 'test'
+  ...
+# Subtest: exact two canonical realms have finite, unique, immutable data and stable work identities
+ok 802 - exact two canonical realms have finite, unique, immutable data and stable work identities
+  ---
+  duration_ms: 3.6221
+  type: 'test'
+  ...
+# Subtest: module load publishes only its declared API and never reads a simulation or host service
+ok 803 - module load publishes only its declared API and never reads a simulation or host service
+  ---
+  duration_ms: 25.0349
+  type: 'test'
+  ...
+# Subtest: every entry and interaction anchor has full actor clearance on bounded dry ground
+ok 804 - every entry and interaction anchor has full actor clearance on bounded dry ground
+  ---
+  duration_ms: 1.1384
+  type: 'test'
+  ...
+# Subtest: both Earth approaches, work loop and optional side routes have analytically continuous ground
+ok 805 - both Earth approaches, work loop and optional side routes have analytically continuous ground
+  ---
+  duration_ms: 3.9207
+  type: 'test'
+  ...
+# Subtest: Farwake work and the far landing remain connected without diving or a closed civic back wall
+ok 806 - Farwake work and the far landing remain connected without diving or a closed civic back wall
+  ---
+  duration_ms: 1.2053
+  type: 'test'
+  ...
+# Subtest: bounded gallery route clears physical walls and full body depth, including the real court doorway
+ok 807 - bounded gallery route clears physical walls and full body depth, including the real court doorway
+  ---
+  duration_ms: 3.5202
+  type: 'test'
+  ...
+# Subtest: dive entry and wet exit anchors agree with reachable transfer destinations
+ok 808 - dive entry and wet exit anchors agree with reachable transfer destinations
+  ---
+  duration_ms: 0.4254
+  type: 'test'
+  ...
+# Subtest: actual decoration is finite, deterministic, bounded and pure across claimed/unclaimed worlds
+ok 809 - actual decoration is finite, deterministic, bounded and pure across claimed/unclaimed worlds
+  ---
+  duration_ms: 10.884
+  type: 'test'
+  ...
+# Subtest: roofs and important structural decoration agree with the canonical solid footprints
+ok 810 - roofs and important structural decoration agree with the canonical solid footprints
+  ---
+  duration_ms: 1.3314
+  type: 'test'
+  ...
+# Subtest: civic side support physically meets the canopy underside across its full length
+ok 811 - civic side support physically meets the canopy underside across its full length
+  ---
+  duration_ms: 0.432
+  type: 'test'
+  ...
+# Subtest: bridge timber skins use the real UV mesh, clear every retained joint and stay above only existing deck
+ok 812 - bridge timber skins use the real UV mesh, clear every retained joint and stay above only existing deck
+  ---
+  duration_ms: 1.5167
+  type: 'test'
+  ...
+# Subtest: narrow field path geometry lies wholly on supported clear ground and door faces remain closed decoration
+ok 813 - narrow field path geometry lies wholly on supported clear ground and door faces remain closed decoration
+  ---
+  duration_ms: 5.2168
+  type: 'test'
+  ...
+# Subtest: distant ridges use the actual mountain mesh and remain outside Earth rather than becoming false paths
+ok 814 - distant ridges use the actual mountain mesh and remain outside Earth rather than becoming false paths
+  ---
+  duration_ms: 4.8622
+  type: 'test'
+  ...
+# Subtest: every accepted objective has a validated production path back to its own giver
+ok 815 - every accepted objective has a validated production path back to its own giver
+  ---
+  duration_ms: 482.1171
+  type: 'test'
+  ...
+# Subtest: blade falls in hell and revives at home with accepted work and belongings retained
+ok 816 - blade falls in hell and revives at home with accepted work and belongings retained
+  ---
+  duration_ms: 128.9841
+  type: 'test'
+  ...
+# Subtest: bow falls in earthlands and revives at home with accepted work and belongings retained
+ok 817 - bow falls in earthlands and revives at home with accepted work and belongings retained
+  ---
+  duration_ms: 185.1273
+  type: 'test'
+  ...
+# Subtest: blade earns hell defeat, guarded combat, retreat and free return without legacy rewards
+ok 818 - blade earns hell defeat, guarded combat, retreat and free return without legacy rewards
+  ---
+  duration_ms: 77.8074
+  type: 'test'
+  ...
+# {"realm":"hell","style":"blade","weapon":"trail_blade","entry":{"x":0,"z":31,"yaw":3.141592653589793},"stage":{"x":44,"z":-82},"battle":{"x":44,"z":-92.9},"refuge":{"x":44,"z":-60},"firstBrace":{"at":47.59999999999943,"aim":{"x":44,"z":-92.9},"windupRemaining":1.05,"hitAfter":1.0499999999999403,"healthBefore":100,"healthAfter":96,"recoveryRemaining":1.1},"firstAttack":{"hits":1,"hp":90,"firstArrowAfter":null,"impacts":[{"after":0.19999999999998863,"before":90,"hp":74}]},"secondBrace":{"at":114.49999999999564,"aim":{"x":44,"z":-92.9},"windupRemaining":1.05,"hitAfter":1.0499999999999403,"healthBefore":100,"healthAfter":96,"recoveryRemaining":1.1},"battleResult":{"hits":6,"hp":90,"firstArrowAfter":null,"impacts":[{"after":0.19999999999998863,"before":90,"hp":74},{"after":0.7999999999999545,"before":74,"hp":58},{"after":1.3999999999999204,"before":58,"hp":42},{"after":1.9999999999998863,"before":42,"hp":26},{"after":2.599999999999852,"before":26,"hp":10},{"after":3.199999999999818,"before":10,"hp":0}]},"tickSeconds":0.05}
+# Subtest: bow earns hell defeat, guarded combat, retreat and free return without legacy rewards
+ok 819 - bow earns hell defeat, guarded combat, retreat and free return without legacy rewards
+  ---
+  duration_ms: 90.7015
+  type: 'test'
+  ...
+# {"realm":"hell","style":"bow","weapon":"trail_bow","entry":{"x":0,"z":31,"yaw":3.141592653589793},"stage":{"x":44,"z":-82},"battle":{"x":44,"z":-90},"refuge":{"x":44,"z":-60},"firstBrace":{"at":99.49999999999649,"aim":{"x":44,"z":-90},"windupRemaining":1.05,"hitAfter":1.0499999999999403,"healthBefore":100,"healthAfter":96,"recoveryRemaining":1.1},"firstAttack":{"hits":1,"hp":90,"firstArrowAfter":0.19999999999998863,"impacts":[{"after":0.3499999999999801,"before":90,"hp":77}]},"secondBrace":{"at":165.65000000000342,"aim":{"x":44,"z":-90},"windupRemaining":1.05,"hitAfter":1.0500000000002387,"healthBefore":100,"healthAfter":96,"recoveryRemaining":1.1},"battleResult":{"hits":7,"hp":90,"firstArrowAfter":0.20000000000004547,"impacts":[{"after":0.3500000000000796,"before":90,"hp":77},{"after":1.1500000000002615,"before":77,"hp":64},{"after":1.9500000000004434,"before":64,"hp":51},{"after":2.7500000000006253,"before":51,"hp":38},{"after":3.550000000000807,"before":38,"hp":25},{"after":4.350000000000989,"before":25,"hp":12},{"after":5.150000000001171,"before":12,"hp":0}]},"tickSeconds":0.05}
+# Subtest: blade earns earthlands defeat, guarded combat, retreat and free return without legacy rewards
+ok 820 - blade earns earthlands defeat, guarded combat, retreat and free return without legacy rewards
+  ---
+  duration_ms: 192.893
+  type: 'test'
+  ...
+# {"realm":"earthlands","style":"blade","weapon":"trail_blade","entry":{"x":0,"z":104,"yaw":3.141592653589793},"stage":{"x":-29,"z":-8},"battle":{"x":-29,"z":-18.9},"refuge":{"x":0,"z":23},"firstBrace":{"at":53.14999999999912,"aim":{"x":-29,"z":-18.9},"windupRemaining":0.75,"hitAfter":0.7499999999999574,"healthBefore":100,"healthAfter":96,"recoveryRemaining":1.1},"firstAttack":{"hits":1,"hp":72,"firstArrowAfter":null,"impacts":[{"after":0.19999999999998863,"before":72,"hp":56}]},"secondBrace":{"at":132.84999999999596,"aim":{"x":-29,"z":-18.9},"windupRemaining":0.75,"hitAfter":0.7500000000001705,"healthBefore":100,"healthAfter":96,"recoveryRemaining":1.1},"battleResult":{"hits":5,"hp":72,"firstArrowAfter":null,"impacts":[{"after":0.20000000000004547,"before":72,"hp":56},{"after":0.7500000000001705,"before":56,"hp":40},{"after":1.3000000000002956,"before":40,"hp":24},{"after":1.8500000000004206,"before":24,"hp":8},{"after":2.4000000000005457,"before":8,"hp":0}]},"tickSeconds":0.05}
+# Subtest: bow earns earthlands defeat, guarded combat, retreat and free return without legacy rewards
+ok 821 - bow earns earthlands defeat, guarded combat, retreat and free return without legacy rewards
+  ---
+  duration_ms: 201.0882
+  type: 'test'
+  ...
+# {"realm":"earthlands","style":"bow","weapon":"trail_bow","entry":{"x":0,"z":104,"yaw":3.141592653589793},"stage":{"x":-29,"z":-8},"battle":{"x":-29,"z":-16},"refuge":{"x":0,"z":23},"firstBrace":{"at":103.14999999999628,"aim":{"x":-29,"z":-16},"windupRemaining":0.75,"hitAfter":0.7499999999999574,"healthBefore":100,"healthAfter":96,"recoveryRemaining":1.1},"firstAttack":{"hits":1,"hp":72,"firstArrowAfter":0.19999999999998863,"impacts":[{"after":0.29999999999998295,"before":72,"hp":59}]},"secondBrace":{"at":180.80000000000686,"aim":{"x":-29,"z":-16},"windupRemaining":0.75,"hitAfter":0.7500000000001705,"healthBefore":100,"healthAfter":96,"recoveryRemaining":1.1},"battleResult":{"hits":6,"hp":72,"firstArrowAfter":0.20000000000004547,"impacts":[{"after":0.3000000000000682,"before":72,"hp":59},{"after":1.1000000000002501,"before":59,"hp":46},{"after":1.900000000000432,"before":46,"hp":33},{"after":2.700000000000614,"before":33,"hp":20},{"after":3.500000000000796,"before":20,"hp":7},{"after":4.300000000000978,"before":7,"hp":0}]},"tickSeconds":0.05}
+# Subtest: optional journeys migrate old world 9 saves without touching banked XP, choices, home or music
+ok 822 - optional journeys migrate old world 9 saves without touching banked XP, choices, home or music
+  ---
+  duration_ms: 7.7638
+  type: 'test'
+  ...
+# Subtest: new schema rejects forward, malformed, unknown and impossible claim history
+ok 823 - new schema rejects forward, malformed, unknown and impossible claim history
+  ---
+  duration_ms: 4.4764
+  type: 'test'
+  ...
+# Subtest: five-light gate is supported and separate from existing lake and Cosmos markers
+ok 824 - five-light gate is supported and separate from existing lake and Cosmos markers
+  ---
+  duration_ms: 4.1312
+  type: 'test'
+  ...
+# Subtest: travel checkpoints original state, and rejects changed owner, revision, position or ticket
+ok 825 - travel checkpoints original state, and rejects changed owner, revision, position or ticket
+  ---
+  duration_ms: 12.5206
+  type: 'test'
+  ...
+# Subtest: travel, free return, re-entry and cold reload do not grant or advance accepted work
+ok 826 - travel, free return, re-entry and cold reload do not grant or advance accepted work
+  ---
+  duration_ms: 4.3652
+  type: 'test'
+  ...
+# Subtest: accepted objectives require physical arrival and current run; repeats remain once-only
+ok 827 - accepted objectives require physical arrival and current run; repeats remain once-only
+  ---
+  duration_ms: 3.7241
+  type: 'test'
+  ...
+# Subtest: save refusal and capacity-blocked turn-in preserve completed objectives, currency and journal atomically
+ok 828 - save refusal and capacity-blocked turn-in preserve completed objectives, currency and journal atomically
+  ---
+  duration_ms: 6.1237
+  type: 'test'
+  ...
+# Subtest: claim fences survive changed request IDs, reload, re-entry and intentional smaller repeat runs
+ok 829 - claim fences survive changed request IDs, reload, re-entry and intentional smaller repeat runs
+  ---
+  duration_ms: 5.3519
+  type: 'test'
+  ...
+# Subtest: reward changes only declared fields and retains explicit classes, gear, sockets, XP ceiling and story history
+ok 830 - reward changes only declared fields and retains explicit classes, gear, sockets, XP ceiling and story history
+  ---
+  duration_ms: 3.3553
+  type: 'test'
+  ...
+# Subtest: only canonical local enemies use local defeat records and never enter legacy loot history
+ok 831 - only canonical local enemies use local defeat records and never enter legacy loot history
+  ---
+  duration_ms: 2.3538
+  type: 'test'
+  ...
+# Subtest: copied or live enemies cannot manufacture a defeat, and a real defeat preserves the revision ceiling
+ok 832 - copied or live enemies cannot manufacture a defeat, and a real defeat preserves the revision ceiling
+  ---
+  duration_ms: 1.3706
+  type: 'test'
+  ...
+# Subtest: bow targets and actual arrows use new scene ground, while solid cover blocks hits
+ok 833 - bow targets and actual arrows use new scene ground, while solid cover blocks hits
+  ---
+  duration_ms: 6.7831
+  type: 'test'
+  ...
+# Subtest: skipped active run identities are rejected rather than inventing an unknown payout history
+ok 834 - skipped active run identities are rejected rather than inventing an unknown payout history
+  ---
+  duration_ms: 0.2606
+  type: 'test'
+  ...
+# Subtest: failure after scene sync restores the original runtime graph as well as position and room
+ok 835 - failure after scene sync restores the original runtime graph as well as position and room
+  ---
+  duration_ms: 2.7209
+  type: 'test'
+  ...
+# Subtest: every new realm objective can return to its real giver through production navigation
+ok 836 - every new realm objective can return to its real giver through production navigation
+  ---
+  duration_ms: 340.4782
+  type: 'test'
+  ...
+# Subtest: gallery has actual depth, held release, body/camera medium separation and true blocking air-court walls
+ok 837 - gallery has actual depth, held release, body/camera medium separation and true blocking air-court walls
+  ---
+  duration_ms: 2.2781
+  type: 'test'
+  ...
+# Subtest: companion menu preserves dry waiting position, and an explicit recall uses the dry entry during a dive
+ok 838 - companion menu preserves dry waiting position, and an explicit recall uses the dry entry during a dive
+  ---
+  duration_ms: 1.618
+  type: 'test'
+  ...
+# Subtest: heaven: stable contract, finite geometry, pure bounded quest and readable anchors
+ok 839 - heaven: stable contract, finite geometry, pure bounded quest and readable anchors
+  ---
+  duration_ms: 4.0969
+  type: 'test'
+  ...
+# Subtest: heaven: connected physical ground gives every point and enemy a body-width approach and return
+ok 840 - heaven: connected physical ground gives every point and enemy a body-width approach and return
+  ---
+  duration_ms: 198.96
+  type: 'test'
+  ...
+# Subtest: heaven: submitted original art has finite transforms, matched cover, and a modest local instance/triangle budget
+ok 841 - heaven: submitted original art has finite transforms, matched cover, and a modest local instance/triangle budget
+  ---
+  duration_ms: 96.0778
+  type: 'test'
+  ...
+# Subtest: heaven: decorating is deterministic, owns no scene lifecycle and leaves all source/simulation/inventory state unchanged
+ok 842 - heaven: decorating is deterministic, owns no scene lifecycle and leaves all source/simulation/inventory state unchanged
+  ---
+  duration_ms: 13.8335
+  type: 'test'
+  ...
+# Subtest: heaven: height supplied by the world caller shifts all local structures, routes and markers coherently
+ok 843 - heaven: height supplied by the world caller shifts all local structures, routes and markers coherently
+  ---
+  duration_ms: 7.5833
+  type: 'test'
+  ...
+# Subtest: hell: stable contract, finite geometry, pure bounded quest and readable anchors
+ok 844 - hell: stable contract, finite geometry, pure bounded quest and readable anchors
+  ---
+  duration_ms: 0.4366
+  type: 'test'
+  ...
+# Subtest: hell: connected physical ground gives every point and enemy a body-width approach and return
+ok 845 - hell: connected physical ground gives every point and enemy a body-width approach and return
+  ---
+  duration_ms: 121.0313
+  type: 'test'
+  ...
+# Subtest: hell: submitted original art has finite transforms, matched cover, and a modest local instance/triangle budget
+ok 846 - hell: submitted original art has finite transforms, matched cover, and a modest local instance/triangle budget
+  ---
+  duration_ms: 42.4888
+  type: 'test'
+  ...
+# Subtest: hell: decorating is deterministic, owns no scene lifecycle and leaves all source/simulation/inventory state unchanged
+ok 847 - hell: decorating is deterministic, owns no scene lifecycle and leaves all source/simulation/inventory state unchanged
+  ---
+  duration_ms: 7.3637
+  type: 'test'
+  ...
+# Subtest: hell: height supplied by the world caller shifts all local structures, routes and markers coherently
+ok 848 - hell: height supplied by the world caller shifts all local structures, routes and markers coherently
+  ---
+  duration_ms: 9.0238
+  type: 'test'
+  ...
+# Subtest: Heaven: both actual causeway/arcade loops fit a traveller without stepping through instrument, columns or workshop
+ok 849 - Heaven: both actual causeway/arcade loops fit a traveller without stepping through instrument, columns or workshop
+  ---
+  duration_ms: 7.3811
+  type: 'test'
+  ...
+# Subtest: Heaven: distinct narrow route inlays sit on supported paving and the fork remains flat and clear
+ok 850 - Heaven: distinct narrow route inlays sit on supported paving and the fork remains flat and clear
+  ---
+  duration_ms: 25.56
+  type: 'test'
+  ...
+# Subtest: Heaven: the cultivated Ruby-fork band has actual native support and leaves routes, solids and interaction approaches clear
+ok 851 - Heaven: the cultivated Ruby-fork band has actual native support and leaves routes, solids and interaction approaches clear
+  ---
+  duration_ms: 43.649
+  type: 'test'
+  ...
+# Subtest: Heaven: all low blossoms attach to rooted stems and fit their shallow planting beds
+ok 852 - Heaven: all low blossoms attach to rooted stems and fit their shallow planting beds
+  ---
+  duration_ms: 8.1799
+  type: 'test'
+  ...
+# Subtest: Heaven: cultivated detail has a bounded geometry cost and is identical with reduced motion enabled
+ok 853 - Heaven: cultivated detail has a bounded geometry cost and is identical with reduced motion enabled
+  ---
+  duration_ms: 6.7036
+  type: 'test'
+  ...
+# Subtest: Hell: only the existing Refuge roof slab and patched ribs carry the bounded reveal tag
+ok 854 - Hell: only the existing Refuge roof slab and patched ribs carry the bounded reveal tag
+  ---
+  duration_ms: 3.3006
+  type: 'test'
+  ...
+# Subtest: Hell: distinct east/west approaches and the free home path avoid the optional sentinel even within an eleven-unit threat pocket
+ok 855 - Hell: distinct east/west approaches and the free home path avoid the optional sentinel even within an eleven-unit threat pocket
+  ---
+  duration_ms: 75.1413
+  type: 'test'
+  ...
+# Subtest: Module exposes the browser/CommonJS contract and rejects unknown decoration without touching the caller
+ok 856 - Module exposes the browser/CommonJS contract and rejects unknown decoration without touching the caller
+  ---
+  duration_ms: 0.1784
+  type: 'test'
+  ...
+1..856
+# tests 856
+# suites 0
+# pass 856
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6686.0667

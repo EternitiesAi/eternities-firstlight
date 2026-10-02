@@ -1,0 +1,4152 @@
+{
+  "capture_harness_sha256": "229a8ae87a8d81af09513120838e34cc49a5d999fda69d7a202b3384e7b7a69b",
+  "method": "Normal-RAF realm gameplay from labelled command-earned sources on the RTX desktop.\nNo artificial ticks, position edits, damage or reward grants occur during filming.\nMenu reading pauses through the production UI. Setup imports the named earned save\nand adjusts only time/quality/camera. Short RAF samples are presentation cadence,\nnot sustained throughput or human enjoyment. Footage is silent browser video.\n",
+  "variant": "earthlands",
+  "source": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\evidence10\\realm-trails-north-browser\\earned-sources\\fresh-blade\\00_COMMAND_EARNED_KIT.json",
+  "source_sha256": "a867a16f4f5e6311bcafa0a8a2166dd6d59547e126ddb4d792c221afb7438d39",
+  "html_sha256": "8ad7e3f020eb93b79b2d812e51a86248780c54b28593face9a115412f7e7b5bf",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "quality": "balanced",
+  "events": [
+    {
+      "name": "normal walk [18, 6]",
+      "seconds": 1.9775737000163645,
+      "scene": "valley",
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "camera": {
+        "yaw": 5.3871299226086125,
+        "elevation": 0.28,
+        "half": 17,
+        "distance": 7.5,
+        "actualDistance": 7.5,
+        "fov": 60,
+        "center": [
+          18,
+          2.8,
+          6
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "projection": "perspective",
+        "eye": [
+          12.371563380583055,
+          4.872667364230853,
+          10.50274929553697
+        ],
+        "target": [
+          18,
+          2.8,
+          6
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "deliberate crossing earthlands",
+      "seconds": 2.182493500004057,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 5.387129922608612,
+        "elevation": 0.28,
+        "half": 17,
+        "distance": 7.5,
+        "actualDistance": 7.5000000000000036,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          104
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "projection": "perspective",
+        "eye": [
+          -5.628436619416951,
+          5.142667364230855,
+          108.50274929553697
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          104
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [-7, 97]",
+      "seconds": 5.322375100018689,
+      "scene": "world-earthlands",
+      "player": {
+        "x": -7,
+        "z": 97,
+        "yaw": -2.356194490192515
+      },
+      "camera": {
+        "yaw": 5.387129922608612,
+        "elevation": 0.28,
+        "half": 17,
+        "distance": 7.5,
+        "actualDistance": 7.499999999999996,
+        "fov": 60,
+        "center": [
+          -6.810057589937453,
+          3.0700000000000003,
+          97.18994241006254
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "projection": "perspective",
+        "eye": [
+          -12.438494209354399,
+          5.142667364230853,
+          101.6926917055995
+        ],
+        "target": [
+          -6.810057589937453,
+          3.0700000000000003,
+          97.18994241006254
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "coastward-terms",
+      "seconds": 5.583701299998211,
+      "scene": "world-earthlands",
+      "player": {
+        "x": -7,
+        "z": 97,
+        "yaw": -2.356194490192515
+      },
+      "camera": {
+        "yaw": 5.387129922608612,
+        "elevation": 0.28,
+        "half": 17,
+        "distance": 7.5,
+        "actualDistance": 7.499999999999995,
+        "fov": 60,
+        "center": [
+          -6.979962191353093,
+          3.0700000000000003,
+          97.0200378086469
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "projection": "perspective",
+        "eye": [
+          -12.608398810770037,
+          5.142667364230852,
+          101.52278710418386
+        ],
+        "target": [
+          -6.979962191353093,
+          3.0700000000000003,
+          97.0200378086469
+        ]
+      },
+      "paused": true,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "third camera",
+      "seconds": 6.056050000013784,
+      "scene": "world-earthlands",
+      "player": {
+        "x": -7,
+        "z": 97,
+        "yaw": -2.356194490192515
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.998384377409906,
+        "fov": 60,
+        "center": [
+          -6.999999968102378,
+          3.0700000000000003,
+          97.00000003189763
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          -4.809731797716896,
+          4.680976916609296,
+          105.57778530080958
+        ],
+        "target": [
+          -6.999999968102378,
+          3.0700000000000003,
+          97.00000003189763
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [-7, 97]",
+      "seconds": 6.102189600002021,
+      "scene": "world-earthlands",
+      "player": {
+        "x": -7,
+        "z": 97,
+        "yaw": -2.356194490192515
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.998741751861687,
+        "fov": 60,
+        "center": [
+          -6.999999979661178,
+          3.0700000000000003,
+          97.00000002033882
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          -4.809644821895095,
+          4.6810408972049515,
+          105.57812595943993
+        ],
+        "target": [
+          -6.999999979661178,
+          3.0700000000000003,
+          97.00000002033882
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [0, 97]",
+      "seconds": 8.340747600013856,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 97,
+        "yaw": 1.5707963267948966
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999982199423,
+        "fov": 60,
+        "center": [
+          -0.25416471892620546,
+          3.0700000000000003,
+          97.00000000000004
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          1.9364967006913587,
+          4.681266157645588,
+          105.57932535770823
+        ],
+        "target": [
+          -0.25416471892620546,
+          3.0700000000000003,
+          97.00000000000004
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [0, 92]",
+      "seconds": 9.93787780002458,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 92,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999994026,
+        "fov": 60,
+        "center": [
+          -1.4179652600057875e-07,
+          3.0700000000000003,
+          92.27385634327078
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          2.190661282152366,
+          4.681266160831348,
+          100.85318171794182
+        ],
+        "target": [
+          -1.4179652600057875e-07,
+          3.0700000000000003,
+          92.27385634327078
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [0, 16]",
+      "seconds": 33.73005030001514,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 16,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999991,
+        "fov": 60,
+        "center": [
+          -1.56523594618749e-100,
+          3.0700000000000003,
+          16.286292527535885
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          2.190661423950344,
+          4.681266160832417,
+          24.865617902212616
+        ],
+        "target": [
+          -1.56523594618749e-100,
+          3.0700000000000003,
+          16.286292527535885
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "diorama camera",
+      "seconds": 34.11871660000179,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 16,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 1.25,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999991,
+        "fov": 60,
+        "center": [
+          -2.466183603507141e-103,
+          2.1719135779526804,
+          16.00045108211253
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          56.226785782604786,
+          48.15567747596022,
+          34.68311733533696
+        ],
+        "target": [
+          -2.466183603507141e-103,
+          2.1719135779526804,
+          16.00045108211253
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "coastward-channel-diorama",
+      "seconds": 34.36819390000892,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 16,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 1.25,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999991,
+        "fov": 60,
+        "center": [
+          -1.2877955182392122e-103,
+          2.1709992350560436,
+          16.000235546746012
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          56.226785782604786,
+          48.15476313306358,
+          34.682901799970445
+        ],
+        "target": [
+          -1.2877955182392122e-103,
+          2.1709992350560436,
+          16.000235546746012
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "third camera",
+      "seconds": 34.76181830000132,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 16,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999996,
+        "fov": 60,
+        "center": [
+          -6.928911886146577e-113,
+          3.069999999494678,
+          16.000000000000124
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          2.190661423950345,
+          4.681266160327095,
+          24.579325374676863
+        ],
+        "target": [
+          -6.928911886146577e-113,
+          3.069999999494678,
+          16.000000000000124
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [-10, 15]",
+      "seconds": 37.95076460001292,
+      "scene": "world-earthlands",
+      "player": {
+        "x": -10,
+        "z": 15,
+        "yaw": -1.6704649792860664
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999996,
+        "fov": 60,
+        "center": [
+          -9.739580398250848,
+          3.069999999999999,
+          15.026041960174913
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -7.548918974300502,
+          4.681266160832416,
+          23.60536733485165
+        ],
+        "target": [
+          -9.739580398250848,
+          3.069999999999999,
+          15.026041960174913
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [-10, -12]",
+      "seconds": 46.43196790001821,
+      "scene": "world-earthlands",
+      "player": {
+        "x": -10,
+        "z": -12,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999996,
+        "fov": 60,
+        "center": [
+          -9.999999999999995,
+          3.069999999999999,
+          -11.74513449302703
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -7.809338576049649,
+          4.681266160832416,
+          -3.1658091183502926
+        ],
+        "target": [
+          -9.999999999999995,
+          3.069999999999999,
+          -11.74513449302703
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [-25, -12]",
+      "seconds": 51.16338569999789,
+      "scene": "world-earthlands",
+      "player": {
+        "x": -25,
+        "z": -12,
+        "yaw": -1.5707963267948966
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999996,
+        "fov": 60,
+        "center": [
+          -24.704599825545632,
+          3.069999999999999,
+          -11.999999999999995
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -22.513938401595286,
+          4.681266160832416,
+          -3.420674625323258
+        ],
+        "target": [
+          -24.704599825545632,
+          3.069999999999999,
+          -11.999999999999995
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [-25, -11]",
+      "seconds": 51.5118934000202,
+      "scene": "world-earthlands",
+      "player": {
+        "x": -25,
+        "z": -11,
+        "yaw": 0
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999996,
+        "fov": 60,
+        "center": [
+          -24.98733007644632,
+          3.069999999999999,
+          -11.298933914592395
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -22.796668652495974,
+          4.681266160832416,
+          -2.719608539915658
+        ],
+        "target": [
+          -24.98733007644632,
+          3.069999999999999,
+          -11.298933914592395
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "fallen-bough-collected",
+      "seconds": 51.88269740002579,
+      "scene": "world-earthlands",
+      "player": {
+        "x": -25,
+        "z": -11,
+        "yaw": 0
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999996,
+        "fov": 60,
+        "center": [
+          -24.999597664531393,
+          3.069999999999999,
+          -11.009492694735014
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -22.808936240581048,
+          4.681266160832416,
+          -2.4301673200582776
+        ],
+        "target": [
+          -24.999597664531393,
+          3.069999999999999,
+          -11.009492694735014
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [-25, -12]",
+      "seconds": 52.22272580000572,
+      "scene": "world-earthlands",
+      "player": {
+        "x": -25,
+        "z": -12,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999996,
+        "fov": 60,
+        "center": [
+          -24.999979980911576,
+          3.069999999999999,
+          -11.701549069395284
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -22.80931855696123,
+          4.681266160832416,
+          -3.1222236947185475
+        ],
+        "target": [
+          -24.999979980911576,
+          3.069999999999999,
+          -11.701549069395284
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [-10, -12]",
+      "seconds": 56.946073400002206,
+      "scene": "world-earthlands",
+      "player": {
+        "x": -10,
+        "z": -12,
+        "yaw": 1.5707963267948966
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999996,
+        "fov": 60,
+        "center": [
+          -10.295696394005402,
+          3.069999999999999,
+          -11.999999999999995
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -8.105034970055057,
+          4.681266160832416,
+          -3.420674625323258
+        ],
+        "target": [
+          -10.295696394005402,
+          3.069999999999999,
+          -11.999999999999995
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [-10, -34]",
+      "seconds": 63.86499510001158,
+      "scene": "world-earthlands",
+      "player": {
+        "x": -10,
+        "z": -34,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.99998185146714,
+        "fov": 60,
+        "center": [
+          -10.000000000000005,
+          3.069999999999999,
+          -33.735398229119376
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -7.809342993526419,
+          4.681262911708321,
+          -25.156090154683575
+        ],
+        "target": [
+          -10.000000000000005,
+          3.069999999999999,
+          -33.735398229119376
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [1, -35]",
+      "seconds": 67.36074220002047,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 1,
+        "z": -35,
+        "yaw": 1.6614562139951854
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999506,
+        "fov": 60,
+        "center": [
+          0.7127279310940828,
+          3.069999999999999,
+          -34.97388435737219
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          2.903389355044309,
+          4.681266160832328,
+          -26.394558982695923
+        ],
+        "target": [
+          0.7127279310940828,
+          3.069999999999999,
+          -34.97388435737219
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [14, -34]",
+      "seconds": 71.47848800002248,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 14,
+        "z": -34,
+        "yaw": 1.4940244355251504
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.99122275269038,
+        "fov": 60,
+        "center": [
+          13.695301968137198,
+          3.069999999999999,
+          -34.0234383101433
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          15.883826950188693,
+          4.679694773990722,
+          -25.452479919973584
+        ],
+        "target": [
+          13.695301968137198,
+          3.069999999999999,
+          -34.0234383101433
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [14, -19]",
+      "seconds": 76.32610620002379,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 14,
+        "z": -19,
+        "yaw": 0
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999742,
+        "fov": 60,
+        "center": [
+          13.999999999999995,
+          3.069999999999999,
+          -19.295385774790127
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          16.190661423950278,
+          4.6812661608323705,
+          -10.716060400113632
+        ],
+        "target": [
+          13.999999999999995,
+          3.069999999999999,
+          -19.295385774790127
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [28, -19]",
+      "seconds": 80.72748120001052,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 28,
+        "z": -19,
+        "yaw": 1.5707963267948966
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999807850749,
+        "fov": 60,
+        "center": [
+          27.692746352651636,
+          3.069999999999999,
+          -19.00000000000001
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          29.883407729831543,
+          4.681266126432018,
+          -10.420674808491153
+        ],
+        "target": [
+          27.692746352651636,
+          3.069999999999999,
+          -19.00000000000001
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [28, -16]",
+      "seconds": 82.14045880001504,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 28,
+        "z": -16,
+        "yaw": 0
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999838737,
+        "fov": 60,
+        "center": [
+          27.999999107716256,
+          3.069999999999999,
+          -16.295325243388707
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          30.19066053162735,
+          4.6812661608035455,
+          -7.715999868865691
+        ],
+        "target": [
+          27.999999107716256,
+          3.069999999999999,
+          -16.295325243388707
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "shore-reeds-collected",
+      "seconds": 84.66831420001108,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 28,
+        "z": -16,
+        "yaw": 0
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999988,
+        "fov": 60,
+        "center": [
+          27.99999999999999,
+          3.069999999999999,
+          -16.00000000003706
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          30.19066142395033,
+          4.681266160832415,
+          -7.420674625360329
+        ],
+        "target": [
+          27.99999999999999,
+          3.069999999999999,
+          -16.00000000003706
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough",
+              "shore-reeds"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [30, -25]",
+      "seconds": 87.5730881000054,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 30,
+        "z": -25,
+        "yaw": 2.922923707715901
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999991,
+        "fov": 60,
+        "center": [
+          29.929697864896294,
+          3.069999999999999,
+          -24.68364039203329
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          32.120359288846636,
+          4.681266160832415,
+          -16.10431501735656
+        ],
+        "target": [
+          29.929697864896294,
+          3.069999999999999,
+          -24.68364039203329
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough",
+              "shore-reeds"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "shore-stone-collected",
+      "seconds": 88.86832890001824,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 30,
+        "z": -25,
+        "yaw": 2.922923707715901
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999991,
+        "fov": 60,
+        "center": [
+          29.999999416926805,
+          3.069999999999999,
+          -24.999997376170622
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          32.19066084087715,
+          4.681266160832415,
+          -16.42067200149389
+        ],
+        "target": [
+          29.999999416926805,
+          3.069999999999999,
+          -24.999997376170622
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough",
+              "shore-reeds",
+              "shore-stone"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [28, -19]",
+      "seconds": 90.87098170001991,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 28,
+        "z": -19,
+        "yaw": -0.3217505543967137
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999991,
+        "fov": 60,
+        "center": [
+          28.098310330754938,
+          3.069999999999999,
+          -19.29493099226478
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          30.288971754705283,
+          4.681266160832415,
+          -10.71560561758805
+        ],
+        "target": [
+          28.098310330754938,
+          3.069999999999999,
+          -19.29493099226478
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough",
+              "shore-reeds",
+              "shore-stone"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [14, -19]",
+      "seconds": 95.27447880001273,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 14,
+        "z": -19,
+        "yaw": -1.5707963267948966
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 7.743107427374548,
+        "fov": 60,
+        "center": [
+          14.306965469640266,
+          3.069999999999999,
+          -19.00000000000001
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          16.191690663268357,
+          4.456245219713195,
+          -11.618817996608634
+        ],
+        "target": [
+          14.306965469640266,
+          3.069999999999999,
+          -19.00000000000001
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough",
+              "shore-reeds",
+              "shore-stone"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [14, 15]",
+      "seconds": 105.92625350001617,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 14,
+        "z": 15,
+        "yaw": 0
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999991,
+        "fov": 60,
+        "center": [
+          14.000000000000005,
+          3.069999999999999,
+          14.69221036654241
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          16.19066142395035,
+          4.681266160832415,
+          23.27153574121914
+        ],
+        "target": [
+          14.000000000000005,
+          3.069999999999999,
+          14.69221036654241
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough",
+              "shore-reeds",
+              "shore-stone"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [0, 16]",
+      "seconds": 110.35410860000411,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 16,
+        "yaw": -1.4994888620096138
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999991,
+        "fov": 60,
+        "center": [
+          0.29121586770897545,
+          3.069999999999999,
+          15.979198866592219
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          2.4818772916593197,
+          4.681266160832415,
+          24.558524241268948
+        ],
+        "target": [
+          0.29121586770897545,
+          3.069999999999999,
+          15.979198866592219
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough",
+              "shore-reeds",
+              "shore-stone"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "diorama camera",
+      "seconds": 110.73493350000354,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 16,
+        "yaw": -1.4994888620096138
+      },
+      "camera": {
+        "yaw": 1.25,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999991,
+        "fov": 60,
+        "center": [
+          0.0005333938514435429,
+          2.1719140755476336,
+          15.999961900439182
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          56.22731917645623,
+          48.15567797355517,
+          34.682628153663615
+        ],
+        "target": [
+          0.0005333938514435429,
+          2.1719140755476336,
+          15.999961900439182
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough",
+              "shore-reeds",
+              "shore-stone"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "coastward-channel-diorama",
+      "seconds": 112.00942190000205,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 16,
+        "yaw": -1.4994888620096138
+      },
+      "camera": {
+        "yaw": 1.25,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999991,
+        "fov": 60,
+        "center": [
+          1.980313155581113e-05,
+          2.1700710632298716,
+          15.999998585490603
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          56.226805585736344,
+          48.15383496123741,
+          34.682664838715034
+        ],
+        "target": [
+          1.980313155581113e-05,
+          2.1700710632298716,
+          15.999998585490603
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough",
+              "shore-reeds",
+              "shore-stone"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "third camera",
+      "seconds": 112.38348810002208,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 16,
+        "yaw": -1.4994888620096138
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999996,
+        "fov": 60,
+        "center": [
+          1.0650916252192808e-14,
+          3.0699999994946334,
+          15.999999999999995
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          2.1906614239503557,
+          4.68126616032705,
+          24.57932537467673
+        ],
+        "target": [
+          1.0650916252192808e-14,
+          3.0699999994946334,
+          15.999999999999995
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough",
+              "shore-reeds",
+              "shore-stone"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [0, 92]",
+      "seconds": 136.17458910000278,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 92,
+        "yaw": 0
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999993,
+        "fov": 60,
+        "center": [
+          1.1757126530515075e-107,
+          3.069999999999999,
+          91.71394681812964
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          2.190661423950344,
+          4.681266160832415,
+          100.29327219280637
+        ],
+        "target": [
+          1.1757126530515075e-107,
+          3.069999999999999,
+          91.71394681812964
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough",
+              "shore-reeds",
+              "shore-stone"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [0, 97]",
+      "seconds": 137.75465310001164,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 97,
+        "yaw": 0
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999993,
+        "fov": 60,
+        "center": [
+          7.616143414026938e-114,
+          3.069999999999999,
+          96.68201155088813
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          2.190661423950344,
+          4.681266160832415,
+          105.26133692556486
+        ],
+        "target": [
+          7.616143414026938e-114,
+          3.069999999999999,
+          96.68201155088813
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough",
+              "shore-reeds",
+              "shore-stone"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [-3, 97]",
+      "seconds": 138.72055120000732,
+      "scene": "world-earthlands",
+      "player": {
+        "x": -3,
+        "z": 97,
+        "yaw": -1.5707963267948966
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999993,
+        "fov": 60,
+        "center": [
+          -2.7049231800770164,
+          3.069999999999999,
+          96.99994699584337
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -0.5142617561266722,
+          4.681266160832415,
+          105.5792723705201
+        ],
+        "target": [
+          -2.7049231800770164,
+          3.069999999999999,
+          96.99994699584337
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough",
+              "shore-reeds",
+              "shore-stone"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "road-pack-collected",
+      "seconds": 140.10156140002073,
+      "scene": "world-earthlands",
+      "player": {
+        "x": -3,
+        "z": 97,
+        "yaw": -1.5707963267948966
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999993,
+        "fov": 60,
+        "center": [
+          -2.999998843623964,
+          3.069999999999999,
+          96.99999999979228
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -0.80933741967362,
+          4.681266160832415,
+          105.57932537446901
+        ],
+        "target": [
+          -2.999998843623964,
+          3.069999999999999,
+          96.99999999979228
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough",
+              "shore-reeds",
+              "shore-stone",
+              "road-pack"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [-7, 97]",
+      "seconds": 141.36840140001732,
+      "scene": "world-earthlands",
+      "player": {
+        "x": -6.9996799999999855,
+        "z": 97,
+        "yaw": -1.5707963267948966
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999993,
+        "fov": 60,
+        "center": [
+          -6.670125128932406,
+          3.069999999999999,
+          96.99999999999996
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -4.479463704982061,
+          4.681266160832415,
+          105.57932537467669
+        ],
+        "target": [
+          -6.670125128932406,
+          3.069999999999999,
+          96.99999999999996
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough",
+              "shore-reeds",
+              "shore-stone",
+              "road-pack"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "normal walk [-7, 98.7]",
+      "seconds": 144.93961359999957,
+      "scene": "world-earthlands",
+      "player": {
+        "x": -7,
+        "z": 98.7,
+        "yaw": -0.00018823529190699391
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999993,
+        "fov": 60,
+        "center": [
+          -6.99993953934888,
+          3.069999999999999,
+          98.37880279095634
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -4.809278115398536,
+          4.681266160832415,
+          106.95812816563307
+        ],
+        "target": [
+          -6.99993953934888,
+          3.069999999999999,
+          98.37880279095634
+        ]
+      },
+      "paused": false,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough",
+              "shore-reeds",
+              "shore-stone",
+              "road-pack"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    },
+    {
+      "name": "explicit-claim",
+      "seconds": 146.23582170001464,
+      "scene": "world-earthlands",
+      "player": {
+        "x": -7,
+        "z": 98.7,
+        "yaw": -0.00018823529190699391
+      },
+      "camera": {
+        "yaw": 0.25,
+        "elevation": 0.18,
+        "half": 16,
+        "distance": 9,
+        "actualDistance": 8.999999999999993,
+        "fov": 60,
+        "center": [
+          -6.9999999994985505,
+          3.069999999999999,
+          98.69999733604845
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -4.809338575548207,
+          4.681266160832415,
+          107.27932271072518
+        ],
+        "target": [
+          -6.9999999994985505,
+          3.069999999999999,
+          98.69999733604845
+        ]
+      },
+      "paused": true,
+      "realm_trails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": true,
+            "steps": [
+              "fallen-bough",
+              "shore-reeds",
+              "shore-stone",
+              "road-pack"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": true
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      }
+    }
+  ],
+  "samples": [
+    {
+      "intervals_ms": [
+        16.70000000001164,
+        16.70000000001164,
+        16.599999999976717,
+        16.70000000001164,
+        16.70000000001164,
+        16.599999999976717,
+        16.70000000001164,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.70000000001164,
+        16.599999999976717,
+        16.70000000001164,
+        16.70000000001164,
+        16.599999999976717,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.70000000001164,
+        16.599999999976717,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.70000000001164,
+        16.5,
+        16.79999999998836,
+        16.60000000000582,
+        16.60000000000582,
+        16.79999999998836,
+        16.70000000001164,
+        16.599999999976717,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.60000000000582,
+        16.79999999998836,
+        16.60000000000582,
+        16.60000000000582,
+        16.79999999998836,
+        16.70000000001164,
+        16.60000000000582,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.79999999998836,
+        16.60000000000582,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.60000000000582,
+        16.70000000001164,
+        16.599999999976717,
+        16.800000000017462,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.699999999982538,
+        16.5,
+        16.70000000001164,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.699999999982538,
+        16.5,
+        16.70000000001164,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.79999999998836,
+        16.60000000000582,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582
+      ],
+      "scene": "world-earthlands",
+      "projection": "perspective",
+      "hidden": false,
+      "paused": false,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "drawing_buffer": {
+        "width": 1280,
+        "height": 720
+      },
+      "metrics": {
+        "drawCalls": 27,
+        "texturedDrawCalls": 2,
+        "texturedInstances": 54,
+        "surfaceMaterials": {
+          "version": 1,
+          "id": "earth-weathered-timber-v1",
+          "status": "ready",
+          "ready": true,
+          "error": null,
+          "width": 512,
+          "height": 512,
+          "colorFormat": "SRGB8_ALPHA8",
+          "roughnessFormat": "R8",
+          "textureBytes": 1310720,
+          "mipmapBytes": 436905,
+          "totalTextureBytes": 1747625,
+          "decodedImageBytes": 2097152,
+          "decodeWallMs": 71.09999999403954,
+          "uploadCpuMs": 91.7000000178814,
+          "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+          "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+          "enabled": true
+        },
+        "instances": 962,
+        "triangles": 34856
+      },
+      "label": "Coastward settlement after actual materials circuit",
+      "median_ms": 16.699999999982538,
+      "p95_nearest_rank_ms": 16.70000000001164,
+      "maximum_ms": 16.800000000017462,
+      "over_33_333_ms": 0
+    }
+  ],
+  "browser_errors": [],
+  "external_requests": [],
+  "human_acceptance": false,
+  "sustained_performance_qualification": false,
+  "artificial_ticks": 0,
+  "position_edits": 0,
+  "manual_damage": 0,
+  "inventory_grants": 0,
+  "browser": "143.0.7499.4",
+  "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "status": "passed",
+  "normal_time_seconds": 147.3154549000028,
+  "video_path": "D:\\07-GAMES\\Firstlight\\artifacts\\realm-outings-2026-10-02\\coastward-delivery-rtx-01\\09ece26ae0a744b1e0a75f36d2811a6a.webm"
+}

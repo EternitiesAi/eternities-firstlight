@@ -31,8 +31,8 @@ function draw(out,sim,frame){
  const grip=ready?joints[style==='bow'?'leftHand':'rightHand']:stowGrip;
  if(!point(grip)||ready&&style==='bow'&&!point(joints.rightHand))return none;
  const gear=A.GEAR[id],colour=typeof gear.color==='string'?parseInt(gear.color.slice(1),16):gear.color;
- const gem=AR.activeGem(a),gemId=gem?a.arsenal.sockets[id]:null,stage=Math.max(0,Math.min(2,G.RealmPursuit?.stage(a,id)||0)),temper=G.RealmStarter?.bonus(a,id)||0;
- const summary={weaponId:id,style,mode:ready?'held':'stowed',gripLocal:Array.from(grip),gripWorld:M.transform(frame.root,grip),gem:gemId,temper,stage,instances:0};
+ const gem=AR.activeGem(a),gemId=gem?a.arsenal.sockets[id]:null,stage=Math.max(0,Math.min(2,G.RealmPursuit?.stage(a,id)||0)),temper=G.RealmStarter?.bonus(a,id)||0,realmFitting=G.RealmCraft?.bonus(a,id)||0;
+ const summary={weaponId:id,style,mode:ready?'held':'stowed',gripLocal:Array.from(grip),gripWorld:M.transform(frame.root,grip),gem:gemId,temper,stage,realmFitting,instances:0};
  const attachment=ready?(style==='bow'?'leftHand':'rightHand'):(style==='bow'?'back':'hip');
 
  // A complete orthonormal basis handles beams with arbitrary X/Y/Z endpoints.
@@ -54,6 +54,13 @@ function draw(out,sim,frame){
   if(gem)block(add(mount,scale(front,.025)),[.096,.12,.061],gem.color,'socket',{gemId,em:.35},axis,'octa');
   for(let i=0;i<stage;i++)block(offset(grip,axis,.24+i*.10),[width,.061,.13],i?0xece0b6:0xd39366,'fitting',{fittingStage:i+1},axis);
   if(temper)block(offset(grip,axis,.16),[width+.025,.07,.12],0x82beb0,'temper',{temper},axis);
+ }
+ // Keep the finite realm collar separate from the older temper/River marks.
+ // A bow collar follows its actual curved limb instead of hovering on grip +Y.
+ function realmCollar(center,axis,width,depth,bodyLength=.09,trimLength=.025){
+  if(!realmFitting)return;
+  block(center,[width+.04,bodyLength,depth+.035],0xa997cc,'realm-fitting',{realmFitting},axis);
+  for(const sign of [-1,1])block(offset(center,axis,sign*(bodyLength+trimLength)/2),[width+.06,trimLength,depth+.05],0xd1b06b,'realm-fitting-trim',{realmFitting},axis);
  }
  function sheath(anchor,spec){
   const axis=unit([-.08,-.93,-.35]),start=offset(anchor,axis,.20),end=offset(anchor,axis,spec.length+.26);
@@ -84,6 +91,7 @@ function draw(out,sim,frame){
    sheath(stowGrip,spec);
   }else sheath(grip,spec);
   markers(axis,front,.17);
+  realmCollar(offset(grip,axis,.54),axis,.17,.14);
   // The original cave hand-light stays on the available left palm. Its fixed
   // glow represents the existing lantern presentation, never a hit result.
   if(ready&&sim.room==='mine'&&point(joints.leftHand)){
@@ -112,6 +120,7 @@ function draw(out,sim,frame){
   for(const sign of [-1,1]){
    const nodes=[[.10,0],[.27,.22],[.55,.67],[.82,1],[1,.81]].map(([height,curve])=>add(offset(grip,up,sign*height*spec.half),scale(bend,curve*spec.curve)));
    for(let i=1;i<nodes.length;i++)beam(nodes[i-1],nodes[i],spec.width,.060,colour,'bow-limb',{limbSide:sign,limbSegment:i-1},'round');
+   if(sign===1)realmCollar(scale(add(nodes[3],nodes[4]),.5),unit(sub(nodes[4],nodes[3])),spec.width,.060,.05,.015);
    block(nodes[4],[spec.width+.025,.09,.076],spec.tip,'bow-tip',{},up,'round');tips.push(nodes[4]);
   }
   const stringGrip=ready?joints.rightHand:add(grip,scale(bend,spec.curve*.81));

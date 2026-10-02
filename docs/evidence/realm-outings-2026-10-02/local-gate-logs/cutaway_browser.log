@@ -1,0 +1,38 @@
+{
+  "method": "Independent synthetic framebuffer test of the camera cutaway, not game progress.\nFlagged foreground geometry must expose a known blue subject in the MAIN image;\nthe corresponding water reflection must remain pixel-identical. No FPS claim.\n",
+  "engine_sha256": "6b334a5d081cf4140d2fa1d5c3108dbd7f8bcdd81ae53b62ff9ed3545c4e5e7f",
+  "checks": [
+    {
+      "name": "Flagged foreground occluder reveals subject pixels",
+      "passed": true,
+      "beforeBlue": 0,
+      "afterBlue": 3373
+    },
+    {
+      "name": "Main image changes",
+      "passed": true,
+      "changedChannels": 10200
+    },
+    {
+      "name": "Water reflection stays pixel-identical",
+      "passed": true,
+      "changedChannels": 0
+    },
+    {
+      "name": "Unflagged actors and geometry never cut away",
+      "passed": true,
+      "changedChannels": 0
+    },
+    {
+      "name": "Geometry behind focus remains unchanged",
+      "passed": true,
+      "changedChannels": 0
+    },
+    {
+      "name": "No WebGL errors",
+      "passed": true
+    }
+  ],
+  "browser_errors": [],
+  "passed": true
+}

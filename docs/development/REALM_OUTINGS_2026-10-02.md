@@ -1,0 +1,49 @@
+# Five useful journeys beyond the valley
+
+Working base: `56d4c25b389d6f93941f32aafc0469a14e89cf32`, PR #35. This implementation follows Dom's October 2 authorization to deepen the browser game for five hours. The recovered realm packages remain attributed design material; their provisional names are not new founder approvals.
+
+The playable promise is a complete rescue in Hell, a mechanical maintenance encounter and restored public instrument in Heaven, a depth-aware chart commission in Atlantis, a finite Coastward materials commission, and a two-station Cosmos comparator whose saved readings come from deliberate physical alignment. None requires campaign advancement, an assigned class, an old survey payout, or an allegiance. Both cameras and free return remain available.
+
+New world `realmTrails.version=1` records accepted story IDs, stable completed step IDs, validated recorded instrument settings, an escort checkpoint, explicit Wait/follow and assisted status, and a once-only claim. The initial published catalogue contains all five records; four-record development fixtures were never published as a save contract. Future catalogue additions require an intentional migration. Existing `journeys.version=1` runs remain independent. Adventure 10 migrates to 11 by adding `realmCraft.version=1`, with no change to XP, equipment, sockets, earlier fittings, rewards or story choices. Current schema 11 requires this field; future versions are refused. World schema stays 9 and browser keys stay unchanged.
+
+Any claimed trail unlocks one finite workshop fitting per character. It costs **3 ore and 8 sunmarks**, deliberately targets one owned canonical weapon, adds **3 attack**, and never equips it. The record retains the selected weapon identity. Range, cooldown, stamina, guard, health, sockets and previous upgrades are unchanged. A visible violet and brass band identifies the work. Later trails pay their declared fixed materials and money; they do not unlock more fittings.
+
+| Representative equipment | Before | After | Other behavior |
+| --- | --- | --- | --- |
+| Command-earned trail blade after two northern fees, level 2 | 18 attack | 21 attack | 2.65 reach; 0.52 s cooldown; no shot stamina |
+| Command-earned trail bow with earned amber socket, level 2 | 15 attack | 18 attack | 11 reach; 0.75 s cooldown; 6 stamina per arrow |
+| Four-chapter earned Dawn Edge, Keeper coat and Chime clasp; prior temper and two River fittings | 48 actual practice damage | 51 actual practice damage | 2.65 reach; 0.52 s cooldown; identity, prior temper and River fittings retained |
+
+All three rows are from production command-earned journeys. The returning row measures real practice impacts before and after the fit; it preserves the fully equipped campaign and prior finite work. Northern fresh rows use the actual earned level at fitting, rather than disguising level gains as the +3 fitting. No universal best weapon or human pacing claim follows from this table.
+
+Root owns shared state, atomic persistence, combat, escort, craft, UI and presentation. North worker owns only the new Heaven/Hell catalogue and its physical checks. South worker owns only the Atlantis/Coastward catalogue and its physical checks. A step command must reach the declared physical point and medium and satisfy its prerequisite IDs. Defeat and escort-arrival facts come from real runtime actors, never a journal button. Claim and fitting validate the complete candidate and capacity/cost before saving and applying it. Save refusal preserves the unpaid work and all inventory.
+
+Acceptance requires blade and bow command-earned journeys, partial/ready/paid reload, malformed/future migration and duplicate/capacity/store-refusal checks; visible UI and models; actual movement/air-court medium; real rescue arrival; existing regression suites; a clean remote clone; and actual gameplay footage. Dom's understanding, enjoyment and desire for another outing remain human questions.
+
+
+Fixed trail IDs are `heaven-broken-choir-v1`, `hell-open-cage-v1`, `atlantis-bellglass-chart-v1`, `earthlands-coastward-materials-v1` and `cosmos-split-bearing-v1`. Each accepts independently after the initial kit and has one explicit payout. These are separate from the original routine surveys and their intentional repeat run identities. No old material node, story defeat, completed survey or open journal can backfill a new trail.
+
+| Trail | Fixed fee | Local consequence |
+| --- | --- | --- |
+| Heaven | 30 XP, 12 sunmarks, 2 ore | Three relays isolate a core; damage lands only in its measured recovery, optional spillway extends recovery by 0.8 s, repaired Garden return arm remains |
+| Hell | 35 XP, 14 sunmarks, 3 ore | Safety work and distinct Reeve defeat permit actual Neris Wait/follow/checkpoint escort; walked and explicitly assisted arrivals remain different |
+| Atlantis | 30 XP, 12 sunmarks, 2 ore | Two actual swim depths support one correct air-court chart and a modern marker alongside old masonry |
+| Coastward Earth | 25 XP, 10 sunmarks, 6 wood, 4 fiber, 2 stone | Job supplies pack at the bridge and pay existing bow-recipe materials; normal inventory is not consumed as counterfeit quest supplies |
+| Cosmos | 25 XP, 10 sunmarks, 2 ore | West/east frames compare the authored sky image and crown; preview is transient, aligned selected readings save, two readings permit the service arm |
+
+Both cameras, saved preferences and current targeting/autoattack/Brace remain. Violet map rings list only available accepted actions; the rescue marker follows Neris. Closed core arrows produce one obstruction cue and no damage number, confirmed hit flash or successful-hit sound. New weapon work adds an actual violet/brass material band to the held/carried model. Sound is optional; reduced motion suppresses the restored arm stroke.
+
+The source review reproduced and repaired an accepted Atlantis journal exception at home: formatting now uses the inspected realm's depth definition. A separate actual-image review found the shared workspace's 28-pixel SVG icon rule shrinking maps and comparator diagrams. Scoped figure rules and actual browser dimension assertions cover that defect. Preserve the initial failed receipts; an eventual green gate does not erase them.
+
+
+Runtime checkpoint: `329caa5aea6d90bdafc639e7535ad3699f2840a6`; identical generated HTML is 2,424,144 bytes / `8ad7e3f020eb93b79b2d812e51a86248780c54b28593face9a115412f7e7b5bf`. The branch remains stacked against PR35. The portable evidence and final PR distinguish the runtime checkpoint, later recording/record commits and the exact remote verification head.
+
+The immediate paused-menu Neris label now derives from the saved Wait/Follow choice and actual distance. A regression reads both responses before simulation resumes. The fitting collar now has an actual violet body and two brass edges. Blade placement leaves the older temper and River bands separate. Bow placement follows the real upper curved limb; the brass binding intentionally joins the original tip cap while preserving the cap's geometry and colour. The rendered-transform regression first detected the lower placement covering River stage 2, then passed the corrected upper placement. A separate CPU geometry review checks 504 explicitly synthetic poses; this proves bounded attachment/separation and read-only preservation, not human readability.
+
+Normal-time RTX recordings use labelled command-earned saved starts, isolated profiles, ordinary frame/input loops and the exact HTML above. They include all five local stories, the actual walked rescue, held-key depth controls, both cameras, deliberate claims, and blade/bow fitting with actual 51/18 practice impacts. They contain no artificial ticks, position edits, manual damage or inventory grants during filming. Selected photos and silent compressed clips retain their source hashes. Paired positions/cameras are comparable, but time and character facing advance; they are not exact pixel matches.
+
+At 720 pixels high the Cosmos instrument may need ordinary scroll to reach its record button; the complete-control recording uses 800 pixels. Wider views make small weapon ornament harder to read. Hardware RAF samples are short presentation-cadence observations under shared desktop load, not sustained performance or a guaranteed 60 FPS. Human route comprehension, pacing and enjoyment remain pending. See `docs/PLAY_REALM_TRAILS.md` for a founder-facing launch and play route.
+
+The final frozen-runtime local verifier passes 72 syntax modules, 856 Node tests, 53 Python cases and 1 existing Windows symlink skip, all 34 earned journeys, and 2,458 named browser assertions in 25 suites. The [portable evidence](../evidence/realm-outings-2026-10-02/README.md) preserves actual clips, qualified reviews, failure history and the local complete receipt. The exact later pushed head and remote clone result belong to the stacked delivery PR. A separate [original environment art sheet](../design/REALM_ENVIRONMENT_ART_2026-10-02.md) gives future geometry/material work a concrete, attributed target; it is not gameplay footage or founder-approved final architecture.
+
+A final founder-route audit corrected the guide to J → Roads, reopening K after the automatic walk, and explicit Tide Steps gallery entry before swimming. The actual gallery paragraph now distinguishes the dry routine survey from the optional submerged Bellglass chart. One meaningful visible-UI assertion catches the former misleading statement. Focused southern browser coverage passes 96 checks. Final generated HTML is 2,424,237 bytes / `989d1b74c29de735ccf0a557cc1d4264f4730539dc4a9365424ce9b70c7df8a8`; a corrected normal-time Atlantis clip uses it. The prior seven 8ad videos and complete 8ad local gate keep their original epochs. Save/rule/art ownership and geometry are unchanged by this paragraph correction. The exact final remote full result is recorded in the PR.

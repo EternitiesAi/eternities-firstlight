@@ -1,3 +1,13 @@
+# Five deeper realm trails, 2026-10-02
+
+Current implementation branch: `gameplay/realm-outings-20261002`, based on PR35 at `56d4c25b389d6f93941f32aafc0469a14e89cf32`. The five openings now have distinct once-only accepted stories: Broken Choir repair and recovery-window encounter; Open Cage safety work and actual Neris return; depth-aware Bellglass chart; Coastward recipe materials; and two physically adjusted Cosmos frames. Declared fixed fees and the existing repeat surveys remain separate. Any claimed trail unlocks one deliberately selected +3 fitting for 3 ore and 8 sunmarks at home, including an honest strongest-gear path. Both cameras, free return and all earlier campaign/creative systems remain.
+
+World/key9 stays. Optional `realmTrails1` adds five unaccepted records to the published older world. Adventure10 migrates to11 with an empty `realmCraft1`; XP, gear, sockets, prior work and story choices remain. Current11 missing its field and future versions refuse safely. Four-record development fixtures were not a published save contract. Chapter flags, classes and soul choices are not activated by visiting or taking work.
+
+See `docs/development/REALM_OUTINGS_2026-10-02.md` for fixed IDs, declared fees, ownership and the command-earned reward matrix. Strongest earned Dawn Edge practice was 48→51 after the new fitting, retaining its prior temper and two River fittings. Initial filmed/local-verified HTML was `8ad7e3f020eb93b79b2d812e51a86248780c54b28593face9a115412f7e7b5bf`; the complete local gate passes 72 syntax checks, 856 Node tests, 53 Python cases plus 1 existing Windows symlink skip, 34 earned journeys and 2,458 named browser assertions across 25 suites. The stacked delivery PR identifies the exact pushed head and fresh remote-clone result; older totals below belong to their original checkpoints. Read [the current portable evidence](evidence/realm-outings-2026-10-02/README.md).
+
+Final invitation/guide correction: both current HTML outputs are 2,424,237 bytes / `989d1b74c29de735ccf0a557cc1d4264f4730539dc4a9365424ce9b70c7df8a8`. The gallery now truthfully distinguishes the dry routine survey from Sahra’s submerged chart. Its focused visible-UI suite passes 96 checks, and an added actual Atlantis recording uses these final bytes. The seven original clips remain explicitly frozen at 8ad. The final stacked PR gives the exact current pushed head and fresh full gate; no earlier receipt is relabelled as that result.
+
 # Five playable realm openings, 2026-10-02
 
 `gameplay/world-foundations-night-20261002` is stacked against PR34 at

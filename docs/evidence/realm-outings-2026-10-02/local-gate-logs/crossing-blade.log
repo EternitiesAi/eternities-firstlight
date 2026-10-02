@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "edition": "10.0.0",
+  "source": "examples\\REALM10_CHAPTER_III_BASE_EARNED.json",
+  "weapon": "blade",
+  "commands": 40,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedDefeats": 0,
+  "automated": true,
+  "tells": [
+    "outer",
+    "inner"
+  ],
+  "final": {
+    "level": 5,
+    "attack": 36,
+    "defense": 13,
+    "maxHP": 200
+  },
+  "chapter": {
+    "version": 1,
+    "entered": true,
+    "met": true,
+    "inscription": true,
+    "clapperRevealed": true,
+    "clapper": true,
+    "repaired": true,
+    "complete": true,
+    "reward": true,
+    "attuned": true,
+    "projects": []
+  }
+}

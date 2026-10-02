@@ -282,7 +282,7 @@ class WorldArt{
  if(G.RealmAdventureArt)G.RealmAdventureArt.draw(out,sim,t);
  if(G.RealmStarterArt)G.RealmStarterArt.draw(out,sim,t);
  if(G.RealmCosmosArt)G.RealmCosmosArt.draw(out,sim,t,this);
- if(G.RealmWorldFoundationsArt)G.RealmWorldFoundationsArt.draw(out,sim,t,this);
+ if(G.RealmWorldFoundationsArt)G.RealmWorldFoundationsArt.draw(out,sim,t,this);if(G.RealmTrailsArt)G.RealmTrailsArt.draw(out,sim,t,this);
  if(G.RealmEarthArt)G.RealmEarthArt.draw(out,sim,t,this);if(G.RealmEarthNotesArt)G.RealmEarthNotesArt.draw(out,sim);
  if(G.RealmArsenalArt)G.RealmArsenalArt.draw(out,sim,t);
  if(this.room==='mine')this.e.torch=[p.x,2.6,p.z];

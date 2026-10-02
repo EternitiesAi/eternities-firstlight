@@ -1,3 +1,11 @@
+# Five distinct outings: current evidence and pending taste, 2026-10-02
+
+The new stories are implemented and have seven labelled normal-time delivery recordings on the reported RTX desktop. Northern blade/bow command journeys and software browser play actually defeat the two declared story machines; the rescue reaches the real refuge actor with `assisted=false`. Southern blade/bow command journeys actually walk the material circuit and swim the gallery/court without placement edits or inventory grants. The comparator UI accepts real keyboard adjustment, saves selected aligned readings and retains unpaid/paid history through native reload. Returning strongest gear produces actual 48 and 51 practice impacts before/after the finite fit. All such accelerated checks are distinct from normal-RAF filming and human pacing.
+
+Independent source review caught an off-realm accepted-Atlantis journal exception, now repaired. Image review caught icon-sized maps/diagrams, now covered by scoped figure CSS and actual browser size checks. New work approaches stand beside props; success notices are short, while complete account text remains in the journal/details. The map's white player outline no longer hides a nearby action letter. Watch actual camera/actor framing in the final footage, including Neris standing separately at the refuge and the held/carried fitting band.
+
+Human questions remain pending: Did you know where to go? Did the fights feel better? Did the reward make you want another outing? Try one fresh blade or bow, then one returning strongest-equipment character. Do not call provisional names founder-approved or declare the whole continents completed. The portable receipts distinguish the exact current build, historical attempts, software-WebGL, RTX cadence samples and actual normal-time video. The final local complete gate passes 2,458 named browser assertions; human answers remain pending.
+
 # Five worlds, actual play and pending human judgment, 2026-10-02
 
 Dom explicitly asked for a long creative world-building session through10am.

@@ -1,0 +1,894 @@
+{
+  "observed_utc": "2026-10-02T21:02:06.920387+00:00",
+  "command": "python tools/verify.py --browser --output D:\\07-GAMES\\Firstlight\\artifacts\\realm-outings-2026-10-02\\local-complete-gate-8ad",
+  "checkout": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment",
+  "observed_head": "329caa5aea6d90bdafc639e7535ad3699f2840a6",
+  "git_status_after_gate": "M .gitattributes\n M AGENTS.md\n M docs/CURRENT_STATE.md\n M docs/DECISIONS.md\n M docs/NEXT_TASK.md\n M docs/PLAYTEST_NOTES.md\n M docs/design/COMPREHENSIVE_VISION_INDEX.md\n M docs/development/REALM_OUTINGS_2026-10-02.md\n M tools/capture_realm_trails.py\n?? docs/design/REALM_ENVIRONMENT_ART_2026-10-02.md\n?? docs/design/REALM_ENVIRONMENT_ART_RECEIPT_2026-10-02.json\n?? docs/design/art/\n?? docs/evidence/realm-outings-2026-10-02/",
+  "html_bytes": 2424144,
+  "html_sha256": "8ad7e3f020eb93b79b2d812e51a86248780c54b28593face9a115412f7e7b5bf",
+  "syntax_modules_passed": 72,
+  "node": {
+    "tests": 856,
+    "pass": 856,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "todo": 0
+  },
+  "python": {
+    "cases": 54,
+    "passed": 53,
+    "skipped": 1,
+    "failed": 0,
+    "skip_reason": "Existing Windows symlink helper case; see python.log"
+  },
+  "command_earned_journeys_passed": 34,
+  "journeys": [
+    "characters-journey",
+    "classes-journey",
+    "cosmos-journey",
+    "crossing-blade",
+    "crossing-bow",
+    "earth-journey",
+    "earth-notes-blade",
+    "earth-notes-bow",
+    "earth-notes-veteran",
+    "earth-outing-blade",
+    "earth-outing-bow",
+    "earth-outing-veteran",
+    "earth-story-blade",
+    "earth-story-bow",
+    "earth-story-veteran",
+    "gathering-blade",
+    "gathering-bow",
+    "gathering-veteran",
+    "pursuit-blade",
+    "pursuit-bow",
+    "pursuit-veteran",
+    "realm-comparator-blade",
+    "realm-comparator-bow",
+    "realm-comparator-veteran",
+    "realm-trails-blade",
+    "realm-trails-bow",
+    "realm-trails-south-blade",
+    "realm-trails-south-bow",
+    "starter-blade",
+    "starter-bow",
+    "starter-veteran",
+    "world-foundations-blade",
+    "world-foundations-bow",
+    "world-foundations-veteran"
+  ],
+  "browser_suites_passed": 25,
+  "named_browser_assertions_passed": 2458,
+  "browser": [
+    {
+      "suite": "crossing_browser",
+      "named_assertions": 115,
+      "passed": 115,
+      "failed": 0
+    },
+    {
+      "suite": "regression09_browser",
+      "named_assertions": 107,
+      "passed": 107,
+      "failed": 0
+    },
+    {
+      "suite": "cutaway_browser",
+      "named_assertions": 6,
+      "passed": 6,
+      "failed": 0
+    },
+    {
+      "suite": "reflection_browser",
+      "named_assertions": 8,
+      "passed": 8,
+      "failed": 0
+    },
+    {
+      "suite": "native_origin_browser",
+      "named_assertions": 11,
+      "passed": 11,
+      "failed": 0
+    },
+    {
+      "suite": "starter_browser",
+      "named_assertions": 148,
+      "passed": 148,
+      "failed": 0
+    },
+    {
+      "suite": "camera_browser",
+      "named_assertions": 51,
+      "passed": 51,
+      "failed": 0
+    },
+    {
+      "suite": "pursuit_browser",
+      "named_assertions": 164,
+      "passed": 164,
+      "failed": 0
+    },
+    {
+      "suite": "characters_browser",
+      "named_assertions": 67,
+      "passed": 67,
+      "failed": 0
+    },
+    {
+      "suite": "classes_browser",
+      "named_assertions": 45,
+      "passed": 45,
+      "failed": 0
+    },
+    {
+      "suite": "cosmos_browser",
+      "named_assertions": 75,
+      "passed": 75,
+      "failed": 0
+    },
+    {
+      "suite": "earth_browser",
+      "named_assertions": 104,
+      "passed": 104,
+      "failed": 0
+    },
+    {
+      "suite": "earth_story_browser",
+      "named_assertions": 293,
+      "passed": 293,
+      "failed": 0
+    },
+    {
+      "suite": "earth_notes_browser",
+      "named_assertions": 134,
+      "passed": 134,
+      "failed": 0
+    },
+    {
+      "suite": "gathering_browser",
+      "named_assertions": 118,
+      "passed": 118,
+      "failed": 0
+    },
+    {
+      "suite": "realm_atlas_browser",
+      "named_assertions": 48,
+      "passed": 48,
+      "failed": 0
+    },
+    {
+      "suite": "timber_browser",
+      "named_assertions": 40,
+      "passed": 40,
+      "failed": 0
+    },
+    {
+      "suite": "traveler_browser",
+      "named_assertions": 116,
+      "passed": 116,
+      "failed": 0
+    },
+    {
+      "suite": "bridge_browser",
+      "named_assertions": 138,
+      "passed": 138,
+      "failed": 0
+    },
+    {
+      "suite": "combat_cue_browser",
+      "named_assertions": 62,
+      "passed": 62,
+      "failed": 0
+    },
+    {
+      "suite": "world_foundations_browser",
+      "named_assertions": 207,
+      "passed": 207,
+      "failed": 0
+    },
+    {
+      "suite": "world_cutaway_browser",
+      "named_assertions": 9,
+      "passed": 9,
+      "failed": 0
+    },
+    {
+      "suite": "realm_trails_browser",
+      "named_assertions": 95,
+      "passed": 95,
+      "failed": 0
+    },
+    {
+      "suite": "realm_trails_north_browser",
+      "named_assertions": 259,
+      "passed": 259,
+      "failed": 0
+    },
+    {
+      "suite": "realm_trails_cosmos_browser",
+      "named_assertions": 38,
+      "passed": 38,
+      "failed": 0
+    }
+  ],
+  "failures": 0,
+  "log_count": 134,
+  "human_acceptance": false,
+  "gpu_performance_qualification": false,
+  "platform": "Windows; browser suites use their declared isolated/synthetic/software modes; RTX filming is a separate receipt",
+  "logs": [
+    {
+      "name": "bridge_browser.log",
+      "bytes": 50734,
+      "sha256": "cea491cd19db58cd8b821c3c3b132c5232e4c17a842492176f2551630627fc74"
+    },
+    {
+      "name": "build.log",
+      "bytes": 91,
+      "sha256": "65d7210f1bca30441a38d3b6f5a22df0c4fce7080076cf10619900d3ed13a0e9"
+    },
+    {
+      "name": "camera_browser.log",
+      "bytes": 2640,
+      "sha256": "c5f37fb1454af0e19496ffe1d24e84f0bbcfca236985ad61c2aee24bb60e02ae"
+    },
+    {
+      "name": "characters-journey.log",
+      "bytes": 3058,
+      "sha256": "042763f93d49d30bd2df8e9c7557eb0627d1f0ee18ca9aac959875ce04f3105c"
+    },
+    {
+      "name": "characters_browser.log",
+      "bytes": 4357,
+      "sha256": "a067d91915df7395e4d268225d48ac904837632f801bdf7c1858d12d722603a0"
+    },
+    {
+      "name": "classes-journey.log",
+      "bytes": 4224,
+      "sha256": "c3331877ecab046cf7f60e477bda5d4fd81c4c7c8f65b946ac1ca5d0fa5b0c95"
+    },
+    {
+      "name": "classes_browser.log",
+      "bytes": 2383,
+      "sha256": "ef23c78cd5f3a8bfae077961bab37392f61f6377eb46fcc65c0f6de96e6c4003"
+    },
+    {
+      "name": "combat_cue_browser.log",
+      "bytes": 2350,
+      "sha256": "e6b20f78dfd4d2f9831e322c7be794dd6af40223f85b9b7684a853214f9dc22f"
+    },
+    {
+      "name": "cosmos-journey.log",
+      "bytes": 630,
+      "sha256": "b0c2ad695a256c922eaba228fd843d41de8ae982e7ce54c280b903de1ad6d86e"
+    },
+    {
+      "name": "cosmos_browser.log",
+      "bytes": 3927,
+      "sha256": "d1b998b402ed890f27a57e6d5fcb746a2f61fa357d557b07e15279d06c4c1747"
+    },
+    {
+      "name": "crossing-blade.log",
+      "bytes": 625,
+      "sha256": "0b27a5083c98c2983b9d5dd15b33456d395f182b4b299bbf46412b4f244ba956"
+    },
+    {
+      "name": "crossing-bow.log",
+      "bytes": 649,
+      "sha256": "f1f412fb8081e5e0c9e1c60e5ea9b8d1de892fbc3c23c2a76e5b1470f8c04d4a"
+    },
+    {
+      "name": "crossing_browser.log",
+      "bytes": 4046,
+      "sha256": "b7e60195cd71a79ca9b858931c055035ea08a9294c5c72a464dbd9d7a6585723"
+    },
+    {
+      "name": "cutaway_browser.log",
+      "bytes": 1126,
+      "sha256": "a3352eeff5224508b5224466c757e2209c04d0c25355aa641057cc7ceee8f507"
+    },
+    {
+      "name": "earth-journey.log",
+      "bytes": 602,
+      "sha256": "e64f4c5e470d76b75380fa5323d364e308ce28480f564a02fe46e05488a98ef2"
+    },
+    {
+      "name": "earth-notes-blade.log",
+      "bytes": 2028,
+      "sha256": "018bec0b1e5e8503032f1addcc9c82db6d0854ff6e8ce932ed9354dadb52f3c4"
+    },
+    {
+      "name": "earth-notes-bow.log",
+      "bytes": 2030,
+      "sha256": "5f691349ac000c62c86c9c64a6c438fa9c0a857e05a7be06d7f8ada444b80ffd"
+    },
+    {
+      "name": "earth-notes-veteran.log",
+      "bytes": 2022,
+      "sha256": "c769e3ddf2a6b3ada81b57159619f6a56335a3e830b418ad22e322eb9ff2c820"
+    },
+    {
+      "name": "earth-outing-blade.log",
+      "bytes": 5482,
+      "sha256": "be9b2f2c5cc1dc45ed3ada36ba842c06b1e0144b009f341107d3acafb80f6a60"
+    },
+    {
+      "name": "earth-outing-bow.log",
+      "bytes": 6715,
+      "sha256": "e4e71e12da6150014a280b35387a3f507522cee791079ddbb89e5805a720d8c6"
+    },
+    {
+      "name": "earth-outing-veteran.log",
+      "bytes": 3478,
+      "sha256": "89278d0af6d478420939c7835799248eaae6a8eb863dcb41994a80fb529c6847"
+    },
+    {
+      "name": "earth-story-blade.log",
+      "bytes": 3039,
+      "sha256": "bb10a7e3cba6287184cf351da98e4ff16a8e3d32b763f3477a494fababd4390f"
+    },
+    {
+      "name": "earth-story-bow.log",
+      "bytes": 3448,
+      "sha256": "602030b4f6df7a75924d06384be9d213ade97007c359f2c389e0161bfb6d7ca9"
+    },
+    {
+      "name": "earth-story-veteran.log",
+      "bytes": 2628,
+      "sha256": "69e173956b4a9bda428ea1a6e781676fb6693a2c5b6ee4c9e12d6dfc621f4f8e"
+    },
+    {
+      "name": "earth_browser.log",
+      "bytes": 5235,
+      "sha256": "6a25250a666ae36470b65d48796757b5c4f01f9ff168d8c88fc39ca8e29be557"
+    },
+    {
+      "name": "earth_notes_browser.log",
+      "bytes": 7022,
+      "sha256": "332191c4133c3eb0bd6e07a8b4dc0cb7a0048d08890b6ba69ce4868bbdb1c747"
+    },
+    {
+      "name": "earth_story_browser.log",
+      "bytes": 15524,
+      "sha256": "a991f0903f4d626b1d89e8210cd7fa0162847b777d54f81e4b752eff53af65f5"
+    },
+    {
+      "name": "gathering-blade.log",
+      "bytes": 2008,
+      "sha256": "3aa5362a69e82f1bc1c0b035e824f3c80e4345e8a0ec9197286ae707e0bb6ca2"
+    },
+    {
+      "name": "gathering-bow.log",
+      "bytes": 2004,
+      "sha256": "63dec79d83582b1cd447769ddbfc69e251d1537151ac2c2a182c8a4d5c0f0886"
+    },
+    {
+      "name": "gathering-veteran.log",
+      "bytes": 1998,
+      "sha256": "bf1bce92394291ee61de790c61a2efd9187ed4c891662473809ad2b702e6029e"
+    },
+    {
+      "name": "gathering_browser.log",
+      "bytes": 5641,
+      "sha256": "d6f061cdf3c3510853b9ae997400adfb15609e052c526269633e39c3bd507d2f"
+    },
+    {
+      "name": "native_origin_browser.log",
+      "bytes": 516,
+      "sha256": "0b81853b4503586fb0edd367582284bedfc3a2256c3d12ff3f608e63435b5263"
+    },
+    {
+      "name": "pursuit-blade.log",
+      "bytes": 5483,
+      "sha256": "04029aab268bf30da55bb85ea9cb89e5ab63ecd7f782a59c97aa095529ce4647"
+    },
+    {
+      "name": "pursuit-bow.log",
+      "bytes": 6710,
+      "sha256": "7954f060cccbda3f5837029b6b177c60db43a02f6d581a5880ed7382a76135d1"
+    },
+    {
+      "name": "pursuit-veteran.log",
+      "bytes": 3475,
+      "sha256": "29756b68abe4ecdc230baefa1b65e66dc33cd7ba5dd41a1e18ff3ce015b39739"
+    },
+    {
+      "name": "pursuit_browser.log",
+      "bytes": 6250,
+      "sha256": "96822dee04d9c5e7da7750a450efbbcdaafda025f52a218e44b172ee626d5e12"
+    },
+    {
+      "name": "python.log",
+      "bytes": 6276,
+      "sha256": "ee53c478fa0f11f645fa302ed318b29a9d0d9418fd2c8e9ba73e4f2cd61c936d"
+    },
+    {
+      "name": "realm-comparator-blade.log",
+      "bytes": 860,
+      "sha256": "d051c505ea0d4762ed40c3b46181cff2ef60ab5dfca172cbdff96e7e26bccab5"
+    },
+    {
+      "name": "realm-comparator-bow.log",
+      "bytes": 859,
+      "sha256": "a07a5025afb0bff37325955e4fd9fea4c0a5b197b0afaa4f95064ca4a85245d8"
+    },
+    {
+      "name": "realm-comparator-veteran.log",
+      "bytes": 1380,
+      "sha256": "64a25f3ab1955e0f90e4dd4c6622c1f044eda49be45e7e18fa2ffcfb29f15fcb"
+    },
+    {
+      "name": "realm-trails-blade.log",
+      "bytes": 161,
+      "sha256": "8c99875b9853801c2052b9590857b851d349d56ab81580bfb70232c631f73fe1"
+    },
+    {
+      "name": "realm-trails-bow.log",
+      "bytes": 159,
+      "sha256": "53a69d88317a65523229998ee60c03de091e0a8b8d41a82e5253f340965b78d5"
+    },
+    {
+      "name": "realm-trails-south-blade.log",
+      "bytes": 3544,
+      "sha256": "3c6cbede3608bf802d9f0bf376e51a48e69eff9c330952ae2a776e044c2315df"
+    },
+    {
+      "name": "realm-trails-south-bow.log",
+      "bytes": 3542,
+      "sha256": "50546d9da191f138d4528c8ad73e079b05e7d8363393242b7f4bcf6644a74e07"
+    },
+    {
+      "name": "realm_atlas_browser.log",
+      "bytes": 2177,
+      "sha256": "aeaa2edea10aa5195268cbd2a87a0e063a6d4f799176e0f0d0dc5f3bfdab35fc"
+    },
+    {
+      "name": "realm_trails_browser.log",
+      "bytes": 3973,
+      "sha256": "8f67f622475590a13f926aedd706a452d53b85e0eb2cf4deed275272a1513079"
+    },
+    {
+      "name": "realm_trails_cosmos_browser.log",
+      "bytes": 1928,
+      "sha256": "50c8c5292dcebda9f622a3fb057567e81b8766cb66205ca535dbb81bd5cd9921"
+    },
+    {
+      "name": "realm_trails_north_browser.log",
+      "bytes": 13352,
+      "sha256": "20bd8eb3a4b685e9fac155cf3dedeba7d384c96e50fdd127954a942ae27d5eab"
+    },
+    {
+      "name": "reflection_browser.log",
+      "bytes": 1849,
+      "sha256": "0900ff3373d1a0559a15198055ca764c85cf08ee61b2b5a72c5a012ee245ba6b"
+    },
+    {
+      "name": "regression09_browser.log",
+      "bytes": 4172,
+      "sha256": "f961280bfd48606e6024aa38a62f5987eaba527c66e9db533adf04933c89a9ea"
+    },
+    {
+      "name": "rules.log",
+      "bytes": 175449,
+      "sha256": "d69cc82e2c40a484768e00116d626378c79e1579f929d09e2c624c703380ef5f"
+    },
+    {
+      "name": "starter-blade.log",
+      "bytes": 507,
+      "sha256": "729c3767bb1878a64a4de9ae24b0989c3d3f0ed12c7456975bcc5ead00107b0a"
+    },
+    {
+      "name": "starter-bow.log",
+      "bytes": 503,
+      "sha256": "2496bd1b1ba568c3ff951073bede4e7625f178d4aa75780f9ab122264bf8b37f"
+    },
+    {
+      "name": "starter-veteran.log",
+      "bytes": 1438,
+      "sha256": "a5ce11e73e32f6a35882e153121d316e4ff0bf6682f0b18001f5e86a2f979be0"
+    },
+    {
+      "name": "starter_browser.log",
+      "bytes": 5086,
+      "sha256": "62851f6e17391909357099954f8ffd98512b4a1e9079529032fea46df8ebba87"
+    },
+    {
+      "name": "syntax-adventure-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-adventure-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-adventure.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-app.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-arsenal-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-arsenal-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-arsenal.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-beacon-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-beacon.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-bridge-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-characters-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-characters.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-classes-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-classes.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-combat.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-core.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-cosmos-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-cosmos-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-cosmos.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-creative.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-crossing-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-crossing-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-crossing.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-drover-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-earth-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-earth-notes-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-earth-notes-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-earth-notes.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-earth-shoulder-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-earth-story-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-earth-story.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-earth-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-earth.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-engine.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-experience.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-gathering-adapter.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-gathering-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-gathering-music.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-gathering-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-gathering.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-mill-gate-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-millwright-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-pursuit-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-pursuit.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-quarry-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-realm-art-data.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-realm-atlas-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-realm-craft.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-realm-trails-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-realm-trails-cosmos.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-realm-trails-north.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-realm-trails-south.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-realm-trails-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-realm-trails.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-road-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-road.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-rpg-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-sandbox-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-sandbox-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-sandbox.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-starter-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-starter-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-starter.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-surface-assets.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-traveler-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-traveler-equipment-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-world-atlantis-earth.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-world-foundations-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-world-foundations-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-world-foundations.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-world-heaven-hell.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "syntax-world.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "timber_browser.log",
+      "bytes": 2209,
+      "sha256": "d4daadf0b4bc1a1b65c3666059fd0c3072a2bbbd5de1203c4d3b0a6b09eca177"
+    },
+    {
+      "name": "traveler_browser.log",
+      "bytes": 5167,
+      "sha256": "430d81deb91c463cd76dceec31ff29783a3dcd753776cd7f51b9d8b36fd6d1fc"
+    },
+    {
+      "name": "world-foundations-blade.log",
+      "bytes": 115,
+      "sha256": "fc64a7526f2397fe2fd184a12f5b7161198deee503ca08909120d5cee37e8e24"
+    },
+    {
+      "name": "world-foundations-bow.log",
+      "bytes": 113,
+      "sha256": "672abbfbe7a1d33774e55716e058cae4b29ce9f6c013361f41d6b31a4ad224d6"
+    },
+    {
+      "name": "world-foundations-veteran.log",
+      "bytes": 111,
+      "sha256": "f67ce6df32a739cda65cf92f5c480d85fc7cf4969a8894534f8f0a9487566137"
+    },
+    {
+      "name": "world_cutaway_browser.log",
+      "bytes": 2702,
+      "sha256": "b14286a49e47a0b54ef73b841198e925423f042da66538dc03774998aa3b5af5"
+    },
+    {
+      "name": "world_foundations_browser.log",
+      "bytes": 10501,
+      "sha256": "419c58a151f6783fb81facdbcca2e6a63c461a70d5e5f34e44352652556b298e"
+    }
+  ],
+  "log_copy_policy": "Only nonempty logs are copied below local-gate-logs, using LF. Original raw log hashes/counts remain in this receipt. MANIFEST hashes portable files; empty syntax logs are inventoried rather than added as empty files."
+}

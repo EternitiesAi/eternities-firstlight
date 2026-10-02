@@ -37,7 +37,7 @@ try:
    close();walk(0,23);page.keyboard.press('e');render();page.locator('[data-rpg="earth-confirm"]').click();render()
   def reload():
    close();ev('()=>Realm.test.save()');before=state();page.reload();page.wait_for_function('()=>!!window.Realm');render();check('native reload preserves gathering and unpaid delivery',state()['adventure']['earthGathering']==before['adventure']['earthGathering'] and state()['adventure']['earthStory']==before['adventure']['earthStory']);enter()
-  check('normal client owns current adventure schema',state()['adventure']['version']==10)
+  check('normal client owns current adventure schema',state()['adventure']['version']==11)
   for variant in ['fresh-blade-detour','fresh-bow-quarry','veteran-mill']:
    close();source=ROOT/'docs/evidence/living-world'/(variant+'_SOURCE.json');report['fixtures'][variant]={'path':str(source.relative_to(ROOT)),'sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'kind':'command-earned source'};fixture=json.loads(source.read_text(encoding='utf-8'));ev('(w)=>Realm.test.replace(w)',fixture);render();before=state();enter()
    walk(0,-43);page.keyboard.press('e');render();check(variant+' unpaid delivery prompt remains accessible',page.locator('[data-rpg="rain-claim"]').count()==1);close()
