@@ -1,3 +1,19 @@
+# Rail visibility stays a local presentation rule,2026-10-01
+
+Use a dedicated44-box static instance batch sharing the existing mesh and a
+clear-centred lower-body main-pass aperture. Do not change bridge geometry,
+traveller pose/palette,camera consent or navigation. Respect the existing saved
+cutaway preference;limit to supported Earth span;true perspective/parallel rays
+include near-edge positions. Keep generic scenery threshold,shadow/reflection,
+marker/deck/vaults and all game/save owners unchanged. No new texture/pass/schema.
+Initial retained-pattern centre obscured boots;clear centre/narrow fringe was
+selected after actual capture/review. Tests need original-color subject coverage,
+not only changed rail pixels;ID-mask reflection is excluded. Moving/human claims
+remain separate from static boundary proof and short headless GPU intervals.
+
+
+Prior checkpoint retained:
+
 # Decisions added 2026-09-15
 
 - **Complete source intake, bounded implementation.** Dom requested the new Astra visions and confirmed the comprehensive realm collection. Full Earth, Heaven, Hell, Atlantis and Cosmos packages plus the expanded library were retrieved. Published hashes and reading/implementation boundaries are in the vision index. Archive text remains evidence; current user authorization and verified gameplay state govern changes.

@@ -207,3 +207,14 @@ preserve stable8780 save origin, personal data and no automatic merge/deployment
 ## Bridge shoreline and authored mountain atmosphere
 
 Read the dated shoreline task/results. Pure bridge art dresses existing support with7steep skirts/12lowrocks and36ridgeparts;Earth navigation/anchors stay unchanged. The72-triangle bank-slope meets the grass underside,floods its lower seam,and leaves the full bridge opening/corridor clear. Test transformed actual meshes and exact seam heights,not only part tags. Keep bank dressing below supported feet and no unsupported flat shelves. Distant hill crowns intersect parents without altering the deterministic random sequence. Engine mountain-only haze resets per batch and uses authored depth,not camera-eye distance or wind/sky/terrain flags. Earth optical profile keeps P*V*H/y.01 and non-Earth invariance;both-camera same-time pixel probes,ordinary visible RAF and all older gates remain. No new texture,render pass,save schema or reward owner in this slice. Narrowcap/stylizedreflection/nearrail-leg overlap and human taste remain honest limits;heavy artifacts onD,bounded Cproof allowed for measured I/O stalls. No bypass of the previous preview guard.
+
+## Bridge rail visibility extension
+
+Read the dated traveller task/results. Only44bridgeRail boxes share a dedicated
+static box instance batch. Reset uRailCutaway each geometry batch;main/Earth/
+supported span/existing cameraCutaway only. Do not alter generic alpha/wind/terrain
+channels,physical geometry,traveller pose,reflection/shadow,marker or saves.
+Keep actual-geometry leg/reference pixel coverage with water excluded only from
+the test ID pass. Translated static pose tests are distinct from ordinary app
+RAF footage,human comfort and sustained GPU performance. Preserve both cameras
+and all existing owners;fetch latest review heads before the next local outing.

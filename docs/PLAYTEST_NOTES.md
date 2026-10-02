@@ -1,3 +1,17 @@
+# Traveller rail readability evidence,2026-10-01
+
+No new founder playtest observed. Actual paired RTX stills and37.52s normal-time
+video show boots through a local rail opening in both views;24synthetic actual-
+geometry boundary cases quantify static coverage. Independent still/frame review
+is distinct from human taste/temporal shimmer/comfort. Small fringe stippling
+remains;water/mountains are still stylized. Dom is away,screenshots/footage suffice
+for review but not enjoyment. Pending:are feet easy to follow,does the opening
+distract,and which view feels comfortable? Keep earlier ordinary combat,reward,
+discovery,delivery,gathering and timber questions unanswered until real play.
+
+
+Prior checkpoint retained:
+
 # A crossing to remember, 2026-10-01
 
 Dom imagined realistic water beneath a long bridge, a traveller running from the

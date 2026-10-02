@@ -42,7 +42,7 @@ try:
   page.screenshot(path=str(OUT/'BRIDGE_SIDE_THIRD.png'))
   art=ev('()=>Realm.test.bridge()');report['submitted']=art
   check('four vaults are actually submitted above the physical water plane',sum(p['kind']=='bridge-vault' for p in art['parts'])==4 and art['waterHeight']==.01)
-  check('bounded bridge and mountain pieces never block the camera or cut away',len([p for p in art['parts'] if p.get('bridgePart')])<=420 and all(not p['cameraSolid'] and not p['cutaway'] for p in art['parts']))
+  check('bridge and mountain pieces retain camera-collision and generic-cutaway opt-outs',len([p for p in art['parts'] if p.get('bridgePart')])<=420 and all(not p['cameraSolid'] and not p['cutaway'] for p in art['parts']))
   check('production world enables the local aperture on the accepted span',art['railCutaway']['eligible'] and art['railCutaway']['enabled'])
   check('only the 44 eligible rail boxes occupy the dedicated production batch',sum(p.get('bridgeRail',False) for p in art['parts'])==44 and all(bool(p.get('railBatch'))==bool(p.get('bridgeRail')) for p in art['parts']))
   rail_probe=ev((ROOT/'tests/bridge_rail_probe.js').read_text(encoding='utf-8'));report['rail_visibility']=rail_probe
