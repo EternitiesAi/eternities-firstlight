@@ -100,6 +100,7 @@ function terrain(a,rnd){
   for(const p of runs){const last=merged[merged.length-1];if(last&&p[0]<=last[1])last[1]=Math.max(last[1],p[1]);else merged.push(p.slice());}
   for(const [lo,hi]of merged){const x=(lo+hi)/2,ha=h(x,z),hb=h(x,z+.5),ang=Math.atan2(ha-hb,.5),green=z<-25?col.meadow:col.grass;a.box(x,(ha+hb)/2-.045,z+.25,hi-lo,.09,Math.hypot(.5,hb-ha)+.002,green,{rough:1,terrain:true,cameraSolid:false,cutaway:false,r:[ang,0,0]});a.box(x,Math.min(ha,hb)-2.55,z+.25,hi-lo,5,.502,0x756d5a,{cameraSolid:false,cutaway:false});}
  }
+ a.earthShoulderFrame=G.RealmEarthShoulderArt.draw(a,a.map.box);
  for(const ps of paths)paving(a,ps);
  // Mill pond/watercourse is a visible reason the direct center is not walkable in E1.
  a.box(0,1.32,-12.5,8.8,.08,33,col.water,{rough:.25,wet:1,cameraSolid:false,cutaway:false});

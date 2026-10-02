@@ -59,7 +59,7 @@ test('vault is actual finite open elliptic geometry, not a filled box or floatin
  assert.equal(west,24);assert.equal(east,24);assert.equal(crown,24);assert.ok(inner>=20);
 });
 test('Earth submits the bridge instead of terrain columns inside its water span',()=>{
- require('../src/drover-art.js');require('../src/millwright-art.js');require('../src/mill-gate-art.js');require('../src/quarry-art.js');require('../src/earth-art.js');
+ require('../src/drover-art.js');require('../src/millwright-art.js');require('../src/mill-gate-art.js');require('../src/quarry-art.js');require('../src/earth-shoulder-art.js');require('../src/earth-art.js');
  const parts=[],a={e:{},map:{},begin(){},commit(){},box:(...v)=>a.add('box',...v),beam(){},bench(){},add(kind,x,y,z,sx,sy,sz,c,opt={}){const p={kind,p:[x,y,z],s:[sx,sy,sz],c,...opt};parts.push(p);(this.map[kind]||(this.map[kind]=[])).push(p);}};
  globalThis.RealmEarthArt.make(a);
  assert.equal(parts.filter(p=>p.kind==='bridge-vault').length,4);
