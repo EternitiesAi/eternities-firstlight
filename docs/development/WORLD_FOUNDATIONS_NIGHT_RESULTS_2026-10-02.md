@@ -124,9 +124,20 @@ Three added garden tests check transformed ground/bed support, flower attachment
 clear routes and deterministic reduced-motion geometry. The cultivated fork adds
 207 instances and 2,196 triangles, without changing prior scenery or consuming RNG.
 
-Both checked-in regenerated HTML outputs are identical: **2,361,950 bytes**,
-SHA256 `3a5f18e04056d0d78ad7ccac3b3e0ac2c4058bf60b774b584b78d7611d97c7dc`.
-The exact final remote clone must reproduce this build and the full gate.
+Both checked-in regenerated HTML outputs are identical: **2,362,025 bytes**,
+SHA256 `12a44af65c53e80e9e57175e85c63d683421797c33e22da935134a3df9368b1b`.
+Recorded Cosmos frames exposed two label/home-button owners. The original
+Cosmos UI now clears its labels and hides its home control only while Roads
+owns the visit; the quiet legacy invitation retains its own UI and grants no
+work consent. Visible regression checks cover both entry routes, explicit work
+adoption and the original saved return coordinate. Final captures use the
+corrected build. The garden comparison remains labelled as the earlier 3a art
+checkpoint; this UI correction changes no geometry.
+
+The corrected frozen build passes **207 focused world-browser checks**, including
+legacy/Roads presentation ownership, original-checkpoint return, native partial
+work/death/reload and normal held-key swimming. The exact final remote clone
+must reproduce this build and the full gate.
 Final media and delivery receipts are in
 [the evidence directory](../evidence/world-foundations/README.md).
 
@@ -154,11 +165,14 @@ Earlier failures remain under the dated D-drive artifact folder: travel/map
 dispatch, bounded path-search budget, coincident NPC approach, capture selectors
 and key spelling, clock-aware ownership comparison, and the overly broad blue
 framebuffer classifier. The classifier was tightened to the known test color.
-The two underwater UI defects and stale shelter assertion are also recorded.
+The two underwater UI defects, Cosmos presentation overlap and stale shelter assertion are also recorded.
 Superseded hardware captures retain their older source hashes.
 One 197-check browser run overlapped Root's garden regeneration; its original
 report and mixed-epoch qualification remain outside Git. It is excluded from
-exact-build proof and superseded by the frozen final remote gate.
+exact-build proof and superseded by the frozen final remote gate. A later
+legacy-route browser extension initially tried to cross from the old saved
+checkpoint without returning to the five-light marker. The legitimate refusal
+is retained; the harness now asserts that original checkpoint and walks back.
 
 These are coherent playable openings and shared foundations. Complete countries,
 capital interiors, Broken Choir, the foundry rescue, Atlantis's larger harbour

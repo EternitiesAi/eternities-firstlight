@@ -17,7 +17,9 @@ human enjoyment remain distinct.
 Independent still reviews found no definite bridge/civic/gallery geometry mismatch.
 Heaven's ruby/silver paths read distinctly; the Hell roof now exposes both people
 in diorama; Atlantis's swimmer remains visible through deck and surface water.
-Air Court composition can better reveal the panel behind the traveler. Review
+The final Air Court angle reveals the panel behind the traveler. Actual Cosmos
+frames also exposed overlapping old/new labels and home controls; the visit now
+has one presentation owner, with both legacy and Roads entry covered. Review
 also found two impossible underwater buttons and a stale-buffer reflection test;
 all are corrected with visible/fresh-buffer checks. The compact final browser
 capture now includes an actually displayed toast beside the depth HUD.

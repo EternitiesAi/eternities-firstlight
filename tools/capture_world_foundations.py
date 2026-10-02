@@ -65,6 +65,8 @@ def main():
                 close(); page.keyboard.press('j'); page.locator('[data-rpg="open"][data-id="worlds"]').click()
                 if page.locator('[data-rpg="world-list"]').count(): page.locator('[data-rpg="world-list"]').click()
                 page.locator('[data-rpg="world-select"][data-id="'+id+'"]').click(); page.locator('[data-rpg="world-preview"]').click(); page.locator('[data-rpg="world-confirm"]').click(); mark('Deliberate crossing '+id)
+                if id=='cosmos':
+                    page.wait_for_function("()=>!document.querySelector('#world-home').hidden&&document.querySelector('#cosmos-home').hidden&&document.querySelector('#cosmos-labels').children.length===0")
             def view(mode,yaw=0,elevation=.2,distance=11):
                 if (page.evaluate('Realm.diagnostics.camera.projection')=='orthographic') != (mode=='diorama'): page.keyboard.press('v')
                 page.evaluate('v=>Realm.test.view(v)', {'yaw':yaw,'elevation':.66 if mode=='diorama' else elevation,'half':16,'distance':distance,'zoom':16/17.5,'overview':False})
@@ -109,7 +111,7 @@ def main():
             for k in ['notes','score','scoreRevision','retreat','visitor']: assert final[k]==initial[k],k
             if args.variant=='tour':assert final['journeys']['realms']['heaven']['active']['observed']==['first']
             assert final['journeys']['realms']['hell']['defeated']==['hell-salvage-sentinel']
-            assert not report['browser_errors']; report['canonical_ownership_preserved']=True; report['status']='passed'; report['normal_time_seconds']=time.monotonic()-start; report['footage_end_seconds']=time.monotonic()-start
+            assert not report['browser_errors']; assert hashlib.sha256((ROOT/'index.html').read_bytes()).hexdigest()==report['html_sha256']; report['canonical_ownership_preserved']=True; report['status']='passed'; report['normal_time_seconds']=time.monotonic()-start; report['footage_end_seconds']=time.monotonic()-start
             context.close(); report['video_path']=str(page.video.path()); browser.close()
     except Exception:
         report['status']='failed'; report['traceback']=traceback.format_exc(); raise

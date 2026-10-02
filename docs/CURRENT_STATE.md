@@ -18,10 +18,11 @@ refusal is atomic. Original Heaven01/sanctuary and resident identities stay outs
 The shared source checkpoint passed65syntax/785Node/53Python+1existing Windows
 symlink skip/27earned journeys/2039browser assertions22suites. A subsequent wet
 UI/reflection correction has focused184world-browser and9framebuffer checks;
+The corrected Cosmos presentation build passes 207 focused world-browser checks;
 exact final remote verification is recorded in the delivery PR/external receipt.
 The final garden/rule build passes 790 Node tests, including real fall/revival
-with partial accepted work retained. Generated HTML is identical at 2361950 bytes
-/ 3a5f18e0... . Exact final clone results belong in the delivery receipt. Actual RTX tour, blade,
+with partial accepted work retained. Generated HTML is identical at 2362025 bytes
+/ 12a44af6... . Exact final clone results belong in the delivery receipt. Actual RTX tour, blade,
 bow and local-work media are separately labelled; human feel remains pending.
 
 See [results and migration](development/WORLD_FOUNDATIONS_NIGHT_RESULTS_2026-10-02.md)
