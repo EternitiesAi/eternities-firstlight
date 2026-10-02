@@ -1,0 +1,1550 @@
+{
+  "status": "passed",
+  "variant": "fresh-blade",
+  "earthRoute": false,
+  "classPath": null,
+  "commands": 88,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedDefeats": 0,
+  "acceleratedTick": true,
+  "source": null,
+  "claimed": 5,
+  "beforeDamage": 16,
+  "afterDamage": 27,
+  "equipped": "copper_blade",
+  "stats": {
+    "level": 1,
+    "attack": 27,
+    "defense": 1,
+    "maxHP": 100
+  },
+  "xp": 0,
+  "economy": {
+    "initial": {
+      "ore": 0,
+      "coins": 0,
+      "fiber": 0,
+      "wood": 0,
+      "stone": 0,
+      "plank": 0
+    },
+    "end": {
+      "ore": 2,
+      "coins": 4,
+      "fiber": 4,
+      "wood": 0,
+      "stone": 0,
+      "plank": 0
+    },
+    "net": {
+      "ore": 2,
+      "coins": 4,
+      "fiber": 4,
+      "wood": 0,
+      "stone": 0,
+      "plank": 0
+    },
+    "surveys": {
+      "count": 5,
+      "ore": 15,
+      "coins": 20,
+      "fiber": 10
+    },
+    "transactions": [
+      {
+        "type": "pursuit-claim",
+        "p": {
+          "run": "riverbank-survey/1"
+        },
+        "before": {
+          "ore": 0,
+          "coins": 0,
+          "fiber": 0,
+          "wood": 0,
+          "stone": 0,
+          "plank": 0
+        },
+        "after": {
+          "ore": 3,
+          "coins": 4,
+          "fiber": 2,
+          "wood": 0,
+          "stone": 0,
+          "plank": 0
+        }
+      },
+      {
+        "type": "pursuit-claim",
+        "p": {
+          "run": "riverbank-survey/2"
+        },
+        "before": {
+          "ore": 3,
+          "coins": 4,
+          "fiber": 2,
+          "wood": 0,
+          "stone": 0,
+          "plank": 0
+        },
+        "after": {
+          "ore": 6,
+          "coins": 8,
+          "fiber": 4,
+          "wood": 0,
+          "stone": 0,
+          "plank": 0
+        }
+      },
+      {
+        "type": "pursuit-claim",
+        "p": {
+          "run": "riverbank-survey/3"
+        },
+        "before": {
+          "ore": 6,
+          "coins": 8,
+          "fiber": 4,
+          "wood": 0,
+          "stone": 0,
+          "plank": 0
+        },
+        "after": {
+          "ore": 9,
+          "coins": 12,
+          "fiber": 6,
+          "wood": 0,
+          "stone": 0,
+          "plank": 0
+        }
+      },
+      {
+        "type": "pursuit-claim",
+        "p": {
+          "run": "riverbank-survey/4"
+        },
+        "before": {
+          "ore": 9,
+          "coins": 12,
+          "fiber": 6,
+          "wood": 0,
+          "stone": 0,
+          "plank": 0
+        },
+        "after": {
+          "ore": 12,
+          "coins": 16,
+          "fiber": 8,
+          "wood": 0,
+          "stone": 0,
+          "plank": 0
+        }
+      },
+      {
+        "type": "pursuit-claim",
+        "p": {
+          "run": "riverbank-survey/5"
+        },
+        "before": {
+          "ore": 12,
+          "coins": 16,
+          "fiber": 8,
+          "wood": 0,
+          "stone": 0,
+          "plank": 0
+        },
+        "after": {
+          "ore": 15,
+          "coins": 20,
+          "fiber": 10,
+          "wood": 0,
+          "stone": 0,
+          "plank": 0
+        }
+      },
+      {
+        "type": "forge",
+        "p": {},
+        "before": {
+          "ore": 15,
+          "coins": 20,
+          "fiber": 10,
+          "wood": 0,
+          "stone": 0,
+          "plank": 0
+        },
+        "after": {
+          "ore": 11,
+          "coins": 16,
+          "fiber": 10,
+          "wood": 0,
+          "stone": 0,
+          "plank": 0
+        }
+      },
+      {
+        "type": "pursuit-fit",
+        "p": {
+          "weapon": "copper_blade",
+          "step": 1
+        },
+        "before": {
+          "ore": 11,
+          "coins": 16,
+          "fiber": 10,
+          "wood": 0,
+          "stone": 0,
+          "plank": 0
+        },
+        "after": {
+          "ore": 8,
+          "coins": 12,
+          "fiber": 8,
+          "wood": 0,
+          "stone": 0,
+          "plank": 0
+        }
+      },
+      {
+        "type": "pursuit-fit",
+        "p": {
+          "weapon": "copper_blade",
+          "step": 2
+        },
+        "before": {
+          "ore": 8,
+          "coins": 12,
+          "fiber": 8,
+          "wood": 0,
+          "stone": 0,
+          "plank": 0
+        },
+        "after": {
+          "ore": 2,
+          "coins": 4,
+          "fiber": 4,
+          "wood": 0,
+          "stone": 0,
+          "plank": 0
+        }
+      }
+    ]
+  },
+  "claims": [
+    {
+      "run": "riverbank-survey/1",
+      "before": {
+        "ore": 0,
+        "coins": 0,
+        "fiber": 0,
+        "wood": 0,
+        "stone": 0,
+        "plank": 0
+      },
+      "after": {
+        "ore": 3,
+        "coins": 4,
+        "fiber": 2,
+        "wood": 0,
+        "stone": 0,
+        "plank": 0
+      }
+    },
+    {
+      "run": "riverbank-survey/2",
+      "before": {
+        "ore": 3,
+        "coins": 4,
+        "fiber": 2,
+        "wood": 0,
+        "stone": 0,
+        "plank": 0
+      },
+      "after": {
+        "ore": 6,
+        "coins": 8,
+        "fiber": 4,
+        "wood": 0,
+        "stone": 0,
+        "plank": 0
+      }
+    },
+    {
+      "run": "riverbank-survey/3",
+      "before": {
+        "ore": 6,
+        "coins": 8,
+        "fiber": 4,
+        "wood": 0,
+        "stone": 0,
+        "plank": 0
+      },
+      "after": {
+        "ore": 9,
+        "coins": 12,
+        "fiber": 6,
+        "wood": 0,
+        "stone": 0,
+        "plank": 0
+      }
+    },
+    {
+      "run": "riverbank-survey/4",
+      "before": {
+        "ore": 9,
+        "coins": 12,
+        "fiber": 6,
+        "wood": 0,
+        "stone": 0,
+        "plank": 0
+      },
+      "after": {
+        "ore": 12,
+        "coins": 16,
+        "fiber": 8,
+        "wood": 0,
+        "stone": 0,
+        "plank": 0
+      }
+    },
+    {
+      "run": "riverbank-survey/5",
+      "before": {
+        "ore": 12,
+        "coins": 16,
+        "fiber": 8,
+        "wood": 0,
+        "stone": 0,
+        "plank": 0
+      },
+      "after": {
+        "ore": 15,
+        "coins": 20,
+        "fiber": 10,
+        "wood": 0,
+        "stone": 0,
+        "plank": 0
+      }
+    }
+  ],
+  "combats": [
+    {
+      "id": "riverbank-survey/1:west",
+      "ticks": 13,
+      "guards": 1,
+      "hp": 96,
+      "phases": {
+        "windup": {
+          "kind": "strike",
+          "remaining": 0.44999999999999984,
+          "enemyHP": 38,
+          "playerHP": 100,
+          "readiness": "Autoattack active"
+        },
+        "recover": {
+          "kind": "opening",
+          "remaining": 1.05,
+          "enemyHP": 22,
+          "playerHP": 96,
+          "readiness": "Weapon recovering"
+        }
+      }
+    },
+    {
+      "id": "riverbank-survey/1:east",
+      "ticks": 19,
+      "guards": 1,
+      "hp": 90,
+      "phases": {
+        "windup": {
+          "kind": "strike",
+          "remaining": 0.7499999999999998,
+          "enemyHP": 56,
+          "playerHP": 96,
+          "readiness": "Autoattack active"
+        },
+        "recover": {
+          "kind": "opening",
+          "remaining": 1.55,
+          "enemyHP": 24,
+          "playerHP": 90,
+          "readiness": "Weapon recovering"
+        }
+      }
+    },
+    {
+      "id": "riverbank-survey/2:west",
+      "ticks": 14,
+      "guards": 1,
+      "hp": 96,
+      "phases": {
+        "windup": {
+          "kind": "strike",
+          "remaining": 0.44999999999999984,
+          "enemyHP": 38,
+          "playerHP": 100,
+          "readiness": "Autoattack active"
+        },
+        "recover": {
+          "kind": "opening",
+          "remaining": 1.05,
+          "enemyHP": 22,
+          "playerHP": 96,
+          "readiness": "Weapon recovering"
+        }
+      }
+    },
+    {
+      "id": "riverbank-survey/2:east",
+      "ticks": 20,
+      "guards": 0,
+      "hp": 96,
+      "phases": {
+        "windup": {
+          "kind": "strike",
+          "remaining": 0.34999999999999964,
+          "enemyHP": 56,
+          "playerHP": 96,
+          "readiness": "Autoattack active"
+        },
+        "recover": {
+          "kind": "opening",
+          "remaining": 1.55,
+          "enemyHP": 40,
+          "playerHP": 96,
+          "readiness": "Weapon recovering"
+        }
+      }
+    },
+    {
+      "id": "riverbank-survey/3:west",
+      "ticks": 14,
+      "guards": 1,
+      "hp": 96,
+      "phases": {
+        "windup": {
+          "kind": "strike",
+          "remaining": 0.44999999999999984,
+          "enemyHP": 38,
+          "playerHP": 100,
+          "readiness": "Autoattack active"
+        },
+        "recover": {
+          "kind": "opening",
+          "remaining": 1.05,
+          "enemyHP": 22,
+          "playerHP": 96,
+          "readiness": "Weapon recovering"
+        }
+      }
+    },
+    {
+      "id": "riverbank-survey/3:east",
+      "ticks": 20,
+      "guards": 0,
+      "hp": 96,
+      "phases": {
+        "windup": {
+          "kind": "strike",
+          "remaining": 0.34999999999999964,
+          "enemyHP": 56,
+          "playerHP": 96,
+          "readiness": "Autoattack active"
+        },
+        "recover": {
+          "kind": "opening",
+          "remaining": 1.55,
+          "enemyHP": 40,
+          "playerHP": 96,
+          "readiness": "Weapon recovering"
+        }
+      }
+    },
+    {
+      "id": "riverbank-survey/4:west",
+      "ticks": 14,
+      "guards": 1,
+      "hp": 96,
+      "phases": {
+        "windup": {
+          "kind": "strike",
+          "remaining": 0.44999999999999984,
+          "enemyHP": 38,
+          "playerHP": 100,
+          "readiness": "Autoattack active"
+        },
+        "recover": {
+          "kind": "opening",
+          "remaining": 1.05,
+          "enemyHP": 22,
+          "playerHP": 96,
+          "readiness": "Weapon recovering"
+        }
+      }
+    },
+    {
+      "id": "riverbank-survey/4:east",
+      "ticks": 19,
+      "guards": 0,
+      "hp": 96,
+      "phases": {
+        "windup": {
+          "kind": "strike",
+          "remaining": 0.34999999999999964,
+          "enemyHP": 56,
+          "playerHP": 96,
+          "readiness": "Autoattack active"
+        },
+        "recover": {
+          "kind": "opening",
+          "remaining": 1.55,
+          "enemyHP": 40,
+          "playerHP": 96,
+          "readiness": "Weapon recovering"
+        }
+      }
+    },
+    {
+      "id": "riverbank-survey/5:west",
+      "ticks": 13,
+      "guards": 1,
+      "hp": 96,
+      "phases": {
+        "windup": {
+          "kind": "strike",
+          "remaining": 0.44999999999999984,
+          "enemyHP": 38,
+          "playerHP": 100,
+          "readiness": "Autoattack active"
+        },
+        "recover": {
+          "kind": "opening",
+          "remaining": 1.05,
+          "enemyHP": 22,
+          "playerHP": 96,
+          "readiness": "Weapon recovering"
+        }
+      }
+    },
+    {
+      "id": "riverbank-survey/5:east",
+      "ticks": 19,
+      "guards": 0,
+      "hp": 96,
+      "phases": {
+        "windup": {
+          "kind": "strike",
+          "remaining": 0.34999999999999964,
+          "enemyHP": 56,
+          "playerHP": 96,
+          "readiness": "Autoattack active"
+        },
+        "recover": {
+          "kind": "opening",
+          "remaining": 1.55,
+          "enemyHP": 40,
+          "playerHP": 96,
+          "readiness": "Weapon recovering"
+        }
+      }
+    }
+  ],
+  "previews": [
+    {
+      "label": "Unowned longbow project",
+      "project": "copper_bow",
+      "recipe": {
+        "id": "craft:trail_bow",
+        "type": "arsenal-craft",
+        "payload": {
+          "id": "trail_bow"
+        },
+        "name": "Ashwood trail bow",
+        "materials": {
+          "wood": 6,
+          "fiber": 4,
+          "stone": 2
+        },
+        "ore": 0,
+        "coins": 0,
+        "requires": null
+      },
+      "weapon": "trail_bow",
+      "prerequisite": true,
+      "current": {
+        "level": 1,
+        "attack": 16,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "after": {
+        "level": 1,
+        "attack": 13,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "beforeWeapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "afterWeapon": {
+        "style": "bow",
+        "reach": 11,
+        "cooldown": 0.75,
+        "stamina": 6,
+        "primary": "Loose arrow",
+        "special": "Piercing light"
+      },
+      "currentSocket": null,
+      "socket": null
+    },
+    {
+      "label": "Base weapon craft",
+      "project": "copper_blade",
+      "recipe": {
+        "id": "craft:copper_blade",
+        "type": "forge",
+        "payload": {},
+        "name": "Copper-edged blade",
+        "materials": {},
+        "ore": 4,
+        "coins": 4,
+        "requires": null
+      },
+      "weapon": "copper_blade",
+      "prerequisite": false,
+      "current": {
+        "level": 1,
+        "attack": 16,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "after": {
+        "level": 1,
+        "attack": 23,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "beforeWeapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "afterWeapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "currentSocket": null,
+      "socket": null
+    },
+    {
+      "label": "Finite fitting I",
+      "project": "copper_blade",
+      "recipe": {
+        "step": 1,
+        "name": "River fitting I",
+        "attack": 2,
+        "ore": 3,
+        "coins": 4,
+        "materials": {
+          "fiber": 2
+        },
+        "id": "fit:copper_blade:1",
+        "type": "pursuit-fit",
+        "payload": {
+          "weapon": "copper_blade",
+          "step": 1
+        },
+        "requires": null
+      },
+      "weapon": "copper_blade",
+      "prerequisite": false,
+      "current": {
+        "level": 1,
+        "attack": 16,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "after": {
+        "level": 1,
+        "attack": 25,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "beforeWeapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "afterWeapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "currentSocket": null,
+      "socket": null
+    },
+    {
+      "label": "Finite fitting II",
+      "project": "copper_blade",
+      "recipe": {
+        "step": 2,
+        "name": "River fitting II",
+        "attack": 4,
+        "ore": 6,
+        "coins": 8,
+        "materials": {
+          "fiber": 4
+        },
+        "id": "fit:copper_blade:2",
+        "type": "pursuit-fit",
+        "payload": {
+          "weapon": "copper_blade",
+          "step": 2
+        },
+        "requires": null
+      },
+      "weapon": "copper_blade",
+      "prerequisite": false,
+      "current": {
+        "level": 1,
+        "attack": 16,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "after": {
+        "level": 1,
+        "attack": 27,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "beforeWeapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "afterWeapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "currentSocket": null,
+      "socket": null
+    }
+  ],
+  "actions": [
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "start",
+      "p": {}
+    },
+    {
+      "type": "pursuit-pin",
+      "p": {
+        "weapon": "copper_blade"
+      }
+    },
+    {
+      "walk": [
+        15,
+        7
+      ]
+    },
+    {
+      "type": "starter-enter",
+      "p": {}
+    },
+    {
+      "walk": [
+        -5,
+        11.5
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "river-practice"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        0,
+        12
+      ]
+    },
+    {
+      "type": "starter-leave",
+      "p": {}
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "walk": [
+        0,
+        3
+      ]
+    },
+    {
+      "type": "rest",
+      "p": {}
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "pursuit-start",
+      "p": {
+        "after": 0
+      }
+    },
+    {
+      "walk": [
+        15,
+        7
+      ]
+    },
+    {
+      "type": "starter-enter",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7,
+        3
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "riverbank-survey/1:west"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "guard",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7,
+        3
+      ]
+    },
+    {
+      "type": "pursuit-sample",
+      "p": {
+        "run": "riverbank-survey/1",
+        "id": "west-sample"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        15,
+        7
+      ]
+    },
+    {
+      "type": "starter-enter",
+      "p": {}
+    },
+    {
+      "walk": [
+        5,
+        -3
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "riverbank-survey/1:east"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "guard",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        5,
+        -11
+      ]
+    },
+    {
+      "type": "pursuit-sample",
+      "p": {
+        "run": "riverbank-survey/1",
+        "id": "east-sample"
+      }
+    },
+    {
+      "walk": [
+        0,
+        12
+      ]
+    },
+    {
+      "type": "starter-leave",
+      "p": {}
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "reload": true
+    },
+    {
+      "type": "pursuit-claim",
+      "p": {
+        "run": "riverbank-survey/1"
+      }
+    },
+    {
+      "walk": [
+        0,
+        3
+      ]
+    },
+    {
+      "type": "rest",
+      "p": {}
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "pursuit-start",
+      "p": {
+        "after": 1
+      }
+    },
+    {
+      "walk": [
+        15,
+        7
+      ]
+    },
+    {
+      "type": "starter-enter",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7,
+        3
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "riverbank-survey/2:west"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "guard",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7,
+        3
+      ]
+    },
+    {
+      "type": "pursuit-sample",
+      "p": {
+        "run": "riverbank-survey/2",
+        "id": "west-sample"
+      }
+    },
+    {
+      "walk": [
+        5,
+        -3
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "riverbank-survey/2:east"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        5,
+        -11
+      ]
+    },
+    {
+      "type": "pursuit-sample",
+      "p": {
+        "run": "riverbank-survey/2",
+        "id": "east-sample"
+      }
+    },
+    {
+      "walk": [
+        0,
+        12
+      ]
+    },
+    {
+      "type": "starter-leave",
+      "p": {}
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "reload": true
+    },
+    {
+      "type": "pursuit-claim",
+      "p": {
+        "run": "riverbank-survey/2"
+      }
+    },
+    {
+      "walk": [
+        0,
+        3
+      ]
+    },
+    {
+      "type": "rest",
+      "p": {}
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "pursuit-start",
+      "p": {
+        "after": 2
+      }
+    },
+    {
+      "walk": [
+        15,
+        7
+      ]
+    },
+    {
+      "type": "starter-enter",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7,
+        3
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "riverbank-survey/3:west"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "guard",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7,
+        3
+      ]
+    },
+    {
+      "type": "pursuit-sample",
+      "p": {
+        "run": "riverbank-survey/3",
+        "id": "west-sample"
+      }
+    },
+    {
+      "walk": [
+        5,
+        -3
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "riverbank-survey/3:east"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        5,
+        -11
+      ]
+    },
+    {
+      "type": "pursuit-sample",
+      "p": {
+        "run": "riverbank-survey/3",
+        "id": "east-sample"
+      }
+    },
+    {
+      "walk": [
+        0,
+        12
+      ]
+    },
+    {
+      "type": "starter-leave",
+      "p": {}
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "reload": true
+    },
+    {
+      "type": "pursuit-claim",
+      "p": {
+        "run": "riverbank-survey/3"
+      }
+    },
+    {
+      "walk": [
+        0,
+        3
+      ]
+    },
+    {
+      "type": "rest",
+      "p": {}
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "pursuit-start",
+      "p": {
+        "after": 3
+      }
+    },
+    {
+      "walk": [
+        15,
+        7
+      ]
+    },
+    {
+      "type": "starter-enter",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7,
+        3
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "riverbank-survey/4:west"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "guard",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7,
+        3
+      ]
+    },
+    {
+      "type": "pursuit-sample",
+      "p": {
+        "run": "riverbank-survey/4",
+        "id": "west-sample"
+      }
+    },
+    {
+      "walk": [
+        5,
+        -3
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "riverbank-survey/4:east"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        5,
+        -11
+      ]
+    },
+    {
+      "type": "pursuit-sample",
+      "p": {
+        "run": "riverbank-survey/4",
+        "id": "east-sample"
+      }
+    },
+    {
+      "walk": [
+        0,
+        12
+      ]
+    },
+    {
+      "type": "starter-leave",
+      "p": {}
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "reload": true
+    },
+    {
+      "type": "pursuit-claim",
+      "p": {
+        "run": "riverbank-survey/4"
+      }
+    },
+    {
+      "walk": [
+        0,
+        3
+      ]
+    },
+    {
+      "type": "rest",
+      "p": {}
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "pursuit-start",
+      "p": {
+        "after": 4
+      }
+    },
+    {
+      "walk": [
+        15,
+        7
+      ]
+    },
+    {
+      "type": "starter-enter",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7,
+        3
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "riverbank-survey/5:west"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "guard",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7,
+        3
+      ]
+    },
+    {
+      "type": "pursuit-sample",
+      "p": {
+        "run": "riverbank-survey/5",
+        "id": "west-sample"
+      }
+    },
+    {
+      "walk": [
+        5,
+        -3
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "riverbank-survey/5:east"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        5,
+        -11
+      ]
+    },
+    {
+      "type": "pursuit-sample",
+      "p": {
+        "run": "riverbank-survey/5",
+        "id": "east-sample"
+      }
+    },
+    {
+      "walk": [
+        0,
+        12
+      ]
+    },
+    {
+      "type": "starter-leave",
+      "p": {}
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "reload": true
+    },
+    {
+      "type": "pursuit-claim",
+      "p": {
+        "run": "riverbank-survey/5"
+      }
+    },
+    {
+      "type": "forge",
+      "p": {}
+    },
+    {
+      "type": "pursuit-fit",
+      "p": {
+        "weapon": "copper_blade",
+        "step": 1
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "type": "pursuit-fit",
+      "p": {
+        "weapon": "copper_blade",
+        "step": 2
+      }
+    },
+    {
+      "type": "equip",
+      "p": {
+        "id": "copper_blade"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        15,
+        7
+      ]
+    },
+    {
+      "type": "starter-enter",
+      "p": {}
+    },
+    {
+      "walk": [
+        -5,
+        11.5
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "river-practice"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        0,
+        12
+      ]
+    },
+    {
+      "type": "starter-leave",
+      "p": {}
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    }
+  ]
+}

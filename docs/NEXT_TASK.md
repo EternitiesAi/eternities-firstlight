@@ -1,3 +1,29 @@
+# A useful world and a clear next choice
+
+Read equipment-step results/media and fresh review comments; fetch current heads.
+The target-versus-prerequisite gap is implemented, including exact material
+interpretation, real blade/bow/stat/socket comparisons, finite owned fittings and
+Oren's current-XP boundary. Ask for one fresh and one returning guide/outgoing case:
+is the next recipe clear, are costs understandable, and is the choice worthwhile?
+Keep earlier combat opening, route, reward and bridge comfort questions pending.
+
+Next bounded candidate: Darric's distinct quarry/public-works presentation at the
+existing reachable anchor, projecting accepted reserved-block/road-packing state.
+Inspect current canon, scene consumers and interaction bounds before designing.
+Use the proven small body/tool/geometry approach and actual screenshots in both
+views; do not invent a profession, grind, payout, escort or story consent to make
+the resident feel recognizable. Human feedback on the guide takes priority if
+provided. Massive-water/open-world scale remains direction for its own future
+navigation/scale/camera proof, not a backdrop or implied swimming system.
+
+Browser, both cameras, world9/adventure10/nested saves, stored XP, explicit class/
+soul/story choices, companion, housing, crafting and music stay protected. Heavy
+work on D, bounded sparse C proof allowed, exact-head fresh full verification and
+actual media required. No paid provider/billing action, personal profiles,
+automatic main merge/deployment or persistent-preview approval bypass.
+
+Prior checkpoint retained:
+
 # An honest next equipment step
 
 Read combat-opening results,actual footage and latest review comments;fetch

@@ -1,3 +1,28 @@
+# Honest next equipment step, 2026-10-02
+
+`gameplay/equipment-step-preview` is stacked on PR31/fc43ef35e7dee725f7abf0d89cf9f241e048b9fd.
+The guide now projects the actual prerequisite/craft/finite fitting separately
+from the selected target. Fresh Ashwood13 versus longbow21; real loadout behavior,
+socket and costs; explicit equip and equipped fitting effect. Have/required legend
+and responsive three-column tables. Oren equipment tables use current XP and
+explicitly exclude the separate25XP. No balance, control, renderer or save change.
+World/key9/adventure10/pursuit1 unchanged; no migration.
+
+Core b876 full gate passed58syntax/711Node/53Python+1existing Windows skip/
+24earned journeys/1764browser assertions20suites,0failures. This receipt is
+pre-legend; final presentation HTML2256605bytes/a5035ab0... and its exact pushed-head
+fresh full verifier are separately identified in the delivery PR. Final15.32s
+normal-time RTX clip shows actual craft/explicit equip/13 practice impacts/both
+views. Nine software layout cases and independent reviews retain their scope.
+See [results](development/EQUIPMENT_STEP_RESULTS_2026-10-02.md) and
+[media/receipts](evidence/equipment-step/README.md).
+
+Human legibility/usefulness remains pending; old8780preview, hosted billing lock
+and app attachment are separately checked delivery limits. Main remains unmerged.
+Bridge appearance approval and future massive-water open-world direction stay.
+
+Prior checkpoint retained:
+
 # Selected foe warnings and openings,2026-10-01
 
 Review branch `gameplay/combat-opening-readability`, stacked on PR30 at

@@ -1,3 +1,21 @@
+# Equipment choice evidence and human questions, 2026-10-02
+
+No new human equipment or combat playtest. Final15.32s normal-time RTX recording
+starts from an earned materials checkpoint, uses actual guide craft/equip choices
+and confirms Ashwood13 practice impacts in both views. It is not fresh-player
+pacing. Software-WebGL paused layouts cover fresh blade/bow/veteran at1440/820/390;
+independent PNG review found no visual blocker. Have/required legend resolves
+reviewed ratio ambiguity. Static fittingI screenshots are distinct from browser
+completed-stage/reload proof. Exact final head/full fresh-clone proof is in PR.
+
+When available: is it obvious which weapon you can craft now versus the later
+target? Are available/required materials understandable? Does the deliberate
+equipment choice make you want another outing? Try one fresh and one stronger
+returning character. Preserve earlier warning/opening/combat comfort and bridge
+appearance/scale records. Automated green checks do not certify enjoyment.
+
+Prior checkpoint retained:
+
 # Founder bridge direction and combat-opening evidence,2026-10-01
 
 Dom: "bridge looks gorgeous" and "eventually this game will be true open world
