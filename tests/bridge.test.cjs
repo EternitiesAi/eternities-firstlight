@@ -2,6 +2,26 @@
 const{test}=require('node:test'),assert=require('node:assert/strict');
 const C=require('../src/core.js'),E=require('../src/earth.js'),R=require('../src/engine.js'),B=require('../src/bridge-art.js');
 const capture=()=>{const parts=[];const a={box:(...v)=>a.add('box',...v),add:(kind,x,y,z,sx,sy,sz,color,options)=>parts.push({kind,p:[x,y,z],s:[sx,sy,sz],color,...options})};B.crossing(a);B.shoreline(a);B.mountains(a);return parts;};
+test('rail eligibility preserves every reviewed bridge transform, color and mesh',()=>{
+ const bridge=capture().filter(p=>p.bridgePart),rails=bridge.filter(p=>p.bridgeRail);
+ const source=bridge.map(({kind,p,s,color,r})=>({kind,p,s,color,r:r||null}));
+ assert.equal(require('node:crypto').createHash('sha256').update(JSON.stringify(source)).digest('hex'),
+  'cc43a5155abda5cf9776bd3f474e0831b1de15613dac9cf5d664ef8d2b9f03b9','PR29 physical/art geometry changed');
+ assert.equal(rails.length,44);
+ for(const p of rails){assert.equal(p.kind,'box');assert.equal(Math.abs(p.p[0]),1.73);assert.ok(p.p[1]>E.BRIDGE.deck);assert.equal(p.cutaway,false);assert.equal(p.cameraSolid,false);assert.ok(!p.markerPart);}
+ assert.ok(bridge.filter(p=>p.markerPart||p.kind==='bridge-vault').every(p=>!p.bridgeRail));
+});
+test('rail visibility uniform resets per batch and remains off in reflection, other realms and off-span',()=>{
+ const e=Object.create(R.Engine.prototype),values=[],calls=[];
+ e.gl=new Proxy({}, {get:(_,key)=>key==='drawArraysInstanced'?()=>calls.push(1):()=>{}});
+ e.uni=(_p,name,_type,value)=>{if(name==='uRailCutaway')values.push(value);};
+ Object.assign(e,{camera:{eye:[-14,5,19],target:[0,3,19],projection:'perspective'},batches:[{kind:'box',railCutaway:true,geom:{count:36},count:44},{kind:'box',geom:{count:36},count:12},{kind:'round',geom:{count:96},count:1}],dynamic:[],theme:'earth',railCutawayActive:true,cutaway:true,quality:'balanced',surfaceMaterialInfo:{ready:false}});
+ const run=(ref=false,depth=false)=>{values.length=0;calls.length=0;e.geometryPass({},[],{sun:[],sunColor:[],fog:[]},1,e.camera.eye,ref,depth);return [...values];};
+ assert.deepEqual(run(),[1,0,0]);assert.equal(calls.length,3);
+ assert.deepEqual(run(true),[0,0,0]);assert.deepEqual(run(false,true),[]);assert.equal(calls.length,3,'shadow geometry is retained');
+ e.cutaway=false;assert.deepEqual(run(),[0,0,0]);e.cutaway=true;e.theme='valley';assert.deepEqual(run(),[0,0,0]);
+ e.theme='earth';e.railCutawayActive=false;assert.deepEqual(run(),[0,0,0]);
+});
 test('bridge floor is a continuous narrow supported corridor; flanking water rejects movement and picking',()=>{
  for(let z=12.4;z<27;z+=.19){assert.ok(E.walkable(0,z));assert.equal(E.walkable(3,z),false);assert.equal(E.pick([3,20,z],[0,-1,0]),null);assert.ok(E.pick([0,20,z],[0,-1,0]));assert.equal(E.height(0,z),E.BRIDGE.deck);}
  assert.ok(E.segment({x:0,z:27.5},{x:0,z:10}));assert.equal(E.segment({x:0,z:24},{x:3,z:20}),false);

@@ -43,9 +43,21 @@ try:
   art=ev('()=>Realm.test.bridge()');report['submitted']=art
   check('four vaults are actually submitted above the physical water plane',sum(p['kind']=='bridge-vault' for p in art['parts'])==4 and art['waterHeight']==.01)
   check('bounded bridge and mountain pieces never block the camera or cut away',len([p for p in art['parts'] if p.get('bridgePart')])<=420 and all(not p['cameraSolid'] and not p['cutaway'] for p in art['parts']))
+  check('production world enables the local aperture on the accepted span',art['railCutaway']['eligible'] and art['railCutaway']['enabled'])
+  check('only the 44 eligible rail boxes occupy the dedicated production batch',sum(p.get('bridgeRail',False) for p in art['parts'])==44 and all(bool(p.get('railBatch'))==bool(p.get('bridgeRail')) for p in art['parts']))
+  rail_probe=ev((ROOT/'tests/bridge_rail_probe.js').read_text(encoding='utf-8'));report['rail_visibility']=rail_probe
+  for case in rail_probe['cases']:
+   label=f"{case['projection']} side{case['side']} x{case['x']} z{case['z']}"
+   check(label+' reveals actual lower-leg pixels where the rail obscures them',case['legReferencePixels']>10 and case['afterLegPixels']>=max(case['beforeLegPixels'],case['legReferencePixels']*.7) and (case['missingBefore']<=10 or case['revealed']>=case['missingBefore']*.35))
+   check(label+' preserves the exact reflection',case['reflectionChanged']==0)
+   check(label+' preserves the encoded solid shadow',case['shadowChanged']==0)
+  check('far rail stays pixel-identical behind the subject',rail_probe['farRailChanged']==0)
+  check('local rail effect stays off outside the span and Earth without GL errors',rail_probe['outsideSpanChanged']==0 and rail_probe['nonEarthChanged']==0 and rail_probe['glError']==0)
   check('actual submitted shoreline is bounded steep dressing, with no camera or cutaway authority',len([p for p in art['parts'] if p.get('shorelinePart')])==19 and all(p['s'][0]<=.85 for p in art['parts'] if p['kind']=='bank-slope'))
   check('flanking water has no navigation target',not ev('()=>Realm.test.move(3,20).ok'))
-  walk(0,27.5);walk(0,10);walk(0,16)
+  walk(0,27.5);walk(0,10)
+  check('production world disables the local aperture on the bank',not ev('()=>Realm.test.bridge().railCutaway.eligible'))
+  walk(0,16)
   page.keyboard.press('v');render();page.keyboard.press('e');render();page.locator('[data-rpg="earth-bridge-view"]').click();render()
   check('same explicit framing retains diorama style',ev('()=>Realm.diagnostics.camera.projection')=='orthographic')
   page.screenshot(path=str(OUT/'BRIDGE_SIDE_DIORAMA.png'))
@@ -78,6 +90,14 @@ try:
   returning=json.loads(source.read_text(encoding='utf-8'));report['returning_fixture']={'path':str(source.relative_to(ROOT)),'sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'label':'command-earned bow checkpoint'}
   ev('(s)=>Realm.test.replace(s)',returning);render();prior=state()['adventure'];enter();walk(0,10);walk(0,24)
   check('command-earned returning bow crosses without reward/history changes',all(state()['adventure'][k]==prior[k] for k in prior if k!='elapsed'))
+  saved_views=state()['settings']['cameraViews'];saved_adv=state()['adventure']
+  ev('()=>Realm.test.openPanel("settings")');page.locator('[data-setting="cameraCutaway"]').uncheck();page.locator('#close-panel').click();render()
+  check('actual saved cutaway control can disable the local rail effect',state()['settings']['cameraCutaway'] is False)
+  page.reload(wait_until='load');page.wait_for_function('window.Realm');render()
+  check('cutaway-off and both camera memories survive a whole-page reload',state()['settings']['cameraCutaway'] is False and state()['settings']['cameraViews']==saved_views)
+  enter();walk(0,19.5)
+  check('saved cutaway-off reaches the actual on-span renderer after reload',ev('()=>Realm.test.bridge().railCutaway.eligible&&!Realm.test.bridge().railCutaway.enabled'))
+  check('reload preserves returning equipment and story owners',all(state()['adventure'][k]==saved_adv[k] for k in saved_adv if k!='elapsed'))
   check('all browser runtime errors remain visible and absent',not report['browser_errors'])
   c.close()
   # Separate storage/page with the ordinary app RAF loop, no accelerated ticks.
