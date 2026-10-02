@@ -1,3 +1,29 @@
+# Selected foe warnings and openings,2026-10-01
+
+Review branch `gameplay/combat-opening-readability`, stacked on PR30 at
+de3ffb654cd1661d49b6d26ebcd866c09f1b2310; source5633cef5aaf1d25f4eecb5664acb4608c17fd806.
+Quiet selected-foe warning/recovery/charge cue preserves HP and player readiness.
+Bell rings, ward strikes and Brace availability read actual owners/timers; narrow
+ward follows actual target size. No AI/balance/control/equipment/render/save change.
+World/key9/adventure10 unchanged; no migration. Both camera styles remain.
+
+Clean exact-source full gate58syntax/704Node/53Python plus1existing Windows skip/
+24earned journeys/1744browser assertions20suites (newcue62),0failures. Identical
+HTML2,253,455bytes SHA256f5d5405ceb4ea0e116c45eb18af3009bc94c91f378d36d5a6739de57e2b01088.
+Actual28.52s RTX outing from an earned accepted survey,29checkpoints; both threats/
+samples,1claim and explicit first fitting16→18, no grants/stepping. Short matched
+1080pGPU samples afterP95/max≈16.8ms/0>33.333ms,not sustainedFPS or human comfort.
+The PR records final head/clean remote-clone and hosted status. See
+[results](development/COMBAT_OPENING_RESULTS_2026-10-01.md) and
+[media/receipts](evidence/combat-opening/README.md).
+
+Dom approved bridge appearance and wants a future open world with this crossing
+over massive water. This is direction,not implemented scale or a combat playtest.
+Human cue legibility/feel remains pending. Next: honest target-versus-next-recipe
+equipment comparisons. Older8780preview and its approval guard remain separate.
+
+Prior checkpoint retained:
+
 # Bridge traveller readability,2026-10-01
 
 `gameplay/bridge-traveler-readability` stacked on PR29 `3a5b5ad2428b67f90ec7d605423ecf03fe620fba`;source `208072a693a407cf6a0bf3c9e9632263517582a4`.

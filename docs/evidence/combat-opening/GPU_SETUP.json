@@ -1,0 +1,15 @@
+{
+  "sha256_of_tool_input": "8c20ca519cc868c4a4d3a02d1d3c9450d474636fadf103e40d2a795bf6e4766a",
+  "input_utf8_base64": "WwogIHsKICAgICJuYW1lIjogInNlbGVjdGVkLXN1cnZleS10aGlyZC1wZXJzb24iLAogICAgImV4cHJlc3Npb24iOiAiYXN5bmMoKT0+e2NvbnN0IHdhbGs9YXN5bmMoeCx6KT0+e2NvbnN0IHI9UmVhbG0udGVzdC5tb3ZlKHgseik7aWYoIXIub2spdGhyb3cgRXJyb3Ioci5lcnJvcik7Y29uc3Qgc3RhcnQ9cGVyZm9ybWFuY2Uubm93KCk7d2hpbGUoUmVhbG0udGVzdC5wYXRoLmxlbmd0aCl7aWYocGVyZm9ybWFuY2Uubm93KCktc3RhcnQ+NDUwMDApdGhyb3cgRXJyb3IoJ3dhbGsnKTthd2FpdCBuZXcgUHJvbWlzZShyPT5zZXRUaW1lb3V0KHIsNDApKTt9fTthd2FpdCB3YWxrKDE1LDcpO2NvbnN0IGVudGVyZWQ9UmVhbG0udGVzdC5hZHZlbnR1cmUoJ21lYXN1cmUtZW50ZXInLCdzdGFydGVyLWVudGVyJyx7fSk7aWYoIWVudGVyZWQub2spdGhyb3cgRXJyb3IoZW50ZXJlZC5lcnJvcik7YXdhaXQgd2Fsayg1LC0zKTtjb25zdCBzZWxlY3RlZD1SZWFsbS50ZXN0LmFkdmVudHVyZSgnbWVhc3VyZS1lYXN0JywndGFyZ2V0LXNlbGVjdCcse2lkOidyaXZlcmJhbmstc3VydmV5LzE6ZWFzdCd9KTtpZighc2VsZWN0ZWQub2spdGhyb3cgRXJyb3Ioc2VsZWN0ZWQuZXJyb3IpO3JldHVybntzY2VuZTpSZWFsbS5kaWFnbm9zdGljcy5zY2VuZSxzZWxlY3RlZDpSZWFsbS5kaWFnbm9zdGljcy5hZHZlbnR1cmUudGFjdGljcy50YXJnZXQsaHA6UmVhbG0uc3RhdGUuYWR2ZW50dXJlLmhwfTt9IgogIH0sCiAgewogICAgIm5hbWUiOiAic2VsZWN0ZWQtc3VydmV5LWRpb3JhbWEiLAogICAgImV4cHJlc3Npb24iOiAiYXN5bmMoKT0+e2RvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJ1tkYXRhLXJwZz1cImNhbWVyYVwiXVtkYXRhLWlkPVwiZm9sbG93XCJdJykuY2xpY2soKTtjb25zdCBhPVJlYWxtLnN0YXRlLmFkdmVudHVyZTtpZihhLmhwPDc1JiZhLnRvbmljcyl7Y29uc3QgaGVhbD1SZWFsbS50ZXN0LmFkdmVudHVyZSgnbWVhc3VyZS1oZWFsJywnaGVhbCcse30pO2lmKCFoZWFsLm9rKXRocm93IEVycm9yKGhlYWwuZXJyb3IpO31yZXR1cm57c2NlbmU6UmVhbG0uZGlhZ25vc3RpY3Muc2NlbmUsc2VsZWN0ZWQ6UmVhbG0uZGlhZ25vc3RpY3MuYWR2ZW50dXJlLnRhY3RpY3MudGFyZ2V0LGhwOlJlYWxtLnN0YXRlLmFkdmVudHVyZS5ocCxjYW1lcmE6UmVhbG0uc3RhdGUuc2V0dGluZ3MuY2FtZXJhTW9kZX07fSIKICB9Cl0K",
+  "readable_scenes": [
+    {
+      "name": "selected-survey-third-person",
+      "expression": "async()=>{const walk=async(x,z)=>{const r=Realm.test.move(x,z);if(!r.ok)throw Error(r.error);const start=performance.now();while(Realm.test.path.length){if(performance.now()-start>45000)throw Error('walk');await new Promise(r=>setTimeout(r,40));}};await walk(15,7);const entered=Realm.test.adventure('measure-enter','starter-enter',{});if(!entered.ok)throw Error(entered.error);await walk(5,-3);const selected=Realm.test.adventure('measure-east','target-select',{id:'riverbank-survey/1:east'});if(!selected.ok)throw Error(selected.error);return{scene:Realm.diagnostics.scene,selected:Realm.diagnostics.adventure.tactics.target,hp:Realm.state.adventure.hp};}"
+    },
+    {
+      "name": "selected-survey-diorama",
+      "expression": "async()=>{document.querySelector('[data-rpg=\"camera\"][data-id=\"follow\"]').click();const a=Realm.state.adventure;if(a.hp<75&&a.tonics){const heal=Realm.test.adventure('measure-heal','heal',{});if(!heal.ok)throw Error(heal.error);}return{scene:Realm.diagnostics.scene,selected:Realm.diagnostics.adventure.tactics.target,hp:Realm.state.adventure.hp,camera:Realm.state.settings.cameraMode};}"
+    }
+  ],
+  "reason": "Exact raw tool input remains reproducible across Git line-ending normalization."
+}

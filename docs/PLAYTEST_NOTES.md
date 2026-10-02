@@ -250,3 +250,23 @@ Pending Dom: **Does the grain feel natural nearby in third person? Does it stay 
 ## 2026-10-01: shoreline and distant mountain refinement
 
 Actual paired RTX screenshots and32.52s normal-time video show the revised bridge. Independent screenshot review found no definite new gap/penetration,with quieter water and a lower layered skyline. Engineering evidence is not Dom approval. Pending:does the bank feel grounded,is the water less distracting,and does the mountain distance make the crossing memorable? Near rail still obscures some lower legs;far cap remains narrow and rocky. Try both camera styles and fresh/returning outings when available;prior navigation,combat,reward and camera-comfort questions remain open.
+# Founder bridge direction and combat-opening evidence,2026-10-01
+
+Dom: "bridge looks gorgeous" and "eventually this game will be true open world
+and the bridge will cross a massive body of water". Appearance approval and future
+scale direction recorded. No exact-build human combat/comfort/pace result supplied.
+
+Actual28.52s normal-time RTX capture from an earned accepted survey shows real
+warning/opening in both views, two threats/samples, one payout and explicit16→18
+first blade fitting. Automated62cue UI checks include actual blade/bow/veteran
+phases. Synthetic ward visibility checks390/820 are layout evidence only.
+Source review and sampled-frame review found no remaining blocker; smallest
+390px advice/readiness text and a crowded nearby world label need human checking.
+
+When at the computer,try one fresh and one returning case: did the warning tell
+you what to do? Could you use the recovery opening? Was the text comfortable in
+each camera? Retain earlier route/reward/combat/discovery questions. Automated
+green results and short GPU intervals do not answer enjoyment or reaction fairness.
+Older stable8780 preview is still separate from the current reviewed build.
+
+Prior notes retained:
