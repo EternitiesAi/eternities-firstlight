@@ -1,3 +1,30 @@
+# Darric and visible quarry work, 2026-10-02
+
+`gameplay/darric-quarry-presentation` is stacked on PR32 at
+358ea150114d80cf25aa3c7826e1fc6bb753a82c. Original52-part resident, properly held
+mallet, three separately tallied designated blocks, twelve shallow packed stones,
+current/after comparisons and completed local inspection. Existing anchors, rules,
+payments, equipment and both cameras remain. World/key9/adventure10 unchanged;
+no migration. Core d2e2b2a; tested source ff2cbe8.
+
+Clean source full verifier:59syntax/720Node/53Python+1existing Windows skip/
+24earned journeys/1824browser assertions20suites,0final failures. HTML2265317bytes/
+55d9a656... identical. Actual18.68s/467decoded-frame RTX clip,22checkpoints from
+an earned fresh bow source: both views, collection, explicit road packing; no
+stepping/inventory/XP/payout grants. Four short720total RTX RAF samples at1280×720
+balanced: median/P95≈16.7ms,max≈16.8ms,0>33.333ms; not sustainedFPS. Source/PNG
+reviews resolved head/cuff clipping, occlusion, paving visibility and tiny tally
+inspection. Earlier failed/superseded evidence stays onD.
+
+See [results](art/DARRIC_RESULTS_2026-10-02.md) and
+[actual media/receipts](evidence/darric/README.md). Exact delivery head, fresh remote
+full gate and hosted/app/preview state are separately checked in the PR/external
+receipt. Dom authorized stopping servers; only the owned static Firstlight preview
+was restarted at the same8780 save origin, no personal profile/key touched. No
+main merge/deployment/billing/paid-provider action. Human acceptance remains pending.
+
+Prior checkpoint retained:
+
 # Honest next equipment step, 2026-10-02
 
 `gameplay/equipment-step-preview` is stacked on PR31/fc43ef35e7dee725f7abf0d89cf9f241e048b9fd.

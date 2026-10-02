@@ -1,3 +1,32 @@
+# The country around a familiar road
+
+Read Darric results/media and current review comments; fetch newer gameplay first.
+His quarry art and existing public-work state are now visible in both cameras.
+Tally strokes can be inspected close up; distant diorama counts remain small.
+Ask for one fresh/returning outing when Dom is at the computer: is Darric distinct,
+is designated stone clear, and does the changed road feel worthwhile? Keep earlier
+equipment guide, combat, route and bridge comfort questions pending. Human
+feedback takes priority if supplied.
+
+Next bounded candidate: natural shoulders along the existing quarry ridge/orchard
+roads. Current broad views still expose rectangular grass/platform edges. Inspect
+exact supported patches, water height, camera solids and resident/task approaches.
+Dress below the actual supported feet, preserving navigation and marker/stock
+clearance; measure full geometry and both views. Do not imply new flat shelves,
+swimming or distant traversable country through scenery. Keep scope small, with
+actual normal-time walking/media and a measured instance/render budget. A larger
+massive-water crossing needs its own scale/navigation/camera proof and source
+ownership; founder ambition stays intact.
+
+Browser, both cameras, world/key9/adventure10/nested saves, storedXP, explicit
+class/soul/story choices, companion, housing, crafting and music stay protected.
+Heavy work onD, bounded C proof allowed, exact-head fresh full verification and
+real media required. No automatic main merge/deployment, paid provider/billing
+action, personal-profile access or stopping unrelated services. Dom's new server
+authority covers needed owned previews; inspect exact process/build before acting.
+
+Prior checkpoint retained:
+
 # A useful world and a clear next choice
 
 Read equipment-step results/media and fresh review comments; fetch current heads.

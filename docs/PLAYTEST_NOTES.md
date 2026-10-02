@@ -1,3 +1,25 @@
+# Quarry evidence and pending human recognition, 2026-10-02
+
+Dom is on mobile and explicitly permits necessary server shutdown/continuation.
+This is operational authority, not a new art/combat/human-pacing verdict.
+
+Actual18.68s normal-time RTX recording from a labelled command-earned fresh bow
+source shows Darric, both cameras, collection and explicit road packing, with no
+stepping/grants/payout or personal saves. All22checkpoints are recorded; inventory,
+equipment andXP remain. Static accelerated camera views and close tally orbit are
+separate from gameplay. Independent still review sees distinct resident/clothing,
+connected tool, shallow stone grid and close three/two/one strokes; distant
+diorama strokes stay too small. Reviewers did not watch the whole video or provide
+human/device acceptance. Four short real-GPU RAF samples are not sustainedFPS.
+
+When back: does Darric feel like a different resident? Can you identify the public
+stone, and does the changed road make the work feel useful? Try both views with a
+fresh and returning character. Keep the guide's next-step/cost/usefulness, combat
+warning/recovery/fun and bridge comfort questions pending. Bridge appearance
+approval and future massive-water/open-world ambition remain the supplied feedback.
+
+Prior checkpoint retained:
+
 # Equipment choice evidence and human questions, 2026-10-02
 
 No new human equipment or combat playtest. Final15.32s normal-time RTX recording

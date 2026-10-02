@@ -1,3 +1,29 @@
+# Quarry presentation without new task authority, 2026-10-02
+
+- Keep Darric's existing anchor/yaw and actual public-work objectives. Original
+ 52-part vest/cloth/boots/resting mallet is provisional art, not new biography,
+ profession, hammering AI, resource grind or escort.
+- Derive both hands/IK from the aligned actual tool frame. Exact box and
+ conservative round bounds across1200samples resolve forearm/sleeve/cuff clipping;
+ a centerline or external-clearance check alone was insufficient.
+- Preserve three designated block locations and release condition, separate
+ from general stock. Keep twelve grade locations; top ground+.035 clears existing
+ visual paving+.025 without new ground/collision or materials consumed.
+- Current/after comparisons project accepted work only. Completed local view
+ rechecks allowedID/currentcompletion/proximity and closes through original
+ pause/focus owner. No consent/payment/equipment/save schema owner changes.
+- Preserve direct art callers' meaningful assertions and load their new pure
+ dependency. The initial719/720 source failure is retained; final720/720 passed.
+- Distinguish paused camera/isolated pixel proof, normal-time actual footage,
+ independent source/PNG review, short hardware intervals and human acceptance.
+ Exact final clone/hosted/app/preview state belong to their own receipts.
+- Dom explicitly authorized stopping servers; inspect and refresh only the
+ owned static Firstlight preview at stable8780, preserving browser save origin.
+ OS termination is not a demonstrated graceful request drain. No unrelated
+ service shutdown, personal-profile/key access, main merge or public deployment.
+
+Prior decisions retained:
+
 # Equipment target and real next recipe, 2026-10-02
 
 - Preserve the long-term project comparison and add a pure canonical next-step
