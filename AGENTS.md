@@ -271,3 +271,25 @@ and exact final remote clone remain required. Inspect unobscured full-scene imag
 isolated pixels and translated/accelerated setup do not establish human feel.
 Local completed-work view closes through existing pause/focus ownership and must
 recheck allowed step, current completion and proximity. No save migration.
+
+## Quarry shoulder presentation
+
+Read the 2026-10-02 shoulder task/results. `earth-shoulder-art.js` reads actual
+submitted grass underside transforms at eastern X18, nominal Z-24..-6. Preserve
+the two merged height planes, all original strip transforms and the deterministic
+field sequence. Nine short existing bank-slope instances taper outward widths;
+orthogonal positive bases retain renderer normal ownership. No shader, new batch,
+ground/navigation, reward or save authority belongs to this art.
+
+Check every strip seam, actual world triangle normals and cap-plane overlap at
+all exposed heights, including the mill-road merge; endpoints alone are partial
+evidence. Lower vertices remain submerged under world water.01 with an explicit
+pitch margin. Decorative rock never extends supported ground or picking. Static
+golden capture omits beam/bench/dynamic residents; real renderer metrics and images
+are separate evidence. Preserve stock/sign/actor/road approaches and both cameras.
+
+Keep superseded slab images and the repaired direct-caller/capture-probe failures.
+Matched paused/accelerated screenshots, ordinary-time RTX walking, short RAF
+samples, full gates/fresh remote clone and human taste remain distinct. Repeated
+bright facets/ribs are a known stylized limit. World/key9/adventure10 unchanged;
+no migration, main merge, public deployment, paid/billing or personal-save action.

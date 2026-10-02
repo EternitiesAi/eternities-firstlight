@@ -40,6 +40,18 @@ try:
       close();walk(0,23);page.keyboard.press('e');render()
       check('physical trail marker opens explicit preview',page.locator('[data-rpg="earth-confirm"]').count()==1)
       page.locator('[data-rpg="earth-confirm"]').click();render();check('explicit input enters Hearthwater',scene()=='earth-hearthwater-approach')
+    def shoulder_probe(label):
+      before_probe=state();render()
+      data=ev('''()=>{const d=Realm.test.earthShoulder(),R=RealmEngine,M=R.M,parts=d.parts.filter(p=>p.quarryShoulder),strips=d.parts.filter(p=>p.terrain&&p.p[0]+p.s[0]/2===18&&p.p[2]>=-23.75&&p.p[2]<=-6.25),matrix=p=>p.m||M.compose(...p.p,...p.s,...(p.r||[0,0,0])),at=(p,v)=>M.transform(matrix(p),v),mesh=R.geometry('bank-slope');
+        const seam=strips.every(row=>{const p=parts.find(p=>row.p[2]>=p.seam[0][2]&&row.p[2]<=p.seam[1][2]);if(!p)return false;const a=at(p,[0,1,-.5]),b=at(p,[0,1,.5]);return[-.5,0,.5].every(z=>{const v=at(row,[.5,-.5,z]),t=(v[2]-a[2])/(b[2]-a[2]);return Math.abs(v[1]-a[1]-(b[1]-a[1])*t)<2e-6;});});
+        const feet=parts.every(p=>{for(let i=0;i<mesh.length;i+=6)if(Math.abs(mesh[i+1]+.03)<1e-6&&at(p,Array.from(mesh.slice(i,i+3)))[1]>=R.WATER_HEIGHT-.17)return false;return true;});
+        return{frame:d.frame,parts,stripCount:strips.length,seam,feet,cameraExcluded:parts.every(p=>R.solidBounds(p.kind,p)===null),finite:parts.every(p=>p.m.every(Number.isFinite)&&p.s.every(v=>v>0)),scene:Realm.diagnostics.scene};}''')
+      report.setdefault('shoulder_states',{})[label]=data
+      check(label+' submits nine tapering rock sections and thirty-six source strips',data['frame']['partCount']==9 and data['frame']['triangles']==648 and data['stripCount']==36)
+      check(label+' actual submitted seam matches every grass underside',data['seam'])
+      check(label+' actual lower profile remains submerged',data['feet'])
+      check(label+' finite art has no camera authority',data['finite'] and data['cameraExcluded'])
+      check(label+' scenery inspection changes no saved world data',state()==before_probe)
     render();walk(0,27);page.keyboard.press('e');render()
     check('existing Lantern Pier rest interaction remains independent',scene()=='valley' and page.locator('[data-rpg="earth-confirm"]').count()==0 and 'quiet moment beside the water' in state()['journal'][-1]['text'])
     render();page.keyboard.press('m');render()
@@ -66,7 +78,15 @@ try:
     close();page.keyboard.press('v');render()
     check('diorama works on connected Earth ground',ev('()=>Realm.diagnostics.camera.projection')=='orthographic');page.screenshot(path=str(OUT/'BELLWEATHER_ROAD_DIORAMA.png'))
     # Eastern ridge return proves both routes inhabit one physical scene.
-    for x,z in [(0,-35),(12,-26),(14,-12),(7,2),(0,10),(0,24)]:walk(x,z)
+    for x,z in [(0,-35),(12,-26),(16.8,-22)]:walk(x,z)
+    shoulder_probe('diorama quarry')
+    ev('()=>Realm.test.view({yaw:1.3,elevation:.65,half:12,zoom:.7})');render();page.screenshot(path=str(OUT/'QUARRY_SHOULDER_DIORAMA.png'))
+    page.keyboard.press('v');render();shoulder_probe('third-person quarry')
+    ev('()=>Realm.test.view({yaw:1.3,elevation:.4,distance:9})');render();page.screenshot(path=str(OUT/'QUARRY_SHOULDER_THIRD.png'))
+    rejected_before=state();outboard=ev('()=>Realm.test.move(18.3,-18)')
+    check('visible rock outside the ridge never extends ground',not outboard['ok'] and state()==rejected_before)
+    check('downward picking accepts the road and rejects decorative rock',ev('()=>!!RealmEarth.pick([16.8,20,-18],[0,-1,0])&&RealmEarth.pick([18.3,20,-18],[0,-1,0])===null'))
+    for x,z in [(16.8,-13),(16,-7),(14,-12),(7,2),(0,10),(0,24)]:walk(x,z)
     check('both approaches remain one continuous scene',scene()=='earth-hearthwater-approach')
     check('walking changed no durable adventure systems',all(state()['adventure'][k]==before['adventure'][k] for k in ['xp','owned','equipment','starter','pursuit','road','beacon','crossing','classPath','companion','arsenal']))
     page.locator('#earth-home').click();render()
