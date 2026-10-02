@@ -1,0 +1,240 @@
+{
+  "startedUtc": "2026-10-02T18:51:03.762Z",
+  "method": "Bounded production Node calls with explicitly synthetic position, capacity, socket and DOM-host fixtures; in-memory saves only.",
+  "sourceHashesBefore": {
+    "src/realm-trails.js": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+    "src/realm-craft.js": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+    "src/realm-trails-ui.js": "2fd098a1df991371d119b2013df3e1fd3ee2a1bc3306766b61b6af10af5a1d0f",
+    "src/realm-trails-art.js": "effc6f50c785fd18e4c946def9dcb391a43543615bce6342ab66177ac974cc9f",
+    "src/realm-trails-cosmos.js": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+    "src/realm-trails-north.js": "4e0fc692cee329ab259230685b3b8ce068e6dc1cc7dd287b67143d2460859e6f",
+    "src/realm-trails-south.js": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+    "src/adventure.js": "dc40531e41d5195da81377747feb843d320a5a39c71935f73b29ed51138d3015",
+    "src/core.js": "b700bd1da555f2882fc76f2cc0f73aad6b5d7184b734ea88e37306ebb2c4f09e",
+    "src/app.js": "7b827179c6f08b67777e5ea0ba670e082464f54ec8af91d3941d8f6323e7bc14",
+    "src/characters.js": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+    "src/rpg-ui.js": "639b2030d3276517b646d8de3f7b7e7173613c849e66b92de58ea784412afbe8",
+    "src/world-foundations-ui.js": "dab89e64b6b04b3eb04e2d7c83a5337826697c67133d4a0f986a38fefff0aadd",
+    "src/world.js": "67e6e4af887d8904eeae9eafd39c47f0caf720b15f4296bccd9e3ac45b3c6708",
+    "src/traveler-equipment-art.js": "432a499bf417a9b3f2c90078db90dd7bd645d34c6e8826ead1feffba82d9144c",
+    "src/arsenal.js": "1a8fcedd261165900d04f366ffedb08457c4f3a724befe28b8ec1b35c3ae9163",
+    "build.py": "85193e6d58a1a4a4ed99324fd26f9922a6af86e2fa716f914ad794bcc2e82811",
+    "src/shell.html": "5b3675ba3e14f166b905e89fba8d7d480183c8de18a68b6c3daeb7c8bca7d1b8",
+    "tests/realm_trails.test.cjs": "191a1a8e82c705fd9daac3f95d4b07f4258f347afd94f5ce1f52498622dd3cf2",
+    "tests/realm_trails_instrument_rules.test.cjs": "4e9e67740558a7b5ebd47c9466184f57ab9e01ebff2a495cc773d8e9178b5031",
+    "tests/realm_trails_north_rules.test.cjs": "b6673ad93b1a3ea951b508719aa8f8c3e97843120f291cc97d6bf2358bbfb229",
+    "tests/realm_trails_browser.py": "d94fd52233e104da71f4ad38215ae27c24c9fa8bfe78aa34fe2334c0bdda26dd",
+    "tests/realm_trails_cosmos_browser.py": "8a917a735d99dee620f3dc72c8403d85cb77baeb969ff99041322f4111650dec",
+    "index.html": "7c119726ae6bdb5393af4a40cea1184efb28efc562a21262d4111d2771f58781"
+  },
+  "groups": [
+    {
+      "name": "accepted Atlantis work is inspected at local, home, cold-home and other-realm locations",
+      "status": "passed",
+      "evidence": {
+        "fixture": "Kit, invitation, travel, giver acceptance and free home are production commands; UI host is a minimal non-rendering stub.",
+        "observations": [
+          {
+            "label": "local accepted",
+            "room": "world-atlantis",
+            "threw": false,
+            "htmlBytes": 1931
+          },
+          {
+            "label": "free home after acceptance",
+            "room": null,
+            "threw": false,
+            "htmlBytes": 1840
+          },
+          {
+            "label": "cold home with unpaid acceptance",
+            "room": null,
+            "threw": false,
+            "htmlBytes": 1840
+          },
+          {
+            "label": "inspect Atlantis from Coastward",
+            "room": "world-earthlands",
+            "threw": false,
+            "htmlBytes": 1840
+          }
+        ],
+        "defectReproduced": false,
+        "quest": "atlantis-bellglass-chart-v1"
+      }
+    },
+    {
+      "name": "published adventure-10 worlds migrate without kit, fee or XP changes and source mutation",
+      "status": "passed",
+      "evidence": {
+        "fixture": "Only published schema and XP boundary values are synthetic; kit is command earned.",
+        "boundaries": [
+          {
+            "xp": 0,
+            "level": 1
+          },
+          {
+            "xp": 29,
+            "level": 1
+          },
+          {
+            "xp": 30,
+            "level": 2
+          },
+          {
+            "xp": 79,
+            "level": 2
+          },
+          {
+            "xp": 80,
+            "level": 3
+          },
+          {
+            "xp": 149,
+            "level": 3
+          },
+          {
+            "xp": 150,
+            "level": 4
+          },
+          {
+            "xp": 259,
+            "level": 4
+          },
+          {
+            "xp": 260,
+            "level": 5
+          },
+          {
+            "xp": 9999,
+            "level": 5
+          }
+        ],
+        "trailRecords": 5
+      }
+    },
+    {
+      "name": "southern depth, court choice and body medium reject false completion without payment",
+      "status": "passed",
+      "evidence": {
+        "fixture": "XYZ/depth placement is synthetic; medium, collision, choice, prerequisite and persistence rules are production.",
+        "checks": [
+          "dry deck cannot record submerged gauge",
+          "wrong foot depth refused",
+          "wrong court chart leaves history and balances unchanged",
+          "correct court chart records without early reward"
+        ]
+      }
+    },
+    {
+      "name": "complete material claim is capacity and save atomic with live owner identity retained",
+      "status": "passed",
+      "evidence": {
+        "fixture": "Supply/giver placements and full-pouch boundary are synthetic; accepted actions, claim and refusal handling are actual commands.",
+        "reward": {
+          "xp": 25,
+          "coins": 10,
+          "ore": 0,
+          "materials": {
+            "wood": 6,
+            "fiber": 4,
+            "stone": 2
+          }
+        },
+        "saveBeforeLiveAdoption": true,
+        "ownerIdentityPreserved": true,
+        "duplicateInert": true
+      }
+    },
+    {
+      "name": "Cosmos numeric settings are physical transient previews with strict committed calibration",
+      "status": "passed",
+      "evidence": {
+        "fixture": "Comparator approach uses production pathfinding/movement; malformed numeric values/save refusal are synthetic.",
+        "acceptedSetting": 63.85469061425735,
+        "invalidValuesRefused": 7,
+        "explicitTurnRequired": true,
+        "refusedSaveRetryable": true,
+        "reloadRetainsAcceptedSetting": true
+      }
+    },
+    {
+      "name": "one finite fitting preserves actual crafted bow and labelled prior socket without auto-equip",
+      "status": "passed",
+      "evidence": {
+        "fixture": "Material claim and bow craft are production commands; amber entitlement and exact cost balance are synthetic returning-state inputs.",
+        "cost": {
+          "ore": 3,
+          "coins": 8
+        },
+        "selectedWeapon": "trail_bow",
+        "equippedWeaponRetained": "trail_blade",
+        "attackDifference": 3,
+        "socketRetained": "amber",
+        "secondFittingRefused": true
+      }
+    },
+    {
+      "name": "in-memory character library keeps earned and fresh world records separate",
+      "status": "passed",
+      "evidence": {
+        "fixture": "In-memory Store and synthetic second-character name; no native lock or personal save.",
+        "paidRecordsRetained": true,
+        "newCharacterEmpty": true,
+        "returnedEquipmentAndMaterialsRetained": true
+      }
+    },
+    {
+      "name": "actual Cosmos work art follows transient dial changes without authoring state or ground",
+      "status": "passed",
+      "evidence": {
+        "fixture": "CPU art inventory, no rendered visibility or engine camera proof.",
+        "captures": [
+          {
+            "setting": 30,
+            "westArmYaw": 2.9846702045208775,
+            "parts": 22
+          },
+          {
+            "setting": 60,
+            "westArmYaw": 3.508268980119176,
+            "parts": 22
+          }
+        ],
+        "noDuplicatePeople": true,
+        "noGroundOrCollisionAuthority": true
+      }
+    }
+  ],
+  "sourceHashesAfter": {
+    "src/realm-trails.js": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+    "src/realm-craft.js": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+    "src/realm-trails-ui.js": "2fd098a1df991371d119b2013df3e1fd3ee2a1bc3306766b61b6af10af5a1d0f",
+    "src/realm-trails-art.js": "effc6f50c785fd18e4c946def9dcb391a43543615bce6342ab66177ac974cc9f",
+    "src/realm-trails-cosmos.js": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+    "src/realm-trails-north.js": "4e0fc692cee329ab259230685b3b8ce068e6dc1cc7dd287b67143d2460859e6f",
+    "src/realm-trails-south.js": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+    "src/adventure.js": "dc40531e41d5195da81377747feb843d320a5a39c71935f73b29ed51138d3015",
+    "src/core.js": "b700bd1da555f2882fc76f2cc0f73aad6b5d7184b734ea88e37306ebb2c4f09e",
+    "src/app.js": "7b827179c6f08b67777e5ea0ba670e082464f54ec8af91d3941d8f6323e7bc14",
+    "src/characters.js": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+    "src/rpg-ui.js": "639b2030d3276517b646d8de3f7b7e7173613c849e66b92de58ea784412afbe8",
+    "src/world-foundations-ui.js": "dab89e64b6b04b3eb04e2d7c83a5337826697c67133d4a0f986a38fefff0aadd",
+    "src/world.js": "67e6e4af887d8904eeae9eafd39c47f0caf720b15f4296bccd9e3ac45b3c6708",
+    "src/traveler-equipment-art.js": "432a499bf417a9b3f2c90078db90dd7bd645d34c6e8826ead1feffba82d9144c",
+    "src/arsenal.js": "1a8fcedd261165900d04f366ffedb08457c4f3a724befe28b8ec1b35c3ae9163",
+    "build.py": "85193e6d58a1a4a4ed99324fd26f9922a6af86e2fa716f914ad794bcc2e82811",
+    "src/shell.html": "5b3675ba3e14f166b905e89fba8d7d480183c8de18a68b6c3daeb7c8bca7d1b8",
+    "tests/realm_trails.test.cjs": "191a1a8e82c705fd9daac3f95d4b07f4258f347afd94f5ce1f52498622dd3cf2",
+    "tests/realm_trails_instrument_rules.test.cjs": "4e9e67740558a7b5ebd47c9466184f57ab9e01ebff2a495cc773d8e9178b5031",
+    "tests/realm_trails_north_rules.test.cjs": "b6673ad93b1a3ea951b508719aa8f8c3e97843120f291cc97d6bf2358bbfb229",
+    "tests/realm_trails_browser.py": "d94fd52233e104da71f4ad38215ae27c24c9fa8bfe78aa34fe2334c0bdda26dd",
+    "tests/realm_trails_cosmos_browser.py": "8a917a735d99dee620f3dc72c8403d85cb77baeb969ff99041322f4111650dec",
+    "index.html": "7c119726ae6bdb5393af4a40cea1184efb28efc562a21262d4111d2771f58781"
+  },
+  "sourceChangedDuringProbes": [],
+  "finishedUtc": "2026-10-02T18:51:04.103Z",
+  "probeGroups": 8,
+  "failedGroups": 0,
+  "conclusion": "The current off-realm Atlantis page no longer throws in the bounded stub. The original exception and its prior source identity remain separately recorded; these probes do not certify the whole runtime."
+}

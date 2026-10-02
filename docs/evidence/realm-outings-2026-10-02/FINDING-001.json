@@ -1,0 +1,22 @@
+{
+  "findingId": "OUTINGS-REVIEW-001",
+  "severity": "P1",
+  "status": "Root fix verified by bounded Node page probe; rendered browser regression remains separate",
+  "observedBeforeHtml": "d234d765c22433126a1f93265af5bfcd9fce3dc685f7d33dda9836c1c6228423",
+  "source": "src/realm-trails-ui.js",
+  "line": 43,
+  "priorSourceSha256": "65006473048c89e8cfc21033eab16940d50030c7c271c7ddd5a6bdb21a8c8266",
+  "currentSourceSha256": "2fd098a1df991371d119b2013df3e1fd3ee2a1bc3306766b61b6af10af5a1d0f",
+  "trigger": "Earn initial kit, enter Atlantis, speak to Sahra and accept trail, return free to home, inspect Atlantis work page",
+  "error": "Cannot read properties of null (reading 'dive')",
+  "stack": [
+    "TypeError: Cannot read properties of null (reading 'dive')",
+    "at src/realm-trails-ui.js:43:610",
+    "at Array.map (<anonymous>)",
+    "at TrailsUI.page (src/realm-trails-ui.js:39:25)"
+  ],
+  "fixture": "Initial kit, travel, acceptance and return are actual production commands; TrailsUI host is a minimal non-rendering synthetic stub.",
+  "repair": "Format depth against the inspected realm definition rather than current scene.",
+  "priorSourceRecovery": "Reverse the one depth-definition expression in current file, then require exact SHA256 match with source identity observed before repair; exact prior bytes preserved.",
+  "acceptanceStillRequired": "Visible journal inspection from home, another realm and unpaid native reload without a runtime exception."
+}

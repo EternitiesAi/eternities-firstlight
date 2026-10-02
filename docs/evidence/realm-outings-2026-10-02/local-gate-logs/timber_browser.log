@@ -1,0 +1,41 @@
+PASS exact standalone build loads with WebGL2
+PASS both embedded maps decode at 512px with explicit color formats
+PASS two-map mip allocation estimate is bounded
+PASS CPU timings are labelled separately from GPU completion
+PASS accepted walking reaches 0,23
+PASS explicit existing invitation enters Earth
+PASS accepted walking reaches 0,10
+PASS accepted walking reaches 7,2
+PASS accepted walking reaches 8.9,-7.9
+PASS original eight mill pieces plus eight gate parts use static and dynamic groups
+PASS third camera retains correct projection
+PASS third fallback preserves draw geometry
+PASS diorama camera retains correct projection
+PASS diorama fallback preserves draw geometry
+PASS material toggle cannot mutate adventure, creations or choices
+PASS low mode keeps valid surface sampling
+PASS accepted walking reaches 0,23
+PASS explicit existing invitation enters Earth
+PASS accepted walking reaches 0,23
+PASS explicit existing invitation enters Earth
+PASS accepted walking reaches 0,23
+PASS explicit existing invitation enters Earth
+PASS scene rebuilds keep original texture lifetime and allocation
+PASS reload retains exact adventure history at source checkpoint
+PASS synthetic probe: roughness upload preserves exact scalar bytes
+PASS synthetic probe: JPEG sampling follows sRGB transfer
+PASS synthetic probe: real texture sampling changes visible pixels
+PASS synthetic probe: textured occluder retains character cutaway
+PASS synthetic probe: cutaway does not corrupt mapped reflection
+PASS synthetic probe: mapped passes have no GL errors
+PASS synthetic probe: untextured scene stays pixel-identical
+PASS corrupt map refuses atomically and renders plain fallback
+PASS corrupt fallback has visible pixels identical to ordinary wood
+PASS wrong-size map refuses atomically and renders plain fallback
+PASS wrong-size fallback has visible pixels identical to ordinary wood
+PASS context loss retires pending maps without resurrection
+PASS production context loss displays the usable map fallback
+PASS production context loss preserves export and local save
+PASS only loopback or embedded asset requests
+PASS no unhandled browser errors
+Timber browser: 40/40; errors: 0

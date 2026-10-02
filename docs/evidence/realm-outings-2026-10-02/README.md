@@ -1,0 +1,33 @@
+# Five realm trails: review evidence
+
+Playable source is on `gameplay/realm-outings-20261002`, stacked against PR35's `gameplay/world-foundations-night-20261002`. Base: `56d4c25b389d6f93941f32aafc0469a14e89cf32`. The principal implementation is `b7404f4e6049bf297afe884511bab3eee7838ec1`; the final runtime/weapon-art checkpoint is `329caa5aea6d90bdafc639e7535ad3699f2840a6`. Use the stacked review PR for the exact later publication head and its remote-clone receipt. This folder identifies the frozen runtime and the local gate separately.
+
+Current generated `index.html` and `FIRSTLIGHT_VALLEY.html` are identical: **2,424,144 bytes**, SHA256 **8ad7e3f020eb93b79b2d812e51a86248780c54b28593face9a115412f7e7b5bf**. All seven delivery clips below were filmed from these exact bytes. `MEDIA.json` preserves raw-video, source-save, harness and compressed-video hashes. `MANIFEST.json` covers the portable files. Large raw recordings, earlier failed takes and complete logs remain on Dom's D drive.
+
+| Clip | What actually happens |
+| --- | --- |
+| [cosmos-comparator.mp4](cosmos-comparator.mp4) | Real-time walking, physical keyboard alignment of both sight frames, service-arm interaction and explicit once-only claim; both cameras |
+| [heaven-repair-bow.mp4](heaven-repair-bow.mp4) | Real Tab/autoattack/Brace bow fight through the actual core recovery window, Garden repair and claim; earlier accepted/partial earned start is labelled |
+| [hell-walked-rescue.mp4](hell-walked-rescue.mp4) | Actual Neris invitation, Wait/Resume, supported checkpoint walk, return to a waiting ally and refuge arrival; assisted=false before deliberate claim |
+| [atlantis-chart.mp4](atlantis-chart.mp4) | Actual held F/G/WASD depth controls, two readings, Bellglass air court, deliberate chart/landing marker and claim |
+| [coastward-materials.mp4](coastward-materials.mp4) | Actual ordinary route across the channel bridge, three job bundles, bridge pack and fixed material claim |
+| [veteran-fitting.mp4](veteran-fitting.mp4) | Command-earned campaign equipment, explicit 48Ã¢â€ â€™51 inspection/spend without replacing gear, actual 51 practice impact and close held-weapon views |
+| [bow-fitting.mp4](bow-fitting.mp4) | Command-earned fresh bow/amber equipment, explicit 15Ã¢â€ â€™18 inspection/spend, actual 18 arrow impact and close held-weapon views |
+
+These are silent, compressed browser recordings. They retain ordinary playback speed; some clips begin at the labelled real event instead of showing preceding setup walking. No painted concept frames replace gameplay. Filming uses an isolated imported command-earned save, normal production frame/input loops, presentation-only time/quality/camera setup, and no artificial ticks, position edits, damage injection or inventory grants. Each `*-RTX.json` lists the actual renderer, browser, viewport, events and short cadence observations.
+
+The reported renderer is RTX 3080 through ANGLE/D3D11 in Chromium 143. Most clips are 1280Ãƒâ€”720 balanced; Cosmos is 1280Ãƒâ€”800 so the instrument and record control fit together. The short 180-interval RAF samples describe presentation cadence under shared desktop load. They are not sustained throughput, a guaranteed 60FPS, Unreal qualification or human taste. The game remains a bounded browser prototype, with local pockets and connections rather than finished seamless continents.
+
+The source review and southern records are explicitly from earlier frozen candidates: `REVIEW.md`/`PROBES.json` target 7c; `south-*-b1-earned.json` and its addendum target b1. They preserve the reproduced Atlantis off-realm page defect, its correction, real southern movements and tested fee differences. `FITTING_GEOMETRY_REVIEW` checks 504 explicitly synthetic CPU poses at the final art source. It is separate from GPU viewing and earned progression. Image addenda retain their own exact epochs and negative evidence.
+
+Known presentation limits remain honest: the 720px comparator may require ordinary scrolling; ordinary distant views make small fitting ornament difficult to distinguish; a raised blade can cover part of the face in a close frontal view. The close third-person fitting images expose the actual violet/brass material, while diorama material detail is weaker. Carried before/after positions and cameras match, but time and facing advance; the close held shots are fitted-after views, not pixel-matched before/after pairs.
+
+Use `python tools/verify.py` and `python tools/verify.py --browser` from a fresh checkout. The current verifier registers 72 syntax modules, 47 rule files, 34 command-earned journeys and 25 browser suites. Read [the passed local verification](VERIFICATION.md) alongside the delivery PR: the latter identifies the exact pushed head and fresh remote checkout result. Local verification alone does not prove that later remote gate. World schema/key 9 remains; adventure 10Ã¢â€ â€™11 adds the finite realmCraft 1 field and optional realmTrails 1 starts unaccepted. No stored XP, socket, previous fitting, chapter or soul choice is reset.
+
+Human acceptance is pending. Dom should try a fresh blade/bow and a returning character: Did you know where to go? Did the fights feel better? Did the reward make you want another outing? See [the play route](../../PLAY_REALM_TRAILS.md). Main was not merged and nothing was publicly deployed.
+
+[Final close fitting images and their qualified review](ADDENDUM_8AD_CLOSE_2026-10-02.md) confirm the violet/brass detail in close perspective; ordinary wide-view legibility remains a human playtest question.
+
+Portable text copies use LF newlines, matching repository policy. `MANIFEST.json` hashes these portable bytes. Hashes and absolute paths inside earlier review notes identify their original D-drive artifacts; those receipts remain unmodified there. The three image-receipt JSON files describe the exact earlier viewed images, some of which remain heavy-only. Their inclusion does not turn earlier candidate images into current-build evidence.
+
+The two `capture-harness-*.snapshot` files preserve the exact filming scripts, including original line endings, and match each clip's recorded harness hash. They are inert byte archives excluded from text normalization by `.gitattributes`; copy one to a separate Python file only for an intentional future replay against the labelled earned source. The normal development capture tool remains under `tools/`.

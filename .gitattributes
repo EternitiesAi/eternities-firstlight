@@ -4,3 +4,6 @@
 *.wav binary
 *.mid binary
 *.bundle binary
+
+# Preserve exact archived filming-harness bytes, including original line endings.
+docs/evidence/realm-outings-2026-10-02/*.snapshot binary
