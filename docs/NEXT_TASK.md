@@ -1,3 +1,29 @@
+# Refine the country without inventing a route
+
+Fetch current gameplay and review comments first; read quarry-shoulder results
+and actual media. The eastern quarry edge now tapers into the original wall in
+both cameras. Human feedback takes priority when supplied: grounded edge, clear
+route and no false suggestion of reachable land. Keep Darric/equipment/combat/
+bridge questions pending. The founder's massive-water open-world direction stays.
+
+Next bounded candidate: reduce the repeated teeth/rib pattern along this measured
+edge, or extend a demonstrated useful shoulder treatment to one short orchard
+outer edge. Choose through matched images and current ground/water/camera/task
+clearance; don't blindly spread nine-part decoration or change renderer normals.
+Inner-pond water1.36 differs from world water.01 and needs a separate seam/foot
+contract. Preserve supported patches, strips, resident/stock/sign visibility and
+both cameras. No new flat shelf, swimming or distant traversal implied by art.
+
+World/key9/adventure10/nested saves, storedXP, explicit class/soul/story history,
+equipment identity/sockets/fittings, companion, housing/crafting/music stay.
+Use bounded render cost, actual normal-time media and exact-head fresh remote
+verification. Heavy work onD; small C proofs remain allowed for measured I/O.
+Inspect an owned preview before any needed shutdown; keep stable8780save origin.
+No automatic main merge/deployment, paid/billing action, personal-profile access
+or unrelated service shutdown. Hosted account availability is a separate gate.
+
+Prior checkpoint retained:
+
 # The country around a familiar road
 
 Read Darric results/media and current review comments; fetch newer gameplay first.

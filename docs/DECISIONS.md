@@ -1,3 +1,27 @@
+# Quarry scenery follows actual rendered support, 2026-10-02
+
+- Read36actual grass-strip matrices at the eastern lip; canonical height differs
+ from the rendered underside at merged strips. Preserve the two source planes,
+ small existing height step and overlap. Do not replace ground/picking authority.
+- Reuse the existing bank-slope batch with positive orthogonal matrices. Check
+ world normals and actual cap-plane overlap across exposed height; endpoint-only
+ seam checks miss possible lower cracks. Fully submerge tilted feet in worldwater.
+- Refine the visually rejected two full-width slabs into nine tapered sections.
+ Keep measured9instance/648triangle/0draw-call cost and original camera flags,
+ terrain and scenery stream. Golden mock scope omits beam/bench/dynamic residents.
+- Keep no flat cap, camera-solid/cutaway or new supported land. Preserve Darric,
+ stock, signs, public road work and both cameras. No save version/migration,
+ reward/XP/equipment/story/control/renderer authority change.
+- Preserve source/still review, software verification, actual normal-time media,
+ short RTX intervals and pending human acceptance as distinct evidence. Repair
+ the mock, selector and timer-aware capture probe rather than gameplay rules.
+ Failed/superseded reports remain onD; repeated mesh ribs remain a polish limit.
+- Final source and exact pushed-head remote gates have separate receipts. Refresh
+ only a verified owned preview at stable8780 under Dom's server authorization.
+ No main merge/public deployment, paid/billing action or personal-profile access.
+
+Prior checkpoint retained:
+
 # Quarry presentation without new task authority, 2026-10-02
 
 - Keep Darric's existing anchor/yaw and actual public-work objectives. Original

@@ -1,0 +1,164 @@
+{
+  "method": "Matched static full-scene views; command-earned fixture/accelerated setup.\nThese are actual rendered pixels, not ordinary gameplay or a performance test.\n",
+  "before_html": "55d9a65677c927aeb52d61fbed75b7dced5d864a067e5c6b1a2ac4c12dc8e56d",
+  "after_html": "d1f76dc5a7685de15344beb01f765879e70053da50bb423d7faee2493ddb7e09",
+  "fixture_sha256": "2d6b9a7d60bd6f7baec70f29665796c5c7f04503982a837153bec139a60ebc61",
+  "views": [
+    {
+      "name": "GRADE_THIRD",
+      "player": {
+        "x": 16.799642880307616,
+        "z": -12.999441428173448,
+        "yaw": 2.5727447951684224
+      },
+      "requested_view": {
+        "yaw": 1.5,
+        "elevation": 0.45,
+        "distance": 11,
+        "half": 12,
+        "zoom": 0.6857142857142857
+      },
+      "before_metrics": {
+        "drawCalls": 41,
+        "instances": 3002,
+        "triangles": 124610
+      },
+      "after_metrics": {
+        "drawCalls": 41,
+        "instances": 3011,
+        "triangles": 125258
+      }
+    },
+    {
+      "name": "GRADE_DIORAMA",
+      "player": {
+        "x": 16.799642880307616,
+        "z": -12.999441428173448,
+        "yaw": 2.5727447951684224
+      },
+      "requested_view": {
+        "yaw": 1.5,
+        "elevation": 0.7,
+        "distance": 11,
+        "half": 12,
+        "zoom": 0.6857142857142857
+      },
+      "before_metrics": {
+        "drawCalls": 60,
+        "instances": 3002,
+        "triangles": 124610
+      },
+      "after_metrics": {
+        "drawCalls": 60,
+        "instances": 3011,
+        "triangles": 125258
+      }
+    },
+    {
+      "name": "LONG_THIRD",
+      "player": {
+        "x": 16.8,
+        "z": -16,
+        "yaw": 3.1414736358528863
+      },
+      "requested_view": {
+        "yaw": 1.5,
+        "elevation": 0.6,
+        "distance": 14,
+        "half": 14,
+        "zoom": 0.8
+      },
+      "before_metrics": {
+        "drawCalls": 60,
+        "instances": 3002,
+        "triangles": 124610
+      },
+      "after_metrics": {
+        "drawCalls": 60,
+        "instances": 3011,
+        "triangles": 125258
+      }
+    },
+    {
+      "name": "LONG_DIORAMA",
+      "player": {
+        "x": 16.8,
+        "z": -16,
+        "yaw": 3.1414736358528863
+      },
+      "requested_view": {
+        "yaw": 1.5,
+        "elevation": 0.7,
+        "distance": 14,
+        "half": 14,
+        "zoom": 0.8
+      },
+      "before_metrics": {
+        "drawCalls": 60,
+        "instances": 3002,
+        "triangles": 124610
+      },
+      "after_metrics": {
+        "drawCalls": 60,
+        "instances": 3011,
+        "triangles": 125258
+      }
+    },
+    {
+      "name": "JOIN_THIRD",
+      "player": {
+        "x": 16.8,
+        "z": -10,
+        "yaw": 0
+      },
+      "requested_view": {
+        "yaw": 1.5,
+        "elevation": 0.38,
+        "distance": 7,
+        "half": 7,
+        "zoom": 0.4
+      },
+      "before_metrics": {
+        "drawCalls": 60,
+        "instances": 3002,
+        "triangles": 124610
+      },
+      "after_metrics": {
+        "drawCalls": 60,
+        "instances": 3011,
+        "triangles": 125258
+      }
+    },
+    {
+      "name": "JOIN_DIORAMA",
+      "player": {
+        "x": 16.8,
+        "z": -10,
+        "yaw": 0
+      },
+      "requested_view": {
+        "yaw": 1.5,
+        "elevation": 0.7,
+        "distance": 7,
+        "half": 7,
+        "zoom": 0.4
+      },
+      "before_metrics": {
+        "drawCalls": 60,
+        "instances": 3002,
+        "triangles": 124610
+      },
+      "after_metrics": {
+        "drawCalls": 60,
+        "instances": 3011,
+        "triangles": 125258
+      }
+    }
+  ],
+  "render_cost_delta": {
+    "instances": 9,
+    "triangles": 648,
+    "draw_calls": 0
+  },
+  "limits": "Paused accelerated software-WebGL matched views; rendered counts are not GPU timing. Full original geometry golden probe omits beam/bench/dynamic residents."
+}

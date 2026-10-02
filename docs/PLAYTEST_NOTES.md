@@ -1,3 +1,28 @@
+# Quarry shoulder appearance and pending human check, 2026-10-02
+
+No new human playtest supplied. Dom is mobile; screenshots/video suffice for
+development evidence. The final18.0s normal-time RTX clip and five walk stills
+show accepted existing-road walking and actual V switching in both views from
+a command-earned packed-but-unpaid fresh-bow quarry checkpoint. No stepping,
+grants, quest/payout changes or personal profile. Normal timers/regrowth remain.
+
+Independent still review inspected six matched final views, all five actual
+stills and three video frames. No sampled lip gap, floating fragment, wide shelf,
+new road/paving/stock/Darric/sign obstruction was found. First two long slabs had
+abrupt ends and were refined to nine tapered sections. Repeated bright teeth and
+vertical ribs remain a bounded stylized-art limit; preexisting label/Story-panel
+overlap remains. Reviewers did not watch the full clip or establish shimmer,
+human comfort, navigation/save gates or performance. Two short actual RTX RAF
+samples are separate from software checks and do not qualify sustainedFPS.
+
+When back: does the edge look grounded? Is the road clear in both views? Does
+any scenery imply walkable land that is absent? Keep fresh/returning Darric,
+guide usefulness/cost, combat warning/opening/fun and bridge-comfort questions.
+Dom's earlier gorgeous-bridge reaction and massive-water/open-world direction
+are preserved, not expanded into approval of this exact build or scale.
+
+Prior checkpoint retained:
+
 # Quarry evidence and pending human recognition, 2026-10-02
 
 Dom is on mobile and explicitly permits necessary server shutdown/continuation.

@@ -1,3 +1,32 @@
+# Tapered quarry country, 2026-10-02
+
+`gameplay/quarry-natural-shoulder` is stacked on PR33 at
+906d9af2f60e040650754c02859d86ac266fcccc. Core05977dae adds nine short tapered
+rock-and-earth sections under the actual quarry grass lip. All36strip seams and
+eight exposed cap-plane joins are checked. Existing bank-slope batch adds
+9instances/648triangles/0draw calls in six matched views. Ground/camera solids,
+road/paving/residents/stock/signs and both camera styles keep their owners.
+World/key9/adventure10/earthStory1 unchanged; no migration or gameplay payout.
+
+Clean source full verifier passed60syntax/729Node/53Python+1existing Windows
+symlink skip/24earned journeys/1839browser assertions20suites,0final failures.
+Both regenerated HTML files2267932bytes/d1f76dc5... identical. Actual18.0s/
+450decoded-frame RTX recording uses15normal-time checkpoints from a labelled
+command-earned packed but unpaid quarry case. Adventure, equipment, housing,
+notes/music remain; normal timers/regrowth are accounted for. Two short360total
+RAF intervals at720p balanced give median≈16.7ms/max16.8ms; not sustainedFPS.
+
+See [results](art/QUARRY_SHOULDER_RESULTS_2026-10-02.md) and
+[media/receipts](evidence/quarry-shoulder/README.md). Exact final pushed head,
+remote full gate, evidence blobs and hosted/preview/app state are checked in the
+delivery PR/external receipt. Earlier failures/superseded slabs stay onD.
+Independent source/still review found no blocker; repeated teeth/ribs remain
+stylized polish, and human/temporal acceptance stays pending. Browser saves,
+storedXP, equipment/sockets/fittings, explicit choices, companion, housing,
+crafting and music remain protected. No main merge/public deployment/billing.
+
+Prior checkpoint retained:
+
 # Darric and visible quarry work, 2026-10-02
 
 `gameplay/darric-quarry-presentation` is stacked on PR32 at
