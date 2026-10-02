@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Hearthwater bridge side view \u00b7 third person",
+    "expression": "async()=>{const walk=async(x,z)=>{const r=Realm.test.move(x,z);if(!r.ok)throw Error(r.error);const t=performance.now();while(Realm.test.path.length){if(performance.now()-t>45000)throw Error('Walking timed out');await new Promise(r=>setTimeout(r,50));}};const key=k=>{document.dispatchEvent(new KeyboardEvent('keydown',{key:k,bubbles:true}));document.dispatchEvent(new KeyboardEvent('keyup',{key:k,bubbles:true}));};Realm.test.setTime(16);await walk(0,23);key('e');document.querySelector('[data-rpg=\"earth-confirm\"]').click();await walk(0,19.5);document.querySelector('[data-rpg=\"camera\"][data-id=\"adventure\"]').click();Realm.test.view({yaw:Math.PI*1.5,elevation:.14,distance:14.5});Realm.test.render();return{scene:Realm.diagnostics.scene,camera:Realm.diagnostics.camera,story:Realm.state.adventure.earthStory};}"
+  },
+  {
+    "name": "Hearthwater bridge side view \u00b7 diorama",
+    "expression": "()=>{document.querySelector('[data-rpg=\"camera\"][data-id=\"follow\"]').click();Realm.test.view({yaw:Math.PI*1.5,elevation:.39,half:9,zoom:9/17});Realm.test.render();return{scene:Realm.diagnostics.scene,camera:Realm.diagnostics.camera,story:Realm.state.adventure.earthStory};}"
+  }
+]

@@ -1,3 +1,22 @@
+# Bridge shoreline refinement,2026-10-01
+
+`gameplay/bridge-shoreline` stacked on PR28 `7a91d32ee59a8310817b99ec22439687b9a8592a`;source `ae8ce93c79f45839256d4475daf44beb12b6d161`.
+Rocky skirts beneath existing grass caps,quieter Earth water,lower/receding
+mountains and connected hill crowns. Actual navigation/anchors and saves remain:
+world/key9,adventure10,no migration. Both V/R/orbit cameras and all owners stay.
+
+Clean exact-source full gate:58syntax,675Node,53Python+1Windows skip,24journeys,
+1598browser assertions/19suites,zero failures. Matched1080pRTX samples P95after
+16.7ms,max16.8ms,no>33.333ms;short headless intervals,not sustainedFPS.
+Actual32.52s normal-time video and paired RTX views,independent bounded reviews.
+See [results](art/BRIDGE_SHORELINE_RESULTS_2026-10-01.md) and
+[actual media/receipts](evidence/bridge-shoreline/README.md). Delivery PR records
+exact final remote head/fresh full verification and fresh hosted status.
+Human taste remains pending;cap narrow,rock end tooth-like,water/mountains stylized.
+No merge/deploy/personal data/billing action;old stable preview not refreshed.
+
+Prior checkpoint retained:
+
 # The playable Hearthwater bridge moment, 2026-10-01
 
 Review branch `gameplay/bridge-moment`, stacked on PR 27 `gameplay/fenna-drover`

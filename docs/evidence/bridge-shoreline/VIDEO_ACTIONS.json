@@ -1,0 +1,84 @@
+[
+  {
+    "evaluate": "()=>{const g=document.querySelector('#world').getContext('webgl2'),d=g.getExtension('WEBGL_debug_renderer_info');return{renderer:d?g.getParameter(d.UNMASKED_RENDERER_WEBGL):null};}",
+    "wait_ms": 400
+  },
+  {
+    "walk": [
+      0,
+      23
+    ]
+  },
+  {
+    "key": "e",
+    "wait_ms": 500
+  },
+  {
+    "click": "[data-rpg=\"earth-confirm\"]",
+    "wait_ms": 400
+  },
+  {
+    "walk": [
+      0,
+      16
+    ]
+  },
+  {
+    "key": "e",
+    "wait_ms": 600
+  },
+  {
+    "click": "[data-rpg=\"earth-bridge-view\"]",
+    "wait_ms": 1200
+  },
+  {
+    "walk": [
+      0,
+      27.2
+    ]
+  },
+  {
+    "walk": [
+      0,
+      12.4
+    ]
+  },
+  {
+    "walk": [
+      0,
+      16
+    ]
+  },
+  {
+    "key": "v",
+    "wait_ms": 400
+  },
+  {
+    "key": "e",
+    "wait_ms": 400
+  },
+  {
+    "click": "[data-rpg=\"earth-bridge-view\"]",
+    "wait_ms": 900
+  },
+  {
+    "walk": [
+      0,
+      26.4
+    ]
+  },
+  {
+    "walk": [
+      0,
+      13.4
+    ]
+  },
+  {
+    "key": "r",
+    "wait_ms": 600
+  },
+  {
+    "key": "v",
+    "wait_ms": 600
+  }
+]
