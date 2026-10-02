@@ -29,6 +29,15 @@ function frame({yaw=0,base=1.3,combatScene=true,phase='idle',progress=0,reducedM
 function draw(sim,f){assert.equal(typeof Art.draw,'function','equipment draw API is implemented');const out=empty();Art.draw(out,sim,f);return items(out);}
 function expectedWorld(local,yaw,base){return [7+local[0]*Math.cos(yaw)+local[2]*Math.sin(yaw),base+local[1],-3-local[0]*Math.sin(yaw)+local[2]*Math.cos(yaw)];}
 function endpoint(item,side){return M.transform(item.m,[0,side*.5,0]);}
+// Separating axes from the actual rendered transforms, not authored anchor guesses.
+function obbOverlaps(a,b){
+ const dot=(x,y)=>x.reduce((n,v,i)=>n+v*y[i],0),cross=(x,y)=>[x[1]*y[2]-x[2]*y[1],x[2]*y[0]-x[0]*y[2],x[0]*y[1]-x[1]*y[0]];
+ const edges=p=>[0,4,8].map(i=>[p.m[i],p.m[i+1],p.m[i+2]].map(n=>n/2)),aa=edges(a),bb=edges(b),delta=a.p.map((v,i)=>v-b.p[i]);
+ for(const raw of [...aa,...bb,...aa.flatMap(x=>bb.map(y=>cross(x,y)))]){
+  const length=Math.hypot(...raw);if(length<1e-8)continue;const axis=raw.map(n=>n/length),radius=[...aa,...bb].reduce((n,v)=>n+Math.abs(dot(axis,v)),0);
+  if(Math.abs(dot(axis,delta))>radius+1e-6)return false;
+ }return true;
+}
 
 test('unstarted, absent, unknown and unowned equipment produce no gear',()=>{
  assert.equal(typeof Art.draw,'function');
@@ -154,4 +163,27 @@ test('gathered and command-crafted bow projects the actual equipped item',()=>{
  }
  walk(sim,11,9);command(sim,'arsenal-craft',{id:'trail_bow'});command(sim,'equip',{id:'trail_bow'});
  const before=JSON.stringify(sim.snapshot()),out=draw(sim,frame());assert.equal(out.find(p=>p.weaponPart==='grip').weaponId,'trail_bow');assert.ok(out.some(p=>p.weaponPart==='bow-string'));assert.equal(JSON.stringify(sim.snapshot()),before);
+});
+
+
+test('finite realm collars preserve prior markers and follow the actual blade or curved bow segment',()=>{
+ // Synthetic catalogue coverage. Rule/journey suites independently earn the fitting.
+ for(const id of Object.entries(A.GEAR).filter(([,g])=>g.slot==='weapon').map(([id])=>id))for(const combatScene of [true,false])for(const yaw of [0,1.3])for(const progress of [0,.5,1]){
+  const sim=fixture(id),a=sim.state.adventure;a.pursuit.fittings[id]=2;syntheticTemper(a,id);a.arsenal.sockets[id]='ruby';
+  const d=globalThis.RealmTrails.definition('earthlands-coastward-materials-v1'),record=sim.state.realmTrails.records[d.id];record.accepted=true;record.steps=d.steps.filter(s=>!s.optional).map(s=>s.id);record.claimed=true;
+  const f=frame({combatScene,yaw,phase:progress===0?'idle':progress===1?'anticipate':'recover',progress});f.joints.leftHand=[-.30-progress*.04,1.30+progress*.07,.48+progress*.01];f.joints.rightHand=[.16-progress*.03,1.26+progress*.20,.32-progress*.22];const before=draw(sim,f);a.realmCraft.weapon=id;const snapshot=JSON.stringify(sim.snapshot()),after=draw(sim,f);
+  assert.deepEqual(after.filter(p=>!p.weaponPart.startsWith('realm-fitting')),before,'earlier weapon, socket, temper and River geometry remain identical');
+  const body=after.filter(p=>p.weaponPart==='realm-fitting'),trim=after.filter(p=>p.weaponPart==='realm-fitting-trim');assert.equal(body.length,1);assert.equal(trim.length,2);assert.equal(body[0].c,0xa997cc);assert.ok(trim.every(p=>p.c===0xd1b06b));
+  const collar=body[0],basis=p=>[p.m[4],p.m[5],p.m[6]].map(n=>n/Math.hypot(p.m[4],p.m[5],p.m[6]));
+  if(AR.weapon(a).style==='bow'){
+   const limb=after.find(p=>p.weaponPart==='bow-limb'&&p.limbSide===1&&p.limbSegment===3);near(collar.p,limb.p,'collar sits on real curved limb');near(basis(collar),basis(limb),'collar follows real curved limb basis');
+  }else{
+   const shaft=after.find(p=>p.weaponPart===(combatScene?'blade':'scabbard')),start=endpoint(shaft,-1),end=endpoint(shaft,1),delta=end.map((v,i)=>v-start[i]),length=Math.hypot(...delta),t=collar.p.reduce((n,v,i)=>n+(v-start[i])*delta[i],0)/(length*length);
+   assert.ok(t>0&&t<1,'collar remains within actual blade/sheath');near(collar.p,start.map((v,i)=>v+t*delta[i]),'collar does not float away from shaft');
+   for(const old of after.filter(p=>['fitting','temper'].includes(p.weaponPart)))assert.ok(Math.hypot(...old.p.map((v,i)=>v-collar.p[i]))>.14,'new collar leaves earlier finite marks separate');
+  }
+  for(const p of [collar,...trim])assert.ok(p.realmFitting===3&&Array.from(p.m).every(Number.isFinite));
+  for(const next of [collar,...trim])for(const old of after.filter(p=>['fitting','temper','socket'].includes(p.weaponPart)))assert.equal(obbOverlaps(next,old),false,id+' '+next.weaponPart+' must not cover '+old.weaponPart+' '+old.fittingStage);
+  assert.equal(JSON.stringify(sim.snapshot()),snapshot,'collar projection cannot alter progression');
+ }
 });
