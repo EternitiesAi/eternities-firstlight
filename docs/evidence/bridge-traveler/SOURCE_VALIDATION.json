@@ -1,0 +1,45 @@
+{
+  "source_commit": "208072a693a407cf6a0bf3c9e9632263517582a4",
+  "base_commit": "3a5b5ad2428b67f90ec7d605423ecf03fe620fba",
+  "html_sha256": "d9210043af4a480d67486b06e3834180deee1d5218d69252b3b8d8bf9f4ccbcc",
+  "html_bytes": 2250408,
+  "commands": [
+    "python build.py",
+    "python tools/verify.py --browser --output <D evidence>/verification-source"
+  ],
+  "source_syntax": 58,
+  "node_pass": 677,
+  "python_pass": 53,
+  "python_skip": 1,
+  "python_skip_reason": "Existing Windows symlink privilege case",
+  "command_earned_journeys": 24,
+  "browser_pass": 1682,
+  "browser_suites": {
+    "crossing_browser": 115,
+    "regression09_browser": 107,
+    "cutaway_browser": 6,
+    "reflection_browser": 8,
+    "native_origin_browser": 11,
+    "starter_browser": 147,
+    "camera_browser": 51,
+    "pursuit_browser": 145,
+    "characters_browser": 67,
+    "classes_browser": 45,
+    "cosmos_browser": 75,
+    "earth_browser": 89,
+    "earth_story_browser": 233,
+    "earth_notes_browser": 134,
+    "gathering_browser": 118,
+    "realm_atlas_browser": 37,
+    "timber_browser": 40,
+    "traveler_browser": 116,
+    "bridge_browser": 138
+  },
+  "failures": 0,
+  "proof_checkout": "Small clean exact-source linked checkout on C; all source, runtime assets, tests and fixtures present. Only docs/evidence media omitted. Primary authoring/heavy captures and logs remain on D; legacy common Git store remains in place. No timeout or acceptance weakening.",
+  "save_versions": {
+    "world_key": 9,
+    "adventure": 10,
+    "migration": "none"
+  }
+}

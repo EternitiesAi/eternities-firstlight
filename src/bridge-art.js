@@ -2,6 +2,9 @@
 (function(G){'use strict';
 const E=G.RealmEarth,B=E.BRIDGE;
 const quiet={cameraSolid:false,cutaway:false,rough:.9,bridgePart:true};
+// Eligibility only: the renderer keeps these exact boxes solid in reflection
+// and shadow, and cuts only a local foreground aperture in the main view.
+const rail={...quiet,bridgeRail:true};
 function crossing(a){
  const stone=[0x919889,0xa1a694,0xb4b49e,0x9c9f8d];
  // Thin deck exactly meets the rule floor; no filled terrain reaches the water.
@@ -15,8 +18,8 @@ function crossing(a){
   for(const side of[-1,1]){
    a.add('octa',side*1.86,.24,z,.82,.58,.58,0x7a887e,quiet);
    a.box(side*1.79,.97,z,.24,.17,.68,0xa7ae9a,quiet);
-   a.box(side*1.73,B.deck+.36,z,.16,.72,.23,0xa4a995,quiet);
-   a.box(side*1.73,B.deck+.75,z,.24,.11,.31,0xc0bea3,quiet);
+   a.box(side*1.73,B.deck+.36,z,.16,.72,.23,0xa4a995,rail);
+   a.box(side*1.73,B.deck+.75,z,.24,.11,.31,0xc0bea3,rail);
   }
  }
  for(let span=0;span<4;span++){
@@ -29,8 +32,8 @@ function crossing(a){
     a.box(side*1.867,.12+Math.sin(t)*1.185,z+Math.cos(t)*1.67,.035,.19,.35,
      stone[(span+i)%4],{...quiet,r:[Math.PI/2-t,0,0]});
    }
-   a.box(side*1.73,B.deck+.64,z,.12,.10,3.54,0xa6aa93,quiet);
-   for(let post=1;post<3;post++)a.box(side*1.73,B.deck+.32,B.from+span*3.75+post*1.25,.10,.64,.13,0x929e88,quiet);
+   a.box(side*1.73,B.deck+.64,z,.12,.10,3.54,0xa6aa93,rail);
+   for(let post=1;post<3;post++)a.box(side*1.73,B.deck+.32,B.from+span*3.75+post*1.25,.10,.64,.13,0x929e88,rail);
   }
  }
  for(const z of[B.from,B.to])for(const side of[-1,1])a.box(side*1.89,B.deck+.16,z,.42,.32,.64,0xb2b59c,quiet);

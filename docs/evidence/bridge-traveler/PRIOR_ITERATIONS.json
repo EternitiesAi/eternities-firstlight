@@ -1,0 +1,13 @@
+{
+  "final_gate_failures": 0,
+  "initial_visual_defect": "keep .12 retained 25% ordered-pattern pixels across boots/post; independent reviewer and root rejected that clarity result. Final core fully discards foreground rail with a narrow fringe.",
+  "initial_probe_gaps": "Initial ID mask included water/reflection and only required a small gain. Corrected mask suppresses water only during ID pass; final checks require >=70% reference visibility and >=35% missing-pixel recovery where meaningful.",
+  "retained_external_artifacts": [
+    "BRIDGE_INITIAL.log",
+    "BRIDGE_REFINED.log",
+    "GPU_AFTER_INITIAL.json",
+    "GPU_AFTER_INITIAL-1.png",
+    "GPU_AFTER_INITIAL-2.png"
+  ],
+  "note": "Superseded engineering iterations are not final acceptance evidence."
+}

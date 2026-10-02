@@ -1,3 +1,20 @@
+# Bridge traveller readability,2026-10-01
+
+`gameplay/bridge-traveler-readability` stacked on PR29 `3a5b5ad2428b67f90ec7d605423ecf03fe620fba`;source `208072a693a407cf6a0bf3c9e9632263517582a4`.
+Local clear-centred rail aperture improves boots/shins in both chosen cameras,
+including supported lateral positions. Existing cutaway checkbox;physical bridge,
+deck/arches/marker/reflection/shadow,saves and all game owners remain unchanged.
+World/key9,adventure10,no migration. Full source gate58syntax/677Node/53Python+1skip/
+24earned journeys/1682browser assertions in19suites (bridge138),0failures. Short
+matched1080pRTX samples P95after16.7ms/no>33.333ms,one batch/no geometry/textures.
+Actual37.52s19-action normal-time footage and paired views;human taste pending.
+See [results](art/BRIDGE_TRAVELER_RESULTS_2026-10-01.md) and
+[actual evidence](evidence/bridge-traveler/README.md). Final PR records exact
+remote head/fresh full proof/hosted status. No merge/deploy;old preview separate.
+
+
+Prior checkpoint retained:
+
 # Bridge shoreline refinement,2026-10-01
 
 `gameplay/bridge-shoreline` stacked on PR28 `7a91d32ee59a8310817b99ec22439687b9a8592a`;source `ae8ce93c79f45839256d4475daf44beb12b6d161`.

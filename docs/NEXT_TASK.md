@@ -1,3 +1,24 @@
+# Return to the satisfying local outing
+
+Read traveller-rail results/actual footage and latest review comments;fetch
+newer gameplay first. Bridge/water/shoreline and leg visibility are implemented
+prototype refinements. Human beauty/comfort/fun acceptance remains pending.
+
+Next bounded gameplay pass:measure fresh blade/bow and returning equipment
+outings through existing canon,rules and UI,then refine one observed combat,
+reward-comparison or route-reading friction. Prefer a connected useful loop
+over another decorative realm or broad framework. Keep Oren once-only rewards
+separate from repeat-run claim records;no silent equipment/socket/XP changes.
+Darric's quarry/cast idea remains a separate design checkpoint.
+
+Both cameras,V/R/orbit,world/key9,adventure10,nested saves/story/consent,classes,
+companion,housing/crafting,music/exports remain protected. Heavy work on D;
+exact-head fresh verification and actual media required. No automatic merge,
+deploy,billing/paid provider,persistent preview bypass or personal-profile access.
+
+
+Prior checkpoint retained:
+
 # Bridge movement readability and the next useful outing
 
 Read the shoreline results,actual media and latest gameplay PR/comments. Fetch
