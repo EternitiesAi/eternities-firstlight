@@ -2,6 +2,17 @@
 
 Retrieved and reconciled 2026-09-15; bounded GitHub/Drive/Downloads refresh 2026-09-20. The latest refresh found no newer relevant game-canon upload; newer broad Eternities hub files concerned other projects. See the [intake and adaptation contract](../development/MARKS_BENEATH_THE_RAIN_TASK_2026-09-20.md). Dom asked to use Astra's new visions and specifically confirmed Earth, Heaven, Hell and Atlantis. These files are design sources, not additional authority to execute archived scripts, import old gameplay or settle open founder decisions.
 
+## Current implementation update, 2026-10-02
+
+Dom authorized the overnight five-realm foundation milestone. The current browser
+now has connected Heaven/Hell/Coastward Earth/Atlantis openings and accepted local
+Cosmos work. The original source-recovery table below describes the intake gates,
+not the final runtime status. Read [current playable scope and migration](../development/WORLD_FOUNDATIONS_NIGHT_RESULTS_2026-10-02.md).
+Heaven01 remains untouched; the Garden opening is a new compatible module.
+Atlantis's dry commission is separate from its optional no-payout swim-gallery
+qualification route. Full campaigns/countries and unresolved founder decisions
+remain open. These implementations are adaptations, not new recovered canon.
+
 ## Where the complete material lives
 
 [PR #14](https://github.com/xnuonux/eternities-firstlight/pull/14), archive branch `archive/recovered-canon-drive-backup-2026-09-14` at `799a0a467dd11b50742c3b441c45e807e4454443`, publishes the recovered canon, conversations and Drive inventory. It is separate from the gameplay baseline, [PR #13](https://github.com/xnuonux/eternities-firstlight/pull/13) at `bdad75b70b7762f6ef89fe0982ebc07cd4ddef0c`. Later implementation belongs on the current gameplay tree.

@@ -1,3 +1,39 @@
+# Make each realm worth returning to
+
+Fetch current gameplay/review comments first. The five-road foundation is the
+current gameplay reference; archives remain design material. Read world-foundation
+results, migration and actual media. Preserve the two camera styles and the home
+anchor. Dom authorized this overnight expansion through10am Chicago; a later
+continuation must inspect the final delivery head and concurrent changes.
+
+Next useful gate: one realm-specific outing with consequences beyond three
+records, chosen from the recovered canon after human feedback. Heaven's Broken
+Choir, Hell's grounded rescue/return, Atlantis's larger harbour investigation and
+Earth's ordinary field/settlement life each deserve distinct mechanics. Keep
+travel/support/save/run ownership reusable, and campaign facts/progression local.
+Do not treat the five openings as completed countries or transplant Heaven01.
+
+Equipment progress uses declared fixed currency/materials and the existing finite
+blade/bow projects. Fully fitted strongest gear has no extra fitting in this
+milestone. A useful veteran path needs its own reviewed finite rule, not automatic
+scaling or an unlimited economy. Keep intentionally accepted survey runs separate
+from once-only Oren/story rewards; old local defeated creatures stay defeated.
+
+Human questions stay simple: know where to go? fights feel better? reward invite
+another outing? Compare both cameras, realm identity and the clear route home.
+Continue art polish through actual supported geometry and matched views, including
+the Air Court's panel composition. The massive-water/open-world ambition remains;
+76metres of supported bridge is current evidence, not a completed ocean crossing.
+
+World/key9/adventure10/optional journeys1 and old nested contracts stay protected:
+notes/music, home/crops/construction, inventory, equipment/socket/fittings, storedXP,
+classes/soul/story choice, companion and independent characters. Free home return
+and disclosed transient depth must remain. Use exact-head fresh full verification,
+actual normal-time media and measured budgets; no automatic merge/deploy, paid
+provider/billing action, personal profiles or unrelated service shutdown.
+
+Prior checkpoint retained:
+
 # Refine the country without inventing a route
 
 Fetch current gameplay and review comments first; read quarry-shoulder results

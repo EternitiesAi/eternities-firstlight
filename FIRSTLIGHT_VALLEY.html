@@ -892,6 +892,33 @@ function decorate(art,def,options={}){
   }
  }
  if(isHeaven)for(const [tag,x,color]of[['ruby-arcade',-.6,ruby],['mirror-causeway',.6,silver]])box(x,h(x,17)+.0325,17,.32,.012,.85,color,{routeFork:tag,rough:.9});
+ // Three small cultivated beds follow the public Ruby fork without narrowing
+ // its paving. Their soil and edging are flush decoration on existing ground;
+ // short rooted flowers add no harvest, obstacle, terrain or wind authority.
+ if(isHeaven){
+  const length=Math.hypot(14,12),yaw=Math.atan2(-14,-12),c=Math.cos(yaw),s=Math.sin(yaw),w=1.4,d=2.8;
+  for(const [bed,along]of[3,7,11].entries()){
+   const x=-14/length*along-12/length*4.5,z=17-12/length*along+14/length*4.5,base=h(x,z),r=[0,yaw,0];
+   const position=(u,v)=>[x+c*u+s*v,z-s*u+c*v];
+   const opt=part=>({gardenBand:'ruby-fork',gardenBed:bed,gardenPart:part,wind:0});
+   box(x,base+.009,z,w,.018,d,0x61745b,{...opt('soil'),r,rough:1});
+   for(const side of[-1,1]){
+    const [xx,zz]=position(side*(w/2-.0225),0);
+    box(xx,base+.0225,zz,.045,.025,d,bone,{...opt('rim'),r});
+    const [ex,ez]=position(0,side*(d/2-.0225));
+    box(ex,base+.0225,ez,w-.09,.025,.045,gold,{...opt('rim'),r});
+   }
+   for(let row=0;row<4;row++)for(const side of[-1,1]){
+    const [xx,zz]=position(side*.38,-1.02+row*.68),root=h(xx,zz)+.018,stem=.26+(row%3)*.045;
+    const plant=bed+'-'+row+'-'+side,flora=part=>({...opt(part),gardenPlant:plant,foliage:true});
+    at('cylinder',xx,root,zz,.028,stem,.028,0x647b55,flora('stem'));
+    for(const lean of[-1,1])at('leaf',xx,root+stem*.22,zz,.28,stem*.68,.24,row%2?0x92a38e:0x739474,{...flora('leaf'),r:[0,yaw+row*.37,lean*.5]});
+    const bloom=row===bed?0xc997a0:row%2?0xd8c790:0xf0e6cf;
+    for(let petal=0;petal<4;petal++)at('leaf',xx,root+stem,zz,.28,.28,.24,bloom,{...flora('petal'),r:[Math.PI/2,0,petal*Math.PI/2+bed*.23]});
+    at('octa',xx,root+stem,zz,.095,.08,.095,0xbfa263,flora('heart'));
+   }
+  }
+ }
  for(const p of def.points){at('disc',p.x,h(p.x,p.z)+.035,p.z,p.kind==='return'?3:1.5,1,p.kind==='return'?3:1.5,p.kind==='return'?(isHeaven?gold:amber):(isHeaven?0xc5b385:0xaca99a),{markerId:p.id,rough:.65});}
  // A public instrument and two response fittings use solid-backed frames.
  if(isHeaven){

@@ -1,3 +1,37 @@
+# Five playable realm openings, 2026-10-02
+
+`gameplay/world-foundations-night-20261002` is stacked against PR34 at
+`4b5f3c7a7a7672ccefbf2ef8501507f017ec06d3`. The Roads of Light connect the
+existing home to Heaven, Hell, Coastward Earth, Atlantis and Cosmos. Each has
+three explicitly accepted physical work objectives, fixed first rewards and
+smaller intentional repeat surveys. Both cameras, campaign/creative systems and
+free return remain. Atlantis adds a bounded real swim gallery and dry air court.
+Earth adds a supported 76-metre channel bridge and fields/settlement beyond it.
+
+World/key9 and adventure10 remain; optional `journeys.version1` adds unaccepted
+records to older supported worlds. No backfill, class assignment, XP reset,
+weapon replacement or new level cap. XP stays 1–5 / stored ceiling9999.
+Rooms and dive depth are transient; accepted objectives, run/claim history and
+local defeated identities persist at the saved home checkpoint. Capacity/save
+refusal is atomic. Original Heaven01/sanctuary and resident identities stay outside.
+
+The shared source checkpoint passed65syntax/785Node/53Python+1existing Windows
+symlink skip/27earned journeys/2039browser assertions22suites. A subsequent wet
+UI/reflection correction has focused184world-browser and9framebuffer checks;
+exact final remote verification is recorded in the delivery PR/external receipt.
+The final garden/rule build passes 790 Node tests, including real fall/revival
+with partial accepted work retained. Generated HTML is identical at 2361950 bytes
+/ 3a5f18e0... . Exact final clone results belong in the delivery receipt. Actual RTX tour, blade,
+bow and local-work media are separately labelled; human feel remains pending.
+
+See [results and migration](development/WORLD_FOUNDATIONS_NIGHT_RESULTS_2026-10-02.md)
+and [actual media/receipts](evidence/world-foundations/README.md). Complete realm
+campaigns/capitals, whole countries, endgame equipment, true multiplayer and
+continuous planet scale remain future work. No main merge, public deployment,
+paid/billing action or personal-save access.
+
+Prior checkpoint retained:
+
 # Tapered quarry country, 2026-10-02
 
 `gameplay/quarry-natural-shoulder` is stacked on PR33 at

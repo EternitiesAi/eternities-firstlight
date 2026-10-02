@@ -1,3 +1,35 @@
+# Five worlds, actual play and pending human judgment, 2026-10-02
+
+Dom explicitly asked for a long creative world-building session through10am.
+Two requested Sol6.1/xhigh colleagues supplied disjoint realm foundations; Root
+integrated travel, work, body/depth, combat, cameras and persistence. No new human
+playtest is supplied. His earlier bridge reaction and eventual enormous-body-of-
+water vision remain direction, not approval of this exact scale or implementation.
+
+Actual normal-time RTX recordings cover all five roads in both views, Hell blade
+and bow targeting/guard/defeat, Atlantis held-key depth and dry-air entry, and an
+explicit Coastward work completion/claim. Setup fixtures are command-earned;
+ordinary animation frames and production UI/movement do the play. Automated
+journeys cover fresh blade, fresh bow and returning ChapterIV ownership separately.
+Short hardware samples, accelerated browser coverage, source/still review and
+human enjoyment remain distinct.
+
+Independent still reviews found no definite bridge/civic/gallery geometry mismatch.
+Heaven's ruby/silver paths read distinctly; the Hell roof now exposes both people
+in diorama; Atlantis's swimmer remains visible through deck and surface water.
+Air Court composition can better reveal the panel behind the traveler. Review
+also found two impossible underwater buttons and a stale-buffer reflection test;
+all are corrected with visible/fresh-buffer checks. The compact final browser
+capture now includes an actually displayed toast beside the depth HUD.
+
+When at the computer, try one fresh and one returning case: Did you know where to
+go? Did the fights feel better? Did the reward make you want another outing? Do
+the five places feel distinct, and can you find home in either camera? Strongest
+fully fitted equipment has no new direct upgrade here; do the declared supplies
+still make ordinary work worthwhile? No automated result settles these answers.
+
+Prior checkpoint retained:
+
 # Quarry shoulder appearance and pending human check, 2026-10-02
 
 No new human playtest supplied. Dom is mobile; screenshots/video suffice for

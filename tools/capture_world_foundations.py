@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Normal-time five-road tour in an isolated hardware Chromium profile.
+"""Normal-time gameplay in an isolated hardware Chromium profile.
 
-Only setup imports a labelled command-earned save. Movement, held swim keys,
-crossing and one accepted Heaven objective use production callers and real RAF.
-Short RAF samples measure presentation cadence, not sustained GPU throughput.
+Only setup imports a labelled command-earned save. The selected tour or bow-combat
+variant records its actual production movement, UI, combat and camera events.
+The tour also records swimming and one Heaven objective. Short tour-only RAF
+samples measure presentation cadence, not sustained GPU throughput.
 """
 from pathlib import Path
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
@@ -95,12 +96,12 @@ def main():
             else:
                 enter('earthlands'); view('third',yaw=.65); walk(0,91); shot('01-earth-bridge-approach'); walk(0,55); view('third',yaw=1.4,elevation=.16,distance=16); shot('02-earth-channel-third'); measure('Earth channel third person')
                 view('diorama',yaw=1.5); walk(0,23); shot('03-earth-bridge-diorama'); home()
-                enter('heaven'); view('third',yaw=.2); walk(-14,6.7); page.keyboard.press('e'); page.locator('[data-rpg="world-accept"]').click(); close(); walk(0,-1); page.keyboard.press('e'); page.locator('[data-rpg="world-observe"][data-id="first"]').click(); close(); mark('Heaven first objective accepted through UI'); walk(0,-25); shot('04-heaven-garden-third'); measure('Heaven garden third person'); view('diorama',yaw=.6); shot('05-heaven-garden-diorama'); home()
+                enter('heaven'); view('third',yaw=.2); walk(-14,6.7); page.keyboard.press('e'); page.locator('[data-rpg="world-accept"]').click(); close(); walk(0,-1); page.keyboard.press('e'); page.locator('[data-rpg="world-observe"][data-id="first"]').click(); close(); mark('Heaven first objective accepted through UI'); walk(0,20); view('third',yaw=-.55,elevation=.2,distance=10); shot('heaven-planted-fork-third'); view('diorama',yaw=.6); shot('heaven-planted-fork-diorama'); view('third',yaw=.2); walk(0,-25); shot('04-heaven-garden-third'); measure('Heaven garden third person'); view('diorama',yaw=.6); shot('05-heaven-garden-diorama'); home()
                 enter('hell');view('diorama',yaw=.7);walk(-10,25.7);shot('hell-refuge-open-roof');view('third');walk(12,-8);shot('06-hell-industrial-road-third');measure('Hell industrial approach third person');view('diorama',yaw=.7);shot('07-hell-refuge-diorama');fight();home()
                 enter('atlantis'); view('third'); walk(-6,0); shot('08-atlantis-civic-third'); walk(8,-16); page.keyboard.press('e'); page.locator('[data-rpg="world-dive"]').click(); view('third',yaw=0,elevation=.07,distance=3)
                 page.keyboard.down('g'); page.wait_for_function('()=>Realm.test.worldDiveStatus().y<=-2.35'); page.keyboard.up('g')
                 page.keyboard.down('w'); page.wait_for_function('()=>Realm.diagnostics.adventure.player.z<=-29'); page.keyboard.up('w'); shot('09-atlantis-underwater'); measure('Atlantis submerged gallery third person');view('diorama',yaw=.7);shot('atlantis-gallery-diorama');view('third',yaw=0,elevation=.07,distance=3)
-                page.keyboard.down('g'); page.wait_for_function('()=>Realm.test.worldDiveStatus().y<=-2.65'); page.keyboard.up('g'); page.keyboard.down('w'); page.wait_for_function('()=>Realm.diagnostics.adventure.player.z<=-33.5'); page.keyboard.up('w'); view('third',yaw=0,elevation=.08,distance=2); page.wait_for_timeout(350)
+                page.keyboard.down('g'); page.wait_for_function('()=>Realm.test.worldDiveStatus().y<=-2.65'); page.keyboard.up('g'); page.keyboard.down('w'); page.wait_for_function('()=>Realm.diagnostics.adventure.player.z<=-33.5'); page.keyboard.up('w'); view('third',yaw=.65,elevation=.08,distance=3); page.wait_for_timeout(350)
                 assert page.evaluate('Realm.test.worldDiveStatus().dryCourt')=='bellglass-air'; assert page.evaluate('Realm.test.worldDiveStatus().body')=='air'; assert page.evaluate('Realm.test.worldDiveStatus().camera')=='air'; shot('10-atlantis-air-court'); home()
                 enter('cosmos'); view('third',yaw=.3); walk(0,0); shot('11-cosmos-three-lamps-third'); measure('Cosmos lamps third person'); view('diorama',yaw=.8); shot('12-cosmos-three-lamps-diorama'); home()
             final=page.evaluate('Realm.state')

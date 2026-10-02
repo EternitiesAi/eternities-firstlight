@@ -116,6 +116,25 @@ test('every accepted objective has a validated production path back to its own g
  }
 });
 
+for(const [realm,style] of [['hell','blade'],['earthlands','bow']])test(style+' falls in '+realm+' and revives at home with accepted work and belongings retained',()=>{
+ const sim=fixture(style),before=legacy(sim),d=W.definition(realm),giver=d.points.find(p=>p.id===d.quest.giverId),objective=d.quest.objectives[0],point=d.points.find(p=>p.id===objective.pointId);
+ enter(sim,realm);walk(sim,giver.x,giver.z);
+ const ctx={sim,active:'synthetic-world-death',revision:1},save=candidate=>{C.validate(candidate);return{ok:true};};
+ assert.ok(W.command(ctx,'accept',{realm},{save}).ok);walk(sim,point.x,point.z);
+ assert.ok(W.command(ctx,'observe',{realm,run:1,objective:objective.id},{save}).ok);
+ const accepted=copy(sim.state.journeys),deaths=sim.state.adventure.deaths,enemy=A.runtime(sim).enemies.find(e=>e.id===d.enemies[0].id);
+ approach(sim,enemy,'blade');
+ for(let i=0;i<3600&&sim.state.adventure.hp>0;i++)sim.tick(.05);
+ assert.equal(sim.state.adventure.hp,0,'actual unguarded enemy hits cause the fall');
+ assert.equal(sim.state.adventure.deaths,deaths+1);assert.equal(enemy.hp,enemy.maxHP,'no attack or planted defeat earned anything');
+ assert.equal(sim.moveTo(giver.x,giver.z).ok,false,'dead movement stays disabled');
+ const fallen=sim.snapshot();assert.equal(W.command(ctx,'claim',{realm,run:1},{save}).ok,false);assert.deepEqual(sim.snapshot(),fallen,'dead turn-in cannot mutate completed history');
+ command(sim,'revive');assert.equal(sim.room,null);assert.equal(sim.worldTrip,undefined);assert.equal(sim.worldDive,undefined);assert.equal(sim.returnPos,null);
+ assert.deepEqual(sim.state.player,{x:2.5,z:6,yaw:0});assert.equal(sim.state.adventure.hp,A.stats(sim.state.adventure).maxHP);assert.equal(sim.state.adventure.stamina,100);
+ assert.deepEqual(sim.state.journeys,accepted,'the partial accepted outing survives the fall and return');assert.deepEqual(legacy(sim),before,'gear, sockets, choices and legacy rewards remain');
+ const reopened=new C.Simulation(sim.snapshot());assert.equal(reopened.room,null);assert.deepEqual(reopened.state.journeys,accepted);assert.deepEqual(legacy(reopened),before);
+});
+
 for(const realm of ['hell','earthlands'])for(const style of ['blade','bow'])test(style+' earns '+realm+' defeat, guarded combat, retreat and free return without legacy rewards',t=>{
  let sim=fixture(style);const d=W.definition(realm),home={...sim.state.player},before=legacy(sim);
  enter(sim,realm);let enemy=A.runtime(sim).enemies.find(e=>e.id===d.enemies[0].id);
