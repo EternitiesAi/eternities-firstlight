@@ -252,3 +252,56 @@ Focused verification on this follow-up source:
   geometry checks do not establish that the main-view reveal has been
   integrated or that the new cues are readable on the target device;
   those rendered checks remain owned by Root.
+
+## Cultivated Ruby-fork detail, 2026-10-02
+
+Root authorized one short original botanical band to give the garden foreground
+more cultivated life. This follows the complete Heaven reader and world bible's
+sage/straw living palette and small cultivated foreground, together with the
+art direction's restrained bone/gold/ruby accents. It introduces no named
+species, biography, harvesting, new route or saga outcome.
+
+Three shallow beds sit beside the existing Garden-to-Ruby fork, centered about
+`(-5.21,18.47)`, `(-8.24,15.86)` and `(-11.28,13.26)`. Each is `1.4 x 2.8` units,
+with soil resting directly on existing ground and narrow bone/gold strips
+overlapping that soil. The soil rises `0.018`; all edging stays below ground
+`+0.04`. Eight low blossoms per bed use rooted cylinder stems, paired sage
+leaves, four pale/straw/muted-rose petals and a small warm heart. Every bloom
+joins its stem tip; edging and plants fit over their actual bed backing.
+
+All new instances have `cameraSolid:false`, `cutaway:false`, and `wind:0`.
+The 24 flowers remain static with reduced motion on or off. No canonical
+patch, solid, entry, person, point, enemy, quest, reward or save data changed.
+The additions consume no RNG calls: an isolated comparison with the preceding
+committed module confirmed exact canonical realm JSON and exact prior submitted
+art after excluding only `gardenBand` instances. Hell's art is identical.
+
+| Addition | Instances | Triangles |
+|---|---:|---:|
+| Three supported soil patches and 12 narrow edge strips | 15 | 180 |
+| 24 stems, 48 herb leaves, 96 petals and 24 flower hearts | 192 | 2,016 |
+| Total addition | 207 | 2,196 |
+
+With the default internal RNG and no survey record, Heaven now has 1,032 local
+decoration instances, 28,546 local decoration triangles, and 74 unchanged
+distant instances / 7,812 distant triangles. Including the 56 canonical solid
+boxes and two original patch boxes gives 1,090 static local instances; Root's
+generic ground partition and dynamic actors are separate. Hell stays at 546
+local decoration instances / 7,070 triangles. No new geometry kind or batch is
+required: this band uses existing box, cylinder, leaf and octa meshes.
+
+Actual transformed bounds are X `-12.799..-3.688`, Z `11.815..19.907`, from
+existing ground to ground `+0.420`. Tests inspect every submitted vertex for
+native ground, solid-body separation, at least `1.9` units from every existing
+paving centerline, and at least `3` units from every public interaction point.
+They also verify full bed footprints, rooted stems, attached petals, edging
+support, finite geometry, exact bounded cost, and identical reduced-motion
+detail. Focused suite: 18 passed, 0 failed, 0 skipped; source/test syntax and
+whitespace checks passed. No browser, GPU or full suite was run.
+
+For Root's matched stills, keep the prior build/light/quality and capture the
+arrival-side Garden near player `(0,20)` in third person facing the fork, then
+exchange to the diorama with V. Also retain the earlier Garden diorama. The
+existing third-person view at player `(0,-25)` faces away from this southern
+fork and cannot establish that this particular band reads well. Actual rendered
+color, flower readability and human taste remain for Root's matched comparison.

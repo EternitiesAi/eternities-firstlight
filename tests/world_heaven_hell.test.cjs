@@ -12,6 +12,11 @@ function scene(def,extra={}){
  const all=[],art={add(kind,x,y,z,sx,sy,sz,c,opt={}){all.push({kind,p:[x,y,z],s:[sx,sy,sz],c,...opt});},begin(){assert.fail('decorate cannot own scene begin');},commit(){assert.fail('decorate cannot own scene commit');}};
  const report=decorate(art,def,{height:()=>FLOOR,rng:seeded(7719),...extra});return{all,report};
 }
+function actualVertices(part){
+ const mesh=Engine.geometry(part.kind),matrix=Engine.M.compose(...part.p,...part.s,...(part.r||[0,0,0])),out=[];
+ for(let i=0;i<mesh.length;i+=6)out.push(Engine.M.transform(matrix,Array.from(mesh.slice(i,i+3))));
+ return out;
+}
 function sampleSegment(def,a,b,r=RADIUS){const len=Math.hypot(b[0]-a[0],b[1]-a[1]);for(let i=0;i<=Math.ceil(len/.12);i++){const t=i/Math.max(1,Math.ceil(len/.12)),x=a[0]+(b[0]-a[0])*t,z=a[1]+(b[1]-a[1])*t;assert.ok(clear(def,x,z,r),`${def.id}: blocked route at ${x.toFixed(3)},${z.toFixed(3)}`);}}
 function flood(def,ignoreEnemies=true){
  const b=def.bounds,step=1,minX=Math.ceil(b.minX+RADIUS),maxX=Math.floor(b.maxX-RADIUS),minZ=Math.ceil(b.minZ+RADIUS),maxZ=Math.floor(b.maxZ-RADIUS),key=(x,z)=>x+','+z,visited=new Set(),queue=[];
@@ -85,6 +90,56 @@ test('Heaven: distinct narrow route inlays sit on supported paving and the fork 
   }
  }
 });
+test('Heaven: the cultivated Ruby-fork band has actual native support and leaves routes, solids and interaction approaches clear',()=>{
+ const def=realms[0],band=scene(def).all.filter(p=>p.gardenBand),beds=band.filter(p=>p.gardenPart==='soil');
+ assert.equal(beds.length,3);assert.equal(band.length,207);assert.equal(band.filter(p=>p.gardenPart==='rim').length,12);
+ const lines=[[[0,31],[0,17],[6,2],[6,-13],[0,-20],[0,-79],[0,-99]],[[0,17],[-14,5],[-24,5],[-35,-10],[-35,-52],[-24,-76],[0,-89]],[[0,17],[25,5],[29,-26],[27,-66],[0,-89]]];
+ const routeDistance=(x,z)=>Math.min(...lines.flatMap(line=>line.slice(1).map((b,i)=>{const a=line[i],dx=b[0]-a[0],dz=b[1]-a[1],t=Math.max(0,Math.min(1,((x-a[0])*dx+(z-a[1])*dz)/(dx*dx+dz*dz)));return Math.hypot(x-a[0]-dx*t,z-a[1]-dz*t);})));
+ for(const p of band){
+  assert.equal(p.gardenBand,'ruby-fork');assert.equal(p.cameraSolid,false);assert.equal(p.cutaway,false);assert.equal(p.wind,0);
+  assert.equal(p.worldSolidId,undefined);assert.equal(p.markerId,undefined);assert.equal(p.overhead,undefined);assert.equal(p.skyImage,undefined);
+  assert.ok(['box','cylinder','leaf','octa'].includes(p.kind),'known production geometry kind');
+  for(const v of actualVertices(p)){
+   assert.ok(v.every(Number.isFinite));assert.ok(grounded(def,v[0],v[2]),'every actual vertex rests above native ground');
+   assert.ok(!blocked(def,v[0],v[2],RADIUS),'botanical band retains body-width separation from existing solids');
+   assert.ok(v[1]>=FLOOR-1e-6&&v[1]<=FLOOR+.46,'flowers remain low, rooted ground detail');
+   assert.ok(routeDistance(v[0],v[2])>=1.9,'actual decorative footprint clears the 1.2-unit paving half-width plus .7-unit body corridor');
+   for(const point of def.points)assert.ok(Math.hypot(v[0]-point.x,v[2]-point.z)>=3,'public interaction approach remains open: '+point.id);
+  }
+ }
+ for(const bed of beds){const vs=actualVertices(bed);assert.ok(Math.abs(Math.min(...vs.map(v=>v[1]))-FLOOR)<1e-6,'soil base touches actual ground');assert.ok(Math.abs(Math.max(...vs.map(v=>v[1]))-FLOOR-.018)<1e-6);}
+ for(const rim of band.filter(p=>p.gardenPart==='rim')){
+  const bed=beds.find(p=>p.gardenBed===rim.gardenBed),yaw=bed.r[1],c=Math.cos(yaw),s=Math.sin(yaw);
+  for(const v of actualVertices(rim)){const dx=v[0]-bed.p[0],dz=v[2]-bed.p[2];assert.ok(Math.abs(c*dx-s*dz)<=bed.s[0]/2+1e-6&&Math.abs(s*dx+c*dz)<=bed.s[2]/2+1e-6,'every edging vertex stays over its soil backing');assert.ok(v[1]<=FLOOR+.04);}
+  assert.ok(rim.p[1]-rim.s[1]/2<FLOOR+.018,'edging overlaps soil instead of floating above it');
+ }
+});
+
+test('Heaven: all low blossoms attach to rooted stems and fit their shallow planting beds',()=>{
+ const band=scene(realms[0]).all.filter(p=>p.gardenBand),beds=band.filter(p=>p.gardenPart==='soil'),stems=band.filter(p=>p.gardenPart==='stem');
+ assert.equal(stems.length,24);assert.equal(new Set(stems.map(p=>p.gardenPlant)).size,24);
+ assert.equal(new Set(band.filter(p=>p.gardenPart==='petal').map(p=>p.c)).size,3,'sage garden has pale, straw and muted ruby blossoms');
+ for(const stem of stems){
+  const parts=band.filter(p=>p.gardenPlant===stem.gardenPlant),bed=beds.find(p=>p.gardenBed===stem.gardenBed),yaw=bed.r[1],c=Math.cos(yaw),s=Math.sin(yaw);
+  assert.equal(parts.length,8);assert.equal(parts.filter(p=>p.gardenPart==='leaf').length,2);assert.equal(parts.filter(p=>p.gardenPart==='petal').length,4);assert.equal(parts.filter(p=>p.gardenPart==='heart').length,1);
+  assert.ok(Math.abs(stem.p[1]-FLOOR-.018)<1e-6,'stem root touches soil surface');
+  const top=stem.p[1]+stem.s[1];
+  for(const part of parts){
+   assert.equal(part.foliage,true);assert.equal(part.p[0],stem.p[0]);assert.equal(part.p[2],stem.p[2],'leaf/petal origins join their stem');
+   if(['petal','heart'].includes(part.gardenPart))assert.equal(part.p[1],top,'bloom joins the stem tip');
+   for(const v of actualVertices(part)){const dx=v[0]-bed.p[0],dz=v[2]-bed.p[2];assert.ok(Math.abs(c*dx-s*dz)<=bed.s[0]/2+1e-6&&Math.abs(s*dx+c*dz)<=bed.s[2]/2+1e-6,'actual foliage footprint has soil beneath it');assert.ok(v[1]>=FLOOR+.018-1e-6);}
+  }
+ }
+});
+
+test('Heaven: cultivated detail has a bounded geometry cost and is identical with reduced motion enabled',()=>{
+ const sim={state:{settings:{reducedMotion:false},journeys:{realms:{heaven:{firstClaimed:false}}}}},before=structuredClone(sim),all=scene(realms[0],{sim}).all,band=all.filter(p=>p.gardenBand);
+ assert.deepEqual(sim,before);const quiet=structuredClone(sim);quiet.state.settings.reducedMotion=true;
+ assert.deepEqual(scene(realms[0],{sim:quiet}).all.filter(p=>p.gardenBand),band);
+ assert.ok(band.length<=220);assert.equal(band.reduce((sum,p)=>sum+Engine.geometry(p.kind).length/18,0),2196);
+ assert.equal(scene(realms[1]).all.some(p=>p.gardenBand),false,'Hell decoration is outside this polish scope');
+});
+
 test('Hell: only the existing Refuge roof slab and patched ribs carry the bounded reveal tag',()=>{
  const tagged=scene(realms[1]).all.filter(p=>p.worldRoof);
  assert.equal(tagged.length,7,'existing slab plus six roof ribs');assert.equal(tagged.filter(p=>p.s[0]===24&&p.s[2]===19).length,1,'complete roof remains authored');
