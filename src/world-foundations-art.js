@@ -1,0 +1,45 @@
+/* Realm openings: visible ground and physical data share one owner. */
+(function(G){'use strict';const W=G.RealmWorldFoundations,decor={cameraSolid:false,cutaway:false,rough:.96};
+function partitions(def){
+ const v=def.dive?.volume,xs=[...new Set([...def.patches.flatMap(p=>[p.x-p.w/2,p.x+p.w/2]),...(v?[v.x-v.w/2,v.x+v.w/2]:[])])].sort((a,b)=>a-b),zs=[...new Set([...def.patches.flatMap(p=>[p.z-p.d/2,p.z+p.d/2]),...(v?[v.z-v.d/2,v.z+v.d/2]:[])])].sort((a,b)=>a-b),out=[];
+ for(let i=1;i<xs.length;i++)for(let j=1;j<zs.length;j++){
+  const x=(xs[i]+xs[i-1])/2,z=(zs[j]+zs[j-1])/2,p=def.patches.filter(p=>Math.abs(x-p.x)<p.w/2&&Math.abs(z-p.z)<p.d/2).sort((a,b)=>a.w*a.d-b.w*b.d)[0];
+  if(p)out.push({x,z,w:xs[i]-xs[i-1],d:zs[j]-zs[j-1],y:p.y,color:p.color??def.palette.ground,source:p.id});
+ }return out;
+}
+function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isInterior=false;a.e.theme=def.theme||null;a.e.noWater=!def.water;a.e.ambientOverride=def.id==='hell'?.6:def.id==='heaven'?.87:.76;a.e.worldAtmosphere=def.id==='heaven'?{top:0x9fb8bd,fog:0xe4cdbd,night:.12,power:.85,sunColor:0xffe5c2}:def.id==='hell'?{top:0x32292f,fog:0x75605a,night:.38,power:.68,sunColor:0xffc185}:null;
+ for(const p of partitions(def)){
+  const gallery=def.dive&&Math.abs(p.x-def.dive.volume.x)<def.dive.volume.w/2&&Math.abs(p.z-def.dive.volume.z)<def.dive.volume.d/2;
+  a.box(p.x,p.y-.055,p.z,p.w,.11,p.d,p.color,{...decor,cutaway:!!gallery,terrain:true,worldGround:p.source});
+  // Bridge decks have open water underneath. Other ground has a closed shore.
+  if(!gallery&&!/bridge/.test(p.source))a.box(p.x,(p.y-.11-.5)/2,p.z,p.w,p.y-.11+.5,p.d,def.palette.stone,decor);
+ }
+ for(const p of def.solids)a.box(p.x,W.height(def.room,p.x,p.z)+p.h/2,p.z,p.w,p.h,p.d,p.color??def.palette.stone,{rough:.96,cameraSolid:true,cutaway:true,worldSolid:true,worldSolidId:p.id});
+ if(def.dive){const d=def.dive,v=d.volume;
+  a.box(v.x,d.minY-.36,v.z,v.w,.12,v.d,0x638b84,decor);
+  for(const p of d.solids||[])a.box(p.x,p.y+p.h/2,p.z,p.w,p.h,p.d,p.color??0x9bb8ab,{rough:.94,cameraSolid:true,cutaway:true,worldSolid:true,worldSolidId:p.id});
+  for(const p of d.dryCourts||[]){a.box(p.x,p.floorY-.06,p.z,p.w,.12,p.d,0xb7b692,decor);a.box(p.x,p.floorY+.025,p.z,1.5,.05,2.1,0x9a8b6c,decor);}
+  // Thin wall inlay and a supported field notebook make the maintained court
+  // readable without changing its body route, dry volume or collision owner.
+  a.box(8,-1.2,-37.235,2.6,1.2,.025,0x577b76,decor);
+  for(let i=0;i<5;i++)a.box(7.1+i*.45,-1.2,-37.215,.16,.38,.015,0xd9cba3,{...decor,r:[0,0,Math.PI/4]});
+  a.box(6.55,-1.865,-36.5,.5,.07,.36,0x655948,decor);a.box(6.55,-1.82,-36.5,.42,.02,.3,0xd9cba3,decor);
+  a.box(8,-2.685,-32.5,1.15,.03,2.4,0xa49e7b,decor);
+ }
+ const painter=def.id==='heaven'||def.id==='hell'?G.RealmWorldHeavenHell:G.RealmWorldAtlantisEarth;
+ painter.decorate(a,def,{height:(x,z)=>W.height(def.room,x,z),rng:G.RealmCore.rng(23171002),sim});
+ for(const p of def.points){if(p.kind==='person')continue;const y=W.height(def.room,p.x,p.z);a.add('cylinder',p.x,y,p.z,.07,.8,.07,def.palette.trim,decor);a.add('octa',p.x,y+.9,p.z,.2,.25,.2,p.kind==='return'?0xffd69a:def.palette.trim,{...decor,em:.18});}
+ a.commit();
+}
+function gate(a){const p=W.GATE;a.add('cylinder',p.x,1.3,p.z,.13,1.45,.13,0xae9569,decor);a.box(p.x,2.65,p.z,1.3,.57,.1,0x586963,decor);for(let i=0;i<5;i++)a.add('octa',p.x-.46+i*.23,2.65,p.z+.065,.12,.17,.10,[0xe5d8b1,0xc98b67,0x9dc8c5,0xa4b276,0xbeaec9][i],{...decor,em:.18});}
+function draw(out,sim,t,a){const d=W.definition(sim.room);if(!d)return;const quiet=sim.state.settings.reducedMotion;
+ // Cosmos keeps its existing people and scene owner; only accepted work adds
+ // small ground records there.
+ if(!d.existing)for(const p of d.points.filter(p=>p.kind==='person'))a.person(out,p.x,p.z,p.yaw??Math.PI,p.color??d.palette.trim,quiet?0:t,false,p.role||'traveler',false,W.height(d.room,p.x,p.z));
+ const r=sim.state.journeys.realms[d.id],giver=d.points.find(p=>p.id===d.quest.giverId);
+ for(const o of d.quest.objectives){if(!r.active?.observed.includes(o.id))continue;const p=d.points.find(p=>p.id===o.pointId);out.disc.push({p:[p.x,W.height(d.room,p.x,p.z)+.035,p.z],s:[.65,1,.65],c:0xe0d5a3,em:.12,...decor});}
+ if(r.firstClaimed&&giver&&d.existing){const y=W.height(d.room,giver.x,giver.z);out.box.push({p:[giver.x+.7,y+.015,giver.z+.3],s:[.65,.03,.48],c:0xe3d4ad,...decor});for(let i=0;i<3;i++)out.box.push({p:[giver.x+.48+i*.22,y+.036,giver.z+.3],s:[.06,.012,.3],c:[0xb6ac69,0x80a9a0,0xa89dbe][i],...decor});}
+ if(sim.worldDive&&W.medium(sim,[sim.state.player.x,W.playerHeight(sim)+.85,sim.state.player.z])==='water'){const p=sim.state.player,y=W.playerHeight(sim);out.octa.push({p:[p.x,y+1.85,p.z],s:[.08,.08,.08],c:0xb4e7dd,em:.4,...decor});}
+}
+G.RealmWorldFoundationsArt={make,gate,draw,partitions};if(typeof module!=='undefined')module.exports=G.RealmWorldFoundationsArt;
+})(globalThis);

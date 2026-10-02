@@ -27,10 +27,11 @@ try:
   for realm in ['earth','heaven','hell','atlantis','cosmos']:
    button=page.locator('[data-realm-art="'+realm+'"]');button.click()
    check(realm+' selection retains keyboard focus',button.evaluate('(e)=>e===document.activeElement'))
+   check(realm+' selection actually changes the concept panel',button.get_attribute('aria-pressed')=='true' and page.locator('.realm-focus').get_attribute('aria-label')==realm.capitalize()+' concept detail')
    text=page.locator('.realm-detail').inner_text()
-   check(realm+' declares actual availability',('Playable' in text) if realm in ['earth','cosmos'] else 'Future realm' in text)
+   check(realm+' declares actual availability','Playable' in text)
    check(realm+' grants no progression',page.evaluate('()=>Realm.state.adventure')==before['adventure'])
-   check(realm+' has only an existing travel invitation',page.locator('.realm-travel').count()==(1 if realm in ['earth','cosmos'] else 0))
+   check(realm+' offers an invitation without silently crossing',page.locator('.realm-travel').count()==1)
   page.locator('[data-realm-art="earth"]').click();page.locator('[data-realm-art="study"]').click()
   page.wait_for_function('()=>document.querySelector(".realm-study img").naturalWidth>0')
   check('embedded material reference decodes',page.locator('.realm-study img').evaluate('(e)=>e.complete&&e.naturalWidth>1400&&e.naturalHeight>1000'))
@@ -40,7 +41,7 @@ try:
   check('compact page fits width',page.locator('#rpg-content').evaluate('(e)=>e.scrollWidth<=e.clientWidth+1'))
   check('compact realm buttons remain usable',all(page.locator('[data-realm-art="'+r+'"]').bounding_box()['width']>65 for r in ['earth','heaven','hell','atlantis','cosmos']))
   page.screenshot(path=str(OUT/'ATLAS_COMPACT.png'));page.set_viewport_size({'width':1280,'height':800})
-  for realm,action in [('earth','earth-invitation'),('cosmos','cosmos-invitation')]:
+  for realm,action in [('earth','earth-invitation'),('cosmos','cosmos-invitation'),('heaven','world-select'),('hell','world-select'),('atlantis','world-select')]:
    page.locator('[data-realm-art="'+realm+'"]').click();page.locator('[data-rpg="'+action+'"]').click()
    check(realm+' opens disclosed existing journey',page.locator('#rpg-content').inner_text().lower().find('checkpoint')>=0)
    check(realm+' invitation does not teleport',page.evaluate('()=>Realm.diagnostics.scene')=='valley')

@@ -1,0 +1,625 @@
+{
+  "scope": "Independent log inventory, hash and arithmetic audit of frozen source-only checkpoint. No browser suite was run in this directory. This is separate from pending final remote verification.",
+  "html_sha256": "3a5f18e04056d0d78ad7ccac3b3e0ac2c4058bf60b774b584b78d7611d97c7dc",
+  "html_bytes": 2361950,
+  "execution_observation": "Root reports source-only verifier completed exit0 at this exact HTML. Parent-process exit and original invocation are supplied observations, not standalone empty-log evidence.",
+  "source_commit_marker": "Not recorded in these gate logs; exact HTML identity is supported by build.log.",
+  "gate_logs": 95,
+  "syntax_logs": 65,
+  "syntax_stdout_empty": true,
+  "node": {
+    "tests": 790,
+    "pass": 790,
+    "fail": 0,
+    "skipped": 0
+  },
+  "python": {
+    "tests_reported": 54,
+    "executed_passes": 53,
+    "skipped": 1,
+    "skip_lines": [
+      "test_symlink_refused (test_checkout_import.ImportRules.test_symlink_refused) ... skipped 'Windows account lacks symlink privilege; real symlink refusal is exercised on Linux CI'"
+    ],
+    "linux_ci_not_independently_inspected": true
+  },
+  "earned_journey_logs": 27,
+  "journeys": [
+    {
+      "log": "characters-journey.log",
+      "status": "passed"
+    },
+    {
+      "log": "classes-journey.log",
+      "status": "passed"
+    },
+    {
+      "log": "cosmos-journey.log",
+      "status": "passed"
+    },
+    {
+      "log": "crossing-blade.log",
+      "status": "passed"
+    },
+    {
+      "log": "crossing-bow.log",
+      "status": "passed"
+    },
+    {
+      "log": "earth-journey.log",
+      "status": "passed"
+    },
+    {
+      "log": "earth-notes-blade.log",
+      "status": "passed"
+    },
+    {
+      "log": "earth-notes-bow.log",
+      "status": "passed"
+    },
+    {
+      "log": "earth-notes-veteran.log",
+      "status": "passed"
+    },
+    {
+      "log": "earth-outing-blade.log",
+      "status": "passed"
+    },
+    {
+      "log": "earth-outing-bow.log",
+      "status": "passed"
+    },
+    {
+      "log": "earth-outing-veteran.log",
+      "status": "passed"
+    },
+    {
+      "log": "earth-story-blade.log",
+      "status": "passed"
+    },
+    {
+      "log": "earth-story-bow.log",
+      "status": "passed"
+    },
+    {
+      "log": "earth-story-veteran.log",
+      "status": "passed"
+    },
+    {
+      "log": "gathering-blade.log",
+      "status": "passed"
+    },
+    {
+      "log": "gathering-bow.log",
+      "status": "passed"
+    },
+    {
+      "log": "gathering-veteran.log",
+      "status": "passed"
+    },
+    {
+      "log": "pursuit-blade.log",
+      "status": "passed"
+    },
+    {
+      "log": "pursuit-bow.log",
+      "status": "passed"
+    },
+    {
+      "log": "pursuit-veteran.log",
+      "status": "passed"
+    },
+    {
+      "log": "starter-blade.log",
+      "status": "passed"
+    },
+    {
+      "log": "starter-bow.log",
+      "status": "passed"
+    },
+    {
+      "log": "starter-veteran.log",
+      "status": "passed"
+    },
+    {
+      "log": "world-foundations-blade.log",
+      "status": "passed",
+      "claims": 10,
+      "acceptedCommands": 50,
+      "walkedLegs": 57
+    },
+    {
+      "log": "world-foundations-bow.log",
+      "status": "passed",
+      "claims": 10,
+      "acceptedCommands": 50,
+      "walkedLegs": 57
+    },
+    {
+      "log": "world-foundations-veteran.log",
+      "status": "passed",
+      "claims": 10,
+      "acceptedCommands": 50,
+      "walkedLegs": 57
+    }
+  ],
+  "log_inventory": [
+    {
+      "filename": "build.log",
+      "bytes": 91,
+      "sha256": "19624724f496469cbe589bf9deb21d65057910c1e8c76403e48a91b4107c1ae4"
+    },
+    {
+      "filename": "characters-journey.log",
+      "bytes": 3058,
+      "sha256": "683b3007f6054c32bd7c7fb988a9c9892272d7c087aa9e47c0a8322afb2cd318"
+    },
+    {
+      "filename": "classes-journey.log",
+      "bytes": 4224,
+      "sha256": "ee1277ed59cdfa10ba3647fdc7e1e601c8c5f170723b6048d3321256c4c53fcc"
+    },
+    {
+      "filename": "cosmos-journey.log",
+      "bytes": 630,
+      "sha256": "8c9dc8309ab18674df71939050e8919a5238e0e53ad12950a3953e895791656d"
+    },
+    {
+      "filename": "crossing-blade.log",
+      "bytes": 625,
+      "sha256": "0b27a5083c98c2983b9d5dd15b33456d395f182b4b299bbf46412b4f244ba956"
+    },
+    {
+      "filename": "crossing-bow.log",
+      "bytes": 649,
+      "sha256": "f1f412fb8081e5e0c9e1c60e5ea9b8d1de892fbc3c23c2a76e5b1470f8c04d4a"
+    },
+    {
+      "filename": "earth-journey.log",
+      "bytes": 602,
+      "sha256": "a7622b5d784c2ece28e863b6fb68355fc08a36f3a256bd172b463cb0ff0296ad"
+    },
+    {
+      "filename": "earth-notes-blade.log",
+      "bytes": 2028,
+      "sha256": "05eb7c32470b86aa3729302ad57d8b06fa1dd2f542a4a0a4ea616ec42b2d2a7c"
+    },
+    {
+      "filename": "earth-notes-bow.log",
+      "bytes": 2030,
+      "sha256": "1297fb75eb7b037ed20ab21c1447bfe4f9fc45e246fb173fcda28506a2cc7e7e"
+    },
+    {
+      "filename": "earth-notes-veteran.log",
+      "bytes": 2022,
+      "sha256": "d97b6c65d6efd0a22c15507ad4bda4d9951ea07617a44a9754153cbf611136cc"
+    },
+    {
+      "filename": "earth-outing-blade.log",
+      "bytes": 5482,
+      "sha256": "be9b2f2c5cc1dc45ed3ada36ba842c06b1e0144b009f341107d3acafb80f6a60"
+    },
+    {
+      "filename": "earth-outing-bow.log",
+      "bytes": 6715,
+      "sha256": "e4e71e12da6150014a280b35387a3f507522cee791079ddbb89e5805a720d8c6"
+    },
+    {
+      "filename": "earth-outing-veteran.log",
+      "bytes": 3478,
+      "sha256": "0140f36414c9905610bdd838af494220156e4a4d2f3a490aa6d9fe0b96240f71"
+    },
+    {
+      "filename": "earth-story-blade.log",
+      "bytes": 3039,
+      "sha256": "8edb10b07e895d316a4935d564fe388aabd76e5cbaf6f55abb9e3ac36ad0ea54"
+    },
+    {
+      "filename": "earth-story-bow.log",
+      "bytes": 3448,
+      "sha256": "88f377b2365dbd697d2cd13ebf5a756974f0d91755b5408d15397f31a1e3616f"
+    },
+    {
+      "filename": "earth-story-veteran.log",
+      "bytes": 2628,
+      "sha256": "a2d870ee2d66f752853eb8129a34c04cd223c6aa3f108a65725804a30ff928b7"
+    },
+    {
+      "filename": "gathering-blade.log",
+      "bytes": 2008,
+      "sha256": "ad7e6afbfce218ffde70fc6d7e1df5581fc42419dd5639fe698bf2c0f962fd3f"
+    },
+    {
+      "filename": "gathering-bow.log",
+      "bytes": 2004,
+      "sha256": "ad0ab3bd553f6f076608ab85ce8ae4fec831d82c2d8eb6c444416f51389eb804"
+    },
+    {
+      "filename": "gathering-veteran.log",
+      "bytes": 1998,
+      "sha256": "511e5a7652470f79ef7b25b0be409090de69186b77cbdbed590d92c45508cc63"
+    },
+    {
+      "filename": "pursuit-blade.log",
+      "bytes": 5483,
+      "sha256": "04029aab268bf30da55bb85ea9cb89e5ab63ecd7f782a59c97aa095529ce4647"
+    },
+    {
+      "filename": "pursuit-bow.log",
+      "bytes": 6710,
+      "sha256": "7954f060cccbda3f5837029b6b177c60db43a02f6d581a5880ed7382a76135d1"
+    },
+    {
+      "filename": "pursuit-veteran.log",
+      "bytes": 3475,
+      "sha256": "c04e0006cd3f0cedc914ef9511e989f693da3f808b540512ebea1a245d68e76c"
+    },
+    {
+      "filename": "python.log",
+      "bytes": 6275,
+      "sha256": "18d37d8a1c5cdc391d6af2f30ca520b89953e3628020c6673dfc698e2515056d"
+    },
+    {
+      "filename": "rules.log",
+      "bytes": 158469,
+      "sha256": "92fb0ad52cb528f8447ea1a91f7abb205d3d6a1835be6827639784e4281eb60e"
+    },
+    {
+      "filename": "starter-blade.log",
+      "bytes": 507,
+      "sha256": "729c3767bb1878a64a4de9ae24b0989c3d3f0ed12c7456975bcc5ead00107b0a"
+    },
+    {
+      "filename": "starter-bow.log",
+      "bytes": 503,
+      "sha256": "2496bd1b1ba568c3ff951073bede4e7625f178d4aa75780f9ab122264bf8b37f"
+    },
+    {
+      "filename": "starter-veteran.log",
+      "bytes": 1438,
+      "sha256": "a5ce11e73e32f6a35882e153121d316e4ff0bf6682f0b18001f5e86a2f979be0"
+    },
+    {
+      "filename": "syntax-adventure-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-adventure-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-adventure.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-app.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-arsenal-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-arsenal-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-arsenal.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-beacon-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-beacon.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-bridge-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-characters-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-characters.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-classes-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-classes.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-combat.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-core.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-cosmos-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-cosmos-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-cosmos.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-creative.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-crossing-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-crossing-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-crossing.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-drover-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-earth-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-earth-notes-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-earth-notes-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-earth-notes.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-earth-shoulder-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-earth-story-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-earth-story.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-earth-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-earth.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-engine.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-experience.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-gathering-adapter.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-gathering-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-gathering-music.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-gathering-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-gathering.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-mill-gate-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-millwright-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-pursuit-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-pursuit.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-quarry-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-realm-art-data.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-realm-atlas-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-road-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-road.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-rpg-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-sandbox-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-sandbox-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-sandbox.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-starter-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-starter-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-starter.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-surface-assets.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-traveler-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-traveler-equipment-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-world-atlantis-earth.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-world-foundations-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-world-foundations-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-world-foundations.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-world-heaven-hell.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "syntax-world.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "world-foundations-blade.log",
+      "bytes": 115,
+      "sha256": "fc64a7526f2397fe2fd184a12f5b7161198deee503ca08909120d5cee37e8e24"
+    },
+    {
+      "filename": "world-foundations-bow.log",
+      "bytes": 113,
+      "sha256": "672abbfbe7a1d33774e55716e058cae4b29ce9f6c013361f41d6b31a4ad224d6"
+    },
+    {
+      "filename": "world-foundations-veteran.log",
+      "bytes": 111,
+      "sha256": "f67ce6df32a739cda65cf92f5c480d85fc7cf4969a8894534f8f0a9487566137"
+    }
+  ],
+  "browser_result": null,
+  "empty_syntax_log_caveat": "Empty successful stdout is ordinary for node --check; standalone files contain no exit marker. Root execution observation is separate.",
+  "qualified_not_release": true
+}

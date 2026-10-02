@@ -83,8 +83,11 @@ def main():
     run('gathering-blade', ['node', 'tests/gathering_journey.cjs', '--sources-ready'])
     run('gathering-bow', ['node', 'tests/gathering_journey.cjs', '--bow', '--sources-ready'])
     run('gathering-veteran', ['node', 'tests/gathering_journey.cjs', '--veteran', '--sources-ready'])
+    run('world-foundations-blade', ['node', 'tests/world_foundations_journey.cjs'])
+    run('world-foundations-bow', ['node', 'tests/world_foundations_journey.cjs', '--bow'])
+    run('world-foundations-veteran', ['node', 'tests/world_foundations_journey.cjs', '--veteran'])
     if args.browser:
-        for suite in ['crossing_browser', 'regression09_browser', 'cutaway_browser', 'reflection_browser', 'native_origin_browser', 'starter_browser', 'camera_browser', 'pursuit_browser', 'characters_browser', 'classes_browser', 'cosmos_browser', 'earth_browser', 'earth_story_browser', 'earth_notes_browser', 'gathering_browser', 'realm_atlas_browser', 'timber_browser', 'traveler_browser', 'bridge_browser', 'combat_cue_browser']:
+        for suite in ['crossing_browser', 'regression09_browser', 'cutaway_browser', 'reflection_browser', 'native_origin_browser', 'starter_browser', 'camera_browser', 'pursuit_browser', 'characters_browser', 'classes_browser', 'cosmos_browser', 'earth_browser', 'earth_story_browser', 'earth_notes_browser', 'gathering_browser', 'realm_atlas_browser', 'timber_browser', 'traveler_browser', 'bridge_browser', 'combat_cue_browser', 'world_foundations_browser', 'world_cutaway_browser']:
             run(suite, [sys.executable, f'tests/{suite}.py'], timeout=600)
     print('Verification passed. Automated checks do not qualify human pacing or device performance.', flush=True)
 

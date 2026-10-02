@@ -60,11 +60,11 @@ function twoBone(start,target,upper,lower,hint){
 
 function pose(options={}){
  const phase=finite(options.phase),walkingBlend=unit(options.blend),time=finite(options.time);
- const reducedMotion=!!options.reducedMotion,combatScene=!!options.combatScene;
+ const reducedMotion=!!options.reducedMotion,combatScene=!!options.combatScene,swimming=!!options.swimming;
  const style=['blade','bow'].includes(options.style)?options.style:'none';
  const combatPhase=combatScene&&['anticipate','recover'].includes(options.combatPhase)?options.combatPhase:'idle';
  const combatProgress=combatPhase==='idle'?0:unit(options.combatProgress),guarded=combatScene&&!!options.guarded;
- const gait=walkingBlend*(reducedMotion?.55:1),stride=Math.sin(phase)*gait;
+ const gait=(swimming?0:walkingBlend)*(reducedMotion?.55:1),stride=Math.sin(phase)*gait;
  const bob=reducedMotion?0:Math.abs(Math.sin(phase*2))*.012*walkingBlend;
  const breath=reducedMotion?0:Math.sin(time*1.35)*.003*(1-walkingBlend);
  const torsoY=bob+breath;
@@ -104,11 +104,12 @@ function pose(options={}){
   }
   if(guarded){right=[.25,1.25+torsoY,.29];left=[-.24,1.26+torsoY,.25];}
  }else if(guarded){left=[-.23,1.20+torsoY,.24];right=[.23,1.20+torsoY,.24];}
+ if(swimming){const stroke=reducedMotion?0:Math.sin(time*1.9)*.12;left=[-.42,1.08+torsoY,.18+stroke];right=[.42,1.08+torsoY,.18-stroke];}
  for(const [name,side,target]of [['left',-1,left],['right',1,right]]){
   const arm=twoBone(joints[name+'Shoulder'],target,.305,.285,[side,-.3,-.25]);
   joints[name+'Elbow']=arm.middle;joints[name+'Hand']=arm.end;
  }
- return {joints,phase,walkingBlend,time,reducedMotion,style,combatScene,combatPhase,combatProgress,guarded,
+ return {joints,phase,walkingBlend,time,reducedMotion,style,combatScene,combatPhase,combatProgress,guarded,swimming,
   bob:torsoY,cloakSwing:reducedMotion?0:Math.sin(phase)*walkingBlend*.025};
 }
 

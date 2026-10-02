@@ -293,3 +293,39 @@ Matched paused/accelerated screenshots, ordinary-time RTX walking, short RAF
 samples, full gates/fresh remote clone and human taste remain distinct. Repeated
 bright facets/ribs are a known stylized limit. World/key9/adventure10 unchanged;
 no migration, main merge, public deployment, paid/billing or personal-save action.
+
+
+## Five-road world foundations, 2026-10-02
+
+Read the dated WORLD_FOUNDATIONS_NIGHT task/results and fresh current-state
+records first. Dom explicitly authorized Heaven/Hell/Atlantis/Coastward Earth
+implementation; earlier future-only atlas/no-new-realm statements describe prior
+milestones. Keep original Heaven01/sanctuary and protected identities untouched.
+`world-foundations.js` owns optional journeys1 under world9/adventure10, fixed
+realm/objective identities, accepted-run/paid-run records, local defeated IDs,
+character-bound single-use travel and atomic candidate persistence. Data/art
+modules cannot grant support, consent, allegiance, inventory or payouts.
+
+Missing old journeys data becomes empty unaccepted records. Strict future and
+impossible-history refusal stays. Preserve every character's complete old state,
+stored XP1–5/9999, equipment/socket/fittings, explicit choices, home/crops,
+companion and creative systems. Reopening resumes the disclosed saved home
+checkpoint; scene/depth are transient. Intentional surveys pay once per accepted
+run; replay/reload/re-entry cannot pay again. Oren and old enemy rewards stay
+separate. Optional local foes remain defeated and give no independent XP/loot.
+
+Every new scene consumer must agree on supported complete movement segments,
+height, physical solids, targeting/arrow collisions, camera bounds, visibility,
+map and controls. Cosmos retains its original ground/people owner. Atlantis's
+optional gallery uses actual body height and separate body/camera medium; F/G
+holds physical depth, real walls/ceiling and dry air court govern movement. No
+surprise breath timer. Menus/pause consume shortcuts; companion waits on dry land.
+Main-view deck/water/roof reveal never removes reflection/shadow/collision.
+
+The portable full gate now includes65source modules,27earned journeys and22
+browser suites. Keep actual hardware capture separate from software CI, synthetic
+boundary tests, accelerated journeys and human acceptance. Use fresh reflected
+buffers with positive controls, visible compact toast assertions, exact-head
+remote checks and original failure evidence. Heavy files stay onD. The final
+review is stacked on PR34; no automatic main merge/deploy, paid/billing action or
+personal-profile access. Complete countries and realm campaigns remain later.

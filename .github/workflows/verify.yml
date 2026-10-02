@@ -36,7 +36,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        suite: [crossing_browser, regression09_browser, cutaway_browser, reflection_browser, native_origin_browser, starter_browser, camera_browser, pursuit_browser, characters_browser, classes_browser, cosmos_browser, earth_browser, earth_story_browser, earth_notes_browser, gathering_browser, realm_atlas_browser, timber_browser, traveler_browser, bridge_browser, combat_cue_browser]
+        suite: [crossing_browser, regression09_browser, cutaway_browser, reflection_browser, native_origin_browser, starter_browser, camera_browser, pursuit_browser, characters_browser, classes_browser, cosmos_browser, earth_browser, earth_story_browser, earth_notes_browser, gathering_browser, realm_atlas_browser, timber_browser, traveler_browser, bridge_browser, combat_cue_browser, world_foundations_browser, world_cutaway_browser]
     runs-on: ubuntu-latest
     # The full campaign + creative/export journey exceeds 12 minutes on hosted
     # software WebGL with the refined geometry. Keep all assertions and bound it.

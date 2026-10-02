@@ -1,0 +1,552 @@
+{
+  "html_sha256": "12a44af65c53e80e9e57175e85c63d683421797c33e22da935134a3df9368b1b",
+  "scope": "Every other file under docs/evidence/world-foundations; manifest excludes itself. LF text bytes equal Git-normalized content. Final remote full verifier pending.",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 62,
+      "sha256": "25619d592fa85e970617acb9f36e8554cde29bd3cdfe4aad30a9771510ac6982",
+      "git_blob_sha1": "927d5f1c08c300e8fde70074afdc30d780167d37",
+      "text_lf": true
+    },
+    {
+      "path": "garden-matched/after-diorama.png",
+      "bytes": 797688,
+      "sha256": "3aa40e2a10a7c078caae34083bea6471970dbee0f91f4ad51776a9051691eea9",
+      "git_blob_sha1": "687ef783ac39d6773b2598e8e3353486fc5fc33b",
+      "text_lf": false
+    },
+    {
+      "path": "garden-matched/after-third.png",
+      "bytes": 720775,
+      "sha256": "bb0b260715c144d91aae5df073bc1b429052caa2d110ffd93f4355ee4c91b12e",
+      "git_blob_sha1": "ef9c94f261f7f7bff7872665af43632d0f510aeb",
+      "text_lf": false
+    },
+    {
+      "path": "garden-matched/AUDIT.json",
+      "bytes": 1715,
+      "sha256": "5307c81a809b6820dd097d6578a7e4e09c61487dbd284956ba4214d78be843a2",
+      "git_blob_sha1": "c194ff01c10e686b2d0c7b5bb02d1f702ac60dac",
+      "text_lf": true
+    },
+    {
+      "path": "garden-matched/before-diorama.png",
+      "bytes": 789505,
+      "sha256": "f068d13931f8a20242f8a6c00ad52c6c4e1c0e3611b0900406d05ad2d0e3a8ad",
+      "git_blob_sha1": "57eb987f7469bd61a53aa19b17c35cd37ce2c71f",
+      "text_lf": false
+    },
+    {
+      "path": "garden-matched/before-third.png",
+      "bytes": 707726,
+      "sha256": "66a866ce7ef7f697d7963fe73424970bb537e685a533f0eb3db930612936368a",
+      "git_blob_sha1": "3991277a10dbbc5c6b248edcdac76c7e60af5ea2",
+      "text_lf": false
+    },
+    {
+      "path": "garden-matched/REPORT.json",
+      "bytes": 69998,
+      "sha256": "3663a19d3a98b4e752964c732b0c9b93ff2c9cd1fc513b558a410eedcf9770e2",
+      "git_blob_sha1": "121cca8ce0f8d358a0e61ea031c4b43a66310889",
+      "text_lf": true
+    },
+    {
+      "path": "garden-matched/REVIEW.md",
+      "bytes": 2597,
+      "sha256": "ba534e9831dadd4f07c9c574609a26f0db1c81f8951592cc19a62cd0cd9a99de",
+      "git_blob_sha1": "b4e9a42956183b49a5831d5b2dec0588aab637b1",
+      "text_lf": true
+    },
+    {
+      "path": "independent-source-review/ADDENDUM.md",
+      "bytes": 3352,
+      "sha256": "aac1dbf52169300d336e502c99a63f7f50713cc9065964df9af44123e291cb7e",
+      "git_blob_sha1": "dc54b8ebc1ca2d92e6b72bca30e7bddca18cf5a0",
+      "text_lf": true
+    },
+    {
+      "path": "independent-source-review/PROBES.json",
+      "bytes": 1572,
+      "sha256": "72c9312114556108e83ef3bad893fa8874140c769d49b6a46c921a25550820d7",
+      "git_blob_sha1": "656e67a58d5384ef6e14009aaa8b6f0808bca47f",
+      "text_lf": true
+    },
+    {
+      "path": "independent-source-review/REVIEW.md",
+      "bytes": 5353,
+      "sha256": "5a21ce29790d7300754ee106f2c421c7337edcc0034d1e0747cf996a96196fa3",
+      "git_blob_sha1": "09928374c181d20dd2f324fb19190cdebfe6b187",
+      "text_lf": true
+    },
+    {
+      "path": "media-receipts/bow-selection-12a44af6.json",
+      "bytes": 371,
+      "sha256": "18b1c1d93b805801c1a18b9700a33b7d86264807e101a4d356e8e7c696c6ba29",
+      "git_blob_sha1": "d0e72a4cd1eedfe27d619bdd406529c73b036bae",
+      "text_lf": true
+    },
+    {
+      "path": "media-receipts/bow-source-decode-12a44af6.json",
+      "bytes": 968,
+      "sha256": "88c4653e77e9caa57a3b195b716433c54f12eee54ffa6e717db9459cc5c01c48",
+      "git_blob_sha1": "b3f746f9395ed95c885a66d3dd2ee0e5e3308db4",
+      "text_lf": true
+    },
+    {
+      "path": "media-receipts/FINAL_TIMELINE.json",
+      "bytes": 3358,
+      "sha256": "10e74301b56fbcc9b43f9a07cfb49cde3fbd49fed6319b7306647c160bc6afbc",
+      "git_blob_sha1": "313be0d3ec53619fa0d436826a4877f39b2f5216",
+      "text_lf": true
+    },
+    {
+      "path": "media-receipts/firstlight-bow-guard-fight-12a44af6-cut-decode.json",
+      "bytes": 984,
+      "sha256": "8d9e3766b3ab5783a444f3526db11bbaa1cbe09cd469411db416d42fb82b73e4",
+      "git_blob_sha1": "9d57a24a59ab35c0cc9bcd090cebd3113c2f454c",
+      "text_lf": true
+    },
+    {
+      "path": "media-receipts/firstlight-bow-guard-fight-12a44af6-cut-receipt.json",
+      "bytes": 2898,
+      "sha256": "a1e74b58123939bd87e5f243c64cf7ad24b142f3dba09baeddb6de9e683a4f5c",
+      "git_blob_sha1": "ee967dc2f3c19e1a28558aecd78285d62e257e5d",
+      "text_lf": true
+    },
+    {
+      "path": "media-receipts/firstlight-coastward-work-12a44af6-decode.json",
+      "bytes": 977,
+      "sha256": "78870fa4ad680e79af3c2df7302bdf7bbaad909c46d514d724d08b1c410271eb",
+      "git_blob_sha1": "d1566b762fc2bc26b3a49f1bcb4f0a4a4a5ef000",
+      "text_lf": true
+    },
+    {
+      "path": "media-receipts/firstlight-coastward-work-12a44af6-receipt.json",
+      "bytes": 3738,
+      "sha256": "0c591c9ac12ec78fd32b31fe89d6fdd45147869e8f51287a056a2b7e5390334f",
+      "git_blob_sha1": "1d00f301a4143962deeffc3fdcc058f2486fa560",
+      "text_lf": true
+    },
+    {
+      "path": "media-receipts/firstlight-five-roads-12a44af6-decode.json",
+      "bytes": 969,
+      "sha256": "e997efe949ff9b28bafa1cd09b8b96d14fbacaf54ca6d0924a73a07926ae9557",
+      "git_blob_sha1": "ea1106c63a74ec4486990e7356240d4cc03295f9",
+      "text_lf": true
+    },
+    {
+      "path": "media-receipts/firstlight-five-roads-12a44af6-receipt.json",
+      "bytes": 4164,
+      "sha256": "6c363552bc2364de4920caf5ea584d370d754958ba9e7cb608cd5313a7042b52",
+      "git_blob_sha1": "eae0158f379696088122d5b63954a8024209931d",
+      "text_lf": true
+    },
+    {
+      "path": "media-receipts/firstlight-full-tour-12a44af6-decode.json",
+      "bytes": 968,
+      "sha256": "b8a3d7b6f169cbb7963a649a2db705a8c9aaf44fc83e8f75db47d467352353ae",
+      "git_blob_sha1": "d0797f0a1e56d72c1ed0b534607fde3eacaf25c3",
+      "text_lf": true
+    },
+    {
+      "path": "media-receipts/firstlight-full-tour-12a44af6-receipt.json",
+      "bytes": 2577,
+      "sha256": "8ee4be78a7d53edd699058afad45bf7bb1b1d7e41ceb438b66453c05308773f5",
+      "git_blob_sha1": "6ddcafb141f8729d31d8e61b96467425ffdae14a",
+      "text_lf": true
+    },
+    {
+      "path": "media-receipts/tour-source-decode-12a44af6.json",
+      "bytes": 972,
+      "sha256": "9cdcdbd6b1b3ac1b2668ce0202d3791a2aaf568565324e851ee64a2c6545cbc1",
+      "git_blob_sha1": "82545dce3f62e2f78002bb556c285bf18aeb87e9",
+      "text_lf": true
+    },
+    {
+      "path": "media-receipts/work-source-decode-12a44af6.json",
+      "bytes": 972,
+      "sha256": "e8502262d9a359b50ca8ce2c1571ac913eaf5f7f474e79fe97e811e79644be9e",
+      "git_blob_sha1": "2c780dd9f9e7e14a6ffaee05de64f532f038394c",
+      "text_lf": true
+    },
+    {
+      "path": "README.md",
+      "bytes": 8693,
+      "sha256": "1e5f31f5c73bdc6ab09ef738f4ae8740177df4dcd774f97625befe41e77d1314",
+      "git_blob_sha1": "873a34685f7a3f9169fb94849a93ee1add040d29",
+      "text_lf": true
+    },
+    {
+      "path": "reports/FROZEN_SOURCE_ONLY_3A5F18E0_AUDIT.json",
+      "bytes": 18678,
+      "sha256": "0db06ce1df45c601fe29c6f69fe0e3ed3b582187f24d056c9887d3324f3011ca",
+      "git_blob_sha1": "11120e89864194094c404a1eedd7e08d8f4ec3f0",
+      "text_lf": true
+    },
+    {
+      "path": "reports/hardware-bow-delivery.json",
+      "bytes": 14430,
+      "sha256": "84bb6c3c088f5a9d379a8a7f2b56ef3c9c3ffc6306f5b6a3abdaf0d789dc1187",
+      "git_blob_sha1": "1f1838c0cc30ee5528d975df469a059dea6d62cf",
+      "text_lf": true
+    },
+    {
+      "path": "reports/hardware-tour-delivery.json",
+      "bytes": 103971,
+      "sha256": "9f0ea6dba91a0dbc1fabe17841e3d1fefe255a6524e184d79481d36618099fd1",
+      "git_blob_sha1": "1239a5582c0083fa69d8309d6b968917fabf98e7",
+      "text_lf": true
+    },
+    {
+      "path": "reports/hardware-work-delivery.json",
+      "bytes": 121551,
+      "sha256": "a9b003f9ed00777483ce2c452d3f9be6ed6eea5726f154c900e058c23788d2c9",
+      "git_blob_sha1": "caa6683e9d89d94e9438cf1955f5990534214fb2",
+      "text_lf": true
+    },
+    {
+      "path": "reports/HARDWARE_DELIVERY_STATS.json",
+      "bytes": 3383,
+      "sha256": "65547283df7e316f765187b4fbb10befe40d3a8e47fede35043bfb579ab4d201",
+      "git_blob_sha1": "81c8c0d45e05967e2ff376184dd2e24619e6b26e",
+      "text_lf": true
+    },
+    {
+      "path": "reports/MEDIA_PROVENANCE.json",
+      "bytes": 62618,
+      "sha256": "047a95220bbee4357e0ac070fcf6f70921cd4834300100d3e76a8793a60b00cb",
+      "git_blob_sha1": "ae443b224db30342569b4d4709a32a04af93fe08",
+      "text_lf": true
+    },
+    {
+      "path": "reports/software-cutaway-92fb503c.json",
+      "bytes": 2047,
+      "sha256": "1f00fad88c6c13562b3fd58467d7c2a6f335ff09bfb589d5a59a438ecd270158",
+      "git_blob_sha1": "a46ebc7da95c5d4dd9b0b5834ff8d66506cf5f7d",
+      "text_lf": true
+    },
+    {
+      "path": "reports/software-world-foundations-12a44af6.json",
+      "bytes": 20301,
+      "sha256": "1f67c1614478e44540eec48f0e57ea987aed8c37c028fe1acecbd9c797bffa73",
+      "git_blob_sha1": "30a54e8cfc571112c518dc43f7e5cde524bd3be2",
+      "text_lf": true
+    },
+    {
+      "path": "reports/software-world-foundations-92fb503c.json",
+      "bytes": 18101,
+      "sha256": "564e710946fb3c3cf6a5ae57e964c1195b6339087ebf5f6ffa359c1795318a63",
+      "git_blob_sha1": "fbbfe87162bd28982a72cee589e46a5c46f1f247",
+      "text_lf": true
+    },
+    {
+      "path": "reports/SOURCE_BF11319_AUDIT.json",
+      "bytes": 63270,
+      "sha256": "9b25db8aaa786e0533bbef9284c42bf53c349f2be48955ddf562faf4c9a0f0f5",
+      "git_blob_sha1": "45adcae251da06a6fd1862e4b5792625a3764dee",
+      "text_lf": true
+    },
+    {
+      "path": "reports/work-delivery/FINAL_WORLD.json",
+      "bytes": 12276,
+      "sha256": "6d924c6b0bbd6c38d95e81f2dc4d66935b3dbd9d8278ce5eef67558a71c48904",
+      "git_blob_sha1": "2552a58235ac8e3007ba12dd62c19b4203f92737",
+      "text_lf": true
+    },
+    {
+      "path": "reports/work-delivery/PAID_SAVED_WORLD.json",
+      "bytes": 12138,
+      "sha256": "659586cfdf5bd288f8e8377882fce4a7188e85b39ff9d2a00d2de9956f5d7661",
+      "git_blob_sha1": "e97d6058ff6ea1edde272f3584eaa8ce7fcf67a6",
+      "text_lf": true
+    },
+    {
+      "path": "stills/hardware-bow-delivery/hell-bow-defeated.png",
+      "bytes": 531830,
+      "sha256": "0da835f16a2dae8222f2276a076406808294a3e4c82142a5bcc8ac87772f674b",
+      "git_blob_sha1": "5f3676ef0f7d910a7b834572921e5b70052ba2ea",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-bow-delivery/hell-bow-guarded-hit.png",
+      "bytes": 530406,
+      "sha256": "3b45502441bdd566d261338aed0ee77e24940d51b950d0a24fac0b0aa48b8dff",
+      "git_blob_sha1": "cb41f215dd0de5842d67a088c749ec959a82cbf6",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-tour-delivery/01-earth-bridge-approach.png",
+      "bytes": 564239,
+      "sha256": "5e777ecb03a3b0438dc39ee897a99a8d1e9eee8447c4b23a8dd63220db81cd79",
+      "git_blob_sha1": "1c917194ece05d521600a80cf376b1bee7804420",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-tour-delivery/02-earth-channel-third.png",
+      "bytes": 486581,
+      "sha256": "b2de31548389eadb726bd8058c8fba67f05f239302f8d8c4674b232280f5f179",
+      "git_blob_sha1": "54c33c995176c565024357bebec0e677c46d8697",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-tour-delivery/03-earth-bridge-diorama.png",
+      "bytes": 657828,
+      "sha256": "9d99c1a1faebd51e9457017ee291a8174aa2f21cdf31ea0ce33b848ff1f383ea",
+      "git_blob_sha1": "f0787909d14dd35f15aaafd8fc3de5fb5047f4fc",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-tour-delivery/04-heaven-garden-third.png",
+      "bytes": 680105,
+      "sha256": "c0b944757b25d98255eb5b01a7071324c19d797d810345f4bad0cb8ce9f135a2",
+      "git_blob_sha1": "255f8609587e79a8e9b9fb71b37468aa3ff3a819",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-tour-delivery/05-heaven-garden-diorama.png",
+      "bytes": 876626,
+      "sha256": "ba0063fd103e4431325489a0ec3818a8d7844606376e067874a960cc152ace06",
+      "git_blob_sha1": "5e3d023c2ac3d6afed61666ed5acbcd04887a9c4",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-tour-delivery/06-hell-industrial-road-third.png",
+      "bytes": 541917,
+      "sha256": "39489b2615f3f67a1152cf2a4c0c896d8a60671784891004f37b2f3b23f3fdae",
+      "git_blob_sha1": "7753de163f39fb2e445a967e0116df6ecd39f47f",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-tour-delivery/07-hell-refuge-diorama.png",
+      "bytes": 807790,
+      "sha256": "033dba7c88bb970ef8cae48c8cc9a7902e337e37f4d5b5a265877fe1e10d8291",
+      "git_blob_sha1": "b7ec44e894c3eb15c94ce5a6fac7cd94ded7a205",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-tour-delivery/08-atlantis-civic-third.png",
+      "bytes": 575967,
+      "sha256": "257cc0cdc821f51d30696cbb1a11408252d7da82109ca3715eb2f10728a79560",
+      "git_blob_sha1": "6aa4e84f1e6664f2ebb09c70e6b56dc9b2476433",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-tour-delivery/09-atlantis-underwater.png",
+      "bytes": 300305,
+      "sha256": "ba9c805e60a012cb285a71a85ae9bf3c265d20c98c6ccb75f902f742d685de4b",
+      "git_blob_sha1": "4035818ae9b065853134330f2c44a795897bd131",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-tour-delivery/10-atlantis-air-court.png",
+      "bytes": 320887,
+      "sha256": "f7cfaa269bd16a3fa5d086c4e9b98318075087f9b96dc3fcc2c3d38ecd77c018",
+      "git_blob_sha1": "e0c352149fab922f6f50220026877a9f7f30b9ff",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-tour-delivery/11-cosmos-three-lamps-third.png",
+      "bytes": 614774,
+      "sha256": "613c9266ca26bb4dcedf7ef3cf40d2e4758880cf4de0d4ee38b380d7b65b0c01",
+      "git_blob_sha1": "18931826cf461b8f79aaece8a9d3cced08c79d9d",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-tour-delivery/12-cosmos-three-lamps-diorama.png",
+      "bytes": 768621,
+      "sha256": "ce61622e77718cdaa5721d6ce7e00dc7ae6d70762c651fc1058137a2c37aa9da",
+      "git_blob_sha1": "66975ff3abab49f6e842f73cbb450ba97bc073ba",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-tour-delivery/atlantis-gallery-diorama.png",
+      "bytes": 566741,
+      "sha256": "f5c5b5539dfd8df386b0b8ffcf54d4c311cedc40238fd38dc81f6f0876d70e75",
+      "git_blob_sha1": "db67a3fc158664085a854df592d39f4b71c1a5c9",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-tour-delivery/heaven-planted-fork-diorama.png",
+      "bytes": 853173,
+      "sha256": "28770774f5edd6af6b534622bbf42266dae3fc6937ef07cb1a84c7fcdae8d238",
+      "git_blob_sha1": "0120c7a2c2c42ca6919787be035286e4bd30004d",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-tour-delivery/heaven-planted-fork-third.png",
+      "bytes": 669234,
+      "sha256": "1b7e40e395b52c069ec6a4a0e083b4a604c4ea33e02d759ee9613a8d048dd5d5",
+      "git_blob_sha1": "6cd1c68c3505eed82bd194fe23e8dd11a809bacd",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-tour-delivery/hell-blade-defeated.png",
+      "bytes": 514742,
+      "sha256": "15a05525b1d3ccb8c607fc062d3a31a5008e1f003a2422bee487abc5bbf9412f",
+      "git_blob_sha1": "087d9db5203d361df66409771137f0f2d9af040b",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-tour-delivery/hell-blade-guarded-hit.png",
+      "bytes": 509181,
+      "sha256": "3d1634fbbc162a1396b7fe077ba9297b0201fbb20020a7a3a5871cb437d95d0c",
+      "git_blob_sha1": "51b69c60b9dfb24ebde9e94a7577ef54dc743061",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-tour-delivery/hell-refuge-open-roof.png",
+      "bytes": 769080,
+      "sha256": "95d8fe3f8a578bf0fe1cc9c966a3b6c057eceb349f34c7d129d5d851f003415f",
+      "git_blob_sha1": "4fad0ee5f36aaf6b35d99dee7e5a505e7ce77000",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-work-delivery/05-merren-acceptance.png",
+      "bytes": 375724,
+      "sha256": "583d01ed755d429e0c867962ad9b9c5f26f9efb46509093ba2f2d02d5f0aed45",
+      "git_blob_sha1": "b5304704abe554dcc7b8922bc133c8cb3680146a",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-work-delivery/06-1-objective-before-record.png",
+      "bytes": 725195,
+      "sha256": "5d9d2b133b5a3c81dc20e645246019d5858b6e1eb8b9727e07d04893fe09f168",
+      "git_blob_sha1": "79029b97672186946df01dc551f14d6e8605c990",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-work-delivery/06-2-objective-before-record.png",
+      "bytes": 658066,
+      "sha256": "73fd60a25d7e5eee08aa5ac46f07a154fa8001d918e1569a505be58cedc0d0c4",
+      "git_blob_sha1": "d5acd7172b6f4b56beadd9b089f1c36e0eadfb8d",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-work-delivery/06-3-objective-before-record.png",
+      "bytes": 620389,
+      "sha256": "16b4f6c9bffbff303e704c62caca0a3938fc1ae69bc4a0650b7abe595deba51f",
+      "git_blob_sha1": "b9194dcf38dc0d46304929829bf90f18a803a7c5",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-work-delivery/07-1-objective-record-ui.png",
+      "bytes": 374160,
+      "sha256": "df5532202d03e928a77cefb5ddbf0208250518e8300cf0a6761e803ceaee8fe6",
+      "git_blob_sha1": "39463c0728ac13a268b079099253bbdf4c9a057a",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-work-delivery/07-2-objective-record-ui.png",
+      "bytes": 370391,
+      "sha256": "d99cb3d92779b5ea9fe445c400e168a70d7c6d100cc093416bac5c893b5f6d52",
+      "git_blob_sha1": "f18fd08bf74e5dec0641be9457909f5c0ae0c1aa",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-work-delivery/07-3-objective-record-ui.png",
+      "bytes": 370127,
+      "sha256": "2224f8e3e993f29cb64e117ad1b625cc7323c823578af077af55bfd2320f5af4",
+      "git_blob_sha1": "ec535ab0c7806acfc69d62ec73f81bfe3c182690",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-work-delivery/08-completed-unpaid.png",
+      "bytes": 323226,
+      "sha256": "1b4236c1c1340bd1301cd941122eb4126faa2e762791f005654ca3e355f0075f",
+      "git_blob_sha1": "33513651aeffb8902f48d93ee6f2c22dc5a82f4d",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-work-delivery/09-explicit-payment.png",
+      "bytes": 321999,
+      "sha256": "71185a6dfa5772ddba83eb2a5d7619ec25345e1a6104030a3f865a7012e11dc0",
+      "git_blob_sha1": "1cc5172ad05e6a1ae1ed93cde9557d6b2746af04",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-work-delivery/09b-earned-balances-and-kept-equipment.png",
+      "bytes": 395108,
+      "sha256": "07e40123a4d7cce90a3206767cdb72dd351ac105cdc38d3b0903ca8e5d0be15c",
+      "git_blob_sha1": "07652828d07e8d43537bd03a3d0230bc52fccc6d",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-work-delivery/10-giver-recognition.png",
+      "bytes": 378737,
+      "sha256": "b35ae858625c2b2c40bce8aeb24f9771e1d7ecd85691775a00076e0ec41b82de",
+      "git_blob_sha1": "f325ca7599892bcd36a2c7e9b8738f9f3650d717",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-work-delivery/11-paid-settlement-diorama.png",
+      "bytes": 737156,
+      "sha256": "fac2de5147a98a90b3ec82e0e91d690db69b73e7c41814c79f17e615ee727ad0",
+      "git_blob_sha1": "fd55a07742eb861981e60644e16ae7f138139d64",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-work-delivery/12-paid-produce-work.png",
+      "bytes": 661809,
+      "sha256": "b72139d7f06ccf9b620ecaed929c1f09e123d46577a7e21d57fb86a31867dda9",
+      "git_blob_sha1": "dbd9b67cb031350a9fd4350e44486dd55a495d86",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-work-delivery/13-paid-field-water-work.png",
+      "bytes": 725207,
+      "sha256": "6b6d52bce35ec9c5ced78f902f8c255591173f2ad8f54550a73ed27c6ff61aeb",
+      "git_blob_sha1": "b673111ba7473bb06c3d13a28772163d0dddba69",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-work-delivery/14-free-home-with-earned-progress.png",
+      "bytes": 737353,
+      "sha256": "bd6a61f3e93cd37d0210df4bb434a047fae59efca9a47be7ed8df86ed8edc6eb",
+      "git_blob_sha1": "73a2ad7ebb928bfa5ba7832f0c1e01fe8e52a8d2",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-work-delivery/15-home-blade-guide.png",
+      "bytes": 225680,
+      "sha256": "518f1c9380a57497de1b55486638121524d0f60c325975ed46586286dc488d5d",
+      "git_blob_sha1": "866d0b1ec9f438f8616dff54d7b474042f9fff60",
+      "text_lf": false
+    },
+    {
+      "path": "stills/hardware-work-delivery/16-home-bow-guide.png",
+      "bytes": 288695,
+      "sha256": "0e99b3c8dc58e47e7ee23e80cd421090d630a2babc61b23a47ffc1e7b0babf4f",
+      "git_blob_sha1": "a5b3bd429eeb774da6f7cc58abdfcaa1716c1347",
+      "text_lf": false
+    },
+    {
+      "path": "videos/firstlight-bow-guard-fight-12a44af6-cut.mp4",
+      "bytes": 368506,
+      "sha256": "d7bd003fb924c89e1cfee64e5e093ebd205d29dfea98fcae13a94ae8e075696c",
+      "git_blob_sha1": "98f468283a923c8d6dfc0738747447724fae35fe",
+      "text_lf": false
+    },
+    {
+      "path": "videos/firstlight-coastward-work-12a44af6.mp4",
+      "bytes": 3433106,
+      "sha256": "8c77b64a0a334174cce9919380f29b2d90d097767b099e5619ba20eab35eb885",
+      "git_blob_sha1": "f2f493252422069d7df325cc56169389222d045e",
+      "text_lf": false
+    },
+    {
+      "path": "videos/firstlight-five-roads-12a44af6.mp4",
+      "bytes": 3614650,
+      "sha256": "d5dd8b2b45345a53be3d590a13900b6587d8aa978e5f4ef129b26aff3e29ff48",
+      "git_blob_sha1": "b29efa4599450fbcbb9d8f880fb05bd95ca998c3",
+      "text_lf": false
+    },
+    {
+      "path": "videos/firstlight-full-tour-12a44af6.mp4",
+      "bytes": 13654248,
+      "sha256": "270af4765f7c85adb64ed2a802db2a7f961c298aec13726a636b728c460bf371",
+      "git_blob_sha1": "254943dd486bfceb1e303875b9cbf3e3ecbd721c",
+      "text_lf": false
+    }
+  ]
+}

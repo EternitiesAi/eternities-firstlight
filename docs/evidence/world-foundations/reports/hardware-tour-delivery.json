@@ -1,0 +1,4293 @@
+{
+  "method": "Normal-time gameplay in an isolated hardware Chromium profile.\n\nOnly setup imports a labelled command-earned save. The selected tour or bow-combat\nvariant records its actual production movement, UI, combat and camera events.\nThe tour also records swimming and one Heaven objective. Short tour-only RAF\nsamples measure presentation cadence, not sustained GPU throughput.\n",
+  "variant": "tour",
+  "source": "evidence10\\world-foundations\\journey\\fresh-blade\\00_INITIAL_KIT.json",
+  "source_sha256": "d5dae74922159450b291054999ca6f1bc0600e26f1bca566d05b2815db2c457c",
+  "html_sha256": "12a44af65c53e80e9e57175e85c63d683421797c33e22da935134a3df9368b1b",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "quality": "balanced",
+  "events": [
+    {
+      "name": "Normal accepted walk 18,6",
+      "seconds": 1.8297154000028968,
+      "scene": "valley",
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "camera": {
+        "yaw": 5.3871299226086125,
+        "elevation": 0.28,
+        "half": 17,
+        "distance": 7.5,
+        "actualDistance": 7.5,
+        "fov": 60,
+        "center": [
+          18,
+          2.8,
+          6
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "projection": "perspective",
+        "eye": [
+          12.371563380583055,
+          4.872667364230853,
+          10.50274929553697
+        ],
+        "target": [
+          18,
+          2.8,
+          6
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Deliberate crossing earthlands",
+      "seconds": 2.0084653999947477,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 5.387129922608612,
+        "elevation": 0.28,
+        "half": 17,
+        "distance": 7.5,
+        "actualDistance": 7.5000000000000036,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          104
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "projection": "perspective",
+        "eye": [
+          -5.628436619416951,
+          5.142667364230855,
+          108.50274929553697
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          104
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "third view",
+      "seconds": 2.4370729999936884,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.65,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.997062619354052,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          104
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          6.522610437951729,
+          5.254779071298453,
+          112.58007457650186
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          104
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk 0,91",
+      "seconds": 6.553243100002874,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 91,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.65,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.99999999999662,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          91.23584312756078
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          6.52435266588137,
+          5.255362638745002,
+          99.81820949286526
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          91.23584312756078
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Screenshot 01-earth-bridge-approach",
+      "seconds": 6.7615451000019675,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 91,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.65,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999998755,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          91.0389846067805
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          6.5243526658826365,
+          5.255362638745426,
+          99.62135097208666
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          91.0389846067805
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk 0,55",
+      "seconds": 18.05016529999557,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 55,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.65,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999993,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          55.24518179493621
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          6.524352665883371,
+          5.255362638745672,
+          63.827548160243325
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          55.24518179493621
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "third view",
+      "seconds": 18.461888799996814,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 55,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 1.4,
+        "elevation": 0.16,
+        "half": 16,
+        "distance": 16,
+        "actualDistance": 15.995440590172226,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          55.00000082675675
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          15.561370076951812,
+          5.618364908830955,
+          57.683974987086344
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          55.00000082675675
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Screenshot 02-earth-channel-third",
+      "seconds": 18.640950000000885,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 55,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 1.4,
+        "elevation": 0.16,
+        "half": 16,
+        "distance": 16,
+        "actualDistance": 15.998176617684619,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          55.0000001588262
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          15.564031856502119,
+          5.618800807827477,
+          57.68443341417751
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          55.0000001588262
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Short hardware RAF sample Earth channel third person",
+      "seconds": 21.668255399999907,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 55,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 1.4,
+        "elevation": 0.16,
+        "half": 16,
+        "distance": 16,
+        "actualDistance": 15.999999999527535,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          55.00000000000002
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "projection": "perspective",
+        "eye": [
+          15.565805756976399,
+          5.619091305752663,
+          57.684739211897096
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          55.00000000000002
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "diorama view",
+      "seconds": 22.09297909999441,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 55,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 1.5,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 15.999999999527535,
+        "fov": 60,
+        "center": [
+          0,
+          2.171680740992813,
+          55
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          59.10099677810785,
+          48.15544463900035,
+          59.19113798465108
+        ],
+        "target": [
+          0,
+          2.171680740992813,
+          55
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk 0,23",
+      "seconds": 32.13459649999277,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 23,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 1.5,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 15.999999999527535,
+        "fov": 60,
+        "center": [
+          0,
+          2.1700000000000075,
+          24.10558753593785
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          59.10099677810785,
+          48.15376389800755,
+          28.296725520588932
+        ],
+        "target": [
+          0,
+          2.1700000000000075,
+          24.10558753593785
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Screenshot 03-earth-bridge-diorama",
+      "seconds": 32.34443199999805,
+      "scene": "world-earthlands",
+      "player": {
+        "x": 0,
+        "z": 23,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 1.5,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 15.999999999527535,
+        "fov": 60,
+        "center": [
+          0,
+          2.170000000000005,
+          23.6293655065188
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          59.10099677810785,
+          48.15376389800754,
+          27.82050349116988
+        ],
+        "target": [
+          0,
+          2.170000000000005,
+          23.6293655065188
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk 18,6",
+      "seconds": 32.469186100002844,
+      "scene": "valley",
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "camera": {
+        "yaw": 1.5,
+        "elevation": 0.66,
+        "half": 15.542857142857143,
+        "distance": 11,
+        "actualDistance": 15.999999999527535,
+        "fov": 60,
+        "center": [
+          18,
+          1.903998082068772,
+          6
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          77.10099677810786,
+          47.88776198007631,
+          10.191137984651082
+        ],
+        "target": [
+          18,
+          1.903998082068772,
+          6
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Free home return",
+      "seconds": 32.47504059999483,
+      "scene": "valley",
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "camera": {
+        "yaw": 1.5,
+        "elevation": 0.66,
+        "half": 15.542857142857143,
+        "distance": 11,
+        "actualDistance": 15.999999999527535,
+        "fov": 60,
+        "center": [
+          18,
+          1.903998082068772,
+          6
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          77.10099677810786,
+          47.88776198007631,
+          10.191137984651082
+        ],
+        "target": [
+          18,
+          1.903998082068772,
+          6
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Deliberate crossing heaven",
+      "seconds": 32.67962919999263,
+      "scene": "world-heaven",
+      "player": {
+        "x": 0,
+        "z": 27,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 1.5,
+        "elevation": 0.66,
+        "half": 15.542857142857143,
+        "distance": 11,
+        "actualDistance": 15.999999999527535,
+        "fov": 60,
+        "center": [
+          0,
+          2.174753944827233,
+          27
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          59.10099677810785,
+          48.15851784283477,
+          31.191137984651082
+        ],
+        "target": [
+          0,
+          2.174753944827233,
+          27
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "third view",
+      "seconds": 33.10631249999278,
+      "scene": "world-heaven",
+      "player": {
+        "x": 0,
+        "z": 27,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.2,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999998,
+        "fov": 60,
+        "center": [
+          0,
+          3.069999999679442,
+          27
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          2.141800882697577,
+          5.255362638425115,
+          37.565835467015866
+        ],
+        "target": [
+          0,
+          3.069999999679442,
+          27
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk -14,6.7",
+      "seconds": 41.54824170000211,
+      "scene": "world-heaven",
+      "player": {
+        "x": -14,
+        "z": 6.7,
+        "yaw": 2.769524894731658
+      },
+      "camera": {
+        "yaw": 0.2,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999805,
+        "fov": 60,
+        "center": [
+          -14.096327275570268,
+          3.069999999999999,
+          6.9468413062866885
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -11.954526392872728,
+          5.255362638745634,
+          17.51267677330237
+        ],
+        "target": [
+          -14.096327275570268,
+          3.069999999999999,
+          6.9468413062866885
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk 0,-1",
+      "seconds": 46.64934570000332,
+      "scene": "world-heaven",
+      "player": {
+        "x": 0,
+        "z": -1,
+        "yaw": 2.073639537722756
+      },
+      "camera": {
+        "yaw": 0.2,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999993,
+        "fov": 60,
+        "center": [
+          -0.2725075659835316,
+          3.069999999999999,
+          -0.8501208387090575
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          1.8692933167140446,
+          5.255362638745671,
+          9.715714628306802
+        ],
+        "target": [
+          -0.2725075659835316,
+          3.069999999999999,
+          -0.8501208387090575
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Heaven first objective accepted through UI",
+      "seconds": 46.75387600000249,
+      "scene": "world-heaven",
+      "player": {
+        "x": 0,
+        "z": -1,
+        "yaw": 2.073639537722756
+      },
+      "camera": {
+        "yaw": 0.2,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999993,
+        "fov": 60,
+        "center": [
+          -0.11079330837866329,
+          3.069999999999999,
+          -0.9390636803917353
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          2.031007574318913,
+          5.255362638745671,
+          9.626771786624126
+        ],
+        "target": [
+          -0.11079330837866329,
+          3.069999999999999,
+          -0.9390636803917353
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk 0,20",
+      "seconds": 53.345323300003656,
+      "scene": "world-heaven",
+      "player": {
+        "x": 0,
+        "z": 20,
+        "yaw": 0
+      },
+      "camera": {
+        "yaw": 0.2,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999993,
+        "fov": 60,
+        "center": [
+          -1.770936691160431e-27,
+          3.069999999999999,
+          19.725916040920115
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          2.1418008826975763,
+          5.255362638745671,
+          30.291751507935977
+        ],
+        "target": [
+          -1.770936691160431e-27,
+          3.069999999999999,
+          19.725916040920115
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "third view",
+      "seconds": 53.76865019999968,
+      "scene": "world-heaven",
+      "player": {
+        "x": 0,
+        "z": 20,
+        "yaw": 0
+      },
+      "camera": {
+        "yaw": -0.55,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 10,
+        "actualDistance": 9.999999999999998,
+        "fov": 60,
+        "center": [
+          -5.142910521953865e-33,
+          3.0700000000000003,
+          19.999999204043103
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -5.122682837393927,
+          5.056693307950612,
+          28.3553071126491
+        ],
+        "target": [
+          -5.142910521953865e-33,
+          3.0700000000000003,
+          19.999999204043103
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Screenshot heaven-planted-fork-third",
+      "seconds": 53.994772499994724,
+      "scene": "world-heaven",
+      "player": {
+        "x": 0,
+        "z": 20,
+        "yaw": 0
+      },
+      "camera": {
+        "yaw": -0.55,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 10,
+        "actualDistance": 9.999999999999998,
+        "fov": 60,
+        "center": [
+          -6.299714164222214e-34,
+          3.0700000000000003,
+          19.99999990250072
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -5.122682837393927,
+          5.056693307950612,
+          28.355307811106716
+        ],
+        "target": [
+          -6.299714164222214e-34,
+          3.0700000000000003,
+          19.99999990250072
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "diorama view",
+      "seconds": 54.412343999996665,
+      "scene": "world-heaven",
+      "player": {
+        "x": 0,
+        "z": 20,
+        "yaw": 0
+      },
+      "camera": {
+        "yaw": 0.6,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 9.999999999999998,
+        "fov": 60,
+        "center": [
+          -1.1764653154237285e-36,
+          2.171680740992813,
+          19.99999999981792
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          33.45473756666517,
+          48.15544463900035,
+          68.90065431157392
+        ],
+        "target": [
+          -1.1764653154237285e-36,
+          2.171680740992813,
+          19.99999999981792
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Screenshot heaven-planted-fork-diorama",
+      "seconds": 54.70922239999345,
+      "scene": "world-heaven",
+      "player": {
+        "x": 0,
+        "z": 20,
+        "yaw": 0
+      },
+      "camera": {
+        "yaw": 0.6,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 9.999999999999998,
+        "fov": 60,
+        "center": [
+          -5.630845117643071e-37,
+          2.170804442943564,
+          19.999999999912855
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          33.45473756666517,
+          48.1545683409511,
+          68.90065431166886
+        ],
+        "target": [
+          -5.630845117643071e-37,
+          2.170804442943564,
+          19.999999999912855
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "third view",
+      "seconds": 55.132594299997436,
+      "scene": "world-heaven",
+      "player": {
+        "x": 0,
+        "z": 20,
+        "yaw": 0
+      },
+      "camera": {
+        "yaw": 0.2,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.99916116790779,
+        "fov": 60,
+        "center": [
+          -1.9310528600946223e-46,
+          3.069999999678015,
+          20
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          2.1416375543961657,
+          5.25519598821328,
+          30.565029743209436
+        ],
+        "target": [
+          -1.9310528600946223e-46,
+          3.069999999678015,
+          20
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk 0,-25",
+      "seconds": 69.42282110000087,
+      "scene": "world-heaven",
+      "player": {
+        "x": 0,
+        "z": -25,
+        "yaw": -2.8568832546504352
+      },
+      "camera": {
+        "yaw": 0.2,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999993,
+        "fov": 60,
+        "center": [
+          0.0610802417029654,
+          3.069999999999999,
+          -24.79129288610914
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          2.2028811244005415,
+          5.255362638745671,
+          -14.22545741909328
+        ],
+        "target": [
+          0.0610802417029654,
+          3.069999999999999,
+          -24.79129288610914
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Screenshot 04-heaven-garden-third",
+      "seconds": 69.67723679999472,
+      "scene": "world-heaven",
+      "player": {
+        "x": 0,
+        "z": -25,
+        "yaw": -2.8568832546504352
+      },
+      "camera": {
+        "yaw": 0.2,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999993,
+        "fov": 60,
+        "center": [
+          0.005544400156017225,
+          3.069999999999999,
+          -24.981055154292843
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          2.1473452828535935,
+          5.255362638745671,
+          -14.415219687276982
+        ],
+        "target": [
+          0.005544400156017225,
+          3.069999999999999,
+          -24.981055154292843
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Short hardware RAF sample Heaven garden third person",
+      "seconds": 72.70042609999655,
+      "scene": "world-heaven",
+      "player": {
+        "x": 0,
+        "z": -25,
+        "yaw": -2.8568832546504352
+      },
+      "camera": {
+        "yaw": 0.2,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999993,
+        "fov": 60,
+        "center": [
+          8.974700410981357e-15,
+          3.069999999999999,
+          -24.999999999999968
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          2.141800882697585,
+          5.255362638745671,
+          -14.434164532984108
+        ],
+        "target": [
+          8.974700410981357e-15,
+          3.069999999999999,
+          -24.999999999999968
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "diorama view",
+      "seconds": 73.11692309999489,
+      "scene": "world-heaven",
+      "player": {
+        "x": 0,
+        "z": -25,
+        "yaw": -2.8568832546504352
+      },
+      "camera": {
+        "yaw": 0.6,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999993,
+        "fov": 60,
+        "center": [
+          1.6760163198836538e-17,
+          2.171680740992813,
+          -25
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          33.45473756666517,
+          48.15544463900035,
+          23.900654311756
+        ],
+        "target": [
+          1.6760163198836538e-17,
+          2.171680740992813,
+          -25
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Screenshot 05-heaven-garden-diorama",
+      "seconds": 73.3938393999997,
+      "scene": "world-heaven",
+      "player": {
+        "x": 0,
+        "z": -25,
+        "yaw": -2.8568832546504352
+      },
+      "camera": {
+        "yaw": 0.6,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999993,
+        "fov": 60,
+        "center": [
+          8.02181601801657e-18,
+          2.170804442943563,
+          -25
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          33.45473756666517,
+          48.1545683409511,
+          23.900654311756
+        ],
+        "target": [
+          8.02181601801657e-18,
+          2.170804442943563,
+          -25
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk 18,6",
+      "seconds": 73.51595819999056,
+      "scene": "valley",
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "camera": {
+        "yaw": 0.5999999999999996,
+        "elevation": 0.66,
+        "half": 15.542857142857143,
+        "distance": 11,
+        "actualDistance": 10.999999999999993,
+        "fov": 60,
+        "center": [
+          18,
+          1.9039970427025574,
+          6
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          51.45473756666515,
+          47.887760940710095,
+          54.90065431175602
+        ],
+        "target": [
+          18,
+          1.9039970427025574,
+          6
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Free home return",
+      "seconds": 73.5229732000007,
+      "scene": "valley",
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "camera": {
+        "yaw": 0.5999999999999996,
+        "elevation": 0.66,
+        "half": 15.542857142857143,
+        "distance": 11,
+        "actualDistance": 10.999999999999993,
+        "fov": 60,
+        "center": [
+          18,
+          1.9039970427025574,
+          6
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          51.45473756666515,
+          47.887760940710095,
+          54.90065431175602
+        ],
+        "target": [
+          18,
+          1.9039970427025574,
+          6
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Deliberate crossing hell",
+      "seconds": 73.72439229999145,
+      "scene": "world-hell",
+      "player": {
+        "x": 0,
+        "z": 31,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.5999999999999996,
+        "elevation": 0.66,
+        "half": 15.542857142857143,
+        "distance": 11,
+        "actualDistance": 10.999999999999993,
+        "fov": 60,
+        "center": [
+          0,
+          2.174964907978685,
+          31
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          33.45473756666515,
+          48.15872880598622,
+          79.90065431175603
+        ],
+        "target": [
+          0,
+          2.174964907978685,
+          31
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "diorama view",
+      "seconds": 74.15641179999511,
+      "scene": "world-hell",
+      "player": {
+        "x": 0,
+        "z": 31,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.7,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999993,
+        "fov": 60,
+        "center": [
+          0,
+          2.1701195303175207,
+          31
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          38.16952262332314,
+          48.15388342832506,
+          76.31645397071489
+        ],
+        "target": [
+          0,
+          2.1701195303175207,
+          31
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk -10,25.7",
+      "seconds": 77.74861070000043,
+      "scene": "world-hell",
+      "player": {
+        "x": -10,
+        "z": 25.7,
+        "yaw": -2.0581549063001443
+      },
+      "camera": {
+        "yaw": 0.7,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999993,
+        "fov": 60,
+        "center": [
+          -9.056842926032553,
+          2.1700000102942485,
+          26.199873249202735
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          29.112679697290588,
+          48.153763908301784,
+          71.51632721991763
+        ],
+        "target": [
+          -9.056842926032553,
+          2.1700000102942485,
+          26.199873249202735
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Screenshot hell-refuge-open-roof",
+      "seconds": 77.99662199999148,
+      "scene": "world-hell",
+      "player": {
+        "x": -10,
+        "z": 25.7,
+        "yaw": -2.0581549063001443
+      },
+      "camera": {
+        "yaw": 0.7,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999993,
+        "fov": 60,
+        "center": [
+          -9.507500799565927,
+          2.1700000053754667,
+          25.96102457623005
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          28.662021823757215,
+          48.153763903383,
+          71.27747854694495
+        ],
+        "target": [
+          -9.507500799565927,
+          2.1700000053754667,
+          25.96102457623005
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "third view",
+      "seconds": 78.41070549999131,
+      "scene": "world-hell",
+      "player": {
+        "x": -10,
+        "z": 25.7,
+        "yaw": -2.0581549063001443
+      },
+      "camera": {
+        "yaw": 0,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999996,
+        "fov": 60,
+        "center": [
+          -9.999999999823652,
+          3.0699999996777394,
+          25.70000000009346
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -9.999999999823652,
+          5.255362638423412,
+          36.48073235634712
+        ],
+        "target": [
+          -9.999999999823652,
+          3.0699999996777394,
+          25.70000000009346
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk 12,-8",
+      "seconds": 91.84243550000247,
+      "scene": "world-hell",
+      "player": {
+        "x": 12,
+        "z": -8,
+        "yaw": 2.802300039135751
+      },
+      "camera": {
+        "yaw": 0,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999996,
+        "fov": 60,
+        "center": [
+          11.920435640540909,
+          3.069999999999999,
+          -7.774567648199238
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          11.920435640540909,
+          5.255362638745671,
+          3.006164708054417
+        ],
+        "target": [
+          11.920435640540909,
+          3.069999999999999,
+          -7.774567648199238
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Screenshot 06-hell-industrial-road-third",
+      "seconds": 92.0344968999998,
+      "scene": "world-hell",
+      "player": {
+        "x": 12,
+        "z": -8,
+        "yaw": 2.802300039135751
+      },
+      "camera": {
+        "yaw": 0,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999996,
+        "fov": 60,
+        "center": [
+          11.984715087250342,
+          3.069999999999999,
+          -7.956692747209297
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          11.984715087250342,
+          5.255362638745671,
+          2.824039609044357
+        ],
+        "target": [
+          11.984715087250342,
+          3.069999999999999,
+          -7.956692747209297
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Short hardware RAF sample Hell industrial approach third person",
+      "seconds": 95.04809199999727,
+      "scene": "world-hell",
+      "player": {
+        "x": 12,
+        "z": -8,
+        "yaw": 2.802300039135751
+      },
+      "camera": {
+        "yaw": 0,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999996,
+        "fov": 60,
+        "center": [
+          11.999999999999975,
+          3.069999999999999,
+          -7.99999999999993
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          11.999999999999975,
+          5.255362638745671,
+          2.7807323562537247
+        ],
+        "target": [
+          11.999999999999975,
+          3.069999999999999,
+          -7.99999999999993
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "diorama view",
+      "seconds": 95.46848690000479,
+      "scene": "world-hell",
+      "player": {
+        "x": 12,
+        "z": -8,
+        "yaw": 2.802300039135751
+      },
+      "camera": {
+        "yaw": 0.7,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999996,
+        "fov": 60,
+        "center": [
+          12,
+          2.1716807409928136,
+          -8
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          50.16952262332314,
+          48.15544463900035,
+          37.316453970714896
+        ],
+        "target": [
+          12,
+          2.1716807409928136,
+          -8
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Screenshot 07-hell-refuge-diorama",
+      "seconds": 95.78124850000313,
+      "scene": "world-hell",
+      "player": {
+        "x": 12,
+        "z": -8,
+        "yaw": 2.802300039135751
+      },
+      "camera": {
+        "yaw": 0.7,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999996,
+        "fov": 60,
+        "center": [
+          12,
+          2.170737916033444,
+          -8
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          50.16952262332314,
+          48.154501814040984,
+          37.316453970714896
+        ],
+        "target": [
+          12,
+          2.170737916033444,
+          -8
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk 44,-82",
+      "seconds": 121.0294728000008,
+      "scene": "world-hell",
+      "player": {
+        "x": 44,
+        "z": -82,
+        "yaw": 2.733443549834614
+      },
+      "camera": {
+        "yaw": 0.7,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999996,
+        "fov": 60,
+        "center": [
+          43.566714430355425,
+          2.170000000000005,
+          -80.998027120197
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          81.73623705367856,
+          48.15376389800754,
+          -35.6815731494821
+        ],
+        "target": [
+          43.566714430355425,
+          2.170000000000005,
+          -80.998027120197
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "third view",
+      "seconds": 121.45253159999265,
+      "scene": "world-hell",
+      "player": {
+        "x": 44,
+        "z": -82,
+        "yaw": 2.733443549834614
+      },
+      "camera": {
+        "yaw": 0.12,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 8,
+        "fov": 60,
+        "center": [
+          43.99999999984485,
+          3.06999999967774,
+          -81.99999999964123
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          44.94389222318148,
+          4.423458792213708,
+          -74.17202345601058
+        ],
+        "target": [
+          43.99999999984485,
+          3.06999999967774,
+          -81.99999999964123
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk 44,-92.9",
+      "seconds": 125.38160589999461,
+      "scene": "world-hell",
+      "player": {
+        "x": 44,
+        "z": -92.9,
+        "yaw": 2.946101853340509
+      },
+      "camera": {
+        "yaw": 0.12,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 8,
+        "fov": 60,
+        "center": [
+          43.944362378422966,
+          3.069999999999999,
+          -92.61903001103562
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          44.88825460175959,
+          4.423458792535968,
+          -84.79105346740496
+        ],
+        "target": [
+          43.944362378422966,
+          3.069999999999999,
+          -92.61903001103562
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Real Tab selects sentinel",
+      "seconds": 125.40740809999988,
+      "scene": "world-hell",
+      "player": {
+        "x": 44,
+        "z": -92.9,
+        "yaw": 2.946101853340509
+      },
+      "camera": {
+        "yaw": 0.12,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 8,
+        "fov": 60,
+        "center": [
+          43.952126619488,
+          3.069999999999999,
+          -92.65823942841408
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          44.896018842824624,
+          4.423458792535968,
+          -84.83026288478342
+        ],
+        "target": [
+          43.952126619488,
+          3.069999999999999,
+          -92.65823942841408
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Real Brace during sentinel tell",
+      "seconds": 125.6705071000033,
+      "scene": "world-hell",
+      "player": {
+        "x": 44,
+        "z": -92.9,
+        "yaw": 2.946101853340509
+      },
+      "camera": {
+        "yaw": 0.12,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 8,
+        "fov": 60,
+        "center": [
+          43.99565441833595,
+          3.069999999999999,
+          -92.87805481259655
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          44.93954664167258,
+          4.423458792535968,
+          -85.05007826896589
+        ],
+        "target": [
+          43.99565441833595,
+          3.069999999999999,
+          -92.87805481259655
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Screenshot hell-blade-guarded-hit",
+      "seconds": 126.93987170000037,
+      "scene": "world-hell",
+      "player": {
+        "x": 44,
+        "z": -92.9,
+        "yaw": 2.946101853340509
+      },
+      "camera": {
+        "yaw": 0.12,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 8,
+        "fov": 60,
+        "center": [
+          43.9999999513637,
+          3.069999999999999,
+          -92.8999997543867
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          44.94389217470032,
+          4.423458792535968,
+          -85.07202321075604
+        ],
+        "target": [
+          43.9999999513637,
+          3.069999999999999,
+          -92.8999997543867
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Real stationary autoattack starts",
+      "seconds": 126.95204019999073,
+      "scene": "world-hell",
+      "player": {
+        "x": 44,
+        "z": -92.9,
+        "yaw": 2.946101853340509
+      },
+      "camera": {
+        "yaw": 0.12,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 8,
+        "fov": 60,
+        "center": [
+          43.99999995811322,
+          3.069999999999999,
+          -92.89999978847179
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          44.94389218144985,
+          4.423458792535968,
+          -85.07202324484113
+        ],
+        "target": [
+          43.99999995811322,
+          3.069999999999999,
+          -92.89999978847179
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Actual sentinel defeat recorded",
+      "seconds": 129.81984699999157,
+      "scene": "world-hell",
+      "player": {
+        "x": 44,
+        "z": -92.9,
+        "yaw": -2.8917511255720734
+      },
+      "camera": {
+        "yaw": 0.12,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 8,
+        "fov": 60,
+        "center": [
+          43.99999999999998,
+          3.069999999999999,
+          -92.89999999999996
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          44.943892223336604,
+          4.423458792535968,
+          -85.07202345636931
+        ],
+        "target": [
+          43.99999999999998,
+          3.069999999999999,
+          -92.89999999999996
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Screenshot hell-blade-defeated",
+      "seconds": 129.99242719999165,
+      "scene": "world-hell",
+      "player": {
+        "x": 44,
+        "z": -92.9,
+        "yaw": -2.8917511255720734
+      },
+      "camera": {
+        "yaw": 0.12,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 8,
+        "fov": 60,
+        "center": [
+          43.99999999999998,
+          3.069999999999999,
+          -92.89999999999996
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          44.943892223336604,
+          4.423458792535968,
+          -85.07202345636931
+        ],
+        "target": [
+          43.99999999999998,
+          3.069999999999999,
+          -92.89999999999996
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk 18,6",
+      "seconds": 130.11412539999583,
+      "scene": "valley",
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "camera": {
+        "yaw": 0.1200000000000001,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 8.000000000000002,
+        "fov": 60,
+        "center": [
+          18,
+          2.8,
+          6
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          18.94389222333663,
+          4.153458792535968,
+          13.827976543630655
+        ],
+        "target": [
+          18,
+          2.8,
+          6
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Free home return",
+      "seconds": 130.118269899991,
+      "scene": "valley",
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "camera": {
+        "yaw": 0.1200000000000001,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 8.000000000000002,
+        "fov": 60,
+        "center": [
+          18,
+          2.8,
+          6
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          18.94389222333663,
+          4.153458792535968,
+          13.827976543630655
+        ],
+        "target": [
+          18,
+          2.8,
+          6
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Deliberate crossing atlantis",
+      "seconds": 130.29969610000262,
+      "scene": "world-atlantis",
+      "player": {
+        "x": 0,
+        "z": 39,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.1200000000000001,
+        "elevation": 0.17,
+        "half": 16,
+        "distance": 8,
+        "actualDistance": 8.000000000000002,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          39
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          0.9438922233366299,
+          4.4234587925359685,
+          46.827976543630655
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          39
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "third view",
+      "seconds": 130.71693969999615,
+      "scene": "world-atlantis",
+      "player": {
+        "x": 0,
+        "z": 39,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.997482245160617,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          39
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          0,
+          5.254862438076628,
+          49.77826478888438
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          39
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk -6,0",
+      "seconds": 143.1065682000044,
+      "scene": "world-atlantis",
+      "player": {
+        "x": -6,
+        "z": 0,
+        "yaw": -2.988943325194529
+      },
+      "camera": {
+        "yaw": 0,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999991,
+        "fov": 60,
+        "center": [
+          -5.963492044592991,
+          3.0700000000000003,
+          0.23730171014555598
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -5.963492044592991,
+          5.255362638745671,
+          11.018034066399204
+        ],
+        "target": [
+          -5.963492044592991,
+          3.0700000000000003,
+          0.23730171014555598
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Screenshot 08-atlantis-civic-third",
+      "seconds": 143.30493040000147,
+      "scene": "world-atlantis",
+      "player": {
+        "x": -6,
+        "z": 0,
+        "yaw": -2.988943325194529
+      },
+      "camera": {
+        "yaw": 0,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999991,
+        "fov": 60,
+        "center": [
+          -5.993959841863185,
+          3.0700000000000003,
+          0.03926102788929686
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          -5.993959841863185,
+          5.255362638745671,
+          10.819993384142947
+        ],
+        "target": [
+          -5.993959841863185,
+          3.0700000000000003,
+          0.03926102788929686
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk 8,-16",
+      "seconds": 150.00867969999672,
+      "scene": "world-atlantis",
+      "player": {
+        "x": 8,
+        "z": -16,
+        "yaw": 2.4227626539682023
+      },
+      "camera": {
+        "yaw": 0,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.999999999999991,
+        "fov": 60,
+        "center": [
+          7.8685155539937135,
+          3.0700000000000003,
+          -15.849732061707101
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          7.8685155539937135,
+          5.255362638745671,
+          -5.068999705453452
+        ],
+        "target": [
+          7.8685155539937135,
+          3.0700000000000003,
+          -15.849732061707101
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "third view",
+      "seconds": 150.48814319999656,
+      "scene": "world-atlantis",
+      "player": {
+        "x": 8,
+        "z": -19.5,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0,
+        "elevation": 0.07,
+        "half": 16,
+        "distance": 3,
+        "actualDistance": 2.9999999999999987,
+        "fov": 60,
+        "center": [
+          7.9999997565286876,
+          1.0000060060011753,
+          -19.499989566672618
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          7.9999997565286876,
+          1.2098345480137735,
+          -16.50733656591278
+        ],
+        "target": [
+          7.9999997565286876,
+          1.0000060060011753,
+          -19.499989566672618
+        ]
+      },
+      "dive": {
+        "y": -0.5,
+        "depth": 0.51,
+        "hold": true,
+        "body": "air",
+        "camera": "air",
+        "dryCourt": null
+      }
+    },
+    {
+      "name": "Screenshot 09-atlantis-underwater",
+      "seconds": 154.9940043999959,
+      "scene": "world-atlantis",
+      "player": {
+        "x": 8,
+        "z": -29.032899999999927,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0,
+        "elevation": 0.07,
+        "half": 16,
+        "distance": 3,
+        "actualDistance": 2.9999999999999987,
+        "fov": 60,
+        "center": [
+          7.999999999999997,
+          -0.8631600000000148,
+          -28.93914384997211
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          7.999999999999997,
+          -0.6533314579874165,
+          -25.94649084921227
+        ],
+        "target": [
+          7.999999999999997,
+          -0.8631600000000148,
+          -28.93914384997211
+        ]
+      },
+      "dive": {
+        "y": -2.3631600000000152,
+        "depth": 2.373160000000015,
+        "hold": true,
+        "body": "water",
+        "camera": "water",
+        "dryCourt": null
+      }
+    },
+    {
+      "name": "Short hardware RAF sample Atlantis submerged gallery third person",
+      "seconds": 158.01271889999043,
+      "scene": "world-atlantis",
+      "player": {
+        "x": 8,
+        "z": -29.032899999999927,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0,
+        "elevation": 0.07,
+        "half": 16,
+        "distance": 3,
+        "actualDistance": 2.9999999999999987,
+        "fov": 60,
+        "center": [
+          7.999999999999997,
+          -0.8631600000000149,
+          -29.032899999999778
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          7.999999999999997,
+          -0.6533314579874168,
+          -26.04024699923994
+        ],
+        "target": [
+          7.999999999999997,
+          -0.8631600000000149,
+          -29.032899999999778
+        ]
+      },
+      "dive": {
+        "y": -2.3631600000000152,
+        "depth": 2.373160000000015,
+        "hold": true,
+        "body": "water",
+        "camera": "water",
+        "dryCourt": null
+      }
+    },
+    {
+      "name": "diorama view",
+      "seconds": 158.43608179999865,
+      "scene": "world-atlantis",
+      "player": {
+        "x": 8,
+        "z": -29.032899999999927,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.7,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 2.9999999999999987,
+        "fov": 60,
+        "center": [
+          8,
+          -1.7614788219577298,
+          -29.032899999999927
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          46.16952262332314,
+          44.22228507604981,
+          16.28355397071497
+        ],
+        "target": [
+          8,
+          -1.7614788219577298,
+          -29.032899999999927
+        ]
+      },
+      "dive": {
+        "y": -2.3631600000000152,
+        "depth": 2.373160000000015,
+        "hold": true,
+        "body": "water",
+        "camera": "air",
+        "dryCourt": null
+      }
+    },
+    {
+      "name": "Screenshot atlantis-gallery-diorama",
+      "seconds": 158.6280817999941,
+      "scene": "world-atlantis",
+      "player": {
+        "x": 8,
+        "z": -29.032899999999927,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.7,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 2.9999999999999987,
+        "fov": 60,
+        "center": [
+          8,
+          -1.7621607649439721,
+          -29.032899999999927
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          46.16952262332314,
+          44.22160313306357,
+          16.28355397071497
+        ],
+        "target": [
+          8,
+          -1.7621607649439721,
+          -29.032899999999927
+        ]
+      },
+      "dive": {
+        "y": -2.3631600000000152,
+        "depth": 2.373160000000015,
+        "hold": true,
+        "body": "water",
+        "camera": "air",
+        "dryCourt": null
+      }
+    },
+    {
+      "name": "third view",
+      "seconds": 159.056425200004,
+      "scene": "world-atlantis",
+      "player": {
+        "x": 8,
+        "z": -29.032899999999927,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0,
+        "elevation": 0.07,
+        "half": 16,
+        "distance": 3,
+        "actualDistance": 2.9999999999999987,
+        "fov": 60,
+        "center": [
+          8,
+          -0.8631600002772459,
+          -29.032899999999927
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          8,
+          -0.6533314582646477,
+          -26.04024699924009
+        ],
+        "target": [
+          8,
+          -0.8631600002772459,
+          -29.032899999999927
+        ]
+      },
+      "dive": {
+        "y": -2.3631600000000152,
+        "depth": 2.373160000000015,
+        "hold": true,
+        "body": "water",
+        "camera": "water",
+        "dryCourt": null
+      }
+    },
+    {
+      "name": "third view",
+      "seconds": 161.32402400000137,
+      "scene": "world-atlantis",
+      "player": {
+        "x": 8,
+        "z": -33.539479999999976,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.65,
+        "elevation": 0.08,
+        "half": 16,
+        "distance": 3,
+        "actualDistance": 2.9999999999999987,
+        "fov": 60,
+        "center": [
+          8,
+          -1.1999999999922188,
+          -33.539479222399706
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          9.8097525256065,
+          -0.9602559180847009,
+          -31.158866156139
+        ],
+        "target": [
+          8,
+          -1.1999999999922188,
+          -33.539479222399706
+        ]
+      },
+      "dive": {
+        "y": -2.7,
+        "depth": 2.71,
+        "hold": true,
+        "body": "air",
+        "camera": "air",
+        "dryCourt": "bellglass-air"
+      }
+    },
+    {
+      "name": "Screenshot 10-atlantis-air-court",
+      "seconds": 161.83093359999475,
+      "scene": "world-atlantis",
+      "player": {
+        "x": 8,
+        "z": -33.539479999999976,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.65,
+        "elevation": 0.08,
+        "half": 16,
+        "distance": 3,
+        "actualDistance": 2.9999999999999987,
+        "fov": 60,
+        "center": [
+          8,
+          -1.1999999999999136,
+          -33.53947999136162
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          9.8097525256065,
+          -0.9602559180923956,
+          -31.15886692510091
+        ],
+        "target": [
+          8,
+          -1.1999999999999136,
+          -33.53947999136162
+        ]
+      },
+      "dive": {
+        "y": -2.7,
+        "depth": 2.71,
+        "hold": true,
+        "body": "air",
+        "camera": "air",
+        "dryCourt": "bellglass-air"
+      }
+    },
+    {
+      "name": "Normal accepted walk 18,6",
+      "seconds": 161.9625076999946,
+      "scene": "valley",
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "camera": {
+        "yaw": 0.6500000000000004,
+        "elevation": 0.08,
+        "half": 16,
+        "distance": 3,
+        "actualDistance": 2.9999999999999996,
+        "fov": 60,
+        "center": [
+          18,
+          2.8,
+          6
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          19.809752525606502,
+          3.039744081907518,
+          8.380613066260707
+        ],
+        "target": [
+          18,
+          2.8,
+          6
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Free home return",
+      "seconds": 161.96749409999757,
+      "scene": "valley",
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "camera": {
+        "yaw": 0.6500000000000004,
+        "elevation": 0.08,
+        "half": 16,
+        "distance": 3,
+        "actualDistance": 2.9999999999999996,
+        "fov": 60,
+        "center": [
+          18,
+          2.8,
+          6
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          19.809752525606502,
+          3.039744081907518,
+          8.380613066260707
+        ],
+        "target": [
+          18,
+          2.8,
+          6
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Deliberate crossing cosmos",
+      "seconds": 162.18518469999253,
+      "scene": "cosmos-near-expanse",
+      "player": {
+        "x": 0,
+        "z": 18,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.6500000000000004,
+        "elevation": 0.08,
+        "half": 16,
+        "distance": 3,
+        "actualDistance": 2.9999999999999996,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          18
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          1.8097525256065015,
+          3.3097440819075183,
+          20.380613066260707
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          18
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "third view",
+      "seconds": 162.60706979999668,
+      "scene": "cosmos-near-expanse",
+      "player": {
+        "x": 0,
+        "z": 18,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.3,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.99328598709498,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          18
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          3.1839796778302194,
+          5.254028770294884,
+          28.292940713700204
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          18
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk 0,0",
+      "seconds": 168.2788608999981,
+      "scene": "cosmos-near-expanse",
+      "player": {
+        "x": 0,
+        "z": 0,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.3,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.99999999999999,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          0.22747263220478992
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          3.185924253880668,
+          5.255362638745671,
+          10.526699631630972
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          0.22747263220478992
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Screenshot 11-cosmos-three-lamps-third",
+      "seconds": 168.4759339000011,
+      "scene": "cosmos-near-expanse",
+      "player": {
+        "x": 0,
+        "z": 0,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.3,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.99999999999999,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          0.037634829313139155
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          3.185924253880668,
+          5.255362638745671,
+          10.336861828739321
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          0.037634829313139155
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Short hardware RAF sample Cosmos lamps third person",
+      "seconds": 171.4954635000031,
+      "scene": "cosmos-near-expanse",
+      "player": {
+        "x": 0,
+        "z": 0,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.3,
+        "elevation": 0.2,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.99999999999999,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          6.086455886550738e-14
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "perspective",
+        "eye": [
+          3.185924253880668,
+          5.255362638745671,
+          10.299226999426242
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          6.086455886550738e-14
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "diorama view",
+      "seconds": 171.91508500000054,
+      "scene": "cosmos-near-expanse",
+      "player": {
+        "x": 0,
+        "z": 0,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.8,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.99999999999999,
+        "fov": 60,
+        "center": [
+          0,
+          2.0718679756025393,
+          1.1369351102007484e-16
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          42.50293042709555,
+          48.055631873610075,
+          41.2794666012265
+        ],
+        "target": [
+          0,
+          2.0718679756025393,
+          1.1369351102007484e-16
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Screenshot 12-cosmos-three-lamps-diorama",
+      "seconds": 172.15664400000242,
+      "scene": "cosmos-near-expanse",
+      "player": {
+        "x": 0,
+        "z": 0,
+        "yaw": 3.141592653589793
+      },
+      "camera": {
+        "yaw": 0.8,
+        "elevation": 0.66,
+        "half": 16,
+        "distance": 11,
+        "actualDistance": 10.99999999999999,
+        "fov": 60,
+        "center": [
+          0,
+          2.0709751687743987,
+          5.935321727316212e-17
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          42.50293042709555,
+          48.054739066781934,
+          41.2794666012265
+        ],
+        "target": [
+          0,
+          2.0709751687743987,
+          5.935321727316212e-17
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Normal accepted walk 18,6",
+      "seconds": 172.27794279999216,
+      "scene": "valley",
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "camera": {
+        "yaw": 0.7999999999999998,
+        "elevation": 0.66,
+        "half": 15.542857142857143,
+        "distance": 11,
+        "actualDistance": 10.99999999999999,
+        "fov": 60,
+        "center": [
+          18,
+          1.903998082068772,
+          6
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          60.50293042709555,
+          47.88776198007631,
+          47.27946660122651
+        ],
+        "target": [
+          18,
+          1.903998082068772,
+          6
+        ]
+      },
+      "dive": null
+    },
+    {
+      "name": "Free home return",
+      "seconds": 172.28413980000187,
+      "scene": "valley",
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "camera": {
+        "yaw": 0.7999999999999998,
+        "elevation": 0.66,
+        "half": 15.542857142857143,
+        "distance": 11,
+        "actualDistance": 10.99999999999999,
+        "fov": 60,
+        "center": [
+          18,
+          1.903998082068772,
+          6
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "zoom": 0.9142857142857143,
+        "baseHalf": 17,
+        "projection": "orthographic",
+        "eye": [
+          60.50293042709555,
+          47.88776198007631,
+          47.27946660122651
+        ],
+        "target": [
+          18,
+          1.903998082068772,
+          6
+        ]
+      },
+      "dive": null
+    }
+  ],
+  "samples": [
+    {
+      "intervals_ms": [
+        16.700000000000728,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.700000000000728,
+        16.599999999998545,
+        16.600000000002183,
+        16.799999999999272,
+        16.599999999998545,
+        16.700000000000728,
+        16.700000000000728,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.600000000002183,
+        16.69999999999709,
+        16.700000000000728,
+        16.600000000002183,
+        16.69999999999709,
+        16.700000000000728,
+        16.700000000000728,
+        16.599999999998545,
+        16.600000000002183,
+        16.700000000000728,
+        16.69999999999709,
+        16.700000000000728,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.600000000002183,
+        16.69999999999709,
+        16.700000000000728,
+        16.600000000002183,
+        16.69999999999709,
+        16.600000000002183,
+        16.700000000000728,
+        16.69999999999709,
+        16.700000000000728,
+        16.600000000002183,
+        16.69999999999709,
+        16.700000000000728,
+        16.700000000000728,
+        16.599999999998545,
+        16.600000000002183,
+        16.700000000000728,
+        16.69999999999709,
+        16.700000000000728,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.600000000002183,
+        16.69999999999709,
+        16.700000000000728,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.600000000002183,
+        16.69999999999709,
+        16.600000000002183,
+        16.700000000000728,
+        16.69999999999709,
+        16.600000000002183,
+        16.799999999999272,
+        16.599999999998545,
+        16.700000000000728,
+        16.600000000002183,
+        16.599999999998545,
+        16.799999999999272,
+        16.600000000002183,
+        16.69999999999709,
+        16.600000000002183,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.700000000000728,
+        16.69999999999709,
+        16.700000000000728,
+        16.600000000002183,
+        16.69999999999709,
+        16.700000000000728,
+        16.600000000002183,
+        16.599999999998545,
+        16.700000000000728,
+        16.700000000000728,
+        16.69999999999709,
+        16.700000000000728,
+        16.600000000002183,
+        16.599999999998545,
+        16.700000000000728,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.700000000000728,
+        16.69999999999709,
+        16.600000000002183,
+        16.700000000000728,
+        16.69999999999709,
+        16.600000000002183,
+        16.700000000000728,
+        16.69999999999709,
+        16.700000000000728,
+        16.600000000002183,
+        16.69999999999709,
+        16.600000000002183,
+        16.700000000000728,
+        16.69999999999709,
+        16.600000000002183,
+        16.700000000000728,
+        16.69999999999709,
+        16.600000000002183,
+        16.700000000000728,
+        16.69999999999709,
+        16.700000000000728,
+        16.5,
+        16.799999999999272,
+        16.600000000002183,
+        16.599999999998545,
+        16.700000000000728,
+        16.700000000000728,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.700000000000728,
+        16.69999999999709,
+        16.600000000002183,
+        16.599999999998545,
+        16.700000000000728,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.700000000000728,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.700000000000728,
+        16.69999999999709,
+        16.600000000002183,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.700000000000728,
+        16.700000000000728,
+        16.69999999999709,
+        16.600000000002183,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.599999999998545,
+        16.80000000000291,
+        16.599999999998545,
+        16.700000000000728,
+        16.599999999998545,
+        16.700000000000728,
+        16.700000000000728
+      ],
+      "scene": "world-earthlands",
+      "projection": "perspective",
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "hidden": false,
+      "paused": false,
+      "quality": "balanced",
+      "drawing_buffer": {
+        "width": 1280,
+        "height": 720
+      },
+      "metrics": {
+        "drawCalls": 27,
+        "instances": 954,
+        "triangles": 34760
+      },
+      "label": "Earth channel third person",
+      "median_ms": 16.69999999999891,
+      "p95_ms": 16.700000000000728,
+      "maximum_ms": 16.80000000000291,
+      "over_33_333_ms": 0
+    },
+    {
+      "intervals_ms": [
+        16.59999999999127,
+        16.69999999999709,
+        16.70000000001164,
+        16.69999999999709,
+        16.59999999999127,
+        16.70000000001164,
+        16.59999999999127,
+        16.69999999999709,
+        16.60000000000582,
+        16.80000000000291,
+        16.59999999999127,
+        16.70000000001164,
+        16.59999999999127,
+        16.69999999999709,
+        16.70000000001164,
+        16.59999999999127,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.70000000001164,
+        16.59999999999127,
+        16.69999999999709,
+        16.60000000000582,
+        16.80000000000291,
+        16.59999999999127,
+        16.60000000000582,
+        16.80000000000291,
+        16.59999999999127,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.80000000000291,
+        16.59999999999127,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.70000000001164,
+        16.59999999999127,
+        16.69999999999709,
+        16.70000000001164,
+        16.59999999999127,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.70000000001164,
+        16.59999999999127,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.70000000001164,
+        16.59999999999127,
+        16.69999999999709,
+        16.70000000001164,
+        16.59999999999127,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.69999999999709,
+        16.70000000001164,
+        16.59999999999127,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.80000000000291,
+        16.59999999999127,
+        16.69999999999709,
+        16.60000000000582,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.60000000000582,
+        16.79999999998836,
+        16.70000000001164,
+        16.5,
+        16.79999999998836,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.60000000000582,
+        16.79999999998836,
+        16.60000000000582,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.59999999999127,
+        16.80000000000291,
+        16.60000000000582,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.79999999998836,
+        16.60000000000582,
+        16.60000000000582,
+        16.69999999999709,
+        16.59999999999127,
+        16.80000000000291,
+        16.60000000000582,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.59999999999127,
+        16.70000000001164,
+        16.69999999999709,
+        16.59999999999127,
+        16.70000000001164,
+        16.69999999999709,
+        16.69999999999709
+      ],
+      "scene": "world-heaven",
+      "projection": "perspective",
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "hidden": false,
+      "paused": false,
+      "quality": "balanced",
+      "drawing_buffer": {
+        "width": 1280,
+        "height": 720
+      },
+      "metrics": {
+        "drawCalls": 14,
+        "instances": 1320,
+        "triangles": 64804
+      },
+      "label": "Heaven garden third person",
+      "median_ms": 16.69999999999709,
+      "p95_ms": 16.79999999998836,
+      "maximum_ms": 16.80000000000291,
+      "over_33_333_ms": 0
+    },
+    {
+      "intervals_ms": [
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.70000000001164,
+        16.59999999999127,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.60000000000582,
+        16.79999999998836,
+        16.60000000000582,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.59999999999127,
+        16.70000000001164,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.59999999999127,
+        16.80000000000291,
+        16.60000000000582,
+        16.59999999999127,
+        16.80000000000291,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.59999999999127,
+        16.80000000000291,
+        16.60000000000582,
+        16.59999999999127,
+        16.70000000001164,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.59999999999127,
+        16.70000000001164,
+        16.59999999999127,
+        16.80000000000291,
+        16.60000000000582,
+        16.69999999999709,
+        16.59999999999127,
+        16.70000000001164,
+        16.59999999999127,
+        16.69999999999709,
+        16.70000000001164,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.59999999999127,
+        16.70000000001164,
+        16.59999999999127,
+        16.80000000000291,
+        16.60000000000582,
+        16.69999999999709,
+        16.59999999999127,
+        16.70000000001164,
+        16.69999999999709,
+        16.59999999999127,
+        16.70000000001164,
+        16.59999999999127,
+        16.69999999999709,
+        16.70000000001164,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.69999999999709,
+        16.59999999999127,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.70000000001164,
+        16.59999999999127,
+        16.80000000000291,
+        16.60000000000582,
+        16.69999999999709,
+        16.59999999999127,
+        16.70000000001164,
+        16.69999999999709,
+        16.59999999999127,
+        16.70000000001164,
+        16.59999999999127,
+        16.69999999999709,
+        16.70000000001164,
+        16.69999999999709,
+        16.59999999999127,
+        16.60000000000582,
+        16.69999999999709,
+        16.69999999999709,
+        16.60000000000582,
+        16.80000000000291,
+        16.59999999999127,
+        16.70000000001164,
+        16.69999999999709,
+        16.59999999999127,
+        16.60000000000582,
+        16.80000000000291,
+        16.59999999999127,
+        16.70000000001164
+      ],
+      "scene": "world-hell",
+      "projection": "perspective",
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "hidden": false,
+      "paused": false,
+      "quality": "balanced",
+      "drawing_buffer": {
+        "width": 1280,
+        "height": 720
+      },
+      "metrics": {
+        "drawCalls": 13,
+        "instances": 850,
+        "triangles": 45446
+      },
+      "label": "Hell industrial approach third person",
+      "median_ms": 16.69999999999709,
+      "p95_ms": 16.70000000001164,
+      "maximum_ms": 16.80000000000291,
+      "over_33_333_ms": 0
+    },
+    {
+      "intervals_ms": [
+        16.70000000001164,
+        16.70000000001164,
+        16.599999999976717,
+        16.70000000001164,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.599999999976717,
+        16.70000000001164,
+        16.70000000001164,
+        16.599999999976717,
+        16.70000000001164,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.60000000000582,
+        16.79999999998836,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.5,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.70000000001164,
+        16.599999999976717,
+        16.70000000001164,
+        16.70000000001164,
+        16.599999999976717,
+        16.70000000001164,
+        16.70000000001164,
+        16.599999999976717,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.70000000001164,
+        16.599999999976717,
+        16.60000000000582,
+        16.800000000017462,
+        16.599999999976717,
+        16.70000000001164,
+        16.70000000001164,
+        16.599999999976717,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.70000000001164,
+        16.599999999976717,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.800000000017462,
+        16.599999999976717,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.800000000017462,
+        16.599999999976717,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.60000000000582,
+        16.79999999998836,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.79999999998836,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.699999999982538,
+        16.5,
+        16.70000000001164,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.79999999998836
+      ],
+      "scene": "world-atlantis",
+      "projection": "perspective",
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "hidden": false,
+      "paused": false,
+      "quality": "balanced",
+      "drawing_buffer": {
+        "width": 1280,
+        "height": 720
+      },
+      "metrics": {
+        "drawCalls": 23,
+        "instances": 493,
+        "triangles": 27308
+      },
+      "label": "Atlantis submerged gallery third person",
+      "median_ms": 16.699999999982538,
+      "p95_ms": 16.70000000001164,
+      "maximum_ms": 16.800000000017462,
+      "over_33_333_ms": 0
+    },
+    {
+      "intervals_ms": [
+        16.599999999976717,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.70000000001164,
+        16.599999999976717,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.60000000000582,
+        16.79999999998836,
+        16.5,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.79999999998836,
+        16.5,
+        16.70000000001164,
+        16.79999999998836,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.60000000000582,
+        16.79999999998836,
+        16.60000000000582,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.79999999998836,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.599999999976717,
+        16.70000000001164,
+        16.79999999998836,
+        16.60000000000582,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.599999999976717,
+        16.70000000001164,
+        16.70000000001164,
+        16.599999999976717,
+        16.800000000017462,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164,
+        16.60000000000582,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.599999999976717,
+        16.70000000001164,
+        16.70000000001164,
+        16.699999999982538,
+        16.60000000000582,
+        16.70000000001164,
+        16.599999999976717,
+        16.70000000001164,
+        16.70000000001164,
+        16.599999999976717,
+        16.70000000001164,
+        16.70000000001164,
+        16.699999999982538,
+        16.70000000001164
+      ],
+      "scene": "cosmos-near-expanse",
+      "projection": "perspective",
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "hidden": false,
+      "paused": false,
+      "quality": "balanced",
+      "drawing_buffer": {
+        "width": 1280,
+        "height": 720
+      },
+      "metrics": {
+        "drawCalls": 13,
+        "instances": 2227,
+        "triangles": 142436
+      },
+      "label": "Cosmos lamps third person",
+      "median_ms": 16.699999999982538,
+      "p95_ms": 16.70000000001164,
+      "maximum_ms": 16.800000000017462,
+      "over_33_333_ms": 0
+    }
+  ],
+  "browser_errors": [],
+  "human_acceptance": false,
+  "sustained_performance_qualification": false,
+  "browser": "143.0.7499.4",
+  "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "footage_start_seconds": 1.831327899999451,
+  "combat": {
+    "style": "blade",
+    "health_before_guarded_hit": 100,
+    "health_after_guarded_hit": 96,
+    "enemy_id": "hell-salvage-sentinel",
+    "impact_events": [
+      {
+        "seconds": 0.18394259999331553,
+        "hp_before": 90,
+        "hp_after": 74,
+        "projectiles": 0
+      },
+      {
+        "seconds": 0.7329197999933967,
+        "hp_before": 74,
+        "hp_after": 58,
+        "projectiles": 0
+      },
+      {
+        "seconds": 1.2666922999924282,
+        "hp_before": 58,
+        "hp_after": 42,
+        "projectiles": 0
+      },
+      {
+        "seconds": 1.786310900002718,
+        "hp_before": 42,
+        "hp_after": 26,
+        "projectiles": 0
+      },
+      {
+        "seconds": 2.336167100002058,
+        "hp_before": 26,
+        "hp_after": 10,
+        "projectiles": 0
+      },
+      {
+        "seconds": 2.856073799994192,
+        "hp_before": 10,
+        "hp_after": 0,
+        "projectiles": 0
+      }
+    ]
+  },
+  "canonical_ownership_preserved": true,
+  "status": "passed",
+  "normal_time_seconds": 172.29691309999907,
+  "footage_end_seconds": 172.2969138999906,
+  "video_path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\1457185ae14d130f6bc8b6eb1e80f396.webm"
+}

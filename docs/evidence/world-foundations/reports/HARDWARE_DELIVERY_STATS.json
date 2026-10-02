@@ -1,0 +1,111 @@
+{
+  "html_sha256": "12a44af65c53e80e9e57175e85c63d683421797c33e22da935134a3df9368b1b",
+  "method": "Independent recomputation of five180-interval arrays, nearest-rank p95. Short presentation cadence only.",
+  "samples": [
+    {
+      "label": "Earth channel third person",
+      "intervals": 180,
+      "mean_ms": 16.666111111111118,
+      "median_ms": 16.69999999999891,
+      "nearest_rank_p95_ms": 16.700000000000728,
+      "maximum_ms": 16.80000000000291,
+      "over_33_333_ms": 0,
+      "scene": "world-earthlands",
+      "projection": "perspective",
+      "metrics": {
+        "drawCalls": 27,
+        "instances": 954,
+        "triangles": 34760
+      }
+    },
+    {
+      "label": "Heaven garden third person",
+      "intervals": 180,
+      "mean_ms": 16.66611111111108,
+      "median_ms": 16.69999999999709,
+      "nearest_rank_p95_ms": 16.79999999998836,
+      "maximum_ms": 16.80000000000291,
+      "over_33_333_ms": 0,
+      "scene": "world-heaven",
+      "projection": "perspective",
+      "metrics": {
+        "drawCalls": 14,
+        "instances": 1320,
+        "triangles": 64804
+      }
+    },
+    {
+      "label": "Hell industrial approach third person",
+      "intervals": 180,
+      "mean_ms": 16.66611111111116,
+      "median_ms": 16.69999999999709,
+      "nearest_rank_p95_ms": 16.70000000001164,
+      "maximum_ms": 16.80000000000291,
+      "over_33_333_ms": 0,
+      "scene": "world-hell",
+      "projection": "perspective",
+      "metrics": {
+        "drawCalls": 13,
+        "instances": 850,
+        "triangles": 45446
+      }
+    },
+    {
+      "label": "Atlantis submerged gallery third person",
+      "intervals": 180,
+      "mean_ms": 16.666666666666668,
+      "median_ms": 16.699999999982538,
+      "nearest_rank_p95_ms": 16.70000000001164,
+      "maximum_ms": 16.800000000017462,
+      "over_33_333_ms": 0,
+      "scene": "world-atlantis",
+      "projection": "perspective",
+      "metrics": {
+        "drawCalls": 23,
+        "instances": 493,
+        "triangles": 27308
+      }
+    },
+    {
+      "label": "Cosmos lamps third person",
+      "intervals": 180,
+      "mean_ms": 16.66611111111108,
+      "median_ms": 16.699999999982538,
+      "nearest_rank_p95_ms": 16.70000000001164,
+      "maximum_ms": 16.800000000017462,
+      "over_33_333_ms": 0,
+      "scene": "cosmos-near-expanse",
+      "projection": "perspective",
+      "metrics": {
+        "drawCalls": 13,
+        "instances": 2227,
+        "triangles": 142436
+      }
+    }
+  ],
+  "pooled": {
+    "intervals": 900,
+    "sum_ms": 14999.599999999999,
+    "mean_ms": 16.66622222222222,
+    "median_ms": 16.69999999999709,
+    "nearest_rank_p95_ms": 16.70000000001164,
+    "maximum_ms": 16.800000000017462,
+    "over_33_333_ms": 0
+  },
+  "environment": {
+    "headless": true,
+    "browser": "143.0.7499.4",
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "quality": "balanced",
+    "driver": "610.74 supplied by Root; not independently queried",
+    "concurrent_load": "Root reports shared CPU software-browser verification and ordinary desktop GPU load; not isolated or independently quantified"
+  },
+  "bow_sample": null,
+  "work_raf": "Observer count/span only; no interval sample",
+  "human_acceptance": false,
+  "sustained_performance_qualification": false
+}

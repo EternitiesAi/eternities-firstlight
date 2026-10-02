@@ -1,0 +1,1788 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "bounded_historical_source_and_hardware_evidence_audit",
+  "generated_at_utc": "2026-10-02T12:28:18.611Z",
+  "auditor": "/root/atlantis_earth_foundations",
+  "scope": {
+    "authorized_output": "D:/07-GAMES/Firstlight/artifacts/world-foundations-night-2026-10-02/SOURCE_BF11319_AUDIT.json",
+    "inputs": [
+      "verification-01",
+      "hardware-tour-04/REPORT.json",
+      "hardware-bow-01/REPORT.json"
+    ],
+    "no_test_browser_gpu_or_service_launches": true,
+    "no_personal_save_access": true,
+    "no_other_writes": true,
+    "method": "Read existing logs/reports; count recorded PASS assertions or JSON checks without duplicating summaries; independently SHA-256 all gate logs, reports, recorded source fixtures and videos; recompute hardware sample statistics from each raw intervals_ms array."
+  },
+  "source_epoch": {
+    "tested_commit": "bf1131998d2cc72fdaadc1d7dc40d0dca3ccb0c0",
+    "commit_identity_basis": "Root supplied tested source checkpoint; commit is not embedded in these per-gate logs",
+    "html_sha256": "eeb4448629f212edc539c265ea6b05b890ae548227795b3ba2ceae76c01c5a6a",
+    "html_identity_evidence": [
+      "verification-01/build.log",
+      "hardware-tour-04/REPORT.json",
+      "hardware-bow-01/REPORT.json"
+    ],
+    "built_html_bytes": 2360219,
+    "superseded_by_final_ui_html_sha256": "92fb503cd080f68275c6d1ca24308daca15e013a101a1777fa22b86c19aafbd0",
+    "final_ui_build_covered": false
+  },
+  "command": {
+    "invocation": "& 'C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Scripts/python.exe' tools/verify.py --browser --output D:/07-GAMES/Firstlight/artifacts/world-foundations-night-2026-10-02/verification-01",
+    "cwd": "D:/07-GAMES/Firstlight/authoring/bridge-moment",
+    "basis": "Exact original invocation confirmed by Root",
+    "root_execution_observation": {
+      "session_id": 50505,
+      "exit_code": 0,
+      "terminal_message": "Verification passed.",
+      "basis": "Root supplied observation of tools.write_stdin session 50505; independently derived counts below do not rerun the verifier"
+    }
+  },
+  "source_gates": {
+    "gate_log_count": 117,
+    "counts_by_category": {
+      "browser": 22,
+      "build": 1,
+      "command_journey": 27,
+      "python_helpers": 1,
+      "node_rules": 1,
+      "javascript_syntax": 65
+    },
+    "non_browser_gate_logs": 95,
+    "javascript_syntax": {
+      "log_count": 65,
+      "standalone_exit_markers_present": false,
+      "caveat": "All 65 syntax logs contain empty stdout. They are compatible with successful node --check, but do not independently embed exit codes. Root separately supplied the successful parent verifier exit; inspected bf11319 verifier fails fast on nonzero subprocess exits."
+    },
+    "node_rules": {
+      "tests": 785,
+      "pass": 785,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "python_helpers": {
+      "tests": 54,
+      "executed_passes": 53,
+      "skipped": 1,
+      "reported_seconds": 8.912,
+      "result": "OK (skipped=1)",
+      "skip_details": [
+        {
+          "test_name": "test_symlink_refused",
+          "qualified_test": "test_checkout_import.ImportRules.test_symlink_refused",
+          "reason": "Windows account lacks symlink privilege; real symlink refusal is exercised on Linux CI",
+          "evidence_line": "test_symlink_refused (test_checkout_import.ImportRules.test_symlink_refused) ... skipped 'Windows account lacks symlink privilege; real symlink refusal is exercised on Linux CI'"
+        }
+      ]
+    },
+    "journey_report_count": 27,
+    "journeys": [
+      {
+        "file": "verification-01/characters-journey.log",
+        "status": "passed",
+        "variant": "imported-command-earned-independent-roster",
+        "commands": {
+          "roster": 11,
+          "acceptedGame": 6,
+          "refusedGame": 2
+        }
+      },
+      {
+        "file": "verification-01/classes-journey.log",
+        "status": "passed",
+        "variant": "imported-command-earned-worlds-with-new-complete-class-surveys",
+        "commands": {
+          "accepted": 42,
+          "refused": 8
+        },
+        "acceleratedTick": true,
+        "positionEdits": 0,
+        "inventoryGrants": 0,
+        "plantedDefeats": 0
+      },
+      {
+        "file": "verification-01/cosmos-journey.log",
+        "status": "passed",
+        "variant": "command-earned-returning-veteran",
+        "acceleratedTicks": true,
+        "personalSaves": false
+      },
+      {
+        "file": "verification-01/crossing-blade.log",
+        "status": "passed",
+        "weapon": "blade",
+        "commands": 40,
+        "positionEdits": 0,
+        "inventoryGrants": 0,
+        "plantedDefeats": 0
+      },
+      {
+        "file": "verification-01/crossing-bow.log",
+        "status": "passed",
+        "weapon": "bow",
+        "commands": 53,
+        "positionEdits": 0,
+        "inventoryGrants": 0,
+        "plantedDefeats": 0
+      },
+      {
+        "file": "verification-01/earth-journey.log",
+        "status": "passed",
+        "variant": "command-earned-returning-veteran",
+        "acceleratedTicks": true,
+        "personalSaves": false
+      },
+      {
+        "file": "verification-01/earth-notes-blade.log",
+        "status": "passed",
+        "variant": "fresh-blade-detour",
+        "weapon": "trail_blade",
+        "commands": 6,
+        "acceleratedTicks": true,
+        "positionEdits": 0,
+        "inventoryGrants": 0,
+        "plantedObjectives": 0
+      },
+      {
+        "file": "verification-01/earth-notes-bow.log",
+        "status": "passed",
+        "variant": "fresh-bow-quarry",
+        "weapon": "trail_bow",
+        "commands": 6,
+        "acceleratedTicks": true,
+        "positionEdits": 0,
+        "inventoryGrants": 0,
+        "plantedObjectives": 0
+      },
+      {
+        "file": "verification-01/earth-notes-veteran.log",
+        "status": "passed",
+        "variant": "veteran-mill",
+        "weapon": "dawn_edge",
+        "commands": 6,
+        "acceleratedTicks": true,
+        "positionEdits": 0,
+        "inventoryGrants": 0,
+        "plantedObjectives": 0
+      },
+      {
+        "file": "verification-01/earth-outing-blade.log",
+        "status": "passed",
+        "variant": "fresh-blade",
+        "commands": 80,
+        "acceleratedTick": true,
+        "positionEdits": 0,
+        "inventoryGrants": 0,
+        "plantedDefeats": 0
+      },
+      {
+        "file": "verification-01/earth-outing-bow.log",
+        "status": "passed",
+        "variant": "fresh-bow",
+        "commands": 106,
+        "acceleratedTick": true,
+        "positionEdits": 0,
+        "inventoryGrants": 0,
+        "plantedDefeats": 0
+      },
+      {
+        "file": "verification-01/earth-outing-veteran.log",
+        "status": "passed",
+        "variant": "veteran",
+        "commands": 53,
+        "acceleratedTick": true,
+        "positionEdits": 0,
+        "inventoryGrants": 0,
+        "plantedDefeats": 0
+      },
+      {
+        "file": "verification-01/earth-story-blade.log",
+        "status": "passed",
+        "variant": "fresh-blade-detour",
+        "weapon": "trail_blade",
+        "commands": 8,
+        "acceleratedTicks": true,
+        "positionEdits": 0,
+        "inventoryGrants": 0,
+        "plantedObjectives": 0
+      },
+      {
+        "file": "verification-01/earth-story-bow.log",
+        "status": "passed",
+        "variant": "fresh-bow-quarry",
+        "weapon": "trail_bow",
+        "commands": 23,
+        "acceleratedTicks": true,
+        "positionEdits": 0,
+        "inventoryGrants": 0,
+        "plantedObjectives": 0
+      },
+      {
+        "file": "verification-01/earth-story-veteran.log",
+        "status": "passed",
+        "variant": "veteran-mill",
+        "weapon": "dawn_edge",
+        "commands": 6,
+        "acceleratedTicks": true,
+        "positionEdits": 0,
+        "inventoryGrants": 0,
+        "plantedObjectives": 0
+      },
+      {
+        "file": "verification-01/gathering-blade.log",
+        "status": "passed",
+        "variant": "fresh-blade-detour",
+        "weapon": "trail_blade",
+        "commands": 6,
+        "acceleratedTicks": true,
+        "positionEdits": 0,
+        "inventoryGrants": 0,
+        "plantedObjectives": 0
+      },
+      {
+        "file": "verification-01/gathering-bow.log",
+        "status": "passed",
+        "variant": "fresh-bow-quarry",
+        "weapon": "trail_bow",
+        "commands": 6,
+        "acceleratedTicks": true,
+        "positionEdits": 0,
+        "inventoryGrants": 0,
+        "plantedObjectives": 0
+      },
+      {
+        "file": "verification-01/gathering-veteran.log",
+        "status": "passed",
+        "variant": "veteran-mill",
+        "weapon": "dawn_edge",
+        "commands": 6,
+        "acceleratedTicks": true,
+        "positionEdits": 0,
+        "inventoryGrants": 0,
+        "plantedObjectives": 0
+      },
+      {
+        "file": "verification-01/pursuit-blade.log",
+        "status": "passed",
+        "variant": "fresh-blade",
+        "commands": 88,
+        "acceleratedTick": true,
+        "positionEdits": 0,
+        "inventoryGrants": 0,
+        "plantedDefeats": 0
+      },
+      {
+        "file": "verification-01/pursuit-bow.log",
+        "status": "passed",
+        "variant": "fresh-bow",
+        "commands": 113,
+        "acceleratedTick": true,
+        "positionEdits": 0,
+        "inventoryGrants": 0,
+        "plantedDefeats": 0
+      },
+      {
+        "file": "verification-01/pursuit-veteran.log",
+        "status": "passed",
+        "variant": "veteran",
+        "commands": 58,
+        "acceleratedTick": true,
+        "positionEdits": 0,
+        "inventoryGrants": 0,
+        "plantedDefeats": 0
+      },
+      {
+        "file": "verification-01/starter-blade.log",
+        "status": "passed",
+        "variant": "fresh-blade",
+        "commands": 42,
+        "acceleratedTick": true,
+        "positionEdits": 0,
+        "inventoryGrants": 0,
+        "plantedDefeats": 0
+      },
+      {
+        "file": "verification-01/starter-bow.log",
+        "status": "passed",
+        "variant": "fresh-bow",
+        "commands": 54,
+        "acceleratedTick": true,
+        "positionEdits": 0,
+        "inventoryGrants": 0,
+        "plantedDefeats": 0
+      },
+      {
+        "file": "verification-01/starter-veteran.log",
+        "status": "passed"
+      },
+      {
+        "file": "verification-01/world-foundations-blade.log",
+        "status": "passed",
+        "variant": "fresh-blade",
+        "claims": 10,
+        "acceptedCommands": 50,
+        "walkedLegs": 57
+      },
+      {
+        "file": "verification-01/world-foundations-bow.log",
+        "status": "passed",
+        "variant": "fresh-bow",
+        "claims": 10,
+        "acceptedCommands": 50,
+        "walkedLegs": 57
+      },
+      {
+        "file": "verification-01/world-foundations-veteran.log",
+        "status": "passed",
+        "variant": "veteran",
+        "claims": 10,
+        "acceptedCommands": 50,
+        "walkedLegs": 57
+      }
+    ],
+    "world_foundations_journey_totals": {
+      "variants": 3,
+      "claims_each": 10,
+      "accepted_commands_each": 50,
+      "walked_legs_each": 57,
+      "claims_total": 30,
+      "accepted_commands_total": 150,
+      "walked_legs_total": 171
+    }
+  },
+  "gate_log_inventory": [
+    {
+      "file": "verification-01/bridge_browser.log",
+      "category": "browser",
+      "bytes": 50723,
+      "sha256": "2ed94b7ac4cdedb93d1f091df691fc44553ec3f5fbbfcabf82623d8226c1758c"
+    },
+    {
+      "file": "verification-01/build.log",
+      "category": "build",
+      "bytes": 91,
+      "sha256": "1fe3df0c2187f341f4c34a8010d852e34988bd00ed9f06b86d5c10e062a21058"
+    },
+    {
+      "file": "verification-01/camera_browser.log",
+      "category": "browser",
+      "bytes": 2640,
+      "sha256": "c5f37fb1454af0e19496ffe1d24e84f0bbcfca236985ad61c2aee24bb60e02ae"
+    },
+    {
+      "file": "verification-01/characters-journey.log",
+      "category": "command_journey",
+      "bytes": 3058,
+      "sha256": "683b3007f6054c32bd7c7fb988a9c9892272d7c087aa9e47c0a8322afb2cd318"
+    },
+    {
+      "file": "verification-01/characters_browser.log",
+      "category": "browser",
+      "bytes": 4357,
+      "sha256": "a067d91915df7395e4d268225d48ac904837632f801bdf7c1858d12d722603a0"
+    },
+    {
+      "file": "verification-01/classes-journey.log",
+      "category": "command_journey",
+      "bytes": 4224,
+      "sha256": "ee1277ed59cdfa10ba3647fdc7e1e601c8c5f170723b6048d3321256c4c53fcc"
+    },
+    {
+      "file": "verification-01/classes_browser.log",
+      "category": "browser",
+      "bytes": 2383,
+      "sha256": "ef23c78cd5f3a8bfae077961bab37392f61f6377eb46fcc65c0f6de96e6c4003"
+    },
+    {
+      "file": "verification-01/combat_cue_browser.log",
+      "category": "browser",
+      "bytes": 2350,
+      "sha256": "e6b20f78dfd4d2f9831e322c7be794dd6af40223f85b9b7684a853214f9dc22f"
+    },
+    {
+      "file": "verification-01/cosmos-journey.log",
+      "category": "command_journey",
+      "bytes": 630,
+      "sha256": "8c9dc8309ab18674df71939050e8919a5238e0e53ad12950a3953e895791656d"
+    },
+    {
+      "file": "verification-01/cosmos_browser.log",
+      "category": "browser",
+      "bytes": 3927,
+      "sha256": "d1b998b402ed890f27a57e6d5fcb746a2f61fa357d557b07e15279d06c4c1747"
+    },
+    {
+      "file": "verification-01/crossing-blade.log",
+      "category": "command_journey",
+      "bytes": 625,
+      "sha256": "0b27a5083c98c2983b9d5dd15b33456d395f182b4b299bbf46412b4f244ba956"
+    },
+    {
+      "file": "verification-01/crossing-bow.log",
+      "category": "command_journey",
+      "bytes": 649,
+      "sha256": "f1f412fb8081e5e0c9e1c60e5ea9b8d1de892fbc3c23c2a76e5b1470f8c04d4a"
+    },
+    {
+      "file": "verification-01/crossing_browser.log",
+      "category": "browser",
+      "bytes": 4046,
+      "sha256": "b7e60195cd71a79ca9b858931c055035ea08a9294c5c72a464dbd9d7a6585723"
+    },
+    {
+      "file": "verification-01/cutaway_browser.log",
+      "category": "browser",
+      "bytes": 1126,
+      "sha256": "a3352eeff5224508b5224466c757e2209c04d0c25355aa641057cc7ceee8f507"
+    },
+    {
+      "file": "verification-01/earth-journey.log",
+      "category": "command_journey",
+      "bytes": 602,
+      "sha256": "a7622b5d784c2ece28e863b6fb68355fc08a36f3a256bd172b463cb0ff0296ad"
+    },
+    {
+      "file": "verification-01/earth-notes-blade.log",
+      "category": "command_journey",
+      "bytes": 2028,
+      "sha256": "05eb7c32470b86aa3729302ad57d8b06fa1dd2f542a4a0a4ea616ec42b2d2a7c"
+    },
+    {
+      "file": "verification-01/earth-notes-bow.log",
+      "category": "command_journey",
+      "bytes": 2030,
+      "sha256": "1297fb75eb7b037ed20ab21c1447bfe4f9fc45e246fb173fcda28506a2cc7e7e"
+    },
+    {
+      "file": "verification-01/earth-notes-veteran.log",
+      "category": "command_journey",
+      "bytes": 2022,
+      "sha256": "d97b6c65d6efd0a22c15507ad4bda4d9951ea07617a44a9754153cbf611136cc"
+    },
+    {
+      "file": "verification-01/earth-outing-blade.log",
+      "category": "command_journey",
+      "bytes": 5482,
+      "sha256": "be9b2f2c5cc1dc45ed3ada36ba842c06b1e0144b009f341107d3acafb80f6a60"
+    },
+    {
+      "file": "verification-01/earth-outing-bow.log",
+      "category": "command_journey",
+      "bytes": 6715,
+      "sha256": "e4e71e12da6150014a280b35387a3f507522cee791079ddbb89e5805a720d8c6"
+    },
+    {
+      "file": "verification-01/earth-outing-veteran.log",
+      "category": "command_journey",
+      "bytes": 3478,
+      "sha256": "0140f36414c9905610bdd838af494220156e4a4d2f3a490aa6d9fe0b96240f71"
+    },
+    {
+      "file": "verification-01/earth-story-blade.log",
+      "category": "command_journey",
+      "bytes": 3039,
+      "sha256": "8edb10b07e895d316a4935d564fe388aabd76e5cbaf6f55abb9e3ac36ad0ea54"
+    },
+    {
+      "file": "verification-01/earth-story-bow.log",
+      "category": "command_journey",
+      "bytes": 3448,
+      "sha256": "88f377b2365dbd697d2cd13ebf5a756974f0d91755b5408d15397f31a1e3616f"
+    },
+    {
+      "file": "verification-01/earth-story-veteran.log",
+      "category": "command_journey",
+      "bytes": 2628,
+      "sha256": "a2d870ee2d66f752853eb8129a34c04cd223c6aa3f108a65725804a30ff928b7"
+    },
+    {
+      "file": "verification-01/earth_browser.log",
+      "category": "browser",
+      "bytes": 5235,
+      "sha256": "6a25250a666ae36470b65d48796757b5c4f01f9ff168d8c88fc39ca8e29be557"
+    },
+    {
+      "file": "verification-01/earth_notes_browser.log",
+      "category": "browser",
+      "bytes": 7022,
+      "sha256": "332191c4133c3eb0bd6e07a8b4dc0cb7a0048d08890b6ba69ce4868bbdb1c747"
+    },
+    {
+      "file": "verification-01/earth_story_browser.log",
+      "category": "browser",
+      "bytes": 15524,
+      "sha256": "a991f0903f4d626b1d89e8210cd7fa0162847b777d54f81e4b752eff53af65f5"
+    },
+    {
+      "file": "verification-01/gathering-blade.log",
+      "category": "command_journey",
+      "bytes": 2008,
+      "sha256": "ad7e6afbfce218ffde70fc6d7e1df5581fc42419dd5639fe698bf2c0f962fd3f"
+    },
+    {
+      "file": "verification-01/gathering-bow.log",
+      "category": "command_journey",
+      "bytes": 2004,
+      "sha256": "ad0ab3bd553f6f076608ab85ce8ae4fec831d82c2d8eb6c444416f51389eb804"
+    },
+    {
+      "file": "verification-01/gathering-veteran.log",
+      "category": "command_journey",
+      "bytes": 1998,
+      "sha256": "511e5a7652470f79ef7b25b0be409090de69186b77cbdbed590d92c45508cc63"
+    },
+    {
+      "file": "verification-01/gathering_browser.log",
+      "category": "browser",
+      "bytes": 5641,
+      "sha256": "d6f061cdf3c3510853b9ae997400adfb15609e052c526269633e39c3bd507d2f"
+    },
+    {
+      "file": "verification-01/native_origin_browser.log",
+      "category": "browser",
+      "bytes": 516,
+      "sha256": "0b81853b4503586fb0edd367582284bedfc3a2256c3d12ff3f608e63435b5263"
+    },
+    {
+      "file": "verification-01/pursuit-blade.log",
+      "category": "command_journey",
+      "bytes": 5483,
+      "sha256": "04029aab268bf30da55bb85ea9cb89e5ab63ecd7f782a59c97aa095529ce4647"
+    },
+    {
+      "file": "verification-01/pursuit-bow.log",
+      "category": "command_journey",
+      "bytes": 6710,
+      "sha256": "7954f060cccbda3f5837029b6b177c60db43a02f6d581a5880ed7382a76135d1"
+    },
+    {
+      "file": "verification-01/pursuit-veteran.log",
+      "category": "command_journey",
+      "bytes": 3475,
+      "sha256": "c04e0006cd3f0cedc914ef9511e989f693da3f808b540512ebea1a245d68e76c"
+    },
+    {
+      "file": "verification-01/pursuit_browser.log",
+      "category": "browser",
+      "bytes": 6250,
+      "sha256": "96822dee04d9c5e7da7750a450efbbcdaafda025f52a218e44b172ee626d5e12"
+    },
+    {
+      "file": "verification-01/python.log",
+      "category": "python_helpers",
+      "bytes": 6275,
+      "sha256": "3808a202143df6b6010ca2c7349b6c4929433b016b2a94d21a0898632ca3fc53"
+    },
+    {
+      "file": "verification-01/realm_atlas_browser.log",
+      "category": "browser",
+      "bytes": 2177,
+      "sha256": "aeaa2edea10aa5195268cbd2a87a0e063a6d4f799176e0f0d0dc5f3bfdab35fc"
+    },
+    {
+      "file": "verification-01/reflection_browser.log",
+      "category": "browser",
+      "bytes": 1849,
+      "sha256": "0900ff3373d1a0559a15198055ca764c85cf08ee61b2b5a72c5a012ee245ba6b"
+    },
+    {
+      "file": "verification-01/regression09_browser.log",
+      "category": "browser",
+      "bytes": 4172,
+      "sha256": "f961280bfd48606e6024aa38a62f5987eaba527c66e9db533adf04933c89a9ea"
+    },
+    {
+      "file": "verification-01/rules.log",
+      "category": "node_rules",
+      "bytes": 157166,
+      "sha256": "6a710e58ac854c8305160a57d10edb95a40cd99819ab342a22690cde320991f6"
+    },
+    {
+      "file": "verification-01/starter-blade.log",
+      "category": "command_journey",
+      "bytes": 507,
+      "sha256": "729c3767bb1878a64a4de9ae24b0989c3d3f0ed12c7456975bcc5ead00107b0a"
+    },
+    {
+      "file": "verification-01/starter-bow.log",
+      "category": "command_journey",
+      "bytes": 503,
+      "sha256": "2496bd1b1ba568c3ff951073bede4e7625f178d4aa75780f9ab122264bf8b37f"
+    },
+    {
+      "file": "verification-01/starter-veteran.log",
+      "category": "command_journey",
+      "bytes": 1438,
+      "sha256": "a5ce11e73e32f6a35882e153121d316e4ff0bf6682f0b18001f5e86a2f979be0"
+    },
+    {
+      "file": "verification-01/starter_browser.log",
+      "category": "browser",
+      "bytes": 5086,
+      "sha256": "62851f6e17391909357099954f8ffd98512b4a1e9079529032fea46df8ebba87"
+    },
+    {
+      "file": "verification-01/syntax-adventure-art.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-adventure-ui.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-adventure.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-app.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-arsenal-art.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-arsenal-ui.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-arsenal.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-beacon-art.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-beacon.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-bridge-art.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-characters-ui.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-characters.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-classes-ui.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-classes.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-combat.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-core.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-cosmos-art.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-cosmos-ui.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-cosmos.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-creative.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-crossing-art.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-crossing-ui.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-crossing.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-drover-art.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-earth-art.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-earth-notes-art.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-earth-notes-ui.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-earth-notes.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-earth-shoulder-art.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-earth-story-ui.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-earth-story.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-earth-ui.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-earth.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-engine.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-experience.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-gathering-adapter.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-gathering-art.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-gathering-music.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-gathering-ui.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-gathering.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-mill-gate-art.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-millwright-art.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-pursuit-ui.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-pursuit.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-quarry-art.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-realm-art-data.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-realm-atlas-ui.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-road-art.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-road.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-rpg-ui.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-sandbox-art.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-sandbox-ui.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-sandbox.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-starter-art.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-starter-ui.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-starter.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-surface-assets.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-traveler-art.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-traveler-equipment-art.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-world-atlantis-earth.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-world-foundations-art.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-world-foundations-ui.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-world-foundations.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-world-heaven-hell.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/syntax-world.log",
+      "category": "javascript_syntax",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "verification-01/timber_browser.log",
+      "category": "browser",
+      "bytes": 2209,
+      "sha256": "d4daadf0b4bc1a1b65c3666059fd0c3072a2bbbd5de1203c4d3b0a6b09eca177"
+    },
+    {
+      "file": "verification-01/traveler_browser.log",
+      "category": "browser",
+      "bytes": 5167,
+      "sha256": "430d81deb91c463cd76dceec31ff29783a3dcd753776cd7f51b9d8b36fd6d1fc"
+    },
+    {
+      "file": "verification-01/world-foundations-blade.log",
+      "category": "command_journey",
+      "bytes": 115,
+      "sha256": "fc64a7526f2397fe2fd184a12f5b7161198deee503ca08909120d5cee37e8e24"
+    },
+    {
+      "file": "verification-01/world-foundations-bow.log",
+      "category": "command_journey",
+      "bytes": 113,
+      "sha256": "672abbfbe7a1d33774e55716e058cae4b29ce9f6c013361f41d6b31a4ad224d6"
+    },
+    {
+      "file": "verification-01/world-foundations-veteran.log",
+      "category": "command_journey",
+      "bytes": 111,
+      "sha256": "f67ce6df32a739cda65cf92f5c480d85fc7cf4969a8894534f8f0a9487566137"
+    },
+    {
+      "file": "verification-01/world_cutaway_browser.log",
+      "category": "browser",
+      "bytes": 2144,
+      "sha256": "16c8827407953229d2daabadffb661f1530e8e9e7c223c2f5145774b169e1f2a"
+    },
+    {
+      "file": "verification-01/world_foundations_browser.log",
+      "category": "browser",
+      "bytes": 9151,
+      "sha256": "305e4dda47f104278d5ab601b597e6a95207f0dd4f1e3abcb5a0eccd0efdbc2b"
+    }
+  ],
+  "browsers": {
+    "suite_count": 22,
+    "passing_assertion_total": 2039,
+    "failed_assertion_lines": 0,
+    "suites": [
+      {
+        "file": "verification-01/bridge_browser.log",
+        "assertions": 138,
+        "pass_line_count": 138,
+        "json_check_count": 138,
+        "json_passed": true,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "PASS lines; any repeated JSON summary is not counted again"
+      },
+      {
+        "file": "verification-01/camera_browser.log",
+        "assertions": 51,
+        "pass_line_count": 51,
+        "json_check_count": null,
+        "json_passed": null,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "PASS lines; any repeated JSON summary is not counted again"
+      },
+      {
+        "file": "verification-01/characters_browser.log",
+        "assertions": 67,
+        "pass_line_count": 67,
+        "json_check_count": null,
+        "json_passed": null,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "PASS lines; any repeated JSON summary is not counted again"
+      },
+      {
+        "file": "verification-01/classes_browser.log",
+        "assertions": 45,
+        "pass_line_count": 45,
+        "json_check_count": null,
+        "json_passed": null,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "PASS lines; any repeated JSON summary is not counted again"
+      },
+      {
+        "file": "verification-01/combat_cue_browser.log",
+        "assertions": 62,
+        "pass_line_count": 62,
+        "json_check_count": null,
+        "json_passed": null,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "PASS lines; any repeated JSON summary is not counted again"
+      },
+      {
+        "file": "verification-01/cosmos_browser.log",
+        "assertions": 75,
+        "pass_line_count": 75,
+        "json_check_count": null,
+        "json_passed": null,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "PASS lines; any repeated JSON summary is not counted again"
+      },
+      {
+        "file": "verification-01/crossing_browser.log",
+        "assertions": 115,
+        "pass_line_count": 115,
+        "json_check_count": null,
+        "json_passed": null,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "PASS lines; any repeated JSON summary is not counted again"
+      },
+      {
+        "file": "verification-01/cutaway_browser.log",
+        "assertions": 6,
+        "pass_line_count": 0,
+        "json_check_count": 6,
+        "json_passed": true,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "JSON checks array"
+      },
+      {
+        "file": "verification-01/earth_browser.log",
+        "assertions": 104,
+        "pass_line_count": 104,
+        "json_check_count": null,
+        "json_passed": null,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "PASS lines; any repeated JSON summary is not counted again"
+      },
+      {
+        "file": "verification-01/earth_notes_browser.log",
+        "assertions": 134,
+        "pass_line_count": 134,
+        "json_check_count": null,
+        "json_passed": null,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "PASS lines; any repeated JSON summary is not counted again"
+      },
+      {
+        "file": "verification-01/earth_story_browser.log",
+        "assertions": 293,
+        "pass_line_count": 293,
+        "json_check_count": null,
+        "json_passed": null,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "PASS lines; any repeated JSON summary is not counted again"
+      },
+      {
+        "file": "verification-01/gathering_browser.log",
+        "assertions": 118,
+        "pass_line_count": 118,
+        "json_check_count": null,
+        "json_passed": null,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "PASS lines; any repeated JSON summary is not counted again"
+      },
+      {
+        "file": "verification-01/native_origin_browser.log",
+        "assertions": 11,
+        "pass_line_count": 11,
+        "json_check_count": null,
+        "json_passed": null,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "PASS lines; any repeated JSON summary is not counted again"
+      },
+      {
+        "file": "verification-01/pursuit_browser.log",
+        "assertions": 164,
+        "pass_line_count": 164,
+        "json_check_count": null,
+        "json_passed": null,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "PASS lines; any repeated JSON summary is not counted again"
+      },
+      {
+        "file": "verification-01/realm_atlas_browser.log",
+        "assertions": 48,
+        "pass_line_count": 48,
+        "json_check_count": null,
+        "json_passed": null,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "PASS lines; any repeated JSON summary is not counted again"
+      },
+      {
+        "file": "verification-01/reflection_browser.log",
+        "assertions": 8,
+        "pass_line_count": 0,
+        "json_check_count": 8,
+        "json_passed": true,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "JSON checks array"
+      },
+      {
+        "file": "verification-01/regression09_browser.log",
+        "assertions": 107,
+        "pass_line_count": 107,
+        "json_check_count": null,
+        "json_passed": null,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "PASS lines; any repeated JSON summary is not counted again"
+      },
+      {
+        "file": "verification-01/starter_browser.log",
+        "assertions": 148,
+        "pass_line_count": 148,
+        "json_check_count": null,
+        "json_passed": null,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "PASS lines; any repeated JSON summary is not counted again"
+      },
+      {
+        "file": "verification-01/timber_browser.log",
+        "assertions": 40,
+        "pass_line_count": 40,
+        "json_check_count": null,
+        "json_passed": null,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "PASS lines; any repeated JSON summary is not counted again"
+      },
+      {
+        "file": "verification-01/traveler_browser.log",
+        "assertions": 116,
+        "pass_line_count": 116,
+        "json_check_count": null,
+        "json_passed": null,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "PASS lines; any repeated JSON summary is not counted again"
+      },
+      {
+        "file": "verification-01/world_cutaway_browser.log",
+        "assertions": 8,
+        "pass_line_count": 8,
+        "json_check_count": 8,
+        "json_passed": true,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "PASS lines; any repeated JSON summary is not counted again"
+      },
+      {
+        "file": "verification-01/world_foundations_browser.log",
+        "assertions": 181,
+        "pass_line_count": 181,
+        "json_check_count": null,
+        "json_passed": null,
+        "fail_lines": 0,
+        "json_failed_checks": 0,
+        "count_basis": "PASS lines; any repeated JSON summary is not counted again"
+      }
+    ],
+    "count_limit": "Assertion records include repeated accepted-command and walking checks across fixtures. 2039 is an assertion total, not 2039 unique scenarios."
+  },
+  "hardware": {
+    "tour_04": {
+      "report_identity": {
+        "path": "D:/07-GAMES/Firstlight/artifacts/world-foundations-night-2026-10-02/hardware-tour-04/REPORT.json",
+        "bytes": 102255,
+        "sha256": "faa106a38e400e7bb35411a6ee2daeb3a6ea7f0df4d195509554135f7fab5fa9"
+      },
+      "variant": "tour",
+      "recorded_method": "Normal-time five-road tour in an isolated hardware Chromium profile.\n\nOnly setup imports a labelled command-earned save. Movement, held swim keys,\ncrossing and one accepted Heaven objective use production callers and real RAF.\nShort RAF samples measure presentation cadence, not sustained GPU throughput.\n",
+      "source_fixture_reported": "evidence10\\world-foundations\\journey\\fresh-blade\\00_INITIAL_KIT.json",
+      "source_fixture_sha256_reported": "d5dae74922159450b291054999ca6f1bc0600e26f1bca566d05b2815db2c457c",
+      "source_fixture_current_identity": {
+        "path": "D:/07-GAMES/Firstlight/authoring/bridge-moment/evidence10/world-foundations/journey/fresh-blade/00_INITIAL_KIT.json",
+        "bytes": 10539,
+        "sha256": "d5dae74922159450b291054999ca6f1bc0600e26f1bca566d05b2815db2c457c"
+      },
+      "source_fixture_current_matches_report": true,
+      "html_sha256": "eeb4448629f212edc539c265ea6b05b890ae548227795b3ba2ceae76c01c5a6a",
+      "browser": "143.0.7499.4",
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "quality": "balanced",
+      "status": "passed",
+      "browser_errors": [],
+      "event_count": 71,
+      "event_names": [
+        "Normal accepted walk 18,6",
+        "Deliberate crossing earthlands",
+        "third view",
+        "Normal accepted walk 0,91",
+        "Screenshot 01-earth-bridge-approach",
+        "Normal accepted walk 0,55",
+        "third view",
+        "Screenshot 02-earth-channel-third",
+        "Short hardware RAF sample Earth channel third person",
+        "diorama view",
+        "Normal accepted walk 0,23",
+        "Screenshot 03-earth-bridge-diorama",
+        "Normal accepted walk 18,6",
+        "Free home return",
+        "Deliberate crossing heaven",
+        "third view",
+        "Normal accepted walk -14,6.7",
+        "Normal accepted walk 0,-1",
+        "Heaven first objective accepted through UI",
+        "Normal accepted walk 0,-25",
+        "Screenshot 04-heaven-garden-third",
+        "Short hardware RAF sample Heaven garden third person",
+        "diorama view",
+        "Screenshot 05-heaven-garden-diorama",
+        "Normal accepted walk 18,6",
+        "Free home return",
+        "Deliberate crossing hell",
+        "diorama view",
+        "Normal accepted walk -10,25.7",
+        "Screenshot hell-refuge-open-roof",
+        "third view",
+        "Normal accepted walk 12,-8",
+        "Screenshot 06-hell-industrial-road-third",
+        "Short hardware RAF sample Hell industrial approach third person",
+        "diorama view",
+        "Screenshot 07-hell-refuge-diorama",
+        "Normal accepted walk 44,-82",
+        "third view",
+        "Normal accepted walk 44,-92.9",
+        "Real Tab selects sentinel",
+        "Real Brace during sentinel tell",
+        "Screenshot hell-blade-guarded-hit",
+        "Real stationary autoattack starts",
+        "Actual sentinel defeat recorded",
+        "Screenshot hell-blade-defeated",
+        "Normal accepted walk 18,6",
+        "Free home return",
+        "Deliberate crossing atlantis",
+        "third view",
+        "Normal accepted walk -6,0",
+        "Screenshot 08-atlantis-civic-third",
+        "Normal accepted walk 8,-16",
+        "third view",
+        "Screenshot 09-atlantis-underwater",
+        "Short hardware RAF sample Atlantis submerged gallery third person",
+        "diorama view",
+        "Screenshot atlantis-gallery-diorama",
+        "third view",
+        "third view",
+        "Screenshot 10-atlantis-air-court",
+        "Normal accepted walk 18,6",
+        "Free home return",
+        "Deliberate crossing cosmos",
+        "third view",
+        "Normal accepted walk 0,0",
+        "Screenshot 11-cosmos-three-lamps-third",
+        "Short hardware RAF sample Cosmos lamps third person",
+        "diorama view",
+        "Screenshot 12-cosmos-three-lamps-diorama",
+        "Normal accepted walk 18,6",
+        "Free home return"
+      ],
+      "normal_time_seconds": 159.50986839999678,
+      "last_event_seconds": 159.4985244999989,
+      "footage_start_seconds": 2.4173461999889696,
+      "footage_end_seconds": 159.50986969999212,
+      "reported_footage_span_seconds": 157.09252350000315,
+      "video_identity": {
+        "path": "D:/07-GAMES/Firstlight/artifacts/world-foundations-night-2026-10-02/hardware-tour-04/8caa1e95c9ce182347463d7d348a08a3.webm",
+        "bytes": 19166991,
+        "sha256": "253a1ed9357a6438a439ef7681bc6b7318b78857a06df443be3cf7719682b8fc"
+      },
+      "video_duration_independently_measured": false,
+      "video_content_reviewed_in_this_audit": false,
+      "still_filenames": [
+        "01-earth-bridge-approach.png",
+        "02-earth-channel-third.png",
+        "03-earth-bridge-diorama.png",
+        "04-heaven-garden-third.png",
+        "05-heaven-garden-diorama.png",
+        "06-hell-industrial-road-third.png",
+        "07-hell-refuge-diorama.png",
+        "08-atlantis-civic-third.png",
+        "09-atlantis-underwater.png",
+        "10-atlantis-air-court.png",
+        "11-cosmos-three-lamps-third.png",
+        "12-cosmos-three-lamps-diorama.png",
+        "atlantis-gallery-diorama.png",
+        "hell-blade-defeated.png",
+        "hell-blade-guarded-hit.png",
+        "hell-refuge-open-roof.png"
+      ],
+      "sample_count": 5,
+      "samples": [
+        {
+          "label": "Earth channel third person",
+          "scene": "world-earthlands",
+          "projection": "perspective",
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "hidden": false,
+          "paused": false,
+          "quality": "balanced",
+          "drawing_buffer": {
+            "width": 1280,
+            "height": 720
+          },
+          "metrics": {
+            "drawCalls": 27,
+            "instances": 954,
+            "triangles": 34760
+          },
+          "recomputed": {
+            "interval_count": 180,
+            "interval_sum_ms": 2999.899999999998,
+            "mean_ms": 16.6661111111111,
+            "median_ms": 16.700000000000728,
+            "p95_nearest_rank_ms": 16.700000000000728,
+            "maximum_ms": 16.80000000000291,
+            "over_33_333_ms": 0
+          },
+          "reported": {
+            "median_ms": 16.700000000000728,
+            "p95_ms": 16.700000000000728,
+            "maximum_ms": 16.80000000000291,
+            "over_33_333_ms": 0
+          },
+          "agrees_with_report": true
+        },
+        {
+          "label": "Heaven garden third person",
+          "scene": "world-heaven",
+          "projection": "perspective",
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "hidden": false,
+          "paused": false,
+          "quality": "balanced",
+          "drawing_buffer": {
+            "width": 1280,
+            "height": 720
+          },
+          "metrics": {
+            "drawCalls": 14,
+            "instances": 1113,
+            "triangles": 62608
+          },
+          "recomputed": {
+            "interval_count": 180,
+            "interval_sum_ms": 2999.9000000000015,
+            "mean_ms": 16.666111111111118,
+            "median_ms": 16.69999999999709,
+            "p95_nearest_rank_ms": 16.700000000004366,
+            "maximum_ms": 16.80000000000291,
+            "over_33_333_ms": 0
+          },
+          "reported": {
+            "median_ms": 16.69999999999709,
+            "p95_ms": 16.700000000004366,
+            "maximum_ms": 16.80000000000291,
+            "over_33_333_ms": 0
+          },
+          "agrees_with_report": true
+        },
+        {
+          "label": "Hell industrial approach third person",
+          "scene": "world-hell",
+          "projection": "perspective",
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "hidden": false,
+          "paused": false,
+          "quality": "balanced",
+          "drawing_buffer": {
+            "width": 1280,
+            "height": 720
+          },
+          "metrics": {
+            "drawCalls": 13,
+            "instances": 850,
+            "triangles": 45446
+          },
+          "recomputed": {
+            "interval_count": 180,
+            "interval_sum_ms": 2999.9000000000087,
+            "mean_ms": 16.66611111111116,
+            "median_ms": 16.69999999999709,
+            "p95_nearest_rank_ms": 16.70000000001164,
+            "maximum_ms": 16.80000000000291,
+            "over_33_333_ms": 0
+          },
+          "reported": {
+            "median_ms": 16.69999999999709,
+            "p95_ms": 16.70000000001164,
+            "maximum_ms": 16.80000000000291,
+            "over_33_333_ms": 0
+          },
+          "agrees_with_report": true
+        },
+        {
+          "label": "Atlantis submerged gallery third person",
+          "scene": "world-atlantis",
+          "projection": "perspective",
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "hidden": false,
+          "paused": false,
+          "quality": "balanced",
+          "drawing_buffer": {
+            "width": 1280,
+            "height": 720
+          },
+          "metrics": {
+            "drawCalls": 23,
+            "instances": 493,
+            "triangles": 27308
+          },
+          "recomputed": {
+            "interval_count": 180,
+            "interval_sum_ms": 2999.8000000000175,
+            "mean_ms": 16.665555555555652,
+            "median_ms": 16.699999999982538,
+            "p95_nearest_rank_ms": 16.79999999998836,
+            "maximum_ms": 16.800000000017462,
+            "over_33_333_ms": 0
+          },
+          "reported": {
+            "median_ms": 16.699999999982538,
+            "p95_ms": 16.79999999998836,
+            "maximum_ms": 16.800000000017462,
+            "over_33_333_ms": 0
+          },
+          "agrees_with_report": true
+        },
+        {
+          "label": "Cosmos lamps third person",
+          "scene": "cosmos-near-expanse",
+          "projection": "perspective",
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+          "hidden": false,
+          "paused": false,
+          "quality": "balanced",
+          "drawing_buffer": {
+            "width": 1280,
+            "height": 720
+          },
+          "metrics": {
+            "drawCalls": 13,
+            "instances": 2227,
+            "triangles": 142436
+          },
+          "recomputed": {
+            "interval_count": 180,
+            "interval_sum_ms": 2999.7999999999884,
+            "mean_ms": 16.665555555555493,
+            "median_ms": 16.699999999982538,
+            "p95_nearest_rank_ms": 16.79999999998836,
+            "maximum_ms": 16.800000000017462,
+            "over_33_333_ms": 0
+          },
+          "reported": {
+            "median_ms": 16.699999999982538,
+            "p95_ms": 16.79999999998836,
+            "maximum_ms": 16.800000000017462,
+            "over_33_333_ms": 0
+          },
+          "agrees_with_report": true
+        }
+      ],
+      "pooled_sample_statistics": {
+        "interval_count": 900,
+        "interval_sum_ms": 14999.300000000014,
+        "mean_ms": 16.665888888888905,
+        "median_ms": 16.69999999999709,
+        "p95_nearest_rank_ms": 16.70000000001164,
+        "maximum_ms": 16.800000000017462,
+        "over_33_333_ms": 0
+      },
+      "combat": {
+        "style": "blade",
+        "enemy_id": "hell-salvage-sentinel",
+        "player_hp_before_guarded_hit": 100,
+        "player_hp_after_guarded_hit": 96,
+        "player_hp_loss_during_guarded_hit": 4,
+        "impact_count": 6,
+        "enemy_hp_start": 90,
+        "enemy_hp_end": 0,
+        "last_recorded_impact_seconds": 2.8691813000041293,
+        "impact_events": [
+          {
+            "seconds": 0.1768508999957703,
+            "hp_before": 90,
+            "hp_after": 74,
+            "projectiles": 0
+          },
+          {
+            "seconds": 0.7289454999990994,
+            "hp_before": 74,
+            "hp_after": 58,
+            "projectiles": 0
+          },
+          {
+            "seconds": 1.269671100002597,
+            "hp_before": 58,
+            "hp_after": 42,
+            "projectiles": 0
+          },
+          {
+            "seconds": 1.780744899995625,
+            "hp_before": 42,
+            "hp_after": 26,
+            "projectiles": 0
+          },
+          {
+            "seconds": 2.2957601999951294,
+            "hp_before": 26,
+            "hp_after": 10,
+            "projectiles": 0
+          },
+          {
+            "seconds": 2.8691813000041293,
+            "hp_before": 10,
+            "hp_after": 0,
+            "projectiles": 0
+          }
+        ]
+      },
+      "canonical_ownership_preserved_reported": true,
+      "human_acceptance": false,
+      "sustained_performance_qualification": false
+    },
+    "bow_01": {
+      "report_identity": {
+        "path": "D:/07-GAMES/Firstlight/artifacts/world-foundations-night-2026-10-02/hardware-bow-01/REPORT.json",
+        "bytes": 14951,
+        "sha256": "8b087eb9d4465afdf6a38b0d52e679511f938ac4a4570fad8ab7c9fc2dfb5ed5"
+      },
+      "variant": "bow-combat",
+      "recorded_method": "Normal-time five-road tour in an isolated hardware Chromium profile.\n\nOnly setup imports a labelled command-earned save. Movement, held swim keys,\ncrossing and one accepted Heaven objective use production callers and real RAF.\nShort RAF samples measure presentation cadence, not sustained GPU throughput.\n",
+      "source_fixture_reported": "evidence10\\pursuit\\fresh-bow\\02_SOURCE_READY.json",
+      "source_fixture_sha256_reported": "0478bb4d0b3d49df2254dc1d42aa7320fcd4ccabb3ca0833f15740316b407ecf",
+      "source_fixture_current_identity": {
+        "path": "D:/07-GAMES/Firstlight/authoring/bridge-moment/evidence10/pursuit/fresh-bow/02_SOURCE_READY.json",
+        "bytes": 20897,
+        "sha256": "0478bb4d0b3d49df2254dc1d42aa7320fcd4ccabb3ca0833f15740316b407ecf"
+      },
+      "source_fixture_current_matches_report": true,
+      "html_sha256": "eeb4448629f212edc539c265ea6b05b890ae548227795b3ba2ceae76c01c5a6a",
+      "browser": "143.0.7499.4",
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "quality": "balanced",
+      "status": "passed",
+      "browser_errors": [],
+      "event_count": 13,
+      "event_names": [
+        "Normal accepted walk 18,6",
+        "Deliberate crossing hell",
+        "Normal accepted walk 44,-82",
+        "third view",
+        "Normal accepted walk 44,-90",
+        "Real Tab selects sentinel",
+        "Real Brace during sentinel tell",
+        "Screenshot hell-bow-guarded-hit",
+        "Real stationary autoattack starts",
+        "Actual sentinel defeat recorded",
+        "Screenshot hell-bow-defeated",
+        "Normal accepted walk 18,6",
+        "Free home return"
+      ],
+      "normal_time_seconds": 54.37066319999576,
+      "last_event_seconds": 54.3597798999981,
+      "footage_start_seconds": 4.891398099993239,
+      "footage_end_seconds": 54.370664100002614,
+      "reported_footage_span_seconds": 49.479266000009375,
+      "video_identity": {
+        "path": "D:/07-GAMES/Firstlight/artifacts/world-foundations-night-2026-10-02/hardware-bow-01/57fa6396287cf9e68dd21f16309ee3ac.webm",
+        "bytes": 6130299,
+        "sha256": "03ec8a37f42ab90e37b8688e2719fd5f066b3da1bc07fa2aa87f483925e63085"
+      },
+      "video_duration_independently_measured": false,
+      "video_content_reviewed_in_this_audit": false,
+      "still_filenames": [
+        "hell-bow-defeated.png",
+        "hell-bow-guarded-hit.png"
+      ],
+      "sample_count": 0,
+      "samples": [],
+      "pooled_sample_statistics": null,
+      "combat": {
+        "style": "bow",
+        "enemy_id": "hell-salvage-sentinel",
+        "player_hp_before_guarded_hit": 100,
+        "player_hp_after_guarded_hit": 96,
+        "player_hp_loss_during_guarded_hit": 4,
+        "impact_count": 7,
+        "enemy_hp_start": 90,
+        "enemy_hp_end": 0,
+        "last_recorded_impact_seconds": 4.918180699998629,
+        "impact_events": [
+          {
+            "seconds": 0.2926256999926409,
+            "hp_before": 90,
+            "hp_after": 77,
+            "projectiles": 0
+          },
+          {
+            "seconds": 1.0777275000000373,
+            "hp_before": 77,
+            "hp_after": 64,
+            "projectiles": 0
+          },
+          {
+            "seconds": 1.8354446000012103,
+            "hp_before": 64,
+            "hp_after": 51,
+            "projectiles": 0
+          },
+          {
+            "seconds": 2.6024188000010327,
+            "hp_before": 51,
+            "hp_after": 38,
+            "projectiles": 0
+          },
+          {
+            "seconds": 3.3809419000026537,
+            "hp_before": 38,
+            "hp_after": 25,
+            "projectiles": 0
+          },
+          {
+            "seconds": 4.119137999994564,
+            "hp_before": 25,
+            "hp_after": 12,
+            "projectiles": 0
+          },
+          {
+            "seconds": 4.918180699998629,
+            "hp_before": 12,
+            "hp_after": 0,
+            "projectiles": 0
+          }
+        ]
+      },
+      "canonical_ownership_preserved_reported": true,
+      "human_acceptance": false,
+      "sustained_performance_qualification": false
+    },
+    "statistic_method": "Median averages the two middle sorted values for even N; p95 uses nearest-rank ceil(0.95*N)-1; threshold is strictly greater than 33.333ms. Stored report summaries agree within 1e-8ms."
+  },
+  "caveats": [
+    "All source/browser/hardware counts in this receipt belong to bf1131998d2cc72fdaadc1d7dc40d0dca3ccb0c0 / eeb4448629f212edc539c265ea6b05b890ae548227795b3ba2ceae76c01c5a6a. They do not establish verification or footage for the later 92fb503c UI build.",
+    "Python reports 54 tests, including one explicit Windows symlink-privilege skip. It is inaccurate to call all 54 executed passes or to claim the Linux CI symlink test was independently inspected here.",
+    "Hardware cadence consists of five ~3-second perspective samples totaling ~14.9993 seconds. It does not measure sustained GPU throughput, thermal behavior, percentile latency for the entire tour, or performance in every camera/region.",
+    "The bow run has no RAF samples. No independent bow frame-time statistic is supported by its report.",
+    "The bow report reuses method prose describing a five-road tour, swimming and a Heaven objective. Its variant and 13 actual event names show a Hell bow-combat run only. That generic prose is not a supported description of bow scope.",
+    "Guarded sequences record player HP100 to96; without an unguarded comparator these records do not quantify the amount of damage avoided by guard.",
+    "All impact snapshots report projectiles0 after damage. This does not independently establish projectile flight appearance or travel timing, although the bow-labelled impact sequence and actual enemy defeat are recorded.",
+    "Reported footage-span timestamps are not an independently measured media duration. Video files were hashed, not decoded or watched in this audit.",
+    "canonical_ownership_preserved is a report field; this audit verified identities and arithmetic, not every intermediate save mutation.",
+    "Both hardware reports explicitly set human_acceptance=false and sustained_performance_qualification=false. Automated actions, passed software gates, sample cadence and file identities do not establish human feel, accessibility qualification, deployment, remote reproducibility, or whole-video quality."
+  ]
+}

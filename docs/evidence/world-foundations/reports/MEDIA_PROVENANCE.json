@@ -1,0 +1,1431 @@
+{
+  "html_sha256": "12a44af65c53e80e9e57175e85c63d683421797c33e22da935134a3df9368b1b",
+  "html_bytes": 2362025,
+  "scope": "Final delivery capture package; final remote full verifier is pending. Evidence is not release or human acceptance.",
+  "captures": [
+    {
+      "capture": "hardware-tour-delivery",
+      "report": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\REPORT.json",
+        "bytes": 108264,
+        "sha256": "0e04b0a5ea853309df11ea88ae0d64babcdbfb31c44ce86150cf047b480f0096"
+      },
+      "original_video": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\1457185ae14d130f6bc8b6eb1e80f396.webm",
+        "bytes": 20516413,
+        "sha256": "86834451a587704c63a30bbfb330e2a7b07f72521547094a145c4495269eff17"
+      },
+      "source_decode": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\1457185ae14d130f6bc8b6eb1e80f396.webm",
+        "bytes": 20516413,
+        "sha256": "86834451a587704c63a30bbfb330e2a7b07f72521547094a145c4495269eff17",
+        "decoded_frames": 4309,
+        "decoded_duration_seconds": 172.36,
+        "width": 1280,
+        "height": 720,
+        "declared_fps": 25.0,
+        "audio_present": false,
+        "decode_exit_code": 0,
+        "command": [
+          "C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Lib/site-packages/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe",
+          "-hide_banner",
+          "-nostdin",
+          "-hwaccel",
+          "none",
+          "-threads",
+          "2",
+          "-i",
+          "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\1457185ae14d130f6bc8b6eb1e80f396.webm",
+          "-map",
+          "0:v:0",
+          "-an",
+          "-fps_mode",
+          "passthrough",
+          "-f",
+          "null",
+          "-",
+          "-progress",
+          "pipe:1",
+          "-nostats"
+        ]
+      },
+      "html_sha256": "12a44af65c53e80e9e57175e85c63d683421797c33e22da935134a3df9368b1b",
+      "kit": "evidence10\\world-foundations\\journey\\fresh-blade\\00_INITIAL_KIT.json",
+      "kit_sha256": "d5dae74922159450b291054999ca6f1bc0600e26f1bca566d05b2815db2c457c",
+      "normal_time_seconds": 172.29691309999907,
+      "events": 77,
+      "browser_errors": [],
+      "human_acceptance": false,
+      "sustained_performance_qualification": false
+    },
+    {
+      "capture": "hardware-bow-delivery",
+      "report": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-bow-delivery\\REPORT.json",
+        "bytes": 15023,
+        "sha256": "ae121071057c8b83312410dea84a5fbef006f6f8891500a0e4dfe84b7f85a521"
+      },
+      "original_video": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-bow-delivery\\9f8bd79ff81714417106c9dd1731519d.webm",
+        "bytes": 6151515,
+        "sha256": "9ef8502f1f4716e189914332ce4ea3f5c99aaa472032e7bfdd32bf65efaef140"
+      },
+      "source_decode": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-bow-delivery\\9f8bd79ff81714417106c9dd1731519d.webm",
+        "bytes": 6151515,
+        "sha256": "9ef8502f1f4716e189914332ce4ea3f5c99aaa472032e7bfdd32bf65efaef140",
+        "decoded_frames": 1344,
+        "decoded_duration_seconds": 53.76,
+        "width": 1280,
+        "height": 720,
+        "declared_fps": 25.0,
+        "audio_present": false,
+        "decode_exit_code": 0,
+        "command": [
+          "C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Lib/site-packages/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe",
+          "-hide_banner",
+          "-nostdin",
+          "-hwaccel",
+          "none",
+          "-threads",
+          "2",
+          "-i",
+          "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-bow-delivery\\9f8bd79ff81714417106c9dd1731519d.webm",
+          "-map",
+          "0:v:0",
+          "-an",
+          "-fps_mode",
+          "passthrough",
+          "-f",
+          "null",
+          "-",
+          "-progress",
+          "pipe:1",
+          "-nostats"
+        ]
+      },
+      "html_sha256": "12a44af65c53e80e9e57175e85c63d683421797c33e22da935134a3df9368b1b",
+      "kit": "evidence10\\pursuit\\fresh-bow\\02_SOURCE_READY.json",
+      "kit_sha256": "0478bb4d0b3d49df2254dc1d42aa7320fcd4ccabb3ca0833f15740316b407ecf",
+      "normal_time_seconds": 54.17927779999445,
+      "events": 13,
+      "browser_errors": [],
+      "human_acceptance": false,
+      "sustained_performance_qualification": false
+    },
+    {
+      "capture": "hardware-work-delivery",
+      "report": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\REPORT.json",
+        "bytes": 125868,
+        "sha256": "85a9e1fc7de4fceb5702e9d8b2fda63dc6ba2ad2b5a23aba7ff674284f2ed321"
+      },
+      "original_video": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\a9c1a807abc53998c9284dc932a0341b.webm",
+        "bytes": 15166663,
+        "sha256": "82e28bb69df739138c1e81eb23bc4259d9760f2edcae386817ab2f3d75fdebd6"
+      },
+      "source_decode": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\a9c1a807abc53998c9284dc932a0341b.webm",
+        "bytes": 15166663,
+        "sha256": "82e28bb69df739138c1e81eb23bc4259d9760f2edcae386817ab2f3d75fdebd6",
+        "decoded_frames": 3091,
+        "decoded_duration_seconds": 123.64,
+        "width": 1280,
+        "height": 720,
+        "declared_fps": 25.0,
+        "audio_present": false,
+        "decode_exit_code": 0,
+        "command": [
+          "C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Lib/site-packages/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe",
+          "-hide_banner",
+          "-nostdin",
+          "-hwaccel",
+          "none",
+          "-threads",
+          "2",
+          "-i",
+          "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\a9c1a807abc53998c9284dc932a0341b.webm",
+          "-map",
+          "0:v:0",
+          "-an",
+          "-fps_mode",
+          "passthrough",
+          "-f",
+          "null",
+          "-",
+          "-progress",
+          "pipe:1",
+          "-nostats"
+        ]
+      },
+      "html_sha256": "12a44af65c53e80e9e57175e85c63d683421797c33e22da935134a3df9368b1b",
+      "kit": "evidence10\\world-foundations\\journey\\fresh-blade\\00_INITIAL_KIT.json",
+      "kit_sha256": "d5dae74922159450b291054999ca6f1bc0600e26f1bca566d05b2815db2c457c",
+      "normal_time_seconds": 123.59387919999426,
+      "events": 49,
+      "browser_errors": [],
+      "human_acceptance": false,
+      "sustained_performance_qualification": false
+    }
+  ],
+  "selected_media": [
+    {
+      "html_sha256": "12a44af65c53e80e9e57175e85c63d683421797c33e22da935134a3df9368b1b",
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\1457185ae14d130f6bc8b6eb1e80f396.webm",
+        "bytes": 20516413,
+        "sha256": "86834451a587704c63a30bbfb330e2a7b07f72521547094a145c4495269eff17"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-full-tour-12a44af6.mp4",
+        "bytes": 13654248,
+        "sha256": "270af4765f7c85adb64ed2a802db2a7f961c298aec13726a636b728c460bf371",
+        "decoded_frames": 4309,
+        "decoded_duration_seconds": 172.36,
+        "width": 1280,
+        "height": 720,
+        "declared_fps": 25.0,
+        "audio_present": false,
+        "decode_exit_code": 0,
+        "command": [
+          "C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Lib/site-packages/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe",
+          "-hide_banner",
+          "-nostdin",
+          "-hwaccel",
+          "none",
+          "-threads",
+          "2",
+          "-i",
+          "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-full-tour-12a44af6.mp4",
+          "-map",
+          "0:v:0",
+          "-an",
+          "-fps_mode",
+          "passthrough",
+          "-f",
+          "null",
+          "-",
+          "-progress",
+          "pipe:1",
+          "-nostats"
+        ]
+      },
+      "segments_video_seconds": null,
+      "planned_duration_seconds": null,
+      "speed_changed": false,
+      "frame_interpolation": false,
+      "audio": "silent",
+      "cpu_threads": 2,
+      "hardware_acceleration": false,
+      "encoder_command": [
+        "C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Lib/site-packages/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe",
+        "-hide_banner",
+        "-nostdin",
+        "-n",
+        "-hwaccel",
+        "none",
+        "-threads",
+        "2",
+        "-i",
+        "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\1457185ae14d130f6bc8b6eb1e80f396.webm",
+        "-map",
+        "0:v:0",
+        "-an",
+        "-c:v",
+        "libx264",
+        "-threads",
+        "2",
+        "-preset",
+        "veryfast",
+        "-crf",
+        "26",
+        "-pix_fmt",
+        "yuv420p",
+        "-fps_mode",
+        "passthrough",
+        "-movflags",
+        "+faststart",
+        "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-full-tour-12a44af6.mp4"
+      ],
+      "wall_clock_alignment": "Report marks start before browser/video creation. Trims follow inspected decoded video scenes; report event alignment remains approximate."
+    },
+    {
+      "html_sha256": "12a44af65c53e80e9e57175e85c63d683421797c33e22da935134a3df9368b1b",
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\1457185ae14d130f6bc8b6eb1e80f396.webm",
+        "bytes": 20516413,
+        "sha256": "86834451a587704c63a30bbfb330e2a7b07f72521547094a145c4495269eff17"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-five-roads-12a44af6.mp4",
+        "bytes": 3614650,
+        "sha256": "d5dd8b2b45345a53be3d590a13900b6587d8aa978e5f4ef129b26aff3e29ff48",
+        "decoded_frames": 1406,
+        "decoded_duration_seconds": 56.24,
+        "width": 1280,
+        "height": 720,
+        "declared_fps": 25.02,
+        "audio_present": false,
+        "decode_exit_code": 0,
+        "command": [
+          "C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Lib/site-packages/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe",
+          "-hide_banner",
+          "-nostdin",
+          "-hwaccel",
+          "none",
+          "-threads",
+          "2",
+          "-i",
+          "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-five-roads-12a44af6.mp4",
+          "-map",
+          "0:v:0",
+          "-an",
+          "-fps_mode",
+          "passthrough",
+          "-f",
+          "null",
+          "-",
+          "-progress",
+          "pipe:1",
+          "-nostats"
+        ]
+      },
+      "segments_video_seconds": [
+        [
+          5,
+          10.5,
+          "Earth bridge approach"
+        ],
+        [
+          17,
+          20.5,
+          "Earth channel third person"
+        ],
+        [
+          27,
+          31,
+          "Earth bridge diorama"
+        ],
+        [
+          51.8,
+          55.45,
+          "Heaven planted fork and camera exchange"
+        ],
+        [
+          65,
+          71.5,
+          "Heaven garden approach"
+        ],
+        [
+          75,
+          76.8,
+          "Hell refuge open roof"
+        ],
+        [
+          89.5,
+          93.2,
+          "Hell industrial road"
+        ],
+        [
+          123.8,
+          128.8,
+          "Hell real brace and blade fight"
+        ],
+        [
+          141,
+          144,
+          "Atlantis civic court"
+        ],
+        [
+          149.5,
+          160.52,
+          "Atlantis depth controls, gallery diorama and breathable air court"
+        ],
+        [
+          162,
+          170.55,
+          "Cosmos lamps with one presentation owner"
+        ]
+      ],
+      "planned_duration_seconds": 56.22000000000004,
+      "speed_changed": false,
+      "frame_interpolation": false,
+      "audio": "silent",
+      "cpu_threads": 2,
+      "hardware_acceleration": false,
+      "encoder_command": [
+        "C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Lib/site-packages/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe",
+        "-hide_banner",
+        "-nostdin",
+        "-n",
+        "-hwaccel",
+        "none",
+        "-threads",
+        "2",
+        "-i",
+        "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\1457185ae14d130f6bc8b6eb1e80f396.webm",
+        "-filter_complex_threads",
+        "1",
+        "-filter_complex",
+        "[0:v:0]trim=start=5:end=10.5,setpts=PTS-STARTPTS[v0];[0:v:0]trim=start=17:end=20.5,setpts=PTS-STARTPTS[v1];[0:v:0]trim=start=27:end=31,setpts=PTS-STARTPTS[v2];[0:v:0]trim=start=51.8:end=55.45,setpts=PTS-STARTPTS[v3];[0:v:0]trim=start=65:end=71.5,setpts=PTS-STARTPTS[v4];[0:v:0]trim=start=75:end=76.8,setpts=PTS-STARTPTS[v5];[0:v:0]trim=start=89.5:end=93.2,setpts=PTS-STARTPTS[v6];[0:v:0]trim=start=123.8:end=128.8,setpts=PTS-STARTPTS[v7];[0:v:0]trim=start=141:end=144,setpts=PTS-STARTPTS[v8];[0:v:0]trim=start=149.5:end=160.52,setpts=PTS-STARTPTS[v9];[0:v:0]trim=start=162:end=170.55,setpts=PTS-STARTPTS[v10];[v0][v1][v2][v3][v4][v5][v6][v7][v8][v9][v10]concat=n=11:v=1:a=0[out]",
+        "-map",
+        "[out]",
+        "-an",
+        "-c:v",
+        "libx264",
+        "-threads",
+        "2",
+        "-preset",
+        "veryfast",
+        "-crf",
+        "26",
+        "-pix_fmt",
+        "yuv420p",
+        "-fps_mode",
+        "passthrough",
+        "-movflags",
+        "+faststart",
+        "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-five-roads-12a44af6.mp4"
+      ],
+      "wall_clock_alignment": "Report marks start before browser/video creation. Trims follow inspected decoded video scenes; report event alignment remains approximate."
+    },
+    {
+      "html_sha256": "12a44af65c53e80e9e57175e85c63d683421797c33e22da935134a3df9368b1b",
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-bow-delivery\\9f8bd79ff81714417106c9dd1731519d.webm",
+        "bytes": 6151515,
+        "sha256": "9ef8502f1f4716e189914332ce4ea3f5c99aaa472032e7bfdd32bf65efaef140"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-bow-guard-fight-12a44af6-cut.mp4",
+        "bytes": 368506,
+        "sha256": "d7bd003fb924c89e1cfee64e5e093ebd205d29dfea98fcae13a94ae8e075696c",
+        "decoded_frames": 224,
+        "decoded_duration_seconds": 8.96,
+        "width": 1280,
+        "height": 720,
+        "declared_fps": 25.11,
+        "audio_present": false,
+        "decode_exit_code": 0,
+        "command": [
+          "C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Lib/site-packages/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe",
+          "-hide_banner",
+          "-nostdin",
+          "-hwaccel",
+          "none",
+          "-threads",
+          "2",
+          "-i",
+          "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-bow-guard-fight-12a44af6-cut.mp4",
+          "-map",
+          "0:v:0",
+          "-an",
+          "-fps_mode",
+          "passthrough",
+          "-f",
+          "null",
+          "-",
+          "-progress",
+          "pipe:1",
+          "-nostats"
+        ]
+      },
+      "segments_video_seconds": [
+        [
+          43.64,
+          52.64,
+          "Real sentinel tell, brace, seven projectile hits and defeat; ends before actual home transition"
+        ]
+      ],
+      "planned_duration_seconds": 9.0,
+      "speed_changed": false,
+      "frame_interpolation": false,
+      "audio": "silent",
+      "cpu_threads": 2,
+      "hardware_acceleration": false,
+      "encoder_command": [
+        "C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Lib/site-packages/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe",
+        "-hide_banner",
+        "-nostdin",
+        "-n",
+        "-hwaccel",
+        "none",
+        "-threads",
+        "2",
+        "-i",
+        "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-bow-delivery\\9f8bd79ff81714417106c9dd1731519d.webm",
+        "-filter_complex_threads",
+        "1",
+        "-filter_complex",
+        "[0:v:0]trim=start=43.64:end=52.64,setpts=PTS-STARTPTS[v0];[v0]concat=n=1:v=1:a=0[out]",
+        "-map",
+        "[out]",
+        "-an",
+        "-c:v",
+        "libx264",
+        "-threads",
+        "2",
+        "-preset",
+        "veryfast",
+        "-crf",
+        "26",
+        "-pix_fmt",
+        "yuv420p",
+        "-fps_mode",
+        "passthrough",
+        "-movflags",
+        "+faststart",
+        "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-bow-guard-fight-12a44af6-cut.mp4"
+      ],
+      "wall_clock_alignment": "Report marks start before browser/video creation. Trims follow inspected decoded video scenes; report event alignment remains approximate."
+    },
+    {
+      "html_sha256": "12a44af65c53e80e9e57175e85c63d683421797c33e22da935134a3df9368b1b",
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\a9c1a807abc53998c9284dc932a0341b.webm",
+        "bytes": 15166663,
+        "sha256": "82e28bb69df739138c1e81eb23bc4259d9760f2edcae386817ab2f3d75fdebd6"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-coastward-work-12a44af6.mp4",
+        "bytes": 3433106,
+        "sha256": "8c77b64a0a334174cce9919380f29b2d90d097767b099e5619ba20eab35eb885",
+        "decoded_frames": 1012,
+        "decoded_duration_seconds": 40.48,
+        "width": 1280,
+        "height": 720,
+        "declared_fps": 25.02,
+        "audio_present": false,
+        "decode_exit_code": 0,
+        "command": [
+          "C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Lib/site-packages/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe",
+          "-hide_banner",
+          "-nostdin",
+          "-hwaccel",
+          "none",
+          "-threads",
+          "2",
+          "-i",
+          "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-coastward-work-12a44af6.mp4",
+          "-map",
+          "0:v:0",
+          "-an",
+          "-fps_mode",
+          "passthrough",
+          "-f",
+          "null",
+          "-",
+          "-progress",
+          "pipe:1",
+          "-nostats"
+        ]
+      },
+      "segments_video_seconds": [
+        [
+          56.5,
+          62.5,
+          "Merren approach invitation and explicit acceptance"
+        ],
+        [
+          66.5,
+          71.5,
+          "Field-water objective and explicit record"
+        ],
+        [
+          78,
+          83,
+          "Produce objective and explicit record"
+        ],
+        [
+          85.5,
+          90.5,
+          "Delivery register and explicit record"
+        ],
+        [
+          92.6,
+          100.5,
+          "Continuous unpaid page to claim, balances, recognition and paid diorama"
+        ],
+        [
+          104.5,
+          108,
+          "Paid produce detail"
+        ],
+        [
+          115,
+          123.1,
+          "Paid field water, free home return and blade/bow project guide"
+        ]
+      ],
+      "planned_duration_seconds": 40.5,
+      "speed_changed": false,
+      "frame_interpolation": false,
+      "audio": "silent",
+      "cpu_threads": 2,
+      "hardware_acceleration": false,
+      "encoder_command": [
+        "C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Lib/site-packages/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe",
+        "-hide_banner",
+        "-nostdin",
+        "-n",
+        "-hwaccel",
+        "none",
+        "-threads",
+        "2",
+        "-i",
+        "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\a9c1a807abc53998c9284dc932a0341b.webm",
+        "-filter_complex_threads",
+        "1",
+        "-filter_complex",
+        "[0:v:0]trim=start=56.5:end=62.5,setpts=PTS-STARTPTS[v0];[0:v:0]trim=start=66.5:end=71.5,setpts=PTS-STARTPTS[v1];[0:v:0]trim=start=78:end=83,setpts=PTS-STARTPTS[v2];[0:v:0]trim=start=85.5:end=90.5,setpts=PTS-STARTPTS[v3];[0:v:0]trim=start=92.6:end=100.5,setpts=PTS-STARTPTS[v4];[0:v:0]trim=start=104.5:end=108,setpts=PTS-STARTPTS[v5];[0:v:0]trim=start=115:end=123.1,setpts=PTS-STARTPTS[v6];[v0][v1][v2][v3][v4][v5][v6]concat=n=7:v=1:a=0[out]",
+        "-map",
+        "[out]",
+        "-an",
+        "-c:v",
+        "libx264",
+        "-threads",
+        "2",
+        "-preset",
+        "veryfast",
+        "-crf",
+        "26",
+        "-pix_fmt",
+        "yuv420p",
+        "-fps_mode",
+        "passthrough",
+        "-movflags",
+        "+faststart",
+        "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-coastward-work-12a44af6.mp4"
+      ],
+      "wall_clock_alignment": "Report marks start before browser/video creation. Trims follow inspected decoded video scenes; report event alignment remains approximate."
+    }
+  ],
+  "promotion_receipts": [
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\REPORT.json",
+        "bytes": 108264,
+        "sha256": "0e04b0a5ea853309df11ea88ae0d64babcdbfb31c44ce86150cf047b480f0096"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\reports\\hardware-tour-delivery.json",
+        "bytes": 103971,
+        "sha256": "9f0ea6dba91a0dbc1fabe17841e3d1fefe255a6524e184d79481d36618099fd1"
+      },
+      "lf_normalized_text": true
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\01-earth-bridge-approach.png",
+        "bytes": 564239,
+        "sha256": "5e777ecb03a3b0438dc39ee897a99a8d1e9eee8447c4b23a8dd63220db81cd79"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-tour-delivery\\01-earth-bridge-approach.png",
+        "bytes": 564239,
+        "sha256": "5e777ecb03a3b0438dc39ee897a99a8d1e9eee8447c4b23a8dd63220db81cd79"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\02-earth-channel-third.png",
+        "bytes": 486581,
+        "sha256": "b2de31548389eadb726bd8058c8fba67f05f239302f8d8c4674b232280f5f179"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-tour-delivery\\02-earth-channel-third.png",
+        "bytes": 486581,
+        "sha256": "b2de31548389eadb726bd8058c8fba67f05f239302f8d8c4674b232280f5f179"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\03-earth-bridge-diorama.png",
+        "bytes": 657828,
+        "sha256": "9d99c1a1faebd51e9457017ee291a8174aa2f21cdf31ea0ce33b848ff1f383ea"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-tour-delivery\\03-earth-bridge-diorama.png",
+        "bytes": 657828,
+        "sha256": "9d99c1a1faebd51e9457017ee291a8174aa2f21cdf31ea0ce33b848ff1f383ea"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\04-heaven-garden-third.png",
+        "bytes": 680105,
+        "sha256": "c0b944757b25d98255eb5b01a7071324c19d797d810345f4bad0cb8ce9f135a2"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-tour-delivery\\04-heaven-garden-third.png",
+        "bytes": 680105,
+        "sha256": "c0b944757b25d98255eb5b01a7071324c19d797d810345f4bad0cb8ce9f135a2"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\05-heaven-garden-diorama.png",
+        "bytes": 876626,
+        "sha256": "ba0063fd103e4431325489a0ec3818a8d7844606376e067874a960cc152ace06"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-tour-delivery\\05-heaven-garden-diorama.png",
+        "bytes": 876626,
+        "sha256": "ba0063fd103e4431325489a0ec3818a8d7844606376e067874a960cc152ace06"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\06-hell-industrial-road-third.png",
+        "bytes": 541917,
+        "sha256": "39489b2615f3f67a1152cf2a4c0c896d8a60671784891004f37b2f3b23f3fdae"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-tour-delivery\\06-hell-industrial-road-third.png",
+        "bytes": 541917,
+        "sha256": "39489b2615f3f67a1152cf2a4c0c896d8a60671784891004f37b2f3b23f3fdae"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\07-hell-refuge-diorama.png",
+        "bytes": 807790,
+        "sha256": "033dba7c88bb970ef8cae48c8cc9a7902e337e37f4d5b5a265877fe1e10d8291"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-tour-delivery\\07-hell-refuge-diorama.png",
+        "bytes": 807790,
+        "sha256": "033dba7c88bb970ef8cae48c8cc9a7902e337e37f4d5b5a265877fe1e10d8291"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\08-atlantis-civic-third.png",
+        "bytes": 575967,
+        "sha256": "257cc0cdc821f51d30696cbb1a11408252d7da82109ca3715eb2f10728a79560"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-tour-delivery\\08-atlantis-civic-third.png",
+        "bytes": 575967,
+        "sha256": "257cc0cdc821f51d30696cbb1a11408252d7da82109ca3715eb2f10728a79560"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\09-atlantis-underwater.png",
+        "bytes": 300305,
+        "sha256": "ba9c805e60a012cb285a71a85ae9bf3c265d20c98c6ccb75f902f742d685de4b"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-tour-delivery\\09-atlantis-underwater.png",
+        "bytes": 300305,
+        "sha256": "ba9c805e60a012cb285a71a85ae9bf3c265d20c98c6ccb75f902f742d685de4b"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\10-atlantis-air-court.png",
+        "bytes": 320887,
+        "sha256": "f7cfaa269bd16a3fa5d086c4e9b98318075087f9b96dc3fcc2c3d38ecd77c018"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-tour-delivery\\10-atlantis-air-court.png",
+        "bytes": 320887,
+        "sha256": "f7cfaa269bd16a3fa5d086c4e9b98318075087f9b96dc3fcc2c3d38ecd77c018"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\11-cosmos-three-lamps-third.png",
+        "bytes": 614774,
+        "sha256": "613c9266ca26bb4dcedf7ef3cf40d2e4758880cf4de0d4ee38b380d7b65b0c01"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-tour-delivery\\11-cosmos-three-lamps-third.png",
+        "bytes": 614774,
+        "sha256": "613c9266ca26bb4dcedf7ef3cf40d2e4758880cf4de0d4ee38b380d7b65b0c01"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\12-cosmos-three-lamps-diorama.png",
+        "bytes": 768621,
+        "sha256": "ce61622e77718cdaa5721d6ce7e00dc7ae6d70762c651fc1058137a2c37aa9da"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-tour-delivery\\12-cosmos-three-lamps-diorama.png",
+        "bytes": 768621,
+        "sha256": "ce61622e77718cdaa5721d6ce7e00dc7ae6d70762c651fc1058137a2c37aa9da"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\atlantis-gallery-diorama.png",
+        "bytes": 566741,
+        "sha256": "f5c5b5539dfd8df386b0b8ffcf54d4c311cedc40238fd38dc81f6f0876d70e75"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-tour-delivery\\atlantis-gallery-diorama.png",
+        "bytes": 566741,
+        "sha256": "f5c5b5539dfd8df386b0b8ffcf54d4c311cedc40238fd38dc81f6f0876d70e75"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\heaven-planted-fork-diorama.png",
+        "bytes": 853173,
+        "sha256": "28770774f5edd6af6b534622bbf42266dae3fc6937ef07cb1a84c7fcdae8d238"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-tour-delivery\\heaven-planted-fork-diorama.png",
+        "bytes": 853173,
+        "sha256": "28770774f5edd6af6b534622bbf42266dae3fc6937ef07cb1a84c7fcdae8d238"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\heaven-planted-fork-third.png",
+        "bytes": 669234,
+        "sha256": "1b7e40e395b52c069ec6a4a0e083b4a604c4ea33e02d759ee9613a8d048dd5d5"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-tour-delivery\\heaven-planted-fork-third.png",
+        "bytes": 669234,
+        "sha256": "1b7e40e395b52c069ec6a4a0e083b4a604c4ea33e02d759ee9613a8d048dd5d5"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\hell-blade-defeated.png",
+        "bytes": 514742,
+        "sha256": "15a05525b1d3ccb8c607fc062d3a31a5008e1f003a2422bee487abc5bbf9412f"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-tour-delivery\\hell-blade-defeated.png",
+        "bytes": 514742,
+        "sha256": "15a05525b1d3ccb8c607fc062d3a31a5008e1f003a2422bee487abc5bbf9412f"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\hell-blade-guarded-hit.png",
+        "bytes": 509181,
+        "sha256": "3d1634fbbc162a1396b7fe077ba9297b0201fbb20020a7a3a5871cb437d95d0c"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-tour-delivery\\hell-blade-guarded-hit.png",
+        "bytes": 509181,
+        "sha256": "3d1634fbbc162a1396b7fe077ba9297b0201fbb20020a7a3a5871cb437d95d0c"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-tour-delivery\\hell-refuge-open-roof.png",
+        "bytes": 769080,
+        "sha256": "95d8fe3f8a578bf0fe1cc9c966a3b6c057eceb349f34c7d129d5d851f003415f"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-tour-delivery\\hell-refuge-open-roof.png",
+        "bytes": 769080,
+        "sha256": "95d8fe3f8a578bf0fe1cc9c966a3b6c057eceb349f34c7d129d5d851f003415f"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-bow-delivery\\REPORT.json",
+        "bytes": 15023,
+        "sha256": "ae121071057c8b83312410dea84a5fbef006f6f8891500a0e4dfe84b7f85a521"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\reports\\hardware-bow-delivery.json",
+        "bytes": 14430,
+        "sha256": "84bb6c3c088f5a9d379a8a7f2b56ef3c9c3ffc6306f5b6a3abdaf0d789dc1187"
+      },
+      "lf_normalized_text": true
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-bow-delivery\\hell-bow-defeated.png",
+        "bytes": 531830,
+        "sha256": "0da835f16a2dae8222f2276a076406808294a3e4c82142a5bcc8ac87772f674b"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-bow-delivery\\hell-bow-defeated.png",
+        "bytes": 531830,
+        "sha256": "0da835f16a2dae8222f2276a076406808294a3e4c82142a5bcc8ac87772f674b"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-bow-delivery\\hell-bow-guarded-hit.png",
+        "bytes": 530406,
+        "sha256": "3b45502441bdd566d261338aed0ee77e24940d51b950d0a24fac0b0aa48b8dff"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-bow-delivery\\hell-bow-guarded-hit.png",
+        "bytes": 530406,
+        "sha256": "3b45502441bdd566d261338aed0ee77e24940d51b950d0a24fac0b0aa48b8dff"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\REPORT.json",
+        "bytes": 125868,
+        "sha256": "85a9e1fc7de4fceb5702e9d8b2fda63dc6ba2ad2b5a23aba7ff674284f2ed321"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\reports\\hardware-work-delivery.json",
+        "bytes": 121551,
+        "sha256": "a9b003f9ed00777483ce2c452d3f9be6ed6eea5726f154c900e058c23788d2c9"
+      },
+      "lf_normalized_text": true
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\05-merren-acceptance.png",
+        "bytes": 375724,
+        "sha256": "583d01ed755d429e0c867962ad9b9c5f26f9efb46509093ba2f2d02d5f0aed45"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-work-delivery\\05-merren-acceptance.png",
+        "bytes": 375724,
+        "sha256": "583d01ed755d429e0c867962ad9b9c5f26f9efb46509093ba2f2d02d5f0aed45"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\06-1-objective-before-record.png",
+        "bytes": 725195,
+        "sha256": "5d9d2b133b5a3c81dc20e645246019d5858b6e1eb8b9727e07d04893fe09f168"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-work-delivery\\06-1-objective-before-record.png",
+        "bytes": 725195,
+        "sha256": "5d9d2b133b5a3c81dc20e645246019d5858b6e1eb8b9727e07d04893fe09f168"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\06-2-objective-before-record.png",
+        "bytes": 658066,
+        "sha256": "73fd60a25d7e5eee08aa5ac46f07a154fa8001d918e1569a505be58cedc0d0c4"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-work-delivery\\06-2-objective-before-record.png",
+        "bytes": 658066,
+        "sha256": "73fd60a25d7e5eee08aa5ac46f07a154fa8001d918e1569a505be58cedc0d0c4"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\06-3-objective-before-record.png",
+        "bytes": 620389,
+        "sha256": "16b4f6c9bffbff303e704c62caca0a3938fc1ae69bc4a0650b7abe595deba51f"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-work-delivery\\06-3-objective-before-record.png",
+        "bytes": 620389,
+        "sha256": "16b4f6c9bffbff303e704c62caca0a3938fc1ae69bc4a0650b7abe595deba51f"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\07-1-objective-record-ui.png",
+        "bytes": 374160,
+        "sha256": "df5532202d03e928a77cefb5ddbf0208250518e8300cf0a6761e803ceaee8fe6"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-work-delivery\\07-1-objective-record-ui.png",
+        "bytes": 374160,
+        "sha256": "df5532202d03e928a77cefb5ddbf0208250518e8300cf0a6761e803ceaee8fe6"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\07-2-objective-record-ui.png",
+        "bytes": 370391,
+        "sha256": "d99cb3d92779b5ea9fe445c400e168a70d7c6d100cc093416bac5c893b5f6d52"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-work-delivery\\07-2-objective-record-ui.png",
+        "bytes": 370391,
+        "sha256": "d99cb3d92779b5ea9fe445c400e168a70d7c6d100cc093416bac5c893b5f6d52"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\07-3-objective-record-ui.png",
+        "bytes": 370127,
+        "sha256": "2224f8e3e993f29cb64e117ad1b625cc7323c823578af077af55bfd2320f5af4"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-work-delivery\\07-3-objective-record-ui.png",
+        "bytes": 370127,
+        "sha256": "2224f8e3e993f29cb64e117ad1b625cc7323c823578af077af55bfd2320f5af4"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\08-completed-unpaid.png",
+        "bytes": 323226,
+        "sha256": "1b4236c1c1340bd1301cd941122eb4126faa2e762791f005654ca3e355f0075f"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-work-delivery\\08-completed-unpaid.png",
+        "bytes": 323226,
+        "sha256": "1b4236c1c1340bd1301cd941122eb4126faa2e762791f005654ca3e355f0075f"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\09-explicit-payment.png",
+        "bytes": 321999,
+        "sha256": "71185a6dfa5772ddba83eb2a5d7619ec25345e1a6104030a3f865a7012e11dc0"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-work-delivery\\09-explicit-payment.png",
+        "bytes": 321999,
+        "sha256": "71185a6dfa5772ddba83eb2a5d7619ec25345e1a6104030a3f865a7012e11dc0"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\09b-earned-balances-and-kept-equipment.png",
+        "bytes": 395108,
+        "sha256": "07e40123a4d7cce90a3206767cdb72dd351ac105cdc38d3b0903ca8e5d0be15c"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-work-delivery\\09b-earned-balances-and-kept-equipment.png",
+        "bytes": 395108,
+        "sha256": "07e40123a4d7cce90a3206767cdb72dd351ac105cdc38d3b0903ca8e5d0be15c"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\10-giver-recognition.png",
+        "bytes": 378737,
+        "sha256": "b35ae858625c2b2c40bce8aeb24f9771e1d7ecd85691775a00076e0ec41b82de"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-work-delivery\\10-giver-recognition.png",
+        "bytes": 378737,
+        "sha256": "b35ae858625c2b2c40bce8aeb24f9771e1d7ecd85691775a00076e0ec41b82de"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\11-paid-settlement-diorama.png",
+        "bytes": 737156,
+        "sha256": "fac2de5147a98a90b3ec82e0e91d690db69b73e7c41814c79f17e615ee727ad0"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-work-delivery\\11-paid-settlement-diorama.png",
+        "bytes": 737156,
+        "sha256": "fac2de5147a98a90b3ec82e0e91d690db69b73e7c41814c79f17e615ee727ad0"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\12-paid-produce-work.png",
+        "bytes": 661809,
+        "sha256": "b72139d7f06ccf9b620ecaed929c1f09e123d46577a7e21d57fb86a31867dda9"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-work-delivery\\12-paid-produce-work.png",
+        "bytes": 661809,
+        "sha256": "b72139d7f06ccf9b620ecaed929c1f09e123d46577a7e21d57fb86a31867dda9"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\13-paid-field-water-work.png",
+        "bytes": 725207,
+        "sha256": "6b6d52bce35ec9c5ced78f902f8c255591173f2ad8f54550a73ed27c6ff61aeb"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-work-delivery\\13-paid-field-water-work.png",
+        "bytes": 725207,
+        "sha256": "6b6d52bce35ec9c5ced78f902f8c255591173f2ad8f54550a73ed27c6ff61aeb"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\14-free-home-with-earned-progress.png",
+        "bytes": 737353,
+        "sha256": "bd6a61f3e93cd37d0210df4bb434a047fae59efca9a47be7ed8df86ed8edc6eb"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-work-delivery\\14-free-home-with-earned-progress.png",
+        "bytes": 737353,
+        "sha256": "bd6a61f3e93cd37d0210df4bb434a047fae59efca9a47be7ed8df86ed8edc6eb"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\15-home-blade-guide.png",
+        "bytes": 225680,
+        "sha256": "518f1c9380a57497de1b55486638121524d0f60c325975ed46586286dc488d5d"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-work-delivery\\15-home-blade-guide.png",
+        "bytes": 225680,
+        "sha256": "518f1c9380a57497de1b55486638121524d0f60c325975ed46586286dc488d5d"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\16-home-bow-guide.png",
+        "bytes": 288695,
+        "sha256": "0e99b3c8dc58e47e7ee23e80cd421090d630a2babc61b23a47ffc1e7b0babf4f"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\stills\\hardware-work-delivery\\16-home-bow-guide.png",
+        "bytes": 288695,
+        "sha256": "0e99b3c8dc58e47e7ee23e80cd421090d630a2babc61b23a47ffc1e7b0babf4f"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\PAID_SAVED_WORLD.json",
+        "bytes": 12862,
+        "sha256": "addb57a691f864ab21c502ec23194c48456acddd746674cb72654c133aeaad4d"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\reports\\work-delivery\\PAID_SAVED_WORLD.json",
+        "bytes": 12138,
+        "sha256": "659586cfdf5bd288f8e8377882fce4a7188e85b39ff9d2a00d2de9956f5d7661"
+      },
+      "lf_normalized_text": true
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\hardware-work-delivery\\FINAL_WORLD.json",
+        "bytes": 13005,
+        "sha256": "ea28fb818c1a1797e2d92c18e1094ac23caec0d70d02cb593bf38af527bfae40"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\reports\\work-delivery\\FINAL_WORLD.json",
+        "bytes": 12276,
+        "sha256": "6d924c6b0bbd6c38d95e81f2dc4d66935b3dbd9d8278ce5eef67558a71c48904"
+      },
+      "lf_normalized_text": true
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-full-tour-12a44af6.mp4",
+        "bytes": 13654248,
+        "sha256": "270af4765f7c85adb64ed2a802db2a7f961c298aec13726a636b728c460bf371"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\videos\\firstlight-full-tour-12a44af6.mp4",
+        "bytes": 13654248,
+        "sha256": "270af4765f7c85adb64ed2a802db2a7f961c298aec13726a636b728c460bf371"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-full-tour-12a44af6-receipt.json",
+        "bytes": 2577,
+        "sha256": "8ee4be78a7d53edd699058afad45bf7bb1b1d7e41ceb438b66453c05308773f5"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\media-receipts\\firstlight-full-tour-12a44af6-receipt.json",
+        "bytes": 2577,
+        "sha256": "8ee4be78a7d53edd699058afad45bf7bb1b1d7e41ceb438b66453c05308773f5"
+      },
+      "lf_normalized_text": true
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-full-tour-12a44af6-decode.json",
+        "bytes": 968,
+        "sha256": "b8a3d7b6f169cbb7963a649a2db705a8c9aaf44fc83e8f75db47d467352353ae"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\media-receipts\\firstlight-full-tour-12a44af6-decode.json",
+        "bytes": 968,
+        "sha256": "b8a3d7b6f169cbb7963a649a2db705a8c9aaf44fc83e8f75db47d467352353ae"
+      },
+      "lf_normalized_text": true
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-five-roads-12a44af6.mp4",
+        "bytes": 3614650,
+        "sha256": "d5dd8b2b45345a53be3d590a13900b6587d8aa978e5f4ef129b26aff3e29ff48"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\videos\\firstlight-five-roads-12a44af6.mp4",
+        "bytes": 3614650,
+        "sha256": "d5dd8b2b45345a53be3d590a13900b6587d8aa978e5f4ef129b26aff3e29ff48"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-five-roads-12a44af6-receipt.json",
+        "bytes": 4164,
+        "sha256": "6c363552bc2364de4920caf5ea584d370d754958ba9e7cb608cd5313a7042b52"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\media-receipts\\firstlight-five-roads-12a44af6-receipt.json",
+        "bytes": 4164,
+        "sha256": "6c363552bc2364de4920caf5ea584d370d754958ba9e7cb608cd5313a7042b52"
+      },
+      "lf_normalized_text": true
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-five-roads-12a44af6-decode.json",
+        "bytes": 969,
+        "sha256": "e997efe949ff9b28bafa1cd09b8b96d14fbacaf54ca6d0924a73a07926ae9557"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\media-receipts\\firstlight-five-roads-12a44af6-decode.json",
+        "bytes": 969,
+        "sha256": "e997efe949ff9b28bafa1cd09b8b96d14fbacaf54ca6d0924a73a07926ae9557"
+      },
+      "lf_normalized_text": true
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-bow-guard-fight-12a44af6-cut.mp4",
+        "bytes": 368506,
+        "sha256": "d7bd003fb924c89e1cfee64e5e093ebd205d29dfea98fcae13a94ae8e075696c"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\videos\\firstlight-bow-guard-fight-12a44af6-cut.mp4",
+        "bytes": 368506,
+        "sha256": "d7bd003fb924c89e1cfee64e5e093ebd205d29dfea98fcae13a94ae8e075696c"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-bow-guard-fight-12a44af6-cut-receipt.json",
+        "bytes": 2898,
+        "sha256": "a1e74b58123939bd87e5f243c64cf7ad24b142f3dba09baeddb6de9e683a4f5c"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\media-receipts\\firstlight-bow-guard-fight-12a44af6-cut-receipt.json",
+        "bytes": 2898,
+        "sha256": "a1e74b58123939bd87e5f243c64cf7ad24b142f3dba09baeddb6de9e683a4f5c"
+      },
+      "lf_normalized_text": true
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-bow-guard-fight-12a44af6-cut-decode.json",
+        "bytes": 984,
+        "sha256": "8d9e3766b3ab5783a444f3526db11bbaa1cbe09cd469411db416d42fb82b73e4"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\media-receipts\\firstlight-bow-guard-fight-12a44af6-cut-decode.json",
+        "bytes": 984,
+        "sha256": "8d9e3766b3ab5783a444f3526db11bbaa1cbe09cd469411db416d42fb82b73e4"
+      },
+      "lf_normalized_text": true
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-coastward-work-12a44af6.mp4",
+        "bytes": 3433106,
+        "sha256": "8c77b64a0a334174cce9919380f29b2d90d097767b099e5619ba20eab35eb885"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\videos\\firstlight-coastward-work-12a44af6.mp4",
+        "bytes": 3433106,
+        "sha256": "8c77b64a0a334174cce9919380f29b2d90d097767b099e5619ba20eab35eb885"
+      },
+      "lf_normalized_text": false
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-coastward-work-12a44af6-receipt.json",
+        "bytes": 3738,
+        "sha256": "0c591c9ac12ec78fd32b31fe89d6fdd45147869e8f51287a056a2b7e5390334f"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\media-receipts\\firstlight-coastward-work-12a44af6-receipt.json",
+        "bytes": 3738,
+        "sha256": "0c591c9ac12ec78fd32b31fe89d6fdd45147869e8f51287a056a2b7e5390334f"
+      },
+      "lf_normalized_text": true
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\firstlight-coastward-work-12a44af6-decode.json",
+        "bytes": 977,
+        "sha256": "78870fa4ad680e79af3c2df7302bdf7bbaad909c46d514d724d08b1c410271eb"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\media-receipts\\firstlight-coastward-work-12a44af6-decode.json",
+        "bytes": 977,
+        "sha256": "78870fa4ad680e79af3c2df7302bdf7bbaad909c46d514d724d08b1c410271eb"
+      },
+      "lf_normalized_text": true
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\tour-source-decode.json",
+        "bytes": 972,
+        "sha256": "9cdcdbd6b1b3ac1b2668ce0202d3791a2aaf568565324e851ee64a2c6545cbc1"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\media-receipts\\tour-source-decode-12a44af6.json",
+        "bytes": 972,
+        "sha256": "9cdcdbd6b1b3ac1b2668ce0202d3791a2aaf568565324e851ee64a2c6545cbc1"
+      },
+      "lf_normalized_text": true
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\bow-source-decode.json",
+        "bytes": 968,
+        "sha256": "88c4653e77e9caa57a3b195b716433c54f12eee54ffa6e717db9459cc5c01c48"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\media-receipts\\bow-source-decode-12a44af6.json",
+        "bytes": 968,
+        "sha256": "88c4653e77e9caa57a3b195b716433c54f12eee54ffa6e717db9459cc5c01c48"
+      },
+      "lf_normalized_text": true
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\work-source-decode.json",
+        "bytes": 972,
+        "sha256": "e8502262d9a359b50ca8ce2c1571ac913eaf5f7f474e79fe97e811e79644be9e"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\media-receipts\\work-source-decode-12a44af6.json",
+        "bytes": 972,
+        "sha256": "e8502262d9a359b50ca8ce2c1571ac913eaf5f7f474e79fe97e811e79644be9e"
+      },
+      "lf_normalized_text": true
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\bow-selected-output.json",
+        "bytes": 371,
+        "sha256": "18b1c1d93b805801c1a18b9700a33b7d86264807e101a4d356e8e7c696c6ba29"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\media-receipts\\bow-selection-12a44af6.json",
+        "bytes": 371,
+        "sha256": "18b1c1d93b805801c1a18b9700a33b7d86264807e101a4d356e8e7c696c6ba29"
+      },
+      "lf_normalized_text": true
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\FINAL_TIMELINE.json",
+        "bytes": 3358,
+        "sha256": "10e74301b56fbcc9b43f9a07cfb49cde3fbd49fed6319b7306647c160bc6afbc"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\media-receipts\\FINAL_TIMELINE.json",
+        "bytes": 3358,
+        "sha256": "10e74301b56fbcc9b43f9a07cfb49cde3fbd49fed6319b7306647c160bc6afbc"
+      },
+      "lf_normalized_text": true
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\media\\delivery-12a44af6\\HARDWARE_DELIVERY_STATS.json",
+        "bytes": 3383,
+        "sha256": "65547283df7e316f765187b4fbb10befe40d3a8e47fede35043bfb579ab4d201"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\reports\\HARDWARE_DELIVERY_STATS.json",
+        "bytes": 3383,
+        "sha256": "65547283df7e316f765187b4fbb10befe40d3a8e47fede35043bfb579ab4d201"
+      },
+      "lf_normalized_text": true
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\evidence10\\world-foundations-browser\\REPORT.json",
+        "bytes": 21138,
+        "sha256": "16bda6e0ffa5bd42fca3e63a4bf00de61fba14aefbf64fc1d2043282b0d2b360"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\reports\\software-world-foundations-12a44af6.json",
+        "bytes": 20301,
+        "sha256": "1f67c1614478e44540eec48f0e57ea987aed8c37c028fe1acecbd9c797bffa73"
+      },
+      "lf_normalized_text": true
+    },
+    {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\final-source-review\\ADDENDUM.md",
+        "bytes": 3352,
+        "sha256": "aac1dbf52169300d336e502c99a63f7f50713cc9065964df9af44123e291cb7e"
+      },
+      "output": {
+        "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-foundations\\independent-source-review\\ADDENDUM.md",
+        "bytes": 3352,
+        "sha256": "aac1dbf52169300d336e502c99a63f7f50713cc9065964df9af44123e291cb7e"
+      },
+      "lf_normalized_text": true
+    }
+  ],
+  "text_policy": "LF normalized portable text. Original source hashes refer to original bytes; output hashes refer to package copies. PNG/MP4 bytes unchanged.",
+  "prior_epochs": "92fb and3a originals/encodes remain preserved in heavy storage. Specific provisional3a portable copies were moved, with checked paths and identical hashes, to media/final-3a5f18e0/portable-provisional. Garden comparison remains92fb-before/3a-after, not12a capture.",
+  "known_negative_evidence": [
+    {
+      "source": "Root observation plus actual inspected older3a Cosmos frame",
+      "finding": "Duplicate Cosmos labels and two Return buttons existed in3a;12a changes ownership and final actual Cosmos source/output frames show one owner."
+    },
+    {
+      "source": "Root supplied execution observation; failure retained heavy failed-cosmos-fixture-location",
+      "finding": "Initial focused browser harness attempted new gate travel immediately from restored legacy14,-5 checkpoint. Source correctly refused distant travel. Harness now asserts exact legacy checkpoint and walks to18,6; matching207-check report passes. No result counted for failed run."
+    },
+    {
+      "source": "Actual decoded bow delivery source frames52.60 and52.72",
+      "finding": "A brief existing stale Hell HUD occurs at the real home transition. Short fight excerpt ends on defeat beforehand; original footage retained."
+    }
+  ],
+  "remote_full_verification": null,
+  "whole_video_watched": false,
+  "runtime_source_commit": "c18af6183aa53e77efa798d7900fd61b64871152"
+}

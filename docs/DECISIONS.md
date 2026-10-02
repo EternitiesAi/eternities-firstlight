@@ -1,3 +1,36 @@
+# A shared road, distinct realm ownership, 2026-10-02
+
+- Dom's new overnight realm-building authority supersedes the earlier bounded
+  no-new-realm task ordering. Current gameplay branches from PR34, preserving
+  concurrent work; complete canon archives guide design and never replace code.
+- Root owns shared travel, persistence, UI and Cosmos integration. Exactly two
+  requested Sol6.1/xhigh workers own disjoint pure realm data/art and review.
+  Original Heaven01, sanctuary keys and protected resident identities remain.
+- Add optional journeys1 under world9/adventure10. Empty old records grant no
+  implicit consent or reward; fixed definition/objective/run/claim IDs own work.
+  Validate completion/capacity and save candidate before applying state. Free
+  travel/home return saves a checkpoint and rolls back failed scene construction.
+- Keep Cosmos's current ground/people owner, new-region complete supported
+  segments, real solids and camera/visibility/projectile dispatch in agreement.
+  Bounded coarse/fine search and cached support improve measured path latency.
+- Use fixed XP/currency/material rewards for blade/bow and returning characters.
+  Keep level1–5 and banked XP unchanged. No compulsory weapon, auto-equip,
+  hidden scaling, infinite fitting, replayed legacy loot or Oren story payout.
+- Atlantis's required work is dry. Its optional wet gallery has physical body
+  depth, separate body/camera medium, wall/ceiling collision, dry air volume,
+  supplied bounded breath envelope and no drowning timer. Companion waits dry.
+- Main-view gallery apertures and visited-refuge roof reveal respect cutaway;
+  reflection/shadow/collision stay. A fresh reflected-buffer positive control
+  repairs the prior stale-image assertion; impossible wet buttons are removed.
+- Keep source gates, command-earned journeys, native storage, software images,
+  actual RTX footage, short RAF cadence, independent review and human taste
+  separate. Retain failed/superseded evidence and exact source hashes onD.
+- Treat complete campaigns/countries, endgame rewards, paid power, offline loss,
+  rare pets, construction scale, roster expansion and online authority as open.
+  No main merge, public deployment, paid/billing action or personal-save access.
+
+Prior checkpoint retained:
+
 # Quarry scenery follows actual rendered support, 2026-10-02
 
 - Read36actual grass-strip matrices at the eastern lip; canonical height differs

@@ -12,6 +12,23 @@ This local HTTP origin is the tested path for the character library. The server 
 
 Keep the same browser profile and origin to resume your local worlds. **More → Characters** offers up to three separate lives, portable per-character JSON exports and previewed imports into a new slot. Creating another character is deliberate; merely opening the page does not reset your current world. In the older single-world mode, the explicit legacy import still replaces that single world after confirmation; export it first if you intend to keep it. Personal saves do not belong in Git.
 
+**The Roads of Light now open five playable regions.** Collect Oren's initial
+expedition kit, then walk east of the workshop to the five-light marker, or use
+**J → Roads of Light** to read the routes. Heaven's Garden of Voices, Hell's Kiln
+Refuge, Earth's long Coastward bridge and fields, Atlantis's civic court and
+visitor gallery, and Cosmos's Near Expanse each offer optional local work with
+stated rewards and a free return home. **M** reads local routes; **E** interacts;
+**V** exchanges third person and diorama. No campaign chapter or allegiance is
+required. First work and deliberately accepted repeat surveys have separate
+claim records. See [world results and migration](docs/development/WORLD_FOUNDATIONS_NIGHT_RESULTS_2026-10-02.md)
+and [actual gameplay recordings](docs/evidence/world-foundations/README.md).
+
+Atlantis's optional marked gallery uses **F** to ascend and **G** to descend;
+release holds depth. **WASD** moves relative to the camera. The Bellglass air
+court is dry, and the gallery landing or **Return to Firstlight** ends the dive.
+The supplied visitor breath envelope has no timer. Reopening resumes your saved
+home checkpoint with accepted work retained. The required civic outing stays dry.
+
 For an ordinary outing, collect the expedition kit beside Oren's workshop. **Field guide** shows real equipment recipes and one pinned project; the nearby riverbank materials survey can be deliberately repeated for declared materials. Oren's original once-only supplies quest remains separate. These local loops do not require campaign advancement.
 
 Oren's services and **More → Class path** let a character compare Hunter and Magician, then choose explicitly after the kit. The choice is once per character in this prototype and adds one technique on **X**. Existing characters remain unassigned. The chosen path links to the practice area and equipment projects. Hunter marks with X, then lands a weapon hit; Magician casts directly. **1** starts/stops weapon attacks and **V** swaps third person and diorama.
@@ -59,7 +76,7 @@ The main RPG workspace, including maps and services, pauses the local game and r
 
 Old supported creative and adventure state, chapter outcomes, owned/equipped items, coins, gems, soul choices, companion bond/name/mode, excavation, buildings, crops, new village attunement, quest flags and commissions. Saving inside an expedition restarts outside at its safe return point. New enemy partial damage, paths, attack warnings, bell input in progress and exact NPC/fox positions are transient.
 
-These are authored game characters, not live Luna residents. The game has no accounts, online multiplayer, server inventory, shared public events, guilds or deployed infrastructure. Editable local JSON is not legitimate online gear. Heaven, Hell, the monastery, ruined kingdom and living forest remain future maps. Unreal remains a later production-client direction.
+These are authored game characters, not live Luna residents. The game has no accounts, online multiplayer, server inventory, shared public events, guilds or deployed infrastructure. Editable local JSON is not legitimate online gear. The five realm openings are playable foundations. Their full campaigns, capitals, the monastery, ruined kingdom and living forest remain future work. Unreal remains a later production-client direction.
 
 ## Build and verify
 

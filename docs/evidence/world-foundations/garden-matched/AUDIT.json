@@ -1,0 +1,56 @@
+{
+  "method": "Independent JSON equality and arithmetic audit of static SwiftShader captures; accelerated paused setup, not real-time gameplay or hardware performance.",
+  "source_report": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-foundations-night-2026-10-02\\garden-matched\\REPORT.json",
+    "bytes": 73051,
+    "sha256": "895494065e28634442ea67280727b4270c52562a65c9286b1a4d1725e84cb043"
+  },
+  "html_sha256": {
+    "before": "92fb503cd080f68275c6d1ca24308daca15e013a101a1777fa22b86c19aafbd0",
+    "after": "3a5f18e04056d0d78ad7ccac3b3e0ac2c4058bf60b774b584b78d7611d97c7dc"
+  },
+  "checks": {
+    "third": {
+      "camera_exact": true,
+      "state_exact": true,
+      "before_metrics": {
+        "instances": 1112,
+        "triangles": 62592,
+        "drawCalls": 27
+      },
+      "after_metrics": {
+        "instances": 1319,
+        "triangles": 64788,
+        "drawCalls": 27
+      },
+      "delta": {
+        "instances": 207,
+        "triangles": 2196,
+        "drawCalls": 0
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    "diorama": {
+      "camera_exact": true,
+      "state_exact": true,
+      "before_metrics": {
+        "instances": 1112,
+        "triangles": 62592,
+        "drawCalls": 27
+      },
+      "after_metrics": {
+        "instances": 1319,
+        "triangles": 64788,
+        "drawCalls": 27
+      },
+      "delta": {
+        "instances": 207,
+        "triangles": 2196,
+        "drawCalls": 0
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    }
+  },
+  "performance_claim": false,
+  "gameplay_claim": false
+}
