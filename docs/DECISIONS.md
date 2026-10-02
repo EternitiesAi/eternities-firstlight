@@ -1,3 +1,23 @@
+# Combat-opening projection and bridge scale direction,2026-10-01
+
+- Dom approved bridge appearance and described a future true open world/bridge
+  over massive water. Preserve the ambition as founder direction; no automatic
+  geography expansion, swimming or human combat/comfort acceptance follows.
+- Fix the observed Reedback text-cue gap through one read-only selected-foe
+  projection. Encounter owners retain AI/timers/damage; HP/readiness stay visible.
+  Timed strikes/recovery,untimed charge,Bell rings and ward-directed attacks have
+  explicit distinct copy. Brace advice follows actual active/cooldown/cost state.
+- Narrow ward uses actual target border-box size on ResizeObserver changes,
+  retaining baseline top and12px separation. No per-frame layout measurement,
+  sound/shake/geometry/render-pass/save/economy/control addition. No migration.
+- Full source verification,earned all-equipment journeys,actual normal-time
+  footage,short hardware intervals and read-only independent review remain
+  distinct from founder play. Exact pushed-head clone is recorded in delivery.
+- Defer the concrete longbow target-versus-prerequisite preview mismatch to the
+  next bounded equipment step. Never repair a preview by changing costs/power/XP.
+
+Prior decisions retained:
+
 # Rail visibility stays a local presentation rule,2026-10-01
 
 Use a dedicated44-box static instance batch sharing the existing mesh and a
@@ -256,22 +276,3 @@ Review PR and exact-head fresh clone remain delivery gates, no merge/deployment.
 ## 2026-10-01: honest rocky landing and authored ridge depth
 
 A one-metre-deep arrival cap cannot become a continuing flat bank through art alone. Keep navigation/anchors unchanged and dress steep bare rock below the grass lip,not false walkable shelves. Split skirts around the full physical bridge mouth. Lower/spread mountain layers;use a per-batch mountain-only shader flag and authored world-depth haze so the arbitrary diorama/reflected eye offsets cannot alter atmosphere. Quieter Earth optical profile retains physical reflection,current/clouds and reduced/low fallback;non-Earth pixel invariance is tested. Newly exposed floating hill crowns must intersect actual parents. No save/schema migration or campaign/economy authority in art. Source,actual pixels,short RTX intervals,normal-time footage and human acceptance remain distinct.
-# Combat-opening projection and bridge scale direction,2026-10-01
-
-- Dom approved bridge appearance and described a future true open world/bridge
-  over massive water. Preserve the ambition as founder direction; no automatic
-  geography expansion, swimming or human combat/comfort acceptance follows.
-- Fix the observed Reedback text-cue gap through one read-only selected-foe
-  projection. Encounter owners retain AI/timers/damage; HP/readiness stay visible.
-  Timed strikes/recovery,untimed charge,Bell rings and ward-directed attacks have
-  explicit distinct copy. Brace advice follows actual active/cooldown/cost state.
-- Narrow ward uses actual target border-box size on ResizeObserver changes,
-  retaining baseline top and12px separation. No per-frame layout measurement,
-  sound/shake/geometry/render-pass/save/economy/control addition. No migration.
-- Full source verification,earned all-equipment journeys,actual normal-time
-  footage,short hardware intervals and read-only independent review remain
-  distinct from founder play. Exact pushed-head clone is recorded in delivery.
-- Defer the concrete longbow target-versus-prerequisite preview mismatch to the
-  next bounded equipment step. Never repair a preview by changing costs/power/XP.
-
-Prior decisions retained:
