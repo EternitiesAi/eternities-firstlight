@@ -231,3 +231,8 @@ The new CC0 library and Blender house-corner study are authoring evidence. They 
 Engineering evidence: one material appears on the mill landing/chest through normal accepted travel. The silent 44.40-second desktop browser recording shows a fresh production-created character and both camera presets, with no fixture/state grants or accelerated ticks. Actual software-WebGL readback checks sRGB sampling, scalar roughness, visible flat fallback, cutaway and reflected wood. The separate RTX frame-interval sample alternates mapped/plain states; neither recording nor green checks establish human beauty or comfort.
 
 Pending Dom: **Does the grain feel natural nearby in third person? Does it stay quiet/readable in the diorama?** Look for stretched seams on the chest, shimmer on the boards or an unexpected change in the village palette. Bespoke chest joinery/end-grain and the other four materials remain future work. Older fresh/returning combat, equipment, route, discovery and music-table questions still need actual human answers.
+
+
+## 2026-10-01: shoreline and distant mountain refinement
+
+Actual paired RTX screenshots and32.52s normal-time video show the revised bridge. Independent screenshot review found no definite new gap/penetration,with quieter water and a lower layered skyline. Engineering evidence is not Dom approval. Pending:does the bank feel grounded,is the water less distracting,and does the mountain distance make the crossing memorable? Near rail still obscures some lower legs;far cap remains narrow and rocky. Try both camera styles and fresh/returning outings when available;prior navigation,combat,reward and camera-comfort questions remain open.

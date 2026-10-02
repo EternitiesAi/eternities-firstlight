@@ -123,6 +123,7 @@ function terrain(a,rnd){
  const bb=h(0,-48);for(const x of[-2.4,2.4])a.box(x,bb+4.2,-50,.55,8.4,.55,0x82765e,{cameraSolid:false});
  a.box(0,bb+7.7,-50,5.2,.45,.6,0x82765e,{cameraSolid:false});a.add('bell',0,bb+6.7,-49.9,1.2,1.6,1.2,0xc6aa6b,{cameraSolid:false,em:.06});
  G.RealmBridgeArt.crossing(a);
+ G.RealmBridgeArt.shoreline(a);
  G.RealmBridgeArt.mountains(a);
  // Field dressing respects route clearance.
  for(let i=0;i<850;i++){let x=-18+rnd()*36,z=-49+rnd()*74;if(!C.walkable(x,z,.45)||pathDistance(x,z)<1.25)continue;let b=h(x,z),s=.07+rnd()*.11;a.add('leaf',x,b+.02,z,s,s*2.6,s,i%7===0?0xb3a56f:0x678150,{wind:1,rough:1,cameraSolid:false,r:[0,rnd()*TAU,0]});if(i%33===0)a.add('octa',x,b+.18,z,.10,.16,.10,[0xdfc78f,0xcaa6a1,0xd9d3a2][i%3],{cameraSolid:false});}
@@ -135,7 +136,7 @@ function terrain(a,rnd){
  }
  for(let i=0;i<30;i++){const side=i%2?1:-1,x=side*(3.45+(i%3)*.12),z=-14.5-Math.floor(i/2)*.65;for(let j=0;j<3;j++){const xx=x+j*.10,y=1.36,ht=.54+(i%4)*.15;a.add('leaf',xx,y,z,.07,ht,.08,0x7e8d60,{...decor,wind:1,r:[0,j*2.3,0]});if(j===1)a.add('round',xx,y+ht*.86,z,.10,.22,.10,0xbab591,decor);}}
  // Distant wooded hills are scenery only.
- for(let i=0;i<26;i++){let a0=i/26*TAU,r=95+rnd()*22,x=Math.cos(a0)*r,z=-12+Math.sin(a0)*r*.8,b=1.0+rnd()*1.5;a.add('round',x,-1.2,z,14+rnd()*8,8+rnd()*10,14+rnd()*8,i%3?0x60755d:0x75846b,{cameraSolid:false,cutaway:false,rough:1});if(i%2===0)a.add('round',x,b+5,z,7,4,7,0x647858,{cameraSolid:false,cutaway:false,rough:1});}
+ for(let i=0;i<26;i++){let a0=i/26*TAU,r=95+rnd()*22,x=Math.cos(a0)*r,z=-12+Math.sin(a0)*r*.8,b=1.0+rnd()*1.5;const sx=14+rnd()*8,sy=8+rnd()*10,sz=14+rnd()*8;a.add('round',x,-1.2,z,sx,sy,sz,i%3?0x60755d:0x75846b,{cameraSolid:false,cutaway:false,rough:1});if(i%2===0)a.add('round',x,-1.2+sy/2-1.1,z,7,4,7,0x647858,{cameraSolid:false,cutaway:false,rough:1});}
  // An authored tree line supplies scale below the hill masses; it does not
  // pretend the unqualified distance is a traversable forest.
  for(let i=0;i<30;i++){const side=i%2?1:-1,x=side*(27+(i%5)*2.1),z=-48+Math.floor(i/2)*5.2,base=-.3,s=.75+(i%4)*.16;a.add('cylinder',x,base,z,.28*s,3.1*s,.28*s,0x6d7155,{cameraSolid:false,rough:1});for(let j=0;j<3;j++)a.add('cone',x,base+(1.45+j*.86)*s,z,(3.3-j*.65)*s,2.3*s,(3.3-j*.65)*s,[0x57745a,0x617b5c,0x7b8c68][j],{cameraSolid:false,rough:1,wind:2,cutaway:true});}

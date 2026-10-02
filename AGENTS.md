@@ -202,3 +202,8 @@ all older suites and exact-head clean clone. Report source geometry, software pi
 normal-time actual video, short hardware intervals and human taste separately.
 No concept art presented as gameplay or implied photorealism. Heavy work stays on D;
 preserve stable8780 save origin, personal data and no automatic merge/deployment.
+
+
+## Bridge shoreline and authored mountain atmosphere
+
+Read the dated shoreline task/results. Pure bridge art dresses existing support with7steep skirts/12lowrocks and36ridgeparts;Earth navigation/anchors stay unchanged. The72-triangle bank-slope meets the grass underside,floods its lower seam,and leaves the full bridge opening/corridor clear. Test transformed actual meshes and exact seam heights,not only part tags. Keep bank dressing below supported feet and no unsupported flat shelves. Distant hill crowns intersect parents without altering the deterministic random sequence. Engine mountain-only haze resets per batch and uses authored depth,not camera-eye distance or wind/sky/terrain flags. Earth optical profile keeps P*V*H/y.01 and non-Earth invariance;both-camera same-time pixel probes,ordinary visible RAF and all older gates remain. No new texture,render pass,save schema or reward owner in this slice. Narrowcap/stylizedreflection/nearrail-leg overlap and human taste remain honest limits;heavy artifacts onD,bounded Cproof allowed for measured I/O stalls. No bypass of the previous preview guard.

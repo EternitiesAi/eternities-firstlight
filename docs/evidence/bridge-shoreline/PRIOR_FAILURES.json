@@ -1,0 +1,22 @@
+{
+  "product_test_failures_final": 0,
+  "skips": "Existing Windows symlink privilege test",
+  "authoring_helper_failures": [
+    {
+      "error": "AssertionError locating diagnostic filter: searched it.bridgePart instead of actual i.bridgePart",
+      "effect": "Renderer intermediate edits written; diagnostic extension not written. No delivery claim.",
+      "resolution": "Corrected exact field and rebuilt before tests/capture."
+    },
+    {
+      "error": "UnicodeDecodeError cp1252 on first app.js read in second helper",
+      "effect": "No edit by that attempt.",
+      "resolution": "Explicit UTF-8 reads; successful execution and exact build."
+    }
+  ],
+  "intermediate_capture": {
+    "file": "GPU_AFTER.json",
+    "html_sha256": "c80d6aeb6d34c676ec2c4e5617112bf2671e6d09c739ce18b03741b6940804d2",
+    "status": "Preliminary rounded corner stones/floating old hill crown; superseded by GPU_AFTER_FINAL.json, retained outside Git."
+  },
+  "inherited_external_limits": "Previous PR28 hosted run blocked before jobs start by billing issue; fresh final run must be inspected separately. Prior automatic approval blocked stable preview restart before execution; no retry/bypass in this task."
+}

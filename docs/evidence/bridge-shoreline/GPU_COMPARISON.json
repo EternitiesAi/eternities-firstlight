@@ -1,0 +1,70 @@
+{
+  "before_html": "7b2a49fb38c49d660c391debe109f4eaddd31d74c363f6da98d2f84f118c2851",
+  "after_html": "c4184ebcbc032dd57deb710eeb119422ecde36a1914dd305617cee49f049231c",
+  "renderer": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "vendor": "Google Inc. (NVIDIA)",
+    "drawing_buffer": {
+      "width": 1920,
+      "height": 1080
+    },
+    "device_pixel_ratio": 1,
+    "mode": "webgl2"
+  },
+  "driver": "NVIDIA GeForce RTX 3080, 610.74, 10240",
+  "browser_version": "143.0.7499.4",
+  "quality": "balanced",
+  "method": "Normal RAF intervals in isolated headless Chromium, device scale 1; 1.5-second setup warmup excluded. No video capture or accelerated ticks during sampling. Browser-frame intervals are not GPU render time, monitor presentation timing or human qualification.",
+  "cases": [
+    {
+      "name": "Hearthwater bridge side view · third person",
+      "samples_each": 360,
+      "before": {
+        "p50": 16.69999999999891,
+        "p90": 16.700000000000728,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000109,
+        "max": 16.80000000000109
+      },
+      "after": {
+        "p50": 16.69999999999891,
+        "p90": 16.700000000000728,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000109,
+        "max": 16.80000000000109
+      },
+      "stalls_over_33_333ms_before": 0,
+      "stalls_over_33_333ms_after": 0,
+      "instance_delta": 1,
+      "triangle_delta": -5448,
+      "draw_call_snapshot_delta": 2,
+      "texture_bytes_before": 1747625,
+      "texture_bytes_after": 1747625
+    },
+    {
+      "name": "Hearthwater bridge side view · diorama",
+      "samples_each": 360,
+      "before": {
+        "p50": 16.69999999999709,
+        "p90": 16.700000000000728,
+        "p95": 16.799999999999272,
+        "p99": 16.799999999999272,
+        "max": 16.80000000000291
+      },
+      "after": {
+        "p50": 16.700000000000728,
+        "p90": 16.700000000000728,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291
+      },
+      "stalls_over_33_333ms_before": 0,
+      "stalls_over_33_333ms_after": 0,
+      "instance_delta": 1,
+      "triangle_delta": -5448,
+      "draw_call_snapshot_delta": -15,
+      "texture_bytes_before": 1747625,
+      "texture_bytes_after": 1747625
+    }
+  ]
+}

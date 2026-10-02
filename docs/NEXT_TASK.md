@@ -1,3 +1,24 @@
+# Bridge movement readability and the next useful outing
+
+Read the shoreline results,actual media and latest gameplay PR/comments. Fetch
+current heads before branching. Natural rock dressing,water softening and ridge
+separation are implemented;human acceptance remains pending. Keep the constrained
+landing honest. Both saved camera styles remain prototype features.
+
+Next bounded visual candidate:improve the traveller's lower-leg readability
+against the near rail without changing supported geometry,camera consent or
+successful-hit authority. Reassess water highlights from moving footage and both
+views before adding textures/passes. Fix a measured defect,not another huge art
+pipeline. Screenshots suffice while Dom is away;they do not answer comfort/fun.
+
+After that,return to the useful starter-region outing/equipment/combat loop using
+current canon/task records. Darric's older quarry/cast proposal remains a separate
+design checkpoint. Do not silently add professions,levels,rare economy,online
+players or a realm. Preserve saves/owners and exact-head full fresh verification.
+No paid provider,billing changes,automatic main merge or public deployment.
+
+Prior checkpoint retained:
+
 # Bridge readability and a natural bank transition
 
 Read `docs/art/BRIDGE_MOMENT_RESULTS_2026-10-01.md`, the actual gameplay evidence

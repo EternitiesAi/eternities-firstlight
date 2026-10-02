@@ -235,3 +235,8 @@ the existing contract. Correct actual normals/corridor geometry after review eve
 when earlier narrower source/browser checks were green; retain failures and partial
 gates separately. Next natural-bank/material work follows screenshot feedback.
 Review PR and exact-head fresh clone remain delivery gates, no merge/deployment.
+
+
+## 2026-10-01: honest rocky landing and authored ridge depth
+
+A one-metre-deep arrival cap cannot become a continuing flat bank through art alone. Keep navigation/anchors unchanged and dress steep bare rock below the grass lip,not false walkable shelves. Split skirts around the full physical bridge mouth. Lower/spread mountain layers;use a per-batch mountain-only shader flag and authored world-depth haze so the arbitrary diorama/reflected eye offsets cannot alter atmosphere. Quieter Earth optical profile retains physical reflection,current/clouds and reduced/low fallback;non-Earth pixel invariance is tested. Newly exposed floating hill crowns must intersect actual parents. No save/schema migration or campaign/economy authority in art. Source,actual pixels,short RTX intervals,normal-time footage and human acceptance remain distinct.

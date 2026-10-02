@@ -1,0 +1,50 @@
+{
+  "source_commit": "ae8ce93c79f45839256d4475daf44beb12b6d161",
+  "base": "7a91d32ee59a8310817b99ec22439687b9a8592a",
+  "html_sha256": "c4184ebcbc032dd57deb710eeb119422ecde36a1914dd305617cee49f049231c",
+  "html_bytes": 2248638,
+  "source_checkout": "C:\\dev\\firstlight-artifacts\\bridge-shoreline-proof-2026-10-01\\source",
+  "durable_logs": "D:\\07-GAMES\\Firstlight\\artifacts\\bridge-shoreline-2026-10-01\\verification-source",
+  "source_checkout_clean_after": true,
+  "commands": [
+    "python build.py",
+    "node --test tests/bridge.test.cjs tests/earth.test.cjs",
+    "python tests/bridge_browser.py",
+    "python tools/verify.py --browser"
+  ],
+  "syntax_modules": 58,
+  "node_passes": 675,
+  "python_passes": 53,
+  "python_skips": 1,
+  "skip_reason": "Existing Windows symlink privilege test",
+  "earned_journeys": 24,
+  "browser_assertions": 1598,
+  "browser_suites": {
+    "crossing_browser": 115,
+    "regression09_browser": 107,
+    "cutaway_browser": 6,
+    "reflection_browser": 8,
+    "native_origin_browser": 11,
+    "starter_browser": 147,
+    "camera_browser": 51,
+    "pursuit_browser": 145,
+    "characters_browser": 67,
+    "classes_browser": 45,
+    "cosmos_browser": 75,
+    "earth_browser": 89,
+    "earth_story_browser": 233,
+    "earth_notes_browser": 134,
+    "gathering_browser": 118,
+    "realm_atlas_browser": 37,
+    "timber_browser": 40,
+    "traveler_browser": 116,
+    "bridge_browser": 54
+  },
+  "failures": 0,
+  "migration": null,
+  "save_versions": {
+    "world_and_key": 9,
+    "adventure": 10
+  },
+  "storage": "Primary D authoring checkout retained. Small linked C proof omits evidence images/video only; all source/tests/runtime assets/fixtures present. Legacy shared Git store stays in place; fresh remote objects/captures/logs on D."
+}
