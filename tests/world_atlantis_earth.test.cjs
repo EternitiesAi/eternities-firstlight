@@ -4,6 +4,7 @@ const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs'),vm=require('node:vm');
 const W=require('../src/world-atlantis-earth.js');
+const E=require('../src/engine.js');
 const [earth,sea]=W.realms,R=.31,BODY=1.7,G=1.57;
 const eps=1e-8;
 const inside=(x,z,p,r=0)=>Math.abs(x-p.x)<=p.w/2-r+eps&&Math.abs(z-p.z)<=p.d/2-r+eps;
@@ -129,7 +130,7 @@ test('dive entry and wet exit anchors agree with reachable transfer destinations
 });
 
 test('actual decoration is finite, deterministic, bounded and pure across claimed/unclaimed worlds',()=>{
- const kinds=new Set(['box','cylinder','cone','roof','round','leaf','ring','mountain']);
+ const kinds=new Set(['box','cylinder','cone','roof','round','leaf','ring','mountain-ridge','timber-panel']);
  for(const def of W.realms)for(const claimed of [false,true]){
   const parts=record(def,claimed);assert.ok(parts.length<1500);assert.deepEqual(parts,record(def,claimed));
   for(const p of parts){assert.ok(kinds.has(p.kind));assert.ok(p.p.every(Number.isFinite));assert.ok(p.s.every(n=>Number.isFinite(n)&&n>0));assert.ok(Number.isInteger(p.color));assert.equal(p.opt.cameraSolid,false);if(p.opt.skyImage)assert.equal(p.opt.cutaway,false);}
@@ -156,4 +157,64 @@ test('roofs and important structural decoration agree with the canonical solid f
  const canopy=record(sea).find(p=>p.opt.structureId==='farwake-civic-canopy');assert.ok(canopy.p[1]-canopy.s[1]/2>G+BODY);
  const gallery=sea.dive.volume;
  for(const p of record(sea).filter(p=>p.p[1]<G&&p.kind==='round'))assert.equal(inside(p.p[0],p.p[2],gallery,-Math.max(p.s[0],p.s[2])/2),false,'scenic opaque rocks stay outside the navigable gallery');
+});
+
+test('civic side support physically meets the canopy underside across its full length',()=>{
+ const parts=record(sea),roof=parts.find(p=>p.opt.structureId==='farwake-civic-canopy'),underside=roof.p[1]-roof.s[1]/2;
+ for(const id of ['farwake-court-west','farwake-court-east']){
+  const s=sea.solids.find(s=>s.id===id);assert.ok(G+s.h>=underside-eps,`${id} physical support is too short`);
+  const cap=parts.find(p=>p.kind==='box'&&p.opt.supportCap===id);assert.ok(cap,`${id} has an aligned cap`);
+  assert.ok(Math.abs(cap.p[1]+cap.s[1]/2-underside)<eps,'cap touches rather than floats below the roof');
+  const columns=parts.filter(p=>p.opt.supportColumn===id);assert.equal(columns.length,3);
+  for(const p of columns)assert.ok(Math.abs(p.p[1]+p.s[1]/2-underside)<eps,'visible columns reach the same support plane');
+ }
+});
+
+test('bridge timber skins use the real UV mesh, clear every retained joint and stay above only existing deck',()=>{
+ const parts=record(earth),skins=parts.filter(p=>p.opt.bridgeSkin),joints=parts.filter(p=>p.opt.bridgeJoint),bridge=earth.patches.find(p=>p.id==='channel-bridge');
+ assert.equal(skins.length,51);assert.equal(joints.length,50);
+ const mesh=E.geometry('timber-panel');assert.equal(mesh.length,36*8,'existing timber-panel is the box with UVs');
+ assert.ok(Array.from(mesh).every(Number.isFinite));
+ const uv=Array.from({length:mesh.length/8},(_,i)=>[mesh[i*8+6],mesh[i*8+7]]);
+ assert.ok(uv.every(([u,v])=>u>=.1-1e-6&&u<=.2+1e-6&&v>=0&&v<=1),'existing one-board strip UV range is preserved');
+ assert.ok(new Set(uv.map(p=>p[0])).size>1&&new Set(uv.map(p=>p[1])).size>1,'both UV dimensions vary; a plain fallback box would not carry this material mapping');
+ for(let i=0;i<skins.length;i++){
+  const p=skins[i],lo=p.p[2]-p.s[2]/2,hi=p.p[2]+p.s[2]/2;
+  assert.equal(p.kind,'timber-panel');assert.ok(p.p[1]-p.s[1]/2>bridge.y,'no coplanar duplicate of the generic deck');
+  assert.ok(p.p[1]+p.s[1]/2<=bridge.y+.03+eps);assert.ok(Math.abs(p.p[0])+p.s[0]/2<3.495,'skin stays inside the unchanged rail inner faces');
+  assert.ok(lo>=bridge.z-bridge.d/2-eps&&hi<=bridge.z+bridge.d/2+eps);
+  for(const j of joints)assert.ok(hi<=j.p[2]-j.s[2]/2+eps||lo>=j.p[2]+j.s[2]/2-eps,'plank gap joint remains uncovered');
+  if(i)assert.ok(skins[i-1].p[2]+skins[i-1].s[2]/2<lo,'adjacent skin faces do not overlap');
+ }
+ for(const j of joints){assert.equal(j.s[0],6.7);assert.equal(j.s[1],.025);assert.equal(j.s[2],.045);assert.equal(j.p[1],G+.018);}
+});
+
+test('narrow field path geometry lies wholly on supported clear ground and door faces remain closed decoration',()=>{
+ const parts=record(earth),seams=parts.filter(p=>p.opt.pathSeam),doors=parts.filter(p=>p.opt.closedDoor);
+ assert.ok(seams.length>=4&&seams.length<15,'a small authored path, not bulk floor regeneration');
+ for(const p of seams){
+  assert.ok(p.s[0]<=.12&&p.s[1]<=.014);assert.ok(p.p[1]+p.s[1]/2<=G+.03);
+  const m=E.M.compose(...p.p,...p.s,...p.opt.r),mesh=E.geometry('box');
+  for(let i=0;i<mesh.length;i+=6){const [x,,z]=E.M.transform(m,[mesh[i],mesh[i+1],mesh[i+2]]);assert.ok(walkable(earth,x,z),'every actual rotated path vertex remains on clear existing ground');}
+ }
+ assert.deepEqual(doors.map(p=>p.opt.solidId).sort(),['east-house','field-store','west-house']);
+ for(const p of doors){
+  const s=earth.solids.find(s=>s.id===p.opt.solidId);assert.equal(p.kind,'timber-panel');assert.equal(p.p[0],s.x);
+  const m=E.M.compose(...p.p,...p.s,...p.opt.r),mesh=E.geometry(p.kind),ys=[];
+  for(let i=0;i<mesh.length;i+=8){const [x,y,z]=E.M.transform(m,[mesh[i],mesh[i+1],mesh[i+2]]);ys.push(y);assert.ok(x>=s.x-s.w/2&&x<=s.x+s.w/2);assert.ok(z>=s.z+s.d/2&&z<s.z+s.d/2+.12);}
+  assert.ok(Math.abs(Math.min(...ys)-G)<1e-6,'rotated vertical-grain door meets existing ground');
+ }
+ assert.equal(earth.points.filter(p=>/door|house entrance/i.test(p.id)).length,0,'closed facade does not advertise an unimplemented interior');
+});
+
+test('distant ridges use the actual mountain mesh and remain outside Earth rather than becoming false paths',()=>{
+ const ridges=record(earth).filter(p=>p.kind==='mountain-ridge');assert.equal(ridges.length,3);
+ for(const p of ridges){
+  const mesh=E.geometry(p.kind),ys=[];for(let i=1;i<mesh.length;i+=6)ys.push(mesh[i]);
+  assert.ok(new Set(ys.map(y=>y.toFixed(4))).size>20,'real asymmetric ridge heights; unknown kinds silently fall back to a cylinder');
+  assert.ok(p.p[0]+p.s[0]/2<earth.bounds.minX||p.p[0]-p.s[0]/2>earth.bounds.maxX||p.p[2]+p.s[2]/2<earth.bounds.minZ||p.p[2]-p.s[2]/2>earth.bounds.maxZ);
+  assert.equal(p.opt.cameraSolid,false);assert.equal(p.opt.cutaway,false);assert.equal(E.solidBounds(p.kind,{p:p.p,s:p.s,...p.opt}),null);
+ }
+ assert.ok(ridges.some(p=>p.p[0]>earth.bounds.maxX&&p.p[2]>17&&p.p[2]<93),'channel side view has distant mountains across the water');
+ assert.equal(record(earth).some(p=>p.kind==='mountain'),false,'unsupported fallback kind is gone');
 });

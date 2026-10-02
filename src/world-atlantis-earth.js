@@ -2,7 +2,7 @@
  * own travel, movement, work, combat and persistence. No personal/save mutation. */
 (function (G) {
  'use strict';
- const GROUND = 1.57, TAU = Math.PI * 2;
+ const GROUND = 1.57;
  const earthPalette = {ground:0x839765,stone:0x938e78,trim:0x9b7952,sky:0xc2d0cd};
  const seaPalette = {ground:0xc1ba9b,stone:0x9ca8a0,trim:0xa28550,sky:0x82b4c0};
  const patch = (id,x,z,w,d,color) => ({id,x,z,w,d,y:GROUND,color});
@@ -87,8 +87,8 @@
    solid('pilot-school',-9,23,6,7,3.3,0xc0b493),
    solid('farwake-court-back-west',-9,-21.8,8,.5,4.1,0xb9bda9),
    solid('farwake-court-back-east',6,-21.8,14,.5,4.1,0xb9bda9),
-   solid('farwake-court-west',-13.5,-12,.5,16,3.6,0xaeb5a7),
-   solid('farwake-court-east',13.5,-12,.5,16,3.6,0xaeb5a7),
+   solid('farwake-court-west',-13.5,-12,.5,16,4,0xaeb5a7),
+   solid('farwake-court-east',13.5,-12,.5,16,4,0xaeb5a7),
    solid('instrument-bench',-8,-12,3,1.4,1.1,0x8e7757),
    solid('tide-dial-base',9.5,-12,1.5,1.5,1.25,0x9ba995),
    solid('court-registry',0,-20.4,3.2,.8,1.2,0x9c8966),
@@ -169,7 +169,17 @@
    box(x,height(x,z)+h+.06,z,w,.12,d,def.palette.trim,{cutaway:true,structureId:id});
   };
   if(def.id==='earthlands') {
-   for(let z=18;z<=92;z+=1.5) box(0,height(0,z)+.018,z,6.7,.025,.045,0x68563f);
+   const bridge=def.patches.find(p=>p.id==='channel-bridge'),joints=[];
+   for(let z=18;z<=92;z+=1.5) {
+    joints.push(z);box(0,height(0,z)+.018,z,6.7,.025,.045,0x68563f,{bridgeJoint:true});
+   }
+   // Existing renderer/material pair, with separated face planes and the exact
+   // existing joint gaps. The skins never extend or replace supported ground.
+   for(let i=0;i<=joints.length;i++) {
+    const lo=i?joints[i-1]+.0225:bridge.z-bridge.d/2;
+    const hi=i<joints.length?joints[i]-.0225:bridge.z+bridge.d/2;
+    add('timber-panel',0,height(0,(lo+hi)/2)+.013,(lo+hi)/2,6.7,.014,hi-lo,0x9b7952,{bridgeSkin:true,rough:.87});
+   }
    for(let z=20;z<=90;z+=7) for(const x of [-3.62,3.62]) {
     box(x,height(x,z)+.67,z,.23,1.34,.23,0x786147,{solidId:x<0?'bridge-west-rail':'bridge-east-rail'});
    }
@@ -187,6 +197,19 @@
      box(x+dx,height(x,z)+2.5,z,1.1,1.25,.05,0x645d4e,{solidId:id});
      box(x+dx,height(x,z)+2.5,z+.035,.9,1.05,.04,0xf3ce86,{em:.2,solidId:id});
     }
+    const base=height(x,z);
+    // Closed facade details: no entrance trigger or promise of an interior.
+    add('timber-panel',x,base+1.05,z+.04,2.1,1.1,.05,0x806345,{closedDoor:true,solidId:id,r:[0,0,Math.PI/2]});
+    for(const dx of [-.62,.62]) box(x+dx,base+1.1,z+.025,.09,2.2,.07,0x6b5840,{solidId:id});
+    box(x,base+2.18,z+.025,1.33,.09,.07,0x6b5840,{solidId:id});
+    box(x+.38,base+1.03,z+.085,.055,.075,.045,0xb09b67,{solidId:id});
+   }
+   const paths=[[[1,-36],[1,-42],[-6,-47],[-6,-62],[-6,-68],[8,-69]],
+    [[-6,-47],[-15,-46]],[[1,-42],[13,-46],[13,-54]]];
+   for(const path of paths) for(let i=1;i<path.length;i++) {
+    const [ax,az]=path[i-1],[bx,bz]=path[i],length=Math.hypot(bx-ax,bz-az),x=(ax+bx)/2,z=(az+bz)/2;
+    // Narrow inset seams; ends stop short of junctions to avoid coincident faces.
+    box(x,height(x,z)+.007,z,.12,.012,length-.2,0xaea184,{pathSeam:true,r:[0,Math.atan2(bx-ax,bz-az),0]});
    }
    trees.forEach(([x,z],i)=>{
     const base=height(x,z),scale=.8+(i%3)*.12;
@@ -200,8 +223,9 @@
    box(-18,height(-18,-46)+1.04,-46,.12,.42,1.5,0x977b54,{solidId:'field-sluice',r:[0,0,claimed?.3:0]});
    for(const x of [16.3,17,17.7]) add('round',x,height(x,-54)+1.55,-54,.58,.3,.5,claimed?0xc9b58b:0xcab975,{solidId:'produce-load'});
    for(let i=0;i<4;i++) box(6.9+i*.7,height(8,-72)+1.2,-72,.55,.08,.7,0xd1c4a0,{solidId:'settlement-register'});
-   add('mountain',-63,-5,-117,76,37,50,0x78918c,{skyImage:true});
-   add('mountain',62,-7,-110,68,31,43,0x8e9e94,{skyImage:true});
+   add('mountain-ridge',-64,-.4,-132,80,37,54,0x78918c,{skyImage:true,vista:'northwest'});
+   add('mountain-ridge',67,-.4,-125,72,31,50,0x8e9e94,{skyImage:true,vista:'northeast'});
+   add('mountain-ridge',103,-.4,54,70,34,110,0x78998f,{skyImage:true,vista:'channel-east'});
   } else {
    for(let z=23;z<=42;z+=1.25) box(0,height(0,z)+.018,z,8.7,.025,.04,0x766947);
    for(const [x,z] of [[-3,25],[3,25],[-10,-4],[10,-4],[-3,-25],[-3,-39],[15,-43]]) lamp(x,z);
@@ -209,11 +233,13 @@
    // Open-front civic canopy; the three actual walls are supplied solids.
    box(0,height(0,-12)+4.1,-12,27,.2,19.7,0x839b90,{cutaway:true,structureId:'farwake-civic-canopy'});
    for(const x of [-13.5,13.5]) {
-    box(x,height(x,-12)+3.7,-12,.5,.22,16,0xb7a46e,{solidId:x<0?'farwake-court-west':'farwake-court-east'});
+    const id=x<0?'farwake-court-west':'farwake-court-east';
+    box(x,height(x,-12)+3.94,-12,.56,.12,16.02,0xb7a46e,{solidId:id,supportCap:id});
    }
    for(let x=-11;x<=11;x+=2.75) box(x,height(x,-21.8)+4.27,-21.8,1.8,.2,.65,0xbaa26b,{cutaway:true});
    for(const z of [-8,-14,-19.6]) for(const x of [-13.5,13.5]) {
-    box(x,height(x,z)+1.8,z,.5,3.6,.55,0x94a99d,{solidId:x<0?'farwake-court-west':'farwake-court-east'});
+    const id=x<0?'farwake-court-west':'farwake-court-east';
+    box(x,height(x,z)+2,z,.5,4,.55,0x94a99d,{solidId:id,supportColumn:id});
    }
    add('ring',9.5,height(9.5,-12)+1.8,-12,1.25,1.25,.22,0xd6bc7a,{solidId:'tide-dial-base',r:[0,Math.PI/2,0]});
    box(9.5,height(9.5,-12)+1.8,-12,.07,.9,.12,claimed?0x77c6bb:0xc7cda2,{solidId:'tide-dial-base',em:.2});

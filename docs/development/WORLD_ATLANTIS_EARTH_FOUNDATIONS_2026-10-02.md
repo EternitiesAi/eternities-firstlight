@@ -12,6 +12,7 @@ Base: `4b5f3c7a7a7672ccefbf2ef8501507f017ec06d3`.
 Branch: `agent/world-atlantis-earth`.
 Worktree: `D:/07-GAMES/Firstlight/authoring/world-atlantis-earth`.
 First source checkpoint: `c87b7c64916fb3c51b9baa2820f9144825d4c8d0`.
+Initial focused-test checkpoint: `db02c27d51d3081c69005222685785bbcfb0d60e`.
 
 Owned files are `src/world-atlantis-earth.js`,
 `tests/world_atlantis_earth.test.cjs`, and this note. No existing Earth region,
@@ -107,7 +108,7 @@ meets its supporting walls. Gallery rocks/plants remain outside the navigable
 volume. Scenic shapes have `cameraSolid:false`, with distant scenery also
 `cutaway:false`; tall nearby roofs have cutaway enabled.
 
-Actual decoration emissions are **233 Earth / 98 Atlantis**, including 2 / 14
+Actual decoration emissions after the source polish are **308 Earth / 98 Atlantis**, including 3 / 14
 distant scenic instances respectively. These counts exclude shared ground,
 generic collider geometry, dynamic actors and UI. They are a finite authoring
 budget receipt, not total integrated draw calls or a hardware timing claim.
@@ -115,12 +116,15 @@ budget receipt, not total integrated draw calls or a hardware timing claim.
 Fresh checks for this candidate:
 
 - `node --check src/world-atlantis-earth.js`: passed.
-- `node --test tests/world_atlantis_earth.test.cjs`: 9 tests passed, zero failures,
+- `node --test tests/world_atlantis_earth.test.cjs`: 13 tests passed, zero failures,
   zero skips. Tests cover finite unique IDs, frozen canonical data, side-effect
   free module load, all dry anchors, analytic complete-segment support and
   collider clearance, both Earth approaches, ordinary work identity, dry Atlantis
   continuity, full-body XYZ gallery clearance, reachable entry/exit, actual
   emitted geometry/roof footprints, deterministic budget and no caller mutation.
+  Four additional checks qualify canopy support contact, native timber UV mesh /
+  bridge skin/joint separation, actual rotated path/door vertices, and native
+  mountain-ridge geometry outside Earth bounds.
 - An initial direct dense-route probe failed because a route turned sideways
   through the bridge rail. The route now reaches Z 16 before turning; the retained
   test rejects the original shortcut. The initially closed civic back wall was
@@ -133,3 +137,56 @@ commits and qualify the production callers, browser journeys, both camera views,
 rendered dry/wet geometry, saved/reloaded characters and required integrated
 regression gates. No browser, GPU, full-suite, human-feel or deployment result is
 claimed by this agent's focused checks.
+
+## Source polish after the integrated visual review
+
+Root supplied the genuine production browser captures under
+`D:/07-GAMES/Firstlight/authoring/bridge-moment/evidence10/world-foundations-browser/`.
+The read-only review inspected `earthlands-third.png`, `earthlands-diorama.png`,
+`atlantis-third.png`, `atlantis-diorama.png`, `atlantis-swim.png` and
+`atlantis-air-court.png`, plus the root's actual generic art emitter. These are
+software Chromium development captures; hardware captures and human comfort
+remain separate. The requested spelling `atlantis-swimming.png` was not present;
+the actual wet-view filename is `atlantis-swim.png`.
+
+The production-art recorder emitted 376 Atlantis static instances at that review
+checkpoint. No box intersected the intended XYZ body route above a .061-unit
+surface-trim tolerance. This is a bounded box/route check, not a complete mesh,
+camera or arbitrary-swim qualification. The generic deck underside was Y 1.46,
+compared with permitted maximum foot Y -.25 plus body 1.7 = head Y 1.45.
+
+Three review priorities were dry-court feedback/overlapping HUD messages, civic
+canopy support and Earth working-settlement readability. Root owns the HUD,
+controls, build and subsequent captures. The newly authorized source refinement:
+
+- Raises only the existing civic side-wall heights from 3.6 to 4.0 in their
+  identical XZ footprint, aligning columns and caps at Y 5.57 with the actual
+  canopy underside. The former cap top was Y 5.38, leaving a .19-unit gap.
+- Adds eight narrow, .12-wide inset path seams from the fields through Merren
+  to the register, with short branches to the water check and produce load.
+  Actual transformed vertices stay on supported clear ground. These are art,
+  not additional ground or a navigation permission.
+- Adds three closed timber door faces and modest casing/handles. Vertical grain
+  uses the existing `timber-panel` mesh rotated in the facade plane. No new door
+  point or enterable interior is advertised.
+- Adds 51 separated `timber-panel` bridge skins, top Y 1.590, above the existing
+  supported deck plane Y 1.57 by .020. Their bounds leave every original
+  .045-wide joint strip uncovered and preserve every rail/post transform.
+  Native UVs retain the approved one-board strip U .1.. .2 / V 0..1. Earth now
+  emits 54 timber-panel instances including the three door faces. No renderer,
+  texture asset, material lifetime or licensing owner changed.
+- Corrects an authoring error in the initial source: unknown geometry kind
+  `mountain` silently fell back to the engine's cylinder mesh. Both northern
+  vistas now use actual `mountain-ridge`; a third ridge across the channel at
+  X 103 / Z 54 adds the requested side view. Every complete ridge footprint lies
+  outside Earth bounds; there is no collider, destination or supported path.
+  Retained tests inspect the native mesh's varying ridge heights so a fallback
+  cannot satisfy the same check.
+
+The four new geometry checks first failed against the unrefined source, then
+passed after the implementation. A UV test initially assumed a full-square U
+range; inspecting the existing engine showed its deliberately selected board
+strip, and the test now verifies that actual approved mapping rather than
+changing it. Final focused result: 13 passed, zero failed or skipped, plus source
+syntax and whitespace checks. No new browser/GPU/full-suite run or material
+activation/performance claim is made for this source-polish checkpoint.
