@@ -32,6 +32,22 @@ function readiness(sim){
  if(a.elapsed<r.cooldowns.attack)return 'Weapon recovering';
  return t.auto?'Autoattack active':'Ready · 1 to autoattack';
 }
+// Read current AI intent only. Timers and damage remain with their encounter owner.
+function threat(sim){
+ const a=sim.state.adventure;if(sim.paused||!a.started||a.hp<=0||!G.RealmAdventure.combatScene(sim))return null;
+ const e=selected(sim);if(!e||e.kind==='practice')return null;
+ const known=e.custom==='bell'?e.kind==='bellwarden':e.eventEnemy?['invader','chanter','saboteur','siegeboss'].includes(e.kind):['skitter','sentinel','boss','charger'].includes(e.kind);
+ if(!known)return null;
+ if(e.mode==='charge')return e.kind==='charger'&&Number.isFinite(e.chargeLeft)&&e.chargeLeft>0?{phase:'charge',kind:'charge',remaining:null}:null;
+ if(!['windup','recover'].includes(e.mode)||!Number.isFinite(e.timer)||e.timer<=0)return null;
+ if(e.mode==='recover')return{phase:'recover',kind:'opening',remaining:e.timer};
+ if(!e.aim||!Number.isFinite(e.aim.x)||!Number.isFinite(e.aim.z))return null;
+ let kind='strike';
+ if(e.custom==='bell'){if(!['inner','outer'].includes(e.ringMode))return null;kind='bell-'+e.ringMode;}
+ else if(e.eventEnemy&&e.aimWard)kind='ward';
+ else if(e.kind==='charger')kind='charge';
+ return{phase:'windup',kind,remaining:e.timer};
+}
 function handle(sim,type,p={}){
  const A=G.RealmAdventure,a=sim.state.adventure,r=A.runtime(sim),t=runtime(sim),fail=error=>({ok:false,error}),yes=text=>({ok:true,text});
  if(type==='target-cycle'){
@@ -105,6 +121,6 @@ function tick(sim){
  const result=sim.adventureCommand('auto-'+(++t.serial)+'-'+a.revision,'attack',{target:e.id});
  if(result.ok)t.motion={style:w.style,at:a.elapsed};t.windup=null;
 }
-G.RealmCombat={skills,runtime,candidates,selected,stop,pose,readiness,handle,mitigate,hit,tick};
+G.RealmCombat={skills,runtime,candidates,selected,stop,pose,readiness,threat,handle,mitigate,hit,tick};
 if(typeof module!=='undefined')module.exports=G.RealmCombat;
 })(globalThis);

@@ -23,17 +23,18 @@ function journey({bow=false,veteran=false,earth=false}={}){
  const home=()=>{walk(0,12);cmd('starter-leave');if(earth){assert.equal(sim.room,E.ROOM);walk(0,10);walk(0,24);assert.ok(E.leave(sim).ok);}walk(11,9);};
  function fight(objective){
   let e=A.runtime(sim).enemies.find(e=>e.objective===objective);assert.ok(e);const enemyId=e.id;
-  cmd('target-select',{id:enemyId});if(!T.runtime(sim).auto)cmd('auto-toggle');let guards=0,ticks=0;
+  cmd('target-select',{id:enemyId});if(!T.runtime(sim).auto)cmd('auto-toggle');let guards=0,ticks=0;const phases={};
   for(;ticks<4000&&!sim.state.adventure.pursuit.active.defeated.includes(objective);ticks++){
    e=A.runtime(sim).enemies.find(e=>e.id===enemyId);const a=sim.state.adventure,r=A.runtime(sim),t=T.runtime(sim),p=sim.state.player,w=AR.weapon(a);assert.ok(a.hp>0,'survived '+enemyId);
    if(a.hp<48&&a.tonics&&a.elapsed>=r.cooldowns.heal)cmd('heal');
-   if(e.mode==='windup'&&a.stamina>=20&&a.elapsed>=t.cooldowns.guard){cmd('guard');guards++;}
+   const cue=T.threat(sim);if(cue){assert.equal(cue.phase,e.mode);assert.equal(cue.remaining,e.timer);phases[cue.phase]??={kind:cue.kind,remaining:cue.remaining,enemyHP:e.hp,playerHP:a.hp,readiness:T.readiness(sim)};}
+   if(cue?.phase==='windup'&&a.stamina>=20&&a.elapsed>=t.cooldowns.guard){cmd('guard');guards++;}
    if(!sim.playerPath.length&&(Math.hypot(p.x-e.x,p.z-e.z)>=w.reach-.2||!A.visible(sim,p,e))){
     const radius=w.style==='bow'?5:1.6;let moved=false;
     for(let j=0;j<16;j++){const q={x:e.x+Math.sin(j*Math.PI/8)*radius,z:e.z+Math.cos(j*Math.PI/8)*radius};if(Q.walkable(q.x,q.z)&&A.visible(sim,q,e)&&sim.moveTo(q.x,q.z).ok){actions.push({walk:[q.x,q.z],combat:true});moved=true;break;}}assert.ok(moved,'legal approach '+enemyId);
    }tick(.1);
   }
-  assert.ok(sim.state.adventure.pursuit.active.defeated.includes(objective),'cleared '+enemyId);combats.push({id:enemyId,ticks,guards,hp:sim.state.adventure.hp});cmd('target-clear');
+  assert.ok(sim.state.adventure.pursuit.active.defeated.includes(objective),'cleared '+enemyId);assert.equal(T.threat(sim),null,'defeated foe leaves no stale cue');combats.push({id:enemyId,ticks,guards,hp:sim.state.adventure.hp,phases});cmd('target-clear');assert.equal(T.threat(sim),null);
  }
  function gather(id){const n=S.NODES.find(n=>n.id===id);walk(n.x+1.1,n.z);let node=sim.state.sandbox.nodes.find(q=>q.id===id);while(node.hp){if(node.readyAt>sim.state.sandbox.elapsed)tick(node.readyAt-sim.state.sandbox.elapsed+.1);sandbox('gather',{node:id});tick(1);}}
  function practice(){enter();walk(-5,AR.weapon(sim.state.adventure).style==='bow'?6:11.5);cmd('target-select',{id:'river-practice'});cmd('auto-toggle');tick(1.5);const damage=A.runtime(sim).training?.lastDamage;assert.ok(damage>0,'confirmed practice impact');cmd('target-clear');home();return damage;}

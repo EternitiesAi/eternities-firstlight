@@ -218,3 +218,20 @@ Keep actual-geometry leg/reference pixel coverage with water excluded only from
 the test ID pass. Translated static pose tests are distinct from ordinary app
 RAF footage,human comfort and sustained GPU performance. Preserve both cameras
 and all existing owners;fetch latest review heads before the next local outing.
+
+## Selected foe action readability
+
+Read the 2026-10-01 combat-opening task/results. Combat's transient `threat`
+projection reads the actual selected foe's owner, mode and current timer; AI,
+damage and payout stay in Adventure/Beacon/Crossing. Preserve separate HP/player
+readiness. Bell inner/outer rings, ward-directed strikes and untimed charges have
+distinct copy. Countdown rounds positive fractions upward; recovery never implies
+guaranteed reach, stamina or impact. Brace copy reflects real active/cooldown/cost
+state. Clear cues on pause/death/invalid selection without mutating AI timers.
+Narrow ward layout follows target border-box size through ResizeObserver, with no
+per-frame forced measurement. Keep synthetic layout/owner boundaries distinct
+from earned blade/bow/veteran fights and normal-time RTX footage. The verifier/CI
+adds combat_cue_browser; all older gates and fresh pushed-head clone remain.
+World/key9/adventure10 unchanged. Dom approved the bridge appearance and stated
+future open-world/massive-water ambition; that is direction, not implemented scale
+or a combat/comfort playtest. Saves, cameras and review/deployment boundaries stay.

@@ -42,7 +42,7 @@ class RPGUI{
     ${button(icon('grid')+'<span>More</span>','open','more')}
    </nav>
    <section id="quest-tracker" aria-label="Tracked quest"><div class="tracker-switch">${button('Story','track','story')}${button('Homestead','track','homestead')}</div><button id="tracked-open"><small id="tracked-chapter"></small><strong id="tracked-title"></strong><span id="tracked-detail"></span><i id="tracked-progress"></i></button></section>
-   <section id="target-frame" hidden aria-label="Selected enemy"><div id="target-icon">${icon('shield')}</div><div><small id="target-rank"></small><strong id="target-name"></strong><div class="target-health"><i id="target-health-fill"></i></div><span id="target-state"></span></div><button id="target-clear" aria-label="Clear target">×</button></section>
+   <section id="target-frame" hidden aria-label="Selected enemy"><div id="target-icon">${icon('shield')}</div><div><small id="target-rank"></small><strong id="target-name"></strong><div class="target-health"><i id="target-health-fill"></i></div><span id="target-state"></span><div id="target-cue" hidden aria-label="Selected foe action"><b id="target-cue-title"></b><span id="target-cue-detail"></span></div></div><button id="target-clear" aria-label="Clear target">×</button></section>
    <section id="beacon-tracker" hidden aria-label="Beacon defense"><small>CHAPTER III · THE BEACON ANSWERS</small><strong id="beacon-phase"></strong><div class="ward-meter"><i id="ward-fill"></i></div><span id="beacon-status"></span><button id="beacon-menu">Approach & speak · E</button></section>
    <div class="camera-presets" aria-label="Camera styles: V switches, R resets the current view">${button('3rd person','camera','adventure')}${button('Diorama','camera','follow')}${button('Tactical','camera','tactical')}${button('Wide','camera','wide')}</div>
    <div id="enemy-health" aria-hidden="true"></div><div id="combat-numbers" aria-hidden="true"></div>
@@ -53,6 +53,9 @@ class RPGUI{
     <button class="skill skill-class" id="skill-class" data-skill="class-technique"><kbd>X</kbd><span class="skill-icon">✦</span><small>Path</small><b class="skill-cooldown"></b></button></div><div class="combat-help" id="combat-help">TAB selects · 1 toggles autoattack · 2–6 skills · X path · SPACE dodge</div></div>
    </section>`;
   $('#hud').append(hud);
+  // Size changes only: narrow layouts stack the ward below the actual target panel.
+  this.targetSize=new ResizeObserver(entries=>{const e=entries[0],height=e.borderBoxSize?.[0]?.blockSize??e.target.getBoundingClientRect().height;hud.style.setProperty('--target-frame-height',height+'px');});
+  this.targetSize.observe($('#target-frame'));
   const d=document.createElement('dialog');d.id='rpg-window';d.setAttribute('aria-labelledby','rpg-heading');d.innerHTML='<header><div><small>FIRSTLIGHT · YOUR JOURNEY</small><h2 id="rpg-heading">Character</h2></div><span class="paused-note">World paused while open</span><button id="rpg-close" aria-label="Close character workspace">×</button></header><nav id="rpg-tabs" aria-label="Character sections"></nav><div id="rpg-content"></div>';document.body.append(d);this.dialog=d;
   $('#rpg-close').onclick=()=>this.close();d.addEventListener('cancel',e=>{e.preventDefault();this.close();});
   const click=e=>{const b=e.target.closest('[data-rpg],[data-realm-art]');if(b)this.action(b);};d.addEventListener('click',click);hud.addEventListener('click',click);
@@ -271,6 +274,20 @@ class RPGUI{
   out.disc.push({p:[0,-.08,0],s:[2.0,.12,2.0],c:0x566864});
   const e=this.preview.e,mount=$('#avatar-mount'),width=Math.max(100,Math.round(mount.clientWidth)),height=Math.max(140,Math.round(mount.clientHeight));if(this.preview.width!==width||this.preview.height!==height){e.resize(width,height,1);this.preview.width=width;this.preview.height=height;}for(const [k,b]of Object.entries(this.preview.batches))b.items=out[k];e.setCamera({eye:[3,2.1,6],target:[0,.8,0],half:Math.max(1.18,.83/(width/height)),aspect:width/height});e.render(0,10,false);
  }
+ targetCue(){
+  const cue=T.threat(this.sim),root=$('#target-cue');root.hidden=!cue;
+  root.dataset.phase=cue?.phase||'';$('#target-cue-title').textContent='';$('#target-cue-detail').textContent='';if(!cue)return;
+  const a=this.state,t=T.runtime(this.sim),braced=t.guardUntil>a.elapsed,ready=a.stamina>=T.skills.guard.cost&&a.elapsed>=t.cooldowns.guard;
+  const defense=braced?'Braced · move clear if needed':ready?'Brace (3) or move clear':'Move clear · Brace unavailable';
+  const copy=cue.phase==='recover'?['Recovery opening','Strike if ready; close if out of range']:cue.phase==='charge'?['Charging',defense]:({
+   strike:['Marked strike',defense],charge:['Charge incoming',defense],
+   'bell-outer':['Wide ring','Step into its quiet center'],
+   'bell-inner':['Inner strike','Step out of the circle'],
+   ward:['Beacon strike','The marked strike targets the ward']
+  })[cue.kind];
+  $('#target-cue-title').textContent=copy[0]+(cue.remaining===null?'':' · '+(Math.ceil(cue.remaining*10)/10).toFixed(1)+'s');
+  $('#target-cue-detail').textContent=copy[1];
+ }
  tick(){
   const sim=this.sim,a=this.state,t=T.runtime(sim),r=A.runtime(sim),b=B.runtime(sim),st=A.stats(a),e=T.selected(sim),w=AR.weapon(a),now=a.elapsed;
   document.body.classList.toggle('has-equipment',a.started);document.body.classList.toggle('rpg-battle',A.combatScene(sim));
@@ -292,7 +309,7 @@ class RPGUI{
   const bm=$('#beacon-menu');bm.textContent=b.phase==='assault'?'Repair ward · E · 20 stamina':'Speak with the envoy · E';bm.disabled=b.phase==='assault'&&(!B.near(sim)||b.ward>=100||b.time<b.playerRepairAt||a.stamina<20);
   sim.presentation=sim.presentation||{};sim.presentation.attackTarget=t.target||(this.api.adventure().intent?.kind==='attack'?this.api.adventure().intent.id:null);
   const lastHit=t.hits.at(-1);if(lastHit&&this.soundedHit!==lastHit){this.soundedHit=lastHit;if(a.elapsed-lastHit.at<.25)this.api.adventure().sound('confirmed-hit');}
-  this.numbers();this.worldHealth();this.crossing.tick();this.starter.tick();this.pursuit.tick();this.cosmos.tick();this.earth.tick();this.gathering.tick();
+  this.targetCue();this.numbers();this.worldHealth();this.crossing.tick();this.starter.tick();this.pursuit.tick();this.cosmos.tick();this.earth.tick();this.gathering.tick();
  }
  worldHealth(){
   const root=$('#enemy-health');root.replaceChildren();if(!this.sim.presentation?.perspective||!A.combatScene(this.sim))return;
