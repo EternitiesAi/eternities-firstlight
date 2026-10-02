@@ -3,6 +3,10 @@
 Known blue subjects lie behind a flagged civic deck plus surface water, and
 under a tagged shelter roof. Main-view changes must preserve reflection bytes
 and respect the existing cutaway preference. Actual traveler captures are separate.
+
+Shelter regression: the earlier noWater=True setup skipped reflection rendering
+and compared the previous gallery texture. Every shelter frame now renders its
+reflection freshly, with an empty-scene control proving geometry reaches it.
 """
 from pathlib import Path
 import hashlib, json
@@ -24,9 +28,11 @@ with sync_playwright() as pw:
  check('Gallery aperture leaves actual reflected framebuffer identical',difference(off.reflection,on.reflection)===0,{changedChannels:difference(off.reflection,on.reflection)});
  e.galleryFocus=null;const noGallery=render();check('Ordinary water retains its opaque surface without a visited gallery',blue(noGallery.main)<blue(on.main)-100,{ordinaryBlue:blue(noGallery.main)});
  e.galleryFocus=[0,-1.8,0];e.cutaway=false;const disabled=render();check('Disabled cutaway retains the original main image',difference(off.main,disabled.main)===0,{changedChannels:difference(off.main,disabled.main)});
- e.clear();e.noWater=true;e.galleryFocus=null;e.cutawayFocus=[0,2,0];e.setCamera({eye:[0,18,24],target:[0,2,0],half:10,aspect:4/3});
+ e.clear();e.noWater=false;e.galleryFocus=null;e.cutawayFocus=[0,2,0];e.setCamera({eye:[0,18,24],target:[0,2,0],half:10,aspect:4/3});
+ e.cutaway=true;e.worldRoofOpen=false;const emptyShelter=render();
  e.batch('box',[{p:[0,5.5,0],s:[12,.2,10],c:[.4,.4,.4],cutaway:true,worldRoof:'synthetic-shelter'},{p:[3,2,0],s:[1,2,.5],c:[.01,.05,1],em:.8,cameraSolid:false}]);
  e.cutaway=true;e.worldRoofOpen=false;const covered=render();e.worldRoofOpen=true;const open=render();check('Visited shelter reveals a resident away from the narrow traveler aperture',blue(open.main)>blue(covered.main)+100,{beforeBlue:blue(covered.main),afterBlue:blue(open.main)});
+ const emptyChangedChannels=difference(emptyShelter.reflection,covered.reflection),galleryChangedChannels=difference(disabled.reflection,covered.reflection);check('Fresh shelter reflection contains geometry distinct from empty and prior gallery scenes',emptyChangedChannels>100&&galleryChangedChannels>100,{emptyChangedChannels,galleryChangedChannels});
  check('Shelter main-view reveal leaves reflected geometry identical',difference(covered.reflection,open.reflection)===0,{changedChannels:difference(covered.reflection,open.reflection)});
  e.cutaway=false;e.worldRoofOpen=false;const solid=render();e.worldRoofOpen=true;const stillSolid=render();check('Disabled cutaway preserves the complete shelter roof',difference(solid.main,stillSolid.main)===0,{changedChannels:difference(solid.main,stillSolid.main)});
  check('No WebGL error',g.getError()===g.NO_ERROR);return{checks};
