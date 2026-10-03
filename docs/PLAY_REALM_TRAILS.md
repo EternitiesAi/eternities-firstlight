@@ -26,4 +26,10 @@ After any claimed trail, the outdoor home workbench offers **one realm-work fitt
 
 **V** swaps third person and your last diorama view. Drag to orbit, scroll to zoom, and **R** resets the current view. Both styles keep their own framing. Return to Firstlight remains available; larger continents, faction endings and seamless open-world streaming are still unfinished.
 
+At Coastward's **The channel crossing** map point, press **E → Frame the channel bridge** for the supported side view. Then keep walking. It retains the selected style and field of view; **V** offers the other framing and **R** resets the current one. Third person includes the distant mountain skyline; the tighter diorama frames the deck and water. A shallow view at the near rail edge can still obscure part of the legs.
+
+The top music-note control opts into app sound. The new quiet ambience follows the current realm and Atlantis's body medium, and pauses with reading menus. Use Settings for reduced motion or camera cutaway preferences. Briar's nearby decorative tag stays out of people's interaction labels; the actual Follow/Stay controls remain beside you.
+
+If the launcher reports that port 8780 serves a different build, close that old Firstlight preview and launch this checkout again. It refuses to replace another server or silently move your save origin. An earlier automatic review rejected Codex's attempt to restart the old preview before execution; the existing preview and personal profile remain untouched.
+
 For a fresh and a returning playthrough, the useful questions are: Did you know where to go? Did the fights feel better? Did the reward make you want another outing? The automated journeys and recordings do not answer those human questions.

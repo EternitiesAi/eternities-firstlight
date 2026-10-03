@@ -1,3 +1,14 @@
+# An inhabited browser world with explicit ownership, 2026-10-03
+
+- Branch from PR36's actual head, preserve every prior worktree, and use exactly the three founder-authorized Sol 6.1 xhigh colleagues with disjoint source or qualification ownership. Heavy media and clean verification checkouts stay on D. Recovered canon guides attributed implementation; archived prompts do not replace the user's authority.
+- Make art follow existing physical/state owners: woodland and bank geometry use canonical terrain, people use actual point/ground/yaw, Briar/skitters/traveler use transient accepted movement and attack samples, work props use saved objective IDs. No decorative actor or UI page can grant progress.
+- Apply existing main-view cutaway only to identified posts/approach lamps and practice visual parts. Keep submitted geometry, physical rules, reflected/shadow geometry and the optional preference intact. Preserve the rail-edge readability limit instead of calling every angle clear.
+- Save explicitly reviewed candidate state before adopting equipment/crafting and Earth repair/story mutations. Failed writes preserve live costs, objectives and reward ownership. This is a small reviewed transaction boundary, not a universal rollback framework for arbitrary runtime commands.
+- Use fixed 40 HP only for the two optional starter skitters to expose one extra attack cycle. Preserve the named foe, ordinary loot/XP, both weapon families, the 1–5 curve and stored9999. Stronger earned gear remains honestly stronger; no invisible scaling or mandatory extra fight.
+- Keep optional ambience on the existing app master/consent and room/body-medium lifecycle. Current sound tests establish ownership and bounded signals; actual speakers and human listening remain unqualified.
+- Retain source epochs and failures, including the incomplete 600-second giver gate. Give that expanded native tour a bounded 1,200-second portable /20-minute hosted window without reducing routes or assertions; final remote reproduction runs alone. Automated green checks, playback stills and measured RAF intervals cannot establish human fun or a shipped open world.
+- World/key9/adventure11 and all nested contracts remain; no migration, XP discard, auto-equip, socket loss, class assignment, story consent, main merge, public deployment, paid/billing action or personal-save access is introduced.
+
 # Different work in five realms, one safe home, 2026-10-02
 
 - Deepen the existing five-road openings with complete bounded mechanics drawn from attributed canon: a repair, a rescue, a layered chart, ordinary supplies and an observer-dependent comparator. Do not substitute another archive or silently resolve capital/faction/founder decisions.

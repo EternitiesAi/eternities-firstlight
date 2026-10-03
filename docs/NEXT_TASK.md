@@ -1,3 +1,11 @@
+# Finish this review, then play the connected game
+
+Start from `gameplay/world-production-pass-20261002` and the current delivery PR; fetch concurrent work before editing. Complete exact-head remote reproduction and preserve every failed/partial receipt before calling this seven-hour delivery complete. Use the latest portable evidence, rather than older totals below. Keep the browser target, both cameras, the existing 8780 save origin and original Heaven01/sanctuary ownership. No automatic main merge or deployment.
+
+Dom's next acceptance is one fresh blade or bow and one returning character: **Did you know where to go? Did the fights feel better? Did the reward make you want another outing?** Check ordinary Brace timing, the bridge in both views, Briar's nearby controls, and Atlantis's chart/landing detail. Known-route automated videos are much shorter than novice play; they do not establish 10–20 minute pacing. Neither screenshots nor green tests supply human taste.
+
+Resolve concrete readability and comfort findings before expanding another large subsystem. The next useful production slice is a measured connected outing with stronger place identity and choices grounded in the recovered canon, plus its actual save and reward contract. Full countries/capitals, seamless streaming, controller/touch, online authority/trading and large economies need separate working slices. Paid power, offline-loss severity, rare pets, construction scale, Heaven summit and Hell's larger verdict/allegiance remain unresolved founder decisions.
+
 # Finish the five-trail delivery, then tune the connected game
 
 The October 2 five-hour milestone deepens PR35 on `gameplay/realm-outings-20261002` with five distinct trails and one finite fitting. Its completed local gate and seven exact-build normal-RTX clips are under `docs/evidence/realm-outings-2026-10-02/`. The stacked delivery PR is the source for the exact later publication head and fresh remote-clone result; those gates must be verified before calling delivery complete. Preserve failures and skips. No main merge, public deployment, obsolete import activation or personal-save inspection.
