@@ -3,7 +3,15 @@
 (function(){'use strict';const C=RealmCore,X=RealmCreative,$=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const ui={canvas:$('#world'),map:$('#map-fallback'),drawer:$('#drawer'),body:$('#drawer-body'),title:$('#panel-title'),toast:$('#toast')};const characterStore=new RealmCharacters.Store({getItem:k=>localStorage.getItem(k),setItem:(k,v)=>localStorage.setItem(k,v)}),characterLock=new RealmCharacters.WriterLock();let characterImportPending=false;let loaded=characterStore.load(),sim=new C.Simulation(loaded.state),engine=null,art=null,experience=null,sandbox=null,adventure=null,arsenal=null,rpg=null,errors=[],scene=null,panel=null,lastFocus=null,selected=null,follow=null,commandCount=0,target=null,toastTimer=0,elapsed=0,lastFrame=0,frames=0,fps=0,fpsStart=performance.now(),lastUi=0,lastSave=0,saveState=['loaded','migrated'].includes(loaded.status)?'saved':'new',preserveExisting=!!loaded.preserveExisting;let camera={yaw:.22,elevation:.28,half:17,distance:7.5,actualDistance:7.5,fov:sim.state.settings.cameraFov,center:[sim.state.player.x,2.8,sim.state.player.z],overview:false,preset:sim.state.settings.cameraMode};
 function error(e){errors.push(String(e.message||e));console.error(e);}window.addEventListener('error',e=>{error(e.error||e.message);$('#loading').classList.add('hidden');});window.addEventListener('unhandledrejection',e=>error(e.reason));
-function toast(text){ui.toast.textContent=text;ui.toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>ui.toast.classList.remove('show'),4200);}
+const toastHome=ui.toast.parentElement;
+function restoreToast(){const host=ui.toast.parentElement;if(host!==toastHome)host?.classList.remove('has-dialog-notice');toastHome.append(ui.toast);ui.toast.classList.remove('dialog-notice');}
+function toast(text){
+ const dialog=[...document.querySelectorAll('dialog[open]')].at(-1),host=dialog||toastHome,oldHost=ui.toast.parentElement;
+ if(oldHost!==host){oldHost?.classList.remove('has-dialog-notice');host.append(ui.toast);}
+ ui.toast.classList.toggle('dialog-notice',!!dialog);dialog?.classList.add('has-dialog-notice');
+ ui.toast.textContent=text;ui.toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>{ui.toast.classList.remove('show');restoreToast();},4200);
+}
+document.addEventListener('close',e=>{if(e.target===ui.toast.parentElement)restoreToast();},true);
 function fallback(reason){engine=null;art=null;ui.canvas.style.display='none';ui.map.style.display='block';$('#fallback-banner').style.display='block';$('#fallback-banner').textContent=reason||'3D is unavailable. Explore the same local world using this map.';document.getElementById('labels').replaceChildren();resize();}
 try{engine=new RealmEngine.Engine(ui.canvas);engine.quality=sim.state.settings.quality;art=new RealmArt.WorldArt(engine);}catch(e){errors.push('Handled graphics fallback: '+e.message);fallback();}
 function sceneHeight(x=sim.state.player.x,z=sim.state.player.z){if(RealmWorldFoundations.handles(sim.room))return sim.worldDive?RealmWorldFoundations.playerHeight(sim):RealmWorldFoundations.height(sim.room,x,z);return sim.room===RealmEarth.ROOM?RealmEarth.height(x,z):sim.room===RealmCosmos.ROOM?RealmCosmos.height(x,z):sim.room?1.57:1.3;}
