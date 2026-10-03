@@ -6,6 +6,8 @@ Try **Stormfall and the Living Road**. These opening regions are not a completed
 
 Launch `PLAY_FIRSTLIGHT_WINDOWS.cmd`. Keep the same browser/profile and `127.0.0.1:8780` origin to resume characters. **Character → Characters** offers a new character if a slot is free. Preserve your returning character; export a backup. Do not reset its save.
 
+The older Firstlight preview currently occupies8780, so the current launcher deliberately refuses that conflicting build. Manually stop only the previous Firstlight local server/launcher, then launch this checkout again. Keep the same browser/profile and8780 origin; switching ports creates a different save origin. Automatic approval review blocked the prior stop/restart, and that block was not bypassed.
+
 - **Fresh blade:** press **K → Walk to Oren**. After arrival, reopen **K → Collect supplies**. Check the trail blade is equipped.
 - **Fresh bow:** collect the same kit. At the outdoor workbench, **K → Ashwood trail bow → Craft Ashwood trail bow** costs 6 timber, 4 fibre and 2 stone. Gather missing materials from nearby valley resources. In **C**, select the bow and choose **Equip**.
 - **Returning strong gear:** keep your weapon, socket and earlier upgrades. Note Attack, Guard and Max health in **C**; compare the binding on that same weapon.
@@ -26,9 +28,9 @@ No campaign chapter, soul power or class choice is required. **V** switches thir
 
 6. After delivery, return to Rill and choose **Claim the declared story payment**: once-only 45 XP, 18 sunmarks, 3 ore and your allocation. XP respects its cap. Full capacity or a refused save leaves finished work unpaid and retryable.
 
-7. Optionally choose **Begin a new patrol** at Rill. Inspect the wetland, clear its two new encounters, inspect the supported root passage and glade, then claim that run: 5 XP, 4 sunmarks, 3 ore, 2 timber and 2 fibre. Reloading does not start another run or repay the story.
+7. Optionally choose **Begin a new patrol** at Rill. Inspect the wetland, defeat the crossing skitter, inspect the supported root passage, defeat the bank brute, inspect the glade, then return to Rill and claim that run: 5 XP, 4 sunmarks, 3 ore, 2 timber and 2 fibre. The root inspection makes the second threat available. Reloading does not start another run or repay the story.
 
-8. **Return to Firstlight** is free. At an outdoor home workbench, **K → Trailward binding** offers **Compare edge +2 attack** or **Compare shelter +1 guard / +10 health**. Applying costs 3 ore, 8 sunmarks and 6 fibre, once per character on one owned blade/bow. Stormfall leaves a two-fibre shortfall; stock, gathering or one patrol covers it. Identity, socket and earlier fittings remain. Nothing auto-equips or heals; the bonus applies while that weapon is equipped.
+8. **Return to Firstlight** is free. At an outdoor home workbench, open **K → Crafting** and scroll below the recipes to **Trailward binding**. Its buttons offer **Compare edge +2 attack** or **Compare shelter +1 guard / +10 health**. Applying costs 3 ore, 8 sunmarks and 6 fibre, once per character on one owned blade/bow. Stormfall leaves a two-fibre shortfall; stock, gathering or one patrol covers it. Identity, socket and earlier fittings remain. Nothing auto-equips or heals; the bonus applies while that weapon is equipped.
 
 Reopening or switching characters resumes your saved Firstlight checkpoint. Accepted steps, unpaid completion and the active patrol remain for your next visit.
 
