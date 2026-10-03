@@ -1,6 +1,6 @@
 # A layered mountain skyline across the channel
 
-The matched actual-RTX side view now shows three near, three middle and two far original ridge instances across the water, replacing one broad hill. The two earlier northern vistas stay in place. Both camera styles keep the bridge, traveler, water and cloudy sky as their foreground composition. This is distant scenery; it adds no supported country, swimming, road, interaction, canon identity or saved fact.
+The matched actual-RTX third-person side view now shows three near, three middle and two far original ridge instances across the water, replacing one broad hill. The two earlier northern vistas stay in place. The third-person composition includes the bridge, traveler, water, mountains and cloudy sky; the tighter diorama side view frames the deck and water, with the distant mountains outside its frame. This is distant scenery; it adds no supported country, swimming, road, interaction, canon identity or saved fact.
 
 The existing `mountain-ridge` mesh, material/shader and scene batch are reused. The ten total ridge instances use 3,360 triangles per geometry pass, versus the earlier three instances / 1,008 triangles; the incremental cost is seven instances and 2,352 triangles, with no new mesh kind, image, draw batch or network dependency. Three existing color/haze layers and fixed rotations separate silhouettes. Every actual transformed mesh vertex remains outside the canonical Coastward bounds. Camera solids, routes, story definitions and all ownership are unchanged.
 

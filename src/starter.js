@@ -8,8 +8,10 @@ const BUNDLES=Object.freeze([
  {id:'river-canvas',name:'Folded worksite canvas',x:-5,z:-11}
 ]);
 const ENEMIES=Object.freeze([
- {id:'river-skitter-west',name:'Riverbank skitter',kind:'skitter',x:-7,z:0,hp:32,damage:8,xp:8,ore:1,coins:2},
- {id:'river-skitter-east',name:'Reed skitter',kind:'skitter',x:5,z:-6,hp:32,damage:8,xp:8,ore:1,coins:2},
+ // One extra ordinary strike lets the fixed starter kit see the existing tell.
+ // These remain optional local creatures, with fixed power and original loot.
+ {id:'river-skitter-west',name:'Riverbank skitter',kind:'skitter',x:-7,z:0,hp:40,damage:8,xp:8,ore:1,coins:2},
+ {id:'river-skitter-east',name:'Reed skitter',kind:'skitter',x:5,z:-6,hp:40,damage:8,xp:8,ore:1,coins:2},
  {id:'river-old-bristle',name:'Old Bristle',kind:'skitter',custom:'river-bristle',x:-4,z:-15,hp:90,damage:18,xp:20,ore:1,coins:4,windup:1.25,recovery:1.8,telegraphRadius:1.8}
 ]);
 const PRACTICE=Object.freeze({id:'river-practice',name:'Oren’s practice bundle',kind:'practice',x:-5,z:10,hp:100,radius:.65});

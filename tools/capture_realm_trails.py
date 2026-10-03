@@ -81,15 +81,24 @@ def main():
        if ev('Realm.diagnostics.adventure.tactics.target')==enemy:selected=True;break
        page.keyboard.press('Tab')
       assert selected,'Explicit Tab selection could not reach '+enemy
-      page.keyboard.press('1');mark('stationary '+family+' autoattack '+enemy);began=time.monotonic();guards=0;tells=0
+      observe=lambda:ev('(id)=>{const sim=Realm.test.worldContext().sim,a=sim.state.adventure,t=RealmCombat.runtime(sim),e=RealmAdventure.runtime(sim).enemies.find(e=>e.id===id),cue=document.querySelector("#target-cue");return{cue:RealmCombat.threat(sim),elapsed:a.elapsed,stamina:a.stamina,guardCD:t.cooldowns.guard,guardUntil:t.guardUntil,hp:a.hp,defense:RealmAdventure.stats(a).defense,enemy:e?{hp:e.hp,damage:e.damage,phase:e.mode}:null,visible_cue:cue&&!cue.hidden&&getComputedStyle(cue).display!=="none"?{title:document.querySelector("#target-cue-title").textContent,detail:document.querySelector("#target-cue-detail").textContent}:null}}',enemy)
+      page.keyboard.press('1');mark('stationary '+family+' autoattack '+enemy);began=time.monotonic();guards=0;tells=0;accepted_guards=[];visible_tells=[];hp_losses=[];previous=observe()
       while enemy not in state()['adventure']['defeated']:
        assert time.monotonic()-began<90 and state()['adventure']['hp']>0,'Actual encounter did not complete safely'
-       data=ev('()=>{const sim=Realm.test.worldContext().sim;return{cue:RealmCombat.threat(sim),elapsed:sim.state.adventure.elapsed,stamina:sim.state.adventure.stamina,guardCD:RealmCombat.runtime(sim).cooldowns.guard}}')
+       data=observe()
+       if data['hp']<previous['hp']:
+        hp_losses.append({'before':previous['hp'],'after':data['hp'],'delta':previous['hp']-data['hp'],'elapsed':data['elapsed'],'brace_active_at_observation':data['elapsed']<data['guardUntil'],'selected_enemy':data['enemy'],'interpretation':'Observed player HP loss during normal time; the selected enemy alone is not proof of the damage source if another foe is present'})
        if data['cue'] and data['cue']['phase']=='windup':
         tells+=1
-        if data['stamina']>=20 and data['elapsed']>=data['guardCD']:page.keyboard.press('3');guards+=1
+        if data['visible_cue'] and len(visible_tells)<8:visible_tells.append({'elapsed':data['elapsed'],'remaining':data['cue']['remaining'],'visible':data['visible_cue']})
+        if data['stamina']>=20 and data['elapsed']>=data['guardCD']:
+         page.keyboard.press('3');guards+=1;after=observe()
+         if after['guardCD']>data['guardCD']:accepted_guards.append({'elapsed':after['elapsed'],'guard_until':after['guardUntil'],'cooldown_until':after['guardCD'],'stamina_after':after['stamina']})
+       previous=data
        page.wait_for_timeout(65)
-      report['combats'].append({'enemy':enemy,'normal_time_seconds':time.monotonic()-began,'guard_inputs':guards,'observed_windup_samples':tells,'hp_after':state()['adventure']['hp'],'actual_defeat':True})
+      final=observe()
+      if final['hp']<previous['hp']:hp_losses.append({'before':previous['hp'],'after':final['hp'],'delta':previous['hp']-final['hp'],'elapsed':final['elapsed'],'brace_active_at_observation':final['elapsed']<final['guardUntil'],'selected_enemy':final['enemy'],'interpretation':'Observed HP loss; damage-source attribution is not instrumented'})
+      report['combats'].append({'enemy':enemy,'normal_time_seconds':time.monotonic()-began,'guard_inputs':guards,'accepted_braces':accepted_guards,'observed_windup_samples':tells,'actual_visible_windup_cues':visible_tells,'observed_hp_losses':hp_losses,'hp_after':state()['adventure']['hp'],'actual_defeat':True})
       shot(enemy+'-actual-defeat')
       # Production clears a defeated target itself; the clear button then hides.
       if page.locator('#target-clear').is_visible():page.locator('#target-clear').click()
