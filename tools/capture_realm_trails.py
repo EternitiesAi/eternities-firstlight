@@ -160,13 +160,19 @@ def main():
      def swim_to(target):
       close();ev('Realm.test.view({yaw:0})')
       for axis,wanted in [('y',target[1]),('x',target[0]),('z',target[2])]:
-       current=ev('(axis)=>axis==="y"?Realm.test.worldDiveStatus().y:Realm.diagnostics.adventure.player[axis]',axis)
-       if abs(current-wanted)<.065:continue
-       direction=1 if wanted>current else -1;key={'y':('g','f'),'x':('a','d'),'z':('w','s')}[axis][1 if direction>0 else 0]
-       page.keyboard.down(key)
-       try:page.wait_for_function('([axis,wanted,direction])=>{const v=axis==="y"?Realm.test.worldDiveStatus().y:Realm.diagnostics.adventure.player[axis];return direction>0?v>=wanted-.045:v<=wanted+.045;}',arg=[axis,wanted,direction],timeout=15000,polling=16)
-       finally:page.keyboard.up(key)
-      v=ev('Realm.test.worldDiveStatus()');p=ev('Realm.diagnostics.adventure.player');assert abs(v['y']-target[1])<.15 and abs(p['x']-target[0])<.15 and abs(p['z']-target[2])<.15;assert ev('()=>{const p=Realm.diagnostics.adventure.player;return RealmWorldFoundations.swimClear(RealmWorldFoundations.definition("atlantis").dive,p.x,Realm.test.worldDiveStatus().y,p.z)}');mark('actual held-key swim '+str(target))
+       # Bounded normal-time key pulses can correct a late input-release overshoot.
+       # Position/depth are read only; the original final .15m and clearance gates remain.
+       deadline=time.monotonic()+25;pulses=0
+       while True:
+        current=ev('(axis)=>axis==="y"?Realm.test.worldDiveStatus().y:Realm.diagnostics.adventure.player[axis]',axis)
+        if abs(current-wanted)<.08:break
+        assert time.monotonic()<deadline and pulses<120,{'axis':axis,'wanted':wanted,'actual':current,'target':target,'pulses':pulses}
+        direction=1 if wanted>current else -1;key={'y':('g','f'),'x':('a','d'),'z':('w','s')}[axis][1 if direction>0 else 0]
+        page.keyboard.down(key)
+        try:page.wait_for_timeout(min(160,max(8,(abs(current-wanted)-.04)/2.6*1000*.45)))
+        finally:page.keyboard.up(key)
+        pulses+=1
+      v=ev('Realm.test.worldDiveStatus()');p=ev('Realm.diagnostics.adventure.player');assert abs(v['y']-target[1])<.15 and abs(p['x']-target[0])<.15 and abs(p['z']-target[2])<.15,{'wanted':target,'actual_player':p,'actual_dive':v};assert ev('()=>{const p=Realm.diagnostics.adventure.player;return RealmWorldFoundations.swimClear(RealmWorldFoundations.definition("atlantis").dive,p.x,Realm.test.worldDiveStatus().y,p.z)}');mark('actual held-key swim '+str(target))
      route=[[8,-.5,-19.5],[8,-1.05,-22],[8,-2.55,-28],[8,-2.7,-29.5],[8,-2.7,-32],[8,-2.7,-35],[8,-2.7,-32],[8,-2.7,-29.5],[8,-1.8,-29],[12,-1.8,-29],[12,-1.4,-38.4],[12,-1.4,-39.3]]
      for target in route:
       swim_to(target);step=next((s for s in d['steps'] if [s['x'],s['y'],s['z']]==target),None)
