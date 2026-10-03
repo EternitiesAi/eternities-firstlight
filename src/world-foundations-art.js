@@ -14,7 +14,7 @@ function partitions(def){
 function coastBanks(cells){
  const eps=1e-6,groups=new Map(),contains=(x,z)=>cells.some(p=>x>p.x-p.w/2-eps/4&&x<p.x+p.w/2+eps/4&&z>p.z-p.d/2-eps/4&&z<p.z+p.d/2+eps/4);
  for(const p of cells){
-  if(p.source==='channel-bridge')continue;
+  if(p.source==='channel-bridge'||p.source==='elderweald-footbridge')continue;
   const x0=p.x-p.w/2,x1=p.x+p.w/2,z0=p.z-p.d/2,z1=p.z+p.d/2;
   for(const e of [{axis:'z',at:x0,from:z0,to:z1,nx:-1,nz:0},{axis:'z',at:x1,from:z0,to:z1,nx:1,nz:0},{axis:'x',at:z0,from:x0,to:x1,nx:0,nz:-1},{axis:'x',at:z1,from:x0,to:x1,nx:0,nz:1}]){
    const center=(e.from+e.to)/2,x=e.axis==='z'?e.at:center,z=e.axis==='z'?center:e.at;

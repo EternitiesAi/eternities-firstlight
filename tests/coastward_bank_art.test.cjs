@@ -12,7 +12,8 @@ function vertices(p){const mesh=E.geometry(p.kind),m=matrix(p),out=[];for(let i=
 function submission(id){const sim=new C.Simulation(),def=W.definition(id),before=JSON.stringify(sim.state),items=[],writer={e:{},begin(){},commit(){},add(kind,x,y,z,w,h,depth,c,opt={}){items.push({kind,p:[x,y,z],s:[w,h,depth],c,...opt});},box(...args){this.add('box',...args);}};sim.room=def.room;A.make(writer,sim);assert.equal(JSON.stringify(sim.state),before);return items;}
 
 test('Coastward skirts are bounded deterministic static instances in one shared mesh kind',()=>{
- assert.ok(parts.length>15&&parts.length<=64,parts.length+' continuous bank instances');assert.deepEqual(A.coastBanks(cells),parts);
+ assert.equal(parts.length,70,'the measured ten-patch extension produces seventy continuous banks');assert.ok(parts.length<=80,'bounded expanded-country budget');
+ const retained={...d,patches:d.patches.filter(p=>!p.id.startsWith('elderweald-'))};assert.ok(A.coastBanks(A.partitions(retained)).length<=64,'the original bank budget remains covered');assert.deepEqual(A.coastBanks(cells),parts);
  for(const p of parts){assert.equal(p.kind,'coast-bank');assert.equal(p.cameraSolid,false);assert.equal(p.cutaway,false);assert.equal(p.terrain,undefined);assert.ok(p.s.every(n=>Number.isFinite(n)&&n>0));assert.equal(E.geometry(p.kind).length/18,136);}
  assert.ok(new Set(parts.map(p=>p.id)).size===parts.length);
 });

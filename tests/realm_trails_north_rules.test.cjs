@@ -58,7 +58,7 @@ test('strict escort history rejects impossible arrival/checkpoint records while 
  }
  const valid=copy(raw);valid.realmTrails.records[d.id].checkpoint=1;assert.doesNotThrow(()=>C.validate(valid));
  const legacy=kit();delete legacy.realmTrails;legacy.adventure.version=10;delete legacy.adventure.realmCraft;
- const migrated=C.validate(legacy);assert.equal(migrated.adventure.version,11);assert.deepEqual(migrated.realmTrails,R.fresh());
+ const migrated=C.validate(legacy);assert.equal(migrated.adventure.version,12);assert.deepEqual(migrated.realmTrails,R.fresh());
  assert.deepEqual(migrated.adventure.realmCraft,RC.fresh());
  for(const key of['xp','coins','ore','owned','equipment','arsenal','pursuit','starter','defeated','drops'])assert.deepEqual(migrated.adventure[key],legacy.adventure[key]);
 });

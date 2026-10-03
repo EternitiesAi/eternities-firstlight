@@ -47,5 +47,5 @@ test('ordinary fights stay optional and named threat, rewards, cooldown and weap
  const named=A.runtime(s).enemies.find(e=>e.id==='river-old-bristle');assert.equal(named.maxHP,90);assert.equal(named.windup,1.25);assert.equal(named.recovery,1.8);A.damageEnemy(s,named,named.hp);
  assert.ok(Q.complete(a));assert.equal(a.defeated.some(id=>id==='river-skitter-west'||id==='river-skitter-east'),false);
  assert.deepEqual(Q.ENEMIES.slice(0,2).map(e=>[e.damage,e.xp,e.coins,e.ore]),[[8,8,2,1],[8,8,2,1]]);
- assert.equal(AR.weapon(a).cooldown,.52);assert.equal(AR.weapon(a).reach,2.65);assert.equal(A.VERSION,11);assert.equal(C.VERSION,9);
+ assert.equal(AR.weapon(a).cooldown,.52);assert.equal(AR.weapon(a).reach,2.65);assert.equal(A.VERSION,12);assert.equal(C.VERSION,9);
 });
