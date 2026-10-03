@@ -27,6 +27,9 @@ def main():
     html = ROOT / "FIRSTLIGHT_VALLEY.html"; expected = hashlib.sha256(html.read_bytes()).hexdigest()
     server = ThreadingHTTPServer(("127.0.0.1", 0), Handler); threading.Thread(target=server.serve_forever, daemon=True).start()
     result = {"measured_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(), "html_sha256": expected, "origin": f"http://127.0.0.1:{server.server_port}/FIRSTLIGHT_VALLEY.html", "quality": args.quality, "renderer_requested": args.renderer, "frames_requested": args.frames, "viewport": {"width":1920,"height":1080}, "platform":platform.platform(), "method":"Normal RAF intervals in isolated headless Chromium, device scale 1; 1.5-second setup warmup excluded. Nearest-rank percentiles. Every sampled frame checks that the page is visible, the simulation is unpaused and the scene stays fixed. No video capture or accelerated ticks during sampling. Browser-frame intervals are not GPU render time, monitor presentation timing or human qualification.", "browser_errors": [], "external_requests": [], "success": False}
+    result['harness_sha256'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+    result['browser_support_sha256'] = hashlib.sha256((ROOT/'tools/browser_support.py').read_bytes()).hexdigest()
+    result['method'] += ' Actual WebGL mode and the originally observed renderer must persist on every frame; per-frame diagnostics overhead is included.'
     if args.fixture:
         result["fixture"] = str(args.fixture)
         result["fixture_sha256"] = hashlib.sha256(args.fixture.read_bytes()).hexdigest()
@@ -59,9 +62,17 @@ def main():
             result["scenes"] = []
             for scene in scenes:
                 setup = page.evaluate(scene["expression"]); page.wait_for_timeout(1500); before = page.evaluate("Realm.diagnostics")
-                sampling = page.evaluate("""(n)=>new Promise((resolve,reject)=>{const scene=Realm.diagnostics.scene,a=[];let last;function f(t){const d=Realm.diagnostics;if(document.hidden||d.adventure.paused||d.scene!==scene){reject(Error('Sampling interrupted by hidden page, pause or scene change'));return;}if(last!==undefined)a.push(t-last);last=t;if(a.length<n)requestAnimationFrame(f);else resolve({intervals:a,scene,visible_unpaused_checks:a.length+1});}requestAnimationFrame(f);})""", args.frames)
+                sampling = page.evaluate("""({n,renderer})=>new Promise((resolve,reject)=>{
+                  const scene=Realm.diagnostics.scene,a=[];let last,raf,done=false;
+                  const finish=(error)=>{if(done)return;done=true;clearTimeout(timer);cancelAnimationFrame(raf);document.removeEventListener('visibilitychange',visibility);if(error)reject(error);else resolve({intervals:a,scene,visible_unpaused_webgl_checks:a.length+1});};
+                  const visibility=()=>{if(document.hidden)finish(Error('Sampling interrupted by hidden page'));};
+                  const timer=setTimeout(()=>finish(Error('Sampling exceeded bounded deadline')),Math.min(180000,Math.max(30000,n*500)));
+                  document.addEventListener('visibilitychange',visibility);
+                  function f(t){try{const d=Realm.diagnostics;if(document.hidden||d.adventure.paused||d.scene!==scene){finish(Error('Sampling interrupted by hidden page, pause or scene change'));return;}if(d.mode!=='webgl2'||d.renderer!==renderer){finish(Error('Sampling lost the original WebGL renderer'));return;}if(last!==undefined)a.push(t-last);last=t;if(a.length<n)raf=requestAnimationFrame(f);else finish();}catch(error){finish(error);}}
+                  raf=requestAnimationFrame(f);
+                })""", {'n':args.frames,'renderer':result['webgl']['renderer']})
                 intervals = sampling['intervals']; pct=lambda p: percentile(intervals,p)
-                result["scenes"].append({"name":scene["name"],"setup_result":setup,"observed_scene":sampling['scene'],"visible_unpaused_checks":sampling['visible_unpaused_checks'],"samples":len(intervals),"seconds":sum(intervals)/1000,"before":before,"diagnostics":page.evaluate("Realm.diagnostics"),"frame_time_ms":{"p50":pct(.5),"p90":pct(.90),"p95":pct(.95),"p99":pct(.99),"max":max(intervals)},"intervals_over_33_333ms":sum(x>33.333 for x in intervals),"intervals_over_50ms":sum(x>50 for x in intervals),"raw_intervals_ms":intervals})
+                result["scenes"].append({"name":scene["name"],"setup_result":setup,"observed_scene":sampling['scene'],"visible_unpaused_webgl_checks":sampling['visible_unpaused_webgl_checks'],"samples":len(intervals),"seconds":sum(intervals)/1000,"before":before,"diagnostics":page.evaluate("Realm.diagnostics"),"frame_time_ms":{"p50":pct(.5),"p90":pct(.90),"p95":pct(.95),"p99":pct(.99),"max":max(intervals)},"intervals_over_33_333ms":sum(x>33.333 for x in intervals),"intervals_over_50ms":sum(x>50 for x in intervals),"raw_intervals_ms":intervals})
                 args.output.parent.mkdir(parents=True, exist_ok=True)
                 page.screenshot(path=str(args.output.with_name(args.output.stem + "-" + str(len(result["scenes"])) + ".png")))
                 print(json.dumps({"scene": scene["name"], "frame_time_ms": result["scenes"][-1]["frame_time_ms"]}), flush=True)
@@ -69,6 +80,8 @@ def main():
             assert hashlib.sha256(html.read_bytes()).hexdigest()==expected, 'HTML changed during measurement'
             if args.fixture: assert hashlib.sha256(args.fixture.read_bytes()).hexdigest()==result['fixture_sha256'], 'Fixture changed during measurement'
             if args.scenes: assert hashlib.sha256(args.scenes.read_bytes()).hexdigest()==result['scene_setup_sha256'], 'Setup changed during measurement'
+            assert hashlib.sha256(Path(__file__).read_bytes()).hexdigest()==result['harness_sha256'], 'Measurement harness changed during run'
+            assert hashlib.sha256((ROOT/'tools/browser_support.py').read_bytes()).hexdigest()==result['browser_support_sha256'], 'Browser launcher changed during run'
             if args.renderer=="hardware": assert result["hardware_renderer"], "Hardware acceleration not confirmed"
             assert not result["browser_errors"], result["browser_errors"]
             assert not result['external_requests'], result['external_requests']

@@ -1,4 +1,4 @@
-"""Matched actual-GPU Coastward frames. Setup uses accelerated production walking;
+"""Matched actual-GPU realm frames. Setup uses accelerated production walking;
 these frozen views are geometry evidence, not normal-time gameplay or human taste.
 No position edits, reward grants, private saves or old-preview process access.
 """
@@ -13,6 +13,7 @@ def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--html', type=Path, default=ROOT/'index.html')
+    parser.add_argument('--focus', choices=['coastward','givers'], default='coastward')
     parser.add_argument('--source', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
@@ -21,7 +22,7 @@ def main():
     if out.exists() and any(out.iterdir()): parser.error('Preserve earlier candidates; choose an empty output')
     out.mkdir(parents=True, exist_ok=True)
     report = {'method': __doc__, 'html_sha256':sha(html), 'source_sha256':sha(source),
-              'script_sha256':sha(Path(__file__)), 'viewport':{'width':1280,'height':800},
+              'script_sha256':sha(Path(__file__)), 'focus':args.focus, 'viewport':{'width':1280,'height':800},
               'accelerated_setup':True,'human_acceptance':False,'frames':[],
               'browser_errors':[],'external_requests':[]}
     class Handler(SimpleHTTPRequestHandler):
@@ -56,19 +57,38 @@ def main():
                 p=ev('Realm.diagnostics.adventure.player')
                 assert ((p['x']-x)**2+(p['z']-z)**2)**.5<.3
                 render()
-            walk(18,6);page.keyboard.press('j');page.locator('[data-rpg="open"][data-id="worlds"]').click()
-            if page.locator('[data-rpg="world-list"]').count():page.locator('[data-rpg="world-list"]').click()
-            page.locator('[data-rpg="world-select"][data-id="earthlands"]').click()
-            page.locator('[data-rpg="world-preview"]').click();page.locator('[data-rpg="world-confirm"]').click();render()
-            assert ev('Realm.diagnostics.scene')=='world-earthlands'
-            for name,x,z in [('arrival',0,100),('far-bank',0,16),('woodland',-10,-9),('settlement',-6,-68)]:
-                walk(x,z)
-                for mode in ['diorama','third']:
-                    if (ev('Realm.diagnostics.camera.projection')=='orthographic')!=(mode=='diorama'):page.keyboard.press('v')
-                    ev('(v)=>Realm.test.view(v)',{'yaw':1.0 if mode=='diorama' else .65,'elevation':.65 if mode=='diorama' else .2,'half':24 if name!='woodland' else 18,'distance':10,'zoom':(24 if name!='woodland' else 18)/17.5,'overview':False})
-                    render();path=out/(name+'-'+mode+'.png');page.screenshot(path=str(path))
-                    d=ev('Realm.diagnostics')
-                    report['frames'].append({'name':name+'-'+mode,'path':str(path),'sha256':sha(path),'player':d['adventure']['player'],'camera':d['camera'],'metrics':d['metrics'],'paused':d['adventure']['paused']})
+            def enter(realm):
+                walk(18,6);page.keyboard.press('j');page.locator('[data-rpg="open"][data-id="worlds"]').click()
+                if page.locator('[data-rpg="world-list"]').count():page.locator('[data-rpg="world-list"]').click()
+                page.locator('[data-rpg="world-select"][data-id="'+realm+'"]').click()
+                page.locator('[data-rpg="world-preview"]').click();page.locator('[data-rpg="world-confirm"]').click();render()
+                assert ev('Realm.diagnostics.scene')=='world-'+realm
+            def shot(name,mode,yaw,half,distance=10):
+                if (ev('Realm.diagnostics.camera.projection')=='orthographic')!=(mode=='diorama'):page.keyboard.press('v')
+                ev('(v)=>Realm.test.view(v)',{'yaw':yaw,'elevation':.65 if mode=='diorama' else .2,'half':half,'distance':distance,'zoom':half/17.5,'overview':False})
+                render();path=out/(name+'-'+mode+'.png');page.screenshot(path=str(path))
+                d=ev('Realm.diagnostics')
+                report['frames'].append({'name':name+'-'+mode,'path':str(path),'sha256':sha(path),'player':d['adventure']['player'],'camera':d['camera'],'metrics':d['metrics'],'paused':d['adventure']['paused']})
+            if args.focus=='coastward':
+                enter('earthlands')
+                for name,x,z in [('arrival',0,100),('far-bank',0,16),('woodland',-10,-9),('settlement',-6,-68)]:
+                    walk(x,z)
+                    for mode in ['diorama','third']:shot(name,mode,1.0 if mode=='diorama' else .65,24 if name!='woodland' else 18)
+            else:
+                report['interactions']=[]
+                for realm in ['heaven','hell','earthlands','atlantis']:
+                    enter(realm)
+                    people=ev('()=>RealmWorldFoundations.definition(Realm.diagnostics.scene).points.filter(p=>p.kind==="person")')
+                    for person in people:
+                        point=ev('p=>{const d=RealmWorldFoundations.definition(Realm.diagnostics.scene);return [[p.x-1.2,p.z-1.2],[p.x+1.7,p.z],[p.x,p.z-1.7],[p.x,p.z+1.7]].find(q=>RealmWorldFoundations.walkable(d.room,...q));}',person)
+                        assert point is not None;walk(*point)
+                        for mode in ['third','diorama']:shot(person['id'],mode,3.74,5,4.5)
+                        page.keyboard.press('e');render();assert page.locator('#rpg-window').evaluate('(e)=>e.open')
+                        text=page.locator('#rpg-window').inner_text();assert person['name'] in text
+                        report['interactions'].append({'id':person['id'],'name':person['name'],'actual_menu_open':True,'distance':((point[0]-person['x'])**2+(point[1]-person['z'])**2)**.5,'name_in_menu':True})
+                        page.screenshot(path=str(out/(person['id']+'-actual-dialogue.png')));close();render()
+                    page.locator('#world-home').click();render();assert ev('Realm.diagnostics.scene')=='valley'
+            assert sha(html)==report['html_sha256'] and sha(source)==report['source_sha256']
             report['status']='passed';assert not report['browser_errors'] and not report['external_requests']
             context.close();browser.close()
     except Exception:
