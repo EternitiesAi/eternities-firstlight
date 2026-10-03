@@ -70,8 +70,10 @@ test('enemy catalogue is accepted-phase/run-qualified and never a legacy payout'
   sim.state.earthExpedition=story();sim.state.earthExpedition.patrol.active={run:1,steps:['inspect-water']};const first=E.enemies(sim)[0];sim.state.earthExpedition.patrol={lastClaim:1,active:{run:2,steps:['inspect-water']}};const second=E.enemies(sim)[0];assert.notEqual(first.id,second.id);assert.equal(second.expeditionRun,2);assert.equal(second.hp,64);assert.equal(E.signature(sim),second.id);sim.worldDive={};assert.equal(E.enemies(sim).length,0);
  }finally{globalThis.RealmWorldFoundations=original;}
 });
-test('pre-integration Core refuses silently dropped expedition contract before saver',()=>{
- if(A.VERSION>=12)return;const sim=new C.Simulation(),candidate=sim.snapshot();candidate.earthExpedition=E.fresh();candidate.adventure.earthBinding=E.freshBinding();const before=sim.snapshot();let calls=0;
- const result=E.commit(sim,candidate,{save:()=>{calls++;return{ok:true};}},'Labelled absent-caller negative control.');assert.equal(result.ok,false);assert.match(result.error,/does not retain/);assert.equal(calls,0);assert.deepEqual(sim.snapshot(),before);
+test('Core contract either fails closed before integration or saves before live adoption',()=>{
+ const sim=new C.Simulation(),candidate=sim.snapshot();candidate.earthExpedition=E.fresh();candidate.adventure.earthBinding=E.freshBinding();const before=sim.snapshot();let calls=0,saved=null;
+ const result=E.commit(sim,candidate,{save:value=>{calls++;assert.deepEqual(sim.snapshot(),before,'live state is unchanged while durable saver sees candidate');saved=C.validate(value);return{ok:true};}},'Labelled candidate-boundary validation control.');
+ if(A.VERSION<12){assert.equal(result.ok,false);assert.match(result.error,/does not retain/);assert.equal(calls,0);assert.deepEqual(sim.snapshot(),before);}
+ else{assert.ok(result.ok,result.error);assert.equal(calls,1);assert.deepEqual(saved.earthExpedition,E.fresh());assert.deepEqual(saved.adventure.earthBinding,E.freshBinding());assert.deepEqual(sim.snapshot(),saved);assert.equal(saved.adventure.revision,before.adventure.revision+1);const unpaid=sim.snapshot();assert.equal(E.commit(sim,sim.snapshot(),{save:()=>({ok:false,error:'labelled refused save'})},'Must remain unchanged.').ok,false);assert.deepEqual(sim.snapshot(),unpaid);}
 });
 console.log(JSON.stringify({status:'passed',checks,method:'pure schema/topology/bonus and explicitly labelled adversarial fixtures; physical production journey separate'}));
