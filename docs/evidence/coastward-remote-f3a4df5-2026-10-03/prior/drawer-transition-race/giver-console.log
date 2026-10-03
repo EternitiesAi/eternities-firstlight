@@ -1,0 +1,24 @@
+PASS exact integrated sources are embedded in the offline build
+PASS labelled Chapter I command-earned source has the declared hash
+PASS browser response matches frozen offline HTML
+PASS ordinary software WebGL RAF is active
+PASS actual Import character opens a preview without creating a slot
+PASS confirmed earned character retains original currency, gear and Chapter I history
+PASS Walk to Roads marker movement is accepted
+PASS Walk to Roads marker finishes through ordinary RAF
+PASS Walk to Roads marker reaches its physical destination
+PASS heaven crossing terms disclose free return and separate work consent
+PASS heaven requires explicit crossing confirmation
+PASS heaven crossing does not accept or pay work
+PASS desktop-close drawer suppresses the home/label overlays
+FAIL desktop-close normal close control wins its actual hit test
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\coastward-remote-63e3330-20261003\tests\realm_givers_browser.py", line 294, in <module>
+    drawer_regression('desktop-close')
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\authoring\coastward-remote-63e3330-20261003\tests\realm_givers_browser.py", line 189, in drawer_regression
+    check(label+' normal close control wins its actual hit test',hit)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\authoring\coastward-remote-63e3330-20261003\tests\realm_givers_browser.py", line 50, in check
+    raise AssertionError(name+(': '+str(detail) if detail is not None else ''))
+AssertionError: desktop-close normal close control wins its actual hit test

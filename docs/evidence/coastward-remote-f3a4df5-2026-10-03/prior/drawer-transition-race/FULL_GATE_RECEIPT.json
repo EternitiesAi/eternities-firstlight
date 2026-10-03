@@ -1,0 +1,935 @@
+{
+  "head": "63e3330a917f36eae053c4c6b4687ca42b72fc81",
+  "origin": "https://github.com/EternitiesAi/eternities-firstlight.git",
+  "run": {
+    "command": [
+      "C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Scripts/python.exe",
+      "tools/verify.py",
+      "--browser",
+      "--output",
+      "D:\\07-GAMES\\Firstlight\\artifacts\\final-remote-63e3330-20261003\\commands"
+    ],
+    "cwd": "D:\\07-GAMES\\Firstlight\\authoring\\coastward-remote-63e3330-20261003",
+    "started_at": "2026-10-03T13:46:16.319145+00:00",
+    "browser": true,
+    "exit_code": 1,
+    "ended_at": "2026-10-03T13:48:26.997571+00:00"
+  },
+  "environment": {
+    "python": "3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]",
+    "python_executable": "C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Scripts\\python.exe",
+    "node": "v24.18.0",
+    "git": "git version 2.55.0.windows.3",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "collected_at": "2026-10-03T09:06:09.076939-05:00",
+  "tracked_count": 2044,
+  "tracked_changed": [],
+  "tracked_added": [],
+  "tracked_removed": [],
+  "git_status": "",
+  "html": {
+    "index.html": {
+      "bytes": 2606833,
+      "sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+    },
+    "FIRSTLIGHT_VALLEY.html": {
+      "bytes": 2606833,
+      "sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+    }
+  },
+  "locks": {
+    "head_unchanged": true,
+    "html_unchanged": true,
+    "tracked_hashes_unchanged": true,
+    "membership_unchanged": true,
+    "git_clean": true
+  },
+  "source_modules": 88,
+  "rule_files": 68,
+  "syntax_passed": 88,
+  "earned_journeys": {
+    "crossing-blade": true,
+    "crossing-bow": true,
+    "starter-blade": true,
+    "starter-bow": true,
+    "starter-veteran": true,
+    "pursuit-blade": true,
+    "pursuit-bow": true,
+    "pursuit-veteran": true,
+    "characters-journey": true,
+    "classes-journey": true,
+    "cosmos-journey": true,
+    "earth-journey": true,
+    "earth-outing-blade": true,
+    "earth-outing-bow": true,
+    "earth-outing-veteran": true,
+    "earth-story-blade": true,
+    "earth-story-bow": true,
+    "earth-story-veteran": true,
+    "earth-notes-blade": true,
+    "earth-notes-bow": true,
+    "earth-notes-veteran": true,
+    "gathering-blade": true,
+    "gathering-bow": true,
+    "gathering-veteran": true,
+    "world-foundations-blade": true,
+    "world-foundations-bow": true,
+    "world-foundations-veteran": true,
+    "realm-trails-blade": true,
+    "realm-trails-bow": true,
+    "realm-trails-south-blade": true,
+    "realm-trails-south-bow": true,
+    "realm-comparator-blade": true,
+    "realm-comparator-bow": true,
+    "realm-comparator-veteran": true,
+    "earth-expedition-blade": true,
+    "earth-expedition-bow": true,
+    "earth-expedition-veteran": true
+  },
+  "browser_suites_expected": [
+    "earth_ground_material_browser",
+    "realm_givers_browser",
+    "crossing_browser",
+    "regression09_browser",
+    "cutaway_browser",
+    "reflection_browser",
+    "native_origin_browser",
+    "starter_browser",
+    "camera_browser",
+    "pursuit_browser",
+    "characters_browser",
+    "classes_browser",
+    "cosmos_browser",
+    "earth_browser",
+    "earth_story_browser",
+    "earth_notes_browser",
+    "gathering_browser",
+    "realm_atlas_browser",
+    "timber_browser",
+    "traveler_browser",
+    "bridge_browser",
+    "combat_cue_browser",
+    "world_foundations_browser",
+    "world_cutaway_browser",
+    "realm_trails_browser",
+    "realm_trails_north_browser",
+    "realm_trails_cosmos_browser",
+    "soundscape_browser",
+    "journey_usability_browser",
+    "workshop_transactions_browser",
+    "companion_presentation_browser",
+    "skitter_presentation_browser",
+    "coastward_scenery_browser",
+    "earth_story_transactions_browser",
+    "coastward_bridge_posts_browser",
+    "practice_visibility_browser",
+    "realm_work_presentation_browser",
+    "earth_expedition_browser"
+  ],
+  "browser_suites": [
+    {
+      "suite": "earth_ground_material_browser",
+      "command_passed": true,
+      "report": "evidence10\\earth-ground-material-browser\\frames\\REPORT.json",
+      "report_sha256": "f84abcd97af7560f2d8c8b9d848b9c8395861e7c9ca0a49c29c416bc9ba5d911",
+      "harness_sha256": "d79110c940cf43b03bcb08d9e05a6b303d01705ea0dfbd709d6d654544143f0b",
+      "fresh_report": true,
+      "checks": 46,
+      "passed_checks": 46,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": "63e3330a917f36eae053c4c6b4687ca42b72fc81",
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "realm_givers_browser",
+      "command_passed": false,
+      "report": "evidence10\\realm-givers-browser\\REPORT.json",
+      "report_sha256": "3f6cc9db14bc67eb60e2e97ddc35a5e0e7bbbdcf247e583bbd83966842021730",
+      "harness_sha256": "ec486cd0693eb09c9490170e881712e6023c9fb8c377153300247768265a0902",
+      "fresh_report": true,
+      "checks": 14,
+      "passed_checks": 13,
+      "failed_checks": 1,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": "63e3330a917f36eae053c4c6b4687ca42b72fc81",
+      "declared_head_matches": true,
+      "report_errors": [
+        "Traceback (most recent call last):\n  File \"D:\\07-GAMES\\Firstlight\\authoring\\coastward-remote-63e3330-20261003\\tests\\realm_givers_browser.py\", line 294, in <module>\n    drawer_regression('desktop-close')\n    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n  File \"D:\\07-GAMES\\Firstlight\\authoring\\coastward-remote-63e3330-20261003\\tests\\realm_givers_browser.py\", line 189, in drawer_regression\n    check(label+' normal close control wins its actual hit test',hit)\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\07-GAMES\\Firstlight\\authoring\\coastward-remote-63e3330-20261003\\tests\\realm_givers_browser.py\", line 50, in check\n    raise AssertionError(name+(': '+str(detail) if detail is not None else ''))\nAssertionError: desktop-close normal close control wins its actual hit test\n"
+      ],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": "all-givers-and-companion-labels",
+      "detail_probe": null,
+      "required_scope_matches": false,
+      "declared_skips": {}
+    }
+  ],
+  "collection_errors": [
+    {
+      "suite": "crossing_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\browser\\\\CROSSING_BROWSER_REPORT.json'"
+    },
+    {
+      "suite": "regression09_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\regression09\\\\RPG_BROWSER_REPORT.json'"
+    },
+    {
+      "suite": "cutaway_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\CUTAWAY_BROWSER_REPORT.json'"
+    },
+    {
+      "suite": "reflection_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence07\\\\regression\\\\REFLECTION_TEST_REPORT.json'"
+    },
+    {
+      "suite": "native_origin_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\native\\\\NATIVE_ORIGIN_REPORT.json'"
+    },
+    {
+      "suite": "starter_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\starter-browser\\\\STARTER_BROWSER_REPORT.json'"
+    },
+    {
+      "suite": "camera_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\camera-browser\\\\REPORT.json'"
+    },
+    {
+      "suite": "pursuit_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\pursuit-browser\\\\PURSUIT_BROWSER_REPORT.json'"
+    },
+    {
+      "suite": "characters_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\characters-browser\\\\CHARACTERS_BROWSER_REPORT.json'"
+    },
+    {
+      "suite": "classes_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\classes-browser\\\\CLASSES_BROWSER_REPORT.json'"
+    },
+    {
+      "suite": "cosmos_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\cosmos-browser\\\\report.json'"
+    },
+    {
+      "suite": "earth_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\earth-browser\\\\report.json'"
+    },
+    {
+      "suite": "earth_story_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\earth-story-browser\\\\report.json'"
+    },
+    {
+      "suite": "earth_notes_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\earth-notes-browser\\\\report.json'"
+    },
+    {
+      "suite": "gathering_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\gathering-browser\\\\report.json'"
+    },
+    {
+      "suite": "realm_atlas_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\realm-atlas\\\\report.json'"
+    },
+    {
+      "suite": "timber_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\timber\\\\report.json'"
+    },
+    {
+      "suite": "traveler_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\traveler\\\\REPORT.json'"
+    },
+    {
+      "suite": "bridge_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\bridge-browser\\\\REPORT.json'"
+    },
+    {
+      "suite": "combat_cue_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\combat-cue-browser\\\\REPORT.json'"
+    },
+    {
+      "suite": "world_foundations_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\world-foundations-browser\\\\REPORT.json'"
+    },
+    {
+      "suite": "world_cutaway_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\world-cutaway-browser\\\\REPORT.json'"
+    },
+    {
+      "suite": "realm_trails_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\realm-trails-browser\\\\REPORT.json'"
+    },
+    {
+      "suite": "realm_trails_north_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\realm-trails-north-browser\\\\REPORT.json'"
+    },
+    {
+      "suite": "realm_trails_cosmos_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\realm-trails-cosmos-browser\\\\REPORT.json'"
+    },
+    {
+      "suite": "soundscape_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\soundscape-browser\\\\REPORT.json'"
+    },
+    {
+      "suite": "journey_usability_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\journey-usability-browser\\\\REPORT.json'"
+    },
+    {
+      "suite": "workshop_transactions_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\workshop-transactions-browser\\\\REPORT.json'"
+    },
+    {
+      "suite": "companion_presentation_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\companion-presentation-browser\\\\REPORT.json'"
+    },
+    {
+      "suite": "skitter_presentation_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\skitter-presentation-browser\\\\REPORT.json'"
+    },
+    {
+      "suite": "coastward_scenery_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\coastward-scenery-browser\\\\REPORT.json'"
+    },
+    {
+      "suite": "earth_story_transactions_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\earth-story-transactions-browser\\\\REPORT.json'"
+    },
+    {
+      "suite": "coastward_bridge_posts_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\coastward-bridge-posts-browser\\\\REPORT.json'"
+    },
+    {
+      "suite": "practice_visibility_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\practice-visibility-browser\\\\REPORT.json'"
+    },
+    {
+      "suite": "realm_work_presentation_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\realm-work-presentation-browser\\\\REPORT.json'"
+    },
+    {
+      "suite": "earth_expedition_browser",
+      "error": "[Errno 2] No such file or directory: 'D:\\\\07-GAMES\\\\Firstlight\\\\authoring\\\\coastward-remote-63e3330-20261003\\\\evidence10\\\\earth-expedition-browser\\\\REPORT.json'"
+    }
+  ],
+  "resource_authority": "One exclusive current Windows source/full native software-WebGL gate; no concurrent GPU capture/measurement, personal profile, server replacement, paid service, billing action, main merge or deployment.",
+  "limits": [
+    "Actual fresh HTTPS remote clone; one full Windows source and native software-browser gate.",
+    "Automated browser checks do not establish human pacing, accessibility or sustained GPU performance.",
+    "Hosted CI is separately inspected; local execution does not imply hosted success. No account/billing action taken.",
+    "Failed source, harness, appearance, GPU and optional excerpt epochs remain separately preserved."
+  ],
+  "rules": {
+    "tests": 1083,
+    "pass": 1083,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "python": {
+    "tests": 57,
+    "passed": 56,
+    "summary": "OK (skipped=1)",
+    "skipped_cases": [
+      "test_symlink_refused (test_checkout_import.ImportRules.test_symlink_refused) ... skipped 'Windows account lacks symlink privilege; real symlink refusal is exercised on Linux CI'"
+    ]
+  },
+  "portable": {
+    "manifest_sha256": "742fa4a6989d6e05323451a475aafac8f64c5bbbcc2f1b70d685e3d18f0599c2",
+    "declared_files": 800,
+    "mismatches": [],
+    "extra_files": [],
+    "missing_files": [],
+    "manifest_sha_unchanged": true,
+    "videos": [
+      {
+        "path": "captures/native-blade-take02/GAMEPLAY_PORTABLE.mp4",
+        "bytes": 45817564,
+        "sha256": "04b7c213c70e129449c403956bcb3686b51858186a020dd140ce7a64ef453403",
+        "under_100MB": true
+      },
+      {
+        "path": "captures/native-bow-take01/GAMEPLAY_PORTABLE.mp4",
+        "bytes": 33050738,
+        "sha256": "d1e70656b5a18127c94ca42735d1e08a42d575da864006a6ad698a0c412d742f",
+        "under_100MB": true
+      },
+      {
+        "path": "captures/native-veteran-take01/GAMEPLAY_PORTABLE.mp4",
+        "bytes": 36187042,
+        "sha256": "f697086c803b7d41d1b21c2e79b3d57d4be60bdf5015de3ce4bc02f229229b3e",
+        "under_100MB": true
+      },
+      {
+        "path": "mobile/MOBILE_GAMEPLAY_TAKE05.mp4",
+        "bytes": 15015603,
+        "sha256": "cf3c0ddd120f4dba526b85add46704b06ca8700ad19af7a50323ec7c1b4e2f2e",
+        "under_100MB": true
+      }
+    ]
+  },
+  "browser_count": 2,
+  "browser_checks": 60,
+  "browser_failed_checks": 1,
+  "browser_unknown_checks": 0,
+  "earned_journeys_passed": 37,
+  "artifacts": {
+    "START_MANIFEST.json": {
+      "bytes": 303364,
+      "sha256": "bd9eded8b35ccf5193f97c32ad6fb558078dcc77b5d8dec28c4621f00ca823df"
+    },
+    "RUN.json": {
+      "bytes": 485,
+      "sha256": "f94bb83d3bfdcd70018e2a80ec2850bbb8c8468bc1ba4d8ac87e42033c60af9b"
+    },
+    "FULL_VERIFY_CONSOLE.log": {
+      "bytes": 9842,
+      "sha256": "8c76dd095aea5130d4146d3d45118f77926bc82dc93b02e31597f47d7f3af66e"
+    },
+    "REMOTE_CLONE_LOG.txt": {
+      "bytes": 3768,
+      "sha256": "c396cdcefe4e513e4c3dc4027cd1c0ba28ac5c9214fd1fbb4d7ff550dc960aab"
+    },
+    "collect_full_gate.py": {
+      "bytes": 14426,
+      "sha256": "3498ce2abb78665d25751af5fab94bf79ab42e2ee25ad182b6f5842ba1626910"
+    },
+    "commands\\build.log": {
+      "bytes": 91,
+      "sha256": "9549fa28336fbfb148d917bd1fa214eed72f90cf0395d82ef2d929e631c87bcf"
+    },
+    "commands\\characters-journey.log": {
+      "bytes": 3058,
+      "sha256": "e8a0a4ad6825f7187470d399b89e7b7ad6647a33641d6e73416bdd54bbb5942e"
+    },
+    "commands\\classes-journey.log": {
+      "bytes": 4224,
+      "sha256": "a5234ffef5a80b7b4fd6cd55e85c195b0fba51ab7294b8a84c475906634a4d37"
+    },
+    "commands\\cosmos-journey.log": {
+      "bytes": 630,
+      "sha256": "fc328b55b4be75be580d41f0807eb0af4a59de46bdca4e022ddf78e86f4e6bdb"
+    },
+    "commands\\crossing-blade.log": {
+      "bytes": 625,
+      "sha256": "0b27a5083c98c2983b9d5dd15b33456d395f182b4b299bbf46412b4f244ba956"
+    },
+    "commands\\crossing-bow.log": {
+      "bytes": 649,
+      "sha256": "f1f412fb8081e5e0c9e1c60e5ea9b8d1de892fbc3c23c2a76e5b1470f8c04d4a"
+    },
+    "commands\\earth-expedition-blade.log": {
+      "bytes": 834,
+      "sha256": "3d575071239980ee8f98057acacb156ef6d765dff0822e1de2a771bdad9132c0"
+    },
+    "commands\\earth-expedition-bow.log": {
+      "bytes": 831,
+      "sha256": "14c24800a62e53794d1a18e4272956cd06873c4e10d40662f0779c311b2ff24e"
+    },
+    "commands\\earth-expedition-veteran.log": {
+      "bytes": 831,
+      "sha256": "999a33bebc78aad13cee2804f0f98723861ea53cae8900eceb391a723634b270"
+    },
+    "commands\\earth-journey.log": {
+      "bytes": 602,
+      "sha256": "f785507224a623ca9e10eed520c50a69c3442eb1754e48514712a72b0f44e531"
+    },
+    "commands\\earth-notes-blade.log": {
+      "bytes": 2028,
+      "sha256": "9f4b8b19c36d4f56454a0788462d5a905a3280f27f83a30272f40c6e1efff08a"
+    },
+    "commands\\earth-notes-bow.log": {
+      "bytes": 2030,
+      "sha256": "2e1e671736a21e5fd9a7a2c77730db32fb1d2bc2c378be55a537c6973e0e5595"
+    },
+    "commands\\earth-notes-veteran.log": {
+      "bytes": 2022,
+      "sha256": "302e2aa7ab6b462c5eb5225f8288e7679daa895e363b09396de256f4399e3a1c"
+    },
+    "commands\\earth-outing-blade.log": {
+      "bytes": 5482,
+      "sha256": "be9b2f2c5cc1dc45ed3ada36ba842c06b1e0144b009f341107d3acafb80f6a60"
+    },
+    "commands\\earth-outing-bow.log": {
+      "bytes": 6715,
+      "sha256": "e4e71e12da6150014a280b35387a3f507522cee791079ddbb89e5805a720d8c6"
+    },
+    "commands\\earth-outing-veteran.log": {
+      "bytes": 3498,
+      "sha256": "ee2d47f54868c3bf09a78b0156ddf0aa20674311bcb236b9a3fbd89ec1f372e6"
+    },
+    "commands\\earth-story-blade.log": {
+      "bytes": 3039,
+      "sha256": "ea5eb9f2ae2d109288111a589a90869de356aba5925679c126c2f69c112b020a"
+    },
+    "commands\\earth-story-bow.log": {
+      "bytes": 3448,
+      "sha256": "9b989e30eb091bd5f8ba39d67860722a52f8a0b02a3075b420ce4e72ea5a11c3"
+    },
+    "commands\\earth-story-veteran.log": {
+      "bytes": 2628,
+      "sha256": "4a9dc0d480a8b7a10227b1c3dbfd2640f5e3b91b9261c41195e72fa4b5e60206"
+    },
+    "commands\\earth_ground_material_browser.log": {
+      "bytes": 3828,
+      "sha256": "b043dff6f1373a10672862c3bcae74ab27f0178095991cf4a5fdc6a7a68db392"
+    },
+    "commands\\gathering-blade.log": {
+      "bytes": 2008,
+      "sha256": "53d911a891f4eb8eb8d14281e87ce92e5dff2b594f0a02679eae612e73f744ae"
+    },
+    "commands\\gathering-bow.log": {
+      "bytes": 2004,
+      "sha256": "f84d2871688ca024a46043a254a8299bf997b53131e2f2f2a1d35af4450209e0"
+    },
+    "commands\\gathering-veteran.log": {
+      "bytes": 1998,
+      "sha256": "9607457d3db0cae6802882665b4d4572306ff8bebfcaf951ce4d89a957e190e4"
+    },
+    "commands\\pursuit-blade.log": {
+      "bytes": 5483,
+      "sha256": "04029aab268bf30da55bb85ea9cb89e5ab63ecd7f782a59c97aa095529ce4647"
+    },
+    "commands\\pursuit-bow.log": {
+      "bytes": 6710,
+      "sha256": "7954f060cccbda3f5837029b6b177c60db43a02f6d581a5880ed7382a76135d1"
+    },
+    "commands\\pursuit-veteran.log": {
+      "bytes": 3495,
+      "sha256": "7789b9375e2760a0ca0646b53629ec15f1ad395cb81043350107ecb62d707add"
+    },
+    "commands\\python.log": {
+      "bytes": 6813,
+      "sha256": "d25c1928f87709f47c96e6d91f02a47ed020747cf8ad5383e766317e35681708"
+    },
+    "commands\\realm-comparator-blade.log": {
+      "bytes": 860,
+      "sha256": "d051c505ea0d4762ed40c3b46181cff2ef60ab5dfca172cbdff96e7e26bccab5"
+    },
+    "commands\\realm-comparator-bow.log": {
+      "bytes": 859,
+      "sha256": "a07a5025afb0bff37325955e4fd9fea4c0a5b197b0afaa4f95064ca4a85245d8"
+    },
+    "commands\\realm-comparator-veteran.log": {
+      "bytes": 1380,
+      "sha256": "5715fe89941606e22fb32113d3006bc68a709168caa9decc7695d9b33a9dba1e"
+    },
+    "commands\\realm-trails-blade.log": {
+      "bytes": 161,
+      "sha256": "8c99875b9853801c2052b9590857b851d349d56ab81580bfb70232c631f73fe1"
+    },
+    "commands\\realm-trails-bow.log": {
+      "bytes": 159,
+      "sha256": "53a69d88317a65523229998ee60c03de091e0a8b8d41a82e5253f340965b78d5"
+    },
+    "commands\\realm-trails-south-blade.log": {
+      "bytes": 3742,
+      "sha256": "249012be603c1a5c8b7ed939e4e4947de8851ca26635656fcd6b30b9fa5007fa"
+    },
+    "commands\\realm-trails-south-bow.log": {
+      "bytes": 3740,
+      "sha256": "b108d1649a2c57c9ca5a3b49e6db5e9e48a74f5013b692f7462d0417bf8692ca"
+    },
+    "commands\\realm_givers_browser.log": {
+      "bytes": 1668,
+      "sha256": "f9d0e26cf68b85b94c2e20a4819b010778c367b9b7c056485e67ec63a13f8d63"
+    },
+    "commands\\rules.log": {
+      "bytes": 235974,
+      "sha256": "2d50434da88ec89bd933f2c41650fdcd1bddb3d26399ac3e0937784e127dd7a2"
+    },
+    "commands\\starter-blade.log": {
+      "bytes": 507,
+      "sha256": "7bf2c1aedc79943bcdc356237696bf2a1a464841e03520203f7ee7d0f4911dae"
+    },
+    "commands\\starter-bow.log": {
+      "bytes": 503,
+      "sha256": "2496bd1b1ba568c3ff951073bede4e7625f178d4aa75780f9ab122264bf8b37f"
+    },
+    "commands\\starter-veteran.log": {
+      "bytes": 1438,
+      "sha256": "a5ce11e73e32f6a35882e153121d316e4ff0bf6682f0b18001f5e86a2f979be0"
+    },
+    "commands\\syntax-adventure-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-adventure-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-adventure.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-app.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-arsenal-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-arsenal-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-arsenal.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-beacon-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-beacon.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-bridge-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-bridge-moment-view.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-characters-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-characters.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-classes-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-classes.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-coastward-settlement-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-coastward-woodland-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-combat.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-companion-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-core.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-cosmos-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-cosmos-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-cosmos.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-creative.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-crossing-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-crossing-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-crossing.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-drover-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-expedition-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-expedition-beast-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-expedition-dialogue.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-expedition-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-expedition.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-notes-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-notes-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-notes.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-shoulder-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-story-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-story.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-elderweald-trail-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-elderweald-world.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-engine.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-experience.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-gathering-adapter.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-gathering-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-gathering-music.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-gathering-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-gathering.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-mill-gate-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-millwright-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-pursuit-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-pursuit.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-quarry-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-realm-art-data.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-realm-atlas-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-realm-craft.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-realm-givers-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-realm-trails-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-realm-trails-cosmos.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-realm-trails-north.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-realm-trails-south.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-realm-trails-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-realm-trails.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-road-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-road.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-rpg-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-sandbox-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-sandbox-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-sandbox.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-skitter-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-soundscape.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-starter-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-starter-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-starter.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-surface-assets.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-traveler-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-traveler-equipment-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-workshop-transactions.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-world-atlantis-earth.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-world-foundations-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-world-foundations-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-world-foundations.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-world-ground-coalescing.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-world-heaven-hell.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-world.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\world-foundations-blade.log": {
+      "bytes": 115,
+      "sha256": "fc64a7526f2397fe2fd184a12f5b7161198deee503ca08909120d5cee37e8e24"
+    },
+    "commands\\world-foundations-bow.log": {
+      "bytes": 113,
+      "sha256": "672abbfbe7a1d33774e55716e058cae4b29ce9f6c013361f41d6b31a4ad224d6"
+    },
+    "commands\\world-foundations-veteran.log": {
+      "bytes": 111,
+      "sha256": "f67ce6df32a739cda65cf92f5c480d85fc7cf4969a8894534f8f0a9487566137"
+    }
+  },
+  "passed": false
+}

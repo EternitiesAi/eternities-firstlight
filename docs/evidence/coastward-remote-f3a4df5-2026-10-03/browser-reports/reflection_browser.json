@@ -1,0 +1,112 @@
+{
+  "checks": [
+    {
+      "orbit_radians": 0.3,
+      "name": "red",
+      "x": 515,
+      "y": 438,
+      "pixel": [
+        255,
+        20,
+        18,
+        255
+      ],
+      "passed": true
+    },
+    {
+      "orbit_radians": 0.3,
+      "name": "green",
+      "x": 765,
+      "y": 316,
+      "pixel": [
+        12,
+        255,
+        10,
+        255
+      ],
+      "passed": true
+    },
+    {
+      "orbit_radians": 1.4,
+      "name": "red",
+      "x": 673,
+      "y": 471,
+      "pixel": [
+        128,
+        3,
+        2,
+        255
+      ],
+      "passed": true
+    },
+    {
+      "orbit_radians": 1.4,
+      "name": "green",
+      "x": 607,
+      "y": 282,
+      "pixel": [
+        3,
+        127,
+        2,
+        255
+      ],
+      "passed": true
+    },
+    {
+      "orbit_radians": 2.8,
+      "name": "red",
+      "x": 801,
+      "y": 373,
+      "pixel": [
+        140,
+        3,
+        3,
+        255
+      ],
+      "passed": true
+    },
+    {
+      "orbit_radians": 2.8,
+      "name": "green",
+      "x": 479,
+      "y": 381,
+      "pixel": [
+        2,
+        122,
+        2,
+        255
+      ],
+      "passed": true
+    },
+    {
+      "orbit_radians": 4.6,
+      "name": "red",
+      "x": 597,
+      "y": 284,
+      "pixel": [
+        255,
+        9,
+        9,
+        255
+      ],
+      "passed": true
+    },
+    {
+      "orbit_radians": 4.6,
+      "name": "green",
+      "x": 683,
+      "y": 470,
+      "pixel": [
+        13,
+        255,
+        11,
+        255
+      ],
+      "passed": true
+    }
+  ],
+  "mode": "Offline Chromium/WebGL2 reflection framebuffer readback",
+  "browser_errors": [],
+  "passed": true,
+  "engine_sha256": "b98cfea8453e5b6deeb16a13c45f1c1bf7fc80fb9ba8d0a185c242a6ea9b078d"
+}

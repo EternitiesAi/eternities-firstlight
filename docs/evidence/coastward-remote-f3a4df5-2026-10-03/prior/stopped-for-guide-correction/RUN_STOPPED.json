@@ -1,0 +1,16 @@
+{
+  "command": [
+    "C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Scripts/python.exe",
+    "tools/verify.py",
+    "--browser",
+    "--output",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\final-remote-10be071-20261003\\commands"
+  ],
+  "cwd": "D:\\07-GAMES\\Firstlight\\authoring\\coastward-remote-10be071-20261003",
+  "started_at": "2026-10-03T11:28:31.859706+00:00",
+  "browser": true,
+  "exit_code": null,
+  "ended_at": "2026-10-03T11:34:52.688704+00:00",
+  "status": "intentionally-stopped-before-completion",
+  "reason": "Independent handoff review found an incorrect patrol sequence in the play guide. Stop the fingerprinted owned runner tree, preserve all partial logs, correct the guide and repeat the full gate from a wholly fresh remote clone at the new exact delivery head. No runtime change or test failure is alleged."
+}

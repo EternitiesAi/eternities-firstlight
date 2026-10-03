@@ -1,0 +1,32 @@
+PASS exact assembled source loads
+PASS fresh-blade real crossing terms permit earned source
+PASS actual Earth renderer and observer ready
+PASS fresh-blade-camp-adventure-work exact state/camera/collision/batch restoration
+PASS fresh-blade-camp-adventure-work contributes actual visible pixels
+PASS fresh-blade-camp-adventure-raw-ground exact state/camera/collision/batch restoration
+PASS fresh-blade-camp-adventure-raw-ground stable explicit-ground material stays within measured raster bound
+PASS actual Earth renderer and observer ready
+PASS fresh-blade-camp-follow-work exact state/camera/collision/batch restoration
+FAIL fresh-blade-camp-follow-work contributes actual visible pixels
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\coastward-remote-07f9e08-20261003\tools\inspect_earth_expedition_presentation.py", line 75, in main
+    if control not in ['raw-ground','old-coordinate-fog']:check(label+' contributes actual visible pixels',result['removed']>0 and result['main']['changedPixels']>0,result['main'])
+                                                          ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\authoring\coastward-remote-07f9e08-20261003\tools\inspect_earth_expedition_presentation.py", line 56, in check
+    if not ok:raise AssertionError(name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: fresh-blade-camp-follow-work contributes actual visible pixels
+
+{
+  "status": "failed",
+  "checks": 10,
+  "output": "D:\\07-GAMES\\Firstlight\\authoring\\coastward-remote-07f9e08-20261003\\evidence10\\earth-ground-material-browser\\frames"
+}
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\coastward-remote-07f9e08-20261003\tests\earth_ground_material_browser.py", line 12, in <module>
+    subprocess.run([sys.executable,str(ROOT/'tools/inspect_earth_expedition_presentation.py'),'--earned-dir',str(OUT/'earned'),'--output',str(OUT/'frames'),'--quality','low','--variant','fresh-blade'],cwd=ROOT,check=True,timeout=180)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Scripts\\python.exe', 'D:\\07-GAMES\\Firstlight\\authoring\\coastward-remote-07f9e08-20261003\\tools\\inspect_earth_expedition_presentation.py', '--earned-dir', 'D:\\07-GAMES\\Firstlight\\authoring\\coastward-remote-07f9e08-20261003\\evidence10\\earth-ground-material-browser\\earned', '--output', 'D:\\07-GAMES\\Firstlight\\authoring\\coastward-remote-07f9e08-20261003\\evidence10\\earth-ground-material-browser\\frames', '--quality', 'low', '--variant', 'fresh-blade']' returned non-zero exit status 1.

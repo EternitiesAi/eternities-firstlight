@@ -1,0 +1,367 @@
+{
+  "method": "Integrated realm giver art in isolated software Chromium.\n\nThe labelled Chapter I command-earned character is imported through the actual\ncharacter preview/confirmation UI. Roads and native giver approaches use real\nproduction UI and ordinary RAF movement, never accelerated ticks or planted\nplayer/actor state. Synchronous appearance-only sampling/ablation is labelled;\nit does not establish human readability, pacing, GPU speed or enjoyment.\n",
+  "status": "failed",
+  "checks": [
+    {
+      "name": "exact integrated sources are embedded in the offline build",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "labelled Chapter I command-earned source has the declared hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "browser response matches frozen offline HTML",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary software WebGL RAF is active",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual Import character opens a preview without creating a slot",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "confirmed earned character retains original currency, gear and Chapter I history",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Walk to Roads marker movement is accepted",
+      "passed": true,
+      "detail": {
+        "ok": true,
+        "waypoints": 3
+      }
+    },
+    {
+      "name": "Walk to Roads marker finishes through ordinary RAF",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Walk to Roads marker reaches its physical destination",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "heaven crossing terms disclose free return and separate work consent",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "heaven requires explicit crossing confirmation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "heaven crossing does not accept or pay work",
+      "passed": true,
+      "detail": {
+        "changedProjectionFields": []
+      }
+    },
+    {
+      "name": "desktop-close drawer suppresses the home/label overlays",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop-close normal close control wins its actual hit test",
+      "passed": false,
+      "detail": null
+    }
+  ],
+  "events": [
+    {
+      "action": "Walk to Roads marker",
+      "wall_seconds": 19.47987499998999,
+      "elapsed": 137.95039999999508,
+      "player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.245537269018455
+      }
+    }
+  ],
+  "browser_errors": [],
+  "errors": [
+    "Traceback (most recent call last):\n  File \"D:\\07-GAMES\\Firstlight\\authoring\\coastward-remote-63e3330-20261003\\tests\\realm_givers_browser.py\", line 294, in <module>\n    drawer_regression('desktop-close')\n    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n  File \"D:\\07-GAMES\\Firstlight\\authoring\\coastward-remote-63e3330-20261003\\tests\\realm_givers_browser.py\", line 189, in drawer_regression\n    check(label+' normal close control wins its actual hit test',hit)\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\07-GAMES\\Firstlight\\authoring\\coastward-remote-63e3330-20261003\\tests\\realm_givers_browser.py\", line 50, in check\n    raise AssertionError(name+(': '+str(detail) if detail is not None else ''))\nAssertionError: desktop-close normal close control wins its actual hit test\n"
+  ],
+  "screenshots": [
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\authoring\\coastward-remote-63e3330-20261003\\evidence10\\realm-givers-browser\\00-import-preview.png",
+      "sha256": "648e19c2b248d78f74ce70639ed6b70851cd7373946b95966bc0884f6d17c32e",
+      "scene": "valley",
+      "camera": "adventure"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\authoring\\coastward-remote-63e3330-20261003\\evidence10\\realm-givers-browser\\FAILURE.png",
+      "sha256": "0e6a65fd271d30a37d3878406d2ccf340396f487d52c8edcb651ec657e732919",
+      "scene": "world-heaven",
+      "camera": "adventure"
+    }
+  ],
+  "givers": [],
+  "ablations": [],
+  "companion_labels": [],
+  "scope": "all-givers-and-companion-labels",
+  "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc",
+  "earned_source": {
+    "path": "D:\\07-GAMES\\Firstlight\\authoring\\coastward-remote-63e3330-20261003\\examples\\CHAPTER_COMPLETED_EARNED.json",
+    "sha256": "27cb70f57c3584f7de69f667544c8215c6fbc5f7f3d45d7fb7bc241f1cabce49"
+  },
+  "source_head": "63e3330a917f36eae053c4c6b4687ca42b72fc81",
+  "accelerated_ticks": false,
+  "capture_mode": false,
+  "state_replacements": 0,
+  "player_position_edits": 0,
+  "actor_position_edits": 0,
+  "inventory_grants": 0,
+  "appearance_ablation": "Temporary giver draw omission in one synchronous JS task; restored before RAF resumes.",
+  "source_hashes": {
+    "realm-givers-art.js": "8362d7a98f238b77b9afa5eff7346f430c02af6cd249502f146308a3d246fb34",
+    "world-foundations-art.js": "8e4e4c8cbe3dd3338d950b523e3794b289c8fd3b34e35cfdd5817a3cddb37013",
+    "world-foundations-ui.js": "8aad1289bd5207f03488350e18e0c97a71958676820d904d9a0e90b3446873b0",
+    "adventure-ui.js": "25da84755e7509fb0b45193b02e9b3dea684a536ec58e86c99ba4028cb733f88",
+    "world-foundations.js": "97f445690fccea753c860e96bf54d4e33a3c8551e8738a31d3d947ce30d1465d",
+    "world-heaven-hell.js": "7192efdcce877e359865c43d39d03fc1a2a54ebad960fd2d2a378880033f4cbd",
+    "world-atlantis-earth.js": "e6697cea06c3dc19506db52da79ba8ca965d4d626c6535527c18e2d9fbcaa014",
+    "app.js": "61e240219f425f592c1959a52373936fd1095a44374346a46d28fc777120e69f"
+  },
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "imported_character": {
+    "mode": "managed",
+    "active": "character-2",
+    "revision": 1,
+    "count": 2,
+    "writer": true,
+    "error": null
+  },
+  "failure_context": {
+    "diagnostics": {
+      "version": "10.0.0",
+      "mode": "webgl2",
+      "scene": "world-heaven",
+      "world": {
+        "id": "heaven",
+        "height": 1.57,
+        "dive": null,
+        "journey": {
+          "counter": 0,
+          "lastClaim": 0,
+          "firstClaimed": false,
+          "active": null,
+          "defeated": []
+        }
+      },
+      "earth": null,
+      "cosmos": null,
+      "networkDependencies": 0,
+      "liveAI": false,
+      "multiplayer": false,
+      "adventure": {
+        "tactics": {
+          "scene": "world-heaven",
+          "target": null,
+          "auto": false,
+          "nextAttack": 0,
+          "guardUntil": 0,
+          "shield": 0,
+          "shieldUntil": 0,
+          "cooldowns": {
+            "guard": 0,
+            "insight": 0,
+            "spirit": 0
+          },
+          "hits": [],
+          "serial": 0,
+          "windup": null,
+          "motion": null
+        },
+        "beacon": {
+          "phase": "idle",
+          "time": 0,
+          "wave": 0,
+          "ward": 100,
+          "actors": [],
+          "serial": 0,
+          "notice": "",
+          "repairAt": 0,
+          "maraAt": 0,
+          "ilanAt": 0,
+          "playerRepairAt": 0,
+          "defeats": 0
+        },
+        "crossing": {
+          "room": "world-heaven",
+          "tones": [],
+          "seek": false,
+          "rangAt": -10,
+          "tone": null,
+          "toneSerial": 0
+        },
+        "player": {
+          "x": 0,
+          "z": 27,
+          "yaw": 3.141592653589793
+        },
+        "paused": false,
+        "intent": null,
+        "stats": {
+          "level": 4,
+          "attack": 31,
+          "defense": 7,
+          "maxHP": 170
+        },
+        "weapon": {
+          "style": "blade",
+          "reach": 2.65,
+          "cooldown": 0.52,
+          "stamina": 0,
+          "primary": "Sunstrike",
+          "special": "Dawn sweep"
+        },
+        "arrows": [],
+        "range": {
+          "active": false,
+          "start": 0,
+          "hits": {},
+          "shots": 0,
+          "message": "A calm place to learn a different rhythm."
+        },
+        "enemies": [],
+        "companion": {
+          "room": "world-heaven",
+          "x": 0,
+          "z": 27,
+          "yaw": 3.141592653589793,
+          "path": [],
+          "nextPath": 0,
+          "nextHit": 0,
+          "seek": null,
+          "status": "Beside you"
+        }
+      },
+      "sandbox": {
+        "bridge": true,
+        "objects": 0,
+        "elapsed": 140.61679999999498,
+        "autoGather": null,
+        "buildMode": null
+      },
+      "saveState": "saved",
+      "characters": {
+        "mode": "managed",
+        "active": "character-2",
+        "revision": 4,
+        "count": 2,
+        "writer": true,
+        "error": null
+      },
+      "fps": 10.549218698490163,
+      "errors": [],
+      "camera": {
+        "yaw": 0.9272952180016141,
+        "elevation": 0.28,
+        "half": 17,
+        "distance": 7.5,
+        "actualDistance": 7.499999999999999,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          27
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "projection": "perspective",
+        "eye": [
+          5.766332629864633,
+          5.142667364230853,
+          31.32474947239846
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          27
+        ]
+      },
+      "metrics": {
+        "drawCalls": 14,
+        "texturedDrawCalls": 0,
+        "texturedInstances": 0,
+        "surfaceMaterials": {
+          "version": 1,
+          "id": "earth-weathered-timber-v1",
+          "status": "ready",
+          "ready": true,
+          "error": null,
+          "width": 512,
+          "height": 512,
+          "colorFormat": "SRGB8_ALPHA8",
+          "roughnessFormat": "R8",
+          "textureBytes": 1310720,
+          "mipmapBytes": 436905,
+          "totalTextureBytes": 1747625,
+          "decodedImageBytes": 2097152,
+          "decodeWallMs": 46.10000002384186,
+          "uploadCpuMs": 22.299999982118607,
+          "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+          "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+          "enabled": true
+        },
+        "instances": 1414,
+        "triangles": 57244
+      },
+      "reflection": {
+        "method": "world-plane P*V*H",
+        "height": 0.01,
+        "horizontalFlip": false
+      },
+      "cutaway": {
+        "enabled": true,
+        "focus": [
+          0,
+          2.45,
+          27
+        ]
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "gathering": null,
+      "layoutRevision": 0,
+      "roadsideGathering": {
+        "status": "idle",
+        "playing": false,
+        "pending": false
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created",
+        "soundscape": null
+      }
+    },
+    "toast": "Heaven \u00b7 Garden of Voices \u00b7 a clear road home remains.",
+    "close": {
+      "x": 1193,
+      "y": 103,
+      "width": 30,
+      "height": 34
+    },
+    "home": null
+  }
+}

@@ -1,0 +1,1826 @@
+{
+  "head": "f3a4df5f8023b385ea5273aa6d90ba5ddf438121",
+  "origin": "https://github.com/EternitiesAi/eternities-firstlight.git",
+  "run": {
+    "command": [
+      "C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Scripts/python.exe",
+      "tools/verify.py",
+      "--browser",
+      "--output",
+      "D:\\07-GAMES\\Firstlight\\artifacts\\final-remote-f3a4df5-20261003\\commands"
+    ],
+    "cwd": "D:\\07-GAMES\\Firstlight\\authoring\\coastward-remote-f3a4df5-20261003",
+    "started_at": "2026-10-03T14:04:21.762495+00:00",
+    "browser": true,
+    "exit_code": 0,
+    "ended_at": "2026-10-03T14:52:56.339461+00:00"
+  },
+  "environment": {
+    "python": "3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]",
+    "python_executable": "C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Scripts\\python.exe",
+    "node": "v24.18.0",
+    "git": "git version 2.55.0.windows.3",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "collected_at": "2026-10-03T09:53:50.726701-05:00",
+  "tracked_count": 2044,
+  "tracked_changed": [],
+  "tracked_added": [],
+  "tracked_removed": [],
+  "git_status": "",
+  "html": {
+    "index.html": {
+      "bytes": 2606833,
+      "sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+    },
+    "FIRSTLIGHT_VALLEY.html": {
+      "bytes": 2606833,
+      "sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+    }
+  },
+  "locks": {
+    "head_unchanged": true,
+    "html_unchanged": true,
+    "tracked_hashes_unchanged": true,
+    "membership_unchanged": true,
+    "git_clean": true
+  },
+  "source_modules": 88,
+  "rule_files": 68,
+  "syntax_passed": 88,
+  "earned_journeys": {
+    "crossing-blade": true,
+    "crossing-bow": true,
+    "starter-blade": true,
+    "starter-bow": true,
+    "starter-veteran": true,
+    "pursuit-blade": true,
+    "pursuit-bow": true,
+    "pursuit-veteran": true,
+    "characters-journey": true,
+    "classes-journey": true,
+    "cosmos-journey": true,
+    "earth-journey": true,
+    "earth-outing-blade": true,
+    "earth-outing-bow": true,
+    "earth-outing-veteran": true,
+    "earth-story-blade": true,
+    "earth-story-bow": true,
+    "earth-story-veteran": true,
+    "earth-notes-blade": true,
+    "earth-notes-bow": true,
+    "earth-notes-veteran": true,
+    "gathering-blade": true,
+    "gathering-bow": true,
+    "gathering-veteran": true,
+    "world-foundations-blade": true,
+    "world-foundations-bow": true,
+    "world-foundations-veteran": true,
+    "realm-trails-blade": true,
+    "realm-trails-bow": true,
+    "realm-trails-south-blade": true,
+    "realm-trails-south-bow": true,
+    "realm-comparator-blade": true,
+    "realm-comparator-bow": true,
+    "realm-comparator-veteran": true,
+    "earth-expedition-blade": true,
+    "earth-expedition-bow": true,
+    "earth-expedition-veteran": true
+  },
+  "browser_suites_expected": [
+    "earth_ground_material_browser",
+    "realm_givers_browser",
+    "crossing_browser",
+    "regression09_browser",
+    "cutaway_browser",
+    "reflection_browser",
+    "native_origin_browser",
+    "starter_browser",
+    "camera_browser",
+    "pursuit_browser",
+    "characters_browser",
+    "classes_browser",
+    "cosmos_browser",
+    "earth_browser",
+    "earth_story_browser",
+    "earth_notes_browser",
+    "gathering_browser",
+    "realm_atlas_browser",
+    "timber_browser",
+    "traveler_browser",
+    "bridge_browser",
+    "combat_cue_browser",
+    "world_foundations_browser",
+    "world_cutaway_browser",
+    "realm_trails_browser",
+    "realm_trails_north_browser",
+    "realm_trails_cosmos_browser",
+    "soundscape_browser",
+    "journey_usability_browser",
+    "workshop_transactions_browser",
+    "companion_presentation_browser",
+    "skitter_presentation_browser",
+    "coastward_scenery_browser",
+    "earth_story_transactions_browser",
+    "coastward_bridge_posts_browser",
+    "practice_visibility_browser",
+    "realm_work_presentation_browser",
+    "earth_expedition_browser"
+  ],
+  "browser_suites": [
+    {
+      "suite": "earth_ground_material_browser",
+      "command_passed": true,
+      "report": "evidence10\\earth-ground-material-browser\\frames\\REPORT.json",
+      "report_sha256": "7810a3d1d5a08eeae3bff17a02aa281337ae4fce02e0a2770e32a7f3d58485c7",
+      "harness_sha256": "d79110c940cf43b03bcb08d9e05a6b303d01705ea0dfbd709d6d654544143f0b",
+      "fresh_report": true,
+      "checks": 46,
+      "passed_checks": 46,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": "f3a4df5f8023b385ea5273aa6d90ba5ddf438121",
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "realm_givers_browser",
+      "command_passed": true,
+      "report": "evidence10\\realm-givers-browser\\REPORT.json",
+      "report_sha256": "a641349fe91f1fe257115a95ac690f80a33f12fca272ae7fb8d37645fcf7b354",
+      "harness_sha256": "74e7f9cd12601f5736fe9f00e37464ad63f6451f0a4381688f5792edeb615d52",
+      "fresh_report": true,
+      "checks": 361,
+      "passed_checks": 361,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": "f3a4df5f8023b385ea5273aa6d90ba5ddf438121",
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": "all-givers-and-companion-labels",
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "crossing_browser",
+      "command_passed": true,
+      "report": "evidence10\\browser\\CROSSING_BROWSER_REPORT.json",
+      "report_sha256": "d6ec2f3f25ecf3203264abb41f204cea276b7c7ad9e0f93135222f41dc12790d",
+      "harness_sha256": "389c935aff59e1bedf68d55111a8b29617770044316350870ea4a8633f6aa469",
+      "fresh_report": true,
+      "checks": 115,
+      "passed_checks": 115,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": true,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "build_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "regression09_browser",
+      "command_passed": true,
+      "report": "evidence10\\regression09\\RPG_BROWSER_REPORT.json",
+      "report_sha256": "017093dae11532ae84870960719ba5b648cea876a33801e1c5f94052d11216db",
+      "harness_sha256": "62a2c9e24af7c68c6bf9e9a7d3dd70348b03eeb3d8409da0778617e3af7c0c90",
+      "fresh_report": true,
+      "checks": 107,
+      "passed_checks": 107,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": true,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "build_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "cutaway_browser",
+      "command_passed": true,
+      "report": "evidence10\\CUTAWAY_BROWSER_REPORT.json",
+      "report_sha256": "b6bb47f86c69a8949059e672436e226de6f0effbac4ed67388e65e1774f329f0",
+      "harness_sha256": "d0c408b969d3b9726f91c01b50353694660ab87cdb036f3dc1e82c37a9a78064",
+      "fresh_report": true,
+      "checks": 6,
+      "passed_checks": 6,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": true,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {},
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "reflection_browser",
+      "command_passed": true,
+      "report": "evidence07\\regression\\REFLECTION_TEST_REPORT.json",
+      "report_sha256": "daa88f6d10a68fec853c9fd241514c231e4af0dad4a70721cf07fc7fe22f7530",
+      "harness_sha256": "0851a777a3edc04d214a39e166e8c2ec5b6fc11753b20c15d6335cec417739e5",
+      "fresh_report": true,
+      "checks": 8,
+      "passed_checks": 8,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": true,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {},
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "native_origin_browser",
+      "command_passed": true,
+      "report": "evidence10\\native\\NATIVE_ORIGIN_REPORT.json",
+      "report_sha256": "b8c720b20f77aa47de9afbb12dc43dc9fe317e3c005eceda8ea6e1dc77d21d03",
+      "harness_sha256": "0765c3aa4a2a625d9c9c201f8c6a70ec011a611a64bb521b09055ac2a20b00a9",
+      "fresh_report": true,
+      "checks": 11,
+      "passed_checks": 11,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": true,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "starter_browser",
+      "command_passed": true,
+      "report": "evidence10\\starter-browser\\STARTER_BROWSER_REPORT.json",
+      "report_sha256": "1be394291074927d8c3a8364c738ddaeb8b957bc87aab5f3c51ba17f4ee1f5e2",
+      "harness_sha256": "6a41588754a9399c265bfe386332a21565aa2a8d0239c5a5e0a8e5db30a0c412",
+      "fresh_report": true,
+      "checks": 148,
+      "passed_checks": 148,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": true,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "camera_browser",
+      "command_passed": true,
+      "report": "evidence10\\camera-browser\\REPORT.json",
+      "report_sha256": "4010c74074745d5e14529eefc3924d127c22f631b1c84f595709dffd9a2a69ff",
+      "harness_sha256": "a726c2226477deeb767a8c241e046fac65b026074a06f9d636afc2751888c0a1",
+      "fresh_report": true,
+      "checks": 55,
+      "passed_checks": 55,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": true,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "pursuit_browser",
+      "command_passed": true,
+      "report": "evidence10\\pursuit-browser\\PURSUIT_BROWSER_REPORT.json",
+      "report_sha256": "8fb099737ef9ad3f510f334e47898a9560251a433c9733691c5b744f310e9415",
+      "harness_sha256": "41aadb24fe68078d231b957b6e3976e0fc652619a59e044cab84eaac0c8c44bc",
+      "fresh_report": true,
+      "checks": 164,
+      "passed_checks": 164,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "characters_browser",
+      "command_passed": true,
+      "report": "evidence10\\characters-browser\\CHARACTERS_BROWSER_REPORT.json",
+      "report_sha256": "b51f174fb729287d8364879173480f93cd0de728568a54847df95f67e7edadad",
+      "harness_sha256": "26c436676044ee30c346c01d6598c794cd154e137629c22661c47b3748223741",
+      "fresh_report": true,
+      "checks": 67,
+      "passed_checks": 67,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": true,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "classes_browser",
+      "command_passed": true,
+      "report": "evidence10\\classes-browser\\CLASSES_BROWSER_REPORT.json",
+      "report_sha256": "8631069e41af8ab8836a51c3d672ba0465381ffbd92f4e73409d47599e5ac347",
+      "harness_sha256": "df3e35ec6e2dc05ecfbe1bc9db74d1e1df3251216f4f748093a10434d858f3d0",
+      "fresh_report": true,
+      "checks": 45,
+      "passed_checks": 45,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": true,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "cosmos_browser",
+      "command_passed": true,
+      "report": "evidence10\\cosmos-browser\\report.json",
+      "report_sha256": "c4df8115b32b6659bd17769b735ad34d4c1c9f8c39e5fd4804ea192ddabe21b9",
+      "harness_sha256": "cdafae77c45e26b71662649e8066aa231a54527b601a44703b8c36b7e60775d0",
+      "fresh_report": true,
+      "checks": 75,
+      "passed_checks": 75,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "earth_browser",
+      "command_passed": true,
+      "report": "evidence10\\earth-browser\\report.json",
+      "report_sha256": "b57ca91da2ce3a7da4698165b753cad8fb2bd498bf6a5297a5608676b4123956",
+      "harness_sha256": "d803d0bd3f360160656423ce54d1035b3b0302ef18100676e28bd9b074151c0b",
+      "fresh_report": true,
+      "checks": 104,
+      "passed_checks": 104,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "earth_story_browser",
+      "command_passed": true,
+      "report": "evidence10\\earth-story-browser\\report.json",
+      "report_sha256": "b24bed2755f44e99ec1c7c3933ee499bbdd62ee1f1c845f047dd36043a8f42cc",
+      "harness_sha256": "278feb88ebc9bcb92ff1e2623eec6d5fe3f926e0210f8ec81089d51482844c49",
+      "fresh_report": true,
+      "checks": 293,
+      "passed_checks": 293,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "earth_notes_browser",
+      "command_passed": true,
+      "report": "evidence10\\earth-notes-browser\\report.json",
+      "report_sha256": "26a9b0bb746dfab2aaac6d13a66139aae3c645d4b24a38f67cdc971df25959db",
+      "harness_sha256": "3856984333810a9047c97ac3a1d57cc5fbc0e01e4d3cefab61382982f00a3a89",
+      "fresh_report": true,
+      "checks": 134,
+      "passed_checks": 134,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "gathering_browser",
+      "command_passed": true,
+      "report": "evidence10\\gathering-browser\\report.json",
+      "report_sha256": "7c1dc6b1036bfdc352c78d5d5a14edb4d2f84fee34170cf32b8e26469342d35d",
+      "harness_sha256": "5c6540bcbc63356d5adc84c4281ff4c4244dffed80f7c413730879fd054a3dc4",
+      "fresh_report": true,
+      "checks": 118,
+      "passed_checks": 118,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "realm_atlas_browser",
+      "command_passed": true,
+      "report": "evidence10\\realm-atlas\\report.json",
+      "report_sha256": "a20a6f06cfcdee125eed6d5ff8c699bdfaefaaac4422cac5986e2ffb9d940c69",
+      "harness_sha256": "89496974f0e920189e5ba7628710284bd1fe16c43ad4c1bdf193933206cca42b",
+      "fresh_report": true,
+      "checks": 48,
+      "passed_checks": 48,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "timber_browser",
+      "command_passed": true,
+      "report": "evidence10\\timber\\report.json",
+      "report_sha256": "3b9251041a7394a023454cde3c2479b9535754f840904fd37e2ba97f00d86ba1",
+      "harness_sha256": "33cb88144a02ec271f2ba5fe190c8db3cb55da1b8ab63e1b1a61bd1927d9906e",
+      "fresh_report": true,
+      "checks": 40,
+      "passed_checks": 40,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "traveler_browser",
+      "command_passed": true,
+      "report": "evidence10\\traveler\\REPORT.json",
+      "report_sha256": "6fecaf454fd57ff638e4076dfd794ee5e82f95c8af15d7111e6fecb7b29f69b3",
+      "harness_sha256": "5eca758a4ba14458583f8049c614accb056cd069e95a970a8652f51db0b0843f",
+      "fresh_report": true,
+      "checks": 122,
+      "passed_checks": 122,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": true,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "bridge_browser",
+      "command_passed": true,
+      "report": "evidence10\\bridge-browser\\REPORT.json",
+      "report_sha256": "489d62e83fb6fdd748779cd4a9b0ba84e5353d291e62cba12792284bd9ed3b3b",
+      "harness_sha256": "ffd2872e8dec2532c866e92dec623f25e791ff549bbfa7699e0e63501ffbfa70",
+      "fresh_report": true,
+      "checks": 181,
+      "passed_checks": 181,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": true,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "combat_cue_browser",
+      "command_passed": true,
+      "report": "evidence10\\combat-cue-browser\\REPORT.json",
+      "report_sha256": "4f19bd906e05b60c39cfa21a0b3c096a8e84a218c28adc112a18a18a3060aefb",
+      "harness_sha256": "d641197de1889a14101607aca0643d1479480739582919009acdd4b74a7d3847",
+      "fresh_report": true,
+      "checks": 62,
+      "passed_checks": 62,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "world_foundations_browser",
+      "command_passed": true,
+      "report": "evidence10\\world-foundations-browser\\REPORT.json",
+      "report_sha256": "8720afcf426522414035de64b0212c39da6ea6f09d8e0ae55637e4a978c12730",
+      "harness_sha256": "efa750e2dc8c942420907f5af37aab1ab3f5f50c4dbc035ac1af026bb4743e3e",
+      "fresh_report": true,
+      "checks": 207,
+      "passed_checks": 207,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "world_cutaway_browser",
+      "command_passed": true,
+      "report": "evidence10\\world-cutaway-browser\\REPORT.json",
+      "report_sha256": "03edb020d315343efef825b1c077bad98da7b58b3338ae27660caf94b0c72705",
+      "harness_sha256": "092c02e64d4e672ab2308dd14a04c6ec1e6fb39eaf588a093b6c337fad32c45b",
+      "fresh_report": true,
+      "checks": 14,
+      "passed_checks": 14,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": true,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {},
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "realm_trails_browser",
+      "command_passed": true,
+      "report": "evidence10\\realm-trails-browser\\REPORT.json",
+      "report_sha256": "720fcd0721d923e8df4ea56cc9a23cdd87d0e819d4d585f5baa6a6d1dde24dbc",
+      "harness_sha256": "714c8d6e72d7262eb7e86699ec2941b3ddf01e06233c4f8fa41411413fb5df86",
+      "fresh_report": true,
+      "checks": 96,
+      "passed_checks": 96,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "realm_trails_north_browser",
+      "command_passed": true,
+      "report": "evidence10\\realm-trails-north-browser\\REPORT.json",
+      "report_sha256": "f71b3e1850d22070a11f528837d149fe8c213f4ce7223e87aef8318c150aab9a",
+      "harness_sha256": "8ed74cdf16d327d3ef68dbe38eed0ea4d95d40d586fc818599835c53d43ac8ae",
+      "fresh_report": true,
+      "checks": 259,
+      "passed_checks": 259,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "realm_trails_cosmos_browser",
+      "command_passed": true,
+      "report": "evidence10\\realm-trails-cosmos-browser\\REPORT.json",
+      "report_sha256": "14db1299a77a1a44e376bd1f9ab9dcf5e3b50b3c2dcc0699347ef9c9027d9ba7",
+      "harness_sha256": "a68553ae4600f946dd2fde2fb51a34d2a9c190c52e9b8155b76206694c189c2a",
+      "fresh_report": true,
+      "checks": 38,
+      "passed_checks": 38,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "soundscape_browser",
+      "command_passed": true,
+      "report": "evidence10\\soundscape-browser\\REPORT.json",
+      "report_sha256": "2431499672fc1c86ea6ee6c130d3aad21ad3ccf9a43b6eda8f43b04211747ac8",
+      "harness_sha256": "a4655398488b42500879326a8def38d62df02460e291f897269d54dc4c085bc6",
+      "fresh_report": true,
+      "checks": 73,
+      "passed_checks": 73,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "journey_usability_browser",
+      "command_passed": true,
+      "report": "evidence10\\journey-usability-browser\\REPORT.json",
+      "report_sha256": "a23071f086359a01a3f91558c776d86d65f8234db6126a22254fb3a6cb7b11d7",
+      "harness_sha256": "d205a1096c5b8279f2fc14c6dc47a041b72e632e3274ecf5c08cbdff178724a3",
+      "fresh_report": true,
+      "checks": 90,
+      "passed_checks": 90,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": null,
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "workshop_transactions_browser",
+      "command_passed": true,
+      "report": "evidence10\\workshop-transactions-browser\\REPORT.json",
+      "report_sha256": "aaeb6af7384f11f46d2b670507aea07d06887d602c459f04fbc94e1e160f46cc",
+      "harness_sha256": "1965defe02389f310d66d3f50d6c9821bb52bce4022efcbf3ed3c65718e7adaf",
+      "fresh_report": true,
+      "checks": 117,
+      "passed_checks": 117,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": true,
+      "declared_head": "f3a4df5f8023b385ea5273aa6d90ba5ddf438121",
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "companion_presentation_browser",
+      "command_passed": true,
+      "report": "evidence10\\companion-presentation-browser\\REPORT.json",
+      "report_sha256": "46a6587e43a7ec3a6d9e8336d96e00347f5dd2b01c41df3d759ce4c6ff8c8f61",
+      "harness_sha256": "8e333f68a24a34249bca863e0739893ad54e74abd141c7750c76201ed41e96fa",
+      "fresh_report": true,
+      "checks": 119,
+      "passed_checks": 119,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": true,
+      "declared_head": "f3a4df5f8023b385ea5273aa6d90ba5ddf438121",
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "skitter_presentation_browser",
+      "command_passed": true,
+      "report": "evidence10\\skitter-presentation-browser\\REPORT.json",
+      "report_sha256": "f16e21fd6437c143fde4d2206aece561ad332d520fa2c4eb7496d96c3f168702",
+      "harness_sha256": "82b2914101c348451e807aaef9271d924b41ca16c3ee06e17a49f3e4e3b92f5f",
+      "fresh_report": true,
+      "checks": 119,
+      "passed_checks": 119,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": true,
+      "declared_head": "f3a4df5f8023b385ea5273aa6d90ba5ddf438121",
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "coastward_scenery_browser",
+      "command_passed": true,
+      "report": "evidence10\\coastward-scenery-browser\\REPORT.json",
+      "report_sha256": "a66b32162a23da63c5677084e0c9a4899f85455fc41c1dbd2ebfa825d0c330c3",
+      "harness_sha256": "1bb6e832520af740a89454845d1d3e19bf2475f038d61ae677e3822a8fc8a359",
+      "fresh_report": true,
+      "checks": 33,
+      "passed_checks": 33,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": "f3a4df5f8023b385ea5273aa6d90ba5ddf438121",
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "earth_story_transactions_browser",
+      "command_passed": true,
+      "report": "evidence10\\earth-story-transactions-browser\\REPORT.json",
+      "report_sha256": "cf5b192152dfeaf59d16416eacf101068bc855f04269e4d8b4e506b4215a7503",
+      "harness_sha256": "4187c41c82aa88f6f041cd69a7a7a695c5f36962b96ae80f588bfda102f9a8ff",
+      "fresh_report": true,
+      "checks": 88,
+      "passed_checks": 88,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": true,
+      "declared_head": "f3a4df5f8023b385ea5273aa6d90ba5ddf438121",
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "coastward_bridge_posts_browser",
+      "command_passed": true,
+      "report": "evidence10\\coastward-bridge-posts-browser\\REPORT.json",
+      "report_sha256": "7a42fa6ca7d5a217eb876b3399a3f447a1827a9d34c2be021ef4fe78a05478d3",
+      "harness_sha256": "8bf28b2f443fd24417089ea1cd6ce558f52980245b8a54ad84dda2c5103de2b6",
+      "fresh_report": true,
+      "checks": 66,
+      "passed_checks": 66,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": "f3a4df5f8023b385ea5273aa6d90ba5ddf438121",
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "practice_visibility_browser",
+      "command_passed": true,
+      "report": "evidence10\\practice-visibility-browser\\REPORT.json",
+      "report_sha256": "88714468c2bece68c89cf4d00dc99e46a73fe9c4324b4871557c206af1126a20",
+      "harness_sha256": "402ef9529e2fe1fe89335fdc6610622dfd526913a5869f3c7f74610ed9e7b4c4",
+      "fresh_report": true,
+      "checks": 101,
+      "passed_checks": 101,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": "f3a4df5f8023b385ea5273aa6d90ba5ddf438121",
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "realm_work_presentation_browser",
+      "command_passed": true,
+      "report": "evidence10\\realm-work-presentation-browser\\REPORT.json",
+      "report_sha256": "f98126b3712561749cababa779be486cb727ef6c1420f682a85cf4e528eb6ac5",
+      "harness_sha256": "f612ad029a32ab182503ad1fe4307cee6e251206bb43bb0919dc8037fdcee5c9",
+      "fresh_report": true,
+      "checks": 259,
+      "passed_checks": 259,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": null,
+      "declared_head": "f3a4df5f8023b385ea5273aa6d90ba5ddf438121",
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": "both",
+      "detail_probe": "all",
+      "required_scope_matches": true,
+      "declared_skips": {}
+    },
+    {
+      "suite": "earth_expedition_browser",
+      "command_passed": true,
+      "report": "evidence10\\earth-expedition-browser\\REPORT.json",
+      "report_sha256": "01641abefa371ea08ad274938f5408d6d5e9d1a35023cffd3242925658198acd",
+      "harness_sha256": "2106955bfaae29667ad0f494c6a8acb846295044e45d7fdf29ef93a32ab682fc",
+      "fresh_report": true,
+      "checks": 528,
+      "passed_checks": 528,
+      "failed_checks": 0,
+      "unknown_checks": 0,
+      "report_passed": 528,
+      "declared_head": "f3a4df5f8023b385ea5273aa6d90ba5ddf438121",
+      "declared_head_matches": true,
+      "report_errors": [],
+      "browser_errors": [],
+      "build_hashes": {
+        "html_sha256": "2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc"
+      },
+      "build_hashes_match": true,
+      "scope": null,
+      "detail_probe": null,
+      "required_scope_matches": true,
+      "declared_skips": {}
+    }
+  ],
+  "collection_errors": [],
+  "resource_authority": "One exclusive current Windows source/full native software-WebGL gate; no concurrent GPU capture/measurement, personal profile, server replacement, paid service, billing action, main merge or deployment.",
+  "limits": [
+    "Actual fresh HTTPS remote clone; one full Windows source and native software-browser gate.",
+    "Automated browser checks do not establish human pacing, accessibility or sustained GPU performance.",
+    "Hosted CI is separately inspected; local execution does not imply hosted success. No account/billing action taken.",
+    "Failed source, harness, appearance, GPU and optional excerpt epochs remain separately preserved."
+  ],
+  "rules": {
+    "tests": 1083,
+    "pass": 1083,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "python": {
+    "tests": 57,
+    "passed": 56,
+    "summary": "OK (skipped=1)",
+    "skipped_cases": [
+      "test_symlink_refused (test_checkout_import.ImportRules.test_symlink_refused) ... skipped 'Windows account lacks symlink privilege; real symlink refusal is exercised on Linux CI'"
+    ]
+  },
+  "portable": {
+    "manifest_sha256": "742fa4a6989d6e05323451a475aafac8f64c5bbbcc2f1b70d685e3d18f0599c2",
+    "declared_files": 800,
+    "mismatches": [],
+    "extra_files": [],
+    "missing_files": [],
+    "manifest_sha_unchanged": true,
+    "videos": [
+      {
+        "path": "captures/native-blade-take02/GAMEPLAY_PORTABLE.mp4",
+        "bytes": 45817564,
+        "sha256": "04b7c213c70e129449c403956bcb3686b51858186a020dd140ce7a64ef453403",
+        "under_100MB": true
+      },
+      {
+        "path": "captures/native-bow-take01/GAMEPLAY_PORTABLE.mp4",
+        "bytes": 33050738,
+        "sha256": "d1e70656b5a18127c94ca42735d1e08a42d575da864006a6ad698a0c412d742f",
+        "under_100MB": true
+      },
+      {
+        "path": "captures/native-veteran-take01/GAMEPLAY_PORTABLE.mp4",
+        "bytes": 36187042,
+        "sha256": "f697086c803b7d41d1b21c2e79b3d57d4be60bdf5015de3ce4bc02f229229b3e",
+        "under_100MB": true
+      },
+      {
+        "path": "mobile/MOBILE_GAMEPLAY_TAKE05.mp4",
+        "bytes": 15015603,
+        "sha256": "cf3c0ddd120f4dba526b85add46704b06ca8700ad19af7a50323ec7c1b4e2f2e",
+        "under_100MB": true
+      }
+    ]
+  },
+  "browser_count": 38,
+  "browser_checks": 4517,
+  "browser_failed_checks": 0,
+  "browser_unknown_checks": 0,
+  "earned_journeys_passed": 37,
+  "artifacts": {
+    "START_MANIFEST.json": {
+      "bytes": 303364,
+      "sha256": "201d322f2689ac3b0ef5c5f6515547403a23d63d8e0522794b31ba44dfaf50a6"
+    },
+    "RUN.json": {
+      "bytes": 485,
+      "sha256": "aed33b5d1c008ed6d6f10e4f8378e59a96c5be89def6986f252033fda4efda0a"
+    },
+    "FULL_VERIFY_CONSOLE.log": {
+      "bytes": 10400,
+      "sha256": "18ec84c00c640dc6456d1ff297b2b2b4ce031c0510ce7110d8c42905ec17e5c5"
+    },
+    "REMOTE_CLONE_LOG.txt": {
+      "bytes": 3545,
+      "sha256": "9d6fbcc06fc08a20030d973121a5a5ba1590c8e74c07141f1552a6489484d447"
+    },
+    "collect_full_gate.py": {
+      "bytes": 14426,
+      "sha256": "9ad2e565736dc0eca82de7931c8fac9de25b0ef369dc8318729a72c3ddead1ff"
+    },
+    "commands\\bridge_browser.log": {
+      "bytes": 68847,
+      "sha256": "cc9e20610aee7c3cc8c9d9eabbbf1d9080d6ec41565a95f611857784f9cbee75"
+    },
+    "commands\\build.log": {
+      "bytes": 91,
+      "sha256": "9549fa28336fbfb148d917bd1fa214eed72f90cf0395d82ef2d929e631c87bcf"
+    },
+    "commands\\camera_browser.log": {
+      "bytes": 3026,
+      "sha256": "c29737a25023bd5e0aefa2046639f24a598017a0a5750771a799e52e6a70cbae"
+    },
+    "commands\\characters-journey.log": {
+      "bytes": 3058,
+      "sha256": "e8a0a4ad6825f7187470d399b89e7b7ad6647a33641d6e73416bdd54bbb5942e"
+    },
+    "commands\\characters_browser.log": {
+      "bytes": 4357,
+      "sha256": "a067d91915df7395e4d268225d48ac904837632f801bdf7c1858d12d722603a0"
+    },
+    "commands\\classes-journey.log": {
+      "bytes": 4224,
+      "sha256": "a5234ffef5a80b7b4fd6cd55e85c195b0fba51ab7294b8a84c475906634a4d37"
+    },
+    "commands\\classes_browser.log": {
+      "bytes": 2383,
+      "sha256": "ef23c78cd5f3a8bfae077961bab37392f61f6377eb46fcc65c0f6de96e6c4003"
+    },
+    "commands\\coastward_bridge_posts_browser.log": {
+      "bytes": 4964,
+      "sha256": "84853643162787385f4ed7c3798285793bda9efb36dddf9afe37bc9fafda87a3"
+    },
+    "commands\\coastward_scenery_browser.log": {
+      "bytes": 2616,
+      "sha256": "6cc89afbbae150a86e10eab3903e4e334d560c97c57d7074ffdd79227926ec80"
+    },
+    "commands\\combat_cue_browser.log": {
+      "bytes": 2350,
+      "sha256": "e6b20f78dfd4d2f9831e322c7be794dd6af40223f85b9b7684a853214f9dc22f"
+    },
+    "commands\\companion_presentation_browser.log": {
+      "bytes": 7843,
+      "sha256": "ba18aa0b0ce6d9c8ba2daedd4be393e4435807ec1f5caa0aed6b19b898ba6b29"
+    },
+    "commands\\cosmos-journey.log": {
+      "bytes": 630,
+      "sha256": "fc328b55b4be75be580d41f0807eb0af4a59de46bdca4e022ddf78e86f4e6bdb"
+    },
+    "commands\\cosmos_browser.log": {
+      "bytes": 3927,
+      "sha256": "d1b998b402ed890f27a57e6d5fcb746a2f61fa357d557b07e15279d06c4c1747"
+    },
+    "commands\\crossing-blade.log": {
+      "bytes": 625,
+      "sha256": "0b27a5083c98c2983b9d5dd15b33456d395f182b4b299bbf46412b4f244ba956"
+    },
+    "commands\\crossing-bow.log": {
+      "bytes": 649,
+      "sha256": "f1f412fb8081e5e0c9e1c60e5ea9b8d1de892fbc3c23c2a76e5b1470f8c04d4a"
+    },
+    "commands\\crossing_browser.log": {
+      "bytes": 4046,
+      "sha256": "b7e60195cd71a79ca9b858931c055035ea08a9294c5c72a464dbd9d7a6585723"
+    },
+    "commands\\cutaway_browser.log": {
+      "bytes": 1126,
+      "sha256": "509f2c59d6dd7b02eae8306bc1e2507e3c7bd5245f50da6ab0d2708d995a512e"
+    },
+    "commands\\earth-expedition-blade.log": {
+      "bytes": 834,
+      "sha256": "3d575071239980ee8f98057acacb156ef6d765dff0822e1de2a771bdad9132c0"
+    },
+    "commands\\earth-expedition-bow.log": {
+      "bytes": 831,
+      "sha256": "14c24800a62e53794d1a18e4272956cd06873c4e10d40662f0779c311b2ff24e"
+    },
+    "commands\\earth-expedition-veteran.log": {
+      "bytes": 831,
+      "sha256": "999a33bebc78aad13cee2804f0f98723861ea53cae8900eceb391a723634b270"
+    },
+    "commands\\earth-journey.log": {
+      "bytes": 602,
+      "sha256": "f785507224a623ca9e10eed520c50a69c3442eb1754e48514712a72b0f44e531"
+    },
+    "commands\\earth-notes-blade.log": {
+      "bytes": 2028,
+      "sha256": "9f4b8b19c36d4f56454a0788462d5a905a3280f27f83a30272f40c6e1efff08a"
+    },
+    "commands\\earth-notes-bow.log": {
+      "bytes": 2030,
+      "sha256": "2e1e671736a21e5fd9a7a2c77730db32fb1d2bc2c378be55a537c6973e0e5595"
+    },
+    "commands\\earth-notes-veteran.log": {
+      "bytes": 2022,
+      "sha256": "302e2aa7ab6b462c5eb5225f8288e7679daa895e363b09396de256f4399e3a1c"
+    },
+    "commands\\earth-outing-blade.log": {
+      "bytes": 5482,
+      "sha256": "be9b2f2c5cc1dc45ed3ada36ba842c06b1e0144b009f341107d3acafb80f6a60"
+    },
+    "commands\\earth-outing-bow.log": {
+      "bytes": 6715,
+      "sha256": "e4e71e12da6150014a280b35387a3f507522cee791079ddbb89e5805a720d8c6"
+    },
+    "commands\\earth-outing-veteran.log": {
+      "bytes": 3498,
+      "sha256": "df96c0d6c00f51c2230558b918302e616c5884417f15d2e5f3e3589dc83af282"
+    },
+    "commands\\earth-story-blade.log": {
+      "bytes": 3039,
+      "sha256": "ea5eb9f2ae2d109288111a589a90869de356aba5925679c126c2f69c112b020a"
+    },
+    "commands\\earth-story-bow.log": {
+      "bytes": 3448,
+      "sha256": "9b989e30eb091bd5f8ba39d67860722a52f8a0b02a3075b420ce4e72ea5a11c3"
+    },
+    "commands\\earth-story-veteran.log": {
+      "bytes": 2628,
+      "sha256": "4a9dc0d480a8b7a10227b1c3dbfd2640f5e3b91b9261c41195e72fa4b5e60206"
+    },
+    "commands\\earth_browser.log": {
+      "bytes": 5235,
+      "sha256": "6a25250a666ae36470b65d48796757b5c4f01f9ff168d8c88fc39ca8e29be557"
+    },
+    "commands\\earth_expedition_browser.log": {
+      "bytes": 29256,
+      "sha256": "fb4dfadf44c7945a3efc4e8e6ad99763540cbf2b795eafb4679fd239d90873e1"
+    },
+    "commands\\earth_ground_material_browser.log": {
+      "bytes": 3828,
+      "sha256": "c1918dc42c89b9f663575b33c358906a1b4065d0195d72595ca431f297ec4915"
+    },
+    "commands\\earth_notes_browser.log": {
+      "bytes": 7022,
+      "sha256": "332191c4133c3eb0bd6e07a8b4dc0cb7a0048d08890b6ba69ce4868bbdb1c747"
+    },
+    "commands\\earth_story_browser.log": {
+      "bytes": 15524,
+      "sha256": "a991f0903f4d626b1d89e8210cd7fa0162847b777d54f81e4b752eff53af65f5"
+    },
+    "commands\\earth_story_transactions_browser.log": {
+      "bytes": 4920,
+      "sha256": "a18e72ce079fcc769a26bef7d42ca189585300d250684ef68cc3b01093f643ce"
+    },
+    "commands\\gathering-blade.log": {
+      "bytes": 2008,
+      "sha256": "53d911a891f4eb8eb8d14281e87ce92e5dff2b594f0a02679eae612e73f744ae"
+    },
+    "commands\\gathering-bow.log": {
+      "bytes": 2004,
+      "sha256": "f84d2871688ca024a46043a254a8299bf997b53131e2f2f2a1d35af4450209e0"
+    },
+    "commands\\gathering-veteran.log": {
+      "bytes": 1998,
+      "sha256": "9607457d3db0cae6802882665b4d4572306ff8bebfcaf951ce4d89a957e190e4"
+    },
+    "commands\\gathering_browser.log": {
+      "bytes": 5641,
+      "sha256": "d6f061cdf3c3510853b9ae997400adfb15609e052c526269633e39c3bd507d2f"
+    },
+    "commands\\journey_usability_browser.log": {
+      "bytes": 5071,
+      "sha256": "1518be50787e9b978d37d5ac6afec4921e8bfe6216993f7743bfd27f0d768478"
+    },
+    "commands\\native_origin_browser.log": {
+      "bytes": 516,
+      "sha256": "0b81853b4503586fb0edd367582284bedfc3a2256c3d12ff3f608e63435b5263"
+    },
+    "commands\\practice_visibility_browser.log": {
+      "bytes": 7325,
+      "sha256": "c57b5acae9de65c3845e597bcd590e1e2a6baf292bfd6e2247911b52612ab698"
+    },
+    "commands\\pursuit-blade.log": {
+      "bytes": 5483,
+      "sha256": "04029aab268bf30da55bb85ea9cb89e5ab63ecd7f782a59c97aa095529ce4647"
+    },
+    "commands\\pursuit-bow.log": {
+      "bytes": 6710,
+      "sha256": "7954f060cccbda3f5837029b6b177c60db43a02f6d581a5880ed7382a76135d1"
+    },
+    "commands\\pursuit-veteran.log": {
+      "bytes": 3495,
+      "sha256": "a18a081ad931bd94ca6efac6affde5aa01ff8dd47a7873e26332f42e44c2eab3"
+    },
+    "commands\\pursuit_browser.log": {
+      "bytes": 6250,
+      "sha256": "96822dee04d9c5e7da7750a450efbbcdaafda025f52a218e44b172ee626d5e12"
+    },
+    "commands\\python.log": {
+      "bytes": 6813,
+      "sha256": "a84a3ac2f0ac00574b0e4948830fd59748bacbe9b6b2212deee27243db86eb25"
+    },
+    "commands\\realm-comparator-blade.log": {
+      "bytes": 860,
+      "sha256": "d051c505ea0d4762ed40c3b46181cff2ef60ab5dfca172cbdff96e7e26bccab5"
+    },
+    "commands\\realm-comparator-bow.log": {
+      "bytes": 859,
+      "sha256": "a07a5025afb0bff37325955e4fd9fea4c0a5b197b0afaa4f95064ca4a85245d8"
+    },
+    "commands\\realm-comparator-veteran.log": {
+      "bytes": 1380,
+      "sha256": "5715fe89941606e22fb32113d3006bc68a709168caa9decc7695d9b33a9dba1e"
+    },
+    "commands\\realm-trails-blade.log": {
+      "bytes": 161,
+      "sha256": "8c99875b9853801c2052b9590857b851d349d56ab81580bfb70232c631f73fe1"
+    },
+    "commands\\realm-trails-bow.log": {
+      "bytes": 159,
+      "sha256": "53a69d88317a65523229998ee60c03de091e0a8b8d41a82e5253f340965b78d5"
+    },
+    "commands\\realm-trails-south-blade.log": {
+      "bytes": 3742,
+      "sha256": "249012be603c1a5c8b7ed939e4e4947de8851ca26635656fcd6b30b9fa5007fa"
+    },
+    "commands\\realm-trails-south-bow.log": {
+      "bytes": 3740,
+      "sha256": "b108d1649a2c57c9ca5a3b49e6db5e9e48a74f5013b692f7462d0417bf8692ca"
+    },
+    "commands\\realm_atlas_browser.log": {
+      "bytes": 2177,
+      "sha256": "aeaa2edea10aa5195268cbd2a87a0e063a6d4f799176e0f0d0dc5f3bfdab35fc"
+    },
+    "commands\\realm_givers_browser.log": {
+      "bytes": 25187,
+      "sha256": "c3c54c62b28a300b4a448cdd640d42fb7ab3023458fd16385b095ab48a81a79c"
+    },
+    "commands\\realm_trails_browser.log": {
+      "bytes": 4049,
+      "sha256": "1cfc3a14a5ec86d727062b7612602dabfcc1a32cef43eb6e5b9b7a7a96aebf35"
+    },
+    "commands\\realm_trails_cosmos_browser.log": {
+      "bytes": 1928,
+      "sha256": "50c8c5292dcebda9f622a3fb057567e81b8766cb66205ca535dbb81bd5cd9921"
+    },
+    "commands\\realm_trails_north_browser.log": {
+      "bytes": 13352,
+      "sha256": "20bd8eb3a4b685e9fac155cf3dedeba7d384c96e50fdd127954a942ae27d5eab"
+    },
+    "commands\\realm_work_presentation_browser.log": {
+      "bytes": 24674,
+      "sha256": "8f99bc057bcd0186deda9c38e3a39c9a88295c29e7a0422a1b6dc99b74fcc5f9"
+    },
+    "commands\\reflection_browser.log": {
+      "bytes": 1849,
+      "sha256": "1671c3fdfb2edc69fe5c1be34632b9c9e2f7562a5cf1354a4873ea76677ea7b5"
+    },
+    "commands\\regression09_browser.log": {
+      "bytes": 4172,
+      "sha256": "f961280bfd48606e6024aa38a62f5987eaba527c66e9db533adf04933c89a9ea"
+    },
+    "commands\\rules.log": {
+      "bytes": 235989,
+      "sha256": "27d29ae0a96fbec341fa4c317b1104ea8a80681bda9960bc903d3b81ca4490c8"
+    },
+    "commands\\skitter_presentation_browser.log": {
+      "bytes": 7834,
+      "sha256": "0f1e2dd43557cd16cf6bb04859908705d94a49e317f932e6de6846cb1820f48d"
+    },
+    "commands\\soundscape_browser.log": {
+      "bytes": 3575,
+      "sha256": "958fddee60c7990b25dbb365c0070a4871d73abd7e90c52b1843c749b09eebaa"
+    },
+    "commands\\starter-blade.log": {
+      "bytes": 507,
+      "sha256": "7bf2c1aedc79943bcdc356237696bf2a1a464841e03520203f7ee7d0f4911dae"
+    },
+    "commands\\starter-bow.log": {
+      "bytes": 503,
+      "sha256": "2496bd1b1ba568c3ff951073bede4e7625f178d4aa75780f9ab122264bf8b37f"
+    },
+    "commands\\starter-veteran.log": {
+      "bytes": 1438,
+      "sha256": "a5ce11e73e32f6a35882e153121d316e4ff0bf6682f0b18001f5e86a2f979be0"
+    },
+    "commands\\starter_browser.log": {
+      "bytes": 5086,
+      "sha256": "62851f6e17391909357099954f8ffd98512b4a1e9079529032fea46df8ebba87"
+    },
+    "commands\\syntax-adventure-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-adventure-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-adventure.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-app.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-arsenal-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-arsenal-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-arsenal.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-beacon-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-beacon.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-bridge-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-bridge-moment-view.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-characters-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-characters.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-classes-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-classes.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-coastward-settlement-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-coastward-woodland-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-combat.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-companion-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-core.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-cosmos-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-cosmos-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-cosmos.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-creative.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-crossing-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-crossing-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-crossing.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-drover-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-expedition-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-expedition-beast-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-expedition-dialogue.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-expedition-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-expedition.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-notes-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-notes-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-notes.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-shoulder-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-story-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-story.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-earth.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-elderweald-trail-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-elderweald-world.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-engine.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-experience.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-gathering-adapter.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-gathering-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-gathering-music.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-gathering-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-gathering.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-mill-gate-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-millwright-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-pursuit-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-pursuit.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-quarry-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-realm-art-data.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-realm-atlas-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-realm-craft.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-realm-givers-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-realm-trails-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-realm-trails-cosmos.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-realm-trails-north.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-realm-trails-south.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-realm-trails-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-realm-trails.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-road-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-road.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-rpg-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-sandbox-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-sandbox-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-sandbox.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-skitter-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-soundscape.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-starter-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-starter-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-starter.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-surface-assets.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-traveler-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-traveler-equipment-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-workshop-transactions.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-world-atlantis-earth.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-world-foundations-art.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-world-foundations-ui.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-world-foundations.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-world-ground-coalescing.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-world-heaven-hell.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\syntax-world.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "commands\\timber_browser.log": {
+      "bytes": 2209,
+      "sha256": "d4daadf0b4bc1a1b65c3666059fd0c3072a2bbbd5de1203c4d3b0a6b09eca177"
+    },
+    "commands\\traveler_browser.log": {
+      "bytes": 5536,
+      "sha256": "4409bf695407cf8b14c2a32f938519defea7f1ad203d0d5f994c82bbdd84b6e5"
+    },
+    "commands\\workshop_transactions_browser.log": {
+      "bytes": 7291,
+      "sha256": "354f8e82d2cced594ec4ea90f2c6022d8a0ca34cce35174b7038354d2d9a4869"
+    },
+    "commands\\world-foundations-blade.log": {
+      "bytes": 115,
+      "sha256": "fc64a7526f2397fe2fd184a12f5b7161198deee503ca08909120d5cee37e8e24"
+    },
+    "commands\\world-foundations-bow.log": {
+      "bytes": 113,
+      "sha256": "672abbfbe7a1d33774e55716e058cae4b29ce9f6c013361f41d6b31a4ad224d6"
+    },
+    "commands\\world-foundations-veteran.log": {
+      "bytes": 111,
+      "sha256": "f67ce6df32a739cda65cf92f5c480d85fc7cf4969a8894534f8f0a9487566137"
+    },
+    "commands\\world_cutaway_browser.log": {
+      "bytes": 3716,
+      "sha256": "16c8dae593b6b8442ec993b89c21246632c7f4d18f373fc7d294fa4ffdfae560"
+    },
+    "commands\\world_foundations_browser.log": {
+      "bytes": 10501,
+      "sha256": "419c58a151f6783fb81facdbcca2e6a63c461a70d5e5f34e44352652556b298e"
+    }
+  },
+  "passed": true
+}

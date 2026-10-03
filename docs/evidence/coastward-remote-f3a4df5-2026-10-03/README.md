@@ -1,0 +1,25 @@
+# Exact gameplay-head remote qualification
+
+The full Windows verification below qualifies gameplay head **f3a4df5f8023b385ea5273aa6d90ba5ddf438121**, fetched in a wholly fresh HTTPS clone. This separate evidence branch adds receipts only. Its own commit is not a new gameplay build or another claimed test run; use the gameplay branch/PR38 for development and launch.
+
+Actual command: `python tools/verify.py --browser --output <new-command-directory>` with the recorded Python3.13/Node24/Chromium environment.
+
+Result: **PASS**; 88 syntax checks, 1083 rules, 56 Python passes plus 1 existing Windows symlink skip, 37 earned journeys, **38 browser suites / 4517 assertions**, zero failed/unknown. Both regenerated2,606,833-byte HTML files retain SHA256 `2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc`; all2044 tracked files retain membership/hashes and Git stays clean. All800 manifested gameplay-evidence files retain exact raw bytes.
+
+[Full machine receipt](FULL_GATE_RECEIPT.json), [per-suite summary](SUMMARY.md), [complete console](FULL_VERIFY_CONSOLE.log), `commands/` and all38 `browser-reports/` retain actual counts, harness/build/report hashes, scope and limitations. Each record still contains its original absolute D-drive path; bytes are preserved instead of rewriting them.
+
+The38th registered suite exercises actual strict ground/material comparisons at currentf3a4df5/2d09 and runs first, unlike the earlier retained b692 controls. The giver and realm-work suites retain their required full routes/both-camera/all-detail scope. This is source and software-WebGL regression coverage, separate from packaged normal-RAF hardware footage and the ten-scene RTX cadence sample on the gameplay branch.
+
+`hosted/` records GitHub run37128097992 at this same gameplay head: jobs fail before steps because the account is locked for billing. Local green is not hosted green; no billing changes or rerun were made.
+
+`prior/` preserves the9a69 manifest omission before game tests, the10be intentional stop for play-guide correction, the634bf66 zero-pixel Rill failure, and the07f9e08 full gate that passed37 browser suites before its38th correctly caught zero completed-camp-work pixels in a low diorama view. Neither failed run is substituted for the completef3a4df5 result. The actual clearing keeps stands2/5 at supported off-route edges, retaining their dimensions/IDs/derived art. CPU controls reproduce both former obstructions. The strict terrain and full giver tests run first; all38 default suites remain mandatory.
+
+`focused-rill-sela/` retains the58-check probe at43e6d54 and723 changed diorama channels. That runtime/HTML is identical tof3a4df5; later commits change verification/records only. The final default361-check giver tour measures11702/716 changed channels for Rill in third person/diorama with exact restoration. `default-all-givers/` keeps its actual final-head full-route frames. These prove positive contribution, not whole-actor readability, every orbit or human comfort. The earlier07f9e08 tour's36 diorama channels belong to the superseded intermediate layout.
+
+`prior/drawer-transition-race/` retains63e3330's early hit-test failure during the existing240ms opening motion. `focused-drawer/` retains the24-check native desktop/390px probe of the corrected bounded actionability wait, exact hit test and normal unforced click. A permanent overlay remains a failure. This harness repair changes no runtime/HTML and is not substituted for the final full tour.
+
+The earlier independent read-only review qualified the intermediate2fa5a18 relocation, not this final clearing. Its scene/save ownership reasoning is retained in the source records; its old coordinates/distances are not relabelled. Root's final15 CPU geometry checks qualify stands2/5 at(-82,4)/(-45,1), supported1.57m floor, unchanged IDs/dimensions/attached art, old/new routes and the two detecting obstruction controls. The full current browser gate remains separate execution evidence.
+
+`MANIFEST.json` hashes all packaged files excluding itself. No media conversion, personal-profile activity, main merge or deployment occurs on this evidence branch. Human pacing, feel, readability, comfort and full-saga completion remain unqualified. The full gameplay videos and RTX sample on the gameplay branch retain their earlier fa596 source epoch before this tree relocation.
+
+Current launch qualification supersedes the historical preview paragraph in the immutable source play guide: the usual loopback8780 endpoint is unverified. The final read-only listener/HTTP probes reported no listener and timed out. An earlier automatic approval review rejected the proposed preview stop/restart with "CreateProcess blocked by policy" before execution; it was not bypassed or retried. `PLAY_FIRSTLIGHT_WINDOWS.cmd` checks the build and refuses a conflicting origin. If it refuses, close only the known old Firstlight preview manually, then launch the tested checkout on the same origin/browser/profile. No claim is made that the final build is already being served.

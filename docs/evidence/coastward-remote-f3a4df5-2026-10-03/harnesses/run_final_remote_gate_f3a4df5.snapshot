@@ -1,0 +1,46 @@
+from pathlib import Path
+import datetime, hashlib, json, os, platform, subprocess, sys
+HEAD='f3a4df5f8023b385ea5273aa6d90ba5ddf438121'
+ROOT=Path('D:/07-GAMES/Firstlight/authoring/coastward-remote-f3a4df5-20261003')
+OUT=Path('D:/07-GAMES/Firstlight/artifacts/final-remote-f3a4df5-20261003')
+ORIGIN='https://github.com/EternitiesAi/eternities-firstlight.git'
+PYTHON='C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Scripts/python.exe'
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+now=lambda:datetime.datetime.now(datetime.timezone.utc).isoformat()
+assert not ROOT.exists() and not OUT.exists(),'Fresh paths must not replace existing work'
+OUT.mkdir(parents=True)
+clone=['git','clone','--single-branch','--branch','gameplay/coastward-expedition-20261003',ORIGIN,str(ROOT)]
+with (OUT/'REMOTE_CLONE_LOG.txt').open('wb') as log:
+    result=subprocess.run(clone,stdout=log,stderr=subprocess.STDOUT)
+assert result.returncode==0,'Clone failed; inspect immutable log'
+head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+assert head==HEAD,(head,HEAD)
+status=subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True)
+assert not status,status
+package=ROOT/'docs/evidence/coastward-expedition-2026-10-03'
+mpath=package/'MANIFEST.json';manifest=json.loads(mpath.read_text(encoding='utf8'))
+for row in manifest['files']:
+    p=package/row['file'];assert p.stat().st_size==row['bytes'] and sha(p)==row['sha256'],row['file']
+tracked=[s for s in subprocess.check_output(['git','ls-files','-z'],cwd=ROOT).decode().split('\0') if s]
+html={name:{'bytes':(ROOT/name).stat().st_size,'sha256':sha(ROOT/name)} for name in ['index.html','FIRSTLIGHT_VALLEY.html']}
+assert html['index.html']==html['FIRSTLIGHT_VALLEY.html']
+assert html['index.html']['sha256']=='2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc'
+start={'started':now(),'head':head,'origin':ORIGIN,'clone_command':clone,'tracked_sha256':{name:sha(ROOT/name) for name in tracked},'html':html,'portable':{'manifest_sha256':sha(mpath),'files':manifest['file_count'],'bytes':manifest['bytes']},'environment':{'python':sys.version,'python_executable':sys.executable,'node':subprocess.check_output(['node','--version'],text=True).strip(),'git':subprocess.check_output(['git','--version'],text=True).strip(),'platform':platform.platform()},'resource_authority':'One exclusive current Windows source/full native software-WebGL gate; no concurrent GPU capture/measurement, personal profile, server replacement, paid service, billing action, main merge or deployment.'}
+(OUT/'START_MANIFEST.json').write_text(json.dumps(start,indent=2)+'\n',encoding='utf8')
+command=[PYTHON,'tools/verify.py','--browser','--output',str(OUT/'commands')]
+run={'command':command,'cwd':str(ROOT),'started_at':now(),'browser':True,'exit_code':None}
+(OUT/'RUN.json').write_text(json.dumps(run,indent=2)+'\n',encoding='utf8')
+env={**os.environ,'PYTHONUTF8':'1'}
+# Do not inherit focused-output switches from any earlier shell or worker.
+removed={}
+for name in list(env):
+    if name.startswith('FIRSTLIGHT_'):
+        removed[name]='removed; value not printed';del env[name]
+(OUT/'DEFAULT_MODE_ENVIRONMENT.json').write_text(json.dumps({'removed_overrides':removed,'method':'Browser suites use their repository defaults; full scope/all detail remain required.'},indent=2)+'\n',encoding='utf8')
+print(json.dumps({'started_at':run['started_at'],'head':head,'root':str(ROOT),'evidence':str(OUT),'command':command}),flush=True)
+with (OUT/'FULL_VERIFY_CONSOLE.log').open('wb') as log:
+    result=subprocess.run(command,cwd=ROOT,env=env,stdout=log,stderr=subprocess.STDOUT)
+run.update(exit_code=result.returncode,ended_at=now())
+(OUT/'RUN.json').write_text(json.dumps(run,indent=2)+'\n',encoding='utf8')
+print(json.dumps(run),flush=True)
+sys.exit(result.returncode)

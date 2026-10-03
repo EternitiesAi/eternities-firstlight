@@ -1,0 +1,18 @@
+{
+  "status": "failed-before-verifier",
+  "head": "9a69ee8d09c23f0dc0f1cdd5d35f24211c0625b7",
+  "checked_at_utc": "2026-10-03T11:25:27.281969+00:00",
+  "cause": "Existing .gitignore:7 MANIFEST.json excluded the new evidence byte manifest; manifest preflight raised FileNotFoundError after an otherwise completed fresh HTTPS clone.",
+  "game_tests_started": false,
+  "repair": "Add the same targeted checked-in manifest exception used by previous evidence packages; commit exact manifest bytes and repeat a wholly new remote clone. Do not remove the failed clone or bypass manifest checks.",
+  "logs": {
+    "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\final-remote-run-console.log": {
+      "bytes": 1283,
+      "sha256": "3ed708fc575a4afabe9c718092617fb8c6a25454ac3f8c21018596ae5ca1ae86"
+    },
+    "D:\\07-GAMES\\Firstlight\\artifacts\\final-remote-9a69ee8-20261003\\REMOTE_CLONE_LOG.txt": {
+      "bytes": 4434,
+      "sha256": "890ce86d29d763e4c2e9839552bd9777546305f815d61f8113cf10d1c2bc2fb6"
+    }
+  }
+}

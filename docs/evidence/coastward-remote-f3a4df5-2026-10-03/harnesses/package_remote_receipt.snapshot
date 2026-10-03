@@ -1,0 +1,96 @@
+from pathlib import Path
+import argparse,datetime,hashlib,json,shutil
+parser=argparse.ArgumentParser();parser.add_argument('--worktree',type=Path,required=True);args=parser.parse_args()
+W=args.worktree.resolve()
+R=Path('D:/07-GAMES/Firstlight/artifacts/final-remote-f3a4df5-20261003')
+C=Path('D:/07-GAMES/Firstlight/authoring/coastward-remote-f3a4df5-20261003')
+P=Path('D:/07-GAMES/Firstlight/artifacts/coastward-expedition-20261003')
+O=W/'docs/evidence/coastward-remote-f3a4df5-2026-10-03'
+assert W.is_dir() and not O.exists(),'Use the new dedicated evidence worktree'
+receipt=json.loads((R/'FULL_GATE_RECEIPT.json').read_text(encoding='utf8'))
+hosted=json.loads((R/'HOSTED_RECEIPT.json').read_text(encoding='utf8'))
+assert receipt['passed'] and receipt['head']=='f3a4df5f8023b385ea5273aa6d90ba5ddf438121'
+assert hosted['head']==receipt['head'] and hosted['executed_steps']==0
+assert receipt['browser_count']==38 and not receipt['collection_errors']
+O.mkdir(parents=True)
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+copies=[]
+def cp(src,dest):
+    src=src.resolve();dst=O/dest;dst.parent.mkdir(parents=True,exist_ok=True)
+    assert src.is_file() and not dst.exists(),str(dst)
+    shutil.copyfile(src,dst);assert sha(src)==sha(dst)
+    copies.append({'source':str(src),'file':dst.relative_to(O).as_posix(),'bytes':dst.stat().st_size,'sha256':sha(dst)})
+for name in ['FULL_GATE_RECEIPT.json','SUMMARY.md','START_MANIFEST.json','RUN.json','FULL_VERIFY_CONSOLE.log','REMOTE_CLONE_LOG.txt','DEFAULT_MODE_ENVIRONMENT.json','DELIVERY_DIFF.json','collect_full_gate.py']:
+    cp(R/name,Path(name))
+for p in sorted((R/'commands').glob('*.log')):cp(p,Path('commands')/p.name)
+for row in receipt['browser_suites']:
+    p=(C/row['report']).resolve();assert p.is_relative_to(C.resolve()),row['report']
+    assert sha(p)==row['report_sha256']
+    cp(p,Path('browser-reports')/(row['suite']+'.json'))
+for name in ['HOSTED_RUNS_CURRENT.json','HOSTED_JOBS_FINAL.json','HOSTED_ANNOTATIONS_FINAL.json','HOSTED_RECEIPT.json']:
+    cp(R/name,Path('hosted')/name)
+old=Path('D:/07-GAMES/Firstlight/artifacts/final-remote-9a69ee8-20261003')
+for name in ['FAILED_INTAKE_RECEIPT.json','REMOTE_CLONE_LOG.txt']:cp(old/name,Path('prior/missing-manifest')/name)
+cp(P/'final-remote-run-console.log','prior/missing-manifest/console.log')
+old=Path('D:/07-GAMES/Firstlight/artifacts/final-remote-10be071-20261003')
+for name in ['RUN_STOPPED.json','STOP_FINGERPRINT.json','FULL_VERIFY_CONSOLE.log']:cp(old/name,Path('prior/stopped-for-guide-correction')/name)
+old=Path('D:/07-GAMES/Firstlight/artifacts/final-remote-634bf66-20261003')
+for name in ['RUN.json','FULL_GATE_RECEIPT.json','SUMMARY.md','FULL_VERIFY_CONSOLE.log']:cp(old/name,Path('prior/foreground-rill-occlusion')/name)
+cp(old/'commands/realm_givers_browser.log','prior/foreground-rill-occlusion/giver-console.log')
+oldclone=Path('D:/07-GAMES/Firstlight/authoring/coastward-remote-634bf66-20261003/evidence10/realm-givers-browser')
+for name in ['REPORT.json','elderweald-rill-follow.png']:cp(oldclone/name,Path('prior/foreground-rill-occlusion')/name)
+focus=P/'rill-sela-clearing-02'
+focus_report=json.loads((focus/'REPORT.json').read_text(encoding='utf8'))
+assert focus_report['status']=='passed' and focus_report['scope']=='elderweald-givers-only'
+assert focus_report['source_head']=='43e6d54e87420f592b2d33a6f5066a099bb6d5b3' and all(c['passed'] for c in focus_report['checks'])
+assert focus_report['html_sha256']==receipt['html']['index.html']['sha256']
+for name in ['REPORT.json','elderweald-rill-follow.png','elderweald-rill-adventure.png','elderweald-rill-interaction.png','elderweald-sela-follow.png','elderweald-sela-adventure.png']:cp(focus/name,Path('focused-rill-sela')/name)
+default_givers=C/'evidence10/realm-givers-browser'
+default_report=json.loads((default_givers/'REPORT.json').read_text(encoding='utf8'))
+rill_pixels={r['camera']:r['changedChannels'] for r in default_report['ablations'] if r['id']=='elderweald-rill'}
+for name in ['elderweald-rill-follow.png','elderweald-rill-adventure.png','elderweald-rill-interaction.png','elderweald-sela-follow.png','elderweald-sela-adventure.png']:cp(default_givers/name,Path('default-all-givers')/name)
+old=Path('D:/07-GAMES/Firstlight/artifacts/final-remote-07f9e08-20261003')
+for name in ['RUN.json','FULL_GATE_RECEIPT.json','SUMMARY.md','FULL_VERIFY_CONSOLE.log']:cp(old/name,Path('prior/intermediate-camp-occlusion')/name)
+cp(old/'commands/earth_ground_material_browser.log','prior/intermediate-camp-occlusion/terrain-console.log')
+oldframes=Path('D:/07-GAMES/Firstlight/authoring/coastward-remote-07f9e08-20261003/evidence10/earth-ground-material-browser/frames')
+for name in ['REPORT.json','fresh-blade-camp-follow.png']:cp(oldframes/name,Path('prior/intermediate-camp-occlusion')/name)
+old=Path('D:/07-GAMES/Firstlight/artifacts/final-remote-63e3330-20261003')
+for name in ['RUN.json','FULL_GATE_RECEIPT.json','SUMMARY.md','FULL_VERIFY_CONSOLE.log']:cp(old/name,Path('prior/drawer-transition-race')/name)
+cp(old/'commands/realm_givers_browser.log','prior/drawer-transition-race/giver-console.log')
+oldgivers=Path('D:/07-GAMES/Firstlight/authoring/coastward-remote-63e3330-20261003/evidence10/realm-givers-browser')
+for name in ['REPORT.json','FAILURE.png']:cp(oldgivers/name,Path('prior/drawer-transition-race')/name)
+drawer=P/'drawer-native-stability-03'
+for name in ['REPORT.json','desktop-close-settings.png','compact-close-settings.png']:cp(drawer/name,Path('focused-drawer')/name)
+cp(P/'run_final_remote_gate_f3a4df5.py','harnesses/run_final_remote_gate_f3a4df5.snapshot')
+cp(Path(__file__),'harnesses/package_remote_receipt.snapshot')
+(O/'COPY_RECEIPT.json').write_text(json.dumps({'method':'Exact-byte copies of final source/software-browser receipts for the immutable gameplay parentf3a4df5. Only explicit report/log paths are copied; no browser profiles or personal saves. Earlier failed/stopped intakes remain distinct.','copies':copies},indent=2)+'\n',encoding='utf8')
+readme=f'''# Exact gameplay-head remote qualification
+
+The full Windows verification below qualifies gameplay head **f3a4df5f8023b385ea5273aa6d90ba5ddf438121**, fetched in a wholly fresh HTTPS clone. This separate evidence branch adds receipts only. Its own commit is not a new gameplay build or another claimed test run; use the gameplay branch/PR38 for development and launch.
+
+Actual command: `python tools/verify.py --browser --output <new-command-directory>` with the recorded Python3.13/Node24/Chromium environment.
+
+Result: **PASS**; {receipt['syntax_passed']} syntax checks, {receipt['rules']['pass']} rules, {receipt['python']['passed']} Python passes plus {len(receipt['python']['skipped_cases'])} existing Windows symlink skip, {receipt['earned_journeys_passed']} earned journeys, **{receipt['browser_count']} browser suites / {receipt['browser_checks']} assertions**, zero failed/unknown. Both regenerated2,606,833-byte HTML files retain SHA256 `2d09d40a858d03b9fe0d8389846d6346e1ceae7d3aba63859a8d8e318e94c8cc`; all2044 tracked files retain membership/hashes and Git stays clean. All800 manifested gameplay-evidence files retain exact raw bytes.
+
+[Full machine receipt](FULL_GATE_RECEIPT.json), [per-suite summary](SUMMARY.md), [complete console](FULL_VERIFY_CONSOLE.log), `commands/` and all38 `browser-reports/` retain actual counts, harness/build/report hashes, scope and limitations. Each record still contains its original absolute D-drive path; bytes are preserved instead of rewriting them.
+
+The38th registered suite exercises actual strict ground/material comparisons at currentf3a4df5/2d09 and runs first, unlike the earlier retained b692 controls. The giver and realm-work suites retain their required full routes/both-camera/all-detail scope. This is source and software-WebGL regression coverage, separate from packaged normal-RAF hardware footage and the ten-scene RTX cadence sample on the gameplay branch.
+
+`hosted/` records GitHub run{hosted['run']['databaseId']} at this same gameplay head: jobs fail before steps because the account is locked for billing. Local green is not hosted green; no billing changes or rerun were made.
+
+`prior/` preserves the9a69 manifest omission before game tests, the10be intentional stop for play-guide correction, the634bf66 zero-pixel Rill failure, and the07f9e08 full gate that passed37 browser suites before its38th correctly caught zero completed-camp-work pixels in a low diorama view. Neither failed run is substituted for the completef3a4df5 result. The actual clearing keeps stands2/5 at supported off-route edges, retaining their dimensions/IDs/derived art. CPU controls reproduce both former obstructions. The strict terrain and full giver tests run first; all38 default suites remain mandatory.
+
+`focused-rill-sela/` retains the58-check probe at43e6d54 and723 changed diorama channels. That runtime/HTML is identical tof3a4df5; later commits change verification/records only. The final default{len(default_report['checks'])}-check giver tour measures{rill_pixels['adventure']}/{rill_pixels['follow']} changed channels for Rill in third person/diorama with exact restoration. `default-all-givers/` keeps its actual final-head full-route frames. These prove positive contribution, not whole-actor readability, every orbit or human comfort. The earlier07f9e08 tour's36 diorama channels belong to the superseded intermediate layout.
+
+`prior/drawer-transition-race/` retains63e3330's early hit-test failure during the existing240ms opening motion. `focused-drawer/` retains the24-check native desktop/390px probe of the corrected bounded actionability wait, exact hit test and normal unforced click. A permanent overlay remains a failure. This harness repair changes no runtime/HTML and is not substituted for the final full tour.
+
+The earlier independent read-only review qualified the intermediate2fa5a18 relocation, not this final clearing. Its scene/save ownership reasoning is retained in the source records; its old coordinates/distances are not relabelled. Root's final15 CPU geometry checks qualify stands2/5 at(-82,4)/(-45,1), supported1.57m floor, unchanged IDs/dimensions/attached art, old/new routes and the two detecting obstruction controls. The full current browser gate remains separate execution evidence.
+
+`MANIFEST.json` hashes all packaged files excluding itself. No media conversion, personal-profile activity, main merge or deployment occurs on this evidence branch. Human pacing, feel, readability, comfort and full-saga completion remain unqualified. The full gameplay videos and RTX sample on the gameplay branch retain their earlier fa596 source epoch before this tree relocation.
+
+Current launch qualification supersedes the historical preview paragraph in the immutable source play guide: the usual loopback8780 endpoint is unverified. The final read-only listener/HTTP probes reported no listener and timed out. An earlier automatic approval review rejected the proposed preview stop/restart with "CreateProcess blocked by policy" before execution; it was not bypassed or retried. `PLAY_FIRSTLIGHT_WINDOWS.cmd` checks the build and refuses a conflicting origin. If it refuses, close only the known old Firstlight preview manually, then launch the tested checkout on the same origin/browser/profile. No claim is made that the final build is already being served.
+'''
+(O/'README.md').write_text(readme,encoding='utf8')
+files=[{'file':p.relative_to(O).as_posix(),'bytes':p.stat().st_size,'sha256':sha(p)} for p in sorted(O.rglob('*')) if p.is_file()]
+(O/'MANIFEST.json').write_text(json.dumps({'created_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'method':'Raw-byte SHA256; excludes only MANIFEST.json itself.','files':files,'file_count':len(files),'bytes':sum(v['bytes'] for v in files)},indent=2)+'\n',encoding='utf8')
+print(json.dumps({'files':len(files),'bytes':sum(v['bytes'] for v in files),'path':str(O)}))
