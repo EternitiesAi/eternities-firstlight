@@ -1,10 +1,12 @@
-/* Synchronous durable boundary for explicitly reviewed state-only workshop
- * actions. Combat, movement, healing, story effects and hostile shops keep their
- * live-runtime command paths. The caller supplies its current simulation and
- * existing character-store saver; this module owns no storage or UI state. */
+/* Synchronous durable boundary for explicitly reviewed state-only workshop and
+ * finite Road After Rain actions. Combat, movement, healing, other story effects
+ * and hostile shops keep their live-runtime command paths. The caller supplies
+ * its current simulation and existing character-store saver; this module owns
+ * no storage or UI state. */
 (function(G){'use strict';
 const C=G.RealmCore||(typeof require==='function'?require('./core.js'):null);
-const ADVENTURE=Object.freeze(['forge','arsenal-craft','socket','equip','trade','pursuit-fit','starter-claim','pursuit-claim']);
+const ADVENTURE=Object.freeze(['forge','arsenal-craft','socket','equip','trade','pursuit-fit','starter-claim','pursuit-claim',
+ 'earth-story-accept','earth-story-step','earth-story-dispatch','earth-story-arrive','earth-story-claim']);
 const FIELDS=Object.freeze(['adventure','sandbox','journal','nextEvent']);
 const clone=o=>o==null?o:JSON.parse(JSON.stringify(o)),same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
 const fail=error=>({ok:false,error:String(error)});

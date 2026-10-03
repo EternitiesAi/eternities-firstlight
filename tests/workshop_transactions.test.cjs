@@ -112,9 +112,80 @@ test('validation refusal keeps the exact live canonical state and prevents savin
  const sim=home();sim.state.sandbox.stats.crafted=100000000;const before=exact(sim);let saves=0;
  const r=run(sim,'craft',{recipe:'plank'},{save:()=>{saves++;return{ok:true};}},'over-limit','sandbox');assert.equal(r.ok,false);assert.equal(saves,0);assert.equal(exact(sim),before);
 });
-test('only the reviewed state-only economic names are accepted',()=>{
+test('only the reviewed state-only economic and finite Earth-story names are accepted',()=>{
  const sim=home(),before=exact(sim),io={save:()=>{throw Error('unsafe commands must not save');}};
- for(const type of ['attack','pulse','dodge','heal','rest','revive','starter-enter','starter-leave','range-enter','cross-trade','beacon-defend','reward','class-choose','soul-equip','start']){assert.equal(T.supports('adventure',type),false,type);assert.equal(run(sim,type,{},io).ok,false,type);assert.equal(exact(sim),before,type);}
+ for(const type of ['attack','pulse','dodge','heal','rest','revive','starter-enter','starter-leave','range-enter','cross-trade','beacon-defend','reward','class-choose','soul-equip','start','earth-story-grant','earth-story-reset','earth-note-record','earth-gathering-reward']){assert.equal(T.supports('adventure',type),false,type);assert.equal(run(sim,type,{},io).ok,false,type);assert.equal(exact(sim),before,type);}
  for(const type of ['gather','bridge','place','reclaim','crop']){assert.equal(T.supports('sandbox',type),false,type);assert.equal(run(sim,type,{},io,'unsafe-'+type,'sandbox').ok,false,type);assert.equal(exact(sim),before,type);}
  assert.equal(T.supports('unknown','craft'),false);
+});
+
+// These CPU boundary fixtures use explicitly synthetic local placements and
+// balances. The native browser proof below earns preparation through actual UI.
+const ES=global.RealmEarthStory,E=global.RealmEarth,S=global.RealmSandbox;
+function earth(){const sim=home();sim.room=E.ROOM;sim.returnPos={x:0,z:23,yaw:.2};sim.state.player={...ES.GIVER,yaw:.4};A.syncScene(sim);return sim;}
+function place(sim,p){sim.state.player={x:p.x,z:p.z,yaw:.4};}
+function localStep(sim,id){const step=ES.STEPS.find(s=>s.id===id);place(sim,step);assert.ok(run(sim,'earth-story-step',{id}).ok);}
+function delivered(){const sim=earth();assert.ok(run(sim,'earth-story-accept').ok);localStep(sim,'mill-root');localStep(sim,'mill-gate');place(sim,ES.GIVER);assert.ok(run(sim,'earth-story-dispatch',{route:'mill'}).ok);place(sim,ES.DESTINATION);assert.ok(run(sim,'earth-story-arrive').ok);return sim;}
+
+test('exactly five finite Earth-story actions join the explicit command set',()=>{
+ for(const type of ['earth-story-accept','earth-story-step','earth-story-dispatch','earth-story-arrive','earth-story-claim'])assert.ok(T.supports('adventure',type),type);
+ assert.equal(T.supports('sandbox','earth-story-step'),false);assert.equal(T.supports('adventure','earth-story-claim-again'),false);
+});
+
+test('Earth consent saves before adoption and keeps all live context and actor epochs',()=>{
+ const sim=earth(),before=exact(sim),runtime=A.runtime(sim),epoch=copy(runtime),refs={state:sim.state,a:sim.state.adventure,s:sim.state.sandbox,player:sim.state.player,path:sim.playerPath,returnPos:sim.returnPos,runs:sim.runs},elapsed=sim.elapsed;
+ let candidate;assert.ok(run(sim,'earth-story-accept',{}, {save:v=>{assert.equal(exact(sim),before);candidate=copy(v);return{ok:true};}}).ok);
+ assert.ok(sim.state.adventure.earthStory.accepted);assert.equal(candidate.player.x,0);assert.equal(candidate.player.z,23);assert.equal(candidate.adventure.xp,sim.state.adventure.xp);
+ assert.equal(sim.state,refs.state);assert.equal(sim.state.adventure,refs.a);assert.equal(sim.state.sandbox,refs.s);assert.equal(sim.state.player,refs.player);assert.equal(sim.playerPath,refs.path);assert.equal(sim.returnPos,refs.returnPos);assert.equal(sim.runs,refs.runs);assert.equal(sim.elapsed,elapsed);assert.equal(sim.room,E.ROOM);assert.equal(A.runtime(sim),runtime);assert.deepEqual(runtime,epoch);
+});
+
+test('every mill delivery transition survives quota refusal and same-request retry with one cost and payout',()=>{
+ const sim=earth(),a=sim.state.adventure,initial=copy(sim.state),runtime=A.runtime(sim),epoch=copy(runtime);
+ refuseRetry(sim,'earth-story-accept');place(sim,ES.STEPS.find(s=>s.id==='mill-root'));refuseRetry(sim,'earth-story-step',{id:'mill-root'});
+ place(sim,ES.STEPS.find(s=>s.id==='mill-gate'));const player=sim.state.player,path=sim.playerPath,returnPos=sim.returnPos;refuseRetry(sim,'earth-story-step',{id:'mill-gate'});
+ assert.equal(sim.state.sandbox.inventory.wood,initial.sandbox.inventory.wood-2);assert.equal(sim.state.player,player);assert.equal(sim.playerPath,path);assert.equal(sim.returnPos,returnPos);
+ place(sim,ES.GIVER);refuseRetry(sim,'earth-story-dispatch',{route:'mill'});place(sim,ES.DESTINATION);refuseRetry(sim,'earth-story-arrive');refuseRetry(sim,'earth-story-claim');
+ assert.equal(a.ore,initial.adventure.ore+3);assert.equal(a.coins,initial.adventure.coins+4);assert.equal(sim.state.sandbox.inventory.fiber,initial.sandbox.inventory.fiber+2);assert.equal(a.xp,initial.adventure.xp);assert.equal(a.earthStory.claimed,true);
+ for(const k of ['equipment','owned','classPath','starter','pursuit','companion','road','beacon','crossing'])assert.deepEqual(a[k],initial.adventure[k],k);
+ assert.equal(A.runtime(sim),runtime);assert.deepEqual(runtime,epoch);
+ const before=exact(sim);assert.equal(run(sim,'earth-story-claim').ok,false);assert.equal(exact(sim),before);assert.equal(run(sim,'earth-story-arrive',{}, {save:()=>{throw Error('changed terms must not save');}},a.receipts.at(-1).id).ok,false);assert.equal(exact(sim),before);
+ place(sim,ES.STEPS.find(s=>s.id==='mill-gate'));const value=exact(sim);assert.equal(run(sim,'earth-story-step',{id:'mill-gate'}).ok,false);assert.equal(exact(sim),value);
+});
+
+test('Earth task prerequisites, cost, source room, local position and pause refuse before saving',()=>{
+ const sim=earth(),io={save:()=>{throw Error('refused Earth rules must not save');}};
+ const denied=(type,p={})=>{const before=exact(sim);assert.equal(run(sim,type,p,io).ok,false);assert.equal(exact(sim),before);};
+ denied('earth-story-step',{id:'mill-root'});assert.ok(run(sim,'earth-story-accept').ok);
+ place(sim,ES.STEPS.find(s=>s.id==='mill-gate'));denied('earth-story-step',{id:'mill-gate'});localStep(sim,'mill-root');
+ place(sim,ES.STEPS.find(s=>s.id==='mill-gate'));sim.state.sandbox.inventory.wood=1;denied('earth-story-step',{id:'mill-gate'});
+ place(sim,ES.GIVER);denied('earth-story-dispatch',{route:'mill'});denied('earth-story-arrive');denied('earth-story-claim');
+ place(sim,{x:0,z:10});denied('earth-story-step',{id:'quarry-reserve'});sim.room='mine';denied('earth-story-accept');
+ sim.room=E.ROOM;place(sim,ES.GIVER);sim.paused=true;denied('earth-story-dispatch',{route:'mill'});assert.equal(sim.paused,true);
+});
+
+test('all compatible improvements remain available after the single delivery without a second payout',()=>{
+ const sim=delivered();assert.ok(run(sim,'earth-story-claim').ok);const payout={ore:sim.state.adventure.ore,coins:sim.state.adventure.coins,fiber:sim.state.sandbox.inventory.fiber,xp:sim.state.adventure.xp,wood:sim.state.sandbox.inventory.wood};
+ for(const step of ES.STEPS.filter(s=>!sim.state.adventure.earthStory.steps.includes(s.id))){place(sim,step);refuseRetry(sim,'earth-story-step',{id:step.id});}
+ assert.equal(sim.state.adventure.earthStory.steps.length,ES.STEPS.length);assert.deepEqual({ore:sim.state.adventure.ore,coins:sim.state.adventure.coins,fiber:sim.state.sandbox.inventory.fiber,xp:sim.state.adventure.xp,wood:sim.state.sandbox.inventory.wood},payout);
+ place(sim,ES.GIVER);const before=exact(sim);assert.equal(run(sim,'earth-story-dispatch',{route:'quarry'}).ok,false);assert.equal(exact(sim),before);
+});
+
+test('each Earth payment capacity refusal preserves unpaid work and exact rewards have zero XP',()=>{
+ for(const field of ['ore','coins','fiber']){
+  const sim=delivered(),a=sim.state.adventure,inv=sim.state.sandbox.inventory;const target=field==='fiber'?inv:a,limit=field==='fiber'?S.MAX:9999,reward=ES.REWARD[field];target[field]=limit-reward+1;
+  const before=exact(sim);assert.equal(run(sim,'earth-story-claim',{}, {save:()=>{throw Error('full payment must not save');}}).ok,false);assert.equal(exact(sim),before);assert.equal(a.earthStory.claimed,false);
+  target[field]--;const xp=a.xp;refuseRetry(sim,'earth-story-claim');assert.equal(field==='fiber'?sim.state.sandbox.inventory[field]:a[field],limit);assert.equal(a.xp,xp);
+ }
+});
+
+test('Earth repair rejects foreign source bytes and keeps the other writer intact',()=>{
+ const sim=earth();assert.ok(run(sim,'earth-story-accept').ok);localStep(sim,'mill-root');place(sim,ES.STEPS.find(s=>s.id==='mill-gate'));
+ const s=storage(sim),other=JSON.parse(s.map.get(C.KEY));other.adventure.coins++;const foreign=JSON.stringify(other);s.map.set(C.KEY,foreign);const before=exact(sim);
+ const r=run(sim,'earth-story-step',{id:'mill-gate'},s.io);assert.equal(r.ok,false);assert.match(r.error,/Another tab/);assert.equal(exact(sim),before);assert.equal(s.map.get(C.KEY),foreign);
+});
+
+test('managed writer refusal preserves Earth payment and permits a later owned retry',()=>{
+ const sim=delivered(),s=storage(sim);s.store.writer=true;assert.ok(s.store.command('create',{visitor:C.fresh().visitor},sim.snapshot(),0).ok);assert.ok(s.store.command('switch',{id:'character-1'},C.fresh(),s.store.revision).ok);
+ const before=exact(sim),durable=s.map.get(Chars.KEY),id='earth-writer-retry';s.store.writer=false;const r=run(sim,'earth-story-claim',{},s.io,id);assert.equal(r.ok,false);assert.match(r.error,/cannot write/);assert.equal(exact(sim),before);assert.equal(s.map.get(Chars.KEY),durable);
+ s.store.writer=true;assert.ok(run(sim,'earth-story-claim',{},s.io,id).ok);assert.equal(sim.state.adventure.earthStory.claimed,true);assert.equal(s.store.record.slots.find(c=>c.id==='character-1').world.adventure.earthStory.claimed,true);
 });
