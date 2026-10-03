@@ -29,7 +29,7 @@ def main():
     result = {"measured_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(), "html_sha256": expected, "origin": f"http://127.0.0.1:{server.server_port}/FIRSTLIGHT_VALLEY.html", "quality": args.quality, "renderer_requested": args.renderer, "frames_requested": args.frames, "viewport": {"width":1920,"height":1080}, "platform":platform.platform(), "method":"Normal RAF intervals in isolated headless Chromium, device scale 1; 1.5-second setup warmup excluded. Nearest-rank percentiles. Every sampled frame checks that the page is visible, the simulation is unpaused and the scene stays fixed. No video capture or accelerated ticks during sampling. Browser-frame intervals are not GPU render time, monitor presentation timing or human qualification.", "browser_errors": [], "external_requests": [], "success": False}
     result['harness_sha256'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     result['browser_support_sha256'] = hashlib.sha256((ROOT/'tools/browser_support.py').read_bytes()).hexdigest()
-    result['method'] += ' Actual WebGL mode and the originally observed renderer must persist on every frame; per-frame diagnostics overhead is included.'
+    result['method'] += ' Actual WebGL mode and the originally observed renderer must persist on every frame; per-frame diagnostics overhead is included. Traveler HP is checked before and after each sample, outside the timed RAF intervals; both must be positive.'
     if args.fixture:
         result["fixture"] = str(args.fixture)
         result["fixture_sha256"] = hashlib.sha256(args.fixture.read_bytes()).hexdigest()
@@ -62,6 +62,8 @@ def main():
             result["scenes"] = []
             for scene in scenes:
                 setup = page.evaluate(scene["expression"]); page.wait_for_timeout(1500); before = page.evaluate("Realm.diagnostics")
+                hp_before = page.evaluate("Realm.state.adventure.hp")
+                assert hp_before > 0, 'Sampling requires a living traveler after setup'
                 sampling = page.evaluate("""({n,renderer})=>new Promise((resolve,reject)=>{
                   const scene=Realm.diagnostics.scene,a=[];let last,raf,done=false;
                   const finish=(error)=>{if(done)return;done=true;clearTimeout(timer);cancelAnimationFrame(raf);document.removeEventListener('visibilitychange',visibility);if(error)reject(error);else resolve({intervals:a,scene,visible_unpaused_webgl_checks:a.length+1});};
@@ -72,7 +74,9 @@ def main():
                   raf=requestAnimationFrame(f);
                 })""", {'n':args.frames,'renderer':result['webgl']['renderer']})
                 intervals = sampling['intervals']; pct=lambda p: percentile(intervals,p)
-                result["scenes"].append({"name":scene["name"],"setup_result":setup,"observed_scene":sampling['scene'],"visible_unpaused_webgl_checks":sampling['visible_unpaused_webgl_checks'],"samples":len(intervals),"seconds":sum(intervals)/1000,"before":before,"diagnostics":page.evaluate("Realm.diagnostics"),"frame_time_ms":{"p50":pct(.5),"p90":pct(.90),"p95":pct(.95),"p99":pct(.99),"max":max(intervals)},"intervals_over_33_333ms":sum(x>33.333 for x in intervals),"intervals_over_50ms":sum(x>50 for x in intervals),"raw_intervals_ms":intervals})
+                hp_after = page.evaluate("Realm.state.adventure.hp")
+                assert hp_after > 0, 'The traveler died during the measured sample'
+                result["scenes"].append({"name":scene["name"],"setup_result":setup,"observed_scene":sampling['scene'],"visible_unpaused_webgl_checks":sampling['visible_unpaused_webgl_checks'],"samples":len(intervals),"seconds":sum(intervals)/1000,"hp_before":hp_before,"hp_after":hp_after,"before":before,"diagnostics":page.evaluate("Realm.diagnostics"),"frame_time_ms":{"p50":pct(.5),"p90":pct(.90),"p95":pct(.95),"p99":pct(.99),"max":max(intervals)},"intervals_over_33_333ms":sum(x>33.333 for x in intervals),"intervals_over_50ms":sum(x>50 for x in intervals),"raw_intervals_ms":intervals})
                 args.output.parent.mkdir(parents=True, exist_ok=True)
                 page.screenshot(path=str(args.output.with_name(args.output.stem + "-" + str(len(result["scenes"])) + ".png")))
                 print(json.dumps({"scene": scene["name"], "frame_time_ms": result["scenes"][-1]["frame_time_ms"]}), flush=True)
