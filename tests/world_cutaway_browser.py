@@ -28,6 +28,17 @@ with sync_playwright() as pw:
  check('Gallery aperture leaves actual reflected framebuffer identical',difference(off.reflection,on.reflection)===0,{changedChannels:difference(off.reflection,on.reflection)});
  e.galleryFocus=null;const noGallery=render();check('Ordinary water retains its opaque surface without a visited gallery',blue(noGallery.main)<blue(on.main)-100,{ordinaryBlue:blue(noGallery.main)});
  e.galleryFocus=[0,-1.8,0];e.cutaway=false;const disabled=render();check('Disabled cutaway retains the original main image',difference(off.main,disabled.main)===0,{changedChannels:difference(off.main,disabled.main)});
+ // Labelled synthetic nearby gauge tab, outside the former body-only hole.
+ // Its position is within the unchanged 2.8 m interaction range. No quest state.
+ e.clear();e.noWater=false;e.galleryFocus=[0,-1.8,0];e.cutawayFocus=[0,-1.8,0];
+ e.batch('box',[{p:[0,1.515,0],s:[9,.11,9],c:[.8,.75,.6],cutaway:true,terrain:true,cameraSolid:false},{p:[2.05,-1.8,0],s:[.25,.35,.1],c:[.01,.05,1],em:.8,cameraSolid:false}]);
+ e.cutaway=false;const nearbyOff=render();e.cutaway=true;const nearbyOn=render();
+ check('Visited gallery reveals a nearby submerged reading outside the old body-only hole',blue(nearbyOn.main)>blue(nearbyOff.main)+10,{beforeBlue:blue(nearbyOff.main),afterBlue:blue(nearbyOn.main)});
+ check('Nearby gallery reveal preserves fresh reflection bytes',difference(nearbyOff.reflection,nearbyOn.reflection)===0,{changedChannels:difference(nearbyOff.reflection,nearbyOn.reflection)});
+ e.galleryFocus=null;const nearbyOrdinary=render();check('Nearby reveal is absent outside an actual visited gallery',blue(nearbyOrdinary.main)===blue(nearbyOff.main),{ordinaryBlue:blue(nearbyOrdinary.main)});
+ e.galleryFocus=[0,-1.8,0];e.cutaway=false;check('Nearby reveal respects disabled cutaway',difference(nearbyOff.main,render().main)===0);
+ e.clear();e.cutaway=true;e.batch('box',[{p:[0,1.515,0],s:[9,.11,9],c:[.8,.75,.6],cutaway:true,terrain:true,cameraSolid:false},{p:[3.7,-1.8,0],s:[.25,.35,.1],c:[.01,.05,1],em:.8,cameraSolid:false}]);
+ check('Gallery reveal remains bounded and hides a distant submerged object',blue(render().main)===0);
  e.clear();e.noWater=false;e.galleryFocus=null;e.cutawayFocus=[0,2,0];e.setCamera({eye:[0,18,24],target:[0,2,0],half:10,aspect:4/3});
  e.cutaway=true;e.worldRoofOpen=false;const emptyShelter=render();
  e.batch('box',[{p:[0,5.5,0],s:[12,.2,10],c:[.4,.4,.4],cutaway:true,worldRoof:'synthetic-shelter'},{p:[3,2,0],s:[1,2,.5],c:[.01,.05,1],em:.8,cameraSolid:false}]);
