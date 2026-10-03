@@ -1,3 +1,19 @@
+# Living-road play and unresolved human feel, 2026-10-03
+
+No fresh human answers are supplied; Dom is away and accepts recordings/screenshots as development evidence. Stormfall and the Living Road adds an actual woodland circuit with two fixed encounters, two deliberate supply allocations, persistent repair/delivery and a once-only claim, followed by intentionally accepted patrols and a finite blade/bow binding.
+
+Command-earned blade, bow and strongest-gear journeys complete the story, two paid patrols and a real post-binding hit in an unpaid third run. Labelled native browser coverage imports synthetic earned sources into a separate character, walks through production UI/combat, restarts the whole browser at accepted/partial/ready/paid/bound checkpoints and checks exact ownership. These accelerated tests establish rules and native persistence; they do not establish pacing or enjoyment.
+
+The first normal-time RTX blade recording at9ab/b692 completes the story, one intentionally accepted patrol, optional Sela dialogue, free return, explicit edge binding and native reload in331.36s. No test surface, simulation stepping, direct game commands, grants, placement writes or personal profile are used. Actual guard, confirmed weapon releases, enemy HP loss and exact payments are recorded. This is an automated known route; normal-time does not mean human playtesting.
+
+Independent still review found a modest completion-copy error: an installed7/8 brace still toasted its pre-action instruction. Root's later success-caption correction preserves rules, claims and save shape. A possible stale-camera highlight was withdrawn: actual diagnostics and source agree with diorama after V; retained hover/focus can resemble selection. Fresh read-only aria/focus/hover assertions distinguish selection state from that appearance. Diorama actor overlap and small binding details remain readability questions.
+
+The actual strict terrain gate passes46 checks at9ab/b692. It bounds eight raw/merged main-image comparisons, verifies exact restoration and positive work/binding pixels. The shader guard reduces summed image differences by95.71–97.83% in the matched controls; residual subpixel edges and reflection clipping/internal-wall differences remain explicit. Synthetic pose controls, ordinary-time footage and desktop cadence are separate qualifications.
+
+Final native bow/veteran footage, desktop samples and complete exact-head reproduction are indexed by their actual epochs in the new production/evidence record. Do not infer current totals from earlier stages. Ask the three route/fight/reward questions, then check both views, allocation consequences and the clear return home. Screenshots, installed hardware and green tests cannot answer human fun, comfort or country-scale completeness.
+
+Historical notes follow with their original receipts and pending questions intact.
+
 # Current play evidence and pending human judgment, 2026-10-03
 
 This seven-hour pass has actual normal-time RTX recordings from labelled command-earned characters. The updated starter blade/bow loops accept Oren's terms, collect three identified bundles, defeat the real creatures, claim without auto-equipping, equip deliberately and register practice damage 22/19. The +6 observed attack change combines +4 weapon attack and +2 from earned level; it is not a pure gear-only +6. Ordinary 40-HP skitters now show visible attack cues and accepted Brace cooldown changes. Recorded four-HP losses while Brace is active complement the rules test's seven unguarded/four braced result; multi-foe footage does not isolate the damage source. Ordinary creatures remain avoidable and Old Bristle's health/damage/tell are unchanged.

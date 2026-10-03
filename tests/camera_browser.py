@@ -4,11 +4,11 @@ Software WebGL coverage is not a human comfort or GPU performance claim.
 """
 from pathlib import Path
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
-import hashlib, json, math, threading, traceback
+import hashlib, json, math, os, threading, traceback
 from playwright.sync_api import sync_playwright
 from browser_support import chromium_launch_kwargs
 
-ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'evidence10/camera-browser';OUT.mkdir(parents=True,exist_ok=True)
+ROOT=Path(__file__).resolve().parents[1];OUT=Path(os.environ.get('FIRSTLIGHT_CAMERA_OUTPUT',ROOT/'evidence10/camera-browser')).resolve();OUT.mkdir(parents=True,exist_ok=True)
 report={'method':__doc__,'html_sha256':hashlib.sha256((ROOT/'index.html').read_bytes()).hexdigest(),'checks':[],'browser_errors':[]}
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self,*a,**kw):super().__init__(*a,directory=str(ROOT),**kw)
