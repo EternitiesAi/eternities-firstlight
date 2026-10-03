@@ -363,3 +363,8 @@ buffers with positive controls, visible compact toast assertions, exact-head
 remote checks and original failure evidence. Heavy files stay onD. The final
 review is stacked on PR34; no automatic main merge/deploy, paid/billing action or
 personal-profile access. Complete countries and realm campaigns remain later.
+
+
+## Local-life extension ownership
+
+`src/local-life.js` owns only optional world `localLife1`, its fixed four commission definitions and accepted physical work/payment commands. It must save the validated whole candidate before live adoption and preserve the older five realm trails, Earth expedition and campaign. `local-life-ui.js` reads offers/routes and dispatches deliberate actions; `local-life-art.js` reads canonical progress without granting it. Job cargo never consumes normal inventory or occupies gear slots. Keep water/court work on actual full-body medium checks, and retain original Cosmos presentation until explicit acceptance. Regenerate both identical HTML outputs. Run focused boundaries, three earned local-life journeys and `local_life_browser`, then the full existing verifier; qualify native storage, normal RAF, pixel appearance and hardware separately. Task/source/migration contract: `docs/development/LOCAL_LIFE_2026-10-03.md`.

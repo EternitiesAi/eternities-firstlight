@@ -1,3 +1,13 @@
+# Play local life alongside the connected Earth road
+
+Continue from the actual newest gameplay head after fetching reviews, rather than the archive or main. The current review slice adds local repair/propagation work to the four other realm openings; Earth keeps its playable story, repeat patrol and finite binding. See [the local-life guide](playtests/LOCAL_LIFE_2026-10-03.md) and [results](development/LOCAL_LIFE_RESULTS_2026-10-03.md).
+
+Next acceptance is a human fresh blade/bow case and a returning strongest-equipment case: did you know where to go, did the places feel inhabited, could you recognize the chosen work, and did you want to return? Check both cameras, the Bellglass exit, unpaid completion/refusal and deliberately claimed payments. Correct concrete findings before expanding a subsystem. Large countries/streaming, the full saga, collecting, roster/classes and real multi-client trading remain distinct milestones. Paid power, offline-loss severity, rare-pet allocation, construction scale and larger Heaven/Hell verdicts remain founder decisions.
+
+Keep world/key9, adventure12, optional localLife1/expedition1, all old ledgers and the1–5/9999 XP contract. No hidden acceptance/backfill, personal-save inspection, main merge, billing action or public deployment. Native, appearance, normal-time and GPU receipts must keep their exact source/harness epochs; pending gates are not completed merely because an earlier epoch passed.
+
+Prior tasks follow as historical records.
+
 # Play the living road, then refine the connected game
 
 Continue from the actual delivered `gameplay/coastward-expedition-20261003` review head, fetching origin and reading outstanding reviews first. The current delivery adds one complete connected Earth story, repeat patrol and finite binding; it does not complete the whole canon. Use [the play guide](playtests/STORMFALL_LIVING_ROAD_2026-10-03.md) and current production/evidence records. Keep both cameras, the existing save origin, browser target and original Heaven01/sanctuary ownership. Do not replace this checkout with main or an older archive.
