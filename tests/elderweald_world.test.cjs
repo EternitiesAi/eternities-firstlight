@@ -32,6 +32,19 @@ function bodyClear(a,b,p){const bb=bounds(p);return interval([a[0],F+.03,a[1]],[
 function local(p,q){const m=matrix(p);return[0,4,8].map(i=>{const c=Array.from(m.slice(i,i+3));return E.dot(c,q.map((v,j)=>v-m[12+j]))/E.dot(c,c);});}
 function inside(p,q){const [x,y,z]=local(p,q);if(p.kind==='octa')return Math.abs(x)/.5+Math.abs(y)/.65+Math.abs(z)/.5<=1+1e-6;if(p.kind==='round')return x*x+y*y+z*z<=.25+1e-6;return[x,y,z].every(n=>Math.abs(n)<=.5+1e-6);}
 
+test('Rill native diorama approach clears the former foreground canopy with a detecting old-placement control',()=>{
+ const eye=[-32.889606,59.975416,29.422589],rill=[-67,2.44,-4];
+ for(const quality of ['low','balanced','high']){
+  const tree=X.parts({quality}).filter(p=>p.opt.solidId==='elderweald-trunk-5');
+  assert.ok(tree.length>5);
+  for(const p of tree){const b=bounds(p);assert.equal(interval(eye,rill,b.min,b.max),null,quality+' foreground '+p.opt.elderwealdPart);}
+  const crown=tree.find(p=>p.opt.elderwealdPart==='upper-crown');
+  const old={...crown,p:[-63,crown.p[1],-1]};
+  const t=(old.p[1]-eye[1])/(rill[1]-eye[1]),hit=eye.map((v,i)=>v+t*(rill[i]-v));
+  assert.ok(t>0&&t<1);assert.ok(inside(old,hit),'previous placement must reproduce the actual opaque crown intersection');
+ }
+});
+
 test('isolated global/CommonJS expose only the pure API and recursively frozen authority data',()=>{
  const box={module:{exports:{}},sentinel:5};vm.runInNewContext(source,box);
  assert.equal(box.module.exports,box.RealmElderwealdWorld);assert.equal(box.sentinel,5);assert.equal(Object.keys(box).length,3);

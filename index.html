@@ -1240,7 +1240,9 @@ if(typeof module!=='undefined'&&module.exports)module.exports=api;
  const patch=(id,x,z,w,d,color=0x68755c)=>({id,x,z,w,d,y:FLOOR,color});
  const solid=(id,x,z,w,d,h,color=0x685844)=>({id,x,z,w,d,h,color});
  const point=(id,name,x,z,kind,text,detail)=>({id,name,x,z,y:FLOOR,kind,text,detail});
- const trees=[[-46,-10],[-53,-24],[-60,2],[-73,4],[-88,1],[-63,-1],
+ // Keep Rill's ordinary diorama approach open; this tree belongs on the
+ // eastern edge of the camp rather than in the camera-to-giver sightline.
+ const trees=[[-46,-10],[-53,-24],[-60,2],[-73,4],[-88,1],[-55,-4],
   [-94,-13],[-62,-31],[-84,-39],[-100,-40],[-103,-10],[-120,-14],
   [-128,-32],[-112,-41],[-140,-55],[-116,-64],[-152,-58],[-160,-70],
   [-161,-88],[-132,-86],[-156,-100],[-130,-109],[-116,-94],[-98,-114],
