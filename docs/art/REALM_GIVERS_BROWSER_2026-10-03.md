@@ -129,3 +129,59 @@ hardware/GPU measurement, whole-video semantic review, human pacing assessment,
 accessibility certification or founder playtest. Root owns actual hardware
 review and final current-head gates. Later label/camera source epochs require
 their own qualified receipts and do not overwrite the 244-check result above.
+
+## Companion-tag addendum: e79b4aed
+
+Root authored the label-only repair at
+`e79b4aedaf7552b8297b292528ad66c2e3d12a6c`: `AdventureUI.labels` suppresses
+the companion's floating name/mode tag while the real player is within the
+existing 2.8m person-interaction range. This leaves Briar's actor and controls
+active. The frozen offline HTML is 2,500,105 bytes, SHA256
+`05cc5fe75d811364775cfa4fe446a46cdea98ac80257add01d4a764194fff6ca`.
+The isolated qualification checkout reports head `838eab34cbcdacfd8109fa3ec059fbf5413233cf`,
+which adds the already-delivered owned baseline test/note to that runtime base.
+The report separately records exact embedded runtime source hashes.
+
+Only the bounded probe was run on this epoch:
+
+```text
+C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Scripts/python.exe tests/realm_givers_browser.py --labels-only --output D:/07-GAMES/Firstlight/artifacts/realm-givers-2026-10-03/labels-e79b4aed-attempt02
+```
+
+`labels-e79b4aed-attempt02/REPORT.json` records **114/114 passed checks**,
+**26 PNGs**, process exit 0, and no browser/application errors. Tovan and Merren
+are reached using native Map approaches and normal RAF. For each person,
+ordinary V checks both native cameras: the tag is absent near the giver,
+restored after physically walking outside every person's range, and absent
+again after the native reapproach. The existing 33-part bonded actor remains
+submitted at its physical position. Actual E still opens the existing dialogue.
+
+Real Companion **Stay** and **Follow & assist** clicks record exactly one
+accepted `companion-mode` receipt and one adventure revision each. No other
+preserved currency, equipment, work or history field changes. Across the four
+clicks the adventure revision advances 43 to 47; Briar's name, bond and final
+Follow mode remain intact. While the player walks away, the held actor's
+measured displacement is **0m** in both cases, with player/fox separations of
+**2.4701m** at Tovan and **2.5880m** at Merren. Follow then moves the actor back
+toward the player through real simulation. Desktop Settings at Tovan and
+390px compact Settings at Merren close with ordinary, hit-testable clicks;
+free-return controls restore. Native free return, managed save and reload
+retain the exact permitted canonical result.
+
+The preserved `labels-e79b4aed-attempt01/REPORT.json` has **38 passed checks
+and one failed assertion**, plus eight PNGs. Its 4.6m giver-relative walk target
+left the already-ahead fox only 1.8915m from the player, failing the test's
+greater-than-2m separation condition. The final probe physically walks to a
+supported 5.2m giver-relative target and retains that same condition. This is a
+harness-distance correction; no runtime repair, actor-position injection or
+forced click was used. Partial observations are now retained before a failure.
+
+Directly inspected final stills include `hell-tovan-tag-near-follow.png`,
+`hell-tovan-tag-away-follow-follow.png`, `merren-tag-near-follow.png` and
+`merren-tag-away-follow-follow.png`. The near tag no longer covers the giver,
+and the tag is visibly present on the walk-away images. Small tool detail and
+native player occlusion remain the earlier limits; this repair does not claim
+to solve them. These are software stills and targeted controls, not a repeated
+nine-giver geometry/ablation gate, hardware timing result or human playtest.
+The later Root bridge/camera epoch is outside this frozen receipt. Root owns
+the final full current-head verifier and hardware review.

@@ -9,7 +9,7 @@ it does not establish human readability, pacing, GPU speed or enjoyment.
 from pathlib import Path
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from contextlib import contextmanager
-import argparse, hashlib, json, math, os, subprocess, tempfile, threading, time, traceback
+import argparse, copy, hashlib, json, math, os, subprocess, tempfile, threading, time, traceback
 from playwright.sync_api import sync_playwright
 from browser_support import chromium_launch_kwargs
 
@@ -17,7 +17,9 @@ ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--output', type=Path, default=ROOT/'evidence10/realm-givers-browser')
 parser.add_argument('--drawer-probe', action='store_true', help='Bounded native close-button overlap reproduction only.')
+parser.add_argument('--labels-only', action='store_true', help='Bounded Tovan/Merren companion-label and native control regression only.')
 args = parser.parse_args()
+assert not (args.drawer_probe and args.labels_only), 'Choose one bounded probe.'
 OUT = args.output.resolve()
 if os.name == 'nt':
     assert OUT.drive.upper() == 'D:', 'Heavy Windows evidence must remain on D.'
@@ -27,7 +29,9 @@ sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 fixture = json.loads(SOURCE.read_text(encoding='utf-8'))
 report = {'method': __doc__, 'status': 'running', 'checks': [], 'events': [],
           'browser_errors': [], 'errors': [], 'screenshots': [], 'givers': [],
-          'ablations': [], 'html_sha256': sha(ROOT/'index.html'),
+          'ablations': [], 'companion_labels': [],
+          'scope': 'companion-labels-only' if args.labels_only else 'drawer-only' if args.drawer_probe else 'all-givers-and-companion-labels',
+          'html_sha256': sha(ROOT/'index.html'),
           'earned_source': {'path': str(SOURCE), 'sha256': sha(SOURCE)},
           'source_head': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
           'accelerated_ticks': False, 'capture_mode': False, 'state_replacements': 0,
@@ -122,7 +126,7 @@ ABLATE = r"""id=>{
 
 server = None
 try:
-    embedded = ['realm-givers-art.js', 'world-foundations-art.js', 'world-foundations-ui.js',
+    embedded = ['realm-givers-art.js', 'world-foundations-art.js', 'world-foundations-ui.js', 'adventure-ui.js',
                 'world-foundations.js', 'world-heaven-hell.js', 'world-atlantis-earth.js', 'app.js']
     html = (ROOT/'index.html').read_text(encoding='utf-8')
     check('exact integrated sources are embedded in the offline build', all((ROOT/'src'/n).read_text(encoding='utf-8').strip() in html for n in embedded))
@@ -185,6 +189,65 @@ try:
             check(label+' restored home control is normally hit-testable',hit)
             if diving:check(label+' closing Settings restores actual depth information',page.locator('#world-depth').is_visible())
             if compact:page.set_viewport_size({'width':1280,'height':800})
+        def companion_labels(point):
+            """Real commands/walking only; record exact legitimate mode receipts."""
+            id=point['id'];record={'id':id,'observations':[],'commands':[]};report['companion_labels'].append(record)
+            def observe(stage):
+                data=ev('''()=>{const d=Realm.diagnostics,s=Realm.state,c=d.adventure.companion,rig=Realm.test.companion(),def=RealmWorldFoundations.definition(d.scene),name=s.adventure.companion.name;
+                 const e=[...document.querySelectorAll('#adventure-labels .adventure-label')].find(e=>e.textContent.startsWith(name+' ·'));
+                 const expected=rig?Realm.project(c.x,rig.placement.base+1.45,c.z):null;
+                 return{player:d.adventure.player,runtime:c,canonical:s.adventure.companion,camera:d.camera.preset,labelsEnabled:s.settings.labels,
+                  nearPeople:def.points.filter(p=>p.kind==='person'&&Math.hypot(p.x-d.adventure.player.x,p.z-d.adventure.player.z)<=2.8).map(p=>p.id),
+                  rig:rig?{placement:rig.placement,instances:rig.parts.length}:null,expected,
+                  label:e?{text:e.textContent,x:parseFloat(e.style.left),y:parseFloat(e.style.top),visible:getComputedStyle(e).visibility!=='hidden'&&getComputedStyle(e).display!=='none'}:null};}''')
+                data['stage']=stage;record['observations'].append(data);return data
+            def cameras(stage, hidden):
+                close()
+                for camera in ['adventure','follow']:
+                    if (diag()['camera']['preset']=='adventure')!=(camera=='adventure'):page.keyboard.press('v')
+                    page.wait_for_timeout(400)
+                    data=observe(stage+'-'+camera)
+                    check(id+' '+stage+' '+camera+' keeps the actual bonded actor grounded and present',data['labelsEnabled'] and data['rig'] and data['rig']['instances']==33 and data['rig']['placement']['bonded'] and data['runtime']['room']==diag()['scene'] and math.hypot(data['rig']['placement']['x']-data['runtime']['x'],data['rig']['placement']['z']-data['runtime']['z'])<.02)
+                    if hidden:
+                        check(id+' '+stage+' '+camera+' suppresses only the companion tag at actual person range',id in data['nearPeople'] and data['label'] is None,data)
+                    else:
+                        check(id+' '+stage+' '+camera+' restores the visible tag outside every person range',not data['nearPeople'] and data['label'] and data['label']['visible'] and data['expected'] and data['expected']['visible'] and abs(data['label']['x']-data['expected']['x'])<1 and abs(data['label']['y']-data['expected']['y'])<1,data)
+                    screenshot(id+'-tag-'+stage+'-'+camera)
+            def mode(which):
+                close();page.keyboard.press('c');page.locator('#rpg-tabs [data-rpg="open"][data-id="companion"]').click()
+                button=page.locator('#rpg-content [data-rpg="companion"][data-id="'+which+'"]')
+                check(id+' actual '+which+' control remains enabled in the Companion workspace',button.is_visible() and button.is_enabled() and diag()['adventure']['paused'])
+                before=state();button.click();after=state();prior=before['adventure']['receipts'];receipts=after['adventure']['receipts'];added=receipts[-1]
+                check(id+' '+which+' records exactly one accepted command with real terms',added['id'] not in [r['id'] for r in prior] and added['ok'] and json.loads(added['fp'])==['companion-mode',{'mode':which}] and receipts==(prior+[added])[-100:],added)
+                expected=copy.deepcopy(preserved(before));expected['adventure']['companion']['mode']=which;expected['adventure']['revision']+=1;expected['adventure']['receipts']=receipts
+                check(id+' '+which+' preserves currency, gear, bond and history except its explicit mode and receipt',preserved(after)==expected)
+                check(id+' '+which+' retains working selected-mode feedback',page.locator('#rpg-content [data-rpg="companion"][data-id="'+which+'"]').is_disabled())
+                record['commands'].append({'mode':which,'receipt':added,'revision_before':before['adventure']['revision'],'revision_after':after['adventure']['revision']})
+                screenshot(id+'-companion-'+which);close()
+                return preserved(after)
+            check(id+' label regression starts with the existing earned follow bond',state()['adventure']['companion']=={'bonded':True,'name':'Briar','mode':'follow'})
+            cameras('near',True)
+            drawer_regression(id+'-tag-close',compact=id=='merren')
+            after_stay=mode('stay');still=diag()['adventure']['companion']
+            cameras('near-stay',True)
+            p=diag()['adventure']['player']
+            goal=ev('''([point,p])=>{const d=RealmWorldFoundations.definition(Realm.diagnostics.scene),angle=Math.atan2(p.x-point.x,p.z-point.z);
+             for(const turn of [0,.35,-.35,.7,-.7,Math.PI/2,-Math.PI/2,Math.PI]){const q={x:point.x+Math.sin(angle+turn)*5.2,z:point.z+Math.cos(angle+turn)*5.2};
+              if(RealmWorldFoundations.segment(d.room,p,q)&&d.points.every(t=>t.kind!=='person'||Math.hypot(q.x-t.x,q.z-t.z)>3.5))return q;}return null;}''',[point,p])
+            check(id+' has a supported clear walk beyond the real suppression boundary',goal is not None,goal)
+            walk(goal['x'],goal['z'],'Walk away from '+id+' while Briar stays');page.wait_for_timeout(350)
+            c=diag()['adventure']['companion']
+            moved=observe('away-stay')
+            check(id+' Stay holds the physical actor while the player actually walks away',state()['adventure']['companion']['mode']=='stay' and math.hypot(c['x']-still['x'],c['z']-still['z'])<.001 and math.hypot(c['x']-moved['player']['x'],c['z']-moved['player']['z'])>2,{'held_before':still,'actual_after':c,'player_before':p,'player_after':moved['player']})
+            check(id+' real walking and label suppression add no other canonical work',preserved(state())==after_stay)
+            after_follow=mode('follow')
+            page.wait_for_function('()=>{const d=Realm.diagnostics,c=d.adventure.companion,p=d.adventure.player;return Math.hypot(c.x-p.x,c.z-p.z)<1.5}',timeout=15000)
+            check(id+' Follow physically brings Briar back without granting or recalling a new actor',math.hypot(diag()['adventure']['companion']['x']-still['x'],diag()['adventure']['companion']['z']-still['z'])>.5 and diag()['adventure']['companion']['status'] in ['Following','Beside you'])
+            cameras('away-follow',False)
+            close();page.keyboard.press('m');page.locator('#rpg-content [data-rpg="world-walk"][data-id="'+id+'"]').click();wait_path('Native reapproach to '+id)
+            cameras('reapproach',True)
+            check(id+' completed near/far control round trip preserves the exact permitted state',preserved(state())==after_follow)
+            return after_follow
         response=page.goto(f'http://127.0.0.1:{server.server_port}/index.html',wait_until='load')
         page.wait_for_function('()=>!!window.Realm')
         check('browser response matches frozen offline HTML',hashlib.sha256(response.body()).hexdigest()==report['html_sha256'])
@@ -213,7 +276,7 @@ try:
         page.locator('#settings').click();page.locator('#quality').select_option('low');page.locator('#close-panel').click()
         close()
         all_ids=[]
-        for realm in ['heaven','hell','atlantis','earthlands']:
+        for realm in (['hell','earthlands'] if args.labels_only else ['heaven','hell','atlantis','earthlands']):
             enter(realm)
             if args.drawer_probe:
                 page.locator('#settings').click();page.locator('#setting-reducedMotion').check()
@@ -227,6 +290,7 @@ try:
                 drawer_regression('compact-close',compact=True)
             d=ev('(id)=>RealmWorldFoundations.definition(id)',realm)
             targets=[p for p in d['points'] if p['kind']=='person' and ev('(id)=>Object.hasOwn(RealmGiversArt.profiles,id)',p['id'])]
+            if args.labels_only:targets=[p for p in targets if p['id'] in ['hell-tovan','merren']]
             page.wait_for_function('()=>!!__giverProbe.engine')
             for point in targets:
                 id=point['id'];all_ids.append(id)
@@ -238,6 +302,13 @@ try:
                 page.wait_for_function('(name)=>document.querySelector("#context-text").textContent.includes(name)',arg=point['name'])
                 check(id+' close context names the actual person',point['name'] in page.locator('#context-text').inner_text())
                 check(id+' close overhead label is intentionally suppressed',point['name'] not in page.locator('#world-labels').inner_text())
+                if id in ['hell-tovan','merren']:
+                    check(id+' approaches preserve state before any real companion command',preserved(state())==baseline)
+                    baseline=companion_labels(point)
+                if args.labels_only:
+                    page.keyboard.press('e');page.wait_for_selector('#rpg-content .world-dialogue')
+                    check(id+' tag repair retains the normal physical E dialogue',point['name'] in page.locator('#rpg-content').inner_text() and point['text'] in page.locator('#rpg-content .world-dialogue').inner_text())
+                    screenshot(id+'-tag-interaction');close();continue
                 for camera in ['adventure','follow']:
                     close()
                     if (diag()['camera']['preset']=='adventure')!=(camera=='adventure'):page.keyboard.press('v')
@@ -261,12 +332,13 @@ try:
                 close()
             # Settings act through the real drawer; caller reduced-motion must
             # reach every actual point and remove time-dependent idle geometry.
-            page.locator('#settings').click();page.locator('#setting-reducedMotion').check();page.locator('#close-panel').click()
-            page.wait_for_timeout(250)
-            quiet_a=ev('Object.fromEntries(Object.entries(__giverProbe.last).filter(([id,r])=>r.options.realm===Realm.diagnostics.world.id))')
-            page.wait_for_timeout(500);quiet_b=ev('Object.fromEntries(Object.entries(__giverProbe.last).filter(([id,r])=>r.options.realm===Realm.diagnostics.world.id))')
-            check(realm+' UI reduced motion freezes all local giver geometry',all(r['options']['reducedMotion'] and [p['m'] for p in r['parts']]==[p['m'] for p in quiet_b[id]['parts']] for id,r in quiet_a.items()) and len(quiet_a)==len(targets))
-            page.locator('#settings').click();page.locator('#setting-reducedMotion').uncheck();page.locator('#close-panel').click()
+            if not args.labels_only:
+                page.locator('#settings').click();page.locator('#setting-reducedMotion').check();page.locator('#close-panel').click()
+                page.wait_for_timeout(250)
+                quiet_a=ev('Object.fromEntries(Object.entries(__giverProbe.last).filter(([id,r])=>r.options.realm===Realm.diagnostics.world.id))')
+                page.wait_for_timeout(500);quiet_b=ev('Object.fromEntries(Object.entries(__giverProbe.last).filter(([id,r])=>r.options.realm===Realm.diagnostics.world.id))')
+                check(realm+' UI reduced motion freezes all local giver geometry',all(r['options']['reducedMotion'] and [p['m'] for p in r['parts']]==[p['m'] for p in quiet_b[id]['parts']] for id,r in quiet_a.items()) and len(quiet_a)==len(targets))
+                page.locator('#settings').click();page.locator('#setting-reducedMotion').uncheck();page.locator('#close-panel').click()
             check(realm+' visiting and inspecting preserve complete earned work/history',preserved(state())==baseline)
             if realm=='heaven':
                 page.keyboard.press('e');saved=state();active=diag()['characters']['active'];check('managed native save commits through the app writer',ev('Realm.test.save()').get('ok'))
@@ -283,7 +355,9 @@ try:
                     drawer_regression('gallery-close',diving=True)
                 page.locator('#world-home').click();page.wait_for_function('()=>Realm.diagnostics.scene==="valley"')
                 check(realm+' native free return preserves canonical earned state',preserved(state())==baseline)
-        if not args.drawer_probe:
+        if args.labels_only:
+            check('bounded label probe covers exactly Tovan and Merren',all_ids==['hell-tovan','merren'] and len(report['companion_labels'])==2)
+        elif not args.drawer_probe:
             check('all and only the nine adopted giver profiles were qualified',sorted(all_ids)==sorted(ev('Object.keys(RealmGiversArt.profiles)')) and len(all_ids)==9)
             calls=ev('__giverProbe.calls');page.wait_for_timeout(250)
             check('old home NPC route invokes no adopted giver drawing',ev('__giverProbe.calls')==calls)
