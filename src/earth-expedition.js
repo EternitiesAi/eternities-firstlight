@@ -7,7 +7,7 @@ const point=(id,name,kind,x,z,requires,text)=>({id,name,kind,x,z,y:1.57,medium:'
 const giver={id:'elderweald-rill',name:'Rill · forestkeeper',x:-67,z:-4,y:1.57,medium:'dry'};
 const definition=freeze({
  id:'earth-stormfall-living-road-v1',realm:'earthlands',title:'Stormfall and the Living Road',giver,
- summary:'Recover a practical supply, clear two infestations, and support a living route anchor before delivering the allocation. This local work is a provisional adaptation of Earth ET11/ET12; no allegiance is asked.',
+ summary:'A storm has damaged the woodland route. Recover practical supplies, clear two infestations, and brace the living root-channel before delivering your chosen allocation. Rill asks for field work.',
  danger:'Two accepted encounters: 64 / 136 health and 9 / 11 damage, fixed for every weapon. Their 1.35-second tells and 2.3-second recovery leave room to Brace or retreat. Your free road home remains available.',
  reward:{xp:45,coins:18,ore:3},
  completionText:'The allocation is delivered and a separate brace carries the damaged connection. The old root organism remains alive. Rill recognizes your chosen practical approach; one Trailward binding is available at an outdoor home workbench.',

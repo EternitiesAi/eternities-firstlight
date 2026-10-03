@@ -76,4 +76,73 @@ test('Core contract either fails closed before integration or saves before live 
  if(A.VERSION<12){assert.equal(result.ok,false);assert.match(result.error,/does not retain/);assert.equal(calls,0);assert.deepEqual(sim.snapshot(),before);}
  else{assert.ok(result.ok,result.error);assert.equal(calls,1);assert.deepEqual(saved.earthExpedition,E.fresh());assert.deepEqual(saved.adventure.earthBinding,E.freshBinding());assert.deepEqual(sim.snapshot(),saved);assert.equal(saved.adventure.revision,before.adventure.revision+1);const unpaid=sim.snapshot();assert.equal(E.commit(sim,sim.snapshot(),{save:()=>({ok:false,error:'labelled refused save'})},'Must remain unchanged.').ok,false);assert.deepEqual(sim.snapshot(),unpaid);}
 });
+if(A.VERSION>=12){
+ const W=require('../src/world-foundations.js'),S=require('../src/sandbox.js');let serial=0;
+ // The following fixtures plant valid ready histories/positions or reduced HP
+ // only to attack validation/atomicity. They are not earned journey evidence.
+ function fixture({ready=false,phase=false,claimed=false}={}){
+  const sim=new C.Simulation();assert.ok(sim.moveTo(11,9).ok);while(sim.playerPath.length)sim.tick(.05);assert.ok(sim.adventureCommand('negative-kit-'+(++serial),'start').ok);
+  sim.returnPos={...sim.state.player};sim.room='world-earthlands';sim.state.player={x:E.definition.giver.x,z:E.definition.giver.z,yaw:0};
+  if(ready||claimed)sim.state.earthExpedition=story();if(ready)sim.state.earthExpedition.story.claimed=false;
+  if(phase){const r=sim.state.earthExpedition.story;r.accepted=true;r.branch='managed-coppice';r.steps=E.definition.steps.slice(0,3).map(s=>s.id);}
+  let saved=null;sim.earthExpeditionSave=value=>{saved=C.validate(value);return{ok:true};};A.syncScene(sim);
+  return{sim,ctx:{sim,active:'isolated-negative-fixture',revision:1},save:sim.earthExpeditionSave,get saved(){return saved;}};
+ }
+ test('real Core migrates Adventure11 only and rejects missing/current/future/crossfield records',()=>{
+  const raw=C.fresh(),legacy=copy(raw);legacy.adventure.version=11;delete legacy.adventure.earthBinding;delete legacy.earthExpedition;const migrated=C.validate(legacy);
+  assert.equal(migrated.adventure.version,12);assert.deepEqual(migrated.adventure.earthBinding,E.freshBinding());assert.deepEqual(migrated.earthExpedition,E.fresh());for(const key of Object.keys(legacy.adventure).filter(k=>k!=='version'))assert.deepEqual(migrated.adventure[key],legacy.adventure[key],key+' migration retained');
+  const absent=copy(raw);delete absent.adventure.earthBinding;assert.throws(()=>C.validate(absent));const future=copy(raw);future.adventure.version=13;assert.throws(()=>C.validate(future));const futureLedger=copy(raw);futureLedger.earthExpedition.version=2;assert.throws(()=>C.validate(futureLedger));
+  const f=fixture(),binding=f.sim.snapshot();binding.adventure.earthBinding={version:1,weapon:'trail_blade',kind:'edge'};assert.throws(()=>C.validate(binding));const noKit=copy(raw);noKit.earthExpedition.story.accepted=true;assert.throws(()=>C.validate(noKit));
+ });
+ test('real integrated anchor support and objective-to-giver production paths',()=>{
+  const f=fixture();for(const d of[E.definition,E.patrol])for(const p of[d.giver,...d.steps,...d.steps.flatMap(s=>s.choices||[])]){
+   assert.ok(W.walkable(f.sim.room,p.x,p.z),'supported clear '+p.id);assert.equal(W.height(f.sim.room,p.x,p.z),1.57);
+   const route=C.pathfind(p,d.giver,f.sim.navRoom);assert.ok(route?.length,'production route to giver '+p.id);let prior=p;for(const q of route){assert.ok(W.segment(f.sim.room,prior,q),'validated route segment '+p.id);prior=q;}
+  }
+ });
+ test('accepted physical actions enforce kit, realm, proximity, branch and DAG',()=>{
+  const f=fixture(),call=(type,p={})=>E.command(f.ctx,type,{quest:E.definition.id,...p},{save:f.save});const initial=copy(f.sim.state);
+  assert.equal(call('step',{step:'assess-load'}).ok,false);assert.deepEqual(f.sim.state,initial);assert.ok(call('accept').ok);const accepted=copy(f.sim.state);
+  assert.equal(call('step',{step:'clear-crossing'}).ok,false);assert.equal(call('step',{step:'read-water'}).ok,false);assert.equal(call('step',{step:'assess-load'}).ok,false);assert.deepEqual(f.sim.state,accepted);
+  f.sim.state.player={x:-76,z:-12,yaw:0};assert.ok(call('step',{step:'assess-load'}).ok);f.sim.state.player={x:-78,z:-2,yaw:0};assert.equal(call('step',{step:'prepare-allocation',branch:'allegiance'}).ok,false);assert.ok(call('step',{step:'prepare-allocation',branch:'managed-coppice'}).ok);
+  const prepared=copy(f.sim.state);f.sim.state.player={x:-82,z:-18,yaw:0};assert.equal(call('step',{step:'prepare-allocation',branch:'stormfall-recovery'}).duplicate,true);assert.equal(f.sim.state.earthExpedition.story.branch,'managed-coppice');assert.deepEqual({...f.sim.state,player:prepared.player},prepared);
+ });
+ test('complete payment capacity rejects every overflowing currency/material before saver',()=>{
+  for(const[key,value]of[['coins',9982],['ore',9997],['wood',996],['fiber',992]]){
+   const f=fixture({ready:true}),target=['coins','ore'].includes(key)?f.sim.state.adventure:f.sim.state.sandbox.inventory;target[key]=value;const before=copy(f.sim.state);let calls=0;
+   const result=E.command(f.ctx,'claim',{quest:E.definition.id},{save:()=>{calls++;return{ok:true};}});assert.equal(result.ok,false,key+' overflow');assert.equal(calls,0);assert.deepEqual(f.sim.state,before);
+  }
+ });
+ test('ready payment survives refused and throwing durable savers, then cap-bound XP pays zero once',()=>{
+  const f=fixture({ready:true});f.sim.state.adventure.xp=9999;const before=copy(f.sim.state);
+  for(const save of[()=>({ok:false,error:'deliberate storage refusal'}),()=>{throw Error('deliberate storage exception');}]){const result=E.command(f.ctx,'claim',{quest:E.definition.id},{save});assert.equal(result.ok,false);assert.deepEqual(f.sim.state,before);}
+  const paid=E.command(f.ctx,'claim',{quest:E.definition.id},{save:f.save});assert.ok(paid.ok,paid.error);assert.equal(paid.reward.xp,0);assert.equal(f.sim.state.adventure.xp,9999);assert.equal(f.sim.state.earthExpedition.story.claimed,true);assert.deepEqual(new C.Simulation(f.saved).state.earthExpedition,f.sim.state.earthExpedition);
+  const once=copy(f.sim.state);assert.equal(E.command(f.ctx,'claim',{quest:E.definition.id},{save:f.save}).duplicate,true);assert.deepEqual(f.sim.state,once);
+ });
+ test('defeat requires actual accepted actor identity and zero HP; refused death recovers one HP',()=>{
+  const f=fixture({phase:true}),e=A.runtime(f.sim).enemies.find(e=>e.expeditionQuest===E.definition.id),before=copy(f.sim.state);assert.ok(e);assert.equal(e.hp,64);
+  assert.equal(E.defeat(f.sim,{...e,hp:0}),false);assert.equal(E.defeat(f.sim,e),false);assert.deepEqual(f.sim.state,before);
+  e.hp=0;f.sim.earthExpeditionSave=()=>({ok:false,error:'deliberate death-checkpoint refusal'});assert.equal(E.defeat(f.sim,e),false);assert.equal(e.hp,1);assert.deepEqual(f.sim.state,before);assert.ok(A.runtime(f.sim).notices.some(s=>s.includes('refusal')));
+  e.hp=0;f.sim.earthExpeditionSave=f.save;assert.equal(E.defeat(f.sim,e),true);assert.ok(f.sim.state.earthExpedition.story.steps.includes('clear-crossing'));assert.deepEqual(f.sim.state.adventure.defeated,before.adventure.defeated);assert.deepEqual(f.sim.state.adventure.drops,before.adventure.drops);assert.equal(f.sim.state.adventure.xp,before.adventure.xp);
+ });
+ test('same-room accepted roster changes preserve actual live HP, projectiles and combat state',()=>{
+  const f=fixture(),r=A.runtime(f.sim),e=r.enemies.find(e=>e.worldRealm==='earthlands');assert.ok(e,'actual existing optional Earth actor');e.hp=37;const arrows=r.arrows,fx=r.fx,companion=r.companion,invincible=r.invincible;const tactic=Tactics();
+  function Tactics(){return require('../src/combat.js').runtime(f.sim);}
+  assert.ok(E.command(f.ctx,'accept',{quest:E.definition.id},{save:f.save}).ok);
+  for(const id of['assess-load','prepare-allocation','read-water']){const s=E.definition.steps.find(s=>s.id===id),p=s.choices?.find(c=>c.id==='managed-coppice')||s;f.sim.state.player={x:p.x,z:p.z,yaw:0};const result=E.command(f.ctx,'step',{quest:E.definition.id,step:id,...(s.choices?{branch:p.id}:{})},{save:f.save});assert.ok(result.ok,result.error);}
+  assert.ok(A.runtime(f.sim).enemies.some(v=>v.expeditionQuest===E.definition.id),'accepted first foe changes actual roster');assert.strictEqual(A.runtime(f.sim).enemies.find(v=>v.id===e.id),e);assert.equal(e.hp,37);assert.strictEqual(r.arrows,arrows);assert.strictEqual(r.fx,fx);assert.strictEqual(r.companion,companion);assert.equal(r.invincible,invincible);assert.strictEqual(Tactics(),tactic);
+ });
+ test('patrol stale accept/step/claim cannot start or pay a different run',()=>{
+  const f=fixture({claimed:true}),call=(type,run,priorClaim,extra={})=>E.command(f.ctx,type,{quest:E.patrol.id,run,priorClaim,...extra},{save:f.save});
+  assert.equal(call('patrol-accept',2,1).ok,false);assert.ok(call('patrol-accept',1,0).ok);const accepted=copy(f.sim.state);assert.equal(call('patrol-step',2,1,{step:'inspect-water'}).ok,false);assert.equal(call('patrol-claim',1,0).ok,false);assert.deepEqual(f.sim.state,accepted);
+  f.sim.state.earthExpedition.patrol={lastClaim:1,active:{run:2,steps:[]}};const next=copy(f.sim.state);assert.equal(call('patrol-accept',1,0).ok,false);assert.equal(call('patrol-claim',1,0).duplicate,true);assert.deepEqual(f.sim.state,next);
+ });
+ test('binding costs/once-only/owned station/health and equipment state are atomic',()=>{
+  const f=fixture({claimed:true});f.sim.room=null;f.sim.state.player={...f.sim.returnPos};f.sim.state.adventure.ore=3;f.sim.state.adventure.coins=8;f.sim.state.sandbox.inventory.fiber=6;f.sim.state.adventure.hp=75;
+  const before=copy(f.sim.state),stats=A.stats(f.sim.state.adventure);assert.equal(E.bindingCommand(f.ctx,'dawn_edge','edge',{save:f.save}).ok,false);assert.deepEqual(f.sim.state,before);
+  assert.equal(E.bindingCommand(f.ctx,'trail_blade','shelter',{save:()=>({ok:false,error:'binding saver refused'})}).ok,false);assert.deepEqual(f.sim.state,before);
+  const result=E.bindingCommand(f.ctx,'trail_blade','shelter',{save:f.save});assert.ok(result.ok,result.error);assert.equal(f.sim.state.adventure.hp,75);assert.equal(A.stats(f.sim.state.adventure).maxHP-stats.maxHP,10);assert.equal(A.stats(f.sim.state.adventure).defense-stats.defense,1);assert.deepEqual(f.sim.state.adventure.arsenal,before.adventure.arsenal);assert.deepEqual(f.sim.state.adventure.equipment,before.adventure.equipment);assert.equal(f.sim.state.adventure.ore,0);assert.equal(f.sim.state.adventure.coins,0);assert.equal(f.sim.state.sandbox.inventory.fiber,0);
+  const once=copy(f.sim.state);assert.equal(E.bindingCommand(f.ctx,'trail_blade','edge',{save:f.save}).ok,false);assert.deepEqual(f.sim.state,once);
+ });
+}else console.log('PENDING production command/physical checks: this baseline has Adventure11; shared integration is required. No substituted validator is used.');
 console.log(JSON.stringify({status:'passed',checks,method:'pure schema/topology/bonus and explicitly labelled adversarial fixtures; physical production journey separate'}));
