@@ -7,6 +7,7 @@
 .trail-instrument{max-width:520px;padding:15px 18px;background:#263d3c;border:1px solid #698982;border-radius:10px}.trail-instrument svg{display:block;width:220px;height:135px;margin:auto}.trail-instrument label,.trail-instrument output{display:block;margin:12px 0}.trail-instrument input{display:block;width:100%;margin-top:10px;accent-color:#aaccc0}.trail-instrument.aligned{border-color:#c8d99a}.trail-instrument output{font-variant-numeric:tabular-nums;color:#d4e6cb;font-size:.95em}
 
 /* Workspace icon defaults must not shrink route maps or real instruments. */
+.panel-open #world-home,.panel-open #world-depth,.panel-open #world-labels{display:none}
 #rpg-window .world-atlas svg{display:block;width:100%;height:auto;max-height:530px}
 #rpg-window .trail-instrument svg{display:block;width:220px;height:135px;margin:auto}
 
