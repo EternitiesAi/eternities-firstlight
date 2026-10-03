@@ -1,5 +1,6 @@
 # An inhabited browser world with explicit ownership, 2026-10-03
 
+- Reveal only the canonical Atlantis air-court ceiling through the existing preference-controlled roof mechanism. Preserve its solid and exact geometry; qualify the repaired chart contribution in default diorama as well as third person. Retain the four-pixel failed frame and strict native movement tolerance as negative evidence.
 - Branch from PR36's actual head, preserve every prior worktree, and use exactly the three founder-authorized Sol 6.1 xhigh colleagues with disjoint source or qualification ownership. Heavy media and clean verification checkouts stay on D. Recovered canon guides attributed implementation; archived prompts do not replace the user's authority.
 - Make art follow existing physical/state owners: woodland and bank geometry use canonical terrain, people use actual point/ground/yaw, Briar/skitters/traveler use transient accepted movement and attack samples, work props use saved objective IDs. No decorative actor or UI page can grant progress.
 - Apply existing main-view cutaway only to identified posts/approach lamps and practice visual parts. Keep submitted geometry, physical rules, reflected/shadow geometry and the optional preference intact. Preserve the rail-edge readability limit instead of calling every angle clear.
