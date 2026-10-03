@@ -71,6 +71,7 @@ def main():
         for key in ['baselinePNG','controlPNG','restoredPNG']:
          data=result.pop(key);(out/(label+'-'+key+'.png')).write_bytes(base64.b64decode(data.split(',',1)[1]))
         report['comparisons'].append({'label':label,**result});check(label+' exact state/camera/collision/batch restoration',result['canonicalCameraCollisionUnchanged'] and result['batchesRestored'] and result['fogRestored'] and result['restoreMain']['sumRGBDelta']==0 and result['restoreReflection']['sumRGBDelta']==0 and result['glError']==0,result['restoreMain'])
+        if control=='raw-ground' and args.quality=='low':check(label+' stable explicit-ground material stays within measured raster bound',result['main']['changedPixels']<=result['width']*result['height']*.005 and result['main']['sumRGBDelta']<=result['width']*result['height']*3*.1,result['main'])
         if control not in ['raw-ground','old-coordinate-fog']:check(label+' contributes actual visible pixels',result['removed']>0 and result['main']['changedPixels']>0,result['main'])
     check('runtime sources and identical HTML stayed fixed',sha(ROOT/'index.html')==report['html_sha256'] and sha(ROOT/'FIRSTLIGHT_VALLEY.html')==report['html_sha256'] and all(sha(ROOT/p)==h for p,h in report['sources'].items()));check('no runtime browser errors',not report['browser_errors']);report['status']='passed'
    finally:browser.close()
