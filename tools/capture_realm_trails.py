@@ -16,7 +16,7 @@ import canvas_film
 ROOT=Path(__file__).resolve().parents[1]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
- parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--variant',choices=['heaven','hell','cosmos','atlantis','earthlands','fit-veteran','fit-bow','starter-blade','starter-bow'],required=True);parser.add_argument('--source',type=Path,required=True);parser.add_argument('--output',type=Path,required=True);parser.add_argument('--height',type=int,default=720,choices=range(600,1081));parser.add_argument('--sound-video',action='store_true',help='Also record real game canvas with actual opted-in app audio');args=parser.parse_args()
+ parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--variant',choices=['heaven','hell','cosmos','atlantis','earthlands','fit-veteran','fit-bow','starter-blade','starter-bow','bridge'],required=True);parser.add_argument('--source',type=Path,required=True);parser.add_argument('--output',type=Path,required=True);parser.add_argument('--height',type=int,default=720,choices=range(600,1081));parser.add_argument('--sound-video',action='store_true',help='Also record real game canvas with actual opted-in app audio');args=parser.parse_args()
  out=args.output.resolve();source=args.source.resolve()
  if out.drive.lower()!='d:' or not args.output.is_absolute():parser.error('heavy footage must stay on D:')
  if out.exists() and any(out.iterdir()):parser.error('preserve previous takes: choose an empty output directory')
@@ -102,6 +102,22 @@ def main():
       if ev('Realm.diagnostics.adventure.tactics.target')=='river-practice':break
       page.keyboard.press('Tab')
      assert ev('Realm.diagnostics.adventure.tactics.target')=='river-practice';page.keyboard.press('1');page.wait_for_function('(damage)=>RealmAdventure.runtime(Realm.test.worldContext().sim).training?.lastDamage===damage',arg=report['equipment_after']['stats']['attack'],timeout=10000);shot('reward-'+family+'-actual-practice-impact');report['measured_practice_damage']=ev('RealmAdventure.runtime(Realm.test.worldContext().sim).training.lastDamage');page.keyboard.press('1');page.locator('#target-clear').click();walk(-2,12);page.wait_for_timeout(2800);page.keyboard.press('h');view('third',yaw=.65,distance=4);shot('reward-'+family+'-held-third');view('diorama',yaw=.65,half=5);shot('reward-'+family+'-held-diorama');page.keyboard.press('h')
+    elif args.variant=='bridge':
+     enter('earthlands');walk(0,55);report['bridge_framings']=[]
+     baseline=state()['adventure']
+     for mode,preset in [('third','adventure'),('diorama','follow')]:
+      page.locator('[data-rpg="camera"][data-id="'+preset+'"]').click();page.keyboard.press('e')
+      assert page.locator('[data-rpg="world-bridge-view"]').is_enabled();shot('explicit-bridge-'+mode+'-choice')
+      before=ev('Realm.diagnostics.camera');page.locator('[data-rpg="world-bridge-view"]').click();page.wait_for_timeout(350)
+      after=ev('Realm.diagnostics.camera');assert after['preset']==preset and after['fov']==before['fov'];assert abs(after['yaw']-1.5*3.141592653589793)<1e-9
+      if mode=='third':assert after['distance']==14.5
+      else:assert after['half']==9
+      report['bridge_framings'].append({'mode':mode,'before':before,'after':after,'actual_ui_choice':True})
+      page.keyboard.press('h');shot('supported-bridge-'+mode+'-side');walk(0,92);walk(0,19);shot('normal-crossing-'+mode+'-far-bank');page.keyboard.press('h');walk(0,55)
+     current=state()['adventure']
+     for key in ['xp','owned','equipment','companion','arsenal','starter','pursuit','classes','realmCraft']:
+      assert current.get(key)==baseline.get(key),'Bridge view changed protected '+key
+     page.locator('#world-home').click();assert ev('Realm.diagnostics.scene')=='valley';mark('actual free home return after both bridge views')
     elif args.variant in ['heaven','hell']:
      enter(args.variant);d=ev('(realm)=>RealmTrails.definitions().find(d=>d.realm===realm)',args.variant);r=state()['realmTrails']['records'][d['id']];assert r['accepted']
      if args.variant=='heaven':
