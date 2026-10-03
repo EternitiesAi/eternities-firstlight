@@ -13,7 +13,7 @@ def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--html', type=Path, default=ROOT/'index.html')
-    parser.add_argument('--focus', choices=['coastward','givers'], default='coastward')
+    parser.add_argument('--focus', choices=['coastward','givers','bridge'], default='coastward')
     parser.add_argument('--source', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
@@ -63,9 +63,9 @@ def main():
                 page.locator('[data-rpg="world-select"][data-id="'+realm+'"]').click()
                 page.locator('[data-rpg="world-preview"]').click();page.locator('[data-rpg="world-confirm"]').click();render()
                 assert ev('Realm.diagnostics.scene')=='world-'+realm
-            def shot(name,mode,yaw,half,distance=10):
+            def shot(name,mode,yaw,half,distance=10,elevation=None):
                 if (ev('Realm.diagnostics.camera.projection')=='orthographic')!=(mode=='diorama'):page.keyboard.press('v')
-                ev('(v)=>Realm.test.view(v)',{'yaw':yaw,'elevation':.65 if mode=='diorama' else .2,'half':half,'distance':distance,'zoom':half/17.5,'overview':False})
+                ev('(v)=>Realm.test.view(v)',{'yaw':yaw,'elevation':elevation if elevation is not None else .65 if mode=='diorama' else .2,'half':half,'distance':distance,'zoom':half/17.5,'overview':False})
                 render();path=out/(name+'-'+mode+'.png');page.screenshot(path=str(path))
                 d=ev('Realm.diagnostics')
                 report['frames'].append({'name':name+'-'+mode,'path':str(path),'sha256':sha(path),'player':d['adventure']['player'],'camera':d['camera'],'metrics':d['metrics'],'paused':d['adventure']['paused']})
@@ -74,6 +74,11 @@ def main():
                 for name,x,z in [('arrival',0,100),('far-bank',0,16),('woodland',-10,-9),('settlement',-6,-68)]:
                     walk(x,z)
                     for mode in ['diorama','third']:shot(name,mode,1.0 if mode=='diorama' else .65,24 if name!='woodland' else 18)
+            elif args.focus=='bridge':
+                enter('earthlands')
+                for name,x,z in [('channel',0,55),('far-bank',0,19),('arrival-bank',0,92)]:
+                    walk(x,z)
+                    for mode in ['third','diorama']:shot(name,mode,1.5*3.141592653589793,9,14.5,.14 if mode=='third' else .39)
             else:
                 report['interactions']=[]
                 for realm in ['heaven','hell','earthlands','atlantis']:
