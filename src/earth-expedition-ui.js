@@ -5,6 +5,7 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const button=(label,action,id='',extra='')=>'<button data-rpg="expedition-'+action+'" data-id="'+esc(id)+'" '+extra+'>'+esc(label)+'</button>';
 const fee=r=>r.xp+' XP · '+r.coins+' sunmarks · '+r.ore+' ore'+Object.entries(r.materials||{}).map(([id,n])=>' · '+n+' '+({wood:'timber',fiber:'fibre'}[id]||id)).join('');
 const format=n=>Number.isInteger(n)?String(n):Number(n).toFixed(2);
+function xpNote(a,reward){const n=Math.min(reward.xp,9999-a.xp);return n===reward.xp?'':n===0?'<p>Your experience is full; this payment adds 0 XP. Its sunmarks and materials stay the same.</p>':'<p>At your current experience, this payment can add '+n+' of its '+reward.xp+' XP. Its sunmarks and materials stay the same.</p>';}
 function comparison(a,id,kind){
  const equipped=A.stats(a),selected={...a,equipment:{...a.equipment,weapon:id}},before=A.stats(selected),after=A.stats({...selected,earthBinding:{version:1,weapon:id,kind}});
  const weapon=G.RealmArsenal.weapon(selected);
@@ -80,6 +81,7 @@ class ExpeditionUI{
   if(tab!=='expedition')return null;
   const d=E.definition,r=this.sim.state.earthExpedition.story,p=E.progress(this.sim),here=this.sim.room===ROOM;
   let html='<article class="earth-expedition"><header><small>ELDERWEALD · OPTIONAL EARTH EXPEDITION</small><h2>'+esc(d.title)+'</h2><p>'+esc(d.summary)+'</p></header><div class="expedition-terms"><p><strong>Route:</strong> leave Coastward’s west coppice for the clearing camp, cross the wetland footbridge, visit the root-channel and return by the glade toward the fields. Two supported junctions join the same country.</p><p><strong>Danger:</strong> '+esc(d.danger)+'</p><p><strong>Fixed story payment:</strong> '+fee(d.reward)+'. Your chosen material allocation is added to this payment.</p><p><strong>Weapon project:</strong> one Trailward binding on an owned blade or bow: edge +2 attack, or shelter +1 guard / +10 maximum health. Cost: 3 ore, 8 sunmarks and 6 fibre. Inspect before spending; equipment stays yours.</p></div>';
+  html+=xpNote(this.sim.state.adventure,d.reward);
   if(!r.accepted){
    const choices=d.steps.find(s=>s.choices)?.choices||[];
    html+='<div class="expedition-choices">'+choices.map(c=>'<section><h3>'+esc(c.name)+'</h3><p>'+esc(c.text)+'</p><strong>'+Object.entries(c.materials).map(([k,n])=>n+' '+({wood:'timber',fiber:'fibre'}[k]||k)).join(' · ')+'</strong><p class="expedition-muted">'+(c.materials.fiber<6?'Two more fibre are needed for the binding: existing gathering or one completed patrol supplies them.':'This allocation supplies the six fibre needed for the binding.')+'</p></section>').join('')+'</div>';
@@ -87,7 +89,7 @@ class ExpeditionUI{
   }else if(!r.claimed)html+=this.work(d,p.story);
   else html+='<section class="expedition-finished"><small>ONCE-ONLY STORY · PAYMENT CLAIMED</small><h3>The living road remembers</h3><p>'+esc(r.branch==='stormfall-recovery'?'Your recovered stormfall timber supports the camp’s winter work. The standing shelter trees remain.':'Your managed-coppice allocation preserves more flexible fibre for the local work. The designated growth keeps its own boundary.')+'</p><p>The root-channel’s new brace remains visible. Rill recognizes the completed allocation. The forest organism and the older Earth stories retain their own history.</p></section>';
   if(r.claimed){
-   html+='<section class="expedition-patrol"><small>INTENTIONAL REPEAT WORK · SEPARATE RUNS</small><h3>'+esc(E.patrol.title)+'</h3><p>'+esc(E.patrol.summary)+'</p><p><strong>Each completed patrol pays:</strong> '+fee(E.patrol.reward)+'. No acceptance fee. Inspect the wetland, clear the declared encounters, inspect the root support and glade, then return to Rill. Re-entry or reload keeps the same run.</p>'+(p.patrol.active?this.work(E.patrol,p.patrol):button('Walk to Rill','walk','giver')+button('Begin a new patrol','patrol-accept','','data-run="'+(p.patrol.lastClaim+1)+'" data-prior-claim="'+p.patrol.lastClaim+'"'))+'<p class="expedition-muted">'+p.patrol.lastClaim+' patrol'+(p.patrol.lastClaim===1?'':'s')+' paid. Oren’s rewards and the original realm surveys keep their separate claims.</p></section>';
+   html+='<section class="expedition-patrol"><small>INTENTIONAL REPEAT WORK · SEPARATE RUNS</small><h3>'+esc(E.patrol.title)+'</h3><p>'+esc(E.patrol.summary)+'</p><p><strong>Each completed patrol pays:</strong> '+fee(E.patrol.reward)+'. No acceptance fee. Inspect the wetland, clear the declared encounters, inspect the root support and glade, then return to Rill. Re-entry or reload keeps the same run.</p>'+(p.patrol.active?this.work(E.patrol,p.patrol):button('Walk to Rill','walk','giver')+button('Begin a new patrol','patrol-accept','','data-run="'+(p.patrol.lastClaim+1)+'" data-prior-claim="'+p.patrol.lastClaim+'"'))+xpNote(this.sim.state.adventure,E.patrol.reward)+'<p class="expedition-muted">'+p.patrol.lastClaim+' patrol'+(p.patrol.lastClaim===1?'':'s')+' paid. Oren’s rewards and the original realm surveys keep their separate claims.</p></section>';
   }
   html+='<section><h3>A useful return</h3><p>Return to your outdoor home workbench to inspect the finite binding. Keep gathering, crafting, housing, music and the main story in whichever order you choose.</p><button data-rpg="open" data-id="craft">Inspect the workbench and binding</button>'+(here?'<button data-rpg="world-return">Return to Firstlight</button><button data-rpg="open" data-id="atlas">Local map</button>':'')+'</section></article>';
   return{title:'The living road',html};
@@ -114,5 +116,5 @@ class ExpeditionUI{
   document.querySelector('#tracked-progress').textContent=progress.done+' / '+progress.total+' · J expedition · M routes · V view';
  }
 }
-G.RealmEarthExpeditionUI={ExpeditionUI,comparison,at,routePoints};if(typeof module!=='undefined')module.exports=G.RealmEarthExpeditionUI;
+G.RealmEarthExpeditionUI={ExpeditionUI,comparison,at,routePoints,xpNote};if(typeof module!=='undefined')module.exports=G.RealmEarthExpeditionUI;
 })(globalThis);

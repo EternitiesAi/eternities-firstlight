@@ -18,19 +18,20 @@ function parts(ledger){
  for(let i=0;i<2;i++)add('box',[-76.27+i*.54,FLOOR+1.12,-14.755],[.42,.48,.018],page,'load-board-record');
  if(safe.includes(story.branch)&&steps.has('prepare-allocation')){
   const x=story.branch==='stormfall-recovery'?-81.8:-78.5,z=story.branch==='stormfall-recovery'?-19:-3.5;
-  for(let i=0;i<3;i++)add('box',[x+i*.32,FLOOR+.32,z],[.08,.46,.32],0xa8b487,'prepared-allocation-band',{allocation:story.branch});
+  if(story.branch==='managed-coppice')for(let i=0;i<2;i++)add('timber-panel',[-78.18,FLOOR+.07+i*.14,z],[1.40,.14,.28],0x9a9868,'prepared-coppice-bundle',{allocation:story.branch});
+  for(let i=0;i<3;i++)add('box',[x+i*.32,FLOOR+(story.branch==='managed-coppice'?.14:.32),z],[.08,story.branch==='managed-coppice'?.28:.46,.32],0xa8b487,'prepared-allocation-band',{allocation:story.branch});
  }
  if(steps.has('brace-root-channel')){
   // The east flank owns this repair. Every piece lies beside its outer face;
   // the authoritative open passage, root and collision wall are retained.
-  const x=-143.285;
+  const x=-143.294;
   beam([x,FLOOR+.18,-78.9],[x,FLOOR+2.21,-71.1],.16,.025,0x9a7953,'installed-brace');
   for(const [y,z] of [[FLOOR+.18,-78.9],[FLOOR+2.21,-71.1]])add('box',[x+.018,y,z],[.042,.20,.30],0xc2ab74,'brace-fastening');
  }
  if(steps.has('deliver-allocation')){
   const fiber=story.branch==='managed-coppice',c=fiber?0xa5b27e:0x94714c;
-  for(let i=0;i<3;i++)add('timber-panel',[-109.8,FLOOR+.72+i*.13,-110.3],[1.25,.12,.52],c,'delivered-stock',{allocation:story.branch});
-  for(const x of [-110.1,-109.5])add('box',[x,FLOOR+.92,-110.3],[.065,.54,.59],0xd0c1a0,'delivery-binding');
+  for(let i=0;i<3;i++)add('timber-panel',[-110.7,FLOOR+.59+i*.12,-110.3],[1.04,.12,.52],c,'delivered-stock',{allocation:story.branch});
+  for(const x of [-111,-110.4])add('box',[x,FLOOR+.71,-110.3],[.065,.36,.59],0xd0c1a0,'delivery-binding');
  }
  if(story.claimed){
   add('box',[-76,FLOOR+1.11,-14.735],[.24,.26,.018],0x91b982,'claimed-board-seal');

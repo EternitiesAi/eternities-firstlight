@@ -213,7 +213,8 @@
     box(x,height(x,z)+.007,z,.12,.012,length-.2,0xaea184,{pathSeam:true,r:[0,Math.atan2(bx-ax,bz-az),0]});
    }
    count+=G.RealmCoastwardWoodlandArt.decorate(art,def,{height});
-   const woodland=EW.parts({quality:context.sim?.state.settings.quality||'balanced',height});
+   const trailArt=G.RealmElderwealdTrailArt||(typeof require==='function'?require('./elderweald-trail-art.js'):null);
+   const woodland=[...EW.parts({quality:context.sim?.state.settings.quality||'balanced',height}),...trailArt.parts(def,context.sim?.state.settings.quality||'balanced')];
    for(const p of woodland){art.add(p.kind,...p.p,...p.s,p.c,p.opt);count++;}
    // Field rows leave the authored work-loop and settlement road entirely clear.
    for(const side of [-1,1]) for(let row=0;row<4;row++) for(let n=0;n<9;n++) {

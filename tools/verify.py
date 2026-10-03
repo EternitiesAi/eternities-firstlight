@@ -93,6 +93,9 @@ def main():
     run('realm-comparator-blade', ['node', 'tests/realm_trails_cosmos_journey.cjs'])
     run('realm-comparator-bow', ['node', 'tests/realm_trails_cosmos_journey.cjs', '--bow'])
     run('realm-comparator-veteran', ['node', 'tests/realm_trails_cosmos_journey.cjs', '--veteran'])
+    run('earth-expedition-blade', ['node', 'tests/earth_expedition_journey.cjs'])
+    run('earth-expedition-bow', ['node', 'tests/earth_expedition_journey.cjs', '--bow'])
+    run('earth-expedition-veteran', ['node', 'tests/earth_expedition_journey.cjs', '--veteran'])
     if args.browser:
         for suite in ['crossing_browser', 'regression09_browser', 'cutaway_browser', 'reflection_browser', 'native_origin_browser', 'starter_browser', 'camera_browser', 'pursuit_browser', 'characters_browser', 'classes_browser', 'cosmos_browser', 'earth_browser', 'earth_story_browser', 'earth_notes_browser', 'gathering_browser', 'realm_atlas_browser', 'timber_browser', 'traveler_browser', 'bridge_browser', 'combat_cue_browser', 'world_foundations_browser', 'world_cutaway_browser', 'realm_trails_browser', 'realm_trails_north_browser', 'realm_trails_cosmos_browser', 'soundscape_browser', 'journey_usability_browser', 'workshop_transactions_browser', 'companion_presentation_browser', 'skitter_presentation_browser', 'coastward_scenery_browser', 'realm_givers_browser', 'earth_story_transactions_browser', 'coastward_bridge_posts_browser', 'practice_visibility_browser', 'realm_work_presentation_browser']:
             # This native suite visits nine givers in both views, then walks
