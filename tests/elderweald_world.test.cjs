@@ -4,15 +4,22 @@ const fs=require('node:fs'),vm=require('node:vm');
 const X=require('../src/elderweald-world.js'),South=require('../src/world-atlantis-earth.js'),E=require('../src/engine.js');
 const F=1.57,R=.31,BODY=1.7,EPS=2e-5,ext=X.extension;
 const source=fs.readFileSync(require.resolve('../src/elderweald-world.js'),'utf8');
-const original=South.realms[0],earth={...original,
+const installed=South.realms[0],collections=['patches','solids','points','routes'];
+const extensionIds=Object.fromEntries(collections.map(k=>[k,new Set(ext[k].map(p=>p.id))]));
+// Source-only and installed production runs share the same fixture. Remove only
+// this extension's IDs before composing once; raw installed data is independently
+// checked below so missing/duplicated/changed installed geometry cannot be hidden.
+const installedContainsExtension=collections.some(k=>installed[k]?.some(p=>extensionIds[k].has(p.id)));
+const original={...installed,...Object.fromEntries(collections.map(k=>[k,installed[k].filter(p=>!extensionIds[k].has(p.id))]))},earth={...original,
  bounds:{minX:Math.min(original.bounds.minX,ext.bounds.minX),maxX:Math.max(original.bounds.maxX,ext.bounds.maxX),minZ:Math.min(original.bounds.minZ,ext.bounds.minZ),maxZ:Math.max(original.bounds.maxZ,ext.bounds.maxZ)},
- patches:[...original.patches,...ext.patches],solids:[...original.solids,...ext.solids],points:[...original.points,...ext.points]};
+ patches:[...original.patches,...ext.patches],solids:[...original.solids,...ext.solids],points:[...original.points,...ext.points],routes:[...original.routes,...ext.routes]};
 // The actual production functions receive a composed catalogue in an isolated
 // VM. This is a data-composition fixture, not a played or progressed character.
 const sandbox={RealmWorldAtlantisEarth:{realms:[earth,South.realms[1]]},
  RealmWorldHeavenHell:require('../src/world-heaven-hell.js'),RealmCosmos:require('../src/cosmos.js'),module:{exports:{}}};
 vm.runInNewContext(fs.readFileSync(require.resolve('../src/world-foundations.js'),'utf8'),sandbox);
 const W=sandbox.module.exports;
+const InstalledW=installedContainsExtension?require('../src/world-foundations.js'):null;
 const matrix=p=>p.opt.m||E.M.compose(...p.p,...p.s);
 function vertices(p){const data=E.geometry(p.kind),stride=p.kind==='timber-panel'?8:6,out=[];for(let i=0;i<data.length;i+=stride)out.push(E.M.transform(matrix(p),data.slice(i,i+3)));return out;}
 function bounds(p,wind=true){const vs=vertices(p),min=[0,1,2].map(i=>Math.min(...vs.map(v=>v[i]))),max=[0,1,2].map(i=>Math.max(...vs.map(v=>v[i])));if(wind&&p.opt.wind===2){min[0]-=.095;max[0]+=.095;min[1]-=.05;max[1]+=.05;}return{min,max};}
@@ -34,6 +41,21 @@ test('isolated global/CommonJS expose only the pure API and recursively frozen a
  assert.equal(new Set(ids).size,ids.length);ids.forEach(id=>assert.match(id,/^elderweald-[-a-z0-9]+$/));
  for(const a of ['patches','solids','points'])assert.ok(ext[a].every(p=>!original[a].some(q=>q.id===p.id)));
  for(const forbidden of ['quest','reward','enemies','state','save','dispatch'])assert.equal(ext[forbidden],undefined);
+});
+test('extension IDs appear exactly once and installed production retains the physical contract',()=>{
+ const same=(d)=>{
+  for(const key of collections)for(const expected of ext[key]){
+   const matches=d[key].filter(p=>p.id===expected.id);assert.equal(matches.length,1,key+' '+expected.id+' must occur exactly once');assert.deepEqual(matches[0],expected,key+' '+expected.id+' changed');
+  }
+  for(const key of collections)assert.equal(new Set(d[key].map(p=>p.id)).size,d[key].length,key+' global duplicate ID');
+  for(const key of ['minX','minZ'])assert.ok(d.bounds[key]<=ext.bounds[key]);for(const key of ['maxX','maxZ'])assert.ok(d.bounds[key]>=ext.bounds[key]);
+ };
+ same(earth);const fixture=W.definition('earthlands');assert.equal(fixture,earth);same(fixture);
+ if(installedContainsExtension){
+  same(installed);const actual=InstalledW.definition('earthlands');assert.equal(actual,installed,'production world catalogue must use the installed Earth definition');same(actual);
+  for(const route of ext.routes)for(let i=1;i<route.points.length;i++){const a=route.points[i-1],b=route.points[i];assert.ok(InstalledW.segment(actual.room,{x:a[0],z:a[1]},{x:b[0],z:b[1]},R),route.id+' installed leg '+i);}
+  for(const p of allAnchors)assert.ok(InstalledW.walkable(actual.room,p.x,p.z,R),p.id+' installed anchor');
+ }
 });
 test('broad connected floor footprint and all solids are finite, bounded and supported',()=>{
  assert.equal(ext.patches.length,10);assert.equal(ext.solids.length,40);
