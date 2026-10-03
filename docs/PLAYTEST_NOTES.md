@@ -1,5 +1,7 @@
 # Living-road play and unresolved human feel, 2026-10-03
 
+Final exact-head reproduction at634bf66 revealed a real default-diorama visibility failure: tree5 hid Rill entirely from the native invitation approach. Positive pixel qualification was retained. Moving that canonical tree and its derived art to the eastern camp edge preserves walking/collision ownership, with a CPU negative control reproducing the original canopy intersection. Earlier blade/bow/veteran videos and RTX samples below predate this geometry refinement; they remain correctly labelled. Full all11-giver verification and the replacement remote gate are pending at this checkpoint.
+
 No fresh human answers are supplied; Dom is away and accepts recordings/screenshots as development evidence. Stormfall and the Living Road adds an actual woodland circuit with two fixed encounters, two deliberate supply allocations, persistent repair/delivery and a once-only claim, followed by intentionally accepted patrols and a finite blade/bow binding.
 
 Command-earned blade, bow and strongest-gear journeys complete the story, two paid patrols and a real post-binding hit in an unpaid third run. Labelled native browser coverage imports synthetic earned sources into a separate character, walks through production UI/combat, restarts the whole browser at accepted/partial/ready/paid/bound checkpoints and checks exact ownership. These accelerated tests establish rules and native persistence; they do not establish pacing or enjoyment.
