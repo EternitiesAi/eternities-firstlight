@@ -65,10 +65,10 @@ test('exact two canonical realms have finite, unique, immutable data and stable 
 
 test('module load publishes only its declared API and never reads a simulation or host service',()=>{
  const source=fs.readFileSync(require.resolve('../src/world-atlantis-earth.js'),'utf8');
- const sandbox={module:{exports:{}},sentinel:{value:7}};
+ const sandbox={module:{exports:{}},sentinel:{value:7},RealmElderwealdWorld:require('../src/elderweald-world.js')};
  for(const key of ['fetch','localStorage','document','RealmCore','RealmAdventure'])Object.defineProperty(sandbox,key,{get(){throw Error(`unexpected ${key}`);}});
  vm.runInNewContext(source,sandbox,{timeout:1000});
- assert.deepEqual(Object.keys(sandbox).sort(),['RealmWorldAtlantisEarth','module','sentinel']);
+ assert.deepEqual(Object.keys(sandbox).sort(),['RealmElderwealdWorld','RealmWorldAtlantisEarth','module','sentinel']);
  assert.equal(sandbox.module.exports,sandbox.RealmWorldAtlantisEarth);assert.equal(sandbox.sentinel.value,7);
 });
 

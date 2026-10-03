@@ -1,0 +1,314 @@
+{
+  "story": {
+    "id": "earth-stormfall-living-road-v1",
+    "realm": "earthlands",
+    "title": "Stormfall and the Living Road",
+    "giver": {
+      "id": "elderweald-rill",
+      "name": "Rill · forestkeeper",
+      "x": -67,
+      "z": -4,
+      "y": 1.57,
+      "medium": "dry"
+    },
+    "summary": "A storm has damaged the woodland route. Recover practical supplies, clear two infestations, and brace the living root-channel before delivering your chosen allocation. Rill asks for field work.",
+    "danger": "Two accepted encounters: 64 / 136 health and 9 / 11 damage, fixed for every weapon. Their 1.35-second tells and 2.3-second recovery leave room to Brace or retreat. Your free road home remains available.",
+    "reward": {
+      "xp": 45,
+      "coins": 18,
+      "ore": 3
+    },
+    "completionText": "The allocation is delivered and a separate brace carries the damaged connection. The old root organism remains alive. Rill recognizes your chosen practical approach; one Trailward binding is available at an outdoor home workbench.",
+    "steps": [
+      {
+        "id": "assess-load",
+        "name": "Read the camp load board",
+        "kind": "interact",
+        "x": -76,
+        "z": -12,
+        "y": 1.57,
+        "medium": "dry",
+        "requires": [],
+        "text": "Rill: The road and the watercourse share this load. Read what each needs before choosing a supply.",
+        "completed": "Read the camp load board recorded."
+      },
+      {
+        "id": "prepare-allocation",
+        "name": "Choose and prepare the supply",
+        "kind": "interact",
+        "x": -76,
+        "z": -12,
+        "y": 1.57,
+        "medium": "dry",
+        "requires": [
+          "assess-load"
+        ],
+        "text": "Choose a physical preparation; the allocation is retained when you return.",
+        "completed": "Choose and prepare the supply recorded.",
+        "choices": [
+          {
+            "id": "stormfall-recovery",
+            "name": "Recover stormfall",
+            "x": -82,
+            "z": -18,
+            "y": 1.57,
+            "materials": {
+              "wood": 8,
+              "fiber": 4
+            },
+            "text": "Recover already fallen timber and bind it for transport. The standing refuge stays intact. This pays 8 timber and 4 fibre; the binding needs two additional fibre from gathering or one patrol.",
+            "completed": "Stormfall allocation prepared. The standing refuge remains intact. Check the wetland watercourse."
+          },
+          {
+            "id": "managed-coppice",
+            "name": "Prepare managed coppice",
+            "x": -78,
+            "z": -2,
+            "y": 1.57,
+            "materials": {
+              "wood": 4,
+              "fiber": 8
+            },
+            "text": "Prepare a limited managed allocation with more binding fibre. This pays 4 timber and 8 fibre; the binding can be afforded from this allocation once the currency is claimed.",
+            "completed": "Managed allocation prepared. Its extra fibre is retained. Check the wetland watercourse."
+          }
+        ]
+      },
+      {
+        "id": "read-water",
+        "name": "Check the wetland watercourse",
+        "kind": "interact",
+        "x": -109,
+        "z": -28,
+        "y": 1.57,
+        "medium": "dry",
+        "requires": [
+          "prepare-allocation"
+        ],
+        "text": "Read the watercourse before moving the load. The supply plan leaves this refuge and its drainage open.",
+        "completed": "Check the wetland watercourse recorded."
+      },
+      {
+        "id": "clear-crossing",
+        "name": "Clear the crossing infestation",
+        "kind": "defeat",
+        "x": -119,
+        "z": -44,
+        "y": 1.57,
+        "medium": "dry",
+        "requires": [
+          "read-water"
+        ],
+        "text": "Disable the accepted Channel skitter through actual weapon impacts; the crossing itself stays supported and your exit stays free.",
+        "completed": "Clear the crossing infestation recorded."
+      },
+      {
+        "id": "read-root-load",
+        "name": "Read the living root anchor",
+        "kind": "interact",
+        "x": -148,
+        "z": -66,
+        "y": 1.57,
+        "medium": "dry",
+        "requires": [
+          "clear-crossing"
+        ],
+        "text": "The old organism carries part of the route. Read the damaged connection; cutting the living support away would transfer its load into the breach.",
+        "completed": "Read the living root anchor recorded."
+      },
+      {
+        "id": "clear-root-pests",
+        "name": "Clear the root-bank infestation",
+        "kind": "defeat",
+        "x": -134,
+        "z": -70,
+        "y": 1.57,
+        "medium": "dry",
+        "requires": [
+          "read-root-load"
+        ],
+        "text": "Disable the accepted Root-bank brute in the open bank pocket, away from the passage walls.",
+        "completed": "Clear the root-bank infestation recorded."
+      },
+      {
+        "id": "brace-root-channel",
+        "name": "Fit the alternate route brace",
+        "kind": "interact",
+        "x": -145,
+        "z": -84,
+        "y": 1.57,
+        "medium": "dry",
+        "requires": [
+          "clear-root-pests"
+        ],
+        "text": "Fit the prepared alternate brace before releasing the damaged connection. The old organism stays alive; this records one local support repair.",
+        "completed": "Alternate brace fitted; the old root stays alive. Deliver your allocation at the return glade."
+      },
+      {
+        "id": "deliver-allocation",
+        "name": "Deliver the chosen allocation",
+        "kind": "interact",
+        "x": -106,
+        "z": -105,
+        "y": 1.57,
+        "medium": "dry",
+        "requires": [
+          "brace-root-channel"
+        ],
+        "text": "Deliver the retained practical allocation at the return glade. Return to Rill to explicitly claim the declared currency and materials.",
+        "completed": "Allocation delivered. Return to Rill for the declared payment; it remains unclaimed."
+      }
+    ],
+    "enemies": [
+      {
+        "id": "earth-stormfall-crossing-v1",
+        "name": "Channel skitter",
+        "kind": "skitter",
+        "x": -119,
+        "z": -44,
+        "hp": 64,
+        "damage": 9,
+        "spawnAfter": [
+          "read-water"
+        ],
+        "defeatStep": "clear-crossing"
+      },
+      {
+        "id": "earth-stormfall-root-v1",
+        "name": "Root-bank brute",
+        "kind": "sentinel",
+        "x": -134,
+        "z": -70,
+        "hp": 136,
+        "damage": 11,
+        "spawnAfter": [
+          "read-root-load"
+        ],
+        "defeatStep": "clear-root-pests"
+      }
+    ]
+  },
+  "patrol": {
+    "id": "earth-living-road-patrol-v1",
+    "realm": "earthlands",
+    "title": "Living Road patrol",
+    "giver": {
+      "id": "elderweald-rill",
+      "name": "Rill · forestkeeper",
+      "x": -67,
+      "z": -4,
+      "y": 1.57,
+      "medium": "dry"
+    },
+    "summary": "After the first delivery is claimed, intentionally accept a new inspection circuit. Each accepted run owns new encounters and one payment; the living organism is never killed, reset or repaired again for payment.",
+    "danger": "Two accepted encounters: 64 / 136 health and 9 / 11 damage, fixed for every weapon. Their 1.35-second tells and 2.3-second recovery leave room to Brace or retreat. Your free road home remains available.",
+    "reward": {
+      "xp": 5,
+      "coins": 4,
+      "ore": 3,
+      "materials": {
+        "wood": 2,
+        "fiber": 2
+      }
+    },
+    "completionText": "The accepted inspection circuit is recorded and paid once. Your first support repair and allocation remain recognized.",
+    "steps": [
+      {
+        "id": "inspect-water",
+        "name": "Inspect the wetland course",
+        "kind": "interact",
+        "x": -109,
+        "z": -28,
+        "y": 1.57,
+        "medium": "dry",
+        "requires": [],
+        "text": "Check that the wetland course remains open for this accepted patrol.",
+        "completed": "Inspect the wetland course recorded."
+      },
+      {
+        "id": "clear-crossing",
+        "name": "Clear the patrol crossing pocket",
+        "kind": "defeat",
+        "x": -119,
+        "z": -44,
+        "y": 1.57,
+        "medium": "dry",
+        "requires": [
+          "inspect-water"
+        ],
+        "text": "Clear this run’s actual crossing infestation; an old defeat cannot satisfy a new patrol.",
+        "completed": "Clear the patrol crossing pocket recorded."
+      },
+      {
+        "id": "inspect-root",
+        "name": "Inspect the supported root passage",
+        "kind": "interact",
+        "x": -148,
+        "z": -66,
+        "y": 1.57,
+        "medium": "dry",
+        "requires": [
+          "clear-crossing"
+        ],
+        "text": "Inspect the existing alternate support. This is an inspection, not a repeated rescue or a new repair.",
+        "completed": "Inspect the supported root passage recorded."
+      },
+      {
+        "id": "clear-root-pests",
+        "name": "Clear the patrol bank pocket",
+        "kind": "defeat",
+        "x": -134,
+        "z": -70,
+        "y": 1.57,
+        "medium": "dry",
+        "requires": [
+          "inspect-root"
+        ],
+        "text": "Clear this run’s actual bank infestation; the living root anchor is not a foe.",
+        "completed": "Clear the patrol bank pocket recorded."
+      },
+      {
+        "id": "inspect-glade",
+        "name": "Record the return glade",
+        "kind": "interact",
+        "x": -106,
+        "z": -105,
+        "y": 1.57,
+        "medium": "dry",
+        "requires": [
+          "clear-root-pests"
+        ],
+        "text": "Record the end of this patrol and return to Rill for its explicitly declared payment.",
+        "completed": "Record the return glade recorded."
+      }
+    ],
+    "enemies": [
+      {
+        "id": "crossing",
+        "name": "Patrol channel skitter",
+        "kind": "skitter",
+        "x": -119,
+        "z": -44,
+        "hp": 64,
+        "damage": 9,
+        "spawnAfter": [
+          "inspect-water"
+        ],
+        "defeatStep": "clear-crossing"
+      },
+      {
+        "id": "root",
+        "name": "Patrol root-bank brute",
+        "kind": "sentinel",
+        "x": -134,
+        "z": -70,
+        "hp": 136,
+        "damage": 11,
+        "spawnAfter": [
+          "inspect-root"
+        ],
+        "defeatStep": "clear-root-pests"
+      }
+    ]
+  }
+}

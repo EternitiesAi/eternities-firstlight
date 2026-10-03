@@ -1,0 +1,42 @@
+{"scene": "home-bound-veteran-third", "frame_time_ms": {"p50": 16.69999999999891, "p90": 16.700000000000728, "p95": 16.799999999999272, "p99": 16.80000000000109, "max": 50}}
+{"scene": "elderweald-clearing-third", "frame_time_ms": {"p50": 16.69999999999709, "p90": 16.70000000001164, "p95": 16.79999999998836, "p99": 16.80000000000291, "max": 16.80000000000291}}
+{"scene": "wetland-footbridge-adventure", "frame_time_ms": {"p50": 16.69999999999709, "p90": 16.70000000001164, "p95": 16.79999999998836, "p99": 16.80000000000291, "max": 16.80000000000291}}
+{"scene": "wetland-footbridge-follow", "frame_time_ms": {"p50": 16.69999999999709, "p90": 16.70000000001164, "p95": 16.70000000001164, "p99": 16.80000000000291, "max": 50}}
+{"scene": "living-root-corridor-adventure", "frame_time_ms": {"p50": 16.699999999982538, "p90": 16.70000000001164, "p95": 16.70000000001164, "p99": 16.800000000017462, "max": 16.800000000017462}}
+{"scene": "living-root-corridor-follow", "frame_time_ms": {"p50": 16.699999999982538, "p90": 16.70000000001164, "p95": 16.70000000001164, "p99": 16.79999999998836, "max": 16.800000000017462}}
+{"scene": "delivered-return-glade-adventure", "frame_time_ms": {"p50": 16.699999999982538, "p90": 16.70000000001164, "p95": 16.70000000001164, "p99": 16.800000000017462, "max": 16.800000000017462}}
+{"scene": "delivered-return-glade-follow", "frame_time_ms": {"p50": 16.699999999982538, "p90": 16.70000000001164, "p95": 16.79999999998836, "p99": 16.800000000017462, "max": 16.800000000017462}}
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tools\measure_gpu_browser.py", line 93, in <module>
+    if __name__ == '__main__': raise SystemExit(main())
+                                                ~~~~^^
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tools\measure_gpu_browser.py", line 64, in main
+    setup = page.evaluate(scene["expression"]); page.wait_for_timeout(1500); before = page.evaluate("Realm.diagnostics")
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\sync_api\_generated.py", line 8562, in evaluate
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.evaluate(expression=expression, arg=mapping.to_impl(arg))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_page.py", line 464, in evaluate
+    return await self._main_frame.evaluate(expression, arg)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_frame.py", line 320, in evaluate
+    await self._channel.send(
+    ...<6 lines>...
+    )
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.evaluate: Error: Reach Inspect the supported root passage and finish its declared prerequisites.
+    at eval (eval at evaluate (:290:30), <anonymous>:1:398)
+    at async <anonymous>:316:30

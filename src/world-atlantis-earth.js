@@ -2,6 +2,7 @@
  * own travel, movement, work, combat and persistence. No personal/save mutation. */
 (function (G) {
  'use strict';
+ const EW=G.RealmElderwealdWorld||(typeof require==='function'?require('./elderweald-world.js'):null);
  const GROUND = 1.57;
  const earthPalette = {ground:0x839765,stone:0x938e78,trim:0x9b7952,sky:0xc2d0cd};
  const seaPalette = {ground:0xc1ba9b,stone:0x9ca8a0,trim:0xa28550,sky:0x82b4c0};
@@ -147,6 +148,11 @@
   }
   return value;
  }
+ const extension=EW.extension;
+ earth.bounds={minX:Math.min(earth.bounds.minX,extension.bounds.minX),maxX:Math.max(earth.bounds.maxX,extension.bounds.maxX),minZ:Math.min(earth.bounds.minZ,extension.bounds.minZ),maxZ:Math.max(earth.bounds.maxZ,extension.bounds.maxZ)};
+ earth.patches.push(...extension.patches);earth.solids.push(...extension.solids);earth.points.push(...extension.points);earth.routes.push(...extension.routes);
+ earth.description+=' Two western junctions continue into Elderweald-facing woodland, an inhabited clearing, a wetland footbridge and an ancient root-channel passage.';
+ earth.sourceNotes+=' The Elderweald-facing circuit adapts Earth E03 and ET11/ET12; its local people and work remain original provisional implementation.';
  const realms = freeze([earth,atlantis]);
  // Every shape is original procedural scenery. Shared WorldArt draws supplied
  // supported ground, ordinary/dive solids, dry-court floors and the gallery bed.
@@ -207,6 +213,9 @@
     box(x,height(x,z)+.007,z,.12,.012,length-.2,0xaea184,{pathSeam:true,r:[0,Math.atan2(bx-ax,bz-az),0]});
    }
    count+=G.RealmCoastwardWoodlandArt.decorate(art,def,{height});
+   const trailArt=G.RealmElderwealdTrailArt||(typeof require==='function'?require('./elderweald-trail-art.js'):null);
+   const woodland=[...EW.parts({quality:context.sim?.state.settings.quality||'balanced',height}),...trailArt.parts(def,context.sim?.state.settings.quality||'balanced')];
+   for(const p of woodland){art.add(p.kind,...p.p,...p.s,p.c,p.opt);count++;}
    // Field rows leave the authored work-loop and settlement road entirely clear.
    for(const side of [-1,1]) for(let row=0;row<4;row++) for(let n=0;n<9;n++) {
     const x=side*(20+row*1.6),z=-41-n*1.9;
@@ -215,8 +224,8 @@
    box(-18,height(-18,-46)+1.04,-46,.12,.42,1.5,0x977b54,{solidId:'field-sluice',r:[0,0,claimed?.3:0]});
    for(const x of [16.3,17,17.7]) add('round',x,height(x,-54)+1.55,-54,.58,.3,.5,claimed?0xc9b58b:0xcab975,{solidId:'produce-load'});
    for(let i=0;i<4;i++) box(6.9+i*.7,height(8,-72)+1.2,-72,.55,.08,.7,0xd1c4a0,{solidId:'settlement-register'});
-   add('mountain-ridge',-64,-.4,-132,80,37,54,0x78918c,{skyImage:true,vista:'northwest'});
-   add('mountain-ridge',67,-.4,-125,72,31,50,0x8e9e94,{skyImage:true,vista:'northeast'});
+   add('mountain-ridge',-172,-.4,-175,80,37,54,0x78918c,{skyImage:true,vista:'northwest'});
+   add('mountain-ridge',67,-.4,-165,72,31,50,0x8e9e94,{skyImage:true,vista:'northeast'});
    // Across the real channel, overlapping original ridge instances give the
    // side crossing a legible near/middle/far skyline rather than one hill.
    // Every transformed mesh stays beyond the supported country's bounds.

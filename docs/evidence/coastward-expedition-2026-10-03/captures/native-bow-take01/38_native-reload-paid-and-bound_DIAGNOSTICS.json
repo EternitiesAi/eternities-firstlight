@@ -1,0 +1,200 @@
+{
+  "version": "10.0.0",
+  "mode": "webgl2",
+  "scene": "valley",
+  "world": null,
+  "earth": null,
+  "cosmos": null,
+  "networkDependencies": 0,
+  "liveAI": false,
+  "multiplayer": false,
+  "adventure": {
+    "tactics": {
+      "scene": null,
+      "target": null,
+      "auto": false,
+      "nextAttack": 0,
+      "guardUntil": 0,
+      "shield": 0,
+      "shieldUntil": 0,
+      "cooldowns": {
+        "guard": 0,
+        "insight": 0,
+        "spirit": 0
+      },
+      "hits": [],
+      "serial": 0,
+      "windup": null
+    },
+    "beacon": {
+      "phase": "idle",
+      "time": 0,
+      "wave": 0,
+      "ward": 100,
+      "actors": [],
+      "serial": 0,
+      "notice": "",
+      "repairAt": 0,
+      "maraAt": 0,
+      "ilanAt": 0,
+      "playerRepairAt": 0,
+      "defeats": 0
+    },
+    "crossing": {
+      "room": null,
+      "tones": [],
+      "seek": false,
+      "rangAt": -10,
+      "tone": null,
+      "toneSerial": 0
+    },
+    "player": {
+      "x": 11,
+      "z": 9,
+      "yaw": -1.3961241277866856
+    },
+    "paused": false,
+    "intent": null,
+    "stats": {
+      "level": 2,
+      "attack": 15,
+      "defense": 2,
+      "maxHP": 120
+    },
+    "weapon": {
+      "style": "bow",
+      "reach": 11,
+      "cooldown": 0.75,
+      "stamina": 6,
+      "primary": "Loose arrow",
+      "special": "Piercing light"
+    },
+    "arrows": [],
+    "range": {
+      "active": false,
+      "start": 0,
+      "hits": {},
+      "shots": 0,
+      "message": "A calm place to learn a different rhythm."
+    },
+    "enemies": [],
+    "companion": {
+      "room": null,
+      "x": 11,
+      "z": 9,
+      "yaw": -1.3961241277866856,
+      "path": [],
+      "nextPath": 0,
+      "nextHit": 0,
+      "seek": null,
+      "status": "Beside you"
+    }
+  },
+  "sandbox": {
+    "bridge": false,
+    "objects": 0,
+    "elapsed": 305.69029999995615,
+    "autoGather": null,
+    "buildMode": null
+  },
+  "saveState": "saved",
+  "characters": {
+    "mode": "managed",
+    "active": "character-2",
+    "revision": 94,
+    "count": 2,
+    "writer": true,
+    "error": null
+  },
+  "fps": 0,
+  "errors": [],
+  "camera": {
+    "yaw": 0.7599999999999998,
+    "elevation": 0.88,
+    "half": 17,
+    "distance": 7.5,
+    "actualDistance": 7.5,
+    "fov": 60,
+    "center": [
+      11,
+      1.9002974154676648,
+      9
+    ],
+    "overview": false,
+    "preset": "follow",
+    "tour": false,
+    "baseHalf": 17,
+    "zoom": 1,
+    "ready": true,
+    "projection": "orthographic",
+    "eye": [
+      43.921031526134534,
+      59.70571333289036,
+      43.63725701999267
+    ],
+    "target": [
+      11,
+      1.9002974154676648,
+      9
+    ]
+  },
+  "metrics": {
+    "drawCalls": 27,
+    "texturedDrawCalls": 0,
+    "texturedInstances": 0,
+    "surfaceMaterials": {
+      "version": 1,
+      "id": "earth-weathered-timber-v1",
+      "status": "ready",
+      "ready": true,
+      "error": null,
+      "width": 512,
+      "height": 512,
+      "colorFormat": "SRGB8_ALPHA8",
+      "roughnessFormat": "R8",
+      "textureBytes": 1310720,
+      "mipmapBytes": 436905,
+      "totalTextureBytes": 1747625,
+      "decodedImageBytes": 2097152,
+      "decodeWallMs": 37.20000001788139,
+      "uploadCpuMs": 13.900000005960464,
+      "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+      "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+      "enabled": true
+    },
+    "instances": 6888,
+    "triangles": 169144
+  },
+  "reflection": {
+    "method": "world-plane P*V*H",
+    "height": 0.01,
+    "horizontalFlip": false
+  },
+  "cutaway": {
+    "enabled": true,
+    "focus": [
+      11,
+      2.18,
+      9
+    ]
+  },
+  "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "music": {
+    "playing": false,
+    "scoreRevision": 0,
+    "playingRevision": -1,
+    "step": -1
+  },
+  "gathering": null,
+  "layoutRevision": 0,
+  "roadsideGathering": {
+    "status": "idle",
+    "playing": false,
+    "pending": false
+  },
+  "audio": {
+    "enabled": false,
+    "state": "not-created",
+    "soundscape": null
+  }
+}

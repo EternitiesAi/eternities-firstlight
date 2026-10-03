@@ -11,7 +11,9 @@ const profiles={
  vessa:{id:'vessa',realm:'earthlands',name:'Vessa · bridge keeper',source:'original-coastward-provisional',height:1.72,width:.43,style:'bridgekeeper',hairStyle:'cap',tool:'folding-rule',palette:{cloth:0x9b7952,layer:0x576b68,trim:0xc5b58b,skin:0xc4a083,hair:0x514337,boot:0x514438,metal:0xb3aa89}},
  merren:{id:'merren',realm:'earthlands',name:'Merren · field steward',source:'original-coastward-provisional',height:1.68,width:.50,style:'steward',hairStyle:'short',tool:'field-register',palette:{cloth:0x6c7b54,layer:0xc8ba94,trim:0x98744e,skin:0x906c54,hair:0x5a5142,boot:0x594a38,metal:0xb1a281}},
  nereme:{id:'nereme',realm:'atlantis',name:'Nereme · pilot',source:'recovered-atlantis-proposal',height:1.74,width:.46,style:'pilot',hairStyle:'cap',tool:'pilot-line',palette:{cloth:0x3b6c73,layer:0x96b2ae,trim:0xccb993,skin:0xae876b,hair:0x453b35,boot:0x4a5551,metal:0xa28550}},
- sahra:{id:'sahra',realm:'atlantis',name:'Sahra · instrument-maker',source:'recovered-atlantis-proposal',height:1.66,width:.42,style:'instrumentmaker',hairStyle:'tied',tool:'measuring-frame',palette:{cloth:0x719994,layer:0xd3c8aa,trim:0xa28550,skin:0xc0a089,hair:0x73614f,boot:0x555b50,metal:0xa28550}}
+ sahra:{id:'sahra',realm:'atlantis',name:'Sahra · instrument-maker',source:'recovered-atlantis-proposal',height:1.66,width:.42,style:'instrumentmaker',hairStyle:'tied',tool:'measuring-frame',palette:{cloth:0x719994,layer:0xd3c8aa,trim:0xa28550,skin:0xc0a089,hair:0x73614f,boot:0x555b50,metal:0xa28550}},
+ 'elderweald-rill':{id:'elderweald-rill',realm:'earthlands',name:'Rill · forestkeeper',source:'original-elderweald-provisional',height:1.74,width:.48,style:'forestkeeper',hairStyle:'short',tool:'rivet-hammer',palette:{cloth:0x657966,layer:0x9b8662,trim:0xd2b47e,skin:0xb88c6c,hair:0x4d493f,boot:0x494838,metal:0x8e9788}},
+ 'elderweald-sela':{id:'elderweald-sela',realm:'earthlands',name:'Sela · herbalist',source:'original-elderweald-provisional',height:1.65,width:.43,style:'gardener',hairStyle:'tied',tool:'cultivator',palette:{cloth:0x84998a,layer:0xbfb79a,trim:0x7c6951,skin:0x96735b,hair:0x423e35,boot:0x5e5443,metal:0x969d86}}
 };
 function freeze(value){if(value&&typeof value==='object'){Object.values(value).forEach(freeze);Object.freeze(value);}return value;}
 freeze(profiles);
@@ -108,6 +110,12 @@ function build(id,options={}){
    beam('folded-wing-lower-'+sign,fold,tip,.12,.066,c.cloth,{wing:true,attachment:'cloak'},'octa');
    beam('folded-feather-'+sign,mix(fold,tip,.15),mix(fold,tip,.84),.026,.071,0xefe7d4,{wing:true,attachment:'folded-wing'});
   }
+ }
+ if(profile.style==='forestkeeper'){
+  for(const sign of[-1,1])body('box','field-cloak-'+sign,[sign*.13,1.11,-.175],[.23,.55,.05],c.layer,[.06,0,-sign*.045]);
+  body('box','field-satchel',[.23,.92,-.018],[.18,.20,.15],c.boot);
+  body('box','field-satchel-flap',[.23,1.01,.005],[.19,.05,.16],c.layer);
+  body('octa','keeper-clasp',[.09,1.326,.15],[.046,.05,.026],c.trim);
  }
  if(profile.style==='returnkeeper'){
   body('box','refuge-sash',[-.105,1.10,.152],[.093,.53,.031],c.layer,[0,0,-.10]);

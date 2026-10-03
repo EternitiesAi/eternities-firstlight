@@ -1,0 +1,42 @@
+[
+  {
+    "name": "home-bound-fresh-blade-third",
+    "expression": "async()=>{\n const w=Realm.state,e=w.earthExpedition;\n if(w.adventure.companion.bonded||w.adventure.equipment.weapon!=='trail_blade'||!e.story.claimed||e.patrol.lastClaim!==2||e.patrol.active?.run!==3||JSON.stringify(e.patrol.active.steps)!==JSON.stringify(['inspect-water']))throw Error('Use the earned fresh-blade 06_BOUND_ACTUAL_IMPACT_RELOADED source; unpaid run3 has only inspect-water');\n window.__earthGpuRoute=async(x,z)=>{const move=Realm.test.move(x,z);if(!move.ok)throw Error(move.error);const start=performance.now();await new Promise((resolve,reject)=>{const f=()=>{const d=Realm.diagnostics,p=d.adventure.player;if(d.adventure.paused||Realm.state.adventure.hp<=0)return reject(Error('Route paused or traveler died'));if(Math.hypot(p.x-x,p.z-z)<.15&&!Realm.test.path.length)return resolve();if(performance.now()-start>90000)return reject(Error('Real RAF route timed out'));requestAnimationFrame(f);};requestAnimationFrame(f);});return{destination:{x,z},body:Realm.diagnostics.adventure.player,method:'Accepted production moveTo and ordinary RAF; no coordinate write or accelerated tick'};};\n window.__earthGpuCommand=(type,payload={})=>{const r=Realm.test.adventure('earth-gpu02-'+type+'-'+performance.now(),type,payload);if(!r.ok)throw Error(type+': '+r.error);return r;};\n window.__earthGpuClearCrossing=async()=>{\n  const start=performance.now(),before=Realm.state.adventure,id=RealmEarthExpedition.patrol.id+'-run-3-crossing';\n  await __earthGpuRoute(-119,-42.9);\n  const initial=Realm.diagnostics.adventure.enemies.find(a=>a.id===id);if(!initial||initial.hp<=0)throw Error('The accepted run3 crossing actor must actually be alive');\n  __earthGpuCommand('target-select',{id});let guards=0,frames=0,lowest=initial.hp,released=false;\n  __earthGpuCommand('auto-toggle');if(!Realm.diagnostics.adventure.tactics.auto)throw Error('Expected real stationary autoattack');\n  await new Promise((resolve,reject)=>{const f=()=>{try{frames++;const d=Realm.diagnostics.adventure,s=Realm.state.adventure,ledger=Realm.state.earthExpedition,e=d.enemies.find(a=>a.id===id);if(d.paused||s.hp<=0)throw Error('Crossing combat paused or traveler died');if(e){lowest=Math.min(lowest,e.hp);if(e.mode==='windup'&&e.timer>.15&&s.stamina>=20&&s.elapsed>=d.tactics.cooldowns.guard){__earthGpuCommand('guard');guards++;}}released ||= !!(d.tactics.motion&&d.tactics.motion.at>=before.elapsed);if(ledger.patrol.active?.run===3&&ledger.patrol.active.steps.includes('clear-crossing'))return resolve();if(performance.now()-start>90000)throw Error('Real RAF crossing combat timed out');requestAnimationFrame(f);}catch(error){reject(error);}};requestAnimationFrame(f);});\n  __earthGpuCommand('target-clear');const after=Realm.state.adventure;\n  if(!released||lowest>=initial.hp)throw Error('Expected observed real weapon release and actor damage');\n  for(const key of ['xp','coins','ore','drops','defeated'])if(JSON.stringify(after[key])!==JSON.stringify(before[key]))throw Error('Unexpected legacy combat reward: '+key);\n  return{actor:id,declaredHp:64,hpAtApproach:initial.hp,lowestObservedHp:lowest,guards,frames,seconds:(performance.now()-start)/1000,hpBefore:before.hp,hpAfter:after.hp,method:'Production target-select, auto-toggle, Brace and actual impacts with ordinary RAF; no manual damage/HP/actor/time writes'};\n };\n Realm.test.pause(false);Realm.test.worldContext();Realm.test.view({yaw:.4,elevation:.22,distance:9,half:14});\n return{source:'Command-earned fresh-blade finite binding checkpoint; full application restore by measurement harness, no edited fixture values',pendingPatrol:e.patrol,diagnostics:Realm.diagnostics};\n}"
+  },
+  {
+    "name": "elderweald-clearing-third",
+    "expression": "async()=>{await __earthGpuRoute(18,6);const p=RealmWorldFoundations.preview(Realm.test.worldContext(),'earthlands');if(!p.ok)throw Error(p.error);const r=Realm.test.worldTravel(p.ticket);if(!r.ok)throw Error(r.error);const crossing=await __earthGpuClearCrossing();const route=await __earthGpuRoute(-70,-8);return{crossing,route,method:'Actual crossing defeat prerequisite is completed before root inspection; no payment or patrol claim'};}"
+  },
+  {
+    "name": "wetland-footbridge-adventure",
+    "expression": "async()=>{document.querySelector('[data-rpg=\"camera\"][data-id=\"adventure\"]').click();Realm.test.view({yaw:1.05,elevation:.26,distance:9,half:14});return await __earthGpuRoute(-125,-49);}"
+  },
+  {
+    "name": "wetland-footbridge-follow",
+    "expression": "async()=>{document.querySelector('[data-rpg=\"camera\"][data-id=\"follow\"]').click();Realm.test.view({yaw:1.05,elevation:.67,distance:9,half:14});return await __earthGpuRoute(-125,-49);}"
+  },
+  {
+    "name": "living-root-corridor-adventure",
+    "expression": "async()=>{document.querySelector('[data-rpg=\"camera\"][data-id=\"adventure\"]').click();Realm.test.view({yaw:1.05,elevation:.26,distance:9,half:14});return await __earthGpuRoute(-148,-75);}"
+  },
+  {
+    "name": "living-root-corridor-follow",
+    "expression": "async()=>{document.querySelector('[data-rpg=\"camera\"][data-id=\"follow\"]').click();Realm.test.view({yaw:1.05,elevation:.67,distance:9,half:14});return await __earthGpuRoute(-148,-75);}"
+  },
+  {
+    "name": "delivered-return-glade-adventure",
+    "expression": "async()=>{document.querySelector('[data-rpg=\"camera\"][data-id=\"adventure\"]').click();Realm.test.view({yaw:1.05,elevation:.26,distance:9,half:14});return await __earthGpuRoute(-110,-108);}"
+  },
+  {
+    "name": "delivered-return-glade-follow",
+    "expression": "async()=>{document.querySelector('[data-rpg=\"camera\"][data-id=\"follow\"]').click();Realm.test.view({yaw:1.05,elevation:.67,distance:9,half:14});return await __earthGpuRoute(-110,-108);}"
+  },
+  {
+    "name": "root-pocket-live-encounter-third",
+    "expression": "async()=>{document.querySelector('[data-rpg=\"camera\"][data-id=\"adventure\"]').click();await __earthGpuRoute(-148,-66);const e=Realm.state.earthExpedition,p=e.patrol.active;if(!p||p.run!==3||e.patrol.lastClaim!==2||!p.steps.includes('clear-crossing'))throw Error('Expected unpaid earned run3 with actual crossing defeat');const r=Realm.test.expeditionCommand('patrol-step',{quest:RealmEarthExpedition.patrol.id,run:p.run,priorClaim:e.patrol.lastClaim,step:'inspect-root'});if(!r.ok)throw Error(r.error);await __earthGpuRoute(-134,-68.9);Realm.test.view({yaw:.4,elevation:.25,distance:8});const d=Realm.diagnostics.adventure,actor=d.enemies.find(a=>a.id===RealmEarthExpedition.patrol.id+'-run-3-root');if(!actor||actor.hp<=0||d.tactics.auto||Realm.state.adventure.companion.bonded)throw Error('Expected live root actor, unbonded fixture and automatic attacks off');return{acceptedStep:r,actor,actors:d.enemies.length,hp:Realm.state.adventure.hp,method:'Actual accepted patrol root encounter; ordinary RAF; no health/position/actor/time grants or scaling; automatic attacks off'};}"
+  },
+  {
+    "name": "root-pocket-live-encounter-diorama",
+    "expression": "()=>{document.querySelector('[data-rpg=\"camera\"][data-id=\"follow\"]').click();Realm.test.view({yaw:.4,elevation:.67,half:14});const d=Realm.diagnostics.adventure,actor=d.enemies.find(a=>a.id===RealmEarthExpedition.patrol.id+'-run-3-root');if(!actor||actor.hp<=0||d.tactics.auto||Realm.state.adventure.hp<=0)throw Error('Expected same live root encounter and surviving traveler');return{actor,hp:Realm.state.adventure.hp,method:'Same actual encounter continues with autoattack off; no HP refill, scaling or simulation acceleration'};}"
+  }
+]

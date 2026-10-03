@@ -42,7 +42,7 @@ test('adventure 10 and missing optional trails preserve all ten XP boundaries an
   const raw=kit().snapshot();raw.adventure.version=10;delete raw.adventure.realmCraft;delete raw.realmTrails;
   raw.adventure.xp=boundaries[i];raw.notes=[{text:'Synthetic returning notebook',day:1}];raw.score.title='A kept melody';raw.retreat.wall='rose';
   const before=copy(raw),out=C.validate(raw);assert.deepEqual(raw,before,'migration cannot mutate its source');
-  assert.equal(C.VERSION,9);assert.equal(out.adventure.version,11);assert.equal(out.adventure.xp,boundaries[i]);assert.equal(A.level(out.adventure),levels[i]);
+  assert.equal(C.VERSION,9);assert.equal(out.adventure.version,12);assert.equal(out.adventure.xp,boundaries[i]);assert.equal(A.level(out.adventure),levels[i]);
   assert.deepEqual(out.realmTrails,R.fresh());assert.deepEqual(out.adventure.realmCraft,RC.fresh());
   const originalAdventure=copy(raw.adventure),migratedAdventure=copy(out.adventure);delete originalAdventure.version;delete migratedAdventure.version;delete migratedAdventure.realmCraft;assert.deepEqual(migratedAdventure,originalAdventure);
   for(const key of Object.keys(raw).filter(k=>k!=='adventure'))assert.deepEqual(out[key],raw[key],key);
@@ -51,7 +51,7 @@ test('adventure 10 and missing optional trails preserve all ten XP boundaries an
 test('current/future schemas refuse missing fields, foreign steps and impossible histories',()=>{
  const base=kit().snapshot(),id=definition('earthlands').id;
  const mutations=[
-  w=>w.adventure.version=12,w=>delete w.adventure.realmCraft,w=>w.adventure.realmCraft.version=2,
+  w=>w.adventure.version=A.VERSION+1,w=>delete w.adventure.realmCraft,w=>w.adventure.realmCraft.version=2,
   w=>w.adventure.realmCraft.weapon='travel_coat',w=>w.adventure.realmCraft.weapon='dawn_edge',
   w=>w.realmTrails.version=2,w=>delete w.realmTrails.records[id],w=>w.realmTrails.records.foreign={},
   w=>w.realmTrails.records[id].steps=['foreign-step'],w=>w.realmTrails.records[id].steps=['fallen-bough','fallen-bough'],

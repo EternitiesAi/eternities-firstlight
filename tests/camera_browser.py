@@ -4,11 +4,11 @@ Software WebGL coverage is not a human comfort or GPU performance claim.
 """
 from pathlib import Path
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
-import hashlib, json, math, threading, traceback
+import hashlib, json, math, os, threading, traceback
 from playwright.sync_api import sync_playwright
 from browser_support import chromium_launch_kwargs
 
-ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'evidence10/camera-browser';OUT.mkdir(parents=True,exist_ok=True)
+ROOT=Path(__file__).resolve().parents[1];OUT=Path(os.environ.get('FIRSTLIGHT_CAMERA_OUTPUT',ROOT/'evidence10/camera-browser')).resolve();OUT.mkdir(parents=True,exist_ok=True)
 report={'method':__doc__,'html_sha256':hashlib.sha256((ROOT/'index.html').read_bytes()).hexdigest(),'checks':[],'browser_errors':[]}
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self,*a,**kw):super().__init__(*a,directory=str(ROOT),**kw)
@@ -52,6 +52,12 @@ try:
             ev('()=>{for(let i=0;i<6000&&Realm.test.path.length;i++)Realm.test.step(.05);Realm.test.step(.05);Realm.test.pause(true);Realm.test.render()}')
         check('Fresh world defaults to true perspective',diag()['camera']['projection']=='perspective' and diag()['camera']['preset']=='adventure')
         check('Four visible camera choices',page.locator('.camera-presets button').count()==4)
+        def check_camera_selection(label):
+            mode=diag()['camera']['preset']
+            controls=page.locator('.camera-presets [data-rpg="camera"]').evaluate_all('(els)=>els.map(el=>({id:el.dataset.id,pressed:el.getAttribute("aria-pressed"),hover:el.matches(":hover"),focus:el===document.activeElement}))')
+            report.setdefault('camera_control_readings',[]).append({'label':label,'actual':mode,'controls':controls})
+            check(label+' selected camera button follows actual view even with retained hover/focus',[c['id'] for c in controls if c['pressed']=='true']==[mode])
+        check_camera_selection('Fresh view')
         before=diag()['adventure']['player'];yaw=diag()['camera']['yaw']
         page.mouse.move(800,380);page.mouse.down(button='right');page.mouse.move(925,395,steps=8);page.mouse.up(button='right');render()
         check('Right drag orbits without issuing movement',abs(diag()['camera']['yaw']-yaw)>.4 and not ev('Realm.test.path.length') and before==diag()['adventure']['player'])
@@ -62,10 +68,13 @@ try:
         page.keyboard.press('v');render()
         report['first_view_switch']={'adventure_before':adventure_view,'after':diag()['camera'],'profiles':ev('Realm.state.settings.cameraViews')}
         check('V switches diorama to the remembered third-person framing',diag()['camera']['preset']=='adventure' and same_framing(diag()['camera'],adventure_view,['yaw','elevation','distance']))
+        check_camera_selection('V to third person')
         page.keyboard.press('v');render()
         check('V restores the diorama orbit and zoom',diag()['camera']['preset']=='follow' and same_framing(diag()['camera'],diorama_view,['yaw','elevation','half']))
+        check_camera_selection('V to diorama')
         page.reload(wait_until='load');ev('Realm.test.pause(true);Realm.test.render()')
         check('Diorama framing survives an actual save reload',diag()['camera']['preset']=='follow' and same_framing(diag()['camera'],diorama_view,['yaw','elevation','half']))
+        check_camera_selection('Native reloaded diorama')
         ev('Realm.test.openPanel("settings")');check('Diorama settings explain that FOV belongs to third person',page.locator('#camera-fov').is_disabled())
         held=diag()['camera'];page.locator('#close-panel').focus();page.keyboard.press('v');page.keyboard.press('r');render()
         check('Camera shortcuts do not leak through a settings menu',all(diag()['camera'][k]==held[k] for k in ['preset','yaw','elevation','half']));page.click('#close-panel')
@@ -139,4 +148,3 @@ except Exception:
 finally:
     server.shutdown();(OUT/'REPORT.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
 raise SystemExit(0 if report['passed'] else 1)
-

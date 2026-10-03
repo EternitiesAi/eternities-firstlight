@@ -2,7 +2,7 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 const E=require('../src/engine.js'),North=require('../src/world-heaven-hell.js'),South=require('../src/world-atlantis-earth.js');
 const Art=require('../src/realm-givers-art.js');
-const ids=['heaven-rielle','heaven-calen','heaven-yselle','hell-istra','hell-tovan','vessa','merren','nereme','sahra'];
+const ids=['heaven-rielle','heaven-calen','heaven-yselle','hell-istra','hell-tovan','vessa','merren','nereme','sahra','elderweald-rill','elderweald-sela'];
 const realms=[...North.realms,...South.realms],points=new Map(realms.flatMap(d=>d.points.filter(p=>p.kind==='person').map(p=>[p.id,{point:p,realm:d}])));
 const empty=()=>({box:[],round:[],octa:[]}),items=out=>Object.entries(out).flatMap(([kind,list])=>list.map(p=>({kind,...p})));
 // World matrices use Float32Array. At Vessa's z=97 one ULP is 7.63e-6m;
@@ -15,9 +15,9 @@ function overlap(a,b,tolerance=.004){return [0,1,2].every(i=>a.min[i]<=b.max[i]+
 function draw(id,options={}){const out=empty(),frame=Art.draw(out,points.get(id).point,{base:1.57,...options});return {out,frame,parts:items(out)};}
 function freeze(o){Object.freeze(o);for(const v of Object.values(o))if(v&&typeof v==='object'&&!Object.isFrozen(v))freeze(v);return o;}
 
-test('the pure API owns exactly the nine existing points, with unchanged names and deeply frozen profiles',()=>{
+test('the pure API owns the nine retained points and two Elderweald residents, with unchanged names and deeply frozen profiles',()=>{
  assert.equal(globalThis.RealmGiversArt,Art);assert.deepEqual(Object.keys(Art),['profiles','parts','draw']);assert.deepEqual(Object.keys(Art.profiles),ids);
- for(const id of ids){const p=Art.profiles[id],data=points.get(id);assert.ok(data,id+' exists in the production catalogue');assert.equal(p.id,id);assert.equal(p.name,data.point.name);assert.equal(p.realm,data.realm.id);assert.ok(Object.isFrozen(p)&&Object.isFrozen(p.palette));assert.equal(p.source,id==='merren'||id==='vessa'?'original-coastward-provisional':'recovered-'+(p.realm==='earthlands'?'earth':p.realm)+'-proposal');}
+ for(const id of ids){const p=Art.profiles[id],data=points.get(id);assert.ok(data,id+' exists in the production catalogue');assert.equal(p.id,id);assert.equal(p.name,data.point.name);assert.equal(p.realm,data.realm.id);assert.ok(Object.isFrozen(p)&&Object.isFrozen(p.palette));assert.equal(p.source,id.startsWith('elderweald-')?'original-elderweald-provisional':id==='merren'||id==='vessa'?'original-coastward-provisional':'recovered-'+(p.realm==='earthlands'?'earth':p.realm)+'-proposal');}
  for(const id of ['neris','cosmos-keeper','mara','oren','heaven-home'])assert.equal(Object.hasOwn(Art.profiles,id),false,'old NPC, escort and non-person ownership stays outside this module');
 });
 
@@ -87,9 +87,9 @@ test('Calen alone has source-backed folded wings joined to the real cloak surfac
 });
 
 test('material combinations, clothing silhouettes and tools are distinct without assigning game classes or ancestry',()=>{
- assert.equal(new Set(ids.map(id=>JSON.stringify(Art.profiles[id].palette))).size,9);
+ assert.equal(new Set(ids.map(id=>JSON.stringify(Art.profiles[id].palette))).size,ids.length);
  assert.equal(new Set(ids.map(id=>Art.profiles[id].tool)).size,9);
- assert.equal(new Set(ids.map(id=>JSON.stringify(Art.parts(id,{reducedMotion:true}).map(p=>[p.kind,p.name,p.s,Array.from(p.m)])))).size,9);
+ assert.equal(new Set(ids.map(id=>JSON.stringify(Art.parts(id,{reducedMotion:true}).map(p=>[p.kind,p.name,p.s,Array.from(p.m)])))).size,ids.length);
  const rielle=Art.parts('heaven-rielle'),ruby=rielle.filter(p=>p.c===Art.profiles['heaven-rielle'].palette.trim);assert.equal(ruby.length,1);assert.equal(ruby[0].name,'ruby-cuff','the recovered single ruby cuff stays singular');
  const yselle=Art.parts('heaven-yselle');assert.ok(yselle.some(p=>p.name==='red-tool-cord'));assert.ok(yselle.some(p=>p.name==='working-apron'&&p.c===Art.profiles['heaven-yselle'].palette.layer));
  for(const id of ids)for(const field of ['ancestry','class','allegiance','xp','coins','ore','hp','damage','quest','history'])assert.equal(Object.hasOwn(Art.profiles[id],field),false);

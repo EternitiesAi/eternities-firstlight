@@ -1,3 +1,17 @@
+# Play the living road, then refine the connected game
+
+Continue from the actual delivered `gameplay/coastward-expedition-20261003` review head, fetching origin and reading outstanding reviews first. The current delivery adds one complete connected Earth story, repeat patrol and finite binding; it does not complete the whole canon. Use [the play guide](playtests/STORMFALL_LIVING_ROAD_2026-10-03.md) and current production/evidence records. Keep both cameras, the existing save origin, browser target and original Heaven01/sanctuary ownership. Do not replace this checkout with main or an older archive.
+
+Next human acceptance: one fresh blade or bow and one returning character. **Did you know where to go? Did the fights feel better? Did the reward make you want another outing?** Also compare the same fight in diorama/third person and check whether Rill's allocations, unpaid completion, deliberate patrol and binding preview are understandable. Record replies without treating the automated known-route video as novice pacing or human taste. The standing forest organism remains alive; deciding the larger saga is a separate founder choice.
+
+Resolve concrete route, camera, reward or comfort findings before adding another large subsystem. Further production should deepen recognizable local life and supported geography, with actual mechanical consequences and useful finite/repeat progression. Full realm capitals/countries, streaming, large economies, rare collecting, expanded roster/classes and real two-client authority/trading need their own implementation and acceptance slices. Paid power, offline loss, rare-pet allocation, construction scale, Heaven summit and Hell's larger verdict/allegiance remain unresolved.
+
+Preserve the new migration: world/key9; optional expedition1; adventure12/binding1. Retain stored 9999 XP, the1–5 curve, existing sockets/fittings, previous claims and unpaid work. Every intentional patrol owns a new run and one payment; retries or changed request IDs never do. No automatic merge, deployment, account/billing action or personal-save inspection.
+
+At this packaging checkpoint the exact pushed-head source/browser reproduction is pending. Once run, its result belongs in the delivery PR and external clone receipt; do not infer it from earlier green epochs. Failed/superseded source, native and appearance epochs stay labelled. The earlier rejected old-preview restart is not retried through another route; the launcher truthfully refuses a conflicting old server.
+
+Prior task records follow; their pending delivery wording belongs to their original checkpoint.
+
 # Finish this review, then play the connected game
 
 Start from `gameplay/world-production-pass-20261002` and the current delivery PR; fetch concurrent work before editing. Complete exact-head remote reproduction and preserve every failed/partial receipt before calling this seven-hour delivery complete. Use the latest portable evidence, rather than older totals below. Southern work is now qualified at `18f34b0` / HTML `846eb86b…30c5` by 259 default-both-camera/all-detail native checks; preserve that source epoch. The 36th suite is being registered, and the final exact pushed-head remote gate remains pending. Keep the browser target, both cameras, the existing 8780 save origin and original Heaven01/sanctuary ownership. No automatic main merge or deployment.

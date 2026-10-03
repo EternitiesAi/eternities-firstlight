@@ -1,0 +1,42 @@
+D:\07-GAMES\Firstlight\authoring\bridge-moment\src\world-foundations-art.js:10
+function partitions(def){return G.RealmWorldGroundCoalescing.coalesce(rawPartitions(def));}
+                                                             ^
+
+TypeError: Cannot read properties of undefined (reading 'coalesce')
+    at Object.partitions (D:\07-GAMES\Firstlight\authoring\bridge-moment\src\world-foundations-art.js:10:62)
+    at Object.<anonymous> (D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\coastward_bank_art.test.cjs:8:44)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.18.0
+✖ tests\coastward_bank_art.test.cjs (67.0681ms)
+✔ isolated IIFE and CommonJS expose only one frozen pure function (1.2637ms)
+✔ actual 955-cell expanded Earth partition reduces to 64 exact rectangles (21.1433ms)
+✔ every shared world-ground caller and old Coastward retain exact floor area, owner, color and height (28.6159ms)
+✔ real bridge source boundaries and river void remain separate from bank masses (5.9946ms)
+✔ Atlantis gallery edge partitions remain exact and no cell crosses camera-medium boundary (1.3782ms)
+✔ a labelled untagged Atlantis control demonstrates why caller-owned gallery metadata is required (1.501ms)
+✔ only complete shared edges merge; holes, corners, tiny gaps and differing metadata remain (0.9504ms)
+✔ metadata values and arrays are deep-fresh, order-independent and never aliases (0.3515ms)
+✔ empty input, input permutations and repeated coalescing are deterministic and fresh (21.5033ms)
+✔ invalid, overlapping, accessor or nondata records refuse before input mutation (0.7431ms)
+✔ actual submitted vertices stay finite and terrain draw work falls without dropping area (3.6349ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 11
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 180.1609
+
+✖ failing tests:
+
+test at tests\coastward_bank_art.test.cjs:1:1
+✖ tests\coastward_bank_art.test.cjs (67.0681ms)
+  'test failed'

@@ -1,12 +1,13 @@
 /* Realm openings: visible ground and physical data share one owner. */
-(function(G){'use strict';const W=G.RealmWorldFoundations,decor={cameraSolid:false,cutaway:false,rough:.96};
-function partitions(def){
+(function(G){'use strict';const W=G.RealmWorldFoundations,Coalescing=G.RealmWorldGroundCoalescing||(typeof require==='function'?require('./world-ground-coalescing.js'):null),decor={cameraSolid:false,cutaway:false,rough:.96};
+function rawPartitions(def){
  const v=def.dive?.volume,xs=[...new Set([...def.patches.flatMap(p=>[p.x-p.w/2,p.x+p.w/2]),...(v?[v.x-v.w/2,v.x+v.w/2]:[])])].sort((a,b)=>a-b),zs=[...new Set([...def.patches.flatMap(p=>[p.z-p.d/2,p.z+p.d/2]),...(v?[v.z-v.d/2,v.z+v.d/2]:[])])].sort((a,b)=>a-b),out=[];
  for(let i=1;i<xs.length;i++)for(let j=1;j<zs.length;j++){
   const x=(xs[i]+xs[i-1])/2,z=(zs[j]+zs[j-1])/2,p=def.patches.filter(p=>Math.abs(x-p.x)<p.w/2&&Math.abs(z-p.z)<p.d/2).sort((a,b)=>a.w*a.d-b.w*b.d)[0];
-  if(p)out.push({x,z,w:xs[i]-xs[i-1],d:zs[j]-zs[j-1],y:p.y,color:p.color??def.palette.ground,source:p.id});
+  if(p)out.push({x,z,w:xs[i]-xs[i-1],d:zs[j]-zs[j-1],y:p.y,color:p.color??def.palette.ground,source:p.id,gallery:!!(v&&Math.abs(x-v.x)<v.w/2&&Math.abs(z-v.z)<v.d/2)});
  }return out;
 }
+function partitions(def){return Coalescing.coalesce(rawPartitions(def));}
 // Only exposed Coastward land receives a skirt. Derive its seam from the same
 // partition cells actually drawn above, including bridge cells as neighbours.
 // Internal patch/grid edges therefore never become walls, and this function
@@ -14,7 +15,7 @@ function partitions(def){
 function coastBanks(cells){
  const eps=1e-6,groups=new Map(),contains=(x,z)=>cells.some(p=>x>p.x-p.w/2-eps/4&&x<p.x+p.w/2+eps/4&&z>p.z-p.d/2-eps/4&&z<p.z+p.d/2+eps/4);
  for(const p of cells){
-  if(p.source==='channel-bridge')continue;
+  if(p.source==='channel-bridge'||p.source==='elderweald-footbridge')continue;
   const x0=p.x-p.w/2,x1=p.x+p.w/2,z0=p.z-p.d/2,z1=p.z+p.d/2;
   for(const e of [{axis:'z',at:x0,from:z0,to:z1,nx:-1,nz:0},{axis:'z',at:x1,from:z0,to:z1,nx:1,nz:0},{axis:'x',at:z0,from:x0,to:x1,nx:0,nz:-1},{axis:'x',at:z1,from:x0,to:x1,nx:0,nz:1}]){
    const center=(e.from+e.to)/2,x=e.axis==='z'?e.at:center,z=e.axis==='z'?center:e.at;
@@ -42,15 +43,15 @@ function coastBanks(cells){
  });
  return parts;
 }
-function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isInterior=false;a.e.theme=def.theme||null;a.e.noWater=!def.water;a.e.ambientOverride=def.id==='hell'?.6:def.id==='heaven'?.87:.76;a.e.worldAtmosphere=def.id==='heaven'?{top:0x9fb8bd,fog:0xe4cdbd,night:.12,power:.85,sunColor:0xffe5c2}:def.id==='hell'?{top:0x32292f,fog:0x75605a,night:.38,power:.68,sunColor:0xffc185}:null;
+function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isInterior=false;a.e.worldFog=def.id==='earthlands'?{clear:30,span:130}:null;a.e.theme=def.theme||null;a.e.noWater=!def.water;a.e.ambientOverride=def.id==='hell'?.6:def.id==='heaven'?.87:.76;a.e.worldAtmosphere=def.id==='heaven'?{top:0x9fb8bd,fog:0xe4cdbd,night:.12,power:.85,sunColor:0xffe5c2}:def.id==='hell'?{top:0x32292f,fog:0x75605a,night:.38,power:.68,sunColor:0xffc185}:null;
  const cells=partitions(def);
  for(const p of cells){
-  const gallery=def.dive&&Math.abs(p.x-def.dive.volume.x)<def.dive.volume.w/2&&Math.abs(p.z-def.dive.volume.z)<def.dive.volume.d/2;
+  const gallery=p.gallery;
   a.box(p.x,p.y-.055,p.z,p.w,.11,p.d,p.color,{...decor,cutaway:!!gallery,terrain:true,worldGround:p.source});
   // Bridge decks have open water underneath. Other ground has a closed shore.
   if(!gallery&&!/bridge/.test(p.source))a.box(p.x,(p.y-.11-.5)/2,p.z,p.w,p.y-.11+.5,p.d,def.palette.stone,decor);
  }
- if(def.id==='earthlands')for(const bank of coastBanks(cells)){const{kind,p,s,c,...opt}=bank;a.add(kind,...p,...s,c,opt);}
+ if(def.id==='earthlands')for(const bank of coastBanks(rawPartitions(def))){const{kind,p,s,c,...opt}=bank;a.add(kind,...p,...s,c,opt);}
  for(const p of def.solids)a.box(p.x,W.height(def.room,p.x,p.z)+p.h/2,p.z,p.w,p.h,p.d,p.color??def.palette.stone,{rough:.96,cameraSolid:true,cutaway:true,worldSolid:true,worldSolidId:p.id});
  if(def.dive){const d=def.dive,v=d.volume;
   a.box(v.x,d.minY-.36,v.z,v.w,.12,v.d,0x638b84,decor);
@@ -71,7 +72,7 @@ function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isIn
  a.commit();
 }
 function gate(a){const p=W.GATE;a.add('cylinder',p.x,1.3,p.z,.13,1.45,.13,0xae9569,decor);a.box(p.x,2.65,p.z,1.3,.57,.1,0x586963,decor);for(let i=0;i<5;i++)a.add('octa',p.x-.46+i*.23,2.65,p.z+.065,.12,.17,.10,[0xe5d8b1,0xc98b67,0x9dc8c5,0xa4b276,0xbeaec9][i],{...decor,em:.18});}
-function draw(out,sim,t,a){const d=W.definition(sim.room);if(!d)return;const quiet=sim.state.settings.reducedMotion;
+function draw(out,sim,t,a){const d=W.definition(sim.room);if(!d)return;const quiet=sim.state.settings.reducedMotion;if(d.id==='earthlands')G.RealmEarthExpeditionArt?.draw(out,sim);
  // Cosmos keeps its existing people and scene owner; only accepted work adds
  // small ground records there.
  if(!d.existing)for(const p of d.points.filter(p=>p.kind==='person')){
@@ -86,5 +87,5 @@ function draw(out,sim,t,a){const d=W.definition(sim.room);if(!d)return;const qui
  if(r.firstClaimed&&giver&&d.existing){const y=W.height(d.room,giver.x,giver.z);out.box.push({p:[giver.x+.7,y+.015,giver.z+.3],s:[.65,.03,.48],c:0xe3d4ad,...decor});for(let i=0;i<3;i++)out.box.push({p:[giver.x+.48+i*.22,y+.036,giver.z+.3],s:[.06,.012,.3],c:[0xb6ac69,0x80a9a0,0xa89dbe][i],...decor});}
  if(sim.worldDive&&W.medium(sim,[sim.state.player.x,W.playerHeight(sim)+.85,sim.state.player.z])==='water'){const p=sim.state.player,y=W.playerHeight(sim);out.octa.push({p:[p.x,y+1.85,p.z],s:[.08,.08,.08],c:0xb4e7dd,em:.4,...decor});}
 }
-G.RealmWorldFoundationsArt={make,gate,draw,partitions,coastBanks};if(typeof module!=='undefined')module.exports=G.RealmWorldFoundationsArt;
+G.RealmWorldFoundationsArt={make,gate,draw,partitions,rawPartitions,coastBanks};if(typeof module!=='undefined')module.exports=G.RealmWorldFoundationsArt;
 })(globalThis);

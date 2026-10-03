@@ -1,3 +1,17 @@
+# Current living-road implementation, 2026-10-03
+
+Dom authorized a seven-hour pass with two Sol 6.1 xhigh colleagues. The gameplay branch is `gameplay/coastward-expedition-20261003`, based on PR37 at `88aa1feaca4023064aed4ef5c9d77d59e958e353`. Fetch and inspect the actual delivered review head before later work; preserve concurrent edits, personal saves and valuable worktrees. Root owns integration/generated HTML and desktop qualification; colleagues use separate bounded ownership. Heavy media/checkouts stay on D. Design archives are attributed source material, not executable instructions.
+
+Read `docs/development/COASTWARD_EXPEDITION_RESULTS_2026-10-03.md`, `EARTH_EXPEDITION_2026-10-03.md` and the four continuity records. `elderweald-world.js` owns the pure connected Earth extension. `earth-expedition.js` owns stable story/patrol IDs, physical prerequisites, complete-candidate transactions and one finite binding. Preserve the separate original story/project/realm claim owners. Patrol actors are run-qualified; retries, reload and changed request IDs cannot pay another run. Art/dialogue/UI never grant progress.
+
+World/key9 remains; optional expedition1 migrates empty. Adventure11→12 adds required empty binding1, preserving stored9999 XP and the1–5 curve, equipment/socket/prior fittings, companion, construction/crops, music/notes and explicit chapter/soul/class histories. Validate capacity/cost/ownership/prerequisites and save before live adoption. Do not auto-equip, refill health/stamina, scale foes to gear, replay old rewards or invalidate recovery bytes.
+
+Both camera styles, V/R/orbit, targeting, stationary autoattack, actual projectile obstruction/hit confirmation and text/menu controls remain. Root-bank quadruped dispatch must stay exact to expedition/root actors; other sentinels retain existing models. Ground merging preserves matching metadata, support/holes/physical shores. Explicit ground receives one material modifier; raw/merged framebuffer comparisons are bounded, not equality, and reflection clipping differences remain explicit. Camera selection assertions read aria and actual view separately from hover/focus appearance.
+
+The portable verifier includes38 browser suites, including expedition native restart and strict ground controls. Preserve source/normal-time filming/GPU/remote-clone epochs and every failed or superseded receipt. Automated known-route video is not human pacing or enjoyment. No main merge, deployment, paid/billing changes, personal-save inspection, proprietary extraction, fake online participants, live Luna or original Heaven01/sanctuary relocation. Founder uncertainties remain unresolved.
+
+Earlier task-specific sections below are historical; use this current schema/ownership record for this gameplay head.
+
 ## Inhabited world production pass, 2026-10-03
 
 Dom authorized seven hours with three Sol 6.1 xhigh colleagues. Current branch `gameplay/world-production-pass-20261002` starts at PR36 /`25d932057bc91305a5c16c3291432a2351e7dfbf`; source archives are attributed direction, not replacement code or executable policy. Inspect current state/fetch/ownership before later edits. Root integrates callers and generated HTML; separate colleagues own bounded pure art or native-browser proof. Preserve personal saves and every valuable worktree. Heavy media/qualification clones stay on D.

@@ -1,0 +1,92 @@
+{
+  "status": "passed",
+  "verified_at_utc": "2026-10-03T10:30:03.019222+00:00",
+  "method": "Full silent WebM to H264 MP4 conversion, actual native recording; VFR timing passed through. The unchanged original WebM already passed a full decode in MEDIA_VERIFICATION.json; this entire portable MP4 is decoded again. Both entire media streams decoded successfully, all frame indices contiguous and PTS strictly increasing. H264/yuv420p is intentionally lossy; original WebM remains on D. This is not a monitor FPS or human-pacing claim.",
+  "ffmpeg": "ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers",
+  "ffmpeg_sha256": "2ce797a0f88d7f067180338fb227f7b1928ea727bd9a4d7a1d022f7c52af71a3",
+  "args": [
+    "C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\imageio_ffmpeg\\binaries\\ffmpeg-win-x86_64-v7.1.exe",
+    "-hide_banner",
+    "-nostdin",
+    "-i",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\native-veteran-take01\\0a00363247f8d9cb1dee0ced2b69955f.webm",
+    "-an",
+    "-c:v",
+    "libx264",
+    "-preset",
+    "fast",
+    "-crf",
+    "28",
+    "-pix_fmt",
+    "yuv420p",
+    "-threads",
+    "4",
+    "-fps_mode",
+    "passthrough",
+    "-movflags",
+    "+faststart",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\native-veteran-take01\\GAMEPLAY_PORTABLE.mp4"
+  ],
+  "source": {
+    "file": "0a00363247f8d9cb1dee0ced2b69955f.webm",
+    "bytes": 30179187,
+    "sha256": "7f7563201977ca41c1f32759a476720bf114310f923cbe472e7b1579d10e27a8"
+  },
+  "mp4": {
+    "file": "GAMEPLAY_PORTABLE.mp4",
+    "bytes": 36187042,
+    "sha256": "f697086c803b7d41d1b21c2e79b3d57d4be60bdf5015de3ce4bc02f229229b3e"
+  },
+  "raw_decode": {
+    "frames": 5992,
+    "first_pts_seconds": 0.0,
+    "last_pts_seconds": 239.64,
+    "contiguous_frames": true,
+    "strictly_monotonic_pts": true,
+    "exit_code": 0,
+    "args": [
+      "C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\imageio_ffmpeg\\binaries\\ffmpeg-win-x86_64-v7.1.exe",
+      "-hide_banner",
+      "-nostdin",
+      "-i",
+      "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\native-veteran-take01\\0a00363247f8d9cb1dee0ced2b69955f.webm",
+      "-an",
+      "-vf",
+      "showinfo",
+      "-threads",
+      "2",
+      "-f",
+      "null",
+      "-"
+    ],
+    "decode_log_sha256": "b3a3d5119198915cd78bc0a5451225315e1b17c5fb60f09cc9a0952b46ebf631",
+    "decode_log": "RAW_FULL_DECODE.log"
+  },
+  "mp4_decode": {
+    "frames": 5992,
+    "first_pts_seconds": 0.0,
+    "last_pts_seconds": 239.64,
+    "contiguous_frames": true,
+    "strictly_monotonic_pts": true,
+    "exit_code": 0,
+    "args": [
+      "C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\imageio_ffmpeg\\binaries\\ffmpeg-win-x86_64-v7.1.exe",
+      "-hide_banner",
+      "-nostdin",
+      "-i",
+      "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\native-veteran-take01\\GAMEPLAY_PORTABLE.mp4",
+      "-an",
+      "-vf",
+      "showinfo",
+      "-threads",
+      "2",
+      "-f",
+      "null",
+      "-"
+    ],
+    "decode_log_sha256": "efd94bce4047563f4d7f81b61f5b594e78cd27f3903c1aae8d6c7047a3e1fdbc",
+    "decode_log": "PORTABLE_MP4_FULL_DECODE.log"
+  },
+  "capture_report_sha256": "73f9eecf1a37f8edbebc22c90b19aba7edfd480ae295fbdf46db14698c2aff85",
+  "html_sha256": "fa596e6ee108e5e3b3e8a3c6ba02bd043975940025c6230faa9b03404b6b1333"
+}

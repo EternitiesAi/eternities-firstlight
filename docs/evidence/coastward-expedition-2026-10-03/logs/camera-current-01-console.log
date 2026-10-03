@@ -1,0 +1,55 @@
+PASS Fresh world defaults to true perspective
+PASS Four visible camera choices
+PASS Fresh view selected camera button follows actual view even with retained hover/focus
+PASS Right drag orbits without issuing movement
+PASS Wheel changes distance without FOV pumping
+PASS V switches diorama to the remembered third-person framing
+PASS V to third person selected camera button follows actual view even with retained hover/focus
+PASS V restores the diorama orbit and zoom
+PASS V to diorama selected camera button follows actual view even with retained hover/focus
+PASS Diorama framing survives an actual save reload
+PASS Native reloaded diorama selected camera button follows actual view even with retained hover/focus
+PASS Diorama settings explain that FOV belongs to third person
+PASS Camera shortcuts do not leak through a settings menu
+PASS Typing camera shortcut letters stays in the real notebook field
+PASS R resets the current diorama without changing styles
+PASS V remembers the selected tactical diorama variant
+PASS Third-person framing also survives reload and overhead reset
+PASS Reloading directly into third person retains its orbit
+PASS Real W input walks forward relative to the camera
+PASS Orbit changes real WASD world direction
+PASS Sky click is ignored without an invalid path or error
+PASS Visible FOV control changes production projection
+PASS Settings select retains overhead view
+PASS Mode and FOV survive actual origin reload
+PASS R resets the selected tactical view without forcing third person
+PASS follow camera control works
+PASS wide camera control works
+PASS adventure camera control works
+PASS Accepted route -11,-1.6
+PASS Actual house wall pulls the camera in before penetration
+PASS Camera returns after the wall clears
+PASS House entry preserves perspective with a finite eye
+PASS House exit retains third person
+PASS Diorama entry preserves orbit and respects the interior minimum zoom
+PASS Diorama exit restores the outdoor framing
+PASS Accepted route 11,9
+PASS Reduced motion removes camera follow interpolation
+PASS Initial kit still obtained through visible interaction
+PASS Accepted route 15,7
+PASS Starter entry retains perspective and the saved FOV
+PASS Third-person quest labels stay nearby and do not overlap
+PASS Quest label setting is respected
+PASS Accepted route -7,3
+PASS Projected enemy body is visible
+PASS Clicking a visible body selects stationary autoattack
+PASS Switching to diorama preserves target and stationary attack intent
+PASS Switching back leaves quest equipment and creative state unchanged
+PASS Combat still resolves through actual rules after selection
+PASS Perspective health indicators have bounded screen size
+PASS Modal equipment blocks walking and attacks
+PASS Equipment dialogs also block camera shortcuts
+PASS Rounded avatar renders in the equipment portrait
+PASS Portrait aspect keeps a finite perspective camera
+PASS Camera choices stay inside the narrow viewport
+PASS No unhandled browser errors

@@ -32,7 +32,8 @@ function draw(out,sim,frame){
  if(!point(grip)||ready&&style==='bow'&&!point(joints.rightHand))return none;
  const gear=A.GEAR[id],colour=typeof gear.color==='string'?parseInt(gear.color.slice(1),16):gear.color;
  const gem=AR.activeGem(a),gemId=gem?a.arsenal.sockets[id]:null,stage=Math.max(0,Math.min(2,G.RealmPursuit?.stage(a,id)||0)),temper=G.RealmStarter?.bonus(a,id)||0,realmFitting=G.RealmCraft?.bonus(a,id)||0;
- const summary={weaponId:id,style,mode:ready?'held':'stowed',gripLocal:Array.from(grip),gripWorld:M.transform(frame.root,grip),gem:gemId,temper,stage,realmFitting,instances:0};
+ const binding=a.earthBinding?.weapon===id&&['edge','shelter'].includes(a.earthBinding.kind)?a.earthBinding.kind:null;
+ const summary={earthBinding:binding,weaponId:id,style,mode:ready?'held':'stowed',gripLocal:Array.from(grip),gripWorld:M.transform(frame.root,grip),gem:gemId,temper,stage,realmFitting,instances:0};
  const attachment=ready?(style==='bow'?'leftHand':'rightHand'):(style==='bow'?'back':'hip');
  let bladeBasis=null;
 
@@ -52,6 +53,11 @@ function draw(out,sim,frame){
  }
  function block(center,size,c,weaponPart,extra={},axis=[0,1,0],kind='box'){form(kind,center,axis,...size,c,weaponPart,extra);}
  function markers(axis,front,width){
+  if(binding){
+   const c=binding==='edge'?0xd6a868:0x85bba0;
+   for(let i=0;i<3;i++)block(offset(grip,axis,-.085+i*.055),[.127,.028,.125],c,'earth-binding-wrap',{earthBinding:binding},axis);
+   block(add(offset(grip,axis,-.03),scale(front,.072)),[.054,.094,.042],binding==='edge'?0xe9d5a3:0xc6ead6,'earth-binding-pin',{earthBinding:binding},axis,'octa');
+  }
   const mount=add(offset(grip,axis,-.17),scale(front,.067));
   block(mount,[.13,.11,.044],0xb0a07a,'socket-mount',{},axis);
   if(gem)block(add(mount,scale(front,.025)),[.096,.12,.061],gem.color,'socket',{gemId,em:.35},axis,'octa');

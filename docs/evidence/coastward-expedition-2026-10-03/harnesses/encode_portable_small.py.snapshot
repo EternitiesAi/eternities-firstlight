@@ -1,0 +1,29 @@
+from pathlib import Path
+import datetime,hashlib,json,re,subprocess
+ROOT=Path('D:/07-GAMES/Firstlight/artifacts/coastward-expedition-20261003')
+FF=Path('C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Lib/site-packages/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe')
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+version=subprocess.check_output([str(FF),'-version'],text=True,encoding='utf8').splitlines()[0]
+def decode(path,log):
+ args=[str(FF),'-hide_banner','-nostdin','-i',str(path),'-an','-vf','showinfo','-threads','2','-f','null','-']
+ with log.open('wb') as stream:r=subprocess.run(args,stdout=subprocess.DEVNULL,stderr=stream)
+ assert r.returncode==0,'Full decode failed '+str(path)
+ text=log.read_text(encoding='utf8',errors='replace')
+ rows=[(int(n),float(t)) for n,t in re.findall(r'\bn:\s*(\d+)\s+pts:\s*-?\d+\s+pts_time:([^\s]+)',text)]
+ assert rows and all(a[0]+1==b[0] and a[1]<b[1] for a,b in zip(rows,rows[1:])), 'Non-contiguous frames or nonmonotonic PTS'
+ assert rows[0][0]==0,'First decoded frame not zero'
+ assert not re.search(r'(Invalid data|Error while decoding|corrupt decoded frame)',text,re.I),'Decoder error marker'
+ return {'frames':len(rows),'first_pts_seconds':rows[0][1],'last_pts_seconds':rows[-1][1],'contiguous_frames':True,'strictly_monotonic_pts':True,'exit_code':r.returncode,'args':args,'decode_log_sha256':sha(log),'decode_log':log.name}
+for name in ['native-blade-take02','native-bow-take01','native-veteran-take01']:
+ d=ROOT/name;r=json.loads((d/'REPORT.json').read_text(encoding='utf8'));assert r['status']=='passed'
+ raw=d/r['video']['path'];assert sha(raw)==r['video']['sha256']
+ target=d/'GAMEPLAY_PORTABLE.mp4';assert not target.exists(),'Do not overwrite a previous encoding'
+ args=[str(FF),'-hide_banner','-nostdin','-i',str(raw),'-an','-c:v','libx264','-preset','fast','-crf','28','-pix_fmt','yuv420p','-threads','4','-fps_mode','passthrough','-movflags','+faststart',str(target)]
+ with (d/'PORTABLE_ENCODE.log').open('wb') as stream:result=subprocess.run(args,stdout=subprocess.DEVNULL,stderr=stream)
+ assert result.returncode==0,'Encoding failed '+name
+ prior=json.loads((d/'MEDIA_VERIFICATION.json').read_text(encoding='utf8'));assert prior['source']['sha256']==sha(raw);raw_decode=prior['raw_decode'];mp4_decode=decode(target,d/'PORTABLE_MP4_FULL_DECODE.log')
+ assert raw_decode['frames']==mp4_decode['frames'],'Frame count changed in conversion'
+ assert abs(raw_decode['last_pts_seconds']-mp4_decode['last_pts_seconds'])<.1,'Last PTS changed materially'
+ report={'status':'passed','verified_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'method':'Full silent WebM to H264 MP4 conversion, actual native recording; VFR timing passed through. The unchanged original WebM already passed a full decode in MEDIA_VERIFICATION.json; this entire portable MP4 is decoded again. Both entire media streams decoded successfully, all frame indices contiguous and PTS strictly increasing. H264/yuv420p is intentionally lossy; original WebM remains on D. This is not a monitor FPS or human-pacing claim.','ffmpeg':version,'ffmpeg_sha256':sha(FF),'args':args,'source':{'file':raw.name,'bytes':raw.stat().st_size,'sha256':sha(raw)},'mp4':{'file':target.name,'bytes':target.stat().st_size,'sha256':sha(target)},'raw_decode':raw_decode,'mp4_decode':mp4_decode,'capture_report_sha256':sha(d/'REPORT.json'),'html_sha256':r['html']['sha256']}
+ (d/'MEDIA_VERIFICATION_PORTABLE.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf8')
+ print(json.dumps({'take':name,'status':'passed','frames':mp4_decode['frames'],'duration_last_pts':mp4_decode['last_pts_seconds'],'bytes':target.stat().st_size}),flush=True)

@@ -1,0 +1,31 @@
+.earth-expedition { max-width: 880px; margin: 0 auto; color: #e8e3cf; }
+.earth-expedition header { padding: 20px 24px; border: 1px solid #6b8068; border-radius: 12px; background: linear-gradient(125deg,#283c32,#182b2d 65%,#344035); }
+.earth-expedition header h2 { margin: 7px 0 10px; color: #e6d49e; font-size: clamp(24px,4vw,36px); }
+.earth-expedition header p { max-width: 66ch; line-height: 1.65; }
+.earth-expedition small, .expedition-invitation small, .expedition-binding small { color: #afc0a1; font-size: 10px; letter-spacing: .12em; }
+.earth-expedition section, .expedition-binding { padding: 18px; margin: 16px 0; border: 1px solid #4e6252; border-radius: 9px; background: #23342bd9; }
+.earth-expedition h3, .expedition-binding h3 { color: #ddcfaa; margin: 3px 0 12px; }
+.earth-expedition h4, .earth-expedition h5, .expedition-binding h4 { color: #d7d9bd; margin: 5px 0 9px; }
+.earth-expedition p, .expedition-binding p { line-height: 1.65; }
+.earth-expedition button, .expedition-binding button, .expedition-invitation button { margin: 6px 8px 4px 0; min-height: 36px; }
+.expedition-terms { border-left: 3px solid #91a57a; padding-left: 18px; margin: 20px 0; }
+.expedition-choices { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+.expedition-choices section { margin: 0; }
+.expedition-choice { padding: 13px 15px; margin: 10px 0; border: 1px solid #698064; border-radius: 7px; background: #35473580; }
+.expedition-objectives article { padding: 14px 0; border-top: 1px solid #4b6150; }
+.expedition-finished { border-color: #8b9c69 !important; }
+.expedition-muted { font-size: 12px; color: #b2baaa; }
+.expedition-invitation { padding: 15px 18px; border: 1px solid #617a60; border-radius: 9px; background: #263b32; margin: 12px 0; }
+.expedition-invitation p { line-height: 1.6; }
+.expedition-binding-weapons { display: grid; grid-template-columns: repeat(auto-fit,minmax(235px,1fr)); gap: 10px; }
+.expedition-binding-weapons article { padding: 12px; background: #17291fe0; border: 1px solid #53694c; border-radius: 8px; }
+.expedition-binding-weapons article strong, .expedition-binding-weapons article span { display: block; }
+.expedition-binding-weapons article span { color: #aabd9b; font-size: 11px; margin: 5px 0; }
+.expedition-binding-preview { overflow-x: auto; padding: 13px; background: #18291d; border: 1px solid #89a273; border-radius: 8px; }
+.expedition-binding-preview table { border-collapse: collapse; width: 100%; font-size: 13px; }
+.expedition-binding-preview th, .expedition-binding-preview td { padding: 10px 8px; text-align: left; border-bottom: 1px solid #52694b; }
+.expedition-binding-preview td:last-child { color: #d5e6b0; font-weight: 700; }
+.expedition-map-key { margin-top: 14px; padding: 15px; border: 1px solid #6c885f; border-radius: 8px; background: #253d2f; }
+.expedition-map-key h3 { color: #d5e1ba; }
+.expedition-map-key li { margin: 12px 0; }
+@media (max-width: 650px) { .expedition-choices { grid-template-columns: 1fr; } .earth-expedition header { padding: 16px; } .expedition-binding-preview th, .expedition-binding-preview td { padding: 8px 5px; font-size: 11px; } }

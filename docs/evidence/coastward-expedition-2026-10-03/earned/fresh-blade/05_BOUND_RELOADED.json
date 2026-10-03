@@ -1,0 +1,1503 @@
+{
+  "earthExpedition": {
+    "version": 1,
+    "story": {
+      "accepted": true,
+      "branch": "stormfall-recovery",
+      "steps": [
+        "assess-load",
+        "prepare-allocation",
+        "read-water",
+        "clear-crossing",
+        "read-root-load",
+        "clear-root-pests",
+        "brace-root-channel",
+        "deliver-allocation"
+      ],
+      "claimed": true
+    },
+    "patrol": {
+      "lastClaim": 2,
+      "active": null
+    }
+  },
+  "realmTrails": {
+    "version": 1,
+    "records": {
+      "heaven-broken-choir-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "hell-open-cage-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "atlantis-bellglass-chart-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "earthlands-coastward-materials-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "cosmos-split-bearing-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      }
+    }
+  },
+  "journeys": {
+    "version": 1,
+    "realms": {
+      "heaven": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "hell": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "earthlands": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "atlantis": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "cosmos": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      }
+    }
+  },
+  "adventure": {
+    "version": 12,
+    "earthBinding": {
+      "version": 1,
+      "weapon": "trail_blade",
+      "kind": "edge"
+    },
+    "realmCraft": {
+      "version": 1,
+      "weapon": null
+    },
+    "earthGathering": {
+      "version": 1,
+      "accepted": false,
+      "prepared": [],
+      "verse": null,
+      "shared": false
+    },
+    "earthNotes": {
+      "version": 1,
+      "accepted": false,
+      "marks": [],
+      "compared": false,
+      "interpretation": null
+    },
+    "earthStory": {
+      "version": 1,
+      "accepted": false,
+      "steps": [],
+      "dispatch": null,
+      "arrived": false,
+      "claimed": false
+    },
+    "classPath": {
+      "version": 1,
+      "choice": null,
+      "readyAt": 0
+    },
+    "pursuit": {
+      "version": 1,
+      "pinned": null,
+      "claimed": 0,
+      "active": null,
+      "fittings": {}
+    },
+    "starter": {
+      "version": 1,
+      "accepted": false,
+      "bundles": [],
+      "reward": null
+    },
+    "crossing": {
+      "version": 1,
+      "entered": false,
+      "met": false,
+      "inscription": false,
+      "clapperRevealed": false,
+      "clapper": false,
+      "repaired": false,
+      "complete": false,
+      "reward": false,
+      "attuned": false,
+      "projects": []
+    },
+    "beacon": {
+      "version": 1,
+      "introduced": false,
+      "complete": false,
+      "status": "dormant",
+      "attempts": 0,
+      "failures": 0,
+      "reward": false,
+      "relic": "undecided",
+      "route": null,
+      "soul": {
+        "grace": false,
+        "equipped": null,
+        "radiance": 0,
+        "corruption": 0,
+        "scars": []
+      }
+    },
+    "arsenal": {
+      "version": 1,
+      "gems": {
+        "ruby": 0,
+        "moonstone": 0,
+        "amber": 0
+      },
+      "sockets": {},
+      "rangeMedal": false,
+      "bestTime": null
+    },
+    "road": {
+      "version": 1,
+      "entered": false,
+      "revealed": [],
+      "claimed": [],
+      "cartRepaired": false,
+      "beaconLit": false,
+      "reported": false
+    },
+    "elapsed": 876.3499999997507,
+    "revision": 91,
+    "started": true,
+    "dug": [],
+    "chips": [],
+    "defeated": [],
+    "drops": [],
+    "ore": 6,
+    "coins": 18,
+    "xp": 55,
+    "hp": 105,
+    "stamina": 100,
+    "tonics": 3,
+    "equipment": {
+      "weapon": "trail_blade",
+      "armor": "travel_coat",
+      "charm": null
+    },
+    "owned": [
+      "trail_blade",
+      "travel_coat"
+    ],
+    "companion": {
+      "bonded": false,
+      "name": "Briar",
+      "mode": "follow"
+    },
+    "relic": false,
+    "angelSeen": false,
+    "reward": null,
+    "deaths": 0,
+    "receipts": [
+      {
+        "id": "earned-north-1-0-1",
+        "fp": "[\"start\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-10",
+        "fp": "[\"target-select\",{\"id\":\"earth-stormfall-crossing-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-11",
+        "fp": "[\"rest\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-13",
+        "fp": "[\"target-select\",{\"id\":\"earth-stormfall-crossing-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-14",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-15",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-1-10",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-crossing-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-3-11",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-crossing-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-5-12",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-crossing-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-7-13",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-crossing-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-16",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-18",
+        "fp": "[\"target-select\",{\"id\":\"earth-stormfall-root-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-19",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-20",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-9-20",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-root-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-11-21",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-root-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-13-22",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-root-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-15-23",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-root-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-17-24",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-root-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-19-25",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-root-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-21-26",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-root-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-23-27",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-root-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-25-28",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-root-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-21",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-28",
+        "fp": "[\"rest\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-33",
+        "fp": "[\"target-select\",{\"id\":\"earth-living-road-patrol-v1-run-1-crossing\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-34",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-35",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-1-40",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-1-crossing\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-3-41",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-1-crossing\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-5-42",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-1-crossing\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-7-43",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-1-crossing\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-36",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-38",
+        "fp": "[\"target-select\",{\"id\":\"earth-living-road-patrol-v1-run-1-root\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-39",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-9-49",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-1-root\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-11-50",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-1-root\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-13-51",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-1-root\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-40",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-15-53",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-1-root\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-17-54",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-1-root\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-19-55",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-1-root\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-21-56",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-1-root\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-23-57",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-1-root\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-41",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-47",
+        "fp": "[\"rest\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-53",
+        "fp": "[\"target-select\",{\"id\":\"earth-living-road-patrol-v1-run-2-crossing\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-54",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-55",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-1-68",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-2-crossing\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-3-69",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-2-crossing\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-5-70",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-2-crossing\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-7-71",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-2-crossing\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-56",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-58",
+        "fp": "[\"target-select\",{\"id\":\"earth-living-road-patrol-v1-run-2-root\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-59",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-9-77",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-2-root\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-11-78",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-2-root\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-13-79",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-2-root\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-60",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-15-81",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-2-root\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-17-82",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-2-root\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-19-83",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-2-root\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-21-84",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-2-root\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-23-85",
+        "fp": "[\"attack\",{\"target\":\"earth-living-road-patrol-v1-run-2-root\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-61",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      }
+    ]
+  },
+  "sandbox": {
+    "version": 1,
+    "elapsed": 876.3499999997507,
+    "revision": 0,
+    "inventory": {
+      "wood": 12,
+      "stone": 0,
+      "fiber": 2,
+      "crystal": 0,
+      "plank": 0,
+      "block": 0,
+      "seeds": 4,
+      "berry": 0,
+      "axe": 0,
+      "pick": 0,
+      "floor": 0,
+      "wall": 0,
+      "masonry": 0,
+      "lantern": 0,
+      "bench": 0,
+      "bed": 0,
+      "fire": 0,
+      "workbench": 0
+    },
+    "nodes": [
+      {
+        "id": "timber-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "timber-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "timber-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "timber-4",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-1",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-2",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-3",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-stone-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-stone-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-fibre",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "crystal-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "crystal-2",
+        "hp": 4,
+        "readyAt": 0
+      }
+    ],
+    "bridge": false,
+    "placed": [],
+    "nextId": 1,
+    "stats": {
+      "gathered": 0,
+      "crafted": 0,
+      "harvested": 0
+    },
+    "milestones": [],
+    "recentCommands": [],
+    "cooldownUntil": 0
+  },
+  "score": {
+    "format": "eternities.score.v1",
+    "title": "A Window Left Open",
+    "bpm": 88,
+    "voice": "felt",
+    "melody": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    ],
+    "bass": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "drums": [
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    ]
+  },
+  "scoreRevision": 0,
+  "retreat": {
+    "version": 1,
+    "revision": 0,
+    "wall": "moss",
+    "floor": "oak",
+    "items": [
+      {
+        "slot": "nw",
+        "kind": "shelf",
+        "rotation": 0
+      },
+      {
+        "slot": "ne",
+        "kind": "piano",
+        "rotation": 0
+      },
+      {
+        "slot": "w",
+        "kind": "sofa",
+        "rotation": 1
+      },
+      {
+        "slot": "e",
+        "kind": "plant",
+        "rotation": 0
+      },
+      {
+        "slot": "c",
+        "kind": "rug",
+        "rotation": 0
+      }
+    ]
+  },
+  "visitor": {
+    "name": "Visitor",
+    "skin": 0,
+    "cloak": 0,
+    "hair": 0
+  },
+  "version": 9,
+  "seed": 2317,
+  "day": 1,
+  "hour": 21.143575000006376,
+  "weather": "clear",
+  "player": {
+    "x": 11,
+    "z": 9,
+    "yaw": -1.396124127786667
+  },
+  "visited": [
+    "market",
+    "commons"
+  ],
+  "flowers": [],
+  "notes": [],
+  "journal": [
+    {
+      "seq": 1,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 2,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 3,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 4,
+      "day": 1,
+      "hour": 17.209000000000014,
+      "kind": "discovery",
+      "text": "You found The makers’ exchange."
+    },
+    {
+      "seq": 5,
+      "day": 1,
+      "hour": 17.21305000000002,
+      "kind": "quest",
+      "text": "Oren supplied a trail blade, a lantern, three tonics and a salve for an injured animal. Find the northern mine."
+    },
+    {
+      "seq": 6,
+      "day": 1,
+      "hour": 17.464825000000427,
+      "kind": "earth-expedition",
+      "text": "Stormfall and the Living Road explicitly accepted. The route, danger and fixed payment are retained."
+    },
+    {
+      "seq": 7,
+      "day": 1,
+      "hour": 17.465050000000428,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 8,
+      "day": 1,
+      "hour": 17.465050000000428,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 9,
+      "day": 1,
+      "hour": 17.465050000000428,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 10,
+      "day": 1,
+      "hour": 17.715475000000833,
+      "kind": "earth-expedition",
+      "text": "Read the camp load board recorded."
+    },
+    {
+      "seq": 11,
+      "day": 1,
+      "hour": 17.715700000000833,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 12,
+      "day": 1,
+      "hour": 17.715700000000833,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 13,
+      "day": 1,
+      "hour": 17.715700000000833,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 14,
+      "day": 1,
+      "hour": 17.975125000001253,
+      "kind": "earth-expedition",
+      "text": "Stormfall allocation prepared. The standing refuge remains intact. Check the wetland watercourse."
+    },
+    {
+      "seq": 15,
+      "day": 1,
+      "hour": 18.015625000001318,
+      "kind": "earth-expedition",
+      "text": "Check the wetland watercourse recorded."
+    },
+    {
+      "seq": 16,
+      "day": 1,
+      "hour": 18.08380000000143,
+      "kind": "discovery",
+      "text": "You found The Firstlight Commons."
+    },
+    {
+      "seq": 17,
+      "day": 1,
+      "hour": 18.40015000000194,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 18,
+      "day": 1,
+      "hour": 18.40015000000194,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 19,
+      "day": 1,
+      "hour": 18.40015000000194,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 20,
+      "day": 1,
+      "hour": 18.44357500000201,
+      "kind": "earth-expedition",
+      "text": "Channel skitter cleared through actual combat for Stormfall and the Living Road. No legacy loot or XP is paid."
+    },
+    {
+      "seq": 21,
+      "day": 1,
+      "hour": 18.4984750000021,
+      "kind": "earth-expedition",
+      "text": "Read the living root anchor recorded."
+    },
+    {
+      "seq": 22,
+      "day": 1,
+      "hour": 18.56732500000221,
+      "kind": "earth-expedition",
+      "text": "Root-bank brute cleared through actual combat for Stormfall and the Living Road. No legacy loot or XP is paid."
+    },
+    {
+      "seq": 23,
+      "day": 1,
+      "hour": 18.594550000002254,
+      "kind": "earth-expedition",
+      "text": "Alternate brace fitted; the old root stays alive. Deliver your allocation at the return glade."
+    },
+    {
+      "seq": 24,
+      "day": 1,
+      "hour": 18.656875000002355,
+      "kind": "earth-expedition",
+      "text": "Allocation delivered. Return to Rill for the declared payment; it remains unclaimed."
+    },
+    {
+      "seq": 25,
+      "day": 1,
+      "hour": 18.657100000002355,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 26,
+      "day": 1,
+      "hour": 18.657100000002355,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 27,
+      "day": 1,
+      "hour": 18.657100000002355,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 28,
+      "day": 1,
+      "hour": 18.897175000002743,
+      "kind": "earth-expedition",
+      "text": "Stormfall and the Living Road paid once · +45 XP · +18 sunmarks · +3 ore · +8 wood · +4 fiber. The allocation is delivered and a separate brace carries the damaged connection. The old root organism remains alive. Rill recognizes your chosen practical approach; one Trailward binding is available at an outdoor home workbench."
+    },
+    {
+      "seq": 29,
+      "day": 1,
+      "hour": 18.897400000002744,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 30,
+      "day": 1,
+      "hour": 18.897400000002744,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 31,
+      "day": 1,
+      "hour": 18.897400000002744,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 32,
+      "day": 1,
+      "hour": 19.196200000003227,
+      "kind": "earth-expedition",
+      "text": "Living Road patrol · run 1 explicitly accepted. The route, danger and fixed payment are retained."
+    },
+    {
+      "seq": 33,
+      "day": 1,
+      "hour": 19.264375000003337,
+      "kind": "earth-expedition",
+      "text": "Inspect the wetland course recorded."
+    },
+    {
+      "seq": 34,
+      "day": 1,
+      "hour": 19.264600000003337,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 35,
+      "day": 1,
+      "hour": 19.264600000003337,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 36,
+      "day": 1,
+      "hour": 19.264600000003337,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 37,
+      "day": 1,
+      "hour": 19.60052500000388,
+      "kind": "earth-expedition",
+      "text": "Patrol channel skitter cleared through actual combat for Living Road patrol run 1. No legacy loot or XP is paid."
+    },
+    {
+      "seq": 38,
+      "day": 1,
+      "hour": 19.65542500000397,
+      "kind": "earth-expedition",
+      "text": "Inspect the supported root passage recorded."
+    },
+    {
+      "seq": 39,
+      "day": 1,
+      "hour": 19.709425000004057,
+      "kind": "earth-expedition",
+      "text": "Patrol root-bank brute cleared through actual combat for Living Road patrol run 1. No legacy loot or XP is paid."
+    },
+    {
+      "seq": 40,
+      "day": 1,
+      "hour": 19.774450000004162,
+      "kind": "earth-expedition",
+      "text": "Record the return glade recorded."
+    },
+    {
+      "seq": 41,
+      "day": 1,
+      "hour": 19.774675000004162,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 42,
+      "day": 1,
+      "hour": 19.774675000004162,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 43,
+      "day": 1,
+      "hour": 19.774675000004162,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 44,
+      "day": 1,
+      "hour": 20.000125000004527,
+      "kind": "routine",
+      "text": "Ilan is heading to commons."
+    },
+    {
+      "seq": 45,
+      "day": 1,
+      "hour": 20.000125000004527,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 46,
+      "day": 1,
+      "hour": 20.000125000004527,
+      "kind": "routine",
+      "text": "Oren is heading to garden."
+    },
+    {
+      "seq": 47,
+      "day": 1,
+      "hour": 20.01475000000455,
+      "kind": "earth-expedition",
+      "text": "Living Road patrol paid once · +5 XP · +4 sunmarks · +3 ore · +2 wood · +2 fiber. The accepted inspection circuit is recorded and paid once. Your first support repair and allocation remain recognized."
+    },
+    {
+      "seq": 48,
+      "day": 1,
+      "hour": 20.01497500000455,
+      "kind": "routine",
+      "text": "Ilan is heading to commons."
+    },
+    {
+      "seq": 49,
+      "day": 1,
+      "hour": 20.01497500000455,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 50,
+      "day": 1,
+      "hour": 20.01497500000455,
+      "kind": "routine",
+      "text": "Oren is heading to garden."
+    },
+    {
+      "seq": 51,
+      "day": 1,
+      "hour": 20.313775000005034,
+      "kind": "earth-expedition",
+      "text": "Living Road patrol · run 2 explicitly accepted. The route, danger and fixed payment are retained."
+    },
+    {
+      "seq": 52,
+      "day": 1,
+      "hour": 20.381950000005144,
+      "kind": "earth-expedition",
+      "text": "Inspect the wetland course recorded."
+    },
+    {
+      "seq": 53,
+      "day": 1,
+      "hour": 20.382175000005144,
+      "kind": "routine",
+      "text": "Ilan is heading to commons."
+    },
+    {
+      "seq": 54,
+      "day": 1,
+      "hour": 20.382175000005144,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 55,
+      "day": 1,
+      "hour": 20.382175000005144,
+      "kind": "routine",
+      "text": "Oren is heading to garden."
+    },
+    {
+      "seq": 56,
+      "day": 1,
+      "hour": 20.718100000005688,
+      "kind": "earth-expedition",
+      "text": "Patrol channel skitter cleared through actual combat for Living Road patrol run 2. No legacy loot or XP is paid."
+    },
+    {
+      "seq": 57,
+      "day": 1,
+      "hour": 20.773000000005776,
+      "kind": "earth-expedition",
+      "text": "Inspect the supported root passage recorded."
+    },
+    {
+      "seq": 58,
+      "day": 1,
+      "hour": 20.827000000005864,
+      "kind": "earth-expedition",
+      "text": "Patrol root-bank brute cleared through actual combat for Living Road patrol run 2. No legacy loot or XP is paid."
+    },
+    {
+      "seq": 59,
+      "day": 1,
+      "hour": 20.89202500000597,
+      "kind": "earth-expedition",
+      "text": "Record the return glade recorded."
+    },
+    {
+      "seq": 60,
+      "day": 1,
+      "hour": 20.89225000000597,
+      "kind": "routine",
+      "text": "Ilan is heading to commons."
+    },
+    {
+      "seq": 61,
+      "day": 1,
+      "hour": 20.89225000000597,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 62,
+      "day": 1,
+      "hour": 20.89225000000597,
+      "kind": "routine",
+      "text": "Oren is heading to garden."
+    },
+    {
+      "seq": 63,
+      "day": 1,
+      "hour": 21.132325000006357,
+      "kind": "earth-expedition",
+      "text": "Living Road patrol paid once · +5 XP · +4 sunmarks · +3 ore · +2 wood · +2 fiber. The accepted inspection circuit is recorded and paid once. Your first support repair and allocation remain recognized."
+    },
+    {
+      "seq": 64,
+      "day": 1,
+      "hour": 21.132550000006358,
+      "kind": "routine",
+      "text": "Ilan is heading to commons."
+    },
+    {
+      "seq": 65,
+      "day": 1,
+      "hour": 21.132550000006358,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 66,
+      "day": 1,
+      "hour": 21.132550000006358,
+      "kind": "routine",
+      "text": "Oren is heading to garden."
+    },
+    {
+      "seq": 67,
+      "day": 1,
+      "hour": 21.143575000006376,
+      "kind": "earth-expedition",
+      "text": "Trailward edge binding applied to Trail blade · +2 attack. Identity, sockets, earlier fittings and current health retained; nothing was equipped."
+    }
+  ],
+  "nextEvent": 68,
+  "residents": [
+    {
+      "id": "ilan",
+      "x": 0,
+      "z": 3,
+      "yaw": 1.1747148852305827,
+      "progress": 0.20276600000004677,
+      "conversations": 0
+    },
+    {
+      "id": "mara",
+      "x": 9,
+      "z": -5.8,
+      "yaw": 2.210182232481083,
+      "progress": 0.20044400000004445,
+      "conversations": 0
+    },
+    {
+      "id": "oren",
+      "x": -6,
+      "z": 13,
+      "yaw": 0.32994709214656154,
+      "progress": 0.20111900000004512,
+      "conversations": 0
+    }
+  ],
+  "settings": {
+    "quality": "balanced",
+    "cameraMode": "adventure",
+    "cameraFov": 60,
+    "cameraViews": {
+      "version": 1,
+      "lastDiorama": "follow",
+      "profiles": {}
+    },
+    "cameraCutaway": true,
+    "reducedMotion": false,
+    "labels": true,
+    "timeFlow": true,
+    "sound": false
+  }
+}
