@@ -107,3 +107,23 @@ The encounter fixture assigns a labelled synthetic valid accepted step prefix to
 The recovered Earth world bible, `earth-design-2026-09-14/design/EARTH_WORLD_BIBLE.md`, E03 lines 76–88, describes tended woods, canopy wetlands, root halls, glades and bounded creatures with territory and reasons to retreat. It treats the ancient supported passage as useful living infrastructure rather than a boss unlock. That direction supports an ordinary grounded local creature interpretation; it does not prescribe this boar-like silhouette, palette, anatomy or species name.
 
 The model and colors here are original procedural work using existing primitive kinds. No proprietary assets, Blender pipeline, texture download, new lore facts, protected organism, companion eligibility, damage rule, brain, physics, action, inventory or save field was added. The module's actual caller and rendered appearance remain Root's integration and verification work.
+
+## Actual caller CPU qualification, 2026-10-03
+
+Root integrated the exact-dispatch caller at `fee66ec1f68d4a8898ae5e7902ab9e8b6bfbfaf8`. The separate agent branch merged it as `d20659ddbbee642be815fdc03d031caa342dee05`. Reviewed `src/adventure-art.js` SHA-256 is `18e91cf752e85d3192f7812369e22ad9449889048e629d8192cbed2814866f28`. The accompanying HTML identity was independently read as 2,605,764 bytes, SHA-256 `ce2ee8b7efc491fc241685c82a3bdff9409d23f9a5ed58b467fd4363fa3027fa`; this CPU suite does not execute or visually qualify that HTML.
+
+The new `tests/earth_expedition_beast_caller.test.cjs` passes **10 focused tests, zero failures and zero skips**:
+
+```text
+node --test tests/earth_expedition_beast_caller.test.cjs
+```
+
+The VM executes the actual unmodified AdventureArt file with real Core, Adventure, world/expedition definitions and beast/skitter/companion implementations. A recording wrapper forwards every beast call into the real pure module. It records arguments and output rather than replacing the model with a stub. First-story and patrol accepted histories, selected target and combat modes/hit samples are explicitly synthetic in-memory fixtures. Their qualified enemy identities and terms come from production `Adventure.syncScene`/`EarthExpedition.enemies` rosters. These are not command-earned journeys or native game controls.
+
+The caller dispatches exactly one 41-part brute for each eligible roster actor. Wrong step, missing/unknown/prefixed/suffixed quest ID, wrong kind and absent terms do not select that branch; dead actors preserve existing suppression. The ordinary mine Prism sentinel and actual Hell Salvage sentinel retain the five original generic body submissions. Their bounded golden records were captured from actual pre-integration source `13e0a0e67063fc3b412de9cbb5ff2656ba4387bb`, at fixed actor/time/yaw and no hit. That original source blob's SHA-256 is `ddc502723d24b1f1639b76a315622288bb08cfc72881dfa4685c20ed7759e886`. The portable test stores just those five emitted records; it neither pastes the old renderer implementation nor requires old Git history.
+
+Nonzero-yaw and confirmed-hit controls compare the entire submitted beast output to its actual pure-module projection, with expected source-derived recoil translation, detecting duplicate rotation, scale or recoil. Future, missing, expired and reduced-motion hit samples add no recoil. Actual flash lifetime changes colors without selecting another body or modifying geometry. Selected-target rings remain at the enemy anchor; warning/progress rings remain at the fixed attack aim, using the original 0.8/1.2m radii and reduced-motion progress-ring suppression. Both body transforms and actual aim/target coordinates are checked together.
+
+The Root-only diorama health bar now uses actual support plus 1.18m, while generic sentinel bars keep their original 3.9m height; third-person suppresses those bars as before. Paused samples with unchanged authoritative timers ignore unrelated render-clock changes. Every recorded invocation preserves the durable state and source enemy record. No concrete regression was found in this bounded source/caller scope.
+
+This addendum supersedes the earlier pending **CPU caller** status only. Actual browser dispatch, movement, native storage, rendered pixels, both-camera readability, frame cadence and human acceptance remain separate Root-owned checks. The pure-module ten passes and caller ten passes are distinct suites; no complete verification run is claimed here.
