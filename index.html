@@ -2294,6 +2294,148 @@ function bindingCommand(ctx,weapon,kind,io){
 }
 const api={definition,patrol,MAX_RUN,BINDING_COST,fresh,validate,progress,points,at,commit,command,enemies,signature,defeat,freshBinding,validateBinding,bonus,bindingCommand};G.RealmEarthExpedition=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
+</script><script>/* Original local speech for the existing provisional Elderweald people.
+ * ET11/ET12 supply the living-support and limited-allocation premise, not these
+ * words or biographies. Reading saved facts never accepts, records or pays work.
+ */
+(function(G){'use strict';
+const E=G.RealmEarthExpedition||(typeof require==='function'?require('./earth-expedition.js'):null);
+function freeze(o){if(o&&typeof o==='object'){Object.values(o).forEach(freeze);Object.freeze(o);}return o;}
+const people=freeze({
+ 'elderweald-rill':{id:'elderweald-rill',name:'Rill · forestkeeper'},
+ 'elderweald-sela':{id:'elderweald-sela',name:'Sela · herbalist'}
+});
+const rill=freeze({
+ fresh:{title:'Timber and an open channel',lines:[
+  'The storm has loosened the road beside the wetland. I need supplies carried through while its watercourse stays open.',
+  'We can recover fallen timber or prepare a limited managed-coppice allocation. Read the terms and choose the work you want.',
+  'The old root carries part of this route. We can support its damaged connection without clearing the organism away.'
+ ],hint:'Read the expedition terms, then accept here if you want the work. The camp load board is southwest of me.'},
+ 'assess-load':{title:'Read the load first',lines:[
+  'Thank you for taking this on. The camp load board lists what the road and watercourse need.',
+  'Read it before choosing a supply. We will keep the wetland open as we carry the load through.'
+ ],hint:'Walk southwest to the load board. E opens the nearby work; choose its action there.'},
+ 'prepare-allocation':{title:'Your practical choice',lines:[
+  'The board is read. Stormfall makes the larger timber bundle; managed coppice keeps more fibre in the allocation.',
+  'Choose what suits your work. Both plans keep the standing shelter and the watercourse open.'
+ ],hint:'The stormfall preparation is southwest of the board; the managed plot is north. Prepare one allocation at its own work point.'},
+ 'read-water':{title:'Leave room for the water',lines:[
+  'Check the wetland before moving the load through. The shelter and its channel still need their space.',
+  'This delivery is not paid yet. Carry the chosen plan through the whole circuit, then bring it back to me.'
+ ],hint:'Follow the woodland route southwest to the wetland. Check the watercourse beside Sela; her advice is optional.'},
+ 'clear-crossing':{title:'The north-bank pocket',lines:[
+  'The watercourse check is done. The first infestation is in the pocket beside the footbridge’s north bank.',
+  'Leave room to move when the skitter commits. Keep the narrow bridge lane clear while you deal with it.'
+ ],hint:'Walk to the crossing pocket. Tab selects; 1 starts stationary autoattack. Brace or move during the tell, and stop walking before attacking again.'},
+ 'read-root-load':{title:'What the living anchor carries',lines:[
+  'You have cleared the crossing pocket. The living anchor is farther west, at the north mouth of the root passage.',
+  'Read what the damaged connection carries before touching the brace. The organism stays in place.'
+ ],hint:'Cross the footbridge down its middle. On the far bank, follow the route west to the reading point at the passage’s north mouth.'},
+ 'clear-root-pests':{title:'Keep your footing on the bank',lines:[
+  'You have read the living anchor. The second infestation is on the open bank east of the root passage.',
+  'The brute gives a long tell. Brace or step aside without crowding yourself against the passage walls.'
+ ],hint:'Meet the brute in its bank pocket. Attack with a clear lane; the old root and passage walls are not the target.'},
+ 'brace-root-channel':{title:'A support beside the old root',lines:[
+  'Both infestation pockets are clear. The alternate brace belongs beyond the southern end of the passage wall.',
+  'Set it beside the damaged connection. We are changing its support, not cutting away the living anchor.'
+ ],hint:'Go south through the root corridor. Past the wall ends, fit the brace on the east side at the marked work point.'},
+ 'deliver-allocation':{title:'Bring the allocation through',lines:[
+  'The alternate brace is fitted. The old organism remains alive, with its damaged connection supported alongside it.',
+  'Take your chosen allocation to the return glade. The path leads back toward the fields rather than restarting the repair.'
+ ],hint:'Deliver at the return glade southeast of the passage, then come back to the clearing camp to claim your payment.'},
+ ready:{title:'Your delivery is here',lines:[
+  'You have delivered the allocation. The brace stays, and the old organism remains alive.',
+  'Your payment is ready and still unpaid. Ask to collect it when you have room for the complete bundle.'
+ ],hint:'Choose Claim here when you are ready. Your finished delivery remains waiting until you do.'}
+});
+const sela=freeze({
+ fresh:{title:'Room for the water',lines:[
+  'The channel needs room even when timber is scarce. The standing shelter belongs to this refuge too.',
+  'Rill has two practical supply plans. You can read them at the camp without taking on an errand for me.'
+ ],hint:'The clearing camp is northeast along the woodland route. Speak with Rill to read and explicitly accept the expedition.'},
+ 'assess-load':{title:'Before choosing a bundle',lines:[
+  'Start with the camp load board. It tells you which connection needs support and which channel needs to stay open.',
+  'A useful supply plan begins with that reading. You need no new profession to choose one.'
+ ],hint:'Return northeast to the camp load board, read it there, then choose a physical preparation.'},
+ 'prepare-allocation':{title:'Two useful supplies',lines:[
+  'Recovering stormfall keeps more timber in the bundle. The limited managed-coppice plan keeps more fibre.',
+  'Either can support the same local brace. Pick the allocation you want to carry through.'
+ ],hint:'Both preparations are beside the camp: fallen timber southwest of the load board, managed growth north of it.'},
+ 'read-water':{title:'The check beside the channel',lines:[
+  'Check the watercourse here before taking the load onward. Keeping its drainage open is part of the work.',
+  'The bridge is southwest from this wetland. Approach its north bank before crossing down the middle.'
+ ],hint:'E opens the watercourse check nearby. Record that action first; talking with me does not replace it.'},
+ 'clear-crossing':{title:'Footing before the release',lines:[
+  'The wetland check is done. The skitter’s open pocket is beside the bridge’s north bank.',
+  'A blade needs close reach. A bow reaches farther, but its arrow still needs a clear lane and can miss a moving target.'
+ ],hint:'Tab selects; 1 starts stationary autoattack. Stop to release, then Brace or move during the tell. Walking does not keep autoattack firing.'},
+ 'read-root-load':{title:'Cross through the middle',lines:[
+  'The crossing pocket is clear. Use the middle of the footbridge; its rails are real boundaries.',
+  'On the far bank, go west to the root passage’s north mouth and read the living anchor before changing its load.'
+ ],hint:'Follow the supported route to the root reading point. The old organism is part of the support, not an encounter to clear.'},
+ 'clear-root-pests':{title:'Leave yourself a way out',lines:[
+  'The root reading is done. The brute’s pocket is on the open bank east of the passage.',
+  'Give yourself space for its tell. A bow needs a clear lane; a blade needs close reach. Neither benefits from backing into a wall.'
+ ],hint:'Brace or move when the brute winds up. Settle your footing before the next attack; your road home remains open.'},
+ 'brace-root-channel':{title:'The alternate brace',lines:[
+  'Both pockets are clear. Fit the alternate support beyond the south end of the passage walls.',
+  'The old organism has carried this connection for a long time. Give the damaged connection another support beside it.'
+ ],hint:'Use the open root corridor, then the brace work point east of its southern mouth. The living root stays alive.'},
+ 'deliver-allocation':{title:'A different return',lines:[
+  'The separate brace is fitted. The old organism remains alive; the return does not undo that repair.',
+  'The glade is southeast of the passage. Deliver your allocation there, then return to Rill at the camp.'
+ ],hint:'Follow the glade route toward the fields. Rill collects the completed delivery at the camp; I do not collect or pay it.'},
+ ready:{title:'Take your completed delivery home',lines:[
+  'Your allocation has reached the glade and the separate brace is fitted. The living anchor remains alive.',
+  'The delivery is still unpaid. Rill is waiting at the clearing camp; there is no further errand for me.'
+ ],hint:'Return northeast through the woodland route to Rill and explicitly claim the complete payment there.'}
+});
+const patrolAdvice=freeze({
+ 'inspect-water':{line:'Check the wetland course again for this circuit. Its channel and the original brace stay in place.',hint:'Follow the woodland route to the wetland and record this patrol’s watercourse inspection.'},
+ 'clear-crossing':{line:'This circuit’s skitter is in the north-bank pocket. A clear lane matters for an arrow; a blade needs close reach.',hint:'Select this patrol’s crossing foe. Stop for stationary autoattack; Brace or move during the tell. An older cleared pocket does not finish this circuit.'},
+ 'inspect-root':{line:'The crossing pocket is clear for this circuit. Read the existing support at the root passage’s north mouth.',hint:'Cross down the footbridge’s middle, then follow the far-bank route west to inspect the supported root anchor.'},
+ 'clear-root-pests':{line:'This circuit’s brute is in the open bank pocket east of the root passage. Leave room to Brace or step aside.',hint:'Select this patrol’s bank foe. Use a clear attack lane, and keep your retreat away from the passage walls.'},
+ 'inspect-glade':{line:'Both pockets are clear for this circuit. Check the return glade without rebuilding the original brace.',hint:'Follow the return route southeast to the glade and record this circuit’s last inspection, then return to Rill.'}
+});
+function bindingRecord(raw,claimed){
+ const b=raw===undefined?E.freshBinding():raw;
+ if(!b||typeof b!=='object'||Array.isArray(b)||Object.keys(b).length!==3||!['version','weapon','kind'].every(k=>Object.hasOwn(b,k))||b.version!==1)return null;
+ if(b.weapon===null&&b.kind===null)return{version:1,weapon:null,kind:null};
+ if(!claimed||typeof b.weapon!=='string'||!['edge','shelter'].includes(b.kind))return null;
+ const A=G.RealmAdventure||(typeof require==='function'?require('./adventure.js'):null),g=A?.GEAR[b.weapon];
+ if(!g||!Object.hasOwn(A.GEAR,b.weapon)||g.slot!=='weapon'||g.style&&!['blade','bow'].includes(g.style))return null;
+ return{version:1,weapon:b.weapon,kind:b.kind,name:g.name};
+}
+function recognition(branch){return branch==='stormfall-recovery'?'You chose recovered stormfall, keeping the standing shelter trees and a larger timber allocation.':'You chose the limited managed coppice, keeping more fibre in the allocation and the work inside its marked boundary.';}
+function bindingLine(b){return b.weapon?'Your Trailward '+b.kind+' binding is already on '+b.name+'. It stays with that weapon.':null;}
+function paidHint(r,b){
+ if(r.patrol.lastClaim===E.MAX_RUN)return'The recorded inspection circuits are complete. Other work and your road home remain open.';
+ if(b.weapon)return'Your binding is complete. If you want another inspection circuit, explicitly accept a new patrol with Rill at the camp.';
+ return r.story.branch==='stormfall-recovery'?'Compare at the outdoor home bench: 3 ore, 8 sunmarks and 6 fibre. If you need two more fibre, gathering or one paid patrol supplies them.':'Compare the optional binding at the outdoor home bench. It needs 3 ore, 8 sunmarks and 6 fibre; choose one owned blade or bow.';
+}
+function reading(personId,ledger,binding){
+ if(typeof personId!=='string'||!Object.hasOwn(people,personId)||!E)return null;
+ let r;try{r=E.validate(ledger);}catch{return null;}
+ const b=bindingRecord(binding,r.story.claimed);if(!b)return null;
+ const speaker=people[personId].name,isRill=personId==='elderweald-rill',p=E.progress(r),bound=bindingLine(b);let title,lines,hint;
+ if(r.story.claimed&&r.patrol.active){
+  const run=r.patrol.active.run;title='Inspection circuit '+run;lines=[recognition(r.story.branch),'The first brace stays and the old organism remains alive. This patrol inspects the route; it does not repeat the repair.'];
+  if(p.patrol.ready){lines.push('Circuit '+run+' is checked. Its payment is ready and still unpaid.');hint=isRill?'Choose Claim for this circuit here when you have room for its complete payment.':'Return to Rill at the clearing camp and explicitly claim this circuit’s payment.';}
+  else{const next=patrolAdvice[p.patrol.next[0].id];lines.push(next.line);hint=next.hint;}
+  if(bound)lines.push(bound);
+ }else if(r.story.claimed){
+  title=isRill?'Your allocation is remembered':'The root keeps its support';lines=[recognition(r.story.branch)];
+  if(r.patrol.lastClaim){const q=E.patrol.reward;lines.push('Patrol '+r.patrol.lastClaim+' was paid: '+q.coins+' sunmarks, '+q.ore+' ore, '+q.materials.wood+' timber and '+q.materials.fiber+' fibre.');}
+  else{const q=E.definition.reward,c=E.definition.steps[1].choices.find(c=>c.id===r.story.branch);lines.push('The delivery was paid: '+q.coins+' sunmarks, '+q.ore+' ore, '+c.materials.wood+' timber and '+c.materials.fiber+' fibre.');}
+  lines.push('The separate brace remains fitted and the old organism remains alive. Using your supplies does not undo that work.');if(bound)lines.push(bound);hint=paidHint(r,b);
+ }else{
+  const key=!r.story.accepted?'fresh':p.story.ready?'ready':p.story.next[0].id,part=(isRill?rill:sela)[key];title=part.title;lines=[...part.lines];hint=part.hint;
+  if(r.story.branch)lines.unshift(recognition(r.story.branch));
+ }
+ return freeze({speaker,title,lines,hint});
+}
+const api=freeze({people,reading});G.RealmEarthExpeditionDialogue=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
 </script><script>/* Original read-only work props and ally projection, sharing the rule anchors. */
 (function(G){'use strict';
 const decor={cameraSolid:false,cutaway:false,rough:.88};
@@ -5823,6 +5965,105 @@ G.RealmRoadArt={gate,make,draw,TREES:R.TREES};})(globalThis);
  const api=Object.freeze({motion,pose,parts,draw});
  G.RealmCompanionArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
+</script><script>/* Original grounded Root-bank brute interpretation, local +Z forward.
+ * Actual placement/timers/flash belong to the caller. No movement or combat
+ * authority, no wall-clock gait, no inferred attack result or hit recoil. */
+(function(G){'use strict';
+ const add=(a,b)=>a.map((n,i)=>n+b[i]),sub=(a,b)=>a.map((n,i)=>n-b[i]);
+ const scale=(a,n)=>a.map(v=>v*n),dot=(a,b)=>a.reduce((n,v,i)=>n+v*b[i],0);
+ const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+ const unit=a=>scale(a,1/Math.hypot(...a)),clamp=n=>Math.max(0,Math.min(1,n));
+ const smooth=n=>n*n*(3-2*n);
+ const point=(m,p)=>[0,1,2].map(i=>m[i]*p[0]+m[i+4]*p[1]+m[i+8]*p[2]+m[i+12]);
+ const mul=(a,b)=>{const m=Array(16).fill(0);for(let c=0;c<4;c++)for(let r=0;r<4;r++)for(let k=0;k<4;k++)m[c*4+r]+=a[k*4+r]*b[c*4+k];return m;};
+ const frame=(p,pitch=0,yaw=0)=>{const a=Math.cos(pitch),b=Math.sin(pitch),c=Math.cos(yaw),d=Math.sin(yaw);return[c,b*d,-a*d,0,0,a,b,0,d,-b*c,a*c,0,...p,1];};
+ function pose(options={}){
+  if(!options||typeof options!=='object')throw new TypeError('Use actual beast pose options.');
+  const supplied=options.mode??'idle',mode=['pursue','return'].includes(supplied)?'chase':supplied;
+  if(!['idle','chase','windup','recover'].includes(mode))throw new RangeError('Unsupported beast mode.');
+  const timer=options.timer??0,windup=options.windup??1.35,recovery=options.recovery??2.3;
+  if(!Number.isFinite(timer)||!Number.isFinite(windup)||windup<=0||!Number.isFinite(recovery)||recovery<=0)
+   throw new RangeError('Use finite actual combat timer and positive durations.');
+  if(options.time!==undefined&&!Number.isFinite(options.time))throw new RangeError('Beast sample time must be finite.');
+  const anticipation=mode==='windup'?smooth(clamp(1-timer/windup)):0;
+  const settling=mode==='recover'?smooth(clamp(timer/recovery)):0;
+  const crouch=mode==='windup'?.02+.06*anticipation:.08*settling;
+  const headPitch=mode==='windup'?.04+.18*anticipation:.22*settling;
+  const bodyY=.55-crouch,headAnchor=[0,bodyY+.015,.33],legs={};
+  const stance=mode==='chase'?.025:mode==='windup'?.035*anticipation:.035*settling;
+  for(const side of [-1,1])for(const front of [false,true]){
+   const id=(side<0?'left':'right')+(front?'Front':'Rear');
+   legs[id]={hip:[side*.28,bodyY-.08,front?.20:-.33],
+    knee:[side*.35,.25-crouch*.25,front?.15:-.35],
+    foot:[side*.43,.065,front?.28+stance:-.40-stance]};
+  }
+  return{mode,anticipation,recovery:settling,crouch,bodyY,headAnchor,headPitch,legs,
+   reducedMotion:options.reducedMotion===true,paused:options.paused===true};
+ }
+ function parts(options={}){
+  if(!options||!['x','z','base','yaw'].every(k=>Number.isFinite(options[k])))
+   throw new TypeError('Beast needs finite actual X/Z, support height and yaw.');
+  if(options.aim!==undefined&&options.aim!==null&&(!Number.isFinite(options.aim.x)||!Number.isFinite(options.aim.z)))
+   throw new TypeError('Actual attack aim must be finite or null.');
+  const posed=pose(options),root=frame([options.x,options.base,options.z],0,options.yaw),head=frame(posed.headAnchor,posed.headPitch);
+  const identity=frame([0,0,0]),out=[],flash=options.flash===true;
+  const emit=(kind,local,p,s,c,id,extra={})=>{
+   const transform=mul(root,mul(local,frame(p))),m=transform.slice();
+   for(let col=0;col<3;col++)for(let row=0;row<3;row++)m[col*4+row]*=s[col];
+   out.push({kind,p:point(root,point(local,p)),s:s.slice(),c:flash?0xf8e4b9:c,m,
+    cameraSolid:false,cutaway:false,appearanceOnly:true,rough:.94,
+    expeditionBeastPart:id,poseMode:posed.mode,confirmedFlash:flash,...extra});
+  };
+  const skin=(kind,p,s,c,id,extra)=>emit(kind,identity,p,s,c,id,extra);
+  const bone=(local,a,b,width,depth,c,id,kind='box')=>{
+   const axis=unit(sub(b,a)),hint=Math.abs(axis[0])>.9?[0,0,1]:[1,0,0];
+   const right=unit(sub(hint,scale(axis,dot(hint,axis)))),back=cross(right,axis);
+   const basis=[...right,0,...axis,0,...back,0,...scale(add(a,b),.5),1];
+   const length=Math.hypot(...sub(b,a));
+   emit(kind,mul(local,basis),[0,0,0],[width,kind==='octa'?length/1.3:length,depth],c,id,
+    {anchorFrom:point(root,point(local,a)),anchorTo:point(root,point(local,b))});
+  };
+  skin('round',[0,posed.bodyY,-.08],[.99,.55,.94],0x746b49,'body');
+  skin('round',[0,posed.bodyY-.025,.22],[.81,.52,.56],0x837753,'shoulder');
+  skin('round',[0,posed.bodyY-.15,0],[.77,.22,.78],0x514f36,'belly');
+  emit('round',head,[0,0,0],[.60,.42,.47],0x80704b,'head');
+  emit('round',head,[0,-.075,.22],[.40,.23,.30],0x9b835a,'muzzle');
+  emit('box',head,[0,-.075,.347],[.28,.14,.03],0x3f4031,'nose');
+  for(const side of [-1,1]){
+   const id=side<0?'left':'right';
+   emit('round',head,[side*.20,-.07,.09],[.22,.20,.28],0x766846,id+'-cheek');
+   emit('octa',head,[side*.225,.13,-.08],[.15,.20,.08],0x615d3d,id+'-ear');
+   emit('round',head,[side*.205,.06,.14],[.072,.072,.058],0x252d26,id+'-eye');
+   emit('round',head,[side*.085,-.055,.366],[.035,.027,.018],0x222921,id+'-nostril');
+   const a=[side*.17,-.11,.23],b=[side*.225,-.085,.33],c=[side*.23,.015,.365];
+   bone(head,a,b,.045,.045,0xc6ba91,id+'-tusk-base','octa');
+   bone(head,b,c,.036,.036,0xd8cbaa,id+'-tusk-tip','octa');
+  }
+  for(const [id,l]of Object.entries(posed.legs)){
+   bone(identity,l.hip,l.knee,.145,.16,0x685f40,id+'-upper');
+   bone(identity,l.knee,l.foot,.125,.135,0x4c4c35,id+'-lower');
+   skin('round',l.knee,[.16,.16,.16],0x665f42,id+'-joint');
+   skin('box',[l.foot[0],.045,l.foot[2]],[.19,.09,.21],0x353e2f,id+'-hoof');
+  }
+  for(let i=0;i<4;i++){
+   const z=-.34+i*.16,y=posed.bodyY+.275*Math.sqrt(1-((z+.08)/.47)**2)-.01;
+   skin('octa',[0,y,z],[.20,.12,.12],0x5b603e,'ridge-'+i);
+  }
+  const tailA=[0,posed.bodyY+.025,-.47],tailB=[0,posed.bodyY-.01,-.61],tailC=[.025,posed.bodyY+.025,-.67];
+  bone(identity,tailA,tailB,.052,.052,0x655d3d,'tail-base');
+  bone(identity,tailB,tailC,.045,.045,0x655d3d,'tail-tip');
+  skin('round',tailC,[.074,.064,.074],0x4b5236,'tail-tuft');
+  if(out.length>=65)throw new RangeError('Expedition beast geometry budget exceeded.');
+  return out;
+ }
+ function draw(out,options){
+  if(!out||!['box','round','octa'].every(kind=>Array.isArray(out[kind])&&Object.isExtensible(out[kind])&&Object.getOwnPropertyDescriptor(out[kind],'length').writable))
+   throw new TypeError('Beast needs box, round and octa output arrays.');
+  const geometry=parts(options);for(const{kind,...item}of geometry)out[kind].push(item);return geometry.length;
+ }
+ const api=Object.freeze({pose,parts,draw});G.RealmEarthExpeditionBeastArt=api;
+ if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
 </script><script>/* Procedural cave and chapter artwork. Read-only projection of game state. */
 (function(G){'use strict';const A=G.RealmAdventure,TAU=Math.PI*2;
 const companionSamples=new WeakMap(),companionFrames=new WeakMap(),skitterSamples=new WeakMap(),skitterFrames=new WeakMap();
@@ -5855,7 +6096,13 @@ function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.
  }
  if(A.combatScene(sim)){
   for(const e of r.enemies){if(e.hp<=0||e.kind==='practice'||e.eventEnemy||e.custom==='bell')continue;const starts=Object.fromEntries(Object.entries(out).map(([k,v])=>[k,v.length]));let flash=e.flash>s.elapsed,body=flash?0xf8e4b9:e.kind==='boss'?0x688f83:e.kind==='sentinel'?0x9e92b8:e.custom==='river-bristle'?0x866747:0x7e8670;
-   if(e.kind==='skitter'){
+   const terms=G.RealmEarthExpedition,rootBank=!!terms&&e.kind==='sentinel'&&e.defeatStep==='clear-root-pests'&&(e.expeditionQuest===terms?.definition.id||e.expeditionQuest===terms?.patrol.id);
+   if(rootBank){
+    const reducedMotion=sim.state.settings.reducedMotion,hitAge=s.elapsed-(e.hitAt??-9),recoil=!reducedMotion&&hitAge>=0&&hitAge<.18?(1-hitAge/.18)*.12:0;
+    const divisor=e.hitFrom?Math.hypot(e.x-e.hitFrom.x,e.z-e.hitFrom.z)||1:1;
+    G.RealmEarthExpeditionBeastArt.draw(out,{x:e.x+(e.hitFrom?(e.x-e.hitFrom.x)/divisor*recoil:0),z:e.z+(e.hitFrom?(e.z-e.hitFrom.z)/divisor*recoil:0),base:support(sim,e.x,e.z),yaw:e.yaw,mode:e.mode,timer:e.timer,windup:e.windup,recovery:e.recovery,aim:e.aim,flash,reducedMotion,time:s.elapsed,paused:sim.paused});
+   }
+   else if(e.kind==='skitter'){
     const named=e.custom==='river-bristle',motion=G.RealmSkitterArt.motion(skitterSamples.get(e),{x:e.x,z:e.z,time:s.elapsed,scene:sim.room,paused:sim.paused,reducedMotion:sim.state.settings.reducedMotion});
     const pose=G.RealmSkitterArt.pose({...motion,named,mode:['pursue','return'].includes(e.mode)?'chase':e.mode,timer:e.timer,windup:e.windup??.75,recoverDuration:e.recovery??1.1});
     const amount=sim.state.settings.reducedMotion?0:Math.max(0,1-(s.elapsed-(e.hitAt??-9))/.18)*.12,divisor=e.hitFrom?Math.hypot(e.x-e.hitFrom.x,e.z-e.hitFrom.z)||1:1;
@@ -5867,7 +6114,7 @@ function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.
    else if(e.kind==='charger'){add('round',e.x,2.55,e.z,2.2,1.8,2.8,body);add('octa',e.x,2.8,e.z+1.15,1.3,1.1,1.2,0xb6a480);for(const sign of[-1,1]){add('round',e.x+sign*.9,3.2,e.z+.9,.55,.83,.78,0xd8c8a0);box(e.x+sign*.65,1.95,e.z+.65,.32,1,.37,0x68634e);box(e.x+sign*.65,1.95,e.z-.85,.32,1,.37,0x68634e);add('round',e.x+sign*.30,3.03,e.z+1.67,.10,.10,.08,0xf5c188,{em:1});}for(let i=0;i<5;i++)add('octa',e.x,3.1,e.z-.9+i*.35,.42,.7,.42,0xc79874,{em:.22});}
    else{add('round',e.x,2.75,e.z,1.85,1.7,2.7,body);add('octa',e.x,3.48,e.z+1.05,.91,1.4,.85,body);for(const dx of[-.64,.64])for(const dz of[-.72,.75])box(e.x+dx,2,e.z+dz,.26,1.3,.3,0x55796e,{r:[Math.sin(t*2+dx+dz)*.08,0,0]});for(const sign of[-1,1]){box(e.x+sign*.48,4.35,e.z+.98,.15,1.7,.15,0xccbf96,{r:[0,0,-sign*.40]});for(let j=0;j<3;j++)box(e.x+sign*(.56+j*.18),4.12+j*.43,e.z+1,.56,.11,.12,0xe0cda1,{r:[0,0,sign*.2]});}for(let i=0;i<5;i++)add('octa',e.x+Math.sin(i*2.1)*.6,3.25,e.z-.8+i*.35,.36,.75,.36,e.hp<e.maxHP/2?0xc392bc:0xabc5bb,{em:.45});for(const dx of[-.26,.26])add('round',e.x+dx,3.6,e.z+1.48,.13,.13,.13,0xf2dab0,{em:1});}
    // Confirmed-hit recoil and the named beast silhouette affect art only.
-   if(e.kind!=='skitter'){
+   if(e.kind!=='skitter'&&!rootBank){
    const named=e.custom==='river-bristle',scale=named?1.32:1,recoil=sim.state.settings.reducedMotion?0:Math.max(0,1-(s.elapsed-(e.hitAt??-9))/.18)*.12,rd=e.hitFrom?Math.hypot(e.x-e.hitFrom.x,e.z-e.hitFrom.z)||1:1;
    if(named)for(let i=0;i<5;i++)add('octa',e.x,2.52,e.z-.45+i*.19,.18,.40,.2,0xcbb47e);
    for(const[k,items]of Object.entries(out))for(let j=starts[k];j<items.length;j++){const item=items[j];item.p[0]=e.x+(item.p[0]-e.x)*scale;item.p[1]=1.58+(item.p[1]-1.58)*scale;item.p[2]=e.z+(item.p[2]-e.z)*scale;item.s=item.s.map(v=>v*scale);}
@@ -5877,7 +6124,7 @@ function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.
    if(sim.presentation?.attackTarget===e.id)ring(e.x,e.z,e.kind==='charger'?1.35:.8,0xf1d29a);
    if(e.kind==='charger'&&e.mode==='windup'){for(let j=0;j<18;j++)for(const sign of[-1,1]){let u=j*.5,dx=e.chargeDir.x,dz=e.chargeDir.z;box(e.x+dx*u+dz*.9*sign,1.63,e.z+dz*u-dx*.9*sign,.10,.045,.25,0xe5a5b7,{r:[0,e.yaw,0],em:.7});}ring(e.x+e.chargeDir.x*9,e.z+e.chargeDir.z*9,.85,0xf0bfd1);}
    if(e.kind!=='charger'&&e.mode==='windup'){let rad=e.telegraphRadius??(e.kind==='boss'?2.4:e.kind==='sentinel'?1.2:1.05);ring(e.aim.x,e.aim.z,rad,0xd098c8);if(!sim.state.settings.reducedMotion)ring(e.aim.x,e.aim.z,rad*Math.min(1,Math.max(.15,e.timer/(e.windup??1))),0xe0bad4,1.6);}
-   if(!sim.presentation?.perspective){let w=e.kind==='boss'?2.1:1.15,y=e.kind==='boss'?5.35:3.9;box(e.x,y,e.z,w,.10,.09,0x273743);box(e.x-w/2+w*e.hp/e.maxHP/2,y+.008,e.z+.035,w*e.hp/e.maxHP,.072,.07,e.kind==='boss'?0xcf9ba4:0xd1ba8d,{em:.4});}
+   if(!sim.presentation?.perspective){let w=e.kind==='boss'?2.1:1.15,y=e.kind==='boss'?5.35:rootBank?support(sim,e.x,e.z)+1.18:3.9;box(e.x,y,e.z,w,.10,.09,0x273743);box(e.x-w/2+w*e.hp/e.maxHP/2,y+.008,e.z+.035,w*e.hp/e.maxHP,.072,.07,e.kind==='boss'?0xcf9ba4:0xd1ba8d,{em:.4});}
   }
   for(const id of s.drops){let e=A.roster(sim).find(e=>e.id===id);if(!e)continue;box(e.x,1.88,e.z,.60,.47,.5,0x947856);box(e.x,2.11,e.z,.68,.13,.58,0xc9b489);add('octa',e.x,2.56+Math.sin(t*2)*.1,e.z,.19,.38,.19,0xf2d299,{em:1.2});}
   if(sim.room==='mine'&&!s.relic){let glow=s.defeated.includes('hart');for(let i=0;i<7;i++)box(9+i*.055,2.47+i*.09,-10,.13,.28,.07,glow?0xffe8ba:0x99ac9f,{r:[0,0,-.35],em:glow?1.3:.1});}
@@ -6356,6 +6603,10 @@ class WorldUI{
   if(!d)return{title:'The Roads of Light',html:this.invitation()+'<div class="world-cards">'+W.definitions().map(d=>'<article><small>'+esc(d.kicker)+'</small><h2>'+esc(d.name)+'</h2><p>'+esc(d.description)+'</p>'+(this.rpg.trails?.status(d.id)||'')+button('Read this opening','world-select',d.id)+'</article>').join('')+'</div><p class="world-note">Travel from the five-light marker east of Firstlight’s workshop, or a local Road of Light return marker. Entering is optional; each realm has a free return. Your home, gear, story choices and stored XP remain yours.</p>'+(!this.sim.room||this.local()?button(current?'Walk to this realm’s Road of Light marker':'Walk to the Roads of Light marker','world-road'):'<p>Return to Firstlight to reach the five-light marker.</p>')};
   const here=this.sim.room===d.room,p=d.points.find(p=>p.id===this.reading);let html='<article class="world-reading"><small>'+esc(d.kicker)+'</small><h2>'+esc(d.name)+'</h2><p class="world-quote">'+esc(d.description)+'</p>';
   if(p){const record=this.sim.state.journeys.realms[d.id],recognized=here&&p.id===d.quest.giverId&&record.firstClaimed&&!record.active;html+='<section><h3>'+esc(p.name)+'</h3><p class="world-dialogue">'+esc(recognized?d.quest.completionText:p.text)+'</p></section>';}
+  if(here&&!diving&&d.id==='earthlands'&&p&&W.near(this.sim,p)){
+   const speech=G.RealmEarthExpeditionDialogue?.reading(p.id,this.sim.state.earthExpedition,this.sim.state.adventure.earthBinding);
+   if(speech)html+='<section class="expedition-dialogue"><small>'+esc(speech.speaker)+'</small><h3>'+esc(speech.title)+'</h3>'+speech.lines.map(line=>'<p>'+esc(line)+'</p>').join('')+'<p>'+esc(speech.hint)+'</p></section>';
+  }
   if(here&&!diving&&d.id==='earthlands'&&p?.id==='channel-view'&&W.near(this.sim,p))html+='<section><h3>The crossing in profile</h3><p>Frame the supported bridge from the side, then keep walking. Your camera style stays yours. V swaps third person and diorama; R resets the current view.</p>'+button('Frame the channel bridge','world-bridge-view')+'</section>';
   html+='<p><strong>Return to Firstlight:</strong> available at any time, free. Reopening or switching characters resumes your saved home checkpoint, retaining accepted work. Crossing makes no allegiance, class or main-story choice.</p>'+(d.id==='earthlands'?this.rpg.expedition?.invitation()||'':'')+(this.rpg.trails?.page(d.id)||'')+'<details class="world-surveys"'+(!this.sim.state.realmTrails.records[G.RealmTrails.definitions().find(q=>q.realm===d.id)?.id]?.accepted||this.sim.state.realmTrails.records[G.RealmTrails.definitions().find(q=>q.realm===d.id)?.id]?.claimed||this.sim.state.journeys.realms[d.id].active?' open':'')+'><summary>Routine local survey · first fee and intentional repeat work</summary>'+this.work(d)+'</details><section><h3>Bring useful progress home</h3><p>Use sunmarks and ore at Oren’s workbench. The item guide compares blade and bow projects with your current equipment before you choose what to pursue.</p>'+button('Inspect item & recipe guide','open','pursuit')+'</section>';
   if(d.dive)html+='<section><h3>Bellglass visitor gallery</h3><p>A small optional submerged route. F ascends, G descends; releasing holds depth. A supplied breath envelope covers this gallery, with no air timer. The air court is a real dry volume; your companion waits on the quay.</p><p>The routine visitor survey stays on dry civic ground. Sahra’s optional Bellglass chart trail uses two submerged depths and the air court. Swim to the gallery landing for the dry return, or use Return to Firstlight at any time.</p>'+(here&&!diving&&p?.id===d.dive.entryId?button('Enter the visitor gallery','world-dive'):'')+'</section>';
@@ -6393,7 +6644,7 @@ function routePoints(sim){
  return active.next.flatMap(s=>s.choices?s.choices.map(c=>({...c,step:s.id,kind:'interact',quest:E.definition.id})): [{...s,step:s.id,quest:p.patrol.active?E.patrol.id:E.definition.id,run:p.patrol.active?.run??null}]).map((p,i)=>({...p,mark:String.fromCharCode(65+i)}));
 }
 class ExpeditionUI{
- constructor(rpg){this.rpg=rpg;this.pending=null;this.reading=null;}
+ constructor(rpg){this.rpg=rpg;this.pending=null;this.reading=null;this.owner=null;}
  get sim(){return this.rpg.sim;}
  reset(){this.pending=null;this.reading=null;}
  point(){
@@ -6453,6 +6704,10 @@ class ExpeditionUI{
   if(tab!=='expedition')return null;
   const d=E.definition,r=this.sim.state.earthExpedition.story,p=E.progress(this.sim),here=this.sim.room===ROOM;
   let html='<article class="earth-expedition"><header><small>ELDERWEALD · OPTIONAL EARTH EXPEDITION</small><h2>'+esc(d.title)+'</h2><p>'+esc(d.summary)+'</p></header><div class="expedition-terms"><p><strong>Route:</strong> leave Coastward’s west coppice for the clearing camp, cross the wetland footbridge, visit the root-channel and return by the glade toward the fields. Two supported junctions join the same country.</p><p><strong>Danger:</strong> '+esc(d.danger)+'</p><p><strong>Fixed story payment:</strong> '+fee(d.reward)+'. Your chosen material allocation is added to this payment.</p><p><strong>Weapon project:</strong> one Trailward binding on an owned blade or bow: edge +2 attack, or shelter +1 guard / +10 maximum health. Cost: 3 ore, 8 sunmarks and 6 fibre. Inspect before spending; equipment stays yours.</p></div>';
+  if(at(this.sim,d.giver)){
+   const speech=G.RealmEarthExpeditionDialogue?.reading(d.giver.id,this.sim.state.earthExpedition,this.sim.state.adventure.earthBinding);
+   if(speech)html+='<section class="expedition-dialogue"><small>'+esc(speech.speaker)+'</small><h3>'+esc(speech.title)+'</h3>'+speech.lines.map(line=>'<p>'+esc(line)+'</p>').join('')+'<p class="expedition-muted">'+esc(speech.hint)+'</p></section>';
+  }
   html+=xpNote(this.sim.state.adventure,d.reward);
   if(!r.accepted){
    const choices=d.steps.find(s=>s.choices)?.choices||[];
@@ -6480,6 +6735,9 @@ class ExpeditionUI{
   return html+'</section>';
  }
  tick(){
+  // Restore the active outing once per character body. Subsequent manual tracker
+  // selections stay deliberate, including an older pinned equipment project.
+  if(this.owner!==this.sim){this.owner=this.sim;const e=this.sim.state.earthExpedition;if(e.story.accepted&&!e.story.claimed||e.patrol.active)this.rpg.quest='expedition';}
   if(this.rpg.quest!=='expedition')return;
   const s=this.sim.state.earthExpedition,p=E.progress(this.sim),patrol=!!p.patrol.active,progress=patrol?p.patrol:p.story;
   document.querySelector('#tracked-chapter').textContent=patrol?'ELDERWEALD · PATROL '+p.patrol.active.run:'ELDERWEALD · YOUR LIVING ROAD';

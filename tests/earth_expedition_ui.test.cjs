@@ -147,6 +147,15 @@ test('actual RPG tick leaves expedition ready/paid/patrol tracker last over conc
  }}finally{globalThis.document=prior;}
 });
 
+test('hydrated expedition restores over an older pinned project once, then respects manual tracking',()=>{
+ const prior=globalThis.document,doc=documentStub();globalThis.document=doc;
+ try{const f=fixture({steps:['assess-load']});f.rpg.quest='project';f.ui.tick();assert.equal(f.rpg.quest,'expedition');assert.equal(doc.querySelector('#tracked-title').textContent,E.definition.title);
+  f.rpg.quest='project';f.ui.tick();assert.equal(f.rpg.quest,'project','manual equipment tracker remains selected after hydration');
+  f.sim=new C.Simulation(f.sim.snapshot());f.rpg.quest='project';f.ui.tick();assert.equal(f.rpg.quest,'expedition','new restored body gets its active work back');
+  f.sim=new C.Simulation();f.rpg.quest='story';f.ui.tick();assert.equal(f.rpg.quest,'story','fresh other character is not silently accepted');
+ }finally{globalThis.document=prior;}
+});
+
 test('actual app applyWorld restore selects accepted or ready expedition and active patrol without losing history',()=>{
  const p=path.resolve(arg('--app-source')||path.join(ROOT,'src/app.js')),source=fs.readFileSync(p,'utf8'),trackerFailures=[];evidence.push({appSource:p,sha256:hash(p)});
  for(const mode of['accepted','ready','patrol']){

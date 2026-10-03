@@ -21,7 +21,7 @@ function routePoints(sim){
  return active.next.flatMap(s=>s.choices?s.choices.map(c=>({...c,step:s.id,kind:'interact',quest:E.definition.id})): [{...s,step:s.id,quest:p.patrol.active?E.patrol.id:E.definition.id,run:p.patrol.active?.run??null}]).map((p,i)=>({...p,mark:String.fromCharCode(65+i)}));
 }
 class ExpeditionUI{
- constructor(rpg){this.rpg=rpg;this.pending=null;this.reading=null;}
+ constructor(rpg){this.rpg=rpg;this.pending=null;this.reading=null;this.owner=null;}
  get sim(){return this.rpg.sim;}
  reset(){this.pending=null;this.reading=null;}
  point(){
@@ -81,6 +81,10 @@ class ExpeditionUI{
   if(tab!=='expedition')return null;
   const d=E.definition,r=this.sim.state.earthExpedition.story,p=E.progress(this.sim),here=this.sim.room===ROOM;
   let html='<article class="earth-expedition"><header><small>ELDERWEALD · OPTIONAL EARTH EXPEDITION</small><h2>'+esc(d.title)+'</h2><p>'+esc(d.summary)+'</p></header><div class="expedition-terms"><p><strong>Route:</strong> leave Coastward’s west coppice for the clearing camp, cross the wetland footbridge, visit the root-channel and return by the glade toward the fields. Two supported junctions join the same country.</p><p><strong>Danger:</strong> '+esc(d.danger)+'</p><p><strong>Fixed story payment:</strong> '+fee(d.reward)+'. Your chosen material allocation is added to this payment.</p><p><strong>Weapon project:</strong> one Trailward binding on an owned blade or bow: edge +2 attack, or shelter +1 guard / +10 maximum health. Cost: 3 ore, 8 sunmarks and 6 fibre. Inspect before spending; equipment stays yours.</p></div>';
+  if(at(this.sim,d.giver)){
+   const speech=G.RealmEarthExpeditionDialogue?.reading(d.giver.id,this.sim.state.earthExpedition,this.sim.state.adventure.earthBinding);
+   if(speech)html+='<section class="expedition-dialogue"><small>'+esc(speech.speaker)+'</small><h3>'+esc(speech.title)+'</h3>'+speech.lines.map(line=>'<p>'+esc(line)+'</p>').join('')+'<p class="expedition-muted">'+esc(speech.hint)+'</p></section>';
+  }
   html+=xpNote(this.sim.state.adventure,d.reward);
   if(!r.accepted){
    const choices=d.steps.find(s=>s.choices)?.choices||[];
@@ -108,6 +112,9 @@ class ExpeditionUI{
   return html+'</section>';
  }
  tick(){
+  // Restore the active outing once per character body. Subsequent manual tracker
+  // selections stay deliberate, including an older pinned equipment project.
+  if(this.owner!==this.sim){this.owner=this.sim;const e=this.sim.state.earthExpedition;if(e.story.accepted&&!e.story.claimed||e.patrol.active)this.rpg.quest='expedition';}
   if(this.rpg.quest!=='expedition')return;
   const s=this.sim.state.earthExpedition,p=E.progress(this.sim),patrol=!!p.patrol.active,progress=patrol?p.patrol:p.story;
   document.querySelector('#tracked-chapter').textContent=patrol?'ELDERWEALD · PATROL '+p.patrol.active.run:'ELDERWEALD · YOUR LIVING ROAD';
