@@ -108,10 +108,15 @@ function southWork(out,sim,d,r,step,complete,def){
   beam([x,bed+.12,z],[x,yy+.32,z],.06,.06,0x879b8d,'landing-marker-mast');
   box(x,yy,z,.06,.69,.72,0x658782,'landing-marker-frame');
   if(complete){
-   box(x-.037,yy,z,.025,.55,.6,0xb7cab5,'fitted-landing-plate');
-   box(x-.055,yy,z,.015,.035,.4,0xefd5a0,'modern-route-arrow');
    const toward=Math.sign(def.dive.exit.z-z);
-   for(const slope of [-1,1])box(x-.055,yy+slope*.07,z+toward*.15,.015,.035,.2,0xefd5a0,'modern-route-arrow',{r:[toward*slope*Math.PI/4,0,0],towardExit:toward});
+   // The filled support frame needs a fitted face on both sides. Preserve the
+   // west geometry and the actual exit direction; never reflect the meaning.
+   for(const sign of [-1,1]){
+    const markerFace=sign<0?'west':'east';
+    box(x+sign*.037,yy,z,.025,.55,.6,0xb7cab5,'fitted-landing-plate',{markerFace});
+    box(x+sign*.055,yy,z,.015,.035,.4,0xefd5a0,'modern-route-arrow',{markerFace});
+    for(const slope of [-1,1])box(x+sign*.055,yy+slope*.07,z+toward*.15,.015,.035,.2,0xefd5a0,'modern-route-arrow',{r:[toward*slope*Math.PI/4,0,0],towardExit:toward,markerFace});
+   }
   }
  }
 }

@@ -36,7 +36,7 @@ const work=pp=>pp.filter(p=>p.appearanceOnly),roles=(pp,id)=>pp.filter(p=>p.trai
 
 test('all legal Southern progress snapshots emit bounded supported kinds and finite positive production matrices',()=>{
  for(const realm of ['earthlands','atlantis'])for(const sim of states(realm)){
-  const pp=render(sim);assert.ok(pp.length<=120,`${realm}: ${pp.length}`);
+  const pp=render(sim);assert.ok(pp.length<=(realm==='atlantis'?47:97),`${realm}: ${pp.length}`);
   for(const p of pp){
    assert.ok(['box','octa','disc'].includes(p.kind));assert.ok(p.p.every(Number.isFinite));assert.ok(p.s.every(v=>Number.isFinite(v)&&v>0));
    const m=matrix(p);assert.equal(m.length,16);assert.ok([...m].every(Number.isFinite));assert.ok(vertices(p).flat().every(Number.isFinite));
@@ -72,13 +72,25 @@ test('Bellglass reveals separate recorded readings, corrected layered chart and 
  assert.equal(roles(chart,'charted-depth-connection').length,1);assert.equal(roles(chart,'charted-court-doorway').length,3);
  assert.equal(roles(chart,'fitted-landing-plate').length,0);
  const done=render(snapshot('atlantis',true,d.steps.map(s=>s.id)));
- assert.equal(roles(done,'fitted-landing-plate').length,1);assert.equal(roles(done,'modern-route-arrow').length,3);
+ assert.equal(roles(done,'fitted-landing-plate').length,2);assert.equal(roles(done,'modern-route-arrow').length,6);
  assert.deepEqual(roles(raw,'old-masonry-plate'),roles(done,'old-masonry-plate').map(p=>({...p,workState:'unaccepted'})));
  const arrow=roles(done,'modern-route-arrow').filter(p=>p.towardExit),exit=W.definition('atlantis').dive.exit;
  assert.ok(arrow.every(p=>(p.p[2]-d.steps[3].z)*(exit.z-d.steps[3].z)>0));
  const tips=arrow.map(p=>E.M.transform(matrix(p),[0,0,p.towardExit*.5]));
  assert.ok(tips.every(p=>Math.abs(p[1]-(d.steps[3].y+.7))<.001),'both branches meet at the forward arrow point');
  assert.ok(tips.every(p=>(p[2]-d.steps[3].z)*Math.sign(exit.z-d.steps[3].z)>.21));
+ const frame=bounds(roles(done,'landing-marker-frame')[0]);
+ for(const face of ['west','east']){
+  const plate=roles(done,'fitted-landing-plate').find(p=>p.markerFace===face),bb=bounds(plate);
+  assert.ok(plate,face+' fitted plate');
+  assert.equal(roles(done,'modern-route-arrow').filter(p=>p.markerFace===face).length,3);
+  if(face==='west'){assert.ok(bb.min[0]<frame.min[0]-.015&&bb.max[0]>=frame.min[0],'west plate remains attached outside the frame');}
+  else assert.ok(bb.max[0]>frame.max[0]+.015&&bb.min[0]<=frame.max[0],'east plate is exposed outside the filled frame');
+  for(const p of roles(done,'modern-route-arrow').filter(p=>p.markerFace===face)){
+   const a=bounds(p);if(face==='east')assert.ok(a.max[0]>bb.max[0]&&a.min[0]<=bb.max[0]);
+   else assert.ok(a.min[0]<bb.min[0]&&a.max[0]>=bb.min[0]);
+  }
+ }
 });
 test('actual Earth mesh feet stay on canonical ground and clear walking, task and giver body envelopes',()=>{
  const def=W.definition('earthlands'),d=dFor('earthlands'),routes=def.routes.flatMap(r=>r.points.slice(1).map((p,i)=>[r.points[i],p]));
