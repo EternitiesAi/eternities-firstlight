@@ -18,8 +18,13 @@ parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--output', type=Path, default=ROOT/'evidence10/realm-givers-browser')
 parser.add_argument('--drawer-probe', action='store_true', help='Bounded native close-button overlap reproduction only.')
 parser.add_argument('--labels-only', action='store_true', help='Bounded Tovan/Merren companion-label and native control regression only.')
+parser.add_argument('--elderweald-probe', action='store_true', help='Bounded native Earth Rill/Sela giver qualification only; both cameras and all four Earth reduced-motion actors remain checked.')
 args = parser.parse_args()
-assert not (args.drawer_probe and args.labels_only), 'Choose one bounded probe.'
+assert sum([args.drawer_probe, args.labels_only, args.elderweald_probe]) <= 1, 'Choose one bounded probe.'
+EXPECTED_GIVERS = ('heaven-rielle', 'heaven-calen', 'heaven-yselle', 'hell-istra',
+                   'hell-tovan', 'vessa', 'merren', 'nereme', 'sahra',
+                   'elderweald-rill', 'elderweald-sela')
+ELDERWEALD_GIVERS = ('elderweald-rill', 'elderweald-sela')
 OUT = args.output.resolve()
 if os.name == 'nt':
     assert OUT.drive.upper() == 'D:', 'Heavy Windows evidence must remain on D.'
@@ -30,7 +35,7 @@ fixture = json.loads(SOURCE.read_text(encoding='utf-8'))
 report = {'method': __doc__, 'status': 'running', 'checks': [], 'events': [],
           'browser_errors': [], 'errors': [], 'screenshots': [], 'givers': [],
           'ablations': [], 'companion_labels': [],
-          'scope': 'companion-labels-only' if args.labels_only else 'drawer-only' if args.drawer_probe else 'all-givers-and-companion-labels',
+          'scope': 'elderweald-givers-only' if args.elderweald_probe else 'companion-labels-only' if args.labels_only else 'drawer-only' if args.drawer_probe else 'all-givers-and-companion-labels',
           'html_sha256': sha(ROOT/'index.html'),
           'earned_source': {'path': str(SOURCE), 'sha256': sha(SOURCE)},
           'source_head': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
@@ -49,7 +54,7 @@ def preserved(s):
     return {'adventure': {k: v for k, v in a.items() if k not in ['elapsed', 'stamina']},
             'sandbox': {k: s['sandbox'][k] for k in ['inventory','placed','nextId','stats','milestones','bridge','recentCommands']},
             **{k: s[k] for k in ['notes', 'score', 'scoreRevision', 'retreat',
-                                'visitor', 'flowers', 'journeys', 'realmTrails']}}
+                                'visitor', 'flowers', 'journeys', 'realmTrails', 'earthExpedition']}}
 
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self, *a, **kw):
@@ -276,7 +281,7 @@ try:
         page.locator('#settings').click();page.locator('#quality').select_option('low');page.locator('#close-panel').click()
         close()
         all_ids=[]
-        for realm in (['hell','earthlands'] if args.labels_only else ['heaven','hell','atlantis','earthlands']):
+        for realm in (['earthlands'] if args.elderweald_probe else ['hell','earthlands'] if args.labels_only else ['heaven','hell','atlantis','earthlands']):
             enter(realm)
             if args.drawer_probe:
                 page.locator('#settings').click();page.locator('#setting-reducedMotion').check()
@@ -289,8 +294,10 @@ try:
                 drawer_regression('desktop-close')
                 drawer_regression('compact-close',compact=True)
             d=ev('(id)=>RealmWorldFoundations.definition(id)',realm)
-            targets=[p for p in d['points'] if p['kind']=='person' and ev('(id)=>Object.hasOwn(RealmGiversArt.profiles,id)',p['id'])]
+            local_targets=[p for p in d['points'] if p['kind']=='person' and ev('(id)=>Object.hasOwn(RealmGiversArt.profiles,id)',p['id'])]
+            targets=local_targets
             if args.labels_only:targets=[p for p in targets if p['id'] in ['hell-tovan','merren']]
+            if args.elderweald_probe:targets=[p for p in targets if p['id'] in ELDERWEALD_GIVERS]
             page.wait_for_function('()=>!!__giverProbe.engine')
             for point in targets:
                 id=point['id'];all_ids.append(id)
@@ -322,8 +329,18 @@ try:
                     appearance=ev(ABLATE,id);appearance['camera']=camera;report['ablations'].append(appearance)
                     check(id+' '+camera+' actual framebuffer contains this giver',appearance['changedChannels']>30,appearance)
                     check(id+' '+camera+' appearance ablation restores exact pixels and authority',appearance['restoredChannels']==0 and appearance['glError']==0 and appearance['statePure'] and appearance['playerPure'] and appearance['writerRestored'],appearance)
-                page.keyboard.press('e');page.wait_for_selector('#rpg-content .world-dialogue')
-                check(id+' physical E opens that existing name and dialogue',point['name'] in page.locator('#rpg-content').inner_text() and point['text'] in page.locator('#rpg-content .world-dialogue').inner_text())
+                interaction_before=preserved(state())
+                if id=='elderweald-rill':
+                    expected_reading=ev('()=>RealmEarthExpeditionDialogue.reading("elderweald-rill",Realm.state.earthExpedition,Realm.state.adventure.earthBinding)')
+                page.keyboard.press('e')
+                if id=='elderweald-rill':
+                    page.wait_for_selector('#rpg-content .expedition-dialogue')
+                    actual_reading=ev('''()=>{const n=document.querySelector('#rpg-content .expedition-dialogue');return{speaker:n.querySelector('small').textContent,title:n.querySelector('h3').textContent,lines:Array.from(n.querySelectorAll(':scope > p:not(.expedition-muted)'),p=>p.textContent),hint:n.querySelector('.expedition-muted').textContent};}''')
+                    check(id+' physical E opens the actual state-derived expedition reading',bool(expected_reading) and actual_reading==expected_reading and page.locator('#rpg-tabs [data-id="expedition"][aria-current="page"]').count()==1,{'expected':expected_reading,'actual':actual_reading})
+                    check(id+' reading grants no ledger credit, payment or equipment change',preserved(state())==interaction_before)
+                else:
+                    page.wait_for_selector('#rpg-content .world-dialogue')
+                    check(id+' physical E opens that existing name and dialogue',point['name'] in page.locator('#rpg-content').inner_text() and point['text'] in page.locator('#rpg-content .world-dialogue').inner_text())
                 screenshot(id+'-interaction')
                 before=ev('JSON.stringify(Realm.state)');ev('()=>{for(let i=0;i<3;i++)Realm.test.render()}')
                 check(id+' repeated production drawing is byte-pure while modal-paused',ev('JSON.stringify(Realm.state)')==before and ev('__giverProbe.pure'))
@@ -337,7 +354,7 @@ try:
                 page.wait_for_timeout(250)
                 quiet_a=ev('Object.fromEntries(Object.entries(__giverProbe.last).filter(([id,r])=>r.options.realm===Realm.diagnostics.world.id))')
                 page.wait_for_timeout(500);quiet_b=ev('Object.fromEntries(Object.entries(__giverProbe.last).filter(([id,r])=>r.options.realm===Realm.diagnostics.world.id))')
-                check(realm+' UI reduced motion freezes all local giver geometry',all(r['options']['reducedMotion'] and [p['m'] for p in r['parts']]==[p['m'] for p in quiet_b[id]['parts']] for id,r in quiet_a.items()) and len(quiet_a)==len(targets))
+                check(realm+' UI reduced motion freezes all local giver geometry',all(r['options']['reducedMotion'] and [p['m'] for p in r['parts']]==[p['m'] for p in quiet_b[id]['parts']] for id,r in quiet_a.items()) and sorted(quiet_a)==sorted(quiet_b)==sorted(p['id'] for p in local_targets),{'expected_local_ids':sorted(p['id'] for p in local_targets),'actual_local_ids':sorted(quiet_a)})
                 page.locator('#settings').click();page.locator('#setting-reducedMotion').uncheck();page.locator('#close-panel').click()
             check(realm+' visiting and inspecting preserve complete earned work/history',preserved(state())==baseline)
             if realm=='heaven':
@@ -357,8 +374,10 @@ try:
                 check(realm+' native free return preserves canonical earned state',preserved(state())==baseline)
         if args.labels_only:
             check('bounded label probe covers exactly Tovan and Merren',all_ids==['hell-tovan','merren'] and len(report['companion_labels'])==2)
+        elif args.elderweald_probe:
+            check('bounded Elderweald probe covers exactly Rill and Sela in both cameras',all_ids==list(ELDERWEALD_GIVERS) and sorted((r['id'],r['camera']) for r in report['ablations'])==sorted((id,camera) for id in ELDERWEALD_GIVERS for camera in ['adventure','follow']))
         elif not args.drawer_probe:
-            check('all and only the nine adopted giver profiles were qualified',sorted(all_ids)==sorted(ev('Object.keys(RealmGiversArt.profiles)')) and len(all_ids)==9)
+            check('all and only the eleven adopted giver profiles were qualified',sorted(all_ids)==sorted(EXPECTED_GIVERS)==sorted(ev('Object.keys(RealmGiversArt.profiles)')) and len(all_ids)==11)
             calls=ev('__giverProbe.calls');page.wait_for_timeout(250)
             check('old home NPC route invokes no adopted giver drawing',ev('__giverProbe.calls')==calls)
             enter('cosmos');page.wait_for_timeout(250)
