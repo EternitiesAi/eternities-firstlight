@@ -1,5 +1,7 @@
 /* Actual accepted combat/timers with labelled synthetic initial placements and
- * bow craft materials. The separate journey and normal-RAF film earn inputs. */
+ * bow craft materials. The optionality-predicate case also resolves the named
+ * foe synthetically; it is not an earned named fight. Separate journeys and
+ * normal-RAF films earn their inputs and outcomes. */
 'use strict';
 const{test}=require('node:test'),assert=require('node:assert/strict');
 const C=require('../src/core.js'),A=require('../src/adventure.js'),AR=require('../src/arsenal.js'),T=require('../src/combat.js'),Q=require('../src/starter.js');
