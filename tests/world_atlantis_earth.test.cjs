@@ -4,6 +4,7 @@ const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs'),vm=require('node:vm');
 require('../src/coastward-settlement-art.js');
+require('../src/coastward-woodland-art.js');
 const W=require('../src/world-atlantis-earth.js');
 const E=require('../src/engine.js');
 const [earth,sea]=W.realms,R=.31,BODY=1.7,G=1.57;
@@ -131,7 +132,7 @@ test('dive entry and wet exit anchors agree with reachable transfer destinations
 });
 
 test('actual decoration is finite, deterministic, bounded and pure across claimed/unclaimed worlds',()=>{
- const kinds=new Set(['box','cylinder','cone','roof','round','leaf','ring','mountain-ridge','timber-panel']);
+ const kinds=new Set(['box','cylinder','cone','roof','round','octa','leaf','ring','mountain-ridge','timber-panel']);
  for(const def of W.realms)for(const claimed of [false,true]){
   const parts=record(def,claimed);assert.ok(parts.length<1500);assert.deepEqual(parts,record(def,claimed));
   for(const p of parts){assert.ok(kinds.has(p.kind));assert.ok(p.p.every(Number.isFinite));assert.ok(p.s.every(n=>Number.isFinite(n)&&n>0));assert.ok(Number.isInteger(p.color));assert.equal(p.opt.cameraSolid,false);if(p.opt.skyImage)assert.equal(p.opt.cutaway,false);}

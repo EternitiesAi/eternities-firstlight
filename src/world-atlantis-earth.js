@@ -202,10 +202,7 @@
     // Narrow inset seams; ends stop short of junctions to avoid coincident faces.
     box(x,height(x,z)+.007,z,.12,.012,length-.2,0xaea184,{pathSeam:true,r:[0,Math.atan2(bx-ax,bz-az),0]});
    }
-   trees.forEach(([x,z],i)=>{
-    const base=height(x,z),scale=.8+(i%3)*.12;
-    for(let k=0;k<3;k++) add('cone',x,base+1.8+k*.72,z,(3.8-k*.7)*scale,2*scale,(3.8-k*.7)*scale,[0x537859,0x648663,0x729571][k],{wind:2,solidId:'woodland-trunk-'+i});
-   });
+   count+=G.RealmCoastwardWoodlandArt.decorate(art,def,{height});
    // Field rows leave the authored work-loop and settlement road entirely clear.
    for(const side of [-1,1]) for(let row=0;row<4;row++) for(let n=0;n<9;n++) {
     const x=side*(20+row*1.6),z=-41-n*1.9;
