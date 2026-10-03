@@ -1,0 +1,615 @@
+{
+  "method": "Exact byte inventory excluding this self-referential manifest. Earlier source epochs stay labelled; final remote verification is reported on the delivery PR. No personal saves.",
+  "files": [
+    {
+      "path": "browser/gallery-aperture-18f/HARNESS.py",
+      "bytes": 6568,
+      "sha256": "092c02e64d4e672ab2308dd14a04c6ec1e6fb39eaf588a093b6c337fad32c45b"
+    },
+    {
+      "path": "browser/gallery-aperture-18f/REPORT.json",
+      "bytes": 2783,
+      "sha256": "39fb1046feda8e8f49451c829c010681a2b404e5fa4d1e3497218f0699c9bccc"
+    },
+    {
+      "path": "browser/realm-work-18f34b0/HARNESS.py",
+      "bytes": 35678,
+      "sha256": "f612ad029a32ab182503ad1fe4307cee6e251206bb43bb0919dc8037fdcee5c9"
+    },
+    {
+      "path": "browser/realm-work-18f34b0/NATIVE_EARNED_UPPER_GAUGE.json",
+      "bytes": 32166,
+      "sha256": "e67c87a12a87d798df35b58f036d499df392ca32b0e61eceb42170f85cced7e9"
+    },
+    {
+      "path": "browser/realm-work-18f34b0/QUALIFICATION_RECEIPT.json",
+      "bytes": 52383,
+      "sha256": "4c86094b46397f3271376675c2c6883086be7d5000433d7e73e0aaef14c3df8a"
+    },
+    {
+      "path": "browser/realm-work-18f34b0/REPORT.json",
+      "bytes": 2605652,
+      "sha256": "65284dbae084af53b2f03630bd273c76321f0c965fdabc261877de9948b17a7f"
+    },
+    {
+      "path": "browser/realm-work-18f34b0/screens/atlantis-chart-corrected-diorama-actual.png",
+      "bytes": 624616,
+      "sha256": "c5734499a3014fd7704d4384a790ec0bf520066348b6765c0b13ea9a89a1f6c1"
+    },
+    {
+      "path": "browser/realm-work-18f34b0/screens/atlantis-marker-recorded-diorama-actual.png",
+      "bytes": 559919,
+      "sha256": "40d26ace275426a097de5711a38016459ea31f9d480b5ac6167514934674eee6"
+    },
+    {
+      "path": "browser/realm-work-18f34b0/screens/atlantis-marker-recorded-third-actual.png",
+      "bytes": 685001,
+      "sha256": "e6495b73447933035435c5489e7922577e4cb225a3be29c30b85c9abfafb5895"
+    },
+    {
+      "path": "browser/realm-work-18f34b0/screens/atlantis-upper-gauge-recorded-diorama-detail-actual.png",
+      "bytes": 637840,
+      "sha256": "24be83d8a1d049a106fc9e322c75c9ffc9c2dfefc1fb9b3c3fb493c2fc5207b9"
+    },
+    {
+      "path": "browser/realm-work-18f34b0/screens/atlantis-upper-gauge-recorded-third-detail-actual.png",
+      "bytes": 797670,
+      "sha256": "cc0182fdd70c9f1f9e35130fddc83d9add060760b7a04e484527ab455d09c46a"
+    },
+    {
+      "path": "browser/realm-work-18f34b0/screens/earthlands-road-pack-recorded-third-actual.png",
+      "bytes": 875260,
+      "sha256": "902ba274103c6881bb66a185716df0997b35be338f957cc9a64ddbca86e8932b"
+    },
+    {
+      "path": "CAPTURE_EPOCHS.json",
+      "bytes": 6908,
+      "sha256": "fc29113f44759b192c82a2ea3a225521a2f4d5b7782d625f759e600584297056"
+    },
+    {
+      "path": "captures/atlantis-aperture-final-04/FINAL_WORLD.json",
+      "bytes": 29358,
+      "sha256": "a93f649d205d9369c6e83277071907f3e8dfd1e25e76ceb741c6bc00efa9ba22"
+    },
+    {
+      "path": "captures/atlantis-aperture-final-04/REPORT.json",
+      "bytes": 114158,
+      "sha256": "542098b400d2518b1b9370ac079d79739f8aec52ebd67a71ba70132823e6ec46"
+    },
+    {
+      "path": "captures/atlantis-marker-final-03/FINAL_WORLD.json",
+      "bytes": 29361,
+      "sha256": "3f1f31f28cfebf6e188b3158236bf3cc9dcbeb0eb53958535be278fe5be84388"
+    },
+    {
+      "path": "captures/atlantis-marker-final-03/REPORT.json",
+      "bytes": 114099,
+      "sha256": "d6551e4d5861ef357598399abb832359f0194fc5d60ff772ab89bb19bdb16d97"
+    },
+    {
+      "path": "captures/bridge-layered-final-01/FINAL_WORLD.json",
+      "bytes": 13267,
+      "sha256": "ee46a91a49f95f4569bd9b230225ab12745f53c87da9a6726a9226e2c3cfee1d"
+    },
+    {
+      "path": "captures/bridge-layered-final-01/REPORT.json",
+      "bytes": 44317,
+      "sha256": "ff0d5ab5529757566b25c4b3ab2a5173b0a10fb2a6175f19e14704fe34e9364a"
+    },
+    {
+      "path": "captures/coastward-work-final-01/FINAL_WORLD.json",
+      "bytes": 15418,
+      "sha256": "3a3f95ef8d2f33cd319dde24bf11d0857fd9ff1aebdba167b3533b28a3161ec1"
+    },
+    {
+      "path": "captures/coastward-work-final-01/REPORT.json",
+      "bytes": 114919,
+      "sha256": "b389b7423c77245443a49f1ed85e977d93fa8bd72c11f8658230493eaab1c19a"
+    },
+    {
+      "path": "captures/cosmos-alignment-final-01/FINAL_WORLD.json",
+      "bytes": 15273,
+      "sha256": "a3bfd47c2bdcafb35ca0267ec8072527c118cf9b1b041a2d36111a2fc8c4c0e5"
+    },
+    {
+      "path": "captures/cosmos-alignment-final-01/REPORT.json",
+      "bytes": 66805,
+      "sha256": "d7bfce0d4cad79ac8d226dbb0dc14d828614773219f6d4c21b5df07355e76a0f"
+    },
+    {
+      "path": "captures/heaven-feel-final-01/FINAL_WORLD.json",
+      "bytes": 29611,
+      "sha256": "817fce04d9bf4d925b939e3ef4083ae1cbf0a72d7599312f440404830c0d538f"
+    },
+    {
+      "path": "captures/heaven-feel-final-01/REPORT.json",
+      "bytes": 58102,
+      "sha256": "b3fd96b51ddeea6ee10e524cd3767b7f11ac5f46144f062c0e5e30c934b03345"
+    },
+    {
+      "path": "captures/hell-rescue-final-01/FINAL_WORLD.json",
+      "bytes": 27802,
+      "sha256": "66d4b0e20e6a9375ec98097fc3647904a3e7ed31995bb5c1aef79b0cc7f65d20"
+    },
+    {
+      "path": "captures/hell-rescue-final-01/REPORT.json",
+      "bytes": 68834,
+      "sha256": "a19cf8c04c35db4e52f6f756ea4f89cd1d9f6868884df4da68fb3b5a076adccb"
+    },
+    {
+      "path": "captures/returning-fit-final-01/FINAL_WORLD.json",
+      "bytes": 64025,
+      "sha256": "2cef646220c1796508305f43a3fcfc01ac42109df2c778c15f7d1854d38d85d5"
+    },
+    {
+      "path": "captures/returning-fit-final-01/REPORT.json",
+      "bytes": 203839,
+      "sha256": "4a3ef4f142770bffa3a64f4562be27498506c0ed28b151e2c1ec48c9e7cfb312"
+    },
+    {
+      "path": "captures/starter-blade-window-01/FINAL_WORLD.json",
+      "bytes": 20496,
+      "sha256": "5e666b2390521818800794bc3656237dce0d689f87babe04cfaefd1ba6e6d8ac"
+    },
+    {
+      "path": "captures/starter-blade-window-01/REPORT.json",
+      "bytes": 99785,
+      "sha256": "d223106e324738fcc46bc552252cace792a5a793893bf556f2887b9ef475c8a7"
+    },
+    {
+      "path": "captures/starter-bow-window-01/FINAL_WORLD.json",
+      "bytes": 29482,
+      "sha256": "bc9516d306fcc7529aafd25cb6288f58aaaf8b0b0783fc6d82ee458a0341fd70"
+    },
+    {
+      "path": "captures/starter-bow-window-01/REPORT.json",
+      "bytes": 98049,
+      "sha256": "c92a8f52b504b167ae98bbe82a2c181f79d6b8bca6888ab6b2d441752d525eab"
+    },
+    {
+      "path": "hardware/18f34b0/CHAPTER_I_EARNED_FIXTURE.json",
+      "bytes": 23825,
+      "sha256": "27cb70f57c3584f7de69f667544c8215c6fbc5f7f3d45d7fb7bc241f1cabce49"
+    },
+    {
+      "path": "hardware/18f34b0/HARNESS.py",
+      "bytes": 10212,
+      "sha256": "bca273c2a0485bdf8f12feeb3527d69a3528cfd36ec18a3b85402911472e1d25"
+    },
+    {
+      "path": "hardware/18f34b0/REPORT.json",
+      "bytes": 636710,
+      "sha256": "e7950709c035a6e5c3bf0b7bbc269bad08be7b04d0f1e4fa864bd89fdc802773"
+    },
+    {
+      "path": "hardware/18f34b0/SCENE_SETUP.json",
+      "bytes": 5339,
+      "sha256": "aefaef10950ade1c47b484e47fe989244f852aa43ddddf1ebb1c9014f623b052"
+    },
+    {
+      "path": "harnesses/browser_support.py",
+      "bytes": 486,
+      "sha256": "cb5b8227f4c5e99e89b5ec40a75a3cacc471bd60c287316501c4b2de6cfecaa5"
+    },
+    {
+      "path": "harnesses/canvas_film.py",
+      "bytes": 3769,
+      "sha256": "8690143aa65a9b50330ff97ed89dc705d1e7175cf482afbc4849af537d549c2a"
+    },
+    {
+      "path": "harnesses/capture_realm_trails-346a57f.py",
+      "bytes": 26710,
+      "sha256": "ba746abf6fe199dbad959934d63b8f8da216293d311bd82fa0bc087ba3ec41d1"
+    },
+    {
+      "path": "harnesses/capture_realm_trails-5382406.py",
+      "bytes": 26985,
+      "sha256": "839ba3564d834cc9a533317381532eaa6a9e44c6b4e7f202dcbfa54b8b6b1d7b"
+    },
+    {
+      "path": "media/atlantis-aperture-final-04.mp4",
+      "bytes": 7444102,
+      "sha256": "996cf95194e4a9ae645046f62903ac8f2e7b62b7138e2c8fa92aff56921d1b45"
+    },
+    {
+      "path": "media/bridge-layered-final-01.mp4",
+      "bytes": 10589050,
+      "sha256": "5e7f4f2447e7bd8265e3b4fae9b2ed4d829985b60572998995006619d5ce05de"
+    },
+    {
+      "path": "media/coastward-work-final-01.mp4",
+      "bytes": 25436195,
+      "sha256": "707e7a37691c6a191cc875c58ef78c0d1f013a6a21783cae541ac681e8ad2983"
+    },
+    {
+      "path": "media/cosmos-alignment-final-01.mp4",
+      "bytes": 11681369,
+      "sha256": "8b8ff4f1dffd2d1b29d7745d4eff81ee0d56b35a48420e78e43bdae183e25f9f"
+    },
+    {
+      "path": "media/heaven-feel-final-01.mp4",
+      "bytes": 16494693,
+      "sha256": "351bed2d1df3dc590bbab97c857103f409b0cf7417435a55045ab7d480f3097b"
+    },
+    {
+      "path": "media/hell-rescue-final-01.mp4",
+      "bytes": 15852772,
+      "sha256": "0440137e658c735d76e3a5b54d6c03678f4155a91c314c8e147769e147c93d2a"
+    },
+    {
+      "path": "media/receipts/ATLANTIS_ALL_FRAME_PTS_REVIEW.json",
+      "bytes": 2677,
+      "sha256": "6fa5bfafbf78042a9cba41306143367b0b17453681f313458e5d9fb5959dc157"
+    },
+    {
+      "path": "media/receipts/FINAL_NINE_FRAME_PTS_REVIEW.json",
+      "bytes": 21388,
+      "sha256": "61ceb255e839da85f5c2b543b8ce032a192d5a7013ad1dcf20c3b8eada8b6f63"
+    },
+    {
+      "path": "media/receipts/FINAL_NINE_PACKAGE_REVIEW.json",
+      "bytes": 41446,
+      "sha256": "dc243eabcb656f7361e1dff3ed138e5c0fb4df234a03df488d23594a647b28f7"
+    },
+    {
+      "path": "media/receipts/FINAL_NINE_PACKAGE_REVIEW.md",
+      "bytes": 2969,
+      "sha256": "1ea49f54a102481a8d35212e2078087679f2f8c132dcd6c379f6e35f577b38db"
+    },
+    {
+      "path": "media/receipts/inspect_actual_media.py",
+      "bytes": 4645,
+      "sha256": "89294748a7f1dea83ce84f930249735cf67e743da66f7e9980850995b9d249ee"
+    },
+    {
+      "path": "media/receipts/inspect_actual_media_millisecond_mp4.py",
+      "bytes": 4726,
+      "sha256": "68d466d266374bc37a39b3551231dcd54607b49201ba935894348c68dc4f7a1b"
+    },
+    {
+      "path": "media/receipts/PACKAGE_RUNNER.py",
+      "bytes": 5047,
+      "sha256": "db90df1503e4464cc9054676ff0233bb2ff047a74cdf0a67cf284714f7124083"
+    },
+    {
+      "path": "media/receipts/PRESERVED_COSMOS_FIRST_PASS.json",
+      "bytes": 406,
+      "sha256": "1addb4fa80de1100bb6788ab446f86b2ad149cbd10825a167f976c4dacdecee6"
+    },
+    {
+      "path": "media/receipts/PRESERVED_FIRST_PASS_FILES.json",
+      "bytes": 823,
+      "sha256": "bd45f2fcbd8e8f64892fdc312e421dcf06c3b847f51204f926806acbb1c399a9"
+    },
+    {
+      "path": "media/receipts/VERIFY_ATLANTIS_FRAME_PTS.py",
+      "bytes": 2790,
+      "sha256": "af398cfe65e0a79ff27094765632f892f57820107c29217543e08de55ba04a29"
+    },
+    {
+      "path": "media/receipts/VERIFY_FRAME_PTS_AFTER_COSMOS.py",
+      "bytes": 2869,
+      "sha256": "6c06e81e5348e0c637507cdb6f0acfb96926905233d4f7a01a0d198c02af1b56"
+    },
+    {
+      "path": "media/returning-fit-final-01.mp4",
+      "bytes": 8194607,
+      "sha256": "d8109b392308a0f0b3179469f3fa0d9a665dec0cc6da8a0c7ce96698d70acf23"
+    },
+    {
+      "path": "media/starter-blade-window-01.mp4",
+      "bytes": 10599637,
+      "sha256": "61f68befe82d1a9d7bd23a91d467ed63e895ffb5ecf3728bb70e547b8c1627e3"
+    },
+    {
+      "path": "media/starter-bow-window-01.mp4",
+      "bytes": 9477167,
+      "sha256": "4cbe1adf0fe6b780ca7c5345f6d86c01e90f9fb3ef857012e28c3ef49b7a66a1"
+    },
+    {
+      "path": "MEDIA.md",
+      "bytes": 10996,
+      "sha256": "9b6d46b7875b207f9f50b56258e24e5e1359b715a84076e9123fb90da4a59e60"
+    },
+    {
+      "path": "negative/atlantis-chart-covered/atlantis-chart-before-diorama-actual.png",
+      "bytes": 605199,
+      "sha256": "01d99d21dc6b46f9fe484427a753a0cdf4ecc0e6b3320aa39d3811baea5740d1"
+    },
+    {
+      "path": "negative/atlantis-chart-covered/atlantis-chart-before-third-actual.png",
+      "bytes": 328429,
+      "sha256": "83c697e3fc22e54299ac0716bb9beb4d36a5cf6aacda9090cb2fd6fcfdb54499"
+    },
+    {
+      "path": "negative/atlantis-chart-covered/REPORT.json",
+      "bytes": 2114332,
+      "sha256": "a762b2b9893827f4c70cb137b95bb1cf8a068b9cdb274da00c90f0d590ecf6de"
+    },
+    {
+      "path": "negative/earlier-incomplete-windows-fullgate/FULL_GATE_RECEIPT.json",
+      "bytes": 25747,
+      "sha256": "e0605cf8eaf12a96182c552903fce0f1bd1c15a27b2b1b5bfeb0e20bc756b0d1"
+    },
+    {
+      "path": "negative/earlier-incomplete-windows-fullgate/FULL_GATE_SUMMARY.md",
+      "bytes": 3160,
+      "sha256": "08fd04e76dc12aa8b743311bb0884556777d70a287eac9640046ea1bc7358e40"
+    },
+    {
+      "path": "negative/earlier-incomplete-windows-fullgate/FULL_VERIFY_CONSOLE.log",
+      "bytes": 9185,
+      "sha256": "9978ed4cbb387522ff5b6f8c43902f2a03649286d06e3fc7b807b11ef23255f8"
+    },
+    {
+      "path": "negative/gallery-body-only-aperture/ENGINE.js",
+      "bytes": 48577,
+      "sha256": "668220aa945c1d532e0cb4098f4134f605ca0a6936c353e2a76b7227fca29391"
+    },
+    {
+      "path": "negative/gallery-body-only-aperture/HARNESS.py",
+      "bytes": 6568,
+      "sha256": "092c02e64d4e672ab2308dd14a04c6ec1e6fb39eaf588a093b6c337fad32c45b"
+    },
+    {
+      "path": "negative/gallery-body-only-aperture/REPORT.json",
+      "bytes": 2784,
+      "sha256": "42b271592a947c5f6dee7977fc26f4a292ed013cf1d005f527d3e6b356fa6b57"
+    },
+    {
+      "path": "negative/linux-ec9-stale-copy-assertion/commands/rules.log",
+      "bytes": 219346,
+      "sha256": "983b3ab33ae881b944194cfcf00454268ba4d9f1dcf1665224dfb8444fd41f3d"
+    },
+    {
+      "path": "negative/linux-ec9-stale-copy-assertion/LINUX_SOURCE_RECEIPT.json",
+      "bytes": 15674,
+      "sha256": "45bf49620f588e900645f0740308cacc3c5196a692fe5087e8a056442804c91b"
+    },
+    {
+      "path": "negative/linux-ec9-stale-copy-assertion/LINUX_SOURCE_SUMMARY.md",
+      "bytes": 1466,
+      "sha256": "a8070b815ab80d87fcdf8c8c20c313a162b1168cc2b55731892af70645dae220"
+    },
+    {
+      "path": "negative/README.md",
+      "bytes": 2648,
+      "sha256": "ed5a0f50cbd5b209df7b453750aed09496b50fee727ef7db6d9edd36ecf16e98"
+    },
+    {
+      "path": "negative/realm-work-ec9af15/NEGATIVE_RECEIPTS.json",
+      "bytes": 117083,
+      "sha256": "8cc4f48a0cc022cecf2aacfbfd55af7ad75ff8716559f028ef8d04ebbaa402cc"
+    },
+    {
+      "path": "negative/realm-work-ec9af15/run-01/atlantis-upper-gauge-recorded-diorama-detail-actual.png",
+      "bytes": 640732,
+      "sha256": "dc9ca5aa2d75eabda0179d82ef75fa855f876bac6a302f37cfbe5a22414c277a"
+    },
+    {
+      "path": "negative/realm-work-ec9af15/run-01/REPORT.json",
+      "bytes": 1946276,
+      "sha256": "42a88f27feae8804cf34e17b099285f18dd420c82bb89d0edc0d6e53a84f6c60"
+    },
+    {
+      "path": "negative/realm-work-ec9af15/run-02-inspection/atlantis-upper-gauge-recorded-diorama-inspection-detail-actual.png",
+      "bytes": 640853,
+      "sha256": "07c25e8c2bd232f0017ea935449e88d0c4c0fa73d26b50f29ef2f4d6437f32c8"
+    },
+    {
+      "path": "negative/realm-work-ec9af15/run-02-inspection/REPORT.json",
+      "bytes": 1945151,
+      "sha256": "d6082c76fc3d5118716d2b16a65645eac2e7ed6a3139f6f71f0fe11305ae399f"
+    },
+    {
+      "path": "negative/realm-work-ec9af15/run-03-atlantis-front-inspection/atlantis-upper-gauge-recorded-diorama-inspection-detail-actual.png",
+      "bytes": 709025,
+      "sha256": "929e4bb5824e811983e7aa5aa4077d5f294f25c89dcb8fa84013a14b1db3d1ce"
+    },
+    {
+      "path": "negative/realm-work-ec9af15/run-03-atlantis-front-inspection/REPORT.json",
+      "bytes": 186977,
+      "sha256": "48bd6ce308e49c926316d1994c12340ade92356c128e4c7c7427c7f34ff8ca9d"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6664,
+      "sha256": "e784be9811fab6cda47001b47a545bd33449b91d69b8eaecc55269620d193467"
+    },
+    {
+      "path": "reviews/FINAL_LOOPS_REVIEW.json",
+      "bytes": 28889,
+      "sha256": "804bdc78ba084f30def21c5f92947260b33f2703e8e030edd705c2c9e665ce90"
+    },
+    {
+      "path": "reviews/FINAL_LOOPS_REVIEW.md",
+      "bytes": 11203,
+      "sha256": "d8d958a0fa105202488a5f8639cc45721f9d87609acec1a72e49d0443b7b6316"
+    },
+    {
+      "path": "screens/atlantis-aperture-final-04/depth-chart-diorama.png",
+      "bytes": 556988,
+      "sha256": "58ba1eb72852b17166e60096b87252d983bc93bcfaa53e30128e263a940cc624"
+    },
+    {
+      "path": "screens/atlantis-aperture-final-04/explicit-claim.png",
+      "bytes": 312967,
+      "sha256": "695d620c34d1d07c470bd91867e31ed34f0a10e0a1a682486f417901cd0f0740"
+    },
+    {
+      "path": "screens/atlantis-aperture-final-04/modern-marker-third.png",
+      "bytes": 470017,
+      "sha256": "129a22b77d8d78f99e7ef4afc7873285df22faf5ec3045985bb68d886cdf0322"
+    },
+    {
+      "path": "screens/atlantis-aperture-final-04/upper-gauge-diorama.png",
+      "bytes": 584242,
+      "sha256": "b5e40dac17c77cbbf9b5ab6364d74f80a392d784bb66367098932d23a0440bf2"
+    },
+    {
+      "path": "screens/atlantis-marker-final-03/modern-marker-diorama.png",
+      "bytes": 603081,
+      "sha256": "f920d6211bbd5ae7b95719422db5606cc7a59fb7b919888180a27652d0da971f"
+    },
+    {
+      "path": "screens/atlantis-marker-final-03/modern-marker-third.png",
+      "bytes": 691171,
+      "sha256": "675417a0c18986af1846f05fbd00f6ea0af42164615d752c3dce9d3f4c065836"
+    },
+    {
+      "path": "screens/bridge-layered-final-01/supported-bridge-diorama-side.png",
+      "bytes": 380836,
+      "sha256": "cff8b7ce10c18a4739d1ee676def040c87dc15f352c09106c6f7dfbdca7507e3"
+    },
+    {
+      "path": "screens/bridge-layered-final-01/supported-bridge-third-side.png",
+      "bytes": 526851,
+      "sha256": "1650d831f0cd5a490e04b1940c819216928b3eba26ab1fc53d365bc166ed203c"
+    },
+    {
+      "path": "screens/coastward-work-final-01/coastward-channel-diorama.png",
+      "bytes": 1015366,
+      "sha256": "b43cc8d73e11d8fb0375592fdccc4f2b7e847dd4fe19a3ebe093c21377ca5e5a"
+    },
+    {
+      "path": "screens/coastward-work-final-01/fallen-bough-collected.png",
+      "bytes": 831446,
+      "sha256": "00a226bb3665d344a6c98ec088a4d65243db1f327135c0b3a9aea3990ed5516f"
+    },
+    {
+      "path": "screens/cosmos-alignment-final-01/east-sight-world-diorama.png",
+      "bytes": 872305,
+      "sha256": "e0266ad6986fdb1b2579bc6063de8527c67a33d284625add6a437b6932d38ee7"
+    },
+    {
+      "path": "screens/cosmos-alignment-final-01/east-sight-world-third.png",
+      "bytes": 727709,
+      "sha256": "2859204178f8037e9d7aa72fe4d677bef9889223a9dee5cd010fa8c44b518992"
+    },
+    {
+      "path": "screens/heaven-feel-final-01/garden-return-arm-diorama.png",
+      "bytes": 1062782,
+      "sha256": "62c7a25d6b50f5d11fbc7c6e12995d5b1bda624677676435c09a5de326d52a27"
+    },
+    {
+      "path": "screens/heaven-feel-final-01/garden-return-arm-third.png",
+      "bytes": 754300,
+      "sha256": "862141346c528c1ed707780481560bf6c1a9c2d6614843417e8bcdca773fc66b"
+    },
+    {
+      "path": "screens/hell-rescue-final-01/neris-safe-separate.png",
+      "bytes": 615726,
+      "sha256": "68a97653fb7c78ee82af32ce017e461ac80f9c1dc8ec28760bae9bad3595a95b"
+    },
+    {
+      "path": "screens/hell-rescue-final-01/walked-rescue-diorama.png",
+      "bytes": 892949,
+      "sha256": "f6021fd83711d787879cb77beff7fea280047b7b15637e4d70203608adbc8e01"
+    },
+    {
+      "path": "screens/returning-fit-final-01/actual-51-damage-practice.png",
+      "bytes": 587638,
+      "sha256": "8beab4ac8454bdf6e8014ff7d966c4a99957880fcda7b5c271a6e28c36f5e8c4"
+    },
+    {
+      "path": "screens/returning-fit-final-01/veteran-fitted-band-third.png",
+      "bytes": 971133,
+      "sha256": "3c18b103ca096c3ac26c755894fd6bb25fb7f1477a3f8aba72a0ecdd7d749662"
+    },
+    {
+      "path": "screens/returning-fit-final-01/weapon-before-third.png",
+      "bytes": 979162,
+      "sha256": "653f32a86309af1881bf3eef018ed0c93c987de9d48510c07c7753dee613b294"
+    },
+    {
+      "path": "screens/starter-blade-window-01/reward-blade-actual-practice-impact.png",
+      "bytes": 524885,
+      "sha256": "4f3725a3ea9c48319d2bff4c4a09748e63862744ccdb932e29a47f7e5aa355eb"
+    },
+    {
+      "path": "screens/starter-blade-window-01/river-skitter-west-actual-defeat.png",
+      "bytes": 742475,
+      "sha256": "2d116a50e9002ce1b7e9eac0d5a7751036dbea73d60c984aa7de68bcf4bef460"
+    },
+    {
+      "path": "screens/starter-bow-window-01/oren-explicit-terms-bow.png",
+      "bytes": 427495,
+      "sha256": "0ba34cf0844b7d6afd114eb70e35ab978dd73bc311350b8cbd5c508ad581e2c4"
+    },
+    {
+      "path": "screens/starter-bow-window-01/reward-bow-actual-practice-impact.png",
+      "bytes": 525356,
+      "sha256": "78a9b342bc4d65ad6407847cdf5a2f4fe03bd4612a283542981c1b7f7cfa205e"
+    },
+    {
+      "path": "source/linux-18f34b0/LINUX_SOURCE_RECEIPT.json",
+      "bytes": 21962,
+      "sha256": "c0701877269ad1f4686dae5adf244df8f4ec0b2ba960a2208e57b2d3deb525e8"
+    },
+    {
+      "path": "source/linux-18f34b0/LINUX_SOURCE_SUMMARY.md",
+      "bytes": 1709,
+      "sha256": "18678b1ee57bff6d7735ac53f285b86e8100ec7448a6060833b97e8bcd860359"
+    },
+    {
+      "path": "source/linux-18f34b0/LINUX_VERIFY_CONSOLE.log",
+      "bytes": 6958,
+      "sha256": "31c61e7417fd4ee1aedc61763e0039a7334faebae1b55a011905d072456a441c"
+    },
+    {
+      "path": "source/linux-ff3d7cc/LINUX_SOURCE_RECEIPT.json",
+      "bytes": 21945,
+      "sha256": "b490c093a36242c4bbe346a6e7b7be6ef73e9f7d5a8d234f9d941516965cad0b"
+    },
+    {
+      "path": "source/linux-ff3d7cc/LINUX_SOURCE_SUMMARY.md",
+      "bytes": 1695,
+      "sha256": "4355a10720bf1ac74f4100d2925bff9496391bac6b50d5c3a011b07c73e0923d"
+    },
+    {
+      "path": "source/linux-ff3d7cc/LINUX_VERIFY_CONSOLE.log",
+      "bytes": 6959,
+      "sha256": "fec562b1c55484dddaf0a60ba692c9b085f70f5a60fef454edfc0cef3d60e077"
+    },
+    {
+      "path": "sources/atlantis-accepted-earned.json",
+      "bytes": 25525,
+      "sha256": "3acffb19cd9aa7194b172af33898a10036c1e67303d9bb49488f020403eeb32f"
+    },
+    {
+      "path": "sources/coastward-kit-earned.json",
+      "bytes": 11805,
+      "sha256": "a867a16f4f5e6311bcafa0a8a2166dd6d59547e126ddb4d792c221afb7438d39"
+    },
+    {
+      "path": "sources/heaven-partial-earned.json",
+      "bytes": 23539,
+      "sha256": "223f27b270658f0f3f69610245ac34174ac5cccccd453477ce7e4658aedefe98"
+    },
+    {
+      "path": "sources/hell-disabled-earned.json",
+      "bytes": 23395,
+      "sha256": "bbdcd5080a4ba774102cf612edd099320fb94e631b7fca568117410f281bff68"
+    },
+    {
+      "path": "sources/RECORDED_SOURCE_COPIES.json",
+      "bytes": 3903,
+      "sha256": "38d57eedeef5079f20abdc6681784fd7bfdf535b5a14f1ec3a19f3c2a9b98fab"
+    },
+    {
+      "path": "sources/returning-cosmos-paid-earned.json",
+      "bytes": 59980,
+      "sha256": "000eebea7eab190acbd8653234472111ab0f47e65265d4c9e8c0914d4c99bf24"
+    },
+    {
+      "path": "sources/starter-blade-kit-earned.json",
+      "bytes": 11806,
+      "sha256": "ca9056936dfef03494162889915f63b241ba58fb67929e74c57995af4eb95eda"
+    },
+    {
+      "path": "sources/starter-bow-crafted-earned.json",
+      "bytes": 20496,
+      "sha256": "28a4a2db0e99f04d6a9ac316f126d2c63fc064c6b1c2ef0a93cb85ae779c0dff"
+    }
+  ]
+}

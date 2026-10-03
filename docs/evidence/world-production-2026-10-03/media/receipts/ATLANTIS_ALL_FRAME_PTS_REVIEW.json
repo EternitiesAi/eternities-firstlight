@@ -1,0 +1,68 @@
+{
+  "utc": "2026-10-03T04:52:58.549876+00:00",
+  "method": "Every decoded showinfo frame integerPTS multiplied by decoder timebase; exact rational comparison, no forcedfps/resize/mock. Output-null is downstream of showinfo and its timebase cannot change observed decodedPTS.",
+  "clips": [
+    {
+      "name": "atlantis-aperture-final-04",
+      "source": {
+        "command": [
+          "C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Lib/site-packages/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe",
+          "-hide_banner",
+          "-v",
+          "info",
+          "-threads",
+          "2",
+          "-i",
+          "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\atlantis-aperture-final-04\\canvas-with-app-audio.webm",
+          "-map",
+          "0:v:0",
+          "-vf",
+          "showinfo",
+          "-fps_mode",
+          "passthrough",
+          "-f",
+          "null",
+          "-"
+        ],
+        "exit": 0,
+        "timebase": "1/1000",
+        "frames": 1932,
+        "log": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\portable-media-delivery-20261003\\frame-pts-atlantis\\atlantis-aperture-final-04\\SOURCE_SHOWINFO.log"
+      },
+      "mp4": {
+        "command": [
+          "C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Lib/site-packages/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe",
+          "-hide_banner",
+          "-v",
+          "info",
+          "-threads",
+          "2",
+          "-i",
+          "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\docs\\evidence\\world-production-2026-10-03\\media\\atlantis-aperture-final-04.mp4",
+          "-map",
+          "0:v:0",
+          "-vf",
+          "showinfo",
+          "-fps_mode",
+          "passthrough",
+          "-f",
+          "null",
+          "-"
+        ],
+        "exit": 0,
+        "timebase": "1/16000",
+        "frames": 1932,
+        "log": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\portable-media-delivery-20261003\\frame-pts-atlantis\\atlantis-aperture-final-04\\MP4_SHOWINFO.log"
+      },
+      "frame_counts_equal": true,
+      "initial_mux_offset_seconds_exact": "0",
+      "nonconstant_frames": 0,
+      "first_nonconstant_indices": [],
+      "max_deviation_from_initial_offset_seconds": 0.0,
+      "source_frame_pts_hash": "fcf6f5c1b1f350a4a58125427f178df0bb7231bdfb2208ad7de633b7b0670da9",
+      "mp4_frame_pts_hash": "9021eb46f80b7c4af3b6e5b0517f8b84a1f7d1a42af3e83c7e2c466b8d6a89da",
+      "source_pts_strictly_increasing": true,
+      "mp4_pts_strictly_increasing": true
+    }
+  ]
+}
