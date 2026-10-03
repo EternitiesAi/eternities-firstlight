@@ -17,8 +17,8 @@ function parts(ledger){
  const page=steps.has('assess-load')?0xe7dcbb:0xc7bea2;
  for(let i=0;i<2;i++)add('box',[-76.27+i*.54,FLOOR+1.12,-14.755],[.42,.48,.018],page,'load-board-record');
  if(safe.includes(story.branch)&&steps.has('prepare-allocation')){
-  const x=story.branch==='stormfall-recovery'?-81.8:-78.5,z=story.branch==='stormfall-recovery'?-19:-3.5;
-  if(story.branch==='managed-coppice')for(let i=0;i<2;i++)add('timber-panel',[-78.18,FLOOR+.07+i*.14,z],[1.40,.14,.28],0x9a9868,'prepared-coppice-bundle',{allocation:story.branch});
+  const x=story.branch==='stormfall-recovery'?-81.8:-76.9,z=story.branch==='stormfall-recovery'?-19:-3.5;
+  if(story.branch==='managed-coppice')for(let i=0;i<2;i++)add('timber-panel',[-76.58,FLOOR+.07+i*.14,z],[1.40,.14,.28],0x9a9868,'prepared-coppice-bundle',{allocation:story.branch});
   for(let i=0;i<3;i++)add('box',[x+i*.32,FLOOR+(story.branch==='managed-coppice'?.14:.32),z],[.08,story.branch==='managed-coppice'?.28:.46,.32],0xa8b487,'prepared-allocation-band',{allocation:story.branch});
  }
  if(steps.has('brace-root-channel')){
