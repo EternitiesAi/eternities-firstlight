@@ -216,13 +216,19 @@ test('narrow field path geometry lies wholly on supported clear ground and door 
 });
 
 test('distant ridges use the actual mountain mesh and remain outside Earth rather than becoming false paths',()=>{
- const ridges=record(earth).filter(p=>p.kind==='mountain-ridge');assert.equal(ridges.length,3);
+ const ridges=record(earth).filter(p=>p.kind==='mountain-ridge');assert.equal(ridges.length,10);
  for(const p of ridges){
   const mesh=E.geometry(p.kind),ys=[];for(let i=1;i<mesh.length;i+=6)ys.push(mesh[i]);
   assert.ok(new Set(ys.map(y=>y.toFixed(4))).size>20,'real asymmetric ridge heights; unknown kinds silently fall back to a cylinder');
   assert.ok(p.p[0]+p.s[0]/2<earth.bounds.minX||p.p[0]-p.s[0]/2>earth.bounds.maxX||p.p[2]+p.s[2]/2<earth.bounds.minZ||p.p[2]-p.s[2]/2>earth.bounds.maxZ);
   assert.equal(p.opt.cameraSolid,false);assert.equal(p.opt.cutaway,false);assert.equal(E.solidBounds(p.kind,{p:p.p,s:p.s,...p.opt}),null);
+  const m=E.M.compose(...p.p,...p.s,...(p.opt.r||[0,0,0]));
+  for(let i=0;i<mesh.length;i+=6){const[x,,z]=E.M.transform(m,[mesh[i],mesh[i+1],mesh[i+2]]);assert.ok(x<earth.bounds.minX||x>earth.bounds.maxX||z<earth.bounds.minZ||z>earth.bounds.maxZ,'every rotated vista vertex stays outside physical country');}
  }
  assert.ok(ridges.some(p=>p.p[0]>earth.bounds.maxX&&p.p[2]>17&&p.p[2]<93),'channel side view has distant mountains across the water');
  assert.equal(record(earth).some(p=>p.kind==='mountain'),false,'unsupported fallback kind is gone');
+ const channel=ridges.filter(p=>p.opt.vista==='channel-east');assert.equal(channel.length,8);
+ assert.deepEqual([0,1,2].map(layer=>channel.filter(p=>p.opt.vistaLayer===layer).length),[3,3,2]);
+ assert.equal(new Set(channel.map(p=>p.color)).size,3);assert.ok(channel.every(p=>p.opt.skyImage));
+ assert.equal(ridges.reduce((n,p)=>n+E.geometry(p.kind).length/18,0),3360,'bounded existing mesh budget across all passes');
 });

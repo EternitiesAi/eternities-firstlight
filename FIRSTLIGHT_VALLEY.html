@@ -1420,7 +1420,15 @@ if(typeof module!=='undefined'&&module.exports)module.exports=api;
    for(let i=0;i<4;i++) box(6.9+i*.7,height(8,-72)+1.2,-72,.55,.08,.7,0xd1c4a0,{solidId:'settlement-register'});
    add('mountain-ridge',-64,-.4,-132,80,37,54,0x78918c,{skyImage:true,vista:'northwest'});
    add('mountain-ridge',67,-.4,-125,72,31,50,0x8e9e94,{skyImage:true,vista:'northeast'});
-   add('mountain-ridge',103,-.4,54,70,34,110,0x78998f,{skyImage:true,vista:'channel-east'});
+   // Across the real channel, overlapping original ridge instances give the
+   // side crossing a legible near/middle/far skyline rather than one hill.
+   // Every transformed mesh stays beyond the supported country's bounds.
+   const skyline=[
+    [80,55,44,18,61,.30,0],[91,14,48,22,63,-.60,0],[87,95,41,16,65,.60,0],
+    [116,62,70,31,105,.20,1],[129,11,57,33,84,-.40,1],[137,105,62,25,90,.70,1],
+    [162,47,76,40,113,.40,2],[175,-5,78,38,100,-.80,2]
+   ];
+   for(const[x,z,w,h,d,yaw,layer]of skyline)add('mountain-ridge',x,-.4,z,w,h,d,[0x596f66,0x768b85,0xa2ada7][layer],{r:[0,yaw,0],skyImage:true,vista:'channel-east',vistaLayer:layer});
   } else {
    for(let z=23;z<=42;z+=1.25) box(0,height(0,z)+.018,z,8.7,.025,.04,0x766947);
    for(const [x,z] of [[-3,25],[3,25],[-10,-4],[10,-4],[-3,-25],[-3,-39],[15,-43]]) lamp(x,z);
