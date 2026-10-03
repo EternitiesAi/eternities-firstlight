@@ -72,7 +72,13 @@ function gate(a){const p=W.GATE;a.add('cylinder',p.x,1.3,p.z,.13,1.45,.13,0xae95
 function draw(out,sim,t,a){const d=W.definition(sim.room);if(!d)return;const quiet=sim.state.settings.reducedMotion;
  // Cosmos keeps its existing people and scene owner; only accepted work adds
  // small ground records there.
- if(!d.existing)for(const p of d.points.filter(p=>p.kind==='person'))a.person(out,p.x,p.z,p.yaw??Math.PI,p.color??d.palette.trim,quiet?0:t,false,p.role||'traveler',false,W.height(d.room,p.x,p.z));
+ if(!d.existing)for(const p of d.points.filter(p=>p.kind==='person')){
+  const base=W.height(d.room,p.x,p.z);
+  if(Object.hasOwn(G.RealmGiversArt.profiles,p.id))G.RealmGiversArt.draw(out,p,{
+   base,yaw:p.yaw??Math.PI,time:t,reducedMotion:quiet,paused:sim.paused,realm:d.id
+  });
+  else a.person(out,p.x,p.z,p.yaw??Math.PI,p.color??d.palette.trim,quiet?0:t,false,p.role||'traveler',false,base);
+ }
  const r=sim.state.journeys.realms[d.id],giver=d.points.find(p=>p.id===d.quest.giverId);
  for(const o of d.quest.objectives){if(!r.active?.observed.includes(o.id))continue;const p=d.points.find(p=>p.id===o.pointId);out.disc.push({p:[p.x,W.height(d.room,p.x,p.z)+.035,p.z],s:[.65,1,.65],c:0xe0d5a3,em:.12,...decor});}
  if(r.firstClaimed&&giver&&d.existing){const y=W.height(d.room,giver.x,giver.z);out.box.push({p:[giver.x+.7,y+.015,giver.z+.3],s:[.65,.03,.48],c:0xe3d4ad,...decor});for(let i=0;i<3;i++)out.box.push({p:[giver.x+.48+i*.22,y+.036,giver.z+.3],s:[.06,.012,.3],c:[0xb6ac69,0x80a9a0,0xa89dbe][i],...decor});}
