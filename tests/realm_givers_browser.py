@@ -185,8 +185,13 @@ try:
             page.wait_for_function('()=>document.body.classList.contains("panel-open")')
             check(label+' drawer suppresses the home/label overlays',not page.locator('#world-home').is_visible() and not page.locator('#world-labels').is_visible())
             if diving:check(label+' drawer also suppresses the real depth overlay',not page.locator('#world-depth').is_visible())
-            hit=page.locator('#close-panel').evaluate('(e)=>{const r=e.getBoundingClientRect(),t=document.elementFromPoint(r.x+r.width/2,r.y+r.height/2);return e===t||e.contains(t)}')
-            check(label+' normal close control wins its actual hit test',hit)
+            # The open class precedes the production 240ms drawer transition.
+            # Use a bounded normal actionability trial, never force a click;
+            # a permanent overlay still fails before the unchanged hit test.
+            started=time.monotonic();page.locator('#close-panel').click(trial=True)
+            report['events'].append({'action':label+' native close actionability trial','wall_seconds':time.monotonic()-started,'force':False})
+            hit=page.locator('#close-panel').evaluate('(e)=>{const r=e.getBoundingClientRect(),t=document.elementFromPoint(r.x+r.width/2,r.y+r.height/2);return{ok:e===t||e.contains(t),rect:r.toJSON(),topId:t?.id,topTag:t?.tagName}}')
+            check(label+' normal close control wins its actual hit test',hit['ok'],hit)
             screenshot(label+'-settings')
             page.locator('#close-panel').click()
             check(label+' normal click closes Settings and restores free return',not page.locator('#drawer').evaluate('(e)=>e.classList.contains("open")') and page.locator('#world-home').is_visible())
@@ -289,6 +294,8 @@ try:
                 screenshot('drawer-close-overlap')
                 page.locator('#close-panel').click(timeout=2500)
                 check('normal drawer close remains reachable inside a realm',not page.locator('#drawer').evaluate('(e)=>e.classList.contains("open")'))
+                drawer_regression('desktop-close')
+                drawer_regression('compact-close',compact=True)
                 break
             if realm=='heaven':
                 drawer_regression('desktop-close')
