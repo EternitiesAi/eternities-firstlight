@@ -1,6 +1,6 @@
 /* Procedural cave and chapter artwork. Read-only projection of game state. */
 (function(G){'use strict';const A=G.RealmAdventure,TAU=Math.PI*2;
-const companionSamples=new WeakMap(),companionFrames=new WeakMap();
+const companionSamples=new WeakMap(),companionFrames=new WeakMap(),skitterSamples=new WeakMap(),skitterFrames=new WeakMap();
 function support(sim,x,z){
  if(G.RealmWorldFoundations?.handles(sim.room))return G.RealmWorldFoundations.height(sim.room,x,z);
  if(sim.room===G.RealmEarth?.ROOM)return G.RealmEarth.height(x,z);
@@ -22,7 +22,7 @@ function cave(a,sim){a.begin('mine');a.e.theme='underways';a.e.ambientOverride=.
  a.add('cylinder',9,1.48,-10,3.1,.38,3.1,0x788d87);a.add('cylinder',9,1.86,-10,2.5,.13,2.5,0xb6baa0);for(let i=0;i<22;i++){let t=i/22*TAU;a.box(9+Math.cos(t)*1.05,2.015,-10+Math.sin(t)*1.05,.12,.04,.08,0xe9cd91,{r:[0,-t,0],em:.35});}
  for(const[x,z]of[[4,-10],[12,-6],[12,-12],[-10,0],[-4,11]])for(let i=0;i<5;i++)a.add('octa',x+Math.sin(i*2.4)*.6,1.8+i%2*.35,z+Math.cos(i*2.4)*.6,.38,.9+i%3*.4,.4,i%2?0x94bbd2:0xabb3d8,{em:.45,rough:.2});
  for(let i=0;i<20;i++)a.box(-13+i*1.3,2+Math.sin(i)*.2,-13.1+Math.sin(i)*.22,1.5,.18,.24,0x786b56,{r:[0,Math.sin(i)*.4,.1]});a.commit();}
-function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.delete(sim);let r=A.runtime(sim),p=sim.state.player,base=sim.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(p.x,p.z):sim.room?1.58:1.31;
+function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.delete(sim);skitterFrames.set(sim,[]);let r=A.runtime(sim),p=sim.state.player,base=sim.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(p.x,p.z):sim.room?1.58:1.31;
  const add=(kind,x,y,z,w,h,d,c,opt={})=>out[kind].push({p:[x,y,z],s:[w,h,d],c,...opt}),box=(x,y,z,w,h,d,c,opt={})=>add('box',x,y,z,w,h,d,c,opt);
  const ring=(x,z,radius,c,y=1.58)=>{for(let i=0;i<32;i++){let a=i/32*TAU;box(x+Math.sin(a)*radius,y,z+Math.cos(a)*radius,.10,.04,.19,c,{r:[0,a,0],em:.75});if(i%8===0)box(x+Math.sin(a)*radius*.73,y+.03,z+Math.cos(a)*radius*.73,.12,.04,.35,c,{r:[0,a,0],em:.55});}};
  if(sim.room==='mine'){
@@ -30,16 +30,25 @@ function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.
  }
  if(A.combatScene(sim)){
   for(const e of r.enemies){if(e.hp<=0||e.kind==='practice'||e.eventEnemy||e.custom==='bell')continue;const starts=Object.fromEntries(Object.entries(out).map(([k,v])=>[k,v.length]));let flash=e.flash>s.elapsed,body=flash?0xf8e4b9:e.kind==='boss'?0x688f83:e.kind==='sentinel'?0x9e92b8:e.custom==='river-bristle'?0x866747:0x7e8670;
-   if(e.kind==='skitter'){add('round',e.x,2.1,e.z,.95,.84,1.22,body);add('round',e.x,2.22,e.z+.48,.55,.40,.5,0xbb987b);for(let i=0;i<6;i++){let a=i*TAU/6;add('round',e.x+Math.sin(a)*.55,1.74,e.z+Math.cos(a)*.45,.12,.53,.15,0x938670,{r:[.4,a,.3]});}for(const dx of[-.18,.18])add('round',e.x+dx,2.29,e.z+.71,.095,.095,.08,0xf9bf9a,{em:1});}
+   if(e.kind==='skitter'){
+    const named=e.custom==='river-bristle',motion=G.RealmSkitterArt.motion(skitterSamples.get(e),{x:e.x,z:e.z,time:s.elapsed,scene:sim.room,paused:sim.paused,reducedMotion:sim.state.settings.reducedMotion});
+    const pose=G.RealmSkitterArt.pose({...motion,named,mode:['pursue','return'].includes(e.mode)?'chase':e.mode,timer:e.timer,windup:e.windup??.75,recoverDuration:e.recovery??1.1});
+    const amount=sim.state.settings.reducedMotion?0:Math.max(0,1-(s.elapsed-(e.hitAt??-9))/.18)*.12,divisor=e.hitFrom?Math.hypot(e.x-e.hitFrom.x,e.z-e.hitFrom.z)||1:1;
+    const placement={x:e.x,z:e.z,base:support(sim,e.x,e.z),yaw:e.yaw,named,bodyColor:body,flash,recoil:e.hitFrom?{x:(e.x-e.hitFrom.x)/divisor*amount,z:(e.z-e.hitFrom.z)/divisor*amount}:{x:0,z:0}};
+    const parts=G.RealmSkitterArt.parts(placement,pose);for(const {kind,...item} of parts)out[kind].push(item);
+    skitterSamples.set(e,motion);skitterFrames.get(sim).push({id:e.id,placement,motion,pose,parts});
+   }
    else if(e.kind==='sentinel'){add('octa',e.x,2.7+Math.sin(t*1.8)*.14,e.z,1.2,1.9,1.2,body,{r:[0,t*.25,0],rough:.25});for(let i=0;i<4;i++){let a=i*1.57+t*.65;add('octa',e.x+Math.sin(a)*.9,2.6,e.z+Math.cos(a)*.9,.20,.65,.20,0xddc59b,{em:.9});}}
    else if(e.kind==='charger'){add('round',e.x,2.55,e.z,2.2,1.8,2.8,body);add('octa',e.x,2.8,e.z+1.15,1.3,1.1,1.2,0xb6a480);for(const sign of[-1,1]){add('round',e.x+sign*.9,3.2,e.z+.9,.55,.83,.78,0xd8c8a0);box(e.x+sign*.65,1.95,e.z+.65,.32,1,.37,0x68634e);box(e.x+sign*.65,1.95,e.z-.85,.32,1,.37,0x68634e);add('round',e.x+sign*.30,3.03,e.z+1.67,.10,.10,.08,0xf5c188,{em:1});}for(let i=0;i<5;i++)add('octa',e.x,3.1,e.z-.9+i*.35,.42,.7,.42,0xc79874,{em:.22});}
    else{add('round',e.x,2.75,e.z,1.85,1.7,2.7,body);add('octa',e.x,3.48,e.z+1.05,.91,1.4,.85,body);for(const dx of[-.64,.64])for(const dz of[-.72,.75])box(e.x+dx,2,e.z+dz,.26,1.3,.3,0x55796e,{r:[Math.sin(t*2+dx+dz)*.08,0,0]});for(const sign of[-1,1]){box(e.x+sign*.48,4.35,e.z+.98,.15,1.7,.15,0xccbf96,{r:[0,0,-sign*.40]});for(let j=0;j<3;j++)box(e.x+sign*(.56+j*.18),4.12+j*.43,e.z+1,.56,.11,.12,0xe0cda1,{r:[0,0,sign*.2]});}for(let i=0;i<5;i++)add('octa',e.x+Math.sin(i*2.1)*.6,3.25,e.z-.8+i*.35,.36,.75,.36,e.hp<e.maxHP/2?0xc392bc:0xabc5bb,{em:.45});for(const dx of[-.26,.26])add('round',e.x+dx,3.6,e.z+1.48,.13,.13,.13,0xf2dab0,{em:1});}
    // Confirmed-hit recoil and the named beast silhouette affect art only.
+   if(e.kind!=='skitter'){
    const named=e.custom==='river-bristle',scale=named?1.32:1,recoil=sim.state.settings.reducedMotion?0:Math.max(0,1-(s.elapsed-(e.hitAt??-9))/.18)*.12,rd=e.hitFrom?Math.hypot(e.x-e.hitFrom.x,e.z-e.hitFrom.z)||1:1;
    if(named)for(let i=0;i<5;i++)add('octa',e.x,2.52,e.z-.45+i*.19,.18,.40,.2,0xcbb47e);
    for(const[k,items]of Object.entries(out))for(let j=starts[k];j<items.length;j++){const item=items[j];item.p[0]=e.x+(item.p[0]-e.x)*scale;item.p[1]=1.58+(item.p[1]-1.58)*scale;item.p[2]=e.z+(item.p[2]-e.z)*scale;item.s=item.s.map(v=>v*scale);}
    // Rotate body parts around the actual yaw, not warnings or health bars.
    for(const[k,items]of Object.entries(out))for(let j=starts[k];j<items.length;j++){const item=items[j],dx=item.p[0]-e.x,dz=item.p[2]-e.z;item.p[0]=e.x+dx*Math.cos(e.yaw)+dz*Math.sin(e.yaw);item.p[2]=e.z-dx*Math.sin(e.yaw)+dz*Math.cos(e.yaw);if(e.hitFrom){item.p[0]+=(e.x-e.hitFrom.x)/rd*recoil;item.p[2]+=(e.z-e.hitFrom.z)/rd*recoil;}item.r=[item.r?.[0]||0,(item.r?.[1]||0)+e.yaw,item.r?.[2]||0];}
+   }
    if(sim.presentation?.attackTarget===e.id)ring(e.x,e.z,e.kind==='charger'?1.35:.8,0xf1d29a);
    if(e.kind==='charger'&&e.mode==='windup'){for(let j=0;j<18;j++)for(const sign of[-1,1]){let u=j*.5,dx=e.chargeDir.x,dz=e.chargeDir.z;box(e.x+dx*u+dz*.9*sign,1.63,e.z+dz*u-dx*.9*sign,.10,.045,.25,0xe5a5b7,{r:[0,e.yaw,0],em:.7});}ring(e.x+e.chargeDir.x*9,e.z+e.chargeDir.z*9,.85,0xf0bfd1);}
    if(e.kind!=='charger'&&e.mode==='windup'){let rad=e.telegraphRadius??(e.kind==='boss'?2.4:e.kind==='sentinel'?1.2:1.05);ring(e.aim.x,e.aim.z,rad,0xd098c8);if(!sim.state.settings.reducedMotion)ring(e.aim.x,e.aim.z,rad*Math.min(1,Math.max(.15,e.timer/(e.windup??1))),0xe0bad4,1.6);}
@@ -64,4 +73,4 @@ function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.
  const mark=G.RealmClasses.runtime(sim).mark;if(mark){ring(mark.enemy.x,mark.enemy.z,.95,0xa8d68d,base+.08);add('octa',mark.enemy.x,base+2.8,mark.enemy.z,.18,.35,.18,0xa8d68d,{em:.6});}
  for(const f of r.fx){let u=(s.elapsed-f.at)/.65;if(u<0||u>1)continue;if(f.kind==='arcane-flare'){const q=sim.state.settings.reducedMotion?.8:.4+u*.8;ring(f.x,f.z,q,f.color,base+.09);for(let i=0;i<4;i++)add('octa',f.x+Math.sin(i*1.57)*q,base+.65,f.z+Math.cos(i*1.57)*q,.17,.8*(1-u),.17,f.color,{em:.8});}else if(['pulse','impact','dodge','heal','arcane-cast','quarry-mark'].includes(f.kind))ring(f.x,f.z,.3+u*(f.kind==='pulse'?3.6:1.6),f.color,base+.05);else for(let i=0;i<6;i++){let a=i*2.4;add('octa',f.x+Math.sin(a)*u*.85,base+.3+Math.sin(u*Math.PI)*.7,f.z+Math.cos(a)*u*.85,.12*(1-u),.18*(1-u),.11*(1-u),f.color,{em:.4});}}
 }
-G.RealmAdventureArt={entrance,cave,draw,supportHeight:support,companionSnapshot:sim=>{const frame=companionFrames.get(sim);return frame?JSON.parse(JSON.stringify(frame)):null;}};})(globalThis);
+G.RealmAdventureArt={entrance,cave,draw,supportHeight:support,companionSnapshot:sim=>{const frame=companionFrames.get(sim);return frame?JSON.parse(JSON.stringify(frame)):null;},skitterSnapshot:sim=>JSON.parse(JSON.stringify(skitterFrames.get(sim)||[]))};})(globalThis);

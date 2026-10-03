@@ -4905,6 +4905,133 @@ function draw(out,sim,t,artist){if(sim.room!=='road')return;const s=sim.state.ad
  if(!sim.state.settings.reducedMotion)for(let i=0;i<28;i++){const u=(t*.1+i*.71)%1;add('box',[-12+(i*2.31%24),1.8+(1-u)*4.2,-25+(i*7.3%44)],[.12,.015,.09],[0xdac294,0xb9ca89,0xcbaa9d][i%3],{r:[u*TAU,i,u*3]});}
 }
 G.RealmRoadArt={gate,make,draw,TREES:R.TREES};})(globalThis);
+</script><script>/* Original six-legged skitter presentation. Local +Z faces forward. Caller
+ * supplies actual placement, timers and confirmed feedback; no combat rules. */
+(function(G){'use strict';
+ const TAU=Math.PI*2,finite=(n,f=0)=>Number.isFinite(n)?n:f;
+ const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+ const plus=(a,b)=>a.map((v,i)=>v+b[i]),minus=(a,b)=>a.map((v,i)=>v-b[i]);
+ const scale=(a,n)=>a.map(v=>v*n),dot=(a,b)=>a.reduce((n,v,i)=>n+v*b[i],0);
+ const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+ const unit=a=>scale(a,1/(Math.hypot(...a)||1));
+ const smooth=n=>n*n*(3-2*n);
+ const point=(m,p)=>[0,1,2].map(i=>m[i]*p[0]+m[4+i]*p[1]+m[8+i]*p[2]+m[12+i]);
+ const mul=(a,b)=>{const m=Array(16).fill(0);for(let c=0;c<4;c++)for(let r=0;r<4;r++)for(let k=0;k<4;k++)m[c*4+r]+=a[k*4+r]*b[c*4+k];return m;};
+ const frame=(p,pitch=0,yaw=0)=>{
+  const a=Math.cos(pitch),b=Math.sin(pitch),c=Math.cos(yaw),d=Math.sin(yaw);
+  return [c,b*d,-a*d,0,0,a,b,0,d,-b*c,a*c,0,...p,1];
+ };
+ function motion(previous,input={}) {
+  const x=finite(input.x),z=finite(input.z),now=finite(input.time),scene=input.scene??null;
+  const valid=previous&&['phase','blend','time','lastX','lastZ','lastTime'].every(k=>Number.isFinite(previous[k]));
+  const state={lastX:x,lastZ:z,lastTime:now,scene,time:valid?previous.time:now,
+   phase:valid?previous.phase:0,blend:valid?clamp(previous.blend,0,1):0,
+   moving:false,paused:!!input.paused,reducedMotion:!!input.reducedMotion};
+  if(!valid)return state;
+  const dt=now-previous.lastTime,distance=Math.hypot(x-previous.lastX,z-previous.lastZ);
+  if(state.paused&&scene===previous.scene)return state;
+  if(scene!==previous.scene||dt<-1e-8||dt>.75||distance>Math.max(.55,Math.max(0,dt)*8)||(Math.abs(dt)<1e-8&&distance>1e-8)){
+   state.phase=0;state.blend=0;state.time=state.paused?previous.time:now;return state;
+  }
+  if(state.paused)return state;
+  if(Math.abs(dt)<1e-8){state.moving=!!previous.moving;return state;}
+  const elapsed=Math.min(dt,.1);state.time+=elapsed;state.moving=distance>1e-8;
+  if(state.moving)state.phase=(state.phase+distance/.8*TAU)%TAU;
+  const target=state.moving?1:0;
+  state.blend=target+(state.blend-target)*Math.exp(-elapsed*(state.moving?18:24));
+  if(state.blend<.001)state.blend=0;
+  return state;
+ }
+ function solve(hip,foot,side) {
+  const delta=minus(foot,hip),distance=Math.hypot(...delta),direction=unit(delta);
+  const along=(.20*.20-.27*.27+distance*distance)/(2*distance);
+  const bend=Math.sqrt(Math.max(0,.20*.20-along*along));
+  const hint=[side,.4,0],outward=unit(minus(hint,scale(direction,dot(hint,direction))));
+  return {hip,knee:plus(plus(hip,scale(direction,along)),scale(outward,bend)),foot};
+ }
+ function pose(options={}) {
+  const mode=['idle','chase','windup','recover'].includes(options.mode)?options.mode:'idle';
+  const phase=finite(options.phase),blend=clamp(finite(options.blend),0,1),reducedMotion=!!options.reducedMotion;
+  const validWindup=Number.isFinite(options.windup)&&options.windup>0&&Number.isFinite(options.timer);
+  const validRecovery=Number.isFinite(options.recoverDuration)&&options.recoverDuration>0&&Number.isFinite(options.timer);
+  const anticipation=mode==='windup'&&validWindup?smooth(clamp(1-options.timer/options.windup,0,1)):0;
+  const recovery=mode==='recover'&&validRecovery?smooth(clamp(options.timer/options.recoverDuration,0,1)):0;
+  const gait=mode==='windup'||mode==='recover'?0:blend;
+  const bob=reducedMotion?0:Math.abs(Math.sin(phase*2))*.006*gait;
+  const crouch=.09*anticipation,bodyY=.52-crouch+bob,legs={};
+  for(const side of [-1,1])for(let row=0;row<3;row++) {
+   const id=(side<0?'left':'right')+['Rear','Middle','Front'][row];
+   const angle=phase+((side<0)===(row!==1)?0:Math.PI),z=(row-1)*.33;
+   const hip=[side*.31,bodyY-.12,z];
+   const foot=[side*.50,.045+Math.max(0,Math.sin(angle))*.065*gait,z-Math.cos(angle)*.075*gait];
+   legs[id]=solve(hip,foot,side);
+  }
+  const headAnchor=[0,.64-crouch*.6+bob-recovery*.025,.48];
+  const headPitch=.07*anticipation+.06*recovery;
+  return {mode,named:options.named===true,reducedMotion,phase,blend,bob,crouch,bodyY,
+   anticipation,recovery,legs,headAnchor,headPitch};
+ }
+ function parts(placement={},posed=pose({named:placement.named})) {
+  if(!['x','z','base','yaw'].every(k=>Number.isFinite(placement[k]))||typeof placement.named!=='boolean'||
+     !Number.isInteger(placement.bodyColor)||placement.bodyColor<0||placement.bodyColor>0xffffff)
+   throw new TypeError('Skitter needs finite actual placement, named flag and body color.');
+  if(!posed||posed.named!==placement.named||!Number.isFinite(posed.bodyY)||!Number.isFinite(posed.headPitch)||
+     !Array.isArray(posed.headAnchor)||posed.headAnchor.length!==3||!posed.headAnchor.every(Number.isFinite)||
+     !['leftRear','leftMiddle','leftFront','rightRear','rightMiddle','rightFront'].every(id=>posed.legs?.[id]&&
+      ['hip','knee','foot'].every(k=>Array.isArray(posed.legs[id][k])&&posed.legs[id][k].length===3&&posed.legs[id][k].every(Number.isFinite))))
+   throw new TypeError('Use a matching finite six-legged skitter pose.');
+  const recoil=placement.recoil??{x:0,z:0};
+  if(!Number.isFinite(recoil.x)||!Number.isFinite(recoil.z))throw new TypeError('Confirmed recoil offset must be finite.');
+  const factor=placement.named?1.32:1,root=frame([placement.x+recoil.x,placement.base,placement.z+recoil.z],0,placement.yaw);
+  for(let c=0;c<3;c++)for(let r=0;r<3;r++)root[c*4+r]*=factor;
+  const head=frame(posed.headAnchor,posed.headPitch),identity=frame([0,0,0]),out=[];
+  const emit=(kind,local,p,s,c,id,extra={})=>{
+   const transform=mul(root,mul(local,frame(p))),m=transform.slice();
+   for(let col=0;col<3;col++)for(let r=0;r<3;r++)m[col*4+r]*=s[col];
+   out.push({kind,p:point(root,point(local,p)),s:s.map(v=>v*factor),c,m,
+    cameraSolid:false,cutaway:false,rough:.92,appearanceOnly:true,skitterPart:id,
+    namedSkitter:placement.named,confirmedFlash:placement.flash===true,...extra});
+  };
+  const skin=(kind,p,s,c,id,extra)=>emit(kind,identity,p,s,c,id,extra);
+  const bone=(a,b,width,depth,c,id,kind='box')=>{
+   const axis=unit(minus(b,a)),ref=Math.abs(axis[0])>.9?[0,0,1]:[1,0,0];
+   const right=unit(minus(ref,scale(axis,dot(ref,axis)))),back=cross(right,axis);
+   const local=[...right,0,...axis,0,...back,0,...scale(plus(a,b),.5),1];
+   const length=Math.hypot(...minus(b,a));
+   emit(kind,local,[0,0,0],[width,kind==='octa'?length/1.3:length,depth],c,id,
+    {anchorFrom:point(root,a),anchorTo:point(root,b)});
+  };
+  const color=placement.bodyColor;
+  skin('round',[0,posed.bodyY,0],[.95,.84,1.22],color,'carapace');
+  for(let i=0;i<3;i++){
+   const z=(i-1)*.28,y=posed.bodyY+.42*Math.sqrt(1-(z/.61)**2)-.025;
+   skin('octa',[0,y,z],[.52,.10,.33],color,'carapace-plate-'+i);
+  }
+  emit('round',head,[0,0,0],[.55,.40,.50],0xbb987b,'head');
+  emit('round',head,[0,-.08,.15],[.34,.20,.22],0xa68b6d,'muzzle');
+  for(const side of [-1,1])emit('round',head,[side*.18,.07,.23],[.095,.095,.08],
+   0xf9bf9a,side<0?'left-eye':'right-eye',{em:1});
+  for(const [id,l] of Object.entries(posed.legs)) {
+   bone(l.hip,l.knee,.075,.09,0x938670,id+'-upper');
+   bone(l.knee,l.foot,.065,.075,0x827c65,id+'-lower');
+   skin('round',l.foot,[.115,.085,.16],0x606853,id+'-foot');
+  }
+  if(placement.named)for(let i=0;i<5;i++) {
+   const z=-.45+i*.19,y=posed.bodyY+.42*Math.sqrt(1-(z/.61)**2)-.025;
+   bone([0,y,z],[0,y+.27,z-.035],.145,.15,0xcbb47e,'river-spine-'+i,'octa');
+  }
+  if(out.length>40)throw new RangeError('Skitter geometry budget exceeded.');
+  return out;
+ }
+ function draw(out,placement,posed) {
+  if(!out||!['box','round','octa'].every(k=>Array.isArray(out[k])))throw new TypeError('Skitter needs box, round and octa arrays.');
+  const geometry=parts(placement,posed);
+  for(const {kind,...item} of geometry)out[kind].push(item);
+  return geometry.length;
+ }
+ const api=Object.freeze({motion,pose,parts,draw});
+ G.RealmSkitterArt=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
 </script><script>/* Original Briar presentation rig. Local +Z is forward. The caller supplies
  * actual placement/bond state and owns transient samples; no game authority. */
 (function(G){'use strict';
@@ -5068,7 +5195,7 @@ G.RealmRoadArt={gate,make,draw,TREES:R.TREES};})(globalThis);
 })(globalThis);
 </script><script>/* Procedural cave and chapter artwork. Read-only projection of game state. */
 (function(G){'use strict';const A=G.RealmAdventure,TAU=Math.PI*2;
-const companionSamples=new WeakMap(),companionFrames=new WeakMap();
+const companionSamples=new WeakMap(),companionFrames=new WeakMap(),skitterSamples=new WeakMap(),skitterFrames=new WeakMap();
 function support(sim,x,z){
  if(G.RealmWorldFoundations?.handles(sim.room))return G.RealmWorldFoundations.height(sim.room,x,z);
  if(sim.room===G.RealmEarth?.ROOM)return G.RealmEarth.height(x,z);
@@ -5090,7 +5217,7 @@ function cave(a,sim){a.begin('mine');a.e.theme='underways';a.e.ambientOverride=.
  a.add('cylinder',9,1.48,-10,3.1,.38,3.1,0x788d87);a.add('cylinder',9,1.86,-10,2.5,.13,2.5,0xb6baa0);for(let i=0;i<22;i++){let t=i/22*TAU;a.box(9+Math.cos(t)*1.05,2.015,-10+Math.sin(t)*1.05,.12,.04,.08,0xe9cd91,{r:[0,-t,0],em:.35});}
  for(const[x,z]of[[4,-10],[12,-6],[12,-12],[-10,0],[-4,11]])for(let i=0;i<5;i++)a.add('octa',x+Math.sin(i*2.4)*.6,1.8+i%2*.35,z+Math.cos(i*2.4)*.6,.38,.9+i%3*.4,.4,i%2?0x94bbd2:0xabb3d8,{em:.45,rough:.2});
  for(let i=0;i<20;i++)a.box(-13+i*1.3,2+Math.sin(i)*.2,-13.1+Math.sin(i)*.22,1.5,.18,.24,0x786b56,{r:[0,Math.sin(i)*.4,.1]});a.commit();}
-function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.delete(sim);let r=A.runtime(sim),p=sim.state.player,base=sim.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(p.x,p.z):sim.room?1.58:1.31;
+function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.delete(sim);skitterFrames.set(sim,[]);let r=A.runtime(sim),p=sim.state.player,base=sim.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(p.x,p.z):sim.room?1.58:1.31;
  const add=(kind,x,y,z,w,h,d,c,opt={})=>out[kind].push({p:[x,y,z],s:[w,h,d],c,...opt}),box=(x,y,z,w,h,d,c,opt={})=>add('box',x,y,z,w,h,d,c,opt);
  const ring=(x,z,radius,c,y=1.58)=>{for(let i=0;i<32;i++){let a=i/32*TAU;box(x+Math.sin(a)*radius,y,z+Math.cos(a)*radius,.10,.04,.19,c,{r:[0,a,0],em:.75});if(i%8===0)box(x+Math.sin(a)*radius*.73,y+.03,z+Math.cos(a)*radius*.73,.12,.04,.35,c,{r:[0,a,0],em:.55});}};
  if(sim.room==='mine'){
@@ -5098,16 +5225,25 @@ function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.
  }
  if(A.combatScene(sim)){
   for(const e of r.enemies){if(e.hp<=0||e.kind==='practice'||e.eventEnemy||e.custom==='bell')continue;const starts=Object.fromEntries(Object.entries(out).map(([k,v])=>[k,v.length]));let flash=e.flash>s.elapsed,body=flash?0xf8e4b9:e.kind==='boss'?0x688f83:e.kind==='sentinel'?0x9e92b8:e.custom==='river-bristle'?0x866747:0x7e8670;
-   if(e.kind==='skitter'){add('round',e.x,2.1,e.z,.95,.84,1.22,body);add('round',e.x,2.22,e.z+.48,.55,.40,.5,0xbb987b);for(let i=0;i<6;i++){let a=i*TAU/6;add('round',e.x+Math.sin(a)*.55,1.74,e.z+Math.cos(a)*.45,.12,.53,.15,0x938670,{r:[.4,a,.3]});}for(const dx of[-.18,.18])add('round',e.x+dx,2.29,e.z+.71,.095,.095,.08,0xf9bf9a,{em:1});}
+   if(e.kind==='skitter'){
+    const named=e.custom==='river-bristle',motion=G.RealmSkitterArt.motion(skitterSamples.get(e),{x:e.x,z:e.z,time:s.elapsed,scene:sim.room,paused:sim.paused,reducedMotion:sim.state.settings.reducedMotion});
+    const pose=G.RealmSkitterArt.pose({...motion,named,mode:['pursue','return'].includes(e.mode)?'chase':e.mode,timer:e.timer,windup:e.windup??.75,recoverDuration:e.recovery??1.1});
+    const amount=sim.state.settings.reducedMotion?0:Math.max(0,1-(s.elapsed-(e.hitAt??-9))/.18)*.12,divisor=e.hitFrom?Math.hypot(e.x-e.hitFrom.x,e.z-e.hitFrom.z)||1:1;
+    const placement={x:e.x,z:e.z,base:support(sim,e.x,e.z),yaw:e.yaw,named,bodyColor:body,flash,recoil:e.hitFrom?{x:(e.x-e.hitFrom.x)/divisor*amount,z:(e.z-e.hitFrom.z)/divisor*amount}:{x:0,z:0}};
+    const parts=G.RealmSkitterArt.parts(placement,pose);for(const {kind,...item} of parts)out[kind].push(item);
+    skitterSamples.set(e,motion);skitterFrames.get(sim).push({id:e.id,placement,motion,pose,parts});
+   }
    else if(e.kind==='sentinel'){add('octa',e.x,2.7+Math.sin(t*1.8)*.14,e.z,1.2,1.9,1.2,body,{r:[0,t*.25,0],rough:.25});for(let i=0;i<4;i++){let a=i*1.57+t*.65;add('octa',e.x+Math.sin(a)*.9,2.6,e.z+Math.cos(a)*.9,.20,.65,.20,0xddc59b,{em:.9});}}
    else if(e.kind==='charger'){add('round',e.x,2.55,e.z,2.2,1.8,2.8,body);add('octa',e.x,2.8,e.z+1.15,1.3,1.1,1.2,0xb6a480);for(const sign of[-1,1]){add('round',e.x+sign*.9,3.2,e.z+.9,.55,.83,.78,0xd8c8a0);box(e.x+sign*.65,1.95,e.z+.65,.32,1,.37,0x68634e);box(e.x+sign*.65,1.95,e.z-.85,.32,1,.37,0x68634e);add('round',e.x+sign*.30,3.03,e.z+1.67,.10,.10,.08,0xf5c188,{em:1});}for(let i=0;i<5;i++)add('octa',e.x,3.1,e.z-.9+i*.35,.42,.7,.42,0xc79874,{em:.22});}
    else{add('round',e.x,2.75,e.z,1.85,1.7,2.7,body);add('octa',e.x,3.48,e.z+1.05,.91,1.4,.85,body);for(const dx of[-.64,.64])for(const dz of[-.72,.75])box(e.x+dx,2,e.z+dz,.26,1.3,.3,0x55796e,{r:[Math.sin(t*2+dx+dz)*.08,0,0]});for(const sign of[-1,1]){box(e.x+sign*.48,4.35,e.z+.98,.15,1.7,.15,0xccbf96,{r:[0,0,-sign*.40]});for(let j=0;j<3;j++)box(e.x+sign*(.56+j*.18),4.12+j*.43,e.z+1,.56,.11,.12,0xe0cda1,{r:[0,0,sign*.2]});}for(let i=0;i<5;i++)add('octa',e.x+Math.sin(i*2.1)*.6,3.25,e.z-.8+i*.35,.36,.75,.36,e.hp<e.maxHP/2?0xc392bc:0xabc5bb,{em:.45});for(const dx of[-.26,.26])add('round',e.x+dx,3.6,e.z+1.48,.13,.13,.13,0xf2dab0,{em:1});}
    // Confirmed-hit recoil and the named beast silhouette affect art only.
+   if(e.kind!=='skitter'){
    const named=e.custom==='river-bristle',scale=named?1.32:1,recoil=sim.state.settings.reducedMotion?0:Math.max(0,1-(s.elapsed-(e.hitAt??-9))/.18)*.12,rd=e.hitFrom?Math.hypot(e.x-e.hitFrom.x,e.z-e.hitFrom.z)||1:1;
    if(named)for(let i=0;i<5;i++)add('octa',e.x,2.52,e.z-.45+i*.19,.18,.40,.2,0xcbb47e);
    for(const[k,items]of Object.entries(out))for(let j=starts[k];j<items.length;j++){const item=items[j];item.p[0]=e.x+(item.p[0]-e.x)*scale;item.p[1]=1.58+(item.p[1]-1.58)*scale;item.p[2]=e.z+(item.p[2]-e.z)*scale;item.s=item.s.map(v=>v*scale);}
    // Rotate body parts around the actual yaw, not warnings or health bars.
    for(const[k,items]of Object.entries(out))for(let j=starts[k];j<items.length;j++){const item=items[j],dx=item.p[0]-e.x,dz=item.p[2]-e.z;item.p[0]=e.x+dx*Math.cos(e.yaw)+dz*Math.sin(e.yaw);item.p[2]=e.z-dx*Math.sin(e.yaw)+dz*Math.cos(e.yaw);if(e.hitFrom){item.p[0]+=(e.x-e.hitFrom.x)/rd*recoil;item.p[2]+=(e.z-e.hitFrom.z)/rd*recoil;}item.r=[item.r?.[0]||0,(item.r?.[1]||0)+e.yaw,item.r?.[2]||0];}
+   }
    if(sim.presentation?.attackTarget===e.id)ring(e.x,e.z,e.kind==='charger'?1.35:.8,0xf1d29a);
    if(e.kind==='charger'&&e.mode==='windup'){for(let j=0;j<18;j++)for(const sign of[-1,1]){let u=j*.5,dx=e.chargeDir.x,dz=e.chargeDir.z;box(e.x+dx*u+dz*.9*sign,1.63,e.z+dz*u-dx*.9*sign,.10,.045,.25,0xe5a5b7,{r:[0,e.yaw,0],em:.7});}ring(e.x+e.chargeDir.x*9,e.z+e.chargeDir.z*9,.85,0xf0bfd1);}
    if(e.kind!=='charger'&&e.mode==='windup'){let rad=e.telegraphRadius??(e.kind==='boss'?2.4:e.kind==='sentinel'?1.2:1.05);ring(e.aim.x,e.aim.z,rad,0xd098c8);if(!sim.state.settings.reducedMotion)ring(e.aim.x,e.aim.z,rad*Math.min(1,Math.max(.15,e.timer/(e.windup??1))),0xe0bad4,1.6);}
@@ -5132,7 +5268,7 @@ function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.
  const mark=G.RealmClasses.runtime(sim).mark;if(mark){ring(mark.enemy.x,mark.enemy.z,.95,0xa8d68d,base+.08);add('octa',mark.enemy.x,base+2.8,mark.enemy.z,.18,.35,.18,0xa8d68d,{em:.6});}
  for(const f of r.fx){let u=(s.elapsed-f.at)/.65;if(u<0||u>1)continue;if(f.kind==='arcane-flare'){const q=sim.state.settings.reducedMotion?.8:.4+u*.8;ring(f.x,f.z,q,f.color,base+.09);for(let i=0;i<4;i++)add('octa',f.x+Math.sin(i*1.57)*q,base+.65,f.z+Math.cos(i*1.57)*q,.17,.8*(1-u),.17,f.color,{em:.8});}else if(['pulse','impact','dodge','heal','arcane-cast','quarry-mark'].includes(f.kind))ring(f.x,f.z,.3+u*(f.kind==='pulse'?3.6:1.6),f.color,base+.05);else for(let i=0;i<6;i++){let a=i*2.4;add('octa',f.x+Math.sin(a)*u*.85,base+.3+Math.sin(u*Math.PI)*.7,f.z+Math.cos(a)*u*.85,.12*(1-u),.18*(1-u),.11*(1-u),f.color,{em:.4});}}
 }
-G.RealmAdventureArt={entrance,cave,draw,supportHeight:support,companionSnapshot:sim=>{const frame=companionFrames.get(sim);return frame?JSON.parse(JSON.stringify(frame)):null;}};})(globalThis);
+G.RealmAdventureArt={entrance,cave,draw,supportHeight:support,companionSnapshot:sim=>{const frame=companionFrames.get(sim);return frame?JSON.parse(JSON.stringify(frame)):null;},skitterSnapshot:sim=>JSON.parse(JSON.stringify(skitterFrames.get(sim)||[]))};})(globalThis);
 </script><script>/* Chapter UI submits bounded commands; the domain owns outcomes. */
 (function(G){'use strict';const AR=G.RealmArsenal,R=G.RealmRoad,A=G.RealmAdventure,C=G.RealmCore,$=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -7541,7 +7677,7 @@ function frame(now){let dt=lastFrame?Math.min((now-lastFrame)/1000,.1):.016;last
 // Keep a read-only-ish diagnostics surface for inspection; this local prototype is not a security boundary.
 const G_CAPTURE=!!window.__ETERNITIES_CAPTURE_MODE;
 window.Realm={get state(){return sim.snapshot();},get diagnostics(){let g=engine?.gl,dbg=g?.getExtension('WEBGL_debug_renderer_info');return{version:'10.0.0',mode:engine?'webgl2':'map',scene:sim.room||'valley',world:RealmWorldFoundations.definition(sim.room)?{id:RealmWorldFoundations.definition(sim.room).id,height:sceneHeight(),dive:worldDiveStatus(),journey:JSON.parse(JSON.stringify(sim.state.journeys.realms[RealmWorldFoundations.definition(sim.room).id]))}:null,earth:sim.room===RealmEarth.ROOM?{trip:sim.earthTrip,height:sceneHeight(),walkable:RealmEarth.walkable(sim.state.player.x,sim.state.player.z)}:null,cosmos:sim.room===RealmCosmos.ROOM?{trip:sim.cosmosTrip,height:sceneHeight(),walkable:RealmCosmos.walkable(sim.state.player.x,sim.state.player.z)}:null,networkDependencies:0,liveAI:false,multiplayer:false,adventure:{tactics:JSON.parse(JSON.stringify(RealmCombat.runtime(sim))),beacon:JSON.parse(JSON.stringify(RealmBeacon.runtime(sim))),crossing:JSON.parse(JSON.stringify(RealmCrossing.runtime(sim))),player:{...sim.state.player},paused:sim.paused,intent:adventure?.intent||null,stats:RealmAdventure.stats(sim.state.adventure),weapon:RealmArsenal.weapon(sim.state.adventure),arrows:RealmArsenal.runtime(sim).arrows.map(a=>({...a})),range:{...RealmArsenal.runtime(sim).range},enemies:RealmAdventure.runtime(sim).enemies.map(e=>({id:e.id,x:e.x,z:e.z,hp:e.hp,maxHP:e.maxHP,hidden:!!e.hidden,eventEnemy:!!e.eventEnemy,kind:e.kind,ringMode:e.ringMode,custom:e.custom,mode:e.mode,timer:e.timer,aim:e.aim})),companion:{...RealmAdventure.runtime(sim).companion}},sandbox:{bridge:sim.state.sandbox.bridge,objects:sim.state.sandbox.placed.length,elapsed:sim.state.sandbox.elapsed,autoGather:sandbox?.auto||null,buildMode:sandbox?.build||null},saveState,characters:{mode:characterStore.blocked?'blocked':characterStore.managed?'managed':'legacy',active:characterStore.active,revision:characterStore.revision,count:characterStore.record?.slots.length||1,writer:characterStore.writer,error:characterStore.error},fps,errors:errors.slice(),camera:{...camera,projection:engine?.camera.projection||'orthographic',eye:engine?.camera.eye,target:engine?.camera.target},metrics:engine?.metrics||null,reflection:engine?.reflectionInfo||null,cutaway:{enabled:!!engine?.cutaway,focus:engine?.cutawayFocus||null},renderer:dbg?g.getParameter(dbg.UNMASKED_RENDERER_WEBGL):null,music:{playing:experience?.playing||false,scoreRevision:sim.state.scoreRevision,playingRevision:experience?.playingRevision,step:experience?.step},gathering:sim.gathering?{...sim.gathering}:null,layoutRevision:sim.state.retreat.revision,roadsideGathering:{status:rpg?.gathering?.player.status||'idle',playing:!!rpg?.gathering?.player.source,pending:!!rpg?.gathering?.pending},audio:{enabled:audio.enabled,state:audio.ctx?.state||'not-created',soundscape:audio.soundscape?.snapshot()||null}};},navigate,export:()=>JSON.stringify(sim.snapshot(),null,2),project:(x,y,z)=>engine?.project(x,y,z)};
-if(window.__ETERNITIES_TEST_MODE||location.search.includes('test'))window.Realm.test={workshopCommand,worldContext,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,worldSwim:(...a)=>RealmWorldFoundations.swim(sim,...a),step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){sim.tick(.05);adventure?.tick();arsenal?.tick();rpg?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,bridge:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({definition:RealmEarth.BRIDGE,waterHeight:RealmEngine.WATER_HEIGHT,railCutaway:{eligible:engine?.railCutawayActive===true,enabled:engine?.cutaway===true},parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.bridgePart||i.mountainPart||i.shorelinePart).map(i=>({kind:b.kind,railBatch:b.railCutaway===true,...i,m:i.m?Array.from(i.m):null})))||[]})):null,traveler:()=>art?.travelerSnapshot()||null,companion:()=>RealmAdventureArt.companionSnapshot(sim),drover:()=>sim.room===RealmEarth.ROOM&&art?.droverFrame?JSON.parse(JSON.stringify({frame:{...art.droverFrame,root:Array.from(art.droverFrame.root),coilRoot:Array.from(art.droverFrame.coilRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.droverPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,earthShoulder:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({frame:art?.earthShoulderFrame,parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.quarryShoulder||i.terrain).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,quarry:()=>sim.room===RealmEarth.ROOM&&art?.quarryFrame?JSON.parse(JSON.stringify({frame:{actor:{...art.quarryFrame.actor,root:Array.from(art.quarryFrame.actor.root),toolRoot:Array.from(art.quarryFrame.actor.toolRoot)},works:art.quarryFrame.works},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.stoneworkerPart||i.quarryPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))})):null,millwright:()=>sim.room===RealmEarth.ROOM&&art?.millwrightFrame?JSON.parse(JSON.stringify({frame:{...art.millwrightFrame,root:Array.from(art.millwrightFrame.root),toolRoot:Array.from(art.millwrightFrame.toolRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.millwrightPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millGate:()=>sim.room===RealmEarth.ROOM&&art?.millGateFrame?JSON.parse(JSON.stringify({gate:art.millGateFrame,parts:[...engine.batches,...engine.dynamic].flatMap(b=>b.items.filter(i=>i.millPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null}))),wheel:art.dynamicBox.items.filter(i=>i.p[0]===3.55&&i.p[1]===2.71)})):null,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
+if(window.__ETERNITIES_TEST_MODE||location.search.includes('test'))window.Realm.test={workshopCommand,worldContext,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,worldSwim:(...a)=>RealmWorldFoundations.swim(sim,...a),step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){sim.tick(.05);adventure?.tick();arsenal?.tick();rpg?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,bridge:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({definition:RealmEarth.BRIDGE,waterHeight:RealmEngine.WATER_HEIGHT,railCutaway:{eligible:engine?.railCutawayActive===true,enabled:engine?.cutaway===true},parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.bridgePart||i.mountainPart||i.shorelinePart).map(i=>({kind:b.kind,railBatch:b.railCutaway===true,...i,m:i.m?Array.from(i.m):null})))||[]})):null,traveler:()=>art?.travelerSnapshot()||null,companion:()=>RealmAdventureArt.companionSnapshot(sim),skitters:()=>RealmAdventureArt.skitterSnapshot(sim),drover:()=>sim.room===RealmEarth.ROOM&&art?.droverFrame?JSON.parse(JSON.stringify({frame:{...art.droverFrame,root:Array.from(art.droverFrame.root),coilRoot:Array.from(art.droverFrame.coilRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.droverPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,earthShoulder:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({frame:art?.earthShoulderFrame,parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.quarryShoulder||i.terrain).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,quarry:()=>sim.room===RealmEarth.ROOM&&art?.quarryFrame?JSON.parse(JSON.stringify({frame:{actor:{...art.quarryFrame.actor,root:Array.from(art.quarryFrame.actor.root),toolRoot:Array.from(art.quarryFrame.actor.toolRoot)},works:art.quarryFrame.works},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.stoneworkerPart||i.quarryPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))})):null,millwright:()=>sim.room===RealmEarth.ROOM&&art?.millwrightFrame?JSON.parse(JSON.stringify({frame:{...art.millwrightFrame,root:Array.from(art.millwrightFrame.root),toolRoot:Array.from(art.millwrightFrame.toolRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.millwrightPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millGate:()=>sim.room===RealmEarth.ROOM&&art?.millGateFrame?JSON.parse(JSON.stringify({gate:art.millGateFrame,parts:[...engine.batches,...engine.dynamic].flatMap(b=>b.items.filter(i=>i.millPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null}))),wheel:art.dynamicBox.items.filter(i=>i.p[0]===3.55&&i.p[1]===2.71)})):null,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
 window.addEventListener('resize',resize);window.addEventListener('pagehide',()=>{save();characterStore.writer=false;characterLock.release();});window.addEventListener('pageshow',e=>{if(e.persisted&&characterStore.managed)acquireCharacterWriter().then(()=>save());});ui.canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();fallback('Graphics context lost. Your local state is intact; use the map and export a backup.');toast('Graphics paused; world state preserved.');});document.body.classList.toggle('reduced',sim.state.settings.reducedMotion);cameraPreset(sim.state.settings.cameraMode,false);if(camera.preset==='adventure'&&!sim.state.settings.cameraViews.profiles.adventure)camera.yaw=.22;labelsRebuild();resize();refreshUI();if(characterStore.managed){acquireCharacterWriter().then(ok=>{if(ok)save();else{saveState='unavailable';toast(characterLock.error);renderStatus();}});}else save();if(loaded.status==='migrated')toast('Your earlier world was copied into Realm 10. The original save was not changed.');setTimeout(()=>$('#loading').classList.add('hidden'),400);if(G_CAPTURE){if(window.Realm.test)window.Realm.test.render();}else requestAnimationFrame(frame);
 })();
 </script></body></html>
