@@ -183,7 +183,7 @@ OBSERVER = r"""()=>{
      diagnosticPNGs={diagnosticReflectionOnPNG:png(dOn.ref,e.refF.w,e.refF.h),diagnosticReflectionAbsentPNG:png(dAbsent.ref,e.refF.w,e.refF.h)};
      e.setCamera(actualProbeCamera);
     }
-    return{label:'Synthetic blue subject; exact submitted post/lamp meshes and actual current camera, no gameplay claim.',camera:clone(e.camera),focus:clone(e.cutawayFocus),
+    return{label:'Synthetic blue subject; exact submitted practice meshes and actual current camera, no gameplay claim.',camera:clone(e.camera),focus:clone(e.cutawayFocus),
      beforeBlue:blue(off.main),afterBlue:blue(on.main),absentBlue:blue(absent.main),mainDifference:difference(off.main,on.main),
      reflectedPasses:reflected,reflectionDifference:difference(off.ref,on.ref),reflectionPositiveControl:difference(off.ref,absent.ref),diagnosticReflection:diagnostic,normalReflectionMeshNDCBounds:reflectionBounds,
      reducedMotionFreeze:quiet?{main:difference(on.main,quiet.main),reflection:difference(on.ref,quiet.ref)}:null,
