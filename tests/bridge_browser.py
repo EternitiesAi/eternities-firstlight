@@ -160,7 +160,7 @@ try:
    coast_walk(18,6);cp.keyboard.press('j');cp.locator('[data-rpg="world-list"]').first.click();cp.locator('[data-rpg="world-select"][data-id="'+realm+'"]').click();cp.locator('[data-rpg="world-preview"]').click();cp.locator('[data-rpg="world-confirm"]').click();coast_render()
    check('deliberate native Roads crossing enters '+realm,cev('Realm.diagnostics.world.id')==realm)
   def coast_refusal(name):
-   owned=coast_owned();probe=cev('()=>{const read=()=>({camera:Realm.diagnostics.camera,player:Realm.diagnostics.adventure.player,paused:Realm.diagnostics.adventure.paused,dive:Realm.diagnostics.world?.dive??null});const before=read(),result=Realm.test.bridgeView(),after=read();return{before,result,after}}')
+   owned=coast_owned();probe=cev('()=>{const read=()=>JSON.parse(JSON.stringify({camera:Realm.diagnostics.camera,player:Realm.diagnostics.adventure.player,paused:Realm.diagnostics.adventure.paused,dive:Realm.diagnostics.world?.dive??null}));const before=read(),result=Realm.test.bridgeView(),after=read();return{before,result,after}}')
    check(name+' actual bridge-view callback refuses without changing camera, position, pause or depth',probe['result']['ok'] is False and probe['after']==probe['before'])
    check(name+' refusal preserves every protected progression and item owner',coast_owned()==owned)
   coast_render();coast_baseline=coast_owned()
