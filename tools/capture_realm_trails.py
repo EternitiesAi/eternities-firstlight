@@ -3,17 +3,20 @@
 No artificial ticks, position edits, damage or reward grants occur during filming.
 Menu reading pauses through the production UI. Setup imports the named earned save
 and adjusts only time/quality/camera. Short RAF samples are presentation cadence,
-not sustained throughput or human enjoyment. Footage is silent browser video.
+not sustained throughput or human enjoyment. Full UI video is silent; optional
+--sound-video also records the actual game canvas and opted-in app master in one
+browser-synchronized MediaRecorder stream, with no replacement soundtrack.
 """
 from pathlib import Path
 from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
 import argparse,hashlib,json,statistics,threading,time,traceback
 from playwright.sync_api import sync_playwright
 from browser_support import launch_kwargs
+import canvas_film
 ROOT=Path(__file__).resolve().parents[1]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
- parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--variant',choices=['heaven','hell','cosmos','atlantis','earthlands','fit-veteran','fit-bow'],required=True);parser.add_argument('--source',type=Path,required=True);parser.add_argument('--output',type=Path,required=True);parser.add_argument('--height',type=int,default=720,choices=range(600,1081));args=parser.parse_args()
+ parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--variant',choices=['heaven','hell','cosmos','atlantis','earthlands','fit-veteran','fit-bow'],required=True);parser.add_argument('--source',type=Path,required=True);parser.add_argument('--output',type=Path,required=True);parser.add_argument('--height',type=int,default=720,choices=range(600,1081));parser.add_argument('--sound-video',action='store_true',help='Also record real game canvas with actual opted-in app audio');args=parser.parse_args()
  out=args.output.resolve();source=args.source.resolve()
  if out.drive.lower()!='d:' or not args.output.is_absolute():parser.error('heavy footage must stay on D:')
  if out.exists() and any(out.iterdir()):parser.error('preserve previous takes: choose an empty output directory')
@@ -30,10 +33,14 @@ def main():
     def route(request):
      if request.request.url.startswith(origin+'/'):request.continue_()
      else:report['external_requests'].append(request.request.url);request.abort()
-    context.route('**/*',route);page=context.new_page();page.add_init_script('window.__ETERNITIES_TEST_MODE=true;');page.on('pageerror',lambda e:report['browser_errors'].append(str(e)))
+    context.route('**/*',route);page=context.new_page();
+    if args.sound_video:canvas_film.install(page)
+    page.add_init_script('window.__ETERNITIES_TEST_MODE=true;');page.on('pageerror',lambda e:report['browser_errors'].append(str(e)))
     response=page.goto(origin+'/index.html');page.wait_for_function('()=>!!window.Realm');page.wait_for_function('()=>getComputedStyle(document.querySelector("#loading")).opacity==="0"');assert sha(ROOT/'index.html')==hashlib.sha256(response.body()).hexdigest();page.evaluate('(w)=>Realm.test.replace(w)',initial);page.evaluate('Realm.test.quality("balanced");Realm.test.setTime(17)')
     report['renderer']=page.evaluate('Realm.diagnostics.renderer');assert 'NVIDIA' in report['renderer'] and '3080' in report['renderer']
     ev=lambda js,arg=None:page.evaluate(js,arg);state=lambda:ev('Realm.state')
+    if args.sound_video:
+     page.locator('#sound').click();page.wait_for_function('()=>Realm.diagnostics.audio.enabled&&Realm.diagnostics.audio.state==="running"');report['canvas_audio_start']=canvas_film.start(page)
     def close():
      if page.locator('#rpg-window').evaluate('(e)=>e.open'):page.locator('#rpg-close').click()
     def mark(name):
@@ -128,6 +135,7 @@ def main():
      walk(4,8);page.wait_for_timeout(3800);view('third',yaw=.8,distance=5);shot('weapon-before-third');view('diorama',yaw=1.1,half=6);shot('weapon-before-diorama');report['models']={'before':ev('Realm.test.traveler()')}
      walk(11,9);page.keyboard.press('k');page.locator('[data-rpg="trail-fit-preview"][data-id="'+weapon+'"]').click();shot('weapon-explicit-fitting-preview');old=state();attack=ev('RealmAdventure.stats(Realm.state.adventure).attack');page.locator('[data-rpg="trail-fit-confirm"][data-id="'+weapon+'"]').click();close();after=state();assert ev('RealmAdventure.stats(Realm.state.adventure).attack')==attack+3;assert old['adventure']['equipment']==after['adventure']['equipment'];report['fitting']={'before':attack,'after':attack+3,'weapon':weapon}
      walk(4,8);page.wait_for_timeout(3800);view('third',yaw=.8,distance=5);shot('veteran-fitted-band-third');view('diorama',yaw=1.1,half=6);shot('veteran-fitted-band-diorama');report['models']['after']=ev('Realm.test.traveler()');walk(15,7);assert ev('Realm.test.adventure("hardware-fitting-enter","starter-enter")')['ok'];walk(-5,11.5);view('third',yaw=2.8,distance=6);page.keyboard.press('Tab');assert ev('Realm.diagnostics.adventure.tactics.target')=='river-practice';page.keyboard.press('1');page.wait_for_function('(damage)=>RealmAdventure.runtime(Realm.test.worldContext().sim).training?.lastDamage===damage',arg=attack+3);shot('actual-'+str(attack+3)+'-damage-practice');report['measured_practice_damage']=attack+3;page.keyboard.press('1');measure('Fitted '+weapon+' at real practice target');page.locator('#target-clear').click();walk(-2,12);page.wait_for_timeout(3800);facing=ev('()=>{const m=Realm.test.traveler().frame.root;return Math.atan2(m[8],m[10]);}');angle=facing+(-.4 if weapon=='trail_bow' else .4);page.keyboard.press('h');view('third',yaw=angle,distance=3.5);shot('fitted-held-close-third');view('diorama',yaw=angle,half=4);shot('fitted-held-close-diorama');page.keyboard.press('h')
+    if args.sound_video:report['canvas_audio_recording']=canvas_film.finish(page,out/'canvas-with-app-audio.webm')
     final=state();(out/'FINAL_WORLD.json').write_text(json.dumps(final,indent=2)+'\n',encoding='utf-8');assert not report['browser_errors'] and not ev('Realm.diagnostics.errors');assert not report['external_requests'];assert sha(ROOT/'index.html')==report['html_sha256'];assert sha(source)==report['source_sha256'];report['status']='passed';report['normal_time_seconds']=time.monotonic()-started
    finally:
     if context:
