@@ -4,6 +4,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs');
 const C=require('../src/core.js'),A=require('../src/adventure.js'),AR=require('../src/arsenal.js'),S=require('../src/sandbox.js'),Q=require('../src/starter.js'),H=require('../src/pursuit.js');
 const {M}=require('../src/engine.js');
+require('../src/traveler-art.js'); // Production rig supplies the shared pure equipment direction.
 const artPath=require('node:path').join(__dirname,'../src/traveler-equipment-art.js');
 const Art=fs.existsSync(artPath)?require(artPath):{};
 const empty=()=>({box:[],round:[],octa:[],disc:[]}),items=out=>Object.values(out).flat();

@@ -86,7 +86,10 @@ test('reduced motion keeps essential gait and weapon alignment without secondary
  const idle=T.pose({...input,combatProgress:0});
  assert.ok(a.joints.rightHand[2]<idle.joints.rightHand[2],'the drawing hand still follows the actual bow draw');
  const recovered=T.pose({...input,combatPhase:'recover',combatProgress:0});
- vclose(recovered.joints.rightHand,idle.joints.rightHand,1e-10);
+ const fullyDrawn=T.pose({...input,combatProgress:1});
+ vclose(recovered.joints.rightHand,fullyDrawn.joints.rightHand,1e-10);
+ vclose(T.pose({...input,combatPhase:'recover',combatProgress:1}).joints.rightHand,idle.joints.rightHand,1e-10);
+ vclose(T.pose({...input,combatPhase:'recover',combatProgress:0,releaseOrigin:'ready'}).joints.rightHand,idle.joints.rightHand,1e-10);
  const stepped=T.motion(T.motion(null,sample()),sample({x:.08,time:.04,walking:true,reducedMotion:true}));
  assert.ok(stepped.phase>0);
  const quiet=T.pose({...input,combatScene:false}),full=T.pose({...input,reducedMotion:false,combatScene:false,time:1});
