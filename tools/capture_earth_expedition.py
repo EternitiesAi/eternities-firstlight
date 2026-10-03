@@ -122,7 +122,8 @@ def bounded_history(before, after):
     capacity = 100 - len(new)
     expected = before['adventure']['receipts'][-capacity:] if capacity else []
     assert surviving == expected, 'Old command receipts changed beyond bounded eviction'
-    allowed = {'target-cycle', 'target-clear', 'auto-toggle', 'guard', 'attack'}
+    allowed = {'target-cycle', 'target-clear', 'auto-toggle', 'guard', 'attack',
+               'starter-enter', 'starter-leave'}
     assert all(json.loads(r['fp'])[0] in allowed for r in new), 'Unexpected new Adventure command'
     assert set(before['visited']).issubset(after['visited']), 'An old visited place was lost'
     return {'new_chronicle_events': added, 'old_chronicle_entries_retained': len(retained),
@@ -287,6 +288,11 @@ def main():
 
                     def mark(label, picture=True):
                         w, d = state(), diag()
+                        controls = page.evaluate('''()=>[...document.querySelectorAll('#rpg-hud [data-rpg="camera"]')].map(el=>({
+                          mode:el.dataset.id,pressed:el.getAttribute('aria-pressed'),
+                          focused:document.activeElement===el,hovered:el.matches(':hover')}))''')
+                        selected = [c['mode'] for c in controls if c['pressed'] == 'true']
+                        check(label + ' actual camera agrees with native selected control', selected == [d['camera']['preset']], controls)
                         i = len(report['events'])
                         filename = f'{i:02d}_{label}_STATE.json'
                         write_json(out / filename, w)
@@ -299,6 +305,7 @@ def main():
                             'paused': d['adventure']['paused'], 'wallet': wallet(w),
                             'stats': d['adventure']['stats'], 'weapon': d['adventure']['weapon'],
                             'render_metrics': d.get('metrics'), 'reflection': d.get('reflection'),
+                            'camera_controls': controls,
                             'characters': d['characters'], 'music': d['music'], 'audio': d.get('audio'),
                             'raf': page.evaluate('()=>window.__earthCaptureRaf'),
                         })
@@ -425,6 +432,11 @@ def main():
 
                     def fight(step, catalogue, run=None):
                         close()
+                        # Use native controls: crossings remain a diorama, while
+                        # named root encounters show the real third-person pose.
+                        mode = 'adventure' if step['id'] == 'clear-root-pests' else 'follow'
+                        click('#rpg-hud [data-rpg="camera"][data-id="' + mode + '"]')
+                        page.wait_for_function('(mode)=>Realm.diagnostics.camera.preset===mode', arg=mode)
                         term = next(e for e in catalogue['enemies'] if e['defeatStep'] == step['id'])
                         enemy_id = term['id'] if run is None else catalogue['id'] + '-run-' + str(run) + '-' + term['id']
                         before, d = state(), diag()
@@ -602,6 +614,97 @@ def main():
                     click('#rpg-content .guide-survey [data-rpg="pursuit-route"][data-id="oren"]')
                     bench = page.evaluate('()=>RealmStarter.OREN')
                     wait_near(bench, 'Outdoor home workbench')
+
+                    def practice(label):
+                        """Actual UI round trip and confirmed dummy impacts, no reward."""
+                        close()
+                        check(label + ' starts at home', diag()['scene'] == 'valley')
+                        before_trip = state()
+                        workspace('pursuit')
+                        reading(label + ' native field-guide practice route')
+                        click('#rpg-content .guide-detail [data-rpg="pursuit-route"][data-id="practice"]')
+                        gate = page.evaluate('()=>RealmStarter.GATE')
+                        wait_near(gate, label + ' riverbank sign')
+                        page.keyboard.press('e')
+                        page.wait_for_function('()=>Realm.diagnostics.scene==="riverbank"')
+                        workspace('pursuit')
+                        click('#rpg-content .guide-detail [data-rpg="pursuit-route"][data-id="practice"]')
+                        target = page.evaluate('()=>RealmStarter.PRACTICE')
+                        style = diag()['adventure']['weapon']['style']
+                        stand = {'x': target['x'], 'z': 6 if style == 'bow' else 11.5}
+                        wait_near(stand, label + ' accepted practice approach')
+                        for _ in range(12):
+                            page.keyboard.press('Tab')
+                            page.wait_for_timeout(60)
+                            if diag()['adventure']['tactics']['target'] == target['id']:
+                                break
+                        check(label + ' native Tab selects the practice bundle',
+                              diag()['adventure']['tactics']['target'] == target['id'])
+                        impacts = []
+                        for mode in ['adventure', 'follow']:
+                            click('#rpg-hud [data-rpg="camera"][data-id="' + mode + '"]')
+                            page.wait_for_function('(mode)=>Realm.diagnostics.camera.preset===mode', arg=mode)
+                            page.wait_for_timeout(350)
+                            before_hit, before_d = state(), diag()['adventure']
+                            old_ids = {h['id'] for h in before_d['tactics']['hits']}
+                            actor = next(e for e in before_d['enemies'] if e['id'] == target['id'])
+                            check(label + ' actual practice actor has 100 HP', actor['hp'] == 100)
+                            check(label + ' practice begins with autoattack off', not before_d['tactics']['auto'])
+                            page.keyboard.press('1')
+                            check(label + ' native 1 enables actual practice autoattack', diag()['adventure']['tactics']['auto'])
+                            began, packet, saw_arrow, samples = time.monotonic(), None, False, []
+                            while time.monotonic() - began < 12:
+                                d = diag()['adventure']
+                                saw_arrow = saw_arrow or bool(d['arrows'])
+                                packets = [h for h in d['tactics']['hits'] if h['id'] not in old_ids and h['at'] >= before_hit['adventure']['elapsed']]
+                                samples.append({'seconds': time.monotonic() - began, 'arrows': len(d['arrows']),
+                                                'motion': d['tactics'].get('motion'), 'hits': packets})
+                                if packets:
+                                    packet = packets[-1]
+                                    break
+                                page.wait_for_timeout(25)
+                            check(label + ' actual confirmed practice impact ' + mode, packet is not None, samples)
+                            # Stop through the same actual toggle, keeping the
+                            # selected actor and its confirmed-impact HUD visible.
+                            page.keyboard.press('1')
+                            check(label + ' native toggle stops practice autoattack', not diag()['adventure']['tactics']['auto'])
+                            expected_damage = before_d['stats']['attack']
+                            check(label + ' practice confirms production attack damage ' + mode, packet['n'] == expected_damage, packet)
+                            if style == 'bow':
+                                check(label + ' real practice projectile observed ' + mode, saw_arrow)
+                            page.wait_for_function('(n)=>document.querySelector("#target-state").textContent==="Last confirmed impact: "+n+" · no XP or loot"', arg=packet['n'])
+                            after_hit = mark(label + '-actual-impact-' + mode)
+                            after_d = diag()['adventure']
+                            after_actor = next(e for e in after_d['enemies'] if e['id'] == target['id'])
+                            check(label + ' practice keeps actual actor and traveler HP',
+                                  after_actor['hp'] == 100 and after_hit['adventure']['hp'] == before_hit['adventure']['hp'])
+                            check(label + ' practice grants no XP, loot, work or inventory',
+                                  wallet(after_hit) == wallet(before_hit) and after_hit['earthExpedition'] == before_hit['earthExpedition'] and
+                                  after_hit['adventure']['earthBinding'] == before_hit['adventure']['earthBinding'] and
+                                  preservation(after_hit) == preservation(before_hit))
+                            impacts.append({'mode': mode, 'style': style, 'damage': packet['n'], 'packet': packet,
+                                            'saw_actual_arrow': saw_arrow, 'samples': samples,
+                                            'ui': page.locator('#target-frame').inner_text(), 'stats': before_d['stats']})
+                        click('#target-clear')
+                        workspace('atlas')
+                        click('#rpg-content .cross-atlas-list [data-rpg="starter-walk"][data-id="river-exit"]')
+                        exit_point = page.evaluate('()=>RealmStarter.ENTRY')
+                        wait_near(exit_point, label + ' actual southern exit')
+                        page.keyboard.press('e')
+                        page.wait_for_function('()=>Realm.diagnostics.scene==="valley"')
+                        workspace('pursuit')
+                        click('#rpg-content .guide-survey [data-rpg="pursuit-route"][data-id="oren"]')
+                        wait_near(bench, label + ' return to outdoor Oren bench')
+                        after_trip = state()
+                        check(label + ' whole practice round trip preserves ownership, balances and work',
+                              preservation(after_trip) == preservation(before_trip) and wallet(after_trip) == wallet(before_trip) and
+                              after_trip['earthExpedition'] == before_trip['earthExpedition'] and
+                              after_trip['adventure']['earthBinding'] == before_trip['adventure']['earthBinding'])
+                        report.setdefault('practice', []).append({'label': label, 'impacts': impacts,
+                                                                  'before_wallet': wallet(before_trip), 'after_wallet': wallet(after_trip)})
+                        return impacts
+
+                    baseline_impacts = practice('before-binding-practice')
                     workspace('craft')
                     before_bind = state()
                     before_stats = diag()['adventure']['stats']
@@ -632,6 +735,13 @@ def main():
                     page.wait_for_function('()=>Realm.diagnostics.camera.preset==="follow"')
                     page.wait_for_timeout(600)
                     mark('bound-weapon-diorama-v-exchange')
+                    fitted_impacts = practice('after-binding-practice')
+                    expected_damage_delta = 2 if binding == 'edge' else 0
+                    check('Actual before/after practice impact matches the chosen binding',
+                          all(after['damage'] - before['damage'] == expected_damage_delta
+                              for before, after in zip(baseline_impacts, fitted_impacts)),
+                          {'before': [r['damage'] for r in baseline_impacts], 'after': [r['damage'] for r in fitted_impacts],
+                           'expected_delta': expected_damage_delta})
                     final = state()
                     check('Whole outing preserves original ownership and histories', preservation(final) == preservation(base))
                     natural_sandbox(base, final, sandbox_catalogue)
