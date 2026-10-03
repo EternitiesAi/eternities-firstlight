@@ -93,7 +93,8 @@ test('north trails: exact frozen catalogue contract and distinct persistent name
   assert.match(def.danger,/road home.*free|free road home/);
   // The completion paragraph is shown only after the explicit once-only claim.
   // It must name the actual paid terms, rather than inviting another payout.
-  assert.ok(def.completionText.includes(`${def.giver.name} has paid the declared ${def.reward.xp} XP, ${def.reward.coins} coins and ${def.reward.ore} ore`));
+  const payer=def.giver.name.split(' · ')[0];
+  assert.ok(def.completionText.includes(`${payer} has paid the declared ${def.reward.xp} XP, ${def.reward.coins} coins and ${def.reward.ore} ore`));
   assert.doesNotMatch(def.completionText,/Claim the declared/);
   keys(def.giver,['id','name','x','z']);assert.ok(def.giver.name);
   const old=W.definition(def.realm),person=old.points.find(p=>p.id===def.giver.id);
