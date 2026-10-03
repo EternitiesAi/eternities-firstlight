@@ -3,6 +3,8 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs'),vm=require('node:vm');
+require('../src/coastward-settlement-art.js');
+require('../src/coastward-woodland-art.js');
 const W=require('../src/world-atlantis-earth.js');
 const E=require('../src/engine.js');
 const [earth,sea]=W.realms,R=.31,BODY=1.7,G=1.57;
@@ -76,7 +78,7 @@ test('every entry and interaction anchor has full actor clearance on bounded dry
   assert.ok(walkable(d,p.x,p.z),`${d.id}:${p.id} is reachable dry ground`);
  }
  assert.ok(walkable(earth,0,55));assert.equal(walkable(earth,12,55),false,'bridge side is water, not an invisible shelf');
- assert.equal(walkable(earth,0,-20),false,'two woodland approaches remain geographically distinct');
+ assert.equal(walkable(earth,0,-20),true,'the authored woodland floor now physically joins both retained approaches');
  assert.equal(walkable(sea,8,-29),false,'scenic gallery is not a dry walking patch');
 });
 
@@ -130,7 +132,7 @@ test('dive entry and wet exit anchors agree with reachable transfer destinations
 });
 
 test('actual decoration is finite, deterministic, bounded and pure across claimed/unclaimed worlds',()=>{
- const kinds=new Set(['box','cylinder','cone','roof','round','leaf','ring','mountain-ridge','timber-panel']);
+ const kinds=new Set(['box','cylinder','cone','roof','round','octa','leaf','ring','mountain-ridge','timber-panel']);
  for(const def of W.realms)for(const claimed of [false,true]){
   const parts=record(def,claimed);assert.ok(parts.length<1500);assert.deepEqual(parts,record(def,claimed));
   for(const p of parts){assert.ok(kinds.has(p.kind));assert.ok(p.p.every(Number.isFinite));assert.ok(p.s.every(n=>Number.isFinite(n)&&n>0));assert.ok(Number.isInteger(p.color));assert.equal(p.opt.cameraSolid,false);if(p.opt.skyImage)assert.equal(p.opt.cutaway,false);}
@@ -145,13 +147,19 @@ test('roofs and important structural decoration agree with the canonical solid f
   const parts=record(def);
   for(const p of parts.filter(p=>p.kind==='roof')){
    const s=def.solids.find(s=>s.id===p.opt.structureId);assert.ok(s);
-   assert.equal(p.p[0],s.x);assert.equal(p.p[2],s.z);assert.equal(p.s[0],s.w);assert.equal(p.s[2],s.d);assert.equal(p.p[1],G+s.h);
+   assert.equal(p.p[0],s.x);assert.equal(p.p[2],s.z);
+   if(p.opt.settlementPart==='roof-shell'){
+    assert.equal(def.id,'earthlands');assert.ok(['west-house','east-house','field-store'].includes(s.id));
+    assert.equal(p.s[0],s.w+.56);assert.equal(p.s[2],s.d+.5);assert.equal(p.p[1],G+s.h+.03);
+    assert.equal(p.s[1],s.h*.28);assert.equal(p.opt.appearanceOnly,true);
+   }else {assert.equal(p.s[0],s.w);assert.equal(p.s[2],s.d);assert.equal(p.p[1],G+s.h);}
   }
   for(const p of parts.filter(p=>p.kind==='box'&&p.opt.solidId)){
    const s=def.solids.find(s=>s.id===p.opt.solidId);assert.ok(s,p.opt.solidId);
    // Face trim is allowed a small projection. Large arbitrary walls are not.
-   assert.ok(Math.abs(p.p[0]-s.x)+p.s[0]/2<=s.w/2+.12,`${s.id} X footprint`);
-   assert.ok(Math.abs(p.p[2]-s.z)+p.s[2]/2<=s.d/2+.12,`${s.id} Z footprint`);
+   const projection=p.opt.settlementPart?.16:.12;
+   assert.ok(Math.abs(p.p[0]-s.x)+p.s[0]/2<=s.w/2+projection,`${s.id} X footprint`);
+   assert.ok(Math.abs(p.p[2]-s.z)+p.s[2]/2<=s.d/2+projection,`${s.id} Z footprint`);
   }
  }
  const canopy=record(sea).find(p=>p.opt.structureId==='farwake-civic-canopy');assert.ok(canopy.p[1]-canopy.s[1]/2>G+BODY);
@@ -200,21 +208,27 @@ test('narrow field path geometry lies wholly on supported clear ground and door 
  assert.deepEqual(doors.map(p=>p.opt.solidId).sort(),['east-house','field-store','west-house']);
  for(const p of doors){
   const s=earth.solids.find(s=>s.id===p.opt.solidId);assert.equal(p.kind,'timber-panel');assert.equal(p.p[0],s.x);
-  const m=E.M.compose(...p.p,...p.s,...p.opt.r),mesh=E.geometry(p.kind),ys=[];
+  const m=p.opt.m||E.M.compose(...p.p,...p.s,...p.opt.r),mesh=E.geometry(p.kind),ys=[];
   for(let i=0;i<mesh.length;i+=8){const [x,y,z]=E.M.transform(m,[mesh[i],mesh[i+1],mesh[i+2]]);ys.push(y);assert.ok(x>=s.x-s.w/2&&x<=s.x+s.w/2);assert.ok(z>=s.z+s.d/2&&z<s.z+s.d/2+.12);}
-  assert.ok(Math.abs(Math.min(...ys)-G)<1e-6,'rotated vertical-grain door meets existing ground');
+  assert.ok(Math.abs(Math.min(...ys)-(G+.12))<1e-6,'vertical-grain door meets the authored supported sill');
  }
  assert.equal(earth.points.filter(p=>/door|house entrance/i.test(p.id)).length,0,'closed facade does not advertise an unimplemented interior');
 });
 
 test('distant ridges use the actual mountain mesh and remain outside Earth rather than becoming false paths',()=>{
- const ridges=record(earth).filter(p=>p.kind==='mountain-ridge');assert.equal(ridges.length,3);
+ const ridges=record(earth).filter(p=>p.kind==='mountain-ridge');assert.equal(ridges.length,10);
  for(const p of ridges){
   const mesh=E.geometry(p.kind),ys=[];for(let i=1;i<mesh.length;i+=6)ys.push(mesh[i]);
   assert.ok(new Set(ys.map(y=>y.toFixed(4))).size>20,'real asymmetric ridge heights; unknown kinds silently fall back to a cylinder');
   assert.ok(p.p[0]+p.s[0]/2<earth.bounds.minX||p.p[0]-p.s[0]/2>earth.bounds.maxX||p.p[2]+p.s[2]/2<earth.bounds.minZ||p.p[2]-p.s[2]/2>earth.bounds.maxZ);
   assert.equal(p.opt.cameraSolid,false);assert.equal(p.opt.cutaway,false);assert.equal(E.solidBounds(p.kind,{p:p.p,s:p.s,...p.opt}),null);
+  const m=E.M.compose(...p.p,...p.s,...(p.opt.r||[0,0,0]));
+  for(let i=0;i<mesh.length;i+=6){const[x,,z]=E.M.transform(m,[mesh[i],mesh[i+1],mesh[i+2]]);assert.ok(x<earth.bounds.minX||x>earth.bounds.maxX||z<earth.bounds.minZ||z>earth.bounds.maxZ,'every rotated vista vertex stays outside physical country');}
  }
  assert.ok(ridges.some(p=>p.p[0]>earth.bounds.maxX&&p.p[2]>17&&p.p[2]<93),'channel side view has distant mountains across the water');
  assert.equal(record(earth).some(p=>p.kind==='mountain'),false,'unsupported fallback kind is gone');
+ const channel=ridges.filter(p=>p.opt.vista==='channel-east');assert.equal(channel.length,8);
+ assert.deepEqual([0,1,2].map(layer=>channel.filter(p=>p.opt.vistaLayer===layer).length),[3,3,2]);
+ assert.equal(new Set(channel.map(p=>p.color)).size,3);assert.ok(channel.every(p=>p.opt.skyImage));
+ assert.equal(ridges.reduce((n,p)=>n+E.geometry(p.kind).length/18,0),3360,'bounded existing mesh budget across all passes');
 });

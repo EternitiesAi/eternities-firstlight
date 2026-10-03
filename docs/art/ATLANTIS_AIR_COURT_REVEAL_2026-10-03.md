@@ -1,0 +1,9 @@
+# Reveal the maintained chart in the air court
+
+The actual Southern work tour at `cd1cb6b2` found a rendering defect after the correct chart choice: in the default diorama frame, removing all eleven desk/chart parts changed only four pixels. The same intervention in third person changed 21,807 pixels. The authoritative `bellglass-ceiling` covered the chart outside the narrow traveler cutaway. The retained failed run records 190/191 checks in 356.688 seconds; it is not a passing qualification. Its older held-key helper also stopped the upper reading 0.274 metres from the target, so that run does not meet the final route tolerance.
+
+At `ec9af152cd93c4a54ffbfe9526856e22ad192239`, only the existing ceiling's submitted visual record receives `worldRoof:'atlantis-air-court'`. The existing scene owner derives its actual XZ shelter bounds; the existing main-view shader opens tagged roofs when the traveler is under them, the camera is above their base and the player's cutaway preference is enabled. Its canonical footprint, height, `worldSolidId`, body collision and camera collision remain. The cutaway-off setting, shadow and reflection passes retain the ceiling. No new shader, roof geometry, task anchor, saved field or progression authority is introduced.
+
+The focused CPU command `node --test tests/world_art.test.cjs tests/realm_trails_art.test.cjs` passes 16/16 cases, including one new exact canonical-ceiling tag/geometry test. Both regenerated HTML outputs are 2,513,274 bytes / SHA-256 `f614e48dcee8ef82ab3ecf27c6de26bed07ca3b269bdb67c5f5dd1f0f6fdd799`. The separate strict native-route and actual chart-pixel browser qualification, final hardware measurement and normal-time recording have their own receipts; this CPU result does not anticipate them.
+
+The same checkpoint corrects already-paid Heaven/Hell recognition prose to past tense. The existing claimed branch already removed the claim button; reward ownership and terms are unchanged.

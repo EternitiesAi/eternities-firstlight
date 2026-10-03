@@ -1,0 +1,725 @@
+{
+  "review_time_utc": "2026-10-03T03:44:39.740345+00:00",
+  "reviewer": "heaven_hell_foundations, independent bounded report/state/still review",
+  "scope": "Four REPORTs, four FINAL_WORLDs, four exact imported sources, twelve actual PNGs, and the named source branches. No runtime edits or execution.",
+  "current_checkout_head": "06cf36e7170abbadd8b3f33a19ee9481fc970673",
+  "current_runtime_commit_as_assigned": "ede9ca891eba9dbaf0c33ea55003eb84fadeee13",
+  "current_html_sha256": "06e5d3c29598a6342d7542b303afb72af964fb6d1c79b694235bec408d3fa4f3",
+  "current_html_bytes": 2513088,
+  "current_source_inspected": [
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\src\\realm-trails-ui.js",
+      "sha256": "d2161829aff6a3b2c36ea414ed687aabbeb10cc33a5ddd8f0c7f36cfc7bdf65d"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\src\\realm-trails-north.js",
+      "sha256": "4e0fc692cee329ab259230685b3b8ce068e6dc1cc7dd287b67143d2460859e6f"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\src\\realm-trails-cosmos.js",
+      "sha256": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\src\\realm-craft.js",
+      "sha256": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed"
+    }
+  ],
+  "recordings": [
+    {
+      "directory": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\heaven-feel-final-01",
+      "report": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\heaven-feel-final-01\\REPORT.json",
+        "sha256": "b3fd96b51ddeea6ee10e524cd3767b7f11ac5f46144f062c0e5e30c934b03345"
+      },
+      "final_world": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\heaven-feel-final-01\\FINAL_WORLD.json",
+        "sha256": "817fce04d9bf4d925b939e3ef4083ae1cbf0a72d7599312f440404830c0d538f"
+      },
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\sources\\heaven-partial-earned.json",
+        "sha256": "223f27b270658f0f3f69610245ac34174ac5cccccd453477ce7e4658aedefe98",
+        "matches_declared_hash": true,
+        "accepted_at_import": {
+          "heaven-broken-choir-v1": {
+            "accepted": true,
+            "steps": [
+              "relay-west"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      },
+      "recorded_html_sha256": "ceb0ed0eaa357fa2f0483151c902bc39276513050693299d71a1e62e052a18fa",
+      "report_status": "passed",
+      "report_renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "report_viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "report_flags": {
+        "artificial_ticks": 0,
+        "position_edits": 0,
+        "manual_damage": 0,
+        "inventory_grants": 0,
+        "human_acceptance": false,
+        "sustained_performance_qualification": false,
+        "browser_errors": [],
+        "external_requests": []
+      },
+      "reported_capture_wall_seconds": 119.82842800000799,
+      "saved_adventure_elapsed_delta": 116.17879999999482,
+      "exact_currency_delta": {
+        "xp": 30,
+        "coins": 12,
+        "ore": 2
+      },
+      "hp_before_after": [
+        100,
+        80
+      ],
+      "equipment_preserved": true,
+      "owned_preserved": true,
+      "unchanged_top_level": {
+        "journeys": true,
+        "score": true,
+        "scoreRevision": true,
+        "retreat": true,
+        "visitor": true,
+        "version": true,
+        "seed": true,
+        "day": true,
+        "weather": true,
+        "visited": true,
+        "flowers": true,
+        "notes": true
+      },
+      "final_trail_records": {
+        "heaven-broken-choir-v1": {
+          "accepted": true,
+          "steps": [
+            "relay-west",
+            "relay-east",
+            "relay-crown",
+            "disable-core",
+            "garden-repair"
+          ],
+          "settings": {},
+          "checkpoint": 0,
+          "escortMode": "follow",
+          "assisted": false,
+          "claimed": true
+        },
+        "hell-open-cage-v1": {
+          "accepted": false,
+          "steps": [],
+          "settings": {},
+          "checkpoint": 0,
+          "escortMode": "follow",
+          "assisted": false,
+          "claimed": false
+        },
+        "atlantis-bellglass-chart-v1": {
+          "accepted": false,
+          "steps": [],
+          "settings": {},
+          "checkpoint": 0,
+          "escortMode": "follow",
+          "assisted": false,
+          "claimed": false
+        },
+        "earthlands-coastward-materials-v1": {
+          "accepted": false,
+          "steps": [],
+          "settings": {},
+          "checkpoint": 0,
+          "escortMode": "follow",
+          "assisted": false,
+          "claimed": false
+        },
+        "cosmos-split-bearing-v1": {
+          "accepted": false,
+          "steps": [],
+          "settings": {},
+          "checkpoint": 0,
+          "escortMode": "follow",
+          "assisted": false,
+          "claimed": false
+        }
+      },
+      "final_fitting": {
+        "version": 1,
+        "weapon": null
+      },
+      "final_player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "adventure_changed_keys": [
+        "elapsed",
+        "revision",
+        "ore",
+        "coins",
+        "xp",
+        "hp",
+        "receipts"
+      ],
+      "reported_guard_inputs": 2,
+      "reported_fitting": null,
+      "reported_practice_damage": null,
+      "inspected_pngs": [
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\heaven-feel-final-01\\core-folded.png",
+          "sha256": "6a8a255eb5e4c4e687ed86c07b73790f427de15688344be8581b25d2ae912380",
+          "observed": "Third view shows the bow-equipped player, 13 impact text, Brace toast and 4/5 tracker pointing to Garden repair. This is a post-defeat still; it does not independently establish windup, shield gating or effective guarded damage."
+        },
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\heaven-feel-final-01\\garden-return-arm-third.png",
+          "sha256": "862141346c528c1ed707780481560bf6c1a9c2d6614843417e8bcdca773fc66b",
+          "observed": "Grounded player and a small blue Garden return fixture are visible beside the gold ring. The tracker reads 5/5 Return to Rielle. A still does not establish arm motion."
+        },
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\heaven-feel-final-01\\explicit-claim.png",
+          "sha256": "ffb801771d69a6d432e27f2b136f7efaf88a43e5836f56170aab6c1b81fd7fea",
+          "observed": "Completed steps and Rielle recognition are legible in the Roads panel; Level 2 toast is visible. Paid completion prose still imperatively says Claim the declared reward. Claim controls are outside this selected viewport; source inspection confirms the claimed branch removes the claim button."
+        }
+      ]
+    },
+    {
+      "directory": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\hell-rescue-final-01",
+      "report": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\hell-rescue-final-01\\REPORT.json",
+        "sha256": "a19cf8c04c35db4e52f6f756ea4f89cd1d9f6868884df4da68fb3b5a076adccb"
+      },
+      "final_world": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\hell-rescue-final-01\\FINAL_WORLD.json",
+        "sha256": "66d4b0e20e6a9375ec98097fc3647904a3e7ed31995bb5c1aef79b0cc7f65d20"
+      },
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\sources\\hell-disabled-earned.json",
+        "sha256": "bbdcd5080a4ba774102cf612edd099320fb94e631b7fca568117410f281bff68",
+        "matches_declared_hash": true,
+        "accepted_at_import": {
+          "heaven-broken-choir-v1": {
+            "accepted": true,
+            "steps": [
+              "spillway",
+              "relay-west",
+              "relay-east",
+              "relay-crown",
+              "disable-core",
+              "garden-repair"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": true
+          },
+          "hell-open-cage-v1": {
+            "accepted": true,
+            "steps": [
+              "contact-neris",
+              "cooling",
+              "clamp-west",
+              "clamp-east",
+              "disable-reeve"
+            ],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      },
+      "recorded_html_sha256": "ceb0ed0eaa357fa2f0483151c902bc39276513050693299d71a1e62e052a18fa",
+      "report_status": "passed",
+      "report_renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "report_viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "report_flags": {
+        "artificial_ticks": 0,
+        "position_edits": 0,
+        "manual_damage": 0,
+        "inventory_grants": 0,
+        "human_acceptance": false,
+        "sustained_performance_qualification": false,
+        "browser_errors": [],
+        "external_requests": []
+      },
+      "reported_capture_wall_seconds": 142.87315780000063,
+      "saved_adventure_elapsed_delta": 138.09460000000178,
+      "exact_currency_delta": {
+        "xp": 35,
+        "coins": 14,
+        "ore": 3
+      },
+      "hp_before_after": [
+        96,
+        96
+      ],
+      "equipment_preserved": true,
+      "owned_preserved": true,
+      "unchanged_top_level": {
+        "journeys": true,
+        "score": true,
+        "scoreRevision": true,
+        "retreat": true,
+        "visitor": true,
+        "version": true,
+        "seed": true,
+        "day": true,
+        "weather": true,
+        "visited": true,
+        "flowers": true,
+        "notes": true
+      },
+      "final_trail_records": {
+        "heaven-broken-choir-v1": {
+          "accepted": true,
+          "steps": [
+            "spillway",
+            "relay-west",
+            "relay-east",
+            "relay-crown",
+            "disable-core",
+            "garden-repair"
+          ],
+          "settings": {},
+          "checkpoint": 0,
+          "escortMode": "follow",
+          "assisted": false,
+          "claimed": true
+        },
+        "hell-open-cage-v1": {
+          "accepted": true,
+          "steps": [
+            "contact-neris",
+            "cooling",
+            "clamp-west",
+            "clamp-east",
+            "disable-reeve",
+            "escort-start",
+            "refuge-arrival"
+          ],
+          "settings": {},
+          "checkpoint": 5,
+          "escortMode": "follow",
+          "assisted": false,
+          "claimed": true
+        },
+        "atlantis-bellglass-chart-v1": {
+          "accepted": false,
+          "steps": [],
+          "settings": {},
+          "checkpoint": 0,
+          "escortMode": "follow",
+          "assisted": false,
+          "claimed": false
+        },
+        "earthlands-coastward-materials-v1": {
+          "accepted": false,
+          "steps": [],
+          "settings": {},
+          "checkpoint": 0,
+          "escortMode": "follow",
+          "assisted": false,
+          "claimed": false
+        },
+        "cosmos-split-bearing-v1": {
+          "accepted": false,
+          "steps": [],
+          "settings": {},
+          "checkpoint": 0,
+          "escortMode": "follow",
+          "assisted": false,
+          "claimed": false
+        }
+      },
+      "final_fitting": {
+        "version": 1,
+        "weapon": null
+      },
+      "final_player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "adventure_changed_keys": [
+        "elapsed",
+        "revision",
+        "ore",
+        "coins",
+        "xp",
+        "stamina"
+      ],
+      "reported_guard_inputs": null,
+      "reported_fitting": null,
+      "reported_practice_damage": null,
+      "inspected_pngs": [
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\hell-rescue-final-01\\neris-wait.png",
+          "sha256": "b9951ec45bcaa438c642bdc51003fc007840b7de6450804f1d6cf88733c1bdbf",
+          "observed": "Paused Roads panel explicitly distinguishes Waiting, Resume escort and Request assisted extraction. It discloses 2.5m/s ally speed, waiting beyond 10m, and assisted-record semantics. Checkpoint displays 1/6."
+        },
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\hell-rescue-final-01\\neris-safe-separate.png",
+          "sha256": "68a97653fb7c78ee82af32ce017e461ac80f9c1dc8ec28760bae9bad3595a95b",
+          "observed": "Neris is a distinct body left of the player at the Refuge; Istra is separately visible near her label. Tracker reads 7/7 Return to Istra. Dark/muted clothing remains less conspicuous than text, but no ally/player merge or blocked body is apparent in this selected view."
+        },
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\hell-rescue-final-01\\explicit-claim.png",
+          "sha256": "e35dfacea0f4dd1940545bf017de5a869c768bcc324fcdfd5156f83f5c325c80",
+          "observed": "Required actions and safe-arrival recognition are visible; toast explicitly credits +35 XP, +14 sunmarks, +3 ore. Static paid completion paragraph again says Claim the declared reward."
+        }
+      ]
+    },
+    {
+      "directory": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\cosmos-alignment-final-01",
+      "report": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\cosmos-alignment-final-01\\REPORT.json",
+        "sha256": "d7bfce0d4cad79ac8d226dbb0dc14d828614773219f6d4c21b5df07355e76a0f"
+      },
+      "final_world": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\cosmos-alignment-final-01\\FINAL_WORLD.json",
+        "sha256": "a3bfd47c2bdcafb35ca0267ec8072527c118cf9b1b041a2d36111a2fc8c4c0e5"
+      },
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\sources\\coastward-kit-earned.json",
+        "sha256": "a867a16f4f5e6311bcafa0a8a2166dd6d59547e126ddb4d792c221afb7438d39",
+        "matches_declared_hash": true,
+        "accepted_at_import": {}
+      },
+      "recorded_html_sha256": "ceb0ed0eaa357fa2f0483151c902bc39276513050693299d71a1e62e052a18fa",
+      "report_status": "passed",
+      "report_renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "report_viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "report_flags": {
+        "artificial_ticks": 0,
+        "position_edits": 0,
+        "manual_damage": 0,
+        "inventory_grants": 0,
+        "human_acceptance": false,
+        "sustained_performance_qualification": false,
+        "browser_errors": [],
+        "external_requests": []
+      },
+      "reported_capture_wall_seconds": 84.65177240001503,
+      "saved_adventure_elapsed_delta": 73.8635000000051,
+      "exact_currency_delta": {
+        "xp": 25,
+        "coins": 10,
+        "ore": 2
+      },
+      "hp_before_after": [
+        100,
+        100
+      ],
+      "equipment_preserved": true,
+      "owned_preserved": true,
+      "unchanged_top_level": {
+        "journeys": true,
+        "score": true,
+        "scoreRevision": true,
+        "retreat": true,
+        "visitor": true,
+        "version": true,
+        "seed": true,
+        "day": true,
+        "weather": true,
+        "visited": true,
+        "flowers": true,
+        "notes": true
+      },
+      "final_trail_records": {
+        "heaven-broken-choir-v1": {
+          "accepted": false,
+          "steps": [],
+          "settings": {},
+          "checkpoint": 0,
+          "escortMode": "follow",
+          "assisted": false,
+          "claimed": false
+        },
+        "hell-open-cage-v1": {
+          "accepted": false,
+          "steps": [],
+          "settings": {},
+          "checkpoint": 0,
+          "escortMode": "follow",
+          "assisted": false,
+          "claimed": false
+        },
+        "atlantis-bellglass-chart-v1": {
+          "accepted": false,
+          "steps": [],
+          "settings": {},
+          "checkpoint": 0,
+          "escortMode": "follow",
+          "assisted": false,
+          "claimed": false
+        },
+        "earthlands-coastward-materials-v1": {
+          "accepted": false,
+          "steps": [],
+          "settings": {},
+          "checkpoint": 0,
+          "escortMode": "follow",
+          "assisted": false,
+          "claimed": false
+        },
+        "cosmos-split-bearing-v1": {
+          "accepted": true,
+          "steps": [
+            "west-sight",
+            "east-sight",
+            "service-arm"
+          ],
+          "settings": {
+            "west-sight": 63.9,
+            "east-sight": 11.2
+          },
+          "checkpoint": 0,
+          "escortMode": "follow",
+          "assisted": false,
+          "claimed": true
+        }
+      },
+      "final_fitting": {
+        "version": 1,
+        "weapon": null
+      },
+      "final_player": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "adventure_changed_keys": [
+        "elapsed",
+        "revision",
+        "ore",
+        "coins",
+        "xp"
+      ],
+      "reported_guard_inputs": null,
+      "reported_fitting": null,
+      "reported_practice_damage": null,
+      "inspected_pngs": [
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\cosmos-alignment-final-01\\cosmos-terms.png",
+          "sha256": "7ebf32b790a687eb120696b32f912e0f2944fbaa6f5dd0e3566bd14fa9fd53a7",
+          "observed": "Readable optional-work terms disclose existing dry roads, no timed alignment or required exit, exact 25 XP/10 sunmarks/2 ore, once-only workshop unlock, and three required actions."
+        },
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\cosmos-alignment-final-01\\west-sight-aligned.png",
+          "sha256": "3bd50fc9cf45dda8113bb76c059b2a839bd8fef9de02daedebe9128b8a3026cf",
+          "observed": "Large readable instrument and actual slider display 63.9 degrees, split scale aligned, tolerance +/-2 degrees and explicit Record button. Text distinguishes preview from recorded persistence and angular view from astronomical distance or a sky road."
+        },
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\cosmos-alignment-final-01\\east-sight-world-third.png",
+          "sha256": "2859204178f8037e9d7aa72fe4d677bef9889223a9dee5cd010fa8c44b518992",
+          "observed": "Grounded player is fully readable beside the small comparator pedestal. Existing path, lamp, observatory, dry edge and 2/3 tracker to service arm are visible. This is not a view of Sahra nor proof of every route segment."
+        }
+      ]
+    },
+    {
+      "directory": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\returning-fit-final-01",
+      "report": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\returning-fit-final-01\\REPORT.json",
+        "sha256": "4a3ef4f142770bffa3a64f4562be27498506c0ed28b151e2c1ec48c9e7cfb312"
+      },
+      "final_world": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\returning-fit-final-01\\FINAL_WORLD.json",
+        "sha256": "2cef646220c1796508305f43a3fcfc01ac42109df2c778c15f7d1854d38d85d5"
+      },
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\sources\\returning-cosmos-paid-earned.json",
+        "sha256": "000eebea7eab190acbd8653234472111ab0f47e65265d4c9e8c0914d4c99bf24",
+        "matches_declared_hash": true,
+        "accepted_at_import": {
+          "cosmos-split-bearing-v1": {
+            "accepted": true,
+            "steps": [
+              "west-sight",
+              "east-sight",
+              "service-arm"
+            ],
+            "settings": {
+              "west-sight": 63.85469061425735,
+              "east-sight": 11.183849541231728
+            },
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": true
+          }
+        }
+      },
+      "recorded_html_sha256": "ceb0ed0eaa357fa2f0483151c902bc39276513050693299d71a1e62e052a18fa",
+      "report_status": "passed",
+      "report_renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "report_viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "report_flags": {
+        "artificial_ticks": 0,
+        "position_edits": 0,
+        "manual_damage": 0,
+        "inventory_grants": 0,
+        "human_acceptance": false,
+        "sustained_performance_qualification": false,
+        "browser_errors": [],
+        "external_requests": []
+      },
+      "reported_capture_wall_seconds": 43.03327189999982,
+      "saved_adventure_elapsed_delta": 39.78160000005266,
+      "exact_currency_delta": {
+        "xp": 0,
+        "coins": -8,
+        "ore": -3
+      },
+      "hp_before_after": [
+        200,
+        200
+      ],
+      "equipment_preserved": true,
+      "owned_preserved": true,
+      "unchanged_top_level": {
+        "journeys": true,
+        "score": true,
+        "scoreRevision": true,
+        "retreat": true,
+        "visitor": true,
+        "version": true,
+        "seed": true,
+        "day": true,
+        "weather": true,
+        "visited": true,
+        "flowers": true,
+        "notes": true
+      },
+      "final_trail_records": {
+        "heaven-broken-choir-v1": {
+          "accepted": false,
+          "steps": [],
+          "settings": {},
+          "checkpoint": 0,
+          "escortMode": "follow",
+          "assisted": false,
+          "claimed": false
+        },
+        "hell-open-cage-v1": {
+          "accepted": false,
+          "steps": [],
+          "settings": {},
+          "checkpoint": 0,
+          "escortMode": "follow",
+          "assisted": false,
+          "claimed": false
+        },
+        "atlantis-bellglass-chart-v1": {
+          "accepted": false,
+          "steps": [],
+          "settings": {},
+          "checkpoint": 0,
+          "escortMode": "follow",
+          "assisted": false,
+          "claimed": false
+        },
+        "earthlands-coastward-materials-v1": {
+          "accepted": false,
+          "steps": [],
+          "settings": {},
+          "checkpoint": 0,
+          "escortMode": "follow",
+          "assisted": false,
+          "claimed": false
+        },
+        "cosmos-split-bearing-v1": {
+          "accepted": true,
+          "steps": [
+            "west-sight",
+            "east-sight",
+            "service-arm"
+          ],
+          "settings": {
+            "west-sight": 63.85469061425735,
+            "east-sight": 11.183849541231728
+          },
+          "checkpoint": 0,
+          "escortMode": "follow",
+          "assisted": false,
+          "claimed": true
+        }
+      },
+      "final_fitting": {
+        "version": 1,
+        "weapon": "dawn_edge"
+      },
+      "final_player": {
+        "x": 15,
+        "z": 7,
+        "yaw": 3.141592653589793
+      },
+      "adventure_changed_keys": [
+        "realmCraft",
+        "elapsed",
+        "revision",
+        "ore",
+        "coins",
+        "receipts"
+      ],
+      "reported_guard_inputs": null,
+      "reported_fitting": {
+        "before": 48,
+        "after": 51,
+        "weapon": "dawn_edge"
+      },
+      "reported_practice_damage": 51,
+      "inspected_pngs": [
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\returning-fit-final-01\\weapon-explicit-fitting-preview.png",
+          "sha256": "1bfb82cd0f24b678ff67dfe5cb710f078d0f6d84521976604370c62cd287ec6d",
+          "observed": "Explicit finite fit UI shows Dawn’s edge 48 to 51 attack, cost 3 ore and 8 sunmarks, and unchanged range/cooldown/stamina/guard/health, identity/socket/earlier fittings. This is the equipped Dawn’s edge preview; the lower general recipe list separately selects Ashwood bow and is not a replacement grant."
+        },
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\returning-fit-final-01\\fitted-held-close-third.png",
+          "sha256": "a901f4e71908acf7260110820f0720ab1a3d9d8f458a2b98e87b04e733469475",
+          "observed": "Violet body and brass-edged collar are distinctly visible on the raised held blade; older silver blade and gold guard remain. Player face is visible in this particular angle, although the raised weapon occupies foreground in front of the right shoulder. This is a close photomode view, not a matched close before frame or evidence of full-frame prominence at all distances."
+        },
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\world-production-2026-10-03\\returning-fit-final-01\\actual-51-damage-practice.png",
+          "sha256": "8beab4ac8454bdf6e8014ff7d966c4a99957880fcda7b5c271a6e28c36f5e8c4",
+          "observed": "Native target card reads Last confirmed impact 51, no XP or loot; 51 impact number and Weapon recovering are visible. Practice bundle becomes stippled in the main view, allowing the player body/raised weapon to read. Companion stands separately. Target label/HUD is legible, not evidence of a fresh enemy kill or new reward."
+        }
+      ]
+    }
+  ],
+  "finding": "No consequential mechanical or visual contradiction found within selected evidence. Minor paid-state completion copy ambiguity in both northern stories.",
+  "minor_issue": {
+    "trigger": "Read a claimed north story in Roads",
+    "source": "src/realm-trails-ui.js:92 shows d.completionText only for r.claimed; src/realm-trails-north.js:16 and :39 retain imperative Claim the declared fee.",
+    "recommendation": "Future copy polish can say the declared fee was claimed once. No second claim control or duplicate payout was observed."
+  },
+  "limits": [
+    "All four reports retain FCC HTML ceb0ed0eaa357fa2f0483151c902bc39276513050693299d71a1e62e052a18fa; none is relabelled final EDE9/06e5. Current checkout gained qualification/registration files only after the assigned runtime commit.",
+    "Heaven starts accepted with west relay; Hell starts after safety preparations and Reeve defeat; returning starts with Cosmos already paid. These clips do not show all those earlier actions. Cosmos starts with no accepted trail.",
+    "No video was played or decoded. No container duration, audio quality, playback speed, whole-route semantics, sustained performance or human enjoyment/acceptance is inferred. Report wall seconds and saved elapsed are different quantities.",
+    "Twelve selected stills do not certify continuous animation, actual recovery-only damage, every guard input outcome, all approach/camera angles, full quest ecology or complete countries. Giver recognition is inspected mainly in text; selected Cosmos still is not Sahra.",
+    "Source/final deltas support the declared one-time fees and fitting cost for these runs; they are not a new adversarial persistence/duplicate-payout test.",
+    "Reports declare ANGLE RTX3080 and no artificial ticks/grants/errors; this review did not independently rerun or instrument capture.",
+    "HP and elapsed, world time/event state and appended journal/history may change during normal RAF. Exact preservation was checked for the explicitly listed projections rather than claiming full-save byte identity.",
+    "No browser/GPU/fullsuite/test/FFmpeg/newagent/source mutation was performed. Browser/GPU resources remain quiet."
+  ]
+}

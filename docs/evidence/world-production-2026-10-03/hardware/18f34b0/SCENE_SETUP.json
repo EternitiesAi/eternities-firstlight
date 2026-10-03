@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Firstlight home third person",
+    "expression": "async()=>{\nwindow.__measure={\n key(k){document.body.dispatchEvent(new KeyboardEvent('keydown',{key:k,bubbles:true}));},\n click(s){const e=document.querySelector(s);if(!e||e.disabled)throw Error('Missing enabled measurement setup control '+s);e.click();},\n async wait(f){const t=performance.now();while(!f()){if(performance.now()-t>90000)throw Error('Normal setup wait exceeded90s');await new Promise(r=>setTimeout(r,50));}},\n close(){const e=document.querySelector('#rpg-window');if(e?.open)this.click('#rpg-close');},\n async walk(x,z){this.close();const r=Realm.test.move(x,z);if(!r.ok)throw Error(r.error);await this.wait(()=>Realm.test.path.length===0);const p=Realm.diagnostics.adventure.player;if(Math.hypot(p.x-x,p.z-z)>.3)throw Error('Normal setup walk missed goal');},\n async enter(id){if(Realm.diagnostics.scene!=='valley'){this.close();this.click('#world-home');await this.wait(()=>Realm.diagnostics.scene==='valley');}await this.walk(18,6);this.key('j');this.click('[data-rpg=\"open\"][data-id=\"worlds\"]');if(document.querySelector('[data-rpg=\"world-list\"]'))this.click('[data-rpg=\"world-list\"]');this.click('[data-rpg=\"world-select\"][data-id=\"'+id+'\"]');this.click('[data-rpg=\"world-preview\"]');this.click('[data-rpg=\"world-confirm\"]');await this.wait(()=>Realm.diagnostics.world?.id===id&&!Realm.diagnostics.adventure.paused);},\n view(mode){this.close();this.click('[data-rpg=\"camera\"][data-id=\"'+mode+'\"]');},\n result(){const d=Realm.diagnostics;return{scene:d.scene,player:d.adventure.player,camera:d.camera,method:'Labelled command-earned import; setup uses actual production menus and normal-time path walking; no accelerated ticks, position edits, rewards or video during sampling',xp:Realm.state.adventure.xp,assignedClass:Realm.state.adventure.classes};}\n};Realm.test.setTime(17);__measure.view('adventure');\n;return __measure.result();}"
+  },
+  {
+    "name": "Firstlight home diorama",
+    "expression": "async()=>{__measure.view('follow');return __measure.result();}"
+  },
+  {
+    "name": "Coastward woodland third person",
+    "expression": "async()=>{await __measure.enter('earthlands');await __measure.walk(0,16);await __measure.walk(-10,15);__measure.view('adventure');return __measure.result();}"
+  },
+  {
+    "name": "Coastward woodland diorama",
+    "expression": "async()=>{__measure.view('follow');return __measure.result();}"
+  },
+  {
+    "name": "Coastward channel third side",
+    "expression": "async()=>{await __measure.walk(0,55);__measure.view('adventure');__measure.key('e');__measure.click('[data-rpg=\"world-bridge-view\"]');return __measure.result();}"
+  },
+  {
+    "name": "Coastward channel diorama side",
+    "expression": "async()=>{__measure.view('follow');__measure.key('e');__measure.click('[data-rpg=\"world-bridge-view\"]');return __measure.result();}"
+  },
+  {
+    "name": "Coastward settlement third person",
+    "expression": "async()=>{await __measure.walk(0,97);await __measure.walk(-7,97);__measure.view('adventure');return __measure.result();}"
+  },
+  {
+    "name": "Coastward settlement diorama",
+    "expression": "async()=>{__measure.view('follow');return __measure.result();}"
+  },
+  {
+    "name": "Heaven Garden third person",
+    "expression": "async()=>{await __measure.enter('heaven');await __measure.walk(-14,6.7);__measure.view('adventure');return __measure.result();}"
+  },
+  {
+    "name": "Heaven Garden diorama",
+    "expression": "async()=>{__measure.view('follow');return __measure.result();}"
+  },
+  {
+    "name": "Hell Refuge third person",
+    "expression": "async()=>{await __measure.enter('hell');await __measure.walk(-10,25.7);__measure.view('adventure');return __measure.result();}"
+  },
+  {
+    "name": "Hell Refuge diorama",
+    "expression": "async()=>{__measure.view('follow');return __measure.result();}"
+  },
+  {
+    "name": "Atlantis civic deck third person",
+    "expression": "async()=>{await __measure.enter('atlantis');await __measure.walk(-5,-8.3);__measure.view('adventure');return __measure.result();}"
+  },
+  {
+    "name": "Atlantis civic deck diorama",
+    "expression": "async()=>{__measure.view('follow');return __measure.result();}"
+  },
+  {
+    "name": "Atlantis visitor gallery third person",
+    "expression": "async()=>{await __measure.walk(8,-15);__measure.key('e');__measure.click('[data-rpg=\"world-dive\"]');__measure.view('adventure');return __measure.result();}"
+  },
+  {
+    "name": "Atlantis visitor gallery diorama",
+    "expression": "async()=>{__measure.view('follow');return __measure.result();}"
+  },
+  {
+    "name": "Cosmos Three Lamps third person",
+    "expression": "async()=>{await __measure.enter('cosmos');await __measure.walk(3,8.7);__measure.view('adventure');return __measure.result();}"
+  },
+  {
+    "name": "Cosmos Three Lamps diorama",
+    "expression": "async()=>{__measure.view('follow');return __measure.result();}"
+  },
+  {
+    "name": "Cosmos observatory third person",
+    "expression": "async()=>{await __measure.walk(-1,-42);__measure.view('adventure');return __measure.result();}"
+  },
+  {
+    "name": "Cosmos observatory diorama",
+    "expression": "async()=>{__measure.view('follow');return __measure.result();}"
+  }
+]

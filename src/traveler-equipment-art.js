@@ -34,12 +34,15 @@ function draw(out,sim,frame){
  const gem=AR.activeGem(a),gemId=gem?a.arsenal.sockets[id]:null,stage=Math.max(0,Math.min(2,G.RealmPursuit?.stage(a,id)||0)),temper=G.RealmStarter?.bonus(a,id)||0,realmFitting=G.RealmCraft?.bonus(a,id)||0;
  const summary={weaponId:id,style,mode:ready?'held':'stowed',gripLocal:Array.from(grip),gripWorld:M.transform(frame.root,grip),gem:gemId,temper,stage,realmFitting,instances:0};
  const attachment=ready?(style==='bow'?'leftHand':'rightHand'):(style==='bow'?'back':'hip');
+ let bladeBasis=null;
 
  // A complete orthonormal basis handles beams with arbitrary X/Y/Z endpoints.
  // Local +Y spans the exact segment; multiplying by the rig root preserves both
  // attachment points across facing changes and height-aware terrain.
  function form(kind,center,axis,width,length,depth,c,weaponPart,extra={}){
-  const y=unit(axis),reference=Math.abs(y[2])<.85?[0,0,1]:[1,0,0],x=unit(cross(y,reference)),z=cross(x,y);
+  const y=unit(axis),reference=Math.abs(y[2])<.85?[0,0,1]:[1,0,0];
+  const x=bladeBasis&&!weaponPart.startsWith('scabbard')&&weaponPart!=='sheath-hanger'&&Math.abs(dot(y,bladeBasis.axis))>.98?
+   unit(sub(bladeBasis.lateral,scale(y,dot(bladeBasis.lateral,y)))):unit(cross(y,reference)),z=cross(x,y);
   const local=new Float32Array([x[0]*width,x[1]*width,x[2]*width,0,y[0]*length,y[1]*length,y[2]*length,0,z[0]*depth,z[1]*depth,z[2]*depth,0,...center,1]);
   out[kind].push({p:M.transform(frame.root,center),s:[width,length,depth],m:M.mul(frame.root,local),c,rough:.76,travelerPart:'equipment',weaponPart,weaponId:id,carryMode,attachment,...extra});summary.instances++;
  }
@@ -71,13 +74,22 @@ function draw(out,sim,frame){
   beam(add(hip,[-.18,0,0]),add(anchor,[0,-.03,-.01]),.049,.056,0x6e5a42,'sheath-hanger',{attachment:'hip'});
  }
  function blade(){
-  const spec=Object.hasOwn(BLADES,id)?BLADES[id]:BLADES.trail_blade,phase=frame.combatPhase,progress=Number.isFinite(frame.combatProgress)?Math.max(0,Math.min(1,frame.combatProgress)):0;
-  let axis=unit([-.10,.92,.37]);
+  const spec=Object.hasOwn(BLADES,id)?BLADES[id]:BLADES.trail_blade;
+  // Rig hands, torso balance and blade direction sample the same pure release
+  // curve. A complete supplied frame owns this axis; older/custom frames can
+  // derive it without changing canonical state or creating animation runtime.
+  const fallback=point(frame.bladeAxis)?null:G.RealmTravelerArt?.pose({style:'blade',combatScene:ready,
+   combatPhase:frame.combatPhase,combatProgress:frame.combatProgress,releaseOrigin:frame.releaseOrigin,
+   guarded:frame.guarded,reducedMotion:frame.reducedMotion,swimming:frame.swimming});
+  const posedAxis=point(frame.bladeAxis)?frame.bladeAxis:fallback?.bladeAxis;
+  let axis=unit(point(posedAxis)?posedAxis:[.18,.94,.28]);
   if(!ready)axis=unit([-.08,-.93,-.35]);
-  else if(frame.guarded)axis=unit([-.63,.72,.19]);
-  else if(!frame.reducedMotion&&phase==='anticipate')axis=unit([-.25,.84-.50*progress,-.12-.65*progress]);
-  else if(!frame.reducedMotion&&phase==='recover')axis=unit([-.30+.20*progress,.25+.67*progress,.94-.57*progress]);
-  const lateral=unit(cross(axis,[0,0,1])),front=unit(cross(lateral,axis));
+  // Preserve the rig's continuous blade-plane lateral direction. Unlike choosing a
+  // different global reference at |axis.z|=.85, this cannot flip its broad face
+  // midway through the bounded cut. Stowed geometry keeps its prior basis.
+  const hint=point(frame.bladeLateral)?frame.bladeLateral:point(fallback?.bladeLateral)?fallback.bladeLateral:[1,0,0];
+  const lateral=ready?unit(sub(hint,scale(axis,dot(hint,axis)))):unit(cross(axis,[0,0,1])),front=unit(cross(lateral,axis));
+  if(ready)bladeBasis={axis,lateral};
   beam(offset(grip,axis,-.12),offset(grip,axis,.12),.095,.088,spec.grip,'grip',{},'round');
   block(offset(grip,axis,-.155),[.13,.10,.11],spec.metal,'pommel',{},axis,'round');
   const guard=offset(grip,axis,.17);

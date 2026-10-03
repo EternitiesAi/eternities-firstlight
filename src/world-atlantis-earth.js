@@ -18,6 +18,10 @@
    patch('arrival-bank',0,102,26,24,0x809665),
    patch('channel-bridge',0,55,8,76,0x9b7952),
    patch('far-bank',0,23,34,20,0x829768),
+   // A real connected woodland floor between the original lanes. Ground,
+   // picking, paths and the visible partition all read this same definition.
+   // Existing work, people, hazards and bridge footprints remain in place.
+   patch('woodland-country',1,-8,42,48,0x81966a),
    patch('woodland-west',-10,-8,8,48,0x85966b),
    patch('woodland-east',14,-8,9,48,0x8c9c6e),
    patch('field-approach',1,-35,40,14,0x9d9673),
@@ -160,9 +164,13 @@
    art.box(x,y,z,w,h,d,color,{cameraSolid:false,cutaway:false,rough:.92,...options});count++;
   };
   const lamp=(x,z,base=height(x,z),scale=1)=>{
-   add('cylinder',x,base,z,.12*scale,2.3*scale,.12*scale,def.palette.trim);
-   box(x,base+2.35*scale,z,.32*scale,.42*scale,.32*scale,0xffda9a,{em:.65});
-   add('cone',x,base+2.6*scale,z,.62*scale,.26*scale,.62*scale,def.palette.trim);
+   // Only the four existing channel-approach lamps share the foreground
+   // aperture with the rails. Reflections/shadows and physical ground stay
+   // whole; other realm lamps retain their current presentation contract.
+   const opt=def.id==='earthlands'&&Math.abs(x)===7&&[19,98].includes(z)?{cutaway:true,coastwardApproachLamp:true}:{};
+   add('cylinder',x,base,z,.12*scale,2.3*scale,.12*scale,def.palette.trim,opt);
+   box(x,base+2.35*scale,z,.32*scale,.42*scale,.32*scale,0xffda9a,{...opt,em:.65});
+   add('cone',x,base+2.6*scale,z,.62*scale,.26*scale,.62*scale,def.palette.trim,opt);
   };
   const roof=(id,x,z,w,d,h,color)=>{
    add('roof',x,height(x,z)+h,z,w,h*.28,d,color,{cutaway:true,structureId:id});
@@ -181,29 +189,16 @@
     add('timber-panel',0,height(0,(lo+hi)/2)+.013,(lo+hi)/2,6.7,.014,hi-lo,0x9b7952,{bridgeSkin:true,rough:.87});
    }
    for(let z=20;z<=90;z+=7) for(const x of [-3.62,3.62]) {
-    box(x,height(x,z)+.67,z,.23,1.34,.23,0x786147,{solidId:x<0?'bridge-west-rail':'bridge-east-rail'});
+    box(x,height(x,z)+.67,z,.23,1.34,.23,0x786147,{cutaway:true,coastwardBridgePost:true,solidId:x<0?'bridge-west-rail':'bridge-east-rail'});
    }
    for(let z=23;z<=87;z+=16) for(const x of [-2.9,2.9]) {
     // Piers stop below the actual bridge surface; they add no supported shelf.
     box(x,-1.25,z,.65,5.5,.65,0x777c71);
    }
    for(const [x,z] of [[-7,98],[7,98],[-7,19],[7,19],[-4,-62],[4,-62]]) lamp(x,z);
-   roof('west-house',-17,-77,9,9,4.2,0x685f4e);
-   roof('east-house',16,-77,8,8,4,0x75634d);
-   roof('field-store',-7,-79,8,7,3.6,0x637565);
-   for(const [id,x,z,w,h] of [['west-house',-17,-72.49,9,4.2],['east-house',16,-72.99,8,4],['field-store',-7,-75.49,8,3.6]]) {
-    box(x,height(x,z)+h*.5,z,w,.12,.035,0x77614b,{solidId:id});
-    for(const dx of [-w*.3,w*.3]) {
-     box(x+dx,height(x,z)+2.5,z,1.1,1.25,.05,0x645d4e,{solidId:id});
-     box(x+dx,height(x,z)+2.5,z+.035,.9,1.05,.04,0xf3ce86,{em:.2,solidId:id});
-    }
-    const base=height(x,z);
-    // Closed facade details: no entrance trigger or promise of an interior.
-    add('timber-panel',x,base+1.05,z+.04,2.1,1.1,.05,0x806345,{closedDoor:true,solidId:id,r:[0,0,Math.PI/2]});
-    for(const dx of [-.62,.62]) box(x+dx,base+1.1,z+.025,.09,2.2,.07,0x6b5840,{solidId:id});
-    box(x,base+2.18,z+.025,1.33,.09,.07,0x6b5840,{solidId:id});
-    box(x+.38,base+1.03,z+.085,.055,.075,.045,0xb09b67,{solidId:id});
-   }
+   // Replacement exterior geometry derives from the existing parent solids.
+   // No duplicate roof, new interior, collision footprint or stock entitlement.
+   count+=G.RealmCoastwardSettlementArt.decorate(art,def,{height});
    const paths=[[[1,-36],[1,-42],[-6,-47],[-6,-62],[-6,-68],[8,-69]],
     [[-6,-47],[-15,-46]],[[1,-42],[13,-46],[13,-54]]];
    for(const path of paths) for(let i=1;i<path.length;i++) {
@@ -211,10 +206,7 @@
     // Narrow inset seams; ends stop short of junctions to avoid coincident faces.
     box(x,height(x,z)+.007,z,.12,.012,length-.2,0xaea184,{pathSeam:true,r:[0,Math.atan2(bx-ax,bz-az),0]});
    }
-   trees.forEach(([x,z],i)=>{
-    const base=height(x,z),scale=.8+(i%3)*.12;
-    for(let k=0;k<3;k++) add('cone',x,base+1.8+k*.72,z,(3.8-k*.7)*scale,2*scale,(3.8-k*.7)*scale,[0x537859,0x648663,0x729571][k],{wind:2,solidId:'woodland-trunk-'+i});
-   });
+   count+=G.RealmCoastwardWoodlandArt.decorate(art,def,{height});
    // Field rows leave the authored work-loop and settlement road entirely clear.
    for(const side of [-1,1]) for(let row=0;row<4;row++) for(let n=0;n<9;n++) {
     const x=side*(20+row*1.6),z=-41-n*1.9;
@@ -225,7 +217,15 @@
    for(let i=0;i<4;i++) box(6.9+i*.7,height(8,-72)+1.2,-72,.55,.08,.7,0xd1c4a0,{solidId:'settlement-register'});
    add('mountain-ridge',-64,-.4,-132,80,37,54,0x78918c,{skyImage:true,vista:'northwest'});
    add('mountain-ridge',67,-.4,-125,72,31,50,0x8e9e94,{skyImage:true,vista:'northeast'});
-   add('mountain-ridge',103,-.4,54,70,34,110,0x78998f,{skyImage:true,vista:'channel-east'});
+   // Across the real channel, overlapping original ridge instances give the
+   // side crossing a legible near/middle/far skyline rather than one hill.
+   // Every transformed mesh stays beyond the supported country's bounds.
+   const skyline=[
+    [80,55,44,18,61,.30,0],[91,14,48,22,63,-.60,0],[87,95,41,16,65,.60,0],
+    [116,62,70,31,105,.20,1],[129,11,57,33,84,-.40,1],[137,105,62,25,90,.70,1],
+    [162,47,76,40,113,.40,2],[175,-5,78,38,100,-.80,2]
+   ];
+   for(const[x,z,w,h,d,yaw,layer]of skyline)add('mountain-ridge',x,-.4,z,w,h,d,[0x596f66,0x768b85,0xa2ada7][layer],{r:[0,yaw,0],skyImage:true,vista:'channel-east',vistaLayer:layer});
   } else {
    for(let z=23;z<=42;z+=1.25) box(0,height(0,z)+.018,z,8.7,.025,.04,0x766947);
    for(const [x,z] of [[-3,25],[3,25],[-10,-4],[10,-4],[-3,-25],[-3,-39],[15,-43]]) lamp(x,z);

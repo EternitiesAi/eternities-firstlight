@@ -4,15 +4,18 @@ Isolated software WebGL engineering coverage. Accelerated rule walking and
 labelled command-earned returning fixtures are not human feel or RTX timing.
 The separate ordinary-RAF walk selects Low through the real graphics control;
 balanced effects are covered by independent framebuffer probes above it.
+Coastward adds native optional side-view clicks from an unassigned, earned
+Chapter I save. Real-path setup is accelerated; its later stride uses app RAF.
 """
 from pathlib import Path
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
-import hashlib,json,threading,traceback
+import argparse,hashlib,json,threading,traceback
 from playwright.sync_api import sync_playwright
 from browser_support import chromium_launch_kwargs
 ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'evidence10/bridge-browser';OUT.mkdir(parents=True,exist_ok=True)
-report={'method':__doc__,'html_sha256':hashlib.sha256((ROOT/'index.html').read_bytes()).hexdigest(),'checks':[],'errors':[],'browser_errors':[]}
+parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output',type=Path,default=ROOT/'evidence10/bridge-browser');args=parser.parse_args()
+OUT=args.output.resolve();OUT.mkdir(parents=True,exist_ok=True)
+report={'method':__doc__,'harness_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'html_sha256':hashlib.sha256((ROOT/'index.html').read_bytes()).hexdigest(),'checks':[],'errors':[],'browser_errors':[]}
 class Handler(SimpleHTTPRequestHandler):
  def __init__(self,*a,**k):super().__init__(*a,directory=str(ROOT),**k)
  def log_message(self,*a):pass
@@ -125,7 +128,90 @@ try:
   check('visible normal app resumes and reaches opposite bridge bank',np.evaluate('()=>Realm.diagnostics.adventure.paused===false&&document.visibilityState==="visible"&&Math.hypot(Realm.diagnostics.adventure.player.x,Realm.diagnostics.adventure.player.z-26.5)<.3'))
   np.evaluate('()=>Realm.test.openPanel("settings")');np.locator('[data-setting="reducedMotion"]').check();np.locator('#close-panel').click();np.wait_for_timeout(150)
   check('actual reduced-motion control reaches the bridge traveller',np.evaluate('Realm.test.traveler().frame.reducedMotion'))
-  real_walk(0,19.5);check('normal and accelerated browser runtime errors are absent',not report['browser_errors']);normal.close();b.close()
+  real_walk(0,19.5);check('normal and accelerated browser runtime errors are absent',not report['browser_errors']);normal.close()
+  # New Coastward coverage restores a legitimate, unassigned Chapter I save.
+  # Setup walking uses the real rule/path commands with labelled accelerated
+  # ticks. The subsequent bridge stride uses only the ordinary visible app RAF.
+  coast=b.new_context(viewport={'width':1280,'height':800});cp=coast.new_page()
+  cp.on('pageerror',lambda e:report['browser_errors'].append(str(e)))
+  cp.add_init_script('window.__ETERNITIES_TEST_MODE=true;')
+  coast_origin=f'http://127.0.0.1:{server.server_port}/'
+  report['coastward']={'method':'Native isolated loopback; unassigned command-earned Chapter I restore; accelerated real-path setup, real reading/menu clicks, ordinary visible app RAF bridge stride; no position edits or grants.','external_requests':[]}
+  def coast_route(route):
+   if route.request.url.startswith(coast_origin):route.continue_()
+   else:report['coastward']['external_requests'].append(route.request.url);route.abort()
+  coast.route('**/*',coast_route)
+  coast_response=cp.goto(coast_origin,wait_until='load',timeout=60000);cp.wait_for_function('()=>!!window.Realm')
+  check('Coastward native page loads the exact generated source',hashlib.sha256(coast_response.body()).hexdigest()==report['html_sha256'])
+  cev=lambda js,arg=None:cp.evaluate(js,arg)
+  chapter_path=ROOT/'examples/CHAPTER_COMPLETED_EARNED.json';chapter_bytes=chapter_path.read_bytes();chapter=json.loads(chapter_bytes)
+  report['coastward']['fixture']={'path':str(chapter_path.relative_to(ROOT)),'sha256':hashlib.sha256(chapter_bytes).hexdigest(),'label':'command-earned Chapter I completed, no assigned class'}
+  check('Coastward fixture is the exact recorded earned Chapter I source',report['coastward']['fixture']['sha256']=='27cb70f57c3584f7de69f667544c8215c6fbc5f7f3d45d7fb7bc241f1cabce49')
+  cev('(s)=>Realm.test.replace(s)',chapter)
+  def coast_close():
+   if cp.locator('#rpg-window').evaluate('(e)=>e.open'):cp.locator('#rpg-close').click()
+  def coast_render():cev('()=>Realm.test.render()')
+  def coast_walk(x,z):
+   coast_close();r=cev('([x,z])=>{const r=Realm.test.move(x,z);if(!r.ok)return r;for(let i=0;i<6000&&Realm.test.path.length;i++)Realm.test.step(.05);Realm.test.render();const p=Realm.diagnostics.adventure.player;return{ok:!Realm.test.path.length&&Math.hypot(p.x-x,p.z-z)<.3,player:p}}',[x,z])
+   check('Coastward real supported setup walk reaches '+str((x,z)),r['ok'])
+  def coast_owned():
+   return cev('()=>{const s=Realm.state,a=s.adventure;return{adventure:Object.fromEntries(["xp","coins","ore","owned","equipment","arsenal","starter","pursuit","classPath","earthStory","earthGathering","companion","soul","beacon","road","crossing","reward"].map(k=>[k,a[k]??null])),inventory:s.sandbox.inventory,journeys:s.journeys,realmTrails:s.realmTrails,retreat:s.retreat,score:s.score,notes:s.notes,visitor:s.visitor}}')
+  def coast_enter(realm):
+   coast_walk(18,6);cp.keyboard.press('j');cp.locator('[data-rpg="world-list"]').first.click();cp.locator('[data-rpg="world-select"][data-id="'+realm+'"]').click();cp.locator('[data-rpg="world-preview"]').click();cp.locator('[data-rpg="world-confirm"]').click();coast_render()
+   check('deliberate native Roads crossing enters '+realm,cev('Realm.diagnostics.world.id')==realm)
+  def coast_refusal(name):
+   owned=coast_owned();probe=cev('()=>{const read=()=>JSON.parse(JSON.stringify({camera:Realm.diagnostics.camera,player:Realm.diagnostics.adventure.player,paused:Realm.diagnostics.adventure.paused,dive:Realm.diagnostics.world?.dive??null}));const before=read(),result=Realm.test.bridgeView(),after=read();return{before,result,after}}')
+   check(name+' actual bridge-view callback refuses without changing camera, position, pause or depth',probe['result']['ok'] is False and probe['after']==probe['before'])
+   check(name+' refusal preserves every protected progression and item owner',coast_owned()==owned)
+  coast_render();coast_baseline=coast_owned()
+  check('new Coastward source retains unassigned class and genuine earned reward',coast_baseline['adventure']['classPath']['choice'] is None and coast_baseline['adventure']['reward']==chapter['adventure']['reward'])
+  cev('()=>Realm.test.openPanel("settings")');cp.locator('#quality').select_option('low');cp.locator('#camera-mode').select_option('adventure');cp.locator('#camera-fov').press('End')
+  for _ in range(13):cp.locator('#camera-fov').press('ArrowLeft')
+  cp.locator('#close-panel').click();coast_render()
+  check('native camera settings establish a nondefault 67 degree perspective FOV',cev('Realm.diagnostics.camera.fov')==67)
+  coast_refusal('outside both bridge scenes');coast_enter('earthlands');coast_refusal('arrival bank beyond the actual Coastward bridge extent')
+  cp.keyboard.press('m');cp.locator('[data-rpg="world-walk"][data-id="channel-view"]').click()
+  check('native Coastward channel route starts an actual supported path',cev('()=>Realm.test.path.length>0&&!Realm.diagnostics.adventure.paused'))
+  cev('()=>{for(let i=0;i<6000&&Realm.test.path.length;i++)Realm.test.step(.05);Realm.test.render()}')
+  channel=cev('()=>RealmWorldFoundations.definition("earthlands").points.find(p=>p.id==="channel-view")')
+  check('channel reading is reached through actual walking diagnostics',cev('(p)=>{const q=Realm.diagnostics.adventure.player;return Math.hypot(q.x-p.x,q.z-p.z)<.3}',channel))
+  cp.keyboard.press('e');coast_render()
+  check('physical channel reading offers one visible optional side-view action',cp.locator('[data-rpg="world-bridge-view"]').count()==1 and cp.locator('[data-rpg="world-bridge-view"]').is_visible() and 'continuous timber crossing' in cp.locator('#rpg-content').inner_text())
+  first_player=cev('Realm.diagnostics.adventure.player');first_owned=coast_owned();first_preset=cev('Realm.diagnostics.camera.preset');first_fov=cev('Realm.diagnostics.camera.fov')
+  cp.keyboard.press('v');check('Coastward reading dialog consumes camera exchange shortcut',cev('Realm.diagnostics.camera.preset')==first_preset)
+  cp.locator('[data-rpg="world-bridge-view"]').click();coast_render();camera=cev('Realm.diagnostics.camera')
+  check('explicit Coastward framing keeps perspective preset and chosen FOV',camera['preset']==first_preset=='adventure' and camera['projection']=='perspective' and camera['fov']==first_fov==67)
+  check('actual Coastward perspective side orbit uses the reviewed framing',abs(camera['yaw']-4.71238898038469)<.001 and abs(camera['elevation']-.14)<.001 and abs(camera['distance']-14.5)<.001)
+  check('actual Coastward perspective camera retains finite submitted eye and target',cev('()=>[...Realm.diagnostics.camera.eye,...Realm.diagnostics.camera.target].every(Number.isFinite)'))
+  check('Coastward framing closes its deliberate pause and keeps player fixed',not cp.locator('#rpg-window').evaluate('(e)=>e.open') and not cev('Realm.diagnostics.adventure.paused') and cev('Realm.diagnostics.adventure.player')==first_player)
+  check('Coastward side view grants no progression, equipment, inventory or class choice',coast_owned()==first_owned==coast_baseline)
+  cp.screenshot(path=str(OUT/'COASTWARD_SIDE_THIRD.png'));report['coastward']['third_camera']=camera
+  cp.keyboard.press('v');coast_render();diorama_before=cev('Realm.diagnostics.camera');cp.keyboard.press('e');cp.locator('[data-rpg="world-bridge-view"]').click();coast_render();diorama=cev('Realm.diagnostics.camera')
+  check('same Coastward action retains the exchanged diorama preset and FOV',diorama['preset']==diorama_before['preset'] and diorama['projection']=='orthographic' and diorama['fov']==67)
+  check('actual Coastward diorama side orbit uses the reviewed framing',abs(diorama['yaw']-4.71238898038469)<.001 and abs(diorama['elevation']-.39)<.001 and abs(diorama['half']-9)<.001)
+  check('actual Coastward diorama camera retains finite submitted eye and target',cev('()=>[...Realm.diagnostics.camera.eye,...Realm.diagnostics.camera.target].every(Number.isFinite)'))
+  check('diorama framing keeps genuine progression and unassigned class intact',coast_owned()==coast_baseline)
+  cp.screenshot(path=str(OUT/'COASTWARD_SIDE_DIORAMA.png'));report['coastward']['diorama_camera']=diorama
+  cp.keyboard.press('r');coast_render();reset=cev('Realm.diagnostics.camera')
+  check('R resets only the Coastward diorama using the existing camera defaults',reset['preset']==diorama['preset'] and reset['projection']=='orthographic' and abs(reset['yaw']-.76)<.001 and reset['fov']==67)
+  cp.keyboard.press('v');coast_render();exchanged=cev('Realm.diagnostics.camera')
+  check('V restores the retained Coastward third-person side profile and chosen FOV',exchanged['preset']=='adventure' and exchanged['projection']=='perspective' and abs(exchanged['yaw']-4.71238898038469)<.001 and abs(exchanged['distance']-14.5)<.001 and exchanged['fov']==67)
+  check('ordinary Coastward bridge movement is accepted after the side-view choice',cev('(z)=>Realm.test.move(0,z).ok',channel['z']-8))
+  normal_stride=cev('''()=>new Promise(resolve=>{const samples=[];let start;function f(stamp){if(start===undefined)start=stamp;const t=Realm.test.traveler();samples.push({stamp,player:Realm.diagnostics.adventure.player,motion:t.motion,visible:document.visibilityState,paused:Realm.diagnostics.adventure.paused});if(samples.length<12||stamp-start<400)requestAnimationFrame(f);else resolve(samples);}requestAnimationFrame(f);})''')
+  report['coastward']['ordinary_stride']=normal_stride
+  check('visible ordinary app RAF still moves and articulates the Coastward traveler',normal_stride[-1]['player']['z']<normal_stride[0]['player']['z']-.3 and normal_stride[-1]['motion']['phase']!=normal_stride[0]['motion']['phase'] and all(s['visible']=='visible' and s['paused'] is False for s in normal_stride))
+  cp.wait_for_function('()=>!Realm.test.path.length',timeout=60000)
+  check('ordinary bridge route arrives without changing its camera preset or earned owners',cev('(z)=>Math.abs(Realm.diagnostics.adventure.player.z-z)<.3',channel['z']-8) and cev('Realm.diagnostics.camera.preset')=='adventure' and coast_owned()==coast_baseline)
+  coast_walk(0,14);cp.keyboard.press('m');coast_render()
+  check('off-span Coastward map offers no sightseeing action',cp.locator('[data-rpg="world-bridge-view"]').count()==0);coast_close();coast_refusal('far bank outside the full-supported Coastward bridge')
+  cp.locator('#world-home').click();coast_render();coast_refusal('returned home outside both bridge scenes')
+  coast_enter('atlantis');tide=cev('()=>RealmWorldFoundations.definition("atlantis").points.find(p=>p.id==="tide-steps")');coast_walk(tide['x'],tide['z']);cp.keyboard.press('e');cp.locator('[data-rpg="world-dive"]').click();coast_render()
+  check('diving refusal uses genuine deliberate Atlantis gallery entry',cev('Realm.diagnostics.world.dive') is not None)
+  coast_refusal('real Atlantis gallery while diving');cp.keyboard.press('m');coast_render()
+  check('real gallery map offers no bridge side-view action',cp.locator('[data-rpg="world-bridge-view"]').count()==0)
+  check('Coastward and Atlantis sightseeing retain all earlier choices and items',coast_owned()==coast_baseline)
+  check('new bridge workflow stays loopback-only with all runtime errors absent',not report['coastward']['external_requests'] and not report['browser_errors'])
+  coast.close();b.close()
 except Exception as e:report['errors'].append(str(e));report['traceback']=traceback.format_exc()
 finally:server.shutdown()
 report['passed']=not report['errors'] and not report['browser_errors'] and all(x['passed'] for x in report['checks'])

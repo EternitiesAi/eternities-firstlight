@@ -1,0 +1,1494 @@
+{
+  "classification": "Post-run arithmetic and exact-byte audit of the completed isolated native software qualification; no additional browser run.",
+  "head": "18f34b09397cb3d6936b179fada81445d42133c0",
+  "html_sha256": "846eb86b9533cc878c79d5e189f12a4f2ea2aac6725d67e07bd95893b83e30c5",
+  "html_bytes": 2513605,
+  "harness_sha256": "f612ad029a32ab182503ad1fe4307cee6e251206bb43bb0919dc8037fdcee5c9",
+  "report_sha256": "65284dbae084af53b2f03630bd273c76321f0c965fdabc261877de9948b17a7f",
+  "status": "passed",
+  "checks": 259,
+  "passed": 259,
+  "wall_seconds": 425.4924933000002,
+  "output_hashes_verified": 164,
+  "outputs": {
+    "atlantis-chart-before-diorama-actual.png": {
+      "sha256": "da481979087b1c10c6effbb46247f728659fd293dff40df642c670a2b716bc6b",
+      "bytes": 624527
+    },
+    "atlantis-chart-before-diorama-appearance-ablated.png": {
+      "sha256": "9cf5ad0472ecceaed2bb306a4f36cc9f38f7356fe75e577aa344c12dc4ab60ef",
+      "bytes": 624036
+    },
+    "atlantis-chart-before-diorama-restored.png": {
+      "sha256": "da481979087b1c10c6effbb46247f728659fd293dff40df642c670a2b716bc6b",
+      "bytes": 624527
+    },
+    "atlantis-chart-before-third-actual.png": {
+      "sha256": "b327182784e521e336d9d5dc3caee10b1b3f8134c407d101fb217a6188808ada",
+      "bytes": 327255
+    },
+    "atlantis-chart-before-third-appearance-ablated.png": {
+      "sha256": "cbe50b9e44dc81e37f1c44e0a2e47ebff43604bbacffe3823c65c98e001d715e",
+      "bytes": 323472
+    },
+    "atlantis-chart-before-third-restored.png": {
+      "sha256": "b327182784e521e336d9d5dc3caee10b1b3f8134c407d101fb217a6188808ada",
+      "bytes": 327255
+    },
+    "atlantis-chart-corrected-diorama-actual.png": {
+      "sha256": "c5734499a3014fd7704d4384a790ec0bf520066348b6765c0b13ea9a89a1f6c1",
+      "bytes": 624616
+    },
+    "atlantis-chart-corrected-diorama-appearance-ablated.png": {
+      "sha256": "6853b94de208b7ba9120cb7e6514c53db4647bad6dcc24f5e9ecfc6fc08d2cf3",
+      "bytes": 624004
+    },
+    "atlantis-chart-corrected-diorama-detail-actual.png": {
+      "sha256": "f5ce67270090413649a64ac4033a998ae6cd2e5e211bd84c5c91b080c6484afb",
+      "bytes": 623282
+    },
+    "atlantis-chart-corrected-diorama-detail-appearance-ablated.png": {
+      "sha256": "942bcaf4d6caa16d664f0d648e289d854823a36bc3571d3eb6212d3287dd5cc0",
+      "bytes": 623157
+    },
+    "atlantis-chart-corrected-diorama-detail-restored.png": {
+      "sha256": "f5ce67270090413649a64ac4033a998ae6cd2e5e211bd84c5c91b080c6484afb",
+      "bytes": 623282
+    },
+    "atlantis-chart-corrected-diorama-restored.png": {
+      "sha256": "c5734499a3014fd7704d4384a790ec0bf520066348b6765c0b13ea9a89a1f6c1",
+      "bytes": 624616
+    },
+    "atlantis-chart-corrected-third-actual.png": {
+      "sha256": "ccf307541979c90619d4a83051514fa4ce59308bc8a4d26cf5cca8acc8408adc",
+      "bytes": 329795
+    },
+    "atlantis-chart-corrected-third-appearance-ablated.png": {
+      "sha256": "760ed542f558b85f7008731cc4e9a97dc2d243b583729f5a9e2394db961db581",
+      "bytes": 323447
+    },
+    "atlantis-chart-corrected-third-detail-actual.png": {
+      "sha256": "ccf307541979c90619d4a83051514fa4ce59308bc8a4d26cf5cca8acc8408adc",
+      "bytes": 329795
+    },
+    "atlantis-chart-corrected-third-detail-appearance-ablated.png": {
+      "sha256": "ba150139b6422f4f6a6dbf40fb556a639196261b3653cb5281fcd85b2f1f4d80",
+      "bytes": 327202
+    },
+    "atlantis-chart-corrected-third-detail-restored.png": {
+      "sha256": "ccf307541979c90619d4a83051514fa4ce59308bc8a4d26cf5cca8acc8408adc",
+      "bytes": 329795
+    },
+    "atlantis-chart-corrected-third-restored.png": {
+      "sha256": "ccf307541979c90619d4a83051514fa4ce59308bc8a4d26cf5cca8acc8408adc",
+      "bytes": 329795
+    },
+    "atlantis-court-roof-off-actual.png": {
+      "sha256": "ba8fc7261c4bd0b4b51c7c30c3e9e811dbf26d32f7687e7eaaf4f83ba9af621e",
+      "bytes": 599444
+    },
+    "atlantis-court-roof-off-appearance-ablated.png": {
+      "sha256": "c43671326e5a5c0c2da3a64e6ffa8eec74dcc91e0f4bae03ad2c0a4b27c7a010",
+      "bytes": 611076
+    },
+    "atlantis-court-roof-off-restored.png": {
+      "sha256": "ba8fc7261c4bd0b4b51c7c30c3e9e811dbf26d32f7687e7eaaf4f83ba9af621e",
+      "bytes": 599444
+    },
+    "atlantis-court-roof-on-actual.png": {
+      "sha256": "6daf9b430efc5022b2cf2d02c43bd8fdbb37343d41567accd3aa8cfc16c5521a",
+      "bytes": 621416
+    },
+    "atlantis-court-roof-on-appearance-ablated.png": {
+      "sha256": "6daf9b430efc5022b2cf2d02c43bd8fdbb37343d41567accd3aa8cfc16c5521a",
+      "bytes": 621416
+    },
+    "atlantis-court-roof-on-restored.png": {
+      "sha256": "6daf9b430efc5022b2cf2d02c43bd8fdbb37343d41567accd3aa8cfc16c5521a",
+      "bytes": 621416
+    },
+    "atlantis-lower-masonry-before-diorama-actual.png": {
+      "sha256": "ce6a8976be097e237f7512c7b82774eed3508f6d85ec6ec69cc09dced0ac8da9",
+      "bytes": 640348
+    },
+    "atlantis-lower-masonry-before-diorama-appearance-ablated.png": {
+      "sha256": "bfd876b19c932a9ad5fa0273c5d2c2c5424bb59ddb27f6981d13df6e4005a9ec",
+      "bytes": 640072
+    },
+    "atlantis-lower-masonry-before-diorama-restored.png": {
+      "sha256": "ce6a8976be097e237f7512c7b82774eed3508f6d85ec6ec69cc09dced0ac8da9",
+      "bytes": 640348
+    },
+    "atlantis-lower-masonry-before-third-actual.png": {
+      "sha256": "516e2e7a7539c0446e25404d75752e56801a1090e77e438a6f7f13cb342035fa",
+      "bytes": 790264
+    },
+    "atlantis-lower-masonry-before-third-appearance-ablated.png": {
+      "sha256": "c1a169f93f621aad58bbb7178d9ba9dd369f7a0f3863a43e402db643a1a4ed53",
+      "bytes": 790859
+    },
+    "atlantis-lower-masonry-before-third-restored.png": {
+      "sha256": "516e2e7a7539c0446e25404d75752e56801a1090e77e438a6f7f13cb342035fa",
+      "bytes": 790264
+    },
+    "atlantis-lower-masonry-recorded-diorama-actual.png": {
+      "sha256": "71c802fcb7e8b1d1fd2482b3507bdfa17feab26360618a46cc326800f0eeb823",
+      "bytes": 638836
+    },
+    "atlantis-lower-masonry-recorded-diorama-appearance-ablated.png": {
+      "sha256": "be2fd0c7f65bf907ada29c49c04d830bda393fd84fa57771e9205d6801138a74",
+      "bytes": 638569
+    },
+    "atlantis-lower-masonry-recorded-diorama-detail-actual.png": {
+      "sha256": "3c7bfbfc581cfbfac0157ad5ca6e197dc606344274a19077527ccdeea37bed96",
+      "bytes": 637367
+    },
+    "atlantis-lower-masonry-recorded-diorama-detail-appearance-ablated.png": {
+      "sha256": "48675571774350d20bd821a7b0d20d2a26120c764c78cf7dcfc9bb6493b8693d",
+      "bytes": 637331
+    },
+    "atlantis-lower-masonry-recorded-diorama-detail-restored.png": {
+      "sha256": "3c7bfbfc581cfbfac0157ad5ca6e197dc606344274a19077527ccdeea37bed96",
+      "bytes": 637367
+    },
+    "atlantis-lower-masonry-recorded-diorama-restored.png": {
+      "sha256": "71c802fcb7e8b1d1fd2482b3507bdfa17feab26360618a46cc326800f0eeb823",
+      "bytes": 638836
+    },
+    "atlantis-lower-masonry-recorded-third-actual.png": {
+      "sha256": "2b0f9d2da115a08daf84c3800a29d75ee942e5483a998bcfcd02f4740d3dd473",
+      "bytes": 787603
+    },
+    "atlantis-lower-masonry-recorded-third-appearance-ablated.png": {
+      "sha256": "3d447fffed007c6dc137b9f729147bd5c1d7f1741cf9ccab4f2ea9895a1773a7",
+      "bytes": 788185
+    },
+    "atlantis-lower-masonry-recorded-third-detail-actual.png": {
+      "sha256": "707994f3ab1a9d06f27fd3a0f86b0e262ea8126711f734e76e5386163f9fdd0b",
+      "bytes": 790601
+    },
+    "atlantis-lower-masonry-recorded-third-detail-appearance-ablated.png": {
+      "sha256": "aa91cf011d30abb6ba9466b20d3146df0e6d3a05502d2384abfdc3659ad20732",
+      "bytes": 790418
+    },
+    "atlantis-lower-masonry-recorded-third-detail-restored.png": {
+      "sha256": "707994f3ab1a9d06f27fd3a0f86b0e262ea8126711f734e76e5386163f9fdd0b",
+      "bytes": 790601
+    },
+    "atlantis-lower-masonry-recorded-third-restored.png": {
+      "sha256": "2b0f9d2da115a08daf84c3800a29d75ee942e5483a998bcfcd02f4740d3dd473",
+      "bytes": 787603
+    },
+    "atlantis-marker-before-diorama-actual.png": {
+      "sha256": "22fb4c5b3774ca0100b6efbe7c53fbb20c566b387ab034d2c1828cc416289d8d",
+      "bytes": 559864
+    },
+    "atlantis-marker-before-diorama-appearance-ablated.png": {
+      "sha256": "d78a7da81b306abf78420966b38298731ec7c222c3241e10a9b5d84515243e66",
+      "bytes": 559827
+    },
+    "atlantis-marker-before-diorama-restored.png": {
+      "sha256": "22fb4c5b3774ca0100b6efbe7c53fbb20c566b387ab034d2c1828cc416289d8d",
+      "bytes": 559864
+    },
+    "atlantis-marker-before-third-actual.png": {
+      "sha256": "83ff925cb7279d2e8a47d04b90009df99a5d546a5629e23cd3c99b99aa94704b",
+      "bytes": 684682
+    },
+    "atlantis-marker-before-third-appearance-ablated.png": {
+      "sha256": "0601ede934b45f0cd96a7ab0f5799ad493e2a3f9d3ae288edd664d9b2a4823db",
+      "bytes": 683961
+    },
+    "atlantis-marker-before-third-restored.png": {
+      "sha256": "83ff925cb7279d2e8a47d04b90009df99a5d546a5629e23cd3c99b99aa94704b",
+      "bytes": 684682
+    },
+    "atlantis-marker-recorded-diorama-actual.png": {
+      "sha256": "40d26ace275426a097de5711a38016459ea31f9d480b5ac6167514934674eee6",
+      "bytes": 559919
+    },
+    "atlantis-marker-recorded-diorama-appearance-ablated.png": {
+      "sha256": "126bac724d49b06bc6b7a12ee0945b6ad2f779a52cf1b740731ae8c541b845a2",
+      "bytes": 559798
+    },
+    "atlantis-marker-recorded-diorama-detail-actual.png": {
+      "sha256": "dc4ee2eda2df355395a6fdc78994a883fd44c75cfafbe7df5db4eb7d34824bd0",
+      "bytes": 561008
+    },
+    "atlantis-marker-recorded-diorama-detail-appearance-ablated.png": {
+      "sha256": "f8601733dea0d41f41613471e9d00d8b2e0497e6d1245162fe88a7560824ab44",
+      "bytes": 561050
+    },
+    "atlantis-marker-recorded-diorama-detail-restored.png": {
+      "sha256": "dc4ee2eda2df355395a6fdc78994a883fd44c75cfafbe7df5db4eb7d34824bd0",
+      "bytes": 561008
+    },
+    "atlantis-marker-recorded-diorama-restored.png": {
+      "sha256": "40d26ace275426a097de5711a38016459ea31f9d480b5ac6167514934674eee6",
+      "bytes": 559919
+    },
+    "atlantis-marker-recorded-third-actual.png": {
+      "sha256": "e6495b73447933035435c5489e7922577e4cb225a3be29c30b85c9abfafb5895",
+      "bytes": 685001
+    },
+    "atlantis-marker-recorded-third-appearance-ablated.png": {
+      "sha256": "e2c1d6fbf9203a630a9c48b06c3ce35dd04f3c9ac29eda20bce59990912e79fb",
+      "bytes": 683776
+    },
+    "atlantis-marker-recorded-third-detail-actual.png": {
+      "sha256": "e6495b73447933035435c5489e7922577e4cb225a3be29c30b85c9abfafb5895",
+      "bytes": 685001
+    },
+    "atlantis-marker-recorded-third-detail-appearance-ablated.png": {
+      "sha256": "370f06d1efd0ebbaab86a3c2fc6843524dfdb3fca4ac3e1992d34ca9f83f122d",
+      "bytes": 684535
+    },
+    "atlantis-marker-recorded-third-detail-restored.png": {
+      "sha256": "e6495b73447933035435c5489e7922577e4cb225a3be29c30b85c9abfafb5895",
+      "bytes": 685001
+    },
+    "atlantis-marker-recorded-third-restored.png": {
+      "sha256": "e6495b73447933035435c5489e7922577e4cb225a3be29c30b85c9abfafb5895",
+      "bytes": 685001
+    },
+    "atlantis-upper-gauge-before-diorama-actual.png": {
+      "sha256": "0337885ec5cf8959e51eb48644fb17994a47d9f2a49e8042e33fbac514dc6805",
+      "bytes": 638638
+    },
+    "atlantis-upper-gauge-before-diorama-appearance-ablated.png": {
+      "sha256": "96fab5dda720ae0ccac7a60a26a958d2b003a031595b2ca39cc504f315cddb57",
+      "bytes": 638510
+    },
+    "atlantis-upper-gauge-before-diorama-restored.png": {
+      "sha256": "0337885ec5cf8959e51eb48644fb17994a47d9f2a49e8042e33fbac514dc6805",
+      "bytes": 638638
+    },
+    "atlantis-upper-gauge-before-third-actual.png": {
+      "sha256": "9881f5093d84b12a309c74a01de41135713cbe2c7b3996f0c3f5be16a0412b0c",
+      "bytes": 798201
+    },
+    "atlantis-upper-gauge-before-third-appearance-ablated.png": {
+      "sha256": "9eecbf1f7778204af136cd28a3c151891d77c1083c42e928885c53b9cc1bfa48",
+      "bytes": 799405
+    },
+    "atlantis-upper-gauge-before-third-restored.png": {
+      "sha256": "9881f5093d84b12a309c74a01de41135713cbe2c7b3996f0c3f5be16a0412b0c",
+      "bytes": 798201
+    },
+    "atlantis-upper-gauge-recorded-diorama-actual.png": {
+      "sha256": "6b1fb20e42996046e2851d8851e06f20091d8511589ab33c355e351bf695e8d6",
+      "bytes": 637514
+    },
+    "atlantis-upper-gauge-recorded-diorama-appearance-ablated.png": {
+      "sha256": "ddde5abffda16ab6250a34974d15cd3830d4dbdbb4ca2db35241ebb046c2c59b",
+      "bytes": 637258
+    },
+    "atlantis-upper-gauge-recorded-diorama-detail-actual.png": {
+      "sha256": "24be83d8a1d049a106fc9e322c75c9ffc9c2dfefc1fb9b3c3fb493c2fc5207b9",
+      "bytes": 637840
+    },
+    "atlantis-upper-gauge-recorded-diorama-detail-appearance-ablated.png": {
+      "sha256": "1e64f9b641de5c22b45c7c9ecccfe936edf925aea66b6611b028b55cd84221f4",
+      "bytes": 637797
+    },
+    "atlantis-upper-gauge-recorded-diorama-detail-restored.png": {
+      "sha256": "24be83d8a1d049a106fc9e322c75c9ffc9c2dfefc1fb9b3c3fb493c2fc5207b9",
+      "bytes": 637840
+    },
+    "atlantis-upper-gauge-recorded-diorama-restored.png": {
+      "sha256": "6b1fb20e42996046e2851d8851e06f20091d8511589ab33c355e351bf695e8d6",
+      "bytes": 637514
+    },
+    "atlantis-upper-gauge-recorded-third-actual.png": {
+      "sha256": "80cf59b09624d5aae6019440070493840aed3be68af6828ad6ed12498fb54645",
+      "bytes": 801462
+    },
+    "atlantis-upper-gauge-recorded-third-appearance-ablated.png": {
+      "sha256": "b88ae0942c0e87379cfac57983cda669da003af2ef90d2a7547f8512fbce24e8",
+      "bytes": 802864
+    },
+    "atlantis-upper-gauge-recorded-third-detail-actual.png": {
+      "sha256": "cc0182fdd70c9f1f9e35130fddc83d9add060760b7a04e484527ab455d09c46a",
+      "bytes": 797670
+    },
+    "atlantis-upper-gauge-recorded-third-detail-appearance-ablated.png": {
+      "sha256": "5af8948b8064ff39069a1260cc2676ff7ce9678799d5634435f43b60b85ae2ea",
+      "bytes": 797446
+    },
+    "atlantis-upper-gauge-recorded-third-detail-restored.png": {
+      "sha256": "cc0182fdd70c9f1f9e35130fddc83d9add060760b7a04e484527ab455d09c46a",
+      "bytes": 797670
+    },
+    "atlantis-upper-gauge-recorded-third-restored.png": {
+      "sha256": "80cf59b09624d5aae6019440070493840aed3be68af6828ad6ed12498fb54645",
+      "bytes": 801462
+    },
+    "earthlands-fallen-bough-before-diorama-actual.png": {
+      "sha256": "df64e948bf3f0708ace1c2bd6c4d8f95b4d52cdba8bcb6d2c88527fea0e9a180",
+      "bytes": 933296
+    },
+    "earthlands-fallen-bough-before-diorama-appearance-ablated.png": {
+      "sha256": "51982f561708ee92e18d2125799ac80f042724e9de7c4a3acbbc5d325efa4cab",
+      "bytes": 933187
+    },
+    "earthlands-fallen-bough-before-diorama-restored.png": {
+      "sha256": "df64e948bf3f0708ace1c2bd6c4d8f95b4d52cdba8bcb6d2c88527fea0e9a180",
+      "bytes": 933296
+    },
+    "earthlands-fallen-bough-before-third-actual.png": {
+      "sha256": "7ec6a81f3a075b306ac562aff70ffcd2f01b68f0ec162cbbdb52b209d32b9400",
+      "bytes": 993084
+    },
+    "earthlands-fallen-bough-before-third-appearance-ablated.png": {
+      "sha256": "0f16b36af4771b1ba01e85f1dceab497b8af942da9db18861b73c1cf5e06437e",
+      "bytes": 993203
+    },
+    "earthlands-fallen-bough-before-third-restored.png": {
+      "sha256": "7ec6a81f3a075b306ac562aff70ffcd2f01b68f0ec162cbbdb52b209d32b9400",
+      "bytes": 993084
+    },
+    "earthlands-fallen-bough-recorded-diorama-actual.png": {
+      "sha256": "a97c064cd9f67dce6c98a016f1e86f36f27ddd3ea0f4d60bba11de6659419d11",
+      "bytes": 932555
+    },
+    "earthlands-fallen-bough-recorded-diorama-appearance-ablated.png": {
+      "sha256": "d4abd1e217ff7613f593c60c2ee14723b93d831bbd1d508cc8a61f0bc05a8ead",
+      "bytes": 932333
+    },
+    "earthlands-fallen-bough-recorded-diorama-detail-actual.png": {
+      "sha256": "2a0fe5f18aa5c0268bcec388c0e2c50bcb7554ffa3701f073bb8f1569bc6d34f",
+      "bytes": 933276
+    },
+    "earthlands-fallen-bough-recorded-diorama-detail-appearance-ablated.png": {
+      "sha256": "0c23e8f52b6b4f248cca4d766a3afdba3edd5823a98277ae02d8f3c11d126cc4",
+      "bytes": 933257
+    },
+    "earthlands-fallen-bough-recorded-diorama-detail-restored.png": {
+      "sha256": "2a0fe5f18aa5c0268bcec388c0e2c50bcb7554ffa3701f073bb8f1569bc6d34f",
+      "bytes": 933276
+    },
+    "earthlands-fallen-bough-recorded-diorama-restored.png": {
+      "sha256": "a97c064cd9f67dce6c98a016f1e86f36f27ddd3ea0f4d60bba11de6659419d11",
+      "bytes": 932555
+    },
+    "earthlands-fallen-bough-recorded-third-actual.png": {
+      "sha256": "29a6179fc8449c01a2aea7a9d45001f56165acb68ae4cc058c12f7627b8306d2",
+      "bytes": 993593
+    },
+    "earthlands-fallen-bough-recorded-third-appearance-ablated.png": {
+      "sha256": "3aca878c871ca16b8192d83ddc0b10add16fca9ab7c5451553202c8c320503c1",
+      "bytes": 993266
+    },
+    "earthlands-fallen-bough-recorded-third-detail-actual.png": {
+      "sha256": "8f8bf427193982623726d8751b7ae9f2e07b216bc19839749b944accbc289d28",
+      "bytes": 993593
+    },
+    "earthlands-fallen-bough-recorded-third-detail-appearance-ablated.png": {
+      "sha256": "056d00458a03a2660fa67b9c74f28df2013586e5276ce5f05036b31f911f5cb8",
+      "bytes": 993448
+    },
+    "earthlands-fallen-bough-recorded-third-detail-restored.png": {
+      "sha256": "8f8bf427193982623726d8751b7ae9f2e07b216bc19839749b944accbc289d28",
+      "bytes": 993593
+    },
+    "earthlands-fallen-bough-recorded-third-restored.png": {
+      "sha256": "29a6179fc8449c01a2aea7a9d45001f56165acb68ae4cc058c12f7627b8306d2",
+      "bytes": 993593
+    },
+    "earthlands-paid-pack-diorama-actual.png": {
+      "sha256": "70a79c486243cbd8ba00bf878594655508bfd49817a6bf1f6000337da9cbf81a",
+      "bytes": 573962
+    },
+    "earthlands-paid-pack-diorama-appearance-ablated.png": {
+      "sha256": "deb5ded67c97da675f6046b5c8f013ab962ea69efe999c79dd7f87b9a77a2c2f",
+      "bytes": 573502
+    },
+    "earthlands-paid-pack-diorama-restored.png": {
+      "sha256": "70a79c486243cbd8ba00bf878594655508bfd49817a6bf1f6000337da9cbf81a",
+      "bytes": 573962
+    },
+    "earthlands-paid-pack-third-actual.png": {
+      "sha256": "3b7704a2f9e410ff8c40af9efad2e40a8ffd902f22dd517c04fd48240977a6e7",
+      "bytes": 724778
+    },
+    "earthlands-paid-pack-third-appearance-ablated.png": {
+      "sha256": "86926245ba9f7f0bf582335d0a81fdb0369610f48648080d599c6db076ba9038",
+      "bytes": 725255
+    },
+    "earthlands-paid-pack-third-restored.png": {
+      "sha256": "3b7704a2f9e410ff8c40af9efad2e40a8ffd902f22dd517c04fd48240977a6e7",
+      "bytes": 724778
+    },
+    "earthlands-road-pack-before-diorama-actual.png": {
+      "sha256": "0dcacb1cf636995bb3962668310b0b00d24d8026c84d23a96badf0c579992222",
+      "bytes": 605449
+    },
+    "earthlands-road-pack-before-diorama-appearance-ablated.png": {
+      "sha256": "b94220b8e2becc4ca309ed90b84518e6494bc3d5033ad84c06ac7025649d26ba",
+      "bytes": 604993
+    },
+    "earthlands-road-pack-before-diorama-restored.png": {
+      "sha256": "0dcacb1cf636995bb3962668310b0b00d24d8026c84d23a96badf0c579992222",
+      "bytes": 605449
+    },
+    "earthlands-road-pack-before-third-actual.png": {
+      "sha256": "e7e39073f534477532a140ba9ac27088605014f1933aa47ea94d7fec7e9f11e4",
+      "bytes": 875090
+    },
+    "earthlands-road-pack-before-third-appearance-ablated.png": {
+      "sha256": "82397af4b2896774caa05dd772420007a43bc665665d7908ada8099f810f8fff",
+      "bytes": 875917
+    },
+    "earthlands-road-pack-before-third-restored.png": {
+      "sha256": "e7e39073f534477532a140ba9ac27088605014f1933aa47ea94d7fec7e9f11e4",
+      "bytes": 875090
+    },
+    "earthlands-road-pack-recorded-diorama-actual.png": {
+      "sha256": "6611738649e9da80ccceca9722aba009e57e52f79d48b3bd5931dd8f018a20e2",
+      "bytes": 607412
+    },
+    "earthlands-road-pack-recorded-diorama-appearance-ablated.png": {
+      "sha256": "2d68978d008b2aa4aad6e50765a63cfd8d73a091b7f8360a836ac3be0a22d127",
+      "bytes": 606712
+    },
+    "earthlands-road-pack-recorded-diorama-detail-actual.png": {
+      "sha256": "ff9822b8555cce6bc2659aef5721191262860a86fc59917e60a9fc82cab87499",
+      "bytes": 607871
+    },
+    "earthlands-road-pack-recorded-diorama-detail-appearance-ablated.png": {
+      "sha256": "c2b66d4eef289bbd48319012df121d75e3e6e9a36f0c134d462779644d2fccad",
+      "bytes": 607724
+    },
+    "earthlands-road-pack-recorded-diorama-detail-restored.png": {
+      "sha256": "ff9822b8555cce6bc2659aef5721191262860a86fc59917e60a9fc82cab87499",
+      "bytes": 607871
+    },
+    "earthlands-road-pack-recorded-diorama-restored.png": {
+      "sha256": "6611738649e9da80ccceca9722aba009e57e52f79d48b3bd5931dd8f018a20e2",
+      "bytes": 607412
+    },
+    "earthlands-road-pack-recorded-third-actual.png": {
+      "sha256": "902ba274103c6881bb66a185716df0997b35be338f957cc9a64ddbca86e8932b",
+      "bytes": 875260
+    },
+    "earthlands-road-pack-recorded-third-appearance-ablated.png": {
+      "sha256": "6f7164e890bb177ed02b5d52f1273f8bd7dde47f4882dd03f991b317bfa23ed7",
+      "bytes": 876079
+    },
+    "earthlands-road-pack-recorded-third-detail-actual.png": {
+      "sha256": "902ba274103c6881bb66a185716df0997b35be338f957cc9a64ddbca86e8932b",
+      "bytes": 875260
+    },
+    "earthlands-road-pack-recorded-third-detail-appearance-ablated.png": {
+      "sha256": "61db3367c3d0d0051f16de1779bae491561d1220382cab950a782a6040eac0df",
+      "bytes": 875711
+    },
+    "earthlands-road-pack-recorded-third-detail-restored.png": {
+      "sha256": "902ba274103c6881bb66a185716df0997b35be338f957cc9a64ddbca86e8932b",
+      "bytes": 875260
+    },
+    "earthlands-road-pack-recorded-third-restored.png": {
+      "sha256": "902ba274103c6881bb66a185716df0997b35be338f957cc9a64ddbca86e8932b",
+      "bytes": 875260
+    },
+    "earthlands-shore-reeds-before-diorama-actual.png": {
+      "sha256": "ada251e0f53a6c7b9fc1b339f3a0ae1563fd9bff7886c3899fb5c53d1fbc1969",
+      "bytes": 880250
+    },
+    "earthlands-shore-reeds-before-diorama-appearance-ablated.png": {
+      "sha256": "1c362dc017ffc8ff85ef834d191babd10f9fce112ac8b90c0cb78cfc97833deb",
+      "bytes": 880247
+    },
+    "earthlands-shore-reeds-before-diorama-restored.png": {
+      "sha256": "ada251e0f53a6c7b9fc1b339f3a0ae1563fd9bff7886c3899fb5c53d1fbc1969",
+      "bytes": 880250
+    },
+    "earthlands-shore-reeds-before-third-actual.png": {
+      "sha256": "e578825af591e0f02459e578d2f8a2be8368c683490c5df567e57fc4209c0aa5",
+      "bytes": 1170448
+    },
+    "earthlands-shore-reeds-before-third-appearance-ablated.png": {
+      "sha256": "b85733765d4d9feb37b83d819103db6de1a56e28f5033435e467147e2947440f",
+      "bytes": 1170264
+    },
+    "earthlands-shore-reeds-before-third-restored.png": {
+      "sha256": "e578825af591e0f02459e578d2f8a2be8368c683490c5df567e57fc4209c0aa5",
+      "bytes": 1170448
+    },
+    "earthlands-shore-reeds-recorded-diorama-actual.png": {
+      "sha256": "417e9bfc98950c421eda15c4f23231005fd6e045ed1ecc8294f979550a4d04a5",
+      "bytes": 881052
+    },
+    "earthlands-shore-reeds-recorded-diorama-appearance-ablated.png": {
+      "sha256": "12a148f38876cb2419f95c405074faa38ec55bd7ff3628c5325341899487d452",
+      "bytes": 880967
+    },
+    "earthlands-shore-reeds-recorded-diorama-detail-actual.png": {
+      "sha256": "a73dd45c0d8bfee20b6b86671123f9e5043f232896b4a99943b9cf506ea0d834",
+      "bytes": 877900
+    },
+    "earthlands-shore-reeds-recorded-diorama-detail-appearance-ablated.png": {
+      "sha256": "e9e98eb4982f17faec9ebedcf87c1c78ef50593f92b2b00accfd0b4bf83aa647",
+      "bytes": 877660
+    },
+    "earthlands-shore-reeds-recorded-diorama-detail-restored.png": {
+      "sha256": "a73dd45c0d8bfee20b6b86671123f9e5043f232896b4a99943b9cf506ea0d834",
+      "bytes": 877900
+    },
+    "earthlands-shore-reeds-recorded-diorama-restored.png": {
+      "sha256": "417e9bfc98950c421eda15c4f23231005fd6e045ed1ecc8294f979550a4d04a5",
+      "bytes": 881052
+    },
+    "earthlands-shore-reeds-recorded-third-actual.png": {
+      "sha256": "5ed2f502b962710b2f758bc25c15a6eece99a0b36e5b4f6df3431223294c0b39",
+      "bytes": 1170981
+    },
+    "earthlands-shore-reeds-recorded-third-appearance-ablated.png": {
+      "sha256": "c25c476a68877975fa1979b6feb83dd8dcecf6ec5a108c607bf825c26283a809",
+      "bytes": 1170435
+    },
+    "earthlands-shore-reeds-recorded-third-detail-actual.png": {
+      "sha256": "5ed2f502b962710b2f758bc25c15a6eece99a0b36e5b4f6df3431223294c0b39",
+      "bytes": 1170981
+    },
+    "earthlands-shore-reeds-recorded-third-detail-appearance-ablated.png": {
+      "sha256": "a85935ab6b288577fe7aa8d90856d947891b7f31448e9b1b667f26f899109554",
+      "bytes": 1170520
+    },
+    "earthlands-shore-reeds-recorded-third-detail-restored.png": {
+      "sha256": "5ed2f502b962710b2f758bc25c15a6eece99a0b36e5b4f6df3431223294c0b39",
+      "bytes": 1170981
+    },
+    "earthlands-shore-reeds-recorded-third-restored.png": {
+      "sha256": "5ed2f502b962710b2f758bc25c15a6eece99a0b36e5b4f6df3431223294c0b39",
+      "bytes": 1170981
+    },
+    "earthlands-shore-stone-before-diorama-actual.png": {
+      "sha256": "7608109edb0004364c8bb7736dbc910e4b8e5673626da4a21a66c4fd383a8454",
+      "bytes": 864039
+    },
+    "earthlands-shore-stone-before-diorama-appearance-ablated.png": {
+      "sha256": "1af7b3b474f4c686a7699094c42c21e4179ded11bcda58fdec4ef47f2b714c4a",
+      "bytes": 863937
+    },
+    "earthlands-shore-stone-before-diorama-restored.png": {
+      "sha256": "7608109edb0004364c8bb7736dbc910e4b8e5673626da4a21a66c4fd383a8454",
+      "bytes": 864039
+    },
+    "earthlands-shore-stone-before-third-actual.png": {
+      "sha256": "4499a178dac267827ba7881f7ce9672412a580433dc9d481d7958af2d5ad3fe9",
+      "bytes": 1128825
+    },
+    "earthlands-shore-stone-before-third-appearance-ablated.png": {
+      "sha256": "eac930fcc23941a089e22080b8c2debadea3b79a665c49f0cda2ebe73181633e",
+      "bytes": 1128801
+    },
+    "earthlands-shore-stone-before-third-restored.png": {
+      "sha256": "4499a178dac267827ba7881f7ce9672412a580433dc9d481d7958af2d5ad3fe9",
+      "bytes": 1128825
+    },
+    "earthlands-shore-stone-recorded-diorama-actual.png": {
+      "sha256": "405ccda66943b0979cf9cd7cf2f5470cfb199082cce7eb12d6bd8aeaf257dd6d",
+      "bytes": 864191
+    },
+    "earthlands-shore-stone-recorded-diorama-appearance-ablated.png": {
+      "sha256": "841395a317305d3334c551b80ededcdba8e847c0564e3928a22baeff7dd52941",
+      "bytes": 863948
+    },
+    "earthlands-shore-stone-recorded-diorama-detail-actual.png": {
+      "sha256": "81f0fea7d0e60c8a52495a44ca14a03931520a17a3244aa6c59e285c6936fabe",
+      "bytes": 863690
+    },
+    "earthlands-shore-stone-recorded-diorama-detail-appearance-ablated.png": {
+      "sha256": "b36e49213399d063ee8703b41a3032948be2e0f1f6d1b7b2c11c3a52d0bb6115",
+      "bytes": 863648
+    },
+    "earthlands-shore-stone-recorded-diorama-detail-restored.png": {
+      "sha256": "81f0fea7d0e60c8a52495a44ca14a03931520a17a3244aa6c59e285c6936fabe",
+      "bytes": 863690
+    },
+    "earthlands-shore-stone-recorded-diorama-restored.png": {
+      "sha256": "405ccda66943b0979cf9cd7cf2f5470cfb199082cce7eb12d6bd8aeaf257dd6d",
+      "bytes": 864191
+    },
+    "earthlands-shore-stone-recorded-third-actual.png": {
+      "sha256": "9abd21eb63e7dcae697789af41b036764c8db210eba49b07b83cacc5b77c8bc7",
+      "bytes": 1128496
+    },
+    "earthlands-shore-stone-recorded-third-appearance-ablated.png": {
+      "sha256": "f5401751cae9894b25a3e3e3632cab5e28c8cea56c969254a64ae491c98b4196",
+      "bytes": 1128734
+    },
+    "earthlands-shore-stone-recorded-third-detail-actual.png": {
+      "sha256": "a4a749e7ddc5d42b6327f1ae613d030d0c58d10572881c232f2f0d021ff44b78",
+      "bytes": 1128538
+    },
+    "earthlands-shore-stone-recorded-third-detail-appearance-ablated.png": {
+      "sha256": "b286034785e7ce1ea9f29e2649492eb0acabc75178c1ca718d8f01504d032bca",
+      "bytes": 1128394
+    },
+    "earthlands-shore-stone-recorded-third-detail-restored.png": {
+      "sha256": "a4a749e7ddc5d42b6327f1ae613d030d0c58d10572881c232f2f0d021ff44b78",
+      "bytes": 1128538
+    },
+    "earthlands-shore-stone-recorded-third-restored.png": {
+      "sha256": "9abd21eb63e7dcae697789af41b036764c8db210eba49b07b83cacc5b77c8bc7",
+      "bytes": 1128496
+    },
+    "earthlands-unaccepted-pack-diorama-actual.png": {
+      "sha256": "a4ab8630e34953fc6e9c779e3e80b61dd2c76afbd911a42c6a79ec0651823c95",
+      "bytes": 498863
+    },
+    "earthlands-unaccepted-pack-diorama-appearance-ablated.png": {
+      "sha256": "dd6e92d65f97512047319a31702bb7f61075d228f5ee37745e075582c496860b",
+      "bytes": 498474
+    },
+    "earthlands-unaccepted-pack-diorama-restored.png": {
+      "sha256": "a4ab8630e34953fc6e9c779e3e80b61dd2c76afbd911a42c6a79ec0651823c95",
+      "bytes": 498863
+    },
+    "earthlands-unaccepted-pack-third-actual.png": {
+      "sha256": "6fa3a28da576bee7d89e8b92f8897a7c4a19a11399874b7f7c1418fe779b6948",
+      "bytes": 701869
+    },
+    "earthlands-unaccepted-pack-third-appearance-ablated.png": {
+      "sha256": "132c222e0967997c080acbfae49fb45fc693174325d5206961c0cf3fb1d3b902",
+      "bytes": 701776
+    },
+    "earthlands-unaccepted-pack-third-restored.png": {
+      "sha256": "6fa3a28da576bee7d89e8b92f8897a7c4a19a11399874b7f7c1418fe779b6948",
+      "bytes": 701869
+    },
+    "HARNESS.py": {
+      "sha256": "f612ad029a32ab182503ad1fe4307cee6e251206bb43bb0919dc8037fdcee5c9",
+      "bytes": 35678
+    },
+    "NATIVE_EARNED_UPPER_GAUGE.json": {
+      "sha256": "e67c87a12a87d798df35b58f036d499df392ca32b0e61eceb42170f85cced7e9",
+      "bytes": 32166
+    }
+  },
+  "native_xyz_arrivals": [
+    {
+      "label": "upper-gauge",
+      "horizontal_error": 0.013160000003592746,
+      "depth_error": 0.07315999999999623,
+      "clear": true,
+      "body": "water",
+      "hp": 145
+    },
+    {
+      "label": "lower-masonry",
+      "horizontal_error": 0.006840000078644326,
+      "depth_error": 0.030520000000068492,
+      "clear": true,
+      "body": "water",
+      "hp": 145
+    },
+    {
+      "label": "doorway-approach",
+      "horizontal_error": 0.120780000006088,
+      "depth_error": 0.11947999999993186,
+      "clear": true,
+      "body": "water",
+      "hp": 145
+    },
+    {
+      "label": "air-court-entry",
+      "horizontal_error": 0.020780000055803154,
+      "depth_error": 0.0,
+      "clear": true,
+      "body": "air",
+      "hp": 145
+    },
+    {
+      "label": "depth-chart",
+      "horizontal_error": 0.031040000057469673,
+      "depth_error": 0.0,
+      "clear": true,
+      "body": "air",
+      "hp": 145
+    },
+    {
+      "label": "court-return",
+      "horizontal_error": 0.021300000054461966,
+      "depth_error": 0.0,
+      "clear": true,
+      "body": "air",
+      "hp": 145
+    },
+    {
+      "label": "court-doorway-out",
+      "horizontal_error": 0.034720000021122084,
+      "depth_error": 0.0,
+      "clear": true,
+      "body": "water",
+      "hp": 145
+    },
+    {
+      "label": "east-lane-depth",
+      "horizontal_error": 0.11844000000602542,
+      "depth_error": 0.010260000000014369,
+      "clear": true,
+      "body": "water",
+      "hp": 145
+    },
+    {
+      "label": "east-lane",
+      "horizontal_error": 0.11389049846538038,
+      "depth_error": 0.010260000000014369,
+      "clear": true,
+      "body": "water",
+      "hp": 145
+    },
+    {
+      "label": "modern-marker",
+      "horizontal_error": 0.13790972563125112,
+      "depth_error": 0.12973999999998576,
+      "clear": true,
+      "body": "water",
+      "hp": 145
+    },
+    {
+      "label": "far-gallery-landing",
+      "horizontal_error": 0.13330517512454867,
+      "depth_error": 0.12973999999998576,
+      "clear": true,
+      "body": "water",
+      "hp": 145
+    }
+  ],
+  "max_horizontal_error": 0.13790972563125112,
+  "max_depth_error": 0.12973999999998576,
+  "ablations": {
+    "earthlands-unaccepted-pack-third": {
+      "removed": 5,
+      "changedPixels": 907,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-unaccepted-pack-diorama": {
+      "removed": 5,
+      "changedPixels": 541,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-fallen-bough-before-third": {
+      "removed": 11,
+      "changedPixels": 1322,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-fallen-bough-before-diorama": {
+      "removed": 11,
+      "changedPixels": 152,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-fallen-bough-recorded-third": {
+      "removed": 28,
+      "changedPixels": 737,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-fallen-bough-recorded-third-detail": {
+      "removed": 14,
+      "changedPixels": 263,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-fallen-bough-recorded-diorama": {
+      "removed": 28,
+      "changedPixels": 149,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-fallen-bough-recorded-diorama-detail": {
+      "removed": 14,
+      "changedPixels": 142,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-shore-reeds-before-third": {
+      "removed": 12,
+      "changedPixels": 956,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-shore-reeds-before-diorama": {
+      "removed": 12,
+      "changedPixels": 49,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-shore-reeds-recorded-third": {
+      "removed": 16,
+      "changedPixels": 1298,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-shore-reeds-recorded-third-detail": {
+      "removed": 4,
+      "changedPixels": 343,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-shore-reeds-recorded-diorama": {
+      "removed": 16,
+      "changedPixels": 66,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-shore-reeds-recorded-diorama-detail": {
+      "removed": 4,
+      "changedPixels": 30,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-shore-stone-before-third": {
+      "removed": 5,
+      "changedPixels": 1373,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-shore-stone-before-diorama": {
+      "removed": 5,
+      "changedPixels": 114,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-shore-stone-recorded-third": {
+      "removed": 3,
+      "changedPixels": 2064,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-shore-stone-recorded-third-detail": {
+      "removed": 2,
+      "changedPixels": 865,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-shore-stone-recorded-diorama": {
+      "removed": 3,
+      "changedPixels": 207,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-shore-stone-recorded-diorama-detail": {
+      "removed": 2,
+      "changedPixels": 68,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-road-pack-before-third": {
+      "removed": 5,
+      "changedPixels": 4359,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-road-pack-before-diorama": {
+      "removed": 5,
+      "changedPixels": 539,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-road-pack-recorded-third": {
+      "removed": 49,
+      "changedPixels": 5771,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-road-pack-recorded-third-detail": {
+      "removed": 7,
+      "changedPixels": 937,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-road-pack-recorded-diorama": {
+      "removed": 49,
+      "changedPixels": 596,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-road-pack-recorded-diorama-detail": {
+      "removed": 7,
+      "changedPixels": 97,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-paid-pack-third": {
+      "removed": 49,
+      "changedPixels": 4630,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "earthlands-paid-pack-diorama": {
+      "removed": 49,
+      "changedPixels": 332,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-upper-gauge-before-third": {
+      "removed": 6,
+      "changedPixels": 4743,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-upper-gauge-before-diorama": {
+      "removed": 6,
+      "changedPixels": 132,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-upper-gauge-recorded-third": {
+      "removed": 8,
+      "changedPixels": 4743,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-upper-gauge-recorded-third-detail": {
+      "removed": 2,
+      "changedPixels": 132,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-upper-gauge-recorded-diorama": {
+      "removed": 8,
+      "changedPixels": 131,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-upper-gauge-recorded-diorama-detail": {
+      "removed": 2,
+      "changedPixels": 5,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-lower-masonry-before-third": {
+      "removed": 8,
+      "changedPixels": 4188,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-lower-masonry-before-diorama": {
+      "removed": 8,
+      "changedPixels": 193,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-lower-masonry-recorded-third": {
+      "removed": 10,
+      "changedPixels": 4188,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-lower-masonry-recorded-third-detail": {
+      "removed": 2,
+      "changedPixels": 91,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-lower-masonry-recorded-diorama": {
+      "removed": 10,
+      "changedPixels": 192,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-lower-masonry-recorded-diorama-detail": {
+      "removed": 2,
+      "changedPixels": 5,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-court-roof-off": {
+      "removed": 1,
+      "changedPixels": 15412,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-court-roof-on": {
+      "removed": 1,
+      "changedPixels": 0,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-chart-before-third": {
+      "removed": 11,
+      "changedPixels": 25472,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-chart-before-diorama": {
+      "removed": 11,
+      "changedPixels": 285,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-chart-corrected-third": {
+      "removed": 17,
+      "changedPixels": 25472,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-chart-corrected-third-detail": {
+      "removed": 6,
+      "changedPixels": 1989,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-chart-corrected-diorama": {
+      "removed": 17,
+      "changedPixels": 285,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-chart-corrected-diorama-detail": {
+      "removed": 6,
+      "changedPixels": 24,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-marker-before-third": {
+      "removed": 3,
+      "changedPixels": 2634,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-marker-before-diorama": {
+      "removed": 3,
+      "changedPixels": 113,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-marker-recorded-third": {
+      "removed": 11,
+      "changedPixels": 2634,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-marker-recorded-third-detail": {
+      "removed": 8,
+      "changedPixels": 840,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 840
+    },
+    "atlantis-marker-recorded-diorama": {
+      "removed": 11,
+      "changedPixels": 113,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 0
+    },
+    "atlantis-marker-recorded-diorama-detail": {
+      "removed": 8,
+      "changedPixels": 29,
+      "restorationRGBDelta": 0,
+      "stateCameraCollisionUnchanged": true,
+      "writerRestored": true,
+      "batchesRestored": true,
+      "glError": 0,
+      "originalChangedPixels": 0,
+      "addedFacePixels": 29
+    }
+  },
+  "production_mesh_snapshots": [
+    {
+      "label": "earthlands-unaccepted",
+      "parts": 33,
+      "vertices": 1032,
+      "finite_positive_supported": true
+    },
+    {
+      "label": "earthlands-fallen-bough-before",
+      "parts": 33,
+      "vertices": 1032,
+      "finite_positive_supported": true
+    },
+    {
+      "label": "earthlands-fallen-bough-recorded",
+      "parts": 50,
+      "vertices": 1668,
+      "finite_positive_supported": true
+    },
+    {
+      "label": "earthlands-bough-partial-reload",
+      "parts": 50,
+      "vertices": 1668,
+      "finite_positive_supported": true
+    },
+    {
+      "label": "earthlands-shore-reeds-before",
+      "parts": 50,
+      "vertices": 1668,
+      "finite_positive_supported": true
+    },
+    {
+      "label": "earthlands-shore-reeds-recorded",
+      "parts": 54,
+      "vertices": 1788,
+      "finite_positive_supported": true
+    },
+    {
+      "label": "earthlands-shore-stone-before",
+      "parts": 54,
+      "vertices": 1788,
+      "finite_positive_supported": true
+    },
+    {
+      "label": "earthlands-shore-stone-recorded",
+      "parts": 52,
+      "vertices": 1752,
+      "finite_positive_supported": true
+    },
+    {
+      "label": "earthlands-road-pack-before",
+      "parts": 52,
+      "vertices": 1752,
+      "finite_positive_supported": true
+    },
+    {
+      "label": "earthlands-road-pack-recorded",
+      "parts": 96,
+      "vertices": 3252,
+      "finite_positive_supported": true
+    },
+    {
+      "label": "earthlands-complete-unpaid",
+      "parts": 96,
+      "vertices": 3252,
+      "finite_positive_supported": true
+    },
+    {
+      "label": "earthlands-paid",
+      "parts": 96,
+      "vertices": 3252,
+      "finite_positive_supported": true
+    },
+    {
+      "label": "earthlands-paid-reload",
+      "parts": 96,
+      "vertices": 3252,
+      "finite_positive_supported": true
+    },
+    {
+      "label": "atlantis-unaccepted",
+      "parts": 26,
+      "vertices": 936,
+      "finite_positive_supported": true
+    },
+    {
+      "label": "atlantis-upper-gauge-recorded",
+      "parts": 29,
+      "vertices": 1056,
+      "finite_positive_supported": true
+    },
+    {
+      "label": "atlantis-lower-masonry-recorded",
+      "parts": 32,
+      "vertices": 1176,
+      "finite_positive_supported": true
+    },
+    {
+      "label": "atlantis-chart-two-readings",
+      "parts": 32,
+      "vertices": 1176,
+      "finite_positive_supported": true
+    },
+    {
+      "label": "atlantis-chart-corrected",
+      "parts": 38,
+      "vertices": 1392,
+      "finite_positive_supported": true
+    },
+    {
+      "label": "atlantis-complete-unpaid",
+      "parts": 46,
+      "vertices": 1680,
+      "finite_positive_supported": true
+    },
+    {
+      "label": "atlantis-paid",
+      "parts": 46,
+      "vertices": 1680,
+      "finite_positive_supported": true
+    },
+    {
+      "label": "atlantis-paid-reload",
+      "parts": 46,
+      "vertices": 1680,
+      "finite_positive_supported": true
+    }
+  ],
+  "caveats": [
+    "Software SwiftShader only; no RTX frame-rate/performance claim.",
+    "Default diorama copied gauge details contribute only five changed pixels each: pixel contribution does not certify human readability.",
+    "Modern original-west-only negative is a labelled same-frame appearance reconstruction, not a separate old-source native run.",
+    "Storage refusal is labelled synthetic and restored; ordinary progress/reload/claims use actual native UI.",
+    "No human acceptance or abrupt termination persistence proof."
+  ]
+}

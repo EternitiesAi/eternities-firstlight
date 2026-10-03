@@ -1,0 +1,1309 @@
+{
+  "realmTrails": {
+    "version": 1,
+    "records": {
+      "heaven-broken-choir-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "hell-open-cage-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "atlantis-bellglass-chart-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "earthlands-coastward-materials-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "cosmos-split-bearing-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      }
+    }
+  },
+  "journeys": {
+    "version": 1,
+    "realms": {
+      "heaven": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "hell": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "earthlands": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "atlantis": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "cosmos": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      }
+    }
+  },
+  "adventure": {
+    "version": 11,
+    "realmCraft": {
+      "version": 1,
+      "weapon": null
+    },
+    "earthGathering": {
+      "version": 1,
+      "accepted": false,
+      "prepared": [],
+      "verse": null,
+      "shared": false
+    },
+    "earthNotes": {
+      "version": 1,
+      "accepted": false,
+      "marks": [],
+      "compared": false,
+      "interpretation": null
+    },
+    "earthStory": {
+      "version": 1,
+      "accepted": false,
+      "steps": [],
+      "dispatch": null,
+      "arrived": false,
+      "claimed": false
+    },
+    "classPath": {
+      "version": 1,
+      "choice": null,
+      "readyAt": 0
+    },
+    "pursuit": {
+      "version": 1,
+      "pinned": null,
+      "claimed": 0,
+      "active": null,
+      "fittings": {}
+    },
+    "starter": {
+      "version": 1,
+      "accepted": true,
+      "bundles": [
+        "river-rope",
+        "river-tools",
+        "river-canvas"
+      ],
+      "reward": {
+        "choice": "oren_reedbow",
+        "weapon": "oren_reedbow"
+      }
+    },
+    "crossing": {
+      "version": 1,
+      "entered": false,
+      "met": false,
+      "inscription": false,
+      "clapperRevealed": false,
+      "clapper": false,
+      "repaired": false,
+      "complete": false,
+      "reward": false,
+      "attuned": false,
+      "projects": []
+    },
+    "beacon": {
+      "version": 1,
+      "introduced": false,
+      "complete": false,
+      "status": "dormant",
+      "attempts": 0,
+      "failures": 0,
+      "reward": false,
+      "relic": "undecided",
+      "route": null,
+      "soul": {
+        "grace": false,
+        "equipped": null,
+        "radiance": 0,
+        "corruption": 0,
+        "scars": []
+      }
+    },
+    "arsenal": {
+      "version": 1,
+      "gems": {
+        "ruby": 0,
+        "moonstone": 0,
+        "amber": 0
+      },
+      "sockets": {},
+      "rangeMedal": false,
+      "bestTime": null
+    },
+    "road": {
+      "version": 1,
+      "entered": false,
+      "revealed": [],
+      "claimed": [],
+      "cartRepaired": false,
+      "beaconLit": false,
+      "reported": false
+    },
+    "elapsed": 118.43109999999658,
+    "revision": 44,
+    "started": true,
+    "dug": [],
+    "chips": [],
+    "defeated": [
+      "river-skitter-west",
+      "river-skitter-east",
+      "river-old-bristle"
+    ],
+    "drops": [
+      "river-skitter-west",
+      "river-skitter-east",
+      "river-old-bristle"
+    ],
+    "ore": 0,
+    "coins": 6,
+    "xp": 61,
+    "hp": 72,
+    "stamina": 100,
+    "tonics": 3,
+    "equipment": {
+      "weapon": "oren_reedbow",
+      "armor": "travel_coat",
+      "charm": null
+    },
+    "owned": [
+      "trail_blade",
+      "travel_coat",
+      "trail_bow",
+      "oren_reedbow"
+    ],
+    "companion": {
+      "bonded": false,
+      "name": "Briar",
+      "mode": "follow"
+    },
+    "relic": false,
+    "angelSeen": false,
+    "reward": null,
+    "deaths": 0,
+    "receipts": [
+      {
+        "id": "starter-journey-1",
+        "fp": "[\"start\",{}]",
+        "ok": true
+      },
+      {
+        "id": "starter-journey-20",
+        "fp": "[\"arsenal-craft\",{\"id\":\"trail_bow\"}]",
+        "ok": true
+      },
+      {
+        "id": "starter-journey-21",
+        "fp": "[\"equip\",{\"id\":\"trail_bow\"}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995744983-1",
+        "fp": "[\"starter-accept\",{}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995747196-2",
+        "fp": "[\"starter-enter\",{}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995751810-3",
+        "fp": "[\"starter-pickup\",{\"id\":\"river-rope\"}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995751853-4",
+        "fp": "[\"target-cycle\",{\"reverse\":false}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995751864-5",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995751939-6",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-1-9",
+        "fp": "[\"attack\",{\"target\":\"river-skitter-west\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-3-10",
+        "fp": "[\"attack\",{\"target\":\"river-skitter-west\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-5-11",
+        "fp": "[\"attack\",{\"target\":\"river-skitter-west\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-7-12",
+        "fp": "[\"attack\",{\"target\":\"river-skitter-west\"}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995759136-7",
+        "fp": "[\"starter-pickup\",{\"id\":\"river-tools\"}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995759326-8",
+        "fp": "[\"target-cycle\",{\"reverse\":false}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995759346-9",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-9-17",
+        "fp": "[\"attack\",{\"target\":\"river-skitter-east\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-11-18",
+        "fp": "[\"attack\",{\"target\":\"river-skitter-east\"}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995760381-10",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-13-20",
+        "fp": "[\"attack\",{\"target\":\"river-skitter-east\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-15-21",
+        "fp": "[\"attack\",{\"target\":\"river-skitter-east\"}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995766412-11",
+        "fp": "[\"starter-pickup\",{\"id\":\"river-canvas\"}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995766466-12",
+        "fp": "[\"target-cycle\",{\"reverse\":false}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995766491-13",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-17-26",
+        "fp": "[\"attack\",{\"target\":\"river-old-bristle\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-19-27",
+        "fp": "[\"attack\",{\"target\":\"river-old-bristle\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-21-28",
+        "fp": "[\"attack\",{\"target\":\"river-old-bristle\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-23-29",
+        "fp": "[\"attack\",{\"target\":\"river-old-bristle\"}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995769575-14",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-25-31",
+        "fp": "[\"attack\",{\"target\":\"river-old-bristle\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-27-32",
+        "fp": "[\"attack\",{\"target\":\"river-old-bristle\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-29-33",
+        "fp": "[\"attack\",{\"target\":\"river-old-bristle\"}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995780686-15",
+        "fp": "[\"starter-leave\",{}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995782675-16",
+        "fp": "[\"starter-claim\",{\"choice\":\"oren_reedbow\"}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995782772-17",
+        "fp": "[\"equip\",{\"id\":\"oren_reedbow\"}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995784841-18",
+        "fp": "[\"starter-enter\",{}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995786884-19",
+        "fp": "[\"target-cycle\",{\"reverse\":false}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995786894-20",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-31-41",
+        "fp": "[\"attack\",{\"target\":\"river-practice\"}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995787353-21",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "adv-1790995787386-22",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      }
+    ]
+  },
+  "sandbox": {
+    "version": 1,
+    "elapsed": 118.43109999999658,
+    "revision": 18,
+    "inventory": {
+      "wood": 4,
+      "stone": 8,
+      "fiber": 2,
+      "crystal": 0,
+      "plank": 0,
+      "block": 0,
+      "seeds": 6,
+      "berry": 0,
+      "axe": 0,
+      "pick": 0,
+      "floor": 0,
+      "wall": 0,
+      "masonry": 0,
+      "lantern": 0,
+      "bench": 0,
+      "bed": 0,
+      "fire": 0,
+      "workbench": 0
+    },
+    "nodes": [
+      {
+        "id": "timber-1",
+        "hp": 0,
+        "readyAt": 135.5500000000001
+      },
+      {
+        "id": "timber-2",
+        "hp": 0,
+        "readyAt": 141.55000000000018
+      },
+      {
+        "id": "timber-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "timber-4",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-1",
+        "hp": 0,
+        "readyAt": 142.59999999999914
+      },
+      {
+        "id": "stone-2",
+        "hp": 0,
+        "readyAt": 149.29999999999876
+      },
+      {
+        "id": "stone-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-1",
+        "hp": 0,
+        "readyAt": 122.2000000000003
+      },
+      {
+        "id": "fibre-2",
+        "hp": 0,
+        "readyAt": 130.49999999999983
+      },
+      {
+        "id": "fibre-3",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-stone-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-stone-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-fibre",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "crystal-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "crystal-2",
+        "hp": 4,
+        "readyAt": 0
+      }
+    ],
+    "bridge": false,
+    "placed": [],
+    "nextId": 1,
+    "stats": {
+      "gathered": 26,
+      "crafted": 0,
+      "harvested": 0
+    },
+    "milestones": [
+      "gather"
+    ],
+    "recentCommands": [
+      {
+        "id": "starter-gather-2",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop \u00b7 3 strength remaining"
+        }
+      },
+      {
+        "id": "starter-gather-3",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop \u00b7 2 strength remaining"
+        }
+      },
+      {
+        "id": "starter-gather-4",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop \u00b7 1 strength remaining"
+        }
+      },
+      {
+        "id": "starter-gather-5",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "+5 Timber"
+        }
+      },
+      {
+        "id": "starter-gather-6",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop \u00b7 3 strength remaining"
+        }
+      },
+      {
+        "id": "starter-gather-7",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop \u00b7 2 strength remaining"
+        }
+      },
+      {
+        "id": "starter-gather-8",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop \u00b7 1 strength remaining"
+        }
+      },
+      {
+        "id": "starter-gather-9",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "+5 Timber"
+        }
+      },
+      {
+        "id": "starter-gather-10",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"fibre-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "+3 Meadow fibre \u00b7 +1 seed"
+        }
+      },
+      {
+        "id": "starter-gather-11",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"fibre-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "+3 Meadow fibre \u00b7 +1 seed"
+        }
+      },
+      {
+        "id": "starter-gather-12",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Mine \u00b7 3 strength remaining"
+        }
+      },
+      {
+        "id": "starter-gather-13",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Mine \u00b7 2 strength remaining"
+        }
+      },
+      {
+        "id": "starter-gather-14",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Mine \u00b7 1 strength remaining"
+        }
+      },
+      {
+        "id": "starter-gather-15",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "+5 Stone"
+        }
+      },
+      {
+        "id": "starter-gather-16",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Mine \u00b7 3 strength remaining"
+        }
+      },
+      {
+        "id": "starter-gather-17",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Mine \u00b7 2 strength remaining"
+        }
+      },
+      {
+        "id": "starter-gather-18",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Mine \u00b7 1 strength remaining"
+        }
+      },
+      {
+        "id": "starter-gather-19",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "+5 Stone"
+        }
+      }
+    ],
+    "cooldownUntil": 59.69999999999877
+  },
+  "score": {
+    "format": "eternities.score.v1",
+    "title": "A Window Left Open",
+    "bpm": 88,
+    "voice": "felt",
+    "melody": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    ],
+    "bass": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "drums": [
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    ]
+  },
+  "scoreRevision": 0,
+  "retreat": {
+    "version": 1,
+    "revision": 0,
+    "wall": "moss",
+    "floor": "oak",
+    "items": [
+      {
+        "slot": "nw",
+        "kind": "shelf",
+        "rotation": 0
+      },
+      {
+        "slot": "ne",
+        "kind": "piano",
+        "rotation": 0
+      },
+      {
+        "slot": "w",
+        "kind": "sofa",
+        "rotation": 1
+      },
+      {
+        "slot": "e",
+        "kind": "plant",
+        "rotation": 0
+      },
+      {
+        "slot": "c",
+        "kind": "rug",
+        "rotation": 0
+      }
+    ]
+  },
+  "visitor": {
+    "name": "Visitor",
+    "skin": 0,
+    "cloak": 0,
+    "hair": 0
+  },
+  "version": 9,
+  "seed": 2317,
+  "day": 1,
+  "hour": 17.24163964999993,
+  "weather": "clear",
+  "player": {
+    "x": 15,
+    "z": 7,
+    "yaw": 3.141592653589793
+  },
+  "visited": [
+    "market",
+    "commons"
+  ],
+  "flowers": [],
+  "notes": [],
+  "journal": [
+    {
+      "seq": 1,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 2,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 3,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 4,
+      "day": 1,
+      "hour": 17.209000000000014,
+      "kind": "discovery",
+      "text": "You found The makers\u2019 exchange."
+    },
+    {
+      "seq": 5,
+      "day": 1,
+      "hour": 17.21305000000002,
+      "kind": "quest",
+      "text": "Oren supplied a trail blade, a lantern, three tonics and a salve for an injured animal. Find the northern mine."
+    },
+    {
+      "seq": 6,
+      "day": 1,
+      "hour": 17.25647500000009,
+      "kind": "sandbox",
+      "text": "Chop \u00b7 3 strength remaining"
+    },
+    {
+      "seq": 7,
+      "day": 1,
+      "hour": 17.260975000000098,
+      "kind": "sandbox",
+      "text": "Chop \u00b7 2 strength remaining"
+    },
+    {
+      "seq": 8,
+      "day": 1,
+      "hour": 17.265475000000105,
+      "kind": "sandbox",
+      "text": "Chop \u00b7 1 strength remaining"
+    },
+    {
+      "seq": 9,
+      "day": 1,
+      "hour": 17.269975000000112,
+      "kind": "sandbox",
+      "text": "+5 Timber"
+    },
+    {
+      "seq": 10,
+      "day": 1,
+      "hour": 17.283475000000134,
+      "kind": "sandbox",
+      "text": "Chop \u00b7 3 strength remaining"
+    },
+    {
+      "seq": 11,
+      "day": 1,
+      "hour": 17.28797500000014,
+      "kind": "sandbox",
+      "text": "Chop \u00b7 2 strength remaining"
+    },
+    {
+      "seq": 12,
+      "day": 1,
+      "hour": 17.29247500000015,
+      "kind": "sandbox",
+      "text": "Chop \u00b7 1 strength remaining"
+    },
+    {
+      "seq": 13,
+      "day": 1,
+      "hour": 17.296975000000156,
+      "kind": "sandbox",
+      "text": "+5 Timber"
+    },
+    {
+      "seq": 14,
+      "day": 1,
+      "hour": 17.328925000000208,
+      "kind": "discovery",
+      "text": "You found The Firstlight Commons."
+    },
+    {
+      "seq": 15,
+      "day": 1,
+      "hour": 17.344900000000234,
+      "kind": "sandbox",
+      "text": "+3 Meadow fibre \u00b7 +1 seed"
+    },
+    {
+      "seq": 16,
+      "day": 1,
+      "hour": 17.382250000000294,
+      "kind": "sandbox",
+      "text": "+3 Meadow fibre \u00b7 +1 seed"
+    },
+    {
+      "seq": 17,
+      "day": 1,
+      "hour": 17.42320000000036,
+      "kind": "sandbox",
+      "text": "Mine \u00b7 3 strength remaining"
+    },
+    {
+      "seq": 18,
+      "day": 1,
+      "hour": 17.427700000000367,
+      "kind": "sandbox",
+      "text": "Mine \u00b7 2 strength remaining"
+    },
+    {
+      "seq": 19,
+      "day": 1,
+      "hour": 17.432200000000375,
+      "kind": "sandbox",
+      "text": "Mine \u00b7 1 strength remaining"
+    },
+    {
+      "seq": 20,
+      "day": 1,
+      "hour": 17.436700000000382,
+      "kind": "sandbox",
+      "text": "+5 Stone"
+    },
+    {
+      "seq": 21,
+      "day": 1,
+      "hour": 17.45335000000041,
+      "kind": "sandbox",
+      "text": "Mine \u00b7 3 strength remaining"
+    },
+    {
+      "seq": 22,
+      "day": 1,
+      "hour": 17.457850000000416,
+      "kind": "sandbox",
+      "text": "Mine \u00b7 2 strength remaining"
+    },
+    {
+      "seq": 23,
+      "day": 1,
+      "hour": 17.462350000000423,
+      "kind": "sandbox",
+      "text": "Mine \u00b7 1 strength remaining"
+    },
+    {
+      "seq": 24,
+      "day": 1,
+      "hour": 17.46685000000043,
+      "kind": "sandbox",
+      "text": "+5 Stone"
+    },
+    {
+      "seq": 25,
+      "day": 1,
+      "hour": 17.49122470000047,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 26,
+      "day": 1,
+      "hour": 17.49122470000047,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 27,
+      "day": 1,
+      "hour": 17.49122470000047,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 28,
+      "day": 1,
+      "hour": 17.002624400000002,
+      "kind": "quest",
+      "text": "You agreed to recover Oren\u2019s three supply bundles and drive away Old Bristle at the nearby riverbank. Choose a blade, bow or one weapon temper when you return."
+    },
+    {
+      "seq": 29,
+      "day": 1,
+      "hour": 17.03277305000002,
+      "kind": "quest",
+      "text": "Coiled river rope recovered (1/3). Your normal inventory is unchanged."
+    },
+    {
+      "seq": 30,
+      "day": 1,
+      "hour": 17.044247600000013,
+      "kind": "adventure",
+      "text": "Riverbank skitter defeated. A cache remains at its original position."
+    },
+    {
+      "seq": 31,
+      "day": 1,
+      "hour": 17.065771549999983,
+      "kind": "quest",
+      "text": "Wrapped hand tools recovered (2/3). Your normal inventory is unchanged."
+    },
+    {
+      "seq": 32,
+      "day": 1,
+      "hour": 17.077996249999988,
+      "kind": "adventure",
+      "text": "Reed skitter defeated. A cache remains at its original position."
+    },
+    {
+      "seq": 33,
+      "day": 1,
+      "hour": 17.098470349999968,
+      "kind": "quest",
+      "text": "Folded worksite canvas recovered (3/3). Your normal inventory is unchanged."
+    },
+    {
+      "seq": 34,
+      "day": 1,
+      "hour": 17.120594149999956,
+      "kind": "adventure",
+      "text": "You reached level 2."
+    },
+    {
+      "seq": 35,
+      "day": 1,
+      "hour": 17.120594149999956,
+      "kind": "adventure",
+      "text": "Old Bristle defeated. A cache remains at its original position."
+    },
+    {
+      "seq": 36,
+      "day": 1,
+      "hour": 17.170242649999945,
+      "kind": "quest",
+      "text": "Oren\u2019s supplies are back at the workshop. You chose Oren\u2019s reedbound bow. This outing pays once."
+    }
+  ],
+  "nextEvent": 37,
+  "residents": [
+    {
+      "id": "ilan",
+      "x": 0,
+      "z": -11.6,
+      "yaw": 1.5707963267948966,
+      "progress": 0.0712365979999984,
+      "conversations": 0
+    },
+    {
+      "id": "mara",
+      "x": 9,
+      "z": -5.8,
+      "yaw": 0,
+      "progress": 0.07131759799999836,
+      "conversations": 0
+    },
+    {
+      "id": "oren",
+      "x": 11,
+      "z": 9,
+      "yaw": -1.5707963267948966,
+      "progress": 0.0712365979999984,
+      "conversations": 0
+    }
+  ],
+  "settings": {
+    "quality": "balanced",
+    "cameraMode": "follow",
+    "cameraFov": 60,
+    "cameraViews": {
+      "version": 1,
+      "lastDiorama": "follow",
+      "profiles": {
+        "adventure": {
+          "yaw": 0.6500000000000004,
+          "elevation": 0.18,
+          "distance": 4
+        },
+        "follow": {
+          "yaw": 0.6500000000000004,
+          "elevation": 0.66,
+          "zoom": 0.2857142857142857
+        }
+      }
+    },
+    "cameraCutaway": true,
+    "reducedMotion": false,
+    "labels": true,
+    "timeFlow": true,
+    "sound": false
+  }
+}

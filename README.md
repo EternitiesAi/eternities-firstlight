@@ -4,6 +4,8 @@ Continuous development starts at [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md).
 
 A complete local action/sandbox RPG prototype for Dom / Eternities, with interchangeable third-person and diorama cameras. Four small chapters, creative tools, construction, a companion, bows, sockets, an equipment workspace, and the village are integrated in one offline application.
 
+The current world pass adds inhabited Coastward scenery, recognizable local people and creatures, smoother accepted attack motion, visible quest work, optional realm ambience and save-before-spend workshop/story actions. [Play and actual footage](docs/evidence/world-production-2026-10-03/README.md) describe the five connected region outings, both cameras and the remaining production gates. Historical results below retain their original source epochs.
+
 ## Play the current prototype
 
 On Windows, open **PLAY_FIRSTLIGHT_WINDOWS.cmd**. On any supported desktop with Python 3, run `python tools/play_local.py`. The launcher serves the checked build at **http://127.0.0.1:8780/** and opens your browser. Keep its window open while playing. It reuses an existing server only when that server returns the same build; a different version produces an explicit refusal instead of changing the save origin. `--no-browser` starts it without opening a tab.

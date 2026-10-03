@@ -36,11 +36,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        suite: [crossing_browser, regression09_browser, cutaway_browser, reflection_browser, native_origin_browser, starter_browser, camera_browser, pursuit_browser, characters_browser, classes_browser, cosmos_browser, earth_browser, earth_story_browser, earth_notes_browser, gathering_browser, realm_atlas_browser, timber_browser, traveler_browser, bridge_browser, combat_cue_browser, world_foundations_browser, world_cutaway_browser, realm_trails_browser, realm_trails_north_browser, realm_trails_cosmos_browser]
+        suite: [crossing_browser, regression09_browser, cutaway_browser, reflection_browser, native_origin_browser, starter_browser, camera_browser, pursuit_browser, characters_browser, classes_browser, cosmos_browser, earth_browser, earth_story_browser, earth_notes_browser, gathering_browser, realm_atlas_browser, timber_browser, traveler_browser, bridge_browser, combat_cue_browser, world_foundations_browser, world_cutaway_browser, realm_trails_browser, realm_trails_north_browser, realm_trails_cosmos_browser, soundscape_browser, journey_usability_browser, workshop_transactions_browser, companion_presentation_browser, skitter_presentation_browser, coastward_scenery_browser, realm_givers_browser, earth_story_transactions_browser, coastward_bridge_posts_browser, practice_visibility_browser, realm_work_presentation_browser]
     runs-on: ubuntu-latest
-    # The full campaign + creative/export journey exceeds 12 minutes on hosted
-    # software WebGL with the refined geometry. Keep all assertions and bound it.
-    timeout-minutes: ${{ matrix.suite == 'regression09_browser' && 20 || 12 }}
+    # The campaign/export and ordinary-RAF nine-giver/companion tours need a
+    # larger bounded window on software WebGL. Preserve every route/assertion.
+    timeout-minutes: ${{ (matrix.suite == 'regression09_browser' || matrix.suite == 'realm_givers_browser') && 20 || 12 }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4

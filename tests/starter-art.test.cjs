@@ -1,4 +1,6 @@
 'use strict';
+require('../src/skitter-art.js');
+require('../src/companion-art.js');
 const test=require('node:test'),assert=require('node:assert/strict');
 const C=require('../src/core.js'),A=require('../src/adventure.js'),Q=require('../src/starter.js');
 const AR=require('../src/arsenal.js');require('../src/engine.js');

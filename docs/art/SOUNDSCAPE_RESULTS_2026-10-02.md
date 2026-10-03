@@ -1,0 +1,15 @@
+# Optional original realm atmosphere
+
+The production app now projects its actual room and Atlantis body medium onto eight small original procedural sound profiles. The five roads have distinct filtered wind and restrained tones; Bellglass changes with water versus its actual dry air court. Home daytime birds remain restricted to living, visible outdoor Earth. This is ambient mood, never damage, loot, quest authority or a critical cue. No acquired recording, paid service or score replacement is involved.
+
+One owned ambient bus contains one three-second deterministic noise loop and three sine voices. Profile transitions ramp local parameters; frame updates do not allocate more graph nodes. The existing opt-in master, personal compositions and roadside music retain their owners. Pause, hidden page and actual death fade the ambient bus. Pagehide disposes its four loop sources; pageshow may recreate it only while the existing player consent is enabled. A real reload starts without audio consent or an AudioContext. World schema/key9 and adventure11 remain unchanged.
+
+Validation at HTML SHA-256 `4a015e2ffec57b24b43711c122ebb4cd2a782fa886eb72765bb9c6399867d616`:
+
+- `node --test tests/soundscape.test.cjs`: 10 passed, zero failures. Bounded fake graph tests cover pure projection, lifetime, pause/master ownership, cadence and no per-frame allocations.
+- `python tests/soundscape_browser.py`: real Web Audio activation and production UI travel in isolated SwiftShader Chromium; exact terms, all five realm profiles, actual submerged route and actual dry court, mute, labelled synthetic hidden/pagehide/pageshow events, real native reload and no browser runtime errors. The portable report gives the exact assertion count and measurements.
+- Chromium's actual OfflineAudioContext rendered 72,000 samples at24kHz for each profile using the production deterministic noise source. Every profile has nonzero bounded RMS, peak below0.15 and maximum sample step below0.01. A quiet graph renders exact silence. These measurements qualify the graph separately from speakers, browser OS background policy and human listening.
+
+Two harness failures are preserved on D: entry torso is deliberately still in air; the far gallery exit approach is deliberately wet. Assertions were moved to the actual underwater/dry volumes after inspecting canonical medium ownership. No gameplay or medium rule was changed to satisfy them. Details and portable final report: `docs/evidence/world-production-2026-10-02/soundscape-4a015e2.json`; heavy failure reports: `D:/07-GAMES/Firstlight/artifacts/coastward-banks-2026-10-02/soundscape-failures/`.
+
+This is not a listening test, recorded speaker output, loudness standard, accessibility audit or hardware benchmark. Human questions remain: does the atmosphere feel calm rather than monotonous, does each realm's sound help its identity, and are music and combat still easy to hear? Combined full-suite and exact-head fresh-clone evidence belongs to the final seven-hour checkpoint, not this slice.

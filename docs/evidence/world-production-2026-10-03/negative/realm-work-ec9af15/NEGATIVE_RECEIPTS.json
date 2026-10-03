@@ -1,0 +1,3589 @@
+{
+  "classification": "Negative software qualification receipts; no completed Atlantis software pass or native failure save export",
+  "source_head": "ec9af152cd93c4a54ffbfe9526856e22ad192239",
+  "html_sha256": "f614e48dcee8ef82ab3ecf27c6de26bed07ca3b269bdb67c5f5dd1f0f6fdd799",
+  "runs": [
+    {
+      "directory": "run-01",
+      "status": "failed",
+      "checks": 159,
+      "passed": 158,
+      "failed": [
+        {
+          "name": "atlantis-upper-gauge-recorded-diorama-detail recorded detail has positive actual pixel contribution",
+          "passed": false,
+          "evidence": {
+            "parts": 2,
+            "changed_pixels": 0
+          }
+        }
+      ],
+      "wall_seconds": 330.971921999997,
+      "report_sha256": "42a88f27feae8804cf34e17b099285f18dd420c82bb89d0edc0d6e53a84f6c60",
+      "harness_sha256": "b8ea132edca3a263730f3e8b844abfb519c27cb29cb93583fd280661fd8cc6ea",
+      "scope": "both",
+      "recorded_upper_arrival": {
+        "target": [
+          8,
+          -1.05,
+          -22
+        ],
+        "actual": {
+          "x": 7.999999703754884,
+          "y": -1.0631599999999963,
+          "z": -21.92683999999994,
+          "body": "water",
+          "hp": 145,
+          "elapsed": 24.798300000000012,
+          "clear": true
+        },
+        "horizontal_error": 0.07316000000065807,
+        "depth_error": 0.013159999999996286,
+        "clear": true
+      },
+      "failed_detail": {
+        "label": "atlantis-upper-gauge-recorded-diorama-detail",
+        "step": {
+          "step": "upper-gauge",
+          "roles": [
+            "copied-gauge-tab",
+            "gauge-tab-pin"
+          ]
+        },
+        "removed": 2,
+        "changedPixels": 0,
+        "originalChangedPixels": 0,
+        "addedFacePixels": 0,
+        "sumRGBDelta": 0,
+        "restorationRGBDelta": 0,
+        "width": 1088,
+        "height": 680,
+        "renderArguments": [
+          25.13160000000001,
+          17.78957425000095,
+          false
+        ],
+        "stateCameraCollisionUnchanged": true,
+        "writerRestored": true,
+        "batchesRestored": true,
+        "glError": 0
+      },
+      "actual_upper_parts": [
+        {
+          "kind": "box",
+          "min": [
+            9.179999999701977,
+            1.409999942407012,
+            -22.059999998658895
+          ],
+          "max": [
+            9.320000000298023,
+            1.45999994315207,
+            -21.940000001341105
+          ],
+          "finite": true,
+          "matrix": [
+            0.14000000059604645,
+            0,
+            0,
+            0,
+            -0.0,
+            0.05000000074505806,
+            0,
+            0,
+            0,
+            -0.0,
+            0.11999999731779099,
+            0,
+            9.25,
+            1.434999942779541,
+            -22,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9.25,
+              1.435,
+              -22
+            ],
+            "s": [
+              0.14,
+              0.05,
+              0.12
+            ],
+            "c": 9279102,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "deck-gauge-anchor",
+            "workSupport": "deck-underside",
+            "supportY": 1.46,
+            "m": null
+          }
+        },
+        {
+          "kind": "box",
+          "min": [
+            9.232499999925494,
+            -0.13999998569488525,
+            -22.017500000074506
+          ],
+          "max": [
+            9.267500000074506,
+            1.4600000381469727,
+            -21.982499999925494
+          ],
+          "finite": true,
+          "matrix": [
+            0,
+            0,
+            0.03500000014901161,
+            0,
+            0,
+            1.600000023841858,
+            0,
+            0,
+            -0.03500000014901161,
+            0,
+            0,
+            0,
+            9.25,
+            0.6600000262260437,
+            -22,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9.25,
+              0.6599999999999999,
+              -22
+            ],
+            "s": [
+              0.035,
+              1.6,
+              0.035
+            ],
+            "c": 8228480,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "gauge-suspension",
+            "m": [
+              0,
+              0,
+              0.035,
+              0,
+              0,
+              1.6,
+              0,
+              0,
+              -0.035,
+              0,
+              0,
+              0,
+              9.25,
+              0.6599999999999999,
+              -22,
+              1
+            ],
+            "workFrom": [
+              9.25,
+              -0.14,
+              -22
+            ],
+            "workTo": [
+              9.25,
+              1.46,
+              -22
+            ]
+          }
+        },
+        {
+          "kind": "box",
+          "min": [
+            8.840000003576279,
+            -0.6899999976158142,
+            -22.02749999985099
+          ],
+          "max": [
+            9.659999996423721,
+            -0.12999999523162842,
+            -21.97250000014901
+          ],
+          "finite": true,
+          "matrix": [
+            0.8199999928474426,
+            0,
+            0,
+            0,
+            -0.0,
+            0.5600000023841858,
+            0,
+            0,
+            0,
+            -0.0,
+            0.054999999701976776,
+            0,
+            9.25,
+            -0.4099999964237213,
+            -22,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9.25,
+              -0.41000000000000003,
+              -22
+            ],
+            "s": [
+              0.82,
+              0.56,
+              0.055
+            ],
+            "c": 11114610,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "bronze-depth-plate",
+            "m": null
+          }
+        },
+        {
+          "kind": "box",
+          "min": [
+            8.839999657124281,
+            -0.6949999928474426,
+            -21.982500152662396
+          ],
+          "max": [
+            8.879999656230211,
+            -0.125,
+            -21.947500152513385
+          ],
+          "finite": true,
+          "matrix": [
+            0.03999999910593033,
+            0,
+            0,
+            0,
+            -0.0,
+            0.5699999928474426,
+            0,
+            0,
+            0,
+            -0.0,
+            0.03500000014901161,
+            0,
+            8.859999656677246,
+            -0.4099999964237213,
+            -21.96500015258789,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              8.86,
+              -0.41000000000000003,
+              -21.965
+            ],
+            "s": [
+              0.04,
+              0.57,
+              0.035
+            ],
+            "c": 12956029,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "depth-plate-edge",
+            "m": null
+          }
+        },
+        {
+          "kind": "box",
+          "min": [
+            9.620000343769789,
+            -0.6949999928474426,
+            -21.982500152662396
+          ],
+          "max": [
+            9.660000342875719,
+            -0.125,
+            -21.947500152513385
+          ],
+          "finite": true,
+          "matrix": [
+            0.03999999910593033,
+            0,
+            0,
+            0,
+            -0.0,
+            0.5699999928474426,
+            0,
+            0,
+            0,
+            -0.0,
+            0.03500000014901161,
+            0,
+            9.640000343322754,
+            -0.4099999964237213,
+            -21.96500015258789,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9.64,
+              -0.41000000000000003,
+              -21.965
+            ],
+            "s": [
+              0.04,
+              0.57,
+              0.035
+            ],
+            "c": 12956029,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "depth-plate-edge",
+            "m": null
+          }
+        },
+        {
+          "kind": "box",
+          "min": [
+            8.972500000149012,
+            -0.5499999970197678,
+            -21.97249908465892
+          ],
+          "max": [
+            9.027499999850988,
+            -0.26999999582767487,
+            -21.94749908428639
+          ],
+          "finite": true,
+          "matrix": [
+            0.054999999701976776,
+            0,
+            0,
+            0,
+            -0.0,
+            0.2800000011920929,
+            0,
+            0,
+            0,
+            -0.0,
+            0.02500000037252903,
+            0,
+            9,
+            -0.4099999964237213,
+            -21.959999084472656,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9,
+              -0.41000000000000003,
+              -21.96
+            ],
+            "s": [
+              0.055,
+              0.28,
+              0.025
+            ],
+            "c": 14733736,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "depth-scale-notch",
+            "m": null
+          }
+        },
+        {
+          "kind": "box",
+          "min": [
+            9.385000266134739,
+            -0.6074999943375587,
+            -21.96950073260814
+          ],
+          "max": [
+            9.555000267922878,
+            -0.5324999913573265,
+            -21.94450073223561
+          ],
+          "finite": true,
+          "matrix": [
+            0.17000000178813934,
+            0,
+            0,
+            0,
+            -0.0,
+            0.07500000298023224,
+            0,
+            0,
+            0,
+            -0.0,
+            0.02500000037252903,
+            0,
+            9.470000267028809,
+            -0.5699999928474426,
+            -21.957000732421875,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9.47,
+              -0.5700000000000001,
+              -21.957
+            ],
+            "s": [
+              0.17,
+              0.075,
+              0.025
+            ],
+            "c": 9550501,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "copied-gauge-tab",
+            "m": null
+          }
+        },
+        {
+          "kind": "disc",
+          "min": [
+            9.475000228732824,
+            -0.6049999929964542,
+            -21.943700790405273
+          ],
+          "max": [
+            9.545000229030848,
+            -0.534999992698431,
+            -21.943700790405273
+          ],
+          "finite": true,
+          "matrix": [
+            0.07000000029802322,
+            0,
+            0,
+            0,
+            -0.0,
+            6.12323395273311e-19,
+            0.009999999776482582,
+            0,
+            0,
+            -0.07000000029802322,
+            4.286263818611965e-18,
+            0,
+            9.510000228881836,
+            -0.5699999928474426,
+            -21.943700790405273,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 48,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9.51,
+              -0.5700000000000001,
+              -21.9437
+            ],
+            "s": [
+              0.07,
+              0.01,
+              0.07
+            ],
+            "c": 14272156,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "gauge-tab-pin",
+            "r": [
+              1.5707963267948966,
+              0,
+              0
+            ],
+            "m": null
+          }
+        }
+      ],
+      "actual_upper_snapshot_camera": {
+        "eye": [
+          40.921031229889415,
+          57.34379766136604,
+          12.710417020024565
+        ],
+        "target": [
+          7.99999970375488,
+          -0.4616182560566589,
+          -21.926839999968102
+        ],
+        "half": 17,
+        "aspect": 1.6
+      },
+      "failure_diagnostics": {
+        "version": "10.0.0",
+        "mode": "webgl2",
+        "scene": "world-atlantis",
+        "world": {
+          "id": "atlantis",
+          "height": -1.0631599999999963,
+          "dive": {
+            "y": -1.0631599999999963,
+            "depth": 1.0731599999999963,
+            "hold": true,
+            "body": "water",
+            "camera": "air",
+            "dryCourt": null
+          },
+          "journey": {
+            "counter": 0,
+            "lastClaim": 0,
+            "firstClaimed": false,
+            "active": null,
+            "defeated": []
+          }
+        },
+        "earth": null,
+        "cosmos": null,
+        "networkDependencies": 0,
+        "liveAI": false,
+        "multiplayer": false,
+        "adventure": {
+          "tactics": {
+            "scene": "world-atlantis",
+            "target": null,
+            "auto": false,
+            "nextAttack": 0,
+            "guardUntil": 0,
+            "shield": 0,
+            "shieldUntil": 0,
+            "cooldowns": {
+              "guard": 0,
+              "insight": 0,
+              "spirit": 0
+            },
+            "hits": [],
+            "serial": 0,
+            "windup": null,
+            "motion": null
+          },
+          "beacon": {
+            "phase": "idle",
+            "time": 0,
+            "wave": 0,
+            "ward": 100,
+            "actors": [],
+            "serial": 0,
+            "notice": "",
+            "repairAt": 0,
+            "maraAt": 0,
+            "ilanAt": 0,
+            "playerRepairAt": 0,
+            "defeats": 0
+          },
+          "crossing": {
+            "room": "world-atlantis",
+            "tones": [],
+            "seek": false,
+            "rangAt": -10,
+            "tone": null,
+            "toneSerial": 0
+          },
+          "player": {
+            "x": 7.999999703754884,
+            "z": -21.92683999999994,
+            "yaw": -3.141592531519481
+          },
+          "paused": true,
+          "intent": null,
+          "stats": {
+            "level": 4,
+            "attack": 31,
+            "defense": 7,
+            "maxHP": 170
+          },
+          "weapon": {
+            "style": "blade",
+            "reach": 2.65,
+            "cooldown": 0.52,
+            "stamina": 0,
+            "primary": "Sunstrike",
+            "special": "Dawn sweep"
+          },
+          "arrows": [],
+          "range": {
+            "active": false,
+            "start": 0,
+            "hits": {},
+            "shots": 0,
+            "message": "A calm place to learn a different rhythm."
+          },
+          "enemies": [],
+          "companion": {
+            "room": "world-atlantis",
+            "x": 5.005063991933082,
+            "z": -14.226076364452668,
+            "yaw": 2.1055405190995153,
+            "path": [],
+            "nextPath": 288.04219999999464,
+            "nextHit": 0,
+            "seek": null,
+            "status": "Waiting on the quay"
+          }
+        },
+        "sandbox": {
+          "bridge": true,
+          "objects": 0,
+          "elapsed": 292.3253999999952,
+          "autoGather": null,
+          "buildMode": null
+        },
+        "saveState": "saved",
+        "characters": {
+          "mode": "managed",
+          "active": "character-2",
+          "revision": 72,
+          "count": 2,
+          "writer": true,
+          "error": null
+        },
+        "fps": 8.298225456402408,
+        "errors": [],
+        "camera": {
+          "yaw": 0.7599999999999998,
+          "elevation": 0.88,
+          "half": 17,
+          "distance": 7.5,
+          "actualDistance": 6.41823459464736,
+          "fov": 60,
+          "center": [
+            7.999999703754884,
+            -0.461072275415944,
+            -21.92683999999994
+          ],
+          "overview": false,
+          "preset": "follow",
+          "tour": false,
+          "baseHalf": 17,
+          "zoom": 1,
+          "ready": true,
+          "projection": "orthographic",
+          "eye": [
+            40.921031229889415,
+            57.344343642006756,
+            12.710417019992725
+          ],
+          "target": [
+            7.999999703754884,
+            -0.461072275415944,
+            -21.92683999999994
+          ]
+        },
+        "metrics": {
+          "drawCalls": 12,
+          "texturedDrawCalls": 0,
+          "texturedInstances": 0,
+          "surfaceMaterials": {
+            "version": 1,
+            "id": "earth-weathered-timber-v1",
+            "status": "ready",
+            "ready": true,
+            "error": null,
+            "width": 512,
+            "height": 512,
+            "colorFormat": "SRGB8_ALPHA8",
+            "roughnessFormat": "R8",
+            "textureBytes": 1310720,
+            "mipmapBytes": 436905,
+            "totalTextureBytes": 1747625,
+            "decodedImageBytes": 2097152,
+            "decodeWallMs": 38,
+            "uploadCpuMs": 42.29999998211861,
+            "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+            "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+            "enabled": true
+          },
+          "instances": 591,
+          "triangles": 24468
+        },
+        "reflection": null,
+        "cutaway": {
+          "enabled": true,
+          "focus": [
+            7.999999703754884,
+            -0.18315999999999633,
+            -21.92683999999994
+          ]
+        },
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "music": {
+          "playing": false,
+          "scoreRevision": 0,
+          "playingRevision": -1,
+          "step": -1
+        },
+        "gathering": null,
+        "layoutRevision": 0,
+        "roadsideGathering": {
+          "status": "idle",
+          "playing": false,
+          "pending": false
+        },
+        "audio": {
+          "enabled": false,
+          "state": "not-created",
+          "soundscape": null
+        }
+      },
+      "outputs": {
+        "atlantis-upper-gauge-before-diorama-actual.png": {
+          "sha256": "aacd9f816eb8ea7ab715157b063d631e3dd731f41248da9f2470f74ef003271a",
+          "bytes": 638548,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-before-diorama-appearance-ablated.png": {
+          "sha256": "dc2b548e0b0e4bf2b73eb0bc5396b3e30505b1746b0cbb5d7b172847119eabf2",
+          "bytes": 638414,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-before-diorama-restored.png": {
+          "sha256": "aacd9f816eb8ea7ab715157b063d631e3dd731f41248da9f2470f74ef003271a",
+          "bytes": 638548,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-before-third-actual.png": {
+          "sha256": "bb31c1e11cc4d7a1c2a6e32732bc3a42acd7da66b4a7b3b677b8917e5cd5b753",
+          "bytes": 781935,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-before-third-appearance-ablated.png": {
+          "sha256": "bea0daf03f766557fe3e499bb26e39d1c791eec9e416309c9a37e5cb5433bad7",
+          "bytes": 780285,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-before-third-restored.png": {
+          "sha256": "bb31c1e11cc4d7a1c2a6e32732bc3a42acd7da66b4a7b3b677b8917e5cd5b753",
+          "bytes": 781935,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-diorama-actual.png": {
+          "sha256": "ad32b544b8fbbbc6ebc26f65fd3abdb2c5fc6c250d0f65fc20b42bc66581f536",
+          "bytes": 638521,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-diorama-appearance-ablated.png": {
+          "sha256": "bcebc9e7c15a59843861bd1aa22f676ab540125a823f32e849db4dd09dac0637",
+          "bytes": 638418,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-diorama-detail-actual.png": {
+          "sha256": "dc9ca5aa2d75eabda0179d82ef75fa855f876bac6a302f37cfbe5a22414c277a",
+          "bytes": 640732,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-diorama-detail-appearance-ablated.png": {
+          "sha256": "dc9ca5aa2d75eabda0179d82ef75fa855f876bac6a302f37cfbe5a22414c277a",
+          "bytes": 640732,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-diorama-detail-restored.png": {
+          "sha256": "dc9ca5aa2d75eabda0179d82ef75fa855f876bac6a302f37cfbe5a22414c277a",
+          "bytes": 640732,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-diorama-restored.png": {
+          "sha256": "ad32b544b8fbbbc6ebc26f65fd3abdb2c5fc6c250d0f65fc20b42bc66581f536",
+          "bytes": 638521,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-third-actual.png": {
+          "sha256": "fc01b2ed2b3738563c5f904c262dfa5227af73fab2fc81edba45e2b26ee3e57e",
+          "bytes": 746220,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-third-appearance-ablated.png": {
+          "sha256": "59fe528705472a312b4dbc1b89185fa7ba20d39fd580e5254dd2750de36fbbfb",
+          "bytes": 745328,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-third-detail-actual.png": {
+          "sha256": "33ff4c995f65b0b9aa771b53c17ae387799db9fe4808fb16deff7c10c7b2ab80",
+          "bytes": 741596,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-third-detail-appearance-ablated.png": {
+          "sha256": "0013c1e0a306f8c6ced91ac3e3fcaed862989f1d83202341cbc3ddba50379cf7",
+          "bytes": 741307,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-third-detail-restored.png": {
+          "sha256": "33ff4c995f65b0b9aa771b53c17ae387799db9fe4808fb16deff7c10c7b2ab80",
+          "bytes": 741596,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-third-restored.png": {
+          "sha256": "fc01b2ed2b3738563c5f904c262dfa5227af73fab2fc81edba45e2b26ee3e57e",
+          "bytes": 746220,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-before-diorama-actual.png": {
+          "sha256": "57d20328e548c8f51a2c4e6990bef354b2cf75cdb94bdcabcb0ec573ca8836eb",
+          "bytes": 952254,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-before-diorama-appearance-ablated.png": {
+          "sha256": "860fd2b742c6fc002b28505004504d2dcc633799d8601b737fdc35b1a035b439",
+          "bytes": 951904,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-before-diorama-restored.png": {
+          "sha256": "57d20328e548c8f51a2c4e6990bef354b2cf75cdb94bdcabcb0ec573ca8836eb",
+          "bytes": 952254,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-before-third-actual.png": {
+          "sha256": "129d822872dec4961ad853ed0c380b761af4f985c5c7aa09288767982e3d54bb",
+          "bytes": 1047062,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-before-third-appearance-ablated.png": {
+          "sha256": "eb795ffbbc662c58285245d703181bdf359da0aabe54249c37a8cd0bb16f057a",
+          "bytes": 1047274,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-before-third-restored.png": {
+          "sha256": "129d822872dec4961ad853ed0c380b761af4f985c5c7aa09288767982e3d54bb",
+          "bytes": 1047062,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-diorama-actual.png": {
+          "sha256": "634026b3095c6cd19b0d1ecb6dcd1e2e0dfb6a19d49e57b063d4375ee3ea44c0",
+          "bytes": 950785,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-diorama-appearance-ablated.png": {
+          "sha256": "48da141feafaf427daf22a45782beea1c50e85401da56eee5565c764b6bea7f7",
+          "bytes": 950442,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-diorama-detail-actual.png": {
+          "sha256": "837874ed89ed679a800d800d9998029e32df667a9e080ca5f5009e428c068bad",
+          "bytes": 951607,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-diorama-detail-appearance-ablated.png": {
+          "sha256": "a489638e9d86b20f3611e0181354f26be76833e741511346baec989e8455d756",
+          "bytes": 951413,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-diorama-detail-restored.png": {
+          "sha256": "837874ed89ed679a800d800d9998029e32df667a9e080ca5f5009e428c068bad",
+          "bytes": 951607,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-diorama-restored.png": {
+          "sha256": "634026b3095c6cd19b0d1ecb6dcd1e2e0dfb6a19d49e57b063d4375ee3ea44c0",
+          "bytes": 950785,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-third-actual.png": {
+          "sha256": "bd41e37314c91d899f430e5a627eef25f3de919b07c808c7d5f0dd94ae59f14b",
+          "bytes": 1047942,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-third-appearance-ablated.png": {
+          "sha256": "9d1291b1e0cf9f2faa7c29abcd8d1f52e4a8efb48c2f5e56e206d21a7cccdba7",
+          "bytes": 1047218,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-third-detail-actual.png": {
+          "sha256": "eaa537579be9286da7af9a2960dc164014569aee010875961faf2f388b67702f",
+          "bytes": 1047940,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-third-detail-appearance-ablated.png": {
+          "sha256": "7793f2c593090af96b9c85afe8fff093135298f5a8878688f4eb47567e961eb4",
+          "bytes": 1047859,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-third-detail-restored.png": {
+          "sha256": "eaa537579be9286da7af9a2960dc164014569aee010875961faf2f388b67702f",
+          "bytes": 1047940,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-third-restored.png": {
+          "sha256": "bd41e37314c91d899f430e5a627eef25f3de919b07c808c7d5f0dd94ae59f14b",
+          "bytes": 1047942,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-paid-pack-diorama-actual.png": {
+          "sha256": "82c89d9e66531e7dda11dab3e3ec8ae71285216cacb1dc22545ddf81ff92cad3",
+          "bytes": 565420,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-paid-pack-diorama-appearance-ablated.png": {
+          "sha256": "58a4a9602cfda4286518df9954900ea40365e89d54e556b820228d41875511be",
+          "bytes": 564762,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-paid-pack-diorama-restored.png": {
+          "sha256": "82c89d9e66531e7dda11dab3e3ec8ae71285216cacb1dc22545ddf81ff92cad3",
+          "bytes": 565420,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-paid-pack-third-actual.png": {
+          "sha256": "fdbc5a68a3634d5b85861b49373fcc12910c552c9e2f30588ea7502bf206a79f",
+          "bytes": 743243,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-paid-pack-third-appearance-ablated.png": {
+          "sha256": "ffd7924e736f6ce5a57dc9dcada10ac2f722e2ac6a1e0d5e22eb500e67835b15",
+          "bytes": 744001,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-paid-pack-third-restored.png": {
+          "sha256": "fdbc5a68a3634d5b85861b49373fcc12910c552c9e2f30588ea7502bf206a79f",
+          "bytes": 743243,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-before-diorama-actual.png": {
+          "sha256": "cee62f89fbb4f7f5443ab21c86cc69d190827180ef54b9aca444da4a466a583c",
+          "bytes": 604926,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-before-diorama-appearance-ablated.png": {
+          "sha256": "45efe2beb5f994462182e906d9290de5d96ec156da6c0ceae4eae45efe7cb92d",
+          "bytes": 604543,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-before-diorama-restored.png": {
+          "sha256": "cee62f89fbb4f7f5443ab21c86cc69d190827180ef54b9aca444da4a466a583c",
+          "bytes": 604926,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-before-third-actual.png": {
+          "sha256": "4d19f8c38aade5abf902d8986855e7d30b262c02b61808acdcf4bb8754bf46d5",
+          "bytes": 828439,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-before-third-appearance-ablated.png": {
+          "sha256": "c58861c5a822483bf4ca45139bf06b55431708266130f6a92dc70512a59b8019",
+          "bytes": 828662,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-before-third-restored.png": {
+          "sha256": "4d19f8c38aade5abf902d8986855e7d30b262c02b61808acdcf4bb8754bf46d5",
+          "bytes": 828439,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-diorama-actual.png": {
+          "sha256": "bfe989e131d1cb27eb56228c49dd0aa8f17aa83a5df6bb9e2722a19a3979d837",
+          "bytes": 602319,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-diorama-appearance-ablated.png": {
+          "sha256": "b2eeca51d1b6dcfa7aed12dcc11837edfb4df7e1ba6e9e03fbae69a19e8f40f3",
+          "bytes": 601594,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-diorama-detail-actual.png": {
+          "sha256": "e44698da3633de83c69b4994ffdd0802b9b4809cd95522d871a1e9a4094cfc69",
+          "bytes": 601336,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-diorama-detail-appearance-ablated.png": {
+          "sha256": "1c4c3463c9f41b1c1f9111df59f1ddcde71127a571e52114bbf9de263dbb39ff",
+          "bytes": 601468,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-diorama-detail-restored.png": {
+          "sha256": "e44698da3633de83c69b4994ffdd0802b9b4809cd95522d871a1e9a4094cfc69",
+          "bytes": 601336,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-diorama-restored.png": {
+          "sha256": "bfe989e131d1cb27eb56228c49dd0aa8f17aa83a5df6bb9e2722a19a3979d837",
+          "bytes": 602319,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-third-actual.png": {
+          "sha256": "0f3c913df1cdce83e73edd74965e256054c562f073996858128da5e79dbbaf60",
+          "bytes": 828846,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-third-appearance-ablated.png": {
+          "sha256": "1e0eee0e125bc864155892213c6a02b081445ed5817eeb9d039470d46af4fff9",
+          "bytes": 828693,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-third-detail-actual.png": {
+          "sha256": "17036c85592431b22fb4636fc2b72bb3369ae19c041777248246f647febd58a3",
+          "bytes": 871721,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-third-detail-appearance-ablated.png": {
+          "sha256": "df93e670836ed70f322950d7a820c8bd1dac002a0f52cdaddd8d11b1a4c8399c",
+          "bytes": 872285,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-third-detail-restored.png": {
+          "sha256": "17036c85592431b22fb4636fc2b72bb3369ae19c041777248246f647febd58a3",
+          "bytes": 871721,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-third-restored.png": {
+          "sha256": "0f3c913df1cdce83e73edd74965e256054c562f073996858128da5e79dbbaf60",
+          "bytes": 828846,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-before-diorama-actual.png": {
+          "sha256": "87d9bd30ec32240bcf24955276621ad94d5b7b4ce6c9c69d455d8ff11cf91669",
+          "bytes": 880605,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-before-diorama-appearance-ablated.png": {
+          "sha256": "9e2eb00f2e5ce3c84b309941668e2c839c00466e3bf9e53c9b3698a587e34685",
+          "bytes": 880576,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-before-diorama-restored.png": {
+          "sha256": "87d9bd30ec32240bcf24955276621ad94d5b7b4ce6c9c69d455d8ff11cf91669",
+          "bytes": 880605,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-before-third-actual.png": {
+          "sha256": "e32a8c2d5df6d2fe6ba0f238442a75c560dcbf7115a3101d7c71afff4ae33e0d",
+          "bytes": 1170795,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-before-third-appearance-ablated.png": {
+          "sha256": "7c1603040c8bbea7dbb0e7f3bf18ef93a36744708d22bc21118b9675ae42aee4",
+          "bytes": 1170587,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-before-third-restored.png": {
+          "sha256": "e32a8c2d5df6d2fe6ba0f238442a75c560dcbf7115a3101d7c71afff4ae33e0d",
+          "bytes": 1170795,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-diorama-actual.png": {
+          "sha256": "c8e3fca89ea818f72e39d7b5924d7cc1dba898cea4a7f846c5088d7fcfe3f8fa",
+          "bytes": 880719,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-diorama-appearance-ablated.png": {
+          "sha256": "b53469fd62179ff8f5c57fbd5e4b47cbb16bde2bef5d26d1e3a06669277050cc",
+          "bytes": 880578,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-diorama-detail-actual.png": {
+          "sha256": "34e51c34dd838c4598047e8fadd65d196816ffdb133950b163500a521f371988",
+          "bytes": 880039,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-diorama-detail-appearance-ablated.png": {
+          "sha256": "931742976efdfceabc3689b0cd66798a01b78295b4bbaa4ea0526e4c589a3009",
+          "bytes": 879969,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-diorama-detail-restored.png": {
+          "sha256": "34e51c34dd838c4598047e8fadd65d196816ffdb133950b163500a521f371988",
+          "bytes": 880039,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-diorama-restored.png": {
+          "sha256": "c8e3fca89ea818f72e39d7b5924d7cc1dba898cea4a7f846c5088d7fcfe3f8fa",
+          "bytes": 880719,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-third-actual.png": {
+          "sha256": "b1cc0e95b0d34c616b884ac4bfb62a00e1588883da32389a34570fa9a094b3d6",
+          "bytes": 1171473,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-third-appearance-ablated.png": {
+          "sha256": "86a821454e20ebc5c6ad6f1688263d75b3d5cdc2dc9f797d8a6edbbb8072f50b",
+          "bytes": 1170937,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-third-detail-actual.png": {
+          "sha256": "27eaa6a96c5992afbf6455d931eb052caa2659ff9f5720e2a101d47c51a84b0b",
+          "bytes": 1171555,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-third-detail-appearance-ablated.png": {
+          "sha256": "e15a6ab3c00d8673d9f22f9e6bf94a85f09874faa8a7f1d82c24f065915cc50c",
+          "bytes": 1171028,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-third-detail-restored.png": {
+          "sha256": "27eaa6a96c5992afbf6455d931eb052caa2659ff9f5720e2a101d47c51a84b0b",
+          "bytes": 1171555,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-third-restored.png": {
+          "sha256": "b1cc0e95b0d34c616b884ac4bfb62a00e1588883da32389a34570fa9a094b3d6",
+          "bytes": 1171473,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-before-diorama-actual.png": {
+          "sha256": "af478ef75f9d1c09f1a54706c8c5ae82f58e36f5452c21a4bb7ec67c9b16ec3f",
+          "bytes": 861978,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-before-diorama-appearance-ablated.png": {
+          "sha256": "4478520d4b9a940990fbe23c6b7487126cfedc244be044120387ac6b9cddfecb",
+          "bytes": 861822,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-before-diorama-restored.png": {
+          "sha256": "af478ef75f9d1c09f1a54706c8c5ae82f58e36f5452c21a4bb7ec67c9b16ec3f",
+          "bytes": 861978,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-before-third-actual.png": {
+          "sha256": "c318583daa9211cfdf66d654e1d58deec7dd273bb0375b998fe43e0356296bb4",
+          "bytes": 1128998,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-before-third-appearance-ablated.png": {
+          "sha256": "50976879e0f7c76dd4b13cbd2af45d0ee8a6b0f6b17fa0cefa4c5194cad35304",
+          "bytes": 1128930,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-before-third-restored.png": {
+          "sha256": "c318583daa9211cfdf66d654e1d58deec7dd273bb0375b998fe43e0356296bb4",
+          "bytes": 1128998,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-diorama-actual.png": {
+          "sha256": "87a9ee848ddef586693a23ef186cf600e1a2210489b73d2928b62a0ab49f3cae",
+          "bytes": 862059,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-diorama-appearance-ablated.png": {
+          "sha256": "ec85a35346decd23c3ef8388d25e6f356d579a93c832ebca11315db9b46a67d3",
+          "bytes": 861727,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-diorama-detail-actual.png": {
+          "sha256": "470a449a6a4367e5bd302a2ec2c9d5ba417d2d4fe5493b350113b6fbc9f451cf",
+          "bytes": 864206,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-diorama-detail-appearance-ablated.png": {
+          "sha256": "02893f536505a555d0296e5fa541ece8990d86bcb04be8112c3513b5a23aafce",
+          "bytes": 864074,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-diorama-detail-restored.png": {
+          "sha256": "470a449a6a4367e5bd302a2ec2c9d5ba417d2d4fe5493b350113b6fbc9f451cf",
+          "bytes": 864206,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-diorama-restored.png": {
+          "sha256": "87a9ee848ddef586693a23ef186cf600e1a2210489b73d2928b62a0ab49f3cae",
+          "bytes": 862059,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-third-actual.png": {
+          "sha256": "e941be21b45260b3e0e835133a427bd78695cbce031d1a3bd0a70b4aa0733400",
+          "bytes": 1128643,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-third-appearance-ablated.png": {
+          "sha256": "563f8ee842feea1f22ed63fe078c6c88b46553a53bff25d9bef6257f50bf9784",
+          "bytes": 1128896,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-third-detail-actual.png": {
+          "sha256": "445714b959114eeed3d928f8da42fe38df112d6ed941c71344f2e351507fef82",
+          "bytes": 1128599,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-third-detail-appearance-ablated.png": {
+          "sha256": "e36f441cebb91ebf6b9bdc5b98b0e5271dda2355a7088e04872d923adfa4a916",
+          "bytes": 1128495,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-third-detail-restored.png": {
+          "sha256": "445714b959114eeed3d928f8da42fe38df112d6ed941c71344f2e351507fef82",
+          "bytes": 1128599,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-third-restored.png": {
+          "sha256": "e941be21b45260b3e0e835133a427bd78695cbce031d1a3bd0a70b4aa0733400",
+          "bytes": 1128643,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-unaccepted-pack-diorama-actual.png": {
+          "sha256": "a7448f4db7cb3cd2d197248e9467ceab0b411d0dee9cbd55837bb987100c9e2d",
+          "bytes": 499554,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-unaccepted-pack-diorama-appearance-ablated.png": {
+          "sha256": "aa708aaf027dbf4c099aaa62be5d7bd7e9181a333e1f5a9f9098d62f248c402c",
+          "bytes": 499099,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-unaccepted-pack-diorama-restored.png": {
+          "sha256": "a7448f4db7cb3cd2d197248e9467ceab0b411d0dee9cbd55837bb987100c9e2d",
+          "bytes": 499554,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-unaccepted-pack-third-actual.png": {
+          "sha256": "158819ef9b705532a7f82b2246cd75bdfe937f7b020833a10ec5550ec5198a09",
+          "bytes": 701866,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-unaccepted-pack-third-appearance-ablated.png": {
+          "sha256": "1fcc50e3463a4d5173139f127f17f66553d253555e47054844d69f4853ae8739",
+          "bytes": 701870,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-unaccepted-pack-third-restored.png": {
+          "sha256": "158819ef9b705532a7f82b2246cd75bdfe937f7b020833a10ec5550ec5198a09",
+          "bytes": 701866,
+          "hash_and_size_recomputed": true
+        },
+        "FAILURE.png": {
+          "sha256": "c72fb0e83af21f99eb3cb42328e65a596992cfa881fe5dad0186b41ff28d2169",
+          "bytes": 553427,
+          "hash_and_size_recomputed": true
+        },
+        "HARNESS.py": {
+          "sha256": "b8ea132edca3a263730f3e8b844abfb519c27cb29cb93583fd280661fd8cc6ea",
+          "bytes": 34679,
+          "hash_and_size_recomputed": true
+        }
+      },
+      "validation_errors": [],
+      "native_earned_export": null,
+      "native_export_limit": "The failed run cleaned its disposable profile without exporting; do not reconstruct or label a synthetic ledger as an earned export."
+    },
+    {
+      "directory": "run-02-inspection",
+      "status": "failed",
+      "checks": 159,
+      "passed": 158,
+      "failed": [
+        {
+          "name": "atlantis-upper-gauge-recorded-diorama-inspection-detail recorded detail has positive actual pixel contribution",
+          "passed": false,
+          "evidence": {
+            "parts": 2,
+            "changed_pixels": 0
+          }
+        }
+      ],
+      "wall_seconds": 328.82318939999095,
+      "report_sha256": "d6082c76fc3d5118716d2b16a65645eac2e7ed6a3139f6f71f0fe11305ae399f",
+      "harness_sha256": "8134aca528ff52ee7a5afdd857ea45a17cdbf98513393e54e99623c9a738c5ff",
+      "scope": "both",
+      "recorded_upper_arrival": {
+        "target": [
+          8,
+          -1.05,
+          -22
+        ],
+        "actual": {
+          "x": 7.999999703850101,
+          "y": -0.9331600000000151,
+          "z": -21.926059999999982,
+          "body": "water",
+          "hp": 145,
+          "elapsed": 24.79843399999998,
+          "clear": true
+        },
+        "horizontal_error": 0.07394000000061118,
+        "depth_error": 0.11683999999998496,
+        "clear": true
+      },
+      "failed_detail": {
+        "label": "atlantis-upper-gauge-recorded-diorama-inspection-detail",
+        "step": {
+          "step": "upper-gauge",
+          "roles": [
+            "copied-gauge-tab",
+            "gauge-tab-pin"
+          ]
+        },
+        "removed": 2,
+        "changedPixels": 0,
+        "originalChangedPixels": 0,
+        "addedFacePixels": 0,
+        "sumRGBDelta": 0,
+        "restorationRGBDelta": 0,
+        "width": 1088,
+        "height": 680,
+        "renderArguments": [
+          25.181733999999985,
+          17.789799250000954,
+          false
+        ],
+        "stateCameraCollisionUnchanged": true,
+        "writerRestored": true,
+        "batchesRestored": true,
+        "glError": 0
+      },
+      "actual_upper_parts": [
+        {
+          "kind": "box",
+          "min": [
+            9.179999999701977,
+            1.409999942407012,
+            -22.059999998658895
+          ],
+          "max": [
+            9.320000000298023,
+            1.45999994315207,
+            -21.940000001341105
+          ],
+          "finite": true,
+          "matrix": [
+            0.14000000059604645,
+            0,
+            0,
+            0,
+            -0.0,
+            0.05000000074505806,
+            0,
+            0,
+            0,
+            -0.0,
+            0.11999999731779099,
+            0,
+            9.25,
+            1.434999942779541,
+            -22,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9.25,
+              1.435,
+              -22
+            ],
+            "s": [
+              0.14,
+              0.05,
+              0.12
+            ],
+            "c": 9279102,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "deck-gauge-anchor",
+            "workSupport": "deck-underside",
+            "supportY": 1.46,
+            "m": null
+          }
+        },
+        {
+          "kind": "box",
+          "min": [
+            9.232499999925494,
+            -0.13999998569488525,
+            -22.017500000074506
+          ],
+          "max": [
+            9.267500000074506,
+            1.4600000381469727,
+            -21.982499999925494
+          ],
+          "finite": true,
+          "matrix": [
+            0,
+            0,
+            0.03500000014901161,
+            0,
+            0,
+            1.600000023841858,
+            0,
+            0,
+            -0.03500000014901161,
+            0,
+            0,
+            0,
+            9.25,
+            0.6600000262260437,
+            -22,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9.25,
+              0.6599999999999999,
+              -22
+            ],
+            "s": [
+              0.035,
+              1.6,
+              0.035
+            ],
+            "c": 8228480,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "gauge-suspension",
+            "m": [
+              0,
+              0,
+              0.035,
+              0,
+              0,
+              1.6,
+              0,
+              0,
+              -0.035,
+              0,
+              0,
+              0,
+              9.25,
+              0.6599999999999999,
+              -22,
+              1
+            ],
+            "workFrom": [
+              9.25,
+              -0.14,
+              -22
+            ],
+            "workTo": [
+              9.25,
+              1.46,
+              -22
+            ]
+          }
+        },
+        {
+          "kind": "box",
+          "min": [
+            8.840000003576279,
+            -0.6899999976158142,
+            -22.02749999985099
+          ],
+          "max": [
+            9.659999996423721,
+            -0.12999999523162842,
+            -21.97250000014901
+          ],
+          "finite": true,
+          "matrix": [
+            0.8199999928474426,
+            0,
+            0,
+            0,
+            -0.0,
+            0.5600000023841858,
+            0,
+            0,
+            0,
+            -0.0,
+            0.054999999701976776,
+            0,
+            9.25,
+            -0.4099999964237213,
+            -22,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9.25,
+              -0.41000000000000003,
+              -22
+            ],
+            "s": [
+              0.82,
+              0.56,
+              0.055
+            ],
+            "c": 11114610,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "bronze-depth-plate",
+            "m": null
+          }
+        },
+        {
+          "kind": "box",
+          "min": [
+            8.839999657124281,
+            -0.6949999928474426,
+            -21.982500152662396
+          ],
+          "max": [
+            8.879999656230211,
+            -0.125,
+            -21.947500152513385
+          ],
+          "finite": true,
+          "matrix": [
+            0.03999999910593033,
+            0,
+            0,
+            0,
+            -0.0,
+            0.5699999928474426,
+            0,
+            0,
+            0,
+            -0.0,
+            0.03500000014901161,
+            0,
+            8.859999656677246,
+            -0.4099999964237213,
+            -21.96500015258789,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              8.86,
+              -0.41000000000000003,
+              -21.965
+            ],
+            "s": [
+              0.04,
+              0.57,
+              0.035
+            ],
+            "c": 12956029,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "depth-plate-edge",
+            "m": null
+          }
+        },
+        {
+          "kind": "box",
+          "min": [
+            9.620000343769789,
+            -0.6949999928474426,
+            -21.982500152662396
+          ],
+          "max": [
+            9.660000342875719,
+            -0.125,
+            -21.947500152513385
+          ],
+          "finite": true,
+          "matrix": [
+            0.03999999910593033,
+            0,
+            0,
+            0,
+            -0.0,
+            0.5699999928474426,
+            0,
+            0,
+            0,
+            -0.0,
+            0.03500000014901161,
+            0,
+            9.640000343322754,
+            -0.4099999964237213,
+            -21.96500015258789,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9.64,
+              -0.41000000000000003,
+              -21.965
+            ],
+            "s": [
+              0.04,
+              0.57,
+              0.035
+            ],
+            "c": 12956029,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "depth-plate-edge",
+            "m": null
+          }
+        },
+        {
+          "kind": "box",
+          "min": [
+            8.972500000149012,
+            -0.5499999970197678,
+            -21.97249908465892
+          ],
+          "max": [
+            9.027499999850988,
+            -0.26999999582767487,
+            -21.94749908428639
+          ],
+          "finite": true,
+          "matrix": [
+            0.054999999701976776,
+            0,
+            0,
+            0,
+            -0.0,
+            0.2800000011920929,
+            0,
+            0,
+            0,
+            -0.0,
+            0.02500000037252903,
+            0,
+            9,
+            -0.4099999964237213,
+            -21.959999084472656,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9,
+              -0.41000000000000003,
+              -21.96
+            ],
+            "s": [
+              0.055,
+              0.28,
+              0.025
+            ],
+            "c": 14733736,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "depth-scale-notch",
+            "m": null
+          }
+        },
+        {
+          "kind": "box",
+          "min": [
+            9.385000266134739,
+            -0.6074999943375587,
+            -21.96950073260814
+          ],
+          "max": [
+            9.555000267922878,
+            -0.5324999913573265,
+            -21.94450073223561
+          ],
+          "finite": true,
+          "matrix": [
+            0.17000000178813934,
+            0,
+            0,
+            0,
+            -0.0,
+            0.07500000298023224,
+            0,
+            0,
+            0,
+            -0.0,
+            0.02500000037252903,
+            0,
+            9.470000267028809,
+            -0.5699999928474426,
+            -21.957000732421875,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9.47,
+              -0.5700000000000001,
+              -21.957
+            ],
+            "s": [
+              0.17,
+              0.075,
+              0.025
+            ],
+            "c": 9550501,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "copied-gauge-tab",
+            "m": null
+          }
+        },
+        {
+          "kind": "disc",
+          "min": [
+            9.475000228732824,
+            -0.6049999929964542,
+            -21.943700790405273
+          ],
+          "max": [
+            9.545000229030848,
+            -0.534999992698431,
+            -21.943700790405273
+          ],
+          "finite": true,
+          "matrix": [
+            0.07000000029802322,
+            0,
+            0,
+            0,
+            -0.0,
+            6.12323395273311e-19,
+            0.009999999776482582,
+            0,
+            0,
+            -0.07000000029802322,
+            4.286263818611965e-18,
+            0,
+            9.510000228881836,
+            -0.5699999928474426,
+            -21.943700790405273,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 48,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9.51,
+              -0.5700000000000001,
+              -21.9437
+            ],
+            "s": [
+              0.07,
+              0.01,
+              0.07
+            ],
+            "c": 14272156,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "gauge-tab-pin",
+            "r": [
+              1.5707963267948966,
+              0,
+              0
+            ],
+            "m": null
+          }
+        }
+      ],
+      "actual_upper_snapshot_camera": {
+        "eye": [
+          40.921031229984635,
+          57.4733935782886,
+          12.71119702000982
+        ],
+        "target": [
+          7.999999703850097,
+          -0.3320223391340996,
+          -21.926059999982847
+        ],
+        "half": 17,
+        "aspect": 1.6
+      },
+      "failure_diagnostics": {
+        "version": "10.0.0",
+        "mode": "webgl2",
+        "scene": "world-atlantis",
+        "world": {
+          "id": "atlantis",
+          "height": -0.9331600000000151,
+          "dive": {
+            "y": -0.9331600000000151,
+            "depth": 0.9431600000000151,
+            "hold": true,
+            "body": "water",
+            "camera": "air",
+            "dryCourt": null
+          },
+          "journey": {
+            "counter": 0,
+            "lastClaim": 0,
+            "firstClaimed": false,
+            "active": null,
+            "defeated": []
+          }
+        },
+        "earth": null,
+        "cosmos": null,
+        "networkDependencies": 0,
+        "liveAI": false,
+        "multiplayer": false,
+        "adventure": {
+          "tactics": {
+            "scene": "world-atlantis",
+            "target": null,
+            "auto": false,
+            "nextAttack": 0,
+            "guardUntil": 0,
+            "shield": 0,
+            "shieldUntil": 0,
+            "cooldowns": {
+              "guard": 0,
+              "insight": 0,
+              "spirit": 0
+            },
+            "hits": [],
+            "serial": 0,
+            "windup": null,
+            "motion": null
+          },
+          "beacon": {
+            "phase": "idle",
+            "time": 0,
+            "wave": 0,
+            "ward": 100,
+            "actors": [],
+            "serial": 0,
+            "notice": "",
+            "repairAt": 0,
+            "maraAt": 0,
+            "ilanAt": 0,
+            "playerRepairAt": 0,
+            "defeats": 0
+          },
+          "crossing": {
+            "room": "world-atlantis",
+            "tones": [],
+            "seek": false,
+            "rangAt": -10,
+            "tone": null,
+            "toneSerial": 0
+          },
+          "player": {
+            "x": 7.999999703850101,
+            "z": -21.926059999999982,
+            "yaw": -3.141592531519481
+          },
+          "paused": true,
+          "intent": null,
+          "stats": {
+            "level": 4,
+            "attack": 31,
+            "defense": 7,
+            "maxHP": 170
+          },
+          "weapon": {
+            "style": "blade",
+            "reach": 2.65,
+            "cooldown": 0.52,
+            "stamina": 0,
+            "primary": "Sunstrike",
+            "special": "Dawn sweep"
+          },
+          "arrows": [],
+          "range": {
+            "active": false,
+            "start": 0,
+            "hits": {},
+            "shots": 0,
+            "message": "A calm place to learn a different rhythm."
+          },
+          "enemies": [],
+          "companion": {
+            "room": "world-atlantis",
+            "x": 5.091199463522439,
+            "z": -14.277094977591206,
+            "yaw": 2.1055406291247367,
+            "path": [],
+            "nextPath": 288.3087339999952,
+            "nextHit": 0,
+            "seek": null,
+            "status": "Waiting on the quay"
+          }
+        },
+        "sandbox": {
+          "bridge": true,
+          "objects": 0,
+          "elapsed": 292.4250339999957,
+          "autoGather": null,
+          "buildMode": null
+        },
+        "saveState": "saved",
+        "characters": {
+          "mode": "managed",
+          "active": "character-2",
+          "revision": 82,
+          "count": 2,
+          "writer": true,
+          "error": null
+        },
+        "fps": 10.43500945672735,
+        "errors": [],
+        "camera": {
+          "yaw": 0.7599999999999998,
+          "elevation": 0.88,
+          "half": 17,
+          "distance": 7.5,
+          "actualDistance": 6.418234594523514,
+          "fov": 60,
+          "center": [
+            7.999999703850101,
+            -0.33300513867653553,
+            -21.926059999999982
+          ],
+          "overview": false,
+          "preset": "follow",
+          "tour": false,
+          "baseHalf": 17,
+          "zoom": 1,
+          "ready": true,
+          "projection": "orthographic",
+          "eye": [
+            40.921031229984635,
+            57.472410778746166,
+            12.711197019992685
+          ],
+          "target": [
+            7.999999703850101,
+            -0.33300513867653553,
+            -21.926059999999982
+          ]
+        },
+        "metrics": {
+          "drawCalls": 12,
+          "texturedDrawCalls": 0,
+          "texturedInstances": 0,
+          "surfaceMaterials": {
+            "version": 1,
+            "id": "earth-weathered-timber-v1",
+            "status": "ready",
+            "ready": true,
+            "error": null,
+            "width": 512,
+            "height": 512,
+            "colorFormat": "SRGB8_ALPHA8",
+            "roughnessFormat": "R8",
+            "textureBytes": 1310720,
+            "mipmapBytes": 436905,
+            "totalTextureBytes": 1747625,
+            "decodedImageBytes": 2097152,
+            "decodeWallMs": 38.900000005960464,
+            "uploadCpuMs": 44.099999994039536,
+            "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+            "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+            "enabled": true
+          },
+          "instances": 591,
+          "triangles": 24468
+        },
+        "reflection": null,
+        "cutaway": {
+          "enabled": true,
+          "focus": [
+            7.999999703850101,
+            -0.053160000000015084,
+            -21.926059999999982
+          ]
+        },
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "music": {
+          "playing": false,
+          "scoreRevision": 0,
+          "playingRevision": -1,
+          "step": -1
+        },
+        "gathering": null,
+        "layoutRevision": 0,
+        "roadsideGathering": {
+          "status": "idle",
+          "playing": false,
+          "pending": false
+        },
+        "audio": {
+          "enabled": false,
+          "state": "not-created",
+          "soundscape": null
+        }
+      },
+      "outputs": {
+        "atlantis-upper-gauge-before-diorama-actual.png": {
+          "sha256": "a70e1c8a8f6fd0a45053d22d8bc48f003c9e5b31982d6aa74b6355ae8bcd4e1e",
+          "bytes": 640676,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-before-diorama-appearance-ablated.png": {
+          "sha256": "6042e75591705417f934f19b883ed1034f57b423e40fd79308c284cd791fcfa3",
+          "bytes": 640547,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-before-diorama-restored.png": {
+          "sha256": "a70e1c8a8f6fd0a45053d22d8bc48f003c9e5b31982d6aa74b6355ae8bcd4e1e",
+          "bytes": 640676,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-before-third-actual.png": {
+          "sha256": "ddc2cbeae7fbf548f9ad9c5a167807a592a321a306abbc0cf75ab8618fb1c00f",
+          "bytes": 737838,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-before-third-appearance-ablated.png": {
+          "sha256": "8386e753a849a7adf4428bb5aa235e8f8353d3fc81ae497fed4fff92922eb320",
+          "bytes": 737340,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-before-third-restored.png": {
+          "sha256": "ddc2cbeae7fbf548f9ad9c5a167807a592a321a306abbc0cf75ab8618fb1c00f",
+          "bytes": 737838,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-diorama-actual.png": {
+          "sha256": "7554831f6e6ad26ba45e1fdd3db14dd1a169f182d94baa4e0e0fa3ea00fec9d1",
+          "bytes": 639804,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-diorama-appearance-ablated.png": {
+          "sha256": "dedd4e747c77226e96b679a2361d48a8705bfd3eab57aa9e071583b23312edf8",
+          "bytes": 639617,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-diorama-inspection-detail-actual.png": {
+          "sha256": "07c25e8c2bd232f0017ea935449e88d0c4c0fa73d26b50f29ef2f4d6437f32c8",
+          "bytes": 640853,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-diorama-inspection-detail-appearance-ablated.png": {
+          "sha256": "07c25e8c2bd232f0017ea935449e88d0c4c0fa73d26b50f29ef2f4d6437f32c8",
+          "bytes": 640853,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-diorama-inspection-detail-restored.png": {
+          "sha256": "07c25e8c2bd232f0017ea935449e88d0c4c0fa73d26b50f29ef2f4d6437f32c8",
+          "bytes": 640853,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-diorama-restored.png": {
+          "sha256": "7554831f6e6ad26ba45e1fdd3db14dd1a169f182d94baa4e0e0fa3ea00fec9d1",
+          "bytes": 639804,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-third-actual.png": {
+          "sha256": "729f9dbbf44d075f4495de828fb838c81659d4ddf60dd26b986a9a934a7a5d79",
+          "bytes": 722059,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-third-appearance-ablated.png": {
+          "sha256": "656693cce4f6a12f5c9189e06958a842a6b63bf95357860db2e55952bd86c3fd",
+          "bytes": 720231,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-third-detail-actual.png": {
+          "sha256": "18a6df108b51bde056344eac5298af57582dac2759ed1b1ea866918ffd53da66",
+          "bytes": 758216,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-third-detail-appearance-ablated.png": {
+          "sha256": "4bc2603bedfff6fb926d783ea84fb1c6cc0ab8c87d8d53d5dcece5ad8b802ff8",
+          "bytes": 757739,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-third-detail-restored.png": {
+          "sha256": "18a6df108b51bde056344eac5298af57582dac2759ed1b1ea866918ffd53da66",
+          "bytes": 758216,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-third-restored.png": {
+          "sha256": "729f9dbbf44d075f4495de828fb838c81659d4ddf60dd26b986a9a934a7a5d79",
+          "bytes": 722059,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-before-diorama-actual.png": {
+          "sha256": "47df57f6b34db18b23ab8ec94fb2c79ed5e7f8a619836f1e473c6583e642b2da",
+          "bytes": 938253,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-before-diorama-appearance-ablated.png": {
+          "sha256": "b38fd7242aa0c5991b0318d999ec5afad5250e89ced68b30cbd9a70c9e0f64c1",
+          "bytes": 937994,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-before-diorama-restored.png": {
+          "sha256": "47df57f6b34db18b23ab8ec94fb2c79ed5e7f8a619836f1e473c6583e642b2da",
+          "bytes": 938253,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-before-third-actual.png": {
+          "sha256": "b867b91c5230f6ac33e13f021064b612c51488858599336021f58c517d625559",
+          "bytes": 1008907,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-before-third-appearance-ablated.png": {
+          "sha256": "d45ecd0af0b6c1f0a3adc5ea61bb9a5434a61b431d290608c0ccdb61388e86f8",
+          "bytes": 1009262,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-before-third-restored.png": {
+          "sha256": "b867b91c5230f6ac33e13f021064b612c51488858599336021f58c517d625559",
+          "bytes": 1008907,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-diorama-actual.png": {
+          "sha256": "48b6947fd5a1498825866371f3fe417bfbd726bf0bd030c232af827d42d15391",
+          "bytes": 938887,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-diorama-appearance-ablated.png": {
+          "sha256": "cd3d8383b52ab1503d72a88f1b0b0d4445b638ee69ced2de176c8d7cee09210b",
+          "bytes": 938465,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-diorama-inspection-detail-actual.png": {
+          "sha256": "209e3fba3d7f5eea2b8795c9780a05cce8aae19966ab303724c56030dafe311a",
+          "bytes": 988478,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-diorama-inspection-detail-appearance-ablated.png": {
+          "sha256": "7b6177b34d98d36a292eb9363b9e608690a7ea1795502008d2d7ec3748daa1e2",
+          "bytes": 988310,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-diorama-inspection-detail-restored.png": {
+          "sha256": "209e3fba3d7f5eea2b8795c9780a05cce8aae19966ab303724c56030dafe311a",
+          "bytes": 988478,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-diorama-restored.png": {
+          "sha256": "48b6947fd5a1498825866371f3fe417bfbd726bf0bd030c232af827d42d15391",
+          "bytes": 938887,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-third-actual.png": {
+          "sha256": "b710fe2303061c55153e7ace116e4698d2ffbe6e2fa103d1a9819b770064c9c0",
+          "bytes": 1009761,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-third-appearance-ablated.png": {
+          "sha256": "d4c2e89af71c309f11c06f5d4076e1d9d66e0b40e15dd906ae953415e8c177c4",
+          "bytes": 1008994,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-third-detail-actual.png": {
+          "sha256": "b710fe2303061c55153e7ace116e4698d2ffbe6e2fa103d1a9819b770064c9c0",
+          "bytes": 1009761,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-third-detail-appearance-ablated.png": {
+          "sha256": "74af0c4d1abb8213e2cce1c9ce5d0fb7651eb24b905d27c5db85f3efb221239e",
+          "bytes": 1010003,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-third-detail-restored.png": {
+          "sha256": "b710fe2303061c55153e7ace116e4698d2ffbe6e2fa103d1a9819b770064c9c0",
+          "bytes": 1009761,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-fallen-bough-recorded-third-restored.png": {
+          "sha256": "b710fe2303061c55153e7ace116e4698d2ffbe6e2fa103d1a9819b770064c9c0",
+          "bytes": 1009761,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-paid-pack-diorama-actual.png": {
+          "sha256": "6c06553f4fca2eb06d6951e6094edc467a76ca0250cefa26d81b949eb88ab65f",
+          "bytes": 564927,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-paid-pack-diorama-appearance-ablated.png": {
+          "sha256": "d1f8b32b9ef3d1076e1c833ed2c5f21c496a4cbbfde9035bd3323f795c2803d0",
+          "bytes": 564433,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-paid-pack-diorama-restored.png": {
+          "sha256": "6c06553f4fca2eb06d6951e6094edc467a76ca0250cefa26d81b949eb88ab65f",
+          "bytes": 564927,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-paid-pack-third-actual.png": {
+          "sha256": "f169351001e3ce2a159a8abc2209fc1194b222f4f37d6b460a8d0416de889c0a",
+          "bytes": 737121,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-paid-pack-third-appearance-ablated.png": {
+          "sha256": "a084daaf952afc51266c540a480863a49b8ecb517c031244174d5cdda08d7eb5",
+          "bytes": 737262,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-paid-pack-third-restored.png": {
+          "sha256": "f169351001e3ce2a159a8abc2209fc1194b222f4f37d6b460a8d0416de889c0a",
+          "bytes": 737121,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-before-diorama-actual.png": {
+          "sha256": "4902b8dafac27991a77dd7fcfac0b285edb253e3d2b40ddd0e1fd063a9c4a17c",
+          "bytes": 604298,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-before-diorama-appearance-ablated.png": {
+          "sha256": "25bcee0c1afd9710a7bcfabb74921cb749eb468cf1b72926da56f49cb5971778",
+          "bytes": 604006,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-before-diorama-restored.png": {
+          "sha256": "4902b8dafac27991a77dd7fcfac0b285edb253e3d2b40ddd0e1fd063a9c4a17c",
+          "bytes": 604298,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-before-third-actual.png": {
+          "sha256": "ddd7318532c2f18ba2eb60e65bbd58f02e21a82fcaea2f527f114bc21b15a7d0",
+          "bytes": 863104,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-before-third-appearance-ablated.png": {
+          "sha256": "d96df9ae38f0f143043e8322dd2c28af403214134b5d1ff001e7265356744080",
+          "bytes": 863259,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-before-third-restored.png": {
+          "sha256": "ddd7318532c2f18ba2eb60e65bbd58f02e21a82fcaea2f527f114bc21b15a7d0",
+          "bytes": 863104,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-diorama-actual.png": {
+          "sha256": "f5146947af3ca4c228071d89d23d221e03a1cbc99f15a971564d54746eaf0c84",
+          "bytes": 602885,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-diorama-appearance-ablated.png": {
+          "sha256": "89bdcfd21b3012c00eea219ed7ef52d477581054220b599a6fc303a818405ad7",
+          "bytes": 602229,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-diorama-inspection-detail-actual.png": {
+          "sha256": "b4b4848bbdaf39dc773ae0b6dc5002d9605e5cbe3c5256decac97e580af68c79",
+          "bytes": 729611,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-diorama-inspection-detail-appearance-ablated.png": {
+          "sha256": "938b7d2ed0888706c02eda2428a354df5dde2a30521dc062031764188242954e",
+          "bytes": 729949,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-diorama-inspection-detail-restored.png": {
+          "sha256": "b4b4848bbdaf39dc773ae0b6dc5002d9605e5cbe3c5256decac97e580af68c79",
+          "bytes": 729611,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-diorama-restored.png": {
+          "sha256": "f5146947af3ca4c228071d89d23d221e03a1cbc99f15a971564d54746eaf0c84",
+          "bytes": 602885,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-third-actual.png": {
+          "sha256": "36806d83333b16a1c69c79db3078ca6155d03e066e41c89f4d786d3a584a4ab9",
+          "bytes": 863166,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-third-appearance-ablated.png": {
+          "sha256": "e17a706ff6dbd8ab7fee705bf96c13a15ce58ed5b19513def463d846a17f56e8",
+          "bytes": 863335,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-third-detail-actual.png": {
+          "sha256": "36806d83333b16a1c69c79db3078ca6155d03e066e41c89f4d786d3a584a4ab9",
+          "bytes": 863166,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-third-detail-appearance-ablated.png": {
+          "sha256": "51206ecaf92f3374ab185a906537625ed366db356a6fd223066bb842aa15d62d",
+          "bytes": 863631,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-third-detail-restored.png": {
+          "sha256": "36806d83333b16a1c69c79db3078ca6155d03e066e41c89f4d786d3a584a4ab9",
+          "bytes": 863166,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-road-pack-recorded-third-restored.png": {
+          "sha256": "36806d83333b16a1c69c79db3078ca6155d03e066e41c89f4d786d3a584a4ab9",
+          "bytes": 863166,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-before-diorama-actual.png": {
+          "sha256": "15961486b80c4cdedf0a756f728c3613c82f57d01b45530221789542f9ebbfa4",
+          "bytes": 881134,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-before-diorama-appearance-ablated.png": {
+          "sha256": "21593399e8786d4bab135424595eafb681565202205d2bf80520730ee6d61582",
+          "bytes": 881076,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-before-diorama-restored.png": {
+          "sha256": "15961486b80c4cdedf0a756f728c3613c82f57d01b45530221789542f9ebbfa4",
+          "bytes": 881134,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-before-third-actual.png": {
+          "sha256": "4bc3b2ecb6c5e0572c3ae2fa49db50b0ac81c93f90295d14fcbf0866856c71c4",
+          "bytes": 1170891,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-before-third-appearance-ablated.png": {
+          "sha256": "80b1b8ac1b8853ec56067fc095abd91ea45c8d6eb39e46178f607dc626baef3c",
+          "bytes": 1170603,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-before-third-restored.png": {
+          "sha256": "4bc3b2ecb6c5e0572c3ae2fa49db50b0ac81c93f90295d14fcbf0866856c71c4",
+          "bytes": 1170891,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-diorama-actual.png": {
+          "sha256": "874eaf3046991d3c1e65f941c97f22ebbc6b5f835057b1c43d063b745466c659",
+          "bytes": 880593,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-diorama-appearance-ablated.png": {
+          "sha256": "ad00c0463f83d36b31def8c01bc87451e673465d091a3259fbf4bdc790fcb030",
+          "bytes": 880441,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-diorama-inspection-detail-actual.png": {
+          "sha256": "ac6037cb6a2795bdcffe30fb7a7ab2a06b6aec4938841d910933d720ab2b81ad",
+          "bytes": 971940,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-diorama-inspection-detail-appearance-ablated.png": {
+          "sha256": "fc60340aeed57890c92df921f6a87ac2cf19bad3a685c88ba7e48d0ca682583c",
+          "bytes": 971739,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-diorama-inspection-detail-restored.png": {
+          "sha256": "ac6037cb6a2795bdcffe30fb7a7ab2a06b6aec4938841d910933d720ab2b81ad",
+          "bytes": 971940,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-diorama-restored.png": {
+          "sha256": "874eaf3046991d3c1e65f941c97f22ebbc6b5f835057b1c43d063b745466c659",
+          "bytes": 880593,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-third-actual.png": {
+          "sha256": "a8196b1033b6f43e05250e5ab633128c8cc129ad6093b1db88ad578acde078e5",
+          "bytes": 1171427,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-third-appearance-ablated.png": {
+          "sha256": "54cf10929a11bee7e9e845a8ece9fe4812dfe1d7ea6732a8887edc4fc472ad85",
+          "bytes": 1170809,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-third-detail-actual.png": {
+          "sha256": "bdc6f6e7d9e75fbb21e9f561465cc4703fe2b372401a5e8254cf2f3226142d5b",
+          "bytes": 1171411,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-third-detail-appearance-ablated.png": {
+          "sha256": "62f735e3ad509e6cc0490fef62688edecf75204e54bb3d3aed050409669cfa4a",
+          "bytes": 1170882,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-third-detail-restored.png": {
+          "sha256": "bdc6f6e7d9e75fbb21e9f561465cc4703fe2b372401a5e8254cf2f3226142d5b",
+          "bytes": 1171411,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-reeds-recorded-third-restored.png": {
+          "sha256": "a8196b1033b6f43e05250e5ab633128c8cc129ad6093b1db88ad578acde078e5",
+          "bytes": 1171427,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-before-diorama-actual.png": {
+          "sha256": "713ba68d6e9dfc13d71d8017e1152fc4022f5203c5906ada08c45b6a554e66b2",
+          "bytes": 863983,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-before-diorama-appearance-ablated.png": {
+          "sha256": "7518ed8983bbd5c4d1645b6d6d26221252383155afc39ef3999c34251e8b243d",
+          "bytes": 863842,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-before-diorama-restored.png": {
+          "sha256": "713ba68d6e9dfc13d71d8017e1152fc4022f5203c5906ada08c45b6a554e66b2",
+          "bytes": 863983,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-before-third-actual.png": {
+          "sha256": "932bbf1f8ca7e37c1827b1c1a45991a9c3983ebf106f2c41a88851db579260e6",
+          "bytes": 1128742,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-before-third-appearance-ablated.png": {
+          "sha256": "dd44ee0efaf0d0427a9f9124a7d291906736d7fc5621027802492e561f2d72f0",
+          "bytes": 1128826,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-before-third-restored.png": {
+          "sha256": "932bbf1f8ca7e37c1827b1c1a45991a9c3983ebf106f2c41a88851db579260e6",
+          "bytes": 1128742,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-diorama-actual.png": {
+          "sha256": "5b8694e737d706e01cad02d03dee8225e4186ae9bcd1af1fe6202d47426b8e5f",
+          "bytes": 864011,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-diorama-appearance-ablated.png": {
+          "sha256": "4a5b6aa82d2e334ac70b9dde97d3c29641cdc0ec33f54993766ee71a782c3e08",
+          "bytes": 863760,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-diorama-inspection-detail-actual.png": {
+          "sha256": "72d328c17a8f7f67c21c386782386aa9aa3e2a28103804a8df83833e032d6840",
+          "bytes": 870119,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-diorama-inspection-detail-appearance-ablated.png": {
+          "sha256": "996be82d0edacfcfd49475d7d89a05d4f900fb0becd6c44ad413b1bac5b7d9c2",
+          "bytes": 869806,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-diorama-inspection-detail-restored.png": {
+          "sha256": "72d328c17a8f7f67c21c386782386aa9aa3e2a28103804a8df83833e032d6840",
+          "bytes": 870119,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-diorama-restored.png": {
+          "sha256": "5b8694e737d706e01cad02d03dee8225e4186ae9bcd1af1fe6202d47426b8e5f",
+          "bytes": 864011,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-third-actual.png": {
+          "sha256": "7a3bbf8c8123fda6712372dfe9a3dc28e2699412ed634250963fe12d7a8d5e99",
+          "bytes": 1128515,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-third-appearance-ablated.png": {
+          "sha256": "242d6ca5e07cdc564e2b773c464dd17678c0f5a069e7cdbe704c67a2bf3307ec",
+          "bytes": 1128923,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-third-detail-actual.png": {
+          "sha256": "1dc2ed815e8346d78133b1020a9d95c38e7b34e1e99d41d4e4726a628be95376",
+          "bytes": 1128421,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-third-detail-appearance-ablated.png": {
+          "sha256": "10e0e3a44e99169ad56e378ee36cfcf32c80205b0aae0ac51987000ace2a3e1b",
+          "bytes": 1128253,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-third-detail-restored.png": {
+          "sha256": "1dc2ed815e8346d78133b1020a9d95c38e7b34e1e99d41d4e4726a628be95376",
+          "bytes": 1128421,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-shore-stone-recorded-third-restored.png": {
+          "sha256": "7a3bbf8c8123fda6712372dfe9a3dc28e2699412ed634250963fe12d7a8d5e99",
+          "bytes": 1128515,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-unaccepted-pack-diorama-actual.png": {
+          "sha256": "9c9e5bdacf99dd683cab0d3b74eccf8545d7a0db7fc4aaa423cfd87067607e61",
+          "bytes": 498954,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-unaccepted-pack-diorama-appearance-ablated.png": {
+          "sha256": "1453cc3852d91aa96b61ba8524440e38ce5b8594630dd423ef4dea65b3152db2",
+          "bytes": 498560,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-unaccepted-pack-diorama-restored.png": {
+          "sha256": "9c9e5bdacf99dd683cab0d3b74eccf8545d7a0db7fc4aaa423cfd87067607e61",
+          "bytes": 498954,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-unaccepted-pack-third-actual.png": {
+          "sha256": "cb9ee2c738196deae832827acb0d21e49ad47519385d8abdcbd05a06106fc384",
+          "bytes": 701538,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-unaccepted-pack-third-appearance-ablated.png": {
+          "sha256": "c0bcc8c05d164fdb3f304696b7a39bc5314c082173050d143a6f4a145e280cd5",
+          "bytes": 701566,
+          "hash_and_size_recomputed": true
+        },
+        "earthlands-unaccepted-pack-third-restored.png": {
+          "sha256": "cb9ee2c738196deae832827acb0d21e49ad47519385d8abdcbd05a06106fc384",
+          "bytes": 701538,
+          "hash_and_size_recomputed": true
+        },
+        "FAILURE.png": {
+          "sha256": "55eaaf819def6d2e9bce493e396e0c2e4b3df7ac3d88a90a78cddc8b4e5d088f",
+          "bytes": 551562,
+          "hash_and_size_recomputed": true
+        },
+        "HARNESS.py": {
+          "sha256": "8134aca528ff52ee7a5afdd857ea45a17cdbf98513393e54e99623c9a738c5ff",
+          "bytes": 35224,
+          "hash_and_size_recomputed": true
+        }
+      },
+      "validation_errors": [],
+      "native_earned_export": null,
+      "native_export_limit": "The failed run cleaned its disposable profile without exporting; do not reconstruct or label a synthetic ledger as an earned export."
+    },
+    {
+      "directory": "run-03-atlantis-front-inspection",
+      "status": "failed",
+      "checks": 30,
+      "passed": 29,
+      "failed": [
+        {
+          "name": "atlantis-upper-gauge-recorded-diorama-inspection-detail recorded detail has positive actual pixel contribution",
+          "passed": false,
+          "evidence": {
+            "parts": 2,
+            "changed_pixels": 0
+          }
+        }
+      ],
+      "wall_seconds": 139.92575309998938,
+      "report_sha256": "48bd6ce308e49c926316d1994c12340ade92356c128e4c7c7427c7f34ff8ca9d",
+      "harness_sha256": "9942f3f014a742a16c8e834ffabe1b179fc8d1fc84e396fee3397f1569fc0488",
+      "scope": "atlantis",
+      "recorded_upper_arrival": {
+        "target": [
+          8,
+          -1.05,
+          -22
+        ],
+        "actual": {
+          "x": 8.000000312444604,
+          "y": -1.0634199999999925,
+          "z": -21.88289999999998,
+          "body": "water",
+          "hp": 145,
+          "elapsed": 30.86460000000001,
+          "clear": true
+        },
+        "horizontal_error": 0.11710000000043524,
+        "depth_error": 0.013419999999992438,
+        "clear": true
+      },
+      "failed_detail": {
+        "label": "atlantis-upper-gauge-recorded-diorama-inspection-detail",
+        "step": {
+          "step": "upper-gauge",
+          "roles": [
+            "copied-gauge-tab",
+            "gauge-tab-pin"
+          ]
+        },
+        "removed": 2,
+        "changedPixels": 0,
+        "originalChangedPixels": 0,
+        "addedFacePixels": 0,
+        "sumRGBDelta": 0,
+        "restorationRGBDelta": 0,
+        "width": 1088,
+        "height": 680,
+        "renderArguments": [
+          31.730512000000026,
+          17.789725000000953,
+          false
+        ],
+        "stateCameraCollisionUnchanged": true,
+        "writerRestored": true,
+        "batchesRestored": true,
+        "glError": 0,
+        "camera": {
+          "eye": [
+            -24.921037555960574,
+            57.342836495661025,
+            12.754350991971176
+          ],
+          "target": [
+            8.000000312444604,
+            -0.4625794217616765,
+            -21.88289999999998
+          ],
+          "half": 8.99999997469872,
+          "aspect": 1.6
+        }
+      },
+      "actual_upper_parts": [
+        {
+          "kind": "box",
+          "min": [
+            9.179999999701977,
+            1.409999942407012,
+            -22.059999998658895
+          ],
+          "max": [
+            9.320000000298023,
+            1.45999994315207,
+            -21.940000001341105
+          ],
+          "finite": true,
+          "matrix": [
+            0.14000000059604645,
+            0,
+            0,
+            0,
+            -0.0,
+            0.05000000074505806,
+            0,
+            0,
+            0,
+            -0.0,
+            0.11999999731779099,
+            0,
+            9.25,
+            1.434999942779541,
+            -22,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9.25,
+              1.435,
+              -22
+            ],
+            "s": [
+              0.14,
+              0.05,
+              0.12
+            ],
+            "c": 9279102,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "deck-gauge-anchor",
+            "workSupport": "deck-underside",
+            "supportY": 1.46,
+            "m": null
+          }
+        },
+        {
+          "kind": "box",
+          "min": [
+            9.232499999925494,
+            -0.13999998569488525,
+            -22.017500000074506
+          ],
+          "max": [
+            9.267500000074506,
+            1.4600000381469727,
+            -21.982499999925494
+          ],
+          "finite": true,
+          "matrix": [
+            0,
+            0,
+            0.03500000014901161,
+            0,
+            0,
+            1.600000023841858,
+            0,
+            0,
+            -0.03500000014901161,
+            0,
+            0,
+            0,
+            9.25,
+            0.6600000262260437,
+            -22,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9.25,
+              0.6599999999999999,
+              -22
+            ],
+            "s": [
+              0.035,
+              1.6,
+              0.035
+            ],
+            "c": 8228480,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "gauge-suspension",
+            "m": [
+              0,
+              0,
+              0.035,
+              0,
+              0,
+              1.6,
+              0,
+              0,
+              -0.035,
+              0,
+              0,
+              0,
+              9.25,
+              0.6599999999999999,
+              -22,
+              1
+            ],
+            "workFrom": [
+              9.25,
+              -0.14,
+              -22
+            ],
+            "workTo": [
+              9.25,
+              1.46,
+              -22
+            ]
+          }
+        },
+        {
+          "kind": "box",
+          "min": [
+            8.840000003576279,
+            -0.6899999976158142,
+            -22.02749999985099
+          ],
+          "max": [
+            9.659999996423721,
+            -0.12999999523162842,
+            -21.97250000014901
+          ],
+          "finite": true,
+          "matrix": [
+            0.8199999928474426,
+            0,
+            0,
+            0,
+            -0.0,
+            0.5600000023841858,
+            0,
+            0,
+            0,
+            -0.0,
+            0.054999999701976776,
+            0,
+            9.25,
+            -0.4099999964237213,
+            -22,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9.25,
+              -0.41000000000000003,
+              -22
+            ],
+            "s": [
+              0.82,
+              0.56,
+              0.055
+            ],
+            "c": 11114610,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "bronze-depth-plate",
+            "m": null
+          }
+        },
+        {
+          "kind": "box",
+          "min": [
+            8.839999657124281,
+            -0.6949999928474426,
+            -21.982500152662396
+          ],
+          "max": [
+            8.879999656230211,
+            -0.125,
+            -21.947500152513385
+          ],
+          "finite": true,
+          "matrix": [
+            0.03999999910593033,
+            0,
+            0,
+            0,
+            -0.0,
+            0.5699999928474426,
+            0,
+            0,
+            0,
+            -0.0,
+            0.03500000014901161,
+            0,
+            8.859999656677246,
+            -0.4099999964237213,
+            -21.96500015258789,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              8.86,
+              -0.41000000000000003,
+              -21.965
+            ],
+            "s": [
+              0.04,
+              0.57,
+              0.035
+            ],
+            "c": 12956029,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "depth-plate-edge",
+            "m": null
+          }
+        },
+        {
+          "kind": "box",
+          "min": [
+            9.620000343769789,
+            -0.6949999928474426,
+            -21.982500152662396
+          ],
+          "max": [
+            9.660000342875719,
+            -0.125,
+            -21.947500152513385
+          ],
+          "finite": true,
+          "matrix": [
+            0.03999999910593033,
+            0,
+            0,
+            0,
+            -0.0,
+            0.5699999928474426,
+            0,
+            0,
+            0,
+            -0.0,
+            0.03500000014901161,
+            0,
+            9.640000343322754,
+            -0.4099999964237213,
+            -21.96500015258789,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9.64,
+              -0.41000000000000003,
+              -21.965
+            ],
+            "s": [
+              0.04,
+              0.57,
+              0.035
+            ],
+            "c": 12956029,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "depth-plate-edge",
+            "m": null
+          }
+        },
+        {
+          "kind": "box",
+          "min": [
+            8.972500000149012,
+            -0.5499999970197678,
+            -21.97249908465892
+          ],
+          "max": [
+            9.027499999850988,
+            -0.26999999582767487,
+            -21.94749908428639
+          ],
+          "finite": true,
+          "matrix": [
+            0.054999999701976776,
+            0,
+            0,
+            0,
+            -0.0,
+            0.2800000011920929,
+            0,
+            0,
+            0,
+            -0.0,
+            0.02500000037252903,
+            0,
+            9,
+            -0.4099999964237213,
+            -21.959999084472656,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9,
+              -0.41000000000000003,
+              -21.96
+            ],
+            "s": [
+              0.055,
+              0.28,
+              0.025
+            ],
+            "c": 14733736,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "depth-scale-notch",
+            "m": null
+          }
+        },
+        {
+          "kind": "box",
+          "min": [
+            9.385000266134739,
+            -0.6074999943375587,
+            -21.96950073260814
+          ],
+          "max": [
+            9.555000267922878,
+            -0.5324999913573265,
+            -21.94450073223561
+          ],
+          "finite": true,
+          "matrix": [
+            0.17000000178813934,
+            0,
+            0,
+            0,
+            -0.0,
+            0.07500000298023224,
+            0,
+            0,
+            0,
+            -0.0,
+            0.02500000037252903,
+            0,
+            9.470000267028809,
+            -0.5699999928474426,
+            -21.957000732421875,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 36,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9.47,
+              -0.5700000000000001,
+              -21.957
+            ],
+            "s": [
+              0.17,
+              0.075,
+              0.025
+            ],
+            "c": 9550501,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "copied-gauge-tab",
+            "m": null
+          }
+        },
+        {
+          "kind": "disc",
+          "min": [
+            9.475000228732824,
+            -0.6049999929964542,
+            -21.943700790405273
+          ],
+          "max": [
+            9.545000229030848,
+            -0.534999992698431,
+            -21.943700790405273
+          ],
+          "finite": true,
+          "matrix": [
+            0.07000000029802322,
+            0,
+            0,
+            0,
+            -0.0,
+            6.12323395273311e-19,
+            0.009999999776482582,
+            0,
+            0,
+            -0.07000000029802322,
+            4.286263818611965e-18,
+            0,
+            9.510000228881836,
+            -0.5699999928474426,
+            -21.943700790405273,
+            1
+          ],
+          "matrixMatches": true,
+          "positiveBasis": true,
+          "supported": true,
+          "vertices": 48,
+          "cameraBounds": null,
+          "item": {
+            "p": [
+              9.51,
+              -0.5700000000000001,
+              -21.9437
+            ],
+            "s": [
+              0.07,
+              0.01,
+              0.07
+            ],
+            "c": 14272156,
+            "cameraSolid": false,
+            "cutaway": false,
+            "rough": 0.88,
+            "appearanceOnly": true,
+            "trailQuest": "atlantis-bellglass-chart-v1",
+            "trailStep": "upper-gauge",
+            "workState": "recorded",
+            "trailPart": "gauge-tab-pin",
+            "r": [
+              1.5707963267948966,
+              0,
+              0
+            ],
+            "m": null
+          }
+        }
+      ],
+      "actual_upper_snapshot_camera": {
+        "eye": [
+          40.92103183857914,
+          57.343085521897606,
+          12.754357019992685
+        ],
+        "target": [
+          8.000000312444604,
+          -0.4623303955250928,
+          -21.882899999999974
+        ],
+        "half": 17,
+        "aspect": 1.6
+      },
+      "failure_diagnostics": {
+        "version": "10.0.0",
+        "mode": "webgl2",
+        "scene": "world-atlantis",
+        "world": {
+          "id": "atlantis",
+          "height": -1.0634199999999925,
+          "dive": {
+            "y": -1.0634199999999925,
+            "depth": 1.0734199999999925,
+            "hold": true,
+            "body": "water",
+            "camera": "air",
+            "dryCourt": null
+          },
+          "journey": {
+            "counter": 0,
+            "lastClaim": 0,
+            "firstClaimed": false,
+            "active": null,
+            "defeated": []
+          }
+        },
+        "earth": null,
+        "cosmos": null,
+        "networkDependencies": 0,
+        "liveAI": false,
+        "multiplayer": false,
+        "adventure": {
+          "tactics": {
+            "scene": "world-atlantis",
+            "target": null,
+            "auto": false,
+            "nextAttack": 0,
+            "guardUntil": 0,
+            "shield": 0,
+            "shieldUntil": 0,
+            "cooldowns": {
+              "guard": 0,
+              "insight": 0,
+              "spirit": 0
+            },
+            "hits": [],
+            "serial": 0,
+            "windup": null,
+            "motion": null
+          },
+          "beacon": {
+            "phase": "idle",
+            "time": 0,
+            "wave": 0,
+            "ward": 100,
+            "actors": [],
+            "serial": 0,
+            "notice": "",
+            "repairAt": 0,
+            "maraAt": 0,
+            "ilanAt": 0,
+            "playerRepairAt": 0,
+            "defeats": 0
+          },
+          "crossing": {
+            "room": "world-atlantis",
+            "tones": [],
+            "seek": false,
+            "rangAt": -10,
+            "tone": null,
+            "toneSerial": 0
+          },
+          "player": {
+            "x": 8.000000312444604,
+            "z": -21.88289999999998,
+            "yaw": 3.1415925224703134
+          },
+          "paused": true,
+          "intent": null,
+          "stats": {
+            "level": 4,
+            "attack": 31,
+            "defense": 7,
+            "maxHP": 170
+          },
+          "weapon": {
+            "style": "blade",
+            "reach": 2.65,
+            "cooldown": 0.52,
+            "stamina": 0,
+            "primary": "Sunstrike",
+            "special": "Dawn sweep"
+          },
+          "arrows": [],
+          "range": {
+            "active": false,
+            "start": 0,
+            "hits": {},
+            "shots": 0,
+            "message": "A calm place to learn a different rhythm."
+          },
+          "enemies": [],
+          "companion": {
+            "room": "world-atlantis",
+            "x": 4.741850723004079,
+            "z": -14.070173120548565,
+            "yaw": 2.1055405190995145,
+            "path": [],
+            "nextPath": 158.34829999999334,
+            "nextHit": 0,
+            "seek": null,
+            "status": "Waiting on the quay"
+          }
+        },
+        "sandbox": {
+          "bridge": true,
+          "objects": 0,
+          "elapsed": 161.81459999999305,
+          "autoGather": null,
+          "buildMode": null
+        },
+        "saveState": "saved",
+        "characters": {
+          "mode": "managed",
+          "active": "character-2",
+          "revision": 21,
+          "count": 2,
+          "writer": true,
+          "error": null
+        },
+        "fps": 10.851525596833868,
+        "errors": [],
+        "camera": {
+          "yaw": 0.7599999999999998,
+          "elevation": 0.88,
+          "half": 17,
+          "distance": 7.5,
+          "actualDistance": 6.4182338029530195,
+          "fov": 60,
+          "center": [
+            8.000000312444604,
+            -0.4634118562559206,
+            -21.88289999999998
+          ],
+          "overview": false,
+          "preset": "follow",
+          "tour": false,
+          "ready": true,
+          "baseHalf": 17,
+          "zoom": 1,
+          "projection": "orthographic",
+          "eye": [
+            40.92103183857914,
+            57.342004061166776,
+            12.754357019992685
+          ],
+          "target": [
+            8.000000312444604,
+            -0.4634118562559206,
+            -21.88289999999998
+          ]
+        },
+        "metrics": {
+          "drawCalls": 12,
+          "texturedDrawCalls": 0,
+          "texturedInstances": 0,
+          "surfaceMaterials": {
+            "version": 1,
+            "id": "earth-weathered-timber-v1",
+            "status": "ready",
+            "ready": true,
+            "error": null,
+            "width": 512,
+            "height": 512,
+            "colorFormat": "SRGB8_ALPHA8",
+            "roughnessFormat": "R8",
+            "textureBytes": 1310720,
+            "mipmapBytes": 436905,
+            "totalTextureBytes": 1747625,
+            "decodedImageBytes": 2097152,
+            "decodeWallMs": 96.59999999403954,
+            "uploadCpuMs": 14.900000005960464,
+            "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+            "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+            "enabled": true
+          },
+          "instances": 591,
+          "triangles": 24468
+        },
+        "reflection": {
+          "method": "world-plane P*V*H",
+          "height": 0.01,
+          "horizontalFlip": false
+        },
+        "cutaway": {
+          "enabled": true,
+          "focus": [
+            8.000000312444604,
+            -0.18341999999999248,
+            -21.88289999999998
+          ]
+        },
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "music": {
+          "playing": false,
+          "scoreRevision": 0,
+          "playingRevision": -1,
+          "step": -1
+        },
+        "gathering": null,
+        "layoutRevision": 0,
+        "roadsideGathering": {
+          "status": "idle",
+          "playing": false,
+          "pending": false
+        },
+        "audio": {
+          "enabled": false,
+          "state": "not-created",
+          "soundscape": null
+        }
+      },
+      "outputs": {
+        "atlantis-upper-gauge-before-diorama-actual.png": {
+          "sha256": "87c4867e29df3302e4d9b557457cc2b4cd971ac5e056fc6df6acf83c8ca042a8",
+          "bytes": 638540,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-before-diorama-appearance-ablated.png": {
+          "sha256": "d2a0c98ac945b61d73333a713285e7778b72533897c31583de7b87cecf4cb445",
+          "bytes": 638438,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-before-diorama-restored.png": {
+          "sha256": "87c4867e29df3302e4d9b557457cc2b4cd971ac5e056fc6df6acf83c8ca042a8",
+          "bytes": 638540,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-before-third-actual.png": {
+          "sha256": "78c8874cac598c51bbdbf842bba072a99a6618779afe8974c9d50c4ebf24649c",
+          "bytes": 775506,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-before-third-appearance-ablated.png": {
+          "sha256": "9b944da14fd2e497ebeda3549cdce4f8b2a6ac73fdda1f49ca9f70bf6ef5579f",
+          "bytes": 774998,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-before-third-restored.png": {
+          "sha256": "78c8874cac598c51bbdbf842bba072a99a6618779afe8974c9d50c4ebf24649c",
+          "bytes": 775506,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-diorama-actual.png": {
+          "sha256": "ca2f871c3b3d82913100b456eb85c7a6d9a072469dfd490c70bb15033a96fec0",
+          "bytes": 638545,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-diorama-appearance-ablated.png": {
+          "sha256": "e7fc6abf2e35a1ac72b1a83469e4059b1f6c9caf635973d3a55915431ca0fa3a",
+          "bytes": 638421,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-diorama-inspection-detail-actual.png": {
+          "sha256": "929e4bb5824e811983e7aa5aa4077d5f294f25c89dcb8fa84013a14b1db3d1ce",
+          "bytes": 709025,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-diorama-inspection-detail-appearance-ablated.png": {
+          "sha256": "929e4bb5824e811983e7aa5aa4077d5f294f25c89dcb8fa84013a14b1db3d1ce",
+          "bytes": 709025,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-diorama-inspection-detail-restored.png": {
+          "sha256": "929e4bb5824e811983e7aa5aa4077d5f294f25c89dcb8fa84013a14b1db3d1ce",
+          "bytes": 709025,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-diorama-restored.png": {
+          "sha256": "ca2f871c3b3d82913100b456eb85c7a6d9a072469dfd490c70bb15033a96fec0",
+          "bytes": 638545,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-third-actual.png": {
+          "sha256": "69c193fdea1c2f0071499e1f4ea6bd3e05c1b720930ff3afc6bb29b673243ada",
+          "bytes": 738617,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-third-appearance-ablated.png": {
+          "sha256": "232f1f061168ddddaf75c9cbbcebd80b77b6038f4812f364d694a8553252a4cd",
+          "bytes": 737270,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-third-detail-actual.png": {
+          "sha256": "aac26724e554c2d66a69bb5758d77be1771644c8171240027dc4151de8def1c1",
+          "bytes": 774518,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-third-detail-appearance-ablated.png": {
+          "sha256": "903c2bc12ef8b61e54aa2dadac7c68850522a4d84caa4688c155e03b90733cc6",
+          "bytes": 774116,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-third-detail-restored.png": {
+          "sha256": "aac26724e554c2d66a69bb5758d77be1771644c8171240027dc4151de8def1c1",
+          "bytes": 774518,
+          "hash_and_size_recomputed": true
+        },
+        "atlantis-upper-gauge-recorded-third-restored.png": {
+          "sha256": "69c193fdea1c2f0071499e1f4ea6bd3e05c1b720930ff3afc6bb29b673243ada",
+          "bytes": 738617,
+          "hash_and_size_recomputed": true
+        },
+        "FAILURE.png": {
+          "sha256": "29ea977b2f9e0c2c25be91484af4312465fe8882b0c0be165704cdaca03572f8",
+          "bytes": 551808,
+          "hash_and_size_recomputed": true
+        },
+        "HARNESS.py": {
+          "sha256": "9942f3f014a742a16c8e834ffabe1b179fc8d1fc84e396fee3397f1569fc0488",
+          "bytes": 35407,
+          "hash_and_size_recomputed": true
+        }
+      },
+      "validation_errors": [],
+      "native_earned_export": null,
+      "native_export_limit": "The failed run cleaned its disposable profile without exporting; do not reconstruct or label a synthetic ledger as an earned export."
+    }
+  ]
+}

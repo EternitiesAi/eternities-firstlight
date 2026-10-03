@@ -7,3 +7,8 @@
 
 # Preserve exact archived filming-harness bytes, including original line endings.
 docs/evidence/realm-outings-2026-10-02/*.snapshot binary
+
+# Reports, original logs, fixtures and harness snapshots are byte-hashed evidence.
+docs/evidence/world-production-2026-10-03/** -text whitespace=cr-at-eol
+# The failed runner's original diagnostic blank lines are retained verbatim.
+docs/evidence/world-production-2026-10-03/negative/linux-ec9-stale-copy-assertion/commands/rules.log whitespace=cr-at-eol,-blank-at-eol
