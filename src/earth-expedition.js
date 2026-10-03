@@ -3,7 +3,7 @@
 (function(G){'use strict';
 const clone=o=>JSON.parse(JSON.stringify(o)),fail=error=>({ok:false,error}),MAX_RUN=1000000;
 function freeze(o){if(o&&typeof o==='object'){Object.values(o).forEach(freeze);Object.freeze(o);}return o;}
-const point=(id,name,kind,x,z,requires,text)=>({id,name,kind,x,z,y:1.57,medium:'dry',requires,text});
+const point=(id,name,kind,x,z,requires,text,completed=name+' recorded.')=>({id,name,kind,x,z,y:1.57,medium:'dry',requires,text,completed});
 const giver={id:'elderweald-rill',name:'Rill · forestkeeper',x:-67,z:-4,y:1.57,medium:'dry'};
 const definition=freeze({
  id:'earth-stormfall-living-road-v1',realm:'earthlands',title:'Stormfall and the Living Road',giver,
@@ -14,15 +14,15 @@ const definition=freeze({
  steps:[
   point('assess-load','Read the camp load board','interact',-76,-12,[],'Rill: The road and the watercourse share this load. Read what each needs before choosing a supply.'),
   {...point('prepare-allocation','Choose and prepare the supply','interact',-76,-12,['assess-load'],'Choose a physical preparation; the allocation is retained when you return.'),choices:[
-   {id:'stormfall-recovery',name:'Recover stormfall',x:-82,z:-18,y:1.57,materials:{wood:8,fiber:4},text:'Recover already fallen timber and bind it for transport. The standing refuge stays intact. This pays 8 timber and 4 fibre; the binding needs two additional fibre from gathering or one patrol.'},
-   {id:'managed-coppice',name:'Prepare managed coppice',x:-78,z:-2,y:1.57,materials:{wood:4,fiber:8},text:'Prepare a limited managed allocation with more binding fibre. This pays 4 timber and 8 fibre; the binding can be afforded from this allocation once the currency is claimed.'}
+   {id:'stormfall-recovery',name:'Recover stormfall',x:-82,z:-18,y:1.57,materials:{wood:8,fiber:4},text:'Recover already fallen timber and bind it for transport. The standing refuge stays intact. This pays 8 timber and 4 fibre; the binding needs two additional fibre from gathering or one patrol.',completed:'Stormfall allocation prepared. The standing refuge remains intact. Check the wetland watercourse.'},
+   {id:'managed-coppice',name:'Prepare managed coppice',x:-78,z:-2,y:1.57,materials:{wood:4,fiber:8},text:'Prepare a limited managed allocation with more binding fibre. This pays 4 timber and 8 fibre; the binding can be afforded from this allocation once the currency is claimed.',completed:'Managed allocation prepared. Its extra fibre is retained. Check the wetland watercourse.'}
   ]},
   point('read-water','Check the wetland watercourse','interact',-109,-28,['prepare-allocation'],'Read the watercourse before moving the load. The supply plan leaves this refuge and its drainage open.'),
   point('clear-crossing','Clear the crossing infestation','defeat',-119,-44,['read-water'],'Disable the accepted Channel skitter through actual weapon impacts; the crossing itself stays supported and your exit stays free.'),
   point('read-root-load','Read the living root anchor','interact',-148,-66,['clear-crossing'],'The old organism carries part of the route. Read the damaged connection; cutting the living support away would transfer its load into the breach.'),
   point('clear-root-pests','Clear the root-bank infestation','defeat',-134,-70,['read-root-load'],'Disable the accepted Root-bank brute in the open bank pocket, away from the passage walls.'),
-  point('brace-root-channel','Fit the alternate route brace','interact',-145,-84,['clear-root-pests'],'Fit the prepared alternate brace before releasing the damaged connection. The old organism stays alive; this records one local support repair.'),
-  point('deliver-allocation','Deliver the chosen allocation','interact',-106,-105,['brace-root-channel'],'Deliver the retained practical allocation at the return glade. Return to Rill to explicitly claim the declared currency and materials.')
+  point('brace-root-channel','Fit the alternate route brace','interact',-145,-84,['clear-root-pests'],'Fit the prepared alternate brace before releasing the damaged connection. The old organism stays alive; this records one local support repair.','Alternate brace fitted; the old root stays alive. Deliver your allocation at the return glade.'),
+  point('deliver-allocation','Deliver the chosen allocation','interact',-106,-105,['brace-root-channel'],'Deliver the retained practical allocation at the return glade. Return to Rill to explicitly claim the declared currency and materials.','Allocation delivered. Return to Rill for the declared payment; it remains unclaimed.')
  ],
  enemies:[
   {id:'earth-stormfall-crossing-v1',name:'Channel skitter',kind:'skitter',x:-119,z:-44,hp:64,damage:9,spawnAfter:['read-water'],defeatStep:'clear-crossing'},
@@ -126,7 +126,7 @@ function command(ctx,type,payload={},io){
   if(record.steps.includes(s.id))return{ok:true,duplicate:true,text:'This accepted action is already recorded.'};
   const choice=s.choices?.find(c=>c.id===payload.branch),anchor=s.choices?choice:s;
   if(!anchor||!at(sim,anchor)||!s.requires.every(id=>record.steps.includes(id)))return fail('Reach '+s.name+' and finish its declared prerequisites.');
-  record.steps.push(s.id);if(choice)r.branch=choice.id;text=choice?choice.text:s.text;
+  record.steps.push(s.id);if(choice)r.branch=choice.id;text=choice?choice.completed:s.completed;
  }else if(type==='claim'||type==='patrol-claim'){
   if(!repeat&&r.claimed)return{ok:true,duplicate:true,text:'The first delivery was already paid once.'};
   const record=repeat?r.active:r;if(!record||repeat&&record.run!==payload.run||!repeat&&!r.accepted||!d.steps.every(s=>record.steps.includes(s.id))||!at(sim,giver))return fail('Complete this accepted circuit and return to Rill to explicitly claim.');

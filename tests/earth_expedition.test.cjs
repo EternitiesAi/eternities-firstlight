@@ -113,6 +113,15 @@ if(A.VERSION>=12){
    const result=E.command(f.ctx,'claim',{quest:E.definition.id},{save:()=>{calls++;return{ok:true};}});assert.equal(result.ok,false,key+' overflow');assert.equal(calls,0);assert.deepEqual(f.sim.state,before);
   }
  });
+ test('successful physical work confirms the completed action and keeps payment unclaimed',()=>{
+  const f=fixture({ready:true});f.sim.state.earthExpedition.story.steps=E.definition.steps.slice(0,6).map(s=>s.id);
+  const before=copy(f.sim.state.adventure),work=(id,save=f.save)=>{const p=E.definition.steps.find(s=>s.id===id);f.sim.state.player={x:p.x,z:p.z,yaw:0};return E.command(f.ctx,'step',{quest:E.definition.id,step:id},{save});};
+  const refused=work('brace-root-channel',()=>({ok:false,error:'labelled refused repair'}));assert.equal(refused.ok,false);assert.equal(f.sim.state.earthExpedition.story.steps.length,6);
+  const braced=work('brace-root-channel');assert.ok(braced.ok,braced.error);assert.match(braced.text,/brace fitted/);assert.match(braced.text,/Deliver your allocation/);assert.doesNotMatch(braced.text,/^Fit /);assert.equal(f.sim.state.earthExpedition.story.steps.length,7);
+  const duplicate=work('brace-root-channel');assert.equal(duplicate.duplicate,true);assert.match(duplicate.text,/already recorded/);
+  const delivered=work('deliver-allocation');assert.ok(delivered.ok,delivered.error);assert.match(delivered.text,/Allocation delivered/);assert.match(delivered.text,/unclaimed/);assert.equal(f.sim.state.earthExpedition.story.claimed,false);assert.equal(f.sim.state.earthExpedition.story.steps.length,8);
+  for(const key of['xp','coins','ore','owned','equipment','arsenal'])assert.deepEqual(f.sim.state.adventure[key],before[key],key+' untouched by the completion caption');
+ });
  test('ready payment survives refused and throwing durable savers, then cap-bound XP pays zero once',()=>{
   const f=fixture({ready:true});f.sim.state.adventure.xp=9999;const before=copy(f.sim.state);
   for(const save of[()=>({ok:false,error:'deliberate storage refusal'}),()=>{throw Error('deliberate storage exception');}]){const result=E.command(f.ctx,'claim',{quest:E.definition.id},{save});assert.equal(result.ok,false);assert.deepEqual(f.sim.state,before);}
