@@ -16,7 +16,7 @@ import canvas_film
 ROOT=Path(__file__).resolve().parents[1]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
- parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--variant',choices=['heaven','hell','cosmos','atlantis','earthlands','fit-veteran','fit-bow'],required=True);parser.add_argument('--source',type=Path,required=True);parser.add_argument('--output',type=Path,required=True);parser.add_argument('--height',type=int,default=720,choices=range(600,1081));parser.add_argument('--sound-video',action='store_true',help='Also record real game canvas with actual opted-in app audio');args=parser.parse_args()
+ parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--variant',choices=['heaven','hell','cosmos','atlantis','earthlands','fit-veteran','fit-bow','starter-blade','starter-bow'],required=True);parser.add_argument('--source',type=Path,required=True);parser.add_argument('--output',type=Path,required=True);parser.add_argument('--height',type=int,default=720,choices=range(600,1081));parser.add_argument('--sound-video',action='store_true',help='Also record real game canvas with actual opted-in app audio');args=parser.parse_args()
  out=args.output.resolve();source=args.source.resolve()
  if out.drive.lower()!='d:' or not args.output.is_absolute():parser.error('heavy footage must stay on D:')
  if out.exists() and any(out.iterdir()):parser.error('preserve previous takes: choose an empty output directory')
@@ -62,7 +62,47 @@ def main():
      walk(d['giver']['x'],d['giver']['z']+1.7);page.keyboard.press('e');page.locator('[data-rpg="trail-claim"]').click();assert state()['realmTrails']['records'][d['id']]['claimed'];shot('explicit-claim');close()
     def measure(label):
      data=ev('''async()=>{const xs=[];let last=null;await new Promise(done=>{function frame(t){if(last!==null)xs.push(t-last);last=t;if(xs.length<180)requestAnimationFrame(frame);else done();}requestAnimationFrame(frame);});const d=Realm.diagnostics,c=document.querySelector('#world');return{intervals_ms:xs,scene:d.scene,projection:d.camera.projection,hidden:document.hidden,paused:d.adventure.paused,renderer:d.renderer,drawing_buffer:{width:c.width,height:c.height},metrics:d.metrics};}''');assert not data['paused'] and not data['hidden'];xs=sorted(data['intervals_ms']);data.update(label=label,median_ms=statistics.median(xs),p95_nearest_rank_ms=xs[170],maximum_ms=max(xs),over_33_333_ms=sum(x>33.333 for x in xs));report['samples'].append(data)
-    if args.variant in ['heaven','hell']:
+    if args.variant in ['starter-blade','starter-bow']:
+     family='bow' if args.variant.endswith('bow') else 'blade';weapon='trail_bow' if family=='bow' else 'trail_blade';reward='oren_reedbow' if family=='bow' else 'oren_sunblade'
+     assert weapon in initial['adventure']['owned'] and not state()['adventure']['starter']['accepted'] and not state()['adventure']['starter']['reward']
+     assert not any(e['id'] in state()['adventure']['defeated'] for e in ev('RealmStarter.ENEMIES'))
+     walk(11,9)
+     if state()['adventure']['equipment']['weapon']!=weapon:
+      page.keyboard.press('c');page.locator('[data-rpg="item"][data-id="gear:'+weapon+'"]').click();page.locator('[data-rpg="equip"][data-id="'+weapon+'"]').click();close();mark('deliberate '+family+' equipment selection')
+     report['equipment_before']={'xp':state()['adventure']['xp'],'stats':ev('RealmAdventure.stats(Realm.state.adventure)'),'weapon':state()['adventure']['equipment']['weapon']}
+     page.keyboard.press('e');assert page.locator('[data-rpg="starter-accept"]').is_enabled();shot('oren-explicit-terms-'+family);page.locator('[data-rpg="starter-accept"]').click();close();mark('explicit once-only Oren outing acceptance')
+     walk(15,7);page.keyboard.press('e');assert ev('Realm.diagnostics.scene')=='riverbank';view('third',yaw=0,distance=7);shot('riverbank-'+family+'-arrival')
+     report['combats']=[]
+     for bundle,x,z,enemy in [('river-rope',-7,3,'river-skitter-west'),('river-tools',5,-3,'river-skitter-east'),('river-canvas',-5,-11,'river-old-bristle')]:
+      walk(x,z);page.keyboard.press('e');assert bundle in state()['adventure']['starter']['bundles'];mark('accepted individual supply '+bundle)
+      if family=='blade':walk(x,z-1)
+      selected=False
+      for attempt in range(5):
+       if ev('Realm.diagnostics.adventure.tactics.target')==enemy:selected=True;break
+       page.keyboard.press('Tab')
+      assert selected,'Explicit Tab selection could not reach '+enemy
+      page.keyboard.press('1');mark('stationary '+family+' autoattack '+enemy);began=time.monotonic();guards=0;tells=0
+      while enemy not in state()['adventure']['defeated']:
+       assert time.monotonic()-began<90 and state()['adventure']['hp']>0,'Actual encounter did not complete safely'
+       data=ev('()=>{const sim=Realm.test.worldContext().sim;return{cue:RealmCombat.threat(sim),elapsed:sim.state.adventure.elapsed,stamina:sim.state.adventure.stamina,guardCD:RealmCombat.runtime(sim).cooldowns.guard}}')
+       if data['cue'] and data['cue']['phase']=='windup':
+        tells+=1
+        if data['stamina']>=20 and data['elapsed']>=data['guardCD']:page.keyboard.press('3');guards+=1
+       page.wait_for_timeout(65)
+      report['combats'].append({'enemy':enemy,'normal_time_seconds':time.monotonic()-began,'guard_inputs':guards,'observed_windup_samples':tells,'hp_after':state()['adventure']['hp'],'actual_defeat':True})
+      shot(enemy+'-actual-defeat')
+      # Production clears a defeated target itself; the clear button then hides.
+      if page.locator('#target-clear').is_visible():page.locator('#target-clear').click()
+     assert ev('RealmStarter.complete(Realm.state.adventure)');view('diorama',yaw=.85);shot('riverbank-'+family+'-completed-diorama');view('third',yaw=.35);walk(0,13);page.keyboard.press('e');assert ev('Realm.diagnostics.scene')=='valley'
+     walk(11,9);page.keyboard.press('e');assert page.locator('[data-rpg="starter-claim"][data-id="'+reward+'"]').is_enabled();shot('deliberate-'+family+'-reward-review');prior=state()['adventure']['equipment']['weapon'];page.locator('[data-rpg="starter-claim"][data-id="'+reward+'"]').click();assert state()['adventure']['equipment']['weapon']==prior;assert state()['adventure']['starter']['reward']['weapon']==reward;mark('claimed once and kept prior equipped '+family)
+     page.locator('[data-rpg="equip"][data-id="'+reward+'"]').click();assert state()['adventure']['equipment']['weapon']==reward;shot('deliberately-equipped-'+family+'-reward');close()
+     report['equipment_after']={'xp':state()['adventure']['xp'],'stats':ev('RealmAdventure.stats(Realm.state.adventure)'),'weapon':reward,'interpretation':'Observed equipment and earned-XP level together; not a pure weapon-only damage delta'}
+     walk(15,7);page.keyboard.press('e');walk(-5,11.5);view('third',yaw=2.8,distance=6)
+     for attempt in range(5):
+      if ev('Realm.diagnostics.adventure.tactics.target')=='river-practice':break
+      page.keyboard.press('Tab')
+     assert ev('Realm.diagnostics.adventure.tactics.target')=='river-practice';page.keyboard.press('1');page.wait_for_function('(damage)=>RealmAdventure.runtime(Realm.test.worldContext().sim).training?.lastDamage===damage',arg=report['equipment_after']['stats']['attack'],timeout=10000);shot('reward-'+family+'-actual-practice-impact');report['measured_practice_damage']=ev('RealmAdventure.runtime(Realm.test.worldContext().sim).training.lastDamage');page.keyboard.press('1');page.locator('#target-clear').click();walk(-2,12);page.wait_for_timeout(2800);page.keyboard.press('h');view('third',yaw=.65,distance=4);shot('reward-'+family+'-held-third');view('diorama',yaw=.65,half=5);shot('reward-'+family+'-held-diorama');page.keyboard.press('h')
+    elif args.variant in ['heaven','hell']:
      enter(args.variant);d=ev('(realm)=>RealmTrails.definitions().find(d=>d.realm===realm)',args.variant);r=state()['realmTrails']['records'][d['id']];assert r['accepted']
      if args.variant=='heaven':
       assert not d['enemy']['defeatStep'] in r['steps']
