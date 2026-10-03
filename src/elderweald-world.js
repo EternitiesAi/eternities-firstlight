@@ -127,7 +127,7 @@
    beam([-74,FLOOR+3.04,z],[-72,FLOOR+2.42,z],.12,.16,0x4c402f,'camp-rafter',null,{cutaway:true});
   }
   // Packed props stay off invitation/preparation body and walking envelopes.
-  for(let i=0;i<3;i++)add('timber-panel',[-72.5,FLOOR+.23+i*.11,-11.5],[1.6,.2,.55],0x786346,'camp-stock',null);
+  for(let i=0;i<3;i++)add('timber-panel',[-72.5,FLOOR+.23+i*.11,-10.9],[1.6,.2,.55],0x786346,'camp-stock',null);
   for(let i=0;i<3;i++)add('octa',[-83.3+i*.43,FLOOR+.16,-19.55],[.7,.23,.55],0x787868,'stormfall-stones',null);
   for(let i=0;i<3;i++)beam([-83.2,FLOOR+.24+i*.13,-19],[-80.4,FLOOR+.24+i*.13,-19],.24,.25,0x78634c,'stormfall-log',null);
   // Ancient retained masonry is tied to the authority flanks; the overhead
@@ -143,7 +143,7 @@
   for(let i=0;i<reeds;i++){
    const north=i%2===0,x=-130+(i%12)*.75,z=north?-46.3:-51.7;
    if(Math.abs(x+125)<3.2)continue;
-   add('octa',[x,FLOOR+.4+(i%3)*.08,z],[.22,.65,.25],i%3?0x7c8c54:0x9a9b60,'wetland-reed',null);
+   add('octa',[x,FLOOR+.45+(i%3)*.08,z],[.22,.65,.25],i%3?0x7c8c54:0x9a9b60,'wetland-reed',null);
   }
   // Two ordinary glade packing racks remain south of the delivery position.
   for(const x of [-112,-110.7])add('timber-panel',[x,FLOOR+.28,-110.3],[1.08,.5,.7],0x867153,'glade-stock',null);
