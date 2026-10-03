@@ -9,7 +9,11 @@ class AdventureUI{
  }
  get sim(){return this.api.sim();}get state(){return this.sim.state.adventure;}
  reset(){this.intent=null;this.labelCache='';$('#fallen-dialog').close();if($('#story-dialog').open)$('#story-dialog').close();}
- run(type,payload={},quiet=false){const result=type==='starter-leave'&&G.RealmEarth?.riverTrip(this.sim)?this.api.earthRiverReturn():this.sim.adventureCommand('adv-'+Date.now()+'-'+(++this.sequence),type,payload);if(result.ok&&!result.duplicate){this.api.save();this.api.changed();if(!quiet&&result.text)this.api.toast(result.text);this.sound(type);}else if(!quiet&&result.error)this.api.toast(result.error);if(!quiet&&this.api.panel()==='adventure')this.api.renderPanel();return result;}
+ run(type,payload={},quiet=false){
+  const durable=!!this.api.workshopCommand&&G.RealmWorkshopTransactions.supports('adventure',type),id='adv-'+Date.now()+'-'+(++this.sequence);
+  const result=type==='starter-leave'&&G.RealmEarth?.riverTrip(this.sim)?this.api.earthRiverReturn():durable?this.api.workshopCommand('adventure',id,type,payload):this.sim.adventureCommand(id,type,payload);
+  if(result.ok&&!result.duplicate){if(!durable)this.api.save();this.api.changed();if(!quiet&&result.text)this.api.toast(result.text);this.sound(type);}else if(!quiet&&result.error)this.api.toast(result.error);if(!quiet&&this.api.panel()==='adventure')this.api.renderPanel();return result;
+ }
  sound(type){let au=this.api.audio();if(!au?.enabled||!au.ctx)return;let f={'confirmed-hit':295,heal:660,dodge:330,dig:145,rescue:523,loot:880,relic:784,guard:245,insight:590,spirit:392,'beacon-answer':784,'beacon-repair':523}[type];if(f)au.note(f,au.ctx.currentTime,.15,.035);}
  stopAuto(){this.intent=null;}
  go(id){this.intent=null;this.api.endBuild();if(A.combatScene(this.sim)){this.api.toast('Use this expedition’s southern exit before taking an outdoor route.');return false;}if(id==='mine'){if(!this.sim.state.sandbox.bridge){this.api.toast('Repair the northern crossing first. The Field guide shows the materials.');return false;}this.api.closePanel();return this.api.walk(A.MINE.x,A.MINE.z);}if(id==='road')return this.api.navigate('lookout');if(id==='workshop')return this.api.navigate('market');if(id==='spring')return this.api.navigate('commons');return false;}

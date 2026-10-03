@@ -86,10 +86,9 @@ class RPGUI{
   if(act==='socket'){const select=$('#rpg-socket');this.run('socket',{weapon:id,gem:select.value||null});return;}
   if(act==='craft'){
    const recipe=this.recipes().find(r=>r.id===id);if(!recipe)return;
-   const was=this.sim.paused;this.sim.paused=false;let result;
-   if(recipe.type==='sandbox')result=this.sim.sandboxCommand('rpg-craft-'+Date.now()+'-'+(++this.serial),'craft',{recipe:id});
-   else result=this.sim.adventureCommand('rpg-craft-'+Date.now()+'-'+(++this.serial),recipe.type==='forge'?'forge':'arsenal-craft',recipe.type==='forge'?{}:{id});
-   this.sim.paused=was;this.api.toast(result.text||result.error);if(result.ok)this.api.save();this.paint();return;
+   const was=this.sim.paused,request='rpg-craft-'+Date.now()+'-'+(++this.serial),domain=recipe.type==='sandbox'?'sandbox':'adventure',type=recipe.type==='sandbox'?'craft':recipe.type==='forge'?'forge':'arsenal-craft',payload=recipe.type==='sandbox'?{recipe:id}:recipe.type==='forge'?{}:{id};let result;
+   try{this.sim.paused=false;result=this.api.workshopCommand?this.api.workshopCommand(domain,request,type,payload):domain==='sandbox'?this.sim.sandboxCommand(request,type,payload):this.sim.adventureCommand(request,type,payload);}finally{this.sim.paused=was;}
+   this.api.toast(result.text||result.error);if(result.ok&&!this.api.workshopCommand)this.api.save();this.paint();return;
   }
   if(act==='trade'){this.run('trade',{offer:id});return;}
   if(act==='rename'){this.run('rename',{name:$('#rpg-companion-name').value});return;}
