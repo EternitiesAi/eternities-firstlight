@@ -96,13 +96,17 @@ def main():
     run('earth-expedition-blade', ['node', 'tests/earth_expedition_journey.cjs'])
     run('earth-expedition-bow', ['node', 'tests/earth_expedition_journey.cjs', '--bow'])
     run('earth-expedition-veteran', ['node', 'tests/earth_expedition_journey.cjs', '--veteran'])
+    run('local-life-blade', ['node', 'tests/local_life_journey.cjs'])
+    run('local-life-bow', ['node', 'tests/local_life_journey.cjs', '--bow'])
+    run('local-life-veteran', ['node', 'tests/local_life_journey.cjs', '--veteran'])
     if args.browser:
         # Qualify the recently extended Earth presentation and native giver
         # route first; fail promptly while retaining every default suite.
-        for suite in ['earth_ground_material_browser', 'realm_givers_browser', 'crossing_browser', 'regression09_browser', 'cutaway_browser', 'reflection_browser', 'native_origin_browser', 'starter_browser', 'camera_browser', 'pursuit_browser', 'characters_browser', 'classes_browser', 'cosmos_browser', 'earth_browser', 'earth_story_browser', 'earth_notes_browser', 'gathering_browser', 'realm_atlas_browser', 'timber_browser', 'traveler_browser', 'bridge_browser', 'combat_cue_browser', 'world_foundations_browser', 'world_cutaway_browser', 'realm_trails_browser', 'realm_trails_north_browser', 'realm_trails_cosmos_browser', 'soundscape_browser', 'journey_usability_browser', 'workshop_transactions_browser', 'companion_presentation_browser', 'skitter_presentation_browser', 'coastward_scenery_browser', 'earth_story_transactions_browser', 'coastward_bridge_posts_browser', 'practice_visibility_browser', 'realm_work_presentation_browser', 'earth_expedition_browser']:
-            # This native suite visits eleven givers in both views, then walks
-            # companion near/far controls. Keep every real route and assertion.
-            run(suite, [sys.executable, f'tests/{suite}.py'], timeout=1200 if suite == 'realm_givers_browser' else 600)
+        for suite in ['local_life_browser', 'earth_ground_material_browser', 'realm_givers_browser', 'crossing_browser', 'regression09_browser', 'cutaway_browser', 'reflection_browser', 'native_origin_browser', 'starter_browser', 'camera_browser', 'pursuit_browser', 'characters_browser', 'classes_browser', 'cosmos_browser', 'earth_browser', 'earth_story_browser', 'earth_notes_browser', 'gathering_browser', 'realm_atlas_browser', 'timber_browser', 'traveler_browser', 'bridge_browser', 'combat_cue_browser', 'world_foundations_browser', 'world_cutaway_browser', 'realm_trails_browser', 'realm_trails_north_browser', 'realm_trails_cosmos_browser', 'soundscape_browser', 'journey_usability_browser', 'workshop_transactions_browser', 'companion_presentation_browser', 'skitter_presentation_browser', 'coastward_scenery_browser', 'earth_story_transactions_browser', 'coastward_bridge_posts_browser', 'practice_visibility_browser', 'realm_work_presentation_browser', 'earth_expedition_browser']:
+            # Giver coverage walks eleven actors and companion near/far controls.
+            # Local life restarts all Chromium 48 times across three earned cases.
+            # Keep the complete routes/assertions in a bounded 20-minute window.
+            run(suite, [sys.executable, f'tests/{suite}.py'], timeout=1200 if suite in ('realm_givers_browser', 'local_life_browser') else 600)
     print('Verification passed. Automated checks do not qualify human pacing or device performance.', flush=True)
 
 

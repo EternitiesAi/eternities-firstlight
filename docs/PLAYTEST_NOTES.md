@@ -1,3 +1,11 @@
+# Local-life continuation, 2026-10-03
+
+The ordinary-RAF RTX Cosmos recording passes19/19 checks through visible UI at normal speed, with actual shelf/tray appearance in both reset views, exact deliberate payment and the real home checkpoint. It is an automated known route, not a human playtest. Native failures and focused corrections remain in the result record; the full pushed-head all-character browser result is delivered with the review PR. The mobile excerpt retains65 seconds of this actual silent UI recording.
+
+Human acceptance is pending. The current four commissions test whether distinct practical work and persistent chosen fixtures make the existing realms feel inhabited. No automated pass is a founder reply. Use [the local-life play guide](playtests/LOCAL_LIFE_2026-10-03.md); ask about route clarity, recognition of chosen work, willingness to return, both cameras and the gallery exit. Keep material payments honest for already fitted characters. [Results](development/LOCAL_LIFE_RESULTS_2026-10-03.md) distinguish synthetic boundaries, command-earned accelerated journeys, native persistence, appearance and actual normal-time footage.
+
+Prior observations retain their dated epochs.
+
 # Living-road play and unresolved human feel, 2026-10-03
 
 Final exact-head reproduction at634bf66 revealed a real default-diorama visibility failure: tree5 hid Rill entirely from the native invitation approach. Positive pixel qualification was retained. Moving that canonical tree and its derived art to the eastern camp edge preserves walking/collision ownership, with a CPU negative control reproducing the original canopy intersection. Earlier blade/bow/veteran videos and RTX samples below predate this geometry refinement; they remain correctly labelled. Full all11-giver verification and the replacement remote gate are pending at this checkpoint.

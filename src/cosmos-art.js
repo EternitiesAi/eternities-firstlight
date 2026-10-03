@@ -24,11 +24,14 @@ function terrain(a,rnd){
  for(const [x,z,w,d]of [[-6,6,6,5],[3,7,4,4],[3,-43,8,7],[0,18,5,4]])a.box(x,h(x,z)+.012,z,w,.02,d,0xb6ac8e,{cameraSolid:false,rough:1});
 }
 function refuge(a){const b=h(-6,5);a.box(-6,b+1.6,3,7,3.2,.45,col.light);a.box(-9.3,b+1.6,6,.45,3.2,6,col.light);a.box(-2.7,b+1.6,5,.45,3.2,4,col.light);
- a.add('roof',-6,b+3.2,5.65,7.8,1.65,6.6,0x596c65,{cameraSolid:true});a.box(-6,b+3.23,5.65,7.9,.16,6.65,col.wood);
+ // The existing shelter reveal follows the traveler inside its real footprint.
+ // Keep all roof layers together; cameraCutaway still owns the player's choice.
+ const overhead={cutaway:true,worldRoof:'cosmos-farroad-refuge'};
+ a.add('roof',-6,b+3.2,5.65,7.8,1.65,6.6,0x596c65,{...overhead,cameraSolid:true});a.box(-6,b+3.23,5.65,7.9,.16,6.65,col.wood,overhead);
  for(let x of [-9.3,-2.7])a.box(x,b+1.65,3,.24,3.3,.65,col.wood);
  for(let x of [-8,-4]){a.box(x,b+2,3.24,1.25,1.25,.06,col.wood);a.box(x,b+2,3.28,1.01,1.01,.05,0xf4d091,{em:.5});a.box(x,b+2,3.32,1.06,.08,.05,col.wood);a.box(x,b+2,3.32,.08,1.06,.05,col.wood);}
  a.bench(-6,4.2,0,b);lamp(a,-10.6,8.7,.65);
- for(let i=0;i<8;i++)a.box(-9.4+i*.98,b+3.24+(1-Math.abs(i/7-.5)*2)*1.65,5.65,.07,.09,6.7,0x8c9a82,{cameraSolid:false});
+ for(let i=0;i<8;i++)a.box(-9.4+i*.98,b+3.24+(1-Math.abs(i/7-.5)*2)*1.65,5.65,.07,.09,6.7,0x8c9a82,{...overhead,cameraSolid:false});
 }
 function observatory(a){const b=h(3,-47);a.box(3,b+2.5,-49,14,5,.6,col.light);a.box(-3.8,b+2,-46,.6,4,6,col.light);a.box(9.8,b+2,-46,.6,4,6,col.light);
  // Tall crown stays recognizable above the ridge in the arrival view.

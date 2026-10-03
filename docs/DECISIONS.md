@@ -1,3 +1,18 @@
+# Local-life decisions, 2026-10-03
+
+- Deepen existing Heaven/Hell/Atlantis/Cosmos geography with four practical jobs; preserve Earth's living-road story and repeat patrol. Do not add a disconnected realm or claim completed countries.
+- Keep a separate optional `localLife1` ledger with stable definition/choice/step IDs. Missing data initializes unaccepted; future/malformed data refuses. No old trail extension or inferred consent from prior claims.
+- Supply cutting trays, lamp cartridges and boards separately from normal inventory and equipment. Choices are explicit and fixed at acceptance. Correct assembly is a physical accepted event; reading, routing and rendering grant nothing.
+- Validate the full payment/candidate and save before adopting only owned fields. Failed saves/capacity preserve unpaid work. Changed requests/reload never pay a finite claim again.
+- Offer declared ordinary crafting/building contributions to both fresh and fitted characters; do not present them as a universal gear-power upgrade, raise levels or scale local threats invisibly.
+- Keep original Cosmos invitation ownership until a commission is explicitly accepted; then expose its local routes/return control. Dry route guidance while diving must explain the actual gallery exit. Finished shelves clear the existing bench rather than changing its collider.
+- The native both-view test caught zero completed-shelf pixels under the Cosmos refuge roof. Register roof, eave and ribs with the existing physical-footprint shelter reveal, retaining camera/collision authority and the optional cutaway setting. Keep the failing receipt and require visible completed work against the earlier submitted parts in both unchanged camera views.
+- Qualify graceful page-and-browser restarts separately from abrupt termination. Preserve the observed native-06 storage revision rollback and unresolved cause; neither source review nor a passing graceful control proves crash durability.
+- Preserve imported custom camera profiles before explicit player input. For native appearance qualification select the camera and deliberately press the existing R reset; do not mutate production framing, move the work or promise visibility when a saved close orbit faces a wall. Keep native-09's angle-specific zero-pixel evidence alongside the default-reset checks.
+- Recovered propagation, small-water repair, instrument upkeep and refuge-use design inform bounded original adaptations. Provisional titles/placements do not resolve paid power, loss severity, pet allocation, construction scale or the larger realm saga.
+
+Prior decisions follow; none is erased.
+
 # A continuous living-road production slice, 2026-10-03
 
 - Preserve positive visibility acceptance after the full634bf66 remote gate caught Rill's zero-pixel diorama approach. Relocate one canonical foreground tree with its derived canopy rather than moving the giver, camera or test player; preserve its stable ID, tree count and authoritative collision. Add an original-placement occlusion control and retain native both-view framebuffer checks. Expand the giver harness to the exact11 current IDs and Rill's actual state-derived expedition conversation; older static dialogue/count assumptions do not define product behavior.

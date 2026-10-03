@@ -1,3 +1,11 @@
+# Local life across the roads, 2026-10-03
+
+The current implementation branch is `gameplay/world-living-contracts-20261003`, based on PR38's `f3a4df5f8023b385ea5273aa6d90ba5ddf438121`. It adds practical finite commissions in Heaven, Hell, Atlantis and Cosmos, preserving Earth's connected woodland story and repeat patrol. Eight deliberate arrangements and thirteen physical actions use supplied job parts, readable routes and separate once-only durable payments. Both cameras retain the resulting bed/filter/lamp/shelf fixtures. These bounded openings are not complete realm countries or the main saga.
+
+World/key9 and adventure12 remain. Optional `localLife1` migrates older earned characters without accepting work or replaying rewards. Existing XP, sockets, gear, companions, house, crops, notebook and all earlier ledgers remain. The authoring gate passes91 syntax checks,1104 rules,56 Python checks plus one existing Windows skip, and40 journeys. A normal-time RTX Cosmos tour passes19 checks with actual retained video. See [the play guide](playtests/LOCAL_LIFE_2026-10-03.md) and [current results](development/LOCAL_LIFE_RESULTS_2026-10-03.md) for exact epochs, negative outcomes and limits. The review PR supplies the subsequent exact pushed-head remote/full-browser receipt; it is not backdated into these pre-push records. The branch stacks against unmerged PR38; main and public deployment stay untouched.
+
+Prior dated records follow and keep their original source epochs.
+
 # Stormfall and the Living Road, 2026-10-03
 
 The current review branch is `gameplay/coastward-expedition-20261003`, based on the fetched PR37 head `88aa1feaca4023064aed4ef5c9d77d59e958e353`. Dom authorized this seven-hour implementation pass with two Sol 6.1 xhigh colleagues. Origin was checked again during qualification; PR37 remained an open draft at that head with no new comments or review. The gameplay checkout and earlier work remain the source of truth; canon archives guide attributed design.
