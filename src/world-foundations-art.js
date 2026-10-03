@@ -54,7 +54,9 @@ function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isIn
  for(const p of def.solids)a.box(p.x,W.height(def.room,p.x,p.z)+p.h/2,p.z,p.w,p.h,p.d,p.color??def.palette.stone,{rough:.96,cameraSolid:true,cutaway:true,worldSolid:true,worldSolidId:p.id});
  if(def.dive){const d=def.dive,v=d.volume;
   a.box(v.x,d.minY-.36,v.z,v.w,.12,v.d,0x638b84,decor);
-  for(const p of d.solids||[])a.box(p.x,p.y+p.h/2,p.z,p.w,p.h,p.d,p.color??0x9bb8ab,{rough:.94,cameraSolid:true,cutaway:true,worldSolid:true,worldSolidId:p.id});
+  // The maintained air court uses the existing preference-controlled roof
+  // reveal. Its authoritative ceiling remains solid; only its view opens.
+  for(const p of d.solids||[])a.box(p.x,p.y+p.h/2,p.z,p.w,p.h,p.d,p.color??0x9bb8ab,{rough:.94,cameraSolid:true,cutaway:true,worldSolid:true,worldSolidId:p.id,...(p.id==='bellglass-ceiling'?{worldRoof:'atlantis-air-court'}:{})});
   for(const p of d.dryCourts||[]){a.box(p.x,p.floorY-.06,p.z,p.w,.12,p.d,0xb7b692,decor);a.box(p.x,p.floorY+.025,p.z,1.5,.05,2.1,0x9a8b6c,decor);}
   // Thin wall inlay and a supported field notebook make the maintained court
   // readable without changing its body route, dry volume or collision owner.

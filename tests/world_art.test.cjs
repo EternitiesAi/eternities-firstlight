@@ -12,3 +12,12 @@ test('all new static scenery uses supported finite meshes instead of silent cyli
 test('visible solid boxes match canonical body collision footprints and heights',()=>{for(const id of W.IDS.filter(id=>id!=='cosmos')){const {d,items}=submission(id);for(const p of [...d.solids,...(d.dive?.solids||[])]){const boxes=items.filter(it=>it.worldSolid&&it.worldSolidId===p.id);assert.equal(boxes.length,1,p.id+' one authoritative visible solid');const it=boxes[0],base=p.y??W.height(d.room,p.x,p.z);assert.deepEqual(it.p,[p.x,base+p.h/2,p.z]);assert.deepEqual(it.s,[p.w,p.h,p.d]);assert.equal(it.cameraSolid,true);}}});
 test('submitted opaque geometry leaves the actual 3D gallery body route clear',()=>{const {d,items}=submission('atlantis'),path=d.dive.routes[0].points,near=items.map(it=>({...it,b:bounds(it)})).filter(it=>it.b.max[0]>=3&&it.b.min[0]<=13&&it.b.max[2]>=-41&&it.b.min[2]<=-18&&it.b.max[1]>-2.7+.061&&it.b.min[1]<1.45-.061);for(let i=1;i<path.length;i++){const a=path[i-1],b=path[i],n=Math.ceil(Math.hypot(...a.map((v,j)=>b[j]-v))*20);for(let k=0;k<=n;k++){const p=a.map((v,j)=>v+(b[j]-v)*k/n);assert.ok(W.swimClear(d.dive,p[0],p[1],p[2]),'canonical 3D route body fits');for(const it of near){const q=it.b,overlap=q.min[0]<p[0]+.31&&q.max[0]>p[0]-.31&&q.min[2]<p[2]+.31&&q.max[2]>p[2]-.31&&q.min[1]<p[1]+1.7-.061&&q.max[1]>p[1]+.061;assert.equal(overlap,false,'opaque '+it.kind+' at '+it.p+' intrudes above cosmetic surface tolerance at '+p);}}}});
 test('wet volume under the civic deck retains actual head clearance',()=>{const {items,d}=submission('atlantis'),upper=items.filter(it=>it.worldGround&&it.p[0]>=3&&it.p[0]<=13&&it.p[2]>=-40&&it.p[2]<=-18);assert.ok(upper.length>0);for(const it of upper)assert.ok(it.p[1]-it.s[1]/2>d.dive.maxY+1.7,'deck underside clears the highest permitted body');});
+
+test('only the canonical air-court ceiling receives preference-controlled roof reveal',()=>{
+ const {items,d}=submission('atlantis'),roofs=items.filter(it=>it.worldRoof);
+ assert.equal(roofs.length,1);const roof=roofs[0],solid=d.dive.solids.find(p=>p.id==='bellglass-ceiling');
+ assert.equal(roof.worldRoof,'atlantis-air-court');assert.equal(roof.worldSolidId,solid.id);
+ assert.equal(roof.worldSolid,true);assert.equal(roof.cameraSolid,true);assert.equal(roof.cutaway,true);
+ assert.deepEqual(roof.p,[solid.x,solid.y+solid.h/2,solid.z]);assert.deepEqual(roof.s,[solid.w,solid.h,solid.d]);
+ for(const id of ['earthlands','heaven'])assert.equal(submission(id).items.some(it=>it.worldRoof),false);
+});
