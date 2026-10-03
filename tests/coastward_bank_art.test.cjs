@@ -57,3 +57,14 @@ test('smooth bank surface vertices share normals across triangle joins without c
  const mesh=E.geometry('coast-bank'),seen=new Map();for(let i=0;i<128*18;i+=6){const key=Array.from(mesh.slice(i,i+3)).join(','),n=Array.from(mesh.slice(i+3,i+6));if(seen.has(key))assert.deepEqual(n,seen.get(key));else seen.set(key,n);assert.ok(Math.abs(Math.hypot(...n)-1)<1e-6);assert.ok(n[0]>=0&&n[1]>0);}
  assert.equal(E.geometry('bank-slope').length/18,72);
 });
+
+test('only existing channel posts and four approach lamps join the main-view cutaway aperture',()=>{
+ const built=submission('earthlands'),posts=built.filter(p=>p.coastwardBridgePost),lamps=built.filter(p=>p.coastwardApproachLamp);
+ assert.equal(posts.length,22);assert.equal(lamps.length,12);
+ for(const p of [...posts,...lamps]){assert.equal(p.cutaway,true);assert.equal(p.cameraSolid,false);}
+ for(const p of posts){assert.equal(p.kind,'box');assert.equal(Math.abs(p.p[0]),3.62);assert.equal(p.p[1],2.24);assert.deepEqual(p.s,[.23,1.34,.23]);assert.equal(p.c,0x786147);assert.equal(p.solidId,p.p[0]<0?'bridge-west-rail':'bridge-east-rail');assert.ok(p.p[2]>=20&&p.p[2]<=90&&(p.p[2]-20)%7===0);}
+ for(const p of lamps){assert.equal(Math.abs(p.p[0]),7);assert.ok([19,98].includes(p.p[2]));}
+ for(const id of ['heaven','hell','atlantis'])assert.equal(submission(id).some(p=>p.coastwardBridgePost||p.coastwardApproachLamp),false);
+ for(const p of built.filter(p=>Math.abs(p.p[0])===4&&p.p[2]===-62&&['cylinder','cone'].includes(p.kind)))assert.equal(p.cutaway,false);
+ assert.ok(W.walkable(d.room,0,55,.31));assert.equal(W.walkable(d.room,-3.62,55,.31),false);assert.equal(W.height(d.room,0,55),1.57);
+});

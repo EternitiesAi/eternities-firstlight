@@ -1,0 +1,7 @@
+# Foreground posts and approach lamps
+
+The actual `b39255cb…389c` side-crossing recording showed two remaining occluders: the post at z55 covered the traveler's lower legs, and the near approach lamp at (-7,19) covered the traveler at the far bank. The rail itself already participated in the normal camera aperture. Original stills and the complete 3,341-frame / 112.02-second actual-audio decode remain in `D:/07-GAMES/Firstlight/artifacts/world-production-2026-10-03/bridge-moment-rtx-01/`. This is actual scene evidence, distinct from a synthetic framebuffer proof.
+
+Only the 22 existing Coastward decorative rail posts and 12 parts of the four existing approach lamps now set `cutaway:true`. They retain their exact geometry, colors, coordinates, non-solid camera classification and canonical rail IDs. The original camera preference controls the existing main-view aperture; reflection and shadow passes retain whole geometry. Lamps at the coppice and other realms retain their earlier flags. No shader, navigation, ground, quest, player, camera preference or saved-data rule changes.
+
+The focused CPU gate passes all ten Coastward-bank geometry tests, including the new actual-submission count, unchanged extent/identity, route/rail physical-boundary and other-realm checks. Regenerated HTML is 2,504,210 bytes / SHA-256 `83d035fd7bda9359da0f80e08349fa52d2899eb2a23d73441f147400770900ed`. Actual on/off, fresh-reflection and traveler pixel qualification is the next independent gate; this note does not claim that result in advance.

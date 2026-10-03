@@ -164,9 +164,13 @@
    art.box(x,y,z,w,h,d,color,{cameraSolid:false,cutaway:false,rough:.92,...options});count++;
   };
   const lamp=(x,z,base=height(x,z),scale=1)=>{
-   add('cylinder',x,base,z,.12*scale,2.3*scale,.12*scale,def.palette.trim);
-   box(x,base+2.35*scale,z,.32*scale,.42*scale,.32*scale,0xffda9a,{em:.65});
-   add('cone',x,base+2.6*scale,z,.62*scale,.26*scale,.62*scale,def.palette.trim);
+   // Only the four existing channel-approach lamps share the foreground
+   // aperture with the rails. Reflections/shadows and physical ground stay
+   // whole; other realm lamps retain their current presentation contract.
+   const opt=def.id==='earthlands'&&Math.abs(x)===7&&[19,98].includes(z)?{cutaway:true,coastwardApproachLamp:true}:{};
+   add('cylinder',x,base,z,.12*scale,2.3*scale,.12*scale,def.palette.trim,opt);
+   box(x,base+2.35*scale,z,.32*scale,.42*scale,.32*scale,0xffda9a,{...opt,em:.65});
+   add('cone',x,base+2.6*scale,z,.62*scale,.26*scale,.62*scale,def.palette.trim,opt);
   };
   const roof=(id,x,z,w,d,h,color)=>{
    add('roof',x,height(x,z)+h,z,w,h*.28,d,color,{cutaway:true,structureId:id});
@@ -185,7 +189,7 @@
     add('timber-panel',0,height(0,(lo+hi)/2)+.013,(lo+hi)/2,6.7,.014,hi-lo,0x9b7952,{bridgeSkin:true,rough:.87});
    }
    for(let z=20;z<=90;z+=7) for(const x of [-3.62,3.62]) {
-    box(x,height(x,z)+.67,z,.23,1.34,.23,0x786147,{solidId:x<0?'bridge-west-rail':'bridge-east-rail'});
+    box(x,height(x,z)+.67,z,.23,1.34,.23,0x786147,{cutaway:true,coastwardBridgePost:true,solidId:x<0?'bridge-west-rail':'bridge-east-rail'});
    }
    for(let z=23;z<=87;z+=16) for(const x of [-2.9,2.9]) {
     // Piers stop below the actual bridge surface; they add no supported shelf.
