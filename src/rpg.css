@@ -23,7 +23,7 @@ body.rpg-edition{--gold:#dbc18c;--ink:#111d21;--pane:rgba(15,29,33,.94);--muted:
 .rpg-nav svg{width:19px!important;height:19px!important;color:var(--gold)}
 #rpg-hud kbd,#rpg-window kbd{font:10px system-ui,sans-serif;border:1px solid var(--line);background:rgba(0,0,0,.25);border-radius:3px;padding:1px 4px;color:var(--gold)}
 #quest-tracker{position:absolute;left:24px;top:101px;width:284px;pointer-events:auto;background:linear-gradient(120deg,rgba(16,31,32,.95),rgba(20,38,39,.79));border:1px solid var(--line);border-left:2px solid var(--gold);border-radius:0 8px 8px 0;box-shadow:0 5px 30px #0002}
-.tracker-switch{display:flex;border-bottom:1px solid var(--line);padding:6px 10px;gap:6px}.tracker-switch button{padding:4px 8px;font-size:11px;border:0!important;background:none!important;border-radius:4px}
+.tracker-switch{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--line);padding:6px 10px;gap:6px}.tracker-switch button{padding:4px 8px;font-size:11px;border:0!important;background:none!important;border-radius:4px}
 .tracker-switch button[aria-pressed=true]{background:#50615b88!important;color:#f8dbad!important}
 #tracked-open{border:0!important;background:none!important;display:block;width:100%;text-align:left;padding:15px 17px}
 #tracked-open small{display:block;color:var(--gold);font-size:9px;letter-spacing:1.8px}#tracked-open strong{display:block;font:21px/1.2 Georgia,serif;margin:7px 0 10px}#tracked-open span{display:block;color:#d1dcd0;font-size:12px;line-height:1.65}#tracked-progress{display:block;margin-top:14px;color:#9eb6ae;font-style:normal;font-size:10px}

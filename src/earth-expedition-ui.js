@@ -115,6 +115,7 @@ class ExpeditionUI{
   // Restore the active outing once per character body. Subsequent manual tracker
   // selections stay deliberate, including an older pinned equipment project.
   if(this.owner!==this.sim){this.owner=this.sim;const e=this.sim.state.earthExpedition;if(e.story.accepted&&!e.story.claimed||e.patrol.active)this.rpg.quest='expedition';}
+  const tracker=document.querySelector('.tracker-switch [data-id="expedition"]');if(tracker){tracker.hidden=!this.sim.state.earthExpedition.story.accepted;tracker.setAttribute('aria-pressed',String(this.rpg.quest==='expedition'));}
   if(this.rpg.quest!=='expedition')return;
   const s=this.sim.state.earthExpedition,p=E.progress(this.sim),patrol=!!p.patrol.active,progress=patrol?p.patrol:p.story;
   document.querySelector('#tracked-chapter').textContent=patrol?'ELDERWEALD · PATROL '+p.patrol.active.run:'ELDERWEALD · YOUR LIVING ROAD';
