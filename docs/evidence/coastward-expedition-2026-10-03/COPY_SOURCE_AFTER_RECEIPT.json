@@ -1,0 +1,182 @@
+{
+  "checked_at_utc": "2026-10-03T11:11:09.340510+00:00",
+  "changed_sources": [
+    {
+      "file": "logs/collect-portable-console.log",
+      "copied_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_now_sha256": "2a711d66e247414a150c372e2cbc2060dbb43cf483c654d98419f8b275b32510",
+      "source_now_bytes": 147,
+      "note": "The collector copied its own empty in-flight console, then printed its result. Original copied bytes are preserved; the final collector console is packaged separately."
+    }
+  ],
+  "added_copies": [
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\MOBILE_GAMEPLAY_TAKE05.mp4",
+      "file": "mobile/MOBILE_GAMEPLAY_TAKE05.mp4",
+      "bytes": 15015603,
+      "sha256": "cf3c0ddd120f4dba526b85add46704b06ca8700ad19af7a50323ec7c1b4e2f2e"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\MOBILE_GAMEPLAY_TAKE05_VERIFICATION.json",
+      "file": "mobile/MOBILE_GAMEPLAY_TAKE05_VERIFICATION.json",
+      "bytes": 2451,
+      "sha256": "5e488027c55c631b13961a310564faccc93fbbf45da57cad854e2f9d39fdee35"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\mobile-excerpt-take05-console.log",
+      "file": "mobile/mobile-excerpt-take05-console.log",
+      "bytes": 76,
+      "sha256": "2240450f1ff31fa24ddbabbe00be88a9cc440183426cd36b0e879ddb8e129108"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\mobile-excerpt-take05-encode.log",
+      "file": "mobile/mobile-excerpt-take05-encode.log",
+      "bytes": 5144,
+      "sha256": "0244ff21bebbb0cb3266b0cd2408ec75554bc74b0411212544037e7d369ea37e"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\mobile-excerpt-take05-full-decode.log",
+      "file": "mobile/mobile-excerpt-take05-full-decode.log",
+      "bytes": 663555,
+      "sha256": "1cf95ed99197c6d027dbc03aa3cad257e3ea5c50b543323ea88535353ed6dd5e"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\mobile-excerpt-console.log",
+      "file": "negative/mobile-excerpt-take01/mobile-excerpt-console.log",
+      "bytes": 270,
+      "sha256": "099481a02170b926a19f5f9166d650cd83f8edd41ca2154cd035c7dd012f88d7"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\mobile-excerpt-encode.log",
+      "file": "negative/mobile-excerpt-take01/mobile-excerpt-encode.log",
+      "bytes": 6350,
+      "sha256": "70447427a79225403cd6414b806c6067b578f17b7cb52c783052741d1e3d455c"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\mobile-excerpt-full-decode.log",
+      "file": "negative/mobile-excerpt-take01/mobile-excerpt-full-decode.log",
+      "bytes": 664702,
+      "sha256": "ff4950b8ff7070f3e9bd40f48d72dfeff2a44cea0f972fa8af3d206ecfd10047"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\mobile-excerpt-take02-console.log",
+      "file": "negative/mobile-excerpt-take02/mobile-excerpt-take02-console.log",
+      "bytes": 291,
+      "sha256": "8448c567654b1eda2e7de9b6f34e6379381c78e861b466937677e6d2a76efa91"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\mobile-excerpt-take02-encode.log",
+      "file": "negative/mobile-excerpt-take02/mobile-excerpt-take02-encode.log",
+      "bytes": 6279,
+      "sha256": "b1574c293324cabe7b9d5c66057bbf9dab25b8d5c97543f6803939e6a8e2f232"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\mobile-excerpt-take02-full-decode.log",
+      "file": "negative/mobile-excerpt-take02/mobile-excerpt-take02-full-decode.log",
+      "bytes": 664712,
+      "sha256": "b0c3bc4d10199c8953def98112cab1d912bce950f0308393986f504a4fa0bfe6"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\mobile-excerpt-take03-console.log",
+      "file": "negative/mobile-excerpt-take03/mobile-excerpt-take03-console.log",
+      "bytes": 247,
+      "sha256": "489a926d0980bd0496ba7ac1e78692d874ed46bfcedc6247f03a32a30d09a0ff"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\mobile-excerpt-take03-encode.log",
+      "file": "negative/mobile-excerpt-take03/mobile-excerpt-take03-encode.log",
+      "bytes": 769,
+      "sha256": "9c3c3e8cb29bdaa357f3e9b413928916ef3e6d3b9ab6558de8163ec1aa05389f"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\mobile-excerpt-take04-console.log",
+      "file": "negative/mobile-excerpt-take04/mobile-excerpt-take04-console.log",
+      "bytes": 291,
+      "sha256": "75d6372ed84353ed9d82d3b445530848a0286748772a1f39185cf8499ab9ff99"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\mobile-excerpt-take04-encode.log",
+      "file": "negative/mobile-excerpt-take04/mobile-excerpt-take04-encode.log",
+      "bytes": 6382,
+      "sha256": "389317fca1f6ae921cdf5e71d41d241782d16dec7c7102ca7cdd285209f2647a"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\mobile-excerpt-take04-full-decode.log",
+      "file": "negative/mobile-excerpt-take04/mobile-excerpt-take04-full-decode.log",
+      "bytes": 663286,
+      "sha256": "3507700049e189aac07376d3200a858d3ebbe44631e1b022eb0acc737c94c9a3"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\make_mobile_excerpt.py",
+      "file": "harnesses/make_mobile_excerpt.py.snapshot",
+      "bytes": 3056,
+      "sha256": "7ed5a040a97f4205440f0c517dc38b28dd635f43047dccebc6022fe62c7e1a0d"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\make_mobile_excerpt_take02.py",
+      "file": "harnesses/make_mobile_excerpt_take02.py.snapshot",
+      "bytes": 3209,
+      "sha256": "7853f14cb7cc234d6f04ea726c042888a852a70c2ef9d523a8dfb342104fee5a"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\make_mobile_excerpt_take03.py",
+      "file": "harnesses/make_mobile_excerpt_take03.py.snapshot",
+      "bytes": 3162,
+      "sha256": "5978148fd213348f77fd467206f15900b77d8d80adeae3ef3c22b522595424ce"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\make_mobile_excerpt_take04.py",
+      "file": "harnesses/make_mobile_excerpt_take04.py.snapshot",
+      "bytes": 3152,
+      "sha256": "16f247af5a789bb689043477a882282cbaa010b86578d5836701fd7b024f3eb4"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\make_mobile_excerpt_take05.py",
+      "file": "harnesses/make_mobile_excerpt_take05.py.snapshot",
+      "bytes": 3164,
+      "sha256": "b0b312d7f22c1137a67dcb27d3fc290af4aaf3c07af74ee103625e2353955cf1"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\encode_portable.py",
+      "file": "harnesses/encode_portable.py.snapshot",
+      "bytes": 3434,
+      "sha256": "08ff327482e3b3b32776aee0b981e30538bfe2d2a938e21635cfb43a93fcc434"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\encode_portable_small.py",
+      "file": "harnesses/encode_portable_small.py.snapshot",
+      "bytes": 3698,
+      "sha256": "2da410fe9ecdd43fe24db974a42eb8701a78f701797e94767cbed2a82b308273"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\collect_portable.py",
+      "file": "harnesses/collect_portable.py.snapshot",
+      "bytes": 5255,
+      "sha256": "a63af8124ca3ed372d9788ea1a83ebf61813e8f9b8e8da433e88f0bf1656b1c2"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\finalize_portable.py",
+      "file": "harnesses/finalize_portable.py.snapshot",
+      "bytes": 4068,
+      "sha256": "76c9cdb4bbcd0e0fcae11619a7d21e1dd732590449404cfe3eaefcfff4fd7c82"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\PORTABLE_BOW_VISUAL.png",
+      "file": "mobile/PORTABLE_BOW_VISUAL.png",
+      "bytes": 803470,
+      "sha256": "fd8e8cecefc8f62e93e72564a03b66124ee348f7891e583b5c751c0332209901"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\portable-bow-visual-decode.log",
+      "file": "mobile/portable-bow-visual-decode.log",
+      "bytes": 1901,
+      "sha256": "d12cd20dd9b8aa428c88e7cc8be744227ce20786860e385561ac4683d848ffa7"
+    },
+    {
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\collect-portable-console.log",
+      "file": "logs/final-collect-portable-console.log",
+      "bytes": 147,
+      "sha256": "2a711d66e247414a150c372e2cbc2060dbb43cf483c654d98419f8b275b32510"
+    }
+  ]
+}

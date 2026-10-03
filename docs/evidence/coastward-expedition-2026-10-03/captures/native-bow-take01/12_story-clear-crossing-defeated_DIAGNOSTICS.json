@@ -1,0 +1,246 @@
+{
+  "version": "10.0.0",
+  "mode": "webgl2",
+  "scene": "world-earthlands",
+  "world": {
+    "id": "earthlands",
+    "height": 1.57,
+    "dive": null,
+    "journey": {
+      "counter": 0,
+      "lastClaim": 0,
+      "firstClaimed": false,
+      "active": null,
+      "defeated": []
+    }
+  },
+  "earth": null,
+  "cosmos": null,
+  "networkDependencies": 0,
+  "liveAI": false,
+  "multiplayer": false,
+  "adventure": {
+    "tactics": {
+      "scene": "world-earthlands",
+      "target": null,
+      "auto": false,
+      "nextAttack": 0,
+      "guardUntil": 161.86319999998716,
+      "shield": 0,
+      "shieldUntil": 0,
+      "cooldowns": {
+        "guard": 166.86319999998716,
+        "insight": 0,
+        "spirit": 0
+      },
+      "hits": [
+        {
+          "x": -118.08031744395126,
+          "z": -41.98755685027302,
+          "n": 13,
+          "at": 161.76299999998625,
+          "id": 8
+        },
+        {
+          "x": -118.08031744395126,
+          "z": -41.98755685027302,
+          "n": 13,
+          "at": 162.52969999998606,
+          "id": 10
+        }
+      ],
+      "serial": 10,
+      "windup": null,
+      "motion": {
+        "style": "bow",
+        "at": 162.49629999998606
+      }
+    },
+    "beacon": {
+      "phase": "idle",
+      "time": 0,
+      "wave": 0,
+      "ward": 100,
+      "actors": [],
+      "serial": 0,
+      "notice": "",
+      "repairAt": 0,
+      "maraAt": 0,
+      "ilanAt": 0,
+      "playerRepairAt": 0,
+      "defeats": 0
+    },
+    "crossing": {
+      "room": "world-earthlands",
+      "tones": [],
+      "seek": false,
+      "rangAt": -10,
+      "tone": null,
+      "toneSerial": 0
+    },
+    "player": {
+      "x": -119,
+      "z": -42.3,
+      "yaw": 1.2433004519623199
+    },
+    "paused": false,
+    "intent": null,
+    "stats": {
+      "level": 1,
+      "attack": 13,
+      "defense": 1,
+      "maxHP": 100
+    },
+    "weapon": {
+      "style": "bow",
+      "reach": 11,
+      "cooldown": 0.75,
+      "stamina": 6,
+      "primary": "Loose arrow",
+      "special": "Piercing light"
+    },
+    "arrows": [],
+    "range": {
+      "active": false,
+      "start": 0,
+      "hits": {},
+      "shots": 0,
+      "message": "A calm place to learn a different rhythm."
+    },
+    "enemies": [
+      {
+        "id": "earthlands-coppice-skitter",
+        "x": -29.431968905666636,
+        "z": -19.614606416152494,
+        "hp": 72,
+        "maxHP": 72,
+        "hidden": false,
+        "eventEnemy": false,
+        "kind": "skitter",
+        "ringMode": null,
+        "custom": null,
+        "mode": "idle",
+        "timer": -89.59650000000741,
+        "aim": null
+      }
+    ],
+    "companion": {
+      "room": "world-earthlands",
+      "x": 0,
+      "z": 104,
+      "yaw": 3.141592653589793,
+      "path": [],
+      "nextPath": 0,
+      "nextHit": 0,
+      "seek": null,
+      "status": "Beside you"
+    }
+  },
+  "sandbox": {
+    "bridge": false,
+    "objects": 0,
+    "elapsed": 162.59629999998603,
+    "autoGather": null,
+    "buildMode": null
+  },
+  "saveState": "saved",
+  "characters": {
+    "mode": "managed",
+    "active": "character-2",
+    "revision": 31,
+    "count": 2,
+    "writer": true,
+    "error": null
+  },
+  "fps": 60.00263747857026,
+  "errors": [],
+  "camera": {
+    "yaw": 0.7599999999999998,
+    "elevation": 0.88,
+    "half": 17,
+    "distance": 7.5,
+    "actualDistance": 7.499999988671816,
+    "fov": 60,
+    "center": [
+      -118.99999999872024,
+      2.1700000000000004,
+      -42.29999999795248
+    ],
+    "overview": false,
+    "preset": "follow",
+    "tour": false,
+    "ready": true,
+    "baseHalf": 17,
+    "zoom": 1,
+    "projection": "orthographic",
+    "eye": [
+      -86.0789684725857,
+      59.9754159174227,
+      -7.662742977959816
+    ],
+    "target": [
+      -118.99999999872024,
+      2.1700000000000004,
+      -42.29999999795248
+    ]
+  },
+  "metrics": {
+    "drawCalls": 31,
+    "texturedDrawCalls": 4,
+    "texturedInstances": 541,
+    "surfaceMaterials": {
+      "version": 1,
+      "id": "earth-weathered-timber-v1",
+      "status": "ready",
+      "ready": true,
+      "error": null,
+      "width": 512,
+      "height": 512,
+      "colorFormat": "SRGB8_ALPHA8",
+      "roughnessFormat": "R8",
+      "textureBytes": 1310720,
+      "mipmapBytes": 436905,
+      "totalTextureBytes": 1747625,
+      "decodedImageBytes": 2097152,
+      "decodeWallMs": 50.20000001788139,
+      "uploadCpuMs": 59.19999998807907,
+      "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+      "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+      "enabled": true
+    },
+    "instances": 1757,
+    "triangles": 71340
+  },
+  "reflection": {
+    "method": "world-plane P*V*H",
+    "height": 0.01,
+    "horizontalFlip": false
+  },
+  "cutaway": {
+    "enabled": true,
+    "focus": [
+      -119,
+      2.45,
+      -42.3
+    ]
+  },
+  "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "music": {
+    "playing": false,
+    "scoreRevision": 0,
+    "playingRevision": -1,
+    "step": -1
+  },
+  "gathering": null,
+  "layoutRevision": 0,
+  "roadsideGathering": {
+    "status": "idle",
+    "playing": false,
+    "pending": false
+  },
+  "audio": {
+    "enabled": false,
+    "state": "not-created",
+    "soundscape": null
+  }
+}

@@ -1,0 +1,233 @@
+{
+  "method": "Visible expedition UI and whole-Chromium restart on isolated native storage.\nStarting saves are freshly command-earned. Production movement/combat runs with\nlabelled accelerated ticks in software WebGL; no human/GPU/normal-time claim.\n",
+  "head": "13e0a0e67063fc3b412de9cbb5ff2656ba4387bb",
+  "html_sha256": "7387f000567c1f75546279a7fb957fde9f577bd61134a8082a9f351f93e6f88f",
+  "harness_sha256": "8bdf1d45729c2c9936d5e59fd9e92c3a61b2ea61a4818fee0f60d097dfdcf9ed",
+  "checks": [
+    {
+      "name": "fresh-blade exact assembled HTML loads",
+      "passed": true
+    }
+  ],
+  "browser_errors": [],
+  "variants": {
+    "fresh-blade": {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\browser-02\\earned\\fresh-blade\\00_COMMAND_EARNED_SOURCE.json",
+        "sha256": "5fb11eedac96694590ca7efc47454707217888d8f013a3751fbab0c94ffb01f6",
+        "label": "Freshly command-earned production source"
+      },
+      "style": "blade",
+      "walks": [],
+      "combats": [],
+      "restarts": []
+    }
+  },
+  "errors": [
+    "Traceback (most recent call last):\n  File \"D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\tests\\earth_expedition_browser.py\", line 97, in <module>\n    chooser.value.set_files(str(fixture));page.wait_for_selector('[data-rpg=\"chars-confirm-import\"]');page.locator('[data-rpg=\"chars-confirm-import\"]').click();page.wait_for_function('Realm.diagnostics.characters.active===\"character-2\"');render();check(variant+' native import adds separate complete earned character',diag()['characters']['count']==2 and ownership(state())==ownership(source) and ev('localStorage.getItem(RealmCore.KEY)')==old_key);initial=state();enter();workspace('expedition');text=page.locator('#rpg-content').inner_text();check(variant+' terms expose route danger rewards choices and binding cost',all(t in text for t in ['wetland footbridge','64 / 136','45 XP','18 sunmarks','3 ore','8 timber','8 fibre','+2 attack','6 fibre']));check(variant+' reading never accepts or spends',not state()['earthExpedition']['story']['accepted'] and state()['adventure']['coins']==initial['adventure']['coins']);shot('terms')\n                                                                                                                                                                ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\sync_api\\_generated.py\", line 11595, in wait_for_function\n    self._sync(\n    ~~~~~~~~~~^\n        self._impl_obj.wait_for_function(\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<4 lines>...\n        )\n        ^\n    )\n    ^\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\_impl\\_sync_base.py\", line 115, in _sync\n    return task.result()\n           ~~~~~~~~~~~^^\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\_impl\\_page.py\", line 1110, in wait_for_function\n    return await self._main_frame.wait_for_function(**locals_to_params(locals()))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\_impl\\_frame.py\", line 878, in wait_for_function\n    await self._channel.send(\"waitForFunction\", self._timeout, params)\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\_impl\\_connection.py\", line 69, in send\n    return await self._connection.wrap_api_call(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<3 lines>...\n    )\n    ^\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\_impl\\_connection.py\", line 559, in wrap_api_call\n    raise rewrite_error(error, f\"{parsed_st['apiName']}: {error}\") from None\nplaywright._impl._errors.Error: Page.wait_for_function: EvalError: Evaluating a string as JavaScript violates the following Content Security Policy directive because 'unsafe-eval' is not an allowed source of script: script-src 'unsafe-inline'\".\n\n    at eval (<anonymous>)\n    at predicate (eval at evaluate (:290:30), <anonymous>:4:56)\n    at next (eval at evaluate (:290:30), <anonymous>:29:29)\n"
+  ],
+  "last_ui": {
+    "variant": "fresh-blade",
+    "text": "Commons\nFamily house\nObservatory\nMusic room\nWorkshop\nAmphitheatre\nGarden\nYour retreat\nBlossom garden\nLookout\nLantern pier\nIlan\nMara\nOren\n\u03a3\nETERNITIES\n17:12\nDAY 01 \u00b7 PAUSED\n\u266b\n\u2637\nFirstlight Valley\nN\nSAVED ON THIS DEVICE\nNo servers \u00b7 No accounts \u00b7 No live AI\n0 FPS \u00b7 LOW\nExplore\n\u2715\nPlaying Visitor. Each character keeps its own world.\nCharacter\nC\nJournal\nJ\nCrafting\nK\nMap\nM\nMore\nStory\nHomestead\nRiverbank\nProject\nCHAPTER 1\nA passage through stone\nEnter the northern mine with a pickaxe. Chip an exposed wall.\n1 / 6 complete \u00b7 Journal J\n3rd person\nDiorama\nTactical\nWide\n100\nHEALTH\n100 STAMINA\n1\nStrike\n2\nSweep\n3\nBrace\n4\nBriar\n5\nUnchosen\n6\nTonic \u00d73\n\u2423\nDodge\nTAB selects \u00b7 1 autoattack \u00b7 2\u20136 skills \u00b7 SPACE dodge\n\u03a3\nOpening Firstlight Valley\n\nEVERYTHING IS ALREADY HERE.",
+    "diagnostics": {
+      "version": "10.0.0",
+      "mode": "webgl2",
+      "scene": "valley",
+      "world": null,
+      "earth": null,
+      "cosmos": null,
+      "networkDependencies": 0,
+      "liveAI": false,
+      "multiplayer": false,
+      "adventure": {
+        "tactics": {
+          "scene": null,
+          "target": null,
+          "auto": false,
+          "nextAttack": 0,
+          "guardUntil": 0,
+          "shield": 0,
+          "shieldUntil": 0,
+          "cooldowns": {
+            "guard": 0,
+            "insight": 0,
+            "spirit": 0
+          },
+          "hits": [],
+          "serial": 0
+        },
+        "beacon": {
+          "phase": "idle",
+          "time": 0,
+          "wave": 0,
+          "ward": 100,
+          "actors": [],
+          "serial": 0,
+          "notice": "",
+          "repairAt": 0,
+          "maraAt": 0,
+          "ilanAt": 0,
+          "playerRepairAt": 0,
+          "defeats": 0
+        },
+        "crossing": {
+          "room": null,
+          "tones": [],
+          "seek": false,
+          "rangAt": -10,
+          "tone": null,
+          "toneSerial": 0
+        },
+        "player": {
+          "x": 18,
+          "z": 6,
+          "yaw": 2.2455372690188193
+        },
+        "paused": false,
+        "intent": null,
+        "stats": {
+          "level": 1,
+          "attack": 16,
+          "defense": 1,
+          "maxHP": 100
+        },
+        "weapon": {
+          "style": "blade",
+          "reach": 2.65,
+          "cooldown": 0.52,
+          "stamina": 0,
+          "primary": "Sunstrike",
+          "special": "Dawn sweep"
+        },
+        "arrows": [],
+        "range": {
+          "active": false,
+          "start": 0,
+          "hits": {},
+          "shots": 0,
+          "message": "Explore the court, or begin a timed round."
+        },
+        "enemies": [],
+        "companion": {
+          "room": null,
+          "x": 18,
+          "z": 6,
+          "yaw": 2.2455372690188193,
+          "path": [],
+          "nextPath": 0,
+          "nextHit": 0,
+          "seek": null,
+          "status": "Beside you"
+        }
+      },
+      "sandbox": {
+        "bridge": false,
+        "objects": 0,
+        "elapsed": 5.449999999999989,
+        "autoGather": null,
+        "buildMode": null
+      },
+      "saveState": "saved",
+      "characters": {
+        "mode": "managed",
+        "active": "character-2",
+        "revision": 1,
+        "count": 2,
+        "writer": true,
+        "error": null
+      },
+      "fps": 0,
+      "errors": [],
+      "camera": {
+        "yaw": 5.3871299226086125,
+        "elevation": 0.28,
+        "half": 17,
+        "distance": 7.5,
+        "actualDistance": 7.5,
+        "fov": 60,
+        "center": [
+          18,
+          2.8,
+          6
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "projection": "perspective",
+        "eye": [
+          12.371563380583055,
+          4.872667364230853,
+          10.50274929553697
+        ],
+        "target": [
+          18,
+          2.8,
+          6
+        ]
+      },
+      "metrics": {
+        "drawCalls": 14,
+        "texturedDrawCalls": 0,
+        "texturedInstances": 0,
+        "surfaceMaterials": {
+          "version": 1,
+          "id": "earth-weathered-timber-v1",
+          "status": "ready",
+          "ready": true,
+          "error": null,
+          "width": 512,
+          "height": 512,
+          "colorFormat": "SRGB8_ALPHA8",
+          "roughnessFormat": "R8",
+          "textureBytes": 1310720,
+          "mipmapBytes": 436905,
+          "totalTextureBytes": 1747625,
+          "decodedImageBytes": 2097152,
+          "decodeWallMs": 1170.9000000059605,
+          "uploadCpuMs": 255.30000001192093,
+          "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+          "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+          "enabled": true
+        },
+        "instances": 6860,
+        "triangles": 164824
+      },
+      "reflection": {
+        "method": "world-plane P*V*H",
+        "height": 0.01,
+        "horizontalFlip": false
+      },
+      "cutaway": {
+        "enabled": true,
+        "focus": [
+          2.5,
+          2.18,
+          6
+        ]
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "gathering": null,
+      "layoutRevision": 0,
+      "roadsideGathering": {
+        "status": "idle",
+        "playing": false,
+        "pending": false
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created",
+        "soundscape": null
+      }
+    }
+  },
+  "status": "failed",
+  "passed": 1,
+  "failed": 0
+}

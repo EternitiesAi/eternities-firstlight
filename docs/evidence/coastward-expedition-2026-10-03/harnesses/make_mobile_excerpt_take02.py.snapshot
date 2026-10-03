@@ -1,0 +1,33 @@
+from pathlib import Path
+import datetime, hashlib, json, re, subprocess
+R = Path('D:/07-GAMES/Firstlight/artifacts/coastward-expedition-20261003')
+D = R / 'native-bow-take01'
+report = json.loads((D / 'REPORT.json').read_text(encoding='utf8'))
+raw = D / report['video']['path']
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+assert sha(raw) == report['video']['sha256']
+FF = 'C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Lib/site-packages/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe'
+segments = [(2775,3575), (4825,5050), (5475,6125)]
+filters = ['[0:v]split=3[a][b][c]']
+for index, ((a,b), tag) in enumerate(zip(segments, ['a','b','c'])):
+    filters.append(f'[{tag}]trim=start_frame={a}:end_frame={b},setpts=N/(25*TB)[v{index}]')
+filters.append('[v0][v1][v2]concat=n=3:v=1:a=0[out]')
+out = R / 'MOBILE_GAMEPLAY_TAKE02.mp4'
+assert not out.exists()
+args = [FF,'-hide_banner','-nostdin','-i',str(raw),'-filter_complex',';'.join(filters),'-map','[out]','-an','-c:v','libx264','-preset','fast','-crf','24','-pix_fmt','yuv420p','-threads','4','-fps_mode','passthrough','-movflags','+faststart',str(out)]
+with (R / 'mobile-excerpt-take02-encode.log').open('wb') as log:
+    result = subprocess.run(args, stdout=subprocess.DEVNULL, stderr=log)
+assert result.returncode == 0
+log = R / 'mobile-excerpt-take02-full-decode.log'
+with log.open('wb') as stream:
+    result = subprocess.run([FF,'-hide_banner','-nostdin','-i',str(out),'-an','-vf','showinfo','-threads','2','-f','null','-'], stdout=subprocess.DEVNULL, stderr=stream)
+assert result.returncode == 0
+regex = r'\bn:\s*(\d+)\s+pts:\s*-?\d+\s+pts_time:([^\s]+)'
+rows = [(int(n),float(t)) for n,t in re.findall(regex, log.read_text(encoding='utf8',errors='replace'))]
+expected = sum(b-a for a,b in segments)
+assert len(rows) == expected and rows[0] == (0,0.0)
+assert all(a[0]+1 == b[0] and a[1] < b[1] for a,b in zip(rows,rows[1:]))
+assert abs(rows[-1][1] - (expected-1)/25) < 0.001
+receipt = {'status':'passed','method':'Edited excerpt of actual native ordinary-RAF bow gameplay. Exact frame cuts avoid rounded demux timestamp boundary ambiguity from failed take01. Source is verified constant 25 fps; every selected frame is retained with a 25 fps timestamp grid. No speed changes, generated imagery or gameplay state replacement. Silent lossy H264/yuv420p output was fully decoded with consecutive indices and strictly increasing timestamps.','source_take':'native-bow-take01','source_webm_sha256':sha(raw),'source_capture_report_sha256':sha(D/'REPORT.json'),'html_sha256':report['html']['sha256'],'source_frame_intervals_half_open':segments,'nominal_source_time_intervals_seconds':[[a/25,b/25] for a,b in segments],'args':args,'expected_selected_frames':expected,'decoded_frames':len(rows),'last_pts_seconds':rows[-1][1],'video':{'file':out.name,'bytes':out.stat().st_size,'sha256':sha(out)},'decode_log_sha256':sha(log),'verified_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat()}
+(R / 'MOBILE_GAMEPLAY_TAKE02_VERIFICATION.json').write_text(json.dumps(receipt,indent=2)+'\n',encoding='utf8')
+print(json.dumps({'status':'passed','frames':len(rows),'last_pts':rows[-1][1],'bytes':out.stat().st_size}),flush=True)

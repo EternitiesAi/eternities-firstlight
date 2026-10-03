@@ -1,0 +1,68 @@
+{
+  "failed_attempts": [
+    {
+      "take": 1,
+      "status": "failed",
+      "reason": "Output decode did not retain all selected frames",
+      "packaged_logs": [
+        "mobile-excerpt-console.log",
+        "mobile-excerpt-encode.log",
+        "mobile-excerpt-full-decode.log"
+      ],
+      "private_output": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\MOBILE_GAMEPLAY.mp4",
+        "exists": true,
+        "bytes": 14845473,
+        "sha256": "c522a2725d18658b74783506d601628407858c1aea78763bc7e07d536bd4ac9f"
+      }
+    },
+    {
+      "take": 2,
+      "status": "failed",
+      "reason": "Output decode did not retain all selected frames",
+      "packaged_logs": [
+        "mobile-excerpt-take02-console.log",
+        "mobile-excerpt-take02-encode.log",
+        "mobile-excerpt-take02-full-decode.log"
+      ],
+      "private_output": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\MOBILE_GAMEPLAY_TAKE02.mp4",
+        "exists": true,
+        "bytes": 14845473,
+        "sha256": "c522a2725d18658b74783506d601628407858c1aea78763bc7e07d536bd4ac9f"
+      }
+    },
+    {
+      "take": 3,
+      "status": "failed",
+      "reason": "FFmpeg refused contradictory -r and passthrough configuration before encoding",
+      "packaged_logs": [
+        "mobile-excerpt-take03-console.log",
+        "mobile-excerpt-take03-encode.log"
+      ],
+      "private_output": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\MOBILE_GAMEPLAY_TAKE03.mp4",
+        "exists": false,
+        "bytes": null,
+        "sha256": null
+      }
+    },
+    {
+      "take": 4,
+      "status": "failed",
+      "reason": "Output decode did not retain all selected frames",
+      "packaged_logs": [
+        "mobile-excerpt-take04-console.log",
+        "mobile-excerpt-take04-encode.log",
+        "mobile-excerpt-take04-full-decode.log"
+      ],
+      "private_output": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\MOBILE_GAMEPLAY_TAKE04.mp4",
+        "exists": true,
+        "bytes": 14829068,
+        "sha256": "6a182f23b10db386c911583ef18b806cdf9ce29349fea3d0903f3d8737064a6b"
+      }
+    }
+  ],
+  "repair": "Single select with exact source frame intervals, explicit25fps timebase, CFR and no B frames retains all1675 selected frames; full decode and67-second timeline pass. Earlier outputs remain private on D."
+}

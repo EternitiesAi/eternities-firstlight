@@ -1,0 +1,44 @@
+from pathlib import Path
+import datetime, hashlib, json, shutil
+R=Path('D:/07-GAMES/Firstlight/artifacts/coastward-expedition-20261003')
+O=Path('D:/07-GAMES/Firstlight/authoring/bridge-moment/docs/evidence/coastward-expedition-2026-10-03')
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+added=[]
+def cp(src, name):
+    dst=O/name;dst.parent.mkdir(parents=True,exist_ok=True)
+    if dst.exists():assert sha(dst)==sha(src),str(dst)
+    else:shutil.copyfile(src,dst)
+    assert sha(src)==sha(dst)
+    added.append({'source':str(src),'file':dst.relative_to(O).as_posix(),'bytes':dst.stat().st_size,'sha256':sha(dst)})
+for name in ['MOBILE_GAMEPLAY_TAKE05.mp4','MOBILE_GAMEPLAY_TAKE05_VERIFICATION.json','mobile-excerpt-take05-console.log','mobile-excerpt-take05-encode.log','mobile-excerpt-take05-full-decode.log']:
+    cp(R/name,Path('mobile')/name)
+failed=[]
+for number,stem in [(1,'mobile-excerpt'),(2,'mobile-excerpt-take02'),(3,'mobile-excerpt-take03'),(4,'mobile-excerpt-take04')]:
+    dest=Path('negative')/f'mobile-excerpt-take{number:02}'
+    files=[]
+    for name in [stem+'-console.log',stem+'-encode.log',stem+'-full-decode.log']:
+        p=R/name
+        if p.exists():cp(p,dest/name);files.append(name)
+    video=R/('MOBILE_GAMEPLAY.mp4' if number==1 else f'MOBILE_GAMEPLAY_TAKE{number:02}.mp4')
+    failed.append({'take':number,'status':'failed','reason':'Output decode did not retain all selected frames' if number!=3 else 'FFmpeg refused contradictory -r and passthrough configuration before encoding','packaged_logs':files,'private_output':{'path':str(video),'exists':video.exists(),'bytes':video.stat().st_size if video.exists() else None,'sha256':sha(video) if video.exists() else None}})
+for name in ['make_mobile_excerpt.py','make_mobile_excerpt_take02.py','make_mobile_excerpt_take03.py','make_mobile_excerpt_take04.py','make_mobile_excerpt_take05.py','encode_portable.py','encode_portable_small.py','collect_portable.py','finalize_portable.py']:
+    cp(R/name,Path('harnesses')/(name+'.snapshot'))
+cp(R/'PORTABLE_BOW_VISUAL.png','mobile/PORTABLE_BOW_VISUAL.png')
+cp(R/'portable-bow-visual-decode.log','mobile/portable-bow-visual-decode.log')
+(O/'negative/MOBILE_EXCERPT_FAILURES.json').write_text(json.dumps({'failed_attempts':failed,'repair':'Single select with exact source frame intervals, explicit25fps timebase, CFR and no B frames retains all1675 selected frames; full decode and67-second timeline pass. Earlier outputs remain private on D.'},indent=2)+'\n',encoding='utf8')
+receipt=json.loads((O/'COPY_RECEIPT.json').read_text(encoding='utf8'))
+drift=[]
+for record in receipt['copies']:
+    src=Path(record['source']);dst=O/record['file']
+    assert sha(dst)==record['sha256'] and dst.stat().st_size==record['bytes'],str(dst)
+    if src.exists() and sha(src)!=record['sha256']:
+        drift.append({'file':record['file'],'copied_sha256':record['sha256'],'source_now_sha256':sha(src),'source_now_bytes':src.stat().st_size,'note':'Source log grew after original copy; copied bytes are preserved. Final excerpt logs are separately packaged under negative/mobile-excerpt-take01.'})
+(O/'COPY_SOURCE_AFTER_RECEIPT.json').write_text(json.dumps({'checked_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'changed_sources':drift,'added_copies':added},indent=2)+'\n',encoding='utf8')
+files=[]
+for p in sorted(O.rglob('*')):
+    if p.is_file() and p.name!='MANIFEST.json':
+        assert p.stat().st_size<100_000_000,str(p)+' exceeds100MB'
+        files.append({'file':p.relative_to(O).as_posix(),'bytes':p.stat().st_size,'sha256':sha(p)})
+manifest={'created_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'method':'Raw-byte SHA256 inventory; only MANIFEST.json itself is excluded. No newline normalization is used for media or any evidence file.','file_count':len(files),'bytes':sum(v['bytes'] for v in files),'files':files}
+(O/'MANIFEST.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf8')
+print(json.dumps({'files':len(files),'bytes':manifest['bytes'],'changed_sources':drift},indent=2))

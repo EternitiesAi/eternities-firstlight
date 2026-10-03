@@ -12,3 +12,7 @@ docs/evidence/realm-outings-2026-10-02/*.snapshot binary
 docs/evidence/world-production-2026-10-03/** -text whitespace=cr-at-eol
 # The failed runner's original diagnostic blank lines are retained verbatim.
 docs/evidence/world-production-2026-10-03/negative/linux-ec9-stale-copy-assertion/commands/rules.log whitespace=cr-at-eol,-blank-at-eol
+
+# Preserve byte-hashed current expedition receipts and decoded media provenance.
+docs/evidence/coastward-expedition-2026-10-03/** -text whitespace=cr-at-eol,-blank-at-eol
+docs/evidence/coastward-expedition-2026-10-03/** linguist-generated=true

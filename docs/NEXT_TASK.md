@@ -8,7 +8,7 @@ Resolve concrete route, camera, reward or comfort findings before adding another
 
 Preserve the new migration: world/key9; optional expedition1; adventure12/binding1. Retain stored 9999 XP, the1–5 curve, existing sockets/fittings, previous claims and unpaid work. Every intentional patrol owns a new run and one payment; retries or changed request IDs never do. No automatic merge, deployment, account/billing action or personal-save inspection.
 
-The exact final source/browser reproduction is recorded against the pushed delivery head in the PR and external clone receipt. Failed/superseded source, native and appearance epochs stay labelled. The earlier rejected old-preview restart is not retried through another route; the launcher truthfully refuses a conflicting old server.
+At this packaging checkpoint the exact pushed-head source/browser reproduction is pending. Once run, its result belongs in the delivery PR and external clone receipt; do not infer it from earlier green epochs. Failed/superseded source, native and appearance epochs stay labelled. The earlier rejected old-preview restart is not retried through another route; the launcher truthfully refuses a conflicting old server.
 
 Prior task records follow; their pending delivery wording belongs to their original checkpoint.
 

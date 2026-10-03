@@ -1,0 +1,16 @@
+PASS exact assembled source loads
+FAIL fresh-blade real crossing terms permit earned source
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tools\inspect_earth_expedition_presentation.py", line 64, in main
+    page.evaluate(OBSERVER);page.evaluate('s=>Realm.test.replace(s)',source);r=page.evaluate('()=>Realm.test.worldTravel(RealmWorldFoundations.preview(Realm.test.worldContext(),"earthlands"))');check(variant+' real crossing terms permit earned source',r['ok'],r)
+                                                                                                                                                                                                  ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tools\inspect_earth_expedition_presentation.py", line 56, in check
+    if not ok:raise AssertionError(name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: fresh-blade real crossing terms permit earned source
+
+{
+  "status": "failed",
+  "checks": 2,
+  "output": "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\presentation-01"
+}

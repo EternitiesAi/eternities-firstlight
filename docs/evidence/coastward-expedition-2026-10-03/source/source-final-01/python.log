@@ -1,0 +1,62 @@
+test_case_duplicate_refused (test_checkout_import.ImportRules.test_case_duplicate_refused) ... ok
+test_conflict_refused (test_checkout_import.ImportRules.test_conflict_refused) ... ok
+test_dirty_refused (test_checkout_import.ImportRules.test_dirty_refused) ... ok
+test_dry_run_only (test_checkout_import.ImportRules.test_dry_run_only) ... ok
+test_identical_preserved (test_checkout_import.ImportRules.test_identical_preserved) ... ok
+test_main_refused (test_checkout_import.ImportRules.test_main_refused) ... ok
+test_source_corruption_refused (test_checkout_import.ImportRules.test_source_corruption_refused) ... ok
+test_symlink_refused (test_checkout_import.ImportRules.test_symlink_refused) ... skipped 'Windows account lacks symlink privilege; real symlink refusal is exercised on Linux CI'
+test_unsafe_path_refused (test_checkout_import.ImportRules.test_unsafe_path_refused) ... ok
+test_wrong_remote_refused (test_checkout_import.ImportRules.test_wrong_remote_refused) ... ok
+test_empty_samples_and_invalid_fraction_cannot_be_reported (test_frame_measurement.FrameMeasurementTests.test_empty_samples_and_invalid_fraction_cannot_be_reported) ... ok
+test_nearest_rank_matches_six_hundred_frame_acceptance_report (test_frame_measurement.FrameMeasurementTests.test_nearest_rank_matches_six_hundred_frame_acceptance_report) ... ok
+test_small_sample_and_extremes_stay_in_the_observed_distribution (test_frame_measurement.FrameMeasurementTests.test_small_sample_and_extremes_stay_in_the_observed_distribution) ... ok
+test_build_is_consistent_while_source_files_are_rebuilt (test_play_local.LocalPlayTests.test_build_is_consistent_while_source_files_are_rebuilt) ... ok
+test_does_not_serve_repository_or_neighbor_files (test_play_local.LocalPlayTests.test_does_not_serve_repository_or_neighbor_files) ... ok
+test_existing_origin_cannot_redirect_build_verification_elsewhere (test_play_local.LocalPlayTests.test_existing_origin_cannot_redirect_build_verification_elsewhere) ... ok
+test_refuses_an_occupied_origin_with_different_bytes (test_play_local.LocalPlayTests.test_refuses_an_occupied_origin_with_different_bytes) ... ok
+test_refuses_missing_or_mismatched_generated_outputs (test_play_local.LocalPlayTests.test_refuses_missing_or_mismatched_generated_outputs) ... ok
+test_reuses_an_existing_matching_build (test_play_local.LocalPlayTests.test_reuses_an_existing_matching_build) ... ok
+test_serves_identical_game_bytes_on_loopback_only (test_play_local.LocalPlayTests.test_serves_identical_game_bytes_on_loopback_only) ... ok
+test_different_main_refused (test_publication.PublicationRules.test_different_main_refused) ... ok
+test_empty_remote (test_publication.PublicationRules.test_empty_remote) ... ok
+test_firstlight_allowed (test_publication.PublicationRules.test_firstlight_allowed) ... ok
+test_heaven_allowed (test_publication.PublicationRules.test_heaven_allowed) ... ok
+test_identical_main (test_publication.PublicationRules.test_identical_main) ... ok
+test_invalid_response_refused (test_publication.PublicationRules.test_invalid_response_refused) ... ok
+test_nonempty_extra_ref_refused (test_publication.PublicationRules.test_nonempty_extra_ref_refused) ... ok
+test_other_branch_refused (test_publication.PublicationRules.test_other_branch_refused) ... ok
+test_other_owner_refused (test_publication.PublicationRules.test_other_owner_refused) ... ok
+test_other_repo_refused (test_publication.PublicationRules.test_other_repo_refused) ... ok
+test_actual_grayscale_png_dimensions (test_surface_assets.SurfaceAssetTests.test_actual_grayscale_png_dimensions) ... ok
+test_actual_jpeg_dimensions (test_surface_assets.SurfaceAssetTests.test_actual_jpeg_dimensions) ... ok
+test_color_space_receipt_refused (test_surface_assets.SurfaceAssetTests.test_color_space_receipt_refused) ... ok
+test_combined_budget_refused_even_when_each_map_fits (test_surface_assets.SurfaceAssetTests.test_combined_budget_refused_even_when_each_map_fits) ... ok
+test_derivative_hash_mismatch_refused (test_surface_assets.SurfaceAssetTests.test_derivative_hash_mismatch_refused) ... ok
+test_embedded_script_terminator_refused (test_surface_assets.SurfaceAssetTests.test_embedded_script_terminator_refused) ... ok
+test_external_image_resource_refused (test_surface_assets.SurfaceAssetTests.test_external_image_resource_refused) ... ok
+test_external_script_resource_refused (test_surface_assets.SurfaceAssetTests.test_external_script_resource_refused) ... ok
+test_jpeg_frame_wrong_dimensions_refused (test_surface_assets.SurfaceAssetTests.test_jpeg_frame_wrong_dimensions_refused) ... ok
+test_jpeg_grayscale_refused (test_surface_assets.SurfaceAssetTests.test_jpeg_grayscale_refused) ... ok
+test_missing_module_placeholder_refused (test_surface_assets.SurfaceAssetTests.test_missing_module_placeholder_refused) ... ok
+test_nonfinite_calibration_refused (test_surface_assets.SurfaceAssetTests.test_nonfinite_calibration_refused) ... ok
+test_normal_map_receipt_refused (test_surface_assets.SurfaceAssetTests.test_normal_map_receipt_refused) ... ok
+test_offline_assembly_is_identical_repeatable_and_precedes_engine (test_surface_assets.SurfaceAssetTests.test_offline_assembly_is_identical_repeatable_and_precedes_engine) ... ok
+test_png_alpha_refused (test_surface_assets.SurfaceAssetTests.test_png_alpha_refused) ... ok
+test_png_checksum_refused (test_surface_assets.SurfaceAssetTests.test_png_checksum_refused) ... ok
+test_png_filter_refused (test_surface_assets.SurfaceAssetTests.test_png_filter_refused) ... ok
+test_png_gamma_metadata_refused (test_surface_assets.SurfaceAssetTests.test_png_gamma_metadata_refused) ... ok
+test_png_rgb_refused (test_surface_assets.SurfaceAssetTests.test_png_rgb_refused) ... ok
+test_png_trailing_content_refused (test_surface_assets.SurfaceAssetTests.test_png_trailing_content_refused) ... ok
+test_png_wrong_dimensions_refused (test_surface_assets.SurfaceAssetTests.test_png_wrong_dimensions_refused) ... ok
+test_png_wrong_sample_count_refused (test_surface_assets.SurfaceAssetTests.test_png_wrong_sample_count_refused) ... ok
+test_receipt_combined_bytes_mismatch_refused (test_surface_assets.SurfaceAssetTests.test_receipt_combined_bytes_mismatch_refused) ... ok
+test_source_hash_mismatch_refused (test_surface_assets.SurfaceAssetTests.test_source_hash_mismatch_refused) ... ok
+test_source_manifest_mismatch_refused (test_surface_assets.SurfaceAssetTests.test_source_manifest_mismatch_refused) ... ok
+test_truncated_jpeg_refused (test_surface_assets.SurfaceAssetTests.test_truncated_jpeg_refused) ... ok
+test_unknown_image_placeholder_refused (test_surface_assets.SurfaceAssetTests.test_unknown_image_placeholder_refused) ... ok
+
+----------------------------------------------------------------------
+Ran 57 tests in 12.402s
+
+OK (skipped=1)

@@ -1,0 +1,79 @@
+{
+  "status": "passed",
+  "method": "Edited excerpt of actual native ordinary-RAF bow gameplay. Exact frame cuts avoid rounded demux timestamp boundary ambiguity from failed takes01/02. Source is verified constant 25 fps; every selected frame is retained with a 25 fps timestamp grid. No speed changes, generated imagery or gameplay state replacement. Silent lossy H264/yuv420p output was fully decoded with consecutive indices and strictly increasing timestamps.",
+  "source_take": "native-bow-take01",
+  "source_webm_sha256": "718dcaeb55d0baf8b710756c2e17fee3e9eaed0891f4ae5896df2f97a3ccb51b",
+  "source_capture_report_sha256": "51346f3f9def22bae464b5f7a18124ce456122f71aa0c5ee4a7d7d96b497e6c3",
+  "html_sha256": "fa596e6ee108e5e3b3e8a3c6ba02bd043975940025c6230faa9b03404b6b1333",
+  "source_frame_intervals_half_open": [
+    [
+      2775,
+      3575
+    ],
+    [
+      4825,
+      5050
+    ],
+    [
+      5475,
+      6125
+    ]
+  ],
+  "nominal_source_time_intervals_seconds": [
+    [
+      111.0,
+      143.0
+    ],
+    [
+      193.0,
+      202.0
+    ],
+    [
+      219.0,
+      245.0
+    ]
+  ],
+  "args": [
+    "C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Lib/site-packages/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe",
+    "-hide_banner",
+    "-nostdin",
+    "-i",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\native-bow-take01\\1dc0d6d461d4f3b779883279879da320.webm",
+    "-filter_complex",
+    "[0:v]select='between(n,2775,3574)+between(n,4825,5049)+between(n,5475,6124)',settb=1/25,setpts=N[out]",
+    "-map",
+    "[out]",
+    "-an",
+    "-c:v",
+    "libx264",
+    "-preset",
+    "fast",
+    "-crf",
+    "24",
+    "-pix_fmt",
+    "yuv420p",
+    "-threads",
+    "4",
+    "-enc_time_base",
+    "1/25",
+    "-bf",
+    "0",
+    "-r",
+    "25",
+    "-fps_mode",
+    "cfr",
+    "-movflags",
+    "+faststart",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\coastward-expedition-20261003\\MOBILE_GAMEPLAY_TAKE05.mp4"
+  ],
+  "expected_selected_frames": 1675,
+  "decoded_frames": 1675,
+  "last_pts_seconds": 66.96,
+  "video": {
+    "file": "MOBILE_GAMEPLAY_TAKE05.mp4",
+    "bytes": 15015603,
+    "sha256": "cf3c0ddd120f4dba526b85add46704b06ca8700ad19af7a50323ec7c1b4e2f2e"
+  },
+  "decode_log_sha256": "1cf95ed99197c6d027dbc03aa3cad257e3ea5c50b543323ea88535353ed6dd5e",
+  "verified_at_utc": "2026-10-03T11:05:40.244045+00:00"
+}

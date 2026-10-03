@@ -1,0 +1,68 @@
+from pathlib import Path
+import hashlib,json,shutil,subprocess
+ROOT=Path('D:/07-GAMES/Firstlight/authoring/bridge-moment')
+SRC=Path('D:/07-GAMES/Firstlight/artifacts/coastward-expedition-20261003')
+OUT=ROOT/'docs/evidence/coastward-expedition-2026-10-03'
+OUT.mkdir(parents=True,exist_ok=True)
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+copies=[]
+def cp(src,dest):
+ src=Path(src);dst=OUT/dest
+ if not src.is_file():raise FileNotFoundError(src)
+ dst.parent.mkdir(parents=True,exist_ok=True)
+ if dst.exists():
+  assert sha(dst)==sha(src),str(dst)+' existing evidence differs'
+ else:shutil.copyfile(src,dst)
+ assert sha(src)==sha(dst),str(dst)+' copy drift'
+ copies.append({'source':str(src),'file':dst.relative_to(OUT).as_posix(),'bytes':dst.stat().st_size,'sha256':sha(dst)})
+# Complete console logs include the early failed/partial attempts, without profiles.
+for p in sorted(SRC.glob('*.log')):cp(p,Path('logs')/p.name)
+for name in ['source-final-01','source-final-02']:
+ for p in sorted((SRC/name).glob('*.log')):cp(p,Path('source')/name/p.name)
+# Current software/native regression and its freshly earned synthetic sources.
+cp(SRC/'browser-06/REPORT.json','browser/REPORT.json')
+for p in sorted((SRC/'browser-06/earned').rglob('*.json')):cp(p,Path('earned')/p.relative_to(SRC/'browser-06/earned'))
+cp(SRC/'camera-current-01/REPORT.json','camera/REPORT.json')
+# Matched source epochs and all strict control images preserve the real restorations.
+for name in ['presentation-03','presentation-low-01','presentation-low-material-02']:
+ cp(SRC/name/'REPORT.json',Path('controls')/name/'REPORT.json')
+ for p in sorted((SRC/name).glob('fresh-blade-camp-adventure-raw-ground-*.png')):cp(p,Path('controls')/name/p.name)
+for p in sorted((SRC/'ground-strict-01/frames').glob('*')):
+ if p.is_file():cp(p,Path('controls/ground-strict')/p.name)
+for name in ['browser-02','browser-03','browser-04','presentation-01','presentation-02']:
+ cp(SRC/name/'REPORT.json',Path('negative')/name/'REPORT.json')
+for name in ['gpu-balanced-01','gpu-balanced-02','gpu-balanced-03']:
+ cp(SRC/name/'FRAME_REPORT.json',Path('gpu')/name/'FRAME_REPORT.json')
+ # One actual frame from each measurement category, both modes for new final sample.
+ for p in sorted((SRC/name).glob('*.png')):
+  if name=='gpu-balanced-03' or p.name.endswith('-1.png'):cp(p,Path('gpu')/name/p.name)
+for name in ['gpu-scenes-balanced.json','gpu-scenes-balanced-02.json']:cp(SRC/name,Path('gpu')/name)
+cp(SRC/'browser-05/earned/fresh-blade/06_BOUND_ACTUAL_IMPACT_RELOADED.json','gpu/SOURCE_WORLD_B692.json')
+cp(SRC/'browser-06/earned/fresh-blade/06_BOUND_ACTUAL_IMPACT_RELOADED.json','gpu/SOURCE_WORLD.json')
+labels=['expedition-terms','chosen-allocation','story-clear-root-pests-guarded-tell','installed-root-brace-third','installed-root-brace-diorama','rill-recognition','binding-explicit-preview','bound-weapon-third','after-binding-practice-actual-impact-adventure','after-binding-practice-actual-impact-follow']
+for name in ['native-blade-take02','native-bow-take01','native-veteran-take01']:
+ d=SRC/name
+ for p in sorted(d.glob('*.json')):cp(p,Path('captures')/name/p.name)
+ for label in labels:cp(d/(label+'.png'),Path('captures')/name/(label+'.png'))
+ cp(d/'GAMEPLAY_PORTABLE.mp4',Path('captures')/name/'GAMEPLAY_PORTABLE.mp4')
+ cp(d/'MEDIA_VERIFICATION_PORTABLE.json',Path('captures')/name/'MEDIA_VERIFICATION_PORTABLE.json')
+ cp(d/'PORTABLE_MP4_FULL_DECODE.log',Path('captures')/name/'PORTABLE_MP4_FULL_DECODE.log')
+ cp(d/'RAW_FULL_DECODE.log',Path('captures')/name/'RAW_FULL_DECODE.log')
+# Superseded first blade remains a preserved receipt, not current delivered footage.
+for name in ['REPORT.json','FINAL_WORLD.json']:
+ cp(SRC/'native-blade-take01'/name,Path('historical/native-blade-take01')/name)
+# Restore old exact harness bytes only when their recorded raw digest matches.
+r=json.loads((SRC/'native-blade-take01/REPORT.json').read_text(encoding='utf8'))
+for name in ['tools/capture_earth_expedition.py','tools/inspect_earth_expedition_presentation.py']:
+ b=subprocess.check_output(['git','show','9abfa87f10bcfd6005e0b43ccc0092ffd205ae02:'+name],cwd=ROOT)
+ expected=r['source_hashes'].get(name)
+ if expected:
+  candidates=[b,b.replace(b'\n',b'\r\n')]
+  matched=[v for v in candidates if hashlib.sha256(v).hexdigest()==expected['sha256']]
+  assert matched,'No exact original harness bytes '+name
+  dst=OUT/'historical/harnesses'/Path(name).with_suffix('.snapshot').name
+  dst.parent.mkdir(parents=True,exist_ok=True);dst.write_bytes(matched[0])
+for name in ['tools/capture_earth_expedition.py','tools/measure_gpu_browser.py','tools/inspect_earth_expedition_presentation.py','tools/browser_support.py']:
+ cp(ROOT/name,Path('harnesses')/Path(name).with_suffix('.snapshot').name)
+(OUT/'COPY_RECEIPT.json').write_text(json.dumps({'method':'Exact byte copies of selected synthetic evidence; native browser profiles and original WebMs remain private on D. Original absolute paths inside copied reports are preserved. Historical harness bytes are reconstructed from the recorded Git blob/line endings only when their exact raw SHA256 matches.','copies':copies},indent=2)+'\n',encoding='utf8')
+print(json.dumps({'copied':len(copies),'bytes':sum(v['bytes'] for v in copies),'out':str(OUT)}))
