@@ -82,7 +82,9 @@ def main():
                     for person in people:
                         point=ev('p=>{const d=RealmWorldFoundations.definition(Realm.diagnostics.scene);return [[p.x-1.2,p.z-1.2],[p.x+1.7,p.z],[p.x,p.z-1.7],[p.x,p.z+1.7]].find(q=>RealmWorldFoundations.walkable(d.room,...q));}',person)
                         assert point is not None;walk(*point)
-                        for mode in ['third','diorama']:shot(person['id'],mode,3.74,5,4.5)
+                        # A side orbit separates the player from the stationary
+                        # giver; the earlier frontal take is retained on D.
+                        for mode in ['third','diorama']:shot(person['id'],mode,1.8,5,4.5)
                         page.keyboard.press('e');render();assert page.locator('#rpg-window').evaluate('(e)=>e.open')
                         text=page.locator('#rpg-window').inner_text();assert person['name'] in text
                         report['interactions'].append({'id':person['id'],'name':person['name'],'actual_menu_open':True,'distance':((point[0]-person['x'])**2+(point[1]-person['z'])**2)**.5,'name_in_menu':True})
