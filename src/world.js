@@ -251,10 +251,10 @@ class WorldArt{
   if(combatScene&&combat.phase==='idle'){
    let release=weapon.style==='bow'&&r.lastShot!==owner.blockedShot?r.lastShot:null;
    if(weapon.style!=='bow')for(let i=r.fx.length-1;i>=0;i--)if(!owner.blockedFx.has(r.fx[i])&&(r.fx[i].kind==='slash'||r.fx[i].kind==='pulse')){release=r.fx[i].at;break;}
-   if(Number.isFinite(release)&&a.elapsed>=release&&a.elapsed-release<.28)combat={phase:'recover',progress:(a.elapsed-release)/.28};
+   if(Number.isFinite(release)&&a.elapsed>=release&&a.elapsed-release<.28)combat={phase:'recover',progress:(a.elapsed-release)/.28,releaseOrigin:'ready'};
   }
   this.travelerMotion=G.RealmTravelerArt.motion(this.travelerMotion,{x:p.x,z:p.z,scene:this.room,time:sim.elapsed,walking:sim.walking,paused:sim.paused,reducedMotion});
-  const pose=G.RealmTravelerArt.pose({...this.travelerMotion,time:this.travelerMotion.time,reducedMotion,swimming:!!sim.worldDive&&!G.RealmWorldFoundations.divingStatus(sim,null)?.dryCourt,style:weapon.style,combatScene,combatPhase:combat.phase,combatProgress:combat.progress,guarded:combatScene&&a.elapsed<G.RealmCombat.runtime(sim).guardUntil});
+  const pose=G.RealmTravelerArt.pose({...this.travelerMotion,time:this.travelerMotion.time,reducedMotion,swimming:!!sim.worldDive&&!G.RealmWorldFoundations.divingStatus(sim,null)?.dryCourt,style:weapon.style,combatScene,combatPhase:combat.phase,combatProgress:combat.progress,releaseOrigin:combat.releaseOrigin,guarded:combatScene&&a.elapsed<G.RealmCombat.runtime(sim).guardUntil});
   const starts=Object.fromEntries(Object.entries(out).map(([k,v])=>[k,v.length]));
   const armorColor=G.RealmAdventure.GEAR[a.equipment.armor]?.color||null;
   this.travelerFrame=G.RealmTravelerArt.draw(out,{x:p.x,z:p.z,yaw:p.yaw,base,profile:sim.state.visitor,color:X.CLOAKS[sim.state.visitor.cloak],armorColor},pose);

@@ -3,6 +3,7 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs'),vm=require('node:vm');
+require('../src/coastward-settlement-art.js');
 const W=require('../src/world-atlantis-earth.js');
 const E=require('../src/engine.js');
 const [earth,sea]=W.realms,R=.31,BODY=1.7,G=1.57;
@@ -145,13 +146,19 @@ test('roofs and important structural decoration agree with the canonical solid f
   const parts=record(def);
   for(const p of parts.filter(p=>p.kind==='roof')){
    const s=def.solids.find(s=>s.id===p.opt.structureId);assert.ok(s);
-   assert.equal(p.p[0],s.x);assert.equal(p.p[2],s.z);assert.equal(p.s[0],s.w);assert.equal(p.s[2],s.d);assert.equal(p.p[1],G+s.h);
+   assert.equal(p.p[0],s.x);assert.equal(p.p[2],s.z);
+   if(p.opt.settlementPart==='roof-shell'){
+    assert.equal(def.id,'earthlands');assert.ok(['west-house','east-house','field-store'].includes(s.id));
+    assert.equal(p.s[0],s.w+.56);assert.equal(p.s[2],s.d+.5);assert.equal(p.p[1],G+s.h+.03);
+    assert.equal(p.s[1],s.h*.28);assert.equal(p.opt.appearanceOnly,true);
+   }else {assert.equal(p.s[0],s.w);assert.equal(p.s[2],s.d);assert.equal(p.p[1],G+s.h);}
   }
   for(const p of parts.filter(p=>p.kind==='box'&&p.opt.solidId)){
    const s=def.solids.find(s=>s.id===p.opt.solidId);assert.ok(s,p.opt.solidId);
    // Face trim is allowed a small projection. Large arbitrary walls are not.
-   assert.ok(Math.abs(p.p[0]-s.x)+p.s[0]/2<=s.w/2+.12,`${s.id} X footprint`);
-   assert.ok(Math.abs(p.p[2]-s.z)+p.s[2]/2<=s.d/2+.12,`${s.id} Z footprint`);
+   const projection=p.opt.settlementPart?.16:.12;
+   assert.ok(Math.abs(p.p[0]-s.x)+p.s[0]/2<=s.w/2+projection,`${s.id} X footprint`);
+   assert.ok(Math.abs(p.p[2]-s.z)+p.s[2]/2<=s.d/2+projection,`${s.id} Z footprint`);
   }
  }
  const canopy=record(sea).find(p=>p.opt.structureId==='farwake-civic-canopy');assert.ok(canopy.p[1]-canopy.s[1]/2>G+BODY);
@@ -200,9 +207,9 @@ test('narrow field path geometry lies wholly on supported clear ground and door 
  assert.deepEqual(doors.map(p=>p.opt.solidId).sort(),['east-house','field-store','west-house']);
  for(const p of doors){
   const s=earth.solids.find(s=>s.id===p.opt.solidId);assert.equal(p.kind,'timber-panel');assert.equal(p.p[0],s.x);
-  const m=E.M.compose(...p.p,...p.s,...p.opt.r),mesh=E.geometry(p.kind),ys=[];
+  const m=p.opt.m||E.M.compose(...p.p,...p.s,...p.opt.r),mesh=E.geometry(p.kind),ys=[];
   for(let i=0;i<mesh.length;i+=8){const [x,y,z]=E.M.transform(m,[mesh[i],mesh[i+1],mesh[i+2]]);ys.push(y);assert.ok(x>=s.x-s.w/2&&x<=s.x+s.w/2);assert.ok(z>=s.z+s.d/2&&z<s.z+s.d/2+.12);}
-  assert.ok(Math.abs(Math.min(...ys)-G)<1e-6,'rotated vertical-grain door meets existing ground');
+  assert.ok(Math.abs(Math.min(...ys)-(G+.12))<1e-6,'vertical-grain door meets the authored supported sill');
  }
  assert.equal(earth.points.filter(p=>/door|house entrance/i.test(p.id)).length,0,'closed facade does not advertise an unimplemented interior');
 });

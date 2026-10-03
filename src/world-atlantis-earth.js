@@ -192,22 +192,9 @@
     box(x,-1.25,z,.65,5.5,.65,0x777c71);
    }
    for(const [x,z] of [[-7,98],[7,98],[-7,19],[7,19],[-4,-62],[4,-62]]) lamp(x,z);
-   roof('west-house',-17,-77,9,9,4.2,0x685f4e);
-   roof('east-house',16,-77,8,8,4,0x75634d);
-   roof('field-store',-7,-79,8,7,3.6,0x637565);
-   for(const [id,x,z,w,h] of [['west-house',-17,-72.49,9,4.2],['east-house',16,-72.99,8,4],['field-store',-7,-75.49,8,3.6]]) {
-    box(x,height(x,z)+h*.5,z,w,.12,.035,0x77614b,{solidId:id});
-    for(const dx of [-w*.3,w*.3]) {
-     box(x+dx,height(x,z)+2.5,z,1.1,1.25,.05,0x645d4e,{solidId:id});
-     box(x+dx,height(x,z)+2.5,z+.035,.9,1.05,.04,0xf3ce86,{em:.2,solidId:id});
-    }
-    const base=height(x,z);
-    // Closed facade details: no entrance trigger or promise of an interior.
-    add('timber-panel',x,base+1.05,z+.04,2.1,1.1,.05,0x806345,{closedDoor:true,solidId:id,r:[0,0,Math.PI/2]});
-    for(const dx of [-.62,.62]) box(x+dx,base+1.1,z+.025,.09,2.2,.07,0x6b5840,{solidId:id});
-    box(x,base+2.18,z+.025,1.33,.09,.07,0x6b5840,{solidId:id});
-    box(x+.38,base+1.03,z+.085,.055,.075,.045,0xb09b67,{solidId:id});
-   }
+   // Replacement exterior geometry derives from the existing parent solids.
+   // No duplicate roof, new interior, collision footprint or stock entitlement.
+   count+=G.RealmCoastwardSettlementArt.decorate(art,def,{height});
    const paths=[[[1,-36],[1,-42],[-6,-47],[-6,-62],[-6,-68],[8,-69]],
     [[-6,-47],[-15,-46]],[[1,-42],[13,-46],[13,-54]]];
    for(const path of paths) for(let i=1;i<path.length;i++) {

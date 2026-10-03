@@ -993,6 +993,133 @@ function decorate(art,def,options={}){
 const api={realms,decorate};G.RealmWorldHeavenHell=api;
 if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);
+</script><script>/* Original Coastward exterior dressing. Existing realm solids remain the only
+ * building/body authority; this module creates neither interiors nor work. */
+(function (G) {
+ 'use strict';
+ const profiles = Object.freeze([
+  Object.freeze({id:'west-house',roof:0x685f4e,wood:0x796047,shutter:0x6d7659}),
+  Object.freeze({id:'east-house',roof:0x75634d,wood:0x81664a,shutter:0x7a6c52}),
+  Object.freeze({id:'field-store',roof:0x637565,wood:0x756047,shutter:0x68775f})
+ ]);
+ const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+ const dot=(a,b)=>a.reduce((n,x,i)=>n+x*b[i],0);
+ const unit=a=>{const length=Math.hypot(...a);return a.map(x=>x/length);};
+ function parts(def,context={}) {
+  if(!def || def.id!=='earthlands') return [];
+  if(!Array.isArray(def.solids)) throw new TypeError('Coastward solid definitions are required.');
+  const height=typeof context.height==='function'?context.height:()=>1.57;
+  // Resolve all parents before producing any output. A malformed definition
+  // cannot leave half a dressed settlement in the caller's geometry writer.
+  const buildings=profiles.map(profile=>{
+   const matches=def.solids.filter(s=>s.id===profile.id);
+   if(matches.length!==1) throw new TypeError('One parent solid is required: '+profile.id);
+   const solid=matches[0],base=height(solid.x,solid.z);
+   if(!['x','z','w','d','h'].every(k=>Number.isFinite(solid[k])) ||
+      solid.w<5 || solid.d<5 || solid.h<3 || !Number.isFinite(base))
+    throw new TypeError('Finite supported building dimensions are required: '+profile.id);
+   return {...solid,...profile,base};
+  });
+  const out=[];
+  for(const b of buildings) {
+   const {x,z,w,d,h,base}=b,front=z+d/2,back=z-d/2,top=base+h;
+   const rw=w+.56,rd=d+.5,rise=h*.28,roofBase=top+.03;
+   const meta=(role,extra={})=>({cameraSolid:false,cutaway:true,rough:.94,
+    solidId:b.id,structureId:b.id,worldSolidId:b.id,
+    settlementPart:role,appearanceOnly:true,...extra});
+   const add=(kind,p,s,c,role,extra={})=>out.push({kind,p,s,c,opt:meta(role,extra)});
+   const box=(p,s,c,role,extra)=>add('box',p,s,c,role,extra);
+   const beam=(a,end,width,depth,c,role,extra={})=>{
+    const delta=end.map((v,i)=>v-a[i]),length=Math.hypot(...delta),axis=unit(delta);
+    // Timber UVs run along local X. A positive orthonormal basis aligns that
+    // grain with the actual joinery, including vertical and sloping members.
+    const ref=Math.abs(axis[1])>.9?[1,0,0]:[0,1,0];
+    const up=unit(ref.map((v,i)=>v-axis[i]*dot(ref,axis))),side=cross(axis,up);
+    const p=a.map((v,i)=>(v+end[i])/2),s=[length,width,depth];
+    const m=[...axis.map(v=>v*length),0,...up.map(v=>v*width),0,
+     ...side.map(v=>v*depth),0,...p,1];
+    add('timber-panel',p,s,c,role,{m,beamFrom:a,beamTo:end,...extra});
+   };
+
+   // A closed roof shell, restrained overhang, and attached framing replace
+   // the former roof and flat perimeter plate. No new horizontal floor/cap.
+   add('roof',[x,roofBase,z],[rw,rise,rd],b.roof,'roof-shell');
+   for(const side of [-1,1]) {
+    const edge=x+side*rw/2;
+    beam([edge,roofBase,z-rd/2],[edge,roofBase,z+rd/2],.13,.15,b.wood,'eave-fascia');
+    for(const along of [-.32,0,.32]) {
+     const zz=z+d*along,inner=x+side*(w/2-.16);
+     const yy=roofBase+rise*(1-Math.abs(inner-x)/(rw/2));
+     beam([inner,yy-.055,zz],[edge,roofBase-.055,zz],.1,.12,b.wood,'rafter-tail');
+    }
+   }
+   for(const side of [-1,1]) {
+    const zz=z+side*rd/2;
+    for(const edge of [-1,1])
+     beam([x+edge*rw/2,roofBase+.025,zz],[x,roofBase+rise+.025,zz],.13,.12,b.wood,'gable-barge');
+    beam([x-w/2,top-.025,zz],[x+w/2,top-.025,zz],.14,.13,b.wood,'gable-tie');
+    beam([x,roofBase+.065,zz],[x,roofBase+rise-.035,zz],.13,.13,b.wood,'gable-king');
+   }
+   beam([x,roofBase+rise+.03,z-rd/2-.055],[x,roofBase+rise+.03,z+rd/2+.055],.12,.16,b.wood,'roof-ridge');
+
+   // Low river-stone facing stays close to the existing solid. The small
+   // mortar gaps and staggered front courses break up the former flat box.
+   for(const side of [-1,1]) for(let row=0;row<(side===1?2:1);row++) {
+    const n=4,span=w/n,zz=z+side*(d/2+.015);
+    for(let i=0;i<n;i++) box([x-w/2+(i+.5)*span,base+.105+row*.205,zz],
+     [span-.035,.18,.1],(i+row)%2?0x9d9d89:0xa9a48e,'stone-course');
+   }
+   for(const side of [-1,1]) box([x+side*(w/2+.015),base+.2,z],
+    [.1,.38,d-.04],0x9a9b87,'stone-side');
+   for(const side of [-1,1]) for(const end of [-1,1])
+    beam([x+side*(w/2-.035),base+.4,z+end*(d/2-.025)],
+     [x+side*(w/2-.035),top-.03,z+end*(d/2-.025)],.17,.16,b.wood,'corner-post');
+   for(const side of [-1,1]) {
+    beam([x-w/2,base+.48,z+side*(d/2+.035)],
+     [x+w/2,base+.48,z+side*(d/2+.035)],.13,.11,b.wood,'wall-sill');
+    beam([x+side*(w/2+.035),base+.48,back],[x+side*(w/2+.035),base+.48,front],
+     .13,.11,b.wood,'side-sill');
+    // Braces flank the closed door and finish below the shuttered windows.
+    beam([x+side*(w/2-.2),base+.58,front+.055],
+     [x+side*(w/2-1.1),base+1.45,front+.055],.11,.09,b.wood,'face-brace');
+   }
+   const face=front+.055;
+   beam([x,base+.12,face],[x,base+2.12,face],1.16,.055,0x86694a,'closed-door',{closedDoor:true});
+   for(const side of [-1,1]) beam([x+side*.66,base+.065,face],
+    [x+side*.66,base+2.2,face],.11,.11,b.wood,'door-jamb');
+   beam([x-.715,base+2.2,face],[x+.715,base+2.2,face],.11,.11,b.wood,'door-lintel');
+   box([x+.39,base+1.04,front+.108],[.055,.075,.035],0xb09b67,'door-latch');
+   for(const side of [-1,1]) {
+    const wx=x+side*w*.3,wy=base+2.56;
+    box([wx,wy,front+.027],[1.25,1.15,.045],0x5a5c50,'window-recess');
+    for(const half of [-1,1]) beam([wx+half*.295,wy-.51,front+.065],
+     [wx+half*.295,wy+.51,front+.065],.55,.065,b.shutter,'closed-shutter',{closedShutter:true});
+    beam([wx-.7,wy-.6,front+.07],[wx+.7,wy-.6,front+.07],.12,.15,b.wood,'window-sill');
+    beam([wx-.7,wy+.6,front+.045],[wx+.7,wy+.6,front+.045],.1,.105,b.wood,'window-lintel');
+   }
+   if(b.id==='field-store') {
+    // Secured packing boards occupy the parent store wall, not the street.
+    // Their exposed front faces are ordinary props, never harvestable stock.
+    const px=x+w*.23,pz=front-.065;
+    for(let i=0;i<4;i++) beam([px-.53,base+.55+i*.15,pz],
+     [px+.53,base+.55+i*.15,pz],.12,.22,0x9a7c55,'packed-board');
+    for(const side of [-1,1]) box([px+side*.35,base+.775,front+.055],
+     [.055,.63,.03],0x6d6250,'packing-strap');
+   }
+  }
+  if(out.length>180) throw new RangeError('Coastward settlement geometry budget exceeded.');
+  return out;
+ }
+ function decorate(art,def,context={}) {
+  if(!art || typeof art.add!=='function') throw new TypeError('A WorldArt geometry writer is required.');
+  const geometry=parts(def,context);
+  for(const p of geometry) art.add(p.kind,...p.p,...p.s,p.c,p.opt);
+  return geometry.length;
+ }
+ const api=Object.freeze({parts,decorate});
+ G.RealmCoastwardSettlementArt=api;
+ if(typeof module!=='undefined') module.exports=api;
+})(globalThis);
 </script><script>/* Original Earth/Atlantis foundations. Data and scenery only; shared world rules
  * own travel, movement, work, combat and persistence. No personal/save mutation. */
 (function (G) {
@@ -1187,22 +1314,9 @@ if(typeof module!=='undefined'&&module.exports)module.exports=api;
     box(x,-1.25,z,.65,5.5,.65,0x777c71);
    }
    for(const [x,z] of [[-7,98],[7,98],[-7,19],[7,19],[-4,-62],[4,-62]]) lamp(x,z);
-   roof('west-house',-17,-77,9,9,4.2,0x685f4e);
-   roof('east-house',16,-77,8,8,4,0x75634d);
-   roof('field-store',-7,-79,8,7,3.6,0x637565);
-   for(const [id,x,z,w,h] of [['west-house',-17,-72.49,9,4.2],['east-house',16,-72.99,8,4],['field-store',-7,-75.49,8,3.6]]) {
-    box(x,height(x,z)+h*.5,z,w,.12,.035,0x77614b,{solidId:id});
-    for(const dx of [-w*.3,w*.3]) {
-     box(x+dx,height(x,z)+2.5,z,1.1,1.25,.05,0x645d4e,{solidId:id});
-     box(x+dx,height(x,z)+2.5,z+.035,.9,1.05,.04,0xf3ce86,{em:.2,solidId:id});
-    }
-    const base=height(x,z);
-    // Closed facade details: no entrance trigger or promise of an interior.
-    add('timber-panel',x,base+1.05,z+.04,2.1,1.1,.05,0x806345,{closedDoor:true,solidId:id,r:[0,0,Math.PI/2]});
-    for(const dx of [-.62,.62]) box(x+dx,base+1.1,z+.025,.09,2.2,.07,0x6b5840,{solidId:id});
-    box(x,base+2.18,z+.025,1.33,.09,.07,0x6b5840,{solidId:id});
-    box(x+.38,base+1.03,z+.085,.055,.075,.045,0xb09b67,{solidId:id});
-   }
+   // Replacement exterior geometry derives from the existing parent solids.
+   // No duplicate roof, new interior, collision footprint or stock entitlement.
+   count+=G.RealmCoastwardSettlementArt.decorate(art,def,{height});
    const paths=[[[1,-36],[1,-42],[-6,-47],[-6,-62],[-6,-68],[8,-69]],
     [[-6,-47],[-15,-46]],[[1,-42],[13,-46],[13,-54]]];
    for(const path of paths) for(let i=1;i<path.length;i++) {
@@ -3963,8 +4077,29 @@ const dot=(a,b)=>a.reduce((s,v,i)=>s+v*b[i],0);
 const scale=(a,n)=>a.map(v=>v*n);
 const plus=(a,b)=>a.map((v,i)=>v+b[i]);
 const mix=(a,b,t)=>a.map((v,i)=>v+(b[i]-v)*t);
+const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
 const norm=a=>scale(a,1/(Math.hypot(...a)||1));
 const smooth=n=>n*n*(3-2*n);
+// The accepted release is presentation, not an impact test. Queued attacks join
+// their real windup; direct accepted attacks begin at ready without inventing one.
+const release=(ready,prepared,follow,p,origin)=>p<=.38?
+ mix(origin==='ready'?ready:prepared,follow,smooth(p/.38)):
+ mix(follow,ready,smooth((p-.38)/.62));
+const directionMix=(a,b,t)=>{
+ const angle=Math.acos(clamp(dot(a,b),-1,1)),s=Math.sin(angle);
+ return angle<1e-5?norm(mix(a,b,t)):norm(plus(scale(a,Math.sin((1-t)*angle)/s),scale(b,Math.sin(t*angle)/s)));
+};
+// The cut passes outside the right shoulder before crossing forward. The
+// shortest endpoint-only interpolation would take the blade through the head.
+const bladeRelease=(ready,prepared,outside,follow,p,origin,mixer=mix)=>p<=.19?
+ mixer(origin==='ready'?ready:prepared,outside,smooth(p/.19)):p<=.38?
+ mixer(outside,follow,smooth((p-.19)/.19)):mixer(follow,ready,smooth((p-.38)/.62));
+function bodyVector(v,body){
+ const c=Math.cos(body.yaw),s=Math.sin(body.yaw),a=Math.cos(body.lean),b=Math.sin(body.lean);
+ const x=c*v[0]+s*v[2],z=-s*v[0]+c*v[2];
+ return [x,a*v[1]-b*z,b*v[1]+a*z];
+}
+const bodyPoint=(v,body,pivot)=>plus(plus(bodyVector(vec(v,pivot),body),pivot),body.shift);
 
 function motion(previous,input={}){
  const x=finite(input.x),z=finite(input.z),now=finite(input.time),scene=input.scene??null;
@@ -4016,6 +4151,7 @@ function pose(options={}){
  const style=['blade','bow'].includes(options.style)?options.style:'none';
  const combatPhase=combatScene&&['anticipate','recover'].includes(options.combatPhase)?options.combatPhase:'idle';
  const combatProgress=combatPhase==='idle'?0:unit(options.combatProgress),guarded=combatScene&&!!options.guarded;
+ const releaseOrigin=options.releaseOrigin==='ready'?'ready':'queued';
  const gait=(swimming?0:walkingBlend)*(reducedMotion?.55:1),stride=Math.sin(phase)*gait;
  const bob=reducedMotion?0:Math.abs(Math.sin(phase*2))*.012*walkingBlend;
  const breath=reducedMotion?0:Math.sin(time*1.35)*.003*(1-walkingBlend);
@@ -4033,35 +4169,62 @@ function pose(options={}){
  const swing=reducedMotion?0:stride*.16;
  let left=[-.265,.845+torsoY,swing],right=[.265,.845+torsoY,-swing];
  const p=smooth(combatProgress);
+ const upperBody={yaw:0,lean:0,shift:[0,0,0]},pivot=[0,.985+torsoY,0];
+ let bladeAxis=norm([.18,.94,.28]);
  if(combatScene&&style==='bow'){
   const readyLeft=[-.30,1.30+torsoY,.48],readyRight=[.16,1.26+torsoY,.32];
+  const drawnLeft=[-.34,1.37+torsoY,.49],drawnRight=[.13,1.46+torsoY,.10];
   left=readyLeft;right=readyRight;
   if(combatPhase==='anticipate'){
-   left=mix(readyLeft,[-.34,1.37+torsoY,.49],p);
-   right=mix(readyRight,[.13,1.46+torsoY,.10],p);
+   left=mix(readyLeft,drawnLeft,p);right=mix(readyRight,drawnRight,p);
+   if(!reducedMotion){upperBody.yaw=.09*p;upperBody.lean=-.025*p;}
   }else if(combatPhase==='recover'){
-   // A released string relaxes directly to ready; secondary recoil is omitted
-   // in reduced motion, while the essential two-hand bow alignment remains.
-   right=reducedMotion?readyRight:mix([.16,1.26+torsoY,.35],readyRight,p);
+   // A real queued draw remains connected at release, then the string relaxes.
+   // Direct shots have no forged draw. Reduced motion retains only this essential
+   // hand/string alignment and omits the optional small manual follow-through.
+   const relax=smooth(unit(combatProgress/.55));
+   if(releaseOrigin==='queued'){
+    left=mix(drawnLeft,readyLeft,relax);right=mix(drawnRight,readyRight,relax);
+    if(!reducedMotion){upperBody.yaw=.09*(1-relax);upperBody.lean=-.025*(1-relax);}
+   }else if(!reducedMotion)right=release(readyRight,readyRight,[.20,1.24+torsoY,.36],combatProgress,'ready');
   }
   if(guarded){left=[-.30,1.28+torsoY,.40];right=[.15,1.26+torsoY,.24];}
  }else if(combatScene&&style==='blade'){
   const readyRight=[.29,.94+torsoY,.23],readyLeft=[-.27,1.02+torsoY,.13];
+  const preparedRight=reducedMotion?[.32,1.01+torsoY,.24]:[.37,1.40+torsoY,.085];
+  const preparedLeft=reducedMotion?readyLeft:[-.30,1.08+torsoY,.17];
+  const followRight=reducedMotion?[.24,.99+torsoY,.29]:[.08,1.06+torsoY,.42];
+  const followLeft=reducedMotion?readyLeft:[-.31,1.00+torsoY,.12];
+  const outsideRight=releaseOrigin==='ready'?[.36,1.03+torsoY,.37]:[.40,1.19+torsoY,.38];
+  const readyAxis=bladeAxis,preparedAxis=norm([.38,.27,-.88]),followAxis=norm([-.62,.20,.76]);
   right=readyRight;left=readyLeft;
   if(combatPhase==='anticipate'){
-   right=mix(readyRight,[.34,1.45+torsoY,.12],p);
-   left=mix(readyLeft,[-.29,1.11+torsoY,.20],p*.5);
+   right=mix(readyRight,preparedRight,p);left=mix(readyLeft,preparedLeft,p);
+   if(!reducedMotion){bladeAxis=directionMix(readyAxis,preparedAxis,p);upperBody.yaw=-.14*p;upperBody.lean=-.04*p;upperBody.shift=[.008*p,0,-.012*p];}
   }else if(combatPhase==='recover'){
-   right=mix([.055,1.08+torsoY,.48],readyRight,p);
+   right=reducedMotion?release(readyRight,preparedRight,followRight,combatProgress,releaseOrigin):
+    bladeRelease(readyRight,preparedRight,outsideRight,followRight,combatProgress,releaseOrigin);
+   left=release(readyLeft,preparedLeft,followLeft,combatProgress,releaseOrigin);
+   if(!reducedMotion){
+    bladeAxis=bladeRelease(readyAxis,preparedAxis,norm([.70,-.08,.71]),followAxis,combatProgress,releaseOrigin,directionMix);
+    const balance=release([0,0,0],[-.14,-.04,1],[.15,.045,-1],combatProgress,releaseOrigin);
+    upperBody.yaw=balance[0];upperBody.lean=balance[1];upperBody.shift=[balance[2]*.008,0,-balance[2]*.012];
+   }
   }
   if(guarded){right=[.25,1.25+torsoY,.29];left=[-.24,1.26+torsoY,.25];}
  }else if(guarded){left=[-.23,1.20+torsoY,.24];right=[.23,1.20+torsoY,.24];}
+ // Bracing and swimming retain their own stable ownership. Combat never moves
+ // hip/leg/foot anchors or rotates the physical player/camera root.
+ if(guarded||swimming){upperBody.yaw=0;upperBody.lean=0;upperBody.shift=[0,0,0];bladeAxis=guarded?norm([-.63,.72,.19]):norm([.18,.94,.28]);}
  if(swimming){const stroke=reducedMotion?0:Math.sin(time*1.9)*.12;left=[-.42,1.08+torsoY,.18+stroke];right=[.42,1.08+torsoY,.18-stroke];}
+ for(const key of ['spine','chest','neck','head','back','leftShoulder','rightShoulder'])joints[key]=bodyPoint(joints[key],upperBody,pivot);
+ left=bodyPoint(left,upperBody,pivot);right=bodyPoint(right,upperBody,pivot);bladeAxis=norm(bodyVector(bladeAxis,upperBody));
+ const bladeLateral=norm(cross(bladeAxis,bodyVector([0,1,0],upperBody)));
  for(const [name,side,target]of [['left',-1,left],['right',1,right]]){
-  const arm=twoBone(joints[name+'Shoulder'],target,.305,.285,[side,-.3,-.25]);
+  const arm=twoBone(joints[name+'Shoulder'],target,.305,.285,bodyVector([side,-.3,-.25],upperBody));
   joints[name+'Elbow']=arm.middle;joints[name+'Hand']=arm.end;
  }
- return {joints,phase,walkingBlend,time,reducedMotion,style,combatScene,combatPhase,combatProgress,guarded,swimming,
+ return {joints,phase,walkingBlend,time,reducedMotion,style,combatScene,combatPhase,combatProgress,releaseOrigin,guarded,swimming,upperBody,bladeAxis,bladeLateral,
   bob:torsoY,cloakSwing:reducedMotion?0:Math.sin(phase)*walkingBlend*.025};
 }
 
@@ -4069,6 +4232,8 @@ function draw(out,input={},posed=pose()){
  const {M,hex,blend}=G.RealmEngine;
  const x=finite(input.x),z=finite(input.z),base=finite(input.base),yaw=finite(input.yaw);
  const root=M.compose(x,base,z,1,1,1,0,yaw,0),j=posed.joints;
+ const body=posed.upperBody||{yaw:0,lean:0,shift:[0,0,0]},pivotY=.985+posed.bob;
+ const bodyRoot=M.mul(root,M.mul(M.compose(body.shift[0],pivotY+body.shift[1],body.shift[2],1,1,1,body.lean,body.yaw,0),M.compose(0,-pivotY,0,1,1,1)));
  const profile=input.profile||{},pal=G.RealmCreative||{};
  const pick=(list,key,fallback)=>Array.isArray(list)&&Number.isInteger(key)&&list[key]!=null?list[key]:fallback;
  const skin=hex(pick(pal.SKINS,profile.skin,0xd2ac8e)),hair=hex(pick(pal.HAIR,profile.hair,0x5a4334));
@@ -4077,11 +4242,13 @@ function draw(out,input={},posed=pose()){
  const armored=input.armorColor!=null,coat=armored?hex(input.armorColor):blend(cloth,hex(0xe2d6b7),.12);
  const darkCoat=blend(coat,hex(0x263932),.20),seam=blend(coat,hex(0xe2d6b7),.32);
  const trousers=hex(0x414b45),leather=hex(0x4f4336),sole=hex(0x302f2b),metal=hex(0xc4af7b);
- const add=(kind,name,position,size,color,rotation=[0,0,0],extra={})=>{
+ const add=(kind,name,position,size,color,rotation=[0,0,0],extra={},upper=false)=>{
   const local=M.compose(...position,...size,...rotation);
-  out[kind].push({p:M.transform(root,position),s:size.slice(),m:M.mul(root,local),c:color,rough:.84,
+  const parent=upper?bodyRoot:root;
+  out[kind].push({p:M.transform(parent,position),s:size.slice(),m:M.mul(parent,local),c:color,rough:.84,
    cameraSolid:false,cutaway:false,travelerPart:name,...extra});
  };
+ const upperAdd=(kind,name,position,size,color,rotation=[0,0,0])=>add(kind,name,position,size,color,rotation,{},true);
  // Columns of this basis point along a 3D segment. Unlike the old Y/Z-only
  // rotation, it can connect a cross-body wrist to its elbow without a gap.
  const limb=(name,a,b,width,depth,color)=>{
@@ -4096,49 +4263,50 @@ function draw(out,input={},posed=pose()){
  const y=posed.bob;
  // Narrow waist, broader shoulder line and a split hem make fitted clothing
  // with existing primitives, rather than a stack of rounded doll volumes.
- add('box','jacket-waist',[0,1.035+y,0],[.335,.27,.24],darkCoat);
- add('box','jacket-chest',[0,1.255+y,0],[.425,.245,.255],coat);
- add('octa','jacket-left-side',[-.155,1.13+y,0],[.155,.35,.245],coat);
- add('octa','jacket-right-side',[.155,1.13+y,0],[.155,.35,.245],coat);
- add('box','jacket-front-seam',[0,1.18+y,.132],[.025,.30,.022],seam);
+ upperAdd('box','jacket-waist',[0,1.035+y,0],[.335,.27,.24],darkCoat);
+ upperAdd('box','jacket-chest',[0,1.255+y,0],[.425,.245,.255],coat);
+ upperAdd('octa','jacket-left-side',[-.155,1.13+y,0],[.155,.35,.245],coat);
+ upperAdd('octa','jacket-right-side',[.155,1.13+y,0],[.155,.35,.245],coat);
+ upperAdd('box','jacket-front-seam',[0,1.18+y,.132],[.025,.30,.022],seam);
  add('box','jacket-left-hem',[-.096,.89+y,.008],[.18,.20,.245],darkCoat,[0,0,-.045]);
  add('box','jacket-right-hem',[.096,.89+y,.008],[.18,.20,.245],darkCoat,[0,0,.045]);
  add('box','belt',[0,.985+y,.008],[.355,.063,.267],leather);
  add('box','belt-buckle',[0,.985+y,.152],[.065,.060,.028],metal);
- add('box','collar-left',[-.09,1.407+y,.042],[.09,.10,.18],seam,[0,0,-.18]);
- add('box','collar-right',[.09,1.407+y,.042],[.09,.10,.18],seam,[0,0,.18]);
- add('round','neck',j.neck,[.105,.15,.115],skin);
- add('round','head',j.head,[.245,.27,.235],skin);
- add('box','hair-crown',[0,1.721+y,-.015],[.226,.062,.207],hair);
- add('box','hair-back',[0,1.620+y,-.105],[.220,.205,.072],hair);
+ upperAdd('box','collar-left',[-.09,1.407+y,.042],[.09,.10,.18],seam,[0,0,-.18]);
+ upperAdd('box','collar-right',[.09,1.407+y,.042],[.09,.10,.18],seam,[0,0,.18]);
+ upperAdd('round','neck',[0,1.475+y,0],[.105,.15,.115],skin);
+ upperAdd('round','head',[0,1.610+y,.008],[.245,.27,.235],skin);
+ upperAdd('box','hair-crown',[0,1.721+y,-.015],[.226,.062,.207],hair);
+ upperAdd('box','hair-back',[0,1.620+y,-.105],[.220,.205,.072],hair);
  for(const [name,side]of [['left',-1],['right',1]]){
-  add('round',name+'-ear',[side*.122,1.610+y,.003],[.046,.071,.05],skin);
-  add('box',name+'-eye',[side*.050,1.633+y,.119],[.025,.016,.012],0x303b37);
-  add('box',name+'-brow',[side*.051,1.654+y,.118],[.043,.012,.013],hair);
+  upperAdd('round',name+'-ear',[side*.122,1.610+y,.003],[.046,.071,.05],skin);
+  upperAdd('box',name+'-eye',[side*.050,1.633+y,.119],[.025,.016,.012],0x303b37);
+  upperAdd('box',name+'-brow',[side*.051,1.654+y,.118],[.043,.012,.013],hair);
   limb(name+'-thigh',j[name+'Hip'],j[name+'Knee'],.165,.18,trousers);
   limb(name+'-shin',j[name+'Knee'],j[name+'Ankle'],.125,.145,trousers);
   add('round',name+'-knee',j[name+'Knee'],[.151,.13,.155],trousers);
   add('box',name+'-boot',j[name+'Foot'],[.165,.126,.285],leather);
   add('box',name+'-sole',plus(j[name+'Foot'],[0,-.049,0]),[.177,.036,.299],sole);
   add('round',name+'-boot-cuff',plus(j[name+'Ankle'],[0,.045,-.007]),[.152,.15,.172],leather);
-  add('box',name+'-shoulder',j[name+'Shoulder'],[.18,.15,.255],coat,[0,0,side*.10]);
+  upperAdd('box',name+'-shoulder',[side*.235,1.365+y,0],[.18,.15,.255],coat,[0,0,side*.10]);
   limb(name+'-upper-arm',j[name+'Shoulder'],j[name+'Elbow'],.132,.144,coat);
   add('round',name+'-elbow',j[name+'Elbow'],[.125,.125,.129],darkCoat);
   limb(name+'-forearm',j[name+'Elbow'],j[name+'Hand'],.107,.119,darkCoat);
   add('round',name+'-hand',j[name+'Hand'],[.104,.116,.102],skin);
  }
- add('octa','nose',[0,1.614+y,.137],[.052,.066,.074],skin);
+ upperAdd('octa','nose',[0,1.614+y,.137],[.052,.066,.074],skin);
  const sweep=posed.cloakSwing;
  for(const [name,side]of [['left',-1],['center',0],['right',1]]){
-  add('box','cloak-'+name,[side*.133,1.10+y,-.189-Math.abs(side)*.020+sweep],[.150,.61,.045],
+  upperAdd('box','cloak-'+name,[side*.133,1.10+y,-.189-Math.abs(side)*.020+sweep],[.150,.61,.045],
    side?cloak:blend(cloak,hex(0x2d4039),.12),[.105+sweep,0,-side*.07]);
  }
- add('box','cloak-clasp',[.10,1.383+y,.145],[.046,.050,.028],metal);
+ upperAdd('box','cloak-clasp',[.10,1.383+y,.145],[.046,.050,.028],metal);
  add('disc','ground-marker',[0,.013,0],[.88,1,.88],0xcebc87,[0,0,0],{rough:.65,em:.05});
  // Copy anchors into the frame; later attachment code cannot mutate a pose.
  const joints=Object.fromEntries(Object.entries(j).map(([name,v])=>[name,v.slice()]));
  return {root,joints,style:posed.style,combatScene:posed.combatScene,combatPhase:posed.combatPhase,
-  combatProgress:posed.combatProgress,guarded:posed.guarded,reducedMotion:posed.reducedMotion,walkingBlend:posed.walkingBlend};
+  combatProgress:posed.combatProgress,releaseOrigin:posed.releaseOrigin,bladeAxis:posed.bladeAxis.slice(),bladeLateral:posed.bladeLateral.slice(),
+  upperBody:{yaw:body.yaw,lean:body.lean,shift:body.shift.slice()},guarded:posed.guarded,reducedMotion:posed.reducedMotion,swimming:posed.swimming,walkingBlend:posed.walkingBlend};
 }
 const api={motion,pose,draw};G.RealmTravelerArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
@@ -4178,12 +4346,15 @@ function draw(out,sim,frame){
  const gem=AR.activeGem(a),gemId=gem?a.arsenal.sockets[id]:null,stage=Math.max(0,Math.min(2,G.RealmPursuit?.stage(a,id)||0)),temper=G.RealmStarter?.bonus(a,id)||0,realmFitting=G.RealmCraft?.bonus(a,id)||0;
  const summary={weaponId:id,style,mode:ready?'held':'stowed',gripLocal:Array.from(grip),gripWorld:M.transform(frame.root,grip),gem:gemId,temper,stage,realmFitting,instances:0};
  const attachment=ready?(style==='bow'?'leftHand':'rightHand'):(style==='bow'?'back':'hip');
+ let bladeBasis=null;
 
  // A complete orthonormal basis handles beams with arbitrary X/Y/Z endpoints.
  // Local +Y spans the exact segment; multiplying by the rig root preserves both
  // attachment points across facing changes and height-aware terrain.
  function form(kind,center,axis,width,length,depth,c,weaponPart,extra={}){
-  const y=unit(axis),reference=Math.abs(y[2])<.85?[0,0,1]:[1,0,0],x=unit(cross(y,reference)),z=cross(x,y);
+  const y=unit(axis),reference=Math.abs(y[2])<.85?[0,0,1]:[1,0,0];
+  const x=bladeBasis&&!weaponPart.startsWith('scabbard')&&weaponPart!=='sheath-hanger'&&Math.abs(dot(y,bladeBasis.axis))>.98?
+   unit(sub(bladeBasis.lateral,scale(y,dot(bladeBasis.lateral,y)))):unit(cross(y,reference)),z=cross(x,y);
   const local=new Float32Array([x[0]*width,x[1]*width,x[2]*width,0,y[0]*length,y[1]*length,y[2]*length,0,z[0]*depth,z[1]*depth,z[2]*depth,0,...center,1]);
   out[kind].push({p:M.transform(frame.root,center),s:[width,length,depth],m:M.mul(frame.root,local),c,rough:.76,travelerPart:'equipment',weaponPart,weaponId:id,carryMode,attachment,...extra});summary.instances++;
  }
@@ -4215,13 +4386,22 @@ function draw(out,sim,frame){
   beam(add(hip,[-.18,0,0]),add(anchor,[0,-.03,-.01]),.049,.056,0x6e5a42,'sheath-hanger',{attachment:'hip'});
  }
  function blade(){
-  const spec=Object.hasOwn(BLADES,id)?BLADES[id]:BLADES.trail_blade,phase=frame.combatPhase,progress=Number.isFinite(frame.combatProgress)?Math.max(0,Math.min(1,frame.combatProgress)):0;
-  let axis=unit([-.10,.92,.37]);
+  const spec=Object.hasOwn(BLADES,id)?BLADES[id]:BLADES.trail_blade;
+  // Rig hands, torso balance and blade direction sample the same pure release
+  // curve. A complete supplied frame owns this axis; older/custom frames can
+  // derive it without changing canonical state or creating animation runtime.
+  const fallback=point(frame.bladeAxis)?null:G.RealmTravelerArt?.pose({style:'blade',combatScene:ready,
+   combatPhase:frame.combatPhase,combatProgress:frame.combatProgress,releaseOrigin:frame.releaseOrigin,
+   guarded:frame.guarded,reducedMotion:frame.reducedMotion,swimming:frame.swimming});
+  const posedAxis=point(frame.bladeAxis)?frame.bladeAxis:fallback?.bladeAxis;
+  let axis=unit(point(posedAxis)?posedAxis:[.18,.94,.28]);
   if(!ready)axis=unit([-.08,-.93,-.35]);
-  else if(frame.guarded)axis=unit([-.63,.72,.19]);
-  else if(!frame.reducedMotion&&phase==='anticipate')axis=unit([-.25,.84-.50*progress,-.12-.65*progress]);
-  else if(!frame.reducedMotion&&phase==='recover')axis=unit([-.30+.20*progress,.25+.67*progress,.94-.57*progress]);
-  const lateral=unit(cross(axis,[0,0,1])),front=unit(cross(lateral,axis));
+  // Preserve the rig's continuous blade-plane lateral direction. Unlike choosing a
+  // different global reference at |axis.z|=.85, this cannot flip its broad face
+  // midway through the bounded cut. Stowed geometry keeps its prior basis.
+  const hint=point(frame.bladeLateral)?frame.bladeLateral:point(fallback?.bladeLateral)?fallback.bladeLateral:[1,0,0];
+  const lateral=ready?unit(sub(hint,scale(axis,dot(hint,axis)))):unit(cross(axis,[0,0,1])),front=unit(cross(lateral,axis));
+  if(ready)bladeBasis={axis,lateral};
   beam(offset(grip,axis,-.12),offset(grip,axis,.12),.095,.088,spec.grip,'grip',{},'round');
   block(offset(grip,axis,-.155),[.13,.10,.11],spec.metal,'pommel',{},axis,'round');
   const guard=offset(grip,axis,.17);
@@ -4529,10 +4709,10 @@ class WorldArt{
   if(combatScene&&combat.phase==='idle'){
    let release=weapon.style==='bow'&&r.lastShot!==owner.blockedShot?r.lastShot:null;
    if(weapon.style!=='bow')for(let i=r.fx.length-1;i>=0;i--)if(!owner.blockedFx.has(r.fx[i])&&(r.fx[i].kind==='slash'||r.fx[i].kind==='pulse')){release=r.fx[i].at;break;}
-   if(Number.isFinite(release)&&a.elapsed>=release&&a.elapsed-release<.28)combat={phase:'recover',progress:(a.elapsed-release)/.28};
+   if(Number.isFinite(release)&&a.elapsed>=release&&a.elapsed-release<.28)combat={phase:'recover',progress:(a.elapsed-release)/.28,releaseOrigin:'ready'};
   }
   this.travelerMotion=G.RealmTravelerArt.motion(this.travelerMotion,{x:p.x,z:p.z,scene:this.room,time:sim.elapsed,walking:sim.walking,paused:sim.paused,reducedMotion});
-  const pose=G.RealmTravelerArt.pose({...this.travelerMotion,time:this.travelerMotion.time,reducedMotion,swimming:!!sim.worldDive&&!G.RealmWorldFoundations.divingStatus(sim,null)?.dryCourt,style:weapon.style,combatScene,combatPhase:combat.phase,combatProgress:combat.progress,guarded:combatScene&&a.elapsed<G.RealmCombat.runtime(sim).guardUntil});
+  const pose=G.RealmTravelerArt.pose({...this.travelerMotion,time:this.travelerMotion.time,reducedMotion,swimming:!!sim.worldDive&&!G.RealmWorldFoundations.divingStatus(sim,null)?.dryCourt,style:weapon.style,combatScene,combatPhase:combat.phase,combatProgress:combat.progress,releaseOrigin:combat.releaseOrigin,guarded:combatScene&&a.elapsed<G.RealmCombat.runtime(sim).guardUntil});
   const starts=Object.fromEntries(Object.entries(out).map(([k,v])=>[k,v.length]));
   const armorColor=G.RealmAdventure.GEAR[a.equipment.armor]?.color||null;
   this.travelerFrame=G.RealmTravelerArt.draw(out,{x:p.x,z:p.z,yaw:p.yaw,base,profile:sim.state.visitor,color:X.CLOAKS[sim.state.visitor.cloak],armorColor},pose);
