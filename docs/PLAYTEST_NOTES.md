@@ -1,3 +1,11 @@
+# Living Road encounter qualification, 2026-10-04
+
+New bounded case: Channel skitter teaches pursuit; Root-bank brute commits a visible forward lane. Test a fresh blade/bow and returning strongest equipment; preserve useful gear advantage. Compare default diorama/third person, muted/reduced motion, real lateral movement, Brace, readable recovery and the unchanged free retreat/death/companion controls. First cleared kit is supplied, not paid personal material; subsequent patrol only checks the permanent support.
+
+12 focused synthetic Core boundaries passed; three actual command-earned journeys completed story and two paid runs with no duplicate old loot. First root fights4.6s blade/8.3s bow/1.4s strongest use accelerated known-route tactics. Native02 had430 passed checks and1 exact served-HTML failure after a copy refinement landed mid-run; it is incomplete, not qualification. Native01 had3 passed/1 failed outdated terms assertion. Frozen final browser and normal-time video remain pending at this checkpoint. Read the final dated result for later receipts.
+
+Human verdict remains pending. Did the warning explain where the hit lands? Did guarding or stepping aside feel deliberate? Could you see how the kit/inspection followed the fight? Would you choose another outing? Do not fabricate a response while Dom is away.
+
 # Living Earth final engineering checkpoint, 2026-10-04
 
 Draft PR41 is stacked against PR40. Runtime `d7a434b238c662a77eb3318ddee7626732c416a5` passed the clean remote-clone full gate: 97 syntax modules, 1153 Node checks,56 Python passes + 1 existing skip,46 earned journeys and 41 browser suites. Native community coverage is 259 checks with 21 whole-browser restart checkpoints. Both final-source normal-time choice recordings pass 21 checks each, with actual source-linked media. Later delivery documentation retains the same runtime/verifier inputs; its exact head/equality and separate source gate belong to the PR receipts. See [final delivery](development/LIVING_REGION_DELIVERY_2026-10-04.md).

@@ -284,6 +284,7 @@ class RPGUI{
   const defense=braced?'Braced · move clear if needed':ready?'Brace (3) or move clear':'Move clear · Brace unavailable';
   const copy=cue.phase==='recover'?['Recovery opening','Strike if ready; close if out of range']:cue.phase==='charge'?['Charging',defense]:({
    strike:['Marked strike',defense],charge:['Charge incoming',defense],
+   'bank-sweep':['Bank sweep',braced?'Braced · incoming damage reduced':ready?'Brace (3) or step beside the marked lane':'Step beside the lane · Brace unavailable'],
    'bell-outer':['Wide ring','Step into its quiet center'],
    'bell-inner':['Inner strike','Step out of the circle'],
    ward:['Beacon strike','The marked strike targets the ward']

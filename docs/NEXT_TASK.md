@@ -1,3 +1,11 @@
+# Finish and play the distinctive Living Road encounter
+
+Continue from the actual newest gameplay/living-road-encounter-20261004 review head after fetch. Finish its frozen-source verifier, expanded native Earth encounter checks, ordinary-time side-step/Brace footage and exact remote-clone reproduction. Read LIVING_ROAD_ENCOUNTER_2026-10-04.md and its forthcoming results; preserve failed/superseded epochs rather than treating their intermediate passes as delivery proof. Keep story clearance/supplied kit distinct from current patrol inspection and permanent repair.
+
+After qualification, deepen the same settlement return loop: one existing person remembers an actual allocation and offers a practical next activity that responds to it. Inspect current owners before choosing finite/repeat terms; build one meaningful consequence rather than another disconnected region or universal economy. Keep both cameras, current combat input, saves/XP/gear and the browser. Full countries/streaming, major realm endings, collecting/classes and real two-client play remain separate arcs. Founder paid-power/loss/rare-allocation/construction/cosmic choices remain unresolved.
+
+Dom plays later. Pending: could you recognize the sweep and choose a response, did the opening make fighting feel better, and did clearing the work pocket make the place worth returning to? Automated footage does not supply these answers.
+
 # Living Earth: qualify and deepen one connected place
 
 Continue from the actual newest `gameplay/earth-living-region-20261004` head after fetching review and concurrent work. Its first episode is delivered in draft PR41: runtime d7a434b238c662a77eb3318ddee7626732c416a5 passes the fresh-clone full gate, with final native and normal-time media receipts. Read the source-linked delivery/equality records and current reviews before acting. Do not replace newer gameplay with archive/main or ZIPs. See the [current contract](development/LIVING_REGION_2026-10-04.md).

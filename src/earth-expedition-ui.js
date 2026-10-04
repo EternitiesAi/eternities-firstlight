@@ -68,6 +68,7 @@ class ExpeditionUI{
   const active=patrol?p.active:this.sim.state.earthExpedition.story;
   const runMeta=patrol?'data-run="'+active.run+'" data-prior-claim="'+p.lastClaim+'"':'';
   let html='<section class="expedition-objectives"><h3>'+(p.ready?'Work complete · payment ready':'Your next action')+'</h3>';
+  if(active.steps.includes('clear-root-pests'))html+='<p class="expedition-clearance">'+(patrol?'Patrol '+active.run+' · bank pocket checked clear. The permanent brace remains; record the return glade.':active.steps.includes('brace-root-channel')?'The staged kit is now the installed brace. The living support remains.':'Bank pocket cleared · kit staged at the alternate support, south of the passage. Fit the brace next.')+' Your payment is still separate and must be claimed from Rill.</p>';
   if(p.ready)html+='<p>Return to Rill at the camp. Your payment remains unclaimed until you deliberately collect it.</p>'+button('Walk back to Rill','walk','giver')+button(patrol?'Claim patrol '+active.run:'Claim the declared story payment',patrol?'patrol-claim':'claim','',runMeta);
   else for(const s of p.next){
    html+='<article data-expedition-step="'+esc(s.id)+'"><small>'+(s.kind==='defeat'?'ACTUAL ENCOUNTER':'FIELD WORK')+'</small><h4>'+esc(s.name)+'</h4><p>'+esc(s.text)+'</p>';

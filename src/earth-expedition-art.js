@@ -16,6 +16,22 @@ function parts(ledger){
  add('timber-panel',[-76,FLOOR+1.12,-14.8],[1.34,.68,.065],0x6d6148,'load-board');
  const page=steps.has('assess-load')?0xe7dcbb:0xc7bea2;
  for(let i=0;i<2;i++)add('box',[-76.27+i*.54,FLOOR+1.12,-14.755],[.42,.48,.018],page,'load-board-record');
+ // A field check is separate from the enduring first repair. An active patrol
+ // displays only its own saved clearance, never a backfilled story defeat.
+ const inspection=ledger.patrol?.active,checked=inspection?inspection.steps.includes('clear-root-pests'):steps.has('clear-root-pests');
+ if(steps.has('read-root-load')||inspection?.steps.includes('inspect-root')){
+  add('timber-panel',[-137.6,FLOOR+.52,-74.2],[.08,1.04,.08],0x766049,'clearance-stake');
+  add('timber-panel',[-137.6,FLOOR+.83,-74.145],[.56,.36,.04],0x776c51,'clearance-board');
+  const role=inspection?(checked?'patrol-clear-tag':'patrol-check-tag'):(checked?'story-clear-tag':'story-check-tag');
+  add('box',[-137.6,FLOOR+.83,-74.12],[.32,.22,.018],checked?0x9fc6a0:0xd9b278,role,{patrolRun:inspection?.run??null});
+  // A bright diagonal check reads through shape as well as color.
+  if(checked)beam([-137.73,FLOOR+.80,-74.105],[-137.62,FLOOR+.75,-74.105],.036,.018,0xf0e6c7,'clearance-check');
+  if(checked)beam([-137.62,FLOOR+.75,-74.105],[-137.45,FLOOR+.91,-74.105],.036,.018,0xf0e6c7,'clearance-check');
+ }
+ if(steps.has('clear-root-pests')&&!steps.has('brace-root-channel')){
+  for(let i=0;i<2;i++)add('timber-panel',[-143.4,FLOOR+.08+i*.16,-84.8],[1.5,.16,.20],0x9a7953,'staged-brace-timber');
+  for(const x of[-143.8,-143])add('box',[x,FLOOR+.17,-84.8],[.055,.34,.24],0xc2ab74,'staged-brace-binding');
+ }
  if(safe.includes(story.branch)&&steps.has('prepare-allocation')){
   const x=story.branch==='stormfall-recovery'?-81.8:-76.9,z=story.branch==='stormfall-recovery'?-19:-3.5;
   if(story.branch==='managed-coppice')for(let i=0;i<2;i++)add('timber-panel',[-76.58,FLOOR+.07+i*.14,z],[1.40,.14,.28],0x9a9868,'prepared-coppice-bundle',{allocation:story.branch});

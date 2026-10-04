@@ -1,3 +1,11 @@
+# Current Living Road encounter, 2026-10-04
+
+Continue from gameplay/living-road-encounter-20261004 after fetching current reviews. Contract: docs/development/LIVING_ROAD_ENCOUNTER_2026-10-04.md. The exact canonical expedition/root identity owns a short locked bank sweep; unrelated sentinels keep their old behavior. earth-expedition.js owns profile/frame geometry, Adventure owns actual contact/time/visibility/damage, Combat reads threat, UI/art project it. Root kind remains sentinel so projectile volumes, saved identities and generic consumers do not change.
+
+No save migration: world/key9, adventure12, expedition1 and old XP/choice/equipment/claim owners remain. Strike/contact are transient and reset on scene/reload. First saved root clearance stages supplied brace timber; fitting removes staging. Current patrol check tags read only that active run, while the permanent brace remains. No new currency, item, reward owner, auto-equip or repair replay. Preserve source freeze during qualification, both views and every previous gate. Native/normal-time footage, source review, software CI and human feel are distinct. No main merge/deployment/paid workers/personal saves.
+
+Earlier instructions retain their scoped history.
+
 # Current home-history implementation, 2026-10-03
 
 Current gameplay continues PR39/head27bd on `gameplay/home-that-remembers-20261003`. Read the four continuity records and `docs/development/HOME_THAT_REMEMBERS_2026-10-03.md` plus its results/guide. Dom explicitly authorizes implementation while deferring human play; no human approval is fabricated.

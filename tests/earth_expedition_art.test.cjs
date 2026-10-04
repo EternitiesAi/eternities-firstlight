@@ -65,12 +65,12 @@ test('both shape-valid allocation histories project only their recorded steps an
   if(n>=2)assert.ok(p.filter(p=>p.opt.allocation).every(p=>p.opt.allocation===branch));
   for(const q of p){finiteMesh(q);assert.equal(q.opt.appearanceOnly,true);assert.equal(q.opt.cameraSolid,false);assert.equal(q.opt.cutaway,false);assert.equal(q.opt.worldSolid,undefined);assert.equal(E.solidBounds(q.kind,{p:q.p,s:q.s,...q.opt}),null);}
  }
- assert.equal(maximum,20);const r=ledger(),a=EA.parts(r);a[0].p[0]=999;assert.notEqual(EA.parts(r)[0].p[0],999);
- const completed=ledger('managed-coppice',8,true),old=EA.parts(completed);completed.patrol={lastClaim:2,active:{run:3,steps:['inspect-water']}};assert.deepEqual(EA.parts(EE.validate(completed)),old,'patrol does not undo or replay first repair art');
+ assert.ok(maximum<=30,'bounded field marker/staging budget');const r=ledger(),a=EA.parts(r);a[0].p[0]=999;assert.notEqual(EA.parts(r)[0].p[0],999);
+ const completed=ledger('managed-coppice',8,true),old=EA.parts(completed);completed.patrol={lastClaim:2,active:{run:3,steps:['inspect-water']}};const enduring=ps=>ps.filter(p=>!['story-clear-tag','patrol-clear-tag','patrol-check-tag','clearance-check'].includes(p.opt.expeditionPart));assert.deepEqual(enduring(EA.parts(EE.validate(completed))),enduring(old),'patrol does not undo or replay first repair art');
 });
 test('worksite actual mesh stays supported and full-body routes/choice/work/foe anchors remain clear',()=>{
  const anchors=[EE.definition.giver,...EE.definition.steps,...EE.definition.steps.flatMap(s=>s.choices||[]),...EE.definition.enemies];
- for(const branch of ['stormfall-recovery','managed-coppice'])for(const p of EA.parts(ledger(branch,8,true))){
+ for(const branch of ['stormfall-recovery','managed-coppice'])for(const n of [5,6,7,8])for(const p of EA.parts(ledger(branch,n,n===8))){
   const b=bounds(p);assert.ok(b.min[1]>=F-EPS,'no work mesh below floor');for(const v of vertices(p))assert.ok(W.land(d.room,v[0],v[2],0),p.opt.expeditionPart+' unsupported');
   for(const r of EW.extension.routes)for(let i=1;i<r.points.length;i++)assert.ok(clear(r.points[i-1],r.points[i],p),r.id+' '+p.opt.expeditionPart);
   for(const a of anchors)assert.ok(clear([a.x,a.z],[a.x,a.z],p),a.id+' '+p.opt.expeditionPart);

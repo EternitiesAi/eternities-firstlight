@@ -1,3 +1,11 @@
+# A physical bank sweep with honest clearance, 2026-10-04
+
+- Continue actual PR41 gameplay, not main/archive/ZIP. Use the existing linked D-drive checkout and a new review branch; two authorized Sol colleagues provide independent read-only source/design review while Root implements and integrates. No paid worker rerouting.
+- Specialize the exact canonical story/run root actors without changing kind: fixed136HP/11damage, short2.6m trigger, immutable forward3.1x2m rectangle, player-circle.24m contact,1.35s tell/2.3s recovery. Generic sentinels, Channel skitter, targeting/stationary autoattack/projectile rules retain their owners. No gear scaling or forced veteran phases.
+- Actual visibility and takeDamage own one contact; UI/geometry share the locked frame and actual timer. Shape plus text remain under reduced motion. Contact pose is transient presentation, not an extra damage event or confirmed weapon hit.
+- Saved first clearance stages supplied timber south of the passage; installing removes staging into the old brace. A separate exact-active-run inspection tag never inherits old story/patrol clearance. No new economy, rewards, saved fields or migration. Source organism remains alive; naming/presentation are provisional.
+- Keep verification frozen. Native02's intermediate430 passes do not override its final served-HTML rejection after an in-flight wording adjustment; retain failure and repeat from fresh exact source. Human enjoyment, monitor FPS and novice pacing remain separate.
+
 # Final living-region evidence and next arc, 2026-10-04
 
 Keep the runtime gate and recordings pinned to their actual implementation head d7a434b238c662a77eb3318ddee7626732c416a5. A documentation-only delivery head requires explicit equality of every non-doc Git input and its own fresh source gate, rather than attributing an earlier browser execution to a later commit. Preserve failed authoring epochs and the hosted billing failure separately. The next product priority is one distinctive encounter with a visible community consequence in the existing region; no new level/class/economy or disconnected realm is approved by this checkpoint. See the final delivery note.

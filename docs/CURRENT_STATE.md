@@ -1,3 +1,11 @@
+# Living Road bank sweep, 2026-10-04
+
+Current candidate continues PR41/head4ee5854 on gameplay/living-road-encounter-20261004. The actual Root-bank brute closes to 2.6m before a locked 3.1m by2m sweep, with unchanged136HP/11damage and1.35s tell/2.3s recovery. Brace and movement remain independent valid responses. Actual damage still requires visibility; recovery cannot apply a second contact. Channel skitter and unrelated sentinels keep their rules. Threat title, border, timer and contact pose read the real frame; reduced motion retains a fixed warning.
+
+Saved first clearance displays a field check and supplied brace kit at the existing southern support; fitting replaces staging with the enduring repair. Patrol tags use exact active-run clearance and never rebuild or pay the first repair. Existing claims/equipment projects remain. No migration/new save fields or keys; all old systems/XP/sockets/story choices and both views remain.
+
+12 focused Core boundaries and blade/bow/strongest command-earned story plus two patrols passed. First root fights measured4.6/8.3/1.4 accelerated seconds; this is mechanics evidence, not novice pacing. Superseded native02 passed430 checks before a later served-HTML mismatch rejected the epoch: copy was edited while it ran. Native01 rejected obsolete terms wording. Preserve those failures. Final frozen pushed-head/current full-verifier/native/normal-time/fresh-clone receipts will be recorded in the dated results; they remain pending at this source checkpoint.
+
 # Living Earth final engineering checkpoint, 2026-10-04
 
 Draft PR41 is stacked against PR40. Runtime `d7a434b238c662a77eb3318ddee7626732c416a5` passed the clean remote-clone full gate: 97 syntax modules, 1153 Node checks,56 Python passes + 1 existing skip,46 earned journeys and 41 browser suites. Native community coverage is 259 checks with 21 whole-browser restart checkpoints. Both final-source normal-time choice recordings pass 21 checks each, with actual source-linked media. Later delivery documentation retains the same runtime/verifier inputs; its exact head/equality and separate source gate belong to the PR receipts. See [final delivery](development/LIVING_REGION_DELIVERY_2026-10-04.md).

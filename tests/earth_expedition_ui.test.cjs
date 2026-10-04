@@ -39,7 +39,7 @@ function documentStub(){const root=new NodeStub();return{body:new NodeStub(),que
 
 test('fresh invitation exposes both exact allocations, fixed danger, binding cost and deliberate consent',()=>{
  const f=fixture(),before=f.sim.snapshot(),html=f.ui.page('expedition').html;
- for(const text of['45 XP · 18 sunmarks · 3 ore','8 timber · 4 fibre','4 timber · 8 fibre','Two more fibre','supplies the six fibre','64 / 136','9 / 11','1.35-second','2.3-second','3 ore, 8 sunmarks and 6 fibre'])assert.ok(html.includes(text),text);
+ for(const text of['45 XP · 18 sunmarks · 3 ore','8 timber · 4 fibre','4 timber · 8 fibre','Two more fibre','supplies the six fibre','64 health / 9 damage','136 health / 11 damage','1.35-second','2.3-second','3 ore, 8 sunmarks and 6 fibre'])assert.ok(html.includes(text),text);
  assert.ok(buttons(html).some(b=>b.dataset.rpg==='expedition-accept'));assert.equal(f.ui.page('other'),null);assert.deepEqual(f.sim.snapshot(),before);assert.equal(f.saves.length,0);
  assert.equal(f.ui.interact(),true);assert.equal(f.rpg.opened,'expedition');assert.equal(f.sim.state.earthExpedition.story.accepted,false);
  f.sim.room=null;const outside=f.ui.page('expedition').html;assert.ok(outside.includes('data-rpg="world-select"'));assert.equal(buttons(outside).some(b=>b.dataset.rpg==='expedition-accept'),false);

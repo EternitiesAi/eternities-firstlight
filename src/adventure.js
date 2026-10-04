@@ -215,6 +215,7 @@ function tick(sim,dt){
   if(e.mode==='windup'){
    if(e.timer<=0){
     if(e.kind==='charger'){e.mode='charge';e.chargeLeft=9;e.chargeHit=false;fx(sim,'dodge',e.x,e.z,0xd8ad87);}
+    else if(EE.encounter(e)){e.contactAt=s.elapsed;e.contactHit=EE.strikeContains(e,p)&&visible(sim,e,p)&&takeDamage(sim,e.damage);fx(sim,'impact',e.strike.x+Math.sin(e.strike.yaw)*1.55,e.strike.z+Math.cos(e.strike.yaw)*1.55,0xc5ac83);e.mode='recover';e.timer=e.recovery;e.path=[];}
     else{const radius=e.telegraphRadius??(e.kind==='boss'?2.4:e.kind==='sentinel'?1.2:1.05);fx(sim,'impact',e.aim.x,e.aim.z,e.kind==='boss'?0xc68fbd:0xc5ac83);if(dist(p,e.aim)<radius+.24&&visible(sim,e,p))takeDamage(sim,e.damage);e.mode='recover';e.timer=e.recovery??(e.kind==='boss'?(e.hp<e.maxHP/2?1:1.8):1.1);}
    }continue;
   }
@@ -224,8 +225,8 @@ function tick(sim,dt){
   if(d<aggro&&canSee){e.awareness=s.elapsed+3;e.lastKnown={x:p.x,z:p.z};}
   const home=e.home||{x:e.x,z:e.z};if(dist(e,home)>15||d>18)e.awareness=0;
   if((e.awareness||0)<s.elapsed){if(dist(e,home)>.6){e.mode='return';followPath(sim,e,home,dt,1.65);}else e.mode='idle';continue;}
-  const reach=e.kind==='charger'?9:e.kind==='sentinel'?6.5:e.kind==='boss'?4:1.9;
-  if(canSee&&d<=reach){e.mode='windup';e.timer=e.windup??(e.kind==='charger'?1.2:e.kind==='skitter'?.75:1.05);e.aim={x:p.x,z:p.z};e.yaw=Math.atan2(p.x-e.x,p.z-e.z);e.path=[];if(e.kind==='charger')e.chargeDir={x:Math.sin(e.yaw),z:Math.cos(e.yaw)};continue;}
+  const reach=EE.encounter(e)?.reach??(e.kind==='charger'?9:e.kind==='sentinel'?6.5:e.kind==='boss'?4:1.9);
+  if(canSee&&d<=reach){e.mode='windup';e.timer=e.windup??(e.kind==='charger'?1.2:e.kind==='skitter'?.75:1.05);e.aim={x:p.x,z:p.z};e.yaw=Math.atan2(p.x-e.x,p.z-e.z);e.path=[];if(EE.encounter(e))e.strike=Object.freeze({x:e.x,z:e.z,yaw:e.yaw});if(e.kind==='charger')e.chargeDir={x:Math.sin(e.yaw),z:Math.cos(e.yaw)};continue;}
   e.mode='pursue';const q=canSee?p:e.lastKnown;if(q)followPath(sim,e,q,dt,e.kind==='boss'?1.25:1.6);
  }
  const c=r.companion;
