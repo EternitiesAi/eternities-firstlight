@@ -1,5 +1,11 @@
 # Home-history results and evidence epochs
 
+## Subsequent home-history qualification, 2026-10-03
+
+A subsequent fresh HTTPS clone of gameplay `4240d9eaefb81d492040295b5b2b70e08e4245c8` passed all 40 browser suites / 5,341 checks, 94 syntax checks, 1,131 Node rules, 56 Python cases plus one existing Windows symlink skip, and 43 command-earned journeys. All 2,065 tracked files and both regenerated HTML files retained their exact bytes and membership. This later receipt qualifies the pushed source; it does not rewrite the authoring epochs.
+
+The full verifier ran from `2026-10-04T02:02:19.619402+00:00` to `2026-10-04T03:03:12.245779+00:00`, exit0. The final home browser subset passes243 checks with18 restarts. The normal-time RTX capture is at the pushed head,24/24 checks; original/full footage decodes1644 frames over65.76 seconds, with a65-second sharing trim. [Full raw receipts, media and failures](../evidence/home-history-2026-10-03/README.md) preserve the source-commit pending text below as historical evidence. Hosted run37169616583 failed before execution: all42 jobs have zero steps and the account-billing-lock annotation. No fresh hosted/Linux result or billing action is claimed.
+
 The source base is27bdbe585f8970c7695e04b79c7ef171e3bd1055 /PR39. The independent design/source reviews were read-only Sol6.1xhigh advice; Root implemented and executed all changes. Recovered source anchors: Earth World Bible section1 (home possessions with history), Firstlight Mythology Bridge “Home as evidence of the journey”, and Founder Play Vision Draft D section12 (reward carrying remembered effort). The index preserves intake provenance. New names/objects are provisional adaptations.
 
 Authoring source gate01:94 syntax modules,1130 Node rules,57 Python cases (56 pass +one pre-existing Windows symlink skip),40 existing journeys. Separate new blade/bow/strongest journeys also pass. A new preview-owner regression brings the current rules to1131; all three home journeys are now explicitly in the portable verifier/CI, for43 journeys total. Source gate02 and final native epoch are pending at this pre-push record.

@@ -1,5 +1,9 @@
 # A Home That Remembers: engineering and deferred human notes
 
+## Subsequent home-history qualification, 2026-10-03
+
+The exact pushed-head home suite passes243 checks across blade, bow and strongest returning characters, including18 whole-browser restarts (six context-only, twelve awaited page closures). Matching normal-time footage shows gathering, craft, bridge return, placement, both views and remove/undo. [Raw receipts and actual clip](evidence/home-history-2026-10-03/README.md) preserve source epochs. These known routes do not establish novice clarity, taste, touch/controller or personal-save compatibility; prior LocalLife native06 remains unexplained.
+
 This arc follows Dom's explicit continued-development request; he will play later. No founder enjoyment or novice-pacing result is claimed.
 
 Early authoring: all four commissioned histories were command-earned for blade, bow and strongest returning gear. Production gathering/craft/placement/history/cold reconstruction passed; no position/inventory/defeat grants. A first journey assertion failed because it compared the naturally advanced adventure clock with the starting clock; its correction preserves every other adventure field exactly and explicitly requires time to advance. The failed epoch is retained.

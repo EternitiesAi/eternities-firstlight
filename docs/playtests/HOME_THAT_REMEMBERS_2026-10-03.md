@@ -1,5 +1,9 @@
 # A Home That Remembers
 
+## Subsequent home-history qualification, 2026-10-03
+
+The engineering slice is qualified at `4240d9eaefb81d492040295b5b2b70e08e4245c8`: fresh source/browser gates and actual normal-time footage are complete. [Watch the known-route clip and read exact receipts](../evidence/home-history-2026-10-03/README.md). Start in Journal or Crafting; completing an eligible local commission teaches its design, then gather, craft and arrange deliberately. Human play is still deferred by Dom; the questions below remain unanswered. The launcher preserves the8780 origin and refuses an older conflicting server.
+
 Use the current review checkout and `PLAY_FIRSTLIGHT_WINDOWS.cmd`. It keeps the existing local save origin and truthfully refuses a conflicting older server; it does not silently switch saves or stop another process. Personal saves are not part of engineering tests. No public deployment or main merge.
 
 1. Open Journal or Crafting and choose **Read home designs and arrange your room**. Four labelled design sketches show the matching local commission, exact costs and whether the piece is learned/made/placed.

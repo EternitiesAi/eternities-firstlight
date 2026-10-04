@@ -1,5 +1,9 @@
 # A Home That Remembers: qualify the connected loop
 
+## Subsequent home-history qualification, 2026-10-03
+
+Continue from gameplay `4240d9eaefb81d492040295b5b2b70e08e4245c8` after fetching current comments and concurrent edits; use [the completed subsequent receipts](evidence/home-history-2026-10-03/README.md). Dom explicitly authorizes continued development and defers his playtest. The next recommended implementation arc is a connected Earth settlement return loop: familiar people, readable local needs, deliberate repeat identities and visible consequences. Inspect existing Stormfall/Elderweald/Coastward ownership before choosing a bounded slice. This direction is a recommendation, not implemented by this home branch. Human observations remain pending evidence, without becoming a new permission gate. Keep both cameras, old saves and founder uncertainties.
+
 Continue from the actual `gameplay/home-that-remembers-20261003` head, fetching current gameplay and reviews first. Finish its stricter native shutdown/appearance receipts, current verifier, normal-time recording, pushed review branch and fresh exact-source clone. Do not replace newer work with archive/main or an older ZIP. Pending gates are not complete because an earlier epoch passed.
 
 Dom's current instruction authorizes continued implementation and defers his playtest until the game meets our engineering/design standards. Human clarity, taste, pacing and enjoyment remain pending evidence. After this bounded arc is qualified, the strongest next product direction is a connected Earth settlement return loop: readable ongoing local needs with reasons to revisit familiar people and routes, using declared finite/repeat ownership and visible consequences. Inspect existing Stormfall, Elderweald and Coastward story/patrol owners before choosing that slice; avoid another disconnected realm, invented multiplayer or universal economy.

@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "variant": "fresh-blade",
+  "claims": 3,
+  "combats": 6,
+  "commands": 55,
+  "walkedLegs": 48,
+  "saves": 59,
+  "fitting": {
+    "weapon": "trail_blade",
+    "kind": "edge",
+    "cost": {
+      "ore": 3,
+      "coins": 8,
+      "fiber": 6
+    },
+    "before": {
+      "level": 2,
+      "attack": 18,
+      "defense": 1,
+      "maxHP": 110
+    },
+    "after": {
+      "level": 2,
+      "attack": 20,
+      "defense": 1,
+      "maxHP": 110
+    },
+    "currentHPBefore": 105,
+    "currentHPAfter": 105,
+    "actualPostBindingDamagePackets": [
+      {
+        "n": 20,
+        "at": 953.0999999996809,
+        "hpBefore": 64
+      }
+    ],
+    "arrowObserved": false,
+    "probe": "one newly accepted unpaid third patrol; only T.hit observation wrapper, restored before continuing"
+  },
+  "sourceDrift": false
+}

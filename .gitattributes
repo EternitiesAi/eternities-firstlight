@@ -16,3 +16,7 @@ docs/evidence/world-production-2026-10-03/negative/linux-ec9-stale-copy-assertio
 # Preserve byte-hashed current expedition receipts and decoded media provenance.
 docs/evidence/coastward-expedition-2026-10-03/** -text whitespace=cr-at-eol,-blank-at-eol
 docs/evidence/coastward-expedition-2026-10-03/** linguist-generated=true
+
+# Preserve frozen home-history reports, diagnostics, harnesses and decoded media.
+docs/evidence/home-history-2026-10-03/** -text whitespace=cr-at-eol,-blank-at-eol
+docs/evidence/home-history-2026-10-03/** linguist-generated=true

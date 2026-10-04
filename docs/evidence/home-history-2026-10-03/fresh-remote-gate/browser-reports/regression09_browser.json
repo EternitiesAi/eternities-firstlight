@@ -1,0 +1,439 @@
+{
+  "method": "Earlier Firstlight09 workflows on the exact Firstlight10 document, real UI and keyboard, accepted path movement.\nEarned checkpoints come from command-only journeys. Specific denial/restart\nfixtures are labelled. Map-backed storage is NOT native-origin evidence.\nAccelerated time is NOT a human playtest or performance measurement.\n",
+  "build_sha256": "bf0bc199d0b4ba2e424655364007960734bda17f9bdee8d04d37fb53b1c5c9f1",
+  "checks": [
+    {
+      "name": "10 boots WebGL2 in original valley",
+      "passed": true
+    },
+    {
+      "name": "Audio does not start itself",
+      "passed": true
+    },
+    {
+      "name": "One tracker replaces overlapping old dock",
+      "passed": true
+    },
+    {
+      "name": "Camera begins in third person following visitor",
+      "passed": true
+    },
+    {
+      "name": "C opens character screen",
+      "passed": true
+    },
+    {
+      "name": "Character screen pauses simulation",
+      "passed": true
+    },
+    {
+      "name": "Three real equipment slots",
+      "passed": true
+    },
+    {
+      "name": "Rendered character portrait present",
+      "passed": true
+    },
+    {
+      "name": "Tab stays in dialog focus, never selects foe",
+      "passed": true
+    },
+    {
+      "name": "Skills do not leak through menu",
+      "passed": true
+    },
+    {
+      "name": "Five crafting categories",
+      "passed": true
+    },
+    {
+      "name": "Missing-material recipe is disabled",
+      "passed": true
+    },
+    {
+      "name": "Oren navigation walks",
+      "passed": true
+    },
+    {
+      "name": "Oren gives actual starter equipment",
+      "passed": true
+    },
+    {
+      "name": "K opens crafting",
+      "passed": true
+    },
+    {
+      "name": "Equipped blade visible in inventory grid",
+      "passed": true
+    },
+    {
+      "name": "Bow crafting spends exact real materials",
+      "passed": true
+    },
+    {
+      "name": "Unique bow recipe disables repeat",
+      "passed": true
+    },
+    {
+      "name": "Item comparison shows actual stat changes",
+      "passed": true
+    },
+    {
+      "name": "Equip changes actual weapon",
+      "passed": true
+    },
+    {
+      "name": "Bag search filters by name",
+      "passed": true
+    },
+    {
+      "name": "Material filter excludes weapon",
+      "passed": true
+    },
+    {
+      "name": "Archery court loads its three targets",
+      "passed": true
+    },
+    {
+      "name": "Unassigned character retains seven visible original action slots",
+      "passed": true
+    },
+    {
+      "name": "Tab selects target frame",
+      "passed": true
+    },
+    {
+      "name": "Shift Tab reverses cycle",
+      "passed": true
+    },
+    {
+      "name": "Selection alone never attacks",
+      "passed": true
+    },
+    {
+      "name": "1 toggles visible autoattack",
+      "passed": true
+    },
+    {
+      "name": "Out-of-range auto does not move",
+      "passed": true
+    },
+    {
+      "name": "Walk reaches (0, -3)",
+      "passed": true
+    },
+    {
+      "name": "Auto lands physical arrows in range",
+      "passed": true
+    },
+    {
+      "name": "Brace has actual duration and visible cooldown",
+      "passed": true
+    },
+    {
+      "name": "Menu stops autoattack and pauses",
+      "passed": true
+    },
+    {
+      "name": "Closing resumes world",
+      "passed": true
+    },
+    {
+      "name": "Closing preserves previous manual pause",
+      "passed": true
+    },
+    {
+      "name": "Tactical camera is elevated",
+      "passed": true
+    },
+    {
+      "name": "Fixed orbit key rotates",
+      "passed": true
+    },
+    {
+      "name": "R resets the selected tactical view",
+      "passed": true
+    },
+    {
+      "name": "V returns to third person during an expedition",
+      "passed": true
+    },
+    {
+      "name": "Escape no-target opens menu instead of exiting expedition",
+      "passed": true
+    },
+    {
+      "name": "Walk reaches (0, 9)",
+      "passed": true
+    },
+    {
+      "name": "Actual range exit preserves bow",
+      "passed": true
+    },
+    {
+      "name": "Socket swaps real gems and capacity",
+      "passed": true
+    },
+    {
+      "name": "Socket capacity change does not heal",
+      "passed": true
+    },
+    {
+      "name": "Companion name safely retains special characters",
+      "passed": true
+    },
+    {
+      "name": "Stay updates actual companion mode",
+      "passed": true
+    },
+    {
+      "name": "Walk reaches (0, 3)",
+      "passed": true
+    },
+    {
+      "name": "Walk reaches (44, 6)",
+      "passed": true
+    },
+    {
+      "name": "Road gateway retains chapterII scene",
+      "passed": true
+    },
+    {
+      "name": "Walk reaches (-10, 12)",
+      "passed": true
+    },
+    {
+      "name": "Tessa merchant available in new interface",
+      "passed": true
+    },
+    {
+      "name": "Tessa exchange charges real copper",
+      "passed": true
+    },
+    {
+      "name": "Walk reaches (2, 3.4)",
+      "passed": true
+    },
+    {
+      "name": "Walk reaches (2, -4)",
+      "passed": true
+    },
+    {
+      "name": "Walk reaches (0, -24)",
+      "passed": true
+    },
+    {
+      "name": "Lit beacon opens local meeting",
+      "passed": true
+    },
+    {
+      "name": "Answer starts descent, not automatic assault",
+      "passed": true
+    },
+    {
+      "name": "Family has three active routes",
+      "passed": true
+    },
+    {
+      "name": "Family arrives before ready phase",
+      "passed": true
+    },
+    {
+      "name": "Grace requires explicit acceptance",
+      "passed": true
+    },
+    {
+      "name": "Defense spawns first breach",
+      "passed": true
+    },
+    {
+      "name": "Tab plus1 engages event foes",
+      "passed": true
+    },
+    {
+      "name": "Wave 1 composition",
+      "passed": true
+    },
+    {
+      "name": "Wave 2 composition",
+      "passed": true
+    },
+    {
+      "name": "Wave 3 composition",
+      "passed": true
+    },
+    {
+      "name": "Three waves complete through UI attacks",
+      "passed": true
+    },
+    {
+      "name": "New skill branches used",
+      "passed": true
+    },
+    {
+      "name": "No incompatible old loot or XP entries",
+      "passed": true
+    },
+    {
+      "name": "Defense preserves creative content",
+      "passed": true
+    },
+    {
+      "name": "Walk reaches (0, -24)",
+      "passed": true
+    },
+    {
+      "name": "One-time defense reward real",
+      "passed": true
+    },
+    {
+      "name": "Reward disables duplicate claim",
+      "passed": true
+    },
+    {
+      "name": "Accepting cinder alone never corrupts",
+      "passed": true
+    },
+    {
+      "name": "Future route records intent, no teleport",
+      "passed": true
+    },
+    {
+      "name": "Cinder skill spends health and records choice",
+      "passed": true
+    },
+    {
+      "name": "Walk reaches (0, 17)",
+      "passed": true
+    },
+    {
+      "name": "Replay withdrawal preserves stable story beacon",
+      "passed": true
+    },
+    {
+      "name": "Walk reaches (44, 6)",
+      "passed": true
+    },
+    {
+      "name": "Walk reaches (2, 3.4)",
+      "passed": true
+    },
+    {
+      "name": "Walk reaches (2, -4)",
+      "passed": true
+    },
+    {
+      "name": "Walk reaches (0, -24)",
+      "passed": true
+    },
+    {
+      "name": "Renunciation clears corruption, not history",
+      "passed": true
+    },
+    {
+      "name": "Separate radiance persists through redemption",
+      "passed": true
+    },
+    {
+      "name": "Actual save export contains new completed chapter",
+      "passed": true
+    },
+    {
+      "name": "UI import restores durable content",
+      "passed": true
+    },
+    {
+      "name": "Restart keeps story, never runs attack intent",
+      "passed": true
+    },
+    {
+      "name": "Music remains accessible",
+      "passed": true
+    },
+    {
+      "name": "Actual score grid still edits",
+      "passed": true
+    },
+    {
+      "name": "Real midi export header",
+      "passed": true
+    },
+    {
+      "name": "Real wav export header",
+      "passed": true
+    },
+    {
+      "name": "Export never enables ambience",
+      "passed": true
+    },
+    {
+      "name": "Notebook text still safe",
+      "passed": true
+    },
+    {
+      "name": "Construction controls remain reachable",
+      "passed": true
+    },
+    {
+      "name": "Room furnishing controls retained",
+      "passed": true
+    },
+    {
+      "name": "Appearance UI retained",
+      "passed": true
+    },
+    {
+      "name": "Graphics settings retained",
+      "passed": true
+    },
+    {
+      "name": "Normal RAF really pauses while character is open",
+      "passed": true
+    },
+    {
+      "name": "Normal RAF resumes on close",
+      "passed": true
+    },
+    {
+      "name": "Storage refusal truthfully says memory-only",
+      "passed": true
+    },
+    {
+      "name": "Map fallback keeps same completed story",
+      "passed": true
+    },
+    {
+      "name": "Missing portrait does not block equipment",
+      "passed": true
+    },
+    {
+      "name": "Touch character canvas fits its portrait mount",
+      "passed": true
+    },
+    {
+      "name": "Touch character panel fits viewport",
+      "passed": true
+    },
+    {
+      "name": "Touch crafting tabs available",
+      "passed": true
+    },
+    {
+      "name": "Touch skillbar stays on screen",
+      "passed": true
+    },
+    {
+      "name": "No unhandled JavaScript errors",
+      "passed": true
+    },
+    {
+      "name": "No external requests",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "browser_errors": [],
+  "requests": [],
+  "checks_passed": 107,
+  "passed": true
+}

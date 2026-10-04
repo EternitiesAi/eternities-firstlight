@@ -1,0 +1,319 @@
+{
+  "method": "Near Expanse input/UI, real navigation and native isolated saves.\n\nAccelerated movement setup is test evidence only. Software-WebGL interaction\ncoverage explicitly uses low quality; balanced desktop rendering has a separate\nhardware report. No personal browser data.\n",
+  "checks": [
+    {
+      "name": "exact generated build loads",
+      "passed": true
+    },
+    {
+      "name": "pre-entry terms declare routes, no rewards and safe-side reload",
+      "passed": true
+    },
+    {
+      "name": "remote preview cannot enter before walking to the invitation",
+      "passed": true
+    },
+    {
+      "name": "map invitation uses ground movement, not a teleport",
+      "passed": true
+    },
+    {
+      "name": "dialog shortcuts do not change class or camera",
+      "passed": true
+    },
+    {
+      "name": "fresh unassigned visitor can enter without a kit",
+      "passed": true
+    },
+    {
+      "name": "entry preserves all canonical game data",
+      "passed": true
+    },
+    {
+      "name": "arrival has no enemies or selectable sky image",
+      "passed": true
+    },
+    {
+      "name": "return button is available immediately",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches 3,7",
+      "passed": true
+    },
+    {
+      "name": "Three Lamps is inhabited and explains both actual approaches",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches -6,6",
+      "passed": true
+    },
+    {
+      "name": "shelter bench can be approached through its real doorway",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches -14,-3",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches -15,-18",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches -12,-32",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches 0,-34",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches 3,-43",
+      "passed": true
+    },
+    {
+      "name": "sheltered approach reaches Anik at occupied lookout",
+      "passed": true
+    },
+    {
+      "name": "player stands on raised northern terrain",
+      "passed": true
+    },
+    {
+      "name": "diorama works inside new ground scene",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches 0,-34",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches 13,-24",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches 13,-6",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches 6,6",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches 0,18",
+      "passed": true
+    },
+    {
+      "name": "both routes form one continuous scene",
+      "passed": true
+    },
+    {
+      "name": "physical arrival gate returns to exact source position",
+      "passed": true
+    },
+    {
+      "name": "walk and conversations grant no XP, items, claims or story",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches 14,-5",
+      "passed": true
+    },
+    {
+      "name": "physical invitation opens explicit preview",
+      "passed": true
+    },
+    {
+      "name": "explicit input enters Near Expanse",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches 13,-6",
+      "passed": true
+    },
+    {
+      "name": "folded moon description distinguishes background from ground",
+      "passed": true
+    },
+    {
+      "name": "safe source snapshot remains exportable on the far side",
+      "passed": true
+    },
+    {
+      "name": "native reopen restores acknowledged valley side",
+      "passed": true
+    },
+    {
+      "name": "native reopen preserves earned history",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches 14,-5",
+      "passed": true
+    },
+    {
+      "name": "failed actual storage write refuses entry",
+      "passed": true
+    },
+    {
+      "name": "failed scene build rolls back to playable valley",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches 14,-5",
+      "passed": true
+    },
+    {
+      "name": "physical invitation opens explicit preview",
+      "passed": true
+    },
+    {
+      "name": "explicit input enters Near Expanse",
+      "passed": true
+    },
+    {
+      "name": "low quality retains scene, safe ground and return",
+      "passed": true
+    },
+    {
+      "name": "return works away from gate with no payment",
+      "passed": true
+    },
+    {
+      "name": "returning command-earned bow and socket/fitting state load intact",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches 14,-5",
+      "passed": true
+    },
+    {
+      "name": "physical invitation opens explicit preview",
+      "passed": true
+    },
+    {
+      "name": "explicit input enters Near Expanse",
+      "passed": true
+    },
+    {
+      "name": "returning bow visits without equipment or story mutation",
+      "passed": true
+    },
+    {
+      "name": "returning veteran companion is command rescued",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches 14,-5",
+      "passed": true
+    },
+    {
+      "name": "physical invitation opens explicit preview",
+      "passed": true
+    },
+    {
+      "name": "explicit input enters Near Expanse",
+      "passed": true
+    },
+    {
+      "name": "following companion travels onto valid cosmic ground",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches 13,-24",
+      "passed": true
+    },
+    {
+      "name": "companion follows the actual rising route",
+      "passed": true
+    },
+    {
+      "name": "compact reduced-motion atlas retains both routes and explicit return",
+      "passed": true
+    },
+    {
+      "name": "compact Cosmos map is readable rather than icon-sized",
+      "passed": true
+    },
+    {
+      "name": "creating another character while away begins in its own valley",
+      "passed": true
+    },
+    {
+      "name": "switching back resumes the returning character at its source checkpoint",
+      "passed": true
+    },
+    {
+      "name": "character switch preserves returning equipment, rewards and history",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches 14,-5",
+      "passed": true
+    },
+    {
+      "name": "physical invitation opens explicit preview",
+      "passed": true
+    },
+    {
+      "name": "explicit input enters Near Expanse",
+      "passed": true
+    },
+    {
+      "name": "commanded Stay does not follow across the return",
+      "passed": true
+    },
+    {
+      "name": "Follow deliberately recalls the companion after return",
+      "passed": true
+    },
+    {
+      "name": "production walking path reaches 14,-5",
+      "passed": true
+    },
+    {
+      "name": "physical invitation opens explicit preview",
+      "passed": true
+    },
+    {
+      "name": "explicit input enters Near Expanse",
+      "passed": true
+    },
+    {
+      "name": "normal-RAF W input physically moves on supported ground",
+      "passed": true
+    },
+    {
+      "name": "visible ground click uses inverse height projection for walking",
+      "passed": true
+    },
+    {
+      "name": "sky click cannot manufacture a walking destination",
+      "passed": true
+    },
+    {
+      "name": "normal-RAF visit returns through the production control",
+      "passed": true
+    },
+    {
+      "name": "no runtime browser exceptions",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "browser_errors": [],
+  "software_quality": "low",
+  "html_sha256": "bf0bc199d0b4ba2e424655364007960734bda17f9bdee8d04d37fb53b1c5c9f1",
+  "returning_fixture": {
+    "path": "docs\\evidence\\classes\\HUNTER_SOURCE.json",
+    "sha256": "405247931795051c08a1daaedf47aeda7c13df7c72080ec625b00d42f41989f6",
+    "setting_override": "reducedMotion=true only"
+  },
+  "veteran_fixture": {
+    "path": "docs\\evidence\\cosmos\\VETERAN_SOURCE.json",
+    "sha256": "56e09068038bc92bd51d9f98a3636668005fb296743875db0359a677ae3696fd",
+    "setting_override": "reducedMotion=true only"
+  }
+}

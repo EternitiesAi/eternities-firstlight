@@ -1,5 +1,9 @@
 # A Home That Remembers: bounded continuation decisions
 
+## Subsequent home-history qualification, 2026-10-03
+
+Freeze the completed runtime at `4240d9eaefb81d492040295b5b2b70e08e4245c8` and retain final remote/media qualification on a separate evidence branch. Preserve original byte receipts and exact manifest membership. Native05's pre-commit HEAD stays unchanged; the final fresh-clone home report records the pushed head itself. Keep the six context-only and twelve awaited closures distinct, and do not extend them to crash durability or an explanation of prior LocalLife native06. [The package](evidence/home-history-2026-10-03/README.md) includes earlier negative epochs and a read-only colleague audit. RTX RAF samples describe capture-time callback cadence, not monitor or whole-world performance.
+
 - Follow the recovered Earth home anchor and mythology bridge's physical autobiography direction. Four original adaptations retain traces of actual claimed local work; this does not extend cosmic verdicts or founder canon names.
 - Use the existing retreat's eight slots, materials from Sandbox and a separate optional homeHistory1 finite ownership ledger. Avoid adding mandatory inventory keys, a new building grid or another weapon-power tier. Equipment projects retain their independent pin.
 - Atlantis wood2+crystal1 and Cosmos wood2+fiber1 payments cover their corresponding recipes if unspent. Heaven tray needs wood2+fiber2; Hell hand-lamp needs stone2+wood1+fiber1. Display missing ordinary materials honestly; do not convert Hell ore or supplied job parts silently.
