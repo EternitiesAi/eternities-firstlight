@@ -1,0 +1,52 @@
+{
+  "method": "Original Playwright whole-UI silent recording; MP4 conversion preserves decoded frame count and time, without changing frame rate or speed. Mobile is the final65s of the same recording, no synthetic/gameplay substitute. Both streams fully decoded by the bundled FFmpeg7.1.",
+  "original_report_sha256": "3c2e08ae9a05034d13caea59b9e626236ddd8152beb8d7e0f331ba33d93a18a8",
+  "html_sha256": "57ae57864e5ba98c738e7ad8eacbc80b49688bfcb74fc6e94377c04043f586b0",
+  "harness_sha256": "54c907e0dd96bb8070deccfe7da47a8aae4c2334c7f66cff52b35f5e460161b4",
+  "fixture_sha256": "94363b9729bdbae3dcd1a571541bb70c2e401c635fab4609a55c7a73330e1b68",
+  "authoring_base_head": "f3a4df5f8023b385ea5273aa6d90ba5ddf438121",
+  "actual_renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "normal_raf_checks": {
+    "passed": 19,
+    "failed": 0,
+    "position_edits": 0,
+    "resource_grants": 0,
+    "accelerated_ticks": 0
+  },
+  "source": {
+    "file": "LOCAL_LIFE_NORMAL_UI.webm",
+    "sha256": "faa6c51bf60230fdfb039b22349583cf7fb984f70b9bcf5ab0f0dc050b6cd0e3",
+    "bytes": 12492648,
+    "fully_decoded_frames": 2836,
+    "decoded_seconds": 113.44,
+    "stream": "vp8, yuv420p(progressive), 1280x800, SAR 1:1 DAR 8:5, 25 fps, 25 tbr, 1k tbn",
+    "decode_exit_code": 0,
+    "decode_errors": []
+  },
+  "full": {
+    "file": "LOCAL_LIFE_NORMAL_UI.mp4",
+    "sha256": "76a81deb10c0fa77be780e89a0dcced39f0d96c0dc6716b6eea664c3b8a2376f",
+    "bytes": 18933301,
+    "fully_decoded_frames": 2836,
+    "decoded_seconds": 113.44,
+    "stream": "h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt470bg/unknown/unknown, progressive), 1280x800 [SAR 1:1 DAR 8:5], 1332 kb/s, 25 fps, 25 tbr, 12800 tbn (default)",
+    "decode_exit_code": 0,
+    "decode_errors": []
+  },
+  "mobile": {
+    "file": "MOBILE_LOCAL_LIFE.mp4",
+    "sha256": "c97d7a3ba59e95063fa9929bdc2f51a8357437ed5b4882c52923925e1c73cd3f",
+    "bytes": 8586461,
+    "fully_decoded_frames": 1625,
+    "decoded_seconds": 65.0,
+    "stream": "h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt470bg/unknown/unknown, progressive), 1280x800 [SAR 1:1 DAR 8:5], 1054 kb/s, 25 fps, 25 tbr, 12800 tbn (default)",
+    "decode_exit_code": 0,
+    "decode_errors": [],
+    "start_in_full_seconds": 48.44
+  },
+  "ffmpeg_executable": "C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\imageio_ffmpeg\\binaries\\ffmpeg-win-x86_64-v7.1.exe",
+  "ffmpeg_sha256": "2ce797a0f88d7f067180338fb227f7b1928ea727bd9a4d7a1d022f7c52af71a3",
+  "silent": true,
+  "human_playtest": false,
+  "gpu_measurement_scope": "Two600-interval Cosmos samples while video capture is enabled; headless desktop workload, not isolated GPU or whole-world qualification."
+}

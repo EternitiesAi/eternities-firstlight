@@ -1,5 +1,9 @@
 # Local-life decisions, 2026-10-03
 
+## Subsequent remote qualification, 2026-10-03
+
+Keep the verified runtime at `27bdbe585f8970c7695e04b79c7ef171e3bd1055` and freeze subsequent footage/full-gate receipts on a separate evidence branch, with raw byte preservation and an exact file manifest. Preserve every earlier negative and scope difference. A headless RTX recording cadence sample does not establish monitor FPS or whole-world performance. Graceful browser restarts do not resolve native-06's context-close rollback. [Final evidence](evidence/local-life-2026-10-03/README.md) records the tested head and pending human acceptance.
+
 - Deepen existing Heaven/Hell/Atlantis/Cosmos geography with four practical jobs; preserve Earth's living-road story and repeat patrol. Do not add a disconnected realm or claim completed countries.
 - Keep a separate optional `localLife1` ledger with stable definition/choice/step IDs. Missing data initializes unaccepted; future/malformed data refuses. No old trail extension or inferred consent from prior claims.
 - Supply cutting trays, lamp cartridges and boards separately from normal inventory and equipment. Choices are explicit and fixed at acceptance. Correct assembly is a physical accepted event; reading, routing and rendering grant nothing.

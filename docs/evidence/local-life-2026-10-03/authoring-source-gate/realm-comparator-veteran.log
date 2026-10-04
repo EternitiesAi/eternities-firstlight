@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "variant": "veteran",
+  "method": "production accepted commands, actual navigation, comparator preview owner and deliberate recorded readings; accelerated ticks and in-memory persistence",
+  "humanPacing": false,
+  "browserPersistence": false,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "manualDamage": 0,
+  "plantedDefeats": 0,
+  "source": {
+    "path": "evidence10\\pursuit\\veteran\\07_PRACTICE_PERSISTED.json",
+    "sha256": "9a2c51dfdd456e5e5cadebcad270f17c970de872b84dbfea3fc4367caa56a64f"
+  },
+  "readings": [
+    {
+      "station": "west-sight",
+      "setting": 63.85469061425735,
+      "target": 63.85469061425735,
+      "relativeAuthoredImage": true
+    },
+    {
+      "station": "east-sight",
+      "setting": 11.183849541231728,
+      "target": 11.183849541231728,
+      "relativeAuthoredImage": true
+    }
+  ],
+  "reward": {
+    "xp": 25,
+    "coins": 10,
+    "ore": 2
+  },
+  "fitting": {
+    "weapon": "dawn_edge",
+    "attackBefore": 48,
+    "attackAfter": 51,
+    "behavior": {
+      "style": "blade",
+      "reach": 2.65,
+      "cooldown": 0.52,
+      "stamina": 0,
+      "primary": "Sunstrike",
+      "special": "Dawn sweep"
+    },
+    "cost": {
+      "ore": 3,
+      "coins": 8
+    },
+    "measuredPracticeAfter": 51,
+    "measuredPracticeBefore": 48
+  },
+  "walkedLegs": 14,
+  "saveCount": 17,
+  "canonicalPreservation": true
+}

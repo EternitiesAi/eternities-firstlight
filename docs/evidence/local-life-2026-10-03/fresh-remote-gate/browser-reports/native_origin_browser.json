@@ -1,0 +1,56 @@
+{
+  "method": "Native loopback-origin persistence smoke test.\n\nThis is a bounded browser smoke test, not a device or performance test. It uses\nan isolated temporary Chromium profile and a deliberately labelled synthetic\nstate change solely to exercise the production save path.\n",
+  "checks": [
+    {
+      "name": "Loopback response matches exact current HTML",
+      "passed": true
+    },
+    {
+      "name": "Loopback page loads exact current HTML",
+      "passed": true
+    },
+    {
+      "name": "Rendered gameplay canvas is visible",
+      "passed": true
+    },
+    {
+      "name": "M opens Map on native origin",
+      "passed": true
+    },
+    {
+      "name": "C opens Character on native origin",
+      "passed": true
+    },
+    {
+      "name": "Synthetic notebook command is accepted",
+      "passed": true
+    },
+    {
+      "name": "Production save writes real loopback localStorage",
+      "passed": true,
+      "fixture": "synthetic accepted-command Chronicle note"
+    },
+    {
+      "name": "Fresh browser relaunch retains loopback localStorage",
+      "passed": true
+    },
+    {
+      "name": "Realm state reload retains authored note",
+      "passed": true
+    },
+    {
+      "name": "Relaunched page still renders gameplay",
+      "passed": true
+    },
+    {
+      "name": "No unhandled browser errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "browser_errors": [],
+  "html_sha256": "57ae57864e5ba98c738e7ad8eacbc80b49688bfcb74fc6e94377c04043f586b0",
+  "origin": "http://127.0.0.1:58667/FIRSTLIGHT_VALLEY.html",
+  "browser_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36",
+  "passed": true
+}

@@ -1,0 +1,66 @@
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\local_life_browser.py", line 128, in <module>
+    context=start();page=spawn();workspace('characters');old_key=ev('localStorage.getItem(RealmCore.KEY)')
+                         ~~~~~^^
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\local_life_browser.py", line 127, in spawn
+    p=context.new_page();p.on('pageerror',lambda e:report['browser_errors'].append(str(e)));p.add_init_script('window.__ETERNITIES_TEST_MODE=true;window.__ETERNITIES_CAPTURE_MODE=true;');r=p.goto(url,wait_until='load',timeout=60000);p.wait_for_function('()=>!!window.Realm');check(variant+' served identical generated HTML',hashlib.sha256(r.body()).hexdigest()==report['html_sha256']);p.evaluate("Realm.test.quality('low');Realm.test.render()");return p
+                                                                                                                                                                                             ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\sync_api\_generated.py", line 9050, in goto
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.goto(
+        ^^^^^^^^^^^^^^^^^^^^
+            url=url, timeout=timeout, waitUntil=wait_until, referer=referer
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_page.py", line 552, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "http://127.0.0.1:56903/index.html", waiting until "load"
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\local_life_browser.py", line 116, in <module>
+    with ExitStack() as cleanup:
+         ~~~~~~~~~^^
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 619, in __exit__
+    raise exc
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 604, in __exit__
+    if cb(*exc_details):
+       ~~^^^^^^^^^^^^^^
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 482, in _exit_wrapper
+    callback(*args, **kwds)
+    ~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\local_life_browser.py", line 122, in release
+    if sys.exc_info()[0] is not None or report['checks'] and not report['checks'][-1]['passed']:page.screenshot(path=str(OUT/'FAILURE.png'));report['last_ui']={'text':page.locator('body').inner_text(),'diagnostics':diag(),'state':state()}
+                                                                                                ^^^^
+NameError: name 'page' is not defined. Did you mean: 'range'?
+
+{
+  "status": "failed",
+  "passed": 0,
+  "failed": 0,
+  "out": "D:\\07-GAMES\\Firstlight\\artifacts\\local-life-20261003\\native-04"
+}

@@ -1,0 +1,2772 @@
+{
+  "version": 1,
+  "source_head": "27bdbe585f8970c7695e04b79c7ef171e3bd1055",
+  "html_sha256": "57ae57864e5ba98c738e7ad8eacbc80b49688bfcb74fc6e94377c04043f586b0",
+  "files": [
+    {
+      "file": "authoring-source-gate/build.log",
+      "bytes": 91,
+      "sha256": "2767629db4697bbb7fafec76f573bcb03a4067ae78b783385bf8bcd09b6a20b4"
+    },
+    {
+      "file": "authoring-source-gate/characters-journey.log",
+      "bytes": 3058,
+      "sha256": "ab57534da68a9d53954aeddc9df33bdedbdc2d6df416464f20047ae547d7f5bd"
+    },
+    {
+      "file": "authoring-source-gate/classes-journey.log",
+      "bytes": 4224,
+      "sha256": "7580451327c44c35e9af292327bf21e773e89f321985e0fe1293bd95f4c83322"
+    },
+    {
+      "file": "authoring-source-gate/cosmos-journey.log",
+      "bytes": 630,
+      "sha256": "6ff828d31129374cd2625282c809622107f5cc413b972b3b151f6046607f9f11"
+    },
+    {
+      "file": "authoring-source-gate/crossing-blade.log",
+      "bytes": 625,
+      "sha256": "0b27a5083c98c2983b9d5dd15b33456d395f182b4b299bbf46412b4f244ba956"
+    },
+    {
+      "file": "authoring-source-gate/crossing-bow.log",
+      "bytes": 649,
+      "sha256": "f1f412fb8081e5e0c9e1c60e5ea9b8d1de892fbc3c23c2a76e5b1470f8c04d4a"
+    },
+    {
+      "file": "authoring-source-gate/earth-expedition-blade.log",
+      "bytes": 834,
+      "sha256": "3d575071239980ee8f98057acacb156ef6d765dff0822e1de2a771bdad9132c0"
+    },
+    {
+      "file": "authoring-source-gate/earth-expedition-bow.log",
+      "bytes": 831,
+      "sha256": "14c24800a62e53794d1a18e4272956cd06873c4e10d40662f0779c311b2ff24e"
+    },
+    {
+      "file": "authoring-source-gate/earth-expedition-veteran.log",
+      "bytes": 831,
+      "sha256": "999a33bebc78aad13cee2804f0f98723861ea53cae8900eceb391a723634b270"
+    },
+    {
+      "file": "authoring-source-gate/earth-journey.log",
+      "bytes": 602,
+      "sha256": "c8ded0f475b2988952679e231e99ec817b41c97d09bd3ef06c50e1c6d65f3c7b"
+    },
+    {
+      "file": "authoring-source-gate/earth-notes-blade.log",
+      "bytes": 2028,
+      "sha256": "11ea7b0f229954f822859d859bcf2680d27618b5212cb1750ac5373d646766b6"
+    },
+    {
+      "file": "authoring-source-gate/earth-notes-bow.log",
+      "bytes": 2030,
+      "sha256": "a812e24deaa1e1aac35501ce197c7424598eb9a2dd6474d42cfbbc6efca7158f"
+    },
+    {
+      "file": "authoring-source-gate/earth-notes-veteran.log",
+      "bytes": 2022,
+      "sha256": "ba3689dbe48d03264c01a3b7b02577ecf2be4cfc1e51983d677e16629f6fc309"
+    },
+    {
+      "file": "authoring-source-gate/earth-outing-blade.log",
+      "bytes": 5482,
+      "sha256": "be9b2f2c5cc1dc45ed3ada36ba842c06b1e0144b009f341107d3acafb80f6a60"
+    },
+    {
+      "file": "authoring-source-gate/earth-outing-bow.log",
+      "bytes": 6715,
+      "sha256": "e4e71e12da6150014a280b35387a3f507522cee791079ddbb89e5805a720d8c6"
+    },
+    {
+      "file": "authoring-source-gate/earth-outing-veteran.log",
+      "bytes": 3478,
+      "sha256": "ffc669a29d3154323fe17eea55afca8e84ff6c46ca6622f1c014c342228a6b5d"
+    },
+    {
+      "file": "authoring-source-gate/earth-story-blade.log",
+      "bytes": 3039,
+      "sha256": "6bf6f61c7ac967539b3df21190910229f9a9aaa845b40546d5751c15d84a0b90"
+    },
+    {
+      "file": "authoring-source-gate/earth-story-bow.log",
+      "bytes": 3448,
+      "sha256": "e0d66a3346c3a9cec862bf4c892b78b46e6864ca4243a31536ac5c761712e66f"
+    },
+    {
+      "file": "authoring-source-gate/earth-story-veteran.log",
+      "bytes": 2628,
+      "sha256": "2d138c3184bdc80dbe843d843cfc04f12fcd4b50faded5c965aa97d160da919b"
+    },
+    {
+      "file": "authoring-source-gate/gathering-blade.log",
+      "bytes": 2008,
+      "sha256": "93ac372f7968bd85a7e6ce3f4aef12457c4cb48202ec295dd978bb09f05bab5c"
+    },
+    {
+      "file": "authoring-source-gate/gathering-bow.log",
+      "bytes": 2004,
+      "sha256": "acde92290a60c1cb8d0d00bed19c01dcfc7bad61e44ddae78afc7466ae8cdaf7"
+    },
+    {
+      "file": "authoring-source-gate/gathering-veteran.log",
+      "bytes": 1998,
+      "sha256": "b16d9aa6e05be97ffd78cbd74e1f00291089ce137927a40a217044057f9c2588"
+    },
+    {
+      "file": "authoring-source-gate/local-life-blade.log",
+      "bytes": 1012,
+      "sha256": "982789616d67fd254b72ce9a5a0e8df923d2f9a709205db634b537ff7beb533e"
+    },
+    {
+      "file": "authoring-source-gate/local-life-bow.log",
+      "bytes": 1009,
+      "sha256": "0ca6e51f77b4d7736125395d0b37a23b4d7fa4ecb4f2090b2fc1dbf070d4e866"
+    },
+    {
+      "file": "authoring-source-gate/local-life-veteran.log",
+      "bytes": 1019,
+      "sha256": "e73bdada22bd81a4ad8ffc08b4a8f2a243ecab7eca8067b88f0c719e76becb16"
+    },
+    {
+      "file": "authoring-source-gate/pursuit-blade.log",
+      "bytes": 5483,
+      "sha256": "04029aab268bf30da55bb85ea9cb89e5ab63ecd7f782a59c97aa095529ce4647"
+    },
+    {
+      "file": "authoring-source-gate/pursuit-bow.log",
+      "bytes": 6710,
+      "sha256": "7954f060cccbda3f5837029b6b177c60db43a02f6d581a5880ed7382a76135d1"
+    },
+    {
+      "file": "authoring-source-gate/pursuit-veteran.log",
+      "bytes": 3475,
+      "sha256": "fdb1ada86fe232e8bc860808531ec531e63573ac5979f2424e17c80873f00eba"
+    },
+    {
+      "file": "authoring-source-gate/python.log",
+      "bytes": 6813,
+      "sha256": "017e1d05a64948347560700266fd9aaef51b0813fe82db5b3b0f33bacdb31bce"
+    },
+    {
+      "file": "authoring-source-gate/realm-comparator-blade.log",
+      "bytes": 860,
+      "sha256": "d051c505ea0d4762ed40c3b46181cff2ef60ab5dfca172cbdff96e7e26bccab5"
+    },
+    {
+      "file": "authoring-source-gate/realm-comparator-bow.log",
+      "bytes": 859,
+      "sha256": "a07a5025afb0bff37325955e4fd9fea4c0a5b197b0afaa4f95064ca4a85245d8"
+    },
+    {
+      "file": "authoring-source-gate/realm-comparator-veteran.log",
+      "bytes": 1380,
+      "sha256": "a20e5d663637299c64b8c6f0f90f27a5d1560ff29518563c48b6f6169adbd835"
+    },
+    {
+      "file": "authoring-source-gate/realm-trails-blade.log",
+      "bytes": 161,
+      "sha256": "8c99875b9853801c2052b9590857b851d349d56ab81580bfb70232c631f73fe1"
+    },
+    {
+      "file": "authoring-source-gate/realm-trails-bow.log",
+      "bytes": 159,
+      "sha256": "53a69d88317a65523229998ee60c03de091e0a8b8d41a82e5253f340965b78d5"
+    },
+    {
+      "file": "authoring-source-gate/realm-trails-south-blade.log",
+      "bytes": 3835,
+      "sha256": "4ad1dd1b23b406c67511705d640c1ebaa820eb71262a03ba9b0cc44d5e1e10a7"
+    },
+    {
+      "file": "authoring-source-gate/realm-trails-south-bow.log",
+      "bytes": 3833,
+      "sha256": "a375b801ac102174adb0d3b96cbc48fefd538b7a30bc2981f0c2ddd44666464a"
+    },
+    {
+      "file": "authoring-source-gate/rules.log",
+      "bytes": 241245,
+      "sha256": "9177579e09a83c78b409462f6d043999677b1bd2e8fcbf4c1dbcd42998673c5d"
+    },
+    {
+      "file": "authoring-source-gate/starter-blade.log",
+      "bytes": 507,
+      "sha256": "7bf2c1aedc79943bcdc356237696bf2a1a464841e03520203f7ee7d0f4911dae"
+    },
+    {
+      "file": "authoring-source-gate/starter-bow.log",
+      "bytes": 503,
+      "sha256": "2496bd1b1ba568c3ff951073bede4e7625f178d4aa75780f9ab122264bf8b37f"
+    },
+    {
+      "file": "authoring-source-gate/starter-veteran.log",
+      "bytes": 1438,
+      "sha256": "a5ce11e73e32f6a35882e153121d316e4ff0bf6682f0b18001f5e86a2f979be0"
+    },
+    {
+      "file": "authoring-source-gate/syntax-adventure-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-adventure-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-adventure.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-app.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-arsenal-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-arsenal-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-arsenal.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-beacon-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-beacon.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-bridge-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-bridge-moment-view.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-characters-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-characters.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-classes-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-classes.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-coastward-settlement-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-coastward-woodland-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-combat.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-companion-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-core.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-cosmos-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-cosmos-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-cosmos.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-creative.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-crossing-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-crossing-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-crossing.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-drover-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-earth-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-earth-expedition-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-earth-expedition-beast-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-earth-expedition-dialogue.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-earth-expedition-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-earth-expedition.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-earth-notes-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-earth-notes-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-earth-notes.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-earth-shoulder-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-earth-story-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-earth-story.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-earth-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-earth.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-elderweald-trail-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-elderweald-world.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-engine.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-experience.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-gathering-adapter.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-gathering-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-gathering-music.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-gathering-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-gathering.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-local-life-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-local-life-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-local-life.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-mill-gate-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-millwright-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-pursuit-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-pursuit.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-quarry-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-realm-art-data.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-realm-atlas-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-realm-craft.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-realm-givers-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-realm-trails-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-realm-trails-cosmos.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-realm-trails-north.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-realm-trails-south.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-realm-trails-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-realm-trails.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-road-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-road.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-rpg-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-sandbox-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-sandbox-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-sandbox.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-skitter-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-soundscape.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-starter-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-starter-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-starter.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-surface-assets.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-traveler-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-traveler-equipment-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-workshop-transactions.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-world-atlantis-earth.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-world-foundations-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-world-foundations-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-world-foundations.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-world-ground-coalescing.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-world-heaven-hell.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/syntax-world.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "authoring-source-gate/world-foundations-blade.log",
+      "bytes": 115,
+      "sha256": "fc64a7526f2397fe2fd184a12f5b7161198deee503ca08909120d5cee37e8e24"
+    },
+    {
+      "file": "authoring-source-gate/world-foundations-bow.log",
+      "bytes": 113,
+      "sha256": "672abbfbe7a1d33774e55716e058cae4b29ce9f6c013361f41d6b31a4ad224d6"
+    },
+    {
+      "file": "authoring-source-gate/world-foundations-veteran.log",
+      "bytes": 111,
+      "sha256": "f67ce6df32a739cda65cf92f5c480d85fc7cf4969a8894534f8f0a9487566137"
+    },
+    {
+      "file": "BOUNDED_SOURCE_REVIEW.md",
+      "bytes": 1559,
+      "sha256": "d79948f50fccb6d5263dd0a6c7ae46155b8b9f817513837557603583eb7edc45"
+    },
+    {
+      "file": "COPY_RECEIPT.json",
+      "bytes": 169308,
+      "sha256": "db419c1cfbfb84dd3fa2f3c558fd7c5b046bafc364ec7bddb0c63369879552e5"
+    },
+    {
+      "file": "DESKTOP_ADAPTERS_20261003.json",
+      "bytes": 490,
+      "sha256": "7a5c4d489aee250ba180a64794e900c067b4f8a2b59513a90026895d3b37524c"
+    },
+    {
+      "file": "earlier-epochs/diagnostic-11-hell-cosmos/REPORT.json",
+      "bytes": 2633064,
+      "sha256": "7d8f9c2d3173caea11c32c970ebe4c2ad9ebc22535b1a86fa5b9efe08c79c370"
+    },
+    {
+      "file": "earlier-epochs/native-01/CONSOLE.log",
+      "bytes": 5270,
+      "sha256": "7d1d6f7e6a369a8b0fcb5d7338c41cdd831e8e7f7f97fcd92330ecdd8ef8f6d6"
+    },
+    {
+      "file": "earlier-epochs/native-01/fresh-blade-seed.log",
+      "bytes": 145,
+      "sha256": "db3147a776ceb172b756e0ae0db63080f57bc75f686a345e00d5e5478575c314"
+    },
+    {
+      "file": "earlier-epochs/native-02/CONSOLE.log",
+      "bytes": 1524,
+      "sha256": "544f2685b427c1ded4a07f1e38d86c2c8de1e2721f82668120af0727f8a5daa5"
+    },
+    {
+      "file": "earlier-epochs/native-02/fresh-blade-seed.log",
+      "bytes": 145,
+      "sha256": "db3147a776ceb172b756e0ae0db63080f57bc75f686a345e00d5e5478575c314"
+    },
+    {
+      "file": "earlier-epochs/native-02/REPORT.json",
+      "bytes": 14501,
+      "sha256": "f6d39bce3164ab463f318d66d85d29ea29d5689883ce32b2f1550fbc9054faf1"
+    },
+    {
+      "file": "earlier-epochs/native-03/CONSOLE.log",
+      "bytes": 2499,
+      "sha256": "1816ecd02b24725e2748166f5118f8643879afa83ae68003fbc311b9731bfef8"
+    },
+    {
+      "file": "earlier-epochs/native-03/fresh-blade-seed.log",
+      "bytes": 145,
+      "sha256": "db3147a776ceb172b756e0ae0db63080f57bc75f686a345e00d5e5478575c314"
+    },
+    {
+      "file": "earlier-epochs/native-03/REPORT.json",
+      "bytes": 14056,
+      "sha256": "77ff4dd38f9a44ae55168602648ad3e1cf9842086e3535f22b15a110cfa303b6"
+    },
+    {
+      "file": "earlier-epochs/native-04/CONSOLE.log",
+      "bytes": 4253,
+      "sha256": "d29a0e974c4bdb651b3cad3f92cfc71ca7087c36fb599e623a0d250977b4b15c"
+    },
+    {
+      "file": "earlier-epochs/native-04/fresh-blade-seed.log",
+      "bytes": 145,
+      "sha256": "db3147a776ceb172b756e0ae0db63080f57bc75f686a345e00d5e5478575c314"
+    },
+    {
+      "file": "earlier-epochs/native-04/REPORT.json",
+      "bytes": 16026,
+      "sha256": "0cba8d2c007abcfc88a3803f0e3a0b7d1d96bcbfa08a73e427c7205ea648f7c9"
+    },
+    {
+      "file": "earlier-epochs/native-05/fresh-blade-seed.log",
+      "bytes": 145,
+      "sha256": "db3147a776ceb172b756e0ae0db63080f57bc75f686a345e00d5e5478575c314"
+    },
+    {
+      "file": "earlier-epochs/native-06/FAILURE.png",
+      "bytes": 627573,
+      "sha256": "e990111c2ef1162cc2cc5a27817869dba20024821e377c55391f796b59b55e26"
+    },
+    {
+      "file": "earlier-epochs/native-06/fresh-blade-seed.log",
+      "bytes": 145,
+      "sha256": "db3147a776ceb172b756e0ae0db63080f57bc75f686a345e00d5e5478575c314"
+    },
+    {
+      "file": "earlier-epochs/native-06/REPORT.json",
+      "bytes": 50865,
+      "sha256": "7696cae7ade525a9d1a0ad3b382493a58a1a0fe1403d2f7f13636ade73797543"
+    },
+    {
+      "file": "earlier-epochs/native-07/FAILURE.png",
+      "bytes": 208082,
+      "sha256": "10395403c86d88d020ca83d5001afc9ca528249b042bcaf2dbe36d1c9bf0ed0e"
+    },
+    {
+      "file": "earlier-epochs/native-07/fresh-blade-seed.log",
+      "bytes": 145,
+      "sha256": "db3147a776ceb172b756e0ae0db63080f57bc75f686a345e00d5e5478575c314"
+    },
+    {
+      "file": "earlier-epochs/native-07/REPORT.json",
+      "bytes": 786703,
+      "sha256": "ba22c7af531f66ca46c865550b361b39a6fc23118306e7941c5ba11facf0f23a"
+    },
+    {
+      "file": "earlier-epochs/native-08/FAILURE.png",
+      "bytes": 679286,
+      "sha256": "1e229cd0342e72362209129d9b049bc74c6cb25479af711c559e913688c115f7"
+    },
+    {
+      "file": "earlier-epochs/native-08/fresh-blade-seed.log",
+      "bytes": 145,
+      "sha256": "db3147a776ceb172b756e0ae0db63080f57bc75f686a345e00d5e5478575c314"
+    },
+    {
+      "file": "earlier-epochs/native-08/REPORT.json",
+      "bytes": 1981823,
+      "sha256": "2e07810247ee7e39113463aaaa65ae1f61476087451d37eb3f520d0551e593c1"
+    },
+    {
+      "file": "earlier-epochs/native-09/FAILURE.png",
+      "bytes": 383389,
+      "sha256": "03e8f37db958ac077163e73beb8aff9026dc89f2588e7de39f8fca21a4c42604"
+    },
+    {
+      "file": "earlier-epochs/native-09/fresh-blade-seed.log",
+      "bytes": 145,
+      "sha256": "db3147a776ceb172b756e0ae0db63080f57bc75f686a345e00d5e5478575c314"
+    },
+    {
+      "file": "earlier-epochs/native-09/fresh-bow-seed.log",
+      "bytes": 143,
+      "sha256": "ebbc08fab483a6c32dda63dcf59e3989b68f9475af18bcf202b4e2dac434720f"
+    },
+    {
+      "file": "earlier-epochs/native-09/REPORT.json",
+      "bytes": 9905491,
+      "sha256": "9cd3f0f185f5f18d01140a4f4b324bab338fbb34b748c9715fb2b6b17df515c8"
+    },
+    {
+      "file": "earlier-epochs/native-09/returning-strongest-seed.log",
+      "bytes": 153,
+      "sha256": "ba2af5e42645cef5f9d12426a10033b7c92da20167fc50b4c3bf22029d159509"
+    },
+    {
+      "file": "earlier-epochs/native-10-returning-reset/FAILURE.png",
+      "bytes": 522431,
+      "sha256": "a22909222c5c5dc50ea74c921fa9806b05cc108e3bf11f98b5efd12949d18def"
+    },
+    {
+      "file": "earlier-epochs/native-10-returning-reset/REPORT.json",
+      "bytes": 1997301,
+      "sha256": "17e92c1ee6f284c10568e1f24f052915eba3d32f9654cf3ffa6411b5f1d2d976"
+    },
+    {
+      "file": "earlier-epochs/native-10-returning-reset/returning-strongest-seed.log",
+      "bytes": 153,
+      "sha256": "ba2af5e42645cef5f9d12426a10033b7c92da20167fc50b4c3bf22029d159509"
+    },
+    {
+      "file": "earlier-epochs/normal-ui-rtx-01/FAILURE.png",
+      "bytes": 953181,
+      "sha256": "16d6fb7f8dc393fa2e6a0ff1df1c00eaa5a58bd95381d3dfcbb046604cbd4862"
+    },
+    {
+      "file": "earlier-epochs/normal-ui-rtx-01/REPORT.json",
+      "bytes": 116062,
+      "sha256": "d8240b4f3348ca08937df68c9f3120a21a97cbb8e873909cdaab8553d042819e"
+    },
+    {
+      "file": "earlier-epochs/normal-ui-rtx-02/REPORT.json",
+      "bytes": 102923,
+      "sha256": "162531ab4adfa1aff60dd10882f8915c6b69dc99f5171c2039fdf588dd4629ce"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/bridge_browser.json",
+      "bytes": 216730,
+      "sha256": "a6b4ed043420734647e42c8b74d1ba8fbd84b4e6076cbd6d73374edbebf53281"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/camera_browser.json",
+      "bytes": 11214,
+      "sha256": "98ee8144c3142ff9c9c8c7ca6aa47ceaf500868f6604afca4181db725c881b87"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/characters_browser.json",
+      "bytes": 8286,
+      "sha256": "ce18486c2e8de1ac3b6f037b02d9fa53002b3923fa033d547d4fcedfe5c20e65"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/classes_browser.json",
+      "bytes": 5233,
+      "sha256": "ba545829c0dd7d1d05b91d710503f1cdd8d3995f49682c133f79e94813a3c5aa"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/coastward_bridge_posts_browser.json",
+      "bytes": 304644,
+      "sha256": "d597389181c74410d0f2392fb040ca3abb189664502b9e5de41928e51b113ee5"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/coastward_scenery_browser.json",
+      "bytes": 831343,
+      "sha256": "adce9163006bf12a23b895286c9f4911f456b1caf2280e299aa8a1d919c68235"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/combat_cue_browser.json",
+      "bytes": 6203,
+      "sha256": "4fea6d4aa1a6610503ac4b7aee243af97ad75b006e3a24de8038f380527739b6"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/companion_presentation_browser.json",
+      "bytes": 457537,
+      "sha256": "f47f72a5caf4327bc90828a4fa37037ee5f1e099fea1f546644cdd6593d6f659"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/cosmos_browser.json",
+      "bytes": 8483,
+      "sha256": "1efb116a5c9819bb0af9539fd57f3a1b4a1475111067c398616d42503635f663"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/crossing_browser.json",
+      "bytes": 10240,
+      "sha256": "e231a1e7b77a771b5f62c54e963ace1de2a719f1981d337eaa088c866f3c3e43"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/cutaway_browser.json",
+      "bytes": 1124,
+      "sha256": "b6bb47f86c69a8949059e672436e226de6f0effbac4ed67388e65e1774f329f0"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/earth_browser.json",
+      "bytes": 34745,
+      "sha256": "01a17c0dc4ef1658f61ba3344bfb9394dc7338703091714595c59ecf2f17385d"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/earth_expedition_browser.json",
+      "bytes": 353369,
+      "sha256": "9bad99481dd64a93af1bbd9094bcacc4a9a24e858e763e80b69839b9aa154f7d"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/earth_ground_material_browser.json",
+      "bytes": 285654,
+      "sha256": "4889648a69e52c8fd0da048e8d700a803f2369be77105de9d1cad3bc27410663"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/earth_notes_browser.json",
+      "bytes": 13886,
+      "sha256": "547ef208ebb1a13fc7fc615ab8cfd0ef6a4126536cdef4cd824909c2959ff423"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/earth_story_browser.json",
+      "bytes": 2074395,
+      "sha256": "20c30175de43181db163e41e5f05e97d3553f8ee4ae54160dc6fb52cbc053e59"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/earth_story_transactions_browser.json",
+      "bytes": 906796,
+      "sha256": "ed3cba6abd34a5511312f5872bdd6574f2356477f3537204b853ad8df8c86519"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/gathering_browser.json",
+      "bytes": 12611,
+      "sha256": "d55a76f10d9dc5856a826d9c942ccded55670ec180fcf0138a454c2c19b0f2c9"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/journey_usability_browser.json",
+      "bytes": 28863,
+      "sha256": "f6b82088234aa51a56922a1846ad797db89db88abbbd737f077010ca6ea87388"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/local_life_browser.json",
+      "bytes": 10543146,
+      "sha256": "b114b8970405ea709b45e9a28017a57c11c59dddf4a74ea44a6f83c0d0754021"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/native_origin_browser.json",
+      "bytes": 1770,
+      "sha256": "ae605124ec96d7b8fdc7f962e6f64d5a63a0fb973e1228e1c6ad55a6ddd591f6"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/practice_visibility_browser.json",
+      "bytes": 390684,
+      "sha256": "db482cc095b1dd453977a8bed7c5cbc7fd9fc055efb300b6e7f8b1e5c9a1cf08"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/pursuit_browser.json",
+      "bytes": 16213,
+      "sha256": "fa265740c86d4e8d124f6951af74a98770d750557956dd76fb9614bf0cccb35f"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/realm_atlas_browser.json",
+      "bytes": 4748,
+      "sha256": "629478cd869453df800355c2dc2f2e549e65841a98dbb29be90a1b657debd4a6"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/realm_givers_browser.json",
+      "bytes": 274811,
+      "sha256": "1ef6f09e06d648b9b1c0d7ed75ced31dd2f5fed4c4db5eb9cd96237cf9dcc11e"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/realm_trails_browser.json",
+      "bytes": 31021,
+      "sha256": "0b3f0a3da3abb88e300fe4ed36e801ec40b755bcf3ad02e20745bb0152d834a9"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/realm_trails_cosmos_browser.json",
+      "bytes": 22476,
+      "sha256": "8667df028e0189ed1ec23ae4bdf967cfcb451277f203012d264dbce98812eb29"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/realm_trails_north_browser.json",
+      "bytes": 119968,
+      "sha256": "327a8a895f431a1b3cb678ea4bb2709e706372d4682c0833f991485b23cadce4"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/realm_work_presentation_browser.json",
+      "bytes": 2989703,
+      "sha256": "a9457302bb821dc1ef9bc7a23f19fb4b4326029770a47fc6a0203f513ec21cc5"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/reflection_browser.json",
+      "bytes": 1847,
+      "sha256": "daa88f6d10a68fec853c9fd241514c231e4af0dad4a70721cf07fc7fe22f7530"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/regression09_browser.json",
+      "bytes": 9965,
+      "sha256": "c0d84f8c46b8f51a069c1ca186cf833b5dfa5c75c8fa5957bc41dc50850c7c4b"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/skitter_presentation_browser.json",
+      "bytes": 452070,
+      "sha256": "319c3dd4272b323667b5c9cff538e598c9eefcc0263cd674bf9b1fca3a56679c"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/soundscape_browser.json",
+      "bytes": 9618,
+      "sha256": "aaa231421825a2abb99a3730c145f75b0e87b0730b1525d8afec784f2645add6"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/starter_browser.json",
+      "bytes": 13679,
+      "sha256": "447c98cacf1dffc896cb0e30164a8ac0f921813c724677b982bdbf12d4a89ebe"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/timber_browser.json",
+      "bytes": 7060,
+      "sha256": "be31aec54a428cb06ec7d4a018941f90ebe25810984b78a56094c391e3a1f5eb"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/traveler_browser.json",
+      "bytes": 75683,
+      "sha256": "70eb5f56fc2e8b12fedaa8d05d59917fdd5cbc977efdd760f697a0b1ff78678b"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/workshop_transactions_browser.json",
+      "bytes": 151068,
+      "sha256": "50f0f435553e44b6215c8411a22943e30b8246c86a2cb7fed4caf0561e33cff3"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/world_cutaway_browser.json",
+      "bytes": 2783,
+      "sha256": "03edb020d315343efef825b1c077bad98da7b58b3338ae27660caf94b0c72705"
+    },
+    {
+      "file": "fresh-remote-gate/browser-reports/world_foundations_browser.json",
+      "bytes": 21138,
+      "sha256": "1a954fa00c3ec4668a9386e92cc1d154b1040dadeaf5f3907d48e7af238cbca2"
+    },
+    {
+      "file": "fresh-remote-gate/collect_full_gate.py",
+      "bytes": 15431,
+      "sha256": "a586d194ae9487ddef2adf38645bc319a4f199c7e19113cf5c518f9037ea1acc"
+    },
+    {
+      "file": "fresh-remote-gate/commands/bridge_browser.log",
+      "bytes": 68922,
+      "sha256": "8bb021a10ab596e79d22f5a7d15f1e79858621ed47d8fc76a504ab3e002f16c9"
+    },
+    {
+      "file": "fresh-remote-gate/commands/build.log",
+      "bytes": 91,
+      "sha256": "2767629db4697bbb7fafec76f573bcb03a4067ae78b783385bf8bcd09b6a20b4"
+    },
+    {
+      "file": "fresh-remote-gate/commands/camera_browser.log",
+      "bytes": 3026,
+      "sha256": "c29737a25023bd5e0aefa2046639f24a598017a0a5750771a799e52e6a70cbae"
+    },
+    {
+      "file": "fresh-remote-gate/commands/characters-journey.log",
+      "bytes": 3058,
+      "sha256": "ab57534da68a9d53954aeddc9df33bdedbdc2d6df416464f20047ae547d7f5bd"
+    },
+    {
+      "file": "fresh-remote-gate/commands/characters_browser.log",
+      "bytes": 4357,
+      "sha256": "a067d91915df7395e4d268225d48ac904837632f801bdf7c1858d12d722603a0"
+    },
+    {
+      "file": "fresh-remote-gate/commands/classes-journey.log",
+      "bytes": 4224,
+      "sha256": "7580451327c44c35e9af292327bf21e773e89f321985e0fe1293bd95f4c83322"
+    },
+    {
+      "file": "fresh-remote-gate/commands/classes_browser.log",
+      "bytes": 2383,
+      "sha256": "ef23c78cd5f3a8bfae077961bab37392f61f6377eb46fcc65c0f6de96e6c4003"
+    },
+    {
+      "file": "fresh-remote-gate/commands/coastward_bridge_posts_browser.log",
+      "bytes": 4964,
+      "sha256": "84853643162787385f4ed7c3798285793bda9efb36dddf9afe37bc9fafda87a3"
+    },
+    {
+      "file": "fresh-remote-gate/commands/coastward_scenery_browser.log",
+      "bytes": 2616,
+      "sha256": "6cc89afbbae150a86e10eab3903e4e334d560c97c57d7074ffdd79227926ec80"
+    },
+    {
+      "file": "fresh-remote-gate/commands/combat_cue_browser.log",
+      "bytes": 2350,
+      "sha256": "e6b20f78dfd4d2f9831e322c7be794dd6af40223f85b9b7684a853214f9dc22f"
+    },
+    {
+      "file": "fresh-remote-gate/commands/companion_presentation_browser.log",
+      "bytes": 7843,
+      "sha256": "ba18aa0b0ce6d9c8ba2daedd4be393e4435807ec1f5caa0aed6b19b898ba6b29"
+    },
+    {
+      "file": "fresh-remote-gate/commands/cosmos-journey.log",
+      "bytes": 630,
+      "sha256": "6ff828d31129374cd2625282c809622107f5cc413b972b3b151f6046607f9f11"
+    },
+    {
+      "file": "fresh-remote-gate/commands/cosmos_browser.log",
+      "bytes": 3927,
+      "sha256": "d1b998b402ed890f27a57e6d5fcb746a2f61fa357d557b07e15279d06c4c1747"
+    },
+    {
+      "file": "fresh-remote-gate/commands/crossing-blade.log",
+      "bytes": 625,
+      "sha256": "0b27a5083c98c2983b9d5dd15b33456d395f182b4b299bbf46412b4f244ba956"
+    },
+    {
+      "file": "fresh-remote-gate/commands/crossing-bow.log",
+      "bytes": 649,
+      "sha256": "f1f412fb8081e5e0c9e1c60e5ea9b8d1de892fbc3c23c2a76e5b1470f8c04d4a"
+    },
+    {
+      "file": "fresh-remote-gate/commands/crossing_browser.log",
+      "bytes": 4046,
+      "sha256": "b7e60195cd71a79ca9b858931c055035ea08a9294c5c72a464dbd9d7a6585723"
+    },
+    {
+      "file": "fresh-remote-gate/commands/cutaway_browser.log",
+      "bytes": 1126,
+      "sha256": "509f2c59d6dd7b02eae8306bc1e2507e3c7bd5245f50da6ab0d2708d995a512e"
+    },
+    {
+      "file": "fresh-remote-gate/commands/earth-expedition-blade.log",
+      "bytes": 834,
+      "sha256": "3d575071239980ee8f98057acacb156ef6d765dff0822e1de2a771bdad9132c0"
+    },
+    {
+      "file": "fresh-remote-gate/commands/earth-expedition-bow.log",
+      "bytes": 831,
+      "sha256": "14c24800a62e53794d1a18e4272956cd06873c4e10d40662f0779c311b2ff24e"
+    },
+    {
+      "file": "fresh-remote-gate/commands/earth-expedition-veteran.log",
+      "bytes": 831,
+      "sha256": "999a33bebc78aad13cee2804f0f98723861ea53cae8900eceb391a723634b270"
+    },
+    {
+      "file": "fresh-remote-gate/commands/earth-journey.log",
+      "bytes": 602,
+      "sha256": "c8ded0f475b2988952679e231e99ec817b41c97d09bd3ef06c50e1c6d65f3c7b"
+    },
+    {
+      "file": "fresh-remote-gate/commands/earth-notes-blade.log",
+      "bytes": 2028,
+      "sha256": "11ea7b0f229954f822859d859bcf2680d27618b5212cb1750ac5373d646766b6"
+    },
+    {
+      "file": "fresh-remote-gate/commands/earth-notes-bow.log",
+      "bytes": 2030,
+      "sha256": "a812e24deaa1e1aac35501ce197c7424598eb9a2dd6474d42cfbbc6efca7158f"
+    },
+    {
+      "file": "fresh-remote-gate/commands/earth-notes-veteran.log",
+      "bytes": 2022,
+      "sha256": "ba3689dbe48d03264c01a3b7b02577ecf2be4cfc1e51983d677e16629f6fc309"
+    },
+    {
+      "file": "fresh-remote-gate/commands/earth-outing-blade.log",
+      "bytes": 5482,
+      "sha256": "be9b2f2c5cc1dc45ed3ada36ba842c06b1e0144b009f341107d3acafb80f6a60"
+    },
+    {
+      "file": "fresh-remote-gate/commands/earth-outing-bow.log",
+      "bytes": 6715,
+      "sha256": "e4e71e12da6150014a280b35387a3f507522cee791079ddbb89e5805a720d8c6"
+    },
+    {
+      "file": "fresh-remote-gate/commands/earth-outing-veteran.log",
+      "bytes": 3499,
+      "sha256": "89510eb64543e41c0134ba10563eed0af68fd4f00dc2b64c178b4f449936365d"
+    },
+    {
+      "file": "fresh-remote-gate/commands/earth-story-blade.log",
+      "bytes": 3039,
+      "sha256": "6bf6f61c7ac967539b3df21190910229f9a9aaa845b40546d5751c15d84a0b90"
+    },
+    {
+      "file": "fresh-remote-gate/commands/earth-story-bow.log",
+      "bytes": 3448,
+      "sha256": "e0d66a3346c3a9cec862bf4c892b78b46e6864ca4243a31536ac5c761712e66f"
+    },
+    {
+      "file": "fresh-remote-gate/commands/earth-story-veteran.log",
+      "bytes": 2628,
+      "sha256": "2d138c3184bdc80dbe843d843cfc04f12fcd4b50faded5c965aa97d160da919b"
+    },
+    {
+      "file": "fresh-remote-gate/commands/earth_browser.log",
+      "bytes": 5235,
+      "sha256": "6a25250a666ae36470b65d48796757b5c4f01f9ff168d8c88fc39ca8e29be557"
+    },
+    {
+      "file": "fresh-remote-gate/commands/earth_expedition_browser.log",
+      "bytes": 29257,
+      "sha256": "12f65ba01e9f3b6b42536d13350de05bbfa5249b037d44ca216f2d1215fefe4e"
+    },
+    {
+      "file": "fresh-remote-gate/commands/earth_ground_material_browser.log",
+      "bytes": 3829,
+      "sha256": "99e37ed5d2ec0714a2bf7e2789e2c86a7f7f9fa7dd0c41b948b7f6e2122b74f3"
+    },
+    {
+      "file": "fresh-remote-gate/commands/earth_notes_browser.log",
+      "bytes": 7022,
+      "sha256": "332191c4133c3eb0bd6e07a8b4dc0cb7a0048d08890b6ba69ce4868bbdb1c747"
+    },
+    {
+      "file": "fresh-remote-gate/commands/earth_story_browser.log",
+      "bytes": 15524,
+      "sha256": "a991f0903f4d626b1d89e8210cd7fa0162847b777d54f81e4b752eff53af65f5"
+    },
+    {
+      "file": "fresh-remote-gate/commands/earth_story_transactions_browser.log",
+      "bytes": 4921,
+      "sha256": "9497ecc902a66d6486c9ca7545c6b41e2746652dbec7f4aed4c4bbe5e2b3e9ff"
+    },
+    {
+      "file": "fresh-remote-gate/commands/gathering-blade.log",
+      "bytes": 2008,
+      "sha256": "93ac372f7968bd85a7e6ce3f4aef12457c4cb48202ec295dd978bb09f05bab5c"
+    },
+    {
+      "file": "fresh-remote-gate/commands/gathering-bow.log",
+      "bytes": 2004,
+      "sha256": "acde92290a60c1cb8d0d00bed19c01dcfc7bad61e44ddae78afc7466ae8cdaf7"
+    },
+    {
+      "file": "fresh-remote-gate/commands/gathering-veteran.log",
+      "bytes": 1998,
+      "sha256": "b16d9aa6e05be97ffd78cbd74e1f00291089ce137927a40a217044057f9c2588"
+    },
+    {
+      "file": "fresh-remote-gate/commands/gathering_browser.log",
+      "bytes": 5641,
+      "sha256": "d6f061cdf3c3510853b9ae997400adfb15609e052c526269633e39c3bd507d2f"
+    },
+    {
+      "file": "fresh-remote-gate/commands/journey_usability_browser.log",
+      "bytes": 5071,
+      "sha256": "1518be50787e9b978d37d5ac6afec4921e8bfe6216993f7743bfd27f0d768478"
+    },
+    {
+      "file": "fresh-remote-gate/commands/local-life-blade.log",
+      "bytes": 1012,
+      "sha256": "982789616d67fd254b72ce9a5a0e8df923d2f9a709205db634b537ff7beb533e"
+    },
+    {
+      "file": "fresh-remote-gate/commands/local-life-bow.log",
+      "bytes": 1009,
+      "sha256": "0ca6e51f77b4d7736125395d0b37a23b4d7fa4ecb4f2090b2fc1dbf070d4e866"
+    },
+    {
+      "file": "fresh-remote-gate/commands/local-life-veteran.log",
+      "bytes": 1019,
+      "sha256": "e73bdada22bd81a4ad8ffc08b4a8f2a243ecab7eca8067b88f0c719e76becb16"
+    },
+    {
+      "file": "fresh-remote-gate/commands/local_life_browser.log",
+      "bytes": 41288,
+      "sha256": "9e43b7670a164d5fe210d184029e30f1c8598434863902bbf887977903b2064d"
+    },
+    {
+      "file": "fresh-remote-gate/commands/native_origin_browser.log",
+      "bytes": 516,
+      "sha256": "0b81853b4503586fb0edd367582284bedfc3a2256c3d12ff3f608e63435b5263"
+    },
+    {
+      "file": "fresh-remote-gate/commands/practice_visibility_browser.log",
+      "bytes": 7325,
+      "sha256": "c57b5acae9de65c3845e597bcd590e1e2a6baf292bfd6e2247911b52612ab698"
+    },
+    {
+      "file": "fresh-remote-gate/commands/pursuit-blade.log",
+      "bytes": 5483,
+      "sha256": "04029aab268bf30da55bb85ea9cb89e5ab63ecd7f782a59c97aa095529ce4647"
+    },
+    {
+      "file": "fresh-remote-gate/commands/pursuit-bow.log",
+      "bytes": 6710,
+      "sha256": "7954f060cccbda3f5837029b6b177c60db43a02f6d581a5880ed7382a76135d1"
+    },
+    {
+      "file": "fresh-remote-gate/commands/pursuit-veteran.log",
+      "bytes": 3496,
+      "sha256": "e199d8caa8946fa3adb63b7b9cc3b8e7b4f364275bba62255871389216473e58"
+    },
+    {
+      "file": "fresh-remote-gate/commands/pursuit_browser.log",
+      "bytes": 6250,
+      "sha256": "96822dee04d9c5e7da7750a450efbbcdaafda025f52a218e44b172ee626d5e12"
+    },
+    {
+      "file": "fresh-remote-gate/commands/python.log",
+      "bytes": 6813,
+      "sha256": "7f78a07b2a228be26f28157123420c5c7733f21004a555b8660473cf6b7d322b"
+    },
+    {
+      "file": "fresh-remote-gate/commands/realm-comparator-blade.log",
+      "bytes": 860,
+      "sha256": "d051c505ea0d4762ed40c3b46181cff2ef60ab5dfca172cbdff96e7e26bccab5"
+    },
+    {
+      "file": "fresh-remote-gate/commands/realm-comparator-bow.log",
+      "bytes": 859,
+      "sha256": "a07a5025afb0bff37325955e4fd9fea4c0a5b197b0afaa4f95064ca4a85245d8"
+    },
+    {
+      "file": "fresh-remote-gate/commands/realm-comparator-veteran.log",
+      "bytes": 1380,
+      "sha256": "a20e5d663637299c64b8c6f0f90f27a5d1560ff29518563c48b6f6169adbd835"
+    },
+    {
+      "file": "fresh-remote-gate/commands/realm-trails-blade.log",
+      "bytes": 161,
+      "sha256": "8c99875b9853801c2052b9590857b851d349d56ab81580bfb70232c631f73fe1"
+    },
+    {
+      "file": "fresh-remote-gate/commands/realm-trails-bow.log",
+      "bytes": 159,
+      "sha256": "53a69d88317a65523229998ee60c03de091e0a8b8d41a82e5253f340965b78d5"
+    },
+    {
+      "file": "fresh-remote-gate/commands/realm-trails-south-blade.log",
+      "bytes": 3835,
+      "sha256": "87bbefd4eee4094ba698ce665adc0c40a331b3d3d1d5c147e1a0219dca11c5e3"
+    },
+    {
+      "file": "fresh-remote-gate/commands/realm-trails-south-bow.log",
+      "bytes": 3833,
+      "sha256": "a52e82bfbf37f9164fb6e921f9c9a07fa17cef12f7f6088fce1c15e2b34fe12b"
+    },
+    {
+      "file": "fresh-remote-gate/commands/realm_atlas_browser.log",
+      "bytes": 2177,
+      "sha256": "aeaa2edea10aa5195268cbd2a87a0e063a6d4f799176e0f0d0dc5f3bfdab35fc"
+    },
+    {
+      "file": "fresh-remote-gate/commands/realm_givers_browser.log",
+      "bytes": 25187,
+      "sha256": "c3c54c62b28a300b4a448cdd640d42fb7ab3023458fd16385b095ab48a81a79c"
+    },
+    {
+      "file": "fresh-remote-gate/commands/realm_trails_browser.log",
+      "bytes": 4049,
+      "sha256": "1cfc3a14a5ec86d727062b7612602dabfcc1a32cef43eb6e5b9b7a7a96aebf35"
+    },
+    {
+      "file": "fresh-remote-gate/commands/realm_trails_cosmos_browser.log",
+      "bytes": 1928,
+      "sha256": "50c8c5292dcebda9f622a3fb057567e81b8766cb66205ca535dbb81bd5cd9921"
+    },
+    {
+      "file": "fresh-remote-gate/commands/realm_trails_north_browser.log",
+      "bytes": 13352,
+      "sha256": "20bd8eb3a4b685e9fac155cf3dedeba7d384c96e50fdd127954a942ae27d5eab"
+    },
+    {
+      "file": "fresh-remote-gate/commands/realm_work_presentation_browser.log",
+      "bytes": 24674,
+      "sha256": "8f99bc057bcd0186deda9c38e3a39c9a88295c29e7a0422a1b6dc99b74fcc5f9"
+    },
+    {
+      "file": "fresh-remote-gate/commands/reflection_browser.log",
+      "bytes": 1849,
+      "sha256": "1671c3fdfb2edc69fe5c1be34632b9c9e2f7562a5cf1354a4873ea76677ea7b5"
+    },
+    {
+      "file": "fresh-remote-gate/commands/regression09_browser.log",
+      "bytes": 4172,
+      "sha256": "f961280bfd48606e6024aa38a62f5987eaba527c66e9db533adf04933c89a9ea"
+    },
+    {
+      "file": "fresh-remote-gate/commands/rules.log",
+      "bytes": 241194,
+      "sha256": "ca0bfb3d273b0e963780087098930816fa883282f5e3e9798eec941912409b43"
+    },
+    {
+      "file": "fresh-remote-gate/commands/skitter_presentation_browser.log",
+      "bytes": 7834,
+      "sha256": "0f1e2dd43557cd16cf6bb04859908705d94a49e317f932e6de6846cb1820f48d"
+    },
+    {
+      "file": "fresh-remote-gate/commands/soundscape_browser.log",
+      "bytes": 3575,
+      "sha256": "958fddee60c7990b25dbb365c0070a4871d73abd7e90c52b1843c749b09eebaa"
+    },
+    {
+      "file": "fresh-remote-gate/commands/starter-blade.log",
+      "bytes": 507,
+      "sha256": "7bf2c1aedc79943bcdc356237696bf2a1a464841e03520203f7ee7d0f4911dae"
+    },
+    {
+      "file": "fresh-remote-gate/commands/starter-bow.log",
+      "bytes": 503,
+      "sha256": "2496bd1b1ba568c3ff951073bede4e7625f178d4aa75780f9ab122264bf8b37f"
+    },
+    {
+      "file": "fresh-remote-gate/commands/starter-veteran.log",
+      "bytes": 1438,
+      "sha256": "a5ce11e73e32f6a35882e153121d316e4ff0bf6682f0b18001f5e86a2f979be0"
+    },
+    {
+      "file": "fresh-remote-gate/commands/starter_browser.log",
+      "bytes": 5086,
+      "sha256": "62851f6e17391909357099954f8ffd98512b4a1e9079529032fea46df8ebba87"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-adventure-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-adventure-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-adventure.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-app.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-arsenal-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-arsenal-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-arsenal.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-beacon-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-beacon.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-bridge-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-bridge-moment-view.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-characters-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-characters.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-classes-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-classes.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-coastward-settlement-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-coastward-woodland-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-combat.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-companion-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-core.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-cosmos-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-cosmos-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-cosmos.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-creative.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-crossing-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-crossing-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-crossing.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-drover-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-earth-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-earth-expedition-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-earth-expedition-beast-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-earth-expedition-dialogue.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-earth-expedition-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-earth-expedition.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-earth-notes-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-earth-notes-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-earth-notes.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-earth-shoulder-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-earth-story-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-earth-story.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-earth-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-earth.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-elderweald-trail-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-elderweald-world.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-engine.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-experience.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-gathering-adapter.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-gathering-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-gathering-music.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-gathering-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-gathering.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-local-life-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-local-life-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-local-life.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-mill-gate-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-millwright-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-pursuit-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-pursuit.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-quarry-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-realm-art-data.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-realm-atlas-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-realm-craft.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-realm-givers-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-realm-trails-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-realm-trails-cosmos.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-realm-trails-north.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-realm-trails-south.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-realm-trails-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-realm-trails.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-road-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-road.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-rpg-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-sandbox-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-sandbox-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-sandbox.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-skitter-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-soundscape.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-starter-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-starter-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-starter.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-surface-assets.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-traveler-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-traveler-equipment-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-workshop-transactions.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-world-atlantis-earth.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-world-foundations-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-world-foundations-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-world-foundations.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-world-ground-coalescing.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-world-heaven-hell.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/syntax-world.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "fresh-remote-gate/commands/timber_browser.log",
+      "bytes": 2209,
+      "sha256": "d4daadf0b4bc1a1b65c3666059fd0c3072a2bbbd5de1203c4d3b0a6b09eca177"
+    },
+    {
+      "file": "fresh-remote-gate/commands/traveler_browser.log",
+      "bytes": 5536,
+      "sha256": "4409bf695407cf8b14c2a32f938519defea7f1ad203d0d5f994c82bbdd84b6e5"
+    },
+    {
+      "file": "fresh-remote-gate/commands/workshop_transactions_browser.log",
+      "bytes": 7291,
+      "sha256": "354f8e82d2cced594ec4ea90f2c6022d8a0ca34cce35174b7038354d2d9a4869"
+    },
+    {
+      "file": "fresh-remote-gate/commands/world-foundations-blade.log",
+      "bytes": 115,
+      "sha256": "fc64a7526f2397fe2fd184a12f5b7161198deee503ca08909120d5cee37e8e24"
+    },
+    {
+      "file": "fresh-remote-gate/commands/world-foundations-bow.log",
+      "bytes": 113,
+      "sha256": "672abbfbe7a1d33774e55716e058cae4b29ce9f6c013361f41d6b31a4ad224d6"
+    },
+    {
+      "file": "fresh-remote-gate/commands/world-foundations-veteran.log",
+      "bytes": 111,
+      "sha256": "f67ce6df32a739cda65cf92f5c480d85fc7cf4969a8894534f8f0a9487566137"
+    },
+    {
+      "file": "fresh-remote-gate/commands/world_cutaway_browser.log",
+      "bytes": 3716,
+      "sha256": "16c8dae593b6b8442ec993b89c21246632c7f4d18f373fc7d294fa4ffdfae560"
+    },
+    {
+      "file": "fresh-remote-gate/commands/world_foundations_browser.log",
+      "bytes": 10501,
+      "sha256": "419c58a151f6783fb81facdbcca2e6a63c461a70d5e5f34e44352652556b298e"
+    },
+    {
+      "file": "fresh-remote-gate/FULL_GATE_RECEIPT.json",
+      "bytes": 74372,
+      "sha256": "a71b69121e2762d6d4dfbca91d5881570cffd53c8ac8ccf2bb3c7c40550b5cd7"
+    },
+    {
+      "file": "fresh-remote-gate/FULL_VERIFY_CONSOLE.log",
+      "bytes": 10807,
+      "sha256": "96b59fdd6fe537cfa8a15f606121c2ef08132cf1fe28ce19581cc691d2485fd6"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-atlantis-installed-adventure-absentPNG.png",
+      "bytes": 521549,
+      "sha256": "7c8271690c777cc1e9fbc6224d914e86dbdf5fb88aae31cbff8b472ffcd889b2"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-atlantis-installed-adventure-baselinePNG.png",
+      "bytes": 521848,
+      "sha256": "87364037ea987707e7e2c1d17d534cb9031710a689670795b9fad17d0e3f5136"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-atlantis-installed-adventure-priorPNG.png",
+      "bytes": 521549,
+      "sha256": "7c8271690c777cc1e9fbc6224d914e86dbdf5fb88aae31cbff8b472ffcd889b2"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-atlantis-installed-adventure.png",
+      "bytes": 645041,
+      "sha256": "a4d98c7162d0d7adda1286da9d0fe89eebd42410abd8fafa15729b7f6351083a"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-atlantis-installed-follow-absentPNG.png",
+      "bytes": 614121,
+      "sha256": "b4b0cb438ced22b4435c874154665147faacbd2833009137298526e241a6d039"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-atlantis-installed-follow-baselinePNG.png",
+      "bytes": 614162,
+      "sha256": "dec5919aa1f5aa77744f7e7edf9b173f7e5c3f96be532cd3fc1010fb7d805744"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-atlantis-installed-follow-priorPNG.png",
+      "bytes": 614121,
+      "sha256": "b4b0cb438ced22b4435c874154665147faacbd2833009137298526e241a6d039"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-atlantis-installed-follow.png",
+      "bytes": 550534,
+      "sha256": "e47c58ac8bebb5c3f2e2658df80825c5b1767a5dfa8a1799e190b1787b123b39"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-atlantis-paid.png",
+      "bytes": 224633,
+      "sha256": "bfc6b24131866a6957e595f167077cc2b603b509e35f52510bf9fda21819a6af"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-atlantis-terms.png",
+      "bytes": 232406,
+      "sha256": "db7a3ddce4d09a7869a6d884fd8708e111f5042757541346620661f6af2ea88f"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-cosmos-installed-adventure-absentPNG.png",
+      "bytes": 679957,
+      "sha256": "d1863f168eca9663f293528650c617c19558c68b1c6361fcd2c34e9be931bc44"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-cosmos-installed-adventure-baselinePNG.png",
+      "bytes": 680767,
+      "sha256": "1c6790b54917a9ccfc693c36ec92a167f35ebb4e6da156cd84f68586e5d671a1"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-cosmos-installed-adventure-priorPNG.png",
+      "bytes": 679957,
+      "sha256": "d1863f168eca9663f293528650c617c19558c68b1c6361fcd2c34e9be931bc44"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-cosmos-installed-adventure.png",
+      "bytes": 573210,
+      "sha256": "554b214fb3e0158f6934a63a82401b56a07a8ef7d31154f9901186c49b46ff68"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-cosmos-installed-follow-absentPNG.png",
+      "bytes": 749728,
+      "sha256": "da20e3013160d3eb8fd4e2edcd574ff4306d6b1eb115b84e1d9b0319aeaba89b"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-cosmos-installed-follow-baselinePNG.png",
+      "bytes": 750162,
+      "sha256": "4a95e93b87f3db64f48c338c5a2eb574389ff732e92811e947e3fd8ec7975026"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-cosmos-installed-follow-priorPNG.png",
+      "bytes": 749728,
+      "sha256": "da20e3013160d3eb8fd4e2edcd574ff4306d6b1eb115b84e1d9b0319aeaba89b"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-cosmos-installed-follow.png",
+      "bytes": 686813,
+      "sha256": "b4cc4fc31d1994af5d0be6e19a97e1b43ee2a7c62e757c7062e1491d89a9d636"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-cosmos-paid.png",
+      "bytes": 235667,
+      "sha256": "2b501819dbeb9d77862ce99b3c31c51607e00509eef0dfcdca62370427e42b3e"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-cosmos-terms.png",
+      "bytes": 246364,
+      "sha256": "2b67d0d8137059aee56b78f1669fca0a0286518b7bf36ac40bd013be45a0ca74"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-earned-before-localLife.json",
+      "bytes": 23456,
+      "sha256": "ecff942c9e3dc53618480e1d83453b3c5c3d6bd9c34ae6bb8aaf96c26cfd138c"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-heaven-installed-adventure-absentPNG.png",
+      "bytes": 721685,
+      "sha256": "ebffc65bb896b5229735dd8a035c52836068d1150f39e2024fe2ce11fffdd965"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-heaven-installed-adventure-baselinePNG.png",
+      "bytes": 722315,
+      "sha256": "de4df24761866ed2ebac9750bf69d74a4c416c2651e40a98b14c4855711e1342"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-heaven-installed-adventure-priorPNG.png",
+      "bytes": 721149,
+      "sha256": "e2f87042ad37aa56224a517b515e02620010d58c8b2db699088a3e91e5e0d830"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-heaven-installed-adventure.png",
+      "bytes": 506207,
+      "sha256": "c5d8ed8b419ae244e8d4d8470879e1c88f78d540b94920d970354ea95ea865bb"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-heaven-installed-follow-absentPNG.png",
+      "bytes": 1200516,
+      "sha256": "098adc0c74f97d9064086f5151356293fd28b265e03ad3940e1e700bed46256a"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-heaven-installed-follow-baselinePNG.png",
+      "bytes": 1201413,
+      "sha256": "2dccac949b589201bc02a6a24b771c298d157523364831e50d62da1ba4d255e8"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-heaven-installed-follow-priorPNG.png",
+      "bytes": 1201210,
+      "sha256": "9b15d2809b0771ee01a95602de5273afaf032482bc601055e2a16bffc72b4d0b"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-heaven-installed-follow.png",
+      "bytes": 741941,
+      "sha256": "6879870c789139e050bfa02cb4eddd4a0bb164dc7d6fd8dc4088315adcf32eb1"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-heaven-paid.png",
+      "bytes": 255544,
+      "sha256": "b24d57d8c07f36b5a5f6c555e389978901c6c90070ed4ef1f8112e307a12cc88"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-heaven-terms.png",
+      "bytes": 253209,
+      "sha256": "9c9972e78d3e63fec2010c91705a2167bd5da8d55b5d5911021ea299be4abcab"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-hell-installed-adventure-absentPNG.png",
+      "bytes": 566215,
+      "sha256": "834ef37fd812701de91310bfefa84064452edc4f17094fee66de214db4dc170b"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-hell-installed-adventure-baselinePNG.png",
+      "bytes": 565361,
+      "sha256": "b3018f036654be5c32878e41834e3d19ab15f2cc96d0f2e35ef2d6d6388631a3"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-hell-installed-adventure-priorPNG.png",
+      "bytes": 565357,
+      "sha256": "1d36dd9845d666756f37198bfeff5049beefd97e4f974486e9fca038f79de69a"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-hell-installed-adventure.png",
+      "bytes": 483257,
+      "sha256": "89b0d8b94683408897727d55ceb2488596cbd312c476b26ea9a3f2f01cef44df"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-hell-installed-follow-absentPNG.png",
+      "bytes": 915478,
+      "sha256": "487c943c95c357b1f97e1e438c64a25c7d28a38e6bdb267b35ba83a729045551"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-hell-installed-follow-baselinePNG.png",
+      "bytes": 916122,
+      "sha256": "e2b2fcc248e71ab3674d39727109e6a2ecb27f67adaa59ec4ee30457043d4187"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-hell-installed-follow-priorPNG.png",
+      "bytes": 916074,
+      "sha256": "46aea3daf3d22e3dc23c8905a0f2a667d1513b5b66a424fce8c48e3b167cf052"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-hell-installed-follow.png",
+      "bytes": 712837,
+      "sha256": "19c1947d62bf96d791d747eab8499190636c252d5a059eca53e37c64b46923a2"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-hell-paid.png",
+      "bytes": 235844,
+      "sha256": "25a0c7b9a960f83191f0bbc1a9f8eb0a8ba7934ac05d7ba8efb0cbcde2cb8d66"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-hell-terms.png",
+      "bytes": 241357,
+      "sha256": "9d0e196d8508a1717eda4fda4ae40872ebd6d730835574feed2a1757c4d6ea79"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-blade-seed.log",
+      "bytes": 145,
+      "sha256": "db3147a776ceb172b756e0ae0db63080f57bc75f686a345e00d5e5478575c314"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-atlantis-installed-adventure-absentPNG.png",
+      "bytes": 508562,
+      "sha256": "8ab93bac242952c168dfc2f585aa037dbb7733f1bb64a53fa1f943cd06a48f28"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-atlantis-installed-adventure-baselinePNG.png",
+      "bytes": 508850,
+      "sha256": "f733fd6883ca20976fe5037b8a7378f09bde316c30d93dd95e3569fd113c5744"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-atlantis-installed-adventure-priorPNG.png",
+      "bytes": 508562,
+      "sha256": "8ab93bac242952c168dfc2f585aa037dbb7733f1bb64a53fa1f943cd06a48f28"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-atlantis-installed-adventure.png",
+      "bytes": 636875,
+      "sha256": "051b85bd667f38117c5059edd9d9db857307bc25178c9f1b6d7ec3abde5ec1da"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-atlantis-installed-follow-absentPNG.png",
+      "bytes": 573208,
+      "sha256": "258c59f6bbd805c76f3cdb49f5c120aacb09648d180ffc2a2576be5b8c7bf26e"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-atlantis-installed-follow-baselinePNG.png",
+      "bytes": 573358,
+      "sha256": "33eeb3117e00d7ecb5c36a929bfc8a1a522f0384825354c0a897d985988d6e5e"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-atlantis-installed-follow-priorPNG.png",
+      "bytes": 573208,
+      "sha256": "258c59f6bbd805c76f3cdb49f5c120aacb09648d180ffc2a2576be5b8c7bf26e"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-atlantis-installed-follow.png",
+      "bytes": 536163,
+      "sha256": "ca03061d23f9503d5c383a522cf983c07b8ede3170250d9857c94629db10fcb9"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-atlantis-paid.png",
+      "bytes": 223707,
+      "sha256": "d527d6277634f65f1dd2b95010bf67275c06012475e3317de8ed4d176cebea33"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-atlantis-terms.png",
+      "bytes": 229626,
+      "sha256": "9b74d1e4c487cf77bc20523f76c50e3523bdf56d7e48b433ea794bdcc5708e91"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-cosmos-installed-adventure-absentPNG.png",
+      "bytes": 682389,
+      "sha256": "e39779b2bb51bce96d6505c57437ffe48a969f1f6f914264890b61abc3e5ecff"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-cosmos-installed-adventure-baselinePNG.png",
+      "bytes": 683083,
+      "sha256": "8b9c63e524d44cd1d98d73ce5c887c0206c3a6d42096e78681b13bb193ff8d2e"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-cosmos-installed-adventure-priorPNG.png",
+      "bytes": 682389,
+      "sha256": "e39779b2bb51bce96d6505c57437ffe48a969f1f6f914264890b61abc3e5ecff"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-cosmos-installed-adventure.png",
+      "bytes": 575629,
+      "sha256": "59c9c54ee41f4186532915326014eeaf6faed64584e0917d4ed5e07d07020f75"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-cosmos-installed-follow-absentPNG.png",
+      "bytes": 749932,
+      "sha256": "1d7efcd9f5a02566b37482c53d6878f4b0732a0531a0f55ea6cfe96912aa7890"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-cosmos-installed-follow-baselinePNG.png",
+      "bytes": 750377,
+      "sha256": "52a437a8a45f6e8159f3fab4fad94720918b747568412cf5b37f61ef1601ef40"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-cosmos-installed-follow-priorPNG.png",
+      "bytes": 749932,
+      "sha256": "1d7efcd9f5a02566b37482c53d6878f4b0732a0531a0f55ea6cfe96912aa7890"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-cosmos-installed-follow.png",
+      "bytes": 687103,
+      "sha256": "0c8adb6b7ff6fc509fbb001e022613b232b6a12d531ff50a2fb448a184c8ee6c"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-cosmos-paid.png",
+      "bytes": 235733,
+      "sha256": "31909e50415157d33724257cec20f800736e6f9e0239bb289e9b9f633e54123e"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-cosmos-terms.png",
+      "bytes": 246312,
+      "sha256": "10586d5517a12b0e1ed1afb672d862443bfbd12f331150def0eb5f635069cab5"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-earned-before-localLife.json",
+      "bytes": 35229,
+      "sha256": "9affbd2cd2460ae39adabaceff2ba76f0231a37d152b0a950c2823d86746860c"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-heaven-installed-adventure-absentPNG.png",
+      "bytes": 718529,
+      "sha256": "102736edd28f3d81906af31527fefe2515f27ec2fb92f8054edd32c45686d201"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-heaven-installed-adventure-baselinePNG.png",
+      "bytes": 717891,
+      "sha256": "ba4f4afc4c6b79c72af5a49febfee341ee212548795c2eef4b832471b76a01d3"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-heaven-installed-adventure-priorPNG.png",
+      "bytes": 717279,
+      "sha256": "208d97789d0c3e06ed550a4ea80e93dd3f032edebba5783f3a93d7da48bab582"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-heaven-installed-adventure.png",
+      "bytes": 516197,
+      "sha256": "ed1f7df62cec6ba8428b4a9ff9261b559ddb8d8a25a998f32d67295df4082edc"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-heaven-installed-follow-absentPNG.png",
+      "bytes": 1188061,
+      "sha256": "057bbb5aebdb483ee074f2d6c3874d1913a36c4f2c03fb1c7fa33c3cc7233742"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-heaven-installed-follow-baselinePNG.png",
+      "bytes": 1188927,
+      "sha256": "c69f03ac3171bac46ccc11b35754b46e7b1680454efc92d57782238c1696e429"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-heaven-installed-follow-priorPNG.png",
+      "bytes": 1188656,
+      "sha256": "2aceb22cd54b27f6ab6dfdc234e1a0e6de25410fc563424d39a5ad534c5b1b3e"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-heaven-installed-follow.png",
+      "bytes": 733504,
+      "sha256": "7f246dd31b58921fd52af8cc034a3bf87f3db42d2315380626ceceb77393c7bc"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-heaven-paid.png",
+      "bytes": 257440,
+      "sha256": "e13c4047e9ed4a1667313a9cf963f8b81555ed9559f2adfd2c01199f43e38cfe"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-heaven-terms.png",
+      "bytes": 253191,
+      "sha256": "d186e372fade8f83fd573994ba1d99554cec9e4fd0c34cd19fee6ea9f6b3b243"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-hell-installed-adventure-absentPNG.png",
+      "bytes": 567482,
+      "sha256": "b2ddb0edb21a38c3eb7533356e3a4b1b2373bc0a22e49beb9f13895f84174829"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-hell-installed-adventure-baselinePNG.png",
+      "bytes": 566627,
+      "sha256": "5aa0249c5da1124c666d810bbaf287a43973ff21627af4fa7ae0885e3bc8c228"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-hell-installed-adventure-priorPNG.png",
+      "bytes": 566636,
+      "sha256": "ce1e76088bd4c83804e6642a4cb09c263d222565f5b7a1c0eb11f2609cc770e7"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-hell-installed-adventure.png",
+      "bytes": 483610,
+      "sha256": "09eb9300d822b917aff3bd0156d2cde6628aa0ca12852f8d91feb5c86d430b75"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-hell-installed-follow-absentPNG.png",
+      "bytes": 915677,
+      "sha256": "0f166fe795cf5b7bd96485d774cd9d1072c79374ab822e2ddd89209bc2a0998b"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-hell-installed-follow-baselinePNG.png",
+      "bytes": 916337,
+      "sha256": "f5d1e78955db553e1023826b15bfeba2b54c5398fddfe4bb8dfe1e7b2a74a171"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-hell-installed-follow-priorPNG.png",
+      "bytes": 916291,
+      "sha256": "a5535d68b014f8540049445dc0fdf4eff7e2fe82daf4bfd87028c523ab6bc3d8"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-hell-installed-follow.png",
+      "bytes": 712904,
+      "sha256": "68a92a758f5a98ad9a6fa8cb75ec864734c22dd88d082ab6a41d4be94c4200a0"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-hell-paid.png",
+      "bytes": 235680,
+      "sha256": "f908edf79db30f5c144b48c8507922fc524a15673a99aa411ba5f05b5ecae26e"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-hell-terms.png",
+      "bytes": 241361,
+      "sha256": "c28ebc1f707f4bcaf4067684087e21e70d92c2449ff8e864d803a537a40757bc"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/fresh-bow-seed.log",
+      "bytes": 143,
+      "sha256": "ebbc08fab483a6c32dda63dcf59e3989b68f9475af18bcf202b4e2dac434720f"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-atlantis-installed-adventure-absentPNG.png",
+      "bytes": 523826,
+      "sha256": "8593f35f7e4c7ae7555092e063d54b124c12902a7b0f03a288862bcc5c78d5fe"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-atlantis-installed-adventure-baselinePNG.png",
+      "bytes": 524274,
+      "sha256": "eda22555ca5d9432d02830c0194ac53fc756dc24a10bd32e8c7bf48a71db265a"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-atlantis-installed-adventure-priorPNG.png",
+      "bytes": 523826,
+      "sha256": "8593f35f7e4c7ae7555092e063d54b124c12902a7b0f03a288862bcc5c78d5fe"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-atlantis-installed-adventure.png",
+      "bytes": 646404,
+      "sha256": "ae64fdaa3fbad72efffa8aa0dcce5b1a5fc9b7c756634fd2607bb4574782b515"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-atlantis-installed-follow-absentPNG.png",
+      "bytes": 606006,
+      "sha256": "f74341fa5fcbc500732e5c61848a784ff2db251bcad8fe7324ff8eac012f7a57"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-atlantis-installed-follow-baselinePNG.png",
+      "bytes": 606314,
+      "sha256": "d24ae08976a5f8f68fbaaf32e6a9557e44bcc5ad98fcb762ad686dee01ef7c70"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-atlantis-installed-follow-priorPNG.png",
+      "bytes": 606006,
+      "sha256": "f74341fa5fcbc500732e5c61848a784ff2db251bcad8fe7324ff8eac012f7a57"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-atlantis-installed-follow.png",
+      "bytes": 548522,
+      "sha256": "b3829ec8b565512fa829da5ad2b1efeb3b67e2891d5b226358776046be1356e6"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-atlantis-paid.png",
+      "bytes": 224070,
+      "sha256": "da147273712cf79661bf35a62456cd6a078c3fd984e58df4c17ec8281e50e9c4"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-atlantis-terms.png",
+      "bytes": 231806,
+      "sha256": "0158338620ad3c20a5e42b0eee34c6a1ff53bfe7a93342eaf53ef933c0cd0783"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-cosmos-installed-adventure-absentPNG.png",
+      "bytes": 688545,
+      "sha256": "6e64d656d135fbcff121844734eaa31e4991d07ee712bd55b0babb4596cb1988"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-cosmos-installed-adventure-baselinePNG.png",
+      "bytes": 689032,
+      "sha256": "534f3927d5ab5cd65d9efbce242d4f90a12dafc983f856a9b7368e8f63180ec9"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-cosmos-installed-adventure-priorPNG.png",
+      "bytes": 688545,
+      "sha256": "6e64d656d135fbcff121844734eaa31e4991d07ee712bd55b0babb4596cb1988"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-cosmos-installed-adventure.png",
+      "bytes": 585641,
+      "sha256": "c56620519f2e1fad5e212286c57ccd8fe0fc69040e630a17a54a2679bb6922f4"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-cosmos-installed-follow-absentPNG.png",
+      "bytes": 750603,
+      "sha256": "b895e71c8688f46b2024165957c7691897c1e76f50ae08760a1e5726e04381f3"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-cosmos-installed-follow-baselinePNG.png",
+      "bytes": 750980,
+      "sha256": "a46eab093bd869707457169c7bdca964f4718378ce24a79649b47d69936bbd11"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-cosmos-installed-follow-priorPNG.png",
+      "bytes": 750603,
+      "sha256": "b895e71c8688f46b2024165957c7691897c1e76f50ae08760a1e5726e04381f3"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-cosmos-installed-follow.png",
+      "bytes": 688825,
+      "sha256": "ac9daa463b6235400d2ffcd830f5103d53e0a53026983f93b33ef60e565cb49c"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-cosmos-paid.png",
+      "bytes": 238327,
+      "sha256": "7fddc92eb5ee62213a5494ae4a89147f6d46e5e4863f11b8dcbe06acb1c8ef59"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-cosmos-terms.png",
+      "bytes": 246287,
+      "sha256": "ae4342679a1a7bdb8a3eeb3806625f727975f794eadbae6fe83cea01d460c4f2"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-earned-before-localLife.json",
+      "bytes": 72652,
+      "sha256": "46aea4ffddd88bf1dc4f7d255421a3e4cb6b523a7aa4935874318131a575f69d"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-heaven-installed-adventure-absentPNG.png",
+      "bytes": 722403,
+      "sha256": "31af635ece62cf0a1e5837c605046548504ce6939a73e3ed1863d1c89b943c9d"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-heaven-installed-adventure-baselinePNG.png",
+      "bytes": 721811,
+      "sha256": "0b1a2c2d137d0c8749e2fb2e702621160df0ee2895639bf8d19efdd4f1ccb43e"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-heaven-installed-adventure-priorPNG.png",
+      "bytes": 721123,
+      "sha256": "4c742696c7108e708fd454826490e97969905f9501c70dfd3bd17fc478261a19"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-heaven-installed-adventure.png",
+      "bytes": 521637,
+      "sha256": "7cfc671f355c1bf24e2e5fe40f88ed00d7e573733eb8779d254e2f50d7feb3fa"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-heaven-installed-follow-absentPNG.png",
+      "bytes": 1189204,
+      "sha256": "e4ad64f34550d10a0c1735758152a5dec99e75e6c641be7874739ce6478e1b4a"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-heaven-installed-follow-baselinePNG.png",
+      "bytes": 1190017,
+      "sha256": "9aa32d8bc7cf3a7f8720ed54c41dcf7d1363ebcbfc23fb9808c95ab11fabcad2"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-heaven-installed-follow-priorPNG.png",
+      "bytes": 1189781,
+      "sha256": "7cb23cacdbf0336691eed34277d10aaa609d6d697dbcb6f8d01d7a498b182396"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-heaven-installed-follow.png",
+      "bytes": 736228,
+      "sha256": "2858e4aef3543a7cd3c0a8e79cdb34595775ce1c7be1dbb57049b904aae673f1"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-heaven-paid.png",
+      "bytes": 260456,
+      "sha256": "4b5abee84425d347fc5d417dc575f994130378fc4b570c92deec75da0f2d34b2"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-heaven-terms.png",
+      "bytes": 256041,
+      "sha256": "f6ea647460ad5a699b390bb2e5641de4d079e76041ea51d594c06525286f212a"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-hell-installed-adventure-absentPNG.png",
+      "bytes": 578155,
+      "sha256": "62afa8eff3c72f212872f28c47068b88c3968c26037751bf2883230e7e8c49da"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-hell-installed-adventure-baselinePNG.png",
+      "bytes": 577232,
+      "sha256": "831cf9d41a4dd6b9d6fad455a87d0e49f9b749da68f87583a8d31326a840a318"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-hell-installed-adventure-priorPNG.png",
+      "bytes": 577203,
+      "sha256": "ce00bffb3b8276daedb205da1d5f88045354c8807f46c416f191226ac416050d"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-hell-installed-adventure.png",
+      "bytes": 492249,
+      "sha256": "b17358e1a99c903ac51e2ab2a5884808ca60efec30d8f3dbcb9550d432bf5f25"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-hell-installed-follow-absentPNG.png",
+      "bytes": 916606,
+      "sha256": "de68b30d27c136beab3da8431f0d58996c0c3c599209ae1eed33c8af6e081ff9"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-hell-installed-follow-baselinePNG.png",
+      "bytes": 917260,
+      "sha256": "5f6a6f39167fd7c85da0889fe2da16014deca5908a181c61faf832fcd61574cb"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-hell-installed-follow-priorPNG.png",
+      "bytes": 917202,
+      "sha256": "7bbfa89ee946fc39cef439083c578c453bc561b2567a47440d2528b8c1f8a67a"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-hell-installed-follow.png",
+      "bytes": 715074,
+      "sha256": "cb20110c8fc0a77503a3d1619aff0b05c0d975fdbd42aa2d82379d8251db554a"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-hell-paid.png",
+      "bytes": 235689,
+      "sha256": "26cc906646c7c39e52470b28d205e0ef4a113b8eff04adda3539d6903615e351"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-hell-terms.png",
+      "bytes": 241302,
+      "sha256": "ed34aaaa4951fd25a088bbe4e3f97475bb923ed78151f5712a26e81ad19d459f"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-captures/returning-strongest-seed.log",
+      "bytes": 153,
+      "sha256": "ba2af5e42645cef5f9d12426a10033b7c92da20167fc50b4c3bf22029d159509"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-seeds/fresh-blade/00_EARNED_REGIONAL_HISTORY.json",
+      "bytes": 22966,
+      "sha256": "94363b9729bdbae3dcd1a571541bb70c2e401c635fab4609a55c7a73330e1b68"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-seeds/fresh-bow/00_EARNED_REGIONAL_HISTORY.json",
+      "bytes": 34246,
+      "sha256": "55efa8eac997cd171a93ad7335fe5e15460f6a3c459fb21de27694d07faac50f"
+    },
+    {
+      "file": "fresh-remote-gate/local-life-seeds/returning-strongest/00_EARNED_REGIONAL_HISTORY.json",
+      "bytes": 70195,
+      "sha256": "0d1b8c3e25723d4147abbc7eea01ec3a70dc03aed6be983beb2202aa7c4db2ef"
+    },
+    {
+      "file": "fresh-remote-gate/REMOTE_CLONE_LOG.txt",
+      "bytes": 4452,
+      "sha256": "bf68db1d4f1c9bbcfdcf0746a2498589348c46174a152d6329c50a324577932e"
+    },
+    {
+      "file": "fresh-remote-gate/RUN.json",
+      "bytes": 503,
+      "sha256": "472c5b58899179aac9f4cd90bc6171b8d155495a3bb10cbc6ec1b4f96e4fe235"
+    },
+    {
+      "file": "fresh-remote-gate/START_MANIFEST.json",
+      "bytes": 304168,
+      "sha256": "f57ef2c198259558e66b386160d6f05cf1e9723f1995bf9bb207d91c17312abb"
+    },
+    {
+      "file": "fresh-remote-gate/SUMMARY.md",
+      "bytes": 6178,
+      "sha256": "66f98a4cd4d738d7b9bc0f9c352f8cf13b4f64269908a71c8c8162afde504df0"
+    },
+    {
+      "file": "harnesses/capture_local_life.py",
+      "bytes": 12481,
+      "sha256": "54c907e0dd96bb8070deccfe7da47a8aae4c2334c7f66cff52b35f5e460161b4"
+    },
+    {
+      "file": "harnesses/encode_and_verify.py",
+      "bytes": 3385,
+      "sha256": "7753f3d0fdf9ad40bca17bde5bd10b1ee89323d427ddba3cb657d1da14db6342"
+    },
+    {
+      "file": "harnesses/finalize_records.py",
+      "bytes": 15140,
+      "sha256": "6106763a57c1a3b4a2299f996acbd6f9b996ba961f063877232b67cde67fc938"
+    },
+    {
+      "file": "harnesses/local_life.test.cjs",
+      "bytes": 10384,
+      "sha256": "4ae1ccde986311236fe35673067b52a50c591713725509f606f83154b863bf07"
+    },
+    {
+      "file": "harnesses/local_life_browser.py",
+      "bytes": 25836,
+      "sha256": "477816bd7d15b14d001e96a0d6bb668d11bb5d9c03682d209b545c444b9fc87b"
+    },
+    {
+      "file": "harnesses/local_life_journey.cjs",
+      "bytes": 10671,
+      "sha256": "8eb72e73fbbaad90b8760a597185665f6edd3b9395b9146e0bca3e3f3828ae70"
+    },
+    {
+      "file": "harnesses/package_evidence.py",
+      "bytes": 6056,
+      "sha256": "c0bad5001240c4a05f7005a5e10dfbabc19d66aad149620eb9acffa046725a24"
+    },
+    {
+      "file": "harnesses/run_remote_gate.py",
+      "bytes": 3089,
+      "sha256": "8bc7a8738ebce78088bc0bcf1dbce38ef498e6030614294f0148592d90606a24"
+    },
+    {
+      "file": "harnesses/verify_pushed_package.py",
+      "bytes": 4316,
+      "sha256": "13b5cf7721779772f87944a2b8a29edb8365e834afd3305225d93b24b178d6c9"
+    },
+    {
+      "file": "HOSTED_ANNOTATIONS_27bdbe5.json",
+      "bytes": 793,
+      "sha256": "970c031043e8c7dd21e41c679a28fc25c606f71b9e97635efdcace660f0949e2"
+    },
+    {
+      "file": "HOSTED_JOBS_27bdbe5.json",
+      "bytes": 39777,
+      "sha256": "06a373e7f861e348bd84cc046917c0c92692f1104920516279da62cb671a3989"
+    },
+    {
+      "file": "INDEPENDENT_MEDIA_REVIEW.md",
+      "bytes": 1954,
+      "sha256": "539305522f94ee9b9f550de07d40d8820a8e4d612e50a21c029c6d81cdd5065d"
+    },
+    {
+      "file": "normal-ui-rtx-03/assemble-board.png",
+      "bytes": 795237,
+      "sha256": "ee432be652605a5f3abe7ae94799af1388295cf1b3306ef62abca66184794b92"
+    },
+    {
+      "file": "normal-ui-rtx-03/commission-terms.png",
+      "bytes": 242669,
+      "sha256": "37892b36283b341397f77284f67286098e9a7810738f028b24b977388f960b55"
+    },
+    {
+      "file": "normal-ui-rtx-03/CONVERT_FULL.log",
+      "bytes": 3675,
+      "sha256": "2fb108353b02dc84b9b1dc7dbce589e88b26f668808ffa672500dbeaff368bc3"
+    },
+    {
+      "file": "normal-ui-rtx-03/CONVERT_MOBILE.log",
+      "bytes": 4051,
+      "sha256": "614939bbea81b823c112b044634d401d01f357b3f4ebd1bc8848a4661d36914a"
+    },
+    {
+      "file": "normal-ui-rtx-03/DECODE_FULL.log",
+      "bytes": 1917,
+      "sha256": "faf1c29a05643249e49369cb1bc6d339ed74df5e2dbc105c6e19d63e97f08684"
+    },
+    {
+      "file": "normal-ui-rtx-03/DECODE_MOBILE.log",
+      "bytes": 1710,
+      "sha256": "d9b0ddbf3e0090277fd2577c079bf09a66d6e40b90cf9246ee12d01feb15ced6"
+    },
+    {
+      "file": "normal-ui-rtx-03/DECODE_SOURCE.log",
+      "bytes": 1336,
+      "sha256": "ddcbc161ba672acc5be8544704de6e39691c340d81aed1fbf938c2f6c490db11"
+    },
+    {
+      "file": "normal-ui-rtx-03/EARNED_RECORDING_FIXTURE.json",
+      "bytes": 22966,
+      "sha256": "94363b9729bdbae3dcd1a571541bb70c2e401c635fab4609a55c7a73330e1b68"
+    },
+    {
+      "file": "normal-ui-rtx-03/fit-shelf.png",
+      "bytes": 740172,
+      "sha256": "d9f9d29aa2e83c51bb2191c7b5d9ca90bb0344df5b0e41478158f38987cb31c2"
+    },
+    {
+      "file": "normal-ui-rtx-03/fitted-orthographic.png",
+      "bytes": 758555,
+      "sha256": "4527a199f2ef41eb54b9dfbbe8cc4295c939aec31ff7010c85bfac2f8447f56a"
+    },
+    {
+      "file": "normal-ui-rtx-03/fitted-perspective.png",
+      "bytes": 593956,
+      "sha256": "41710489dd378c524a51d495d6e200182b4b17fac7456afcc94194a7c6a188fd"
+    },
+    {
+      "file": "normal-ui-rtx-03/inspect-sockets.png",
+      "bytes": 740443,
+      "sha256": "60596edf5cc3329d80024e2486d202065293fcfc6c2f041741c05f02cf585986"
+    },
+    {
+      "file": "normal-ui-rtx-03/LOCAL_LIFE_NORMAL_UI.mp4",
+      "bytes": 18933301,
+      "sha256": "76a81deb10c0fa77be780e89a0dcced39f0d96c0dc6716b6eea664c3b8a2376f"
+    },
+    {
+      "file": "normal-ui-rtx-03/LOCAL_LIFE_NORMAL_UI.webm",
+      "bytes": 12492648,
+      "sha256": "faa6c51bf60230fdfb039b22349583cf7fb984f70b9bcf5ab0f0dc050b6cd0e3"
+    },
+    {
+      "file": "normal-ui-rtx-03/MEDIA_RECEIPT.json",
+      "bytes": 2800,
+      "sha256": "a0d2bc4186cd2c88e64c4e010bebfcdfbc7ed4187deb8ca692afbcf42a3c4e70"
+    },
+    {
+      "file": "normal-ui-rtx-03/MOBILE_LOCAL_LIFE.mp4",
+      "bytes": 8586461,
+      "sha256": "c97d7a3ba59e95063fa9929bdc2f51a8357437ed5b4882c52923925e1c73cd3f"
+    },
+    {
+      "file": "normal-ui-rtx-03/paid.png",
+      "bytes": 243843,
+      "sha256": "fe02ab2afc2db20e0bccd8b33f381e2422fc57942db5eec2012b9bb39711d7fb"
+    },
+    {
+      "file": "normal-ui-rtx-03/REPORT.json",
+      "bytes": 103037,
+      "sha256": "3c2e08ae9a05034d13caea59b9e626236ddd8152beb8d7e0f331ba33d93a18a8"
+    },
+    {
+      "file": "README.md",
+      "bytes": 8268,
+      "sha256": "291cbe83119d84f7866049bbc1eac2c0e96ce3987e73a9d05e4c9c851cbc390c"
+    },
+    {
+      "file": "source-records/LOCAL_LIFE_2026-10-03.md",
+      "bytes": 3852,
+      "sha256": "b8e92c7585d6d82ef1ef0fdd9af74c2bd6510f5737b250eca24e1201a994eeaf"
+    },
+    {
+      "file": "source-records/LOCAL_LIFE_PLAY_GUIDE_2026-10-03.md",
+      "bytes": 4583,
+      "sha256": "9cf921156ece5b6d68e20839e0283697d8b16ca5aecc54eebf24a1f500d4e3f9"
+    },
+    {
+      "file": "source-records/LOCAL_LIFE_RESULTS_2026-10-03.md",
+      "bytes": 9304,
+      "sha256": "ac83bb64bbe6a1e49b1445f47b35cd58967bf977c43fb3c00862991bf4b5e5b3"
+    }
+  ],
+  "excluded": [
+    "MANIFEST.json"
+  ],
+  "personal_saves": false,
+  "browser_profiles": false
+}

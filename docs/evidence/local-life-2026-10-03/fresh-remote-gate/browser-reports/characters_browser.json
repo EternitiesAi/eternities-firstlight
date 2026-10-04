@@ -1,0 +1,279 @@
+{
+  "method": "Character library on a real loopback origin, isolated native browser profile.\n\nThe initial legacy world is a labelled command-earned pursuit checkpoint. UI\nactions create/import/switch/delete characters. Boundary failures are explicitly\ninjected; accelerated simulation is not a human pacing or performance test.\n",
+  "checks": [
+    {
+      "name": "Browser loads exact regenerated HTML",
+      "passed": true
+    },
+    {
+      "name": "Old single-character save remains the default until an explicit action",
+      "passed": true
+    },
+    {
+      "name": "Existing partial project loads from the accepted save",
+      "passed": true
+    },
+    {
+      "name": "Existing character appearance is set through accepted rules",
+      "passed": true
+    },
+    {
+      "name": "Character library is discoverable from More and its own tab",
+      "passed": true
+    },
+    {
+      "name": "Existing card shows actual level, weapon, and pinned project",
+      "passed": true
+    },
+    {
+      "name": "Empty name cannot create a character",
+      "passed": true
+    },
+    {
+      "name": "Legacy library permits importing a separate character",
+      "passed": true
+    },
+    {
+      "name": "Naming and Tab focus do not fire attacks or change cameras",
+      "passed": true
+    },
+    {
+      "name": "Typing a valid name enables creation without losing the input",
+      "passed": true
+    },
+    {
+      "name": "Explicit creation selects a second identity",
+      "passed": true
+    },
+    {
+      "name": "New character has the selected real appearance",
+      "passed": true
+    },
+    {
+      "name": "New character receives no old gear, XP, notes, or project progress",
+      "passed": true
+    },
+    {
+      "name": "Creating a library leaves original browser save bytes intact",
+      "passed": true
+    },
+    {
+      "name": "New character starts in third person independently of the prior tactical view",
+      "passed": true
+    },
+    {
+      "name": "Switch clears combat, build, selection, and music runtime",
+      "passed": true
+    },
+    {
+      "name": "New character can edit its own real music score",
+      "passed": true
+    },
+    {
+      "name": "A delayed audio export cannot export the newly selected character by mistake",
+      "passed": true
+    },
+    {
+      "name": "A pending score import cannot write into a newly selected character",
+      "passed": true
+    },
+    {
+      "name": "A pending character import cannot open a preview after switching lives",
+      "passed": true
+    },
+    {
+      "name": "Refused delayed character import retains the selected world and saved bytes",
+      "passed": true
+    },
+    {
+      "name": "Switch restores original partial survey and owned equipment exactly",
+      "passed": true
+    },
+    {
+      "name": "Original notebook and score remain separate",
+      "passed": true
+    },
+    {
+      "name": "Original camera returns to tactical diorama",
+      "passed": true
+    },
+    {
+      "name": "Character can walk to the existing riverbank entry",
+      "passed": true
+    },
+    {
+      "name": "Prior character enters its real active survey scene",
+      "passed": true
+    },
+    {
+      "name": "Practice target is selected through accepted combat rules",
+      "passed": true
+    },
+    {
+      "name": "Outgoing character has an actual active combat toggle before switching",
+      "passed": true
+    },
+    {
+      "name": "Second character keeps its authored note and music after return",
+      "passed": true
+    },
+    {
+      "name": "Switching out of combat stops target, attacks, movement, and scene state",
+      "passed": true
+    },
+    {
+      "name": "Returning uses the existing safe outdoor checkpoint without losing the partial survey",
+      "passed": true
+    },
+    {
+      "name": "Quota-blocked UI switch keeps the active world and all persisted bytes",
+      "passed": true
+    },
+    {
+      "name": "An earlier delayed file cannot replace the newer import preview",
+      "passed": true
+    },
+    {
+      "name": "Overlapping file previews leave both existing worlds untouched",
+      "passed": true
+    },
+    {
+      "name": "Invalid import leaves the current world and saved library unchanged",
+      "passed": true
+    },
+    {
+      "name": "Import preview requires a separate confirmation before storage changes",
+      "passed": true
+    },
+    {
+      "name": "Cancelled import preserves both worlds",
+      "passed": true
+    },
+    {
+      "name": "Confirmed import gets its own identity and complete original quest state",
+      "passed": true
+    },
+    {
+      "name": "Full library does not offer a fourth creation or import",
+      "passed": true
+    },
+    {
+      "name": "All names and imported equipment are visible in the roster",
+      "passed": true
+    },
+    {
+      "name": "Character cards stay within the narrow viewport",
+      "passed": true
+    },
+    {
+      "name": "Active character has no delete action",
+      "passed": true
+    },
+    {
+      "name": "Delete is disabled until the exact target name is typed",
+      "passed": true
+    },
+    {
+      "name": "Wrong case does not satisfy deletion confirmation",
+      "passed": true
+    },
+    {
+      "name": "Exact name enables deliberate deletion",
+      "passed": true
+    },
+    {
+      "name": "Cancelling deletion leaves every saved byte intact",
+      "passed": true
+    },
+    {
+      "name": "Inactive export is a portable world with all original progression",
+      "passed": true
+    },
+    {
+      "name": "Confirmed deletion affects only the named inactive identity",
+      "passed": true
+    },
+    {
+      "name": "Deleting the migrated slot does not erase its legacy recovery key",
+      "passed": true
+    },
+    {
+      "name": "Creation after deletion uses a new monotonic identity",
+      "passed": true
+    },
+    {
+      "name": "Browser loads exact regenerated HTML",
+      "passed": true
+    },
+    {
+      "name": "Only one real browser tab owns the editing lock",
+      "passed": true
+    },
+    {
+      "name": "Second tab exposes export but disables character mutation",
+      "passed": true
+    },
+    {
+      "name": "Second-tab autosave cannot overwrite the editing tab",
+      "passed": true
+    },
+    {
+      "name": "Browser loads exact regenerated HTML",
+      "passed": true
+    },
+    {
+      "name": "Whole browser restart restores the active identity and its score/notes",
+      "passed": true
+    },
+    {
+      "name": "Deleted characters do not return from the retained old key on restart",
+      "passed": true
+    },
+    {
+      "name": "External storage revision blocks stale saves without discarding runtime",
+      "passed": true
+    },
+    {
+      "name": "Recovery export retains exact saved storage without changing it",
+      "passed": true
+    },
+    {
+      "name": "Corrupt present library blocks fallback to the retained original world",
+      "passed": true
+    },
+    {
+      "name": "Corrupt storage disables creation and names the session as unsaved",
+      "passed": true
+    },
+    {
+      "name": "Unreadable library can be copied exactly for later repair",
+      "passed": true
+    },
+    {
+      "name": "Browser loads exact regenerated HTML",
+      "passed": true
+    },
+    {
+      "name": "Missing Web Locks refuses character creation without altering the old world",
+      "passed": true
+    },
+    {
+      "name": "Original single-world saving remains available without the new library API",
+      "passed": true
+    },
+    {
+      "name": "Explicit legacy import also remains available without Web Locks",
+      "passed": true
+    },
+    {
+      "name": "No unhandled browser errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "browser_errors": [],
+  "html_sha256": "57ae57864e5ba98c738e7ad8eacbc80b49688bfcb74fc6e94377c04043f586b0",
+  "fixture": "docs\\evidence\\upgrade-hunt\\run5_02_PARTIAL.json",
+  "fixture_sha256": "cb97b49599b1f432ec82c3fe78b4e7e78c0f912b2c0a99ab8795089dd62f3b0b",
+  "passed": true
+}

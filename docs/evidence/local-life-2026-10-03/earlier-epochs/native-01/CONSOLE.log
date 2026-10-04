@@ -1,0 +1,76 @@
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\local_life_browser.py", line 112, in <module>
+    context=start();page=spawn();workspace('characters');old_key=ev('localStorage.getItem(RealmCore.KEY)')
+                         ~~~~~^^
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\local_life_browser.py", line 111, in spawn
+    p=context.new_page();p.on('pageerror',lambda e:report['browser_errors'].append(str(e)));p.add_init_script('window.__ETERNITIES_TEST_MODE=true;window.__ETERNITIES_CAPTURE_MODE=true;');r=p.goto(url,wait_until='load');p.wait_for_function('()=>!!window.Realm');check(variant+' served identical generated HTML',hashlib.sha256(r.body()).hexdigest()==report['html_sha256']);p.evaluate("Realm.test.quality('low');Realm.test.render()");return p
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\local_life_browser.py", line 156, in <module>
+    if context:context.close()
+               ~~~~~~~~~~~~~^^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\sync_api\_generated.py", line 13548, in close
+    return mapping.from_maybe_impl(self._sync(self._impl_obj.close(reason=reason)))
+                                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_sync_base.py", line 104, in _sync
+    raise Error("Event loop is closed! Is Playwright already stopped?")
+playwright._impl._errors.Error: Event loop is closed! Is Playwright already stopped?
+                                                                                                                                                                                             ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\sync_api\_generated.py", line 9050, in goto
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.goto(
+        ^^^^^^^^^^^^^^^^^^^^
+            url=url, timeout=timeout, waitUntil=wait_until, referer=referer
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_page.py", line 552, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "http://127.0.0.1:63385/index.html", waiting until "load"
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\local_life_browser.py", line 108, in <module>
+    with tempfile.TemporaryDirectory(prefix='local-life-native-',dir=OUT) as profile:
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 952, in __exit__
+    self.cleanup()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 956, in cleanup
+    self._rmtree(self.name, ignore_errors=self._ignore_cleanup_errors)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\tempfile.py", line 936, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 621, in _rmtree_unsafe
+    onexc(os.rmdir, fullname, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\shutil.py", line 617, in _rmtree_unsafe
+    os.rmdir(fullname)
+    ~~~~~~~~^^^^^^^^^^
+OSError: [WinError 145] The directory is not empty: 'D:\\07-GAMES\\Firstlight\\artifacts\\local-life-20261003\\native-01\\local-life-native-2sqmyzcp\\Default\\Code Cache\\js'
+

@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "variant": "fresh-bow",
+  "claims": 3,
+  "combats": 6,
+  "commands": 85,
+  "walkedLegs": 57,
+  "saves": 59,
+  "fitting": {
+    "weapon": "trail_bow",
+    "kind": "shelter",
+    "cost": {
+      "ore": 3,
+      "coins": 8,
+      "fiber": 6
+    },
+    "before": {
+      "level": 2,
+      "attack": 15,
+      "defense": 1,
+      "maxHP": 110
+    },
+    "after": {
+      "level": 2,
+      "attack": 15,
+      "defense": 2,
+      "maxHP": 120
+    },
+    "currentHPBefore": 96,
+    "currentHPAfter": 96,
+    "actualPostBindingDamagePackets": [
+      {
+        "n": 15,
+        "at": 1029.0499999996118,
+        "hpBefore": 64
+      }
+    ],
+    "arrowObserved": true,
+    "probe": "one newly accepted unpaid third patrol; only T.hit observation wrapper, restored before continuing"
+  },
+  "sourceDrift": false
+}

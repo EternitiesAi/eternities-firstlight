@@ -1,0 +1,461 @@
+{
+  "method": "Production camera/UI checks on an isolated origin. Synthetic saves, real input.\nNormal RAF is used for WASD and orbit; command walking is accelerated explicitly.\nSoftware WebGL coverage is not a human comfort or GPU performance claim.\n",
+  "html_sha256": "57ae57864e5ba98c738e7ad8eacbc80b49688bfcb74fc6e94377c04043f586b0",
+  "checks": [
+    {
+      "name": "Fresh world defaults to true perspective",
+      "passed": true
+    },
+    {
+      "name": "Four visible camera choices",
+      "passed": true
+    },
+    {
+      "name": "Fresh view selected camera button follows actual view even with retained hover/focus",
+      "passed": true
+    },
+    {
+      "name": "Right drag orbits without issuing movement",
+      "passed": true
+    },
+    {
+      "name": "Wheel changes distance without FOV pumping",
+      "passed": true
+    },
+    {
+      "name": "V switches diorama to the remembered third-person framing",
+      "passed": true
+    },
+    {
+      "name": "V to third person selected camera button follows actual view even with retained hover/focus",
+      "passed": true
+    },
+    {
+      "name": "V restores the diorama orbit and zoom",
+      "passed": true
+    },
+    {
+      "name": "V to diorama selected camera button follows actual view even with retained hover/focus",
+      "passed": true
+    },
+    {
+      "name": "Diorama framing survives an actual save reload",
+      "passed": true
+    },
+    {
+      "name": "Native reloaded diorama selected camera button follows actual view even with retained hover/focus",
+      "passed": true
+    },
+    {
+      "name": "Diorama settings explain that FOV belongs to third person",
+      "passed": true
+    },
+    {
+      "name": "Camera shortcuts do not leak through a settings menu",
+      "passed": true
+    },
+    {
+      "name": "Typing camera shortcut letters stays in the real notebook field",
+      "passed": true
+    },
+    {
+      "name": "R resets the current diorama without changing styles",
+      "passed": true
+    },
+    {
+      "name": "V remembers the selected tactical diorama variant",
+      "passed": true
+    },
+    {
+      "name": "Third-person framing also survives reload and overhead reset",
+      "passed": true
+    },
+    {
+      "name": "Reloading directly into third person retains its orbit",
+      "passed": true
+    },
+    {
+      "name": "Real W input walks forward relative to the camera",
+      "passed": true
+    },
+    {
+      "name": "Orbit changes real WASD world direction",
+      "passed": true
+    },
+    {
+      "name": "Sky click is ignored without an invalid path or error",
+      "passed": true
+    },
+    {
+      "name": "Visible FOV control changes production projection",
+      "passed": true
+    },
+    {
+      "name": "Settings select retains overhead view",
+      "passed": true
+    },
+    {
+      "name": "Mode and FOV survive actual origin reload",
+      "passed": true
+    },
+    {
+      "name": "R resets the selected tactical view without forcing third person",
+      "passed": true
+    },
+    {
+      "name": "follow camera control works",
+      "passed": true
+    },
+    {
+      "name": "wide camera control works",
+      "passed": true
+    },
+    {
+      "name": "adventure camera control works",
+      "passed": true
+    },
+    {
+      "name": "Accepted route -11,-1.6",
+      "passed": true
+    },
+    {
+      "name": "Actual house wall pulls the camera in before penetration",
+      "passed": true
+    },
+    {
+      "name": "Camera returns after the wall clears",
+      "passed": true
+    },
+    {
+      "name": "House entry preserves perspective with a finite eye",
+      "passed": true
+    },
+    {
+      "name": "House exit retains third person",
+      "passed": true
+    },
+    {
+      "name": "Diorama entry preserves orbit and respects the interior minimum zoom",
+      "passed": true
+    },
+    {
+      "name": "Diorama exit restores the outdoor framing",
+      "passed": true
+    },
+    {
+      "name": "Accepted route 11,9",
+      "passed": true
+    },
+    {
+      "name": "Reduced motion removes camera follow interpolation",
+      "passed": true
+    },
+    {
+      "name": "Initial kit still obtained through visible interaction",
+      "passed": true
+    },
+    {
+      "name": "Accepted route 15,7",
+      "passed": true
+    },
+    {
+      "name": "Starter entry retains perspective and the saved FOV",
+      "passed": true
+    },
+    {
+      "name": "Third-person quest labels stay nearby and do not overlap",
+      "passed": true
+    },
+    {
+      "name": "Quest label setting is respected",
+      "passed": true
+    },
+    {
+      "name": "Accepted route -7,3",
+      "passed": true
+    },
+    {
+      "name": "Projected enemy body is visible",
+      "passed": true
+    },
+    {
+      "name": "Clicking a visible body selects stationary autoattack",
+      "passed": true
+    },
+    {
+      "name": "Switching to diorama preserves target and stationary attack intent",
+      "passed": true
+    },
+    {
+      "name": "Switching back leaves quest equipment and creative state unchanged",
+      "passed": true
+    },
+    {
+      "name": "Combat still resolves through actual rules after selection",
+      "passed": true
+    },
+    {
+      "name": "Perspective health indicators have bounded screen size",
+      "passed": true
+    },
+    {
+      "name": "Modal equipment blocks walking and attacks",
+      "passed": true
+    },
+    {
+      "name": "Equipment dialogs also block camera shortcuts",
+      "passed": true
+    },
+    {
+      "name": "Rounded avatar renders in the equipment portrait",
+      "passed": true
+    },
+    {
+      "name": "Portrait aspect keeps a finite perspective camera",
+      "passed": true
+    },
+    {
+      "name": "Camera choices stay inside the narrow viewport",
+      "passed": true
+    },
+    {
+      "name": "No unhandled browser errors",
+      "passed": true
+    }
+  ],
+  "browser_errors": [],
+  "camera_control_readings": [
+    {
+      "label": "Fresh view",
+      "actual": "adventure",
+      "controls": [
+        {
+          "id": "adventure",
+          "pressed": "true",
+          "hover": false,
+          "focus": false
+        },
+        {
+          "id": "follow",
+          "pressed": "false",
+          "hover": false,
+          "focus": false
+        },
+        {
+          "id": "tactical",
+          "pressed": "false",
+          "hover": false,
+          "focus": false
+        },
+        {
+          "id": "wide",
+          "pressed": "false",
+          "hover": false,
+          "focus": false
+        }
+      ]
+    },
+    {
+      "label": "V to third person",
+      "actual": "adventure",
+      "controls": [
+        {
+          "id": "adventure",
+          "pressed": "true",
+          "hover": false,
+          "focus": false
+        },
+        {
+          "id": "follow",
+          "pressed": "false",
+          "hover": false,
+          "focus": false
+        },
+        {
+          "id": "tactical",
+          "pressed": "false",
+          "hover": false,
+          "focus": false
+        },
+        {
+          "id": "wide",
+          "pressed": "false",
+          "hover": false,
+          "focus": false
+        }
+      ]
+    },
+    {
+      "label": "V to diorama",
+      "actual": "follow",
+      "controls": [
+        {
+          "id": "adventure",
+          "pressed": "false",
+          "hover": false,
+          "focus": false
+        },
+        {
+          "id": "follow",
+          "pressed": "true",
+          "hover": false,
+          "focus": false
+        },
+        {
+          "id": "tactical",
+          "pressed": "false",
+          "hover": false,
+          "focus": false
+        },
+        {
+          "id": "wide",
+          "pressed": "false",
+          "hover": false,
+          "focus": false
+        }
+      ]
+    },
+    {
+      "label": "Native reloaded diorama",
+      "actual": "follow",
+      "controls": [
+        {
+          "id": "adventure",
+          "pressed": "false",
+          "hover": false,
+          "focus": false
+        },
+        {
+          "id": "follow",
+          "pressed": "true",
+          "hover": false,
+          "focus": false
+        },
+        {
+          "id": "tactical",
+          "pressed": "false",
+          "hover": false,
+          "focus": false
+        },
+        {
+          "id": "wide",
+          "pressed": "false",
+          "hover": false,
+          "focus": false
+        }
+      ]
+    }
+  ],
+  "first_view_switch": {
+    "adventure_before": {
+      "yaw": -0.655,
+      "elevation": 0.3400000000000001,
+      "half": 17,
+      "distance": 11.762341391176266,
+      "actualDistance": 11.75262223739371,
+      "fov": 60,
+      "center": [
+        2.5,
+        2.8,
+        6
+      ],
+      "overview": false,
+      "preset": "adventure",
+      "tour": false,
+      "ready": true,
+      "projection": "perspective",
+      "eye": [
+        -4.249386613438364,
+        6.719347814977901,
+        14.786843716741986
+      ],
+      "target": [
+        2.5,
+        2.8,
+        6
+      ]
+    },
+    "after": {
+      "yaw": 5.628185307179586,
+      "elevation": 0.3400000000000001,
+      "half": 15.382236106611312,
+      "distance": 11.762341391176266,
+      "actualDistance": 11.762341391176266,
+      "fov": 60,
+      "center": [
+        2.5,
+        2.799999986294054,
+        6
+      ],
+      "overview": false,
+      "preset": "adventure",
+      "tour": false,
+      "ready": true,
+      "baseHalf": 17,
+      "zoom": 0.9048374180359595,
+      "projection": "perspective",
+      "eye": [
+        -4.254968204091832,
+        6.722589013604969,
+        14.794110238512296
+      ],
+      "target": [
+        2.5,
+        2.799999986294054,
+        6
+      ]
+    },
+    "profiles": {
+      "version": 1,
+      "lastDiorama": "follow",
+      "profiles": {
+        "adventure": {
+          "yaw": 5.628185307179585,
+          "elevation": 0.3400000000000001,
+          "distance": 11.762341391176266
+        },
+        "follow": {
+          "yaw": 0.33999999999999986,
+          "elevation": 0.9800000000000001,
+          "zoom": 0.9048374180359595
+        }
+      }
+    }
+  },
+  "physical_walks": [
+    {
+      "axis": "z",
+      "origin": {
+        "x": 2.5,
+        "z": 6,
+        "yaw": 0
+      },
+      "player": {
+        "x": 2.5,
+        "z": 5.62656,
+        "yaw": 3.141592653589793
+      },
+      "frames": 2,
+      "elapsed_ms": 411.40000000596046,
+      "reached": true
+    },
+    {
+      "axis": "x",
+      "origin": {
+        "x": 2.5,
+        "z": 5.57312,
+        "yaw": 3.141592653589793
+      },
+      "player": {
+        "x": 2.1799999999999997,
+        "z": 5.57312,
+        "yaw": -1.5707963267948968
+      },
+      "frames": 1,
+      "elapsed_ms": 626.3000000119209,
+      "reached": true
+    }
+  ],
+  "passed": true,
+  "browser": "143.0.7499.4"
+}

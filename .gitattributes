@@ -16,3 +16,9 @@ docs/evidence/world-production-2026-10-03/negative/linux-ec9-stale-copy-assertio
 # Preserve byte-hashed current expedition receipts and decoded media provenance.
 docs/evidence/coastward-expedition-2026-10-03/** -text whitespace=cr-at-eol,-blank-at-eol
 docs/evidence/coastward-expedition-2026-10-03/** linguist-generated=true
+
+# Preserve immutable local-life reports, logs, fixtures and media byte receipts.
+docs/evidence/local-life-2026-10-03/** -text whitespace=cr-at-eol,-blank-at-eol
+docs/evidence/local-life-2026-10-03/** linguist-generated=true
+# Keep the failed runner's original trailing diagnostic blank line byte-for-byte.
+docs/evidence/local-life-2026-10-03/earlier-epochs/native-01/CONSOLE.log whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof

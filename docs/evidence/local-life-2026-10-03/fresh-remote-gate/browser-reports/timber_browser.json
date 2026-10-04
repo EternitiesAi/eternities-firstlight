@@ -1,0 +1,272 @@
+{
+  "method": "Embedded timber maps in actual WebGL2: pixels, lifetime and existing cameras.\n\nSynthetic shader probes are labelled separately from accepted production travel.\nSoftware WebGL is regression evidence, not hardware performance or art approval.\n",
+  "checks": [
+    {
+      "name": "exact standalone build loads with WebGL2",
+      "passed": true
+    },
+    {
+      "name": "both embedded maps decode at 512px with explicit color formats",
+      "passed": true
+    },
+    {
+      "name": "two-map mip allocation estimate is bounded",
+      "passed": true
+    },
+    {
+      "name": "CPU timings are labelled separately from GPU completion",
+      "passed": true
+    },
+    {
+      "name": "accepted walking reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "explicit existing invitation enters Earth",
+      "passed": true
+    },
+    {
+      "name": "accepted walking reaches 0,10",
+      "passed": true
+    },
+    {
+      "name": "accepted walking reaches 7,2",
+      "passed": true
+    },
+    {
+      "name": "accepted walking reaches 8.9,-7.9",
+      "passed": true
+    },
+    {
+      "name": "original eight mill pieces plus eight gate parts use static and dynamic groups",
+      "passed": true
+    },
+    {
+      "name": "third camera retains correct projection",
+      "passed": true
+    },
+    {
+      "name": "third fallback preserves draw geometry",
+      "passed": true
+    },
+    {
+      "name": "diorama camera retains correct projection",
+      "passed": true
+    },
+    {
+      "name": "diorama fallback preserves draw geometry",
+      "passed": true
+    },
+    {
+      "name": "material toggle cannot mutate adventure, creations or choices",
+      "passed": true
+    },
+    {
+      "name": "low mode keeps valid surface sampling",
+      "passed": true
+    },
+    {
+      "name": "accepted walking reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "explicit existing invitation enters Earth",
+      "passed": true
+    },
+    {
+      "name": "accepted walking reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "explicit existing invitation enters Earth",
+      "passed": true
+    },
+    {
+      "name": "accepted walking reaches 0,23",
+      "passed": true
+    },
+    {
+      "name": "explicit existing invitation enters Earth",
+      "passed": true
+    },
+    {
+      "name": "scene rebuilds keep original texture lifetime and allocation",
+      "passed": true
+    },
+    {
+      "name": "reload retains exact adventure history at source checkpoint",
+      "passed": true
+    },
+    {
+      "name": "synthetic probe: roughness upload preserves exact scalar bytes",
+      "passed": true
+    },
+    {
+      "name": "synthetic probe: JPEG sampling follows sRGB transfer",
+      "passed": true
+    },
+    {
+      "name": "synthetic probe: real texture sampling changes visible pixels",
+      "passed": true
+    },
+    {
+      "name": "synthetic probe: textured occluder retains character cutaway",
+      "passed": true
+    },
+    {
+      "name": "synthetic probe: cutaway does not corrupt mapped reflection",
+      "passed": true
+    },
+    {
+      "name": "synthetic probe: mapped passes have no GL errors",
+      "passed": true
+    },
+    {
+      "name": "synthetic probe: untextured scene stays pixel-identical",
+      "passed": true
+    },
+    {
+      "name": "corrupt map refuses atomically and renders plain fallback",
+      "passed": true
+    },
+    {
+      "name": "corrupt fallback has visible pixels identical to ordinary wood",
+      "passed": true
+    },
+    {
+      "name": "wrong-size map refuses atomically and renders plain fallback",
+      "passed": true
+    },
+    {
+      "name": "wrong-size fallback has visible pixels identical to ordinary wood",
+      "passed": true
+    },
+    {
+      "name": "context loss retires pending maps without resurrection",
+      "passed": true
+    },
+    {
+      "name": "production context loss displays the usable map fallback",
+      "passed": true
+    },
+    {
+      "name": "production context loss preserves export and local save",
+      "passed": true
+    },
+    {
+      "name": "only loopback or embedded asset requests",
+      "passed": true
+    },
+    {
+      "name": "no unhandled browser errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "browser_errors": [],
+  "html_sha256": "57ae57864e5ba98c738e7ad8eacbc80b49688bfcb74fc6e94377c04043f586b0",
+  "surface": {
+    "version": 1,
+    "id": "earth-weathered-timber-v1",
+    "status": "ready",
+    "ready": true,
+    "error": null,
+    "width": 512,
+    "height": 512,
+    "colorFormat": "SRGB8_ALPHA8",
+    "roughnessFormat": "R8",
+    "textureBytes": 1310720,
+    "mipmapBytes": 436905,
+    "totalTextureBytes": 1747625,
+    "decodedImageBytes": 2097152,
+    "decodeWallMs": 47.099999994039536,
+    "uploadCpuMs": 36.60000002384186,
+    "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+    "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+    "enabled": true
+  },
+  "earth_metrics": {
+    "drawCalls": 41,
+    "texturedDrawCalls": 4,
+    "texturedInstances": 16,
+    "surfaceMaterials": {
+      "version": 1,
+      "id": "earth-weathered-timber-v1",
+      "status": "ready",
+      "ready": true,
+      "error": null,
+      "width": 512,
+      "height": 512,
+      "colorFormat": "SRGB8_ALPHA8",
+      "roughnessFormat": "R8",
+      "textureBytes": 1310720,
+      "mipmapBytes": 436905,
+      "totalTextureBytes": 1747625,
+      "decodedImageBytes": 2097152,
+      "decodeWallMs": 47.099999994039536,
+      "uploadCpuMs": 36.60000002384186,
+      "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+      "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+      "enabled": true
+    },
+    "instances": 2994,
+    "triangles": 121062
+  },
+  "uploaded_values": {
+    "complete": true,
+    "roughness": [
+      {
+        "x": 51,
+        "y": 0,
+        "want": 188,
+        "actual": [
+          188,
+          0,
+          0,
+          255
+        ]
+      },
+      {
+        "x": 75,
+        "y": 128,
+        "want": 186,
+        "actual": [
+          186,
+          0,
+          0,
+          255
+        ]
+      },
+      {
+        "x": 256,
+        "y": 256,
+        "want": 187,
+        "actual": [
+          187,
+          0,
+          0,
+          255
+        ]
+      }
+    ],
+    "color": {
+      "encoded": [
+        79,
+        66,
+        57
+      ],
+      "expected": [
+        20,
+        14,
+        10
+      ],
+      "actual": [
+        20,
+        14,
+        10,
+        255
+      ]
+    },
+    "error": 0
+  }
+}

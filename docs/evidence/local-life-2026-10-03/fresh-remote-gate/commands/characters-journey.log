@@ -1,0 +1,161 @@
+{
+  "status": "passed",
+  "variant": "imported-command-earned-independent-roster",
+  "slots": [
+    "character-3",
+    "character-4",
+    "character-5"
+  ],
+  "active": "character-4",
+  "bladeId": "character-3",
+  "bowId": "character-4",
+  "sameRunId": "riverbank-survey/1",
+  "veteranId": "character-5",
+  "veteranXP": 563,
+  "veteranPreserved": true,
+  "independentSnapshots": true,
+  "sourceWorlds": {
+    "blade": "evidence10/pursuit/fresh-blade/run1_03_OBJECTIVES.json",
+    "bow": "evidence10/pursuit/fresh-bow/run1_03_OBJECTIVES.json"
+  },
+  "canonicalWorldHashes": {
+    "blade": "a6adaf280fed9c545a75255e37e86e49ece844e395bb7a442210f0587891d575",
+    "bow": "69038e14410276037c6557606ce8d98abea79534f0e3c379053946326b41a58b"
+  },
+  "commands": {
+    "roster": 11,
+    "acceptedGame": 6,
+    "refusedGame": 2
+  },
+  "actions": [
+    {
+      "type": "create",
+      "id": null,
+      "active": "character-2"
+    },
+    {
+      "save": true,
+      "revision": 1
+    },
+    {
+      "type": "import",
+      "id": null,
+      "world": "command-earned-source",
+      "active": "character-3"
+    },
+    {
+      "type": "delete",
+      "id": "character-1",
+      "active": "character-3"
+    },
+    {
+      "type": "import",
+      "id": null,
+      "world": "command-earned-source",
+      "active": "character-4"
+    },
+    {
+      "save": true,
+      "revision": 5
+    },
+    {
+      "save": true,
+      "revision": 6
+    },
+    {
+      "save": true,
+      "revision": 7
+    },
+    {
+      "save": true,
+      "revision": 8
+    },
+    {
+      "type": "switch",
+      "id": "character-3",
+      "active": "character-3"
+    },
+    {
+      "save": true,
+      "revision": 10
+    },
+    {
+      "type": "switch",
+      "id": "character-4",
+      "active": "character-4"
+    },
+    {
+      "save": true,
+      "revision": 12
+    },
+    {
+      "type": "delete",
+      "id": "character-2",
+      "active": "character-4"
+    },
+    {
+      "type": "import",
+      "id": null,
+      "world": "command-earned-source",
+      "active": "character-5"
+    },
+    {
+      "type": "switch",
+      "id": "character-4",
+      "active": "character-4"
+    },
+    {
+      "type": "switch",
+      "id": "character-5",
+      "active": "character-5"
+    },
+    {
+      "type": "switch",
+      "id": "character-4",
+      "active": "character-4"
+    }
+  ],
+  "gameCommands": [
+    {
+      "type": "note",
+      "ok": true
+    },
+    {
+      "type": "set-score",
+      "ok": true
+    },
+    {
+      "type": "decorate",
+      "ok": true
+    },
+    {
+      "type": "appearance",
+      "ok": true
+    },
+    {
+      "type": "pursuit-claim",
+      "ok": true
+    },
+    {
+      "type": "pursuit-claim",
+      "ok": false
+    },
+    {
+      "type": "pursuit-claim",
+      "ok": true
+    },
+    {
+      "type": "pursuit-claim",
+      "ok": false
+    }
+  ],
+  "checks": {
+    "cleanCharacterNoProgress": true,
+    "bladeEquipment": "trail_blade",
+    "bowEquipment": "trail_bow",
+    "bladePayoutOre": 3,
+    "bowPayoutOre": 3,
+    "reloadActive": true,
+    "outgoingCheckpoint": true
+  }
+}

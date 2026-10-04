@@ -4,6 +4,8 @@ This review slice adds practical, finite work to the existing four non-Earth ope
 
 Start the game through the existing loopback launcher, using the same browser origin for your existing character. Backups and personal saves remain yours. New test footage uses isolated profiles and imported command-earned characters.
 
+All four commissions require Oren's initial expedition kit. Heaven also requires the claimed Broken Choir repair; Hell also requires the claimed Neris rescue. Atlantis and Cosmos have no additional campaign prerequisite.
+
 Open **J → Journal → Local life across the roads** to read each commission. Read the arrangement, route and payment before choosing. Use **Roads** to visit the relevant region; read the separate local commission at its giver. Blue L labels on **M** show available physical work. Walking moves you to work; it never records an objective. **E**, or the work panel beside the site, performs an available action. Supplied parts travel separately from ordinary inventory and equipment.
 
 | Place | Work | Choice and payment |

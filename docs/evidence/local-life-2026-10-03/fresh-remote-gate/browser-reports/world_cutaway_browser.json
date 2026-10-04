@@ -1,0 +1,79 @@
+{
+  "method": "Synthetic framebuffer proof of gallery/shelter visibility, not game progress.\n\nKnown blue subjects lie behind a flagged civic deck plus surface water, and\nunder a tagged shelter roof. Main-view changes must preserve reflection bytes\nand respect the existing cutaway preference. Actual traveler captures are separate.\n\nShelter regression: the earlier noWater=True setup skipped reflection rendering\nand compared the previous gallery texture. Every shelter frame now renders its\nreflection freshly, with an empty-scene control proving geometry reaches it.\n",
+  "engine_sha256": "b98cfea8453e5b6deeb16a13c45f1c1bf7fc80fb9ba8d0a185c242a6ea9b078d",
+  "checks": [
+    {
+      "name": "Above-water diorama exposes known submerged subject through deck and water",
+      "passed": true,
+      "beforeBlue": 0,
+      "afterBlue": 1680
+    },
+    {
+      "name": "Gallery aperture leaves actual reflected framebuffer identical",
+      "passed": true,
+      "changedChannels": 0
+    },
+    {
+      "name": "Ordinary water retains its opaque surface without a visited gallery",
+      "passed": true,
+      "ordinaryBlue": 0
+    },
+    {
+      "name": "Disabled cutaway retains the original main image",
+      "passed": true,
+      "changedChannels": 0
+    },
+    {
+      "name": "Visited gallery reveals a nearby submerged reading outside the old body-only hole",
+      "passed": true,
+      "beforeBlue": 0,
+      "afterBlue": 70
+    },
+    {
+      "name": "Nearby gallery reveal preserves fresh reflection bytes",
+      "passed": true,
+      "changedChannels": 0
+    },
+    {
+      "name": "Nearby reveal is absent outside an actual visited gallery",
+      "passed": true,
+      "ordinaryBlue": 0
+    },
+    {
+      "name": "Nearby reveal respects disabled cutaway",
+      "passed": true
+    },
+    {
+      "name": "Gallery reveal remains bounded and hides a distant submerged object",
+      "passed": true
+    },
+    {
+      "name": "Visited shelter reveals a resident away from the narrow traveler aperture",
+      "passed": true,
+      "beforeBlue": 930,
+      "afterBlue": 1740
+    },
+    {
+      "name": "Fresh shelter reflection contains geometry distinct from empty and prior gallery scenes",
+      "passed": true,
+      "emptyChangedChannels": 173880,
+      "galleryChangedChannels": 303253
+    },
+    {
+      "name": "Shelter main-view reveal leaves reflected geometry identical",
+      "passed": true,
+      "changedChannels": 0
+    },
+    {
+      "name": "Disabled cutaway preserves the complete shelter roof",
+      "passed": true,
+      "changedChannels": 0
+    },
+    {
+      "name": "No WebGL error",
+      "passed": true
+    }
+  ],
+  "browser_errors": [],
+  "passed": true
+}

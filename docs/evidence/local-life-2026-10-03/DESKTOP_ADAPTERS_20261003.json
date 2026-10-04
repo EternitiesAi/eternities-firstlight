@@ -1,0 +1,15 @@
+{
+  "read_at_utc": "2026-10-04T00:20:05.5815397Z",
+  "method": "Read-only Win32_VideoController Name/DriverVersion",
+  "scope": "Current installed adapter-driver metadata read after the normal RTX take; not an independent benchmark or a driver-at-capture attestation",
+  "adapters": [
+    {
+      "Name": "NVIDIA GeForce RTX 3080",
+      "DriverVersion": "32.0.16.1074"
+    },
+    {
+      "Name": "AMD Radeon(TM) Graphics",
+      "DriverVersion": "32.0.21042.62"
+    }
+  ]
+}
