@@ -88,3 +88,5 @@ body.rpg-edition{--gold:#dbc18c;--ink:#111d21;--pane:rgba(15,29,33,.94);--muted:
 .enemy-health i{display:block;height:100%;border-radius:2px;background:#c2ad80}
 .enemy-health.selected{width:56px;border-color:#e4c791}.enemy-health.selected i{background:#cb9292}
 .camera-presets{flex-wrap:wrap;max-width:280px}
+
+#target-framing{display:block;margin-top:7px;padding:4px 8px;font-size:10px}#target-framing:disabled{opacity:.55}#target-framing[hidden]{display:none}

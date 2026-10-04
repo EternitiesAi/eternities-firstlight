@@ -46,6 +46,13 @@ const patrol=freeze({
   {id:'root',name:'Patrol root-bank brute',kind:'sentinel',x:-134,z:-70,hp:136,damage:11,spawnAfter:['inspect-root'],defeatStep:'clear-root-pests'}
  ]
 });
+// Supplied checks specialize the existing inspection, keeping its owner and IDs.
+const RETURN_WORK=freeze({
+ 'stormfall-recovery':{id:'stormfall-stock-check',branch:'stormfall-recovery',name:'Square the supplied stormfall check',line:'Your timber choice asks for a packing check: square the supplied gauge billets at the glade. It consumes none of your timber.',text:'Rill remembers your recovered timber. At the return glade, space the supplied gauge billets in their checking cradle and square their packing. Air gaps remain; this does not instantly dry timber or harvest standing trees. Borrowed job parts cost none of your inventory. Record this circuit’s final inspection, then return to Rill. Claiming settles the borrowed kit with the fixed payment.',completed:'Stormfall checking billets squared for this circuit. The standing shelter remains. Return to Rill for the separate payment; claiming also settles the borrowed kit.'},
+ 'managed-coppice':{id:'coppice-binding-check',branch:'managed-coppice',name:'Seat the supplied coppice lashings',line:'Your fibre choice asks for a binding check: seat the supplied test lashings at the glade. It consumes none of your fibre.',text:'Rill remembers your fibre allocation. At the return glade, seat and tension the supplied transport bundle’s test lashings. This checks packing condition without spending your fibre or regenerating managed growth. Borrowed job parts cost none of your inventory. Record this circuit’s final inspection, then return to Rill. Claiming settles the borrowed kit with the fixed payment.',completed:'Coppice test lashings seated for this circuit. The managed boundary remains. Return to Rill for the separate payment; claiming also settles the borrowed kit.'}
+});
+function returnWork(value){return RETURN_WORK[ledger(value).story?.branch]||null;}
+function patrolStep(value,s){const work=s.id==='inspect-glade'?returnWork(value):null;return work?{...s,name:work.name,text:work.text,completed:work.completed,workId:work.id}:s;}
 const BINDING_COST=freeze({ore:3,coins:8,fiber:6});
 const fresh=()=>({version:1,story:{accepted:false,branch:null,steps:[],claimed:false},patrol:{lastClaim:0,active:null}});
 const freshBinding=()=>({version:1,weapon:null,kind:null});
@@ -79,7 +86,7 @@ function ledger(value){return value?.state?value.state.earthExpedition||fresh():
 function progress(value){
  const r=ledger(value),s=r.story,p=r.patrol.active;
  const project=(d,steps)=>({done:steps.length,total:d.steps.length,ready:steps.length===d.steps.length,next:d.steps.filter(s=>!steps.includes(s.id)&&s.requires.every(id=>steps.includes(id)))});
- return{story:{accepted:s.accepted,branch:s.branch,claimed:s.claimed,...project(definition,s.steps)},patrol:{lastClaim:r.patrol.lastClaim,active:p?clone(p):null,...project(patrol,p?.steps||[])},bindingUnlocked:s.claimed};
+ return{story:{accepted:s.accepted,branch:s.branch,claimed:s.claimed,...project(definition,s.steps)},patrol:{lastClaim:r.patrol.lastClaim,active:p?clone(p):null,...project({...patrol,steps:patrol.steps.map(s=>patrolStep(r,s))},p?.steps||[])},bindingUnlocked:s.claimed};
 }
 function points(value){
  const p=progress(value),out=[];
@@ -121,7 +128,7 @@ function command(ctx,type,payload={},io){
   else{if(r.accepted)return{ok:true,duplicate:true,text:'The first delivery is already accepted; its allocation and progress are retained.'};r.accepted=true;}
   text=d.title+(repeat?' · run '+payload.run:'')+' explicitly accepted. The route, danger and fixed payment are retained.';
  }else if(type==='step'||type==='patrol-step'){
-  const record=repeat?r.active:r,s=d.steps.find(s=>s.id===payload.step);
+  const record=repeat?r.active:r,baseStep=d.steps.find(s=>s.id===payload.step),s=repeat&&baseStep?patrolStep(current,baseStep):baseStep;
   if(!record||repeat&&record.run!==payload.run||!repeat&&!r.accepted||!s||s.kind!=='interact')return fail('Only an accepted physical interaction can be recorded.');
   if(record.steps.includes(s.id))return{ok:true,duplicate:true,text:'This accepted action is already recorded.'};
   const choice=s.choices?.find(c=>c.id===payload.branch),anchor=s.choices?choice:s;
@@ -183,5 +190,5 @@ function bindingCommand(ctx,weapon,kind,io){
  const candidate=sim.snapshot();candidate.earthExpedition=clone(sim.state.earthExpedition);candidate.adventure.ore-=BINDING_COST.ore;candidate.adventure.coins-=BINDING_COST.coins;candidate.sandbox.inventory.fiber-=BINDING_COST.fiber;candidate.adventure.earthBinding={version:1,weapon,kind};
  return commit(sim,candidate,io,'Trailward '+kind+' binding applied to '+A.GEAR[weapon].name+' · '+(kind==='edge'?'+2 attack':'+1 defense / +10 maximum HP')+'. Identity, sockets, earlier fittings and current health retained; nothing was equipped.');
 }
-const api={definition,patrol,MAX_RUN,BINDING_COST,fresh,validate,progress,points,at,commit,command,enemies,signature,defeat,freshBinding,validateBinding,bonus,bindingCommand,encounter,strikeContains};G.RealmEarthExpedition=api;if(typeof module!=='undefined')module.exports=api;
+const api={definition,patrol,RETURN_WORK,returnWork,patrolStep,MAX_RUN,BINDING_COST,fresh,validate,progress,points,at,commit,command,enemies,signature,defeat,freshBinding,validateBinding,bonus,bindingCommand,encounter,strikeContains};G.RealmEarthExpedition=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

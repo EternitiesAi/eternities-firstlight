@@ -49,6 +49,18 @@ function parts(ledger){
   for(let i=0;i<3;i++)add('timber-panel',[-110.7,FLOOR+.59+i*.12,-110.3],[1.04,.12,.52],c,'delivered-stock',{allocation:story.branch});
   for(const x of [-111,-110.4])add('box',[x,FLOOR+.71,-110.3],[.065,.36,.59],0xd0c1a0,'delivery-binding');
  }
+ // Borrowed checking equipment belongs to the accepted run. Old paid claims
+ // never construct a new rack; first delivered stock and brace stay untouched.
+ if(story.claimed&&inspection){
+  const x=-104.8,z=-104.2,done=inspection.steps.includes('inspect-glade'),fiber=story.branch==='managed-coppice';
+  for(const dx of[-.48,.48])add('timber-panel',[x+dx,FLOOR+.22,z],[.09,.44,.48],0x715b43,'patrol-kit-foot',{patrolRun:inspection.run});
+  add('timber-panel',[x,FLOOR+.47,z],[1.16,.10,.58],0x947856,'patrol-kit-tray',{patrolRun:inspection.run});
+  if(fiber){
+   add('timber-panel',[x,FLOOR+.61,z],[.90,.18,.34],0xa2a279,'patrol-test-bundle',{patrolRun:inspection.run});
+   for(const dx of[-.26,.26])add('box',[x+dx,FLOOR+.61,z],[done?.035:.07,.24,.40],done?0xd2c18c:0x93835f,done?'patrol-lashing-seated':'patrol-lashing-loose',{patrolRun:inspection.run});
+  }else for(let i=0;i<3;i++)add('timber-panel',[x-.36+i*.36,FLOOR+.61,z+(done?0:(i-1)*.06)],[.22,.18,.40],0xa28256,done?'patrol-billet-squared':'patrol-billet-check',{patrolRun:inspection.run,r:[0,done?0:(i-1)*.15,0]});
+  add('box',[x,FLOOR+.529,z+.26],[.15,.018,.06],done?0x9fc6a0:0xd9b278,done?'patrol-kit-checked':'patrol-kit-pending',{patrolRun:inspection.run});
+ }
  if(story.claimed){
   add('box',[-76,FLOOR+1.11,-14.735],[.24,.26,.018],0x91b982,'claimed-board-seal');
   add('octa',[-76,FLOOR+1.11,-14.721],[.13,.16,.023],0xe4d9ad,'claimed-board-mark');

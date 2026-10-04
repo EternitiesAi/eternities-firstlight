@@ -26,7 +26,7 @@ ROOT = Path(__file__).resolve().parents[1]
 VIEWPORT = {'width': 1440, 'height': 900}
 ROOM = 'world-earthlands'
 CORE_FILES = [
-    'src/core.js', 'src/adventure.js', 'src/combat.js', 'src/arsenal.js',
+    'src/combat-view.js', 'src/core.js', 'src/adventure.js', 'src/combat.js', 'src/arsenal.js',
     'src/characters.js', 'src/characters-ui.js', 'src/earth-expedition.js',
     'src/earth-expedition-ui.js', 'src/earth-expedition-dialogue.js',
     'src/earth-expedition-art.js', 'src/earth-expedition-beast-art.js',
@@ -191,7 +191,7 @@ def main():
         'source_hashes': source_hashes, 'missing_required_files': missing, 'embedded_modules': embedded,
         'viewport': VIEWPORT, 'requested_renderer': args.renderer,
         'video_audio': 'Silent Playwright viewport WebM; no captured or replacement audio.',
-        'branch': branch, 'binding_kind': binding, 'intentional_patrols': 1 if args.variant == 'fresh-blade' else 0,
+        'branch': branch, 'binding_kind': binding, 'intentional_patrols': 1 if args.variant != 'veteran' else 0,
         'presentation': ['Native balanced quality', 'Native timeFlow disabled; inherited hour retained',
                          'Native camera controls and actual V exchange; no camera-state writes'],
         'simulation': 'Ordinary RAF throughout. RPG workspaces pause through production UI; no accelerated/test simulation.',
@@ -452,6 +452,10 @@ def main():
                                 selected = True
                                 break
                         check('Native Tab selects accepted actor ' + enemy_id, selected)
+                        if step['id'] == 'clear-root-pests':
+                            click('#rpg-hud [data-rpg="camera"][data-id="adventure"]')
+                            click('#target-framing')
+                            mark(('patrol-' + str(run) + '-' if run else 'story-') + 'explicit-frame-foe')
                         begun, samples, guards, saw_arrow, first_guard = time.monotonic(), [], 0, False, False
                         side_escape = None
                         saw_release = False
@@ -543,6 +547,9 @@ def main():
                         if step['kind'] == 'defeat':
                             fight(step, catalogue, run)
                         else:
+                            if run and step['id'] == 'inspect-glade':
+                                camera('follow', 'supplied-kit-pending-diorama')
+                                camera('adventure', 'supplied-kit-pending-third')
                             interact()
                             reading(step['name'] + ' at physical work point')
                             action = 'patrol-step' if run else 'step'
@@ -550,6 +557,9 @@ def main():
                             check('Native field action records ' + step['id'], step['id'] in steps_for(run))
                             mark(('patrol-' + str(run) + '-' if run else 'story-') + step['id'])
                             close()
+                            if run and step['id'] == 'inspect-glade':
+                                camera('follow', 'supplied-kit-checked-diorama')
+                                camera('adventure', 'supplied-kit-checked-third')
                             if step['id'] == 'brace-root-channel':
                                 camera('adventure', 'installed-root-brace-third')
                                 camera('follow', 'installed-root-brace-diorama')
@@ -601,7 +611,7 @@ def main():
                     claim(definition)
                     camera('adventure', 'paid-rill-third')
                     camera('follow', 'paid-rill-diorama')
-                    if args.variant == 'fresh-blade':
+                    if args.variant != 'veteran':
                         walk('giver', giver, 'Rill intentional patrol acceptance')
                         interact()
                         reading('Declared intentional patrol payment; no acceptance fee')
@@ -776,14 +786,14 @@ def main():
                     check('Normal resource regrowth and crop ripening follow actual timers', True,
                           {'before_nodes': base['sandbox']['nodes'], 'after_nodes': final['sandbox']['nodes']})
                     expected_wallet = wallet(base)
-                    expected_wallet['xp'] = min(9999, expected_wallet['xp'] + 45 + (5 if args.variant == 'fresh-blade' else 0))
-                    expected_wallet['coins'] += 18 + (4 if args.variant == 'fresh-blade' else 0) - 8
-                    expected_wallet['ore'] += 3 + (3 if args.variant == 'fresh-blade' else 0) - 3
-                    expected_wallet['wood'] += choice['materials']['wood'] + (2 if args.variant == 'fresh-blade' else 0)
-                    expected_wallet['fiber'] += choice['materials']['fiber'] + (2 if args.variant == 'fresh-blade' else 0) - 6
+                    expected_wallet['xp'] = min(9999, expected_wallet['xp'] + 45 + (5 if args.variant != 'veteran' else 0))
+                    expected_wallet['coins'] += 18 + (4 if args.variant != 'veteran' else 0) - 8
+                    expected_wallet['ore'] += 3 + (3 if args.variant != 'veteran' else 0) - 3
+                    expected_wallet['wood'] += choice['materials']['wood'] + (2 if args.variant != 'veteran' else 0)
+                    expected_wallet['fiber'] += choice['materials']['fiber'] + (2 if args.variant != 'veteran' else 0) - 6
                     check('Final balance contains only declared payouts and one binding cost', wallet(final) == expected_wallet, {'expected': expected_wallet, 'actual': wallet(final)})
                     check('Only the intentionally requested patrol was paid',
-                          final['earthExpedition']['patrol'] == {'lastClaim': 1 if args.variant == 'fresh-blade' else 0, 'active': None})
+                          final['earthExpedition']['patrol'] == {'lastClaim': 1 if args.variant != 'veteran' else 0, 'active': None})
                     check('All story work is paid without a new acceptance',
                           final['earthExpedition']['story'] == {'accepted': True, 'branch': branch,
                                                                'steps': [s['id'] for s in definition['steps']], 'claimed': True})
