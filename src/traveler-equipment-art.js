@@ -143,6 +143,11 @@ function draw(out,sim,frame){
   }
   const stringGrip=ready?joints.rightHand:add(grip,scale(bend,spec.curve*.81));
   for(let i=0;i<tips.length;i++)beam(tips[i],stringGrip,.017,.017,0xe4d3ae,'bow-string',{stringSide:i,drawAttachment:ready?'rightHand':null});
+  if(ready&&frame.combatPhase==='anticipate'){
+   const nock=joints.rightHand,tip=add(nock,scale(front,.64));
+   beam(nock,tip,.018,.018,0xd2bf95,'nocked-shaft',{decorative:true,drawAttachment:'rightHand'});
+   block(tip,[.046,.08,.045],0xaab5a0,'nocked-tip',{decorative:true},front,'octa');
+  }
   markers(up,front,.15);
   quiver();
  }

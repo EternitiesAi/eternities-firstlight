@@ -4,7 +4,10 @@
 function draw(kind,at){
  const b=(x,y,z,w,h,d,c,opt={})=>at('box',x,y,z,w,h,d,c,{rough:.73,...opt,homeMemoryKind:kind});
  const a=(shape,x,y,z,w,h,d,c,opt={})=>at(shape,x,y,z,w,h,d,c,{rough:.6,...opt,homeMemoryKind:kind});
- if(kind==='memory-cuttings'){
+ if(kind==='memory-crossing'){
+  for(const x of[-.37,.37])b(x,2.02,0,.075,.88,.48,0x7e7056);b(0,2.57,0,.92,.64,.085,0xa68d68);b(0,2.58,.054,.76,.48,.035,0xdfd1aa);
+  for(let i=0;i<6;i++)b(-.28+i*.1,2.58+Math.sin(i*.9)*.14,.079,.13,.04,.016,0x719488,{r:[0,0,Math.cos(i*.9)*.25]});for(const x of[-.035,.035])b(x,2.56,.091,.025,.27,.016,0x81694c);
+ }else if(kind==='memory-cuttings'){
   b(0,1.65,0,1.14,.12,.66,0x967b54);b(0,1.72,0,.96,.07,.48,0x514c38);
   for(const x of[-.54,.54])b(x,1.79,0,.06,.24,.66,0xc2a67a);for(const z of[-.3,.3])b(0,1.79,z,1.14,.24,.06,0xc2a67a);
   for(const x of[-.3,0,.3]){b(x,1.76,0,.045,.08,.55,0xcdbb8c);a('cylinder',x,1.89,0,.038,.31,.038,0x5e7950);a('round',x-.055,1.96,.015,.2,.11,.13,0x91b77a,{r:[0,0,.45]});a('round',x+.055,2.03,-.015,.18,.1,.13,0xb4c99c,{r:[0,0,-.4]});}

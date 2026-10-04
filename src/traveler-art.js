@@ -106,8 +106,8 @@ function pose(options={}){
  const upperBody={yaw:0,lean:0,shift:[0,0,0]},pivot=[0,.985+torsoY,0];
  let bladeAxis=norm([.18,.94,.28]);
  if(combatScene&&style==='bow'){
-  const readyLeft=[-.30,1.30+torsoY,.48],readyRight=[.16,1.26+torsoY,.32];
-  const drawnLeft=[-.34,1.37+torsoY,.49],drawnRight=[.13,1.46+torsoY,.10];
+  const readyLeft=[0,1.30+torsoY,.50],readyRight=[0,1.30+torsoY,.28];
+  const drawnLeft=[0,1.37+torsoY,.52],drawnRight=[0,1.43+torsoY,.14];
   left=readyLeft;right=readyRight;
   if(combatPhase==='anticipate'){
    left=mix(readyLeft,drawnLeft,p);right=mix(readyRight,drawnRight,p);
@@ -122,7 +122,7 @@ function pose(options={}){
     if(!reducedMotion){upperBody.yaw=.09*(1-relax);upperBody.lean=-.025*(1-relax);}
    }else if(!reducedMotion)right=release(readyRight,readyRight,[.20,1.24+torsoY,.36],combatProgress,'ready');
   }
-  if(guarded){left=[-.30,1.28+torsoY,.40];right=[.15,1.26+torsoY,.24];}
+  if(guarded){left=[0,1.28+torsoY,.40];right=[0,1.28+torsoY,.24];}
  }else if(combatScene&&style==='blade'){
   const readyRight=[.29,.94+torsoY,.23],readyLeft=[-.27,1.02+torsoY,.13];
   const preparedRight=reducedMotion?[.32,1.01+torsoY,.24]:[.37,1.40+torsoY,.085];
@@ -150,6 +150,7 @@ function pose(options={}){
  // Bracing and swimming retain their own stable ownership. Combat never moves
  // hip/leg/foot anchors or rotates the physical player/camera root.
  if(guarded||swimming){upperBody.yaw=0;upperBody.lean=0;upperBody.shift=[0,0,0];bladeAxis=guarded?norm([-.63,.72,.19]):norm([.18,.94,.28]);}
+ if(options.activity==='record'&&!combatScene&&!swimming){left=[-.20,1.36+torsoY,.33];right=[.20,1.36+torsoY,.33];}
  if(swimming){const stroke=reducedMotion?0:Math.sin(time*1.9)*.12;left=[-.42,1.08+torsoY,.18+stroke];right=[.42,1.08+torsoY,.18-stroke];}
  for(const key of ['spine','chest','neck','head','back','leftShoulder','rightShoulder'])joints[key]=bodyPoint(joints[key],upperBody,pivot);
  left=bodyPoint(left,upperBody,pivot);right=bodyPoint(right,upperBody,pivot);bladeAxis=norm(bodyVector(bladeAxis,upperBody));
@@ -179,7 +180,7 @@ function draw(out,input={},posed=pose()){
  const add=(kind,name,position,size,color,rotation=[0,0,0],extra={},upper=false)=>{
   const local=M.compose(...position,...size,...rotation);
   const parent=upper?bodyRoot:root;
-  out[kind].push({p:M.transform(parent,position),s:size.slice(),m:M.mul(parent,local),c:color,rough:.84,
+  out[kind].push({p:M.transform(parent,position),s:size.slice(),m:M.mul(parent,local),c:color,rough:color===skin?.62:color===leather?.74:color===metal?.38:.91,
    cameraSolid:false,cutaway:false,travelerPart:name,...extra});
  };
  const upperAdd=(kind,name,position,size,color,rotation=[0,0,0])=>add(kind,name,position,size,color,rotation,{},true);
@@ -191,14 +192,14 @@ function draw(out,input={},posed=pose()){
   const across=norm([up[1]*reference[2]-up[2]*reference[1],up[2]*reference[0]-up[0]*reference[2],up[0]*reference[1]-up[1]*reference[0]]);
   const forward=[across[1]*up[2]-across[2]*up[1],across[2]*up[0]-across[0]*up[2],across[0]*up[1]-across[1]*up[0]];
   const center=mix(a,b,.5),local=new Float32Array([...scale(across,width),0,...scale(up,length),0,...scale(forward,depth),0,...center,1]);
-  out.box.push({p:M.transform(root,center),s:[width,length,depth],m:M.mul(root,local),c:color,rough:.87,
+  out.round.push({p:M.transform(root,center),s:[width,length,depth],m:M.mul(root,local),c:color,rough:.87,
    cameraSolid:false,cutaway:false,travelerPart:name,travelerJoints:[a.slice(),b.slice()]});
  };
  const y=posed.bob;
  // Narrow waist, broader shoulder line and a split hem make fitted clothing
  // with existing primitives, rather than a stack of rounded doll volumes.
  upperAdd('box','jacket-waist',[0,1.035+y,0],[.335,.27,.24],darkCoat);
- upperAdd('box','jacket-chest',[0,1.255+y,0],[.425,.245,.255],coat);
+ upperAdd('round','jacket-chest',[0,1.255+y,0],[.465,.30,.29],coat);
  upperAdd('octa','jacket-left-side',[-.155,1.13+y,0],[.155,.35,.245],coat);
  upperAdd('octa','jacket-right-side',[.155,1.13+y,0],[.155,.35,.245],coat);
  upperAdd('box','jacket-front-seam',[0,1.18+y,.132],[.025,.30,.022],seam);
@@ -210,8 +211,8 @@ function draw(out,input={},posed=pose()){
  upperAdd('box','collar-right',[.09,1.407+y,.042],[.09,.10,.18],seam,[0,0,.18]);
  upperAdd('round','neck',[0,1.475+y,0],[.105,.15,.115],skin);
  upperAdd('round','head',[0,1.610+y,.008],[.245,.27,.235],skin);
- upperAdd('box','hair-crown',[0,1.721+y,-.015],[.226,.062,.207],hair);
- upperAdd('box','hair-back',[0,1.620+y,-.105],[.220,.205,.072],hair);
+ upperAdd('round','hair-crown',[0,1.721+y,-.015],[.226,.062,.207],hair);
+ upperAdd('round','hair-back',[0,1.620+y,-.105],[.220,.205,.072],hair);
  for(const [name,side]of [['left',-1],['right',1]]){
   upperAdd('round',name+'-ear',[side*.122,1.610+y,.003],[.046,.071,.05],skin);
   upperAdd('box',name+'-eye',[side*.050,1.633+y,.119],[.025,.016,.012],0x303b37);
@@ -222,7 +223,7 @@ function draw(out,input={},posed=pose()){
   add('box',name+'-boot',j[name+'Foot'],[.165,.126,.285],leather);
   add('box',name+'-sole',plus(j[name+'Foot'],[0,-.049,0]),[.177,.036,.299],sole);
   add('round',name+'-boot-cuff',plus(j[name+'Ankle'],[0,.045,-.007]),[.152,.15,.172],leather);
-  upperAdd('box',name+'-shoulder',[side*.235,1.365+y,0],[.18,.15,.255],coat,[0,0,side*.10]);
+  upperAdd('round',name+'-shoulder',[side*.235,1.365+y,0],[.18,.15,.255],coat,[0,0,side*.10]);
   limb(name+'-upper-arm',j[name+'Shoulder'],j[name+'Elbow'],.132,.144,coat);
   add('round',name+'-elbow',j[name+'Elbow'],[.125,.125,.129],darkCoat);
   limb(name+'-forearm',j[name+'Elbow'],j[name+'Hand'],.107,.119,darkCoat);

@@ -1,3 +1,19 @@
+# Living Earth final engineering checkpoint, 2026-10-04
+
+Draft PR41 is stacked against PR40. Runtime `d7a434b238c662a77eb3318ddee7626732c416a5` passed the clean remote-clone full gate: 97 syntax modules, 1153 Node checks,56 Python passes + 1 existing skip,46 earned journeys and 41 browser suites. Native community coverage is 259 checks with 21 whole-browser restart checkpoints. Both final-source normal-time choice recordings pass 21 checks each, with actual source-linked media. Later delivery documentation retains the same runtime/verifier inputs; its exact head/equality and separate source gate belong to the PR receipts. See [final delivery](development/LIVING_REGION_DELIVERY_2026-10-04.md).
+
+World/key9, adventure12 and homeHistory1 remain; optional bridgeCommunity1 is additive. Hosted runtime CI is billing-blocked (43 jobs, zero steps). Human pacing/taste, crash durability and sustained GPU performance remain unqualified; the older LocalLife context-only rollback remains unresolved. Main/deployment/personal saves remain untouched. Earlier dated records below retain their original evidence epochs.
+
+# Living-Earth episode: engineering and deferred human notes, 2026-10-04
+
+No human enjoyment, novice pacing or founder taste is claimed. The approved arc is implemented against PR40, with three command-earned kit/campaign journeys and labelled synthetic transaction/migration/physical boundaries. The fee is honest for strongest equipment: materials and an optional finite home design, not a claimed weapon upgrade.
+
+Independent read-only source review identified an off-axis bow anticipation shaft, a worker displaced from its fixture, floating record/brace/chart joins and a bench-blocked interaction segment. Repairs coordinate hand/string/shaft directions, derive a distinct working stop, attach the record to a dedicated reading pose, seat structural joins, rotate chart markings and enforce clear supported interaction segments. Tests cover real enemy gait ownership, hand contacts and actual shaft alignment. Art remains read-only.
+
+Native authoring epoch03 passes 247 checks across earned blade, bow and strongest returning characters, both allocations/views, quota/capacity refusal, one payment, five progress and two home checkpoints. Awaited whole-browser shutdown reconciles exact latest successful Storage bytes with raw startup before app hydration. Earlier epoch01 stopped at a quota-restoration expression returning an unbound method; epoch02 used a nonexistent camera button ID. Those failed logs remain outside Git in the D-drive artifact store. A subsequent image inspection found the shelter canopy contracting the shoulder camera, despite positive pixel contribution. The canopy now uses the existing cutaway aperture without camera obstruction; the final native gate adds an explicit usable-distance check and must run against the new HTML epoch.
+
+Current-footage and exact-head receipts are separate from this early native epoch. The first recording attempt found an already-near Road marker lacking the unnecessary walk button; the capture now accepts the actual visible crossing terms at that earned checkpoint. Earlier negative epochs are retained. Both cameras and bounded fixture details still require taste/readability assessment; arbitrary orbit, touch, personal profiles, crash resilience and sustained performance remain unqualified. The older context-only LocalLife rollback is not explained by these orderly shutdown results.
+
 # A Home That Remembers: engineering and deferred human notes
 
 This arc follows Dom's explicit continued-development request; he will play later. No founder enjoyment or novice-pacing result is claimed.

@@ -23,12 +23,13 @@
   const crouch=mode==='windup'?.02+.06*anticipation:.08*settling;
   const headPitch=mode==='windup'?.04+.18*anticipation:.22*settling;
   const bodyY=.55-crouch,headAnchor=[0,bodyY+.015,.33],legs={};
+  const gait=mode==='chase'?Math.max(0,Math.min(1,Number.isFinite(options.blend)?options.blend:0)):0,phase=Number.isFinite(options.phase)?options.phase:0,quiet=options.reducedMotion===true;
   const stance=mode==='chase'?.025:mode==='windup'?.035*anticipation:.035*settling;
   for(const side of [-1,1])for(const front of [false,true]){
-   const id=(side<0?'left':'right')+(front?'Front':'Rear');
+   const id=(side<0?'left':'right')+(front?'Front':'Rear'),angle=phase+((side<0)===front?0:Math.PI),step=Math.sin(angle)*gait*(quiet?.05:.12),lift=Math.max(0,-Math.cos(angle))**2*gait*(quiet?.035:.085);
    legs[id]={hip:[side*.28,bodyY-.08,front?.20:-.33],
-    knee:[side*.35,.25-crouch*.25,front?.15:-.35],
-    foot:[side*.43,.065,front?.28+stance:-.40-stance]};
+    knee:[side*.35,.25-crouch*.25+lift*.45,(front?.15:-.35)+step*.4],
+    foot:[side*.43,.065+lift,(front?.28+stance:-.40-stance)+step]};
   }
   return{mode,anticipation,recovery:settling,crouch,bodyY,headAnchor,headPitch,legs,
    reducedMotion:options.reducedMotion===true,paused:options.paused===true};
@@ -76,7 +77,7 @@
    bone(identity,l.hip,l.knee,.145,.16,0x685f40,id+'-upper');
    bone(identity,l.knee,l.foot,.125,.135,0x4c4c35,id+'-lower');
    skin('round',l.knee,[.16,.16,.16],0x665f42,id+'-joint');
-   skin('box',[l.foot[0],.045,l.foot[2]],[.19,.09,.21],0x353e2f,id+'-hoof');
+   skin('box',[l.foot[0],l.foot[1]-.02,l.foot[2]],[.19,.09,.21],0x353e2f,id+'-hoof');
   }
   for(let i=0;i<4;i++){
    const z=-.34+i*.16,y=posed.bodyY+.275*Math.sqrt(1-((z+.08)/.47)**2)-.01;

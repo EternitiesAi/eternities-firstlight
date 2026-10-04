@@ -1,6 +1,6 @@
 /* Procedural cave and chapter artwork. Read-only projection of game state. */
 (function(G){'use strict';const A=G.RealmAdventure,TAU=Math.PI*2;
-const companionSamples=new WeakMap(),companionFrames=new WeakMap(),skitterSamples=new WeakMap(),skitterFrames=new WeakMap();
+const companionSamples=new WeakMap(),companionFrames=new WeakMap(),skitterSamples=new WeakMap(),skitterFrames=new WeakMap(),bruteSamples=new WeakMap();
 function support(sim,x,z){
  if(G.RealmWorldFoundations?.handles(sim.room))return G.RealmWorldFoundations.height(sim.room,x,z);
  if(sim.room===G.RealmEarth?.ROOM)return G.RealmEarth.height(x,z);
@@ -32,9 +32,10 @@ function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.
   for(const e of r.enemies){if(e.hp<=0||e.kind==='practice'||e.eventEnemy||e.custom==='bell')continue;const starts=Object.fromEntries(Object.entries(out).map(([k,v])=>[k,v.length]));let flash=e.flash>s.elapsed,body=flash?0xf8e4b9:e.kind==='boss'?0x688f83:e.kind==='sentinel'?0x9e92b8:e.custom==='river-bristle'?0x866747:0x7e8670;
    const terms=G.RealmEarthExpedition,rootBank=!!terms&&e.kind==='sentinel'&&e.defeatStep==='clear-root-pests'&&(e.expeditionQuest===terms?.definition.id||e.expeditionQuest===terms?.patrol.id);
    if(rootBank){
+    const motion=G.RealmTravelerArt.motion(bruteSamples.get(e),{x:e.x,z:e.z,time:s.elapsed,scene:sim.room,paused:sim.paused,reducedMotion:sim.state.settings.reducedMotion,walking:['pursue','return'].includes(e.mode)});bruteSamples.set(e,motion);
     const reducedMotion=sim.state.settings.reducedMotion,hitAge=s.elapsed-(e.hitAt??-9),recoil=!reducedMotion&&hitAge>=0&&hitAge<.18?(1-hitAge/.18)*.12:0;
     const divisor=e.hitFrom?Math.hypot(e.x-e.hitFrom.x,e.z-e.hitFrom.z)||1:1;
-    G.RealmEarthExpeditionBeastArt.draw(out,{x:e.x+(e.hitFrom?(e.x-e.hitFrom.x)/divisor*recoil:0),z:e.z+(e.hitFrom?(e.z-e.hitFrom.z)/divisor*recoil:0),base:support(sim,e.x,e.z),yaw:e.yaw,mode:e.mode,timer:e.timer,windup:e.windup,recovery:e.recovery,aim:e.aim,flash,reducedMotion,time:s.elapsed,paused:sim.paused});
+    G.RealmEarthExpeditionBeastArt.draw(out,{x:e.x+(e.hitFrom?(e.x-e.hitFrom.x)/divisor*recoil:0),z:e.z+(e.hitFrom?(e.z-e.hitFrom.z)/divisor*recoil:0),base:support(sim,e.x,e.z),yaw:e.yaw,mode:e.mode,timer:e.timer,windup:e.windup,recovery:e.recovery,aim:e.aim,flash,reducedMotion,time:s.elapsed,paused:sim.paused,phase:motion.phase,blend:motion.blend});
    }
    else if(e.kind==='skitter'){
     const named=e.custom==='river-bristle',motion=G.RealmSkitterArt.motion(skitterSamples.get(e),{x:e.x,z:e.z,time:s.elapsed,scene:sim.room,paused:sim.paused,reducedMotion:sim.state.settings.reducedMotion});

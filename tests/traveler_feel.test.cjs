@@ -105,7 +105,7 @@ test('body balance is visible above fixed physical feet and quiet in reduced mot
  const shoulderLine=p=>p.joints.rightShoulder.map((v,i)=>v-p.joints.leftShoulder[i]);
  assert.ok(distance(shoulderLine(ready),shoulderLine(prepared))>.05,'shoulder line actually loads the strike');
  const a=empty(),b=empty();T.draw(a,{},ready);T.draw(b,{},prepared);
- assert.notDeepEqual(a.box.find(p=>p.travelerPart==='jacket-chest').m,b.box.find(p=>p.travelerPart==='jacket-chest').m,'rendered coat follows the joint body balance');
+ assert.notDeepEqual(a.round.find(p=>p.travelerPart==='jacket-chest').m,b.round.find(p=>p.travelerPart==='jacket-chest').m,'rendered coat follows the joint body balance');
 });
 
 test('reduced motion bounds the blade hand cue and suppresses secondary equipment/body sweep',()=>{
