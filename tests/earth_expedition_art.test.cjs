@@ -66,7 +66,7 @@ test('both shape-valid allocation histories project only their recorded steps an
   for(const q of p){finiteMesh(q);assert.equal(q.opt.appearanceOnly,true);assert.equal(q.opt.cameraSolid,false);assert.equal(q.opt.cutaway,false);assert.equal(q.opt.worldSolid,undefined);assert.equal(E.solidBounds(q.kind,{p:q.p,s:q.s,...q.opt}),null);}
  }
  assert.ok(maximum<=30,'bounded field marker/staging budget');const r=ledger(),a=EA.parts(r);a[0].p[0]=999;assert.notEqual(EA.parts(r)[0].p[0],999);
- const completed=ledger('managed-coppice',8,true),old=EA.parts(completed);completed.patrol={lastClaim:2,active:{run:3,steps:['inspect-water']}};const enduring=ps=>ps.filter(p=>!['story-clear-tag','patrol-clear-tag','patrol-check-tag','clearance-check'].includes(p.opt.expeditionPart));assert.deepEqual(enduring(EA.parts(EE.validate(completed))),enduring(old),'patrol does not undo or replay first repair art');
+ const completed=ledger('managed-coppice',8,true),old=EA.parts(completed);completed.patrol={lastClaim:2,active:{run:3,steps:['inspect-water']}};const enduring=ps=>ps.filter(p=>p.opt.patrolRun===undefined&&!['story-clear-tag','patrol-clear-tag','patrol-check-tag','clearance-check'].includes(p.opt.expeditionPart));assert.deepEqual(enduring(EA.parts(EE.validate(completed))),enduring(old),'patrol does not undo or replay first repair art');
 });
 test('worksite actual mesh stays supported and full-body routes/choice/work/foe anchors remain clear',()=>{
  const anchors=[EE.definition.giver,...EE.definition.steps,...EE.definition.steps.flatMap(s=>s.choices||[]),...EE.definition.enemies];
@@ -134,4 +134,13 @@ test('production fog frame has finite translation-relative focus, no non-Earth o
  const pal={sun:[1,1,1],sunColor:[1,1,1],fog:[.5,.5,.5],power:1,ambient:.7,night:0,wet:0};for(const reflection of [false,true])E.Engine.prototype.geometryPass.call(renderer,{},E.M.identity(),pal,0,renderer.camera.eye,reflection,false);
  assert.deepEqual(uniforms.filter(p=>p.name==='uWorldFog').map(p=>p.value),[a,a],'main/reflection receive the actual translation-relative profile');
  const src=fs.readFileSync(require.resolve('../src/engine.js'),'utf8');assert.ok(src.includes('length(vPos.xz-uWorldFog.xy)'));assert.ok(src.includes('length(p-uWorldFog.xy)'));
+});
+
+test('borrowed kit belongs to exact active inspection, restores its checked form and never backfills paid runs',()=>{
+ for(const branch of ['stormfall-recovery','managed-coppice']){
+  const r=ledger(branch,8,true),permanent=EA.parts(r);r.patrol.lastClaim=7;assert.deepEqual(EA.parts(EE.validate(r)),permanent);
+  r.patrol.active={run:8,steps:[]};const pending=EA.parts(EE.validate(r)).filter(p=>p.opt.patrolRun===8&&!p.opt.expeditionPart.includes('tag')); assert.ok(pending.some(p=>p.opt.expeditionPart==='patrol-kit-pending'));const marker=pending.find(p=>p.opt.expeditionPart==='patrol-kit-pending'),tray=pending.find(p=>p.opt.expeditionPart==='patrol-kit-tray');assert.ok(Math.abs(bounds(marker).min[1]-bounds(tray).max[1])<EPS,'marker rests on tray');
+  for(const p of pending){finiteMesh(p);const b=bounds(p);assert.ok(W.walkable('world-earthlands',p.p[0],p.p[2]));assert.ok(b.min[1]>=F-EPS);assert.ok(b.min[0]>=-105.4-EPS&&b.max[0]<=-104.2+EPS&&b.min[2]>=-104.5-EPS&&b.max[2]<=-103.9+EPS);for(const [dx,dz] of[[0,1.7],[1.7,0],[-1.7,0],[0,-1.7],[0,0]])assert.ok(clear([-106+dx,-105+dz],[-106+dx,-105+dz],p),'approach body clear');}
+  r.patrol.active.steps=EE.patrol.steps.map(s=>s.id);const checked=EA.parts(EE.validate(r)).filter(p=>p.opt.patrolRun===8);assert.ok(checked.some(p=>p.opt.expeditionPart==='patrol-kit-checked'));assert.ok(checked.some(p=>p.opt.expeditionPart===(branch==='managed-coppice'?'patrol-lashing-seated':'patrol-billet-squared')));assert.notDeepEqual(checked,pending);assert.deepEqual(EA.parts(EE.validate(JSON.parse(JSON.stringify(r)))),EA.parts(r));r.patrol={lastClaim:8,active:null};assert.deepEqual(EA.parts(EE.validate(r)),permanent);
+ }
 });

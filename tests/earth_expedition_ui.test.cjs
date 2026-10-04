@@ -37,6 +37,24 @@ class NodeStub{
 }
 function documentStub(){const root=new NodeStub();return{body:new NodeStub(),querySelector:s=>root.querySelector(s),querySelectorAll:()=>[],createElement:()=>new NodeStub()};}
 
+test('completed unpaid patrol gives one current return instruction',()=>{
+ const f=fixture({...paid(),patrol:{lastClaim:0,active:{run:1,steps:E.patrol.steps.map(s=>s.id)}}});
+ const html=f.ui.page('expedition').html;assert.ok(html.includes('Work complete'));assert.ok(html.includes('Return to Rill'));assert.ok(!html.includes('record the return glade.'));
+});
+test('patrol terms and accepted final action remember either actual allocation',()=>{
+ for(const branch of ['stormfall-recovery','managed-coppice']){
+  const f=fixture({...paid(),branch,patrol:{lastClaim:0,active:{run:1,steps:E.patrol.steps.slice(0,-1).map(s=>s.id)}}});
+  const before=f.sim.snapshot(),work=E.returnWork(f.sim);assert.equal(work.branch,branch);assert.ok(f.ui.page('expedition').html.includes(work.name));assert.equal(E.progress(f.sim).patrol.next[0].name,work.name);assert.equal(UI.routePoints(f.sim)[0].name,work.name);assert.deepEqual(f.sim.snapshot(),before);
+  locate(f,E.patrol.steps.at(-1));const moved=f.sim.snapshot();f.save=()=>({ok:false,error:'supplied-check refused'});assert.equal(choose(f,'patrol-step','inspect-glade',{run:'1',priorClaim:'0'}).ok,false);assert.deepEqual(f.sim.snapshot(),moved);
+  f.save=value=>{f.saves.push(C.validate(value));return{ok:true};};const result=choose(f,'patrol-step','inspect-glade',{run:'1',priorClaim:'0'});assert.ok(result.ok,result.error);assert.ok(result.text.includes(work.completed));assert.deepEqual(f.sim.state.sandbox.inventory,before.sandbox.inventory);assert.equal(f.sim.state.adventure.coins,before.adventure.coins);assert.ok(E.progress(f.sim).patrol.ready);
+ }
+});
+test('old ready run claim refusal retains its checked kit and successful claim settles it once',()=>{
+ const Art=require('../src/earth-expedition-art.js'),f=fixture({...paid(),patrol:{lastClaim:0,active:{run:1,steps:E.patrol.steps.map(s=>s.id)}}});const before=f.sim.snapshot(),parts=Art.parts(f.sim.state.earthExpedition);assert.ok(parts.some(p=>p.opt.expeditionPart==='patrol-kit-checked'));
+ f.save=()=>({ok:false,error:'claim refused'});assert.equal(choose(f,'patrol-claim','',{run:'1',priorClaim:'0'}).ok,false);assert.deepEqual(f.sim.snapshot(),before);assert.deepEqual(Art.parts(f.sim.state.earthExpedition),parts);
+ f.sim.state.adventure.ore=9999;const full=f.sim.snapshot();assert.equal(choose(f,'patrol-claim','',{run:'1',priorClaim:'0'}).ok,false);assert.deepEqual(f.sim.snapshot(),full);assert.deepEqual(Art.parts(f.sim.state.earthExpedition),parts);f.sim.state.adventure.ore=before.adventure.ore;
+ f.save=value=>{f.saves.push(C.validate(value));return{ok:true};};assert.ok(choose(f,'patrol-claim','',{run:'1',priorClaim:'0'}).ok);assert.ok(!Art.parts(f.sim.state.earthExpedition).some(p=>p.opt.patrolRun!=null));const paidWorld=f.sim.snapshot();assert.ok(choose(f,'patrol-claim','',{run:'1',priorClaim:'0'}).duplicate);assert.deepEqual(f.sim.snapshot(),paidWorld);
+});
 test('fresh invitation exposes both exact allocations, fixed danger, binding cost and deliberate consent',()=>{
  const f=fixture(),before=f.sim.snapshot(),html=f.ui.page('expedition').html;
  for(const text of['45 XP · 18 sunmarks · 3 ore','8 timber · 4 fibre','4 timber · 8 fibre','Two more fibre','supplies the six fibre','64 health / 9 damage','136 health / 11 damage','1.35-second','2.3-second','3 ore, 8 sunmarks and 6 fibre'])assert.ok(html.includes(text),text);

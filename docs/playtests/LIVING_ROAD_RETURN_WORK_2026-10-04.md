@@ -1,0 +1,11 @@
+# Living Road return visit
+
+Run PLAY_FIRSTLIGHT_WINDOWS.cmd in the current gameplay checkout. The established loopback origin127.0.0.1:8780 retains its ordinary browser storage. Tests/captures use separate temporary ports/profiles and command-earned examples, never personal saves.
+
+After the initial kit, the optional Living Road first story remains available without campaign/class/soul progress. Complete either material allocation and claim once with Rill. To revisit, read the same patrol’s fixed 5 XP / 4 sunmarks / 3 ore / 2 timber / 2 fibre and explicitly Begin a new patrol. Inspect the water, clear this run’s crossing beast, inspect the enduring root support and clear this run’s bank pocket. At the return glade, square the supplied stormfall gauge billets or seat the supplied coppice test lashings, according to the actual first allocation. No normal inventory is spent. Return to Rill and Claim; it settles the borrowed checking kit and pays that run once. Reloading or changing a request cannot pay it again.
+
+Old completed/unpaid patrols remain valid and can claim directly. No new inspection is required retroactively. Historical payments do not construct a new permanent rack. The enduring first brace and delivery stock stay. Both weapon families and strongest equipment receive the honest crafting contribution, with no invisible enemy scaling.
+
+In third person, select a living foe with Tab/click. Frame foe deliberately faces the nearby target within 12 m; very-close foes widen the requested camera distance. Collision safety still controls the actual distance. It does not lock or chase. Drag/wheel orbit and zoom normally, V switches remembered styles and R resets only the current view. Diorama retains its controls. The same small skill bar, stationary autoattack, range/line-of-sight, Brace, movement, retreat and companion remain.
+
+Automated native checks and actual recordings qualify their stated conditions only. The borrowed kit can be small or behind the traveler in the default shoulder view; orbit to inspect it. No human answer is recorded. When Dom chooses to play a fresh and returning case: Did you understand the remembered job? Could you see the threat and respond deliberately? Did the material contribution give you a reason to return? Did both cameras stay comfortable? Human play is deferred, not reported as accepted.

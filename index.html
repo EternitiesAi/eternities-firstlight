@@ -145,6 +145,8 @@ body.rpg-edition{--gold:#dbc18c;--ink:#111d21;--pane:rgba(15,29,33,.94);--muted:
 .enemy-health.selected{width:56px;border-color:#e4c791}.enemy-health.selected i{background:#cb9292}
 .camera-presets{flex-wrap:wrap;max-width:280px}
 
+#target-framing{display:block;margin-top:7px;padding:4px 8px;font-size:10px}#target-framing:disabled{opacity:.55}#target-framing[hidden]{display:none}
+
 /* Bellweather services and atlas: clear hierarchy, room to read, touch-sized actions. */
 .cross-atlas-layout{display:grid;grid-template-columns:minmax(250px,1fr) minmax(260px,.95fr);gap:28px;align-items:start;padding:4px}
 .cross-map-panel{position:sticky;top:0;min-width:0}.cross-map-panel svg{width:100%;max-height:530px;display:block;border:1px solid #52665b;border-radius:14px}.atlas-pin{cursor:pointer}.atlas-pin:hover circle,.atlas-pin:focus circle{stroke:#fff6d5;stroke-width:3}.atlas-pin:focus{outline:none}
@@ -2407,6 +2409,13 @@ const patrol=freeze({
   {id:'root',name:'Patrol root-bank brute',kind:'sentinel',x:-134,z:-70,hp:136,damage:11,spawnAfter:['inspect-root'],defeatStep:'clear-root-pests'}
  ]
 });
+// Supplied checks specialize the existing inspection, keeping its owner and IDs.
+const RETURN_WORK=freeze({
+ 'stormfall-recovery':{id:'stormfall-stock-check',branch:'stormfall-recovery',name:'Square the supplied stormfall check',line:'Your timber choice asks for a packing check: square the supplied gauge billets at the glade. It consumes none of your timber.',text:'Rill remembers your recovered timber. At the return glade, space the supplied gauge billets in their checking cradle and square their packing. Air gaps remain; this does not instantly dry timber or harvest standing trees. Borrowed job parts cost none of your inventory. Record this circuit’s final inspection, then return to Rill. Claiming settles the borrowed kit with the fixed payment.',completed:'Stormfall checking billets squared for this circuit. The standing shelter remains. Return to Rill for the separate payment; claiming also settles the borrowed kit.'},
+ 'managed-coppice':{id:'coppice-binding-check',branch:'managed-coppice',name:'Seat the supplied coppice lashings',line:'Your fibre choice asks for a binding check: seat the supplied test lashings at the glade. It consumes none of your fibre.',text:'Rill remembers your fibre allocation. At the return glade, seat and tension the supplied transport bundle’s test lashings. This checks packing condition without spending your fibre or regenerating managed growth. Borrowed job parts cost none of your inventory. Record this circuit’s final inspection, then return to Rill. Claiming settles the borrowed kit with the fixed payment.',completed:'Coppice test lashings seated for this circuit. The managed boundary remains. Return to Rill for the separate payment; claiming also settles the borrowed kit.'}
+});
+function returnWork(value){return RETURN_WORK[ledger(value).story?.branch]||null;}
+function patrolStep(value,s){const work=s.id==='inspect-glade'?returnWork(value):null;return work?{...s,name:work.name,text:work.text,completed:work.completed,workId:work.id}:s;}
 const BINDING_COST=freeze({ore:3,coins:8,fiber:6});
 const fresh=()=>({version:1,story:{accepted:false,branch:null,steps:[],claimed:false},patrol:{lastClaim:0,active:null}});
 const freshBinding=()=>({version:1,weapon:null,kind:null});
@@ -2440,7 +2449,7 @@ function ledger(value){return value?.state?value.state.earthExpedition||fresh():
 function progress(value){
  const r=ledger(value),s=r.story,p=r.patrol.active;
  const project=(d,steps)=>({done:steps.length,total:d.steps.length,ready:steps.length===d.steps.length,next:d.steps.filter(s=>!steps.includes(s.id)&&s.requires.every(id=>steps.includes(id)))});
- return{story:{accepted:s.accepted,branch:s.branch,claimed:s.claimed,...project(definition,s.steps)},patrol:{lastClaim:r.patrol.lastClaim,active:p?clone(p):null,...project(patrol,p?.steps||[])},bindingUnlocked:s.claimed};
+ return{story:{accepted:s.accepted,branch:s.branch,claimed:s.claimed,...project(definition,s.steps)},patrol:{lastClaim:r.patrol.lastClaim,active:p?clone(p):null,...project({...patrol,steps:patrol.steps.map(s=>patrolStep(r,s))},p?.steps||[])},bindingUnlocked:s.claimed};
 }
 function points(value){
  const p=progress(value),out=[];
@@ -2482,7 +2491,7 @@ function command(ctx,type,payload={},io){
   else{if(r.accepted)return{ok:true,duplicate:true,text:'The first delivery is already accepted; its allocation and progress are retained.'};r.accepted=true;}
   text=d.title+(repeat?' · run '+payload.run:'')+' explicitly accepted. The route, danger and fixed payment are retained.';
  }else if(type==='step'||type==='patrol-step'){
-  const record=repeat?r.active:r,s=d.steps.find(s=>s.id===payload.step);
+  const record=repeat?r.active:r,baseStep=d.steps.find(s=>s.id===payload.step),s=repeat&&baseStep?patrolStep(current,baseStep):baseStep;
   if(!record||repeat&&record.run!==payload.run||!repeat&&!r.accepted||!s||s.kind!=='interact')return fail('Only an accepted physical interaction can be recorded.');
   if(record.steps.includes(s.id))return{ok:true,duplicate:true,text:'This accepted action is already recorded.'};
   const choice=s.choices?.find(c=>c.id===payload.branch),anchor=s.choices?choice:s;
@@ -2544,7 +2553,7 @@ function bindingCommand(ctx,weapon,kind,io){
  const candidate=sim.snapshot();candidate.earthExpedition=clone(sim.state.earthExpedition);candidate.adventure.ore-=BINDING_COST.ore;candidate.adventure.coins-=BINDING_COST.coins;candidate.sandbox.inventory.fiber-=BINDING_COST.fiber;candidate.adventure.earthBinding={version:1,weapon,kind};
  return commit(sim,candidate,io,'Trailward '+kind+' binding applied to '+A.GEAR[weapon].name+' · '+(kind==='edge'?'+2 attack':'+1 defense / +10 maximum HP')+'. Identity, sockets, earlier fittings and current health retained; nothing was equipped.');
 }
-const api={definition,patrol,MAX_RUN,BINDING_COST,fresh,validate,progress,points,at,commit,command,enemies,signature,defeat,freshBinding,validateBinding,bonus,bindingCommand,encounter,strikeContains};G.RealmEarthExpedition=api;if(typeof module!=='undefined')module.exports=api;
+const api={definition,patrol,RETURN_WORK,returnWork,patrolStep,MAX_RUN,BINDING_COST,fresh,validate,progress,points,at,commit,command,enemies,signature,defeat,freshBinding,validateBinding,bonus,bindingCommand,encounter,strikeContains};G.RealmEarthExpedition=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* Original local speech for the existing provisional Elderweald people.
  * ET11/ET12 supply the living-support and limited-allocation premise, not these
@@ -2673,7 +2682,7 @@ function reading(personId,ledger,binding){
  if(r.story.claimed&&r.patrol.active){
   const run=r.patrol.active.run;title='Inspection circuit '+run;lines=[recognition(r.story.branch),'The first brace stays and the old organism remains alive. This patrol inspects the route; it does not repeat the repair.'];
   if(p.patrol.ready){lines.push('Circuit '+run+' is checked. Its payment is ready and still unpaid.');hint=isRill?'Choose Claim for this circuit here when you have room for its complete payment.':'Return to Rill at the clearing camp and explicitly claim this circuit’s payment.';}
-  else{const next=patrolAdvice[p.patrol.next[0].id];lines.push(next.line);hint=next.hint;}
+  else{const id=p.patrol.next[0].id,next=patrolAdvice[id],work=E.returnWork(r);lines.push(id==='inspect-glade'?work.line:next.line);hint=id==='inspect-glade'?'Use the supplied checking kit at the return glade, then bring this circuit back to Rill.':next.hint;}
   if(bound)lines.push(bound);
  }else if(r.story.claimed){
   title=isRill?'Your allocation is remembered':'The root keeps its support';lines=[recognition(r.story.branch)];
@@ -7399,7 +7408,7 @@ class ExpeditionUI{
   const active=patrol?p.active:this.sim.state.earthExpedition.story;
   const runMeta=patrol?'data-run="'+active.run+'" data-prior-claim="'+p.lastClaim+'"':'';
   let html='<section class="expedition-objectives"><h3>'+(p.ready?'Work complete · payment ready':'Your next action')+'</h3>';
-  if(active.steps.includes('clear-root-pests'))html+='<p class="expedition-clearance">'+(patrol?'Patrol '+active.run+' · bank pocket checked clear. The permanent brace remains; record the return glade.':active.steps.includes('brace-root-channel')?'The staged kit is now the installed brace. The living support remains.':'Bank pocket cleared · kit staged at the alternate support, south of the passage. Fit the brace next.')+' Your payment is still separate and must be claimed from Rill.</p>';
+  if(active.steps.includes('clear-root-pests'))html+='<p class="expedition-clearance">'+(patrol?'Patrol '+active.run+' · bank pocket checked clear. The permanent brace remains. '+(p.ready?'The glade inspection is complete. Return to Rill.':'Complete the supplied check at the return glade.'):active.steps.includes('brace-root-channel')?'The staged kit is now the installed brace. The living support remains.':'Bank pocket cleared · kit staged at the alternate support, south of the passage. Fit the brace next.')+' Your payment is still separate and must be claimed from Rill.</p>';
   if(p.ready)html+='<p>Return to Rill at the camp. Your payment remains unclaimed until you deliberately collect it.</p>'+button('Walk back to Rill','walk','giver')+button(patrol?'Claim patrol '+active.run:'Claim the declared story payment',patrol?'patrol-claim':'claim','',runMeta);
   else for(const s of p.next){
    html+='<article data-expedition-step="'+esc(s.id)+'"><small>'+(s.kind==='defeat'?'ACTUAL ENCOUNTER':'FIELD WORK')+'</small><h4>'+esc(s.name)+'</h4><p>'+esc(s.text)+'</p>';
@@ -7425,7 +7434,7 @@ class ExpeditionUI{
   }else if(!r.claimed)html+=this.work(d,p.story);
   else html+='<section class="expedition-finished"><small>ONCE-ONLY STORY · PAYMENT CLAIMED</small><h3>The living road remembers</h3><p>'+esc(r.branch==='stormfall-recovery'?'Your recovered stormfall timber supports the camp’s winter work. The standing shelter trees remain.':'Your managed-coppice allocation preserves more flexible fibre for the local work. The designated growth keeps its own boundary.')+'</p><p>The root-channel’s new brace remains visible. Rill recognizes the completed allocation. The forest organism and the older Earth stories retain their own history.</p></section>';
   if(r.claimed){
-   html+='<section class="expedition-patrol"><small>INTENTIONAL REPEAT WORK · SEPARATE RUNS</small><h3>'+esc(E.patrol.title)+'</h3><p>'+esc(E.patrol.summary)+'</p><p><strong>Each completed patrol pays:</strong> '+fee(E.patrol.reward)+'. No acceptance fee. Inspect the wetland, clear the declared encounters, inspect the root support and glade, then return to Rill. Re-entry or reload keeps the same run.</p>'+(p.patrol.active?this.work(E.patrol,p.patrol):button('Walk to Rill','walk','giver')+button('Begin a new patrol','patrol-accept','','data-run="'+(p.patrol.lastClaim+1)+'" data-prior-claim="'+p.patrol.lastClaim+'"'))+xpNote(this.sim.state.adventure,E.patrol.reward)+'<p class="expedition-muted">'+p.patrol.lastClaim+' patrol'+(p.patrol.lastClaim===1?'':'s')+' paid. Oren’s rewards and the original realm surveys keep their separate claims.</p></section>';
+   html+='<section class="expedition-patrol"><small>INTENTIONAL REPEAT WORK · SEPARATE RUNS</small><h3>'+esc(E.patrol.title)+'</h3><p>'+esc(E.patrol.summary)+'</p><p><strong>Your remembered allocation:</strong> '+esc(E.returnWork(this.sim).name)+'. '+esc(E.returnWork(this.sim).text)+'</p><p><strong>Each completed patrol pays:</strong> '+fee(E.patrol.reward)+'. No acceptance fee. Inspect the wetland, clear the declared encounters, inspect the root support and glade, then return to Rill. Re-entry or reload keeps the same run.</p>'+(p.patrol.active?this.work(E.patrol,p.patrol):button('Walk to Rill','walk','giver')+button('Begin a new patrol','patrol-accept','','data-run="'+(p.patrol.lastClaim+1)+'" data-prior-claim="'+p.patrol.lastClaim+'"'))+xpNote(this.sim.state.adventure,E.patrol.reward)+'<p class="expedition-muted">'+p.patrol.lastClaim+' patrol'+(p.patrol.lastClaim===1?'':'s')+' paid. Oren’s rewards and the original realm surveys keep their separate claims.</p></section>';
   }
   html+='<section><h3>A useful return</h3><p>Return to your outdoor home workbench to inspect the finite binding. Keep gathering, crafting, housing, music and the main story in whichever order you choose.</p><button data-rpg="open" data-id="craft">Inspect the workbench and binding</button>'+(here?'<button data-rpg="world-return">Return to Firstlight</button><button data-rpg="open" data-id="atlas">Local map</button>':'')+'</section></article>';
   return{title:'The living road',html};
@@ -7502,7 +7511,7 @@ class RPGUI{
     ${button(icon('grid')+'<span>More</span>','open','more')}
    </nav>
    <section id="quest-tracker" aria-label="Tracked quest"><div class="tracker-switch">${button('Story','track','story')}${button('Homestead','track','homestead')}${button('Living road','track','expedition',false,'hidden')}${button('Local life','track','local-life',false,'hidden')}${button('Community','track','community',false,'hidden')}</div><button id="tracked-open"><small id="tracked-chapter"></small><strong id="tracked-title"></strong><span id="tracked-detail"></span><i id="tracked-progress"></i></button></section>
-   <section id="target-frame" hidden aria-label="Selected enemy"><div id="target-icon">${icon('shield')}</div><div><small id="target-rank"></small><strong id="target-name"></strong><div class="target-health"><i id="target-health-fill"></i></div><span id="target-state"></span><div id="target-cue" hidden aria-label="Selected foe action"><b id="target-cue-title"></b><span id="target-cue-detail"></span></div></div><button id="target-clear" aria-label="Clear target">×</button></section>
+   <section id="target-frame" hidden aria-label="Selected enemy"><div id="target-icon">${icon('shield')}</div><div><small id="target-rank"></small><strong id="target-name"></strong><div class="target-health"><i id="target-health-fill"></i></div><span id="target-state"></span><div id="target-cue" hidden aria-label="Selected foe action"><b id="target-cue-title"></b><span id="target-cue-detail"></span></div><button id="target-framing" title="Third person: face a selected foe within 12 metres. Drag still orbits freely.">Frame foe</button></div><button id="target-clear" aria-label="Clear target">×</button></section>
    <section id="beacon-tracker" hidden aria-label="Beacon defense"><small>CHAPTER III · THE BEACON ANSWERS</small><strong id="beacon-phase"></strong><div class="ward-meter"><i id="ward-fill"></i></div><span id="beacon-status"></span><button id="beacon-menu">Approach & speak · E</button></section>
    <div class="camera-presets" aria-label="Camera styles: V switches, R resets the current view">${button('3rd person','camera','adventure')}${button('Diorama','camera','follow')}${button('Tactical','camera','tactical')}${button('Wide','camera','wide')}</div>
    <div id="enemy-health" aria-hidden="true"></div><div id="combat-numbers" aria-hidden="true"></div>
@@ -7520,7 +7529,7 @@ class RPGUI{
   $('#rpg-close').onclick=()=>this.close();d.addEventListener('cancel',e=>{e.preventDefault();this.close();});
   const click=e=>{const b=e.target.closest('[data-rpg],[data-realm-art]');if(b)this.action(b);};d.addEventListener('click',click);hud.addEventListener('click',click);
   d.addEventListener('input',e=>{if(e.target.id==='bag-search'){this.search=e.target.value;this.paintBag();}});
-  $('#tracked-open').onclick=()=>this.open(this.quest==='community'?'community':this.quest==='local-life'?'local-life':this.quest==='expedition'?'expedition':this.worlds.local()?'worlds':this.earth.notes.active()&&[null,G.RealmEarth.ROOM,'observatory'].includes(this.sim.room)?'earth-notes':this.sim.room===G.RealmEarth.ROOM&&this.state.earthStory.accepted?'earth-story':this.quest==='project'?'pursuit':'journal');$('#beacon-menu').onclick=()=>{if(B.runtime(this.sim).phase==='assault')this.run('beacon-repair');else this.open('beacon');};$('#target-clear').onclick=()=>this.run('target-clear');$('#health-orb').onclick=()=>this.open('equipment');
+  $('#tracked-open').onclick=()=>this.open(this.quest==='community'?'community':this.quest==='local-life'?'local-life':this.quest==='expedition'?'expedition':this.worlds.local()?'worlds':this.earth.notes.active()&&[null,G.RealmEarth.ROOM,'observatory'].includes(this.sim.room)?'earth-notes':this.sim.room===G.RealmEarth.ROOM&&this.state.earthStory.accepted?'earth-story':this.quest==='project'?'pursuit':'journal');$('#beacon-menu').onclick=()=>{if(B.runtime(this.sim).phase==='assault')this.run('beacon-repair');else this.open('beacon');};$('#target-framing').onclick=()=>{const r=this.api.frameFoe();if(!r.ok)this.api.toast(r.error);};$('#target-clear').onclick=()=>this.run('target-clear');$('#health-orb').onclick=()=>this.open('equipment');
   for(const el of hud.querySelectorAll('[data-skill]'))el.onclick=()=>this.skill(el.dataset.skill);
   this.crossing=new G.RealmCrossingUI.CrossingUI(this);this.starter=new G.RealmStarterUI.StarterUI(this);this.pursuit=new G.RealmPursuitUI.PursuitUI(this);this.characters=new G.RealmCharactersUI.CharactersUI(this);this.classes=new G.RealmClassesUI.ClassesUI(this);this.cosmos=new G.RealmCosmosUI.CosmosUI(this);this.realmAtlas=new G.RealmVisualAtlas(this);this.gathering=new G.RealmGatheringUI.GatheringUI(this);this.earth=new G.RealmEarthUI.EarthUI(this);this.worlds=new G.RealmWorldFoundationsUI.WorldUI(this);this.trails=new G.RealmTrailsUI.TrailsUI(this);this.community=new G.RealmBridgeCommunityUI.BridgeCommunityUI(this);this.civic=new G.RealmLocalLifeUI.LocalLifeUI(this);this.expedition=new G.RealmEarthExpeditionUI.ExpeditionUI(this);if(this.state.starter.accepted&&!this.state.starter.reward)this.quest='starter';if(this.sim.state.earthExpedition.story.accepted&&!this.sim.state.earthExpedition.story.claimed||this.sim.state.earthExpedition.patrol.active)this.quest='expedition';
  }
@@ -7761,7 +7770,7 @@ class RPGUI{
   for(const el of document.querySelectorAll('.tracker-switch [data-rpg=track]'))el.setAttribute('aria-pressed',String(el.dataset.id===this.quest));
   $('#tracked-chapter').textContent=this.quest==='homestead'?'FIELD GUIDE · OPTIONAL':'CHAPTER '+stage;
   $('#tracked-title').textContent=next.title;$('#tracked-detail').textContent=next.detail;$('#tracked-progress').textContent=stage===3&&this.quest==='story'?'Journal · J':obj.filter(x=>x.done).length+' / '+obj.length+' complete · Journal J';
-  $('#target-frame').hidden=!e;if(e){$('#target-name').textContent=e.name;$('#target-rank').textContent=(e.kind==='practice'?'PRACTICE':e.kind==='boss'||e.kind==='charger'||e.kind==='siegeboss'?'ELITE':'HOSTILE')+' · '+Math.ceil(Math.hypot(e.x-sim.state.player.x,e.z-sim.state.player.z))+' PACES';$('#target-health-fill').style.width=e.hp/e.maxHP*100+'%';$('#target-state').textContent=Math.ceil(e.hp)+' / '+e.maxHP+' · '+T.readiness(sim);}
+  $('#target-framing').disabled=!this.api.canFrameFoe?.();$('#target-frame').hidden=!e;if(e){$('#target-name').textContent=e.name;$('#target-rank').textContent=(e.kind==='practice'?'PRACTICE':e.kind==='boss'||e.kind==='charger'||e.kind==='siegeboss'?'ELITE':'HOSTILE')+' · '+Math.ceil(Math.hypot(e.x-sim.state.player.x,e.z-sim.state.player.z))+' PACES';$('#target-health-fill').style.width=e.hp/e.maxHP*100+'%';$('#target-state').textContent=Math.ceil(e.hp)+' / '+e.maxHP+' · '+T.readiness(sim);}
   $('#skillbar').hidden=!a.started;$('#rpg-health').textContent=Math.ceil(a.hp);$('#health-orb').style.setProperty('--hp',a.hp/st.maxHP*100+'%');$('#rpg-stamina').style.width=a.stamina+'%';$('#stamina-label').textContent=Math.floor(a.stamina)+' STAMINA';
   const classStatus=G.RealmClasses.status(sim),classDef=G.RealmClasses.definition(a),classButton=$('#skill-class');document.body.classList.toggle('has-class',!!classDef);classButton.hidden=!classDef;classButton.disabled=!classDef||!A.combatScene(sim)||sim.room==='range'||classStatus.remaining>0||a.stamina<classStatus.cost;classButton.querySelector('small').textContent=classDef?.id==='hunter'?'Mark':'Flare';classButton.querySelector('.skill-icon').textContent=classDef?.id==='hunter'?'⌁':'✦';classButton.querySelector('.skill-icon').style.color='#'+(classDef?.color||0xd4b175).toString(16).padStart(6,'0');classButton.querySelector('.skill-cooldown').textContent=classStatus.remaining>0?classStatus.remaining.toFixed(classStatus.remaining<1?1:0):'';classButton.title=classStatus.name+' · '+classStatus.cost+' stamina · '+classStatus.description;classButton.setAttribute('aria-label',classStatus.name+' · X'+(classStatus.remaining?' · '+classStatus.remaining.toFixed(1)+' seconds remaining':''));classButton.style.setProperty('--cool',Math.min(100,classStatus.remaining/classStatus.cooldown*100)+'%');
   const power=a.beacon.soul.equipped,buttons={auto:{cd:r.cooldowns.attack,cost:w.stamina,txt:w.style==='bow'?'Arrow':'Strike',name:w.primary,disabled:!A.combatScene(sim)},special:{cd:r.cooldowns.pulse,cost:30,txt:w.style==='bow'?'Pierce':'Sweep',name:w.special,disabled:!A.combatScene(sim)},guard:{cd:t.cooldowns.guard,cost:20,txt:'Brace',name:T.skills.guard.description,disabled:!A.combatScene(sim)},insight:{cd:t.cooldowns.insight,cost:0,txt:'Briar',name:T.skills.insight.description,disabled:!a.companion.bonded||a.companion.mode!=='follow'},spirit:{cd:t.cooldowns.spirit,cost:power==='aegis'?25:0,txt:power==='aegis'?'Aegis':power==='cinder'?'Cinder':'Unchosen',name:power?T.skills[power].description:'Choose a soul technique at the beacon, or remain mortal.',disabled:!power||!A.combatScene(sim)},heal:{cd:r.cooldowns.heal,cost:0,txt:'Tonic ×'+a.tonics,name:'Restore up to 48 health. Refill at the spring.',disabled:!a.tonics||a.hp>=st.maxHP},dodge:{cd:r.cooldowns.dodge,cost:22,txt:'Dodge',name:'Move out of harm. Brief avoidance, 22 stamina.',disabled:!A.combatScene(sim)}};
@@ -9346,6 +9355,18 @@ function parts(ledger){
   for(let i=0;i<3;i++)add('timber-panel',[-110.7,FLOOR+.59+i*.12,-110.3],[1.04,.12,.52],c,'delivered-stock',{allocation:story.branch});
   for(const x of [-111,-110.4])add('box',[x,FLOOR+.71,-110.3],[.065,.36,.59],0xd0c1a0,'delivery-binding');
  }
+ // Borrowed checking equipment belongs to the accepted run. Old paid claims
+ // never construct a new rack; first delivered stock and brace stay untouched.
+ if(story.claimed&&inspection){
+  const x=-104.8,z=-104.2,done=inspection.steps.includes('inspect-glade'),fiber=story.branch==='managed-coppice';
+  for(const dx of[-.48,.48])add('timber-panel',[x+dx,FLOOR+.22,z],[.09,.44,.48],0x715b43,'patrol-kit-foot',{patrolRun:inspection.run});
+  add('timber-panel',[x,FLOOR+.47,z],[1.16,.10,.58],0x947856,'patrol-kit-tray',{patrolRun:inspection.run});
+  if(fiber){
+   add('timber-panel',[x,FLOOR+.61,z],[.90,.18,.34],0xa2a279,'patrol-test-bundle',{patrolRun:inspection.run});
+   for(const dx of[-.26,.26])add('box',[x+dx,FLOOR+.61,z],[done?.035:.07,.24,.40],done?0xd2c18c:0x93835f,done?'patrol-lashing-seated':'patrol-lashing-loose',{patrolRun:inspection.run});
+  }else for(let i=0;i<3;i++)add('timber-panel',[x-.36+i*.36,FLOOR+.61,z+(done?0:(i-1)*.06)],[.22,.18,.40],0xa28256,done?'patrol-billet-squared':'patrol-billet-check',{patrolRun:inspection.run,r:[0,done?0:(i-1)*.15,0]});
+  add('box',[x,FLOOR+.529,z+.26],[.15,.018,.06],done?0x9fc6a0:0xd9b278,done?'patrol-kit-checked':'patrol-kit-pending',{patrolRun:inspection.run});
+ }
  if(story.claimed){
   add('box',[-76,FLOOR+1.11,-14.735],[.24,.26,.018],0x91b982,'claimed-board-seal');
   add('octa',[-76,FLOOR+1.11,-14.721],[.13,.16,.023],0xe4d9ad,'claimed-board-mark');
@@ -9517,6 +9538,18 @@ function draw(out,sim,t,a){const d=W.definition(sim.room);if(!d)return;const qui
 }
 G.RealmWorldFoundationsArt={make,gate,draw,partitions,rawPartitions,coastBanks};if(typeof module!=='undefined')module.exports=G.RealmWorldFoundationsArt;
 })(globalThis);
+</script><script>/* Explicit close-foe framing. No combat, follow target, or save authority. */
+(function(G){'use strict';
+function plan(i={}){
+ const no=error=>({ok:false,error}),p=i?.player,e=i?.enemy;
+ if(i?.preset!=='adventure')return no('Frame foe is available in third person. Diorama keeps its own framing.');
+ if(!p||!e||typeof e.id!=='string'||!e.id||e.hidden||!Number.isFinite(e.hp)||e.hp<=0||![p.x,p.z,e.x,e.z,i.distance].every(Number.isFinite)||i.distance<3.5||i.distance>20)return no('Select a living visible nearby foe before framing.');
+ const range=Math.hypot(p.x-e.x,p.z-e.z);if(range<.05||range>12)return no('Frame foe needs a selected target between 0.05 and 12 metres away.');
+ const distance=Math.max(range<1.5?14:8.5,i.distance);
+ return{ok:true,view:{yaw:Math.atan2(p.x-e.x,p.z-e.z),elevation:.55,distance,actualDistance:distance,tour:false,overview:false}};
+}
+const api=Object.freeze({plan});G.RealmCombatView=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
 </script><script>/* Deliberate bridge framing only. Canonical ground owns eligibility; the caller
  * owns applying the fresh view, camera update and any ordinary preference save. */
 (function(G){'use strict';
@@ -9647,6 +9680,11 @@ function cameraPreset(mode='adventure',remember=true,reset=false){
 }
 function toggleCamera(){cameraPreset(camera.preset==='adventure'?sim.state.settings.cameraViews.lastDiorama:'adventure');}
 function resetCamera(){cameraPreset(camera.preset,true,true);}
+function frameFoe(){
+ if(!engine||sim.paused||sim.worldDive)return{ok:false,error:'Return to active dry play before framing a foe.'};
+ const result=RealmCombatView.plan({preset:camera.preset,player:sim.state.player,enemy:RealmCombat.selected(sim),distance:camera.distance});
+ if(!result.ok)return result;Object.assign(camera,result.view);follow=null;updateCamera(1);save();return result;
+}
 function bridgeView(){
  if(!engine)return{ok:false,error:'3D is unavailable for framing this crossing.'};
  const result=RealmBridgeMomentView.plan({scene:sim.room,player:sim.state.player,
@@ -9754,7 +9792,7 @@ adventure=new RealmAdventureUI.AdventureUI({workshopCommand,earthRiverReturn,sim
 
 arsenal=new RealmArsenalUI.ArsenalUI({sim:()=>sim,adventure:()=>adventure,openPanel,closePanel,renderPanel,panel:()=>panel,walk:walkAdventure,endBuild:()=>{sandbox?.endBuild();sandbox?.stopAuto();keys.clear();}});
 
-rpg=new RealmRPGUI.RPGUI({bridgeCommunityCommand,localLifeCommand,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,earthContext,earthTravel,earthReturn,bridgeView,cosmosContext,cosmosTravel,cosmosReturn,sim:()=>sim,adventure:()=>adventure,closePanel,openPanel,endBuild:()=>{sandbox.endBuild();sandbox.stopAuto();},clearKeys:()=>keys.clear(),focusWorld:()=>ui.canvas.focus({preventScroll:true}),toast,save,exportWorld,characters:()=>characterStore.describe(sim.snapshot()),characterAction,characterExport,characterImport,characterReload,characterRecovery,panel:()=>panel,camera:cameraPreset,resetCamera,rotate:a=>{camera.yaw+=a;camera.tour=false;},direction:()=>adventure.api.direction(),music:()=>experience.open(),gather:id=>sandbox.seek(id),walkLocal:walkAdventure,stopPersonalMusic:()=>experience?.stop(),audio:()=>audio,project:(x,y,z)=>engine?.project(x,y,z)});
+rpg=new RealmRPGUI.RPGUI({frameFoe,canFrameFoe:()=>!!engine&&!sim.paused&&!sim.worldDive&&RealmCombatView.plan({preset:camera.preset,player:sim.state.player,enemy:RealmCombat.selected(sim),distance:camera.distance}).ok,bridgeCommunityCommand,localLifeCommand,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,earthContext,earthTravel,earthReturn,bridgeView,cosmosContext,cosmosTravel,cosmosReturn,sim:()=>sim,adventure:()=>adventure,closePanel,openPanel,endBuild:()=>{sandbox.endBuild();sandbox.stopAuto();},clearKeys:()=>keys.clear(),focusWorld:()=>ui.canvas.focus({preventScroll:true}),toast,save,exportWorld,characters:()=>characterStore.describe(sim.snapshot()),characterAction,characterExport,characterImport,characterReload,characterRecovery,panel:()=>panel,camera:cameraPreset,resetCamera,rotate:a=>{camera.yaw+=a;camera.tour=false;},direction:()=>adventure.api.direction(),music:()=>experience.open(),gather:id=>sandbox.seek(id),walkLocal:walkAdventure,stopPersonalMusic:()=>experience?.stop(),audio:()=>audio,project:(x,y,z)=>engine?.project(x,y,z)});
 // Input distinguishes clicks from drags, with two-finger zoom on touch screens.
 let pointers=new Map(),gesture=null,keys=new Set();function zoom(k){camera.tour=false;if(camera.preset==='adventure'){camera.distance=Math.max(3.5,Math.min(20,camera.distance*k));return;}camera.half=C.clamp?C.clamp(camera.half*k,6,52):Math.max(6,Math.min(52,camera.half*k));camera.zoom=camera.half/camera.baseHalf;camera.overview=false;}
 function pointerDown(e){e.currentTarget.focus({preventScroll:true});camera.tour=false;if(e.button!==0&&e.button!==2&&e.pointerType!=='touch')return;e.preventDefault();e.currentTarget.setPointerCapture(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size===1)gesture={x:e.clientX,y:e.clientY,lastX:e.clientX,lastY:e.clientY,moved:false,pinch:false,orbitOnly:e.button===2};else if(pointers.size===2){let p=[...pointers.values()];gesture.pinch=true;gesture.moved=true;gesture.distance=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y);}}

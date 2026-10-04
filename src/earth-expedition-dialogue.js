@@ -125,7 +125,7 @@ function reading(personId,ledger,binding){
  if(r.story.claimed&&r.patrol.active){
   const run=r.patrol.active.run;title='Inspection circuit '+run;lines=[recognition(r.story.branch),'The first brace stays and the old organism remains alive. This patrol inspects the route; it does not repeat the repair.'];
   if(p.patrol.ready){lines.push('Circuit '+run+' is checked. Its payment is ready and still unpaid.');hint=isRill?'Choose Claim for this circuit here when you have room for its complete payment.':'Return to Rill at the clearing camp and explicitly claim this circuit’s payment.';}
-  else{const next=patrolAdvice[p.patrol.next[0].id];lines.push(next.line);hint=next.hint;}
+  else{const id=p.patrol.next[0].id,next=patrolAdvice[id],work=E.returnWork(r);lines.push(id==='inspect-glade'?work.line:next.line);hint=id==='inspect-glade'?'Use the supplied checking kit at the return glade, then bring this circuit back to Rill.':next.hint;}
   if(bound)lines.push(bound);
  }else if(r.story.claimed){
   title=isRill?'Your allocation is remembered':'The root keeps its support';lines=[recognition(r.story.branch)];

@@ -11,11 +11,79 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 
 
+CLI_BROWSER_OUTPUTS = frozenset({'bridge_browser', 'earth_story_transactions_browser',
+    'realm_givers_browser', 'realm_trails_north_browser',
+    'coastward_bridge_posts_browser', 'practice_visibility_browser'})
+GUARDED_BROWSER_OUTPUTS = frozenset({'realm_givers_browser', 'realm_trails_north_browser',
+    'coastward_bridge_posts_browser', 'practice_visibility_browser'})
+BROWSER_SOURCE_OUTPUTS = frozenset({'realm_trails_north_browser', 'practice_visibility_browser'})
+ENV_BROWSER_OUTPUTS = {
+    'bridge_community_browser': 'FIRSTLIGHT_BRIDGE_COMMUNITY_OUTPUT',
+    'home_history_browser': 'FIRSTLIGHT_HOME_HISTORY_OUTPUT',
+    'local_life_browser': 'FIRSTLIGHT_LOCAL_LIFE_OUTPUT',
+    'earth_ground_material_browser': 'FIRSTLIGHT_EARTH_GROUND_OUTPUT',
+    'camera_browser': 'FIRSTLIGHT_CAMERA_OUTPUT',
+    'earth_expedition_browser': 'FIRSTLIGHT_EXPEDITION_OUTPUT',
+    'coastward_scenery_browser': 'FIRSTLIGHT_SCENERY_OUTPUT',
+    'realm_work_presentation_browser': 'FIRSTLIGHT_REALM_WORK_OUTPUT',
+}
+
+
+def browser_run_spec(suite, output, mode="guarded"):
+    command = [sys.executable, f'tests/{suite}.py']
+    extra_env = {}
+    if mode not in ("guarded", "supported"):
+        raise ValueError("Unknown browser output mode")
+    if mode == "guarded" and suite not in GUARDED_BROWSER_OUTPUTS:
+        return command, extra_env
+    if output is not None:
+        target = output / suite
+        if suite in CLI_BROWSER_OUTPUTS:
+            command += ['--output', str(target)]
+            if suite in BROWSER_SOURCE_OUTPUTS:
+                command += ['--sources', str(target / 'earned-sources')]
+        elif suite in ENV_BROWSER_OUTPUTS:
+            extra_env[ENV_BROWSER_OUTPUTS[suite]] = str(target)
+    return command, extra_env
+
+
+def reserve_browser_output(output):
+    if output is not None:
+        # Atomically claim a fresh root before any source/suite work can run.
+        output.mkdir(parents=True, exist_ok=False)
+
+
+def prepare_browser_sources(output, *, root=ROOT):
+    if output is None:
+        return None
+    source = root / 'evidence10/starter'
+    target = output / 'practice_visibility_browser/earned-sources'
+    if target.resolve().is_relative_to(source.resolve()):
+        raise ValueError('Browser evidence must not recursively copy its source.')
+    # The successful source gate has just generated these command-earned cases.
+    # Use the browser suite's supported external-source contract, byte-preserved.
+    # Never overwrite a prior evidence destination on retry.
+    shutil.copytree(source, target)
+    return target
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--browser', action='store_true', help='Also run the current browser suites including starter progression and native persistence (requires requirements-dev.txt and Chromium).')
     parser.add_argument('--output', type=Path, default=ROOT / 'verification', help='Directory for fresh command logs.')
+    parser.add_argument('--browser-output', type=Path, help='Route suites with existing output contracts to a separate evidence directory (D: on Windows); requires --browser. Legacy small screenshots keep their defaults.')
+    parser.add_argument('--browser-output-mode', choices=('guarded', 'supported'), default='guarded', help='guarded routes only the four suites requiring D: on Windows; supported routes every existing output contract.')
     args = parser.parse_args()
+    if args.browser_output is not None:
+        if not args.browser:
+            parser.error('--browser-output requires --browser')
+        args.browser_output = args.browser_output.resolve()
+        if os.name == 'nt' and args.browser_output.drive.upper() != 'D:':
+            parser.error('--browser-output must stay on D: on Windows')
+        try:
+            reserve_browser_output(args.browser_output)
+        except FileExistsError:
+            parser.error('--browser-output must name a new directory; prior evidence stays untouched')
     if not shutil.which('node'):
         parser.error('Node.js is required for development checks. Install Node 22 or 24.')
     output = args.output.resolve()
@@ -24,12 +92,12 @@ def main():
     print(f'Python: {sys.version.split()[0]}; Node: {subprocess.check_output(["node", "--version"], text=True).strip()}', flush=True)
     print(f'Logs: {output}', flush=True)
 
-    def run(name, command, timeout=180):
+    def run(name, command, timeout=180, extra_env=None):
         print(f'Running {name}...', flush=True)
         log = output / (name + '.log')
         with log.open('wb') as stream:
             try:
-                result = subprocess.run(command, cwd=ROOT, env=env, stdout=stream,
+                result = subprocess.run(command, cwd=ROOT, env={**env, **(extra_env or {})}, stdout=stream,
                                         stderr=subprocess.STDOUT, timeout=timeout)
             except subprocess.TimeoutExpired:
                 print(f'FAILED: {name} exceeded {timeout}s; see {log}', file=sys.stderr)
@@ -106,13 +174,15 @@ def main():
     run('bridge-community-bow', ['node', 'tests/bridge_community_journey.cjs', '--bow'])
     run('bridge-community-veteran', ['node', 'tests/bridge_community_journey.cjs', '--veteran'])
     if args.browser:
+        prepare_browser_sources(args.browser_output)
         # Qualify the recently extended Earth presentation and native giver
         # route first; fail promptly while retaining every default suite.
         for suite in ['bridge_community_browser', 'home_history_browser', 'local_life_browser', 'earth_ground_material_browser', 'realm_givers_browser', 'crossing_browser', 'regression09_browser', 'cutaway_browser', 'reflection_browser', 'native_origin_browser', 'starter_browser', 'camera_browser', 'pursuit_browser', 'characters_browser', 'classes_browser', 'cosmos_browser', 'earth_browser', 'earth_story_browser', 'earth_notes_browser', 'gathering_browser', 'realm_atlas_browser', 'timber_browser', 'traveler_browser', 'bridge_browser', 'combat_cue_browser', 'world_foundations_browser', 'world_cutaway_browser', 'realm_trails_browser', 'realm_trails_north_browser', 'realm_trails_cosmos_browser', 'soundscape_browser', 'journey_usability_browser', 'workshop_transactions_browser', 'companion_presentation_browser', 'skitter_presentation_browser', 'coastward_scenery_browser', 'earth_story_transactions_browser', 'coastward_bridge_posts_browser', 'practice_visibility_browser', 'realm_work_presentation_browser', 'earth_expedition_browser']:
             # Giver coverage walks eleven actors and companion near/far controls.
             # Local life restarts all Chromium 48 times across three earned cases.
             # Keep the complete routes/assertions in a bounded 20-minute window.
-            run(suite, [sys.executable, f'tests/{suite}.py'], timeout=1200 if suite in ('realm_givers_browser', 'local_life_browser') else 600)
+            command, extra_env = browser_run_spec(suite, args.browser_output, mode=args.browser_output_mode)
+            run(suite, command, timeout=1200 if suite in ('realm_givers_browser', 'local_life_browser') else 600, extra_env=extra_env)
     print('Verification passed. Automated checks do not qualify human pacing or device performance.', flush=True)
 
 

@@ -65,6 +65,16 @@ def fight(step,patrol_run=None):
  radius=4 if record['style']=='bow' else 1.1;walk(enemy['x'],enemy['z']+radius,enemy['id']+' approach');page.keyboard.press('Tab');render();check(variant+' Tab selects '+enemy['id'],diag()['adventure']['tactics']['target']==enemy['id'])
  windup=ev('''id=>{for(let i=0;i<500;i++){const sim=Realm.test.worldContext().sim,e=RealmAdventure.runtime(sim).enemies.find(e=>e.id===id);if(e?.mode==='windup'&&e.timer>.15)return{ok:true,timer:e.timer};if(!e||e.hp<=0)return{ok:false,error:'Actor resolved before tell'};Realm.test.step(.05);}return{ok:false};}''',enemy['id']);check(variant+' actual AI tell occurs',windup['ok'],windup);render();check(variant+' muted visible tell invites Brace or movement',page.locator('#target-cue').get_attribute('data-phase')=='windup' and ('Brace' in page.locator('#target-cue-detail').inner_text() or 'Braced' in page.locator('#target-cue-detail').inner_text()))
  if step['id']=='clear-root-pests' and patrol_run is None:
+  # Explicit native frame control; no forced target tracking or combat change.
+  for fov in [45,60,80]:
+   page.locator('#rpg-hud [data-rpg="camera"][data-id="adventure"]').click();ev('Realm.test.openPanel("settings")');slider=page.locator('#camera-fov');slider.focus();page.keyboard.press('Home')
+   for _ in range(fov-45):page.keyboard.press('ArrowRight')
+   close();render();before_frame=state();before_tactics=diag()['adventure']['tactics'];page.locator('#target-framing').click();render()
+   framed=ev("""()=>{const d=Realm.diagnostics,e=d.adventure.enemies.find(e=>e.id===d.adventure.tactics.target),y=RealmWorldFoundations.height(d.scene,e.x,e.z),q=Realm.project(e.x,y,e.z),body=Realm.project(e.x,y+1,e.z),bar=document.querySelector('#skillbar').getBoundingClientRect();return{q,body,barTop:bar.top,yaw:d.camera.yaw,fov:d.camera.fov,profile:Realm.state.settings.cameraViews.profiles.adventure};}""")
+   check(variant+' explicit frame makes actual foe feet/body clear of HUD at FOV '+str(fov),framed['q']['visible'] and framed['body']['visible'] and framed['q']['y']<framed['barTop']-8 and framed['body']['y']<framed['barTop']-8 and framed['fov']==fov,framed)
+   after_frame=state();check(variant+' framing preserves actual combat/player/inventory '+str(fov),before_frame['adventure']==after_frame['adventure'] and before_frame['sandbox']==after_frame['sandbox'] and before_frame['player']==after_frame['player'] and before_tactics==diag()['adventure']['tactics']);shot('explicit-frame-'+str(fov))
+  yaw=diag()['camera']['yaw'];render();check(variant+' subsequent player-follow render never chases target yaw',diag()['camera']['yaw']==yaw)
+  page.keyboard.press(']');render();check(variant+' manual camera rotation remains available',diag()['camera']['yaw']!=yaw)
   check(variant+' actual threat names grounded bank sweep','Bank sweep' in page.locator('#target-cue-title').inner_text())
   for view,quiet in [('follow',False),('follow',True),('adventure',False),('adventure',True)]:
    ev('Realm.test.openPanel("settings")');page.locator('[data-setting="reducedMotion"]').set_checked(quiet);close();render()
@@ -82,10 +92,18 @@ def fight(step,patrol_run=None):
   projection=ev('''()=>{const sim=Realm.test.worldContext().sim,p=RealmEarthExpeditionArt.parts(sim.state.earthExpedition);return{staged:p.filter(p=>p.opt.expeditionPart==='staged-brace-timber').length,tag:p.find(p=>p.opt.expeditionPart==='patrol-clear-tag')?.opt.patrolRun??null,installed:p.filter(p=>p.opt.expeditionPart==='installed-brace').length};}''')
   check(variant+' saved defeat has correct finite/repeat worksite consequence',projection['staged']==(2 if patrol_run is None else 0) and projection['tag']==patrol_run and projection['installed']==(0 if patrol_run is None else 1),projection)
  record['combats'].append({'id':enemy['id'],**outcome});command('target-clear');close()
+def kit_appearance(label,run):
+ for view in ['follow','adventure']:
+  page.locator('#rpg-hud [data-rpg="camera"][data-id="'+view+'"]').click();page.keyboard.press('r');render()
+  data=ev("""run=>{const sim=Realm.test.worldContext().sim,e=__encounterArt.e,saved=e.dynamic.map(b=>({b,items:b.items,data:b.data,count:b.count})),read=()=>{const g=e.gl,a=new Uint8Array(e.mainF.w*e.mainF.h*4);g.bindFramebuffer(g.FRAMEBUFFER,e.mainF.f);g.readPixels(0,0,e.mainF.w,e.mainF.h,g.RGBA,g.UNSIGNED_BYTE,a);g.bindFramebuffer(g.FRAMEBUFFER,null);return a;},args=[sim.elapsed,sim.state.hour,sim.state.weather==='rain'],before=JSON.stringify(sim.state);e.render(...args);const baseline=read();let parts=0;try{for(const q of saved){q.b.items=q.items.filter(i=>!(i.patrolRun===run&&/^patrol-(kit|billet|test|lashing)/.test(i.expeditionPart||'')));parts+=q.items.length-q.b.items.length;e.updateBatch(q.b);}e.render(...args);const absent=read();for(const q of saved){q.b.items=q.items;q.b.data=q.data;e.updateBatch(q.b);q.b.count=q.count;}e.render(...args);const restored=read();let changed=0,delta=0;for(let i=0;i<baseline.length;i+=4){if(Math.max(...[0,1,2].map(k=>Math.abs(baseline[i+k]-absent[i+k])))>2)changed++;for(let k=0;k<3;k++)delta+=Math.abs(baseline[i+k]-restored[i+k]);}return{parts,changed,delta,pure:before===JSON.stringify(sim.state),glError:e.gl.getError()};}finally{for(const q of saved){q.b.items=q.items;q.b.data=q.data;e.updateBatch(q.b);q.b.count=q.count;}}}""",run)
+  check(variant+' actual supplied '+label+' kit pixels '+view,data['parts']==7 and data['changed']>10 and data['delta']==0 and data['pure'] and data['glError']==0,data);shot('kit-'+str(run)+'-'+label+'-'+view)
+
 def objective(step,run=None):
  walk_button(step['id'],step,step['name'])
  if step['kind']=='defeat':fight(step,run);return
+ if run and step['id']=='inspect-glade':kit_appearance('pending',run)
  page.keyboard.press('e');render();action='patrol-step' if run else 'step';page.locator('[data-rpg="expedition-'+action+'"][data-id="'+step['id']+'"]').click();render();steps=state()['earthExpedition']['patrol']['active']['steps'] if run else state()['earthExpedition']['story']['steps'];check(variant+' visible field action '+step['id'],step['id'] in steps);close()
+ if run and step['id']=='inspect-glade':kit_appearance('checked',run)
 
 try:
  for flags in [[],['--bow'],['--veteran']]:subprocess.run(['node','tests/earth_expedition_journey.cjs',*flags,'--output',str(OUT/'earned')],cwd=ROOT,check=True,capture_output=True,timeout=180)

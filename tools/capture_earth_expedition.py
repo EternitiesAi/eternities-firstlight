@@ -26,7 +26,7 @@ ROOT = Path(__file__).resolve().parents[1]
 VIEWPORT = {'width': 1440, 'height': 900}
 ROOM = 'world-earthlands'
 CORE_FILES = [
-    'src/core.js', 'src/adventure.js', 'src/combat.js', 'src/arsenal.js',
+    'src/combat-view.js', 'src/core.js', 'src/adventure.js', 'src/combat.js', 'src/arsenal.js',
     'src/characters.js', 'src/characters-ui.js', 'src/earth-expedition.js',
     'src/earth-expedition-ui.js', 'src/earth-expedition-dialogue.js',
     'src/earth-expedition-art.js', 'src/earth-expedition-beast-art.js',
@@ -191,7 +191,7 @@ def main():
         'source_hashes': source_hashes, 'missing_required_files': missing, 'embedded_modules': embedded,
         'viewport': VIEWPORT, 'requested_renderer': args.renderer,
         'video_audio': 'Silent Playwright viewport WebM; no captured or replacement audio.',
-        'branch': branch, 'binding_kind': binding, 'intentional_patrols': 1 if args.variant == 'fresh-blade' else 0,
+        'branch': branch, 'binding_kind': binding, 'intentional_patrols': 1 if args.variant != 'veteran' else 0,
         'presentation': ['Native balanced quality', 'Native timeFlow disabled; inherited hour retained',
                          'Native camera controls and actual V exchange; no camera-state writes'],
         'simulation': 'Ordinary RAF throughout. RPG workspaces pause through production UI; no accelerated/test simulation.',
@@ -254,7 +254,12 @@ def main():
                     # Observation only. No Firstlight test/capture flag is installed.
                     page.add_init_script('''window.__earthCaptureRaf={frames:0,first:null,last:null};
                       requestAnimationFrame(function count(t){const r=window.__earthCaptureRaf;
-                        r.frames++;if(r.first===null)r.first=t;r.last=t;requestAnimationFrame(count);});''')
+                        r.frames++;if(r.first===null)r.first=t;r.last=t;
+                        const flight=window.__earthFlightWatch;
+                        if(flight&&window.Realm){const d=Realm.diagnostics.adventure;
+                          if(d.tactics.target===flight.enemy&&d.arrows.length&&flight.samples.length<120)
+                            flight.samples.push({frame:r.frames,at:d.arrows.map(a=>a.age),arrows:d.arrows.map(a=>({...a,hit:[...a.hit]})),target:d.tactics.target});}
+                        requestAnimationFrame(count);});''')
                     response = page.goto(origin + '/index.html', wait_until='load')
                     page.wait_for_function('()=>!!window.Realm')
                     page.wait_for_function('()=>getComputedStyle(document.querySelector("#loading")).opacity==="0"')
@@ -452,27 +457,40 @@ def main():
                                 selected = True
                                 break
                         check('Native Tab selects accepted actor ' + enemy_id, selected)
+                        if args.variant == 'fresh-bow':
+                            page.evaluate('id=>{window.__earthFlightWatch={enemy:id,samples:[]};}', enemy_id)
+                        if step['id'] == 'clear-root-pests':
+                            click('#rpg-hud [data-rpg="camera"][data-id="adventure"]')
+                            click('#target-framing')
+                            mark(('patrol-' + str(run) + '-' if run else 'story-') + 'explicit-frame-foe')
                         begun, samples, guards, saw_arrow, first_guard = time.monotonic(), [], 0, False, False
                         side_escape = None
                         saw_release = False
                         # Wait for an actual tell before initiating damage, even with veteran gear.
                         while time.monotonic() - begun < 20:
-                            d = diag()['adventure']
+                            waiting = page.evaluate('()=>({diagnostics:Realm.diagnostics,hp:Realm.state.adventure.hp})')
+                            d = waiting['diagnostics']['adventure']
                             actor = next((e for e in d['enemies'] if e['id'] == enemy_id), None)
-                            check('Traveler survives waiting for tell', state()['adventure']['hp'] > 0)
+                            check('Traveler survives waiting for tell', waiting['hp'] > 0)
                             if actor and actor['mode'] == 'windup' and actor['timer'] > .2:
                                 if step['id'] == 'clear-root-pests' and run is None and side_escape is None:
                                     if actor['timer'] < .85:
                                         page.wait_for_timeout(80)
                                         continue
                                     frozen = dict(actor['strike'])
-                                    yaw = diag()['camera']['yaw']
+                                    yaw = waiting['diagnostics']['camera']['yaw']
                                     right = (math.cos(frozen['yaw']), -math.sin(frozen['yaw']))
                                     directions = {'d': (math.cos(yaw), -math.sin(yaw)), 'a': (-math.cos(yaw), math.sin(yaw)),
                                                   's': (math.sin(yaw), math.cos(yaw)), 'w': (-math.sin(yaw), -math.cos(yaw))}
                                     key = max(directions, key=lambda k: sum(a*b for a,b in zip(directions[k], right)))
-                                    hp_before = state()['adventure']['hp']
-                                    mark('story-bank-sweep-before-native-side-step', picture=False)
+                                    hp_before = waiting['hp']
+                                    # React to the observed tell immediately. Full checkpoint
+                                    # reads/writes before key-down previously spent its window,
+                                    # so an eventual outside position could follow a real hit.
+                                    # Preserve the exact pre-move snapshot without extra calls.
+                                    side_start = {'seconds': time.monotonic()-started,
+                                                  'timer': actor['timer'], 'player': dict(d['player']),
+                                                  'camera': waiting['diagnostics']['camera']}
                                     page.keyboard.down(key)
                                     try:
                                         page.wait_for_timeout(700)
@@ -483,7 +501,7 @@ def main():
                                     check('Native movement reaches the side of the locked lane', abs(lateral) > 1.24, {'key': key, 'lateral': lateral, 'player': pos})
                                     page.wait_for_function('(id)=>Realm.diagnostics.adventure.enemies.find(e=>e.id===id)?.mode==="recover"', arg=enemy_id)
                                     contact = next(e for e in diag()['adventure']['enemies'] if e['id']==enemy_id)
-                                    side_escape = {'key': key, 'frame': frozen, 'lateral': lateral, 'hpBefore': hp_before,
+                                    side_escape = {'key': key, 'frame': frozen, 'start': side_start, 'lateral': lateral, 'hpBefore': hp_before,
                                                    'hpAfter': state()['adventure']['hp'], 'contactAt': contact['contactAt'], 'contactHit': contact['contactHit']}
                                     check('Native side-step avoids actual contact with frame retained', side_escape['hpBefore']==side_escape['hpAfter'] and contact['strike']==frozen and contact['contactHit'] is False, side_escape)
                                     mark('story-bank-sweep-native-side-step-opening')
@@ -525,11 +543,13 @@ def main():
                         check('Observed an accepted actual weapon release ' + enemy_id, saw_release)
                         check('Combat pays no old currency/drop/defeat reward ' + enemy_id,
                               all(after['adventure'][k] == before['adventure'][k] for k in ['xp', 'coins', 'ore', 'drops', 'defeated']))
+                        flight_samples = page.evaluate('()=>{const r=window.__earthFlightWatch;window.__earthFlightWatch=null;return r?.samples||[];}')
                         if args.variant == 'fresh-bow':
-                            check('Actual bow projectile observed ' + enemy_id, saw_arrow)
+                            saw_arrow = saw_arrow or bool(flight_samples)
+                            check('Actual bow projectile observed ' + enemy_id, saw_arrow, {'raf_observer_samples': flight_samples})
                         report['combats'].append({'enemy_id': enemy_id, 'step': step['id'], 'run': run,
                                                    'seconds': time.monotonic() - begun, 'side_escape': side_escape, 'guards': guards,
-                                                   'saw_actual_arrow': saw_arrow, 'initial_hp': term['hp'],
+                                                   'saw_actual_arrow': saw_arrow, 'raf_observer_flight_samples': flight_samples, 'initial_hp': term['hp'],
                                                    'hp_at_approach': enemy['hp'], 'saw_actual_weapon_release': saw_release,
                                                    'companion_mode_retained': before['adventure']['companion']['mode'],
                                                    'lowest_observed_hp': low, 'player_hp_before': before['adventure']['hp'],
@@ -543,6 +563,9 @@ def main():
                         if step['kind'] == 'defeat':
                             fight(step, catalogue, run)
                         else:
+                            if run and step['id'] == 'inspect-glade':
+                                camera('follow', 'supplied-kit-pending-diorama')
+                                camera('adventure', 'supplied-kit-pending-third')
                             interact()
                             reading(step['name'] + ' at physical work point')
                             action = 'patrol-step' if run else 'step'
@@ -550,6 +573,9 @@ def main():
                             check('Native field action records ' + step['id'], step['id'] in steps_for(run))
                             mark(('patrol-' + str(run) + '-' if run else 'story-') + step['id'])
                             close()
+                            if run and step['id'] == 'inspect-glade':
+                                camera('follow', 'supplied-kit-checked-diorama')
+                                camera('adventure', 'supplied-kit-checked-third')
                             if step['id'] == 'brace-root-channel':
                                 camera('adventure', 'installed-root-brace-third')
                                 camera('follow', 'installed-root-brace-diorama')
@@ -601,7 +627,7 @@ def main():
                     claim(definition)
                     camera('adventure', 'paid-rill-third')
                     camera('follow', 'paid-rill-diorama')
-                    if args.variant == 'fresh-blade':
+                    if args.variant != 'veteran':
                         walk('giver', giver, 'Rill intentional patrol acceptance')
                         interact()
                         reading('Declared intentional patrol payment; no acceptance fee')
@@ -776,14 +802,14 @@ def main():
                     check('Normal resource regrowth and crop ripening follow actual timers', True,
                           {'before_nodes': base['sandbox']['nodes'], 'after_nodes': final['sandbox']['nodes']})
                     expected_wallet = wallet(base)
-                    expected_wallet['xp'] = min(9999, expected_wallet['xp'] + 45 + (5 if args.variant == 'fresh-blade' else 0))
-                    expected_wallet['coins'] += 18 + (4 if args.variant == 'fresh-blade' else 0) - 8
-                    expected_wallet['ore'] += 3 + (3 if args.variant == 'fresh-blade' else 0) - 3
-                    expected_wallet['wood'] += choice['materials']['wood'] + (2 if args.variant == 'fresh-blade' else 0)
-                    expected_wallet['fiber'] += choice['materials']['fiber'] + (2 if args.variant == 'fresh-blade' else 0) - 6
+                    expected_wallet['xp'] = min(9999, expected_wallet['xp'] + 45 + (5 if args.variant != 'veteran' else 0))
+                    expected_wallet['coins'] += 18 + (4 if args.variant != 'veteran' else 0) - 8
+                    expected_wallet['ore'] += 3 + (3 if args.variant != 'veteran' else 0) - 3
+                    expected_wallet['wood'] += choice['materials']['wood'] + (2 if args.variant != 'veteran' else 0)
+                    expected_wallet['fiber'] += choice['materials']['fiber'] + (2 if args.variant != 'veteran' else 0) - 6
                     check('Final balance contains only declared payouts and one binding cost', wallet(final) == expected_wallet, {'expected': expected_wallet, 'actual': wallet(final)})
                     check('Only the intentionally requested patrol was paid',
-                          final['earthExpedition']['patrol'] == {'lastClaim': 1 if args.variant == 'fresh-blade' else 0, 'active': None})
+                          final['earthExpedition']['patrol'] == {'lastClaim': 1 if args.variant != 'veteran' else 0, 'active': None})
                     check('All story work is paid without a new acceptance',
                           final['earthExpedition']['story'] == {'accepted': True, 'branch': branch,
                                                                'steps': [s['id'] for s in definition['steps']], 'claimed': True})
