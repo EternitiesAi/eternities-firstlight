@@ -1,0 +1,70 @@
+{
+  "implementation_head": "5668454e64c8f5292e5b435720649d1388822207",
+  "source_html_sha256": "453c34317b841719f3691554de350b4936924c97d0afd65026348f3708e91fcf",
+  "capture_status": "passed",
+  "capture_checks": 4784,
+  "raw_video": {
+    "path": "e97008d4b1effc2ad5d318d85bc54f7e.webm",
+    "bytes": 44230448,
+    "sha256": "322cb2f672d99000a09dddefac42928ecd8b491ad3b79f11cc2c512f9c0324fa",
+    "lf_sha256": "4fc7c5ee032c87e2d0546aa275d9536a3da05eeccc4f068bfcf0e864a0b4833f",
+    "audio": false
+  },
+  "clip": {
+    "path": "FIRSTLIGHT_LIVING_ROAD_GAMEPLAY.mp4",
+    "bytes": 8445896,
+    "sha256": "70bbc16f7fbc792c7c398dce68076e825951c6a923ef938060567ae5d76649a9",
+    "expected_duration_seconds": 40.5,
+    "actual_frames": 1012,
+    "actual_decoded_seconds": 40.48,
+    "container_seconds": 40.48,
+    "encoder_fps": 25.0,
+    "decoded_video_size": [
+      1440,
+      900
+    ]
+  },
+  "segments": [
+    {
+      "source_start_seconds": 69.5,
+      "source_end_seconds": 73.5,
+      "label": "Woodland and camera exchange"
+    },
+    {
+      "source_start_seconds": 110,
+      "source_end_seconds": 125,
+      "label": "Frozen bank-sweep lane, native side step, Brace and defeat"
+    },
+    {
+      "source_start_seconds": 128,
+      "source_end_seconds": 134,
+      "label": "Existing living-root support fitted and both views"
+    },
+    {
+      "source_start_seconds": 190.5,
+      "source_end_seconds": 195,
+      "label": "Paid return recognition and both views"
+    },
+    {
+      "source_start_seconds": 336,
+      "source_end_seconds": 342,
+      "label": "Explicit finite binding comparison and both views"
+    },
+    {
+      "source_start_seconds": 345,
+      "source_end_seconds": 350,
+      "label": "Actual upgraded impact at practice target"
+    }
+  ],
+  "editing": "Direct cuts only; ordinary time retained; silent actual viewport capture; no replacement images, speed changes or added audio.",
+  "capture_method": "Record an earned Earth expedition using native UI and ordinary RAF.\n\nNo test/capture flags, scripted simulation steps, direct game commands, grants,\nteleports or camera-state writes are used. Playwright records a silent viewport\nWebM. This is an automated known-route outing, not human pacing or a performance\nqualification. Failed recordings, snapshots and receipts are retained.\n",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "browser_version": "143.0.7499.4",
+  "performance_qualification": false,
+  "raw_full_decode_exit": 0,
+  "clip_full_decode_exit": 0
+}

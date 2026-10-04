@@ -1,0 +1,131 @@
+✖ the grounded brute pursues outside its short physical sweep instead of striking remotely (10.475ms)
+✖ warning locks the physical lane; turning and moving later cannot chase the target (1.9582ms)
+✖ contact hits inside the locked lane exactly once, Brace halves actual damage (5.356ms)
+✖ footprint rotates in world space, includes body edge and excludes sides/rear/far (0.5479ms)
+✖ only exact accepted encounter identities use a bank sweep, generic sentinels keep their owner (0.404ms)
+✔ pause freezes warning and damage; returning/free-home removes transient strike (0.7105ms)
+✖ selected threat names the actual sweep and recovery without writing progression (1.8966ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 1
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 90.0303
+
+✖ failing tests:
+
+test at tests\earth_encounter.test.cjs:13:1
+✖ the grounded brute pursues outside its short physical sweep instead of striking remotely (10.475ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'windup' !== 'pursue'
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\earth_encounter.test.cjs:14:68)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'windup',
+    expected: 'pursue',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\earth_encounter.test.cjs:16:1
+✖ warning locks the physical lane; turning and moving later cannot chase the target (1.9582ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + undefined
+  - {
+  -   x: -134,
+  -   yaw: 0,
+  -   z: -70
+  - }
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\earth_encounter.test.cjs:17:75)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: { x: -134, z: -70, yaw: 0 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\earth_encounter.test.cjs:20:1
+✖ contact hits inside the locked lane exactly once, Brace halves actual damage (5.356ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - true
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\earth_encounter.test.cjs:24:80)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\earth_encounter.test.cjs:27:1
+✖ footprint rotates in world space, includes body edge and excludes sides/rear/far (0.5479ms)
+  TypeError: E.strikeContains is not a function
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\earth_encounter.test.cjs:29:158)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+
+test at tests\earth_encounter.test.cjs:32:1
+✖ only exact accepted encounter identities use a bank sweep, generic sentinels keep their owner (0.404ms)
+  TypeError: E.encounter is not a function
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\earth_encounter.test.cjs:33:37)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+
+test at tests\earth_encounter.test.cjs:42:1
+✖ selected threat names the actual sweep and recovery without writing progression (1.8966ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'strike'
+  - 'bank-sweep'
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\earth_encounter.test.cjs:44:64)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'strike',
+    expected: 'bank-sweep',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

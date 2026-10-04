@@ -1,0 +1,20 @@
+✔ the grounded brute pursues outside its short physical sweep instead of striking remotely (18.4849ms)
+✔ warning locks the physical lane; turning and moving later cannot chase the target (5.8881ms)
+✔ contact hits inside the locked lane exactly once, Brace halves actual damage (18.2366ms)
+✔ the full warning has no early contact and the full recovery remains an attack-free opening (13.4429ms)
+✔ footprint rotates in world space, includes body edge and excludes sides/rear/far (0.6609ms)
+✔ only exact accepted encounter identities use a bank sweep, generic sentinels keep their owner (0.6651ms)
+✔ pause freezes warning and damage; returning/free-home removes transient strike (0.9776ms)
+✔ selected threat names the actual sweep and recovery without writing progression (5.4777ms)
+✔ a real wall blocks contact even when the player body lies within the sweep (1.1716ms)
+✔ visible warning follows locked frame; reduced motion keeps the complete rectangle and no moving deadline (0.7365ms)
+✔ saved clearance stages only the first brace; a new patrol does not inherit a cleared inspection tag (1.8576ms)
+✔ refused actual defeat saves leave no clearance or supplied kit and can be retried (3.0016ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 175.4632

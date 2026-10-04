@@ -1,0 +1,389 @@
+{
+  "method": "Visible expedition UI and whole-Chromium restart on isolated native storage.\nStarting saves are freshly command-earned. Production movement/combat runs with\nlabelled accelerated ticks in software WebGL; no human/GPU/normal-time claim.\n",
+  "head": "4ee5854aa991c1eec019527c9e4944db060a668f",
+  "html_sha256": "94ab56971b5db6db481912750712b563250638e9c3c01b9f2ba7e6ca1eacec36",
+  "sources_sha256": {
+    "src\\adventure-art.js": "ccec86cf0523b318305a3554e7c5cfbb86f341248319f1e028280acd02bc6c6b",
+    "src\\adventure-ui.js": "25da84755e7509fb0b45193b02e9b3dea684a536ec58e86c99ba4028cb733f88",
+    "src\\adventure.js": "7369b1df78681b88429123941a733cd8a29f736024897a4f19ab0e7c7b1a2a8b",
+    "src\\app.js": "46a308937449fbf8b26d937c47e9563f3df84b80d642ad7f970f319627716fea",
+    "src\\arsenal-art.js": "1899a42e04fd44e18eced395229793d275a873dbe2902473968289815a3f694f",
+    "src\\arsenal-ui.js": "a462102896a3c7013f29f6cdf40504b983b8fde803baf41b98b8fb032da3abe6",
+    "src\\arsenal.js": "1a8fcedd261165900d04f366ffedb08457c4f3a724befe28b8ec1b35c3ae9163",
+    "src\\beacon-art.js": "aea9e5d22d23eaf73777636c56c2444edac9b0d6239f9504cc95026585618577",
+    "src\\beacon.js": "2aded7272a8d50cbfbdb4421f0140d00401a49788a3bb465260e30f501a2bf13",
+    "src\\bridge-art.js": "e8f85dd21a0eb6363f674a934c625b22fc29f18fc63a543ebd61ea0a87fa254d",
+    "src\\bridge-community-art.js": "ff204eb443f9cdff118164669b92766bf8c64be6bd365353e949c1b359ef9a3b",
+    "src\\bridge-community-ui.js": "a51a02420b59329d0ae268d42a5632de50d87d9b031103a724ad51564737c6d6",
+    "src\\bridge-community.css": "15be66090d836555498d87e00564c5b7b7094c2e3dca5951f9b1fde5023ea29c",
+    "src\\bridge-community.js": "3f8ca1a059525761e5631ba694f3de6d00f60c1a8d78e7fa79c39087fdff532d",
+    "src\\bridge-moment-view.js": "fe58c7824f96458f2608af4d1cf76c81d2936da89a8cca1ad933974b65e0e03c",
+    "src\\characters-ui.js": "58de0cb602479d45eae66f4ccd4077253e34e6e3d843a1505f9eca4d4a1f8f77",
+    "src\\characters.css": "48bfb2431b5fb50e530ed334e52cf07c31b8a29bdb5bb4917365210ab9e71815",
+    "src\\characters.js": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+    "src\\classes-ui.js": "6fb25a35158cf3388485f57016aea745260dea8a057f8d6b4781d3f7a296d22b",
+    "src\\classes.css": "4b9b47443b1817efe2b4cd43e7a3d0d34e623738a5b1e6e1cad05bc2ce88e892",
+    "src\\classes.js": "15da8e8f26c234a5903e5321d9cbcadea773037c9536911a5dc85cb9da2aaa97",
+    "src\\coastward-settlement-art.js": "8f08b152b5205c434ffa7408118e754799eb7ab396b2c0aaec8920cc0029c839",
+    "src\\coastward-woodland-art.js": "45b2758d3f8d75457545b24c2cc96f81f70ac8296bf183f57ddd412289f130fc",
+    "src\\combat.js": "fea2754a28364c7fc7aef200ea7d97f03ec55c4a1b0eb70ecb9bf8c9bb12c255",
+    "src\\companion-art.js": "06821bb333cc1d61398017fcd236fb4622aae6432ce636f827642531946b2a32",
+    "src\\core.js": "0bf8965aefd3e121795fc0d2ae555c2b04ef2da428427fc8d54cb88703e4d42e",
+    "src\\cosmos-art.js": "f95fe5cbbb5b49609606f15249e127af70af4f76e39839449fd279db91c632b1",
+    "src\\cosmos-ui.js": "60c774d86f072999a7965bc4a974e8cff7ceffd4b48d2f10ef2cf8a16af85734",
+    "src\\cosmos.css": "4d79807974082aaef0df364d312ae3d4a345ffd40b5eab403ccc55c24f02a63b",
+    "src\\cosmos.js": "dc646ba254ad4c482685c58d342e50c696832f479c8a13526faeed089fe4d3c5",
+    "src\\creative.js": "d0032234d3cab1a6e90c84736011a98631bcc3748de8d5fc23df872367038761",
+    "src\\crossing-art.js": "86cd8945194c6437d9ece96a7d0bcac8a4970eb5f3324300e48d08376bb61bcf",
+    "src\\crossing-ui.js": "5a2a7f6989a0a7ff0a96fee7aa88ec77dadbfba15440a272f131f17a98d86913",
+    "src\\crossing.css": "af6dd51f197dfa1963fc9fa0d92683b2e6f48270903aaea5ba90cbb2833862a2",
+    "src\\crossing.js": "b666c4e6e20483ad267293578020876c8791bbbf23f8116803936658400d1a8f",
+    "src\\drover-art.js": "0f4dda1af6b05e1c7e0931d835fca2d3faec7960788bc89b9f9b591af19206b0",
+    "src\\earth-art.js": "e1053c4c73142de382346760b199fefa92833c4b053ebf698014315b7563f76c",
+    "src\\earth-expedition-art.js": "1b74b4f6825f40e77877e685250f9075500d8206b7578df9985f646a6f6bc8f1",
+    "src\\earth-expedition-beast-art.js": "a92a0acc71c3d89f177e3aed26e8838513a0ca1d54f33ab723ecd9c65fc3e607",
+    "src\\earth-expedition-dialogue.js": "4ef714175650546e933a67f90c3d142987b459e28e560de43bdf79a9e41f0b0f",
+    "src\\earth-expedition-ui.js": "030b58f7a64070b4c48f80794e72ce7076dbeed2b391e7358c27dfa1303e758d",
+    "src\\earth-expedition.css": "a8a0f4822afcff0a7c404b3c4ff358f3d8a38287bda431da0597cecfecaf5a72",
+    "src\\earth-expedition.js": "3f7f0c112c9febb12fee0c3200fd4c4e3e7cbb7240cd016780340b2ea8340d7b",
+    "src\\earth-notes-art.js": "87fe4682829bfff89978d7046d62f518874a7953808431c5634327c9eb449556",
+    "src\\earth-notes-ui.js": "9e0f0df26062b4929e0c3a801e8e857afc269936dbe4932279e935c56274f264",
+    "src\\earth-notes.js": "4ab5807020f65086b190591414c871ee76412791ac0c97dca5447c595840e9e0",
+    "src\\earth-shoulder-art.js": "422a50a7aeec456b6f75095c53a319d2cbf6ac5e09f773e268ed54034c2ddb8d",
+    "src\\earth-story-ui.js": "a9eddc45b9019dff04a603a6261969e5bc86837ffb4ca38548037696af090c4f",
+    "src\\earth-story.js": "fd0ced6f17f1b15b2aee4e31aa00be249bc8e1fb08c4e735416d95c173fd52d0",
+    "src\\earth-ui.js": "5f77ca6399e08fd2467cfc59ddcee555b0e665a84392f2c4010ca1b47b856e7b",
+    "src\\earth.css": "1f40093ded67c175c70c730b8518ff928d26db40287515256fc287c45f2a9f3d",
+    "src\\earth.js": "1623be8382f2d05dbf16cac886951752e6d193dafd97353c4df29ecd21fa3735",
+    "src\\elderweald-trail-art.js": "3f3bc9c3afb12fede706ababdfa276993fdbf3c7fd7d33efaee6fd79f637b4b7",
+    "src\\elderweald-world.js": "8d993c230ad7198e397f4bf41938522405c352bbdd903b04016d1262822d3538",
+    "src\\engine.js": "d7101150dc15942e83ff31c8fc01310576b88ff11defb7d64049ea2c5dbba4d9",
+    "src\\experience.js": "3b5a178ca757c7b58dcbfcedcc1522887dc6a178faf5e942c6e3894166d60570",
+    "src\\gathering-adapter.js": "df41b2b23ae11c6ef2661e48301c488cb26ab753a7beec73349b5c959d5ab564",
+    "src\\gathering-art.js": "b693bce2a519bd75e4f99e03b96184f1ed10c9a9a02e25b7affd53e739f5e0eb",
+    "src\\gathering-music.js": "5e44106322e01aebc7b87d8eefcd29b2a2577d2162d70fb8f99475c7cc7deb12",
+    "src\\gathering-ui.js": "0c347e1da4a897b178c405f35cfef2e6ea518fe5d9e6ba650e48e48895e0445a",
+    "src\\gathering.css": "aa2e5381a0ff9fa7e4ceae5053a54a8ab11a784f81ee021e4835d485d3c5f4db",
+    "src\\gathering.js": "256a33c52f2b31c2c421f72a74aae543feb6c554ebae863aee55d31f0c68eb54",
+    "src\\home-history-art.js": "2496883cbb9a122608319db5b2eac1d42cabe7e386b4c9aafc78076081a4af7f",
+    "src\\home-history-ui.js": "0d352093da3faedd6314188fd99ded6ad06a39a3a6ec1a0528b77d48f2b1418a",
+    "src\\home-history.css": "54ef3c501dfda4c3d74c0f17d900bdc5b25c9dcbaeb1840ec36cbcfe0a276bd2",
+    "src\\home-history.js": "546f04a476a889ea43cb2989e854df1bac2571c99eea411b603af401675ec76f",
+    "src\\local-life-art.js": "381d1f5469310e2dc98c14b6d58c4259113fd1d6dd10f77059f45e6848fefcf2",
+    "src\\local-life-ui.js": "95a0757ae7f612560c94ebca13474925251fb485e449da0bc5c6440ceb43b4c6",
+    "src\\local-life.js": "005f7bd489bba2832aaec0b6c9d1cc499660e6e0047be73ab0f85d2922955d48",
+    "src\\mill-gate-art.js": "fe33cbbd3f180a8d32a0d0a338cde42c40e809af99ed2da1db157ba5c7fbcdd9",
+    "src\\millwright-art.js": "bd7397ee2a9f4c47b2b51117e28f3c68533da41de3122bb0a39a5575913a5661",
+    "src\\pursuit-ui.js": "f8c6bab82d88b6e4dcbf05f3e78701d489f31e224c80211b94f8acc8b70b4224",
+    "src\\pursuit.css": "61f36fa917eafba8cfa332f7d233db4c47a6d007bbf84d1843bc25fc17dd63ff",
+    "src\\pursuit.js": "b77e1874f8278971f41d4b62551df40c81126f2a35e02958958e802ab9c8b5ff",
+    "src\\quarry-art.js": "5bc6d93e99e430e7a460a1a2a510fc69e60c9dd80e758bce7470dae3ae3446f6",
+    "src\\realm-art-data.js": "1ac6251a7acf23c78799d96b5554fb3fe572c40e12c54c73f0188c4f8a324435",
+    "src\\realm-atlas-ui.js": "bc1cff9e09ab0c9f95a643c9c3ac8e0267f16641b7e8a7e3f537a32fed6859ab",
+    "src\\realm-atlas.css": "7ef7a03b8c2a69069c2d65da8d5134c7b7dc4bc2b941e139f818a7ab7011c366",
+    "src\\realm-craft.js": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+    "src\\realm-givers-art.js": "0c5268cd304676fe4ada32dcbcea304d6d97f759b59ecdffecbdb625fbcc025c",
+    "src\\realm-trails-art.js": "99a588e7aee9c7d43b6506de836ab2bab75a9420c6b718369c37e4517ca037e3",
+    "src\\realm-trails-cosmos.js": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+    "src\\realm-trails-north.js": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+    "src\\realm-trails-south.js": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+    "src\\realm-trails-ui.js": "d2161829aff6a3b2c36ea414ed687aabbeb10cc33a5ddd8f0c7f36cfc7bdf65d",
+    "src\\realm-trails.js": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+    "src\\road-art.js": "0cc12918587f98f4b9ed2b7beb8d1b21219b4a69959742a759f88354942df05d",
+    "src\\road.js": "d18106f1a2147d623680b285dc5882cae8d2b74c5ef8b500d75de35d20c86dbc",
+    "src\\rpg-ui.js": "7afc4219a17a432f9dc1c208439b4a10a7d897d6f0668373879cd263cea8c700",
+    "src\\rpg.css": "e68bea3cf3f7971d35a822772d827ebd68a24a59157ae558d3094f756ef63bcd",
+    "src\\sandbox-art.js": "3c3a8f9ea1a44fb84bdfe07a99b33969f253714c271e91ca3cfeca7eab76474c",
+    "src\\sandbox-ui.js": "28d7530e8153ed3c8a6a31b3e204cbc9680484b013cb5880a4f05b76cf83d8f5",
+    "src\\sandbox.js": "ad11196c12363b650f2697ab8fb30eb657ff0bf65953274942ce36eb28131e85",
+    "src\\shell.html": "b6b8caf6de433684760e7296c31b5be28fb147d8d61d31fa682edbbb0f683da9",
+    "src\\skitter-art.js": "bd84a78381cf7232a7fb92a868332308c68fcae17d25764c2b5d4bdfefa29903",
+    "src\\soundscape.js": "15b7b578886b838ef20e56501940354d33a8ffcd5581332dd4c4b2035692c5af",
+    "src\\starter-art.js": "cfc4f672b891fe6d53dec82a97aeac7204b8179b3490ae9df9ce3412c4661fcc",
+    "src\\starter-ui.js": "44718b2835207383632d5f33e0748dba9c348041b11f9b404040bdf07a259052",
+    "src\\starter.css": "f1501b06a13c2b3ec0030b39bf9d4530740aad2f60cf9608ca32957c9ce2943b",
+    "src\\starter.js": "c6debd10295babafdcd714445c2ac18c0ff5ce8fd54b8dfe4f3ff78c9e0a294d",
+    "src\\style.css": "f08ab48a3e661c18be404d6eafcc471a6e0b866c41304495cc94fac0bfa24d4a",
+    "src\\surface-assets.js": "5cb0f81348074edbc0e4f3c7dee4962fac10bbc5e7db0ee07b16216f3b7a1e5f",
+    "src\\traveler-art.js": "b08aadb2ba30a3f22ed60ecaa279889f0243935b128c597a15b47e9ffd3970e2",
+    "src\\traveler-equipment-art.js": "1541d60f92726c78aacacbbfed54fc2ec41a99b14ccecf6700a06c756b78c50d",
+    "src\\workshop-transactions.js": "115193dc80841b531a14f85a41c8d2d5e44c6169fc4ea4d6c19637eb7a8e8dd4",
+    "src\\world-atlantis-earth.js": "43432b4c4f712f080cd40f08914d2782cb2fd6445d68240349bb2ee0569e0526",
+    "src\\world-foundations-art.js": "46c3b38e2a73213512b8e2ade2d389361be8747ac7a199d4de8fcacb14c17520",
+    "src\\world-foundations-ui.js": "dbd81c38550280430c907d69b55ae77ebb5659bd08ad8f07524b00384903d018",
+    "src\\world-foundations.css": "8e1efeb809e3fb5bdfcbbe70f224e61df8f6522d68c1a7ed1c59202fd179f54b",
+    "src\\world-foundations.js": "97f445690fccea753c860e96bf54d4e33a3c8551e8738a31d3d947ce30d1465d",
+    "src\\world-ground-coalescing.js": "c31024794d5b5db2c28d9aab9ecf8fd0acdf55c2630ff5edf93b988151e5d63d",
+    "src\\world-heaven-hell.js": "7192efdcce877e359865c43d39d03fc1a2a54ebad960fd2d2a378880033f4cbd",
+    "src\\world.js": "1459450cafbae27f91abb37f9ba0daf0cecaf6ce256b17bfebcca3747bc4ac78"
+  },
+  "harness_sha256": "14515af805137630dc20d44fb5592fc3bd7c0726a9f0a43e2f10754a4bb08621",
+  "checks": [
+    {
+      "name": "fresh-blade exact assembled HTML loads",
+      "passed": true
+    },
+    {
+      "name": "fresh-blade native import adds separate complete earned character",
+      "passed": true
+    },
+    {
+      "name": "fresh-blade crosses through visible saved-checkpoint terms",
+      "passed": true
+    },
+    {
+      "name": "fresh-blade terms expose route danger rewards choices and binding cost",
+      "passed": false
+    }
+  ],
+  "browser_errors": [],
+  "variants": {
+    "fresh-blade": {
+      "source": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-encounter-20261004\\native-01\\earned\\fresh-blade\\00_COMMAND_EARNED_SOURCE.json",
+        "sha256": "96e26205b71d5f79f20148b0cc2b705da5f8bae8e938e7931a736d9763f836c9",
+        "label": "Freshly command-earned production source"
+      },
+      "style": "blade",
+      "walks": [],
+      "combats": [],
+      "restarts": []
+    }
+  },
+  "errors": [
+    "Traceback (most recent call last):\n  File \"D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\tests\\earth_expedition_browser.py\", line 109, in <module>\n    chooser.value.set_files(str(fixture));page.wait_for_selector('[data-rpg=\"chars-confirm-import\"]');page.locator('[data-rpg=\"chars-confirm-import\"]').click();page.wait_for_function('()=>Realm.diagnostics.characters.active===\"character-2\"');render();check(variant+' native import adds separate complete earned character',diag()['characters']['count']==2 and ownership(state())==ownership(source) and ev('localStorage.getItem(RealmCore.KEY)')==old_key);initial=state();enter();workspace('expedition');text=page.locator('#rpg-content').inner_text();check(variant+' terms expose route danger rewards choices and binding cost',all(t in text for t in ['wetland footbridge','64 / 136','45 XP','18 sunmarks','3 ore','8 timber','8 fibre','+2 attack','6 fibre']));check(variant+' reading never accepts or spends',not state()['earthExpedition']['story']['accepted'] and state()['adventure']['coins']==initial['adventure']['coins']);shot('terms')\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\tests\\earth_expedition_browser.py\", line 28, in check\n    raise AssertionError(name)\nAssertionError: fresh-blade terms expose route danger rewards choices and binding cost\n"
+  ],
+  "last_ui": {
+    "variant": "fresh-blade",
+    "text": "\u03a3\nETERNITIES\n17:13\nDAY 01 \u00b7 PAUSED\n\u266b\n\u2637\nEarth \u00b7 Coastward Road\nN\nSAVED ON THIS DEVICE\nNo servers \u00b7 No accounts \u00b7 No live AI\n0 FPS \u00b7 BALANCED\nExplore\n\u2715\nCharacter\nC\nJournal\nJ\nCrafting\nK\nMap\nM\nMore\nStory\nHomestead\nRiverbank\nProject\nOPTIONAL LOCAL WORK\nEarth \u00b7 Coastward Road\nSpeak to Merren \u00b7 field steward\nJ \u00b7 Roads \u00b7 inspect the work and reward\n3rd person\nDiorama\nTactical\nWide\n100\nHEALTH\n100 STAMINA\n1\nStrike\n2\nSweep\n3\nBrace\n4\nBriar\n5\nUnchosen\n6\nTonic \u00d73\n\u2423\nDodge\nTAB selects \u00b7 1 autoattack \u00b7 2\u20136 skills \u00b7 SPACE dodge\nReturn to Firstlight\nEarth \u00b7 Coastward Road \u00b7 a clear road home remains.\n\u03a3\nOpening Firstlight Valley\n\nEVERYTHING IS ALREADY HERE.\n\nFIRSTLIGHT \u00b7 YOUR JOURNEY\nThe living road\nWorld paused while open\n\u00d7\nEquipment\nInventory\nCompanion\nSoul\nCrafting\nField guide\nJournal\nMap\nCharacters\nPath\nRealms\nRoads\nLiving road\nELDERWEALD \u00b7 OPTIONAL EARTH EXPEDITION\nStormfall and the Living Road\n\nA storm has damaged the woodland route. Recover practical supplies, clear two infestations, and brace the living root-channel before delivering your chosen allocation. Rill asks for field work.\n\nRoute: leave Coastward\u2019s west coppice for the clearing camp, cross the wetland footbridge, visit the root-channel and return by the glade toward the fields. Two supported junctions join the same country.\n\nDanger: Channel skitter: 64 health / 9 damage, pursues for a marked bite. Root-bank brute: 136 health / 11 damage, closes to 2.6 m and commits to a 3.1 m long, 2 m wide forward sweep. Step beside its locked lane or Brace (3); both have a 1.35-second tell and 2.3-second recovery. Fixed for every weapon; your free road home stays available.\n\nFixed story payment: 45 XP \u00b7 18 sunmarks \u00b7 3 ore. Your chosen material allocation is added to this payment.\n\nWeapon project: one Trailward binding on an owned blade or bow: edge +2 attack, or shelter +1 guard / +10 maximum health. Cost: 3 ore, 8 sunmarks and 6 fibre. Inspect before spending; equipment stays yours.\n\nRecover stormfall\n\nRecover already fallen timber and bind it for transport. The standing refuge stays intact. This pays 8 timber and 4 fibre; the binding needs two additional fibre from gathering or one patrol.\n\n8 timber \u00b7 4 fibre\n\nTwo more fibre are needed for the binding: existing gathering or one completed patrol supplies them.\n\nPrepare managed coppice\n\nPrepare a limited managed allocation with more binding fibre. This pays 4 timber and 8 fibre; the binding can be afforded from this allocation once the currency is claimed.\n\n4 timber \u00b7 8 fibre\n\nThis allocation supplies the six fibre needed for the binding.\n\nWalk to Rill at the clearing campAccept this expedition\nA useful return\n\nReturn to your outdoor home workbench to inspect the finite binding. Keep gathering, crafting, housing, music and the main story in whichever order you choose.\n\nInspect the workbench and bindingReturn to FirstlightLocal map",
+    "diagnostics": {
+      "version": "10.0.0",
+      "mode": "webgl2",
+      "scene": "world-earthlands",
+      "world": {
+        "id": "earthlands",
+        "height": 1.57,
+        "dive": null,
+        "journey": {
+          "counter": 0,
+          "lastClaim": 0,
+          "firstClaimed": false,
+          "active": null,
+          "defeated": []
+        }
+      },
+      "earth": null,
+      "cosmos": null,
+      "networkDependencies": 0,
+      "liveAI": false,
+      "multiplayer": false,
+      "adventure": {
+        "tactics": {
+          "scene": "world-earthlands",
+          "target": null,
+          "auto": false,
+          "nextAttack": 0,
+          "guardUntil": 0,
+          "shield": 0,
+          "shieldUntil": 0,
+          "cooldowns": {
+            "guard": 0,
+            "insight": 0,
+            "spirit": 0
+          },
+          "hits": [],
+          "serial": 0,
+          "windup": null,
+          "motion": null
+        },
+        "beacon": {
+          "phase": "idle",
+          "time": 0,
+          "wave": 0,
+          "ward": 100,
+          "actors": [],
+          "serial": 0,
+          "notice": "",
+          "repairAt": 0,
+          "maraAt": 0,
+          "ilanAt": 0,
+          "playerRepairAt": 0,
+          "defeats": 0
+        },
+        "crossing": {
+          "room": "world-earthlands",
+          "tones": [],
+          "seek": false,
+          "rangAt": -10,
+          "tone": null,
+          "toneSerial": 0
+        },
+        "player": {
+          "x": 0,
+          "z": 104,
+          "yaw": 3.141592653589793
+        },
+        "paused": true,
+        "intent": null,
+        "stats": {
+          "level": 1,
+          "attack": 16,
+          "defense": 1,
+          "maxHP": 100
+        },
+        "weapon": {
+          "style": "blade",
+          "reach": 2.65,
+          "cooldown": 0.52,
+          "stamina": 0,
+          "primary": "Sunstrike",
+          "special": "Dawn sweep"
+        },
+        "arrows": [],
+        "range": {
+          "active": false,
+          "start": 0,
+          "hits": {},
+          "shots": 0,
+          "message": "A calm place to learn a different rhythm."
+        },
+        "enemies": [
+          {
+            "id": "earthlands-coppice-skitter",
+            "x": -29,
+            "z": -20,
+            "hp": 72,
+            "maxHP": 72,
+            "hidden": false,
+            "eventEnemy": false,
+            "kind": "skitter",
+            "ringMode": null,
+            "custom": null,
+            "mode": "idle",
+            "timer": 0,
+            "aim": null
+          }
+        ],
+        "companion": {
+          "room": "world-earthlands",
+          "x": 0,
+          "z": 104,
+          "yaw": 3.141592653589793,
+          "path": [],
+          "nextPath": 0,
+          "nextHit": 0,
+          "seek": null,
+          "status": "Beside you"
+        }
+      },
+      "sandbox": {
+        "bridge": false,
+        "objects": 0,
+        "elapsed": 5.449999999999989,
+        "autoGather": null,
+        "buildMode": null
+      },
+      "saveState": "saved",
+      "characters": {
+        "mode": "managed",
+        "active": "character-2",
+        "revision": 2,
+        "count": 2,
+        "writer": true,
+        "error": null
+      },
+      "fps": 0,
+      "errors": [],
+      "camera": {
+        "yaw": 5.387129922608612,
+        "elevation": 0.28,
+        "half": 17,
+        "distance": 7.5,
+        "actualDistance": 7.5000000000000036,
+        "fov": 60,
+        "center": [
+          0,
+          3.0700000000000003,
+          104
+        ],
+        "overview": false,
+        "preset": "adventure",
+        "tour": false,
+        "ready": true,
+        "projection": "perspective",
+        "eye": [
+          -5.628436619416951,
+          5.142667364230855,
+          108.50274929553697
+        ],
+        "target": [
+          0,
+          3.0700000000000003,
+          104
+        ]
+      },
+      "metrics": {
+        "drawCalls": 31,
+        "texturedDrawCalls": 4,
+        "texturedInstances": 539,
+        "surfaceMaterials": {
+          "version": 1,
+          "id": "earth-weathered-timber-v1",
+          "status": "ready",
+          "ready": true,
+          "error": null,
+          "width": 512,
+          "height": 512,
+          "colorFormat": "SRGB8_ALPHA8",
+          "roughnessFormat": "R8",
+          "textureBytes": 1310720,
+          "mipmapBytes": 436905,
+          "totalTextureBytes": 1747625,
+          "decodedImageBytes": 2097152,
+          "decodeWallMs": 91.90000003576279,
+          "uploadCpuMs": 122,
+          "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+          "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+          "enabled": true
+        },
+        "instances": 1726,
+        "triangles": 71644
+      },
+      "reflection": {
+        "method": "world-plane P*V*H",
+        "height": 0.01,
+        "horizontalFlip": false
+      },
+      "cutaway": {
+        "enabled": true,
+        "focus": [
+          0,
+          2.45,
+          104
+        ]
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "gathering": null,
+      "layoutRevision": 0,
+      "roadsideGathering": {
+        "status": "idle",
+        "playing": false,
+        "pending": false
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created",
+        "soundscape": null
+      }
+    }
+  },
+  "status": "failed",
+  "passed": 3,
+  "failed": 1
+}

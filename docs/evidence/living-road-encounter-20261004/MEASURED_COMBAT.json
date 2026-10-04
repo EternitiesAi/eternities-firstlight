@@ -1,0 +1,269 @@
+{
+  "method": "command-earned actual rules; accelerated ticks; no human pacing claim",
+  "rows": [
+    {
+      "variant": "fresh-blade",
+      "weapon": "trail_blade",
+      "stats": {
+        "level": 1,
+        "attack": 16,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "behavior": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "rootCombats": [
+        {
+          "id": "earth-stormfall-root-v1",
+          "seconds": 4.600000000001046,
+          "guards": 1,
+          "hp": 136,
+          "damage": 11,
+          "impacts": 9,
+          "healthAfter": 80
+        },
+        {
+          "id": "earth-living-road-patrol-v1-run-1-root",
+          "seconds": 4.399999999995998,
+          "guards": 1,
+          "hp": 136,
+          "damage": 11,
+          "impacts": 8,
+          "healthAfter": 100
+        },
+        {
+          "id": "earth-living-road-patrol-v1-run-2-root",
+          "seconds": 4.399999999995998,
+          "guards": 1,
+          "hp": 136,
+          "damage": 11,
+          "impacts": 8,
+          "healthAfter": 100
+        }
+      ],
+      "claims": [
+        {
+          "type": "story",
+          "reward": {
+            "xp": 45,
+            "coins": 18,
+            "ore": 3,
+            "materials": {
+              "wood": 8,
+              "fiber": 4
+            }
+          }
+        },
+        {
+          "type": "patrol",
+          "run": 1,
+          "reward": {
+            "xp": 5,
+            "coins": 4,
+            "ore": 3,
+            "materials": {
+              "wood": 2,
+              "fiber": 2
+            }
+          }
+        },
+        {
+          "type": "patrol",
+          "run": 2,
+          "reward": {
+            "xp": 5,
+            "coins": 4,
+            "ore": 3,
+            "materials": {
+              "wood": 2,
+              "fiber": 2
+            }
+          }
+        }
+      ],
+      "sourceDrift": false
+    },
+    {
+      "variant": "fresh-bow",
+      "weapon": "trail_bow",
+      "stats": {
+        "level": 1,
+        "attack": 13,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "behavior": {
+        "style": "bow",
+        "reach": 11,
+        "cooldown": 0.75,
+        "stamina": 6,
+        "primary": "Loose arrow",
+        "special": "Piercing light"
+      },
+      "rootCombats": [
+        {
+          "id": "earth-stormfall-root-v1",
+          "seconds": 8.300000000001887,
+          "guards": 1,
+          "hp": 136,
+          "damage": 11,
+          "impacts": 11,
+          "healthAfter": 71
+        },
+        {
+          "id": "earth-living-road-patrol-v1-run-1-root",
+          "seconds": 7.499999999993179,
+          "guards": 1,
+          "hp": 136,
+          "damage": 11,
+          "impacts": 10,
+          "healthAfter": 91
+        },
+        {
+          "id": "earth-living-road-patrol-v1-run-2-root",
+          "seconds": 7.499999999993179,
+          "guards": 1,
+          "hp": 136,
+          "damage": 11,
+          "impacts": 10,
+          "healthAfter": 91
+        }
+      ],
+      "claims": [
+        {
+          "type": "story",
+          "reward": {
+            "xp": 45,
+            "coins": 18,
+            "ore": 3,
+            "materials": {
+              "wood": 4,
+              "fiber": 8
+            }
+          }
+        },
+        {
+          "type": "patrol",
+          "run": 1,
+          "reward": {
+            "xp": 5,
+            "coins": 4,
+            "ore": 3,
+            "materials": {
+              "wood": 2,
+              "fiber": 2
+            }
+          }
+        },
+        {
+          "type": "patrol",
+          "run": 2,
+          "reward": {
+            "xp": 5,
+            "coins": 4,
+            "ore": 3,
+            "materials": {
+              "wood": 2,
+              "fiber": 2
+            }
+          }
+        }
+      ],
+      "sourceDrift": false
+    },
+    {
+      "variant": "veteran",
+      "weapon": "dawn_edge",
+      "stats": {
+        "level": 5,
+        "attack": 51,
+        "defense": 13,
+        "maxHP": 200
+      },
+      "behavior": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "rootCombats": [
+        {
+          "id": "earth-stormfall-root-v1",
+          "seconds": 1.3999999999987267,
+          "guards": 1,
+          "hp": 136,
+          "damage": 11,
+          "impacts": 4,
+          "healthAfter": 199
+        },
+        {
+          "id": "earth-living-road-patrol-v1-run-1-root",
+          "seconds": 1.3999999999987267,
+          "guards": 1,
+          "hp": 136,
+          "damage": 11,
+          "impacts": 3,
+          "healthAfter": 200
+        },
+        {
+          "id": "earth-living-road-patrol-v1-run-2-root",
+          "seconds": 1.3999999999987267,
+          "guards": 1,
+          "hp": 136,
+          "damage": 11,
+          "impacts": 3,
+          "healthAfter": 200
+        }
+      ],
+      "claims": [
+        {
+          "type": "story",
+          "reward": {
+            "xp": 45,
+            "coins": 18,
+            "ore": 3,
+            "materials": {
+              "wood": 8,
+              "fiber": 4
+            }
+          }
+        },
+        {
+          "type": "patrol",
+          "run": 1,
+          "reward": {
+            "xp": 5,
+            "coins": 4,
+            "ore": 3,
+            "materials": {
+              "wood": 2,
+              "fiber": 2
+            }
+          }
+        },
+        {
+          "type": "patrol",
+          "run": 2,
+          "reward": {
+            "xp": 5,
+            "coins": 4,
+            "ore": 3,
+            "materials": {
+              "wood": 2,
+              "fiber": 2
+            }
+          }
+        }
+      ],
+      "sourceDrift": false
+    }
+  ]
+}

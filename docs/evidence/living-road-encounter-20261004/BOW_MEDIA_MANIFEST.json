@@ -1,0 +1,54 @@
+{
+  "implementation_head": "5668454e64c8f5292e5b435720649d1388822207",
+  "source_html_sha256": "453c34317b841719f3691554de350b4936924c97d0afd65026348f3708e91fcf",
+  "capture_status": "passed",
+  "condition_evaluations": 3248,
+  "raw_video": {
+    "path": "32fd5918bfa794d700fad6e13139cf4c.webm",
+    "bytes": 32684569,
+    "sha256": "4fa1c4c4cec2ba05765c06473db5e874a054f627678cd83fda08fddb42b4287e",
+    "lf_sha256": "290762db07af32c3d41f86f23bcf739af4c2fcaea6b5424c11774c9335e61650",
+    "audio": false
+  },
+  "clip": {
+    "path": "FIRSTLIGHT_LIVING_ROAD_BOW_GAMEPLAY.mp4",
+    "bytes": 4704654,
+    "sha256": "c92e49142607d1e4574133743734b65b6acc3b7465380b4d1c85197fc124c67e",
+    "expected_duration_seconds": 32,
+    "actual_frames": 800,
+    "actual_decoded_seconds": 32.0,
+    "container_seconds": 32.0,
+    "encoder_fps": 25.0,
+    "decoded_video_size": [
+      1440,
+      900
+    ]
+  },
+  "segments": [
+    {
+      "source_start_seconds": 118,
+      "source_end_seconds": 136,
+      "label": "Bow real warning, lateral escape, Brace and projectile impacts"
+    },
+    {
+      "source_start_seconds": 239,
+      "source_end_seconds": 247,
+      "label": "Explicit shelter binding and both cameras"
+    },
+    {
+      "source_start_seconds": 251,
+      "source_end_seconds": 257,
+      "label": "Actual retained bow impact after defensive fitting"
+    }
+  ],
+  "editing": "Direct cuts only; normal time, silent actual viewport; no replacement image, speed change or added audio.",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "browser_version": "143.0.7499.4",
+  "sustained_performance_qualification": false,
+  "raw_full_decode_exit": 0,
+  "clip_full_decode_exit": 0
+}
