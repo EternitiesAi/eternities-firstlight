@@ -1,3 +1,13 @@
+# Living Earth: qualify and deepen one connected place
+
+Continue from the actual newest `gameplay/earth-living-region-20261004` head after fetching review and concurrent work. Its first episode is implemented; finish exact-source full verification, normal-time footage, stacked review and fresh remote clone receipts before calling delivery complete. Do not replace newer gameplay with archive/main or ZIPs. See the [current contract](development/LIVING_REGION_2026-10-04.md).
+
+The next product arc should deepen an ordinary community along this same road: one need that changes over repeated visits, an encounter with a remembered person, and a choice whose visible consequence affects another existing local activity. Inspect Coastward, Elderweald, Stormfall and current repeat-run owners first. Grow from tested causes and clear declared rewards; keep finite community work separate from intentional repeat surveys/patrols. A broader province, streaming, major realm campaign and true two-client cooperation remain separate milestones.
+
+Before more scale, assess readable traveler/weapon/creature silhouettes in both views, how often scenery contracts the shoulder camera, whether ordinary travel needs an intermediate discovery, and whether the useful home trace motivates another outing. Current fixtures and records are authored bounded behavior, not an authoritative local economy or offline population simulation. Preserve both cameras, controls, saves and stored XP. Founder decisions about paid power, offline loss, rare allocation, construction scale and cosmic verdicts remain unresolved.
+
+Dom will play later. Pending questions: Did the bridge trip feel worthwhile? Was the allocation clear? Could you recognize someone using your chosen place? Did the return-home piece make it feel remembered? Automated known-route footage cannot answer those questions.
+
 # A Home That Remembers: qualify the connected loop
 
 Continue from the actual `gameplay/home-that-remembers-20261003` head, fetching current gameplay and reviews first. Finish its stricter native shutdown/appearance receipts, current verifier, normal-time recording, pushed review branch and fresh exact-source clone. Do not replace newer work with archive/main or an older ZIP. Pending gates are not complete because an earlier epoch passed.

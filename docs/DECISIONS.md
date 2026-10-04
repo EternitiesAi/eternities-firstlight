@@ -1,3 +1,14 @@
+# Living-Earth episode decisions, 2026-10-04
+
+- Implement a connected ordinary outing before further realm breadth. Recovered Earth world-bible home/town/province and connected-cause guidance informs the adaptation; new title, dialogue, fee and fixture names remain provisional.
+- Keep Merren and Vessa's service points fixed. A separate original road worker follows a small supported transient loop at the chosen fixture; decorative activity is never an economic/payment event.
+- Use one optional `bridgeCommunity1` ledger with stable quest/step/choice IDs and a once-only fee. Job parts are quest facts, separate from inventory. Persist the validated complete candidate synchronously before adoption. No XP/ore/personal-material cost or old payout backfill.
+- Reuse clear full-body ground and segment checks for each physical action. A nearby point on the opposite side of the bench is insufficient. No new cosmetic geometry extends support or creates gameplay blockers.
+- Append one finite home design to existing homeHistory1, requiring this episode's claim. Pin/craft/place remain deliberate and independently owned. Strong equipment receives an honest material/cosmetic path rather than invented combat scaling.
+- Refine the original procedural art with existing batches and a dedicated reading pose. Bow hand/string/shaft geometry anticipates canonical target-facing fire; decorative arrows never damage. Brute gait follows accepted displacement and active time, not arbitrary render-clock oscillation.
+- The low cosmetic canopy uses preference-controlled cutaway without shortening the shoulder camera. Posts keep eye clearance; navigation remains under the unchanged world owner. Inspect actual images as well as positive pixel checks.
+- Preserve world/key9, adventure12, current camera profiles, stored XP and every prior system. Main/public deployment/billing/personal data remain outside this review. Dom deferred human play; engineering checks do not supply human acceptance.
+
 # A Home That Remembers: bounded continuation decisions
 
 - Follow the recovered Earth home anchor and mythology bridge's physical autobiography direction. Four original adaptations retain traces of actual claimed local work; this does not extend cosmic verdicts or founder canon names.

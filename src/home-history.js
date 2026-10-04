@@ -6,7 +6,8 @@ const definitions=freeze([
  {id:'memory-cuttings',name:'Returned-cuttings tray',realm:'heaven',quest:'heaven-propagation-bed-v1',cost:{wood:2,fiber:2},w:1.2,d:.72,solid:true,glyph:'♧',color:'#9dbd8b',description:'A shallow slotted tray of separate cuttings, learned from Yselle’s nursery. These plants are decorative; public beds and your growing crops keep their own lives.'},
  {id:'memory-refuge',name:'Refuge hand-lamp',realm:'hell',quest:'hell-refuge-water-v1',cost:{stone:2,wood:1,fiber:1},w:.65,d:.65,solid:true,glyph:'◉',color:'#dca175',description:'A squat wick lamp with stone ballast, a timber handle and an open protective guard. A steady light to set beside a page or water jug, remembering practical refuge work.'},
  {id:'memory-bellglass',name:'Bellglass reading lamp',realm:'atlantis',quest:'atlantis-bellglass-lamp-v1',cost:{wood:2,crystal:1},w:.62,d:.62,solid:true,glyph:'◇',color:'#8dd4d2',description:'A tall keyed crystal instrument with a copper collar and directional hood, adapted from Sahra’s maintained visitor light.'},
- {id:'memory-farroad',name:'Farroad page stand',realm:'cosmos',quest:'cosmos-drawing-shelf-v1',cost:{wood:2,fiber:1},w:1.2,d:.8,solid:true,glyph:'▱',color:'#c1b5e2',description:'A braced writing surface with a tied travel folio. Anik’s shaped supports and the refuge’s room for a page return to ordinary life.'}
+ {id:'memory-farroad',name:'Farroad page stand',realm:'cosmos',quest:'cosmos-drawing-shelf-v1',cost:{wood:2,fiber:1},w:1.2,d:.8,solid:true,glyph:'▱',color:'#c1b5e2',description:'A braced writing surface with a tied travel folio. Anik’s shaped supports and the refuge’s room for a page return to ordinary life.'},
+ {id:'memory-crossing',name:'Crossing route-board',realm:'earthlands',source:'bridgeCommunity',quest:'earthlands-bridge-community-v1',cost:{wood:2,fiber:1},w:.95,d:.65,solid:true,glyph:'≋',color:'#a9c1ad',description:'A standing timber chart with the channel crossing marked by a tied route line. Learned through Merren and Vessa’s practical community work; a deliberate trace of the road at home.'}
 ]);
 const definition=id=>definitions.find(d=>d.id===id)||null;
 const fresh=()=>({version:1,revision:0,owned:[],pinned:null});
@@ -15,7 +16,7 @@ function validate(raw){
  if(!raw||raw.version!==1||!Number.isSafeInteger(raw.revision)||raw.revision<0||raw.revision>1e8||!Array.isArray(raw.owned)||raw.owned.length>definitions.length||new Set(raw.owned).size!==raw.owned.length||raw.owned.some(id=>!definition(id))||raw.pinned!==null&&!definition(raw.pinned))throw Error('Invalid home history.');
  return{version:1,revision:raw.revision,owned:definitions.filter(d=>raw.owned.includes(d.id)).map(d=>d.id),pinned:raw.pinned};
 }
-const unlocked=(state,d)=>state.localLife?.records?.[d.quest]?.claimed===true;
+const unlocked=(state,d)=>d.source==='bridgeCommunity'?state.bridgeCommunity?.claimed===true:state.localLife?.records?.[d.quest]?.claimed===true;
 function validateLayout(home,ledger){
  const seen=new Set();for(const i of home.items)if(definition(i.kind)){if(!ledger.owned.includes(i.kind)||seen.has(i.kind))throw Error('An earned home piece must be owned and placed only once.');seen.add(i.kind);}return home;
 }
@@ -48,7 +49,7 @@ function command(ctx,type,payload={},io){
     if(!d||!unlocked(candidate,d))return fail('Finish and claim the matching local commission to learn this design.');
     if(sim.paused||sim.state.adventure.hp<=0||sim.room||!G.RealmSandbox.station(sim.state.sandbox,sim.state.player))return fail('Return to an existing outdoor workbench while able to work.');
     if(!G.RealmSandbox.checkCost(candidate.sandbox,d.cost))return fail('Gather the displayed materials first. Nothing was spent.');
-    if(current.owned.length>=definitions.length)return fail('All four finite home pieces are already owned.');
+    if(current.owned.length>=definitions.length)return fail('All finite home pieces are already owned.');
     for(const[k,n]of Object.entries(d.cost))candidate.sandbox.inventory[k]-=n;
     candidate.homeHistory.owned.push(d.id);text=d.name+' made once. Choose a retreat position deliberately; nothing was placed or replaced.';
    }else return fail('Unknown home action.');

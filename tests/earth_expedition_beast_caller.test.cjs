@@ -3,7 +3,7 @@
  * while entity terms and qualified story/patrol IDs come from real rosters. */
 const{test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const C=require('../src/core.js'),A=require('../src/adventure.js'),E=require('../src/engine.js'),W=require('../src/world-foundations.js'),EE=require('../src/earth-expedition.js'),B=require('../src/earth-expedition-beast-art.js');
-require('../src/skitter-art.js');require('../src/companion-art.js');
+require('../src/skitter-art.js');require('../src/companion-art.js');require('../src/traveler-art.js');
 const source=fs.readFileSync(require.resolve('../src/adventure-art.js'),'utf8');
 const clone=v=>JSON.parse(JSON.stringify(v)),empty=()=>({box:[],round:[],octa:[]});
 const flat=out=>Object.entries(out).flatMap(([kind,ps])=>ps.map(p=>({kind,...p}))),brute=out=>flat(out).filter(p=>p.expeditionBeastPart);
@@ -18,7 +18,7 @@ function story(patrol=false){
 }
 function render(sim,e,options={}){
  const r=A.runtime(sim);r.enemies=[e];r.fx=[];sim.state.settings.reducedMotion=options.reducedMotion??false;sim.paused=options.paused??false;sim.presentation={perspective:options.perspective??true,attackTarget:options.target?e.id:null};
- const calls=[],context={RealmCore:global.RealmCore,RealmEngine:E,RealmAdventure:A,RealmWorldFoundations:W,RealmEarthExpedition:options.omitTerms?undefined:EE,RealmClasses:global.RealmClasses,RealmSkitterArt:global.RealmSkitterArt,RealmCompanionArt:global.RealmCompanionArt,
+ const calls=[],context={RealmCore:global.RealmCore,RealmEngine:E,RealmAdventure:A,RealmWorldFoundations:W,RealmEarthExpedition:options.omitTerms?undefined:EE,RealmClasses:global.RealmClasses,RealmTravelerArt:global.RealmTravelerArt,RealmSkitterArt:global.RealmSkitterArt,RealmCompanionArt:global.RealmCompanionArt,
   RealmEarthExpeditionBeastArt:{...B,draw(out,args){calls.push(clone(args));return B.draw(out,args);}}};
  vm.runInNewContext(source,context);const state=JSON.stringify(sim.state),actor=JSON.stringify(e),out=empty();context.RealmAdventureArt.draw(out,sim,options.t??1.2);assert.equal(JSON.stringify(sim.state),state,'art caller changed durable state');assert.equal(JSON.stringify(e),actor,'art caller changed enemy');return{out,calls,art:context.RealmAdventureArt};
 }
@@ -82,4 +82,10 @@ test('root-only diorama health bar follows actual ground while generic bar retai
 });
 test('actual paused caller ignores unrelated render time and preserves source state and timer-driven posture',()=>{
  for(const mode of ['idle','pursue','return','windup','recover']){const{sim,e}=story();Object.assign(e,{mode,timer:.4,aim:{x:-130,z:-71},yaw:.7});const a=render(sim,e,{paused:true,t:1}),b=render(sim,e,{paused:true,t:100});assert.deepEqual(brute(a.out),brute(b.out));assert.equal(a.calls[0].paused,true);assert.equal(a.calls[0].mode,mode);assert.equal(a.calls[0].windup,e.windup);assert.equal(a.calls[0].recovery,e.recovery);assert.deepEqual(a.calls[0].aim,e.aim);}
+});
+test('the actual caller retains distance gait for one enemy and stops it through pause and recovery',()=>{
+ const{sim,e}=story();e.mode='pursue';const r=render(sim,e);assert.equal(r.calls[0].blend,0);
+ e.x+=.12;sim.state.adventure.elapsed+=.05;const out=empty();r.art.draw(out,sim,1.25);const moved=r.calls.at(-1);assert.ok(moved.phase>0&&moved.blend>0);assert.ok(brute(out).some(p=>p.expeditionBeastPart.endsWith('-hoof')&&p.p[1]>W.height(sim.room,e.x,e.z)+.045));
+ sim.paused=true;const held=empty();r.art.draw(held,sim,900);assert.equal(r.calls.at(-1).phase,moved.phase);assert.equal(r.calls.at(-1).blend,moved.blend);
+ sim.paused=false;e.mode='recover';sim.state.adventure.elapsed+=.05;const recovery=empty();r.art.draw(recovery,sim,900.05);assert.ok(brute(recovery).filter(p=>p.expeditionBeastPart.endsWith('-hoof')).every(p=>Math.abs(p.p[1]-(W.height(sim.room,e.x,e.z)+.045))<1e-8));
 });

@@ -138,7 +138,7 @@ test('draw segments actually connect the named joints under root translation and
   const out=empty(),frame=T.draw(out,rootInput,posed);
   const pairs={thigh:['Hip','Knee'],shin:['Knee','Ankle'],'upper-arm':['Shoulder','Elbow'],forearm:['Elbow','Hand']};
   for(const side of ['left','right'])for(const [part,[a,b]]of Object.entries(pairs)){
-   const item=out.box.find(it=>it.travelerPart===side+'-'+part);
+   const item=Object.values(out).flat().find(it=>it.travelerPart===side+'-'+part);
    vclose(E.M.transform(item.m,[0,-.5,0]),E.M.transform(frame.root,posed.joints[side+a]),1e-6);
    vclose(E.M.transform(item.m,[0,.5,0]),E.M.transform(frame.root,posed.joints[side+b]),1e-6);
   }
@@ -152,11 +152,11 @@ test('palette choices and explicitly supplied armor colour are retained',()=>{
  for(let i=0;i<X.SKINS.length;i++){
   const out=empty();T.draw(out,{profile:{skin:i,hair:i,cloak:i}});
   assert.deepEqual(out.round.find(it=>it.travelerPart==='head').c,E.hex(X.SKINS[i]));
-  assert.deepEqual(out.box.find(it=>it.travelerPart==='hair-crown').c,E.hex(X.HAIR[i]));
+  assert.deepEqual(out.round.find(it=>it.travelerPart==='hair-crown').c,E.hex(X.HAIR[i]));
   assert.deepEqual(out.box.find(it=>it.travelerPart==='cloak-left').c,E.hex(X.CLOAKS[i]));
  }
  const out=empty();T.draw(out,{armorColor:'#8bad91',color:'#955e73',profile:{cloak:3}});
- assert.deepEqual(out.box.find(it=>it.travelerPart==='jacket-chest').c,E.hex('#8bad91'));
+ assert.deepEqual(out.round.find(it=>it.travelerPart==='jacket-chest').c,E.hex('#8bad91'));
  assert.deepEqual(out.box.find(it=>it.travelerPart==='cloak-left').c,E.hex(X.CLOAKS[3]));
 });
 test('all transforms stay finite, actor geometry has no camera authority, and budget stays bounded',()=>{

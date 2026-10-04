@@ -1,0 +1,15 @@
+.community-page{max-width:850px;margin:auto}.community-page p{line-height:1.65}.community-terms,.community-next,.community-invitation,.community-map{padding:16px;margin:15px 0;border:1px solid #a9b99538;border-radius:8px;background:#243b343b}.community-terms strong{color:#ead4a3}.community-options{display:grid;grid-template-columns:1fr 1fr;gap:18px}.community-options section{padding:12px;border-left:2px solid #9aba9a}.community-recognition{font-style:italic;color:#d3dfc2}.community-cargo{color:#cfbc8f}.community-next button{margin:5px}.community-invitation>small{letter-spacing:1px;color:#cdb88c;font-size:10px}@media(max-width:600px){.community-options{grid-template-columns:1fr}.community-page{max-width:100%}}
+/* Leave more of the road visible at desktop sizes; every control and cue stays. */
+@media(min-width:1000px){
+ .rpg-edition #quest-tracker{width:258px;top:88px;background:linear-gradient(120deg,rgba(16,31,32,.9),rgba(20,38,39,.7))}
+ .rpg-edition #tracked-open{padding:11px 14px}
+ .rpg-edition #tracked-open strong{font-size:19px;margin:5px 0 7px}
+ .rpg-edition #tracked-progress{margin-top:9px}
+ .rpg-edition #skillbar{gap:10px;padding:8px 12px 5px 8px;bottom:22px}
+ .rpg-edition #health-orb{width:68px;height:68px}
+ .rpg-edition #health-orb b{font-size:25px}
+ .rpg-edition .skill{height:56px}
+ .rpg-edition .stamina-track{margin-bottom:8px}
+ .rpg-edition #context{bottom:133px}
+ .rpg-edition:not(.has-equipment) #context{bottom:51px}
+}

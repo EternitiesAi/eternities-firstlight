@@ -6,6 +6,8 @@ A complete local action/sandbox RPG prototype for Dom / Eternities, with interch
 
 The current world pass adds inhabited Coastward scenery, recognizable local people and creatures, smoother accepted attack motion, visible quest work, optional realm ambience and save-before-spend workshop/story actions. [Play and actual footage](docs/evidence/world-production-2026-10-03/README.md) describe the five connected region outings, both cameras and the remaining production gates. Historical results below retain their original source epochs.
 
+The living-Earth continuation adds **A Place Beside the Road**: supplied fittings across the Coastward bridge, your choice of a lasting work site, explicit once-only payment and a finite route-board for home. [Play guide](docs/playtests/LIVING_REGION_2026-10-04.md) and [source/migration contract](docs/development/LIVING_REGION_2026-10-04.md) distinguish this original bounded episode from the larger province and saga.
+
 ## Play the current prototype
 
 On Windows, open **PLAY_FIRSTLIGHT_WINDOWS.cmd**. On any supported desktop with Python 3, run `python tools/play_local.py`. The launcher serves the checked build at **http://127.0.0.1:8780/** and opens your browser. Keep its window open while playing. It reuses an existing server only when that server returns the same build; a different version produces an explicit refusal instead of changing the save origin. `--no-browser` starts it without opening a tab.
