@@ -1,3 +1,13 @@
+# A Home That Remembers, 2026-10-03
+
+Current implementation: `gameplay/home-that-remembers-20261003`, from `27bdbe585f8970c7695e04b79c7ef171e3bd1055` / open draft PR39. Four claimed local commissions now teach four finite original home designs. Read/pin independently of the equipment field guide, gather missing ordinary materials, craft deliberately at an existing outdoor workbench, then explicitly place/move/rotate/remove the owned piece in the existing retreat. Models are distinct and both cameras remain. Ordinary furniture and the doorway are preserved. All room editing now saves its candidate before adopting layout and undo history; previews cannot cross character replacement.
+
+World/key9, adventure12, sandbox1, retreat1 and character-library1 remain. Optional `homeHistory1` migrates empty; prior claimed work unlocks knowledge only, never a free piece or second payout. Notes/music, housing/crops, stored XP1–5/9999, gear/socket/fittings, companion, story/soul/class choices and all old ledgers retain their owners. The source note records exact costs and original canon anchors; names and pieces are provisional adaptations.
+
+See [the implementation note](development/HOME_THAT_REMEMBERS_2026-10-03.md), [play guide](playtests/HOME_THAT_REMEMBERS_2026-10-03.md) and [results](development/HOME_HISTORY_RESULTS_2026-10-03.md). Initial authoring evidence includes actual command-earned blade/bow/strongest routes and 207 native UI checks at the earlier specified HTML epoch. Stronger final shutdown/appearance, normal-time footage and exact pushed-head remote/full-browser gates are pending here, and belong in subsequent receipts. A prior context-only LocalLife rollback remains unexplained; it is not labelled a crash or silently fixed. Main/deployment/billing/personal saves remain untouched. Dom has explicitly deferred human play while authorizing continued development.
+
+Earlier dated records preserve their original source/evidence epochs.
+
 # Local life across the roads, 2026-10-03
 
 The current implementation branch is `gameplay/world-living-contracts-20261003`, based on PR38's `f3a4df5f8023b385ea5273aa6d90ba5ddf438121`. It adds practical finite commissions in Heaven, Hell, Atlantis and Cosmos, preserving Earth's connected woodland story and repeat patrol. Eight deliberate arrangements and thirteen physical actions use supplied job parts, readable routes and separate once-only durable payments. Both cameras retain the resulting bed/filter/lamp/shelf fixtures. These bounded openings are not complete realm countries or the main saga.

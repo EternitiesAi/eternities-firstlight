@@ -76,7 +76,7 @@ class LocalLifeUI{
      }
      return'<li data-local-step="'+s.id+'" class="'+(done?'done':'')+'"><strong>'+esc(s.name)+(done?' · recorded':'')+'</strong><p>'+esc(s.text)+'</p>'+(!done&&!prepared?'<p>First: '+s.requires.map(id=>esc(d.steps.find(p=>p.id===id).name)).join(' · ')+'</p>':'')+(s.medium!=='dry'?'<p>Required body: '+(s.medium==='water'?'water':'air court')+' · foot height '+s.y.toFixed(2)+' m. Use F / G in the gallery.</p>':'')+'<div class="world-actions">'+controls+'</div></li>';
     }).join('')+'</ol>';
-    if(r.claimed)html+='<p class="local-life-complete">'+esc(d.completionText)+' Selected: '+esc(choice.name)+'.</p>';
+    if(r.claimed)html+='<p class="local-life-complete">'+esc(d.completionText)+' Selected: '+esc(choice.name)+'.</p><button data-rpg="panel" data-id="retreat">Read the home design this work taught you</button>';
     else if(L.ready(this.sim.state,d))html+='<p><strong>Work complete · unpaid.</strong> Return to '+esc((d.returner||d.giver).name)+'.</p>'+(here&&L.at(this.sim,d.returner||d.giver)?button('Claim the declared local payment once','claim'):here&&!this.sim.worldDive?button('Return to '+(d.returner||d.giver).name,'walk','return'):here?'<p>Use the east water lane to the far dry gallery landing; press E there to exit, then return to Sahra.</p>':'');
     html+=!r.claimed?button('Track this local work','track',d.id):'';
    }

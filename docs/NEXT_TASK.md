@@ -1,3 +1,13 @@
+# A Home That Remembers: qualify the connected loop
+
+Continue from the actual `gameplay/home-that-remembers-20261003` head, fetching current gameplay and reviews first. Finish its stricter native shutdown/appearance receipts, current verifier, normal-time recording, pushed review branch and fresh exact-source clone. Do not replace newer work with archive/main or an older ZIP. Pending gates are not complete because an earlier epoch passed.
+
+Dom's current instruction authorizes continued implementation and defers his playtest until the game meets our engineering/design standards. Human clarity, taste, pacing and enjoyment remain pending evidence. After this bounded arc is qualified, the strongest next product direction is a connected Earth settlement return loop: readable ongoing local needs with reasons to revisit familiar people and routes, using declared finite/repeat ownership and visible consequences. Inspect existing Stormfall, Elderweald and Coastward story/patrol owners before choosing that slice; avoid another disconnected realm, invented multiplayer or universal economy.
+
+Keep optional homeHistory1 ownership distinct from localLife1 payments, equipment pursuit pins and sandbox materials. One object each, deliberate cost/craft and explicit placement. Both cameras and old creative tools stay. Founder decisions about paid power, offline loss, rare pets, construction scale and larger realm verdicts remain unresolved. No main merge, public deployment, account/billing changes or personal-save inspection.
+
+Dom's deferred questions remain: Did the home pieces make the outing feel remembered? Were costs, crafting and placement clear? Did the new connection make you want to explore again?
+
 # Play local life alongside the connected Earth road
 
 Continue from the actual newest gameplay head after fetching reviews, rather than the archive or main. The current review slice adds local repair/propagation work to the four other realm openings; Earth keeps its playable story, repeat patrol and finite binding. See [the local-life guide](playtests/LOCAL_LIFE_2026-10-03.md) and [results](development/LOCAL_LIFE_RESULTS_2026-10-03.md).

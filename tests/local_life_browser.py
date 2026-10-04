@@ -80,7 +80,8 @@ def restart(label):
  global context,page
  close();before=state();save=stored();check(variant+' durable local work before '+label,save['localLife']==before['localLife'] and preserved(save)==preserved(before) and economic(save)==economic(before))
  raw=ev('localStorage.getItem(RealmCharacters.KEY)');record.setdefault('checkpoints',{})[label]={'before':before,'stored':save,'storage_sha256':hashlib.sha256(raw.encode()).hexdigest(),'library_revision':json.loads(raw)['revision']}
- page.close(run_before_unload=True);context.close();context=start();page=spawn();after=state();record['checkpoints'][label]['after']=after
+ with page.expect_event('close'):page.close(run_before_unload=True)
+ context.close();context=start();page=spawn();after=state();record['checkpoints'][label]['after']=after
  check(variant+' whole Chromium restart '+label,diag()['scene']=='valley' and after['localLife']==before['localLife'] and preserved(after)==preserved(before) and economic(after)==economic(before) and after['settings']['cameraViews']==before['settings']['cameraViews'],{'ledger':after['localLife']==before['localLife'],'prior_systems':preserved(after)==preserved(before),'economic':economic(after)==economic(before),'characters':diag()['characters']})
  record['restarts'].append(label)
 def parts():return ev('''()=>{const e=__localArtOwner.e;return e.dynamic.flatMap(b=>b.items.filter(i=>i.localLifeQuest).map(i=>({kind:b.kind,...i})));}''')

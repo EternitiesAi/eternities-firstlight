@@ -177,7 +177,8 @@ class RPGUI{
   if(['journal','more'].includes(this.tab))body.insertAdjacentHTML('beforeend',this.gathering.invitation());
   if(['pursuit','craft'].includes(this.tab))body.insertAdjacentHTML('afterbegin',this.expedition.fitting()+this.trails.fitting());
   if(!this.sim.room&&['atlas','more'].includes(this.tab))body.insertAdjacentHTML('afterbegin',this.worlds.invitation()+this.earth.invitation()+this.cosmos.invitation());
-  if(this.tab==='journal')body.insertAdjacentHTML('afterbegin',this.expedition.invitation()+this.trails.journal()+this.civic.journal()+this.starter.journal());if(this.tab==='characters')this.characters.attach();if(this.tab==='classes')this.classes.attach();
+  if(this.tab==='craft')body.insertAdjacentHTML('afterbegin',G.RealmHomeHistoryUI.teaser(this.sim.state));
+  if(this.tab==='journal')body.insertAdjacentHTML('afterbegin',G.RealmHomeHistoryUI.teaser(this.sim.state)+this.expedition.invitation()+this.trails.journal()+this.civic.journal()+this.starter.journal());if(this.tab==='characters')this.characters.attach();if(this.tab==='classes')this.classes.attach();
  }
  inventory(){
   const a=this.state,st=A.stats(a),slots=['weapon','armor','charm'];
