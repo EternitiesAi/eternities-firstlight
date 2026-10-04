@@ -1,3 +1,9 @@
+# Qualified Living Road runtime, 2026-10-04
+
+Draft PR42/runtime `5668454` continues PR41 on gameplay/living-road-encounter-20261004. Read docs/development/LIVING_ROAD_ENCOUNTER_DELIVERY_2026-10-04.md and its exact final-head/equality receipts before trusting older pending headings. The new remote-clone full verifier passes 97 syntax modules, 1,165 Node checks, 56 Python passes plus 1 visible Windows symlink skip, 46 earned journeys and 41 browser suites. Expanded native coverage is 558 checks/21 whole-browser restarts; ordinary-time blade/bow clips are actual source-linked recordings, not performance or human acceptance.
+
+Runtime and later documentation qualification remain separate. Every non-document Git input must match the full-tested runtime; source/head/HTML receipts are required. Keep the physical-frame/save/claim ownership in the contract below. No new migration or reward owner. Preserve failures and remaining framing/ready-copy notes. Next development is one remembered allocation affecting a practical return activity on the same road; inspect existing finite/repeat owners before extending it. Main/deployment/paid workers/personal saves remain excluded.
+
 # Current Living Road encounter, 2026-10-04
 
 Continue from gameplay/living-road-encounter-20261004 after fetching current reviews. Contract: docs/development/LIVING_ROAD_ENCOUNTER_2026-10-04.md. The exact canonical expedition/root identity owns a short locked bank sweep; unrelated sentinels keep their old behavior. earth-expedition.js owns profile/frame geometry, Adventure owns actual contact/time/visibility/damage, Combat reads threat, UI/art project it. Root kind remains sentinel so projectile volumes, saved identities and generic consumers do not change.

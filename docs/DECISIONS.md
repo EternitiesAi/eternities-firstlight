@@ -1,3 +1,9 @@
+# Qualify a frozen physical encounter, 2026-10-04
+
+Pin the full verifier and ordinary-time recordings to runtime 5668454e64c8f5292e5b435720649d1388822207, and use a new remote clone plus exact equality of all 342 non-document Git entries for the later documentation delivery head. Keep full-epoch success distinct from the failed in-flight copy-refinement epoch, read-only review, software browser coverage, hardware capture and human play. No source refinement lands during a qualification epoch.
+
+A grounded forward lane and honest permanent clearance deepen the existing road without new reward owners or save data. Fixed 136 HP/11 damage preserves meaningful gear advantage, including a fast strongest-gear fight. First repair stock is supplied; current patrol tags never inherit another run's clearance or repeat the repair. The next arc concerns remembered allocation and practical return activity, with target framing/ready-copy polish recorded explicitly. See the dated delivery note.
+
 # A physical bank sweep with honest clearance, 2026-10-04
 
 - Continue actual PR41 gameplay, not main/archive/ZIP. Use the existing linked D-drive checkout and a new review branch; two authorized Sol colleagues provide independent read-only source/design review while Root implements and integrates. No paid worker rerouting.
