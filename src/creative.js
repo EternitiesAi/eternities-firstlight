@@ -10,7 +10,9 @@ const CLOAKS=['#6c9790','#955e73','#c0a775','#657fa2','#c5c9b2'];
 const HAIR=['#5a4334','#bdab83','#333943','#9c694c','#d5d0bd'];
 const WALLS={moss:0xb8c3a3,rose:0xc6a8a1,ink:0x778e9c,ivory:0xd8ceb4};
 const FLOORS={oak:0xaa875f,walnut:0x715b50,stone:0x9ca89a};
+const HH=G.RealmHomeHistory||(typeof require==='function'?require('./home-history.js'):null);
 const FURNITURE={
+ ...Object.fromEntries(HH.definitions.map(d=>[d.id,{name:d.name,w:d.w,d:d.d,solid:d.solid}])),
  shelf:{name:'Library shelf',w:1.4,d:.78,solid:true},
  sofa:{name:'Reading sofa',w:1.55,d:.82,solid:true},
  desk:{name:'Writing desk',w:1.42,d:.85,solid:true},

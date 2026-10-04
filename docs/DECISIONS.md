@@ -1,3 +1,14 @@
+# A Home That Remembers: bounded continuation decisions
+
+- Follow the recovered Earth home anchor and mythology bridge's physical autobiography direction. Four original adaptations retain traces of actual claimed local work; this does not extend cosmic verdicts or founder canon names.
+- Use the existing retreat's eight slots, materials from Sandbox and a separate optional homeHistory1 finite ownership ledger. Avoid adding mandatory inventory keys, a new building grid or another weapon-power tier. Equipment projects retain their independent pin.
+- Atlantis wood2+crystal1 and Cosmos wood2+fiber1 payments cover their corresponding recipes if unspent. Heaven tray needs wood2+fiber2; Hell hand-lamp needs stone2+wood1+fiber1. Display missing ordinary materials honestly; do not convert Hell ore or supplied job parts silently.
+- Each design is made once; removal retains the owned piece without a raw refund. Placement/move/replacement is explicit, with destination and displaced furniture shown. Save validation, direct decorate and session history enforce owned one-copy placement.
+- All room edits adopt validated layout/history only after synchronous durable save. Preserve actual retreat body/room/return checkpoint on the candidate. Placement proposals belong to their starting Simulation and cannot cross characters.
+- Retain the browser, both views, world/key9 and adventure12. Missing new data migrates empty; malformed/current/future data refuses rather than erasing. Claimed knowledge is not automatic fabrication or a replayed payment.
+- Keep the prior native06 context-only shutdown rollback unexplained until source-backed reproduction. Await actual page close and record native write/pagehide/startup bytes in new qualification; do not assert direct persistent context close is a forced crash.
+- Dom deferred human play and authorized continued implementation. That changes implementation order; it does not turn automated engineering checks into founder acceptance.
+
 # Local-life decisions, 2026-10-03
 
 - Deepen existing Heaven/Hell/Atlantis/Cosmos geography with four practical jobs; preserve Earth's living-road story and repeat patrol. Do not add a disconnected realm or claim completed countries.

@@ -173,6 +173,7 @@ class WorldArt{
  furniture(item){let slot=X.SLOTS.find(s=>s.id===item.slot),rot=item.rotation*Math.PI/2;
  const at=(kind,x,y,z,sx,sy,sz,c,opt={})=>{let xx=slot.x+x*Math.cos(rot)+z*Math.sin(rot),zz=slot.z-x*Math.sin(rot)+z*Math.cos(rot);this.add(kind,xx,y,zz,sx,sy,sz,c,{...opt,r:[...(opt.r||[0,0,0])] .map((n,i)=>i===1?n+rot:n)});};
  const b=(x,y,z,w,h,d,c,opt)=>at('box',x,y,z,w,h,d,c,opt);
+ if(G.RealmHomeHistoryArt.draw(item.kind,at))return;
  let wood=0x967953;
  if(item.kind==='shelf'){for(let x of[-.7,.7])b(x,2.7,0,.1,2.2,.7,wood);for(let y of[1.6,2.2,2.8,3.4,3.85]){b(0,y,0,1.5,.10,.78,wood);if(y<3.8)for(let j=0;j<6;j++)b(-.54+j*.21,y+.25,0,.13,.39+(j%2)*.08,.42,[0xa66e7e,0x718f84,0xc4b488][j%3]);}}
  if(item.kind==='sofa'){b(0,1.98,0,1.55,.5,.82,0x8b7289);b(0,2.47,-.33,1.55,.72,.16,0x9e869a);for(let x of[-.69,.69])b(x,2.3,0,.17,.48,.82,0xa28f9e);for(let x of[-.35,.35])b(x,2.26,.02,.53,.16,.54,0xc4b694);}

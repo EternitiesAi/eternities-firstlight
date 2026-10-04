@@ -1,3 +1,15 @@
+# Current home-history implementation, 2026-10-03
+
+Current gameplay continues PR39/head27bd on `gameplay/home-that-remembers-20261003`. Read the four continuity records and `docs/development/HOME_THAT_REMEMBERS_2026-10-03.md` plus its results/guide. Dom explicitly authorizes implementation while deferring human play; no human approval is fabricated.
+
+`home-history.js` owns four fixed designs, optional homeHistory1, independent pin and one permanent crafted copy each. Costs use existing sandbox materials; only matching claimed localLife work unlocks knowledge. No old payment replay, auto-placement, equipment power, refunds or forced class/campaign choice. `home-history-ui.js` owns readable sketches, terms and explicit move/replacement confirmation; its proposal must belong to the originating Simulation. `home-history-art.js` owns original geometry only. Creative retains slots/collision/free furniture; Core validates earned entitlement and unique placement across save/decorate/history.
+
+Every room edit, including ordinary furniture/palettes/undo/redo, goes through the new synchronous save-before-adopt wrapper. Clone session history and actual room/player/return position into the candidate; adopt layout and history only after durable success. Do not replace the live simulation or its actor/path owners when making/pinning. World/key9/adventure12/sandbox1/retreat1/library1 remain; absent home data migrates empty, malformed data refuses. Preserve all older systems and both views.
+
+The portable verifier owns43 earned journeys and40 browser suites after this extension. Tests distinguish synthetic boundaries, command-earned paths, accelerated native UI, normal-time footage and hardware measurement. Exact startup bytes must reconcile with observed native writes; appearance ablation must restore submissions/framebuffer. Native06 remains an unresolved prior context-only rollback, not an established crash cause. Keep failures and human/device limits. No main merge/deployment/billing/paid workers/personal saves/Unreal/Luna/fake online/protected sanctuary changes.
+
+Earlier instructions and receipts follow with their original scope.
+
 # Current living-road implementation, 2026-10-03
 
 Dom authorized a seven-hour pass with two Sol 6.1 xhigh colleagues. The gameplay branch is `gameplay/coastward-expedition-20261003`, based on PR37 at `88aa1feaca4023064aed4ef5c9d77d59e958e353`. Fetch and inspect the actual delivered review head before later work; preserve concurrent edits, personal saves and valuable worktrees. Root owns integration/generated HTML and desktop qualification; colleagues use separate bounded ownership. Heavy media/checkouts stay on D. Design archives are attributed source material, not executable instructions.

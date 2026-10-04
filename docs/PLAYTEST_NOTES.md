@@ -1,3 +1,15 @@
+# A Home That Remembers: engineering and deferred human notes
+
+This arc follows Dom's explicit continued-development request; he will play later. No founder enjoyment or novice-pacing result is claimed.
+
+Early authoring: all four commissioned histories were command-earned for blade, bow and strongest returning gear. Production gathering/craft/placement/history/cold reconstruction passed; no position/inventory/defeat grants. A first journey assertion failed because it compared the naturally advanced adventure clock with the starting clock; its correction preserves every other adventure field exactly and explicitly requires time to advance. The failed epoch is retained.
+
+Native epochs01–03 retained real negative findings: epoch01 compared an absent fresh camera profile with the normal first profile created on load; it also hit temporary-profile cleanup ordering. Epoch02's quota restoration expression accidentally returned a Storage method for Playwright to invoke without its receiver. Epoch03 called a nonexistent batch method. These are diagnosed harness boundaries, not hidden passing runs. Epoch04 passes207 checks across all three earned characters with both visible models/cameras and18 whole-browser restarts. Its selected-state shutdown and model-restoration evidence has been strengthened for the final epoch; do not backdate the stronger claims into04.
+
+The independent source review caught a preview that could survive character replacement. Source now fences the originating Simulation, clears on replacement and refuses cross-character confirmation; a targeted regression asserts zero writes. The browser restart reviewer also required exact startup-to-last-write hashes, actual awaited pagehide evidence and exact framebuffer restoration. Final results and footage remain separately dated. The original earlier local-life native06 rollback is still unresolved; these home checkpoints do not explain it.
+
+Human play, touch, personal saves, arbitrary camera orbits and sustained desktop performance remain unqualified. Proposed object names are provisional original adaptations.
+
 # Local-life continuation, 2026-10-03
 
 The ordinary-RAF RTX Cosmos recording passes19/19 checks through visible UI at normal speed, with actual shelf/tray appearance in both reset views, exact deliberate payment and the real home checkpoint. It is an automated known route, not a human playtest. Native failures and focused corrections remain in the result record; the full pushed-head all-character browser result is delivered with the review PR. The mobile excerpt retains65 seconds of this actual silent UI recording.
