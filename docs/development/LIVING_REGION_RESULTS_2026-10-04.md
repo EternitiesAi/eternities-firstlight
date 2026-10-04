@@ -1,3 +1,5 @@
+Final delivery is recorded in [the source-linked delivery note](LIVING_REGION_DELIVERY_2026-10-04.md). The earlier epochs below retain their original scope and do not replace the final receipt.
+
 # Living-region authoring results, 2026-10-04
 
 Base: PR40, `4240d9eaefb81d492040295b5b2b70e08e4245c8`. Branch: `gameplay/earth-living-region-20261004`, explicitly stacked against `gameplay/home-that-remembers-20261003`. Source and personal data were not replaced by an archive. The new episode and home piece are original provisional adaptations.
@@ -8,7 +10,7 @@ This source record preserves authoring epochs. Final pushed-head verification, m
 
 One optional accepted community episode, two lasting allocations, supplied cargo, clear physical reach/assembly/inspection, atomic once-only materials/currency fee, persistent recognition, one bounded animated worker and one finite home recipe. New UI offers exact entry/route/danger/reward terms and current map/tracker action. Art includes coherent posts/braces/chart/record attachment. The traveler has fitted rounded volumes and separate material responses; real bow anticipation aligns with target-forward fire even while guarded, and carries no extra damage authority. Root-bank brute gait follows actual accepted distance with pause/recovery bounds. Desktop HUD is smaller without removing essential controls.
 
-World/key9 and adventure12 remain. Optional bridgeCommunity1 migrates missing data to empty; current/future/impossible data refuses. HomeHistory1 shape/order remain; its fifth definition is appended and old clients intentionally cannot understand that new furniture ID. No reset/rescale of XP or old reward history. Existing notes/music/exports, building/crops, equipment/sockets/fittings, companion and explicit story/soul/class history retain ownership.
+World/key9 and adventure12 remain. Optional bridgeCommunity1 migrates missing data to empty; malformed/future/impossible data refuses; valid version1 history is retained. HomeHistory1 shape/order remain; its fifth definition is appended and old clients intentionally cannot understand that new furniture ID. No reset/rescale of XP or old reward history. Existing notes/music/exports, building/crops, equipment/sockets/fittings, companion and explicit story/soul/class history retain ownership.
 
 ## Authoring evidence and retained failures
 

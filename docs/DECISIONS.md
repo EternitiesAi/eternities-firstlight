@@ -1,3 +1,7 @@
+# Final living-region evidence and next arc, 2026-10-04
+
+Keep the runtime gate and recordings pinned to their actual implementation head d7a434b238c662a77eb3318ddee7626732c416a5. A documentation-only delivery head requires explicit equality of every non-doc Git input and its own fresh source gate, rather than attributing an earlier browser execution to a later commit. Preserve failed authoring epochs and the hosted billing failure separately. The next product priority is one distinctive encounter with a visible community consequence in the existing region; no new level/class/economy or disconnected realm is approved by this checkpoint. See the final delivery note.
+
 # Living-Earth episode decisions, 2026-10-04
 
 - Implement a connected ordinary outing before further realm breadth. Recovered Earth world-bible home/town/province and connected-cause guidance informs the adaptation; new title, dialogue, fee and fixture names remain provisional.

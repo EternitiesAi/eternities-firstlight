@@ -58,6 +58,8 @@ Files: `traveler-art.js`, `traveler-equipment-art.js`, `earth-expedition-beast-a
 Files: `tools/verify.py`, `.github/workflows/verify.yml`, new browser/capture tools, `AGENTS.md`, four continuity records and dated results/play guide.
 
 - [x] Register three journeys and isolated browser suite; regenerate identical checked-in HTML.
-- [ ] Run current full verifier, retain any red epoch, resolve actual defects and rerun only affected/final gates.
-- [ ] Record ordinary RAF/UI footage from labelled earned state, inspect both views and fully decode media; distinguish hardware cadence from GPU/monitor FPS and human feel.
-- [ ] Commit/push source, open a stacked draft PR against PR40 branch, attach it, clone exact remote head and run full current verifier there. Preserve source/evidence epochs and return exact results/migration/limits.
+- [x] Run current full verifier, retain any red epoch, resolve actual defects and rerun only affected/final gates.
+- [x] Record ordinary RAF/UI footage from labelled earned state, inspect both views and fully decode media; distinguish hardware cadence from GPU/monitor FPS and human feel.
+- [x] Commit/push source, open a stacked draft PR against PR40 branch, attach it, clone exact remote head and run full current verifier there. Preserve source/evidence epochs and return exact results/migration/limits.
+
+Delivery receipt: runtime d7a434b238c662a77eb3318ddee7626732c416a5 passed all 41 current suites in a clean remote clone; actual media fully decoded and inspected. PR41 is open and stacked. The required desktop attachment call was attempted but did not return; app attachment is unconfirmed. Final documentation-only/evidence heads and source equality remain explicit in the review receipts. No main merge/deployment or human acceptance is implied.

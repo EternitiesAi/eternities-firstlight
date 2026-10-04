@@ -1,3 +1,9 @@
+# Living Earth final engineering checkpoint, 2026-10-04
+
+Draft PR41 is stacked against PR40. Runtime `d7a434b238c662a77eb3318ddee7626732c416a5` passed the clean remote-clone full gate: 97 syntax modules, 1153 Node checks,56 Python passes + 1 existing skip,46 earned journeys and 41 browser suites. Native community coverage is 259 checks with 21 whole-browser restart checkpoints. Both final-source normal-time choice recordings pass 21 checks each, with actual source-linked media. Later delivery documentation retains the same runtime/verifier inputs; its exact head/equality and separate source gate belong to the PR receipts. See [final delivery](development/LIVING_REGION_DELIVERY_2026-10-04.md).
+
+World/key9, adventure12 and homeHistory1 remain; optional bridgeCommunity1 is additive. Hosted runtime CI is billing-blocked (43 jobs, zero steps). Human pacing/taste, crash durability and sustained GPU performance remain unqualified; the older LocalLife context-only rollback remains unresolved. Main/deployment/personal saves remain untouched. Earlier dated records below retain their original evidence epochs.
+
 # A Place Beside the Road, 2026-10-04
 
 Current development: `gameplay/earth-living-region-20261004`, based on PR40 at `4240d9eaefb81d492040295b5b2b70e08e4245c8`. Dom approved the living-Earth direction and asked for planning followed by implementation. This first bounded proof connects Merren, the existing long Coastward bridge, Vessa, a chosen lasting working place and an optional home trace. It is an original adaptation of the recovered Earth home/town/province direction, not a finished country or founder-approved new naming.

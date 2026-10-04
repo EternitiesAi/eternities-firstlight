@@ -1,0 +1,27 @@
+# Living Earth delivered: A Place Beside the Road, 2026-10-04
+
+The optional Coastward community outing is implemented and reviewable in draft [PR41](https://github.com/EternitiesAi/eternities-firstlight/pull/41), stacked against open PR40. Runtime implementation and recorded/tested source: `d7a434b238c662a77eb3318ddee7626732c416a5`; base: `4240d9eaefb81d492040295b5b2b70e08e4245c8`. Later delivery documentation does not change source, generated HTML, assets, tests, tools or workflow inputs. The exact delivery head and equality receipt are recorded in the PR and source-linked evidence branch.
+
+After the initial kit, accept Merren's terms, fetch supplied fittings from Vessa across the existing bridge, choose and fit either a sheltered sorting bench or a river observation stand, inspect it in use, and claim the exact once-only fee. This unlocks one optional Crossing route-board recipe: pin, craft and place it deliberately at home. Existing repeat patrols and Oren's payments retain their own owners. The scenario and art are original provisional adaptations.
+
+## Exact evidence
+
+A clean remote clone at the runtime head passed `python tools/verify.py --browser`: 97 source syntax modules, 1153 Node checks, 57 Python cases (56 pass, one existing Windows symlink skip), 46 command-earned journeys and all 41 current browser suites. Both checked-in HTML files rebuild identically: 2,688,816 bytes; SHA256 `1e0b58dbcfb383a832f279d748d0f0a9a75459f9cf804d40f7e6c272cf008c0a`. The clone remained source-clean.
+
+The new native suite passed 259 checks /0 failed across earned blade, bow and strongest returning characters, both choices and cameras. Its 21 orderly whole-Chromium restarts reconcile raw startup with the latest observed successful save at accepted, carried, fitted-uninspected, complete-unpaid, paid-before-home, crafted and placed checkpoints. Capacity/quota refusal and changed-request replay remain atomic. Tested fixture/home appearance ablations restore exact pixels, batches and authority. Final camera checks measure normal requested distance at the previously failing shelter position.
+
+Two final-source normal-time UI recordings complete the shelter and lookout routes, explicit payment and home craft/placement: 21 checks each, no position/resource grants or accelerated simulation. A 64.96-second excerpt contains six direct cuts from the lookout recording, without speed change or audio. RTX 3080 hardware ANGLE/D3D11 was detected in headless Chromium 143.0.7499.4, 1280x800, balanced quality, driver 610.74. Four 600-interval RAF samples per recording have p50/p95 around 16.7-16.8ms and no scheduled interval above 50ms. This is recording-workload cadence, with other CPU work present; it is not isolated GPU timing, monitor FPS or sustained performance qualification.
+
+Hosted run 37181713494 at the runtime head did not start any of its 43 jobs: zero steps, account locked by a billing issue. This is separate from the successful local gate. No billing change was made. Source-linked reports, a retained failed native authoring report, selected screenshots and the actual excerpt are in `evidence/earth-living-region-20261004`, under `docs/evidence/living-region-2026-10-04/`. The PR pins its exact evidence commit.
+
+## Compatibility and limits
+
+World/key9, adventure12 and homeHistory1 remain. Optional bridgeCommunity1 migrates absent data to empty, retains valid version1 history, and rejects malformed/future/impossible data. The fifth home definition is appended, preserving old definition order; older clients intentionally cannot understand that new item. Stored XP, gear/sockets/fittings, companion, housing/crops, notebook/music/exports, chapters and explicit soul/class choices retain their owners. Personal saves were not inspected.
+
+Authoring failures stay visible in the dated results and D-drive artifacts; the portable evidence includes the failed native epoch02 report (49 positive checks then a locator exception, overall status failed). Read-only colleague review checked source/count/hash consistency and selected stills; it did not rerun this gate or supply human acceptance. Detailed fixture/worker/home parts remain small in wide diorama; models remain modular. Touch, arbitrary camera orbits, novice pacing, enjoyment, hard-crash durability and sustained device performance remain unqualified. The older LocalLife context-only shutdown rollback is still unexplained. Main and public deployment remain untouched. The desktop PR-attachment request did not return; the GitHub PR itself was independently confirmed.
+
+## Next development arc
+
+Build one distinctive ordinary encounter within this inhabited region: readable tactical roles, anticipation/contact/recovery, a useful guard and movement response with the starter kit, and a visible consequence affecting one existing local activity. Measure blade/bow/strongest behavior against current equipment. Keep declared finite community fees separate from intentional repeat-run ledgers. Preserve stationary target selection, both cameras, saves and stored XP. Choose the actual site and authority after fetching current review/concurrent work; do not add an unrelated realm or silently scale enemy power to equipment.
+
+Dom has deferred play. His later questions remain whether the route was clear, the choice was recognizable, the fight was compelling and the home trace made the trip feel remembered. Current automation cannot answer those.

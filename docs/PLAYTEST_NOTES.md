@@ -1,3 +1,9 @@
+# Living Earth final engineering checkpoint, 2026-10-04
+
+Draft PR41 is stacked against PR40. Runtime `d7a434b238c662a77eb3318ddee7626732c416a5` passed the clean remote-clone full gate: 97 syntax modules, 1153 Node checks,56 Python passes + 1 existing skip,46 earned journeys and 41 browser suites. Native community coverage is 259 checks with 21 whole-browser restart checkpoints. Both final-source normal-time choice recordings pass 21 checks each, with actual source-linked media. Later delivery documentation retains the same runtime/verifier inputs; its exact head/equality and separate source gate belong to the PR receipts. See [final delivery](development/LIVING_REGION_DELIVERY_2026-10-04.md).
+
+World/key9, adventure12 and homeHistory1 remain; optional bridgeCommunity1 is additive. Hosted runtime CI is billing-blocked (43 jobs, zero steps). Human pacing/taste, crash durability and sustained GPU performance remain unqualified; the older LocalLife context-only rollback remains unresolved. Main/deployment/personal saves remain untouched. Earlier dated records below retain their original evidence epochs.
+
 # Living-Earth episode: engineering and deferred human notes, 2026-10-04
 
 No human enjoyment, novice pacing or founder taste is claimed. The approved arc is implemented against PR40, with three command-earned kit/campaign journeys and labelled synthetic transaction/migration/physical boundaries. The fee is honest for strongest equipment: materials and an optional finite home design, not a claimed weapon upgrade.
