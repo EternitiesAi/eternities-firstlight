@@ -254,7 +254,12 @@ def main():
                     # Observation only. No Firstlight test/capture flag is installed.
                     page.add_init_script('''window.__earthCaptureRaf={frames:0,first:null,last:null};
                       requestAnimationFrame(function count(t){const r=window.__earthCaptureRaf;
-                        r.frames++;if(r.first===null)r.first=t;r.last=t;requestAnimationFrame(count);});''')
+                        r.frames++;if(r.first===null)r.first=t;r.last=t;
+                        const flight=window.__earthFlightWatch;
+                        if(flight&&window.Realm){const d=Realm.diagnostics.adventure;
+                          if(d.tactics.target===flight.enemy&&d.arrows.length&&flight.samples.length<120)
+                            flight.samples.push({frame:r.frames,at:d.arrows.map(a=>a.age),arrows:d.arrows.map(a=>({...a,hit:[...a.hit]})),target:d.tactics.target});}
+                        requestAnimationFrame(count);});''')
                     response = page.goto(origin + '/index.html', wait_until='load')
                     page.wait_for_function('()=>!!window.Realm')
                     page.wait_for_function('()=>getComputedStyle(document.querySelector("#loading")).opacity==="0"')
@@ -452,6 +457,8 @@ def main():
                                 selected = True
                                 break
                         check('Native Tab selects accepted actor ' + enemy_id, selected)
+                        if args.variant == 'fresh-bow':
+                            page.evaluate('id=>{window.__earthFlightWatch={enemy:id,samples:[]};}', enemy_id)
                         if step['id'] == 'clear-root-pests':
                             click('#rpg-hud [data-rpg="camera"][data-id="adventure"]')
                             click('#target-framing')
@@ -461,22 +468,29 @@ def main():
                         saw_release = False
                         # Wait for an actual tell before initiating damage, even with veteran gear.
                         while time.monotonic() - begun < 20:
-                            d = diag()['adventure']
+                            waiting = page.evaluate('()=>({diagnostics:Realm.diagnostics,hp:Realm.state.adventure.hp})')
+                            d = waiting['diagnostics']['adventure']
                             actor = next((e for e in d['enemies'] if e['id'] == enemy_id), None)
-                            check('Traveler survives waiting for tell', state()['adventure']['hp'] > 0)
+                            check('Traveler survives waiting for tell', waiting['hp'] > 0)
                             if actor and actor['mode'] == 'windup' and actor['timer'] > .2:
                                 if step['id'] == 'clear-root-pests' and run is None and side_escape is None:
                                     if actor['timer'] < .85:
                                         page.wait_for_timeout(80)
                                         continue
                                     frozen = dict(actor['strike'])
-                                    yaw = diag()['camera']['yaw']
+                                    yaw = waiting['diagnostics']['camera']['yaw']
                                     right = (math.cos(frozen['yaw']), -math.sin(frozen['yaw']))
                                     directions = {'d': (math.cos(yaw), -math.sin(yaw)), 'a': (-math.cos(yaw), math.sin(yaw)),
                                                   's': (math.sin(yaw), math.cos(yaw)), 'w': (-math.sin(yaw), -math.cos(yaw))}
                                     key = max(directions, key=lambda k: sum(a*b for a,b in zip(directions[k], right)))
-                                    hp_before = state()['adventure']['hp']
-                                    mark('story-bank-sweep-before-native-side-step', picture=False)
+                                    hp_before = waiting['hp']
+                                    # React to the observed tell immediately. Full checkpoint
+                                    # reads/writes before key-down previously spent its window,
+                                    # so an eventual outside position could follow a real hit.
+                                    # Preserve the exact pre-move snapshot without extra calls.
+                                    side_start = {'seconds': time.monotonic()-started,
+                                                  'timer': actor['timer'], 'player': dict(d['player']),
+                                                  'camera': waiting['diagnostics']['camera']}
                                     page.keyboard.down(key)
                                     try:
                                         page.wait_for_timeout(700)
@@ -487,7 +501,7 @@ def main():
                                     check('Native movement reaches the side of the locked lane', abs(lateral) > 1.24, {'key': key, 'lateral': lateral, 'player': pos})
                                     page.wait_for_function('(id)=>Realm.diagnostics.adventure.enemies.find(e=>e.id===id)?.mode==="recover"', arg=enemy_id)
                                     contact = next(e for e in diag()['adventure']['enemies'] if e['id']==enemy_id)
-                                    side_escape = {'key': key, 'frame': frozen, 'lateral': lateral, 'hpBefore': hp_before,
+                                    side_escape = {'key': key, 'frame': frozen, 'start': side_start, 'lateral': lateral, 'hpBefore': hp_before,
                                                    'hpAfter': state()['adventure']['hp'], 'contactAt': contact['contactAt'], 'contactHit': contact['contactHit']}
                                     check('Native side-step avoids actual contact with frame retained', side_escape['hpBefore']==side_escape['hpAfter'] and contact['strike']==frozen and contact['contactHit'] is False, side_escape)
                                     mark('story-bank-sweep-native-side-step-opening')
@@ -529,11 +543,13 @@ def main():
                         check('Observed an accepted actual weapon release ' + enemy_id, saw_release)
                         check('Combat pays no old currency/drop/defeat reward ' + enemy_id,
                               all(after['adventure'][k] == before['adventure'][k] for k in ['xp', 'coins', 'ore', 'drops', 'defeated']))
+                        flight_samples = page.evaluate('()=>{const r=window.__earthFlightWatch;window.__earthFlightWatch=null;return r?.samples||[];}')
                         if args.variant == 'fresh-bow':
-                            check('Actual bow projectile observed ' + enemy_id, saw_arrow)
+                            saw_arrow = saw_arrow or bool(flight_samples)
+                            check('Actual bow projectile observed ' + enemy_id, saw_arrow, {'raf_observer_samples': flight_samples})
                         report['combats'].append({'enemy_id': enemy_id, 'step': step['id'], 'run': run,
                                                    'seconds': time.monotonic() - begun, 'side_escape': side_escape, 'guards': guards,
-                                                   'saw_actual_arrow': saw_arrow, 'initial_hp': term['hp'],
+                                                   'saw_actual_arrow': saw_arrow, 'raf_observer_flight_samples': flight_samples, 'initial_hp': term['hp'],
                                                    'hp_at_approach': enemy['hp'], 'saw_actual_weapon_release': saw_release,
                                                    'companion_mode_retained': before['adventure']['companion']['mode'],
                                                    'lowest_observed_hp': low, 'player_hp_before': before['adventure']['hp'],
