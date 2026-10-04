@@ -1,0 +1,20 @@
+{
+  "runtime_head": "d7a434b238c662a77eb3318ddee7626732c416a5",
+  "delivery_head": "4ee5854aa991c1eec019527c9e4944db060a668f",
+  "documentation_only_changed_files": [
+    "docs/CURRENT_STATE.md",
+    "docs/DECISIONS.md",
+    "docs/NEXT_TASK.md",
+    "docs/PLAYTEST_NOTES.md",
+    "docs/development/LIVING_REGION_DELIVERY_2026-10-04.md",
+    "docs/development/LIVING_REGION_RESULTS_2026-10-04.md",
+    "docs/superpowers/plans/2026-10-04-living-region.md"
+  ],
+  "all_non_docs_git_entries_equal": true,
+  "non_docs_entry_count": 342,
+  "fresh_remote_clone_checkout": "D:\\07-GAMES\\Firstlight\\verification\\living-region-20261004-d7a434b-01",
+  "command": "python tools/verify.py --output D:/07-GAMES/Firstlight/artifacts/living-region-20261004/fresh-4ee5854-01",
+  "status": "passed",
+  "exit_code": 0,
+  "clone_source_clean": true
+}

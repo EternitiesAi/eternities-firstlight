@@ -1,0 +1,43 @@
+{
+  "method": "Actual final-source normal-time UI recording; six direct cuts, no speed change, silent. Encoder sampling is not game FPS. Earlier 65s candidate retained separately.",
+  "source_head": "d7a434b238c662a77eb3318ddee7626732c416a5",
+  "html_sha256": "1e0b58dbcfb383a832f279d748d0f0a9a75459f9cf804d40f7e6c272cf008c0a",
+  "raw_sha256": "5173d6b5895d5b7eea9839154ec76b8daa19d80ea812831de790967db3deccc5",
+  "excerpt_sha256": "f069274fb70a2ad7c560c59a150c143503e340e9a5fb6205cbbb0c57098f3ced",
+  "segments_seconds": [
+    [
+      15,
+      25
+    ],
+    [
+      88,
+      100
+    ],
+    [
+      153,
+      167
+    ],
+    [
+      175,
+      184
+    ],
+    [
+      199,
+      208
+    ],
+    [
+      229,
+      240
+    ]
+  ],
+  "nominal_seconds": 65,
+  "bytes": 10177497,
+  "raw_full_decode": true,
+  "excerpt_full_decode": true,
+  "gpu_driver": "610.74",
+  "resolution": "1280x800",
+  "render_quality": "balanced",
+  "measurement_limit": "600 scheduled RAF intervals per scene during headless hardware-accelerated viewport recording; no GPU timer or monitor measurement; fresh verification CPU work coexisted, so not isolated performance qualification",
+  "excerpt_file": "LOOKOUT_PLAYABLE_LOOP_65S.mp4",
+  "encoded_duration": "00:01:04.96"
+}
