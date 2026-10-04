@@ -41,6 +41,12 @@ def browser_run_spec(suite, output):
     return command, extra_env
 
 
+def reserve_browser_output(output):
+    if output is not None:
+        # Atomically claim a fresh root before any source/suite work can run.
+        output.mkdir(parents=True, exist_ok=False)
+
+
 def prepare_browser_sources(output, *, root=ROOT):
     if output is None:
         return None
@@ -67,6 +73,10 @@ def main():
         args.browser_output = args.browser_output.resolve()
         if os.name == 'nt' and args.browser_output.drive.upper() != 'D:':
             parser.error('--browser-output must stay on D: on Windows')
+        try:
+            reserve_browser_output(args.browser_output)
+        except FileExistsError:
+            parser.error('--browser-output must name a new directory; prior evidence stays untouched')
     if not shutil.which('node'):
         parser.error('Node.js is required for development checks. Install Node 22 or 24.')
     output = args.output.resolve()

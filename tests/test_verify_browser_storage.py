@@ -4,6 +4,13 @@ import importlib.util,tempfile,unittest
 SPEC=importlib.util.spec_from_file_location("firstlight_verifier",Path(__file__).resolve().parents[1]/"tools/verify.py")
 V=importlib.util.module_from_spec(SPEC);SPEC.loader.exec_module(V)
 class BrowserStorage(unittest.TestCase):
+    def test_evidence_root_is_claimed_once_without_overwriting_old_reports(self):
+        with tempfile.TemporaryDirectory(prefix="firstlight-storage-root-") as tmp:
+            output=Path(tmp)/"new-evidence"
+            V.reserve_browser_output(output)
+            prior=output/"existing-report.json";prior.write_bytes(b"prior")
+            with self.assertRaises(FileExistsError):V.reserve_browser_output(output)
+            self.assertEqual(prior.read_bytes(),b"prior")
     def test_default_commands_and_environment_remain_unchanged(self):
         command,env=V.browser_run_spec("realm_givers_browser",None)
         self.assertEqual(command,[V.sys.executable,"tests/realm_givers_browser.py"])
