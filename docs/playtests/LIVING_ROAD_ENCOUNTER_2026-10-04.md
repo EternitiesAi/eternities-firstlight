@@ -1,0 +1,15 @@
+# Play the bank sweep — 2026-10-04
+
+Open PLAY_FIRSTLIGHT_WINDOWS.cmd in the D-drive authoring checkout. It uses the local browser target. Back up your world through More → Export world JSON before changing versions. Automated evidence uses separate command-earned characters and temporary browser origins; it does not exercise Dom's personal saves.
+
+1. With a fresh character, collect Oren's initial expedition kit. No campaign chapter, class choice or soul reward is required for this optional Earth outing.
+2. Open Map, select the Roads tab, choose All five roads and Earth. Walk to the five-light marker when prompted, read crossing terms and explicitly save the checkpoint and cross. You can return to Firstlight free at any time.
+3. Read the Living road tab for Stormfall and the Living Road. Meet Rill west of Coastward and accept deliberately. Read the stormfall/coppice allocation, route, danger and exact payment before choosing. Journal and Map show currently available physical actions.
+4. Follow the existing work route through camp, watercourse, crossing and root passage. Tab or click selects a foe. 1 toggles stationary autoattack; movement remains yours. The Channel skitter teaches a pursuing bite. The Root-bank brute closes before the Bank sweep warning: its marked forward lane stays fixed once shown. Press 3 to Brace, or move beside the lane. Recovery lasts 2.3 seconds; attack when your weapon is ready and in range.
+5. After the root-bank defeat, the cleared field marker and supplied brace stock reflect saved first-story clearance. The stock is at the alternate support south of the passage. Fit that existing support, deliver your allocation at the return glade, then return to Rill and explicitly claim. A refused/full-capacity claim leaves work complete and unpaid for retry.
+6. At the home outdoor workbench, inspect the existing finite Trailward binding. Edge adds 2 attack; shelter adds 1 guard and 10 maximum health. Both cost 3 ore, 8 sunmarks and 6 fibre, preserve weapon/socket identity, and require an explicit confirmation. Shelter does not increase bow damage or heal current health. Try the practice bundle before and after; it grants no loot or XP.
+7. V exchanges third person and diorama, R resets the current view. Settings offers reduced motion; the warning's fixed shape and text remain. You can manually orbit for a clearer view when a nearby foe is low in the frame.
+
+Returning characters keep their first story and claimed rewards. If that delivery is already claimed, meet Rill and read/accept a new patrol. Its new run owns its encounters and one declared payment; the permanent support stays. You inspect it instead of rebuilding it. Old defeats cannot complete the new run, and reopening/reloading/changed request IDs cannot duplicate payment. Strong gear can dispatch this early foe quickly; it is not invisibly scaled.
+
+These are known-route instructions, not a novice pacing result. Dom's later human questions remain: Was the lane clear? Did guard or movement feel deliberate? Did the cleared work pocket make returning worthwhile?

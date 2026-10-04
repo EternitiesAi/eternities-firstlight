@@ -70,9 +70,11 @@ test('future, missing, expired and reduced-motion hit samples add no recoil',()=
 test('actual flash lifetime recolors only the selected beast geometry',()=>{
  for(const flash of [0,10,10.1]){const{sim,e}=story();e.flash=flash;const r=render(sim,e);assert.equal(r.calls[0].flash,flash>10);assert.ok(brute(r.out).every(p=>p.confirmedFlash===(flash>10)));if(flash>10)assert.ok(brute(r.out).every(p=>p.c===0xf8e4b9));else assert.ok(brute(r.out).some(p=>p.c!==0xf8e4b9));}
 });
-test('aim-centered warning rings and actor-centered selected-target ring remain outside body transforms',()=>{
- for(const reducedMotion of [false,true]){const{sim,e}=story();Object.assign(e,{yaw:1.1,mode:'windup',timer:.675,aim:{x:e.x+3,z:e.z-2},hitAt:9.91,hitFrom:{x:e.x-1,z:e.z}});const{out}=render(sim,e,{target:true,reducedMotion});
-  for(const[c,center,radius]of [[0xf1d29a,e,.8],[0xd098c8,e.aim,1.2],[0xe0bad4,e.aim,.6]]){const ps=out.box.filter(p=>p.c===c);assert.equal(ps.length,reducedMotion&&c===0xe0bad4?0:36);if(!ps.length)continue;const outer=ps.filter(p=>p.em===.75);assert.equal(outer.length,32);for(const p of outer)near(Math.hypot(p.p[0]-center.x,p.p[2]-center.z),radius);vnear(outer[0].p,[center.x,c===0xe0bad4?1.6:1.58,center.z+radius]);}
+test('locked sweep and actor target ring stay outside confirmed body recoil; old distant ring is absent',()=>{
+ for(const reducedMotion of [false,true]){const{sim,e}=story();Object.assign(e,{yaw:1.1,mode:'windup',timer:.675,aim:{x:e.x+3,z:e.z-2},strike:{x:e.x,z:e.z,yaw:1.1},hitAt:9.91,hitFrom:{x:e.x-1,z:e.z}});const{out}=render(sim,e,{target:true,reducedMotion});
+  const ps=out.box.filter(p=>p.c===0xf1d29a);assert.equal(ps.length,36);for(const p of ps.filter(p=>p.em===.75))near(Math.hypot(p.p[0]-e.x,p.p[2]-e.z),.8);
+  assert.equal(out.box.filter(p=>[0xd098c8,0xe0bad4].includes(p.c)).length,0);
+  const warning=out.box.filter(p=>p.bankSweepPart);assert.deepEqual(clone(warning),B.warningParts({frame:e.strike,...EE.encounter(e),base:W.height(sim.room,e.x,e.z),mode:e.mode,timer:e.timer,windup:e.windup,reducedMotion}).map(({kind,...p})=>p));
  }
 });
 test('root-only diorama health bar follows actual ground while generic bar retains its original height',()=>{

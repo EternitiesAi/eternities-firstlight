@@ -17,7 +17,7 @@ const by=(ps,id)=>ps.find(p=>p.expeditionBeastPart===id);
 
 test('isolated global-script/CommonJS export a dependency-free frozen appearance API only',()=>{
  const sandbox={module:{exports:{}},sentinel:17};vm.runInNewContext(source,sandbox);assert.equal(sandbox.RealmEarthExpeditionBeastArt,sandbox.module.exports);assert.equal(sandbox.sentinel,17);assert.equal(Object.keys(sandbox).length,3);
- assert.deepEqual(Object.keys(B),['pose','parts','draw']);assert.ok(Object.isFrozen(B));assert.equal(global.RealmEarthExpeditionBeastArt,B);
+ assert.deepEqual(Object.keys(B),['pose','parts','draw','warningParts']);assert.ok(Object.isFrozen(B));assert.equal(global.RealmEarthExpeditionBeastArt,B);
  assert.equal(sandbox.module.exports.parts(at()).length,41,'no simulation/DOM/engine dependency needed to emit parts');
 });
 test('only actual windup and recovery timers produce the grounded combat posture',()=>{

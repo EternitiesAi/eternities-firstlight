@@ -413,7 +413,7 @@ def main():
                     workspace('expedition')
                     text = reading('Story invitation and exact two allocations')
                     check('Visible terms include fixed danger, payment, both allocations and binding cost',
-                          all(t in text for t in ['64 / 136', '45 XP', '18 sunmarks', '3 ore', '8 timber', '8 fibre', '+2 attack', '6 fibre']))
+                          all(t in text for t in ['64 health / 9 damage', '136 health / 11 damage', '2.6 m', '3.1 m', '45 XP', '18 sunmarks', '3 ore', '8 timber', '8 fibre', '+2 attack', '6 fibre']))
                     check('Reading does not accept the story', not state()['earthExpedition']['story']['accepted'])
                     mark('expedition-terms')
                     page.wait_for_timeout(1800)
@@ -453,6 +453,7 @@ def main():
                                 break
                         check('Native Tab selects accepted actor ' + enemy_id, selected)
                         begun, samples, guards, saw_arrow, first_guard = time.monotonic(), [], 0, False, False
+                        side_escape = None
                         saw_release = False
                         # Wait for an actual tell before initiating damage, even with veteran gear.
                         while time.monotonic() - begun < 20:
@@ -460,6 +461,33 @@ def main():
                             actor = next((e for e in d['enemies'] if e['id'] == enemy_id), None)
                             check('Traveler survives waiting for tell', state()['adventure']['hp'] > 0)
                             if actor and actor['mode'] == 'windup' and actor['timer'] > .2:
+                                if step['id'] == 'clear-root-pests' and run is None and side_escape is None:
+                                    if actor['timer'] < .85:
+                                        page.wait_for_timeout(80)
+                                        continue
+                                    frozen = dict(actor['strike'])
+                                    yaw = diag()['camera']['yaw']
+                                    right = (math.cos(frozen['yaw']), -math.sin(frozen['yaw']))
+                                    directions = {'d': (math.cos(yaw), -math.sin(yaw)), 'a': (-math.cos(yaw), math.sin(yaw)),
+                                                  's': (math.sin(yaw), math.cos(yaw)), 'w': (-math.sin(yaw), -math.cos(yaw))}
+                                    key = max(directions, key=lambda k: sum(a*b for a,b in zip(directions[k], right)))
+                                    hp_before = state()['adventure']['hp']
+                                    mark('story-bank-sweep-before-native-side-step', picture=False)
+                                    page.keyboard.down(key)
+                                    try:
+                                        page.wait_for_timeout(700)
+                                    finally:
+                                        page.keyboard.up(key)
+                                    pos = diag()['adventure']['player']
+                                    lateral = (pos['x']-frozen['x'])*right[0] + (pos['z']-frozen['z'])*right[1]
+                                    check('Native movement reaches the side of the locked lane', abs(lateral) > 1.24, {'key': key, 'lateral': lateral, 'player': pos})
+                                    page.wait_for_function('(id)=>Realm.diagnostics.adventure.enemies.find(e=>e.id===id)?.mode==="recover"', arg=enemy_id)
+                                    contact = next(e for e in diag()['adventure']['enemies'] if e['id']==enemy_id)
+                                    side_escape = {'key': key, 'frame': frozen, 'lateral': lateral, 'hpBefore': hp_before,
+                                                   'hpAfter': state()['adventure']['hp'], 'contactAt': contact['contactAt'], 'contactHit': contact['contactHit']}
+                                    check('Native side-step avoids actual contact with frame retained', side_escape['hpBefore']==side_escape['hpAfter'] and contact['strike']==frozen and contact['contactHit'] is False, side_escape)
+                                    mark('story-bank-sweep-native-side-step-opening')
+                                    continue
                                 page.keyboard.press('3')
                                 first_guard = diag()['adventure']['tactics']['guardUntil'] > state()['adventure']['elapsed']
                                 guards += int(first_guard)
@@ -500,7 +528,7 @@ def main():
                         if args.variant == 'fresh-bow':
                             check('Actual bow projectile observed ' + enemy_id, saw_arrow)
                         report['combats'].append({'enemy_id': enemy_id, 'step': step['id'], 'run': run,
-                                                   'seconds': time.monotonic() - begun, 'guards': guards,
+                                                   'seconds': time.monotonic() - begun, 'side_escape': side_escape, 'guards': guards,
                                                    'saw_actual_arrow': saw_arrow, 'initial_hp': term['hp'],
                                                    'hp_at_approach': enemy['hp'], 'saw_actual_weapon_release': saw_release,
                                                    'companion_mode_retained': before['adventure']['companion']['mode'],

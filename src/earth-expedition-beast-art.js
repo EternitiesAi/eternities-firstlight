@@ -22,7 +22,8 @@
   const settling=mode==='recover'?smooth(clamp(timer/recovery)):0;
   const crouch=mode==='windup'?.02+.06*anticipation:.08*settling;
   const headPitch=mode==='windup'?.04+.18*anticipation:.22*settling;
-  const bodyY=.55-crouch,headAnchor=[0,bodyY+.015,.33],legs={};
+  const age=options.contactAge,contact=mode==='recover'&&Number.isFinite(age)&&age>=0&&age<.18&&!options.reducedMotion?(1-age/.18)*.045:0;
+  const bodyY=.55-crouch-contact,headAnchor=[0,bodyY+.015,.33],legs={};
   const gait=mode==='chase'?Math.max(0,Math.min(1,Number.isFinite(options.blend)?options.blend:0)):0,phase=Number.isFinite(options.phase)?options.phase:0,quiet=options.reducedMotion===true;
   const stance=mode==='chase'?.025:mode==='windup'?.035*anticipation:.035*settling;
   for(const side of [-1,1])for(const front of [false,true]){
@@ -95,6 +96,21 @@
    throw new TypeError('Beast needs box, round and octa output arrays.');
   const geometry=parts(options);for(const{kind,...item}of geometry)out[kind].push(item);return geometry.length;
  }
- const api=Object.freeze({pose,parts,draw});G.RealmEarthExpeditionBeastArt=api;
+ // The caller supplies the actual immutable combat frame and canonical size.
+ // This border is the marked damage rectangle, never a second hit authority.
+ function warningParts({frame,length,halfWidth,base,mode,timer,windup,reducedMotion=false}={}){
+  if(mode!=='windup')return[];
+  if(!frame||![frame.x,frame.z,frame.yaw,length,halfWidth,base,timer,windup].every(Number.isFinite)||length<=0||halfWidth<=0||windup<=0)return[];
+  const out=[],root=frameMatrix(frame),y=base+.035;
+  function add(x,z,w,d,c,role){const p=point(root,[x,y,z]);out.push({kind:'box',p,s:[w,.045,d],c,r:[0,frame.yaw,0],em:.65,cameraSolid:false,cutaway:false,appearanceOnly:true,bankSweepPart:role});}
+  for(const side of[-1,1])add(side*halfWidth,length/2,.075,length,0xe6bb87,'lane-side');
+  for(const z of[0,length])add(0,z,halfWidth*2,.075,0xe6bb87,'lane-end');
+  // Fixed crossbars retain direction/shape when prominent motion is disabled.
+  for(const z of[.65,1.4,2.15])for(const side of[-1,1])add(side*.18,z,.065,.32,0xf0d8af,'lane-direction');
+  if(!reducedMotion){const z=length*Math.max(0,Math.min(1,1-timer/windup));add(0,z,halfWidth*2,.055,0xffe4b4,'lane-deadline');}
+  return out;
+ }
+ function frameMatrix(f){return frame([f.x,0,f.z],0,f.yaw);}
+ const api=Object.freeze({pose,parts,draw,warningParts});G.RealmEarthExpeditionBeastArt=api;
  if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

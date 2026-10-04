@@ -1,0 +1,15 @@
+# Living Road: the bank sweep
+
+Base: PR41, 4ee5854aa991c1eec019527c9e4944db060a668f. Separate gameplay/living-road-encounter-20261004 in the existing linked D-drive authoring worktree. Origin fetched; PR40/41 open, no comments or newer gameplay changes. Original provisional adaptation of the inhabited Earth direction; archives are design sources.
+
+Player promise: recognize a grounded ordinary threat, choose Brace or a lateral movement response, use its recovery opening, and see clearance help the existing root work. Browser, both cameras, ordinary stationary targeting and small skill bar. No new quest prerequisite, paid worker, generic economy or realm.
+
+Existing stable story/patrol/encounter IDs and accepted physical defeat/save owners remain. Channel skitter keeps its pursuing bite. Root-bank brute replaces the distant sentinel strike with a locked forward lane: 3.1 m length, 2 m width, player body radius .24 m. Trigger at 2.6 m; fixed 1.35 s warning and 2.3 s recovery. Its attack frame is captured once at warning start; later movement cannot rotate or relocate the footprint. Actual visibility still gates contact. Fixed 136 HP /11 damage; no gear scaling, new loot, XP or payout. Earlier Chapter/realm sentinels retain their behavior.
+
+Ownership: earth-expedition.js validates exact story/run-qualified profile and computes immutable strike geometry; adventure.js alone commits attack/damage/time; combat.js reads threat; rpg-ui/adventure-art/beast-art display equivalent lane/title/timer/body anticipation and opening. earth-expedition-art projects clearance and prepared repair stock only from existing saved objective IDs, with patrol run recognition separate from the permanent story repair. UI explains the role and next actual brace/inspection action. Art never changes ground/collision/rewards.
+
+No save migration: world/key9, adventure12, expedition1 and every nested ledger remain. Transient frame/contact reset on reload; accepted objectives and run claims resume through their existing owners. Preserve XP1–5/stored9999, sockets/fittings/equipment/health, notes/music, home, companion and explicit history. No autoequip or new consent. Unpaid completion/refused save remains retryable, same payout rules.
+
+Acceptance: real Core tests detect distant/rotating/through-wall/repeated contact, guard and side movement; exact generic dispatch and no hidden progress; blade/bow/strongest command-earned complete story and deliberate repeat runs; native UI warning/response, both views/reduced motion, pixels and save/reload; current verifier and relevant browser regressions on regenerated identical HTML; pushed review PR/fresh clone, actual ordinary-time recording. Report actual counts/failures and bounds. Human enjoyment, novice pacing and sustained monitor FPS remain unqualified. Main/deployment/personal saves/paid power/class assignment remain outside this change.
+
+Delivery receipts: [dated results](LIVING_ROAD_ENCOUNTER_DELIVERY_2026-10-04.md) and [play guide](../playtests/LIVING_ROAD_ENCOUNTER_2026-10-04.md). The contract remains the runtime/source checkpoint; later records distinguish the completed evidence epochs.

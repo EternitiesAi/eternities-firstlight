@@ -1,3 +1,19 @@
+# Living Road final runtime checkpoint, 2026-10-04
+
+Draft PR42 is stacked on PR41, base `4ee5854aa991c1eec019527c9e4944db060a668f`. Runtime `5668454e64c8f5292e5b435720649d1388822207` passes the fresh remote-clone full gate: 97 syntax modules, 1,165 Node passes, 56 Python passes plus 1 existing Windows symlink skip, 46 command-earned journeys and all 41 browser suites. Expanded native encounter coverage is 558 checks with 21 whole-browser restarts. Blade/bow ordinary-time recordings pass, demonstrate a real avoided sweep and guarded contact, and preserve paid work/fitting on reload. Their repeated condition evaluations are not independent tests.
+
+The root brute now has a short fixed bank-sweep lane with a starter-kit guard and movement response, plus saved first clearance/staged repair stock and exact-run patrol inspection. Fixed health/damage, ordinary controls and both views remain. No new save fields, migration, reward owner, equipment or level curve. World/key9, adventure12 and expedition1 retain all existing owners. The later documentation head requires its own new-clone source gate and equality of all 342 non-document inputs; final receipts distinguish those epochs. See [delivery](development/LIVING_ROAD_ENCOUNTER_DELIVERY_2026-10-04.md) and [play guide](playtests/LIVING_ROAD_ENCOUNTER_2026-10-04.md).
+
+Hosted runtime CI remains billing-blocked: 43 jobs, zero executed steps. Early native01/02 failures stay recorded. Near-foe action-bar overlap and one completed-patrol instruction remain polish notes; wide-view detail, human enjoyment/pacing, hard-crash durability and sustained GPU performance remain unqualified. The older LocalLife context-only rollback remains unexplained. Main/deployment/personal saves remain untouched. Earlier entries below retain their original evidence epochs.
+
+# Living Road encounter qualification, 2026-10-04
+
+New bounded case: Channel skitter teaches pursuit; Root-bank brute commits a visible forward lane. Test a fresh blade/bow and returning strongest equipment; preserve useful gear advantage. Compare default diorama/third person, muted/reduced motion, real lateral movement, Brace, readable recovery and the unchanged free retreat/death/companion controls. First cleared kit is supplied, not paid personal material; subsequent patrol only checks the permanent support.
+
+12 focused synthetic Core boundaries passed; three actual command-earned journeys completed story and two paid runs with no duplicate old loot. First root fights4.6s blade/8.3s bow/1.4s strongest use accelerated known-route tactics. Native02 had430 passed checks and1 exact served-HTML failure after a copy refinement landed mid-run; it is incomplete, not qualification. Native01 had3 passed/1 failed outdated terms assertion. Frozen final browser and normal-time video remain pending at this checkpoint. Read the final dated result for later receipts.
+
+Human verdict remains pending. Did the warning explain where the hit lands? Did guarding or stepping aside feel deliberate? Could you see how the kit/inspection followed the fight? Would you choose another outing? Do not fabricate a response while Dom is away.
+
 # Living Earth final engineering checkpoint, 2026-10-04
 
 Draft PR41 is stacked against PR40. Runtime `d7a434b238c662a77eb3318ddee7626732c416a5` passed the clean remote-clone full gate: 97 syntax modules, 1153 Node checks,56 Python passes + 1 existing skip,46 earned journeys and 41 browser suites. Native community coverage is 259 checks with 21 whole-browser restart checkpoints. Both final-source normal-time choice recordings pass 21 checks each, with actual source-linked media. Later delivery documentation retains the same runtime/verifier inputs; its exact head/equality and separate source gate belong to the PR receipts. See [final delivery](development/LIVING_REGION_DELIVERY_2026-10-04.md).

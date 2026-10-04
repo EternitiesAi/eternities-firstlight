@@ -8,7 +8,7 @@ const giver={id:'elderweald-rill',name:'Rill · forestkeeper',x:-67,z:-4,y:1.57,
 const definition=freeze({
  id:'earth-stormfall-living-road-v1',realm:'earthlands',title:'Stormfall and the Living Road',giver,
  summary:'A storm has damaged the woodland route. Recover practical supplies, clear two infestations, and brace the living root-channel before delivering your chosen allocation. Rill asks for field work.',
- danger:'Two accepted encounters: 64 / 136 health and 9 / 11 damage, fixed for every weapon. Their 1.35-second tells and 2.3-second recovery leave room to Brace or retreat. Your free road home remains available.',
+ danger:'Channel skitter: 64 health / 9 damage, pursues for a marked bite. Root-bank brute: 136 health / 11 damage, closes to 2.6 m and commits to a 3.1 m long, 2 m wide forward sweep. Step beside its locked lane or Brace (3); both have a 1.35-second tell and 2.3-second recovery. Fixed for every weapon; your free road home stays available.',
  reward:{xp:45,coins:18,ore:3},
  completionText:'The allocation is delivered and a separate brace carries the damaged connection. The old root organism remains alive. Rill recognizes your chosen practical approach; one Trailward binding is available at an outdoor home workbench.',
  steps:[
@@ -20,7 +20,7 @@ const definition=freeze({
   point('read-water','Check the wetland watercourse','interact',-109,-28,['prepare-allocation'],'Read the watercourse before moving the load. The supply plan leaves this refuge and its drainage open.'),
   point('clear-crossing','Clear the crossing infestation','defeat',-119,-44,['read-water'],'Disable the accepted Channel skitter through actual weapon impacts; the crossing itself stays supported and your exit stays free.'),
   point('read-root-load','Read the living root anchor','interact',-148,-66,['clear-crossing'],'The old organism carries part of the route. Read the damaged connection; cutting the living support away would transfer its load into the breach.'),
-  point('clear-root-pests','Clear the root-bank infestation','defeat',-134,-70,['read-root-load'],'Disable the accepted Root-bank brute in the open bank pocket, away from the passage walls.'),
+  point('clear-root-pests','Clear the root-bank infestation','defeat',-134,-70,['read-root-load'],'The brute closes in before locking a forward sweep. Brace (3), or step beside the marked lane and strike during recovery. Clearing the actual accepted beast frees the staged brace kit; the living root organism is not a foe.'),
   point('brace-root-channel','Fit the alternate route brace','interact',-145,-84,['clear-root-pests'],'Fit the prepared alternate brace before releasing the damaged connection. The old organism stays alive; this records one local support repair.','Alternate brace fitted; the old root stays alive. Deliver your allocation at the return glade.'),
   point('deliver-allocation','Deliver the chosen allocation','interact',-106,-105,['brace-root-channel'],'Deliver the retained practical allocation at the return glade. Return to Rill to explicitly claim the declared currency and materials.','Allocation delivered. Return to Rill for the declared payment; it remains unclaimed.')
  ],
@@ -38,7 +38,7 @@ const patrol=freeze({
   point('inspect-water','Inspect the wetland course','interact',-109,-28,[],'Check that the wetland course remains open for this accepted patrol.'),
   point('clear-crossing','Clear the patrol crossing pocket','defeat',-119,-44,['inspect-water'],'Clear this run’s actual crossing infestation; an old defeat cannot satisfy a new patrol.'),
   point('inspect-root','Inspect the supported root passage','interact',-148,-66,['clear-crossing'],'Inspect the existing alternate support. This is an inspection, not a repeated rescue or a new repair.'),
-  point('clear-root-pests','Clear the patrol bank pocket','defeat',-134,-70,['inspect-root'],'Clear this run’s actual bank infestation; the living root anchor is not a foe.'),
+  point('clear-root-pests','Clear the patrol bank pocket','defeat',-134,-70,['inspect-root'],'Brace or step beside the brute’s locked sweep. This run’s actual defeat marks its field inspection clear; the first brace and living root remain. Record the return glade afterward, without repeating the repair.'),
   point('inspect-glade','Record the return glade','interact',-106,-105,['clear-root-pests'],'Record the end of this patrol and return to Rill for its explicitly declared payment.')
  ],
  enemies:[
@@ -137,6 +137,23 @@ function command(ctx,type,payload={},io){
  const beforeLevel=A.level(sim.state.adventure),result=commit(sim,candidate,io,text);if(result.ok){if(reward){result.reward=reward;if(A.level(sim.state.adventure)>beforeLevel)A.notify(sim,'Level '+A.level(sim.state.adventure)+' · the living road recognizes useful work.');}A.syncScene(sim);}return result;
 }
 function enemyId(d,e,run){return d===patrol?patrol.id+'-run-'+run+'-'+e.id:e.id;}
+// Exact canonical identity scopes physical beast rules to this accepted story
+// or patrol. Generic sentinels and older campaign foes keep their own attacks.
+const BANK_SWEEP=freeze({kind:'bank-sweep',reach:2.6,length:3.1,halfWidth:1,bodyRadius:.24});
+function encounter(e){
+ const d=e?.expeditionQuest===definition.id?definition:e?.expeditionQuest===patrol.id?patrol:null;
+ if(!d||d===definition&&e.expeditionRun!==null||d===patrol&&(!Number.isSafeInteger(e.expeditionRun)||e.expeditionRun<1||e.expeditionRun>MAX_RUN))return null;
+ const terms=d.enemies.find(t=>t.defeatStep==='clear-root-pests'&&enemyId(d,t,e.expeditionRun)===e.id);
+ return terms&&e.kind===terms.kind&&e.defeatStep===terms.defeatStep?BANK_SWEEP:null;
+}
+function strikeContains(e,p){
+ const q=encounter(e),f=e?.strike;if(!q||!f||![f.x,f.z,f.yaw,p?.x,p?.z].every(Number.isFinite))return false;
+ const dx=p.x-f.x,dz=p.z-f.z,c=Math.cos(f.yaw),s=Math.sin(f.yaw),x=dx*c-dz*s,z=dx*s+dz*c;
+ // Circle against the closed marked rectangle; contact uses the actual .24m
+ // body, including its rounded corners, rather than a larger hidden circle.
+ const gapX=Math.max(0,Math.abs(x)-q.halfWidth),gapZ=Math.max(0,-z,z-q.length);
+ return Math.hypot(gapX,gapZ)<q.bodyRadius;
+}
 function enemies(sim){
  if(sim.worldDive||G.RealmWorldFoundations?.definition(sim.room)?.id!=='earthlands')return[];
  const r=sim.state.earthExpedition;if(!r)return[];const out=[];
@@ -166,5 +183,5 @@ function bindingCommand(ctx,weapon,kind,io){
  const candidate=sim.snapshot();candidate.earthExpedition=clone(sim.state.earthExpedition);candidate.adventure.ore-=BINDING_COST.ore;candidate.adventure.coins-=BINDING_COST.coins;candidate.sandbox.inventory.fiber-=BINDING_COST.fiber;candidate.adventure.earthBinding={version:1,weapon,kind};
  return commit(sim,candidate,io,'Trailward '+kind+' binding applied to '+A.GEAR[weapon].name+' · '+(kind==='edge'?'+2 attack':'+1 defense / +10 maximum HP')+'. Identity, sockets, earlier fittings and current health retained; nothing was equipped.');
 }
-const api={definition,patrol,MAX_RUN,BINDING_COST,fresh,validate,progress,points,at,commit,command,enemies,signature,defeat,freshBinding,validateBinding,bonus,bindingCommand};G.RealmEarthExpedition=api;if(typeof module!=='undefined')module.exports=api;
+const api={definition,patrol,MAX_RUN,BINDING_COST,fresh,validate,progress,points,at,commit,command,enemies,signature,defeat,freshBinding,validateBinding,bonus,bindingCommand,encounter,strikeContains};G.RealmEarthExpedition=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
