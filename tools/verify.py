@@ -14,6 +14,8 @@ ROOT = Path(__file__).resolve().parents[1]
 CLI_BROWSER_OUTPUTS = frozenset({'bridge_browser', 'earth_story_transactions_browser',
     'realm_givers_browser', 'realm_trails_north_browser',
     'coastward_bridge_posts_browser', 'practice_visibility_browser'})
+GUARDED_BROWSER_OUTPUTS = frozenset({'realm_givers_browser', 'realm_trails_north_browser',
+    'coastward_bridge_posts_browser', 'practice_visibility_browser'})
 BROWSER_SOURCE_OUTPUTS = frozenset({'realm_trails_north_browser', 'practice_visibility_browser'})
 ENV_BROWSER_OUTPUTS = {
     'bridge_community_browser': 'FIRSTLIGHT_BRIDGE_COMMUNITY_OUTPUT',
@@ -27,9 +29,13 @@ ENV_BROWSER_OUTPUTS = {
 }
 
 
-def browser_run_spec(suite, output):
+def browser_run_spec(suite, output, mode="guarded"):
     command = [sys.executable, f'tests/{suite}.py']
     extra_env = {}
+    if mode not in ("guarded", "supported"):
+        raise ValueError("Unknown browser output mode")
+    if mode == "guarded" and suite not in GUARDED_BROWSER_OUTPUTS:
+        return command, extra_env
     if output is not None:
         target = output / suite
         if suite in CLI_BROWSER_OUTPUTS:
@@ -66,6 +72,7 @@ def main():
     parser.add_argument('--browser', action='store_true', help='Also run the current browser suites including starter progression and native persistence (requires requirements-dev.txt and Chromium).')
     parser.add_argument('--output', type=Path, default=ROOT / 'verification', help='Directory for fresh command logs.')
     parser.add_argument('--browser-output', type=Path, help='Route suites with existing output contracts to a separate evidence directory (D: on Windows); requires --browser. Legacy small screenshots keep their defaults.')
+    parser.add_argument('--browser-output-mode', choices=('guarded', 'supported'), default='guarded', help='guarded routes only the four suites requiring D: on Windows; supported routes every existing output contract.')
     args = parser.parse_args()
     if args.browser_output is not None:
         if not args.browser:
@@ -174,7 +181,7 @@ def main():
             # Giver coverage walks eleven actors and companion near/far controls.
             # Local life restarts all Chromium 48 times across three earned cases.
             # Keep the complete routes/assertions in a bounded 20-minute window.
-            command, extra_env = browser_run_spec(suite, args.browser_output)
+            command, extra_env = browser_run_spec(suite, args.browser_output, mode=args.browser_output_mode)
             run(suite, command, timeout=1200 if suite in ('realm_givers_browser', 'local_life_browser') else 600, extra_env=extra_env)
     print('Verification passed. Automated checks do not qualify human pacing or device performance.', flush=True)
 
