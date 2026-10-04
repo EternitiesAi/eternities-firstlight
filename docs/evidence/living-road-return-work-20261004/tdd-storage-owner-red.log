@@ -1,0 +1,18 @@
+test_default_commands_and_environment_remain_unchanged (test_verify_browser_storage.BrowserStorage.test_default_commands_and_environment_remain_unchanged) ... ok
+test_earned_sources_copy_byte_exactly_without_overwriting_prior_evidence (test_verify_browser_storage.BrowserStorage.test_earned_sources_copy_byte_exactly_without_overwriting_prior_evidence) ... ok
+test_evidence_root_is_claimed_once_without_overwriting_old_reports (test_verify_browser_storage.BrowserStorage.test_evidence_root_is_claimed_once_without_overwriting_old_reports) ... ERROR
+test_explicit_output_uses_supported_cli_and_env_contracts (test_verify_browser_storage.BrowserStorage.test_explicit_output_uses_supported_cli_and_env_contracts) ... ok
+
+======================================================================
+ERROR: test_evidence_root_is_claimed_once_without_overwriting_old_reports (test_verify_browser_storage.BrowserStorage.test_evidence_root_is_claimed_once_without_overwriting_old_reports)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\test_verify_browser_storage.py", line 10, in test_evidence_root_is_claimed_once_without_overwriting_old_reports
+    V.reserve_browser_output(output)
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'firstlight_verifier' has no attribute 'reserve_browser_output'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.011s
+
+FAILED (errors=1)

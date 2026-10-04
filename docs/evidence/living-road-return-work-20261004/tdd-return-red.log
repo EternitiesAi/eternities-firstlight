@@ -1,0 +1,45 @@
+FAIL completed unpaid patrol gives one current return instruction
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert.ok(!html.includes('record the return glade.'))
+
+    at D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\earth_expedition_ui.test.cjs:42:134
+    at test (D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\earth_expedition_ui.test.cjs:15:30)
+    at Object.<anonymous> (D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\earth_expedition_ui.test.cjs:40:1)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+FAIL patrol terms and accepted final action remember either actual allocation
+TypeError: E.returnWork is not a function
+    at D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\earth_expedition_ui.test.cjs:47:40
+    at test (D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\earth_expedition_ui.test.cjs:15:30)
+    at Object.<anonymous> (D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\earth_expedition_ui.test.cjs:44:1)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+PASS fresh invitation exposes both exact allocations, fixed danger, binding cost and deliberate consent
+PASS actual RPG dispatch gives near expedition priority and closing clears an unspent preview
+PASS missing optional ledger migrates to read-only fresh UI while malformed/current/future records never reach it
+PASS real UI delegates acceptance and physical branch work; remote, premature and forged defeat clicks grant nothing
+PASS all valid story stages expose only current DAG routes; legend never performs remote work
+PASS walk dispatch is current-route filtered, physically supported and never grants objective credit
+PASS ready UI requires explicit local claim and preserves complete reward on save refusal
+PASS rendered patrol metadata fences stale accept/work/claim including missing and malformed run fields
+PASS production comparison retains bow behavior, socket, current XP and earlier fits without auto-equipping
+PASS binding preview refuses changed character, simulation, adventure revision and weapon; cancellation spends nothing
+PASS real CharacterStore saver refuses an external write between binding preview and confirmation atomically
+PASS explicit binding confirmation spends once at actual station, leaves equipment/HP/XP and socket intact
+PASS capped and near-cap acceptance cards disclose actual credit and real claim agrees
+PASS actual RPG tick leaves expedition ready/paid/patrol tracker last over concurrent survey and trail
+PASS hydrated expedition restores over an older pinned project once, then respects manual tracking
+PASS actual app applyWorld restore selects accepted or ready expedition and active patrol without losing history
+PASS actual app worldContext installs synchronous savers on fresh restored Sim before active expedition combat
+Earth expedition CPU UI: 17/19 cases passed; 2 failed.

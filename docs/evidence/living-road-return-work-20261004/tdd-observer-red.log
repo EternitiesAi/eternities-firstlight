@@ -1,0 +1,30 @@
+✖ recorder flight snapshots cannot acquire a later live arrow contact (2.4296ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 73.5226
+
+✖ failing tests:
+
+test at tests\capture_observer.test.cjs:3:1
+✖ recorder flight snapshots cannot acquire a later live arrow contact (2.4296ms)
+  AssertionError [ERR_ASSERTION]: frame snapshot must not retain live hit array
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\capture_observer.test.cjs:6:178)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

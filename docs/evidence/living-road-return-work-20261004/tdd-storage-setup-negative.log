@@ -1,0 +1,22 @@
+test_verify_browser_storage (unittest.loader._FailedTest.test_verify_browser_storage) ... ERROR
+
+======================================================================
+ERROR: test_verify_browser_storage (unittest.loader._FailedTest.test_verify_browser_storage)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_verify_browser_storage
+Traceback (most recent call last):
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\unittest\loader.py", line 403, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\unittest\loader.py", line 346, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\test_verify_browser_storage.py", line 30
+    payload=b'{"synthetic":true}
+            ^
+SyntaxError: unterminated string literal (detected at line 30)
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

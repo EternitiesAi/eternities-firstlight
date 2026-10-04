@@ -1,0 +1,26 @@
+{
+  "runtime": "22a96038827e026d813ddea9b7aa6cc946fb5eca",
+  "clone02": "interrupted during historical-media checkout before verifier started; partial checkout preserved",
+  "reason": "D drive measured queued; discard no data; omit archived evidence media in next fresh clone only",
+  "next_clone": "living-road-return-work-20261004-03",
+  "sparse_patterns": [
+    "/*",
+    "!/docs/evidence/**/*.png",
+    "!/docs/evidence/**/*.jpg",
+    "!/docs/evidence/**/*.jpeg",
+    "!/docs/evidence/**/*.mp4",
+    "!/docs/evidence/**/*.webm"
+  ],
+  "preserved_inputs": "All runtime/source/assets/tests/docs/JSON fixtures; excludes only historical evidence PNG/JPEG/MP4/WebM. No verifier/test/timeout changes.",
+  "sparse_setup_correction": "git sparse-checkout set recorded patterns but the --no-checkout clone remained empty. First Python invocation failed before verifier entry. Preserved setup log; verified root contained only .git, then materialized HEAD with git read-tree -m -u HEAD. No reset/delete or test change.",
+  "clone03_materialization": "Interrupted owned git read-tree before verifier because D queue measured35\u201339; partial files preserved.",
+  "storage": "Small temporary source/verification scratch on C; authoring/heavy recordings remain D. No existing projects or personal data moved.",
+  "fresh04": "C scratch passed147source commands plus4browser suites, then existing giver D guard rejected default C output. Configuration failure.",
+  "fresh05": "At084ecc7,147source commands passed but bridge-community exceeded600s after returning carried-fittings production-storage checkpoint with supported outputs routed D. Prior C-output instance passed. D queue observed20\u201339; resource overhead is supported inference, precise stall cause unproven. Logs remain C scratch.",
+  "current_candidate": "02d3aeba784faf854b8571edc60588fe2aab9746",
+  "current_candidate_clone": "C:/dev/firstlight-verification/living-road-return-work-20261004-06",
+  "current_output_policy": "guarded default: route4existing Windows D-guard suites and2earned-source paths; other suites keep established default/profile locations. Supported mode still available for all14declared output interfaces. All scripts/assertions/guards/order/timeouts unchanged.",
+  "historical_candidate04": "C:/dev/firstlight-verification/living-road-return-work-20261004-04",
+  "fresh06": "147 source commands and4 browser suites passed; giver exceeded1200s. Full verifier failed; precise cause unknown.",
+  "targeted07": "A separate targeted continuation executes the 19 remaining unchanged scripts at02d3aeb: 18 passed, 1 failed, 0 exceeded their outer limit. Successful individual runs cover 40 unique suite names across identified epochs (20 from full01, atlas diagnostic48, native expedition606, and the successful remainder); no complete full verifier invocation passed. Unsuccessful targeted suites: realm_trails_north_browser. Individual prior successes do not complete the full verifier. North trails passed five source/fixture checks, then failed initial Page.goto load at30,000ms before its native gameplay case. This internal navigation timeout is distinct from outer suite limits; precise cause remains unknown."
+}

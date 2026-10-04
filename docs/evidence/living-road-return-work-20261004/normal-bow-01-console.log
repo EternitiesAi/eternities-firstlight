@@ -1,0 +1,39 @@
+import-confirmation 5.25
+imported-earned-source 6.23
+home-kit-diorama 7.81
+home-kit-third 9.23
+earth-crossing-terms 10.81
+expedition-terms 11.33
+story-accepted 68.17
+story-assess-load 73.44
+chosen-allocation 78.43
+woodland-diorama-v-exchange 79.01
+story-read-water 92.81
+story-clear-crossing-guarded-tell 102.49
+{
+  "status": "failed",
+  "checks": 1340,
+  "output": "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-return-work-20261004\\normal-bow-01",
+  "wall_seconds": 113.65236939996248,
+  "video": {
+    "path": "91358b2957c7d75404269cb49e9f78d9.webm",
+    "bytes": 12837446,
+    "sha256": "044f27d6c83ad95cc67f8e2253f9cde3ac2d8c52d2e44656b1c61f269a26ba1c",
+    "lf_sha256": "3f9d31d7a11f5a11f8800415a0a86fcee7fb389b50a05420e30718a265389a55",
+    "audio": false
+  }
+}
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tools\capture_earth_expedition.py", line 581, in main
+    objective(step, definition)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tools\capture_earth_expedition.py", line 548, in objective
+    fight(step, catalogue, run)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tools\capture_earth_expedition.py", line 533, in fight
+    check('Actual bow projectile observed ' + enemy_id, saw_arrow)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tools\capture_earth_expedition.py", line 212, in check
+    raise AssertionError(name + ': ' + repr(detail))
+AssertionError: Actual bow projectile observed earth-stormfall-crossing-v1: None
+

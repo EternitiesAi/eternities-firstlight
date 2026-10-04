@@ -1,0 +1,20 @@
+Input #0, matroska,webm, from 'D:\07-GAMES\Firstlight\artifacts\living-road-return-work-20261004\normal-blade-01\6c6aa38e9e45a1347f4f9707e3a14f28.webm':
+  Metadata:
+    ENCODER         : Lavf61.1.100
+  Duration: 00:06:06.48, start: 0.000000, bitrate: 1003 kb/s
+  Stream #0:0: Video: vp8, yuv420p(progressive), 1440x900, SAR 1:1 DAR 8:5, 25 fps, 25 tbr, 1k tbn
+      Metadata:
+        ENCODER         : Lavc61.3.100 libvpx
+        DURATION        : 00:06:06.480000000
+Stream mapping:
+  Stream #0:0 -> #0:0 (vp8 (native) -> wrapped_avframe (native))
+Press [q] to stop, [?] for help
+Output #0, null, to 'pipe:':
+  Metadata:
+    encoder         : Lavf61.7.100
+  Stream #0:0: Video: wrapped_avframe, yuv420p(tv, bt470bg/unknown/unknown, progressive), 1440x900 [SAR 1:1 DAR 8:5], q=2-31, 200 kb/s, 25 fps, 25 tbn
+      Metadata:
+        DURATION        : 00:06:06.480000000
+        encoder         : Lavc61.19.100 wrapped_avframe
+frame= 1530 fps=0.0 q=-0.0 size=N/A time=00:01:01.20 bitrate=N/A speed= 119x    frame= 3449 fps=3352 q=-0.0 size=N/A time=00:02:17.96 bitrate=N/A speed= 134x    frame= 5112 fps=3313 q=-0.0 size=N/A time=00:03:24.48 bitrate=N/A speed= 133x    frame= 6990 fps=3394 q=-0.0 size=N/A time=00:04:39.60 bitrate=N/A speed= 136x    frame= 8531 fps=3315 q=-0.0 size=N/A time=00:05:41.24 bitrate=N/A speed= 133x    [out#0/null @ 00000235eef5fd00] video:3937KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+frame= 9162 fps=3300 q=-0.0 Lsize=N/A time=00:06:06.48 bitrate=N/A speed= 132x    

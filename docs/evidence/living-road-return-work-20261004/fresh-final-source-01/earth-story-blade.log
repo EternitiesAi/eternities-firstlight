@@ -1,0 +1,250 @@
+{
+  "variant": "fresh-blade-detour",
+  "route": "detour",
+  "status": "passed",
+  "commands": 8,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedObjectives": 0,
+  "acceleratedTicks": true,
+  "sourceSha256": "23de1c648e9c7434ea5efecf2f4985dcd0607df91d513427501f4305ea401b56",
+  "story": {
+    "version": 1,
+    "accepted": true,
+    "steps": [
+      "detour-ridge",
+      "detour-shelter",
+      "detour-mark"
+    ],
+    "dispatch": "detour",
+    "arrived": true,
+    "claimed": true
+  },
+  "weapon": "trail_blade",
+  "xp": 0,
+  "delta": {
+    "ore": 3,
+    "coins": 4,
+    "fiber": 2,
+    "wood": 0
+  },
+  "actions": [
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "start",
+      "p": {}
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        7,
+        5
+      ]
+    },
+    {
+      "type": "earth-story-accept",
+      "p": {}
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        13,
+        -13
+      ]
+    },
+    {
+      "type": "earth-story-step",
+      "p": {
+        "id": "detour-ridge"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        -12,
+        -23
+      ]
+    },
+    {
+      "type": "earth-story-step",
+      "p": {
+        "id": "detour-shelter"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        0,
+        -35
+      ]
+    },
+    {
+      "type": "earth-story-step",
+      "p": {
+        "id": "detour-mark"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        7,
+        5
+      ]
+    },
+    {
+      "type": "earth-story-dispatch",
+      "p": {
+        "route": "detour"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        0,
+        -43
+      ]
+    },
+    {
+      "type": "earth-story-arrive",
+      "p": {}
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        0,
+        -43
+      ]
+    },
+    {
+      "type": "earth-story-claim",
+      "p": {}
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        0,
+        -43
+      ]
+    }
+  ]
+}

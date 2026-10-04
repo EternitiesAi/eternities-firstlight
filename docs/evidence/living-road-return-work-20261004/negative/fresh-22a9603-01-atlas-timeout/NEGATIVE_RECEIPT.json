@@ -1,0 +1,17 @@
+{
+  "status": "failed",
+  "runtime": "22a96038827e026d813ddea9b7aa6cc946fb5eca",
+  "exit": 1,
+  "failed_command": "realm_atlas_browser",
+  "timeout_seconds": 600,
+  "passed_commands_before_failure": 167,
+  "passed_browser_suites_before_failure": 20,
+  "last_atlas_check": "menu consumes camera shortcut",
+  "cause": "unresolved browser/capture/viewport/teardown stall; neither standalone diagnostic nor interpreter choice establishes root cause",
+  "screenshot": {
+    "bytes": 975190,
+    "sha256": "53957a5c067061701e082aff89a30494878b3c8ea0d316d3de9242aa9f91199b",
+    "qualification": "Incomplete failed-test artifact; initially observed zero bytes, populated before diagnostic. Not a full pass or proof of precise stall location."
+  },
+  "preserved_console": "fresh-22a9603-01-console.log"
+}

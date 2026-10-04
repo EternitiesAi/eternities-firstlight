@@ -1,0 +1,463 @@
+{
+  "base": "f15dd853a49645f4583b00e5574c5ffbd67be917",
+  "runtime_head": "22a96038827e026d813ddea9b7aa6cc946fb5eca",
+  "capture_correction_head": "1dd5bdcc92fa00fd81d28a22e0d1825fbd0ad8de",
+  "source_checked_head": "02d3aeba784faf854b8571edc60588fe2aab9746",
+  "final_head": "d30772aeb64caaa73c8041e347bccb7e4e48b5e0",
+  "branch": "gameplay/living-road-return-work-20261004",
+  "pr": "https://github.com/EternitiesAi/eternities-firstlight/pull/43",
+  "stacked_base_branch": "gameplay/living-road-encounter-20261004",
+  "runtime_full_exit": 1,
+  "runtime_full_complete": false,
+  "final_source_exit": 0,
+  "source_gate": {
+    "clone": "C:\\dev\\firstlight-verification\\living-road-return-work-20261004-final",
+    "epoch": "fresh-final-source-01",
+    "head": "d30772aeb64caaa73c8041e347bccb7e4e48b5e0",
+    "commands": 147,
+    "syntax_modules": 98,
+    "node_pass": 1172,
+    "node_fail": 0,
+    "python_total": 62,
+    "python_pass": 61,
+    "python_fail": 0,
+    "python_skip": 1,
+    "skip": "Existing Windows symlink creation privilege unavailable",
+    "command_earned_journeys": 46,
+    "html_bytes": 2700549,
+    "html_sha256": "3c3021cacffb8d40c1bf5c31cec579dc3a269806c5bf651c963a76d333891200",
+    "both_copies_equal": true,
+    "tracked_clean": true,
+    "command": "CPython313/python.exe tools/verify.py --output C:\\dev\\firstlight-verification\\return-work-fresh-final-source-01-logs",
+    "sparse_scope": "Only historical docs/evidence PNG/JPEG/MP4/WebM omitted; all runtime/assets/tests/JSON retained",
+    "published_logs": "fresh-final-source-01/"
+  },
+  "full_attempt": {
+    "head": "02d3aeba784faf854b8571edc60588fe2aab9746",
+    "runtime_head": "22a96038827e026d813ddea9b7aa6cc946fb5eca",
+    "exit": 1,
+    "exit_basis": "Root observed unified execution session72782 finish exit1; this script separately verifies failure console and pass logs",
+    "full_gate_complete": false,
+    "epoch": "fresh-qualified-06",
+    "source_commands_passed": 147,
+    "browser_suites_passed": 4,
+    "failed_stage": "realm_givers_browser",
+    "failure_kind": "1200s timeout",
+    "cause": "unproven; D-drive contention observed",
+    "node": {
+      "passed": 1172,
+      "failed": 0,
+      "skipped": 0
+    },
+    "python": {
+      "total": 62,
+      "passed": 61,
+      "failed": 0,
+      "skipped": 1
+    },
+    "syntax_modules": 98,
+    "command_earned_journeys": 46,
+    "html_sha256": "3c3021cacffb8d40c1bf5c31cec579dc3a269806c5bf651c963a76d333891200",
+    "targeted_continuation": {
+      "kind": "targeted unchanged-script remainder, not a full verifier invocation",
+      "head": "02d3aeba784faf854b8571edc60588fe2aab9746",
+      "runtime_head": "22a96038827e026d813ddea9b7aa6cc946fb5eca",
+      "html_sha256": "3c3021cacffb8d40c1bf5c31cec579dc3a269806c5bf651c963a76d333891200",
+      "suites": [
+        {
+          "suite": "timber_browser",
+          "command": [
+            "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+            "tests/timber_browser.py"
+          ],
+          "extra_env": {},
+          "harness_sha256": "33cb88144a02ec271f2ba5fe190c8db3cb55da1b8ab63e1b1a61bd1927d9906e",
+          "timeout_seconds": 600,
+          "started": 1791122343.0393517,
+          "exit": 0,
+          "status": "passed",
+          "seconds": 15.18834638595581
+        },
+        {
+          "suite": "traveler_browser",
+          "command": [
+            "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+            "tests/traveler_browser.py"
+          ],
+          "extra_env": {},
+          "harness_sha256": "5eca758a4ba14458583f8049c614accb056cd069e95a970a8652f51db0b0843f",
+          "timeout_seconds": 600,
+          "started": 1791122358.2282038,
+          "exit": 0,
+          "status": "passed",
+          "seconds": 36.790374994277954
+        },
+        {
+          "suite": "bridge_browser",
+          "command": [
+            "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+            "tests/bridge_browser.py"
+          ],
+          "extra_env": {},
+          "harness_sha256": "ffd2872e8dec2532c866e92dec623f25e791ff549bbfa7699e0e63501ffbfa70",
+          "timeout_seconds": 600,
+          "started": 1791122395.0191135,
+          "exit": 0,
+          "status": "passed",
+          "seconds": 88.95491623878479
+        },
+        {
+          "suite": "combat_cue_browser",
+          "command": [
+            "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+            "tests/combat_cue_browser.py"
+          ],
+          "extra_env": {},
+          "harness_sha256": "d641197de1889a14101607aca0643d1479480739582919009acdd4b74a7d3847",
+          "timeout_seconds": 600,
+          "started": 1791122483.9745634,
+          "exit": 0,
+          "status": "passed",
+          "seconds": 12.267092943191528
+        },
+        {
+          "suite": "world_foundations_browser",
+          "command": [
+            "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+            "tests/world_foundations_browser.py"
+          ],
+          "extra_env": {},
+          "harness_sha256": "efa750e2dc8c942420907f5af37aab1ab3f5f50c4dbc035ac1af026bb4743e3e",
+          "timeout_seconds": 600,
+          "started": 1791122496.242156,
+          "exit": 0,
+          "status": "passed",
+          "seconds": 63.77942609786987
+        },
+        {
+          "suite": "world_cutaway_browser",
+          "command": [
+            "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+            "tests/world_cutaway_browser.py"
+          ],
+          "extra_env": {},
+          "harness_sha256": "092c02e64d4e672ab2308dd14a04c6ec1e6fb39eaf588a093b6c337fad32c45b",
+          "timeout_seconds": 600,
+          "started": 1791122560.022136,
+          "exit": 0,
+          "status": "passed",
+          "seconds": 1.2847037315368652
+        },
+        {
+          "suite": "realm_trails_browser",
+          "command": [
+            "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+            "tests/realm_trails_browser.py"
+          ],
+          "extra_env": {},
+          "harness_sha256": "714c8d6e72d7262eb7e86699ec2941b3ddf01e06233c4f8fa41411413fb5df86",
+          "timeout_seconds": 600,
+          "started": 1791122561.307227,
+          "exit": 0,
+          "status": "passed",
+          "seconds": 28.284108638763428
+        },
+        {
+          "suite": "realm_trails_north_browser",
+          "command": [
+            "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+            "tests/realm_trails_north_browser.py",
+            "--output",
+            "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-return-work-20261004\\targeted-remainder-07-browser\\realm_trails_north_browser",
+            "--sources",
+            "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-return-work-20261004\\targeted-remainder-07-browser\\realm_trails_north_browser\\earned-sources"
+          ],
+          "extra_env": {},
+          "harness_sha256": "8ed74cdf16d327d3ef68dbe38eed0ea4d95d40d586fc818599835c53d43ac8ae",
+          "timeout_seconds": 600,
+          "started": 1791122589.5920432,
+          "exit": 1,
+          "status": "failed",
+          "seconds": 194.58305954933167
+        },
+        {
+          "suite": "realm_trails_cosmos_browser",
+          "command": [
+            "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+            "tests/realm_trails_cosmos_browser.py"
+          ],
+          "extra_env": {},
+          "harness_sha256": "a68553ae4600f946dd2fde2fb51a34d2a9c190c52e9b8155b76206694c189c2a",
+          "timeout_seconds": 600,
+          "started": 1791122784.1755865,
+          "exit": 0,
+          "status": "passed",
+          "seconds": 26.202120542526245
+        },
+        {
+          "suite": "soundscape_browser",
+          "command": [
+            "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+            "tests/soundscape_browser.py"
+          ],
+          "extra_env": {},
+          "harness_sha256": "a4655398488b42500879326a8def38d62df02460e291f897269d54dc4c085bc6",
+          "timeout_seconds": 600,
+          "started": 1791122810.3782306,
+          "exit": 0,
+          "status": "passed",
+          "seconds": 31.935123205184937
+        },
+        {
+          "suite": "journey_usability_browser",
+          "command": [
+            "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+            "tests/journey_usability_browser.py"
+          ],
+          "extra_env": {},
+          "harness_sha256": "d205a1096c5b8279f2fc14c6dc47a041b72e632e3274ecf5c08cbdff178724a3",
+          "timeout_seconds": 600,
+          "started": 1791122842.3138316,
+          "exit": 0,
+          "status": "passed",
+          "seconds": 21.539788961410522
+        },
+        {
+          "suite": "workshop_transactions_browser",
+          "command": [
+            "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+            "tests/workshop_transactions_browser.py"
+          ],
+          "extra_env": {},
+          "harness_sha256": "1965defe02389f310d66d3f50d6c9821bb52bce4022efcbf3ed3c65718e7adaf",
+          "timeout_seconds": 600,
+          "started": 1791122863.8541565,
+          "exit": 0,
+          "status": "passed",
+          "seconds": 27.688796520233154
+        },
+        {
+          "suite": "companion_presentation_browser",
+          "command": [
+            "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+            "tests/companion_presentation_browser.py"
+          ],
+          "extra_env": {},
+          "harness_sha256": "8e333f68a24a34249bca863e0739893ad54e74abd141c7750c76201ed41e96fa",
+          "timeout_seconds": 600,
+          "started": 1791122891.543479,
+          "exit": 0,
+          "status": "passed",
+          "seconds": 113.96284627914429
+        },
+        {
+          "suite": "skitter_presentation_browser",
+          "command": [
+            "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+            "tests/skitter_presentation_browser.py"
+          ],
+          "extra_env": {},
+          "harness_sha256": "82b2914101c348451e807aaef9271d924b41ca16c3ee06e17a49f3e4e3b92f5f",
+          "timeout_seconds": 600,
+          "started": 1791123005.5069008,
+          "exit": 0,
+          "status": "passed",
+          "seconds": 27.68489933013916
+        },
+        {
+          "suite": "coastward_scenery_browser",
+          "command": [
+            "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+            "tests/coastward_scenery_browser.py"
+          ],
+          "extra_env": {},
+          "harness_sha256": "1bb6e832520af740a89454845d1d3e19bf2475f038d61ae677e3822a8fc8a359",
+          "timeout_seconds": 600,
+          "started": 1791123033.1924322,
+          "exit": 0,
+          "status": "passed",
+          "seconds": 155.58694291114807
+        },
+        {
+          "suite": "earth_story_transactions_browser",
+          "command": [
+            "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+            "tests/earth_story_transactions_browser.py"
+          ],
+          "extra_env": {},
+          "harness_sha256": "4187c41c82aa88f6f041cd69a7a7a695c5f36962b96ae80f588bfda102f9a8ff",
+          "timeout_seconds": 600,
+          "started": 1791123188.7799556,
+          "exit": 0,
+          "status": "passed",
+          "seconds": 15.925929069519043
+        },
+        {
+          "suite": "coastward_bridge_posts_browser",
+          "command": [
+            "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+            "tests/coastward_bridge_posts_browser.py",
+            "--output",
+            "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-return-work-20261004\\targeted-remainder-07-browser\\coastward_bridge_posts_browser"
+          ],
+          "extra_env": {},
+          "harness_sha256": "8bf28b2f443fd24417089ea1cd6ce558f52980245b8a54ad84dda2c5103de2b6",
+          "timeout_seconds": 600,
+          "started": 1791123204.7064643,
+          "exit": 0,
+          "status": "passed",
+          "seconds": 330.7425796985626
+        },
+        {
+          "suite": "practice_visibility_browser",
+          "command": [
+            "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+            "tests/practice_visibility_browser.py",
+            "--output",
+            "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-return-work-20261004\\targeted-remainder-07-browser\\practice_visibility_browser",
+            "--sources",
+            "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-return-work-20261004\\targeted-remainder-07-browser\\practice_visibility_browser\\earned-sources"
+          ],
+          "extra_env": {},
+          "harness_sha256": "402ef9529e2fe1fe89335fdc6610622dfd526913a5869f3c7f74610ed9e7b4c4",
+          "timeout_seconds": 600,
+          "started": 1791123535.44969,
+          "exit": 0,
+          "status": "passed",
+          "seconds": 477.83253145217896
+        },
+        {
+          "suite": "realm_work_presentation_browser",
+          "command": [
+            "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+            "tests/realm_work_presentation_browser.py"
+          ],
+          "extra_env": {},
+          "harness_sha256": "f612ad029a32ab182503ad1fe4307cee6e251206bb43bb0919dc8037fdcee5c9",
+          "timeout_seconds": 600,
+          "started": 1791124013.2827954,
+          "exit": 0,
+          "status": "passed",
+          "seconds": 428.41350769996643
+        }
+      ],
+      "output_root": "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-return-work-20261004\\targeted-remainder-07-browser",
+      "timeout_policy": "same 600 seconds as verifier for these scripts",
+      "parent_started": 1791122343.0386517,
+      "finished": 1791124441.6969113,
+      "passed": 18,
+      "failed": 1,
+      "timed_out": 0
+    },
+    "unique_successful_suite_names": [
+      "bridge_browser",
+      "bridge_community_browser",
+      "camera_browser",
+      "characters_browser",
+      "classes_browser",
+      "coastward_bridge_posts_browser",
+      "coastward_scenery_browser",
+      "combat_cue_browser",
+      "companion_presentation_browser",
+      "cosmos_browser",
+      "crossing_browser",
+      "cutaway_browser",
+      "earth_browser",
+      "earth_expedition_browser",
+      "earth_ground_material_browser",
+      "earth_notes_browser",
+      "earth_story_browser",
+      "earth_story_transactions_browser",
+      "gathering_browser",
+      "home_history_browser",
+      "journey_usability_browser",
+      "local_life_browser",
+      "native_origin_browser",
+      "practice_visibility_browser",
+      "pursuit_browser",
+      "realm_atlas_browser",
+      "realm_givers_browser",
+      "realm_trails_browser",
+      "realm_trails_cosmos_browser",
+      "realm_work_presentation_browser",
+      "reflection_browser",
+      "regression09_browser",
+      "skitter_presentation_browser",
+      "soundscape_browser",
+      "starter_browser",
+      "timber_browser",
+      "traveler_browser",
+      "workshop_transactions_browser",
+      "world_cutaway_browser",
+      "world_foundations_browser"
+    ],
+    "coverage_statement": "A separate targeted continuation executes the 19 remaining unchanged scripts at02d3aeb: 18 passed, 1 failed, 0 exceeded their outer limit. Successful individual runs cover 40 unique suite names across identified epochs (20 from full01, atlas diagnostic48, native expedition606, and the successful remainder); no complete full verifier invocation passed. Unsuccessful targeted suites: realm_trails_north_browser. Individual prior successes do not complete the full verifier. North trails passed five source/fixture checks, then failed initial Page.goto load at30,000ms before its native gameplay case. This internal navigation timeout is distinct from outer suite limits; precise cause remains unknown.",
+    "acceptance": "Complete current verifier still required; no aggregation relabelled as full success."
+  },
+  "changed_files": [
+    "AGENTS.md",
+    "FIRSTLIGHT_VALLEY.html",
+    "build.py",
+    "docs/CURRENT_STATE.md",
+    "docs/DECISIONS.md",
+    "docs/NEXT_TASK.md",
+    "docs/PLAYTEST_NOTES.md",
+    "docs/development/LIVING_ROAD_RETURN_WORK_2026-10-04.md",
+    "docs/development/LIVING_ROAD_RETURN_WORK_DELIVERY_2026-10-04.md",
+    "docs/playtests/LIVING_ROAD_RETURN_WORK_2026-10-04.md",
+    "index.html",
+    "src/app.js",
+    "src/combat-view.js",
+    "src/earth-expedition-art.js",
+    "src/earth-expedition-dialogue.js",
+    "src/earth-expedition-ui.js",
+    "src/earth-expedition.js",
+    "src/rpg-ui.js",
+    "src/rpg.css",
+    "src/shell.html",
+    "tests/capture_observer.test.cjs",
+    "tests/combat_view.test.cjs",
+    "tests/earth_expedition_art.test.cjs",
+    "tests/earth_expedition_browser.py",
+    "tests/earth_expedition_ui.test.cjs",
+    "tests/test_verify_browser_storage.py",
+    "tools/capture_earth_expedition.py",
+    "tools/verify.py"
+  ],
+  "save_versions": {
+    "world_and_key": 9,
+    "adventure": 12,
+    "earth_expedition": 1,
+    "migration": "none; no fields/keys changed"
+  },
+  "native": {
+    "checks": 606,
+    "failed": 0,
+    "whole_browser_restarts": 21,
+    "source": "native-01/REPORT.json"
+  },
+  "actual_normal_time_capture": {
+    "blade_condition_evaluations": 4781,
+    "bow_condition_evaluations": 5109,
+    "failed": 0,
+    "meaning": "Includes repeated polling; not independent case counts or GPU/human qualification."
+  },
+  "hosted_runtime": {
+    "run": 37195334141,
+    "jobs": 43,
+    "executed_steps": 0,
+    "status": "billing-blocked; no Ubuntu qualification"
+  },
+  "remaining_acceptance": [
+    "Complete current full verifier in a quiet desktop/storage window without changing assertions/guards/timeouts",
+    "Deferred human fresh and returning playtest"
+  ],
+  "limits": [
+    "Timeout causes unproven; D-drive contention observed",
+    "Kit small/partly occluded in default shoulder view",
+    "Sustained GPU, arbitrary camera/touch/hard-crash unqualified",
+    "Older LocalLife context-only rollback unresolved",
+    "Main/deployment/personal saves/billing untouched",
+    "Desktop PR attachment outcome unknown"
+  ]
+}

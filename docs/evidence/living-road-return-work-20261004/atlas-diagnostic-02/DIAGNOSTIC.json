@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "checks": 48,
+  "errors": 0,
+  "method": "Same unchanged test source through runpy using actual base CPython with venv library path; read-only wrappers logged screenshot/viewport starts and ends; no game/acceptance/timeout mutation. Diagnostic, not the full verifier.",
+  "runtime": "22a96038827e026d813ddea9b7aa6cc946fb5eca",
+  "html_sha256": "3c3021cacffb8d40c1bf5c31cec579dc3a269806c5bf651c963a76d333891200",
+  "test_sha256": "89496974f0e920189e5ba7628710284bd1fe16c43ad4c1bdf193933206cca42b",
+  "screenshot_bytes": {
+    "ATLAS_DESKTOP.png": 975214,
+    "ATLAS_COMPACT.png": 255530
+  },
+  "prior_full_gate": "failed at600s in atlas after camera-shortcut check; precise browser/capture/teardown cause unresolved"
+}

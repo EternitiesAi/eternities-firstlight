@@ -1,0 +1,43 @@
+import-confirmation 4.23
+imported-earned-source 5.21
+home-kit-diorama 6.8
+home-kit-third 7.81
+earth-crossing-terms 8.36
+expedition-terms 9.14
+story-accepted 65.66
+story-assess-load 70.82
+chosen-allocation 75.8
+woodland-diorama-v-exchange 76.38
+story-read-water 90.5
+story-clear-crossing-guarded-tell 101.55
+story-clear-crossing-defeated 107.05
+story-read-root-load 125.17
+story-explicit-frame-foe 135.64
+story-bank-sweep-before-native-side-step 137.88
+{
+  "status": "failed",
+  "checks": 1605,
+  "output": "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-return-work-20261004\\normal-bow-03",
+  "wall_seconds": 202.796824799967,
+  "video": {
+    "path": "9cbd5491e897d3d2d5fe41deb70468a2.webm",
+    "bytes": 16443810,
+    "sha256": "6b373ba70de41dde340c7e3b1fd331e6d29ef3c58b1e0807a03c11adf222317b",
+    "lf_sha256": "1da0a4e3a6d3a05ebd397c1d89b0e44e5044bd78824cf73bbf7f9cb3ad7eb913",
+    "audio": false
+  }
+}
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tools\capture_earth_expedition.py", line 590, in main
+    objective(step, definition)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tools\capture_earth_expedition.py", line 557, in objective
+    fight(step, catalogue, run)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tools\capture_earth_expedition.py", line 499, in fight
+    check('Native side-step avoids actual contact with frame retained', side_escape['hpBefore']==side_escape['hpAfter'] and contact['strike']==frozen and contact['contactHit'] is False, side_escape)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tools\capture_earth_expedition.py", line 212, in check
+    raise AssertionError(name + ': ' + repr(detail))
+AssertionError: Native side-step avoids actual contact with frame retained: {'key': 'd', 'frame': {'x': -135.766766878812, 'z': -69.01082061494887, 'yaw': 1.1881102599822981}, 'lateral': 2.293439999999836, 'hpBefore': 78, 'hpAfter': 68, 'contactAt': 191.6949999999793, 'contactHit': True}
+

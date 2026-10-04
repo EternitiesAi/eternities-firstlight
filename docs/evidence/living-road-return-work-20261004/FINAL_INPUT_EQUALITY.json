@@ -1,0 +1,1791 @@
+{
+  "runtime_head": "22a96038827e026d813ddea9b7aa6cc946fb5eca",
+  "source_checked_head": "02d3aeba784faf854b8571edc60588fe2aab9746",
+  "final_head": "d30772aeb64caaa73c8041e347bccb7e4e48b5e0",
+  "scope": "Every Git path/mode/blob outside docs/ and AGENTS.md, including root documentation",
+  "runtime_to_engineering": {
+    "runtime_entries": 344,
+    "current_entries": 346,
+    "unchanged": 342,
+    "exceptions": {
+      "tests/capture_observer.test.cjs": {
+        "runtime": null,
+        "current": {
+          "mode": "100644",
+          "kind": "blob",
+          "blob": "d0cd144d687ac3d643cadbfbf7332ab7c9a1fcb1"
+        }
+      },
+      "tests/test_verify_browser_storage.py": {
+        "runtime": null,
+        "current": {
+          "mode": "100644",
+          "kind": "blob",
+          "blob": "e8a8c39fed98ef3e2a36ec39a04e602084c2faca"
+        }
+      },
+      "tools/capture_earth_expedition.py": {
+        "runtime": {
+          "mode": "100644",
+          "kind": "blob",
+          "blob": "6d74e70132afab44e84e22d3020c13f1f02e8603"
+        },
+        "current": {
+          "mode": "100644",
+          "kind": "blob",
+          "blob": "33ba94dfc24a3221a9fed0dde3b0a3df3ac2f19f"
+        }
+      },
+      "tools/verify.py": {
+        "runtime": {
+          "mode": "100644",
+          "kind": "blob",
+          "blob": "b99323f46182a9160b7a0da8b0d5b26afa57e26d"
+        },
+        "current": {
+          "mode": "100644",
+          "kind": "blob",
+          "blob": "fe76cd7fb5a04e852a347f5f2474ea4d75d8103c"
+        }
+      }
+    }
+  },
+  "engineering_to_final": {
+    "entries": 346,
+    "unchanged": 346,
+    "exceptions": [],
+    "entries_by_path": {
+      ".gitattributes": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "df2345e8678ab88f1bc8ba481334810ab7e8d391"
+      },
+      ".github/workflows/import-source.yml": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "a286910ca0daf87d551934db4f3826cc75e27eca"
+      },
+      ".github/workflows/verify.yml": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "3657a40b3488ca1e3ee638ebad9c9f0242332f0e"
+      },
+      ".gitignore": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "31ebf140744cdc0174712884d510be2a82dfe9f6"
+      },
+      "CANDIDATE_STATUS.md": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "73d66afe8f2745ff36811120d91ad368898e1c1b"
+      },
+      "CHANGELOG.md": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "625bfe5f09b9b6669812c6f771c5aa1116789fb1"
+      },
+      "FIRSTLIGHT_VALLEY.html": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "4d6519d3787e3dbd5fc34122be5fa7b837e53149"
+      },
+      "GITHUB_STATUS.json": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "4f4702d5ee7c1180386c39ad9d12d470dc7ea3f6"
+      },
+      "LICENSE_STATUS.md": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "c66cb532c7613f98cd2b03d53ad86c30b036a9be"
+      },
+      "OPEN_REALM_WINDOWS.cmd": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "c5e4162581e3ccdc8b327050e7114560c08c467c"
+      },
+      "PLAY_FIRSTLIGHT_WINDOWS.cmd": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "ad337ad80707e7a5533d29a93bbf76826abeb602"
+      },
+      "README.md": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "10f844c901594ef54febe76e1927583bb766e332"
+      },
+      "REPOSITORY.json": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "f62e1a8777be2192c51f1b2637208e1696e72316"
+      },
+      "START_HERE_FOR_CODEX.md": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "2904ca12bc6006ffc06e2add8b7d99c3e9928d13"
+      },
+      "VALIDATION.md": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "840f5be05c6977941b19b7a2fb5a0ba343374aa3"
+      },
+      "assets/concept-art/five-realms.webp": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "4cb258de3d65bd3763a44c830169419ab6adbf03"
+      },
+      "assets/concept-art/hearthwater-kit.webp": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "b02050cd38173fac76f2a43a4c761f0ed7665591"
+      },
+      "assets/materials/timber/color-512.jpg": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "a4d7dd3912b26302761344b70a79d8bd2df0a4e3"
+      },
+      "assets/materials/timber/provenance.json": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "ba076cf0d6896e24aa58810eac32c1691338046d"
+      },
+      "assets/materials/timber/roughness-512.png": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "ee3bb1b5e66b2c1b5f60280d6db78ed000b0c6b7"
+      },
+      "build.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "72a4600681012c69010ae0917de1ef16a5140a9d"
+      },
+      "examples/ARMORY_COMPLETE_EARNED.json": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "0793b45baf9d39d23ca3a81845b332d8b3850bde"
+      },
+      "examples/BEACON_READY_EARNED.json": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "473e923c1b2e1b944ae6a78c423a61e39dd73bc7"
+      },
+      "examples/CHAPTER_COMPLETED_EARNED.json": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "4b399816dfcb665ac8fc4586a3ab4d4b290e6bab"
+      },
+      "examples/CHAPTER_II_COMPLETE_EARNED.json": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "f64b6e9ce9b1e5adc3d69ba84b0c008dbb53911e"
+      },
+      "examples/CHAPTER_II_START_EARNED.json": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "756035a6392f2bcd04e84d0c7979e887103d52e1"
+      },
+      "examples/CHAPTER_START_EARNED.json": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "14ebc53f8a17ef1dc83da4dcb992a9b55f1ae9c3"
+      },
+      "examples/OPTIONAL_HOMESTEAD_SAVE.json": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "585ffb2b9876714e31a236143dfbe2a39ecb023b"
+      },
+      "examples/RANGE_READY_EARNED.json": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "cd74b5319b339f1227ee85750aded65a129ba0bd"
+      },
+      "examples/README.md": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "147211f49f52a4ab9d15d0fef0d262c7a265b3df"
+      },
+      "examples/REALM09_ARMORY_COMPLETE_EARNED.json": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "1872bf135a852a5c0cfb3afd7fa1e566ece83bb9"
+      },
+      "examples/REALM09_ARMORY_MATERIALS_EARNED.json": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "293747889dd1e56bca86861cbcfb1e830ff36948"
+      },
+      "examples/REALM09_BOW_CHAPTER_II_COMPLETE_EARNED.json": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "82e638f783201b18aa60c406b064f8b450111bf7"
+      },
+      "examples/REALM10_CHAPTER_III_BASE_EARNED.json": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "f72489771188d70be30231bc00124dafed5582ea"
+      },
+      "examples/REALM10_CROSSING_READY_EARNED.json": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "a5fa8636392db6054eddb4178ceda1f27999b8cf"
+      },
+      "index.html": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "4d6519d3787e3dbd5fc34122be5fa7b837e53149"
+      },
+      "package.json": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "9d3a8d5901f3bd076806dd6eb3a907029fece68a"
+      },
+      "requirements-dev.txt": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "c5952dbf19015edd33464f84d620bbc1d110b92c"
+      },
+      "serve.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "0a7138f88362c40665b8867b92cd8366b23fa775"
+      },
+      "src/adventure-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "31494da3aff7d1e78c5672ea1662d365f9104c14"
+      },
+      "src/adventure-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "5f20b54b0bf3859302b27e90b095099629e8082a"
+      },
+      "src/adventure.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "81adada54ba1bd86ac28251ba54c5ab3b63fdfa6"
+      },
+      "src/app.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "5e2bdbac6232978ca33b6d6de8bebc00b2a1c366"
+      },
+      "src/arsenal-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "77695d9e44de59d325f4e50c6de4683fa1f0f52f"
+      },
+      "src/arsenal-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "8be1ab1c979350adfac4b40d44f6e91ca96697f3"
+      },
+      "src/arsenal.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "a331db0eb336690e4b63b5c9d812b43fe3be7c68"
+      },
+      "src/beacon-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "a8aaa3b728ab80ace1ea45b8bd01b5c86442da68"
+      },
+      "src/beacon.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "ce9c49d5c44e51489622a2fec4de088eb46460a7"
+      },
+      "src/bridge-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "cecaad39bc5e043ff1d223c631c8333eb5479998"
+      },
+      "src/bridge-community-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "4874d98573731dfc81dc8cfdca6a163f586dbe71"
+      },
+      "src/bridge-community-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "9f421a75eb0aecb3d848f0dd1275c8979fb5b4c6"
+      },
+      "src/bridge-community.css": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "48d4c229824be6f4c4ee21079494edd09b2943ba"
+      },
+      "src/bridge-community.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "b3d11513222ec614fde612f3fc0c8c5bceb675c5"
+      },
+      "src/bridge-moment-view.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "f3c248eff024760e702ad73813c63538d0a1a699"
+      },
+      "src/characters-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "bd9d31f802d42417a9013ee05675f8b3274c3194"
+      },
+      "src/characters.css": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "4c4f555ae9384d7bcbfd4634d6da59d2715b8186"
+      },
+      "src/characters.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "339220e3a5a3e8c7664c0a23eecf334d068b62db"
+      },
+      "src/classes-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "fcea4495375b9f80972c52973bbb63c8fefcb1e8"
+      },
+      "src/classes.css": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "8ca8be801402e26593ee73bf9f3604584d17637a"
+      },
+      "src/classes.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "2087573ed23b9d1e0bf4178c9d78045d9cdf6ba8"
+      },
+      "src/coastward-settlement-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "d24353124646112cf477d75e922c67fc19bd9288"
+      },
+      "src/coastward-woodland-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "87c4a463ccd0e817d3cf8b8b23d96d66157da264"
+      },
+      "src/combat-view.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "4cfe17b32bf0e4eaeda1878f9156eedf75358ece"
+      },
+      "src/combat.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "55eb65196bee0c570619ddf7265ce122d738c91a"
+      },
+      "src/companion-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "7c3617f81de7ccc144b495013e83b32a47468c98"
+      },
+      "src/core.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "f0240b49cf1a612b41f60d32fb0f53b4fc7e5004"
+      },
+      "src/cosmos-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "691c92a58b43770d473de2546ad5d540ed52d638"
+      },
+      "src/cosmos-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "364bb408c45e9a6ea7d65326061552758177bab6"
+      },
+      "src/cosmos.css": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "0032bb7f24ff7861c39a8691ace715e0e9cd34b0"
+      },
+      "src/cosmos.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "4801fe44e8b0f5115785aa674d68f676a45b3fdf"
+      },
+      "src/creative.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "20e83249f5f7c8647df9bd222d9c85f8481db0d0"
+      },
+      "src/crossing-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "f87ba2c42c9a10e1e3401be005b17bf04883b19f"
+      },
+      "src/crossing-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "55a14b4bd9e6e7dc6efe8c7c38342b5173cdd2ac"
+      },
+      "src/crossing.css": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "01c575f12aa5e4d26c9201d5255d21584096776b"
+      },
+      "src/crossing.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "eac3cfaea590f02558e5cca06a3ac10c47a54b77"
+      },
+      "src/drover-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "04cf4729229b2858900a5d942b78ceb47e659ac2"
+      },
+      "src/earth-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "36128ecaf4cc65a381356a3f0fbede2ab63653bd"
+      },
+      "src/earth-expedition-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "87164797d1b409861853e438b8ba04f5e970e765"
+      },
+      "src/earth-expedition-beast-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "2f1047d946c03589c45c8c53397d5cbbfe68bd85"
+      },
+      "src/earth-expedition-dialogue.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "1169e9dcc2eb9551c351c92800c46c860e4c1781"
+      },
+      "src/earth-expedition-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "d9f69628f5052a8e42cfa06888364d3d4fc6becb"
+      },
+      "src/earth-expedition.css": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "537174b529539f1023491faabfc45b5418799e80"
+      },
+      "src/earth-expedition.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "6ce8ce169a7bb427a69ebd3eaf23ff2ce46d00b6"
+      },
+      "src/earth-notes-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "e488928c0372e525a58b9929636487e67f81e107"
+      },
+      "src/earth-notes-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "71eb1687ef4c1b4e06cf45e605391e05b772d287"
+      },
+      "src/earth-notes.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "51f64592c18dd5e2bbc53a2db3545fbd676fbb9d"
+      },
+      "src/earth-shoulder-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "0f656b8b403811fc1e2a8ebe6dda6ea5dd8a9615"
+      },
+      "src/earth-story-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "9e5557489e53e91a0ca36908b5bdc1220ce67a10"
+      },
+      "src/earth-story.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "820cece286c0517ee081c05ccdc1251600070b84"
+      },
+      "src/earth-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "fea50a0a9582106b5a560202c50c6fec7e0fc499"
+      },
+      "src/earth.css": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "e31726d2bc3dcb9fdc16aaa3cb8c7effea8383c8"
+      },
+      "src/earth.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "8cb9b46c81dc1dffd61ae97ece8d013489f9a21e"
+      },
+      "src/elderweald-trail-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "ebe3e3254df440453a28da41c510f19b1c630872"
+      },
+      "src/elderweald-world.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "b69c0d7e52b5c46df842fa3bd2a1581acfb01d82"
+      },
+      "src/engine.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "7d90975760e5605d81fbb531e3477662cef1a33e"
+      },
+      "src/experience.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "2c1fbc4abee4b270b248ed5851e67a552215ff57"
+      },
+      "src/gathering-adapter.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "9bf73bb9b478305d4531932b66d839758b99b1ba"
+      },
+      "src/gathering-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "6aa25456a9933872df1a21b86c4409c033719251"
+      },
+      "src/gathering-music.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "cbeeda5c7fd97d234f145abb82a1af68087e7259"
+      },
+      "src/gathering-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "e26112bc2900406a256a373261715d810e83e17e"
+      },
+      "src/gathering.css": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "fa653f5697f235bdfb6cf0c00a1d9e0065a6c15a"
+      },
+      "src/gathering.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "c25e0a3212e4de6b98b8aeac0a855f4b929e53f5"
+      },
+      "src/home-history-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "dfc62252eefc4ad4288a6ce03124ab92446cba16"
+      },
+      "src/home-history-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "842f61bfeccc4419a862060cd0043f61db9dcbb9"
+      },
+      "src/home-history.css": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "88cb1dcc74ce05b8367d180eb8e93e62491b6215"
+      },
+      "src/home-history.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "9de08d9c0f0c60af872b0a37fb73b920b2b5a716"
+      },
+      "src/local-life-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "91bd3a9380fb42fde2368e233d91d12bf1e3cda5"
+      },
+      "src/local-life-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "b17131ab83cc1f99def6657d7f6b6d62f33dc1c5"
+      },
+      "src/local-life.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "437e2e69e1f4bfd9059c73a320de96f2b80515a1"
+      },
+      "src/mill-gate-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "04613a3f711daa3c0619ad7b19437b6be9e2931d"
+      },
+      "src/millwright-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "6c98a0b52cc543cacfd7fa96aeffa1242591effc"
+      },
+      "src/pursuit-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "4784640b9a97d02a7208e7dbab4fb48b4730c411"
+      },
+      "src/pursuit.css": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "78b8d0fd66c9363bc9588d84f37baac7383082e6"
+      },
+      "src/pursuit.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "bae24d3dec53f7767160a4045ac25f0ffc3d7a85"
+      },
+      "src/quarry-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "4900fb3a6f4c58763ad5c8cb2b46b03c88d2329e"
+      },
+      "src/realm-art-data.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "44f7c379cdd8aaa7fc60ff1bbdaf8b619d1e6ac0"
+      },
+      "src/realm-atlas-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "2ca6b2369176d53dcfeb26fedfdd7babd94f8f32"
+      },
+      "src/realm-atlas.css": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "380685e824240009ae953beb05f4fbb1dee4d8f9"
+      },
+      "src/realm-craft.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "8f0f6d1f3ec7c273050e9977406636d98af82479"
+      },
+      "src/realm-givers-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "ba54a2af173a6b3fc55f988d7b6239ccfce46315"
+      },
+      "src/realm-trails-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "81fabfc0694370e592a9e54980eb7600b5241d62"
+      },
+      "src/realm-trails-cosmos.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "95eb5e409f56c7f4ab93f2cfffb5515af07fffa8"
+      },
+      "src/realm-trails-north.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "f2c569bb3454e137274c85751f066df59faaa39b"
+      },
+      "src/realm-trails-south.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "c98f00f442a9cc97d4ad6e35bd5b1b9ef00dc754"
+      },
+      "src/realm-trails-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "55e7550b43450f1457c9d54d8f5a604329ca31f3"
+      },
+      "src/realm-trails.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "92fc2ca671007c697bab64ef62eebe45185e45a9"
+      },
+      "src/road-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "06eb1be846e62c166c031a6acb2aa11d8b80f0fa"
+      },
+      "src/road.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "d83823fb95d816a5074c5459ada707121559adf6"
+      },
+      "src/rpg-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "52a8d443fb7c29bccd2ec89fafadacab3c242188"
+      },
+      "src/rpg.css": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "ac1be595a1857d131b62c92b0af129a564e4479b"
+      },
+      "src/sandbox-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "9f2f423645c14a501660c9d0ee6cee1672e37979"
+      },
+      "src/sandbox-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "92919b6fb6afe5a5b64b71b8bddc6190ad57bc8c"
+      },
+      "src/sandbox.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "c928e7f695522117a7c30a258643cd8e2191f9fe"
+      },
+      "src/shell.html": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "20816c8ca381975225770a9796c87e6bdf57dc66"
+      },
+      "src/skitter-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "56a944481e7b2abb03b54815e2dd83cc79e4a8a4"
+      },
+      "src/soundscape.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "0d236e29a9ef627122f3bbce3438e34b18113954"
+      },
+      "src/starter-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "55966d8a2c7c24c98766a9f41bb2024713dca69e"
+      },
+      "src/starter-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "5234448b527a78ce0cfae75f1590bac5d5ea325b"
+      },
+      "src/starter.css": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "a7173ca525489b4812af39475512fb17af48736a"
+      },
+      "src/starter.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "122fd0e030afdb0f640c89e11ac0e32c0f76c802"
+      },
+      "src/style.css": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "dea84d326491b3ff05cfe1428d470ddfa0e64400"
+      },
+      "src/surface-assets.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "22037a9464246157d13ea91d19cb7e0223e9baff"
+      },
+      "src/traveler-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "b3922a0e570998d912ca28026f9c5dec912f6518"
+      },
+      "src/traveler-equipment-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "aa64a689cf4a623d144cb8e6f49cfbacf7e41d43"
+      },
+      "src/workshop-transactions.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "bda41864637fa25827b375788c7c9eb89f522df6"
+      },
+      "src/world-atlantis-earth.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "2d3910622468d90582f37af6e6c124fa95a7fcd5"
+      },
+      "src/world-foundations-art.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "5e8456de0900eb1a919f8495d3155baf8b6fa4a9"
+      },
+      "src/world-foundations-ui.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "b2aa331534b483314ff329f9506da1e71059e54c"
+      },
+      "src/world-foundations.css": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "f4e989ae86faecbf38a07ff842f64a6d384ae56b"
+      },
+      "src/world-foundations.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "d3dbfaaed5802a212befe117dd1d515a2b3decb9"
+      },
+      "src/world-ground-coalescing.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "091b0ed129dc814e3dad6973b2746c89a10284f9"
+      },
+      "src/world-heaven-hell.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "95d965a3b478756d15cbc9b7bfa5d76defa02861"
+      },
+      "src/world.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "693e675e431db401c828b844bb5b82a2c3db66f5"
+      },
+      "tests/README.md": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "a24526e174b25e4ba6e40dd1547f911b92d6b5ce"
+      },
+      "tests/adventure.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "d20b4994fe46b768d550c0ff84833747a368ae47"
+      },
+      "tests/adventure_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "4ccc718822c457ef906490cbeace731e915ab8d1"
+      },
+      "tests/arsenal.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "1a4487db0e9e3093ab552a8e7d007c21653b390a"
+      },
+      "tests/arsenal_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "e35966df96aecb1cc4d271a79ac9de3a9aa2d787"
+      },
+      "tests/arsenal_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "3ce72f4ec423ebd5c185f2f2e57a60ad6113d985"
+      },
+      "tests/beacon.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "bca65c8fdb2fd03616152022f888b94c29ac6384"
+      },
+      "tests/beacon_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "d123bed5eb612da457a1cd163cfcb5fcf3f74516"
+      },
+      "tests/bridge.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "2c90df58a11c78c6aeaac2057eb8f6ea4ac61712"
+      },
+      "tests/bridge_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "2631cd8ee64f33058698a63cdd586f7b3d1c1b90"
+      },
+      "tests/bridge_community.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "6a4d9cca7adbdff4ea1c84a5a7d54b0e5fb1eb98"
+      },
+      "tests/bridge_community_art.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "b3acdb9aad74d841c5ba3ad311f714fdfb5264da"
+      },
+      "tests/bridge_community_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "fdecbfb7ad837005f4a9bfe08f1921469421dc5e"
+      },
+      "tests/bridge_community_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "9e0060ba3fe65ce634953a7cad51b7918801db68"
+      },
+      "tests/bridge_moment_view.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "d0c8d7745854a835d29c5902694cf8785f2aa849"
+      },
+      "tests/bridge_rail_probe.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "4a62d0f3798ff336de6decd549e27478f404df07"
+      },
+      "tests/browser_support.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "68fd21638b902c69c05899096faa2c82ff8abaa5"
+      },
+      "tests/browser_test.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "5c52f8495dd979cd198c8d4cbb07fa724c66e2e5"
+      },
+      "tests/camera-views.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "bc42c35c246457a38e40247bd7626c89d5ef7924"
+      },
+      "tests/camera.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "1b9a8f4a05c85620fd8670ebc0279399895a42e5"
+      },
+      "tests/camera_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "1e364ece63f26ca1f0cc14619354e0f40d94acf1"
+      },
+      "tests/capture05.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "3874ec300d27fd3b4670646e7e653c473c269258"
+      },
+      "tests/capture09.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "b113d0d791f5a7058e8ad1130f79013cd771bf66"
+      },
+      "tests/capture10.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "3d2f6de8feb0d238f73ca085b29487fe2b8be5c9"
+      },
+      "tests/capture_observer.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "d0cd144d687ac3d643cadbfbf7332ab7c9a1fcb1"
+      },
+      "tests/capture_road_preview.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "f8b3b99cf289df7afeaeef2c9c174a74fee57352"
+      },
+      "tests/chapter_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "2a5c4e785dfc0de1c29d143ff169700266206969"
+      },
+      "tests/characters.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "92e228b5a745a92547eb5d1a91e27a51b614096a"
+      },
+      "tests/characters_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "54eeaa3a18bb76fe592c6bc29e9d467ab34eba88"
+      },
+      "tests/characters_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "e51db40e1a4019a3d65bd7c0d13b76624964cb24"
+      },
+      "tests/classes.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "e04ea490d5256be622814beb3c4557f3078e3bfa"
+      },
+      "tests/classes_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "5ff709e7e91f8c266f4ff05324456582eeb0499d"
+      },
+      "tests/classes_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "2dafabd20221de695c78ec6da68450a7740af4bd"
+      },
+      "tests/coastward_bank_art.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "38d449145dd5554b0a6d243acfbad3484834bb2b"
+      },
+      "tests/coastward_bridge_posts_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "224ce42334a0e36ff43535ad5e6dfd9c93020ff1"
+      },
+      "tests/coastward_scenery_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "3fd5df532883d09fa378dc86a7f250615e9fca2e"
+      },
+      "tests/coastward_settlement_art.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "71b73734a2fefc0b6066cd89166a523c112bda58"
+      },
+      "tests/coastward_woodland_art.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "ba4a790e56e76ebe5098c3fcd9bd69acf301d806"
+      },
+      "tests/combat-cue.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "4440743d9cc9cad97d2e8ea5fecfc51a1ed66b77"
+      },
+      "tests/combat-feel.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "7baac1886c923b8f2c45952076e5bcce2a595d35"
+      },
+      "tests/combat_cue_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "96c28a962adfbf3eddfa6fbc172e1ca3e8ab31fa"
+      },
+      "tests/combat_view.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "e15b66550cd654bb5cfd383507f4d62c8c409a38"
+      },
+      "tests/companion_art.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "0e657fa4add6036bbb0c8d0c81ed37e289bdb646"
+      },
+      "tests/companion_presentation_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "fdc5fa6c37d425c5c5ba353a90d692e5bce86910"
+      },
+      "tests/core.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "6c41b831627914149da2733347e07c4de24b84ea"
+      },
+      "tests/cosmos.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "a9c3015485974c693b6810bd80f89179e4058a0c"
+      },
+      "tests/cosmos_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "00ee7e5ca3a9fe8a957161e9d13d24f3dba649c5"
+      },
+      "tests/cosmos_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "b6153d6780d279b18d9c93c716cad66136bb1e81"
+      },
+      "tests/creative.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "113cf66ef94e8cb58a4b0839ab1538476750f88a"
+      },
+      "tests/crossing.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "6765a0ed7855aa76a31a8a5c664c1e975a6fb87b"
+      },
+      "tests/crossing_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "5cbe8b7e70e76551a6db0a1677a15c8313fbfaec"
+      },
+      "tests/crossing_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "0f153d97c7b32358a0e8013eeb3be98690e60cc6"
+      },
+      "tests/crossing_smoke.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "cea504633b1632ffe96ab5c9abd0383127aa7b46"
+      },
+      "tests/cutaway_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "de3b30e2c29ecfa99f8c83ab864669cb2e06dade"
+      },
+      "tests/drover_art.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "106bc92552e2294d587c65545d6200a5263940a2"
+      },
+      "tests/earth-notes.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "cca2ca9e28c1d2d9730ca437b8578c168f62b382"
+      },
+      "tests/earth-story.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "ab449727d7f8bf60eaf47d3927277c59e3ef1bd1"
+      },
+      "tests/earth.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "b00e73feb3870bfae25cbc109772269776d477dd"
+      },
+      "tests/earth_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "83162cbeb41c9d5999daef3b4e624a71a616a37c"
+      },
+      "tests/earth_encounter.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "a3aead5fdab10d6d6d38ef873779e325346c6da0"
+      },
+      "tests/earth_expedition.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "dbd9225aa0373011792ea864cb80d8a7ca7c8514"
+      },
+      "tests/earth_expedition_art.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "e8545792c339c2988e30a8335a8b725831b032f6"
+      },
+      "tests/earth_expedition_beast_art.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "17d84118bb6cc5cb411a9098be3f5e08ac2e07a6"
+      },
+      "tests/earth_expedition_beast_caller.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "caefb9d9924aaa23e85d89cd59d03ea929ba3b1d"
+      },
+      "tests/earth_expedition_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "74e23d51a820e439e36ec789cad30593222f545e"
+      },
+      "tests/earth_expedition_dialogue.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "acbd73da561d959da9084e7b6e7a6dddd256480c"
+      },
+      "tests/earth_expedition_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "d28d3a30ffe3e1bec2b5dc815db1dec16af8801c"
+      },
+      "tests/earth_expedition_ui.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "040b075415a9b19c020ab5193230567b00c52aad"
+      },
+      "tests/earth_ground_material_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "cc094accd55fe20166425a4187846ce69a188ed2"
+      },
+      "tests/earth_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "d4b6ae364a26ce3bbd26b51ff6731b3607672663"
+      },
+      "tests/earth_notes_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "9715d7b58361fa73e50c3eb0007d21315e14230d"
+      },
+      "tests/earth_notes_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "f909ddbacee2cb045ad7603cc93785873f24ba26"
+      },
+      "tests/earth_outing.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "b32c792afbf2c74349e41bdb971839a7ef4609fb"
+      },
+      "tests/earth_shoulder_art.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "a424e4181404f8edf72aeb4336385287a1d631f7"
+      },
+      "tests/earth_story_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "395ecf75c24c30639f299d338a728d8a7c9871bd"
+      },
+      "tests/earth_story_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "c34f72ae080f91657c8175ecb5e18eb6bd51640a"
+      },
+      "tests/earth_story_transactions_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "3dad96033918cecda3dde49a02589d61e519fc5d"
+      },
+      "tests/elderweald_world.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "a6ead54265c0499cc9dbef2dd7919a0f54d98f34"
+      },
+      "tests/experience_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "d741dc48fe3ff1671e11e4caa85c71c18d0fd74e"
+      },
+      "tests/gathering.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "46f179d1e41f9d55b7cdba28b4d1db0228f7fee4"
+      },
+      "tests/gathering_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "cae8feef69c8bca7398e8a471a14a42f84a12edd"
+      },
+      "tests/gathering_component_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "4cf6d065cd3f8757c9002ac9195d2cd0751faa1c"
+      },
+      "tests/gathering_contract.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "3e32f88120b18df0dbca08b8c2d3c9e33912d48f"
+      },
+      "tests/gathering_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "950e09a2f2531bbc95e0fb9a5721b0070e2ec230"
+      },
+      "tests/gathering_ui_host.js": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "32ab92ad8010706973107797db9cd15ecd53ee0f"
+      },
+      "tests/home_history.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "9cd6dee056fce94005240c165aa7c0019bc134a0"
+      },
+      "tests/home_history_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "758c0508c7bf2cd240205c4359f39ead689259a0"
+      },
+      "tests/home_history_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "05468b7128a1f73febf0732130b730d72a3e1c27"
+      },
+      "tests/journey_usability.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "0505ae099fef140d191f96f9cec1872ea15c2304"
+      },
+      "tests/journey_usability_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "53e80af2075f8b6a657006d00d7b48074d42e225"
+      },
+      "tests/living_region_motion.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "42dd522d43a4d3ef14577511c929819be51e7901"
+      },
+      "tests/local_life.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "eaa87a881c0475d14e89a38a31caa02b1879518a"
+      },
+      "tests/local_life_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "08c0cd9ee5360e43d5a7d39ef30d7aa7bae4b4bc"
+      },
+      "tests/local_life_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "6c4611eae97ed003c3c651abdfe6ab6b4a751abd"
+      },
+      "tests/mill_gate_art.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "7560d20251002ec6129999d352c768380cfea824"
+      },
+      "tests/millwright_art.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "a7d9f2b9c6a3406cd34f2d2f271ff70ccb6d12fd"
+      },
+      "tests/native_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "ba8a47463846174f145886afea81199e22daa3d0"
+      },
+      "tests/native_origin_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "71e8f72d4110b57e7043a57369a99cca27975ca7"
+      },
+      "tests/practice_visibility_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "775aceed46df6231482b6751f199082c9b7c88bd"
+      },
+      "tests/presentation.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "4760eb42b2e0bcb751013f1b9c4a0bfe62d98fed"
+      },
+      "tests/pursuit.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "84bfdc07f8079148b9037707d6ec7f52981e9615"
+      },
+      "tests/pursuit_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "d53397fad9a36f70e75545272f0b497bea77160d"
+      },
+      "tests/pursuit_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "1fe1b63e23a439d083c58a18fd76368df3e8d6b1"
+      },
+      "tests/quarry_art.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "37244202c8c5b7d2f3870cd7a1814eac2f2347f6"
+      },
+      "tests/ranged_road_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "034991ba5157127ab7a0f4bf189f2f833f393636"
+      },
+      "tests/realm_atlas_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "98409376d2b0648613c853cec3828cc3a45efe29"
+      },
+      "tests/realm_givers_art.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "8b1cfece68f2d162ae82fbf30c964e7eee42d8e1"
+      },
+      "tests/realm_givers_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "0b0166e4652e1f373408c99056466d167509ec1e"
+      },
+      "tests/realm_trails.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "85828d99de3fb99179e5ee8068a860fee8d42443"
+      },
+      "tests/realm_trails_art.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "ec1d1cfeece50e5798c9d3b8fa86641d99654abe"
+      },
+      "tests/realm_trails_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "209abfdbebe88f0d16c0d866ed53824d2e730e88"
+      },
+      "tests/realm_trails_cosmos.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "f00a4ab26d41032d1dd07ba0eb56f3a7ddd81eba"
+      },
+      "tests/realm_trails_cosmos_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "fdaed5ab8fe0c60b32b05af4c1c1d0f9ea390684"
+      },
+      "tests/realm_trails_cosmos_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "ea3b9275d1faa2111315d112274734796816799d"
+      },
+      "tests/realm_trails_instrument_rules.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "b3263855f1780cefe9e326f1673eb9d4851af79b"
+      },
+      "tests/realm_trails_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "7ae0cf0a5a646d7cc206dd0695f7e02f91ea2a8f"
+      },
+      "tests/realm_trails_north.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "ef71c484301c8f966c48c7df59a139d6f0c5117f"
+      },
+      "tests/realm_trails_north_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "0ed898fbd5c8e5469314e33cb40388e362fbbdb6"
+      },
+      "tests/realm_trails_north_rules.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "041c55965347e43ad36d2796182c0736cc5fb0fa"
+      },
+      "tests/realm_trails_south.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "4da5c9b130e5b2b8934b405d6904cd49bea1789f"
+      },
+      "tests/realm_trails_south_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "e277e3770d57e789ce739d96f494297ee20d909c"
+      },
+      "tests/realm_work_presentation_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "b23dbc3fb937e3e56803aa2bf0a2ed813ba24f57"
+      },
+      "tests/reflection.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "72f7006ee0c705da7c852f2d011964dfd907b7ee"
+      },
+      "tests/reflection_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "ef79f5f021f9ba3de7a4ba6e26acfaf370c5560f"
+      },
+      "tests/regression09_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "fe977881092697ebc8057b4e95c9027fcbfc9912"
+      },
+      "tests/render_preview.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "17602bc31fda0959b0924e67c73f5bf3927c27c9"
+      },
+      "tests/road-domain.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "155b504cda3ea25120b97dcad0e44ab83e5ccfce"
+      },
+      "tests/road.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "dde3dee1e058f8477d4f85c87f76ed401da3012c"
+      },
+      "tests/road_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "3a8b543eb4162bc6a7a86c5a4da40710903ecdd0"
+      },
+      "tests/road_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "f03a37688576399aa8a13cd5ccea15eabc0b81ca"
+      },
+      "tests/rpg_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "11cc87de0a11f5efb3c617ca04d75f243363cf76"
+      },
+      "tests/run_browser_suites.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "6bc1273b31f198e766f3eac64aff4f9ec67fb0cc"
+      },
+      "tests/sandbox.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "796a6e007fa62977479cd82c672d49a0ee18c861"
+      },
+      "tests/sandbox_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "14b4fa3097f66493299a42033c4795b5301a374b"
+      },
+      "tests/showcase.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "6c9030a79eb25622e78b1f85954836afb41a1879"
+      },
+      "tests/skitter_art.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "7e81709edbbc5ede45405286655355fbc2cbd438"
+      },
+      "tests/skitter_presentation_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "3fdc899f8aa7acd9ae9fff84fa0e4c11e6fb0aa9"
+      },
+      "tests/soundscape.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "4a7591720ac7f6b9cfb09c765e6951019e4a395a"
+      },
+      "tests/soundscape_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "7ea0f9e2c19562e193429c4c640b9117920a85ea"
+      },
+      "tests/starter-art.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "eca28cf010e3f222f566f5814ba3bba52ef12ec4"
+      },
+      "tests/starter.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "ea361a6ddd0b38c4cc0ba7fc26fd53257cff3c7b"
+      },
+      "tests/starter_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "055b8ca80163094889b3da15390768e4bc66ead3"
+      },
+      "tests/starter_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "402f3727f794b6816744ad2dfd5012441f60f721"
+      },
+      "tests/starter_pacing.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "9dbce4bd513a94f0e3f509c5b30d92fb100f8e5a"
+      },
+      "tests/starter_veteran.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "271069668b3ba91b4d1c66338c87c292aacc72d4"
+      },
+      "tests/test_checkout_import.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "2bebb20f118cb5349693ec08c273846056acdc41"
+      },
+      "tests/test_frame_measurement.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "eed2e4b27fc38835c9cf679c3e60485e8d84f836"
+      },
+      "tests/test_play_local.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "11786ae228df0364bf21d97f4a774687df258ae7"
+      },
+      "tests/test_publication.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "e9bba01a58e0211e56de23a5858a6c5477e98b66"
+      },
+      "tests/test_surface_assets.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "105e8009a0eb7a2adc1f8b58c583a3f0cf27c693"
+      },
+      "tests/test_verify_browser_storage.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "e8a8c39fed98ef3e2a36ec39a04e602084c2faca"
+      },
+      "tests/timber_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "25eb42f18140a4b59b4b9bffd442ee7a55ad5a75"
+      },
+      "tests/timber_engine.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "85bd51866f701c996879dca62bd2870d1cb95dbf"
+      },
+      "tests/traveler_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "a3ee81432ff87f7674ea10a30b92fa31854fe5b4"
+      },
+      "tests/traveler_equipment.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "ec456ac81c2f7469b40b35638f9df02dc69be92c"
+      },
+      "tests/traveler_feel.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "d84591b92ce7a7e16dee018d5b5f9ac9218c01ab"
+      },
+      "tests/traveler_rig.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "e6e08f1989dd76a21c8d0e6c5beefc5d1bc708d8"
+      },
+      "tests/verify_package.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "28b65f1acefa7662cf056288b51ec42ae095acb0"
+      },
+      "tests/workshop_transactions.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "f96f16675be6c342c997ad60cb1efcfe74ee982f"
+      },
+      "tests/workshop_transactions_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "06bc109b8493a889df2d654a48f87565028536ed"
+      },
+      "tests/world_art.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "bca503aca25be613eb5d1526f222e487c71b5e6a"
+      },
+      "tests/world_atlantis_earth.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "4c8e229c263fc58e26a5c16d65a66dac04c54345"
+      },
+      "tests/world_combat.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "b0f5bf1f1ceffe262d14b8648dcde59b119c91bf"
+      },
+      "tests/world_cutaway_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "f89087b6dc428bcc34f07cf8d871b60f5465d24a"
+      },
+      "tests/world_foundations.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "9e2fb60d5853b4f02c70d21a8d9b06b90d3e5888"
+      },
+      "tests/world_foundations_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "81c36a21c173392ba8b3d70d3c5d025ca0c538d1"
+      },
+      "tests/world_foundations_journey.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "d4f8d83bc7269e5c94e9a18943008251574184c9"
+      },
+      "tests/world_ground_coalescing.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "4332f0bf3cbeedd3efae7255738afe5b56cf3c1c"
+      },
+      "tests/world_heaven_hell.test.cjs": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "e465871795727558523b80a9ec6ae02b88bb535f"
+      },
+      "tools/authoring/build_material_proof.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "d1f071d7886291f500dea1c37509bf005a479c8e"
+      },
+      "tools/authoring/polyhaven_intake.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "7a2398579c5efc0f3867c3b8b8d4332157e959ba"
+      },
+      "tools/authoring/prepare_timber_maps.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "53784d2c871cbb3f4a9383b706b37617c6854d14"
+      },
+      "tools/browser_support.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "dadc3e7f7dbd2fdafecc60999142f73c99241574"
+      },
+      "tools/build_table_candidate.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "2cbab8807fec261b6d9c69049f9d4325b2e2de7e"
+      },
+      "tools/canvas_film.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "fd9efb633e0ed9c0e8a28d8701385b4a0eaaec27"
+      },
+      "tools/capture_bridge_community.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "6951b5648361239641d8f470e892ae6efcf6dd04"
+      },
+      "tools/capture_coastward_banks.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "86945e623594f3bbed5e0e886fcfb9017f6fde9f"
+      },
+      "tools/capture_earth_expedition.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "33ba94dfc24a3221a9fed0dde3b0a3df3ac2f19f"
+      },
+      "tools/capture_home_history.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "2127466ad287438bbd7a92cd8aebe39211c052b1"
+      },
+      "tools/capture_local_life.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "33747b7535a84f46e83a1cf0cc09940b8679af0e"
+      },
+      "tools/capture_preview.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "1623a26bdb8aa19890786dda80bf3ce89263c6ee"
+      },
+      "tools/capture_realm_trails.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "8b7473660048e6d796a2bbd4f2656ff73c62b109"
+      },
+      "tools/capture_world_foundations.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "2786938d85cb7e931cc073c681eda825d63c96fe"
+      },
+      "tools/capture_world_work.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "15750d196768811436b0c2a928a872a4df462f94"
+      },
+      "tools/import_into_checkout.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "958360acf005d348aef13412e218e05a1855c194"
+      },
+      "tools/inspect_earth_expedition_presentation.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "51956847ce3be244747a4a62450ddabbed8a6aa7"
+      },
+      "tools/measure_gpu_browser.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "2284c89f65ec527ce6fc654a9906c52d5b7eba17"
+      },
+      "tools/play_local.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "d953ccdae2ce0135b007349fc76de2f3efe3abd0"
+      },
+      "tools/publish_github.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "406341f6f11939960b09c743566b821d62ed0d6b"
+      },
+      "tools/record_browser_gameplay.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "7dc0067c44c9f1f4be294bb06c1952a8825df5f1"
+      },
+      "tools/stage_static.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "cf0e40d5d231cf02634c92ab710e33ba634610a9"
+      },
+      "tools/summarize_validation.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "99167266353bd4e8e91fee4757ca5e0ab292a162"
+      },
+      "tools/verify.py": {
+        "mode": "100644",
+        "kind": "blob",
+        "blob": "fe76cd7fb5a04e852a347f5f2474ea4d75d8103c"
+      }
+    }
+  },
+  "all_runtime_src_build_assets_html_and_existing_browser_scripts_equal": true
+}

@@ -1,0 +1,12 @@
+PASS Loopback response matches exact current HTML
+PASS Loopback page loads exact current HTML
+PASS Rendered gameplay canvas is visible
+PASS M opens Map on native origin
+PASS C opens Character on native origin
+PASS Synthetic notebook command is accepted
+PASS Production save writes real loopback localStorage
+PASS Fresh browser relaunch retains loopback localStorage
+PASS Realm state reload retains authored note
+PASS Relaunched page still renders gameplay
+PASS No unhandled browser errors
+RESULT 11 True

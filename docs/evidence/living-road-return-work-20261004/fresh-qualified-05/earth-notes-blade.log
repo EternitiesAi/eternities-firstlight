@@ -1,0 +1,156 @@
+{
+  "variant": "fresh-blade-detour",
+  "status": "passed",
+  "commands": 6,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedObjectives": 0,
+  "acceleratedTicks": true,
+  "sourceSha256": "7e7427045286037f60227ab23eacb6e5af4b1a01d0b203f5845be5cdee06d2e5",
+  "notes": {
+    "version": 1,
+    "accepted": true,
+    "marks": [
+      "orchard-stone",
+      "bank-footing",
+      "shelter-mark"
+    ],
+    "compared": true,
+    "interpretation": "old-road"
+  },
+  "weapon": "trail_blade",
+  "xp": 0,
+  "deliveryStillUnpaid": true,
+  "actions": [
+    {
+      "walk": [
+        9,
+        -5.8
+      ]
+    },
+    {
+      "walk": [
+        -2,
+        0
+      ]
+    },
+    {
+      "type": "accept",
+      "p": {}
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        -13,
+        -6
+      ]
+    },
+    {
+      "type": "observe",
+      "p": {
+        "id": "orchard-stone"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        -13,
+        -16
+      ]
+    },
+    {
+      "type": "observe",
+      "p": {
+        "id": "bank-footing"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        -13,
+        -21
+      ]
+    },
+    {
+      "type": "observe",
+      "p": {
+        "id": "shelter-mark"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        9,
+        -5.8
+      ]
+    },
+    {
+      "walk": [
+        -2,
+        0
+      ]
+    },
+    {
+      "type": "compare",
+      "p": {
+        "bearing": 0
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        9,
+        -5.8
+      ]
+    },
+    {
+      "walk": [
+        -2,
+        0
+      ]
+    },
+    {
+      "type": "record",
+      "p": {
+        "interpretation": "old-road"
+      }
+    },
+    {
+      "reload": true
+    }
+  ]
+}

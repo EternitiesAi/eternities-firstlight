@@ -1,0 +1,112 @@
+{
+  "method": "North trail UI and native-origin persistence in isolated software Chromium.\n\nFixtures are regenerated through command-earned Node journeys. Browser movement,\nAI, Brace, autoattack, arrows and escort use production commands and accelerated\n50 ms ticks. Static software screenshots do not measure human pacing, normal RAF,\nhardware performance or enjoyment. No health, inventory, damage, actor position\nor accepted facts are planted in these playable cases.\n",
+  "checks": [
+    {
+      "name": "offline HTML embeds the current runtime and trail sources",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "regenerated command-earned fresh-blade source",
+      "passed": true,
+      "detail": "{\n  \"status\": \"passed\",\n  \"variant\": \"fresh-blade\",\n  \"claims\": 2,\n  \"combats\": 2,\n  \"commands\": 29,\n  \"walkedLegs\": 25,\n  \"saves\": 49,\n  \"sourceDrift\": false\n}\n"
+    },
+    {
+      "name": "fresh-blade source has no grants, manual damage or drift",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "regenerated command-earned fresh-bow source",
+      "passed": true,
+      "detail": "{\n  \"status\": \"passed\",\n  \"variant\": \"fresh-bow\",\n  \"claims\": 2,\n  \"combats\": 2,\n  \"commands\": 60,\n  \"walkedLegs\": 34,\n  \"saves\": 49,\n  \"sourceDrift\": false\n}\n"
+    },
+    {
+      "name": "fresh-bow source has no grants, manual damage or drift",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "browser_errors": [],
+  "errors": [
+    "Traceback (most recent call last):\n  File \"C:\\dev\\firstlight-verification\\living-road-return-work-20261004-06\\tests\\realm_trails_north_browser.py\", line 84, in <module>\n    response = page.goto(url, wait_until='load')\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\sync_api\\_generated.py\", line 9050, in goto\n    self._sync(\n    ~~~~~~~~~~^\n        self._impl_obj.goto(\n        ^^^^^^^^^^^^^^^^^^^^\n            url=url, timeout=timeout, waitUntil=wait_until, referer=referer\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        )\n        ^\n    )\n    ^\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\_impl\\_sync_base.py\", line 115, in _sync\n    return task.result()\n           ~~~~~~~~~~~^^\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\_impl\\_page.py\", line 552, in goto\n    return await self._main_frame.goto(**locals_to_params(locals()))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\_impl\\_frame.py\", line 153, in goto\n    await self._channel.send(\n        \"goto\", self._navigation_timeout, locals_to_params(locals())\n    )\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\_impl\\_connection.py\", line 69, in send\n    return await self._connection.wrap_api_call(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<3 lines>...\n    )\n    ^\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\_impl\\_connection.py\", line 559, in wrap_api_call\n    raise rewrite_error(error, f\"{parsed_st['apiName']}: {error}\") from None\nplaywright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"http://127.0.0.1:51666/\", waiting until \"load\"\n\n"
+  ],
+  "html_sha256": "3c3021cacffb8d40c1bf5c31cec579dc3a269806c5bf651c963a76d333891200",
+  "events": [],
+  "combats": [],
+  "screenshots": [],
+  "source_receipts": [
+    {
+      "variant": "fresh-blade",
+      "command": [
+        "node",
+        "tests/realm_trails_journey.cjs",
+        "--output",
+        "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-return-work-20261004\\targeted-remainder-07-browser\\realm_trails_north_browser\\earned-sources"
+      ],
+      "receipt": "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-return-work-20261004\\targeted-remainder-07-browser\\realm_trails_north_browser\\earned-sources\\fresh-blade\\REALM_TRAILS_JOURNEY_REPORT.json",
+      "receipt_sha256": "dc327e127b819fb204c0a6e1f69fa8fae2ac117b709a3074c0146316541089ed",
+      "world": "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-return-work-20261004\\targeted-remainder-07-browser\\realm_trails_north_browser\\earned-sources\\fresh-blade\\00_COMMAND_EARNED_KIT.json",
+      "sourceHashes": {
+        "core.js": "78291e53cf3b6be7cbca687ed4681a780beb4f0067d8d4f238b49d8b2246e191",
+        "adventure.js": "ade8abf474a5ba09be4337f9ba4319445aad46265ff53f7e1caf1f75c5802067",
+        "combat.js": "fea2754a28364c7fc7aef200ea7d97f03ec55c4a1b0eb70ecb9bf8c9bb12c255",
+        "arsenal.js": "1a8fcedd261165900d04f366ffedb08457c4f3a724befe28b8ec1b35c3ae9163",
+        "realm-trails.js": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+        "realm-trails-north.js": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+        "realm-trails-south.js": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+        "realm-trails-cosmos.js": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+        "realm-craft.js": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+        "world-foundations.js": "97f445690fccea753c860e96bf54d4e33a3c8551e8738a31d3d947ce30d1465d"
+      }
+    },
+    {
+      "variant": "fresh-bow",
+      "command": [
+        "node",
+        "tests/realm_trails_journey.cjs",
+        "--bow",
+        "--output",
+        "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-return-work-20261004\\targeted-remainder-07-browser\\realm_trails_north_browser\\earned-sources"
+      ],
+      "receipt": "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-return-work-20261004\\targeted-remainder-07-browser\\realm_trails_north_browser\\earned-sources\\fresh-bow\\REALM_TRAILS_JOURNEY_REPORT.json",
+      "receipt_sha256": "eff8a42212be492a5214f7427e68d18a986cbdb45d9a709cafaa4016ab02f58a",
+      "world": "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-return-work-20261004\\targeted-remainder-07-browser\\realm_trails_north_browser\\earned-sources\\fresh-bow\\00_COMMAND_EARNED_KIT.json",
+      "sourceHashes": {
+        "core.js": "78291e53cf3b6be7cbca687ed4681a780beb4f0067d8d4f238b49d8b2246e191",
+        "adventure.js": "ade8abf474a5ba09be4337f9ba4319445aad46265ff53f7e1caf1f75c5802067",
+        "combat.js": "fea2754a28364c7fc7aef200ea7d97f03ec55c4a1b0eb70ecb9bf8c9bb12c255",
+        "arsenal.js": "1a8fcedd261165900d04f366ffedb08457c4f3a724befe28b8ec1b35c3ae9163",
+        "realm-trails.js": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+        "realm-trails-north.js": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+        "realm-trails-south.js": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+        "realm-trails-cosmos.js": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+        "realm-craft.js": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+        "world-foundations.js": "97f445690fccea753c860e96bf54d4e33a3c8551e8738a31d3d947ce30d1465d"
+      }
+    }
+  ],
+  "accelerated_ticks": true,
+  "manual_damage": 0,
+  "health_grants": 0,
+  "inventory_grants": 0,
+  "actor_position_edits": 0,
+  "planted_story_facts": 0,
+  "runtime_source_hashes": {
+    "core.js": "78291e53cf3b6be7cbca687ed4681a780beb4f0067d8d4f238b49d8b2246e191",
+    "adventure.js": "ade8abf474a5ba09be4337f9ba4319445aad46265ff53f7e1caf1f75c5802067",
+    "combat.js": "fea2754a28364c7fc7aef200ea7d97f03ec55c4a1b0eb70ecb9bf8c9bb12c255",
+    "arsenal.js": "1a8fcedd261165900d04f366ffedb08457c4f3a724befe28b8ec1b35c3ae9163",
+    "realm-trails.js": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+    "realm-trails-north.js": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+    "realm-trails-south.js": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+    "realm-trails-ui.js": "d2161829aff6a3b2c36ea414ed687aabbeb10cc33a5ddd8f0c7f36cfc7bdf65d",
+    "realm-trails-art.js": "99a588e7aee9c7d43b6506de836ab2bab75a9420c6b718369c37e4517ca037e3",
+    "realm-craft.js": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+    "world-foundations.js": "97f445690fccea753c860e96bf54d4e33a3c8551e8738a31d3d947ce30d1465d",
+    "realm-trails-cosmos.js": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb"
+  },
+  "status": "failed",
+  "final_html_sha256": "3c3021cacffb8d40c1bf5c31cec579dc3a269806c5bf651c963a76d333891200",
+  "source_drift": false
+}

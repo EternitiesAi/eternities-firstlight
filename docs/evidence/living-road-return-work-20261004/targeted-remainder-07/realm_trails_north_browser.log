@@ -1,0 +1,41 @@
+PASS offline HTML embeds the current runtime and trail sources
+PASS regenerated command-earned fresh-blade source
+PASS fresh-blade source has no grants, manual damage or drift
+PASS regenerated command-earned fresh-bow source
+PASS fresh-bow source has no grants, manual damage or drift
+Traceback (most recent call last):
+  File "C:\dev\firstlight-verification\living-road-return-work-20261004-06\tests\realm_trails_north_browser.py", line 84, in <module>
+    response = page.goto(url, wait_until='load')
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\sync_api\_generated.py", line 9050, in goto
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.goto(
+        ^^^^^^^^^^^^^^^^^^^^
+            url=url, timeout=timeout, waitUntil=wait_until, referer=referer
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_page.py", line 552, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "http://127.0.0.1:51666/", waiting until "load"
+

@@ -1,0 +1,35 @@
+test_default_commands_and_environment_remain_unchanged (test_verify_browser_storage.BrowserStorage.test_default_commands_and_environment_remain_unchanged) ... ERROR
+test_earned_sources_copy_byte_exactly_without_overwriting_prior_evidence (test_verify_browser_storage.BrowserStorage.test_earned_sources_copy_byte_exactly_without_overwriting_prior_evidence) ... ERROR
+test_explicit_output_uses_supported_cli_and_env_contracts (test_verify_browser_storage.BrowserStorage.test_explicit_output_uses_supported_cli_and_env_contracts) ... ERROR
+
+======================================================================
+ERROR: test_default_commands_and_environment_remain_unchanged (test_verify_browser_storage.BrowserStorage.test_default_commands_and_environment_remain_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\test_verify_browser_storage.py", line 8, in test_default_commands_and_environment_remain_unchanged
+    command,env=V.browser_run_spec("realm_givers_browser",None)
+                ^^^^^^^^^^^^^^^^^^
+AttributeError: module 'firstlight_verifier' has no attribute 'browser_run_spec'
+
+======================================================================
+ERROR: test_earned_sources_copy_byte_exactly_without_overwriting_prior_evidence (test_verify_browser_storage.BrowserStorage.test_earned_sources_copy_byte_exactly_without_overwriting_prior_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\test_verify_browser_storage.py", line 31, in test_earned_sources_copy_byte_exactly_without_overwriting_prior_evidence
+    output=Path(tmp)/"evidence";dest=V.prepare_browser_sources(output,root=root)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'firstlight_verifier' has no attribute 'prepare_browser_sources'
+
+======================================================================
+ERROR: test_explicit_output_uses_supported_cli_and_env_contracts (test_verify_browser_storage.BrowserStorage.test_explicit_output_uses_supported_cli_and_env_contracts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\bridge-moment\tests\test_verify_browser_storage.py", line 14, in test_explicit_output_uses_supported_cli_and_env_contracts
+    for suite in V.CLI_BROWSER_OUTPUTS:
+                 ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'firstlight_verifier' has no attribute 'CLI_BROWSER_OUTPUTS'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.005s
+
+FAILED (errors=3)

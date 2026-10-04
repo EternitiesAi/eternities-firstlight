@@ -1,0 +1,1440 @@
+{
+  "runtime_commit": "22a96038827e026d813ddea9b7aa6cc946fb5eca",
+  "scope": "Captured build.py and every src input compare against the actual Git commit after explicit LF normalization. Raw bytes remain separately hashed; both served HTML outputs are strictly byte-identical. Capture harness epochs are independent. No test input is silently excluded from final-head equality.",
+  "recordings": {
+    "normal-blade-01": {
+      "git_head_at_record_start": "f15dd853a49645f4583b00e5574c5ffbd67be917",
+      "status_at_record_start": [
+        " M FIRSTLIGHT_VALLEY.html",
+        " M build.py",
+        " M index.html",
+        " M src/app.js",
+        " M src/earth-expedition-art.js",
+        " M src/earth-expedition-dialogue.js",
+        " M src/earth-expedition-ui.js",
+        " M src/earth-expedition.js",
+        " M src/rpg-ui.js",
+        " M src/rpg.css",
+        " M src/shell.html",
+        " M tests/earth_expedition_art.test.cjs",
+        " M tests/earth_expedition_browser.py",
+        " M tests/earth_expedition_ui.test.cjs",
+        " M tools/capture_earth_expedition.py",
+        "?? docs/development/LIVING_ROAD_RETURN_WORK_2026-10-04.md",
+        "?? src/combat-view.js",
+        "?? tests/combat_view.test.cjs"
+      ],
+      "report_status": "passed",
+      "condition_evaluations": 4781,
+      "html_sha256": "3c3021cacffb8d40c1bf5c31cec579dc3a269806c5bf651c963a76d333891200",
+      "runtime_source_count": 115,
+      "all_runtime_normalized_sources_match_git": true,
+      "source_entries": {
+        "build.py": {
+          "captured_raw_sha256": "88ffc832eeae9c8a4c72a4a2da0837e69ed63b3cb20eb9d7ec694160abbeeaff",
+          "captured_lf_sha256": "ed64cb75ed348d916d88f51a0632e0c9779d1b173a1708b3cdb881c1e93102fd",
+          "git_source_sha256": "ed64cb75ed348d916d88f51a0632e0c9779d1b173a1708b3cdb881c1e93102fd",
+          "matches_normalized_source": true
+        },
+        "src/adventure-art.js": {
+          "captured_raw_sha256": "ccec86cf0523b318305a3554e7c5cfbb86f341248319f1e028280acd02bc6c6b",
+          "captured_lf_sha256": "8d6c6e8c56c0a78538a1494b73a6094c868ab344b03659b8d1d1d2f344db339a",
+          "git_source_sha256": "8d6c6e8c56c0a78538a1494b73a6094c868ab344b03659b8d1d1d2f344db339a",
+          "matches_normalized_source": true
+        },
+        "src/adventure-ui.js": {
+          "captured_raw_sha256": "25da84755e7509fb0b45193b02e9b3dea684a536ec58e86c99ba4028cb733f88",
+          "captured_lf_sha256": "25da84755e7509fb0b45193b02e9b3dea684a536ec58e86c99ba4028cb733f88",
+          "git_source_sha256": "25da84755e7509fb0b45193b02e9b3dea684a536ec58e86c99ba4028cb733f88",
+          "matches_normalized_source": true
+        },
+        "src/adventure.js": {
+          "captured_raw_sha256": "7369b1df78681b88429123941a733cd8a29f736024897a4f19ab0e7c7b1a2a8b",
+          "captured_lf_sha256": "ade8abf474a5ba09be4337f9ba4319445aad46265ff53f7e1caf1f75c5802067",
+          "git_source_sha256": "ade8abf474a5ba09be4337f9ba4319445aad46265ff53f7e1caf1f75c5802067",
+          "matches_normalized_source": true
+        },
+        "src/app.js": {
+          "captured_raw_sha256": "bebfd5436af2b0861908ebee219af20920d2c1931762c7d26f43292a74dbad5c",
+          "captured_lf_sha256": "38ac71834bc9574e23337a991bab6ec2ebe17473ebad23c49c2eb07bd4f9c05f",
+          "git_source_sha256": "38ac71834bc9574e23337a991bab6ec2ebe17473ebad23c49c2eb07bd4f9c05f",
+          "matches_normalized_source": true
+        },
+        "src/arsenal-art.js": {
+          "captured_raw_sha256": "1899a42e04fd44e18eced395229793d275a873dbe2902473968289815a3f694f",
+          "captured_lf_sha256": "1899a42e04fd44e18eced395229793d275a873dbe2902473968289815a3f694f",
+          "git_source_sha256": "1899a42e04fd44e18eced395229793d275a873dbe2902473968289815a3f694f",
+          "matches_normalized_source": true
+        },
+        "src/arsenal-ui.js": {
+          "captured_raw_sha256": "a462102896a3c7013f29f6cdf40504b983b8fde803baf41b98b8fb032da3abe6",
+          "captured_lf_sha256": "a462102896a3c7013f29f6cdf40504b983b8fde803baf41b98b8fb032da3abe6",
+          "git_source_sha256": "a462102896a3c7013f29f6cdf40504b983b8fde803baf41b98b8fb032da3abe6",
+          "matches_normalized_source": true
+        },
+        "src/arsenal.js": {
+          "captured_raw_sha256": "1a8fcedd261165900d04f366ffedb08457c4f3a724befe28b8ec1b35c3ae9163",
+          "captured_lf_sha256": "1a8fcedd261165900d04f366ffedb08457c4f3a724befe28b8ec1b35c3ae9163",
+          "git_source_sha256": "1a8fcedd261165900d04f366ffedb08457c4f3a724befe28b8ec1b35c3ae9163",
+          "matches_normalized_source": true
+        },
+        "src/beacon-art.js": {
+          "captured_raw_sha256": "aea9e5d22d23eaf73777636c56c2444edac9b0d6239f9504cc95026585618577",
+          "captured_lf_sha256": "aea9e5d22d23eaf73777636c56c2444edac9b0d6239f9504cc95026585618577",
+          "git_source_sha256": "aea9e5d22d23eaf73777636c56c2444edac9b0d6239f9504cc95026585618577",
+          "matches_normalized_source": true
+        },
+        "src/beacon.js": {
+          "captured_raw_sha256": "2aded7272a8d50cbfbdb4421f0140d00401a49788a3bb465260e30f501a2bf13",
+          "captured_lf_sha256": "2aded7272a8d50cbfbdb4421f0140d00401a49788a3bb465260e30f501a2bf13",
+          "git_source_sha256": "2aded7272a8d50cbfbdb4421f0140d00401a49788a3bb465260e30f501a2bf13",
+          "matches_normalized_source": true
+        },
+        "src/bridge-art.js": {
+          "captured_raw_sha256": "e8f85dd21a0eb6363f674a934c625b22fc29f18fc63a543ebd61ea0a87fa254d",
+          "captured_lf_sha256": "e8f85dd21a0eb6363f674a934c625b22fc29f18fc63a543ebd61ea0a87fa254d",
+          "git_source_sha256": "e8f85dd21a0eb6363f674a934c625b22fc29f18fc63a543ebd61ea0a87fa254d",
+          "matches_normalized_source": true
+        },
+        "src/bridge-community-art.js": {
+          "captured_raw_sha256": "ff204eb443f9cdff118164669b92766bf8c64be6bd365353e949c1b359ef9a3b",
+          "captured_lf_sha256": "454eb5365082d529fe3bb05b166b38e1d01e6fbcd34f1148c5ebf0d02ad9a615",
+          "git_source_sha256": "454eb5365082d529fe3bb05b166b38e1d01e6fbcd34f1148c5ebf0d02ad9a615",
+          "matches_normalized_source": true
+        },
+        "src/bridge-community-ui.js": {
+          "captured_raw_sha256": "a51a02420b59329d0ae268d42a5632de50d87d9b031103a724ad51564737c6d6",
+          "captured_lf_sha256": "a51a02420b59329d0ae268d42a5632de50d87d9b031103a724ad51564737c6d6",
+          "git_source_sha256": "a51a02420b59329d0ae268d42a5632de50d87d9b031103a724ad51564737c6d6",
+          "matches_normalized_source": true
+        },
+        "src/bridge-community.css": {
+          "captured_raw_sha256": "15be66090d836555498d87e00564c5b7b7094c2e3dca5951f9b1fde5023ea29c",
+          "captured_lf_sha256": "15be66090d836555498d87e00564c5b7b7094c2e3dca5951f9b1fde5023ea29c",
+          "git_source_sha256": "15be66090d836555498d87e00564c5b7b7094c2e3dca5951f9b1fde5023ea29c",
+          "matches_normalized_source": true
+        },
+        "src/bridge-community.js": {
+          "captured_raw_sha256": "3f8ca1a059525761e5631ba694f3de6d00f60c1a8d78e7fa79c39087fdff532d",
+          "captured_lf_sha256": "4308eecafc47044c3c063b46e4c3aa7cb4e7a30d5d938c64fd518e7f29cb30cc",
+          "git_source_sha256": "4308eecafc47044c3c063b46e4c3aa7cb4e7a30d5d938c64fd518e7f29cb30cc",
+          "matches_normalized_source": true
+        },
+        "src/bridge-moment-view.js": {
+          "captured_raw_sha256": "fe58c7824f96458f2608af4d1cf76c81d2936da89a8cca1ad933974b65e0e03c",
+          "captured_lf_sha256": "fe58c7824f96458f2608af4d1cf76c81d2936da89a8cca1ad933974b65e0e03c",
+          "git_source_sha256": "fe58c7824f96458f2608af4d1cf76c81d2936da89a8cca1ad933974b65e0e03c",
+          "matches_normalized_source": true
+        },
+        "src/characters-ui.js": {
+          "captured_raw_sha256": "58de0cb602479d45eae66f4ccd4077253e34e6e3d843a1505f9eca4d4a1f8f77",
+          "captured_lf_sha256": "58de0cb602479d45eae66f4ccd4077253e34e6e3d843a1505f9eca4d4a1f8f77",
+          "git_source_sha256": "58de0cb602479d45eae66f4ccd4077253e34e6e3d843a1505f9eca4d4a1f8f77",
+          "matches_normalized_source": true
+        },
+        "src/characters.css": {
+          "captured_raw_sha256": "48bfb2431b5fb50e530ed334e52cf07c31b8a29bdb5bb4917365210ab9e71815",
+          "captured_lf_sha256": "48bfb2431b5fb50e530ed334e52cf07c31b8a29bdb5bb4917365210ab9e71815",
+          "git_source_sha256": "48bfb2431b5fb50e530ed334e52cf07c31b8a29bdb5bb4917365210ab9e71815",
+          "matches_normalized_source": true
+        },
+        "src/characters.js": {
+          "captured_raw_sha256": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+          "captured_lf_sha256": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+          "git_source_sha256": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+          "matches_normalized_source": true
+        },
+        "src/classes-ui.js": {
+          "captured_raw_sha256": "6fb25a35158cf3388485f57016aea745260dea8a057f8d6b4781d3f7a296d22b",
+          "captured_lf_sha256": "6fb25a35158cf3388485f57016aea745260dea8a057f8d6b4781d3f7a296d22b",
+          "git_source_sha256": "6fb25a35158cf3388485f57016aea745260dea8a057f8d6b4781d3f7a296d22b",
+          "matches_normalized_source": true
+        },
+        "src/classes.css": {
+          "captured_raw_sha256": "4b9b47443b1817efe2b4cd43e7a3d0d34e623738a5b1e6e1cad05bc2ce88e892",
+          "captured_lf_sha256": "4b9b47443b1817efe2b4cd43e7a3d0d34e623738a5b1e6e1cad05bc2ce88e892",
+          "git_source_sha256": "4b9b47443b1817efe2b4cd43e7a3d0d34e623738a5b1e6e1cad05bc2ce88e892",
+          "matches_normalized_source": true
+        },
+        "src/classes.js": {
+          "captured_raw_sha256": "15da8e8f26c234a5903e5321d9cbcadea773037c9536911a5dc85cb9da2aaa97",
+          "captured_lf_sha256": "15da8e8f26c234a5903e5321d9cbcadea773037c9536911a5dc85cb9da2aaa97",
+          "git_source_sha256": "15da8e8f26c234a5903e5321d9cbcadea773037c9536911a5dc85cb9da2aaa97",
+          "matches_normalized_source": true
+        },
+        "src/coastward-settlement-art.js": {
+          "captured_raw_sha256": "8f08b152b5205c434ffa7408118e754799eb7ab396b2c0aaec8920cc0029c839",
+          "captured_lf_sha256": "8f08b152b5205c434ffa7408118e754799eb7ab396b2c0aaec8920cc0029c839",
+          "git_source_sha256": "8f08b152b5205c434ffa7408118e754799eb7ab396b2c0aaec8920cc0029c839",
+          "matches_normalized_source": true
+        },
+        "src/coastward-woodland-art.js": {
+          "captured_raw_sha256": "45b2758d3f8d75457545b24c2cc96f81f70ac8296bf183f57ddd412289f130fc",
+          "captured_lf_sha256": "45b2758d3f8d75457545b24c2cc96f81f70ac8296bf183f57ddd412289f130fc",
+          "git_source_sha256": "45b2758d3f8d75457545b24c2cc96f81f70ac8296bf183f57ddd412289f130fc",
+          "matches_normalized_source": true
+        },
+        "src/combat-view.js": {
+          "captured_raw_sha256": "5fc50ddf01bd211d3973a126eef586528c1aaa801cbc20d4eccee9ef6871a301",
+          "captured_lf_sha256": "9e674247119cece3bb6a35ca31fa424ed5e8e0187cbd2c149afb6f4aba085d5c",
+          "git_source_sha256": "9e674247119cece3bb6a35ca31fa424ed5e8e0187cbd2c149afb6f4aba085d5c",
+          "matches_normalized_source": true
+        },
+        "src/combat.js": {
+          "captured_raw_sha256": "fea2754a28364c7fc7aef200ea7d97f03ec55c4a1b0eb70ecb9bf8c9bb12c255",
+          "captured_lf_sha256": "fea2754a28364c7fc7aef200ea7d97f03ec55c4a1b0eb70ecb9bf8c9bb12c255",
+          "git_source_sha256": "fea2754a28364c7fc7aef200ea7d97f03ec55c4a1b0eb70ecb9bf8c9bb12c255",
+          "matches_normalized_source": true
+        },
+        "src/companion-art.js": {
+          "captured_raw_sha256": "06821bb333cc1d61398017fcd236fb4622aae6432ce636f827642531946b2a32",
+          "captured_lf_sha256": "06821bb333cc1d61398017fcd236fb4622aae6432ce636f827642531946b2a32",
+          "git_source_sha256": "06821bb333cc1d61398017fcd236fb4622aae6432ce636f827642531946b2a32",
+          "matches_normalized_source": true
+        },
+        "src/core.js": {
+          "captured_raw_sha256": "0bf8965aefd3e121795fc0d2ae555c2b04ef2da428427fc8d54cb88703e4d42e",
+          "captured_lf_sha256": "78291e53cf3b6be7cbca687ed4681a780beb4f0067d8d4f238b49d8b2246e191",
+          "git_source_sha256": "78291e53cf3b6be7cbca687ed4681a780beb4f0067d8d4f238b49d8b2246e191",
+          "matches_normalized_source": true
+        },
+        "src/cosmos-art.js": {
+          "captured_raw_sha256": "f95fe5cbbb5b49609606f15249e127af70af4f76e39839449fd279db91c632b1",
+          "captured_lf_sha256": "f95fe5cbbb5b49609606f15249e127af70af4f76e39839449fd279db91c632b1",
+          "git_source_sha256": "f95fe5cbbb5b49609606f15249e127af70af4f76e39839449fd279db91c632b1",
+          "matches_normalized_source": true
+        },
+        "src/cosmos-ui.js": {
+          "captured_raw_sha256": "60c774d86f072999a7965bc4a974e8cff7ceffd4b48d2f10ef2cf8a16af85734",
+          "captured_lf_sha256": "60c774d86f072999a7965bc4a974e8cff7ceffd4b48d2f10ef2cf8a16af85734",
+          "git_source_sha256": "60c774d86f072999a7965bc4a974e8cff7ceffd4b48d2f10ef2cf8a16af85734",
+          "matches_normalized_source": true
+        },
+        "src/cosmos.css": {
+          "captured_raw_sha256": "4d79807974082aaef0df364d312ae3d4a345ffd40b5eab403ccc55c24f02a63b",
+          "captured_lf_sha256": "4d79807974082aaef0df364d312ae3d4a345ffd40b5eab403ccc55c24f02a63b",
+          "git_source_sha256": "4d79807974082aaef0df364d312ae3d4a345ffd40b5eab403ccc55c24f02a63b",
+          "matches_normalized_source": true
+        },
+        "src/cosmos.js": {
+          "captured_raw_sha256": "dc646ba254ad4c482685c58d342e50c696832f479c8a13526faeed089fe4d3c5",
+          "captured_lf_sha256": "dc646ba254ad4c482685c58d342e50c696832f479c8a13526faeed089fe4d3c5",
+          "git_source_sha256": "dc646ba254ad4c482685c58d342e50c696832f479c8a13526faeed089fe4d3c5",
+          "matches_normalized_source": true
+        },
+        "src/creative.js": {
+          "captured_raw_sha256": "d0032234d3cab1a6e90c84736011a98631bcc3748de8d5fc23df872367038761",
+          "captured_lf_sha256": "d0032234d3cab1a6e90c84736011a98631bcc3748de8d5fc23df872367038761",
+          "git_source_sha256": "d0032234d3cab1a6e90c84736011a98631bcc3748de8d5fc23df872367038761",
+          "matches_normalized_source": true
+        },
+        "src/crossing-art.js": {
+          "captured_raw_sha256": "86cd8945194c6437d9ece96a7d0bcac8a4970eb5f3324300e48d08376bb61bcf",
+          "captured_lf_sha256": "86cd8945194c6437d9ece96a7d0bcac8a4970eb5f3324300e48d08376bb61bcf",
+          "git_source_sha256": "86cd8945194c6437d9ece96a7d0bcac8a4970eb5f3324300e48d08376bb61bcf",
+          "matches_normalized_source": true
+        },
+        "src/crossing-ui.js": {
+          "captured_raw_sha256": "5a2a7f6989a0a7ff0a96fee7aa88ec77dadbfba15440a272f131f17a98d86913",
+          "captured_lf_sha256": "5a2a7f6989a0a7ff0a96fee7aa88ec77dadbfba15440a272f131f17a98d86913",
+          "git_source_sha256": "5a2a7f6989a0a7ff0a96fee7aa88ec77dadbfba15440a272f131f17a98d86913",
+          "matches_normalized_source": true
+        },
+        "src/crossing.css": {
+          "captured_raw_sha256": "af6dd51f197dfa1963fc9fa0d92683b2e6f48270903aaea5ba90cbb2833862a2",
+          "captured_lf_sha256": "af6dd51f197dfa1963fc9fa0d92683b2e6f48270903aaea5ba90cbb2833862a2",
+          "git_source_sha256": "af6dd51f197dfa1963fc9fa0d92683b2e6f48270903aaea5ba90cbb2833862a2",
+          "matches_normalized_source": true
+        },
+        "src/crossing.js": {
+          "captured_raw_sha256": "b666c4e6e20483ad267293578020876c8791bbbf23f8116803936658400d1a8f",
+          "captured_lf_sha256": "b666c4e6e20483ad267293578020876c8791bbbf23f8116803936658400d1a8f",
+          "git_source_sha256": "b666c4e6e20483ad267293578020876c8791bbbf23f8116803936658400d1a8f",
+          "matches_normalized_source": true
+        },
+        "src/drover-art.js": {
+          "captured_raw_sha256": "0f4dda1af6b05e1c7e0931d835fca2d3faec7960788bc89b9f9b591af19206b0",
+          "captured_lf_sha256": "0f4dda1af6b05e1c7e0931d835fca2d3faec7960788bc89b9f9b591af19206b0",
+          "git_source_sha256": "0f4dda1af6b05e1c7e0931d835fca2d3faec7960788bc89b9f9b591af19206b0",
+          "matches_normalized_source": true
+        },
+        "src/earth-art.js": {
+          "captured_raw_sha256": "e1053c4c73142de382346760b199fefa92833c4b053ebf698014315b7563f76c",
+          "captured_lf_sha256": "e1053c4c73142de382346760b199fefa92833c4b053ebf698014315b7563f76c",
+          "git_source_sha256": "e1053c4c73142de382346760b199fefa92833c4b053ebf698014315b7563f76c",
+          "matches_normalized_source": true
+        },
+        "src/earth-expedition-art.js": {
+          "captured_raw_sha256": "6a233e69255339ede30be4e4c9153cec8ac678577140748a81c38880c159fd3e",
+          "captured_lf_sha256": "822a0a8d7dc8271f92a5c38691ab7caf208063671b3e8dd6da05e120094d226f",
+          "git_source_sha256": "822a0a8d7dc8271f92a5c38691ab7caf208063671b3e8dd6da05e120094d226f",
+          "matches_normalized_source": true
+        },
+        "src/earth-expedition-beast-art.js": {
+          "captured_raw_sha256": "a92a0acc71c3d89f177e3aed26e8838513a0ca1d54f33ab723ecd9c65fc3e607",
+          "captured_lf_sha256": "bf663c1cf48ef65a1c43e42bec63e743686506f3c028b7e72e4f4eac2ef7c0e4",
+          "git_source_sha256": "bf663c1cf48ef65a1c43e42bec63e743686506f3c028b7e72e4f4eac2ef7c0e4",
+          "matches_normalized_source": true
+        },
+        "src/earth-expedition-dialogue.js": {
+          "captured_raw_sha256": "22c83752dc1ff88ef815827feda34d028bfd49da940037c8ca519b446cb56ffc",
+          "captured_lf_sha256": "964360081bfc8a5a2966db854d2c12268de1187bf9f4a3b6e4eb0b5014aa9f9d",
+          "git_source_sha256": "964360081bfc8a5a2966db854d2c12268de1187bf9f4a3b6e4eb0b5014aa9f9d",
+          "matches_normalized_source": true
+        },
+        "src/earth-expedition-ui.js": {
+          "captured_raw_sha256": "9dfd2c99ccb096e353400098223ac0f04250dcbb58089aab251edd944d14f667",
+          "captured_lf_sha256": "9f9359c4e8f63108aa3e674d9fc9589de832420306e6bfc1b49c0006641715a8",
+          "git_source_sha256": "9f9359c4e8f63108aa3e674d9fc9589de832420306e6bfc1b49c0006641715a8",
+          "matches_normalized_source": true
+        },
+        "src/earth-expedition.css": {
+          "captured_raw_sha256": "a8a0f4822afcff0a7c404b3c4ff358f3d8a38287bda431da0597cecfecaf5a72",
+          "captured_lf_sha256": "a8a0f4822afcff0a7c404b3c4ff358f3d8a38287bda431da0597cecfecaf5a72",
+          "git_source_sha256": "a8a0f4822afcff0a7c404b3c4ff358f3d8a38287bda431da0597cecfecaf5a72",
+          "matches_normalized_source": true
+        },
+        "src/earth-expedition.js": {
+          "captured_raw_sha256": "f32abf5e14ad2939dc5d93b43156109de8eb84d18436b22f9c477e33b5b8e85a",
+          "captured_lf_sha256": "fd1fd97cc4e8e9e12202de4bbc9186c236d37750f574070d709d56d214418f59",
+          "git_source_sha256": "fd1fd97cc4e8e9e12202de4bbc9186c236d37750f574070d709d56d214418f59",
+          "matches_normalized_source": true
+        },
+        "src/earth-notes-art.js": {
+          "captured_raw_sha256": "87fe4682829bfff89978d7046d62f518874a7953808431c5634327c9eb449556",
+          "captured_lf_sha256": "87fe4682829bfff89978d7046d62f518874a7953808431c5634327c9eb449556",
+          "git_source_sha256": "87fe4682829bfff89978d7046d62f518874a7953808431c5634327c9eb449556",
+          "matches_normalized_source": true
+        },
+        "src/earth-notes-ui.js": {
+          "captured_raw_sha256": "9e0f0df26062b4929e0c3a801e8e857afc269936dbe4932279e935c56274f264",
+          "captured_lf_sha256": "9e0f0df26062b4929e0c3a801e8e857afc269936dbe4932279e935c56274f264",
+          "git_source_sha256": "9e0f0df26062b4929e0c3a801e8e857afc269936dbe4932279e935c56274f264",
+          "matches_normalized_source": true
+        },
+        "src/earth-notes.js": {
+          "captured_raw_sha256": "4ab5807020f65086b190591414c871ee76412791ac0c97dca5447c595840e9e0",
+          "captured_lf_sha256": "4ab5807020f65086b190591414c871ee76412791ac0c97dca5447c595840e9e0",
+          "git_source_sha256": "4ab5807020f65086b190591414c871ee76412791ac0c97dca5447c595840e9e0",
+          "matches_normalized_source": true
+        },
+        "src/earth-shoulder-art.js": {
+          "captured_raw_sha256": "422a50a7aeec456b6f75095c53a319d2cbf6ac5e09f773e268ed54034c2ddb8d",
+          "captured_lf_sha256": "422a50a7aeec456b6f75095c53a319d2cbf6ac5e09f773e268ed54034c2ddb8d",
+          "git_source_sha256": "422a50a7aeec456b6f75095c53a319d2cbf6ac5e09f773e268ed54034c2ddb8d",
+          "matches_normalized_source": true
+        },
+        "src/earth-story-ui.js": {
+          "captured_raw_sha256": "a9eddc45b9019dff04a603a6261969e5bc86837ffb4ca38548037696af090c4f",
+          "captured_lf_sha256": "930b71ef9184a5d7b03cc79ff33d7f9e000eabb9d3934266af9e0fe8713448cb",
+          "git_source_sha256": "930b71ef9184a5d7b03cc79ff33d7f9e000eabb9d3934266af9e0fe8713448cb",
+          "matches_normalized_source": true
+        },
+        "src/earth-story.js": {
+          "captured_raw_sha256": "fd0ced6f17f1b15b2aee4e31aa00be249bc8e1fb08c4e735416d95c173fd52d0",
+          "captured_lf_sha256": "fd0ced6f17f1b15b2aee4e31aa00be249bc8e1fb08c4e735416d95c173fd52d0",
+          "git_source_sha256": "fd0ced6f17f1b15b2aee4e31aa00be249bc8e1fb08c4e735416d95c173fd52d0",
+          "matches_normalized_source": true
+        },
+        "src/earth-ui.js": {
+          "captured_raw_sha256": "5f77ca6399e08fd2467cfc59ddcee555b0e665a84392f2c4010ca1b47b856e7b",
+          "captured_lf_sha256": "5f77ca6399e08fd2467cfc59ddcee555b0e665a84392f2c4010ca1b47b856e7b",
+          "git_source_sha256": "5f77ca6399e08fd2467cfc59ddcee555b0e665a84392f2c4010ca1b47b856e7b",
+          "matches_normalized_source": true
+        },
+        "src/earth.css": {
+          "captured_raw_sha256": "1f40093ded67c175c70c730b8518ff928d26db40287515256fc287c45f2a9f3d",
+          "captured_lf_sha256": "1f40093ded67c175c70c730b8518ff928d26db40287515256fc287c45f2a9f3d",
+          "git_source_sha256": "1f40093ded67c175c70c730b8518ff928d26db40287515256fc287c45f2a9f3d",
+          "matches_normalized_source": true
+        },
+        "src/earth.js": {
+          "captured_raw_sha256": "1623be8382f2d05dbf16cac886951752e6d193dafd97353c4df29ecd21fa3735",
+          "captured_lf_sha256": "1623be8382f2d05dbf16cac886951752e6d193dafd97353c4df29ecd21fa3735",
+          "git_source_sha256": "1623be8382f2d05dbf16cac886951752e6d193dafd97353c4df29ecd21fa3735",
+          "matches_normalized_source": true
+        },
+        "src/elderweald-trail-art.js": {
+          "captured_raw_sha256": "3f3bc9c3afb12fede706ababdfa276993fdbf3c7fd7d33efaee6fd79f637b4b7",
+          "captured_lf_sha256": "e978e735ec1ee8048df1777b190959b832cd37755f682c3d51b9ec3f0a7f0491",
+          "git_source_sha256": "e978e735ec1ee8048df1777b190959b832cd37755f682c3d51b9ec3f0a7f0491",
+          "matches_normalized_source": true
+        },
+        "src/elderweald-world.js": {
+          "captured_raw_sha256": "8d993c230ad7198e397f4bf41938522405c352bbdd903b04016d1262822d3538",
+          "captured_lf_sha256": "8d993c230ad7198e397f4bf41938522405c352bbdd903b04016d1262822d3538",
+          "git_source_sha256": "8d993c230ad7198e397f4bf41938522405c352bbdd903b04016d1262822d3538",
+          "matches_normalized_source": true
+        },
+        "src/engine.js": {
+          "captured_raw_sha256": "d7101150dc15942e83ff31c8fc01310576b88ff11defb7d64049ea2c5dbba4d9",
+          "captured_lf_sha256": "b98cfea8453e5b6deeb16a13c45f1c1bf7fc80fb9ba8d0a185c242a6ea9b078d",
+          "git_source_sha256": "b98cfea8453e5b6deeb16a13c45f1c1bf7fc80fb9ba8d0a185c242a6ea9b078d",
+          "matches_normalized_source": true
+        },
+        "src/experience.js": {
+          "captured_raw_sha256": "3b5a178ca757c7b58dcbfcedcc1522887dc6a178faf5e942c6e3894166d60570",
+          "captured_lf_sha256": "3b5a178ca757c7b58dcbfcedcc1522887dc6a178faf5e942c6e3894166d60570",
+          "git_source_sha256": "3b5a178ca757c7b58dcbfcedcc1522887dc6a178faf5e942c6e3894166d60570",
+          "matches_normalized_source": true
+        },
+        "src/gathering-adapter.js": {
+          "captured_raw_sha256": "df41b2b23ae11c6ef2661e48301c488cb26ab753a7beec73349b5c959d5ab564",
+          "captured_lf_sha256": "df41b2b23ae11c6ef2661e48301c488cb26ab753a7beec73349b5c959d5ab564",
+          "git_source_sha256": "df41b2b23ae11c6ef2661e48301c488cb26ab753a7beec73349b5c959d5ab564",
+          "matches_normalized_source": true
+        },
+        "src/gathering-art.js": {
+          "captured_raw_sha256": "b693bce2a519bd75e4f99e03b96184f1ed10c9a9a02e25b7affd53e739f5e0eb",
+          "captured_lf_sha256": "b693bce2a519bd75e4f99e03b96184f1ed10c9a9a02e25b7affd53e739f5e0eb",
+          "git_source_sha256": "b693bce2a519bd75e4f99e03b96184f1ed10c9a9a02e25b7affd53e739f5e0eb",
+          "matches_normalized_source": true
+        },
+        "src/gathering-music.js": {
+          "captured_raw_sha256": "5e44106322e01aebc7b87d8eefcd29b2a2577d2162d70fb8f99475c7cc7deb12",
+          "captured_lf_sha256": "5e44106322e01aebc7b87d8eefcd29b2a2577d2162d70fb8f99475c7cc7deb12",
+          "git_source_sha256": "5e44106322e01aebc7b87d8eefcd29b2a2577d2162d70fb8f99475c7cc7deb12",
+          "matches_normalized_source": true
+        },
+        "src/gathering-ui.js": {
+          "captured_raw_sha256": "0c347e1da4a897b178c405f35cfef2e6ea518fe5d9e6ba650e48e48895e0445a",
+          "captured_lf_sha256": "0c347e1da4a897b178c405f35cfef2e6ea518fe5d9e6ba650e48e48895e0445a",
+          "git_source_sha256": "0c347e1da4a897b178c405f35cfef2e6ea518fe5d9e6ba650e48e48895e0445a",
+          "matches_normalized_source": true
+        },
+        "src/gathering.css": {
+          "captured_raw_sha256": "aa2e5381a0ff9fa7e4ceae5053a54a8ab11a784f81ee021e4835d485d3c5f4db",
+          "captured_lf_sha256": "aa2e5381a0ff9fa7e4ceae5053a54a8ab11a784f81ee021e4835d485d3c5f4db",
+          "git_source_sha256": "aa2e5381a0ff9fa7e4ceae5053a54a8ab11a784f81ee021e4835d485d3c5f4db",
+          "matches_normalized_source": true
+        },
+        "src/gathering.js": {
+          "captured_raw_sha256": "256a33c52f2b31c2c421f72a74aae543feb6c554ebae863aee55d31f0c68eb54",
+          "captured_lf_sha256": "256a33c52f2b31c2c421f72a74aae543feb6c554ebae863aee55d31f0c68eb54",
+          "git_source_sha256": "256a33c52f2b31c2c421f72a74aae543feb6c554ebae863aee55d31f0c68eb54",
+          "matches_normalized_source": true
+        },
+        "src/home-history-art.js": {
+          "captured_raw_sha256": "2496883cbb9a122608319db5b2eac1d42cabe7e386b4c9aafc78076081a4af7f",
+          "captured_lf_sha256": "df3acc85a5191c3938692759e85b7ee76ef5f936f29e65d6a845636600396a1f",
+          "git_source_sha256": "df3acc85a5191c3938692759e85b7ee76ef5f936f29e65d6a845636600396a1f",
+          "matches_normalized_source": true
+        },
+        "src/home-history-ui.js": {
+          "captured_raw_sha256": "0d352093da3faedd6314188fd99ded6ad06a39a3a6ec1a0528b77d48f2b1418a",
+          "captured_lf_sha256": "41a330942368c7a4500759f2cbaf1cda224bd5ed25bc284b9e44463fc1f43a8e",
+          "git_source_sha256": "41a330942368c7a4500759f2cbaf1cda224bd5ed25bc284b9e44463fc1f43a8e",
+          "matches_normalized_source": true
+        },
+        "src/home-history.css": {
+          "captured_raw_sha256": "54ef3c501dfda4c3d74c0f17d900bdc5b25c9dcbaeb1840ec36cbcfe0a276bd2",
+          "captured_lf_sha256": "54ef3c501dfda4c3d74c0f17d900bdc5b25c9dcbaeb1840ec36cbcfe0a276bd2",
+          "git_source_sha256": "54ef3c501dfda4c3d74c0f17d900bdc5b25c9dcbaeb1840ec36cbcfe0a276bd2",
+          "matches_normalized_source": true
+        },
+        "src/home-history.js": {
+          "captured_raw_sha256": "546f04a476a889ea43cb2989e854df1bac2571c99eea411b603af401675ec76f",
+          "captured_lf_sha256": "f002eb64b57343e38e95eafa4cd522c892aab26efc7b0c3d65bea86a45cec6e6",
+          "git_source_sha256": "f002eb64b57343e38e95eafa4cd522c892aab26efc7b0c3d65bea86a45cec6e6",
+          "matches_normalized_source": true
+        },
+        "src/local-life-art.js": {
+          "captured_raw_sha256": "381d1f5469310e2dc98c14b6d58c4259113fd1d6dd10f77059f45e6848fefcf2",
+          "captured_lf_sha256": "381d1f5469310e2dc98c14b6d58c4259113fd1d6dd10f77059f45e6848fefcf2",
+          "git_source_sha256": "381d1f5469310e2dc98c14b6d58c4259113fd1d6dd10f77059f45e6848fefcf2",
+          "matches_normalized_source": true
+        },
+        "src/local-life-ui.js": {
+          "captured_raw_sha256": "95a0757ae7f612560c94ebca13474925251fb485e449da0bc5c6440ceb43b4c6",
+          "captured_lf_sha256": "95a0757ae7f612560c94ebca13474925251fb485e449da0bc5c6440ceb43b4c6",
+          "git_source_sha256": "95a0757ae7f612560c94ebca13474925251fb485e449da0bc5c6440ceb43b4c6",
+          "matches_normalized_source": true
+        },
+        "src/local-life.js": {
+          "captured_raw_sha256": "005f7bd489bba2832aaec0b6c9d1cc499660e6e0047be73ab0f85d2922955d48",
+          "captured_lf_sha256": "005f7bd489bba2832aaec0b6c9d1cc499660e6e0047be73ab0f85d2922955d48",
+          "git_source_sha256": "005f7bd489bba2832aaec0b6c9d1cc499660e6e0047be73ab0f85d2922955d48",
+          "matches_normalized_source": true
+        },
+        "src/mill-gate-art.js": {
+          "captured_raw_sha256": "fe33cbbd3f180a8d32a0d0a338cde42c40e809af99ed2da1db157ba5c7fbcdd9",
+          "captured_lf_sha256": "fe33cbbd3f180a8d32a0d0a338cde42c40e809af99ed2da1db157ba5c7fbcdd9",
+          "git_source_sha256": "fe33cbbd3f180a8d32a0d0a338cde42c40e809af99ed2da1db157ba5c7fbcdd9",
+          "matches_normalized_source": true
+        },
+        "src/millwright-art.js": {
+          "captured_raw_sha256": "bd7397ee2a9f4c47b2b51117e28f3c68533da41de3122bb0a39a5575913a5661",
+          "captured_lf_sha256": "bd7397ee2a9f4c47b2b51117e28f3c68533da41de3122bb0a39a5575913a5661",
+          "git_source_sha256": "bd7397ee2a9f4c47b2b51117e28f3c68533da41de3122bb0a39a5575913a5661",
+          "matches_normalized_source": true
+        },
+        "src/pursuit-ui.js": {
+          "captured_raw_sha256": "f8c6bab82d88b6e4dcbf05f3e78701d489f31e224c80211b94f8acc8b70b4224",
+          "captured_lf_sha256": "f8c6bab82d88b6e4dcbf05f3e78701d489f31e224c80211b94f8acc8b70b4224",
+          "git_source_sha256": "f8c6bab82d88b6e4dcbf05f3e78701d489f31e224c80211b94f8acc8b70b4224",
+          "matches_normalized_source": true
+        },
+        "src/pursuit.css": {
+          "captured_raw_sha256": "61f36fa917eafba8cfa332f7d233db4c47a6d007bbf84d1843bc25fc17dd63ff",
+          "captured_lf_sha256": "61f36fa917eafba8cfa332f7d233db4c47a6d007bbf84d1843bc25fc17dd63ff",
+          "git_source_sha256": "61f36fa917eafba8cfa332f7d233db4c47a6d007bbf84d1843bc25fc17dd63ff",
+          "matches_normalized_source": true
+        },
+        "src/pursuit.js": {
+          "captured_raw_sha256": "b77e1874f8278971f41d4b62551df40c81126f2a35e02958958e802ab9c8b5ff",
+          "captured_lf_sha256": "b77e1874f8278971f41d4b62551df40c81126f2a35e02958958e802ab9c8b5ff",
+          "git_source_sha256": "b77e1874f8278971f41d4b62551df40c81126f2a35e02958958e802ab9c8b5ff",
+          "matches_normalized_source": true
+        },
+        "src/quarry-art.js": {
+          "captured_raw_sha256": "5bc6d93e99e430e7a460a1a2a510fc69e60c9dd80e758bce7470dae3ae3446f6",
+          "captured_lf_sha256": "5bc6d93e99e430e7a460a1a2a510fc69e60c9dd80e758bce7470dae3ae3446f6",
+          "git_source_sha256": "5bc6d93e99e430e7a460a1a2a510fc69e60c9dd80e758bce7470dae3ae3446f6",
+          "matches_normalized_source": true
+        },
+        "src/realm-art-data.js": {
+          "captured_raw_sha256": "1ac6251a7acf23c78799d96b5554fb3fe572c40e12c54c73f0188c4f8a324435",
+          "captured_lf_sha256": "1ac6251a7acf23c78799d96b5554fb3fe572c40e12c54c73f0188c4f8a324435",
+          "git_source_sha256": "1ac6251a7acf23c78799d96b5554fb3fe572c40e12c54c73f0188c4f8a324435",
+          "matches_normalized_source": true
+        },
+        "src/realm-atlas-ui.js": {
+          "captured_raw_sha256": "bc1cff9e09ab0c9f95a643c9c3ac8e0267f16641b7e8a7e3f537a32fed6859ab",
+          "captured_lf_sha256": "bc1cff9e09ab0c9f95a643c9c3ac8e0267f16641b7e8a7e3f537a32fed6859ab",
+          "git_source_sha256": "bc1cff9e09ab0c9f95a643c9c3ac8e0267f16641b7e8a7e3f537a32fed6859ab",
+          "matches_normalized_source": true
+        },
+        "src/realm-atlas.css": {
+          "captured_raw_sha256": "7ef7a03b8c2a69069c2d65da8d5134c7b7dc4bc2b941e139f818a7ab7011c366",
+          "captured_lf_sha256": "7ef7a03b8c2a69069c2d65da8d5134c7b7dc4bc2b941e139f818a7ab7011c366",
+          "git_source_sha256": "7ef7a03b8c2a69069c2d65da8d5134c7b7dc4bc2b941e139f818a7ab7011c366",
+          "matches_normalized_source": true
+        },
+        "src/realm-craft.js": {
+          "captured_raw_sha256": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+          "captured_lf_sha256": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+          "git_source_sha256": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+          "matches_normalized_source": true
+        },
+        "src/realm-givers-art.js": {
+          "captured_raw_sha256": "0c5268cd304676fe4ada32dcbcea304d6d97f759b59ecdffecbdb625fbcc025c",
+          "captured_lf_sha256": "8362d7a98f238b77b9afa5eff7346f430c02af6cd249502f146308a3d246fb34",
+          "git_source_sha256": "8362d7a98f238b77b9afa5eff7346f430c02af6cd249502f146308a3d246fb34",
+          "matches_normalized_source": true
+        },
+        "src/realm-trails-art.js": {
+          "captured_raw_sha256": "99a588e7aee9c7d43b6506de836ab2bab75a9420c6b718369c37e4517ca037e3",
+          "captured_lf_sha256": "99a588e7aee9c7d43b6506de836ab2bab75a9420c6b718369c37e4517ca037e3",
+          "git_source_sha256": "99a588e7aee9c7d43b6506de836ab2bab75a9420c6b718369c37e4517ca037e3",
+          "matches_normalized_source": true
+        },
+        "src/realm-trails-cosmos.js": {
+          "captured_raw_sha256": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+          "captured_lf_sha256": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+          "git_source_sha256": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+          "matches_normalized_source": true
+        },
+        "src/realm-trails-north.js": {
+          "captured_raw_sha256": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+          "captured_lf_sha256": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+          "git_source_sha256": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+          "matches_normalized_source": true
+        },
+        "src/realm-trails-south.js": {
+          "captured_raw_sha256": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+          "captured_lf_sha256": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+          "git_source_sha256": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+          "matches_normalized_source": true
+        },
+        "src/realm-trails-ui.js": {
+          "captured_raw_sha256": "d2161829aff6a3b2c36ea414ed687aabbeb10cc33a5ddd8f0c7f36cfc7bdf65d",
+          "captured_lf_sha256": "d2161829aff6a3b2c36ea414ed687aabbeb10cc33a5ddd8f0c7f36cfc7bdf65d",
+          "git_source_sha256": "d2161829aff6a3b2c36ea414ed687aabbeb10cc33a5ddd8f0c7f36cfc7bdf65d",
+          "matches_normalized_source": true
+        },
+        "src/realm-trails.js": {
+          "captured_raw_sha256": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+          "captured_lf_sha256": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+          "git_source_sha256": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+          "matches_normalized_source": true
+        },
+        "src/road-art.js": {
+          "captured_raw_sha256": "0cc12918587f98f4b9ed2b7beb8d1b21219b4a69959742a759f88354942df05d",
+          "captured_lf_sha256": "0cc12918587f98f4b9ed2b7beb8d1b21219b4a69959742a759f88354942df05d",
+          "git_source_sha256": "0cc12918587f98f4b9ed2b7beb8d1b21219b4a69959742a759f88354942df05d",
+          "matches_normalized_source": true
+        },
+        "src/road.js": {
+          "captured_raw_sha256": "d18106f1a2147d623680b285dc5882cae8d2b74c5ef8b500d75de35d20c86dbc",
+          "captured_lf_sha256": "d18106f1a2147d623680b285dc5882cae8d2b74c5ef8b500d75de35d20c86dbc",
+          "git_source_sha256": "d18106f1a2147d623680b285dc5882cae8d2b74c5ef8b500d75de35d20c86dbc",
+          "matches_normalized_source": true
+        },
+        "src/rpg-ui.js": {
+          "captured_raw_sha256": "30b6e32138a5aadcbf0e7b8416c6dacfea6fe98e9cfb0847f37cef3da96493c8",
+          "captured_lf_sha256": "8de4afa28f80347260640824075b023e7e24e0053186451cd4fc14f64f93ff62",
+          "git_source_sha256": "8de4afa28f80347260640824075b023e7e24e0053186451cd4fc14f64f93ff62",
+          "matches_normalized_source": true
+        },
+        "src/rpg.css": {
+          "captured_raw_sha256": "59de2bff651e1a916e270385bc33d6e34eeb03eb9066363e0f94b0e297412a59",
+          "captured_lf_sha256": "38c9ae20d0c930dca4f9fee7aae489bdeba53245c7c3673346dd72b1a985f995",
+          "git_source_sha256": "38c9ae20d0c930dca4f9fee7aae489bdeba53245c7c3673346dd72b1a985f995",
+          "matches_normalized_source": true
+        },
+        "src/sandbox-art.js": {
+          "captured_raw_sha256": "3c3a8f9ea1a44fb84bdfe07a99b33969f253714c271e91ca3cfeca7eab76474c",
+          "captured_lf_sha256": "3c3a8f9ea1a44fb84bdfe07a99b33969f253714c271e91ca3cfeca7eab76474c",
+          "git_source_sha256": "3c3a8f9ea1a44fb84bdfe07a99b33969f253714c271e91ca3cfeca7eab76474c",
+          "matches_normalized_source": true
+        },
+        "src/sandbox-ui.js": {
+          "captured_raw_sha256": "28d7530e8153ed3c8a6a31b3e204cbc9680484b013cb5880a4f05b76cf83d8f5",
+          "captured_lf_sha256": "28d7530e8153ed3c8a6a31b3e204cbc9680484b013cb5880a4f05b76cf83d8f5",
+          "git_source_sha256": "28d7530e8153ed3c8a6a31b3e204cbc9680484b013cb5880a4f05b76cf83d8f5",
+          "matches_normalized_source": true
+        },
+        "src/sandbox.js": {
+          "captured_raw_sha256": "ad11196c12363b650f2697ab8fb30eb657ff0bf65953274942ce36eb28131e85",
+          "captured_lf_sha256": "ad11196c12363b650f2697ab8fb30eb657ff0bf65953274942ce36eb28131e85",
+          "git_source_sha256": "ad11196c12363b650f2697ab8fb30eb657ff0bf65953274942ce36eb28131e85",
+          "matches_normalized_source": true
+        },
+        "src/shell.html": {
+          "captured_raw_sha256": "d4c36639daa03882d92a34e75969881e50492d0ca5e0becb12c73fad7954085e",
+          "captured_lf_sha256": "51fa68244bcd08823ca00caa4cfd01641ec8789814c3ac35124f6d34a9f7a076",
+          "git_source_sha256": "51fa68244bcd08823ca00caa4cfd01641ec8789814c3ac35124f6d34a9f7a076",
+          "matches_normalized_source": true
+        },
+        "src/skitter-art.js": {
+          "captured_raw_sha256": "bd84a78381cf7232a7fb92a868332308c68fcae17d25764c2b5d4bdfefa29903",
+          "captured_lf_sha256": "bd84a78381cf7232a7fb92a868332308c68fcae17d25764c2b5d4bdfefa29903",
+          "git_source_sha256": "bd84a78381cf7232a7fb92a868332308c68fcae17d25764c2b5d4bdfefa29903",
+          "matches_normalized_source": true
+        },
+        "src/soundscape.js": {
+          "captured_raw_sha256": "15b7b578886b838ef20e56501940354d33a8ffcd5581332dd4c4b2035692c5af",
+          "captured_lf_sha256": "15b7b578886b838ef20e56501940354d33a8ffcd5581332dd4c4b2035692c5af",
+          "git_source_sha256": "15b7b578886b838ef20e56501940354d33a8ffcd5581332dd4c4b2035692c5af",
+          "matches_normalized_source": true
+        },
+        "src/starter-art.js": {
+          "captured_raw_sha256": "cfc4f672b891fe6d53dec82a97aeac7204b8179b3490ae9df9ce3412c4661fcc",
+          "captured_lf_sha256": "cfc4f672b891fe6d53dec82a97aeac7204b8179b3490ae9df9ce3412c4661fcc",
+          "git_source_sha256": "cfc4f672b891fe6d53dec82a97aeac7204b8179b3490ae9df9ce3412c4661fcc",
+          "matches_normalized_source": true
+        },
+        "src/starter-ui.js": {
+          "captured_raw_sha256": "44718b2835207383632d5f33e0748dba9c348041b11f9b404040bdf07a259052",
+          "captured_lf_sha256": "44718b2835207383632d5f33e0748dba9c348041b11f9b404040bdf07a259052",
+          "git_source_sha256": "44718b2835207383632d5f33e0748dba9c348041b11f9b404040bdf07a259052",
+          "matches_normalized_source": true
+        },
+        "src/starter.css": {
+          "captured_raw_sha256": "f1501b06a13c2b3ec0030b39bf9d4530740aad2f60cf9608ca32957c9ce2943b",
+          "captured_lf_sha256": "f1501b06a13c2b3ec0030b39bf9d4530740aad2f60cf9608ca32957c9ce2943b",
+          "git_source_sha256": "f1501b06a13c2b3ec0030b39bf9d4530740aad2f60cf9608ca32957c9ce2943b",
+          "matches_normalized_source": true
+        },
+        "src/starter.js": {
+          "captured_raw_sha256": "c6debd10295babafdcd714445c2ac18c0ff5ce8fd54b8dfe4f3ff78c9e0a294d",
+          "captured_lf_sha256": "c6debd10295babafdcd714445c2ac18c0ff5ce8fd54b8dfe4f3ff78c9e0a294d",
+          "git_source_sha256": "c6debd10295babafdcd714445c2ac18c0ff5ce8fd54b8dfe4f3ff78c9e0a294d",
+          "matches_normalized_source": true
+        },
+        "src/style.css": {
+          "captured_raw_sha256": "f08ab48a3e661c18be404d6eafcc471a6e0b866c41304495cc94fac0bfa24d4a",
+          "captured_lf_sha256": "f08ab48a3e661c18be404d6eafcc471a6e0b866c41304495cc94fac0bfa24d4a",
+          "git_source_sha256": "f08ab48a3e661c18be404d6eafcc471a6e0b866c41304495cc94fac0bfa24d4a",
+          "matches_normalized_source": true
+        },
+        "src/surface-assets.js": {
+          "captured_raw_sha256": "5cb0f81348074edbc0e4f3c7dee4962fac10bbc5e7db0ee07b16216f3b7a1e5f",
+          "captured_lf_sha256": "5cb0f81348074edbc0e4f3c7dee4962fac10bbc5e7db0ee07b16216f3b7a1e5f",
+          "git_source_sha256": "5cb0f81348074edbc0e4f3c7dee4962fac10bbc5e7db0ee07b16216f3b7a1e5f",
+          "matches_normalized_source": true
+        },
+        "src/traveler-art.js": {
+          "captured_raw_sha256": "b08aadb2ba30a3f22ed60ecaa279889f0243935b128c597a15b47e9ffd3970e2",
+          "captured_lf_sha256": "cf9e029046f5581aa3116f648fb657f9edff2ced67abc507afa38525f3ae1ba1",
+          "git_source_sha256": "cf9e029046f5581aa3116f648fb657f9edff2ced67abc507afa38525f3ae1ba1",
+          "matches_normalized_source": true
+        },
+        "src/traveler-equipment-art.js": {
+          "captured_raw_sha256": "1541d60f92726c78aacacbbfed54fc2ec41a99b14ccecf6700a06c756b78c50d",
+          "captured_lf_sha256": "13537e49de6fdcd670e75875c3b17736b76df53b65709d2b2366aab721dc98dc",
+          "git_source_sha256": "13537e49de6fdcd670e75875c3b17736b76df53b65709d2b2366aab721dc98dc",
+          "matches_normalized_source": true
+        },
+        "src/workshop-transactions.js": {
+          "captured_raw_sha256": "115193dc80841b531a14f85a41c8d2d5e44c6169fc4ea4d6c19637eb7a8e8dd4",
+          "captured_lf_sha256": "115193dc80841b531a14f85a41c8d2d5e44c6169fc4ea4d6c19637eb7a8e8dd4",
+          "git_source_sha256": "115193dc80841b531a14f85a41c8d2d5e44c6169fc4ea4d6c19637eb7a8e8dd4",
+          "matches_normalized_source": true
+        },
+        "src/world-atlantis-earth.js": {
+          "captured_raw_sha256": "43432b4c4f712f080cd40f08914d2782cb2fd6445d68240349bb2ee0569e0526",
+          "captured_lf_sha256": "e6697cea06c3dc19506db52da79ba8ca965d4d626c6535527c18e2d9fbcaa014",
+          "git_source_sha256": "e6697cea06c3dc19506db52da79ba8ca965d4d626c6535527c18e2d9fbcaa014",
+          "matches_normalized_source": true
+        },
+        "src/world-foundations-art.js": {
+          "captured_raw_sha256": "46c3b38e2a73213512b8e2ade2d389361be8747ac7a199d4de8fcacb14c17520",
+          "captured_lf_sha256": "8e4e4c8cbe3dd3338d950b523e3794b289c8fd3b34e35cfdd5817a3cddb37013",
+          "git_source_sha256": "8e4e4c8cbe3dd3338d950b523e3794b289c8fd3b34e35cfdd5817a3cddb37013",
+          "matches_normalized_source": true
+        },
+        "src/world-foundations-ui.js": {
+          "captured_raw_sha256": "dbd81c38550280430c907d69b55ae77ebb5659bd08ad8f07524b00384903d018",
+          "captured_lf_sha256": "6dbb02f47f2b7cd5fcd0edc5f8bf0abceaf8b6f78e2266badc8b670ca239ad25",
+          "git_source_sha256": "6dbb02f47f2b7cd5fcd0edc5f8bf0abceaf8b6f78e2266badc8b670ca239ad25",
+          "matches_normalized_source": true
+        },
+        "src/world-foundations.css": {
+          "captured_raw_sha256": "8e1efeb809e3fb5bdfcbbe70f224e61df8f6522d68c1a7ed1c59202fd179f54b",
+          "captured_lf_sha256": "8abcf23f66cde69a92b7f3be6c099a1a2e2088d220bd83a81ea71d78f0564669",
+          "git_source_sha256": "8abcf23f66cde69a92b7f3be6c099a1a2e2088d220bd83a81ea71d78f0564669",
+          "matches_normalized_source": true
+        },
+        "src/world-foundations.js": {
+          "captured_raw_sha256": "97f445690fccea753c860e96bf54d4e33a3c8551e8738a31d3d947ce30d1465d",
+          "captured_lf_sha256": "97f445690fccea753c860e96bf54d4e33a3c8551e8738a31d3d947ce30d1465d",
+          "git_source_sha256": "97f445690fccea753c860e96bf54d4e33a3c8551e8738a31d3d947ce30d1465d",
+          "matches_normalized_source": true
+        },
+        "src/world-ground-coalescing.js": {
+          "captured_raw_sha256": "c31024794d5b5db2c28d9aab9ecf8fd0acdf55c2630ff5edf93b988151e5d63d",
+          "captured_lf_sha256": "c31024794d5b5db2c28d9aab9ecf8fd0acdf55c2630ff5edf93b988151e5d63d",
+          "git_source_sha256": "c31024794d5b5db2c28d9aab9ecf8fd0acdf55c2630ff5edf93b988151e5d63d",
+          "matches_normalized_source": true
+        },
+        "src/world-heaven-hell.js": {
+          "captured_raw_sha256": "7192efdcce877e359865c43d39d03fc1a2a54ebad960fd2d2a378880033f4cbd",
+          "captured_lf_sha256": "7192efdcce877e359865c43d39d03fc1a2a54ebad960fd2d2a378880033f4cbd",
+          "git_source_sha256": "7192efdcce877e359865c43d39d03fc1a2a54ebad960fd2d2a378880033f4cbd",
+          "matches_normalized_source": true
+        },
+        "src/world.js": {
+          "captured_raw_sha256": "1459450cafbae27f91abb37f9ba0daf0cecaf6ce256b17bfebcca3747bc4ac78",
+          "captured_lf_sha256": "3b8a6f5fe0a1d2580ba8e558d2b5ec10889e06ec960b94abbaa49afe8a9dc696",
+          "git_source_sha256": "3b8a6f5fe0a1d2580ba8e558d2b5ec10889e06ec960b94abbaa49afe8a9dc696",
+          "matches_normalized_source": true
+        }
+      },
+      "capture_harness": {
+        "bytes": 62723,
+        "sha256": "e11d30fce589bfd5235f32a90c42b849d68543ba4cda278e1313a285ae2ca379",
+        "lf_sha256": "c4eae007b89f8890e2d20e2dec266a888c857e25244ccf8af4cca20b61791a87"
+      }
+    },
+    "normal-bow-04": {
+      "git_head_at_record_start": "1dd5bdcc92fa00fd81d28a22e0d1825fbd0ad8de",
+      "status_at_record_start": [
+        " M docs/development/LIVING_ROAD_RETURN_WORK_2026-10-04.md",
+        "?? docs/playtests/LIVING_ROAD_RETURN_WORK_2026-10-04.md"
+      ],
+      "report_status": "passed",
+      "condition_evaluations": 5109,
+      "html_sha256": "3c3021cacffb8d40c1bf5c31cec579dc3a269806c5bf651c963a76d333891200",
+      "runtime_source_count": 115,
+      "all_runtime_normalized_sources_match_git": true,
+      "source_entries": {
+        "build.py": {
+          "captured_raw_sha256": "88ffc832eeae9c8a4c72a4a2da0837e69ed63b3cb20eb9d7ec694160abbeeaff",
+          "captured_lf_sha256": "ed64cb75ed348d916d88f51a0632e0c9779d1b173a1708b3cdb881c1e93102fd",
+          "git_source_sha256": "ed64cb75ed348d916d88f51a0632e0c9779d1b173a1708b3cdb881c1e93102fd",
+          "matches_normalized_source": true
+        },
+        "src/adventure-art.js": {
+          "captured_raw_sha256": "ccec86cf0523b318305a3554e7c5cfbb86f341248319f1e028280acd02bc6c6b",
+          "captured_lf_sha256": "8d6c6e8c56c0a78538a1494b73a6094c868ab344b03659b8d1d1d2f344db339a",
+          "git_source_sha256": "8d6c6e8c56c0a78538a1494b73a6094c868ab344b03659b8d1d1d2f344db339a",
+          "matches_normalized_source": true
+        },
+        "src/adventure-ui.js": {
+          "captured_raw_sha256": "25da84755e7509fb0b45193b02e9b3dea684a536ec58e86c99ba4028cb733f88",
+          "captured_lf_sha256": "25da84755e7509fb0b45193b02e9b3dea684a536ec58e86c99ba4028cb733f88",
+          "git_source_sha256": "25da84755e7509fb0b45193b02e9b3dea684a536ec58e86c99ba4028cb733f88",
+          "matches_normalized_source": true
+        },
+        "src/adventure.js": {
+          "captured_raw_sha256": "7369b1df78681b88429123941a733cd8a29f736024897a4f19ab0e7c7b1a2a8b",
+          "captured_lf_sha256": "ade8abf474a5ba09be4337f9ba4319445aad46265ff53f7e1caf1f75c5802067",
+          "git_source_sha256": "ade8abf474a5ba09be4337f9ba4319445aad46265ff53f7e1caf1f75c5802067",
+          "matches_normalized_source": true
+        },
+        "src/app.js": {
+          "captured_raw_sha256": "bebfd5436af2b0861908ebee219af20920d2c1931762c7d26f43292a74dbad5c",
+          "captured_lf_sha256": "38ac71834bc9574e23337a991bab6ec2ebe17473ebad23c49c2eb07bd4f9c05f",
+          "git_source_sha256": "38ac71834bc9574e23337a991bab6ec2ebe17473ebad23c49c2eb07bd4f9c05f",
+          "matches_normalized_source": true
+        },
+        "src/arsenal-art.js": {
+          "captured_raw_sha256": "1899a42e04fd44e18eced395229793d275a873dbe2902473968289815a3f694f",
+          "captured_lf_sha256": "1899a42e04fd44e18eced395229793d275a873dbe2902473968289815a3f694f",
+          "git_source_sha256": "1899a42e04fd44e18eced395229793d275a873dbe2902473968289815a3f694f",
+          "matches_normalized_source": true
+        },
+        "src/arsenal-ui.js": {
+          "captured_raw_sha256": "a462102896a3c7013f29f6cdf40504b983b8fde803baf41b98b8fb032da3abe6",
+          "captured_lf_sha256": "a462102896a3c7013f29f6cdf40504b983b8fde803baf41b98b8fb032da3abe6",
+          "git_source_sha256": "a462102896a3c7013f29f6cdf40504b983b8fde803baf41b98b8fb032da3abe6",
+          "matches_normalized_source": true
+        },
+        "src/arsenal.js": {
+          "captured_raw_sha256": "1a8fcedd261165900d04f366ffedb08457c4f3a724befe28b8ec1b35c3ae9163",
+          "captured_lf_sha256": "1a8fcedd261165900d04f366ffedb08457c4f3a724befe28b8ec1b35c3ae9163",
+          "git_source_sha256": "1a8fcedd261165900d04f366ffedb08457c4f3a724befe28b8ec1b35c3ae9163",
+          "matches_normalized_source": true
+        },
+        "src/beacon-art.js": {
+          "captured_raw_sha256": "aea9e5d22d23eaf73777636c56c2444edac9b0d6239f9504cc95026585618577",
+          "captured_lf_sha256": "aea9e5d22d23eaf73777636c56c2444edac9b0d6239f9504cc95026585618577",
+          "git_source_sha256": "aea9e5d22d23eaf73777636c56c2444edac9b0d6239f9504cc95026585618577",
+          "matches_normalized_source": true
+        },
+        "src/beacon.js": {
+          "captured_raw_sha256": "2aded7272a8d50cbfbdb4421f0140d00401a49788a3bb465260e30f501a2bf13",
+          "captured_lf_sha256": "2aded7272a8d50cbfbdb4421f0140d00401a49788a3bb465260e30f501a2bf13",
+          "git_source_sha256": "2aded7272a8d50cbfbdb4421f0140d00401a49788a3bb465260e30f501a2bf13",
+          "matches_normalized_source": true
+        },
+        "src/bridge-art.js": {
+          "captured_raw_sha256": "e8f85dd21a0eb6363f674a934c625b22fc29f18fc63a543ebd61ea0a87fa254d",
+          "captured_lf_sha256": "e8f85dd21a0eb6363f674a934c625b22fc29f18fc63a543ebd61ea0a87fa254d",
+          "git_source_sha256": "e8f85dd21a0eb6363f674a934c625b22fc29f18fc63a543ebd61ea0a87fa254d",
+          "matches_normalized_source": true
+        },
+        "src/bridge-community-art.js": {
+          "captured_raw_sha256": "ff204eb443f9cdff118164669b92766bf8c64be6bd365353e949c1b359ef9a3b",
+          "captured_lf_sha256": "454eb5365082d529fe3bb05b166b38e1d01e6fbcd34f1148c5ebf0d02ad9a615",
+          "git_source_sha256": "454eb5365082d529fe3bb05b166b38e1d01e6fbcd34f1148c5ebf0d02ad9a615",
+          "matches_normalized_source": true
+        },
+        "src/bridge-community-ui.js": {
+          "captured_raw_sha256": "a51a02420b59329d0ae268d42a5632de50d87d9b031103a724ad51564737c6d6",
+          "captured_lf_sha256": "a51a02420b59329d0ae268d42a5632de50d87d9b031103a724ad51564737c6d6",
+          "git_source_sha256": "a51a02420b59329d0ae268d42a5632de50d87d9b031103a724ad51564737c6d6",
+          "matches_normalized_source": true
+        },
+        "src/bridge-community.css": {
+          "captured_raw_sha256": "15be66090d836555498d87e00564c5b7b7094c2e3dca5951f9b1fde5023ea29c",
+          "captured_lf_sha256": "15be66090d836555498d87e00564c5b7b7094c2e3dca5951f9b1fde5023ea29c",
+          "git_source_sha256": "15be66090d836555498d87e00564c5b7b7094c2e3dca5951f9b1fde5023ea29c",
+          "matches_normalized_source": true
+        },
+        "src/bridge-community.js": {
+          "captured_raw_sha256": "3f8ca1a059525761e5631ba694f3de6d00f60c1a8d78e7fa79c39087fdff532d",
+          "captured_lf_sha256": "4308eecafc47044c3c063b46e4c3aa7cb4e7a30d5d938c64fd518e7f29cb30cc",
+          "git_source_sha256": "4308eecafc47044c3c063b46e4c3aa7cb4e7a30d5d938c64fd518e7f29cb30cc",
+          "matches_normalized_source": true
+        },
+        "src/bridge-moment-view.js": {
+          "captured_raw_sha256": "fe58c7824f96458f2608af4d1cf76c81d2936da89a8cca1ad933974b65e0e03c",
+          "captured_lf_sha256": "fe58c7824f96458f2608af4d1cf76c81d2936da89a8cca1ad933974b65e0e03c",
+          "git_source_sha256": "fe58c7824f96458f2608af4d1cf76c81d2936da89a8cca1ad933974b65e0e03c",
+          "matches_normalized_source": true
+        },
+        "src/characters-ui.js": {
+          "captured_raw_sha256": "58de0cb602479d45eae66f4ccd4077253e34e6e3d843a1505f9eca4d4a1f8f77",
+          "captured_lf_sha256": "58de0cb602479d45eae66f4ccd4077253e34e6e3d843a1505f9eca4d4a1f8f77",
+          "git_source_sha256": "58de0cb602479d45eae66f4ccd4077253e34e6e3d843a1505f9eca4d4a1f8f77",
+          "matches_normalized_source": true
+        },
+        "src/characters.css": {
+          "captured_raw_sha256": "48bfb2431b5fb50e530ed334e52cf07c31b8a29bdb5bb4917365210ab9e71815",
+          "captured_lf_sha256": "48bfb2431b5fb50e530ed334e52cf07c31b8a29bdb5bb4917365210ab9e71815",
+          "git_source_sha256": "48bfb2431b5fb50e530ed334e52cf07c31b8a29bdb5bb4917365210ab9e71815",
+          "matches_normalized_source": true
+        },
+        "src/characters.js": {
+          "captured_raw_sha256": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+          "captured_lf_sha256": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+          "git_source_sha256": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+          "matches_normalized_source": true
+        },
+        "src/classes-ui.js": {
+          "captured_raw_sha256": "6fb25a35158cf3388485f57016aea745260dea8a057f8d6b4781d3f7a296d22b",
+          "captured_lf_sha256": "6fb25a35158cf3388485f57016aea745260dea8a057f8d6b4781d3f7a296d22b",
+          "git_source_sha256": "6fb25a35158cf3388485f57016aea745260dea8a057f8d6b4781d3f7a296d22b",
+          "matches_normalized_source": true
+        },
+        "src/classes.css": {
+          "captured_raw_sha256": "4b9b47443b1817efe2b4cd43e7a3d0d34e623738a5b1e6e1cad05bc2ce88e892",
+          "captured_lf_sha256": "4b9b47443b1817efe2b4cd43e7a3d0d34e623738a5b1e6e1cad05bc2ce88e892",
+          "git_source_sha256": "4b9b47443b1817efe2b4cd43e7a3d0d34e623738a5b1e6e1cad05bc2ce88e892",
+          "matches_normalized_source": true
+        },
+        "src/classes.js": {
+          "captured_raw_sha256": "15da8e8f26c234a5903e5321d9cbcadea773037c9536911a5dc85cb9da2aaa97",
+          "captured_lf_sha256": "15da8e8f26c234a5903e5321d9cbcadea773037c9536911a5dc85cb9da2aaa97",
+          "git_source_sha256": "15da8e8f26c234a5903e5321d9cbcadea773037c9536911a5dc85cb9da2aaa97",
+          "matches_normalized_source": true
+        },
+        "src/coastward-settlement-art.js": {
+          "captured_raw_sha256": "8f08b152b5205c434ffa7408118e754799eb7ab396b2c0aaec8920cc0029c839",
+          "captured_lf_sha256": "8f08b152b5205c434ffa7408118e754799eb7ab396b2c0aaec8920cc0029c839",
+          "git_source_sha256": "8f08b152b5205c434ffa7408118e754799eb7ab396b2c0aaec8920cc0029c839",
+          "matches_normalized_source": true
+        },
+        "src/coastward-woodland-art.js": {
+          "captured_raw_sha256": "45b2758d3f8d75457545b24c2cc96f81f70ac8296bf183f57ddd412289f130fc",
+          "captured_lf_sha256": "45b2758d3f8d75457545b24c2cc96f81f70ac8296bf183f57ddd412289f130fc",
+          "git_source_sha256": "45b2758d3f8d75457545b24c2cc96f81f70ac8296bf183f57ddd412289f130fc",
+          "matches_normalized_source": true
+        },
+        "src/combat-view.js": {
+          "captured_raw_sha256": "5fc50ddf01bd211d3973a126eef586528c1aaa801cbc20d4eccee9ef6871a301",
+          "captured_lf_sha256": "9e674247119cece3bb6a35ca31fa424ed5e8e0187cbd2c149afb6f4aba085d5c",
+          "git_source_sha256": "9e674247119cece3bb6a35ca31fa424ed5e8e0187cbd2c149afb6f4aba085d5c",
+          "matches_normalized_source": true
+        },
+        "src/combat.js": {
+          "captured_raw_sha256": "fea2754a28364c7fc7aef200ea7d97f03ec55c4a1b0eb70ecb9bf8c9bb12c255",
+          "captured_lf_sha256": "fea2754a28364c7fc7aef200ea7d97f03ec55c4a1b0eb70ecb9bf8c9bb12c255",
+          "git_source_sha256": "fea2754a28364c7fc7aef200ea7d97f03ec55c4a1b0eb70ecb9bf8c9bb12c255",
+          "matches_normalized_source": true
+        },
+        "src/companion-art.js": {
+          "captured_raw_sha256": "06821bb333cc1d61398017fcd236fb4622aae6432ce636f827642531946b2a32",
+          "captured_lf_sha256": "06821bb333cc1d61398017fcd236fb4622aae6432ce636f827642531946b2a32",
+          "git_source_sha256": "06821bb333cc1d61398017fcd236fb4622aae6432ce636f827642531946b2a32",
+          "matches_normalized_source": true
+        },
+        "src/core.js": {
+          "captured_raw_sha256": "0bf8965aefd3e121795fc0d2ae555c2b04ef2da428427fc8d54cb88703e4d42e",
+          "captured_lf_sha256": "78291e53cf3b6be7cbca687ed4681a780beb4f0067d8d4f238b49d8b2246e191",
+          "git_source_sha256": "78291e53cf3b6be7cbca687ed4681a780beb4f0067d8d4f238b49d8b2246e191",
+          "matches_normalized_source": true
+        },
+        "src/cosmos-art.js": {
+          "captured_raw_sha256": "f95fe5cbbb5b49609606f15249e127af70af4f76e39839449fd279db91c632b1",
+          "captured_lf_sha256": "f95fe5cbbb5b49609606f15249e127af70af4f76e39839449fd279db91c632b1",
+          "git_source_sha256": "f95fe5cbbb5b49609606f15249e127af70af4f76e39839449fd279db91c632b1",
+          "matches_normalized_source": true
+        },
+        "src/cosmos-ui.js": {
+          "captured_raw_sha256": "60c774d86f072999a7965bc4a974e8cff7ceffd4b48d2f10ef2cf8a16af85734",
+          "captured_lf_sha256": "60c774d86f072999a7965bc4a974e8cff7ceffd4b48d2f10ef2cf8a16af85734",
+          "git_source_sha256": "60c774d86f072999a7965bc4a974e8cff7ceffd4b48d2f10ef2cf8a16af85734",
+          "matches_normalized_source": true
+        },
+        "src/cosmos.css": {
+          "captured_raw_sha256": "4d79807974082aaef0df364d312ae3d4a345ffd40b5eab403ccc55c24f02a63b",
+          "captured_lf_sha256": "4d79807974082aaef0df364d312ae3d4a345ffd40b5eab403ccc55c24f02a63b",
+          "git_source_sha256": "4d79807974082aaef0df364d312ae3d4a345ffd40b5eab403ccc55c24f02a63b",
+          "matches_normalized_source": true
+        },
+        "src/cosmos.js": {
+          "captured_raw_sha256": "dc646ba254ad4c482685c58d342e50c696832f479c8a13526faeed089fe4d3c5",
+          "captured_lf_sha256": "dc646ba254ad4c482685c58d342e50c696832f479c8a13526faeed089fe4d3c5",
+          "git_source_sha256": "dc646ba254ad4c482685c58d342e50c696832f479c8a13526faeed089fe4d3c5",
+          "matches_normalized_source": true
+        },
+        "src/creative.js": {
+          "captured_raw_sha256": "d0032234d3cab1a6e90c84736011a98631bcc3748de8d5fc23df872367038761",
+          "captured_lf_sha256": "d0032234d3cab1a6e90c84736011a98631bcc3748de8d5fc23df872367038761",
+          "git_source_sha256": "d0032234d3cab1a6e90c84736011a98631bcc3748de8d5fc23df872367038761",
+          "matches_normalized_source": true
+        },
+        "src/crossing-art.js": {
+          "captured_raw_sha256": "86cd8945194c6437d9ece96a7d0bcac8a4970eb5f3324300e48d08376bb61bcf",
+          "captured_lf_sha256": "86cd8945194c6437d9ece96a7d0bcac8a4970eb5f3324300e48d08376bb61bcf",
+          "git_source_sha256": "86cd8945194c6437d9ece96a7d0bcac8a4970eb5f3324300e48d08376bb61bcf",
+          "matches_normalized_source": true
+        },
+        "src/crossing-ui.js": {
+          "captured_raw_sha256": "5a2a7f6989a0a7ff0a96fee7aa88ec77dadbfba15440a272f131f17a98d86913",
+          "captured_lf_sha256": "5a2a7f6989a0a7ff0a96fee7aa88ec77dadbfba15440a272f131f17a98d86913",
+          "git_source_sha256": "5a2a7f6989a0a7ff0a96fee7aa88ec77dadbfba15440a272f131f17a98d86913",
+          "matches_normalized_source": true
+        },
+        "src/crossing.css": {
+          "captured_raw_sha256": "af6dd51f197dfa1963fc9fa0d92683b2e6f48270903aaea5ba90cbb2833862a2",
+          "captured_lf_sha256": "af6dd51f197dfa1963fc9fa0d92683b2e6f48270903aaea5ba90cbb2833862a2",
+          "git_source_sha256": "af6dd51f197dfa1963fc9fa0d92683b2e6f48270903aaea5ba90cbb2833862a2",
+          "matches_normalized_source": true
+        },
+        "src/crossing.js": {
+          "captured_raw_sha256": "b666c4e6e20483ad267293578020876c8791bbbf23f8116803936658400d1a8f",
+          "captured_lf_sha256": "b666c4e6e20483ad267293578020876c8791bbbf23f8116803936658400d1a8f",
+          "git_source_sha256": "b666c4e6e20483ad267293578020876c8791bbbf23f8116803936658400d1a8f",
+          "matches_normalized_source": true
+        },
+        "src/drover-art.js": {
+          "captured_raw_sha256": "0f4dda1af6b05e1c7e0931d835fca2d3faec7960788bc89b9f9b591af19206b0",
+          "captured_lf_sha256": "0f4dda1af6b05e1c7e0931d835fca2d3faec7960788bc89b9f9b591af19206b0",
+          "git_source_sha256": "0f4dda1af6b05e1c7e0931d835fca2d3faec7960788bc89b9f9b591af19206b0",
+          "matches_normalized_source": true
+        },
+        "src/earth-art.js": {
+          "captured_raw_sha256": "e1053c4c73142de382346760b199fefa92833c4b053ebf698014315b7563f76c",
+          "captured_lf_sha256": "e1053c4c73142de382346760b199fefa92833c4b053ebf698014315b7563f76c",
+          "git_source_sha256": "e1053c4c73142de382346760b199fefa92833c4b053ebf698014315b7563f76c",
+          "matches_normalized_source": true
+        },
+        "src/earth-expedition-art.js": {
+          "captured_raw_sha256": "6a233e69255339ede30be4e4c9153cec8ac678577140748a81c38880c159fd3e",
+          "captured_lf_sha256": "822a0a8d7dc8271f92a5c38691ab7caf208063671b3e8dd6da05e120094d226f",
+          "git_source_sha256": "822a0a8d7dc8271f92a5c38691ab7caf208063671b3e8dd6da05e120094d226f",
+          "matches_normalized_source": true
+        },
+        "src/earth-expedition-beast-art.js": {
+          "captured_raw_sha256": "a92a0acc71c3d89f177e3aed26e8838513a0ca1d54f33ab723ecd9c65fc3e607",
+          "captured_lf_sha256": "bf663c1cf48ef65a1c43e42bec63e743686506f3c028b7e72e4f4eac2ef7c0e4",
+          "git_source_sha256": "bf663c1cf48ef65a1c43e42bec63e743686506f3c028b7e72e4f4eac2ef7c0e4",
+          "matches_normalized_source": true
+        },
+        "src/earth-expedition-dialogue.js": {
+          "captured_raw_sha256": "22c83752dc1ff88ef815827feda34d028bfd49da940037c8ca519b446cb56ffc",
+          "captured_lf_sha256": "964360081bfc8a5a2966db854d2c12268de1187bf9f4a3b6e4eb0b5014aa9f9d",
+          "git_source_sha256": "964360081bfc8a5a2966db854d2c12268de1187bf9f4a3b6e4eb0b5014aa9f9d",
+          "matches_normalized_source": true
+        },
+        "src/earth-expedition-ui.js": {
+          "captured_raw_sha256": "9dfd2c99ccb096e353400098223ac0f04250dcbb58089aab251edd944d14f667",
+          "captured_lf_sha256": "9f9359c4e8f63108aa3e674d9fc9589de832420306e6bfc1b49c0006641715a8",
+          "git_source_sha256": "9f9359c4e8f63108aa3e674d9fc9589de832420306e6bfc1b49c0006641715a8",
+          "matches_normalized_source": true
+        },
+        "src/earth-expedition.css": {
+          "captured_raw_sha256": "a8a0f4822afcff0a7c404b3c4ff358f3d8a38287bda431da0597cecfecaf5a72",
+          "captured_lf_sha256": "a8a0f4822afcff0a7c404b3c4ff358f3d8a38287bda431da0597cecfecaf5a72",
+          "git_source_sha256": "a8a0f4822afcff0a7c404b3c4ff358f3d8a38287bda431da0597cecfecaf5a72",
+          "matches_normalized_source": true
+        },
+        "src/earth-expedition.js": {
+          "captured_raw_sha256": "f32abf5e14ad2939dc5d93b43156109de8eb84d18436b22f9c477e33b5b8e85a",
+          "captured_lf_sha256": "fd1fd97cc4e8e9e12202de4bbc9186c236d37750f574070d709d56d214418f59",
+          "git_source_sha256": "fd1fd97cc4e8e9e12202de4bbc9186c236d37750f574070d709d56d214418f59",
+          "matches_normalized_source": true
+        },
+        "src/earth-notes-art.js": {
+          "captured_raw_sha256": "87fe4682829bfff89978d7046d62f518874a7953808431c5634327c9eb449556",
+          "captured_lf_sha256": "87fe4682829bfff89978d7046d62f518874a7953808431c5634327c9eb449556",
+          "git_source_sha256": "87fe4682829bfff89978d7046d62f518874a7953808431c5634327c9eb449556",
+          "matches_normalized_source": true
+        },
+        "src/earth-notes-ui.js": {
+          "captured_raw_sha256": "9e0f0df26062b4929e0c3a801e8e857afc269936dbe4932279e935c56274f264",
+          "captured_lf_sha256": "9e0f0df26062b4929e0c3a801e8e857afc269936dbe4932279e935c56274f264",
+          "git_source_sha256": "9e0f0df26062b4929e0c3a801e8e857afc269936dbe4932279e935c56274f264",
+          "matches_normalized_source": true
+        },
+        "src/earth-notes.js": {
+          "captured_raw_sha256": "4ab5807020f65086b190591414c871ee76412791ac0c97dca5447c595840e9e0",
+          "captured_lf_sha256": "4ab5807020f65086b190591414c871ee76412791ac0c97dca5447c595840e9e0",
+          "git_source_sha256": "4ab5807020f65086b190591414c871ee76412791ac0c97dca5447c595840e9e0",
+          "matches_normalized_source": true
+        },
+        "src/earth-shoulder-art.js": {
+          "captured_raw_sha256": "422a50a7aeec456b6f75095c53a319d2cbf6ac5e09f773e268ed54034c2ddb8d",
+          "captured_lf_sha256": "422a50a7aeec456b6f75095c53a319d2cbf6ac5e09f773e268ed54034c2ddb8d",
+          "git_source_sha256": "422a50a7aeec456b6f75095c53a319d2cbf6ac5e09f773e268ed54034c2ddb8d",
+          "matches_normalized_source": true
+        },
+        "src/earth-story-ui.js": {
+          "captured_raw_sha256": "a9eddc45b9019dff04a603a6261969e5bc86837ffb4ca38548037696af090c4f",
+          "captured_lf_sha256": "930b71ef9184a5d7b03cc79ff33d7f9e000eabb9d3934266af9e0fe8713448cb",
+          "git_source_sha256": "930b71ef9184a5d7b03cc79ff33d7f9e000eabb9d3934266af9e0fe8713448cb",
+          "matches_normalized_source": true
+        },
+        "src/earth-story.js": {
+          "captured_raw_sha256": "fd0ced6f17f1b15b2aee4e31aa00be249bc8e1fb08c4e735416d95c173fd52d0",
+          "captured_lf_sha256": "fd0ced6f17f1b15b2aee4e31aa00be249bc8e1fb08c4e735416d95c173fd52d0",
+          "git_source_sha256": "fd0ced6f17f1b15b2aee4e31aa00be249bc8e1fb08c4e735416d95c173fd52d0",
+          "matches_normalized_source": true
+        },
+        "src/earth-ui.js": {
+          "captured_raw_sha256": "5f77ca6399e08fd2467cfc59ddcee555b0e665a84392f2c4010ca1b47b856e7b",
+          "captured_lf_sha256": "5f77ca6399e08fd2467cfc59ddcee555b0e665a84392f2c4010ca1b47b856e7b",
+          "git_source_sha256": "5f77ca6399e08fd2467cfc59ddcee555b0e665a84392f2c4010ca1b47b856e7b",
+          "matches_normalized_source": true
+        },
+        "src/earth.css": {
+          "captured_raw_sha256": "1f40093ded67c175c70c730b8518ff928d26db40287515256fc287c45f2a9f3d",
+          "captured_lf_sha256": "1f40093ded67c175c70c730b8518ff928d26db40287515256fc287c45f2a9f3d",
+          "git_source_sha256": "1f40093ded67c175c70c730b8518ff928d26db40287515256fc287c45f2a9f3d",
+          "matches_normalized_source": true
+        },
+        "src/earth.js": {
+          "captured_raw_sha256": "1623be8382f2d05dbf16cac886951752e6d193dafd97353c4df29ecd21fa3735",
+          "captured_lf_sha256": "1623be8382f2d05dbf16cac886951752e6d193dafd97353c4df29ecd21fa3735",
+          "git_source_sha256": "1623be8382f2d05dbf16cac886951752e6d193dafd97353c4df29ecd21fa3735",
+          "matches_normalized_source": true
+        },
+        "src/elderweald-trail-art.js": {
+          "captured_raw_sha256": "3f3bc9c3afb12fede706ababdfa276993fdbf3c7fd7d33efaee6fd79f637b4b7",
+          "captured_lf_sha256": "e978e735ec1ee8048df1777b190959b832cd37755f682c3d51b9ec3f0a7f0491",
+          "git_source_sha256": "e978e735ec1ee8048df1777b190959b832cd37755f682c3d51b9ec3f0a7f0491",
+          "matches_normalized_source": true
+        },
+        "src/elderweald-world.js": {
+          "captured_raw_sha256": "8d993c230ad7198e397f4bf41938522405c352bbdd903b04016d1262822d3538",
+          "captured_lf_sha256": "8d993c230ad7198e397f4bf41938522405c352bbdd903b04016d1262822d3538",
+          "git_source_sha256": "8d993c230ad7198e397f4bf41938522405c352bbdd903b04016d1262822d3538",
+          "matches_normalized_source": true
+        },
+        "src/engine.js": {
+          "captured_raw_sha256": "d7101150dc15942e83ff31c8fc01310576b88ff11defb7d64049ea2c5dbba4d9",
+          "captured_lf_sha256": "b98cfea8453e5b6deeb16a13c45f1c1bf7fc80fb9ba8d0a185c242a6ea9b078d",
+          "git_source_sha256": "b98cfea8453e5b6deeb16a13c45f1c1bf7fc80fb9ba8d0a185c242a6ea9b078d",
+          "matches_normalized_source": true
+        },
+        "src/experience.js": {
+          "captured_raw_sha256": "3b5a178ca757c7b58dcbfcedcc1522887dc6a178faf5e942c6e3894166d60570",
+          "captured_lf_sha256": "3b5a178ca757c7b58dcbfcedcc1522887dc6a178faf5e942c6e3894166d60570",
+          "git_source_sha256": "3b5a178ca757c7b58dcbfcedcc1522887dc6a178faf5e942c6e3894166d60570",
+          "matches_normalized_source": true
+        },
+        "src/gathering-adapter.js": {
+          "captured_raw_sha256": "df41b2b23ae11c6ef2661e48301c488cb26ab753a7beec73349b5c959d5ab564",
+          "captured_lf_sha256": "df41b2b23ae11c6ef2661e48301c488cb26ab753a7beec73349b5c959d5ab564",
+          "git_source_sha256": "df41b2b23ae11c6ef2661e48301c488cb26ab753a7beec73349b5c959d5ab564",
+          "matches_normalized_source": true
+        },
+        "src/gathering-art.js": {
+          "captured_raw_sha256": "b693bce2a519bd75e4f99e03b96184f1ed10c9a9a02e25b7affd53e739f5e0eb",
+          "captured_lf_sha256": "b693bce2a519bd75e4f99e03b96184f1ed10c9a9a02e25b7affd53e739f5e0eb",
+          "git_source_sha256": "b693bce2a519bd75e4f99e03b96184f1ed10c9a9a02e25b7affd53e739f5e0eb",
+          "matches_normalized_source": true
+        },
+        "src/gathering-music.js": {
+          "captured_raw_sha256": "5e44106322e01aebc7b87d8eefcd29b2a2577d2162d70fb8f99475c7cc7deb12",
+          "captured_lf_sha256": "5e44106322e01aebc7b87d8eefcd29b2a2577d2162d70fb8f99475c7cc7deb12",
+          "git_source_sha256": "5e44106322e01aebc7b87d8eefcd29b2a2577d2162d70fb8f99475c7cc7deb12",
+          "matches_normalized_source": true
+        },
+        "src/gathering-ui.js": {
+          "captured_raw_sha256": "0c347e1da4a897b178c405f35cfef2e6ea518fe5d9e6ba650e48e48895e0445a",
+          "captured_lf_sha256": "0c347e1da4a897b178c405f35cfef2e6ea518fe5d9e6ba650e48e48895e0445a",
+          "git_source_sha256": "0c347e1da4a897b178c405f35cfef2e6ea518fe5d9e6ba650e48e48895e0445a",
+          "matches_normalized_source": true
+        },
+        "src/gathering.css": {
+          "captured_raw_sha256": "aa2e5381a0ff9fa7e4ceae5053a54a8ab11a784f81ee021e4835d485d3c5f4db",
+          "captured_lf_sha256": "aa2e5381a0ff9fa7e4ceae5053a54a8ab11a784f81ee021e4835d485d3c5f4db",
+          "git_source_sha256": "aa2e5381a0ff9fa7e4ceae5053a54a8ab11a784f81ee021e4835d485d3c5f4db",
+          "matches_normalized_source": true
+        },
+        "src/gathering.js": {
+          "captured_raw_sha256": "256a33c52f2b31c2c421f72a74aae543feb6c554ebae863aee55d31f0c68eb54",
+          "captured_lf_sha256": "256a33c52f2b31c2c421f72a74aae543feb6c554ebae863aee55d31f0c68eb54",
+          "git_source_sha256": "256a33c52f2b31c2c421f72a74aae543feb6c554ebae863aee55d31f0c68eb54",
+          "matches_normalized_source": true
+        },
+        "src/home-history-art.js": {
+          "captured_raw_sha256": "2496883cbb9a122608319db5b2eac1d42cabe7e386b4c9aafc78076081a4af7f",
+          "captured_lf_sha256": "df3acc85a5191c3938692759e85b7ee76ef5f936f29e65d6a845636600396a1f",
+          "git_source_sha256": "df3acc85a5191c3938692759e85b7ee76ef5f936f29e65d6a845636600396a1f",
+          "matches_normalized_source": true
+        },
+        "src/home-history-ui.js": {
+          "captured_raw_sha256": "0d352093da3faedd6314188fd99ded6ad06a39a3a6ec1a0528b77d48f2b1418a",
+          "captured_lf_sha256": "41a330942368c7a4500759f2cbaf1cda224bd5ed25bc284b9e44463fc1f43a8e",
+          "git_source_sha256": "41a330942368c7a4500759f2cbaf1cda224bd5ed25bc284b9e44463fc1f43a8e",
+          "matches_normalized_source": true
+        },
+        "src/home-history.css": {
+          "captured_raw_sha256": "54ef3c501dfda4c3d74c0f17d900bdc5b25c9dcbaeb1840ec36cbcfe0a276bd2",
+          "captured_lf_sha256": "54ef3c501dfda4c3d74c0f17d900bdc5b25c9dcbaeb1840ec36cbcfe0a276bd2",
+          "git_source_sha256": "54ef3c501dfda4c3d74c0f17d900bdc5b25c9dcbaeb1840ec36cbcfe0a276bd2",
+          "matches_normalized_source": true
+        },
+        "src/home-history.js": {
+          "captured_raw_sha256": "546f04a476a889ea43cb2989e854df1bac2571c99eea411b603af401675ec76f",
+          "captured_lf_sha256": "f002eb64b57343e38e95eafa4cd522c892aab26efc7b0c3d65bea86a45cec6e6",
+          "git_source_sha256": "f002eb64b57343e38e95eafa4cd522c892aab26efc7b0c3d65bea86a45cec6e6",
+          "matches_normalized_source": true
+        },
+        "src/local-life-art.js": {
+          "captured_raw_sha256": "381d1f5469310e2dc98c14b6d58c4259113fd1d6dd10f77059f45e6848fefcf2",
+          "captured_lf_sha256": "381d1f5469310e2dc98c14b6d58c4259113fd1d6dd10f77059f45e6848fefcf2",
+          "git_source_sha256": "381d1f5469310e2dc98c14b6d58c4259113fd1d6dd10f77059f45e6848fefcf2",
+          "matches_normalized_source": true
+        },
+        "src/local-life-ui.js": {
+          "captured_raw_sha256": "95a0757ae7f612560c94ebca13474925251fb485e449da0bc5c6440ceb43b4c6",
+          "captured_lf_sha256": "95a0757ae7f612560c94ebca13474925251fb485e449da0bc5c6440ceb43b4c6",
+          "git_source_sha256": "95a0757ae7f612560c94ebca13474925251fb485e449da0bc5c6440ceb43b4c6",
+          "matches_normalized_source": true
+        },
+        "src/local-life.js": {
+          "captured_raw_sha256": "005f7bd489bba2832aaec0b6c9d1cc499660e6e0047be73ab0f85d2922955d48",
+          "captured_lf_sha256": "005f7bd489bba2832aaec0b6c9d1cc499660e6e0047be73ab0f85d2922955d48",
+          "git_source_sha256": "005f7bd489bba2832aaec0b6c9d1cc499660e6e0047be73ab0f85d2922955d48",
+          "matches_normalized_source": true
+        },
+        "src/mill-gate-art.js": {
+          "captured_raw_sha256": "fe33cbbd3f180a8d32a0d0a338cde42c40e809af99ed2da1db157ba5c7fbcdd9",
+          "captured_lf_sha256": "fe33cbbd3f180a8d32a0d0a338cde42c40e809af99ed2da1db157ba5c7fbcdd9",
+          "git_source_sha256": "fe33cbbd3f180a8d32a0d0a338cde42c40e809af99ed2da1db157ba5c7fbcdd9",
+          "matches_normalized_source": true
+        },
+        "src/millwright-art.js": {
+          "captured_raw_sha256": "bd7397ee2a9f4c47b2b51117e28f3c68533da41de3122bb0a39a5575913a5661",
+          "captured_lf_sha256": "bd7397ee2a9f4c47b2b51117e28f3c68533da41de3122bb0a39a5575913a5661",
+          "git_source_sha256": "bd7397ee2a9f4c47b2b51117e28f3c68533da41de3122bb0a39a5575913a5661",
+          "matches_normalized_source": true
+        },
+        "src/pursuit-ui.js": {
+          "captured_raw_sha256": "f8c6bab82d88b6e4dcbf05f3e78701d489f31e224c80211b94f8acc8b70b4224",
+          "captured_lf_sha256": "f8c6bab82d88b6e4dcbf05f3e78701d489f31e224c80211b94f8acc8b70b4224",
+          "git_source_sha256": "f8c6bab82d88b6e4dcbf05f3e78701d489f31e224c80211b94f8acc8b70b4224",
+          "matches_normalized_source": true
+        },
+        "src/pursuit.css": {
+          "captured_raw_sha256": "61f36fa917eafba8cfa332f7d233db4c47a6d007bbf84d1843bc25fc17dd63ff",
+          "captured_lf_sha256": "61f36fa917eafba8cfa332f7d233db4c47a6d007bbf84d1843bc25fc17dd63ff",
+          "git_source_sha256": "61f36fa917eafba8cfa332f7d233db4c47a6d007bbf84d1843bc25fc17dd63ff",
+          "matches_normalized_source": true
+        },
+        "src/pursuit.js": {
+          "captured_raw_sha256": "b77e1874f8278971f41d4b62551df40c81126f2a35e02958958e802ab9c8b5ff",
+          "captured_lf_sha256": "b77e1874f8278971f41d4b62551df40c81126f2a35e02958958e802ab9c8b5ff",
+          "git_source_sha256": "b77e1874f8278971f41d4b62551df40c81126f2a35e02958958e802ab9c8b5ff",
+          "matches_normalized_source": true
+        },
+        "src/quarry-art.js": {
+          "captured_raw_sha256": "5bc6d93e99e430e7a460a1a2a510fc69e60c9dd80e758bce7470dae3ae3446f6",
+          "captured_lf_sha256": "5bc6d93e99e430e7a460a1a2a510fc69e60c9dd80e758bce7470dae3ae3446f6",
+          "git_source_sha256": "5bc6d93e99e430e7a460a1a2a510fc69e60c9dd80e758bce7470dae3ae3446f6",
+          "matches_normalized_source": true
+        },
+        "src/realm-art-data.js": {
+          "captured_raw_sha256": "1ac6251a7acf23c78799d96b5554fb3fe572c40e12c54c73f0188c4f8a324435",
+          "captured_lf_sha256": "1ac6251a7acf23c78799d96b5554fb3fe572c40e12c54c73f0188c4f8a324435",
+          "git_source_sha256": "1ac6251a7acf23c78799d96b5554fb3fe572c40e12c54c73f0188c4f8a324435",
+          "matches_normalized_source": true
+        },
+        "src/realm-atlas-ui.js": {
+          "captured_raw_sha256": "bc1cff9e09ab0c9f95a643c9c3ac8e0267f16641b7e8a7e3f537a32fed6859ab",
+          "captured_lf_sha256": "bc1cff9e09ab0c9f95a643c9c3ac8e0267f16641b7e8a7e3f537a32fed6859ab",
+          "git_source_sha256": "bc1cff9e09ab0c9f95a643c9c3ac8e0267f16641b7e8a7e3f537a32fed6859ab",
+          "matches_normalized_source": true
+        },
+        "src/realm-atlas.css": {
+          "captured_raw_sha256": "7ef7a03b8c2a69069c2d65da8d5134c7b7dc4bc2b941e139f818a7ab7011c366",
+          "captured_lf_sha256": "7ef7a03b8c2a69069c2d65da8d5134c7b7dc4bc2b941e139f818a7ab7011c366",
+          "git_source_sha256": "7ef7a03b8c2a69069c2d65da8d5134c7b7dc4bc2b941e139f818a7ab7011c366",
+          "matches_normalized_source": true
+        },
+        "src/realm-craft.js": {
+          "captured_raw_sha256": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+          "captured_lf_sha256": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+          "git_source_sha256": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+          "matches_normalized_source": true
+        },
+        "src/realm-givers-art.js": {
+          "captured_raw_sha256": "0c5268cd304676fe4ada32dcbcea304d6d97f759b59ecdffecbdb625fbcc025c",
+          "captured_lf_sha256": "8362d7a98f238b77b9afa5eff7346f430c02af6cd249502f146308a3d246fb34",
+          "git_source_sha256": "8362d7a98f238b77b9afa5eff7346f430c02af6cd249502f146308a3d246fb34",
+          "matches_normalized_source": true
+        },
+        "src/realm-trails-art.js": {
+          "captured_raw_sha256": "99a588e7aee9c7d43b6506de836ab2bab75a9420c6b718369c37e4517ca037e3",
+          "captured_lf_sha256": "99a588e7aee9c7d43b6506de836ab2bab75a9420c6b718369c37e4517ca037e3",
+          "git_source_sha256": "99a588e7aee9c7d43b6506de836ab2bab75a9420c6b718369c37e4517ca037e3",
+          "matches_normalized_source": true
+        },
+        "src/realm-trails-cosmos.js": {
+          "captured_raw_sha256": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+          "captured_lf_sha256": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+          "git_source_sha256": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+          "matches_normalized_source": true
+        },
+        "src/realm-trails-north.js": {
+          "captured_raw_sha256": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+          "captured_lf_sha256": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+          "git_source_sha256": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+          "matches_normalized_source": true
+        },
+        "src/realm-trails-south.js": {
+          "captured_raw_sha256": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+          "captured_lf_sha256": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+          "git_source_sha256": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+          "matches_normalized_source": true
+        },
+        "src/realm-trails-ui.js": {
+          "captured_raw_sha256": "d2161829aff6a3b2c36ea414ed687aabbeb10cc33a5ddd8f0c7f36cfc7bdf65d",
+          "captured_lf_sha256": "d2161829aff6a3b2c36ea414ed687aabbeb10cc33a5ddd8f0c7f36cfc7bdf65d",
+          "git_source_sha256": "d2161829aff6a3b2c36ea414ed687aabbeb10cc33a5ddd8f0c7f36cfc7bdf65d",
+          "matches_normalized_source": true
+        },
+        "src/realm-trails.js": {
+          "captured_raw_sha256": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+          "captured_lf_sha256": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+          "git_source_sha256": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+          "matches_normalized_source": true
+        },
+        "src/road-art.js": {
+          "captured_raw_sha256": "0cc12918587f98f4b9ed2b7beb8d1b21219b4a69959742a759f88354942df05d",
+          "captured_lf_sha256": "0cc12918587f98f4b9ed2b7beb8d1b21219b4a69959742a759f88354942df05d",
+          "git_source_sha256": "0cc12918587f98f4b9ed2b7beb8d1b21219b4a69959742a759f88354942df05d",
+          "matches_normalized_source": true
+        },
+        "src/road.js": {
+          "captured_raw_sha256": "d18106f1a2147d623680b285dc5882cae8d2b74c5ef8b500d75de35d20c86dbc",
+          "captured_lf_sha256": "d18106f1a2147d623680b285dc5882cae8d2b74c5ef8b500d75de35d20c86dbc",
+          "git_source_sha256": "d18106f1a2147d623680b285dc5882cae8d2b74c5ef8b500d75de35d20c86dbc",
+          "matches_normalized_source": true
+        },
+        "src/rpg-ui.js": {
+          "captured_raw_sha256": "30b6e32138a5aadcbf0e7b8416c6dacfea6fe98e9cfb0847f37cef3da96493c8",
+          "captured_lf_sha256": "8de4afa28f80347260640824075b023e7e24e0053186451cd4fc14f64f93ff62",
+          "git_source_sha256": "8de4afa28f80347260640824075b023e7e24e0053186451cd4fc14f64f93ff62",
+          "matches_normalized_source": true
+        },
+        "src/rpg.css": {
+          "captured_raw_sha256": "59de2bff651e1a916e270385bc33d6e34eeb03eb9066363e0f94b0e297412a59",
+          "captured_lf_sha256": "38c9ae20d0c930dca4f9fee7aae489bdeba53245c7c3673346dd72b1a985f995",
+          "git_source_sha256": "38c9ae20d0c930dca4f9fee7aae489bdeba53245c7c3673346dd72b1a985f995",
+          "matches_normalized_source": true
+        },
+        "src/sandbox-art.js": {
+          "captured_raw_sha256": "3c3a8f9ea1a44fb84bdfe07a99b33969f253714c271e91ca3cfeca7eab76474c",
+          "captured_lf_sha256": "3c3a8f9ea1a44fb84bdfe07a99b33969f253714c271e91ca3cfeca7eab76474c",
+          "git_source_sha256": "3c3a8f9ea1a44fb84bdfe07a99b33969f253714c271e91ca3cfeca7eab76474c",
+          "matches_normalized_source": true
+        },
+        "src/sandbox-ui.js": {
+          "captured_raw_sha256": "28d7530e8153ed3c8a6a31b3e204cbc9680484b013cb5880a4f05b76cf83d8f5",
+          "captured_lf_sha256": "28d7530e8153ed3c8a6a31b3e204cbc9680484b013cb5880a4f05b76cf83d8f5",
+          "git_source_sha256": "28d7530e8153ed3c8a6a31b3e204cbc9680484b013cb5880a4f05b76cf83d8f5",
+          "matches_normalized_source": true
+        },
+        "src/sandbox.js": {
+          "captured_raw_sha256": "ad11196c12363b650f2697ab8fb30eb657ff0bf65953274942ce36eb28131e85",
+          "captured_lf_sha256": "ad11196c12363b650f2697ab8fb30eb657ff0bf65953274942ce36eb28131e85",
+          "git_source_sha256": "ad11196c12363b650f2697ab8fb30eb657ff0bf65953274942ce36eb28131e85",
+          "matches_normalized_source": true
+        },
+        "src/shell.html": {
+          "captured_raw_sha256": "d4c36639daa03882d92a34e75969881e50492d0ca5e0becb12c73fad7954085e",
+          "captured_lf_sha256": "51fa68244bcd08823ca00caa4cfd01641ec8789814c3ac35124f6d34a9f7a076",
+          "git_source_sha256": "51fa68244bcd08823ca00caa4cfd01641ec8789814c3ac35124f6d34a9f7a076",
+          "matches_normalized_source": true
+        },
+        "src/skitter-art.js": {
+          "captured_raw_sha256": "bd84a78381cf7232a7fb92a868332308c68fcae17d25764c2b5d4bdfefa29903",
+          "captured_lf_sha256": "bd84a78381cf7232a7fb92a868332308c68fcae17d25764c2b5d4bdfefa29903",
+          "git_source_sha256": "bd84a78381cf7232a7fb92a868332308c68fcae17d25764c2b5d4bdfefa29903",
+          "matches_normalized_source": true
+        },
+        "src/soundscape.js": {
+          "captured_raw_sha256": "15b7b578886b838ef20e56501940354d33a8ffcd5581332dd4c4b2035692c5af",
+          "captured_lf_sha256": "15b7b578886b838ef20e56501940354d33a8ffcd5581332dd4c4b2035692c5af",
+          "git_source_sha256": "15b7b578886b838ef20e56501940354d33a8ffcd5581332dd4c4b2035692c5af",
+          "matches_normalized_source": true
+        },
+        "src/starter-art.js": {
+          "captured_raw_sha256": "cfc4f672b891fe6d53dec82a97aeac7204b8179b3490ae9df9ce3412c4661fcc",
+          "captured_lf_sha256": "cfc4f672b891fe6d53dec82a97aeac7204b8179b3490ae9df9ce3412c4661fcc",
+          "git_source_sha256": "cfc4f672b891fe6d53dec82a97aeac7204b8179b3490ae9df9ce3412c4661fcc",
+          "matches_normalized_source": true
+        },
+        "src/starter-ui.js": {
+          "captured_raw_sha256": "44718b2835207383632d5f33e0748dba9c348041b11f9b404040bdf07a259052",
+          "captured_lf_sha256": "44718b2835207383632d5f33e0748dba9c348041b11f9b404040bdf07a259052",
+          "git_source_sha256": "44718b2835207383632d5f33e0748dba9c348041b11f9b404040bdf07a259052",
+          "matches_normalized_source": true
+        },
+        "src/starter.css": {
+          "captured_raw_sha256": "f1501b06a13c2b3ec0030b39bf9d4530740aad2f60cf9608ca32957c9ce2943b",
+          "captured_lf_sha256": "f1501b06a13c2b3ec0030b39bf9d4530740aad2f60cf9608ca32957c9ce2943b",
+          "git_source_sha256": "f1501b06a13c2b3ec0030b39bf9d4530740aad2f60cf9608ca32957c9ce2943b",
+          "matches_normalized_source": true
+        },
+        "src/starter.js": {
+          "captured_raw_sha256": "c6debd10295babafdcd714445c2ac18c0ff5ce8fd54b8dfe4f3ff78c9e0a294d",
+          "captured_lf_sha256": "c6debd10295babafdcd714445c2ac18c0ff5ce8fd54b8dfe4f3ff78c9e0a294d",
+          "git_source_sha256": "c6debd10295babafdcd714445c2ac18c0ff5ce8fd54b8dfe4f3ff78c9e0a294d",
+          "matches_normalized_source": true
+        },
+        "src/style.css": {
+          "captured_raw_sha256": "f08ab48a3e661c18be404d6eafcc471a6e0b866c41304495cc94fac0bfa24d4a",
+          "captured_lf_sha256": "f08ab48a3e661c18be404d6eafcc471a6e0b866c41304495cc94fac0bfa24d4a",
+          "git_source_sha256": "f08ab48a3e661c18be404d6eafcc471a6e0b866c41304495cc94fac0bfa24d4a",
+          "matches_normalized_source": true
+        },
+        "src/surface-assets.js": {
+          "captured_raw_sha256": "5cb0f81348074edbc0e4f3c7dee4962fac10bbc5e7db0ee07b16216f3b7a1e5f",
+          "captured_lf_sha256": "5cb0f81348074edbc0e4f3c7dee4962fac10bbc5e7db0ee07b16216f3b7a1e5f",
+          "git_source_sha256": "5cb0f81348074edbc0e4f3c7dee4962fac10bbc5e7db0ee07b16216f3b7a1e5f",
+          "matches_normalized_source": true
+        },
+        "src/traveler-art.js": {
+          "captured_raw_sha256": "b08aadb2ba30a3f22ed60ecaa279889f0243935b128c597a15b47e9ffd3970e2",
+          "captured_lf_sha256": "cf9e029046f5581aa3116f648fb657f9edff2ced67abc507afa38525f3ae1ba1",
+          "git_source_sha256": "cf9e029046f5581aa3116f648fb657f9edff2ced67abc507afa38525f3ae1ba1",
+          "matches_normalized_source": true
+        },
+        "src/traveler-equipment-art.js": {
+          "captured_raw_sha256": "1541d60f92726c78aacacbbfed54fc2ec41a99b14ccecf6700a06c756b78c50d",
+          "captured_lf_sha256": "13537e49de6fdcd670e75875c3b17736b76df53b65709d2b2366aab721dc98dc",
+          "git_source_sha256": "13537e49de6fdcd670e75875c3b17736b76df53b65709d2b2366aab721dc98dc",
+          "matches_normalized_source": true
+        },
+        "src/workshop-transactions.js": {
+          "captured_raw_sha256": "115193dc80841b531a14f85a41c8d2d5e44c6169fc4ea4d6c19637eb7a8e8dd4",
+          "captured_lf_sha256": "115193dc80841b531a14f85a41c8d2d5e44c6169fc4ea4d6c19637eb7a8e8dd4",
+          "git_source_sha256": "115193dc80841b531a14f85a41c8d2d5e44c6169fc4ea4d6c19637eb7a8e8dd4",
+          "matches_normalized_source": true
+        },
+        "src/world-atlantis-earth.js": {
+          "captured_raw_sha256": "43432b4c4f712f080cd40f08914d2782cb2fd6445d68240349bb2ee0569e0526",
+          "captured_lf_sha256": "e6697cea06c3dc19506db52da79ba8ca965d4d626c6535527c18e2d9fbcaa014",
+          "git_source_sha256": "e6697cea06c3dc19506db52da79ba8ca965d4d626c6535527c18e2d9fbcaa014",
+          "matches_normalized_source": true
+        },
+        "src/world-foundations-art.js": {
+          "captured_raw_sha256": "46c3b38e2a73213512b8e2ade2d389361be8747ac7a199d4de8fcacb14c17520",
+          "captured_lf_sha256": "8e4e4c8cbe3dd3338d950b523e3794b289c8fd3b34e35cfdd5817a3cddb37013",
+          "git_source_sha256": "8e4e4c8cbe3dd3338d950b523e3794b289c8fd3b34e35cfdd5817a3cddb37013",
+          "matches_normalized_source": true
+        },
+        "src/world-foundations-ui.js": {
+          "captured_raw_sha256": "dbd81c38550280430c907d69b55ae77ebb5659bd08ad8f07524b00384903d018",
+          "captured_lf_sha256": "6dbb02f47f2b7cd5fcd0edc5f8bf0abceaf8b6f78e2266badc8b670ca239ad25",
+          "git_source_sha256": "6dbb02f47f2b7cd5fcd0edc5f8bf0abceaf8b6f78e2266badc8b670ca239ad25",
+          "matches_normalized_source": true
+        },
+        "src/world-foundations.css": {
+          "captured_raw_sha256": "8e1efeb809e3fb5bdfcbbe70f224e61df8f6522d68c1a7ed1c59202fd179f54b",
+          "captured_lf_sha256": "8abcf23f66cde69a92b7f3be6c099a1a2e2088d220bd83a81ea71d78f0564669",
+          "git_source_sha256": "8abcf23f66cde69a92b7f3be6c099a1a2e2088d220bd83a81ea71d78f0564669",
+          "matches_normalized_source": true
+        },
+        "src/world-foundations.js": {
+          "captured_raw_sha256": "97f445690fccea753c860e96bf54d4e33a3c8551e8738a31d3d947ce30d1465d",
+          "captured_lf_sha256": "97f445690fccea753c860e96bf54d4e33a3c8551e8738a31d3d947ce30d1465d",
+          "git_source_sha256": "97f445690fccea753c860e96bf54d4e33a3c8551e8738a31d3d947ce30d1465d",
+          "matches_normalized_source": true
+        },
+        "src/world-ground-coalescing.js": {
+          "captured_raw_sha256": "c31024794d5b5db2c28d9aab9ecf8fd0acdf55c2630ff5edf93b988151e5d63d",
+          "captured_lf_sha256": "c31024794d5b5db2c28d9aab9ecf8fd0acdf55c2630ff5edf93b988151e5d63d",
+          "git_source_sha256": "c31024794d5b5db2c28d9aab9ecf8fd0acdf55c2630ff5edf93b988151e5d63d",
+          "matches_normalized_source": true
+        },
+        "src/world-heaven-hell.js": {
+          "captured_raw_sha256": "7192efdcce877e359865c43d39d03fc1a2a54ebad960fd2d2a378880033f4cbd",
+          "captured_lf_sha256": "7192efdcce877e359865c43d39d03fc1a2a54ebad960fd2d2a378880033f4cbd",
+          "git_source_sha256": "7192efdcce877e359865c43d39d03fc1a2a54ebad960fd2d2a378880033f4cbd",
+          "matches_normalized_source": true
+        },
+        "src/world.js": {
+          "captured_raw_sha256": "1459450cafbae27f91abb37f9ba0daf0cecaf6ce256b17bfebcca3747bc4ac78",
+          "captured_lf_sha256": "3b8a6f5fe0a1d2580ba8e558d2b5ec10889e06ec960b94abbaa49afe8a9dc696",
+          "git_source_sha256": "3b8a6f5fe0a1d2580ba8e558d2b5ec10889e06ec960b94abbaa49afe8a9dc696",
+          "matches_normalized_source": true
+        }
+      },
+      "capture_harness": {
+        "bytes": 64381,
+        "sha256": "d6628311e18147cf407d9d8cd8a690a898ed5d18847b5c6db88f339003b0c317",
+        "lf_sha256": "d6dd05865b8599bee54fe28b4f2680a498206199718d975f24bd01a58f9fedfa"
+      }
+    }
+  }
+}
