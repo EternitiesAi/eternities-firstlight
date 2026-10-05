@@ -1,0 +1,26 @@
+.heaven-campaign { max-width: 850px; margin: 0 auto; color: #eee6d4; }
+.heaven-campaign header { padding: 23px; border: 1px solid #b2bca8; border-radius: 13px; background: linear-gradient(125deg,#354f58,#293a40 66%,#564a3b); }
+.heaven-campaign h2 { margin: 9px 0 12px; color: #f2dca4; font-size: clamp(25px,4vw,36px); line-height: 1.2; }
+.heaven-campaign h3, .heaven-campaign h4, .heaven-campaign-invitation h3, .heaven-campaign-map h3 { margin: 4px 0 10px; color: #e7d8b4; }
+.heaven-campaign small, .heaven-campaign-invitation small { font-size: 10px; letter-spacing: .11em; color: #b8d4cf; }
+.heaven-campaign p, .heaven-campaign-invitation p, .heaven-campaign-map p { max-width: 73ch; line-height: 1.65; }
+.heaven-campaign section, .heaven-campaign-invitation, .heaven-campaign-map { margin: 16px 0; padding: 18px; border: 1px solid #718b8b; border-radius: 9px; background: #283c40ee; }
+.heaven-campaign button, .heaven-campaign-invitation button, .heaven-campaign-map button { min-height: 40px; margin: 5px 8px 5px 0; max-width: 100%; white-space: normal; text-align: left; }
+.heaven-campaign button:focus-visible, .heaven-campaign-invitation button:focus-visible, .heaven-campaign-map button:focus-visible { outline: 3px solid #efdaa1; outline-offset: 3px; }
+.heaven-campaign-terms { border-left: 4px solid #d7ba75 !important; }
+.heaven-campaign-steps { margin: 0; padding: 0; list-style: none; }
+.heaven-campaign-steps li { padding: 16px 0; border-top: 1px solid #5d7a7f; }
+.heaven-campaign-steps li:first-child { border-top: 0; }
+.heaven-campaign-steps li.heaven-campaign-next { border-left: 3px solid #c7dacc; padding-left: 14px; }
+.heaven-campaign-done h4 { color: #aed5bc; }
+.heaven-campaign-choice-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+.heaven-campaign-choice-grid article { min-width: 0; padding: 17px; border: 1px solid #899987; border-radius: 9px; background: #233438; }
+.heaven-campaign-choice-grid .heaven-campaign-chosen { border: 2px solid #e8ca80; }
+.heaven-campaign-confirm { border: 2px solid #e8ca80 !important; background: #414837 !important; }
+.heaven-campaign-escort { border-left: 4px solid #b2d6d0 !important; }
+.heaven-campaign-escort[data-status="reset"], .heaven-campaign-escort[data-status="inactive"] { border-left-color: #d3b090 !important; }
+.heaven-campaign-escort[data-status="awaiting-save"] { border-left-color: #efdaa1 !important; }
+.heaven-campaign-ready, .heaven-campaign-local-recognition { border-color: #a1c4ab !important; }
+.heaven-campaign-map li { margin: 12px 0; }
+.heaven-campaign-footer { font-size: 12px; color: #bdcdc6; }
+@media (max-width: 650px) { .heaven-campaign-choice-grid { grid-template-columns: 1fr; } .heaven-campaign header, .heaven-campaign section { padding: 16px; } }
