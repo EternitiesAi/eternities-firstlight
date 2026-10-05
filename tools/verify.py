@@ -125,7 +125,9 @@ def main():
         run('syntax-' + module.stem, ['node', '--check', str(module)])
     run('rules', ['node', '--test', '--test-reporter=tap', *map(str, rules)])
     print('\n'.join((output / 'rules.log').read_text(encoding='utf-8').splitlines()[-9:]), flush=True)
-    run('python', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_*.py', '-v'])
+    # The wrapper cases execute complete command-earned journeys. Allow for
+    # their measured disk work on Windows while retaining a bounded failure.
+    run('python', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_*.py', '-v'], timeout=600)
     print('\n'.join((output / 'python.log').read_text(encoding='utf-8').splitlines()[-5:]), flush=True)
     run('crossing-blade', ['node', 'tests/crossing_journey.cjs'])
     run('crossing-bow', ['node', 'tests/crossing_journey.cjs', '--bow'])
