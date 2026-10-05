@@ -1,3 +1,19 @@
+# Connected finite draft delivered, 2026-10-05
+
+The finite connected browser draft is ready for human acceptance: original chapters I-IV, local Earth, Hell, Heaven, Atlantis, Cosmos and a provisional Earth homecoming. It provides supported authored pockets and normal return routes. Full streamed countries/cities, mounts, the full Regent war, ultimate Answering and completed Briar resolution remain future scope.
+
+Qualified implementation: `b5fee766e6f77a2d901bb953af8faac13175fee4`. The reused clean remote clone's complete verifier actually closed exit 0 at 2026-10-05T22:42:26.6679488Z: 230 commands, 118 syntax modules, all 47 browser suites in one invocation. Node 1542 pass/2 explicit generic-cohort skips; Python Ran 243 tests, 237 method PASS records, 6 method skips plus 2 skipped setUpClass records. Mandatory earned/native/capture/whole-journey checks separately passed without skips. Current pages are identical: 3, 033, 467 bytes / SHA256 `ccfc2782a33d21e3a75cd93201d5d9b5d89eef41e6397036c13c2f06bda91f9b`.
+
+Evidence commit `972998b5509c184090a55911c52dbb927fbaf278` was pushed normally and freshly fetched; 409 payloads/34744190 bytes, manifest and attributes matched a complete streamed readback. Current nine screenshots and one historical f351 movie have separate epochs. Full03/full04 negatives and explicit skips remain retained. Hosted CI did not execute; human pacing, device performance and accessibility remain pending.
+
+Save/world 9, adventure 12, optional earthHomecoming 1 stay unchanged. Preserve old keys, free character slots, notes/music, home/crops, inventory, gear identity/sockets/fittings, companions, stored XP/levels 1-5, claimed rewards, chapter history and explicit choices. No personal saves were inspected. Root remains the integration owner; no main merge or public deployment.
+
+Journal leads with usable current work and discloses locked prerequisites. Explicit tracker ownership remains transient per live Simulation; passive panels cannot steal it. Claimed work stays readable and paid once. The Earth Claim Engine has a faceted case, open gantry and captive seal following real anticipation/contact/recovery. The right-side foe rail and full-text short-window Beacon preserve Return, skills and both cameras.
+
+The fresh continuous bow journey plays blade I-III, then crafts/equips bow before IV. Returning stronger gear has declared finite/material reward paths; no universal stronger-weapon promise or invisible enemy scaling. See [qualification](development/FINITE_DRAFT_QUALIFICATION_2026-10-05.md) and [first play](playtests/FINITE_DRAFT_FIRST_PLAY_2026-10-05.md). PR49 reports the final Markdown record head and separate exact-head source check.
+
+---
+
 # Cold-navigation evidence repair, 2026-10-05
 
 Full04 at3e19424f0d7e775e89bbbca39085f293896baa6f actually closed exit1.

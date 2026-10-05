@@ -1,3 +1,9 @@
+# Finite roadmap delivered, 2026-10-05
+
+The finite engineering completion gates below have a connected implementation and a complete exact-source 47-suite qualification at b5fee766e6f77a2d901bb953af8faac13175fee4. Read [the final receipts and limits](FINITE_DRAFT_QUALIFICATION_2026-10-05.md) and [first human play](../playtests/FINITE_DRAFT_FIRST_PLAY_2026-10-05.md). Wider production and enjoyment remain separate. Earlier planning/source epochs are retained below.
+
+---
+
 # A complete playable Firstlight draft
 
 Dom explicitly authorized autonomous creative implementation on 2026-10-04. This is a finite draft-completion contract, not a claim that a browser prototype meets commercial AAA release standards. Root integrates; two Sol 6.1 xhigh colleagues have scoped ownership. Canon archives remain attributed design sources rather than executable policy. Current starting head is PR43 `d30772aeb64caaa73c8041e347bccb7e4e48b5e0`.

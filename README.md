@@ -1,19 +1,54 @@
-# Firstlight — browser draft in development
+# Firstlight — a connected finite browser draft
 
-The current game includes the original four chapters, useful equipment projects
-and repeat outings, inhabited Earth roads, five realm openings and continuing
-regional campaigns. Hell's exterior work, Heaven's public welcome, Atlantis's
-gallery and dry-quay encounter, and Cosmos's Open Confluence have distinct
-physical tasks and deliberate lasting choices. These build on the earlier local
-commissions and keep both cameras, creative tools, housing and companion play.
-The connected Earth homecoming and whole-draft acceptance are still in development.
+Firstlight now connects the original four chapters, useful equipment projects
+and repeat outings, local Earth roads, distinct Hell, Heaven, Atlantis and Cosmos
+campaigns, and a provisional Earth homecoming. The route has a beginning,
+escalation and local ending: I-IV → local Earth → Hell → Heaven → Atlantis →
+Cosmos → Earth homecoming. These are supported authored pockets with normal
+return routes, rather than streamed continents or the full canonical saga.
+Both third-person and diorama cameras, creative tools, housing and companion
+play remain available.
 
-Current integrated Cosmos source is under review in
-[PR47](https://github.com/EternitiesAi/eternities-firstlight/pull/47), stacked on
-Atlantis PR46. The initial source gate passes all 175 commands; its new native
-and complete browser qualification remain separate pending steps. Read the newest
-[current-state record](docs/CURRENT_STATE.md) for exact epochs and remaining limits.
-The launch instructions below run the same full game without installing an engine.
+The current finite draft is under review in
+[PR49](https://github.com/EternitiesAi/eternities-firstlight/pull/49).
+At source `b5fee766e6f77a2d901bb953af8faac13175fee4`, full05 actually completed
+with exit 0: **230 commands (183 source and 47 browser suites in one invocation),
+118 syntax modules, 1,542 Node passes from 1,544 tests with 2 explicit skips**.
+Python ran **243 tests**, with **237 method PASS records, 6 skipped methods and
+2 skipped class setup records**; class records are not extra test methods.
+Both generated pages are 3,033,467 bytes, SHA256
+`ccfc2782a33d21e3a75cd93201d5d9b5d89eef41e6397036c13c2f06bda91f9b`.
+Evidence commit `972998b5509c184090a55911c52dbb927fbaf278` is pushed and its 409 payloads, manifest and
+attributes passed fresh streamed remote byte readback. See the
+[qualification record](docs/development/FINITE_DRAFT_QUALIFICATION_2026-10-05.md)
+and [current state](docs/CURRENT_STATE.md) for exact epochs and limitations.
+Earlier failures stay retained and do not count as this gate's passes.
+
+Journal surfaces usable current actions and readable later prerequisites.
+Deliberate tracker selection remains consistent through ticks and shows completed
+work; it is transient per Simulation, not a newly persisted preference.
+The selected-enemy HUD and local Earth Claim Engine presentation make the foe
+and its danger cues readable in both V views while preserving actual attacks,
+cameras and existing controls. Automated qualification does not answer human
+route clarity, fight feel, reward appeal or sustained device-performance questions.
+The [finite first-play guide](docs/playtests/FINITE_DRAFT_FIRST_PLAY_2026-10-05.md)
+is the short human invitation accompanying the final records; human acceptance
+remains pending.
+
+Save/world version 9, adventure version 12 and optional earthHomecoming version 1
+remain unchanged. Returning characters keep levels, gear, sockets and earlier
+choices. Blade, crafted bow and strong returning kits have useful paths;
+the continuous fresh bow route starts with a blade in I-III and crafts/equips
+its bow before IV. Fixed materials support existing projects without promising
+all veterans stronger equipment or automatically equipping a reward.
+
+The Earth ending is a local Regent-pattern repulse and chosen homecoming.
+Full countries/cities, mounts, the full Regent war, ultimate Answering and the
+completed Briar story remain future scope. Historical f351 gameplay excerpts
+predate the current art/HUD; current screenshots have their own source epoch.
+Official hosted run 37372589333 closed with 47 jobs, 29 failures, 18 cancelled
+and 0 executed steps. Only the Ubuntu source job's billing-lock annotation was
+inspected; this is hosted nonexecution, not green CI or deployment.
 
 ## Original Firstlight 10 baseline and continuing features
 
@@ -48,7 +83,9 @@ Atlantis's optional marked gallery uses **F** to ascend and **G** to descend;
 release holds depth. **WASD** moves relative to the camera. The Bellglass air
 court is dry, and the gallery landing or **Return to Firstlight** ends the dive.
 The supplied visitor breath envelope has no timer. Reopening resumes your saved
-home checkpoint with accepted work retained. The required civic outing stays dry.
+home checkpoint with accepted work retained. This early visitor commission stays
+dry; the later Harbour pressure campaign has separately accepted depth/current
+work and dry-quay combat.
 
 For an ordinary outing, collect the expedition kit beside Oren's workshop. **Field guide** shows real equipment recipes and one pinned project; the nearby riverbank materials survey can be deliberately repeated for declared materials. Oren's original once-only supplies quest remains separate. These local loops do not require campaign advancement.
 
@@ -97,7 +134,7 @@ The main RPG workspace, including maps and services, pauses the local game and r
 
 Old supported creative and adventure state, chapter outcomes, owned/equipped items, coins, gems, soul choices, companion bond/name/mode, excavation, buildings, crops, new village attunement, quest flags and commissions. Saving inside an expedition restarts outside at its safe return point. New enemy partial damage, paths, attack warnings, bell input in progress and exact NPC/fox positions are transient.
 
-These are authored game characters, not live Luna residents. The game has no accounts, online multiplayer, server inventory, shared public events, guilds or deployed infrastructure. Editable local JSON is not legitimate online gear. The five realm openings are playable foundations. Their full campaigns, capitals, the monastery, ruined kingdom and living forest remain future work. Unreal remains a later production-client direction.
+These are authored game characters, not live Luna residents. The game has no accounts, online multiplayer, server inventory, shared public events, guilds or deployed infrastructure. Editable local JSON is not legitimate online gear. The five realms now include finite local campaigns and the provisional Earth homecoming, with accepted work, chosen outcomes, verification and once-only claim records preserved. Live encounters, warnings and incomplete escort motion remain transient and are resumed through their declared local rules. Larger campaigns, capitals, the monastery, ruined kingdom, living forest and full saga remain future work. Unreal remains a later production-client direction.
 
 ## Build and verify
 
@@ -118,11 +155,11 @@ python tests/cutaway_browser.py
 python tests/reflection_browser.py
 ```
 
-`regression09_browser.py` runs the prior edition's UI workflows against the **current** HTML. Its historical screenshot names do not mean the prior HTML was substituted. Evidence10 contains this edition's actual reports. Evidence09, when included, is historical; its old pass counts are not counted again. Native file/loopback browser navigation was blocked here; successful browser storage checks use an explicitly labeled fixture. Read VALIDATION.md for exact counts and limitations.
+`regression09_browser.py` runs the prior edition's workflows against the **current** HTML; historical screenshot names do not substitute old game bytes. The retained edition-10 package reports and Evidence09 belong to their original epochs and are not counted again. At that historical delivery, native file/loopback navigation was blocked and storage checks used a labelled fixture; see VALIDATION.md for that edition's limits. Current full05 separately completed all 47 required browser suites against the b5 build, including native loopback persistence and the current campaign/onboarding callers. Accelerated production movement/ticks and synthetic capacity, save-refusal or old-owner derivatives remain explicitly labelled; they are not ordinary-speed human play.
 
-Full source is in this package. SOURCE.bundle contains local Git history, **not evidence of a GitHub push**. See START_HERE_FOR_CODEX.md before importing into a repository.
+The original edition package includes full source and SOURCE.bundle local history, **not evidence of a GitHub push**. Its START_HERE_FOR_CODEX.md documents that archive import. Current review-source and evidence publication are separately recorded in docs/CURRENT_STATE.md.
 
 
-## Current creative milestone
+## Earlier creative milestone — 2026-09-30
 
-The living-world review branch integrates the roadside gathering into the normal game, refines Firstlight/Earth scenery and includes an offline five-realm concept atlas. Read [current state](docs/CURRENT_STATE.md), [executed results](docs/development/LIVING_WORLD_RESULTS_2026-09-30.md) and [original art direction](docs/art/living-world-2026-09-30/ART_DIRECTION.md). Both cameras remain available. Concepts for future realms are labelled separately from playable journeys.
+At this earlier milestone, the living-world review branch integrated roadside gathering, refined Firstlight/Earth scenery and added an offline five-realm concept atlas. Its [executed results](docs/development/LIVING_WORLD_RESULTS_2026-09-30.md) and [original art direction](docs/art/living-world-2026-09-30/ART_DIRECTION.md) retain that date and scope. Both cameras remain available. The [current-state record](docs/CURRENT_STATE.md) describes the later finite campaigns; broader concept targets remain distinct from playable journeys.
