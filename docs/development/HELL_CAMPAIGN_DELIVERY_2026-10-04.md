@@ -28,9 +28,9 @@ Short hardware RAF measurement: three representative supported scenes,1920x1080b
 
 ## Evidence, failures and what remains
 
-Evidence commit 6ff7057ff535fe128c23e77e57e8ba435347d1d7
+Evidence commit 10aeb348fa00cd4c8f06c08d56980c9b9874f02c
 
-[Original receipts, manifest, native screenshots and gameplay video](https://github.com/EternitiesAi/eternities-firstlight/tree/6ff7057ff535fe128c23e77e57e8ba435347d1d7/docs/evidence/hell-campaign-2026-10-04). Six curated native PNGs are published; the other30 and heavy profiles/raw recording remainD. No personal saves are required. The manifest hashes original bytes. Source01's old-UI-fixture integration failure, veteran pacing assumptions, missing-interpreter Playwright setup, capture01 cleanup/report loss and prior full-gate failures remain explicit. They are resolved for their successful later epochs, not deleted. The residual emptyC .git shell from moving only the owned new heavy clone is preserved; finalD head/tracked cleanliness are independently observed.
+[Original receipts, manifest, native screenshots and gameplay video](https://github.com/EternitiesAi/eternities-firstlight/tree/10aeb348fa00cd4c8f06c08d56980c9b9874f02c/docs/evidence/hell-campaign-2026-10-04). Six curated native PNGs are published; the other30 and heavy profiles/raw recording remainD. No personal saves are required. The manifest hashes original bytes. Source01's old-UI-fixture integration failure, veteran pacing assumptions, missing-interpreter Playwright setup, capture01 cleanup/report loss and prior full-gate failures remain explicit. They are resolved for their successful later epochs, not deleted. The residual emptyC .git shell from moving only the owned new heavy clone is preserved; finalD head/tracked cleanliness are independently observed.
 
 World/key9/adventure12 remain; new optional hellCampaign1 migrates absent data to empty/unaccepted and refuses future/impossible history. All old notes/music/exports, furnishings/build/crops, materials, gear/sockets/fittings, companions, storedXP1–5/9999, chapters and explicit soul/class choices remain. Arbitrary touch/camera behavior, hard-crash durability, sustained GPU/novice pacing/taste and older LocalLife context-only rollback remain unqualified. The inner foundry and future patron/restitution are intentionally pending.
 
