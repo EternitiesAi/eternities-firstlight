@@ -1,0 +1,123 @@
+PASS exact standalone HTML and actual WebGL2
+PASS fresh traveller is finite and unarmed
+PASS unarmed body stays inside declared instance budget
+PASS repeated rendering cannot change saved state
+PASS repeated same sample cannot advance stride
+PASS accepted displacement advances stride
+PASS walking frames retain finite submitted geometry
+PASS pause preserves pose and stride exactly
+PASS accepted walk to 11,9
+PASS kit earned through production interaction
+PASS actual equipped blade is stowed for travel
+PASS equipped armor projects its real catalogue color
+PASS real adventure camera retained
+PASS bounded submitted traveller and gear in adventure
+PASS traveller projects inside live viewport in adventure
+PASS real follow camera retained
+PASS bounded submitted traveller and gear in follow
+PASS traveller projects inside live viewport in follow
+PASS isolated actual traveller instances produce visible pixels
+PASS actual stowed equipment changes visible pixels
+PASS avatar framebuffer rendering has no WebGL errors
+PASS accepted walk to 15,7
+PASS accepted starter-enter
+PASS scene transition resets prior travel motion
+PASS blade ready grip is on right hand
+PASS actual submitted blade grip meets palm matrix
+PASS accepted walk to -5,12
+PASS accepted target-select
+PASS accepted auto-toggle
+PASS actual blade attack provides anticipation and recovery
+PASS actual queued blade release uses its prepared origin
+PASS blade remains attached throughout attack
+PASS submitted blade grip stays connected throughout attack
+PASS practice receives actual weapon hits
+PASS accepted auto-toggle
+PASS accepted attack
+PASS manual accepted blade strike projects recovery
+PASS manual blade release begins at ready without invented anticipation
+PASS accepted pulse
+PASS manual accepted blade sweep projects recovery
+PASS manual blade sweep uses the same direct ready origin
+PASS accepted guard
+PASS accepted guard changes traveller stance
+PASS reload preserves complete earned world
+PASS reload starts a clean presentation clock
+PASS returning import preserves stored XP and campaign history
+PASS full restore resets previous body motion
+PASS accepted equip
+PASS accepted walk to 11,9
+PASS accepted range-enter
+PASS accepted range-start
+PASS bow uses canonical ranged family and left-hand grip
+PASS actual submitted bow grip meets left-palm matrix
+PASS actual submitted bow strings meet right-palm matrix
+PASS imported amber socket has its actual rendered geometry
+PASS accepted walk to 0,2
+PASS accepted target-select
+PASS accepted auto-toggle
+PASS actual bow attack provides anticipation and recovery
+PASS actual queued bow release retains the fully drawn origin
+PASS bow grip stays attached while drawing and releasing
+PASS submitted bow grip and string matrices stay connected
+PASS arrows still collide and hit practice through actual rules
+PASS accepted auto-toggle
+PASS accepted attack
+PASS manual accepted bow release projects recovery
+PASS manual bow release uses the direct ready origin
+PASS accepted pulse
+PASS manual accepted piercing arrow projects recovery
+PASS manual piercing arrow cannot invent queued preparation
+PASS accepted walk to 0,9
+PASS accepted range-leave
+PASS accepted walk to 15,7
+PASS accepted starter-enter
+PASS accepted attack
+PASS fresh scene accepted bow release projects recovery
+PASS accepted starter-leave
+PASS accepted starter-enter
+PASS old bow release cannot cross scene re-entry
+PASS accepted target-select
+PASS accepted auto-toggle
+PASS new auto shot produces owned bow recovery
+PASS accepted equip
+PASS old bow recovery cannot transfer to equipped blade
+PASS accepted equip
+PASS re-equipped bow cannot inherit earlier item recovery
+PASS paused combat remains refused without mutation
+PASS accepted target-clear
+PASS accepted walk to -5,11.5
+PASS accepted batched equip
+PASS accepted batched attack
+PASS new blade release before its first frame retains recovery and submitted grip
+PASS accepted batched equip
+PASS accepted batched attack
+PASS new bow release before its first frame retains recovery and submitted strings
+PASS bow recovery survives the projectile impact
+PASS accepted batched equip
+PASS accepted batched attack
+PASS accepted batched equip
+PASS release before a later same-frame equip remains fenced
+PASS accepted batched attack
+PASS accepted batched equip
+PASS accepted batched equip
+PASS same-frame re-equip cannot inherit the earlier bow release
+PASS accepted walk to 0,13
+PASS accepted starter-leave
+PASS accepted scene entry and movement before first traveller sample
+PASS accepted bow release hit before first traveller sample
+PASS first scene sample retains its own completed-arrow recovery
+PASS production reduced-motion option reaches traveller
+PASS low quality retains finite submitted body and equipped bow
+PASS reduced-motion rendering preserves equipment/socket/history
+PASS appearance changed through accepted rules
+PASS strongest equipment remains owned/equipped with history
+PASS one temper and both fittings have submitted geometry
+PASS custom skin hair cloak and actual armor reach submitted colors
+PASS real UI character creation has its own unarmed traveller
+PASS real character switch restores gear appearance and clean pose
+PASS switched character restores actual custom palette geometry
+PASS native reload retains managed advanced character world
+PASS no external asset requests
+PASS no runtime browser errors
+Traveller browser: 122/122; errors: 0

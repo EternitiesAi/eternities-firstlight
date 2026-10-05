@@ -1,3 +1,9 @@
+# Completed Heaven regression gate, 2026-10-05
+
+Full02 at3ee1c3c299e47229c15eccf8d9a908d9ab7312df passed204 verifier commands in one invocation:161source and43browser suites. See full02/RECEIPT.json and exact logs. The native suite in that invocation passed882checks with unchanged sources. Python now65passes plus1existing Windows skip. Full01 wrapper rejection is retained; no failure was relabelled. Runtime/pages remain the targeted native/ordinary-time epoch below. No profile or second movie copies were added. Final gameplay documentation requires a separate exact remote source/equality receipt.
+
+The sections below describe the earlier targeted evidence epoch.
+
 # The Gate That Remained Open — exact evidence
 
 Gameplay review PR45, head36e1568cbbcbae614cf19f02b8452288128cf6a6, runtime warning epoch e0193c09c8ff59a021cfc8692217034ba873dd97. Both pages2813265bytes/SHA256d1694ee59e326603746e4a9f5850ecdb07ec48f741d250b54e860f78f988a896.

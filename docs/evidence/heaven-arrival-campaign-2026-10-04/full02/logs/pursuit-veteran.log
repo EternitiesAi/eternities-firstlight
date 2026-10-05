@@ -1,0 +1,166 @@
+{
+  "status": "passed",
+  "variant": "veteran",
+  "earthRoute": false,
+  "classPath": null,
+  "commands": 58,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedDefeats": 0,
+  "acceleratedTick": true,
+  "source": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\remote01\\evidence10\\starter\\veteran\\03_TEMPER_EQUIPPED_RELOADED.json",
+    "sha256": "e6257dd3a191e1ce91ff65538f0e9eeb56b233d4a511be1bdd0b5e77e7562338"
+  },
+  "claimed": 3,
+  "beforeDamage": 44,
+  "afterDamage": 48,
+  "equipped": "dawn_edge",
+  "stats": {
+    "level": 5,
+    "attack": 48,
+    "defense": 13,
+    "maxHP": 200
+  },
+  "xp": 563,
+  "economy": {
+    "initial": {
+      "ore": 17,
+      "coins": 92,
+      "fiber": 0,
+      "wood": 2,
+      "stone": 0,
+      "plank": 0
+    },
+    "end": {
+      "ore": 17,
+      "coins": 92,
+      "fiber": 0,
+      "wood": 2,
+      "stone": 0,
+      "plank": 0
+    },
+    "net": {
+      "ore": 0,
+      "coins": 0,
+      "fiber": 0,
+      "wood": 0,
+      "stone": 0,
+      "plank": 0
+    },
+    "surveys": {
+      "count": 3,
+      "ore": 9,
+      "coins": 12,
+      "fiber": 6
+    }
+  },
+  "previews": [
+    {
+      "label": "Finite fitting I",
+      "project": "dawn_edge",
+      "recipe": {
+        "step": 1,
+        "name": "River fitting I",
+        "attack": 2,
+        "ore": 3,
+        "coins": 4,
+        "materials": {
+          "fiber": 2
+        },
+        "id": "fit:dawn_edge:1",
+        "type": "pursuit-fit",
+        "payload": {
+          "weapon": "dawn_edge",
+          "step": 1
+        },
+        "requires": null
+      },
+      "weapon": "dawn_edge",
+      "prerequisite": false,
+      "current": {
+        "level": 5,
+        "attack": 44,
+        "defense": 13,
+        "maxHP": 200
+      },
+      "after": {
+        "level": 5,
+        "attack": 46,
+        "defense": 13,
+        "maxHP": 200
+      },
+      "beforeWeapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "afterWeapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "currentSocket": null,
+      "socket": null
+    },
+    {
+      "label": "Finite fitting II",
+      "project": "dawn_edge",
+      "recipe": {
+        "step": 2,
+        "name": "River fitting II",
+        "attack": 4,
+        "ore": 6,
+        "coins": 8,
+        "materials": {
+          "fiber": 4
+        },
+        "id": "fit:dawn_edge:2",
+        "type": "pursuit-fit",
+        "payload": {
+          "weapon": "dawn_edge",
+          "step": 2
+        },
+        "requires": null
+      },
+      "weapon": "dawn_edge",
+      "prerequisite": false,
+      "current": {
+        "level": 5,
+        "attack": 46,
+        "defense": 13,
+        "maxHP": 200
+      },
+      "after": {
+        "level": 5,
+        "attack": 48,
+        "defense": 13,
+        "maxHP": 200
+      },
+      "beforeWeapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "afterWeapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "currentSocket": null,
+      "socket": null
+    }
+  ]
+}
