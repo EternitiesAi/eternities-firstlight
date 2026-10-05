@@ -1,0 +1,26 @@
+# The Harbour Beneath the Harbour — delivery, 2026-10-05
+
+The complete browser game retains its earlier systems and adds a depth/current/pressure route, a dry anchored municipal encounter, physical sequential releases, three explicit local dispositions and a fixed once-only material fee. This is a bounded inhabited civic campaign, not all of Atlantis or streamed open world.
+
+Base: Heaven297540dcce8d18f14f810a7ecc1c1da4dd608f8f. Runtime13d5fb9538a81e0f66ce6fe5e58b3b735cd95544; canopy-tag correctionefaa6c4550540262a72c2293dbe12bda0ac37c56. Full-tested/source-test correction head:779ef47a33a8f2a646c8b0e4b67757c8ce2080c8. Gameplay review:[PR46](https://github.com/EternitiesAi/eternities-firstlight/pull/46). Exact later documentation commit is recorded externally to avoid a self-referential commit ID.
+
+Both regenerated checked-in pages remain byte-identical:2886245bytes/SHA256dc5879b29a1f3d55413f74ee9e06496ae1bc2a219d7553dc20e48ade103d5b10. World/key9 and adventure12 are unchanged; optional atlantisCampaign1 defaults unaccepted and validates chronological pressure/encounter/release/choice/claim history. Fixed48XP/18coins/4ore/4wood/3fiber/1crystal is capacity-validated and saved before adoption. Failed turn-in retains completed unpaid work. No auto-equip, existing material consumption, level-cap change or generic enemy reward is introduced.
+
+Atlantis PR46 now has one complete current verifier invocation at `779ef47a33a8f2a646c8b0e4b67757c8ce2080c8`:212commands,110syntax modules,1302Node passes/zero failures/skips,94Python passes plus1existingWindows symlink skip,55command-earned journeys and44browser suites. Root observed actual exit0. The originally fresh remote qualification checkout was created at8688c6f and refreshed to779ef47; only archived documentation media are absent. A later documentation head still needs its own exact remote source/equality receipt. Do not relabel this as a new clone created at779.
+
+Separate native02 passes857checks/24whole-Chromium restarts/48pixel controls with six bounded profiles and no videos. Normal capture03 uses ordinaryRAF/native menus and keyboard for131.842seconds at1440x900balanced on Chromium143/RTX3080ANGLE D3D11. The final31.8-second795-decoded-frame clip is unchanged-speed excerpts, not a whole playthrough, human pacing or performance certification. The short MP4 is6944840bytes/SHA256d1acb1d9389c28a2c443594d308ed5ef08adc393066f10c0c6986f26efc28b55.
+
+Evidence `e1e8a7742d0185dc1776fc96bb403af8c03d79a6` is freshly fetched and fully matched against its manifest:465payload files/71461618bytes. Publication uses a separate Git index and streamed remote readback, adding no game copy, profile or raw video. Native01, two controller failures, failed mux attempts and full01's stale roof assertion remain visible. Hosted c519300 jobs stopped before execution due to account billing; later heads and Linux are unqualified. Preserve Dom's deferred human route/combat/reward/camera questions.
+
+Cosmos PR47 is the integrated next arc; its native/normal/full-browser work has separate pending gates. The Earth homecoming is still prospective. The whole browser-draft goal and hourly continuation remain active. Preserve all save owners, XP1-5/9999, gear/socket/fittings, both views, explicit history and personal-save boundaries. Keep bounded storageD; do not retry the blocked standalone-clone deletion, merge main, deploy, change billing or use paid providers.
+
+
+## Reproduce the current source
+
+Use this review branch and `PLAY_FIRSTLIGHT_WINDOWS.cmd`, or `python tools/play_local.py`; the existing local launcher serves the identical browser build. For the accepted campaign obtain the initial kit and claim the existing Bellglass story, then use the map's Atlantis invitation and the Harbour Beneath the Harbour journal. Continue the real current/depth work, pressure order, dry Custodian encounter, releases and selected local account, then deliberately collect the declared fee. The old Bellglass payout remains a separate owner.
+
+Full gate: `python -B tools/verify.py --browser --output <new-D-log-root> --browser-output <new-D-browser-root> --browser-output-mode supported`. The full02 command ran in the originally new remote01 clone refreshed to779ef47. Command logs retain every pass and the Windows skip. Native02 is a separate cohort imported from linked, legitimately command-earned blade/bow/strongest seeds; synthetic capacity/write-refusal/migration profiles are labelled separately.
+
+The evidence branch is `evidence/atlantis-harbour-campaign-20261005`, under `docs/evidence/atlantis-harbour-campaign-2026-10-05/`. It contains complete logs and reports, curated original pixels and one final short movie. Original failures and raw recordings remain onD without duplication. A full decode passed all795frames; recorded fights may include Briar damage. No human enjoyment, sustained RTX frame-time qualification or Linux success follows from these checks.
+
+Dom's next acceptance remains one fresh and one returning play: was the water/depth route clear, could the warning and recovery be read in both views, and did the repair/choice/reward make another visit attractive? Later Cosmos and Earth work must retain this qualified source and its negative evidence.
