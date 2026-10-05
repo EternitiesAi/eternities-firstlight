@@ -1,0 +1,68 @@
+PASS Browser loads exact regenerated HTML
+PASS Old single-character save remains the default until an explicit action
+PASS Existing partial project loads from the accepted save
+PASS Existing character appearance is set through accepted rules
+PASS Character library is discoverable from More and its own tab
+PASS Existing card shows actual level, weapon, and pinned project
+PASS Empty name cannot create a character
+PASS Legacy library permits importing a separate character
+PASS Naming and Tab focus do not fire attacks or change cameras
+PASS Typing a valid name enables creation without losing the input
+PASS Explicit creation selects a second identity
+PASS New character has the selected real appearance
+PASS New character receives no old gear, XP, notes, or project progress
+PASS Creating a library leaves original browser save bytes intact
+PASS New character starts in third person independently of the prior tactical view
+PASS Switch clears combat, build, selection, and music runtime
+PASS New character can edit its own real music score
+PASS A delayed audio export cannot export the newly selected character by mistake
+PASS A pending score import cannot write into a newly selected character
+PASS A pending character import cannot open a preview after switching lives
+PASS Refused delayed character import retains the selected world and saved bytes
+PASS Switch restores original partial survey and owned equipment exactly
+PASS Original notebook and score remain separate
+PASS Original camera returns to tactical diorama
+PASS Character can walk to the existing riverbank entry
+PASS Prior character enters its real active survey scene
+PASS Practice target is selected through accepted combat rules
+PASS Outgoing character has an actual active combat toggle before switching
+PASS Second character keeps its authored note and music after return
+PASS Switching out of combat stops target, attacks, movement, and scene state
+PASS Returning uses the existing safe outdoor checkpoint without losing the partial survey
+PASS Quota-blocked UI switch keeps the active world and all persisted bytes
+PASS An earlier delayed file cannot replace the newer import preview
+PASS Overlapping file previews leave both existing worlds untouched
+PASS Invalid import leaves the current world and saved library unchanged
+PASS Import preview requires a separate confirmation before storage changes
+PASS Cancelled import preserves both worlds
+PASS Confirmed import gets its own identity and complete original quest state
+PASS Full library does not offer a fourth creation or import
+PASS All names and imported equipment are visible in the roster
+PASS Character cards stay within the narrow viewport
+PASS Active character has no delete action
+PASS Delete is disabled until the exact target name is typed
+PASS Wrong case does not satisfy deletion confirmation
+PASS Exact name enables deliberate deletion
+PASS Cancelling deletion leaves every saved byte intact
+PASS Inactive export is a portable world with all original progression
+PASS Confirmed deletion affects only the named inactive identity
+PASS Deleting the migrated slot does not erase its legacy recovery key
+PASS Creation after deletion uses a new monotonic identity
+PASS Browser loads exact regenerated HTML
+PASS Only one real browser tab owns the editing lock
+PASS Second tab exposes export but disables character mutation
+PASS Second-tab autosave cannot overwrite the editing tab
+PASS Browser loads exact regenerated HTML
+PASS Whole browser restart restores the active identity and its score/notes
+PASS Deleted characters do not return from the retained old key on restart
+PASS External storage revision blocks stale saves without discarding runtime
+PASS Recovery export retains exact saved storage without changing it
+PASS Corrupt present library blocks fallback to the retained original world
+PASS Corrupt storage disables creation and names the session as unsaved
+PASS Unreadable library can be copied exactly for later repair
+PASS Browser loads exact regenerated HTML
+PASS Missing Web Locks refuses character creation without altering the old world
+PASS Original single-world saving remains available without the new library API
+PASS Explicit legacy import also remains available without Web Locks
+PASS No unhandled browser errors
+RESULT 67 True

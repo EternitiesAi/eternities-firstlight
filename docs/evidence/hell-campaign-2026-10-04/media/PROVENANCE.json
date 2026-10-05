@@ -1,0 +1,46 @@
+{
+  "method": "Direct original silent footage cuts. No time scaling, substitute artwork, manufactured play, interpolation or audio addition. Broad video intervals include actual travel/combat/both cameras/choice and payment. Event wall-clock and video zero are different; interval boundaries do not claim exact event timestamps.",
+  "capture_report_sha256": "2f04003d1d7d8f1ebbf41b35f9f74e477a6b26434652f2fc057545409252cfe8",
+  "source_video": "D:\\07-GAMES\\Firstlight\\artifacts\\hell-campaign-20261004\\capture-blade-02\\2f79953304d6bed39f016d9470e611cb.webm",
+  "source_video_sha256": "989a2fa5776678cc4eb2ed9dcbb8514c6bac6e8a3cbcc4dfc84f549c80e2f5a2",
+  "clip": "D:\\07-GAMES\\Firstlight\\artifacts\\hell-campaign-20261004\\media\\FIRSTLIGHT_HELL_GAMEPLAY.mp4",
+  "clip_sha256": "7c69e4cdb2e6c8ebbe04aef564f3bc8956ca8ebec004b36064fd0ae6c4aaffae",
+  "intervals_start_duration_seconds": [
+    [
+      0,
+      7
+    ],
+    [
+      41,
+      17
+    ],
+    [
+      98,
+      6
+    ]
+  ],
+  "duration_expected_seconds": 30,
+  "full_decode_exit": 0,
+  "encode_command": [
+    "C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\imageio_ffmpeg\\binaries\\ffmpeg-win-x86_64-v7.1.exe",
+    "-i",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\hell-campaign-20261004\\capture-blade-02\\2f79953304d6bed39f016d9470e611cb.webm",
+    "-filter_complex",
+    "[0:v]trim=start=0:duration=7,setpts=PTS-STARTPTS[v0];[0:v]trim=start=41:duration=17,setpts=PTS-STARTPTS[v1];[0:v]trim=start=98:duration=6,setpts=PTS-STARTPTS[v2];[v0][v1][v2]concat=n=3:v=1:a=0[v]",
+    "-map",
+    "[v]",
+    "-an",
+    "-c:v",
+    "libx264",
+    "-preset",
+    "medium",
+    "-crf",
+    "25",
+    "-pix_fmt",
+    "yuv420p",
+    "-movflags",
+    "+faststart",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\hell-campaign-20261004\\media\\FIRSTLIGHT_HELL_GAMEPLAY.mp4"
+  ],
+  "ffmpeg_version": "ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers"
+}

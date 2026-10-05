@@ -1,0 +1,13 @@
+{
+  "status": "failed-before-browser-start",
+  "scope": "separate interpreter setup attempt; native-01 output did not yet exist",
+  "head": "099bd8d2806a85822f97bdc48dcc466d13ec0cf6",
+  "interpreter": "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+  "error": "ModuleNotFoundError: No module named 'playwright'",
+  "file": "tools/hell_campaign_browser.py",
+  "line": 23,
+  "browser_launched": false,
+  "output_created": false,
+  "correction": "Reused existing verified browser-env/Lib/site-packages through PYTHONPATH; no installation or source edit. Subsequent native-01 has its own actual REPORT.json.",
+  "evidence_kind": "Exact error and attempt conditions copied from execution receipt; not a browser-suite report."
+}

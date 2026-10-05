@@ -1,0 +1,1196 @@
+{
+  "hellCampaign": {
+    "version": 1,
+    "accepted": true,
+    "steps": [
+      "witness-record",
+      "tovan-account",
+      "read-service-writ",
+      "west-shunt",
+      "east-brace",
+      "challenge-veyr",
+      "warden-resolved",
+      "stabilize-service-engine"
+    ],
+    "choice": null,
+    "claimed": false
+  },
+  "bridgeCommunity": {
+    "version": 1,
+    "accepted": false,
+    "choice": null,
+    "steps": [],
+    "claimed": false
+  },
+  "homeHistory": {
+    "version": 1,
+    "revision": 0,
+    "owned": [],
+    "pinned": null
+  },
+  "localLife": {
+    "version": 1,
+    "records": {
+      "heaven-propagation-bed-v1": {
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      },
+      "hell-refuge-water-v1": {
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      },
+      "atlantis-bellglass-lamp-v1": {
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      },
+      "cosmos-drawing-shelf-v1": {
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      }
+    }
+  },
+  "earthExpedition": {
+    "version": 1,
+    "story": {
+      "accepted": false,
+      "branch": null,
+      "steps": [],
+      "claimed": false
+    },
+    "patrol": {
+      "lastClaim": 0,
+      "active": null
+    }
+  },
+  "realmTrails": {
+    "version": 1,
+    "records": {
+      "heaven-broken-choir-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "hell-open-cage-v1": {
+        "accepted": true,
+        "steps": [
+          "contact-neris",
+          "cooling",
+          "clamp-west",
+          "clamp-east",
+          "disable-reeve",
+          "escort-start",
+          "refuge-arrival"
+        ],
+        "settings": {},
+        "checkpoint": 5,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": true
+      },
+      "atlantis-bellglass-chart-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "earthlands-coastward-materials-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "cosmos-split-bearing-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      }
+    }
+  },
+  "journeys": {
+    "version": 1,
+    "realms": {
+      "heaven": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "hell": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "earthlands": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "atlantis": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "cosmos": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      }
+    }
+  },
+  "adventure": {
+    "version": 12,
+    "earthBinding": {
+      "version": 1,
+      "weapon": null,
+      "kind": null
+    },
+    "realmCraft": {
+      "version": 1,
+      "weapon": null
+    },
+    "earthGathering": {
+      "version": 1,
+      "accepted": false,
+      "prepared": [],
+      "verse": null,
+      "shared": false
+    },
+    "earthNotes": {
+      "version": 1,
+      "accepted": false,
+      "marks": [],
+      "compared": false,
+      "interpretation": null
+    },
+    "earthStory": {
+      "version": 1,
+      "accepted": false,
+      "steps": [],
+      "dispatch": null,
+      "arrived": false,
+      "claimed": false
+    },
+    "classPath": {
+      "version": 1,
+      "choice": null,
+      "readyAt": 0
+    },
+    "pursuit": {
+      "version": 1,
+      "pinned": null,
+      "claimed": 0,
+      "active": null,
+      "fittings": {}
+    },
+    "starter": {
+      "version": 1,
+      "accepted": false,
+      "bundles": [],
+      "reward": null
+    },
+    "crossing": {
+      "version": 1,
+      "entered": false,
+      "met": false,
+      "inscription": false,
+      "clapperRevealed": false,
+      "clapper": false,
+      "repaired": false,
+      "complete": false,
+      "reward": false,
+      "attuned": false,
+      "projects": []
+    },
+    "beacon": {
+      "version": 1,
+      "introduced": false,
+      "complete": false,
+      "status": "dormant",
+      "attempts": 0,
+      "failures": 0,
+      "reward": false,
+      "relic": "undecided",
+      "route": null,
+      "soul": {
+        "grace": false,
+        "equipped": null,
+        "radiance": 0,
+        "corruption": 0,
+        "scars": []
+      }
+    },
+    "arsenal": {
+      "version": 1,
+      "gems": {
+        "ruby": 0,
+        "moonstone": 0,
+        "amber": 0
+      },
+      "sockets": {},
+      "rangeMedal": false,
+      "bestTime": null
+    },
+    "road": {
+      "version": 1,
+      "entered": false,
+      "revealed": [],
+      "claimed": [],
+      "cartRepaired": false,
+      "beaconLit": false,
+      "reported": false
+    },
+    "elapsed": 387.3000000000538,
+    "revision": 48,
+    "started": true,
+    "dug": [],
+    "chips": [],
+    "defeated": [],
+    "drops": [],
+    "ore": 3,
+    "coins": 14,
+    "xp": 35,
+    "hp": 93,
+    "stamina": 100,
+    "tonics": 3,
+    "equipment": {
+      "weapon": "trail_blade",
+      "armor": "travel_coat",
+      "charm": null
+    },
+    "owned": [
+      "trail_blade",
+      "travel_coat"
+    ],
+    "companion": {
+      "bonded": false,
+      "name": "Briar",
+      "mode": "follow"
+    },
+    "relic": false,
+    "angelSeen": false,
+    "reward": null,
+    "deaths": 0,
+    "receipts": [
+      {
+        "id": "earned-north-1-0-1",
+        "fp": "[\"start\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-8",
+        "fp": "[\"target-select\",{\"id\":\"hell-return-reeve-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-9",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-1-8",
+        "fp": "[\"attack\",{\"target\":\"hell-return-reeve-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-3-9",
+        "fp": "[\"attack\",{\"target\":\"hell-return-reeve-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-10",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-5-11",
+        "fp": "[\"attack\",{\"target\":\"hell-return-reeve-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-7-12",
+        "fp": "[\"attack\",{\"target\":\"hell-return-reeve-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-9-13",
+        "fp": "[\"attack\",{\"target\":\"hell-return-reeve-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-11-14",
+        "fp": "[\"attack\",{\"target\":\"hell-return-reeve-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-11",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-16",
+        "fp": "[\"rest\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-28",
+        "fp": "[\"target-select\",{\"id\":\"hell-tithe-warden-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-29",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-1-36",
+        "fp": "[\"attack\",{\"target\":\"hell-tithe-warden-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-3-37",
+        "fp": "[\"attack\",{\"target\":\"hell-tithe-warden-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-5-38",
+        "fp": "[\"attack\",{\"target\":\"hell-tithe-warden-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-7-39",
+        "fp": "[\"attack\",{\"target\":\"hell-tithe-warden-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-9-40",
+        "fp": "[\"attack\",{\"target\":\"hell-tithe-warden-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-30",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-11-42",
+        "fp": "[\"attack\",{\"target\":\"hell-tithe-warden-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-12-43",
+        "fp": "[\"attack\",{\"target\":\"hell-tithe-warden-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-13-44",
+        "fp": "[\"attack\",{\"target\":\"hell-tithe-warden-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-15-45",
+        "fp": "[\"attack\",{\"target\":\"hell-tithe-warden-v1\"}]",
+        "ok": true
+      }
+    ]
+  },
+  "sandbox": {
+    "version": 1,
+    "elapsed": 387.3000000000538,
+    "revision": 0,
+    "inventory": {
+      "wood": 0,
+      "stone": 0,
+      "fiber": 0,
+      "crystal": 0,
+      "plank": 0,
+      "block": 0,
+      "seeds": 4,
+      "berry": 0,
+      "axe": 0,
+      "pick": 0,
+      "floor": 0,
+      "wall": 0,
+      "masonry": 0,
+      "lantern": 0,
+      "bench": 0,
+      "bed": 0,
+      "fire": 0,
+      "workbench": 0
+    },
+    "nodes": [
+      {
+        "id": "timber-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "timber-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "timber-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "timber-4",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-1",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-2",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-3",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-stone-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-stone-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-fibre",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "crystal-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "crystal-2",
+        "hp": 4,
+        "readyAt": 0
+      }
+    ],
+    "bridge": false,
+    "placed": [],
+    "nextId": 1,
+    "stats": {
+      "gathered": 0,
+      "crafted": 0,
+      "harvested": 0
+    },
+    "milestones": [],
+    "recentCommands": [],
+    "cooldownUntil": 0
+  },
+  "score": {
+    "format": "eternities.score.v1",
+    "title": "A Window Left Open",
+    "bpm": 88,
+    "voice": "felt",
+    "melody": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    ],
+    "bass": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "drums": [
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    ]
+  },
+  "scoreRevision": 0,
+  "retreat": {
+    "version": 1,
+    "revision": 0,
+    "wall": "moss",
+    "floor": "oak",
+    "items": [
+      {
+        "slot": "nw",
+        "kind": "shelf",
+        "rotation": 0
+      },
+      {
+        "slot": "ne",
+        "kind": "piano",
+        "rotation": 0
+      },
+      {
+        "slot": "w",
+        "kind": "sofa",
+        "rotation": 1
+      },
+      {
+        "slot": "e",
+        "kind": "plant",
+        "rotation": 0
+      },
+      {
+        "slot": "c",
+        "kind": "rug",
+        "rotation": 0
+      }
+    ]
+  },
+  "visitor": {
+    "name": "Visitor",
+    "skin": 0,
+    "cloak": 0,
+    "hair": 0
+  },
+  "version": 9,
+  "seed": 2317,
+  "day": 1,
+  "hour": 18.942850000002817,
+  "weather": "clear",
+  "player": {
+    "x": 18,
+    "z": 6,
+    "yaw": 2.2455372690188193
+  },
+  "visited": [
+    "market",
+    "commons"
+  ],
+  "flowers": [],
+  "notes": [],
+  "journal": [
+    {
+      "seq": 1,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 2,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 3,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 4,
+      "day": 1,
+      "hour": 17.209000000000014,
+      "kind": "discovery",
+      "text": "You found The makers’ exchange."
+    },
+    {
+      "seq": 5,
+      "day": 1,
+      "hour": 17.21305000000002,
+      "kind": "quest",
+      "text": "Oren supplied a trail blade, a lantern, three tonics and a salve for an injured animal. Find the northern mine."
+    },
+    {
+      "seq": 6,
+      "day": 1,
+      "hour": 17.241850000000067,
+      "kind": "realm-trail",
+      "text": "The Open Cage · a return that holds accepted. Read the route, danger and fixed reward."
+    },
+    {
+      "seq": 7,
+      "day": 1,
+      "hour": 17.443900000000394,
+      "kind": "realm-trail",
+      "text": "Reach Neris on the west Bell Yard apron, outside the closed foundry wall. Neris: “The door is open. The route still records me as theirs. Check it before asking me to run.” Her preserved measurements identify a cooling handle and two return clamps. Leave her here while you establish safety; first operate cooling at (-34, -70)."
+    },
+    {
+      "seq": 8,
+      "day": 1,
+      "hour": 17.489125000000467,
+      "kind": "realm-trail",
+      "text": "Operate the marked cooling handle beside Moth Cut’s dry service route. Tovan’s measurement sets a finite safe pressure state; this is required route preparation, not an optional steam effect or a new water-diversion choice. Continue to the west clamp at (-30, -86) and east clamp at (14, -100), in either order."
+    },
+    {
+      "seq": 9,
+      "day": 1,
+      "hour": 17.512525000000505,
+      "kind": "realm-trail",
+      "text": "Seat the west clamp’s paired pins at the service approach to Bell Yard. One set clamp is insufficient: inspect the east clamp as well. When both are set after cooling, the route Reeve at (-35, -90) activates visibly. Keep the open western road behind you; no door closes."
+    },
+    {
+      "seq": 10,
+      "day": 1,
+      "hour": 17.57755000000061,
+      "kind": "realm-trail",
+      "text": "Seat the east clamp on the Bell Yard’s grounded loading apron. Return across the open yard to the west clamp if it remains unset. Both verified clamps and cooling make the rescue route usable; the Reeve at (-35, -90) must then be disabled before Neris is asked to follow."
+    },
+    {
+      "seq": 11,
+      "day": 1,
+      "hour": 17.68307500000078,
+      "kind": "realm-trail",
+      "text": "Route Reeve disabled through its actual combat opening."
+    },
+    {
+      "seq": 12,
+      "day": 1,
+      "hour": 17.70175000000081,
+      "kind": "realm-trail",
+      "text": "Neris: “Two clamps, cooling, and the inspector quiet. I can try that road with you.” Ask her to follow only after all declared safety work is complete. Walk south along Moth Cut, around the culvert and down the western service road, then enter the Refuge by its open south side. She moves at 2.5 route units per second and waits beyond 10; stay close"
+    },
+    {
+      "seq": 13,
+      "day": 1,
+      "hour": 17.70175000000081,
+      "kind": "realm-trail",
+      "text": "Neris waits here. Speak to her to resume."
+    },
+    {
+      "seq": 14,
+      "day": 1,
+      "hour": 17.703550000000813,
+      "kind": "realm-trail",
+      "text": "Neris resumes the safe route. Stay within ten paces."
+    },
+    {
+      "seq": 15,
+      "day": 1,
+      "hour": 17.73865000000087,
+      "kind": "realm-trail",
+      "text": "Neris reached a safe route checkpoint."
+    },
+    {
+      "seq": 16,
+      "day": 1,
+      "hour": 17.783425000000943,
+      "kind": "realm-trail",
+      "text": "Neris reached a safe route checkpoint."
+    },
+    {
+      "seq": 17,
+      "day": 1,
+      "hour": 17.86150000000107,
+      "kind": "realm-trail",
+      "text": "Neris reached a safe route checkpoint."
+    },
+    {
+      "seq": 18,
+      "day": 1,
+      "hour": 17.945875000001205,
+      "kind": "realm-trail",
+      "text": "Neris reached a safe route checkpoint."
+    },
+    {
+      "seq": 19,
+      "day": 1,
+      "hour": 17.977600000001257,
+      "kind": "realm-trail",
+      "text": "Neris reached the Kiln Refuge on the walked route."
+    },
+    {
+      "seq": 20,
+      "day": 1,
+      "hour": 17.982775000001265,
+      "kind": "realm-trail",
+      "text": "The Open Cage · a return that holds complete · +35 XP · +14 sunmarks · +3 ore. The declared fee is claimed once."
+    },
+    {
+      "seq": 21,
+      "day": 1,
+      "hour": 18.007975000001306,
+      "kind": "discovery",
+      "text": "You found The Firstlight Commons."
+    },
+    {
+      "seq": 22,
+      "day": 1,
+      "hour": 18.058825000001388,
+      "kind": "hell-campaign",
+      "text": "The Last Unclaimed Road accepted. Neris’s rescue and the unconditional road home remain separate."
+    },
+    {
+      "seq": 23,
+      "day": 1,
+      "hour": 18.05905000000139,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 24,
+      "day": 1,
+      "hour": 18.05905000000139,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 25,
+      "day": 1,
+      "hour": 18.05905000000139,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 26,
+      "day": 1,
+      "hour": 18.076825000001417,
+      "kind": "hell-campaign",
+      "text": "Speak to Neris at her saved Kiln Refuge arrival. Neris: “Keep the measurements as they are, including the ones I once helped conceal.” Her safe return remains true whether it was walked or explicitly assisted. This account does not pronounce her innocent or ask her to repeat the rescue. Take the full record to Tovan."
+    },
+    {
+      "seq": 27,
+      "day": 1,
+      "hour": 18.093025000001443,
+      "kind": "hell-campaign",
+      "text": "Tovan identifies the Bell Yard service plate and acknowledges his earlier work on its compulsory claim. Compare his account with Neris’s measurements before operating the fixture. Tovan: “Knowing the rivets is useful. Leaving my own name out would make it a worse record.” The original Refuge water job retains its separate state."
+    },
+    {
+      "seq": 28,
+      "day": 1,
+      "hour": 18.285850000001755,
+      "kind": "hell-campaign",
+      "text": "At the existing grounded Bell Yard plate, compare the named crew’s measured route with its imposed departure claim. The contradiction concerns this exterior service fixture; the inner foundry doors remain closed. Two optional preparations are nearby: the west shunt lengthens sweep recovery, and the east brace lengthens writ-line recovery. Neither i"
+    },
+    {
+      "seq": 29,
+      "day": 1,
+      "hour": 18.286075000001755,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 30,
+      "day": 1,
+      "hour": 18.286075000001755,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 31,
+      "day": 1,
+      "hour": 18.286075000001755,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 32,
+      "day": 1,
+      "hour": 18.40015000000194,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 33,
+      "day": 1,
+      "hour": 18.40015000000194,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 34,
+      "day": 1,
+      "hour": 18.40015000000194,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 35,
+      "day": 1,
+      "hour": 18.464500000002044,
+      "kind": "hell-campaign",
+      "text": "Set the supplied shunt beside the west Bell Yard approach. It adds exactly 0.6 seconds to Veyr’s recovery after a sweep. It changes neither his health nor damage, and it does not extend the writ-line recovery. No ordinary material is consumed. This preparation belongs to the accepted campaign and does not repeat the old rescue cooling or clamps."
+    },
+    {
+      "seq": 36,
+      "day": 1,
+      "hour": 18.514225000002124,
+      "kind": "hell-campaign",
+      "text": "Seat the supplied brace beside the east Bell Yard approach. It adds exactly 0.6 seconds to Veyr’s recovery after a writ-line. It changes neither his health nor damage, and it does not extend sweep recovery. No ordinary material is consumed. The eastern salvage sentinel keeps its own identity and is unrelated to this preparation."
+    },
+    {
+      "seq": 37,
+      "day": 1,
+      "hour": 18.538525000002164,
+      "kind": "hell-campaign",
+      "text": "Veyr: “An escape is a restraint I have not finished.” Explicitly begin the warned encounter on the supported Bell Yard exterior. You may inspect the site, prepare either support or retreat before choosing this action. Read the broad sweep and narrow writ-line as distinct locked shapes. The road south remains open; no combat door closes behind you."
+    },
+    {
+      "seq": 38,
+      "day": 1,
+      "hour": 18.538750000002164,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 39,
+      "day": 1,
+      "hour": 18.538750000002164,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 40,
+      "day": 1,
+      "hour": 18.538750000002164,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 41,
+      "day": 1,
+      "hour": 18.7462000000025,
+      "kind": "hell-campaign",
+      "text": "Veyr’s local Writ authority was resolved through actual combat. His death and the larger infernal country are not declared."
+    },
+    {
+      "seq": 42,
+      "day": 1,
+      "hour": 18.7464250000025,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 43,
+      "day": 1,
+      "hour": 18.7464250000025,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 44,
+      "day": 1,
+      "hour": 18.7464250000025,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 45,
+      "day": 1,
+      "hour": 18.942850000002817,
+      "kind": "hell-campaign",
+      "text": "Fit the supplied stabilizer at the service fixture on the open side of the closed works. This is an exterior adaptation of the Writ Engine story, not entry into the sealed full foundry. The local release can now hold a chosen configuration. Your actual home passage was already free and remains independent of the disposition. No ordinary timber, fib"
+    }
+  ],
+  "nextEvent": 46,
+  "residents": [
+    {
+      "id": "ilan",
+      "x": -11,
+      "z": -1.6,
+      "yaw": -1.9379701606131172,
+      "progress": 0.1166809999999735,
+      "conversations": 0
+    },
+    {
+      "id": "mara",
+      "x": -11,
+      "z": -1.6,
+      "yaw": -1.9693187724613137,
+      "progress": 0.11605099999997384,
+      "conversations": 0
+    },
+    {
+      "id": "oren",
+      "x": -11,
+      "z": -1.6,
+      "yaw": -2.0732175968195627,
+      "progress": 0.11560999999997408,
+      "conversations": 0
+    }
+  ],
+  "settings": {
+    "quality": "balanced",
+    "cameraMode": "adventure",
+    "cameraFov": 60,
+    "cameraViews": {
+      "version": 1,
+      "lastDiorama": "follow",
+      "profiles": {}
+    },
+    "cameraCutaway": true,
+    "reducedMotion": false,
+    "labels": true,
+    "timeFlow": true,
+    "sound": false
+  }
+}

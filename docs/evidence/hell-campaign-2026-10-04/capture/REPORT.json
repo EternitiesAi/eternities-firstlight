@@ -1,0 +1,7055 @@
+{
+  "status": "passed",
+  "method": "Actual silent Writ campaign footage from a labelled command-earned prepared\ncheckpoint, using native import/UI/keys and ordinary RAF. No test flags,\nsimulation steps, commands, grants, position edits or camera-state writes.\nKnown-route automation is not human pacing or sustained GPU qualification.\n",
+  "source": "D:\\07-GAMES\\Firstlight\\authoring\\bridge-moment\\evidence10\\hell-campaign-earned\\fresh-blade\\03_PREPARED.json",
+  "source_sha256": "67be1bb6ab1439d86263767ad92e27c0507e5d6abf33b52e916bc5cbe97c918e",
+  "git_head": "f2dfdf3e01dcbdd49838d3aedf961b79dfe786f6",
+  "git_status": [
+    " M .github/workflows/verify.yml",
+    " M tests/test_verify_browser_storage.py",
+    " M tools/verify.py",
+    "?? tests/hell_campaign_browser.py",
+    "?? tools/capture_hell_campaign.py",
+    "?? tools/hell_campaign_browser.py"
+  ],
+  "html_sha256": "eb94d30b587ef8ee5bb374d7df9db540cf6caa0bdadf02648cc5a4107a64d7ac",
+  "source_hashes": {
+    "src\\adventure-art.js": "72c9aed1ce83c1245d2372e199e8d98256c0729304af2b305fa7487b08239e13",
+    "src\\adventure-ui.js": "25da84755e7509fb0b45193b02e9b3dea684a536ec58e86c99ba4028cb733f88",
+    "src\\adventure.js": "772ee9a60d0f1ff7b93fe3d0540e00444c383cddb9dee32e00ae8ac5f036b4ac",
+    "src\\app.js": "3cd0406927475bcfdfbc1d2943c53c01cde10055fdf430f5cd0ec7a33e14b02e",
+    "src\\arsenal-art.js": "1899a42e04fd44e18eced395229793d275a873dbe2902473968289815a3f694f",
+    "src\\arsenal-ui.js": "a462102896a3c7013f29f6cdf40504b983b8fde803baf41b98b8fb032da3abe6",
+    "src\\arsenal.js": "d0b4583b114dd2580cf366c53b5c2f8c76b12bbf93a829a01f9a74f4b5e15ce8",
+    "src\\beacon-art.js": "aea9e5d22d23eaf73777636c56c2444edac9b0d6239f9504cc95026585618577",
+    "src\\beacon.js": "2aded7272a8d50cbfbdb4421f0140d00401a49788a3bb465260e30f501a2bf13",
+    "src\\bridge-art.js": "e8f85dd21a0eb6363f674a934c625b22fc29f18fc63a543ebd61ea0a87fa254d",
+    "src\\bridge-community-art.js": "ff204eb443f9cdff118164669b92766bf8c64be6bd365353e949c1b359ef9a3b",
+    "src\\bridge-community-ui.js": "a51a02420b59329d0ae268d42a5632de50d87d9b031103a724ad51564737c6d6",
+    "src\\bridge-community.css": "15be66090d836555498d87e00564c5b7b7094c2e3dca5951f9b1fde5023ea29c",
+    "src\\bridge-community.js": "3f8ca1a059525761e5631ba694f3de6d00f60c1a8d78e7fa79c39087fdff532d",
+    "src\\bridge-moment-view.js": "fe58c7824f96458f2608af4d1cf76c81d2936da89a8cca1ad933974b65e0e03c",
+    "src\\characters-ui.js": "58de0cb602479d45eae66f4ccd4077253e34e6e3d843a1505f9eca4d4a1f8f77",
+    "src\\characters.css": "48bfb2431b5fb50e530ed334e52cf07c31b8a29bdb5bb4917365210ab9e71815",
+    "src\\characters.js": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+    "src\\classes-ui.js": "6fb25a35158cf3388485f57016aea745260dea8a057f8d6b4781d3f7a296d22b",
+    "src\\classes.css": "4b9b47443b1817efe2b4cd43e7a3d0d34e623738a5b1e6e1cad05bc2ce88e892",
+    "src\\classes.js": "15da8e8f26c234a5903e5321d9cbcadea773037c9536911a5dc85cb9da2aaa97",
+    "src\\coastward-settlement-art.js": "8f08b152b5205c434ffa7408118e754799eb7ab396b2c0aaec8920cc0029c839",
+    "src\\coastward-woodland-art.js": "45b2758d3f8d75457545b24c2cc96f81f70ac8296bf183f57ddd412289f130fc",
+    "src\\combat-view.js": "5fc50ddf01bd211d3973a126eef586528c1aaa801cbc20d4eccee9ef6871a301",
+    "src\\combat.js": "26629dad633075b7418ff744776d4887b50ba4c1db3afecdc62b232a1f52ec42",
+    "src\\companion-art.js": "06821bb333cc1d61398017fcd236fb4622aae6432ce636f827642531946b2a32",
+    "src\\core.js": "a9b16226d904214fa08200af4f4074c5d34abad81b1049237ef849bde2d8deb4",
+    "src\\cosmos-art.js": "f95fe5cbbb5b49609606f15249e127af70af4f76e39839449fd279db91c632b1",
+    "src\\cosmos-ui.js": "60c774d86f072999a7965bc4a974e8cff7ceffd4b48d2f10ef2cf8a16af85734",
+    "src\\cosmos.css": "4d79807974082aaef0df364d312ae3d4a345ffd40b5eab403ccc55c24f02a63b",
+    "src\\cosmos.js": "dc646ba254ad4c482685c58d342e50c696832f479c8a13526faeed089fe4d3c5",
+    "src\\creative.js": "d0032234d3cab1a6e90c84736011a98631bcc3748de8d5fc23df872367038761",
+    "src\\crossing-art.js": "86cd8945194c6437d9ece96a7d0bcac8a4970eb5f3324300e48d08376bb61bcf",
+    "src\\crossing-ui.js": "5a2a7f6989a0a7ff0a96fee7aa88ec77dadbfba15440a272f131f17a98d86913",
+    "src\\crossing.css": "af6dd51f197dfa1963fc9fa0d92683b2e6f48270903aaea5ba90cbb2833862a2",
+    "src\\crossing.js": "b666c4e6e20483ad267293578020876c8791bbbf23f8116803936658400d1a8f",
+    "src\\drover-art.js": "0f4dda1af6b05e1c7e0931d835fca2d3faec7960788bc89b9f9b591af19206b0",
+    "src\\earth-art.js": "e1053c4c73142de382346760b199fefa92833c4b053ebf698014315b7563f76c",
+    "src\\earth-expedition-art.js": "6a233e69255339ede30be4e4c9153cec8ac678577140748a81c38880c159fd3e",
+    "src\\earth-expedition-beast-art.js": "a92a0acc71c3d89f177e3aed26e8838513a0ca1d54f33ab723ecd9c65fc3e607",
+    "src\\earth-expedition-dialogue.js": "22c83752dc1ff88ef815827feda34d028bfd49da940037c8ca519b446cb56ffc",
+    "src\\earth-expedition-ui.js": "9dfd2c99ccb096e353400098223ac0f04250dcbb58089aab251edd944d14f667",
+    "src\\earth-expedition.css": "a8a0f4822afcff0a7c404b3c4ff358f3d8a38287bda431da0597cecfecaf5a72",
+    "src\\earth-expedition.js": "f32abf5e14ad2939dc5d93b43156109de8eb84d18436b22f9c477e33b5b8e85a",
+    "src\\earth-notes-art.js": "87fe4682829bfff89978d7046d62f518874a7953808431c5634327c9eb449556",
+    "src\\earth-notes-ui.js": "9e0f0df26062b4929e0c3a801e8e857afc269936dbe4932279e935c56274f264",
+    "src\\earth-notes.js": "4ab5807020f65086b190591414c871ee76412791ac0c97dca5447c595840e9e0",
+    "src\\earth-shoulder-art.js": "422a50a7aeec456b6f75095c53a319d2cbf6ac5e09f773e268ed54034c2ddb8d",
+    "src\\earth-story-ui.js": "a9eddc45b9019dff04a603a6261969e5bc86837ffb4ca38548037696af090c4f",
+    "src\\earth-story.js": "fd0ced6f17f1b15b2aee4e31aa00be249bc8e1fb08c4e735416d95c173fd52d0",
+    "src\\earth-ui.js": "5f77ca6399e08fd2467cfc59ddcee555b0e665a84392f2c4010ca1b47b856e7b",
+    "src\\earth.css": "1f40093ded67c175c70c730b8518ff928d26db40287515256fc287c45f2a9f3d",
+    "src\\earth.js": "1623be8382f2d05dbf16cac886951752e6d193dafd97353c4df29ecd21fa3735",
+    "src\\elderweald-trail-art.js": "3f3bc9c3afb12fede706ababdfa276993fdbf3c7fd7d33efaee6fd79f637b4b7",
+    "src\\elderweald-world.js": "8d993c230ad7198e397f4bf41938522405c352bbdd903b04016d1262822d3538",
+    "src\\engine.js": "d7101150dc15942e83ff31c8fc01310576b88ff11defb7d64049ea2c5dbba4d9",
+    "src\\experience.js": "3b5a178ca757c7b58dcbfcedcc1522887dc6a178faf5e942c6e3894166d60570",
+    "src\\gathering-adapter.js": "df41b2b23ae11c6ef2661e48301c488cb26ab753a7beec73349b5c959d5ab564",
+    "src\\gathering-art.js": "b693bce2a519bd75e4f99e03b96184f1ed10c9a9a02e25b7affd53e739f5e0eb",
+    "src\\gathering-music.js": "5e44106322e01aebc7b87d8eefcd29b2a2577d2162d70fb8f99475c7cc7deb12",
+    "src\\gathering-ui.js": "0c347e1da4a897b178c405f35cfef2e6ea518fe5d9e6ba650e48e48895e0445a",
+    "src\\gathering.css": "aa2e5381a0ff9fa7e4ceae5053a54a8ab11a784f81ee021e4835d485d3c5f4db",
+    "src\\gathering.js": "256a33c52f2b31c2c421f72a74aae543feb6c554ebae863aee55d31f0c68eb54",
+    "src\\hell-campaign-art.js": "5ea5b875e32114b07b52ffe0000b7163b340f08adf0eae01552b84a478420f18",
+    "src\\hell-campaign-data.js": "745221292e89ed2bcdf455ffc1bf4e0e66259add5671709e77135d5ede3892ff",
+    "src\\hell-campaign-ui.js": "d47acd0b9ba992df6ff4c73e1b5f3dfb9c1b2ced0745c8ffe50d6cd34cc80f8c",
+    "src\\hell-campaign.css": "146c66cd811e3070367e10a91c30f39cfc630dba1ee929a3b6a540f96142f0d9",
+    "src\\hell-campaign.js": "cc8ca64f9515e75f4bf572c3feb5978f07409e4aca5a328901b3322f399f67a1",
+    "src\\home-history-art.js": "2496883cbb9a122608319db5b2eac1d42cabe7e386b4c9aafc78076081a4af7f",
+    "src\\home-history-ui.js": "0d352093da3faedd6314188fd99ded6ad06a39a3a6ec1a0528b77d48f2b1418a",
+    "src\\home-history.css": "54ef3c501dfda4c3d74c0f17d900bdc5b25c9dcbaeb1840ec36cbcfe0a276bd2",
+    "src\\home-history.js": "546f04a476a889ea43cb2989e854df1bac2571c99eea411b603af401675ec76f",
+    "src\\local-life-art.js": "381d1f5469310e2dc98c14b6d58c4259113fd1d6dd10f77059f45e6848fefcf2",
+    "src\\local-life-ui.js": "95a0757ae7f612560c94ebca13474925251fb485e449da0bc5c6440ceb43b4c6",
+    "src\\local-life.js": "005f7bd489bba2832aaec0b6c9d1cc499660e6e0047be73ab0f85d2922955d48",
+    "src\\mill-gate-art.js": "fe33cbbd3f180a8d32a0d0a338cde42c40e809af99ed2da1db157ba5c7fbcdd9",
+    "src\\millwright-art.js": "bd7397ee2a9f4c47b2b51117e28f3c68533da41de3122bb0a39a5575913a5661",
+    "src\\pursuit-ui.js": "f8c6bab82d88b6e4dcbf05f3e78701d489f31e224c80211b94f8acc8b70b4224",
+    "src\\pursuit.css": "61f36fa917eafba8cfa332f7d233db4c47a6d007bbf84d1843bc25fc17dd63ff",
+    "src\\pursuit.js": "b77e1874f8278971f41d4b62551df40c81126f2a35e02958958e802ab9c8b5ff",
+    "src\\quarry-art.js": "5bc6d93e99e430e7a460a1a2a510fc69e60c9dd80e758bce7470dae3ae3446f6",
+    "src\\realm-art-data.js": "1ac6251a7acf23c78799d96b5554fb3fe572c40e12c54c73f0188c4f8a324435",
+    "src\\realm-atlas-ui.js": "bc1cff9e09ab0c9f95a643c9c3ac8e0267f16641b7e8a7e3f537a32fed6859ab",
+    "src\\realm-atlas.css": "7ef7a03b8c2a69069c2d65da8d5134c7b7dc4bc2b941e139f818a7ab7011c366",
+    "src\\realm-craft.js": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+    "src\\realm-givers-art.js": "0c5268cd304676fe4ada32dcbcea304d6d97f759b59ecdffecbdb625fbcc025c",
+    "src\\realm-trails-art.js": "99a588e7aee9c7d43b6506de836ab2bab75a9420c6b718369c37e4517ca037e3",
+    "src\\realm-trails-cosmos.js": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+    "src\\realm-trails-north.js": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+    "src\\realm-trails-south.js": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+    "src\\realm-trails-ui.js": "d2161829aff6a3b2c36ea414ed687aabbeb10cc33a5ddd8f0c7f36cfc7bdf65d",
+    "src\\realm-trails.js": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+    "src\\road-art.js": "0cc12918587f98f4b9ed2b7beb8d1b21219b4a69959742a759f88354942df05d",
+    "src\\road.js": "d18106f1a2147d623680b285dc5882cae8d2b74c5ef8b500d75de35d20c86dbc",
+    "src\\rpg-ui.js": "dce630efaa56846d0e26ea51bcf7175e9ee7d5472ad07bc7fa4eb5d275c20e7c",
+    "src\\rpg.css": "59de2bff651e1a916e270385bc33d6e34eeb03eb9066363e0f94b0e297412a59",
+    "src\\sandbox-art.js": "3c3a8f9ea1a44fb84bdfe07a99b33969f253714c271e91ca3cfeca7eab76474c",
+    "src\\sandbox-ui.js": "28d7530e8153ed3c8a6a31b3e204cbc9680484b013cb5880a4f05b76cf83d8f5",
+    "src\\sandbox.js": "ad11196c12363b650f2697ab8fb30eb657ff0bf65953274942ce36eb28131e85",
+    "src\\shell.html": "b44f7863eebfd90f283bb61345e6e14593a42defc29087ec68fb36bd5906d6a3",
+    "src\\skitter-art.js": "bd84a78381cf7232a7fb92a868332308c68fcae17d25764c2b5d4bdfefa29903",
+    "src\\soundscape.js": "15b7b578886b838ef20e56501940354d33a8ffcd5581332dd4c4b2035692c5af",
+    "src\\starter-art.js": "cfc4f672b891fe6d53dec82a97aeac7204b8179b3490ae9df9ce3412c4661fcc",
+    "src\\starter-ui.js": "44718b2835207383632d5f33e0748dba9c348041b11f9b404040bdf07a259052",
+    "src\\starter.css": "f1501b06a13c2b3ec0030b39bf9d4530740aad2f60cf9608ca32957c9ce2943b",
+    "src\\starter.js": "c6debd10295babafdcd714445c2ac18c0ff5ce8fd54b8dfe4f3ff78c9e0a294d",
+    "src\\style.css": "f08ab48a3e661c18be404d6eafcc471a6e0b866c41304495cc94fac0bfa24d4a",
+    "src\\surface-assets.js": "5cb0f81348074edbc0e4f3c7dee4962fac10bbc5e7db0ee07b16216f3b7a1e5f",
+    "src\\traveler-art.js": "b08aadb2ba30a3f22ed60ecaa279889f0243935b128c597a15b47e9ffd3970e2",
+    "src\\traveler-equipment-art.js": "1541d60f92726c78aacacbbfed54fc2ec41a99b14ccecf6700a06c756b78c50d",
+    "src\\workshop-transactions.js": "115193dc80841b531a14f85a41c8d2d5e44c6169fc4ea4d6c19637eb7a8e8dd4",
+    "src\\world-atlantis-earth.js": "43432b4c4f712f080cd40f08914d2782cb2fd6445d68240349bb2ee0569e0526",
+    "src\\world-foundations-art.js": "46c3b38e2a73213512b8e2ade2d389361be8747ac7a199d4de8fcacb14c17520",
+    "src\\world-foundations-ui.js": "6528907518ddad023d1dbc220fdc0ade707ac48818109a50ce5b02a4d96e5ad2",
+    "src\\world-foundations.css": "8e1efeb809e3fb5bdfcbbe70f224e61df8f6522d68c1a7ed1c59202fd179f54b",
+    "src\\world-foundations.js": "97f445690fccea753c860e96bf54d4e33a3c8551e8738a31d3d947ce30d1465d",
+    "src\\world-ground-coalescing.js": "c31024794d5b5db2c28d9aab9ecf8fd0acdf55c2630ff5edf93b988151e5d63d",
+    "src\\world-heaven-hell.js": "7192efdcce877e359865c43d39d03fc1a2a54ebad960fd2d2a378880033f4cbd",
+    "src\\world.js": "4e797cab344e2f9669300a2bba33fd08ac2dabad45df6730769e789b04f2c0b2",
+    "build.py": "72d88ffaabb900b606dde38974158581f283a9c0502cd2537cea6b93254efeda",
+    "tools\\capture_hell_campaign.py": "83c89b91be72536f910b743cd1eead65ba8610a1ebe75dce3ab50844c0020a38"
+  },
+  "checks": [
+    {
+      "name": "exact served build",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary production surface",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "unique native selector #rpg-tabs [data-rpg=\"open\"][data-id=\"characters\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"chars-import\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"chars-confirm-import\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "prepared ownership imported unchanged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "unique native selector #settings",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "unique native selector #close-panel",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "real WebGL2",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "hardware renderer when requested",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "unique native selector #rpg-tabs [data-rpg=\"open\"][data-id=\"worlds\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"world-select\"][data-id=\"hell\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"world-preview\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"world-confirm\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"hell-campaign-open\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"hell-campaign-walk\"][data-id=\"warden-resolved\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking warden-resolved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "unique native selector #rpg-hud [data-rpg=\"camera\"][data-id=\"adventure\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "explicit Warden selected",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "unique native selector #target-framing",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "ordinary combat alive",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary combat alive",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary combat alive",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary combat alive",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary combat alive",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary combat alive",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary combat alive",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary combat alive",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary combat alive",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary combat alive",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary combat alive",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary combat alive",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary combat alive",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary combat alive",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary combat alive",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "native sidestep avoids the real locked contact",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary combat alive",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary combat alive",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary combat alive",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary combat alive",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "actual combat earned resolution",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "recorded native movement and camera exchange",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "confirmed actual damage including possible companion contribution",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"hell-campaign-open\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"hell-campaign-walk\"][data-id=\"stabilize-service-engine\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking stabilize-service-engine",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"hell-campaign-open\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"hell-campaign-step\"][data-id=\"stabilize-service-engine\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"hell-campaign-review\"][data-id=\"unbind\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "preview leaves disposition undecided",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"hell-campaign-confirm\"][data-id=\"unbind\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "explicit choice saved",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "unique native selector #rpg-close",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"hell-campaign-open\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"hell-campaign-walk\"][data-id=\"verify-route\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking verify-route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"hell-campaign-open\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"hell-campaign-step\"][data-id=\"verify-route\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "unique native selector #rpg-close",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"hell-campaign-open\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"hell-campaign-walk\"][data-id=\"claim\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "traveller alive while walking claim",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"hell-campaign-open\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "unique native selector #rpg-content [data-rpg=\"hell-campaign-claim\"]",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "one exact fixed payment",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "unique native selector #rpg-close",
+      "ok": true,
+      "detail": 1
+    },
+    {
+      "name": "native reload preserves paid choice",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "no browser errors",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "frozen runtime inputs",
+      "ok": true,
+      "detail": null
+    }
+  ],
+  "events": [
+    {
+      "label": "01_refuge",
+      "seconds": 2.8810825999826193,
+      "diagnostics": {
+        "version": "10.0.0",
+        "mode": "webgl2",
+        "scene": "world-hell",
+        "world": {
+          "id": "hell",
+          "height": 1.57,
+          "dive": null,
+          "journey": {
+            "counter": 0,
+            "lastClaim": 0,
+            "firstClaimed": false,
+            "active": null,
+            "defeated": []
+          }
+        },
+        "earth": null,
+        "cosmos": null,
+        "networkDependencies": 0,
+        "liveAI": false,
+        "multiplayer": false,
+        "adventure": {
+          "tactics": {
+            "scene": "world-hell",
+            "target": null,
+            "auto": false,
+            "nextAttack": 0,
+            "guardUntil": 0,
+            "shield": 0,
+            "shieldUntil": 0,
+            "cooldowns": {
+              "guard": 0,
+              "insight": 0,
+              "spirit": 0
+            },
+            "hits": [],
+            "serial": 0,
+            "windup": null,
+            "motion": null
+          },
+          "beacon": {
+            "phase": "idle",
+            "time": 0,
+            "wave": 0,
+            "ward": 100,
+            "actors": [],
+            "serial": 0,
+            "notice": "",
+            "repairAt": 0,
+            "maraAt": 0,
+            "ilanAt": 0,
+            "playerRepairAt": 0,
+            "defeats": 0
+          },
+          "crossing": {
+            "room": "world-hell",
+            "tones": [],
+            "seek": false,
+            "rangAt": -10,
+            "tone": null,
+            "toneSerial": 0
+          },
+          "player": {
+            "x": 0,
+            "z": 31,
+            "yaw": 3.141592653589793
+          },
+          "paused": false,
+          "intent": null,
+          "stats": {
+            "level": 2,
+            "attack": 18,
+            "defense": 1,
+            "maxHP": 110
+          },
+          "weapon": {
+            "style": "blade",
+            "reach": 2.65,
+            "cooldown": 0.52,
+            "stamina": 0,
+            "primary": "Sunstrike",
+            "special": "Dawn sweep"
+          },
+          "arrows": [],
+          "range": {
+            "active": false,
+            "start": 0,
+            "hits": {},
+            "shots": 0,
+            "message": "A calm place to learn a different rhythm."
+          },
+          "enemies": [
+            {
+              "id": "hell-salvage-sentinel",
+              "x": 44,
+              "z": -94,
+              "hp": 90,
+              "maxHP": 90,
+              "hidden": false,
+              "eventEnemy": false,
+              "kind": "sentinel",
+              "ringMode": null,
+              "custom": null,
+              "mode": "idle",
+              "timer": -0.01659999999999991,
+              "aim": null,
+              "yaw": 0,
+              "strike": null,
+              "contactAt": null,
+              "contactHit": null
+            },
+            {
+              "id": "hell-tithe-warden-v1",
+              "x": 0,
+              "z": -99,
+              "hp": 120,
+              "maxHP": 120,
+              "hidden": false,
+              "eventEnemy": false,
+              "kind": "sentinel",
+              "ringMode": null,
+              "custom": null,
+              "mode": "idle",
+              "timer": -0.01659999999999991,
+              "aim": null,
+              "yaw": 0,
+              "strike": null,
+              "contactAt": null,
+              "contactHit": null
+            }
+          ],
+          "companion": {
+            "room": "world-hell",
+            "x": 0,
+            "z": 31,
+            "yaw": 3.141592653589793,
+            "path": [],
+            "nextPath": 0,
+            "nextHit": 0,
+            "seek": null,
+            "status": "Beside you"
+          }
+        },
+        "sandbox": {
+          "bridge": false,
+          "objects": 0,
+          "elapsed": 298.0165000000334,
+          "autoGather": null,
+          "buildMode": null
+        },
+        "saveState": "saved",
+        "characters": {
+          "mode": "managed",
+          "active": "character-2",
+          "revision": 4,
+          "count": 2,
+          "writer": true,
+          "error": null
+        },
+        "fps": 43.87131082054709,
+        "errors": [],
+        "camera": {
+          "yaw": 5.387129922608612,
+          "elevation": 0.28,
+          "half": 17,
+          "distance": 7.5,
+          "actualDistance": 7.5,
+          "fov": 60,
+          "center": [
+            0,
+            3.0700000000000003,
+            31
+          ],
+          "overview": false,
+          "preset": "adventure",
+          "tour": false,
+          "ready": true,
+          "projection": "perspective",
+          "eye": [
+            -5.628436619416949,
+            5.142667364230853,
+            35.502749295536965
+          ],
+          "target": [
+            0,
+            3.0700000000000003,
+            31
+          ]
+        },
+        "metrics": {
+          "drawCalls": 25,
+          "texturedDrawCalls": 0,
+          "texturedInstances": 0,
+          "surfaceMaterials": {
+            "version": 1,
+            "id": "earth-weathered-timber-v1",
+            "status": "ready",
+            "ready": true,
+            "error": null,
+            "width": 512,
+            "height": 512,
+            "colorFormat": "SRGB8_ALPHA8",
+            "roughnessFormat": "R8",
+            "textureBytes": 1310720,
+            "mipmapBytes": 436905,
+            "totalTextureBytes": 1747625,
+            "decodedImageBytes": 2097152,
+            "decodeWallMs": 69.09999996423721,
+            "uploadCpuMs": 87,
+            "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+            "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+            "enabled": true
+          },
+          "instances": 951,
+          "triangles": 47558
+        },
+        "reflection": {
+          "method": "world-plane P*V*H",
+          "height": 0.01,
+          "horizontalFlip": false
+        },
+        "cutaway": {
+          "enabled": true,
+          "focus": [
+            0,
+            2.45,
+            31
+          ]
+        },
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "music": {
+          "playing": false,
+          "scoreRevision": 0,
+          "playingRevision": -1,
+          "step": -1
+        },
+        "gathering": null,
+        "layoutRevision": 0,
+        "roadsideGathering": {
+          "status": "idle",
+          "playing": false,
+          "pending": false
+        },
+        "audio": {
+          "enabled": false,
+          "state": "not-created",
+          "soundscape": null
+        }
+      },
+      "ledger": {
+        "version": 1,
+        "accepted": true,
+        "steps": [
+          "witness-record",
+          "tovan-account",
+          "read-service-writ",
+          "west-shunt",
+          "east-brace",
+          "challenge-veyr"
+        ],
+        "choice": null,
+        "claimed": false
+      }
+    },
+    {
+      "label": "02_fight-start",
+      "seconds": 45.157134099979885,
+      "diagnostics": {
+        "version": "10.0.0",
+        "mode": "webgl2",
+        "scene": "world-hell",
+        "world": {
+          "id": "hell",
+          "height": 1.57,
+          "dive": null,
+          "journey": {
+            "counter": 0,
+            "lastClaim": 0,
+            "firstClaimed": false,
+            "active": null,
+            "defeated": []
+          }
+        },
+        "earth": null,
+        "cosmos": null,
+        "networkDependencies": 0,
+        "liveAI": false,
+        "multiplayer": false,
+        "adventure": {
+          "tactics": {
+            "scene": "world-hell",
+            "target": "hell-tithe-warden-v1",
+            "auto": true,
+            "nextAttack": 0,
+            "guardUntil": 0,
+            "shield": 0,
+            "shieldUntil": 0,
+            "cooldowns": {
+              "guard": 0,
+              "insight": 0,
+              "spirit": 0
+            },
+            "hits": [],
+            "serial": 0,
+            "windup": null,
+            "motion": null
+          },
+          "beacon": {
+            "phase": "idle",
+            "time": 0,
+            "wave": 0,
+            "ward": 100,
+            "actors": [],
+            "serial": 0,
+            "notice": "",
+            "repairAt": 0,
+            "maraAt": 0,
+            "ilanAt": 0,
+            "playerRepairAt": 0,
+            "defeats": 0
+          },
+          "crossing": {
+            "room": "world-hell",
+            "tones": [],
+            "seek": false,
+            "rangAt": -10,
+            "tone": null,
+            "toneSerial": 0
+          },
+          "player": {
+            "x": 0,
+            "z": -97.3,
+            "yaw": -2.7036310937141583
+          },
+          "paused": false,
+          "intent": null,
+          "stats": {
+            "level": 2,
+            "attack": 18,
+            "defense": 1,
+            "maxHP": 110
+          },
+          "weapon": {
+            "style": "blade",
+            "reach": 2.65,
+            "cooldown": 0.52,
+            "stamina": 0,
+            "primary": "Sunstrike",
+            "special": "Dawn sweep"
+          },
+          "arrows": [],
+          "range": {
+            "active": false,
+            "start": 0,
+            "hits": {},
+            "shots": 0,
+            "message": "A calm place to learn a different rhythm."
+          },
+          "enemies": [
+            {
+              "id": "hell-salvage-sentinel",
+              "x": 44,
+              "z": -94,
+              "hp": 90,
+              "maxHP": 90,
+              "hidden": false,
+              "eventEnemy": false,
+              "kind": "sentinel",
+              "ringMode": null,
+              "custom": null,
+              "mode": "idle",
+              "timer": -42.181600000000195,
+              "aim": null,
+              "yaw": 0,
+              "strike": null,
+              "contactAt": null,
+              "contactHit": null
+            },
+            {
+              "id": "hell-tithe-warden-v1",
+              "x": 0.35009837216382833,
+              "z": -98.04912277963554,
+              "hp": 120,
+              "maxHP": 120,
+              "hidden": false,
+              "eventEnemy": false,
+              "kind": "sentinel",
+              "ringMode": null,
+              "custom": null,
+              "mode": "recover",
+              "timer": 1.9334000000000038,
+              "aim": {
+                "x": 2.068356664595093,
+                "z": -92.88319670581278
+              },
+              "yaw": 0.3211028330142848,
+              "strike": {
+                "x": 0.35009837216382833,
+                "z": -98.04912277963554,
+                "yaw": 0.3211028330142848,
+                "kind": "sweep",
+                "length": 3.8,
+                "halfWidth": 2
+              },
+              "contactAt": 339.31490000003544,
+              "contactHit": true
+            }
+          ],
+          "companion": {
+            "room": "world-hell",
+            "x": 0,
+            "z": 31,
+            "yaw": 3.141592653589793,
+            "path": [],
+            "nextPath": 0,
+            "nextHit": 0,
+            "seek": null,
+            "status": "Beside you"
+          }
+        },
+        "sandbox": {
+          "bridge": false,
+          "objects": 0,
+          "elapsed": 340.18150000003556,
+          "autoGather": null,
+          "buildMode": null
+        },
+        "saveState": "saved",
+        "characters": {
+          "mode": "managed",
+          "active": "character-2",
+          "revision": 15,
+          "count": 2,
+          "writer": true,
+          "error": null
+        },
+        "fps": 60.00263747857054,
+        "errors": [],
+        "camera": {
+          "yaw": -0.43718358774873983,
+          "elevation": 0.55,
+          "half": 17,
+          "distance": 14,
+          "actualDistance": 14.000000000000004,
+          "fov": 60,
+          "center": [
+            3.6115184184549668e-12,
+            3.0700000000000003,
+            -97.29999999999228
+          ],
+          "overview": false,
+          "preset": "adventure",
+          "tour": false,
+          "ready": true,
+          "projection": "perspective",
+          "eye": [
+            -5.053300533180834,
+            10.38762120502923,
+            -86.48720324702293
+          ],
+          "target": [
+            3.6115184184549668e-12,
+            3.0700000000000003,
+            -97.29999999999228
+          ]
+        },
+        "metrics": {
+          "drawCalls": 25,
+          "texturedDrawCalls": 0,
+          "texturedInstances": 0,
+          "surfaceMaterials": {
+            "version": 1,
+            "id": "earth-weathered-timber-v1",
+            "status": "ready",
+            "ready": true,
+            "error": null,
+            "width": 512,
+            "height": 512,
+            "colorFormat": "SRGB8_ALPHA8",
+            "roughnessFormat": "R8",
+            "textureBytes": 1310720,
+            "mipmapBytes": 436905,
+            "totalTextureBytes": 1747625,
+            "decodedImageBytes": 2097152,
+            "decodeWallMs": 69.09999996423721,
+            "uploadCpuMs": 87,
+            "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+            "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+            "enabled": true
+          },
+          "instances": 987,
+          "triangles": 47990
+        },
+        "reflection": {
+          "method": "world-plane P*V*H",
+          "height": 0.01,
+          "horizontalFlip": false
+        },
+        "cutaway": {
+          "enabled": true,
+          "focus": [
+            0,
+            2.45,
+            -97.3
+          ]
+        },
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "music": {
+          "playing": false,
+          "scoreRevision": 0,
+          "playingRevision": -1,
+          "step": -1
+        },
+        "gathering": null,
+        "layoutRevision": 0,
+        "roadsideGathering": {
+          "status": "idle",
+          "playing": false,
+          "pending": false
+        },
+        "audio": {
+          "enabled": false,
+          "state": "not-created",
+          "soundscape": null
+        }
+      },
+      "ledger": {
+        "version": 1,
+        "accepted": true,
+        "steps": [
+          "witness-record",
+          "tovan-account",
+          "read-service-writ",
+          "west-shunt",
+          "east-brace",
+          "challenge-veyr"
+        ],
+        "choice": null,
+        "claimed": false
+      }
+    },
+    {
+      "label": "03_movement-response",
+      "seconds": 47.99544999998761,
+      "diagnostics": {
+        "version": "10.0.0",
+        "mode": "webgl2",
+        "scene": "world-hell",
+        "world": {
+          "id": "hell",
+          "height": 1.57,
+          "dive": null,
+          "journey": {
+            "counter": 0,
+            "lastClaim": 0,
+            "firstClaimed": false,
+            "active": null,
+            "defeated": []
+          }
+        },
+        "earth": null,
+        "cosmos": null,
+        "networkDependencies": 0,
+        "liveAI": false,
+        "multiplayer": false,
+        "adventure": {
+          "tactics": {
+            "scene": "world-hell",
+            "target": "hell-tithe-warden-v1",
+            "auto": true,
+            "nextAttack": 0,
+            "guardUntil": 0,
+            "shield": 0,
+            "shieldUntil": 0,
+            "cooldowns": {
+              "guard": 0,
+              "insight": 0,
+              "spirit": 0
+            },
+            "hits": [],
+            "serial": 9,
+            "windup": null,
+            "motion": {
+              "style": "blade",
+              "at": 342.4814000000356
+            }
+          },
+          "beacon": {
+            "phase": "idle",
+            "time": 0,
+            "wave": 0,
+            "ward": 100,
+            "actors": [],
+            "serial": 0,
+            "notice": "",
+            "repairAt": 0,
+            "maraAt": 0,
+            "ilanAt": 0,
+            "playerRepairAt": 0,
+            "defeats": 0
+          },
+          "crossing": {
+            "room": "world-hell",
+            "tones": [],
+            "seek": false,
+            "rangAt": -10,
+            "tone": null,
+            "toneSerial": 0
+          },
+          "player": {
+            "x": 2.367639942553353,
+            "z": -96.19349661725511,
+            "yaw": 1.1336127390461568
+          },
+          "paused": false,
+          "intent": null,
+          "stats": {
+            "level": 2,
+            "attack": 18,
+            "defense": 1,
+            "maxHP": 110
+          },
+          "weapon": {
+            "style": "blade",
+            "reach": 2.65,
+            "cooldown": 0.52,
+            "stamina": 0,
+            "primary": "Sunstrike",
+            "special": "Dawn sweep"
+          },
+          "arrows": [],
+          "range": {
+            "active": false,
+            "start": 0,
+            "hits": {},
+            "shots": 0,
+            "message": "A calm place to learn a different rhythm."
+          },
+          "enemies": [
+            {
+              "id": "hell-salvage-sentinel",
+              "x": 44,
+              "z": -94,
+              "hp": 90,
+              "maxHP": 90,
+              "hidden": false,
+              "eventEnemy": false,
+              "kind": "sentinel",
+              "ringMode": null,
+              "custom": null,
+              "mode": "idle",
+              "timer": -45.03150000000035,
+              "aim": null,
+              "yaw": 0,
+              "strike": null,
+              "contactAt": null,
+              "contactHit": null
+            },
+            {
+              "id": "hell-tithe-warden-v1",
+              "x": 0.35009837216382833,
+              "z": -98.04912277963554,
+              "hp": 48,
+              "maxHP": 120,
+              "hidden": false,
+              "eventEnemy": false,
+              "kind": "sentinel",
+              "ringMode": null,
+              "custom": null,
+              "mode": "windup",
+              "timer": 0.46670000000000494,
+              "aim": {
+                "x": 0,
+                "z": -97.3
+              },
+              "yaw": -0.43718358774873983,
+              "strike": {
+                "x": 0.35009837216382833,
+                "z": -98.04912277963554,
+                "yaw": -0.43718358774873983,
+                "kind": "line",
+                "length": 6,
+                "halfWidth": 0.65
+              },
+              "contactAt": 339.31490000003544,
+              "contactHit": true
+            }
+          ],
+          "companion": {
+            "room": "world-hell",
+            "x": 0,
+            "z": 31,
+            "yaw": 3.141592653589793,
+            "path": [],
+            "nextPath": 0,
+            "nextHit": 0,
+            "seek": null,
+            "status": "Beside you"
+          }
+        },
+        "sandbox": {
+          "bridge": false,
+          "objects": 0,
+          "elapsed": 343.0314000000355,
+          "autoGather": null,
+          "buildMode": null
+        },
+        "saveState": "saved",
+        "characters": {
+          "mode": "managed",
+          "active": "character-2",
+          "revision": 15,
+          "count": 2,
+          "writer": true,
+          "error": null
+        },
+        "fps": 60.00263747857054,
+        "errors": [],
+        "camera": {
+          "yaw": -0.43718358774873983,
+          "elevation": 0.55,
+          "half": 17,
+          "distance": 14,
+          "actualDistance": 14.000000000000004,
+          "fov": 60,
+          "center": [
+            2.069275846317862,
+            3.0700000000000003,
+            -96.33293542120524
+          ],
+          "overview": false,
+          "preset": "adventure",
+          "tour": false,
+          "ready": true,
+          "projection": "perspective",
+          "eye": [
+            -2.984024686866583,
+            10.38762120502923,
+            -85.52013866823589
+          ],
+          "target": [
+            2.069275846317862,
+            3.0700000000000003,
+            -96.33293542120524
+          ]
+        },
+        "metrics": {
+          "drawCalls": 13,
+          "texturedDrawCalls": 0,
+          "texturedInstances": 0,
+          "surfaceMaterials": {
+            "version": 1,
+            "id": "earth-weathered-timber-v1",
+            "status": "ready",
+            "ready": true,
+            "error": null,
+            "width": 512,
+            "height": 512,
+            "colorFormat": "SRGB8_ALPHA8",
+            "roughnessFormat": "R8",
+            "textureBytes": 1310720,
+            "mipmapBytes": 436905,
+            "totalTextureBytes": 1747625,
+            "decodedImageBytes": 2097152,
+            "decodeWallMs": 69.09999996423721,
+            "uploadCpuMs": 87,
+            "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+            "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+            "enabled": true
+          },
+          "instances": 1000,
+          "triangles": 48122
+        },
+        "reflection": {
+          "method": "world-plane P*V*H",
+          "height": 0.01,
+          "horizontalFlip": false
+        },
+        "cutaway": {
+          "enabled": true,
+          "focus": [
+            2.367639942553353,
+            2.45,
+            -96.19349661725511
+          ]
+        },
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "music": {
+          "playing": false,
+          "scoreRevision": 0,
+          "playingRevision": -1,
+          "step": -1
+        },
+        "gathering": null,
+        "layoutRevision": 0,
+        "roadsideGathering": {
+          "status": "idle",
+          "playing": false,
+          "pending": false
+        },
+        "audio": {
+          "enabled": false,
+          "state": "not-created",
+          "soundscape": null
+        }
+      },
+      "ledger": {
+        "version": 1,
+        "accepted": true,
+        "steps": [
+          "witness-record",
+          "tovan-account",
+          "read-service-writ",
+          "west-shunt",
+          "east-brace",
+          "challenge-veyr"
+        ],
+        "choice": null,
+        "claimed": false
+      }
+    },
+    {
+      "label": "04_diorama-combat",
+      "seconds": 48.791994599974714,
+      "diagnostics": {
+        "version": "10.0.0",
+        "mode": "webgl2",
+        "scene": "world-hell",
+        "world": {
+          "id": "hell",
+          "height": 1.57,
+          "dive": null,
+          "journey": {
+            "counter": 0,
+            "lastClaim": 0,
+            "firstClaimed": false,
+            "active": null,
+            "defeated": []
+          }
+        },
+        "earth": null,
+        "cosmos": null,
+        "networkDependencies": 0,
+        "liveAI": false,
+        "multiplayer": false,
+        "adventure": {
+          "tactics": {
+            "scene": "world-hell",
+            "target": "hell-tithe-warden-v1",
+            "auto": true,
+            "nextAttack": 0,
+            "guardUntil": 346.4814000000356,
+            "shield": 0,
+            "shieldUntil": 0,
+            "cooldowns": {
+              "guard": 351.4814000000356,
+              "insight": 0,
+              "spirit": 0
+            },
+            "hits": [
+              {
+                "x": 0.35009837216382833,
+                "z": -98.04912277963554,
+                "n": 18,
+                "at": 343.8146000000356,
+                "id": 11
+              }
+            ],
+            "serial": 11,
+            "windup": null,
+            "motion": {
+              "style": "blade",
+              "at": 343.8146000000356
+            }
+          },
+          "beacon": {
+            "phase": "idle",
+            "time": 0,
+            "wave": 0,
+            "ward": 100,
+            "actors": [],
+            "serial": 0,
+            "notice": "",
+            "repairAt": 0,
+            "maraAt": 0,
+            "ilanAt": 0,
+            "playerRepairAt": 0,
+            "defeats": 0
+          },
+          "crossing": {
+            "room": "world-hell",
+            "tones": [],
+            "seek": false,
+            "rangAt": -10,
+            "tone": null,
+            "toneSerial": 0
+          },
+          "player": {
+            "x": 1.932785049222871,
+            "z": -96.39672363747273,
+            "yaw": -2.3777400322834925
+          },
+          "paused": false,
+          "intent": null,
+          "stats": {
+            "level": 2,
+            "attack": 18,
+            "defense": 1,
+            "maxHP": 110
+          },
+          "weapon": {
+            "style": "blade",
+            "reach": 2.65,
+            "cooldown": 0.52,
+            "stamina": 0,
+            "primary": "Sunstrike",
+            "special": "Dawn sweep"
+          },
+          "arrows": [],
+          "range": {
+            "active": false,
+            "start": 0,
+            "hits": {},
+            "shots": 0,
+            "message": "A calm place to learn a different rhythm."
+          },
+          "enemies": [
+            {
+              "id": "hell-salvage-sentinel",
+              "x": 44,
+              "z": -94,
+              "hp": 90,
+              "maxHP": 90,
+              "hidden": false,
+              "eventEnemy": false,
+              "kind": "sentinel",
+              "ringMode": null,
+              "custom": null,
+              "mode": "idle",
+              "timer": -45.83150000000041,
+              "aim": null,
+              "yaw": 0,
+              "strike": null,
+              "contactAt": null,
+              "contactHit": null
+            },
+            {
+              "id": "hell-tithe-warden-v1",
+              "x": 0.35009837216382833,
+              "z": -98.04912277963554,
+              "hp": 30,
+              "maxHP": 120,
+              "hidden": false,
+              "eventEnemy": false,
+              "kind": "sentinel",
+              "ringMode": null,
+              "custom": null,
+              "mode": "recover",
+              "timer": 2.4833000000000043,
+              "aim": {
+                "x": 0,
+                "z": -97.3
+              },
+              "yaw": -0.43718358774873983,
+              "strike": {
+                "x": 0.35009837216382833,
+                "z": -98.04912277963554,
+                "yaw": -0.43718358774873983,
+                "kind": "line",
+                "length": 6,
+                "halfWidth": 0.65
+              },
+              "contactAt": 343.5147000000356,
+              "contactHit": false
+            }
+          ],
+          "companion": {
+            "room": "world-hell",
+            "x": 0,
+            "z": 31,
+            "yaw": 3.141592653589793,
+            "path": [],
+            "nextPath": 0,
+            "nextHit": 0,
+            "seek": null,
+            "status": "Beside you"
+          }
+        },
+        "sandbox": {
+          "bridge": false,
+          "objects": 0,
+          "elapsed": 343.8314000000356,
+          "autoGather": null,
+          "buildMode": null
+        },
+        "saveState": "saved",
+        "characters": {
+          "mode": "managed",
+          "active": "character-2",
+          "revision": 17,
+          "count": 2,
+          "writer": true,
+          "error": null
+        },
+        "fps": 60.00263747857054,
+        "errors": [],
+        "camera": {
+          "yaw": 0.76,
+          "elevation": 0.88,
+          "half": 17,
+          "distance": 14,
+          "actualDistance": 14.000000000000004,
+          "fov": 60,
+          "center": [
+            1.9463091474813712,
+            2.233989228424299,
+            -96.39040322523326
+          ],
+          "overview": false,
+          "preset": "follow",
+          "tour": false,
+          "ready": true,
+          "baseHalf": 17,
+          "zoom": 1,
+          "projection": "orthographic",
+          "eye": [
+            34.86734067361591,
+            60.039405145847,
+            -61.7531462052406
+          ],
+          "target": [
+            1.9463091474813712,
+            2.233989228424299,
+            -96.39040322523326
+          ]
+        },
+        "metrics": {
+          "drawCalls": 25,
+          "texturedDrawCalls": 0,
+          "texturedInstances": 0,
+          "surfaceMaterials": {
+            "version": 1,
+            "id": "earth-weathered-timber-v1",
+            "status": "ready",
+            "ready": true,
+            "error": null,
+            "width": 512,
+            "height": 512,
+            "colorFormat": "SRGB8_ALPHA8",
+            "roughnessFormat": "R8",
+            "textureBytes": 1310720,
+            "mipmapBytes": 436905,
+            "totalTextureBytes": 1747625,
+            "decodedImageBytes": 2097152,
+            "decodeWallMs": 69.09999996423721,
+            "uploadCpuMs": 87,
+            "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+            "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+            "enabled": true
+          },
+          "instances": 1065,
+          "triangles": 48854
+        },
+        "reflection": {
+          "method": "world-plane P*V*H",
+          "height": 0.01,
+          "horizontalFlip": false
+        },
+        "cutaway": {
+          "enabled": true,
+          "focus": [
+            1.932785049222871,
+            2.45,
+            -96.39672363747273
+          ]
+        },
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "music": {
+          "playing": false,
+          "scoreRevision": 0,
+          "playingRevision": -1,
+          "step": -1
+        },
+        "gathering": null,
+        "layoutRevision": 0,
+        "roadsideGathering": {
+          "status": "idle",
+          "playing": false,
+          "pending": false
+        },
+        "audio": {
+          "enabled": false,
+          "state": "not-created",
+          "soundscape": null
+        }
+      },
+      "ledger": {
+        "version": 1,
+        "accepted": true,
+        "steps": [
+          "witness-record",
+          "tovan-account",
+          "read-service-writ",
+          "west-shunt",
+          "east-brace",
+          "challenge-veyr"
+        ],
+        "choice": null,
+        "claimed": false
+      }
+    },
+    {
+      "label": "05_resolved",
+      "seconds": 50.04896029998781,
+      "diagnostics": {
+        "version": "10.0.0",
+        "mode": "webgl2",
+        "scene": "world-hell",
+        "world": {
+          "id": "hell",
+          "height": 1.57,
+          "dive": null,
+          "journey": {
+            "counter": 0,
+            "lastClaim": 0,
+            "firstClaimed": false,
+            "active": null,
+            "defeated": []
+          }
+        },
+        "earth": null,
+        "cosmos": null,
+        "networkDependencies": 0,
+        "liveAI": false,
+        "multiplayer": false,
+        "adventure": {
+          "tactics": {
+            "scene": "world-hell",
+            "target": null,
+            "auto": false,
+            "nextAttack": 0,
+            "guardUntil": 346.4814000000356,
+            "shield": 0,
+            "shieldUntil": 0,
+            "cooldowns": {
+              "guard": 351.4814000000356,
+              "insight": 0,
+              "spirit": 0
+            },
+            "hits": [
+              {
+                "x": 0.35009837216382833,
+                "z": -98.04912277963554,
+                "n": 18,
+                "at": 344.3479000000357,
+                "id": 13
+              },
+              {
+                "x": 0.35009837216382833,
+                "z": -98.04912277963554,
+                "n": 18,
+                "at": 344.8813000000359,
+                "id": 15
+              }
+            ],
+            "serial": 15,
+            "windup": null,
+            "motion": {
+              "style": "blade",
+              "at": 344.8813000000359
+            }
+          },
+          "beacon": {
+            "phase": "idle",
+            "time": 0,
+            "wave": 0,
+            "ward": 100,
+            "actors": [],
+            "serial": 0,
+            "notice": "",
+            "repairAt": 0,
+            "maraAt": 0,
+            "ilanAt": 0,
+            "playerRepairAt": 0,
+            "defeats": 0
+          },
+          "crossing": {
+            "room": "world-hell",
+            "tones": [],
+            "seek": false,
+            "rangAt": -10,
+            "tone": null,
+            "toneSerial": 0
+          },
+          "player": {
+            "x": 1.932785049222871,
+            "z": -96.39672363747273,
+            "yaw": -2.3777400322834925
+          },
+          "paused": false,
+          "intent": null,
+          "stats": {
+            "level": 2,
+            "attack": 18,
+            "defense": 1,
+            "maxHP": 110
+          },
+          "weapon": {
+            "style": "blade",
+            "reach": 2.65,
+            "cooldown": 0.52,
+            "stamina": 0,
+            "primary": "Sunstrike",
+            "special": "Dawn sweep"
+          },
+          "arrows": [],
+          "range": {
+            "active": false,
+            "start": 0,
+            "hits": {},
+            "shots": 0,
+            "message": "A calm place to learn a different rhythm."
+          },
+          "enemies": [
+            {
+              "id": "hell-salvage-sentinel",
+              "x": 44,
+              "z": -94,
+              "hp": 90,
+              "maxHP": 90,
+              "hidden": false,
+              "eventEnemy": false,
+              "kind": "sentinel",
+              "ringMode": null,
+              "custom": null,
+              "mode": "idle",
+              "timer": -47.01470000000051,
+              "aim": null,
+              "yaw": 0,
+              "strike": null,
+              "contactAt": null,
+              "contactHit": null
+            }
+          ],
+          "companion": {
+            "room": "world-hell",
+            "x": 0,
+            "z": 31,
+            "yaw": 3.141592653589793,
+            "path": [],
+            "nextPath": 0,
+            "nextHit": 0,
+            "seek": null,
+            "status": "Beside you"
+          }
+        },
+        "sandbox": {
+          "bridge": false,
+          "objects": 0,
+          "elapsed": 345.0146000000359,
+          "autoGather": null,
+          "buildMode": null
+        },
+        "saveState": "saved",
+        "characters": {
+          "mode": "managed",
+          "active": "character-2",
+          "revision": 18,
+          "count": 2,
+          "writer": true,
+          "error": null
+        },
+        "fps": 54.06831069497566,
+        "errors": [],
+        "camera": {
+          "yaw": 0.76,
+          "elevation": 0.88,
+          "half": 17,
+          "distance": 14,
+          "actualDistance": 14.000000000000004,
+          "fov": 60,
+          "center": [
+            1.9334088982711486,
+            2.172951739812109,
+            -96.39643208508342
+          ],
+          "overview": false,
+          "preset": "follow",
+          "tour": false,
+          "ready": true,
+          "baseHalf": 17,
+          "zoom": 1,
+          "projection": "orthographic",
+          "eye": [
+            34.85444042440568,
+            59.978367657234806,
+            -61.75917506509076
+          ],
+          "target": [
+            1.9334088982711486,
+            2.172951739812109,
+            -96.39643208508342
+          ]
+        },
+        "metrics": {
+          "drawCalls": 13,
+          "texturedDrawCalls": 0,
+          "texturedInstances": 0,
+          "surfaceMaterials": {
+            "version": 1,
+            "id": "earth-weathered-timber-v1",
+            "status": "ready",
+            "ready": true,
+            "error": null,
+            "width": 512,
+            "height": 512,
+            "colorFormat": "SRGB8_ALPHA8",
+            "roughnessFormat": "R8",
+            "textureBytes": 1310720,
+            "mipmapBytes": 436905,
+            "totalTextureBytes": 1747625,
+            "decodedImageBytes": 2097152,
+            "decodeWallMs": 69.09999996423721,
+            "uploadCpuMs": 87,
+            "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+            "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+            "enabled": true
+          },
+          "instances": 968,
+          "triangles": 47714
+        },
+        "reflection": {
+          "method": "world-plane P*V*H",
+          "height": 0.01,
+          "horizontalFlip": false
+        },
+        "cutaway": {
+          "enabled": true,
+          "focus": [
+            1.932785049222871,
+            2.45,
+            -96.39672363747273
+          ]
+        },
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "music": {
+          "playing": false,
+          "scoreRevision": 0,
+          "playingRevision": -1,
+          "step": -1
+        },
+        "gathering": null,
+        "layoutRevision": 0,
+        "roadsideGathering": {
+          "status": "idle",
+          "playing": false,
+          "pending": false
+        },
+        "audio": {
+          "enabled": false,
+          "state": "not-created",
+          "soundscape": null
+        }
+      },
+      "ledger": {
+        "version": 1,
+        "accepted": true,
+        "steps": [
+          "witness-record",
+          "tovan-account",
+          "read-service-writ",
+          "west-shunt",
+          "east-brace",
+          "challenge-veyr",
+          "warden-resolved"
+        ],
+        "choice": null,
+        "claimed": false
+      }
+    },
+    {
+      "label": "06_choice-preview",
+      "seconds": 53.54241860000184,
+      "diagnostics": {
+        "version": "10.0.0",
+        "mode": "webgl2",
+        "scene": "world-hell",
+        "world": {
+          "id": "hell",
+          "height": 1.57,
+          "dive": null,
+          "journey": {
+            "counter": 0,
+            "lastClaim": 0,
+            "firstClaimed": false,
+            "active": null,
+            "defeated": []
+          }
+        },
+        "earth": null,
+        "cosmos": null,
+        "networkDependencies": 0,
+        "liveAI": false,
+        "multiplayer": false,
+        "adventure": {
+          "tactics": {
+            "scene": "world-hell",
+            "target": null,
+            "auto": false,
+            "nextAttack": 0,
+            "guardUntil": 346.4814000000356,
+            "shield": 0,
+            "shieldUntil": 0,
+            "cooldowns": {
+              "guard": 351.4814000000356,
+              "insight": 0,
+              "spirit": 0
+            },
+            "hits": [],
+            "serial": 15,
+            "windup": null,
+            "motion": {
+              "style": "blade",
+              "at": 344.8813000000359
+            }
+          },
+          "beacon": {
+            "phase": "idle",
+            "time": 0,
+            "wave": 0,
+            "ward": 100,
+            "actors": [],
+            "serial": 0,
+            "notice": "",
+            "repairAt": 0,
+            "maraAt": 0,
+            "ilanAt": 0,
+            "playerRepairAt": 0,
+            "defeats": 0
+          },
+          "crossing": {
+            "room": "world-hell",
+            "tones": [],
+            "seek": false,
+            "rangAt": -10,
+            "tone": null,
+            "toneSerial": 0
+          },
+          "player": {
+            "x": 0,
+            "z": -103.3,
+            "yaw": -2.868601726453689
+          },
+          "paused": true,
+          "intent": null,
+          "stats": {
+            "level": 2,
+            "attack": 18,
+            "defense": 1,
+            "maxHP": 110
+          },
+          "weapon": {
+            "style": "blade",
+            "reach": 2.65,
+            "cooldown": 0.52,
+            "stamina": 0,
+            "primary": "Sunstrike",
+            "special": "Dawn sweep"
+          },
+          "arrows": [],
+          "range": {
+            "active": false,
+            "start": 0,
+            "hits": {},
+            "shots": 0,
+            "message": "A calm place to learn a different rhythm."
+          },
+          "enemies": [
+            {
+              "id": "hell-salvage-sentinel",
+              "x": 44,
+              "z": -94,
+              "hp": 90,
+              "maxHP": 90,
+              "hidden": false,
+              "eventEnemy": false,
+              "kind": "sentinel",
+              "ringMode": null,
+              "custom": null,
+              "mode": "idle",
+              "timer": -50.24790000000071,
+              "aim": null,
+              "yaw": 0,
+              "strike": null,
+              "contactAt": null,
+              "contactHit": null
+            }
+          ],
+          "companion": {
+            "room": "world-hell",
+            "x": 0,
+            "z": 31,
+            "yaw": 3.141592653589793,
+            "path": [],
+            "nextPath": 0,
+            "nextHit": 0,
+            "seek": null,
+            "status": "Beside you"
+          }
+        },
+        "sandbox": {
+          "bridge": false,
+          "objects": 0,
+          "elapsed": 348.2478000000361,
+          "autoGather": null,
+          "buildMode": null
+        },
+        "saveState": "saved",
+        "characters": {
+          "mode": "managed",
+          "active": "character-2",
+          "revision": 20,
+          "count": 2,
+          "writer": true,
+          "error": null
+        },
+        "fps": 60.00263747857054,
+        "errors": [],
+        "camera": {
+          "yaw": 0.76,
+          "elevation": 0.88,
+          "half": 17,
+          "distance": 14,
+          "actualDistance": 14.000000000000004,
+          "fov": 60,
+          "center": [
+            0.03778312715376765,
+            2.1700003297798536,
+            -103.16505123759376
+          ],
+          "overview": false,
+          "preset": "follow",
+          "tour": false,
+          "ready": true,
+          "baseHalf": 17,
+          "zoom": 1,
+          "projection": "orthographic",
+          "eye": [
+            32.9588146532883,
+            59.97541624720255,
+            -68.5277942176011
+          ],
+          "target": [
+            0.03778312715376765,
+            2.1700003297798536,
+            -103.16505123759376
+          ]
+        },
+        "metrics": {
+          "drawCalls": 13,
+          "texturedDrawCalls": 0,
+          "texturedInstances": 0,
+          "surfaceMaterials": {
+            "version": 1,
+            "id": "earth-weathered-timber-v1",
+            "status": "ready",
+            "ready": true,
+            "error": null,
+            "width": 512,
+            "height": 512,
+            "colorFormat": "SRGB8_ALPHA8",
+            "roughnessFormat": "R8",
+            "textureBytes": 1310720,
+            "mipmapBytes": 436905,
+            "totalTextureBytes": 1747625,
+            "decodedImageBytes": 2097152,
+            "decodeWallMs": 69.09999996423721,
+            "uploadCpuMs": 87,
+            "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+            "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+            "enabled": true
+          },
+          "instances": 936,
+          "triangles": 47378
+        },
+        "reflection": {
+          "method": "world-plane P*V*H",
+          "height": 0.01,
+          "horizontalFlip": false
+        },
+        "cutaway": {
+          "enabled": true,
+          "focus": [
+            0,
+            2.45,
+            -103.3
+          ]
+        },
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "music": {
+          "playing": false,
+          "scoreRevision": 0,
+          "playingRevision": -1,
+          "step": -1
+        },
+        "gathering": null,
+        "layoutRevision": 0,
+        "roadsideGathering": {
+          "status": "idle",
+          "playing": false,
+          "pending": false
+        },
+        "audio": {
+          "enabled": false,
+          "state": "not-created",
+          "soundscape": null
+        }
+      },
+      "ledger": {
+        "version": 1,
+        "accepted": true,
+        "steps": [
+          "witness-record",
+          "tovan-account",
+          "read-service-writ",
+          "west-shunt",
+          "east-brace",
+          "challenge-veyr",
+          "warden-resolved",
+          "stabilize-service-engine"
+        ],
+        "choice": null,
+        "claimed": false
+      }
+    },
+    {
+      "label": "07_release-fixture",
+      "seconds": 53.813911199977156,
+      "diagnostics": {
+        "version": "10.0.0",
+        "mode": "webgl2",
+        "scene": "world-hell",
+        "world": {
+          "id": "hell",
+          "height": 1.57,
+          "dive": null,
+          "journey": {
+            "counter": 0,
+            "lastClaim": 0,
+            "firstClaimed": false,
+            "active": null,
+            "defeated": []
+          }
+        },
+        "earth": null,
+        "cosmos": null,
+        "networkDependencies": 0,
+        "liveAI": false,
+        "multiplayer": false,
+        "adventure": {
+          "tactics": {
+            "scene": "world-hell",
+            "target": null,
+            "auto": false,
+            "nextAttack": 0,
+            "guardUntil": 346.4814000000356,
+            "shield": 0,
+            "shieldUntil": 0,
+            "cooldowns": {
+              "guard": 351.4814000000356,
+              "insight": 0,
+              "spirit": 0
+            },
+            "hits": [],
+            "serial": 15,
+            "windup": null,
+            "motion": {
+              "style": "blade",
+              "at": 344.8813000000359
+            }
+          },
+          "beacon": {
+            "phase": "idle",
+            "time": 0,
+            "wave": 0,
+            "ward": 100,
+            "actors": [],
+            "serial": 0,
+            "notice": "",
+            "repairAt": 0,
+            "maraAt": 0,
+            "ilanAt": 0,
+            "playerRepairAt": 0,
+            "defeats": 0
+          },
+          "crossing": {
+            "room": "world-hell",
+            "tones": [],
+            "seek": false,
+            "rangAt": -10,
+            "tone": null,
+            "toneSerial": 0
+          },
+          "player": {
+            "x": 0,
+            "z": -103.3,
+            "yaw": -2.868601726453689
+          },
+          "paused": false,
+          "intent": null,
+          "stats": {
+            "level": 2,
+            "attack": 18,
+            "defense": 1,
+            "maxHP": 110
+          },
+          "weapon": {
+            "style": "blade",
+            "reach": 2.65,
+            "cooldown": 0.52,
+            "stamina": 0,
+            "primary": "Sunstrike",
+            "special": "Dawn sweep"
+          },
+          "arrows": [],
+          "range": {
+            "active": false,
+            "start": 0,
+            "hits": {},
+            "shots": 0,
+            "message": "A calm place to learn a different rhythm."
+          },
+          "enemies": [
+            {
+              "id": "hell-salvage-sentinel",
+              "x": 44,
+              "z": -94,
+              "hp": 90,
+              "maxHP": 90,
+              "hidden": false,
+              "eventEnemy": false,
+              "kind": "sentinel",
+              "ringMode": null,
+              "custom": null,
+              "mode": "idle",
+              "timer": -50.24790000000071,
+              "aim": null,
+              "yaw": 0,
+              "strike": null,
+              "contactAt": null,
+              "contactHit": null
+            }
+          ],
+          "companion": {
+            "room": "world-hell",
+            "x": 0,
+            "z": 31,
+            "yaw": 3.141592653589793,
+            "path": [],
+            "nextPath": 0,
+            "nextHit": 0,
+            "seek": null,
+            "status": "Beside you"
+          }
+        },
+        "sandbox": {
+          "bridge": false,
+          "objects": 0,
+          "elapsed": 348.2478000000361,
+          "autoGather": null,
+          "buildMode": null
+        },
+        "saveState": "saved",
+        "characters": {
+          "mode": "managed",
+          "active": "character-2",
+          "revision": 21,
+          "count": 2,
+          "writer": true,
+          "error": null
+        },
+        "fps": 60.00263747857054,
+        "errors": [],
+        "camera": {
+          "yaw": 0.76,
+          "elevation": 0.88,
+          "half": 17,
+          "distance": 14,
+          "actualDistance": 14.000000000000004,
+          "fov": 60,
+          "center": [
+            0.018886410294076988,
+            2.1700001648449474,
+            -103.23254402460891
+          ],
+          "overview": false,
+          "preset": "follow",
+          "tour": false,
+          "ready": true,
+          "baseHalf": 17,
+          "zoom": 1,
+          "projection": "orthographic",
+          "eye": [
+            32.939917936428614,
+            59.97541608226765,
+            -68.59528700461625
+          ],
+          "target": [
+            0.018886410294076988,
+            2.1700001648449474,
+            -103.23254402460891
+          ]
+        },
+        "metrics": {
+          "drawCalls": 13,
+          "texturedDrawCalls": 0,
+          "texturedInstances": 0,
+          "surfaceMaterials": {
+            "version": 1,
+            "id": "earth-weathered-timber-v1",
+            "status": "ready",
+            "ready": true,
+            "error": null,
+            "width": 512,
+            "height": 512,
+            "colorFormat": "SRGB8_ALPHA8",
+            "roughnessFormat": "R8",
+            "textureBytes": 1310720,
+            "mipmapBytes": 436905,
+            "totalTextureBytes": 1747625,
+            "decodedImageBytes": 2097152,
+            "decodeWallMs": 69.09999996423721,
+            "uploadCpuMs": 87,
+            "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+            "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+            "enabled": true
+          },
+          "instances": 947,
+          "triangles": 47510
+        },
+        "reflection": {
+          "method": "world-plane P*V*H",
+          "height": 0.01,
+          "horizontalFlip": false
+        },
+        "cutaway": {
+          "enabled": true,
+          "focus": [
+            0,
+            2.45,
+            -103.3
+          ]
+        },
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "music": {
+          "playing": false,
+          "scoreRevision": 0,
+          "playingRevision": -1,
+          "step": -1
+        },
+        "gathering": null,
+        "layoutRevision": 0,
+        "roadsideGathering": {
+          "status": "idle",
+          "playing": false,
+          "pending": false
+        },
+        "audio": {
+          "enabled": false,
+          "state": "not-created",
+          "soundscape": null
+        }
+      },
+      "ledger": {
+        "version": 1,
+        "accepted": true,
+        "steps": [
+          "witness-record",
+          "tovan-account",
+          "read-service-writ",
+          "west-shunt",
+          "east-brace",
+          "challenge-veyr",
+          "warden-resolved",
+          "stabilize-service-engine",
+          "disposition"
+        ],
+        "choice": "unbind",
+        "claimed": false
+      }
+    },
+    {
+      "label": "08_verified",
+      "seconds": 59.91263039998012,
+      "diagnostics": {
+        "version": "10.0.0",
+        "mode": "webgl2",
+        "scene": "world-hell",
+        "world": {
+          "id": "hell",
+          "height": 1.57,
+          "dive": null,
+          "journey": {
+            "counter": 0,
+            "lastClaim": 0,
+            "firstClaimed": false,
+            "active": null,
+            "defeated": []
+          }
+        },
+        "earth": null,
+        "cosmos": null,
+        "networkDependencies": 0,
+        "liveAI": false,
+        "multiplayer": false,
+        "adventure": {
+          "tactics": {
+            "scene": "world-hell",
+            "target": null,
+            "auto": false,
+            "nextAttack": 0,
+            "guardUntil": 346.4814000000356,
+            "shield": 0,
+            "shieldUntil": 0,
+            "cooldowns": {
+              "guard": 351.4814000000356,
+              "insight": 0,
+              "spirit": 0
+            },
+            "hits": [],
+            "serial": 15,
+            "windup": null,
+            "motion": {
+              "style": "blade",
+              "at": 344.8813000000359
+            }
+          },
+          "beacon": {
+            "phase": "idle",
+            "time": 0,
+            "wave": 0,
+            "ward": 100,
+            "actors": [],
+            "serial": 0,
+            "notice": "",
+            "repairAt": 0,
+            "maraAt": 0,
+            "ilanAt": 0,
+            "playerRepairAt": 0,
+            "defeats": 0
+          },
+          "crossing": {
+            "room": "world-hell",
+            "tones": [],
+            "seek": false,
+            "rangAt": -10,
+            "tone": null,
+            "toneSerial": 0
+          },
+          "player": {
+            "x": -12,
+            "z": -93.3,
+            "yaw": -0.8760580505982991
+          },
+          "paused": false,
+          "intent": null,
+          "stats": {
+            "level": 2,
+            "attack": 18,
+            "defense": 1,
+            "maxHP": 110
+          },
+          "weapon": {
+            "style": "blade",
+            "reach": 2.65,
+            "cooldown": 0.52,
+            "stamina": 0,
+            "primary": "Sunstrike",
+            "special": "Dawn sweep"
+          },
+          "arrows": [],
+          "range": {
+            "active": false,
+            "start": 0,
+            "hits": {},
+            "shots": 0,
+            "message": "A calm place to learn a different rhythm."
+          },
+          "enemies": [
+            {
+              "id": "hell-salvage-sentinel",
+              "x": 44,
+              "z": -94,
+              "hp": 90,
+              "maxHP": 90,
+              "hidden": false,
+              "eventEnemy": false,
+              "kind": "sentinel",
+              "ringMode": null,
+              "custom": null,
+              "mode": "idle",
+              "timer": -56.0977000000011,
+              "aim": null,
+              "yaw": 0,
+              "strike": null,
+              "contactAt": null,
+              "contactHit": null
+            }
+          ],
+          "companion": {
+            "room": "world-hell",
+            "x": 0,
+            "z": 31,
+            "yaw": 3.141592653589793,
+            "path": [],
+            "nextPath": 0,
+            "nextHit": 0,
+            "seek": null,
+            "status": "Beside you"
+          }
+        },
+        "sandbox": {
+          "bridge": false,
+          "objects": 0,
+          "elapsed": 354.0976000000365,
+          "autoGather": null,
+          "buildMode": null
+        },
+        "saveState": "saved",
+        "characters": {
+          "mode": "managed",
+          "active": "character-2",
+          "revision": 23,
+          "count": 2,
+          "writer": true,
+          "error": null
+        },
+        "fps": 59.9986813476628,
+        "errors": [],
+        "camera": {
+          "yaw": 0.76,
+          "elevation": 0.88,
+          "half": 17,
+          "distance": 14,
+          "actualDistance": 14.000000000000004,
+          "fov": 60,
+          "center": [
+            -11.898946079364174,
+            2.1700000000000217,
+            -93.38421158975218
+          ],
+          "overview": false,
+          "preset": "follow",
+          "tour": false,
+          "ready": true,
+          "baseHalf": 17,
+          "zoom": 1,
+          "projection": "orthographic",
+          "eye": [
+            21.02208544677036,
+            59.97541591742272,
+            -58.746954569759524
+          ],
+          "target": [
+            -11.898946079364174,
+            2.1700000000000217,
+            -93.38421158975218
+          ]
+        },
+        "metrics": {
+          "drawCalls": 13,
+          "texturedDrawCalls": 0,
+          "texturedInstances": 0,
+          "surfaceMaterials": {
+            "version": 1,
+            "id": "earth-weathered-timber-v1",
+            "status": "ready",
+            "ready": true,
+            "error": null,
+            "width": 512,
+            "height": 512,
+            "colorFormat": "SRGB8_ALPHA8",
+            "roughnessFormat": "R8",
+            "textureBytes": 1310720,
+            "mipmapBytes": 436905,
+            "totalTextureBytes": 1747625,
+            "decodedImageBytes": 2097152,
+            "decodeWallMs": 69.09999996423721,
+            "uploadCpuMs": 87,
+            "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+            "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+            "enabled": true
+          },
+          "instances": 947,
+          "triangles": 47510
+        },
+        "reflection": {
+          "method": "world-plane P*V*H",
+          "height": 0.01,
+          "horizontalFlip": false
+        },
+        "cutaway": {
+          "enabled": true,
+          "focus": [
+            -12,
+            2.45,
+            -93.3
+          ]
+        },
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "music": {
+          "playing": false,
+          "scoreRevision": 0,
+          "playingRevision": -1,
+          "step": -1
+        },
+        "gathering": null,
+        "layoutRevision": 0,
+        "roadsideGathering": {
+          "status": "idle",
+          "playing": false,
+          "pending": false
+        },
+        "audio": {
+          "enabled": false,
+          "state": "not-created",
+          "soundscape": null
+        }
+      },
+      "ledger": {
+        "version": 1,
+        "accepted": true,
+        "steps": [
+          "witness-record",
+          "tovan-account",
+          "read-service-writ",
+          "west-shunt",
+          "east-brace",
+          "challenge-veyr",
+          "warden-resolved",
+          "stabilize-service-engine",
+          "disposition",
+          "verify-route"
+        ],
+        "choice": "unbind",
+        "claimed": false
+      }
+    },
+    {
+      "label": "09_claimed-recognition",
+      "seconds": 102.27163460000884,
+      "diagnostics": {
+        "version": "10.0.0",
+        "mode": "webgl2",
+        "scene": "world-hell",
+        "world": {
+          "id": "hell",
+          "height": 1.57,
+          "dive": null,
+          "journey": {
+            "counter": 0,
+            "lastClaim": 0,
+            "firstClaimed": false,
+            "active": null,
+            "defeated": []
+          }
+        },
+        "earth": null,
+        "cosmos": null,
+        "networkDependencies": 0,
+        "liveAI": false,
+        "multiplayer": false,
+        "adventure": {
+          "tactics": {
+            "scene": "world-hell",
+            "target": null,
+            "auto": false,
+            "nextAttack": 0,
+            "guardUntil": 346.4814000000356,
+            "shield": 0,
+            "shieldUntil": 0,
+            "cooldowns": {
+              "guard": 351.4814000000356,
+              "insight": 0,
+              "spirit": 0
+            },
+            "hits": [],
+            "serial": 15,
+            "windup": null,
+            "motion": {
+              "style": "blade",
+              "at": 344.8813000000359
+            }
+          },
+          "beacon": {
+            "phase": "idle",
+            "time": 0,
+            "wave": 0,
+            "ward": 100,
+            "actors": [],
+            "serial": 0,
+            "notice": "",
+            "repairAt": 0,
+            "maraAt": 0,
+            "ilanAt": 0,
+            "playerRepairAt": 0,
+            "defeats": 0
+          },
+          "crossing": {
+            "room": "world-hell",
+            "tones": [],
+            "seek": false,
+            "rangAt": -10,
+            "tone": null,
+            "toneSerial": 0
+          },
+          "player": {
+            "x": -10,
+            "z": 25.7,
+            "yaw": -1.0879817362105657
+          },
+          "paused": true,
+          "intent": null,
+          "stats": {
+            "level": 3,
+            "attack": 20,
+            "defense": 1,
+            "maxHP": 120
+          },
+          "weapon": {
+            "style": "blade",
+            "reach": 2.65,
+            "cooldown": 0.52,
+            "stamina": 0,
+            "primary": "Sunstrike",
+            "special": "Dawn sweep"
+          },
+          "arrows": [],
+          "range": {
+            "active": false,
+            "start": 0,
+            "hits": {},
+            "shots": 0,
+            "message": "A calm place to learn a different rhythm."
+          },
+          "enemies": [
+            {
+              "id": "hell-salvage-sentinel",
+              "x": 44,
+              "z": -94,
+              "hp": 90,
+              "maxHP": 90,
+              "hidden": false,
+              "eventEnemy": false,
+              "kind": "sentinel",
+              "ringMode": null,
+              "custom": null,
+              "mode": "idle",
+              "timer": -98.24620000000917,
+              "aim": null,
+              "yaw": 0,
+              "strike": null,
+              "contactAt": null,
+              "contactHit": null
+            }
+          ],
+          "companion": {
+            "room": "world-hell",
+            "x": 0,
+            "z": 31,
+            "yaw": 3.141592653589793,
+            "path": [],
+            "nextPath": 0,
+            "nextHit": 0,
+            "seek": null,
+            "status": "Beside you"
+          }
+        },
+        "sandbox": {
+          "bridge": false,
+          "objects": 0,
+          "elapsed": 396.24610000004,
+          "autoGather": null,
+          "buildMode": null
+        },
+        "saveState": "saved",
+        "characters": {
+          "mode": "managed",
+          "active": "character-2",
+          "revision": 31,
+          "count": 2,
+          "writer": true,
+          "error": null
+        },
+        "fps": 60.00659413122321,
+        "errors": [],
+        "camera": {
+          "yaw": 0.76,
+          "elevation": 0.88,
+          "half": 17,
+          "distance": 14,
+          "actualDistance": 14.000000000000004,
+          "fov": 60,
+          "center": [
+            -9.875001779420085,
+            2.170000000000005,
+            25.634475153385292
+          ],
+          "overview": false,
+          "preset": "follow",
+          "tour": false,
+          "ready": true,
+          "baseHalf": 17,
+          "zoom": 1,
+          "projection": "orthographic",
+          "eye": [
+            23.04602974671445,
+            59.9754159174227,
+            60.271732173377956
+          ],
+          "target": [
+            -9.875001779420085,
+            2.170000000000005,
+            25.634475153385292
+          ]
+        },
+        "metrics": {
+          "drawCalls": 13,
+          "texturedDrawCalls": 0,
+          "texturedInstances": 0,
+          "surfaceMaterials": {
+            "version": 1,
+            "id": "earth-weathered-timber-v1",
+            "status": "ready",
+            "ready": true,
+            "error": null,
+            "width": 512,
+            "height": 512,
+            "colorFormat": "SRGB8_ALPHA8",
+            "roughnessFormat": "R8",
+            "textureBytes": 1310720,
+            "mipmapBytes": 436905,
+            "totalTextureBytes": 1747625,
+            "decodedImageBytes": 2097152,
+            "decodeWallMs": 69.09999996423721,
+            "uploadCpuMs": 87,
+            "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+            "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+            "enabled": true
+          },
+          "instances": 947,
+          "triangles": 47510
+        },
+        "reflection": {
+          "method": "world-plane P*V*H",
+          "height": 0.01,
+          "horizontalFlip": false
+        },
+        "cutaway": {
+          "enabled": true,
+          "focus": [
+            -10,
+            2.45,
+            25.7
+          ]
+        },
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "music": {
+          "playing": false,
+          "scoreRevision": 0,
+          "playingRevision": -1,
+          "step": -1
+        },
+        "gathering": null,
+        "layoutRevision": 0,
+        "roadsideGathering": {
+          "status": "idle",
+          "playing": false,
+          "pending": false
+        },
+        "audio": {
+          "enabled": false,
+          "state": "not-created",
+          "soundscape": null
+        }
+      },
+      "ledger": {
+        "version": 1,
+        "accepted": true,
+        "steps": [
+          "witness-record",
+          "tovan-account",
+          "read-service-writ",
+          "west-shunt",
+          "east-brace",
+          "challenge-veyr",
+          "warden-resolved",
+          "stabilize-service-engine",
+          "disposition",
+          "verify-route"
+        ],
+        "choice": "unbind",
+        "claimed": true
+      }
+    },
+    {
+      "label": "10_refuge-return",
+      "seconds": 102.4918064000085,
+      "diagnostics": {
+        "version": "10.0.0",
+        "mode": "webgl2",
+        "scene": "world-hell",
+        "world": {
+          "id": "hell",
+          "height": 1.57,
+          "dive": null,
+          "journey": {
+            "counter": 0,
+            "lastClaim": 0,
+            "firstClaimed": false,
+            "active": null,
+            "defeated": []
+          }
+        },
+        "earth": null,
+        "cosmos": null,
+        "networkDependencies": 0,
+        "liveAI": false,
+        "multiplayer": false,
+        "adventure": {
+          "tactics": {
+            "scene": "world-hell",
+            "target": null,
+            "auto": false,
+            "nextAttack": 0,
+            "guardUntil": 346.4814000000356,
+            "shield": 0,
+            "shieldUntil": 0,
+            "cooldowns": {
+              "guard": 351.4814000000356,
+              "insight": 0,
+              "spirit": 0
+            },
+            "hits": [],
+            "serial": 15,
+            "windup": null,
+            "motion": {
+              "style": "blade",
+              "at": 344.8813000000359
+            }
+          },
+          "beacon": {
+            "phase": "idle",
+            "time": 0,
+            "wave": 0,
+            "ward": 100,
+            "actors": [],
+            "serial": 0,
+            "notice": "",
+            "repairAt": 0,
+            "maraAt": 0,
+            "ilanAt": 0,
+            "playerRepairAt": 0,
+            "defeats": 0
+          },
+          "crossing": {
+            "room": "world-hell",
+            "tones": [],
+            "seek": false,
+            "rangAt": -10,
+            "tone": null,
+            "toneSerial": 0
+          },
+          "player": {
+            "x": -10,
+            "z": 25.7,
+            "yaw": -1.0879817362105657
+          },
+          "paused": false,
+          "intent": null,
+          "stats": {
+            "level": 3,
+            "attack": 20,
+            "defense": 1,
+            "maxHP": 120
+          },
+          "weapon": {
+            "style": "blade",
+            "reach": 2.65,
+            "cooldown": 0.52,
+            "stamina": 0,
+            "primary": "Sunstrike",
+            "special": "Dawn sweep"
+          },
+          "arrows": [],
+          "range": {
+            "active": false,
+            "start": 0,
+            "hits": {},
+            "shots": 0,
+            "message": "A calm place to learn a different rhythm."
+          },
+          "enemies": [
+            {
+              "id": "hell-salvage-sentinel",
+              "x": 44,
+              "z": -94,
+              "hp": 90,
+              "maxHP": 90,
+              "hidden": false,
+              "eventEnemy": false,
+              "kind": "sentinel",
+              "ringMode": null,
+              "custom": null,
+              "mode": "idle",
+              "timer": -98.24620000000917,
+              "aim": null,
+              "yaw": 0,
+              "strike": null,
+              "contactAt": null,
+              "contactHit": null
+            }
+          ],
+          "companion": {
+            "room": "world-hell",
+            "x": 0,
+            "z": 31,
+            "yaw": 3.141592653589793,
+            "path": [],
+            "nextPath": 0,
+            "nextHit": 0,
+            "seek": null,
+            "status": "Beside you"
+          }
+        },
+        "sandbox": {
+          "bridge": false,
+          "objects": 0,
+          "elapsed": 396.24610000004,
+          "autoGather": null,
+          "buildMode": null
+        },
+        "saveState": "saved",
+        "characters": {
+          "mode": "managed",
+          "active": "character-2",
+          "revision": 31,
+          "count": 2,
+          "writer": true,
+          "error": null
+        },
+        "fps": 60.00659413122321,
+        "errors": [],
+        "camera": {
+          "yaw": 0.76,
+          "elevation": 0.88,
+          "half": 17,
+          "distance": 14,
+          "actualDistance": 14.000000000000004,
+          "fov": 60,
+          "center": [
+            -9.928843654751866,
+            2.170000000000005,
+            25.66269940014813
+          ],
+          "overview": false,
+          "preset": "follow",
+          "tour": false,
+          "ready": true,
+          "baseHalf": 17,
+          "zoom": 1,
+          "projection": "orthographic",
+          "eye": [
+            22.99218787138267,
+            59.9754159174227,
+            60.29995642014079
+          ],
+          "target": [
+            -9.928843654751866,
+            2.170000000000005,
+            25.66269940014813
+          ]
+        },
+        "metrics": {
+          "drawCalls": 13,
+          "texturedDrawCalls": 0,
+          "texturedInstances": 0,
+          "surfaceMaterials": {
+            "version": 1,
+            "id": "earth-weathered-timber-v1",
+            "status": "ready",
+            "ready": true,
+            "error": null,
+            "width": 512,
+            "height": 512,
+            "colorFormat": "SRGB8_ALPHA8",
+            "roughnessFormat": "R8",
+            "textureBytes": 1310720,
+            "mipmapBytes": 436905,
+            "totalTextureBytes": 1747625,
+            "decodedImageBytes": 2097152,
+            "decodeWallMs": 69.09999996423721,
+            "uploadCpuMs": 87,
+            "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+            "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+            "enabled": true
+          },
+          "instances": 947,
+          "triangles": 47510
+        },
+        "reflection": {
+          "method": "world-plane P*V*H",
+          "height": 0.01,
+          "horizontalFlip": false
+        },
+        "cutaway": {
+          "enabled": true,
+          "focus": [
+            -10,
+            2.45,
+            25.7
+          ]
+        },
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "music": {
+          "playing": false,
+          "scoreRevision": 0,
+          "playingRevision": -1,
+          "step": -1
+        },
+        "gathering": null,
+        "layoutRevision": 0,
+        "roadsideGathering": {
+          "status": "idle",
+          "playing": false,
+          "pending": false
+        },
+        "audio": {
+          "enabled": false,
+          "state": "not-created",
+          "soundscape": null
+        }
+      },
+      "ledger": {
+        "version": 1,
+        "accepted": true,
+        "steps": [
+          "witness-record",
+          "tovan-account",
+          "read-service-writ",
+          "west-shunt",
+          "east-brace",
+          "challenge-veyr",
+          "warden-resolved",
+          "stabilize-service-engine",
+          "disposition",
+          "verify-route"
+        ],
+        "choice": "unbind",
+        "claimed": true
+      }
+    },
+    {
+      "label": "11_native-reload",
+      "seconds": 104.00493860000279,
+      "diagnostics": {
+        "version": "10.0.0",
+        "mode": "webgl2",
+        "scene": "valley",
+        "world": null,
+        "earth": null,
+        "cosmos": null,
+        "networkDependencies": 0,
+        "liveAI": false,
+        "multiplayer": false,
+        "adventure": {
+          "tactics": {
+            "scene": null,
+            "target": null,
+            "auto": false,
+            "nextAttack": 0,
+            "guardUntil": 0,
+            "shield": 0,
+            "shieldUntil": 0,
+            "cooldowns": {
+              "guard": 0,
+              "insight": 0,
+              "spirit": 0
+            },
+            "hits": [],
+            "serial": 0,
+            "windup": null
+          },
+          "beacon": {
+            "phase": "idle",
+            "time": 0,
+            "wave": 0,
+            "ward": 100,
+            "actors": [],
+            "serial": 0,
+            "notice": "",
+            "repairAt": 0,
+            "maraAt": 0,
+            "ilanAt": 0,
+            "playerRepairAt": 0,
+            "defeats": 0
+          },
+          "crossing": {
+            "room": null,
+            "tones": [],
+            "seek": false,
+            "rangAt": -10,
+            "tone": null,
+            "toneSerial": 0
+          },
+          "player": {
+            "x": 18,
+            "z": 6,
+            "yaw": 2.2455372690188193
+          },
+          "paused": false,
+          "intent": null,
+          "stats": {
+            "level": 3,
+            "attack": 20,
+            "defense": 1,
+            "maxHP": 120
+          },
+          "weapon": {
+            "style": "blade",
+            "reach": 2.65,
+            "cooldown": 0.52,
+            "stamina": 0,
+            "primary": "Sunstrike",
+            "special": "Dawn sweep"
+          },
+          "arrows": [],
+          "range": {
+            "active": false,
+            "start": 0,
+            "hits": {},
+            "shots": 0,
+            "message": "A calm place to learn a different rhythm."
+          },
+          "enemies": [],
+          "companion": {
+            "room": null,
+            "x": 18,
+            "z": 6,
+            "yaw": 2.2455372690188193,
+            "path": [],
+            "nextPath": 0,
+            "nextHit": 0,
+            "seek": null,
+            "status": "Beside you"
+          }
+        },
+        "sandbox": {
+          "bridge": false,
+          "objects": 0,
+          "elapsed": 397.66203600004013,
+          "autoGather": null,
+          "buildMode": null
+        },
+        "saveState": "saved",
+        "characters": {
+          "mode": "managed",
+          "active": "character-2",
+          "revision": 33,
+          "count": 2,
+          "writer": true,
+          "error": null
+        },
+        "fps": 0,
+        "errors": [],
+        "camera": {
+          "yaw": 0.7599999999999998,
+          "elevation": 0.88,
+          "half": 17,
+          "distance": 7.5,
+          "actualDistance": 7.5,
+          "fov": 60,
+          "center": [
+            18,
+            1.9002848994874089,
+            6
+          ],
+          "overview": false,
+          "preset": "follow",
+          "tour": false,
+          "baseHalf": 17,
+          "zoom": 1,
+          "ready": true,
+          "projection": "orthographic",
+          "eye": [
+            50.921031526134534,
+            59.70570081691011,
+            40.63725701999267
+          ],
+          "target": [
+            18,
+            1.9002848994874089,
+            6
+          ]
+        },
+        "metrics": {
+          "drawCalls": 27,
+          "texturedDrawCalls": 0,
+          "texturedInstances": 0,
+          "surfaceMaterials": {
+            "version": 1,
+            "id": "earth-weathered-timber-v1",
+            "status": "ready",
+            "ready": true,
+            "error": null,
+            "width": 512,
+            "height": 512,
+            "colorFormat": "SRGB8_ALPHA8",
+            "roughnessFormat": "R8",
+            "textureBytes": 1310720,
+            "mipmapBytes": 436905,
+            "totalTextureBytes": 1747625,
+            "decodedImageBytes": 2097152,
+            "decodeWallMs": 36.39999997615814,
+            "uploadCpuMs": 6.699999988079071,
+            "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+            "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+            "enabled": true
+          },
+          "instances": 6790,
+          "triangles": 147356
+        },
+        "reflection": {
+          "method": "world-plane P*V*H",
+          "height": 0.01,
+          "horizontalFlip": false
+        },
+        "cutaway": {
+          "enabled": true,
+          "focus": [
+            18,
+            2.18,
+            6
+          ]
+        },
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "music": {
+          "playing": false,
+          "scoreRevision": 0,
+          "playingRevision": -1,
+          "step": -1
+        },
+        "gathering": null,
+        "layoutRevision": 0,
+        "roadsideGathering": {
+          "status": "idle",
+          "playing": false,
+          "pending": false
+        },
+        "audio": {
+          "enabled": false,
+          "state": "not-created",
+          "soundscape": null
+        }
+      },
+      "ledger": {
+        "version": 1,
+        "accepted": true,
+        "steps": [
+          "witness-record",
+          "tovan-account",
+          "read-service-writ",
+          "west-shunt",
+          "east-brace",
+          "challenge-veyr",
+          "warden-resolved",
+          "stabilize-service-engine",
+          "disposition",
+          "verify-route"
+        ],
+        "choice": "unbind",
+        "claimed": true
+      }
+    }
+  ],
+  "errors": [],
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "human_acceptance": false,
+  "performance_qualification": false,
+  "origin": "http://127.0.0.1:63921",
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "HeadlessChrome/143.0.7499.4",
+    "revision": "@ee5ecaf663495e92dfe322aa76c114a3465602ab",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36",
+    "jsVersion": "14.3.127.1"
+  },
+  "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "combat": {
+    "seconds": 4.602438699977938,
+    "observations": [
+      {
+        "wall": 0.3149095999542624,
+        "enemy": {
+          "id": "hell-tithe-warden-v1",
+          "x": 0.35009837216382833,
+          "z": -98.04912277963554,
+          "hp": 102,
+          "maxHP": 120,
+          "hidden": false,
+          "eventEnemy": false,
+          "kind": "sentinel",
+          "ringMode": null,
+          "custom": null,
+          "mode": "recover",
+          "timer": 1.3334000000000041,
+          "aim": {
+            "x": 2.068356664595093,
+            "z": -92.88319670581278
+          },
+          "yaw": 0.3211028330142848,
+          "strike": {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "yaw": 0.3211028330142848,
+            "kind": "sweep",
+            "length": 3.8,
+            "halfWidth": 2
+          },
+          "contactAt": 339.31490000003544,
+          "contactHit": true
+        },
+        "health": 99,
+        "arrows": [],
+        "hits": [
+          {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "n": 18,
+            "at": 340.3315000000356,
+            "id": 2
+          }
+        ]
+      },
+      {
+        "wall": 0.7229388999985531,
+        "enemy": {
+          "id": "hell-tithe-warden-v1",
+          "x": 0.35009837216382833,
+          "z": -98.04912277963554,
+          "hp": 84,
+          "maxHP": 120,
+          "hidden": false,
+          "eventEnemy": false,
+          "kind": "sentinel",
+          "ringMode": null,
+          "custom": null,
+          "mode": "recover",
+          "timer": 0.9334000000000046,
+          "aim": {
+            "x": 2.068356664595093,
+            "z": -92.88319670581278
+          },
+          "yaw": 0.3211028330142848,
+          "strike": {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "yaw": 0.3211028330142848,
+            "kind": "sweep",
+            "length": 3.8,
+            "halfWidth": 2
+          },
+          "contactAt": 339.31490000003544,
+          "contactHit": true
+        },
+        "health": 99,
+        "arrows": [],
+        "hits": [
+          {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "n": 18,
+            "at": 340.3315000000356,
+            "id": 2
+          },
+          {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "n": 18,
+            "at": 340.86480000003553,
+            "id": 4
+          }
+        ]
+      },
+      {
+        "wall": 1.1437567999819294,
+        "enemy": {
+          "id": "hell-tithe-warden-v1",
+          "x": 0.35009837216382833,
+          "z": -98.04912277963554,
+          "hp": 66,
+          "maxHP": 120,
+          "hidden": false,
+          "eventEnemy": false,
+          "kind": "sentinel",
+          "ringMode": null,
+          "custom": null,
+          "mode": "recover",
+          "timer": 0.5001000000000022,
+          "aim": {
+            "x": 2.068356664595093,
+            "z": -92.88319670581278
+          },
+          "yaw": 0.3211028330142848,
+          "strike": {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "yaw": 0.3211028330142848,
+            "kind": "sweep",
+            "length": 3.8,
+            "halfWidth": 2
+          },
+          "contactAt": 339.31490000003544,
+          "contactHit": true
+        },
+        "health": 99,
+        "arrows": [],
+        "hits": [
+          {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "n": 18,
+            "at": 340.86480000003553,
+            "id": 4
+          },
+          {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "n": 18,
+            "at": 341.3981000000355,
+            "id": 6
+          }
+        ]
+      },
+      {
+        "wall": 1.5708921999903396,
+        "enemy": {
+          "id": "hell-tithe-warden-v1",
+          "x": 0.35009837216382833,
+          "z": -98.04912277963554,
+          "hp": 48,
+          "maxHP": 120,
+          "hidden": false,
+          "eventEnemy": false,
+          "kind": "sentinel",
+          "ringMode": null,
+          "custom": null,
+          "mode": "recover",
+          "timer": 0.08350000000000345,
+          "aim": {
+            "x": 2.068356664595093,
+            "z": -92.88319670581278
+          },
+          "yaw": 0.3211028330142848,
+          "strike": {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "yaw": 0.3211028330142848,
+            "kind": "sweep",
+            "length": 3.8,
+            "halfWidth": 2
+          },
+          "contactAt": 339.31490000003544,
+          "contactHit": true
+        },
+        "health": 99,
+        "arrows": [],
+        "hits": [
+          {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "n": 18,
+            "at": 341.3981000000355,
+            "id": 6
+          },
+          {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "n": 18,
+            "at": 341.93150000003556,
+            "id": 8
+          }
+        ]
+      },
+      {
+        "wall": 2.8428476999979466,
+        "enemy": {
+          "id": "hell-tithe-warden-v1",
+          "x": 0.35009837216382833,
+          "z": -98.04912277963554,
+          "hp": 48,
+          "maxHP": 120,
+          "hidden": false,
+          "eventEnemy": false,
+          "kind": "sentinel",
+          "ringMode": null,
+          "custom": null,
+          "mode": "windup",
+          "timer": 1.3167000000000044,
+          "aim": {
+            "x": 0,
+            "z": -97.3
+          },
+          "yaw": -0.43718358774873983,
+          "strike": {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "yaw": -0.43718358774873983,
+            "kind": "line",
+            "length": 6,
+            "halfWidth": 0.65
+          },
+          "contactAt": 339.31490000003544,
+          "contactHit": true
+        },
+        "health": 99,
+        "arrows": [],
+        "hits": [
+          {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "n": 18,
+            "at": 341.3981000000355,
+            "id": 6
+          },
+          {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "n": 18,
+            "at": 341.93150000003556,
+            "id": 8
+          }
+        ]
+      },
+      {
+        "wall": 3.3265203000046313,
+        "enemy": {
+          "id": "hell-tithe-warden-v1",
+          "x": 0.35009837216382833,
+          "z": -98.04912277963554,
+          "hp": 48,
+          "maxHP": 120,
+          "hidden": false,
+          "eventEnemy": false,
+          "kind": "sentinel",
+          "ringMode": null,
+          "custom": null,
+          "mode": "recover",
+          "timer": 2.7000000000000006,
+          "aim": {
+            "x": 0,
+            "z": -97.3
+          },
+          "yaw": -0.43718358774873983,
+          "strike": {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "yaw": -0.43718358774873983,
+            "kind": "line",
+            "length": 6,
+            "halfWidth": 0.65
+          },
+          "contactAt": 343.5147000000356,
+          "contactHit": false
+        },
+        "health": 99,
+        "arrows": [],
+        "hits": []
+      },
+      {
+        "wall": 3.9856432999949902,
+        "enemy": {
+          "id": "hell-tithe-warden-v1",
+          "x": 0.35009837216382833,
+          "z": -98.04912277963554,
+          "hp": 12,
+          "maxHP": 120,
+          "hidden": false,
+          "eventEnemy": false,
+          "kind": "sentinel",
+          "ringMode": null,
+          "custom": null,
+          "mode": "recover",
+          "timer": 1.9501000000000013,
+          "aim": {
+            "x": 0,
+            "z": -97.3
+          },
+          "yaw": -0.43718358774873983,
+          "strike": {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "yaw": -0.43718358774873983,
+            "kind": "line",
+            "length": 6,
+            "halfWidth": 0.65
+          },
+          "contactAt": 343.5147000000356,
+          "contactHit": false
+        },
+        "health": 99,
+        "arrows": [],
+        "hits": [
+          {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "n": 18,
+            "at": 343.8146000000356,
+            "id": 11
+          },
+          {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "n": 18,
+            "at": 344.3479000000357,
+            "id": 13
+          }
+        ]
+      },
+      {
+        "wall": 4.304778999998234,
+        "enemy": {
+          "id": "hell-tithe-warden-v1",
+          "x": 0.35009837216382833,
+          "z": -98.04912277963554,
+          "hp": 12,
+          "maxHP": 120,
+          "hidden": false,
+          "eventEnemy": false,
+          "kind": "sentinel",
+          "ringMode": null,
+          "custom": null,
+          "mode": "recover",
+          "timer": 1.6334000000000042,
+          "aim": {
+            "x": 0,
+            "z": -97.3
+          },
+          "yaw": -0.43718358774873983,
+          "strike": {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "yaw": -0.43718358774873983,
+            "kind": "line",
+            "length": 6,
+            "halfWidth": 0.65
+          },
+          "contactAt": 343.5147000000356,
+          "contactHit": false
+        },
+        "health": 99,
+        "arrows": [],
+        "hits": [
+          {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "n": 18,
+            "at": 343.8146000000356,
+            "id": 11
+          },
+          {
+            "x": 0.35009837216382833,
+            "z": -98.04912277963554,
+            "n": 18,
+            "at": 344.3479000000357,
+            "id": 13
+          }
+        ]
+      }
+    ],
+    "guard_commands": 1,
+    "movement": {
+      "health_before": 99,
+      "locked": {
+        "x": 0.35009837216382833,
+        "z": -98.04912277963554,
+        "yaw": -0.43718358774873983,
+        "kind": "line",
+        "length": 6,
+        "halfWidth": 0.65
+      },
+      "before": {
+        "x": 0,
+        "z": -97.3,
+        "yaw": 2.7044090658410536
+      },
+      "after": {
+        "x": 2.367639942553353,
+        "z": -96.19349661725511,
+        "yaw": 1.1336127390461568
+      },
+      "health_after_contact": 99,
+      "contact_hit": false,
+      "contact_at": 343.5147000000356,
+      "contact_frame": {
+        "x": 0.35009837216382833,
+        "z": -98.04912277963554,
+        "yaw": -0.43718358774873983,
+        "kind": "line",
+        "length": 6,
+        "halfWidth": 0.65
+      }
+    },
+    "native_camera_exchange": true
+  },
+  "raw_video": "D:\\07-GAMES\\Firstlight\\artifacts\\hell-campaign-20261004\\capture-blade-02\\2f79953304d6bed39f016d9470e611cb.webm",
+  "wall_seconds": 104.84271489997627
+}

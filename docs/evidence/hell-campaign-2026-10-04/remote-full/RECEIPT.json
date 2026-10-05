@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "exit": 0,
+  "completion_observation": "Root observed the complete unified-exec verifier session exit0 and final Verification passed line; logs belong to the same invocation.",
+  "head": "099bd8d2806a85822f97bdc48dcc466d13ec0cf6",
+  "runtime": "f2dfdf3e01dcbdd49838d3aedf961b79dfe786f6",
+  "clone": "D:\\07-GAMES\\Firstlight\\artifacts\\hell-campaign-20261004\\remote01",
+  "tracked_clean": true,
+  "command": "CPython313/python.exe tools/verify.py --browser --output D:\\07-GAMES\\Firstlight\\artifacts\\hell-campaign-20261004\\full01 --browser-output D:\\07-GAMES\\Firstlight\\artifacts\\hell-campaign-20261004\\full01-browser",
+  "environment": {
+    "PYTHONPATH": "C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Lib/site-packages",
+    "PYTHONUTF8": "1"
+  },
+  "commands": 196,
+  "source_commands": 154,
+  "syntax_modules": 102,
+  "node": {
+    "tests": 1198,
+    "pass": 1198,
+    "fail": 0,
+    "skipped": 0
+  },
+  "python": {
+    "total": 62,
+    "passed": 61,
+    "failed": 0,
+    "skipped": 1,
+    "skip": "Existing Windows symlink privilege unavailable"
+  },
+  "earned_journeys": 49,
+  "browser_suites": 42,
+  "html": {
+    "bytes": 2747325,
+    "sha256": "eb94d30b587ef8ee5bb374d7df9db540cf6caa0bdadf02648cc5a4107a64d7ac",
+    "identical_copies": true
+  },
+  "scope": "Complete fresh remote checkout moved to D for its heavy own history. Independent Git inspection confirms this checkout is not sparse; runtime/build/assets/tests/fixtures and tracked archived payloads are retained.",
+  "hosted": "Billing-blocked before execution; no Ubuntu qualification",
+  "human_acceptance": false
+}

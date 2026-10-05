@@ -1,0 +1,285 @@
+{
+  "variant": "fresh-bow-quarry",
+  "route": "quarry",
+  "status": "passed",
+  "commands": 23,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedObjectives": 0,
+  "acceleratedTicks": true,
+  "sourceSha256": "8c6de733aabe713de1f4c8d26b35a120dc45ee151d04ff0ff7fd53c82352e151",
+  "story": {
+    "version": 1,
+    "accepted": true,
+    "steps": [
+      "quarry-reserve",
+      "quarry-grade"
+    ],
+    "dispatch": "quarry",
+    "arrived": true,
+    "claimed": true
+  },
+  "weapon": "trail_bow",
+  "xp": 0,
+  "delta": {
+    "ore": 3,
+    "coins": 4,
+    "fiber": 2,
+    "wood": 0
+  },
+  "actions": [
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "start",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7.9,
+        -13
+      ]
+    },
+    {
+      "gather": "timber-1"
+    },
+    {
+      "walk": [
+        -13.9,
+        -11
+      ]
+    },
+    {
+      "gather": "timber-2"
+    },
+    {
+      "walk": [
+        5.1,
+        10
+      ]
+    },
+    {
+      "gather": "fibre-1"
+    },
+    {
+      "walk": [
+        -4.9,
+        -10
+      ]
+    },
+    {
+      "gather": "fibre-2"
+    },
+    {
+      "walk": [
+        5.1,
+        13
+      ]
+    },
+    {
+      "gather": "stone-1"
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "arsenal-craft",
+      "p": {
+        "id": "trail_bow"
+      }
+    },
+    {
+      "type": "equip",
+      "p": {
+        "id": "trail_bow"
+      }
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        7,
+        5
+      ]
+    },
+    {
+      "type": "earth-story-accept",
+      "p": {}
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        12,
+        -26
+      ]
+    },
+    {
+      "type": "earth-story-step",
+      "p": {
+        "id": "quarry-reserve"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        14,
+        -13
+      ]
+    },
+    {
+      "type": "earth-story-step",
+      "p": {
+        "id": "quarry-grade"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        7,
+        5
+      ]
+    },
+    {
+      "type": "earth-story-dispatch",
+      "p": {
+        "route": "quarry"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        0,
+        -43
+      ]
+    },
+    {
+      "type": "earth-story-arrive",
+      "p": {}
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        0,
+        -43
+      ]
+    },
+    {
+      "type": "earth-story-claim",
+      "p": {}
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        0,
+        10
+      ]
+    },
+    {
+      "walk": [
+        0,
+        -43
+      ]
+    }
+  ]
+}

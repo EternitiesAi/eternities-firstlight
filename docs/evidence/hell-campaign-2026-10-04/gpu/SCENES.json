@@ -1,0 +1,5 @@
+[
+  {"name":"Hell Refuge, third person","expression":"()=>{const p=RealmWorldFoundations.preview(Realm.test.worldContext(),'hell');if(!p.ok)throw Error(p.error);const r=Realm.test.worldTravel(p.ticket);if(!r.ok)throw Error(r.error);document.querySelector('#rpg-hud [data-rpg=\"camera\"][data-id=\"adventure\"]').click();return r;}"},
+  {"name":"Bell Yard supported approach, third person","expression":"async()=>{const r=Realm.test.move(-12,-79);if(!r.ok)throw Error(r.error);await new Promise((resolve,reject)=>{const start=performance.now();const t=setInterval(()=>{if(!Realm.test.path.length){clearInterval(t);resolve();}else if(performance.now()-start>90000){clearInterval(t);reject(Error('Real approach timed out'));}},100);});return {player:Realm.diagnostics.adventure.player,enemy:Realm.diagnostics.adventure.enemies.find(e=>e.id==='hell-tithe-warden-v1')};}"},
+  {"name":"Bell Yard supported approach, diorama","expression":"()=>{document.querySelector('#rpg-hud [data-rpg=\"camera\"][data-id=\"follow\"]').click();return {player:Realm.diagnostics.adventure.player};}"}
+]

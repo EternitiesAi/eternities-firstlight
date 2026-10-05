@@ -1,0 +1,261 @@
+{
+  "status": "passed",
+  "variant": "fresh-blade",
+  "earthRoute": true,
+  "classPath": null,
+  "commands": 80,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedDefeats": 0,
+  "acceleratedTick": true,
+  "source": null,
+  "claimed": 5,
+  "beforeDamage": 16,
+  "afterDamage": 27,
+  "equipped": "copper_blade",
+  "stats": {
+    "level": 1,
+    "attack": 27,
+    "defense": 1,
+    "maxHP": 100
+  },
+  "xp": 0,
+  "economy": {
+    "initial": {
+      "ore": 0,
+      "coins": 0,
+      "fiber": 0,
+      "wood": 0,
+      "stone": 0,
+      "plank": 0
+    },
+    "end": {
+      "ore": 2,
+      "coins": 4,
+      "fiber": 4,
+      "wood": 0,
+      "stone": 0,
+      "plank": 0
+    },
+    "net": {
+      "ore": 2,
+      "coins": 4,
+      "fiber": 4,
+      "wood": 0,
+      "stone": 0,
+      "plank": 0
+    },
+    "surveys": {
+      "count": 5,
+      "ore": 15,
+      "coins": 20,
+      "fiber": 10
+    }
+  },
+  "previews": [
+    {
+      "label": "Unowned longbow project",
+      "project": "copper_bow",
+      "recipe": {
+        "id": "craft:trail_bow",
+        "type": "arsenal-craft",
+        "payload": {
+          "id": "trail_bow"
+        },
+        "name": "Ashwood trail bow",
+        "materials": {
+          "wood": 6,
+          "fiber": 4,
+          "stone": 2
+        },
+        "ore": 0,
+        "coins": 0,
+        "requires": null
+      },
+      "weapon": "trail_bow",
+      "prerequisite": true,
+      "current": {
+        "level": 1,
+        "attack": 16,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "after": {
+        "level": 1,
+        "attack": 13,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "beforeWeapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "afterWeapon": {
+        "style": "bow",
+        "reach": 11,
+        "cooldown": 0.75,
+        "stamina": 6,
+        "primary": "Loose arrow",
+        "special": "Piercing light"
+      },
+      "currentSocket": null,
+      "socket": null
+    },
+    {
+      "label": "Base weapon craft",
+      "project": "copper_blade",
+      "recipe": {
+        "id": "craft:copper_blade",
+        "type": "forge",
+        "payload": {},
+        "name": "Copper-edged blade",
+        "materials": {},
+        "ore": 4,
+        "coins": 4,
+        "requires": null
+      },
+      "weapon": "copper_blade",
+      "prerequisite": false,
+      "current": {
+        "level": 1,
+        "attack": 16,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "after": {
+        "level": 1,
+        "attack": 23,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "beforeWeapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "afterWeapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "currentSocket": null,
+      "socket": null
+    },
+    {
+      "label": "Finite fitting I",
+      "project": "copper_blade",
+      "recipe": {
+        "step": 1,
+        "name": "River fitting I",
+        "attack": 2,
+        "ore": 3,
+        "coins": 4,
+        "materials": {
+          "fiber": 2
+        },
+        "id": "fit:copper_blade:1",
+        "type": "pursuit-fit",
+        "payload": {
+          "weapon": "copper_blade",
+          "step": 1
+        },
+        "requires": null
+      },
+      "weapon": "copper_blade",
+      "prerequisite": false,
+      "current": {
+        "level": 1,
+        "attack": 16,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "after": {
+        "level": 1,
+        "attack": 25,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "beforeWeapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "afterWeapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "currentSocket": null,
+      "socket": null
+    },
+    {
+      "label": "Finite fitting II",
+      "project": "copper_blade",
+      "recipe": {
+        "step": 2,
+        "name": "River fitting II",
+        "attack": 4,
+        "ore": 6,
+        "coins": 8,
+        "materials": {
+          "fiber": 4
+        },
+        "id": "fit:copper_blade:2",
+        "type": "pursuit-fit",
+        "payload": {
+          "weapon": "copper_blade",
+          "step": 2
+        },
+        "requires": null
+      },
+      "weapon": "copper_blade",
+      "prerequisite": false,
+      "current": {
+        "level": 1,
+        "attack": 16,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "after": {
+        "level": 1,
+        "attack": 27,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "beforeWeapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "afterWeapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "currentSocket": null,
+      "socket": null
+    }
+  ]
+}

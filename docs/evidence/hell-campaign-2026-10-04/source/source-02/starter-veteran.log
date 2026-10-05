@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "campaignCommands": [
+    77,
+    32,
+    52,
+    39
+  ],
+  "starter": {
+    "status": "passed",
+    "variant": "veteran",
+    "source": "evidence10/veteran-source/HOME_AFTER_BELL_EARNED.json",
+    "commands": 16,
+    "positionEdits": 0,
+    "inventoryGrants": 0,
+    "plantedDefeats": 0,
+    "temperOnly": true,
+    "migrationFixture": "Command-earned campaign data represented as adventure schema 5 with no starter record",
+    "attackBefore": 42,
+    "attackAfter": 44,
+    "equipment": {
+      "weapon": "dawn_edge",
+      "armor": "keeper_coat",
+      "charm": "chime_clasp"
+    },
+    "chapters": {
+      "crossing": {
+        "version": 1,
+        "entered": true,
+        "met": true,
+        "inscription": true,
+        "clapperRevealed": true,
+        "clapper": true,
+        "repaired": true,
+        "complete": true,
+        "reward": true,
+        "attuned": true,
+        "projects": []
+      },
+      "beacon": {
+        "version": 1,
+        "introduced": true,
+        "complete": true,
+        "status": "stable",
+        "attempts": 1,
+        "failures": 0,
+        "reward": true,
+        "relic": "renounced",
+        "route": "forest",
+        "soul": {
+          "grace": true,
+          "equipped": "aegis",
+          "radiance": 2,
+          "corruption": 0,
+          "scars": [
+            "cinder-invoked",
+            "cinder-renounced"
+          ]
+        }
+      }
+    }
+  }
+}
