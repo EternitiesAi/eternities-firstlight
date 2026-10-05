@@ -23,6 +23,9 @@ function fixture({steps=[],claimed=false,branch=null,patrol=null,xp=0}={}){
  f.save=value=>{f.saves.push(C.validate(value));return{ok:true};};sim.earthExpeditionSave=f.save;
  f.context=()=>({sim:f.sim,active:f.active,revision:f.revision});
  f.rpg={get sim(){return f.sim;},get state(){return f.sim.state.adventure;},quest:'story',dialog:{open:false},open(tab){this.opened=tab;},close(){this.closed=true;},paint(){this.paints=(this.paints||0)+1;},api:{worldContext:f.context,toast:s=>f.toasts.push(s),project:()=>({visible:false}),walkLocal:(x,z)=>{f.walks.push({x,z});return f.sim.moveTo(x,z);},expeditionCommand:(type,payload)=>{f.commands.push({type,payload});return f.result=E.command(f.context(),type,payload,{save:f.save});},earthBinding:(weapon,kind)=>{f.boundCalls++;return f.result=E.bindingCommand(f.context(),weapon,kind,{save:f.save});}}};
+ // Partial DOM fixture; current production helpers/accessors own dispatch and
+ // tick. Do not replace new helpers with permissive facade callbacks.
+ Object.setPrototypeOf(f.rpg,RPG.RPGUI.prototype);delete f.rpg.quest;f.rpg.quest='story';
  f.ui=new UI.ExpeditionUI(f.rpg);f.rpg.expedition=f.ui;f.rpg.civic=new CUI.LocalLifeUI(f.rpg);f.rpg.community=new BUI.BridgeCommunityUI(f.rpg);f.rpg.hellCampaign=new HCUI.HellCampaignUI(f.rpg);f.rpg.heavenCampaign=new HVUI.HeavenCampaignUI(f.rpg);f.rpg.atlantisCampaign=new ATUI.AtlantisCampaignUI(f.rpg);f.rpg.cosmosCampaign=new CCUI.CosmosCampaignUI(f.rpg);f.rpg.earthHomecoming=new EHUI.EarthHomecomingUI(f.rpg);A.syncScene(sim);return f;
 }
 const paid=()=>({steps:E.definition.steps.map(s=>s.id),claimed:true,branch:'managed-coppice'});

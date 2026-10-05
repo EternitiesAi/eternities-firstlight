@@ -1,0 +1,352 @@
+"""CPU preparation tests only; imports never launch browser/server/profile.
+
+Boundary JSON is hand-authored test input, not an earned character fixture.
+The source preflight case reads the actual installed Root when explicitly set.
+"""
+from pathlib import Path
+import ast
+import copy
+import contextlib
+import io
+import inspect
+import importlib.util
+import json
+import os
+import subprocess
+import tempfile
+import threading
+import unittest
+
+HERE = Path(__file__).resolve().parent
+
+
+def load_tool():
+    tool = HERE / 'onboarding_browser.py'
+    if not tool.is_file():
+        tool = HERE.parent / 'tools/onboarding_browser.py'
+    spec = importlib.util.spec_from_file_location('onboarding_browser', tool)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def boundary_world():
+    return {'version': 9, 'seed': 2317, 'adventure': {'xp': 1, 'revision': 2,
+            'elapsed': 0, 'equipment': {'weapon': 'trail_blade'},
+            'arsenal': {'sockets': {}}, 'beacon': {'relic': 'sealed'}},
+            'localLife': {'records': {'lamp': {'accepted': True, 'choice': 'approach', 'claimed': False}}},
+            'homeHistory': {'version': 1, 'records': []},
+            'settings': {'cameraViews': {'version': 1, 'profiles': {}}, 'cameraMode': 'adventure'},
+            'journal': [], 'nextEvent': 1, 'notes': [], 'player': {'x': 2.5, 'z': 6}}
+
+
+class Preparation(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.m = load_tool()
+
+    def test_01_import_is_inert(self):
+        before = sorted(p.name for p in HERE.iterdir())
+        threads = {t.ident for t in threading.enumerate()}
+        module = load_tool()
+        self.assertTrue(callable(module.main))
+        self.assertEqual(before, sorted(p.name for p in HERE.iterdir()))
+        self.assertEqual(threads, {t.ident for t in threading.enumerate()})
+        self.assertNotIn('playwright.sync_api', module.__dict__)
+
+    def test_02_valid_fresh_projection_contract(self):
+        self.m.require_journal({'title': 'The Feather Beneath Wildwood', 'chapterBeforeLater': True,
+            'laterClosed': True, 'lockedActions': ['earth-homecoming-open', 'cosmos-campaign-open',
+                'atlantis-campaign-open', 'heaven-campaign-open', 'hell-campaign-open']})
+
+    def test_03_later_work_cannot_precede_current_chapter(self):
+        with self.assertRaises(AssertionError):
+            self.m.require_journal({'title': 'The Feather Beneath Wildwood', 'chapterBeforeLater': False,
+                'laterClosed': True, 'lockedActions': list(self.m.LOCKED_ACTIONS)})
+
+    def test_04_missing_locked_read_control_is_not_hidden_success(self):
+        with self.assertRaises(AssertionError):
+            self.m.require_journal({'title': 'The Feather Beneath Wildwood', 'chapterBeforeLater': True,
+                'laterClosed': True, 'lockedActions': ['earth-homecoming-open']})
+
+    def test_05_collapsed_later_group_is_required_initially(self):
+        with self.assertRaises(AssertionError):
+            self.m.require_journal({'title': 'The Feather Beneath Wildwood', 'chapterBeforeLater': True,
+                'laterClosed': False, 'lockedActions': list(self.m.LOCKED_ACTIONS)})
+
+    def test_06_camera_save_metadata_does_not_fake_history_loss(self):
+        before = boundary_world(); after = copy.deepcopy(before)
+        after['settings']['cameraViews']['profiles']['adventure'] = {'yaw': .2}
+        self.m.require_projection_preserved(before, after)
+
+    def test_07_protected_choice_cannot_disappear(self):
+        before = boundary_world(); after = copy.deepcopy(before)
+        after['localLife']['records']['lamp']['choice'] = 'desk'
+        with self.assertRaises(AssertionError):
+            self.m.require_projection_preserved(before, after)
+
+    def test_08_equipment_socket_cannot_be_added(self):
+        before = boundary_world(); after = copy.deepcopy(before)
+        after['adventure']['arsenal']['sockets']['trail_blade'] = 'amber'
+        with self.assertRaises(AssertionError):
+            self.m.require_projection_preserved(before, after)
+
+    def test_09_xp_or_revision_mutation_is_not_metadata(self):
+        for field in ('xp', 'revision'):
+            before = boundary_world(); after = copy.deepcopy(before)
+            after['adventure'][field] += 1
+            with self.subTest(field=field), self.assertRaises(AssertionError):
+                self.m.require_projection_preserved(before, after)
+
+    def test_10_no_tracker_preference_can_be_saved(self):
+        before = boundary_world(); after = copy.deepcopy(before)
+        after['trackerSelection'] = 'homestead'
+        with self.assertRaises(AssertionError):
+            self.m.require_projection_preserved(before, after)
+
+    def test_11_keys_are_protected_by_presence_and_value(self):
+        self.m.require_old_keys({'old': 'kept', 'absent': None}, {'old': 'kept', 'absent': None})
+        for after in ({'old': 'changed', 'absent': None}, {'old': 'kept', 'absent': 'injected'}):
+            with self.assertRaises(AssertionError):
+                self.m.require_old_keys({'old': 'kept', 'absent': None}, after)
+
+    def test_12_native_library_revision_may_advance_without_game_change(self):
+        before = {'version': 1, 'revision': 2, 'active': 'character-1',
+                  'slots': [{'id': 'character-1', 'world': boundary_world()}]}
+        after = copy.deepcopy(before); after['revision'] += 1
+        self.m.require_same_slots(before, after)
+
+    def test_13_inactive_slot_history_cannot_be_replaced(self):
+        before = {'version': 1, 'revision': 2, 'active': 'character-1',
+                  'slots': [{'id': 'character-1', 'world': boundary_world()}]}
+        after = copy.deepcopy(before); after['slots'][0]['world']['journal'].append({'text': 'injected'})
+        with self.assertRaises(AssertionError):
+            self.m.require_same_slots(before, after)
+
+    def test_14_existing_output_is_refused(self):
+        with tempfile.TemporaryDirectory(dir=HERE) as t:
+            root = Path(t) / 'root'; root.mkdir()
+            existing = Path(t) / 'evidence'; existing.mkdir()
+            with self.assertRaises(FileExistsError):
+                self.m.guard_output(existing, root)
+
+    def test_15_game_tree_and_parent_are_refused(self):
+        with tempfile.TemporaryDirectory(dir=HERE) as t:
+            root = Path(t) / 'root'; root.mkdir()
+            with self.assertRaises(ValueError):
+                self.m.guard_output(root / 'artifacts', root)
+            with self.assertRaises((ValueError, FileExistsError)):
+                self.m.guard_output(Path(t), root)
+
+    def test_16_only_one_new_profile_child_is_allowed(self):
+        with tempfile.TemporaryDirectory(dir=HERE) as t:
+            p = self.m.profile_path(Path(t))
+            self.assertEqual(p.parent, Path(t).resolve())
+            p.mkdir()
+            with self.assertRaises(FileExistsError):
+                self.m.profile_path(Path(t))
+
+    def test_17_source_drift_is_refused(self):
+        with tempfile.TemporaryDirectory(dir=HERE) as t:
+            p = Path(t) / 'input.txt'; p.write_text('before')
+            frozen = {str(p): self.m.sha(p)}
+            p.write_text('after')
+            with self.assertRaises(AssertionError):
+                self.m.require_frozen(frozen)
+
+    def test_18_actual_installed_preflight_derives_current_epoch(self):
+        root = os.environ.get('FIRSTLIGHT_ROOT')
+        if not root:
+            self.skipTest('Explicit actual checkout required; no private default.')
+        frozen = self.m.source_inputs(Path(root))
+        self.assertIn(str((Path(root) / 'src/rpg-ui.js').resolve()), frozen)
+        self.assertEqual(frozen[str((Path(root) / 'index.html').resolve())],
+                         frozen[str((Path(root) / 'FIRSTLIGHT_VALLEY.html').resolve())])
+        self.m.require_frozen(frozen)
+
+    def test_19_installed_browser_sdk_accepts_controller_arguments(self):
+        # A misplaced positional argument would fail only after earning work.
+        # Bind against the actual installed SDK without constructing Playwright.
+        from playwright.sync_api import Page, BrowserContext, BrowserType
+        tree = ast.parse(Path(self.m.__file__).read_text())
+        types = {'self.page': Page, 'self.context': BrowserContext, 'self.pw.chromium': BrowserType}
+        checked = 0
+        for call in ast.walk(tree):
+            if not isinstance(call, ast.Call) or not isinstance(call.func, ast.Attribute):
+                continue
+            owner = types.get(ast.unparse(call.func.value))
+            if owner is None:
+                continue
+            signature = inspect.signature(getattr(owner, call.func.attr))
+            try:
+                signature.bind(None, *[object() for _ in call.args],
+                               **{k.arg: object() for k in call.keywords if k.arg})
+            except TypeError as e:
+                self.fail('Actual SDK rejects controller call at line '+str(call.lineno)+': '+str(e))
+            checked += 1
+        self.assertGreater(checked, 10)
+
+    def test_20_preflight_cli_cannot_create_evidence_or_start_threads(self):
+        root = os.environ.get('FIRSTLIGHT_ROOT')
+        if not root:
+            self.skipTest('Explicit actual checkout required; no private default.')
+        with tempfile.TemporaryDirectory(dir=HERE) as t:
+            output = Path(t) / 'must-not-exist'
+            threads = {thread.ident for thread in threading.enumerate()}
+            stdout = io.StringIO()
+            with contextlib.redirect_stdout(stdout):
+                result = self.m.main(['--root', root, '--output', str(output), '--preflight-only'])
+            self.assertEqual(result, 0)
+            self.assertFalse(output.exists())
+            self.assertEqual(threads, {thread.ident for thread in threading.enumerate()})
+
+    def test_21_live_ticks_do_not_ignore_payout_choice_or_inventory(self):
+        before = boundary_world(); after = copy.deepcopy(before)
+        after['adventure']['elapsed'] = 1
+        self.assertEqual(self.m.living_signature(before), self.m.living_signature(after))
+        after['adventure']['xp'] = 2
+        self.assertNotEqual(self.m.living_signature(before), self.m.living_signature(after))
+        after['adventure']['xp'] = 1
+        after['localLife']['records']['lamp']['choice'] = 'desk'
+        self.assertNotEqual(self.m.living_signature(before), self.m.living_signature(after))
+
+    def test_22_saved_tracker_preferences_are_rejected_recursively(self):
+        self.m.no_saved_preference({'slots': [{'world': boundary_world()}]})
+        with self.assertRaises(AssertionError):
+            self.m.no_saved_preference({'slots': [{'world': {'trackerSelection': 'homestead'}}]})
+
+    def test_23_actual_core_fresh_has_zero_xp_and_old_progress_is_not_fresh(self):
+        root = self.m.resolve_root()
+        result = subprocess.run(['node', '-e',
+            "console.log(JSON.stringify(require('./src/core.js').fresh()))"],
+            cwd=root, capture_output=True, text=True, check=True)
+        world = json.loads(result.stdout)
+        self.assertTrue(self.m.fresh_start_terms(world))
+        for name, mutate in (
+            ('one prior XP', lambda w: w['adventure'].update(xp=1)),
+            ('kit acquired', lambda w: w['adventure'].update(started=True)),
+            ('accepted later work', lambda w: w['earthHomecoming'].update(accepted=True))):
+            prior = copy.deepcopy(world); mutate(prior)
+            with self.subTest(name=name): self.assertFalse(self.m.fresh_start_terms(prior))
+
+
+    def resume_pair(self):
+        fixture = json.loads((HERE / 'fixtures/onboarding-resume-pair.json').read_text(encoding='utf8'))
+        return copy.deepcopy(fixture['before']), copy.deepcopy(fixture['after'])
+
+    def production_tick(self, before, seconds):
+        # Actual installed owner, no validator/roster facade or saved-state writes.
+        root = self.m.resolve_root()
+        code = "const fs=require('node:fs'),C=require('./src/core.js');require('./src/combat.js');const q=JSON.parse(fs.readFileSync(0,'utf8'));const s=new C.Simulation(q.before);s.tick(q.seconds);console.log(JSON.stringify(s.snapshot()));"
+        result = subprocess.run(['node', '-e', code], cwd=root,
+            input=json.dumps({'before': before, 'seconds': seconds}),
+            capture_output=True, text=True, check=True, timeout=20)
+        return json.loads(result.stdout)
+
+    def test_24_recorded_whole_resume_pair_matches_actual_production_core(self):
+        before, after = self.resume_pair()
+        predicted = self.production_tick(before, .1)
+        self.assertEqual(predicted['journal'], after['journal'])
+        self.assertEqual(predicted['nextEvent'], after['nextEvent'])
+        self.assertEqual(self.m.living_signature(predicted), self.m.living_signature(after))
+        result = self.m.require_initial_resume(self.m.resolve_root(), before, after)
+        self.assertTrue(result['preserved']); self.assertEqual(result['tickSeconds'], .1)
+        self.assertEqual(result['oldPrefixLength'], len(before['journal']))
+        self.assertEqual(result['events'], after['journal'][len(before['journal']):])
+        self.assertEqual(before, self.resume_pair()[0])
+
+    def test_25_resume_cannot_rewrite_or_drop_old_history(self):
+        before, after = self.resume_pair()
+        for name, mutate in (
+            ('edited original entry', lambda w: w['journal'][0].update(text='forged old event')),
+            ('dropped original entry', lambda w: w['journal'].pop(0))):
+            bad = copy.deepcopy(after); mutate(bad)
+            with self.subTest(name=name), self.assertRaises(AssertionError):
+                self.m.require_initial_resume(self.m.resolve_root(), before, bad)
+
+    def test_26_resume_preserves_xp_equipment_socket_and_explicit_choice(self):
+        before, after = self.resume_pair()
+        for name, mutate in (
+            ('XP', lambda w: w['adventure'].update(xp=1)),
+            ('gear', lambda w: w['adventure']['equipment'].update(weapon=None)),
+            ('socket', lambda w: w['adventure']['arsenal']['sockets'].update(trail_blade='amber')),
+            ('choice', lambda w: w['localLife']['records']['atlantis-bellglass-lamp-v1'].update(choice='desk'))):
+            bad = copy.deepcopy(after); mutate(bad)
+            with self.subTest(name=name), self.assertRaises(AssertionError):
+                self.m.require_initial_resume(self.m.resolve_root(), before, bad)
+
+    def test_27_resume_rejects_forged_routine_text_kind_or_order(self):
+        before, after = self.resume_pair(); n = len(before['journal'])
+        for name, mutate in (
+            ('forged text', lambda w: w['journal'][n].update(text='Ilan received a quest payment.')),
+            ('wrong kind', lambda w: w['journal'][n].update(kind='quest')),
+            ('reordered people', lambda w: w['journal'].__setitem__(slice(n, n+2), list(reversed(w['journal'][n:n+2]))))):
+            bad = copy.deepcopy(after); mutate(bad)
+            with self.subTest(name=name), self.assertRaises(AssertionError):
+                self.m.require_initial_resume(self.m.resolve_root(), before, bad)
+
+    def test_28_resume_rejects_sequence_or_next_event_forgery(self):
+        before, after = self.resume_pair(); n = len(before['journal'])
+        for name, mutate in (
+            ('sequence jump', lambda w: w['journal'][n+1].update(seq=w['journal'][n+1]['seq']+1)),
+            ('nextEvent extra', lambda w: w.update(nextEvent=w['nextEvent']+1))):
+            bad = copy.deepcopy(after); mutate(bad)
+            with self.subTest(name=name), self.assertRaises(AssertionError):
+                self.m.require_initial_resume(self.m.resolve_root(), before, bad)
+
+    def test_29_resume_rejects_mixed_forged_future_or_invalid_clocks(self):
+        import math
+        before, after = self.resume_pair(); n = len(before['journal'])
+        cases=[]
+        for value in (float('nan'), float('inf'), True, before['hour']-.001):
+            bad=copy.deepcopy(after); bad['journal'][n]['hour']=value; cases.append(('invalid first '+str(value),bad))
+        bad=copy.deepcopy(after);bad['journal'][n+1]['hour']=math.nextafter(after['hour'], math.inf);cases.append(('one mixed clock',bad))
+        bad=copy.deepcopy(after);bad['hour']=math.nextafter(after['hour'], math.inf);cases.append(('world clock inconsistent',bad))
+        bad=copy.deepcopy(after);bad['journal'][n]['day']+=1;cases.append(('future day',bad))
+        bad=copy.deepcopy(after)
+        future=math.nextafter(before['hour']+.1*.0045,math.inf)
+        bad['hour']=future
+        for event in bad['journal'][n:]:event['hour']=future
+        cases.append(('beyond actual clamped clock',bad))
+        for name,bad in cases:
+            with self.subTest(name=name),self.assertRaises(AssertionError):
+                self.m.require_initial_resume(self.m.resolve_root(), before, bad)
+
+    def test_30_resume_does_not_allow_a_fourth_or_missing_event(self):
+        before, after = self.resume_pair()
+        bad=copy.deepcopy(after);extra=copy.deepcopy(bad['journal'][-1]);extra['seq']=bad['nextEvent'];bad['nextEvent']+=1;bad['journal'].append(extra)
+        with self.assertRaises(AssertionError):self.m.require_initial_resume(self.m.resolve_root(), before, bad)
+        bad=copy.deepcopy(after);bad['journal'].pop();bad['nextEvent']-=1
+        with self.assertRaises(AssertionError):self.m.require_initial_resume(self.m.resolve_root(), before, bad)
+
+    def test_31_actual_core_tick_clocks_allow_binary64_clamped_endpoint(self):
+        before,_=self.resume_pair()
+        for seconds in (0, .016, .05, .1):
+            after=self.production_tick(before,seconds)
+            result=self.m.require_initial_resume(self.m.resolve_root(),before,after)
+            with self.subTest(seconds=seconds):
+                self.assertTrue(result['preserved']);self.assertLessEqual(result['tickSeconds'],.1)
+                self.assertEqual(result['events'],after['journal'][len(before['journal']):])
+
+    def test_32_normal_tracker_tick_history_comparison_remains_strict(self):
+        before,after=self.resume_pair()
+        self.assertNotEqual(self.m.living_signature(before),self.m.living_signature(after))
+        source=inspect.getsource(self.m.OnboardingBrowser.tick_tracker)
+        self.assertIn('living_signature(before) == living_signature(after)',source)
+        self.assertNotIn('require_initial_resume',source)
+
+
+    def test_33_actual_core_other_owner_reset_is_outside_resume_allowance(self):
+        before, _ = self.resume_pair()
+        # Explicit synthetic settings boundary, not earned browser state. Core
+        # deliberately disables sound on load; that is NOT folded into this
+        # journal-only allowance or a generic tolerance for owner changes.
+        before['settings']['sound'] = True
+        after = self.production_tick(before, .1)
+        self.assertFalse(after['settings']['sound'])
+        self.assertEqual(len(after['journal']), len(before['journal']) + 3)
+        with self.assertRaisesRegex(AssertionError, 'another protected owner'):
+            self.m.require_initial_resume(self.m.resolve_root(), before, after)
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)

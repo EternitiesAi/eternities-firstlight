@@ -40,6 +40,19 @@ try:
             serial += 1
             r = ev('([id,t,p])=>Realm.test.adventure(id,t,p)', [f'cue-ui-{serial}',kind,payload or {}])
             check('Accepted ' + kind, r['ok']); render()
+        def subject_visibility(label):
+            # Read the current UI-owned simulation after every replacement. No actor/camera writes.
+            subject = ev("""()=>{let sim;const proto=RealmRPGUI.RPGUI.prototype,old=proto.targetCue;
+              proto.targetCue=function(){sim=this.sim;return old.call(this)};try{Realm.test.render()}finally{proto.targetCue=old}
+              const enemy=RealmCombat.selected(sim),frame=RealmAdventureArt.skitterSnapshot(sim).find(f=>f.id===enemy?.id),E=RealmEngine;
+              if(!frame?.parts?.length)return null;const points=[];
+              for(const part of frame.parts){const mesh=E.geometry(part.kind);for(let i=0;i<mesh.length;i+=6){const p=E.M.transform(part.m,mesh.slice(i,i+3));points.push(Realm.project(...p))}}
+              return{id:enemy.id,vertices:points.length,visible:points.every(p=>p.visible),x:Math.min(...points.map(p=>p.x)),y:Math.min(...points.map(p=>p.y)),right:Math.max(...points.map(p=>p.x)),bottom:Math.max(...points.map(p=>p.y))};}""")
+            check(label+' actual rendered owner has projected body', subject and subject['vertices']>0 and subject['visible'])
+            target=page.locator('#target-frame').bounding_box();width=page.viewport_size['width'];height=page.viewport_size['height']
+            check(label+' whole projected body lies in viewport',0<=subject['x']<subject['right']<=width and 0<=subject['y']<subject['bottom']<=height)
+            check(label+' target HUD does not cover actual projected body',target['x']>=subject['right'] or target['x']+target['width']<=subject['x'] or target['y']>=subject['bottom'] or target['y']+target['height']<=subject['y'])
+            report.setdefault('subject_visibility',[]).append({'label':label,'subject':subject,'target':target,'scope':'Actual rendered mesh projection versus DOM border box; no framebuffer or human visibility claim.'})
         # Capture this isolated simulation via its existing UI owner; no production API added.
         ev('()=>{const p=RealmRPGUI.RPGUI.prototype,paint=p.targetCue;p.targetCue=function(){window.cueSim=this.sim;return paint.call(this)};Realm.test.render();p.targetCue=paint}')
         render(); check('Served build identity', hashlib.sha256(response.body()).hexdigest()==report['html_sha256'])
@@ -56,8 +69,11 @@ try:
         check('HP and player readiness retained', phase()['state'].startswith('56 / 56 · ') and 'Brace (3)' in phase()['detail'])
         timer = ev('Realm.diagnostics.adventure.enemies.find(e=>e.id.endsWith(":east")).timer')
         check('Countdown follows real positive timer', phase()['title'].endswith(f'{math.ceil(timer*10)/10:.1f}s'))
+        page.locator('#target-framing').click();render();page.wait_for_timeout(150)
+        subject_visibility('Earned close Reedback third person')
         page.screenshot(path=str(OUT/'01-earned-warning-third-person.png'))
         page.keyboard.press('v'); render(); check('Diorama retains live cue', ev('Realm.state.settings.cameraMode')=='follow' and phase()['phase']=='windup')
+        subject_visibility('Earned close Reedback diorama')
         page.screenshot(path=str(OUT/'02-earned-warning-diorama.png'))
         page.keyboard.press('p'); render(); check('Pause clears cue and retains Paused readiness', phase()['hidden'] and 'Paused' in phase()['state'])
         # test.step deliberately bypasses pause; exercise the real Simulation.tick instead.
@@ -98,6 +114,46 @@ try:
             target=page.locator('#target-frame').bounding_box();ward=page.locator('#beacon-tracker').bounding_box()
             page.screenshot(path=str(OUT/f'ward-layout-{width}.png'))
             check(f'Synthetic visible ward clears target at {width}',target['y']+target['height']+8<=ward['y'])
+        # Display-only local-return/ward boundary: no travel, story acceptance or owner edits.
+        layout_before=ev('({local:document.body.classList.contains("in-world-foundation"),home:document.querySelector("#world-home").hidden,ward:document.querySelector("#beacon-tracker").hidden})')
+        for width in [821,1024,1280,1440]:
+            page.set_viewport_size({'width':width,'height':844});render()
+            ev('()=>{document.body.classList.add("in-world-foundation");document.querySelector("#world-home").hidden=false;document.querySelector("#beacon-tracker").hidden=false}')
+            page.wait_for_timeout(150)
+            target=page.locator('#target-frame').bounding_box();ward=page.locator('#beacon-tracker').bounding_box();home=page.locator('#world-home').bounding_box()
+            check(f'Synthetic desktop right rail clears central combat corridor at {width}',target['x']>=width*.6 and target['x']+target['width']<=width-14)
+            check(f'Synthetic desktop free return clears target at {width}',home['y']+home['height']+8<=target['y'])
+            check(f'Synthetic desktop ward clears target at {width}',target['y']+target['height']+8<=ward['y'])
+            check(f'Synthetic desktop target controls remain visible at {width}',page.locator('#target-clear').is_visible() and page.locator('#target-framing').is_visible())
+        # Real longer ward-strike copy, with display-only Return/Beacon ownership labelled above.
+        ev("Object.assign(cueEnemy,{kind:'siegeboss',custom:null,eventEnemy:true,aimWard:true,mode:'windup',timer:1.2})")
+        phases={'arrival':'A road believed dead','ready':'Prepare the defense','assault':'Breach 3 / 3','intermission':'Regroup · 12s','failed':'The ward has fallen','won':'The light held','other':'The envoy awaits'}
+        for width in [821,1024,1100]:
+            page.set_viewport_size({'width':width,'height':600});render()
+            for phase_id,phase_title in phases.items():
+                status='Ward 100 / 100 · '+('E repairs near the light' if phase_id=='assault' else 'Your community stands beside you.')
+                menu='Repair ward · E · 20 stamina' if phase_id=='assault' else 'Speak with the envoy · E'
+                ev('([title,status,menu])=>{document.body.classList.add("in-world-foundation");document.querySelector("#world-home").hidden=false;document.querySelector("#beacon-tracker").hidden=false;document.querySelector("#beacon-phase").textContent=title;document.querySelector("#beacon-status").textContent=status;document.querySelector("#beacon-menu").textContent=menu}',[phase_title,status,menu])
+                page.wait_for_timeout(50)
+                target=page.locator('#target-frame').bounding_box();ward=page.locator('#beacon-tracker').bounding_box();skills=page.locator('#skillbar').bounding_box();menu_box=page.locator('#beacon-menu').bounding_box()
+                label=f'Synthetic short desktop {phase_id} at {width}'
+                report.setdefault('short_window_layout',[]).append({'label':label,'target':target,'ward':ward,'skills':skills,'menu':menu_box,'status':status,'menuText':menu})
+                check(label+' long cue is legible',ev('(()=>{const e=document.querySelector("#target-cue");return e.scrollWidth<=e.clientWidth&&e.scrollHeight<=e.clientHeight})()'))
+                check(label+' ward stays below target',target['y']+target['height']+8<=ward['y'])
+                check(label+' populated ward and focus clear skills',ward['y']+ward['height']+6<=skills['y'] or ward['x']>=skills['x']+skills['width']+6 or ward['x']+ward['width']+6<=skills['x'])
+                check(label+' retains legible full text and control',menu_box['height']>=24 and ev('(()=>{const e=document.querySelector("#beacon-tracker");return [...e.children].every(c=>c.scrollWidth<=c.clientWidth&&c.scrollHeight<=c.clientHeight)})()'))
+            page.screenshot(path=str(OUT/f'short-ward-layout-{width}.png'))
+        ev("Object.assign(cueEnemy,{kind:'skitter',custom:null,eventEnemy:false,aimWard:false,mode:'windup',timer:.001})")
+        page.set_viewport_size({'width':1440,'height':844});render()
+        ev('(b)=>{document.body.classList.toggle("in-world-foundation",b.local);document.querySelector("#world-home").hidden=b.home;document.querySelector("#beacon-tracker").hidden=b.ward}',layout_before)
+        # Native menu ownership: the desktop rail must not intercept a paused Settings drawer.
+        page.locator('.rpg-nav [data-rpg="open"][data-id="more"]').click()
+        page.locator('[data-rpg="panel"][data-id="settings"]').click();render()
+        # Hit testing before the real .24 s opening transition completes samples an off-screen drawer.
+        page.wait_for_function('()=>{const d=document.querySelector("#drawer"),s=getComputedStyle(d);return d.classList.contains("open")&&!d.inert&&s.opacity==="1"&&(s.transform==="none"||new DOMMatrixReadOnly(s.transform).isIdentity)}',timeout=3000)
+        check('Native Settings retains keyboard focus in drawer',ev('document.activeElement.id==="close-panel"'))
+        check('Native Settings drawer is open above selected target controls',ev('(()=>{const t=document.querySelector("#target-frame").getBoundingClientRect();return !!document.elementFromPoint(t.x+t.width/2,t.y+t.height/2)?.closest("#drawer")})()'))
+        page.locator('#close-panel').click();render()
         ev('cueSim.state.settings.reducedMotion=true;Realm.test.render()')
         check('Reduced motion retains static legible cue', phase()['phase']=='windup' and ev('getComputedStyle(document.querySelector("#target-cue")).animationName')=='none')
         ev('cueSim.state.adventure.hp=0;Realm.test.render()'); check('Death removes cue immediately', phase()['hidden'])
@@ -113,6 +169,11 @@ try:
             check(variant+' accepted close approach',ev('Realm.test.move(5,-4.5)')['ok'])
             ev("""()=>{for(let i=0;i<200;i++){if(Realm.diagnostics.adventure.enemies.find(e=>e.id.endsWith(':east')).mode==='windup')break;Realm.test.step(.05);}Realm.test.render()}""")
             check(variant+' actual warning with original equipped family',phase()['phase']=='windup' and ev('Realm.state.adventure.equipment.weapon')==fixture['adventure']['equipment']['weapon'])
+            page.locator('.camera-presets [data-id="adventure"]').click();render();page.locator('#target-framing').click();render();page.wait_for_timeout(150)
+            subject_visibility(variant+' actual selected Reedback third person')
+            # Frame foe is deliberately third-person only; diorama keeps its native framing.
+            page.keyboard.press('v');render();page.wait_for_timeout(150)
+            subject_visibility(variant+' actual selected Reedback diorama')
             page.keyboard.press('3');render()
             ev("""()=>{for(let i=0;i<100;i++){if(Realm.diagnostics.adventure.enemies.find(e=>e.id.endsWith(':east')).mode==='recover')break;Realm.test.step(.05);}Realm.test.render()}""")
             hp=ev('Realm.diagnostics.adventure.enemies.find(e=>e.id.endsWith(":east")).hp')

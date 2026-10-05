@@ -26,6 +26,11 @@ class BrowserStorage(unittest.TestCase):
         self.assertIsNone(V.prepare_browser_sources(None))
     def test_explicit_output_uses_supported_cli_and_env_contracts(self):
         output=Path("/synthetic-evidence")
+        # This suite previously wrote into its reused checkout even when the
+        # complete verifier reserved a fresh external evidence root.
+        command,env=V.browser_run_spec("world_foundations_browser",output,mode="supported")
+        self.assertEqual(command,[V.sys.executable,"tests/world_foundations_browser.py"])
+        self.assertEqual(env,{"FIRSTLIGHT_WORLD_FOUNDATIONS_OUTPUT":str(output/"world_foundations_browser")})
         for suite in V.CLI_BROWSER_OUTPUTS:
             command,env=V.browser_run_spec(suite,output,mode="supported")
             self.assertEqual(command[:2],[V.sys.executable,f"tests/{suite}.py"])

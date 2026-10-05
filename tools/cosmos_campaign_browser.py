@@ -717,12 +717,21 @@ def main(argv=None):
                     harness.run_variant(flag)
             except Exception:
                 if harness.page is not None:
-                    try:
-                        harness.record['failure_world'] = harness.state()
-                        harness.record['failure_diagnostics'] = harness.diag()
-                        harness.shot('FAILURE')
-                    except Exception:
-                        report['errors'].append('Failure capture failed: '+traceback.format_exc())
+                    # Missing Realm must not prevent independent browser-safe
+                    # evidence, or hide the original journey exception.
+                    if 'navigation_failure' not in harness.record:
+                        harness.record['failure_page'] = base.capture_navigation_failure(
+                            harness.page, harness.url, report['html_sha256'],
+                            args.output / f'{harness.variant}-FAILURE.png')
+                    if 'navigation_failure' in harness.record:
+                        harness.record['failure_realm_capture'] = 'Unavailable after navigation failure; no new renderer evaluation.'
+                    else:
+                        for name, capture in (('failure_world', harness.state),
+                                              ('failure_diagnostics', harness.diag)):
+                            try:
+                                harness.record[name] = capture()
+                            except Exception:
+                                report['errors'].append(name + ' capture failed: ' + traceback.format_exc())
                 raise
             finally:
                 if harness.context is not None:

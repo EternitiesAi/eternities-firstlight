@@ -23,6 +23,7 @@ from unittest.mock import patch
 sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parents[1]
 NATIVE = ROOT/'tools/earth_homecoming_browser.py'
+ONBOARDING = ROOT/'tools/onboarding_browser.py'
 VERIFY = ROOT/'tools/verify.py'
 spec=importlib.util.spec_from_file_location('actual_proposed_verifier',VERIFY)
 V=importlib.util.module_from_spec(spec);spec.loader.exec_module(V)
@@ -42,11 +43,12 @@ class Fixture:
         self.root=base/'synthetic-repo';self.logs=base/'logs';self.sources=self.logs/'earth-homecoming-earned';self.output=base/'browser'/'earth_homecoming_browser'
         self.root.mkdir();self.sources.mkdir(parents=True)
         text(self.root/'tools/earth_homecoming_browser.py',NATIVE.read_text(encoding='utf8'))
+        text(self.root/'tools/onboarding_browser.py',ONBOARDING.read_text(encoding='utf8'))
         text(self.root/'tools/heaven_campaign_browser.py','# synthetic CPU import guard: never executed\n')
         text(self.root/'tools/browser_support.py','# synthetic CPU dependency: never executed\n')
         text(self.root/'tools/earth-homecoming-journey/caller.cjs','// synthetic caller hash only\n')
         self.callers=self.root/'tools/earth-homecoming-journey'
-        modules=('earth-homecoming-data.js','earth-homecoming.js','earth-homecoming-ui.js','earth-homecoming-art.js','core.js','characters.js','adventure.js','adventure-ui.js','adventure-art.js','arsenal.js','combat.js','rpg-ui.js','world-foundations.js','world-foundations-ui.js','world.js','app.js')
+        modules=('earth-homecoming-data.js','earth-homecoming.js','earth-homecoming-ui.js','earth-homecoming-art.js','core.js','characters.js','adventure.js','adventure-ui.js','adventure-art.js','arsenal.js','combat.js','rpg-ui.js','world-foundations.js','world-foundations-ui.js','world.js','app.js','local-life-ui.js','local-life.js','realm-trails-ui.js')
         for name in modules:text(self.root/'src'/name,'// synthetic source token: '+name+'\n')
         html='\n'.join((self.root/'src'/name).read_text().strip() for name in modules)
         text(self.root/'index.html',html);text(self.root/'FIRSTLIGHT_VALLEY.html',html);text(self.root/'build.py','# synthetic build token\n')
@@ -231,5 +233,7 @@ class EarthNativeVerifier(unittest.TestCase):
             c,e=V.browser_run_spec(suite,self.f.output,'supported');self.assertEqual(c[c.index('--output')+1],str(self.f.output/suite));self.assertEqual(e,{})
         for suite,key in V.ENV_BROWSER_OUTPUTS.items():self.assertEqual(V.browser_run_spec(suite,self.f.output,'supported'),([sys.executable,f'tests/{suite}.py'],{key:str(self.f.output/suite)}))
         self.assertEqual(V.browser_run_spec('realm_givers_browser',None),([sys.executable,'tests/realm_givers_browser.py'],{}))
+
+
 
 if __name__=='__main__':unittest.main(verbosity=2)

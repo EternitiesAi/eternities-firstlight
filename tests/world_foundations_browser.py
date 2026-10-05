@@ -3,10 +3,14 @@ Accelerated walking/depth probes are labelled; they do not measure human feel or
 """
 from pathlib import Path
 from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
-import hashlib,json,tempfile,threading,traceback
+import hashlib,json,os,tempfile,threading,traceback
 from playwright.sync_api import sync_playwright
 from browser_support import chromium_launch_kwargs
-ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'evidence10/world-foundations-browser';OUT.mkdir(parents=True,exist_ok=True)
+ROOT=Path(__file__).resolve().parents[1]
+output_override=os.environ.get('FIRSTLIGHT_WORLD_FOUNDATIONS_OUTPUT')
+OUT=Path(output_override or ROOT/'evidence10/world-foundations-browser').resolve()
+# Explicit cohorts are fresh: a failed retry must not inherit prior screenshots.
+OUT.mkdir(parents=True,exist_ok=not bool(output_override))
 report={'method':__doc__,'checks':[],'browser_errors':[],'html_sha256':hashlib.sha256((ROOT/'index.html').read_bytes()).hexdigest(),'errors':[]}
 class Handler(SimpleHTTPRequestHandler):
  def __init__(self,*a,**kw):super().__init__(*a,directory=str(ROOT),**kw)
@@ -70,7 +74,7 @@ try:
   page.keyboard.down('f');page.wait_for_function('(y)=>Realm.test.worldDiveStatus().y>y+.5',arg=down);page.keyboard.up('f');check('F actually ascends through production held-key frames',ev('Realm.test.worldDiveStatus().y')>down+.5)
   before=ev('Realm.diagnostics.adventure.player');page.keyboard.down('w');page.wait_for_function('(z)=>Realm.diagnostics.adventure.player.z<z-.7',arg=before['z']);page.keyboard.up('w');check('W actually swims using camera-relative input',ev('Realm.diagnostics.adventure.player.z')<before['z']-.7)
   page.keyboard.press('j');check('gallery journal pauses simulation',ev('Realm.diagnostics.adventure.paused'));depth=ev('Realm.test.worldDiveStatus().y');view=ev('Realm.diagnostics.camera.preset');page.keyboard.down('g');page.wait_for_timeout(500);page.keyboard.up('g');page.keyboard.press('v');check('modal consumes depth and camera shortcuts',ev('Realm.test.worldDiveStatus().y')==depth and ev('Realm.diagnostics.camera.preset')==view);close();page.keyboard.press('v');page.wait_for_timeout(300);check('camera exchange preserves physical swimmer depth',ev('Realm.diagnostics.camera.preset')!=view and abs(ev('Realm.test.worldDiveStatus().y')-depth)<.001)
-  page.set_viewport_size({'width':390,'height':844});page.wait_for_timeout(150);page.keyboard.press('e');page.wait_for_timeout(200);check('compact gallery rejection displays a real transient toast',page.locator('#toast').evaluate('(e)=>e.classList.contains("show")&&Number(getComputedStyle(e).opacity)>.9') and 'Reach the gallery landing' in page.locator('#toast').inner_text());box=page.locator('#world-depth').bounding_box();check('compact depth information stays inside the viewport',box and box['x']>=0 and box['y']>=0 and box['x']+box['width']<=391 and box['y']+box['height']<=844);toast=page.locator('#toast').bounding_box();check('compact depth information and transient toast occupy separate space',box and toast and (box['y']+box['height']<=toast['y'] or toast['y']+toast['height']<=box['y']));page.screenshot(path=str(OUT/'atlantis-normal-keyboard-compact.png'));page.set_viewport_size({'width':1280,'height':800});page.keyboard.press('Escape');check('Escape freely returns swimmer home',scene()=='valley' and ev('Realm.diagnostics.world') is None);check('normal frame controls have no runtime errors',not report['browser_errors'] and not ev('Realm.diagnostics.errors'));report['status']='passed';normal.close()
+  page.set_viewport_size({'width':390,'height':844});page.wait_for_timeout(150);page.keyboard.press('e');page.wait_for_function('()=>{const e=document.querySelector("#toast");return e.classList.contains("show")&&Number(getComputedStyle(e).opacity)>.9&&e.textContent.includes("Reach the gallery landing")}',timeout=1500);check('compact gallery rejection displays a real transient toast',page.locator('#toast').evaluate('(e)=>e.classList.contains("show")&&Number(getComputedStyle(e).opacity)>.9') and 'Reach the gallery landing' in page.locator('#toast').inner_text());box=page.locator('#world-depth').bounding_box();check('compact depth information stays inside the viewport',box and box['x']>=0 and box['y']>=0 and box['x']+box['width']<=391 and box['y']+box['height']<=844);toast=page.locator('#toast').bounding_box();check('compact depth information and transient toast occupy separate space',box and toast and (box['y']+box['height']<=toast['y'] or toast['y']+toast['height']<=box['y']));page.screenshot(path=str(OUT/'atlantis-normal-keyboard-compact.png'));page.set_viewport_size({'width':1280,'height':800});page.keyboard.press('Escape');check('Escape freely returns swimmer home',scene()=='valley' and ev('Realm.diagnostics.world') is None);check('normal frame controls have no runtime errors',not report['browser_errors'] and not ev('Realm.diagnostics.errors'));report['status']='passed';normal.close()
 except Exception:
  report['status']='failed';report['errors'].append(traceback.format_exc());raise
 finally:

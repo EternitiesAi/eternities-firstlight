@@ -1,3 +1,143 @@
+# Human first play is the next acceptance step, 2026-10-05
+
+The finite connected browser draft is ready for human acceptance: original chapters I-IV, local Earth, Hell, Heaven, Atlantis, Cosmos and a provisional Earth homecoming. It provides supported authored pockets and normal return routes. Full streamed countries/cities, mounts, the full Regent war, ultimate Answering and completed Briar resolution remain future scope.
+
+Qualified implementation: `b5fee766e6f77a2d901bb953af8faac13175fee4`. The reused clean remote clone's complete verifier actually closed exit 0 at 2026-10-05T22:42:26.6679488Z: 230 commands, 118 syntax modules, all 47 browser suites in one invocation. Node 1542 pass/2 explicit generic-cohort skips; Python Ran 243 tests, 237 method PASS records, 6 method skips plus 2 skipped setUpClass records. Mandatory earned/native/capture/whole-journey checks separately passed without skips. Current pages are identical: 3, 033, 467 bytes / SHA256 `ccfc2782a33d21e3a75cd93201d5d9b5d89eef41e6397036c13c2f06bda91f9b`.
+
+Evidence commit `972998b5509c184090a55911c52dbb927fbaf278` was pushed normally and freshly fetched; 409 payloads/34744190 bytes, manifest and attributes matched a complete streamed readback. Current nine screenshots and one historical f351 movie have separate epochs. Full03/full04 negatives and explicit skips remain retained. Hosted CI did not execute; human pacing, device performance and accessibility remain pending.
+
+Save/world 9, adventure 12, optional earthHomecoming 1 stay unchanged. Preserve old keys, free character slots, notes/music, home/crops, inventory, gear identity/sockets/fittings, companions, stored XP/levels 1-5, claimed rewards, chapter history and explicit choices. No personal saves were inspected. Root remains the integration owner; no main merge or public deployment.
+
+Start with one manageable fresh outing: Oren's expedition kit, his optional riverbank supplies route, both V views, return, compare and deliberately equip a reward. Then try one returning character with current level, gear and choices retained. Use an available project or declared repeat survey; no reset is required.
+
+Ask Dom: Did you know where to go and how to get home? Could you read and answer danger in both views? Did the reward and visible consequence make another outing appealing? Record his actual answers before extending scope or claiming enjoyment. See [first play](playtests/FINITE_DRAFT_FIRST_PLAY_2026-10-05.md).
+
+The finite roadmap has reached its engineering delivery. Recurring development stops here; future expansion follows human feedback and a new bounded arc. Paid power, offline-loss severity, rare-pet allocation and construction scale remain unresolved founder decisions.
+
+---
+
+# Cold-navigation evidence repair, 2026-10-05
+
+Full04 at3e19424f0d7e775e89bbbca39085f293896baa6f actually closed exit1.
+All183 source commands and two browser suites passed before Cosmos navigation
+stalled after7053 passing assertions. The account-save and exact stored-world
+checks passed; the following cold-start comparison was never reached. This is
+not a qualified full gate. Read docs/development/COLD_NAVIGATION_EVIDENCE_2026-10-05.md.
+
+One veteran-only diagnostic at the same frozen head closed exit0:2397 checks,
+11 whole-browser restarts,13 navigations,38 causal pixel controls,2 new synthetic
+profiles and no errors/source drift. The failed restart did not reproduce;
+its exact cold-byte/history checks passed. An intermittent/full-workload cause
+remains unresolved. Failed reports and profiles stay retained and labelled.
+
+The test-only revision records HTTP/browser loading phases and independently
+captures timed failure images plus one bounded exact-HTML probe. It avoids new
+renderer evaluations after startup timeout. All80 Heaven and50 Cosmos original
+check calls and30-second waits remain unchanged by independent source review.
+CPU observer/HTTP regressions pass9/9. Gameplay/pages/save versions are unchanged.
+Run one fresh exact-head full47-suite gate next; no pooling prior partial runs.
+
+---
+# Gallery feedback verification repair, 2026-10-05
+
+The exact remote full03 run at 0fb1a71d0789a082b7917c0a1fe922270d3b9699
+closed with exit 1: 183 source commands and 31 browser suites passed before
+world_foundations_browser failed its compact toast assertion. An earlier working
+count of 35 browser passes was incorrect. No partial results qualify the full gate.
+Read docs/development/WORLD_FOUNDATIONS_TOAST_CHECK_2026-10-05.md first.
+
+A test-only repair waits up to 1.5 seconds for the same visible rejection message
+instead of sampling exactly at its 200 ms fade duration. All 60 original static
+checks remain unchanged by independent AST review. The installed targeted suite
+closed with exit 0, 207/207 checks and no browser errors; output routing tests pass
+5/5. Explicit evidence folders refuse reuse before starting a browser. The failed
+run, diagnostic limits and stale prior compact screenshot remain labelled.
+
+Gameplay, pages, save versions and both cameras are unchanged. Pages remain
+3,033,467 bytes, SHA256 ccfc2782a33d21e3a75cd93201d5d9b5d89eef41e6397036c13c2f06bda91f9b.
+Push this repair normally and run all 47 browser suites in one new exact-head
+remote-clone invocation. Full qualification, evidence publication and finite-draft
+delivery are still pending. Reuse D storage; preserve the blocked deletion.
+
+---
+
+# Qualify and deliver the finite draft, 2026-10-05
+
+Push the reviewed right-rail/short-window HUD revision; reuse current-qualified-game
+for the exact clean remote head. Run complete current verifier with new D log/browser
+roots, observe actual exit, then bind source and every command. Inspect current Earth
+blade/bow silhouette and broad/narrow/ring cues in both views. Preserve failures.
+Publish one bounded evidence package with one existing historical Earth clip; stream
+remote payload readback. Record final MD-only head/source verification, PRs and launch.
+Do not claim human pacing, full countries, Regent war or resolved Answering/Briar canon.
+Read docs/development/SELECTED_FOE_HUD_2026-10-05.md before older snapshots.
+The complete remote gate at56254e86972ced292369686cf91fea9c98b107d8 passed:
+230 commands,118 syntax modules,all47 browser suites in one actual-exit0 invocation;
+Node1542 passed/2 explicit generic cohort skips; Python232 passed/6 explicit skips.
+Mandatory current-cohort Earth26, recording37, earned19 and fresh whole-draft7
+checks passed without skips. Two fresh characters earned20 ordered chapter edges.
+That gate qualifies the previous centered-HUD build, not the changed pages below.
+Targeted current cue182/182 is passed; it does not replace that final full gate.
+At actual finite draft completion, report remaining human navigation/combat/reward
+acceptance and stop the recurring continuation. Do not merge main or deploy.
+
+---
+
+# Current complete gate01 negative, 2026-10-05
+
+At pushedbf900d774e5a645e0bba56810a70396787022d1b, reused clean remote station's
+complete verifier exited1 in rules before any browser suite:1544 Node cases,
+1541 pass,1 failure,2 generic missing-cohort skips. The single host artifact check
+still pinned the original Earth art57dfd724. All new15 art cases passed. Parent
+updates only this stale reviewed-source pin to canonical UTF-8 LF2353946d8bb28a2881f3191807fc248f95fea75f16bc585f6588d82742b750ed;
+the current Rootraw30779f59 normalizes exactly to it. UI/CSS pins, ordering and
+all behavior assertions remain. Exact fresh complete gate02 is required; this
+failed invocation is not counted as a partial passing full gate. Report/logs and
+actual process exit remain retained. No runtime/page change accompanies repair.
+
+---
+
+# Whole-draft journal and encounter polish, 2026-10-05
+
+Current gameplay is the integrated five-realm draft plus Earth homecoming, on
+stacked branch gameplay/whole-draft-onboarding-20261005 from Earth head
+271b08e49c95728362a3bdf562c78985117fffaa. Read
+ docs/development/WHOLE_DRAFT_ONBOARDING_2026-10-05.md before older records.
+The Journal leads with the original chapter, keeps eligible/accepted work
+readable and groups later requests behind a keyboard/touch accessible disclosure.
+An explicit tracker belongs to the current live character only; passive regional
+labels cannot take it over. Claimed work says it was paid once. The realm atlas
+now names the implemented local campaigns and honestly leaves full cities deferred.
+
+The Earth claim engine now has a grounded faceted case, open brass/slate gantry,
+captive seal head and actual windup/contact/recovery poses. Its footprint, strike
+geometry, rule owners and causal tags are unchanged. Reduced motion suppresses
+the short contact accent. New art still requires current rendered combat controls.
+
+Installed Journal rules pass12/12; adjacent UI/homecoming checks pass70/70.
+Installed onboarding CPU passes33/33 and verifier gate CPU34/34. Native04 passes
+53/53 checks and12/12 stages using two genuinely fresh synthetic characters,
+one isolated profile, one whole-browser restart, five PNGs and zero videos.
+Actual kit/trail/commission acceptance, explicit unpaid choice, character switching
+and cold-save defaults work. No browser errors or source drift. Earlier native
+failures remain: incorrect fresh-XP assumption and legitimate three-NPC initial
+routine entries were harness mismatches. The narrow repair predicts the actual
+Core tick; old journal prefix and every other protected owner remain strict.
+The first installed33-case run lacked the Playwright module path; with the actual
+installed dependency path all33 pass. No production rules were changed for this.
+
+Both generated pages are3,032,289 bytes/SHA
+08f7d4de46a7243e5988c33967378d4a1e9450e30a738ffbfb0f43a09bc11f39.
+World/key9,adventure12 and optional earthHomecoming1 remain; no new save fields,
+forced class, cap increase, gear/socket reset or story consent. The complete
+current remote source/browser gate and final evidence readback remain pending.
+Keep the same integrated game and reusable D qualification station, bounded
+clips/profiles and unique failures. Never retry the blocked standalone deletion.
+No main merge, public deployment, paid providers, personal-save reads or unrelated
+worker stops. Human navigation/combat/reward acceptance remains unmeasured.
+
+---
+
 # Earth native homecoming and ordinary recording, 2026-10-05
 
 Read docs/development/EARTH_HOMECOMING_NATIVE_DELIVERY_2026-10-05.md before
