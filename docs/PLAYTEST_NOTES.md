@@ -1,3 +1,26 @@
+# Gallery feedback verification repair, 2026-10-05
+
+The exact remote full03 run at 0fb1a71d0789a082b7917c0a1fe922270d3b9699
+closed with exit 1: 183 source commands and 31 browser suites passed before
+world_foundations_browser failed its compact toast assertion. An earlier working
+count of 35 browser passes was incorrect. No partial results qualify the full gate.
+Read docs/development/WORLD_FOUNDATIONS_TOAST_CHECK_2026-10-05.md first.
+
+A test-only repair waits up to 1.5 seconds for the same visible rejection message
+instead of sampling exactly at its 200 ms fade duration. All 60 original static
+checks remain unchanged by independent AST review. The installed targeted suite
+closed with exit 0, 207/207 checks and no browser errors; output routing tests pass
+5/5. Explicit evidence folders refuse reuse before starting a browser. The failed
+run, diagnostic limits and stale prior compact screenshot remain labelled.
+
+Gameplay, pages, save versions and both cameras are unchanged. Pages remain
+3,033,467 bytes, SHA256 ccfc2782a33d21e3a75cd93201d5d9b5d89eef41e6397036c13c2f06bda91f9b.
+Push this repair normally and run all 47 browser suites in one new exact-head
+remote-clone invocation. Full qualification, evidence publication and finite-draft
+delivery are still pending. Reuse D storage; preserve the blocked deletion.
+
+---
+
 # Targeted HUD render evidence, 2026-10-05
 
 Installed cue05 actual exit0:182/182 checks,6 rendered body/camera projections,

@@ -27,6 +27,7 @@ ENV_BROWSER_OUTPUTS = {
     'earth_expedition_browser': 'FIRSTLIGHT_EXPEDITION_OUTPUT',
     'coastward_scenery_browser': 'FIRSTLIGHT_SCENERY_OUTPUT',
     'realm_work_presentation_browser': 'FIRSTLIGHT_REALM_WORK_OUTPUT',
+    'world_foundations_browser': 'FIRSTLIGHT_WORLD_FOUNDATIONS_OUTPUT',
 }
 
 
