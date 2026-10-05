@@ -48,9 +48,11 @@ try:
             check('physical invitation opens explicit preview',page.locator('[data-rpg="cosmos-confirm"]').count()==1)
             page.locator('[data-rpg="cosmos-confirm"]').click();render();check('explicit input enters Near Expanse',scene()=='cosmos-near-expanse')
         # Discover the invitation from the actual map, then walk to the physical gate.
+        before_terms=state()
         page.keyboard.press('m');render();page.locator('[data-rpg="cosmos-invitation"]').click()
         text=page.locator('#rpg-content').inner_text()
-        check('pre-entry terms declare routes, no rewards and safe-side reload',all(t in text for t in ['Rootcut','No combat or rewards','reopening','valley checkpoint']))
+        check('pre-entry terms separate optional work from entry grants and declare routes/reload',all(t in text for t in ['Rootcut','opening walk needs no equipment and grants nothing','Accepted local work declares its own reward','Entry grants no items, class, XP, allegiance or story completion','reopening','valley checkpoint']))
+        check('reading entry terms accepts no work, pays nothing and leaves canonical state unchanged',state()==before_terms and scene()=='valley')
         check('remote preview cannot enter before walking to the invitation',page.locator('[data-rpg="cosmos-confirm"]').count()==0)
         page.locator('[data-rpg="cosmos-walk"][data-id="gate"]').click()
         ev('()=>{for(let i=0;i<2500&&Realm.test.path.length;i++)Realm.test.step(.05);Realm.test.render()}')
