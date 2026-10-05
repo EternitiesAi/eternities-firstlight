@@ -1,3 +1,17 @@
+# Current complete gate01 negative, 2026-10-05
+
+At pushedbf900d774e5a645e0bba56810a70396787022d1b, reused clean remote station's
+complete verifier exited1 in rules before any browser suite:1544 Node cases,
+1541 pass,1 failure,2 generic missing-cohort skips. The single host artifact check
+still pinned the original Earth art57dfd724. All new15 art cases passed. Parent
+updates only this stale reviewed-source pin to canonical UTF-8 LF2353946d8bb28a2881f3191807fc248f95fea75f16bc585f6588d82742b750ed;
+the current Rootraw30779f59 normalizes exactly to it. UI/CSS pins, ordering and
+all behavior assertions remain. Exact fresh complete gate02 is required; this
+failed invocation is not counted as a partial passing full gate. Report/logs and
+actual process exit remain retained. No runtime/page change accompanies repair.
+
+---
+
 # Whole-draft journal and encounter polish, 2026-10-05
 
 Current gameplay is the integrated five-realm draft plus Earth homecoming, on
