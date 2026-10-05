@@ -1,3 +1,13 @@
+# Hell campaign footage and pending founder play, 2026-10-04
+
+The actual normal-time30-second RTX Chromium clip shows native stationary combat, a sidestep avoiding the immutable contact, a camera exchange, explicit disposition, verification, payment and reload. It is edited only through original cuts, without speed scaling or substitute art. The capture's718 evaluations include repeated polls, not718 independent tests; Briar may contribute damage. Native pass-through observers separately attribute real blade/projectile callers.434checks/18whole-browser restarts and the complete42-suite fresh remote gate pass.
+
+Short GPU evidence:1920x1080balanced, Chromium143, RTX3080ANGLE D3D11/driver610.74,1800normal RAF intervals across refuge/yard and both views; median16.7ms, p95around16.7–16.8ms, max16.8ms, no33.333/50ms outliers. This headless short sample under concurrent source checks is not render time, monitor presentation, sustained combat or a60FPS certification.
+
+Human answers remain unobserved: Did the writ and map make the next action clear? Did the sweep/line warnings make movement and Brace useful? Did each persistent disposition feel distinct? Did the fee make a chosen project more attractive? Can both cameras frame the engine and actors comfortably? The default native License photograph approaches behind the plate; whole-plate pixels do not individually prove the front seal. Prototype procedural art and the older LocalLife context-only rollback remain limitations. The new Heaven arc has separate pending human questions.
+
+Earlier observations below retain their dates and scope.
+
 # Hell campaign qualification in progress, 2026-10-04
 
 The Last Unclaimed Road has command-earned blade/bow/strongest journeys through actual old rescue/escort, new accepted work, recovery-only combat, explicit disposition, reload checkpoints and one fee. Source-02 passes102 syntax modules,1198 Node tests,61 Python tests plus1 visible Windows skip,49 journeys. These use accelerated rules/in-memory saves; they do not prove native storage or human pacing. Strong returning gear may clear an early fight before another guard/tell; do not scale the enemy to satisfy starter pacing criteria. All variants retain previous equipment/socket/fittings/history and old reward owners.

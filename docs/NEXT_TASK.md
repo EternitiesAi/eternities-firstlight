@@ -1,3 +1,11 @@
+# Connect a distinct Heaven campaign, then deepen Atlantis
+
+The Hell PR44 runtime and complete fresh099bd8d epoch are qualified; preserve its frozen inputs and final documentation equality gate. Carry the whole browser-draft roadmap forward with actual mechanics and coherent consequences. Root's separate Heaven worktree implements The Gate That Remained Open: two all-live-damage apparatuses, a physical supported courier walk, truthful account, explicit accessible welcome and once-only fee. Finish its native restart/pixel and ordinary-time/fresh-remote evidence before calling it qualified. Its source greens do not complete the whole game.
+
+Then adapt the recovered Atlantis Harbour Beneath the Harbour proposal around actual depth/pressure routing and dry quay combat. Source proposals and authored staging must be labelled; missing lockworks cannot be advertised as built. Maintain blade/bow/veteran honesty, saves, both views and every existing gate. Finish Cosmos and a connected provisional Earth ending afterward, with remaining exploration/optional activities/polish tracked in the finite roadmap. Human first-time route/fight/reward/camera questions remain pending. No automatic main merge or deployment.
+
+Earlier next-task entries below are historical.
+
 # Complete the playable draft through real realm arcs, 2026-10-04
 
 Current gameplay/hell-writ-campaign-20261004/runtime f2dfdf3e01dcbdd49838d3aedf961b79dfe786f6 continues PR43/d30772a. Read the latest delivery receipts before older pending records, fetch origin/reviews, preserve concurrent edits and keep the browser/both cameras/saves contract. Dom's current whole-draft goal takes priority over the older proposed camp-carrier experiment below; that optional idea is retained, not represented as shipped.
