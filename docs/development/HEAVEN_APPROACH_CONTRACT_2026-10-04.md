@@ -124,7 +124,7 @@ part of this candidate contract.
 ## Choice and fixed reward matrix
 
 Choices are `{id,name,text,consequence,recognition:[{name,text}]}`. Recognition
-contains authored Rielle/Calen/Yselle lines, displayed only after actual
+contains authored Rielle/Calen/Yselle/Wayfarer lines, displayed only after actual
 `verify-welcome`. Read then explicitly confirm one
 permanent `arrangement` at the Garden plate. Preview and cancel leave it undecided.
 

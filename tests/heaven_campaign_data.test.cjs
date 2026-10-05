@@ -169,11 +169,15 @@ test('Heaven reward and choices: one common finite material fee, explicit public
   assert.match(c.text,/keeps public service usable/);assert.match(c.text,/does not gate anyone’s right to pass/);
   assert.match(c.text,/courier arrival and truthful account remain/);assert.match(c.consequence,/permanent/);assert.match(c.consequence,/stated fee remains unchanged/);
   assert.match(c.consequence,/A deliberate activation briefly moves/);assert.match(c.consequence,/at rest the fitting stays quiet/);
-  assert.deepEqual(c.recognition.map(r=>r.name),['Rielle','Calen','Yselle']);
+  assert.deepEqual(c.recognition.map(r=>r.name),['Rielle','Calen','Yselle','Wayfarer']);
   for(const line of c.recognition){keys(line,['name','text']);assert.ok(line.text.length>20&&line.text.length<220);}
+  const courier=c.recognition.find(r=>r.name==='Wayfarer');
+  assert.match(courier.text,/I reached the Garden on the marked service loop/,'the promised courier recognition acknowledges actual arrival');
+  assert.match(courier.text,c.id==='accessible-assist'?/lower lever/:/broad plate/,'recognition names the actual selected arrangement');
  }
  assert.match(d.choices[0].text,/lower assist lever plus a request plate/);assert.match(d.choices[1].text,/broad activation plate/);
  assert.notEqual(d.choices[0].recognition[0].text,d.choices[1].recognition[0].text);
+ assert.notEqual(d.choices[0].recognition.at(-1).text,d.choices[1].recognition.at(-1).text,'the courier has an actual distinct line in both choices');
  assert.match(d.completionText,/fixed 16 sunmarks, 3 ore, 4 timber and 3 fibre once; XP credits up to 40 within the existing stored cap/);
  assert.doesNotMatch(d.completionText,/has paid (?:the declared )?40 XP/);
  assert.match(d.completionText,/not a promised upgrade for every veteran/);assert.match(d.completionText,/No gear was fitted, equipped or granted/);

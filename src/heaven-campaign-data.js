@@ -52,7 +52,8 @@ const definition=freeze({
    recognition:[
     {name:'Rielle',text:'The familiar ceremony can stay. The lower lever gives tired hands an ordinary way to ask.'},
     {name:'Calen',text:'The courier reached us on the marked service loop. I will keep the old wrong signal in our account.'},
-    {name:'Yselle',text:'The request plate leaves room for another pair of hands. Our public beds can stay planted.'}
+    {name:'Yselle',text:'The request plate leaves room for another pair of hands. Our public beds can stay planted.'},
+    {name:'Wayfarer',text:'I reached the Garden on the marked service loop. The lower lever lets me answer with tired hands and keep the ceremony if I choose.'}
    ]},
   {id:'broadened-activation',name:'Broadened activation · make the broad plate ordinary',
    text:'Fit a broad activation plate and retain the ceremonial notches beside it as an optional sequence. Ordinary activation no longer requires that sequence; visitors may still perform it by choice. The complete repaired stroke, courier arrival and truthful account remain. This local arrangement keeps public service usable and does not gate anyone’s right to pass.',
@@ -60,7 +61,8 @@ const definition=freeze({
    recognition:[
     {name:'Rielle',text:'The broad plate answers an ordinary press. The old notches are still there for anyone who enjoys the sequence.'},
     {name:'Calen',text:'The courier reached us on the marked service loop. Our corrected route now ends at an open activation.'},
-    {name:'Yselle',text:'The broad press leaves room for visitors who move differently. Our public beds can stay planted.'}
+    {name:'Yselle',text:'The broad press leaves room for visitors who move differently. Our public beds can stay planted.'},
+    {name:'Wayfarer',text:'I reached the Garden on the marked service loop. I can use the broad plate now; the old sequence is there when I want to learn it.'}
    ]}
  ],
  enemies:[
