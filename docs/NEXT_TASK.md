@@ -1,3 +1,7 @@
+# Qualify the integrated Confluence, then connect the Earth return, 2026-10-05
+
+The current source03 gate passes175commands, including1421Node checks and58earned journeys. Finish native browser/save/pixels, ordinary-speed evidence and exact pushed/fresh-remote/full qualification for the Open Confluence. Preserve the failures and current storage/saves/camera boundaries; the running Atlantis gate owns the browser slot until complete. Next coherent product arc is an honest reachable provisional Earth return that requires the actual independently claimed realm consequences, including the new Confluence owner. Do not label the full Answering/Regent cosmology complete from the older comparator alone. Then qualify the finite whole-draft roadmap.
+
 # Integrate the Open Confluence while Atlantis qualifies, 2026-10-05
 
 Complete the frozen remote Atlantis verifier/evidence delivery separately from source edits. Continue Cosmos in the same integrated authoring checkout on a new review branch from the actual Atlantis head, keeping small colleague stages. Connect its permanent ground, optional versioned ledger, real encounter/weapon/save callers and native interface; staged greens are not installed play. Then implement the honest provisional Earth return and whole-draft acceptance. Preserve storage/saves/both cameras and all existing exclusions.

@@ -1,7 +1,7 @@
 /* The Near Expanse M1. Physical ground and transient travel, no new save data or payout. */
 (function(G){'use strict';
 const ROOM='cosmos-near-expanse',GATE=Object.freeze({x:14,z:-5}),ENTRY=Object.freeze({x:0,z:18,yaw:Math.PI});
-const BASE_PATCHES=Object.freeze([
+const PATCHES=Object.freeze([
  {id:'arrival',x:0,z:15,w:14,d:14},
  {id:'three-lamps',x:0,z:5,w:24,d:18},
  {id:'rootcut',x:-13,z:-15,w:10,d:38},
@@ -10,7 +10,7 @@ const BASE_PATCHES=Object.freeze([
  {id:'observatory',x:2,z:-43,w:24,d:20}
 ]);
 // Every solid has a matching rendered footprint. Height is above the local surface.
-const BASE_SOLIDS=Object.freeze([
+const SOLIDS=Object.freeze([
  {id:'central-ridge',x:-.5,z:-16,w:13,d:24,h:6.6},
  {id:'culvert-cover',x:-12,z:-9,w:3,d:3,h:3.2},
  {id:'road-cover',x:11,z:-17,w:2.8,d:4,h:2.6},
@@ -23,7 +23,7 @@ const BASE_SOLIDS=Object.freeze([
  {id:'observatory-east',x:9.8,z:-46,w:.6,d:6,h:4},
  {id:'instrument',x:3,z:-47,w:2.2,d:2.2,h:3.3}
 ]);
-const BASE_POINTS=Object.freeze([
+const POINTS=Object.freeze([
  {id:'arrival',name:'Arrival gate',x:0,z:18,kind:'return'},
  {id:'lamps',name:'Three Lamps · Teren',x:3,z:7,kind:'person'},
  {id:'bench',name:'Farroad refuge bench',x:-6,z:6,kind:'rest'},
@@ -32,56 +32,14 @@ const BASE_POINTS=Object.freeze([
  {id:'landing',name:'Common Landing',x:0,z:-34,kind:'route'},
  {id:'anik',name:'Anik · observatory overlook',x:3,z:-43,kind:'person'}
 ]);
-// Public support/collision is static and shared by every character. The
-// catalogue proposes campaign work; reading it here only installs real ground.
-const CC=G.RealmCosmosCampaignData||(typeof require==='function'?require('./cosmos-campaign-data.js'):null);
-if(!CC?.geometry||CC.geometry.dynamicCollision!==false)throw Error('The static Cosmos service geometry catalogue is required.');
-const EXTENSION=CC.geometry,BOUNDS=EXTENSION.bounds;
-const PATCHES=Object.freeze([...BASE_PATCHES,...EXTENSION.patches]),SOLIDS=Object.freeze([...BASE_SOLIDS,...EXTENSION.solids]);
-const POINTS=Object.freeze([...BASE_POINTS,...[
- {id:'confluence-junction',name:'Observatory public service junction',x:22,z:-40,kind:'route',text:'A permanently supported public service road. No gate, fee or campaign choice closes the return.'},
- {id:'confluence-garden',name:'Living return garden',x:26,z:-27,kind:'view',text:'The garden and its supplied service fittings stand on real ground. A fitting still requires its separate deliberate operation.'},
- {id:'confluence-records',name:'Named-station records bay',x:26,z:-48,kind:'view',text:'Public local service records remain distinct from Anik’s sky comparator and from any private archive.'},
- {id:'confluence-service',name:'Independent service road',x:33,z:-40,kind:'route',text:'Follow the grounded road into the service court, or take the permanently open garden loop home.'},
- {id:'confluence-court',name:'Still Meridian service court',x:47,z:-44,kind:'view',text:'The actual service foundation, two cover piers and clear court are present. Scenery does not start or settle a machine.'},
- {id:'confluence-loop',name:'Public garden return',x:44,z:-29,kind:'route',text:'This supported return is always open. Later apparatus changes do not remove or add collision.'}
-].map(Object.freeze)]);
 const dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z),clamp=(n,a,b)=>Math.max(a,Math.min(b,n)),tickets=new WeakMap();
 const fail=error=>({ok:false,error});
-function legacyHeight(x,z){return 1.57+3.2*clamp((-z-2)/30,0,1);}
-function height(x,z){return EXTENSION.patches.some(p=>inside(x,z,p))?EXTENSION.height:legacyHeight(x,z);}
+function height(x,z){return 1.57+3.2*clamp((-z-2)/30,0,1);}
 function inside(x,z,p,r=0){return Math.abs(x-p.x)<=p.w/2-r&&Math.abs(z-p.z)<=p.d/2-r;}
-// Cache only exposed edges of the rectangle union. Distance to those edges
-// checks the entire circular body/capsule, including concave patch corners.
-// Nine compass samples alone can miss a small unsupported corner.
-function groundEdges(){
- const unique=a=>[...new Set(a)].sort((a,b)=>a-b),xs=unique(PATCHES.flatMap(p=>[p.x-p.w/2,p.x+p.w/2])),zs=unique(PATCHES.flatMap(p=>[p.z-p.d/2,p.z+p.d/2]));
- const cells=xs.slice(1).map((x,i)=>zs.slice(1).map((z,j)=>PATCHES.some(p=>inside((xs[i]+x)/2,(zs[j]+z)/2,p)))),edges=[];
- const occupied=(i,j)=>cells[i]?.[j]===true;
- for(let i=0;i<xs.length-1;i++)for(let j=0;j<zs.length-1;j++)if(occupied(i,j)){
-  if(!occupied(i-1,j))edges.push([{x:xs[i],z:zs[j]},{x:xs[i],z:zs[j+1]}]);
-  if(!occupied(i+1,j))edges.push([{x:xs[i+1],z:zs[j]},{x:xs[i+1],z:zs[j+1]}]);
-  if(!occupied(i,j-1))edges.push([{x:xs[i],z:zs[j]},{x:xs[i+1],z:zs[j]}]);
-  if(!occupied(i,j+1))edges.push([{x:xs[i],z:zs[j+1]},{x:xs[i+1],z:zs[j+1]}]);
- }
- // Remove arrangement-only divisions along the same exposed edge. Runtime
- // movement checks only the union boundary, not every patch grid line.
- const grouped=new Map();for(const[a,b]of edges){const vertical=a.x===b.x,key=(vertical?'x:':'z:')+(vertical?a.x:a.z),group=grouped.get(key)||[];group.push([vertical?a.z:a.x,vertical?b.z:b.x]);grouped.set(key,group);}
- const merged=[];for(const[key,runs]of grouped){const fixed=Number(key.slice(2)),vertical=key[0]==='x',joined=[];
-  for(const[lo,hi]of runs.sort((a,b)=>a[0]-b[0])){const last=joined[joined.length-1];if(last&&lo<=last[1])last[1]=Math.max(last[1],hi);else joined.push([lo,hi]);}
-  for(const[lo,hi]of joined)merged.push(vertical?[{x:fixed,z:lo},{x:fixed,z:hi}]:[{x:lo,z:fixed},{x:hi,z:fixed}]);
- }return merged;
-}
-const EDGES=groundEdges();
-function pointDistance2(p,a,b){const dx=b.x-a.x,dz=b.z-a.z,n=dx*dx+dz*dz,t=n?clamp(((p.x-a.x)*dx+(p.z-a.z)*dz)/n,0,1):0,x=p.x-a.x-dx*t,z=p.z-a.z-dz*t;return x*x+z*z;}
-function edgeDistance2(a,b,c,d){
- const cross=(a,b,c)=>(b.x-a.x)*(c.z-a.z)-(b.z-a.z)*(c.x-a.x),u=cross(a,b,c),v=cross(a,b,d),w=cross(c,d,a),q=cross(c,d,b);
- if(u*v<0&&w*q<0)return 0;
- return Math.min(pointDistance2(a,c,d),pointDistance2(b,c,d),pointDistance2(c,a,b),pointDistance2(d,a,b));
-}
 function land(x,z,r=.31){
  if(![x,z,r].every(Number.isFinite)||r<0||r>2)return false;
- const p={x,z},r2=Math.max(0,r-1e-8)**2;return PATCHES.some(p=>inside(x,z,p))&&(r===0||EDGES.every(([a,b])=>pointDistance2(p,a,b)>=r2));
+ // Check the union, not each individual patch's inset: adjoining roads have no invisible seam.
+ return [[0,0],[r,0],[-r,0],[0,r],[0,-r],[r*.707,r*.707],[-r*.707,r*.707],[r*.707,-r*.707],[-r*.707,-r*.707]].every(([dx,dz])=>PATCHES.some(p=>inside(x+dx,z+dz,p)));
 }
 function walkable(x,z,r=.31){return land(x,z,r)&&!SOLIDS.some(p=>inside(x,z,p,-r));}
 function interval(a,b,p,r=0){
@@ -92,10 +50,10 @@ function interval(a,b,p,r=0){
 function segment(a,b,r=.31){
  if(!a||!b||!Number.isFinite(dist(a,b))||dist(a,b)>150||!walkable(a.x,a.z,r)||!walkable(b.x,b.z,r))return false;
  if(SOLIDS.some(p=>interval(a,b,p,r)))return false;
- const intervals=PATCHES.map(p=>interval(a,b,p)).filter(Boolean).sort((a,b)=>a[0]-b[0]);let end=0;
- for(const [lo,hi]of intervals){if(lo>end+1e-8)return false;end=Math.max(end,hi);}if(end<1-1e-8)return false;
- const r2=Math.max(0,r-1e-8)**2,minX=Math.min(a.x,b.x)-r,maxX=Math.max(a.x,b.x)+r,minZ=Math.min(a.z,b.z)-r,maxZ=Math.max(a.z,b.z)+r;
- return r===0||EDGES.every(([c,d])=>Math.min(c.x,d.x)>maxX||Math.max(c.x,d.x)<minX||Math.min(c.z,d.z)>maxZ||Math.max(c.z,d.z)<minZ||edgeDistance2(a,b,c,d)>=r2);
+ for(const [dx,dz]of [[0,0],[r,0],[-r,0],[0,r],[0,-r],[r*.707,r*.707],[-r*.707,r*.707],[r*.707,-r*.707],[-r*.707,-r*.707]]){
+  const intervals=PATCHES.map(p=>interval({x:a.x+dx,z:a.z+dz},{x:b.x+dx,z:b.z+dz},p)).filter(Boolean).sort((a,b)=>a[0]-b[0]);let end=0;
+  for(const [lo,hi]of intervals){if(lo>end+1e-8)return false;end=Math.max(end,hi);}if(end<1-1e-8)return false;
+ }return true;
 }
 function line(a,b){return segment(a,b,.04);}
 function near(sim,p,r=2.6){return dist(sim.state.player,p)<=r;}
@@ -143,5 +101,5 @@ function pick(start,ray,max=420){
  }
  return null;
 }
-const api={ROOM,GATE,ENTRY,BASE_PATCHES,BASE_SOLIDS,BASE_POINTS,EXTENSION,BOUNDS,PATCHES,SOLIDS,POINTS,legacyHeight,height,land,walkable,segment,line,near,preview,cancel,enter,leave,recover,pick};G.RealmCosmos=api;if(typeof module!=='undefined')module.exports=api;
+const api={ROOM,GATE,ENTRY,PATCHES,SOLIDS,POINTS,height,land,walkable,segment,line,near,preview,cancel,enter,leave,recover,pick};G.RealmCosmos=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

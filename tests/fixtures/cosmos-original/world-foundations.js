@@ -8,7 +8,7 @@ let catalogueCache=null;
 function definitions(){
  if(catalogueCache)return catalogueCache;
  const north=data('RealmWorldHeavenHell','world-heaven-hell.js'),south=data('RealmWorldAtlantisEarth','world-atlantis-earth.js'),n=data('RealmCosmos','cosmos.js');
- const cosmos={id:'cosmos',room:n.ROOM,name:'The Near Expanse',description:'Warm lamps and useful field work under an extraordinary sky.',kicker:'COSMOS · THE ROADS BETWEEN STARS',entry:n.ENTRY,bounds:n.BOUNDS,patches:n.PATCHES,solids:n.SOLIDS,points:n.POINTS.map(p=>({...p,text:p.text||(p.id==='lamps'?'Teren keeps three lamps ready: one for the road out, one for shelter, one for the way home.':'Record the bearing without deciding what the whole sky means.')})),quest:{id:'cosmos-opening-v1',title:'Three Bearings Under the Lamps',giverId:'lamps',objectives:[{id:'first',pointId:'rootcut',text:'Record the sheltered lane bearing',kind:'interact'},{id:'second',pointId:'rise',text:'Compare the open-road horizon',kind:'interact'},{id:'third',pointId:'anik',text:'Bring both bearings to the observatory',kind:'interact'}],reward:{xp:15,coins:6,ore:1},completionText:'A small route chart now belongs to the Three Lamps station.'},enemies:[],palette:{ground:0x78856b,stone:0x898777,trim:0xb99b60,sky:0x242a44},water:false,existing:true};
+ const cosmos={id:'cosmos',room:n.ROOM,name:'The Near Expanse',description:'Warm lamps and useful field work under an extraordinary sky.',kicker:'COSMOS · THE ROADS BETWEEN STARS',entry:n.ENTRY,bounds:{minX:-20,maxX:20,minZ:-55,maxZ:23},patches:n.PATCHES,solids:n.SOLIDS,points:n.POINTS.map(p=>({...p,text:p.id==='lamps'?'Teren keeps three lamps ready: one for the road out, one for shelter, one for the way home.':'Record the bearing without deciding what the whole sky means.'})),quest:{id:'cosmos-opening-v1',title:'Three Bearings Under the Lamps',giverId:'lamps',objectives:[{id:'first',pointId:'rootcut',text:'Record the sheltered lane bearing',kind:'interact'},{id:'second',pointId:'rise',text:'Compare the open-road horizon',kind:'interact'},{id:'third',pointId:'anik',text:'Bring both bearings to the observatory',kind:'interact'}],reward:{xp:15,coins:6,ore:1},completionText:'A small route chart now belongs to the Three Lamps station.'},enemies:[],palette:{ground:0x78856b,stone:0x898777,trim:0xb99b60,sky:0x242a44},water:false,existing:true};
  return catalogueCache=Object.freeze([...north.realms,...south.realms,cosmos]);
 }
 function definition(id){return definitions().find(d=>d.id===id||d.room===id)||null;}
@@ -36,14 +36,12 @@ function validate(raw){
 function height(room,x,z){if(room===G.RealmCosmos?.ROOM)return G.RealmCosmos.height(x,z);const d=definition(room),p=d?.patches.filter(p=>inside(x,z,p)).sort((a,b)=>a.w*a.d-b.w*b.d)[0];return p?.y??1.57;}
 function playerHeight(sim){return sim.worldDive?.y??height(sim.room,sim.state.player.x,sim.state.player.z);}
 function land(room,x,z,r=.31){const d=definition(room);if(!d||![x,z,r].every(finite)||r<0||r>2)return false;
- if(room===G.RealmCosmos?.ROOM)return G.RealmCosmos.land(x,z,r);
  return[[0,0],[r,0],[-r,0],[0,r],[0,-r],[r*.707,r*.707],[-r*.707,r*.707],[r*.707,-r*.707],[-r*.707,-r*.707]].every(([dx,dz])=>d.patches.some(p=>inside(x+dx,z+dz,p)));
 }
-function walkable(room,x,z,r=.31){if(room===G.RealmCosmos?.ROOM)return G.RealmCosmos.walkable(x,z,r);const d=definition(room);return land(room,x,z,r)&&!d.solids.some(p=>inside(x,z,p,-r));}
+function walkable(room,x,z,r=.31){const d=definition(room);return land(room,x,z,r)&&!d.solids.some(p=>inside(x,z,p,-r));}
 function interval(a,b,p,r=0){let lo=0,hi=1;for(const[k,s]of[['x','w'],['z','d']]){const step=b[k]-a[k],min=p[k]-p[s]/2-r,max=p[k]+p[s]/2+r;
  if(Math.abs(step)<1e-10){if(a[k]<min||a[k]>max)return null;}else{const u=(min-a[k])/step,v=(max-a[k])/step;lo=Math.max(lo,Math.min(u,v));hi=Math.min(hi,Math.max(u,v));if(lo>hi)return null;}}return[lo,hi];}
 function segment(room,a,b,r=.31){const d=definition(room);if(!d||!a||!b||!finite(dist(a,b))||dist(a,b)>600||!walkable(room,a.x,a.z,r)||!walkable(room,b.x,b.z,r))return false;
- if(room===G.RealmCosmos?.ROOM)return G.RealmCosmos.segment(a,b,r);
  if(d.solids.some(p=>interval(a,b,p,r)))return false;
  for(const[dx,dz]of[[0,0],[r,0],[-r,0],[0,r],[0,-r],[r*.707,r*.707],[-r*.707,r*.707],[r*.707,-r*.707],[-r*.707,-r*.707]]){
   const ranges=d.patches.map(p=>interval({x:a.x+dx,z:a.z+dz},{x:b.x+dx,z:b.z+dz},p)).filter(Boolean).sort((a,b)=>a[0]-b[0]);let end=0;
