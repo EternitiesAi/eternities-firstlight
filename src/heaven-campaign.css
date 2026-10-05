@@ -19,6 +19,7 @@
 .heaven-campaign-confirm { border: 2px solid #e8ca80 !important; background: #414837 !important; }
 .heaven-campaign-escort { border-left: 4px solid #b2d6d0 !important; }
 .heaven-campaign-escort[data-status="reset"], .heaven-campaign-escort[data-status="inactive"] { border-left-color: #d3b090 !important; }
+.heaven-campaign-escort[data-status="awaiting-save"] { border-left-color: #efdaa1 !important; }
 .heaven-campaign-ready, .heaven-campaign-local-recognition { border-color: #a1c4ab !important; }
 .heaven-campaign-map li { margin: 12px 0; }
 .heaven-campaign-footer { font-size: 12px; color: #bdcdc6; }

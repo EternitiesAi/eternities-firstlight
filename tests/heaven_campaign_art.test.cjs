@@ -126,6 +126,16 @@ test('a supplied lock clipped before the existing Garden instrument cannot proje
  e.strike=Object.freeze({...e.strike,length:0});const blocked=empty();assert.ok(Art.drawEnemy(blocked,sim,e,0));assert.ok(all(blocked).length);assert.ok(!all(blocked).some(p=>p.heavenCampaignTelegraph));
 });
 
+test('short positive cover-clipped beam warnings keep caps and directional notches inside the supplied locked length',()=>{
+ const sim=specimen(),e=actor(sim,0);e.mode='windup';for(const length of[.005,.02,.04,.08])for(const yaw of[0,.41,Math.PI]){
+  e.strike=Object.freeze({kind:'beam',x:1,z:-63,yaw,length,halfWidth:.65});const before=JSON.stringify(e),out=empty();Art.drawEnemy(out,sim,e,0);assert.equal(JSON.stringify(e),before);
+  const warning=projected(out).filter(({p})=>p.heavenCampaignTelegraph);assert.ok(warning.length);
+  for(const{p,v}of warning){const dx=v[0]-e.strike.x,dz=v[2]-e.strike.z,side=dx*Math.cos(yaw)-dz*Math.sin(yaw),forward=dx*Math.sin(yaw)+dz*Math.cos(yaw);
+   assert.ok(forward>=-1e-5&&forward<=length+1e-5,'short '+length+' locked frame exceeded by '+p.heavenCampaignPart+' at '+forward);assert.ok(Math.abs(side)<=e.strike.halfWidth+1e-5);
+  }
+ }
+});
+
 test('combat pause and reduced motion preserve deterministic frames with actual phase differences',()=>{
  for(let i=0;i<D.enemies.length;i++){
   const sim=specimen(),e=actor(sim,i);e.mode='windup';e.timer=.7;
@@ -169,6 +179,19 @@ test('remote first invite and a reset escort walk link both reach the real stagi
 test('active map position comes from the actual live courier while reset preserves only honest staging and destination guidance',()=>{
  const sim=specimen(required.slice(0,required.indexOf(D.escort.arrivalStep))),e=courier(sim),before=JSON.stringify(sim.state);const active=UI.routePoints(sim),point=active.find(p=>p.id==='escort-position');assert.equal(point.x,e.x);assert.equal(point.z,e.z);assert.equal(point.informative,true);assert.ok(active.some(p=>p.id===D.escort.arrivalStep));assert.equal(JSON.stringify(sim.state),before);
  e.x=-24;e.z=-7;assert.equal(UI.routePoints(sim).find(p=>p.id==='escort-position').x,-24);H.runtime(sim).escort=null;const reset=UI.routePoints(sim);assert.ok(!reset.some(p=>p.id==='escort-position'));assert.ok(reset.some(p=>p.id==='escort-staging'));assert.equal(JSON.stringify(sim.state),before);
+});
+
+test('arrival save refusal keeps the exact courier visible at its real destination and explains callback retries without claiming arrival or payment',()=>{
+ const sim=specimen(required.slice(0,required.indexOf(D.escort.arrivalStep))),e=courier(sim,'awaiting-save'),destination=D.escort.route.at(-1);e.x=destination.x;e.z=destination.z;e.routeIndex=D.escort.route.length;at(sim,D.escort.arrivalStep);
+ const original=H.escortStatus;H.escortStatus=()=>({phase:'awaiting-save',text:'The physical route is finished, but its arrival save was refused. Stay beside Calen and retry when saving is available.'});
+ try{
+  const before=JSON.stringify({state:sim.state,actor:e}),out=empty(),frame=Art.drawEscort(out,sim,e,999);assert.equal(frame.phase,'awaiting-save');assert.equal(frame.x,destination.x);assert.equal(frame.z,destination.z);assert.ok(all(out).length);
+  assert.equal(Art.drawEscort(empty(),sim,{...e},999),false);const points=UI.routePoints(sim),livePoint=points.find(p=>p.id==='escort-position');assert.equal(livePoint.x,destination.x);assert.equal(livePoint.z,destination.z);assert.ok(!points.some(p=>p.id==='escort-staging'));
+  const h=harness(sim),html=h.ui.page('heaven-campaign').html;assert.ok(html.includes('data-status="awaiting-save"'));assert.ok(html.includes('arrival save was refused'));assert.ok(html.includes('automatic retries of the actual arrival save'));assert.ok(!html.includes('data-rpg="heaven-campaign-invite"'));assert.ok(!html.includes('data-rpg="heaven-campaign-step" data-id="'+D.escort.arrivalStep+'"'));assert.ok(!html.includes('data-rpg="heaven-campaign-claim"'));assert.ok(!html.includes('Complete · unpaid'));assert.deepEqual(h.commands,[]);assert.equal(JSON.stringify({state:sim.state,actor:e}),before);
+  const nodes=new Map(),previous=global.document;global.document={querySelector:selector=>{if(!nodes.has(selector))nodes.set(selector,{});return nodes.get(selector);}};try{h.ui.tick();assert.ok(nodes.get('#tracked-detail').textContent.includes('awaiting-save'));}finally{if(previous===undefined)delete global.document;else global.document=previous;}
+  assert.equal(JSON.stringify({state:sim.state,actor:e}),before);assert.ok(!sim.state.heavenCampaign.steps.includes(D.escort.arrivalStep));assert.equal(sim.state.heavenCampaign.claimed,false);
+ }finally{H.escortStatus=original;}
+ H.runtime(sim).escort={id:D.escort.id,x:D.escort.x,z:D.escort.z,yaw:0,phase:'idle'};assert.equal(Art.drawEscort(empty(),sim,e,0),false);assert.ok(UI.routePoints(sim).some(p=>p.id==='escort-staging'));assert.ok(!UI.routePoints(sim).some(p=>p.id==='escort-position'));assert.ok(!sim.state.heavenCampaign.steps.includes(D.escort.arrivalStep));
 });
 
 test('choice preview grants no work and confirmation submits the exact current character and revision',()=>{

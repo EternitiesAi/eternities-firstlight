@@ -63,8 +63,9 @@ function beamWarning(out,sim,e,strike){if(strike.kind!=='beam'||!finite(strike.x
  const l=Math.min(strike.length,G.RealmHeavenCampaign?.beamLength?.(sim,e)??strike.length);if(!Number.isFinite(l)||l<=0)return;
  const p=painter(out,sim,strike,strike.yaw,{heavenCampaignActor:e.id,heavenCampaignTelegraph:true,heavenCampaignPattern:'beam',heavenCampaignStrike:{...strike}}),w=strike.halfWidth;
  for(const x of[-w+.025,w-.025])p.box(x,.035,l/2,.05,.035,l,colors.beam,'locked-beam-edge',{em:.46});
- for(const z of[.025,l-.025])p.box(0,.035,z,2*w,.035,.05,colors.beam,'locked-beam-end',{em:.46});
- for(let i=1;i<=3;i++)p.box(0,.054,l*i/4,Math.min(w,.23),.025,.09,colors.beam,'directed-beam-notch',{em:.36});
+ const cap=Math.min(.05,l),notch=Math.min(.09,l/4);
+ for(const z of new Set([cap/2,l-cap/2]))p.box(0,.035,z,2*w,.035,cap,colors.beam,'locked-beam-end',{em:.46});
+ for(let i=1;i<=3;i++)p.box(0,.054,l*i/4,Math.min(w,.23),.025,notch,colors.beam,'directed-beam-notch',{em:.36});
 }
 function pulseWarning(out,sim,e,strike){if(strike.kind!=='pulse'||!finite(strike.x,strike.z,strike.radius)||strike.radius<=.12)return;
  const N=32,r=strike.radius,R=(r-.04)*Math.cos(Math.PI/N)-.03,L=2*(r-.04)*Math.sin(Math.PI/N)*.95;
@@ -94,7 +95,7 @@ function drawEnemy(out,sim,e,time){const d=definition(),r=sim.state.heavenCampai
  return{actor:e.id,root:Array.from(p.root),base:FLOOR,x:e.x,z:e.z,yaw:e.yaw??0,mode:e.mode,pattern:terms.attack.kind};
 }
 function drawEscort(out,sim,actor,time){const d=definition(),r=sim.state.heavenCampaign;
- if(!d||sim.room!==d.room||!r?.accepted||!actor||G.RealmHeavenCampaign?.runtime(sim).escort!==actor||actor.id!==d.escort.id||!['idle','following','lagging','arrived'].includes(actor.phase)||(actor.phase!=='idle'&&!r.steps.includes(d.escort.startStep))||!finite(actor.x,actor.z,actor.yaw??0))return false;
+ if(!d||sim.room!==d.room||!r?.accepted||!actor||G.RealmHeavenCampaign?.runtime(sim).escort!==actor||actor.id!==d.escort.id||!['idle','following','lagging','awaiting-save','arrived'].includes(actor.phase)||(actor.phase!=='idle'&&!r.steps.includes(d.escort.startStep))||!finite(actor.x,actor.z,actor.yaw??0))return false;
  const p=painter(out,sim,actor,actor.yaw??0,{heavenCampaignEscort:actor.id});
  for(const x of[-.115,.115]){p.box(x,.095,0,.15,.19,.30,colors.ink,'courier-foot');p.box(x,.39,0,.105,.46,.15,colors.ink,'courier-leg');}
  p.box(0,.73,0,.35,.30,.28,colors.ruby,'courier-coat-hem');p.box(0,1.00,0,.31,.38,.23,colors.ruby,'courier-coat');
