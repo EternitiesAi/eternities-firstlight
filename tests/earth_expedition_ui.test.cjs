@@ -8,7 +8,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const ROOT=path.resolve(__dirname,'..'),C=require('../src/core.js'),A=require('../src/adventure.js'),E=require('../src/earth-expedition.js'),W=require('../src/world-foundations.js');
 const AR=require('../src/arsenal.js'),R=require('../src/realm-trails.js'),CH=require('../src/characters.js');
 const UI=require('../src/earth-expedition-ui.js');require('../src/world-foundations-ui.js');require('../src/realm-trails-ui.js');require('../src/rpg-ui.js');
-const CUI=require('../src/local-life-ui.js'),BUI=require('../src/bridge-community-ui.js');
+const CUI=require('../src/local-life-ui.js'),BUI=require('../src/bridge-community-ui.js'),HCUI=require('../src/hell-campaign-ui.js');
 const WUI=globalThis.RealmWorldFoundationsUI,TUI=globalThis.RealmTrailsUI,RPG=globalThis.RealmRPGUI;
 const args=process.argv.slice(2),arg=n=>{const i=args.indexOf(n);return i<0?null:args[i+1];},copy=x=>JSON.parse(JSON.stringify(x)),hash=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 const results=[],evidence=[];let serial=0;
@@ -22,7 +22,7 @@ function fixture({steps=[],claimed=false,branch=null,patrol=null,xp=0}={}){
  f.save=value=>{f.saves.push(C.validate(value));return{ok:true};};sim.earthExpeditionSave=f.save;
  f.context=()=>({sim:f.sim,active:f.active,revision:f.revision});
  f.rpg={get sim(){return f.sim;},get state(){return f.sim.state.adventure;},quest:'story',dialog:{open:false},open(tab){this.opened=tab;},close(){this.closed=true;},paint(){this.paints=(this.paints||0)+1;},api:{worldContext:f.context,toast:s=>f.toasts.push(s),project:()=>({visible:false}),walkLocal:(x,z)=>{f.walks.push({x,z});return f.sim.moveTo(x,z);},expeditionCommand:(type,payload)=>{f.commands.push({type,payload});return f.result=E.command(f.context(),type,payload,{save:f.save});},earthBinding:(weapon,kind)=>{f.boundCalls++;return f.result=E.bindingCommand(f.context(),weapon,kind,{save:f.save});}}};
- f.ui=new UI.ExpeditionUI(f.rpg);f.rpg.expedition=f.ui;f.rpg.civic=new CUI.LocalLifeUI(f.rpg);f.rpg.community=new BUI.BridgeCommunityUI(f.rpg);A.syncScene(sim);return f;
+ f.ui=new UI.ExpeditionUI(f.rpg);f.rpg.expedition=f.ui;f.rpg.civic=new CUI.LocalLifeUI(f.rpg);f.rpg.community=new BUI.BridgeCommunityUI(f.rpg);f.rpg.hellCampaign=new HCUI.HellCampaignUI(f.rpg);A.syncScene(sim);return f;
 }
 const paid=()=>({steps:E.definition.steps.map(s=>s.id),claimed:true,branch:'managed-coppice'});
 const event=(type,id='',extra={})=>({dataset:{rpg:'expedition-'+type,id,...extra}});

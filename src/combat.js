@@ -43,7 +43,8 @@ function threat(sim){
  if(e.mode==='recover')return{phase:'recover',kind:'opening',remaining:e.timer};
  if(!e.aim||!Number.isFinite(e.aim.x)||!Number.isFinite(e.aim.z))return null;
  let kind='strike';
- if(G.RealmEarthExpedition?.encounter(e)){if(!e.strike||![e.strike.x,e.strike.z,e.strike.yaw].every(Number.isFinite))return null;kind='bank-sweep';}
+ if(G.RealmHellCampaign?.encounter(e)){if(!e.strike||!['line','sweep'].includes(e.strike.kind))return null;kind='writ-'+e.strike.kind;}
+ else if(G.RealmEarthExpedition?.encounter(e)){if(!e.strike||![e.strike.x,e.strike.z,e.strike.yaw].every(Number.isFinite))return null;kind='bank-sweep';}
  else if(e.custom==='bell'){if(!['inner','outer'].includes(e.ringMode))return null;kind='bell-'+e.ringMode;}
  else if(e.eventEnemy&&e.aimWard)kind='ward';
  else if(e.kind==='charger')kind='charge';

@@ -173,6 +173,9 @@ def main():
     run('bridge-community-blade', ['node', 'tests/bridge_community_journey.cjs'])
     run('bridge-community-bow', ['node', 'tests/bridge_community_journey.cjs', '--bow'])
     run('bridge-community-veteran', ['node', 'tests/bridge_community_journey.cjs', '--veteran'])
+    run('hell-campaign-blade', ['node', 'tests/hell_campaign_journey.cjs'])
+    run('hell-campaign-bow', ['node', 'tests/hell_campaign_journey.cjs', '--bow'])
+    run('hell-campaign-veteran', ['node', 'tests/hell_campaign_journey.cjs', '--veteran'])
     if args.browser:
         prepare_browser_sources(args.browser_output)
         # Qualify the recently extended Earth presentation and native giver
