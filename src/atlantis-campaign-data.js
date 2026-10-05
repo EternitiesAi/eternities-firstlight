@@ -64,7 +64,7 @@ const definition=freeze({
   step('secure-carrier','Secure Damar’s local waiting bay','interact',15,-40.5,['outlet-set'],false,
    'Damar waits at this supported dry service bay with his load accounted for. Record his actual account and the isolated local hold. His boat and skill were never the fault. He can remain safely here through pause, reload or retreat; no traveling escort or real-time deadline is required. The unbuilt full lower hold is not opened by this adaptation.'),
   step('challenge-custodian','Begin the dry-quay Custodian release','interact',8,-44,['secure-carrier'],false,
-   'Deliberately begin work on the quay-mounted Breakwater Custodian. It is a municipal service construct running a counterfeit schedule. Its body stays floor-clamped on the supported dry quay. Read the locked vane sector and intake lane; move, Brace or use actual cover. The machine carries no independent XP, loot or gear fee.'),
+   'Deliberately begin work on the quay-mounted Breakwater Custodian. It is a municipal service construct running a counterfeit schedule. It remains anchored at its service foundation on the supported dry quay; it does not chase a retreating traveller. Read the locked vane sector and intake lane; move, Brace or use actual cover. The machine carries no independent XP, loot or gear fee.'),
   step('bearing-exposed','Expose the counterfeit Custodian bearing','defeat',8,-44,['challenge-custodian'],false,
    'Only actual damage exhausting the owned Custodian’s fixed combat health establishes this fact. A manual completion button cannot substitute. The machine settles into a disabled service state; it is not killed or exploded. This exhaustion grants no independent loot or XP and does not stabilize the two releases or pay the campaign fee.'),
   step('release-west','Stabilize the west release first','pressure',2,-44,['bearing-exposed'],false,
@@ -104,7 +104,7 @@ const definition=freeze({
     {name:'Damar',text:'I am safe and my account remains complete. The permit was your deliberate choice after the independent passage existed.'}
    ]}
  ],
- enemy:{id:'atlantis-breakwater-custodian-v1',name:'Breakwater Custodian',kind:'sentinel',x:8,z:-44,hp:128,damage:10,radius:.75,damageWindow:'all-live-phases',spawnAfter:['challenge-custodian'],defeatStep:'bearing-exposed'}
+ enemy:{id:'atlantis-breakwater-custodian-v1',name:'Breakwater Custodian',kind:'sentinel',x:8,z:-44,hp:128,damage:10,radius:.75,anchored:true,damageWindow:'all-live-phases',spawnAfter:['challenge-custodian'],defeatStep:'bearing-exposed'}
 });
 const api=freeze({definition,patterns,current,pressure});
 G.RealmAtlantisCampaignData=api;

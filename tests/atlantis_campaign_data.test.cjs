@@ -154,7 +154,8 @@ test('Atlantis current: marked shallow region is entirely water; lower reading, 
 });
 
 test('Atlantis encounter: grounded sweep fits; intake exposes the real south-edge clipping requirement',()=>{
- keys(d.enemy,['id','name','kind','x','z','hp','damage','radius','damageWindow','spawnAfter','defeatStep']);
+ keys(d.enemy,['id','name','kind','x','z','hp','damage','radius','anchored','damageWindow','spawnAfter','defeatStep']);
+ assert.equal(d.enemy.anchored,true,'municipal service machine stays at its supported foundation');
  assert.equal(d.enemy.id,'atlantis-breakwater-custodian-v1');assert.equal(d.enemy.kind,'sentinel');assert.equal(d.enemy.hp,128);assert.equal(d.enemy.damage,10);assert.equal(d.enemy.radius,.75);assert.equal(d.enemy.damageWindow,'all-live-phases');
  assert.deepEqual(d.enemy.spawnAfter,['challenge-custodian']);assert.equal(d.enemy.defeatStep,'bearing-exposed');assert.equal((world.enemies||[]).length,0);
  assert.ok(!old.definitions.some(v=>v.enemy?.id===d.enemy.id));assert.equal('xp' in d.enemy,false);assert.equal('gear' in d.enemy,false);
@@ -167,7 +168,7 @@ test('Atlantis encounter: grounded sweep fits; intake exposes the real south-edg
  assert.equal(lane(patterns.intake.length,Math.PI),false,'raw maximum southward intake leaves existing support');
  assert.equal(lane(3.5,Math.PI),true,'a shorter southward locked lane can fit the same supported quay');
  const bollard=world.solids.find(s=>s.id==='exit-quay-bollard');assert.ok(bollard);assert.equal(W.segment(d.room,d.enemy,{x:19,z:-44},.04),false,'existing opaque bollard is real contact cover');
- assert.match(d.danger,/support and opaque cover must clip the locked footprint/);assert.match(steps.get('challenge-custodian').text,/floor-clamped/);
+ assert.match(d.danger,/support and opaque cover must clip the locked footprint/);assert.match(steps.get('challenge-custodian').text,/anchored at its service foundation.*does not chase/);
  assert.match(steps.get('bearing-exposed').text,/not killed or exploded/);assert.match(d.danger,/no recovery-only armor or equipment scaling/);
 });
 

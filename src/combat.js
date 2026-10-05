@@ -38,12 +38,14 @@ function threat(sim){
  const e=selected(sim);if(!e||e.kind==='practice')return null;
  const known=e.custom==='bell'?e.kind==='bellwarden':e.eventEnemy?['invader','chanter','saboteur','siegeboss'].includes(e.kind):['skitter','sentinel','boss','charger'].includes(e.kind);
  if(!known)return null;
+ if(G.RealmAtlantisCampaign?.encounter(e)&&e.mode==='intake'&&e.strike?.kind==='intake'&&Number.isFinite(e.timer)&&e.timer>0)return{phase:'intake',kind:'harbour-intake',remaining:e.timer};
  if(e.mode==='charge')return e.kind==='charger'&&Number.isFinite(e.chargeLeft)&&e.chargeLeft>0?{phase:'charge',kind:'charge',remaining:null}:null;
  if(!['windup','recover'].includes(e.mode)||!Number.isFinite(e.timer)||e.timer<=0)return null;
  if(e.mode==='recover')return{phase:'recover',kind:'opening',remaining:e.timer};
  if(!e.aim||!Number.isFinite(e.aim.x)||!Number.isFinite(e.aim.z))return null;
  let kind='strike';
- if(G.RealmHeavenCampaign?.encounter(e)){if(!e.strike||!['beam','pulse'].includes(e.strike.kind))return null;kind='garden-'+e.strike.kind;}
+ if(G.RealmAtlantisCampaign?.encounter(e)){if(!e.strike||!['sweep','intake'].includes(e.strike.kind))return null;kind='harbour-'+e.strike.kind;}
+ else if(G.RealmHeavenCampaign?.encounter(e)){if(!e.strike||!['beam','pulse'].includes(e.strike.kind))return null;kind='garden-'+e.strike.kind;}
  else if(G.RealmHellCampaign?.encounter(e)){if(!e.strike||!['line','sweep'].includes(e.strike.kind))return null;kind='writ-'+e.strike.kind;}
  else if(G.RealmEarthExpedition?.encounter(e)){if(!e.strike||![e.strike.x,e.strike.z,e.strike.yaw].every(Number.isFinite))return null;kind='bank-sweep';}
  else if(e.custom==='bell'){if(!['inner','outer'].includes(e.ringMode))return null;kind='bell-'+e.ringMode;}

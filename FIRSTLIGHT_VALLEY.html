@@ -1,5 +1,32 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; media-src blob:; connect-src 'none'; base-uri 'none'; form-action 'none'"><meta name="theme-color" content="#19323a"><title>Eternities — Firstlight Valley · Realm 10 · Bellweather Crossing</title><style>.heaven-campaign { max-width: 850px; margin: 0 auto; color: #eee6d4; }
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; media-src blob:; connect-src 'none'; base-uri 'none'; form-action 'none'"><meta name="theme-color" content="#19323a"><title>Eternities — Firstlight Valley · Realm 10 · Bellweather Crossing</title><style>.atlantis-campaign { max-width: 870px; margin: 0 auto; color: #efe8d8; }
+.atlantis-campaign header { padding: 24px; border: 1px solid #b8986d; border-radius: 12px; background: linear-gradient(130deg,#31595a,#223e46 68%,#5b483b); }
+.atlantis-campaign h2 { margin: 9px 0 12px; color: #f0d49e; font-size: clamp(25px,4vw,36px); line-height: 1.2; }
+.atlantis-campaign h3, .atlantis-campaign h4, .atlantis-campaign-invitation h3, .atlantis-campaign-map h3 { margin: 4px 0 10px; color: #e9d6b0; }
+.atlantis-campaign small, .atlantis-campaign-invitation small { font-size: 10px; letter-spacing: .11em; color: #bddbd5; }
+.atlantis-campaign p, .atlantis-campaign-invitation p, .atlantis-campaign-map p { max-width: 74ch; line-height: 1.65; }
+.atlantis-campaign section, .atlantis-campaign-invitation, .atlantis-campaign-map { margin: 16px 0; padding: 18px; border: 1px solid #739794; border-radius: 9px; background: #233d43ee; }
+.atlantis-campaign button, .atlantis-campaign-invitation button, .atlantis-campaign-map button { min-height: 44px; margin: 5px 8px 5px 0; max-width: 100%; white-space: normal; text-align: left; }
+.atlantis-campaign button:focus-visible, .atlantis-campaign summary:focus-visible, .atlantis-campaign-invitation button:focus-visible, .atlantis-campaign-map button:focus-visible { outline: 3px solid #f0d49e; outline-offset: 3px; }
+.atlantis-campaign-terms { border-left: 4px solid #d7ab72 !important; }
+.atlantis-campaign-gallery { border-left: 4px solid #a4ddd6 !important; }
+.atlantis-campaign-steps { margin: 0; padding: 0; list-style: none; }
+.atlantis-campaign-steps li { padding: 16px 0; border-top: 1px solid #68898b; }
+.atlantis-campaign-steps li:first-child { border-top: 0; }
+.atlantis-campaign-steps li.atlantis-campaign-next { border-left: 3px solid #d6b985; padding-left: 14px; }
+.atlantis-campaign-done h4 { color: #b6dbce; }
+.atlantis-campaign details { margin: 10px 0; }
+.atlantis-campaign summary { cursor: pointer; min-height: 30px; padding: 5px 0; color: #c7dfdd; }
+.atlantis-campaign-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+.atlantis-campaign-grid article { min-width: 0; padding: 16px; border: 1px solid #8aa39b; border-radius: 8px; background: #20353b; }
+.atlantis-campaign-grid .atlantis-campaign-chosen { border: 2px solid #eac588; }
+.atlantis-campaign-confirm { border: 2px solid #eac588 !important; background: #41493a !important; }
+.atlantis-campaign-ready, .atlantis-campaign-recognition { border-color: #adcfba !important; }
+.atlantis-campaign-map li { margin: 12px 0; }
+.atlantis-campaign-footer { color: #c2d5cb; font-size: 12px; }
+@media (max-width: 650px) { .atlantis-campaign-grid { grid-template-columns: 1fr; } .atlantis-campaign header, .atlantis-campaign section { padding: 16px; } }
+
+.heaven-campaign { max-width: 850px; margin: 0 auto; color: #eee6d4; }
 .heaven-campaign header { padding: 23px; border: 1px solid #b2bca8; border-radius: 13px; background: linear-gradient(125deg,#354f58,#293a40 66%,#564a3b); }
 .heaven-campaign h2 { margin: 9px 0 12px; color: #f2dca4; font-size: clamp(25px,4vw,36px); line-height: 1.2; }
 .heaven-campaign h3, .heaven-campaign h4, .heaven-campaign-invitation h3, .heaven-campaign-map h3 { margin: 4px 0 10px; color: #e7d8b4; }
@@ -1612,7 +1639,10 @@ const api=Object.freeze({parts});G.RealmElderwealdTrailArt=api;if(typeof module!
    solid('court-registry',0,-20.4,3.2,.8,1.2,0x9c8966),
    solid('court-west-bench',-8,-18,3,.7,.9,0x9c8966),
    solid('dry-causeway-west-rail',-5.6,-32,.2,25,.75,0x8b7c56),
-   solid('exit-quay-bollard',18,-44,1,1,1,0x8e9d97)
+   solid('exit-quay-bollard',18,-44,1,1,1,0x8e9d97),
+   // Real service cover: the same solid supplies body/projectile collision,
+   // intake clipping, the visible model and camera obstruction.
+   solid('custodian-service-bollard',12.5,-43,.7,.7,1.3,0x887356)
   ],
   points:[
    {id:'home-pier',name:'Free home passage',x:0,z:39,kind:'return',text:'Nereme keeps a dry route home available.',detail:'Return is independent of the work commission and optional gallery. No allegiance, dive or breath purchase is required.'},
@@ -2522,6 +2552,528 @@ function drawEnemy(out,sim,e,time){const d=definition(),r=sim.state.hellCampaign
  return{actor:e.id,root:Array.from(root),base:FLOOR,x:e.x,z:e.z,yaw:e.yaw??0,mode:e.mode,pattern:strike?.kind??null};
 }
 const api={draw,drawEnemy};G.RealmHellCampaignArt=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* The Harbour Beneath the Harbour: a bounded Farwake/Bellglass adaptation.
+ * Recovered direction: Atlantis Draft A, AT05 and First Prototype sections
+ * 2-3/7-12 (2026-09-14). They identify proposed fiction, not manuscript canon.
+ * This service bay, coordinates, depth bands and finite tuning are new terms.
+ * Import grants no actor, collision, consent, pressure state, damage or fee.
+ * Root owns future rules, actual movement/contact, persistence and callers.
+ */
+(function(G){'use strict';
+function freeze(value){if(value&&typeof value==='object'){Object.values(value).forEach(freeze);Object.freeze(value);}return value;}
+const step=(id,name,kind,x,z,requires,optional,text,medium='dry',y)=>({id,name,x,z,medium,...(y===undefined?{}:{y}),kind,requires,optional,text});
+const patterns=freeze({
+ sweep:{kind:'sweep',reach:3.6,radius:3.4,halfAngle:Math.PI/3,windup:1.3,contact:.18,recovery:1.9},
+ intake:{kind:'intake',reach:6,length:5.5,halfWidth:1,windup:1.5,active:1.2,recovery:2.1,pullSpeed:1.2,stopRadius:1.2}
+});
+const current=freeze({
+ x:8,z:-25,w:2.4,d:7,minY:-1.6,maxY:-.9,direction:{dx:0,dz:-1},speed:.7,
+ startStep:'choose-approach',stopSteps:['manual-bypass','outlet-set']
+});
+const pressure=freeze({
+ stages:['inlet-set','equalizer-set','outlet-set'],bypassStep:'manual-bypass',
+ correct:[
+  {step:'inlet-set',setting:'isolate-redirect'},
+  {step:'equalizer-set',setting:'match-depth-bands'},
+  {step:'outlet-set',setting:'chosen-destination'}
+ ]
+});
+const definition=freeze({
+ id:'atlantis-harbour-beneath-v1',title:'The Harbour Beneath the Harbour',
+ room:'world-atlantis',realm:'atlantis',prerequisite:'atlantis-bellglass-chart-v1',
+ giver:{id:'sahra',name:'Sahra · instrument-maker',x:-5,z:-10},
+ reward:{xp:48,coins:18,ore:4,materials:{wood:4,fiber:3,crystal:1}},
+ summary:'The Bellglass depth chart has been completed and claimed. Sahra’s calibrated lamp and Ilyra’s arrival receipts disagree: Damar is recorded as received at a destination he did not choose. Explicitly accept this separate finite repair, retain an Upper or Lower investigation approach, diagnose the depth-dependent flow, and set the inlet, equalizer and outlet in order. A supplied manual bypass offers a safe current-free alternative. Secure Damar’s local waiting bay, expose the counterfeit bearing through actual Custodian combat, stabilize two releases sequentially, then choose how this local passage and its evidence are kept. Verify the supervised handoff record before returning to Sahra for one fixed fee: up to 48 XP within the existing stored cap, 18 sunmarks, 4 ore, 4 timber, 3 fibre and 1 crystal. The cast comes from recovered proposals; these coordinates, service-bay staging and exact effects are provisional authored adaptations.',
+ danger:'The accepted repair can introduce a visible 0.7-unit-per-second current only in the marked shallow water band; existing swimming remains 2.6 units per second. Descend to the quiet lower band, use the supplied manual bypass, or retreat. There is no breath timer, hidden timing penalty or material loss. Bellglass’s air court has no current and no combat. Fight the floor-clamped Breakwater Custodian only on the dry exit quay: fixed 128 health, 10 damage and 0.75 body radius. A 3.4-radius forward vane sector warns for 1.3 seconds and recovers for 1.9; an intake lane warns for 1.5 seconds, pulls for at most 1.2 seconds at 1.2 units per second, and recovers for 2.1. Intake length is at most 5.5 with 1-unit half-width; actual support and opaque cover must clip the locked footprint. Ordinary blade and bow damage remain valid during all live combat phases, with no recovery-only armor or equipment scaling. Use movement, Brace, cover or retreat. Warning shapes and text remain usable with sound off. The free home passage and public visitor protection do not depend on any disposition. No class, soul technique or companion is mandatory.',
+ completionText:'Damar’s local waiting bay is safe, the Custodian is stabilized, and the selected passage record matches its local controls. Sahra’s supervised lens consignment and the nursery-custody receipt are accounted for; this does not claim a simulated voyage to an unbuilt nursery. Sahra has paid the fixed 18 sunmarks, 4 ore, 4 timber, 3 fibre and 1 crystal once; XP credits up to 48 within the existing stored cap. These materials support a chosen ordinary crafting or already-unlocked home project, not a universal weapon upgrade. The old visitor survey, Bellglass chart and lamp, realm fitting, equipment and socket history retain their owners. The wider counterfeit-passage plot, full lower lockworks and Tideglass Fitting remain pending. Original Heaven01 and the protected sanctuary remain separate.',
+ witnesses:[
+  {id:'atlantis-ilyra-v1',name:'Ilyra · records keeper',x:0,z:-18,appearsAfter:[]},
+  {id:'atlantis-damar-v1',name:'Damar · stranded carrier',x:15,z:-40.5,appearsAfter:['outlet-set']}
+ ],
+ approaches:[
+  {id:'upper',name:'Upper · read the marked shallow flow',requiredObservation:'upper-reading',
+   text:'Retain the Upper approach and read the upper gauge from its actual water depth. The visible shallow current is weaker than ordinary swimming. Hold depth deliberately, or use the supplied manual bypass before operating the repair. A lower reading remains optional evidence with no second fee.'},
+  {id:'lower',name:'Lower · follow the quiet old-road band',requiredObservation:'lower-reading',
+   text:'Retain the Lower approach and read the lower masonry mark from its actual water depth. This band stays below the accepted shallow current. The public envelope covers it without a timer or a new class. An upper reading remains optional evidence with no second fee.'}
+ ],
+ steps:[
+  step('receipt-conflict','Compare Ilyra’s two arrival receipts','interact',0,-18,[],false,
+   'Ilyra distinguishes Damar’s earlier shipping receipt from Lock Prefect Vaelor’s later destination instruction: the earlier-issued seal gives the redirected destination authority. His record says received, but his chosen arrival never happened. Preserve both records and his account. This is a concrete routing convention, not proof that every institution lies.'),
+  step('choose-approach','Retain an Upper or Lower investigation approach','approach',-5,-10,['receipt-conflict'],false,
+   'Read both depth approaches and the supplied manual bypass before confirming. The first confirmed Upper or Lower choice is retained. Its named observation is required for diagnosis; the other observation remains optional evidence. Preview and cancel grant no consent or progress. This choice does not assign a class or allegiance.'),
+  step('upper-reading','Read the shallow flow gauge','interact',8,-22,['choose-approach'],true,
+   'Read the upper gauge from this real water depth. It agrees with Sahra’s lamp but disagrees with the official destination setting. This is required only when Upper was retained; for Lower it is optional supporting evidence. No fee, material or earlier-chart progress is granted.', 'water',-1.05),
+  step('lower-reading','Read the quiet lower-road mark','interact',8,-28,['choose-approach'],true,
+   'Read the older masonry at this real lower depth, below the marked shallow current. Its depth convention identifies the same redirected outlet. This is required only when Lower was retained; for Upper it is optional supporting evidence. Keep the old mark and earlier chart intact.', 'water',-2.55),
+  step('diagnose-flow','Diagnose the redirected depth setting','interact',8,-35,['choose-approach'],false,
+   'At Bellglass’s dry visitor desk, use the retained approach’s actual reading to identify the depth setting copied into the wrong destination record. The other reading is welcome but unnecessary. The correct repair isolates the redirected inlet, matches the depth bands, then selects the carrier’s chosen outlet. No occult initiation or unseen timer is required.', 'court',-2.7),
+  step('manual-bypass','Open the supplied safe manual bypass','pressure',12,-29,['choose-approach'],true,
+   'Operate the supplied manual bypass from the wet east lane. It stops only this accepted repair’s shallow current; the public air court and downstream visitor supply remain maintained. The three required inlet, equalizer and outlet stages still need their own correct operations. There is no hidden timing penalty, material loss, enemy-stat change or extra fee.', 'water',-1.8),
+  step('inlet-set','Isolate the redirected service inlet','pressure',8,-22,['diagnose-flow'],false,
+   'Set isolate-redirect at the shallow inlet. Isolate the counterfeit destination branch while retaining public visitor supply. This is the first required pressure stage; an outlet action cannot substitute. The safe manual bypass remains available. Incorrect or premature settings spend no materials and leave accepted work intact.', 'water',-1.05),
+  step('equalizer-set','Match the two rated depth bands','pressure',8,-35,['inlet-set'],false,
+   'Set match-depth-bands at Bellglass’s dry control desk after inlet isolation. The chosen reading and maintained depth chart establish the bands. Keep the public air volume supplied. This is the second required pressure stage, with no timing penalty or forced simultaneous switches.', 'court',-2.7),
+  step('outlet-set','Select Damar’s chosen outlet','pressure',12,-38.4,['equalizer-set'],false,
+   'Set chosen-destination at the wet east outlet after equalization. The corrected local outlet stops the accepted shallow current and permits a safe supervised handoff. Neither this setting nor the earlier optional marker pays a reward. Leave through the existing gallery landing for the dry waiting bay.', 'water',-1.4),
+  step('secure-carrier','Secure Damar’s local waiting bay','interact',15,-40.5,['outlet-set'],false,
+   'Damar waits at this supported dry service bay with his load accounted for. Record his actual account and the isolated local hold. His boat and skill were never the fault. He can remain safely here through pause, reload or retreat; no traveling escort or real-time deadline is required. The unbuilt full lower hold is not opened by this adaptation.'),
+  step('challenge-custodian','Begin the dry-quay Custodian release','interact',8,-44,['secure-carrier'],false,
+   'Deliberately begin work on the quay-mounted Breakwater Custodian. It is a municipal service construct running a counterfeit schedule. It remains anchored at its service foundation on the supported dry quay; it does not chase a retreating traveller. Read the locked vane sector and intake lane; move, Brace or use actual cover. The machine carries no independent XP, loot or gear fee.'),
+  step('bearing-exposed','Expose the counterfeit Custodian bearing','defeat',8,-44,['challenge-custodian'],false,
+   'Only actual damage exhausting the owned Custodian’s fixed combat health establishes this fact. A manual completion button cannot substitute. The machine settles into a disabled service state; it is not killed or exploded. This exhaustion grants no independent loot or XP and does not stabilize the two releases or pay the campaign fee.'),
+  step('release-west','Stabilize the west release first','pressure',2,-44,['bearing-exposed'],false,
+   'Stabilize the west release after the actual bearing exhaustion. This is the first of two sequential dry service operations. The settled machine and secured bay remain safe; no second player, timed appointment or simultaneous switch is required.'),
+  step('release-east','Stabilize the east release second','pressure',15,-44,['release-west'],false,
+   'Stabilize the east release after the west release is recorded. The two release facts belong to this campaign, independently of combat exhaustion. Retried, remote or refused-save operations cannot manufacture stabilization or another payment.'),
+  step('custodian-stable','Verify the settled municipal Custodian','interact',8,-44,['release-east'],false,
+   'Verify both sequential releases and the settled tools. The municipal Custodian remains part of this local service bay. Damar’s safety and your independent home passage already exist before a disposition. This is a bounded restoration; the full drydock, city circulation and distant lockworks remain unavailable.'),
+  step('disposition','Choose the local passage and evidence disposition','choice',0,-18,['custodian-stable'],false,
+   'Read Publish, Limited or License and their exact local consequences before confirming. Preview and cancel keep the disposition undecided. Each keeps Damar safe, preserves his account and pays the same fixed fee. License is a deliberate personal record for this local load; no choice changes Grace, Cinder, renunciation, class or global allegiance. Future patron privileges and wider political access remain pending.'),
+  step('verify-passage','Verify the selected record and supervised handoff','interact',12,-40.1,['disposition'],false,
+   'At the supported dry landing, verify the local controls and receipt fixture against the saved disposition. Record the supervised lens-consignment release to Sahra and feed-frame release into named nursery custody here. This is an authored local handoff, not a simulated voyage to a nursery or evidence that Pelan witnessed a delivery. Return to Sahra and explicitly claim the fixed fee; verified work can remain safely unpaid.')
+ ],
+ choices:[
+  {id:'publish',name:'Publish · keep a checked public passage record',
+   text:'Post the false bearing evidence, Damar’s full account and the checked local routing record for public inspection. Fit two checked outlet indicators. This bounded public record makes the office’s conflicting instruction visible; citywide removal from office and future closed-patron business are not implemented. Damar’s safety and the free home passage remain.',
+   consequence:'The registry and landing show the posted evidence and paired checked outlet indicators. Sahra, Ilyra and Damar recognize the permanent local public record. The stated fee remains unchanged. The wider political dispute and future services remain pending.',
+   recognition:[
+    {name:'Sahra',text:'The lamp and the posted passage record can now be checked against each other. The lens consignment has its supervised release record.'},
+    {name:'Ilyra',text:'Both receipts remain visible beside the corrected outlet. Anyone can see which instruction redirected this load.'},
+    {name:'Damar',text:'My chosen arrival and the false instruction are both on the public record. My account was not shortened to make the office look right.'}
+   ]},
+  {id:'limited',name:'Limited · keep an independent manual passage',
+   text:'Keep the corrected independent manual passage and place the false bearing evidence in reviewed local custody. Fit a hooded custody record beside a manual-bypass indicator. This secures the resolved load while leaving the broad dispute open. Restricted deep districts are unbuilt; their access is not granted or revoked here. Damar’s safety and the free home passage remain.',
+   consequence:'The registry and landing show the hooded custody record and independent manual-passage indicator. Sahra, Ilyra and Damar recognize the permanent local custody arrangement. The stated fee remains unchanged. No hidden corridor, deep access or future business privilege is granted.',
+   recognition:[
+    {name:'Sahra',text:'The supervised lens release is recorded beside the manual passage. The broader claim is still there to be answered.'},
+    {name:'Ilyra',text:'The conflicting receipts are in reviewed custody. Limited passage does not erase either record or decide the whole office dispute.'},
+    {name:'Damar',text:'The manual passage secures this load and keeps my full account. I can wait safely without pretending every destination is now free.'}
+   ]},
+  {id:'license',name:'License · retain a disclosed personal permit',
+   text:'Knowingly retain a personal permit for this resolved local load under the office’s disclosed claim terms. Fit a permit seal and retain the outer claim marker. The independently safe passage already exists, so refusal never holds emergency air, Damar or your exit hostage. This local record does not pledge a party, class, soul or real-world user. Future patron privileges are not implemented. Damar’s safety and the free home passage remain.',
+   consequence:'The registry and landing show the personal permit seal beside the retained outer claim marker. Sahra, Ilyra and Damar recognize the permanent local licence and its responsibility. The stated fee remains unchanged. Future patron services, renunciation or restitution routes need their own implemented contracts.',
+   recognition:[
+    {name:'Sahra',text:'This lens release carries the personal permit you chose. The instrument records it without calling the remaining claims harmless.'},
+    {name:'Ilyra',text:'Your permit and the false destination instruction remain distinct records. This signature covers the declared local load.'},
+    {name:'Damar',text:'I am safe and my account remains complete. The permit was your deliberate choice after the independent passage existed.'}
+   ]}
+ ],
+ enemy:{id:'atlantis-breakwater-custodian-v1',name:'Breakwater Custodian',kind:'sentinel',x:8,z:-44,hp:128,damage:10,radius:.75,anchored:true,damageWindow:'all-live-phases',spawnAfter:['challenge-custodian'],defeatStep:'bearing-exposed'}
+});
+const api=freeze({definition,patterns,current,pressure});
+G.RealmAtlantisCampaignData=api;
+if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* Finite Atlantis repair owner. Presentation cannot create pressure, damage or fees.
+ * Invariants: one retained approach; its actual reading gates every descendant;
+ * full candidate saves precede adoption; movement retains body support and depth.
+ * Enemy originX/originZ identify the canonical unit; current x/z may legitimately
+ * move. Root owns actual AI timers/contact and invokes defeat from damageEnemy.
+ */
+(function(G){'use strict';
+const DATA=G.RealmAtlantisCampaignData||(typeof require==='function'?require('./atlantis-campaign-data.js'):null);
+const D=DATA.definition,P=DATA.patterns,F=DATA.current,Q=DATA.pressure;
+const fail=error=>({ok:false,error}),copy=o=>JSON.parse(JSON.stringify(o)),finite=Number.isFinite,dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
+const step=id=>D.steps.find(s=>s.id===id),record=s=>s?.atlantisCampaign||s,locks=new WeakMap(),owners=new WeakMap();
+const fresh=()=>({version:1,accepted:false,steps:[],approach:null,choice:null,claimed:false});
+function required(state){const r=record(state),selected=D.approaches.find(a=>a.id===r?.approach)?.requiredObservation;return D.steps.filter(s=>!s.optional||s.id===selected).map(s=>s.id);}
+function validate(raw){
+ if(raw===undefined)return fresh();const no=why=>{throw Error('Invalid Atlantis campaign: '+why);};
+ if(!raw||typeof raw!=='object'||Array.isArray(raw)||Object.keys(raw).sort().join('|')!=='accepted|approach|choice|claimed|steps|version'||raw.version!==1||typeof raw.accepted!=='boolean'||typeof raw.claimed!=='boolean')no('version or record');
+ if(!Array.isArray(raw.steps)||raw.steps.length>D.steps.length||new Set(raw.steps).size!==raw.steps.length||raw.steps.some(id=>typeof id!=='string'||!step(id)))no('steps');
+ if(raw.steps.some(id=>!step(id).requires.every(p=>raw.steps.includes(p))))no('prerequisites');
+ if(raw.approach!==null&&!D.approaches.some(a=>a.id===raw.approach))no('approach');
+ if(raw.steps.includes('choose-approach')!==(raw.approach!==null))no('approach history');
+ if(raw.steps.includes('diagnose-flow')&&!raw.steps.includes(D.approaches.find(a=>a.id===raw.approach)?.requiredObservation))no('selected observation');
+ if(raw.choice!==null&&!D.choices.some(c=>c.id===raw.choice))no('disposition');
+ if(raw.steps.includes('disposition')!==(raw.choice!==null))no('choice history');
+ if(!raw.accepted&&(raw.steps.length||raw.approach!==null||raw.choice!==null||raw.claimed))no('unaccepted history');
+ if(raw.claimed&&!required(raw).every(id=>raw.steps.includes(id)))no('unearned claim');
+ return{version:1,accepted:raw.accepted,steps:D.steps.filter(s=>raw.steps.includes(s.id)).map(s=>s.id),approach:raw.approach,choice:raw.choice,claimed:raw.claimed};
+}
+function eligible(state){return state?.adventure?.started===true&&state?.realmTrails?.records?.[D.prerequisite]?.claimed===true;}
+function available(state){const r=record(state);return r?.accepted&&!r.claimed?D.steps.filter(s=>!r.steps.includes(s.id)&&s.requires.every(id=>r.steps.includes(id))&&(s.id!=='diagnose-flow'||r.steps.includes(D.approaches.find(a=>a.id===r.approach)?.requiredObservation))):[];}
+function ready(state){const r=record(state);return !!r?.accepted&&D.approaches.some(a=>a.id===r.approach)&&D.choices.some(c=>c.id===r.choice)&&required(r).every(id=>r.steps.includes(id));}
+function at(sim,p){
+ if(!sim||sim.room!==D.room||!p||!G.RealmTrails.at(sim,{medium:'dry',...p}))return false;
+ const W=G.RealmWorldFoundations,a=sim.state.player;
+ if(p.medium!=='water'&&p.medium!=='court')return W.segment(D.room,a,p,.035);
+ const y=W.playerHeight(sim),d=W.definition(D.room).dive,n=Math.max(1,Math.ceil(Math.hypot(a.x-p.x,a.z-p.z,y-p.y)/.04));
+ for(let i=0;i<=n;i++)if(!W.swimClear(d,a.x+(p.x-a.x)*i/n,y+(p.y-y)*i/n,a.z+(p.z-a.z)*i/n))return false;
+ return true;
+}
+function commit(sim,candidate,io,text,ctx){
+ if(candidate.adventure.revision>=1e9||candidate.nextEvent>=Number.MAX_SAFE_INTEGER-1)return fail('Export this character before continuing: record limit reached.');
+ const state=sim.state,room=sim.room,active=ctx?.active,before=JSON.stringify(state);
+ candidate.adventure.revision++;
+ candidate.journal.push({seq:candidate.nextEvent++,day:candidate.day,hour:candidate.hour,kind:'atlantis-campaign',text:text.slice(0,350)});if(candidate.journal.length>200)candidate.journal.shift();
+ let checked,saved;try{checked=G.RealmCore.validate(candidate);saved=io?.save?.(checked);}catch(e){return fail('Campaign save refused: '+e.message);}
+ if(!saved?.ok)return fail(saved?.error||'Campaign save refused. No history, costs or reward were changed.');
+ // The synchronous writer owns the durable character envelope. Never adopt its
+ // result into a replaced or re-entrant simulation, even if the writer said ok.
+ if(sim.state!==state||sim.room!==room||JSON.stringify(sim.state)!==before||(ctx&&ctx.active!==active))return fail('The character changed during saving. The saved candidate was not adopted into the changed simulation.');
+ sim.state.atlantisCampaign=checked.atlantisCampaign;
+ for(const k of['xp','coins','ore','revision'])sim.state.adventure[k]=checked.adventure[k];
+ Object.assign(sim.state.sandbox.inventory,checked.sandbox.inventory);sim.state.journal=checked.journal;sim.state.nextEvent=checked.nextEvent;
+ return{ok:true,text};
+}
+function flowEnabled(sim){const r=sim?.state?.atlantisCampaign;return sim?.room===D.room&&eligible(sim.state)&&r?.accepted&&!r.claimed&&r.steps.includes(F.startStep)&&!F.stopSteps.some(id=>r.steps.includes(id));}
+function currentStatus(sim){
+ const active=flowEnabled(sim);
+ return{active,text:active?'The marked shallow repair current is active. Ordinary swimming is faster; the quiet lower band and supplied manual bypass remain available. The air court has no current.':'The local repair current is inactive. Public visitor protection, the quiet lower band and the free home passage remain.'};
+}
+function runtime(sim){
+ let r=sim.atlantisCampaignRuntime;
+ if(!r||r.room!==sim.room||owners.get(r)!==sim.state){r=sim.atlantisCampaignRuntime={room:sim.room,witnesses:Object.freeze([]),currentActive:false,currentDistance:0,pullDistance:0};owners.set(r,sim.state);}
+ const q=sim.state.atlantisCampaign,present=sim.room===D.room&&eligible(sim.state)&&q?.accepted;
+ const prior=new Map(r.witnesses.map(w=>[w.id,w]));
+ const witnesses=present?D.witnesses.filter(w=>w.appearsAfter.every(id=>q.steps.includes(id))).map(w=>prior.get(w.id)||Object.freeze({id:w.id,name:w.name,x:w.x,z:w.z,yaw:0,atlantisCampaign:D.id})):[];
+ if(witnesses.length!==r.witnesses.length||witnesses.some((w,i)=>w!==r.witnesses[i]))r.witnesses=Object.freeze(witnesses);
+ r.currentActive=flowEnabled(sim);return r;
+}
+const settingFor=id=>Q.correct.find(p=>p.step===id)?.setting||({'manual-bypass':'open-bypass','release-west':'stabilize-west','release-east':'stabilize-east'})[id];
+function command(ctx,type,payload,io){
+ const sim=ctx?.sim;
+ if(!G.RealmCore||!(sim instanceof G.RealmCore.Simulation)||!payload||typeof payload!=='object'||Array.isArray(payload)||payload.quest!==D.id||sim.room!==D.room||sim.state.adventure.hp<=0)return fail('Reach the Atlantis campaign while able to act.');
+ if(typeof ctx.active!=='string'||!ctx.active||payload.expectedActive!==ctx.active||!Number.isSafeInteger(payload.expectedRevision)||payload.expectedRevision!==sim.state.adventure.revision)return fail('The character or campaign changed. Read the current terms again.');
+ const r=sim.state.atlantisCampaign;
+ if(type==='claim'&&r.claimed)return{ok:true,duplicate:true,text:'This local harbour campaign was already paid once. Its disposition remains in history.'};
+ if(type==='accept'&&r.accepted)return{ok:true,duplicate:true,text:'This campaign is already accepted; its saved approach and work remain.'};
+ let candidate;try{candidate=sim.snapshot();}catch(e){return fail('Campaign state refused: '+e.message);}
+ const q=candidate.atlantisCampaign;let text,reward=null;
+ if(type==='accept'){
+  if(!eligible(candidate)||!at(sim,D.giver))return fail('Claim the separate Bellglass depth chart, then speak to Sahra to accept this continuation.');
+  q.accepted=true;text=D.title+' accepted. The earlier chart, lamp, equipment and free home passage retain their own history.';
+ }else if(type==='approach'){
+  const s=step('choose-approach'),a=D.approaches.find(v=>v.id===payload.approach);
+  if(!q.accepted||q.claimed||!a||!at(sim,s))return fail('Return to Sahra to deliberately retain an Upper or Lower investigation approach.');
+  if(q.approach!==null)return q.approach===a.id?{ok:true,duplicate:true,text:'That first approach is already retained.'}:fail('The first investigation approach is retained. The other reading remains optional evidence.');
+  if(!available(candidate).some(v=>v.id===s.id))return fail('Preserve Ilyra’s conflicting receipts before choosing a depth approach.');
+  q.approach=a.id;q.steps.push(s.id);text=a.name+' retained. '+a.text;
+ }else if(type==='step'||type==='pressure'){
+  const s=step(payload.step);
+  if(!q.accepted||q.claimed||!s||s.kind!==(type==='pressure'?'pressure':'interact'))return fail('Only accepted physical work of this kind can be recorded. Combat exhaustion has its actual damage caller.');
+  if(type==='pressure'&&payload.setting!==settingFor(s.id))return fail('Read the named pressure setting. Incorrect settings have no timing penalty or material cost.');
+  if(!at(sim,s))return fail('Reach '+s.name+' at its actual supported medium and depth.');
+  if(q.steps.includes(s.id))return{ok:true,duplicate:true,text:'This action is already recorded for this campaign.'};
+  if(!available(candidate).some(v=>v.id===s.id))return fail('Complete '+s.name+' in its stated order, with the retained approach’s actual reading.');
+  q.steps.push(s.id);text=s.text;
+ }else if(type==='choose'){
+  const s=step('disposition'),choice=D.choices.find(c=>c.id===payload.choice);
+  if(!q.accepted||q.claimed||!choice||!at(sim,s))return fail('Reach Ilyra’s registry after actual Custodian stabilization to choose the local disposition.');
+  if(q.choice!==null)return q.choice===choice.id?{ok:true,duplicate:true,text:'That disposition is already recorded.'}:fail('The local disposition is a lasting deed and cannot be overwritten.');
+  if(!available(candidate).some(v=>v.id===s.id))return fail('Secure the carrier, exhaust the actual bearing and stabilize both sequential releases before choosing.');
+  q.choice=choice.id;q.steps.push(s.id);text=choice.name+' recorded. '+choice.consequence;
+ }else if(type==='claim'){
+  if(!q.accepted||!ready(candidate)||!at(sim,D.giver))return fail('Verify the selected passage and supervised handoff, then return to Sahra for the whole declared fee.');
+  const a=candidate.adventure,inv=candidate.sandbox.inventory,fee=D.reward;
+  if(a.coins+fee.coins>9999||a.ore+fee.ore>9999||Object.entries(fee.materials).some(([k,n])=>!Object.hasOwn(inv,k)||inv[k]+n>G.RealmSandbox.MAX))return fail('Make room for the whole fee, including crystal. Verified work remains unpaid; nothing was changed.');
+  reward={...copy(fee),xp:Math.min(fee.xp,9999-a.xp)};a.xp+=reward.xp;a.coins+=fee.coins;a.ore+=fee.ore;for(const[k,n]of Object.entries(fee.materials))inv[k]+=n;
+  q.claimed=true;text=D.title+' complete · '+D.choices.find(c=>c.id===q.choice).name+' · '+reward.xp+' XP, '+fee.coins+' sunmarks, '+fee.ore+' ore, '+fee.materials.wood+' timber, '+fee.materials.fiber+' fibre and '+fee.materials.crystal+' crystal. Claimed once.'+(reward.xp<fee.xp?' Existing stored XP cap retained.':'');
+ }else return fail('Unknown Atlantis campaign action.');
+ const before=G.RealmAdventure.level(sim.state.adventure),result=commit(sim,candidate,io,text,ctx);
+ if(result.ok){runtime(sim);if(reward)result.reward=reward;G.RealmAdventure.syncScene(sim);if(G.RealmAdventure.level(sim.state.adventure)>before)G.RealmAdventure.notify(sim,'Level '+G.RealmAdventure.level(sim.state.adventure)+' · a local passage remains.');}return result;
+}
+function enemies(sim){const r=sim?.state?.atlantisCampaign;return sim?.room===D.room&&!sim.worldDive&&eligible(sim.state)&&r?.accepted&&D.enemy.spawnAfter.every(id=>r.steps.includes(id))&&!r.steps.includes(D.enemy.defeatStep)?[{...D.enemy,originX:D.enemy.x,originZ:D.enemy.z,atlantisCampaign:D.id,xp:0,coins:0,ore:0,windup:P.sweep.windup,recovery:P.sweep.recovery,telegraphRadius:0}]:[];}
+const signature=sim=>enemies(sim).map(e=>e.id).join('|');
+function encounter(e){return e?.atlantisCampaign===D.id&&e.id===D.enemy.id?D.enemy:null;}
+function owned(sim,e,alive=true){return !!G.RealmCore&&sim instanceof G.RealmCore.Simulation&&!!encounter(e)&&sim.room===D.room&&!sim.worldDive&&eligible(sim.state)&&sim.state.atlantisCampaign?.accepted&&D.enemy.spawnAfter.every(id=>sim.state.atlantisCampaign.steps.includes(id))&&!sim.state.atlantisCampaign.steps.includes(D.enemy.defeatStep)&&e.originX===D.enemy.x&&e.originZ===D.enemy.z&&e.kind==='sentinel'&&e.radius===D.enemy.radius&&e.maxHP===D.enemy.hp&&finite(e.hp)&&(alive?e.hp>0&&e.hp<=D.enemy.hp:e.hp===0)&&G.RealmAdventure.runtime(sim).enemies.includes(e)&&G.RealmWorldFoundations.walkable(D.room,e.x,e.z,e.radius);}
+function canDamage(sim,e){return !sim?.paused&&sim?.state?.adventure?.hp>0&&owned(sim,e);}
+function clipPoly(poly,key,bound,greater){const out=[];for(let i=0;i<poly.length;i++){const a=poly[i],b=poly[(i+1)%poly.length],ia=greater?a[key]>=bound:a[key]<=bound,ib=greater?b[key]>=bound:b[key]<=bound;if(ia)out.push(a);if(ia!==ib){const t=(bound-a[key])/(b[key]-a[key]);out.push({x:a.x+(b.x-a.x)*t,z:a.z+(b.z-a.z)*t});}}return out;}
+function area(poly){let a=0;for(let i=0;i<poly.length;i++){const p=poly[i],q=poly[(i+1)%poly.length];a+=p.x*q.z-q.x*p.z;}return Math.abs(a)/2;}
+function covered(poly,patches){
+ const minX=Math.min(...poly.map(p=>p.x)),maxX=Math.max(...poly.map(p=>p.x)),minZ=Math.min(...poly.map(p=>p.z)),maxZ=Math.max(...poly.map(p=>p.z));
+ const relevant=patches.filter(p=>p.x+p.w/2>=minX&&p.x-p.w/2<=maxX&&p.z+p.d/2>=minZ&&p.z-p.d/2<=maxZ);
+ const xs=[minX,maxX],zs=[minZ,maxZ];for(const p of relevant){for(const x of[p.x-p.w/2,p.x+p.w/2])if(x>minX&&x<maxX)xs.push(x);for(const z of[p.z-p.d/2,p.z+p.d/2])if(z>minZ&&z<maxZ)zs.push(z);}xs.sort((a,b)=>a-b);zs.sort((a,b)=>a-b);
+ for(let i=1;i<xs.length;i++)for(let j=1;j<zs.length;j++){
+  if(xs[i]-xs[i-1]<1e-10||zs[j]-zs[j-1]<1e-10)continue;const x=(xs[i]+xs[i-1])/2,z=(zs[j]+zs[j-1])/2;
+  if(relevant.some(p=>Math.abs(x-p.x)<=p.w/2&&Math.abs(z-p.z)<=p.d/2))continue;
+  let cut=clipPoly(poly,'x',xs[i-1],true);cut=clipPoly(cut,'x',xs[i],false);cut=clipPoly(cut,'z',zs[j-1],true);cut=clipPoly(cut,'z',zs[j],false);if(area(cut)>1e-9)return false;
+ }return true;
+}
+function clippedIntake(sim,s){
+ const W=G.RealmWorldFoundations,world=W.definition(D.room),sin=Math.sin(s.yaw),cos=Math.cos(s.yaw),margin=.31;
+ let length=s.length;
+ for(const p of world.solids){
+  let polygon=[];for(const[dx,dz]of[[-1,-1],[1,-1],[1,1],[-1,1]]){const x=p.x+dx*(p.w/2+margin)-s.x,z=p.z+dz*(p.d/2+margin)-s.z;polygon.push({x:x*cos-z*sin,z:x*sin+z*cos});}
+  polygon=clipPoly(polygon,'x',-s.halfWidth,true);polygon=clipPoly(polygon,'x',s.halfWidth,false);polygon=clipPoly(polygon,'z',0,true);
+  if(polygon.length)length=Math.min(length,Math.max(0,Math.min(...polygon.map(p=>p.z))-.005));
+ }
+ const offsets=[[0,0],[margin,0],[-margin,0],[0,margin],[0,-margin],[margin*.707,margin*.707],[-margin*.707,margin*.707],[margin*.707,-margin*.707],[-margin*.707,-margin*.707]];
+ function supported(n){const poly=[[-s.halfWidth,0],[s.halfWidth,0],[s.halfWidth,n],[-s.halfWidth,n]].map(([side,forward])=>({x:s.x+cos*side+sin*forward,z:s.z-sin*side+cos*forward}));return offsets.every(([dx,dz])=>covered(poly.map(p=>({x:p.x+dx,z:p.z+dz})),world.patches));}
+ if(length<=0||!supported(Math.min(length,1e-5)))return 0;
+ if(!supported(length)){let lo=0,hi=length;for(let i=0;i<23;i++){const mid=(lo+hi)/2;if(supported(mid))lo=mid;else hi=mid;}length=Math.max(0,lo-.005);}
+ return length;
+}
+function pattern(e,sim){
+ const next=P[Number.isSafeInteger(e?.atlantisCycle)&&e.atlantisCycle>=0&&e.atlantisCycle%2?'intake':'sweep'];
+ if(sim&&canDamage(sim,e)){const distance=dist(e,sim.state.player);if(distance>P.sweep.reach&&distance<=P.intake.reach)return P.intake;}
+ return next;
+}
+function lock(sim,e){
+ if(!canDamage(sim,e)||![e.x,e.z,sim.state.player.x,sim.state.player.z].every(finite))return false;
+ const p=pattern(e,sim),kind=p.kind,yaw=Math.atan2(sim.state.player.x-e.x,sim.state.player.z-e.z);
+ const frame={kind,x:e.x,z:e.z,yaw};if(kind==='sweep'){frame.radius=p.radius;frame.halfAngle=p.halfAngle;}else{frame.length=p.length;frame.halfWidth=p.halfWidth;frame.length=clippedIntake(sim,frame);}
+ e.atlantisCycle=kind==='sweep'?1:0;e.yaw=yaw;e.windup=p.windup;e.recovery=p.recovery;e.strike=Object.freeze(frame);locks.set(e,{sim,frame:e.strike});return e.strike;
+}
+function strikeContains(e,p){
+ const entry=locks.get(e),s=e?.strike;if(!entry||entry.frame!==s||!owned(entry.sim,e)||![p?.x,p?.z].every(finite))return false;
+ const dx=p.x-s.x,dz=p.z-s.z,forward=dx*Math.sin(s.yaw)+dz*Math.cos(s.yaw),side=dx*Math.cos(s.yaw)-dz*Math.sin(s.yaw),margin=.24;
+ if(s.kind==='intake'){if(s.length<=0)return false;return Math.hypot(Math.max(0,Math.abs(side)-s.halfWidth),Math.max(0,-forward,forward-s.length))<=margin;}
+ if(s.kind!=='sweep')return false;
+ if(Math.abs(Math.atan2(side,forward))<=s.halfAngle)return Math.hypot(dx,dz)<=s.radius+margin;
+ const edgeSide=Math.sign(side||1)*Math.sin(s.halfAngle),edgeForward=Math.cos(s.halfAngle),projection=Math.max(0,Math.min(s.radius,side*edgeSide+forward*edgeForward));
+ return Math.hypot(side-edgeSide*projection,forward-edgeForward*projection)<=margin;
+}
+function defeat(sim,e){
+ if(sim?.paused||sim?.state?.adventure?.hp<=0||!owned(sim,e,false))return false;
+ let candidate;try{candidate=sim.snapshot();}catch(error){e.hp=1;G.RealmAdventure.notify(sim,'Campaign state refused: '+error.message);return false;}candidate.atlantisCampaign.steps.push(D.enemy.defeatStep);
+ const result=commit(sim,candidate,{save:sim.atlantisCampaignSave},'The actual Custodian bearing was exhausted through combat. The municipal unit settled; no independent loot or XP was granted. Both sequential releases remain.');
+ if(!result.ok){e.hp=1;G.RealmAdventure.notify(sim,result.error);return false;}locks.delete(e);return true;
+}
+function inCurrent(p,y){return Math.abs(p.x-F.x)<=F.w/2&&Math.abs(p.z-F.z)<=F.d/2&&y>=F.minY&&y<=F.maxY;}
+function tick(sim,dt){
+ const r=runtime(sim);if(sim.paused||!finite(dt)||dt<=0||!r.currentActive||!sim.worldDive||sim.state.adventure.hp<=0)return false;
+ const W=G.RealmWorldFoundations,p=sim.state.player,y=W.playerHeight(sim),d=W.definition(D.room).dive;
+ if(!finite(y)||!inCurrent(p,y)||W.medium(sim,[p.x,y+.85,p.z])!=='water'||!W.swimClear(d,p.x,y,p.z))return false;
+ let remaining=Math.min(dt,.1)*F.speed,moved=0;
+ while(remaining>1e-8){const n=Math.min(.02,remaining),q={x:p.x+F.direction.dx*n,z:p.z+F.direction.dz*n};if(!inCurrent(q,y)||W.medium(sim,[q.x,y+.85,q.z])!=='water'||!W.swimClear(d,q.x,y,q.z))break;p.x=q.x;p.z=q.z;moved+=n;remaining-=n;}
+ if(moved>0){sim.playerPath=[];r.currentDistance+=moved;return true;}return false;
+}
+function pull(sim,e,dt){
+ const entry=locks.get(e),s=e?.strike,now=sim?.state?.adventure?.elapsed;
+ if(!canDamage(sim,e)||!entry||entry.sim!==sim||entry.frame!==s||s.kind!=='intake'||s.length<=0||e.mode!=='intake'||!finite(dt)||dt<=0||!finite(e.timer)||e.timer<=0||e.timer>P.intake.active+1e-8||!finite(e.contactAt)||e.contactAt>now+1e-8||now-e.contactAt>P.intake.active+1e-8)return false;
+ const W=G.RealmWorldFoundations,p=sim.state.player;
+ if(!strikeContains(e,p)||!W.walkable(D.room,p.x,p.z,.31)||!W.segment(D.room,s,p,.04))return false;
+ const distance=dist(s,p);let remaining=Math.min(P.intake.pullSpeed*Math.min(dt,.1),Math.max(0,distance-P.intake.stopRadius)),moved=0;
+ const dx=(s.x-p.x)/(distance||1),dz=(s.z-p.z)/(distance||1);
+ while(remaining>1e-8){const n=Math.min(.02,remaining),q={x:p.x+dx*n,z:p.z+dz*n};if(!W.segment(D.room,p,q,.31)||!W.segment(D.room,s,q,.04))break;p.x=q.x;p.z=q.z;moved+=n;remaining-=n;}
+ if(moved>0){sim.playerPath=[];runtime(sim).pullDistance+=moved;return true;}return false;
+}
+const api={definition:D,patterns:P,current:F,pressure:Q,fresh,validate,eligible,required,available,ready,at,command,runtime,currentStatus,enemies,signature,encounter,pattern,lock,strikeContains,canDamage,defeat,tick,pull};
+G.RealmAtlantisCampaign=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* Project the Harbour rule owner's ledger, real medium/depth and command
+ * results. Reading, map labels, walking and previews grant no work. */
+(function(G){'use strict';
+const H=()=>G.RealmAtlantisCampaign,D=()=>H().definition,PREFIX='atlantis-campaign-';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const button=(label,type,id='',attrs='')=>'<button data-rpg="'+PREFIX+type+'" data-id="'+esc(id)+'" '+attrs+'>'+esc(label)+'</button>';
+const record=sim=>sim.state.atlantisCampaign,step=id=>D().steps.find(s=>s.id===id);
+const previousTitle=()=>G.RealmTrails.definition(D().prerequisite).title;
+const tokens={'manual-bypass':'open-bypass','release-west':'stabilize-west','release-east':'stabilize-east'};
+function setting(s){return G.RealmAtlantisCampaignData.pressure.correct.find(p=>p.step===s.id)?.setting||tokens[s.id];}
+function fee(d=D()){return'Up to '+d.reward.xp+' XP within the stored cap · '+d.reward.coins+' sunmarks · '+d.reward.ore+' ore'+Object.entries(d.reward.materials).map(([k,n])=>' · '+n+' '+({wood:'timber',fiber:'meadow fibre',crystal:'crystal'}[k]||k)).join('');}
+function depth(s){const sea=G.RealmWorldFoundations.definition(D().room).dive.surfaceY;return(sea-s.y).toFixed(2)+' m foot depth';}
+function routePoints(sim){const r=record(sim),d=D();if(sim.room!==d.room||!r?.accepted||r.claimed)return[];
+ const points=H().ready(sim.state)?[{...d.giver,id:'claim',kind:'giver',medium:'dry',name:'Return to '+d.giver.name}]:H().available(sim.state).map(s=>({...s}));
+ return points.map((p,i)=>({...p,atlantisCampaign:true,mark:'H'+(i+1)}));
+}
+function legend(sim){const points=routePoints(sim);return points.length?'<section class="atlantis-campaign-map"><h3>The harbour repair · physical routes</h3><p>H labels show accepted harbour work. Dry labels use the supported quay; wet labels require the existing gallery and their real depth. No label creates floor, current, arrival or work.</p><ol>'+points.map(p=>'<li><strong>'+p.mark+'</strong> · '+esc(p.name)+(p.medium==='dry'?' '+button('Walk near this dry action','walk',p.id):' · '+esc(depth(p))+' '+button('Read depth and gallery route','depth',p.id))+'</li>').join('')+'</ol>'+button('Read the current campaign','open')+'</section>':'';}
+function recognition(r){if(!r?.steps.includes('verify-passage')||!r.choice)return'';const c=D().choices.find(c=>c.id===r.choice);return'<section class="atlantis-campaign-recognition"><h3>The verified local record</h3><p>'+esc(c.consequence)+'</p>'+c.recognition.map(l=>'<p><strong>'+esc(l.name)+':</strong> “'+esc(l.text)+'”</p>').join('')+'</section>';}
+class AtlantisCampaignUI{
+ constructor(rpg){this.rpg=rpg;this.pending=null;this.binding=null;this.serial=0;this.reading=null;this.seen=new WeakSet();}
+ get sim(){return this.rpg.sim;}
+ reset(){this.pending=null;this.binding=null;this.reading=null;}
+ owner(){const sim=this.sim,c=this.rpg.api.worldContext();return{sim,contextSim:c.sim,active:c.active,rosterRevision:c.revision,revision:sim.state.adventure.revision,room:sim.room,dive:sim.worldDive||null,position:{x:sim.state.player.x,z:sim.state.player.z,y:G.RealmWorldFoundations.playerHeight(sim)}};}
+ same(b){if(!b)return false;const c=this.owner();return c.contextSim===c.sim&&b.sim===c.sim&&b.contextSim===c.contextSim&&b.active===c.active&&b.rosterRevision===c.rosterRevision&&b.revision===c.revision&&b.room===c.room&&b.dive===c.dive&&Math.hypot(b.position.x-c.position.x,b.position.z-c.position.z)<.01&&Math.abs(b.position.y-c.position.y)<.01;}
+ bound(el){return this.binding&&el.dataset.binding===String(this.binding.id)&&Number(el.dataset.revision)===this.binding.revision&&this.same(this.binding);}
+ point(){const sim=this.sim,d=D(),r=record(sim);if((this.rpg.quest!=='atlantis-campaign'&&this.rpg.tab!=='atlantis-campaign')||sim.room!==d.room||!r?.accepted)return null;
+  return(r.claimed?[]:routePoints(sim)).filter(p=>H().at(sim,p)).sort((a,b)=>Math.hypot(a.x-sim.state.player.x,a.z-sim.state.player.z)-Math.hypot(b.x-sim.state.player.x,b.z-sim.state.player.z))[0]||null;}
+ context(){const p=this.point();return p?'E · '+p.name:null;}
+ interact(){if(!this.point())return false;this.rpg.open('atlantis-campaign');return true;}
+ open(){this.pending=null;this.rpg.open('atlantis-campaign');}
+ action(el){const action=el.dataset.rpg;if(!action?.startsWith(PREFIX))return false;const type=action.slice(PREFIX.length),id=el.dataset.id,sim=this.sim,d=D();
+  if(type==='open'){this.open();return true;}
+  if(type==='cancel'){this.pending=null;this.rpg.paint();return true;}
+  if(type==='depth'){this.reading=id;this.pending=null;this.rpg.open('atlantis-campaign');return true;}
+  if(type==='track'){if(record(sim)?.accepted&&!record(sim).claimed)this.rpg.quest='atlantis-campaign';this.rpg.paint();return true;}
+  if(type==='walk'||type==='entry'){
+   const p=type==='entry'?G.RealmWorldFoundations.definition(d.room).points.find(p=>p.id==='tide-steps'):id==='giver'||id==='claim'?d.giver:routePoints(sim).find(p=>p.id===id);
+   if(!p||sim.room!==d.room||sim.worldDive||['water','court'].includes(p.medium)){this.rpg.api.toast('Wet work needs real gallery movement and depth. F ascends, G descends; return through the landing before dry walking.');return true;}
+   this.pending=null;const q=G.RealmTrailsUI.approach(sim,p);this.rpg.close();this.rpg.api.walkLocal(q.x,q.z);return true;
+  }
+  if(!['accept','step','pressure','review-approach','confirm-approach','review','confirm','claim'].includes(type))return true;
+  if(!this.bound(el)){this.pending=null;this.rpg.api.toast('The traveller, depth or saved checkpoint changed. Read the current physical action again.');this.rpg.paint();return true;}
+  if(type==='review'||type==='review-approach'){
+   const approach=type==='review-approach',s=step(approach?'choose-approach':'disposition'),terms=(approach?d.approaches:d.choices).find(c=>c.id===id);
+   if(!terms||!H().available(sim.state).some(p=>p.id===s.id)||!H().at(sim,s)){this.rpg.api.toast('Reach this available physical action before reviewing its confirmation.');return true;}
+   this.pending={...this.owner(),kind:approach?'approach':'choice',value:id,step:s.id};this.rpg.paint();return true;
+  }
+  const payload={quest:d.id,expectedRevision:this.binding.revision,expectedActive:this.binding.active};let command=type;
+  if(type==='step'||type==='pressure'){const s=step(id);if(!s||!H().available(sim.state).some(p=>p.id===id)||!H().at(sim,s)){this.rpg.api.toast('Reach this available action at its actual medium and depth.');return true;}payload.step=id;if(type==='pressure')payload.setting=setting(s);}
+  if(type==='confirm'||type==='confirm-approach'){
+   const kind=type==='confirm-approach'?'approach':'choice';if(!this.same(this.pending)||this.pending.kind!==kind||this.pending.value!==id||!H().at(sim,step(this.pending.step))){this.pending=null;this.rpg.api.toast('This preview belongs to an earlier traveller, depth or checkpoint. Read the terms again.');this.rpg.paint();return true;}
+   payload.step=this.pending.step;payload[kind==='approach'?'approach':'choice']=id;command=kind==='approach'?'approach':'choose';
+  }
+  const result=this.rpg.api.atlantisCampaignCommand(command,payload);this.pending=null;this.rpg.api.toast(result.text||result.error);if(result.ok&&!result.duplicate)this.rpg.quest='atlantis-campaign';this.rpg.paint();return true;
+ }
+ journal(){const r=record(this.sim),status=r?.claimed?'Claimed once':!r?.accepted?'Not accepted':H().ready(this.sim.state)?'Complete · unpaid':'Accepted · '+r.steps.length+' recorded actions';return'<section class="atlantis-campaign-invitation"><small>ATLANTIS · A BOUNDED HARBOUR REPAIR</small><h3>'+esc(D().title)+'</h3><p>'+esc(status)+' · '+esc(fee())+'</p><p>Conflicting receipts, actual depth readings, ordered pressure controls and a municipal Custodian. The old Bellglass chart and lamp remain separate.</p>'+button('Read the repair, physical route and fee','open')+(r?.accepted&&!r.claimed?button('Track this repair','track'):'')+'</section>';}
+ invitation(){return this.journal();}
+ gallery(){const sim=this.sim,d=D(),world=G.RealmWorldFoundations.definition(d.room);if(sim.room!==d.room)return'';
+ const entry=world.points.find(p=>p.id===world.dive.entryId),status=this.rpg.api.worldDiveStatus?.();
+ return'<section class="atlantis-campaign-gallery"><h3>Depth and protected visitor passage</h3><p>Upper gauge: '+esc(depth(step('upper-reading')))+'. Lower mark: '+esc(depth(step('lower-reading')))+'. Bellglass control desk: '+esc(depth(step('diagnose-flow')))+' in its dry air court.</p><p>WASD swims in the existing gallery. F ascends, G descends; releasing holds depth. Enter the court through its actual doorway. Return along the wet east lane to the gallery landing and press E to leave onto the dry quay. No underwater Walk link or manual arrival can replace this movement.</p>'+(sim.worldDive?'<p><strong>Actual position:</strong> '+(status?.dryCourt?'Bellglass dry air court':status&&Number.isFinite(status.depth)?esc(status.depth.toFixed(2))+' m below surface':'Read the existing depth display')+'. The court has no current or combat.</p>':G.RealmWorldFoundations.near(sim,entry)?'<button data-rpg="world-dive">Enter the existing visitor gallery</button>':button('Walk to the dry Tide Steps entry','entry'))+'<button data-rpg="world-return">Return to Firstlight · free</button></section>';
+ }
+ page(tab){if(tab!=='atlantis-campaign')return null;const d=D(),sim=this.sim,r=record(sim),here=sim.room===d.room,available=H().available(sim.state),ids=new Set(available.map(s=>s.id));
+  this.binding={...this.owner(),id:++this.serial};const act=(label,type,id='')=>button(label,type,id,'data-binding="'+this.binding.id+'" data-revision="'+this.binding.revision+'"');
+  let html='<article class="atlantis-campaign"><header><small>FARWAKE → BELLGLASS → THE DRY SERVICE QUAY</small><h2>'+esc(d.title)+'</h2><p>'+esc(d.summary)+'</p></header><section class="atlantis-campaign-terms"><h3>The whole declared fee</h3><p><strong>'+esc(fee(d))+'</strong>. Only XP clips at its stored cap. A full material pouch or refused save keeps all completed work unpaid and retryable.</p><p>'+esc(d.danger)+'</p><p>Safe public air, Damar’s waiting bay and the free home passage precede disposition. No timed appointment, second player, gear grant, automatic equipment change or global pledge is required.</p></section>';
+  if(!here)html+='<section><p>Reopening resumes the home checkpoint. Accepted actions, the retained approach, disposition and unpaid completion remain saved. Revisit Farwake for the actual physical route.</p><button data-rpg="world-select" data-id="atlantis">Read Atlantis travel</button></section>';
+  if(!r?.accepted)html+='<section><h3>An earlier chart remains true</h3><p>'+(!H().eligible(sim.state)?'Complete and explicitly claim '+esc(previousTitle())+' first. Its chart, lamp and payment remain separate.':'The Bellglass chart was claimed. Accept this new repair deliberately; reading grants no consent.')+'</p>'+(here&&H().eligible(sim.state)&&H().at(sim,d.giver)?act('Accept the separate harbour repair','accept'):here?button('Walk to Sahra','walk','giver'):'')+'</section>';
+  else{
+   if(r.claimed)html+='<section><h3>The paid local passage remains</h3><p>'+esc(d.completionText)+'</p></section>';
+   const approach=d.approaches.find(a=>a.id===r.approach),current=H().currentStatus(sim);
+   html+='<section class="atlantis-campaign-pressure"><h3>Approach and ordered pressure</h3><p>'+(approach?'Retained '+esc(approach.name)+'. Required evidence: '+esc(step(approach.requiredObservation).name)+'. The other reading remains optional.':'First retain Upper or Lower deliberately at Sahra’s anchor. That approach names the reading needed for diagnosis.')+'</p><p>'+esc(current.text)+'</p><ol><li>Inlet · isolate-redirect, preserving public supply.</li><li>Equalizer · match-depth-bands at the dry desk.</li><li>Outlet · chosen-destination at the wet east control.</li></ol><p>The supplied manual bypass stops this current and replaces none of these stages. Wrong or premature settings spend no materials. West and east releases happen sequentially after actual combat exhaustion.</p></section>';
+   html+='<section><h3>Your physical repair</h3><ol class="atlantis-campaign-steps">'+d.steps.map(s=>{
+    const done=r.steps.includes(s.id),next=ids.has(s.id),requiredReading=approach?.requiredObservation===s.id;let controls='';
+    if(!r.claimed&&next){if(!here)controls='<p>Revisit Farwake to reach this action.</p>';
+     else if(!H().at(sim,s))controls=s.medium==='dry'?button('Walk near this dry action','walk',s.id):'<p>'+esc(depth(s))+' · '+(s.medium==='court'?'enter the real Bellglass air-court doorway.':'hold this actual water depth.')+'</p>'+button('Read depth and gallery route','depth',s.id);
+     else if(s.kind==='defeat')controls='<p>Close the workspace to resume the dry-quay fight. Select the actual Custodian with Tab; use your owned blade or bow, Brace, supported movement or actual cover. A journal button cannot expose the bearing.</p>';
+     else if(s.kind==='approach')controls=d.approaches.map(a=>act('Read '+a.name+' terms','review-approach',a.id)).join('');
+     else if(s.kind==='choice')controls=d.choices.map(c=>act('Read '+c.name+' terms','review',c.id)).join('');
+     else if(s.kind==='pressure')controls=act('Set '+setting(s)+' · '+s.name,'pressure',s.id);
+     else controls=act(s.name,'step',s.id);
+    }
+    return'<li class="'+(done?'atlantis-campaign-done':next?'atlantis-campaign-next':'')+'" data-atlantis-step="'+esc(s.id)+'"><h4>'+esc(s.name)+(done?' · recorded':'')+(requiredReading?' · required for your approach':s.optional?' · optional':'')+'</h4><details'+(this.reading===s.id?' open':'')+'><summary>Read this action and its physical route</summary><p>'+esc(s.text)+'</p></details><div class="world-actions">'+controls+'</div></li>';
+   }).join('')+'</ol></section>';
+   if(!r.claimed&&H().ready(sim.state))html+='<section class="atlantis-campaign-ready"><h3>Complete · unpaid</h3><p>Return to Sahra and explicitly claim the whole fixed fee. Verification and the local handoff do not pay by themselves.</p>'+(here&&H().at(sim,d.giver)?act('Claim the whole declared fee once','claim'):here?button('Walk back to Sahra','walk','claim'):'')+'</section>';
+   if(!r.claimed)html+=button('Track this repair','track');
+  }
+  html+=this.gallery()+'<section><h3>Two investigation approaches</h3><div class="atlantis-campaign-grid">'+d.approaches.map(a=>'<article><h4>'+esc(a.name)+(r?.approach===a.id?' · retained':'')+'</h4><p>'+esc(a.text)+'</p></article>').join('')+'</div></section><section><h3>Three local dispositions</h3><p>All preserve Damar’s safety, full account, public protection and the same fee. The wider plot, distant nursery voyage, Tideglass Fitting and patron services remain pending.</p><div class="atlantis-campaign-grid">'+d.choices.map(c=>'<article'+(r?.choice===c.id?' class="atlantis-campaign-chosen"':'')+'><h4>'+esc(c.name)+'</h4><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p></article>').join('')+'</div></section>'+recognition(r);
+  if(this.pending){const approach=this.pending.kind==='approach',terms=(approach?d.approaches:d.choices).find(t=>t.id===this.pending.value);html+='<section class="atlantis-campaign-confirm"><h3>'+esc(terms.name)+' · confirm this retained record</h3><p>'+esc(terms.text)+'</p>'+(approach?'<p>This approach permanently names the reading needed for diagnosis. The other reading remains optional; neither reading pays another fee.</p>':'<p>'+esc(terms.consequence)+'</p><p>This records one lasting local disposition. It does not change class, soul, global allegiance or the fixed fee.</p>')+(this.same(this.pending)?act('Confirm '+terms.name,approach?'confirm-approach':'confirm',terms.id):'<p>The traveller or physical checkpoint changed. Cancel and read the current terms.</p>')+button('Cancel · keep this record undecided','cancel')+'</section>';}
+  return{title:d.title,html:html+'<p class="atlantis-campaign-footer">Reading, walking and previews grant no work. Physical depth owns wet actions; actual damage owns bearing exhaustion. Your earlier chart, lamp and equipment remain yours.</p></article>'};
+ }
+ tick(){const sim=this.sim,r=record(sim),toggle=document.querySelector('.tracker-switch [data-id="atlantis-campaign"]');if(toggle)toggle.hidden=!r?.accepted||r.claimed;
+  if(this.pending&&!this.same(this.pending))this.pending=null;if(!this.seen.has(sim)){this.seen.add(sim);if(r?.accepted&&!r.claimed&&this.rpg.quest==='story')this.rpg.quest='atlantis-campaign';}
+  if(this.rpg.quest!=='atlantis-campaign')return;if(!r?.accepted||r.claimed){this.rpg.quest='story';return;}
+  const available=H().available(sim.state),requiredReading=D().approaches.find(a=>a.id===r.approach)?.requiredObservation,next=available.find(s=>!s.optional||s.id===requiredReading)||available[0],ready=H().ready(sim.state),detail=sim.room!==D().room?'Revisit Farwake · retained work stays saved':ready?'Return to Sahra · complete, unpaid':next?.medium==='water'||next?.medium==='court'?next.name+' · '+depth(next):next?.name||'Read the current repair';
+  for(const[selector,text]of Object.entries({'#tracked-chapter':'ATLANTIS · THE HARBOUR BENEATH THE HARBOUR','#tracked-title':D().title,'#tracked-detail':detail,'#tracked-progress':r.steps.length+' recorded actions · '+(ready?'fee unclaimed':'J campaign · M physical routes')})){const el=document.querySelector(selector);if(el)el.textContent=text;}
+ }
+}
+const api={AtlantisCampaignUI,routePoints,legend,fee,depth};G.RealmAtlantisCampaignUI=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* Appearance-only Farwake apparatus. The rule owner owns witnesses, currents,
+ * health, locked support/cover frames and saved facts. No collision or payout. */
+(function(G){'use strict';
+const FLOOR=1.57;
+const C={ink:0x263d43,copper:0xb27548,patina:0x408b84,glass:0x9cd4d2,cream:0xe9d6ae,red:0x9c5148,gold:0xf1be77,dark:0x483946};
+const finite=(...v)=>v.every(Number.isFinite),D=()=>G.RealmAtlantisCampaign?.definition||G.RealmAtlantisCampaignData.definition;
+const data=()=>G.RealmAtlantisCampaignData,record=sim=>sim.state.atlantisCampaign;
+function paint(out,sim,a,yaw=0,tags={}){
+ const M=G.RealmEngine.M,base=a.y??G.RealmWorldFoundations.height(sim.room,a.x,a.z),root=M.compose(a.x,base,a.z,1,1,1,0,yaw,0);
+ const emit=(kind,p,s,c,part,opt={})=>out[kind].push({p:M.transform(root,p),s:s.slice(),m:M.mul(root,M.compose(...p,...s,...(opt.r||[0,0,0]))),c,rough:.85,cameraSolid:false,cutaway:false,appearanceOnly:true,atlantisCampaignPart:part,...tags,...opt});
+ return{root,base,emit,box:(x,y,z,w,h,d,c,part,opt)=>emit('box',[x,y,z],[w,h,d],c,part,opt)};
+}
+function station(out,sim,s){
+ const r=record(sim),done=r.steps.includes(s.id),wet=s.medium==='water'||s.medium==='court';
+ // East-lane fittings sit inward of the existing gallery volume. Their
+ // smaller visual frames leave the action anchor and swimmer body clear.
+ const side=wet&&s.x>11?-.82:.82;
+ const p=paint(out,sim,{x:s.x+side,z:s.z,y:wet?s.y+(s.medium==='court'?.001:0):undefined},0,{atlantisCampaignFixture:s.id,atlantisCampaignMedium:s.medium,atlantisCampaignFeetY:s.y,atlantisCampaignRecorded:done});
+ p.box(0,.22,0,.40,.44,.27,C.ink,'municipal-control-pedestal');p.box(0,.46,0,.45,.07,.31,C.copper,'municipal-control-bridge');
+ p.box(0,.58,0,.33,.18,.18,C.glass,done?'recorded-pressure-window':'unrecorded-pressure-window');
+ for(const z of[-.12,.12])p.box(0,.58,z,.24,.07,.035,done?C.patina:C.red,done?'checked-pressure-notch':'unresolved-pressure-notch');
+ p.box(.16,.39,.19,.11,.18,.09,C.copper,'manual-pressure-grip');
+}
+function depthMarker(out,sim,s){
+ const r=record(sim),selected=D().approaches.find(a=>a.id===r.approach)?.requiredObservation===s.id;
+ const p=paint(out,sim,{x:s.x-.80,y:s.y,z:s.z},0,{atlantisCampaignFixture:s.id,atlantisCampaignMedium:'water',atlantisCampaignFeetY:s.y,atlantisCampaignSelectedReading:selected});
+ p.box(0,.40,0,.08,.80,.12,C.copper,'depth-gauge-spine');p.box(0,.49,.09,.38,.46,.06,C.ink,'depth-gauge-face');
+ for(let i=0;i<3;i++)p.box(0,.33+i*.15,.13,.26,.025,.025,i===1?(selected?C.gold:C.glass):C.cream,'rated-depth-tick');
+ p.box(.20,.49,0,.08,.16,.19,r.steps.includes(s.id)?C.patina:C.red,'reading-status-tab');
+}
+function currentBands(out,sim){
+ const c=data().current,r=record(sim);if(!r.steps.includes(c.startStep))return;
+ const live=G.RealmAtlantisCampaign?.currentStatus?.(sim),active=live?.active===true;
+ const p=paint(out,sim,{x:c.x,z:c.z,y:0},0,{atlantisCampaignFixture:'rated-current-band',atlantisCampaignCurrent:active,atlantisCampaignMinY:c.minY,atlantisCampaignMaxY:c.maxY});
+ // Bounds and direction are catalogue markings, not displacement authority.
+ for(const y of[c.minY+.015,c.maxY-.015]){
+  for(const x of[-c.w/2+.025,c.w/2-.025])p.box(x,y,0,.05,.028,c.d,C.ink,'shallow-band-side');
+  for(const z of[-c.d/2+.025,c.d/2-.025])p.box(0,y,z,c.w,.028,.05,C.glass,'shallow-band-end');
+ }
+ if(active)for(let i=0;i<3;i++){
+  const z=-c.d/2+1.2+i*1.9,y=(c.minY+c.maxY)/2;
+  p.box(0,y,z,.055,.03,.62,C.glass,'owned-current-direction');
+  for(const x of[-.10,.10])p.box(x,y,z-.26,.045,.03,.27,C.copper,'owned-current-arrow',{r:[0,x<0?.7:-.7,0]});
+ }
+}
+function receipt(out,sim,anchor,fixture){
+ const r=record(sim),choice=r.steps.includes('disposition')&&D().choices.some(c=>c.id===r.choice)?r.choice:null;
+ const p=paint(out,sim,anchor,0,{atlantisCampaignFixture:fixture,atlantisCampaignChoice:choice});
+ p.box(0,.35,0,.52,.70,.34,C.ink,'receipt-stand');p.box(0,.73,0,.59,.06,.42,C.copper,'receipt-top');
+ for(const z of[-.23,.23]){p.box(0,.65,z,.43,.28,.035,C.cream,'complete-account-sheet');for(const x of[-.13,.13])p.box(x,.66,z*1.09,.08,.13,.025,C.patina,'retained-conflicting-receipt');}
+ if(choice==='publish')for(const x of[-.22,.22]){p.box(x,.88,0,.10,.23,.12,C.glass,'paired-checked-outlet');p.box(x,.97,0,.12,.025,.14,C.patina,'public-check-cap');}
+ if(choice==='limited'){p.box(0,.86,0,.49,.15,.38,C.copper,'reviewed-custody-hood');p.box(.24,.48,.10,.15,.16,.11,C.glass,'independent-manual-indicator');}
+ if(choice==='license'){p.emit('octa',[0,.92,0],[.26,.25,.20],C.copper,'personal-permit-seal');p.box(.25,.92,0,.08,.22,.20,C.red,'retained-outer-claim-marker');}
+}
+function body(out,sim,a,yaw,tags,settled=false,mode='idle'){
+ const p=paint(out,sim,a,yaw,tags),colour=settled?C.patina:C.copper;
+ p.box(0,.07,0,1.04,.14,.91,C.ink,'custodian-grounded-bed');
+ for(const x of[-.32,.32])for(const z of[-.27,.27])p.box(x,.19,z,.20,.24,.24,colour,'custodian-supported-foot');
+ p.box(0,.43,0,.78,.43,.65,colour,'custodian-connected-chassis');p.box(0,.68,0,.85,.08,.71,C.ink,'custodian-glass-seat');
+ p.emit('round',[0,.83,0],[.65,.30,.54],C.glass,'custodian-glass-bearing');
+ p.box(0,.99,0,.52,.08,.45,colour,'custodian-bearing-crosshead');
+ for(const x of[-.43,.43]){p.box(x,.48,0,.09,.40,.22,C.patina,'custodian-side-pipe');p.box(x*.7,.67,0,.30,.065,.12,colour,'custodian-pipe-connection');}
+ for(const x of[-.29,.29]){p.box(x,.54,.36,.13,.20,.18,colour,'custodian-vane');p.box(x,.64,.31,.16,.05,.23,C.ink,'custodian-vane-bracket');}
+ p.emit('disc',[0,.46,.39],[.40,.055,.40],C.ink,'custodian-intake-ring',{r:[Math.PI/2,0,0]});
+ p.emit('disc',[0,.46,.425],[.25,.025,.25],mode==='windup'?C.gold:C.patina,'custodian-intake-mouth',{r:[Math.PI/2,0,0]});
+ p.box(0,.94,.24,.22,.10,.12,settled?C.patina:mode==='windup'?C.gold:C.red,settled?'settled-bearing-tab':'custodian-phase-tab');
+ return p;
+}
+function pairedLine(p,x,z,length,width,yaw,part){
+ p.box(x,.145,z,width,.03,length,C.dark,part+'-border',{r:[0,yaw,0],em:.10});
+ p.box(x,.164,z,width*.38,.016,length*.98,C.gold,part+'-inlay',{r:[0,yaw,0],em:.30});
+}
+function warning(out,sim,e,s){
+ const p=paint(out,sim,s,s.yaw,{atlantisCampaignActor:e.id,atlantisCampaignTelegraph:true,atlantisCampaignPattern:s.kind,atlantisCampaignStrike:{...s}});
+ if(s.kind==='intake'){
+  const l=s.length,w=s.halfWidth;if(!finite(l,w)||l<=0||w<=0)return;
+  const t=Math.min(.07,w*.16,l*.12);
+  for(const x of[-w+t/2,w-t/2])pairedLine(p,x,l/2,l,t,0,'locked-intake-edge');
+  for(const z of new Set([t/2,l-t/2]))pairedLine(p,0,z,2*w,t,Math.PI/2,'locked-intake-cap');
+  if(l>.15)for(let i=1;i<=3;i++){const z=l*i/4;pairedLine(p,0,z,Math.min(.18,l/6),Math.min(.045,w*.1),0,'locked-intake-direction');}
+ }else if(s.kind==='sweep'){
+  const r=s.radius,ha=s.halfAngle;if(!finite(r,ha)||r<=0||ha<=0||ha>Math.PI)return;
+  const n=16,t=Math.min(.055,r*.045),rr=r-t*2,pad=Math.min(ha*.12,t*2/(r||1)),lo=-ha+pad,hi=ha-pad;
+  for(let i=0;i<n;i++){
+   const a=lo+(hi-lo)*i/n,b=lo+(hi-lo)*(i+1)/n,x1=Math.sin(a)*rr,z1=Math.cos(a)*rr,x2=Math.sin(b)*rr,z2=Math.cos(b)*rr;
+   pairedLine(p,(x1+x2)/2,(z1+z2)/2,Math.hypot(x2-x1,z2-z1),t,Math.atan2(x2-x1,z2-z1),'locked-sweep-arc');
+  }
+  // Keep the inner corners away from the angle boundary as well as the arc.
+  // This margin survives the renderer's Float32 world transform for tiny locks.
+  const inner=Math.max(t*2,1.2*t/(2*Math.tan(pad))),length=Math.max(0,rr-inner);
+  for(const a of[lo,hi])if(length>0)pairedLine(p,Math.sin(a)*(inner+length/2),Math.cos(a)*(inner+length/2),length,t,a,'locked-sweep-side');
+ }
+}
+function drawEnemy(out,sim,e,time){
+ const d=D(),r=record(sim);if(sim.room!==d.room||sim.worldDive||!r?.accepted||e?.id!==d.enemy.id||e.atlantisCampaign!==d.id||!d.enemy.spawnAfter.every(id=>r.steps.includes(id))||r.steps.includes(d.enemy.defeatStep)||!G.RealmAdventure.runtime(sim).enemies.includes(e)||!finite(e.x,e.z,e.yaw??0,e.hp)||e.hp<=0)return false;
+ const p=body(out,sim,{x:e.x,z:e.z},e.yaw??0,{atlantisCampaignActor:e.id},false,e.mode);
+ if((e.mode==='windup'||e.mode==='intake'&&e.strike?.kind==='intake')&&e.strike&&finite(e.strike.x,e.strike.z,e.strike.yaw))warning(out,sim,e,e.strike);
+ return{actor:e.id,x:e.x,z:e.z,yaw:e.yaw??0,base:p.base,root:Array.from(p.root),mode:e.mode};
+}
+function drawWitness(out,sim,e,time){
+ const d=D(),r=record(sim),w=d.witnesses.find(w=>w.id===e?.id),owned=G.RealmAtlantisCampaign?.runtime(sim).witnesses;
+ if(sim.room!==d.room||!r?.accepted||!w||e.atlantisCampaign!==d.id||!Array.isArray(owned)||!owned.includes(e)||!w.appearsAfter.every(id=>r.steps.includes(id))||!finite(e.x,e.z,e.yaw??0))return false;
+ const p=paint(out,sim,{x:e.x,z:e.z},e.yaw??0,{atlantisCampaignWitness:e.id}),clerk=w.id==='atlantis-ilyra-v1',coat=clerk?C.ink:C.patina;
+ for(const x of[-.11,.11]){p.box(x,.09,.025,.15,.18,.27,C.ink,'witness-grounded-foot');p.box(x,.36,0,.10,.39,.15,coat,'witness-leg');}
+ p.box(0,.71,0,.34,.31,.28,coat,'witness-coat-hem');p.box(0,1.03,0,.30,.35,.24,coat,'witness-coat');
+ for(const x of[-.19,.19])p.box(x,1.0,.035,.09,.30,.14,coat,'witness-sleeve');
+ p.box(0,1.25,0,.08,.10,.10,C.cream,'witness-neck');p.emit('round',[0,1.42,0],[.26,.28,.25],C.cream,'witness-head');p.box(0,1.56,0,.29,.08,.27,clerk?C.red:C.copper,'witness-work-cap');
+ p.box(0,.97,.19,.28,.19,.06,clerk?C.cream:C.copper,clerk?'ilyra-whole-receipt-folder':'damar-load-account');
+ return{actor:e.id,x:e.x,z:e.z,yaw:e.yaw??0,base:p.base,root:Array.from(p.root)};
+}
+function draw(out,sim,time){
+ const d=D(),r=record(sim);if(sim.room!==d.room||!r?.accepted)return;
+ const by=id=>d.steps.find(s=>s.id===id);
+ receipt(out,sim,{x:1,z:-18},'registry-record');
+ if(r.steps.includes('choose-approach')){for(const id of['upper-reading','lower-reading'])depthMarker(out,sim,by(id));currentBands(out,sim);}
+ if(r.steps.includes('choose-approach'))for(const id of['manual-bypass','equalizer-set'])station(out,sim,by(id));
+ if(r.steps.includes('diagnose-flow'))for(const id of data().pressure.stages.filter(id=>id!=='equalizer-set'))station(out,sim,by(id));
+ if(r.steps.includes('bearing-exposed')){for(const id of['release-west','release-east'])station(out,sim,by(id));body(out,sim,d.enemy,0,{atlantisCampaignFixture:'settled-custodian'},true);}
+ if(r.steps.includes('outlet-set'))receipt(out,sim,{x:13,z:-40.1},'landing-record');
+ const seen=new Set();for(const e of G.RealmAtlantisCampaign?.runtime(sim).witnesses||[])if(!seen.has(e.id)){seen.add(e.id);drawWitness(out,sim,e,time);}
+}
+const api={draw,drawEnemy,drawWitness,FLOOR};G.RealmAtlantisCampaignArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* The Gate That Remained Open: one lower Garden-approach continuation.
  * Direction: recovered Heaven Story and Event Atlas hv.q21-23, Rielle/Calen,
@@ -4406,7 +4958,7 @@ function update(sim,dt){const A=G.RealmAdventure,a=sim.state.adventure,r=runtime
  }
  const keep=[];
  for(const shot of r.arrows){if(shot.room!==sim.room||a.hp<=0)continue;const step=Math.min(shot.left,dt*22),end={x:shot.x+shot.dx*step,z:shot.z+shot.dz*step},hit=trace(shot,end,r.enemies,(x,z)=>projectileGround(sim,x,z),shot.hit);let stopped=false;
-  for(const {e,u}of hit.hits){const denied=e.heavenCampaign&&!G.RealmHeavenCampaign.canDamage(sim,e)||e.hellCampaign&&!G.RealmHellCampaign.canDamage(sim,e)||e.trailQuest&&!G.RealmTrails.canDamage(sim,e);shot.hit.push(e.id);shot.pierce--;if(e.kind==='practice'&&sim.room!=='riverbank')practiceHit(sim,e);else{A.damageEnemy(sim,e,shot.damage,'weapon');e.awareness=a.elapsed+3;e.lastKnown={x:sim.state.player.x,z:sim.state.player.z};}
+  for(const {e,u}of hit.hits){const denied=e.atlantisCampaign&&!G.RealmAtlantisCampaign.canDamage(sim,e)||e.heavenCampaign&&!G.RealmHeavenCampaign.canDamage(sim,e)||e.hellCampaign&&!G.RealmHellCampaign.canDamage(sim,e)||e.trailQuest&&!G.RealmTrails.canDamage(sim,e);shot.hit.push(e.id);shot.pierce--;if(e.kind==='practice'&&sim.room!=='riverbank')practiceHit(sim,e);else{A.damageEnemy(sim,e,shot.damage,'weapon');e.awareness=a.elapsed+3;e.lastKnown={x:sim.state.player.x,z:sim.state.player.z};}
    A.fx(sim,denied?'arrow-wall':'arrow-hit',shot.x+(end.x-shot.x)*u,shot.z+(end.z-shot.z)*u,shot.color);
    if(shot.pierce<=0){stopped=true;break;}}
   if(!stopped&&hit.wall!==null){A.fx(sim,'arrow-wall',shot.x+(end.x-shot.x)*hit.wall,shot.z+(end.z-shot.z)*hit.wall,0xb4bab0);stopped=true;}
@@ -4654,12 +5206,14 @@ function threat(sim){
  const e=selected(sim);if(!e||e.kind==='practice')return null;
  const known=e.custom==='bell'?e.kind==='bellwarden':e.eventEnemy?['invader','chanter','saboteur','siegeboss'].includes(e.kind):['skitter','sentinel','boss','charger'].includes(e.kind);
  if(!known)return null;
+ if(G.RealmAtlantisCampaign?.encounter(e)&&e.mode==='intake'&&e.strike?.kind==='intake'&&Number.isFinite(e.timer)&&e.timer>0)return{phase:'intake',kind:'harbour-intake',remaining:e.timer};
  if(e.mode==='charge')return e.kind==='charger'&&Number.isFinite(e.chargeLeft)&&e.chargeLeft>0?{phase:'charge',kind:'charge',remaining:null}:null;
  if(!['windup','recover'].includes(e.mode)||!Number.isFinite(e.timer)||e.timer<=0)return null;
  if(e.mode==='recover')return{phase:'recover',kind:'opening',remaining:e.timer};
  if(!e.aim||!Number.isFinite(e.aim.x)||!Number.isFinite(e.aim.z))return null;
  let kind='strike';
- if(G.RealmHeavenCampaign?.encounter(e)){if(!e.strike||!['beam','pulse'].includes(e.strike.kind))return null;kind='garden-'+e.strike.kind;}
+ if(G.RealmAtlantisCampaign?.encounter(e)){if(!e.strike||!['sweep','intake'].includes(e.strike.kind))return null;kind='harbour-'+e.strike.kind;}
+ else if(G.RealmHeavenCampaign?.encounter(e)){if(!e.strike||!['beam','pulse'].includes(e.strike.kind))return null;kind='garden-'+e.strike.kind;}
  else if(G.RealmHellCampaign?.encounter(e)){if(!e.strike||!['line','sweep'].includes(e.strike.kind))return null;kind='writ-'+e.strike.kind;}
  else if(G.RealmEarthExpedition?.encounter(e)){if(!e.strike||![e.strike.x,e.strike.z,e.strike.yaw].every(Number.isFinite))return null;kind='bank-sweep';}
  else if(e.custom==='bell'){if(!['inner','outer'].includes(e.ringMode))return null;kind='bell-'+e.ringMode;}
@@ -5010,25 +5564,26 @@ function validate(raw){
  if(!Array.isArray(raw.receipts)||raw.receipts.length>100||new Set(raw.receipts.map(r=>r?.id)).size!==raw.receipts.length)no('receipts');
  s.receipts=raw.receipts.map(r=>{if(!r||typeof r.id!=='string'||!r.id||r.id.length>100||typeof r.fp!=='string'||r.fp.length>500||typeof r.ok!=='boolean')no('receipt');return{id:r.id,fp:r.fp,ok:r.ok};});s.road=ROAD.validate(raw.road,s);s.beacon=B.validate(raw.beacon,s);s.crossing=CROSS.validate(raw.crossing,s);return s;
 }
+const AT=G.RealmAtlantisCampaign||(typeof require==='function'?require('./atlantis-campaign.js'):null);
 const HC=G.RealmHellCampaign||(typeof require==='function'?require('./hell-campaign.js'):null);
 const HV=G.RealmHeavenCampaign||(typeof require==='function'?require('./heaven-campaign.js'):null);
-function combatScene(sim){if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&(!!G.RealmWorldFoundations.definition(sim.room)?.enemies?.length||!!G.RealmTrails?.enemies(sim).length||!!HC.enemies(sim).length||!!HV.enemies(sim).length);return sim.room===Q.ROOM||sim.room==='mine'||sim.room==='road'||sim.room==='range'||sim.room==='crossing';}
-function roster(sim){if(G.RealmWorldFoundations?.handles(sim.room))return[...G.RealmWorldFoundations.enemies(sim),...(G.RealmTrails?.enemies(sim)||[]),...EE.enemies(sim),...HC.enemies(sim),...HV.enemies(sim)];return sim.room===Q.ROOM?[Q.PRACTICE,...(sim.state.adventure.pursuit.active?H.enemies(sim.state.adventure):sim.state.adventure.starter.accepted?Q.ENEMIES:[])]:sim.room==='crossing'?CROSS.ENEMIES:sim.room==='range'?AR.RANGE.targets.map(d=>({...d,hp:100,maxHP:100})):sim.room==='road'?ROAD.ENEMIES:sim.room==='mine'?ENEMIES:[];}
+function combatScene(sim){if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&(!!G.RealmWorldFoundations.definition(sim.room)?.enemies?.length||!!G.RealmTrails?.enemies(sim).length||!!AT.enemies(sim).length||!!HC.enemies(sim).length||!!HV.enemies(sim).length);return sim.room===Q.ROOM||sim.room==='mine'||sim.room==='road'||sim.room==='range'||sim.room==='crossing';}
+function roster(sim){if(G.RealmWorldFoundations?.handles(sim.room))return[...G.RealmWorldFoundations.enemies(sim),...(G.RealmTrails?.enemies(sim)||[]),...EE.enemies(sim),...AT.enemies(sim),...HC.enemies(sim),...HV.enemies(sim)];return sim.room===Q.ROOM?[Q.PRACTICE,...(sim.state.adventure.pursuit.active?H.enemies(sim.state.adventure):sim.state.adventure.starter.accepted?Q.ENEMIES:[])]:sim.room==='crossing'?CROSS.ENEMIES:sim.room==='range'?AR.RANGE.targets.map(d=>({...d,hp:100,maxHP:100})):sim.room==='road'?ROAD.ENEMIES:sim.room==='mine'?ENEMIES:[];}
 function visible(sim,a,b){if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&G.RealmWorldFoundations.segment(sim.room,a,b,.04);if(sim.room===G.RealmCosmos?.ROOM)return G.RealmCosmos.line(a,b);return sim.room===Q.ROOM?Q.line(a,b):sim.room==='crossing'?CROSS.line(a,b):sim.room==='range'?AR.aimClear(sim,a,b):sim.room==='road'?ROAD.line(a,b):sim.room==='mine'?line(sim.state.adventure,a,b):G.RealmCore.segment(a,b,sim.navRoom);}
 function ground(sim,x,z,r=.31){if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&G.RealmWorldFoundations.walkable(sim.room,x,z,r);if(sim.room===G.RealmCosmos?.ROOM)return G.RealmCosmos.walkable(x,z,r);return sim.room===Q.ROOM?Q.walkable(x,z,r):sim.room==='crossing'?CROSS.walkable(x,z,r):sim.room==='range'?AR.rangeWalkable(x,z,r):sim.room==='road'?ROAD.walkable(x,z,r):sim.room==='mine'?walkable(sim.state.adventure,x,z,r):G.RealmCore.walkable(x,z,sim.navRoom,r);}
 function safeNear(sim,p,radius=.7){const options=[{x:p.x,z:p.z},...Array.from({length:12},(_,i)=>({x:p.x+Math.sin(i*Math.PI/6)*radius,z:p.z+Math.cos(i*Math.PI/6)*radius}))];return options.find(q=>ground(sim,q.x,q.z))||{x:p.x,z:p.z};}
 function newFox(sim){const source=sim.worldDive?.surface||sim.state.player,q=safeNear(sim,source);return{room:sim.room,...q,yaw:source.yaw,path:[],nextPath:0,nextHit:0,seek:null,status:'Beside you'};}
 function followPath(sim,actor,target,dt,speed){
- const now=sim.state.adventure.elapsed,radius=HC.encounter(actor)||HV.encounter(actor)?actor.radius:.31;
+ const now=sim.state.adventure.elapsed,radius=AT.encounter(actor)||HC.encounter(actor)||HV.encounter(actor)?actor.radius:.31;
  if(now>=(actor.nextPath||0)){actor.nextPath=now+.7;const goal=safeNear(sim,target);actor.path=G.RealmCore.pathfind(actor,goal,sim.navRoom,false,radius)||[];}
- if(actor.path?.length){const q=actor.path[0],d=dist(actor,q),step=Math.min(d,dt*speed),x=actor.x+(q.x-actor.x)/(d||1)*step,z=actor.z+(q.z-actor.z)/(d||1)*step;if(!ground(sim,x,z,radius)||((HC.encounter(actor)||HV.encounter(actor))&&!G.RealmWorldFoundations.segment(sim.room,actor,{x,z},radius))){actor.path=[];actor.nextPath=0;return false;}sim.advance(actor,actor.path,dt,speed);return true;}return false;
+ if(actor.path?.length){const q=actor.path[0],d=dist(actor,q),step=Math.min(d,dt*speed),x=actor.x+(q.x-actor.x)/(d||1)*step,z=actor.z+(q.z-actor.z)/(d||1)*step;if(!ground(sim,x,z,radius)||((AT.encounter(actor)||HC.encounter(actor)||HV.encounter(actor))&&!G.RealmWorldFoundations.segment(sim.room,actor,{x,z},radius))){actor.path=[];actor.nextPath=0;return false;}sim.advance(actor,actor.path,dt,speed);return true;}return false;
 }
 function runtime(sim){if(!sim.adventureRuntime)sim.adventureRuntime={room:undefined,enemies:[],fx:[],cooldowns:{attack:0,pulse:0,dodge:0,heal:0,dig:0},invincible:0,companion:newFox(sim),notices:[]};return sim.adventureRuntime;}
 function notify(sim,text){let r=runtime(sim);r.notices.push(text);if(r.notices.length>20)r.notices.shift();}
-function syncScene(sim){let r=runtime(sim);const survey=sim.room===Q.ROOM?sim.state.adventure.pursuit.active?.id:null;const trail=(G.RealmTrails?.signature(sim)||'')+'|'+EE.signature(sim)+'|'+HC.signature(sim)+'|'+HV.signature(sim),sameRoom=r.room===sim.room,sameRun=sameRoom&&r.pursuitRun===survey;if(sameRoom&&r.pursuitRun===survey&&r.trailSignature===trail){for(const e of r.enemies.filter(e=>e.trailQuest)){const terms=G.RealmTrails.enemies(sim).find(v=>v.id===e.id);if(terms)e.recovery=terms.recovery;}return;}const prior=sameRoom?r.enemies:[];r.room=sim.room;r.pursuitRun=survey;r.trailSignature=trail;r.enemies=combatScene(sim)?roster(sim).filter(e=>!sim.state.adventure.defeated.includes(e.id)).map(e=>prior.find(p=>p.id===e.id&&p.hp>0)||({...e,maxHP:e.hp,mode:'idle',timer:0,yaw:0,aim:null,flash:0,path:[],nextPath:0,awareness:0,home:{x:e.x,z:e.z}})):[];if(sameRun)return;r.fx=[];r.arrows=[];r.range={active:false,start:0,hits:{},shots:0,message:'A calm place to learn a different rhythm.'};if(!sim.state.adventure.companion.bonded||sim.state.adventure.companion.mode==='follow')r.companion=newFox(sim);r.invincible=sim.state.adventure.elapsed+1;}
+function syncScene(sim){let r=runtime(sim);const survey=sim.room===Q.ROOM?sim.state.adventure.pursuit.active?.id:null;const trail=(G.RealmTrails?.signature(sim)||'')+'|'+EE.signature(sim)+'|'+AT.signature(sim)+'|'+HC.signature(sim)+'|'+HV.signature(sim),sameRoom=r.room===sim.room,sameRun=sameRoom&&r.pursuitRun===survey;if(sameRoom&&r.pursuitRun===survey&&r.trailSignature===trail){for(const e of r.enemies.filter(e=>e.trailQuest)){const terms=G.RealmTrails.enemies(sim).find(v=>v.id===e.id);if(terms)e.recovery=terms.recovery;}return;}const prior=sameRoom?r.enemies:[];r.room=sim.room;r.pursuitRun=survey;r.trailSignature=trail;r.enemies=combatScene(sim)?roster(sim).filter(e=>!sim.state.adventure.defeated.includes(e.id)).map(e=>prior.find(p=>p.id===e.id&&p.hp>0)||({...e,maxHP:e.hp,mode:'idle',timer:0,yaw:0,aim:null,flash:0,path:[],nextPath:0,awareness:0,home:{x:e.x,z:e.z}})):[];if(sameRun)return;r.fx=[];r.arrows=[];r.range={active:false,start:0,hits:{},shots:0,message:'A calm place to learn a different rhythm.'};if(!sim.state.adventure.companion.bonded||sim.state.adventure.companion.mode==='follow')r.companion=newFox(sim);r.invincible=sim.state.adventure.elapsed+1;}
 function fx(sim,kind,x,z,color=0xf2c891){let r=runtime(sim);r.fx.push({kind,x,z,color,at:sim.state.adventure.elapsed});if(r.fx.length>48)r.fx.shift();}
 function awardXP(sim,n){let s=sim.state.adventure,l=level(s);s.xp=Math.min(9999,s.xp+n);if(level(s)>l){s.hp=Math.min(stats(s).maxHP,s.hp+10*(level(s)-l));notify(sim,'Level '+level(s)+' · Your journey is changing you.');sim.event('adventure','You reached level '+level(s)+'.');}}
-function damageEnemy(sim,e,n,source='other'){let s=sim.state.adventure;if(!e||e.hp<=0||e.hidden||!Number.isFinite(n)||n<=0)return;if(e.heavenCampaign&&!HV.canDamage(sim,e))return;if(e.hellCampaign&&!HC.canDamage(sim,e))return;if(e.trailQuest&&!G.RealmTrails.canDamage(sim,e))return;n=K.weaponDamage(sim,e,n,source);if(e.kind==='practice'){if(sim.room===Q.ROOM)Q.practiceHit(sim,e,n);else AR.practiceHit(sim,e);return;}if(e.exposedUntil>s.elapsed)n=Math.round(n*1.2);T.hit(sim,e,n);if(B.damage(sim,e,n))return;e.hp=Math.max(0,e.hp-n);e.flash=s.elapsed+.16;fx(sim,'hit',e.x,e.z);if(e.hp===0&&e.heavenCampaign){HV.defeat(sim,e);return;}if(e.hp===0&&e.hellCampaign){HC.defeat(sim,e);return;}if(e.hp===0&&e.expeditionQuest){EE.defeat(sim,e);return;}if(e.hp===0&&e.trailQuest){G.RealmTrails.defeat(sim,e);return;}if(e.hp===0&&e.worldRealm){G.RealmWorldFoundations.defeat(sim,e);return;}if(e.hp===0&&e.contractRun){H.defeat(sim,e);return;}if(e.hp===0&&!s.defeated.includes(e.id)){s.defeated.push(e.id);s.drops.push(e.id);s.revision++;awardXP(sim,e.xp);sim.event('adventure',e.name+' defeated. A cache remains at its original position.');notify(sim,e.kind==='boss'?'The Hollow Hart is free. The feather is waiting.':e.name+' defeated · +'+e.xp+' experience');}}
+function damageEnemy(sim,e,n,source='other'){let s=sim.state.adventure;if(!e||e.hp<=0||e.hidden||!Number.isFinite(n)||n<=0)return;if(e.atlantisCampaign&&!AT.canDamage(sim,e))return;if(e.heavenCampaign&&!HV.canDamage(sim,e))return;if(e.hellCampaign&&!HC.canDamage(sim,e))return;if(e.trailQuest&&!G.RealmTrails.canDamage(sim,e))return;n=K.weaponDamage(sim,e,n,source);if(e.kind==='practice'){if(sim.room===Q.ROOM)Q.practiceHit(sim,e,n);else AR.practiceHit(sim,e);return;}if(e.exposedUntil>s.elapsed)n=Math.round(n*1.2);T.hit(sim,e,n);if(B.damage(sim,e,n))return;e.hp=Math.max(0,e.hp-n);e.flash=s.elapsed+.16;fx(sim,'hit',e.x,e.z);if(e.hp===0&&e.atlantisCampaign){AT.defeat(sim,e);return;}if(e.hp===0&&e.heavenCampaign){HV.defeat(sim,e);return;}if(e.hp===0&&e.hellCampaign){HC.defeat(sim,e);return;}if(e.hp===0&&e.expeditionQuest){EE.defeat(sim,e);return;}if(e.hp===0&&e.trailQuest){G.RealmTrails.defeat(sim,e);return;}if(e.hp===0&&e.worldRealm){G.RealmWorldFoundations.defeat(sim,e);return;}if(e.hp===0&&e.contractRun){H.defeat(sim,e);return;}if(e.hp===0&&!s.defeated.includes(e.id)){s.defeated.push(e.id);s.drops.push(e.id);s.revision++;awardXP(sim,e.xp);sim.event('adventure',e.name+' defeated. A cache remains at its original position.');notify(sim,e.kind==='boss'?'The Hollow Hart is free. The feather is waiting.':e.name+' defeated · +'+e.xp+' experience');}}
 function takeDamage(sim,n){let s=sim.state.adventure,r=runtime(sim);if(s.hp<=0||s.elapsed<r.invincible)return false;s.hp=Math.max(0,s.hp-T.mitigate(sim,Math.max(1,n-stats(s).defense)));r.invincible=s.elapsed+.28;fx(sim,'hurt',sim.state.player.x,sim.state.player.z,0xd57f88);if(s.hp===0){sim.playerPath=[];s.deaths=Math.min(9999,s.deaths+1);sim.event('adventure','You fell on an expedition. Your home and belongings are safe.');notify(sim,'You have fallen. Return to the spring to try again.');}return true;}
 function diggableFrom(s,p,gx,gz){return validCell(gx,gz)&&!isFloor(s,gx,gz)&&dist(p,cellPoint(gx,gz))<=REACH&&[[1,0],[-1,0],[0,1],[0,-1]].some(([dx,dz])=>isFloor(s,gx+dx,gz+dz)&&dist(p,cellPoint(gx+dx,gz+dz))<2.2);}
 function nearbyWall(s,p){let best=null,c=cellAt(p.x,p.z);for(let x=c.gx-2;x<=c.gx+2;x++)for(let z=c.gz-2;z<=c.gz+2;z++)if(diggableFrom(s,p,x,z)){let q=cellPoint(x,z),d=dist(p,q);if(!best||d<best.d)best={gx:x,gz:z,d,...q};}return best;}
@@ -5116,6 +5671,7 @@ function tick(sim,dt){
  dt=Math.min(dt,.1);s.elapsed=Math.min(1e9,s.elapsed+dt);r.fx=r.fx.filter(f=>s.elapsed-f.at<.65);
  if(!s.started)return;
  if(s.hp>0)s.stamina=Math.min(100,s.stamina+dt*15);
+ AT.tick(sim,dt);
  HV.tick(sim,dt);
  AR.update(sim,dt);
  B.tick(sim,dt);
@@ -5123,7 +5679,7 @@ function tick(sim,dt){
  const p=sim.state.player;
  if(combatScene(sim)&&s.hp>0)for(const e of r.enemies){
   if(e.hp<=0||e.kind==='practice'||e.eventEnemy||e.custom==='bell')continue;
-  const d=dist(p,e),canSee=visible(sim,p,e);e.timer-=dt;
+  const d=dist(p,e),canSee=visible(sim,p,e);if(!(e.atlantisCampaign&&e.mode==='intake'))e.timer-=dt;
   // Charge direction is fixed at windup; subdivided collision prevents tunneling.
   if(e.mode==='charge'){
    let remaining=Math.min(e.chargeLeft,dt*12);
@@ -5136,9 +5692,15 @@ function tick(sim,dt){
    if(e.chargeLeft<=.01){e.mode='recover';e.timer=1.8;e.path=[];fx(sim,'impact',e.x,e.z,0xd4b48b);}
    continue;
   }
+  if(e.atlantisCampaign&&e.mode==='intake'){
+   const activeDelta=Math.min(dt,Math.max(0,e.timer));AT.pull(sim,e,activeDelta);
+   if(!e.contactHit&&AT.canDamage(sim,e)&&AT.strikeContains(e,p)&&visible(sim,e,p)){e.contactHit=takeDamage(sim,e.damage);}e.timer-=dt;
+   if(e.timer<=0){e.mode='recover';e.timer=e.recovery;e.path=[];}continue;
+  }
   if(e.mode==='windup'){
    if(e.timer<=0){
     if(e.kind==='charger'){e.mode='charge';e.chargeLeft=9;e.chargeHit=false;fx(sim,'dodge',e.x,e.z,0xd8ad87);}
+    else if(AT.encounter(e)){e.contactAt=s.elapsed;e.contactHit=false;e.path=[];if(e.strike.kind==='intake'){e.mode='intake';e.timer=AT.patterns.intake.active;}else{e.contactHit=AT.strikeContains(e,p)&&visible(sim,e,p)&&takeDamage(sim,e.damage);fx(sim,'impact',e.strike.x,e.strike.z,0x90cec4);e.mode='recover';e.timer=e.recovery;}}
     else if(HV.encounter(e)){e.contactAt=s.elapsed;e.contactHit=HV.strikeContains(e,p)&&visible(sim,e,p)&&takeDamage(sim,e.damage);fx(sim,'impact',e.strike.x,e.strike.z,0xc5dce3);e.mode='recover';e.timer=e.recovery;e.path=[];}
     else if(HC.encounter(e)){e.contactAt=s.elapsed;e.contactHit=HC.strikeContains(e,p)&&visible(sim,e,p)&&takeDamage(sim,e.damage);fx(sim,'impact',e.strike.x+Math.sin(e.strike.yaw)*e.strike.length*.5,e.strike.z+Math.cos(e.strike.yaw)*e.strike.length*.5,0xc5ac83);e.mode='recover';e.timer=e.recovery;e.path=[];}
     else if(EE.encounter(e)){e.contactAt=s.elapsed;e.contactHit=EE.strikeContains(e,p)&&visible(sim,e,p)&&takeDamage(sim,e.damage);fx(sim,'impact',e.strike.x+Math.sin(e.strike.yaw)*1.55,e.strike.z+Math.cos(e.strike.yaw)*1.55,0xc5ac83);e.mode='recover';e.timer=e.recovery;e.path=[];}
@@ -5151,8 +5713,9 @@ function tick(sim,dt){
   if(d<aggro&&canSee){e.awareness=s.elapsed+3;e.lastKnown={x:p.x,z:p.z};}
   const home=e.home||{x:e.x,z:e.z};if(dist(e,home)>15||d>18)e.awareness=0;
   if((e.awareness||0)<s.elapsed){if(dist(e,home)>.6){e.mode='return';followPath(sim,e,home,dt,1.65);}else e.mode='idle';continue;}
-  const reach=HV.encounter(e)?.attack.reach??HC.pattern(e)?.reach??EE.encounter(e)?.reach??(e.kind==='charger'?9:e.kind==='sentinel'?6.5:e.kind==='boss'?4:1.9);
-  if(canSee&&d<=reach){e.mode='windup';e.timer=e.windup??(e.kind==='charger'?1.2:e.kind==='skitter'?.75:1.05);e.aim={x:p.x,z:p.z};e.yaw=Math.atan2(p.x-e.x,p.z-e.z);e.path=[];if(HV.encounter(e)){HV.lock(sim,e);e.timer=e.windup;}if(HC.encounter(e)){HC.lock(sim,e);e.timer=e.windup;}if(EE.encounter(e))e.strike=Object.freeze({x:e.x,z:e.z,yaw:e.yaw});if(e.kind==='charger')e.chargeDir={x:Math.sin(e.yaw),z:Math.cos(e.yaw)};continue;}
+  const reach=(AT.encounter(e)?AT.pattern(e,sim).reach:undefined)??HV.encounter(e)?.attack.reach??HC.pattern(e)?.reach??EE.encounter(e)?.reach??(e.kind==='charger'?9:e.kind==='sentinel'?6.5:e.kind==='boss'?4:1.9);
+  if(canSee&&d<=reach){e.mode='windup';e.timer=e.windup??(e.kind==='charger'?1.2:e.kind==='skitter'?.75:1.05);e.aim={x:p.x,z:p.z};e.yaw=Math.atan2(p.x-e.x,p.z-e.z);e.path=[];if(AT.encounter(e)){AT.lock(sim,e);e.timer=e.windup;}if(HV.encounter(e)){HV.lock(sim,e);e.timer=e.windup;}if(HC.encounter(e)){HC.lock(sim,e);e.timer=e.windup;}if(EE.encounter(e))e.strike=Object.freeze({x:e.x,z:e.z,yaw:e.yaw});if(e.kind==='charger')e.chargeDir={x:Math.sin(e.yaw),z:Math.cos(e.yaw)};continue;}
+  if(AT.encounter(e)&&e.anchored){e.mode='idle';e.path=[];continue;}
   e.mode='pursue';const q=canSee?p:e.lastKnown;if(q)followPath(sim,e,q,dt,e.kind==='boss'?1.25:1.6);
  }
  const c=r.companion;
@@ -6077,6 +6640,7 @@ const EE=G.RealmEarthExpedition||(typeof require==='function'?require('./earth-e
 const BC=G.RealmBridgeCommunity||(typeof require==='function'?require('./bridge-community.js'):null);
 const HC=G.RealmHellCampaign||(typeof require==='function'?require('./hell-campaign.js'):null);
 const HV=G.RealmHeavenCampaign||(typeof require==='function'?require('./heaven-campaign.js'):null);
+const AT=G.RealmAtlantisCampaign||(typeof require==='function'?require('./atlantis-campaign.js'):null);
 const VERSION=9,KEY='eternities.realm10.save.v9',LEGACY_KEY='eternities.realm09.save.v8',TAU=Math.PI*2,clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),finite=Number.isFinite,clone=o=>JSON.parse(JSON.stringify(o));
 const LANDMARKS=[
 {id:'commons',name:'The Firstlight Commons',short:'Commons',x:0,z:3,kind:'gather',action:'Sit by the spring',description:'A meeting place beneath the golden tree. There is room to linger without producing anything.'},
@@ -6145,8 +6709,8 @@ function validateCameraViews(raw){
  }
  return out;
 }
-function fresh(){return{heavenCampaign:HV.fresh(),hellCampaign:HC.fresh(),bridgeCommunity:BC.fresh(),homeHistory:HH.fresh(),localLife:LL.fresh(),earthExpedition:EE.fresh(),realmTrails:RT.fresh(),journeys:W.fresh(),adventure:A.fresh(),sandbox:S.fresh(),score:X.preset(),scoreRevision:0,retreat:X.freshHome(),visitor:X.freshVisitor(),version:VERSION,seed:2317,day:1,hour:17.2,weather:'clear',player:{x:2.5,z:6,yaw:0},visited:[],flowers:[],notes:[],journal:[],nextEvent:1,residents:PROFILES.map((p,i)=>{let l=LANDMARKS.find(x=>x.id===schedule(p.id,17.2));return{id:p.id,x:l.x+(i-1)*.5,z:l.z,yaw:0,progress:.05,conversations:0};}),settings:{quality:'balanced',cameraMode:'adventure',cameraFov:60,cameraViews:validateCameraViews(null),cameraCutaway:true,reducedMotion:false,labels:true,timeFlow:true,sound:false}};}
-function validate(raw){if(raw&&raw.version===2)raw={...clone(raw),version:3,score:X.preset(),scoreRevision:0,retreat:X.freshHome(),visitor:X.freshVisitor()};if(raw&&raw.version===3)raw={...clone(raw),version:4,sandbox:S.fresh()};if(raw&&raw.version===4)raw={...clone(raw),version:5,adventure:A.fresh()};if(raw&&raw.version===5)raw={...clone(raw),version:6};if(raw&&raw.version===6)raw={...clone(raw),version:7};if(raw&&raw.version===7)raw={...clone(raw),version:8};if(raw&&raw.version===8)raw={...clone(raw),version:9};function no(s){throw new Error('Invalid save: '+s);}if(!raw||typeof raw!=='object'||raw.version!==VERSION)no('unsupported version');let s=fresh();s.adventure=A.validate(raw.adventure);s.journeys=W.validate(raw.journeys);s.realmTrails=RT.validate(raw.realmTrails);s.earthExpedition=EE.validate(raw.earthExpedition);s.localLife=LL.validate(raw.localLife);s.homeHistory=HH.validate(raw.homeHistory);s.bridgeCommunity=BC.validate(raw.bridgeCommunity);s.heavenCampaign=HV.validate(raw.heavenCampaign);if(s.heavenCampaign.accepted&&!HV.eligible(s))no('Heaven campaign without claimed Broken Choir');s.hellCampaign=HC.validate(raw.hellCampaign);if(s.hellCampaign.accepted&&!HC.eligible(s))no('Hell campaign without claimed rescue');if(s.bridgeCommunity.accepted&&!s.adventure.started)no('community work without initial kit');if(LL.definitions.some(d=>s.localLife.records[d.id].accepted&&!LL.eligible(s,d)))no('local work without its entry state');if(!s.adventure.started&&s.earthExpedition.story.accepted)no('expedition without initial kit');if(s.adventure.earthBinding.weapon&&!s.earthExpedition.story.claimed)no('binding without earned living road');if(!s.adventure.started&&Object.values(s.realmTrails.records).some(r=>r.accepted))no('trail without initial kit');if(s.adventure.realmCraft.weapon&&!Object.values(s.realmTrails.records).some(r=>r.claimed))no('realm fitting without earned trail');s.sandbox=S.validate(raw.sandbox);const outdoors={id:'outdoors',sandbox:s.sandbox};if(!Number.isSafeInteger(raw.day)||raw.day<1||raw.day>100000||!finite(raw.hour)||raw.hour<0||raw.hour>=24)no('clock');s.day=raw.day;s.hour=raw.hour;if(!['clear','rain'].includes(raw.weather))no('weather');s.weather=raw.weather;if(!raw.player||!walkable(raw.player.x,raw.player.z,outdoors)||!finite(raw.player.yaw))no('player position');s.player={x:raw.player.x,z:raw.player.z,yaw:raw.player.yaw};for(let k of['visited','flowers','notes','journal','residents'])if(!Array.isArray(raw[k]))no(k);if(raw.visited.length>LANDMARKS.length||raw.visited.some(id=>!LANDMARKS.some(l=>l.id===id)))no('places');s.visited=[...new Set(raw.visited)];if(raw.flowers.length>12)no('garden');s.flowers=raw.flowers.map(f=>{if(!f||!finite(f.x)||!finite(f.z)||Math.hypot(f.x+6,f.z-13)>5||!Number.isInteger(f.color)||f.color<0||f.color>3)no('flower');return{x:f.x,z:f.z,color:f.color};});if(raw.notes.length>20)no('notes');s.notes=raw.notes.map(n=>{if(!n||typeof n.text!=='string'||n.text.length>1200||!Number.isInteger(n.day)||n.day<1)no('note');return{text:n.text,day:n.day};});if(raw.journal.length>200)no('journal');let last=0;s.journal=raw.journal.map(j=>{if(!j||!Number.isSafeInteger(j.seq)||j.seq<=last||!Number.isInteger(j.day)||j.day<1||j.day>100000||!finite(j.hour)||j.hour<0||j.hour>=24||typeof j.kind!=='string'||j.kind.length>40||typeof j.text!=='string'||j.text.length>350)no('event');last=j.seq;return{seq:j.seq,day:j.day,hour:j.hour,kind:j.kind,text:j.text};});if(!Number.isSafeInteger(raw.nextEvent)||raw.nextEvent<=last)no('event sequence');s.nextEvent=raw.nextEvent;if(raw.residents.length!==3||new Set(raw.residents.map(r=>r.id)).size!==3)no('roster');s.residents=PROFILES.map(p=>{let r=raw.residents.find(r=>r.id===p.id);if(!r||!walkable(r.x,r.z)||!finite(r.yaw)||!finite(r.progress)||r.progress<0||r.progress>1||!Number.isSafeInteger(r.conversations)||r.conversations<0)no('inhabitant');return{id:p.id,x:r.x,z:r.z,yaw:r.yaw,progress:r.progress,conversations:r.conversations};});if(raw.settings){s.settings.cameraViews=validateCameraViews(raw.settings.cameraViews);if(['adventure','follow','tactical','wide'].includes(raw.settings.cameraMode))s.settings.cameraMode=raw.settings.cameraMode;if(finite(raw.settings.cameraFov)&&raw.settings.cameraFov>=45&&raw.settings.cameraFov<=80)s.settings.cameraFov=raw.settings.cameraFov;for(let k of['reducedMotion','labels','timeFlow','cameraCutaway'])if(typeof raw.settings[k]==='boolean')s.settings[k]=raw.settings[k];if(['low','balanced','high'].includes(raw.settings.quality))s.settings.quality=raw.settings.quality;}s.settings.sound=false;s.score=X.validateScore(raw.score);s.retreat=X.validateHome(raw.retreat);HH.validateWorld(s);s.visitor=X.validateVisitor(raw.visitor);if(!Number.isSafeInteger(raw.scoreRevision)||raw.scoreRevision<0||raw.scoreRevision>1e8)no('score revision');s.scoreRevision=raw.scoreRevision;return s;}
+function fresh(){return{atlantisCampaign:AT.fresh(),heavenCampaign:HV.fresh(),hellCampaign:HC.fresh(),bridgeCommunity:BC.fresh(),homeHistory:HH.fresh(),localLife:LL.fresh(),earthExpedition:EE.fresh(),realmTrails:RT.fresh(),journeys:W.fresh(),adventure:A.fresh(),sandbox:S.fresh(),score:X.preset(),scoreRevision:0,retreat:X.freshHome(),visitor:X.freshVisitor(),version:VERSION,seed:2317,day:1,hour:17.2,weather:'clear',player:{x:2.5,z:6,yaw:0},visited:[],flowers:[],notes:[],journal:[],nextEvent:1,residents:PROFILES.map((p,i)=>{let l=LANDMARKS.find(x=>x.id===schedule(p.id,17.2));return{id:p.id,x:l.x+(i-1)*.5,z:l.z,yaw:0,progress:.05,conversations:0};}),settings:{quality:'balanced',cameraMode:'adventure',cameraFov:60,cameraViews:validateCameraViews(null),cameraCutaway:true,reducedMotion:false,labels:true,timeFlow:true,sound:false}};}
+function validate(raw){if(raw&&raw.version===2)raw={...clone(raw),version:3,score:X.preset(),scoreRevision:0,retreat:X.freshHome(),visitor:X.freshVisitor()};if(raw&&raw.version===3)raw={...clone(raw),version:4,sandbox:S.fresh()};if(raw&&raw.version===4)raw={...clone(raw),version:5,adventure:A.fresh()};if(raw&&raw.version===5)raw={...clone(raw),version:6};if(raw&&raw.version===6)raw={...clone(raw),version:7};if(raw&&raw.version===7)raw={...clone(raw),version:8};if(raw&&raw.version===8)raw={...clone(raw),version:9};function no(s){throw new Error('Invalid save: '+s);}if(!raw||typeof raw!=='object'||raw.version!==VERSION)no('unsupported version');let s=fresh();s.adventure=A.validate(raw.adventure);s.journeys=W.validate(raw.journeys);s.realmTrails=RT.validate(raw.realmTrails);s.atlantisCampaign=AT.validate(raw.atlantisCampaign);if(s.atlantisCampaign.accepted&&!AT.eligible(s))no('Atlantis campaign without claimed Bellglass chart');s.earthExpedition=EE.validate(raw.earthExpedition);s.localLife=LL.validate(raw.localLife);s.homeHistory=HH.validate(raw.homeHistory);s.bridgeCommunity=BC.validate(raw.bridgeCommunity);s.heavenCampaign=HV.validate(raw.heavenCampaign);if(s.heavenCampaign.accepted&&!HV.eligible(s))no('Heaven campaign without claimed Broken Choir');s.hellCampaign=HC.validate(raw.hellCampaign);if(s.hellCampaign.accepted&&!HC.eligible(s))no('Hell campaign without claimed rescue');if(s.bridgeCommunity.accepted&&!s.adventure.started)no('community work without initial kit');if(LL.definitions.some(d=>s.localLife.records[d.id].accepted&&!LL.eligible(s,d)))no('local work without its entry state');if(!s.adventure.started&&s.earthExpedition.story.accepted)no('expedition without initial kit');if(s.adventure.earthBinding.weapon&&!s.earthExpedition.story.claimed)no('binding without earned living road');if(!s.adventure.started&&Object.values(s.realmTrails.records).some(r=>r.accepted))no('trail without initial kit');if(s.adventure.realmCraft.weapon&&!Object.values(s.realmTrails.records).some(r=>r.claimed))no('realm fitting without earned trail');s.sandbox=S.validate(raw.sandbox);const outdoors={id:'outdoors',sandbox:s.sandbox};if(!Number.isSafeInteger(raw.day)||raw.day<1||raw.day>100000||!finite(raw.hour)||raw.hour<0||raw.hour>=24)no('clock');s.day=raw.day;s.hour=raw.hour;if(!['clear','rain'].includes(raw.weather))no('weather');s.weather=raw.weather;if(!raw.player||!walkable(raw.player.x,raw.player.z,outdoors)||!finite(raw.player.yaw))no('player position');s.player={x:raw.player.x,z:raw.player.z,yaw:raw.player.yaw};for(let k of['visited','flowers','notes','journal','residents'])if(!Array.isArray(raw[k]))no(k);if(raw.visited.length>LANDMARKS.length||raw.visited.some(id=>!LANDMARKS.some(l=>l.id===id)))no('places');s.visited=[...new Set(raw.visited)];if(raw.flowers.length>12)no('garden');s.flowers=raw.flowers.map(f=>{if(!f||!finite(f.x)||!finite(f.z)||Math.hypot(f.x+6,f.z-13)>5||!Number.isInteger(f.color)||f.color<0||f.color>3)no('flower');return{x:f.x,z:f.z,color:f.color};});if(raw.notes.length>20)no('notes');s.notes=raw.notes.map(n=>{if(!n||typeof n.text!=='string'||n.text.length>1200||!Number.isInteger(n.day)||n.day<1)no('note');return{text:n.text,day:n.day};});if(raw.journal.length>200)no('journal');let last=0;s.journal=raw.journal.map(j=>{if(!j||!Number.isSafeInteger(j.seq)||j.seq<=last||!Number.isInteger(j.day)||j.day<1||j.day>100000||!finite(j.hour)||j.hour<0||j.hour>=24||typeof j.kind!=='string'||j.kind.length>40||typeof j.text!=='string'||j.text.length>350)no('event');last=j.seq;return{seq:j.seq,day:j.day,hour:j.hour,kind:j.kind,text:j.text};});if(!Number.isSafeInteger(raw.nextEvent)||raw.nextEvent<=last)no('event sequence');s.nextEvent=raw.nextEvent;if(raw.residents.length!==3||new Set(raw.residents.map(r=>r.id)).size!==3)no('roster');s.residents=PROFILES.map(p=>{let r=raw.residents.find(r=>r.id===p.id);if(!r||!walkable(r.x,r.z)||!finite(r.yaw)||!finite(r.progress)||r.progress<0||r.progress>1||!Number.isSafeInteger(r.conversations)||r.conversations<0)no('inhabitant');return{id:p.id,x:r.x,z:r.z,yaw:r.yaw,progress:r.progress,conversations:r.conversations};});if(raw.settings){s.settings.cameraViews=validateCameraViews(raw.settings.cameraViews);if(['adventure','follow','tactical','wide'].includes(raw.settings.cameraMode))s.settings.cameraMode=raw.settings.cameraMode;if(finite(raw.settings.cameraFov)&&raw.settings.cameraFov>=45&&raw.settings.cameraFov<=80)s.settings.cameraFov=raw.settings.cameraFov;for(let k of['reducedMotion','labels','timeFlow','cameraCutaway'])if(typeof raw.settings[k]==='boolean')s.settings[k]=raw.settings[k];if(['low','balanced','high'].includes(raw.settings.quality))s.settings.quality=raw.settings.quality;}s.settings.sound=false;s.score=X.validateScore(raw.score);s.retreat=X.validateHome(raw.retreat);HH.validateWorld(s);s.visitor=X.validateVisitor(raw.visitor);if(!Number.isSafeInteger(raw.scoreRevision)||raw.scoreRevision<0||raw.scoreRevision>1e8)no('score revision');s.scoreRevision=raw.scoreRevision;return s;}
 function load(storage){try{let data=storage.getItem(KEY),legacy=false;if(!data){data=storage.getItem(LEGACY_KEY);legacy=!!data;}if(!data){data=storage.getItem('eternities.realm08.save.v7');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm07.save.v6');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm06.save.v5');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm05.save.v4');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm03.save.v3');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm02.save.v2');legacy=!!data;}if(!data)return{state:fresh(),status:'new'};return{state:validate(JSON.parse(data)),status:legacy?'migrated':'loaded'};}catch(e){return{state:fresh(),status:'unavailable-or-corrupt',preserveExisting:true,error:String(e.message)};}}
 class Simulation{
  constructor(state=fresh()){this.state=validate(state);this.room=null;this.returnPos=null;this.playerPath=[];this.runs=new Map();this.elapsed=0;this.paused=false;this.gathering=null;this.homeUndo=[];this.homeRedo=[];this.commands=new Map();for(let r of this.state.residents)this.runs.set(r.id,{goal:schedule(r.id,this.state.hour),path:[],walking:false,inside:false});}
@@ -6159,7 +6723,7 @@ class Simulation{
  tick(dt){if(!finite(dt)||dt<0||this.paused)return;dt=Math.min(dt,.1);if(W.handles(this.room))W.recover(this);if(this.room===N.ROOM)N.recover(this);if(this.room===E.ROOM)E.recover(this);this.elapsed+=dt;let s=this.state;S.tick(s.sandbox,dt);if(s.settings.timeFlow){s.hour+=dt*.0045;if(s.hour>=24){s.hour-=24;s.day=Math.min(100000,s.day+1);this.event('day','Another day begins in Firstlight Valley.');}}if(this.gathering){this.gathering.elapsed+=dt;if(this.gathering.elapsed>=180){this.event('gathering','The family’s visit to the stage ended. Ordinary routines resume.');this.gathering=null;}}if(s.adventure.hp<=0)this.playerPath=[];this.walking=this.worldDive?false:this.advance(s.player,this.playerPath,dt,3.2);A.tick(this,dt);RT.tick(this,dt);G.RealmCombat.tick(this);for(let r of s.residents){let run=this.runs.get(r.id),goal=this.gathering?'stage':schedule(r.id,s.hour),cue=!!this.gathering;if(run.goal!==goal||run.cue!==cue){run.goal=goal;run.cue=cue;run.inside=false;let l=LANDMARKS.find(x=>x.id===goal);let spot=cue?{x:[-2.3,2.3,0][PROFILES.findIndex(p=>p.id===r.id)],z:[-10.3,-10.3,-8.7][PROFILES.findIndex(p=>p.id===r.id)]}:l;run.path=pathfind(r,spot)||[];this.event('routine',PROFILES.find(p=>p.id===r.id).name+' is heading to '+l.short.toLowerCase()+'.');}run.walking=this.advance(r,run.path,dt,1.1);if(!run.path.length){run.inside=goal==='home';r.progress=Math.min(1,r.progress+dt*.00018);}}if(!this.room)for(let l of LANDMARKS)if(!s.visited.includes(l.id)&&Math.hypot(s.player.x-l.x,s.player.z-l.z)<2.8){s.visited.push(l.id);this.event('discovery','You found '+l.name+'.');}}
  setTime(h){if(!finite(h)||h<0||h>=24)return false;this.state.hour=h;return true;}
  enter(id){let l=LANDMARKS.find(l=>l.id===id);if(this.room||!l||l.kind!=='interior')return{ok:false,error:'That place has no accessible interior.'};if(Math.hypot(this.state.player.x-l.x,this.state.player.z-l.z)>3.4)return{ok:false,error:'Walk to the door first.'};this.returnPos={...this.state.player};this.room=id;this.state.player={x:0,z:3.5,yaw:Math.PI};this.playerPath=[];this.event('visit','You entered '+l.name+'.');return{ok:true};}
- leave(){if(!this.room)return{ok:false};delete this.heavenCampaignRuntime;delete this.cosmosTrip;delete this.earthTrip;delete this.worldTrip;delete this.worldDive;this.state.player={...this.returnPos};this.room=null;this.returnPos=null;this.playerPath=[];return{ok:true};}
+ leave(){if(!this.room)return{ok:false};delete this.atlantisCampaignRuntime;delete this.heavenCampaignRuntime;delete this.cosmosTrip;delete this.earthTrip;delete this.worldTrip;delete this.worldDive;this.state.player={...this.returnPos};this.room=null;this.returnPos=null;this.playerPath=[];return{ok:true};}
  act(id,type,payload={}){let fp=JSON.stringify({type,payload});if(this.commands.has(id)){let c=this.commands.get(id);return c.fp===fp?{...c.result,duplicate:true}:{ok:false,error:'Command identity was reused with different content.'};}let result;switch(type){case'set-score':{try{if(payload.expectedRevision!==this.state.scoreRevision)throw Error('The score changed. Reopen the editor before applying this revision.');let score=X.validateScore(payload.score);if(this.state.scoreRevision>=1e8)throw Error('Score revision limit reached.');this.state.score=score;this.state.scoreRevision++;result={ok:true,revision:this.state.scoreRevision};}catch(e){result={ok:false,error:e.message};}break;}
 case'appearance':{try{this.state.visitor=X.validateVisitor(payload.visitor);result={ok:true,text:'Your visitor appearance is kept in this world.'};}catch(e){result={ok:false,error:e.message};}break;}
 case'decorate':{try{if(payload.expectedRevision!==this.state.retreat.revision)throw Error('This layout changed. Refresh it first.');let h=HH.validateLayout(X.validateHome(payload.home),this.state.homeHistory);h.revision=this.state.retreat.revision+1;if(h.revision>1e8)throw Error('Layout revision limit reached.');if(this.room==='retreat'&&!walkable(this.state.player.x,this.state.player.z,{id:'retreat',layout:h}))throw Error('Move away from that spot before placing furniture there.');this.homeUndo.push(clone(this.state.retreat));if(this.homeUndo.length>24)this.homeUndo.shift();this.homeRedo=[];this.state.retreat=h;this.playerPath=[];result={ok:true,text:'Your retreat has changed.',revision:h.revision};}catch(e){result={ok:false,error:e.message};}break;}
@@ -7048,7 +7612,7 @@ class WorldArt{
  if(G.RealmAdventureArt)G.RealmAdventureArt.draw(out,sim,t);
  if(G.RealmStarterArt)G.RealmStarterArt.draw(out,sim,t);
  if(G.RealmCosmosArt)G.RealmCosmosArt.draw(out,sim,t,this);
- if(G.RealmWorldFoundationsArt)G.RealmWorldFoundationsArt.draw(out,sim,t,this);if(G.RealmTrailsArt)G.RealmTrailsArt.draw(out,sim,t,this);if(G.RealmLocalLifeArt)G.RealmLocalLifeArt.draw(out,sim);if(G.RealmBridgeCommunityArt)G.RealmBridgeCommunityArt.draw(out,sim);if(G.RealmHellCampaignArt)G.RealmHellCampaignArt.draw(out,sim,t);if(G.RealmHeavenCampaignArt){G.RealmHeavenCampaignArt.draw(out,sim,t);G.RealmHeavenCampaignArt.drawEscort(out,sim,G.RealmHeavenCampaign.runtime(sim).escort,t);}
+ if(G.RealmWorldFoundationsArt)G.RealmWorldFoundationsArt.draw(out,sim,t,this);if(G.RealmTrailsArt)G.RealmTrailsArt.draw(out,sim,t,this);if(G.RealmLocalLifeArt)G.RealmLocalLifeArt.draw(out,sim);if(G.RealmBridgeCommunityArt)G.RealmBridgeCommunityArt.draw(out,sim);if(G.RealmAtlantisCampaignArt)G.RealmAtlantisCampaignArt.draw(out,sim,t);if(G.RealmHellCampaignArt)G.RealmHellCampaignArt.draw(out,sim,t);if(G.RealmHeavenCampaignArt){G.RealmHeavenCampaignArt.draw(out,sim,t);G.RealmHeavenCampaignArt.drawEscort(out,sim,G.RealmHeavenCampaign.runtime(sim).escort,t);}
  if(G.RealmEarthArt)G.RealmEarthArt.draw(out,sim,t,this);if(G.RealmEarthNotesArt)G.RealmEarthNotesArt.draw(out,sim);
  if(G.RealmArsenalArt)G.RealmArsenalArt.draw(out,sim,t);
  if(this.room==='mine')this.e.torch=[p.x,2.6,p.z];
@@ -7656,6 +8220,7 @@ function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.
     const divisor=e.hitFrom?Math.hypot(e.x-e.hitFrom.x,e.z-e.hitFrom.z)||1:1;
     G.RealmEarthExpeditionBeastArt.draw(out,{x:e.x+(e.hitFrom?(e.x-e.hitFrom.x)/divisor*recoil:0),z:e.z+(e.hitFrom?(e.z-e.hitFrom.z)/divisor*recoil:0),base:support(sim,e.x,e.z),yaw:e.yaw,mode:e.mode,timer:e.timer,windup:e.windup,recovery:e.recovery,aim:e.aim,flash,reducedMotion,time:s.elapsed,paused:sim.paused,phase:motion.phase,blend:motion.blend,contactAge:s.elapsed-(e.contactAt??-9)});
    }
+   else if(e.atlantisCampaign){G.RealmAtlantisCampaignArt.drawEnemy(out,sim,e,t);}
    else if(e.hellCampaign){G.RealmHellCampaignArt.drawEnemy(out,sim,e,t);}
    else if(e.heavenCampaign){G.RealmHeavenCampaignArt.drawEnemy(out,sim,e,t);}
    else if(e.kind==='skitter'){
@@ -7670,7 +8235,7 @@ function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.
    else if(e.kind==='charger'){add('round',e.x,2.55,e.z,2.2,1.8,2.8,body);add('octa',e.x,2.8,e.z+1.15,1.3,1.1,1.2,0xb6a480);for(const sign of[-1,1]){add('round',e.x+sign*.9,3.2,e.z+.9,.55,.83,.78,0xd8c8a0);box(e.x+sign*.65,1.95,e.z+.65,.32,1,.37,0x68634e);box(e.x+sign*.65,1.95,e.z-.85,.32,1,.37,0x68634e);add('round',e.x+sign*.30,3.03,e.z+1.67,.10,.10,.08,0xf5c188,{em:1});}for(let i=0;i<5;i++)add('octa',e.x,3.1,e.z-.9+i*.35,.42,.7,.42,0xc79874,{em:.22});}
    else{add('round',e.x,2.75,e.z,1.85,1.7,2.7,body);add('octa',e.x,3.48,e.z+1.05,.91,1.4,.85,body);for(const dx of[-.64,.64])for(const dz of[-.72,.75])box(e.x+dx,2,e.z+dz,.26,1.3,.3,0x55796e,{r:[Math.sin(t*2+dx+dz)*.08,0,0]});for(const sign of[-1,1]){box(e.x+sign*.48,4.35,e.z+.98,.15,1.7,.15,0xccbf96,{r:[0,0,-sign*.40]});for(let j=0;j<3;j++)box(e.x+sign*(.56+j*.18),4.12+j*.43,e.z+1,.56,.11,.12,0xe0cda1,{r:[0,0,sign*.2]});}for(let i=0;i<5;i++)add('octa',e.x+Math.sin(i*2.1)*.6,3.25,e.z-.8+i*.35,.36,.75,.36,e.hp<e.maxHP/2?0xc392bc:0xabc5bb,{em:.45});for(const dx of[-.26,.26])add('round',e.x+dx,3.6,e.z+1.48,.13,.13,.13,0xf2dab0,{em:1});}
    // Confirmed-hit recoil and the named beast silhouette affect art only.
-   if(e.kind!=='skitter'&&!rootBank&&!e.hellCampaign&&!e.heavenCampaign){
+   if(e.kind!=='skitter'&&!rootBank&&!e.atlantisCampaign&&!e.hellCampaign&&!e.heavenCampaign){
    const named=e.custom==='river-bristle',scale=named?1.32:1,recoil=sim.state.settings.reducedMotion?0:Math.max(0,1-(s.elapsed-(e.hitAt??-9))/.18)*.12,rd=e.hitFrom?Math.hypot(e.x-e.hitFrom.x,e.z-e.hitFrom.z)||1:1;
    if(named)for(let i=0;i<5;i++)add('octa',e.x,2.52,e.z-.45+i*.19,.18,.40,.2,0xcbb47e);
    for(const[k,items]of Object.entries(out))for(let j=starts[k];j<items.length;j++){const item=items[j];item.p[0]=e.x+(item.p[0]-e.x)*scale;item.p[1]=1.58+(item.p[1]-1.58)*scale;item.p[2]=e.z+(item.p[2]-e.z)*scale;item.s=item.s.map(v=>v*scale);}
@@ -8111,9 +8676,9 @@ function trailLegend(sim){
   return'<li data-trail-route="'+esc(p.id||'escort-person')+'"><strong>'+p.mark+'</strong> · '+esc(p.name)+(p.optional?' · optional':'')+route+'</li>';
  }).join('')+'</ul></section>';
 }
-function civicPoints(sim){return [...(G.RealmHeavenCampaignUI?.routePoints(sim)||[]),...(G.RealmHellCampaignUI?.routePoints(sim)||[]),...(G.RealmLocalLifeUI?.routePoints(sim)||[]),...(G.RealmBridgeCommunityUI?.routePoints(sim)||[])];}
+function civicPoints(sim){return [...(G.RealmAtlantisCampaignUI?.routePoints(sim)||[]),...(G.RealmHeavenCampaignUI?.routePoints(sim)||[]),...(G.RealmHellCampaignUI?.routePoints(sim)||[]),...(G.RealmLocalLifeUI?.routePoints(sim)||[]),...(G.RealmBridgeCommunityUI?.routePoints(sim)||[])];}
 function civicLegend(sim){
- const campaign=(G.RealmHellCampaignUI?.legend(sim)||'')+(G.RealmHeavenCampaignUI?.legend(sim)||'');const points=civicPoints(sim).filter(p=>!p.community&&!p.hellCampaign&&!p.heavenCampaign);if(!points.length)return campaign+(G.RealmBridgeCommunityUI?.legend(sim)||'');
+ const campaign=(G.RealmAtlantisCampaignUI?.legend(sim)||'')+(G.RealmHellCampaignUI?.legend(sim)||'')+(G.RealmHeavenCampaignUI?.legend(sim)||'');const points=civicPoints(sim).filter(p=>!p.community&&!p.hellCampaign&&!p.atlantisCampaign&&!p.heavenCampaign);if(!points.length)return campaign+(G.RealmBridgeCommunityUI?.legend(sim)||'');
  return '<section class="trail-map-key local-life-map-key"><h3>Local life · available physical work</h3><p>Blue L labels belong to your separate accepted local commission. Walking records nothing.</p><ul>'+points.map(p=>'<li data-local-route="'+esc(p.id)+'"><strong>'+p.mark+'</strong> · '+esc(p.name)+(p.medium==='water'||p.medium==='court'?'<p>Use Tide Steps and F / G. Required foot height '+p.y.toFixed(2)+' m; body must be '+(p.medium==='water'?'in water':'inside the air court')+'.</p>':sim.worldDive?'<p>Use the east water lane to the far dry gallery landing and press E to exit before walking.</p>':'<button data-rpg="civic-walk" data-id="'+esc(p.id)+'">Walk near this work</button>')+'</li>').join('')+'</ul><button data-rpg="civic-open" data-id="'+esc(G.RealmWorldFoundations.definition(sim.room).id)+'">Read the selected arrangement and exact payment</button></section>'+(G.RealmBridgeCommunityUI?.legend(sim)||'')+campaign;
 }
 function surfaceRoutes(d){return(d.routes||[]).map(r=>({id:r.id,points:r.points.map(p=>({x:p[0],z:p[1]}))}));}
@@ -8132,7 +8697,7 @@ class WorldUI{
  current(){return W.definition(this.sim.room);}
  local(){return W.handles(this.sim.room)||this.sim.room===G.RealmCosmos.ROOM&&(this.sim.worldTrip?.realm==='cosmos'||!!this.sim.state.journeys.realms.cosmos.active||Object.entries(this.sim.state.realmTrails.records).some(([id,r])=>G.RealmTrails.definition(id)?.realm==='cosmos'&&r.accepted&&!r.claimed)||Object.entries(this.sim.state.localLife.records).some(([id,r])=>G.RealmLocalLife.definition(id)?.realm==='cosmos'&&r.accepted));}
  point(){const d=this.current();if(!d)return null;return d.points.filter(p=>W.near(this.sim,p,p.kind==='return'?2.7:2.8)).sort((a,b)=>Math.hypot(a.x-this.sim.state.player.x,a.z-this.sim.state.player.z)-Math.hypot(b.x-this.sim.state.player.x,b.z-this.sim.state.player.z))[0]||null;}
- context(){const heaven=this.rpg.heavenCampaign?.context();if(heaven)return heaven;const campaign=this.rpg.hellCampaign?.context();if(campaign)return campaign;const community=this.rpg.community?.context();if(community)return community;const civic=this.rpg.civic?.context();if(civic)return civic;const expedition=this.rpg.expedition?.context();if(expedition)return expedition;const trail=this.rpg.trails?.context();if(trail)return trail;if(this.sim.worldDive)return W.near(this.sim,this.current()?.points.find(p=>p.id===this.current()?.dive?.exitId),3.5)?'E · Dry gallery landing':this.rpg.api.worldDiveStatus()?.dryCourt?'WASD · air courtyard · doorway leads back to the water':'F / G · change depth · E at the gallery landing';if(this.local()){const p=this.point();return p?'E · '+p.name:'M · local routes and work';}return !this.sim.room&&W.near(this.sim,W.GATE)?'E · Roads of Light':null;}
+ context(){const atlantis=this.rpg.atlantisCampaign?.context();if(atlantis)return atlantis;const heaven=this.rpg.heavenCampaign?.context();if(heaven)return heaven;const campaign=this.rpg.hellCampaign?.context();if(campaign)return campaign;const community=this.rpg.community?.context();if(community)return community;const civic=this.rpg.civic?.context();if(civic)return civic;const expedition=this.rpg.expedition?.context();if(expedition)return expedition;const trail=this.rpg.trails?.context();if(trail)return trail;if(this.sim.worldDive)return W.near(this.sim,this.current()?.points.find(p=>p.id===this.current()?.dive?.exitId),3.5)?'E · Dry gallery landing':this.rpg.api.worldDiveStatus()?.dryCourt?'WASD · air courtyard · doorway leads back to the water':'F / G · change depth · E at the gallery landing';if(this.local()){const p=this.point();return p?'E · '+p.name:'M · local routes and work';}return !this.sim.room&&W.near(this.sim,W.GATE)?'E · Roads of Light':null;}
  interact(){if(this.sim.worldDive){const r=this.rpg.api.worldDiveExit();this.rpg.api.toast(r.text||r.error);return true;}if(!this.context())return false;const p=this.point();if(p?.kind==='return'){this.returnHome();return true;}this.selected=this.current()?.id||null;this.reading=p?.id||null;this.rpg.open('worlds');return true;}
  returnHome(){const r=this.rpg.api.worldReturn();if(r.ok){this.rpg.close();this.reset();}else this.rpg.api.toast(r.error);}
  action(el){const a=el.dataset.rpg,id=el.dataset.id;if(typeof a!=='string'||!a.startsWith('world-'))return false;
@@ -8166,7 +8731,7 @@ class WorldUI{
   if(!d)return{title:'The Roads of Light',html:this.invitation()+'<div class="world-cards">'+W.definitions().map(d=>'<article><small>'+esc(d.kicker)+'</small><h2>'+esc(d.name)+'</h2><p>'+esc(d.description)+'</p>'+(this.rpg.trails?.status(d.id)||'')+button('Read this opening','world-select',d.id)+'</article>').join('')+'</div><p class="world-note">Travel from the five-light marker east of Firstlight’s workshop, or a local Road of Light return marker. Entering is optional; each realm has a free return. Your home, gear, story choices and stored XP remain yours.</p>'+(!this.sim.room||this.local()?button(current?'Walk to this realm’s Road of Light marker':'Walk to the Roads of Light marker','world-road'):'<p>Return to Firstlight to reach the five-light marker.</p>')};
   const here=this.sim.room===d.room,p=d.points.find(p=>p.id===this.reading);let html='<article class="world-reading"><small>'+esc(d.kicker)+'</small><h2>'+esc(d.name)+'</h2><p class="world-quote">'+esc(d.description)+'</p>';
   if(p){const record=this.sim.state.journeys.realms[d.id],recognized=here&&p.id===d.quest.giverId&&record.firstClaimed&&!record.active;html+='<section><h3>'+esc(p.name)+'</h3><p class="world-dialogue">'+esc(recognized?d.quest.completionText:p.text)+'</p></section>';}
-  if(d.id==='heaven')html+=this.rpg.heavenCampaign?.invitation()||'';if(d.id==='hell')html+=this.rpg.hellCampaign?.invitation()||'';
+  if(d.id==='atlantis')html+=this.rpg.atlantisCampaign?.invitation()||'';if(d.id==='heaven')html+=this.rpg.heavenCampaign?.invitation()||'';if(d.id==='hell')html+=this.rpg.hellCampaign?.invitation()||'';
   if(here&&!diving&&d.id==='earthlands'&&p&&W.near(this.sim,p)){
    const speech=G.RealmEarthExpeditionDialogue?.reading(p.id,this.sim.state.earthExpedition,this.sim.state.adventure.earthBinding);
    if(speech)html+='<section class="expedition-dialogue"><small>'+esc(speech.speaker)+'</small><h3>'+esc(speech.title)+'</h3>'+speech.lines.map(line=>'<p>'+esc(line)+'</p>').join('')+'<p>'+esc(speech.hint)+'</p></section>';
@@ -8179,7 +8744,7 @@ class WorldUI{
  }
  tick(){const d=this.current(),inside=this.local(),diving=!!this.sim.worldDive;$('#world-home').hidden=!inside&&!this.sim.worldTrip;$('#world-depth').hidden=!diving;document.body.classList.toggle('in-world-foundation',inside);document.body.classList.toggle('in-world-dive',diving);if(diving){const s=this.rpg.api.worldDiveStatus();$('#world-depth').textContent=s.dryCourt?'BELLGLASS AIR COURT · breathable dry ground · doorway returns to water':'VISITOR GALLERY · '+s.depth.toFixed(1)+' m below surface · F ascend / G descend · depth holds';}
   if(d&&(inside||d.id==='cosmos'&&this.sim.state.journeys.realms.cosmos.active)){const r=this.sim.state.journeys.realms[d.id],a=r.active,next=d.quest.objectives.find(o=>!a?.observed.includes(o.id));$('#tracked-chapter').textContent=r.firstClaimed?'LOCAL OUTING COMPLETE':'OPTIONAL LOCAL WORK';$('#tracked-title').textContent=a?d.quest.title:d.name;$('#tracked-detail').textContent=a?(next?.text||'Return to '+d.points.find(p=>p.id===d.quest.giverId)?.name):r.firstClaimed?'A new survey is available from '+d.points.find(p=>p.id===d.quest.giverId)?.name:'Speak to '+d.points.find(p=>p.id===d.quest.giverId)?.name;$('#tracked-progress').textContent=a?a.observed.length+'/3 recorded · M routes · free return':this.sim.state.adventure.started?'J · Roads · inspect the work and reward':'J · Roads · collect the initial kit before accepting';}
-  const root=$('#world-labels');root.replaceChildren();if(this.rpg.dialog.open||!this.sim.state.settings.labels||diving)return;const civicPoints=(this.rpg.quest==='community'?G.RealmBridgeCommunityUI.routePoints(this.sim):this.rpg.quest==='local-life'?G.RealmLocalLifeUI.routePoints(this.sim):[]).filter(p=>p.medium==='dry');const trail=this.rpg.trails?.local(),record=trail&&this.sim.state.realmTrails.records[trail.id],trailPoints=record?.accepted&&!record.claimed?trail.steps.filter(s=>!record.steps.includes(s.id)&&s.medium==='dry'&&s.requires.every(id=>record.steps.includes(id))).map(s=>({...s,name:s.name})):[];const points=inside?[...(this.rpg.quest==='heaven-campaign'?G.RealmHeavenCampaignUI.routePoints(this.sim):[]),...(this.rpg.quest==='hell-campaign'?G.RealmHellCampaignUI.routePoints(this.sim):[]),...expeditionPoints(this.sim),...civicPoints,...trailPoints,...d.points]:!this.sim.room?[{...W.GATE,name:'Roads of Light · five realm openings'}]:[],player=this.sim.state.player,shown=[];
+  const root=$('#world-labels');root.replaceChildren();if(this.rpg.dialog.open||!this.sim.state.settings.labels||diving)return;const civicPoints=(this.rpg.quest==='community'?G.RealmBridgeCommunityUI.routePoints(this.sim):this.rpg.quest==='local-life'?G.RealmLocalLifeUI.routePoints(this.sim):[]).filter(p=>p.medium==='dry');const trail=this.rpg.trails?.local(),record=trail&&this.sim.state.realmTrails.records[trail.id],trailPoints=record?.accepted&&!record.claimed?trail.steps.filter(s=>!record.steps.includes(s.id)&&s.medium==='dry'&&s.requires.every(id=>record.steps.includes(id))).map(s=>({...s,name:s.name})):[];const points=inside?[...(this.rpg.quest==='atlantis-campaign'?G.RealmAtlantisCampaignUI.routePoints(this.sim):[]),...(this.rpg.quest==='heaven-campaign'?G.RealmHeavenCampaignUI.routePoints(this.sim):[]),...(this.rpg.quest==='hell-campaign'?G.RealmHellCampaignUI.routePoints(this.sim):[]),...expeditionPoints(this.sim),...civicPoints,...trailPoints,...d.points]:!this.sim.room?[{...W.GATE,name:'Roads of Light · five realm openings'}]:[],player=this.sim.state.player,shown=[];
   for(const p of points.map(p=>({...p,dist:Math.hypot(p.x-player.x,p.z-player.z)})).sort((a,b)=>a.dist-b.dist)){if(p.dist>29||p.dist<2.5||shown.length>=3)continue;const q=this.rpg.api.project(p.x,(inside?W.height(d.room,p.x,p.z):1.3)+2.2,p.z);if(!q?.visible||shown.some(v=>Math.abs(v.x-q.x)<190&&Math.abs(v.y-q.y)<35))continue;const e=document.createElement('span');e.textContent=p.name;e.style.left=q.x+'px';e.style.top=q.y+'px';root.append(e);shown.push(q);}
  }
 }
@@ -8357,7 +8922,7 @@ class RPGUI{
     ${button(icon('hammer')+'<span>Crafting</span><kbd>K</kbd>','open','craft')}
     ${button(icon('grid')+'<span>More</span>','open','more')}
    </nav>
-   <section id="quest-tracker" aria-label="Tracked quest"><div class="tracker-switch">${button('Story','track','story')}${button('Homestead','track','homestead')}${button('Living road','track','expedition',false,'hidden')}${button('Local life','track','local-life',false,'hidden')}${button('Community','track','community',false,'hidden')}${button('Hell campaign','track','hell-campaign',false,'hidden')}${button('Heaven campaign','track','heaven-campaign',false,'hidden')}</div><button id="tracked-open"><small id="tracked-chapter"></small><strong id="tracked-title"></strong><span id="tracked-detail"></span><i id="tracked-progress"></i></button></section>
+   <section id="quest-tracker" aria-label="Tracked quest"><div class="tracker-switch">${button('Story','track','story')}${button('Homestead','track','homestead')}${button('Living road','track','expedition',false,'hidden')}${button('Local life','track','local-life',false,'hidden')}${button('Community','track','community',false,'hidden')}${button('Hell campaign','track','hell-campaign',false,'hidden')}${button('Heaven campaign','track','heaven-campaign',false,'hidden')}${button('Atlantis campaign','track','atlantis-campaign',false,'hidden')}</div><button id="tracked-open"><small id="tracked-chapter"></small><strong id="tracked-title"></strong><span id="tracked-detail"></span><i id="tracked-progress"></i></button></section>
    <section id="target-frame" hidden aria-label="Selected enemy"><div id="target-icon">${icon('shield')}</div><div><small id="target-rank"></small><strong id="target-name"></strong><div class="target-health"><i id="target-health-fill"></i></div><span id="target-state"></span><div id="target-cue" hidden aria-label="Selected foe action"><b id="target-cue-title"></b><span id="target-cue-detail"></span></div><button id="target-framing" title="Third person: face a selected foe within 12 metres. Drag still orbits freely.">Frame foe</button></div><button id="target-clear" aria-label="Clear target">×</button></section>
    <section id="beacon-tracker" hidden aria-label="Beacon defense"><small>CHAPTER III · THE BEACON ANSWERS</small><strong id="beacon-phase"></strong><div class="ward-meter"><i id="ward-fill"></i></div><span id="beacon-status"></span><button id="beacon-menu">Approach & speak · E</button></section>
    <div class="camera-presets" aria-label="Camera styles: V switches, R resets the current view">${button('3rd person','camera','adventure')}${button('Diorama','camera','follow')}${button('Tactical','camera','tactical')}${button('Wide','camera','wide')}</div>
@@ -8376,21 +8941,21 @@ class RPGUI{
   $('#rpg-close').onclick=()=>this.close();d.addEventListener('cancel',e=>{e.preventDefault();this.close();});
   const click=e=>{const b=e.target.closest('[data-rpg],[data-realm-art]');if(b)this.action(b);};d.addEventListener('click',click);hud.addEventListener('click',click);
   d.addEventListener('input',e=>{if(e.target.id==='bag-search'){this.search=e.target.value;this.paintBag();}});
-  $('#tracked-open').onclick=()=>this.open(this.quest==='heaven-campaign'?'heaven-campaign':this.quest==='hell-campaign'?'hell-campaign':this.quest==='community'?'community':this.quest==='local-life'?'local-life':this.quest==='expedition'?'expedition':this.worlds.local()?'worlds':this.earth.notes.active()&&[null,G.RealmEarth.ROOM,'observatory'].includes(this.sim.room)?'earth-notes':this.sim.room===G.RealmEarth.ROOM&&this.state.earthStory.accepted?'earth-story':this.quest==='project'?'pursuit':'journal');$('#beacon-menu').onclick=()=>{if(B.runtime(this.sim).phase==='assault')this.run('beacon-repair');else this.open('beacon');};$('#target-framing').onclick=()=>{const r=this.api.frameFoe();if(!r.ok)this.api.toast(r.error);};$('#target-clear').onclick=()=>this.run('target-clear');$('#health-orb').onclick=()=>this.open('equipment');
+  $('#tracked-open').onclick=()=>this.open(this.quest==='atlantis-campaign'?'atlantis-campaign':this.quest==='heaven-campaign'?'heaven-campaign':this.quest==='hell-campaign'?'hell-campaign':this.quest==='community'?'community':this.quest==='local-life'?'local-life':this.quest==='expedition'?'expedition':this.worlds.local()?'worlds':this.earth.notes.active()&&[null,G.RealmEarth.ROOM,'observatory'].includes(this.sim.room)?'earth-notes':this.sim.room===G.RealmEarth.ROOM&&this.state.earthStory.accepted?'earth-story':this.quest==='project'?'pursuit':'journal');$('#beacon-menu').onclick=()=>{if(B.runtime(this.sim).phase==='assault')this.run('beacon-repair');else this.open('beacon');};$('#target-framing').onclick=()=>{const r=this.api.frameFoe();if(!r.ok)this.api.toast(r.error);};$('#target-clear').onclick=()=>this.run('target-clear');$('#health-orb').onclick=()=>this.open('equipment');
   for(const el of hud.querySelectorAll('[data-skill]'))el.onclick=()=>this.skill(el.dataset.skill);
-  this.crossing=new G.RealmCrossingUI.CrossingUI(this);this.starter=new G.RealmStarterUI.StarterUI(this);this.pursuit=new G.RealmPursuitUI.PursuitUI(this);this.characters=new G.RealmCharactersUI.CharactersUI(this);this.classes=new G.RealmClassesUI.ClassesUI(this);this.cosmos=new G.RealmCosmosUI.CosmosUI(this);this.realmAtlas=new G.RealmVisualAtlas(this);this.gathering=new G.RealmGatheringUI.GatheringUI(this);this.earth=new G.RealmEarthUI.EarthUI(this);this.worlds=new G.RealmWorldFoundationsUI.WorldUI(this);this.trails=new G.RealmTrailsUI.TrailsUI(this);this.hellCampaign=new G.RealmHellCampaignUI.HellCampaignUI(this);this.heavenCampaign=new G.RealmHeavenCampaignUI.HeavenCampaignUI(this);this.community=new G.RealmBridgeCommunityUI.BridgeCommunityUI(this);this.civic=new G.RealmLocalLifeUI.LocalLifeUI(this);this.expedition=new G.RealmEarthExpeditionUI.ExpeditionUI(this);if(this.state.starter.accepted&&!this.state.starter.reward)this.quest='starter';if(this.sim.state.earthExpedition.story.accepted&&!this.sim.state.earthExpedition.story.claimed||this.sim.state.earthExpedition.patrol.active)this.quest='expedition';
+  this.crossing=new G.RealmCrossingUI.CrossingUI(this);this.starter=new G.RealmStarterUI.StarterUI(this);this.pursuit=new G.RealmPursuitUI.PursuitUI(this);this.characters=new G.RealmCharactersUI.CharactersUI(this);this.classes=new G.RealmClassesUI.ClassesUI(this);this.cosmos=new G.RealmCosmosUI.CosmosUI(this);this.realmAtlas=new G.RealmVisualAtlas(this);this.gathering=new G.RealmGatheringUI.GatheringUI(this);this.earth=new G.RealmEarthUI.EarthUI(this);this.worlds=new G.RealmWorldFoundationsUI.WorldUI(this);this.trails=new G.RealmTrailsUI.TrailsUI(this);this.hellCampaign=new G.RealmHellCampaignUI.HellCampaignUI(this);this.heavenCampaign=new G.RealmHeavenCampaignUI.HeavenCampaignUI(this);this.atlantisCampaign=new G.RealmAtlantisCampaignUI.AtlantisCampaignUI(this);this.community=new G.RealmBridgeCommunityUI.BridgeCommunityUI(this);this.civic=new G.RealmLocalLifeUI.LocalLifeUI(this);this.expedition=new G.RealmEarthExpeditionUI.ExpeditionUI(this);if(this.state.starter.accepted&&!this.state.starter.reward)this.quest='starter';if(this.sim.state.earthExpedition.story.accepted&&!this.sim.state.earthExpedition.story.claimed||this.sim.state.earthExpedition.patrol.active)this.quest='expedition';
  }
  get sim(){return this.api.sim();} get state(){return this.sim.state.adventure;}
  run(t,p={},quiet=false){const paused=this.sim.paused;try{if(this.dialog.open)this.sim.paused=false;const r=this.api.adventure().run(t,p,quiet);if(r.ok&&this.dialog.open)this.paint();return r;}finally{this.sim.paused=paused;}}
  open(tab='equipment'){
-  if(tab!=='heaven-campaign')this.heavenCampaign?.reset();if(tab!=='hell-campaign')this.hellCampaign?.reset();if(tab!=='expedition')this.expedition?.reset();if(tab!=='worlds')this.worlds?.reset();if(tab!=='gathering')this.gathering?.reset();if(tab!=='cosmos')this.cosmos?.reset();if(tab!=='earth')this.earth?.reset();
+  if(tab!=='atlantis-campaign')this.atlantisCampaign?.reset();if(tab!=='heaven-campaign')this.heavenCampaign?.reset();if(tab!=='hell-campaign')this.hellCampaign?.reset();if(tab!=='expedition')this.expedition?.reset();if(tab!=='worlds')this.worlds?.reset();if(tab!=='gathering')this.gathering?.reset();if(tab!=='cosmos')this.cosmos?.reset();if(tab!=='earth')this.earth?.reset();
   if(!this.dialog.open){this.api.closePanel();this.api.endBuild();this.api.clearKeys();this.api.adventure().stopAuto();if(document.querySelector('#studio-dialog[open]'))document.querySelector('#studio-close').click();T.stop(this.sim);this.wasPaused=this.sim.paused;this.sim.paused=true;this.dialog.showModal();}
   this.tab=tab;this.paint();$('#rpg-content').scrollTop=0;$('#rpg-close').focus();
  }
- close(){this.heavenCampaign?.reset();this.hellCampaign?.reset();this.expedition?.reset();this.worlds?.reset();this.gathering?.reset();this.cosmos?.reset();this.earth?.reset();if(!this.dialog.open)return;this.dialog.close();this.sim.paused=this.wasPaused;this.api.clearKeys();this.api.focusWorld();}
+ close(){this.atlantisCampaign?.reset();this.heavenCampaign?.reset();this.hellCampaign?.reset();this.expedition?.reset();this.worlds?.reset();this.gathering?.reset();this.cosmos?.reset();this.earth?.reset();if(!this.dialog.open)return;this.dialog.close();this.sim.paused=this.wasPaused;this.api.clearKeys();this.api.focusWorld();}
  cameraPaint(mode){for(const el of document.querySelectorAll('[data-rpg="camera"]'))el.setAttribute('aria-pressed',String(el.dataset.id===mode));}
  reset(){this.realmAtlas?.reset();this.gathering?.reset();if(this.dialog.open)this.close();this.item=null;this.seenPhase='';this.filter='all';this.search='';this.recipe='trail_bow';this.craftFilter='weapons';this.avatarDrag=null;this.lastPreview=-1;this.pursuit.selected=null;this.starter.temper=null;this.starter.destination=null;this.starter.lastSound=0;this.starter.lastSoundScene=null;this.crossing.destination=null;this.crossing.uiRoom=null;this.characters.reset();this.classes.reset();this.earth?.notes.reset();this.earth?.reset();}
- action(el){if(this.heavenCampaign.action(el))return;if(this.hellCampaign.action(el))return;if(this.community.action(el))return;if(this.civic.action(el))return;if(this.expedition.action(el))return;if(this.trails.action(el))return;if(this.worlds.action(el))return;if(this.realmAtlas.action(el))return;if(this.gathering.action(el))return;if(this.earth.action(el))return;if(this.cosmos.action(el))return;if(this.classes.action(el))return;if(this.characters.action(el))return;if(this.starter.action(el))return;if(this.crossing.action(el))return;if(this.pursuit.action(el))return;const act=el.dataset.rpg,id=el.dataset.id,a=this.state;
+ action(el){if(this.atlantisCampaign.action(el))return;if(this.heavenCampaign.action(el))return;if(this.hellCampaign.action(el))return;if(this.community.action(el))return;if(this.civic.action(el))return;if(this.expedition.action(el))return;if(this.trails.action(el))return;if(this.worlds.action(el))return;if(this.realmAtlas.action(el))return;if(this.gathering.action(el))return;if(this.earth.action(el))return;if(this.cosmos.action(el))return;if(this.classes.action(el))return;if(this.characters.action(el))return;if(this.starter.action(el))return;if(this.crossing.action(el))return;if(this.pursuit.action(el))return;const act=el.dataset.rpg,id=el.dataset.id,a=this.state;
   if(act==='open'){this.open(id);return;}
   if(act==='track'){this.quest=id;if(this.dialog.open)this.paint();this.tick();return;}
   if(act==='camera'){this.api.camera(id);return;}
@@ -8459,7 +9024,7 @@ class RPGUI{
  }
  intercept(name){const map={armory:'craft',craft:'craft',pack:'bag',adventure:'journal',journey:'journal'};if(map[name]){if(name==='journey')this.quest='homestead';this.open(map[name]);return true;}return false;}
  interact(){
-  if(this.heavenCampaign.interact())return true;if(this.hellCampaign.interact())return true;if(this.community.interact())return true;if(this.civic.interact())return true;if(this.expedition.interact())return true;if(this.trails.interact())return true;if(this.worlds.interact())return true;
+  if(this.atlantisCampaign.interact())return true;if(this.heavenCampaign.interact())return true;if(this.hellCampaign.interact())return true;if(this.community.interact())return true;if(this.civic.interact())return true;if(this.expedition.interact())return true;if(this.trails.interact())return true;if(this.worlds.interact())return true;
   if(this.gathering.interact())return true;
   if(this.earth.interact())return true;
   if(this.cosmos.interact())return true;
@@ -8474,7 +9039,7 @@ class RPGUI{
  }
  paint(){
   const realmPage=this.realmAtlas.page(this.tab);
-  const extra=this.heavenCampaign.page(this.tab)||this.hellCampaign.page(this.tab)||this.community.page(this.tab)||this.civic.page(this.tab)||this.expedition.page(this.tab)||this.worlds.page(this.tab)||(realmPage?{title:'Realms',html:realmPage}:null)||(this.tab==='gathering'?{title:'A Table After the Rain',html:this.gathering.page()}:null)||this.earth.page(this.tab)||this.cosmos.page(this.tab)||this.classes.page(this.tab)||this.characters.page(this.tab)||this.pursuit.page(this.tab)||this.starter.page(this.tab)||this.crossing.page(this.tab);
+  const extra=this.atlantisCampaign.page(this.tab)||this.heavenCampaign.page(this.tab)||this.hellCampaign.page(this.tab)||this.community.page(this.tab)||this.civic.page(this.tab)||this.expedition.page(this.tab)||this.worlds.page(this.tab)||(realmPage?{title:'Realms',html:realmPage}:null)||(this.tab==='gathering'?{title:'A Table After the Rain',html:this.gathering.page()}:null)||this.earth.page(this.tab)||this.cosmos.page(this.tab)||this.classes.page(this.tab)||this.characters.page(this.tab)||this.pursuit.page(this.tab)||this.starter.page(this.tab)||this.crossing.page(this.tab);
   const titles={equipment:'Your character',bag:'Your belongings',companion:'Your companion',soul:'The paths within',craft:'The workbench',journal:'Your journal',beacon:'The Beacon Answers',more:'Life in Firstlight',merchant:'Tessa’s road shop',pursuit:'Field guide'};
   $('#rpg-heading').textContent=extra?.title||titles[this.tab]||'Firstlight';
   $('#rpg-tabs').innerHTML=[['equipment','Equipment'],['bag','Inventory'],['companion','Companion'],['soul','Soul'],['craft','Crafting'],['pursuit','Field guide'],['journal','Journal'],['atlas','Map'],['characters','Characters'],['classes','Path'],['realms','Realms'],['worlds','Roads'],['expedition','Living road']].map(([id,n])=>button(n,'open',id,false,'aria-current="'+(this.tab===id?'page':'false')+'"'+(id==='realms'?' data-tab="realms"':'' ))).join('');
@@ -8494,7 +9059,7 @@ class RPGUI{
   if(['pursuit','craft'].includes(this.tab))body.insertAdjacentHTML('afterbegin',this.expedition.fitting()+this.trails.fitting());
   if(!this.sim.room&&['atlas','more'].includes(this.tab))body.insertAdjacentHTML('afterbegin',this.worlds.invitation()+this.earth.invitation()+this.cosmos.invitation());
   if(this.tab==='craft')body.insertAdjacentHTML('afterbegin',G.RealmHomeHistoryUI.teaser(this.sim.state));
-  if(this.tab==='journal')body.insertAdjacentHTML('afterbegin',G.RealmHomeHistoryUI.teaser(this.sim.state)+this.heavenCampaign.journal()+this.hellCampaign.journal()+this.community.invitation()+this.expedition.invitation()+this.trails.journal()+this.civic.journal()+this.starter.journal());if(this.tab==='characters')this.characters.attach();if(this.tab==='classes')this.classes.attach();
+  if(this.tab==='journal')body.insertAdjacentHTML('afterbegin',G.RealmHomeHistoryUI.teaser(this.sim.state)+this.atlantisCampaign.journal()+this.heavenCampaign.journal()+this.hellCampaign.journal()+this.community.invitation()+this.expedition.invitation()+this.trails.journal()+this.civic.journal()+this.starter.journal());if(this.tab==='characters')this.characters.attach();if(this.tab==='classes')this.classes.attach();
  }
  inventory(){
   const a=this.state,st=A.stats(a),slots=['weapon','armor','charm'];
@@ -8600,6 +9165,8 @@ class RPGUI{
   const defense=braced?'Braced · move clear if needed':ready?'Brace (3) or move clear':'Move clear · Brace unavailable';
   const copy=cue.phase==='recover'?['Recovery opening','Strike if ready; close if out of range']:cue.phase==='charge'?['Charging',defense]:({
    strike:['Marked strike',defense],charge:['Charge incoming',defense],
+   'harbour-sweep':['Custodian vane sweep',defense+' · step outside the forward sector'],
+   'harbour-intake':['Custodian intake',defense+' · leave the lane or use solid cover'],
    'garden-beam':['Directed beam',defense+' · step beside its narrow lane'],
    'garden-pulse':['Relay pulse',defense+' · step outside its circle'],
    'writ-sweep':['Writ sweep',defense+' · short wide lane'],
@@ -8633,7 +9200,7 @@ class RPGUI{
   const bm=$('#beacon-menu');bm.textContent=b.phase==='assault'?'Repair ward · E · 20 stamina':'Speak with the envoy · E';bm.disabled=b.phase==='assault'&&(!B.near(sim)||b.ward>=100||b.time<b.playerRepairAt||a.stamina<20);
   sim.presentation=sim.presentation||{};sim.presentation.attackTarget=t.target||(this.api.adventure().intent?.kind==='attack'?this.api.adventure().intent.id:null);
   const lastHit=t.hits.at(-1);if(lastHit&&this.soundedHit!==lastHit){this.soundedHit=lastHit;if(a.elapsed-lastHit.at<.25)this.api.adventure().sound('confirmed-hit');}
-  this.targetCue();this.numbers();this.worldHealth();this.crossing.tick();this.starter.tick();this.pursuit.tick();this.cosmos.tick();this.earth.tick();this.gathering.tick();this.worlds.tick();this.trails.tick();this.expedition.tick();this.civic.tick();this.community.tick();this.hellCampaign.tick();this.heavenCampaign.tick();
+  this.targetCue();this.numbers();this.worldHealth();this.crossing.tick();this.starter.tick();this.pursuit.tick();this.cosmos.tick();this.earth.tick();this.gathering.tick();this.worlds.tick();this.trails.tick();this.expedition.tick();this.civic.tick();this.community.tick();this.hellCampaign.tick();this.heavenCampaign.tick();this.atlantisCampaign.tick();
  }
  worldHealth(){
   const root=$('#enemy-health');root.replaceChildren();if(!this.sim.presentation?.perspective||!A.combatScene(this.sim))return;
@@ -10465,13 +11032,14 @@ document.addEventListener('close',e=>{if(e.target===ui.toast.parentElement)resto
 function fallback(reason){engine=null;art=null;ui.canvas.style.display='none';ui.map.style.display='block';$('#fallback-banner').style.display='block';$('#fallback-banner').textContent=reason||'3D is unavailable. Explore the same local world using this map.';document.getElementById('labels').replaceChildren();resize();}
 try{engine=new RealmEngine.Engine(ui.canvas);engine.quality=sim.state.settings.quality;art=new RealmArt.WorldArt(engine);}catch(e){errors.push('Handled graphics fallback: '+e.message);fallback();}
 function sceneHeight(x=sim.state.player.x,z=sim.state.player.z){if(RealmWorldFoundations.handles(sim.room))return sim.worldDive?RealmWorldFoundations.playerHeight(sim):RealmWorldFoundations.height(sim.room,x,z);return sim.room===RealmEarth.ROOM?RealmEarth.height(x,z):sim.room===RealmCosmos.ROOM?RealmCosmos.height(x,z):sim.room?1.57:1.3;}
-function worldContext(){sim.heavenCampaignSave=worldSave;sim.hellCampaignSave=worldSave;sim.realmTrailSave=worldSave;sim.earthExpeditionSave=worldSave;return{sim,active:characterStore.active,revision:characterStore.revision};}
+function worldContext(){sim.atlantisCampaignSave=worldSave;sim.heavenCampaignSave=worldSave;sim.hellCampaignSave=worldSave;sim.realmTrailSave=worldSave;sim.earthExpeditionSave=worldSave;return{sim,active:characterStore.active,revision:characterStore.revision};}
 function worldTravel(ticket){return RealmWorldFoundations.enter(ticket,worldContext(),{available:!!engine&&!!RealmWorldFoundationsArt,save,build:()=>switchScene(),restore:()=>{scene=Symbol('world-rollback');switchScene();}});}
 function worldReturn(){if(sim.room===RealmCosmos.ROOM&&!sim.worldTrip)return cosmosReturn();const r=RealmWorldFoundations.leave(sim);if(r.ok){switchScene();save();toast('Back at your Firstlight checkpoint.');}return r;}
 function worldSave(candidate){if(preserveExisting)return{ok:false,error:'Existing storage is preserved. Export before continuing.'};const r=characterStore.save(candidate);saveState=r.ok?'saved':'unavailable';renderStatus();return r;}
 function worldCommand(type,payload){const r=RealmWorldFoundations.command(worldContext(),type,payload,{save:worldSave});if(r.ok&&!r.duplicate&&type==='claim'&&RealmWorldFoundations.handles(sim.room)&&engine)RealmWorldFoundationsArt.make(art,sim);if(r.ok&&!r.duplicate&&type==='observe'&&payload.realm==='heaven'&&audio.enabled)audio.note([261.63,329.63,392][RealmWorldFoundations.OBJECTIVES.indexOf(payload.objective)],audio.ctx.currentTime,.7,.035);return r;}
 function homeCommand(type,payload){return RealmHomeHistory.command(worldContext(),type,payload,{save:worldSave});}
 function hellCampaignCommand(type,payload){return RealmHellCampaign.command(worldContext(),type,payload,{save:worldSave});}
+function atlantisCampaignCommand(type,payload){return RealmAtlantisCampaign.command(worldContext(),type,payload,{save:worldSave});}
 function heavenCampaignCommand(type,payload){return RealmHeavenCampaign.command(worldContext(),type,payload,{save:worldSave});}
 function bridgeCommunityCommand(type,payload){return RealmBridgeCommunity.command(worldContext(),type,payload,{save:worldSave});}
 function localLifeCommand(type,payload){return RealmLocalLife.command(worldContext(),type,payload,{save:worldSave});}
@@ -10645,7 +11213,7 @@ adventure=new RealmAdventureUI.AdventureUI({workshopCommand,earthRiverReturn,sim
 
 arsenal=new RealmArsenalUI.ArsenalUI({sim:()=>sim,adventure:()=>adventure,openPanel,closePanel,renderPanel,panel:()=>panel,walk:walkAdventure,endBuild:()=>{sandbox?.endBuild();sandbox?.stopAuto();keys.clear();}});
 
-rpg=new RealmRPGUI.RPGUI({frameFoe,canFrameFoe:()=>!!engine&&!sim.paused&&!sim.worldDive&&RealmCombatView.plan({preset:camera.preset,player:sim.state.player,enemy:RealmCombat.selected(sim),distance:camera.distance}).ok,heavenCampaignCommand,hellCampaignCommand,bridgeCommunityCommand,localLifeCommand,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,earthContext,earthTravel,earthReturn,bridgeView,cosmosContext,cosmosTravel,cosmosReturn,sim:()=>sim,adventure:()=>adventure,closePanel,openPanel,endBuild:()=>{sandbox.endBuild();sandbox.stopAuto();},clearKeys:()=>keys.clear(),focusWorld:()=>ui.canvas.focus({preventScroll:true}),toast,save,exportWorld,characters:()=>characterStore.describe(sim.snapshot()),characterAction,characterExport,characterImport,characterReload,characterRecovery,panel:()=>panel,camera:cameraPreset,resetCamera,rotate:a=>{camera.yaw+=a;camera.tour=false;},direction:()=>adventure.api.direction(),music:()=>experience.open(),gather:id=>sandbox.seek(id),walkLocal:walkAdventure,stopPersonalMusic:()=>experience?.stop(),audio:()=>audio,project:(x,y,z)=>engine?.project(x,y,z)});
+rpg=new RealmRPGUI.RPGUI({frameFoe,canFrameFoe:()=>!!engine&&!sim.paused&&!sim.worldDive&&RealmCombatView.plan({preset:camera.preset,player:sim.state.player,enemy:RealmCombat.selected(sim),distance:camera.distance}).ok,atlantisCampaignCommand,heavenCampaignCommand,hellCampaignCommand,bridgeCommunityCommand,localLifeCommand,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,earthContext,earthTravel,earthReturn,bridgeView,cosmosContext,cosmosTravel,cosmosReturn,sim:()=>sim,adventure:()=>adventure,closePanel,openPanel,endBuild:()=>{sandbox.endBuild();sandbox.stopAuto();},clearKeys:()=>keys.clear(),focusWorld:()=>ui.canvas.focus({preventScroll:true}),toast,save,exportWorld,characters:()=>characterStore.describe(sim.snapshot()),characterAction,characterExport,characterImport,characterReload,characterRecovery,panel:()=>panel,camera:cameraPreset,resetCamera,rotate:a=>{camera.yaw+=a;camera.tour=false;},direction:()=>adventure.api.direction(),music:()=>experience.open(),gather:id=>sandbox.seek(id),walkLocal:walkAdventure,stopPersonalMusic:()=>experience?.stop(),audio:()=>audio,project:(x,y,z)=>engine?.project(x,y,z)});
 // Input distinguishes clicks from drags, with two-finger zoom on touch screens.
 let pointers=new Map(),gesture=null,keys=new Set();function zoom(k){camera.tour=false;if(camera.preset==='adventure'){camera.distance=Math.max(3.5,Math.min(20,camera.distance*k));return;}camera.half=C.clamp?C.clamp(camera.half*k,6,52):Math.max(6,Math.min(52,camera.half*k));camera.zoom=camera.half/camera.baseHalf;camera.overview=false;}
 function pointerDown(e){e.currentTarget.focus({preventScroll:true});camera.tour=false;if(e.button!==0&&e.button!==2&&e.pointerType!=='touch')return;e.preventDefault();e.currentTarget.setPointerCapture(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size===1)gesture={x:e.clientX,y:e.clientY,lastX:e.clientX,lastY:e.clientY,moved:false,pinch:false,orbitOnly:e.button===2};else if(pointers.size===2){let p=[...pointers.values()];gesture.pinch=true;gesture.moved=true;gesture.distance=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y);}}
@@ -10693,8 +11261,8 @@ function refreshUI(){let s=sim.state;$('#tour').setAttribute('aria-pressed',Stri
 function frame(now){let dt=lastFrame?Math.min((now-lastFrame)/1000,.1):.016;lastFrame=now;frames++;if(now-fpsStart>1500){fps=frames*1000/(now-fpsStart);frames=0;fpsStart=now;}if(!document.hidden){let dx=(keys.has('d')||keys.has('arrowright')?1:0)-(keys.has('a')||keys.has('arrowleft')?1:0),dz=(keys.has('s')||keys.has('arrowdown')?1:0)-(keys.has('w')||keys.has('arrowup')?1:0);if(sim.worldDive&&!sim.paused){RealmWorldFoundations.swim(sim,dx*Math.cos(camera.yaw)+dz*Math.sin(camera.yaw),-dx*Math.sin(camera.yaw)+dz*Math.cos(camera.yaw),(keys.has('f')?1:0)-(keys.has('g')?1:0),dt);camera.overview=false;}else if((dx||dz)&&!sim.paused){sandbox?.stopAuto();adventure?.stopAuto();camera.tour=false;sim.manual(dx*Math.cos(camera.yaw)+dz*Math.sin(camera.yaw),-dx*Math.sin(camera.yaw)+dz*Math.cos(camera.yaw),dt);camera.overview=false;follow=null;target=null;sim.walking=true;}sim.tick(dt);if((dx||dz)&&!sim.paused)sim.walking=true;elapsed+=sim.paused?0:dt;if(!sim.playerPath.length)target=null;switchScene();updateCamera(dt);experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);engine.reducedMotion=sim.state.settings.reducedMotion;art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);audio.tick(elapsed);if(now-lastUi>350){refreshUI();lastUi=now;}if(elapsed-lastSave>6){save();lastSave=elapsed;}}if(!G_CAPTURE)requestAnimationFrame(frame);}
 // Keep a read-only-ish diagnostics surface for inspection; this local prototype is not a security boundary.
 const G_CAPTURE=!!window.__ETERNITIES_CAPTURE_MODE;
-window.Realm={get state(){return sim.snapshot();},get diagnostics(){let g=engine?.gl,dbg=g?.getExtension('WEBGL_debug_renderer_info');return{version:'10.0.0',mode:engine?'webgl2':'map',scene:sim.room||'valley',world:RealmWorldFoundations.definition(sim.room)?{id:RealmWorldFoundations.definition(sim.room).id,height:sceneHeight(),dive:worldDiveStatus(),journey:JSON.parse(JSON.stringify(sim.state.journeys.realms[RealmWorldFoundations.definition(sim.room).id]))}:null,heaven:sim.room===RealmHeavenCampaign.definition.room?JSON.parse(JSON.stringify({escort:RealmHeavenCampaign.runtime(sim).escort,activation:RealmHeavenCampaign.runtime(sim).activation,status:RealmHeavenCampaign.escortStatus(sim)})):null,earth:sim.room===RealmEarth.ROOM?{trip:sim.earthTrip,height:sceneHeight(),walkable:RealmEarth.walkable(sim.state.player.x,sim.state.player.z)}:null,cosmos:sim.room===RealmCosmos.ROOM?{trip:sim.cosmosTrip,height:sceneHeight(),walkable:RealmCosmos.walkable(sim.state.player.x,sim.state.player.z)}:null,networkDependencies:0,liveAI:false,multiplayer:false,adventure:{tactics:JSON.parse(JSON.stringify(RealmCombat.runtime(sim))),beacon:JSON.parse(JSON.stringify(RealmBeacon.runtime(sim))),crossing:JSON.parse(JSON.stringify(RealmCrossing.runtime(sim))),player:{...sim.state.player},paused:sim.paused,intent:adventure?.intent||null,stats:RealmAdventure.stats(sim.state.adventure),weapon:RealmArsenal.weapon(sim.state.adventure),arrows:RealmArsenal.runtime(sim).arrows.map(a=>({...a})),range:{...RealmArsenal.runtime(sim).range},enemies:RealmAdventure.runtime(sim).enemies.map(e=>({id:e.id,x:e.x,z:e.z,hp:e.hp,maxHP:e.maxHP,hidden:!!e.hidden,eventEnemy:!!e.eventEnemy,kind:e.kind,ringMode:e.ringMode,custom:e.custom,mode:e.mode,timer:e.timer,aim:e.aim,yaw:e.yaw,strike:e.strike||null,contactAt:e.contactAt??null,contactHit:e.contactHit??null})),companion:{...RealmAdventure.runtime(sim).companion}},sandbox:{bridge:sim.state.sandbox.bridge,objects:sim.state.sandbox.placed.length,elapsed:sim.state.sandbox.elapsed,autoGather:sandbox?.auto||null,buildMode:sandbox?.build||null},saveState,characters:{mode:characterStore.blocked?'blocked':characterStore.managed?'managed':'legacy',active:characterStore.active,revision:characterStore.revision,count:characterStore.record?.slots.length||1,writer:characterStore.writer,error:characterStore.error},fps,errors:errors.slice(),camera:{...camera,projection:engine?.camera.projection||'orthographic',eye:engine?.camera.eye,target:engine?.camera.target},metrics:engine?.metrics||null,reflection:engine?.reflectionInfo||null,cutaway:{enabled:!!engine?.cutaway,focus:engine?.cutawayFocus||null},renderer:dbg?g.getParameter(dbg.UNMASKED_RENDERER_WEBGL):null,music:{playing:experience?.playing||false,scoreRevision:sim.state.scoreRevision,playingRevision:experience?.playingRevision,step:experience?.step},gathering:sim.gathering?{...sim.gathering}:null,layoutRevision:sim.state.retreat.revision,roadsideGathering:{status:rpg?.gathering?.player.status||'idle',playing:!!rpg?.gathering?.player.source,pending:!!rpg?.gathering?.pending},audio:{enabled:audio.enabled,state:audio.ctx?.state||'not-created',soundscape:audio.soundscape?.snapshot()||null}};},navigate,export:()=>JSON.stringify(sim.snapshot(),null,2),project:(x,y,z)=>engine?.project(x,y,z)};
-if(window.__ETERNITIES_TEST_MODE||location.search.includes('test'))window.Realm.test={homeCommand,heavenCampaignCommand,hellCampaignCommand,bridgeCommunityCommand,localLifeCommand,bridgeView,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,worldSwim:(...a)=>RealmWorldFoundations.swim(sim,...a),step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){sim.tick(.05);adventure?.tick();arsenal?.tick();rpg?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,bridge:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({definition:RealmEarth.BRIDGE,waterHeight:RealmEngine.WATER_HEIGHT,railCutaway:{eligible:engine?.railCutawayActive===true,enabled:engine?.cutaway===true},parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.bridgePart||i.mountainPart||i.shorelinePart).map(i=>({kind:b.kind,railBatch:b.railCutaway===true,...i,m:i.m?Array.from(i.m):null})))||[]})):null,traveler:()=>art?.travelerSnapshot()||null,companion:()=>RealmAdventureArt.companionSnapshot(sim),skitters:()=>RealmAdventureArt.skitterSnapshot(sim),drover:()=>sim.room===RealmEarth.ROOM&&art?.droverFrame?JSON.parse(JSON.stringify({frame:{...art.droverFrame,root:Array.from(art.droverFrame.root),coilRoot:Array.from(art.droverFrame.coilRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.droverPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,earthShoulder:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({frame:art?.earthShoulderFrame,parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.quarryShoulder||i.terrain).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,quarry:()=>sim.room===RealmEarth.ROOM&&art?.quarryFrame?JSON.parse(JSON.stringify({frame:{actor:{...art.quarryFrame.actor,root:Array.from(art.quarryFrame.actor.root),toolRoot:Array.from(art.quarryFrame.actor.toolRoot)},works:art.quarryFrame.works},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.stoneworkerPart||i.quarryPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))})):null,millwright:()=>sim.room===RealmEarth.ROOM&&art?.millwrightFrame?JSON.parse(JSON.stringify({frame:{...art.millwrightFrame,root:Array.from(art.millwrightFrame.root),toolRoot:Array.from(art.millwrightFrame.toolRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.millwrightPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millGate:()=>sim.room===RealmEarth.ROOM&&art?.millGateFrame?JSON.parse(JSON.stringify({gate:art.millGateFrame,parts:[...engine.batches,...engine.dynamic].flatMap(b=>b.items.filter(i=>i.millPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null}))),wheel:art.dynamicBox.items.filter(i=>i.p[0]===3.55&&i.p[1]===2.71)})):null,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
+window.Realm={get state(){return sim.snapshot();},get diagnostics(){let g=engine?.gl,dbg=g?.getExtension('WEBGL_debug_renderer_info');return{version:'10.0.0',mode:engine?'webgl2':'map',scene:sim.room||'valley',world:RealmWorldFoundations.definition(sim.room)?{id:RealmWorldFoundations.definition(sim.room).id,height:sceneHeight(),dive:worldDiveStatus(),journey:JSON.parse(JSON.stringify(sim.state.journeys.realms[RealmWorldFoundations.definition(sim.room).id]))}:null,atlantis:sim.room===RealmAtlantisCampaign.definition.room?JSON.parse(JSON.stringify({current:RealmAtlantisCampaign.currentStatus(sim),motion:{currentDistance:RealmAtlantisCampaign.runtime(sim).currentDistance,pullDistance:RealmAtlantisCampaign.runtime(sim).pullDistance},witnesses:RealmAtlantisCampaign.runtime(sim).witnesses})):null,heaven:sim.room===RealmHeavenCampaign.definition.room?JSON.parse(JSON.stringify({escort:RealmHeavenCampaign.runtime(sim).escort,activation:RealmHeavenCampaign.runtime(sim).activation,status:RealmHeavenCampaign.escortStatus(sim)})):null,earth:sim.room===RealmEarth.ROOM?{trip:sim.earthTrip,height:sceneHeight(),walkable:RealmEarth.walkable(sim.state.player.x,sim.state.player.z)}:null,cosmos:sim.room===RealmCosmos.ROOM?{trip:sim.cosmosTrip,height:sceneHeight(),walkable:RealmCosmos.walkable(sim.state.player.x,sim.state.player.z)}:null,networkDependencies:0,liveAI:false,multiplayer:false,adventure:{tactics:JSON.parse(JSON.stringify(RealmCombat.runtime(sim))),beacon:JSON.parse(JSON.stringify(RealmBeacon.runtime(sim))),crossing:JSON.parse(JSON.stringify(RealmCrossing.runtime(sim))),player:{...sim.state.player},paused:sim.paused,intent:adventure?.intent||null,stats:RealmAdventure.stats(sim.state.adventure),weapon:RealmArsenal.weapon(sim.state.adventure),arrows:RealmArsenal.runtime(sim).arrows.map(a=>({...a})),range:{...RealmArsenal.runtime(sim).range},enemies:RealmAdventure.runtime(sim).enemies.map(e=>({id:e.id,x:e.x,z:e.z,hp:e.hp,maxHP:e.maxHP,hidden:!!e.hidden,eventEnemy:!!e.eventEnemy,kind:e.kind,ringMode:e.ringMode,custom:e.custom,mode:e.mode,timer:e.timer,aim:e.aim,yaw:e.yaw,strike:e.strike||null,contactAt:e.contactAt??null,contactHit:e.contactHit??null})),companion:{...RealmAdventure.runtime(sim).companion}},sandbox:{bridge:sim.state.sandbox.bridge,objects:sim.state.sandbox.placed.length,elapsed:sim.state.sandbox.elapsed,autoGather:sandbox?.auto||null,buildMode:sandbox?.build||null},saveState,characters:{mode:characterStore.blocked?'blocked':characterStore.managed?'managed':'legacy',active:characterStore.active,revision:characterStore.revision,count:characterStore.record?.slots.length||1,writer:characterStore.writer,error:characterStore.error},fps,errors:errors.slice(),camera:{...camera,projection:engine?.camera.projection||'orthographic',eye:engine?.camera.eye,target:engine?.camera.target},metrics:engine?.metrics||null,reflection:engine?.reflectionInfo||null,cutaway:{enabled:!!engine?.cutaway,focus:engine?.cutawayFocus||null},renderer:dbg?g.getParameter(dbg.UNMASKED_RENDERER_WEBGL):null,music:{playing:experience?.playing||false,scoreRevision:sim.state.scoreRevision,playingRevision:experience?.playingRevision,step:experience?.step},gathering:sim.gathering?{...sim.gathering}:null,layoutRevision:sim.state.retreat.revision,roadsideGathering:{status:rpg?.gathering?.player.status||'idle',playing:!!rpg?.gathering?.player.source,pending:!!rpg?.gathering?.pending},audio:{enabled:audio.enabled,state:audio.ctx?.state||'not-created',soundscape:audio.soundscape?.snapshot()||null}};},navigate,export:()=>JSON.stringify(sim.snapshot(),null,2),project:(x,y,z)=>engine?.project(x,y,z)};
+if(window.__ETERNITIES_TEST_MODE||location.search.includes('test'))window.Realm.test={homeCommand,atlantisCampaignCommand,heavenCampaignCommand,hellCampaignCommand,bridgeCommunityCommand,localLifeCommand,bridgeView,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,worldSwim:(...a)=>RealmWorldFoundations.swim(sim,...a),step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){sim.tick(.05);adventure?.tick();arsenal?.tick();rpg?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,bridge:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({definition:RealmEarth.BRIDGE,waterHeight:RealmEngine.WATER_HEIGHT,railCutaway:{eligible:engine?.railCutawayActive===true,enabled:engine?.cutaway===true},parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.bridgePart||i.mountainPart||i.shorelinePart).map(i=>({kind:b.kind,railBatch:b.railCutaway===true,...i,m:i.m?Array.from(i.m):null})))||[]})):null,traveler:()=>art?.travelerSnapshot()||null,companion:()=>RealmAdventureArt.companionSnapshot(sim),skitters:()=>RealmAdventureArt.skitterSnapshot(sim),drover:()=>sim.room===RealmEarth.ROOM&&art?.droverFrame?JSON.parse(JSON.stringify({frame:{...art.droverFrame,root:Array.from(art.droverFrame.root),coilRoot:Array.from(art.droverFrame.coilRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.droverPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,earthShoulder:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({frame:art?.earthShoulderFrame,parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.quarryShoulder||i.terrain).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,quarry:()=>sim.room===RealmEarth.ROOM&&art?.quarryFrame?JSON.parse(JSON.stringify({frame:{actor:{...art.quarryFrame.actor,root:Array.from(art.quarryFrame.actor.root),toolRoot:Array.from(art.quarryFrame.actor.toolRoot)},works:art.quarryFrame.works},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.stoneworkerPart||i.quarryPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))})):null,millwright:()=>sim.room===RealmEarth.ROOM&&art?.millwrightFrame?JSON.parse(JSON.stringify({frame:{...art.millwrightFrame,root:Array.from(art.millwrightFrame.root),toolRoot:Array.from(art.millwrightFrame.toolRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.millwrightPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millGate:()=>sim.room===RealmEarth.ROOM&&art?.millGateFrame?JSON.parse(JSON.stringify({gate:art.millGateFrame,parts:[...engine.batches,...engine.dynamic].flatMap(b=>b.items.filter(i=>i.millPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null}))),wheel:art.dynamicBox.items.filter(i=>i.p[0]===3.55&&i.p[1]===2.71)})):null,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
 window.addEventListener('resize',resize);window.addEventListener('pagehide',()=>{save();characterStore.writer=false;characterLock.release();});window.addEventListener('pageshow',e=>{if(e.persisted&&characterStore.managed)acquireCharacterWriter().then(()=>save());});ui.canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();fallback('Graphics context lost. Your local state is intact; use the map and export a backup.');toast('Graphics paused; world state preserved.');});document.body.classList.toggle('reduced',sim.state.settings.reducedMotion);cameraPreset(sim.state.settings.cameraMode,false);if(camera.preset==='adventure'&&!sim.state.settings.cameraViews.profiles.adventure)camera.yaw=.22;labelsRebuild();resize();refreshUI();if(characterStore.managed){acquireCharacterWriter().then(ok=>{if(ok)save();else{saveState='unavailable';toast(characterLock.error);renderStatus();}});}else save();if(loaded.status==='migrated')toast('Your earlier world was copied into Realm 10. The original save was not changed.');setTimeout(()=>$('#loading').classList.add('hidden'),400);if(G_CAPTURE){if(window.Realm.test)window.Realm.test.render();}else requestAnimationFrame(frame);
 })();
 </script></body></html>
