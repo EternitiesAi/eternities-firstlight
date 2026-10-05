@@ -1,3 +1,9 @@
+# Preserved failures and bounded qualification, 2026-10-05
+
+Atlantis native02 passes857 checks with no source drift or browser/console errors. Actual capture03 passes the complete131.842-second normal-time route on RTX3080 Chromium at1440x900; it uses native menus/keyboard and ordinary RAF, with no test mode, actor/camera writes or direct game commands. It is not human pacing or performance qualification. Earlier native01 roof-occlusion failure and capture01/02 controller failures remain preserved. The existing canopy now uses its ordinary preference-controlled roof cutaway; swimming geometry and saves are unchanged. Both regenerated pages are identical at2886245bytes/SHA256dc5879b29a1f3d55413f74ee9e06496ae1bc2a219d7553dc20e48ade103d5b10.
+
+The complete current verifier is running in a new shallow remote8688c6f qualification checkout with only archived documentation media excluded from the working tree; all runtime inputs and save fixtures remain. Source/full completion is pending. Short edited footage/evidence publication and later documentation-head equality remain pending. Heaven full204-command gate and exact final297 fresh161-source gate passed; its final evidence delivery is being recorded independently. The whole draft remains active.
+
 # Bounded campaign storage and anchored municipal encounter, 2026-10-05
 
 Dom explicitly directs continued autonomous development while avoiding compounding full-game versions/media. Keep the integrated current game and recoverable Git source history, a few useful gameplay clips, exact reports and failure evidence. Reuse or retire only owned disposable clean verification copies after current-state/byte/remote preservation checks; do not delete personal data or unrelated projects. Drive free space is not itself evidence that Firstlight caused the usage. New browser cohorts should avoid duplicate videos/profiles.

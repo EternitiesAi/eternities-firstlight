@@ -1,3 +1,7 @@
+# Integrate the Open Confluence while Atlantis qualifies, 2026-10-05
+
+Complete the frozen remote Atlantis verifier/evidence delivery separately from source edits. Continue Cosmos in the same integrated authoring checkout on a new review branch from the actual Atlantis head, keeping small colleague stages. Connect its permanent ground, optional versioned ledger, real encounter/weapon/save callers and native interface; staged greens are not installed play. Then implement the honest provisional Earth return and whole-draft acceptance. Preserve storage/saves/both cameras and all existing exclusions.
+
 # Qualify Atlantis, then inhabit the Cosmos, 2026-10-05
 
 Continue from the actual current Atlantis gameplay head after inspecting origin/reviews and active workers. Finish the bounded six-profile native campaign cohort, actual normal-time recording, complete current verifier and remote reproduction. Use only full successful command-earned source reports with exact checkpoint bytes; preserve failures. Native persistence, software appearance, normal-time footage, hardware measurement and human enjoyment are separate evidence.
