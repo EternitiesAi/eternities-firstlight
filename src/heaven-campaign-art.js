@@ -97,7 +97,11 @@ function drawEnemy(out,sim,e,time){const d=definition(),r=sim.state.heavenCampai
 function drawEscort(out,sim,actor,time){const d=definition(),r=sim.state.heavenCampaign;
  if(!d||sim.room!==d.room||!r?.accepted||!actor||G.RealmHeavenCampaign?.runtime(sim).escort!==actor||actor.id!==d.escort.id||!['idle','following','lagging','awaiting-save','arrived'].includes(actor.phase)||(actor.phase!=='idle'&&!r.steps.includes(d.escort.startStep))||!finite(actor.x,actor.z,actor.yaw??0))return false;
  const p=painter(out,sim,actor,actor.yaw??0,{heavenCampaignEscort:actor.id});
- for(const x of[-.115,.115]){p.box(x,.095,0,.15,.19,.30,colors.ink,'courier-foot');p.box(x,.39,0,.105,.46,.15,colors.ink,'courier-leg');}
+ // Distance comes only from the rule owner's actual supported movement.
+ // Waiting, pause and reduced motion use a quiet grounded stance.
+ const moving=actor.phase==='following'&&actor.walking&&!sim.paused&&!sim.state.settings.reducedMotion;
+ const stride=moving&&Number.isFinite(actor.distance)?Math.sin(actor.distance*5.4):0;
+ for(const x of[-.115,.115]){const sign=x<0?-1:1,forward=stride*sign*.08,lift=Math.max(0,stride*sign)*.035;p.box(x,.095+lift,forward,.15,.19,.30,colors.ink,'courier-foot');p.box(x,.39+lift*.4,forward*.5,.105,.46,.15,colors.ink,'courier-leg');}
  p.box(0,.73,0,.35,.30,.28,colors.ruby,'courier-coat-hem');p.box(0,1.00,0,.31,.38,.23,colors.ruby,'courier-coat');
  p.box(0,1.23,0,.095,.10,.11,colors.bone,'courier-neck');p.emit('round',[0,1.40,0],[.26,.28,.25],colors.bone,'courier-head');
  p.box(0,1.53,0,.31,.09,.29,colors.ink,'courier-cap');p.box(0,1.49,.17,.28,.05,.10,colors.ink,'courier-cap-brim');
