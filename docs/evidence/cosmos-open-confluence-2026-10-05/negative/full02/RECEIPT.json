@@ -1,0 +1,27 @@
+{
+  "status": "failed",
+  "exitCode": 1,
+  "rootObservedProcess": 48359,
+  "sourceHead": "f65f3a48b87b697fcdfdf8e94410f1446bea3f27",
+  "commandsStarted": 183,
+  "commandsPassed": 182,
+  "browserSuitesPassed": 7,
+  "failedCommand": "earth_ground_material_browser",
+  "console": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\cosmos-open-confluence-20261005\\remote-full02-console.log",
+    "bytes": 13495,
+    "sha256": "5c2fa2e93f56cd114f56cdd918f3603310bd227bec5973e7b7b81450c27c5fe6"
+  },
+  "failureLog": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\cosmos-open-confluence-20261005\\remote-full02\\earth_ground_material_browser.log",
+    "bytes": 1844,
+    "sha256": "29f1b83e9856e10c363a0099d3a6b31dd9c2d34a3e76eb56dce1a0fa0f9c2576"
+  },
+  "preservedPreviousFramesReport": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\cosmos-open-confluence-20261005\\negative-full02-earth-ground\\PREVIOUS_FRAMES_REPORT.json",
+    "bytes": 337613,
+    "sha256": "5109b8bbbc0813b3abfb5ab9b0b2ef6606d52f04b3f946896b8f8315a864cc68"
+  },
+  "cause": "Guarded output mode leaves this suite on its existing default. Presentation tool deliberately refuses previous nonempty frames. No source/gameplay assertion was executed or failed in this suite.",
+  "repair": "Use existing --browser-output-mode supported with new remote-full03 and remote-full03-browser roots. Preserve earlier evidence; no output guard bypass, source change or partial-gate pooling."
+}

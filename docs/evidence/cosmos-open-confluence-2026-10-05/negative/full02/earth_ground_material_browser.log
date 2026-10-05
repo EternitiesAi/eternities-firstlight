@@ -1,0 +1,13 @@
+usage: inspect_earth_expedition_presentation.py [-h] --earned-dir EARNED_DIR
+                                                --output OUTPUT
+                                                [--quality {low,balanced,high}]
+                                                [--variant {fresh-blade,fresh-bow,veteran}]
+inspect_earth_expedition_presentation.py: error: Output must be empty; existing evidence is preserved
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tests\earth_ground_material_browser.py", line 12, in <module>
+    subprocess.run([sys.executable,str(ROOT/'tools/inspect_earth_expedition_presentation.py'),'--earned-dir',str(OUT/'earned'),'--output',str(OUT/'frames'),'--quality','low','--variant','fresh-blade'],cwd=ROOT,check=True,timeout=180)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe', 'D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game\\tools\\inspect_earth_expedition_presentation.py', '--earned-dir', 'D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game\\evidence10\\earth-ground-material-browser\\earned', '--output', 'D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game\\evidence10\\earth-ground-material-browser\\frames', '--quality', 'low', '--variant', 'fresh-blade']' returned non-zero exit status 2.

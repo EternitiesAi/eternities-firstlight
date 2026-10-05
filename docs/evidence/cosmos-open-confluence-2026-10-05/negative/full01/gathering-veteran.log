@@ -1,0 +1,160 @@
+{
+  "variant": "veteran-mill",
+  "status": "passed",
+  "commands": 6,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedObjectives": 0,
+  "acceleratedTicks": true,
+  "sourceSha256": "eeae20488902a37ee694515e703d377d7441a31fa72a940f5d8536a451c0e9f6",
+  "gathering": {
+    "version": 1,
+    "accepted": true,
+    "prepared": [
+      "cloth",
+      "lantern",
+      "stand"
+    ],
+    "verse": "mill",
+    "shared": true
+  },
+  "weapon": "dawn_edge",
+  "xp": 563,
+  "deliveryStillUnpaid": true,
+  "actions": [
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        4,
+        -42.5
+      ]
+    },
+    {
+      "type": "accept",
+      "p": {}
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        -3,
+        -40.5
+      ]
+    },
+    {
+      "type": "prepare",
+      "p": {
+        "id": "cloth"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        -5.8,
+        -35
+      ]
+    },
+    {
+      "type": "prepare",
+      "p": {
+        "id": "lantern"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        4,
+        -42.5
+      ]
+    },
+    {
+      "type": "prepare",
+      "p": {
+        "id": "stand"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        4,
+        -42.5
+      ]
+    },
+    {
+      "type": "verse",
+      "p": {
+        "verse": "mill"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        4,
+        -42.5
+      ]
+    },
+    {
+      "type": "share",
+      "p": {}
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        4,
+        -42.5
+      ]
+    }
+  ]
+}

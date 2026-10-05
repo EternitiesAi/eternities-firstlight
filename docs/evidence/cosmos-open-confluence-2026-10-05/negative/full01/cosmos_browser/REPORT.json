@@ -1,0 +1,19 @@
+{
+  "method": "Near Expanse input/UI, real navigation and native isolated saves.\n\nAccelerated movement setup is test evidence only. Software-WebGL interaction\ncoverage explicitly uses low quality; balanced desktop rendering has a separate\nhardware report. No personal browser data.\n",
+  "checks": [
+    {
+      "name": "exact generated build loads",
+      "passed": true
+    },
+    {
+      "name": "pre-entry terms declare routes, no rewards and safe-side reload",
+      "passed": false
+    }
+  ],
+  "errors": [
+    "pre-entry terms declare routes, no rewards and safe-side reload"
+  ],
+  "browser_errors": [],
+  "software_quality": "low",
+  "html_sha256": "ba121c8ad0c40369ef540e6c3b42279d541761512518efb45472a7d53630e1cf"
+}

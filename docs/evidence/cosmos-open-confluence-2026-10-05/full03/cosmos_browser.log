@@ -1,0 +1,77 @@
+PASS exact generated build loads
+PASS pre-entry terms separate optional work from entry grants and declare routes/reload
+PASS reading entry terms accepts no work, pays nothing and leaves canonical state unchanged
+PASS remote preview cannot enter before walking to the invitation
+PASS map invitation uses ground movement, not a teleport
+PASS dialog shortcuts do not change class or camera
+PASS fresh unassigned visitor can enter without a kit
+PASS entry preserves all canonical game data
+PASS arrival has no enemies or selectable sky image
+PASS return button is available immediately
+PASS production walking path reaches 3,7
+PASS Three Lamps is inhabited and explains both actual approaches
+PASS production walking path reaches -6,6
+PASS shelter bench can be approached through its real doorway
+PASS production walking path reaches -14,-3
+PASS production walking path reaches -15,-18
+PASS production walking path reaches -12,-32
+PASS production walking path reaches 0,-34
+PASS production walking path reaches 3,-43
+PASS sheltered approach reaches Anik at occupied lookout
+PASS player stands on raised northern terrain
+PASS diorama works inside new ground scene
+PASS production walking path reaches 0,-34
+PASS production walking path reaches 13,-24
+PASS production walking path reaches 13,-6
+PASS production walking path reaches 6,6
+PASS production walking path reaches 0,18
+PASS both routes form one continuous scene
+PASS physical arrival gate returns to exact source position
+PASS walk and conversations grant no XP, items, claims or story
+PASS production walking path reaches 14,-5
+PASS physical invitation opens explicit preview
+PASS explicit input enters Near Expanse
+PASS production walking path reaches 13,-6
+PASS folded moon description distinguishes background from ground
+PASS safe source snapshot remains exportable on the far side
+PASS native reopen restores acknowledged valley side
+PASS native reopen preserves earned history
+PASS production walking path reaches 14,-5
+PASS failed actual storage write refuses entry
+PASS failed scene build rolls back to playable valley
+PASS production walking path reaches 14,-5
+PASS physical invitation opens explicit preview
+PASS explicit input enters Near Expanse
+PASS low quality retains scene, safe ground and return
+PASS return works away from gate with no payment
+PASS returning command-earned bow and socket/fitting state load intact
+PASS production walking path reaches 14,-5
+PASS physical invitation opens explicit preview
+PASS explicit input enters Near Expanse
+PASS returning bow visits without equipment or story mutation
+PASS returning veteran companion is command rescued
+PASS production walking path reaches 14,-5
+PASS physical invitation opens explicit preview
+PASS explicit input enters Near Expanse
+PASS following companion travels onto valid cosmic ground
+PASS production walking path reaches 13,-24
+PASS companion follows the actual rising route
+PASS compact reduced-motion atlas retains both routes and explicit return
+PASS compact Cosmos map is readable rather than icon-sized
+PASS creating another character while away begins in its own valley
+PASS switching back resumes the returning character at its source checkpoint
+PASS character switch preserves returning equipment, rewards and history
+PASS production walking path reaches 14,-5
+PASS physical invitation opens explicit preview
+PASS explicit input enters Near Expanse
+PASS commanded Stay does not follow across the return
+PASS Follow deliberately recalls the companion after return
+PASS production walking path reaches 14,-5
+PASS physical invitation opens explicit preview
+PASS explicit input enters Near Expanse
+PASS normal-RAF W input physically moves on supported ground
+PASS visible ground click uses inverse height projection for walking
+PASS sky click cannot manufacture a walking destination
+PASS normal-RAF visit returns through the production control
+PASS no runtime browser exceptions
+Cosmos browser checks: 76/76; errors: 0

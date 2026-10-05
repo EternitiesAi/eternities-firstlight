@@ -1,0 +1,1168 @@
+{
+  "cosmosCampaign": {
+    "version": 1,
+    "accepted": true,
+    "steps": [
+      "read-local-cost",
+      "material-inspect",
+      "material-fit",
+      "assist-living",
+      "test-service-route",
+      "challenge-reclaimer",
+      "reclaimer-settled",
+      "isolate-service-feed",
+      "challenge-guardian",
+      "release-west-feed",
+      "release-east-feed",
+      "guardian-settled"
+    ],
+    "choice": null,
+    "opened": false,
+    "claimed": false
+  },
+  "atlantisCampaign": {
+    "version": 1,
+    "accepted": false,
+    "steps": [],
+    "approach": null,
+    "choice": null,
+    "claimed": false
+  },
+  "heavenCampaign": {
+    "version": 1,
+    "accepted": false,
+    "steps": [],
+    "choice": null,
+    "claimed": false
+  },
+  "hellCampaign": {
+    "version": 1,
+    "accepted": false,
+    "steps": [],
+    "choice": null,
+    "claimed": false
+  },
+  "bridgeCommunity": {
+    "version": 1,
+    "accepted": false,
+    "choice": null,
+    "steps": [],
+    "claimed": false
+  },
+  "homeHistory": {
+    "version": 1,
+    "revision": 0,
+    "owned": [],
+    "pinned": null
+  },
+  "localLife": {
+    "version": 1,
+    "records": {
+      "heaven-propagation-bed-v1": {
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      },
+      "hell-refuge-water-v1": {
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      },
+      "atlantis-bellglass-lamp-v1": {
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      },
+      "cosmos-drawing-shelf-v1": {
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      }
+    }
+  },
+  "earthExpedition": {
+    "version": 1,
+    "story": {
+      "accepted": false,
+      "branch": null,
+      "steps": [],
+      "claimed": false
+    },
+    "patrol": {
+      "lastClaim": 0,
+      "active": null
+    }
+  },
+  "realmTrails": {
+    "version": 1,
+    "records": {
+      "heaven-broken-choir-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "hell-open-cage-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "atlantis-bellglass-chart-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "earthlands-coastward-materials-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "cosmos-split-bearing-v1": {
+        "accepted": true,
+        "steps": [
+          "west-sight",
+          "east-sight",
+          "service-arm"
+        ],
+        "settings": {
+          "west-sight": 63.85469061425735,
+          "east-sight": 11.183849541231728
+        },
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": true
+      }
+    }
+  },
+  "journeys": {
+    "version": 1,
+    "realms": {
+      "heaven": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "hell": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "earthlands": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "atlantis": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "cosmos": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      }
+    }
+  },
+  "adventure": {
+    "version": 12,
+    "earthBinding": {
+      "version": 1,
+      "weapon": null,
+      "kind": null
+    },
+    "realmCraft": {
+      "version": 1,
+      "weapon": null
+    },
+    "earthGathering": {
+      "version": 1,
+      "accepted": false,
+      "prepared": [],
+      "verse": null,
+      "shared": false
+    },
+    "earthNotes": {
+      "version": 1,
+      "accepted": false,
+      "marks": [],
+      "compared": false,
+      "interpretation": null
+    },
+    "earthStory": {
+      "version": 1,
+      "accepted": false,
+      "steps": [],
+      "dispatch": null,
+      "arrived": false,
+      "claimed": false
+    },
+    "classPath": {
+      "version": 1,
+      "choice": null,
+      "readyAt": 0
+    },
+    "pursuit": {
+      "version": 1,
+      "pinned": null,
+      "claimed": 0,
+      "active": null,
+      "fittings": {}
+    },
+    "starter": {
+      "version": 1,
+      "accepted": false,
+      "bundles": [],
+      "reward": null
+    },
+    "crossing": {
+      "version": 1,
+      "entered": false,
+      "met": false,
+      "inscription": false,
+      "clapperRevealed": false,
+      "clapper": false,
+      "repaired": false,
+      "complete": false,
+      "reward": false,
+      "attuned": false,
+      "projects": []
+    },
+    "beacon": {
+      "version": 1,
+      "introduced": false,
+      "complete": false,
+      "status": "dormant",
+      "attempts": 0,
+      "failures": 0,
+      "reward": false,
+      "relic": "undecided",
+      "route": null,
+      "soul": {
+        "grace": false,
+        "equipped": null,
+        "radiance": 0,
+        "corruption": 0,
+        "scars": []
+      }
+    },
+    "arsenal": {
+      "version": 1,
+      "gems": {
+        "ruby": 0,
+        "moonstone": 0,
+        "amber": 0
+      },
+      "sockets": {},
+      "rangeMedal": false,
+      "bestTime": null
+    },
+    "road": {
+      "version": 1,
+      "entered": false,
+      "revealed": [],
+      "claimed": [],
+      "cartRepaired": false,
+      "beaconLit": false,
+      "reported": false
+    },
+    "elapsed": 199.60000000001114,
+    "revision": 48,
+    "started": true,
+    "dug": [],
+    "chips": [],
+    "defeated": [],
+    "drops": [],
+    "ore": 2,
+    "coins": 10,
+    "xp": 25,
+    "hp": 77,
+    "stamina": 99.5,
+    "tonics": 3,
+    "equipment": {
+      "weapon": "trail_blade",
+      "armor": "travel_coat",
+      "charm": null
+    },
+    "owned": [
+      "trail_blade",
+      "travel_coat"
+    ],
+    "companion": {
+      "bonded": false,
+      "name": "Briar",
+      "mode": "follow"
+    },
+    "relic": false,
+    "angelSeen": false,
+    "reward": null,
+    "deaths": 0,
+    "receipts": [
+      {
+        "id": "earned-north-1-0-1",
+        "fp": "[\"start\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-10",
+        "fp": "[\"rest\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-21",
+        "fp": "[\"target-select\",{\"id\":\"cosmos-optical-reclaimer-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-22",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-23",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-1-17",
+        "fp": "[\"attack\",{\"target\":\"cosmos-optical-reclaimer-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-3-18",
+        "fp": "[\"attack\",{\"target\":\"cosmos-optical-reclaimer-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-5-19",
+        "fp": "[\"attack\",{\"target\":\"cosmos-optical-reclaimer-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-7-20",
+        "fp": "[\"attack\",{\"target\":\"cosmos-optical-reclaimer-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-9-21",
+        "fp": "[\"attack\",{\"target\":\"cosmos-optical-reclaimer-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-11-22",
+        "fp": "[\"attack\",{\"target\":\"cosmos-optical-reclaimer-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-24",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-28",
+        "fp": "[\"target-select\",{\"id\":\"cosmos-still-meridian-guardian-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-29",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-30",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-33",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-34",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-1-34",
+        "fp": "[\"attack\",{\"target\":\"cosmos-still-meridian-guardian-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-3-35",
+        "fp": "[\"attack\",{\"target\":\"cosmos-still-meridian-guardian-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-5-36",
+        "fp": "[\"attack\",{\"target\":\"cosmos-still-meridian-guardian-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-7-37",
+        "fp": "[\"attack\",{\"target\":\"cosmos-still-meridian-guardian-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-9-38",
+        "fp": "[\"attack\",{\"target\":\"cosmos-still-meridian-guardian-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-11-39",
+        "fp": "[\"attack\",{\"target\":\"cosmos-still-meridian-guardian-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-13-40",
+        "fp": "[\"attack\",{\"target\":\"cosmos-still-meridian-guardian-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-15-41",
+        "fp": "[\"attack\",{\"target\":\"cosmos-still-meridian-guardian-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-35",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-17-43",
+        "fp": "[\"attack\",{\"target\":\"cosmos-still-meridian-guardian-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-19-44",
+        "fp": "[\"attack\",{\"target\":\"cosmos-still-meridian-guardian-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-21-45",
+        "fp": "[\"attack\",{\"target\":\"cosmos-still-meridian-guardian-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-36",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      }
+    ]
+  },
+  "sandbox": {
+    "version": 1,
+    "elapsed": 199.60000000001114,
+    "revision": 0,
+    "inventory": {
+      "wood": 0,
+      "stone": 0,
+      "fiber": 0,
+      "crystal": 0,
+      "plank": 0,
+      "block": 0,
+      "seeds": 4,
+      "berry": 0,
+      "axe": 0,
+      "pick": 0,
+      "floor": 0,
+      "wall": 0,
+      "masonry": 0,
+      "lantern": 0,
+      "bench": 0,
+      "bed": 0,
+      "fire": 0,
+      "workbench": 0
+    },
+    "nodes": [
+      {
+        "id": "timber-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "timber-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "timber-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "timber-4",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-1",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-2",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-3",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-stone-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-stone-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-fibre",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "crystal-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "crystal-2",
+        "hp": 4,
+        "readyAt": 0
+      }
+    ],
+    "bridge": false,
+    "placed": [],
+    "nextId": 1,
+    "stats": {
+      "gathered": 0,
+      "crafted": 0,
+      "harvested": 0
+    },
+    "milestones": [],
+    "recentCommands": [],
+    "cooldownUntil": 0
+  },
+  "score": {
+    "format": "eternities.score.v1",
+    "title": "A Window Left Open",
+    "bpm": 88,
+    "voice": "felt",
+    "melody": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    ],
+    "bass": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "drums": [
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    ]
+  },
+  "scoreRevision": 0,
+  "retreat": {
+    "version": 1,
+    "revision": 0,
+    "wall": "moss",
+    "floor": "oak",
+    "items": [
+      {
+        "slot": "nw",
+        "kind": "shelf",
+        "rotation": 0
+      },
+      {
+        "slot": "ne",
+        "kind": "piano",
+        "rotation": 0
+      },
+      {
+        "slot": "w",
+        "kind": "sofa",
+        "rotation": 1
+      },
+      {
+        "slot": "e",
+        "kind": "plant",
+        "rotation": 0
+      },
+      {
+        "slot": "c",
+        "kind": "rug",
+        "rotation": 0
+      }
+    ]
+  },
+  "visitor": {
+    "name": "Visitor",
+    "skin": 0,
+    "cloak": 0,
+    "hair": 0
+  },
+  "version": 9,
+  "seed": 2317,
+  "day": 1,
+  "hour": 18.09820000000145,
+  "weather": "clear",
+  "player": {
+    "x": 18,
+    "z": 6,
+    "yaw": 2.2455372690188193
+  },
+  "visited": [
+    "market",
+    "commons"
+  ],
+  "flowers": [],
+  "notes": [],
+  "journal": [
+    {
+      "seq": 1,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 2,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 3,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 4,
+      "day": 1,
+      "hour": 17.209000000000014,
+      "kind": "discovery",
+      "text": "You found The makers’ exchange."
+    },
+    {
+      "seq": 5,
+      "day": 1,
+      "hour": 17.21305000000002,
+      "kind": "quest",
+      "text": "Oren supplied a trail blade, a lantern, three tonics and a salve for an injured animal. Find the northern mine."
+    },
+    {
+      "seq": 6,
+      "day": 1,
+      "hour": 17.240725000000065,
+      "kind": "realm-trail",
+      "text": "Two Stations, One Honest Bearing accepted. Read the route, danger and fixed reward."
+    },
+    {
+      "seq": 7,
+      "day": 1,
+      "hour": 17.298100000000158,
+      "kind": "realm-trail",
+      "text": "Stand at the west sight frame and turn its comparator scale. The two arms refer to the fixed sky image’s centre and the observatory crown’s axis. Match their local horizontal separation within two scale degrees, then record the setting. A mismatched setting keeps the job open and spends nothing."
+    },
+    {
+      "seq": 8,
+      "day": 1,
+      "hour": 17.337700000000222,
+      "kind": "realm-trail",
+      "text": "Reach the east sight frame by the supported road and Common Landing. Adjust this scale from the new station: the same authored image and crown have a different local separation here. Match the two arms within two scale degrees and record this station’s reading. The first reading does not stand in for the second."
+    },
+    {
+      "seq": 9,
+      "day": 1,
+      "hour": 17.36762500000027,
+      "kind": "realm-trail",
+      "text": "At the open service arm beside the observatory, fit the two accepted station scales to one comparator chart. Keep the station names beside their readings. This is a local view comparison, not a measurement of astronomical distance or proof of a sky road. Return down either grounded approach to Teren at Three Lamps for the declared once-only payment"
+    },
+    {
+      "seq": 10,
+      "day": 1,
+      "hour": 17.443000000000392,
+      "kind": "realm-trail",
+      "text": "Two Stations, One Honest Bearing complete · +25 XP · +10 sunmarks · +2 ore. The declared fee is claimed once."
+    },
+    {
+      "seq": 11,
+      "day": 1,
+      "hour": 17.468200000000433,
+      "kind": "discovery",
+      "text": "You found The Firstlight Commons."
+    },
+    {
+      "seq": 12,
+      "day": 1,
+      "hour": 17.59105000000063,
+      "kind": "cosmos-campaign",
+      "text": "The Open Confluence accepted. The comparator, drawing shelf, equipment and ordinary return retain their own history."
+    },
+    {
+      "seq": 13,
+      "day": 1,
+      "hour": 17.591275000000632,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 14,
+      "day": 1,
+      "hour": 17.591275000000632,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 15,
+      "day": 1,
+      "hour": 17.591275000000632,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 16,
+      "day": 1,
+      "hour": 17.67632500000077,
+      "kind": "cosmos-campaign",
+      "text": "Anik: Avar’s stabilization helped people, but his diagram leaves out what the garden and branch feeds must carry. Compare their marks. Raven and I have tested alternatives for all three supports."
+    },
+    {
+      "seq": 17,
+      "day": 1,
+      "hour": 17.687575000000788,
+      "kind": "cosmos-campaign",
+      "text": "Check the brace shoes against the service load marks. Anik supplies the parts for this job; you do not spend your own materials."
+    },
+    {
+      "seq": 18,
+      "day": 1,
+      "hour": 17.697025000000803,
+      "kind": "cosmos-campaign",
+      "text": "Fit the supplied struts into both independent shoes. The completed brace prepares one distinct material support."
+    },
+    {
+      "seq": 19,
+      "day": 1,
+      "hour": 17.716825000000835,
+      "kind": "cosmos-campaign",
+      "text": "Fit the tested adaptive return here. It prepares the living support without a rare seed, companion, growth timer or prior garden job."
+    },
+    {
+      "seq": 20,
+      "day": 1,
+      "hour": 17.717050000000835,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 21,
+      "day": 1,
+      "hour": 17.717050000000835,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 22,
+      "day": 1,
+      "hour": 17.717050000000835,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 23,
+      "day": 1,
+      "hour": 17.817850000001,
+      "kind": "cosmos-campaign",
+      "text": "Check the clear service approach and any two different support fittings. The third is optional. A tested, supplied alternative carries its branch just as an inspected fitting does."
+    },
+    {
+      "seq": 24,
+      "day": 1,
+      "hour": 17.822125000001005,
+      "kind": "cosmos-campaign",
+      "text": "Start the Optical Reclaimer deliberately. It marks a narrow attack along the service road; cover can block it. Select the machine with Tab or click, then use your blade or bow."
+    },
+    {
+      "seq": 25,
+      "day": 1,
+      "hour": 17.839900000001034,
+      "kind": "cosmos-campaign",
+      "text": "Optical Reclaimer settled through actual combat exhaustion. No independent loot, XP or central project completion was granted."
+    },
+    {
+      "seq": 26,
+      "day": 1,
+      "hour": 17.840125000001034,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 27,
+      "day": 1,
+      "hour": 17.840125000001034,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 28,
+      "day": 1,
+      "hour": 17.840125000001034,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 29,
+      "day": 1,
+      "hour": 17.95487500000122,
+      "kind": "cosmos-campaign",
+      "text": "Turn this branch to its independent setting. The public approach stays open. Stopping the machine does not turn the feed for you."
+    },
+    {
+      "seq": 30,
+      "day": 1,
+      "hour": 17.96635000000124,
+      "kind": "cosmos-campaign",
+      "text": "Read the ring and cross warnings. The Guardian stays in its court: move into the clear center or a clear quadrant, use cover, or Brace. You may release either feed during the fight or afterward. Avar must still account for the work he imposed."
+    },
+    {
+      "seq": 31,
+      "day": 1,
+      "hour": 18.02260000000133,
+      "kind": "cosmos-campaign",
+      "text": "Release the west feed to remove the transverse bar from later crosses. If an attack is already marked, that attack still follows its mark. You may make this release during the fight or after the Guardian stops."
+    },
+    {
+      "seq": 32,
+      "day": 1,
+      "hour": 18.055450000001382,
+      "kind": "cosmos-campaign",
+      "text": "Release the east feed. New rings reach 3.2 paces instead of 4.6. The 1.8-pace clear center, damage and timing stay the same. A ring already marked does not change."
+    },
+    {
+      "seq": 33,
+      "day": 1,
+      "hour": 18.09820000000145,
+      "kind": "cosmos-campaign",
+      "text": "Still Meridian Guardian settled through actual combat exhaustion. No independent loot, XP or central project completion was granted."
+    }
+  ],
+  "nextEvent": 34,
+  "residents": [
+    {
+      "id": "ilan",
+      "x": 0,
+      "z": -11.6,
+      "yaw": 1.5707963267948966,
+      "progress": 0.08584699999999021,
+      "conversations": 0
+    },
+    {
+      "id": "mara",
+      "x": 9,
+      "z": -5.8,
+      "yaw": 0,
+      "progress": 0.08592799999999017,
+      "conversations": 0
+    },
+    {
+      "id": "oren",
+      "x": 11,
+      "z": 9,
+      "yaw": -1.5707963267948966,
+      "progress": 0.08584699999999021,
+      "conversations": 0
+    }
+  ],
+  "settings": {
+    "quality": "balanced",
+    "cameraMode": "adventure",
+    "cameraFov": 60,
+    "cameraViews": {
+      "version": 1,
+      "lastDiorama": "follow",
+      "profiles": {}
+    },
+    "cameraCutaway": true,
+    "reducedMotion": false,
+    "labels": true,
+    "timeFlow": true,
+    "sound": false
+  }
+}

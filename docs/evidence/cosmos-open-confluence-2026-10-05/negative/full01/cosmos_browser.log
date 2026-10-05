@@ -1,0 +1,11 @@
+PASS exact generated build loads
+FAIL pre-entry terms declare routes, no rewards and safe-side reload
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tests\cosmos_browser.py", line 53, in <module>
+    check('pre-entry terms declare routes, no rewards and safe-side reload',all(t in text for t in ['Rootcut','No combat or rewards','reopening','valley checkpoint']))
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tests\cosmos_browser.py", line 24, in check
+    if not value: raise AssertionError(name)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: pre-entry terms declare routes, no rewards and safe-side reload
+Cosmos browser checks: 1/2; errors: 1

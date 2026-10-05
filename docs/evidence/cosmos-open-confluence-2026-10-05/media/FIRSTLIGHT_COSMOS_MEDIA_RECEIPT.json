@@ -1,0 +1,198 @@
+{
+  "status": "decoded",
+  "sourceHead": "d3ec32f716896d876d4771c0ff6c225e43b8d906",
+  "sourceReport": "D:\\07-GAMES\\Firstlight\\artifacts\\cosmos-open-confluence-20261005\\capture01\\REPORT.json",
+  "sourceReportSha256": "3c0ed900c9d00066ad1080e5715c1b3be53a00ff268b950493dd2089e361866d",
+  "sourceFrozen": true,
+  "htmlSha256": "ba121c8ad0c40369ef540e6c3b42279d541761512518efb45472a7d53630e1cf",
+  "raw": "D:\\07-GAMES\\Firstlight\\artifacts\\cosmos-open-confluence-20261005\\capture01\\512e0d1d49ab23eb299fe7086de2b4f3.webm",
+  "rawBytes": 15124547,
+  "rawSha256": "a16042d4739230d8ae5c4a0fadec8b6ad891fbf222e7509228f6e0ef1d6915ed",
+  "rawFrames": 3074,
+  "rawFPS": 25,
+  "recordingStartWallInterval": [
+    0.31655360001605004,
+    0.5466980999917723
+  ],
+  "segments": [
+    {
+      "label": "Supported service approach",
+      "startFrame": 725,
+      "endFrame": 805,
+      "seconds": 3.2
+    },
+    {
+      "label": "Optical line and Reclaimer fight",
+      "startFrame": 865,
+      "endFrame": 1005,
+      "seconds": 5.6
+    },
+    {
+      "label": "Guardian ring/cross in both views and actual combat",
+      "startFrame": 1260,
+      "endFrame": 1640,
+      "seconds": 15.2
+    },
+    {
+      "label": "West feed release",
+      "startFrame": 1690,
+      "endFrame": 1720,
+      "seconds": 1.2
+    },
+    {
+      "label": "East feed release",
+      "startFrame": 1830,
+      "endFrame": 1860,
+      "seconds": 1.2
+    },
+    {
+      "label": "Deliberate account preview",
+      "startFrame": 2085,
+      "endFrame": 2125,
+      "seconds": 1.6
+    },
+    {
+      "label": "Operation journal and verification route",
+      "startFrame": 2540,
+      "endFrame": 2590,
+      "seconds": 2.0
+    },
+    {
+      "label": "Payment and free return home",
+      "startFrame": 2995,
+      "endFrame": 3070,
+      "seconds": 3.0
+    }
+  ],
+  "final": "D:\\07-GAMES\\Firstlight\\artifacts\\cosmos-open-confluence-20261005\\media\\FIRSTLIGHT_COSMOS_GAMEPLAY.mp4",
+  "bytes": 6776406,
+  "sha256": "029461acdb07e97dcc76b598fee19fb494a567db43485c7b3a54100256359fc5",
+  "decodedFrames": 825,
+  "duration": 33.0,
+  "encoderCommand": [
+    "C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Lib/site-packages/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe",
+    "-hide_banner",
+    "-nostdin",
+    "-threads",
+    "1",
+    "-i",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\cosmos-open-confluence-20261005\\capture01\\512e0d1d49ab23eb299fe7086de2b4f3.webm",
+    "-filter_complex_threads",
+    "1",
+    "-filter_complex",
+    "[0:v]split=8[v0][v1][v2][v3][v4][v5][v6][v7];[v0]trim=start_frame=725:end_frame=805,setpts=PTS-STARTPTS[s0];[v1]trim=start_frame=865:end_frame=1005,setpts=PTS-STARTPTS[s1];[v2]trim=start_frame=1260:end_frame=1640,setpts=PTS-STARTPTS[s2];[v3]trim=start_frame=1690:end_frame=1720,setpts=PTS-STARTPTS[s3];[v4]trim=start_frame=1830:end_frame=1860,setpts=PTS-STARTPTS[s4];[v5]trim=start_frame=2085:end_frame=2125,setpts=PTS-STARTPTS[s5];[v6]trim=start_frame=2540:end_frame=2590,setpts=PTS-STARTPTS[s6];[v7]trim=start_frame=2995:end_frame=3070,setpts=PTS-STARTPTS[s7];[s0][s1][s2][s3][s4][s5][s6][s7]concat=n=8:v=1:a=0[joined];[joined]setpts=N/(25*TB)[outv]",
+    "-map",
+    "[outv]",
+    "-an",
+    "-c:v",
+    "libx264",
+    "-preset",
+    "veryfast",
+    "-crf",
+    "21",
+    "-pix_fmt",
+    "yuv420p",
+    "-threads",
+    "2",
+    "-x264-params",
+    "lookahead_threads=1",
+    "-fps_mode",
+    "cfr",
+    "-movflags",
+    "+faststart",
+    "-r",
+    "25",
+    "-enc_time_base",
+    "1:25",
+    "-video_track_timescale",
+    "25000",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\cosmos-open-confluence-20261005\\media\\FIRSTLIGHT_COSMOS_GAMEPLAY.mp4"
+  ],
+  "wholeDecodeExit": 0,
+  "timestampAudit": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\cosmos-open-confluence-20261005\\media\\SOURCE_TIMESTAMPS.log",
+    "sha256": "f9c74af6c2314fd52c47cc4db2621984455f2a1768d2e0bf64793b9a489249c2",
+    "allSelectedIntervals": 0.04
+  },
+  "auditFrames": [
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\cosmos-open-confluence-20261005\\media\\AUDIT_service.png",
+      "seconds": 1,
+      "sha256": "faac67978d0371dab6d3543ac28daea5704741c2f32fb52f0a0868b38fe9936e",
+      "bytes": 689487
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\cosmos-open-confluence-20261005\\media\\AUDIT_optical.png",
+      "seconds": 5,
+      "sha256": "ec9d3d875225af545d8c3266024a3bba9e12c1fdaf96a5c88e6b533b5c70084f",
+      "bytes": 610639
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\cosmos-open-confluence-20261005\\media\\AUDIT_guardian.png",
+      "seconds": 16,
+      "sha256": "81f531e29e56bdfba87c7b662e79dd3b96cf2c660b89a74337324a33966115ce",
+      "bytes": 661078
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\cosmos-open-confluence-20261005\\media\\AUDIT_apparatus.png",
+      "seconds": 28,
+      "sha256": "e4d81f591ffeb098cb6514dda3c9cd05050b8207a774c22d4168f955e6e51720",
+      "bytes": 310560
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\cosmos-open-confluence-20261005\\media\\AUDIT_home.png",
+      "seconds": 32.7,
+      "sha256": "55a2ae6bfb27fbdd15e5268f11f4593f5a1af10ba26eed8d8123d1ef1a6859ed",
+      "bytes": 1491570
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\cosmos-open-confluence-20261005\\media\\AUDIT_extra_10.png",
+      "seconds": 10,
+      "sha256": "0dd163a76b7e873200da07f525e72786ebbd7dd850ec9682356335573d244f17",
+      "bytes": 598404
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\cosmos-open-confluence-20261005\\media\\AUDIT_extra_14.png",
+      "seconds": 14,
+      "sha256": "168949566ea1a9aa4fb9c0a4249a2319ae21b6c6262cc0ddfa6b769143606251",
+      "bytes": 663218
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\cosmos-open-confluence-20261005\\media\\AUDIT_extra_20.png",
+      "seconds": 20,
+      "sha256": "3feb1d785574b5769ed6e198a3499db16c5d95374ca16e19043c98c36a7c27e4",
+      "bytes": 614940
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\cosmos-open-confluence-20261005\\media\\AUDIT_extra_23.png",
+      "seconds": 23,
+      "sha256": "85051a92e95600315ed0656c11d08e5739278bac5f82921f51bf64bbd80cbd85",
+      "bytes": 560595
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\cosmos-open-confluence-20261005\\media\\AUDIT_extra_29.png",
+      "seconds": 29,
+      "sha256": "bddfe48fa39feb38eac9a96153d40ae7c8020d84675e8818ea2587f70e1e8e9a",
+      "bytes": 749576
+    }
+  ],
+  "method": "One existing original-speed raw take, chronological excerpts, no titles, no audio, no interpolation, no intermediate movies or raw/profile copies. Final cadence equals actual selected source cadence.",
+  "reportedBrowser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36",
+  "reportedRenderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "normalTimeFootage": true,
+  "testMode": false,
+  "performanceQualification": false,
+  "humanAcceptance": false,
+  "pacingLimit": "Prepared character; acceptance/kit/comparator/support-preparation are omitted. Companion contribution is possible. Exact wall-clock/PNG alignment remains approximate; raw frame indices own the cuts.",
+  "manualFrameReview": {
+    "reviewedUtc": "2026-10-05T11:16:21.927219+00:00",
+    "method": "Root inspected ten actual final-video extracted PNG frames through image viewer.",
+    "observations": "Supported approach; readable Optical line; Guardian annulus in third person, recovery in diorama, actual damage/cross and exhausted body; operation journal and verification road; actual paused return to Firstlight.",
+    "limit": "Sampled frames are not an uninterrupted visual review. The original apparatus-labelled sample showed the journal, so this segment is labelled operation journal/verification instead. Actual independent-apparatus screenshots remain separately available from the capture report. No footage was substituted or retimed.",
+    "graphics": "Procedural prototype court/models remain visually rough; this is mechanism and camera evidence, not final art or human acceptance."
+  }
+}

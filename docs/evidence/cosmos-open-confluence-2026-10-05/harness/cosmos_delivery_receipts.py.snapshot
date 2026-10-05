@@ -1,0 +1,383 @@
+"""Read-only, streamed Cosmos delivery preflight. No Git/browser/game writes.
+
+Final gate status requires Root's separate observed-exit receipt. A running-log
+snapshot is only progress and never a qualification substitute.
+"""
+import argparse
+import ast
+from collections import Counter
+import hashlib
+import json
+from pathlib import Path, PurePosixPath, PureWindowsPath
+import re
+import sys
+
+ORIGINAL_HEAD = 'd3ec32f716896d876d4771c0ff6c225e43b8d906'
+HEAD = 'f65f3a48b87b697fcdfdf8e94410f1446bea3f27'
+GATE_EPOCH = '03'
+TEST_REPAIR_SHA = '3be4f9f1e19556cfd45300b460fa5e4902937d246b44a3c8faf8fbcfd114ad51'
+HTML = 'ba121c8ad0c40369ef540e6c3b42279d541761512518efb45472a7d53630e1cf'
+MEDIA = '029461acdb07e97dcc76b598fee19fb494a567db43485c7b3a54100256359fc5'
+STATION = Path('D:/07-GAMES/Firstlight/verification/current-qualified-game')
+ART = Path('D:/07-GAMES/Firstlight/artifacts/cosmos-open-confluence-20261005')
+EARNED = Path('D:/07-GAMES/Firstlight/evidence/cosmos-campaign-integrated-20261005-earned03')
+SOURCE_BASE = PureWindowsPath('D:/07-GAMES/Firstlight/authoring/atlantis-harbour-campaign-20261004')
+FINAL_SENTENCE = 'Verification passed. Automated checks do not qualify human pacing or device performance.'
+FAMILIES = ('fresh-blade', 'fresh-bow', 'returning-strongest')
+ZERO_EARNED = ('positionEdits', 'actorPositionEdits', 'inventoryGrants', 'healthGrants',
+               'manualDamage', 'plantedDefeats', 'plantedQuestFacts', 'forcedModes', 'forcedCycles')
+CHECKPOINTS = ('00_EARNED_SEED', '01_ACCEPTED', '02_DISTINCT_SUPPORTS',
+    '03_ACTUAL_RECLAIMER_SETTLED', '04_ACTUAL_GUARDIAN_READY',
+    'CHECKPOINT_RELEASE_WEST_LIVE', 'CHECKPOINT_RELEASE_EAST_LIVE',
+    '05_ACTUAL_GUARDIAN_SETTLED', '06_CENTRAL_LINK_DISABLED', '07_DELIBERATE_ACCOUNT',
+    '08_INDEPENDENT_SUPPORT_SETTINGS', '09_LOCAL_APPARATUS_OPEN', '10_VERIFIED_UNPAID',
+    '11_PAID_ONCE', 'FINAL_WORLD')
+CHECKPOINTS_BY_FAMILY = {family: CHECKPOINTS for family in FAMILIES}
+CHECKPOINTS_BY_FAMILY['returning-strongest'] = tuple(n for n in CHECKPOINTS if not n.endswith('_LIVE')) + ('CHECKPOINT_release-west-feed', 'CHECKPOINT_release-east-feed')
+SELECTED_PIXELS = (
+    'fresh-blade-04-reclaimer-line-warning-adventure.png',
+    'fresh-blade-07-reclaimer-line-warning-follow.png',
+    'fresh-blade-10-guardian-annulus-warning-adventure.png',
+    'fresh-blade-13-guardian-annulus-warning-follow.png',
+    'fresh-blade-22-guardian-cross-warning-adventure.png',
+    'fresh-blade-25-guardian-cross-warning-follow.png',
+    'returning-strongest-33-owned-cosmos-avar-senn-v1-adventure.png',
+    'returning-strongest-38-public-record-persistent-account-follow.png')
+
+
+def need(condition, text):
+    if not condition:
+        raise ValueError(text)
+
+
+def streamed_hash(path):
+    path = Path(path)
+    before = path.stat()
+    h = hashlib.sha256()
+    with path.open('rb') as stream:
+        while data := stream.read(1024 * 1024):
+            h.update(data)
+    after = path.stat()
+    need((before.st_size, before.st_mtime_ns) == (after.st_size, after.st_mtime_ns), 'File changed while hashing: ' + str(path))
+    return {'bytes': after.st_size, 'sha256': h.hexdigest()}
+
+
+def read_json(path):
+    with Path(path).open(encoding='utf-8-sig') as stream:
+        return json.load(stream)
+
+
+def relative_source(name):
+    win = PureWindowsPath(name)
+    if win.is_absolute():
+        try:
+            name = win.relative_to(SOURCE_BASE).as_posix()
+        except ValueError as error:
+            raise ValueError('Source receipt outside declared source owner: ' + str(win)) from error
+    else:
+        name = str(name).replace('\\', '/')
+    p = PurePosixPath(name)
+    need(not p.is_absolute() and '..' not in p.parts and p.parts and ':' not in name, 'Unsafe source path: ' + name)
+    need(p.parts[0] in {'src', 'tests', 'tools', 'assets'} or name in {'build.py', 'index.html', 'FIRSTLIGHT_VALLEY.html'}, 'Unexpected source input: ' + name)
+    return p.as_posix()
+
+
+def check_source_hashes(expected, station):
+    need(isinstance(expected, dict) and expected, 'Missing source hashes')
+    normalized, newline_equivalence = {}, []
+    for name, value in expected.items():
+        rel = relative_source(name)
+        need(rel not in normalized, 'Duplicate source input: ' + rel)
+        need(isinstance(value, str) and re.fullmatch('[0-9a-f]{64}', value), 'Invalid source digest: ' + rel)
+        path = Path(station) / rel
+        actual = streamed_hash(path)
+        if actual['sha256'] != value:
+            # Original authoring reports bind CRLF working bytes in one source
+            # file; the clean station obeys tracked eol=lf. Preserve both hashes
+            # and accept only the exact inverse CRLF transform, never generic
+            # whitespace/content normalization or a byte-equality claim.
+            attrs = (Path(station) / '.gitattributes').read_text(encoding='utf-8')
+            need('* text=auto eol=lf' in attrs.splitlines() and path.suffix in {'.js', '.css', '.html', '.py', '.cjs'}, 'Pinned station source mismatch: ' + rel)
+            data = path.read_bytes()
+            need(b'\r' not in data and hashlib.sha256(data.replace(b'\n', b'\r\n')).hexdigest() == value, 'Pinned station content mismatch beyond declared newlines: ' + rel)
+            newline_equivalence.append({'path': rel, 'station': actual, 'authoringFrozenSha256': value,
+                'comparison': 'exact LF-to-CRLF inverse under tracked eol=lf; working bytes differ'})
+        normalized[rel] = value
+    return {'hashes': normalized, 'exactWorkingFiles': len(normalized) - len(newline_equivalence),
+            'declaredNewlineEquivalence': newline_equivalence}
+
+
+def required_browser_suites(verify_source):
+    """Extract current production browser calls/lists without executing verifier."""
+    tree = ast.parse(verify_source)
+    main = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == 'main')
+    block = next(n for n in ast.walk(main) if isinstance(n, ast.If) and isinstance(n.test, ast.Attribute)
+                 and isinstance(n.test.value, ast.Name) and n.test.value.id == 'args' and n.test.attr == 'browser')
+    suites = []
+    for node in ast.walk(block):
+        if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id == 'browser_run_spec' and node.args and isinstance(node.args[0], ast.Constant):
+            suites.append(node.args[0].value)
+        if isinstance(node, ast.For) and isinstance(node.target, ast.Name) and node.target.id == 'suite' and isinstance(node.iter, (ast.List, ast.Tuple)):
+            suites.extend(ast.literal_eval(node.iter))
+    need(all(isinstance(n, str) and n.endswith('_browser') for n in suites), 'Nonliteral browser contract')
+    need(len(suites) == len(set(suites)) == 45, 'Current Cosmos contract requires exactly 45 distinct browser suites')
+    return sorted(suites)
+
+
+def parse_console(text, required):
+    runs, passes, failures, pending = [], [], [], None
+    for line in text.splitlines():
+        running = re.fullmatch(r'Running (.+)\.\.\.', line)
+        passed = re.fullmatch(r'PASS: (.+)', line)
+        failed = re.fullmatch(r'FAILED: (.+) \(exit (-?\d+)\); see .+', line)
+        if line.startswith('FAILED:'):
+            need(failed is not None, 'Malformed failure record')
+        if running:
+            need(pending is None, 'Overlapping/unclosed commands or concatenated invocation')
+            pending = running[1]
+            need(pending not in runs, 'Repeated command: ' + pending)
+            runs.append(pending)
+        if passed:
+            need(passed[1] == pending, 'PASS does not match actual pending command')
+            passes.append(passed[1])
+            pending = None
+        if failed:
+            need(failed[1] == pending and int(failed[2]) != 0, 'FAILED does not match actual pending command/nonzero exit')
+            failures.append({'command': failed[1], 'exitCode': int(failed[2])})
+            pending = None
+        need(not failures or not running, 'Verifier continued after a failed command')
+    need(len(re.findall(r'^Python: ', text, re.M)) == 1, 'Console must contain exactly one verifier invocation')
+    completed = text.rstrip().endswith(FINAL_SENTENCE) and text.count(FINAL_SENTENCE) == 1
+    if completed:
+        need(pending is None and runs == passes, 'Incomplete command in purported final gate')
+        need(not failures, 'Failure in final gate')
+        actual = {n for n in passes if n.endswith('_browser')}
+        need(actual == set(required), 'Required browser suites missing/extra: ' + str(sorted(set(required) ^ actual)))
+    return {'completedSentence': completed, 'commandsStarted': len(runs), 'commandsPassed': len(passes),
+        'pendingCommand': pending, 'browserSuitesPassed': len([n for n in passes if n in required]),
+        'failedCommands': failures,
+        'requiredBrowserSuites': required, 'passedCommands': passes,
+        'syntax': len([n for n in passes if n.startswith('syntax-')]),
+        'journeys': len([n for n in passes if n not in {'build', 'rules', 'python'} and not n.startswith('syntax-') and not n.endswith('_browser')])}
+
+
+def test_totals(rules_text, python_text):
+    fields = {}
+    for key in ('tests', 'pass', 'fail', 'cancelled', 'skipped', 'todo'):
+        values = re.findall(r'^# ' + key + r' (\d+)\s*$', rules_text, re.M)
+        need(len(values) == 1, 'Missing/ambiguous Node total ' + key)
+        fields[key] = int(values[0])
+    need(fields['tests'] == fields['pass'] + fields['fail'] + fields['cancelled'] + fields['skipped'], 'Node total disagreement')
+    need(fields['fail'] == fields['cancelled'] == fields['todo'] == 0, 'Unpassed Node gate')
+    ran = re.findall(r'^Ran (\d+) tests? in ', python_text, re.M)
+    ok = re.findall(r'^OK(?: \(skipped=(\d+)\))?\s*$', python_text, re.M)
+    need(len(ran) == len(ok) == 1, 'Unpassed/ambiguous Python gate')
+    skipped = int(ok[0] or 0)
+    skip_lines = [line for line in python_text.splitlines() if ' ... skipped ' in line]
+    need(len(skip_lines) == skipped, 'Declared Python skips lack exact verbose names/reasons')
+    return {'node': fields, 'python': {'tests': int(ran[0]), 'pass': int(ran[0]) - skipped, 'skip': skipped, 'skipDetails': skip_lines}}
+
+
+def summarize_gate(art=ART, station=STATION, require_pass=False, epoch=GATE_EPOCH, source_head=HEAD):
+    art, station = Path(art), Path(station)
+    need(re.fullmatch('[0-9]{2}', epoch) is not None, 'Unsafe gate epoch')
+    need(re.fullmatch('[0-9a-f]{40}', source_head) is not None, 'Invalid gate source head')
+    stem = 'remote-full' + epoch
+    log = art / (stem + '-console.log')
+    if not log.is_file():
+        need(not require_pass, 'Wait for Root-observed exit0 receipt; no current gate log exists')
+        return {'status': 'awaiting-log', 'sourceHead': source_head, 'epoch': epoch, 'station': str(station),
+                'commandsStarted': 0, 'commandsPassed': 0, 'browserSuitesPassed': 0, 'pendingCommand': None}
+    raw = log.read_bytes()
+    parsed = parse_console(raw.decode('utf-8-sig'), required_browser_suites((station / 'tools/verify.py').read_text(encoding='utf-8')))
+    report = {'status': 'failed' if parsed['failedCommands'] else 'running-or-unconfirmed', 'sourceHead': source_head, 'epoch': epoch, 'station': str(station),
+        'console': {'bytes': len(raw), 'sha256': hashlib.sha256(raw).hexdigest()}, **parsed}
+    if (art / stem / 'rules.log').is_file() and (art / stem / 'python.log').is_file():
+        report.update(test_totals((art / stem / 'rules.log').read_text(encoding='utf-8'), (art / stem / 'python.log').read_text(encoding='utf-8')))
+    observed = art / ('REMOTE_FULL' + epoch + '_RECEIPT.json')
+    if observed.is_file():
+        gate = read_json(observed)
+        need(gate['sourceHead'] == source_head, 'Observed gate source epoch mismatch')
+        declared_hashes = [gate[key] for key in ('consoleSha256', 'logSha256') if key in gate]
+        if 'console' in gate:
+            need(gate['console']['bytes'] == report['console']['bytes'], 'Observed receipt console size mismatch')
+            declared_hashes.append(gate['console']['sha256'])
+        need(declared_hashes and all(value == report['console']['sha256'] for value in declared_hashes), 'Observed receipt must bind exact console bytes')
+        if gate['status'] == 'passed':
+            counts = [gate[k] for k in ('commands', 'commandsPassed') if k in gate]
+            need(counts and all(n == parsed['commandsPassed'] for n in counts) and gate['exitCode'] == 0 and parsed['completedSentence'], 'Observed gate count/result/console mismatch')
+            if epoch == GATE_EPOCH:
+                expected_root = PureWindowsPath(str(art / ('remote-full' + epoch + '-browser')))
+                need(gate.get('browserOutputMode') == 'supported' and PureWindowsPath(str(gate.get('browserOutputRoot', ''))) == expected_root,
+                     'Current full gate must bind supported routing and its exact fresh browser root')
+        else:
+            need(gate['status'] == 'failed' and gate['exitCode'] != 0 and parsed['failedCommands'] and not parsed['completedSentence'], 'Observed failed gate/console mismatch')
+        for key in ('consoleSha256', 'logSha256'):
+            if key in gate:
+                need(gate[key] == report['console']['sha256'], 'Observed receipt console hash mismatch')
+        report.update(status=gate['status'], observedReceipt=streamed_hash(observed), actualExitCode=gate['exitCode'])
+    if require_pass:
+        need(report['status'] == 'passed', 'Wait for Root-observed exit0 receipt; a running log is not a completed gate')
+    return report
+
+
+def inspect_failed_routing(art=ART, station=STATION):
+    """Actual non-overwrite refusal, not a new failed frame/graphics assertion."""
+    art, station = Path(art), Path(station)
+    gate = summarize_gate(art, station, epoch='02', source_head=HEAD)
+    need(gate['status'] == 'failed' and gate.get('actualExitCode') == 1 and gate['failedCommands'] == [{'command': 'earth_ground_material_browser', 'exitCode': 1}],
+         'Missing Root-observed failed full02 routing epoch')
+    log = art / 'remote-full02/earth_ground_material_browser.log'
+    need('Output must be empty; existing evidence is preserved' in log.read_text(encoding='utf-8'), 'Missing actual non-overwrite refusal')
+    gate_receipt = read_json(art / 'REMOTE_FULL02_RECEIPT.json')
+    retained = art / 'negative-full02-earth-ground/PREVIOUS_FRAMES_REPORT.json'
+    need(streamed_hash(retained) == {k: gate_receipt['preservedPreviousFramesReport'][k] for k in ('bytes', 'sha256')}, 'Protected old frame report changed')
+    # Execute only the existing pure routing function and its literal sets.
+    # reserve_browser_output/main/suite execution are never evaluated here.
+    tree = ast.parse((station / 'tools/verify.py').read_text(encoding='utf-8'))
+    terms = {'CLI_BROWSER_OUTPUTS', 'GUARDED_BROWSER_OUTPUTS', 'BROWSER_SOURCE_OUTPUTS', 'ENV_BROWSER_OUTPUTS'}
+    nodes = [n for n in tree.body if isinstance(n, ast.Assign) and any(isinstance(t, ast.Name) and t.id in terms for t in n.targets)
+             or isinstance(n, ast.FunctionDef) and n.name == 'browser_run_spec']
+    ns = {'sys': sys}
+    exec(compile(ast.Module(body=nodes, type_ignores=[]), '<actual pinned browser_run_spec only>', 'exec'), ns)
+    suite, output = 'earth_ground_material_browser', art / 'remote-full03-browser'
+    guarded = ns['browser_run_spec'](suite, output, 'guarded')
+    supported = ns['browser_run_spec'](suite, output, 'supported')
+    need(guarded[1] == {} and supported[1].get('FIRSTLIGHT_EARTH_GROUND_OUTPUT') == str(output / suite), 'Existing supported-routing contract changed')
+    return {'gate': gate, 'failureLog': streamed_hash(log), 'preservedPreviousFramesReport': streamed_hash(retained),
+            'frameReportScope': 'previous successful output protected by refusal; no new frame assertions ran in failed full02 suite',
+            'sourceChangedForRoutingRepair': False, 'pureActualRouting': {'guardedEnvironment': guarded[1], 'supportedEnvironment': supported[1]},
+            'browserExecutions': 0}
+
+
+def inspect_test_only_transition(art=ART, station=STATION):
+    """Bind Root's disclosed repair and the station's exact changed test bytes.
+
+    The publication caller separately proves the one-file Git-tree difference.
+    Neither this repair nor a newer gate re-labels native/capture execution.
+    """
+    path = Path(art) / 'FULL01_TEST_REPAIR01_RECEIPT.json'
+    r = read_json(path)
+    need(r['failedHead'] == ORIGINAL_HEAD and r['newHead'] == HEAD and r['full01Exit'] == 1,
+         'Test-only transition source/failure mismatch')
+    need(r['changedFiles'] == ['tests/cosmos_browser.py'] and r['runtimeOrPagesChanged'] is False,
+         'Test-only transition expanded beyond the disclosed test')
+    actual = streamed_hash(Path(station) / 'tests/cosmos_browser.py')
+    need(actual['sha256'] == r['testSha256'] == TEST_REPAIR_SHA, 'Station is not the exact disclosed repaired test')
+    return {'originalNativeCaptureHead': ORIGINAL_HEAD, 'fullGateHead': HEAD,
+            'repairReceipt': streamed_hash(path), 'changedTest': actual,
+            'nativeOrCaptureRerunAtNewHead': False,
+            'publicationMustVerifyExactGitDifference': ['tests/cosmos_browser.py']}
+
+
+def inspect_earned(earned=EARNED, station=STATION):
+    out = {}
+    for family in FAMILIES:
+        folder = Path(earned) / family
+        report = read_json(folder / 'COSMOS_CAMPAIGN_JOURNEY_REPORT.json')
+        need(report['status'] == 'passed' and report['variant'] == family and report['campaignComplete'] is True, 'Incomplete earned family: ' + family)
+        need(report['prerequisiteClaimed'] is True and report['sourceDrift'] is False and report['sourceHashes'] == report['finalHashes'], 'Earned prerequisite/source drift: ' + family)
+        need(all(type(report.get(k)) is int and report[k] == 0 for k in ZERO_EARNED), 'Missing/nonzero earned injection counter: ' + family)
+        hashes = report['checkpointHashes']
+        expected_checkpoints = CHECKPOINTS_BY_FAMILY[family]
+        need(set(hashes) == set(expected_checkpoints), 'Unexpected/missing earned checkpoint: ' + family)
+        names = {p.name for p in folder.glob('*.json')}
+        need(names == {n + '.json' for n in expected_checkpoints} | {'COSMOS_CAMPAIGN_JOURNEY_REPORT.json', 'SEED_PROVENANCE.json'}, 'Earned folder is not the exact 17-file set: ' + family)
+        for stem, h in hashes.items():
+            need(streamed_hash(folder / (stem + '.json'))['sha256'] == h, 'Earned checkpoint mismatch: ' + family + '/' + stem)
+        source = check_source_hashes(report['sourceHashes'], station)
+        need(streamed_hash(Path(station) / 'tests/cosmos_campaign_journey.cjs')['sha256'] == report['harnessSha256'], 'Earned harness epoch mismatch')
+        # Real native preflight performs semantic provenance validation. This
+        # additional readback binds every exact report/provenance/checkpoint byte.
+        out[family] = {'report': streamed_hash(folder / 'COSMOS_CAMPAIGN_JOURNEY_REPORT.json'),
+            'provenance': streamed_hash(folder / 'SEED_PROVENANCE.json'), 'checkpointCount': len(hashes),
+            'sourceInputCount': len(source['hashes']), 'sourceComparisons': {k: source[k] for k in ['exactWorkingFiles', 'declaredNewlineEquivalence']},
+            'releaseCheckpointTiming': 'after actual Guardian exhaustion' if family == 'returning-strongest' else 'during live Guardian fight',
+            'jsonFiles': len(names), 'choice': read_json(folder / 'FINAL_WORLD.json')['cosmosCampaign']['choice'],
+            'saveCount': report['saveCount'], 'walks': len(report['walks']), 'zeroInjectionCounters': {k: report[k] for k in ZERO_EARNED}}
+    return out
+
+
+def inspect_independent(art=ART, station=STATION):
+    art = Path(art)
+    n, c, m = (read_json(art / p) for p in ['native04/REPORT.json', 'capture01/REPORT.json', 'media/FIRSTLIGHT_COSMOS_MEDIA_RECEIPT.json'])
+    need(n['status'] == c['status'] == 'passed' and n['source_drift'] is False and c['source_frozen'] is True, 'Native/capture not passed/frozen')
+    need(n['html_sha256'] == c['html_sha256'] == m['htmlSha256'] == HTML, 'Independent HTML epoch disagreement')
+    need(n['source_hashes'] == n['final_source_hashes'] and c['source_hashes'] == c['final_source_hashes'], 'Independent source digest disagreement')
+    nsrc, csrc = check_source_hashes(n['source_hashes'], station), check_source_hashes(c['source_hashes'], station)
+    need(all(nsrc['hashes'][k] == csrc['hashes'][k] for k in nsrc['hashes'].keys() & csrc['hashes'].keys()), 'Native/capture common source mismatch')
+    need(len(n['checks']) == 7689 and all(x['passed'] is True for x in n['checks']), 'Native checks missing/failing')
+    need(n['videos_recorded'] == 0 and n['profile_limit'] == 6 and len(n['profile_paths']) == 6, 'Native storage bound changed')
+    need(not any(n[k] for k in ['browser_errors', 'console_errors', 'errors']), 'Native errors')
+    for key in ['earned_actor_position_edits', 'earned_health_grants', 'earned_inventory_grants', 'earned_manual_damage', 'earned_forced_modes', 'earned_forced_cycles', 'earned_planted_facts']:
+        need(n[key] == 0, 'Native earned injection: ' + key)
+    for key in ['accelerated_ticks', 'test_mode', 'direct_game_commands', 'simulation_steps', 'speed_scaling', 'manual_damage', 'planted_quest_facts', 'actor_position_writes', 'camera_state_writes', 'inventory_grants', 'health_grants', 'forced_modes', 'forced_cycles']:
+        need(c[key] is False or type(c[key]) is int and c[key] == 0, 'Normal-time boundary changed: ' + key)
+    need(c['normal_time_footage'] is True and c['raw_file_count'] == c['raw_take_limit'] == c['profile_limit'] == 1, 'Capture storage/method mismatch')
+    need(not any(c[k] for k in ['errors', 'console_errors']), 'Capture errors')
+    need(c['paid_native_bytes'] == c['cold_reload']['native_bytes'] and c['cold_reload']['same_profile'] is True, 'Capture cold-start native equality mismatch')
+    need(hashlib.sha256(c['paid_native_bytes'].encode()).hexdigest() == c['paid_native_sha256'] == c['cold_reload']['native_sha256'], 'Capture native storage hash mismatch')
+    need(m['wholeDecodeExit'] == 0 and m['sha256'] == MEDIA and m['bytes'] == 6776406 and m['duration'] == 33 and m['decodedFrames'] == 825, 'Media receipt mismatch')
+    need(isinstance(m['manualFrameReview'], dict), 'Missing honest manual sample review')
+    need(streamed_hash(art / 'capture01/REPORT.json')['sha256'] == m['sourceReportSha256'], 'Media/capture report link mismatch')
+    need(streamed_hash(art / 'media/FIRSTLIGHT_COSMOS_GAMEPLAY.mp4') == {'bytes': m['bytes'], 'sha256': m['sha256']}, 'Final movie byte mismatch')
+    need(len(m['auditFrames']) == 10, 'Manual frame inventory changed')
+    for frame in m['auditFrames']:
+        path = art / 'media' / PureWindowsPath(frame['path']).name
+        need(streamed_hash(path) == {'bytes': frame['bytes'], 'sha256': frame['sha256']}, 'Media audit frame mismatch')
+    for name in SELECTED_PIXELS:
+        need((art / 'native04' / name).is_file(), 'Publisher selected pixel missing: ' + name)
+    for p in ['FIRSTLIGHT_VALLEY.html', 'index.html']:
+        need(streamed_hash(Path(station) / p) == {'bytes': 2961933, 'sha256': HTML}, 'Pinned HTML mismatch: ' + p)
+    negatives = {}
+    for folder in ('native01', 'native02', 'native03'):
+        negative = read_json(art / folder / 'REPORT.json')
+        need(negative['status'] != 'passed', 'Negative epoch incorrectly green: ' + folder)
+        negatives[folder] = {'status': negative['status'], 'reached': len(negative['checks']),
+            'passedReached': sum(x['passed'] is True for x in negative['checks']),
+            'report': streamed_hash(art / folder / 'REPORT.json')}
+    return {'nativeReport': streamed_hash(art / 'native04/REPORT.json'), 'nativeChecks': len(n['checks']),
+        'nativePixelControls': sum(len(v['pixel_controls']) for v in n['variants'].values()),
+        'earnedRestarts': sum(len(v['restarts']) for v in n['variants'].values()),
+        'syntheticRestarts': sum(len(v['restarts']) for v in n['synthetic_profiles'].values()),
+        'syntheticProfiles': len(n['synthetic_profiles']), 'profiles': len(n['profile_paths']),
+        'captureReport': streamed_hash(art / 'capture01/REPORT.json'), 'captureSeconds': c['wall_seconds'],
+        'nativeSourceComparisons': {k: nsrc[k] for k in ['exactWorkingFiles', 'declaredNewlineEquivalence']},
+        'captureSourceComparisons': {k: csrc[k] for k in ['exactWorkingFiles', 'declaredNewlineEquivalence']},
+        'pollingObservations': len(c['condition_evaluations']), 'captureRendererReported': c['renderer'],
+        'movie': streamed_hash(art / 'media/FIRSTLIGHT_COSMOS_GAMEPLAY.mp4'), 'mediaReceipt': streamed_hash(art / 'media/FIRSTLIGHT_COSMOS_MEDIA_RECEIPT.json'),
+        'html': {'bytes': 2961933, 'sha256': HTML}, 'negatives': negatives,
+        'normalTimePerformanceClaim': False, 'humanAcceptance': False}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--station', type=Path, default=STATION)
+    parser.add_argument('--artifacts', type=Path, default=ART)
+    parser.add_argument('--earned', type=Path, default=EARNED)
+    parser.add_argument('--allow-running', action='store_true')
+    parser.add_argument('--output', type=Path, help='New receipt inside this small staging directory only')
+    args = parser.parse_args()
+    report = {'sourceHead': HEAD, 'originalNativeCaptureHead': ORIGINAL_HEAD,
+        'method': 'streamed read-only existing receipts/source; no Git/browser execution',
+        'gate': summarize_gate(args.artifacts, args.station, not args.allow_running),
+        'failedFull01': summarize_gate(args.artifacts, args.station, epoch='01', source_head=ORIGINAL_HEAD),
+        'failedFull02': inspect_failed_routing(args.artifacts, args.station),
+        'testOnlyTransition': inspect_test_only_transition(args.artifacts, args.station),
+        'earned': inspect_earned(args.earned, args.station), 'independent': inspect_independent(args.artifacts, args.station)}
+    if args.output:
+        target, stage = args.output.resolve(), Path(__file__).resolve().parent
+        need(target.parent == stage and not target.exists(), 'Receipt must be a new file in this exact stage')
+        with target.open('x', encoding='utf-8') as stream:
+            json.dump(report, stream, indent=2)
+            stream.write('\n')
+        print(json.dumps({'status': report['gate']['status'], 'commandsPassed': report['gate']['commandsPassed'],
+            'browserSuitesPassed': report['gate']['browserSuitesPassed'], 'pending': report['gate']['pendingCommand'],
+            'earnedFamilies': len(report['earned']), 'nativeChecks': report['independent']['nativeChecks'],
+            'receipt': {'path': str(target), **streamed_hash(target)}}, indent=2))
+    else:
+        print(json.dumps(report, indent=2))
+
+
+if __name__ == '__main__':
+    main()

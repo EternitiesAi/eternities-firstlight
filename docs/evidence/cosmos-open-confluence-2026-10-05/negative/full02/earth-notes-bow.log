@@ -1,0 +1,156 @@
+{
+  "variant": "fresh-bow-quarry",
+  "status": "passed",
+  "commands": 6,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedObjectives": 0,
+  "acceleratedTicks": true,
+  "sourceSha256": "49a6d8bf2a78f174b92dd4cef5c79d57e1d3b93b2496daa2cd43f4444292fe28",
+  "notes": {
+    "version": 1,
+    "accepted": true,
+    "marks": [
+      "orchard-stone",
+      "bank-footing",
+      "shelter-mark"
+    ],
+    "compared": true,
+    "interpretation": "waterworks"
+  },
+  "weapon": "trail_bow",
+  "xp": 0,
+  "deliveryStillUnpaid": true,
+  "actions": [
+    {
+      "walk": [
+        9,
+        -5.8
+      ]
+    },
+    {
+      "walk": [
+        -2,
+        0
+      ]
+    },
+    {
+      "type": "accept",
+      "p": {}
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        -13,
+        -6
+      ]
+    },
+    {
+      "type": "observe",
+      "p": {
+        "id": "orchard-stone"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        -13,
+        -16
+      ]
+    },
+    {
+      "type": "observe",
+      "p": {
+        "id": "bank-footing"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        -13,
+        -21
+      ]
+    },
+    {
+      "type": "observe",
+      "p": {
+        "id": "shelter-mark"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        9,
+        -5.8
+      ]
+    },
+    {
+      "walk": [
+        -2,
+        0
+      ]
+    },
+    {
+      "type": "compare",
+      "p": {
+        "bearing": 180
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        9,
+        -5.8
+      ]
+    },
+    {
+      "walk": [
+        -2,
+        0
+      ]
+    },
+    {
+      "type": "record",
+      "p": {
+        "interpretation": "waterworks"
+      }
+    },
+    {
+      "reload": true
+    }
+  ]
+}
