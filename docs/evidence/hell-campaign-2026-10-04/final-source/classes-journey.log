@@ -1,0 +1,184 @@
+{
+  "status": "passed",
+  "variant": "imported-command-earned-worlds-with-new-complete-class-surveys",
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedDefeats": 0,
+  "acceleratedTick": true,
+  "sources": {
+    "blade": {
+      "source": "evidence10/pursuit/fresh-blade/07_PRACTICE_PERSISTED.json",
+      "sha256": "334cf618b78b51a9914a29e47fe5f420492903af9b1588d9b228599d4c0494d0"
+    },
+    "bow": {
+      "source": "evidence10/pursuit/fresh-bow/07_PRACTICE_PERSISTED.json",
+      "sha256": "bbfbcfa327879ad9766f18ff300a7a331ca7b3c0749a82f95a252904e4b118fd"
+    },
+    "veteran": {
+      "source": "evidence10/pursuit/veteran/07_PRACTICE_PERSISTED.json",
+      "sha256": "5c717656766d5e6d8392bc90aa81130746d18c4b794afba1abdf4a073f7809c9"
+    }
+  },
+  "characters": {
+    "magician": "character-2",
+    "hunter": "character-3",
+    "veteran": "character-4"
+  },
+  "commands": {
+    "accepted": 42,
+    "refused": 8
+  },
+  "magician": {
+    "commands": 24,
+    "accepted": 20,
+    "refused": 4,
+    "run": "riverbank-survey/6",
+    "comparison": {
+      "weapon": "copper_blade",
+      "attack": 27,
+      "damage": 28,
+      "bonus": 0
+    },
+    "practiceDamage": 28,
+    "combats": [
+      {
+        "id": "riverbank-survey/6:west",
+        "casts": 1,
+        "guards": 1,
+        "ticks": 2,
+        "impacts": [
+          {
+            "x": -6.272185542701757,
+            "z": 1.9441610586986546,
+            "n": 28,
+            "at": 201.6500000000116,
+            "id": 1
+          },
+          {
+            "x": -6.272185542701757,
+            "z": 1.9441610586986546,
+            "n": 27,
+            "at": 201.85000000001165,
+            "id": 3
+          }
+        ],
+        "hp": 100
+      },
+      {
+        "id": "riverbank-survey/6:east",
+        "casts": 0,
+        "guards": 0,
+        "ticks": 13,
+        "impacts": [
+          {
+            "x": 3.294553215735319,
+            "z": -4.32812106307426,
+            "n": 27,
+            "at": 206.40000000001268,
+            "id": 5
+          },
+          {
+            "x": 3.294553215735319,
+            "z": -4.32812106307426,
+            "n": 27,
+            "at": 206.9500000000128,
+            "id": 7
+          },
+          {
+            "x": 3.294553215735319,
+            "z": -4.32812106307426,
+            "n": 27,
+            "at": 207.50000000001293,
+            "id": 9
+          }
+        ],
+        "hp": 100
+      }
+    ],
+    "refusals": [
+      "class-choose",
+      "class-choose",
+      "pursuit-claim",
+      "pursuit-start"
+    ]
+  },
+  "hunter": {
+    "commands": 25,
+    "accepted": 21,
+    "refused": 4,
+    "run": "riverbank-survey/6",
+    "comparison": {
+      "weapon": "copper_bow",
+      "attack": 25,
+      "damage": 25,
+      "bonus": 13
+    },
+    "practiceDamage": 38,
+    "combats": [
+      {
+        "id": "riverbank-survey/6:west",
+        "casts": 1,
+        "guards": 1,
+        "ticks": 3,
+        "impacts": [
+          {
+            "x": -6.272185542701757,
+            "z": 1.9441610586986546,
+            "n": 38,
+            "at": 277.8000000000289,
+            "id": 2
+          }
+        ],
+        "hp": 100
+      },
+      {
+        "id": "riverbank-survey/6:east",
+        "casts": 0,
+        "guards": 0,
+        "ticks": 19,
+        "impacts": [
+          {
+            "x": 3.294553215735319,
+            "z": -4.32812106307426,
+            "n": 25,
+            "at": 282.50000000002996,
+            "id": 4
+          },
+          {
+            "x": 3.294553215735319,
+            "z": -4.32812106307426,
+            "n": 25,
+            "at": 283.30000000003014,
+            "id": 6
+          },
+          {
+            "x": 3.294553215735319,
+            "z": -4.32812106307426,
+            "n": 25,
+            "at": 284.1000000000303,
+            "id": 8
+          }
+        ],
+        "hp": 100
+      }
+    ],
+    "refusals": [
+      "class-choose",
+      "class-choose",
+      "pursuit-claim",
+      "pursuit-start"
+    ]
+  },
+  "veteranComparison": {
+    "weapon": "dawn_edge",
+    "xp": 563,
+    "damage": 48,
+    "bonus": 24
+  },
+  "checks": {
+    "distinctSameRunClaims": true,
+    "independentClassRestoration": true,
+    "veteranPreserved": true,
+    "cooldownReload": true
+  }
+}

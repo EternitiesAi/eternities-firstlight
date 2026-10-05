@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "observed_exit": 0,
+  "completion": "Root observed unified-exec session13339 exit0 and final Verification passed.",
+  "final_head": "d331588c8004346c6b41d1b201eb8d0a7cb58b50",
+  "full_gate_head": "099bd8d2806a85822f97bdc48dcc466d13ec0cf6",
+  "clone": "D:\\07-GAMES\\Firstlight\\artifacts\\hell-campaign-20261004\\remote-final02",
+  "tracked_clean": true,
+  "source_commands": 154,
+  "syntax": 102,
+  "node": {
+    "tests": 1198,
+    "pass": 1198,
+    "fail": 0,
+    "skipped": 0
+  },
+  "python": {
+    "total": 62,
+    "pass": 61,
+    "fail": 0,
+    "skip": 1,
+    "reason": "Existing Windows symlink privilege unavailable"
+  },
+  "earned_journeys": 49,
+  "non_document_inputs": 358,
+  "equality": "Every Git path/mode/blob outside docs and AGENTS matches the full196-command/42-browser remote gate.",
+  "sparse_scope": "Only tracked archived evidence PNG/JPG/JPEG/MP4/WebM omitted; all game/assets/tests/JSON retained.",
+  "html_sha256": "eb94d30b587ef8ee5bb374d7df9db540cf6caa0bdadf02648cc5a4107a64d7ac",
+  "html_bytes": 2747325
+}
