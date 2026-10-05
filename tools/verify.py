@@ -13,9 +13,9 @@ ROOT = Path(__file__).resolve().parents[1]
 
 CLI_BROWSER_OUTPUTS = frozenset({'bridge_browser', 'earth_story_transactions_browser',
     'realm_givers_browser', 'realm_trails_north_browser',
-    'coastward_bridge_posts_browser', 'practice_visibility_browser', 'hell_campaign_browser', 'heaven_campaign_browser', 'atlantis_campaign_browser'})
+    'coastward_bridge_posts_browser', 'practice_visibility_browser', 'hell_campaign_browser', 'heaven_campaign_browser', 'atlantis_campaign_browser', 'cosmos_campaign_browser'})
 GUARDED_BROWSER_OUTPUTS = frozenset({'realm_givers_browser', 'realm_trails_north_browser',
-    'coastward_bridge_posts_browser', 'practice_visibility_browser', 'hell_campaign_browser', 'heaven_campaign_browser', 'atlantis_campaign_browser'})
+    'coastward_bridge_posts_browser', 'practice_visibility_browser', 'hell_campaign_browser', 'heaven_campaign_browser', 'atlantis_campaign_browser', 'cosmos_campaign_browser'})
 BROWSER_SOURCE_OUTPUTS = frozenset({'realm_trails_north_browser', 'practice_visibility_browser'})
 ENV_BROWSER_OUTPUTS = {
     'bridge_community_browser': 'FIRSTLIGHT_BRIDGE_COMMUNITY_OUTPUT',
@@ -192,8 +192,16 @@ def main():
     run('atlantis-campaign-blade', ['node', 'tests/atlantis_campaign_journey.cjs', '--output', str(atlantis_output)])
     run('atlantis-campaign-bow', ['node', 'tests/atlantis_campaign_journey.cjs', '--output', str(atlantis_output), '--bow'])
     run('atlantis-campaign-veteran', ['node', 'tests/atlantis_campaign_journey.cjs', '--output', str(atlantis_output), '--veteran'])
+    cosmos_output = output / 'cosmos-campaign-earned'
+    if os.name == 'nt' and cosmos_output.drive.upper() != 'D:':
+        cosmos_output = ROOT / 'evidence10/cosmos-campaign-earned'
+    run('cosmos-campaign-blade', ['node', 'tests/cosmos_campaign_journey.cjs', '--output', str(cosmos_output)])
+    run('cosmos-campaign-bow', ['node', 'tests/cosmos_campaign_journey.cjs', '--output', str(cosmos_output), '--bow'])
+    run('cosmos-campaign-veteran', ['node', 'tests/cosmos_campaign_journey.cjs', '--output', str(cosmos_output), '--veteran'])
     if args.browser:
         prepare_browser_sources(args.browser_output)
+        command, extra_env = browser_run_spec('cosmos_campaign_browser', args.browser_output, mode=args.browser_output_mode)
+        run('cosmos_campaign_browser', command, timeout=1200, extra_env=extra_env)
         command, extra_env = browser_run_spec('atlantis_campaign_browser', args.browser_output, mode=args.browser_output_mode)
         run('atlantis_campaign_browser', command, timeout=1200, extra_env=extra_env)
         command, extra_env = browser_run_spec('heaven_campaign_browser', args.browser_output, mode=args.browser_output_mode)

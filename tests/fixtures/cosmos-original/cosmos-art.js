@@ -1,29 +1,24 @@
 /* Near Expanse M1. Original procedural stone, timber and living ground. */
 (function(G){'use strict';
-const C=G.RealmCosmos,TAU=Math.PI*2,h=C.legacyHeight;
+const C=G.RealmCosmos,TAU=Math.PI*2,h=C.height;
 const col={grass:0x78856b,stone:0x898777,light:0xc3b99b,wood:0x69513d,bronze:0xb99b60,leaf:0x71856b};
 function lamp(a,x,z,s=1){const b=h(x,z);a.add('cylinder',x,b,z,.32,2.65*s,.32,col.bronze);a.box(x,b+2.55*s,z,.64,.85*s,.64,0xffd793,{em:.7,rough:.4});a.add('cone',x,b+3*s,z,1,.48*s,1,col.wood);a.box(x,b+.12,z,.62,.24,.62,col.stone);}
 function paving(a,points,width=2){for(let i=1;i<points.length;i++){let u=points[i-1],v=points[i],d=Math.hypot(v[0]-u[0],v[1]-u[1]);for(let t=0;t<d;t+=.72){let f=t/d,x=u[0]+(v[0]-u[0])*f,z=u[1]+(v[1]-u[1])*f;if(C.walkable(x,z,.1))a.add('disc',x,h(x,z)+.024,z,width,1,width,0xb6ac8e,{rough:1,cameraSolid:false,r:[Math.atan2(h(x,z-.1)-h(x,z+.1),.2),0,0]});}}}
 const paths=[[[0,20],[0,10],[3,7],[10,2],[14,-4],[14,-14],[14,-24],[12,-31],[3,-37],[3,-43]],[[0,10],[-6,10],[-14,0],[-15,-8],[-15,-19],[-14,-30],[0,-34],[3,-37]],[[-6,10],[-6,6]]];
 function pathDistance(x,z){let best=Infinity;for(const ps of paths)for(let i=1;i<ps.length;i++){const u=ps[i-1],v=ps[i],dx=v[0]-u[0],dz=v[1]-u[1],t=Math.max(0,Math.min(1,((x-u[0])*dx+(z-u[1])*dz)/(dx*dx+dz*dz)));best=Math.min(best,Math.hypot(x-u[0]-dx*t,z-u[1]-dz*t));}return best;}
-// Preserve the old vegetation/sky seed sequence. The new road must not change
-// which old shoulders or grass samples consumed randomness at its junction.
-const inside=(x,z,p,r=0)=>Math.abs(x-p.x)<=p.w/2-r&&Math.abs(z-p.z)<=p.d/2-r;
-function legacyLand(x,z,r=0){return [[0,0],[r,0],[-r,0],[0,r],[0,-r],[r*.707,r*.707],[-r*.707,r*.707],[r*.707,-r*.707],[-r*.707,-r*.707]].every(([dx,dz])=>C.BASE_PATCHES.some(p=>inside(x+dx,z+dz,p)));}
-const legacyWalkable=(x,z,r=.31)=>legacyLand(x,z,r)&&!C.BASE_SOLIDS.some(p=>inside(x,z,p,-r));
 function terrain(a,rnd){
  // Ground top and physical height use the same function; buried mass closes every seam.
- for(let z=-53;z<22;z+=.5){let runs=C.BASE_PATCHES.filter(p=>z+.5>p.z-p.d/2&&z<p.z+p.d/2).map(p=>[p.x-p.w/2,p.x+p.w/2]).sort((u,v)=>u[0]-v[0]),merged=[];
+ for(let z=-53;z<22;z+=.5){let runs=C.PATCHES.filter(p=>z+.5>p.z-p.d/2&&z<p.z+p.d/2).map(p=>[p.x-p.w/2,p.x+p.w/2]).sort((u,v)=>u[0]-v[0]),merged=[];
   for(const p of runs){let last=merged[merged.length-1];if(last&&p[0]<=last[1])last[1]=Math.max(last[1],p[1]);else merged.push(p.slice());}
   for(const [lo,hi]of merged){let x=(lo+hi)/2,ha=h(x,z),hb=h(x,z+.5),ang=Math.atan2(ha-hb,.5);a.box(x,(ha+hb)/2-.045,z+.25,hi-lo,.09,Math.hypot(.5,hb-ha)+.002,col.grass,{rough:1,terrain:true,cameraSolid:false,cutaway:false,r:[ang,0,0]});a.box(x,Math.min(ha,hb)-5.08,z+.25,hi-lo,10,.502,0x777970,{cameraSolid:false,cutaway:false});}
  }
  // Irregular low shoulders and deep cliff roots; the walking edge remains on supported ground.
- for(let z=-53;z<=22;z+=1.3)for(let x=-18;x<=18;x+=1.3){if(!legacyLand(x,z,0))continue;const edge=[[1.3,0],[-1.3,0],[0,1.3],[0,-1.3]].find(([dx,dz])=>!legacyLand(x+dx,z+dz,0));if(!edge)continue;let xx=x+edge[0]*.3,zz=z+edge[1]*.3,b=h(xx,zz);a.add('round',xx,b-2.4,zz,2.8+rnd()*1.6,4.6,3.5,col.stone,{rough:1,cameraSolid:false,cutaway:false});a.add('octa',xx,b-6.5,zz,3.6,8+rnd()*5,3.8,0x5e6d6b,{rough:1,cameraSolid:false,cutaway:false});}
+ for(let z=-53;z<=22;z+=1.3)for(let x=-18;x<=18;x+=1.3){if(!C.land(x,z,0))continue;const edge=[[1.3,0],[-1.3,0],[0,1.3],[0,-1.3]].find(([dx,dz])=>!C.land(x+dx,z+dz,0));if(!edge)continue;let xx=x+edge[0]*.3,zz=z+edge[1]*.3,b=h(xx,zz);a.add('round',xx,b-2.4,zz,2.8+rnd()*1.6,4.6,3.5,col.stone,{rough:1,cameraSolid:false,cutaway:false});a.add('octa',xx,b-6.5,zz,3.6,8+rnd()*5,3.8,0x5e6d6b,{rough:1,cameraSolid:false,cutaway:false});}
  // The central ridge is closed ground, with two real paths around its limestone walls.
  a.box(-.5,h(-.5,-16)+.8,-16,13,1.6,24,0x85877a,{rough:1,cameraSolid:true});
  for(let z=-6.2;z>=-25.8;z-=3.9)for(let x of [-4.8,-.5,3.8])a.add('round',x,h(x,z)+1.7,z,4.3,5.1,4.4,0x939580,{rough:1,cameraSolid:true});
  for(let i=0;i<11;i++){let z=-6-i*2.05;a.add('round',-.5+Math.sin(i*2.3)*2.5,h(-.5,z)+3.8,z,7.4,5.2,4.9,i%2?0xaaa48c:0x929783,{rough:1,cameraSolid:true});}
- for(let i=0;i<1400;i++){let x=-18+rnd()*36,z=-53+rnd()*75;if(!legacyWalkable(x,z,.5)||pathDistance(x,z)<1.25)continue;let s=.09+rnd()*.1;a.add('leaf',x,h(x,z)+.02,z,s,s*2.7,s,i%4===0?0xb5b18c:col.leaf,{wind:1,rough:1,r:[0,rnd()*TAU,0]});if(i%9===0)a.add('round',x,h(x,z)+.03,z,.26,.1,.34,0xa0a086,{cameraSolid:false,rough:1});}
+ for(let i=0;i<1400;i++){let x=-18+rnd()*36,z=-53+rnd()*75;if(!C.walkable(x,z,.5)||pathDistance(x,z)<1.25)continue;let s=.09+rnd()*.1;a.add('leaf',x,h(x,z)+.02,z,s,s*2.7,s,i%4===0?0xb5b18c:col.leaf,{wind:1,rough:1,r:[0,rnd()*TAU,0]});if(i%9===0)a.add('round',x,h(x,z)+.03,z,.26,.1,.34,0xa0a086,{cameraSolid:false,rough:1});}
  for(const ps of paths)paving(a,ps);
  // Paved gathering aprons are flush, never invisible raised steps.
  for(const [x,z,w,d]of [[-6,6,6,5],[3,7,4,4],[3,-43,8,7],[0,18,5,4]])a.box(x,h(x,z)+.012,z,w,.02,d,0xb6ac8e,{cameraSolid:false,rough:1});
@@ -54,74 +49,14 @@ function sky(a,rnd){
  for(let i=0;i<165;i++){let ang=rnd()*TAU,y=22+rnd()*135,r=Math.sqrt(205*205-y*y),s=.13+rnd()*.24;a.add('octa',Math.cos(ang)*r,y,Math.sin(ang)*r-15,s,s,s,i%7?0xc8ccdf:0xf4d8b4,{em:1.6,skyImage:true,cameraSolid:false,cutaway:false});}
  for(let i=0;i<20;i++){let x=-42+i*4,z=-68-(i%4)*4;a.add('octa',x,-3,z,8,18+i%4*5,9,0x475970,{cameraSolid:false,cutaway:false,rough:1});}
 }
-// Partition exactly at every patch/exclusion boundary, and merge only equal
-// surface owners. Old sloping strips never share a center-sampled slab with
-// new constant-height ground. Excluding the old union also prevents z-fighting.
-function serviceTiles(patches=C.EXTENSION.patches,excluded=C.BASE_PATCHES){
- const unique=a=>[...new Set(a)].sort((a,b)=>a-b),all=[...patches,...excluded],xs=unique(all.flatMap(p=>[p.x-p.w/2,p.x+p.w/2])),zs=unique(all.flatMap(p=>[p.z-p.d/2,p.z+p.d/2])),tiles=[],last=new Map();
- for(let j=1;j<zs.length;j++){
-  const z=(zs[j-1]+zs[j])/2,runs=[];
-  for(let i=1;i<xs.length;i++){
-   const x=(xs[i-1]+xs[i])/2,p=patches.find(p=>inside(x,z,p));
-   if(!p||excluded.some(p=>inside(x,z,p)))continue;
-   const previous=runs[runs.length-1];
-   if(previous&&previous.id===p.id&&previous.hi===xs[i-1])previous.hi=xs[i];
-   else runs.push({id:p.id,y:p.y,lo:xs[i-1],hi:xs[i]});
-  }
-  const next=new Map();for(const r of runs){const key=[r.id,r.y,r.lo,r.hi].join(':'),old=last.get(key);
-   if(old&&old.maxZ===zs[j-1])old.maxZ=zs[j];
-   else{const t={...r,minZ:zs[j-1],maxZ:zs[j]};tiles.push(t);next.set(key,t);continue;}
-   next.set(key,old);
-  }last.clear();for(const[k,v]of next)last.set(k,v);
- }
- return tiles;
-}
-function serviceScenery(a){
- const colors={'confluence-living-garden':0x718970,'confluence-records-bay':0x9b9a83,'confluence-guardian-court':0x858e91},floor=C.EXTENSION.height;
- for(const t of serviceTiles()){
-  const x=(t.lo+t.hi)/2,z=(t.minZ+t.maxZ)/2,w=t.hi-t.lo,d=t.maxZ-t.minZ,opt={cosmosExtension:true,cosmosExtensionGround:true,worldGround:true,worldGroundId:t.id,terrain:true,rough:1,cameraSolid:false,cutaway:false};
-  a.box(x,t.y-.045,z,w,.09,d,colors[t.id]||0x8a917e,opt);
-  a.box(x,t.y-5.08,z,w,10,d,0x63716c,{cosmosExtension:true,cosmosExtensionMass:true,cameraSolid:false,cutaway:false,rough:1});
- }
- // These eight boxes are the canonical opaque envelopes. Details stay inside
- // their footprints; no ornament adds a ninth body/camera/line-of-sight wall.
- for(const s of C.EXTENSION.solids){
-  const color=s.id.includes('living-bed')?0x6b7251:s.id.includes('material')?col.wood:s.id.includes('cover')?0x7c8b8e:s.id.includes('records')?col.light:col.stone;
-  a.box(s.x,floor+s.h/2,s.z,s.w,s.h,s.d,color,{cosmosExtension:true,worldSolid:true,worldSolidId:s.id,cameraSolid:true,cutaway:false,rough:.92});
-  if(s.id.includes('cover')||s.id.includes('post'))for(const f of[.3,.65])a.box(s.x,floor+s.h*f,s.z+s.d/2-.015,s.w*.75,.055,.025,col.bronze,{cosmosExtension:true,cameraSolid:false,cutaway:false});
- }
- // Public road and loop cues are flush paint. Verify the complete rectangle
- // before submitting it, rather than letting a disc's edge suggest fake land.
- for(const route of C.EXTENSION.routes)for(let i=1;i<route.points.length;i++){
-  const u=route.points[i-1],v=route.points[i],d=Math.hypot(v.x-u.x,v.z-u.z),count=Math.ceil(d/.9);
-  for(let k=0;k<=count;k++){
-   const x=u.x+(v.x-u.x)*k/count,z=u.z+(v.z-u.z)*k/count;
-   if(!C.EXTENSION.patches.some(p=>inside(x,z,p))||C.BASE_PATCHES.some(p=>inside(x,z,p))||!C.walkable(x,z,.48))continue;
-   if(![-.32,.32].every(dx=>[-.32,.32].every(dz=>C.walkable(x+dx,z+dz,0))))continue;
-   a.box(x,floor+.012,z,.64,.018,.64,route.id==='public-loop'?0xc1c99b:0xc0b598,{cosmosExtension:true,cosmosExtensionPaint:true,cameraSolid:false,cutaway:false,rough:1});
-  }
- }
- // The municipal garden fits entirely in its existing physical raised bed.
- const bed=C.EXTENSION.solids.find(s=>s.id==='confluence-living-bed');
- for(let i=0;i<12;i++){
-  const x=bed.x-2.7+(i%6)*1.08,z=bed.z+(i<6?-.45:.45);
-  a.add('leaf',x,floor+bed.h+.02,z,.22,.42,.22,col.leaf,{cosmosExtension:true,cosmosGarden:true,wind:1,cameraSolid:false,cutaway:false,r:[0,i*.7,0]});
- }
- const wall=C.EXTENSION.solids.find(s=>s.id==='confluence-records-back');
- for(const dx of[-2.3,2.3]){
-  a.box(wall.x+dx,floor+1.25,wall.z+.12,1.7,1.2,.08,0x526d73,{cosmosExtension:true,cosmosRecords:true,cameraSolid:false,cutaway:false});
-  for(let i=0;i<4;i++)a.box(wall.x+dx,floor+.9+i*.22,wall.z+.17,1.3,.055,.025,col.light,{cosmosExtension:true,cameraSolid:false,cutaway:false});
- }
- // No machine, witness, choice pose or accepted/completed fact is created here.
-}
 function make(a){a.begin(C.ROOM);a.e.theme='cosmos';a.e.isInterior=false;a.e.noWater=true;a.e.ambientOverride=.55;const rnd=G.RealmCore.rng(9512026);terrain(a,rnd);refuge(a);observatory(a);
  for(const [x,z,w,d,hh]of [[-12,-9,3,3,3.2],[11,-17,2.8,4,2.6]]){a.box(x,h(x,z)+hh/2,z,w,hh,d,col.stone);for(let i=0;i<4;i++)a.box(x,h(x,z)+(i+.5)*hh/4,z+d/2+.01,w,.035,.04,0x666d62,{cameraSolid:false});a.add('round',x,h(x,z)+hh-.1,z,w*.98,.3,d*.98,col.grass,{cameraSolid:false});}
  for(let x of [6.6,8.1,9.6])lamp(a,x,10.8,x===8.1?1.2:1);
  for(const [x,z]of [[-16.7,-18],[16.6,-28],[-7,-34]])lamp(a,x,z,.7);
- sky(a,rnd);serviceScenery(a);a.commit();}
+ sky(a,rnd);a.commit();}
 function draw(out,sim,t,a){if(sim.room!==C.ROOM)return;let p=sim.state.player;a.person(out,3,7,Math.PI*.8,'#b38c68',t,false,'keeper',false,h(3,7)+.02);a.person(out,3,-43,Math.PI,'#78959a',t,false,'researcher',false,h(3,-43)+.02);
  if(!sim.state.settings?.reducedMotion)for(let i=0;i<6;i++){let q=t*.16+i*TAU/6;out.octa.push({p:[3+Math.sin(q)*1.1,h(3,-47)+6.7+Math.cos(q)*.35,-47+Math.cos(q)*1.1],s:[.08,.14,.08],c:0xffd69a,em:.7});}
- out.disc.push({p:[p.x,C.height(p.x,p.z)+.02,p.z],s:[.8,1,.8],c:0xd9c38c,rough:.8,em:.05});}
+ out.disc.push({p:[p.x,h(p.x,p.z)+.02,p.z],s:[.8,1,.8],c:0xd9c38c,rough:.8,em:.05});}
 function gate(a){a.add('cylinder',C.GATE.x,1.25,C.GATE.z,.18,1.3,.18,col.bronze,{cameraSolid:false});a.add('octa',C.GATE.x,2.75,C.GATE.z,.55,.6,.55,0xffd394,{em:.8,cameraSolid:false});}
-G.RealmCosmosArt={make,draw,gate,serviceTiles};if(typeof module!=='undefined')module.exports=G.RealmCosmosArt;
+G.RealmCosmosArt={make,draw,gate};
 })(globalThis);

@@ -1,0 +1,12 @@
+.cosmos-campaign,.cosmos-campaign-invitation,.cosmos-campaign-map{line-height:1.55}
+.cosmos-campaign-kicker,.cosmos-campaign-invitation small{color:#b9cfba;letter-spacing:.11em;font-size:.75rem}
+.cosmos-campaign section{margin:1rem 0;padding:.9rem;border:1px solid #75887866;border-radius:.55rem;background:#1a2a2999}
+.cosmos-campaign-terms,.cosmos-campaign-confirm{border-color:#d5b778!important;background:#35312a!important}
+.cosmos-campaign-supports,.cosmos-campaign-choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.6rem}
+.cosmos-campaign-supports>section,.cosmos-campaign-choices>section{margin:0}
+.cosmos-campaign ol{padding-left:1.35rem}.cosmos-campaign li{padding:.7rem .3rem;border-bottom:1px solid #788c7755}
+.cosmos-campaign h4{margin:.2rem 0}.cosmos-campaign-next{border-left:3px solid #e9c48a;padding-left:.7rem!important}
+.cosmos-campaign-done{color:#b9d0bf}.cosmos-campaign-done h4:before{content:'✓ ';color:#c4dfcc}
+.cosmos-campaign button,.cosmos-campaign-map button{margin:.25rem .3rem .2rem 0}
+.cosmos-campaign-footer{font-size:.86rem;color:#c4c9bb}.cosmos-campaign details{margin:.25rem 0 .6rem}
+@media(max-width:600px){.cosmos-campaign-supports,.cosmos-campaign-choices{grid-template-columns:1fr}}
