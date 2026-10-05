@@ -1,3 +1,34 @@
+# Portable Earth homecoming journeys, 2026-10-05
+
+Read docs/development/EARTH_HOMECOMING_PORTABLE_JOURNEY_2026-10-05.md before the
+older pending records. Root observed portable-earned02 exit 0: actual installed
+blade, bow and returning strongest continuations and 19/19 explicit cohort
+checks, no failures/skips. The regular verifier now runs this cohort. Historical
+prerequisite fixtures are byte-bound and disclosed; this is not a new original
+Chapter I-to-ending run or native browser proof. Earlier 88 installed cases and
+1,514 Node passes remain separately scoped. Rendered/native persistence, footage,
+current source/full verification and exact remote qualification are still needed.
+
+Pages remain identical at 3,027,896 bytes / SHA256
+97f7609934c03025546be3c3009fc824ea1ea99c366f0f0d060b5851a3a41285.
+World/key 9, adventure 12 and optional earthHomecoming 1 preserve all prior
+owners, XP, equipment/socket/fittings and explicit choices. PR48 is a stacked
+draft above PR47; the whole draft remains active and unfinished.
+
+Cosmos full01 actually failed obsolete arrival wording after 194 passing
+commands / 19 browser suites. The test-only f65 repair passed its targeted
+76-check suite; full02 is still running in the reused remote qualification
+station. Native04 and ordinary footage at d3 remain separate successful evidence.
+Keep failures visible and do not claim a complete gate from targeted passes.
+
+Root owns integration; the Earth native colleague stages a bounded controller
+without competing for the browser/GPU slot. Keep heavy work D, the same full
+game and bounded evidence; do not retry the recorded blocked deletion. No main
+merge, deployment, paid providers, personal saves or unrelated-worker shutdown.
+Human playtest and whole-draft beginning-to-ending qualification remain pending.
+
+---
+
 # Installed Earth road and homecoming, 2026-10-05
 
 The Road That Can Refuse is installed on gameplay/earth-road-homecoming-20261005 from Cosmos d3ec32f716896d876d4771c0ff6c225e43b8d906 in the same integrated D checkout. Exact staged rule/presentation preimages matched before seventeen source files changed. Actual build produces identical3,027,896-byte pages/SHA25697f7609934c03025546be3c3009fc824ea1ea99c366f0f0d060b5851a3a41285. World/key9 and adventure12 remain; missing optional earthHomecoming1 migrates empty after all prior owners validate. No old payments/gear/socket/fittings/XP/explicit choices are rewritten.

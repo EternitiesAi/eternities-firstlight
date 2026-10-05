@@ -198,6 +198,13 @@ def main():
     run('cosmos-campaign-blade', ['node', 'tests/cosmos_campaign_journey.cjs', '--output', str(cosmos_output)])
     run('cosmos-campaign-bow', ['node', 'tests/cosmos_campaign_journey.cjs', '--output', str(cosmos_output), '--bow'])
     run('cosmos-campaign-veteran', ['node', 'tests/cosmos_campaign_journey.cjs', '--output', str(cosmos_output), '--veteran'])
+    # One portable cohort earns all three Earth continuations and then checks
+    # its exact checkpoints. Historical prerequisite worlds are labelled;
+    # this does not claim a new beginning-to-ending or native-browser run.
+    homecoming_output = output / 'earth-homecoming-earned'
+    if os.name == 'nt' and homecoming_output.drive.upper() != 'D:':
+        homecoming_output = ROOT / 'evidence10/earth-homecoming-earned'
+    run('earth-homecoming-earned', ['node', 'tools/earth_homecoming_journey.cjs', '--output', str(homecoming_output)], timeout=600)
     if args.browser:
         prepare_browser_sources(args.browser_output)
         command, extra_env = browser_run_spec('cosmos_campaign_browser', args.browser_output, mode=args.browser_output_mode)
