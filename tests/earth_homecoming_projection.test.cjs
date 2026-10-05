@@ -52,6 +52,16 @@ function local(s,v){const dx=v[0]-s.x,dz=v[2]-s.z;return{x:dx*Math.cos(s.yaw)-dz
 
 test('unaccepted terms give the objective, exact fixed fee, signals and ordinary return before consent',()=>{const f=fixture();f.place(D.giver);const before=JSON.stringify(f.sim.state),p=f.ui.page('earth-homecoming');for(const s of['50 XP','20 sunmarks','4 ore','4 timber','3 fibre','1 crystal','168 health','1.85 seconds','Brace (3)','quiet center','wider network survives','Oren','Vessa','Merren'])assert.ok(p.html.includes(s),s);assert.ok(p.html.includes('earth-homecoming-accept'));assert.equal(JSON.stringify(f.sim.state),before);assert.equal(commands(f).length,0);});
 test('every signal discloses the actual fixed geometry and warning/recovery terms',()=>{const f=fixture(),html=f.ui.panel().html;for(const term of['4 paces long, 2.2 wide','11 paces long, 1.1 wide','1.45 seconds of warning','1.85 seconds of warning','2.4 seconds of recovery','2.6 seconds of recovery','ring reaches 3.2','inner 1.5 paces','1.6 seconds of warning','Each strike lands once'])assert.ok(html.includes(term),term);});
+test('junction defense advice respects the actual lack of opaque cover within every possible contact envelope',()=>{
+ const d=W.definition(D.room),margin=.24,n=H.patterns['false-shelter'];
+ const envelope=Math.max(Math.hypot(n.length+margin,n.halfWidth+margin),H.patterns['closing-ring'].outerRadius+margin);
+ const nearest=Math.min(...d.solids.map(p=>Math.hypot(Math.max(0,Math.abs(p.x-D.enemy.x)-p.w/2-margin),Math.max(0,Math.abs(p.z-D.enemy.z)-p.d/2-margin))));
+ assert.ok(nearest>envelope,'no actual opaque solid can shield this anchored encounter');
+ const f=fixture(),html=f.ui.panel().html;
+ assert.doesNotMatch(D.danger,/cover/i);assert.doesNotMatch(html,/use existing cover/);
+ assert.match(html,/Step aside or into the quiet center, use Brace, or withdraw beyond his reach/);
+ assert.ok(html.includes('Brace (3)')&&html.includes('1.85 seconds'),'real warning and guard options remain visible');
+});
 test('missing prerequisites use actual titles and places, including separately claimed Open Confluence',()=>{const f=fixture(H.validateWorld(C.fresh())),p=f.ui.panel();for(const owner of[EE,HC,HV,AT,CC])assert.ok(p.html.includes(owner.definition.title));assert.ok(p.html.includes(RT.definition('cosmos-split-bearing-v1').title));assert.ok(p.html.includes('Oren · Firstlight workshop'));assert.ok(p.html.includes('Teren · Three Lamps'));assert.ok(!p.html.includes('cosmos-confluence-paid'));assert.ok(!p.html.includes('earth-homecoming-accept'));assert.equal(f.api.prerequisites(f.sim.state).length,12);});
 test('reading and actual workspace close leave ineligible fresh interactions to older owners in every tab/quest combination',()=>{
  for(const[tab,quest]of[['earth-homecoming','story'],['equipment','earth-homecoming'],['earth-homecoming','earth-homecoming'],['equipment','story']]){

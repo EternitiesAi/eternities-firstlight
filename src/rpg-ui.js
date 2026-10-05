@@ -285,7 +285,7 @@ class RPGUI{
   const copy=cue.phase==='recover'?['Recovery opening','Strike if ready; close if out of range']:cue.phase==='charge'?['Charging',defense]:({
    strike:['Marked strike',defense],charge:['Charge incoming',defense],
    'harbour-sweep':['Custodian vane sweep',defense+' · step outside the forward sector'],
-   'homecoming-line':[T.selected(this.sim)?.strike?.pattern==='false-shelter'?'Regent’s false shelter':'Regent’s claim lane',defense+' · leave the marked lane or use existing cover'],
+   'homecoming-line':[T.selected(this.sim)?.strike?.pattern==='false-shelter'?'Regent’s false shelter':'Regent’s claim lane',defense+' · leave the marked lane or withdraw beyond his reach'],
    'homecoming-annulus':['Regent’s closing ring',defense+' · use the quiet centre or leave the outer rim'],
    'cosmos-line':['Optical line',defense+' · step beside the locked lane'],
    'cosmos-cross':['Meridian cross',defense+' · use a clear quadrant or solid cover'],

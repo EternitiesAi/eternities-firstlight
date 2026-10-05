@@ -1,3 +1,38 @@
+# Fresh routes to an Earth homecoming, 2026-10-05
+
+Read docs/development/EARTH_HOMECOMING_FRESH_DRAFT_2026-10-05.md before older
+pending records. Current frozen working bytes pass two genuinely fresh CPU
+characters through the original four chapters, local Earth work, Hell, Heaven,
+Atlantis, Cosmos and the physical Oren homecoming. Twenty chapter edges and7/7
+strict readback cases pass with zero historical starting worlds. The bow case
+explicitly switches before ChapterIV; it is not a fresh-bow-I claim. Three
+historical migration/returning continuations separately pass19/19, and current
+native controller preparation passes26/26 without running a browser.
+
+Independent review corrected three misleading local-cover tips; actual solids
+are outside the Regent envelope. No geometry/tuning/save rule changed.89
+installed owner/UI/geometry cases pass. Equal regenerated pages are3,027,919
+bytes/SHA30648a37d3c8a6a4d5633b8946536dd9550aac29f204947cd2c5f098b6c7600a.
+World/key9, adventure12 and optional earthHomecoming1 preserve all older owners,
+XP, equipment/socket/fittings and explicit choices. These source-frozen targeted
+runs precede their reviewed commit; current full source/native/browser/remote
+qualification, footage, polish and human acceptance remain required.
+
+Cosmos full02 closed exit1 after182 commands/seven browser suites: an appearance
+tool protected old frames from overwrite. Full03 at the unchangedf65 uses
+supported fresh output roots. Full01's old text failure, both invocation logs
+and protected historical frames remain. Native04/ordinary footage atd3 remain
+separate passes; no complete current Cosmos gate is claimed yet.
+
+Root integrates. Two scoped colleagues prepare Cosmos delivery and ordinary
+Earth recording without competing with full03's browser/GPU ownership. The
+whole draft goal and hourly continuation remain active. Keep the same fullgame,
+heavy workD and bounded JSON/profiles/short clips; respect blocked deletion.
+No main merge/deployment/paid/personal saves/unrelated-worker shutdown. The
+provisional local ending does not settle the wider network or founder cosmology.
+
+---
+
 # Portable Earth homecoming journeys, 2026-10-05
 
 Read docs/development/EARTH_HOMECOMING_PORTABLE_JOURNEY_2026-10-05.md before the

@@ -205,6 +205,15 @@ def main():
     if os.name == 'nt' and homecoming_output.drive.upper() != 'D:':
         homecoming_output = ROOT / 'evidence10/earth-homecoming-earned'
     run('earth-homecoming-earned', ['node', 'tools/earth_homecoming_journey.cjs', '--output', str(homecoming_output)], timeout=600)
+    cohort_path = homecoming_output / 'CONNECTED_EARTH_HOMECOMING_REPORT.json'
+    run('earth-homecoming-native-preflight', [sys.executable, 'tests/test_earth_homecoming_native.py', '-v'], timeout=180,
+        extra_env={'FIRSTLIGHT_ROOT': str(ROOT), 'EARTH_EARNED_SOURCES': str(homecoming_output),
+                   'EARTH_EARNED_COHORT_SHA': hashlib.sha256(cohort_path.read_bytes()).hexdigest(),
+                   'EARTH_EARNED_CALLER_ROOT': str(ROOT / 'tools/earth-homecoming-journey')})
+    whole_draft_output = output / 'whole-draft-earned'
+    if os.name == 'nt' and whole_draft_output.drive.upper() != 'D:':
+        whole_draft_output = ROOT / 'evidence10/whole-draft-earned'
+    run('whole-draft-earned', ['node', 'tools/whole_draft_journey.cjs', '--output', str(whole_draft_output)], timeout=600)
     if args.browser:
         prepare_browser_sources(args.browser_output)
         command, extra_env = browser_run_spec('cosmos_campaign_browser', args.browser_output, mode=args.browser_output_mode)
