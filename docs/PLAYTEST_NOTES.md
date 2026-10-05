@@ -1,3 +1,11 @@
+# Hell campaign qualification in progress, 2026-10-04
+
+The Last Unclaimed Road has command-earned blade/bow/strongest journeys through actual old rescue/escort, new accepted work, recovery-only combat, explicit disposition, reload checkpoints and one fee. Source-02 passes102 syntax modules,1198 Node tests,61 Python tests plus1 visible Windows skip,49 journeys. These use accelerated rules/in-memory saves; they do not prove native storage or human pacing. Strong returning gear may clear an early fight before another guard/tell; do not scale the enemy to satisfy starter pacing criteria. All variants retain previous equipment/socket/fittings/history and old reward owners.
+
+Actual browser/native restart/pixel qualification and final normal-time recording remain pending here. capture-blade-01 reached11 actual screenshots through paid reload, then failed cleanup and lost REPORT; preserve its media as an unsuccessful evidence epoch. Independent review also corrected a blade recording control that could leave it beyond stationary weapon reach after a sidestep. The new capture re-enters reach with real keyboard movement during recovery. Aggregate hit diagnostics include Briar and must not be labelled weapon-only proof.
+
+Pending human questions: Did you understand the witness→plate→challenge route? Were sweep and writ-line readable? Did the optional preparations make a useful opening? Did the confirmed local disposition feel meaningful? Did the crafting contribution fit your character? Were both views comfortable? Dom plays later; no acceptance is inferred. Prior full-gate/billing/LocalLife uncertainty remains preserved below.
+
 # Return work and deliberate foe framing, 2026-10-04
 
 The existing patrol's final glade action now follows the recorded first allocation. Both supplied kits have seven grounded parts, an exact active-run pending/checked state, and no normal material charge. Old completed unpaid patrols remain claimable without redoing work. Save refusal/capacity refusal retain the checked kit, objectives, balances and unpaid ownership; successful payment retires it once. Frame foe is an explicit nearby-target third-person action, tested at 45/60/80-degree FOV with no auto yaw chase and free manual rotation. Both camera profiles and collision remain.

@@ -13,9 +13,9 @@ ROOT = Path(__file__).resolve().parents[1]
 
 CLI_BROWSER_OUTPUTS = frozenset({'bridge_browser', 'earth_story_transactions_browser',
     'realm_givers_browser', 'realm_trails_north_browser',
-    'coastward_bridge_posts_browser', 'practice_visibility_browser'})
+    'coastward_bridge_posts_browser', 'practice_visibility_browser', 'hell_campaign_browser'})
 GUARDED_BROWSER_OUTPUTS = frozenset({'realm_givers_browser', 'realm_trails_north_browser',
-    'coastward_bridge_posts_browser', 'practice_visibility_browser'})
+    'coastward_bridge_posts_browser', 'practice_visibility_browser', 'hell_campaign_browser'})
 BROWSER_SOURCE_OUTPUTS = frozenset({'realm_trails_north_browser', 'practice_visibility_browser'})
 ENV_BROWSER_OUTPUTS = {
     'bridge_community_browser': 'FIRSTLIGHT_BRIDGE_COMMUNITY_OUTPUT',
@@ -178,6 +178,8 @@ def main():
     run('hell-campaign-veteran', ['node', 'tests/hell_campaign_journey.cjs', '--veteran'])
     if args.browser:
         prepare_browser_sources(args.browser_output)
+        command, extra_env = browser_run_spec('hell_campaign_browser', args.browser_output, mode=args.browser_output_mode)
+        run('hell_campaign_browser', command, timeout=1200, extra_env=extra_env)
         # Qualify the recently extended Earth presentation and native giver
         # route first; fail promptly while retaining every default suite.
         for suite in ['bridge_community_browser', 'home_history_browser', 'local_life_browser', 'earth_ground_material_browser', 'realm_givers_browser', 'crossing_browser', 'regression09_browser', 'cutaway_browser', 'reflection_browser', 'native_origin_browser', 'starter_browser', 'camera_browser', 'pursuit_browser', 'characters_browser', 'classes_browser', 'cosmos_browser', 'earth_browser', 'earth_story_browser', 'earth_notes_browser', 'gathering_browser', 'realm_atlas_browser', 'timber_browser', 'traveler_browser', 'bridge_browser', 'combat_cue_browser', 'world_foundations_browser', 'world_cutaway_browser', 'realm_trails_browser', 'realm_trails_north_browser', 'realm_trails_cosmos_browser', 'soundscape_browser', 'journey_usability_browser', 'workshop_transactions_browser', 'companion_presentation_browser', 'skitter_presentation_browser', 'coastward_scenery_browser', 'earth_story_transactions_browser', 'coastward_bridge_posts_browser', 'practice_visibility_browser', 'realm_work_presentation_browser', 'earth_expedition_browser']:
