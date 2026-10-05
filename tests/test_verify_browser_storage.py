@@ -13,7 +13,7 @@ class BrowserStorage(unittest.TestCase):
             self.assertEqual(prior.read_bytes(),b"prior")
     def test_default_output_mode_routes_only_suites_with_existing_windows_drive_guards(self):
         output=Path("/synthetic-evidence")
-        guarded={"realm_givers_browser","realm_trails_north_browser","coastward_bridge_posts_browser","practice_visibility_browser"}
+        guarded={"realm_givers_browser","realm_trails_north_browser","coastward_bridge_posts_browser","practice_visibility_browser","hell_campaign_browser"}
         for suite in guarded:
             command,env=V.browser_run_spec(suite,output)
             self.assertIn("--output",command);self.assertEqual(env,{})

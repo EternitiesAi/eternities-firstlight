@@ -94,8 +94,8 @@ function update(sim,dt){const A=G.RealmAdventure,a=sim.state.adventure,r=runtime
  }
  const keep=[];
  for(const shot of r.arrows){if(shot.room!==sim.room||a.hp<=0)continue;const step=Math.min(shot.left,dt*22),end={x:shot.x+shot.dx*step,z:shot.z+shot.dz*step},hit=trace(shot,end,r.enemies,(x,z)=>projectileGround(sim,x,z),shot.hit);let stopped=false;
-  for(const {e,u}of hit.hits){shot.hit.push(e.id);shot.pierce--;if(e.kind==='practice'&&sim.room!=='riverbank')practiceHit(sim,e);else{A.damageEnemy(sim,e,shot.damage,'weapon');e.awareness=a.elapsed+3;e.lastKnown={x:sim.state.player.x,z:sim.state.player.z};}
-   A.fx(sim,e.trailQuest&&!G.RealmTrails.canDamage(sim,e)?'arrow-wall':'arrow-hit',shot.x+(end.x-shot.x)*u,shot.z+(end.z-shot.z)*u,shot.color);
+  for(const {e,u}of hit.hits){const denied=e.hellCampaign&&!G.RealmHellCampaign.canDamage(sim,e)||e.trailQuest&&!G.RealmTrails.canDamage(sim,e);shot.hit.push(e.id);shot.pierce--;if(e.kind==='practice'&&sim.room!=='riverbank')practiceHit(sim,e);else{A.damageEnemy(sim,e,shot.damage,'weapon');e.awareness=a.elapsed+3;e.lastKnown={x:sim.state.player.x,z:sim.state.player.z};}
+   A.fx(sim,denied?'arrow-wall':'arrow-hit',shot.x+(end.x-shot.x)*u,shot.z+(end.z-shot.z)*u,shot.color);
    if(shot.pierce<=0){stopped=true;break;}}
   if(!stopped&&hit.wall!==null){A.fx(sim,'arrow-wall',shot.x+(end.x-shot.x)*hit.wall,shot.z+(end.z-shot.z)*hit.wall,0xb4bab0);stopped=true;}
   shot.x=end.x;shot.z=end.z;shot.left-=step;shot.age+=dt;if(!stopped&&shot.left>1e-5&&shot.age<2)keep.push(shot);

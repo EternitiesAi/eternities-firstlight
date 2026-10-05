@@ -1,0 +1,22 @@
+.hell-campaign { max-width: 860px; margin: 0 auto; color: #e9dfce; }
+.hell-campaign header { padding: 20px 22px; border: 1px solid #9e7e62; border-radius: 12px; background: linear-gradient(120deg,#4b3932,#202e31 75%); }
+.hell-campaign h2 { margin: 8px 0 12px; color: #eed29d; font-size: clamp(24px,4vw,35px); }
+.hell-campaign h3, .hell-campaign h4, .hell-campaign-invitation h3, .hell-campaign-map h3 { color: #e2c8a6; margin: 4px 0 10px; }
+.hell-campaign p, .hell-campaign-invitation p, .hell-campaign-map p { line-height: 1.65; max-width: 72ch; }
+.hell-campaign small, .hell-campaign-invitation small { color: #cab8a4; letter-spacing: .1em; font-size: 10px; }
+.hell-campaign section, .hell-campaign-invitation, .hell-campaign-map { margin: 15px 0; padding: 17px; border: 1px solid #73675c; border-radius: 9px; background: #293234dc; }
+.hell-campaign button, .hell-campaign-invitation button, .hell-campaign-map button { min-height: 38px; margin: 5px 7px 5px 0; white-space: normal; text-align: left; }
+.hell-campaign-terms { border-left: 4px solid #d4ad72 !important; }
+.hell-campaign-steps { list-style: none; margin: 0; padding: 0; }
+.hell-campaign-steps li { padding: 15px 0; border-top: 1px solid #596263; }
+.hell-campaign-steps li:first-child { border-top: 0; }
+.hell-campaign-steps li.hell-campaign-next { border-left: 3px solid #c6a879; padding-left: 13px; }
+.hell-campaign-done h4 { color: #a9c7b0; }
+.hell-campaign-choice-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+.hell-campaign-choice-grid article { padding: 14px; border: 1px solid #746c60; border-radius: 7px; background: #202c30; min-width: 0; }
+.hell-campaign-choice-grid .hell-campaign-chosen { border: 2px solid #e0bf82; }
+.hell-campaign-confirm { border: 2px solid #ddbb7b !important; background: #3d3930 !important; }
+.hell-campaign-ready, .hell-campaign-recognition { border-color: #98b09c !important; }
+.hell-campaign-footer { font-size: 12px; color: #c0c5bd; }
+.hell-campaign-map li { margin: 12px 0; }
+@media (max-width: 650px) { .hell-campaign-choice-grid { grid-template-columns: 1fr; } .hell-campaign header, .hell-campaign section { padding: 15px; } .hell-campaign button { max-width: 100%; } }

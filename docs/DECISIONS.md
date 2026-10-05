@@ -1,3 +1,20 @@
+# Complete Hell gate and staged realm development, 2026-10-04
+
+A current complete fresh remote099bd8d verifier invocation passes196commands/42browser suites. It does not relabel historical atlas/giver/configuration timeouts or sum targeted results into a full pass. Runtime f2dfdf3 and later099bd8d tooling/records retain distinct epochs. Later documentation must prove every non-document Git input equal and pass a fresh source gate. Evidence is byte-preserved on a separate reviewable branch; no main merge, deployment, billing change or personal-save use.
+
+Normal-time footage and short actual-RTX RAF sampling are separate from accelerated nativeUI/restarts and software-WebGL regression. Real damage attribution uses the actual caller; companion contributions remain explicit. The finite whole-game draft stays active and resumes hourly locally. New Heaven mechanics deliberately differ from Hell armor/strike pacing, and the next Atlantis arc must use actual depth/pressure work instead of treating artwork as support or cover. Founder taste/pacing and uncertain monetization/offline-loss/pet/construction decisions remain unresolved.
+
+Earlier decisions below are historical.
+
+# A finite complete draft, beginning with Hell, 2026-10-04
+
+- Treat Dom's autonomous whole-game request as an active long-horizon goal with finite playable-draft completion gates and an hourly local continuation schedule. A milestone is not the whole game, and a schedule is not an uninterrupted worker. Keep review branches; main/deployment and paid-provider/billing changes remain excluded.
+- Branch from actual fetched PR43/d30772a gameplay, not canon/archive/main/ZIPs. Hell Q08/prototype E–G guide a new exterior adaptation with preserved manuscript and earlier rescue owners. Build The Last Unclaimed Road before multiplying frameworks. Original Heaven01/sanctuary remain protected.
+- Use fixed quest/step/enemy/choice IDs and optional world hellCampaign1. Validate prerequisites/history/capacity on a whole candidate, synchronously save before adoption, then pay the declared fixed45XP/20sunmarks/4ore/3timber/2fibre once. Existing9999 XP capacity truncates only XP. No gear/automatic equip, normal material charge, forced class/global allegiance or strongest-gear claim.
+- Lock Veyr's short broad and long narrow frames at actual windup; damage only in recovery, fixed120HP/12damage, optional supplied preparation adds recovery. Keep cover, stationary autoattack, Brace, movement and both views. Qualify the .65 body along whole path segments, retaining the default .31 callers. Real damage events own feedback; a closed-window arrow cannot emit a confirmed-hit effect.
+- Keep strict evidence boundaries: labelled synthetic refusals, legitimately earned CPU journeys, accelerated native UI/restarts, actual pixels, normal-time footage and sustained GPU/human acceptance are distinct. Retain failed source/capture epochs. Companion-inclusive hit text proves actual damage but not a weapon source; instrument the real caller only in a labelled pass-through observer if attribution is needed. No runtime mutation while checks/captures freeze source.
+- Next authored direction is Heaven public passage under threat, then Atlantis/Cosmos and Earth finale. Explicit upper-terrace/geography gaps and founder cosmology remain unresolved. The earlier camp-carrier proposal is preserved as deferred optional work.
+
 # Remember one allocation without inventing another owner, 2026-10-04
 
 - Continue PR42's actual gameplay on a separate review branch. Root implements/integrates; two authorized Sol colleagues provide scoped independent read-only source/evidence review. Their review does not claim test execution or human acceptance. No paid provider rerouting.
