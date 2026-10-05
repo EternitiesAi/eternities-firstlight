@@ -5,6 +5,9 @@ Three command-earned variants pass the entire Harbour Beneath the Harbour loop;5
 Dom will play later. Ask simply: Was the shallow current and deeper quiet route understandable? Could you read the intake and use Brace, movement or the visible bollard? Did the repair and returned recognition make this place worth visiting? Check both cameras and whether the exact fixed fee is useful to the existing character. Do not convert automated known-route success into founder acceptance.
 
 Dom requested fewer retained versions and bounded footage. Preserve a small useful set of labelled videos/screenshots and source receipts; inventory storage and ownership before retiring disposable duplicates.
+# Heaven engineering gate and deferred founder play, 2026-10-05
+
+Complete204-command/43-suite regression and882-check native proof pass. The actual35-second original-speed RTX clip shows fights, seven-waypoint courier, explicit welcome, activation, payment and reload; it does not answer human pacing or enjoyment. Dom plays later: Was the route clear? Could you read both warnings in either camera? Did accompanying the courier and trying the deliberate fitting make the return worthwhile? Retain failed/superseded evidence and keep short clips, not duplicate raw/profile/game copies.
 
 # Hell campaign footage and pending founder play, 2026-10-04
 

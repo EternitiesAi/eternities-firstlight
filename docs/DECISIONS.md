@@ -5,6 +5,9 @@ Dom explicitly directs continued autonomous development while avoiding compoundi
 Atlantis's authored municipal Custodian remains anchored at(8,-44), with fixed128HP/10damage,3.4-radius sweep and range-aware6-reach intake. Ground and opaque cover clip the full locked lane; the canonical0.7-square,1.3-high bollard at(12.5,-43) supplies actual collision, visible model and camera cover. The existing dry public road, wet body/depth volumes and current-free air court remain. No submerged combat, drowning timer, hidden chase, gear scaling or whole-city claim.
 
 The finite optional ledger adds atlantisCampaign1 while world/key9/adventure12 remain. Pressure order, safety before disposition, honest material fee and candidate-save-before-adopt keep all old state/rewards intact. Completed source journeys now include exact hashes of every emitted checkpoint as well as complete source provenance. No single marker or partial report grants combat/reward progress. See the dated campaign contract for actual source results and pending qualification.
+# Completed gate counts and bounded delivery, 2026-10-05
+
+Full02 is one complete current verifier invocation at3ee1c3c, not pooled targeted greens.204 counts commands; individual Node/Python/native assertions have their own counts. Root observed process exit0; the independent retained log has terminal success without a numeric exit marker. A refreshed originally fresh clone and a newly created exact clone are distinct. Preserve source/byte equality for later docs. Hosted36e1568 nonexecution, normal-time hardware footage and human play are separate epochs. Continue whole-draft development with few checkouts/clips; no paid/billing/main/deployment/personal-save changes.
 
 # Complete Hell gate and staged realm development, 2026-10-04
 

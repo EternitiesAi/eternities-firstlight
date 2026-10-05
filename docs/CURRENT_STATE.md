@@ -7,6 +7,9 @@ The current integrated gameplay branch is `gameplay/atlantis-harbour-campaign-20
 Heaven's882-check native epoch and actual35-second original-speed clip passed; the complete remote gate first refused a seed-only wrapper correctly. The wrapper now earns complete journeys, has four CPU regression cases, and bounded Python execution time. Its corrected remote full gate is running at3ee1c3c299e47229c15eccf8d9a908d9ab7312df; do not infer completion yet. Hell remains fully qualified at its recorded epoch. Hosted jobs remain blocked before execution by account billing.
 
 World/key9 and adventure12 remain, with optional atlantisCampaign1. Absent data migrates empty; malformed/future/impossible history refuses. All older choices, XP, gear/socket/fitting, companions, homes/crops, notes/music and both cameras remain. Dom's new storage direction is to bound disposable copies and keep a few useful recordings, building forward from this integrated game. Ownership/byte-preservation checks precede retirement of copies. The whole-draft goal remains active.
+# Heaven complete regression gate, 2026-10-05
+
+PR45 full02 at3ee1c3c passed204commands:106syntax,1243Node/0fail/0skip,65Python passes plus1existing Windows skip,52earned journeys and43browser suites. The same invocation includes882 native Heaven checks/21whole-browser restarts. Both pages2813265bytes/d1694ee59e326603746e4a9f5850ecdb07ec48f741d250b54e860f78f988a896. Final warning runtimee0193c09 is unchanged. Read the dated delivery for exact refreshed-clone, ordinary-time and hosted epochs; hosted36e1568 billing blocked45jobs/0steps. Human acceptance is pending; the whole game is unfinished.
 
 # The Last Unclaimed Road qualified, 2026-10-04
 
