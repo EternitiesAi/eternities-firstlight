@@ -13,9 +13,9 @@ ROOT = Path(__file__).resolve().parents[1]
 
 CLI_BROWSER_OUTPUTS = frozenset({'bridge_browser', 'earth_story_transactions_browser',
     'realm_givers_browser', 'realm_trails_north_browser',
-    'coastward_bridge_posts_browser', 'practice_visibility_browser', 'hell_campaign_browser', 'heaven_campaign_browser'})
+    'coastward_bridge_posts_browser', 'practice_visibility_browser', 'hell_campaign_browser', 'heaven_campaign_browser', 'atlantis_campaign_browser'})
 GUARDED_BROWSER_OUTPUTS = frozenset({'realm_givers_browser', 'realm_trails_north_browser',
-    'coastward_bridge_posts_browser', 'practice_visibility_browser', 'hell_campaign_browser', 'heaven_campaign_browser'})
+    'coastward_bridge_posts_browser', 'practice_visibility_browser', 'hell_campaign_browser', 'heaven_campaign_browser', 'atlantis_campaign_browser'})
 BROWSER_SOURCE_OUTPUTS = frozenset({'realm_trails_north_browser', 'practice_visibility_browser'})
 ENV_BROWSER_OUTPUTS = {
     'bridge_community_browser': 'FIRSTLIGHT_BRIDGE_COMMUNITY_OUTPUT',
@@ -125,7 +125,9 @@ def main():
         run('syntax-' + module.stem, ['node', '--check', str(module)])
     run('rules', ['node', '--test', '--test-reporter=tap', *map(str, rules)])
     print('\n'.join((output / 'rules.log').read_text(encoding='utf-8').splitlines()[-9:]), flush=True)
-    run('python', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_*.py', '-v'])
+    # The wrapper cases execute complete command-earned journeys. Allow for
+    # their measured disk work on Windows while retaining a bounded failure.
+    run('python', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_*.py', '-v'], timeout=600)
     print('\n'.join((output / 'python.log').read_text(encoding='utf-8').splitlines()[-5:]), flush=True)
     run('crossing-blade', ['node', 'tests/crossing_journey.cjs'])
     run('crossing-bow', ['node', 'tests/crossing_journey.cjs', '--bow'])
@@ -184,8 +186,16 @@ def main():
     run('heaven-campaign-blade', ['node', 'tests/heaven_campaign_journey.cjs', '--output', str(heaven_output)])
     run('heaven-campaign-bow', ['node', 'tests/heaven_campaign_journey.cjs', '--output', str(heaven_output), '--bow'])
     run('heaven-campaign-veteran', ['node', 'tests/heaven_campaign_journey.cjs', '--output', str(heaven_output), '--veteran'])
+    atlantis_output = output / 'atlantis-campaign-earned'
+    if os.name == 'nt' and atlantis_output.drive.upper() != 'D:':
+        atlantis_output = ROOT / 'evidence10/atlantis-campaign-earned'
+    run('atlantis-campaign-blade', ['node', 'tests/atlantis_campaign_journey.cjs', '--output', str(atlantis_output)])
+    run('atlantis-campaign-bow', ['node', 'tests/atlantis_campaign_journey.cjs', '--output', str(atlantis_output), '--bow'])
+    run('atlantis-campaign-veteran', ['node', 'tests/atlantis_campaign_journey.cjs', '--output', str(atlantis_output), '--veteran'])
     if args.browser:
         prepare_browser_sources(args.browser_output)
+        command, extra_env = browser_run_spec('atlantis_campaign_browser', args.browser_output, mode=args.browser_output_mode)
+        run('atlantis_campaign_browser', command, timeout=1200, extra_env=extra_env)
         command, extra_env = browser_run_spec('heaven_campaign_browser', args.browser_output, mode=args.browser_output_mode)
         run('heaven_campaign_browser', command, timeout=1200, extra_env=extra_env)
         command, extra_env = browser_run_spec('hell_campaign_browser', args.browser_output, mode=args.browser_output_mode)
