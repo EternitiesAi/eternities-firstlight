@@ -1,3 +1,11 @@
+# Atlantis source completion and pending play, 2026-10-05
+
+Three command-earned variants pass the entire Harbour Beneath the Harbour loop;58 source checks cover its rules, graph, geometry and presentation. Accelerated simulation durations are4.05s blade,6.70s bow and1.40s strongest for the actual encounter, not novice pacing or a statement that the combat feels good. Native browser/reload/pixels and an ordinary-time movie remain pending. Heaven has actual courier/fight/workshop footage, and Hell has its completed footage/qualification; those do not provide human answers.
+
+Dom will play later. Ask simply: Was the shallow current and deeper quiet route understandable? Could you read the intake and use Brace, movement or the visible bollard? Did the repair and returned recognition make this place worth visiting? Check both cameras and whether the exact fixed fee is useful to the existing character. Do not convert automated known-route success into founder acceptance.
+
+Dom requested fewer retained versions and bounded footage. Preserve a small useful set of labelled videos/screenshots and source receipts; inventory storage and ownership before retiring disposable duplicates.
+
 # Hell campaign footage and pending founder play, 2026-10-04
 
 The actual normal-time30-second RTX Chromium clip shows native stationary combat, a sidestep avoiding the immutable contact, a camera exchange, explicit disposition, verification, payment and reload. It is edited only through original cuts, without speed scaling or substitute art. The capture's718 evaluations include repeated polls, not718 independent tests; Briar may contribute damage. Native pass-through observers separately attribute real blade/projectile callers.434checks/18whole-browser restarts and the complete42-suite fresh remote gate pass.

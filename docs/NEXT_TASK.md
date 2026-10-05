@@ -1,3 +1,11 @@
+# Qualify Atlantis, then inhabit the Cosmos, 2026-10-05
+
+Continue from the actual current Atlantis gameplay head after inspecting origin/reviews and active workers. Finish the bounded six-profile native campaign cohort, actual normal-time recording, complete current verifier and remote reproduction. Use only full successful command-earned source reports with exact checkpoint bytes; preserve failures. Native persistence, software appearance, normal-time footage, hardware measurement and human enjoyment are separate evidence.
+
+Next product arc is an inhabited Cosmos campaign grounded in the Open Confluence proposal: actual independent supports, a readable local encounter and mystery, a preserved ordinary return, and a practical persistent consequence. Do not declare the Answering or Regent's Earth confrontation complete. Then connect realm consequences to a reachable provisional Earth ending and qualify the whole finite draft contract. Existing near-expanse comparator/shelf and old realm payments keep their owners.
+
+Storage is now an explicit completion constraint. Reuse one integrated authoring game and a bounded qualification checkout; share Git history, avoid full-game copy accumulation and duplicate recordings, preserve a few useful clips plus their receipts. Retire only verified disposable owned copies, without touching personal saves or unrelated projects. No paid/billing/main-merge/deployment/Unreal/Luna/fake-online/protected-sanctuary changes.
+
 # Connect a distinct Heaven campaign, then deepen Atlantis
 
 The Hell PR44 runtime and complete fresh099bd8d epoch are qualified; preserve its frozen inputs and final documentation equality gate. Carry the whole browser-draft roadmap forward with actual mechanics and coherent consequences. Root's separate Heaven worktree implements The Gate That Remained Open: two all-live-damage apparatuses, a physical supported courier walk, truthful account, explicit accessible welcome and once-only fee. Finish its native restart/pixel and ordinary-time/fresh-remote evidence before calling it qualified. Its source greens do not complete the whole game.

@@ -1,3 +1,11 @@
+# Bounded campaign storage and anchored municipal encounter, 2026-10-05
+
+Dom explicitly directs continued autonomous development while avoiding compounding full-game versions/media. Keep the integrated current game and recoverable Git source history, a few useful gameplay clips, exact reports and failure evidence. Reuse or retire only owned disposable clean verification copies after current-state/byte/remote preservation checks; do not delete personal data or unrelated projects. Drive free space is not itself evidence that Firstlight caused the usage. New browser cohorts should avoid duplicate videos/profiles.
+
+Atlantis's authored municipal Custodian remains anchored at(8,-44), with fixed128HP/10damage,3.4-radius sweep and range-aware6-reach intake. Ground and opaque cover clip the full locked lane; the canonical0.7-square,1.3-high bollard at(12.5,-43) supplies actual collision, visible model and camera cover. The existing dry public road, wet body/depth volumes and current-free air court remain. No submerged combat, drowning timer, hidden chase, gear scaling or whole-city claim.
+
+The finite optional ledger adds atlantisCampaign1 while world/key9/adventure12 remain. Pressure order, safety before disposition, honest material fee and candidate-save-before-adopt keep all old state/rewards intact. Completed source journeys now include exact hashes of every emitted checkpoint as well as complete source provenance. No single marker or partial report grants combat/reward progress. See the dated campaign contract for actual source results and pending qualification.
+
 # Complete Hell gate and staged realm development, 2026-10-04
 
 A current complete fresh remote099bd8d verifier invocation passes196commands/42browser suites. It does not relabel historical atlas/giver/configuration timeouts or sum targeted results into a full pass. Runtime f2dfdf3 and later099bd8d tooling/records retain distinct epochs. Later documentation must prove every non-document Git input equal and pass a fresh source gate. Evidence is byte-preserved on a separate reviewable branch; no main merge, deployment, billing change or personal-save use.

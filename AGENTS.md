@@ -1,3 +1,15 @@
+# Integrated Atlantis source and bounded storage, 2026-10-05
+
+Continue the finite complete-browser-draft goal and inspect the actual current gameplay head/reviews/workers before acting. Current source is gameplay/atlantis-harbour-campaign-20261004/runtime13d5fb9538a81e0f66ce6fe5e58b3b735cd95544, stacked on Heaven PR45/Hell PR44. Read the latest four continuity sections and dated Atlantis contract. Root owns integration; two authorized Sol6.1xhigh colleagues have scoped native/capture/storage ownership. Keep current source frozen during qualification and match exact source/checkpoint hashes.
+
+58 focused source cases and all three command-earned variants pass. Atlantis native, normal-time media, full portable gate and exact remote reproduction remain pending; Heaven's corrected full gate is running separately. Do not pool historical or targeted successes into a completed full gate. Preserve negative epochs and keep source/native/ordinary-time/hardware/human claims distinct.
+
+Dom now explicitly limits copy/media accumulation: build forward from the integrated full game, share source history, reuse a bounded qualification checkout and retain a few useful clips. Inspect measured sizes, active ownership, clean status, remote preservation and exact paths before retiring disposable duplicates; preserve recoverable source, failures, personal saves and unrelated projects. No new unbounded full clones or profile/video duplication. Heavy work remainsD.
+
+World/key9/adventure12 and optionalatlantisCampaign1 preserve all older owners, XP1–5/9999, gear/socket/fittings, companion, housing/crops, music/notes, explicit soul/class/story consent and both cameras. The real dry anchored encounter/current/pressure/save/claim owners must agree with UI/art. No main merge/deployment/billing/paid providers/personal-save inspection/Unreal/Luna/fake participants/protected-sanctuary changes. The whole goal remains active after individual deliveries.
+
+Earlier sections below are historical scoped checkpoints.
+
 # Qualified Hell campaign and autonomous draft, 2026-10-04
 
 Continue the finite playable-draft contract in docs/development/PLAYABLE_DRAFT_ROADMAP_2026-10-04.md. The complete goal and hourly local heartbeat remain active; individual delivery is not whole-game completion. Root owns gameplay integration, two authorized Sol6.1 xhigh colleagues have scoped work, paid Firstlight providers remain unauthorized.
