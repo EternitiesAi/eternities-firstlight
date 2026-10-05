@@ -413,6 +413,26 @@ class Capture:
         self.check('deliberate ordinary companion '+mode,self.state()['adventure']['companion']['mode']==mode)
         self.close()
 
+    def return_home_for_receipt(self,paid):
+        self.close()
+        # All campaign play/footage above uses ordinary RAF. End with the actual
+        # native pause so the free-return save and later close save observe the
+        # same snapshot, rather than racing ordinary time/resident autosaves.
+        if not self.diag()['adventure']['paused']:
+            self.press('p')
+        self.check('native pause stabilizes final persistence receipt',self.diag()['adventure']['paused'])
+        self.check('accepted Cosmos exposes its actual free World return',self.page.locator('#world-home').is_visible())
+        self.click('#world-home')
+        self.page.wait_for_function('()=>Realm.diagnostics.scene==="valley"',timeout=10000)
+        self.check('ordinary native return retains paid arrangement',self.state()['cosmosCampaign']==paid['cosmosCampaign'])
+        self.mark('ordinary_native_return_home')
+        native=self.page.evaluate('()=>localStorage.getItem(RealmCharacters.KEY)')
+        library=json.loads(native)
+        current=next(slot['world'] for slot in library['slots'] if slot['id']==library['active'])
+        self.check('free return commits the exact paused snapshot',current==self.state() and self.diag()['saveState']=='saved')
+        self.report['storage_observation_barrier']={'input':'Native P after completed campaign play, before actual #world-home free-return save.','paused':True,'directSaveAPI':False,'afterGameplay':True}
+        return native
+
     def run(self):
         root=self.args.root
         class Handler(SimpleHTTPRequestHandler):
@@ -486,12 +506,8 @@ class Capture:
         self.check('whole fixed fee explicitly claimed once',paid['cosmosCampaign']['claimed'] and paid['adventure']['xp']-before['adventure']['xp']==min(fee['xp'],9999-before['adventure']['xp']) and all(paid['adventure'][k]-before['adventure'][k]==fee[k] for k in ('coins','ore')) and paid['sandbox']['inventory']==expected)
         self.check('fee never equips or refills resources',all(paid['adventure'][k]==before['adventure'][k] for k in ('equipment','hp','stamina','tonics')))
         self.check('all previous owners and companion choice survive',all(paid[k]==imported[k] for k in OWNER_KEYS) and all(paid['adventure'][k]==imported['adventure'][k] for k in ADVENTURE_KEYS))
-        self.mark('paid_local_arrangement');self.close()
-        self.click('#cosmos-home')
-        self.page.wait_for_function('()=>Realm.diagnostics.scene==="valley"',timeout=10000)
-        self.check('ordinary native return retains paid arrangement',self.state()['cosmosCampaign']==paid['cosmosCampaign'])
-        self.mark('ordinary_native_return_home')
-        native=self.page.evaluate('()=>localStorage.getItem(RealmCharacters.KEY)')
+        self.mark('paid_local_arrangement')
+        native=self.return_home_for_receipt(paid)
         self.report['paid_native_bytes']=native;self.report['paid_native_sha256']=digest(native)
         # Finish the sole raw take, then cold-launch the SAME profile with no
         # recorder. This avoids an extra reload-page take or profile copy.
