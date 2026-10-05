@@ -46,6 +46,23 @@ def wallet(world):
     return {k: world['adventure'][k] for k in ('xp', 'coins', 'ore')}
 
 
+def swim_keys(point, snapshot):
+    """Return one or two ordinary WASD keys for the nearest of eight headings."""
+    player, yaw = snapshot['adventure']['player'], snapshot['camera']['yaw']
+    dx, dz = point['x'] - player['x'], point['z'] - player['z']
+    x = dx * math.cos(yaw) - dz * math.sin(yaw)
+    z = dx * math.sin(yaw) + dz * math.cos(yaw)
+    if x == 0 and z == 0:
+        return []
+    edge = math.tan(math.pi / 8)
+    keys = []
+    if abs(x) >= abs(z) * edge:
+        keys.append('d' if x > 0 else 'a')
+    if abs(z) >= abs(x) * edge:
+        keys.append('s' if z > 0 else 'w')
+    return keys
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path, required=True, help='Command-earned CHECKPOINT_INLET.json beside its successful full journey report.')
@@ -222,6 +239,8 @@ def main():
         def swim_to(x, y, z, label):
             close()
             start, trace = time.monotonic(), []
+            observation = {'label': label, 'target': {'x': x, 'y': y, 'z': z}, 'trace': trace, 'completed': False}
+            report['observations'].append(observation)
             while time.monotonic() - start < 90:
                 d = diag()
                 dive = d['world']['dive'] if d.get('world') else None
@@ -231,15 +250,16 @@ def main():
                 distance = math.hypot(x - p['x'], z - p['z'])
                 trace.append({'seconds': time.monotonic() - start, 'player': p, 'feet_y': dive['y'], 'body': dive['body'], 'court': dive.get('dryCourt')})
                 if distance < .14 and abs(dy) < .075:
-                    report['observations'].append({'label': label, 'target': {'x': x, 'y': y, 'z': z}, 'seconds': time.monotonic() - start, 'trace': trace})
+                    observation.update({'seconds': time.monotonic() - start, 'completed': True})
                     return
                 keys = []
                 if distance >= .14:
-                    keys.append(movement_key({'x': x, 'z': z}, d))
+                    keys.extend(swim_keys({'x': x, 'z': z}, d))
                 if abs(dy) >= .075:
                     keys.append('f' if dy > 0 else 'g')
                 amount = min(110, max(40, 1000 * max(distance if distance >= .14 else 0, abs(dy) if abs(dy) >= .075 else 0) / 2.6))
                 hold(keys, int(amount))
+            observation['seconds'] = time.monotonic() - start
             raise TimeoutError('Ordinary keyboard swimming did not reach ' + label)
 
         def physical(kind, identifier):

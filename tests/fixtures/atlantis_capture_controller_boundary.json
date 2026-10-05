@@ -1,0 +1,519 @@
+{
+  "label": "Recorded failure and successful surrounding observations, used as explicit CPU boundary fixtures; no native/earned/RAF claim",
+  "originalReportSha256": "380424a83d5016032510500771b657f6f647b2ac277a44f62f9fb8761b1cf0dd",
+  "failure_diagnostics": {
+    "scene": "world-atlantis",
+    "world": {
+      "id": "atlantis",
+      "height": -1.4005200000000113,
+      "dive": {
+        "y": -1.4005200000000113,
+        "depth": 1.4105200000000113,
+        "hold": true,
+        "body": "water",
+        "camera": "air",
+        "dryCourt": null
+      },
+      "journey": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      }
+    },
+    "atlantis": {
+      "current": {
+        "active": true,
+        "text": "The marked shallow repair current is active. Ordinary swimming is faster; the quiet lower band and supplied manual bypass remain available. The air court has no current."
+      },
+      "motion": {
+        "currentDistance": 2.111620000000001,
+        "pullDistance": 0
+      },
+      "witnesses": [
+        {
+          "id": "atlantis-ilyra-v1",
+          "name": "Ilyra \u00b7 records keeper",
+          "x": 0,
+          "z": -18,
+          "yaw": 0,
+          "atlantisCampaign": "atlantis-harbour-beneath-v1"
+        }
+      ]
+    },
+    "adventure": {
+      "tactics": {
+        "scene": "world-atlantis",
+        "target": null,
+        "auto": false,
+        "nextAttack": 0,
+        "guardUntil": 0,
+        "shield": 0,
+        "shieldUntil": 0,
+        "cooldowns": {
+          "guard": 0,
+          "insight": 0,
+          "spirit": 0
+        },
+        "hits": [],
+        "serial": 0,
+        "windup": null,
+        "motion": null
+      },
+      "beacon": {
+        "phase": "idle",
+        "time": 0,
+        "wave": 0,
+        "ward": 100,
+        "actors": [],
+        "serial": 0,
+        "notice": "",
+        "repairAt": 0,
+        "maraAt": 0,
+        "ilanAt": 0,
+        "playerRepairAt": 0,
+        "defeats": 0
+      },
+      "crossing": {
+        "room": "world-atlantis",
+        "tones": [],
+        "seek": false,
+        "rangAt": -10,
+        "tone": null,
+        "toneSerial": 0
+      },
+      "player": {
+        "x": 11.814265835611561,
+        "z": -30.475968285365827,
+        "yaw": -2.3815926535897933
+      },
+      "paused": false,
+      "intent": null,
+      "stats": {
+        "level": 2,
+        "attack": 18,
+        "defense": 1,
+        "maxHP": 110
+      },
+      "weapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "arrows": [],
+      "range": {
+        "active": false,
+        "start": 0,
+        "hits": {},
+        "shots": 0,
+        "message": "A calm place to learn a different rhythm."
+      },
+      "enemies": [],
+      "companion": {
+        "room": "world-atlantis",
+        "x": 0,
+        "z": 39,
+        "yaw": 3.141592653589793,
+        "path": [],
+        "nextPath": 0,
+        "nextHit": 0,
+        "seek": null,
+        "status": "Waiting on the quay"
+      }
+    },
+    "camera": {
+      "preset": "follow",
+      "yaw": 0.76
+    }
+  },
+  "observations": [
+    {
+      "label": "east_outlet_route_12_-29",
+      "target": {
+        "x": 12,
+        "y": -1.8,
+        "z": -29
+      },
+      "seconds": 2.451877199986484,
+      "trace": [
+        {
+          "seconds": 0.013121499971020967,
+          "player": {
+            "x": 7.912131905048219,
+            "z": -28.919749044401783,
+            "yaw": -0.8107963267948967
+          },
+          "feet_y": -1.746840000000023,
+          "body": "water",
+          "court": null
+        },
+        {
+          "seconds": 0.14507660001982003,
+          "player": {
+            "x": 8.132061647427234,
+            "z": -29.12878158927724,
+            "yaw": 2.3307963267948963
+          },
+          "feet_y": -1.746840000000023,
+          "body": "water",
+          "court": null
+        },
+        {
+          "seconds": 0.2714616999728605,
+          "player": {
+            "x": 8.340915072726943,
+            "z": -28.909040304261023,
+            "yaw": 0.76
+          },
+          "feet_y": -1.746840000000023,
+          "body": "water",
+          "court": null
+        },
+        {
+          "seconds": 0.41247380001004785,
+          "player": {
+            "x": 8.592317194692324,
+            "z": -29.147985818283175,
+            "yaw": 2.3307963267948963
+          },
+          "feet_y": -1.746840000000023,
+          "body": "water",
+          "court": null
+        },
+        {
+          "seconds": 0.5566920000128448,
+          "player": {
+            "x": 8.801349739567772,
+            "z": -28.928056075904156,
+            "yaw": 0.76
+          },
+          "feet_y": -1.746840000000023,
+          "body": "water",
+          "court": null
+        },
+        {
+          "seconds": 0.7057173000066541,
+          "player": {
+            "x": 9.052751861533153,
+            "z": -29.167001589926308,
+            "yaw": 2.3307963267948963
+          },
+          "feet_y": -1.746840000000023,
+          "body": "water",
+          "court": null
+        },
+        {
+          "seconds": 0.8333350999746472,
+          "player": {
+            "x": 9.261784406408593,
+            "z": -28.947071847547303,
+            "yaw": 0.76
+          },
+          "feet_y": -1.746840000000023,
+          "body": "water",
+          "court": null
+        },
+        {
+          "seconds": 0.9738039000076242,
+          "player": {
+            "x": 9.512998071011168,
+            "z": -29.185838241993718,
+            "yaw": 2.3307963267948963
+          },
+          "feet_y": -1.746840000000023,
+          "body": "water",
+          "court": null
+        },
+        {
+          "seconds": 1.1148397999932058,
+          "player": {
+            "x": 9.751943585033315,
+            "z": -28.934436120028334,
+            "yaw": 0.76
+          },
+          "feet_y": -1.746840000000023,
+          "body": "water",
+          "court": null
+        },
+        {
+          "seconds": 1.254009899974335,
+          "player": {
+            "x": 10.003345706998694,
+            "z": -29.173381634050482,
+            "yaw": 2.3307963267948963
+          },
+          "feet_y": -1.746840000000023,
+          "body": "water",
+          "court": null
+        },
+        {
+          "seconds": 1.3932394000003114,
+          "player": {
+            "x": 10.242112101445112,
+            "z": -28.922167969447887,
+            "yaw": 0.76
+          },
+          "feet_y": -1.746840000000023,
+          "body": "water",
+          "court": null
+        },
+        {
+          "seconds": 1.5323796999873593,
+          "player": {
+            "x": 10.462041843824114,
+            "z": -29.131200514323332,
+            "yaw": 2.3307963267948963
+          },
+          "feet_y": -1.746840000000023,
+          "body": "water",
+          "court": null
+        },
+        {
+          "seconds": 1.6725936000002548,
+          "player": {
+            "x": 10.700808238270518,
+            "z": -28.87998684972075,
+            "yaw": 0.76
+          },
+          "feet_y": -1.746840000000023,
+          "body": "water",
+          "court": null
+        },
+        {
+          "seconds": 1.8119957000017166,
+          "player": {
+            "x": 10.952021902873106,
+            "z": -29.118753244167177,
+            "yaw": 2.3307963267948963
+          },
+          "feet_y": -1.746840000000023,
+          "body": "water",
+          "court": null
+        },
+        {
+          "seconds": 1.9394080999772996,
+          "player": {
+            "x": 11.161054447748556,
+            "z": -28.898823501788158,
+            "yaw": 0.76
+          },
+          "feet_y": -1.746840000000023,
+          "body": "water",
+          "court": null
+        },
+        {
+          "seconds": 2.078660300001502,
+          "player": {
+            "x": 11.412268112351132,
+            "z": -29.137589896234573,
+            "yaw": 2.3307963267948963
+          },
+          "feet_y": -1.746840000000023,
+          "body": "water",
+          "court": null
+        },
+        {
+          "seconds": 2.216144100006204,
+          "player": {
+            "x": 11.62130065722657,
+            "z": -28.917660153855568,
+            "yaw": 0.76
+          },
+          "feet_y": -1.746840000000023,
+          "body": "water",
+          "court": null
+        },
+        {
+          "seconds": 2.3468312000040896,
+          "player": {
+            "x": 11.841230399605584,
+            "z": -29.12669269873102,
+            "yaw": 2.3307963267948963
+          },
+          "feet_y": -1.746840000000023,
+          "body": "water",
+          "court": null
+        },
+        {
+          "seconds": 2.4518750999704935,
+          "player": {
+            "x": 11.990437006187632,
+            "z": -28.969707715524745,
+            "yaw": 0.76
+          },
+          "feet_y": -1.746840000000023,
+          "body": "water",
+          "court": null
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "label": "actual_equalizer_recorded",
+      "seconds": 42.0515682999976,
+      "diagnostics": {
+        "scene": "world-atlantis",
+        "mode": "webgl2",
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "world": {
+          "id": "atlantis",
+          "height": -2.7,
+          "dive": {
+            "y": -2.7,
+            "depth": 2.71,
+            "hold": true,
+            "body": "air",
+            "camera": "air",
+            "dryCourt": "bellglass-air"
+          },
+          "journey": {
+            "counter": 0,
+            "lastClaim": 0,
+            "firstClaimed": false,
+            "active": null,
+            "defeated": []
+          }
+        },
+        "atlantis": {
+          "current": {
+            "active": true,
+            "text": "The marked shallow repair current is active. Ordinary swimming is faster; the quiet lower band and supplied manual bypass remain available. The air court has no current."
+          },
+          "motion": {
+            "currentDistance": 2.111620000000001,
+            "pullDistance": 0
+          },
+          "witnesses": [
+            {
+              "id": "atlantis-ilyra-v1",
+              "name": "Ilyra \u00b7 records keeper",
+              "x": 0,
+              "z": -18,
+              "yaw": 0,
+              "atlantisCampaign": "atlantis-harbour-beneath-v1"
+            }
+          ]
+        },
+        "adventure": {
+          "tactics": {
+            "scene": "world-atlantis",
+            "target": null,
+            "auto": false,
+            "nextAttack": 0,
+            "guardUntil": 0,
+            "shield": 0,
+            "shieldUntil": 0,
+            "cooldowns": {
+              "guard": 0,
+              "insight": 0,
+              "spirit": 0
+            },
+            "hits": [],
+            "serial": 0,
+            "windup": null,
+            "motion": null
+          },
+          "beacon": {
+            "phase": "idle",
+            "time": 0,
+            "wave": 0,
+            "ward": 100,
+            "actors": [],
+            "serial": 0,
+            "notice": "",
+            "repairAt": 0,
+            "maraAt": 0,
+            "ilanAt": 0,
+            "playerRepairAt": 0,
+            "defeats": 0
+          },
+          "crossing": {
+            "room": "world-atlantis",
+            "tones": [],
+            "seek": false,
+            "rangAt": -10,
+            "tone": null,
+            "toneSerial": 0
+          },
+          "player": {
+            "x": 7.975533535135471,
+            "z": -35.07865764782338,
+            "yaw": 2.3307963267948963
+          },
+          "paused": false,
+          "intent": null,
+          "stats": {
+            "level": 2,
+            "attack": 18,
+            "defense": 1,
+            "maxHP": 110
+          },
+          "weapon": {
+            "style": "blade",
+            "reach": 2.65,
+            "cooldown": 0.52,
+            "stamina": 0,
+            "primary": "Sunstrike",
+            "special": "Dawn sweep"
+          },
+          "arrows": [],
+          "range": {
+            "active": false,
+            "start": 0,
+            "hits": {},
+            "shots": 0,
+            "message": "A calm place to learn a different rhythm."
+          },
+          "enemies": [],
+          "companion": {
+            "room": "world-atlantis",
+            "x": 0,
+            "z": 39,
+            "yaw": 3.141592653589793,
+            "path": [],
+            "nextPath": 0,
+            "nextHit": 0,
+            "seek": null,
+            "status": "Waiting on the quay"
+          }
+        },
+        "characters": {
+          "mode": "managed",
+          "active": "character-2",
+          "revision": 12,
+          "count": 2,
+          "writer": true,
+          "error": null
+        },
+        "camera": {
+          "preset": "follow",
+          "yaw": 0.76,
+          "projection": "orthographic"
+        },
+        "saveState": "saved",
+        "errors": []
+      },
+      "campaign": {
+        "version": 1,
+        "accepted": true,
+        "steps": [
+          "receipt-conflict",
+          "choose-approach",
+          "upper-reading",
+          "lower-reading",
+          "diagnose-flow",
+          "inlet-set",
+          "equalizer-set"
+        ],
+        "approach": "upper",
+        "choice": null,
+        "claimed": false
+      }
+    }
+  ]
+}
