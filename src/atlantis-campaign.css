@@ -1,0 +1,26 @@
+.atlantis-campaign { max-width: 870px; margin: 0 auto; color: #efe8d8; }
+.atlantis-campaign header { padding: 24px; border: 1px solid #b8986d; border-radius: 12px; background: linear-gradient(130deg,#31595a,#223e46 68%,#5b483b); }
+.atlantis-campaign h2 { margin: 9px 0 12px; color: #f0d49e; font-size: clamp(25px,4vw,36px); line-height: 1.2; }
+.atlantis-campaign h3, .atlantis-campaign h4, .atlantis-campaign-invitation h3, .atlantis-campaign-map h3 { margin: 4px 0 10px; color: #e9d6b0; }
+.atlantis-campaign small, .atlantis-campaign-invitation small { font-size: 10px; letter-spacing: .11em; color: #bddbd5; }
+.atlantis-campaign p, .atlantis-campaign-invitation p, .atlantis-campaign-map p { max-width: 74ch; line-height: 1.65; }
+.atlantis-campaign section, .atlantis-campaign-invitation, .atlantis-campaign-map { margin: 16px 0; padding: 18px; border: 1px solid #739794; border-radius: 9px; background: #233d43ee; }
+.atlantis-campaign button, .atlantis-campaign-invitation button, .atlantis-campaign-map button { min-height: 44px; margin: 5px 8px 5px 0; max-width: 100%; white-space: normal; text-align: left; }
+.atlantis-campaign button:focus-visible, .atlantis-campaign summary:focus-visible, .atlantis-campaign-invitation button:focus-visible, .atlantis-campaign-map button:focus-visible { outline: 3px solid #f0d49e; outline-offset: 3px; }
+.atlantis-campaign-terms { border-left: 4px solid #d7ab72 !important; }
+.atlantis-campaign-gallery { border-left: 4px solid #a4ddd6 !important; }
+.atlantis-campaign-steps { margin: 0; padding: 0; list-style: none; }
+.atlantis-campaign-steps li { padding: 16px 0; border-top: 1px solid #68898b; }
+.atlantis-campaign-steps li:first-child { border-top: 0; }
+.atlantis-campaign-steps li.atlantis-campaign-next { border-left: 3px solid #d6b985; padding-left: 14px; }
+.atlantis-campaign-done h4 { color: #b6dbce; }
+.atlantis-campaign details { margin: 10px 0; }
+.atlantis-campaign summary { cursor: pointer; min-height: 30px; padding: 5px 0; color: #c7dfdd; }
+.atlantis-campaign-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+.atlantis-campaign-grid article { min-width: 0; padding: 16px; border: 1px solid #8aa39b; border-radius: 8px; background: #20353b; }
+.atlantis-campaign-grid .atlantis-campaign-chosen { border: 2px solid #eac588; }
+.atlantis-campaign-confirm { border: 2px solid #eac588 !important; background: #41493a !important; }
+.atlantis-campaign-ready, .atlantis-campaign-recognition { border-color: #adcfba !important; }
+.atlantis-campaign-map li { margin: 12px 0; }
+.atlantis-campaign-footer { color: #c2d5cb; font-size: 12px; }
+@media (max-width: 650px) { .atlantis-campaign-grid { grid-template-columns: 1fr; } .atlantis-campaign header, .atlantis-campaign section { padding: 16px; } }

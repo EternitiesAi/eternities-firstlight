@@ -1,3 +1,26 @@
+# Atlantis footage and deferred founder play, 2026-10-05
+
+Atlantis PR46 now has one complete current verifier invocation at `779ef47a33a8f2a646c8b0e4b67757c8ce2080c8`:212commands,110syntax modules,1302Node passes/zero failures/skips,94Python passes plus1existingWindows symlink skip,55command-earned journeys and44browser suites. Root observed actual exit0. The originally fresh remote qualification checkout was created at8688c6f and refreshed to779ef47; only archived documentation media are absent. A later documentation head still needs its own exact remote source/equality receipt. Do not relabel this as a new clone created at779.
+
+Separate native02 passes857checks/24whole-Chromium restarts/48pixel controls with six bounded profiles and no videos. Normal capture03 uses ordinaryRAF/native menus and keyboard for131.842seconds at1440x900balanced on Chromium143/RTX3080ANGLE D3D11. The final31.8-second795-decoded-frame clip is unchanged-speed excerpts, not a whole playthrough, human pacing or performance certification. The short MP4 is6944840bytes/SHA256d1acb1d9389c28a2c443594d308ed5ef08adc393066f10c0c6986f26efc28b55.
+
+Evidence `e1e8a7742d0185dc1776fc96bb403af8c03d79a6` is freshly fetched and fully matched against its manifest:465payload files/71461618bytes. Publication uses a separate Git index and streamed remote readback, adding no game copy, profile or raw video. Native01, two controller failures, failed mux attempts and full01's stale roof assertion remain visible. Hosted c519300 jobs stopped before execution due to account billing; later heads and Linux are unqualified. Preserve Dom's deferred human route/combat/reward/camera questions.
+
+Cosmos PR47 is the integrated next arc; its native/normal/full-browser work has separate pending gates. The Earth homecoming is still prospective. The whole browser-draft goal and hourly continuation remain active. Preserve all save owners, XP1-5/9999, gear/socket/fittings, both views, explicit history and personal-save boundaries. Keep bounded storageD; do not retry the blocked standalone-clone deletion, merge main, deploy, change billing or use paid providers.
+
+# Actual Atlantis outing and deferred human play, 2026-10-05
+
+Atlantis native02 passes857 checks with no source drift or browser/console errors. Actual capture03 passes the complete131.842-second normal-time route on RTX3080 Chromium at1440x900; it uses native menus/keyboard and ordinary RAF, with no test mode, actor/camera writes or direct game commands. It is not human pacing or performance qualification. Earlier native01 roof-occlusion failure and capture01/02 controller failures remain preserved. The existing canopy now uses its ordinary preference-controlled roof cutaway; swimming geometry and saves are unchanged. Both regenerated pages are identical at2886245bytes/SHA256dc5879b29a1f3d55413f74ee9e06496ae1bc2a219d7553dc20e48ade103d5b10.
+
+The complete current verifier is running in a new shallow remote8688c6f qualification checkout with only archived documentation media excluded from the working tree; all runtime inputs and save fixtures remain. Source/full completion is pending. Short edited footage/evidence publication and later documentation-head equality remain pending. Heaven full204-command gate and exact final297 fresh161-source gate passed; its final evidence delivery is being recorded independently. The whole draft remains active.
+
+# Atlantis source completion and pending play, 2026-10-05
+
+Three command-earned variants pass the entire Harbour Beneath the Harbour loop;58 source checks cover its rules, graph, geometry and presentation. Accelerated simulation durations are4.05s blade,6.70s bow and1.40s strongest for the actual encounter, not novice pacing or a statement that the combat feels good. Native browser/reload/pixels and an ordinary-time movie remain pending. Heaven has actual courier/fight/workshop footage, and Hell has its completed footage/qualification; those do not provide human answers.
+
+Dom will play later. Ask simply: Was the shallow current and deeper quiet route understandable? Could you read the intake and use Brace, movement or the visible bollard? Did the repair and returned recognition make this place worth visiting? Check both cameras and whether the exact fixed fee is useful to the existing character. Do not convert automated known-route success into founder acceptance.
+
+Dom requested fewer retained versions and bounded footage. Preserve a small useful set of labelled videos/screenshots and source receipts; inventory storage and ownership before retiring disposable duplicates.
 # Heaven engineering gate and deferred founder play, 2026-10-05
 
 Complete204-command/43-suite regression and882-check native proof pass. The actual35-second original-speed RTX clip shows fights, seven-waypoint courier, explicit welcome, activation, payment and reload; it does not answer human pacing or enjoyment. Dom plays later: Was the route clear? Could you read both warnings in either camera? Did accompanying the courier and trying the deliberate fitting make the return worthwhile? Retain failed/superseded evidence and keep short clips, not duplicate raw/profile/game copies.

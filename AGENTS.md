@@ -1,3 +1,30 @@
+# Qualified Atlantis delivery, 2026-10-05
+
+Atlantis PR46 now has one complete current verifier invocation at `779ef47a33a8f2a646c8b0e4b67757c8ce2080c8`:212commands,110syntax modules,1302Node passes/zero failures/skips,94Python passes plus1existingWindows symlink skip,55command-earned journeys and44browser suites. Root observed actual exit0. The originally fresh remote qualification checkout was created at8688c6f and refreshed to779ef47; only archived documentation media are absent. A later documentation head still needs its own exact remote source/equality receipt. Do not relabel this as a new clone created at779.
+
+Separate native02 passes857checks/24whole-Chromium restarts/48pixel controls with six bounded profiles and no videos. Normal capture03 uses ordinaryRAF/native menus and keyboard for131.842seconds at1440x900balanced on Chromium143/RTX3080ANGLE D3D11. The final31.8-second795-decoded-frame clip is unchanged-speed excerpts, not a whole playthrough, human pacing or performance certification. The short MP4 is6944840bytes/SHA256d1acb1d9389c28a2c443594d308ed5ef08adc393066f10c0c6986f26efc28b55.
+
+Evidence `e1e8a7742d0185dc1776fc96bb403af8c03d79a6` is freshly fetched and fully matched against its manifest:465payload files/71461618bytes. Publication uses a separate Git index and streamed remote readback, adding no game copy, profile or raw video. Native01, two controller failures, failed mux attempts and full01's stale roof assertion remain visible. Hosted c519300 jobs stopped before execution due to account billing; later heads and Linux are unqualified. Preserve Dom's deferred human route/combat/reward/camera questions.
+
+Cosmos PR47 is the integrated next arc; its native/normal/full-browser work has separate pending gates. The Earth homecoming is still prospective. The whole browser-draft goal and hourly continuation remain active. Preserve all save owners, XP1-5/9999, gear/socket/fittings, both views, explicit history and personal-save boundaries. Keep bounded storageD; do not retry the blocked standalone-clone deletion, merge main, deploy, change billing or use paid providers.
+
+# Atlantis native and ordinary play, 2026-10-05
+
+Atlantis native02 passes857 checks with no source drift or browser/console errors. Actual capture03 passes the complete131.842-second normal-time route on RTX3080 Chromium at1440x900; it uses native menus/keyboard and ordinary RAF, with no test mode, actor/camera writes or direct game commands. It is not human pacing or performance qualification. Earlier native01 roof-occlusion failure and capture01/02 controller failures remain preserved. The existing canopy now uses its ordinary preference-controlled roof cutaway; swimming geometry and saves are unchanged. Both regenerated pages are identical at2886245bytes/SHA256dc5879b29a1f3d55413f74ee9e06496ae1bc2a219d7553dc20e48ade103d5b10.
+
+The complete current verifier is running in a new shallow remote8688c6f qualification checkout with only archived documentation media excluded from the working tree; all runtime inputs and save fixtures remain. Source/full completion is pending. Short edited footage/evidence publication and later documentation-head equality remain pending. Heaven full204-command gate and exact final297 fresh161-source gate passed; its final evidence delivery is being recorded independently. The whole draft remains active.
+
+# Integrated Atlantis source and bounded storage, 2026-10-05
+
+Continue the finite complete-browser-draft goal and inspect the actual current gameplay head/reviews/workers before acting. Current source is gameplay/atlantis-harbour-campaign-20261004/runtime13d5fb9538a81e0f66ce6fe5e58b3b735cd95544, stacked on Heaven PR45/Hell PR44. Read the latest four continuity sections and dated Atlantis contract. Root owns integration; two authorized Sol6.1xhigh colleagues have scoped native/capture/storage ownership. Keep current source frozen during qualification and match exact source/checkpoint hashes.
+
+58 focused source cases and all three command-earned variants pass. Atlantis native, normal-time media, full portable gate and exact remote reproduction remain pending; Heaven's corrected full gate is running separately. Do not pool historical or targeted successes into a completed full gate. Preserve negative epochs and keep source/native/ordinary-time/hardware/human claims distinct.
+
+Dom now explicitly limits copy/media accumulation: build forward from the integrated full game, share source history, reuse a bounded qualification checkout and retain a few useful clips. Inspect measured sizes, active ownership, clean status, remote preservation and exact paths before retiring disposable duplicates; preserve recoverable source, failures, personal saves and unrelated projects. No new unbounded full clones or profile/video duplication. Heavy work remainsD.
+
+World/key9/adventure12 and optionalatlantisCampaign1 preserve all older owners, XP1–5/9999, gear/socket/fittings, companion, housing/crops, music/notes, explicit soul/class/story consent and both cameras. The real dry anchored encounter/current/pressure/save/claim owners must agree with UI/art. No main merge/deployment/billing/paid providers/personal-save inspection/Unreal/Luna/fake participants/protected-sanctuary changes. The whole goal remains active after individual deliveries.
+
+Earlier sections below are historical scoped checkpoints.
 # Completed Heaven full gate, 2026-10-05
 
 Read docs/development/HEAVEN_CAMPAIGN_DELIVERY_2026-10-05.md before older pending sections. Exact full-tested head3ee1c3c passes204commands/43browser suites; Root observed exit0. Later documentation needs exact remote source/equality qualification. Preserve full01 wrapper failure, earlier negative epochs and all save/combat/courier owners. The whole draft remains active. Keep heavy workD and bounded checkouts/videos; no main merge, deployment, billing/paid providers, personal-save inspection or unrelated cleanup.

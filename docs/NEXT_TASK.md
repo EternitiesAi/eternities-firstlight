@@ -1,3 +1,24 @@
+# Continue Cosmos qualification and Earth return, 2026-10-05
+
+Atlantis PR46 now has one complete current verifier invocation at `779ef47a33a8f2a646c8b0e4b67757c8ce2080c8`:212commands,110syntax modules,1302Node passes/zero failures/skips,94Python passes plus1existingWindows symlink skip,55command-earned journeys and44browser suites. Root observed actual exit0. The originally fresh remote qualification checkout was created at8688c6f and refreshed to779ef47; only archived documentation media are absent. A later documentation head still needs its own exact remote source/equality receipt. Do not relabel this as a new clone created at779.
+
+Separate native02 passes857checks/24whole-Chromium restarts/48pixel controls with six bounded profiles and no videos. Normal capture03 uses ordinaryRAF/native menus and keyboard for131.842seconds at1440x900balanced on Chromium143/RTX3080ANGLE D3D11. The final31.8-second795-decoded-frame clip is unchanged-speed excerpts, not a whole playthrough, human pacing or performance certification. The short MP4 is6944840bytes/SHA256d1acb1d9389c28a2c443594d308ed5ef08adc393066f10c0c6986f26efc28b55.
+
+Evidence `e1e8a7742d0185dc1776fc96bb403af8c03d79a6` is freshly fetched and fully matched against its manifest:465payload files/71461618bytes. Publication uses a separate Git index and streamed remote readback, adding no game copy, profile or raw video. Native01, two controller failures, failed mux attempts and full01's stale roof assertion remain visible. Hosted c519300 jobs stopped before execution due to account billing; later heads and Linux are unqualified. Preserve Dom's deferred human route/combat/reward/camera questions.
+
+Cosmos PR47 is the integrated next arc; its native/normal/full-browser work has separate pending gates. The Earth homecoming is still prospective. The whole browser-draft goal and hourly continuation remain active. Preserve all save owners, XP1-5/9999, gear/socket/fittings, both views, explicit history and personal-save boundaries. Keep bounded storageD; do not retry the blocked standalone-clone deletion, merge main, deploy, change billing or use paid providers.
+
+# Integrate the Open Confluence while Atlantis qualifies, 2026-10-05
+
+Complete the frozen remote Atlantis verifier/evidence delivery separately from source edits. Continue Cosmos in the same integrated authoring checkout on a new review branch from the actual Atlantis head, keeping small colleague stages. Connect its permanent ground, optional versioned ledger, real encounter/weapon/save callers and native interface; staged greens are not installed play. Then implement the honest provisional Earth return and whole-draft acceptance. Preserve storage/saves/both cameras and all existing exclusions.
+
+# Qualify Atlantis, then inhabit the Cosmos, 2026-10-05
+
+Continue from the actual current Atlantis gameplay head after inspecting origin/reviews and active workers. Finish the bounded six-profile native campaign cohort, actual normal-time recording, complete current verifier and remote reproduction. Use only full successful command-earned source reports with exact checkpoint bytes; preserve failures. Native persistence, software appearance, normal-time footage, hardware measurement and human enjoyment are separate evidence.
+
+Next product arc is an inhabited Cosmos campaign grounded in the Open Confluence proposal: actual independent supports, a readable local encounter and mystery, a preserved ordinary return, and a practical persistent consequence. Do not declare the Answering or Regent's Earth confrontation complete. Then connect realm consequences to a reachable provisional Earth ending and qualify the whole finite draft contract. Existing near-expanse comparator/shelf and old realm payments keep their owners.
+
+Storage is now an explicit completion constraint. Reuse one integrated authoring game and a bounded qualification checkout; share Git history, avoid full-game copy accumulation and duplicate recordings, preserve a few useful clips plus their receipts. Retire only verified disposable owned copies, without touching personal saves or unrelated projects. No paid/billing/main-merge/deployment/Unreal/Luna/fake-online/protected-sanctuary changes.
 # Continue Atlantis, Cosmos and the connected ending, 2026-10-05
 
 Heaven full02 is complete at3ee1c3c; finish its documentation source/equality receipt without repeating unchanged browser gates. Continue actual current Atlantis source/reviews/worker ownership, then integrate staged Open Confluence geometry/rules/presentation through all real save, combat, movement and UI callers. A staged module is not playable delivery. Preserve earlier realm owners and qualify the connected provisional Earth ending afterward. Reuse the integrated game and boundedD qualification storage, keeping a few useful clips. The finite draft goal remains active.

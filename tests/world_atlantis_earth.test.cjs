@@ -178,6 +178,15 @@ test('civic side support physically meets the canopy underside across its full l
  }
 });
 
+test('the real Farwake civic canopy participates in the existing preference-controlled shelter reveal',()=>{
+ const before=JSON.stringify(sea),parts=record(sea),canopies=parts.filter(p=>p.opt.structureId==='farwake-civic-canopy');
+ assert.equal(canopies.length,1);const p=canopies[0];
+ assert.equal(p.opt.worldRoof,'farwake-civic-canopy','a nearby public record must not remain outside the narrow traveller aperture under an untagged roof');
+ assert.equal(p.opt.cutaway,true);assert.equal(p.opt.cameraSolid,false);
+ assert.deepEqual(p.p,[0,G+4.1,-12]);assert.deepEqual(p.s,[27,.2,19.7]);
+ assert.equal(JSON.stringify(sea),before,'view metadata never changes support, walls, controls, history or collision');
+});
+
 test('bridge timber skins use the real UV mesh, clear every retained joint and stay above only existing deck',()=>{
  const parts=record(earth),skins=parts.filter(p=>p.opt.bridgeSkin),joints=parts.filter(p=>p.opt.bridgeJoint),bridge=earth.patches.find(p=>p.id==='channel-bridge');
  assert.equal(skins.length,51);assert.equal(joints.length,50);

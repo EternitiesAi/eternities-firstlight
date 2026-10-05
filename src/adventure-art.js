@@ -37,6 +37,7 @@ function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.
     const divisor=e.hitFrom?Math.hypot(e.x-e.hitFrom.x,e.z-e.hitFrom.z)||1:1;
     G.RealmEarthExpeditionBeastArt.draw(out,{x:e.x+(e.hitFrom?(e.x-e.hitFrom.x)/divisor*recoil:0),z:e.z+(e.hitFrom?(e.z-e.hitFrom.z)/divisor*recoil:0),base:support(sim,e.x,e.z),yaw:e.yaw,mode:e.mode,timer:e.timer,windup:e.windup,recovery:e.recovery,aim:e.aim,flash,reducedMotion,time:s.elapsed,paused:sim.paused,phase:motion.phase,blend:motion.blend,contactAge:s.elapsed-(e.contactAt??-9)});
    }
+   else if(e.atlantisCampaign){G.RealmAtlantisCampaignArt.drawEnemy(out,sim,e,t);}
    else if(e.hellCampaign){G.RealmHellCampaignArt.drawEnemy(out,sim,e,t);}
    else if(e.heavenCampaign){G.RealmHeavenCampaignArt.drawEnemy(out,sim,e,t);}
    else if(e.kind==='skitter'){
@@ -51,7 +52,7 @@ function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.
    else if(e.kind==='charger'){add('round',e.x,2.55,e.z,2.2,1.8,2.8,body);add('octa',e.x,2.8,e.z+1.15,1.3,1.1,1.2,0xb6a480);for(const sign of[-1,1]){add('round',e.x+sign*.9,3.2,e.z+.9,.55,.83,.78,0xd8c8a0);box(e.x+sign*.65,1.95,e.z+.65,.32,1,.37,0x68634e);box(e.x+sign*.65,1.95,e.z-.85,.32,1,.37,0x68634e);add('round',e.x+sign*.30,3.03,e.z+1.67,.10,.10,.08,0xf5c188,{em:1});}for(let i=0;i<5;i++)add('octa',e.x,3.1,e.z-.9+i*.35,.42,.7,.42,0xc79874,{em:.22});}
    else{add('round',e.x,2.75,e.z,1.85,1.7,2.7,body);add('octa',e.x,3.48,e.z+1.05,.91,1.4,.85,body);for(const dx of[-.64,.64])for(const dz of[-.72,.75])box(e.x+dx,2,e.z+dz,.26,1.3,.3,0x55796e,{r:[Math.sin(t*2+dx+dz)*.08,0,0]});for(const sign of[-1,1]){box(e.x+sign*.48,4.35,e.z+.98,.15,1.7,.15,0xccbf96,{r:[0,0,-sign*.40]});for(let j=0;j<3;j++)box(e.x+sign*(.56+j*.18),4.12+j*.43,e.z+1,.56,.11,.12,0xe0cda1,{r:[0,0,sign*.2]});}for(let i=0;i<5;i++)add('octa',e.x+Math.sin(i*2.1)*.6,3.25,e.z-.8+i*.35,.36,.75,.36,e.hp<e.maxHP/2?0xc392bc:0xabc5bb,{em:.45});for(const dx of[-.26,.26])add('round',e.x+dx,3.6,e.z+1.48,.13,.13,.13,0xf2dab0,{em:1});}
    // Confirmed-hit recoil and the named beast silhouette affect art only.
-   if(e.kind!=='skitter'&&!rootBank&&!e.hellCampaign&&!e.heavenCampaign){
+   if(e.kind!=='skitter'&&!rootBank&&!e.atlantisCampaign&&!e.hellCampaign&&!e.heavenCampaign){
    const named=e.custom==='river-bristle',scale=named?1.32:1,recoil=sim.state.settings.reducedMotion?0:Math.max(0,1-(s.elapsed-(e.hitAt??-9))/.18)*.12,rd=e.hitFrom?Math.hypot(e.x-e.hitFrom.x,e.z-e.hitFrom.z)||1:1;
    if(named)for(let i=0;i<5;i++)add('octa',e.x,2.52,e.z-.45+i*.19,.18,.40,.2,0xcbb47e);
    for(const[k,items]of Object.entries(out))for(let j=starts[k];j<items.length;j++){const item=items[j];item.p[0]=e.x+(item.p[0]-e.x)*scale;item.p[1]=1.58+(item.p[1]-1.58)*scale;item.p[2]=e.z+(item.p[2]-e.z)*scale;item.s=item.s.map(v=>v*scale);}

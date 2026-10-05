@@ -99,7 +99,10 @@
    solid('court-registry',0,-20.4,3.2,.8,1.2,0x9c8966),
    solid('court-west-bench',-8,-18,3,.7,.9,0x9c8966),
    solid('dry-causeway-west-rail',-5.6,-32,.2,25,.75,0x8b7c56),
-   solid('exit-quay-bollard',18,-44,1,1,1,0x8e9d97)
+   solid('exit-quay-bollard',18,-44,1,1,1,0x8e9d97),
+   // Real service cover: the same solid supplies body/projectile collision,
+   // intake clipping, the visible model and camera obstruction.
+   solid('custodian-service-bollard',12.5,-43,.7,.7,1.3,0x887356)
   ],
   points:[
    {id:'home-pier',name:'Free home passage',x:0,z:39,kind:'return',text:'Nereme keeps a dry route home available.',detail:'Return is independent of the work commission and optional gallery. No allegiance, dive or breath purchase is required.'},
@@ -240,7 +243,7 @@
    for(const [x,z] of [[-3,25],[3,25],[-10,-4],[10,-4],[-3,-25],[-3,-39],[15,-43]]) lamp(x,z);
    roof('pilot-school',-9,23,6,7,3.3,0x658e88);
    // Open-front civic canopy; the three actual walls are supplied solids.
-   box(0,height(0,-12)+4.1,-12,27,.2,19.7,0x839b90,{cutaway:true,structureId:'farwake-civic-canopy'});
+   box(0,height(0,-12)+4.1,-12,27,.2,19.7,0x839b90,{cutaway:true,structureId:'farwake-civic-canopy',worldRoof:'farwake-civic-canopy'});
    for(const x of [-13.5,13.5]) {
     const id=x<0?'farwake-court-west':'farwake-court-east';
     box(x,height(x,-12)+3.94,-12,.56,.12,16.02,0xb7a46e,{solidId:id,supportCap:id});
