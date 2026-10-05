@@ -1,3 +1,7 @@
+# Completed gate counts and bounded delivery, 2026-10-05
+
+Full02 is one complete current verifier invocation at3ee1c3c, not pooled targeted greens.204 counts commands; individual Node/Python/native assertions have their own counts. Root observed process exit0; the independent retained log has terminal success without a numeric exit marker. A refreshed originally fresh clone and a newly created exact clone are distinct. Preserve source/byte equality for later docs. Hosted36e1568 nonexecution, normal-time hardware footage and human play are separate epochs. Continue whole-draft development with few checkouts/clips; no paid/billing/main/deployment/personal-save changes.
+
 # Complete Hell gate and staged realm development, 2026-10-04
 
 A current complete fresh remote099bd8d verifier invocation passes196commands/42browser suites. It does not relabel historical atlas/giver/configuration timeouts or sum targeted results into a full pass. Runtime f2dfdf3 and later099bd8d tooling/records retain distinct epochs. Later documentation must prove every non-document Git input equal and pass a fresh source gate. Evidence is byte-preserved on a separate reviewable branch; no main merge, deployment, billing change or personal-save use.

@@ -1,3 +1,7 @@
+# Heaven complete regression gate, 2026-10-05
+
+PR45 full02 at3ee1c3c passed204commands:106syntax,1243Node/0fail/0skip,65Python passes plus1existing Windows skip,52earned journeys and43browser suites. The same invocation includes882 native Heaven checks/21whole-browser restarts. Both pages2813265bytes/d1694ee59e326603746e4a9f5850ecdb07ec48f741d250b54e860f78f988a896. Final warning runtimee0193c09 is unchanged. Read the dated delivery for exact refreshed-clone, ordinary-time and hosted epochs; hosted36e1568 billing blocked45jobs/0steps. Human acceptance is pending; the whole game is unfinished.
+
 # The Last Unclaimed Road qualified, 2026-10-04
 
 Draft PR44 continues PR43 and remains unmerged. Runtime f2dfdf3e01dcbdd49838d3aedf961b79dfe786f6; native/capture/verifier head099bd8d2806a85822f97bdc48dcc466d13ec0cf6. The complete fresh remote clone passes196 commands:102 syntax modules,1198 Node passes/0 failures/0 skips,61 Python passes plus1 existing Windows symlink-privilege skip (62 total),49 command-earned journeys and42 browser suites. Both rebuilt checked-in pages remain identical at2747325bytes/SHA256eb94d30b587ef8ee5bb374d7df9db540cf6caa0bdadf02648cc5a4107a64d7ac. Native434checks/18whole-Chromium restarts, original normal-time30-second footage and a labelled short RTX RAF measurement are separate evidence. Hosted44jobs were blocked before execution by account billing; no Linux or sustained GPU/human qualification is claimed.
