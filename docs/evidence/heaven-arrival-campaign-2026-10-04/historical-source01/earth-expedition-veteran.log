@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "variant": "veteran",
+  "claims": 3,
+  "combats": 6,
+  "commands": 54,
+  "walkedLegs": 47,
+  "saves": 59,
+  "fitting": {
+    "weapon": "dawn_edge",
+    "kind": "edge",
+    "cost": {
+      "ore": 3,
+      "coins": 8,
+      "fiber": 6
+    },
+    "before": {
+      "level": 5,
+      "attack": 51,
+      "defense": 13,
+      "maxHP": 200
+    },
+    "after": {
+      "level": 5,
+      "attack": 53,
+      "defense": 13,
+      "maxHP": 200
+    },
+    "currentHPBefore": 200,
+    "currentHPAfter": 200,
+    "actualPostBindingDamagePackets": [
+      {
+        "n": 53,
+        "at": 1630.8315999991535,
+        "hpBefore": 54
+      }
+    ],
+    "arrowObserved": false,
+    "probe": "one newly accepted unpaid third patrol; only T.hit observation wrapper, restored before continuing"
+  },
+  "sourceDrift": false
+}

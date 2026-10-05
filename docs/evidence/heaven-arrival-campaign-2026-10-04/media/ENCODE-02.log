@@ -1,0 +1,45 @@
+Input #0, matroska,webm, from 'D:\07-GAMES\Firstlight\artifacts\heaven-arrival-campaign-20261004\capture-blade02\8c9f0d58f63970a059663f0c8980c5f4.webm':
+  Metadata:
+    ENCODER         : Lavf61.1.100
+  Duration: 00:02:42.96, start: 0.000000, bitrate: 991 kb/s
+  Stream #0:0: Video: vp8, yuv420p(progressive), 1440x900, SAR 1:1 DAR 8:5, 25 fps, 25 tbr, 1k tbn
+      Metadata:
+        ENCODER         : Lavc61.3.100 libvpx
+        DURATION        : 00:02:42.960000000
+Stream mapping:
+  Stream #0:0 -> #0:0 (vp8 (native) -> h264 (libx264))
+[libx264 @ 0000014b0982a100] using SAR=1/1
+[libx264 @ 0000014b0982a100] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2 AVX512
+[libx264 @ 0000014b0982a100] profile High, level 4.0, 4:2:0, 8-bit
+[libx264 @ 0000014b0982a100] 264 - core 164 r3192 c24e06c - H.264/MPEG-4 AVC codec - Copyleft 2003-2024 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=28 lookahead_threads=4 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=20.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to 'D:\07-GAMES\Firstlight\artifacts\heaven-arrival-campaign-20261004\media\cut-02.mp4':
+  Metadata:
+    encoder         : Lavf61.7.100
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(tv, bt470bg/unknown/unknown, progressive), 1440x900 [SAR 1:1 DAR 8:5], q=2-31, 25 fps, 12800 tbn
+      Metadata:
+        DURATION        : 00:02:42.960000000
+        encoder         : Lavc61.19.100 libx264
+      Side data:
+        cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=  104 fps=0.0 q=25.0 size=     768KiB time=00:00:04.36 bitrate=1443.1kbits/s speed=8.33x    
+[mp4 @ 0000014b09827340] Starting second pass: moving the moov atom to the beginning of the file
+[out#0/mp4 @ 0000014b09827240] video:1273KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.203148%
+frame=  150 fps=0.0 q=-1.0 Lsize=    1276KiB time=00:00:05.92 bitrate=1765.7kbits/s speed=9.07x    
+[libx264 @ 0000014b0982a100] frame I:1     Avg QP:17.90  size: 77838
+[libx264 @ 0000014b0982a100] frame P:44    Avg QP:16.42  size: 20202
+[libx264 @ 0000014b0982a100] frame B:105   Avg QP:21.02  size:  3205
+[libx264 @ 0000014b0982a100] consecutive B-frames:  4.7%  4.0%  6.0% 85.3%
+[libx264 @ 0000014b0982a100] mb I  I16..4: 21.6% 55.0% 23.4%
+[libx264 @ 0000014b0982a100] mb P  I16..4:  6.5%  8.4%  3.0%  P16..4: 25.6%  7.7%  3.8%  0.0%  0.0%    skip:45.0%
+[libx264 @ 0000014b0982a100] mb B  I16..4:  0.3%  0.3%  0.0%  B16..8: 23.5%  1.3%  0.1%  direct: 0.8%  skip:73.6%  L0:46.8% L1:51.1% BI: 2.1%
+[libx264 @ 0000014b0982a100] 8x8 transform intra:47.7% inter:69.1%
+[libx264 @ 0000014b0982a100] coded y,uvDC,uvAC intra: 36.2% 42.6% 26.8% inter: 6.4% 5.8% 0.8%
+[libx264 @ 0000014b0982a100] i16 v,h,dc,p: 33% 38% 18% 12%
+[libx264 @ 0000014b0982a100] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 32% 25% 31%  2%  2%  2%  2%  2%  3%
+[libx264 @ 0000014b0982a100] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 37% 31% 17%  2%  2%  2%  3%  2%  3%
+[libx264 @ 0000014b0982a100] i8c dc,h,v,p: 54% 27% 17%  2%
+[libx264 @ 0000014b0982a100] Weighted P-Frames: Y:2.3% UV:2.3%
+[libx264 @ 0000014b0982a100] ref P L0: 66.8%  8.2% 16.1%  8.8%
+[libx264 @ 0000014b0982a100] ref B L0: 86.4% 11.4%  2.1%
+[libx264 @ 0000014b0982a100] ref B L1: 94.6%  5.4%
+[libx264 @ 0000014b0982a100] kb/s:1737.72

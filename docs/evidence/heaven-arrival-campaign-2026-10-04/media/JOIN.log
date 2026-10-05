@@ -1,0 +1,23 @@
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0000016cb2bbf9c0] Auto-inserting h264_mp4toannexb bitstream filter
+Input #0, concat, from 'D:\07-GAMES\Firstlight\artifacts\heaven-arrival-campaign-20261004\media\concat.txt':
+  Duration: N/A, start: 0.000000, bitrate: 2034 kb/s
+  Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt470bg/unknown/unknown, progressive), 1440x900 [SAR 1:1 DAR 8:5], 2034 kb/s, 25 fps, 25 tbr, 12800 tbn
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.100 libx264
+Stream mapping:
+  Stream #0:0 -> #0:0 (copy)
+Output #0, mp4, to 'D:\07-GAMES\Firstlight\artifacts\heaven-arrival-campaign-20261004\media\FIRSTLIGHT_HEAVEN_GAMEPLAY.mp4':
+  Metadata:
+    encoder         : Lavf61.7.100
+  Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt470bg/unknown/unknown, progressive), 1440x900 [SAR 1:1 DAR 8:5], q=2-31, 2034 kb/s, 25 fps, 25 tbr, 12800 tbn
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.100 libx264
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0000016cb2ff0280] Auto-inserting h264_mp4toannexb bitstream filter
+    Last message repeated 3 times
+[mp4 @ 0000016cb2bd7ac0] Starting second pass: moving the moov atom to the beginning of the file
+[out#0/mp4 @ 0000016cb2bd7500] video:10306KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.106776%
+frame=  875 fps=0.0 q=-1.0 Lsize=   10317KiB time=00:00:34.92 bitrate=2420.4kbits/s speed=66.5x    

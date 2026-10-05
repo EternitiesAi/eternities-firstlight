@@ -1,0 +1,1203 @@
+{
+  "heavenCampaign": {
+    "version": 1,
+    "accepted": true,
+    "steps": [
+      "witness-account",
+      "compare-arrival-marks",
+      "inspect-false-relay",
+      "begin-watch",
+      "beam-disabled",
+      "relay-disabled",
+      "secure-service-route",
+      "invite-wayfarer"
+    ],
+    "choice": null,
+    "claimed": false
+  },
+  "hellCampaign": {
+    "version": 1,
+    "accepted": false,
+    "steps": [],
+    "choice": null,
+    "claimed": false
+  },
+  "bridgeCommunity": {
+    "version": 1,
+    "accepted": false,
+    "choice": null,
+    "steps": [],
+    "claimed": false
+  },
+  "homeHistory": {
+    "version": 1,
+    "revision": 0,
+    "owned": [],
+    "pinned": null
+  },
+  "localLife": {
+    "version": 1,
+    "records": {
+      "heaven-propagation-bed-v1": {
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      },
+      "hell-refuge-water-v1": {
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      },
+      "atlantis-bellglass-lamp-v1": {
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      },
+      "cosmos-drawing-shelf-v1": {
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      }
+    }
+  },
+  "earthExpedition": {
+    "version": 1,
+    "story": {
+      "accepted": false,
+      "branch": null,
+      "steps": [],
+      "claimed": false
+    },
+    "patrol": {
+      "lastClaim": 0,
+      "active": null
+    }
+  },
+  "realmTrails": {
+    "version": 1,
+    "records": {
+      "heaven-broken-choir-v1": {
+        "accepted": true,
+        "steps": [
+          "spillway",
+          "relay-west",
+          "relay-east",
+          "relay-crown",
+          "disable-core",
+          "garden-repair"
+        ],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": true
+      },
+      "hell-open-cage-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "atlantis-bellglass-chart-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "earthlands-coastward-materials-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "cosmos-split-bearing-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      }
+    }
+  },
+  "journeys": {
+    "version": 1,
+    "realms": {
+      "heaven": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "hell": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "earthlands": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "atlantis": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "cosmos": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      }
+    }
+  },
+  "adventure": {
+    "version": 12,
+    "earthBinding": {
+      "version": 1,
+      "weapon": null,
+      "kind": null
+    },
+    "realmCraft": {
+      "version": 1,
+      "weapon": null
+    },
+    "earthGathering": {
+      "version": 1,
+      "accepted": false,
+      "prepared": [],
+      "verse": null,
+      "shared": false
+    },
+    "earthNotes": {
+      "version": 1,
+      "accepted": false,
+      "marks": [],
+      "compared": false,
+      "interpretation": null
+    },
+    "earthStory": {
+      "version": 1,
+      "accepted": false,
+      "steps": [],
+      "dispatch": null,
+      "arrived": false,
+      "claimed": false
+    },
+    "classPath": {
+      "version": 1,
+      "choice": null,
+      "readyAt": 0
+    },
+    "pursuit": {
+      "version": 1,
+      "pinned": null,
+      "claimed": 0,
+      "active": null,
+      "fittings": {}
+    },
+    "starter": {
+      "version": 1,
+      "accepted": false,
+      "bundles": [],
+      "reward": null
+    },
+    "crossing": {
+      "version": 1,
+      "entered": false,
+      "met": false,
+      "inscription": false,
+      "clapperRevealed": false,
+      "clapper": false,
+      "repaired": false,
+      "complete": false,
+      "reward": false,
+      "attuned": false,
+      "projects": []
+    },
+    "beacon": {
+      "version": 1,
+      "introduced": false,
+      "complete": false,
+      "status": "dormant",
+      "attempts": 0,
+      "failures": 0,
+      "reward": false,
+      "relic": "undecided",
+      "route": null,
+      "soul": {
+        "grace": false,
+        "equipped": null,
+        "radiance": 0,
+        "corruption": 0,
+        "scars": []
+      }
+    },
+    "arsenal": {
+      "version": 1,
+      "gems": {
+        "ruby": 0,
+        "moonstone": 0,
+        "amber": 0
+      },
+      "sockets": {},
+      "rangeMedal": false,
+      "bestTime": null
+    },
+    "road": {
+      "version": 1,
+      "entered": false,
+      "revealed": [],
+      "claimed": [],
+      "cartRepaired": false,
+      "beaconLit": false,
+      "reported": false
+    },
+    "elapsed": 325.7000000000398,
+    "revision": 51,
+    "started": true,
+    "dug": [],
+    "chips": [],
+    "defeated": [],
+    "drops": [],
+    "ore": 2,
+    "coins": 12,
+    "xp": 30,
+    "hp": 85,
+    "stamina": 100,
+    "tonics": 3,
+    "equipment": {
+      "weapon": "trail_blade",
+      "armor": "travel_coat",
+      "charm": null
+    },
+    "owned": [
+      "trail_blade",
+      "travel_coat"
+    ],
+    "companion": {
+      "bonded": false,
+      "name": "Briar",
+      "mode": "follow"
+    },
+    "relic": false,
+    "angelSeen": false,
+    "reward": null,
+    "deaths": 0,
+    "receipts": [
+      {
+        "id": "earned-north-1-0-1",
+        "fp": "[\"start\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-8",
+        "fp": "[\"target-select\",{\"id\":\"heaven-choir-core-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-9",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-1-8",
+        "fp": "[\"attack\",{\"target\":\"heaven-choir-core-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-3-9",
+        "fp": "[\"attack\",{\"target\":\"heaven-choir-core-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-5-10",
+        "fp": "[\"attack\",{\"target\":\"heaven-choir-core-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-10",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-7-12",
+        "fp": "[\"attack\",{\"target\":\"heaven-choir-core-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-8-13",
+        "fp": "[\"attack\",{\"target\":\"heaven-choir-core-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-9-14",
+        "fp": "[\"attack\",{\"target\":\"heaven-choir-core-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-11-15",
+        "fp": "[\"attack\",{\"target\":\"heaven-choir-core-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-13-16",
+        "fp": "[\"attack\",{\"target\":\"heaven-choir-core-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-11",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-14",
+        "fp": "[\"rest\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-23",
+        "fp": "[\"target-select\",{\"id\":\"heaven-glasswing-sentinel-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-24",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-1-29",
+        "fp": "[\"attack\",{\"target\":\"heaven-glasswing-sentinel-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-3-30",
+        "fp": "[\"attack\",{\"target\":\"heaven-glasswing-sentinel-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-25",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-5-32",
+        "fp": "[\"attack\",{\"target\":\"heaven-glasswing-sentinel-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-7-33",
+        "fp": "[\"attack\",{\"target\":\"heaven-glasswing-sentinel-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-9-34",
+        "fp": "[\"attack\",{\"target\":\"heaven-glasswing-sentinel-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-11-35",
+        "fp": "[\"attack\",{\"target\":\"heaven-glasswing-sentinel-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-13-36",
+        "fp": "[\"attack\",{\"target\":\"heaven-glasswing-sentinel-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-26",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-28",
+        "fp": "[\"target-select\",{\"id\":\"heaven-counterfeit-relay-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-29",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-1-41",
+        "fp": "[\"attack\",{\"target\":\"heaven-counterfeit-relay-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-3-42",
+        "fp": "[\"attack\",{\"target\":\"heaven-counterfeit-relay-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-5-43",
+        "fp": "[\"attack\",{\"target\":\"heaven-counterfeit-relay-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-30",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-7-45",
+        "fp": "[\"attack\",{\"target\":\"heaven-counterfeit-relay-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-9-46",
+        "fp": "[\"attack\",{\"target\":\"heaven-counterfeit-relay-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-31",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      }
+    ]
+  },
+  "sandbox": {
+    "version": 1,
+    "elapsed": 325.7000000000398,
+    "revision": 0,
+    "inventory": {
+      "wood": 0,
+      "stone": 0,
+      "fiber": 0,
+      "crystal": 0,
+      "plank": 0,
+      "block": 0,
+      "seeds": 4,
+      "berry": 0,
+      "axe": 0,
+      "pick": 0,
+      "floor": 0,
+      "wall": 0,
+      "masonry": 0,
+      "lantern": 0,
+      "bench": 0,
+      "bed": 0,
+      "fire": 0,
+      "workbench": 0
+    },
+    "nodes": [
+      {
+        "id": "timber-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "timber-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "timber-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "timber-4",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-1",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-2",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-3",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-stone-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-stone-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-fibre",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "crystal-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "crystal-2",
+        "hp": 4,
+        "readyAt": 0
+      }
+    ],
+    "bridge": false,
+    "placed": [],
+    "nextId": 1,
+    "stats": {
+      "gathered": 0,
+      "crafted": 0,
+      "harvested": 0
+    },
+    "milestones": [],
+    "recentCommands": [],
+    "cooldownUntil": 0
+  },
+  "score": {
+    "format": "eternities.score.v1",
+    "title": "A Window Left Open",
+    "bpm": 88,
+    "voice": "felt",
+    "melody": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    ],
+    "bass": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "drums": [
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    ]
+  },
+  "scoreRevision": 0,
+  "retreat": {
+    "version": 1,
+    "revision": 0,
+    "wall": "moss",
+    "floor": "oak",
+    "items": [
+      {
+        "slot": "nw",
+        "kind": "shelf",
+        "rotation": 0
+      },
+      {
+        "slot": "ne",
+        "kind": "piano",
+        "rotation": 0
+      },
+      {
+        "slot": "w",
+        "kind": "sofa",
+        "rotation": 1
+      },
+      {
+        "slot": "e",
+        "kind": "plant",
+        "rotation": 0
+      },
+      {
+        "slot": "c",
+        "kind": "rug",
+        "rotation": 0
+      }
+    ]
+  },
+  "visitor": {
+    "name": "Visitor",
+    "skin": 0,
+    "cloak": 0,
+    "hair": 0
+  },
+  "version": 9,
+  "seed": 2317,
+  "day": 1,
+  "hour": 18.66565000000237,
+  "weather": "clear",
+  "player": {
+    "x": 18,
+    "z": 6,
+    "yaw": 2.2455372690188193
+  },
+  "visited": [
+    "market",
+    "commons"
+  ],
+  "flowers": [],
+  "notes": [],
+  "journal": [
+    {
+      "seq": 1,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 2,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 3,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 4,
+      "day": 1,
+      "hour": 17.209000000000014,
+      "kind": "discovery",
+      "text": "You found The makers’ exchange."
+    },
+    {
+      "seq": 5,
+      "day": 1,
+      "hour": 17.21305000000002,
+      "kind": "quest",
+      "text": "Oren supplied a trail blade, a lantern, three tonics and a salve for an injured animal. Find the northern mine."
+    },
+    {
+      "seq": 6,
+      "day": 1,
+      "hour": 17.2614250000001,
+      "kind": "realm-trail",
+      "text": "The Broken Choir · a garden answer accepted. Read the route, danger and fixed reward."
+    },
+    {
+      "seq": 7,
+      "day": 1,
+      "hour": 17.3239750000002,
+      "kind": "realm-trail",
+      "text": "Optional preparation. Yselle: “Send the return pressure into the side basin; the bearing will take longer to rise.” Operate the marked service handle east of the Garden. This costs no material and extends the core’s actual recovery opening by 0.8 seconds. You can omit it and still finish; continue north to the three relay handles."
+    },
+    {
+      "seq": 8,
+      "day": 1,
+      "hour": 17.437825000000384,
+      "kind": "realm-trail",
+      "text": "Operate the west handle on the broad grounded apron beyond the Mirror Causeway. Its single notch marks the first isolated support. Set the east and crown relays in either order; all three are required before the service core wakes. The west Arcade service walk remains another way back to the Garden."
+    },
+    {
+      "seq": 9,
+      "day": 1,
+      "hour": 17.46032500000042,
+      "kind": "realm-trail",
+      "text": "Operate the east handle opposite the west relay. Its two notches identify it without pitch or color alone. Set the west and crown relays if either is still unset. The bearing is isolated only when all three supports have been recorded for this accepted repair."
+    },
+    {
+      "seq": 10,
+      "day": 1,
+      "hour": 17.483050000000457,
+      "kind": "realm-trail",
+      "text": "Operate the three-notch handle on the grounded northern apron, south of the closed terrace. Complete any remaining west/east relay. When the third handle is set, the service core at (0, -95) becomes the declared encounter; the summit road stays closed and the route south stays open."
+    },
+    {
+      "seq": 11,
+      "day": 1,
+      "hour": 17.514325000000508,
+      "kind": "realm-trail",
+      "text": "Crownkeeper service core disabled through its actual combat opening."
+    },
+    {
+      "seq": 12,
+      "day": 1,
+      "hour": 17.646850000000722,
+      "kind": "realm-trail",
+      "text": "At the Garden response plate, physically fit the released return arm. Rielle: “Leave the hinge where the next pair of hands can reach it.” The repair stops at this useful local instrument; it opens no summit terrain. Return to Rielle at the nearby west bench and choose the explicit claim for the stated fee."
+    },
+    {
+      "seq": 13,
+      "day": 1,
+      "hour": 17.668450000000757,
+      "kind": "realm-trail",
+      "text": "The Broken Choir · a garden answer complete · +30 XP · +12 sunmarks · +2 ore. The declared fee is claimed once."
+    },
+    {
+      "seq": 14,
+      "day": 1,
+      "hour": 17.693650000000797,
+      "kind": "discovery",
+      "text": "You found The Firstlight Commons."
+    },
+    {
+      "seq": 15,
+      "day": 1,
+      "hour": 17.76407500000091,
+      "kind": "heaven-campaign",
+      "text": "The Gate That Remained Open accepted. The repaired Garden answer and its prior payment remain separate."
+    },
+    {
+      "seq": 16,
+      "day": 1,
+      "hour": 17.76430000000091,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 17,
+      "day": 1,
+      "hour": 17.76430000000091,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 18,
+      "day": 1,
+      "hour": 17.76430000000091,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 19,
+      "day": 1,
+      "hour": 17.90515000000114,
+      "kind": "heaven-campaign",
+      "text": "Meet the Wayfarer · bell courier beside the existing service walk. A rescue signal promised an open upper passage, but the courier stopped when its directions contradicted the closed road. Keep the whole account. Arrival is not an invasion, and tired hands are not a failure of worth. Compare the public maker’s marks rather than requiring an oath, a"
+    },
+    {
+      "seq": 20,
+      "day": 1,
+      "hour": 17.959375000001227,
+      "kind": "heaven-campaign",
+      "text": "Inspect the existing Ruby Arcade response plate and the courier’s recorded mark. Its truthful repair notch differs from the repeated false passage signal. Calen can explain his authored observations; the visible marks support independent inspection when no guide follows. Record the distinction without changing the old survey or Broken Choir payment"
+    },
+    {
+      "seq": 21,
+      "day": 1,
+      "hour": 18.043975000001364,
+      "kind": "heaven-campaign",
+      "text": "At the existing Mirror Causeway plate, compare the promised rescue direction with the visible closed upper road. The mismatch belongs to a foreign signal apparatus, not to every traveler or to Heaven’s divine source. An approach construct guards that signal; the relay beyond it keeps repeating the incorrect route. Read their distinct warnings befor"
+    },
+    {
+      "seq": 22,
+      "day": 1,
+      "hour": 18.044200000001364,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 23,
+      "day": 1,
+      "hour": 18.044200000001364,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 24,
+      "day": 1,
+      "hour": 18.044200000001364,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 25,
+      "day": 1,
+      "hour": 18.157375000001547,
+      "kind": "heaven-campaign",
+      "text": "Deliberately begin the Glasswing encounter on the supported Causeway. Its beam locks its direction before firing and stops at actual opaque cover. Unlike the earlier service core and Hell Warden, this construct can be damaged during any live phase. Disable the actual construct with the owned blade or bow. Walking north, opening a map or reading thi"
+    },
+    {
+      "seq": 26,
+      "day": 1,
+      "hour": 18.18302500000159,
+      "kind": "heaven-campaign",
+      "text": "Glasswing approach construct was disabled through actual combat. No angel, civilian or larger network was declared defeated."
+    },
+    {
+      "seq": 27,
+      "day": 1,
+      "hour": 18.18325000000159,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 28,
+      "day": 1,
+      "hour": 18.18325000000159,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 29,
+      "day": 1,
+      "hour": 18.18325000000159,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 30,
+      "day": 1,
+      "hour": 18.37000000000189,
+      "kind": "heaven-campaign",
+      "text": "Borrowed-road relay was disabled through actual combat. No angel, civilian or larger network was declared defeated."
+    },
+    {
+      "seq": 31,
+      "day": 1,
+      "hour": 18.37022500000189,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 32,
+      "day": 1,
+      "hour": 18.37022500000189,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 33,
+      "day": 1,
+      "hour": 18.37022500000189,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 34,
+      "day": 1,
+      "hour": 18.40015000000194,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 35,
+      "day": 1,
+      "hour": 18.40015000000194,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 36,
+      "day": 1,
+      "hour": 18.40015000000194,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 37,
+      "day": 1,
+      "hour": 18.51872500000213,
+      "kind": "heaven-campaign",
+      "text": "Fit supplied route markers on the existing Arcade service walk after both apparatuses are disabled. The markers identify the actual supported western loop and the Garden return; they create no new floor, doorway or summit route. The courier can now be invited from the waiting place. This finite public work costs no ordinary materials and does not c"
+    },
+    {
+      "seq": 38,
+      "day": 1,
+      "hour": 18.53087500000215,
+      "kind": "heaven-campaign",
+      "text": "At the waiting courier, explicitly invite the real authored traveler to walk. Stay within 9 route units while the courier follows the complete service loop; it waits if you move too far away. Leaving or reloading resets an unfinished walk while retaining the invitation. Return here and deliberately invite again to restart without another fee or mat"
+    }
+  ],
+  "nextEvent": 39,
+  "residents": [
+    {
+      "id": "ilan",
+      "x": -11,
+      "z": -1.6,
+      "yaw": -1.9379701606131172,
+      "progress": 0.10559299999997951,
+      "conversations": 0
+    },
+    {
+      "id": "mara",
+      "x": -11,
+      "z": -1.6,
+      "yaw": -1.9693187724613137,
+      "progress": 0.10496299999997985,
+      "conversations": 0
+    },
+    {
+      "id": "oren",
+      "x": -11,
+      "z": -1.6,
+      "yaw": -2.0732175968195627,
+      "progress": 0.10452199999998009,
+      "conversations": 0
+    }
+  ],
+  "settings": {
+    "quality": "balanced",
+    "cameraMode": "adventure",
+    "cameraFov": 60,
+    "cameraViews": {
+      "version": 1,
+      "lastDiorama": "follow",
+      "profiles": {}
+    },
+    "cameraCutaway": true,
+    "reducedMotion": false,
+    "labels": true,
+    "timeFlow": true,
+    "sound": false
+  }
+}

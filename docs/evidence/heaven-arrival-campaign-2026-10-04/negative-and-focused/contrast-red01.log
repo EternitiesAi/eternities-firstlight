@@ -1,0 +1,53 @@
+✔ accepted recorded facts alone project static work; reading and art preserve every stored field (97.3236ms)
+✔ every transformed static footprint uses existing ground, avoids existing solids and stays within the draw budget (22.2406ms)
+ℹ accessible-assist: 67 static instances, 800 triangles
+ℹ broadened-activation: 67 static instances, 800 triangles
+✔ supplied optional mirror is loose until its own recorded action, and waymarks follow the exact existing escort route (0.7355ms)
+✔ both saved arrangements have distinct ordinary fittings readable on both faces while retaining three ceremonial notches per face (1.6694ms)
+✔ instrument motion belongs to a current matching bounded activation; pause, reduced motion and rest stay quiet (3.9767ms)
+✔ each actual apparatus uses its owned runtime actor frame and all transformed body vertices fit the declared impact radius (22.0991ms)
+✔ directed beam warning projects only the immutable locked rectangle, independent of later actor or player movement (2.1614ms)
+✖ stationary warning borders clear real authored paving and retain strong palette contrast without flashing (5.0935ms)
+✔ relay warning is a radial perimeter at the actual locked pulse center and never exceeds its real radius (2.1487ms)
+✔ a supplied lock clipped before the existing Garden instrument cannot project past cover, and zero length warns nowhere (2.5217ms)
+✔ short positive cover-clipped beam warnings keep caps and directional notches inside the supplied locked length (12.4969ms)
+✔ combat pause and reduced motion preserve deterministic frames with actual phase differences (1.1013ms)
+✔ courier art uses only the actual transient actor and never reconstructs a second courier from saved invitation or arrival (11.4996ms)
+✔ worst-case union of all fittings, separately owned encounter frames and courier stays within the combined geometry budget (1.5213ms)
+ℹ 150 combined instances, 2412 triangles
+✔ journal, map, legend and page are pure; defeats and actual courier arrival have no completion buttons (1.2519ms)
+✔ remote first invite and a reset escort walk link both reach the real staging anchor without work or actor creation (1.1178ms)
+✔ active map position comes from the actual live courier while reset preserves only honest staging and destination guidance (0.372ms)
+✔ arrival save refusal keeps the exact courier visible at its real destination and explains callback retries without claiming arrival or payment (0.6308ms)
+✔ choice preview grants no work and confirmation submits the exact current character and revision (0.5473ms)
+✔ stale active character, roster, adventure revision, sim, context identity, room and physical preview cannot dispatch a saved choice (2.1375ms)
+✔ successful deliberate activation closes the workspace; refusals and stale owners preserve it with no presentation-owned mutation (0.5519ms)
+✔ verified choice recognition quotes the actual catalogue callers including the courier, without claiming an unpaid or clipped fee (0.6095ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 21
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1490.4655
+
+✖ failing tests:
+
+test at tests\heaven_campaign_art.test.cjs:110:1
+✖ stationary warning borders clear real authored paving and retain strong palette contrast without flashing (5.0935ms)
+  AssertionError [ERR_ASSERTION]: actual warning vertices must remain above decorative paving/inlays
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\heaven-arrival-campaign-20261004\tests\heaven_campaign_art.test.cjs:119:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
