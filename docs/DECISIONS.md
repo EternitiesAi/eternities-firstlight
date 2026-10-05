@@ -1,3 +1,26 @@
+# Right-rail combat information, 2026-10-05
+
+Use the existing desktop right rail to keep selected-foe information out of the
+central fight. Reserve Return's current band and stack Beacon from observed target
+height; retain real drawer and modal ownership. Only821–1100px desktops≤700px high
+use a compact full-text Beacon grid and reduced target padding. Keep24px menu height
+and6px measured skill/focus clearance. No rule owner, save, input or camera API changes.
+
+Wait for actual native drawer transition completion before testing layers. Frame foe
+remains third-person-only; Diorama uses its own native framing. Test six earned body
+projections and all seven production Beacon copies across three short widths.
+Read docs/development/SELECTED_FOE_HUD_2026-10-05.md before older snapshots.
+The complete remote gate at56254e86972ced292369686cf91fea9c98b107d8 passed:
+230 commands,118 syntax modules,all47 browser suites in one actual-exit0 invocation;
+Node1542 passed/2 explicit generic cohort skips; Python232 passed/6 explicit skips.
+Mandatory current-cohort Earth26, recording37, earned19 and fresh whole-draft7
+checks passed without skips. Two fresh characters earned20 ordered chapter edges.
+That gate qualifies the previous centered-HUD build, not the changed pages below.
+Fresh exact full verification is mandatory after this CSS/test/HTML change.
+No pooling older green epochs; original negative invocations stay attributable.
+
+---
+
 # Current complete gate01 negative, 2026-10-05
 
 At pushedbf900d774e5a645e0bba56810a70396787022d1b, reused clean remote station's

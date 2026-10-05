@@ -1,3 +1,31 @@
+# Targeted HUD render evidence, 2026-10-05
+
+Installed cue05 actual exit0:182/182 checks,6 rendered body/camera projections,
+21 exact production Beacon phase/status/menu layout cases at821/1024/1100x600,
+390/820 compact cases, desktop Return/Beacon spacing and native Settings focus/layer.
+Root inspected full PNGs including blade third person, bow Diorama and short821.
+Software WebGL/accelerated setup; synthetic layout visibility is labelled. This is
+not human combat/pacing or a measured real-GPU performance claim.
+
+Cue01 failed an immediate drawer hit test during its240ms opening transition;
+measured native settled hit/focus pass. Cue02 attempted the intentionally disabled
+Diorama Frame foe; corrected only that new test branch to native V framing. Cue04
+ran stale pages after a mistaken tools/build.py path; failed overlap remains retained.
+The real populated Beacon overlap is repaired by full-text compact grid, not hiding
+controls. Native earlier failures and private diagnostic negatives remain available.
+Read docs/development/SELECTED_FOE_HUD_2026-10-05.md before older snapshots.
+The complete remote gate at56254e86972ced292369686cf91fea9c98b107d8 passed:
+230 commands,118 syntax modules,all47 browser suites in one actual-exit0 invocation;
+Node1542 passed/2 explicit generic cohort skips; Python232 passed/6 explicit skips.
+Mandatory current-cohort Earth26, recording37, earned19 and fresh whole-draft7
+checks passed without skips. Two fresh characters earned20 ordered chapter edges.
+That gate qualifies the previous centered-HUD build, not the changed pages below.
+Final current Earth broad/narrow/ring art/HUD screenshots and complete pushed-head
+gate are pending. Dom's fresh/returning navigation, fight enjoyment and reward desire
+remain unanswered; historical RTX footage is automated ordinary play, not Dom play.
+
+---
+
 # Current complete gate01 negative, 2026-10-05
 
 At pushedbf900d774e5a645e0bba56810a70396787022d1b, reused clean remote station's

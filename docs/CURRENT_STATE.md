@@ -1,3 +1,24 @@
+# Current HUD polish and qualified prior draft, 2026-10-05
+
+The centered foe card obscured the Earth machine at range. Desktop placement now
+uses the right rail; local Return stays above it and Beacon below. A compact grid
+keeps all Beacon states and skills separate at821/1024/1100x600. Mobile rules remain.
+Read docs/development/SELECTED_FOE_HUD_2026-10-05.md before older snapshots.
+The complete remote gate at56254e86972ced292369686cf91fea9c98b107d8 passed:
+230 commands,118 syntax modules,all47 browser suites in one actual-exit0 invocation;
+Node1542 passed/2 explicit generic cohort skips; Python232 passed/6 explicit skips.
+Mandatory current-cohort Earth26, recording37, earned19 and fresh whole-draft7
+checks passed without skips. Two fresh characters earned20 ordered chapter edges.
+That gate qualifies the previous centered-HUD build, not the changed pages below.
+Current installed cue suite passes182/182, six actual rendered body/camera pairs
+(blade,bow,veteran) and21 labelled populated short-window states. No browser errors.
+Pages3033467B/SHA ccfc2782a33d21e3a75cd93201d5d9b5d89eef41e6397036c13c2f06bda91f9b.
+World/key9,adventure12,optional earthHomecoming1; no new state or schema migration.
+Exact latest remote full47 and Earth new-art/HUD PNG review are pending. Historical
+31.48s f351 Earth footage remains old-art footage; human acceptance remains pending.
+
+---
+
 # Current complete gate01 negative, 2026-10-05
 
 At pushedbf900d774e5a645e0bba56810a70396787022d1b, reused clean remote station's

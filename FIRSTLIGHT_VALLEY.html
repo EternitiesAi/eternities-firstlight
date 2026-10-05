@@ -252,6 +252,27 @@ body.rpg-edition{--gold:#dbc18c;--ink:#111d21;--pane:rgba(15,29,33,.94);--muted:
 
 #target-framing{display:block;margin-top:7px;padding:4px 8px;font-size:10px}#target-framing:disabled{opacity:.55}#target-framing[hidden]{display:none}
 
+/* Keep the selected foe readable without covering the central combat view. */
+@media(min-width:821px){
+ #rpg-hud{--target-frame-top:88px}
+ /* The local free-return control occupies y115..158 at the normal text size. */
+ .in-world-foundation #rpg-hud{--target-frame-top:168px}
+ #rpg-hud #target-frame{top:var(--target-frame-top);left:auto;right:24px;transform:none;z-index:1}
+ /* Legacy drawer stays above this rail; modal dialogs retain their top layer. */
+ .rpg-edition.panel-open #drawer{z-index:3}
+ #rpg-hud #target-frame:not([hidden])+#beacon-tracker{top:calc(var(--target-frame-top) + var(--target-frame-height,0px) + 12px)}
+}
+
+/* Preserve complete ward text and controls in a short desktop window. */
+@media(min-width:821px) and (max-width:1100px) and (max-height:700px){
+ #rpg-hud #target-frame{padding:8px 12px}
+ #rpg-hud #beacon-tracker{display:grid;grid-template-columns:minmax(0,1fr);gap:2px;padding:4px 10px}
+ #rpg-hud #beacon-tracker small{display:block;line-height:11px}
+ #rpg-hud #beacon-phase{font-size:17px;line-height:20px;margin:0}
+ #rpg-hud #beacon-status{line-height:1.3;margin:0}
+ #rpg-hud #beacon-menu{padding:4px 7px;line-height:1.3;min-height:24px}
+}
+
 /* Bellweather services and atlas: clear hierarchy, room to read, touch-sized actions. */
 .cross-atlas-layout{display:grid;grid-template-columns:minmax(250px,1fr) minmax(260px,.95fr);gap:28px;align-items:start;padding:4px}
 .cross-map-panel{position:sticky;top:0;min-width:0}.cross-map-panel svg{width:100%;max-height:530px;display:block;border:1px solid #52665b;border-radius:14px}.atlas-pin{cursor:pointer}.atlas-pin:hover circle,.atlas-pin:focus circle{stroke:#fff6d5;stroke-width:3}.atlas-pin:focus{outline:none}

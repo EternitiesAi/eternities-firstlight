@@ -1,3 +1,8 @@
+Current follow-up: see SELECTED_FOE_HUD_2026-10-05.md. Full02 at562 passed all47;
+new right-rail pages and current exact full qualification are recorded there.
+
+---
+
 # Whole-draft onboarding and local encounter polish
 
 This is implementation on the current integrated browser draft, stacked against

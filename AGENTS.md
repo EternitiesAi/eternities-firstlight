@@ -1,3 +1,26 @@
+# Selected foe HUD integration, 2026-10-05
+
+Root owns the integrated gameplay/whole-draft-onboarding-20261005 checkout and
+reused D qualification clone. Two scoped colleagues reviewed small staged files;
+no parallel checkout mutations. Desktop selected-foe information now uses the
+right rail; local Return and Beacon keep their controls. Narrow short desktops
+retain full Beacon text in a compact grid. Production rules/saves/cameras unchanged.
+Read docs/development/SELECTED_FOE_HUD_2026-10-05.md before older snapshots.
+The complete remote gate at56254e86972ced292369686cf91fea9c98b107d8 passed:
+230 commands,118 syntax modules,all47 browser suites in one actual-exit0 invocation;
+Node1542 passed/2 explicit generic cohort skips; Python232 passed/6 explicit skips.
+Mandatory current-cohort Earth26, recording37, earned19 and fresh whole-draft7
+checks passed without skips. Two fresh characters earned20 ordered chapter edges.
+That gate qualifies the previous centered-HUD build, not the changed pages below.
+Current identical pages3033467B/SHA ccfc2782a33d21e3a75cd93201d5d9b5d89eef41e6397036c13c2f06bda91f9b.
+Targeted installed native cue182/182 passes; exact pushed-head full gate and current
+Earth art/HUD visual review remain required. Preserve unique negatives, use existing
+D clone, no duplicate full games/raw clips/profiles. Storage deletion block remains.
+Frontier2026-10-05 sweep8f8b7fa5db4d559c9441936022d2511209059957 had no Firstlight
+lane delta; no new provider/runtime adoption. No main merge/public deployment.
+
+---
+
 # Current complete gate01 negative, 2026-10-05
 
 At pushedbf900d774e5a645e0bba56810a70396787022d1b, reused clean remote station's

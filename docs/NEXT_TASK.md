@@ -1,3 +1,25 @@
+# Qualify and deliver the finite draft, 2026-10-05
+
+Push the reviewed right-rail/short-window HUD revision; reuse current-qualified-game
+for the exact clean remote head. Run complete current verifier with new D log/browser
+roots, observe actual exit, then bind source and every command. Inspect current Earth
+blade/bow silhouette and broad/narrow/ring cues in both views. Preserve failures.
+Publish one bounded evidence package with one existing historical Earth clip; stream
+remote payload readback. Record final MD-only head/source verification, PRs and launch.
+Do not claim human pacing, full countries, Regent war or resolved Answering/Briar canon.
+Read docs/development/SELECTED_FOE_HUD_2026-10-05.md before older snapshots.
+The complete remote gate at56254e86972ced292369686cf91fea9c98b107d8 passed:
+230 commands,118 syntax modules,all47 browser suites in one actual-exit0 invocation;
+Node1542 passed/2 explicit generic cohort skips; Python232 passed/6 explicit skips.
+Mandatory current-cohort Earth26, recording37, earned19 and fresh whole-draft7
+checks passed without skips. Two fresh characters earned20 ordered chapter edges.
+That gate qualifies the previous centered-HUD build, not the changed pages below.
+Targeted current cue182/182 is passed; it does not replace that final full gate.
+At actual finite draft completion, report remaining human navigation/combat/reward
+acceptance and stop the recurring continuation. Do not merge main or deploy.
+
+---
+
 # Current complete gate01 negative, 2026-10-05
 
 At pushedbf900d774e5a645e0bba56810a70396787022d1b, reused clean remote station's
