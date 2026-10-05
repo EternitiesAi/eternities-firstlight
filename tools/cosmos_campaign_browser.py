@@ -491,8 +491,15 @@ class CosmosMixin:
             self.check('actual zero-HP exhaustion records only owned ' + enemy['defeatStep'], ticks < 4000 and enemy['defeatStep'] in self.state()['cosmosCampaign']['steps'])
         finally:
             result = self.ev('()=>{const r=window.__hvcCombat?.finish();delete window.__hvcCombat;return r;}')
-            if self.diag()['adventure']['tactics']['auto']:
-                self.page.locator('#skill-auto').click()
+            tactics = self.diag()['adventure']['tactics']
+            if tactics['auto'] or tactics['target'] is not None:
+                # Frozen test time must not wait on the attack button's real
+                # cooldown. Escape is the production clear-target control.
+                self.page.keyboard.press('Escape')
+                self.render()
+                cleared = self.diag()['adventure']['tactics']
+                self.check('native clear-target ends combat without a cooldown wait',
+                           cleared['auto'] is False and cleared['target'] is None)
         self.check('actual blade/projectile callers contribute to exhaustion', bool(result['weaponImpacts']), result)
         if style == 'bow':
             self.check('actual bow arrow travels and collides', result['arrows'] and any(h['source'] == 'production projectile contact' for h in result['weaponImpacts']))
