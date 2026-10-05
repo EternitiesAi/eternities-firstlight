@@ -1,3 +1,11 @@
+# Complete Hell gate and staged realm development, 2026-10-04
+
+A current complete fresh remote099bd8d verifier invocation passes196commands/42browser suites. It does not relabel historical atlas/giver/configuration timeouts or sum targeted results into a full pass. Runtime f2dfdf3 and later099bd8d tooling/records retain distinct epochs. Later documentation must prove every non-document Git input equal and pass a fresh source gate. Evidence is byte-preserved on a separate reviewable branch; no main merge, deployment, billing change or personal-save use.
+
+Normal-time footage and short actual-RTX RAF sampling are separate from accelerated nativeUI/restarts and software-WebGL regression. Real damage attribution uses the actual caller; companion contributions remain explicit. The finite whole-game draft stays active and resumes hourly locally. New Heaven mechanics deliberately differ from Hell armor/strike pacing, and the next Atlantis arc must use actual depth/pressure work instead of treating artwork as support or cover. Founder taste/pacing and uncertain monetization/offline-loss/pet/construction decisions remain unresolved.
+
+Earlier decisions below are historical.
+
 # A finite complete draft, beginning with Hell, 2026-10-04
 
 - Treat Dom's autonomous whole-game request as an active long-horizon goal with finite playable-draft completion gates and an hourly local continuation schedule. A milestone is not the whole game, and a schedule is not an uninterrupted worker. Keep review branches; main/deployment and paid-provider/billing changes remain excluded.
