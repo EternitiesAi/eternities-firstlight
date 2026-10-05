@@ -1,3 +1,112 @@
+# Earth native homecoming and ordinary recording, 2026-10-05
+
+Read docs/development/EARTH_HOMECOMING_NATIVE_DELIVERY_2026-10-05.md before
+older pending reports. At runtime f3512657211d3057c4e437c33e26439d3bb7af56,
+Root observed native05 exit0:6205/6205 checks,30/30 earned stages across
+blade,bow and strongest returning characters,26 whole-browser restarts and
+54 causal pixel controls. All earlier native01-04 failures remain visible.
+The repaired ordinary-RAF RTX3080 take separately completed the Regent repulse,
+explicit public-watch, physical Vessa/Oren return, separate fee and cold-save
+readback in136.634 seconds. This is a continuation from the real earned relay
+checkpoint, not a fresh-player duration or human acceptance.
+
+Qualified route/framing repairs are installed in the portable native tool.
+The verifier now requires a separate same-invocation earned Earth browser gate;
+all45 older browser contracts/timeouts remain.19 installed gate CPU cases and
+37 installed recording CPU cases pass. The recording test initially used an
+inside-checkout temporary output and correctly failed isolation; only its
+temporary fixtures moved outside the checkout. Game rules did not change.
+The exact current complete gate and final remote readback remain pending as
+whole-draft journal/tracker polish proceeds on a separate stacked branch.
+
+Identical pages remain3,027,919 bytes/SHA30648a37d3c8a6a4d5633b8946536dd9550aac29f204947cd2c5f098b6c7600a.
+World/key9,adventure12,optional earthHomecoming1; all older owners,XP,choices,
+gear/socket/fittings remain. Cosmos final records aec29712 are reconciled by
+a normal records-only merge preserving Earth work. Keep one integrated game,
+bounded D evidence and failures; never retry blocked standalone deletion.
+No main merge,public deploy,paid service,personal-save read or unrelated stop.
+The wider Regent war,Answering and Briar chronology remain unresolved.
+
+---
+
+# Fresh routes to an Earth homecoming, 2026-10-05
+
+Read docs/development/EARTH_HOMECOMING_FRESH_DRAFT_2026-10-05.md before older
+pending records. Current frozen working bytes pass two genuinely fresh CPU
+characters through the original four chapters, local Earth work, Hell, Heaven,
+Atlantis, Cosmos and the physical Oren homecoming. Twenty chapter edges and7/7
+strict readback cases pass with zero historical starting worlds. The bow case
+explicitly switches before ChapterIV; it is not a fresh-bow-I claim. Three
+historical migration/returning continuations separately pass19/19, and current
+native controller preparation passes26/26 without running a browser.
+
+Independent review corrected three misleading local-cover tips; actual solids
+are outside the Regent envelope. No geometry/tuning/save rule changed.89
+installed owner/UI/geometry cases pass. Equal regenerated pages are3,027,919
+bytes/SHA30648a37d3c8a6a4d5633b8946536dd9550aac29f204947cd2c5f098b6c7600a.
+World/key9, adventure12 and optional earthHomecoming1 preserve all older owners,
+XP, equipment/socket/fittings and explicit choices. These source-frozen targeted
+runs precede their reviewed commit; current full source/native/browser/remote
+qualification, footage, polish and human acceptance remain required.
+
+Cosmos full02 closed exit1 after182 commands/seven browser suites: an appearance
+tool protected old frames from overwrite. Full03 at the unchangedf65 uses
+supported fresh output roots. Full01's old text failure, both invocation logs
+and protected historical frames remain. Native04/ordinary footage atd3 remain
+separate passes; no complete current Cosmos gate is claimed yet.
+
+Root integrates. Two scoped colleagues prepare Cosmos delivery and ordinary
+Earth recording without competing with full03's browser/GPU ownership. The
+whole draft goal and hourly continuation remain active. Keep the same fullgame,
+heavy workD and bounded JSON/profiles/short clips; respect blocked deletion.
+No main merge/deployment/paid/personal saves/unrelated-worker shutdown. The
+provisional local ending does not settle the wider network or founder cosmology.
+
+---
+
+# Portable Earth homecoming journeys, 2026-10-05
+
+Read docs/development/EARTH_HOMECOMING_PORTABLE_JOURNEY_2026-10-05.md before the
+older pending records. Root observed portable-earned02 exit 0: actual installed
+blade, bow and returning strongest continuations and 19/19 explicit cohort
+checks, no failures/skips. The regular verifier now runs this cohort. Historical
+prerequisite fixtures are byte-bound and disclosed; this is not a new original
+Chapter I-to-ending run or native browser proof. Earlier 88 installed cases and
+1,514 Node passes remain separately scoped. Rendered/native persistence, footage,
+current source/full verification and exact remote qualification are still needed.
+
+Pages remain identical at 3,027,896 bytes / SHA256
+97f7609934c03025546be3c3009fc824ea1ea99c366f0f0d060b5851a3a41285.
+World/key 9, adventure 12 and optional earthHomecoming 1 preserve all prior
+owners, XP, equipment/socket/fittings and explicit choices. PR48 is a stacked
+draft above PR47; the whole draft remains active and unfinished.
+
+Cosmos full01 actually failed obsolete arrival wording after 194 passing
+commands / 19 browser suites. The test-only f65 repair passed its targeted
+76-check suite; full02 is still running in the reused remote qualification
+station. Native04 and ordinary footage at d3 remain separate successful evidence.
+Keep failures visible and do not claim a complete gate from targeted passes.
+
+Root owns integration; the Earth native colleague stages a bounded controller
+without competing for the browser/GPU slot. Keep heavy work D, the same full
+game and bounded evidence; do not retry the recorded blocked deletion. No main
+merge, deployment, paid providers, personal saves or unrelated-worker shutdown.
+Human playtest and whole-draft beginning-to-ending qualification remain pending.
+
+---
+
+# Installed Earth road and homecoming, 2026-10-05
+
+The Road That Can Refuse is installed on gameplay/earth-road-homecoming-20261005 from Cosmos d3ec32f716896d876d4771c0ff6c225e43b8d906 in the same integrated D checkout. Exact staged rule/presentation preimages matched before seventeen source files changed. Actual build produces identical3,027,896-byte pages/SHA25697f7609934c03025546be3c3009fc824ea1ea99c366f0f0d060b5851a3a41285. World/key9 and adventure12 remain; missing optional earthHomecoming1 migrates empty after all prior owners validate. No old payments/gear/socket/fittings/XP/explicit choices are rewritten.
+
+88 installed CPU cases pass with no failures/skips. The first broader1514-Node invocation failed its old expedition UI fixture, which omitted the actual new component and bound writer. Those test fixtures now load the real EHUI and real multi-line app writer; the existing20 expedition cases pass. The whole all-Node02 rerun now passes1514/1514 with0failures/skips and actual exit0. Current source verifier, newly earned three-character continuation, native/visible/persistence, normal footage and exact remote/full verification remain required. Staged/CPU successes are not human playtest or a complete gate. Cosmos native04/ordinary capture pass independently; its complete220-command remote gate is still running at its fixed parent epoch.
+
+The local fixed168HP/12damage Regent-pattern incursion, two relays, safe passage, explicit public-watch/reviewed-custody, Vessa return check and physical Oren home arrival precede a separate once-only50XP/20coin/4ore/4wood/3fiber/1crystal fee. All twelve prior claims are required, with no class/soul/equipment gate or hidden scaling. This is a provisional local draft ending; wider Regent networks, foundry evacuation, First Answer/Answering and Briar loss/reunion remain unresolved.
+
+Earlier sections below are exact historical/pending epochs, not the current integration status. The new Earth owner is playable source but has not yet completed its native delivery gates.
+
+---
+
 # The Open Confluence qualification epoch, 2026-10-05
 
 Root observed actual exit 0 for the complete current verifier at `f65f3a48b87b697fcdfdf8e94410f1446bea3f27`: 220 commands, 114 syntax modules, 1426 Node passes (0 failures/0 skips), 139 Python passes plus 3 declared skips, 58 command-earned journeys and all 45 required browser suites in the same invocation. The original source03 totals belong to an earlier source epoch. Current Python skips are separately listed in the exact receipt; the generic unittest run omits two explicit-cohort-path preflights and retains the Windows symlink privilege skip.

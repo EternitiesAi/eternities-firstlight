@@ -9,6 +9,7 @@ const ROOT=path.resolve(__dirname,'..'),C=require('../src/core.js'),A=require('.
 const AR=require('../src/arsenal.js'),R=require('../src/realm-trails.js'),CH=require('../src/characters.js');
 const UI=require('../src/earth-expedition-ui.js');require('../src/world-foundations-ui.js');require('../src/realm-trails-ui.js');require('../src/rpg-ui.js');
 const CUI=require('../src/local-life-ui.js'),BUI=require('../src/bridge-community-ui.js'),HCUI=require('../src/hell-campaign-ui.js'),HVUI=require('../src/heaven-campaign-ui.js'),ATUI=require('../src/atlantis-campaign-ui.js'),CCUI=require('../src/cosmos-campaign-ui.js');
+const EHUI=require('../src/earth-homecoming-ui.js');
 const WUI=globalThis.RealmWorldFoundationsUI,TUI=globalThis.RealmTrailsUI,RPG=globalThis.RealmRPGUI;
 const args=process.argv.slice(2),arg=n=>{const i=args.indexOf(n);return i<0?null:args[i+1];},copy=x=>JSON.parse(JSON.stringify(x)),hash=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 const results=[],evidence=[];let serial=0;
@@ -22,7 +23,7 @@ function fixture({steps=[],claimed=false,branch=null,patrol=null,xp=0}={}){
  f.save=value=>{f.saves.push(C.validate(value));return{ok:true};};sim.earthExpeditionSave=f.save;
  f.context=()=>({sim:f.sim,active:f.active,revision:f.revision});
  f.rpg={get sim(){return f.sim;},get state(){return f.sim.state.adventure;},quest:'story',dialog:{open:false},open(tab){this.opened=tab;},close(){this.closed=true;},paint(){this.paints=(this.paints||0)+1;},api:{worldContext:f.context,toast:s=>f.toasts.push(s),project:()=>({visible:false}),walkLocal:(x,z)=>{f.walks.push({x,z});return f.sim.moveTo(x,z);},expeditionCommand:(type,payload)=>{f.commands.push({type,payload});return f.result=E.command(f.context(),type,payload,{save:f.save});},earthBinding:(weapon,kind)=>{f.boundCalls++;return f.result=E.bindingCommand(f.context(),weapon,kind,{save:f.save});}}};
- f.ui=new UI.ExpeditionUI(f.rpg);f.rpg.expedition=f.ui;f.rpg.civic=new CUI.LocalLifeUI(f.rpg);f.rpg.community=new BUI.BridgeCommunityUI(f.rpg);f.rpg.hellCampaign=new HCUI.HellCampaignUI(f.rpg);f.rpg.heavenCampaign=new HVUI.HeavenCampaignUI(f.rpg);f.rpg.atlantisCampaign=new ATUI.AtlantisCampaignUI(f.rpg);f.rpg.cosmosCampaign=new CCUI.CosmosCampaignUI(f.rpg);A.syncScene(sim);return f;
+ f.ui=new UI.ExpeditionUI(f.rpg);f.rpg.expedition=f.ui;f.rpg.civic=new CUI.LocalLifeUI(f.rpg);f.rpg.community=new BUI.BridgeCommunityUI(f.rpg);f.rpg.hellCampaign=new HCUI.HellCampaignUI(f.rpg);f.rpg.heavenCampaign=new HVUI.HeavenCampaignUI(f.rpg);f.rpg.atlantisCampaign=new ATUI.AtlantisCampaignUI(f.rpg);f.rpg.cosmosCampaign=new CCUI.CosmosCampaignUI(f.rpg);f.rpg.earthHomecoming=new EHUI.EarthHomecomingUI(f.rpg);A.syncScene(sim);return f;
 }
 const paid=()=>({steps:E.definition.steps.map(s=>s.id),claimed:true,branch:'managed-coppice'});
 const event=(type,id='',extra={})=>({dataset:{rpg:'expedition-'+type,id,...extra}});
@@ -189,7 +190,8 @@ test('actual app applyWorld restore selects accepted or ready expedition and act
 
 test('actual app worldContext installs synchronous savers on fresh restored Sim before active expedition combat',()=>{
  const p=path.resolve(arg('--app-source')||path.join(ROOT,'src/app.js')),source=fs.readFileSync(p,'utf8'),f=fixture({steps:E.definition.steps.slice(0,3).map(s=>s.id),branch:'managed-coppice'});
- const sim=new C.Simulation(f.sim.snapshot());sim.room='world-earthlands';const saved=[],context={sim,worldSave:c=>{saved.push(C.validate(c));return{ok:true};},characterStore:{active:'restored-character',revision:4}};vm.createContext(context);vm.runInContext(literalFunction(source,'worldContext')+'\nresult=worldContext();',context);assert.strictEqual(context.result.sim,sim);assert.strictEqual(sim.earthExpeditionSave,context.worldSave);assert.strictEqual(sim.realmTrailSave,context.worldSave);assert.equal(context.result.active,'restored-character');assert.equal(context.result.revision,4);
+ const sim=new C.Simulation(f.sim.snapshot());sim.room='world-earthlands';const saved=[],context={sim,worldSave:c=>{saved.push(C.validate(c));return{ok:true};},characterStore:{active:'restored-character',revision:4}};
+ const writer=source.slice(source.indexOf('function earthHomecomingWriter('),source.indexOf('function worldContext('));assert.ok(writer.includes('const current='),'load the actual bound owner writer');vm.createContext(context);vm.runInContext(writer+'\n'+literalFunction(source,'worldContext')+'\nresult=worldContext();',context);assert.strictEqual(context.result.sim,sim);assert.strictEqual(sim.earthExpeditionSave,context.worldSave);assert.strictEqual(sim.realmTrailSave,context.worldSave);assert.equal(typeof sim.earthHomecomingSave,'function');assert.equal(context.result.active,'restored-character');assert.equal(context.result.revision,4);
  A.syncScene(sim);assert.ok(A.runtime(sim).enemies.some(e=>e.expeditionQuest===E.definition.id));const candidate=sim.snapshot();assert.ok(E.commit(sim,candidate,{save:sim.earthExpeditionSave},'Labelled saver installation probe.').ok);assert.equal(saved.length,1);
  // Native import/switch starts at its saved home checkpoint and travels through
  // worldTravel(worldContext()). Direct test-only room injection is not that path.

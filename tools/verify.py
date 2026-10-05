@@ -3,6 +3,7 @@
 from pathlib import Path
 import argparse
 import hashlib
+import importlib.util
 import os
 import shutil
 import subprocess
@@ -65,6 +66,43 @@ def prepare_browser_sources(output, *, root=ROOT):
     # Never overwrite a prior evidence destination on retry.
     shutil.copytree(source, target)
     return target
+
+
+def earth_homecoming_browser_run_spec(root, sources, cohort_path, cohort_sha, output, *, windows=None):
+    """Bind the new native command to this invocation's exact complete cohort.
+
+    Read the installed native validator only; do not create a browser, server
+    or profile. Existing suite routing/timeouts remain independent.
+    """
+    root, sources = Path(root).resolve(), Path(sources).resolve()
+    cohort_path, output = Path(cohort_path).resolve(), Path(output).resolve()
+    native = root / 'tools/earth_homecoming_browser.py'
+    caller = root / 'tools/earth-homecoming-journey'
+    if not root.is_dir() or not native.is_file() or not caller.is_dir():
+        raise ValueError('Installed Earth native tool and earned callers are required in the explicit root.')
+    if not sources.is_dir() or cohort_path != sources / 'CONNECTED_EARTH_HOMECOMING_REPORT.json':
+        raise ValueError("Use the exact cohort generated inside this invocation's Earth source root.")
+    if (not isinstance(cohort_sha, str) or len(cohort_sha) != 64 or
+            any(c not in '0123456789abcdef' for c in cohort_sha) or
+            not cohort_path.is_file() or hashlib.sha256(cohort_path.read_bytes()).hexdigest() != cohort_sha):
+        raise ValueError('The current earned cohort hash changed; do not substitute or rehash another epoch.')
+    if output == Path(output.anchor) or output.exists():
+        raise ValueError('Earth browser output must be a new bounded directory; preserve previous evidence.')
+    if output == sources or output.is_relative_to(sources) or sources.is_relative_to(output):
+        raise ValueError('Earth browser output and its earned inputs must be separate trees.')
+    if (os.name == 'nt' if windows is None else windows) and (output.drive.upper() != 'D:' or sources.drive.upper() != 'D:'):
+        raise ValueError('Earth native evidence and earned inputs must stay on D: on Windows; use fresh D output roots.')
+    spec = importlib.util.spec_from_file_location('firstlight_current_earth_native_preflight', native)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    # Use the unchanged strict source/whole-journey/checkpoint validator.
+    # No report-only shortcut or fallback seed is allowed here.
+    module.read_provenance(sources, tuple(module.VARIANTS), cohort_sha, root, caller)
+    return ([sys.executable, 'tools/earth_homecoming_browser.py',
+             '--root', str(root), '--sources', str(sources), '--cohort-sha', cohort_sha,
+             '--earned-caller-root', str(caller), '--output', str(output),
+             '--renderer', 'software', '--variant', 'all'],
+            {'FIRSTLIGHT_ROOT': str(root), 'PYTHONDONTWRITEBYTECODE': '1'})
 
 
 def main():
@@ -198,7 +236,31 @@ def main():
     run('cosmos-campaign-blade', ['node', 'tests/cosmos_campaign_journey.cjs', '--output', str(cosmos_output)])
     run('cosmos-campaign-bow', ['node', 'tests/cosmos_campaign_journey.cjs', '--output', str(cosmos_output), '--bow'])
     run('cosmos-campaign-veteran', ['node', 'tests/cosmos_campaign_journey.cjs', '--output', str(cosmos_output), '--veteran'])
+    # One portable cohort earns all three Earth continuations and then checks
+    # its exact checkpoints. Historical prerequisite worlds are labelled;
+    # this does not claim a new beginning-to-ending or native-browser run.
+    homecoming_output = output / 'earth-homecoming-earned'
+    if os.name == 'nt' and homecoming_output.drive.upper() != 'D:':
+        homecoming_output = ROOT / 'evidence10/earth-homecoming-earned'
+    run('earth-homecoming-earned', ['node', 'tools/earth_homecoming_journey.cjs', '--output', str(homecoming_output)], timeout=600)
+    cohort_path = homecoming_output / 'CONNECTED_EARTH_HOMECOMING_REPORT.json'
+    homecoming_cohort_sha = hashlib.sha256(cohort_path.read_bytes()).hexdigest()
+    run('earth-homecoming-native-preflight', [sys.executable, 'tests/test_earth_homecoming_native.py', '-v'], timeout=180,
+        extra_env={'FIRSTLIGHT_ROOT': str(ROOT), 'EARTH_EARNED_SOURCES': str(homecoming_output),
+                   'EARTH_EARNED_COHORT_SHA': homecoming_cohort_sha,
+                   'EARTH_EARNED_CALLER_ROOT': str(ROOT / 'tools/earth-homecoming-journey')})
+    whole_draft_output = output / 'whole-draft-earned'
+    if os.name == 'nt' and whole_draft_output.drive.upper() != 'D:':
+        whole_draft_output = ROOT / 'evidence10/whole-draft-earned'
+    run('whole-draft-earned', ['node', 'tools/whole_draft_journey.cjs', '--output', str(whole_draft_output)], timeout=600)
     if args.browser:
+        # Separate native gate, bound to the exact cohort earned above. Only
+        # this new command receives its own bounded 30-minute allowance.
+        earth_browser_output = ((args.browser_output / 'earth_homecoming_browser')
+                                if args.browser_output is not None else output / 'earth-homecoming-browser')
+        command, extra_env = earth_homecoming_browser_run_spec(
+            ROOT, homecoming_output, cohort_path, homecoming_cohort_sha, earth_browser_output)
+        run('earth_homecoming_browser', command, timeout=1800, extra_env=extra_env)
         prepare_browser_sources(args.browser_output)
         command, extra_env = browser_run_spec('cosmos_campaign_browser', args.browser_output, mode=args.browser_output_mode)
         run('cosmos_campaign_browser', command, timeout=1200, extra_env=extra_env)
