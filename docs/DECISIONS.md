@@ -1,3 +1,25 @@
+# Cold-navigation evidence repair, 2026-10-05
+
+Full04 at3e19424f0d7e775e89bbbca39085f293896baa6f actually closed exit1.
+All183 source commands and two browser suites passed before Cosmos navigation
+stalled after7053 passing assertions. The account-save and exact stored-world
+checks passed; the following cold-start comparison was never reached. This is
+not a qualified full gate. Read docs/development/COLD_NAVIGATION_EVIDENCE_2026-10-05.md.
+
+One veteran-only diagnostic at the same frozen head closed exit0:2397 checks,
+11 whole-browser restarts,13 navigations,38 causal pixel controls,2 new synthetic
+profiles and no errors/source drift. The failed restart did not reproduce;
+its exact cold-byte/history checks passed. An intermittent/full-workload cause
+remains unresolved. Failed reports and profiles stay retained and labelled.
+
+The test-only revision records HTTP/browser loading phases and independently
+captures timed failure images plus one bounded exact-HTML probe. It avoids new
+renderer evaluations after startup timeout. All80 Heaven and50 Cosmos original
+check calls and30-second waits remain unchanged by independent source review.
+CPU observer/HTTP regressions pass9/9. Gameplay/pages/save versions are unchanged.
+Run one fresh exact-head full47-suite gate next; no pooling prior partial runs.
+
+---
 # Gallery feedback verification repair, 2026-10-05
 
 The exact remote full03 run at 0fb1a71d0789a082b7917c0a1fe922270d3b9699

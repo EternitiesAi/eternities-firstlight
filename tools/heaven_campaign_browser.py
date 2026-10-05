@@ -18,6 +18,7 @@ import subprocess
 import threading
 import time
 import traceback
+from urllib import request as urlrequest
 
 ROOT = Path(__file__).resolve().parents[1]
 from playwright.sync_api import sync_playwright
@@ -46,6 +47,36 @@ def digest(text):
     return hashlib.sha256(text.encode('utf-8')).hexdigest() if text is not None else None
 
 
+def capture_navigation_failure(page, url, expected_sha, screenshot_path=None):
+    """Observe a failed owned page without depending on Realm or retrying it."""
+    result = {}
+    try:
+        result['url'] = page.url
+    except Exception as error:
+        result['url_error'] = repr(error)
+    # Readiness comes from recorded lifecycle events. Do not submit another
+    # renderer evaluation after navigation timed out.
+    result['document_observation'] = 'Lifecycle events only; no failed-renderer evaluation.'
+    if screenshot_path is not None:
+        try:
+            page.screenshot(path=str(screenshot_path), timeout=3000)
+            result['screenshot'] = {'path': str(screenshot_path), 'sha256': sha(screenshot_path)}
+        except Exception as error:
+            result['screenshot_error'] = repr(error)
+    try:
+        # This is the harness's own loopback origin. One bounded read only;
+        # a successful probe is evidence about HTTP, never a navigation pass.
+        with urlrequest.urlopen(url, timeout=3) as response:
+            body = response.read(8 * 1024 * 1024 + 1)
+            actual_sha = hashlib.sha256(body).hexdigest()
+            result['http_probe'] = {'status': response.status, 'bytes': len(body),
+                                    'sha256': actual_sha,
+                                    'exact_html': response.status == 200 and actual_sha == expected_sha}
+    except Exception as error:
+        result['http_probe_error'] = repr(error)
+    return result
+
+
 def ownership(world):
     a = world['adventure']
     return {'adventure': {k: v for k, v in a.items() if k not in (
@@ -64,6 +95,29 @@ class Handler(SimpleHTTPRequestHandler):
     def log_message(self, *args):
         pass
 
+    def do_GET(self):
+        if self.path != '/':
+            return super().do_GET()
+        self.navigation_events = self.server.navigation_http_events
+        self.navigation_events.append({'event': 'request', 'at': time.monotonic()})
+        try:
+            super().do_GET()
+        except Exception as error:
+            self.navigation_events.append({'event': 'handler_error', 'at': time.monotonic(), 'error': repr(error)})
+            raise
+        else:
+            self.navigation_events.append({'event': 'body_write_complete', 'at': time.monotonic()})
+
+    def send_response(self, code, message=None):
+        if self.path == '/' and hasattr(self, 'navigation_events'):
+            self.navigation_events.append({'event': 'response_status', 'at': time.monotonic(), 'status': code})
+        return super().send_response(code, message)
+
+    def end_headers(self):
+        super().end_headers()
+        if self.path == '/' and hasattr(self, 'navigation_events'):
+            self.navigation_events.append({'event': 'headers_write_complete', 'at': time.monotonic()})
+
 
 class CampaignBrowser:
     def __init__(self, args, report):
@@ -72,6 +126,7 @@ class CampaignBrowser:
         self.variant = self.record = None
         self.last_native_write = None
         self.server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+        self.server.navigation_http_events = []
         threading.Thread(target=self.server.serve_forever, daemon=True).start()
         self.url = f'http://127.0.0.1:{self.server.server_port}/'
 
@@ -117,16 +172,53 @@ class CampaignBrowser:
         self.context.route('**/*', lambda route: route.continue_() if route.request.url.startswith(self.url) else route.abort())
         self.page.on('pageerror', lambda e: self.report['browser_errors'].append(str(e)))
         self.page.on('console', self.console)
-        events = []
-        self.page.on('requestfailed', lambda r: events.append({'event': 'requestfailed', 'url': r.url, 'failure': r.failure}))
-        self.page.on('domcontentloaded', lambda: events.append({'event': 'domcontentloaded'}))
-        self.page.on('load', lambda: events.append({'event': 'load'}))
+        events, observation_errors = [], []
         began = time.monotonic()
+        self.server.navigation_http_events = []
+        page = self.page
+        def observe(event, subject=None):
+            try:
+                detail = {}
+                if event in ('request', 'response', 'requestfinished'):
+                    request = subject.request if event == 'response' else subject
+                    if request.resource_type != 'document':
+                        return
+                    detail['url'] = subject.url
+                    if event == 'response':
+                        detail['status'] = subject.status
+                elif event == 'commit':
+                    if subject != page.main_frame:
+                        return
+                    detail['url'] = subject.url
+                elif event == 'requestfailed':
+                    detail = {'url': subject.url, 'failure': subject.failure}
+                events.append({'event': event, 'seconds': time.monotonic() - began, **detail})
+            except Exception as error:
+                observation_errors.append({'event': event, 'error': repr(error)})
+        page.on('request', lambda r: observe('request', r))
+        page.on('response', lambda r: observe('response', r))
+        page.on('requestfinished', lambda r: observe('requestfinished', r))
+        page.on('framenavigated', lambda f: observe('commit', f))
+        page.on('crash', lambda: observe('crash'))
+        page.on('requestfailed', lambda r: observe('requestfailed', r))
+        page.on('domcontentloaded', lambda: observe('domcontentloaded'))
+        page.on('load', lambda: observe('load'))
+        finished, failed_http_events = None, None
         try:
             response = self.page.goto(self.url, wait_until='load', timeout=30000)
             self.page.wait_for_function('()=>!!window.Realm', timeout=30000)
+        except Exception:
+            finished = time.monotonic()
+            failed_http_events = list(self.server.navigation_http_events)
+            self.record['navigation_failure'] = capture_navigation_failure(
+                self.page, self.url, self.report['html_sha256'],
+                self.args.output / f'{self.variant}-STARTUP_FAILURE.png')
+            raise
         finally:
-            self.record['navigation'].append({'seconds': time.monotonic() - began, 'events': events})
+            http_events = [{**e, 'seconds': e['at'] - began} for e in (
+                failed_http_events if failed_http_events is not None else self.server.navigation_http_events)]
+            self.record['navigation'].append({'seconds': (finished or time.monotonic()) - began,
+                'events': events, 'http_events': http_events, 'observation_errors': observation_errors})
         self.check('exact frozen HTML is served over isolated loopback',
                    response is not None and digest(response.body().decode('utf-8')) == self.report['html_sha256'])
         self.ev("Realm.test.quality('low');Realm.test.render()")
