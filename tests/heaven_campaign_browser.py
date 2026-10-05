@@ -22,8 +22,10 @@ def main():
     if args.sources is None:
         if sources.exists():
             parser.error('Use new output/source roots; prior earned evidence remains unchanged.')
+        # Native preflight requires the complete earned journey report beside
+        # each seed/provenance pair; seed-only output cannot qualify this suite.
         for flag in ([], ['--bow'], ['--veteran']):
-            subprocess.run(['node', 'tests/heaven_campaign_journey.cjs', '--seed-only',
+            subprocess.run(['node', 'tests/heaven_campaign_journey.cjs',
                             '--output', str(sources), *flag], cwd=ROOT, check=True)
     return subprocess.call([sys.executable, str(ROOT / 'tools/heaven_campaign_browser.py'),
                             '--output', str(output), '--sources', str(sources)], cwd=ROOT)
