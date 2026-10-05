@@ -186,7 +186,7 @@ test('combined fixtures, owned witnesses and worst warning stay within the bound
 
 test('journal, map, route labels and terms are read-pure and explicit acceptance needs the old claimed chart',()=>{
  const sim=specimen(),h=harness(sim);sim.state.atlantisCampaign.accepted=false;sim.state.atlantisCampaign.approach=null;place(sim,D.giver);const before=JSON.stringify(sim.state),locked=h.ui.page('atlantis-campaign').html;
- assert.match(locked,/explicitly claim The Bellglass Depth Chart first/);assert.ok(!locked.includes('data-rpg="atlantis-campaign-accept"'));h.ui.journal();UI.legend(sim);assert.deepEqual(UI.routePoints(sim),[]);assert.equal(JSON.stringify(sim.state),before);assert.deepEqual(h.commands,[]);
+ assert.ok(locked.includes('explicitly claim '+Trails.definition(D.prerequisite).title+' first'));assert.equal(Trails.definition(D.prerequisite).title,'A Chart With Room for Depth');assert.ok(!locked.includes('data-rpg="atlantis-campaign-accept"'));h.ui.journal();UI.legend(sim);assert.deepEqual(UI.routePoints(sim),[]);assert.equal(JSON.stringify(sim.state),before);assert.deepEqual(h.commands,[]);
  sim.state.realmTrails.records[D.prerequisite].claimed=true;const allowed=h.ui.page('atlantis-campaign').html,b=button(allowed,'accept');const acceptedBefore=JSON.stringify(sim.state);h.ui.action(b);
  assert.deepEqual(h.commands,[{type:'accept',payload:{quest:D.id,expectedRevision:sim.state.adventure.revision,expectedActive:'synthetic-harbour-traveller'}}]);assert.equal(JSON.stringify(sim.state),acceptedBefore,'refusing sink grants nothing');
  const fee=UI.fee();for(const phrase of['48 XP','18 sunmarks','4 ore','4 timber','3 meadow fibre','1 crystal'])assert.ok(fee.includes(phrase));assert.match(allowed,/Only XP clips/);assert.match(allowed,/full material pouch or refused save/);
@@ -255,4 +255,13 @@ test('context, tracker and route reads never record work or courier arrival and 
  try{assert.match(h.ui.context(),/^E/);assert.equal(h.ui.interact(),true);h.ui.tick();h.ui.journal();h.ui.page('atlantis-campaign');UI.routePoints(sim);UI.legend(sim);assert.equal(JSON.stringify(sim.state),before);assert.deepEqual(h.commands,[]);assert.match(nodes.get('#tracked-detail').textContent,/foot depth/);assert.equal(nodes.get('.tracker-switch [data-id="atlantis-campaign"]').hidden,false);
  }finally{global.document=priorDocument;}
  sim.room=null;assert.equal(h.ui.context(),null);assert.deepEqual(UI.routePoints(sim),[]);assert.match(h.ui.page('atlantis-campaign').html,/home checkpoint/);
+});
+
+test('tracker prioritizes the retained required reading and mandatory repair over available optional work',()=>{
+ const priorDocument=global.document,nodes=new Map();global.document={querySelector:selector=>{if(!nodes.has(selector))nodes.set(selector,{textContent:'',hidden:false});return nodes.get(selector);}};
+ try{for(const approach of D.approaches){const sim=specimen(['receipt-conflict','choose-approach'],null,approach.id),h=harness(sim),before=JSON.stringify(sim.state);h.ui.tick();
+  assert.ok(nodes.get('#tracked-detail').textContent.startsWith(by(approach.requiredObservation).name));assert.equal(JSON.stringify(sim.state),before);
+  sim.state.atlantisCampaign.steps.push(approach.requiredObservation);h.ui.tick();assert.ok(nodes.get('#tracked-detail').textContent.startsWith(by('diagnose-flow').name));
+  const labels=UI.routePoints(sim).map(p=>p.id);assert.ok(labels.includes('manual-bypass'));assert.ok(labels.includes(approach.id==='upper'?'lower-reading':'upper-reading'));assert.deepEqual(h.commands,[]);
+ }}finally{global.document=priorDocument;}
 });

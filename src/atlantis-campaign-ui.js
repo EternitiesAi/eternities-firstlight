@@ -5,6 +5,7 @@ const H=()=>G.RealmAtlantisCampaign,D=()=>H().definition,PREFIX='atlantis-campai
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const button=(label,type,id='',attrs='')=>'<button data-rpg="'+PREFIX+type+'" data-id="'+esc(id)+'" '+attrs+'>'+esc(label)+'</button>';
 const record=sim=>sim.state.atlantisCampaign,step=id=>D().steps.find(s=>s.id===id);
+const previousTitle=()=>G.RealmTrails.definition(D().prerequisite).title;
 const tokens={'manual-bypass':'open-bypass','release-west':'stabilize-west','release-east':'stabilize-east'};
 function setting(s){return G.RealmAtlantisCampaignData.pressure.correct.find(p=>p.step===s.id)?.setting||tokens[s.id];}
 function fee(d=D()){return'Up to '+d.reward.xp+' XP within the stored cap · '+d.reward.coins+' sunmarks · '+d.reward.ore+' ore'+Object.entries(d.reward.materials).map(([k,n])=>' · '+n+' '+({wood:'timber',fiber:'meadow fibre',crystal:'crystal'}[k]||k)).join('');}
@@ -62,7 +63,7 @@ class AtlantisCampaignUI{
   this.binding={...this.owner(),id:++this.serial};const act=(label,type,id='')=>button(label,type,id,'data-binding="'+this.binding.id+'" data-revision="'+this.binding.revision+'"');
   let html='<article class="atlantis-campaign"><header><small>FARWAKE → BELLGLASS → THE DRY SERVICE QUAY</small><h2>'+esc(d.title)+'</h2><p>'+esc(d.summary)+'</p></header><section class="atlantis-campaign-terms"><h3>The whole declared fee</h3><p><strong>'+esc(fee(d))+'</strong>. Only XP clips at its stored cap. A full material pouch or refused save keeps all completed work unpaid and retryable.</p><p>'+esc(d.danger)+'</p><p>Safe public air, Damar’s waiting bay and the free home passage precede disposition. No timed appointment, second player, gear grant, automatic equipment change or global pledge is required.</p></section>';
   if(!here)html+='<section><p>Reopening resumes the home checkpoint. Accepted actions, the retained approach, disposition and unpaid completion remain saved. Revisit Farwake for the actual physical route.</p><button data-rpg="world-select" data-id="atlantis">Read Atlantis travel</button></section>';
-  if(!r?.accepted)html+='<section><h3>An earlier chart remains true</h3><p>'+(!H().eligible(sim.state)?'Complete and explicitly claim The Bellglass Depth Chart first. Its chart, lamp and payment remain separate.':'The Bellglass chart was claimed. Accept this new repair deliberately; reading grants no consent.')+'</p>'+(here&&H().eligible(sim.state)&&H().at(sim,d.giver)?act('Accept the separate harbour repair','accept'):here?button('Walk to Sahra','walk','giver'):'')+'</section>';
+  if(!r?.accepted)html+='<section><h3>An earlier chart remains true</h3><p>'+(!H().eligible(sim.state)?'Complete and explicitly claim '+esc(previousTitle())+' first. Its chart, lamp and payment remain separate.':'The Bellglass chart was claimed. Accept this new repair deliberately; reading grants no consent.')+'</p>'+(here&&H().eligible(sim.state)&&H().at(sim,d.giver)?act('Accept the separate harbour repair','accept'):here?button('Walk to Sahra','walk','giver'):'')+'</section>';
   else{
    if(r.claimed)html+='<section><h3>The paid local passage remains</h3><p>'+esc(d.completionText)+'</p></section>';
    const approach=d.approaches.find(a=>a.id===r.approach),current=H().currentStatus(sim);
@@ -89,7 +90,7 @@ class AtlantisCampaignUI{
  tick(){const sim=this.sim,r=record(sim),toggle=document.querySelector('.tracker-switch [data-id="atlantis-campaign"]');if(toggle)toggle.hidden=!r?.accepted||r.claimed;
   if(this.pending&&!this.same(this.pending))this.pending=null;if(!this.seen.has(sim)){this.seen.add(sim);if(r?.accepted&&!r.claimed&&this.rpg.quest==='story')this.rpg.quest='atlantis-campaign';}
   if(this.rpg.quest!=='atlantis-campaign')return;if(!r?.accepted||r.claimed){this.rpg.quest='story';return;}
-  const next=H().available(sim.state)[0],ready=H().ready(sim.state),detail=sim.room!==D().room?'Revisit Farwake · retained work stays saved':ready?'Return to Sahra · complete, unpaid':next?.medium==='water'||next?.medium==='court'?next.name+' · '+depth(next):next?.name||'Read the current repair';
+  const available=H().available(sim.state),requiredReading=D().approaches.find(a=>a.id===r.approach)?.requiredObservation,next=available.find(s=>!s.optional||s.id===requiredReading)||available[0],ready=H().ready(sim.state),detail=sim.room!==D().room?'Revisit Farwake · retained work stays saved':ready?'Return to Sahra · complete, unpaid':next?.medium==='water'||next?.medium==='court'?next.name+' · '+depth(next):next?.name||'Read the current repair';
   for(const[selector,text]of Object.entries({'#tracked-chapter':'ATLANTIS · THE HARBOUR BENEATH THE HARBOUR','#tracked-title':D().title,'#tracked-detail':detail,'#tracked-progress':r.steps.length+' recorded actions · '+(ready?'fee unclaimed':'J campaign · M physical routes')})){const el=document.querySelector(selector);if(el)el.textContent=text;}
  }
 }
