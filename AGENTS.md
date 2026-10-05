@@ -1,3 +1,34 @@
+# Earth native homecoming and ordinary recording, 2026-10-05
+
+Read docs/development/EARTH_HOMECOMING_NATIVE_DELIVERY_2026-10-05.md before
+older pending reports. At runtime f3512657211d3057c4e437c33e26439d3bb7af56,
+Root observed native05 exit0:6205/6205 checks,30/30 earned stages across
+blade,bow and strongest returning characters,26 whole-browser restarts and
+54 causal pixel controls. All earlier native01-04 failures remain visible.
+The repaired ordinary-RAF RTX3080 take separately completed the Regent repulse,
+explicit public-watch, physical Vessa/Oren return, separate fee and cold-save
+readback in136.634 seconds. This is a continuation from the real earned relay
+checkpoint, not a fresh-player duration or human acceptance.
+
+Qualified route/framing repairs are installed in the portable native tool.
+The verifier now requires a separate same-invocation earned Earth browser gate;
+all45 older browser contracts/timeouts remain.19 installed gate CPU cases and
+37 installed recording CPU cases pass. The recording test initially used an
+inside-checkout temporary output and correctly failed isolation; only its
+temporary fixtures moved outside the checkout. Game rules did not change.
+The exact current complete gate and final remote readback remain pending as
+whole-draft journal/tracker polish proceeds on a separate stacked branch.
+
+Identical pages remain3,027,919 bytes/SHA30648a37d3c8a6a4d5633b8946536dd9550aac29f204947cd2c5f098b6c7600a.
+World/key9,adventure12,optional earthHomecoming1; all older owners,XP,choices,
+gear/socket/fittings remain. Cosmos final records aec29712 are reconciled by
+a normal records-only merge preserving Earth work. Keep one integrated game,
+bounded D evidence and failures; never retry blocked standalone deletion.
+No main merge,public deploy,paid service,personal-save read or unrelated stop.
+The wider Regent war,Answering and Briar chronology remain unresolved.
+
+---
+
 # Fresh routes to an Earth homecoming, 2026-10-05
 
 Read docs/development/EARTH_HOMECOMING_FRESH_DRAFT_2026-10-05.md before older

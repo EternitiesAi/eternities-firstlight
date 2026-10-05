@@ -1,0 +1,29 @@
+# Earth homecoming: native qualification and ordinary footage
+
+This record describes the actual frozen runtime f3512657211d3057c4e437c33e26439d3bb7af56 and its later tooling integration. Tool preparation, installed CPU tests, native accelerated verification, ordinary hardware recording and the complete current gate are distinct.
+
+## Delivered play
+
+The Road That Can Refuse connects the twelve prior paid arcs to a provisional local Earth ending. Real movement reaches Vessa, Merren, two independent relays, the Regent-pattern challenge and the physical return. The fixed168HP/12damage opponent has a broad lane, long narrow lane and an annulus with a genuine quiet center. Guard, retreat and movement remain available. The engine gives no generic replay payout. Securing the passage precedes a deliberate public-watch or reviewed-custody choice; Vessa verifies it, the World road returns freely, and Oren receives the local record before a separate once-only50XP/20coin/4ore/4timber/3fiber/1crystal claim. Nothing equips, erases a socket or refills health on that claim.
+
+## Actual native verification
+
+Native05 exited0 with6205 checks,30/30 earned stages,26 full Chromium restarts,54 causal pixel controls,57 screenshots,six isolated synthetic profiles and no videos. Its report is1,816,753 bytes/SHA92db087ab6b8462c8daf8379cd96bd2b289a2df7e2940079ab17636cbe7d5adb. Three legitimate earned continuations cover blade,bow and strongest equipment; separately labelled synthetic capacity/write-refusal/migration boundaries exercise atomic refusal. Production moveTo and small simulation ticks accelerate this controller; this is not human pacing or an ordinary-RAF recording.
+
+Native01 failed an optional screen viewed from too far away. Native02 correctly refused an east route before the west objective. Native03 exposed the workshop record hidden by the distant diorama roof. Native04's bow case looked away from the selected foe after resetting the adventure view. Qualified05 uses an actual unlocked Walk for the screen, a real close workshop approach and the existing Frame foe button in adventure combat. Pixel thresholds, exact restorations and rules remained strict; no product geometry, camera pose assignment or enemy tuning was used to hide these failures. All reports and profiles are retained.
+
+The portable installed controller differs from qualified05 only in its default repository-root line. The separate verifier gate binds all three native cases to its own freshly earned cohort hash and has a1800-second bound; the previous45 suite contracts and timeouts remain unchanged. Installed gate tests pass19/19. This new registration still requires the complete current remote gate.
+
+## Ordinary desktop hardware take
+
+Capture02 exited0, completed the chapter and left no required work pending. It started from the byte-linked current blade02_RELAYS continuation, used native keyboard/UI controls and ordinary animation timing, and performed actual attacks, all three warning patterns in both views, quiet-center movement, local repulse, explicit public-watch, return and Oren's fee. No simulation-step override, time scaling, direct game commands, pose/HP/inventory grants or forced cycles were used. The same isolated profile was reopened in a whole cold browser and its pre-app library bytes matched exactly.
+
+The136.634-second take produced19 screenshots and one14,397,382-byte unretimed raw WebM/SHAa5b2311b2a8b97f6538be9a2712ef498bd521096aed572b86b06c6634a683f64. ANGLE identified NVIDIA RTX3080/D3D11 in headless Chromium143 at1440x900 balanced. Driver610.74 and concurrent GPU use were recorded; the hardware was not isolated and this was not a foreground human playtest. Over121.747 seconds,7290 callback-arrival intervals had median16.6ms,p9518.4ms,p9921.111ms,max85ms,11 above33.33ms and9 above50ms. The separately retained animation-clock interval distribution is distinct. Arrival delay is an event-loop proxy, not rendered FPS or GPU duration; no60FPS qualification follows.
+
+Capture01 correctly hit the actor after its recorder stopped at distance1.34436, outside the strict1.26 quiet margin. That failed take and its screenshots/raw remain. The repair tightens arrival tolerance only for the quiet-center response, keeps the strict actual contact test, retains warning pairs on failed outcomes and adds a distinct callback-arrival clock.37 installed CPU checks pass. Their first installed run failed because the test's temporary output moved inside the checkout; only that fixture path was corrected. Those failures are preserved.
+
+## Compatibility, launch and outstanding acceptance
+
+World/key9,adventure12 and optional earthHomecoming1 remain. Notes,music,exports,housing,construction,crops,inventory,gear identity,sockets,fittings,companion,XP and banked9999,chapters and explicit choices remain owned by their existing systems. Missing homecoming state migrates empty; it cannot replay previous rewards. A new character must legitimately claim the earlier arcs. Strongest characters retain their equipment and receive the same bounded material payment without invisible scaling.
+
+Regenerate using python build.py, then serve the repository locally with python -m http.server 8000 and open http://127.0.0.1:8000/FIRSTLIGHT_VALLEY.html. Use a labelled synthetic/new test character; personal saves were not inspected. This remains a browser prototype with connected authored pockets, not a streamed continent, complete cosmic cities or the final Regent war/Answering/Briar story. Human questions remain: could you find the next action, did the combat feel better, did the return and reward feel worthwhile? Current complete source/browser/fresh remote verification and journal/tracker polish are still required before draft completion.

@@ -20,7 +20,7 @@ import time
 import traceback
 
 sys.dont_write_bytecode = True
-ROOT = Path(os.environ.get('FIRSTLIGHT_ROOT', 'D:/07-GAMES/Firstlight/authoring/atlantis-harbour-campaign-20261004')).resolve()
+ROOT = Path(os.environ.get('FIRSTLIGHT_ROOT', str(Path(__file__).resolve().parents[1]))).resolve()
 CAMPAIGN = 'earth-road-can-refuse-v1'
 DEFAULT_COHORT_SHA = 'd63e6dfce83b7bad37633eeba1c1709aa8c9fef043ecb4d53e968850ed4bb198'
 PORTABLE_PROVENANCE_SHA = '4b18502ab94c1e468013638ae79ffb1c53e100cd4e086abc8576a730ee932a3a'
@@ -404,6 +404,12 @@ class EarthMixin:
 
     def pixels(self, selection, view):
         self.close_workspace(); self.page.locator(f'#rpg-hud [data-rpg="camera"][data-id="{view}"]').click(); self.page.keyboard.press('r'); self.render()
+        if view=='adventure' and selection in ('body','broad','narrow','ring','paired-inlay'):
+            # Use the existing player-facing framing control. Default reset
+            # looks away from a north-side ranged foe; no camera state is set.
+            button=self.page.locator('#target-framing')
+            self.check('actual selected foe offers native third-person framing', button.is_visible() and button.is_enabled())
+            button.click(); self.render()
         self.check('actual camera projection '+view, self.diag()['camera']['projection'] == ('perspective' if view == 'adventure' else 'orthographic'))
         r = self.ev(r"""selection=>{const e=__hvcArt.e,s=Realm.test.worldContext().sim;
          const saved=[...e.batches,...e.dynamic].map(b=>({b,items:b.items,data:b.data,count:b.count}));
@@ -546,7 +552,13 @@ class EarthMixin:
         self.enter(); self.workspace('atlas'); prior=self.state(); self.check('native map names physical return route', 'R marks' in self.page.locator('#rpg-content').inner_text() and self.page.locator('[data-rpg="earth-homecoming-walk"]').count()>0); self.check('map reading has no progress', self.state()==prior); self.shot('native-map')
         for name in ('bridge-record','register-record','inspect-claim'): self.action(name)
         for view in ('adventure','follow'):
-            self.pixels('west-relay-isolated',view); self.pixels('east-relay-isolated',view); self.pixels('supplied-screen',view)
+            self.pixels('west-relay-isolated',view); self.pixels('east-relay-isolated',view)
+        # The optional screen is outside the junction's close third-person
+        # view. Inspect it from its actual visible Walk approach without
+        # activating it. East's Walk remains gated by the recorded west relay.
+        self.walk_ui('supplied-screen')
+        for view in ('adventure','follow'):
+            self.pixels('supplied-screen',view)
         if prepared: self.action('supplied-screen')
         for name in ('west-relay-isolated','east-relay-isolated'): self.action(name)
         self.complete('relays'); self.restart('ordered-relays'); self.enter(); self.action('challenge-regent'); self.tick(1)
@@ -557,6 +569,10 @@ class EarthMixin:
         self.check('menu return alone leaves home arrival incomplete', 'home-return' not in self.state()['earthHomecoming']['steps']); self.action('home-return')
         if companion['bonded'] and self.state()['adventure']['companion']['mode']!=companion['mode']: self.companion(companion['mode'])
         self.complete('physical-home')
+        # Reach the existing table on real supported ground. The ordinary
+        # distant Walk endpoint leaves this small record behind the roof in
+        # diorama; this close approach uses the existing camera cutaway.
+        self.walk_exact(12.5,9.3,'supported closer viewing approach to existing workshop table')
         for view in ('adventure','follow'): self.pixels('home-trace',view)
         self.check('home trace rests on actual existing tabletop', self.ev(r"""()=>{const parts=__hvcArt.e.dynamic.flatMap(b=>b.items.filter(i=>i.earthHomecomingTrace==='home'));return parts.length>0&&parts.every(p=>p.appearanceOnly===true&&p.cameraSolid===false)&&parts.filter(p=>p.earthHomecomingPart==='independent-account-plate').every(p=>Math.abs(p.p[0]-12.5)<1e-6&&Math.abs(p.p[2]-8.55)<1e-6&&Math.abs((p.p[1]-p.s[1]/2)-2.13)<1e-5);}"""))
         # Restore native camera preference after explicitly testing both views.
