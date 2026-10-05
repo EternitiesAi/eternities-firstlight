@@ -1,0 +1,3012 @@
+{
+  "earthHomecoming": {
+    "version": 1,
+    "accepted": false,
+    "steps": [],
+    "choice": null,
+    "claimed": false
+  },
+  "cosmosCampaign": {
+    "version": 1,
+    "accepted": false,
+    "steps": [],
+    "choice": null,
+    "opened": false,
+    "claimed": false
+  },
+  "atlantisCampaign": {
+    "version": 1,
+    "accepted": true,
+    "steps": [
+      "receipt-conflict",
+      "choose-approach",
+      "lower-reading",
+      "diagnose-flow",
+      "manual-bypass",
+      "inlet-set",
+      "equalizer-set",
+      "outlet-set",
+      "secure-carrier",
+      "challenge-custodian",
+      "bearing-exposed",
+      "release-west",
+      "release-east",
+      "custodian-stable",
+      "disposition",
+      "verify-passage"
+    ],
+    "approach": "lower",
+    "choice": "limited",
+    "claimed": true
+  },
+  "heavenCampaign": {
+    "version": 1,
+    "accepted": true,
+    "steps": [
+      "witness-account",
+      "compare-arrival-marks",
+      "inspect-false-relay",
+      "ground-mirror",
+      "begin-watch",
+      "beam-disabled",
+      "relay-disabled",
+      "secure-service-route",
+      "invite-wayfarer",
+      "wayfarer-arrived",
+      "fit-arrival-assist",
+      "arrangement",
+      "verify-welcome"
+    ],
+    "choice": "broadened-activation",
+    "claimed": true
+  },
+  "hellCampaign": {
+    "version": 1,
+    "accepted": true,
+    "steps": [
+      "witness-record",
+      "tovan-account",
+      "read-service-writ",
+      "west-shunt",
+      "east-brace",
+      "challenge-veyr",
+      "warden-resolved",
+      "stabilize-service-engine",
+      "disposition",
+      "verify-route"
+    ],
+    "choice": "divert",
+    "claimed": true
+  },
+  "bridgeCommunity": {
+    "version": 1,
+    "accepted": false,
+    "choice": null,
+    "steps": [],
+    "claimed": false
+  },
+  "homeHistory": {
+    "version": 1,
+    "revision": 0,
+    "owned": [],
+    "pinned": null
+  },
+  "localLife": {
+    "version": 1,
+    "records": {
+      "heaven-propagation-bed-v1": {
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      },
+      "hell-refuge-water-v1": {
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      },
+      "atlantis-bellglass-lamp-v1": {
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      },
+      "cosmos-drawing-shelf-v1": {
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      }
+    }
+  },
+  "earthExpedition": {
+    "version": 1,
+    "story": {
+      "accepted": true,
+      "branch": "managed-coppice",
+      "steps": [
+        "assess-load",
+        "prepare-allocation",
+        "read-water",
+        "clear-crossing",
+        "read-root-load",
+        "clear-root-pests",
+        "brace-root-channel",
+        "deliver-allocation"
+      ],
+      "claimed": true
+    },
+    "patrol": {
+      "lastClaim": 0,
+      "active": null
+    }
+  },
+  "realmTrails": {
+    "version": 1,
+    "records": {
+      "heaven-broken-choir-v1": {
+        "accepted": true,
+        "steps": [
+          "spillway",
+          "relay-west",
+          "relay-east",
+          "relay-crown",
+          "disable-core",
+          "garden-repair"
+        ],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": true
+      },
+      "hell-open-cage-v1": {
+        "accepted": true,
+        "steps": [
+          "contact-neris",
+          "cooling",
+          "clamp-west",
+          "clamp-east",
+          "disable-reeve",
+          "escort-start",
+          "refuge-arrival"
+        ],
+        "settings": {},
+        "checkpoint": 5,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": true
+      },
+      "atlantis-bellglass-chart-v1": {
+        "accepted": true,
+        "steps": [
+          "upper-gauge",
+          "lower-masonry",
+          "depth-chart",
+          "modern-marker"
+        ],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": true
+      },
+      "earthlands-coastward-materials-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "cosmos-split-bearing-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      }
+    }
+  },
+  "journeys": {
+    "version": 1,
+    "realms": {
+      "heaven": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "hell": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "earthlands": {
+        "counter": 1,
+        "lastClaim": 1,
+        "firstClaimed": true,
+        "active": null,
+        "defeated": []
+      },
+      "atlantis": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "cosmos": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      }
+    }
+  },
+  "adventure": {
+    "version": 12,
+    "earthBinding": {
+      "version": 1,
+      "weapon": null,
+      "kind": null
+    },
+    "realmCraft": {
+      "version": 1,
+      "weapon": null
+    },
+    "earthGathering": {
+      "version": 1,
+      "accepted": false,
+      "prepared": [],
+      "verse": null,
+      "shared": false
+    },
+    "earthNotes": {
+      "version": 1,
+      "accepted": false,
+      "marks": [],
+      "compared": false,
+      "interpretation": null
+    },
+    "earthStory": {
+      "version": 1,
+      "accepted": true,
+      "steps": [
+        "quarry-reserve",
+        "quarry-grade"
+      ],
+      "dispatch": "quarry",
+      "arrived": true,
+      "claimed": true
+    },
+    "classPath": {
+      "version": 1,
+      "choice": null,
+      "readyAt": 0
+    },
+    "pursuit": {
+      "version": 1,
+      "pinned": null,
+      "claimed": 0,
+      "active": null,
+      "fittings": {}
+    },
+    "starter": {
+      "version": 1,
+      "accepted": false,
+      "bundles": [],
+      "reward": null
+    },
+    "crossing": {
+      "version": 1,
+      "entered": true,
+      "met": true,
+      "inscription": true,
+      "clapperRevealed": true,
+      "clapper": true,
+      "repaired": true,
+      "complete": true,
+      "reward": true,
+      "attuned": true,
+      "projects": []
+    },
+    "beacon": {
+      "version": 1,
+      "introduced": true,
+      "complete": true,
+      "status": "stable",
+      "attempts": 1,
+      "failures": 0,
+      "reward": true,
+      "relic": "renounced",
+      "route": "forest",
+      "soul": {
+        "grace": true,
+        "equipped": "aegis",
+        "radiance": 2,
+        "corruption": 0,
+        "scars": [
+          "cinder-invoked",
+          "cinder-renounced"
+        ]
+      }
+    },
+    "arsenal": {
+      "version": 1,
+      "gems": {
+        "ruby": 0,
+        "moonstone": 1,
+        "amber": 0
+      },
+      "sockets": {},
+      "rangeMedal": false,
+      "bestTime": null
+    },
+    "road": {
+      "version": 1,
+      "entered": true,
+      "revealed": [
+        "cart-latch",
+        "old-surveyor"
+      ],
+      "claimed": [
+        "cart-latch",
+        "old-surveyor"
+      ],
+      "cartRepaired": true,
+      "beaconLit": true,
+      "reported": true
+    },
+    "elapsed": 1984.8546597620561,
+    "revision": 399,
+    "started": true,
+    "dug": [
+      "0,1",
+      "2,-2"
+    ],
+    "chips": [],
+    "defeated": [
+      "briar-1",
+      "briar-2",
+      "sentinel",
+      "hart",
+      "road-prowler",
+      "road-prism",
+      "road-ram",
+      "cross-thorn",
+      "cross-prism",
+      "cross-warden"
+    ],
+    "drops": [],
+    "ore": 40,
+    "coins": 204,
+    "xp": 803,
+    "hp": 200,
+    "stamina": 100,
+    "tonics": 3,
+    "equipment": {
+      "weapon": "trail_bow",
+      "armor": "keeper_coat",
+      "charm": "chime_clasp"
+    },
+    "owned": [
+      "trail_blade",
+      "travel_coat",
+      "guard_vest",
+      "copper_blade",
+      "warden_stone",
+      "courier_mantle",
+      "wayfarer_band",
+      "trail_bow",
+      "chime_clasp",
+      "keeper_coat"
+    ],
+    "companion": {
+      "bonded": true,
+      "name": "Briar",
+      "mode": "follow"
+    },
+    "relic": true,
+    "angelSeen": true,
+    "reward": "warden_stone",
+    "deaths": 0,
+    "receipts": [
+      {
+        "id": "auto-43-208",
+        "fp": "[\"attack\",{\"target\":\"cross-warden\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-46-209",
+        "fp": "[\"attack\",{\"target\":\"cross-warden\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-48-210",
+        "fp": "[\"attack\",{\"target\":\"cross-warden\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-51-211",
+        "fp": "[\"attack\",{\"target\":\"cross-warden\"}]",
+        "ok": true
+      },
+      {
+        "id": "ch4-39",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-53-213",
+        "fp": "[\"attack\",{\"target\":\"cross-warden\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-70-214",
+        "fp": "[\"attack\",{\"target\":\"cross-warden\"}]",
+        "ok": true
+      },
+      {
+        "id": "ch4-40",
+        "fp": "[\"pulse\",{\"target\":\"cross-warden\"}]",
+        "ok": true
+      },
+      {
+        "id": "ch4-41",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      },
+      {
+        "id": "ch4-42",
+        "fp": "[\"loot\",{\"id\":\"cross-warden\"}]",
+        "ok": true
+      },
+      {
+        "id": "ch4-43",
+        "fp": "[\"cross-repair\",{}]",
+        "ok": true
+      },
+      {
+        "id": "ch4-44",
+        "fp": "[\"cross-ring\",{\"id\":\"leaf\"}]",
+        "ok": true
+      },
+      {
+        "id": "ch4-45",
+        "fp": "[\"cross-ring\",{\"id\":\"wave\"}]",
+        "ok": true
+      },
+      {
+        "id": "ch4-46",
+        "fp": "[\"cross-ring\",{\"id\":\"sun\"}]",
+        "ok": true
+      },
+      {
+        "id": "ch4-47",
+        "fp": "[\"cross-reward\",{}]",
+        "ok": true
+      },
+      {
+        "id": "ch4-48",
+        "fp": "[\"equip\",{\"id\":\"chime_clasp\"}]",
+        "ok": true
+      },
+      {
+        "id": "ch4-49",
+        "fp": "[\"cross-trade\",{\"offer\":\"coat\"}]",
+        "ok": true
+      },
+      {
+        "id": "ch4-50",
+        "fp": "[\"equip\",{\"id\":\"keeper_coat\"}]",
+        "ok": true
+      },
+      {
+        "id": "ch4-51",
+        "fp": "[\"cross-trade\",{\"offer\":\"copper\"}]",
+        "ok": true
+      },
+      {
+        "id": "ch4-52",
+        "fp": "[\"cross-rest\",{}]",
+        "ok": true
+      },
+      {
+        "id": "ch4-53",
+        "fp": "[\"waystone-travel\",{\"id\":\"commons\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-6-230-1",
+        "fp": "[\"rest\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-6-230-3",
+        "fp": "[\"earth-story-accept\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-6-230-4",
+        "fp": "[\"earth-story-step\",{\"id\":\"quarry-reserve\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-6-230-5",
+        "fp": "[\"earth-story-step\",{\"id\":\"quarry-grade\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-6-230-6",
+        "fp": "[\"earth-story-dispatch\",{\"route\":\"quarry\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-6-230-7",
+        "fp": "[\"earth-story-arrive\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-6-230-8",
+        "fp": "[\"earth-story-claim\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-6-230-9",
+        "fp": "[\"rest\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-6-230-15",
+        "fp": "[\"target-select\",{\"id\":\"earth-stormfall-crossing-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-6-230-16",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-6-230-17",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-1-245",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-crossing-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-4-246",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-crossing-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-6-247",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-crossing-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-6-230-18",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-6-230-20",
+        "fp": "[\"target-select\",{\"id\":\"earth-stormfall-root-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-6-230-21",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-6-230-22",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-9-254",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-root-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-11-255",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-root-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-14-256",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-root-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-16-257",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-root-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-19-258",
+        "fp": "[\"attack\",{\"target\":\"earth-stormfall-root-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-6-230-23",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-6-230-28",
+        "fp": "[\"rest\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-7-270-7",
+        "fp": "[\"target-select\",{\"id\":\"hell-return-reeve-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-7-270-8",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-1-277",
+        "fp": "[\"attack\",{\"target\":\"hell-return-reeve-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-7-270-9",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-3-279",
+        "fp": "[\"attack\",{\"target\":\"hell-return-reeve-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-5-280",
+        "fp": "[\"attack\",{\"target\":\"hell-return-reeve-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-7-281",
+        "fp": "[\"attack\",{\"target\":\"hell-return-reeve-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-7-270-10",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-7-270-15",
+        "fp": "[\"rest\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-7-270-27",
+        "fp": "[\"target-select\",{\"id\":\"hell-tithe-warden-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-7-270-28",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-7-270-29",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-1-304",
+        "fp": "[\"attack\",{\"target\":\"hell-tithe-warden-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-3-305",
+        "fp": "[\"attack\",{\"target\":\"hell-tithe-warden-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-5-306",
+        "fp": "[\"attack\",{\"target\":\"hell-tithe-warden-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-8-307",
+        "fp": "[\"attack\",{\"target\":\"hell-tithe-warden-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-10-308",
+        "fp": "[\"attack\",{\"target\":\"hell-tithe-warden-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-11-309",
+        "fp": "[\"attack\",{\"target\":\"hell-tithe-warden-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-12-310",
+        "fp": "[\"attack\",{\"target\":\"hell-tithe-warden-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-7-270-30",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-8-317-7",
+        "fp": "[\"target-select\",{\"id\":\"heaven-choir-core-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-8-317-8",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-2-324",
+        "fp": "[\"attack\",{\"target\":\"heaven-choir-core-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-8-317-9",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-5-326",
+        "fp": "[\"attack\",{\"target\":\"heaven-choir-core-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-6-327",
+        "fp": "[\"attack\",{\"target\":\"heaven-choir-core-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-7-328",
+        "fp": "[\"attack\",{\"target\":\"heaven-choir-core-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-10-329",
+        "fp": "[\"attack\",{\"target\":\"heaven-choir-core-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-8-317-10",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-8-317-13",
+        "fp": "[\"rest\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-8-317-23",
+        "fp": "[\"target-select\",{\"id\":\"heaven-glasswing-sentinel-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-8-317-24",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-8-317-25",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-1-344",
+        "fp": "[\"attack\",{\"target\":\"heaven-glasswing-sentinel-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-3-345",
+        "fp": "[\"attack\",{\"target\":\"heaven-glasswing-sentinel-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-6-346",
+        "fp": "[\"attack\",{\"target\":\"heaven-glasswing-sentinel-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-8-347",
+        "fp": "[\"attack\",{\"target\":\"heaven-glasswing-sentinel-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-8-317-26",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-8-317-28",
+        "fp": "[\"target-select\",{\"id\":\"heaven-counterfeit-relay-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-8-317-29",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-8-317-30",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-1-353",
+        "fp": "[\"attack\",{\"target\":\"heaven-counterfeit-relay-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-4-354",
+        "fp": "[\"attack\",{\"target\":\"heaven-counterfeit-relay-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-6-355",
+        "fp": "[\"attack\",{\"target\":\"heaven-counterfeit-relay-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-8-317-31",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-9-366-8",
+        "fp": "[\"rest\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-9-366-24",
+        "fp": "[\"target-select\",{\"id\":\"atlantis-breakwater-custodian-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-9-366-25",
+        "fp": "[\"auto-toggle\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-9-366-26",
+        "fp": "[\"guard\",{}]",
+        "ok": true
+      },
+      {
+        "id": "auto-2-387",
+        "fp": "[\"attack\",{\"target\":\"atlantis-breakwater-custodian-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-5-388",
+        "fp": "[\"attack\",{\"target\":\"atlantis-breakwater-custodian-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-7-389",
+        "fp": "[\"attack\",{\"target\":\"atlantis-breakwater-custodian-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "auto-10-390",
+        "fp": "[\"attack\",{\"target\":\"atlantis-breakwater-custodian-v1\"}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-9-366-27",
+        "fp": "[\"target-clear\",{}]",
+        "ok": true
+      }
+    ]
+  },
+  "sandbox": {
+    "version": 1,
+    "elapsed": 1984.8546597620561,
+    "revision": 36,
+    "inventory": {
+      "wood": 16,
+      "stone": 3,
+      "fiber": 20,
+      "crystal": 1,
+      "plank": 0,
+      "block": 0,
+      "seeds": 6,
+      "berry": 0,
+      "axe": 0,
+      "pick": 1,
+      "floor": 0,
+      "wall": 0,
+      "masonry": 0,
+      "lantern": 0,
+      "bench": 0,
+      "bed": 0,
+      "fire": 0,
+      "workbench": 0
+    },
+    "nodes": [
+      {
+        "id": "timber-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "timber-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "timber-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "timber-4",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-1",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-2",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-3",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-stone-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-stone-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-fibre",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "crystal-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "crystal-2",
+        "hp": 4,
+        "readyAt": 0
+      }
+    ],
+    "bridge": true,
+    "placed": [],
+    "nextId": 1,
+    "stats": {
+      "gathered": 36,
+      "crafted": 3,
+      "harvested": 0
+    },
+    "milestones": [
+      "gather",
+      "tool",
+      "bridge"
+    ],
+    "recentCommands": [
+      {
+        "id": "journey-2",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop · 3 strength remaining"
+        }
+      },
+      {
+        "id": "journey-3",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop · 2 strength remaining"
+        }
+      },
+      {
+        "id": "journey-4",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop · 1 strength remaining"
+        }
+      },
+      {
+        "id": "journey-5",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "+5 Timber"
+        }
+      },
+      {
+        "id": "journey-6",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop · 3 strength remaining"
+        }
+      },
+      {
+        "id": "journey-7",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop · 2 strength remaining"
+        }
+      },
+      {
+        "id": "journey-8",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop · 1 strength remaining"
+        }
+      },
+      {
+        "id": "journey-9",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "+5 Timber"
+        }
+      },
+      {
+        "id": "journey-10",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Mine · 3 strength remaining"
+        }
+      },
+      {
+        "id": "journey-11",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Mine · 2 strength remaining"
+        }
+      },
+      {
+        "id": "journey-12",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Mine · 1 strength remaining"
+        }
+      },
+      {
+        "id": "journey-13",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "+5 Stone"
+        }
+      },
+      {
+        "id": "journey-14",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Mine · 3 strength remaining"
+        }
+      },
+      {
+        "id": "journey-15",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Mine · 2 strength remaining"
+        }
+      },
+      {
+        "id": "journey-16",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Mine · 1 strength remaining"
+        }
+      },
+      {
+        "id": "journey-17",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "+5 Stone"
+        }
+      },
+      {
+        "id": "journey-18",
+        "fingerprint": "{\"type\":\"craft\",\"node\":null,\"recipe\":\"pick\",\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Crafted 1 × Stone pickaxe"
+        }
+      },
+      {
+        "id": "journey-19",
+        "fingerprint": "{\"type\":\"craft\",\"node\":null,\"recipe\":\"plank\",\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Crafted 4 × Planks"
+        }
+      },
+      {
+        "id": "journey-20",
+        "fingerprint": "{\"type\":\"craft\",\"node\":null,\"recipe\":\"plank\",\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Crafted 4 × Planks"
+        }
+      },
+      {
+        "id": "journey-21",
+        "fingerprint": "{\"type\":\"bridge\",\"node\":null,\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Wildwood Reach is open. A new shore to make your own."
+        }
+      },
+      {
+        "id": "ch4sb-2",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop · 3 strength remaining"
+        }
+      },
+      {
+        "id": "ch4sb-3",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop · 2 strength remaining"
+        }
+      },
+      {
+        "id": "ch4sb-4",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Chop · 1 strength remaining"
+        }
+      },
+      {
+        "id": "ch4sb-5",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"timber-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "+5 Timber"
+        }
+      },
+      {
+        "id": "ch4sb-6",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"fibre-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "+3 Meadow fibre · +1 seed"
+        }
+      },
+      {
+        "id": "ch4sb-7",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"fibre-2\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "+3 Meadow fibre · +1 seed"
+        }
+      },
+      {
+        "id": "ch4sb-8",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "Mine · 2 strength remaining"
+        }
+      },
+      {
+        "id": "ch4sb-9",
+        "fingerprint": "{\"type\":\"gather\",\"node\":\"stone-1\",\"recipe\":null,\"kind\":null,\"gx\":null,\"gz\":null,\"rotation\":null,\"object\":null}",
+        "result": {
+          "ok": true,
+          "text": "+5 Stone"
+        }
+      }
+    ],
+    "cooldownUntil": 392.2500000000548
+  },
+  "score": {
+    "format": "eternities.score.v1",
+    "title": "A Window Left Open",
+    "bpm": 88,
+    "voice": "felt",
+    "melody": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    ],
+    "bass": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "drums": [
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    ]
+  },
+  "scoreRevision": 0,
+  "retreat": {
+    "version": 1,
+    "revision": 0,
+    "wall": "moss",
+    "floor": "oak",
+    "items": [
+      {
+        "slot": "nw",
+        "kind": "shelf",
+        "rotation": 0
+      },
+      {
+        "slot": "ne",
+        "kind": "piano",
+        "rotation": 0
+      },
+      {
+        "slot": "w",
+        "kind": "sofa",
+        "rotation": 1
+      },
+      {
+        "slot": "e",
+        "kind": "plant",
+        "rotation": 0
+      },
+      {
+        "slot": "c",
+        "kind": "rug",
+        "rotation": 0
+      }
+    ]
+  },
+  "visitor": {
+    "name": "Visitor",
+    "skin": 0,
+    "cloak": 0,
+    "hair": 0
+  },
+  "version": 9,
+  "seed": 2317,
+  "day": 2,
+  "hour": 2.1318459689455462,
+  "weather": "clear",
+  "player": {
+    "x": 18,
+    "z": 6,
+    "yaw": 2.2455372690188193
+  },
+  "visited": [
+    "market",
+    "commons",
+    "home",
+    "garden",
+    "retreat",
+    "lookout"
+  ],
+  "flowers": [],
+  "notes": [],
+  "journal": [
+    {
+      "seq": 84,
+      "day": 1,
+      "hour": 19.00067500000291,
+      "kind": "quest",
+      "text": "Beyond the beacon, Bellweather Crossing has heard the returning light."
+    },
+    {
+      "seq": 85,
+      "day": 1,
+      "hour": 19.010575000002927,
+      "kind": "travel",
+      "text": "Bellweather joined your discovered waystones. Travel is available at anchors, not during battle."
+    },
+    {
+      "seq": 86,
+      "day": 1,
+      "hour": 19.022275000002946,
+      "kind": "quest",
+      "text": "Rowan asked you to find the lost clapper and restore the watch bell. Read the listening stone, then follow the northern trail."
+    },
+    {
+      "seq": 87,
+      "day": 1,
+      "hour": 19.06727500000302,
+      "kind": "adventure",
+      "text": "Briarback prowler defeated. A cache remains at its original position."
+    },
+    {
+      "seq": 88,
+      "day": 1,
+      "hour": 19.08032500000304,
+      "kind": "quest",
+      "text": "The missing bronze clapper was recovered."
+    },
+    {
+      "seq": 89,
+      "day": 1,
+      "hour": 19.11250000000309,
+      "kind": "adventure",
+      "text": "The fractured tuner defeated. A cache remains at its original position."
+    },
+    {
+      "seq": 90,
+      "day": 1,
+      "hour": 19.263475000003336,
+      "kind": "adventure",
+      "text": "The Hushbound Keeper defeated. A cache remains at its original position."
+    },
+    {
+      "seq": 91,
+      "day": 1,
+      "hour": 19.29812500000339,
+      "kind": "quest",
+      "text": "Leaf, Wave, Sun. The watch bell rang across the valley again. Return to Rowan."
+    },
+    {
+      "seq": 92,
+      "day": 1,
+      "hour": 19.33952500000346,
+      "kind": "quest",
+      "text": "Rowan gave you the Clasp of the answering bell and 18 sunmarks. Windbells now hang at Oren’s workshop."
+    },
+    {
+      "seq": 93,
+      "day": 1,
+      "hour": 19.429750000003605,
+      "kind": "travel",
+      "text": "You followed the Roads of Light to Firstlight spring. No health, items or story rewards were granted."
+    },
+    {
+      "seq": 94,
+      "day": 1,
+      "hour": 19.429975000003605,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 95,
+      "day": 1,
+      "hour": 19.429975000003605,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 96,
+      "day": 1,
+      "hour": 19.429975000003605,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 97,
+      "day": 1,
+      "hour": 19.4882500000037,
+      "kind": "quest",
+      "text": "Road After Rain accepted: prepare one route, send Fenna’s flour and apples, and meet her on the west road. One payment: 3 copper, 4 sunmarks, 2 fibre; no XP."
+    },
+    {
+      "seq": 98,
+      "day": 1,
+      "hour": 19.533250000003772,
+      "kind": "quest",
+      "text": "Collect Darric’s designated repair blocks completed."
+    },
+    {
+      "seq": 99,
+      "day": 1,
+      "hour": 19.552150000003802,
+      "kind": "quest",
+      "text": "Pack the washed cart grade completed."
+    },
+    {
+      "seq": 100,
+      "day": 1,
+      "hour": 19.579375000003846,
+      "kind": "quest",
+      "text": "Fenna takes Darric’s cart road with the flour and apples. Meet her at the Bellweather west-road handoff."
+    },
+    {
+      "seq": 101,
+      "day": 1,
+      "hour": 19.651375000003963,
+      "kind": "quest",
+      "text": "Fenna’s flour and apples reached the west road. The delivery is complete; its payment is still unclaimed."
+    },
+    {
+      "seq": 102,
+      "day": 1,
+      "hour": 19.651375000003963,
+      "kind": "quest",
+      "text": "Road After Rain paid once: 3 copper, 4 sunmarks, 2 fibre. The public improvements and delivered load remain."
+    },
+    {
+      "seq": 103,
+      "day": 1,
+      "hour": 19.651600000003963,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 104,
+      "day": 1,
+      "hour": 19.651600000003963,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 105,
+      "day": 1,
+      "hour": 19.651600000003963,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 106,
+      "day": 1,
+      "hour": 19.949275000004445,
+      "kind": "earth-expedition",
+      "text": "Stormfall and the Living Road explicitly accepted. The route, danger and fixed payment are retained."
+    },
+    {
+      "seq": 107,
+      "day": 1,
+      "hour": 19.966375000004472,
+      "kind": "earth-expedition",
+      "text": "Read the camp load board recorded."
+    },
+    {
+      "seq": 108,
+      "day": 1,
+      "hour": 19.980775000004495,
+      "kind": "earth-expedition",
+      "text": "Managed allocation prepared. Its extra fibre is retained. Check the wetland watercourse."
+    },
+    {
+      "seq": 109,
+      "day": 1,
+      "hour": 20.000125000004527,
+      "kind": "routine",
+      "text": "Ilan is heading to commons."
+    },
+    {
+      "seq": 110,
+      "day": 1,
+      "hour": 20.000125000004527,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 111,
+      "day": 1,
+      "hour": 20.000125000004527,
+      "kind": "routine",
+      "text": "Oren is heading to garden."
+    },
+    {
+      "seq": 112,
+      "day": 1,
+      "hour": 20.037700000004588,
+      "kind": "earth-expedition",
+      "text": "Check the wetland watercourse recorded."
+    },
+    {
+      "seq": 113,
+      "day": 1,
+      "hour": 20.068300000004637,
+      "kind": "earth-expedition",
+      "text": "Channel skitter cleared through actual combat for Stormfall and the Living Road. No legacy loot or XP is paid."
+    },
+    {
+      "seq": 114,
+      "day": 1,
+      "hour": 20.12500000000473,
+      "kind": "earth-expedition",
+      "text": "Read the living root anchor recorded."
+    },
+    {
+      "seq": 115,
+      "day": 1,
+      "hour": 20.160550000004786,
+      "kind": "earth-expedition",
+      "text": "Root-bank brute cleared through actual combat for Stormfall and the Living Road. No legacy loot or XP is paid."
+    },
+    {
+      "seq": 116,
+      "day": 1,
+      "hour": 20.190925000004835,
+      "kind": "earth-expedition",
+      "text": "Alternate brace fitted; the old root stays alive. Deliver your allocation at the return glade."
+    },
+    {
+      "seq": 117,
+      "day": 1,
+      "hour": 20.253250000004936,
+      "kind": "earth-expedition",
+      "text": "Allocation delivered. Return to Rill for the declared payment; it remains unclaimed."
+    },
+    {
+      "seq": 118,
+      "day": 1,
+      "hour": 20.44787500000525,
+      "kind": "earth-expedition",
+      "text": "Stormfall and the Living Road paid once · +45 XP · +18 sunmarks · +3 ore · +4 wood · +8 fiber. The allocation is delivered and a separate brace carries the damaged connection. The old root organism remains alive. Rill recognizes your chosen practical approach; one Trailward binding is available at an outdoor home workbench."
+    },
+    {
+      "seq": 119,
+      "day": 1,
+      "hour": 20.44810000000525,
+      "kind": "routine",
+      "text": "Ilan is heading to commons."
+    },
+    {
+      "seq": 120,
+      "day": 1,
+      "hour": 20.44810000000525,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 121,
+      "day": 1,
+      "hour": 20.44810000000525,
+      "kind": "routine",
+      "text": "Oren is heading to garden."
+    },
+    {
+      "seq": 122,
+      "day": 1,
+      "hour": 20.748700000005737,
+      "kind": "realm-work",
+      "text": "Water, fields and the evening load accepted."
+    },
+    {
+      "seq": 123,
+      "day": 1,
+      "hour": 20.782675000005792,
+      "kind": "realm-work",
+      "text": "Check the field-water catch · recorded for this run."
+    },
+    {
+      "seq": 124,
+      "day": 1,
+      "hour": 20.82362500000586,
+      "kind": "realm-work",
+      "text": "Pack the evening produce load · recorded for this run."
+    },
+    {
+      "seq": 125,
+      "day": 1,
+      "hour": 20.845900000005894,
+      "kind": "realm-work",
+      "text": "Register the named load · recorded for this run."
+    },
+    {
+      "seq": 126,
+      "day": 1,
+      "hour": 20.865700000005926,
+      "kind": "realm-work",
+      "text": "The local field-water check, produce packing and delivery record are complete. Merren can account for this evening’s work; the older Hearthwater delivery keeps its own history."
+    },
+    {
+      "seq": 127,
+      "day": 1,
+      "hour": 20.865925000005927,
+      "kind": "routine",
+      "text": "Ilan is heading to commons."
+    },
+    {
+      "seq": 128,
+      "day": 1,
+      "hour": 20.865925000005927,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 129,
+      "day": 1,
+      "hour": 20.865925000005927,
+      "kind": "routine",
+      "text": "Oren is heading to garden."
+    },
+    {
+      "seq": 130,
+      "day": 1,
+      "hour": 20.883250000005955,
+      "kind": "realm-trail",
+      "text": "The Open Cage · a return that holds accepted. Read the route, danger and fixed reward."
+    },
+    {
+      "seq": 131,
+      "day": 1,
+      "hour": 21.08530000000628,
+      "kind": "realm-trail",
+      "text": "Reach Neris on the west Bell Yard apron, outside the closed foundry wall. Neris: “The door is open. The route still records me as theirs. Check it before asking me to run.” Her preserved measurements identify a cooling handle and two return clamps. Leave her here while you establish safety; first operate cooling at (-34, -70)."
+    },
+    {
+      "seq": 132,
+      "day": 1,
+      "hour": 21.130525000006354,
+      "kind": "realm-trail",
+      "text": "Operate the marked cooling handle beside Moth Cut’s dry service route. Tovan’s measurement sets a finite safe pressure state; this is required route preparation, not an optional steam effect or a new water-diversion choice. Continue to the west clamp at (-30, -86) and east clamp at (14, -100), in either order."
+    },
+    {
+      "seq": 133,
+      "day": 1,
+      "hour": 21.153925000006392,
+      "kind": "realm-trail",
+      "text": "Seat the west clamp’s paired pins at the service approach to Bell Yard. One set clamp is insufficient: inspect the east clamp as well. When both are set after cooling, the route Reeve at (-35, -90) activates visibly. Keep the open western road behind you; no door closes."
+    },
+    {
+      "seq": 134,
+      "day": 1,
+      "hour": 21.218950000006497,
+      "kind": "realm-trail",
+      "text": "Seat the east clamp on the Bell Yard’s grounded loading apron. Return across the open yard to the west clamp if it remains unset. Both verified clamps and cooling make the rescue route usable; the Reeve at (-35, -90) must then be disabled before Neris is asked to follow."
+    },
+    {
+      "seq": 135,
+      "day": 1,
+      "hour": 21.303325000006634,
+      "kind": "realm-trail",
+      "text": "Route Reeve disabled through its actual combat opening."
+    },
+    {
+      "seq": 136,
+      "day": 1,
+      "hour": 21.32605000000667,
+      "kind": "realm-trail",
+      "text": "Neris: “Two clamps, cooling, and the inspector quiet. I can try that road with you.” Ask her to follow only after all declared safety work is complete. Walk south along Moth Cut, around the culvert and down the western service road, then enter the Refuge by its open south side. She moves at 2.5 route units per second and waits beyond 10; stay close"
+    },
+    {
+      "seq": 137,
+      "day": 1,
+      "hour": 21.32605000000667,
+      "kind": "realm-trail",
+      "text": "Neris waits here. Speak to her to resume."
+    },
+    {
+      "seq": 138,
+      "day": 1,
+      "hour": 21.327850000006674,
+      "kind": "realm-trail",
+      "text": "Neris resumes the safe route. Stay within ten paces."
+    },
+    {
+      "seq": 139,
+      "day": 1,
+      "hour": 21.36295000000673,
+      "kind": "realm-trail",
+      "text": "Neris reached a safe route checkpoint."
+    },
+    {
+      "seq": 140,
+      "day": 1,
+      "hour": 21.407725000006803,
+      "kind": "realm-trail",
+      "text": "Neris reached a safe route checkpoint."
+    },
+    {
+      "seq": 141,
+      "day": 1,
+      "hour": 21.48580000000693,
+      "kind": "realm-trail",
+      "text": "Neris reached a safe route checkpoint."
+    },
+    {
+      "seq": 142,
+      "day": 1,
+      "hour": 21.570175000007065,
+      "kind": "realm-trail",
+      "text": "Neris reached a safe route checkpoint."
+    },
+    {
+      "seq": 143,
+      "day": 1,
+      "hour": 21.601900000007117,
+      "kind": "realm-trail",
+      "text": "Neris reached the Kiln Refuge on the walked route."
+    },
+    {
+      "seq": 144,
+      "day": 1,
+      "hour": 21.607075000007125,
+      "kind": "realm-trail",
+      "text": "The Open Cage · a return that holds complete · +35 XP · +14 sunmarks · +3 ore. The declared fee is claimed once."
+    },
+    {
+      "seq": 145,
+      "day": 1,
+      "hour": 21.683125000007248,
+      "kind": "hell-campaign",
+      "text": "The Last Unclaimed Road accepted. Neris’s rescue and the unconditional road home remain separate."
+    },
+    {
+      "seq": 146,
+      "day": 1,
+      "hour": 21.68335000000725,
+      "kind": "routine",
+      "text": "Ilan is heading to commons."
+    },
+    {
+      "seq": 147,
+      "day": 1,
+      "hour": 21.68335000000725,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 148,
+      "day": 1,
+      "hour": 21.68335000000725,
+      "kind": "routine",
+      "text": "Oren is heading to garden."
+    },
+    {
+      "seq": 149,
+      "day": 1,
+      "hour": 21.701125000007277,
+      "kind": "hell-campaign",
+      "text": "Speak to Neris at her saved Kiln Refuge arrival. Neris: “Keep the measurements as they are, including the ones I once helped conceal.” Her safe return remains true whether it was walked or explicitly assisted. This account does not pronounce her innocent or ask her to repeat the rescue. Take the full record to Tovan."
+    },
+    {
+      "seq": 150,
+      "day": 1,
+      "hour": 21.717325000007303,
+      "kind": "hell-campaign",
+      "text": "Tovan identifies the Bell Yard service plate and acknowledges his earlier work on its compulsory claim. Compare his account with Neris’s measurements before operating the fixture. Tovan: “Knowing the rivets is useful. Leaving my own name out would make it a worse record.” The original Refuge water job retains its separate state."
+    },
+    {
+      "seq": 151,
+      "day": 1,
+      "hour": 21.910150000007615,
+      "kind": "hell-campaign",
+      "text": "At the existing grounded Bell Yard plate, compare the named crew’s measured route with its imposed departure claim. The contradiction concerns this exterior service fixture; the inner foundry doors remain closed. Two optional preparations are nearby: the west shunt lengthens sweep recovery, and the east brace lengthens writ-line recovery. Neither i"
+    },
+    {
+      "seq": 152,
+      "day": 1,
+      "hour": 21.910375000007615,
+      "kind": "routine",
+      "text": "Ilan is heading to commons."
+    },
+    {
+      "seq": 153,
+      "day": 1,
+      "hour": 21.910375000007615,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 154,
+      "day": 1,
+      "hour": 21.910375000007615,
+      "kind": "routine",
+      "text": "Oren is heading to garden."
+    },
+    {
+      "seq": 155,
+      "day": 1,
+      "hour": 22.00015000000776,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 156,
+      "day": 1,
+      "hour": 22.00015000000776,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 157,
+      "day": 1,
+      "hour": 22.00015000000776,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 158,
+      "day": 1,
+      "hour": 22.088800000007904,
+      "kind": "hell-campaign",
+      "text": "Set the supplied shunt beside the west Bell Yard approach. It adds exactly 0.6 seconds to Veyr’s recovery after a sweep. It changes neither his health nor damage, and it does not extend the writ-line recovery. No ordinary material is consumed. This preparation belongs to the accepted campaign and does not repeat the old rescue cooling or clamps."
+    },
+    {
+      "seq": 159,
+      "day": 1,
+      "hour": 22.138525000007984,
+      "kind": "hell-campaign",
+      "text": "Seat the supplied brace beside the east Bell Yard approach. It adds exactly 0.6 seconds to Veyr’s recovery after a writ-line. It changes neither his health nor damage, and it does not extend sweep recovery. No ordinary material is consumed. The eastern salvage sentinel keeps its own identity and is unrelated to this preparation."
+    },
+    {
+      "seq": 160,
+      "day": 1,
+      "hour": 22.162825000008024,
+      "kind": "hell-campaign",
+      "text": "Veyr: “An escape is a restraint I have not finished.” Explicitly begin the warned encounter on the supported Bell Yard exterior. You may inspect the site, prepare either support or retreat before choosing this action. Read the broad sweep and narrow writ-line as distinct locked shapes. The road south remains open; no combat door closes behind you."
+    },
+    {
+      "seq": 161,
+      "day": 1,
+      "hour": 22.163050000008024,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 162,
+      "day": 1,
+      "hour": 22.163050000008024,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 163,
+      "day": 1,
+      "hour": 22.163050000008024,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 164,
+      "day": 1,
+      "hour": 22.368700000008356,
+      "kind": "hell-campaign",
+      "text": "Veyr’s local Writ authority was resolved through actual combat. His death and the larger infernal country are not declared."
+    },
+    {
+      "seq": 165,
+      "day": 1,
+      "hour": 22.368925000008357,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 166,
+      "day": 1,
+      "hour": 22.368925000008357,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 167,
+      "day": 1,
+      "hour": 22.368925000008357,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 168,
+      "day": 1,
+      "hour": 22.565350000008674,
+      "kind": "hell-campaign",
+      "text": "Fit the supplied stabilizer at the service fixture on the open side of the closed works. This is an exterior adaptation of the Writ Engine story, not entry into the sealed full foundry. The local release can now hold a chosen configuration. Your actual home passage was already free and remains independent of the disposition. No ordinary timber, fib"
+    },
+    {
+      "seq": 169,
+      "day": 1,
+      "hour": 22.565575000008675,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 170,
+      "day": 1,
+      "hour": 22.565575000008675,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 171,
+      "day": 1,
+      "hour": 22.565575000008675,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 172,
+      "day": 1,
+      "hour": 22.762000000008992,
+      "kind": "hell-campaign",
+      "text": "Divert · shelter a limited service release recorded. The exterior engine and Bell Yard plate show the hooded service marker and retained outer writ. Istra, Tovan and Neris recognize the limited arrangement. The campaign records Divert permanently; the stated fee remains unchanged. No hidden route, new corridor or salvage economy is granted by this "
+    },
+    {
+      "seq": 173,
+      "day": 1,
+      "hour": 22.762225000008993,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 174,
+      "day": 1,
+      "hour": 22.762225000008993,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 175,
+      "day": 1,
+      "hour": 22.762225000008993,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 176,
+      "day": 1,
+      "hour": 22.94695000000929,
+      "kind": "hell-campaign",
+      "text": "Return to the Bell Yard plate and verify that its fitting matches the retained disposition: an open release handle for Unbind, a hooded service marker for Divert, or paired named-crew seals for License. This records the actual chosen local configuration; it does not certify the whole claim network. Return to Istra and explicitly claim the separate "
+    },
+    {
+      "seq": 177,
+      "day": 1,
+      "hour": 22.947175000009292,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 178,
+      "day": 1,
+      "hour": 22.947175000009292,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 179,
+      "day": 1,
+      "hour": 22.947175000009292,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 180,
+      "day": 1,
+      "hour": 22.96427500000932,
+      "kind": "hell-campaign",
+      "text": "The Last Unclaimed Road complete · Divert · shelter a limited service release · 45 XP, 20 sunmarks, 4 ore, 3 timber and 2 fibre. Claimed once."
+    },
+    {
+      "seq": 181,
+      "day": 1,
+      "hour": 22.96450000000932,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 182,
+      "day": 1,
+      "hour": 22.96450000000932,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 183,
+      "day": 1,
+      "hour": 22.96450000000932,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 184,
+      "day": 1,
+      "hour": 23.00140000000938,
+      "kind": "realm-trail",
+      "text": "The Broken Choir · a garden answer accepted. Read the route, danger and fixed reward."
+    },
+    {
+      "seq": 185,
+      "day": 1,
+      "hour": 23.06395000000948,
+      "kind": "realm-trail",
+      "text": "Optional preparation. Yselle: “Send the return pressure into the side basin; the bearing will take longer to rise.” Operate the marked service handle east of the Garden. This costs no material and extends the core’s actual recovery opening by 0.8 seconds. You can omit it and still finish; continue north to the three relay handles."
+    },
+    {
+      "seq": 186,
+      "day": 1,
+      "hour": 23.177800000009665,
+      "kind": "realm-trail",
+      "text": "Operate the west handle on the broad grounded apron beyond the Mirror Causeway. Its single notch marks the first isolated support. Set the east and crown relays in either order; all three are required before the service core wakes. The west Arcade service walk remains another way back to the Garden."
+    },
+    {
+      "seq": 187,
+      "day": 1,
+      "hour": 23.2003000000097,
+      "kind": "realm-trail",
+      "text": "Operate the east handle opposite the west relay. Its two notches identify it without pitch or color alone. Set the west and crown relays if either is still unset. The bearing is isolated only when all three supports have been recorded for this accepted repair."
+    },
+    {
+      "seq": 188,
+      "day": 1,
+      "hour": 23.223025000009738,
+      "kind": "realm-trail",
+      "text": "Operate the three-notch handle on the grounded northern apron, south of the closed terrace. Complete any remaining west/east relay. When the third handle is set, the service core at (0, -95) becomes the declared encounter; the summit road stays closed and the route south stays open."
+    },
+    {
+      "seq": 189,
+      "day": 1,
+      "hour": 23.25475000000979,
+      "kind": "realm-trail",
+      "text": "Crownkeeper service core disabled through its actual combat opening."
+    },
+    {
+      "seq": 190,
+      "day": 1,
+      "hour": 23.383000000009996,
+      "kind": "realm-trail",
+      "text": "At the Garden response plate, physically fit the released return arm. Rielle: “Leave the hinge where the next pair of hands can reach it.” The repair stops at this useful local instrument; it opens no summit terrain. Return to Rielle at the nearby west bench and choose the explicit claim for the stated fee."
+    },
+    {
+      "seq": 191,
+      "day": 1,
+      "hour": 23.40460000001003,
+      "kind": "realm-trail",
+      "text": "The Broken Choir · a garden answer complete · +30 XP · +12 sunmarks · +2 ore. The declared fee is claimed once."
+    },
+    {
+      "seq": 192,
+      "day": 1,
+      "hour": 23.500225000010186,
+      "kind": "heaven-campaign",
+      "text": "The Gate That Remained Open accepted. The repaired Garden answer and its prior payment remain separate."
+    },
+    {
+      "seq": 193,
+      "day": 1,
+      "hour": 23.500450000010186,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 194,
+      "day": 1,
+      "hour": 23.500450000010186,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 195,
+      "day": 1,
+      "hour": 23.500450000010186,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 196,
+      "day": 1,
+      "hour": 23.641300000010414,
+      "kind": "heaven-campaign",
+      "text": "Meet the Wayfarer · bell courier beside the existing service walk. A rescue signal promised an open upper passage, but the courier stopped when its directions contradicted the closed road. Keep the whole account. Arrival is not an invasion, and tired hands are not a failure of worth. Compare the public maker’s marks rather than requiring an oath, a"
+    },
+    {
+      "seq": 197,
+      "day": 1,
+      "hour": 23.6955250000105,
+      "kind": "heaven-campaign",
+      "text": "Inspect the existing Ruby Arcade response plate and the courier’s recorded mark. Its truthful repair notch differs from the repeated false passage signal. Calen can explain his authored observations; the visible marks support independent inspection when no guide follows. Record the distinction without changing the old survey or Broken Choir payment"
+    },
+    {
+      "seq": 198,
+      "day": 1,
+      "hour": 23.78012500001064,
+      "kind": "heaven-campaign",
+      "text": "At the existing Mirror Causeway plate, compare the promised rescue direction with the visible closed upper road. The mismatch belongs to a foreign signal apparatus, not to every traveler or to Heaven’s divine source. An approach construct guards that signal; the relay beyond it keeps repeating the incorrect route. Read their distinct warnings befor"
+    },
+    {
+      "seq": 199,
+      "day": 1,
+      "hour": 23.78035000001064,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 200,
+      "day": 1,
+      "hour": 23.78035000001064,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 201,
+      "day": 1,
+      "hour": 23.78035000001064,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 202,
+      "day": 1,
+      "hour": 23.85482500001076,
+      "kind": "heaven-campaign",
+      "text": "Seat the supplied mirror beside Yselle’s lower service approach. It detunes the Glasswing beam charge and adds exactly 0.4 seconds to its warning. Its seated fitting and longer visible tell show the change. It changes neither enemy health nor damage, no recovery interval, and no relay pulse. No ordinary inventory is spent. This new signal preparati"
+    },
+    {
+      "seq": 203,
+      "day": 1,
+      "hour": 23.919175000010863,
+      "kind": "heaven-campaign",
+      "text": "Deliberately begin the Glasswing encounter on the supported Causeway. Its beam locks its direction before firing and stops at actual opaque cover. Unlike the earlier service core and Hell Warden, this construct can be damaged during any live phase. Disable the actual construct with the owned blade or bow. Walking north, opening a map or reading thi"
+    },
+    {
+      "seq": 204,
+      "day": 1,
+      "hour": 23.937400000010893,
+      "kind": "heaven-campaign",
+      "text": "Glasswing approach construct was disabled through actual combat. No angel, civilian or larger network was declared defeated."
+    },
+    {
+      "seq": 205,
+      "day": 1,
+      "hour": 23.937625000010893,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 206,
+      "day": 1,
+      "hour": 23.937625000010893,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 207,
+      "day": 1,
+      "hour": 23.937625000010893,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 208,
+      "day": 2,
+      "hour": 0.0001750000109943528,
+      "kind": "day",
+      "text": "Another day begins in Firstlight Valley."
+    },
+    {
+      "seq": 209,
+      "day": 2,
+      "hour": 0.11830000001099546,
+      "kind": "heaven-campaign",
+      "text": "Borrowed-road relay was disabled through actual combat. No angel, civilian or larger network was declared defeated."
+    },
+    {
+      "seq": 210,
+      "day": 2,
+      "hour": 0.11852500001099546,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 211,
+      "day": 2,
+      "hour": 0.11852500001099546,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 212,
+      "day": 2,
+      "hour": 0.11852500001099546,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 213,
+      "day": 2,
+      "hour": 0.26702500001099533,
+      "kind": "heaven-campaign",
+      "text": "Fit supplied route markers on the existing Arcade service walk after both apparatuses are disabled. The markers identify the actual supported western loop and the Garden return; they create no new floor, doorway or summit route. The courier can now be invited from the waiting place. This finite public work costs no ordinary materials and does not c"
+    },
+    {
+      "seq": 214,
+      "day": 2,
+      "hour": 0.279175000010994,
+      "kind": "heaven-campaign",
+      "text": "At the waiting courier, explicitly invite the real authored traveler to walk. Stay within 9 route units while the courier follows the complete service loop; it waits if you move too far away. Leaving or reloading resets an unfinished walk while retaining the invitation. Return here and deliberately invite again to restart without another fee or mat"
+    },
+    {
+      "seq": 215,
+      "day": 2,
+      "hour": 0.4141750000109791,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 216,
+      "day": 2,
+      "hour": 0.4141750000109791,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 217,
+      "day": 2,
+      "hour": 0.4141750000109791,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 218,
+      "day": 2,
+      "hour": 0.5550250000109772,
+      "kind": "heaven-campaign",
+      "text": "The retained invitation started a fresh physical walk. No materials or fee were granted."
+    },
+    {
+      "seq": 219,
+      "day": 2,
+      "hour": 0.8101750000110121,
+      "kind": "heaven-campaign",
+      "text": "The actual bell courier completed every marked service segment and arrived beside Calen and the traveller. The full account stays intact."
+    },
+    {
+      "seq": 220,
+      "day": 2,
+      "hour": 0.8104000000110121,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 221,
+      "day": 2,
+      "hour": 0.8104000000110121,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 222,
+      "day": 2,
+      "hour": 0.8104000000110121,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 223,
+      "day": 2,
+      "hour": 0.8495500000110174,
+      "kind": "heaven-campaign",
+      "text": "At the already repaired Garden response plate, fit the supplied arrival assembly. Preserve the complete return arm earned in The Broken Choir. This is an additional useful public function, not a replay of the old repair or reward. The supplied parts cost no ordinary gear or materials. Read both permanent instrument arrangements before deliberately "
+    },
+    {
+      "seq": 224,
+      "day": 2,
+      "hour": 0.8497750000110175,
+      "kind": "heaven-campaign",
+      "text": "Broadened activation · make the broad plate ordinary recorded. The Garden fitting shows a broad plate beside retained ceremonial notches. A deliberate activation briefly moves the broad plate; at rest the fitting stays quiet. Its small inscription records the open activation. Rielle, Calen and the courier recognize this permanent broadened-activati"
+    },
+    {
+      "seq": 225,
+      "day": 2,
+      "hour": 0.8558500000110183,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 226,
+      "day": 2,
+      "hour": 0.8558500000110183,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 227,
+      "day": 2,
+      "hour": 0.8558500000110183,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 228,
+      "day": 2,
+      "hour": 0.8695750000110202,
+      "kind": "heaven-campaign",
+      "text": "Return to Calen’s existing Garden anchor. Verify the corrected service signs, actual courier arrival and selected public instrument fitting. Calen names what he observed without pretending knowledge of the whole counterfeit network. Rielle can now pay the separate fixed fee at her existing west bench. Completed verification can remain safely unpaid"
+    },
+    {
+      "seq": 229,
+      "day": 2,
+      "hour": 0.8698000000110202,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 230,
+      "day": 2,
+      "hour": 0.8698000000110202,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 231,
+      "day": 2,
+      "hour": 0.8698000000110202,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 232,
+      "day": 2,
+      "hour": 0.9064750000110252,
+      "kind": "heaven-campaign",
+      "text": "The Gate That Remained Open complete · Broadened activation · make the broad plate ordinary · 40 XP, 16 sunmarks, 3 ore, 4 timber and 3 fibre. Claimed once."
+    },
+    {
+      "seq": 233,
+      "day": 2,
+      "hour": 0.9067000000110252,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 234,
+      "day": 2,
+      "hour": 0.9067000000110252,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 235,
+      "day": 2,
+      "hour": 0.9067000000110252,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 236,
+      "day": 2,
+      "hour": 0.9652000000110332,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 237,
+      "day": 2,
+      "hour": 0.9652000000110332,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 238,
+      "day": 2,
+      "hour": 0.9652000000110332,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 239,
+      "day": 2,
+      "hour": 1.0345000000110256,
+      "kind": "realm-trail",
+      "text": "A Chart With Room for Depth accepted. Read the route, danger and fixed reward."
+    },
+    {
+      "seq": 240,
+      "day": 2,
+      "hour": 1.0590250000110168,
+      "kind": "realm-trail",
+      "text": "The bronze gauge labels a shallower visitor depth. Read it from the water at this level; the public deck overhead is a separate road. Sahra’s instrument records this first depth without taking any material."
+    },
+    {
+      "seq": 241,
+      "day": 2,
+      "hour": 1.0693750000110132,
+      "kind": "realm-trail",
+      "text": "Descend to the older worked-stone mark. Its lower depth differs from the visitor gauge. The old address is still useful history: copy the mark, leave the masonry intact, and carry both readings to Bellglass."
+    },
+    {
+      "seq": 242,
+      "day": 2,
+      "hour": 1.0815076923187013,
+      "kind": "realm-trail",
+      "text": "The two readings cannot share one flat route line. At the dry court desk, choose a chart that names both depth layers, marks their connection and shows the court’s doorway. You can correct a mistaken choice without spending supplies."
+    },
+    {
+      "seq": 243,
+      "day": 2,
+      "hour": 1.1155865384725354,
+      "kind": "realm-trail",
+      "text": "Leave through Bellglass’s open doorway, follow the wet east lane, and place the new marker beside the far landing. It names today’s visitor route; the old lower-road mark remains. Return to Sahra on the dry civic road to claim the declared payment."
+    },
+    {
+      "seq": 244,
+      "day": 2,
+      "hour": 1.1722865384725152,
+      "kind": "realm-trail",
+      "text": "A Chart With Room for Depth complete · +30 XP · +12 sunmarks · +2 ore. The declared fee is claimed once."
+    },
+    {
+      "seq": 245,
+      "day": 2,
+      "hour": 1.3003115384724695,
+      "kind": "atlantis-campaign",
+      "text": "The Harbour Beneath the Harbour accepted. The earlier chart, lamp, equipment and free home passage retain their own history."
+    },
+    {
+      "seq": 246,
+      "day": 2,
+      "hour": 1.3005365384724694,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 247,
+      "day": 2,
+      "hour": 1.3005365384724694,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 248,
+      "day": 2,
+      "hour": 1.3005365384724694,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 249,
+      "day": 2,
+      "hour": 1.3806365384724408,
+      "kind": "atlantis-campaign",
+      "text": "Ilyra distinguishes Damar’s earlier shipping receipt from Lock Prefect Vaelor’s later destination instruction: the earlier-issued seal gives the redirected destination authority. His record says received, but his chosen arrival never happened. Preserve both records and his account. This is a concrete routing convention, not proof that every institu"
+    },
+    {
+      "seq": 250,
+      "day": 2,
+      "hour": 1.393911538472436,
+      "kind": "atlantis-campaign",
+      "text": "Lower · follow the quiet old-road band retained. Retain the Lower approach and read the lower masonry mark from its actual water depth. This band stays below the accepted shallow current. The public envelope covers it without a timer or a new class. An upper reading remains optional evidence with no second fee."
+    },
+    {
+      "seq": 251,
+      "day": 2,
+      "hour": 1.394136538472436,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 252,
+      "day": 2,
+      "hour": 1.394136538472436,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 253,
+      "day": 2,
+      "hour": 1.394136538472436,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 254,
+      "day": 2,
+      "hour": 1.4914836538570169,
+      "kind": "atlantis-campaign",
+      "text": "Read the older masonry at this real lower depth, below the marked shallow current. Its depth convention identifies the same redirected outlet. This is required only when Lower was retained; for Upper it is optional supporting evidence. Keep the old mark and earlier chart intact."
+    },
+    {
+      "seq": 255,
+      "day": 2,
+      "hour": 1.5035594304842317,
+      "kind": "atlantis-campaign",
+      "text": "At Bellglass’s dry visitor desk, use the retained approach’s actual reading to identify the depth setting copied into the wrong destination record. The other reading is welcome but unnecessary. The correct repair isolates the redirected inlet, matches the depth bands, then selects the carrier’s chosen outlet. No occult initiation or unseen timer is"
+    },
+    {
+      "seq": 256,
+      "day": 2,
+      "hour": 1.5214382766380716,
+      "kind": "atlantis-campaign",
+      "text": "Operate the supplied manual bypass from the wet east lane. It stops only this accepted repair’s shallow current; the public air court and downstream visitor supply remain maintained. The three required inlet, equalizer and outlet stages still need their own correct operations. There is no hidden timing penalty, material loss, enemy-stat change or e"
+    },
+    {
+      "seq": 257,
+      "day": 2,
+      "hour": 1.540442122791911,
+      "kind": "atlantis-campaign",
+      "text": "Set isolate-redirect at the shallow inlet. Isolate the counterfeit destination branch while retaining public visitor supply. This is the first required pressure stage; an outlet action cannot substitute. The safe manual bypass remains available. Incorrect or premature settings spend no materials and leave accepted work intact."
+    },
+    {
+      "seq": 258,
+      "day": 2,
+      "hour": 1.56289019971498,
+      "kind": "atlantis-campaign",
+      "text": "Set match-depth-bands at Bellglass’s dry control desk after inlet isolation. The chosen reading and maintained depth chart establish the bands. Keep the public air volume supplied. This is the second required pressure stage, with no timing penalty or forced simultaneous switches."
+    },
+    {
+      "seq": 259,
+      "day": 2,
+      "hour": 1.597020968945737,
+      "kind": "atlantis-campaign",
+      "text": "Set chosen-destination at the wet east outlet after equalization. The corrected local outlet stops the accepted shallow current and permits a safe supervised handoff. Neither this setting nor the earlier optional marker pays a reward. Leave through the existing gallery landing for the dry waiting bay."
+    },
+    {
+      "seq": 260,
+      "day": 2,
+      "hour": 1.6091709689457327,
+      "kind": "atlantis-campaign",
+      "text": "Damar waits at this supported dry service bay with his load accounted for. Record his actual account and the isolated local hold. His boat and skill were never the fault. He can remain safely here through pause, reload or retreat; no traveling escort or real-time deadline is required. The unbuilt full lower hold is not opened by this adaptation."
+    },
+    {
+      "seq": 261,
+      "day": 2,
+      "hour": 1.6201959689457288,
+      "kind": "atlantis-campaign",
+      "text": "Deliberately begin work on the quay-mounted Breakwater Custodian. It is a municipal service construct running a counterfeit schedule. It remains anchored at its service foundation on the supported dry quay; it does not chase a retreating traveller. Read the locked vane sector and intake lane; move, Brace or use actual cover. The machine carries no "
+    },
+    {
+      "seq": 262,
+      "day": 2,
+      "hour": 1.6381959689457224,
+      "kind": "atlantis-campaign",
+      "text": "The actual Custodian bearing was exhausted through combat. The municipal unit settled; no independent loot or XP was granted. Both sequential releases remain."
+    },
+    {
+      "seq": 263,
+      "day": 2,
+      "hour": 1.6384209689457223,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 264,
+      "day": 2,
+      "hour": 1.6384209689457223,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 265,
+      "day": 2,
+      "hour": 1.6384209689457223,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 266,
+      "day": 2,
+      "hour": 1.7565459689456802,
+      "kind": "atlantis-campaign",
+      "text": "Stabilize the west release after the actual bearing exhaustion. This is the first of two sequential dry service operations. The settled machine and secured bay remain safe; no second player, timed appointment or simultaneous switch is required."
+    },
+    {
+      "seq": 267,
+      "day": 2,
+      "hour": 1.7749959689456736,
+      "kind": "atlantis-campaign",
+      "text": "Stabilize the east release after the west release is recorded. The two release facts belong to this campaign, independently of combat exhaustion. Retried, remote or refused-save operations cannot manufacture stabilization or another payment."
+    },
+    {
+      "seq": 268,
+      "day": 2,
+      "hour": 1.78489596894567,
+      "kind": "atlantis-campaign",
+      "text": "Verify both sequential releases and the settled tools. The municipal Custodian remains part of this local service bay. Damar’s safety and your independent home passage already exist before a disposition. This is a bounded restoration; the full drydock, city circulation and distant lockworks remain unavailable."
+    },
+    {
+      "seq": 269,
+      "day": 2,
+      "hour": 1.78512096894567,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 270,
+      "day": 2,
+      "hour": 1.78512096894567,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 271,
+      "day": 2,
+      "hour": 1.78512096894567,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 272,
+      "day": 2,
+      "hour": 1.8652209689456414,
+      "kind": "atlantis-campaign",
+      "text": "Limited · keep an independent manual passage recorded. The registry and landing show the hooded custody record and independent manual-passage indicator. Sahra, Ilyra and Damar recognize the permanent local custody arrangement. The stated fee remains unchanged. No hidden corridor, deep access or future business privilege is granted."
+    },
+    {
+      "seq": 273,
+      "day": 2,
+      "hour": 1.8654459689456413,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 274,
+      "day": 2,
+      "hour": 1.8654459689456413,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 275,
+      "day": 2,
+      "hour": 1.8654459689456413,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 276,
+      "day": 2,
+      "hour": 1.9932459689455957,
+      "kind": "atlantis-campaign",
+      "text": "At the supported dry landing, verify the local controls and receipt fixture against the saved disposition. Record the supervised lens-consignment release to Sahra and feed-frame release into named nursery custody here. This is an authored local handoff, not a simulated voyage to a nursery or evidence that Pelan witnessed a delivery. Return to Sahra"
+    },
+    {
+      "seq": 277,
+      "day": 2,
+      "hour": 1.9934709689455956,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 278,
+      "day": 2,
+      "hour": 1.9934709689455956,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 279,
+      "day": 2,
+      "hour": 1.9934709689455956,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    },
+    {
+      "seq": 280,
+      "day": 2,
+      "hour": 2.062545968945571,
+      "kind": "atlantis-campaign",
+      "text": "The Harbour Beneath the Harbour complete · Limited · keep an independent manual passage · 48 XP, 18 sunmarks, 4 ore, 4 timber, 3 fibre and 1 crystal. Claimed once."
+    },
+    {
+      "seq": 281,
+      "day": 2,
+      "hour": 2.062770968945571,
+      "kind": "routine",
+      "text": "Ilan is heading to family house."
+    },
+    {
+      "seq": 282,
+      "day": 2,
+      "hour": 2.062770968945571,
+      "kind": "routine",
+      "text": "Mara is heading to family house."
+    },
+    {
+      "seq": 283,
+      "day": 2,
+      "hour": 2.062770968945571,
+      "kind": "routine",
+      "text": "Oren is heading to family house."
+    }
+  ],
+  "nextEvent": 284,
+  "residents": [
+    {
+      "id": "ilan",
+      "x": -11,
+      "z": -1.6,
+      "yaw": -1.9668777683592122,
+      "progress": 0.40035283875717725,
+      "conversations": 0
+    },
+    {
+      "id": "mara",
+      "x": -11,
+      "z": -1.6,
+      "yaw": -1.9693187724613137,
+      "progress": 0.3963118387571857,
+      "conversations": 0
+    },
+    {
+      "id": "oren",
+      "x": -11,
+      "z": -1.6,
+      "yaw": -2.811645561443235,
+      "progress": 0.3981298387571819,
+      "conversations": 0
+    }
+  ],
+  "settings": {
+    "quality": "balanced",
+    "cameraMode": "adventure",
+    "cameraFov": 60,
+    "cameraViews": {
+      "version": 1,
+      "lastDiorama": "follow",
+      "profiles": {}
+    },
+    "cameraCutaway": true,
+    "reducedMotion": false,
+    "labels": true,
+    "timeFlow": true,
+    "sound": false
+  }
+}

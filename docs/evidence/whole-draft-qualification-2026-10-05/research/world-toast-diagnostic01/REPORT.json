@@ -1,0 +1,483 @@
+{
+  "method": "Actual new-region UI and production rules in isolated software Chromium.\nAccelerated walking/depth probes are labelled; they do not measure human feel or GPU speed.\n",
+  "checks": [
+    {
+      "name": "exact offline build loads",
+      "passed": true
+    },
+    {
+      "name": "production walk reaches 11,9",
+      "passed": true
+    },
+    {
+      "name": "initial kit is command-earned before any chapter",
+      "passed": true
+    },
+    {
+      "name": "production walk reaches 18,6",
+      "passed": true
+    },
+    {
+      "name": "atlantis terms show objectives, kit requirement, exact rewards and free return",
+      "passed": true
+    },
+    {
+      "name": "atlantis has explicit crossing confirmation",
+      "passed": true
+    },
+    {
+      "name": "atlantis normal crossing preserves ownership while its clock runs",
+      "passed": true
+    },
+    {
+      "name": "atlantis physically supported scene opens",
+      "passed": true
+    },
+    {
+      "name": "production walk reaches 8,-16",
+      "passed": true
+    },
+    {
+      "name": "gallery normal frame loop is unpaused",
+      "passed": true
+    },
+    {
+      "name": "G actually descends through production held-key frames",
+      "passed": true
+    },
+    {
+      "name": "released G holds physical depth",
+      "passed": true
+    },
+    {
+      "name": "F actually ascends through production held-key frames",
+      "passed": true
+    },
+    {
+      "name": "W actually swims using camera-relative input",
+      "passed": true
+    },
+    {
+      "name": "gallery journal pauses simulation",
+      "passed": true
+    },
+    {
+      "name": "modal consumes depth and camera shortcuts",
+      "passed": true
+    },
+    {
+      "name": "camera exchange preserves physical swimmer depth",
+      "passed": true
+    },
+    {
+      "name": "compact gallery rejection displays a real transient toast",
+      "passed": true
+    },
+    {
+      "name": "compact depth information stays inside the viewport",
+      "passed": true
+    },
+    {
+      "name": "compact depth information and transient toast occupy separate space",
+      "passed": true
+    },
+    {
+      "name": "Escape freely returns swimmer home",
+      "passed": true
+    },
+    {
+      "name": "normal frame controls have no runtime errors",
+      "passed": true
+    }
+  ],
+  "browser_errors": [],
+  "html_sha256": "ccfc2782a33d21e3a75cd93201d5d9b5d89eef41e6397036c13c2f06bda91f9b",
+  "errors": [],
+  "normal_keyboard_phase": "Isolated software browser, real frame/input loop; accelerated walking setup. No GPU or human pace claim.",
+  "diagnostic_only": true,
+  "toast_samples": [
+    {
+      "now": 9615.5,
+      "text": "Route-limited breath envelope \u00b7 F ascend / G descend \u00b7 depth holds when released. Your companion waits on the quay.",
+      "classes": "",
+      "parent": "hud",
+      "opacity": 0,
+      "display": "block",
+      "visibility": "visible",
+      "active": "<canvas tabindex=\"0\" id=\"world\" aria-label=\"Interactive isometric Firstlight Valley. Click to walk, drag to orbit, scroll to zoom. Use the Explore menu for accessible destinations.\" width=\"332\" height",
+      "dialogs": [],
+      "paused": false,
+      "player": {
+        "x": 8,
+        "z": -20.280000000000005,
+        "yaw": 3.141592653589793
+      },
+      "dive": {
+        "y": -0.8031599999999985,
+        "depth": 0.8131599999999986,
+        "hold": true,
+        "body": "air",
+        "camera": "air",
+        "dryCourt": null
+      },
+      "animations": [],
+      "label": "0 before-E"
+    },
+    {
+      "now": 9714.100000023842,
+      "text": "Reach the gallery landing to return to the dry quay.",
+      "classes": "show",
+      "parent": "hud",
+      "opacity": 0,
+      "display": "block",
+      "visibility": "visible",
+      "active": "<canvas tabindex=\"0\" id=\"world\" aria-label=\"Interactive isometric Firstlight Valley. Click to walk, drag to orbit, scroll to zoom. Use the Explore menu for accessible destinations.\" width=\"332\" height",
+      "dialogs": [],
+      "paused": false,
+      "player": {
+        "x": 8,
+        "z": -20.280000000000005,
+        "yaw": 3.141592653589793
+      },
+      "dive": {
+        "y": -0.8031599999999985,
+        "depth": 0.8131599999999986,
+        "hold": true,
+        "body": "air",
+        "camera": "air",
+        "dryCourt": null
+      },
+      "animations": [
+        {
+          "time": 0,
+          "state": "running",
+          "duration": 200
+        },
+        {
+          "time": 0,
+          "state": "running",
+          "duration": 200
+        }
+      ],
+      "label": "0 immediate"
+    },
+    {
+      "now": 9992.600000023842,
+      "text": "Reach the gallery landing to return to the dry quay.",
+      "classes": "show",
+      "parent": "hud",
+      "opacity": 1,
+      "display": "block",
+      "visibility": "visible",
+      "active": "<canvas tabindex=\"0\" id=\"world\" aria-label=\"Interactive isometric Firstlight Valley. Click to walk, drag to orbit, scroll to zoom. Use the Explore menu for accessible destinations.\" width=\"332\" height",
+      "dialogs": [],
+      "paused": false,
+      "player": {
+        "x": 8,
+        "z": -20.280000000000005,
+        "yaw": 3.141592653589793
+      },
+      "dive": {
+        "y": -0.8031599999999985,
+        "depth": 0.8131599999999986,
+        "hold": true,
+        "body": "air",
+        "camera": "air",
+        "dryCourt": null
+      },
+      "animations": [],
+      "label": "0 at200ms",
+      "original200msCondition": true
+    },
+    {
+      "now": 10036.900000035763,
+      "text": "Reach the gallery landing to return to the dry quay.",
+      "classes": "show",
+      "parent": "hud",
+      "opacity": 1,
+      "display": "block",
+      "visibility": "visible",
+      "active": "<canvas tabindex=\"0\" id=\"world\" aria-label=\"Interactive isometric Firstlight Valley. Click to walk, drag to orbit, scroll to zoom. Use the Explore menu for accessible destinations.\" width=\"332\" height",
+      "dialogs": [],
+      "paused": false,
+      "player": {
+        "x": 8,
+        "z": -20.280000000000005,
+        "yaw": 3.141592653589793
+      },
+      "dive": {
+        "y": -0.8031599999999985,
+        "depth": 0.8131599999999986,
+        "hold": true,
+        "body": "air",
+        "camera": "air",
+        "dryCourt": null
+      },
+      "animations": [],
+      "label": "0 condition-visible"
+    },
+    {
+      "now": 13921.199999988079,
+      "text": "Reach the gallery landing to return to the dry quay.",
+      "classes": "",
+      "parent": "hud",
+      "opacity": 0,
+      "display": "block",
+      "visibility": "visible",
+      "active": "<canvas tabindex=\"0\" id=\"world\" aria-label=\"Interactive isometric Firstlight Valley. Click to walk, drag to orbit, scroll to zoom. Use the Explore menu for accessible destinations.\" width=\"332\" height",
+      "dialogs": [],
+      "paused": false,
+      "player": {
+        "x": 8,
+        "z": -20.280000000000005,
+        "yaw": 3.141592653589793
+      },
+      "dive": {
+        "y": -0.8031599999999985,
+        "depth": 0.8131599999999986,
+        "hold": true,
+        "body": "air",
+        "camera": "air",
+        "dryCourt": null
+      },
+      "animations": [],
+      "label": "1 before-E"
+    },
+    {
+      "now": 14011.600000023842,
+      "text": "Reach the gallery landing to return to the dry quay.",
+      "classes": "show",
+      "parent": "hud",
+      "opacity": 0,
+      "display": "block",
+      "visibility": "visible",
+      "active": "<canvas tabindex=\"0\" id=\"world\" aria-label=\"Interactive isometric Firstlight Valley. Click to walk, drag to orbit, scroll to zoom. Use the Explore menu for accessible destinations.\" width=\"332\" height",
+      "dialogs": [],
+      "paused": false,
+      "player": {
+        "x": 8,
+        "z": -20.280000000000005,
+        "yaw": 3.141592653589793
+      },
+      "dive": {
+        "y": -0.8031599999999985,
+        "depth": 0.8131599999999986,
+        "hold": true,
+        "body": "air",
+        "camera": "air",
+        "dryCourt": null
+      },
+      "animations": [
+        {
+          "time": 0,
+          "state": "running",
+          "duration": 200
+        },
+        {
+          "time": 0,
+          "state": "running",
+          "duration": 200
+        }
+      ],
+      "label": "1 immediate"
+    },
+    {
+      "now": 14293,
+      "text": "Reach the gallery landing to return to the dry quay.",
+      "classes": "show",
+      "parent": "hud",
+      "opacity": 0.960556,
+      "display": "block",
+      "visibility": "visible",
+      "active": "<canvas tabindex=\"0\" id=\"world\" aria-label=\"Interactive isometric Firstlight Valley. Click to walk, drag to orbit, scroll to zoom. Use the Explore menu for accessible destinations.\" width=\"332\" height",
+      "dialogs": [],
+      "paused": false,
+      "player": {
+        "x": 8,
+        "z": -20.280000000000005,
+        "yaw": 3.141592653589793
+      },
+      "dive": {
+        "y": -0.8031599999999985,
+        "depth": 0.8131599999999986,
+        "hold": true,
+        "body": "air",
+        "camera": "air",
+        "dryCourt": null
+      },
+      "animations": [
+        {
+          "time": 150.0560000061988,
+          "state": "running",
+          "duration": 200
+        },
+        {
+          "time": 150.0560000061988,
+          "state": "running",
+          "duration": 200
+        }
+      ],
+      "label": "1 at200ms",
+      "original200msCondition": true
+    },
+    {
+      "now": 14346.800000011921,
+      "text": "Reach the gallery landing to return to the dry quay.",
+      "classes": "show",
+      "parent": "hud",
+      "opacity": 1,
+      "display": "block",
+      "visibility": "visible",
+      "active": "<canvas tabindex=\"0\" id=\"world\" aria-label=\"Interactive isometric Firstlight Valley. Click to walk, drag to orbit, scroll to zoom. Use the Explore menu for accessible destinations.\" width=\"332\" height",
+      "dialogs": [],
+      "paused": false,
+      "player": {
+        "x": 8,
+        "z": -20.280000000000005,
+        "yaw": 3.141592653589793
+      },
+      "dive": {
+        "y": -0.8031599999999985,
+        "depth": 0.8131599999999986,
+        "hold": true,
+        "body": "air",
+        "camera": "air",
+        "dryCourt": null
+      },
+      "animations": [],
+      "label": "1 condition-visible"
+    },
+    {
+      "now": 18224.100000023842,
+      "text": "Reach the gallery landing to return to the dry quay.",
+      "classes": "",
+      "parent": "hud",
+      "opacity": 0,
+      "display": "block",
+      "visibility": "visible",
+      "active": "<canvas tabindex=\"0\" id=\"world\" aria-label=\"Interactive isometric Firstlight Valley. Click to walk, drag to orbit, scroll to zoom. Use the Explore menu for accessible destinations.\" width=\"332\" height",
+      "dialogs": [],
+      "paused": false,
+      "player": {
+        "x": 8,
+        "z": -20.280000000000005,
+        "yaw": 3.141592653589793
+      },
+      "dive": {
+        "y": -0.8031599999999985,
+        "depth": 0.8131599999999986,
+        "hold": true,
+        "body": "air",
+        "camera": "air",
+        "dryCourt": null
+      },
+      "animations": [],
+      "label": "2 before-E"
+    },
+    {
+      "now": 18297,
+      "text": "Reach the gallery landing to return to the dry quay.",
+      "classes": "show",
+      "parent": "hud",
+      "opacity": 0,
+      "display": "block",
+      "visibility": "visible",
+      "active": "<canvas tabindex=\"0\" id=\"world\" aria-label=\"Interactive isometric Firstlight Valley. Click to walk, drag to orbit, scroll to zoom. Use the Explore menu for accessible destinations.\" width=\"332\" height",
+      "dialogs": [],
+      "paused": false,
+      "player": {
+        "x": 8,
+        "z": -20.280000000000005,
+        "yaw": 3.141592653589793
+      },
+      "dive": {
+        "y": -0.8031599999999985,
+        "depth": 0.8131599999999986,
+        "hold": true,
+        "body": "air",
+        "camera": "air",
+        "dryCourt": null
+      },
+      "animations": [
+        {
+          "time": 0,
+          "state": "running",
+          "duration": 200
+        },
+        {
+          "time": 0,
+          "state": "running",
+          "duration": 200
+        }
+      ],
+      "label": "2 immediate"
+    },
+    {
+      "now": 18579.30000001192,
+      "text": "Reach the gallery landing to return to the dry quay.",
+      "classes": "show",
+      "parent": "hud",
+      "opacity": 0.996109,
+      "display": "block",
+      "visibility": "visible",
+      "active": "<canvas tabindex=\"0\" id=\"world\" aria-label=\"Interactive isometric Firstlight Valley. Click to walk, drag to orbit, scroll to zoom. Use the Explore menu for accessible destinations.\" width=\"332\" height",
+      "dialogs": [],
+      "paused": false,
+      "player": {
+        "x": 8,
+        "z": -20.280000000000005,
+        "yaw": 3.141592653589793
+      },
+      "dive": {
+        "y": -0.8031599999999985,
+        "depth": 0.8131599999999986,
+        "hold": true,
+        "body": "air",
+        "camera": "air",
+        "dryCourt": null
+      },
+      "animations": [
+        {
+          "time": 183.36000000964958,
+          "state": "running",
+          "duration": 200
+        },
+        {
+          "time": 183.36000000964958,
+          "state": "running",
+          "duration": 200
+        }
+      ],
+      "label": "2 at200ms",
+      "original200msCondition": true
+    },
+    {
+      "now": 18631.400000035763,
+      "text": "Reach the gallery landing to return to the dry quay.",
+      "classes": "show",
+      "parent": "hud",
+      "opacity": 1,
+      "display": "block",
+      "visibility": "visible",
+      "active": "<canvas tabindex=\"0\" id=\"world\" aria-label=\"Interactive isometric Firstlight Valley. Click to walk, drag to orbit, scroll to zoom. Use the Explore menu for accessible destinations.\" width=\"332\" height",
+      "dialogs": [],
+      "paused": false,
+      "player": {
+        "x": 8,
+        "z": -20.280000000000005,
+        "yaw": 3.141592653589793
+      },
+      "dive": {
+        "y": -0.8031599999999985,
+        "depth": 0.8131599999999986,
+        "hold": true,
+        "body": "air",
+        "camera": "air",
+        "dryCourt": null
+      },
+      "animations": [],
+      "label": "2 condition-visible"
+    }
+  ],
+  "status": "passed"
+}

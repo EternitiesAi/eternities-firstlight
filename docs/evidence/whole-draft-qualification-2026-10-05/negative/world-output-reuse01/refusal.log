@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\world_foundations_browser.py", line 13, in <module>
+    OUT.mkdir(parents=True,exist_ok=not bool(output_override))
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\world-toast-repair01'

@@ -1,0 +1,182 @@
+{
+  "schema": "firstlight-private-unittest-fixture-skip-counter-repair-v1",
+  "status": "private-preparation-repaired-CPU-passed-not-gameplay-qualification",
+  "sourceGameplayHeadParentReported": "b5fee766e6f77a2d901bb953af8faac13175fee4",
+  "sourceGameplayWrites": false,
+  "stationWrites": false,
+  "privateModifiedOnly": [
+    "D:\\07-GAMES\\Firstlight\\authoring\\staging-whole-draft-qualification-parser-20261005\\qualification_parser.py",
+    "D:\\07-GAMES\\Firstlight\\authoring\\staging-whole-draft-evidence-publisher-20261005\\publish_whole_draft_evidence.py",
+    "D:\\07-GAMES\\Firstlight\\authoring\\staging-whole-draft-qualification-parser-20261005\\test_qualification_parser.py",
+    "D:\\07-GAMES\\Firstlight\\authoring\\staging-whole-draft-evidence-publisher-20261005\\test_evidence_publisher.py",
+    "D:\\07-GAMES\\Firstlight\\authoring\\staging-whole-draft-evidence-selection-20261005\\BILLING_AND_HUD_OPTIONS.json"
+  ],
+  "observedClosedGenericSourceLog": {
+    "path": "D:/07-GAMES/Firstlight/artifacts/whole-draft-onboarding-20261005/remote-full05/python.log",
+    "bytes": 40515,
+    "sha256": "fab7491a0c300fb39329ac25546c4791c556e8ee73b6c776dc6c744fdfa3eaf4",
+    "footerRan": 243,
+    "footerSkip": 8,
+    "verboseMethodOK": 237,
+    "methodSkip": 6,
+    "fixtureSkip": 2,
+    "skipDetailsRetained": 8,
+    "limits": "This closed source child is not the pending complete full05 gate."
+  },
+  "helperPostimages": {
+    "parser": {
+      "bytes": 29415,
+      "sha256": "88762bbd4586284a636475f0e112d03b8ebe441f97e67fa91c019be2a7177738"
+    },
+    "publisher": {
+      "bytes": 50542,
+      "sha256": "0d0a3bc09dc1f42615773b4b06de5c2d4610424d088896a361b4721f0ddda0a6"
+    }
+  },
+  "testPostimages": {
+    "parser": {
+      "bytes": 20930,
+      "sha256": "152f9b134c2d1ecc9c2adf2c92df1a5fca3da8cd8e4d2469bf256ac5bfabf334"
+    },
+    "publisher": {
+      "bytes": 32775,
+      "sha256": "79791e2f62f3b95fd57f3f722b43d81968a03402c9e34d2c208bfe6e3c634177"
+    }
+  },
+  "descriptorDelta": {
+    "path": "D:\\07-GAMES\\Firstlight\\authoring\\staging-whole-draft-evidence-selection-20261005\\BILLING_AND_HUD_OPTIONS.json",
+    "preimage": {
+      "bytes": 6046,
+      "sha256": "8764f4d2f7877854ec02d97ef62da33eac02971ef4adddc2d129745b8a156659"
+    },
+    "postimage": {
+      "bytes": 6046,
+      "sha256": "ef5af08a3cd609114a24df4f1fb2e6aab87efa311eb80f6a3ed05399b84d819f"
+    },
+    "old": "3cadcafc1801c5bf36a81dce27a7076092b84c14780d1882fec7ab27b6a1d7bf",
+    "new": "0d0a3bc09dc1f42615773b4b06de5c2d4610424d088896a361b4721f0ddda0a6",
+    "changes": "publisherContract.sourceSha256 only; historical source heads/rows/labels unchanged"
+  },
+  "countsSemantics": "Existing fixture-free dictionaries and all former acceptance guards unchanged; fixture skip entries require complete verbose method outcomes, retain total skip, and separately identify methodSkip/fixtureSkip.",
+  "tests": {
+    "artifacts": {
+      "CLASS_SKIP_COUNTER_RED01.log": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\CLASS_SKIP_COUNTER_RED01.log",
+        "bytes": 11545,
+        "sha256": "a0b55ceee0ef855e582dd72503a6beec0a26444ce0f9a08384dd479628dadb13",
+        "testsRun": 6,
+        "durationSeconds": 0.006,
+        "actualChildExitCode": 1,
+        "footer": "FAILED (failures=7, errors=1)"
+      },
+      "CLASS_SKIP_COUNTER_RED02.log": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\CLASS_SKIP_COUNTER_RED02.log",
+        "bytes": 11312,
+        "sha256": "5c7398abe1c6d8387941eccbd97d197861ef7d979d8a4c09aeaa4ae0068e1f0f",
+        "testsRun": 6,
+        "durationSeconds": 0.006,
+        "actualChildExitCode": 1,
+        "footer": "FAILED (failures=8)"
+      },
+      "CLASS_SKIP_COUNTER_GREEN01.log": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\CLASS_SKIP_COUNTER_GREEN01.log",
+        "bytes": 989,
+        "sha256": "9e16a305bba4e079b0ef5bc334a97904f740775fe15cba7efbe3d48c22700bf2",
+        "testsRun": 6,
+        "durationSeconds": 0.003,
+        "actualChildExitCode": 0,
+        "footer": "OK"
+      },
+      "CLASS_SKIP_COUNTER_PARSER_OLD_PIN01.log": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\CLASS_SKIP_COUNTER_PARSER_OLD_PIN01.log",
+        "bytes": 1222,
+        "sha256": "61881bb13966fd040773de0dbf4e7d7354f52783de34caf94459b263bf4ef638",
+        "testsRun": 44,
+        "durationSeconds": 57.64,
+        "actualChildExitCode": 1,
+        "footer": "FAILED (failures=1)"
+      },
+      "CLASS_SKIP_COUNTER_PUBLISHER_OLD_PIN01.log": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\CLASS_SKIP_COUNTER_PUBLISHER_OLD_PIN01.log",
+        "bytes": 5521,
+        "sha256": "7fa552c11063c2ae7bb31f1089123c34b87c97a464e2fc4daeac23b51945deb2",
+        "testsRun": 46,
+        "durationSeconds": 28.709,
+        "actualChildExitCode": 1,
+        "footer": "FAILED (failures=1)"
+      },
+      "CLASS_SKIP_COUNTER_PARSER_GREEN01.log": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\CLASS_SKIP_COUNTER_PARSER_GREEN01.log",
+        "bytes": 150,
+        "sha256": "9429e275b4ca527b9789462af42d84197fe5610411c7c6f334ef371b5b259a76",
+        "testsRun": 44,
+        "durationSeconds": 200.651,
+        "actualChildExitCode": 0,
+        "footer": "OK"
+      },
+      "CLASS_SKIP_COUNTER_PUBLISHER_GREEN01.log": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\CLASS_SKIP_COUNTER_PUBLISHER_GREEN01.log",
+        "bytes": 4543,
+        "sha256": "6a6e4930a20f4795fa459a4b92aa9d0ff7b8e62e112732bf8461a394d69dc7d0",
+        "testsRun": 46,
+        "durationSeconds": 37.064,
+        "actualChildExitCode": 0,
+        "footer": "OK"
+      },
+      "CLASS_SKIP_COUNTER_REPAIR01_MANIFEST.json": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\CLASS_SKIP_COUNTER_REPAIR01_MANIFEST.json",
+        "bytes": 5650,
+        "sha256": "f3c25369f939afa84e96e8797ecc23f6ffa4b86aefd58eece2edb9f0170d0f12"
+      },
+      "CLASS_SKIP_COUNTER_PROVENANCE01_INVERSE.json": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\CLASS_SKIP_COUNTER_PROVENANCE01_INVERSE.json",
+        "bytes": 7032,
+        "sha256": "543c29dce37e95454f18361cfd0781fe2c1b19d21f8ea2c5f1b7db3600bfaca1"
+      },
+      "test_qualification_class_skips01.py": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\test_qualification_class_skips01.py",
+        "bytes": 4412,
+        "sha256": "617348317f16be3054a9989ee0c0cec8d44b3901c736e2c4e7fc61fc86c62172"
+      }
+    },
+    "stageBudgets": {
+      "staging-whole-draft-qualification-parser-20261005": {
+        "files": 18,
+        "bytes": 74180,
+        "capBytes": 80000,
+        "temporaryDirectoriesRemaining": []
+      },
+      "staging-whole-draft-evidence-publisher-20261005": {
+        "files": 19,
+        "bytes": 121392,
+        "capBytes": 127000,
+        "temporaryDirectoriesRemaining": []
+      }
+    }
+  },
+  "provenance": "Exact function inverses verified to old parser9d/publisher3cad; exact test inverses and descriptor inverse verified; parser proof continues old9d→original1d. No historical receipt or manifest rewritten.",
+  "review": {
+    "roles": "Historical negatives/3e diagnostic remain retained-negative/research-only; cannot satisfy current mandatory source/native/earned roles.",
+    "output": "Proposed review-packages directory is outside existing Root/Station/static selected sources. Keep selected generated gate/binder/contract inputs outside the package; manifest/operation children cannot lie under their parents.",
+    "limits": "One historical f351 MP4; <80MiB payload; <=24 PNG, enforced before publication. Final aggregate needs closed full05 and actual selection.",
+    "publication": "Absent local ref CAS, command-specific absent remote CAS hook, no force, retained state on uncertain push; stream reader checks canonical repository and all manifest payload size/SHA without extraction. No algorithm changed.",
+    "origin": "Publisher itself does not validate resolved origin fetch/push URLs. Parent will separately bind redirect URLs and resolved canonical repository before effects; no present misconfiguration or independently verified remote identity claimed.",
+    "noPublication": true
+  },
+  "preservedNegatives": {
+    "initialFocusedRED01": "7 assertion failures plus 1 raw-CRLF test-input error; production universal-newline path was then matched in the focused fixture without helper changes.",
+    "focusedRED02": "6 tests,8 failing subtest assertions,0 errors on old helpers.",
+    "oldPinOnly": "Original parser44/publisher46 each failed exactly one obsolete helper-provenance expectation; failures retained before narrow adaptation.",
+    "budgetProbe": "One intermediate size probe raced temporary private CPU fixture cleanup; final totals were measured after both suites closed."
+  },
+  "notExecuted": [
+    "complete verifier",
+    "browser",
+    "GPU",
+    "network",
+    "Git",
+    "publisher prepare/publish",
+    "payload selection",
+    "Root/Station mutation"
+  ]
+}

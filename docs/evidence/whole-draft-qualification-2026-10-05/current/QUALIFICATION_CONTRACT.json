@@ -1,0 +1,2983 @@
+{
+  "version": 1,
+  "status": "prepared-not-qualified",
+  "sourceHead": "b5fee766e6f77a2d901bb953af8faac13175fee4",
+  "verifyCanonicalSha256": "15e1e89c6465c4fbc884f4a40f3f215a1a339f89c5389a760fc1e1b3bd59de42",
+  "inventory": {
+    "commands": [
+      "build",
+      "syntax-adventure-art",
+      "syntax-adventure-ui",
+      "syntax-adventure",
+      "syntax-app",
+      "syntax-arsenal-art",
+      "syntax-arsenal-ui",
+      "syntax-arsenal",
+      "syntax-atlantis-campaign-art",
+      "syntax-atlantis-campaign-data",
+      "syntax-atlantis-campaign-ui",
+      "syntax-atlantis-campaign",
+      "syntax-beacon-art",
+      "syntax-beacon",
+      "syntax-bridge-art",
+      "syntax-bridge-community-art",
+      "syntax-bridge-community-ui",
+      "syntax-bridge-community",
+      "syntax-bridge-moment-view",
+      "syntax-characters-ui",
+      "syntax-characters",
+      "syntax-classes-ui",
+      "syntax-classes",
+      "syntax-coastward-settlement-art",
+      "syntax-coastward-woodland-art",
+      "syntax-combat-view",
+      "syntax-combat",
+      "syntax-companion-art",
+      "syntax-core",
+      "syntax-cosmos-art",
+      "syntax-cosmos-campaign-art",
+      "syntax-cosmos-campaign-data",
+      "syntax-cosmos-campaign-ui",
+      "syntax-cosmos-campaign",
+      "syntax-cosmos-ui",
+      "syntax-cosmos",
+      "syntax-creative",
+      "syntax-crossing-art",
+      "syntax-crossing-ui",
+      "syntax-crossing",
+      "syntax-drover-art",
+      "syntax-earth-art",
+      "syntax-earth-expedition-art",
+      "syntax-earth-expedition-beast-art",
+      "syntax-earth-expedition-dialogue",
+      "syntax-earth-expedition-ui",
+      "syntax-earth-expedition",
+      "syntax-earth-homecoming-art",
+      "syntax-earth-homecoming-data",
+      "syntax-earth-homecoming-ui",
+      "syntax-earth-homecoming",
+      "syntax-earth-notes-art",
+      "syntax-earth-notes-ui",
+      "syntax-earth-notes",
+      "syntax-earth-shoulder-art",
+      "syntax-earth-story-ui",
+      "syntax-earth-story",
+      "syntax-earth-ui",
+      "syntax-earth",
+      "syntax-elderweald-trail-art",
+      "syntax-elderweald-world",
+      "syntax-engine",
+      "syntax-experience",
+      "syntax-gathering-adapter",
+      "syntax-gathering-art",
+      "syntax-gathering-music",
+      "syntax-gathering-ui",
+      "syntax-gathering",
+      "syntax-heaven-campaign-art",
+      "syntax-heaven-campaign-data",
+      "syntax-heaven-campaign-ui",
+      "syntax-heaven-campaign",
+      "syntax-hell-campaign-art",
+      "syntax-hell-campaign-data",
+      "syntax-hell-campaign-ui",
+      "syntax-hell-campaign",
+      "syntax-home-history-art",
+      "syntax-home-history-ui",
+      "syntax-home-history",
+      "syntax-local-life-art",
+      "syntax-local-life-ui",
+      "syntax-local-life",
+      "syntax-mill-gate-art",
+      "syntax-millwright-art",
+      "syntax-pursuit-ui",
+      "syntax-pursuit",
+      "syntax-quarry-art",
+      "syntax-realm-art-data",
+      "syntax-realm-atlas-ui",
+      "syntax-realm-craft",
+      "syntax-realm-givers-art",
+      "syntax-realm-trails-art",
+      "syntax-realm-trails-cosmos",
+      "syntax-realm-trails-north",
+      "syntax-realm-trails-south",
+      "syntax-realm-trails-ui",
+      "syntax-realm-trails",
+      "syntax-road-art",
+      "syntax-road",
+      "syntax-rpg-ui",
+      "syntax-sandbox-art",
+      "syntax-sandbox-ui",
+      "syntax-sandbox",
+      "syntax-skitter-art",
+      "syntax-soundscape",
+      "syntax-starter-art",
+      "syntax-starter-ui",
+      "syntax-starter",
+      "syntax-surface-assets",
+      "syntax-traveler-art",
+      "syntax-traveler-equipment-art",
+      "syntax-workshop-transactions",
+      "syntax-world-atlantis-earth",
+      "syntax-world-foundations-art",
+      "syntax-world-foundations-ui",
+      "syntax-world-foundations",
+      "syntax-world-ground-coalescing",
+      "syntax-world-heaven-hell",
+      "syntax-world",
+      "rules",
+      "python",
+      "crossing-blade",
+      "crossing-bow",
+      "starter-blade",
+      "starter-bow",
+      "starter-veteran",
+      "pursuit-blade",
+      "pursuit-bow",
+      "pursuit-veteran",
+      "characters-journey",
+      "classes-journey",
+      "cosmos-journey",
+      "earth-journey",
+      "earth-outing-blade",
+      "earth-outing-bow",
+      "earth-outing-veteran",
+      "earth-story-blade",
+      "earth-story-bow",
+      "earth-story-veteran",
+      "earth-notes-blade",
+      "earth-notes-bow",
+      "earth-notes-veteran",
+      "gathering-blade",
+      "gathering-bow",
+      "gathering-veteran",
+      "world-foundations-blade",
+      "world-foundations-bow",
+      "world-foundations-veteran",
+      "realm-trails-blade",
+      "realm-trails-bow",
+      "realm-trails-south-blade",
+      "realm-trails-south-bow",
+      "realm-comparator-blade",
+      "realm-comparator-bow",
+      "realm-comparator-veteran",
+      "earth-expedition-blade",
+      "earth-expedition-bow",
+      "earth-expedition-veteran",
+      "local-life-blade",
+      "local-life-bow",
+      "local-life-veteran",
+      "home-history-blade",
+      "home-history-bow",
+      "home-history-veteran",
+      "bridge-community-blade",
+      "bridge-community-bow",
+      "bridge-community-veteran",
+      "hell-campaign-blade",
+      "hell-campaign-bow",
+      "hell-campaign-veteran",
+      "heaven-campaign-blade",
+      "heaven-campaign-bow",
+      "heaven-campaign-veteran",
+      "atlantis-campaign-blade",
+      "atlantis-campaign-bow",
+      "atlantis-campaign-veteran",
+      "cosmos-campaign-blade",
+      "cosmos-campaign-bow",
+      "cosmos-campaign-veteran",
+      "earth-homecoming-earned",
+      "earth-homecoming-native-preflight",
+      "earth-recording-controller-preflight",
+      "whole-draft-earned",
+      "earth_homecoming_browser",
+      "onboarding_browser",
+      "cosmos_campaign_browser",
+      "atlantis_campaign_browser",
+      "heaven_campaign_browser",
+      "hell_campaign_browser",
+      "bridge_community_browser",
+      "home_history_browser",
+      "local_life_browser",
+      "earth_ground_material_browser",
+      "realm_givers_browser",
+      "crossing_browser",
+      "regression09_browser",
+      "cutaway_browser",
+      "reflection_browser",
+      "native_origin_browser",
+      "starter_browser",
+      "camera_browser",
+      "pursuit_browser",
+      "characters_browser",
+      "classes_browser",
+      "cosmos_browser",
+      "earth_browser",
+      "earth_story_browser",
+      "earth_notes_browser",
+      "gathering_browser",
+      "realm_atlas_browser",
+      "timber_browser",
+      "traveler_browser",
+      "bridge_browser",
+      "combat_cue_browser",
+      "world_foundations_browser",
+      "world_cutaway_browser",
+      "realm_trails_browser",
+      "realm_trails_north_browser",
+      "realm_trails_cosmos_browser",
+      "soundscape_browser",
+      "journey_usability_browser",
+      "workshop_transactions_browser",
+      "companion_presentation_browser",
+      "skitter_presentation_browser",
+      "coastward_scenery_browser",
+      "earth_story_transactions_browser",
+      "coastward_bridge_posts_browser",
+      "practice_visibility_browser",
+      "realm_work_presentation_browser",
+      "earth_expedition_browser"
+    ],
+    "browserSuites": [
+      "earth_homecoming_browser",
+      "onboarding_browser",
+      "cosmos_campaign_browser",
+      "atlantis_campaign_browser",
+      "heaven_campaign_browser",
+      "hell_campaign_browser",
+      "bridge_community_browser",
+      "home_history_browser",
+      "local_life_browser",
+      "earth_ground_material_browser",
+      "realm_givers_browser",
+      "crossing_browser",
+      "regression09_browser",
+      "cutaway_browser",
+      "reflection_browser",
+      "native_origin_browser",
+      "starter_browser",
+      "camera_browser",
+      "pursuit_browser",
+      "characters_browser",
+      "classes_browser",
+      "cosmos_browser",
+      "earth_browser",
+      "earth_story_browser",
+      "earth_notes_browser",
+      "gathering_browser",
+      "realm_atlas_browser",
+      "timber_browser",
+      "traveler_browser",
+      "bridge_browser",
+      "combat_cue_browser",
+      "world_foundations_browser",
+      "world_cutaway_browser",
+      "realm_trails_browser",
+      "realm_trails_north_browser",
+      "realm_trails_cosmos_browser",
+      "soundscape_browser",
+      "journey_usability_browser",
+      "workshop_transactions_browser",
+      "companion_presentation_browser",
+      "skitter_presentation_browser",
+      "coastward_scenery_browser",
+      "earth_story_transactions_browser",
+      "coastward_bridge_posts_browser",
+      "practice_visibility_browser",
+      "realm_work_presentation_browser",
+      "earth_expedition_browser"
+    ],
+    "syntaxModules": [
+      "adventure-art.js",
+      "adventure-ui.js",
+      "adventure.js",
+      "app.js",
+      "arsenal-art.js",
+      "arsenal-ui.js",
+      "arsenal.js",
+      "atlantis-campaign-art.js",
+      "atlantis-campaign-data.js",
+      "atlantis-campaign-ui.js",
+      "atlantis-campaign.js",
+      "beacon-art.js",
+      "beacon.js",
+      "bridge-art.js",
+      "bridge-community-art.js",
+      "bridge-community-ui.js",
+      "bridge-community.js",
+      "bridge-moment-view.js",
+      "characters-ui.js",
+      "characters.js",
+      "classes-ui.js",
+      "classes.js",
+      "coastward-settlement-art.js",
+      "coastward-woodland-art.js",
+      "combat-view.js",
+      "combat.js",
+      "companion-art.js",
+      "core.js",
+      "cosmos-art.js",
+      "cosmos-campaign-art.js",
+      "cosmos-campaign-data.js",
+      "cosmos-campaign-ui.js",
+      "cosmos-campaign.js",
+      "cosmos-ui.js",
+      "cosmos.js",
+      "creative.js",
+      "crossing-art.js",
+      "crossing-ui.js",
+      "crossing.js",
+      "drover-art.js",
+      "earth-art.js",
+      "earth-expedition-art.js",
+      "earth-expedition-beast-art.js",
+      "earth-expedition-dialogue.js",
+      "earth-expedition-ui.js",
+      "earth-expedition.js",
+      "earth-homecoming-art.js",
+      "earth-homecoming-data.js",
+      "earth-homecoming-ui.js",
+      "earth-homecoming.js",
+      "earth-notes-art.js",
+      "earth-notes-ui.js",
+      "earth-notes.js",
+      "earth-shoulder-art.js",
+      "earth-story-ui.js",
+      "earth-story.js",
+      "earth-ui.js",
+      "earth.js",
+      "elderweald-trail-art.js",
+      "elderweald-world.js",
+      "engine.js",
+      "experience.js",
+      "gathering-adapter.js",
+      "gathering-art.js",
+      "gathering-music.js",
+      "gathering-ui.js",
+      "gathering.js",
+      "heaven-campaign-art.js",
+      "heaven-campaign-data.js",
+      "heaven-campaign-ui.js",
+      "heaven-campaign.js",
+      "hell-campaign-art.js",
+      "hell-campaign-data.js",
+      "hell-campaign-ui.js",
+      "hell-campaign.js",
+      "home-history-art.js",
+      "home-history-ui.js",
+      "home-history.js",
+      "local-life-art.js",
+      "local-life-ui.js",
+      "local-life.js",
+      "mill-gate-art.js",
+      "millwright-art.js",
+      "pursuit-ui.js",
+      "pursuit.js",
+      "quarry-art.js",
+      "realm-art-data.js",
+      "realm-atlas-ui.js",
+      "realm-craft.js",
+      "realm-givers-art.js",
+      "realm-trails-art.js",
+      "realm-trails-cosmos.js",
+      "realm-trails-north.js",
+      "realm-trails-south.js",
+      "realm-trails-ui.js",
+      "realm-trails.js",
+      "road-art.js",
+      "road.js",
+      "rpg-ui.js",
+      "sandbox-art.js",
+      "sandbox-ui.js",
+      "sandbox.js",
+      "skitter-art.js",
+      "soundscape.js",
+      "starter-art.js",
+      "starter-ui.js",
+      "starter.js",
+      "surface-assets.js",
+      "traveler-art.js",
+      "traveler-equipment-art.js",
+      "workshop-transactions.js",
+      "world-atlantis-earth.js",
+      "world-foundations-art.js",
+      "world-foundations-ui.js",
+      "world-foundations.js",
+      "world-ground-coalescing.js",
+      "world-heaven-hell.js",
+      "world.js"
+    ]
+  },
+  "sourceInventory": {
+    ".gitattributes": {
+      "workingSha256": "fbc6ccfd1b5cd55a1b5f57dad38e7d7d219b4515790dec3761c0e719db2895ef",
+      "canonicalSha256": "fbc6ccfd1b5cd55a1b5f57dad38e7d7d219b4515790dec3761c0e719db2895ef",
+      "bytes": 841,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    ".github/workflows/import-source.yml": {
+      "workingSha256": "a30409200d6efe4ad8f1c214a07a80cf4ed7190448ba0771aaf0c4eae3bac4d6",
+      "canonicalSha256": "a30409200d6efe4ad8f1c214a07a80cf4ed7190448ba0771aaf0c4eae3bac4d6",
+      "bytes": 1238,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    ".github/workflows/verify.yml": {
+      "workingSha256": "fa630664bf89ca493d73ab1db4e5fc366e394b61c6fb5666705f657fda8c29aa",
+      "canonicalSha256": "fa630664bf89ca493d73ab1db4e5fc366e394b61c6fb5666705f657fda8c29aa",
+      "bytes": 6667,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    ".gitignore": {
+      "workingSha256": "fd2306251fa4e106938d4373e72a202d5067a3c8c37077299070f2c4547ef0a1",
+      "canonicalSha256": "fd2306251fa4e106938d4373e72a202d5067a3c8c37077299070f2c4547ef0a1",
+      "bytes": 1218,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "FIRSTLIGHT_VALLEY.html": {
+      "workingSha256": "ccfc2782a33d21e3a75cd93201d5d9b5d89eef41e6397036c13c2f06bda91f9b",
+      "canonicalSha256": "ccfc2782a33d21e3a75cd93201d5d9b5d89eef41e6397036c13c2f06bda91f9b",
+      "bytes": 3033467,
+      "binding": "exact-bytes"
+    },
+    "assets/concept-art/five-realms.webp": {
+      "workingSha256": "cf2fa3aca7fac20199567ca879ee42e47ce67aa63da5acf1905f6403d7ec323f",
+      "canonicalSha256": "cf2fa3aca7fac20199567ca879ee42e47ce67aa63da5acf1905f6403d7ec323f",
+      "bytes": 467918,
+      "binding": "exact-bytes"
+    },
+    "assets/concept-art/hearthwater-kit.webp": {
+      "workingSha256": "88bb9ea69284ffa7a517f47691442df5ff38eff44ec62c382fe3df8ec8e9566a",
+      "canonicalSha256": "88bb9ea69284ffa7a517f47691442df5ff38eff44ec62c382fe3df8ec8e9566a",
+      "bytes": 504988,
+      "binding": "exact-bytes"
+    },
+    "assets/materials/timber/color-512.jpg": {
+      "workingSha256": "5f88f449fc017a78efdd07b3e3358788350a9132a438246e948cb0ada052c80a",
+      "canonicalSha256": "5f88f449fc017a78efdd07b3e3358788350a9132a438246e948cb0ada052c80a",
+      "bytes": 33138,
+      "binding": "exact-bytes"
+    },
+    "assets/materials/timber/provenance.json": {
+      "workingSha256": "366b292110c79c4714f2a5b7cc14e4aad132c029b8b34fee3e87803c82624ec2",
+      "canonicalSha256": "366b292110c79c4714f2a5b7cc14e4aad132c029b8b34fee3e87803c82624ec2",
+      "bytes": 4545,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "assets/materials/timber/roughness-512.png": {
+      "workingSha256": "020f6844c6232cfc7b060bbead37b6a173cda077ad0960cea59a8932d35c6994",
+      "canonicalSha256": "020f6844c6232cfc7b060bbead37b6a173cda077ad0960cea59a8932d35c6994",
+      "bytes": 61548,
+      "binding": "exact-bytes"
+    },
+    "build.py": {
+      "workingSha256": "fa043a51291c0b91a58acc4be150d2aefb70c63c4bebb1163a9ab04680f83c01",
+      "canonicalSha256": "fa043a51291c0b91a58acc4be150d2aefb70c63c4bebb1163a9ab04680f83c01",
+      "bytes": 16282,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "index.html": {
+      "workingSha256": "ccfc2782a33d21e3a75cd93201d5d9b5d89eef41e6397036c13c2f06bda91f9b",
+      "canonicalSha256": "ccfc2782a33d21e3a75cd93201d5d9b5d89eef41e6397036c13c2f06bda91f9b",
+      "bytes": 3033467,
+      "binding": "exact-bytes"
+    },
+    "package.json": {
+      "workingSha256": "46b62e8ae432f6041d3cce8ab70209a13525a0b0cf2be1821f1470abd8920dd6",
+      "canonicalSha256": "46b62e8ae432f6041d3cce8ab70209a13525a0b0cf2be1821f1470abd8920dd6",
+      "bytes": 323,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "requirements-dev.txt": {
+      "workingSha256": "b835f50d765d5678222dcdd177a6e880e48fd4828ede878185426bbbf5afe23a",
+      "canonicalSha256": "b835f50d765d5678222dcdd177a6e880e48fd4828ede878185426bbbf5afe23a",
+      "bytes": 79,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/adventure-art.js": {
+      "workingSha256": "2022f25ee84f5a862025344bbbc15f46336a112e09bdb820075a2fec002d05eb",
+      "canonicalSha256": "2022f25ee84f5a862025344bbbc15f46336a112e09bdb820075a2fec002d05eb",
+      "bytes": 14105,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/adventure-ui.js": {
+      "workingSha256": "d519bbc992aaabd71db76a7ff08a6128317bdea6e8898f933a865e78edc3539d",
+      "canonicalSha256": "d519bbc992aaabd71db76a7ff08a6128317bdea6e8898f933a865e78edc3539d",
+      "bytes": 26528,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/adventure.js": {
+      "workingSha256": "c8c9f751bfd09d4e123ef786867fd1f1321d8364cf2f83a3e8bda74c12417a5c",
+      "canonicalSha256": "c8c9f751bfd09d4e123ef786867fd1f1321d8364cf2f83a3e8bda74c12417a5c",
+      "bytes": 42050,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/app.js": {
+      "workingSha256": "1b0bf53f0e35fb7014da243460d321bdca11560e12175f03dd2bfefcbd5408cc",
+      "canonicalSha256": "1b0bf53f0e35fb7014da243460d321bdca11560e12175f03dd2bfefcbd5408cc",
+      "bytes": 73217,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/arsenal-art.js": {
+      "workingSha256": "1899a42e04fd44e18eced395229793d275a873dbe2902473968289815a3f694f",
+      "canonicalSha256": "1899a42e04fd44e18eced395229793d275a873dbe2902473968289815a3f694f",
+      "bytes": 3909,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/arsenal-ui.js": {
+      "workingSha256": "a462102896a3c7013f29f6cdf40504b983b8fde803baf41b98b8fb032da3abe6",
+      "canonicalSha256": "a462102896a3c7013f29f6cdf40504b983b8fde803baf41b98b8fb032da3abe6",
+      "bytes": 6451,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/arsenal.js": {
+      "workingSha256": "70cf869a8240895158960c62cc65d802adf491ac24ee66bf7a3c0389557d2b70",
+      "canonicalSha256": "70cf869a8240895158960c62cc65d802adf491ac24ee66bf7a3c0389557d2b70",
+      "bytes": 14855,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/atlantis-campaign-art.js": {
+      "workingSha256": "9ab549df2eeafc8314c95c7c9e488bf80472fcfaac1de7dfe41ebbf8c1830243",
+      "canonicalSha256": "9ab549df2eeafc8314c95c7c9e488bf80472fcfaac1de7dfe41ebbf8c1830243",
+      "bytes": 10561,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/atlantis-campaign-data.js": {
+      "workingSha256": "22496def70bda1c6a6aa15c24cf53bad7bacab4facc54da7856ac693e7384693",
+      "canonicalSha256": "22496def70bda1c6a6aa15c24cf53bad7bacab4facc54da7856ac693e7384693",
+      "bytes": 17542,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/atlantis-campaign-ui.js": {
+      "workingSha256": "3bcf9923c47710bf2d3d876629ed47e46d4b7e4289aa8f7510b9ccac2025cb5d",
+      "canonicalSha256": "3bcf9923c47710bf2d3d876629ed47e46d4b7e4289aa8f7510b9ccac2025cb5d",
+      "bytes": 17684,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/atlantis-campaign.css": {
+      "workingSha256": "11d0f42b969895ba4ac0f561067c260b9a3d632b3b7f15a34d617eff8a4b6523",
+      "canonicalSha256": "11d0f42b969895ba4ac0f561067c260b9a3d632b3b7f15a34d617eff8a4b6523",
+      "bytes": 2781,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/atlantis-campaign.js": {
+      "workingSha256": "da23cf19fe0fd68ae3f03c040fb3c375b655570bccffd320794cd45bd19067d3",
+      "canonicalSha256": "da23cf19fe0fd68ae3f03c040fb3c375b655570bccffd320794cd45bd19067d3",
+      "bytes": 20387,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/beacon-art.js": {
+      "workingSha256": "aea9e5d22d23eaf73777636c56c2444edac9b0d6239f9504cc95026585618577",
+      "canonicalSha256": "aea9e5d22d23eaf73777636c56c2444edac9b0d6239f9504cc95026585618577",
+      "bytes": 4850,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/beacon.js": {
+      "workingSha256": "2aded7272a8d50cbfbdb4421f0140d00401a49788a3bb465260e30f501a2bf13",
+      "canonicalSha256": "2aded7272a8d50cbfbdb4421f0140d00401a49788a3bb465260e30f501a2bf13",
+      "bytes": 15449,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/bridge-art.js": {
+      "workingSha256": "e8f85dd21a0eb6363f674a934c625b22fc29f18fc63a543ebd61ea0a87fa254d",
+      "canonicalSha256": "e8f85dd21a0eb6363f674a934c625b22fc29f18fc63a543ebd61ea0a87fa254d",
+      "bytes": 4882,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/bridge-community-art.js": {
+      "workingSha256": "454eb5365082d529fe3bb05b166b38e1d01e6fbcd34f1148c5ebf0d02ad9a615",
+      "canonicalSha256": "454eb5365082d529fe3bb05b166b38e1d01e6fbcd34f1148c5ebf0d02ad9a615",
+      "bytes": 3428,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/bridge-community-ui.js": {
+      "workingSha256": "a51a02420b59329d0ae268d42a5632de50d87d9b031103a724ad51564737c6d6",
+      "canonicalSha256": "a51a02420b59329d0ae268d42a5632de50d87d9b031103a724ad51564737c6d6",
+      "bytes": 8142,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/bridge-community.css": {
+      "workingSha256": "15be66090d836555498d87e00564c5b7b7094c2e3dca5951f9b1fde5023ea29c",
+      "canonicalSha256": "15be66090d836555498d87e00564c5b7b7094c2e3dca5951f9b1fde5023ea29c",
+      "bytes": 1456,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/bridge-community.js": {
+      "workingSha256": "4308eecafc47044c3c063b46e4c3aa7cb4e7a30d5d938c64fd518e7f29cb30cc",
+      "canonicalSha256": "4308eecafc47044c3c063b46e4c3aa7cb4e7a30d5d938c64fd518e7f29cb30cc",
+      "bytes": 8275,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/bridge-moment-view.js": {
+      "workingSha256": "fe58c7824f96458f2608af4d1cf76c81d2936da89a8cca1ad933974b65e0e03c",
+      "canonicalSha256": "fe58c7824f96458f2608af4d1cf76c81d2936da89a8cca1ad933974b65e0e03c",
+      "bytes": 3356,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/characters-ui.js": {
+      "workingSha256": "58de0cb602479d45eae66f4ccd4077253e34e6e3d843a1505f9eca4d4a1f8f77",
+      "canonicalSha256": "58de0cb602479d45eae66f4ccd4077253e34e6e3d843a1505f9eca4d4a1f8f77",
+      "bytes": 10376,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/characters.css": {
+      "workingSha256": "48bfb2431b5fb50e530ed334e52cf07c31b8a29bdb5bb4917365210ab9e71815",
+      "canonicalSha256": "48bfb2431b5fb50e530ed334e52cf07c31b8a29bdb5bb4917365210ab9e71815",
+      "bytes": 4628,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/characters.js": {
+      "workingSha256": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+      "canonicalSha256": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+      "bytes": 9115,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/classes-ui.js": {
+      "workingSha256": "6fb25a35158cf3388485f57016aea745260dea8a057f8d6b4781d3f7a296d22b",
+      "canonicalSha256": "6fb25a35158cf3388485f57016aea745260dea8a057f8d6b4781d3f7a296d22b",
+      "bytes": 4829,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/classes.css": {
+      "workingSha256": "4b9b47443b1817efe2b4cd43e7a3d0d34e623738a5b1e6e1cad05bc2ce88e892",
+      "canonicalSha256": "4b9b47443b1817efe2b4cd43e7a3d0d34e623738a5b1e6e1cad05bc2ce88e892",
+      "bytes": 2847,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/classes.js": {
+      "workingSha256": "15da8e8f26c234a5903e5321d9cbcadea773037c9536911a5dc85cb9da2aaa97",
+      "canonicalSha256": "15da8e8f26c234a5903e5321d9cbcadea773037c9536911a5dc85cb9da2aaa97",
+      "bytes": 5418,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/coastward-settlement-art.js": {
+      "workingSha256": "8f08b152b5205c434ffa7408118e754799eb7ab396b2c0aaec8920cc0029c839",
+      "canonicalSha256": "8f08b152b5205c434ffa7408118e754799eb7ab396b2c0aaec8920cc0029c839",
+      "bytes": 6920,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/coastward-woodland-art.js": {
+      "workingSha256": "45b2758d3f8d75457545b24c2cc96f81f70ac8296bf183f57ddd412289f130fc",
+      "canonicalSha256": "45b2758d3f8d75457545b24c2cc96f81f70ac8296bf183f57ddd412289f130fc",
+      "bytes": 4518,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/combat-view.js": {
+      "workingSha256": "9e674247119cece3bb6a35ca31fa424ed5e8e0187cbd2c149afb6f4aba085d5c",
+      "canonicalSha256": "9e674247119cece3bb6a35ca31fa424ed5e8e0187cbd2c149afb6f4aba085d5c",
+      "bytes": 988,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/combat.js": {
+      "workingSha256": "4176bbf57fd761732b5f9d96708ac8ac0d6855ef56c928d06810f06f74315a32",
+      "canonicalSha256": "4176bbf57fd761732b5f9d96708ac8ac0d6855ef56c928d06810f06f74315a32",
+      "bytes": 10994,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/companion-art.js": {
+      "workingSha256": "06821bb333cc1d61398017fcd236fb4622aae6432ce636f827642531946b2a32",
+      "canonicalSha256": "06821bb333cc1d61398017fcd236fb4622aae6432ce636f827642531946b2a32",
+      "bytes": 9288,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/core.js": {
+      "workingSha256": "7ee0f2e79ed77787e4b8c720183b708f0a6d91d9b24cadab28739d0187319b00",
+      "canonicalSha256": "7ee0f2e79ed77787e4b8c720183b708f0a6d91d9b24cadab28739d0187319b00",
+      "bytes": 30372,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/cosmos-art.js": {
+      "workingSha256": "d68fb28540196c4d6f39ca60cc99e1eb99fab534fb026578c02e75119cdd17e2",
+      "canonicalSha256": "d68fb28540196c4d6f39ca60cc99e1eb99fab534fb026578c02e75119cdd17e2",
+      "bytes": 12517,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/cosmos-campaign-art.js": {
+      "workingSha256": "3b22a5fe117cb3731a1531a66941fba9e2953b5c23f3816150c184230a631a5e",
+      "canonicalSha256": "3b22a5fe117cb3731a1531a66941fba9e2953b5c23f3816150c184230a631a5e",
+      "bytes": 7490,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/cosmos-campaign-data.js": {
+      "workingSha256": "9c7d4d30b863e25812df3651e785bff3f87495b37ede488804ee03178cab93d2",
+      "canonicalSha256": "9c7d4d30b863e25812df3651e785bff3f87495b37ede488804ee03178cab93d2",
+      "bytes": 21871,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/cosmos-campaign-ui.js": {
+      "workingSha256": "95f8bbb9df5f97ddcb779268e5c28f412914d388c92bff00f5e79ec048e77686",
+      "canonicalSha256": "95f8bbb9df5f97ddcb779268e5c28f412914d388c92bff00f5e79ec048e77686",
+      "bytes": 12216,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/cosmos-campaign.css": {
+      "workingSha256": "436b9330b2bb190d022698894c76bd6e3b321d014d6e64bc553449c4dcd33ff7",
+      "canonicalSha256": "436b9330b2bb190d022698894c76bd6e3b321d014d6e64bc553449c4dcd33ff7",
+      "bytes": 1254,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/cosmos-campaign.js": {
+      "workingSha256": "7e03aaad5efe9db475ea82db6e8b9343361a68dec52132cf190e3c055fc681fb",
+      "canonicalSha256": "7e03aaad5efe9db475ea82db6e8b9343361a68dec52132cf190e3c055fc681fb",
+      "bytes": 19536,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/cosmos-ui.js": {
+      "workingSha256": "2582b2f2f4d894f44a969108af258087cf7f0be8c70dbf73eabca5810d236465",
+      "canonicalSha256": "2582b2f2f4d894f44a969108af258087cf7f0be8c70dbf73eabca5810d236465",
+      "bytes": 10697,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/cosmos.css": {
+      "workingSha256": "4d79807974082aaef0df364d312ae3d4a345ffd40b5eab403ccc55c24f02a63b",
+      "canonicalSha256": "4d79807974082aaef0df364d312ae3d4a345ffd40b5eab403ccc55c24f02a63b",
+      "bytes": 2167,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/cosmos.js": {
+      "workingSha256": "bf4d9898600b9b5d296f3de934f6f8dd52e343f3b762fd5f0085a09f14ea2090",
+      "canonicalSha256": "bf4d9898600b9b5d296f3de934f6f8dd52e343f3b762fd5f0085a09f14ea2090",
+      "bytes": 10809,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/creative.js": {
+      "workingSha256": "d0032234d3cab1a6e90c84736011a98631bcc3748de8d5fc23df872367038761",
+      "canonicalSha256": "d0032234d3cab1a6e90c84736011a98631bcc3748de8d5fc23df872367038761",
+      "bytes": 9788,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/crossing-art.js": {
+      "workingSha256": "86cd8945194c6437d9ece96a7d0bcac8a4970eb5f3324300e48d08376bb61bcf",
+      "canonicalSha256": "86cd8945194c6437d9ece96a7d0bcac8a4970eb5f3324300e48d08376bb61bcf",
+      "bytes": 10979,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/crossing-ui.js": {
+      "workingSha256": "5a2a7f6989a0a7ff0a96fee7aa88ec77dadbfba15440a272f131f17a98d86913",
+      "canonicalSha256": "5a2a7f6989a0a7ff0a96fee7aa88ec77dadbfba15440a272f131f17a98d86913",
+      "bytes": 21528,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/crossing.css": {
+      "workingSha256": "af6dd51f197dfa1963fc9fa0d92683b2e6f48270903aaea5ba90cbb2833862a2",
+      "canonicalSha256": "af6dd51f197dfa1963fc9fa0d92683b2e6f48270903aaea5ba90cbb2833862a2",
+      "bytes": 5024,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/crossing.js": {
+      "workingSha256": "b666c4e6e20483ad267293578020876c8791bbbf23f8116803936658400d1a8f",
+      "canonicalSha256": "b666c4e6e20483ad267293578020876c8791bbbf23f8116803936658400d1a8f",
+      "bytes": 18813,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/drover-art.js": {
+      "workingSha256": "0f4dda1af6b05e1c7e0931d835fca2d3faec7960788bc89b9f9b591af19206b0",
+      "canonicalSha256": "0f4dda1af6b05e1c7e0931d835fca2d3faec7960788bc89b9f9b591af19206b0",
+      "bytes": 8787,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth-art.js": {
+      "workingSha256": "e1053c4c73142de382346760b199fefa92833c4b053ebf698014315b7563f76c",
+      "canonicalSha256": "e1053c4c73142de382346760b199fefa92833c4b053ebf698014315b7563f76c",
+      "bytes": 18222,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth-expedition-art.js": {
+      "workingSha256": "822a0a8d7dc8271f92a5c38691ab7caf208063671b3e8dd6da05e120094d226f",
+      "canonicalSha256": "822a0a8d7dc8271f92a5c38691ab7caf208063671b3e8dd6da05e120094d226f",
+      "bytes": 5952,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth-expedition-beast-art.js": {
+      "workingSha256": "bf663c1cf48ef65a1c43e42bec63e743686506f3c028b7e72e4f4eac2ef7c0e4",
+      "canonicalSha256": "bf663c1cf48ef65a1c43e42bec63e743686506f3c028b7e72e4f4eac2ef7c0e4",
+      "bytes": 8326,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth-expedition-dialogue.js": {
+      "workingSha256": "964360081bfc8a5a2966db854d2c12268de1187bf9f4a3b6e4eb0b5014aa9f9d",
+      "canonicalSha256": "964360081bfc8a5a2966db854d2c12268de1187bf9f4a3b6e4eb0b5014aa9f9d",
+      "bytes": 14278,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth-expedition-ui.js": {
+      "workingSha256": "9f9359c4e8f63108aa3e674d9fc9589de832420306e6bfc1b49c0006641715a8",
+      "canonicalSha256": "9f9359c4e8f63108aa3e674d9fc9589de832420306e6bfc1b49c0006641715a8",
+      "bytes": 17032,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth-expedition.css": {
+      "workingSha256": "a8a0f4822afcff0a7c404b3c4ff358f3d8a38287bda431da0597cecfecaf5a72",
+      "canonicalSha256": "a8a0f4822afcff0a7c404b3c4ff358f3d8a38287bda431da0597cecfecaf5a72",
+      "bytes": 3141,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth-expedition.js": {
+      "workingSha256": "fd1fd97cc4e8e9e12202de4bbc9186c236d37750f574070d709d56d214418f59",
+      "canonicalSha256": "fd1fd97cc4e8e9e12202de4bbc9186c236d37750f574070d709d56d214418f59",
+      "bytes": 24129,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth-homecoming-art.js": {
+      "workingSha256": "2353946d8bb28a2881f3191807fc248f95fea75f16bc585f6588d82742b750ed",
+      "canonicalSha256": "2353946d8bb28a2881f3191807fc248f95fea75f16bc585f6588d82742b750ed",
+      "bytes": 8803,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth-homecoming-data.js": {
+      "workingSha256": "55485996a1651f8b5f0580c9e074f5873ddf45ca26744939238e31516051014f",
+      "canonicalSha256": "55485996a1651f8b5f0580c9e074f5873ddf45ca26744939238e31516051014f",
+      "bytes": 14337,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth-homecoming-ui.js": {
+      "workingSha256": "5e57a2367153e516bdab12837db82812de3124a32489b09987dd285be011159d",
+      "canonicalSha256": "5e57a2367153e516bdab12837db82812de3124a32489b09987dd285be011159d",
+      "bytes": 19256,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth-homecoming.css": {
+      "workingSha256": "dbfeb49d20278ebeb9b9ae4c1d4d575acc3a806ca59898f20ebb9f8ca8f1661a",
+      "canonicalSha256": "dbfeb49d20278ebeb9b9ae4c1d4d575acc3a806ca59898f20ebb9f8ca8f1661a",
+      "bytes": 3421,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth-homecoming.js": {
+      "workingSha256": "c16adf4e13bd3a57e9be6aae6cd0cc00a4b78b49106f220ee74dee105fe858c1",
+      "canonicalSha256": "c16adf4e13bd3a57e9be6aae6cd0cc00a4b78b49106f220ee74dee105fe858c1",
+      "bytes": 16782,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth-notes-art.js": {
+      "workingSha256": "87fe4682829bfff89978d7046d62f518874a7953808431c5634327c9eb449556",
+      "canonicalSha256": "87fe4682829bfff89978d7046d62f518874a7953808431c5634327c9eb449556",
+      "bytes": 1342,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth-notes-ui.js": {
+      "workingSha256": "9e0f0df26062b4929e0c3a801e8e857afc269936dbe4932279e935c56274f264",
+      "canonicalSha256": "9e0f0df26062b4929e0c3a801e8e857afc269936dbe4932279e935c56274f264",
+      "bytes": 8315,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth-notes.js": {
+      "workingSha256": "4ab5807020f65086b190591414c871ee76412791ac0c97dca5447c595840e9e0",
+      "canonicalSha256": "4ab5807020f65086b190591414c871ee76412791ac0c97dca5447c595840e9e0",
+      "bytes": 5498,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth-shoulder-art.js": {
+      "workingSha256": "422a50a7aeec456b6f75095c53a319d2cbf6ac5e09f773e268ed54034c2ddb8d",
+      "canonicalSha256": "422a50a7aeec456b6f75095c53a319d2cbf6ac5e09f773e268ed54034c2ddb8d",
+      "bytes": 2253,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth-story-ui.js": {
+      "workingSha256": "930b71ef9184a5d7b03cc79ff33d7f9e000eabb9d3934266af9e0fe8713448cb",
+      "canonicalSha256": "930b71ef9184a5d7b03cc79ff33d7f9e000eabb9d3934266af9e0fe8713448cb",
+      "bytes": 10846,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth-story.js": {
+      "workingSha256": "fd0ced6f17f1b15b2aee4e31aa00be249bc8e1fb08c4e735416d95c173fd52d0",
+      "canonicalSha256": "fd0ced6f17f1b15b2aee4e31aa00be249bc8e1fb08c4e735416d95c173fd52d0",
+      "bytes": 7815,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth-ui.js": {
+      "workingSha256": "e453430a756bba9ec710cb3d818e902077aab080ef7759074c8d5ca9c131ea7d",
+      "canonicalSha256": "e453430a756bba9ec710cb3d818e902077aab080ef7759074c8d5ca9c131ea7d",
+      "bytes": 15416,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth.css": {
+      "workingSha256": "1f40093ded67c175c70c730b8518ff928d26db40287515256fc287c45f2a9f3d",
+      "canonicalSha256": "1f40093ded67c175c70c730b8518ff928d26db40287515256fc287c45f2a9f3d",
+      "bytes": 3752,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/earth.js": {
+      "workingSha256": "1623be8382f2d05dbf16cac886951752e6d193dafd97353c4df29ecd21fa3735",
+      "canonicalSha256": "1623be8382f2d05dbf16cac886951752e6d193dafd97353c4df29ecd21fa3735",
+      "bytes": 8513,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/elderweald-trail-art.js": {
+      "workingSha256": "e978e735ec1ee8048df1777b190959b832cd37755f682c3d51b9ec3f0a7f0491",
+      "canonicalSha256": "e978e735ec1ee8048df1777b190959b832cd37755f682c3d51b9ec3f0a7f0491",
+      "bytes": 2607,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/elderweald-world.js": {
+      "workingSha256": "8d993c230ad7198e397f4bf41938522405c352bbdd903b04016d1262822d3538",
+      "canonicalSha256": "8d993c230ad7198e397f4bf41938522405c352bbdd903b04016d1262822d3538",
+      "bytes": 12103,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/engine.js": {
+      "workingSha256": "b98cfea8453e5b6deeb16a13c45f1c1bf7fc80fb9ba8d0a185c242a6ea9b078d",
+      "canonicalSha256": "b98cfea8453e5b6deeb16a13c45f1c1bf7fc80fb9ba8d0a185c242a6ea9b078d",
+      "bytes": 49949,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/experience.js": {
+      "workingSha256": "3b5a178ca757c7b58dcbfcedcc1522887dc6a178faf5e942c6e3894166d60570",
+      "canonicalSha256": "3b5a178ca757c7b58dcbfcedcc1522887dc6a178faf5e942c6e3894166d60570",
+      "bytes": 16387,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/gathering-adapter.js": {
+      "workingSha256": "df41b2b23ae11c6ef2661e48301c488cb26ab753a7beec73349b5c959d5ab564",
+      "canonicalSha256": "df41b2b23ae11c6ef2661e48301c488cb26ab753a7beec73349b5c959d5ab564",
+      "bytes": 440,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/gathering-art.js": {
+      "workingSha256": "b693bce2a519bd75e4f99e03b96184f1ed10c9a9a02e25b7affd53e739f5e0eb",
+      "canonicalSha256": "b693bce2a519bd75e4f99e03b96184f1ed10c9a9a02e25b7affd53e739f5e0eb",
+      "bytes": 1486,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/gathering-music.js": {
+      "workingSha256": "5e44106322e01aebc7b87d8eefcd29b2a2577d2162d70fb8f99475c7cc7deb12",
+      "canonicalSha256": "5e44106322e01aebc7b87d8eefcd29b2a2577d2162d70fb8f99475c7cc7deb12",
+      "bytes": 3821,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/gathering-ui.js": {
+      "workingSha256": "0c347e1da4a897b178c405f35cfef2e6ea518fe5d9e6ba650e48e48895e0445a",
+      "canonicalSha256": "0c347e1da4a897b178c405f35cfef2e6ea518fe5d9e6ba650e48e48895e0445a",
+      "bytes": 9067,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/gathering.css": {
+      "workingSha256": "aa2e5381a0ff9fa7e4ceae5053a54a8ab11a784f81ee021e4835d485d3c5f4db",
+      "canonicalSha256": "aa2e5381a0ff9fa7e4ceae5053a54a8ab11a784f81ee021e4835d485d3c5f4db",
+      "bytes": 2294,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/gathering.js": {
+      "workingSha256": "256a33c52f2b31c2c421f72a74aae543feb6c554ebae863aee55d31f0c68eb54",
+      "canonicalSha256": "256a33c52f2b31c2c421f72a74aae543feb6c554ebae863aee55d31f0c68eb54",
+      "bytes": 6058,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/heaven-campaign-art.js": {
+      "workingSha256": "25ed9017108ea106579584233cc55b2a1753d62bd36174bb9c023682cb2ad24a",
+      "canonicalSha256": "25ed9017108ea106579584233cc55b2a1753d62bd36174bb9c023682cb2ad24a",
+      "bytes": 12464,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/heaven-campaign-data.js": {
+      "workingSha256": "2495650ded3f74d81d3d53f4d259f29052d3ff64b65a4a6331351b049bdc67eb",
+      "canonicalSha256": "2495650ded3f74d81d3d53f4d259f29052d3ff64b65a4a6331351b049bdc67eb",
+      "bytes": 14474,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/heaven-campaign-ui.js": {
+      "workingSha256": "67723b2f0acf3e52da6177ad98d8a881e3b3e509bfc418bd3031ffbdc9f0383e",
+      "canonicalSha256": "67723b2f0acf3e52da6177ad98d8a881e3b3e509bfc418bd3031ffbdc9f0383e",
+      "bytes": 17424,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/heaven-campaign.css": {
+      "workingSha256": "7cf25161526677ee407ff09596cf8e2ecfeb92246c66c0b7255440b54d041bf0",
+      "canonicalSha256": "7cf25161526677ee407ff09596cf8e2ecfeb92246c66c0b7255440b54d041bf0",
+      "bytes": 2778,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/heaven-campaign.js": {
+      "workingSha256": "50aa6ff6607f9dfda6f0df1ca2fa473bca36a7513a34d1a915c1a87305e69e26",
+      "canonicalSha256": "50aa6ff6607f9dfda6f0df1ca2fa473bca36a7513a34d1a915c1a87305e69e26",
+      "bytes": 15844,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/hell-campaign-art.js": {
+      "workingSha256": "5ea5b875e32114b07b52ffe0000b7163b340f08adf0eae01552b84a478420f18",
+      "canonicalSha256": "5ea5b875e32114b07b52ffe0000b7163b340f08adf0eae01552b84a478420f18",
+      "bytes": 8478,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/hell-campaign-data.js": {
+      "workingSha256": "745221292e89ed2bcdf455ffc1bf4e0e66259add5671709e77135d5ede3892ff",
+      "canonicalSha256": "745221292e89ed2bcdf455ffc1bf4e0e66259add5671709e77135d5ede3892ff",
+      "bytes": 10615,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/hell-campaign-ui.js": {
+      "workingSha256": "d47acd0b9ba992df6ff4c73e1b5f3dfb9c1b2ced0745c8ffe50d6cd34cc80f8c",
+      "canonicalSha256": "d47acd0b9ba992df6ff4c73e1b5f3dfb9c1b2ced0745c8ffe50d6cd34cc80f8c",
+      "bytes": 13728,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/hell-campaign.css": {
+      "workingSha256": "146c66cd811e3070367e10a91c30f39cfc630dba1ee929a3b6a540f96142f0d9",
+      "canonicalSha256": "146c66cd811e3070367e10a91c30f39cfc630dba1ee929a3b6a540f96142f0d9",
+      "bytes": 2214,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/hell-campaign.js": {
+      "workingSha256": "cc8ca64f9515e75f4bf572c3feb5978f07409e4aca5a328901b3322f399f67a1",
+      "canonicalSha256": "cc8ca64f9515e75f4bf572c3feb5978f07409e4aca5a328901b3322f399f67a1",
+      "bytes": 9041,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/home-history-art.js": {
+      "workingSha256": "df3acc85a5191c3938692759e85b7ee76ef5f936f29e65d6a845636600396a1f",
+      "canonicalSha256": "df3acc85a5191c3938692759e85b7ee76ef5f936f29e65d6a845636600396a1f",
+      "bytes": 2496,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/home-history-ui.js": {
+      "workingSha256": "41a330942368c7a4500759f2cbaf1cda224bd5ed25bc284b9e44463fc1f43a8e",
+      "canonicalSha256": "41a330942368c7a4500759f2cbaf1cda224bd5ed25bc284b9e44463fc1f43a8e",
+      "bytes": 8721,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/home-history.css": {
+      "workingSha256": "54ef3c501dfda4c3d74c0f17d900bdc5b25c9dcbaeb1840ec36cbcfe0a276bd2",
+      "canonicalSha256": "54ef3c501dfda4c3d74c0f17d900bdc5b25c9dcbaeb1840ec36cbcfe0a276bd2",
+      "bytes": 1000,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/home-history.js": {
+      "workingSha256": "f002eb64b57343e38e95eafa4cd522c892aab26efc7b0c3d65bea86a45cec6e6",
+      "canonicalSha256": "f002eb64b57343e38e95eafa4cd522c892aab26efc7b0c3d65bea86a45cec6e6",
+      "bytes": 7264,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/local-life-art.js": {
+      "workingSha256": "381d1f5469310e2dc98c14b6d58c4259113fd1d6dd10f77059f45e6848fefcf2",
+      "canonicalSha256": "381d1f5469310e2dc98c14b6d58c4259113fd1d6dd10f77059f45e6848fefcf2",
+      "bytes": 5974,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/local-life-ui.js": {
+      "workingSha256": "95a0757ae7f612560c94ebca13474925251fb485e449da0bc5c6440ceb43b4c6",
+      "canonicalSha256": "95a0757ae7f612560c94ebca13474925251fb485e449da0bc5c6440ceb43b4c6",
+      "bytes": 11962,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/local-life.js": {
+      "workingSha256": "005f7bd489bba2832aaec0b6c9d1cc499660e6e0047be73ab0f85d2922955d48",
+      "canonicalSha256": "005f7bd489bba2832aaec0b6c9d1cc499660e6e0047be73ab0f85d2922955d48",
+      "bytes": 15353,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/mill-gate-art.js": {
+      "workingSha256": "fe33cbbd3f180a8d32a0d0a338cde42c40e809af99ed2da1db157ba5c7fbcdd9",
+      "canonicalSha256": "fe33cbbd3f180a8d32a0d0a338cde42c40e809af99ed2da1db157ba5c7fbcdd9",
+      "bytes": 2941,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/millwright-art.js": {
+      "workingSha256": "bd7397ee2a9f4c47b2b51117e28f3c68533da41de3122bb0a39a5575913a5661",
+      "canonicalSha256": "bd7397ee2a9f4c47b2b51117e28f3c68533da41de3122bb0a39a5575913a5661",
+      "bytes": 5892,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/pursuit-ui.js": {
+      "workingSha256": "f8c6bab82d88b6e4dcbf05f3e78701d489f31e224c80211b94f8acc8b70b4224",
+      "canonicalSha256": "f8c6bab82d88b6e4dcbf05f3e78701d489f31e224c80211b94f8acc8b70b4224",
+      "bytes": 14301,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/pursuit.css": {
+      "workingSha256": "61f36fa917eafba8cfa332f7d233db4c47a6d007bbf84d1843bc25fc17dd63ff",
+      "canonicalSha256": "61f36fa917eafba8cfa332f7d233db4c47a6d007bbf84d1843bc25fc17dd63ff",
+      "bytes": 5647,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/pursuit.js": {
+      "workingSha256": "b77e1874f8278971f41d4b62551df40c81126f2a35e02958958e802ab9c8b5ff",
+      "canonicalSha256": "b77e1874f8278971f41d4b62551df40c81126f2a35e02958958e802ab9c8b5ff",
+      "bytes": 10072,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/quarry-art.js": {
+      "workingSha256": "5bc6d93e99e430e7a460a1a2a510fc69e60c9dd80e758bce7470dae3ae3446f6",
+      "canonicalSha256": "5bc6d93e99e430e7a460a1a2a510fc69e60c9dd80e758bce7470dae3ae3446f6",
+      "bytes": 7056,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/realm-art-data.js": {
+      "workingSha256": "1ac6251a7acf23c78799d96b5554fb3fe572c40e12c54c73f0188c4f8a324435",
+      "canonicalSha256": "1ac6251a7acf23c78799d96b5554fb3fe572c40e12c54c73f0188c4f8a324435",
+      "bytes": 264,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/realm-atlas-ui.js": {
+      "workingSha256": "26d34bdc7afc9fbf9bb1f0f483aa6bc8312eba8a2186d21c80cab2fc1f68529b",
+      "canonicalSha256": "26d34bdc7afc9fbf9bb1f0f483aa6bc8312eba8a2186d21c80cab2fc1f68529b",
+      "bytes": 5497,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/realm-atlas.css": {
+      "workingSha256": "7ef7a03b8c2a69069c2d65da8d5134c7b7dc4bc2b941e139f818a7ab7011c366",
+      "canonicalSha256": "7ef7a03b8c2a69069c2d65da8d5134c7b7dc4bc2b941e139f818a7ab7011c366",
+      "bytes": 1750,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/realm-craft.js": {
+      "workingSha256": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+      "canonicalSha256": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+      "bytes": 1849,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/realm-givers-art.js": {
+      "workingSha256": "8362d7a98f238b77b9afa5eff7346f430c02af6cd249502f146308a3d246fb34",
+      "canonicalSha256": "8362d7a98f238b77b9afa5eff7346f430c02af6cd249502f146308a3d246fb34",
+      "bytes": 16040,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/realm-trails-art.js": {
+      "workingSha256": "99a588e7aee9c7d43b6506de836ab2bab75a9420c6b718369c37e4517ca037e3",
+      "canonicalSha256": "99a588e7aee9c7d43b6506de836ab2bab75a9420c6b718369c37e4517ca037e3",
+      "bytes": 13006,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/realm-trails-cosmos.js": {
+      "workingSha256": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+      "canonicalSha256": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+      "bytes": 3605,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/realm-trails-north.js": {
+      "workingSha256": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+      "canonicalSha256": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+      "bytes": 10730,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/realm-trails-south.js": {
+      "workingSha256": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+      "canonicalSha256": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+      "bytes": 6813,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/realm-trails-ui.js": {
+      "workingSha256": "7d58c16fbe3213220d439f0760e24988aee87567454490eb6ddfd19c825e6a80",
+      "canonicalSha256": "7d58c16fbe3213220d439f0760e24988aee87567454490eb6ddfd19c825e6a80",
+      "bytes": 20605,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/realm-trails.js": {
+      "workingSha256": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+      "canonicalSha256": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+      "bytes": 13770,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/road-art.js": {
+      "workingSha256": "0cc12918587f98f4b9ed2b7beb8d1b21219b4a69959742a759f88354942df05d",
+      "canonicalSha256": "0cc12918587f98f4b9ed2b7beb8d1b21219b4a69959742a759f88354942df05d",
+      "bytes": 5375,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/road.js": {
+      "workingSha256": "d18106f1a2147d623680b285dc5882cae8d2b74c5ef8b500d75de35d20c86dbc",
+      "canonicalSha256": "d18106f1a2147d623680b285dc5882cae8d2b74c5ef8b500d75de35d20c86dbc",
+      "bytes": 4486,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/rpg-ui.js": {
+      "workingSha256": "5fb404cd66cda1431750af2967a850f78698ef7eb0e7e894631835103ecb3e16",
+      "canonicalSha256": "5fb404cd66cda1431750af2967a850f78698ef7eb0e7e894631835103ecb3e16",
+      "bytes": 61257,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/rpg.css": {
+      "workingSha256": "34ca5591b22748dbf96754fc0f6a857cbd73f77eb85e50b706e1b484291b11ae",
+      "canonicalSha256": "34ca5591b22748dbf96754fc0f6a857cbd73f77eb85e50b706e1b484291b11ae",
+      "bytes": 34482,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/sandbox-art.js": {
+      "workingSha256": "3c3a8f9ea1a44fb84bdfe07a99b33969f253714c271e91ca3cfeca7eab76474c",
+      "canonicalSha256": "3c3a8f9ea1a44fb84bdfe07a99b33969f253714c271e91ca3cfeca7eab76474c",
+      "bytes": 7642,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/sandbox-ui.js": {
+      "workingSha256": "28d7530e8153ed3c8a6a31b3e204cbc9680484b013cb5880a4f05b76cf83d8f5",
+      "canonicalSha256": "28d7530e8153ed3c8a6a31b3e204cbc9680484b013cb5880a4f05b76cf83d8f5",
+      "bytes": 14437,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/sandbox.js": {
+      "workingSha256": "ad11196c12363b650f2697ab8fb30eb657ff0bf65953274942ce36eb28131e85",
+      "canonicalSha256": "ad11196c12363b650f2697ab8fb30eb657ff0bf65953274942ce36eb28131e85",
+      "bytes": 18638,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/shell.html": {
+      "workingSha256": "06e3cd302ffed3f87e6d7d002c43bccffd57c7c61eb170c39cf31d30c6280a11",
+      "canonicalSha256": "06e3cd302ffed3f87e6d7d002c43bccffd57c7c61eb170c39cf31d30c6280a11",
+      "bytes": 13000,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/skitter-art.js": {
+      "workingSha256": "bd84a78381cf7232a7fb92a868332308c68fcae17d25764c2b5d4bdfefa29903",
+      "canonicalSha256": "bd84a78381cf7232a7fb92a868332308c68fcae17d25764c2b5d4bdfefa29903",
+      "bytes": 7975,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/soundscape.js": {
+      "workingSha256": "15b7b578886b838ef20e56501940354d33a8ffcd5581332dd4c4b2035692c5af",
+      "canonicalSha256": "15b7b578886b838ef20e56501940354d33a8ffcd5581332dd4c4b2035692c5af",
+      "bytes": 4636,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/starter-art.js": {
+      "workingSha256": "cfc4f672b891fe6d53dec82a97aeac7204b8179b3490ae9df9ce3412c4661fcc",
+      "canonicalSha256": "cfc4f672b891fe6d53dec82a97aeac7204b8179b3490ae9df9ce3412c4661fcc",
+      "bytes": 4246,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/starter-ui.js": {
+      "workingSha256": "44718b2835207383632d5f33e0748dba9c348041b11f9b404040bdf07a259052",
+      "canonicalSha256": "44718b2835207383632d5f33e0748dba9c348041b11f9b404040bdf07a259052",
+      "bytes": 14861,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/starter.css": {
+      "workingSha256": "f1501b06a13c2b3ec0030b39bf9d4530740aad2f60cf9608ca32957c9ce2943b",
+      "canonicalSha256": "f1501b06a13c2b3ec0030b39bf9d4530740aad2f60cf9608ca32957c9ce2943b",
+      "bytes": 2525,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/starter.js": {
+      "workingSha256": "c6debd10295babafdcd714445c2ac18c0ff5ce8fd54b8dfe4f3ff78c9e0a294d",
+      "canonicalSha256": "c6debd10295babafdcd714445c2ac18c0ff5ce8fd54b8dfe4f3ff78c9e0a294d",
+      "bytes": 8861,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/style.css": {
+      "workingSha256": "f08ab48a3e661c18be404d6eafcc471a6e0b866c41304495cc94fac0bfa24d4a",
+      "canonicalSha256": "f08ab48a3e661c18be404d6eafcc471a6e0b866c41304495cc94fac0bfa24d4a",
+      "bytes": 32774,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/surface-assets.js": {
+      "workingSha256": "5cb0f81348074edbc0e4f3c7dee4962fac10bbc5e7db0ee07b16216f3b7a1e5f",
+      "canonicalSha256": "5cb0f81348074edbc0e4f3c7dee4962fac10bbc5e7db0ee07b16216f3b7a1e5f",
+      "bytes": 509,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/traveler-art.js": {
+      "workingSha256": "cf9e029046f5581aa3116f648fb657f9edff2ced67abc507afa38525f3ae1ba1",
+      "canonicalSha256": "cf9e029046f5581aa3116f648fb657f9edff2ced67abc507afa38525f3ae1ba1",
+      "bytes": 16814,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/traveler-equipment-art.js": {
+      "workingSha256": "13537e49de6fdcd670e75875c3b17736b76df53b65709d2b2366aab721dc98dc",
+      "canonicalSha256": "13537e49de6fdcd670e75875c3b17736b76df53b65709d2b2366aab721dc98dc",
+      "bytes": 11937,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/workshop-transactions.js": {
+      "workingSha256": "115193dc80841b531a14f85a41c8d2d5e44c6169fc4ea4d6c19637eb7a8e8dd4",
+      "canonicalSha256": "115193dc80841b531a14f85a41c8d2d5e44c6169fc4ea4d6c19637eb7a8e8dd4",
+      "bytes": 3657,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/world-atlantis-earth.js": {
+      "workingSha256": "c9353bda6b066c83692e5c0a6d9c84c81a37b4386e446e908c511b6dd3373d96",
+      "canonicalSha256": "c9353bda6b066c83692e5c0a6d9c84c81a37b4386e446e908c511b6dd3373d96",
+      "bytes": 21990,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/world-foundations-art.js": {
+      "workingSha256": "8e4e4c8cbe3dd3338d950b523e3794b289c8fd3b34e35cfdd5817a3cddb37013",
+      "canonicalSha256": "8e4e4c8cbe3dd3338d950b523e3794b289c8fd3b34e35cfdd5817a3cddb37013",
+      "bytes": 7896,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/world-foundations-ui.js": {
+      "workingSha256": "51c73a7f50961add132495179621ec2ce9099686b087656ecd82fd41d443647b",
+      "canonicalSha256": "51c73a7f50961add132495179621ec2ce9099686b087656ecd82fd41d443647b",
+      "bytes": 27023,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/world-foundations.css": {
+      "workingSha256": "8abcf23f66cde69a92b7f3be6c099a1a2e2088d220bd83a81ea71d78f0564669",
+      "canonicalSha256": "8abcf23f66cde69a92b7f3be6c099a1a2e2088d220bd83a81ea71d78f0564669",
+      "bytes": 7377,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/world-foundations.js": {
+      "workingSha256": "4173e396c6d002d0ec25a7c549f046e0e77e561c3ef3b0e89400f84cc070d752",
+      "canonicalSha256": "4173e396c6d002d0ec25a7c549f046e0e77e561c3ef3b0e89400f84cc070d752",
+      "bytes": 16675,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/world-ground-coalescing.js": {
+      "workingSha256": "c31024794d5b5db2c28d9aab9ecf8fd0acdf55c2630ff5edf93b988151e5d63d",
+      "canonicalSha256": "c31024794d5b5db2c28d9aab9ecf8fd0acdf55c2630ff5edf93b988151e5d63d",
+      "bytes": 4777,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/world-heaven-hell.js": {
+      "workingSha256": "7192efdcce877e359865c43d39d03fc1a2a54ebad960fd2d2a378880033f4cbd",
+      "canonicalSha256": "7192efdcce877e359865c43d39d03fc1a2a54ebad960fd2d2a378880033f4cbd",
+      "bytes": 25484,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "src/world.js": {
+      "workingSha256": "d13277330b9d281e56392e153f8805ccaca3f482a3db75402cfb49ed8d9b79ec",
+      "canonicalSha256": "d13277330b9d281e56392e153f8805ccaca3f482a3db75402cfb49ed8d9b79ec",
+      "bytes": 39219,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/README.md": {
+      "workingSha256": "61adb5da6798eb7373ddcfb3a204e953314015aa3eef3a66baff17f3dbff78a8",
+      "canonicalSha256": "61adb5da6798eb7373ddcfb3a204e953314015aa3eef3a66baff17f3dbff78a8",
+      "bytes": 9430,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/actual_manual_controller.cjs": {
+      "workingSha256": "3f0df0272ebbf3de6c3bcc831a93f85763159422692f8c2818160b41b8cfcfea",
+      "canonicalSha256": "3f0df0272ebbf3de6c3bcc831a93f85763159422692f8c2818160b41b8cfcfea",
+      "bytes": 3753,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/adventure.test.cjs": {
+      "workingSha256": "15cc679d7ead6b87ec8c7b97c4368b7eea5578d612b39e4bb78d346621627a3e",
+      "canonicalSha256": "15cc679d7ead6b87ec8c7b97c4368b7eea5578d612b39e4bb78d346621627a3e",
+      "bytes": 14827,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/adventure_browser.py": {
+      "workingSha256": "d601ea72d5c763714ea8cdf140afe9b90bd2d8562904cfe8985ab39fe6b17683",
+      "canonicalSha256": "d601ea72d5c763714ea8cdf140afe9b90bd2d8562904cfe8985ab39fe6b17683",
+      "bytes": 14252,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/arsenal.test.cjs": {
+      "workingSha256": "401d51d8b3e0c00f63aaaa8d10c414126231d6b9b82e7b0c1a9c629c04f69951",
+      "canonicalSha256": "401d51d8b3e0c00f63aaaa8d10c414126231d6b9b82e7b0c1a9c629c04f69951",
+      "bytes": 21223,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/arsenal_browser.py": {
+      "workingSha256": "8ffd8dd019a2fd22594bb804e6e248922df46b9c98a95a41de96e77ba13853bd",
+      "canonicalSha256": "8ffd8dd019a2fd22594bb804e6e248922df46b9c98a95a41de96e77ba13853bd",
+      "bytes": 15092,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/arsenal_journey.cjs": {
+      "workingSha256": "f916a21bde67db55fb2d172eb8103c2cb1536dd2e4bc1ff5a8a0992d0a969622",
+      "canonicalSha256": "f916a21bde67db55fb2d172eb8103c2cb1536dd2e4bc1ff5a8a0992d0a969622",
+      "bytes": 5162,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/atlantis_campaign.test.cjs": {
+      "workingSha256": "ab733ab44e75b8df527a692fb01ec1db83787ab7003eadd818ea496cda79b505",
+      "canonicalSha256": "ab733ab44e75b8df527a692fb01ec1db83787ab7003eadd818ea496cda79b505",
+      "bytes": 28380,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/atlantis_campaign_art.test.cjs": {
+      "workingSha256": "800d61a8fc4a1699ee54dc21fc8130d87f0581eaa8d9dc77ac0b721069e8ac39",
+      "canonicalSha256": "800d61a8fc4a1699ee54dc21fc8130d87f0581eaa8d9dc77ac0b721069e8ac39",
+      "bytes": 33685,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/atlantis_campaign_browser.py": {
+      "workingSha256": "7e266114da7eb252ac800b142c4a4f697afa43e0e943ad243847ede3a4577167",
+      "canonicalSha256": "7e266114da7eb252ac800b142c4a4f697afa43e0e943ad243847ede3a4577167",
+      "bytes": 2879,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/atlantis_campaign_data.test.cjs": {
+      "workingSha256": "93f28443e17caa2d497df4143b30f437cae1de8acdbc34f087cd599b702d3121",
+      "canonicalSha256": "93f28443e17caa2d497df4143b30f437cae1de8acdbc34f087cd599b702d3121",
+      "bytes": 18673,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/atlantis_campaign_journey.cjs": {
+      "workingSha256": "bb3cb377546ea2fe22225e2aba5dc8a16ad1f43eeeb77f8e3a1efa7799c1bc70",
+      "canonicalSha256": "bb3cb377546ea2fe22225e2aba5dc8a16ad1f43eeeb77f8e3a1efa7799c1bc70",
+      "bytes": 16867,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/atlantis_capture_swim_probe.cjs": {
+      "workingSha256": "da4c9c0811367e30c310a7a313dc041ddde4cdf7b4052b30ae4b31fdebacec2e",
+      "canonicalSha256": "da4c9c0811367e30c310a7a313dc041ddde4cdf7b4052b30ae4b31fdebacec2e",
+      "bytes": 1706,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/beacon.test.cjs": {
+      "workingSha256": "defd95cf7b7dafa0f0383966beea4f13950e826fe497567dbf2a2b750119b696",
+      "canonicalSha256": "defd95cf7b7dafa0f0383966beea4f13950e826fe497567dbf2a2b750119b696",
+      "bytes": 15720,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/beacon_journey.cjs": {
+      "workingSha256": "2fe70a55c36613acbed06ef8d3a14eb09b44e1b14a006d315d8aa22f13dc80f7",
+      "canonicalSha256": "2fe70a55c36613acbed06ef8d3a14eb09b44e1b14a006d315d8aa22f13dc80f7",
+      "bytes": 5836,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/bridge.test.cjs": {
+      "workingSha256": "1b0c3cc766f58f2547f5c460c0fcf4e201e55492bcafca6f73736b55483fc177",
+      "canonicalSha256": "1b0c3cc766f58f2547f5c460c0fcf4e201e55492bcafca6f73736b55483fc177",
+      "bytes": 11577,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/bridge_browser.py": {
+      "workingSha256": "ffd2872e8dec2532c866e92dec623f25e791ff549bbfa7699e0e63501ffbfa70",
+      "canonicalSha256": "ffd2872e8dec2532c866e92dec623f25e791ff549bbfa7699e0e63501ffbfa70",
+      "bytes": 29130,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/bridge_community.test.cjs": {
+      "workingSha256": "c8c8e3793e12280852d59c427ed48e17ea9a4a9977f0be550966c7d3ef81961c",
+      "canonicalSha256": "c8c8e3793e12280852d59c427ed48e17ea9a4a9977f0be550966c7d3ef81961c",
+      "bytes": 8628,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/bridge_community_art.test.cjs": {
+      "workingSha256": "7d2a833d48351b3472ca104929e3b552bfc40ac6651e220ab8dbe7fe82a808d3",
+      "canonicalSha256": "7d2a833d48351b3472ca104929e3b552bfc40ac6651e220ab8dbe7fe82a808d3",
+      "bytes": 3003,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/bridge_community_browser.py": {
+      "workingSha256": "4e1351de35a5db184abf98bb67a21a2031a645ef482d4d023afd70ee58472db2",
+      "canonicalSha256": "4e1351de35a5db184abf98bb67a21a2031a645ef482d4d023afd70ee58472db2",
+      "bytes": 15683,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/bridge_community_journey.cjs": {
+      "workingSha256": "a0fbd871ba5554f5dbbd49bd39e51e34d102305e20fc5cc5ac15b968e88f44f3",
+      "canonicalSha256": "a0fbd871ba5554f5dbbd49bd39e51e34d102305e20fc5cc5ac15b968e88f44f3",
+      "bytes": 5764,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/bridge_moment_view.test.cjs": {
+      "workingSha256": "a94da56a7e0e2383bab9c40c50900116280bbc0b1cbb53cb601372d19269134c",
+      "canonicalSha256": "a94da56a7e0e2383bab9c40c50900116280bbc0b1cbb53cb601372d19269134c",
+      "bytes": 8324,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/bridge_rail_probe.js": {
+      "workingSha256": "095184ec43f5ca9170b8d3343d33057dda79e7ea0a2f64f1768cebb18ae80bee",
+      "canonicalSha256": "095184ec43f5ca9170b8d3343d33057dda79e7ea0a2f64f1768cebb18ae80bee",
+      "bytes": 6343,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/browser_support.py": {
+      "workingSha256": "d2238bb8d15fd0102b7a7dd86f71a5b210b2229b09f29f01333d6583ee1ee71f",
+      "canonicalSha256": "d2238bb8d15fd0102b7a7dd86f71a5b210b2229b09f29f01333d6583ee1ee71f",
+      "bytes": 556,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/browser_test.py": {
+      "workingSha256": "a36c3a9b053d92d38a77803b318e72ac7e3fcc97ed769e4d2d42e448cd091468",
+      "canonicalSha256": "a36c3a9b053d92d38a77803b318e72ac7e3fcc97ed769e4d2d42e448cd091468",
+      "bytes": 10255,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/camera-views.test.cjs": {
+      "workingSha256": "d9ab9af901d05c0c933a720ef9fa733a232364c677878562a870cb2eb1f33c01",
+      "canonicalSha256": "d9ab9af901d05c0c933a720ef9fa733a232364c677878562a870cb2eb1f33c01",
+      "bytes": 1963,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/camera.test.cjs": {
+      "workingSha256": "ba90bc114f88b4b8a7acefade2050af9dd6b33486b2a990eae82ff26b1bf5462",
+      "canonicalSha256": "ba90bc114f88b4b8a7acefade2050af9dd6b33486b2a990eae82ff26b1bf5462",
+      "bytes": 4471,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/camera_browser.py": {
+      "workingSha256": "a726c2226477deeb767a8c241e046fac65b026074a06f9d636afc2751888c0a1",
+      "canonicalSha256": "a726c2226477deeb767a8c241e046fac65b026074a06f9d636afc2751888c0a1",
+      "bytes": 16595,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/capture05.py": {
+      "workingSha256": "42e2aa1b1531a843252aa8956ae6778053140f8055501e48084c3e9ed8bc53e7",
+      "canonicalSha256": "42e2aa1b1531a843252aa8956ae6778053140f8055501e48084c3e9ed8bc53e7",
+      "bytes": 3983,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/capture09.py": {
+      "workingSha256": "ad320eefb991f92ee438a00f57f698bbd223faaad0f5a7dbf8fa3d9bc7ce66f2",
+      "canonicalSha256": "ad320eefb991f92ee438a00f57f698bbd223faaad0f5a7dbf8fa3d9bc7ce66f2",
+      "bytes": 1954,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/capture10.py": {
+      "workingSha256": "a8ebcc20b618b7243b409ad1a765a3c4c6697c66ec5dd5230293645e4b85511c",
+      "canonicalSha256": "a8ebcc20b618b7243b409ad1a765a3c4c6697c66ec5dd5230293645e4b85511c",
+      "bytes": 2837,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/capture_observer.test.cjs": {
+      "workingSha256": "0b05a449e620ecc7c4ca3c6fc3d75fc3b0a4420f958f17242a0a0e2138b9e3f3",
+      "canonicalSha256": "0b05a449e620ecc7c4ca3c6fc3d75fc3b0a4420f958f17242a0a0e2138b9e3f3",
+      "bytes": 1339,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/capture_road_preview.py": {
+      "workingSha256": "977eb2e3e4a37b7663e4b727d8559e496914385d6eea1657f0879c90f815eb2e",
+      "canonicalSha256": "977eb2e3e4a37b7663e4b727d8559e496914385d6eea1657f0879c90f815eb2e",
+      "bytes": 3392,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/chapter_journey.cjs": {
+      "workingSha256": "a4786d2c84424c9d9325ff56650764a504a6f68df0778359183d138d3ccbc5e1",
+      "canonicalSha256": "a4786d2c84424c9d9325ff56650764a504a6f68df0778359183d138d3ccbc5e1",
+      "bytes": 4451,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/characters.test.cjs": {
+      "workingSha256": "e4e0b9ab87d2832ac49ef8ec6a78ac99ec266e721d96c45c170750f332049c82",
+      "canonicalSha256": "e4e0b9ab87d2832ac49ef8ec6a78ac99ec266e721d96c45c170750f332049c82",
+      "bytes": 8231,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/characters_browser.py": {
+      "workingSha256": "26c436676044ee30c346c01d6598c794cd154e137629c22661c47b3748223741",
+      "canonicalSha256": "26c436676044ee30c346c01d6598c794cd154e137629c22661c47b3748223741",
+      "bytes": 26868,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/characters_journey.cjs": {
+      "workingSha256": "1d925f113b1862414fccfba947a827ed52540bfd5d75ecdeb844493dec66b32e",
+      "canonicalSha256": "1d925f113b1862414fccfba947a827ed52540bfd5d75ecdeb844493dec66b32e",
+      "bytes": 8734,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/classes.test.cjs": {
+      "workingSha256": "4c396acb6557c49116f81609113dbc09511107e3ba84d3a4566b432f1d0f42ec",
+      "canonicalSha256": "4c396acb6557c49116f81609113dbc09511107e3ba84d3a4566b432f1d0f42ec",
+      "bytes": 8850,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/classes_browser.py": {
+      "workingSha256": "df3e35ec6e2dc05ecfbe1bc9db74d1e1df3251216f4f748093a10434d858f3d0",
+      "canonicalSha256": "df3e35ec6e2dc05ecfbe1bc9db74d1e1df3251216f4f748093a10434d858f3d0",
+      "bytes": 14351,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/classes_journey.cjs": {
+      "workingSha256": "fde5e073199dfa2074f85399ef8064c9aca00916cb1697924d577bc0f10db75b",
+      "canonicalSha256": "fde5e073199dfa2074f85399ef8064c9aca00916cb1697924d577bc0f10db75b",
+      "bytes": 9094,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/coastward_bank_art.test.cjs": {
+      "workingSha256": "a72c2993a2a8225489f95a0e5fd0fc23eb60c0df0b8aca150ddb63791128d0fa",
+      "canonicalSha256": "a72c2993a2a8225489f95a0e5fd0fc23eb60c0df0b8aca150ddb63791128d0fa",
+      "bytes": 7543,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/coastward_bridge_posts_browser.py": {
+      "workingSha256": "8bf28b2f443fd24417089ea1cd6ce558f52980245b8a54ad84dda2c5103de2b6",
+      "canonicalSha256": "8bf28b2f443fd24417089ea1cd6ce558f52980245b8a54ad84dda2c5103de2b6",
+      "bytes": 23323,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/coastward_scenery_browser.py": {
+      "workingSha256": "1bb6e832520af740a89454845d1d3e19bf2475f038d61ae677e3822a8fc8a359",
+      "canonicalSha256": "1bb6e832520af740a89454845d1d3e19bf2475f038d61ae677e3822a8fc8a359",
+      "bytes": 22912,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/coastward_settlement_art.test.cjs": {
+      "workingSha256": "6145a301acd54c01b5cf8b92683f1b1ac9fa9f04657aeb48be69f7d8c3f60d9c",
+      "canonicalSha256": "6145a301acd54c01b5cf8b92683f1b1ac9fa9f04657aeb48be69f7d8c3f60d9c",
+      "bytes": 8861,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/coastward_woodland_art.test.cjs": {
+      "workingSha256": "e273bc5bcf69811bd603a74d8471548ae441617de4aa8806685259950b6fc5a4",
+      "canonicalSha256": "e273bc5bcf69811bd603a74d8471548ae441617de4aa8806685259950b6fc5a4",
+      "bytes": 10495,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/combat-cue.test.cjs": {
+      "workingSha256": "00ad240993aa3f361d2f5d32d9e7d913b5fc7a1ce4be2c5149e0f0c8d960993e",
+      "canonicalSha256": "00ad240993aa3f361d2f5d32d9e7d913b5fc7a1ce4be2c5149e0f0c8d960993e",
+      "bytes": 3852,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/combat-feel.test.cjs": {
+      "workingSha256": "3d093ff14b8099e732a1491818395f0501164e555a23c433210f395eb8e86883",
+      "canonicalSha256": "3d093ff14b8099e732a1491818395f0501164e555a23c433210f395eb8e86883",
+      "bytes": 3245,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/combat_cue_browser.py": {
+      "workingSha256": "080f5811075aa3f26fe34866989e69418568fb1c66c5d8c5ddfcb0ad1a53487b",
+      "canonicalSha256": "080f5811075aa3f26fe34866989e69418568fb1c66c5d8c5ddfcb0ad1a53487b",
+      "bytes": 19813,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/combat_view.test.cjs": {
+      "workingSha256": "a385e240207590d58c9079fda2b4c219cfb205fd85ff737822ed8b4e62db0704",
+      "canonicalSha256": "a385e240207590d58c9079fda2b4c219cfb205fd85ff737822ed8b4e62db0704",
+      "bytes": 2274,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/companion_art.test.cjs": {
+      "workingSha256": "7de044f253fb9c3bf042383e9a3fd1c90c2374e926ef0dc64799f3e9604793a9",
+      "canonicalSha256": "7de044f253fb9c3bf042383e9a3fd1c90c2374e926ef0dc64799f3e9604793a9",
+      "bytes": 12693,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/companion_presentation_browser.py": {
+      "workingSha256": "8e333f68a24a34249bca863e0739893ad54e74abd141c7750c76201ed41e96fa",
+      "canonicalSha256": "8e333f68a24a34249bca863e0739893ad54e74abd141c7750c76201ed41e96fa",
+      "bytes": 20446,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/core.test.cjs": {
+      "workingSha256": "9f5846892a774635bdfbfd2dccf1d1d6b623baf8a659b9c7543040d0e34e0389",
+      "canonicalSha256": "9f5846892a774635bdfbfd2dccf1d1d6b623baf8a659b9c7543040d0e34e0389",
+      "bytes": 6712,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/core_path_radius.test.cjs": {
+      "workingSha256": "fc2d1ab97ff145e4b99fbf8b99e64f971d47aafd8bc7ad7288e16101bd3505a0",
+      "canonicalSha256": "fc2d1ab97ff145e4b99fbf8b99e64f971d47aafd8bc7ad7288e16101bd3505a0",
+      "bytes": 10249,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/cosmos.test.cjs": {
+      "workingSha256": "0a1451b64c828b725db33d8a5dbdb6687e4980a52ce782ac8e28689206bd86bf",
+      "canonicalSha256": "0a1451b64c828b725db33d8a5dbdb6687e4980a52ce782ac8e28689206bd86bf",
+      "bytes": 5400,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/cosmos_browser.py": {
+      "workingSha256": "3be4f9f1e19556cfd45300b460fa5e4902937d246b44a3c8faf8fbcfd114ad51",
+      "canonicalSha256": "3be4f9f1e19556cfd45300b460fa5e4902937d246b44a3c8faf8fbcfd114ad51",
+      "bytes": 15991,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/cosmos_campaign_art.test.cjs": {
+      "workingSha256": "0ad02c6b16741d425e2a5cdfdb174b05ecf9f7b99ffe11112df95739f9ee0d76",
+      "canonicalSha256": "0ad02c6b16741d425e2a5cdfdb174b05ecf9f7b99ffe11112df95739f9ee0d76",
+      "bytes": 7421,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/cosmos_campaign_browser.py": {
+      "workingSha256": "16e80ad453cc5822f9683049f254c3f2a265905fca0db2a513cee6a64dab694b",
+      "canonicalSha256": "16e80ad453cc5822f9683049f254c3f2a265905fca0db2a513cee6a64dab694b",
+      "bytes": 2545,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/cosmos_campaign_data.test.cjs": {
+      "workingSha256": "260dde74a370e26c30136d859678346babc0ef20901f34789de57ea31f25152f",
+      "canonicalSha256": "260dde74a370e26c30136d859678346babc0ef20901f34789de57ea31f25152f",
+      "bytes": 18491,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/cosmos_campaign_installed.test.cjs": {
+      "workingSha256": "dcfe11fe508070033b7c3491029d2a726cb32e9e3d4dd18a1e831911109448b5",
+      "canonicalSha256": "dcfe11fe508070033b7c3491029d2a726cb32e9e3d4dd18a1e831911109448b5",
+      "bytes": 31434,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/cosmos_campaign_journey.cjs": {
+      "workingSha256": "8623215dc3c485af50dfdd2e2a544aca40aea5a4816313ac6155f01bbbcacfc2",
+      "canonicalSha256": "8623215dc3c485af50dfdd2e2a544aca40aea5a4816313ac6155f01bbbcacfc2",
+      "bytes": 24212,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/cosmos_campaign_journey.test.cjs": {
+      "workingSha256": "0c9c11250ebcd3b4046f5e7a1e26dd965464d079c4c11251db86e3911dd38bd7",
+      "canonicalSha256": "0c9c11250ebcd3b4046f5e7a1e26dd965464d079c4c11251db86e3911dd38bd7",
+      "bytes": 7370,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/cosmos_campaign_ui.test.cjs": {
+      "workingSha256": "b86f349a5b1e4b14528000d0cb2ee39113c7ce4cf897e58d2f4f00278c102a01",
+      "canonicalSha256": "b86f349a5b1e4b14528000d0cb2ee39113c7ce4cf897e58d2f4f00278c102a01",
+      "bytes": 8610,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/cosmos_geometry.test.cjs": {
+      "workingSha256": "cc6db4ff3ae8e794d050cb3ed89e79db619cced65b22bc45456cc16ae02469a5",
+      "canonicalSha256": "cc6db4ff3ae8e794d050cb3ed89e79db619cced65b22bc45456cc16ae02469a5",
+      "bytes": 18200,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/cosmos_journey.cjs": {
+      "workingSha256": "118bb7a150778593d3fb0f1f7139640847002f8a2b1bad7e72da8fffc884fc34",
+      "canonicalSha256": "118bb7a150778593d3fb0f1f7139640847002f8a2b1bad7e72da8fffc884fc34",
+      "bytes": 6713,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/cosmos_return_ui.test.cjs": {
+      "workingSha256": "a4f19b976a02d365f7a19e3921c519b71f981b9407858ce0be6ad4d45b303fab",
+      "canonicalSha256": "a4f19b976a02d365f7a19e3921c519b71f981b9407858ce0be6ad4d45b303fab",
+      "bytes": 2411,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/cosmos_witness_grounding.test.cjs": {
+      "workingSha256": "b73a27d6af643cfd96f99c94a65e1357e5a35a44e05d050351befbf8f9e863f0",
+      "canonicalSha256": "b73a27d6af643cfd96f99c94a65e1357e5a35a44e05d050351befbf8f9e863f0",
+      "bytes": 3771,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/creative.test.cjs": {
+      "workingSha256": "3e436fa3b402c850cbff7a2b9bc9c8e441b3c2f41cf392936396ac50c6024848",
+      "canonicalSha256": "3e436fa3b402c850cbff7a2b9bc9c8e441b3c2f41cf392936396ac50c6024848",
+      "bytes": 10517,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/crossing.test.cjs": {
+      "workingSha256": "672d51d5ed987fc21d141155b27a9549202aba0a376e27bde25978234b7b4682",
+      "canonicalSha256": "672d51d5ed987fc21d141155b27a9549202aba0a376e27bde25978234b7b4682",
+      "bytes": 16210,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/crossing_browser.py": {
+      "workingSha256": "389c935aff59e1bedf68d55111a8b29617770044316350870ea4a8633f6aa469",
+      "canonicalSha256": "389c935aff59e1bedf68d55111a8b29617770044316350870ea4a8633f6aa469",
+      "bytes": 17307,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/crossing_journey.cjs": {
+      "workingSha256": "e9854e5a059c85c2c5aa7838ec2ec1d613b5293ca2d479730853666bd5d56c0e",
+      "canonicalSha256": "e9854e5a059c85c2c5aa7838ec2ec1d613b5293ca2d479730853666bd5d56c0e",
+      "bytes": 6296,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/crossing_smoke.py": {
+      "workingSha256": "9e3073992f42083e4ec00c1b402fb2e7c971da3c5315d90e01013f5e4f3de17a",
+      "canonicalSha256": "9e3073992f42083e4ec00c1b402fb2e7c971da3c5315d90e01013f5e4f3de17a",
+      "bytes": 1985,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/cutaway_browser.py": {
+      "workingSha256": "d0c408b969d3b9726f91c01b50353694660ab87cdb036f3dc1e82c37a9a78064",
+      "canonicalSha256": "d0c408b969d3b9726f91c01b50353694660ab87cdb036f3dc1e82c37a9a78064",
+      "bytes": 3220,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/drover_art.test.cjs": {
+      "workingSha256": "cb3fa62bebbd820b29964c2aa0ac90387a7d9dddf9506a238d1c6e023331d2a8",
+      "canonicalSha256": "cb3fa62bebbd820b29964c2aa0ac90387a7d9dddf9506a238d1c6e023331d2a8",
+      "bytes": 5726,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth-notes.test.cjs": {
+      "workingSha256": "e6b65d3de70cdbf9e311f169cecd5a8b0b5c2edc5825a9794841175ff7323abc",
+      "canonicalSha256": "e6b65d3de70cdbf9e311f169cecd5a8b0b5c2edc5825a9794841175ff7323abc",
+      "bytes": 5852,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth-story.test.cjs": {
+      "workingSha256": "db324e155aab8b5afbea00d8f0894396b0eeaa3a1b1e24803687cb024bf79186",
+      "canonicalSha256": "db324e155aab8b5afbea00d8f0894396b0eeaa3a1b1e24803687cb024bf79186",
+      "bytes": 7166,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth.test.cjs": {
+      "workingSha256": "697b94e9ac48fae2ab2d095256471809f4123d28f6cc29f717e3a9ea42420540",
+      "canonicalSha256": "697b94e9ac48fae2ab2d095256471809f4123d28f6cc29f717e3a9ea42420540",
+      "bytes": 5375,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_browser.py": {
+      "workingSha256": "d803d0bd3f360160656423ce54d1035b3b0302ef18100676e28bd9b074151c0b",
+      "canonicalSha256": "d803d0bd3f360160656423ce54d1035b3b0302ef18100676e28bd9b074151c0b",
+      "bytes": 17952,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_encounter.test.cjs": {
+      "workingSha256": "3ae9f56b6390e20cbd338f3102b133fdbdf53df4eb7adda206c4331281a5a306",
+      "canonicalSha256": "3ae9f56b6390e20cbd338f3102b133fdbdf53df4eb7adda206c4331281a5a306",
+      "bytes": 7946,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_encounter_art_polish.test.cjs": {
+      "workingSha256": "119dabe592d15be03ab223db7a2677a02e315787836280a2d2f56db8fcd543e2",
+      "canonicalSha256": "119dabe592d15be03ab223db7a2677a02e315787836280a2d2f56db8fcd543e2",
+      "bytes": 17687,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_expedition.test.cjs": {
+      "workingSha256": "61b58eea53812620188326ef1054c019a4904d47d29b5c771f622e82c320831a",
+      "canonicalSha256": "61b58eea53812620188326ef1054c019a4904d47d29b5c771f622e82c320831a",
+      "bytes": 21401,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_expedition_art.test.cjs": {
+      "workingSha256": "72e2591b3dc7abfa2c33f108adab4d54b9d7df575d7f58a79aa5501d377561c1",
+      "canonicalSha256": "72e2591b3dc7abfa2c33f108adab4d54b9d7df575d7f58a79aa5501d377561c1",
+      "bytes": 22228,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_expedition_beast_art.test.cjs": {
+      "workingSha256": "8f6e6ff9755724ca418e34fbda15827e9335452e93e9ea954070f0543cd49a6a",
+      "canonicalSha256": "8f6e6ff9755724ca418e34fbda15827e9335452e93e9ea954070f0543cd49a6a",
+      "bytes": 12325,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_expedition_beast_caller.test.cjs": {
+      "workingSha256": "8ca927ab72fe33d199b2b9ad3867eed14002e2d92ff6ec5290dd75e7e602e6ab",
+      "canonicalSha256": "8ca927ab72fe33d199b2b9ad3867eed14002e2d92ff6ec5290dd75e7e602e6ab",
+      "bytes": 11256,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_expedition_browser.py": {
+      "workingSha256": "92fb061472ba81a223f6bb0fd70ae2df4979489e28329d44695d61032f22b1d0",
+      "canonicalSha256": "92fb061472ba81a223f6bb0fd70ae2df4979489e28329d44695d61032f22b1d0",
+      "bytes": 28437,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_expedition_dialogue.test.cjs": {
+      "workingSha256": "f9276663262061ab9ef41f8d057cdf57ae694ec1218e03b3274704940a1b83a4",
+      "canonicalSha256": "f9276663262061ab9ef41f8d057cdf57ae694ec1218e03b3274704940a1b83a4",
+      "bytes": 13856,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_expedition_journey.cjs": {
+      "workingSha256": "8369c40ea99932e03ec3c9e7783703e4b4a342ca29f2c9de045eae0571e96edb",
+      "canonicalSha256": "8369c40ea99932e03ec3c9e7783703e4b4a342ca29f2c9de045eae0571e96edb",
+      "bytes": 15435,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_expedition_ui.test.cjs": {
+      "workingSha256": "e7c0afe275d617a9942161f58fe6631376b3d2e0b999222674fa8eb42de389ec",
+      "canonicalSha256": "e7c0afe275d617a9942161f58fe6631376b3d2e0b999222674fa8eb42de389ec",
+      "bytes": 34168,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_ground_material_browser.py": {
+      "workingSha256": "d79110c940cf43b03bcb08d9e05a6b303d01705ea0dfbd709d6d654544143f0b",
+      "canonicalSha256": "d79110c940cf43b03bcb08d9e05a6b303d01705ea0dfbd709d6d654544143f0b",
+      "bytes": 1000,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_homecoming_actual_owners.cjs": {
+      "workingSha256": "f652b64d8c8259e77f9e4cbc41b321ea0e8a1d19f095b8a059abdc263092796d",
+      "canonicalSha256": "f652b64d8c8259e77f9e4cbc41b321ea0e8a1d19f095b8a059abdc263092796d",
+      "bytes": 425,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_homecoming_earned.test.cjs": {
+      "workingSha256": "5e5ec74ddbc7598465a096c242712536bc07c26accf0a7b6eebadfe618314122",
+      "canonicalSha256": "5e5ec74ddbc7598465a096c242712536bc07c26accf0a7b6eebadfe618314122",
+      "bytes": 12854,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_homecoming_host_helpers.cjs": {
+      "workingSha256": "093c2fcfab34cdff5144a5ebb8a0e5d06fcfdfb3972e6df8918b094f3fa8a134",
+      "canonicalSha256": "093c2fcfab34cdff5144a5ebb8a0e5d06fcfdfb3972e6df8918b094f3fa8a134",
+      "bytes": 7264,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_homecoming_hosts.test.cjs": {
+      "workingSha256": "6e7fe806a391b2c100822fe221ff585999689d6d8564f0f1391d87acf73c7275",
+      "canonicalSha256": "6e7fe806a391b2c100822fe221ff585999689d6d8564f0f1391d87acf73c7275",
+      "bytes": 18937,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_homecoming_installed.test.cjs": {
+      "workingSha256": "f2da55003147c5e1147a61e6f9850da37b4d4f5ad10aca92cea7ec11ff33d1b5",
+      "canonicalSha256": "f2da55003147c5e1147a61e6f9850da37b4d4f5ad10aca92cea7ec11ff33d1b5",
+      "bytes": 27064,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_homecoming_projection.test.cjs": {
+      "workingSha256": "fe20dd3385e3218699f1b18093febc9174c2c2ede15c628501a9be93169735d6",
+      "canonicalSha256": "fe20dd3385e3218699f1b18093febc9174c2c2ede15c628501a9be93169735d6",
+      "bytes": 34217,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_journey.cjs": {
+      "workingSha256": "4f7dfe21cac5d43b6ba8a210833a241d131aab5e1088235eb83d479d7fd33d78",
+      "canonicalSha256": "4f7dfe21cac5d43b6ba8a210833a241d131aab5e1088235eb83d479d7fd33d78",
+      "bytes": 4564,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_notes_browser.py": {
+      "workingSha256": "3856984333810a9047c97ac3a1d57cc5fbc0e01e4d3cefab61382982f00a3a89",
+      "canonicalSha256": "3856984333810a9047c97ac3a1d57cc5fbc0e01e4d3cefab61382982f00a3a89",
+      "bytes": 10161,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_notes_journey.cjs": {
+      "workingSha256": "aa2d306a046dc8fd796e46d1eff726fc3f0899be8250c3a12a7be02654799082",
+      "canonicalSha256": "aa2d306a046dc8fd796e46d1eff726fc3f0899be8250c3a12a7be02654799082",
+      "bytes": 3656,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_outing.test.cjs": {
+      "workingSha256": "d8b2be95f719d0e6da408ebbff828128f5f4df4f9b2e9e2d8f8399b96dc47b3f",
+      "canonicalSha256": "d8b2be95f719d0e6da408ebbff828128f5f4df4f9b2e9e2d8f8399b96dc47b3f",
+      "bytes": 8729,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_shoulder_art.test.cjs": {
+      "workingSha256": "b8ba2d90f6a972ace636791f6c36cf3479b9097149db07afafac3678de64c09c",
+      "canonicalSha256": "b8ba2d90f6a972ace636791f6c36cf3479b9097149db07afafac3678de64c09c",
+      "bytes": 7053,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_story_browser.py": {
+      "workingSha256": "278feb88ebc9bcb92ff1e2623eec6d5fe3f926e0210f8ec81089d51482844c49",
+      "canonicalSha256": "278feb88ebc9bcb92ff1e2623eec6d5fe3f926e0210f8ec81089d51482844c49",
+      "bytes": 35828,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_story_journey.cjs": {
+      "workingSha256": "f3a457bc97decc853f186f2cd02bc8eb593eb0934bcd9d4465ad8062d87c0f0e",
+      "canonicalSha256": "f3a457bc97decc853f186f2cd02bc8eb593eb0934bcd9d4465ad8062d87c0f0e",
+      "bytes": 4634,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/earth_story_transactions_browser.py": {
+      "workingSha256": "4187c41c82aa88f6f041cd69a7a7a695c5f36962b96ae80f588bfda102f9a8ff",
+      "canonicalSha256": "4187c41c82aa88f6f041cd69a7a7a695c5f36962b96ae80f588bfda102f9a8ff",
+      "bytes": 13699,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/elderweald_world.test.cjs": {
+      "workingSha256": "16d5f0b52221bfec4e270e11e2a17695d752f74b9c0af1a2be359117e099c815",
+      "canonicalSha256": "16d5f0b52221bfec4e270e11e2a17695d752f74b9c0af1a2be359117e099c815",
+      "bytes": 17204,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/experience_browser.py": {
+      "workingSha256": "a6e252f78566bebcba81feab61192436de32678040a6da5feb31268587bc881a",
+      "canonicalSha256": "a6e252f78566bebcba81feab61192436de32678040a6da5feb31268587bc881a",
+      "bytes": 13841,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/fixtures/atlantis_capture_controller_boundary.json": {
+      "workingSha256": "fc7e5d75b0ea98e59d4350c5fb387df98fcb7174a9049750a74a3ccbb4b8b8f8",
+      "canonicalSha256": "fc7e5d75b0ea98e59d4350c5fb387df98fcb7174a9049750a74a3ccbb4b8b8f8",
+      "bytes": 13430,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/fixtures/cosmos-original/cosmos-art.js": {
+      "workingSha256": "f95fe5cbbb5b49609606f15249e127af70af4f76e39839449fd279db91c632b1",
+      "canonicalSha256": "f95fe5cbbb5b49609606f15249e127af70af4f76e39839449fd279db91c632b1",
+      "bytes": 7651,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/fixtures/cosmos-original/cosmos.js": {
+      "workingSha256": "dc646ba254ad4c482685c58d342e50c696832f479c8a13526faeed089fe4d3c5",
+      "canonicalSha256": "dc646ba254ad4c482685c58d342e50c696832f479c8a13526faeed089fe4d3c5",
+      "bytes": 6577,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/fixtures/cosmos-original/world-foundations.js": {
+      "workingSha256": "97f445690fccea753c860e96bf54d4e33a3c8551e8738a31d3d947ce30d1465d",
+      "canonicalSha256": "97f445690fccea753c860e96bf54d4e33a3c8551e8738a31d3d947ce30d1465d",
+      "bytes": 16492,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/fixtures/earth-homecoming-prerequisites/PROVENANCE.json": {
+      "workingSha256": "4b18502ab94c1e468013638ae79ffb1c53e100cd4e086abc8576a730ee932a3a",
+      "canonicalSha256": "4b18502ab94c1e468013638ae79ffb1c53e100cd4e086abc8576a730ee932a3a",
+      "bytes": 45197,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/fixtures/earth-homecoming-prerequisites/README.md": {
+      "workingSha256": "c5e43e3e405250df82e57fae4d385f89b44db71d5a0ecfaa1097975f70caa732",
+      "canonicalSha256": "c5e43e3e405250df82e57fae4d385f89b44db71d5a0ecfaa1097975f70caa732",
+      "bytes": 980,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/fixtures/earth-homecoming-prerequisites/blade/ALL_TWELVE_PREREQUISITES_EARNED.json": {
+      "workingSha256": "3b8e39f119e5eda83211f036b13f982961a96830d24235a1a86065ee32c99a93",
+      "canonicalSha256": "3b8e39f119e5eda83211f036b13f982961a96830d24235a1a86065ee32c99a93",
+      "bytes": 83152,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/fixtures/earth-homecoming-prerequisites/bow/ALL_TWELVE_PREREQUISITES_EARNED.json": {
+      "workingSha256": "ea92d097b01b1d9610a25e02300b07a629c257a58d1a57e09e67de27648f657f",
+      "canonicalSha256": "ea92d097b01b1d9610a25e02300b07a629c257a58d1a57e09e67de27648f657f",
+      "bytes": 86274,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/fixtures/earth-homecoming-prerequisites/strongest/FINAL_WORLD.json": {
+      "workingSha256": "1cc37eafe2f1a10943ee11e8eba6423f3ca51be6f15d359bf9928e0fe5cb53e6",
+      "canonicalSha256": "1cc37eafe2f1a10943ee11e8eba6423f3ca51be6f15d359bf9928e0fe5cb53e6",
+      "bytes": 71728,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/fixtures/onboarding-resume-pair.json": {
+      "workingSha256": "6cef7c3519ddefcfa65780291adc6cb2bece72d000ff80f85358532190e8ee79",
+      "canonicalSha256": "6cef7c3519ddefcfa65780291adc6cb2bece72d000ff80f85358532190e8ee79",
+      "bytes": 16339,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/gathering.test.cjs": {
+      "workingSha256": "35a57824a175960bfde8242707cc7e4608a39a52538bd4f48851cfa1593c3a86",
+      "canonicalSha256": "35a57824a175960bfde8242707cc7e4608a39a52538bd4f48851cfa1593c3a86",
+      "bytes": 9391,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/gathering_browser.py": {
+      "workingSha256": "5c6540bcbc63356d5adc84c4281ff4c4244dffed80f7c413730879fd054a3dc4",
+      "canonicalSha256": "5c6540bcbc63356d5adc84c4281ff4c4244dffed80f7c413730879fd054a3dc4",
+      "bytes": 15938,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/gathering_component_browser.py": {
+      "workingSha256": "aab5a1c4c41892de31496641b21c81c4d91b3ca5fa8ddb5009ed2c64bc37d6d6",
+      "canonicalSha256": "aab5a1c4c41892de31496641b21c81c4d91b3ca5fa8ddb5009ed2c64bc37d6d6",
+      "bytes": 10829,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/gathering_contract.test.cjs": {
+      "workingSha256": "be0b37a89cb89ccba137559abcf18709d2e5ce417fb4156c83a1e81ba7f36b71",
+      "canonicalSha256": "be0b37a89cb89ccba137559abcf18709d2e5ce417fb4156c83a1e81ba7f36b71",
+      "bytes": 8536,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/gathering_journey.cjs": {
+      "workingSha256": "711573430b9cd579ad2a7ffa266e92c588ef977c858fc72ebb14e37f0d4a1409",
+      "canonicalSha256": "711573430b9cd579ad2a7ffa266e92c588ef977c858fc72ebb14e37f0d4a1409",
+      "bytes": 3823,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/gathering_ui_host.js": {
+      "workingSha256": "1127e7f9c9574276af463b5720281bb885d0b30ab56a31875ce3ce11c0f5ab87",
+      "canonicalSha256": "1127e7f9c9574276af463b5720281bb885d0b30ab56a31875ce3ce11c0f5ab87",
+      "bytes": 2575,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/heaven_campaign.test.cjs": {
+      "workingSha256": "1a5bff3934824c8dfc8de4648f0f71438f46f843c12926e0457335bb4b352eb4",
+      "canonicalSha256": "1a5bff3934824c8dfc8de4648f0f71438f46f843c12926e0457335bb4b352eb4",
+      "bytes": 14887,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/heaven_campaign_art.test.cjs": {
+      "workingSha256": "67c57a16b184ce9928a8804f8b6dc5905336d203761a7e95c00d92a3f5a05348",
+      "canonicalSha256": "67c57a16b184ce9928a8804f8b6dc5905336d203761a7e95c00d92a3f5a05348",
+      "bytes": 30766,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/heaven_campaign_browser.py": {
+      "workingSha256": "5d71bb395e4fa21fc093e49a24fd607ab50dd32889602a1aabd04be4ac2322e1",
+      "canonicalSha256": "5d71bb395e4fa21fc093e49a24fd607ab50dd32889602a1aabd04be4ac2322e1",
+      "bytes": 1599,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/heaven_campaign_data.test.cjs": {
+      "workingSha256": "314a1675620db977ca626132e540ef626e4de6fa674d64725c006625fc53a2cc",
+      "canonicalSha256": "314a1675620db977ca626132e540ef626e4de6fa674d64725c006625fc53a2cc",
+      "bytes": 15548,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/heaven_campaign_journey.cjs": {
+      "workingSha256": "17938427655d8ca59642d58a65a7975c771ccfe86c0794d2eb512d91fd44972e",
+      "canonicalSha256": "17938427655d8ca59642d58a65a7975c771ccfe86c0794d2eb512d91fd44972e",
+      "bytes": 22838,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/hell_campaign.test.cjs": {
+      "workingSha256": "3f44ed689f2ce5b220b94e3098414a66abba138915831554a9fc33349f109862",
+      "canonicalSha256": "3f44ed689f2ce5b220b94e3098414a66abba138915831554a9fc33349f109862",
+      "bytes": 9217,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/hell_campaign_art.test.cjs": {
+      "workingSha256": "a2b73d74eb078ec00788e54c40e78ec0a62bef741384a9c2257a267f837ebc8b",
+      "canonicalSha256": "a2b73d74eb078ec00788e54c40e78ec0a62bef741384a9c2257a267f837ebc8b",
+      "bytes": 12527,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/hell_campaign_browser.py": {
+      "workingSha256": "ebeeeeff359b25035910693ab62d1815b5640f6972cbfba086d55dea6e0e8a6f",
+      "canonicalSha256": "ebeeeeff359b25035910693ab62d1815b5640f6972cbfba086d55dea6e0e8a6f",
+      "bytes": 1412,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/hell_campaign_data.test.cjs": {
+      "workingSha256": "9ce29c188680101ab10a189b2ee5e68e2e4affc9220a7ddf78f1317f7445b28f",
+      "canonicalSha256": "9ce29c188680101ab10a189b2ee5e68e2e4affc9220a7ddf78f1317f7445b28f",
+      "bytes": 10782,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/hell_campaign_journey.cjs": {
+      "workingSha256": "7107cb273e359e423a3f61174a9adf949580cc1ddc299d4c758f41e2ba3f2a06",
+      "canonicalSha256": "7107cb273e359e423a3f61174a9adf949580cc1ddc299d4c758f41e2ba3f2a06",
+      "bytes": 8759,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/home_history.test.cjs": {
+      "workingSha256": "51473e5cf4ce3b784f428591171f93bc5a5b71a090bbba3982a015510ce85d7e",
+      "canonicalSha256": "51473e5cf4ce3b784f428591171f93bc5a5b71a090bbba3982a015510ce85d7e",
+      "bytes": 10568,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/home_history_browser.py": {
+      "workingSha256": "fd0403b80818344c93bb35d88639d3792ccbf67d16dcf7317adc4d559ad0bdf3",
+      "canonicalSha256": "fd0403b80818344c93bb35d88639d3792ccbf67d16dcf7317adc4d559ad0bdf3",
+      "bytes": 19532,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/home_history_journey.cjs": {
+      "workingSha256": "51d16bbc275f2c69127ad923af27b4ad032b8c03e4396d5039d6c6faebf3a6cc",
+      "canonicalSha256": "51d16bbc275f2c69127ad923af27b4ad032b8c03e4396d5039d6c6faebf3a6cc",
+      "bytes": 6041,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/journey_usability.test.cjs": {
+      "workingSha256": "54915dc39197197cb136789d57d4478a07ac3bb2f2a9809b494aba8e6194f23b",
+      "canonicalSha256": "54915dc39197197cb136789d57d4478a07ac3bb2f2a9809b494aba8e6194f23b",
+      "bytes": 11197,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/journey_usability_browser.py": {
+      "workingSha256": "d205a1096c5b8279f2fc14c6dc47a041b72e632e3274ecf5c08cbdff178724a3",
+      "canonicalSha256": "d205a1096c5b8279f2fc14c6dc47a041b72e632e3274ecf5c08cbdff178724a3",
+      "bytes": 14328,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/living_region_motion.test.cjs": {
+      "workingSha256": "43d1bb05a375ef00e7f9a24faecd7abc892f7230aa1463d53be30ae0c8b153bc",
+      "canonicalSha256": "43d1bb05a375ef00e7f9a24faecd7abc892f7230aa1463d53be30ae0c8b153bc",
+      "bytes": 4640,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/local_life.test.cjs": {
+      "workingSha256": "4ae1ccde986311236fe35673067b52a50c591713725509f606f83154b863bf07",
+      "canonicalSha256": "4ae1ccde986311236fe35673067b52a50c591713725509f606f83154b863bf07",
+      "bytes": 10384,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/local_life_browser.py": {
+      "workingSha256": "7b288a6baa4e60151eedd39d436398e7c0dafd403e7d4a19ef311deeebd61bd0",
+      "canonicalSha256": "7b288a6baa4e60151eedd39d436398e7c0dafd403e7d4a19ef311deeebd61bd0",
+      "bytes": 25869,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/local_life_journey.cjs": {
+      "workingSha256": "8eb72e73fbbaad90b8760a597185665f6edd3b9395b9146e0bca3e3f3828ae70",
+      "canonicalSha256": "8eb72e73fbbaad90b8760a597185665f6edd3b9395b9146e0bca3e3f3828ae70",
+      "bytes": 10671,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/mill_gate_art.test.cjs": {
+      "workingSha256": "2e7f656a50f46775a6f755b17a9cc73e73b00dc0c3764ccfaae53e26f3be211a",
+      "canonicalSha256": "2e7f656a50f46775a6f755b17a9cc73e73b00dc0c3764ccfaae53e26f3be211a",
+      "bytes": 2806,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/millwright_art.test.cjs": {
+      "workingSha256": "7a3f63b8439a2b24c1cf371fd375e6cb1e59ae60bc16cd16032c9d49fa708ecf",
+      "canonicalSha256": "7a3f63b8439a2b24c1cf371fd375e6cb1e59ae60bc16cd16032c9d49fa708ecf",
+      "bytes": 3220,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/native_browser.py": {
+      "workingSha256": "cd936b79d3722b6807c388467ea138e26c021b6ddf46a63bf82a9d19abe9bf2a",
+      "canonicalSha256": "cd936b79d3722b6807c388467ea138e26c021b6ddf46a63bf82a9d19abe9bf2a",
+      "bytes": 2421,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/native_origin_browser.py": {
+      "workingSha256": "0765c3aa4a2a625d9c9c201f8c6a70ec011a611a64bb521b09055ac2a20b00a9",
+      "canonicalSha256": "0765c3aa4a2a625d9c9c201f8c6a70ec011a611a64bb521b09055ac2a20b00a9",
+      "bytes": 5772,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/practice_visibility_browser.py": {
+      "workingSha256": "402ef9529e2fe1fe89335fdc6610622dfd526913a5869f3c7f74610ed9e7b4c4",
+      "canonicalSha256": "402ef9529e2fe1fe89335fdc6610622dfd526913a5869f3c7f74610ed9e7b4c4",
+      "bytes": 28924,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/presentation.test.cjs": {
+      "workingSha256": "f7d1dd1e16b8cf5c5890ec695486e3a53958d41e4d9e04861fad4fa372e65f62",
+      "canonicalSha256": "f7d1dd1e16b8cf5c5890ec695486e3a53958d41e4d9e04861fad4fa372e65f62",
+      "bytes": 2531,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/pursuit.test.cjs": {
+      "workingSha256": "080095e80dd8c2425b863ed66a7e763651cc6d9ea0413fdda75c7780a5f3cca6",
+      "canonicalSha256": "080095e80dd8c2425b863ed66a7e763651cc6d9ea0413fdda75c7780a5f3cca6",
+      "bytes": 17903,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/pursuit_browser.py": {
+      "workingSha256": "41aadb24fe68078d231b957b6e3976e0fc652619a59e044cab84eaac0c8c44bc",
+      "canonicalSha256": "41aadb24fe68078d231b957b6e3976e0fc652619a59e044cab84eaac0c8c44bc",
+      "bytes": 20064,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/pursuit_journey.cjs": {
+      "workingSha256": "7d0da6f74afe8a1af5b6b70683f51ad7caeb3adf58c754c1d81d467220c6942d",
+      "canonicalSha256": "7d0da6f74afe8a1af5b6b70683f51ad7caeb3adf58c754c1d81d467220c6942d",
+      "bytes": 10634,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/quarry_art.test.cjs": {
+      "workingSha256": "8657e0314c46a6fc6cf359ea83299675765333dccdce60a9fa3b7483daac4150",
+      "canonicalSha256": "8657e0314c46a6fc6cf359ea83299675765333dccdce60a9fa3b7483daac4150",
+      "bytes": 6888,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/ranged_road_journey.cjs": {
+      "workingSha256": "f2a4be50a25ae45b919f7a9cb5395324ce6ff9312bee308a1c2b702650879aa9",
+      "canonicalSha256": "f2a4be50a25ae45b919f7a9cb5395324ce6ff9312bee308a1c2b702650879aa9",
+      "bytes": 552,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/realm_atlas_browser.py": {
+      "workingSha256": "89496974f0e920189e5ba7628710284bd1fe16c43ad4c1bdf193933206cca42b",
+      "canonicalSha256": "89496974f0e920189e5ba7628710284bd1fe16c43ad4c1bdf193933206cca42b",
+      "bytes": 5573,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/realm_givers_art.test.cjs": {
+      "workingSha256": "a44d5499950aae7e19b8bce2263eda5d2d3efc52cdbac043257a896775b2c47c",
+      "canonicalSha256": "a44d5499950aae7e19b8bce2263eda5d2d3efc52cdbac043257a896775b2c47c",
+      "bytes": 11951,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/realm_givers_browser.py": {
+      "workingSha256": "74e7f9cd12601f5736fe9f00e37464ad63f6451f0a4381688f5792edeb615d52",
+      "canonicalSha256": "74e7f9cd12601f5736fe9f00e37464ad63f6451f0a4381688f5792edeb615d52",
+      "bytes": 36317,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/realm_trails.test.cjs": {
+      "workingSha256": "e4ea365686014faec588c206a029641a137321b9e4bd8ed6edc0aebf9395efc0",
+      "canonicalSha256": "e4ea365686014faec588c206a029641a137321b9e4bd8ed6edc0aebf9395efc0",
+      "bytes": 22923,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/realm_trails_art.test.cjs": {
+      "workingSha256": "f2d9cc88bf27d16786bb017efa4f4871ddb71a429fca2f4879f7fe8ecc2e6ccc",
+      "canonicalSha256": "f2d9cc88bf27d16786bb017efa4f4871ddb71a429fca2f4879f7fe8ecc2e6ccc",
+      "bytes": 17444,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/realm_trails_browser.py": {
+      "workingSha256": "714c8d6e72d7262eb7e86699ec2941b3ddf01e06233c4f8fa41411413fb5df86",
+      "canonicalSha256": "714c8d6e72d7262eb7e86699ec2941b3ddf01e06233c4f8fa41411413fb5df86",
+      "bytes": 13541,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/realm_trails_cosmos.test.cjs": {
+      "workingSha256": "5e9bdf3ed712a0379c52f9451b535abf6353861e8ed5260182198e3b6c0b620a",
+      "canonicalSha256": "5e9bdf3ed712a0379c52f9451b535abf6353861e8ed5260182198e3b6c0b620a",
+      "bytes": 7442,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/realm_trails_cosmos_browser.py": {
+      "workingSha256": "a68553ae4600f946dd2fde2fb51a34d2a9c190c52e9b8155b76206694c189c2a",
+      "canonicalSha256": "a68553ae4600f946dd2fde2fb51a34d2a9c190c52e9b8155b76206694c189c2a",
+      "bytes": 7647,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/realm_trails_cosmos_journey.cjs": {
+      "workingSha256": "33706c2bd200e36f1ae323c484849126d222bc249c661ffcb3d6b47be3ee0c78",
+      "canonicalSha256": "33706c2bd200e36f1ae323c484849126d222bc249c661ffcb3d6b47be3ee0c78",
+      "bytes": 5771,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/realm_trails_instrument_rules.test.cjs": {
+      "workingSha256": "4e9e67740558a7b5ebd47c9466184f57ab9e01ebff2a495cc773d8e9178b5031",
+      "canonicalSha256": "4e9e67740558a7b5ebd47c9466184f57ab9e01ebff2a495cc773d8e9178b5031",
+      "bytes": 5055,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/realm_trails_journey.cjs": {
+      "workingSha256": "dfb80cecd9ba2d1ec22d93cd1aface73cd65fbdab1aff923674944970a865727",
+      "canonicalSha256": "dfb80cecd9ba2d1ec22d93cd1aface73cd65fbdab1aff923674944970a865727",
+      "bytes": 15992,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/realm_trails_north.test.cjs": {
+      "workingSha256": "bb5c3ff7fd5aca852d1086271ad92692081b4e1f24bd0b6acde205925dae8065",
+      "canonicalSha256": "bb5c3ff7fd5aca852d1086271ad92692081b4e1f24bd0b6acde205925dae8065",
+      "bytes": 15335,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/realm_trails_north_browser.py": {
+      "workingSha256": "8ed74cdf16d327d3ef68dbe38eed0ea4d95d40d586fc818599835c53d43ac8ae",
+      "canonicalSha256": "8ed74cdf16d327d3ef68dbe38eed0ea4d95d40d586fc818599835c53d43ac8ae",
+      "bytes": 28147,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/realm_trails_north_rules.test.cjs": {
+      "workingSha256": "94af3e1328a2c73ef92ef803c2d9be47a6cde07913767dad828f23281395fa46",
+      "canonicalSha256": "94af3e1328a2c73ef92ef803c2d9be47a6cde07913767dad828f23281395fa46",
+      "bytes": 17126,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/realm_trails_south.test.cjs": {
+      "workingSha256": "4365626589ddbd80a4a4077ce5418c62625a335a470c945f1847f345ef28bbb2",
+      "canonicalSha256": "4365626589ddbd80a4a4077ce5418c62625a335a470c945f1847f345ef28bbb2",
+      "bytes": 8419,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/realm_trails_south_journey.cjs": {
+      "workingSha256": "b197305075af40ed6b36a9cfc2b36a8a19388eacc58dcad5029acdfed2ab8cf2",
+      "canonicalSha256": "b197305075af40ed6b36a9cfc2b36a8a19388eacc58dcad5029acdfed2ab8cf2",
+      "bytes": 5969,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/realm_work_presentation_browser.py": {
+      "workingSha256": "f612ad029a32ab182503ad1fe4307cee6e251206bb43bb0919dc8037fdcee5c9",
+      "canonicalSha256": "f612ad029a32ab182503ad1fe4307cee6e251206bb43bb0919dc8037fdcee5c9",
+      "bytes": 35678,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/reflection.test.cjs": {
+      "workingSha256": "5774cdccf578ef1ddee224e8f8bccecc59fe2d4fea5493378ac28a4c9d3cb7ff",
+      "canonicalSha256": "5774cdccf578ef1ddee224e8f8bccecc59fe2d4fea5493378ac28a4c9d3cb7ff",
+      "bytes": 2128,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/reflection_browser.py": {
+      "workingSha256": "0851a777a3edc04d214a39e166e8c2ec5b6fc11753b20c15d6335cec417739e5",
+      "canonicalSha256": "0851a777a3edc04d214a39e166e8c2ec5b6fc11753b20c15d6335cec417739e5",
+      "bytes": 2647,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/regression09_browser.py": {
+      "workingSha256": "62a2c9e24af7c68c6bf9e9a7d3dd70348b03eeb3d8409da0778617e3af7c0c90",
+      "canonicalSha256": "62a2c9e24af7c68c6bf9e9a7d3dd70348b03eeb3d8409da0778617e3af7c0c90",
+      "bytes": 22053,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/render_preview.py": {
+      "workingSha256": "fb0c904ef487ca147a5b18faae6f52c8519404ce686c03dd783310150289cf95",
+      "canonicalSha256": "fb0c904ef487ca147a5b18faae6f52c8519404ce686c03dd783310150289cf95",
+      "bytes": 3637,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/road-domain.test.cjs": {
+      "workingSha256": "d99f862745956fb513576fa543d22d7b00ee52c651da7d5b390f30f6775b09fd",
+      "canonicalSha256": "d99f862745956fb513576fa543d22d7b00ee52c651da7d5b390f30f6775b09fd",
+      "bytes": 2226,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/road.test.cjs": {
+      "workingSha256": "bedb9b48e2e647f68f30cec1c40aabf6a578a95ced6627a57a34355e3ae0bbe4",
+      "canonicalSha256": "bedb9b48e2e647f68f30cec1c40aabf6a578a95ced6627a57a34355e3ae0bbe4",
+      "bytes": 13453,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/road_browser.py": {
+      "workingSha256": "59276062bbe6cf277ebef589a331ff06613df186d15bfe894852d7160caba760",
+      "canonicalSha256": "59276062bbe6cf277ebef589a331ff06613df186d15bfe894852d7160caba760",
+      "bytes": 11744,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/road_journey.cjs": {
+      "workingSha256": "8985b86bdaf1e96abfbe009e3cc787d513dfb4827afcbdfb87d86a66fa03fbe9",
+      "canonicalSha256": "8985b86bdaf1e96abfbe009e3cc787d513dfb4827afcbdfb87d86a66fa03fbe9",
+      "bytes": 5241,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/rpg_browser.py": {
+      "workingSha256": "29bfc5122a06fe6b52e304ae17599b3b436a6e8a5ab0d4367a4cec778642c005",
+      "canonicalSha256": "29bfc5122a06fe6b52e304ae17599b3b436a6e8a5ab0d4367a4cec778642c005",
+      "bytes": 207,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/run_browser_suites.py": {
+      "workingSha256": "93ff999efe9b8cdbf0c05370e7d4ab7450383fc3af3158fa14459c3e78c290db",
+      "canonicalSha256": "93ff999efe9b8cdbf0c05370e7d4ab7450383fc3af3158fa14459c3e78c290db",
+      "bytes": 909,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/sandbox.test.cjs": {
+      "workingSha256": "1040f791613db27648fbc22021f2ae7f349ebfde5655c3800b5e6cb98f618a4d",
+      "canonicalSha256": "1040f791613db27648fbc22021f2ae7f349ebfde5655c3800b5e6cb98f618a4d",
+      "bytes": 12738,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/sandbox_browser.py": {
+      "workingSha256": "116f961980e3488e00f70c3c0967eef5743f7e599561c7277329bed3dcded0f6",
+      "canonicalSha256": "116f961980e3488e00f70c3c0967eef5743f7e599561c7277329bed3dcded0f6",
+      "bytes": 11209,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/showcase.cjs": {
+      "workingSha256": "3f56cb66ef170ac123ad3ef6c512f34be956eec789c1c48b7e594c81a6283d07",
+      "canonicalSha256": "3f56cb66ef170ac123ad3ef6c512f34be956eec789c1c48b7e594c81a6283d07",
+      "bytes": 2511,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/skitter_art.test.cjs": {
+      "workingSha256": "16f6398172b570c24e83ef93441535d1239febd3b7a8aa5b773c7a69ea4690c6",
+      "canonicalSha256": "16f6398172b570c24e83ef93441535d1239febd3b7a8aa5b773c7a69ea4690c6",
+      "bytes": 12729,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/skitter_presentation_browser.py": {
+      "workingSha256": "82b2914101c348451e807aaef9271d924b41ca16c3ee06e17a49f3e4e3b92f5f",
+      "canonicalSha256": "82b2914101c348451e807aaef9271d924b41ca16c3ee06e17a49f3e4e3b92f5f",
+      "bytes": 20503,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/soundscape.test.cjs": {
+      "workingSha256": "1f98439da3b0446a1bb1f360091ffbfb67bec50f9916bacad921d26260b05cce",
+      "canonicalSha256": "1f98439da3b0446a1bb1f360091ffbfb67bec50f9916bacad921d26260b05cce",
+      "bytes": 5447,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/soundscape_browser.py": {
+      "workingSha256": "a4655398488b42500879326a8def38d62df02460e291f897269d54dc4c085bc6",
+      "canonicalSha256": "a4655398488b42500879326a8def38d62df02460e291f897269d54dc4c085bc6",
+      "bytes": 11465,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/starter-art.test.cjs": {
+      "workingSha256": "c3dbe5bf64cf5506703aa9322d76dee58e7f625ca1a8a969b586867a15934f3c",
+      "canonicalSha256": "c3dbe5bf64cf5506703aa9322d76dee58e7f625ca1a8a969b586867a15934f3c",
+      "bytes": 2546,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/starter.test.cjs": {
+      "workingSha256": "076daa51b5aa42fce2b121171536e981711c39389cdda9479e4c62d23ad29b78",
+      "canonicalSha256": "076daa51b5aa42fce2b121171536e981711c39389cdda9479e4c62d23ad29b78",
+      "bytes": 12088,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/starter_browser.py": {
+      "workingSha256": "6a41588754a9399c265bfe386332a21565aa2a8d0239c5a5e0a8e5db30a0c412",
+      "canonicalSha256": "6a41588754a9399c265bfe386332a21565aa2a8d0239c5a5e0a8e5db30a0c412",
+      "bytes": 11454,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/starter_journey.cjs": {
+      "workingSha256": "ebab3cfcd24c4aab4ab203e7a681add6e3ff9b97c87ba7eaf41e43854927d556",
+      "canonicalSha256": "ebab3cfcd24c4aab4ab203e7a681add6e3ff9b97c87ba7eaf41e43854927d556",
+      "bytes": 9019,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/starter_pacing.test.cjs": {
+      "workingSha256": "0c0bbd7e12e402bed85035e14a44bfa617d27c4d7779270e2d230839a794e07f",
+      "canonicalSha256": "0c0bbd7e12e402bed85035e14a44bfa617d27c4d7779270e2d230839a794e07f",
+      "bytes": 4768,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/starter_veteran.cjs": {
+      "workingSha256": "f38c456eb211609b807b2ce6097b29509f777a42a54d542ec86ece4c2b44f89a",
+      "canonicalSha256": "f38c456eb211609b807b2ce6097b29509f777a42a54d542ec86ece4c2b44f89a",
+      "bytes": 1085,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/test_atlantis_campaign_browser_storage.py": {
+      "workingSha256": "1868298697ab43a4fb2735d2bf7394c349bd9c9d1b5a17315f840e455b74a716",
+      "canonicalSha256": "1868298697ab43a4fb2735d2bf7394c349bd9c9d1b5a17315f840e455b74a716",
+      "bytes": 21388,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/test_atlantis_capture_controller.py": {
+      "workingSha256": "974bc0107009d23281e07a59ebdbcef8e70fc71d070c1c903d34147fa53651c9",
+      "canonicalSha256": "974bc0107009d23281e07a59ebdbcef8e70fc71d070c1c903d34147fa53651c9",
+      "bytes": 5512,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/test_capture_cosmos_campaign.py": {
+      "workingSha256": "023dcd07904271f4ce08252fc76bcf2861b5af422bbbc61fce97e263d85696bd",
+      "canonicalSha256": "023dcd07904271f4ce08252fc76bcf2861b5af422bbbc61fce97e263d85696bd",
+      "bytes": 19311,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/test_capture_earth_homecoming.py": {
+      "workingSha256": "3ff8fa26858fee9c5e7aa2ed1f83fd95129c216a416dd1145877b0a11588f8b7",
+      "canonicalSha256": "3ff8fa26858fee9c5e7aa2ed1f83fd95129c216a416dd1145877b0a11588f8b7",
+      "bytes": 27452,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/test_checkout_import.py": {
+      "workingSha256": "c80f54e963c756bb454db47e0cb5c79fd4beca00439f632d45dfa6bc799a4b23",
+      "canonicalSha256": "c80f54e963c756bb454db47e0cb5c79fd4beca00439f632d45dfa6bc799a4b23",
+      "bytes": 3178,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/test_cosmos_campaign_browser_storage.py": {
+      "workingSha256": "7b6733a09a9ebbe0672c61a86ecf50a5deaf7cba2eec642fd96b717292269f49",
+      "canonicalSha256": "7b6733a09a9ebbe0672c61a86ecf50a5deaf7cba2eec642fd96b717292269f49",
+      "bytes": 14432,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/test_earth_homecoming_native.py": {
+      "workingSha256": "16dec51c403b1ec9bc6f0649fe1d7287a63bc0d83ea080259c5a4b90f6045d53",
+      "canonicalSha256": "16dec51c403b1ec9bc6f0649fe1d7287a63bc0d83ea080259c5a4b90f6045d53",
+      "bytes": 17758,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/test_frame_measurement.py": {
+      "workingSha256": "230692bc454cb9a74caf5222d351d3db7d8e89a9e4a21197a041c19abb11d64b",
+      "canonicalSha256": "230692bc454cb9a74caf5222d351d3db7d8e89a9e4a21197a041c19abb11d64b",
+      "bytes": 1545,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/test_heaven_campaign_browser_wrapper.py": {
+      "workingSha256": "505a02ef4f42e701fad8a1e1dc9a6e88ce82549580e6933ef03e1ab08237f248",
+      "canonicalSha256": "505a02ef4f42e701fad8a1e1dc9a6e88ce82549580e6933ef03e1ab08237f248",
+      "bytes": 14247,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/test_onboarding_browser.py": {
+      "workingSha256": "f3f3a957045cfcfe59e9e7f4c2bec34723325367718b04809bb4d622e7c178a0",
+      "canonicalSha256": "f3f3a957045cfcfe59e9e7f4c2bec34723325367718b04809bb4d622e7c178a0",
+      "bytes": 19224,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/test_play_local.py": {
+      "workingSha256": "0d76454f3ac77034769e274294da4165154288376eb79ee74473347b1188744a",
+      "canonicalSha256": "0d76454f3ac77034769e274294da4165154288376eb79ee74473347b1188744a",
+      "bytes": 4367,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/test_publication.py": {
+      "workingSha256": "aff54440f2c787d389f1260b5ca14f94e5c13a3ad5a967b4580f01a09cd8f919",
+      "canonicalSha256": "aff54440f2c787d389f1260b5ca14f94e5c13a3ad5a967b4580f01a09cd8f919",
+      "bytes": 1657,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/test_surface_assets.py": {
+      "workingSha256": "fba074ab91d44015435b06c9fb7f41046491b8ec8e9c186b0dd305aa16bc3fa2",
+      "canonicalSha256": "fba074ab91d44015435b06c9fb7f41046491b8ec8e9c186b0dd305aa16bc3fa2",
+      "bytes": 9106,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/test_verify_browser_storage.py": {
+      "workingSha256": "6b1471f5869738fdcbf0dbee220fa672d403d4948f062ffcedffde5de2589c25",
+      "canonicalSha256": "6b1471f5869738fdcbf0dbee220fa672d403d4948f062ffcedffde5de2589c25",
+      "bytes": 4384,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/test_verify_earth_homecoming.py": {
+      "workingSha256": "568e2ff2a0902e53da05e4730b5170ae139ad297d7afd1692cde0007400d8265",
+      "canonicalSha256": "568e2ff2a0902e53da05e4730b5170ae139ad297d7afd1692cde0007400d8265",
+      "bytes": 20725,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/test_verify_onboarding.py": {
+      "workingSha256": "036f983ff7e394775174ac810968e300554b965c4fa936a246bca6a6005223c0",
+      "canonicalSha256": "036f983ff7e394775174ac810968e300554b965c4fa936a246bca6a6005223c0",
+      "bytes": 10765,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/timber_browser.py": {
+      "workingSha256": "33cb88144a02ec271f2ba5fe190c8db3cb55da1b8ab63e1b1a61bd1927d9906e",
+      "canonicalSha256": "33cb88144a02ec271f2ba5fe190c8db3cb55da1b8ab63e1b1a61bd1927d9906e",
+      "bytes": 14538,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/timber_engine.test.cjs": {
+      "workingSha256": "f7f6e9d5f97d0e55c871db9eee51d22eb785d29df7ee70d138d836a21896f9e1",
+      "canonicalSha256": "f7f6e9d5f97d0e55c871db9eee51d22eb785d29df7ee70d138d836a21896f9e1",
+      "bytes": 12125,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/traveler_browser.py": {
+      "workingSha256": "5eca758a4ba14458583f8049c614accb056cd069e95a970a8652f51db0b0843f",
+      "canonicalSha256": "5eca758a4ba14458583f8049c614accb056cd069e95a970a8652f51db0b0843f",
+      "bytes": 23815,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/traveler_equipment.test.cjs": {
+      "workingSha256": "c80a32c653aa861df3de70aadc2cc7d50368966390e891d37ed40b4a1566b59c",
+      "canonicalSha256": "c80a32c653aa861df3de70aadc2cc7d50368966390e891d37ed40b4a1566b59c",
+      "bytes": 16831,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/traveler_feel.test.cjs": {
+      "workingSha256": "ad8d2b815122c0149163d0595a3b90cc566bd3f49c6e6571de71c0498fba5a5d",
+      "canonicalSha256": "ad8d2b815122c0149163d0595a3b90cc566bd3f49c6e6571de71c0498fba5a5d",
+      "bytes": 13621,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/traveler_rig.test.cjs": {
+      "workingSha256": "747d173e1cffc320f0436039461df0fd8beab9ac47bbb0e2b1f631c31ee8256b",
+      "canonicalSha256": "747d173e1cffc320f0436039461df0fd8beab9ac47bbb0e2b1f631c31ee8256b",
+      "bytes": 13739,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/verify_package.py": {
+      "workingSha256": "b75d16f7feb250d0ed3fc0327db1d1205010cc74015cd6736efbc898fe3bc886",
+      "canonicalSha256": "b75d16f7feb250d0ed3fc0327db1d1205010cc74015cd6736efbc898fe3bc886",
+      "bytes": 1085,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/whole_draft_earned.test.cjs": {
+      "workingSha256": "6f5c131f5a1f0aa49b71e0f674d6afafb4a462c4dc83b0748c95c7e1b50c15eb",
+      "canonicalSha256": "6f5c131f5a1f0aa49b71e0f674d6afafb4a462c4dc83b0748c95c7e1b50c15eb",
+      "bytes": 2121,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/whole_draft_onboarding.test.cjs": {
+      "workingSha256": "b08b246fe3c26975802870b82ffa38fee4eed49fc89baedb662587f1a9c50160",
+      "canonicalSha256": "b08b246fe3c26975802870b82ffa38fee4eed49fc89baedb662587f1a9c50160",
+      "bytes": 14693,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/workshop_transactions.test.cjs": {
+      "workingSha256": "47fe414989a6294a784ff031d37f0c1c49f6a561b304749c4be452037621c57f",
+      "canonicalSha256": "47fe414989a6294a784ff031d37f0c1c49f6a561b304749c4be452037621c57f",
+      "bytes": 21858,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/workshop_transactions_browser.py": {
+      "workingSha256": "1965defe02389f310d66d3f50d6c9821bb52bce4022efcbf3ed3c65718e7adaf",
+      "canonicalSha256": "1965defe02389f310d66d3f50d6c9821bb52bce4022efcbf3ed3c65718e7adaf",
+      "bytes": 17488,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/world_art.test.cjs": {
+      "workingSha256": "27fe01305ee95466f189a79384e0afe7e58ddbdccc05f237e9fe3d802273b776",
+      "canonicalSha256": "27fe01305ee95466f189a79384e0afe7e58ddbdccc05f237e9fe3d802273b776",
+      "bytes": 4701,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/world_atlantis_earth.test.cjs": {
+      "workingSha256": "bb2d0ede70a64995cdc4239022372171057b0b4cb00175e0ded54b0e0f20bb3c",
+      "canonicalSha256": "bb2d0ede70a64995cdc4239022372171057b0b4cb00175e0ded54b0e0f20bb3c",
+      "bytes": 18532,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/world_combat.test.cjs": {
+      "workingSha256": "8bc466bd8c6c43193ea770fbabef2a77a10de7708194f5c5489d60d22a67b4d1",
+      "canonicalSha256": "8bc466bd8c6c43193ea770fbabef2a77a10de7708194f5c5489d60d22a67b4d1",
+      "bytes": 12903,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/world_cutaway_browser.py": {
+      "workingSha256": "092c02e64d4e672ab2308dd14a04c6ec1e6fb39eaf588a093b6c337fad32c45b",
+      "canonicalSha256": "092c02e64d4e672ab2308dd14a04c6ec1e6fb39eaf588a093b6c337fad32c45b",
+      "bytes": 6568,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/world_foundations.test.cjs": {
+      "workingSha256": "3196452b6ddbd18d8505a2cc2cce3b8b6e8f36dcff86facce3feb09c6b9f830c",
+      "canonicalSha256": "3196452b6ddbd18d8505a2cc2cce3b8b6e8f36dcff86facce3feb09c6b9f830c",
+      "bytes": 12439,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/world_foundations_browser.py": {
+      "workingSha256": "17bba6979a79ac946707f87f53b67a56e0e67a1a311df40844ac5e2eb2f8eae1",
+      "canonicalSha256": "17bba6979a79ac946707f87f53b67a56e0e67a1a311df40844ac5e2eb2f8eae1",
+      "bytes": 19185,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/world_foundations_journey.cjs": {
+      "workingSha256": "5a94ebf7a32a1e245af7803acec84cafe2890e698a3c79878e9242991da1a399",
+      "canonicalSha256": "5a94ebf7a32a1e245af7803acec84cafe2890e698a3c79878e9242991da1a399",
+      "bytes": 6137,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/world_ground_coalescing.test.cjs": {
+      "workingSha256": "8e3e73c0fcad6b0b9c909737630cc3ccd107261a24c12066306bb15d29a8af04",
+      "canonicalSha256": "8e3e73c0fcad6b0b9c909737630cc3ccd107261a24c12066306bb15d29a8af04",
+      "bytes": 10502,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tests/world_heaven_hell.test.cjs": {
+      "workingSha256": "67f20e0988f4443f1014c2fd579ec9091b92721b5f6a5b576eb057ccf21bfe9f",
+      "canonicalSha256": "67f20e0988f4443f1014c2fd579ec9091b92721b5f6a5b576eb057ccf21bfe9f",
+      "bytes": 18430,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/atlantis_campaign_browser.py": {
+      "workingSha256": "0bc657ed0c804b50026b06552ea16460b0d5085fc43225df2b9b2c838d9bba67",
+      "canonicalSha256": "0bc657ed0c804b50026b06552ea16460b0d5085fc43225df2b9b2c838d9bba67",
+      "bytes": 54335,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/authoring/build_material_proof.py": {
+      "workingSha256": "92cc3ca55a3d98dd628d9b176b1793852c1d467722fd4b8079c283e1fb3ebdb3",
+      "canonicalSha256": "92cc3ca55a3d98dd628d9b176b1793852c1d467722fd4b8079c283e1fb3ebdb3",
+      "bytes": 20212,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/authoring/polyhaven_intake.py": {
+      "workingSha256": "efe47eae964885f952211fdf8f684dbe4684566a36eaed085f67a0793faa7605",
+      "canonicalSha256": "efe47eae964885f952211fdf8f684dbe4684566a36eaed085f67a0793faa7605",
+      "bytes": 8286,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/authoring/prepare_timber_maps.py": {
+      "workingSha256": "2988fc5709ba9c8f12bda7f4d4fd0e6b1ea5b4dde86b7cd33d38e5da41db42a4",
+      "canonicalSha256": "2988fc5709ba9c8f12bda7f4d4fd0e6b1ea5b4dde86b7cd33d38e5da41db42a4",
+      "bytes": 13872,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/browser_support.py": {
+      "workingSha256": "cb5b8227f4c5e99e89b5ec40a75a3cacc471bd60c287316501c4b2de6cfecaa5",
+      "canonicalSha256": "cb5b8227f4c5e99e89b5ec40a75a3cacc471bd60c287316501c4b2de6cfecaa5",
+      "bytes": 486,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/build_table_candidate.py": {
+      "workingSha256": "835d1e3b9d2748d94bbcc09c4c96706f81753bb542172bdd974fb617aa83296e",
+      "canonicalSha256": "835d1e3b9d2748d94bbcc09c4c96706f81753bb542172bdd974fb617aa83296e",
+      "bytes": 4531,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/canvas_film.py": {
+      "workingSha256": "8690143aa65a9b50330ff97ed89dc705d1e7175cf482afbc4849af537d549c2a",
+      "canonicalSha256": "8690143aa65a9b50330ff97ed89dc705d1e7175cf482afbc4849af537d549c2a",
+      "bytes": 3769,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/capture_atlantis_campaign.py": {
+      "workingSha256": "354e00ce43d4457d35adfa68166308e0f185e2ff607bad8207216df0adecf9a1",
+      "canonicalSha256": "354e00ce43d4457d35adfa68166308e0f185e2ff607bad8207216df0adecf9a1",
+      "bytes": 29708,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/capture_bridge_community.py": {
+      "workingSha256": "7a8c8b06dfdb5149176707245d5de387756d5ddb49e639eca7bf685a3bd4fb5d",
+      "canonicalSha256": "7a8c8b06dfdb5149176707245d5de387756d5ddb49e639eca7bf685a3bd4fb5d",
+      "bytes": 14650,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/capture_coastward_banks.py": {
+      "workingSha256": "eff1e57743b2d1f8b012cccc823954a3c8b0cffd937f0d08fcd187b4a4036e20",
+      "canonicalSha256": "eff1e57743b2d1f8b012cccc823954a3c8b0cffd937f0d08fcd187b4a4036e20",
+      "bytes": 7989,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/capture_cosmos_campaign.py": {
+      "workingSha256": "61ab63554f6ea87f5e77b4e870d358cdba78626adbddcc8a98a597cf21d01fec",
+      "canonicalSha256": "61ab63554f6ea87f5e77b4e870d358cdba78626adbddcc8a98a597cf21d01fec",
+      "bytes": 39582,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/capture_earth_expedition.py": {
+      "workingSha256": "d6dd05865b8599bee54fe28b4f2680a498206199718d975f24bd01a58f9fedfa",
+      "canonicalSha256": "d6dd05865b8599bee54fe28b4f2680a498206199718d975f24bd01a58f9fedfa",
+      "bytes": 63477,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/capture_earth_homecoming.py": {
+      "workingSha256": "e872dc977cf94f66f6be967c05b1fbf31eb7dd963b417f147ebf764947bb8b3b",
+      "canonicalSha256": "e872dc977cf94f66f6be967c05b1fbf31eb7dd963b417f147ebf764947bb8b3b",
+      "bytes": 44703,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/capture_heaven_campaign.py": {
+      "workingSha256": "8f113b8572a7e95a430b61000c7c093fd09a24df8b6388ba57cd8e21ef1b1655",
+      "canonicalSha256": "8f113b8572a7e95a430b61000c7c093fd09a24df8b6388ba57cd8e21ef1b1655",
+      "bytes": 17135,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/capture_hell_campaign.py": {
+      "workingSha256": "83c89b91be72536f910b743cd1eead65ba8610a1ebe75dce3ab50844c0020a38",
+      "canonicalSha256": "83c89b91be72536f910b743cd1eead65ba8610a1ebe75dce3ab50844c0020a38",
+      "bytes": 12434,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/capture_home_history.py": {
+      "workingSha256": "f3c9c8079ac35450c90a9b7c6c64af908b16c2e36380e21b3446fd9c1336f48e",
+      "canonicalSha256": "f3c9c8079ac35450c90a9b7c6c64af908b16c2e36380e21b3446fd9c1336f48e",
+      "bytes": 12569,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/capture_local_life.py": {
+      "workingSha256": "54c907e0dd96bb8070deccfe7da47a8aae4c2334c7f66cff52b35f5e460161b4",
+      "canonicalSha256": "54c907e0dd96bb8070deccfe7da47a8aae4c2334c7f66cff52b35f5e460161b4",
+      "bytes": 12481,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/capture_preview.py": {
+      "workingSha256": "b709a056608fee1fbe67db15e823e2c0fc92dbb906958eb6fc66b366e4e6487c",
+      "canonicalSha256": "b709a056608fee1fbe67db15e823e2c0fc92dbb906958eb6fc66b366e4e6487c",
+      "bytes": 2571,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/capture_realm_trails.py": {
+      "workingSha256": "839ba3564d834cc9a533317381532eaa6a9e44c6b4e7f202dcbfa54b8b6b1d7b",
+      "canonicalSha256": "839ba3564d834cc9a533317381532eaa6a9e44c6b4e7f202dcbfa54b8b6b1d7b",
+      "bytes": 26985,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/capture_world_foundations.py": {
+      "workingSha256": "bfd72ca9197c884eae5cfeb4f9479e72a738197924299045beb8e12442586ed1",
+      "canonicalSha256": "bfd72ca9197c884eae5cfeb4f9479e72a738197924299045beb8e12442586ed1",
+      "bytes": 12930,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/capture_world_work.py": {
+      "workingSha256": "66c030ea26065215ebc8ad84e3485bcb2db7d4e923bb52ea5a9f464a1d8c2269",
+      "canonicalSha256": "66c030ea26065215ebc8ad84e3485bcb2db7d4e923bb52ea5a9f464a1d8c2269",
+      "bytes": 25988,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/cosmos_campaign_browser.py": {
+      "workingSha256": "d5ae16bb61b7841b7c8116837a6231b3b164529c4db5ad3077c1bbc5196c9689",
+      "canonicalSha256": "d5ae16bb61b7841b7c8116837a6231b3b164529c4db5ad3077c1bbc5196c9689",
+      "bytes": 54125,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/earth-homecoming-journey/connected_atlantis.cjs": {
+      "workingSha256": "c72b0bca308d0293e088cc4d3636780b285f2e8822663ac4ef298317716bc006",
+      "canonicalSha256": "c72b0bca308d0293e088cc4d3636780b285f2e8822663ac4ef298317716bc006",
+      "bytes": 17115,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/earth-homecoming-journey/connected_cosmos.cjs": {
+      "workingSha256": "54a8559e833c589d9dec3b43cdb201240a12c361fc1af14be1a0b77578ba0bc2",
+      "canonicalSha256": "54a8559e833c589d9dec3b43cdb201240a12c361fc1af14be1a0b77578ba0bc2",
+      "bytes": 24220,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/earth-homecoming-journey/connected_heaven.cjs": {
+      "workingSha256": "cfdd7a0eabd56a777189340e81c60fc072d0e4888b0d2ae6051f7b45c402cbf8",
+      "canonicalSha256": "cfdd7a0eabd56a777189340e81c60fc072d0e4888b0d2ae6051f7b45c402cbf8",
+      "bytes": 23111,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/earth-homecoming-journey/connected_hell.cjs": {
+      "workingSha256": "ceebdad6db57e7cc55390a5df35a5034b889d6061172a0bdc9f30e36c2333630",
+      "canonicalSha256": "ceebdad6db57e7cc55390a5df35a5034b889d6061172a0bdc9f30e36c2333630",
+      "bytes": 7488,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/earth-homecoming-journey/connected_homecoming.cjs": {
+      "workingSha256": "d230919fdfd2de80940a99f7dd07bfa478163a2aadc8f1a6792dc403cc507ea2",
+      "canonicalSha256": "d230919fdfd2de80940a99f7dd07bfa478163a2aadc8f1a6792dc403cc507ea2",
+      "bytes": 6050,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/earth-homecoming-journey/connected_support.cjs": {
+      "workingSha256": "ac0fd246193839e5ac681aab4cf6eaec800342d8f9245affb09f39133793bbc1",
+      "canonicalSha256": "ac0fd246193839e5ac681aab4cf6eaec800342d8f9245affb09f39133793bbc1",
+      "bytes": 7580,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/earth-homecoming-journey/early_realms.cjs": {
+      "workingSha256": "fed3ee9a7b5d5be13d4a214ac1005022bd772afebb4b25c2bb76b608b9be6d8a",
+      "canonicalSha256": "fed3ee9a7b5d5be13d4a214ac1005022bd772afebb4b25c2bb76b608b9be6d8a",
+      "bytes": 6380,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/earth-homecoming-journey/earned_common.cjs": {
+      "workingSha256": "684e3e63dd02a48701922f72127aebf2c4fcfd38c0c42ca6fa178e0d2c78d3c0",
+      "canonicalSha256": "684e3e63dd02a48701922f72127aebf2c4fcfd38c0c42ca6fa178e0d2c78d3c0",
+      "bytes": 6454,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/earth-homecoming-journey/earned_earth_homecoming.cjs": {
+      "workingSha256": "4c65d4a4ca88de60b146f2bab18f5f1a84de3ce79c0d90806ebe5c8e55b63ed6",
+      "canonicalSha256": "4c65d4a4ca88de60b146f2bab18f5f1a84de3ce79c0d90806ebe5c8e55b63ed6",
+      "bytes": 11522,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/earth_homecoming_browser.py": {
+      "workingSha256": "4f84fc20a2204a080ca7b492321b5e1dbdd1f18fd6171d671a95f7ff35d3cbde",
+      "canonicalSha256": "4f84fc20a2204a080ca7b492321b5e1dbdd1f18fd6171d671a95f7ff35d3cbde",
+      "bytes": 57527,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/earth_homecoming_journey.cjs": {
+      "workingSha256": "46386a35da401357a31e782866e2eaac78dc572ee0ec84fe367e4ac1c06c9143",
+      "canonicalSha256": "46386a35da401357a31e782866e2eaac78dc572ee0ec84fe367e4ac1c06c9143",
+      "bytes": 2751,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/heaven_campaign_browser.py": {
+      "workingSha256": "961f2b766d8bf6a62348c86f871438724752ed56cfbcadf41eaa4d08621cf178",
+      "canonicalSha256": "961f2b766d8bf6a62348c86f871438724752ed56cfbcadf41eaa4d08621cf178",
+      "bytes": 68659,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/hell_campaign_browser.py": {
+      "workingSha256": "d17fbcb6202ad64e6ccc606ffba5e5f9b23da7c7ef069e9f58f01e8bed64db5c",
+      "canonicalSha256": "d17fbcb6202ad64e6ccc606ffba5e5f9b23da7c7ef069e9f58f01e8bed64db5c",
+      "bytes": 44042,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/import_into_checkout.py": {
+      "workingSha256": "86f848c28e2c81f0fc7617f2c0ba538760fcc66d7d76354b20f306db49982080",
+      "canonicalSha256": "86f848c28e2c81f0fc7617f2c0ba538760fcc66d7d76354b20f306db49982080",
+      "bytes": 3363,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/inspect_earth_expedition_presentation.py": {
+      "workingSha256": "1d41cc003e083f4d6b2944cae2fa464c89705d577a79475e3f5402d33f034627",
+      "canonicalSha256": "1d41cc003e083f4d6b2944cae2fa464c89705d577a79475e3f5402d33f034627",
+      "bytes": 11203,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/measure_gpu_browser.py": {
+      "workingSha256": "9a6c043c1ae68c898183ba550b16790ccd69711ec4aecc5e7082ff305aa4ac28",
+      "canonicalSha256": "9a6c043c1ae68c898183ba550b16790ccd69711ec4aecc5e7082ff305aa4ac28",
+      "bytes": 10674,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/onboarding_browser.py": {
+      "workingSha256": "727f81baba31b25ad0c564dea01442969ed4c6f4fdd102549c38fecc2955c373",
+      "canonicalSha256": "727f81baba31b25ad0c564dea01442969ed4c6f4fdd102549c38fecc2955c373",
+      "bytes": 33453,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/play_local.py": {
+      "workingSha256": "54c97769df905e3ed9dd14365f62b2a8170e51b40d7bdf579c32e9ad020bda2f",
+      "canonicalSha256": "54c97769df905e3ed9dd14365f62b2a8170e51b40d7bdf579c32e9ad020bda2f",
+      "bytes": 4549,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/publish_github.py": {
+      "workingSha256": "f0dec69f6a78a6c092b735f9bd2735f8587bec37b6c3e6a550b1e96ff143cdc9",
+      "canonicalSha256": "f0dec69f6a78a6c092b735f9bd2735f8587bec37b6c3e6a550b1e96ff143cdc9",
+      "bytes": 7003,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/record_browser_gameplay.py": {
+      "workingSha256": "da2897b48723e14a9f90663d77d2e49881a516d0f653d736627e1029c35e8445",
+      "canonicalSha256": "da2897b48723e14a9f90663d77d2e49881a516d0f653d736627e1029c35e8445",
+      "bytes": 6093,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/stage_static.py": {
+      "workingSha256": "fea59d0ddcd326362f131803a30dc21e2f8be54b35be7b7b064739fe90a23ae0",
+      "canonicalSha256": "fea59d0ddcd326362f131803a30dc21e2f8be54b35be7b7b064739fe90a23ae0",
+      "bytes": 612,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/summarize_validation.py": {
+      "workingSha256": "662ed058e6e1bfcd803294ea4c67fbf1113ba58f71a6617826532c97edfa5c88",
+      "canonicalSha256": "662ed058e6e1bfcd803294ea4c67fbf1113ba58f71a6617826532c97edfa5c88",
+      "bytes": 3492,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/verify.py": {
+      "workingSha256": "15e1e89c6465c4fbc884f4a40f3f215a1a339f89c5389a760fc1e1b3bd59de42",
+      "canonicalSha256": "15e1e89c6465c4fbc884f4a40f3f215a1a339f89c5389a760fc1e1b3bd59de42",
+      "bytes": 23304,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/whole_draft_journey.cjs": {
+      "workingSha256": "c27e7b8ebe207e300b6d63f14be2121e1b7c63743ec4749560608827d4487c62",
+      "canonicalSha256": "c27e7b8ebe207e300b6d63f14be2121e1b7c63743ec4749560608827d4487c62",
+      "bytes": 8986,
+      "binding": "strict-utf8-crlf-to-lf"
+    },
+    "tools/whole_draft_readback.cjs": {
+      "workingSha256": "f547df4350320e6f4c4260811d2c8fbf209adb6c560d2e49788800d9d36a2a8c",
+      "canonicalSha256": "f547df4350320e6f4c4260811d2c8fbf209adb6c560d2e49788800d9d36a2a8c",
+      "bytes": 3955,
+      "binding": "strict-utf8-crlf-to-lf"
+    }
+  },
+  "html": {
+    "sha256": "ccfc2782a33d21e3a75cd93201d5d9b5d89eef41e6397036c13c2f06bda91f9b",
+    "bytes": 3033467
+  },
+  "mandatoryCaptureTests": 37,
+  "mandatoryNativeCPU": 26,
+  "wholeVariants": [
+    "blade",
+    "blade-to-bow"
+  ],
+  "earthVariants": [
+    "blade",
+    "bow",
+    "strongest"
+  ],
+  "limits": "Selected runtime/rule/caller scope, not entire working tree equality. Root working hashes may differ only by explicit UTF-8 CRLF-to-LF binding."
+}

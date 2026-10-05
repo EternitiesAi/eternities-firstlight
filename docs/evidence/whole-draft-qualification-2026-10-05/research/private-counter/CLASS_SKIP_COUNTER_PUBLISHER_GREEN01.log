@@ -1,0 +1,51 @@
+test_01_actual_verifier_static_contract (__main__.CPU.test_01_actual_verifier_static_contract) ... ok
+test_02_import_inert (__main__.CPU.test_02_import_inert) ... ok
+test_03_full_synthetic_preflight_manifest (__main__.CPU.test_03_full_synthetic_preflight_manifest) ... ok
+test_04_pending_exit_refuses_before_hash (__main__.CPU.test_04_pending_exit_refuses_before_hash) ... ok
+test_05_nonzero_observed_exit (__main__.CPU.test_05_nonzero_observed_exit) ... ok
+test_06_truncated_console (__main__.CPU.test_06_truncated_console) ... ok
+test_07_console_out_of_order (__main__.CPU.test_07_console_out_of_order) ... ok
+test_08_unknown_verifier_run (__main__.CPU.test_08_unknown_verifier_run) ... ok
+test_09_missing_current_suite (__main__.CPU.test_09_missing_current_suite) ... ok
+test_10_duplicate_sources_and_destinations (__main__.CPU.test_10_duplicate_sources_and_destinations) ... ok
+test_11_raw_cache_profile_and_fullgame_paths (__main__.CPU.test_11_raw_cache_profile_and_fullgame_paths) ... ok
+test_12_drive_traversal_control_char (__main__.CPU.test_12_drive_traversal_control_char) ... ok
+test_13_changed_pinned_bytes (__main__.CPU.test_13_changed_pinned_bytes) ... ok
+test_14_source_binder_false_clean (__main__.CPU.test_14_source_binder_false_clean) ... ok
+test_15_page_normalization_refused (__main__.CPU.test_15_page_normalization_refused) ... ok
+test_16_native_pixel_miss_and_GLerror (__main__.CPU.test_16_native_pixel_miss_and_GLerror) ... ok
+test_17_missing_follow_warning (__main__.CPU.test_17_missing_follow_warning) ... ok
+test_18_current_native_cannot_be_historical (__main__.CPU.test_18_current_native_cannot_be_historical) ... ok
+test_19_onboard_partial_or_injection (__main__.CPU.test_19_onboard_partial_or_injection) ... ok
+test_20_historical_media_not_polish (__main__.CPU.test_20_historical_media_not_polish) ... ok
+test_21_historical_terminal_frame_strict (__main__.CPU.test_21_historical_terminal_frame_strict) ... ok
+test_22_node_skip_reason_required (__main__.CPU.test_22_node_skip_reason_required) ... ok
+test_23_python_skip_reason_required (__main__.CPU.test_23_python_skip_reason_required) ... ok
+test_24_missing_linked_earned_output (__main__.CPU.test_24_missing_linked_earned_output) ... ok
+test_25_wrong_cohort_freshness (__main__.CPU.test_25_wrong_cohort_freshness) ... ok
+test_26_mislabeled_invocation_log (__main__.CPU.test_26_mislabeled_invocation_log) ... ok
+test_27_missing_useful_png (__main__.CPU.test_27_missing_useful_png) ... ok
+test_28_unfinalized_selection (__main__.CPU.test_28_unfinalized_selection) ... ok
+test_29_dryrun_only_one_manifest_and_no_subprocess (__main__.CPU.test_29_dryrun_only_one_manifest_and_no_subprocess) ... ok
+test_30_exact_approval_guard (__main__.CPU.test_30_exact_approval_guard) ... ok
+test_31_git_index_used_only_for_index_effects (__main__.CPU.test_31_git_index_used_only_for_index_effects) ... ok
+test_32_dirty_source_no_effect (__main__.CPU.test_32_dirty_source_no_effect) ... ok
+test_33_existing_remote_no_effect (__main__.CPU.test_33_existing_remote_no_effect) ... ok
+test_34_uncertain_push_retained_no_retry (__main__.CPU.test_34_uncertain_push_retained_no_retry) ... ok
+test_35_normal_push_only_pending_readback (__main__.CPU.test_35_normal_push_only_pending_readback) ... ok
+test_36_reconcile_never_repush (__main__.CPU.test_36_reconcile_never_repush) ... ok
+test_37_budget_and_negative_membership (__main__.CPU.test_37_budget_and_negative_membership) ... ok
+test_38_compressed_archive_disguise (__main__.CPU.test_38_compressed_archive_disguise) ... ok
+test_39_advertised_remote_cas (__main__.CPU.test_39_advertised_remote_cas) ... ok
+test_40_newest_explicit_head_no_hardcoded_fallback (__main__.CPU.test_40_newest_explicit_head_no_hardcoded_fallback) ... ok
+test_41_prior_source_separate_not_latest (__main__.CPU.test_41_prior_source_separate_not_latest) ... ok
+test_42_existing_project_hook_is_not_overridden (__main__.CPU.test_42_existing_project_hook_is_not_overridden) ... ok
+test_43_git_object_content_mismatch_before_refs (__main__.CPU.test_43_git_object_content_mismatch_before_refs) ... ok
+test_44_exact_inert_publisher_snapshot (__main__.CPU.test_44_exact_inert_publisher_snapshot) ... ok
+test_45_filename_prefix_order_matches_verifier (__main__.CPU.test_45_filename_prefix_order_matches_verifier) ... ok
+test_46_exact_current_parser_ast_order (__main__.CPU.test_46_exact_current_parser_ast_order) ... ok
+
+----------------------------------------------------------------------
+Ran 46 tests in 37.064s
+
+OK

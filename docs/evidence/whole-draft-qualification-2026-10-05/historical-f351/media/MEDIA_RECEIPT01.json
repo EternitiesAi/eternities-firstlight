@@ -1,0 +1,691 @@
+{
+  "schema": "firstlight-earth-homecoming-media-v1",
+  "status": "encoded-decoded-sampled-agent-reviewed-root-review-pending",
+  "sourceHeadParentSupplied": "f3512657211d3057c4e437c33e26439d3bb7af56",
+  "sourceHTMLSHA256": "30648a37d3c8a6a4d5633b8946536dd9550aac29f204947cd2c5f098b6c7600a",
+  "sourceReport": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\capture02\\REPORT.json",
+    "bytes": 693544,
+    "sha256": "be8045dfe241641bea0088dff03a049de0492e5f3e5595ac7482a5c003332fc0"
+  },
+  "sourceRaw": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\capture02\\0901427eae45144e992d8d472658f62d.webm",
+    "bytes": 14397382,
+    "sha256": "a5b2311b2a8b97f6538be9a2712ef498bd521096aed572b86b06c6634a683f64"
+  },
+  "sourceCaptureStatus": "passed",
+  "sourceChapterCompleted": true,
+  "sourceFrozen": true,
+  "sourceScope": "Resumed blade chapter after historically command-earned kit/original chapters/twelve claimed accounts and the current-source earned continuation. Acceptance, bridge/register records, inspection and both relay isolations are omitted from the take. Portable origin/migration disclosure remains in the linked reports.",
+  "sourceRendererActual": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "sourceBrowserSurface": {
+    "headless": true,
+    "document_visible": true,
+    "hardware_acceleration_requested": true,
+    "desktop_foreground_observed": false,
+    "driver_resource_context": "Parent may record separately at execution; not inferred by this controller."
+  },
+  "sourcePairedMetricsScope": "Full raw ordinary-RAF and performance.now callback-arrival intervals are in the source report; they are not GPU/rendered-FPS/device-performance qualification.",
+  "sourceZeroInjectionCounters": {
+    "simulation_steps": 0,
+    "time_scaling": 0,
+    "direct_game_commands": 0,
+    "pose_writes": 0,
+    "actor_position_writes": 0,
+    "camera_state_writes": 0,
+    "manual_damage": 0,
+    "inventory_grants": 0,
+    "health_grants": 0,
+    "forced_cycles": 0,
+    "planted_facts": 0,
+    "source_copies": 0,
+    "profile_copies": 0
+  },
+  "final": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\FIRSTLIGHT_EARTH_HOMECOMING_GAMEPLAY.mp4",
+    "bytes": 5525429,
+    "sha256": "d2d2ccb3a5c3b5dec114a2a11a016c1d4d99bd51f46c2585101f45a2ce181eaf",
+    "codec": "H.264 High /avc1",
+    "pixelFormat": "yuv420p",
+    "resolution": [
+      1440,
+      900
+    ],
+    "audioStreams": 0,
+    "displayedFrames": 787,
+    "encodedSamples": 788,
+    "actualDurationSeconds": 31.48,
+    "displayedFrameIntervalSeconds": 0.04,
+    "speed": 1,
+    "changes": "Frame trimming/chronological concatenation and timestamp origin shifting only. No time scaling, overlays, inserted/substituted frames or extra movie."
+  },
+  "wholeRawDecode": {
+    "exit": 0,
+    "frames": 3142,
+    "duration": 125.68,
+    "codec": "VP8",
+    "resolution": [
+      1440,
+      900
+    ],
+    "recordingFPS": 25,
+    "audioStreams": 0,
+    "log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\WHOLE_RAW_DECODE.log",
+      "bytes": 823,
+      "sha256": "b3ae41051b36ba0020643920fb208f1ec3fb48c450326ea94d4e0cf8f60fc9ea"
+    }
+  },
+  "wholeClipDecode": {
+    "defaultExit": 0,
+    "defaultFrames": 787,
+    "defaultDuration": 31.48,
+    "passthroughTimestampAuditExit": 0,
+    "sameFrameCadence": true,
+    "ignoreEditListDiagnosticExit": 0,
+    "ignoreEditListDiagnosticFrames": 788,
+    "terminalFrameDisclosure": "Encoder/stsz contain788 samples; stts has787\u00d740000ticks plus one zero-duration sample, movie/edit-list length31480ms. Default playback omits only that terminal sample. Planned31.52 remains inEDIT_PLAN01; actual playable31.48 is authoritative.",
+    "log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\WHOLE_CLIP_DECODE.log",
+      "bytes": 1870,
+      "sha256": "1bdedab275905333571de7b4367b5e8ca0f9acf0dbcb32bac5924d46bb2c98ab"
+    }
+  },
+  "alignment": {
+    "method": "Complete raw decode to a streamed192x120 gray pipe, no decoded full movie/raw copy. Screenshot matching locates likely event frames near reported performance bookmarks; distinct near-equal matches are preserved for uncertainty. CPU threads2.",
+    "offsetMedianRawMinusPerformance": -0.5129000000059598,
+    "offsetMin": -0.7264000000357598,
+    "offsetMax": -0.34899999999998954,
+    "uncertainty": "Individual post-screenshot/bookmark latency and some static-frame ambiguity, plus25FPS frame quantization. Matching is alignment evidence, not timestamp-perfect causal pixel proof.",
+    "matches": [
+      {
+        "label": "locked_claim-lane_adventure",
+        "rawTime": 47.4,
+        "bestMeanAbsoluteGray192x120Difference": 0.5704861111111111,
+        "performanceBookmark": 47.916,
+        "eventWallSeconds": 48.389208299980965,
+        "rawMinusPerformance": -0.5159999999999982,
+        "rawMinusEventWall": -0.9892082999809659,
+        "nearestCandidates": [
+          [
+            0.5704861111111111,
+            47.4
+          ],
+          [
+            0.5705295138888888,
+            47.44
+          ],
+          [
+            0.5787760416666666,
+            47.48
+          ],
+          [
+            0.6137586805555556,
+            47.52
+          ]
+        ]
+      },
+      {
+        "label": "locked_claim-lane_follow",
+        "rawTime": 51.08,
+        "bestMeanAbsoluteGray192x120Difference": 0.43936631944444443,
+        "performanceBookmark": 51.59230000001192,
+        "eventWallSeconds": 51.93234549998306,
+        "rawMinusPerformance": -0.5123000000119191,
+        "rawMinusEventWall": -0.8523454999830591,
+        "nearestCandidates": [
+          [
+            0.43936631944444443,
+            51.08
+          ],
+          [
+            0.43936631944444443,
+            51.12
+          ],
+          [
+            0.441015625,
+            50.8
+          ],
+          [
+            0.441015625,
+            50.84
+          ]
+        ]
+      },
+      {
+        "label": "actual_blade_impact_mid_phase",
+        "rawTime": 53.12,
+        "bestMeanAbsoluteGray192x120Difference": 0.4200520833333333,
+        "performanceBookmark": 53.832900000035764,
+        "eventWallSeconds": 54.276729199977126,
+        "rawMinusPerformance": -0.7129000000357664,
+        "rawMinusEventWall": -1.1567291999771285,
+        "nearestCandidates": [
+          [
+            0.4200520833333333,
+            53.12
+          ],
+          [
+            0.42009548611111114,
+            53.2
+          ],
+          [
+            0.42009548611111114,
+            53.24
+          ],
+          [
+            0.42009548611111114,
+            53.28
+          ]
+        ]
+      },
+      {
+        "label": "locked_false-shelter_adventure",
+        "rawTime": 58.76,
+        "bestMeanAbsoluteGray192x120Difference": 0.3930121527777778,
+        "performanceBookmark": 59.2735,
+        "eventWallSeconds": 59.70803480001632,
+        "rawMinusPerformance": -0.5135000000000005,
+        "rawMinusEventWall": -0.9480348000163232,
+        "nearestCandidates": [
+          [
+            0.3930121527777778,
+            58.76
+          ],
+          [
+            0.39305555555555555,
+            58.72
+          ],
+          [
+            0.3978298611111111,
+            58.8
+          ],
+          [
+            0.3982204861111111,
+            58.84
+          ]
+        ]
+      },
+      {
+        "label": "locked_false-shelter_follow",
+        "rawTime": 59.2,
+        "bestMeanAbsoluteGray192x120Difference": 0.3888020833333333,
+        "performanceBookmark": 59.92640000003576,
+        "eventWallSeconds": 60.31973260000814,
+        "rawMinusPerformance": -0.7264000000357598,
+        "rawMinusEventWall": -1.1197326000081347,
+        "nearestCandidates": [
+          [
+            0.3888020833333333,
+            59.2
+          ],
+          [
+            0.3888020833333333,
+            59.24
+          ],
+          [
+            0.3888020833333333,
+            59.28
+          ],
+          [
+            0.3888020833333333,
+            59.32
+          ]
+        ]
+      },
+      {
+        "label": "locked_closing-ring_adventure",
+        "rawTime": 63.4,
+        "bestMeanAbsoluteGray192x120Difference": 0.37647569444444445,
+        "performanceBookmark": 63.80660000002384,
+        "eventWallSeconds": 64.30393499997444,
+        "rawMinusPerformance": -0.4066000000238432,
+        "rawMinusEventWall": -0.9039349999744459,
+        "nearestCandidates": [
+          [
+            0.37647569444444445,
+            63.4
+          ],
+          [
+            0.3765190972222222,
+            63.44
+          ],
+          [
+            0.3766059027777778,
+            63.16
+          ],
+          [
+            0.3767361111111111,
+            63.2
+          ]
+        ]
+      },
+      {
+        "label": "locked_closing-ring_follow",
+        "rawTime": 63.84,
+        "bestMeanAbsoluteGray192x120Difference": 0.6144097222222222,
+        "performanceBookmark": 64.53580000001192,
+        "eventWallSeconds": 64.86163140001008,
+        "rawMinusPerformance": -0.6958000000119142,
+        "rawMinusEventWall": -1.0216314000100795,
+        "nearestCandidates": [
+          [
+            0.6144097222222222,
+            63.84
+          ],
+          [
+            0.6145399305555556,
+            63.92
+          ],
+          [
+            0.6145399305555556,
+            63.96
+          ],
+          [
+            0.6145833333333334,
+            63.88
+          ]
+        ]
+      },
+      {
+        "label": "actual_locked_ring_quiet_centre",
+        "rawTime": 72.0,
+        "bestMeanAbsoluteGray192x120Difference": 0.4561631944444444,
+        "performanceBookmark": 72.59269999998808,
+        "eventWallSeconds": 73.01483699999517,
+        "rawMinusPerformance": -0.5926999999880849,
+        "rawMinusEventWall": -1.0148369999951683,
+        "nearestCandidates": [
+          [
+            0.4561631944444444,
+            72.0
+          ],
+          [
+            0.4561631944444444,
+            72.04
+          ],
+          [
+            0.4561631944444444,
+            72.08
+          ],
+          [
+            0.4561631944444444,
+            72.12
+          ]
+        ]
+      },
+      {
+        "label": "actual_local_repulse",
+        "rawTime": 74.04,
+        "bestMeanAbsoluteGray192x120Difference": 0.4055121527777778,
+        "performanceBookmark": 74.499,
+        "eventWallSeconds": 74.88919479999458,
+        "rawMinusPerformance": -0.458999999999989,
+        "rawMinusEventWall": -0.8491947999945779,
+        "nearestCandidates": [
+          [
+            0.4055121527777778,
+            74.04
+          ],
+          [
+            0.41436631944444446,
+            73.72
+          ],
+          [
+            0.4144097222222222,
+            73.76
+          ],
+          [
+            0.4144097222222222,
+            73.8
+          ]
+        ]
+      },
+      {
+        "label": "aftermath_preview",
+        "rawTime": 74.92,
+        "bestMeanAbsoluteGray192x120Difference": 0.8291232638888889,
+        "performanceBookmark": 75.35790000003577,
+        "eventWallSeconds": 75.93993400002364,
+        "rawMinusPerformance": -0.4379000000357678,
+        "rawMinusEventWall": -1.019934000023639,
+        "nearestCandidates": [
+          [
+            0.8291232638888889,
+            74.92
+          ],
+          [
+            0.9286458333333333,
+            74.84
+          ],
+          [
+            0.9296875,
+            74.8
+          ],
+          [
+            0.9296875,
+            74.88
+          ]
+        ]
+      },
+      {
+        "label": "oren_receives_account_unpaid",
+        "rawTime": 123.68,
+        "bestMeanAbsoluteGray192x120Difference": 1.0101128472222223,
+        "performanceBookmark": 124.029,
+        "eventWallSeconds": 124.60167639999418,
+        "rawMinusPerformance": -0.34899999999998954,
+        "rawMinusEventWall": -0.9216763999941691,
+        "nearestCandidates": [
+          [
+            1.0101128472222223,
+            123.68
+          ],
+          [
+            1.021875,
+            123.28
+          ],
+          [
+            1.0233072916666666,
+            123.52
+          ],
+          [
+            1.0260416666666667,
+            123.56
+          ]
+        ]
+      },
+      {
+        "label": "paid_home_account",
+        "rawTime": 124.08,
+        "bestMeanAbsoluteGray192x120Difference": 0.9247829861111111,
+        "performanceBookmark": 124.51840000003577,
+        "eventWallSeconds": 124.98439200001303,
+        "rawMinusPerformance": -0.4384000000357702,
+        "rawMinusEventWall": -0.9043920000130328,
+        "nearestCandidates": [
+          [
+            0.9247829861111111,
+            124.08
+          ],
+          [
+            0.9542534722222222,
+            124.04
+          ],
+          [
+            1.1355902777777778,
+            124.24
+          ],
+          [
+            1.1382378472222223,
+            124.2
+          ]
+        ]
+      }
+    ]
+  },
+  "segments": [
+    {
+      "sourceStartFrame": 1160,
+      "sourceEndFrameExclusive": 1365,
+      "sourceStart": 46.4,
+      "sourceEnd": 54.6,
+      "duration": 8.2,
+      "purpose": "Claim-lane warnings in Adventure and Diorama, then actual native blade attacks/phase change.",
+      "outputStart": 0,
+      "outputEnd": 8.2
+    },
+    {
+      "sourceStartFrame": 1455,
+      "sourceEndFrameExclusive": 1510,
+      "sourceStart": 58.2,
+      "sourceEnd": 60.4,
+      "duration": 2.2,
+      "purpose": "False-shelter narrow warnings in both views.",
+      "outputStart": 8.2,
+      "outputEnd": 10.399999999999999
+    },
+    {
+      "sourceStartFrame": 1570,
+      "sourceEndFrameExclusive": 1920,
+      "sourceStart": 62.8,
+      "sourceEnd": 76.8,
+      "duration": 14,
+      "purpose": "Closing-ring warnings in both views, real keyboard approach to the quiet center/contact miss, actual repulse and deliberate public-watch preview/confirmation.",
+      "outputStart": 10.399999999999999,
+      "outputEnd": 24.4
+    },
+    {
+      "sourceStartFrame": 2957,
+      "sourceEndFrameExclusive": 3135,
+      "sourceStart": 118.28,
+      "sourceEnd": 125.4,
+      "duration": 7.12,
+      "purpose": "Vessa verification, free return to Firstlight, physical home return and separate Oren fee/paid journal.",
+      "outputStart": 24.4,
+      "outputEnd": 31.52,
+      "actualDefaultPlaybackEnd": 31.48,
+      "actualDefaultDuration": 7.08,
+      "actualDefaultSourceEndExclusive": 125.36,
+      "terminalSampleLimit": "Planned final frame at source125.36 exists as a zero-duration encoded sample, and default edit-list playback omits it. Effective last span is118.28\u2013125.36, still containing Oren fee/paid account."
+    }
+  ],
+  "sampleFrames": [
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_01.png",
+      "frameIndex": 25,
+      "clipSeconds": 1.0,
+      "label": "claim-lane Adventure",
+      "bytes": 834301,
+      "sha256": "494234f602c0581c9abdcaff4b4304bd818e30893d03a8277cee38559d618fe5"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_02.png",
+      "frameIndex": 117,
+      "clipSeconds": 4.68,
+      "label": "claim-lane Diorama",
+      "bytes": 1017252,
+      "sha256": "e2906c466f8d78673f6a4181ce2dd2ae9c4506deba71bdec63288593b92e92d4"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_03.png",
+      "frameIndex": 219,
+      "clipSeconds": 8.76,
+      "label": "false-shelter Adventure",
+      "bytes": 862484,
+      "sha256": "24013c44f3c760ec2d86cf4ca033621b97942a6a4f3109c57df4ff51655925e8"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_04.png",
+      "frameIndex": 230,
+      "clipSeconds": 9.2,
+      "label": "false-shelter Diorama",
+      "bytes": 883875,
+      "sha256": "e2d275265d185c5b4e2c4c5c3d7d0ddd143872c87e8d73d72304b532f625091f"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_05.png",
+      "frameIndex": 275,
+      "clipSeconds": 11.0,
+      "label": "closing-ring Adventure",
+      "bytes": 862859,
+      "sha256": "39ff8f0b0e6dbc56ba3de1c2203450315959e35dc78354d9f86d3fb7457e9915"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_06.png",
+      "frameIndex": 286,
+      "clipSeconds": 11.44,
+      "label": "closing-ring Diorama",
+      "bytes": 858271,
+      "sha256": "cf0f8685350fb8caa257bf7d5edfc0006c2629466d0ee78988e48373a63da55f"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_07.png",
+      "frameIndex": 490,
+      "clipSeconds": 19.6,
+      "label": "actual quiet center",
+      "bytes": 899916,
+      "sha256": "a1902077cb9c6b34b07f8ac728a5679f2e7eaeb94196241eded63b98fc169e36"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_08.png",
+      "frameIndex": 755,
+      "clipSeconds": 30.2,
+      "label": "Oren paid home account",
+      "bytes": 1184203,
+      "sha256": "a48df467a0e6da6662ecd2be326b37c3e231bff88a44c7034c4e9632615d11cd"
+    }
+  ],
+  "visualInspection": {
+    "thisAgentFinalSampleFrames": 8,
+    "existingSourceScreenshots": [
+      "04_actual_blade_impact_mid_phase.png",
+      "10_actual_local_repulse.png",
+      "11_aftermath_preview.png"
+    ],
+    "result": "Actual actor/HUD and broad,narrow,ring warnings visible in both views. Quiet sample shows player inside inner ring, source contact report independently hascontactHit false and strict body clearance. Paid sample shows Oren payment/local-account notice; its final pause is disclosed.",
+    "rootVisualReview": false,
+    "humanAcceptance": false
+  },
+  "measuredSourceQuietContact": {
+    "distance": 1.007004787260173,
+    "strictSafeCenterMaximum": 1.26,
+    "contactHit": false,
+    "contactAt": 2443.5678520710453
+  },
+  "preservation": {
+    "rawHashUnchangedAfterProcessing": true,
+    "mp4Count": 1,
+    "samplePNGCount": 8,
+    "rawCopies": 0,
+    "profileCopies": 0,
+    "intermediateMovies": 0,
+    "browserRuns": 0,
+    "gpuRuns": 0,
+    "gameSourceWrites": 0,
+    "gitOperations": 0,
+    "failedCapture01Touched": false,
+    "ffmpegThreads": 2
+  },
+  "negativeSetup": [
+    {
+      "cause": "Initial report read used Windows default cp1252 and failed; resumed with explicit UTF8. No artifact overwritten or game/media altered."
+    },
+    {
+      "cause": "Metadata-only FFmpeg inspection intentionally had no output and exited1 after reporting duration/codec; not a decode failure."
+    },
+    {
+      "log": "SAMPLE_EXTRACT.log",
+      "exit": 3015096584,
+      "cause": "Initial FFmpeg select expression did not escape commas; corrected filter syntax, no sampled PNG had been emitted and MP4 unchanged."
+    }
+  ],
+  "payload": {
+    "AUDIT_01.png": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_01.png",
+      "bytes": 834301,
+      "sha256": "494234f602c0581c9abdcaff4b4304bd818e30893d03a8277cee38559d618fe5"
+    },
+    "AUDIT_02.png": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_02.png",
+      "bytes": 1017252,
+      "sha256": "e2906c466f8d78673f6a4181ce2dd2ae9c4506deba71bdec63288593b92e92d4"
+    },
+    "AUDIT_03.png": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_03.png",
+      "bytes": 862484,
+      "sha256": "24013c44f3c760ec2d86cf4ca033621b97942a6a4f3109c57df4ff51655925e8"
+    },
+    "AUDIT_04.png": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_04.png",
+      "bytes": 883875,
+      "sha256": "e2d275265d185c5b4e2c4c5c3d7d0ddd143872c87e8d73d72304b532f625091f"
+    },
+    "AUDIT_05.png": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_05.png",
+      "bytes": 862859,
+      "sha256": "39ff8f0b0e6dbc56ba3de1c2203450315959e35dc78354d9f86d3fb7457e9915"
+    },
+    "AUDIT_06.png": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_06.png",
+      "bytes": 858271,
+      "sha256": "cf0f8685350fb8caa257bf7d5edfc0006c2629466d0ee78988e48373a63da55f"
+    },
+    "AUDIT_07.png": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_07.png",
+      "bytes": 899916,
+      "sha256": "a1902077cb9c6b34b07f8ac728a5679f2e7eaeb94196241eded63b98fc169e36"
+    },
+    "AUDIT_08.png": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_08.png",
+      "bytes": 1184203,
+      "sha256": "a48df467a0e6da6662ecd2be326b37c3e231bff88a44c7034c4e9632615d11cd"
+    },
+    "DECODE_AND_SAMPLES01.json": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\DECODE_AND_SAMPLES01.json",
+      "bytes": 3725,
+      "sha256": "a88d509ce67fd708ff9636b26b863d55a6fbe9206d18699a675c4e7a8526a2ef"
+    },
+    "EDIT_PLAN01.json": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\EDIT_PLAN01.json",
+      "bytes": 2912,
+      "sha256": "84002ce429b01fcf496d464a5cc951fb32df677da51f4d18cd2a7f0c299439ba"
+    },
+    "ENCODE.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\ENCODE.log",
+      "bytes": 5604,
+      "sha256": "8ddb0f8bf5e80c8c394515d912d4f899d26d87e0993135b7de1e888bc15b4a1b"
+    },
+    "FIRSTLIGHT_EARTH_HOMECOMING_GAMEPLAY.mp4": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\FIRSTLIGHT_EARTH_HOMECOMING_GAMEPLAY.mp4",
+      "bytes": 5525429,
+      "sha256": "d2d2ccb3a5c3b5dec114a2a11a016c1d4d99bd51f46c2585101f45a2ce181eaf"
+    },
+    "RAW_ALIGNMENT01.json": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\RAW_ALIGNMENT01.json",
+      "bytes": 10143,
+      "sha256": "a2c7d828fac909a315a03078a840c5961b3e618389a335c92eeb06ba756b9f3e"
+    },
+    "README.md": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\README.md",
+      "bytes": 3284,
+      "sha256": "28198342dd4fcca2af10a7ba774d3f7703a74aaa930d33698fde7ab94766fb0a"
+    },
+    "SAMPLE_EXTRACT.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\SAMPLE_EXTRACT.log",
+      "bytes": 925,
+      "sha256": "09225d3d4c2b4c84445763687513e5290540d73b93b5e9972d8c977253822624"
+    },
+    "SAMPLE_EXTRACT02.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\SAMPLE_EXTRACT02.log",
+      "bytes": 1624,
+      "sha256": "4c65fabb5d4ce049900232e801d622e40909040a296eb043247c78fb64eeabd3"
+    },
+    "TERMINAL_FRAME_AUDIT01.json": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\TERMINAL_FRAME_AUDIT01.json",
+      "bytes": 1979,
+      "sha256": "4405a3fa524a457dba5b8d420e7393ffd0ee23ed0bed461f8b383799b611a2a2"
+    },
+    "TIMESTAMP_AUDIT01.json": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\TIMESTAMP_AUDIT01.json",
+      "bytes": 2599,
+      "sha256": "3dcdbbb6def432ec0979d5f6337d443819039b083ea260cb32214b0dd557d8db"
+    },
+    "WHOLE_CLIP_DECODE.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\WHOLE_CLIP_DECODE.log",
+      "bytes": 1870,
+      "sha256": "1bdedab275905333571de7b4367b5e8ca0f9acf0dbcb32bac5924d46bb2c98ab"
+    },
+    "WHOLE_RAW_DECODE.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\WHOLE_RAW_DECODE.log",
+      "bytes": 823,
+      "sha256": "b3ae41051b36ba0020643920fb208f1ec3fb48c450326ea94d4e0cf8f60fc9ea"
+    }
+  },
+  "limits": [
+    "Short edited excerpts from earned prepared blade continuation, not full/fresh playthrough.",
+    "No independent re-execution of source/native qualification; source report and parent head are pinned.",
+    "No Root/human visual approval or device performance claim.",
+    "Cold restart is unrecorded and omitted from MP4; persistence proof remains in complete report."
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "status": "passed",
+  "exitCode": 0,
+  "rootObservedProcess": 82824,
+  "createdUtc": "2026-10-05T14:25:41.838452+00:00",
+  "runtimeHeadObserved": "f3512657211d3057c4e437c33e26439d3bb7af56",
+  "controller": {
+    "path": "D:\\07-GAMES\\Firstlight\\authoring\\staging-earth-native-repair-20261005-05\\earth_homecoming_browser.py",
+    "bytes": 57556,
+    "sha256": "3d1629d8719bede80797af67124019089f8df1b5942946bb48dcfa9026bfd2db"
+  },
+  "controllerInstalledAtExecution": false,
+  "report": {
+    "bytes": 1816753,
+    "sha256": "92db087ab6b8462c8daf8379cd96bd2b289a2df7e2940079ab17636cbe7d5adb"
+  },
+  "console": {
+    "bytes": 451602,
+    "sha256": "189a70aa69073606dd2338132e6acd2a8654805119274c02dcda506a3cb2ab74"
+  },
+  "checks": 6205,
+  "earnedStages": 30,
+  "restarts": 26,
+  "pixelControls": 54,
+  "screenshots": 57,
+  "profiles": 6,
+  "videos": 0,
+  "html": {
+    "bytes": 3027919,
+    "sha256": "30648a37d3c8a6a4d5633b8946536dd9550aac29f204947cd2c5f098b6c7600a"
+  },
+  "families": [
+    "blade",
+    "bow",
+    "strongest"
+  ],
+  "labelledSyntheticFamilies": [
+    "blade-SYNTHETIC-capacity",
+    "blade-SYNTHETIC-write-refusal",
+    "strongest-SYNTHETIC-old-owner"
+  ],
+  "renderer": "software SwiftShader",
+  "sourceFreeze": true,
+  "scope": "Actual visible browser/production movement and50ms accelerated ticks. Command-earned historical prerequisite continuations plus labelled derivatives; not fresh whole-game/native human timing/ordinary-RAF/hardware measurement. Controller repairs only use actual supported walks and native Frame foe, no product geometry or weaker criteria.",
+  "negativeEpochs": [
+    {
+      "epoch": "native01",
+      "report": {
+        "bytes": 238931,
+        "sha256": "316fc9381db5c82c3d839e4b70c9f2911cca5b850c3522de0dd5348cee003d2d"
+      },
+      "status": "failed",
+      "checksPassed": 528
+    },
+    {
+      "epoch": "native02",
+      "report": {
+        "bytes": 241631,
+        "sha256": "84802c3a0924fbdce608609cf9ca7034371a11740ba79ea8843d921860e57e3c"
+      },
+      "status": "failed",
+      "checksPassed": 545
+    },
+    {
+      "epoch": "native03",
+      "report": {
+        "bytes": 480135,
+        "sha256": "23beeff51f2e0583d269c5e963a4f6c70fe2dafa95c94ee7ea9e73ebc93455f3"
+      },
+      "status": "failed",
+      "checksPassed": 1778
+    },
+    {
+      "epoch": "native04",
+      "report": {
+        "bytes": 823763,
+        "sha256": "4dd1bcaa865b24cc69783d081e70ecd12c41b78fd1b93bfc84e5c3c39a698c91"
+      },
+      "status": "failed",
+      "checksPassed": 3154
+    }
+  ]
+}

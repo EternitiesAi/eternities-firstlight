@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "targetedReport": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\world-toast-repair01\\REPORT.json",
+    "bytes": 21138,
+    "sha256": "3f681071531268a5f9e364be3a1cfc3d87e4e7f62f42ca3ee6931b7ea2854744"
+  },
+  "targetedChecks": 207,
+  "browserErrors": 0,
+  "completeGate": false,
+  "refusedExistingOutputExit": 1,
+  "refusalLog": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\WORLD_OUTPUT_REUSE_REFUSAL01.log",
+    "bytes": 634,
+    "sha256": "9b3811fd6aa4987372f3984c1efad1d5c413e82731a280bf07c7f83316760ee2"
+  },
+  "independentReview": {
+    "reviewer": "/root/realm_campaign_design",
+    "scope": "Read-only AST/preimage review; no browser/Git actions",
+    "originalStaticChecksUnchanged": 60
+  },
+  "diagnosticLimit": "All three original200ms samples passed; transition timing varied. Exact failed full03 opacity was not captured.",
+  "countCorrections": {
+    "completedFull03Commands": 214,
+    "completedFull03SourceCommands": 183,
+    "full03BrowserSuitesPassed": 31,
+    "full03FailedSuite": "world_foundations_browser",
+    "incorrectEarlierWorkingBrowserCount": 35,
+    "failedWorldReachedChecks": 203,
+    "completedWorldChecks": 207,
+    "parentInitial203ReceiptAssertion": "Refused before receipt/refusal-probe mutation; corrected from actual closed207 report."
+  },
+  "pages": {
+    "path": "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\index.html",
+    "bytes": 3033467,
+    "sha256": "ccfc2782a33d21e3a75cd93201d5d9b5d89eef41e6397036c13c2f06bda91f9b"
+  },
+  "reviewedCompactImage": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\world-toast-repair01\\atlantis-normal-keyboard-compact.png",
+    "bytes": 222457,
+    "sha256": "36ee547d7ecb2a99439485788e8962965012d59569de93b8c7a1abc9c61083dc"
+  },
+  "observedUtc": "2026-10-05T19:47:26.636375+00:00"
+}

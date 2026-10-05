@@ -1,0 +1,3635 @@
+{
+  "attributes": {
+    "baseBytes": 841,
+    "baseSha256": "fbc6ccfd1b5cd55a1b5f57dad38e7d7d219b4515790dec3761c0e719db2895ef",
+    "bytes": 925,
+    "sha256": "9a30edce8b56bc39fa29f0360076d2db72a5b0cea85cead44b5fc10dc27796c6",
+    "source": "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\.gitattributes",
+    "text": "* text=auto eol=lf\n*.png binary\n*.jpg binary\n*.wav binary\n*.mid binary\n*.bundle binary\n\n# Preserve exact archived filming-harness bytes, including original line endings.\ndocs/evidence/realm-outings-2026-10-02/*.snapshot binary\n\n# Reports, original logs, fixtures and harness snapshots are byte-hashed evidence.\ndocs/evidence/world-production-2026-10-03/** -text whitespace=cr-at-eol\n# The failed runner's original diagnostic blank lines are retained verbatim.\ndocs/evidence/world-production-2026-10-03/negative/linux-ec9-stale-copy-assertion/commands/rules.log whitespace=cr-at-eol,-blank-at-eol\n\n# Preserve byte-hashed current expedition receipts and decoded media provenance.\ndocs/evidence/coastward-expedition-2026-10-03/** -text whitespace=cr-at-eol,-blank-at-eol\ndocs/evidence/coastward-expedition-2026-10-03/** linguist-generated=true\ndocs/evidence/whole-draft-qualification-2026-10-05/** -text linguist-generated=true\n"
+  },
+  "branch": "evidence/whole-draft-qualification-20261005",
+  "effectsIfSeparatelyAuthorized": [
+    "isolated index/objects",
+    "evidence commit only",
+    "CAS new local evidence ref",
+    "normal push new evidence ref",
+    "remote exact-head confirmation"
+  ],
+  "entries": [
+    {
+      "bytes": 8158,
+      "epoch": "current-qualified-source",
+      "path": "current/GATE_RECEIPT.json",
+      "role": "gate-receipt",
+      "sha256": "37b89b79e895a5f35ab295ce10cf9c66307b5200602c6224a433928c9b6698a5",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\REMOTE_FULL05_GATE.json"
+    },
+    {
+      "bytes": 523,
+      "epoch": "current-qualified-source",
+      "path": "current/PROCESS_EXIT.json",
+      "role": "gate-exit-observation",
+      "sha256": "80ab737c3c3618e4db02a17dae2d0d075897bf8db86fe11f16c9bde708021fcd",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\REMOTE_FULL05_PROCESS_EXIT.json"
+    },
+    {
+      "bytes": 14645,
+      "epoch": "current-qualified-source",
+      "path": "current/complete-console.log",
+      "role": "gate-console",
+      "sha256": "d304e5268569ef7eea1354549414dd7239e09a05ebca243e7bfc65e4277b6b2b",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05-console.log"
+    },
+    {
+      "bytes": 23304,
+      "epoch": "current-qualified-source",
+      "path": "current/tools/verify.py",
+      "repositoryPath": "tools/verify.py",
+      "role": "verifier-snapshot",
+      "sha256": "15e1e89c6465c4fbc884f4a40f3f215a1a339f89c5389a760fc1e1b3bd59de42",
+      "source": "D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game\\tools\\verify.py"
+    },
+    {
+      "bytes": 356016,
+      "command": "rules",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/rules.log",
+      "role": "node-log",
+      "sha256": "e5828e6ea86055213af7ad3cd4e8a0a2cce41320d02ea5a18feb6da4babd8491",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\rules.log"
+    },
+    {
+      "bytes": 40515,
+      "command": "python",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/python.log",
+      "role": "python-log",
+      "sha256": "fab7491a0c300fb39329ac25546c4791c556e8ee73b6c776dc6c744fdfa3eaf4",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\python.log"
+    },
+    {
+      "bytes": 4342,
+      "command": "earth-homecoming-native-preflight",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth-homecoming-native-preflight.log",
+      "role": "native-preflight-log",
+      "sha256": "2b7c5939185c3acd0323c3d12971438d950b848d0a39647f3d9d8e86038bae1b",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-native-preflight.log"
+    },
+    {
+      "bytes": 6298,
+      "command": "earth-recording-controller-preflight",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth-recording-controller-preflight.log",
+      "role": "capture-preflight-log",
+      "sha256": "787397d3491d47c445f4ff925ae8f3bf8304c62788178698c247ed8ddfd526a0",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-recording-controller-preflight.log"
+    },
+    {
+      "bytes": 340596,
+      "epoch": "current-qualified-source",
+      "path": "current/SOURCE_BINDING.json",
+      "role": "source-binder",
+      "sha256": "3f788e62d9c26139935062b475bae28225371a846db6f507b5008b399c1abdfc",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\REMOTE_FULL05_SOURCE_BINDER.json"
+    },
+    {
+      "bytes": 92576,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-earned/CONNECTED_EARTH_HOMECOMING_REPORT.json",
+      "role": "earth-earned-report",
+      "sha256": "227c7b95d6d439652ca54b33452500b603c7d7acd3a0fce187c60775e70b690f",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\CONNECTED_EARTH_HOMECOMING_REPORT.json"
+    },
+    {
+      "bytes": 1819457,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-native/REPORT.json",
+      "role": "earth-native-report",
+      "sha256": "e5f7da281a32e631eeb14bdad7ae5a643d8520167ba02ba4dfbfb4785a25a323",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05-browser\\earth_homecoming_browser\\REPORT.json"
+    },
+    {
+      "bytes": 133566,
+      "epoch": "current-qualified-source",
+      "path": "current/onboarding-native/REPORT.json",
+      "role": "onboarding-report",
+      "sha256": "c31f4fc17bb07673f9d441ff3d9f93d8fe166b20d20987d027a4eb3a639e8219",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05-browser\\onboarding_browser\\REPORT.json"
+    },
+    {
+      "bytes": 42129,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/WHOLE_DRAFT_JOURNEY_REPORT.json",
+      "role": "whole-draft-report",
+      "sha256": "b070d1b1145cdd9c182c8e01334d2c4d8aabd9ecb5ee3e77a8cd65addb6cc4bb",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\WHOLE_DRAFT_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 4655,
+      "command": "whole-draft-earned",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/whole-draft-earned.log",
+      "role": "whole-draft-readback",
+      "sha256": "f3e27539f1885b01f5baa3c62b9bc2bd6fa7e95685d536d8201fd7ad74a1de7a",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned.log"
+    },
+    {
+      "bytes": 1816753,
+      "epoch": "historical-f351",
+      "path": "historical-f351/native05/REPORT.json",
+      "role": "historical-earth-native-report",
+      "sha256": "92db087ab6b8462c8daf8379cd96bd2b289a2df7e2940079ab17636cbe7d5adb",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\native05\\REPORT.json"
+    },
+    {
+      "bytes": 2627,
+      "epoch": "historical-f351",
+      "path": "historical-f351/NATIVE05_RECEIPT.json",
+      "role": "historical-earth-native-receipt",
+      "sha256": "564147ace0be75dad8510e75ba9f1b22aaf07d6c7a9b200e88851a4a120b14f1",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\NATIVE05_RECEIPT.json"
+    },
+    {
+      "bytes": 693544,
+      "epoch": "historical-f351",
+      "path": "historical-f351/capture02/REPORT.json",
+      "role": "historical-earth-capture-report",
+      "sha256": "be8045dfe241641bea0088dff03a049de0492e5f3e5595ac7482a5c003332fc0",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\capture02\\REPORT.json"
+    },
+    {
+      "bytes": 24404,
+      "epoch": "historical-f351",
+      "path": "historical-f351/media/MEDIA_RECEIPT01.json",
+      "role": "historical-media-receipt",
+      "sha256": "9d0d656c1036d1777820c8ca5fc4b72de14bd89b58ee29ad03d86a0a645b040d",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\MEDIA_RECEIPT01.json"
+    },
+    {
+      "bytes": 3422,
+      "epoch": "historical-f351",
+      "path": "historical-f351/media/ROOT_MEDIA_REVIEW01.json",
+      "role": "historical-media-review",
+      "sha256": "34f97304b7b5767ff7a51a5ae87861eae7ff6174e0c55a55604df1dfd6cd4e98",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\ROOT_MEDIA_REVIEW01.json"
+    },
+    {
+      "bytes": 3725,
+      "epoch": "historical-f351",
+      "path": "historical-f351/media/DECODE_AND_SAMPLES01.json",
+      "role": "historical-media-decode",
+      "sha256": "a88d509ce67fd708ff9636b26b863d55a6fbe9206d18699a675c4e7a8526a2ef",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\DECODE_AND_SAMPLES01.json"
+    },
+    {
+      "bytes": 5525429,
+      "epoch": "historical-f351",
+      "path": "historical-f351/media/FIRSTLIGHT_EARTH_HOMECOMING_GAMEPLAY.mp4",
+      "role": "historical-edited-clip",
+      "sha256": "d2d2ccb3a5c3b5dec114a2a11a016c1d4d99bd51f46c2585101f45a2ce181eaf",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\FIRSTLIGHT_EARTH_HOMECOMING_GAMEPLAY.mp4"
+    },
+    {
+      "bytes": 91,
+      "command": "build",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/build.log",
+      "role": "gate-log",
+      "sha256": "a436e29df66e80a6d42b72691af0ab781eac4bae91f3c2e4bdf51ac3d00ee59c",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\build.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-adventure-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-adventure-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-adventure-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-adventure-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-adventure-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-adventure-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-adventure",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-adventure.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-adventure.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-app",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-app.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-app.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-arsenal-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-arsenal-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-arsenal-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-arsenal-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-arsenal-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-arsenal-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-arsenal",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-arsenal.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-arsenal.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-atlantis-campaign-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-atlantis-campaign-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-atlantis-campaign-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-atlantis-campaign-data",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-atlantis-campaign-data.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-atlantis-campaign-data.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-atlantis-campaign-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-atlantis-campaign-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-atlantis-campaign-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-atlantis-campaign",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-atlantis-campaign.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-atlantis-campaign.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-beacon-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-beacon-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-beacon-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-beacon",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-beacon.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-beacon.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-bridge-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-bridge-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-bridge-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-bridge-community-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-bridge-community-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-bridge-community-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-bridge-community-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-bridge-community-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-bridge-community-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-bridge-community",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-bridge-community.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-bridge-community.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-bridge-moment-view",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-bridge-moment-view.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-bridge-moment-view.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-characters-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-characters-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-characters-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-characters",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-characters.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-characters.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-classes-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-classes-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-classes-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-classes",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-classes.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-classes.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-coastward-settlement-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-coastward-settlement-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-coastward-settlement-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-coastward-woodland-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-coastward-woodland-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-coastward-woodland-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-combat-view",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-combat-view.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-combat-view.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-combat",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-combat.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-combat.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-companion-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-companion-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-companion-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-core",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-core.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-core.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-cosmos-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-cosmos-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-cosmos-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-cosmos-campaign-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-cosmos-campaign-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-cosmos-campaign-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-cosmos-campaign-data",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-cosmos-campaign-data.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-cosmos-campaign-data.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-cosmos-campaign-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-cosmos-campaign-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-cosmos-campaign-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-cosmos-campaign",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-cosmos-campaign.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-cosmos-campaign.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-cosmos-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-cosmos-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-cosmos-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-cosmos",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-cosmos.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-cosmos.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-creative",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-creative.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-creative.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-crossing-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-crossing-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-crossing-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-crossing-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-crossing-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-crossing-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-crossing",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-crossing.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-crossing.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-drover-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-drover-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-drover-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-earth-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-earth-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-earth-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-earth-expedition-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-earth-expedition-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-earth-expedition-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-earth-expedition-beast-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-earth-expedition-beast-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-earth-expedition-beast-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-earth-expedition-dialogue",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-earth-expedition-dialogue.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-earth-expedition-dialogue.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-earth-expedition-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-earth-expedition-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-earth-expedition-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-earth-expedition",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-earth-expedition.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-earth-expedition.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-earth-homecoming-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-earth-homecoming-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-earth-homecoming-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-earth-homecoming-data",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-earth-homecoming-data.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-earth-homecoming-data.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-earth-homecoming-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-earth-homecoming-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-earth-homecoming-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-earth-homecoming",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-earth-homecoming.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-earth-homecoming.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-earth-notes-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-earth-notes-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-earth-notes-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-earth-notes-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-earth-notes-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-earth-notes-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-earth-notes",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-earth-notes.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-earth-notes.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-earth-shoulder-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-earth-shoulder-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-earth-shoulder-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-earth-story-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-earth-story-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-earth-story-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-earth-story",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-earth-story.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-earth-story.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-earth-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-earth-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-earth-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-earth",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-earth.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-earth.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-elderweald-trail-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-elderweald-trail-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-elderweald-trail-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-elderweald-world",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-elderweald-world.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-elderweald-world.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-engine",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-engine.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-engine.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-experience",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-experience.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-experience.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-gathering-adapter",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-gathering-adapter.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-gathering-adapter.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-gathering-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-gathering-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-gathering-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-gathering-music",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-gathering-music.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-gathering-music.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-gathering-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-gathering-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-gathering-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-gathering",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-gathering.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-gathering.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-heaven-campaign-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-heaven-campaign-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-heaven-campaign-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-heaven-campaign-data",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-heaven-campaign-data.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-heaven-campaign-data.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-heaven-campaign-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-heaven-campaign-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-heaven-campaign-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-heaven-campaign",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-heaven-campaign.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-heaven-campaign.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-hell-campaign-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-hell-campaign-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-hell-campaign-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-hell-campaign-data",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-hell-campaign-data.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-hell-campaign-data.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-hell-campaign-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-hell-campaign-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-hell-campaign-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-hell-campaign",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-hell-campaign.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-hell-campaign.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-home-history-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-home-history-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-home-history-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-home-history-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-home-history-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-home-history-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-home-history",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-home-history.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-home-history.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-local-life-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-local-life-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-local-life-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-local-life-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-local-life-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-local-life-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-local-life",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-local-life.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-local-life.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-mill-gate-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-mill-gate-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-mill-gate-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-millwright-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-millwright-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-millwright-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-pursuit-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-pursuit-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-pursuit-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-pursuit",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-pursuit.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-pursuit.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-quarry-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-quarry-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-quarry-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-realm-art-data",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-realm-art-data.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-realm-art-data.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-realm-atlas-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-realm-atlas-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-realm-atlas-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-realm-craft",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-realm-craft.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-realm-craft.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-realm-givers-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-realm-givers-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-realm-givers-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-realm-trails-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-realm-trails-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-realm-trails-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-realm-trails-cosmos",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-realm-trails-cosmos.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-realm-trails-cosmos.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-realm-trails-north",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-realm-trails-north.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-realm-trails-north.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-realm-trails-south",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-realm-trails-south.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-realm-trails-south.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-realm-trails-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-realm-trails-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-realm-trails-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-realm-trails",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-realm-trails.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-realm-trails.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-road-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-road-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-road-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-road",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-road.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-road.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-rpg-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-rpg-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-rpg-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-sandbox-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-sandbox-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-sandbox-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-sandbox-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-sandbox-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-sandbox-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-sandbox",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-sandbox.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-sandbox.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-skitter-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-skitter-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-skitter-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-soundscape",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-soundscape.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-soundscape.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-starter-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-starter-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-starter-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-starter-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-starter-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-starter-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-starter",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-starter.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-starter.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-surface-assets",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-surface-assets.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-surface-assets.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-traveler-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-traveler-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-traveler-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-traveler-equipment-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-traveler-equipment-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-traveler-equipment-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-workshop-transactions",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-workshop-transactions.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-workshop-transactions.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-world-atlantis-earth",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-world-atlantis-earth.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-world-atlantis-earth.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-world-foundations-art",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-world-foundations-art.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-world-foundations-art.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-world-foundations-ui",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-world-foundations-ui.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-world-foundations-ui.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-world-foundations",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-world-foundations.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-world-foundations.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-world-ground-coalescing",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-world-ground-coalescing.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-world-ground-coalescing.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-world-heaven-hell",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-world-heaven-hell.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-world-heaven-hell.log"
+    },
+    {
+      "bytes": 0,
+      "command": "syntax-world",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/syntax-world.log",
+      "role": "gate-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\syntax-world.log"
+    },
+    {
+      "bytes": 625,
+      "command": "crossing-blade",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/crossing-blade.log",
+      "role": "gate-log",
+      "sha256": "0b27a5083c98c2983b9d5dd15b33456d395f182b4b299bbf46412b4f244ba956",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\crossing-blade.log"
+    },
+    {
+      "bytes": 649,
+      "command": "crossing-bow",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/crossing-bow.log",
+      "role": "gate-log",
+      "sha256": "f1f412fb8081e5e0c9e1c60e5ea9b8d1de892fbc3c23c2a76e5b1470f8c04d4a",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\crossing-bow.log"
+    },
+    {
+      "bytes": 507,
+      "command": "starter-blade",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/starter-blade.log",
+      "role": "gate-log",
+      "sha256": "7bf2c1aedc79943bcdc356237696bf2a1a464841e03520203f7ee7d0f4911dae",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\starter-blade.log"
+    },
+    {
+      "bytes": 503,
+      "command": "starter-bow",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/starter-bow.log",
+      "role": "gate-log",
+      "sha256": "2496bd1b1ba568c3ff951073bede4e7625f178d4aa75780f9ab122264bf8b37f",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\starter-bow.log"
+    },
+    {
+      "bytes": 1438,
+      "command": "starter-veteran",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/starter-veteran.log",
+      "role": "gate-log",
+      "sha256": "a5ce11e73e32f6a35882e153121d316e4ff0bf6682f0b18001f5e86a2f979be0",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\starter-veteran.log"
+    },
+    {
+      "bytes": 5483,
+      "command": "pursuit-blade",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/pursuit-blade.log",
+      "role": "gate-log",
+      "sha256": "04029aab268bf30da55bb85ea9cb89e5ab63ecd7f782a59c97aa095529ce4647",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\pursuit-blade.log"
+    },
+    {
+      "bytes": 6710,
+      "command": "pursuit-bow",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/pursuit-bow.log",
+      "role": "gate-log",
+      "sha256": "7954f060cccbda3f5837029b6b177c60db43a02f6d581a5880ed7382a76135d1",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\pursuit-bow.log"
+    },
+    {
+      "bytes": 3487,
+      "command": "pursuit-veteran",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/pursuit-veteran.log",
+      "role": "gate-log",
+      "sha256": "92df71adb52d293be60ec994c3b6460395898a55f53b82acd667a99832d30afa",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\pursuit-veteran.log"
+    },
+    {
+      "bytes": 3058,
+      "command": "characters-journey",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/characters-journey.log",
+      "role": "gate-log",
+      "sha256": "b8bf18dbfda2895ed512765f68d7edd27cb97b1bb6866bc70cbc851f0ec16249",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\characters-journey.log"
+    },
+    {
+      "bytes": 4224,
+      "command": "classes-journey",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/classes-journey.log",
+      "role": "gate-log",
+      "sha256": "fdab8ab447dddc6feacbdb1adac815aced90bfae9fc852220d385842b7d7b5e1",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\classes-journey.log"
+    },
+    {
+      "bytes": 630,
+      "command": "cosmos-journey",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/cosmos-journey.log",
+      "role": "gate-log",
+      "sha256": "f7f5acdc0a02dbe285cd38a1a43a3000667d79bfb0512c3f21dd74cbde9e3f3f",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\cosmos-journey.log"
+    },
+    {
+      "bytes": 602,
+      "command": "earth-journey",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth-journey.log",
+      "role": "gate-log",
+      "sha256": "dc31769274bc52ada9f4f9820bfeb7adbcb42fadb80308efb7e1c58e6fec955c",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-journey.log"
+    },
+    {
+      "bytes": 5482,
+      "command": "earth-outing-blade",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth-outing-blade.log",
+      "role": "gate-log",
+      "sha256": "be9b2f2c5cc1dc45ed3ada36ba842c06b1e0144b009f341107d3acafb80f6a60",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-outing-blade.log"
+    },
+    {
+      "bytes": 6715,
+      "command": "earth-outing-bow",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth-outing-bow.log",
+      "role": "gate-log",
+      "sha256": "e4e71e12da6150014a280b35387a3f507522cee791079ddbb89e5805a720d8c6",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-outing-bow.log"
+    },
+    {
+      "bytes": 3490,
+      "command": "earth-outing-veteran",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth-outing-veteran.log",
+      "role": "gate-log",
+      "sha256": "72890f033f520bb7f6e09d39ce57b848155d8f387b7cba8e2b62d6e66dc90ad8",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-outing-veteran.log"
+    },
+    {
+      "bytes": 3039,
+      "command": "earth-story-blade",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth-story-blade.log",
+      "role": "gate-log",
+      "sha256": "4acd6d8107d038a0993c184bf06b5c1f715fec6848d8257d708f26431ffa965a",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-story-blade.log"
+    },
+    {
+      "bytes": 3448,
+      "command": "earth-story-bow",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth-story-bow.log",
+      "role": "gate-log",
+      "sha256": "a0a97c53d53dd1a89086cdd5160c290ec83b723ec57984ff69df19055a24c8bf",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-story-bow.log"
+    },
+    {
+      "bytes": 2628,
+      "command": "earth-story-veteran",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth-story-veteran.log",
+      "role": "gate-log",
+      "sha256": "5ff08a670fe8565d9bbf0a9f0a9df96207ac2200fc88c96c87da797e75c8d0a9",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-story-veteran.log"
+    },
+    {
+      "bytes": 2028,
+      "command": "earth-notes-blade",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth-notes-blade.log",
+      "role": "gate-log",
+      "sha256": "03a330c690c524eabb45cc3190a2302147bba7668532909013f84ffe401ba59a",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-notes-blade.log"
+    },
+    {
+      "bytes": 2030,
+      "command": "earth-notes-bow",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth-notes-bow.log",
+      "role": "gate-log",
+      "sha256": "f2c58170086fad99b1d8350ab130658136fe36c96f6e155ef9324bc1f01f2922",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-notes-bow.log"
+    },
+    {
+      "bytes": 2022,
+      "command": "earth-notes-veteran",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth-notes-veteran.log",
+      "role": "gate-log",
+      "sha256": "50d45e4e27c97a4e5581805fc63c746a9848ec8ed5fd0bbea86b37df2eccb9b2",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-notes-veteran.log"
+    },
+    {
+      "bytes": 2008,
+      "command": "gathering-blade",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/gathering-blade.log",
+      "role": "gate-log",
+      "sha256": "3e683c4be095db03109d5e74fef0638950342e1170c92d32c8fe18b0667ae3b9",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\gathering-blade.log"
+    },
+    {
+      "bytes": 2004,
+      "command": "gathering-bow",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/gathering-bow.log",
+      "role": "gate-log",
+      "sha256": "5d6395e2a7f18faf95b93b34587c8cfc6161413b46cb82ca7455221a61154369",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\gathering-bow.log"
+    },
+    {
+      "bytes": 1998,
+      "command": "gathering-veteran",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/gathering-veteran.log",
+      "role": "gate-log",
+      "sha256": "6c5318290e794c735c25205685eb8f4969cec7e3e8f219cd1fab53e8879f78bd",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\gathering-veteran.log"
+    },
+    {
+      "bytes": 115,
+      "command": "world-foundations-blade",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/world-foundations-blade.log",
+      "role": "gate-log",
+      "sha256": "fc64a7526f2397fe2fd184a12f5b7161198deee503ca08909120d5cee37e8e24",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\world-foundations-blade.log"
+    },
+    {
+      "bytes": 113,
+      "command": "world-foundations-bow",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/world-foundations-bow.log",
+      "role": "gate-log",
+      "sha256": "672abbfbe7a1d33774e55716e058cae4b29ce9f6c013361f41d6b31a4ad224d6",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\world-foundations-bow.log"
+    },
+    {
+      "bytes": 111,
+      "command": "world-foundations-veteran",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/world-foundations-veteran.log",
+      "role": "gate-log",
+      "sha256": "f67ce6df32a739cda65cf92f5c480d85fc7cf4969a8894534f8f0a9487566137",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\world-foundations-veteran.log"
+    },
+    {
+      "bytes": 161,
+      "command": "realm-trails-blade",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/realm-trails-blade.log",
+      "role": "gate-log",
+      "sha256": "8c99875b9853801c2052b9590857b851d349d56ab81580bfb70232c631f73fe1",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\realm-trails-blade.log"
+    },
+    {
+      "bytes": 159,
+      "command": "realm-trails-bow",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/realm-trails-bow.log",
+      "role": "gate-log",
+      "sha256": "53a69d88317a65523229998ee60c03de091e0a8b8d41a82e5253f340965b78d5",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\realm-trails-bow.log"
+    },
+    {
+      "bytes": 5036,
+      "command": "realm-trails-south-blade",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/realm-trails-south-blade.log",
+      "role": "gate-log",
+      "sha256": "55cba86f9c91e0e99129a40345de33e6166fe75f63fe5c7c2723203be675080c",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\realm-trails-south-blade.log"
+    },
+    {
+      "bytes": 5034,
+      "command": "realm-trails-south-bow",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/realm-trails-south-bow.log",
+      "role": "gate-log",
+      "sha256": "809a169facb96bc87e5d900e7d7d1d7a3fdd37dc5584fe241f56059651c7cde7",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\realm-trails-south-bow.log"
+    },
+    {
+      "bytes": 860,
+      "command": "realm-comparator-blade",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/realm-comparator-blade.log",
+      "role": "gate-log",
+      "sha256": "d051c505ea0d4762ed40c3b46181cff2ef60ab5dfca172cbdff96e7e26bccab5",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\realm-comparator-blade.log"
+    },
+    {
+      "bytes": 859,
+      "command": "realm-comparator-bow",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/realm-comparator-bow.log",
+      "role": "gate-log",
+      "sha256": "a07a5025afb0bff37325955e4fd9fea4c0a5b197b0afaa4f95064ca4a85245d8",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\realm-comparator-bow.log"
+    },
+    {
+      "bytes": 1380,
+      "command": "realm-comparator-veteran",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/realm-comparator-veteran.log",
+      "role": "gate-log",
+      "sha256": "f4f6b0a7ac25ab8977d54d213e2fea8aa061c1044f800bf14645a69fb0ab9fae",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\realm-comparator-veteran.log"
+    },
+    {
+      "bytes": 834,
+      "command": "earth-expedition-blade",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth-expedition-blade.log",
+      "role": "gate-log",
+      "sha256": "ae0f8b181188a9ea39a2d2f98b24be9e461949c5deb8eef97c9ce052c31a30d9",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-expedition-blade.log"
+    },
+    {
+      "bytes": 830,
+      "command": "earth-expedition-bow",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth-expedition-bow.log",
+      "role": "gate-log",
+      "sha256": "c43819230b2c2b6662b2067040461c65a4ea1843738a91b68d2eb397d5cf4312",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-expedition-bow.log"
+    },
+    {
+      "bytes": 831,
+      "command": "earth-expedition-veteran",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth-expedition-veteran.log",
+      "role": "gate-log",
+      "sha256": "87c2aaa48e93f48dc9b19621192b96db9d52cbf781cc3c6550c58527e5580aad",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-expedition-veteran.log"
+    },
+    {
+      "bytes": 1012,
+      "command": "local-life-blade",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/local-life-blade.log",
+      "role": "gate-log",
+      "sha256": "982789616d67fd254b72ce9a5a0e8df923d2f9a709205db634b537ff7beb533e",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\local-life-blade.log"
+    },
+    {
+      "bytes": 1009,
+      "command": "local-life-bow",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/local-life-bow.log",
+      "role": "gate-log",
+      "sha256": "0ca6e51f77b4d7736125395d0b37a23b4d7fa4ecb4f2090b2fc1dbf070d4e866",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\local-life-bow.log"
+    },
+    {
+      "bytes": 1019,
+      "command": "local-life-veteran",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/local-life-veteran.log",
+      "role": "gate-log",
+      "sha256": "e73bdada22bd81a4ad8ffc08b4a8f2a243ecab7eca8067b88f0c719e76becb16",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\local-life-veteran.log"
+    },
+    {
+      "bytes": 147,
+      "command": "home-history-blade",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/home-history-blade.log",
+      "role": "gate-log",
+      "sha256": "67b551344f4ce9c2a7d09fb7e1f609733c67e446b5ac9ec734aa9261bcbb20bd",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\home-history-blade.log"
+    },
+    {
+      "bytes": 145,
+      "command": "home-history-bow",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/home-history-bow.log",
+      "role": "gate-log",
+      "sha256": "fc9771880dce1ba439c946001c3dffe04b41ae7de11625a791a300bc61987e13",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\home-history-bow.log"
+    },
+    {
+      "bytes": 155,
+      "command": "home-history-veteran",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/home-history-veteran.log",
+      "role": "gate-log",
+      "sha256": "25402427c525d6548dd3d1ef6a32544736829662f175eb870b82f27d8ae04018",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\home-history-veteran.log"
+    },
+    {
+      "bytes": 115,
+      "command": "bridge-community-blade",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/bridge-community-blade.log",
+      "role": "gate-log",
+      "sha256": "5ef9dbac0926b8904107f463f8215323de6ae3cedf3a4ccb99016d2d5078f960",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\bridge-community-blade.log"
+    },
+    {
+      "bytes": 119,
+      "command": "bridge-community-bow",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/bridge-community-bow.log",
+      "role": "gate-log",
+      "sha256": "81802a66211ae7e69bbb878bb946d487913223602fdc76dfc57bbd93ed927c42",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\bridge-community-bow.log"
+    },
+    {
+      "bytes": 123,
+      "command": "bridge-community-veteran",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/bridge-community-veteran.log",
+      "role": "gate-log",
+      "sha256": "08fddde5b7978d3f70af5950ba7c6d4774ffd2d79cdff0c839c3ece5194e0022",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\bridge-community-veteran.log"
+    },
+    {
+      "bytes": 90,
+      "command": "hell-campaign-blade",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/hell-campaign-blade.log",
+      "role": "gate-log",
+      "sha256": "afd9305106d14d0ff80b829c769422ab83f1681a5fcc8926a2d96c1e382dd2de",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\hell-campaign-blade.log"
+    },
+    {
+      "bytes": 88,
+      "command": "hell-campaign-bow",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/hell-campaign-bow.log",
+      "role": "gate-log",
+      "sha256": "c68d5d118e02d19ff299e64a036ee685639f25a78e472684222729e781e5094e",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\hell-campaign-bow.log"
+    },
+    {
+      "bytes": 99,
+      "command": "hell-campaign-veteran",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/hell-campaign-veteran.log",
+      "role": "gate-log",
+      "sha256": "b99fa6da12bedd3cc060af639ecb97ed53fdccda85429d7fa7adc911507cb380",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\hell-campaign-veteran.log"
+    },
+    {
+      "bytes": 149,
+      "command": "heaven-campaign-blade",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/heaven-campaign-blade.log",
+      "role": "gate-log",
+      "sha256": "06a4c6fad5039fe2f762ae3bba9f4aded7c5eb2295f7cfa13b554254655ea8b1",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\heaven-campaign-blade.log"
+    },
+    {
+      "bytes": 150,
+      "command": "heaven-campaign-bow",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/heaven-campaign-bow.log",
+      "role": "gate-log",
+      "sha256": "c7daece8db21e67864161cc56d2e3fda89c126c590fc2167a32dd4e140d9b17e",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\heaven-campaign-bow.log"
+    },
+    {
+      "bytes": 157,
+      "command": "heaven-campaign-veteran",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/heaven-campaign-veteran.log",
+      "role": "gate-log",
+      "sha256": "57bbc7fa30f7dec4c2ccd610c07bbd97047de4a1e9161b90cad42d7152a4e7f6",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\heaven-campaign-veteran.log"
+    },
+    {
+      "bytes": 102,
+      "command": "atlantis-campaign-blade",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/atlantis-campaign-blade.log",
+      "role": "gate-log",
+      "sha256": "bf5355c8c11cab570ef5447fbf2cb9ae92e03944a4f995011707a348ee714e0f",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\atlantis-campaign-blade.log"
+    },
+    {
+      "bytes": 100,
+      "command": "atlantis-campaign-bow",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/atlantis-campaign-bow.log",
+      "role": "gate-log",
+      "sha256": "6c82fb5cdf4f3ed355520a90a7ff115892e20aa56c46b9e916ca9b0691fde357",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\atlantis-campaign-bow.log"
+    },
+    {
+      "bytes": 111,
+      "command": "atlantis-campaign-veteran",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/atlantis-campaign-veteran.log",
+      "role": "gate-log",
+      "sha256": "871e099cef3be692c163dd4c848a1a32f98ec981787a1f72554afdfe58fc8686",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\atlantis-campaign-veteran.log"
+    },
+    {
+      "bytes": 128,
+      "command": "cosmos-campaign-blade",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/cosmos-campaign-blade.log",
+      "role": "gate-log",
+      "sha256": "b6e6484740bd267cf826f2796d5db8c5b37a4040d8f78951c8c442f4e711ac46",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\cosmos-campaign-blade.log"
+    },
+    {
+      "bytes": 126,
+      "command": "cosmos-campaign-bow",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/cosmos-campaign-bow.log",
+      "role": "gate-log",
+      "sha256": "983182702055d1fcf582c12bc1733815d92089bde3479d14b93e88c308b61e18",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\cosmos-campaign-bow.log"
+    },
+    {
+      "bytes": 136,
+      "command": "cosmos-campaign-veteran",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/cosmos-campaign-veteran.log",
+      "role": "gate-log",
+      "sha256": "906a670b557365c6ef2ca4355c5d5b63ca806c63a4603fb4cd398d660aa80126",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\cosmos-campaign-veteran.log"
+    },
+    {
+      "bytes": 5120,
+      "command": "earth-homecoming-earned",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth-homecoming-earned.log",
+      "role": "gate-log",
+      "sha256": "0e8ef763d6190201ef9f566a92db7be0eb543b38c5f0f3c49b7d9a79aa2b7506",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned.log"
+    },
+    {
+      "bytes": 451602,
+      "command": "earth_homecoming_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth_homecoming_browser.log",
+      "role": "gate-log",
+      "sha256": "189a70aa69073606dd2338132e6acd2a8654805119274c02dcda506a3cb2ab74",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth_homecoming_browser.log"
+    },
+    {
+      "bytes": 3098,
+      "command": "onboarding_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/onboarding_browser.log",
+      "role": "gate-log",
+      "sha256": "886688ddc56206902e1586315b080f4acc223a0633f65201cc2d6d24d53777f7",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\onboarding_browser.log"
+    },
+    {
+      "bytes": 635845,
+      "command": "cosmos_campaign_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/cosmos_campaign_browser.log",
+      "role": "gate-log",
+      "sha256": "90679675bc0fc9883f3eda87c4161083ff86f8e0855110e4e2d38ed366265a02",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\cosmos_campaign_browser.log"
+    },
+    {
+      "bytes": 76018,
+      "command": "atlantis_campaign_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/atlantis_campaign_browser.log",
+      "role": "gate-log",
+      "sha256": "ecdf5708bed0dfb82353ce11aa4af48dd343c058716d73fb53be8481fa1f9398",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\atlantis_campaign_browser.log"
+    },
+    {
+      "bytes": 83946,
+      "command": "heaven_campaign_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/heaven_campaign_browser.log",
+      "role": "gate-log",
+      "sha256": "47da3d06c857968328a804234b698b48b488c269e66ca9842629f69afc1b1417",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\heaven_campaign_browser.log"
+    },
+    {
+      "bytes": 36701,
+      "command": "hell_campaign_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/hell_campaign_browser.log",
+      "role": "gate-log",
+      "sha256": "cbc5606cb4e2f234db8f9888e2228a6c02f78a532880b74e2d53497b30bf48f2",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\hell_campaign_browser.log"
+    },
+    {
+      "bytes": 14682,
+      "command": "bridge_community_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/bridge_community_browser.log",
+      "role": "gate-log",
+      "sha256": "6203bdb7603e9b0d88bd0b73acb418754daee6aaffa46da9dd60a8582f7e775a",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\bridge_community_browser.log"
+    },
+    {
+      "bytes": 17656,
+      "command": "home_history_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/home_history_browser.log",
+      "role": "gate-log",
+      "sha256": "15d2485f1b2bbe1eb0eb1347b5fa7d76b89b47cce0e2d192733fe3737b422622",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\home_history_browser.log"
+    },
+    {
+      "bytes": 41296,
+      "command": "local_life_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/local_life_browser.log",
+      "role": "gate-log",
+      "sha256": "d5acb947e6bdce0a2a9f445bd0ef5ace611ad5c8bfd08cd1ebd9a94cf06404ab",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\local_life_browser.log"
+    },
+    {
+      "bytes": 3837,
+      "command": "earth_ground_material_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth_ground_material_browser.log",
+      "role": "gate-log",
+      "sha256": "c82fde466119c8e393aa34108394127a1413bbeae2f102018e8c5a39d99f8c92",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth_ground_material_browser.log"
+    },
+    {
+      "bytes": 25187,
+      "command": "realm_givers_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/realm_givers_browser.log",
+      "role": "gate-log",
+      "sha256": "c3c54c62b28a300b4a448cdd640d42fb7ab3023458fd16385b095ab48a81a79c",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\realm_givers_browser.log"
+    },
+    {
+      "bytes": 4046,
+      "command": "crossing_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/crossing_browser.log",
+      "role": "gate-log",
+      "sha256": "b7e60195cd71a79ca9b858931c055035ea08a9294c5c72a464dbd9d7a6585723",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\crossing_browser.log"
+    },
+    {
+      "bytes": 4172,
+      "command": "regression09_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/regression09_browser.log",
+      "role": "gate-log",
+      "sha256": "f961280bfd48606e6024aa38a62f5987eaba527c66e9db533adf04933c89a9ea",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\regression09_browser.log"
+    },
+    {
+      "bytes": 1126,
+      "command": "cutaway_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/cutaway_browser.log",
+      "role": "gate-log",
+      "sha256": "509f2c59d6dd7b02eae8306bc1e2507e3c7bd5245f50da6ab0d2708d995a512e",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\cutaway_browser.log"
+    },
+    {
+      "bytes": 1849,
+      "command": "reflection_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/reflection_browser.log",
+      "role": "gate-log",
+      "sha256": "1671c3fdfb2edc69fe5c1be34632b9c9e2f7562a5cf1354a4873ea76677ea7b5",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\reflection_browser.log"
+    },
+    {
+      "bytes": 516,
+      "command": "native_origin_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/native_origin_browser.log",
+      "role": "gate-log",
+      "sha256": "0b81853b4503586fb0edd367582284bedfc3a2256c3d12ff3f608e63435b5263",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\native_origin_browser.log"
+    },
+    {
+      "bytes": 5086,
+      "command": "starter_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/starter_browser.log",
+      "role": "gate-log",
+      "sha256": "62851f6e17391909357099954f8ffd98512b4a1e9079529032fea46df8ebba87",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\starter_browser.log"
+    },
+    {
+      "bytes": 3026,
+      "command": "camera_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/camera_browser.log",
+      "role": "gate-log",
+      "sha256": "c29737a25023bd5e0aefa2046639f24a598017a0a5750771a799e52e6a70cbae",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\camera_browser.log"
+    },
+    {
+      "bytes": 6250,
+      "command": "pursuit_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/pursuit_browser.log",
+      "role": "gate-log",
+      "sha256": "96822dee04d9c5e7da7750a450efbbcdaafda025f52a218e44b172ee626d5e12",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\pursuit_browser.log"
+    },
+    {
+      "bytes": 4357,
+      "command": "characters_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/characters_browser.log",
+      "role": "gate-log",
+      "sha256": "a067d91915df7395e4d268225d48ac904837632f801bdf7c1858d12d722603a0",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\characters_browser.log"
+    },
+    {
+      "bytes": 2383,
+      "command": "classes_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/classes_browser.log",
+      "role": "gate-log",
+      "sha256": "ef23c78cd5f3a8bfae077961bab37392f61f6377eb46fcc65c0f6de96e6c4003",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\classes_browser.log"
+    },
+    {
+      "bytes": 4039,
+      "command": "cosmos_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/cosmos_browser.log",
+      "role": "gate-log",
+      "sha256": "6879822ddd4e2466fd21ab4e419d425900165b26a4b36918e0d3d8010c70dea7",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\cosmos_browser.log"
+    },
+    {
+      "bytes": 5235,
+      "command": "earth_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth_browser.log",
+      "role": "gate-log",
+      "sha256": "6a25250a666ae36470b65d48796757b5c4f01f9ff168d8c88fc39ca8e29be557",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth_browser.log"
+    },
+    {
+      "bytes": 15524,
+      "command": "earth_story_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth_story_browser.log",
+      "role": "gate-log",
+      "sha256": "a991f0903f4d626b1d89e8210cd7fa0162847b777d54f81e4b752eff53af65f5",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth_story_browser.log"
+    },
+    {
+      "bytes": 7022,
+      "command": "earth_notes_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth_notes_browser.log",
+      "role": "gate-log",
+      "sha256": "332191c4133c3eb0bd6e07a8b4dc0cb7a0048d08890b6ba69ce4868bbdb1c747",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth_notes_browser.log"
+    },
+    {
+      "bytes": 5641,
+      "command": "gathering_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/gathering_browser.log",
+      "role": "gate-log",
+      "sha256": "d6f061cdf3c3510853b9ae997400adfb15609e052c526269633e39c3bd507d2f",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\gathering_browser.log"
+    },
+    {
+      "bytes": 2177,
+      "command": "realm_atlas_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/realm_atlas_browser.log",
+      "role": "gate-log",
+      "sha256": "aeaa2edea10aa5195268cbd2a87a0e063a6d4f799176e0f0d0dc5f3bfdab35fc",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\realm_atlas_browser.log"
+    },
+    {
+      "bytes": 2209,
+      "command": "timber_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/timber_browser.log",
+      "role": "gate-log",
+      "sha256": "d4daadf0b4bc1a1b65c3666059fd0c3072a2bbbd5de1203c4d3b0a6b09eca177",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\timber_browser.log"
+    },
+    {
+      "bytes": 5536,
+      "command": "traveler_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/traveler_browser.log",
+      "role": "gate-log",
+      "sha256": "4409bf695407cf8b14c2a32f938519defea7f1ad203d0d5f994c82bbdd84b6e5",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\traveler_browser.log"
+    },
+    {
+      "bytes": 68830,
+      "command": "bridge_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/bridge_browser.log",
+      "role": "gate-log",
+      "sha256": "caa37268d39fd5e67a262a3919e50233df6bcf144a8ad33a2e284cdec2940683",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\bridge_browser.log"
+    },
+    {
+      "bytes": 11360,
+      "command": "combat_cue_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/combat_cue_browser.log",
+      "role": "gate-log",
+      "sha256": "849f3eca2ea2a65860f992cde6e746aaf4209d6a7e28adfd1cae6b153adc083e",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\combat_cue_browser.log"
+    },
+    {
+      "bytes": 10501,
+      "command": "world_foundations_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/world_foundations_browser.log",
+      "role": "gate-log",
+      "sha256": "419c58a151f6783fb81facdbcca2e6a63c461a70d5e5f34e44352652556b298e",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\world_foundations_browser.log"
+    },
+    {
+      "bytes": 3716,
+      "command": "world_cutaway_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/world_cutaway_browser.log",
+      "role": "gate-log",
+      "sha256": "16c8dae593b6b8442ec993b89c21246632c7f4d18f373fc7d294fa4ffdfae560",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\world_cutaway_browser.log"
+    },
+    {
+      "bytes": 4049,
+      "command": "realm_trails_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/realm_trails_browser.log",
+      "role": "gate-log",
+      "sha256": "1cfc3a14a5ec86d727062b7612602dabfcc1a32cef43eb6e5b9b7a7a96aebf35",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\realm_trails_browser.log"
+    },
+    {
+      "bytes": 13352,
+      "command": "realm_trails_north_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/realm_trails_north_browser.log",
+      "role": "gate-log",
+      "sha256": "20bd8eb3a4b685e9fac155cf3dedeba7d384c96e50fdd127954a942ae27d5eab",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\realm_trails_north_browser.log"
+    },
+    {
+      "bytes": 1928,
+      "command": "realm_trails_cosmos_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/realm_trails_cosmos_browser.log",
+      "role": "gate-log",
+      "sha256": "50c8c5292dcebda9f622a3fb057567e81b8766cb66205ca535dbb81bd5cd9921",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\realm_trails_cosmos_browser.log"
+    },
+    {
+      "bytes": 3575,
+      "command": "soundscape_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/soundscape_browser.log",
+      "role": "gate-log",
+      "sha256": "958fddee60c7990b25dbb365c0070a4871d73abd7e90c52b1843c749b09eebaa",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\soundscape_browser.log"
+    },
+    {
+      "bytes": 5071,
+      "command": "journey_usability_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/journey_usability_browser.log",
+      "role": "gate-log",
+      "sha256": "1518be50787e9b978d37d5ac6afec4921e8bfe6216993f7743bfd27f0d768478",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\journey_usability_browser.log"
+    },
+    {
+      "bytes": 7291,
+      "command": "workshop_transactions_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/workshop_transactions_browser.log",
+      "role": "gate-log",
+      "sha256": "354f8e82d2cced594ec4ea90f2c6022d8a0ca34cce35174b7038354d2d9a4869",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\workshop_transactions_browser.log"
+    },
+    {
+      "bytes": 7843,
+      "command": "companion_presentation_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/companion_presentation_browser.log",
+      "role": "gate-log",
+      "sha256": "ba18aa0b0ce6d9c8ba2daedd4be393e4435807ec1f5caa0aed6b19b898ba6b29",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\companion_presentation_browser.log"
+    },
+    {
+      "bytes": 7834,
+      "command": "skitter_presentation_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/skitter_presentation_browser.log",
+      "role": "gate-log",
+      "sha256": "0f1e2dd43557cd16cf6bb04859908705d94a49e317f932e6de6846cb1820f48d",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\skitter_presentation_browser.log"
+    },
+    {
+      "bytes": 2616,
+      "command": "coastward_scenery_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/coastward_scenery_browser.log",
+      "role": "gate-log",
+      "sha256": "6cc89afbbae150a86e10eab3903e4e334d560c97c57d7074ffdd79227926ec80",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\coastward_scenery_browser.log"
+    },
+    {
+      "bytes": 4929,
+      "command": "earth_story_transactions_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth_story_transactions_browser.log",
+      "role": "gate-log",
+      "sha256": "79b5f6878e917c0f20bc7dd96322ff815278b13c65f8e3590a43cdf46b7bc77f",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth_story_transactions_browser.log"
+    },
+    {
+      "bytes": 4964,
+      "command": "coastward_bridge_posts_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/coastward_bridge_posts_browser.log",
+      "role": "gate-log",
+      "sha256": "84853643162787385f4ed7c3798285793bda9efb36dddf9afe37bc9fafda87a3",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\coastward_bridge_posts_browser.log"
+    },
+    {
+      "bytes": 7232,
+      "command": "practice_visibility_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/practice_visibility_browser.log",
+      "role": "gate-log",
+      "sha256": "3c21fadbf80afcc32e1d9337318da41fa6560535c27977f971f974ea87d516aa",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\practice_visibility_browser.log"
+    },
+    {
+      "bytes": 24674,
+      "command": "realm_work_presentation_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/realm_work_presentation_browser.log",
+      "role": "gate-log",
+      "sha256": "8f99bc057bcd0186deda9c38e3a39c9a88295c29e7a0422a1b6dc99b74fcc5f9",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\realm_work_presentation_browser.log"
+    },
+    {
+      "bytes": 34353,
+      "command": "earth_expedition_browser",
+      "epoch": "current-qualified-source",
+      "path": "current/logs/earth_expedition_browser.log",
+      "role": "gate-log",
+      "sha256": "904049e56b187846275f10aa23a959bb8bcc33e338b1bfa28afbb9c699a01025",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth_expedition_browser.log"
+    },
+    {
+      "bytes": 83279,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/blade/MIGRATED_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "53bb831db9140963f95d5514a1ef07c19e752dac60c24de4fd1f67fa93bb0fff",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\blade\\MIGRATED_WORLD.json"
+    },
+    {
+      "bytes": 41755,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/blade/earth/EARTH_HOMECOMING_JOURNEY_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "3f110cdabe28bac899d1cc04e9b09e53e702dbb75f862198be9af25557083734",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\blade\\earth\\EARTH_HOMECOMING_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 82395,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/blade/earth/FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "b8ac54f03cd8834261d4c075132d2b051dafc076ff8dd5d4b6b930576ea3f72e",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\blade\\earth\\FINAL_WORLD.json"
+    },
+    {
+      "bytes": 83251,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/blade/earth/01_ACCEPTED.json",
+      "role": "earned-linked",
+      "sha256": "91609bfaa4f78deca99a48a4798748159b9109a7cf73839c870de5ebe85bac67",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\blade\\earth\\01_ACCEPTED.json"
+    },
+    {
+      "bytes": 83043,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/blade/earth/02_RELAYS.json",
+      "role": "earned-linked",
+      "sha256": "73d103d0bad9a8e67314169ca015ba4fcb2c0a452630ef1d31476fda2156fda0",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\blade\\earth\\02_RELAYS.json"
+    },
+    {
+      "bytes": 82574,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/blade/earth/03_REGENT_REPELLED.json",
+      "role": "earned-linked",
+      "sha256": "f2b86c04baf27bc03adbcc4fc5426fec0ae244f54281a1d91dd47cfff8f016b1",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\blade\\earth\\03_REGENT_REPELLED.json"
+    },
+    {
+      "bytes": 82928,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/blade/earth/04_CHOICE.json",
+      "role": "earned-linked",
+      "sha256": "43353e3a72a053927c2d0ffabbc4cdd6333fa4700d20a060ff267800879f6958",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\blade\\earth\\04_CHOICE.json"
+    },
+    {
+      "bytes": 82976,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/blade/earth/05_VERIFIED.json",
+      "role": "earned-linked",
+      "sha256": "f74554bb6737c9ce951278026493f69fe69763e24ee2777e37d65402c128a06f",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\blade\\earth\\05_VERIFIED.json"
+    },
+    {
+      "bytes": 82877,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/blade/earth/06_HOME_UNPAID.json",
+      "role": "earned-linked",
+      "sha256": "3ddce66fd020cd50ae64fe5b55678f140a1ad48a2a28afc444a7f36d94271bcd",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\blade\\earth\\06_HOME_UNPAID.json"
+    },
+    {
+      "bytes": 82720,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/blade/earth/07_PAID.json",
+      "role": "earned-linked",
+      "sha256": "c221e344aff0f77c1c3abd21ba3dd6a1dd34809658b4e1119cc0dc3bcf5be863",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\blade\\earth\\07_PAID.json"
+    },
+    {
+      "bytes": 86401,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/bow/MIGRATED_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "a9e3994196b7e9a1f4b33aba55e7f09cabf64ae3268cba33b72750ad873ddcdb",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\bow\\MIGRATED_WORLD.json"
+    },
+    {
+      "bytes": 46344,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/bow/earth/EARTH_HOMECOMING_JOURNEY_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "d380de93358fcc38c119f56c1837e721bfc17fc34db782754782e8b6221f9046",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\bow\\earth\\EARTH_HOMECOMING_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 85656,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/bow/earth/FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "ffc902160cd03f0aa25f26fde2a2802ac8463991cc3be818eac01aee43d3217b",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\bow\\earth\\FINAL_WORLD.json"
+    },
+    {
+      "bytes": 86305,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/bow/earth/01_ACCEPTED.json",
+      "role": "earned-linked",
+      "sha256": "52f7714be40fd6975ae83ecb0ef520fc9bd07cbd845637c8349bedfccdbb8946",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\bow\\earth\\01_ACCEPTED.json"
+    },
+    {
+      "bytes": 86373,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/bow/earth/02_RELAYS.json",
+      "role": "earned-linked",
+      "sha256": "f37d72db7e6ce27cda38a81c62b86f3cb48abfca05e7daa92db79a1cef875e3f",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\bow\\earth\\02_RELAYS.json"
+    },
+    {
+      "bytes": 86170,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/bow/earth/03_REGENT_REPELLED.json",
+      "role": "earned-linked",
+      "sha256": "e3b65d3b45d01be4825df2fc18c7d2cca5df9dc3f39fab8aed3cc6ef88205b59",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\bow\\earth\\03_REGENT_REPELLED.json"
+    },
+    {
+      "bytes": 86110,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/bow/earth/04_CHOICE.json",
+      "role": "earned-linked",
+      "sha256": "40c76d784751d063b3bf5476caf58a075a563e9dd6465fc6add289fbac72fd8c",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\bow\\earth\\04_CHOICE.json"
+    },
+    {
+      "bytes": 85934,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/bow/earth/05_VERIFIED.json",
+      "role": "earned-linked",
+      "sha256": "64e7cb2ad4dad87159a90e9dd8c2a57d2e3cf6e063a9bbccdf112d0abee1bd2e",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\bow\\earth\\05_VERIFIED.json"
+    },
+    {
+      "bytes": 85832,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/bow/earth/06_HOME_UNPAID.json",
+      "role": "earned-linked",
+      "sha256": "982004ea08a866d59ce7e0bf853bc20452af5dbfeb61dd80a9bc604d3b50a970",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\bow\\earth\\06_HOME_UNPAID.json"
+    },
+    {
+      "bytes": 85654,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/bow/earth/07_PAID.json",
+      "role": "earned-linked",
+      "sha256": "1386a6ef36d9f9e2a96f41cc4388ddbe22a21192b37e00bd74ce4adb4f439dbd",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\bow\\earth\\07_PAID.json"
+    },
+    {
+      "bytes": 71855,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/strongest/MIGRATED_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "bfb5ce9fff77517aa9caf9abc918e78f92672dd1bb7d50f89d3d28503d30e03b",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\strongest\\MIGRATED_WORLD.json"
+    },
+    {
+      "bytes": 72972,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/strongest/missing-earth/03_COASTWARD_FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "c162f29f889c2ca9b387a9c450b7a3ef3d8013c2e41c853b782f239c255c03e0",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\strongest\\missing-earth\\03_COASTWARD_FINAL_WORLD.json"
+    },
+    {
+      "bytes": 34308,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/strongest/missing-earth/EARLY_REALMS_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "857b28039b181538c6534abf5f31c427fe369e109656924018cffea74792c8f5",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\strongest\\missing-earth\\EARLY_REALMS_REPORT.json"
+    },
+    {
+      "bytes": 72227,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/strongest/missing-earth/01_FENNA_FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "f5d03531046cf390d24fad90123010416148ebabfea88175096b157c804a0d88",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\strongest\\missing-earth\\01_FENNA_FINAL_WORLD.json"
+    },
+    {
+      "bytes": 73006,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/strongest/missing-earth/02_LIVING_ROAD_FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "3fab430fc4d7f48ff1a5b9e16d8fbf8390b233bd22ed73e29d09bda74d392b59",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\strongest\\missing-earth\\02_LIVING_ROAD_FINAL_WORLD.json"
+    },
+    {
+      "bytes": 76308,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/strongest/missing-hell/fixture-origin-strongest/FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "a818f33b2547fdedc0c826b7852165b7e1cb6772b8f2d70167d19c59a1e8bfc1",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\strongest\\missing-hell\\fixture-origin-strongest\\FINAL_WORLD.json"
+    },
+    {
+      "bytes": 23154,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/strongest/missing-hell/fixture-origin-strongest/HELL_CAMPAIGN_JOURNEY_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "b2a60905e053bfdd2615cbb0f2710f31c541ffac44702533de8ac2eb1cd2f015",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\strongest\\missing-hell\\fixture-origin-strongest\\HELL_CAMPAIGN_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 79739,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/strongest/missing-heaven/fixture-origin-strongest/FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "7be951eee24202c8653b67e1d796a91bd71c2324af54f2ddaa7f3f3e320b5cf7",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\strongest\\missing-heaven\\fixture-origin-strongest\\FINAL_WORLD.json"
+    },
+    {
+      "bytes": 54542,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/strongest/missing-heaven/fixture-origin-strongest/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "f6bddb008045ee3f18723e8c78bead0884f5356fcfc0511fcdfb44868d526292",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\strongest\\missing-heaven\\fixture-origin-strongest\\HEAVEN_CAMPAIGN_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 83006,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/strongest/missing-atlantis/fixture-origin-strongest/FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "253fa5a9ed3afccae3f63bd371fc2ebd36f79a445f712ae3825fe898c8447b27",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\strongest\\missing-atlantis\\fixture-origin-strongest\\FINAL_WORLD.json"
+    },
+    {
+      "bytes": 58511,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/strongest/missing-atlantis/fixture-origin-strongest/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "88fe06c14e376a9d83d3eb3ed8330f4e57eef47b796d6e25547f1a97f6d67691",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\strongest\\missing-atlantis\\fixture-origin-strongest\\ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 42455,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/strongest/earth/EARTH_HOMECOMING_JOURNEY_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "ed6854fc848602c62fdcb33f194c93f941b11b29e8d7cbaec0b0b968b908d4a1",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\strongest\\earth\\EARTH_HOMECOMING_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 83918,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/strongest/earth/FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "a50c7493be5fed19461b98ec334b924fa72a102e8a3ae88c7e7d8b6ce0117968",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\strongest\\earth\\FINAL_WORLD.json"
+    },
+    {
+      "bytes": 83113,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/strongest/earth/01_ACCEPTED.json",
+      "role": "earned-linked",
+      "sha256": "6afdc05b5dfb6758cf4818a00bca23a686866b71bfa2e07cee26504e36404a86",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\strongest\\earth\\01_ACCEPTED.json"
+    },
+    {
+      "bytes": 83932,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/strongest/earth/02_RELAYS.json",
+      "role": "earned-linked",
+      "sha256": "900ec10a9c514e7f3c1e46ca3a1b7789e0d676f009e06bec0700c6bcd746b968",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\strongest\\earth\\02_RELAYS.json"
+    },
+    {
+      "bytes": 84051,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/strongest/earth/03_REGENT_REPELLED.json",
+      "role": "earned-linked",
+      "sha256": "6f23fbdc42b14812551b33750ec68832cc700433a1e13ab6997c2b19023050a6",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\strongest\\earth\\03_REGENT_REPELLED.json"
+    },
+    {
+      "bytes": 84242,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/strongest/earth/04_CHOICE.json",
+      "role": "earned-linked",
+      "sha256": "9465824bd71aa294a360edcf5e650ac0577a9019010f5930ef451b71415ddccb",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\strongest\\earth\\04_CHOICE.json"
+    },
+    {
+      "bytes": 84220,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/strongest/earth/05_VERIFIED.json",
+      "role": "earned-linked",
+      "sha256": "b89b79ba0f52a24c1b0ab133778bb249ba153d3c56de3b5fa3004dc6b8c35150",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\strongest\\earth\\05_VERIFIED.json"
+    },
+    {
+      "bytes": 84174,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/strongest/earth/06_HOME_UNPAID.json",
+      "role": "earned-linked",
+      "sha256": "c065c333c545774e8fc213b541bf443cf8573f8059691db5506fd8e2d95f3eaf",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\strongest\\earth\\06_HOME_UNPAID.json"
+    },
+    {
+      "bytes": 83957,
+      "epoch": "current-qualified-source",
+      "path": "current/earth-homecoming-earned/strongest/earth/07_PAID.json",
+      "role": "earned-linked",
+      "sha256": "906c0dd69a4b210e326fad203bd8e975488f2cc3807d48eb31594cc13d9f3953",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\earth-homecoming-earned\\strongest\\earth\\07_PAID.json"
+    },
+    {
+      "bytes": 29639,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/original-I/CHAPTER_COMPLETED.json",
+      "role": "earned-linked",
+      "sha256": "b108b4931029f9b2324054d98487e6f9b3db7380682544423c8b582472816178",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\original-I\\CHAPTER_COMPLETED.json"
+    },
+    {
+      "bytes": 903,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/original-I/CHAPTER_JOURNEY_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "856840160c3a7696cde547deb48fbfecc20e77d97e5c6d191ab4d9e44f650069",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\original-I\\CHAPTER_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 36327,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/original-II/CHAPTER_II_COMPLETE_EARNED.json",
+      "role": "earned-linked",
+      "sha256": "974bcd7901030cd105886d7c2238cdb6bedd440056c5f1e02bc84e4da4e65292",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\original-II\\CHAPTER_II_COMPLETE_EARNED.json"
+    },
+    {
+      "bytes": 935,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/original-II/ROAD_JOURNEY_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "5243c95a3e08f0db12d42b89ebd858dfee27c3f0384f1d723fb04ea9a6b27c9c",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\original-II\\ROAD_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 43637,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/original-III/CHAPTER_III_COMPLETE_EARNED.json",
+      "role": "earned-linked",
+      "sha256": "38dea379cf03325e4a95b42f0963e6f330f4d2c6356c79a533b6b039cddadb75",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\original-III\\CHAPTER_III_COMPLETE_EARNED.json"
+    },
+    {
+      "bytes": 1642,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/original-III/BEACON_JOURNEY.json",
+      "role": "earned-linked",
+      "sha256": "c8da626bbff98555064bed8e1986f785f38f788c1e7ce7f7d39a5ff06b1b8242",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\original-III\\BEACON_JOURNEY.json"
+    },
+    {
+      "bytes": 45871,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/original-IV/HOME_AFTER_BELL_EARNED.json",
+      "role": "earned-linked",
+      "sha256": "40e98041277159c3c1fc43c494ec8f4a505f3a643e1c6531e9bf75fde325eee9",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\original-IV\\HOME_AFTER_BELL_EARNED.json"
+    },
+    {
+      "bytes": 5244,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/original-IV/CROSSING_JOURNEY.json",
+      "role": "earned-linked",
+      "sha256": "2d5eb44186d855203c4d6adb4109283eb2e4b63f2c692750f7be9bb5d5d4a897",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\original-IV\\CROSSING_JOURNEY.json"
+    },
+    {
+      "bytes": 52910,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/local-Earth/03_COASTWARD_FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "1e874de00e2402b784efb23095eb5e52b52eb343652224d57588516851e1c315",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\local-Earth\\03_COASTWARD_FINAL_WORLD.json"
+    },
+    {
+      "bytes": 34478,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/local-Earth/EARLY_REALMS_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "97de97b4ff8b16ca0e7f34236e829e475c9b6b133a365d655bab9f3b08b7f47b",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\local-Earth\\EARLY_REALMS_REPORT.json"
+    },
+    {
+      "bytes": 47843,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/local-Earth/01_FENNA_FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "de4faaeb6f04fa7b914a6524f5d5b197441a8333bb5f3de3d76bd58e3d84e6dc",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\local-Earth\\01_FENNA_FINAL_WORLD.json"
+    },
+    {
+      "bytes": 51475,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/local-Earth/02_LIVING_ROAD_FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "131c3fb7ad2524f248a950482ad6d970eee3f80ac3e64f14e89a0af7d3cf0eb1",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\local-Earth\\02_LIVING_ROAD_FINAL_WORLD.json"
+    },
+    {
+      "bytes": 66437,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/hell/connected-blade/FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "bb0a5d64ca42fdea8328e8ff1b1b531f2dce05c94064f0a76653525acca32240",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\hell\\connected-blade\\FINAL_WORLD.json"
+    },
+    {
+      "bytes": 23162,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/hell/connected-blade/HELL_CAMPAIGN_JOURNEY_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "3f732cd12231ad8e78f46c4a0e9e1808825a5a449e7e8f1ad24879630c9b25c3",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\hell\\connected-blade\\HELL_CAMPAIGN_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 76623,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/heaven/connected-blade/FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "0d0ae9ef3242792e1d19f09d681b272c8a57c602d72da73ac0c539e7c176cf52",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\heaven\\connected-blade\\FINAL_WORLD.json"
+    },
+    {
+      "bytes": 55378,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/heaven/connected-blade/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "54bb30d02d188feffc77a36d08a8d238af24353a506df1ab0967d9eb4c25bd20",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\heaven\\connected-blade\\HEAVEN_CAMPAIGN_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 81606,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/atlantis/connected-blade/FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "ad3b2805d2d5ef902882b9958ed1e389035b3606d8c8ccf84b01220791bab110",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\atlantis\\connected-blade\\FINAL_WORLD.json"
+    },
+    {
+      "bytes": 58458,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/atlantis/connected-blade/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "d131a38144c966fe821b3d5b8528d57160a3955904a4f5db411c7dbd3f7d3431",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\atlantis\\connected-blade\\ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 82906,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/cosmos/connected-blade/FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "7a5f0c52c039114de58e8689341e7dcd45e621a22ee106cb581528082aeaed1b",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\cosmos\\connected-blade\\FINAL_WORLD.json"
+    },
+    {
+      "bytes": 63169,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/cosmos/connected-blade/COSMOS_CAMPAIGN_JOURNEY_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "7fe65d50edd058016d2a00294ea422746f7961452740509dca347d0e906bca64",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\cosmos\\connected-blade\\COSMOS_CAMPAIGN_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 82022,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/Earth-homecoming/FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "70b715ffa5096556dcda2962e613363c0263dbdd447eb2779c98281afc0cefff",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\Earth-homecoming\\FINAL_WORLD.json"
+    },
+    {
+      "bytes": 42803,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/Earth-homecoming/EARTH_HOMECOMING_JOURNEY_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "66b7d7451b4e9442a7195046ba4e6580d78d11c618ccc3d4e53035095d8fccaf",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\Earth-homecoming\\EARTH_HOMECOMING_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 82878,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/Earth-homecoming/01_ACCEPTED.json",
+      "role": "earned-linked",
+      "sha256": "a19a8e2641be0ab07fbe730c74ebcad269295dd81c98e43ef7c345a63d0955a9",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\Earth-homecoming\\01_ACCEPTED.json"
+    },
+    {
+      "bytes": 82670,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/Earth-homecoming/02_RELAYS.json",
+      "role": "earned-linked",
+      "sha256": "01df1dfa92082b6c0943d420574973041f352254390e4a8b9e9c9ca5f2a14a6e",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\Earth-homecoming\\02_RELAYS.json"
+    },
+    {
+      "bytes": 82201,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/Earth-homecoming/03_REGENT_REPELLED.json",
+      "role": "earned-linked",
+      "sha256": "3d73599c8f9f589b3337524754f63a9b725d3aea72615ac23cffae3b8225489c",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\Earth-homecoming\\03_REGENT_REPELLED.json"
+    },
+    {
+      "bytes": 82555,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/Earth-homecoming/04_CHOICE.json",
+      "role": "earned-linked",
+      "sha256": "1e58e52546280c7cbc591c3a0f3ba4ff7c452de85f6bd039118e4ab59ad72140",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\Earth-homecoming\\04_CHOICE.json"
+    },
+    {
+      "bytes": 82603,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/Earth-homecoming/05_VERIFIED.json",
+      "role": "earned-linked",
+      "sha256": "627504b853bf22e3070c490297e4633eaeb04b9abad50cf2b3b004bdf73fa1e4",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\Earth-homecoming\\05_VERIFIED.json"
+    },
+    {
+      "bytes": 82504,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/Earth-homecoming/06_HOME_UNPAID.json",
+      "role": "earned-linked",
+      "sha256": "936a7d4ae257a243c17e1220f45c40b62f926cfb539ecf66ad88335f418c2546",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\Earth-homecoming\\06_HOME_UNPAID.json"
+    },
+    {
+      "bytes": 82347,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade/Earth-homecoming/07_PAID.json",
+      "role": "earned-linked",
+      "sha256": "8dec83adb1e5a557030081b0295814e1b7d950bcb68196087830dcd7eb117086",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\Earth-homecoming\\07_PAID.json"
+    },
+    {
+      "bytes": 29639,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/original-I/CHAPTER_COMPLETED.json",
+      "role": "earned-linked",
+      "sha256": "b108b4931029f9b2324054d98487e6f9b3db7380682544423c8b582472816178",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\original-I\\CHAPTER_COMPLETED.json"
+    },
+    {
+      "bytes": 903,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/original-I/CHAPTER_JOURNEY_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "856840160c3a7696cde547deb48fbfecc20e77d97e5c6d191ab4d9e44f650069",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\original-I\\CHAPTER_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 36327,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/original-II/CHAPTER_II_COMPLETE_EARNED.json",
+      "role": "earned-linked",
+      "sha256": "974bcd7901030cd105886d7c2238cdb6bedd440056c5f1e02bc84e4da4e65292",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\original-II\\CHAPTER_II_COMPLETE_EARNED.json"
+    },
+    {
+      "bytes": 935,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/original-II/ROAD_JOURNEY_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "5243c95a3e08f0db12d42b89ebd858dfee27c3f0384f1d723fb04ea9a6b27c9c",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\original-II\\ROAD_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 43637,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/original-III/CHAPTER_III_COMPLETE_EARNED.json",
+      "role": "earned-linked",
+      "sha256": "38dea379cf03325e4a95b42f0963e6f330f4d2c6356c79a533b6b039cddadb75",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\original-III\\CHAPTER_III_COMPLETE_EARNED.json"
+    },
+    {
+      "bytes": 1649,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/original-III/BEACON_JOURNEY.json",
+      "role": "earned-linked",
+      "sha256": "e5052bf7cea49a7b9d88dd0da2c6f6123fbd1d5e5d99573d0aa1c9fbc5c5e088",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\original-III\\BEACON_JOURNEY.json"
+    },
+    {
+      "bytes": 49346,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/original-IV/HOME_AFTER_BELL_EARNED.json",
+      "role": "earned-linked",
+      "sha256": "9f0c099b905dd762e2254e35550d99832246f82095514f3cd0f52ff9a624ee8d",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\original-IV\\HOME_AFTER_BELL_EARNED.json"
+    },
+    {
+      "bytes": 6780,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/original-IV/CROSSING_JOURNEY.json",
+      "role": "earned-linked",
+      "sha256": "e1dae8386f4b263ad0c3dec624cd54d95eb0cc2c290f1b7bce0deb6869ed5de6",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\original-IV\\CROSSING_JOURNEY.json"
+    },
+    {
+      "bytes": 56261,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/local-Earth/03_COASTWARD_FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "fd0bcbe0e22bf0a1020395ef615c319e0d0cd59e603fb6f8e01ca164ec542bb1",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\local-Earth\\03_COASTWARD_FINAL_WORLD.json"
+    },
+    {
+      "bytes": 34637,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/local-Earth/EARLY_REALMS_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "32a489707a1674db5102b38a32f943339efafb84dab8439c1a2176529f585ea8",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\local-Earth\\EARLY_REALMS_REPORT.json"
+    },
+    {
+      "bytes": 51221,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/local-Earth/01_FENNA_FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "0b8c8165453df5fcf8d46778037abc631a262008e5acc8dd182d73aca79a7ef7",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\local-Earth\\01_FENNA_FINAL_WORLD.json"
+    },
+    {
+      "bytes": 54796,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/local-Earth/02_LIVING_ROAD_FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "48c0b240781d3de7e424bcdcb7ae0c35e40b1e5d64970f803436f0e255381d48",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\local-Earth\\02_LIVING_ROAD_FINAL_WORLD.json"
+    },
+    {
+      "bytes": 69997,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/hell/connected-blade-to-bow/FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "74ffebe79c218cbaee92b7582e366f9c4005f79fdd4b1c1a40b535689c9d8916",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\hell\\connected-blade-to-bow\\FINAL_WORLD.json"
+    },
+    {
+      "bytes": 23847,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/hell/connected-blade-to-bow/HELL_CAMPAIGN_JOURNEY_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "734768044b5ef76c84e500bb45cf6c24afe4e5ce3a41ccde034956c1fe710d77",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\hell\\connected-blade-to-bow\\HELL_CAMPAIGN_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 79349,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/heaven/connected-blade-to-bow/FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "566ff2ea3e84f12442ee6250aeaf054ca8518d3c5750d392d069061dd4121148",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\heaven\\connected-blade-to-bow\\FINAL_WORLD.json"
+    },
+    {
+      "bytes": 58629,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/heaven/connected-blade-to-bow/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "a0a35e241d30c675f02f8a34555d59f63138f5bbb2385c9ef17ca7dd1bffe339",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\heaven\\connected-blade-to-bow\\HEAVEN_CAMPAIGN_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 84669,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/atlantis/connected-blade-to-bow/FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "5a4928a7a26df1029fcfb3f439f054c90333c9ce392830ed77e82593c9296f4c",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\atlantis\\connected-blade-to-bow\\FINAL_WORLD.json"
+    },
+    {
+      "bytes": 59267,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/atlantis/connected-blade-to-bow/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "6adb7a638c3e2f3c0e3488fbf19f78b3a9fa0daaa4f4c2fcd2fa2f205444fd8c",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\atlantis\\connected-blade-to-bow\\ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 85965,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/cosmos/connected-blade-to-bow/FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "02a5921544a708fad49c6ebe9899f4a80668c5867b01044dbd3bb73f1584472b",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\cosmos\\connected-blade-to-bow\\FINAL_WORLD.json"
+    },
+    {
+      "bytes": 63607,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/cosmos/connected-blade-to-bow/COSMOS_CAMPAIGN_JOURNEY_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "0eb873b0a728620f364c4cff91c4f551b67e5613830572c16e851f76e930a9a7",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\cosmos\\connected-blade-to-bow\\COSMOS_CAMPAIGN_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 85220,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/Earth-homecoming/FINAL_WORLD.json",
+      "role": "earned-linked",
+      "sha256": "aa0cc32b8fb3ce3ea4add5416129c5b4a5debf66e058e13ba84472692b3282d1",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\Earth-homecoming\\FINAL_WORLD.json"
+    },
+    {
+      "bytes": 47489,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/Earth-homecoming/EARTH_HOMECOMING_JOURNEY_REPORT.json",
+      "role": "earned-linked",
+      "sha256": "c623a2feddbe4246349f0b3127bc9ea2736fbefe378d994c2d3003ddca6a73f4",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\Earth-homecoming\\EARTH_HOMECOMING_JOURNEY_REPORT.json"
+    },
+    {
+      "bytes": 85869,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/Earth-homecoming/01_ACCEPTED.json",
+      "role": "earned-linked",
+      "sha256": "a240395116b2e0cd183badfaff856e5125b4b22202e34d6b0c91108dd27c5f30",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\Earth-homecoming\\01_ACCEPTED.json"
+    },
+    {
+      "bytes": 85937,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/Earth-homecoming/02_RELAYS.json",
+      "role": "earned-linked",
+      "sha256": "d8335693aa58ab4d8b49f0036e84865d9b45a025d8137ba0867bd171b4d2261b",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\Earth-homecoming\\02_RELAYS.json"
+    },
+    {
+      "bytes": 85734,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/Earth-homecoming/03_REGENT_REPELLED.json",
+      "role": "earned-linked",
+      "sha256": "9a8dd4f5650ca63e4c60a761d8dd50b6780c8c8ce75f27d89b150999833ad283",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\Earth-homecoming\\03_REGENT_REPELLED.json"
+    },
+    {
+      "bytes": 85674,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/Earth-homecoming/04_CHOICE.json",
+      "role": "earned-linked",
+      "sha256": "71c714c01cf04adccf433e1b340708281b618ced4043e4d8105281e0a15cd913",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\Earth-homecoming\\04_CHOICE.json"
+    },
+    {
+      "bytes": 85498,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/Earth-homecoming/05_VERIFIED.json",
+      "role": "earned-linked",
+      "sha256": "03bbbd35304bd3540f706ee1ea017898a72713c4f92dde05a83ca1d53a9319e0",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\Earth-homecoming\\05_VERIFIED.json"
+    },
+    {
+      "bytes": 85396,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/Earth-homecoming/06_HOME_UNPAID.json",
+      "role": "earned-linked",
+      "sha256": "b160ca1efe2036b406f771b7aad4b7d7b1df35410bb617018818d997b8952f94",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\Earth-homecoming\\06_HOME_UNPAID.json"
+    },
+    {
+      "bytes": 85218,
+      "epoch": "current-qualified-source",
+      "path": "current/whole-draft-earned/blade-to-bow/Earth-homecoming/07_PAID.json",
+      "role": "earned-linked",
+      "sha256": "a2be8d3c7462c81590b1c0004096493f3a19a6bd21f88a1210cccadb5ceeec52",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade-to-bow\\Earth-homecoming\\07_PAID.json"
+    },
+    {
+      "bytes": 238931,
+      "case": "earth-native01",
+      "epoch": "retained-negative",
+      "path": "negative/earth-native01/REPORT.json",
+      "role": "retained-negative",
+      "sha256": "316fc9381db5c82c3d839e4b70c9f2911cca5b850c3522de0dd5348cee003d2d",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\native01\\REPORT.json"
+    },
+    {
+      "bytes": 241631,
+      "case": "earth-native02",
+      "epoch": "retained-negative",
+      "path": "negative/earth-native02/REPORT.json",
+      "role": "retained-negative",
+      "sha256": "84802c3a0924fbdce608609cf9ca7034371a11740ba79ea8843d921860e57e3c",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\native02\\REPORT.json"
+    },
+    {
+      "bytes": 480135,
+      "case": "earth-native03",
+      "epoch": "retained-negative",
+      "path": "negative/earth-native03/REPORT.json",
+      "role": "retained-negative",
+      "sha256": "23beeff51f2e0583d269c5e963a4f6c70fe2dafa95c94ee7ea9e73ebc93455f3",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\native03\\REPORT.json"
+    },
+    {
+      "bytes": 823763,
+      "case": "earth-native04",
+      "epoch": "retained-negative",
+      "path": "negative/earth-native04/REPORT.json",
+      "role": "retained-negative",
+      "sha256": "4dd1bcaa865b24cc69783d081e70ecd12c41b78fd1b93bfc84e5c3c39a698c91",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\native04\\REPORT.json"
+    },
+    {
+      "bytes": 374006,
+      "case": "earth-capture01",
+      "epoch": "retained-negative",
+      "path": "negative/earth-capture01/REPORT.json",
+      "role": "retained-negative",
+      "sha256": "3d890565084aac57719b498219a1141ee604b9119ff832dde475e72c32a213b1",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\capture01\\REPORT.json"
+    },
+    {
+      "bytes": 73342,
+      "case": "onboarding-native01",
+      "epoch": "retained-negative",
+      "path": "negative/onboarding-native01/REPORT.json",
+      "role": "retained-negative",
+      "sha256": "e245a352997d400c8f5737e6654e7b58eda242f09c6e6a5c6d2742cf4fe2183e",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\native01\\REPORT.json"
+    },
+    {
+      "bytes": 83717,
+      "case": "onboarding-native02",
+      "epoch": "retained-negative",
+      "path": "negative/onboarding-native02/REPORT.json",
+      "role": "retained-negative",
+      "sha256": "2827e413ce9a0ec337478f2450e05cf0c1ded720f741f89a47fbf3da51285cda",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\native02\\REPORT.json"
+    },
+    {
+      "bytes": 116074,
+      "case": "onboarding-native03",
+      "epoch": "retained-negative",
+      "path": "negative/onboarding-native03/REPORT.json",
+      "role": "retained-negative",
+      "sha256": "16aaaef4689a329eccea41f3af2f7176b80aa51b5fbfb8e0bd7364edf7934e36",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\native03\\REPORT.json"
+    },
+    {
+      "bytes": 528,
+      "case": "whole-draft-full01",
+      "epoch": "retained-negative",
+      "path": "negative/whole-draft-full01/PROCESS_EXIT.json",
+      "role": "retained-negative",
+      "sha256": "d60f4de6aa470e7476e701f4cd7dd979504bc9810efc56ebb884bf4ad08ec804",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\REMOTE_FULL01_PROCESS_EXIT.json"
+    },
+    {
+      "bytes": 7645,
+      "epoch": "prior-qualified-source",
+      "htmlSHA256": "08f7d4de46a7243e5988c33967378d4a1e9450e30a738ffbfb0f43a09bc11f39",
+      "path": "prior-562/GATE_RECEIPT.json",
+      "role": "prior-qualified-evidence",
+      "sha256": "370e0130fce0259fd1e07d8a80829851df8dfd24ba049b0b589ea87ba9335fa2",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\REMOTE_FULL02_RECEIPT.json",
+      "sourceHead": "56254e86972ced292369686cf91fea9c98b107d8"
+    },
+    {
+      "bytes": 523,
+      "epoch": "prior-qualified-source",
+      "htmlSHA256": "08f7d4de46a7243e5988c33967378d4a1e9450e30a738ffbfb0f43a09bc11f39",
+      "path": "prior-562/PROCESS_EXIT.json",
+      "role": "prior-qualified-evidence",
+      "sha256": "e68357be72b47c344422d0d0298c1f9b2e27d511c3066b48c3068875d1e2f3cf",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\REMOTE_FULL02_PROCESS_EXIT.json",
+      "sourceHead": "56254e86972ced292369686cf91fea9c98b107d8"
+    },
+    {
+      "bytes": 14645,
+      "epoch": "prior-qualified-source",
+      "htmlSHA256": "08f7d4de46a7243e5988c33967378d4a1e9450e30a738ffbfb0f43a09bc11f39",
+      "path": "prior-562/complete-console.log",
+      "role": "prior-qualified-evidence",
+      "sha256": "2492166572693daeddac446c91a5ff027f1c67ae39ba6d3ce13070d9c307cbe9",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full02-console.log",
+      "sourceHead": "56254e86972ced292369686cf91fea9c98b107d8"
+    },
+    {
+      "bytes": 340592,
+      "epoch": "prior-qualified-source",
+      "htmlSHA256": "08f7d4de46a7243e5988c33967378d4a1e9450e30a738ffbfb0f43a09bc11f39",
+      "path": "prior-562/SOURCE_BINDING.json",
+      "role": "prior-qualified-evidence",
+      "sha256": "46b9bc1fb6c1ae23c7c7fcf33b1064ecc56eb373f0395a4de93e7cb7940f0882",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\SOURCE_BINDING01.json",
+      "sourceHead": "56254e86972ced292369686cf91fea9c98b107d8"
+    },
+    {
+      "bytes": 794,
+      "epoch": "billing-not-executed",
+      "path": "billing/HOSTED_ANNOTATIONS_b5fee76.json",
+      "role": "billing-nonexecution",
+      "sha256": "d40eb93d3514d73cd71d703567c65258a51058aa11b4594359fd89ab5aebca11",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\HOSTED_ANNOTATIONS_b5fee76.json"
+    },
+    {
+      "bytes": 45572,
+      "epoch": "billing-not-executed",
+      "path": "billing/HOSTED_JOBS_b5fee76.json",
+      "role": "billing-nonexecution",
+      "sha256": "38d431da1e3db93b3af9a89dd34295f6589f15d925b8310ba1d8f8f56c888423",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\HOSTED_JOBS_b5fee76.json"
+    },
+    {
+      "bytes": 441,
+      "case": "hud-cue01",
+      "epoch": "retained-negative",
+      "path": "negative/hud-cue01/PROCESS_EXIT.json",
+      "role": "retained-negative",
+      "sha256": "89a4ded17ccf40e0d718e5001968807dd7883a433180f9493df578b9f4d2ca55",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\HUD_CUE01_PROCESS_EXIT.json"
+    },
+    {
+      "bytes": 7533,
+      "case": "hud-cue01",
+      "epoch": "retained-negative",
+      "path": "negative/hud-cue01/REPORT.json",
+      "role": "retained-negative",
+      "sha256": "d4a9da7501d9bfa0e2b69d854f8537bed8559ba4b4923c4d7ed6ddcefc3b2a99",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\hud-cue01-native\\REPORT.json"
+    },
+    {
+      "bytes": 481,
+      "case": "hud-cue02",
+      "epoch": "retained-negative",
+      "path": "negative/hud-cue02/PROCESS_EXIT.json",
+      "role": "retained-negative",
+      "sha256": "a4ccf0335a94839ecd189855f5a106095138eb86b72db84f96572fb2a035060e",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\HUD_CUE02_PROCESS_EXIT.json"
+    },
+    {
+      "bytes": 12337,
+      "case": "hud-cue02",
+      "epoch": "retained-negative",
+      "path": "negative/hud-cue02/REPORT.json",
+      "role": "retained-negative",
+      "sha256": "4474adae8912f875b475de78f644e36ce34e7ef9c54d237d7f580a22619ab166",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\hud-cue02-native\\REPORT.json"
+    },
+    {
+      "bytes": 467,
+      "case": "hud-cue04",
+      "epoch": "retained-negative",
+      "path": "negative/hud-cue04/PROCESS_EXIT.json",
+      "role": "retained-negative",
+      "sha256": "d1b1ed792fa0c8220760b9cbd80abf9c5a655b0e7634cb2f26707b35da57ab27",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\HUD_CUE04_PROCESS_EXIT.json"
+    },
+    {
+      "bytes": 8584,
+      "case": "hud-cue04",
+      "epoch": "retained-negative",
+      "path": "negative/hud-cue04/REPORT.json",
+      "role": "retained-negative",
+      "sha256": "8c56760298800873fd05d4084dcf99cc4514dc33571d4b70a45319b9b683bfba",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\hud-cue04-native\\REPORT.json"
+    },
+    {
+      "bytes": 464,
+      "epoch": "research-only",
+      "path": "research/hud-cue05/PROCESS_EXIT.json",
+      "role": "supplemental-receipt",
+      "sha256": "0ad87af16d68d0589565b765a521d9d361fb344a54a9e8c7ab55c4010adea05e",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\HUD_CUE05_PROCESS_EXIT.json"
+    },
+    {
+      "bytes": 38864,
+      "epoch": "research-only",
+      "path": "research/hud-cue05/REPORT.json",
+      "role": "supplemental-receipt",
+      "sha256": "db35aed078c4731c7670d939a2bacfadbbbea8d144fdbb6f3b9d10c46da59976",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\hud-cue05-native\\REPORT.json"
+    },
+    {
+      "bytes": 3937,
+      "epoch": "research-only",
+      "path": "research/hud/FINAL_REVIEW02.json",
+      "role": "supplemental-receipt",
+      "sha256": "e0622489583c3dde02e315c06cf6e778edcd72e4f7c99f7a91c2f8efb7a92994",
+      "source": "D:\\07-GAMES\\Firstlight\\authoring\\staging-selected-foe-hud-independent-review-20261005\\FINAL_REVIEW02.json"
+    },
+    {
+      "bytes": 500,
+      "case": "whole-draft-full03",
+      "epoch": "retained-negative",
+      "path": "negative/full03/PROCESS_EXIT.json",
+      "role": "retained-negative",
+      "sha256": "f73ff2c06009c7fd5b780b078de707da00977bc6c09d7b120c1f27ab7ef8d036",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\REMOTE_FULL03_PROCESS_EXIT.json",
+      "sourceHead": "0fb1a71d0789a082b7917c0a1fe922270d3b9699"
+    },
+    {
+      "bytes": 19668,
+      "case": "whole-draft-full03",
+      "epoch": "retained-negative",
+      "path": "negative/full03/console.log",
+      "role": "retained-negative",
+      "sha256": "392a4f01f45617501c5c2ebc3658867e0de53300ebc6173435644492a171af23",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full03-console.log",
+      "sourceHead": "0fb1a71d0789a082b7917c0a1fe922270d3b9699"
+    },
+    {
+      "bytes": 22800,
+      "case": "world-foundations-full03",
+      "epoch": "retained-negative",
+      "path": "negative/full03-world-foundations/REPORT.json",
+      "role": "retained-negative",
+      "sha256": "19ece45aba4df6db90bee55d26adc542468c07204e3e6f4506071c55666c7f32",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\full03-world-foundations-native\\REPORT.json",
+      "sourceHead": "0fb1a71d0789a082b7917c0a1fe922270d3b9699"
+    },
+    {
+      "bytes": 4323,
+      "case": "world-foundations-full03",
+      "epoch": "retained-negative",
+      "path": "negative/full03-world-foundations/RETENTION01.json",
+      "role": "retained-negative",
+      "sha256": "2d0f0d07ba9c2a587a6440391c8dac9360e9374d1c66a2d446bb286415f0ece6",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\FULL03_WORLD_FOUNDATIONS_RETENTION01.json",
+      "sourceHead": "0fb1a71d0789a082b7917c0a1fe922270d3b9699"
+    },
+    {
+      "bytes": 14785,
+      "epoch": "research-only",
+      "path": "research/world-toast-diagnostic01/REPORT.json",
+      "role": "supplemental-receipt",
+      "sha256": "485acff85868a49863f6e1af34b29930b09b7b3f6880d181f26ea676c3c7e624",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\world-toast-diagnostic01\\REPORT.json",
+      "sourceHead": "0fb1a71d0789a082b7917c0a1fe922270d3b9699"
+    },
+    {
+      "bytes": 10018,
+      "epoch": "research-only",
+      "path": "research/world-toast-diagnostic01/console.log",
+      "role": "supplemental-receipt",
+      "sha256": "eaf6659e51c492ac082f5a98dc4cf6a43fc66d099abef84d8e9da94aef7f1463",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\world-toast-diagnostic01-console.log",
+      "sourceHead": "0fb1a71d0789a082b7917c0a1fe922270d3b9699"
+    },
+    {
+      "bytes": 531,
+      "epoch": "research-only",
+      "path": "research/world-toast-repair01/PROCESS_EXIT.json",
+      "role": "supplemental-receipt",
+      "sha256": "d4f05161eaa37000c1550ad0ffc648f316e098d4b6b208aaf0c4034cbbadb198",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\WORLD_TOAST_REPAIR01_PROCESS_EXIT.json",
+      "sourceHead": "0fb1a71d0789a082b7917c0a1fe922270d3b9699",
+      "sourcePhase": "dirty-precommit-targeted-repair"
+    },
+    {
+      "bytes": 1981,
+      "epoch": "research-only",
+      "path": "research/world-toast-repair01/REVIEW.json",
+      "role": "supplemental-receipt",
+      "sha256": "1c9974b0b1a57fe9fc89b6896a314b593ac32fd1770521086fde9391182474ee",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\WORLD_TOAST_REPAIR01_REVIEW.json",
+      "sourceHead": "0fb1a71d0789a082b7917c0a1fe922270d3b9699",
+      "sourcePhase": "dirty-precommit-targeted-repair"
+    },
+    {
+      "bytes": 21138,
+      "epoch": "research-only",
+      "path": "research/world-toast-repair01/REPORT.json",
+      "role": "supplemental-receipt",
+      "sha256": "3f681071531268a5f9e364be3a1cfc3d87e4e7f62f42ca3ee6931b7ea2854744",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\world-toast-repair01\\REPORT.json",
+      "sourceHead": "0fb1a71d0789a082b7917c0a1fe922270d3b9699",
+      "sourcePhase": "dirty-precommit-targeted-repair"
+    },
+    {
+      "bytes": 634,
+      "case": "world-output-reuse01",
+      "epoch": "retained-negative",
+      "path": "negative/world-output-reuse01/refusal.log",
+      "role": "retained-negative",
+      "sha256": "9b3811fd6aa4987372f3984c1efad1d5c413e82731a280bf07c7f83316760ee2",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\WORLD_OUTPUT_REUSE_REFUSAL01.log",
+      "sourceHead": "0fb1a71d0789a082b7917c0a1fe922270d3b9699"
+    },
+    {
+      "bytes": 2609,
+      "case": "world-foundations-full03",
+      "epoch": "retained-negative",
+      "path": "negative/full03-world-foundations/RETENTION_CORRECTION02.json",
+      "role": "retained-negative",
+      "sha256": "23868f284162a21c28c0990590295a48f89dffc5d32f3c894ad491f2504d207d",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\FULL03_WORLD_FOUNDATIONS_RETENTION_CORRECTION02.json",
+      "sourceHead": "0fb1a71d0789a082b7917c0a1fe922270d3b9699"
+    },
+    {
+      "bytes": 523,
+      "case": "whole-draft-full04",
+      "epoch": "retained-negative",
+      "path": "negative/full04/PROCESS_EXIT.json",
+      "role": "retained-negative",
+      "sha256": "68eac0491cf2d55762d3fbc330ab70a5f8a0e647154b390fbebba0b0cb2eef34",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\REMOTE_FULL04_PROCESS_EXIT.json",
+      "sourceHead": "3e19424f0d7e775e89bbbca39085f293896baa6f"
+    },
+    {
+      "bytes": 18035,
+      "case": "whole-draft-full04",
+      "epoch": "retained-negative",
+      "path": "negative/full04/console.log",
+      "role": "retained-negative",
+      "sha256": "25e41102b9d34e695eb8ae89b4849b4175e1320919b499fc925d0c6577f5661c",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full04-console.log",
+      "sourceHead": "3e19424f0d7e775e89bbbca39085f293896baa6f"
+    },
+    {
+      "bytes": 3139027,
+      "case": "cosmos-native-full04",
+      "epoch": "retained-negative",
+      "path": "negative/full04-cosmos/REPORT.json",
+      "role": "retained-negative",
+      "sha256": "bc61a1a89fcb99d95ce85fd71ac6170bfdd80ce20d4576252a8f20c9a27fb6c0",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full04-browser\\cosmos_campaign_browser\\REPORT.json",
+      "sourceHead": "3e19424f0d7e775e89bbbca39085f293896baa6f"
+    },
+    {
+      "bytes": 578781,
+      "case": "cosmos-native-full04",
+      "epoch": "retained-negative",
+      "path": "negative/full04-cosmos/console.log",
+      "role": "retained-negative",
+      "sha256": "b42abdd2d515906e05695265a3c160c7f74d69f792e31daca923548355d30e0b",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full04\\cosmos_campaign_browser.log",
+      "sourceHead": "3e19424f0d7e775e89bbbca39085f293896baa6f"
+    },
+    {
+      "bytes": 1628415,
+      "case": "cosmos-cold-navigation-diagnostic01",
+      "epoch": "research-only",
+      "path": "research/cosmos-cold-navigation-diagnostic01/REPORT.json",
+      "role": "supplemental-receipt",
+      "sha256": "1981e5d9bd92c46d8934b3e8de5f850e3bc613634916d0c1bc1662cef1008be4",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\cosmos-cold-navigation-diagnostic01\\REPORT.json",
+      "sourceHead": "3e19424f0d7e775e89bbbca39085f293896baa6f"
+    },
+    {
+      "bytes": 114540,
+      "case": "cosmos-cold-navigation-diagnostic01",
+      "epoch": "research-only",
+      "path": "research/cosmos-cold-navigation-diagnostic01/OBSERVATIONS.json",
+      "privateScriptBytes": 10562,
+      "privateScriptSha256": "6fa46f0196ada6345fb0b657aa9261e39e2af016eff3d548f353e679662214e5",
+      "role": "supplemental-receipt",
+      "sha256": "4d02ca7d22de83925ca94e614178c151dbf4780bcb5ef83fb4a5592ccac07bd4",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\cosmos-cold-navigation-diagnostic01\\OBSERVATIONS.json",
+      "sourceHead": "3e19424f0d7e775e89bbbca39085f293896baa6f",
+      "sourcePhase": "private-observational-overlay"
+    },
+    {
+      "bytes": 1234,
+      "case": "cosmos-cold-navigation-diagnostic01",
+      "epoch": "research-only",
+      "path": "research/cosmos-cold-navigation-diagnostic01/PROCESS_EXIT.json",
+      "role": "supplemental-receipt",
+      "sha256": "1b18a7a8238e9902687e377b523acb2c09f4cb76afc4542f314e7b6b08caae4d",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\cosmos-cold-navigation-diagnostic01\\PROCESS_EXIT.json",
+      "sourceHead": "3e19424f0d7e775e89bbbca39085f293896baa6f"
+    },
+    {
+      "bytes": 214436,
+      "case": "cosmos-cold-navigation-diagnostic01",
+      "epoch": "research-only",
+      "path": "research/cosmos-cold-navigation-diagnostic01/console.log",
+      "role": "supplemental-receipt",
+      "sha256": "af671abaedf165637cef735d35a26e55d556e14102e4c5ab2b5102d64552a23d",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\cosmos-cold-navigation-diagnostic01\\CONSOLE.log",
+      "sourceHead": "3e19424f0d7e775e89bbbca39085f293896baa6f"
+    },
+    {
+      "bytes": 9262,
+      "epoch": "research-only",
+      "path": "research/private-counter/CLASS_SKIP_COUNTER_FINAL01_RECEIPT.json",
+      "role": "supplemental-receipt",
+      "sha256": "831871f182a632de879a38a8a58849d5587297858c62a2509472757737de66d8",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\CLASS_SKIP_COUNTER_FINAL01_RECEIPT.json",
+      "sourceHead": "b5fee766e6f77a2d901bb953af8faac13175fee4",
+      "sourcePhase": "private-counter-not-gameplay"
+    },
+    {
+      "bytes": 5650,
+      "epoch": "research-only",
+      "path": "research/private-counter/CLASS_SKIP_COUNTER_REPAIR01_MANIFEST.json",
+      "role": "supplemental-receipt",
+      "sha256": "f3c25369f939afa84e96e8797ecc23f6ffa4b86aefd58eece2edb9f0170d0f12",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\CLASS_SKIP_COUNTER_REPAIR01_MANIFEST.json",
+      "sourceHead": "b5fee766e6f77a2d901bb953af8faac13175fee4",
+      "sourcePhase": "private-counter-not-gameplay"
+    },
+    {
+      "bytes": 7032,
+      "epoch": "research-only",
+      "path": "research/private-counter/CLASS_SKIP_COUNTER_PROVENANCE01_INVERSE.json",
+      "role": "supplemental-receipt",
+      "sha256": "543c29dce37e95454f18361cfd0781fe2c1b19d21f8ea2c5f1b7db3600bfaca1",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\CLASS_SKIP_COUNTER_PROVENANCE01_INVERSE.json",
+      "sourceHead": "b5fee766e6f77a2d901bb953af8faac13175fee4",
+      "sourcePhase": "private-counter-not-gameplay"
+    },
+    {
+      "bytes": 989,
+      "epoch": "research-only",
+      "path": "research/private-counter/CLASS_SKIP_COUNTER_GREEN01.log",
+      "role": "supplemental-receipt",
+      "sha256": "9e16a305bba4e079b0ef5bc334a97904f740775fe15cba7efbe3d48c22700bf2",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\CLASS_SKIP_COUNTER_GREEN01.log",
+      "sourceHead": "b5fee766e6f77a2d901bb953af8faac13175fee4",
+      "sourcePhase": "private-counter-not-gameplay"
+    },
+    {
+      "bytes": 150,
+      "epoch": "research-only",
+      "path": "research/private-counter/CLASS_SKIP_COUNTER_PARSER_GREEN01.log",
+      "role": "supplemental-receipt",
+      "sha256": "9429e275b4ca527b9789462af42d84197fe5610411c7c6f334ef371b5b259a76",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\CLASS_SKIP_COUNTER_PARSER_GREEN01.log",
+      "sourceHead": "b5fee766e6f77a2d901bb953af8faac13175fee4",
+      "sourcePhase": "private-counter-not-gameplay"
+    },
+    {
+      "bytes": 4543,
+      "epoch": "research-only",
+      "path": "research/private-counter/CLASS_SKIP_COUNTER_PUBLISHER_GREEN01.log",
+      "role": "supplemental-receipt",
+      "sha256": "6a6e4930a20f4795fa459a4b92aa9d0ff7b8e62e112732bf8461a394d69dc7d0",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\CLASS_SKIP_COUNTER_PUBLISHER_GREEN01.log",
+      "sourceHead": "b5fee766e6f77a2d901bb953af8faac13175fee4",
+      "sourcePhase": "private-counter-not-gameplay"
+    },
+    {
+      "bytes": 11312,
+      "case": "private-counter-focused-red02",
+      "epoch": "retained-negative",
+      "path": "negative/private-counter/CLASS_SKIP_COUNTER_RED02.log",
+      "role": "retained-negative",
+      "sha256": "5c7398abe1c6d8387941eccbd97d197861ef7d979d8a4c09aeaa4ae0068e1f0f",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\CLASS_SKIP_COUNTER_RED02.log",
+      "sourceHead": "b5fee766e6f77a2d901bb953af8faac13175fee4",
+      "sourcePhase": "private-counter-not-gameplay"
+    },
+    {
+      "bytes": 754805,
+      "epoch": "current-qualified-source",
+      "path": "current/pixels/body-adventure.png",
+      "role": "current-pixel",
+      "selection": "body",
+      "sha256": "9f173c4a857e0cd724129595aaa2ebcdd310a919da8edbf60f5d7187ef0df42e",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05-browser\\earth_homecoming_browser\\blade-09-body-adventure.png",
+      "variant": "blade",
+      "view": "adventure"
+    },
+    {
+      "bytes": 859467,
+      "epoch": "current-qualified-source",
+      "path": "current/pixels/body-follow.png",
+      "role": "current-pixel",
+      "selection": "body",
+      "sha256": "045f9c83b82c3ed9648e9ea1184675e78cf0e5996fc6a75ccc098b3c60bf98c4",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05-browser\\earth_homecoming_browser\\blade-12-body-follow.png",
+      "variant": "blade",
+      "view": "follow"
+    },
+    {
+      "bytes": 754758,
+      "epoch": "current-qualified-source",
+      "path": "current/pixels/broad-adventure.png",
+      "role": "current-pixel",
+      "selection": "broad",
+      "sha256": "e7efa476160aaa61394a8b44b81be0393af6246c966b32250cc9298df4651d69",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05-browser\\earth_homecoming_browser\\blade-08-broad-adventure.png",
+      "variant": "blade",
+      "view": "adventure"
+    },
+    {
+      "bytes": 859647,
+      "epoch": "current-qualified-source",
+      "path": "current/pixels/broad-follow.png",
+      "role": "current-pixel",
+      "selection": "broad",
+      "sha256": "d0d7167bf63859d959b1f0e6d2aa3a67cffa08043d13312a57a2e6e999dc0265",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05-browser\\earth_homecoming_browser\\blade-11-broad-follow.png",
+      "variant": "blade",
+      "view": "follow"
+    },
+    {
+      "bytes": 753420,
+      "epoch": "current-qualified-source",
+      "path": "current/pixels/narrow-adventure.png",
+      "role": "current-pixel",
+      "selection": "narrow",
+      "sha256": "19ed33a3e12a3d94eb1e221dfaa9c5fb4e0556a4a0ffa5c0f808ab3d25f411a8",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05-browser\\earth_homecoming_browser\\blade-14-narrow-adventure.png",
+      "variant": "blade",
+      "view": "adventure"
+    },
+    {
+      "bytes": 863592,
+      "epoch": "current-qualified-source",
+      "path": "current/pixels/narrow-follow.png",
+      "role": "current-pixel",
+      "selection": "narrow",
+      "sha256": "30b53232faaf996f9c7baf0dffbb34de1c3535513c89eb8ab943635ee317a133",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05-browser\\earth_homecoming_browser\\blade-17-narrow-follow.png",
+      "variant": "blade",
+      "view": "follow"
+    },
+    {
+      "bytes": 772232,
+      "epoch": "current-qualified-source",
+      "path": "current/pixels/ring-adventure.png",
+      "role": "current-pixel",
+      "selection": "ring",
+      "sha256": "ce9b2a590ea0753a7aea1bb1e2b7a6773dc5804c9192cc06cf5bcd2422cfaef8",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05-browser\\earth_homecoming_browser\\blade-20-ring-adventure.png",
+      "variant": "blade",
+      "view": "adventure"
+    },
+    {
+      "bytes": 864105,
+      "epoch": "current-qualified-source",
+      "path": "current/pixels/ring-follow.png",
+      "role": "current-pixel",
+      "selection": "ring",
+      "sha256": "c684988e39a83de50a292c58e86917703388a589f94ce2910ca91cef1724bdd0",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05-browser\\earth_homecoming_browser\\blade-23-ring-follow.png",
+      "variant": "blade",
+      "view": "follow"
+    },
+    {
+      "bytes": 413330,
+      "epoch": "current-qualified-source",
+      "path": "current/pixels/onboarding.png",
+      "role": "onboarding-pixel",
+      "sha256": "fd56822234ca684e7fcfc99da350298f9a410bb137181ac0cadc6c91ad0b98e7",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full05-browser\\onboarding_browser\\01-fresh-journal.png"
+    },
+    {
+      "bytes": 136812,
+      "epoch": "current-qualified-source",
+      "path": "current/QUALIFICATION_CONTRACT.json",
+      "role": "supplemental-receipt",
+      "sha256": "16fac21903eaa64afb99484c6204a6de5726f2cd370e0357c3e5f8cfc2f8e920",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\QUALIFICATION_CONTRACT05.json"
+    },
+    {
+      "bytes": 996,
+      "epoch": "research-only",
+      "path": "research/PROCESS_OBSERVATION_NOTE.json",
+      "role": "supplemental-receipt",
+      "sha256": "a3065060e6337919a866d62609812c44184c3c43553ddfc996bd11093edb6ab9",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\PUBLISH_TARGET_PREFLIGHT05.json"
+    },
+    {
+      "bytes": 3147,
+      "epoch": "research-only",
+      "path": "research/ROOT_CURRENT_VISUAL_REVIEW04.json",
+      "role": "supplemental-receipt",
+      "sha256": "5092b13b532bb54f529f5bb0a426318a91fb50d7151aea55c93d1797691afac8",
+      "source": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\ROOT_CURRENT_VISUAL_REVIEW04.json"
+    },
+    {
+      "bytes": 3499,
+      "epoch": "research-only",
+      "path": "research/FINITE_DRAFT_ACCEPTANCE_REVIEW.md",
+      "role": "supplemental-receipt",
+      "sha256": "67cae4ac1303d572914102d8de63e59817a0517dec5d6b8b54056afe86cec50c",
+      "source": "D:\\07-GAMES\\Firstlight\\authoring\\staging-selected-foe-hud-independent-review-20261005\\FINITE_DRAFT_ACCEPTANCE_REVIEW_2026-10-05.md"
+    },
+    {
+      "bytes": 5229,
+      "epoch": "current-qualified-source",
+      "path": "QUALIFICATION_RECEIPT.json",
+      "role": "qualification-receipt",
+      "sha256": "ab3830efd77fc36bfdfe8b51b485c101aaf90b8e9474666467aae720ae66e276",
+      "text": "{\n  \"billing\": \"Retained hosted billing block is nonexecution, not deployment.\",\n  \"browserSuites\": 47,\n  \"commands\": 230,\n  \"earnedJourneyCommands\": 60,\n  \"earthNative\": {\n    \"earnedStages\": 30,\n    \"method\": \"Native UI plus moveTo/50ms production ticks; derivatives labelled\",\n    \"passedChecks\": 6205\n  },\n  \"exclusions\": [\n    \"profiles\",\n    \"caches\",\n    \"raw WebM\",\n    \"full game copies\",\n    \"duplicate clips\",\n    \"personal saves\"\n  ],\n  \"gateProcessObserved\": 53668,\n  \"historicalEarth\": {\n    \"displayedFrames\": 787,\n    \"editedClipSeconds\": 31.48,\n    \"encodedSamples\": 788,\n    \"htmlSHA256\": \"30648a37d3c8a6a4d5633b8946536dd9550aac29f204947cd2c5f098b6c7600a\",\n    \"native05Checks\": 6205,\n    \"newPolishFootage\": false,\n    \"ordinaryCapture\": \"capture02\",\n    \"sourceHead\": \"f3512657211d3057c4e437c33e26439d3bb7af56\"\n  },\n  \"html\": {\n    \"bytes\": 3033467,\n    \"sha256\": \"ccfc2782a33d21e3a75cd93201d5d9b5d89eef41e6397036c13c2f06bda91f9b\"\n  },\n  \"limits\": \"No human acceptance, foreground device/GPU performance, main merge, deployment or full canonical saga claimed.\",\n  \"mandatoryLabels\": [\n    \"build\",\n    \"rules\",\n    \"python\",\n    \"earth-homecoming-earned\",\n    \"earth-homecoming-native-preflight\",\n    \"earth-recording-controller-preflight\",\n    \"whole-draft-earned\",\n    \"earth_homecoming_browser\",\n    \"onboarding_browser\"\n  ],\n  \"node\": {\n    \"cancelled\": 0,\n    \"fail\": 0,\n    \"pass\": 1542,\n    \"skipDetails\": [\n      \"ok 757 - explicit current Earth command-earned cohort is required # SKIP Run tools/earth_homecoming_journey.cjs; this generic rules invocation has no cohort path.\",\n      \"ok 1430 - explicit fresh whole-draft cohort is required # SKIP Run tools/whole_draft_journey.cjs; no whole-draft cohort was supplied to this generic rules invocation.\"\n    ],\n    \"skipped\": 2,\n    \"tests\": 1544,\n    \"todo\": 0\n  },\n  \"onboardingNative\": {\n    \"checks\": 53,\n    \"completedStages\": 12,\n    \"failed\": 0,\n    \"passed\": 53,\n    \"plannedStages\": 12,\n    \"reachedStages\": 12\n  },\n  \"python\": {\n    \"fixtureSkip\": 2,\n    \"methodSkip\": 6,\n    \"pass\": 237,\n    \"skip\": 8,\n    \"skipDetails\": [\n      \"test_actual_current_complete_earned02_and_all_prepared_links (test_capture_cosmos_campaign.ActualCurrentInputs.test_actual_current_complete_earned02_and_all_prepared_links) ... skipped 'Explicit read-only complete current-cohort path not supplied.'\",\n      \"setUpClass (test_capture_earth_homecoming.ActualEarnedPreflight) ... skipped 'Capture preflight needs an explicit current earned source and cohort SHA; generic discovery cannot substitute old private inputs.'\",\n      \"setUpClass (test_capture_earth_homecoming.FailedReportRepair) ... skipped 'Report lifecycle preflight needs explicit current earned source/cohort; no private input substitution.'\",\n      \"test_symlink_refused (test_checkout_import.ImportRules.test_symlink_refused) ... skipped 'Windows account lacks symlink privilege; real symlink refusal is exercised on Linux CI'\",\n      \"test_read_only_real_current_cohort_preflight (test_cosmos_campaign_browser_storage.CurrentEarnedEpoch.test_read_only_real_current_cohort_preflight) ... skipped 'explicit actual current-source paths required'\",\n      \"test_explicit_current_earned_cohort_required (test_earth_homecoming_native.ExplicitCurrentCohortRequired.test_explicit_current_earned_cohort_required) ... skipped 'Run the verifier current Earth earned cohort and explicit native preflight; generic discovery has no cohort.'\",\n      \"test_18_actual_installed_preflight_derives_current_epoch (test_onboarding_browser.Preparation.test_18_actual_installed_preflight_derives_current_epoch) ... skipped 'Explicit actual checkout required; no private default.'\",\n      \"test_20_preflight_cli_cannot_create_evidence_or_start_threads (test_onboarding_browser.Preparation.test_20_preflight_cli_cannot_create_evidence_or_start_threads) ... skipped 'Explicit actual checkout required; no private default.'\"\n    ],\n    \"tests\": 243\n  },\n  \"retainedPriorQualificationPayloads\": [\n    {\n      \"htmlSHA256\": \"08f7d4de46a7243e5988c33967378d4a1e9450e30a738ffbfb0f43a09bc11f39\",\n      \"path\": \"prior-562/GATE_RECEIPT.json\",\n      \"sourceHead\": \"56254e86972ced292369686cf91fea9c98b107d8\"\n    },\n    {\n      \"htmlSHA256\": \"08f7d4de46a7243e5988c33967378d4a1e9450e30a738ffbfb0f43a09bc11f39\",\n      \"path\": \"prior-562/PROCESS_EXIT.json\",\n      \"sourceHead\": \"56254e86972ced292369686cf91fea9c98b107d8\"\n    },\n    {\n      \"htmlSHA256\": \"08f7d4de46a7243e5988c33967378d4a1e9450e30a738ffbfb0f43a09bc11f39\",\n      \"path\": \"prior-562/complete-console.log\",\n      \"sourceHead\": \"56254e86972ced292369686cf91fea9c98b107d8\"\n    },\n    {\n      \"htmlSHA256\": \"08f7d4de46a7243e5988c33967378d4a1e9450e30a738ffbfb0f43a09bc11f39\",\n      \"path\": \"prior-562/SOURCE_BINDING.json\",\n      \"sourceHead\": \"56254e86972ced292369686cf91fea9c98b107d8\"\n    }\n  ],\n  \"schema\": \"firstlight-whole-draft-qualification-receipt-v1\",\n  \"sourceHead\": \"b5fee766e6f77a2d901bb953af8faac13175fee4\",\n  \"status\": \"prepared-from-completed-observed-gate\",\n  \"syntaxModules\": 118,\n  \"wholeDraft\": {\n    \"freshCharacters\": 2,\n    \"historicalInputs\": 0,\n    \"method\": \"Accelerated CPU; in-memory saves, not native/human proof\",\n    \"strictReadbackCases\": 7\n  }\n}\n"
+    },
+    {
+      "bytes": 1754,
+      "epoch": "cross-epoch-disclosure",
+      "path": "README.md",
+      "role": "evidence-note",
+      "sha256": "54cfb9b6e0b8c42c7bfac22816b8e2892dab02c2da5da9a5d9476aa8ce4de2b6",
+      "text": "# Whole draft qualification evidence\n\nSource b5fee766e6f77a2d901bb953af8faac13175fee4; pages ccfc2782a33d21e3a75cd93201d5d9b5d89eef41e6397036c13c2f06bda91f9b. The complete verifier has 230 commands and all47 browser suites in one invocation. Console, command logs, explicit skip details and source binder are retained.\n\nCurrent Earth body/warning pixel ablations and onboarding native actions belong to this source. Accelerated production moveTo and50ms ticks are labelled; capacity, refusal and old-owner derivatives are separate. Two fresh continuous CPU characters earn the draft and pass seven strict byte/chronology readback cases. CPU journeys do not prove native persistence or human feel.\n\nHistorical Earth native05 (6205 checks), ordinary capture02 and the one31.48-second original-speed edited clip remain f351/30648, before the current art polish. The clip has787 displayed frames and788 encoded samples, with its terminal sample disclosed. Root reviewed sampled images, not uninterrupted human playback. This is not new polish footage or equivalent pages.\n\nSeparately labelled earlier full qualification is retained where selected; it does not count toward this newest gate. Retained failures and hosted billing nonexecution remain negative evidence. No profiles, caches, raw movies, game copies, duplicate clips, personal saves, paid provider, main merge or deployment. This ending is a local Regent-pattern repulse and chosen homecoming. Full First Answer/Answering, Pattern resolution, Briar loss/reunion and the full saga remain unresolved.\n\nMANIFEST.json hashes every other payload, including this note and QUALIFICATION_RECEIPT.json. Its own digest is pinned by external approval/publication/readback receipts; no self-hash is claimed.\n"
+    }
+  ],
+  "expectedLocalHead": null,
+  "expectedRemoteHead": null,
+  "manifestSelfHash": "External approval/publication/readback pin; not self-referential",
+  "payloadBytesExcludingManifest": 34744190,
+  "payloadCountExcludingManifest": 409,
+  "prefix": "docs/evidence/whole-draft-qualification-2026-10-05",
+  "publisherSha256": "790e2fb35d4bf1967c57593d3a70b66834bc4be53c577cbc7dd12703bfc05ba5",
+  "schema": "firstlight-whole-draft-manifest-v1",
+  "selectionSha256": "b2dc716c8d6c240db6aceefb23b697cc7c76831c6bdc2e55f9719e96d1894c65",
+  "sourceHead": "b5fee766e6f77a2d901bb953af8faac13175fee4",
+  "status": "prepared-not-published"
+}

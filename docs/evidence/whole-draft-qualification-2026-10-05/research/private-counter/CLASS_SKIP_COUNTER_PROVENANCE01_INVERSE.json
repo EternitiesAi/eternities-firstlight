@@ -1,0 +1,49 @@
+{
+  "kind": "exact-private-provenance-expectation-and-descriptor-inverse-v1",
+  "helpersManifest": "CLASS_SKIP_COUNTER_REPAIR01_MANIFEST.json",
+  "helpersManifestSha256": "f3c25369f939afa84e96e8797ecc23f6ffa4b86aefd58eece2edb9f0170d0f12",
+  "tests": {
+    "parser": {
+      "path": "D:\\07-GAMES\\Firstlight\\authoring\\staging-whole-draft-qualification-parser-20261005\\test_qualification_parser.py",
+      "function": "test_inverse_reconstructs_original_and_retains_its_negative_reproduction",
+      "preimage": {
+        "bytes": 20247,
+        "sha256": "9730db416a76d708b9f3c2d288b29ebe3132784bfb5c436514da4018a54c55ea"
+      },
+      "old": "    def test_inverse_reconstructs_original_and_retains_its_negative_reproduction(self):\n        m=Q.read_json(STAGE/'F2_REPAIR_MANIFEST.json');current=(STAGE/'qualification_parser.py').read_bytes()\n        self.assertEqual(Q.digest(current),m['postimage']['sha256']);self.assertEqual(current.count(m['new'].encode()),1)\n        old=current.replace(m['new'].encode(),m['old'].encode());self.assertEqual(Q.digest(old),m['preimage']['sha256']);self.assertEqual(len(old),m['preimage']['bytes'])\n        namespace={'__name__':'historical_parser_inverse','__file__':str(STAGE/'qualification_parser.py')}\n        exec(compile(old,'<historical parser inverse>','exec'),namespace)\n        for text in (PYSUM(1)+PYSUM(26),'ERROR: historical retained negative\\n'+PYSUM(26)):\n            self.assertEqual(namespace['unittest_summary'](text)['tests'],26);self.refuses(text)\n",
+      "postimage": {
+        "bytes": 20930,
+        "sha256": "152f9b134c2d1ecc9c2adf2c92df1a5fca3da8cd8e4d2469bf256ac5bfabf334"
+      },
+      "new": "    def test_inverse_reconstructs_original_and_retains_its_negative_reproduction(self):\n        m=Q.read_json(STAGE/'F2_REPAIR_MANIFEST.json');current=(STAGE/'qualification_parser.py').read_bytes()\n        counter=Path('D:/07-GAMES/Firstlight/artifacts/whole-draft-onboarding-20261005/CLASS_SKIP_COUNTER_REPAIR01_MANIFEST.json')\n        self.assertEqual(Q.digest(counter.read_bytes()),'f3c25369f939afa84e96e8797ecc23f6ffa4b86aefd58eece2edb9f0170d0f12')\n        r=Q.read_json(counter)['helpers']['parser']\n        self.assertEqual(Q.digest(current),r['postimage']['sha256']);self.assertEqual(len(current),r['postimage']['bytes'])\n        self.assertEqual(current.count(r['new'].encode()),1)\n        current=current.replace(r['new'].encode(),r['old'].encode())\n        self.assertEqual(Q.digest(current),r['preimage']['sha256']);self.assertEqual(len(current),r['preimage']['bytes'])\n        self.assertEqual(Q.digest(current),m['postimage']['sha256']);self.assertEqual(current.count(m['new'].encode()),1)\n        old=current.replace(m['new'].encode(),m['old'].encode());self.assertEqual(Q.digest(old),m['preimage']['sha256']);self.assertEqual(len(old),m['preimage']['bytes'])\n        namespace={'__name__':'historical_parser_inverse','__file__':str(STAGE/'qualification_parser.py')}\n        exec(compile(old,'<historical parser inverse>','exec'),namespace)\n        for text in (PYSUM(1)+PYSUM(26),'ERROR: historical retained negative\\n'+PYSUM(26)):\n            self.assertEqual(namespace['unittest_summary'](text)['tests'],26);self.refuses(text)\n"
+    },
+    "publisher": {
+      "path": "D:\\07-GAMES\\Firstlight\\authoring\\staging-whole-draft-evidence-publisher-20261005\\test_evidence_publisher.py",
+      "function": "test_46_exact_current_parser_ast_order",
+      "preimage": {
+        "bytes": 31692,
+        "sha256": "cfe896df894bb86e34c4382b05f6445f75cdb3d542ea7ae3e92c4c031811c04f"
+      },
+      "old": "    def test_46_exact_current_parser_ast_order(self):\n        parser=HERE.parent/'staging-whole-draft-qualification-parser-20261005/qualification_parser.py'\n        self.assertEqual(P.digest(parser),'9d700513bd14eeeb4937a02cf5be8fe47ff5dc0636a8d6df69a1298fa55affc1')\n        with patch.object(subprocess,'run',side_effect=AssertionError('AST reads only; no Git or gate execution')):\n            s=importlib.util.spec_from_file_location('frozen_qualification_parser_order',parser)\n            q=importlib.util.module_from_spec(s);s.loader.exec_module(q)\n            actual=q.inventory(ROOT)\n        names=[p.relative_to(ROOT).as_posix() for p in (ROOT/'src').glob('*.js')]\n        self.assertEqual(P.plan(VERIFY,names),actual['commands'])\n",
+      "postimage": {
+        "bytes": 32775,
+        "sha256": "79791e2f62f3b95fd57f3f722b43d81968a03402c9e34d2c208bfe6e3c634177"
+      },
+      "new": "    def test_46_exact_current_parser_ast_order(self):\n        parser=HERE.parent/'staging-whole-draft-qualification-parser-20261005/qualification_parser.py'\n        self.assertEqual(P.digest(parser),'88762bbd4586284a636475f0e112d03b8ebe441f97e67fa91c019be2a7177738')\n        counter=Path('D:/07-GAMES/Firstlight/artifacts/whole-draft-onboarding-20261005/CLASS_SKIP_COUNTER_REPAIR01_MANIFEST.json').read_bytes()\n        self.assertEqual(P.sha(counter),'f3c25369f939afa84e96e8797ecc23f6ffa4b86aefd58eece2edb9f0170d0f12')\n        r=json.loads(counter)['helpers']['parser'];current=parser.read_bytes()\n        self.assertEqual(P.sha(current),r['postimage']['sha256']);self.assertEqual(len(current),r['postimage']['bytes'])\n        self.assertEqual(current.count(r['new'].encode()),1)\n        prior=current.replace(r['new'].encode(),r['old'].encode())\n        self.assertEqual(P.sha(prior),r['preimage']['sha256']);self.assertEqual(len(prior),r['preimage']['bytes'])\n        f2=json.loads((parser.parent/'F2_REPAIR_MANIFEST.json').read_bytes())\n        self.assertEqual(P.sha(prior),f2['postimage']['sha256']);self.assertEqual(prior.count(f2['new'].encode()),1)\n        original=prior.replace(f2['new'].encode(),f2['old'].encode())\n        self.assertEqual(P.sha(original),f2['preimage']['sha256']);self.assertEqual(len(original),f2['preimage']['bytes'])\n        with patch.object(subprocess,'run',side_effect=AssertionError('AST reads only; no Git or gate execution')):\n            s=importlib.util.spec_from_file_location('frozen_qualification_parser_order',parser)\n            q=importlib.util.module_from_spec(s);s.loader.exec_module(q)\n            actual=q.inventory(ROOT)\n        names=[p.relative_to(ROOT).as_posix() for p in (ROOT/'src').glob('*.js')]\n        self.assertEqual(P.plan(VERIFY,names),actual['commands'])\n"
+    }
+  },
+  "descriptor": {
+    "path": "D:\\07-GAMES\\Firstlight\\authoring\\staging-whole-draft-evidence-selection-20261005\\BILLING_AND_HUD_OPTIONS.json",
+    "preimage": {
+      "bytes": 6046,
+      "sha256": "8764f4d2f7877854ec02d97ef62da33eac02971ef4adddc2d129745b8a156659"
+    },
+    "postimage": {
+      "bytes": 6046,
+      "sha256": "ef5af08a3cd609114a24df4f1fb2e6aab87efa311eb80f6a3ed05399b84d819f"
+    },
+    "old": "3cadcafc1801c5bf36a81dce27a7076092b84c14780d1882fec7ab27b6a1d7bf",
+    "new": "0d0a3bc09dc1f42615773b4b06de5c2d4610424d088896a361b4721f0ddda0a6",
+    "changes": "publisherContract.sourceSha256 only; historical source heads/rows/labels unchanged"
+  }
+}

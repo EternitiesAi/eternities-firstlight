@@ -1,0 +1,384 @@
+{
+  "status": "passed",
+  "edition": "10.0.0",
+  "source": "..\\..\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\original-III\\CHAPTER_III_COMPLETE_EARNED.json",
+  "weapon": "blade",
+  "commands": 40,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedDefeats": 0,
+  "automated": true,
+  "tells": [
+    "outer",
+    "inner"
+  ],
+  "final": {
+    "level": 5,
+    "attack": 36,
+    "defense": 13,
+    "maxHP": 200
+  },
+  "chapter": {
+    "version": 1,
+    "entered": true,
+    "met": true,
+    "inscription": true,
+    "clapperRevealed": true,
+    "clapper": true,
+    "repaired": true,
+    "complete": true,
+    "reward": true,
+    "attuned": true,
+    "projects": []
+  },
+  "actions": [
+    {
+      "walk": [
+        0,
+        3
+      ]
+    },
+    {
+      "type": "rest",
+      "p": {}
+    },
+    {
+      "type": "waystone-travel",
+      "p": {
+        "id": "sunward"
+      }
+    },
+    {
+      "walk": [
+        0,
+        -27
+      ]
+    },
+    {
+      "type": "cross-enter",
+      "p": {}
+    },
+    {
+      "walk": [
+        0,
+        17
+      ]
+    },
+    {
+      "type": "cross-attune",
+      "p": {}
+    },
+    {
+      "walk": [
+        -2,
+        9
+      ]
+    },
+    {
+      "type": "cross-meet",
+      "p": {}
+    },
+    {
+      "walk": [
+        1,
+        3
+      ]
+    },
+    {
+      "type": "cross-inspect",
+      "p": {}
+    },
+    {
+      "walk": [
+        -8,
+        -3
+      ]
+    },
+    {
+      "type": "cross-seek",
+      "p": {}
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "cross-thorn"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "pulse",
+      "p": {
+        "target": "cross-thorn"
+      }
+    },
+    {
+      "type": "guard",
+      "p": {}
+    },
+    {
+      "type": "dodge",
+      "p": {
+        "dx": 0.9508390418431277,
+        "dz": -0.3096855122650118
+      }
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        -10,
+        -7
+      ]
+    },
+    {
+      "type": "loot",
+      "p": {
+        "id": "cross-thorn"
+      }
+    },
+    {
+      "fight": "cross-thorn",
+      "seconds": 2.1000000000004775,
+      "health": 167
+    },
+    {
+      "walk": [
+        -13,
+        -9
+      ]
+    },
+    {
+      "type": "cross-clapper",
+      "p": {}
+    },
+    {
+      "walk": [
+        0,
+        -11
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "cross-prism"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "guard",
+      "p": {}
+    },
+    {
+      "type": "pulse",
+      "p": {
+        "target": "cross-prism"
+      }
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        8,
+        -13
+      ]
+    },
+    {
+      "type": "loot",
+      "p": {
+        "id": "cross-prism"
+      }
+    },
+    {
+      "fight": "cross-prism",
+      "seconds": 3.400000000000773,
+      "health": 167
+    },
+    {
+      "walk": [
+        9,
+        14
+      ]
+    },
+    {
+      "type": "cross-rest",
+      "p": {}
+    },
+    {
+      "walk": [
+        0,
+        -15
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "cross-warden"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "guard",
+      "p": {}
+    },
+    {
+      "type": "pulse",
+      "p": {
+        "target": "cross-warden"
+      }
+    },
+    {
+      "type": "pulse",
+      "p": {
+        "target": "cross-warden"
+      }
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        0,
+        -23
+      ]
+    },
+    {
+      "type": "loot",
+      "p": {
+        "id": "cross-warden"
+      }
+    },
+    {
+      "fight": "cross-warden",
+      "seconds": 7.400000000001683,
+      "health": 175
+    },
+    {
+      "walk": [
+        0,
+        -18
+      ]
+    },
+    {
+      "type": "cross-repair",
+      "p": {}
+    },
+    {
+      "walk": [
+        -3,
+        -20
+      ]
+    },
+    {
+      "type": "cross-ring",
+      "p": {
+        "id": "leaf"
+      }
+    },
+    {
+      "walk": [
+        0,
+        -18.5
+      ]
+    },
+    {
+      "type": "cross-ring",
+      "p": {
+        "id": "wave"
+      }
+    },
+    {
+      "walk": [
+        3,
+        -20
+      ]
+    },
+    {
+      "type": "cross-ring",
+      "p": {
+        "id": "sun"
+      }
+    },
+    {
+      "walk": [
+        -2,
+        9
+      ]
+    },
+    {
+      "type": "cross-reward",
+      "p": {}
+    },
+    {
+      "type": "equip",
+      "p": {
+        "id": "chime_clasp"
+      }
+    },
+    {
+      "walk": [
+        -9,
+        15
+      ]
+    },
+    {
+      "type": "cross-trade",
+      "p": {
+        "offer": "coat"
+      }
+    },
+    {
+      "type": "equip",
+      "p": {
+        "id": "keeper_coat"
+      }
+    },
+    {
+      "type": "cross-trade",
+      "p": {
+        "offer": "copper"
+      }
+    },
+    {
+      "walk": [
+        9,
+        14
+      ]
+    },
+    {
+      "type": "cross-rest",
+      "p": {}
+    },
+    {
+      "walk": [
+        -10,
+        5
+      ]
+    },
+    {
+      "walk": [
+        0,
+        17
+      ]
+    },
+    {
+      "type": "waystone-travel",
+      "p": {
+        "id": "commons"
+      }
+    }
+  ]
+}

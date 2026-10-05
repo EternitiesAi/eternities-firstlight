@@ -1,0 +1,115 @@
+{
+  "billing": "Retained hosted billing block is nonexecution, not deployment.",
+  "browserSuites": 47,
+  "commands": 230,
+  "earnedJourneyCommands": 60,
+  "earthNative": {
+    "earnedStages": 30,
+    "method": "Native UI plus moveTo/50ms production ticks; derivatives labelled",
+    "passedChecks": 6205
+  },
+  "exclusions": [
+    "profiles",
+    "caches",
+    "raw WebM",
+    "full game copies",
+    "duplicate clips",
+    "personal saves"
+  ],
+  "gateProcessObserved": 53668,
+  "historicalEarth": {
+    "displayedFrames": 787,
+    "editedClipSeconds": 31.48,
+    "encodedSamples": 788,
+    "htmlSHA256": "30648a37d3c8a6a4d5633b8946536dd9550aac29f204947cd2c5f098b6c7600a",
+    "native05Checks": 6205,
+    "newPolishFootage": false,
+    "ordinaryCapture": "capture02",
+    "sourceHead": "f3512657211d3057c4e437c33e26439d3bb7af56"
+  },
+  "html": {
+    "bytes": 3033467,
+    "sha256": "ccfc2782a33d21e3a75cd93201d5d9b5d89eef41e6397036c13c2f06bda91f9b"
+  },
+  "limits": "No human acceptance, foreground device/GPU performance, main merge, deployment or full canonical saga claimed.",
+  "mandatoryLabels": [
+    "build",
+    "rules",
+    "python",
+    "earth-homecoming-earned",
+    "earth-homecoming-native-preflight",
+    "earth-recording-controller-preflight",
+    "whole-draft-earned",
+    "earth_homecoming_browser",
+    "onboarding_browser"
+  ],
+  "node": {
+    "cancelled": 0,
+    "fail": 0,
+    "pass": 1542,
+    "skipDetails": [
+      "ok 757 - explicit current Earth command-earned cohort is required # SKIP Run tools/earth_homecoming_journey.cjs; this generic rules invocation has no cohort path.",
+      "ok 1430 - explicit fresh whole-draft cohort is required # SKIP Run tools/whole_draft_journey.cjs; no whole-draft cohort was supplied to this generic rules invocation."
+    ],
+    "skipped": 2,
+    "tests": 1544,
+    "todo": 0
+  },
+  "onboardingNative": {
+    "checks": 53,
+    "completedStages": 12,
+    "failed": 0,
+    "passed": 53,
+    "plannedStages": 12,
+    "reachedStages": 12
+  },
+  "python": {
+    "fixtureSkip": 2,
+    "methodSkip": 6,
+    "pass": 237,
+    "skip": 8,
+    "skipDetails": [
+      "test_actual_current_complete_earned02_and_all_prepared_links (test_capture_cosmos_campaign.ActualCurrentInputs.test_actual_current_complete_earned02_and_all_prepared_links) ... skipped 'Explicit read-only complete current-cohort path not supplied.'",
+      "setUpClass (test_capture_earth_homecoming.ActualEarnedPreflight) ... skipped 'Capture preflight needs an explicit current earned source and cohort SHA; generic discovery cannot substitute old private inputs.'",
+      "setUpClass (test_capture_earth_homecoming.FailedReportRepair) ... skipped 'Report lifecycle preflight needs explicit current earned source/cohort; no private input substitution.'",
+      "test_symlink_refused (test_checkout_import.ImportRules.test_symlink_refused) ... skipped 'Windows account lacks symlink privilege; real symlink refusal is exercised on Linux CI'",
+      "test_read_only_real_current_cohort_preflight (test_cosmos_campaign_browser_storage.CurrentEarnedEpoch.test_read_only_real_current_cohort_preflight) ... skipped 'explicit actual current-source paths required'",
+      "test_explicit_current_earned_cohort_required (test_earth_homecoming_native.ExplicitCurrentCohortRequired.test_explicit_current_earned_cohort_required) ... skipped 'Run the verifier current Earth earned cohort and explicit native preflight; generic discovery has no cohort.'",
+      "test_18_actual_installed_preflight_derives_current_epoch (test_onboarding_browser.Preparation.test_18_actual_installed_preflight_derives_current_epoch) ... skipped 'Explicit actual checkout required; no private default.'",
+      "test_20_preflight_cli_cannot_create_evidence_or_start_threads (test_onboarding_browser.Preparation.test_20_preflight_cli_cannot_create_evidence_or_start_threads) ... skipped 'Explicit actual checkout required; no private default.'"
+    ],
+    "tests": 243
+  },
+  "retainedPriorQualificationPayloads": [
+    {
+      "htmlSHA256": "08f7d4de46a7243e5988c33967378d4a1e9450e30a738ffbfb0f43a09bc11f39",
+      "path": "prior-562/GATE_RECEIPT.json",
+      "sourceHead": "56254e86972ced292369686cf91fea9c98b107d8"
+    },
+    {
+      "htmlSHA256": "08f7d4de46a7243e5988c33967378d4a1e9450e30a738ffbfb0f43a09bc11f39",
+      "path": "prior-562/PROCESS_EXIT.json",
+      "sourceHead": "56254e86972ced292369686cf91fea9c98b107d8"
+    },
+    {
+      "htmlSHA256": "08f7d4de46a7243e5988c33967378d4a1e9450e30a738ffbfb0f43a09bc11f39",
+      "path": "prior-562/complete-console.log",
+      "sourceHead": "56254e86972ced292369686cf91fea9c98b107d8"
+    },
+    {
+      "htmlSHA256": "08f7d4de46a7243e5988c33967378d4a1e9450e30a738ffbfb0f43a09bc11f39",
+      "path": "prior-562/SOURCE_BINDING.json",
+      "sourceHead": "56254e86972ced292369686cf91fea9c98b107d8"
+    }
+  ],
+  "schema": "firstlight-whole-draft-qualification-receipt-v1",
+  "sourceHead": "b5fee766e6f77a2d901bb953af8faac13175fee4",
+  "status": "prepared-from-completed-observed-gate",
+  "syntaxModules": 118,
+  "wholeDraft": {
+    "freshCharacters": 2,
+    "historicalInputs": 0,
+    "method": "Accelerated CPU; in-memory saves, not native/human proof",
+    "strictReadbackCases": 7
+  }
+}

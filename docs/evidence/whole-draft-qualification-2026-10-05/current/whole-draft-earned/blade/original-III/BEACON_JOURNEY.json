@@ -1,0 +1,87 @@
+{
+  "status": "passed",
+  "method": "D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game\\tests\\beacon_journey.cjs",
+  "source": "..\\..\\artifacts\\whole-draft-onboarding-20261005\\remote-full05\\whole-draft-earned\\blade\\original-II\\CHAPTER_II_COMPLETE_EARNED.json",
+  "commands": 51,
+  "directPositionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedDefeats": 0,
+  "grace": true,
+  "phases": [
+    {
+      "wave": 1,
+      "ward": 100,
+      "health": 175
+    },
+    {
+      "wave": 2,
+      "ward": 100,
+      "health": 175
+    },
+    {
+      "wave": 3,
+      "ward": 100,
+      "health": 175
+    },
+    {
+      "wave": 3,
+      "ward": 100,
+      "health": 175
+    },
+    {
+      "wave": 1,
+      "ward": 100,
+      "health": 163
+    },
+    {
+      "wave": 2,
+      "ward": 100,
+      "health": 163
+    },
+    {
+      "wave": 3,
+      "ward": 100,
+      "health": 163
+    },
+    {
+      "wave": 3,
+      "ward": 100,
+      "health": 163
+    }
+  ],
+  "stats": {
+    "level": 5,
+    "attack": 35,
+    "defense": 9,
+    "maxHP": 175
+  },
+  "beacon": {
+    "version": 1,
+    "introduced": true,
+    "complete": true,
+    "status": "stable",
+    "attempts": 1,
+    "failures": 0,
+    "reward": true,
+    "relic": "renounced",
+    "route": "forest",
+    "soul": {
+      "grace": true,
+      "equipped": "aegis",
+      "radiance": 2,
+      "corruption": 0,
+      "scars": [
+        "cinder-invoked",
+        "cinder-renounced"
+      ]
+    }
+  },
+  "unchanged": [
+    "score",
+    "notes",
+    "flowers",
+    "retreat",
+    "visitor"
+  ],
+  "note": "Automated tactics + accelerated 50-ms simulation steps. Not a human balance trial."
+}

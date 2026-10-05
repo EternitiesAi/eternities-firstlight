@@ -1,0 +1,104 @@
+{
+  "status": "bounded-source-review-complete-no-actionable-defect",
+  "scope": "Independent current CSS/test/source ownership review; CPU AST/compile preflight only, no browser/GPU/Git/network execution or Root/station changes.",
+  "inputs": {
+    "src/rpg.css": {
+      "bytes": 34482,
+      "sha256": "34ca5591b22748dbf96754fc0f6a857cbd73f77eb85e50b706e1b484291b11ae"
+    },
+    "tests/combat_cue_browser.py": {
+      "bytes": 19813,
+      "sha256": "080f5811075aa3f26fe34866989e69418568fb1c66c5d8c5ddfcb0ad1a53487b"
+    },
+    "src/rpg-ui.js": {
+      "bytes": 61257,
+      "sha256": "5fb404cd66cda1431750af2967a850f78698ef7eb0e7e894631835103ecb3e16"
+    },
+    "src/app.js": {
+      "bytes": 73217,
+      "sha256": "1b0bf53f0e35fb7014da243460d321bdca11560e12175f03dd2bfefcbd5408cc"
+    },
+    "index.html": {
+      "bytes": 3033467,
+      "sha256": "ccfc2782a33d21e3a75cd93201d5d9b5d89eef41e6397036c13c2f06bda91f9b"
+    },
+    "FIRSTLIGHT_VALLEY.html": {
+      "bytes": 3033467,
+      "sha256": "ccfc2782a33d21e3a75cd93201d5d9b5d89eef41e6397036c13c2f06bda91f9b"
+    }
+  },
+  "sourceProbes": {
+    "actualExitCode": 0,
+    "originalBrowserReconstructedInRAMSha256": "d641197de1889a14101607aca0643d1479480739582919009acdd4b74a7d3847",
+    "originalCheckCalls": 33,
+    "currentCheckCalls": 46,
+    "missingOriginalASTCallsWithMultiplicity": 0,
+    "originalCss33304BytePrefixExact": true,
+    "releasedDesktopCss33938BytePrefixExact": true,
+    "compileOnlyNoImport": true,
+    "subjectVisibilityStaticCallSites": 4,
+    "subjectPairsOnSuccessfulExecution": 6,
+    "phaseTitles": 7,
+    "shortWindowWidths": [
+      821,
+      1024,
+      1100
+    ],
+    "populatedLayoutCasesOnSuccessfulExecution": 21
+  },
+  "reviewFindings": [],
+  "reviewedCallers": [
+    {
+      "file": "tests/combat_cue_browser.py",
+      "lines": "43-55",
+      "result": "Projection obtains current UI-owned Simulation, restores the prototype in finally, projects selected actual mesh through Realm.project; no actor/camera writes in this probe."
+    },
+    {
+      "file": "tests/combat_cue_browser.py",
+      "lines": "130-144",
+      "result": "Exact production phase/status/menu strings, full child text bounds, menu >=24px and six-pixel skill clearance; synthetic layout states explicitly labelled."
+    },
+    {
+      "file": "tests/combat_cue_browser.py",
+      "lines": "149-155",
+      "result": "Waits real drawer class/not-inert/opacity1/identity transform before unchanged layer test, plus native close-panel focus."
+    },
+    {
+      "file": "tests/combat_cue_browser.py",
+      "lines": "172-176",
+      "result": "Native adventure framing only; native V switches to Diorama without pressing its deliberately disabled Frame foe."
+    },
+    {
+      "file": "src/rpg.css",
+      "lines": "106-112",
+      "result": "One-column five-item Beacon grid and compact target padding restricted to821-1100px desktop at <=700px height. All text, existing IDs/actions and <=820px rules remain."
+    }
+  ],
+  "parentReportedNativeObservation": {
+    "authority": "Parent observed cue05 actual exit; not independently executed or framebuffer-reviewed by this reviewer",
+    "observedExitCode": 0,
+    "checks": 182,
+    "passed": 182,
+    "errors": 0,
+    "actualBodyCameraPairs": 6,
+    "populatedShortLayoutCases": 21,
+    "readyAt821x600": {
+      "wardHeight": 107.890625,
+      "wardBottom": 452.828125,
+      "skillTop": 459,
+      "clearance": 6.171875,
+      "menuHeight": 24.296875
+    },
+    "parentViewed": [
+      "short821 full PNG",
+      "blade third person",
+      "bow Diorama"
+    ]
+  },
+  "limits": [
+    "No independent browser or human-play validation performed here.",
+    "46 static AST check-call sites are not182 runtime assertions; loops account for multiple reached checks.",
+    "Complete current candidate verifier remains a separate Parent gate; old47-gate/source epochs are not relabelled."
+  ],
+  "ownershipReleased": true
+}

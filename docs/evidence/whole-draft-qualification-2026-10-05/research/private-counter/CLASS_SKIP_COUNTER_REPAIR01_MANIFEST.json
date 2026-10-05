@@ -1,0 +1,44 @@
+{
+  "kind": "private-counter-repair-only-exact-function-inverse-v1",
+  "sourceGameplayUntouched": true,
+  "helpers": {
+    "parser": {
+      "path": "D:\\07-GAMES\\Firstlight\\authoring\\staging-whole-draft-qualification-parser-20261005\\qualification_parser.py",
+      "function": "unittest_summary",
+      "preimage": {
+        "bytes": 28849,
+        "sha256": "9d700513bd14eeeb4937a02cf5be8fe47ff5dc0636a8d6df69a1298fa55affc1"
+      },
+      "old": "def unittest_summary(text,allow_skip=True,expected=None):\n    totals=re.findall(r'^Ran (\\d+) tests? in [\\d.]+s\\s*$',text,re.M)\n    result=re.findall(r'^OK(?: \\(skipped=(\\d+)\\))?\\s*$',text,re.M)\n    need(len(totals)==len(result)==1 and not re.search(r'^(?:FAILED|ERROR:|FAIL:)',text,re.M),'One complete successful unittest footer required; errors/failures refused')\n    tests=int(totals[0]);skips=int(result[0] or 0);details=[line for line in text.splitlines() if re.search(r\"\\.\\.\\. skipped ['\\\"]\",line)]\n    need(tests>0 and len(details)==skips,'Unittest skip details/totals disagree');need(allow_skip or skips==0,'Mandatory current-cohort unittest may not skip')\n    need(expected is None or tests==expected,'Mandatory unittest count changed; review contract explicitly')\n    return {'tests':tests,'pass':tests-skips,'skip':skips,'skipDetails':details}\n",
+      "testPath": "D:\\07-GAMES\\Firstlight\\authoring\\staging-whole-draft-qualification-parser-20261005\\test_qualification_parser.py",
+      "testPreimage": {
+        "bytes": 20247,
+        "sha256": "9730db416a76d708b9f3c2d288b29ebe3132784bfb5c436514da4018a54c55ea"
+      },
+      "postimage": {
+        "bytes": 29415,
+        "sha256": "88762bbd4586284a636475f0e112d03b8ebe441f97e67fa91c019be2a7177738"
+      },
+      "new": "def unittest_summary(text,allow_skip=True,expected=None):\n    totals=re.findall(r'^Ran (\\d+) tests? in [\\d.]+s\\s*$',text,re.M)\n    result=re.findall(r'^OK(?: \\(skipped=(\\d+)\\))?\\s*$',text,re.M)\n    need(len(totals)==len(result)==1 and not re.search(r'^(?:FAILED|ERROR:|FAIL:)',text,re.M),'One complete successful unittest footer required; errors/failures refused')\n    tests=int(totals[0]);skips=int(result[0] or 0);details=[line for line in text.splitlines() if re.search(r\"\\.\\.\\. skipped ['\\\"]\",line)]\n    need(tests>0 and len(details)==skips,'Unittest skip details/totals disagree');need(allow_skip or skips==0,'Mandatory current-cohort unittest may not skip')\n    need(expected is None or tests==expected,'Mandatory unittest count changed; review contract explicitly')\n    out={'tests':tests,'pass':tests-skips,'skip':skips,'skipDetails':details}\n    holder=r'^(?:setUpClass|tearDownClass|setUpModule|tearDownModule)\\b'\n    fixtures=[line for line in details if re.match(holder,line)]\n    if fixtures:\n        method_skip=skips-len(fixtures)\n        verbose_ok=sum(bool(re.match(r'^\\S.* \\.\\.\\. ok\\s*$',line)) and not re.match(holder,line) for line in text.splitlines())\n        need(0<=method_skip<=tests and verbose_ok+method_skip==tests,'Fixture skips require complete consistent verbose method outcomes')\n        out.update({'pass':verbose_ok,'methodSkip':method_skip,'fixtureSkip':len(fixtures)})\n    return out\n"
+    },
+    "publisher": {
+      "path": "D:\\07-GAMES\\Firstlight\\authoring\\staging-whole-draft-evidence-publisher-20261005\\publish_whole_draft_evidence.py",
+      "function": "python_totals",
+      "preimage": {
+        "bytes": 49974,
+        "sha256": "3cadcafc1801c5bf36a81dce27a7076092b84c14780d1882fec7ab27b6a1d7bf"
+      },
+      "old": "def python_totals(text):\n    m=re.findall(r'^Ran (\\d+) tests? in [^\\r\\n]+$',text,re.M)\n    f=re.findall(r'^OK(?: \\(skipped=(\\d+)\\))?\\s*$',text,re.M)\n    need(len(m)==len(f)==1 and not re.search(r'^(?:FAILED|ERROR:|FAIL:)',text,re.M),'Single complete passed Python footer required')\n    skips=[l for l in text.splitlines() if re.search(r'\\.\\.\\. skipped ',l)]\n    n=int(f[0] or 0);need(len(skips)==n,'Every skip must be retained')\n    return {'tests':int(m[0]),'pass':int(m[0])-n,'skip':n,'skipDetails':skips}\n",
+      "testPath": "D:\\07-GAMES\\Firstlight\\authoring\\staging-whole-draft-evidence-publisher-20261005\\test_evidence_publisher.py",
+      "testPreimage": {
+        "bytes": 31692,
+        "sha256": "cfe896df894bb86e34c4382b05f6445f75cdb3d542ea7ae3e92c4c031811c04f"
+      },
+      "postimage": {
+        "bytes": 50542,
+        "sha256": "0d0a3bc09dc1f42615773b4b06de5c2d4610424d088896a361b4721f0ddda0a6"
+      },
+      "new": "def python_totals(text):\n    m=re.findall(r'^Ran (\\d+) tests? in [^\\r\\n]+$',text,re.M)\n    f=re.findall(r'^OK(?: \\(skipped=(\\d+)\\))?\\s*$',text,re.M)\n    need(len(m)==len(f)==1 and not re.search(r'^(?:FAILED|ERROR:|FAIL:)',text,re.M),'Single complete passed Python footer required')\n    skips=[l for l in text.splitlines() if re.search(r'\\.\\.\\. skipped ',l)]\n    n=int(f[0] or 0);need(len(skips)==n,'Every skip must be retained')\n    tests=int(m[0]);out={'tests':tests,'pass':tests-n,'skip':n,'skipDetails':skips}\n    holder=r'^(?:setUpClass|tearDownClass|setUpModule|tearDownModule)\\b'\n    fixtures=[line for line in skips if re.match(holder,line)]\n    if fixtures:\n        method_skip=n-len(fixtures)\n        verbose_ok=sum(bool(re.match(r'^\\S.* \\.\\.\\. ok\\s*$',line)) and not re.match(holder,line) for line in text.splitlines())\n        need(0<=method_skip<=tests and verbose_ok+method_skip==tests,'Fixture skips require complete consistent verbose method outcomes')\n        out.update({'pass':verbose_ok,'methodSkip':method_skip,'fixtureSkip':len(fixtures)})\n    return out\n"
+    }
+  }
+}

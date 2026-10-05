@@ -1,0 +1,179 @@
+{
+  "status": "passed",
+  "sourceHead": "56254e86972ced292369686cf91fea9c98b107d8",
+  "observation": {
+    "status": "observed-exit0",
+    "receipt": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\REMOTE_FULL02_PROCESS_EXIT.json",
+      "bytes": 523,
+      "sha256": "e68357be72b47c344422d0d0298c1f9b2e27d511c3066b48c3068875d1e2f3cf"
+    },
+    "console": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full02-console.log",
+      "bytes": 14645,
+      "sha256": "2492166572693daeddac446c91a5ff027f1c67ae39ba6d3ce13070d9c307cbe9"
+    },
+    "authority": "Parent-supplied actual process-exit observation; parser does not observe a process itself."
+  },
+  "commands": 230,
+  "syntaxModules": 118,
+  "browserSuitesPassed": 47,
+  "allBrowserSuitesInOneInvocation": true,
+  "requiredBrowserSuites": [
+    "earth_homecoming_browser",
+    "onboarding_browser",
+    "cosmos_campaign_browser",
+    "atlantis_campaign_browser",
+    "heaven_campaign_browser",
+    "hell_campaign_browser",
+    "bridge_community_browser",
+    "home_history_browser",
+    "local_life_browser",
+    "earth_ground_material_browser",
+    "realm_givers_browser",
+    "crossing_browser",
+    "regression09_browser",
+    "cutaway_browser",
+    "reflection_browser",
+    "native_origin_browser",
+    "starter_browser",
+    "camera_browser",
+    "pursuit_browser",
+    "characters_browser",
+    "classes_browser",
+    "cosmos_browser",
+    "earth_browser",
+    "earth_story_browser",
+    "earth_notes_browser",
+    "gathering_browser",
+    "realm_atlas_browser",
+    "timber_browser",
+    "traveler_browser",
+    "bridge_browser",
+    "combat_cue_browser",
+    "world_foundations_browser",
+    "world_cutaway_browser",
+    "realm_trails_browser",
+    "realm_trails_north_browser",
+    "realm_trails_cosmos_browser",
+    "soundscape_browser",
+    "journey_usability_browser",
+    "workshop_transactions_browser",
+    "companion_presentation_browser",
+    "skitter_presentation_browser",
+    "coastward_scenery_browser",
+    "earth_story_transactions_browser",
+    "coastward_bridge_posts_browser",
+    "practice_visibility_browser",
+    "realm_work_presentation_browser",
+    "earth_expedition_browser"
+  ],
+  "node": {
+    "tests": 1544,
+    "pass": 1542,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 2,
+    "todo": 0,
+    "skipDetails": [
+      "ok 757 - explicit current Earth command-earned cohort is required # SKIP Run tools/earth_homecoming_journey.cjs; this generic rules invocation has no cohort path.",
+      "ok 1430 - explicit fresh whole-draft cohort is required # SKIP Run tools/whole_draft_journey.cjs; no whole-draft cohort was supplied to this generic rules invocation."
+    ]
+  },
+  "python": {
+    "tests": 238,
+    "pass": 232,
+    "skip": 6,
+    "skipDetails": [
+      "test_actual_current_complete_earned02_and_all_prepared_links (test_capture_cosmos_campaign.ActualCurrentInputs.test_actual_current_complete_earned02_and_all_prepared_links) ... skipped 'Explicit read-only complete current-cohort path not supplied.'",
+      "setUpClass (test_capture_earth_homecoming.ActualEarnedPreflight) ... skipped 'Capture preflight needs an explicit current earned source and cohort SHA; generic discovery cannot substitute old private inputs.'",
+      "setUpClass (test_capture_earth_homecoming.FailedReportRepair) ... skipped 'Report lifecycle preflight needs explicit current earned source/cohort; no private input substitution.'",
+      "test_symlink_refused (test_checkout_import.ImportRules.test_symlink_refused) ... skipped 'Windows account lacks symlink privilege; real symlink refusal is exercised on Linux CI'",
+      "test_read_only_real_current_cohort_preflight (test_cosmos_campaign_browser_storage.CurrentEarnedEpoch.test_read_only_real_current_cohort_preflight) ... skipped 'explicit actual current-source paths required'",
+      "test_explicit_current_earned_cohort_required (test_earth_homecoming_native.ExplicitCurrentCohortRequired.test_explicit_current_earned_cohort_required) ... skipped 'Run the verifier current Earth earned cohort and explicit native preflight; generic discovery has no cohort.'"
+    ]
+  },
+  "nativeCPU": {
+    "tests": 26,
+    "pass": 26,
+    "skip": 0,
+    "skipDetails": []
+  },
+  "captureControllerCPU": {
+    "tests": 37,
+    "pass": 37,
+    "skip": 0,
+    "skipDetails": []
+  },
+  "html": {
+    "sha256": "08f7d4de46a7243e5988c33967378d4a1e9450e30a738ffbfb0f43a09bc11f39",
+    "bytes": 3032289
+  },
+  "sourceBinding": {
+    "sourceDrift": false,
+    "selectedFiles": 426,
+    "lineEndingByteDifferences": [],
+    "scope": "Selected runtime/rule/caller scope, not entire working tree equality. Root working hashes may differ only by explicit UTF-8 CRLF-to-LF binding."
+  },
+  "logsRoot": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full02",
+  "station": "D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game",
+  "console": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full02-console.log",
+    "bytes": 14645,
+    "sha256": "2492166572693daeddac446c91a5ff027f1c67ae39ba6d3ce13070d9c307cbe9"
+  },
+  "consolePath": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full02-console.log",
+  "mandatoryLabels": [
+    "earth-homecoming-earned",
+    "earth-homecoming-native-preflight",
+    "earth-recording-controller-preflight",
+    "whole-draft-earned"
+  ],
+  "observedExit": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\REMOTE_FULL02_PROCESS_EXIT.json",
+  "browserRoot": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full02-browser",
+  "scope": "Complete invocation only after Parent exit0. Selected source scope/explicit normalization, not whole working tree equality.",
+  "earned": {
+    "earth": {
+      "report": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full02\\earth-homecoming-earned\\CONNECTED_EARTH_HOMECOMING_REPORT.json",
+        "bytes": 91820,
+        "sha256": "6994dadba8953f18cfdeca9574599a078fb75ee68a3a745d37663ce7aab65f8f"
+      },
+      "variants": 3,
+      "verifiedLinks": 10,
+      "distinctLinkedFiles": 9
+    },
+    "whole": {
+      "report": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full02\\whole-draft-earned\\WHOLE_DRAFT_JOURNEY_REPORT.json",
+        "bytes": 42129,
+        "sha256": "f88ff9d0e502b72721b77cc572f5a9934fa377b661a4a1592ca7caa8713da3fa"
+      },
+      "variants": 2,
+      "chapterEdges": 20,
+      "verifiedLinks": 60,
+      "distinctLinkedFiles": 40
+    },
+    "limits": "CPU earned evidence; not native/ordinary RAF/human feel."
+  },
+  "newNative": {
+    "earth": {
+      "report": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full02-browser\\earth_homecoming_browser\\REPORT.json",
+        "bytes": 1819457,
+        "sha256": "ffd5a06c0bc1b110b0f65a8f985ec4f5991ab565421aaf8526af678ae2188d54"
+      },
+      "checks": 6205,
+      "limits": "Native accelerated production movement/ticks; not ordinary recording/pacing."
+    },
+    "onboarding": {
+      "report": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full02-browser\\onboarding_browser\\REPORT.json",
+        "bytes": 133541,
+        "sha256": "0fddcc18386ba06dc8f882cfc03ab2a72c2be16e7e93dd84e9d9558e5df6d435"
+      },
+      "checks": 53,
+      "limits": "Native accelerated production movement/ticks; not ordinary recording/pacing."
+    }
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "wholeClipDecodeExit": 0,
+  "sampleExtractExit": 0,
+  "extractArgv": [
+    "C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\imageio_ffmpeg\\binaries\\ffmpeg-win-x86_64-v7.1.exe",
+    "-hide_banner",
+    "-nostdin",
+    "-n",
+    "-threads",
+    "2",
+    "-i",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\FIRSTLIGHT_EARTH_HOMECOMING_GAMEPLAY.mp4",
+    "-vf",
+    "select=eq(n\\,25)+eq(n\\,117)+eq(n\\,219)+eq(n\\,230)+eq(n\\,275)+eq(n\\,286)+eq(n\\,490)+eq(n\\,755)",
+    "-fps_mode",
+    "vfr",
+    "-threads",
+    "2",
+    "-frames:v",
+    "8",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_%02d.png"
+  ],
+  "samples": [
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_01.png",
+      "frameIndex": 25,
+      "clipSeconds": 1.0,
+      "label": "claim-lane Adventure",
+      "bytes": 834301,
+      "sha256": "494234f602c0581c9abdcaff4b4304bd818e30893d03a8277cee38559d618fe5"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_02.png",
+      "frameIndex": 117,
+      "clipSeconds": 4.68,
+      "label": "claim-lane Diorama",
+      "bytes": 1017252,
+      "sha256": "e2906c466f8d78673f6a4181ce2dd2ae9c4506deba71bdec63288593b92e92d4"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_03.png",
+      "frameIndex": 219,
+      "clipSeconds": 8.76,
+      "label": "false-shelter Adventure",
+      "bytes": 862484,
+      "sha256": "24013c44f3c760ec2d86cf4ca033621b97942a6a4f3109c57df4ff51655925e8"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_04.png",
+      "frameIndex": 230,
+      "clipSeconds": 9.2,
+      "label": "false-shelter Diorama",
+      "bytes": 883875,
+      "sha256": "e2d275265d185c5b4e2c4c5c3d7d0ddd143872c87e8d73d72304b532f625091f"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_05.png",
+      "frameIndex": 275,
+      "clipSeconds": 11.0,
+      "label": "closing-ring Adventure",
+      "bytes": 862859,
+      "sha256": "39ff8f0b0e6dbc56ba3de1c2203450315959e35dc78354d9f86d3fb7457e9915"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_06.png",
+      "frameIndex": 286,
+      "clipSeconds": 11.44,
+      "label": "closing-ring Diorama",
+      "bytes": 858271,
+      "sha256": "cf0f8685350fb8caa257bf7d5edfc0006c2629466d0ee78988e48373a63da55f"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_07.png",
+      "frameIndex": 490,
+      "clipSeconds": 19.6,
+      "label": "actual quiet center",
+      "bytes": 899916,
+      "sha256": "a1902077cb9c6b34b07f8ac728a5679f2e7eaeb94196241eded63b98fc169e36"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\earth-road-homecoming-20261005\\media\\AUDIT_08.png",
+      "frameIndex": 755,
+      "clipSeconds": 30.2,
+      "label": "Oren paid home account",
+      "bytes": 1184203,
+      "sha256": "a48df467a0e6da6662ecd2be326b37c3e231bff88a44c7034c4e9632615d11cd"
+    }
+  ],
+  "clipSHA256": "d2d2ccb3a5c3b5dec114a2a11a016c1d4d99bd51f46c2585101f45a2ce181eaf",
+  "clipBytes": 5525429,
+  "sampleExtractionNegative": {
+    "log": "SAMPLE_EXTRACT.log",
+    "exit": 3015096584,
+    "cause": "Initial FFmpeg select expression did not escape commas; corrected filter syntax, no sampled PNG had been emitted and MP4 unchanged."
+  }
+}

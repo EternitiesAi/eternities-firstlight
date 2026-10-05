@@ -1,0 +1,3734 @@
+{
+  "method": "Private observational overlay; exact unchanged station algorithms/assertions/30s launch. Veteran only; one invocation; no retry.",
+  "frozen_report": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\remote-full04-browser\\cosmos_campaign_browser\\REPORT.json",
+    "bytes": 3139027,
+    "sha256": "bc61a1a89fcb99d95ce85fd71ac6170bfdd80ce20d4576252a8f20c9a27fb6c0"
+  },
+  "script": {
+    "path": "C:\\dev\\firstlight-verification\\cosmos-cold-navigation-diagnostic01-20261005.py",
+    "bytes": 10562,
+    "sha256": "6fa46f0196ada6345fb0b657aa9261e39e2af016eff3d548f353e679662214e5"
+  },
+  "source_provenance_excludes_private_overlay": true,
+  "events": [
+    {
+      "event": "start-begin",
+      "utc": "2026-10-05T20:44:43.818957+00:00",
+      "seconds": 0.47415889997500926,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1
+    },
+    {
+      "event": "persistent-launch-call",
+      "utc": "2026-10-05T20:44:43.818999+00:00",
+      "seconds": 0.47419300000183284,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1,
+      "profile": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\cosmos-cold-navigation-diagnostic01\\returning-strongest-isolated-profile",
+      "timeout": "unchanged default"
+    },
+    {
+      "event": "persistent-launch-return",
+      "utc": "2026-10-05T20:44:43.925568+00:00",
+      "seconds": 0.5807705000042915,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:44:43.963110+00:00",
+      "seconds": 0.618310299993027,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1,
+      "before_unload": false
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:44:43.965985+00:00",
+      "seconds": 0.6211844999925233,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:44:43.966168+00:00",
+      "seconds": 0.6213654999737628,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1,
+      "closed": true
+    },
+    {
+      "event": "goto-call",
+      "utc": "2026-10-05T20:44:43.968184+00:00",
+      "seconds": 0.6233808999531902,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1,
+      "url": "http://127.0.0.1:64371/",
+      "timeout": 30000,
+      "wait_until": "load"
+    },
+    {
+      "event": "browser-request",
+      "utc": "2026-10-05T20:44:43.979264+00:00",
+      "seconds": 0.6344631999963894,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1,
+      "url": "http://127.0.0.1:64371/",
+      "resource": "document",
+      "navigation": true
+    },
+    {
+      "event": "http-request",
+      "utc": "2026-10-05T20:44:43.996299+00:00",
+      "seconds": 0.6515000999788754,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1,
+      "path": "/",
+      "client": "('127.0.0.1', 62561)"
+    },
+    {
+      "event": "http-status",
+      "utc": "2026-10-05T20:44:44.038497+00:00",
+      "seconds": 0.6936996000004001,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1,
+      "path": "/",
+      "status": 200
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:44:44.038554+00:00",
+      "seconds": 0.6937476999592036,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1,
+      "path": "/",
+      "name": "Content-type",
+      "value": "text/html"
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:44:44.038558+00:00",
+      "seconds": 0.693751799990423,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1,
+      "path": "/",
+      "name": "Content-Length",
+      "value": "3033467"
+    },
+    {
+      "event": "http-headers-complete",
+      "utc": "2026-10-05T20:44:44.038627+00:00",
+      "seconds": 0.6938208999927156,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1,
+      "path": "/"
+    },
+    {
+      "event": "http-first-body-write",
+      "utc": "2026-10-05T20:44:44.038842+00:00",
+      "seconds": 0.6940379999577999,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1,
+      "offered": 1048576
+    },
+    {
+      "event": "browser-response",
+      "utc": "2026-10-05T20:44:44.040690+00:00",
+      "seconds": 0.6958885999629274,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200,
+      "length": "3033467"
+    },
+    {
+      "event": "browser-main-frame-navigated",
+      "utc": "2026-10-05T20:44:44.041679+00:00",
+      "seconds": 0.6968763999757357,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "http-body-complete",
+      "utc": "2026-10-05T20:44:44.047513+00:00",
+      "seconds": 0.7027128000045195,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1,
+      "path": "/",
+      "bytes": 3033467
+    },
+    {
+      "event": "http-handler-return",
+      "utc": "2026-10-05T20:44:44.047554+00:00",
+      "seconds": 0.7027485999860801,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1,
+      "path": "/"
+    },
+    {
+      "event": "browser-request-finished",
+      "utc": "2026-10-05T20:44:44.116858+00:00",
+      "seconds": 0.7720601999899372,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "browser-dom-content-loaded",
+      "utc": "2026-10-05T20:44:44.340038+00:00",
+      "seconds": 0.9952405999647453,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1
+    },
+    {
+      "event": "browser-load",
+      "utc": "2026-10-05T20:44:44.340493+00:00",
+      "seconds": 0.9956948999897577,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1
+    },
+    {
+      "event": "goto-return",
+      "utc": "2026-10-05T20:44:44.340771+00:00",
+      "seconds": 0.9959694999852218,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200
+    },
+    {
+      "event": "start-complete",
+      "utc": "2026-10-05T20:44:45.440158+00:00",
+      "seconds": 2.095360299979802,
+      "variant": "returning-strongest",
+      "restart": null,
+      "start": 1
+    },
+    {
+      "event": "restart-begin",
+      "utc": "2026-10-05T20:44:51.710860+00:00",
+      "seconds": 8.366063399997074,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 1
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:44:52.344911+00:00",
+      "seconds": 9.000114800001029,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 1,
+      "before_unload": true
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:44:52.347483+00:00",
+      "seconds": 9.00268649996724,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 1,
+      "closed": false
+    },
+    {
+      "event": "context-close-call",
+      "utc": "2026-10-05T20:44:52.347502+00:00",
+      "seconds": 9.00269739999203,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 1
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:44:52.349995+00:00",
+      "seconds": 9.005198300001211,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 1
+    },
+    {
+      "event": "context-close-event",
+      "utc": "2026-10-05T20:44:52.848776+00:00",
+      "seconds": 9.503979299974162,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 1
+    },
+    {
+      "event": "browser-disconnected",
+      "utc": "2026-10-05T20:44:52.848919+00:00",
+      "seconds": 9.504114599956665,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 1
+    },
+    {
+      "event": "context-close-return",
+      "utc": "2026-10-05T20:44:52.893337+00:00",
+      "seconds": 9.548539399984293,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 1
+    },
+    {
+      "event": "start-begin",
+      "utc": "2026-10-05T20:44:52.893354+00:00",
+      "seconds": 9.548548199993093,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2
+    },
+    {
+      "event": "persistent-launch-call",
+      "utc": "2026-10-05T20:44:52.893371+00:00",
+      "seconds": 9.548564800003078,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2,
+      "profile": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\cosmos-cold-navigation-diagnostic01\\returning-strongest-isolated-profile",
+      "timeout": "unchanged default"
+    },
+    {
+      "event": "persistent-launch-return",
+      "utc": "2026-10-05T20:44:52.981135+00:00",
+      "seconds": 9.636337200005073,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:44:53.015117+00:00",
+      "seconds": 9.670317999960389,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2,
+      "before_unload": false
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:44:53.016724+00:00",
+      "seconds": 9.67192349996185,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:44:53.016823+00:00",
+      "seconds": 9.672017699980643,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2,
+      "closed": true
+    },
+    {
+      "event": "goto-call",
+      "utc": "2026-10-05T20:44:53.018866+00:00",
+      "seconds": 9.674067899992224,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2,
+      "url": "http://127.0.0.1:64371/",
+      "timeout": 30000,
+      "wait_until": "load"
+    },
+    {
+      "event": "browser-request",
+      "utc": "2026-10-05T20:44:53.021953+00:00",
+      "seconds": 9.677152499963995,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2,
+      "url": "http://127.0.0.1:64371/",
+      "resource": "document",
+      "navigation": true
+    },
+    {
+      "event": "http-request",
+      "utc": "2026-10-05T20:44:53.038307+00:00",
+      "seconds": 9.693506199982949,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2,
+      "path": "/",
+      "client": "('127.0.0.1', 64878)"
+    },
+    {
+      "event": "http-status",
+      "utc": "2026-10-05T20:44:53.038465+00:00",
+      "seconds": 9.693662000005133,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2,
+      "path": "/",
+      "status": 200
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:44:53.038501+00:00",
+      "seconds": 9.693694999965373,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2,
+      "path": "/",
+      "name": "Content-type",
+      "value": "text/html"
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:44:53.038505+00:00",
+      "seconds": 9.69369889999507,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2,
+      "path": "/",
+      "name": "Content-Length",
+      "value": "3033467"
+    },
+    {
+      "event": "http-headers-complete",
+      "utc": "2026-10-05T20:44:53.038581+00:00",
+      "seconds": 9.693774799990933,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2,
+      "path": "/"
+    },
+    {
+      "event": "http-first-body-write",
+      "utc": "2026-10-05T20:44:53.038808+00:00",
+      "seconds": 9.69400219997624,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2,
+      "offered": 1048576
+    },
+    {
+      "event": "browser-response",
+      "utc": "2026-10-05T20:44:53.040054+00:00",
+      "seconds": 9.695255999977235,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200,
+      "length": "3033467"
+    },
+    {
+      "event": "browser-main-frame-navigated",
+      "utc": "2026-10-05T20:44:53.041167+00:00",
+      "seconds": 9.696367199998349,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "http-body-complete",
+      "utc": "2026-10-05T20:44:53.059971+00:00",
+      "seconds": 9.71517609996954,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2,
+      "path": "/",
+      "bytes": 3033467
+    },
+    {
+      "event": "http-handler-return",
+      "utc": "2026-10-05T20:44:53.060011+00:00",
+      "seconds": 9.715204599953722,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2,
+      "path": "/"
+    },
+    {
+      "event": "browser-request-finished",
+      "utc": "2026-10-05T20:44:53.107968+00:00",
+      "seconds": 9.763169899990316,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "browser-dom-content-loaded",
+      "utc": "2026-10-05T20:44:53.331955+00:00",
+      "seconds": 9.987160399963614,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2
+    },
+    {
+      "event": "browser-load",
+      "utc": "2026-10-05T20:44:53.332479+00:00",
+      "seconds": 9.98768039996503,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2
+    },
+    {
+      "event": "goto-return",
+      "utc": "2026-10-05T20:44:53.332636+00:00",
+      "seconds": 9.987831600010395,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200
+    },
+    {
+      "event": "start-complete",
+      "utc": "2026-10-05T20:44:54.410604+00:00",
+      "seconds": 11.065806299971882,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2
+    },
+    {
+      "event": "restart-complete",
+      "utc": "2026-10-05T20:44:54.477581+00:00",
+      "seconds": 11.132783899956848,
+      "variant": "returning-strongest",
+      "restart": "accepted",
+      "start": 2
+    },
+    {
+      "event": "restart-begin",
+      "utc": "2026-10-05T20:45:06.742389+00:00",
+      "seconds": 23.397591699962504,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 2
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:45:06.838517+00:00",
+      "seconds": 23.49371979996795,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 2,
+      "before_unload": true
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:45:06.841098+00:00",
+      "seconds": 23.496298899990506,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 2,
+      "closed": false
+    },
+    {
+      "event": "context-close-call",
+      "utc": "2026-10-05T20:45:06.841113+00:00",
+      "seconds": 23.49630800000159,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 2
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:45:06.843582+00:00",
+      "seconds": 23.49878379999427,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 2
+    },
+    {
+      "event": "context-close-event",
+      "utc": "2026-10-05T20:45:07.197924+00:00",
+      "seconds": 23.853127099981066,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 2
+    },
+    {
+      "event": "browser-disconnected",
+      "utc": "2026-10-05T20:45:07.198055+00:00",
+      "seconds": 23.853251599997748,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 2
+    },
+    {
+      "event": "context-close-return",
+      "utc": "2026-10-05T20:45:07.244428+00:00",
+      "seconds": 23.89962999999989,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 2
+    },
+    {
+      "event": "start-begin",
+      "utc": "2026-10-05T20:45:07.244444+00:00",
+      "seconds": 23.89963830000488,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3
+    },
+    {
+      "event": "persistent-launch-call",
+      "utc": "2026-10-05T20:45:07.244456+00:00",
+      "seconds": 23.899650099978317,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3,
+      "profile": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\cosmos-cold-navigation-diagnostic01\\returning-strongest-isolated-profile",
+      "timeout": "unchanged default"
+    },
+    {
+      "event": "persistent-launch-return",
+      "utc": "2026-10-05T20:45:07.334250+00:00",
+      "seconds": 23.989455099974293,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:45:07.370002+00:00",
+      "seconds": 24.025201899989042,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3,
+      "before_unload": false
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:45:07.371733+00:00",
+      "seconds": 24.02693489997182,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:45:07.371830+00:00",
+      "seconds": 24.027024199953303,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3,
+      "closed": true
+    },
+    {
+      "event": "goto-call",
+      "utc": "2026-10-05T20:45:07.373936+00:00",
+      "seconds": 24.029136599972844,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3,
+      "url": "http://127.0.0.1:64371/",
+      "timeout": 30000,
+      "wait_until": "load"
+    },
+    {
+      "event": "browser-request",
+      "utc": "2026-10-05T20:45:07.376927+00:00",
+      "seconds": 24.032127199985553,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3,
+      "url": "http://127.0.0.1:64371/",
+      "resource": "document",
+      "navigation": true
+    },
+    {
+      "event": "http-request",
+      "utc": "2026-10-05T20:45:07.401196+00:00",
+      "seconds": 24.056398699991405,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3,
+      "path": "/",
+      "client": "('127.0.0.1', 62411)"
+    },
+    {
+      "event": "http-status",
+      "utc": "2026-10-05T20:45:07.401368+00:00",
+      "seconds": 24.056564899976365,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3,
+      "path": "/",
+      "status": 200
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:45:07.401404+00:00",
+      "seconds": 24.056597499991767,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3,
+      "path": "/",
+      "name": "Content-type",
+      "value": "text/html"
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:45:07.401407+00:00",
+      "seconds": 24.05660089995945,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3,
+      "path": "/",
+      "name": "Content-Length",
+      "value": "3033467"
+    },
+    {
+      "event": "http-headers-complete",
+      "utc": "2026-10-05T20:45:07.401455+00:00",
+      "seconds": 24.056649899983313,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3,
+      "path": "/"
+    },
+    {
+      "event": "http-first-body-write",
+      "utc": "2026-10-05T20:45:07.401799+00:00",
+      "seconds": 24.056996700004674,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3,
+      "offered": 1048576
+    },
+    {
+      "event": "browser-response",
+      "utc": "2026-10-05T20:45:07.403308+00:00",
+      "seconds": 24.058505499968305,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200,
+      "length": "3033467"
+    },
+    {
+      "event": "browser-main-frame-navigated",
+      "utc": "2026-10-05T20:45:07.403992+00:00",
+      "seconds": 24.05919030000223,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "http-body-complete",
+      "utc": "2026-10-05T20:45:07.417771+00:00",
+      "seconds": 24.072981100005563,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3,
+      "path": "/",
+      "bytes": 3033467
+    },
+    {
+      "event": "http-handler-return",
+      "utc": "2026-10-05T20:45:07.417832+00:00",
+      "seconds": 24.07302609999897,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3,
+      "path": "/"
+    },
+    {
+      "event": "browser-request-finished",
+      "utc": "2026-10-05T20:45:07.472158+00:00",
+      "seconds": 24.127359699981753,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "browser-dom-content-loaded",
+      "utc": "2026-10-05T20:45:07.693308+00:00",
+      "seconds": 24.34851169999456,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3
+    },
+    {
+      "event": "browser-load",
+      "utc": "2026-10-05T20:45:07.693885+00:00",
+      "seconds": 24.349084499990568,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3
+    },
+    {
+      "event": "goto-return",
+      "utc": "2026-10-05T20:45:07.694020+00:00",
+      "seconds": 24.349216300004628,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200
+    },
+    {
+      "event": "start-complete",
+      "utc": "2026-10-05T20:45:08.552694+00:00",
+      "seconds": 25.207898299966473,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3
+    },
+    {
+      "event": "restart-complete",
+      "utc": "2026-10-05T20:45:08.612004+00:00",
+      "seconds": 25.267207099997904,
+      "variant": "returning-strongest",
+      "restart": "two-distinct-supports",
+      "start": 3
+    },
+    {
+      "event": "restart-begin",
+      "utc": "2026-10-05T20:45:20.570268+00:00",
+      "seconds": 37.22547010000562,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 3
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:45:20.648219+00:00",
+      "seconds": 37.3034217999666,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 3,
+      "before_unload": true
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:45:20.650036+00:00",
+      "seconds": 37.3052372999955,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 3,
+      "closed": false
+    },
+    {
+      "event": "context-close-call",
+      "utc": "2026-10-05T20:45:20.650048+00:00",
+      "seconds": 37.30524229997536,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 3
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:45:20.652408+00:00",
+      "seconds": 37.307609399955254,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 3
+    },
+    {
+      "event": "context-close-event",
+      "utc": "2026-10-05T20:45:20.722492+00:00",
+      "seconds": 37.37769599998137,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 3
+    },
+    {
+      "event": "browser-disconnected",
+      "utc": "2026-10-05T20:45:20.722617+00:00",
+      "seconds": 37.37781309999991,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 3
+    },
+    {
+      "event": "context-close-return",
+      "utc": "2026-10-05T20:45:20.772039+00:00",
+      "seconds": 37.42724129999988,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 3
+    },
+    {
+      "event": "start-begin",
+      "utc": "2026-10-05T20:45:20.772054+00:00",
+      "seconds": 37.427247799991164,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4
+    },
+    {
+      "event": "persistent-launch-call",
+      "utc": "2026-10-05T20:45:20.772066+00:00",
+      "seconds": 37.427259199961554,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4,
+      "profile": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\cosmos-cold-navigation-diagnostic01\\returning-strongest-isolated-profile",
+      "timeout": "unchanged default"
+    },
+    {
+      "event": "persistent-launch-return",
+      "utc": "2026-10-05T20:45:20.888125+00:00",
+      "seconds": 37.54332769999746,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:45:20.923854+00:00",
+      "seconds": 37.579054999980144,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4,
+      "before_unload": false
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:45:20.925698+00:00",
+      "seconds": 37.580898999993224,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:45:20.925828+00:00",
+      "seconds": 37.58102649997454,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4,
+      "closed": true
+    },
+    {
+      "event": "goto-call",
+      "utc": "2026-10-05T20:45:20.927777+00:00",
+      "seconds": 37.582974799966905,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4,
+      "url": "http://127.0.0.1:64371/",
+      "timeout": 30000,
+      "wait_until": "load"
+    },
+    {
+      "event": "browser-request",
+      "utc": "2026-10-05T20:45:20.931563+00:00",
+      "seconds": 37.58676099998411,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4,
+      "url": "http://127.0.0.1:64371/",
+      "resource": "document",
+      "navigation": true
+    },
+    {
+      "event": "http-request",
+      "utc": "2026-10-05T20:45:20.947861+00:00",
+      "seconds": 37.60306429996854,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4,
+      "path": "/",
+      "client": "('127.0.0.1', 55012)"
+    },
+    {
+      "event": "http-status",
+      "utc": "2026-10-05T20:45:20.948015+00:00",
+      "seconds": 37.60321129998192,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4,
+      "path": "/",
+      "status": 200
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:45:20.948048+00:00",
+      "seconds": 37.60324219998438,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4,
+      "path": "/",
+      "name": "Content-type",
+      "value": "text/html"
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:45:20.948052+00:00",
+      "seconds": 37.60324520000722,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4,
+      "path": "/",
+      "name": "Content-Length",
+      "value": "3033467"
+    },
+    {
+      "event": "http-headers-complete",
+      "utc": "2026-10-05T20:45:20.948095+00:00",
+      "seconds": 37.60328899999149,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4,
+      "path": "/"
+    },
+    {
+      "event": "http-first-body-write",
+      "utc": "2026-10-05T20:45:20.948293+00:00",
+      "seconds": 37.603487199987285,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4,
+      "offered": 1048576
+    },
+    {
+      "event": "browser-response",
+      "utc": "2026-10-05T20:45:20.949855+00:00",
+      "seconds": 37.60505329997977,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200,
+      "length": "3033467"
+    },
+    {
+      "event": "browser-main-frame-navigated",
+      "utc": "2026-10-05T20:45:20.950812+00:00",
+      "seconds": 37.60601059999317,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "http-body-complete",
+      "utc": "2026-10-05T20:45:20.955902+00:00",
+      "seconds": 37.611102499999106,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4,
+      "path": "/",
+      "bytes": 3033467
+    },
+    {
+      "event": "http-handler-return",
+      "utc": "2026-10-05T20:45:20.955939+00:00",
+      "seconds": 37.61113299999852,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4,
+      "path": "/"
+    },
+    {
+      "event": "browser-request-finished",
+      "utc": "2026-10-05T20:45:21.007792+00:00",
+      "seconds": 37.66299389995402,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "browser-dom-content-loaded",
+      "utc": "2026-10-05T20:45:21.244049+00:00",
+      "seconds": 37.899251899973024,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4
+    },
+    {
+      "event": "browser-load",
+      "utc": "2026-10-05T20:45:21.244771+00:00",
+      "seconds": 37.89997289999155,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4
+    },
+    {
+      "event": "goto-return",
+      "utc": "2026-10-05T20:45:21.244887+00:00",
+      "seconds": 37.900081900006626,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200
+    },
+    {
+      "event": "start-complete",
+      "utc": "2026-10-05T20:45:22.070817+00:00",
+      "seconds": 38.72602189995814,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4
+    },
+    {
+      "event": "restart-complete",
+      "utc": "2026-10-05T20:45:22.138254+00:00",
+      "seconds": 38.7934580000001,
+      "variant": "returning-strongest",
+      "restart": "actual-reclaimer-settled",
+      "start": 4
+    },
+    {
+      "event": "restart-begin",
+      "utc": "2026-10-05T20:45:28.094470+00:00",
+      "seconds": 44.74967329995707,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 4
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:45:28.166928+00:00",
+      "seconds": 44.82212999998592,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 4,
+      "before_unload": true
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:45:28.168547+00:00",
+      "seconds": 44.8237462999532,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 4,
+      "closed": false
+    },
+    {
+      "event": "context-close-call",
+      "utc": "2026-10-05T20:45:28.168557+00:00",
+      "seconds": 44.823751499992795,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 4
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:45:28.170512+00:00",
+      "seconds": 44.82571249996545,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 4
+    },
+    {
+      "event": "context-close-event",
+      "utc": "2026-10-05T20:45:28.208125+00:00",
+      "seconds": 44.8633273000014,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 4
+    },
+    {
+      "event": "browser-disconnected",
+      "utc": "2026-10-05T20:45:28.208206+00:00",
+      "seconds": 44.863400399975944,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 4
+    },
+    {
+      "event": "context-close-return",
+      "utc": "2026-10-05T20:45:28.276114+00:00",
+      "seconds": 44.93131660000654,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 4
+    },
+    {
+      "event": "start-begin",
+      "utc": "2026-10-05T20:45:28.276129+00:00",
+      "seconds": 44.9313228999963,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5
+    },
+    {
+      "event": "persistent-launch-call",
+      "utc": "2026-10-05T20:45:28.276141+00:00",
+      "seconds": 44.93133459996898,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5,
+      "profile": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\cosmos-cold-navigation-diagnostic01\\returning-strongest-isolated-profile",
+      "timeout": "unchanged default"
+    },
+    {
+      "event": "persistent-launch-return",
+      "utc": "2026-10-05T20:45:28.366283+00:00",
+      "seconds": 45.02148529997794,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:45:28.401337+00:00",
+      "seconds": 45.05653939995682,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5,
+      "before_unload": false
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:45:28.403058+00:00",
+      "seconds": 45.05825729999924,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:45:28.403159+00:00",
+      "seconds": 45.0583538999781,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5,
+      "closed": true
+    },
+    {
+      "event": "goto-call",
+      "utc": "2026-10-05T20:45:28.405187+00:00",
+      "seconds": 45.06038719997741,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5,
+      "url": "http://127.0.0.1:64371/",
+      "timeout": 30000,
+      "wait_until": "load"
+    },
+    {
+      "event": "browser-request",
+      "utc": "2026-10-05T20:45:28.408277+00:00",
+      "seconds": 45.063475999981165,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5,
+      "url": "http://127.0.0.1:64371/",
+      "resource": "document",
+      "navigation": true
+    },
+    {
+      "event": "http-request",
+      "utc": "2026-10-05T20:45:28.424600+00:00",
+      "seconds": 45.07980279996991,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5,
+      "path": "/",
+      "client": "('127.0.0.1', 64326)"
+    },
+    {
+      "event": "http-status",
+      "utc": "2026-10-05T20:45:28.424743+00:00",
+      "seconds": 45.079938799957745,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5,
+      "path": "/",
+      "status": 200
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:45:28.424776+00:00",
+      "seconds": 45.07997019996401,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5,
+      "path": "/",
+      "name": "Content-type",
+      "value": "text/html"
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:45:28.424781+00:00",
+      "seconds": 45.07997389999218,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5,
+      "path": "/",
+      "name": "Content-Length",
+      "value": "3033467"
+    },
+    {
+      "event": "http-headers-complete",
+      "utc": "2026-10-05T20:45:28.424826+00:00",
+      "seconds": 45.08001969999168,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5,
+      "path": "/"
+    },
+    {
+      "event": "http-first-body-write",
+      "utc": "2026-10-05T20:45:28.425053+00:00",
+      "seconds": 45.08024819998536,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5,
+      "offered": 1048576
+    },
+    {
+      "event": "browser-response",
+      "utc": "2026-10-05T20:45:28.426297+00:00",
+      "seconds": 45.08149449998746,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200,
+      "length": "3033467"
+    },
+    {
+      "event": "browser-main-frame-navigated",
+      "utc": "2026-10-05T20:45:28.427506+00:00",
+      "seconds": 45.082704000000376,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "http-body-complete",
+      "utc": "2026-10-05T20:45:28.432647+00:00",
+      "seconds": 45.08785369998077,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5,
+      "path": "/",
+      "bytes": 3033467
+    },
+    {
+      "event": "http-handler-return",
+      "utc": "2026-10-05T20:45:28.432707+00:00",
+      "seconds": 45.08790059998864,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5,
+      "path": "/"
+    },
+    {
+      "event": "browser-request-finished",
+      "utc": "2026-10-05T20:45:28.484267+00:00",
+      "seconds": 45.139469899993856,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "browser-dom-content-loaded",
+      "utc": "2026-10-05T20:45:28.714241+00:00",
+      "seconds": 45.369449399993755,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5
+    },
+    {
+      "event": "browser-load",
+      "utc": "2026-10-05T20:45:28.714931+00:00",
+      "seconds": 45.37013199995272,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5
+    },
+    {
+      "event": "goto-return",
+      "utc": "2026-10-05T20:45:28.715051+00:00",
+      "seconds": 45.37024499999825,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200
+    },
+    {
+      "event": "start-complete",
+      "utc": "2026-10-05T20:45:29.547818+00:00",
+      "seconds": 46.20302029995946,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5
+    },
+    {
+      "event": "restart-complete",
+      "utc": "2026-10-05T20:45:29.614726+00:00",
+      "seconds": 46.26992930000415,
+      "variant": "returning-strongest",
+      "restart": "guardian-ready",
+      "start": 5
+    },
+    {
+      "event": "restart-begin",
+      "utc": "2026-10-05T20:45:59.770535+00:00",
+      "seconds": 76.42573999997694,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 5
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:45:59.858544+00:00",
+      "seconds": 76.51374789996771,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 5,
+      "before_unload": true
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:45:59.861475+00:00",
+      "seconds": 76.51667939999606,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 5,
+      "closed": false
+    },
+    {
+      "event": "context-close-call",
+      "utc": "2026-10-05T20:45:59.861513+00:00",
+      "seconds": 76.5167119000107,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 5
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:45:59.864455+00:00",
+      "seconds": 76.51965609996114,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 5
+    },
+    {
+      "event": "context-close-event",
+      "utc": "2026-10-05T20:45:59.975216+00:00",
+      "seconds": 76.63041949999752,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 5
+    },
+    {
+      "event": "browser-disconnected",
+      "utc": "2026-10-05T20:45:59.975370+00:00",
+      "seconds": 76.63056719995802,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 5
+    },
+    {
+      "event": "context-close-return",
+      "utc": "2026-10-05T20:46:00.022567+00:00",
+      "seconds": 76.67776960000629,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 5
+    },
+    {
+      "event": "start-begin",
+      "utc": "2026-10-05T20:46:00.022582+00:00",
+      "seconds": 76.67777599999681,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6
+    },
+    {
+      "event": "persistent-launch-call",
+      "utc": "2026-10-05T20:46:00.022594+00:00",
+      "seconds": 76.6777873999672,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6,
+      "profile": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\cosmos-cold-navigation-diagnostic01\\returning-strongest-isolated-profile",
+      "timeout": "unchanged default"
+    },
+    {
+      "event": "persistent-launch-return",
+      "utc": "2026-10-05T20:46:00.109932+00:00",
+      "seconds": 76.76513489999343,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:46:00.147330+00:00",
+      "seconds": 76.80253250000533,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6,
+      "before_unload": false
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:46:00.149128+00:00",
+      "seconds": 76.80432719999226,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:46:00.149260+00:00",
+      "seconds": 76.80445820000023,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6,
+      "closed": true
+    },
+    {
+      "event": "goto-call",
+      "utc": "2026-10-05T20:46:00.151334+00:00",
+      "seconds": 76.80653259996325,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6,
+      "url": "http://127.0.0.1:64371/",
+      "timeout": 30000,
+      "wait_until": "load"
+    },
+    {
+      "event": "browser-request",
+      "utc": "2026-10-05T20:46:00.155082+00:00",
+      "seconds": 76.81028059998062,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6,
+      "url": "http://127.0.0.1:64371/",
+      "resource": "document",
+      "navigation": true
+    },
+    {
+      "event": "http-request",
+      "utc": "2026-10-05T20:46:00.171256+00:00",
+      "seconds": 76.82645920000505,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6,
+      "path": "/",
+      "client": "('127.0.0.1', 58463)"
+    },
+    {
+      "event": "http-status",
+      "utc": "2026-10-05T20:46:00.171407+00:00",
+      "seconds": 76.82660339999711,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6,
+      "path": "/",
+      "status": 200
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:46:00.171445+00:00",
+      "seconds": 76.82663899997715,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6,
+      "path": "/",
+      "name": "Content-type",
+      "value": "text/html"
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:46:00.171449+00:00",
+      "seconds": 76.82664290000685,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6,
+      "path": "/",
+      "name": "Content-Length",
+      "value": "3033467"
+    },
+    {
+      "event": "http-headers-complete",
+      "utc": "2026-10-05T20:46:00.171508+00:00",
+      "seconds": 76.82670269999653,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6,
+      "path": "/"
+    },
+    {
+      "event": "http-first-body-write",
+      "utc": "2026-10-05T20:46:00.171737+00:00",
+      "seconds": 76.82693310000468,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6,
+      "offered": 1048576
+    },
+    {
+      "event": "browser-response",
+      "utc": "2026-10-05T20:46:00.173255+00:00",
+      "seconds": 76.82845490000909,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200,
+      "length": "3033467"
+    },
+    {
+      "event": "browser-main-frame-navigated",
+      "utc": "2026-10-05T20:46:00.174103+00:00",
+      "seconds": 76.82930189999752,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "http-body-complete",
+      "utc": "2026-10-05T20:46:00.179362+00:00",
+      "seconds": 76.83456250000745,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6,
+      "path": "/",
+      "bytes": 3033467
+    },
+    {
+      "event": "http-handler-return",
+      "utc": "2026-10-05T20:46:00.179394+00:00",
+      "seconds": 76.83458819997031,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6,
+      "path": "/"
+    },
+    {
+      "event": "browser-request-finished",
+      "utc": "2026-10-05T20:46:00.230062+00:00",
+      "seconds": 76.8852641999838,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "browser-dom-content-loaded",
+      "utc": "2026-10-05T20:46:00.466323+00:00",
+      "seconds": 77.12152589997277,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6
+    },
+    {
+      "event": "browser-load",
+      "utc": "2026-10-05T20:46:00.466727+00:00",
+      "seconds": 77.12192700000014,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6
+    },
+    {
+      "event": "goto-return",
+      "utc": "2026-10-05T20:46:00.466871+00:00",
+      "seconds": 77.12206859997241,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200
+    },
+    {
+      "event": "start-complete",
+      "utc": "2026-10-05T20:46:01.304543+00:00",
+      "seconds": 77.95974849996855,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6
+    },
+    {
+      "event": "restart-complete",
+      "utc": "2026-10-05T20:46:01.399951+00:00",
+      "seconds": 78.05515529995319,
+      "variant": "returning-strongest",
+      "restart": "guardian-settled-with-physical-feeds",
+      "start": 6
+    },
+    {
+      "event": "restart-begin",
+      "utc": "2026-10-05T20:46:09.333020+00:00",
+      "seconds": 85.98822279996239,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 6
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:46:09.404502+00:00",
+      "seconds": 86.05970459996024,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 6,
+      "before_unload": true
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:46:09.406548+00:00",
+      "seconds": 86.0617483999813,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 6,
+      "closed": false
+    },
+    {
+      "event": "context-close-call",
+      "utc": "2026-10-05T20:46:09.406560+00:00",
+      "seconds": 86.06175379996421,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 6
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:46:09.408108+00:00",
+      "seconds": 86.06330729997717,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 6
+    },
+    {
+      "event": "context-close-event",
+      "utc": "2026-10-05T20:46:09.416588+00:00",
+      "seconds": 86.0717905999627,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 6
+    },
+    {
+      "event": "browser-disconnected",
+      "utc": "2026-10-05T20:46:09.416721+00:00",
+      "seconds": 86.07191669999156,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 6
+    },
+    {
+      "event": "context-close-return",
+      "utc": "2026-10-05T20:46:09.464797+00:00",
+      "seconds": 86.11999939999077,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 6
+    },
+    {
+      "event": "start-begin",
+      "utc": "2026-10-05T20:46:09.464812+00:00",
+      "seconds": 86.12000619998435,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7
+    },
+    {
+      "event": "persistent-launch-call",
+      "utc": "2026-10-05T20:46:09.464825+00:00",
+      "seconds": 86.12001859996235,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7,
+      "profile": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\cosmos-cold-navigation-diagnostic01\\returning-strongest-isolated-profile",
+      "timeout": "unchanged default"
+    },
+    {
+      "event": "persistent-launch-return",
+      "utc": "2026-10-05T20:46:09.554247+00:00",
+      "seconds": 86.20944999996573,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:46:09.589330+00:00",
+      "seconds": 86.24452949996339,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7,
+      "before_unload": false
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:46:09.591125+00:00",
+      "seconds": 86.24632249999559,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:46:09.591235+00:00",
+      "seconds": 86.2464292999939,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7,
+      "closed": true
+    },
+    {
+      "event": "goto-call",
+      "utc": "2026-10-05T20:46:09.593019+00:00",
+      "seconds": 86.24821629998041,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7,
+      "url": "http://127.0.0.1:64371/",
+      "timeout": 30000,
+      "wait_until": "load"
+    },
+    {
+      "event": "browser-request",
+      "utc": "2026-10-05T20:46:09.596404+00:00",
+      "seconds": 86.25160459999461,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7,
+      "url": "http://127.0.0.1:64371/",
+      "resource": "document",
+      "navigation": true
+    },
+    {
+      "event": "http-request",
+      "utc": "2026-10-05T20:46:09.617868+00:00",
+      "seconds": 86.2730731999618,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7,
+      "path": "/",
+      "client": "('127.0.0.1', 64521)"
+    },
+    {
+      "event": "http-status",
+      "utc": "2026-10-05T20:46:09.618041+00:00",
+      "seconds": 86.2732374999905,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7,
+      "path": "/",
+      "status": 200
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:46:09.618078+00:00",
+      "seconds": 86.27327179996064,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7,
+      "path": "/",
+      "name": "Content-type",
+      "value": "text/html"
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:46:09.618081+00:00",
+      "seconds": 86.27327519998653,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7,
+      "path": "/",
+      "name": "Content-Length",
+      "value": "3033467"
+    },
+    {
+      "event": "http-headers-complete",
+      "utc": "2026-10-05T20:46:09.618132+00:00",
+      "seconds": 86.27332499995828,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7,
+      "path": "/"
+    },
+    {
+      "event": "http-first-body-write",
+      "utc": "2026-10-05T20:46:09.618331+00:00",
+      "seconds": 86.27352639997844,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7,
+      "offered": 1048576
+    },
+    {
+      "event": "browser-response",
+      "utc": "2026-10-05T20:46:09.619599+00:00",
+      "seconds": 86.27479669998866,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200,
+      "length": "3033467"
+    },
+    {
+      "event": "browser-main-frame-navigated",
+      "utc": "2026-10-05T20:46:09.620771+00:00",
+      "seconds": 86.27596860000631,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "http-body-complete",
+      "utc": "2026-10-05T20:46:09.626641+00:00",
+      "seconds": 86.2818447999889,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7,
+      "path": "/",
+      "bytes": 3033467
+    },
+    {
+      "event": "http-handler-return",
+      "utc": "2026-10-05T20:46:09.626689+00:00",
+      "seconds": 86.28188339999178,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7,
+      "path": "/"
+    },
+    {
+      "event": "browser-request-finished",
+      "utc": "2026-10-05T20:46:09.652615+00:00",
+      "seconds": 86.30781649996061,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "browser-dom-content-loaded",
+      "utc": "2026-10-05T20:46:09.926023+00:00",
+      "seconds": 86.58122519997414,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7
+    },
+    {
+      "event": "browser-load",
+      "utc": "2026-10-05T20:46:09.926659+00:00",
+      "seconds": 86.58186249999562,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7
+    },
+    {
+      "event": "goto-return",
+      "utc": "2026-10-05T20:46:09.926790+00:00",
+      "seconds": 86.58198469999479,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200
+    },
+    {
+      "event": "start-complete",
+      "utc": "2026-10-05T20:46:10.753550+00:00",
+      "seconds": 87.40875429997686,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7
+    },
+    {
+      "event": "restart-complete",
+      "utc": "2026-10-05T20:46:10.822795+00:00",
+      "seconds": 87.47799879999366,
+      "variant": "returning-strongest",
+      "restart": "central-disabled",
+      "start": 7
+    },
+    {
+      "event": "restart-begin",
+      "utc": "2026-10-05T20:46:16.209236+00:00",
+      "seconds": 92.86446099996101,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 7
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:46:16.300072+00:00",
+      "seconds": 92.95527459995355,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 7,
+      "before_unload": true
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:46:16.302694+00:00",
+      "seconds": 92.95789709995734,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 7,
+      "closed": false
+    },
+    {
+      "event": "context-close-call",
+      "utc": "2026-10-05T20:46:16.302710+00:00",
+      "seconds": 92.95790439995471,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 7
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:46:16.305180+00:00",
+      "seconds": 92.96038139995653,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 7
+    },
+    {
+      "event": "context-close-event",
+      "utc": "2026-10-05T20:46:16.491811+00:00",
+      "seconds": 93.14701379998587,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 7
+    },
+    {
+      "event": "browser-disconnected",
+      "utc": "2026-10-05T20:46:16.491923+00:00",
+      "seconds": 93.14711749996059,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 7
+    },
+    {
+      "event": "context-close-return",
+      "utc": "2026-10-05T20:46:16.546028+00:00",
+      "seconds": 93.20123050000984,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 7
+    },
+    {
+      "event": "start-begin",
+      "utc": "2026-10-05T20:46:16.546043+00:00",
+      "seconds": 93.20123730000341,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8
+    },
+    {
+      "event": "persistent-launch-call",
+      "utc": "2026-10-05T20:46:16.546055+00:00",
+      "seconds": 93.2012486999738,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8,
+      "profile": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\cosmos-cold-navigation-diagnostic01\\returning-strongest-isolated-profile",
+      "timeout": "unchanged default"
+    },
+    {
+      "event": "persistent-launch-return",
+      "utc": "2026-10-05T20:46:16.659776+00:00",
+      "seconds": 93.31497780000791,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:46:16.696505+00:00",
+      "seconds": 93.35170559998369,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8,
+      "before_unload": false
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:46:16.698251+00:00",
+      "seconds": 93.35345029999735,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:46:16.698336+00:00",
+      "seconds": 93.35353049996775,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8,
+      "closed": true
+    },
+    {
+      "event": "goto-call",
+      "utc": "2026-10-05T20:46:16.700239+00:00",
+      "seconds": 93.35543579998193,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8,
+      "url": "http://127.0.0.1:64371/",
+      "timeout": 30000,
+      "wait_until": "load"
+    },
+    {
+      "event": "browser-request",
+      "utc": "2026-10-05T20:46:16.703890+00:00",
+      "seconds": 93.35909069998888,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8,
+      "url": "http://127.0.0.1:64371/",
+      "resource": "document",
+      "navigation": true
+    },
+    {
+      "event": "http-request",
+      "utc": "2026-10-05T20:46:16.721198+00:00",
+      "seconds": 93.37640119995922,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8,
+      "path": "/",
+      "client": "('127.0.0.1', 49173)"
+    },
+    {
+      "event": "http-status",
+      "utc": "2026-10-05T20:46:16.721361+00:00",
+      "seconds": 93.37655809998978,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8,
+      "path": "/",
+      "status": 200
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:46:16.721398+00:00",
+      "seconds": 93.37659199995687,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8,
+      "path": "/",
+      "name": "Content-type",
+      "value": "text/html"
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:46:16.721402+00:00",
+      "seconds": 93.37659539998276,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8,
+      "path": "/",
+      "name": "Content-Length",
+      "value": "3033467"
+    },
+    {
+      "event": "http-headers-complete",
+      "utc": "2026-10-05T20:46:16.721452+00:00",
+      "seconds": 93.37664539995603,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8,
+      "path": "/"
+    },
+    {
+      "event": "http-first-body-write",
+      "utc": "2026-10-05T20:46:16.721682+00:00",
+      "seconds": 93.37687649996951,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8,
+      "offered": 1048576
+    },
+    {
+      "event": "browser-response",
+      "utc": "2026-10-05T20:46:16.722815+00:00",
+      "seconds": 93.37801419995958,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200,
+      "length": "3033467"
+    },
+    {
+      "event": "browser-main-frame-navigated",
+      "utc": "2026-10-05T20:46:16.723909+00:00",
+      "seconds": 93.37910630000988,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "http-body-complete",
+      "utc": "2026-10-05T20:46:16.743860+00:00",
+      "seconds": 93.39906450000126,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8,
+      "path": "/",
+      "bytes": 3033467
+    },
+    {
+      "event": "http-handler-return",
+      "utc": "2026-10-05T20:46:16.743900+00:00",
+      "seconds": 93.39909449999686,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8,
+      "path": "/"
+    },
+    {
+      "event": "browser-request-finished",
+      "utc": "2026-10-05T20:46:16.790627+00:00",
+      "seconds": 93.44582989998162,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "browser-dom-content-loaded",
+      "utc": "2026-10-05T20:46:17.018274+00:00",
+      "seconds": 93.67347669997253,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8
+    },
+    {
+      "event": "browser-load",
+      "utc": "2026-10-05T20:46:17.018878+00:00",
+      "seconds": 93.67407690000255,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8
+    },
+    {
+      "event": "goto-return",
+      "utc": "2026-10-05T20:46:17.018988+00:00",
+      "seconds": 93.67418249999173,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200
+    },
+    {
+      "event": "start-complete",
+      "utc": "2026-10-05T20:46:17.858490+00:00",
+      "seconds": 94.51369240001077,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8
+    },
+    {
+      "event": "restart-complete",
+      "utc": "2026-10-05T20:46:17.925515+00:00",
+      "seconds": 94.58071809995454,
+      "variant": "returning-strongest",
+      "restart": "deliberate-account",
+      "start": 8
+    },
+    {
+      "event": "restart-begin",
+      "utc": "2026-10-05T20:46:29.589901+00:00",
+      "seconds": 106.24510239996016,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 8
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:46:29.665305+00:00",
+      "seconds": 106.32050839997828,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 8,
+      "before_unload": true
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:46:29.667261+00:00",
+      "seconds": 106.32246269995812,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 8,
+      "closed": false
+    },
+    {
+      "event": "context-close-call",
+      "utc": "2026-10-05T20:46:29.667274+00:00",
+      "seconds": 106.32246880000457,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 8
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:46:29.669627+00:00",
+      "seconds": 106.32482739997795,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 8
+    },
+    {
+      "event": "context-close-event",
+      "utc": "2026-10-05T20:46:29.677912+00:00",
+      "seconds": 106.33311619999586,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 8
+    },
+    {
+      "event": "browser-disconnected",
+      "utc": "2026-10-05T20:46:29.678053+00:00",
+      "seconds": 106.33325219998369,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 8
+    },
+    {
+      "event": "context-close-return",
+      "utc": "2026-10-05T20:46:29.718061+00:00",
+      "seconds": 106.373262899986,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 8
+    },
+    {
+      "event": "start-begin",
+      "utc": "2026-10-05T20:46:29.718076+00:00",
+      "seconds": 106.37326959997881,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9
+    },
+    {
+      "event": "persistent-launch-call",
+      "utc": "2026-10-05T20:46:29.718088+00:00",
+      "seconds": 106.37328110000817,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9,
+      "profile": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\cosmos-cold-navigation-diagnostic01\\returning-strongest-isolated-profile",
+      "timeout": "unchanged default"
+    },
+    {
+      "event": "persistent-launch-return",
+      "utc": "2026-10-05T20:46:29.808720+00:00",
+      "seconds": 106.46392459998606,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:46:29.845513+00:00",
+      "seconds": 106.50071419996675,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9,
+      "before_unload": false
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:46:29.847455+00:00",
+      "seconds": 106.50265549996402,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:46:29.847561+00:00",
+      "seconds": 106.50275679997867,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9,
+      "closed": true
+    },
+    {
+      "event": "goto-call",
+      "utc": "2026-10-05T20:46:29.850379+00:00",
+      "seconds": 106.5055788999889,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9,
+      "url": "http://127.0.0.1:64371/",
+      "timeout": 30000,
+      "wait_until": "load"
+    },
+    {
+      "event": "browser-request",
+      "utc": "2026-10-05T20:46:29.854281+00:00",
+      "seconds": 106.50948020000942,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9,
+      "url": "http://127.0.0.1:64371/",
+      "resource": "document",
+      "navigation": true
+    },
+    {
+      "event": "http-request",
+      "utc": "2026-10-05T20:46:29.882617+00:00",
+      "seconds": 106.53781939996406,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9,
+      "path": "/",
+      "client": "('127.0.0.1', 51718)"
+    },
+    {
+      "event": "http-status",
+      "utc": "2026-10-05T20:46:29.882805+00:00",
+      "seconds": 106.53800349996891,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9,
+      "path": "/",
+      "status": 200
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:46:29.882841+00:00",
+      "seconds": 106.53803499997593,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9,
+      "path": "/",
+      "name": "Content-type",
+      "value": "text/html"
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:46:29.882845+00:00",
+      "seconds": 106.53803860000335,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9,
+      "path": "/",
+      "name": "Content-Length",
+      "value": "3033467"
+    },
+    {
+      "event": "http-headers-complete",
+      "utc": "2026-10-05T20:46:29.882894+00:00",
+      "seconds": 106.53808809997281,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9,
+      "path": "/"
+    },
+    {
+      "event": "http-first-body-write",
+      "utc": "2026-10-05T20:46:29.883089+00:00",
+      "seconds": 106.53828310000245,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9,
+      "offered": 1048576
+    },
+    {
+      "event": "browser-response",
+      "utc": "2026-10-05T20:46:29.884438+00:00",
+      "seconds": 106.53963529999601,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200,
+      "length": "3033467"
+    },
+    {
+      "event": "browser-main-frame-navigated",
+      "utc": "2026-10-05T20:46:29.885534+00:00",
+      "seconds": 106.54073059995426,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "http-body-complete",
+      "utc": "2026-10-05T20:46:29.890800+00:00",
+      "seconds": 106.54599989997223,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9,
+      "path": "/",
+      "bytes": 3033467
+    },
+    {
+      "event": "http-handler-return",
+      "utc": "2026-10-05T20:46:29.890831+00:00",
+      "seconds": 106.54602469998645,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9,
+      "path": "/"
+    },
+    {
+      "event": "browser-request-finished",
+      "utc": "2026-10-05T20:46:29.916897+00:00",
+      "seconds": 106.57209849997889,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "browser-dom-content-loaded",
+      "utc": "2026-10-05T20:46:30.190353+00:00",
+      "seconds": 106.84555619995808,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9
+    },
+    {
+      "event": "browser-load",
+      "utc": "2026-10-05T20:46:30.190907+00:00",
+      "seconds": 106.84610729996348,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9
+    },
+    {
+      "event": "goto-return",
+      "utc": "2026-10-05T20:46:30.191045+00:00",
+      "seconds": 106.84624139999505,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200
+    },
+    {
+      "event": "start-complete",
+      "utc": "2026-10-05T20:46:31.044199+00:00",
+      "seconds": 107.69940240000142,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9
+    },
+    {
+      "event": "restart-complete",
+      "utc": "2026-10-05T20:46:31.154507+00:00",
+      "seconds": 107.80971129995305,
+      "variant": "returning-strongest",
+      "restart": "independently-open",
+      "start": 9
+    },
+    {
+      "event": "restart-begin",
+      "utc": "2026-10-05T20:46:36.180705+00:00",
+      "seconds": 112.83590780000668,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 9
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:46:36.335458+00:00",
+      "seconds": 112.99066259997198,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 9,
+      "before_unload": true
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:46:36.338423+00:00",
+      "seconds": 112.99362659995677,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 9,
+      "closed": false
+    },
+    {
+      "event": "context-close-call",
+      "utc": "2026-10-05T20:46:36.338440+00:00",
+      "seconds": 112.99363439995795,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 9
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:46:36.340862+00:00",
+      "seconds": 112.99606469995342,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 9
+    },
+    {
+      "event": "context-close-event",
+      "utc": "2026-10-05T20:46:36.442267+00:00",
+      "seconds": 113.09747179999249,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 9
+    },
+    {
+      "event": "browser-disconnected",
+      "utc": "2026-10-05T20:46:36.442433+00:00",
+      "seconds": 113.09763229999226,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 9
+    },
+    {
+      "event": "context-close-return",
+      "utc": "2026-10-05T20:46:36.510125+00:00",
+      "seconds": 113.16532789997291,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 9
+    },
+    {
+      "event": "start-begin",
+      "utc": "2026-10-05T20:46:36.510141+00:00",
+      "seconds": 113.16533449996496,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10
+    },
+    {
+      "event": "persistent-launch-call",
+      "utc": "2026-10-05T20:46:36.510153+00:00",
+      "seconds": 113.16534619999584,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10,
+      "profile": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\cosmos-cold-navigation-diagnostic01\\returning-strongest-isolated-profile",
+      "timeout": "unchanged default"
+    },
+    {
+      "event": "persistent-launch-return",
+      "utc": "2026-10-05T20:46:36.597608+00:00",
+      "seconds": 113.25281059998088,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:46:36.632166+00:00",
+      "seconds": 113.28736670000944,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10,
+      "before_unload": false
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:46:36.633754+00:00",
+      "seconds": 113.28895259997807,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:46:36.633839+00:00",
+      "seconds": 113.28903290000744,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10,
+      "closed": true
+    },
+    {
+      "event": "goto-call",
+      "utc": "2026-10-05T20:46:36.635912+00:00",
+      "seconds": 113.2911110999994,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10,
+      "url": "http://127.0.0.1:64371/",
+      "timeout": 30000,
+      "wait_until": "load"
+    },
+    {
+      "event": "browser-request",
+      "utc": "2026-10-05T20:46:36.639047+00:00",
+      "seconds": 113.29424540000036,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10,
+      "url": "http://127.0.0.1:64371/",
+      "resource": "document",
+      "navigation": true
+    },
+    {
+      "event": "http-request",
+      "utc": "2026-10-05T20:46:36.655249+00:00",
+      "seconds": 113.31045039999299,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10,
+      "path": "/",
+      "client": "('127.0.0.1', 63394)"
+    },
+    {
+      "event": "http-status",
+      "utc": "2026-10-05T20:46:36.655389+00:00",
+      "seconds": 113.31058479996864,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10,
+      "path": "/",
+      "status": 200
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:46:36.655423+00:00",
+      "seconds": 113.31061669997871,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10,
+      "path": "/",
+      "name": "Content-type",
+      "value": "text/html"
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:46:36.655427+00:00",
+      "seconds": 113.31062030000612,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10,
+      "path": "/",
+      "name": "Content-Length",
+      "value": "3033467"
+    },
+    {
+      "event": "http-headers-complete",
+      "utc": "2026-10-05T20:46:36.655472+00:00",
+      "seconds": 113.31066570000257,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10,
+      "path": "/"
+    },
+    {
+      "event": "http-first-body-write",
+      "utc": "2026-10-05T20:46:36.655666+00:00",
+      "seconds": 113.31086119997781,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10,
+      "offered": 1048576
+    },
+    {
+      "event": "browser-response",
+      "utc": "2026-10-05T20:46:36.656857+00:00",
+      "seconds": 113.31205409998074,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200,
+      "length": "3033467"
+    },
+    {
+      "event": "browser-main-frame-navigated",
+      "utc": "2026-10-05T20:46:36.658017+00:00",
+      "seconds": 113.31321389996447,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "http-body-complete",
+      "utc": "2026-10-05T20:46:36.670590+00:00",
+      "seconds": 113.32579159998568,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10,
+      "path": "/",
+      "bytes": 3033467
+    },
+    {
+      "event": "http-handler-return",
+      "utc": "2026-10-05T20:46:36.670624+00:00",
+      "seconds": 113.32581750000827,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10,
+      "path": "/"
+    },
+    {
+      "event": "browser-request-finished",
+      "utc": "2026-10-05T20:46:36.725836+00:00",
+      "seconds": 113.38103849999607,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "browser-dom-content-loaded",
+      "utc": "2026-10-05T20:46:36.948306+00:00",
+      "seconds": 113.6035101999878,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10
+    },
+    {
+      "event": "browser-load",
+      "utc": "2026-10-05T20:46:36.949097+00:00",
+      "seconds": 113.60429849999491,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10
+    },
+    {
+      "event": "goto-return",
+      "utc": "2026-10-05T20:46:36.949199+00:00",
+      "seconds": 113.6043939999654,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200
+    },
+    {
+      "event": "start-complete",
+      "utc": "2026-10-05T20:46:37.801492+00:00",
+      "seconds": 114.45669689995702,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10
+    },
+    {
+      "event": "restart-complete",
+      "utc": "2026-10-05T20:46:37.879957+00:00",
+      "seconds": 114.53516379999928,
+      "variant": "returning-strongest",
+      "restart": "verified-unpaid",
+      "start": 10
+    },
+    {
+      "event": "restart-begin",
+      "utc": "2026-10-05T20:46:41.947978+00:00",
+      "seconds": 118.60318039997946,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 10
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:46:42.359686+00:00",
+      "seconds": 119.01489049999509,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 10,
+      "before_unload": true
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:46:42.361786+00:00",
+      "seconds": 119.01698620000388,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 10,
+      "closed": false
+    },
+    {
+      "event": "context-close-call",
+      "utc": "2026-10-05T20:46:42.361797+00:00",
+      "seconds": 119.01699069997994,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 10
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:46:42.364201+00:00",
+      "seconds": 119.01940069999546,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 10
+    },
+    {
+      "event": "context-close-event",
+      "utc": "2026-10-05T20:46:42.730338+00:00",
+      "seconds": 119.3855418000021,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 10
+    },
+    {
+      "event": "browser-disconnected",
+      "utc": "2026-10-05T20:46:42.730456+00:00",
+      "seconds": 119.38565339997876,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 10
+    },
+    {
+      "event": "context-close-return",
+      "utc": "2026-10-05T20:46:42.776825+00:00",
+      "seconds": 119.43202619999647,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 10
+    },
+    {
+      "event": "start-begin",
+      "utc": "2026-10-05T20:46:42.776839+00:00",
+      "seconds": 119.43203349999385,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11
+    },
+    {
+      "event": "persistent-launch-call",
+      "utc": "2026-10-05T20:46:42.776851+00:00",
+      "seconds": 119.43204479996348,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11,
+      "profile": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\cosmos-cold-navigation-diagnostic01\\returning-strongest-isolated-profile",
+      "timeout": "unchanged default"
+    },
+    {
+      "event": "persistent-launch-return",
+      "utc": "2026-10-05T20:46:42.867811+00:00",
+      "seconds": 119.52301389997592,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:46:42.903956+00:00",
+      "seconds": 119.55915639997693,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11,
+      "before_unload": false
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:46:42.905675+00:00",
+      "seconds": 119.5608738999581,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:46:42.905764+00:00",
+      "seconds": 119.56095799995819,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11,
+      "closed": true
+    },
+    {
+      "event": "goto-call",
+      "utc": "2026-10-05T20:46:42.907931+00:00",
+      "seconds": 119.56312979996437,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11,
+      "url": "http://127.0.0.1:64371/",
+      "timeout": 30000,
+      "wait_until": "load"
+    },
+    {
+      "event": "browser-request",
+      "utc": "2026-10-05T20:46:42.911326+00:00",
+      "seconds": 119.56652389996452,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11,
+      "url": "http://127.0.0.1:64371/",
+      "resource": "document",
+      "navigation": true
+    },
+    {
+      "event": "http-request",
+      "utc": "2026-10-05T20:46:42.929881+00:00",
+      "seconds": 119.58508399996208,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11,
+      "path": "/",
+      "client": "('127.0.0.1', 64695)"
+    },
+    {
+      "event": "http-status",
+      "utc": "2026-10-05T20:46:42.930030+00:00",
+      "seconds": 119.58522609999636,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11,
+      "path": "/",
+      "status": 200
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:46:42.930062+00:00",
+      "seconds": 119.58525579998968,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11,
+      "path": "/",
+      "name": "Content-type",
+      "value": "text/html"
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:46:42.930065+00:00",
+      "seconds": 119.58525929995812,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11,
+      "path": "/",
+      "name": "Content-Length",
+      "value": "3033467"
+    },
+    {
+      "event": "http-headers-complete",
+      "utc": "2026-10-05T20:46:42.930109+00:00",
+      "seconds": 119.5853025999968,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11,
+      "path": "/"
+    },
+    {
+      "event": "http-first-body-write",
+      "utc": "2026-10-05T20:46:42.930314+00:00",
+      "seconds": 119.58550859999377,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11,
+      "offered": 1048576
+    },
+    {
+      "event": "browser-response",
+      "utc": "2026-10-05T20:46:42.931521+00:00",
+      "seconds": 119.5867186000105,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200,
+      "length": "3033467"
+    },
+    {
+      "event": "browser-main-frame-navigated",
+      "utc": "2026-10-05T20:46:42.932719+00:00",
+      "seconds": 119.58791939995717,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "http-body-complete",
+      "utc": "2026-10-05T20:46:42.937987+00:00",
+      "seconds": 119.59318719996372,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11,
+      "path": "/",
+      "bytes": 3033467
+    },
+    {
+      "event": "http-handler-return",
+      "utc": "2026-10-05T20:46:42.938018+00:00",
+      "seconds": 119.59321239998098,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11,
+      "path": "/"
+    },
+    {
+      "event": "browser-request-finished",
+      "utc": "2026-10-05T20:46:42.987871+00:00",
+      "seconds": 119.64307289995486,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "browser-dom-content-loaded",
+      "utc": "2026-10-05T20:46:43.629049+00:00",
+      "seconds": 120.2842576999683,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11
+    },
+    {
+      "event": "browser-load",
+      "utc": "2026-10-05T20:46:43.629557+00:00",
+      "seconds": 120.28476029995363,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11
+    },
+    {
+      "event": "goto-return",
+      "utc": "2026-10-05T20:46:43.629748+00:00",
+      "seconds": 120.28494699997827,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200
+    },
+    {
+      "event": "start-complete",
+      "utc": "2026-10-05T20:46:44.110620+00:00",
+      "seconds": 120.7658223999897,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11
+    },
+    {
+      "event": "restart-complete",
+      "utc": "2026-10-05T20:46:44.198487+00:00",
+      "seconds": 120.85369039996294,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11
+    },
+    {
+      "event": "context-close-call",
+      "utc": "2026-10-05T20:46:45.541886+00:00",
+      "seconds": 122.19709109998075,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:46:45.546499+00:00",
+      "seconds": 122.2017182999989,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11
+    },
+    {
+      "event": "context-close-event",
+      "utc": "2026-10-05T20:46:45.699670+00:00",
+      "seconds": 122.35487330000615,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11
+    },
+    {
+      "event": "browser-disconnected",
+      "utc": "2026-10-05T20:46:45.699777+00:00",
+      "seconds": 122.35497260000557,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11
+    },
+    {
+      "event": "context-close-return",
+      "utc": "2026-10-05T20:46:45.741593+00:00",
+      "seconds": 122.3967946000048,
+      "variant": "returning-strongest",
+      "restart": "paid-once",
+      "start": 11
+    },
+    {
+      "event": "start-begin",
+      "utc": "2026-10-05T20:46:45.751246+00:00",
+      "seconds": 122.40644599997904,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12
+    },
+    {
+      "event": "persistent-launch-call",
+      "utc": "2026-10-05T20:46:45.751268+00:00",
+      "seconds": 122.40646219998598,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12,
+      "profile": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\cosmos-cold-navigation-diagnostic01\\returning-strongest-SYNTHETIC-old-save-migration-isolated-profile",
+      "timeout": "unchanged default"
+    },
+    {
+      "event": "persistent-launch-return",
+      "utc": "2026-10-05T20:46:45.839218+00:00",
+      "seconds": 122.49441959999967,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:46:45.879155+00:00",
+      "seconds": 122.5343564999639,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12,
+      "before_unload": false
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:46:45.881130+00:00",
+      "seconds": 122.5363292999682,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:46:45.881404+00:00",
+      "seconds": 122.53660519997356,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12,
+      "closed": true
+    },
+    {
+      "event": "goto-call",
+      "utc": "2026-10-05T20:46:45.883375+00:00",
+      "seconds": 122.53857319999952,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12,
+      "url": "http://127.0.0.1:64371/",
+      "timeout": 30000,
+      "wait_until": "load"
+    },
+    {
+      "event": "browser-request",
+      "utc": "2026-10-05T20:46:45.892712+00:00",
+      "seconds": 122.54791269998532,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12,
+      "url": "http://127.0.0.1:64371/",
+      "resource": "document",
+      "navigation": true
+    },
+    {
+      "event": "http-request",
+      "utc": "2026-10-05T20:46:45.925719+00:00",
+      "seconds": 122.58092109998688,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12,
+      "path": "/",
+      "client": "('127.0.0.1', 65454)"
+    },
+    {
+      "event": "http-status",
+      "utc": "2026-10-05T20:46:45.925859+00:00",
+      "seconds": 122.58105370000703,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12,
+      "path": "/",
+      "status": 200
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:46:45.925888+00:00",
+      "seconds": 122.58108179998817,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12,
+      "path": "/",
+      "name": "Content-type",
+      "value": "text/html"
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:46:45.925892+00:00",
+      "seconds": 122.58108579996042,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12,
+      "path": "/",
+      "name": "Content-Length",
+      "value": "3033467"
+    },
+    {
+      "event": "http-headers-complete",
+      "utc": "2026-10-05T20:46:45.925936+00:00",
+      "seconds": 122.58112909999909,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12,
+      "path": "/"
+    },
+    {
+      "event": "http-first-body-write",
+      "utc": "2026-10-05T20:46:45.926132+00:00",
+      "seconds": 122.58132629998727,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12,
+      "offered": 1048576
+    },
+    {
+      "event": "browser-response",
+      "utc": "2026-10-05T20:46:45.927364+00:00",
+      "seconds": 122.58256169996457,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200,
+      "length": "3033467"
+    },
+    {
+      "event": "browser-main-frame-navigated",
+      "utc": "2026-10-05T20:46:45.928604+00:00",
+      "seconds": 122.5838011999731,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "http-body-complete",
+      "utc": "2026-10-05T20:46:46.010920+00:00",
+      "seconds": 122.66612819995498,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12,
+      "path": "/",
+      "bytes": 3033467
+    },
+    {
+      "event": "http-handler-return",
+      "utc": "2026-10-05T20:46:46.010973+00:00",
+      "seconds": 122.66616719996091,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12,
+      "path": "/"
+    },
+    {
+      "event": "browser-request-finished",
+      "utc": "2026-10-05T20:46:46.183304+00:00",
+      "seconds": 122.8385069000069,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "browser-dom-content-loaded",
+      "utc": "2026-10-05T20:46:46.216169+00:00",
+      "seconds": 122.87137639999855,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12
+    },
+    {
+      "event": "browser-load",
+      "utc": "2026-10-05T20:46:46.216641+00:00",
+      "seconds": 122.87184350000462,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12
+    },
+    {
+      "event": "goto-return",
+      "utc": "2026-10-05T20:46:46.216768+00:00",
+      "seconds": 122.87196339998627,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200
+    },
+    {
+      "event": "start-complete",
+      "utc": "2026-10-05T20:46:47.097796+00:00",
+      "seconds": 123.75300019996939,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "paid-once",
+      "start": 12
+    },
+    {
+      "event": "restart-begin",
+      "utc": "2026-10-05T20:46:48.569913+00:00",
+      "seconds": 125.2251161999884,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 12
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:46:48.641161+00:00",
+      "seconds": 125.29636209999444,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 12,
+      "before_unload": true
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:46:48.643004+00:00",
+      "seconds": 125.29820540000219,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 12,
+      "closed": false
+    },
+    {
+      "event": "context-close-call",
+      "utc": "2026-10-05T20:46:48.643016+00:00",
+      "seconds": 125.29821049998282,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 12
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:46:48.644806+00:00",
+      "seconds": 125.30000529997051,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 12
+    },
+    {
+      "event": "context-close-event",
+      "utc": "2026-10-05T20:46:48.665060+00:00",
+      "seconds": 125.32026289997157,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 12
+    },
+    {
+      "event": "browser-disconnected",
+      "utc": "2026-10-05T20:46:48.665163+00:00",
+      "seconds": 125.32035819999874,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 12
+    },
+    {
+      "event": "context-close-return",
+      "utc": "2026-10-05T20:46:48.715845+00:00",
+      "seconds": 125.37104669999098,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 12
+    },
+    {
+      "event": "start-begin",
+      "utc": "2026-10-05T20:46:48.715860+00:00",
+      "seconds": 125.3710538999876,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13
+    },
+    {
+      "event": "persistent-launch-call",
+      "utc": "2026-10-05T20:46:48.715872+00:00",
+      "seconds": 125.37106549995951,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13,
+      "profile": "D:\\07-GAMES\\Firstlight\\artifacts\\whole-draft-onboarding-20261005\\cosmos-cold-navigation-diagnostic01\\returning-strongest-SYNTHETIC-old-save-migration-isolated-profile",
+      "timeout": "unchanged default"
+    },
+    {
+      "event": "persistent-launch-return",
+      "utc": "2026-10-05T20:46:48.808793+00:00",
+      "seconds": 125.4639976999606,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13
+    },
+    {
+      "event": "page-close-call",
+      "utc": "2026-10-05T20:46:48.847299+00:00",
+      "seconds": 125.5024998000008,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13,
+      "before_unload": false
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:46:48.849008+00:00",
+      "seconds": 125.5042091999785,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13
+    },
+    {
+      "event": "page-close-return",
+      "utc": "2026-10-05T20:46:48.849100+00:00",
+      "seconds": 125.50429489999078,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13,
+      "closed": true
+    },
+    {
+      "event": "goto-call",
+      "utc": "2026-10-05T20:46:48.851353+00:00",
+      "seconds": 125.50655220000772,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13,
+      "url": "http://127.0.0.1:64371/",
+      "timeout": 30000,
+      "wait_until": "load"
+    },
+    {
+      "event": "browser-request",
+      "utc": "2026-10-05T20:46:48.854636+00:00",
+      "seconds": 125.50983589998214,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13,
+      "url": "http://127.0.0.1:64371/",
+      "resource": "document",
+      "navigation": true
+    },
+    {
+      "event": "http-request",
+      "utc": "2026-10-05T20:46:48.879029+00:00",
+      "seconds": 125.53423160000239,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13,
+      "path": "/",
+      "client": "('127.0.0.1', 54832)"
+    },
+    {
+      "event": "http-status",
+      "utc": "2026-10-05T20:46:48.879180+00:00",
+      "seconds": 125.53437599999597,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13,
+      "path": "/",
+      "status": 200
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:46:48.879213+00:00",
+      "seconds": 125.53440699999919,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13,
+      "path": "/",
+      "name": "Content-type",
+      "value": "text/html"
+    },
+    {
+      "event": "http-header",
+      "utc": "2026-10-05T20:46:48.879217+00:00",
+      "seconds": 125.53441029996611,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13,
+      "path": "/",
+      "name": "Content-Length",
+      "value": "3033467"
+    },
+    {
+      "event": "http-headers-complete",
+      "utc": "2026-10-05T20:46:48.879266+00:00",
+      "seconds": 125.53445939999074,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13,
+      "path": "/"
+    },
+    {
+      "event": "http-first-body-write",
+      "utc": "2026-10-05T20:46:48.879634+00:00",
+      "seconds": 125.53483329998562,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13,
+      "offered": 1048576
+    },
+    {
+      "event": "browser-response",
+      "utc": "2026-10-05T20:46:48.880556+00:00",
+      "seconds": 125.5357534000068,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200,
+      "length": "3033467"
+    },
+    {
+      "event": "browser-main-frame-navigated",
+      "utc": "2026-10-05T20:46:48.881737+00:00",
+      "seconds": 125.53693429997656,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "http-body-complete",
+      "utc": "2026-10-05T20:46:48.899569+00:00",
+      "seconds": 125.5547796000028,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13,
+      "path": "/",
+      "bytes": 3033467
+    },
+    {
+      "event": "http-handler-return",
+      "utc": "2026-10-05T20:46:48.899637+00:00",
+      "seconds": 125.55483229999663,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13,
+      "path": "/"
+    },
+    {
+      "event": "browser-request-finished",
+      "utc": "2026-10-05T20:46:48.945025+00:00",
+      "seconds": 125.60022999998182,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13,
+      "url": "http://127.0.0.1:64371/"
+    },
+    {
+      "event": "browser-dom-content-loaded",
+      "utc": "2026-10-05T20:46:49.173205+00:00",
+      "seconds": 125.82840810000198,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13
+    },
+    {
+      "event": "browser-load",
+      "utc": "2026-10-05T20:46:49.173858+00:00",
+      "seconds": 125.82906399999047,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13
+    },
+    {
+      "event": "goto-return",
+      "utc": "2026-10-05T20:46:49.173965+00:00",
+      "seconds": 125.82915949996095,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13,
+      "url": "http://127.0.0.1:64371/",
+      "status": 200
+    },
+    {
+      "event": "start-complete",
+      "utc": "2026-10-05T20:46:50.286640+00:00",
+      "seconds": 126.94184340001084,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13
+    },
+    {
+      "event": "restart-complete",
+      "utc": "2026-10-05T20:46:50.362563+00:00",
+      "seconds": 127.01776859996608,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13
+    },
+    {
+      "event": "context-close-call",
+      "utc": "2026-10-05T20:46:50.418798+00:00",
+      "seconds": 127.07400279998546,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13
+    },
+    {
+      "event": "page-close-event",
+      "utc": "2026-10-05T20:46:50.422109+00:00",
+      "seconds": 127.07731089997105,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13
+    },
+    {
+      "event": "context-close-event",
+      "utc": "2026-10-05T20:46:50.442796+00:00",
+      "seconds": 127.09799789998215,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13
+    },
+    {
+      "event": "browser-disconnected",
+      "utc": "2026-10-05T20:46:50.442902+00:00",
+      "seconds": 127.09809649997624,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13
+    },
+    {
+      "event": "context-close-return",
+      "utc": "2026-10-05T20:46:50.506013+00:00",
+      "seconds": 127.16121509997174,
+      "variant": "returning-strongest-SYNTHETIC-old-save-migration",
+      "restart": "SYNTHETIC-old-owner-absent",
+      "start": 13
+    }
+  ],
+  "events_dropped": 0,
+  "failures": [],
+  "caller_return_code": 0,
+  "private_exception": null,
+  "native_report": {
+    "status": "passed",
+    "sha256": "1981e5d9bd92c46d8934b3e8de5f850e3bc613634916d0c1bc1662cef1008be4",
+    "bytes": 1628415
+  },
+  "frozen_station_still_exact": true,
+  "limits": [
+    "Veteran-only diagnostic is not the full47/all-family gate.",
+    "Original declared production movement/tick acceleration; no ordinary-time footage.",
+    "Observation wrappers may affect timing; success cannot disprove intermittency.",
+    "Parent must observe actual process exit separately."
+  ]
+}

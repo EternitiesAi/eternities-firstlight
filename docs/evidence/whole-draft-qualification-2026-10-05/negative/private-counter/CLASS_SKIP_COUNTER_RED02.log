@@ -1,0 +1,129 @@
+test_actual_closed_log_counts_method_outcomes_and_preserves_details (__main__.ClassSkipCounts.test_actual_closed_log_counts_method_outcomes_and_preserves_details) ... 
+  test_actual_closed_log_counts_method_outcomes_and_preserves_details (__main__.ClassSkipCounts.test_actual_closed_log_counts_method_outcomes_and_preserves_details) (caller='unittest_summary') ... FAIL
+  test_actual_closed_log_counts_method_outcomes_and_preserves_details (__main__.ClassSkipCounts.test_actual_closed_log_counts_method_outcomes_and_preserves_details) (caller='python_totals') ... FAIL
+test_complete_synthetic_method_and_fixture_skip_counts (__main__.ClassSkipCounts.test_complete_synthetic_method_and_fixture_skip_counts) ... 
+  test_complete_synthetic_method_and_fixture_skip_counts (__main__.ClassSkipCounts.test_complete_synthetic_method_and_fixture_skip_counts) (caller='unittest_summary') ... FAIL
+  test_complete_synthetic_method_and_fixture_skip_counts (__main__.ClassSkipCounts.test_complete_synthetic_method_and_fixture_skip_counts) (caller='python_totals') ... FAIL
+test_existing_fixture_free_dictionaries_remain_exact (__main__.ClassSkipCounts.test_existing_fixture_free_dictionaries_remain_exact) ... ok
+test_footer_errors_duplicates_and_mandatory_skips_still_refuse (__main__.ClassSkipCounts.test_footer_errors_duplicates_and_mandatory_skips_still_refuse) ... ok
+test_inconsistent_holder_details_and_footer_are_refused (__main__.ClassSkipCounts.test_inconsistent_holder_details_and_footer_are_refused) ... 
+  test_inconsistent_holder_details_and_footer_are_refused (__main__.ClassSkipCounts.test_inconsistent_holder_details_and_footer_are_refused) (caller='unittest_summary', text="test_one (Synthetic.Case.test_one) ... ok\ntest_two (Synthetic.Case.test_two) ... ok\ntest_optional (Synthetic.Case.test_optional) ... skipped 'explicit input absent'\nsetUpClass (Synthetic.SuppliedClass) ... skipped 'explicit cohort absent'\nRan 2 tests in 0.001s\nOK (skipped=2)\n") ... FAIL
+  test_inconsistent_holder_details_and_footer_are_refused (__main__.ClassSkipCounts.test_inconsistent_holder_details_and_footer_are_refused) (caller='python_totals', text="test_one (Synthetic.Case.test_one) ... ok\ntest_two (Synthetic.Case.test_two) ... ok\ntest_optional (Synthetic.Case.test_optional) ... skipped 'explicit input absent'\nsetUpClass (Synthetic.SuppliedClass) ... skipped 'explicit cohort absent'\nRan 2 tests in 0.001s\nOK (skipped=2)\n") ... FAIL
+test_sparse_verbose_fixture_log_is_refused (__main__.ClassSkipCounts.test_sparse_verbose_fixture_log_is_refused) ... 
+  test_sparse_verbose_fixture_log_is_refused (__main__.ClassSkipCounts.test_sparse_verbose_fixture_log_is_refused) (caller='unittest_summary') ... FAIL
+  test_sparse_verbose_fixture_log_is_refused (__main__.ClassSkipCounts.test_sparse_verbose_fixture_log_is_refused) (caller='python_totals') ... FAIL
+
+======================================================================
+FAIL: test_actual_closed_log_counts_method_outcomes_and_preserves_details (__main__.ClassSkipCounts.test_actual_closed_log_counts_method_outcomes_and_preserves_details) (caller='unittest_summary')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\artifacts\whole-draft-onboarding-20261005\test_qualification_class_skips01.py", line 43, in test_actual_closed_log_counts_method_outcomes_and_preserves_details
+    self.assertEqual(result, {'tests':243, 'pass':237, 'skip':8, 'skipDetails':details,
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'methodSkip':6, 'fixtureSkip':2})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'tes[15 chars]': 235, 'skip': 8, 'skipDetails': ["test_actua[1757 chars].'"]} != {'tes[15 chars]': 237, 'skip': 8, 'skipDetails': ["test_actua[1792 chars]': 2}
+Diff is 2612 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_actual_closed_log_counts_method_outcomes_and_preserves_details (__main__.ClassSkipCounts.test_actual_closed_log_counts_method_outcomes_and_preserves_details) (caller='python_totals')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\artifacts\whole-draft-onboarding-20261005\test_qualification_class_skips01.py", line 43, in test_actual_closed_log_counts_method_outcomes_and_preserves_details
+    self.assertEqual(result, {'tests':243, 'pass':237, 'skip':8, 'skipDetails':details,
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'methodSkip':6, 'fixtureSkip':2})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'tes[15 chars]': 235, 'skip': 8, 'skipDetails': ["test_actua[1757 chars].'"]} != {'tes[15 chars]': 237, 'skip': 8, 'skipDetails': ["test_actua[1792 chars]': 2}
+Diff is 2612 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_complete_synthetic_method_and_fixture_skip_counts (__main__.ClassSkipCounts.test_complete_synthetic_method_and_fixture_skip_counts) (caller='unittest_summary')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\artifacts\whole-draft-onboarding-20261005\test_qualification_class_skips01.py", line 50, in test_complete_synthetic_method_and_fixture_skip_counts
+    self.assertEqual(caller(COMPLETE), {'tests':3, 'pass':2, 'skip':2,
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'skipDetails':details, 'methodSkip':1, 'fixtureSkip':1})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'tests': 3, 'pass': 1, 'skip': 2, 'skipDetails': ["test_optio[145 chars]t'"]} != {'tests': 3, 'pass': 2, 'skip': 2, 'skipDetails': ["test_optio[180 chars]': 1}
++ {'fixtureSkip': 1,
++  'methodSkip': 1,
+- {'pass': 1,
+? ^        ^
+
++  'pass': 2,
+? ^        ^
+
+   'skip': 2,
+   'skipDetails': ['test_optional (Synthetic.Case.test_optional) ... skipped '
+                   "'explicit input absent'",
+                   "setUpClass (Synthetic.SuppliedClass) ... skipped 'explicit "
+                   "cohort absent'"],
+   'tests': 3}
+
+======================================================================
+FAIL: test_complete_synthetic_method_and_fixture_skip_counts (__main__.ClassSkipCounts.test_complete_synthetic_method_and_fixture_skip_counts) (caller='python_totals')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\artifacts\whole-draft-onboarding-20261005\test_qualification_class_skips01.py", line 50, in test_complete_synthetic_method_and_fixture_skip_counts
+    self.assertEqual(caller(COMPLETE), {'tests':3, 'pass':2, 'skip':2,
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'skipDetails':details, 'methodSkip':1, 'fixtureSkip':1})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'tests': 3, 'pass': 1, 'skip': 2, 'skipDetails': ["test_optio[145 chars]t'"]} != {'tests': 3, 'pass': 2, 'skip': 2, 'skipDetails': ["test_optio[180 chars]': 1}
++ {'fixtureSkip': 1,
++  'methodSkip': 1,
+- {'pass': 1,
+? ^        ^
+
++  'pass': 2,
+? ^        ^
+
+   'skip': 2,
+   'skipDetails': ['test_optional (Synthetic.Case.test_optional) ... skipped '
+                   "'explicit input absent'",
+                   "setUpClass (Synthetic.SuppliedClass) ... skipped 'explicit "
+                   "cohort absent'"],
+   'tests': 3}
+
+======================================================================
+FAIL: test_inconsistent_holder_details_and_footer_are_refused (__main__.ClassSkipCounts.test_inconsistent_holder_details_and_footer_are_refused) (caller='unittest_summary', text="test_one (Synthetic.Case.test_one) ... ok\ntest_two (Synthetic.Case.test_two) ... ok\ntest_optional (Synthetic.Case.test_optional) ... skipped 'explicit input absent'\nsetUpClass (Synthetic.SuppliedClass) ... skipped 'explicit cohort absent'\nRan 2 tests in 0.001s\nOK (skipped=2)\n")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\artifacts\whole-draft-onboarding-20261005\test_qualification_class_skips01.py", line 64, in test_inconsistent_holder_details_and_footer_are_refused
+    with self.assertRaises((Q.Refused, ValueError)):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (<class 'class_skip_parser.Refused'>, <class 'ValueError'>) not raised
+
+======================================================================
+FAIL: test_inconsistent_holder_details_and_footer_are_refused (__main__.ClassSkipCounts.test_inconsistent_holder_details_and_footer_are_refused) (caller='python_totals', text="test_one (Synthetic.Case.test_one) ... ok\ntest_two (Synthetic.Case.test_two) ... ok\ntest_optional (Synthetic.Case.test_optional) ... skipped 'explicit input absent'\nsetUpClass (Synthetic.SuppliedClass) ... skipped 'explicit cohort absent'\nRan 2 tests in 0.001s\nOK (skipped=2)\n")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\artifacts\whole-draft-onboarding-20261005\test_qualification_class_skips01.py", line 64, in test_inconsistent_holder_details_and_footer_are_refused
+    with self.assertRaises((Q.Refused, ValueError)):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (<class 'class_skip_parser.Refused'>, <class 'ValueError'>) not raised
+
+======================================================================
+FAIL: test_sparse_verbose_fixture_log_is_refused (__main__.ClassSkipCounts.test_sparse_verbose_fixture_log_is_refused) (caller='unittest_summary')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\artifacts\whole-draft-onboarding-20261005\test_qualification_class_skips01.py", line 56, in test_sparse_verbose_fixture_log_is_refused
+    with self.assertRaises((Q.Refused, ValueError)):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (<class 'class_skip_parser.Refused'>, <class 'ValueError'>) not raised
+
+======================================================================
+FAIL: test_sparse_verbose_fixture_log_is_refused (__main__.ClassSkipCounts.test_sparse_verbose_fixture_log_is_refused) (caller='python_totals')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\artifacts\whole-draft-onboarding-20261005\test_qualification_class_skips01.py", line 56, in test_sparse_verbose_fixture_log_is_refused
+    with self.assertRaises((Q.Refused, ValueError)):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (<class 'class_skip_parser.Refused'>, <class 'ValueError'>) not raised
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.006s
+
+FAILED (failures=8)
