@@ -342,7 +342,9 @@ def main():
         physical('step', 'secure-carrier')
         walk('challenge-custodian')
         physical('step', 'challenge-custodian')
-        walk('bearing-exposed')
+        # The nearby defeat row correctly offers combat guidance, not a Walk
+        # action. Resume here and approach with the ordinary combat controls.
+        check('actual Custodian exists at the native challenge worksite', any(e['id'] == definition['enemy']['id'] for e in diag()['adventure']['enemies']))
         close()
         click('#rpg-hud [data-rpg="camera"][data-id="adventure"]')
         for _ in range(8):
@@ -374,8 +376,8 @@ def main():
             # Observe both canonical warns in both native views before deliberately
             # starting weapon autoattack. The anchored unit does not chase retreat.
             if not auto_started and {('sweep', 'adventure'), ('intake', 'adventure')}.issubset(warning_views) and d['camera']['preset'] == 'adventure':
-                press('v')
-            if not auto_started and all((kind, view) in warning_views for kind in ('sweep', 'intake') for view in ('adventure', 'diorama')):
+                click('#rpg-hud [data-rpg="camera"][data-id="follow"]')
+            if not auto_started and all((kind, view) in warning_views for kind in ('sweep', 'intake') for view in ('adventure', 'follow')):
                 press('1')
                 auto_started = True
             if world['adventure']['hp'] < 45 and world['adventure']['tonics']:
@@ -390,7 +392,7 @@ def main():
             page.wait_for_timeout(100)
         after_combat = state()
         check('actual owned bearing exhausted through ordinary combat', 'bearing-exposed' in after_combat['atlantisCampaign']['steps'])
-        check('both real locked warnings recorded in both cameras', all((kind, view) in warning_views for kind in ('sweep', 'intake') for view in ('adventure', 'diorama')), sorted(warning_views))
+        check('both real locked warnings recorded in both cameras', all((kind, view) in warning_views for kind in ('sweep', 'intake') for view in ('adventure', 'follow')), sorted(warning_views))
         check('ordinary Brace or movement used', guards > 0 or motion_inputs > 0)
         check('Custodian grants no separate fee', wallet(after_combat) == wallet(before_combat))
         report['combat_observation'] = {'seconds': time.monotonic() - start, 'trace': trace, 'warning_views': sorted(warning_views), 'native_guard_inputs': guards, 'native_movement_inputs': motion_inputs}
