@@ -1,0 +1,11 @@
+Input #0, matroska,webm, from 'D:\07-GAMES\Firstlight\artifacts\atlantis-harbour-campaign-20261005\capture-blade03\1190c9219538f1fa75c6489be22baf9a.webm':
+  Metadata:
+    ENCODER         : Lavf61.1.100
+  Duration: 00:02:01.88, start: 0.000000, bitrate: 947 kb/s
+  Stream #0:0: Video: vp8, yuv420p(progressive), 1440x900, SAR 1:1 DAR 8:5, 25 fps, 25 tbr, 1k tbn
+      Metadata:
+        ENCODER         : Lavc61.3.100 libvpx
+        DURATION        : 00:02:01.880000000
+[vost#0:0/libx264 @ 000001f9b5c72980] One of -r/-fpsmax was specified together a non-CFR -vsync/-fps_mode. This is contradictory.
+Error opening output file D:\07-GAMES\Firstlight\artifacts\atlantis-harbour-campaign-20261005\media\FIRSTLIGHT_ATLANTIS_GAMEPLAY.mp4.
+Error opening output files: Invalid argument

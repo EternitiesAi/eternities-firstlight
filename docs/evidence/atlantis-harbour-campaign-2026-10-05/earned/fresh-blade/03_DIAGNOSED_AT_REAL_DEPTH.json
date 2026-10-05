@@ -1,0 +1,948 @@
+{
+  "atlantisCampaign": {
+    "version": 1,
+    "accepted": true,
+    "steps": [
+      "receipt-conflict",
+      "choose-approach",
+      "upper-reading",
+      "lower-reading",
+      "diagnose-flow"
+    ],
+    "approach": "upper",
+    "choice": null,
+    "claimed": false
+  },
+  "heavenCampaign": {
+    "version": 1,
+    "accepted": false,
+    "steps": [],
+    "choice": null,
+    "claimed": false
+  },
+  "hellCampaign": {
+    "version": 1,
+    "accepted": false,
+    "steps": [],
+    "choice": null,
+    "claimed": false
+  },
+  "bridgeCommunity": {
+    "version": 1,
+    "accepted": false,
+    "choice": null,
+    "steps": [],
+    "claimed": false
+  },
+  "homeHistory": {
+    "version": 1,
+    "revision": 0,
+    "owned": [],
+    "pinned": null
+  },
+  "localLife": {
+    "version": 1,
+    "records": {
+      "heaven-propagation-bed-v1": {
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      },
+      "hell-refuge-water-v1": {
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      },
+      "atlantis-bellglass-lamp-v1": {
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      },
+      "cosmos-drawing-shelf-v1": {
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      }
+    }
+  },
+  "earthExpedition": {
+    "version": 1,
+    "story": {
+      "accepted": false,
+      "branch": null,
+      "steps": [],
+      "claimed": false
+    },
+    "patrol": {
+      "lastClaim": 0,
+      "active": null
+    }
+  },
+  "realmTrails": {
+    "version": 1,
+    "records": {
+      "heaven-broken-choir-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "hell-open-cage-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "atlantis-bellglass-chart-v1": {
+        "accepted": true,
+        "steps": [
+          "upper-gauge",
+          "lower-masonry",
+          "depth-chart",
+          "modern-marker"
+        ],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": true
+      },
+      "earthlands-coastward-materials-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      },
+      "cosmos-split-bearing-v1": {
+        "accepted": false,
+        "steps": [],
+        "settings": {},
+        "checkpoint": 0,
+        "escortMode": "follow",
+        "assisted": false,
+        "claimed": false
+      }
+    }
+  },
+  "journeys": {
+    "version": 1,
+    "realms": {
+      "heaven": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "hell": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "earthlands": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "atlantis": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      },
+      "cosmos": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      }
+    }
+  },
+  "adventure": {
+    "version": 12,
+    "earthBinding": {
+      "version": 1,
+      "weapon": null,
+      "kind": null
+    },
+    "realmCraft": {
+      "version": 1,
+      "weapon": null
+    },
+    "earthGathering": {
+      "version": 1,
+      "accepted": false,
+      "prepared": [],
+      "verse": null,
+      "shared": false
+    },
+    "earthNotes": {
+      "version": 1,
+      "accepted": false,
+      "marks": [],
+      "compared": false,
+      "interpretation": null
+    },
+    "earthStory": {
+      "version": 1,
+      "accepted": false,
+      "steps": [],
+      "dispatch": null,
+      "arrived": false,
+      "claimed": false
+    },
+    "classPath": {
+      "version": 1,
+      "choice": null,
+      "readyAt": 0
+    },
+    "pursuit": {
+      "version": 1,
+      "pinned": null,
+      "claimed": 0,
+      "active": null,
+      "fittings": {}
+    },
+    "starter": {
+      "version": 1,
+      "accepted": false,
+      "bundles": [],
+      "reward": null
+    },
+    "crossing": {
+      "version": 1,
+      "entered": false,
+      "met": false,
+      "inscription": false,
+      "clapperRevealed": false,
+      "clapper": false,
+      "repaired": false,
+      "complete": false,
+      "reward": false,
+      "attuned": false,
+      "projects": []
+    },
+    "beacon": {
+      "version": 1,
+      "introduced": false,
+      "complete": false,
+      "status": "dormant",
+      "attempts": 0,
+      "failures": 0,
+      "reward": false,
+      "relic": "undecided",
+      "route": null,
+      "soul": {
+        "grace": false,
+        "equipped": null,
+        "radiance": 0,
+        "corruption": 0,
+        "scars": []
+      }
+    },
+    "arsenal": {
+      "version": 1,
+      "gems": {
+        "ruby": 0,
+        "moonstone": 0,
+        "amber": 0
+      },
+      "sockets": {},
+      "rangeMedal": false,
+      "bestTime": null
+    },
+    "road": {
+      "version": 1,
+      "entered": false,
+      "revealed": [],
+      "claimed": [],
+      "cartRepaired": false,
+      "beaconLit": false,
+      "reported": false
+    },
+    "elapsed": 125.0854289940779,
+    "revision": 14,
+    "started": true,
+    "dug": [],
+    "chips": [],
+    "defeated": [],
+    "drops": [],
+    "ore": 2,
+    "coins": 12,
+    "xp": 30,
+    "hp": 110,
+    "stamina": 100,
+    "tonics": 3,
+    "equipment": {
+      "weapon": "trail_blade",
+      "armor": "travel_coat",
+      "charm": null
+    },
+    "owned": [
+      "trail_blade",
+      "travel_coat"
+    ],
+    "companion": {
+      "bonded": false,
+      "name": "Briar",
+      "mode": "follow"
+    },
+    "relic": false,
+    "angelSeen": false,
+    "reward": null,
+    "deaths": 0,
+    "receipts": [
+      {
+        "id": "earned-north-1-0-1",
+        "fp": "[\"start\",{}]",
+        "ok": true
+      },
+      {
+        "id": "earned-north-1-0-9",
+        "fp": "[\"rest\",{}]",
+        "ok": true
+      }
+    ]
+  },
+  "sandbox": {
+    "version": 1,
+    "elapsed": 125.0854289940779,
+    "revision": 0,
+    "inventory": {
+      "wood": 0,
+      "stone": 0,
+      "fiber": 0,
+      "crystal": 0,
+      "plank": 0,
+      "block": 0,
+      "seeds": 4,
+      "berry": 0,
+      "axe": 0,
+      "pick": 0,
+      "floor": 0,
+      "wall": 0,
+      "masonry": 0,
+      "lantern": 0,
+      "bench": 0,
+      "bed": 0,
+      "fire": 0,
+      "workbench": 0
+    },
+    "nodes": [
+      {
+        "id": "timber-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "timber-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "timber-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "timber-4",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "stone-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-1",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-2",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "fibre-3",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-timber-3",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-stone-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-stone-2",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "wild-fibre",
+        "hp": 1,
+        "readyAt": 0
+      },
+      {
+        "id": "crystal-1",
+        "hp": 4,
+        "readyAt": 0
+      },
+      {
+        "id": "crystal-2",
+        "hp": 4,
+        "readyAt": 0
+      }
+    ],
+    "bridge": false,
+    "placed": [],
+    "nextId": 1,
+    "stats": {
+      "gathered": 0,
+      "crafted": 0,
+      "harvested": 0
+    },
+    "milestones": [],
+    "recentCommands": [],
+    "cooldownUntil": 0
+  },
+  "score": {
+    "format": "eternities.score.v1",
+    "title": "A Window Left Open",
+    "bpm": 88,
+    "voice": "felt",
+    "melody": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    ],
+    "bass": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "drums": [
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    ]
+  },
+  "scoreRevision": 0,
+  "retreat": {
+    "version": 1,
+    "revision": 0,
+    "wall": "moss",
+    "floor": "oak",
+    "items": [
+      {
+        "slot": "nw",
+        "kind": "shelf",
+        "rotation": 0
+      },
+      {
+        "slot": "ne",
+        "kind": "piano",
+        "rotation": 0
+      },
+      {
+        "slot": "w",
+        "kind": "sofa",
+        "rotation": 1
+      },
+      {
+        "slot": "e",
+        "kind": "plant",
+        "rotation": 0
+      },
+      {
+        "slot": "c",
+        "kind": "rug",
+        "rotation": 0
+      }
+    ]
+  },
+  "visitor": {
+    "name": "Visitor",
+    "skin": 0,
+    "cloak": 0,
+    "hair": 0
+  },
+  "version": 9,
+  "seed": 2317,
+  "day": 1,
+  "hour": 17.762884430474276,
+  "weather": "clear",
+  "player": {
+    "x": 18,
+    "z": 6,
+    "yaw": 2.2455372690188193
+  },
+  "visited": [
+    "market",
+    "commons"
+  ],
+  "flowers": [],
+  "notes": [],
+  "journal": [
+    {
+      "seq": 1,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 2,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 3,
+      "day": 1,
+      "hour": 17.200225,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 4,
+      "day": 1,
+      "hour": 17.209000000000014,
+      "kind": "discovery",
+      "text": "You found The makers’ exchange."
+    },
+    {
+      "seq": 5,
+      "day": 1,
+      "hour": 17.21305000000002,
+      "kind": "quest",
+      "text": "Oren supplied a trail blade, a lantern, three tonics and a salve for an injured animal. Find the northern mine."
+    },
+    {
+      "seq": 6,
+      "day": 1,
+      "hour": 17.29382500000015,
+      "kind": "realm-trail",
+      "text": "A Chart With Room for Depth accepted. Read the route, danger and fixed reward."
+    },
+    {
+      "seq": 7,
+      "day": 1,
+      "hour": 17.31835000000019,
+      "kind": "realm-trail",
+      "text": "The bronze gauge labels a shallower visitor depth. Read it from the water at this level; the public deck overhead is a separate road. Sahra’s instrument records this first depth without taking any material."
+    },
+    {
+      "seq": 8,
+      "day": 1,
+      "hour": 17.328700000000207,
+      "kind": "realm-trail",
+      "text": "Descend to the older worked-stone mark. Its lower depth differs from the visitor gauge. The old address is still useful history: copy the mark, leave the masonry intact, and carry both readings to Bellglass."
+    },
+    {
+      "seq": 9,
+      "day": 1,
+      "hour": 17.34083269230792,
+      "kind": "realm-trail",
+      "text": "The two readings cannot share one flat route line. At the dry court desk, choose a chart that names both depth layers, marks their connection and shows the court’s doorway. You can correct a mistaken choice without spending supplies."
+    },
+    {
+      "seq": 10,
+      "day": 1,
+      "hour": 17.374911538461816,
+      "kind": "realm-trail",
+      "text": "Leave through Bellglass’s open doorway, follow the wet east lane, and place the new marker beside the far landing. It names today’s visitor route; the old lower-road mark remains. Return to Sahra on the dry civic road to claim the declared payment."
+    },
+    {
+      "seq": 11,
+      "day": 1,
+      "hour": 17.431611538461908,
+      "kind": "realm-trail",
+      "text": "A Chart With Room for Depth complete · +30 XP · +12 sunmarks · +2 ore. The declared fee is claimed once."
+    },
+    {
+      "seq": 12,
+      "day": 1,
+      "hour": 17.45681153846195,
+      "kind": "discovery",
+      "text": "You found The Firstlight Commons."
+    },
+    {
+      "seq": 13,
+      "day": 1,
+      "hour": 17.559636538462115,
+      "kind": "atlantis-campaign",
+      "text": "The Harbour Beneath the Harbour accepted. The earlier chart, lamp, equipment and free home passage retain their own history."
+    },
+    {
+      "seq": 14,
+      "day": 1,
+      "hour": 17.559861538462116,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 15,
+      "day": 1,
+      "hour": 17.559861538462116,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 16,
+      "day": 1,
+      "hour": 17.559861538462116,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 17,
+      "day": 1,
+      "hour": 17.639961538462245,
+      "kind": "atlantis-campaign",
+      "text": "Ilyra distinguishes Damar’s earlier shipping receipt from Lock Prefect Vaelor’s later destination instruction: the earlier-issued seal gives the redirected destination authority. His record says received, but his chosen arrival never happened. Preserve both records and his account. This is a concrete routing convention, not proof that every institu"
+    },
+    {
+      "seq": 18,
+      "day": 1,
+      "hour": 17.653236538462266,
+      "kind": "atlantis-campaign",
+      "text": "Upper · read the marked shallow flow retained. Retain the Upper approach and read the upper gauge from its actual water depth. The visible shallow current is weaker than ordinary swimming. Hold depth deliberately, or use the supplied manual bypass before operating the repair. A lower reading remains optional evidence with no second fee."
+    },
+    {
+      "seq": 19,
+      "day": 1,
+      "hour": 17.653461538462267,
+      "kind": "routine",
+      "text": "Ilan is heading to amphitheatre."
+    },
+    {
+      "seq": 20,
+      "day": 1,
+      "hour": 17.653461538462267,
+      "kind": "routine",
+      "text": "Mara is heading to observatory."
+    },
+    {
+      "seq": 21,
+      "day": 1,
+      "hour": 17.653461538462267,
+      "kind": "routine",
+      "text": "Oren is heading to workshop."
+    },
+    {
+      "seq": 22,
+      "day": 1,
+      "hour": 17.737836538462403,
+      "kind": "atlantis-campaign",
+      "text": "Read the upper gauge from this real water depth. It agrees with Sahra’s lamp but disagrees with the official destination setting. This is required only when Upper was retained; for Lower it is optional supporting evidence. No fee, material or earlier-chart progress is granted."
+    },
+    {
+      "seq": 23,
+      "day": 1,
+      "hour": 17.750808653847038,
+      "kind": "atlantis-campaign",
+      "text": "Read the older masonry at this real lower depth, below the marked shallow current. Its depth convention identifies the same redirected outlet. This is required only when Lower was retained; for Upper it is optional supporting evidence. Keep the old mark and earlier chart intact."
+    },
+    {
+      "seq": 24,
+      "day": 1,
+      "hour": 17.762884430474276,
+      "kind": "atlantis-campaign",
+      "text": "At Bellglass’s dry visitor desk, use the retained approach’s actual reading to identify the depth setting copied into the wrong destination record. The other reading is welcome but unnecessary. The correct repair isolates the redirected inlet, matches the depth bands, then selects the carrier’s chosen outlet. No occult initiation or unseen timer is"
+    }
+  ],
+  "nextEvent": 25,
+  "residents": [
+    {
+      "id": "ilan",
+      "x": 0,
+      "z": -11.6,
+      "yaw": 1.5707963267948966,
+      "progress": 0.07243437721893241,
+      "conversations": 0
+    },
+    {
+      "id": "mara",
+      "x": 9,
+      "z": -5.8,
+      "yaw": 0,
+      "progress": 0.07251537721893236,
+      "conversations": 0
+    },
+    {
+      "id": "oren",
+      "x": 11,
+      "z": 9,
+      "yaw": -1.5707963267948966,
+      "progress": 0.07243437721893241,
+      "conversations": 0
+    }
+  ],
+  "settings": {
+    "quality": "balanced",
+    "cameraMode": "adventure",
+    "cameraFov": 60,
+    "cameraViews": {
+      "version": 1,
+      "lastDiorama": "follow",
+      "profiles": {}
+    },
+    "cameraCutaway": true,
+    "reducedMotion": false,
+    "labels": true,
+    "timeFlow": true,
+    "sound": false
+  }
+}

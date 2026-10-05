@@ -1,0 +1,56 @@
+{
+  "exitCode": 0,
+  "decodedFrames": 795,
+  "duration": 31.8,
+  "fps": 25,
+  "finalSHA256": "d1acb1d9389c28a2c443594d308ed5ef08adc393066f10c0c6986f26efc28b55",
+  "finalBytes": 6944840,
+  "rawSHA256": "66e97ce979b2ad3c0d104c5fa69e0934d54db07892d87343be7238e83e8490cb",
+  "checks": [
+    {
+      "label": "depth",
+      "finalTime": 1.08,
+      "matchPSNR180x112": 37.03,
+      "sourceFrame": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\capture-blade03\\02_shallow_flow_and_depth_controls.png",
+      "sourceFrameSHA256": "32ce92257ba74a6415af1cb320877c1629ea18f5f50fc085eedf5312474d2080",
+      "auditFrame": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\media\\AUDIT_depth.png",
+      "auditFrameSHA256": "1b1298a1fc0c3d23775213fae2d1802255fd78354a3910ba60da0ac2f6964a8b",
+      "comparisonFrames": 34,
+      "visualFinding": "Actual gallery water/body, depth-control prompts and supported landing are visible; this static frame does not independently measure current displacement."
+    },
+    {
+      "label": "sweep_adventure",
+      "finalTime": 12.04,
+      "matchPSNR180x112": 45.69,
+      "sourceFrame": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\capture-blade03\\08_locked_sweep_adventure.png",
+      "sourceFrameSHA256": "e1a396387543fd0f00b618f5c2a439c4534ccd86d9766eec82e752e5f43c70ac",
+      "auditFrame": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\media\\AUDIT_sweep_adventure.png",
+      "auditFrameSHA256": "449c5cdc6d013d378366b780bf19b754ee89834b450ac084514c2b27041f67bc",
+      "comparisonFrames": 36,
+      "visualFinding": "Adventure view shows the real Custodian, owned sweep boundary, target and deliberate combat prompt on the dry quay."
+    },
+    {
+      "label": "intake_follow",
+      "finalTime": 15.76,
+      "matchPSNR180x112": 50.5,
+      "sourceFrame": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\capture-blade03\\10_locked_intake_follow.png",
+      "sourceFrameSHA256": "731e272740011afd09ab8d80f027fa6929040ad2df44f69b72d8fdd834adfca3",
+      "auditFrame": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\media\\AUDIT_intake_follow.png",
+      "auditFrameSHA256": "a3c6578e035f9308d2fe9023c7bf0756d3921a168c14915c1e984f1ea6beb9e6",
+      "comparisonFrames": 46,
+      "visualFinding": "Diorama view shows the owned intake lane, dry service quay, target and actual Brace status."
+    },
+    {
+      "label": "paid",
+      "finalTime": 29.599999999999998,
+      "matchPSNR180x112": 47.72,
+      "sourceFrame": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\capture-blade03\\18_paid_local_recognition.png",
+      "sourceFrameSHA256": "1a41518ea1dbc0e217fad97008515f8dba331c2f5989ad53fc1fb0e1c2a95187",
+      "auditFrame": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\media\\AUDIT_paid.png",
+      "auditFrameSHA256": "d77b00aead30bd9b0568d40372fde10300845406b5ea9693ef34b18b0f893de8",
+      "comparisonFrames": 41,
+      "visualFinding": "Actual campaign panel shows recorded late steps, settled local passage, exact claimed fee and recognition; no invented overlay."
+    }
+  ],
+  "visualReview": "All four decoded audit images visually inspected."
+}

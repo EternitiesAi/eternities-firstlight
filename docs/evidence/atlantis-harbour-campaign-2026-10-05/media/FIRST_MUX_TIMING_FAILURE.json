@@ -1,0 +1,14 @@
+{
+  "kind": "retained first container-timing failure, not source/capture failure",
+  "firstVideoSha256": "22e9fcc83feeab75935bed82003cef8b1e2eb656e1aa867717b3d1e661c7703f",
+  "bytes": 6949162,
+  "encoderFrames": 795,
+  "decodedFrames": 794,
+  "decodeExit": 0,
+  "containerDurationSeconds": 31.76,
+  "expectedSelectedFrames": 795,
+  "expectedDurationSeconds": 31.8,
+  "encodeLog": "ENCODE_LOG.txt",
+  "decodeLog": "WHOLE_DECODE_LOG.txt",
+  "repair": "Use explicit 1/25 encoder timebase and25000 video track timescale, preserving the verified .04s source intervals. Replace only the newly owned MP4; keep raw and failure logs."
+}

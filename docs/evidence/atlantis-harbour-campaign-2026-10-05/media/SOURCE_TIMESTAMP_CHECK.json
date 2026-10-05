@@ -1,0 +1,57 @@
+{
+  "decoderExit": 0,
+  "selectedFrames": 795,
+  "allExcerptIntervalsSeconds": 0.04,
+  "observations": [
+    {
+      "label": "shallow current, quiet depth, air court and equalizer",
+      "frames": 230,
+      "firstSourcePTS": 29.6,
+      "lastSourcePTS": 38.76,
+      "withinExcerptIntervalSeconds": 0.04
+    },
+    {
+      "label": "outlet and physical dry exit",
+      "frames": 45,
+      "firstSourcePTS": 46.72,
+      "lastSourcePTS": 48.48,
+      "withinExcerptIntervalSeconds": 0.04
+    },
+    {
+      "label": "actual blade combat, sweep/intake and both cameras",
+      "frames": 350,
+      "firstSourcePTS": 54.48,
+      "lastSourcePTS": 68.44,
+      "withinExcerptIntervalSeconds": 0.04
+    },
+    {
+      "label": "physical west release",
+      "frames": 30,
+      "firstSourcePTS": 70.8,
+      "lastSourcePTS": 71.96,
+      "withinExcerptIntervalSeconds": 0.04
+    },
+    {
+      "label": "physical east release",
+      "frames": 30,
+      "firstSourcePTS": 76.0,
+      "lastSourcePTS": 77.16,
+      "withinExcerptIntervalSeconds": 0.04
+    },
+    {
+      "label": "deliberate disposition preview and saved local choice",
+      "frames": 40,
+      "firstSourcePTS": 90.72,
+      "lastSourcePTS": 92.28,
+      "withinExcerptIntervalSeconds": 0.04
+    },
+    {
+      "label": "paid local recognition",
+      "frames": 70,
+      "firstSourcePTS": 118.2,
+      "lastSourcePTS": 120.96,
+      "withinExcerptIntervalSeconds": 0.04
+    }
+  ],
+  "noSpeedChange": "All selected input intervals are exactly .04s. Explicit encoder timebase1/25 represents those same timestamps; no retiming or interpolation."
+}

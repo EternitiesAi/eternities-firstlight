@@ -1,0 +1,65 @@
+{
+  "raw": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\capture-blade03\\1190c9219538f1fa75c6489be22baf9a.webm",
+  "rawSHA256": "66e97ce979b2ad3c0d104c5fa69e0934d54db07892d87343be7238e83e8490cb",
+  "reportSHA256": "125222b28200e26dd8ff1c1c8de7e01627aa204d482744faa90bb32c6f8b81dc",
+  "fps": 25,
+  "frameGridSeconds": 0.04,
+  "matches": [
+    {
+      "label": "shallow_flow_and_depth_controls",
+      "wallSeconds": 35.224517500028014,
+      "rawSeconds": 30.68,
+      "wallMinusRawSeconds": 4.5445175,
+      "matchPSNR": 37.05,
+      "candidateFrames": 176,
+      "matchingFrameNumberWithinWindow": 93,
+      "windowRawStart": 27,
+      "windowDuration": 7,
+      "metrics": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\media\\ALIGN_shallow_flow_and_depth_controls.txt",
+      "screenshot": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\capture-blade03\\02_shallow_flow_and_depth_controls.png",
+      "method": "Actual video frames against existing event screenshot; 180x112 analysis downsample, maximum PSNR. Video remains unmodified."
+    },
+    {
+      "label": "locked_sweep_adventure",
+      "wallSeconds": 59.775740700017195,
+      "rawSeconds": 55.52,
+      "wallMinusRawSeconds": 4.2557407,
+      "matchPSNR": 45.92,
+      "candidateFrames": 201,
+      "matchingFrameNumberWithinWindow": 114,
+      "windowRawStart": 51,
+      "windowDuration": 8,
+      "metrics": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\media\\ALIGN_locked_sweep_adventure.txt",
+      "screenshot": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\capture-blade03\\08_locked_sweep_adventure.png",
+      "method": "Actual video frames against existing event screenshot; 180x112 analysis downsample, maximum PSNR. Video remains unmodified."
+    },
+    {
+      "label": "deliberate_disposition_preview",
+      "wallSeconds": 95.51771149999695,
+      "rawSeconds": 91.0,
+      "wallMinusRawSeconds": 4.5177115,
+      "matchPSNR": 47.8,
+      "candidateFrames": 201,
+      "matchingFrameNumberWithinWindow": 101,
+      "windowRawStart": 87,
+      "windowDuration": 8,
+      "metrics": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\media\\ALIGN_deliberate_disposition_preview.txt",
+      "screenshot": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\capture-blade03\\15_deliberate_disposition_preview.png",
+      "method": "Actual video frames against existing event screenshot; 180x112 analysis downsample, maximum PSNR. Video remains unmodified."
+    },
+    {
+      "label": "paid_local_recognition",
+      "wallSeconds": 123.35817190003581,
+      "rawSeconds": 119.04,
+      "wallMinusRawSeconds": 4.3181719,
+      "matchPSNR": 47.82,
+      "candidateFrames": 172,
+      "matchingFrameNumberWithinWindow": 102,
+      "windowRawStart": 115,
+      "windowDuration": 6.88,
+      "metrics": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\media\\ALIGN_paid_local_recognition.txt",
+      "screenshot": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\capture-blade03\\18_paid_local_recognition.png",
+      "method": "Actual video frames against existing event screenshot; 180x112 analysis downsample, maximum PSNR. Video remains unmodified."
+    }
+  ]
+}

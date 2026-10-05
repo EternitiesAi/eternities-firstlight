@@ -1,0 +1,160 @@
+{
+  "variant": "fresh-bow-quarry",
+  "status": "passed",
+  "commands": 6,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedObjectives": 0,
+  "acceleratedTicks": true,
+  "sourceSha256": "736ec65aebbe3b5c7bf2a96b2cf4c26b33bfb359dfdc3bb12edb09e96aeb3d2e",
+  "gathering": {
+    "version": 1,
+    "accepted": true,
+    "prepared": [
+      "cloth",
+      "lantern",
+      "stand"
+    ],
+    "verse": "quarry",
+    "shared": true
+  },
+  "weapon": "trail_bow",
+  "xp": 0,
+  "deliveryStillUnpaid": true,
+  "actions": [
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        4,
+        -42.5
+      ]
+    },
+    {
+      "type": "accept",
+      "p": {}
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        -3,
+        -40.5
+      ]
+    },
+    {
+      "type": "prepare",
+      "p": {
+        "id": "cloth"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        -5.8,
+        -35
+      ]
+    },
+    {
+      "type": "prepare",
+      "p": {
+        "id": "lantern"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        4,
+        -42.5
+      ]
+    },
+    {
+      "type": "prepare",
+      "p": {
+        "id": "stand"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        4,
+        -42.5
+      ]
+    },
+    {
+      "type": "verse",
+      "p": {
+        "verse": "quarry"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        4,
+        -42.5
+      ]
+    },
+    {
+      "type": "share",
+      "p": {}
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        4,
+        -42.5
+      ]
+    }
+  ]
+}
