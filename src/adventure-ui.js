@@ -25,8 +25,8 @@ class AdventureUI{
   if(!A.combatScene(this.sim))return false;
   const base=this.sim.room?1.58:1.3,candidates=[];
   for(const e of A.runtime(this.sim).enemies){if(e.hp<=0||e.hidden)continue;
-   const height=e.kind==='boss'?4.8:e.custom==='bell'?3.8:e.eventEnemy?2.2:1.5;
-   const foot=this.api.project(e.x,base+.12,e.z),head=this.api.project(e.x,base+height,e.z);if(!foot?.visible&&!head?.visible)continue;
+   const homecoming=G.RealmEarthHomecoming?.encounter(e),height=homecoming?2.18:e.kind==='boss'?4.8:e.custom==='bell'?3.8:e.eventEnemy?2.2:1.5,footBase=homecoming?G.RealmWorldFoundations.height(this.sim.room,e.x,e.z):base;
+   const foot=this.api.project(e.x,footBase+.12,e.z),head=this.api.project(e.x,footBase+height,e.z);if(!foot?.visible&&!head?.visible)continue;
    const dx=head.x-foot.x,dy=head.y-foot.y,t=Math.max(0,Math.min(1,((x-foot.x)*dx+(y-foot.y)*dy)/(dx*dx+dy*dy||1))),radius=Math.max(12,Math.hypot(dx,dy)*(e.kind==='boss'?.24:.48));
    if(Math.hypot(x-foot.x-t*dx,y-foot.y-t*dy)<=radius)candidates.push({e,depth:foot.depth});
   }

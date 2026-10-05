@@ -1,3 +1,15 @@
+# Installed Earth road and homecoming, 2026-10-05
+
+The Road That Can Refuse is installed on gameplay/earth-road-homecoming-20261005 from Cosmos d3ec32f716896d876d4771c0ff6c225e43b8d906 in the same integrated D checkout. Exact staged rule/presentation preimages matched before seventeen source files changed. Actual build produces identical3,027,896-byte pages/SHA25697f7609934c03025546be3c3009fc824ea1ea99c366f0f0d060b5851a3a41285. World/key9 and adventure12 remain; missing optional earthHomecoming1 migrates empty after all prior owners validate. No old payments/gear/socket/fittings/XP/explicit choices are rewritten.
+
+88 installed CPU cases pass with no failures/skips. The first broader1514-Node invocation failed its old expedition UI fixture, which omitted the actual new component and bound writer. Those test fixtures now load the real EHUI and real multi-line app writer; the existing20 expedition cases pass. The whole all-Node02 rerun now passes1514/1514 with0failures/skips and actual exit0. Current source verifier, newly earned three-character continuation, native/visible/persistence, normal footage and exact remote/full verification remain required. Staged/CPU successes are not human playtest or a complete gate. Cosmos native04/ordinary capture pass independently; its complete220-command remote gate is still running at its fixed parent epoch.
+
+The local fixed168HP/12damage Regent-pattern incursion, two relays, safe passage, explicit public-watch/reviewed-custody, Vessa return check and physical Oren home arrival precede a separate once-only50XP/20coin/4ore/4wood/3fiber/1crystal fee. All twelve prior claims are required, with no class/soul/equipment gate or hidden scaling. This is a provisional local draft ending; wider Regent networks, foundry evacuation, First Answer/Answering and Briar loss/reunion remain unresolved.
+
+Earlier sections below are exact historical/pending epochs, not the current integration status. The new Earth owner is playable source but has not yet completed its native delivery gates.
+
+---
+
 # Cosmos native return routing and delivered Atlantis, 2026-10-05
 
 Native03 at6bfaa2d failed after2526/2526 reached checks passed because its final click targeted the old hidden Cosmos return button. The controller now uses the visible WorldUI return; two actual UI-owner CPU regressions pass. Native04 remains required. See docs/development/COSMOS_NATIVE03_RETURN_FAILURE_2026-10-05.md; no source/page/save change was needed. Complete current browser qualification, normal-time footage and human playtest remain pending. Atlantis's finalbf6f8bd source/equality and complete212 gate are delivered in PR46; evidence7a70cab has635 remotely byte-verified payloads. Keep newer Cosmos gameplay and both parents' continuity below. The whole game remains unfinished.
