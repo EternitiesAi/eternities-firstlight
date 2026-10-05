@@ -1,0 +1,1335 @@
+{
+  "schema": "firstlight-atlantis-final-source03-audit-v1",
+  "createdUtc": "2026-10-05T10:32:28.129592+00:00",
+  "status": "passed",
+  "sourceHead": "bf6f8bd17034d1051e7657d971c91558d8594885",
+  "completeBrowserTestedHead": "779ef47a33a8f2a646c8b0e4b67757c8ce2080c8",
+  "qualificationCheckout": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote01",
+  "qualificationHEAD": "bf6f8bd17034d1051e7657d971c91558d8594885",
+  "qualificationClean": true,
+  "executionBoundary": "Root observed process99956 actual exit0; this agent independently inspected retained outputs and exact Git/file bytes, without rerunning any suite.",
+  "observedExitCode": 0,
+  "exitObservationBy": "Root parent message",
+  "terminalSuccess": true,
+  "commands": 168,
+  "syntaxModules": 110,
+  "node": {
+    "tests": 1302,
+    "pass": 1302,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "python": {
+    "tests": 95,
+    "passed": 94,
+    "failed": 0,
+    "skipped": 1,
+    "skip": {
+      "case": "test_symlink_refused (test_checkout_import.ImportRules.test_symlink_refused)",
+      "reason": "'Windows account lacks symlink privilege; real symlink refusal is exercised on Linux CI'"
+    }
+  },
+  "commandEarnedJourneys": 55,
+  "browserSuitesInThisSourceRun": 0,
+  "labels": [
+    "build",
+    "syntax-adventure-art",
+    "syntax-adventure-ui",
+    "syntax-adventure",
+    "syntax-app",
+    "syntax-arsenal-art",
+    "syntax-arsenal-ui",
+    "syntax-arsenal",
+    "syntax-atlantis-campaign-art",
+    "syntax-atlantis-campaign-data",
+    "syntax-atlantis-campaign-ui",
+    "syntax-atlantis-campaign",
+    "syntax-beacon-art",
+    "syntax-beacon",
+    "syntax-bridge-art",
+    "syntax-bridge-community-art",
+    "syntax-bridge-community-ui",
+    "syntax-bridge-community",
+    "syntax-bridge-moment-view",
+    "syntax-characters-ui",
+    "syntax-characters",
+    "syntax-classes-ui",
+    "syntax-classes",
+    "syntax-coastward-settlement-art",
+    "syntax-coastward-woodland-art",
+    "syntax-combat-view",
+    "syntax-combat",
+    "syntax-companion-art",
+    "syntax-core",
+    "syntax-cosmos-art",
+    "syntax-cosmos-ui",
+    "syntax-cosmos",
+    "syntax-creative",
+    "syntax-crossing-art",
+    "syntax-crossing-ui",
+    "syntax-crossing",
+    "syntax-drover-art",
+    "syntax-earth-art",
+    "syntax-earth-expedition-art",
+    "syntax-earth-expedition-beast-art",
+    "syntax-earth-expedition-dialogue",
+    "syntax-earth-expedition-ui",
+    "syntax-earth-expedition",
+    "syntax-earth-notes-art",
+    "syntax-earth-notes-ui",
+    "syntax-earth-notes",
+    "syntax-earth-shoulder-art",
+    "syntax-earth-story-ui",
+    "syntax-earth-story",
+    "syntax-earth-ui",
+    "syntax-earth",
+    "syntax-elderweald-trail-art",
+    "syntax-elderweald-world",
+    "syntax-engine",
+    "syntax-experience",
+    "syntax-gathering-adapter",
+    "syntax-gathering-art",
+    "syntax-gathering-music",
+    "syntax-gathering-ui",
+    "syntax-gathering",
+    "syntax-heaven-campaign-art",
+    "syntax-heaven-campaign-data",
+    "syntax-heaven-campaign-ui",
+    "syntax-heaven-campaign",
+    "syntax-hell-campaign-art",
+    "syntax-hell-campaign-data",
+    "syntax-hell-campaign-ui",
+    "syntax-hell-campaign",
+    "syntax-home-history-art",
+    "syntax-home-history-ui",
+    "syntax-home-history",
+    "syntax-local-life-art",
+    "syntax-local-life-ui",
+    "syntax-local-life",
+    "syntax-mill-gate-art",
+    "syntax-millwright-art",
+    "syntax-pursuit-ui",
+    "syntax-pursuit",
+    "syntax-quarry-art",
+    "syntax-realm-art-data",
+    "syntax-realm-atlas-ui",
+    "syntax-realm-craft",
+    "syntax-realm-givers-art",
+    "syntax-realm-trails-art",
+    "syntax-realm-trails-cosmos",
+    "syntax-realm-trails-north",
+    "syntax-realm-trails-south",
+    "syntax-realm-trails-ui",
+    "syntax-realm-trails",
+    "syntax-road-art",
+    "syntax-road",
+    "syntax-rpg-ui",
+    "syntax-sandbox-art",
+    "syntax-sandbox-ui",
+    "syntax-sandbox",
+    "syntax-skitter-art",
+    "syntax-soundscape",
+    "syntax-starter-art",
+    "syntax-starter-ui",
+    "syntax-starter",
+    "syntax-surface-assets",
+    "syntax-traveler-art",
+    "syntax-traveler-equipment-art",
+    "syntax-workshop-transactions",
+    "syntax-world-atlantis-earth",
+    "syntax-world-foundations-art",
+    "syntax-world-foundations-ui",
+    "syntax-world-foundations",
+    "syntax-world-ground-coalescing",
+    "syntax-world-heaven-hell",
+    "syntax-world",
+    "rules",
+    "python",
+    "crossing-blade",
+    "crossing-bow",
+    "starter-blade",
+    "starter-bow",
+    "starter-veteran",
+    "pursuit-blade",
+    "pursuit-bow",
+    "pursuit-veteran",
+    "characters-journey",
+    "classes-journey",
+    "cosmos-journey",
+    "earth-journey",
+    "earth-outing-blade",
+    "earth-outing-bow",
+    "earth-outing-veteran",
+    "earth-story-blade",
+    "earth-story-bow",
+    "earth-story-veteran",
+    "earth-notes-blade",
+    "earth-notes-bow",
+    "earth-notes-veteran",
+    "gathering-blade",
+    "gathering-bow",
+    "gathering-veteran",
+    "world-foundations-blade",
+    "world-foundations-bow",
+    "world-foundations-veteran",
+    "realm-trails-blade",
+    "realm-trails-bow",
+    "realm-trails-south-blade",
+    "realm-trails-south-bow",
+    "realm-comparator-blade",
+    "realm-comparator-bow",
+    "realm-comparator-veteran",
+    "earth-expedition-blade",
+    "earth-expedition-bow",
+    "earth-expedition-veteran",
+    "local-life-blade",
+    "local-life-bow",
+    "local-life-veteran",
+    "home-history-blade",
+    "home-history-bow",
+    "home-history-veteran",
+    "bridge-community-blade",
+    "bridge-community-bow",
+    "bridge-community-veteran",
+    "hell-campaign-blade",
+    "hell-campaign-bow",
+    "hell-campaign-veteran",
+    "heaven-campaign-blade",
+    "heaven-campaign-bow",
+    "heaven-campaign-veteran",
+    "atlantis-campaign-blade",
+    "atlantis-campaign-bow",
+    "atlantis-campaign-veteran"
+  ],
+  "nonDocumentEquality": {
+    "classification": "Every Git leaf except .md files, including documents in other formats. Directory tree objects excluded; leaf path/mode/type/blob or gitlink objects compared exactly.",
+    "entries": 1912,
+    "beforeTableSha256": "86ec8fd29e51dd578a7d760daf97233f340176a698d0001fc6de61bfcb07e800",
+    "afterTableSha256": "86ec8fd29e51dd578a7d760daf97233f340176a698d0001fc6de61bfcb07e800",
+    "equal": true,
+    "documentChanges": [
+      {
+        "path": "AGENTS.md",
+        "before": {
+          "mode": "100644",
+          "type": "blob",
+          "object": "a87eb6b36ea452c0189a4f22b1fe15a0f02d0448"
+        },
+        "after": {
+          "mode": "100644",
+          "type": "blob",
+          "object": "08651ba99bf606a7665422401c5e49a8aa6b9dfc"
+        }
+      },
+      {
+        "path": "docs/CURRENT_STATE.md",
+        "before": {
+          "mode": "100644",
+          "type": "blob",
+          "object": "ac3487256baf914dd1b3ee84bc343fc36cd463f3"
+        },
+        "after": {
+          "mode": "100644",
+          "type": "blob",
+          "object": "f4b5f2e6b7c195ac6a81537e799367e940b2ac2c"
+        }
+      },
+      {
+        "path": "docs/DECISIONS.md",
+        "before": {
+          "mode": "100644",
+          "type": "blob",
+          "object": "02d4c909348e12b3cd0c35f91e45f71d971daeb2"
+        },
+        "after": {
+          "mode": "100644",
+          "type": "blob",
+          "object": "e483215c65e1297f57aa17d71cd2b2b776d07364"
+        }
+      },
+      {
+        "path": "docs/NEXT_TASK.md",
+        "before": {
+          "mode": "100644",
+          "type": "blob",
+          "object": "8ea73d3903f723756b3ede1e7efc43139d8a99f3"
+        },
+        "after": {
+          "mode": "100644",
+          "type": "blob",
+          "object": "cd213ca03f68957f4814df7865b979a471b405cd"
+        }
+      },
+      {
+        "path": "docs/PLAYTEST_NOTES.md",
+        "before": {
+          "mode": "100644",
+          "type": "blob",
+          "object": "8eaef5f2b2a5c0ace4e605961ffbadbaeb5779e0"
+        },
+        "after": {
+          "mode": "100644",
+          "type": "blob",
+          "object": "d1eabb1d2c6b0970740abca7e90bbde9697df99e"
+        }
+      },
+      {
+        "path": "docs/development/ATLANTIS_CAMPAIGN_DELIVERY_2026-10-05.md",
+        "before": null,
+        "after": {
+          "mode": "100644",
+          "type": "blob",
+          "object": "d7534082b25a359b5f3e79689f37d10f64437ace"
+        }
+      }
+    ]
+  },
+  "pages": [
+    {
+      "path": "FIRSTLIGHT_VALLEY.html",
+      "bytes": 2886245,
+      "sha256": "dc5879b29a1f3d55413f74ee9e06496ae1bc2a219d7553dc20e48ade103d5b10",
+      "committedBlob": "2d384f67e9cde6cfc95546aa8510335d1f75ce9f",
+      "rebuiltEqualsBothCommits": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 2886245,
+      "sha256": "dc5879b29a1f3d55413f74ee9e06496ae1bc2a219d7553dc20e48ade103d5b10",
+      "committedBlob": "2d384f67e9cde6cfc95546aa8510335d1f75ce9f",
+      "rebuiltEqualsBothCommits": true
+    }
+  ],
+  "console": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03-console.log",
+    "bytes": 10613,
+    "sha256": "33dc41c79bc36a4eb50e5f39120a268b851528b9dc1b4e03680243369e75bb5f"
+  },
+  "logs": [
+    {
+      "label": "build",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\build.log",
+      "bytes": 91,
+      "sha256": "1597d4192ed6e6bce4e9fdee23990bc2f5c13cb7cc2537e1323900e09ee47561"
+    },
+    {
+      "label": "syntax-adventure-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-adventure-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-adventure-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-adventure-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-adventure",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-adventure.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-app",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-app.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-arsenal-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-arsenal-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-arsenal-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-arsenal-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-arsenal",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-arsenal.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-atlantis-campaign-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-atlantis-campaign-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-atlantis-campaign-data",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-atlantis-campaign-data.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-atlantis-campaign-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-atlantis-campaign-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-atlantis-campaign",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-atlantis-campaign.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-beacon-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-beacon-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-beacon",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-beacon.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-bridge-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-bridge-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-bridge-community-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-bridge-community-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-bridge-community-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-bridge-community-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-bridge-community",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-bridge-community.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-bridge-moment-view",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-bridge-moment-view.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-characters-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-characters-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-characters",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-characters.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-classes-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-classes-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-classes",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-classes.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-coastward-settlement-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-coastward-settlement-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-coastward-woodland-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-coastward-woodland-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-combat-view",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-combat-view.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-combat",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-combat.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-companion-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-companion-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-core",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-core.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-cosmos-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-cosmos-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-cosmos-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-cosmos-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-cosmos",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-cosmos.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-creative",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-creative.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-crossing-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-crossing-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-crossing-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-crossing-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-crossing",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-crossing.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-drover-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-drover-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-earth-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-earth-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-earth-expedition-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-earth-expedition-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-earth-expedition-beast-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-earth-expedition-beast-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-earth-expedition-dialogue",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-earth-expedition-dialogue.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-earth-expedition-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-earth-expedition-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-earth-expedition",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-earth-expedition.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-earth-notes-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-earth-notes-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-earth-notes-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-earth-notes-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-earth-notes",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-earth-notes.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-earth-shoulder-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-earth-shoulder-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-earth-story-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-earth-story-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-earth-story",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-earth-story.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-earth-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-earth-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-earth",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-earth.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-elderweald-trail-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-elderweald-trail-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-elderweald-world",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-elderweald-world.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-engine",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-engine.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-experience",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-experience.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-gathering-adapter",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-gathering-adapter.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-gathering-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-gathering-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-gathering-music",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-gathering-music.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-gathering-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-gathering-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-gathering",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-gathering.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-heaven-campaign-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-heaven-campaign-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-heaven-campaign-data",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-heaven-campaign-data.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-heaven-campaign-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-heaven-campaign-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-heaven-campaign",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-heaven-campaign.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-hell-campaign-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-hell-campaign-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-hell-campaign-data",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-hell-campaign-data.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-hell-campaign-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-hell-campaign-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-hell-campaign",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-hell-campaign.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-home-history-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-home-history-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-home-history-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-home-history-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-home-history",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-home-history.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-local-life-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-local-life-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-local-life-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-local-life-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-local-life",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-local-life.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-mill-gate-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-mill-gate-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-millwright-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-millwright-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-pursuit-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-pursuit-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-pursuit",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-pursuit.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-quarry-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-quarry-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-realm-art-data",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-realm-art-data.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-realm-atlas-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-realm-atlas-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-realm-craft",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-realm-craft.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-realm-givers-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-realm-givers-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-realm-trails-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-realm-trails-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-realm-trails-cosmos",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-realm-trails-cosmos.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-realm-trails-north",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-realm-trails-north.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-realm-trails-south",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-realm-trails-south.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-realm-trails-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-realm-trails-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-realm-trails",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-realm-trails.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-road-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-road-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-road",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-road.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-rpg-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-rpg-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-sandbox-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-sandbox-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-sandbox-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-sandbox-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-sandbox",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-sandbox.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-skitter-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-skitter-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-soundscape",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-soundscape.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-starter-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-starter-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-starter-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-starter-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-starter",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-starter.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-surface-assets",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-surface-assets.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-traveler-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-traveler-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-traveler-equipment-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-traveler-equipment-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-workshop-transactions",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-workshop-transactions.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-world-atlantis-earth",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-world-atlantis-earth.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-world-foundations-art",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-world-foundations-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-world-foundations-ui",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-world-foundations-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-world-foundations",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-world-foundations.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-world-ground-coalescing",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-world-ground-coalescing.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-world-heaven-hell",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-world-heaven-hell.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "syntax-world",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\syntax-world.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "rules",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\rules.log",
+      "bytes": 294306,
+      "sha256": "0adf25833ad5f085c522dcab5da945da19ea10daabeaa02d3a2944f3d5efacc4"
+    },
+    {
+      "label": "python",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\python.log",
+      "bytes": 14443,
+      "sha256": "50f38b373c5fa1f98718f547087c7e52b24381a43f31f7a99684c27ff1373eee"
+    },
+    {
+      "label": "crossing-blade",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\crossing-blade.log",
+      "bytes": 625,
+      "sha256": "0b27a5083c98c2983b9d5dd15b33456d395f182b4b299bbf46412b4f244ba956"
+    },
+    {
+      "label": "crossing-bow",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\crossing-bow.log",
+      "bytes": 649,
+      "sha256": "f1f412fb8081e5e0c9e1c60e5ea9b8d1de892fbc3c23c2a76e5b1470f8c04d4a"
+    },
+    {
+      "label": "starter-blade",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\starter-blade.log",
+      "bytes": 507,
+      "sha256": "7bf2c1aedc79943bcdc356237696bf2a1a464841e03520203f7ee7d0f4911dae"
+    },
+    {
+      "label": "starter-bow",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\starter-bow.log",
+      "bytes": 503,
+      "sha256": "2496bd1b1ba568c3ff951073bede4e7625f178d4aa75780f9ab122264bf8b37f"
+    },
+    {
+      "label": "starter-veteran",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\starter-veteran.log",
+      "bytes": 1438,
+      "sha256": "a5ce11e73e32f6a35882e153121d316e4ff0bf6682f0b18001f5e86a2f979be0"
+    },
+    {
+      "label": "pursuit-blade",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\pursuit-blade.log",
+      "bytes": 5483,
+      "sha256": "04029aab268bf30da55bb85ea9cb89e5ab63ecd7f782a59c97aa095529ce4647"
+    },
+    {
+      "label": "pursuit-bow",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\pursuit-bow.log",
+      "bytes": 6710,
+      "sha256": "7954f060cccbda3f5837029b6b177c60db43a02f6d581a5880ed7382a76135d1"
+    },
+    {
+      "label": "pursuit-veteran",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\pursuit-veteran.log",
+      "bytes": 3506,
+      "sha256": "60fd6622a3505ac09f40c69a655217df5506a5664846136a25a9a0672fa0f9fa"
+    },
+    {
+      "label": "characters-journey",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\characters-journey.log",
+      "bytes": 3058,
+      "sha256": "af13a693cb9fbd9fadc78dc3a139503cc9725b64bb1ffabe52487e397f3855fb"
+    },
+    {
+      "label": "classes-journey",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\classes-journey.log",
+      "bytes": 4224,
+      "sha256": "752780bb74b34f2de8524caf9a1c142e98d1734132855259499c71b076456de3"
+    },
+    {
+      "label": "cosmos-journey",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\cosmos-journey.log",
+      "bytes": 630,
+      "sha256": "0d2bb52fd4fd49fa4899d66b66b59369d5235482652865f006d84c9427b0843d"
+    },
+    {
+      "label": "earth-journey",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\earth-journey.log",
+      "bytes": 602,
+      "sha256": "302a5716aeb1fd62cced3eb37d2d1d7aa908f5eb2065ef9c8d813bf74a2f1bca"
+    },
+    {
+      "label": "earth-outing-blade",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\earth-outing-blade.log",
+      "bytes": 5482,
+      "sha256": "be9b2f2c5cc1dc45ed3ada36ba842c06b1e0144b009f341107d3acafb80f6a60"
+    },
+    {
+      "label": "earth-outing-bow",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\earth-outing-bow.log",
+      "bytes": 6715,
+      "sha256": "e4e71e12da6150014a280b35387a3f507522cee791079ddbb89e5805a720d8c6"
+    },
+    {
+      "label": "earth-outing-veteran",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\earth-outing-veteran.log",
+      "bytes": 3509,
+      "sha256": "e778c576526735f73a16d650a89bc7908de60a65a73cca1fddacd08ef60064ff"
+    },
+    {
+      "label": "earth-story-blade",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\earth-story-blade.log",
+      "bytes": 3039,
+      "sha256": "5c5842efa66c883d6eb97c8b276ff8e076b0bad2086cdd365daa27ea3c6324d1"
+    },
+    {
+      "label": "earth-story-bow",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\earth-story-bow.log",
+      "bytes": 3448,
+      "sha256": "7e3fceb7d115253a91f1d610e6d23692d58ba185be97731c62e0e2fd8376c6ea"
+    },
+    {
+      "label": "earth-story-veteran",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\earth-story-veteran.log",
+      "bytes": 2628,
+      "sha256": "89254ae3f95f18bae2c19e7b5fc296cf7d4cb21e990a3e63f3aeb81b709075cb"
+    },
+    {
+      "label": "earth-notes-blade",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\earth-notes-blade.log",
+      "bytes": 2028,
+      "sha256": "09cb7e719b8d1c4be3cc1d328a268620fd647e396357f243f3b6f60e7a02b033"
+    },
+    {
+      "label": "earth-notes-bow",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\earth-notes-bow.log",
+      "bytes": 2030,
+      "sha256": "040bd5124bc737afd7e8875660cd94461c7259acfa3a899c6da6ccb605b4bebc"
+    },
+    {
+      "label": "earth-notes-veteran",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\earth-notes-veteran.log",
+      "bytes": 2022,
+      "sha256": "119f292a85fe039b1dae4bb6972e86eadcb0ac6c08a3c8dd3ddedc7588f3596a"
+    },
+    {
+      "label": "gathering-blade",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\gathering-blade.log",
+      "bytes": 2008,
+      "sha256": "e40c24e3e8b07986b806faa94d911f6dd5b978018f3d8cfea5202ccce640af1d"
+    },
+    {
+      "label": "gathering-bow",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\gathering-bow.log",
+      "bytes": 2004,
+      "sha256": "f297d5e953082ce2786f0f2a51cf66fc872799212a9d4197113bb9795d0c978f"
+    },
+    {
+      "label": "gathering-veteran",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\gathering-veteran.log",
+      "bytes": 1998,
+      "sha256": "cf7f13da284bc1ccb3019e02097045e29b27c67bc270f64184c25abe310e5574"
+    },
+    {
+      "label": "world-foundations-blade",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\world-foundations-blade.log",
+      "bytes": 115,
+      "sha256": "fc64a7526f2397fe2fd184a12f5b7161198deee503ca08909120d5cee37e8e24"
+    },
+    {
+      "label": "world-foundations-bow",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\world-foundations-bow.log",
+      "bytes": 113,
+      "sha256": "672abbfbe7a1d33774e55716e058cae4b29ce9f6c013361f41d6b31a4ad224d6"
+    },
+    {
+      "label": "world-foundations-veteran",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\world-foundations-veteran.log",
+      "bytes": 111,
+      "sha256": "f67ce6df32a739cda65cf92f5c480d85fc7cf4969a8894534f8f0a9487566137"
+    },
+    {
+      "label": "realm-trails-blade",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\realm-trails-blade.log",
+      "bytes": 161,
+      "sha256": "8c99875b9853801c2052b9590857b851d349d56ab81580bfb70232c631f73fe1"
+    },
+    {
+      "label": "realm-trails-bow",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\realm-trails-bow.log",
+      "bytes": 159,
+      "sha256": "53a69d88317a65523229998ee60c03de091e0a8b8d41a82e5253f340965b78d5"
+    },
+    {
+      "label": "realm-trails-south-blade",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\realm-trails-south-blade.log",
+      "bytes": 4632,
+      "sha256": "e74b20d5fac7dab56515c7313ee78e959204ecb3c02d547f27af301780e8ac48"
+    },
+    {
+      "label": "realm-trails-south-bow",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\realm-trails-south-bow.log",
+      "bytes": 4630,
+      "sha256": "65674543f0e4a569ee443cbffaf6d1ee2f3ced0674cc0f8c9a20bf037d6924a1"
+    },
+    {
+      "label": "realm-comparator-blade",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\realm-comparator-blade.log",
+      "bytes": 860,
+      "sha256": "d051c505ea0d4762ed40c3b46181cff2ef60ab5dfca172cbdff96e7e26bccab5"
+    },
+    {
+      "label": "realm-comparator-bow",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\realm-comparator-bow.log",
+      "bytes": 859,
+      "sha256": "a07a5025afb0bff37325955e4fd9fea4c0a5b197b0afaa4f95064ca4a85245d8"
+    },
+    {
+      "label": "realm-comparator-veteran",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\realm-comparator-veteran.log",
+      "bytes": 1380,
+      "sha256": "e77ae3e55a68529b99aee0977d80118c3bf42ed5a11435b337eac841557ce347"
+    },
+    {
+      "label": "earth-expedition-blade",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\earth-expedition-blade.log",
+      "bytes": 834,
+      "sha256": "ae0f8b181188a9ea39a2d2f98b24be9e461949c5deb8eef97c9ce052c31a30d9"
+    },
+    {
+      "label": "earth-expedition-bow",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\earth-expedition-bow.log",
+      "bytes": 830,
+      "sha256": "c43819230b2c2b6662b2067040461c65a4ea1843738a91b68d2eb397d5cf4312"
+    },
+    {
+      "label": "earth-expedition-veteran",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\earth-expedition-veteran.log",
+      "bytes": 831,
+      "sha256": "87c2aaa48e93f48dc9b19621192b96db9d52cbf781cc3c6550c58527e5580aad"
+    },
+    {
+      "label": "local-life-blade",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\local-life-blade.log",
+      "bytes": 1012,
+      "sha256": "982789616d67fd254b72ce9a5a0e8df923d2f9a709205db634b537ff7beb533e"
+    },
+    {
+      "label": "local-life-bow",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\local-life-bow.log",
+      "bytes": 1009,
+      "sha256": "0ca6e51f77b4d7736125395d0b37a23b4d7fa4ecb4f2090b2fc1dbf070d4e866"
+    },
+    {
+      "label": "local-life-veteran",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\local-life-veteran.log",
+      "bytes": 1019,
+      "sha256": "e73bdada22bd81a4ad8ffc08b4a8f2a243ecab7eca8067b88f0c719e76becb16"
+    },
+    {
+      "label": "home-history-blade",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\home-history-blade.log",
+      "bytes": 147,
+      "sha256": "67b551344f4ce9c2a7d09fb7e1f609733c67e446b5ac9ec734aa9261bcbb20bd"
+    },
+    {
+      "label": "home-history-bow",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\home-history-bow.log",
+      "bytes": 145,
+      "sha256": "fc9771880dce1ba439c946001c3dffe04b41ae7de11625a791a300bc61987e13"
+    },
+    {
+      "label": "home-history-veteran",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\home-history-veteran.log",
+      "bytes": 155,
+      "sha256": "25402427c525d6548dd3d1ef6a32544736829662f175eb870b82f27d8ae04018"
+    },
+    {
+      "label": "bridge-community-blade",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\bridge-community-blade.log",
+      "bytes": 115,
+      "sha256": "5ef9dbac0926b8904107f463f8215323de6ae3cedf3a4ccb99016d2d5078f960"
+    },
+    {
+      "label": "bridge-community-bow",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\bridge-community-bow.log",
+      "bytes": 119,
+      "sha256": "81802a66211ae7e69bbb878bb946d487913223602fdc76dfc57bbd93ed927c42"
+    },
+    {
+      "label": "bridge-community-veteran",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\bridge-community-veteran.log",
+      "bytes": 123,
+      "sha256": "08fddde5b7978d3f70af5950ba7c6d4774ffd2d79cdff0c839c3ece5194e0022"
+    },
+    {
+      "label": "hell-campaign-blade",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\hell-campaign-blade.log",
+      "bytes": 90,
+      "sha256": "afd9305106d14d0ff80b829c769422ab83f1681a5fcc8926a2d96c1e382dd2de"
+    },
+    {
+      "label": "hell-campaign-bow",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\hell-campaign-bow.log",
+      "bytes": 88,
+      "sha256": "c68d5d118e02d19ff299e64a036ee685639f25a78e472684222729e781e5094e"
+    },
+    {
+      "label": "hell-campaign-veteran",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\hell-campaign-veteran.log",
+      "bytes": 99,
+      "sha256": "b99fa6da12bedd3cc060af639ecb97ed53fdccda85429d7fa7adc911507cb380"
+    },
+    {
+      "label": "heaven-campaign-blade",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\heaven-campaign-blade.log",
+      "bytes": 149,
+      "sha256": "06a4c6fad5039fe2f762ae3bba9f4aded7c5eb2295f7cfa13b554254655ea8b1"
+    },
+    {
+      "label": "heaven-campaign-bow",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\heaven-campaign-bow.log",
+      "bytes": 150,
+      "sha256": "c7daece8db21e67864161cc56d2e3fda89c126c590fc2167a32dd4e140d9b17e"
+    },
+    {
+      "label": "heaven-campaign-veteran",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\heaven-campaign-veteran.log",
+      "bytes": 157,
+      "sha256": "57bbc7fa30f7dec4c2ccd610c07bbd97047de4a1e9161b90cad42d7152a4e7f6"
+    },
+    {
+      "label": "atlantis-campaign-blade",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\atlantis-campaign-blade.log",
+      "bytes": 102,
+      "sha256": "bf5355c8c11cab570ef5447fbf2cb9ae92e03944a4f995011707a348ee714e0f"
+    },
+    {
+      "label": "atlantis-campaign-bow",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\atlantis-campaign-bow.log",
+      "bytes": 100,
+      "sha256": "6c82fb5cdf4f3ed355520a90a7ff115892e20aa56c46b9e916ca9b0691fde357"
+    },
+    {
+      "label": "atlantis-campaign-veteran",
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\atlantis-harbour-campaign-20261005\\remote-final-source03\\atlantis-campaign-veteran.log",
+      "bytes": 111,
+      "sha256": "871e099cef3be692c163dd4c848a1a32f98ec981787a1f72554afdfe58fc8686"
+    }
+  ],
+  "logPayloadBytes": 404704,
+  "historicalQualificationBoundary": {
+    "full02": "212 commands/44 browser suites at779ef47; no new browser execution atbf6f8bd, whose non-document entries are identical.",
+    "native02": "857 checks/24 whole Chromium restarts/48 pixel controls, retained existing epoch.",
+    "failures": "Full01 and native/capture negatives remain in the original evidence manifest; no old entry is rewritten.",
+    "hosted": "Older c519300 hosted execution was blocked by account billing; no later hosted/Linux execution follows from this audit."
+  },
+  "gameCheckoutsCreated": 0,
+  "profilesCopied": 0,
+  "rawVideosCopied": 0,
+  "browserExecuted": false,
+  "GPUExecuted": false,
+  "humanPacingQualified": false,
+  "mainMerged": false,
+  "deploymentPerformed": false
+}
