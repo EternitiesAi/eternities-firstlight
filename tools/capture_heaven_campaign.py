@@ -215,7 +215,7 @@ def main():
         click('#rpg-content [data-rpg="heaven-campaign-step"][data-id="secure-service-route"]')
         walk('invite-wayfarer')
         workspace()
-        click('#rpg-content [data-rpg="heaven-campaign-invite"]')
+        click('#rpg-content [data-heaven-step="invite-wayfarer"] [data-rpg="heaven-campaign-invite"]')
         close()
         mark('04_actual-courier-invited')
         t0, trace, waypoints, switched = time.monotonic(), [], set(), False

@@ -2866,7 +2866,7 @@ const api={HeavenCampaignUI,routePoints,legend,fee,escortStatus};G.RealmHeavenCa
  * courier and activation; this module only projects their accepted facts. */
 (function(G){'use strict';
 const FLOOR=1.57,TAU=Math.PI*2,ACTIVATION_DURATION=1.2;
-const colors={bone:0xe6dcc2,gold:0xbd9655,ruby:0x8f294a,ink:0x35465e,sage:0x86b2a0,pale:0xc5d8ce,beam:0xecb87f,pulse:0xcf99c8};
+const colors={bone:0xe6dcc2,gold:0xbd9655,ruby:0x8f294a,ink:0x35465e,sage:0x86b2a0,pale:0xc5d8ce,beam:0xecb87f,pulse:0xcf99c8,warningInk:0x352839};
 const clamp=n=>Math.max(0,Math.min(1,n)),finite=(...v)=>v.every(Number.isFinite);
 function definition(){const h=G.RealmHeavenCampaign;return typeof h?.definition==='function'?h.definition():h?.definition||G.RealmHeavenCampaignData?.definition;}
 function painter(out,sim,anchor,yaw=0,extra={}){
@@ -2926,16 +2926,18 @@ function draw(out,sim,time){const d=definition(),r=sim.state.heavenCampaign;if(!
 function beamWarning(out,sim,e,strike){if(strike.kind!=='beam'||!finite(strike.x,strike.z,strike.yaw,strike.length,strike.halfWidth)||strike.length<=0||strike.halfWidth<=.04)return;
  const l=Math.min(strike.length,G.RealmHeavenCampaign?.beamLength?.(sim,e)??strike.length);if(!Number.isFinite(l)||l<=0)return;
  const p=painter(out,sim,strike,strike.yaw,{heavenCampaignActor:e.id,heavenCampaignTelegraph:true,heavenCampaignPattern:'beam',heavenCampaignStrike:{...strike}}),w=strike.halfWidth;
- for(const x of[-w+.025,w-.025])p.box(x,.035,l/2,.05,.035,l,colors.beam,'locked-beam-edge',{em:.46});
- const cap=Math.min(.05,l),notch=Math.min(.09,l/4);
- for(const z of new Set([cap/2,l-cap/2]))p.box(0,.035,z,2*w,.035,cap,colors.beam,'locked-beam-end',{em:.46});
- for(let i=1;i<=3;i++)p.box(0,.054,l*i/4,Math.min(w,.23),.025,notch,colors.beam,'directed-beam-notch',{em:.36});
+ // Two quiet strokes sit above the real paving/inlays. Each stays wholly
+ // inside the already clipped locked rectangle, even for very short beams.
+ const edge=Math.min(.12,w),cap=Math.min(.12,l),notch=Math.min(.09,l/4);
+ for(const x of[-w+edge/2,w-edge/2]){p.box(x,.075,l/2,edge,.025,l,colors.warningInk,'locked-beam-edge');p.box(x,.093,l/2,edge*.38,.02,l,colors.beam,'locked-beam-edge-core',{em:.15});}
+ for(const z of new Set([cap/2,l-cap/2])){p.box(0,.075,z,2*w,.025,cap,colors.warningInk,'locked-beam-end');p.box(0,.093,z,Math.max(.015,2*w-.07),.02,cap*.38,colors.beam,'locked-beam-end-core',{em:.15});}
+ for(let i=1;i<=3;i++){p.box(0,.075,l*i/4,Math.min(w,.23),.025,notch,colors.warningInk,'directed-beam-notch');p.box(0,.093,l*i/4,Math.min(w,.23)*.55,.02,notch*.55,colors.beam,'directed-beam-notch-core',{em:.15});}
 }
 function pulseWarning(out,sim,e,strike){if(strike.kind!=='pulse'||!finite(strike.x,strike.z,strike.radius)||strike.radius<=.12)return;
- const N=32,r=strike.radius,R=(r-.04)*Math.cos(Math.PI/N)-.03,L=2*(r-.04)*Math.sin(Math.PI/N)*.95;
+ const N=32,r=strike.radius,R=(r-.065)*Math.cos(Math.PI/N)-.06,L=2*(r-.065)*Math.sin(Math.PI/N)*.95;
  const p=painter(out,sim,strike,0,{heavenCampaignActor:e.id,heavenCampaignTelegraph:true,heavenCampaignPattern:'pulse',heavenCampaignStrike:{...strike}});
- for(let i=0;i<N;i++){const a=i*TAU/N;p.box(Math.cos(a)*R,.035,Math.sin(a)*R,.055,.035,L,colors.pulse,'locked-pulse-perimeter',{r:[0,-a,0],em:.46});}
- for(let i=0;i<4;i++){const a=i*TAU/4;p.box(Math.cos(a)*(r-.24),.05,Math.sin(a)*(r-.24),.24,.025,.08,colors.pulse,'radial-pulse-notch',{r:[0,-a,0],em:.36});}
+ for(let i=0;i<N;i++){const a=i*TAU/N,x=Math.cos(a)*R,z=Math.sin(a)*R;p.box(x,.075,z,.12,.025,L,colors.warningInk,'locked-pulse-perimeter',{r:[0,-a,0]});p.box(x,.093,z,.045,.02,L*.95,colors.pulse,'locked-pulse-perimeter-core',{r:[0,-a,0],em:.15});}
+ for(let i=0;i<4;i++){const a=i*TAU/4,x=Math.cos(a)*(r-.24),z=Math.sin(a)*(r-.24);p.box(x,.075,z,.24,.025,.08,colors.warningInk,'radial-pulse-notch',{r:[0,-a,0]});p.box(x,.093,z,.13,.02,.04,colors.pulse,'radial-pulse-notch-core',{r:[0,-a,0],em:.15});}
 }
 function drawEnemy(out,sim,e,time){const d=definition(),r=sim.state.heavenCampaign,terms=d?.enemies.find(v=>v.id===e?.id);
  if(!terms||sim.room!==d.room||!r?.accepted||e.heavenCampaign!==d.id||!terms.spawnAfter.every(id=>r.steps.includes(id))||r.steps.includes(terms.defeatStep)||!finite(e.hp,e.x,e.z,e.yaw??0)||e.hp<=0||!G.RealmAdventure.runtime(sim).enemies.includes(e))return false;

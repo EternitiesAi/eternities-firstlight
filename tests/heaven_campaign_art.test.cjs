@@ -1,5 +1,5 @@
-/* Actual catalogue-backed synthetic presentation boundaries. The rule owner
- * is not integrated in this candidate: these tests do not prove earned play,
+/* Catalogue-backed synthetic projection boundaries with a labelled facade.
+ * Actual rules are tested separately. These checks do not prove earned play,
  * escort movement, native persistence, browser pixels or device performance. */
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict');
@@ -105,6 +105,22 @@ test('directed beam warning projects only the immutable locked rectangle, indepe
  assert.ok(Math.abs(Math.max(...local.map(p=>p.side))-Math.min(...local.map(p=>p.side))-2*s.halfWidth)<1e-4);assert.ok(Math.abs(Math.max(...local.map(p=>p.forward))-Math.min(...local.map(p=>p.forward))-s.length)<1e-4);
  const saved=all(out).filter(p=>p.heavenCampaignTelegraph);e.x=-3;e.z=-60;e.yaw=-1;sim.state.player.x=20;const moved=empty();Art.drawEnemy(moved,sim,e,999);assert.deepEqual(all(moved).filter(p=>p.heavenCampaignTelegraph),saved);
  e.mode='recover';const noWarning=empty();Art.drawEnemy(noWarning,sim,e,0);assert.ok(!all(noWarning).some(p=>p.heavenCampaignTelegraph));
+});
+
+test('stationary warning borders clear real authored paving and retain strong palette contrast without flashing',()=>{
+ const World=require('../src/world-heaven-hell.js'),paving=[];
+ World.decorate({add(kind,x,y,z,sx,sy,sz,c,opt={}){if(opt.paving||opt.routeInlay)paving.push({top:y+sy/2,c});}},World.realms.find(r=>r.id==='heaven'),{height:()=>1.57});
+ assert.ok(paving.length);const ceiling=Math.max(...paving.map(p=>p.top));
+ const luminance=c=>{const linear=v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4;};return .2126*linear(c>>16&255)+.7152*linear(c>>8&255)+.0722*linear(c&255);};
+ for(let index=0;index<2;index++){
+  const sim=specimen(),e=actor(sim,index);e.mode='windup';sim.state.settings.reducedMotion=true;
+  e.strike=Object.freeze(index===0?{kind:'beam',x:e.x,z:e.z,yaw:0,length:9,halfWidth:.65}:{kind:'pulse',x:e.x,z:e.z,radius:3.4});
+  const out=empty();Art.drawEnemy(out,sim,e,0);const warning=projected(out).filter(({p})=>p.heavenCampaignTelegraph);assert.ok(warning.length);
+  assert.ok(warning.every(({v})=>v[1]>ceiling+.005),'actual warning vertices must remain above decorative paving/inlays');
+  const tones=[...new Set(all(out).filter(p=>p.heavenCampaignTelegraph).map(p=>luminance(p.c)))];assert.ok(tones.length>=2,'paired border stays distinct on both light paving and dark craft inlays');
+  for(const tile of paving)assert.ok(Math.max(...tones.map(t=>(Math.max(t,luminance(tile.c))+.05)/(Math.min(t,luminance(tile.c))+.05)))>=3,'at least one actual border stroke contrasts with each authored paving/inlay');
+  const later=empty();Art.drawEnemy(later,sim,e,999);assert.deepEqual(later,out,'reduced motion uses the same quiet visible warning');
+ }
 });
 
 test('relay warning is a radial perimeter at the actual locked pulse center and never exceeds its real radius',()=>{
