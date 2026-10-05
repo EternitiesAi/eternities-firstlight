@@ -13,9 +13,9 @@ ROOT = Path(__file__).resolve().parents[1]
 
 CLI_BROWSER_OUTPUTS = frozenset({'bridge_browser', 'earth_story_transactions_browser',
     'realm_givers_browser', 'realm_trails_north_browser',
-    'coastward_bridge_posts_browser', 'practice_visibility_browser', 'hell_campaign_browser'})
+    'coastward_bridge_posts_browser', 'practice_visibility_browser', 'hell_campaign_browser', 'heaven_campaign_browser'})
 GUARDED_BROWSER_OUTPUTS = frozenset({'realm_givers_browser', 'realm_trails_north_browser',
-    'coastward_bridge_posts_browser', 'practice_visibility_browser', 'hell_campaign_browser'})
+    'coastward_bridge_posts_browser', 'practice_visibility_browser', 'hell_campaign_browser', 'heaven_campaign_browser'})
 BROWSER_SOURCE_OUTPUTS = frozenset({'realm_trails_north_browser', 'practice_visibility_browser'})
 ENV_BROWSER_OUTPUTS = {
     'bridge_community_browser': 'FIRSTLIGHT_BRIDGE_COMMUNITY_OUTPUT',
@@ -176,8 +176,18 @@ def main():
     run('hell-campaign-blade', ['node', 'tests/hell_campaign_journey.cjs'])
     run('hell-campaign-bow', ['node', 'tests/hell_campaign_journey.cjs', '--bow'])
     run('hell-campaign-veteran', ['node', 'tests/hell_campaign_journey.cjs', '--veteran'])
+    # Small canonical source JSON may stay in a C checkout. Explicit new D
+    # log roots also own their new earned-source cohort; never replace one.
+    heaven_output = output / 'heaven-campaign-earned'
+    if os.name == 'nt' and heaven_output.drive.upper() != 'D:':
+        heaven_output = ROOT / 'evidence10/heaven-campaign-earned'
+    run('heaven-campaign-blade', ['node', 'tests/heaven_campaign_journey.cjs', '--output', str(heaven_output)])
+    run('heaven-campaign-bow', ['node', 'tests/heaven_campaign_journey.cjs', '--output', str(heaven_output), '--bow'])
+    run('heaven-campaign-veteran', ['node', 'tests/heaven_campaign_journey.cjs', '--output', str(heaven_output), '--veteran'])
     if args.browser:
         prepare_browser_sources(args.browser_output)
+        command, extra_env = browser_run_spec('heaven_campaign_browser', args.browser_output, mode=args.browser_output_mode)
+        run('heaven_campaign_browser', command, timeout=1200, extra_env=extra_env)
         command, extra_env = browser_run_spec('hell_campaign_browser', args.browser_output, mode=args.browser_output_mode)
         run('hell_campaign_browser', command, timeout=1200, extra_env=extra_env)
         # Qualify the recently extended Earth presentation and native giver
