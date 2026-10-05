@@ -1,3 +1,7 @@
+# Cosmos native return routing and delivered Atlantis, 2026-10-05
+
+Native03 at6bfaa2d failed after2526/2526 reached checks passed because its final click targeted the old hidden Cosmos return button. The controller now uses the visible WorldUI return; two actual UI-owner CPU regressions pass. Native04 remains required. See docs/development/COSMOS_NATIVE03_RETURN_FAILURE_2026-10-05.md; no source/page/save change was needed. Complete current browser qualification, normal-time footage and human playtest remain pending. Atlantis's finalbf6f8bd source/equality and complete212 gate are delivered in PR46; evidence7a70cab has635 remotely byte-verified payloads. Keep newer Cosmos gameplay and both parents' continuity below. The whole game remains unfinished.
+
 # Cosmos native02 and readable player directions, 2026-10-05
 
 Actual native02 screenshots show the Guardian body, marked attacks and both views, but the run stopped after1658 successful reached assertions at an unsupported left-side witness approach. Actual ground/model/path checks show the existing right side works; the new controller uses the real planner. This is not a complete native result. The scene also exposed engineering language in the player tracker:47 reviewed prose replacements now describe Anik's work, marked attacks, feeds and waiting payment plainly. Current focused122/CPU47/source-earned3 successes do not establish human enjoyment or pacing.
@@ -13,6 +17,16 @@ The Open Confluence is integrated on gameplay/cosmos-open-confluence-20261005 fr
 Atlantis native857/24whole-browser restarts/48pixel controls and actual131.842-second normal-time RTX route passed; full02 is running at779ef47 after its preserved old single-roof source-test failure. Heaven's complete204 gate and final297 fresh161 source/equality/evidence receipt are delivered in PR45; Hell remains qualified at its recorded epoch. Do not pool targeted successes into a complete current gate. The whole playable-draft goal and hourly continuation remain active.
 
 Keep heavy workD, the same integrated game, small colleague stages and bounded qualification directories/clips. Respect the blocked standalone-clone deletion; no alternate retry. No main merge/deployment/paid/billing/Unreal/Luna/fake participants/personal-save inspection/protected-sanctuary changes.
+
+# Atlantis footage and deferred founder play, 2026-10-05
+
+Atlantis PR46 now has one complete current verifier invocation at `779ef47a33a8f2a646c8b0e4b67757c8ce2080c8`:212commands,110syntax modules,1302Node passes/zero failures/skips,94Python passes plus1existingWindows symlink skip,55command-earned journeys and44browser suites. Root observed actual exit0. The originally fresh remote qualification checkout was created at8688c6f and refreshed to779ef47; only archived documentation media are absent. A later documentation head still needs its own exact remote source/equality receipt. Do not relabel this as a new clone created at779.
+
+Separate native02 passes857checks/24whole-Chromium restarts/48pixel controls with six bounded profiles and no videos. Normal capture03 uses ordinaryRAF/native menus and keyboard for131.842seconds at1440x900balanced on Chromium143/RTX3080ANGLE D3D11. The final31.8-second795-decoded-frame clip is unchanged-speed excerpts, not a whole playthrough, human pacing or performance certification. The short MP4 is6944840bytes/SHA256d1acb1d9389c28a2c443594d308ed5ef08adc393066f10c0c6986f26efc28b55.
+
+Evidence `e1e8a7742d0185dc1776fc96bb403af8c03d79a6` is freshly fetched and fully matched against its manifest:465payload files/71461618bytes. Publication uses a separate Git index and streamed remote readback, adding no game copy, profile or raw video. Native01, two controller failures, failed mux attempts and full01's stale roof assertion remain visible. Hosted c519300 jobs stopped before execution due to account billing; later heads and Linux are unqualified. Preserve Dom's deferred human route/combat/reward/camera questions.
+
+Cosmos PR47 is the integrated next arc; its native/normal/full-browser work has separate pending gates. The Earth homecoming is still prospective. The whole browser-draft goal and hourly continuation remain active. Preserve all save owners, XP1-5/9999, gear/socket/fittings, both views, explicit history and personal-save boundaries. Keep bounded storageD; do not retry the blocked standalone-clone deletion, merge main, deploy, change billing or use paid providers.
 
 # Actual Atlantis outing and deferred human play, 2026-10-05
 
