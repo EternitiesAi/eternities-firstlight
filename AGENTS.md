@@ -1,3 +1,11 @@
+# Cosmos readable work and supported witness approach, 2026-10-05
+
+Use the latest gameplay/cosmos-open-confluence-20261005 head and docs/development/COSMOS_NATIVE02_AND_COPY_2026-10-05.md before earlier pending sections. Native01 and02 failed controller actions and remain preserved; neither is a completed native gate. Actual Avar model/feet have ground; the controller now selects a supported viewing side through production pathfinding without moving actors or changing geometry.47 reviewed text replacements remove engineering language while retaining IDs, states, rewards, costs, chronology and choices.122 focused Node checks and47 explicit-current-cohort Python checks pass with no skips. All three new earned03 journeys complete under the current source epoch; native03, ordinary footage and the full current remote verifier remain required.
+
+Both checked-in pages are identical2961933bytes/SHA256ba121c8ad0c40369ef540e6c3b42279d541761512518efb45472a7d53630e1cf. World/key9, adventure12 and optionalcosmosCampaign1 remain. Preserve source freeze during native/footage qualification, all old owners, XP1-5/9999, gear/socket/fittings, explicit choices and both cameras. Atlantis full02 passes212 commands at779ef47; later documentationbf6f8bd has its own passed168-source/equality audit, with final evidence delivery being recorded independently. The whole draft goal remains active. Keep bounded D storage and respect the blocked standalone deletion; no main/deploy/paid/billing/personal saves/unrelated workers.
+
+Earlier sections retain historical scoped checkpoints.
+
 # Integrated Cosmos service campaign, 2026-10-05
 
 The Open Confluence is integrated on gameplay/cosmos-open-confluence-20261005 from Atlantis779ef47a33a8f2a646c8b0e4b67757c8ce2080c8. The permanent public service extension has actual body-qualified ground, cover, picking and models. Optional cosmosCampaign1 has strict chronological support/account/open/claim gates. Real anchored Reclaimer/Guardian AI locks line/cross/annulus contact; actual blade/projectile callers own exhaustion and no legacy drops. West/east physical releases change future frames only. Both cameras, current controls, old ledgers, equipment/socket/fittings, XP1-5/9999, companion, homes/crops, music/notes and explicit history retain their owners.

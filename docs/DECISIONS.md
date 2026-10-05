@@ -1,3 +1,9 @@
+# Keep actual footing and simplify the quest voice, 2026-10-05
+
+Retain Avar's existing supported center(45,-35) and the static Cosmos geometry. Native02 failed a controller-selected viewing point in a genuine gap. Choose a supported, production-planned side, then retain strict walking/pixel checks. Measure actual model vertices and grounded feet rather than assuming a center probe proves full support. The initial projection fixture omitted required optional support work and was refused; repair its labelled synthetic history instead of weakening validation.
+
+Player text should explain action and consequence. Replace the47 displayed engineering phrases while keeping every definition ID, reward/cost, pattern, state/chronology, account consent and attribution. The page/source epoch changes, so earned02 is historical and complete earned03 is required. Updating stale prose/hash expectations follows the reviewed text change; all physical/economic/consent tests stay. Preserve failed native and focused epochs, distinguish source/native/ordinary/hardware/human gates, and finish the coherent Earth-return draft arc after Cosmos qualification. No old saves, XP, class/soul consent or earlier payments are rewritten.
+
 # Independent support and preserved companion ownership, 2026-10-05
 
 The Open Confluence is integrated on gameplay/cosmos-open-confluence-20261005 from Atlantis779ef47a33a8f2a646c8b0e4b67757c8ce2080c8. The permanent public service extension has actual body-qualified ground, cover, picking and models. Optional cosmosCampaign1 has strict chronological support/account/open/claim gates. Real anchored Reclaimer/Guardian AI locks line/cross/annulus contact; actual blade/projectile callers own exhaustion and no legacy drops. West/east physical releases change future frames only. Both cameras, current controls, old ledgers, equipment/socket/fittings, XP1-5/9999, companion, homes/crops, music/notes and explicit history retain their owners.

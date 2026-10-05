@@ -1,3 +1,9 @@
+# Cosmos native02 and readable player directions, 2026-10-05
+
+Actual native02 screenshots show the Guardian body, marked attacks and both views, but the run stopped after1658 successful reached assertions at an unsupported left-side witness approach. Actual ground/model/path checks show the existing right side works; the new controller uses the real planner. This is not a complete native result. The scene also exposed engineering language in the player tracker:47 reviewed prose replacements now describe Anik's work, marked attacks, feeds and waiting payment plainly. Current focused122/CPU47/source-earned3 successes do not establish human enjoyment or pacing.
+
+Human questions remain pending: could you follow the two-support route, read ring/cross danger in both views, understand the account choice, and feel the fee advanced a project? Atlantis's actual131.842-second prepared-character route and31.8-second edited clip are separate from fresh human pacing or sustained performance. No founder playtest was performed in this run.
+
 # Cosmos real-rule journey and pending founder play, 2026-10-05
 
 The Open Confluence is integrated on gameplay/cosmos-open-confluence-20261005 from Atlantis779ef47a33a8f2a646c8b0e4b67757c8ce2080c8. The permanent public service extension has actual body-qualified ground, cover, picking and models. Optional cosmosCampaign1 has strict chronological support/account/open/claim gates. Real anchored Reclaimer/Guardian AI locks line/cross/annulus contact; actual blade/projectile callers own exhaustion and no legacy drops. West/east physical releases change future frames only. Both cameras, current controls, old ledgers, equipment/socket/fittings, XP1-5/9999, companion, homes/crops, music/notes and explicit history retain their owners.

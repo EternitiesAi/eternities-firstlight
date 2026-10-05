@@ -64,7 +64,7 @@ function capsuleSupported(a,b,r){
 
 test('exact original source fixtures and installed catalogue match the declared freeze',()=>{
  for(const[name,hash]of Object.entries(expected))assert.equal(sha(path.join(PREIMAGE,name)),hash,name);
- assert.equal(sha(DATA),'64e2605486bd499e5aafcf953f2f0e985896ad0c00343efe33e9c15f52e34069');
+ assert.equal(sha(DATA),'9c7d4d30b863e25812df3651e785bff3f87495b37ede488804ee03178cab93d2');
 });
 test('original geometry rejects the new reach; installed owner adds only seven patches/eight solids',()=>{
  assert.equal(old.N.walkable(54,-44,.95),false);assert.equal(old.N.pick([54,15,-44],[0,-1,0]),null);

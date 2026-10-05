@@ -12,7 +12,7 @@ const D=require(DATA),d=D.definition,g=D.geometry;
 const inputs=['src/cosmos-campaign-data.js','src/cosmos.js','src/world-foundations.js','src/realm-trails-cosmos.js','src/local-life.js'].map(p=>path.join(ROOT,p));inputs.push(PREIMAGE);
 const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 const epoch=Object.fromEntries(inputs.map(p=>[p,sha(p)]));
-assert.equal(sha(DATA),'64e2605486bd499e5aafcf953f2f0e985896ad0c00343efe33e9c15f52e34069');
+assert.equal(sha(DATA),'9c7d4d30b863e25812df3651e785bff3f87495b37ede488804ee03178cab93d2');
 assert.equal(sha(PREIMAGE),'dc646ba254ad4c482685c58d342e50c696832f479c8a13526faeed089fe4d3c5');
 const N=require(path.join(ROOT,'src/cosmos.js')),W=require(path.join(ROOT,'src/world-foundations.js'));
 const baseline={module:{exports:{}}};vm.runInNewContext(fs.readFileSync(PREIMAGE,'utf8'),baseline,{filename:PREIMAGE});const O=baseline.module.exports;
@@ -115,15 +115,15 @@ test('all-three variants enrich the same graph without a larger fee or third-sup
 test('supplied alternatives are explicit and require neither rare work nor payment',()=>{
  assert.equal(d.costs.normalInventoryCosts,false);assert.deepEqual(d.costs.accept,{});assert.deepEqual(d.costs.actions,{});assert.deepEqual(d.costs.claim,{});
  for(const s of D.supports){assert.deepEqual(def(s.assistance).requires,['read-local-cost']);assert.equal(def(s.assistance).alternativeTo,s.complete);assert.ok(s.supplied.length>30);}
- assert.match(d.summary,/disclosed supplied assistance/);assert.match(d.danger,/no deadline, material loss or hidden optional prerequisite/);
+ assert.match(d.summary,/Each has a tested, supplied alternative/);assert.match(d.danger,/No deadline or material loss applies/);
 });
 test('actual exhaustion, both physical feeds and central disable remain independent facts',()=>{
  const id='disable-central-link';assert.deepEqual(def(id).requires,['release-west-feed','release-east-feed','guardian-settled']);
  assert.equal(canRecord(['guardian-settled'],id),false);
  assert.equal(canRecord(['release-west-feed','release-east-feed'],id),false);
  assert.equal(canRecord(['release-west-feed','release-east-feed','guardian-settled'],id),true);
- for(const e of d.enemies){assert.equal(def(e.defeatStep).kind,'defeat');assert.match(def(e.defeatStep).text,/actual|Actual/);}
- assert.match(def('guardian-settled').text,/alone neither releases/);
+ for(const e of d.enemies){assert.equal(def(e.defeatStep).kind,'defeat');assert.match(def(e.defeatStep).text,/with your blade or bow/);}
+ assert.match(def('guardian-settled').text,/Both feeds must also be released before you disconnect the central link/);
 });
 test('physical reconfiguration of two PREPARED supports is required after accountability',()=>{
  const r=['read-local-cost','assist-material','assist-living','accountability'];
@@ -141,7 +141,7 @@ test('finite version-one migration and open/account/claim facts have explicit bo
 test('honest whole-payload fee is fixed, with no equipment grant or existing-curve change',()=>{
  assert.deepEqual(d.reward,{xp:50,coins:20,ore:5,materials:{wood:4,fiber:3,crystal:2}});
  assert.match(d.costs.fee,/full material\/currency payload/);assert.match(d.costs.fee,/only XP clips at 9999/);
- assert.match(d.completionText,/not a universal weapon upgrade/);assert.equal(d.reward.gear,undefined);
+ assert.match(d.completionText,/Use the materials for projects you choose; your equipment is unchanged/);assert.equal(d.reward.gear,undefined);
  assert.match(d.costs.fee,/No heal, refill, auto-equip, socket, level-curve or old-payment change/);
 });
 test('two prospective threat identities are distinct ordinary fixed bodies with safe retreat',()=>{
@@ -164,7 +164,7 @@ test('saved physical releases change future geometry rather than health/damage/t
  const ring=D.patterns.guardian.ring,cross=D.patterns.guardian.cross;
  assert.deepEqual(ring.afterEastRelease,{outerRadius:3.2});assert.deepEqual(cross.afterWestRelease,{axes:[0]});
  assert.ok(ring.afterEastRelease.outerRadius>ring.innerRadius&&ring.afterEastRelease.outerRadius<ring.outerRadius);
- assert.match(D.patterns.rules.frame,/subsequent frames only/);assert.match(def('release-west-feed').text,/current warning\/contact frame remains unchanged/);
+ assert.match(D.patterns.rules.frame,/subsequent frames only/);assert.match(def('release-west-feed').text,/If an attack is already marked, that attack still follows its mark/);
 });
 test('prospective geometry stays within seven patches/eight STATIC solids and fixed height',()=>{
  assert.equal(g.patches.length,7);assert.equal(g.solids.length,8);assert.ok(g.patches.length<=8&&g.solids.length<=18);assert.equal(g.dynamicCollision,false);

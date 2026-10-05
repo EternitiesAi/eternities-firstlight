@@ -310,7 +310,14 @@ class CosmosMixin:
         status = self.diag()['cosmos']['campaign']['witnesses']
         expected = [w['id'] for w in self.definition['witnesses'] if all(s in self.state()['cosmosCampaign']['steps'] for s in w['appearsAfter'])]
         self.check('actual transient witness membership follows only accepted facts', [w['id'] for w in status] == expected and identifier in expected)
-        self.walk_exact(terms['x']-1.2, terms['z'], 'view owned ' + terms['name'])
+        # A witness may stand on a sound court beside a gap. Choose a reachable
+        # viewing side through the real planner instead of assuming its left
+        # side has ground. This does not move the witness or relax walk checks.
+        approach = self.ev(r"""w=>{const sim=Realm.test.worldContext().sim,N=RealmCosmos;
+         const candidates=[{x:w.x-1.2,z:w.z},{x:w.x+1.2,z:w.z},{x:w.x,z:w.z-1.2},{x:w.x,z:w.z+1.2}];
+         return candidates.find(p=>N.walkable(p.x,p.z,.31)&&RealmCore.pathfind(sim.state.player,p,sim.navRoom))||null;}""", terms)
+        self.check('a full-body supported production route reaches the witness viewing side', approach is not None, approach)
+        self.walk_exact(approach['x'], approach['z'], 'view owned ' + terms['name'])
         for view in ('adventure', 'follow'):
             self.pixel_control(identifier, view, 'owned-'+identifier)
 
