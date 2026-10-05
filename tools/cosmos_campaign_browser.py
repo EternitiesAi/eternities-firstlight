@@ -610,7 +610,7 @@ class CosmosMixin:
         self.check('labelled production replay never duplicates the native fee', retry.get('duplicate') and self.state() == before)
         return_point = self.ev('RealmCosmos.POINTS.find(p=>p.kind==="return")')
         self.walk_exact(return_point['x'], return_point['z'], 'ordinary supported return at Three Lamps')
-        self.page.locator('#cosmos-home').click(); self.render()
+        self.page.locator('#world-home').click(); self.render()
         self.check('normal native return keeps open/account/paid facts', self.diag()['scene'] == 'valley' and self.state()['cosmosCampaign'] == before['cosmosCampaign'])
         self.record['final_world'] = self.state()
         self.record['final_native_bytes'] = self.ev('localStorage.getItem(RealmCharacters.KEY)')
