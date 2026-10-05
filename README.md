@@ -1,4 +1,21 @@
-# Firstlight 10 — Bellweather Crossing
+# Firstlight — browser draft in development
+
+The current game includes the original four chapters, useful equipment projects
+and repeat outings, inhabited Earth roads, five realm openings and continuing
+regional campaigns. Hell's exterior work, Heaven's public welcome, Atlantis's
+gallery and dry-quay encounter, and Cosmos's Open Confluence have distinct
+physical tasks and deliberate lasting choices. These build on the earlier local
+commissions and keep both cameras, creative tools, housing and companion play.
+The connected Earth homecoming and whole-draft acceptance are still in development.
+
+Current integrated Cosmos source is under review in
+[PR47](https://github.com/EternitiesAi/eternities-firstlight/pull/47), stacked on
+Atlantis PR46. The initial source gate passes all 175 commands; its new native
+and complete browser qualification remain separate pending steps. Read the newest
+[current-state record](docs/CURRENT_STATE.md) for exact epochs and remaining limits.
+The launch instructions below run the same full game without installing an engine.
+
+## Original Firstlight 10 baseline and continuing features
 
 Continuous development starts at [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md). Run `python tools/verify.py` for portable source verification. The original edition description below is retained; its delivery-time validation and publication statements are historical. See [the bootstrap record](docs/development/BOOTSTRAP_RESULTS_2026-09-12.md) for this import's actual results and limits.
 
