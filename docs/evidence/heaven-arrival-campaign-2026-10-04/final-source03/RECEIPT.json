@@ -1,0 +1,1168 @@
+{
+  "schema": "firstlight-heaven-final-source03-v1",
+  "status": "passed",
+  "createdUtc": "2026-10-05T08:22:44.350202+00:00",
+  "execution": {
+    "owner": "Root",
+    "exitCode": 0,
+    "exitObservedBy": "Root polling unified exec session26449; reported to evidence publisher in the authorized task",
+    "numericExitMarkerInConsole": false,
+    "logTerminal": "Verification passed. Automated checks do not qualify human pacing or device performance.",
+    "command": "python tools/verify.py --output <D>/final-source03; source only, no browser rerun"
+  },
+  "testedHead": "297540dcce8d18f14f810a7ecc1c1da4dd608f8f",
+  "qualificationCheckout": "D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game",
+  "freshlyClonedForThisFinalHead": true,
+  "trackedCleanAtReceipt": true,
+  "counts": {
+    "commands": 161,
+    "passedCommands": 161,
+    "browserCommands": 0,
+    "build": 1,
+    "syntaxModules": 106,
+    "node": {
+      "total": 1243,
+      "passed": 1243,
+      "failed": 0,
+      "skipped": 0
+    },
+    "python": {
+      "total": 66,
+      "passed": 65,
+      "failed": 0,
+      "skipped": 1,
+      "skip": "test_symlink_refused (test_checkout_import.ImportRules.test_symlink_refused) ... skipped 'Windows account lacks symlink privilege; real symlink refusal is exercised on Linux CI'"
+    },
+    "commandEarnedJourneyCommands": 52
+  },
+  "commandLabels": [
+    "build",
+    "syntax-adventure-art",
+    "syntax-adventure-ui",
+    "syntax-adventure",
+    "syntax-app",
+    "syntax-arsenal-art",
+    "syntax-arsenal-ui",
+    "syntax-arsenal",
+    "syntax-beacon-art",
+    "syntax-beacon",
+    "syntax-bridge-art",
+    "syntax-bridge-community-art",
+    "syntax-bridge-community-ui",
+    "syntax-bridge-community",
+    "syntax-bridge-moment-view",
+    "syntax-characters-ui",
+    "syntax-characters",
+    "syntax-classes-ui",
+    "syntax-classes",
+    "syntax-coastward-settlement-art",
+    "syntax-coastward-woodland-art",
+    "syntax-combat-view",
+    "syntax-combat",
+    "syntax-companion-art",
+    "syntax-core",
+    "syntax-cosmos-art",
+    "syntax-cosmos-ui",
+    "syntax-cosmos",
+    "syntax-creative",
+    "syntax-crossing-art",
+    "syntax-crossing-ui",
+    "syntax-crossing",
+    "syntax-drover-art",
+    "syntax-earth-art",
+    "syntax-earth-expedition-art",
+    "syntax-earth-expedition-beast-art",
+    "syntax-earth-expedition-dialogue",
+    "syntax-earth-expedition-ui",
+    "syntax-earth-expedition",
+    "syntax-earth-notes-art",
+    "syntax-earth-notes-ui",
+    "syntax-earth-notes",
+    "syntax-earth-shoulder-art",
+    "syntax-earth-story-ui",
+    "syntax-earth-story",
+    "syntax-earth-ui",
+    "syntax-earth",
+    "syntax-elderweald-trail-art",
+    "syntax-elderweald-world",
+    "syntax-engine",
+    "syntax-experience",
+    "syntax-gathering-adapter",
+    "syntax-gathering-art",
+    "syntax-gathering-music",
+    "syntax-gathering-ui",
+    "syntax-gathering",
+    "syntax-heaven-campaign-art",
+    "syntax-heaven-campaign-data",
+    "syntax-heaven-campaign-ui",
+    "syntax-heaven-campaign",
+    "syntax-hell-campaign-art",
+    "syntax-hell-campaign-data",
+    "syntax-hell-campaign-ui",
+    "syntax-hell-campaign",
+    "syntax-home-history-art",
+    "syntax-home-history-ui",
+    "syntax-home-history",
+    "syntax-local-life-art",
+    "syntax-local-life-ui",
+    "syntax-local-life",
+    "syntax-mill-gate-art",
+    "syntax-millwright-art",
+    "syntax-pursuit-ui",
+    "syntax-pursuit",
+    "syntax-quarry-art",
+    "syntax-realm-art-data",
+    "syntax-realm-atlas-ui",
+    "syntax-realm-craft",
+    "syntax-realm-givers-art",
+    "syntax-realm-trails-art",
+    "syntax-realm-trails-cosmos",
+    "syntax-realm-trails-north",
+    "syntax-realm-trails-south",
+    "syntax-realm-trails-ui",
+    "syntax-realm-trails",
+    "syntax-road-art",
+    "syntax-road",
+    "syntax-rpg-ui",
+    "syntax-sandbox-art",
+    "syntax-sandbox-ui",
+    "syntax-sandbox",
+    "syntax-skitter-art",
+    "syntax-soundscape",
+    "syntax-starter-art",
+    "syntax-starter-ui",
+    "syntax-starter",
+    "syntax-surface-assets",
+    "syntax-traveler-art",
+    "syntax-traveler-equipment-art",
+    "syntax-workshop-transactions",
+    "syntax-world-atlantis-earth",
+    "syntax-world-foundations-art",
+    "syntax-world-foundations-ui",
+    "syntax-world-foundations",
+    "syntax-world-ground-coalescing",
+    "syntax-world-heaven-hell",
+    "syntax-world",
+    "rules",
+    "python",
+    "crossing-blade",
+    "crossing-bow",
+    "starter-blade",
+    "starter-bow",
+    "starter-veteran",
+    "pursuit-blade",
+    "pursuit-bow",
+    "pursuit-veteran",
+    "characters-journey",
+    "classes-journey",
+    "cosmos-journey",
+    "earth-journey",
+    "earth-outing-blade",
+    "earth-outing-bow",
+    "earth-outing-veteran",
+    "earth-story-blade",
+    "earth-story-bow",
+    "earth-story-veteran",
+    "earth-notes-blade",
+    "earth-notes-bow",
+    "earth-notes-veteran",
+    "gathering-blade",
+    "gathering-bow",
+    "gathering-veteran",
+    "world-foundations-blade",
+    "world-foundations-bow",
+    "world-foundations-veteran",
+    "realm-trails-blade",
+    "realm-trails-bow",
+    "realm-trails-south-blade",
+    "realm-trails-south-bow",
+    "realm-comparator-blade",
+    "realm-comparator-bow",
+    "realm-comparator-veteran",
+    "earth-expedition-blade",
+    "earth-expedition-bow",
+    "earth-expedition-veteran",
+    "local-life-blade",
+    "local-life-bow",
+    "local-life-veteran",
+    "home-history-blade",
+    "home-history-bow",
+    "home-history-veteran",
+    "bridge-community-blade",
+    "bridge-community-bow",
+    "bridge-community-veteran",
+    "hell-campaign-blade",
+    "hell-campaign-bow",
+    "hell-campaign-veteran",
+    "heaven-campaign-blade",
+    "heaven-campaign-bow",
+    "heaven-campaign-veteran"
+  ],
+  "pages": [
+    {
+      "path": "index.html",
+      "bytes": 2813265,
+      "sha256": "d1694ee59e326603746e4a9f5850ecdb07ec48f741d250b54e860f78f988a896"
+    },
+    {
+      "path": "FIRSTLIGHT_VALLEY.html",
+      "bytes": 2813265,
+      "sha256": "d1694ee59e326603746e4a9f5850ecdb07ec48f741d250b54e860f78f988a896"
+    }
+  ],
+  "nonDocumentEquality": {
+    "baselineFullGateHead": "3ee1c3c299e47229c15eccf8d9a908d9ab7312df",
+    "finalHead": "297540dcce8d18f14f810a7ecc1c1da4dd608f8f",
+    "equal": true,
+    "entries": 363,
+    "comparison": "Every recursive Git tree entry path/mode/type/blob, excluding docs/** and Markdown paths; .gitattributes, configs, source, assets, tests, tools and generated HTML remain included.",
+    "canonicalEncoding": "UTF-8 JSON of lexically sorted [path,mode,type,blob] records, compact separators, ensure_ascii=false",
+    "baselineCanonicalSha256": "8c8f7a9f0a20008cd3c90335c93bcb06a290ddc50340f988c5ebdd16e4567724",
+    "finalCanonicalSha256": "8c8f7a9f0a20008cd3c90335c93bcb06a290ddc50340f988c5ebdd16e4567724",
+    "allTreeDifferences": [
+      {
+        "path": "AGENTS.md",
+        "before": [
+          "100644",
+          "blob",
+          "a91cd351c84648ee3a3c08a0d378fe42da7ce473"
+        ],
+        "after": [
+          "100644",
+          "blob",
+          "85d8f4fd72335e3b4685fd3cbcafad99e890603e"
+        ]
+      },
+      {
+        "path": "docs/CURRENT_STATE.md",
+        "before": [
+          "100644",
+          "blob",
+          "8bcd17a1ffd3f3ef1b1f56e9af4f594688231112"
+        ],
+        "after": [
+          "100644",
+          "blob",
+          "e83cdbda4c1ae633b52a9ef1be92578a06f71898"
+        ]
+      },
+      {
+        "path": "docs/DECISIONS.md",
+        "before": [
+          "100644",
+          "blob",
+          "7489011cac65471aa676926208c459d28b47e503"
+        ],
+        "after": [
+          "100644",
+          "blob",
+          "3b6feb3e3e7f43a83378368a2a4bda9aec452458"
+        ]
+      },
+      {
+        "path": "docs/NEXT_TASK.md",
+        "before": [
+          "100644",
+          "blob",
+          "c2489f463b601bb732b565d628d4f5e7d9631202"
+        ],
+        "after": [
+          "100644",
+          "blob",
+          "9265411c9e75dd7bb1bf59766e284bb0159a2176"
+        ]
+      },
+      {
+        "path": "docs/PLAYTEST_NOTES.md",
+        "before": [
+          "100644",
+          "blob",
+          "c07d559d550ef89ff5c072c3d5ac215bd95407cc"
+        ],
+        "after": [
+          "100644",
+          "blob",
+          "81b7bd85acc2a41e675f73fa45228295b2bc2875"
+        ]
+      },
+      {
+        "path": "docs/development/HEAVEN_CAMPAIGN_DELIVERY_2026-10-05.md",
+        "before": null,
+        "after": [
+          "100644",
+          "blob",
+          "37535847bc9a0b7f3be303add3f4321ba4adfe2a"
+        ]
+      },
+      {
+        "path": "docs/development/HEAVEN_FULL02_AUDIT_2026-10-05.json",
+        "before": null,
+        "after": [
+          "100644",
+          "blob",
+          "8f143dd5b13488bccd0be2edc34ad55cbc68d07d"
+        ]
+      },
+      {
+        "path": "docs/development/HEAVEN_FULL02_REVIEW_2026-10-05.md",
+        "before": null,
+        "after": [
+          "100644",
+          "blob",
+          "2967f0f699996e57b904c6e4f228a0361066aa3a"
+        ]
+      }
+    ]
+  },
+  "qualificationTransferredByEquality": {
+    "fullGate": {
+      "head": "3ee1c3c299e47229c15eccf8d9a908d9ab7312df",
+      "commands": 204,
+      "sourceCommands": 161,
+      "browserSuites": 43,
+      "nativeHeavenChecks": 882
+    },
+    "meaning": "Full204/browser43/native882 were executed at3ee1c3c. Fresh final161 source commands executed at297540dc. No claim that browsers were rerun at297540dc."
+  },
+  "evidencePreservation": {
+    "parentEvidenceCommit": "cd7a75e2637d8f65452d5449e766d283ee2b4e71",
+    "priorManifestEntries": 499,
+    "priorManifestBytes": 36227751,
+    "priorManifestSha256": "9fe7ead216317574bedc5b5b9088dff51239a7d48372112db4bb00301b3ca8bd",
+    "allPriorEntryBytesAndSha256VerifiedBeforeAppend": true,
+    "addedLogEntries": 162,
+    "addedReceiptEntries": 1,
+    "expectedManifestEntries": 662,
+    "full01": "negative-and-focused/FULL01_WRAPPER_FAILURE.log remains unchanged; wrapper seed-only report failure before native browser preflight",
+    "partialEvidenceCommit": "46fc2200c69185eb891b607654be5783c962c424",
+    "partialEvidenceMeaning": "Preserved historical partial copy commit; not a complete499-entry snapshot",
+    "media": "Every prior entry and original media byte is retained. No profiles, full checkout or movie copies added."
+  },
+  "hosted": {
+    "recordedHead": "36e1568cbbcbae614cf19f02b8452288128cf6a6",
+    "recordedRun": 37266353807,
+    "jobs": 45,
+    "executedSteps": 0,
+    "status": "billing blocked before execution",
+    "boundary": "Retained36e1568 receipt only; no hosted check at3ee1c3c or297540dc is asserted."
+  },
+  "limits": [
+    "Windows symlink test skipped; no Linux execution qualification",
+    "No human play acceptance",
+    "882 accelerated native checks and actual ordinary-time hardware footage are separate",
+    "Known-route hardware recording is not sustained GPU/performance qualification",
+    "No main merge or deployment"
+  ],
+  "sourceReceipts": [
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\bridge-community-blade.log",
+      "bytes": 115,
+      "sha256": "5ef9dbac0926b8904107f463f8215323de6ae3cedf3a4ccb99016d2d5078f960"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\bridge-community-bow.log",
+      "bytes": 119,
+      "sha256": "81802a66211ae7e69bbb878bb946d487913223602fdc76dfc57bbd93ed927c42"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\bridge-community-veteran.log",
+      "bytes": 123,
+      "sha256": "08fddde5b7978d3f70af5950ba7c6d4774ffd2d79cdff0c839c3ece5194e0022"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\build.log",
+      "bytes": 91,
+      "sha256": "a68c8d711b60d37b74cfedd385b7cb87cca49bd68fc538199871659da5277a3a"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\characters-journey.log",
+      "bytes": 3058,
+      "sha256": "29206b21f6f9f44d2eab515bb2340fee021e0a39fe625b5b013e9b9313e16fce"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\classes-journey.log",
+      "bytes": 4224,
+      "sha256": "840a15f696168ca927cab3e41e6d5a778183da271266459d3e3cb5a78294714d"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\cosmos-journey.log",
+      "bytes": 630,
+      "sha256": "af64b214141bfed5acb6be942f4fd00f0d699863fe69e9d2ad597b57488ead54"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\crossing-blade.log",
+      "bytes": 625,
+      "sha256": "0b27a5083c98c2983b9d5dd15b33456d395f182b4b299bbf46412b4f244ba956"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\crossing-bow.log",
+      "bytes": 649,
+      "sha256": "f1f412fb8081e5e0c9e1c60e5ea9b8d1de892fbc3c23c2a76e5b1470f8c04d4a"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\earth-expedition-blade.log",
+      "bytes": 834,
+      "sha256": "ae0f8b181188a9ea39a2d2f98b24be9e461949c5deb8eef97c9ce052c31a30d9"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\earth-expedition-bow.log",
+      "bytes": 830,
+      "sha256": "c43819230b2c2b6662b2067040461c65a4ea1843738a91b68d2eb397d5cf4312"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\earth-expedition-veteran.log",
+      "bytes": 831,
+      "sha256": "87c2aaa48e93f48dc9b19621192b96db9d52cbf781cc3c6550c58527e5580aad"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\earth-journey.log",
+      "bytes": 602,
+      "sha256": "3ff99058090272b0714e48d3b762c052863ba86e925b646bc9e2af805885fbc6"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\earth-notes-blade.log",
+      "bytes": 2028,
+      "sha256": "1c61971367d0416d323eeebc2d908ae55e0c896b0f58e3f1be2fec33ec1e64ef"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\earth-notes-bow.log",
+      "bytes": 2030,
+      "sha256": "255c92c06dbdb1b5970aea8e9232643a3a4c9bf6feabee10e3056cc57d3659bb"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\earth-notes-veteran.log",
+      "bytes": 2022,
+      "sha256": "51e19a89ebd9f5d228cce8f4fd1612d577d26e927f5ae15a62bb37a18433a33a"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\earth-outing-blade.log",
+      "bytes": 5482,
+      "sha256": "be9b2f2c5cc1dc45ed3ada36ba842c06b1e0144b009f341107d3acafb80f6a60"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\earth-outing-bow.log",
+      "bytes": 6715,
+      "sha256": "e4e71e12da6150014a280b35387a3f507522cee791079ddbb89e5805a720d8c6"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\earth-outing-veteran.log",
+      "bytes": 3490,
+      "sha256": "adadae11e19f41650a4569534c9cd5f51b2a0e98c98f65eb086d2d04171efc60"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\earth-story-blade.log",
+      "bytes": 3039,
+      "sha256": "c6bb9c550591eab258f2da3d69158c33fdf20c0058fec48579e459c2aeca9dfd"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\earth-story-bow.log",
+      "bytes": 3448,
+      "sha256": "e4554ea096f11f364ab44457235a5a09f5eb40df809a244a3773602bcdf93953"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\earth-story-veteran.log",
+      "bytes": 2628,
+      "sha256": "82df0f786b6117455da4a183d146c907f9d388665cc88f5ef2967da02d355229"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\gathering-blade.log",
+      "bytes": 2008,
+      "sha256": "92b16092762b12ab22ab8571f6c886084d2d24d31e2818644c76573d98994695"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\gathering-bow.log",
+      "bytes": 2004,
+      "sha256": "849148245c9cf941d64079ec063fceeee214f38354f7378ebcf7e50621fab41b"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\gathering-veteran.log",
+      "bytes": 1998,
+      "sha256": "5582eb4ac5f3913975cf805ade646d2542d80205905e0a45b4e3e693a92f1c50"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\heaven-campaign-blade.log",
+      "bytes": 149,
+      "sha256": "06a4c6fad5039fe2f762ae3bba9f4aded7c5eb2295f7cfa13b554254655ea8b1"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\heaven-campaign-bow.log",
+      "bytes": 150,
+      "sha256": "c7daece8db21e67864161cc56d2e3fda89c126c590fc2167a32dd4e140d9b17e"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\heaven-campaign-veteran.log",
+      "bytes": 157,
+      "sha256": "57bbc7fa30f7dec4c2ccd610c07bbd97047de4a1e9161b90cad42d7152a4e7f6"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\hell-campaign-blade.log",
+      "bytes": 90,
+      "sha256": "afd9305106d14d0ff80b829c769422ab83f1681a5fcc8926a2d96c1e382dd2de"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\hell-campaign-bow.log",
+      "bytes": 88,
+      "sha256": "c68d5d118e02d19ff299e64a036ee685639f25a78e472684222729e781e5094e"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\hell-campaign-veteran.log",
+      "bytes": 99,
+      "sha256": "b99fa6da12bedd3cc060af639ecb97ed53fdccda85429d7fa7adc911507cb380"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\home-history-blade.log",
+      "bytes": 147,
+      "sha256": "67b551344f4ce9c2a7d09fb7e1f609733c67e446b5ac9ec734aa9261bcbb20bd"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\home-history-bow.log",
+      "bytes": 145,
+      "sha256": "fc9771880dce1ba439c946001c3dffe04b41ae7de11625a791a300bc61987e13"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\home-history-veteran.log",
+      "bytes": 155,
+      "sha256": "25402427c525d6548dd3d1ef6a32544736829662f175eb870b82f27d8ae04018"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\local-life-blade.log",
+      "bytes": 1012,
+      "sha256": "982789616d67fd254b72ce9a5a0e8df923d2f9a709205db634b537ff7beb533e"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\local-life-bow.log",
+      "bytes": 1009,
+      "sha256": "0ca6e51f77b4d7736125395d0b37a23b4d7fa4ecb4f2090b2fc1dbf070d4e866"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\local-life-veteran.log",
+      "bytes": 1019,
+      "sha256": "e73bdada22bd81a4ad8ffc08b4a8f2a243ecab7eca8067b88f0c719e76becb16"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\pursuit-blade.log",
+      "bytes": 5483,
+      "sha256": "04029aab268bf30da55bb85ea9cb89e5ab63ecd7f782a59c97aa095529ce4647"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\pursuit-bow.log",
+      "bytes": 6710,
+      "sha256": "7954f060cccbda3f5837029b6b177c60db43a02f6d581a5880ed7382a76135d1"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\pursuit-veteran.log",
+      "bytes": 3487,
+      "sha256": "03749c26dd56ab5373380c5047d501648dc3637b194f72e2b5adabde642bf69b"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\python.log",
+      "bytes": 8701,
+      "sha256": "a37ee0cea71ca3c7a039813e3ff9eaef04eecf1d2b1badaf6538dd865c431312"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\realm-comparator-blade.log",
+      "bytes": 860,
+      "sha256": "d051c505ea0d4762ed40c3b46181cff2ef60ab5dfca172cbdff96e7e26bccab5"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\realm-comparator-bow.log",
+      "bytes": 859,
+      "sha256": "a07a5025afb0bff37325955e4fd9fea4c0a5b197b0afaa4f95064ca4a85245d8"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\realm-comparator-veteran.log",
+      "bytes": 1380,
+      "sha256": "61891e032bbd155ec15dd9db30b4917bc4e2485442c0962ff249a03f7d3d7292"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\realm-trails-blade.log",
+      "bytes": 161,
+      "sha256": "8c99875b9853801c2052b9590857b851d349d56ab81580bfb70232c631f73fe1"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\realm-trails-bow.log",
+      "bytes": 159,
+      "sha256": "53a69d88317a65523229998ee60c03de091e0a8b8d41a82e5253f340965b78d5"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\realm-trails-south-blade.log",
+      "bytes": 4427,
+      "sha256": "a8d61f66fc2652480ff2d9533b4a3d52c13a26b71027656e846a78ae80dcb930"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\realm-trails-south-bow.log",
+      "bytes": 4425,
+      "sha256": "eaede351fa59ccbed8b8bb083fdf3bb1fd8c946f87f8bf21129d4da1530adf1c"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\rules.log",
+      "bytes": 277669,
+      "sha256": "ca8a9c5d6e0144ff5dd66c71f0dfae870900a6e694762919f92d467324ce708b"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\starter-blade.log",
+      "bytes": 507,
+      "sha256": "7bf2c1aedc79943bcdc356237696bf2a1a464841e03520203f7ee7d0f4911dae"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\starter-bow.log",
+      "bytes": 503,
+      "sha256": "2496bd1b1ba568c3ff951073bede4e7625f178d4aa75780f9ab122264bf8b37f"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\starter-veteran.log",
+      "bytes": 1438,
+      "sha256": "a5ce11e73e32f6a35882e153121d316e4ff0bf6682f0b18001f5e86a2f979be0"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-adventure-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-adventure-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-adventure.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-app.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-arsenal-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-arsenal-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-arsenal.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-beacon-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-beacon.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-bridge-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-bridge-community-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-bridge-community-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-bridge-community.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-bridge-moment-view.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-characters-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-characters.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-classes-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-classes.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-coastward-settlement-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-coastward-woodland-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-combat-view.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-combat.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-companion-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-core.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-cosmos-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-cosmos-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-cosmos.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-creative.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-crossing-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-crossing-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-crossing.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-drover-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-earth-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-earth-expedition-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-earth-expedition-beast-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-earth-expedition-dialogue.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-earth-expedition-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-earth-expedition.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-earth-notes-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-earth-notes-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-earth-notes.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-earth-shoulder-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-earth-story-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-earth-story.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-earth-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-earth.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-elderweald-trail-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-elderweald-world.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-engine.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-experience.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-gathering-adapter.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-gathering-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-gathering-music.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-gathering-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-gathering.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-heaven-campaign-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-heaven-campaign-data.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-heaven-campaign-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-heaven-campaign.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-hell-campaign-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-hell-campaign-data.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-hell-campaign-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-hell-campaign.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-home-history-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-home-history-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-home-history.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-local-life-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-local-life-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-local-life.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-mill-gate-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-millwright-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-pursuit-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-pursuit.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-quarry-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-realm-art-data.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-realm-atlas-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-realm-craft.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-realm-givers-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-realm-trails-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-realm-trails-cosmos.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-realm-trails-north.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-realm-trails-south.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-realm-trails-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-realm-trails.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-road-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-road.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-rpg-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-sandbox-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-sandbox-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-sandbox.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-skitter-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-soundscape.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-starter-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-starter-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-starter.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-surface-assets.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-traveler-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-traveler-equipment-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-workshop-transactions.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-world-atlantis-earth.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-world-foundations-art.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-world-foundations-ui.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-world-foundations.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-world-ground-coalescing.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-world-heaven-hell.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\syntax-world.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\world-foundations-blade.log",
+      "bytes": 115,
+      "sha256": "fc64a7526f2397fe2fd184a12f5b7161198deee503ca08909120d5cee37e8e24"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\world-foundations-bow.log",
+      "bytes": 113,
+      "sha256": "672abbfbe7a1d33774e55716e058cae4b29ce9f6c013361f41d6b31a4ad224d6"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03\\world-foundations-veteran.log",
+      "bytes": 111,
+      "sha256": "f67ce6df32a739cda65cf92f5c480d85fc7cf4969a8894534f8f0a9487566137"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\heaven-arrival-campaign-20261004\\final-source03-console.log",
+      "bytes": 10104,
+      "sha256": "4cdfb6e6b2f514285a657d661d5bcdd30021d0b28758d283391b5911a41a2016"
+    }
+  ]
+}
