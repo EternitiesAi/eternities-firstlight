@@ -10,25 +10,49 @@ function paint(out,sim,p,yaw=0,tags={},base=G.RealmWorldFoundations.height(sim.r
  const emit=(kind,pos,size,c,part,opt={})=>out[kind].push({p:M.transform(root,pos),s:size.slice(),m:M.mul(root,M.compose(...pos,...size,...(opt.r||[0,0,0]))),c,rough:.82,appearanceOnly:true,cameraSolid:false,cutaway:false,earthHomecomingPart:part,...tags,...opt});
  return{root,base,emit,box:(x,y,z,w,h,d,c,part,opt)=>emit('box',[x,y,z],[w,h,d],c,part,opt)};
 }
-function body(out,sim,e){const p=paint(out,sim,e,e.yaw||0,{earthHomecomingActor:e.id}),hot=e.mode==='windup',light=hot?C.gold:C.claim;
+// Civic claim press: an open gantry, captive seal head and grounded case.
+// Legacy part tags stay stable for existing causal controls; no royal anatomy.
+// All posture is bounded by actual AI mode/contact, never power or camera.
+const K={slate:0x253943,brass:0xc4a369,amber:0xffc15e,impact:0xf19159,rest:0xb16e56};
+function body(out,sim,e){
+ const p=paint(out,sim,e,e.yaw||0,{earthHomecomingActor:e.id}),hot=e.mode==='windup',recover=e.mode==='recover',elapsed=sim.state.adventure.elapsed;
+ const impact=recover&&!sim.state.settings.reducedMotion&&finite(elapsed,e.contactAt)&&elapsed>=e.contactAt&&elapsed-e.contactAt<.18;
+ const light=impact?K.impact:hot?K.amber:recover?C.checked:K.rest,seal=impact?1.15:hot?1.43:1.26,cap=seal+.19;
  p.box(0,.055,0,.88,.11,.64,C.ash,'regent-grounded-sole');
- for(const x of[-.23,.23]){p.box(x,.16,.015,.24,.21,.34,C.slate,'regent-grounded-boot');p.box(x,.41,0,.16,.40,.21,C.ash,'regent-connected-leg');}
- p.box(0,.67,0,.64,.20,.36,C.slate,'regent-hip-brace');p.box(0,.98,0,.59,.48,.32,C.ash,'regent-connected-torso');
- for(const x of[-.36,.36]){p.box(x,.93,-.02,.20,.68,.27,C.slate,'regent-mantle-fold');p.box(x,1.27,0,.32,.14,.32,C.gold,'regent-shoulder-seam');p.box(x,1.12,.08,.09,.31,.13,C.ash,'regent-connected-arm');}
- p.box(0,1.29,0,.76,.10,.30,C.slate,'regent-mantle-yoke');p.box(0,1.43,0,.13,.24,.16,C.gold,'regent-neck-link');
- p.box(0,1.64,0,.40,.34,.27,C.ash,'regent-split-face');p.box(0,1.68,.15,.23,.035,.035,light,'regent-seizure-window',{em:hot ? .22 : 0});
- p.box(0,1.83,0,.56,.10,.27,C.gold,'regent-crown-bridge');for(const x of[-.21,.21])p.box(x,2.01,0,.095,.32,.16,C.gold,'regent-split-crown');
- p.emit('octa',[0,1.06,.21],[.21,.22,.085],light,'regent-held-claim');p.box(0,.85,.20,.38,.08,.05,C.paper,'regent-claim-inscription');return p;
+ for(const x of[-.26,.26]){
+  p.box(x,.16,.015,.22,.21,.38,K.slate,'regent-grounded-boot');
+  p.box(x,.43,0,.12,.55,.24,K.brass,'regent-connected-leg',{r:[0,0,-Math.sign(x)*.18]});
+ }
+ p.emit('octa',[0,.66,-.04],[.72,.61,.46],K.slate,'regent-connected-torso');
+ p.box(0,.90,0,.80,.10,.50,K.brass,'regent-hip-brace');
+ for(const x of[-.355,.355]){
+  p.box(x,1.39,-.04,.105,.92,.19,K.slate,'regent-mantle-fold');
+  p.box(x,1.39,.072,.045,.86,.035,K.brass,'regent-shoulder-seam');
+  p.box(x*.82,1.30,-.04,.035,.65,.065,C.paper,'regent-connected-arm');
+  p.box(x,1.09,.103,.15,.30,.065,C.ash,'claim-signal-housing');
+  p.emit('octa',[x,1.09,.148],[.085,.20,.055],light,'claim-side-signal',{em:hot?.40:impact?.50:0});
+ }
+ p.box(0,1.86,-.04,.84,.115,.25,K.brass,'regent-mantle-yoke');
+ p.box(0,(cap+1.84)/2,-.04,.12,1.84-cap,.14,K.slate,'regent-neck-link');
+ p.emit('octa',[0,seal,-.02],[.42,.29,.25],C.ash,'regent-split-face');
+ p.box(0,cap,-.02,.49,.08,.29,K.brass,'regent-crown-bridge');
+ for(const x of[-.29,.29])p.box(x,2.01,-.04,.10,.32,.18,K.brass,'regent-split-crown');
+ p.box(0,seal,.115,.26,.07,.035,light,'regent-seizure-window',{em:hot?.48:impact?.62:0});
+ p.box(0,.9675,.12,.46,.035,.20,C.paper,'claim-feed-bed');
+ p.emit('octa',[0,1.055,.13],[.22,.11,.085],K.brass,'regent-held-claim');
+ p.box(0,.59,.13,.46,.13,.14,K.brass,'claim-registry-housing');
+ p.box(0,.59,.195,.40,.075,.04,C.paper,'regent-claim-inscription');return p;
 }
-function stroke(p,x,z,length,width,yaw,part){if(!finite(x,z,length,width,yaw)||length<=0||width<=0)return;
- p.box(x,.145,z,width,.035,length,C.ash,part+'-border',{r:[0,yaw,0]});p.box(x,.169,z,width*.34,.014,length*.995,C.gold,part+'-inlay',{r:[0,yaw,0],em:.24});
+function stroke(p,x,z,length,width,yaw,part,color=K.amber){if(!finite(x,z,length,width,yaw)||length<=0||width<=0)return;
+ // Dark edge plus wider luminous inset; every vertex stays inside the lock.
+ p.box(x,.145,z,width,.035,length,C.ash,part+'-border',{r:[0,yaw,0]});p.box(x,.169,z,width*.52,.014,length*.995,color,part+'-inlay',{r:[0,yaw,0],em:.58});
 }
-function rectangle(p,s){if(!finite(s.length,s.halfWidth)||s.length<=0||s.halfWidth<=0)return;const edge=Math.min(.055,s.length*.25,s.halfWidth*.2),width=s.halfWidth*2;
+function rectangle(p,s){if(!finite(s.length,s.halfWidth)||s.length<=0||s.halfWidth<=0)return;const edge=Math.min(.085,s.length*.25,s.halfWidth*.2),width=s.halfWidth*2;
  for(const x of[-s.halfWidth+edge/2,s.halfWidth-edge/2])stroke(p,x,s.length/2,s.length,edge,0,'locked-lane-side');
  for(const z of[edge/2,s.length-edge/2])stroke(p,0,z,width,edge,Math.PI/2,'locked-lane-cap');
 }
-function rim(p,radius,inner,part){if(!finite(radius)||radius<=0)return;const width=Math.min(.055,radius*.08),r=radius+(inner?width*1.1:-width*1.1),n=48;
- for(let i=0;i<n;i++){const a=i/n*TAU,b=(i+1)/n*TAU,x1=Math.sin(a)*r,z1=Math.cos(a)*r,x2=Math.sin(b)*r,z2=Math.cos(b)*r;stroke(p,(x1+x2)/2,(z1+z2)/2,Math.hypot(x2-x1,z2-z1),width,Math.atan2(x2-x1,z2-z1),part);}
+function rim(p,radius,inner,part){if(!finite(radius)||radius<=0)return;const width=Math.min(.085,radius*.08),r=radius+(inner?width*1.1:-width*1.1),n=48;
+ for(let i=0;i<n;i++){const a=i/n*TAU,b=(i+1)/n*TAU,x1=Math.sin(a)*r,z1=Math.cos(a)*r,x2=Math.sin(b)*r,z2=Math.cos(b)*r;stroke(p,(x1+x2)/2,(z1+z2)/2,Math.hypot(x2-x1,z2-z1),width,Math.atan2(x2-x1,z2-z1),part,inner?C.paper:K.amber);}
 }
 function warning(out,sim,e){const s=e.strike;if(!s||!finite(s.x,s.z,s.yaw))return;
  const p=paint(out,sim,s,s.yaw,{earthHomecomingActor:e.id,earthHomecomingTelegraph:true,earthHomecomingPattern:s.pattern,earthHomecomingStrike:JSON.parse(JSON.stringify(s))});

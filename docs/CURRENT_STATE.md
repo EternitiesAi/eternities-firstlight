@@ -1,3 +1,44 @@
+# Whole-draft journal and encounter polish, 2026-10-05
+
+Current gameplay is the integrated five-realm draft plus Earth homecoming, on
+stacked branch gameplay/whole-draft-onboarding-20261005 from Earth head
+271b08e49c95728362a3bdf562c78985117fffaa. Read
+ docs/development/WHOLE_DRAFT_ONBOARDING_2026-10-05.md before older records.
+The Journal leads with the original chapter, keeps eligible/accepted work
+readable and groups later requests behind a keyboard/touch accessible disclosure.
+An explicit tracker belongs to the current live character only; passive regional
+labels cannot take it over. Claimed work says it was paid once. The realm atlas
+now names the implemented local campaigns and honestly leaves full cities deferred.
+
+The Earth claim engine now has a grounded faceted case, open brass/slate gantry,
+captive seal head and actual windup/contact/recovery poses. Its footprint, strike
+geometry, rule owners and causal tags are unchanged. Reduced motion suppresses
+the short contact accent. New art still requires current rendered combat controls.
+
+Installed Journal rules pass12/12; adjacent UI/homecoming checks pass70/70.
+Installed onboarding CPU passes33/33 and verifier gate CPU34/34. Native04 passes
+53/53 checks and12/12 stages using two genuinely fresh synthetic characters,
+one isolated profile, one whole-browser restart, five PNGs and zero videos.
+Actual kit/trail/commission acceptance, explicit unpaid choice, character switching
+and cold-save defaults work. No browser errors or source drift. Earlier native
+failures remain: incorrect fresh-XP assumption and legitimate three-NPC initial
+routine entries were harness mismatches. The narrow repair predicts the actual
+Core tick; old journal prefix and every other protected owner remain strict.
+The first installed33-case run lacked the Playwright module path; with the actual
+installed dependency path all33 pass. No production rules were changed for this.
+
+Both generated pages are3,032,289 bytes/SHA
+08f7d4de46a7243e5988c33967378d4a1e9450e30a738ffbfb0f43a09bc11f39.
+World/key9,adventure12 and optional earthHomecoming1 remain; no new save fields,
+forced class, cap increase, gear/socket reset or story consent. The complete
+current remote source/browser gate and final evidence readback remain pending.
+Keep the same integrated game and reusable D qualification station, bounded
+clips/profiles and unique failures. Never retry the blocked standalone deletion.
+No main merge, public deployment, paid providers, personal-save reads or unrelated
+worker stops. Human navigation/combat/reward acceptance remains unmeasured.
+
+---
+
 # Earth native homecoming and ordinary recording, 2026-10-05
 
 Read docs/development/EARTH_HOMECOMING_NATIVE_DELIVERY_2026-10-05.md before

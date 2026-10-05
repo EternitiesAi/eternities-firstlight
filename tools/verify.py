@@ -105,6 +105,32 @@ def earth_homecoming_browser_run_spec(root, sources, cohort_path, cohort_sha, ou
             {'FIRSTLIGHT_ROOT': str(root), 'PYTHONDONTWRITEBYTECODE': '1'})
 
 
+def onboarding_browser_run_spec(root, output, *, windows=None):
+    """Read the installed onboarding source boundary and build one native gate.
+
+    Importing its validator creates no browser, server, profile or output.
+    Fresh characters belong to this separate suite; no earned cohort is reused.
+    """
+    root, output = Path(root).resolve(), Path(output).resolve()
+    native = root / 'tools/onboarding_browser.py'
+    if not native.is_file():
+        raise ValueError('Installed onboarding native tool is required in the explicit current root.')
+    if output == Path(output.anchor) or output.exists():
+        raise ValueError('Onboarding output must be a new bounded directory; preserve previous evidence.')
+    if output == root or output.is_relative_to(root) or root.is_relative_to(output):
+        raise ValueError('Onboarding output and the game checkout must be separate trees.')
+    if (os.name == 'nt' if windows is None else windows) and output.drive.upper() != 'D:':
+        raise ValueError('Onboarding evidence/profile must stay on D: on Windows.')
+    spec = importlib.util.spec_from_file_location('firstlight_current_onboarding_preflight', native)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    module.resolve_root(root)
+    module.source_inputs(root)
+    return ([sys.executable, 'tools/onboarding_browser.py',
+             '--root', str(root), '--output', str(output), '--renderer', 'software'],
+            {'FIRSTLIGHT_ROOT': str(root), 'PYTHONDONTWRITEBYTECODE': '1'})
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--browser', action='store_true', help='Also run the current browser suites including starter progression and native persistence (requires requirements-dev.txt and Chromium).')
@@ -249,6 +275,13 @@ def main():
         extra_env={'FIRSTLIGHT_ROOT': str(ROOT), 'EARTH_EARNED_SOURCES': str(homecoming_output),
                    'EARTH_EARNED_COHORT_SHA': homecoming_cohort_sha,
                    'EARTH_EARNED_CALLER_ROOT': str(ROOT / 'tools/earth-homecoming-journey')})
+    # CPU controller/provenance checks need this invocation's real cohort too.
+    # This does not launch a recording or register footage as a gameplay gate.
+    run('earth-recording-controller-preflight', [sys.executable, 'tests/test_capture_earth_homecoming.py', '-v'], timeout=180,
+        extra_env={'FIRSTLIGHT_ROOT': str(ROOT),
+                   'FIRSTLIGHT_EARTH_CAPTURE_SOURCE': str(homecoming_output / 'blade/earth/02_RELAYS.json'),
+                   'FIRSTLIGHT_EARTH_CAPTURE_COHORT_SHA': homecoming_cohort_sha,
+                   'FIRSTLIGHT_EARTH_EARNED_CALLER_ROOT': str(ROOT / 'tools/earth-homecoming-journey')})
     whole_draft_output = output / 'whole-draft-earned'
     if os.name == 'nt' and whole_draft_output.drive.upper() != 'D:':
         whole_draft_output = ROOT / 'evidence10/whole-draft-earned'
@@ -261,6 +294,12 @@ def main():
         command, extra_env = earth_homecoming_browser_run_spec(
             ROOT, homecoming_output, cohort_path, homecoming_cohort_sha, earth_browser_output)
         run('earth_homecoming_browser', command, timeout=1800, extra_env=extra_env)
+        # Twelve onboarding stages, two fresh characters and one cold restart.
+        # Ten minutes is a provisional controller allowance, not measured pacing.
+        onboarding_output = ((args.browser_output / 'onboarding_browser')
+                             if args.browser_output is not None else output / 'onboarding-browser')
+        command, extra_env = onboarding_browser_run_spec(ROOT, onboarding_output)
+        run('onboarding_browser', command, timeout=600, extra_env=extra_env)
         prepare_browser_sources(args.browser_output)
         command, extra_env = browser_run_spec('cosmos_campaign_browser', args.browser_output, mode=args.browser_output_mode)
         run('cosmos_campaign_browser', command, timeout=1200, extra_env=extra_env)

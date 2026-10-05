@@ -105,7 +105,7 @@ class TrailsUI{
   return html+'</section>';
  }
  tick(){
-  const d=this.local();if(!d)return;const r=this.sim.state.realmTrails.records[d.id];if(!r.accepted||r.claimed)return;
+  const d=this.local();if(!d||this.rpg.trackerAllows?.('realm-trail')===false)return;const r=this.sim.state.realmTrails.records[d.id];if(!r.accepted||r.claimed)return;
   const next=d.steps.find(s=>!s.optional&&!r.steps.includes(s.id)),q=s=>document.querySelector(s);
   q('#tracked-chapter').textContent='ACCEPTED REALM TRAIL';q('#tracked-title').textContent=d.title;q('#tracked-detail').textContent=next?.name||'Return to '+d.giver.name;q('#tracked-progress').textContent=r.steps.filter(id=>!d.steps.find(s=>s.id===id).optional).length+'/'+R.required(d).length+' · J work · M routes · free return';
  }
