@@ -243,7 +243,7 @@
    for(const [x,z] of [[-3,25],[3,25],[-10,-4],[10,-4],[-3,-25],[-3,-39],[15,-43]]) lamp(x,z);
    roof('pilot-school',-9,23,6,7,3.3,0x658e88);
    // Open-front civic canopy; the three actual walls are supplied solids.
-   box(0,height(0,-12)+4.1,-12,27,.2,19.7,0x839b90,{cutaway:true,structureId:'farwake-civic-canopy'});
+   box(0,height(0,-12)+4.1,-12,27,.2,19.7,0x839b90,{cutaway:true,structureId:'farwake-civic-canopy',worldRoof:'farwake-civic-canopy'});
    for(const x of [-13.5,13.5]) {
     const id=x<0?'farwake-court-west':'farwake-court-east';
     box(x,height(x,-12)+3.94,-12,.56,.12,16.02,0xb7a46e,{solidId:id,supportCap:id});
