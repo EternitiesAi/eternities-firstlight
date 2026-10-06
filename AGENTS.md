@@ -1,20 +1,27 @@
-# Wider production resumed, 2026-10-06
+# Wider production: connected Earth qualified, 2026-10-06
 
-Dom explicitly resumed the production goal after the finite draft delivery.
-Start with docs/development/CONNECTED_EARTH_ROADS_2026-10-06.md and the newest
-continuity fronts. Root owns the integrated D checkout on
-`gameplay/connected-earth-roads-20261006`, based on PR49's
-`483ac5e03a83b71b5cabe424d2459ed1ee9a5973`. Read-only colleagues do not own
-mutations. The old development heartbeat remains paused; an active task is not
-a scheduler. Earlier finite-draft stop records remain historical below.
+Dom resumed the wider production goal after the finite draft. Root owns the
+integrated D checkout on `gameplay/connected-earth-roads-20261006`, based on
+PR49 `483ac5e03a83b71b5cabe424d2459ed1ee9a5973`. PR50 is the open stacked road
+review. Qualified source `24c458037aec59f783840c2a9311896e95de1c54`; complete 235-command / 48-browser gate closed
+exit 0. Read docs/development/CONNECTED_EARTH_ROADS_2026-10-06.md and its evidence.
+No main merge or deployment. The old heartbeat remains paused; the production
+goal is active, and a scheduler is distinct from running workers.
 
-Qualify the ordinary Hearthwater-to-Coastward road connection before the next
-production arc. It preserves the original Firstlight home checkpoint, both
-cameras and every existing ledger. No schema, cap, class or story migration.
-Retain exact source epoch, complete verifier exit and separate evidence head.
-Keep heavy work on D, reuse the clean qualification station, and preserve the
-blocked standalone-clone deletion. No main merge, public deployment, billing,
-paid provider, proprietary extraction, fake multiplayer or personal-save access.
+World 9 / adventure 12 / earthHomecoming 1, old keys, saves, both cameras and every
+existing ledger remain. Do not inspect personal saves, reset stored XP, force
+classes, fake multiplayer, change billing, use paid external providers or
+extract proprietary assets. Keep heavy work on D, reuse current clean checkouts,
+retain failures and the blocked standalone-clone deletion.
+
+Next slice: physical fitting of the existing Living Road support. Two authorized
+Sol colleagues have staged ONLY small rules, art, UI and command-gate files under
+D:/07-GAMES/Firstlight/staging/living-road-fieldcraft-20261006. Those proposals
+are not integrated gameplay. Root owns existing commands/UI/app/callers and
+integration on a separate review branch based on the final road head. Preserve
+old completed/paid braces and patrols. Real owner-lease lifecycle, generic-command
+proof gate, visible controls/cameras and native journeys must pass before calling
+fieldcraft delivered. Keep current ROOT ownership explicit before any edit.
 
 ---
 

@@ -1,21 +1,33 @@
-# Ordinary Earth connection, 2026-10-06
+# Road connection and next physical fieldcraft, 2026-10-06
 
-Connect existing Hearthwater and Coastward geography as one optional outing
-before adding new systems or distant realms. The stable local connection
-`hearthwater-coastward-v1` uses rule-owned supported endpoints at(18.3,-42) and
-(8,106). It does not become a Roads-of-Light marker or bypass Bellweather.
+Keep Hearthwater and Coastward one voluntary outing across an authored scene
+boundary, preserving existing owners and the original Firstlight checkpoint.
+Stable connection `hearthwater-coastward-v1` uses (18.3,-42) and (8,106); it is
+separate from Roads-of-Light permission and Bellweather prerequisites. Atlas
+points match canonical supported endpoints. Travel grants no XP/items/acceptance.
+Names and provincial placement remain provisional interpretations of the Earth
+bible. No save migration; single-use travel tickets save before adoption and restore
+complete runtime state after scene failure. Both camera styles remain optional.
 
-Keep the original home checkpoint and established cold-reopen behavior. Travel
-uses transient single-use tickets, save-before-adoption and full runtime rollback;
-no durable migration, payout, acceptance or consent occurs. Existing local work
-keeps its real giver, run identities and reward owner. Timber signs and shoulder
-dressing add no ground/reward authority. Both view styles remain interchangeable.
-Names and provincial placement are provisional interpretations of the Earth
-bible's ordinary-road principle, not a ratified full world scale.
+The new ground is a separately tagged local overlay after unchanged legacy RNG
+emissions. Its model axes are orthogonal for the current normal transform;
+legacy 2550-piece geometry hash and sub-millimetre seams remain checked. Avoid
+broad renderer or geography replacement under a local route repair.
 
-Dom's new production resume supersedes the finite stop for authorized engineering.
-It does not settle paid power, offline loss, rare allocation, construction scale,
-full saga canon or human acceptance. No main merge or public deployment.
+For the next arc, embody existing Earth ET11/ET12 practical support work in the
+Living Road repair. Four consistent supplied sections and real checked fitting
+use the existing brace step; unfinished assembly is transient. Do not require
+old completed/paid histories to rebuild or invent another reward economy.
+Ordinary persisted roster revisions are not owner changes: explicitly mint a
+transient fitting owner lease at actual lifecycle changes, retain raw revisions
+for existing consumers and preserve stale-writer refusal. Preview bounds keep
+members above soil; actual camera readability remains a required integration
+check. These decisions authorize the bounded implementation, not delivered claims.
+
+Dom's wider production resume supersedes the finite stop for engineering, while
+preserving pending human acceptance and uncertain founder scale/cosmology/power
+choices. GitHub billing lock blocked hosted job execution; local exact-source
+gates remain distinct. No main merge, deployment or billing intervention.
 
 ---
 

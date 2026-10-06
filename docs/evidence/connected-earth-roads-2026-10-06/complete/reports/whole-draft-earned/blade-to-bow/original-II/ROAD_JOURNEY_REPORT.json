@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "method": "Separate variant beginning with a command-earned ranged checkpoint; accepted road commands and 50ms automated steps.",
+  "weapon": "copper_blade",
+  "directPositionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedDefeats": 0,
+  "acceptedCommands": 33,
+  "events": [
+    "Entered through the story-gated lookout",
+    "Fox followed the scent to the missing latch",
+    "Repaired cart, bought/equipped mantle and sold copper",
+    "Crossed actual bridge and found optional second cache",
+    "Defeated charging guardian; lit the beacon"
+  ],
+  "finalStats": {
+    "level": 5,
+    "attack": 35,
+    "defense": 9,
+    "maxHP": 175
+  },
+  "road": {
+    "version": 1,
+    "entered": true,
+    "revealed": [
+      "cart-latch",
+      "old-surveyor"
+    ],
+    "claimed": [
+      "cart-latch",
+      "old-surveyor"
+    ],
+    "cartRepaired": true,
+    "beaconLit": true,
+    "reported": true
+  },
+  "hp": 175
+}

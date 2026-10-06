@@ -1,3 +1,29 @@
+# Qualified road delivery, 2026-10-06
+
+Qualified implementation: `24c458037aec59f783840c2a9311896e95de1c54`. The reused clean remote checkout's complete
+verifier closed exit 0 at `2026-10-06T21:47:01.8224698Z`: 235 commands, 121 syntax modules
+and all 48 browser suites in one invocation. Node: 1554 passed, 2 explicit generic
+cohort skips (1556 total). Python: 243 test methods, 237 passed and 6 skipped;
+two setUpClass records were also skipped. Mandatory current native 26, capture 37 and strict
+whole-draft 7 checks separately passed without skips. Road browser: 285/285;
+Earth native: 6205/6205 and 30 earned stages; full campaigns retain their gates.
+
+Current generated pages are identical: 3048605 bytes / SHA256
+`14c23bbf9325048407b50fe094d7f14cafea31e2c21f94b0347be2b30ede6d4d`.
+[Evidence](../evidence/connected-earth-roads-2026-10-06/README.md) separates the
+current source, actual 32.88 second movie, earlier failures, cancelled complete03,
+callback measurement and pending human acceptance. Hosted jobs did not start:
+GitHub reports an account billing lock (run 37524631245); no hosted execution or
+billing change is claimed. The complete verifier ran locally in the reused,
+freshly fetched qualification checkout.
+
+Evidence package: 228 payloads / 60531954 bytes.
+The source and complete gate belong to 24c4580; this subsequent records commit
+contains byte-preserved receipts and media. Current PR50 head is returned by Git
+and the delivery response. Historical attempts below remain separate.
+
+---
+
 # Earth roads: a place connected by walking
 
 Dom explicitly resumed wider production on 2026-10-06. This supersedes the

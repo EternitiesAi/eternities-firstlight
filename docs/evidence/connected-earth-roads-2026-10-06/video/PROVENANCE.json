@@ -1,0 +1,38 @@
+{
+  "sourceHead": "24c458037aec59f783840c2a9311896e95de1c54",
+  "htmlSha256": "14c23bbf9325048407b50fe094d7f14cafea31e2c21f94b0347be2b30ede6d4d",
+  "browser": "143.0.7499.4",
+  "driver": "610.74",
+  "viewport": [
+    1280,
+    720
+  ],
+  "quality": "balanced",
+  "hardware": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "encodedMovieSeconds": 32.88,
+  "encodedMovieFps": 25,
+  "method": "isolated loopback; actual gameplay; command-earned fixture; accelerated production walking only for northern approach setup; subsequent visible road walk, explicit crossing, bridge and both views run on normal RAF",
+  "frameMeasurement": {
+    "label": "Actual recorded headless RAF intervals, includes menus and recorder/shared-desktop overhead; not displayed FPS or GPU timer",
+    "duration_ms": 28719.799999952316,
+    "scenes": {
+      "Hearthwater-road": {
+        "callbacks": 292,
+        "p50_ms": 16.699999999999818,
+        "p95_ms": 16.700000000000728,
+        "p99_ms": 16.800000000000182,
+        "max_ms": 16.800000000000182,
+        "intervals_over_50ms": 0
+      },
+      "Coastward-bridge": {
+        "callbacks": 1418,
+        "p50_ms": 16.69999999999891,
+        "p95_ms": 16.799999999999272,
+        "p99_ms": 16.80000000000109,
+        "max_ms": 199.89999999999782,
+        "intervals_over_50ms": 1
+      }
+    }
+  },
+  "qualification": "headless recorded callback intervals on shared desktop, not foreground/display FPS or GPU timer; one Coastward interval about200ms; cause not localized; no AAA/60FPS/human qualification"
+}

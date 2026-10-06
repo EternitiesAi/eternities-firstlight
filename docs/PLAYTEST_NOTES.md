@@ -1,21 +1,43 @@
-# Ordinary Earth road checks, 2026-10-06
+# Qualified road evidence and human questions, 2026-10-06
 
-The new route is being checked with current command-earned blade/bow input and a
-labelled historical strongest campaign input. Production movement, real menu
-confirmation and isolated loopback persistent Chromium are separate evidence
-from human play. The initial browser revision passed256/256, including native
-cold restarts, unchanged gear/story and visible once-only Merren payment. A
-subsequent sign/edge proof revision and complete verifier still need receipts.
+Automated blade/bow journeys and a labelled historical strongest fixture passed
+285 visible road checks, including actual numbered-map callers, eight whole
+browser restarts, unchanged equipment/story and once-only Merren payment. A
+separate normal-RAF RTX probe held the paused terms for 8.2 seconds, kept the world
+clock frozen and then crossed successfully. Compact 390px terms require
+scroll/focus and expose the deliberate continuation action. Root inspected the
+current screenshots and decoded movie; no new human feedback was supplied.
 
-Root and a separate read-only colleague inspected both camera screenshots.
-Destination E prompts and signs are visible. The new Hearthwater spur's exposed
-square end looked like a dead end; a narrow appearance-only soil/stone shoulder
-now softens its edges. Compact prose wraps, with a deliberate scrolling/focus
-interaction required to prove the continuation action. Inherited blocky banks
-remain a presentation limitation. No enjoyment, mobile play or GPU FPS claim.
+The 32.88 second actual movie uses Chromium 143.0.7499.4, RTX 3080 D3D11,
+driver 610.74, balanced 1280x720. Northern approach setup uses accelerated
+production walking; the visible fork, confirmation, bridge and camera changes
+use normal RAF. Headless recorded callback intervals: Hearthwater 292,
+p50/p95 16.7ms,p99/max16.8ms; Coastward 1418,p50 16.7ms,p95/p99 16.8ms,
+max 199.9ms with one interval over 50ms. This includes recorder/menus/shared
+machine overhead; it is not foreground FPS, a GPU timer or a 60FPS qualification.
+The stutter cause is unlocalized. Inherited block-shaped banks, camera receiver
+readability, human combat/pacing and broad accessibility remain production work.
 
-No new human feedback was supplied. Earlier Firstlight finite-draft human
-questions remain pending and its dated evidence stays separate below.
+Qualified implementation: `24c458037aec59f783840c2a9311896e95de1c54`. The reused clean remote checkout's complete
+verifier closed exit 0 at `2026-10-06T21:47:01.8224698Z`: 235 commands, 121 syntax modules
+and all 48 browser suites in one invocation. Node: 1554 passed, 2 explicit generic
+cohort skips (1556 total). Python: 243 test methods, 237 passed and 6 skipped;
+two setUpClass records were also skipped. Mandatory current native 26, capture 37 and strict
+whole-draft 7 checks separately passed without skips. Road browser: 285/285;
+Earth native: 6205/6205 and 30 earned stages; full campaigns retain their gates.
+
+Current generated pages are identical: 3048605 bytes / SHA256
+`14c23bbf9325048407b50fe094d7f14cafea31e2c21f94b0347be2b30ede6d4d`.
+[Evidence](evidence/connected-earth-roads-2026-10-06/README.md) separates the
+current source, actual 32.88 second movie, earlier failures, cancelled complete03,
+callback measurement and pending human acceptance. Hosted jobs did not start:
+GitHub reports an account billing lock (run 37524631245); no hosted execution or
+billing change is claimed. The complete verifier ran locally in the reused,
+freshly fetched qualification checkout.
+
+No human enjoyment, mobile device play or complete AAA release is inferred.
+Use one fresh and one returning character for the simple route/work/danger/reward
+questions in NEXT_TASK. Continue independent authorized engineering meanwhile.
 
 ---
 
