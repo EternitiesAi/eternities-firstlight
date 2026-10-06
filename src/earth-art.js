@@ -4,6 +4,7 @@ const C=G.RealmEarth,TAU=Math.PI*2,h=C.height,{hex,blend}=G.RealmEngine;
 const col={grass:0x70865e,meadow:0x929768,stone:0xaaa58d,path:0xb0a181,wood:0x67513a,roof:0x766754,leaf:0x648657,fruit:0xc47b51,water:0x577c7a,gold:0xc2a86c};
 const decor={cameraSolid:false,rough:.96,cutaway:true};
 const paths=[
+ [[7,-38],[12,-42],[19,-42]],
  [[0,25],[0,17],[0,10],[-7,5],[-12,-3],[-14,-12],[-14,-22],[-10,-30],[0,-35],[0,-44]],
  [[0,10],[7,5],[13,-3],[14,-12],[14,-22],[11,-30],[0,-35],[0,-44]],
  [[-14,-22],[-12,-24]],
@@ -149,7 +150,7 @@ function sign(a,x,z,textColor=col.gold){
  for(const side of[-1,1]){const zz=z+side*.071;for(const dy of[-.30,.30])a.box(x,b+1.55+dy,zz,2.19,.06,.025,0xab8d5c,decor);for(const dx of[-1.06,1.06])a.box(x+dx,b+1.55,zz,.06,.65,.025,col.wood,decor);for(let i=0;i<3;i++){a.box(x-.69,b+1.40+i*.12,zz,.31+(i%2)*.11,.018,.013,0x5c513b,decor);a.box(x+.59,b+1.44+i*.1,zz,.45-(i%2)*.1,.018,.013,0x5c513b,decor);}}
  a.add('octa',x,b+1.57,z+.09,.17,.17,.04,textColor,{em:.08,cameraSolid:false});
 }
-function make(a){a.begin(C.ROOM);a.e.theme='earth';a.e.earthWater=C.BRIDGE;a.e.isInterior=false;a.e.noWater=false;a.e.ambientOverride=.78;const rnd=G.RealmCore.rng(18092026);terrain(a,rnd);for(const [x,z]of [[-8,3],[-13,4],[7,2],[13,-13],[12,-26],[-12,-23],[0,-43]])sign(a,x,z);a.commit();}
+function make(a){a.begin(C.ROOM);a.e.theme='earth';a.e.earthWater=C.BRIDGE;a.e.isInterior=false;a.e.noWater=false;a.e.ambientOverride=.78;const rnd=G.RealmCore.rng(18092026);terrain(a,rnd);for(const [x,z]of [[-8,3],[-13,4],[7,2],[13,-13],[12,-26],[-12,-23],[0,-43]])sign(a,x,z);G.RealmEarthRoadArt?.make(a,C.ROOM);a.commit();}
 function story(out,sim,t,a){
  const s=sim.state.adventure.earthStory,quiet=sim.state.settings.reducedMotion,clock=quiet?0:t,done=id=>s.steps.includes(id);
  const box=(x,y,z,w,ht,d,c,r)=>out.box.push({p:[x,y,z],s:[w,ht,d],c,r:r||[0,0,0],rough:.9,cameraSolid:false});

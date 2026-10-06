@@ -1,3 +1,27 @@
+# Wider production: connected Earth, then inhabited outings, 2026-10-06
+
+Dom explicitly resumed development toward a polished production game. Finish
+and qualify `gameplay/connected-earth-roads-20261006` against PR49. The milestone
+is actual travel from familiar Hearthwater lanes through Coastward's bridge and
+working country, accepted local work and the same clear return. Read
+[the task contract](development/CONNECTED_EARTH_ROADS_2026-10-06.md).
+
+After its exact remote full gate, the highest-value next arc is making this
+connected Earth outing feel inhabited: readable settlement/work rhythms,
+practical route choices and measured combat/progression depth using existing
+owners. Improve terrain continuity and presentation along the qualified route
+before adding another disconnected realm. Bound each playable slice with real
+commands, visible feedback, honest returning-equipment usefulness and save proof.
+Full countries, mounts, Regent war, Answering and Briar's full resolution remain
+production scope, not delivered claims. Preserve unresolved founder decisions.
+
+Human acceptance remains pending. When Dom is available, use one fresh and one
+returning character: Did you know where to go and how to get home? Could you read
+danger in either view? Did the useful result make another outing appealing?
+Development authorization resumes engineering; it does not provide those answers.
+
+---
+
 # Human first play is the next acceptance step, 2026-10-05
 
 The finite connected browser draft is ready for human acceptance: original chapters I-IV, local Earth, Hell, Heaven, Atlantis, Cosmos and a provisional Earth homecoming. It provides supported authored pockets and normal return routes. Full streamed countries/cities, mounts, the full Regent war, ultimate Answering and completed Briar resolution remain future scope.

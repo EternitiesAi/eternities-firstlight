@@ -1,3 +1,26 @@
+# Connected Earth roads in production qualification, 2026-10-06
+
+Dom resumed wider production from the delivered finite draft. The current
+review branch connects the Hearthwater northern fork to Coastward's arrival
+bank, bridge, fields and Elderweald. Both directions require nearby, explicit
+input. Local maps, timber signs and a dressed cart-track spur explain the route.
+Existing Merren work supplies the outing's declared reward; walking adds none.
+This is connected authored country across a scene boundary, not streamed terrain.
+
+Base: `483ac5e03a83b71b5cabe424d2459ed1ee9a5973` (PR49). Working branch:
+`gameplay/connected-earth-roads-20261006`. Targeted rule/onboarding checks passed
+22/22; the first browser epoch passed256/256. A later art/proof revision and the
+complete fresh remote gate are still pending here. Do not carry the old full47
+suite qualification forward as proof of this new source. The task note will
+record the final receipts and all earlier failures.
+
+World9/adventure12/earthHomecoming1 and old keys are unchanged. The saved home
+point stays at the original departure, including direct five-light visitors;
+cold reopen remains in Firstlight with earned progress. Root owns integration.
+The old heartbeat stays paused; wider production is an active authorized goal.
+
+---
+
 # Connected finite draft delivered, 2026-10-05
 
 The finite connected browser draft is ready for human acceptance: original chapters I-IV, local Earth, Hell, Heaven, Atlantis, Cosmos and a provisional Earth homecoming. It provides supported authored pockets and normal return routes. Full streamed countries/cities, mounts, the full Regent war, ultimate Answering and completed Briar resolution remain future scope.

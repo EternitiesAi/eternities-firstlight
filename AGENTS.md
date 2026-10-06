@@ -1,3 +1,23 @@
+# Wider production resumed, 2026-10-06
+
+Dom explicitly resumed the production goal after the finite draft delivery.
+Start with docs/development/CONNECTED_EARTH_ROADS_2026-10-06.md and the newest
+continuity fronts. Root owns the integrated D checkout on
+`gameplay/connected-earth-roads-20261006`, based on PR49's
+`483ac5e03a83b71b5cabe424d2459ed1ee9a5973`. Read-only colleagues do not own
+mutations. The old development heartbeat remains paused; an active task is not
+a scheduler. Earlier finite-draft stop records remain historical below.
+
+Qualify the ordinary Hearthwater-to-Coastward road connection before the next
+production arc. It preserves the original Firstlight home checkpoint, both
+cameras and every existing ledger. No schema, cap, class or story migration.
+Retain exact source epoch, complete verifier exit and separate evidence head.
+Keep heavy work on D, reuse the clean qualification station, and preserve the
+blocked standalone-clone deletion. No main merge, public deployment, billing,
+paid provider, proprietary extraction, fake multiplayer or personal-save access.
+
+---
+
 # Finite draft delivery and continuing boundaries, 2026-10-05
 
 The finite connected browser draft is ready for human acceptance: original chapters I-IV, local Earth, Hell, Heaven, Atlantis, Cosmos and a provisional Earth homecoming. It provides supported authored pockets and normal return routes. Full streamed countries/cities, mounts, the full Regent war, ultimate Answering and completed Briar resolution remain future scope.

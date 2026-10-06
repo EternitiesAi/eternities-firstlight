@@ -110,11 +110,14 @@ class OnboardingVerifier(unittest.TestCase):
         earth,ek=by['tools/earth_homecoming_browser.py'];self.assertEqual(ek['timeout'],1800);self.assertEqual(earth[earth.index('--cohort-sha')+1],self.f.cohort_sha);self.assertEqual(earth[earth.index('--sources')+1],str(self.f.sources))
         self.assertNotEqual(c[c.index('--output')+1],earth[earth.index('--output')+1])
         labels=[c[1]for c,k in calls if len(c)>1];self.assertLess(labels.index('tools/earth_homecoming_journey.cjs'),labels.index('tests/test_earth_homecoming_native.py'));self.assertLess(labels.index('tests/test_earth_homecoming_native.py'),labels.index('tools/earth_homecoming_browser.py'));self.assertLess(labels.index('tools/earth_homecoming_browser.py'),labels.index('tools/onboarding_browser.py'))
-        existing=[(c,k)for c,k in calls if len(c)>1 and c[1].startswith('tests/') and c[1].endswith('_browser.py')];self.assertEqual(len(existing),45)
+        existing=[(c,k)for c,k in calls if len(c)>1 and c[1].startswith('tests/') and c[1].endswith('_browser.py') and c[1]!='tests/earth_road_browser.py'];self.assertEqual(len(existing),45)
+        roads=[(c,k) for c,k in calls if len(c)>1 and c[1]=='tests/earth_road_browser.py'];self.assertEqual(len(roads),1)
+        road,rk=roads[0];self.assertEqual(road[road.index('--output')+1],str(target/'earth_road_browser'));self.assertEqual(rk['timeout'],600)
+        self.assertIn('tests/earth_road_journey.cjs',labels)
         for c,k in existing:
             suite=Path(c[1]).stem;want=1200 if suite in ('cosmos_campaign_browser','atlantis_campaign_browser','heaven_campaign_browser','hell_campaign_browser','realm_givers_browser','local_life_browser') else 600
             self.assertEqual(k['timeout'],want,suite);expected,env=V.browser_run_spec(suite,target,'supported');self.assertEqual(c,expected);self.assertTrue(env.items()<=k['env'].items())
-        self.assertEqual(len(existing)+len(onboarding)+1,47);self.assertFalse((target/'onboarding_browser').exists());self.assertFalse(any(len(c)>1 and c[1].startswith('tools/capture_') for c,k in calls))
+        self.assertEqual(len(existing)+len(onboarding)+1,47);self.assertEqual(len(existing)+len(onboarding)+len(roads)+1,48);self.assertFalse((target/'onboarding_browser').exists());self.assertFalse(any(len(c)>1 and c[1].startswith('tools/capture_') for c,k in calls))
 
     def test_browser_gate_failure_is_not_swallowed_or_relabelled_as_optional(self):
         with self.assertRaisesRegex(SystemExit,'FAILED: onboarding_browser'):self.main_requests(onboarding_exit=1)

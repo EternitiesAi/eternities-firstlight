@@ -1,3 +1,24 @@
+# Ordinary Earth road checks, 2026-10-06
+
+The new route is being checked with current command-earned blade/bow input and a
+labelled historical strongest campaign input. Production movement, real menu
+confirmation and isolated loopback persistent Chromium are separate evidence
+from human play. The initial browser revision passed256/256, including native
+cold restarts, unchanged gear/story and visible once-only Merren payment. A
+subsequent sign/edge proof revision and complete verifier still need receipts.
+
+Root and a separate read-only colleague inspected both camera screenshots.
+Destination E prompts and signs are visible. The new Hearthwater spur's exposed
+square end looked like a dead end; a narrow appearance-only soil/stone shoulder
+now softens its edges. Compact prose wraps, with a deliberate scrolling/focus
+interaction required to prove the continuation action. Inherited blocky banks
+remain a presentation limitation. No enjoyment, mobile play or GPU FPS claim.
+
+No new human feedback was supplied. Earlier Firstlight finite-draft human
+questions remain pending and its dated evidence stays separate below.
+
+---
+
 # Automated qualification and pending human acceptance, 2026-10-05
 
 The finite connected browser draft is ready for human acceptance: original chapters I-IV, local Earth, Hell, Heaven, Atlantis, Cosmos and a provisional Earth homecoming. It provides supported authored pockets and normal return routes. Full streamed countries/cities, mounts, the full Regent war, ultimate Answering and completed Briar resolution remain future scope.

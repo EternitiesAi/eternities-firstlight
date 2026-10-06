@@ -215,15 +215,18 @@ class EarthNativeVerifier(unittest.TestCase):
         native=[(c,k) for c,k in calls if len(c)>1 and c[1]=='tools/earth_homecoming_browser.py'];self.assertEqual(len(native),1)
         c,k=native[0];self.assertEqual(k['timeout'],1800);self.assertEqual(c[c.index('--cohort-sha')+1],self.f.cohort_sha);self.assertEqual(c[c.index('--output')+1],str(browser/'earth_homecoming_browser'))
         self.assertLess(labels.index('tools/earth_homecoming_journey.cjs'),labels.index('tests/test_earth_homecoming_native.py'));self.assertLess(labels.index('tests/test_earth_homecoming_native.py'),labels.index('tools/earth_homecoming_browser.py'))
-        existing=[(c,k) for c,k in calls if len(c)>1 and c[1].startswith('tests/') and c[1].endswith('_browser.py')]
+        existing=[(c,k) for c,k in calls if len(c)>1 and c[1].startswith('tests/') and c[1].endswith('_browser.py') and c[1]!='tests/earth_road_browser.py']
         self.assertEqual(len(existing),45);self.assertEqual(len({c[1] for c,k in existing}),45)
+        roads=[(c,k) for c,k in calls if len(c)>1 and c[1]=='tests/earth_road_browser.py'];self.assertEqual(len(roads),1)
+        road,rk=roads[0];self.assertEqual(road[road.index('--output')+1],str(browser/'earth_road_browser'));self.assertEqual(rk['timeout'],600)
+        self.assertIn('tests/earth_road_journey.cjs',labels)
         for c,k in existing:
             suite=Path(c[1]).stem;expected=1200 if suite in ('cosmos_campaign_browser','atlantis_campaign_browser','heaven_campaign_browser','hell_campaign_browser','realm_givers_browser','local_life_browser') else 600
             self.assertEqual(k['timeout'],expected,suite)
             spec_command,spec_env=V.browser_run_spec(suite,browser,'supported');self.assertEqual(c,spec_command);self.assertTrue(spec_env.items()<=k['env'].items())
         self.assertFalse((browser/'earth_homecoming_browser').exists());self.assertFalse(any('isolated-profile' in str(p) for p in browser.rglob('*')))
     def test_legacy_guarded_supported_and_default_routing_remain_exact(self):
-        guarded={'realm_givers_browser','realm_trails_north_browser','coastward_bridge_posts_browser','practice_visibility_browser','hell_campaign_browser','heaven_campaign_browser','atlantis_campaign_browser','cosmos_campaign_browser'}
+        guarded={'earth_road_browser','realm_givers_browser','realm_trails_north_browser','coastward_bridge_posts_browser','practice_visibility_browser','hell_campaign_browser','heaven_campaign_browser','atlantis_campaign_browser','cosmos_campaign_browser'}
         self.assertEqual(set(V.GUARDED_BROWSER_OUTPUTS),guarded)
         for suite in guarded:
             c,e=V.browser_run_spec(suite,self.f.output);self.assertIn('--output',c);self.assertEqual(e,{})

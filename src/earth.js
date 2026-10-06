@@ -17,7 +17,8 @@ const PATCHES=Object.freeze([
  {id:'west-track',x:-13,z:-17,w:10,d:26},
  {id:'ridge-track',x:13,z:-18,w:10,d:28},
  {id:'north-common',x:0,z:-32,w:34,d:12},
- {id:'bellweather-road',x:0,z:-43,w:20,d:16}
+ {id:'bellweather-road',x:0,z:-43,w:20,d:16},
+ {id:'coastward-road-spur',x:15,z:-42,w:14,d:8}
 ]);
 const SOLIDS=Object.freeze([
  {id:'mill-pond',x:0,z:-15,w:9,d:20,h:.35},
@@ -25,7 +26,8 @@ const SOLIDS=Object.freeze([
  {id:'quarry-stack',x:11.7,z:-18,w:3.2,d:4.5,h:2.5},
  {id:'shelter-back',x:-12,z:-26,w:6.6,d:.5,h:3.1},
  {id:'shelter-west',x:-15,z:-23.8,w:.5,d:4.8,h:3.1},
- {id:'shelter-east',x:-9,z:-24.6,w:.5,d:3.2,h:3.1}
+ {id:'shelter-east',x:-9,z:-24.6,w:.5,d:3.2,h:3.1},
+ {id:'coastward-fingerpost',x:20.6,z:-42,w:.18,d:.18,h:2.4}
 ]);
 const POINTS=Object.freeze([
  {id:'arrival',name:'Lake footbridge · way home',x:0,z:24,kind:'return'},
@@ -36,7 +38,8 @@ const POINTS=Object.freeze([
  {id:'ridge',name:'Ridge road',x:13,z:-13,kind:'view'},
  {id:'quarry',name:'Quarry approach',x:12,z:-26,kind:'route'},
  {id:'shelter',name:'Old ridge shelter',x:-12,z:-23,kind:'rest'},
- {id:'bellweather',name:'Bellweather west road',x:0,z:-43,kind:'boundary'}
+ {id:'bellweather',name:'Bellweather west road',x:0,z:-43,kind:'boundary'},
+ {id:'hearthwater-coastward-road',name:'Coastward road · bridge, fields and woodland',x:19,z:-42,kind:'route'}
 ]);
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n)),dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z),tickets=new WeakMap();
 const fail=error=>({ok:false,error});

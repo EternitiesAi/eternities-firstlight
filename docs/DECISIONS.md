@@ -1,3 +1,24 @@
+# Ordinary Earth connection, 2026-10-06
+
+Connect existing Hearthwater and Coastward geography as one optional outing
+before adding new systems or distant realms. The stable local connection
+`hearthwater-coastward-v1` uses rule-owned supported endpoints at(19,-42) and
+(8,106). It does not become a Roads-of-Light marker or bypass Bellweather.
+
+Keep the original home checkpoint and established cold-reopen behavior. Travel
+uses transient single-use tickets, save-before-adoption and full runtime rollback;
+no durable migration, payout, acceptance or consent occurs. Existing local work
+keeps its real giver, run identities and reward owner. Timber signs and shoulder
+dressing add no ground/reward authority. Both view styles remain interchangeable.
+Names and provincial placement are provisional interpretations of the Earth
+bible's ordinary-road principle, not a ratified full world scale.
+
+Dom's new production resume supersedes the finite stop for authorized engineering.
+It does not settle paid power, offline loss, rare allocation, construction scale,
+full saga canon or human acceptance. No main merge or public deployment.
+
+---
+
 # Finite draft completion and evidence separation, 2026-10-05
 
 The finite connected browser draft is ready for human acceptance: original chapters I-IV, local Earth, Hell, Heaven, Atlantis, Cosmos and a provisional Earth homecoming. It provides supported authored pockets and normal return routes. Full streamed countries/cities, mounts, the full Regent war, ultimate Answering and completed Briar resolution remain future scope.
