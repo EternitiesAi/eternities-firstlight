@@ -51,9 +51,10 @@ class OnboardingVerifier(unittest.TestCase):
         self.assertFalse((self.f.root/'new-evidence').exists())
 
     def test_windows_non_d_output_is_refused_without_coercing_path(self):
+        target=Path('C:/firstlight-guard-test')/Path(self.tmp.name).name/'new-output'
         with self.assertRaisesRegex(ValueError,'D: on Windows'):
-            V.onboarding_browser_run_spec(self.f.root,Path(self.tmp.name)/'new-output',windows=True)
-        self.assertFalse((Path(self.tmp.name)/'new-output').exists())
+            V.onboarding_browser_run_spec(self.f.root,target,windows=True)
+        self.assertFalse(target.exists())
 
     def test_wrong_root_missing_tool_or_core_refuse_before_output(self):
         with self.assertRaisesRegex(ValueError,'Installed onboarding'):self.spec(root=Path(self.tmp.name)/'missing-game')

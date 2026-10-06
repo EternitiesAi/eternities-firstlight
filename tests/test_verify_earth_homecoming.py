@@ -192,8 +192,9 @@ class EarthNativeVerifier(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'separate trees'):self.f.spec(output=self.f.sources/'new-output')
         with self.assertRaisesRegex(ValueError,'new bounded'):self.f.spec(output=Path(self.tmp.name).anchor)
     def test_windows_non_d_output_is_refused_without_requiring_d_for_cpu_fixtures(self):
-        with self.assertRaisesRegex(ValueError,'D: on Windows'):self.f.spec(windows=True,output=Path(self.tmp.name)/'new-native')
-        self.assertFalse(self.f.output.exists())
+        target=Path('C:/firstlight-guard-test')/Path(self.tmp.name).name/'new-native'
+        with self.assertRaisesRegex(ValueError,'D: on Windows'):self.f.spec(windows=True,output=target)
+        self.assertFalse(target.exists());self.assertFalse(self.f.output.exists())
     def test_platform_portable_repo_default_env_override_and_explicit_cli_root(self):
         with patch.dict(os.environ,{},clear=True):
             spec=importlib.util.spec_from_file_location('portable_default_native',NATIVE);n=importlib.util.module_from_spec(spec);spec.loader.exec_module(n)

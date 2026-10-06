@@ -129,3 +129,19 @@ Repaired working-source browser03 passed273/273 with no browser errors at the
 identical3048246-byte pages / SHA256
 `b3846edab53c0353da99815bb0cee3f6c433b7875d2f8e6f8704d0b93b72d7bb`.
 This is the source epoch queued for a new complete remote qualification.
+
+## Complete02 environment-dependent CPU fixture failure
+
+The complete remote verifier at2e8f14c54a55fb2f5e13f683590fe5609204c4b8
+closed exit1 at2026-10-06T19:58:59.1499938Z. Its repaired rules passed1554/1556,
+with2 original explicit skips and no failures. Python discovery ran243 tests
+and failed3 non-D rejection fixtures, with8 reported skip records. No browser
+suite ran. Preserve all complete02 logs and its actual process-exit receipt.
+
+The run deliberately puts TEMP/TMP on D for storage. Those three old CPU tests
+used their temporary parent as a supposedly non-D target; it was now a valid D
+path, so correct guards did not reject it. The repair chooses an explicitly
+synthetic C target with the temporary fixture's unique basename. It performs no
+write there and still requires rejection/no output creation. All original
+relative/C/UNC and source/persistence guard criteria remain. Production game,
+HTML and guard implementations are unchanged by this test-fixture repair.
