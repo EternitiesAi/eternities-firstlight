@@ -698,7 +698,7 @@ const PATCHES=Object.freeze([
  {id:'ridge-track',x:13,z:-18,w:10,d:28},
  {id:'north-common',x:0,z:-32,w:34,d:12},
  {id:'bellweather-road',x:0,z:-43,w:20,d:16},
- {id:'coastward-road-spur',x:15,z:-42,w:14,d:8}
+ {id:'coastward-road-spur',x:13.4,z:-42,w:10.8,d:8}
 ]);
 const SOLIDS=Object.freeze([
  {id:'mill-pond',x:0,z:-15,w:9,d:20,h:.35},
@@ -707,7 +707,7 @@ const SOLIDS=Object.freeze([
  {id:'shelter-back',x:-12,z:-26,w:6.6,d:.5,h:3.1},
  {id:'shelter-west',x:-15,z:-23.8,w:.5,d:4.8,h:3.1},
  {id:'shelter-east',x:-9,z:-24.6,w:.5,d:3.2,h:3.1},
- {id:'coastward-fingerpost',x:20.6,z:-42,w:.18,d:.18,h:2.4}
+ {id:'coastward-fingerpost',x:18.3,z:-40.4,w:.18,d:.18,h:2.4}
 ]);
 const POINTS=Object.freeze([
  {id:'arrival',name:'Lake footbridge · way home',x:0,z:24,kind:'return'},
@@ -2211,8 +2211,8 @@ G.RealmWorldFoundations=api;if(typeof module!=='undefined')module.exports=api;
 (function(G){'use strict';
 const ID='hearthwater-coastward-v1',tickets=new WeakMap();
 const ENDPOINTS=Object.freeze([
- Object.freeze({id:'hearthwater-coastward-road',room:'earth-hearthwater-approach',x:19,z:-42,name:'Coastward road · bridge, fields and woodland',destination:'world-earthlands',arrival:Object.freeze({x:8,z:106,yaw:Math.PI})}),
- Object.freeze({id:'coastward-hearthwater-road',room:'world-earthlands',x:8,z:106,name:'Hearthwater road · home and Oren’s workshop',destination:'earth-hearthwater-approach',arrival:Object.freeze({x:19,z:-42,yaw:-Math.PI/2})})
+ Object.freeze({id:'hearthwater-coastward-road',room:'earth-hearthwater-approach',x:18.3,z:-42,post:Object.freeze({x:18.3,z:-40.4}),name:'Coastward road · bridge, fields and woodland',destination:'world-earthlands',arrival:Object.freeze({x:8,z:106,yaw:Math.PI})}),
+ Object.freeze({id:'coastward-hearthwater-road',room:'world-earthlands',x:8,z:106,post:Object.freeze({x:9.6,z:106}),name:'Hearthwater road · home and Oren’s workshop',destination:'earth-hearthwater-approach',arrival:Object.freeze({x:18.3,z:-42,yaw:-Math.PI/2})})
 ]);
 const clone=o=>JSON.parse(JSON.stringify(o)),distance=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z),fail=error=>({ok:false,error});
 function endpoint(room){return ENDPOINTS.find(p=>p.room===room)||null;}
@@ -2267,19 +2267,38 @@ G.RealmEarthRoadUI={EarthRoadUI};
 })(globalThis);
 </script><script>/* Static timber fingerboards and a clear cart track on rule-owned Earth ground. */
 (function(G){'use strict';
-function make(a,room){const p=G.RealmEarthRoad.endpoint(room);if(!p)return;const earth=room===G.RealmEarth.ROOM,height=(x,z)=>earth?G.RealmEarth.height(x,z):G.RealmWorldFoundations.height(room,x,z),x=p.x+1.6,z=p.z,y=height(x,z),decor={cameraSolid:false,rough:1,earthRoadPart:'fingerpost'};
- // Coastward's post is already rendered from its collision solid. Hearthwater
- // draws its own matching post. Fingerboards sit above the clear walking body.
+const TRACK=[[7,-38],[12,-42],[18.3,-42]];
+function distance(x,z){let best=Infinity;for(let i=1;i<TRACK.length;i++){const a=TRACK[i-1],b=TRACK[i],dx=b[0]-a[0],dz=b[1]-a[1],t=Math.max(0,Math.min(1,((x-a[0])*dx+(z-a[1])*dz)/(dx*dx+dz*dz)));best=Math.min(best,Math.hypot(x-a[0]-t*dx,z-a[1]-t*dz));}return best;}
+function make(a,room){const p=G.RealmEarthRoad.endpoint(room);if(!p)return;const earth=room===G.RealmEarth.ROOM,height=(x,z)=>earth?G.RealmEarth.height(x,z):G.RealmWorldFoundations.height(room,x,z),x=p.post.x,z=p.post.z,y=height(x,z),decor={cameraSolid:false,rough:1,earthRoadPart:'fingerpost'};
+ if(earth){
+  // Generate the legacy field first, consuming exactly its original RNG draws.
+  // Only the new track's small emission mask removes low decorative leaves.
+  a.earthRoadCleared=[];if(a.map?.leaf)a.map.leaf=a.map.leaf.filter(i=>{if(distance(i.p[0],i.p[2])<1.3){a.earthRoadCleared.push(i);return false;}return true;});
+  // The new patch overlaps old ground at x8..10. Render only its exposed x10+
+  // strips; the pre-existing merged floor, shoulder and scenery stay intact.
+  for(let zz=-46;zz<-38;zz+=.5){
+   const legacy=a.map?.box?.find(i=>i.terrain&&!i.earthRoadPart&&Math.abs(i.p[0]+i.s[0]/2-10)<1e-6&&Math.abs(i.p[2]-zz-.25)<1e-6);
+   if(!legacy)throw Error('Earth road requires its canonical legacy edge');
+   const M=G.RealmEngine.M,old=legacy.m||M.compose(...legacy.p,...legacy.s,...(legacy.r||[0,0,0])),a0=M.transform(old,[.5,.5,-.5]),b0=M.transform(old,[.5,.5,.5]),low=a0[2],high=b0[2];
+   const xs=[10,12,14,16,18.8];
+   for(let i=1;i<xs.length;i++){const left=xs[i-1],right=xs[i],ha=i===1?a0[1]:height(left,low),hb=i===1?b0[1]:height(left,high),hc=height(right,low),hd=height(right,high),xx=(left+right)/2,mid=(ha+hb+hc+hd)/4,dx=(hc+hd-ha-hb)/2,dz=(hb+hd-ha-hc)/2;
+    const m=[right-left,dx,0,0,0,.09,0,0,0,dz,high-low,0,xx,mid-.045,(low+high)/2,1];
+    a.box(xx,mid-.045,(low+high)/2,right-left,.09,high-low,0x929768,{...decor,earthRoadPart:'ground',terrain:true,cutaway:false,m});a.box(xx,Math.min(ha,hb,hc,hd)-2.55,(low+high)/2,right-left,5,high-low+.002,0x756d5a,{...decor,earthRoadPart:'ground',cutaway:false});
+   }
+  }
+  for(let i=1;i<TRACK.length;i++){const u=TRACK[i-1],v=TRACK[i],d=Math.hypot(v[0]-u[0],v[1]-u[1]);for(let t=0;t<d;t+=.68){const f=t/d,xx=u[0]+(v[0]-u[0])*f,zz=u[1]+(v[1]-u[1])*f;if(G.RealmEarth.walkable(xx,zz,.08))a.add('disc',xx,height(xx,zz)+.025,zz,1.7,1,1.7,0xb0a181,{...decor,earthRoadPart:'cart-track',r:[Math.atan2(height(xx,zz-.1)-height(xx,zz+.1),.2),0,0]});}}
+ }
+ // Coastward's matching post is already rendered from its canonical solid.
  if(earth)a.box(x,y+1.2,z,.18,2.4,.18,0x685540,{...decor,earthRoadPart:'post'});
  for(const [dy,dir]of[[2.15,-1],[1.95,1]]){a.box(x+dir*.42,y+dy,z,1.9,.24,.16,0x8c7752,decor);a.box(x+dir*1.35,y+dy,z,.2,.2,.17,0xc2ab72,{...decor,r:[0,0,Math.PI/4]});for(const face of[-1,1])for(let i=0;i<3;i++)a.box(x+dir*(.1+i*.26),y+dy,z+face*.086,.13,.06,.012,0xe0cc9c,decor);}
  if(earth){
-  // A narrow soil lip and low stones soften only this new authored spur.
-  // They add no ground, collision, work ownership or camera obstruction.
-  for(const side of[-1,1]){const zz=z+side*3.65;a.box(15,height(15,zz)+.015,zz,13.6,.035,.5,0x8e8a66,{...decor,earthRoadPart:'shoulder'});for(let t=0;t<7;t++){const xx=9+t*1.9;a.add('octa',xx,height(xx,zz)+.06,zz,.28,.15,.3,t%2?0x888976:0xa5a18a,{...decor,earthRoadPart:'shoulder'});}}
-  for(const zz of[z-3.1,z+3.1])a.add('octa',21.4,height(21.4,zz)+.09,zz,.42,.21,.35,0xa39f87,{...decor,earthRoadPart:'shoulder'});
-  for(let t=0;t<12;t++){const xx=8+t;for(const dz of[-.62,.62])a.box(xx,height(xx,z+dz)+.015,z+dz,.85,.03,.12,0x9b9278,{...decor,earthRoadPart:'cart-rut'});}}
+  // Narrow appearance-only lips stay inside the supported patch.
+  for(const side of[-1,1]){const zz=p.z+side*3.65;a.box(13.4,height(13.4,zz)+.015,zz,10.4,.035,.5,0x8e8a66,{...decor,earthRoadPart:'shoulder'});for(let t=0;t<6;t++){const xx=8.7+t*1.85;a.add('octa',xx,height(xx,zz)+.06,zz,.28,.15,.3,t%2?0x888976:0xa5a18a,{...decor,earthRoadPart:'shoulder'});}}
+  for(const zz of[p.z-3.1,p.z+3.1])a.add('octa',18.15,height(18.15,zz)+.09,zz,.42,.21,.35,0xa39f87,{...decor,earthRoadPart:'shoulder'});
+  for(let t=0;t<11;t++){const xx=8+t;for(const dz of[-.62,.62])a.box(xx,height(xx,p.z+dz)+.015,p.z+dz,.85,.03,.12,0x9b9278,{...decor,earthRoadPart:'cart-rut'});}
+ }
 }
-G.RealmEarthRoadArt={make};if(typeof module!=='undefined')module.exports=G.RealmEarthRoadArt;
+G.RealmEarthRoadArt={make,distance,TRACK};if(typeof module!=='undefined')module.exports=G.RealmEarthRoadArt;
 })(globalThis);
 </script><script>/* Original, bounded adaptations of the 2026-09-14 Heaven/Hell designs.
  * These provisional names are game-fiction proposals, not founder-ratified
@@ -11219,8 +11238,11 @@ if(typeof module!=='undefined'&&module.exports)module.exports=api;
 const C=G.RealmEarth,TAU=Math.PI*2,h=C.height,{hex,blend}=G.RealmEngine;
 const col={grass:0x70865e,meadow:0x929768,stone:0xaaa58d,path:0xb0a181,wood:0x67513a,roof:0x766754,leaf:0x648657,fruit:0xc47b51,water:0x577c7a,gold:0xc2a86c};
 const decor={cameraSolid:false,rough:.96,cutaway:true};
+// Keep the established field's RNG and merged strips independent of new roads.
+// The separately tagged road overlay draws and clears only its own footprint.
+const legacyPatches=C.PATCHES.filter(p=>p.id!=='coastward-road-spur'),legacyPoints=C.POINTS.filter(p=>p.id!=='hearthwater-coastward-road');
+function fieldWalkable(x,z,r){const offsets=[[0,0],[r,0],[-r,0],[0,r],[0,-r],[r*.707,r*.707],[-r*.707,r*.707],[r*.707,-r*.707],[-r*.707,-r*.707]];return offsets.every(([dx,dz])=>legacyPatches.some(p=>Math.abs(x+dx-p.x)<=p.w/2&&Math.abs(z+dz-p.z)<=p.d/2))&&C.walkable(x,z,r);}
 const paths=[
- [[7,-38],[12,-42],[19,-42]],
  [[0,25],[0,17],[0,10],[-7,5],[-12,-3],[-14,-12],[-14,-22],[-10,-30],[0,-35],[0,-44]],
  [[0,10],[7,5],[13,-3],[14,-12],[14,-22],[11,-30],[0,-35],[0,-44]],
  [[-14,-22],[-12,-24]],
@@ -11313,7 +11335,7 @@ function shelter(a){
  a.box(-14.68,b+1.84,-24.6,.12,.09,1.2,col.wood,decor);for(let i=0;i<3;i++)a.add('round',-14.6,b+1.52,-25.02+i*.36,.14,.29,.23,0xbbad85,decor);
 }
 function terrain(a,rnd){
- for(let z=-52;z<29;z+=.5){let runs=C.PATCHES.filter(p=>p.id!=='bridge'&&z+.5>p.z-p.d/2&&z<p.z+p.d/2).map(p=>[p.x-p.w/2,p.x+p.w/2]).sort((u,v)=>u[0]-v[0]),merged=[];
+ for(let z=-52;z<29;z+=.5){let runs=legacyPatches.filter(p=>p.id!=='bridge'&&z+.5>p.z-p.d/2&&z<p.z+p.d/2).map(p=>[p.x-p.w/2,p.x+p.w/2]).sort((u,v)=>u[0]-v[0]),merged=[];
   for(const p of runs){const last=merged[merged.length-1];if(last&&p[0]<=last[1])last[1]=Math.max(last[1],p[1]);else merged.push(p.slice());}
   for(const [lo,hi]of merged){const x=(lo+hi)/2,ha=h(x,z),hb=h(x,z+.5),ang=Math.atan2(ha-hb,.5),green=z<-25?col.meadow:col.grass;a.box(x,(ha+hb)/2-.045,z+.25,hi-lo,.09,Math.hypot(.5,hb-ha)+.002,green,{rough:1,terrain:true,cameraSolid:false,cutaway:false,r:[ang,0,0]});a.box(x,Math.min(ha,hb)-2.55,z+.25,hi-lo,5,.502,0x756d5a,{cameraSolid:false,cutaway:false});}
  }
@@ -11344,11 +11366,11 @@ function terrain(a,rnd){
  G.RealmBridgeArt.shoreline(a);
  G.RealmBridgeArt.mountains(a);
  // Field dressing respects route clearance.
- for(let i=0;i<850;i++){let x=-18+rnd()*36,z=-49+rnd()*74;if(!C.walkable(x,z,.45)||pathDistance(x,z)<1.25)continue;let b=h(x,z),s=.07+rnd()*.11;a.add('leaf',x,b+.02,z,s,s*2.6,s,i%7===0?0xb3a56f:0x678150,{wind:1,rough:1,cameraSolid:false,r:[0,rnd()*TAU,0]});if(i%33===0)a.add('octa',x,b+.18,z,.10,.16,.10,[0xdfc78f,0xcaa6a1,0xd9d3a2][i%3],{cameraSolid:false});}
+ for(let i=0;i<850;i++){let x=-18+rnd()*36,z=-49+rnd()*74;if(!fieldWalkable(x,z,.45)||pathDistance(x,z)<1.25)continue;let b=h(x,z),s=.07+rnd()*.11;a.add('leaf',x,b+.02,z,s,s*2.6,s,i%7===0?0xb3a56f:0x678150,{wind:1,rough:1,cameraSolid:false,r:[0,rnd()*TAU,0]});if(i%33===0)a.add('octa',x,b+.18,z,.10,.16,.10,[0xdfc78f,0xcaa6a1,0xd9d3a2][i%3],{cameraSolid:false});}
  // Larger quiet meadow clumps vary the greens while yielding to routes,
  // carved evidence and residents. Reeds are confined to the blocked pond.
  for(let i=0;i<110;i++){
-  const x=-16+rnd()*32,z=-46+rnd()*62;if(!C.walkable(x,z,.55)||pathDistance(x,z)<1.9||C.POINTS.some(p=>Math.hypot(p.x-x,p.z-z)<2.25)||G.RealmEarthNotes.MARKS.some(p=>Math.hypot(p.x-x,p.z-z)<1.9))continue;
+  const x=-16+rnd()*32,z=-46+rnd()*62;if(!fieldWalkable(x,z,.55)||pathDistance(x,z)<1.9||legacyPoints.some(p=>Math.hypot(p.x-x,p.z-z)<2.25)||G.RealmEarthNotes.MARKS.some(p=>Math.hypot(p.x-x,p.z-z)<1.9))continue;
   const b=h(x,z),s=.28+rnd()*.25;
   for(let j=0;j<3;j++)a.add('leaf',x+Math.sin(j*2.1)*.15,b,z+Math.cos(j*2.1)*.15,s,.43+rnd()*.25,s,[0x879765,0x5f7d50,0x9ca477][i%3],{...decor,wind:1,r:[0,j*2.1,0]});
  }
@@ -11953,7 +11975,7 @@ function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isIn
   if(!gallery&&!/bridge/.test(p.source))a.box(p.x,(p.y-.11-.5)/2,p.z,p.w,p.y-.11+.5,p.d,def.palette.stone,decor);
  }
  if(def.id==='earthlands')for(const bank of coastBanks(rawPartitions(def))){const{kind,p,s,c,...opt}=bank;a.add(kind,...p,...s,c,opt);}
- for(const p of def.solids)a.box(p.x,W.height(def.room,p.x,p.z)+p.h/2,p.z,p.w,p.h,p.d,p.color??def.palette.stone,{rough:.96,cameraSolid:true,cutaway:true,worldSolid:true,worldSolidId:p.id});
+ for(const p of def.solids)a.box(p.x,W.height(def.room,p.x,p.z)+p.h/2,p.z,p.w,p.h,p.d,p.color??def.palette.stone,{rough:.96,cameraSolid:true,cutaway:true,worldSolid:true,worldSolidId:p.id,...(p.id==='hearthwater-fingerpost'?{earthRoadPart:'post'}:{})});
  if(def.dive){const d=def.dive,v=d.volume;
   a.box(v.x,d.minY-.36,v.z,v.w,.12,v.d,0x638b84,decor);
   // The maintained air court uses the existing preference-controlled roof
@@ -11969,7 +11991,7 @@ function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isIn
  }
  const painter=def.id==='heaven'||def.id==='hell'?G.RealmWorldHeavenHell:G.RealmWorldAtlantisEarth;
  painter.decorate(a,def,{height:(x,z)=>W.height(def.room,x,z),rng:G.RealmCore.rng(23171002),sim});
- for(const p of def.points){if(p.kind==='person')continue;const y=W.height(def.room,p.x,p.z);a.add('cylinder',p.x,y,p.z,.07,.8,.07,def.palette.trim,decor);a.add('octa',p.x,y+.9,p.z,.2,.25,.2,p.kind==='return'?0xffd69a:def.palette.trim,{...decor,em:.18});}
+ for(const p of def.points.filter(p=>p.id!=='coastward-hearthwater-road')){if(p.kind==='person')continue;const y=W.height(def.room,p.x,p.z);a.add('cylinder',p.x,y,p.z,.07,.8,.07,def.palette.trim,decor);a.add('octa',p.x,y+.9,p.z,.2,.25,.2,p.kind==='return'?0xffd69a:def.palette.trim,{...decor,em:.18});}
  G.RealmEarthRoadArt?.make(a,def.room);
  a.commit();
 }

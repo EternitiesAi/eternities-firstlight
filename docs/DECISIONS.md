@@ -2,7 +2,7 @@
 
 Connect existing Hearthwater and Coastward geography as one optional outing
 before adding new systems or distant realms. The stable local connection
-`hearthwater-coastward-v1` uses rule-owned supported endpoints at(19,-42) and
+`hearthwater-coastward-v1` uses rule-owned supported endpoints at(18.3,-42) and
 (8,106). It does not become a Roads-of-Light marker or bypass Bellweather.
 
 Keep the original home checkpoint and established cold-reopen behavior. Travel

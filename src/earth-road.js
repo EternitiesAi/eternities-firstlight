@@ -2,8 +2,8 @@
 (function(G){'use strict';
 const ID='hearthwater-coastward-v1',tickets=new WeakMap();
 const ENDPOINTS=Object.freeze([
- Object.freeze({id:'hearthwater-coastward-road',room:'earth-hearthwater-approach',x:19,z:-42,name:'Coastward road · bridge, fields and woodland',destination:'world-earthlands',arrival:Object.freeze({x:8,z:106,yaw:Math.PI})}),
- Object.freeze({id:'coastward-hearthwater-road',room:'world-earthlands',x:8,z:106,name:'Hearthwater road · home and Oren’s workshop',destination:'earth-hearthwater-approach',arrival:Object.freeze({x:19,z:-42,yaw:-Math.PI/2})})
+ Object.freeze({id:'hearthwater-coastward-road',room:'earth-hearthwater-approach',x:18.3,z:-42,post:Object.freeze({x:18.3,z:-40.4}),name:'Coastward road · bridge, fields and woodland',destination:'world-earthlands',arrival:Object.freeze({x:8,z:106,yaw:Math.PI})}),
+ Object.freeze({id:'coastward-hearthwater-road',room:'world-earthlands',x:8,z:106,post:Object.freeze({x:9.6,z:106}),name:'Hearthwater road · home and Oren’s workshop',destination:'earth-hearthwater-approach',arrival:Object.freeze({x:18.3,z:-42,yaw:-Math.PI/2})})
 ]);
 const clone=o=>JSON.parse(JSON.stringify(o)),distance=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z),fail=error=>({ok:false,error});
 function endpoint(room){return ENDPOINTS.find(p=>p.room===room)||null;}

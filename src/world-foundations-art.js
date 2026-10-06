@@ -52,7 +52,7 @@ function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isIn
   if(!gallery&&!/bridge/.test(p.source))a.box(p.x,(p.y-.11-.5)/2,p.z,p.w,p.y-.11+.5,p.d,def.palette.stone,decor);
  }
  if(def.id==='earthlands')for(const bank of coastBanks(rawPartitions(def))){const{kind,p,s,c,...opt}=bank;a.add(kind,...p,...s,c,opt);}
- for(const p of def.solids)a.box(p.x,W.height(def.room,p.x,p.z)+p.h/2,p.z,p.w,p.h,p.d,p.color??def.palette.stone,{rough:.96,cameraSolid:true,cutaway:true,worldSolid:true,worldSolidId:p.id});
+ for(const p of def.solids)a.box(p.x,W.height(def.room,p.x,p.z)+p.h/2,p.z,p.w,p.h,p.d,p.color??def.palette.stone,{rough:.96,cameraSolid:true,cutaway:true,worldSolid:true,worldSolidId:p.id,...(p.id==='hearthwater-fingerpost'?{earthRoadPart:'post'}:{})});
  if(def.dive){const d=def.dive,v=d.volume;
   a.box(v.x,d.minY-.36,v.z,v.w,.12,v.d,0x638b84,decor);
   // The maintained air court uses the existing preference-controlled roof
@@ -68,7 +68,7 @@ function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isIn
  }
  const painter=def.id==='heaven'||def.id==='hell'?G.RealmWorldHeavenHell:G.RealmWorldAtlantisEarth;
  painter.decorate(a,def,{height:(x,z)=>W.height(def.room,x,z),rng:G.RealmCore.rng(23171002),sim});
- for(const p of def.points){if(p.kind==='person')continue;const y=W.height(def.room,p.x,p.z);a.add('cylinder',p.x,y,p.z,.07,.8,.07,def.palette.trim,decor);a.add('octa',p.x,y+.9,p.z,.2,.25,.2,p.kind==='return'?0xffd69a:def.palette.trim,{...decor,em:.18});}
+ for(const p of def.points.filter(p=>p.id!=='coastward-hearthwater-road')){if(p.kind==='person')continue;const y=W.height(def.room,p.x,p.z);a.add('cylinder',p.x,y,p.z,.07,.8,.07,def.palette.trim,decor);a.add('octa',p.x,y+.9,p.z,.2,.25,.2,p.kind==='return'?0xffd69a:def.palette.trim,{...decor,em:.18});}
  G.RealmEarthRoadArt?.make(a,def.room);
  a.commit();
 }

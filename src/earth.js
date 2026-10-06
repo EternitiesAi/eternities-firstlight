@@ -18,7 +18,7 @@ const PATCHES=Object.freeze([
  {id:'ridge-track',x:13,z:-18,w:10,d:28},
  {id:'north-common',x:0,z:-32,w:34,d:12},
  {id:'bellweather-road',x:0,z:-43,w:20,d:16},
- {id:'coastward-road-spur',x:15,z:-42,w:14,d:8}
+ {id:'coastward-road-spur',x:13.4,z:-42,w:10.8,d:8}
 ]);
 const SOLIDS=Object.freeze([
  {id:'mill-pond',x:0,z:-15,w:9,d:20,h:.35},
@@ -27,7 +27,7 @@ const SOLIDS=Object.freeze([
  {id:'shelter-back',x:-12,z:-26,w:6.6,d:.5,h:3.1},
  {id:'shelter-west',x:-15,z:-23.8,w:.5,d:4.8,h:3.1},
  {id:'shelter-east',x:-9,z:-24.6,w:.5,d:3.2,h:3.1},
- {id:'coastward-fingerpost',x:20.6,z:-42,w:.18,d:.18,h:2.4}
+ {id:'coastward-fingerpost',x:18.3,z:-40.4,w:.18,d:.18,h:2.4}
 ]);
 const POINTS=Object.freeze([
  {id:'arrival',name:'Lake footbridge · way home',x:0,z:24,kind:'return'},

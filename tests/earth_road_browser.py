@@ -79,7 +79,7 @@ try:
                     page.locator('[data-rpg="earth-confirm"]').click(); render()
                     check(variant+' original lake route enters Hearthwater', scene() == 'earth-hearthwater-approach')
                 def reach_north():
-                    for x,z in [(0,10),(14,-12),(12,-26),(0,-35),(7,-38),(12,-42),(19,-42)]: walk(x,z)
+                    for x,z in [(0,10),(14,-12),(12,-26),(0,-35),(7,-38),(12,-42),(18.3,-42)]: walk(x,z)
                 def road(expected):
                     page.keyboard.press('e'); render()
                     text = page.locator('#rpg-content').inner_text()
@@ -98,13 +98,13 @@ try:
                     render(); before = state(); data = ev('()=>Realm.test.earthRoad()')
                     check(variant+' '+label+' submitted finite fingerboards', len([p for p in data['parts'] if p.get('earthRoadPart')=='fingerpost']) == 16 and all(all(isinstance(v,(int,float)) for v in p['p']+p['s']) and min(p['s'])>0 for p in data['parts']))
                     check(variant+' '+label+' boards and dressing have no camera authority', all(p.get('cameraSolid') is False for p in data['parts'] if not p.get('worldSolidId')))
-                    geometry=ev('''()=>{const E=RealmEngine,road=Realm.test.earthRoad(),height=road.route.room===RealmEarth.ROOM?RealmEarth.height(road.route.x+1.6,road.route.z):RealmWorldFoundations.height(road.route.room,road.route.x+1.6,road.route.z);
+                    geometry=ev('''()=>{const E=RealmEngine,road=Realm.test.earthRoad(),height=road.route.room===RealmEarth.ROOM?RealmEarth.height(road.route.post.x,road.route.post.z):RealmWorldFoundations.height(road.route.room,road.route.post.x,road.route.post.z);
                       const parts=road.parts.filter(p=>['fingerpost','post'].includes(p.earthRoadPart)||p.worldSolidId==='hearthwater-fingerpost').map(p=>{
                         const m=p.m||E.M.compose(...p.p,...p.s,...(p.r||[0,0,0])),g=E.geometry(p.kind),min=[Infinity,Infinity,Infinity],max=[-Infinity,-Infinity,-Infinity];
                         for(let k=0;k<g.length;k+=6){const v=E.M.transform(m,g.slice(k,k+3));for(let j=0;j<3;j++){min[j]=Math.min(min[j],v[j]);max[j]=Math.max(max[j],v[j]);}}
                         return{role:p.worldSolidId?'post':p.earthRoadPart,min,max,finite:[...m,...min,...max].every(Number.isFinite)};});
                       const posts=parts.filter(p=>p.role==='post'),boards=parts.filter(p=>p.role==='fingerpost');
-                      return{parts,height,contact:posts.length===1&&Math.abs(posts[0].min[1]-height)<2e-5&&Math.abs((posts[0].min[0]+posts[0].max[0])/2-road.route.x-1.6)<2e-5,
+                      return{parts,height,contact:posts.length===1&&Math.abs(posts[0].min[1]-height)<2e-5&&Math.abs((posts[0].min[0]+posts[0].max[0])/2-road.route.post.x)<2e-5&&Math.abs((posts[0].min[2]+posts[0].max[2])/2-road.route.post.z)<2e-5,
                         bodyClear:boards.every(p=>p.min[1]>height+1.7),finite:parts.every(p=>p.finite)};}''')
                     check(variant+' '+label+' submitted sign touches canonical ground and clears walking body',geometry['finite'] and geometry['contact'] and geometry['bodyClear'])
                     check(variant+' '+label+' inspection preserves world', state() == before)
@@ -142,7 +142,7 @@ try:
                 check(variant+' remote invitation cannot cross', page.locator('[data-rpg="earth-road-confirm"]').count() == 0)
                 page.locator('[data-rpg="earth-road-walk"]').click()
                 ev('()=>{for(let i=0;i<18000&&Realm.test.path.length;i++)Realm.test.step(.05);Realm.test.render()}')
-                check(variant+' map route walks to the physical northern fork', scene() == 'earth-hearthwater-approach' and ev('()=>Math.hypot(Realm.diagnostics.adventure.player.x-19,Realm.diagnostics.adventure.player.z+42)<.25'))
+                check(variant+' map route walks to the physical northern fork', scene() == 'earth-hearthwater-approach' and ev('()=>Math.hypot(Realm.diagnostics.adventure.player.x-18.3,Realm.diagnostics.adventure.player.z+42)<.25'))
                 probe('HEARTHWATER'); road('world-earthlands'); probe('COASTWARD')
                 page.keyboard.press('m'); render()
                 check(variant+' Coastward map draws distinct local connection', page.locator('[data-world-route="hearthwater-connection"]').count() == 1 and page.locator('[data-rpg="earth-road-read"]').count() == 1)

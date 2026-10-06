@@ -16,7 +16,7 @@ chapter prerequisites. The connection is an authored scene boundary, not a
 streamed open-world claim. Names and provincial placement remain provisional.
 
 Stable connection ID: `hearthwater-coastward-v1`. Endpoints are
-`hearthwater-coastward-road` at `(19,-42)` and `coastward-hearthwater-road` at
+`hearthwater-coastward-road` at `(18.3,-42)` and `coastward-hearthwater-road` at
 `(8,106)`. A short supported Hearthwater spur overlaps the existing northern
 road; Coastward's arrival bank already supports its endpoint. Two physical
 timber fingerposts and the local maps make both directions readable.
@@ -96,3 +96,36 @@ full03/full04 finite-draft failures remain recorded in their original directorie
 
 The complete remote gate and final publication receipts are still pending at
 this implementation checkpoint. No full-game completion claim follows.
+
+## Complete01 failure and bounded terrain repair
+
+The freshly fetched reused remote checkout at95ed90551b815cf18ab9407dd1607284fe86ad0f
+ran the full verifier process and exited1 at2026-10-06T19:44:59.8002749Z. Build
+and121 syntax commands passed; the rules phase had1554 tests:1549 pass,3 fail,
+2 explicit skips. Python/journeys/browser stages were not reached. Retain
+`remote-full01`, its console and REMOTE_FULL01_PROCESS_EXIT.json.
+
+Three old guards caught the integration delta. Coastward's canonical post and
+generic route marker added3 parts to a legacy1135 budget. The dedicated sign
+now replaces just that new generic marker; its17 owned post/board parts are
+checked separately while legacy1135/1267/1363 and64floor/70bank counts stay fixed.
+The new Hearthwater patch and global path altered conditional RNG draws and
+scenery. Legacy generation now uses the unchanged original support/path inputs,
+then applies only a bounded low-leaf mask after all original random draws. The
+original2550-piece PR33 hash remains unchanged. New ground is a tagged overlay
+covering only patch-minus-existing-ground, with actual rendered joins under1mm.
+
+The endpoint/spur was narrowed from19 to18.3, keeping the existing conservative
+scenery-clearance margin without moving mountains. The relocated timber post
+remains on supported ground at18.3,-40.4. The stable connection/objective/reward
+IDs and all saved worlds are unchanged. The original95 gameplay movie predates
+this repair and is labelled separately; it is not final terrain proof.
+
+Focused repaired road, original terrain, expedition and onboarding checks pass
+57/57, no skips. A fresh new browser epoch and complete remote run qualify the
+repaired source separately; do not combine partial passes from earlier attempts.
+
+Repaired working-source browser03 passed273/273 with no browser errors at the
+identical3048246-byte pages / SHA256
+`b3846edab53c0353da99815bb0cee3f6c433b7875d2f8e6f8704d0b93b72d7bb`.
+This is the source epoch queued for a new complete remote qualification.
