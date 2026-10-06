@@ -3,21 +3,32 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto');
 const C=require('../src/core.js'),A=require('../src/adventure.js'),AR=require('../src/arsenal.js'),T=require('../src/combat.js'),W=require('../src/world-foundations.js');
-const E=require('../src/earth-expedition.js'),S=require('../src/sandbox.js');
+const E=require('../src/earth-expedition.js'),F=require('../src/earth-fieldcraft.js'),S=require('../src/sandbox.js');
 const {createHarness,earnedKit}=require('./realm_trails_journey.cjs');
 const ROOT=path.resolve(__dirname,'..'),copy=o=>JSON.parse(JSON.stringify(o)),dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 const hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 function journey({bow=false,veteran=false,output=null}={}){
  assert.equal(A.VERSION,12,'requires real Adventure12/Core/roster integration; no validator substitution');
  const variant=veteran?'veteran':bow?'fresh-bow':'fresh-blade',source=veteran?path.join(ROOT,'docs/evidence/world-production-2026-10-03/captures/returning-fit-final-01/FINAL_WORLD.json'):null;
- const h=createHarness(source?JSON.parse(fs.readFileSync(source,'utf8')):undefined),events=[],combats=[],claims=[];
- const sources=['earth-expedition.js','core.js','adventure.js','combat.js','arsenal.js','world-foundations.js','elderweald-world.js'];
+ const h=createHarness(source?JSON.parse(fs.readFileSync(source,'utf8')):undefined),events=[],combats=[],claims=[],fieldcraftStages=[],ownerTransitions=[];
+ const sources=['earth-expedition.js','earth-fieldcraft.js','core.js','adventure.js','combat.js','arsenal.js','world-foundations.js','elderweald-world.js'];
  const hashes=()=>Object.fromEntries(sources.map(file=>[file,hash(path.join(ROOT,'src',file))]));const initialHashes=hashes();
+ // This caller owns its lease. Preserve createHarness's real changing serial;
+ // persistence observations never substitute a fabricated context revision.
+ const rawContext=h.context;let owner=null,ownerLease=null,generation=0;
+ const tuple=ctx=>({sim:ctx.sim,state:ctx.sim.state,adventure:ctx.sim.state.adventure,active:ctx.active,room:ctx.sim.room,trip:ctx.sim.worldTrip,earthTrip:ctx.sim.earthTrip,home:JSON.stringify(ctx.sim.returnPos)});
+ function context(reason=null){
+  const ctx=rawContext(),actual=tuple(ctx),changed=!owner||Object.keys(actual).some(k=>actual[k]!==owner[k]);
+  if(reason||changed||ctx.sim.fieldcraftOwnerLease!==ownerLease){ownerLease=Object.freeze({});ctx.sim.fieldcraftOwnerLease=ownerLease;owner=actual;ownerTransitions.push({generation:++generation,reason:reason||'actual-owner-tuple-change',active:ctx.active,room:ctx.sim.room,contextRevision:ctx.revision});}
+  return{...ctx,ownerLease};
+ }
+ h.context=()=>context();context('initial-harness-owner');
+ for(const method of ['enter','home','reload']){const original=h[method];h[method]=(...args)=>{const result=original(...args);context('actual-harness-'+method);return result;};}
  const hook=()=>{h.sim.earthExpeditionSave=h.save;};hook();
  if(!veteran)earnedKit(h,bow);else{assert.equal(h.sim.state.adventure.equipment.weapon,'dawn_edge');assert.equal(h.sim.state.adventure.realmCraft.weapon,'dawn_edge');assert.equal(A.stats(h.sim.state.adventure).attack,51);h.walk(W.GATE.x,W.GATE.z);}
  const before=h.sim.snapshot(),initialWeapon=before.adventure.equipment.weapon,branch=bow?'managed-coppice':'stormfall-recovery';
  const snap=name=>{if(output){const dir=path.join(output,variant);fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(path.join(dir,name+'.json'),JSON.stringify(h.sim.snapshot(),null,2)+'\n');}};
- const command=(type,payload={})=>{const d=type.startsWith('patrol-')?E.patrol:E.definition;const result=E.command(h.context(),type,{quest:d.id,...payload},{save:h.save});assert.ok(result.ok,type+': '+result.error);events.push({type,payload,result});return result;};
+ const command=(type,payload={})=>{const d=type.startsWith('patrol-')?E.patrol:E.definition;const result=E.command(h.context(),type,{quest:d.id,...payload},{save:h.save});assert.ok(result.ok,type+': '+result.error);const recorded={...payload};if(recorded.fittingTicket){delete recorded.fittingTicket;recorded.fittingProof='opaque current fitting authority; not serialized';}events.push({type,payload:recorded,result});return result;};
  const reload=realm=>{h.reload(realm);hook();};
  const balance=()=>({xp:h.sim.state.adventure.xp,coins:h.sim.state.adventure.coins,ore:h.sim.state.adventure.ore,wood:h.sim.state.sandbox.inventory.wood,fiber:h.sim.state.sandbox.inventory.fiber});
  const unchangedCombat=()=>({xp:h.sim.state.adventure.xp,coins:h.sim.state.adventure.coins,ore:h.sim.state.adventure.ore,drops:copy(h.sim.state.adventure.drops),defeated:copy(h.sim.state.adventure.defeated)});
@@ -50,12 +61,37 @@ function journey({bow=false,veteran=false,output=null}={}){
   assert.deepEqual(unchangedCombat(),unearned,'accepted enemies never award legacy XP/currency/drop/dead-history');h.command('target-clear');
   combats.push({id:terms.id,run,style,hp:terms.hp,damage:terms.damage,seconds:h.sim.state.adventure.elapsed-start,frames,guards,arrowSeen,phases,transitions,impacts,retreats,healthAfter:h.sim.state.adventure.hp});
  }
+ function fitBrace(){
+  const before=h.sim.snapshot(),lease=h.sim.fieldcraftOwnerLease,saveCount=h.checkpoints.length;
+  const bare=E.command(h.context(),'step',{quest:E.definition.id,step:'brace-root-channel'},{save:h.save});assert.equal(bare.ok,false,'earned work point alone cannot bypass the assembly proof');assert.deepEqual(h.sim.snapshot(),before);assert.equal(h.checkpoints.length,saveCount);
+  const begun=F.begin(h.context());assert.ok(begun.ok,begun.error);const plan=begun.plan;fieldcraftStages.push({operation:'begin',sectionIds:F.GEOMETRY.sections.map(s=>s.id),room:h.sim.room,workPoint:{...h.sim.state.player},bareStepRefused:true});
+  let ticket;const inspected=new Set(),contextRevisions=[];
+  for(const section of F.GEOMETRY.sections){
+   const ctx=h.context();contextRevisions.push(ctx.revision);const inspection=F.inspect(ctx,plan);assert.ok(inspection.ok,inspection.error);inspected.add(section.receiverFrom);inspected.add(section.receiverTo);fieldcraftStages.push({operation:'inspect',section:section.id,receivers:[section.receiverFrom,section.receiverTo],contextRevision:ctx.revision});
+   if(section.index===0){
+    const wrong=F.adjust(h.context(),plan,{yaw:F.GEOMETRY.initialYaw,pitch:F.GEOMETRY.initialPitch,sectionId:section.id});assert.ok(wrong.ok);const refused=F.seat(h.context(),plan);assert.equal(refused.ok,false,'actual first preview misses its receiving socket');fieldcraftStages.push({operation:'seat-refused',section:section.id,yaw:wrong.view.yaw,pitch:wrong.view.pitch,endError:refused.endError});
+   }
+   const adjusted=F.adjust(h.context(),plan,{yaw:F.GEOMETRY.targetYaw,pitch:F.GEOMETRY.targetPitch,sectionId:section.id,receiverFrom:section.receiverFrom,receiverTo:section.receiverTo});assert.ok(adjusted.ok,adjusted.error);fieldcraftStages.push({operation:'adjust',section:section.id,yaw:adjusted.view.yaw,pitch:adjusted.view.pitch});
+   const seated=F.seat(h.context(),plan);assert.ok(seated.ok,seated.error);assert.equal(seated.view.sections.filter(s=>s.seated).length,section.index+1);ticket=seated.ticket;fieldcraftStages.push({operation:'seat',section:section.id,seatedCount:section.index+1});
+   assert.deepEqual(h.sim.snapshot(),before,'inspection/pose/seating do not write progress, inventory, XP or fees');assert.equal(h.checkpoints.length,saveCount);
+  }
+  assert.ok(contextRevisions.every((n,i)=>i===0||n>contextRevisions[i-1]),'raw harness context revisions genuinely advance');assert.strictEqual(h.sim.fieldcraftOwnerLease,lease,'same worksite operations preserve caller lease');assert.equal(inspected.size,5);assert.ok(F.validate(h.context(),ticket).ok);
+  const result=command('step',{step:'brace-root-channel',fittingTicket:ticket});assert.equal(result.warning,undefined,'earned commit consumes fitting before ordinary scene sync');assert.ok(h.sim.state.earthExpedition.story.steps.includes('brace-root-channel'));assert.equal(h.checkpoints.length,saveCount+1);assert.equal(F.consume(ticket).ok,false);assert.equal(F.current(h.sim),null);
+  fieldcraftStages.push({operation:'fasten',step:'brace-root-channel',saved:true,consumed:true,onceOnly:true});snap('02B_BRACE_FITTED');
+ }
  function circuit(run=null){
   const d=run===null?E.definition:E.patrol;
   for(const step of d.steps){
-   if(step.kind==='defeat'){fight(step,run);continue;}
+   if(step.kind==='defeat'){
+    fight(step,run);
+    if(run===null&&step.id==='clear-root-pests'){
+     assert.deepEqual(h.sim.state.earthExpedition.story.steps,E.definition.steps.slice(0,6).map(s=>s.id),'root-clear snapshot has exactly the genuine six-step unpaid prefix');
+     assert.equal(F.current(h.sim),null,'root-clear source contains no transient fitting');snap('02A_ROOT_CLEAR');
+    }
+    continue;
+   }
    const choice=step.choices?.find(c=>c.id===branch),p=choice||step;h.walk(p.x,p.z);
-   command(run===null?'step':'patrol-step',{step:step.id,...(choice?{branch:choice.id}:{}),...(run===null?{}:{run,priorClaim:run-1})});
+   if(run===null&&step.id==='brace-root-channel')fitBrace();else command(run===null?'step':'patrol-step',{step:step.id,...(choice?{branch:choice.id}:{}),...(run===null?{}:{run,priorClaim:run-1})});
    if(step===d.steps[0]){snap(run===null?'02_PARTIAL':'PATROL_'+run+'_PARTIAL');reload('earthlands');}
   }
  }
@@ -87,7 +123,7 @@ function journey({bow=false,veteran=false,output=null}={}){
  const after=h.sim.snapshot();for(const key of['equipment','owned','arsenal','pursuit','starter','realmCraft','classPath','road','beacon','crossing','earthStory','earthNotes','earthGathering','companion','defeated','drops','reward','relic','angelSeen'])assert.deepEqual(after.adventure[key],before.adventure[key],key+' retained across expedition');
  for(const key of['notes','score','scoreRevision','retreat','visitor','flowers','journeys','realmTrails'])assert.deepEqual(after[key],before[key],key+' retained');
  assert.deepEqual({xp:after.adventure.xp-before.adventure.xp,coins:after.adventure.coins-before.adventure.coins,ore:after.adventure.ore-before.adventure.ore,wood:after.sandbox.inventory.wood-before.sandbox.inventory.wood,fiber:after.sandbox.inventory.fiber-before.sandbox.inventory.fiber},{xp:55,coins:18,ore:6,wood:branch==='stormfall-recovery'?12:8,fiber:branch==='stormfall-recovery'?2:6});
- const finalHashes=hashes(),report={status:'passed',variant,source:source?{path:path.relative(ROOT,source),sha256:hash(source),label:'existing command-earned fully fitted returning character, actual prior normal-RAF capture final snapshot'}:{label:'fresh production character; start/gather/craft/range/socket all command-earned'},method:'actual Simulation/moveTo/WorldFoundations.segment/target-select/auto-toggle/Brace/projectile/ticks and durable in-memory full candidate holder',acceleratedTicks:true,browserPersistence:false,humanPacing:false,positionEdits:0,inventoryGrants:0,manualDamage:0,plantedDefeats:0,worldVersion:C.VERSION,adventureVersion:A.VERSION,branch,companionMayAssist:before.adventure.companion.bonded,claims,combats,events,legacyEvents:h.events,routes:h.routes,saveCount:h.checkpoints.length,fitting:{weapon:initialWeapon,kind,cost:E.BINDING_COST,before:stats,after:afterStats,currentHPBefore:fitBefore.adventure.hp,currentHPAfter:fitAfter.adventure.hp,actualPostBindingDamagePackets:packets,arrowObserved,probe:'one newly accepted unpaid third patrol; only T.hit observation wrapper, restored before continuing'},sourceHashes:initialHashes,sourceDrift:JSON.stringify(initialHashes)!==JSON.stringify(finalHashes),harnessSha256:hash(__filename),canonicalPreservation:true};
+ const finalHashes=hashes(),report={status:'passed',variant,source:source?{path:path.relative(ROOT,source),sha256:hash(source),label:'existing command-earned fully fitted returning character, actual prior normal-RAF capture final snapshot'}:{label:'fresh production character; start/gather/craft/range/socket all command-earned'},method:'actual Simulation/moveTo/WorldFoundations.segment/target-select/auto-toggle/Brace/projectile/ticks, Fieldcraft.begin/inspect/adjust/seat and E.command fittingTicket; durable in-memory full candidate holder',acceleratedTicks:true,browserPersistence:false,humanPacing:false,positionEdits:0,inventoryGrants:0,manualDamage:0,plantedDefeats:0,worldVersion:C.VERSION,adventureVersion:A.VERSION,branch,companionMayAssist:before.adventure.companion.bonded,claims,combats,events,legacyEvents:h.events,routes:h.routes,saveCount:h.checkpoints.length,fieldcraft:{sectionIds:F.GEOMETRY.sections.map(s=>s.id),inspectedReceiverCount:5,seatedMemberCount:4,stages:fieldcraftStages,leaseMethod:'caller-owned opaque generation renewed at actual harness enter/home/reload or owner tuple change; raw serial context revision remains unchanged',ownerTransitions},fitting:{weapon:initialWeapon,kind,cost:E.BINDING_COST,before:stats,after:afterStats,currentHPBefore:fitBefore.adventure.hp,currentHPAfter:fitAfter.adventure.hp,actualPostBindingDamagePackets:packets,arrowObserved,probe:'one newly accepted unpaid third patrol; only T.hit observation wrapper, restored before continuing'},sourceHashes:initialHashes,sourceDrift:JSON.stringify(initialHashes)!==JSON.stringify(finalHashes),harnessSha256:hash(__filename),canonicalPreservation:true};
  if(output)fs.writeFileSync(path.join(output,variant,'EARTH_EXPEDITION_JOURNEY_REPORT.json'),JSON.stringify(report,null,2)+'\n');return report;
 }
 if(require.main===module){const i=process.argv.indexOf('--output'),output=i>=0?path.resolve(process.argv[i+1]):null;const r=journey({bow:process.argv.includes('--bow'),veteran:process.argv.includes('--veteran'),output});console.log(JSON.stringify({status:r.status,variant:r.variant,claims:r.claims.length,combats:r.combats.length,commands:r.events.length+r.legacyEvents.filter(e=>e.type).length,walkedLegs:r.routes.length,saves:r.saveCount,fitting:r.fitting,sourceDrift:r.sourceDrift},null,2));}

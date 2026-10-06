@@ -32,7 +32,7 @@ OBSERVER=r'''()=>{
      const decor={cameraSolid:false,cutaway:false,rough:.96},raw=[];for(const p of cells){raw.push({p:[p.x,p.y-.055,p.z],s:[p.w,.11,p.d],c:p.color,...decor,terrain:true,worldGround:p.source});if(!/bridge/.test(p.source))raw.push({p:[p.x,(p.y-.11-.5)/2,p.z],s:[p.w,p.y-.11+.5,p.d],c:d.palette.stone,...decor});}
      removed=drop.size;batch.items=[...raw,...old.filter(i=>!drop.has(i))];e.updateBatch(batch);
     }else if(control==='old-coordinate-fog')e.worldFog=null;
-    else{const selected=i=>control==='binding'?!!i.earthBinding:control==='brace'?i.expeditionPart==='installed-brace'||i.expeditionPart==='brace-fastening':control==='delivery'?i.expeditionPart==='delivered-stock'||i.expeditionPart==='delivery-binding':control==='beast'?!!i.expeditionBeastPart:!!i.expeditionPart;
+    else{const selected=i=>control==='binding'?!!i.earthBinding:control==='brace'?['installed-section','receiver','joint-collar','scarf-seam'].includes(i.fieldcraftPart):control==='delivery'?i.expeditionPart==='delivered-stock'||i.expeditionPart==='delivery-binding':control==='beast'?!!i.expeditionBeastPart:!!i.expeditionPart;
      for(const{b:batch}of saved){const filtered=batch.items.filter(i=>!selected(i));removed+=batch.items.length-filtered.length;if(filtered.length!==batch.items.length){batch.items=filtered;e.updateBatch(batch);}}
     }
     b=frame();for(const s of saved){s.b.items=s.items;s.b.data=s.data;e.updateBatch(s.b);}e.worldFog=fog;c=frame();

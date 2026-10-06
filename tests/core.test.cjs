@@ -9,6 +9,38 @@ test('water and nonfinite ground are not walkable',()=>{for(let p of[[90,0],[0,4
 test('buildings and the spring are obstacles',()=>{assert.equal(C.walkable(-11,-6),false);assert.equal(C.walkable(-1,-2.2),false);});
 test('every landmark has walkable admission',()=>{for(let l of C.LANDMARKS)assert.ok(C.walkable(l.x,l.z),l.id);});
 test('all 121 landmark routes exist and sampled segments avoid obstacles',()=>{for(let a of C.LANDMARKS)for(let b of C.LANDMARKS){let p=C.pathfind(a,b);assert.ok(p,`${a.id}->${b.id}`);let q=a;for(let n of p){assert.ok(C.segment(q,n),`${a.id}->${b.id}`);q=n;}}});
+test('valley path checker rejects the actual sub-sample listening-room corner crossing',()=>{
+ const a={x:-11,z:-1.6},b={x:-9,z:5.4};
+ for(const t of [30/41,31/41])assert.ok(C.walkable(a.x+2*t,a.z+7*t),'old adjacent samples are clear');
+ assert.equal(C.walkable(a.x+2*.75,a.z+7*.75),false);
+ assert.equal(C.segment(a,b),false);assert.equal(C.segment(b,a),false);
+ assert.equal(C.segment(a,b,{id:'outdoors',sandbox:C.fresh().sandbox}),false,'player outdoor planner uses the same valley solids');
+});
+test('all repaired landmark routes pass an independent one-centimetre walkability sweep',()=>{
+ for(const a of C.LANDMARKS)for(const b of C.LANDMARKS){let prior=a;for(const p of C.pathfind(a,b)){
+  const n=Math.max(1,Math.ceil(Math.hypot(p.x-prior.x,p.z-prior.z)/.01));
+  for(let i=0;i<=n;i++)assert.ok(C.walkable(prior.x+(p.x-prior.x)*i/n,prior.z+(p.z-prior.z)*i/n),`${a.id}->${b.id} at ${i}/${n}`);prior=p;
+ }}
+});
+test('island-to-pier sub-sample gap is refused in both directions and repaired outdoor travel arrives',()=>{
+ const a={x:-1.8,z:19.8},b={x:-1.2,z:22.2};assert.equal(C.segment(a,b),false);assert.equal(C.segment(b,a),false);
+ const s=fresh();s.moveTo(-11,-1.6);step(s,60);assert.ok(s.moveTo(0,27).ok);step(s,70);assert.ok(Math.hypot(s.state.player.x,s.state.player.z-27)<.1);assert.doesNotThrow(()=>s.snapshot());
+});
+test('support proof preserves authored outdoor bridge and frontier access with actual placed blockers',()=>{
+ const S=require('../src/sandbox.js'),sandbox=S.fresh(),room={id:'outdoors',sandbox},a={x:0,z:-20.5},b={x:0,z:-40};
+ assert.equal(C.segment(a,b,room),false);sandbox.bridge=true;const route=C.pathfind(a,b,room);assert.ok(route);
+ let prior=a;for(const point of route){const n=Math.max(1,Math.ceil(Math.hypot(point.x-prior.x,point.z-prior.z)/.01));for(let i=0;i<=n;i++)assert.ok(C.walkable(prior.x+(point.x-prior.x)*i/n,prior.z+(point.z-prior.z)*i/n,room));prior=point;}
+ sandbox.placed=[{id:1,kind:'wall',gx:0,gz:0,rotation:0}];assert.ok(S.blocks(sandbox,0,-40));assert.equal(C.segment({x:-2,z:-40},{x:2,z:-40},room),false);assert.equal(C.segment({x:-2,z:-38},{x:2,z:-38},room),true);
+});
+test('resident evening-to-Morning routes and later schedule changes remain valid without losing progress',()=>{
+ const s=fresh(),ownership=()=>{const {elapsed:adventureTime,...adventure}=s.state.adventure,{elapsed:sandboxTime,...sandbox}=s.state.sandbox;return JSON.stringify({adventure,expedition:s.state.earthExpedition,notes:s.state.notes,score:s.state.score,sandbox});},owned=ownership();
+ s.setTime(19);step(s,150);assert.ok(s.state.residents.every(r=>Math.hypot(r.x+11,r.z+1.6)<1e-9));
+ for(const hour of [9,13,18.5,20.1,23,8]){s.setTime(hour);for(let i=0;i<1800;i++){s.tick(.05);for(const r of s.state.residents)assert.ok(C.walkable(r.x,r.z),`${r.id} at ${hour}, tick ${i}`);if(i%100===0)assert.doesNotThrow(()=>s.snapshot());}assert.doesNotThrow(()=>s.snapshot());}
+ assert.ok(s.state.adventure.elapsed>0&&s.state.sandbox.elapsed>0,'legitimate live simulation time advances');assert.equal(ownership(),owned);
+});
+test('invalid segment endpoints are refused rather than skipping the sampler',()=>{
+ for(const p of [{x:NaN,z:0},{x:0,z:Infinity},null]){assert.equal(C.segment(p,{x:0,z:3}),false);assert.equal(C.segment({x:0,z:3},p),false);}
+});
 test('click movement arrives without overshooting',()=>{let s=fresh();s.moveTo(-6,13);step(s,40);assert.ok(Math.hypot(s.state.player.x+6,s.state.player.z-13)<.1);});
 test('manual motion is bounded at terrain edge',()=>{let s=fresh();for(let i=0;i<3000;i++)s.manual(1,0,.05);assert.ok(C.walkable(s.state.player.x,s.state.player.z));});
 test('invalid move does not replace current route',()=>{let s=fresh();s.moveTo(0,3);let p=JSON.stringify(s.playerPath);assert.equal(s.moveTo(NaN,2).ok,false);assert.equal(JSON.stringify(s.playerPath),p);});

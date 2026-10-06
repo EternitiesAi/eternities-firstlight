@@ -1,3 +1,12 @@
+# Fit real geometry through existing ownership, 2026-10-06
+
+Retain existing quest/brace IDs, kit and payout. Four sectional members join five receivers; angular tolerance plus actual far-end gap authorize seating. Immutable branded projections and opaque WeakMap tickets stay transient. The app lease survives harmless camera/time saves and revokes on real owner/import/travel/death transitions. Validate before mutation, consume only after synchronous durable completion; retryable refusal retains ready work. Old completed/paid support bypasses fitting.
+
+Frame outside the unchanged wall clearance; aspect-aware fitting preserves camera style/FOV and releases on movement. Repair actual sampled collision gaps with continuous intersections and conservative support certificates, preserving strict save validation and authored geometry. Retain negative native/source attempts and disclose fixture/caller repairs. Keep rendering feedback separate from durable proof and current automated checks separate from human acceptance.
+
+World 9 / adventure 12 / earthHomecoming 1 and old browser keys remain. Partial fitting is transient; old completed repairs, payments, XP, gear, sockets, explicit choices and both cameras are preserved. No main merge, public deployment, paid providers, billing intervention, personal-save access or unrelated cleanup. Reuse the integrated D checkout and qualification station; retain failures and the blocked standalone deletion. Wider production goal ACTIVE; old heartbeat PAUSED. Scoped colleagues currently prepare small evidence and next-arc proposals only.
+
+---
 # Road connection and next physical fieldcraft, 2026-10-06
 
 Keep Hearthwater and Coastward one voluntary outing across an authored scene

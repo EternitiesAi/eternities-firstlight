@@ -10,11 +10,13 @@ const code=fs.readFileSync(candidateFile,'utf8'),actualCore=fs.readFileSync(path
 const load=file=>require(path.join(root,'src',file));
 const N=load('cosmos.js'),E=load('earth.js'),W=load('world-foundations.js');
 const oldSegment='function segment(a,b,room){if(W.handles(room?.id))return W.segment(room.id,a,b);if(room?.id===N.ROOM)return N.segment(a,b);if(room?.id===E.ROOM)return E.segment(a,b);let d=Math.hypot(a.x-b.x,a.z-b.z),n=Math.ceil(d/.18);for(let i=0;i<=n;i++){let t=n?i/n:0;if(!walkable(a.x+(b.x-a.x)*t,a.z+(b.z-a.z)*t,room))return false;}return true;}';
-const newSegment='function segment(a,b,room,radius=.31){if(!Number.isFinite(radius)||radius<0||radius>2)return false;if(W.handles(room?.id))return W.segment(room.id,a,b,radius);if(room?.id===N.ROOM)return N.segment(a,b,radius);if(room?.id===E.ROOM)return E.segment(a,b,radius);let d=Math.hypot(a.x-b.x,a.z-b.z),n=Math.ceil(d/.18);for(let i=0;i<=n;i++){let t=n?i/n:0;if(!walkable(a.x+(b.x-a.x)*t,a.z+(b.z-a.z)*t,room,radius))return false;}return true;}';
+const segmentStart=code.indexOf('function segment('),segmentEnd=code.indexOf('class Heap',segmentStart);
+assert.ok(segmentStart>=0&&segmentEnd>segmentStart,'current segment boundary must be explicit');
+const newSegment=code.slice(segmentStart,segmentEnd);
 const oldLink='line=(a,b)=>W.handles(room?.id)?W.segment(room.id,a,b,radius):segment(a,b,room)',newLink='line=(a,b)=>segment(a,b,room,radius)';
 // In this stage the comparison is the actual frozen Core. After integration,
 // reproduce only its old connector in isolation, clearly not a game fallback.
-const baselineCode=actualCore.includes(oldSegment)&&actualCore.includes(oldLink)?actualCore:code.replace(newSegment,oldSegment).replace(newLink,oldLink);
+const baselineCode=actualCore.includes(oldSegment)&&actualCore.includes(oldLink)?actualCore:code.replace(newSegment,oldSegment+'\n').replace(newLink,oldLink);
 assert.ok(baselineCode.includes(oldSegment)&&baselineCode.includes(oldLink),'known connector preimage must be reproducible');
 const clone=v=>JSON.parse(JSON.stringify(v)),lineOf=(source,token)=>source.slice(0,source.indexOf(token)).split('\n').length;
 function core(source=code,{trace=false,cosmos=N}={}){

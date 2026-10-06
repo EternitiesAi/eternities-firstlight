@@ -121,7 +121,7 @@ function command(ctx,type,payload={},io){
  const repeat=type.startsWith('patrol-'),d=repeat?patrol:definition;if(payload.quest!==d.id)return fail('Read this exact expedition contract before acting.');
  let current;try{current=validate(sim.state.earthExpedition);}catch(e){return fail(e.message);}
  if(repeat){if(!Number.isSafeInteger(payload.run)||payload.run<1||payload.run>MAX_RUN||payload.priorClaim!==payload.run-1)return fail('This patrol invitation has an invalid run identity.');if(type==='patrol-claim'&&payload.run<=current.patrol.lastClaim)return{ok:true,duplicate:true,text:'That accepted patrol was already paid. No new run was claimed.'};if(payload.priorClaim!==current.patrol.lastClaim)return fail('This patrol invitation is stale. Read the current run and payment again.');}
- const candidate=sim.snapshot();candidate.earthExpedition=clone(current);const r=repeat?candidate.earthExpedition.patrol:candidate.earthExpedition.story;let text,reward=null;
+ const candidate=sim.snapshot();candidate.earthExpedition=clone(current);const r=repeat?candidate.earthExpedition.patrol:candidate.earthExpedition.story;let text,reward=null,fittingRules=null,fittingTicket=null;
  if(type==='accept'||type==='patrol-accept'){
   if(!at(sim,giver))return fail('Speak to Rill at the camp to explicitly accept this work.');
   if(repeat){if(!current.story.claimed)return fail('Claim the first living-road delivery before accepting a patrol.');if(r.active)return{ok:true,duplicate:true,text:'This exact patrol is already accepted; its progress is retained.'};r.active={run:payload.run,steps:[]};}
@@ -133,6 +133,13 @@ function command(ctx,type,payload={},io){
   if(record.steps.includes(s.id))return{ok:true,duplicate:true,text:'This accepted action is already recorded.'};
   const choice=s.choices?.find(c=>c.id===payload.branch),anchor=s.choices?choice:s;
   if(!anchor||!at(sim,anchor)||!s.requires.every(id=>record.steps.includes(id)))return fail('Reach '+s.name+' and finish its declared prerequisites.');
+  if(!repeat&&s.id==='brace-root-channel'){
+   const F=G.RealmEarthFieldcraft;
+   if(typeof F?.validate!=='function'||typeof F?.consume!=='function')return fail('The brace fitting rules are unavailable. Inspect and seat the supplied sections before fastening.');
+   let fitted;try{fitted=F.validate(ctx,payload.fittingTicket);}catch(e){return fail('Brace fitting refused: '+e.message);}
+   if(fitted?.then||fitted?.ok!==true)return fail(fitted?.error||'Inspect and seat all four supplied sections before fastening.');
+   fittingRules=F;fittingTicket=payload.fittingTicket;
+  }
   record.steps.push(s.id);if(choice)r.branch=choice.id;text=choice?choice.completed:s.completed;
  }else if(type==='claim'||type==='patrol-claim'){
   if(!repeat&&r.claimed)return{ok:true,duplicate:true,text:'The first delivery was already paid once.'};
@@ -141,7 +148,14 @@ function command(ctx,type,payload={},io){
   if(repeat){r.lastClaim=payload.run;r.active=null;}else r.claimed=true;
   text=d.title+' paid once · +'+reward.xp+' XP · +'+reward.coins+' sunmarks · +'+reward.ore+' ore'+Object.entries(reward.materials).map(([k,n])=>' · +'+n+' '+k).join('')+'. '+(reward.xp<declared.xp?'Stored XP remains at its existing 9999 cap. ':'')+d.completionText;
  }else return fail('Unknown expedition action.');
- const beforeLevel=A.level(sim.state.adventure),result=commit(sim,candidate,io,text);if(result.ok){if(reward){result.reward=reward;if(A.level(sim.state.adventure)>beforeLevel)A.notify(sim,'Level '+A.level(sim.state.adventure)+' · the living road recognizes useful work.');}A.syncScene(sim);}return result;
+ const beforeLevel=A.level(sim.state.adventure),result=commit(sim,candidate,io,text);if(result.ok){if(reward){result.reward=reward;if(A.level(sim.state.adventure)>beforeLevel)A.notify(sim,'Level '+A.level(sim.state.adventure)+' · the living road recognizes useful work.');}
+  if(fittingRules){
+   const warnings=[];
+   try{const consumed=fittingRules.consume(fittingTicket);if(consumed?.then||consumed?.ok!==true)warnings.push('Fitting cleanup needs refresh: '+(consumed?.error||'cleanup did not finish.'));}catch(e){warnings.push('Fitting cleanup needs refresh: '+e.message);}
+   try{const synced=A.syncScene(sim);if(synced===false||synced?.ok===false||synced?.then)warnings.push('Scene refresh did not finish: '+(synced?.error||'refresh the view.'));}catch(e){warnings.push('Scene refresh did not finish: '+e.message);}
+   if(warnings.length)result.warning='Brace completion was saved. '+warnings.join(' ');
+  }else A.syncScene(sim);
+ }return result;
 }
 function enemyId(d,e,run){return d===patrol?patrol.id+'-run-'+run+'-'+e.id:e.id;}
 // Exact canonical identity scopes physical beast rules to this accepted story

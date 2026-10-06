@@ -27,8 +27,10 @@ VIEWPORT = {'width': 1440, 'height': 900}
 ROOM = 'world-earthlands'
 CORE_FILES = [
     'src/combat-view.js', 'src/core.js', 'src/adventure.js', 'src/combat.js', 'src/arsenal.js',
-    'src/characters.js', 'src/characters-ui.js', 'src/earth-expedition.js',
+    'src/characters.js', 'src/characters-ui.js', 'src/earth-fieldcraft.js',
+    'src/earth-expedition.js', 'src/earth-fieldcraft-ui.js',
     'src/earth-expedition-ui.js', 'src/earth-expedition-dialogue.js',
+    'src/earth-fieldcraft-art.js',
     'src/earth-expedition-art.js', 'src/earth-expedition-beast-art.js',
     'src/elderweald-world.js', 'src/elderweald-trail-art.js',
     'src/world-foundations.js', 'src/world-foundations-ui.js',
@@ -143,6 +145,43 @@ def validate_source(source, variant):
     assert a['hp'] > 0
     assert math.hypot(source['player']['x'] - 18, source['player']['z'] - 6) <= 2.8, 'Source must be earned at the Roads gate'
     return expected
+
+
+def fieldcraft_selector(action, section=None):
+    """Only authored native controls; fitting tickets never enter selectors."""
+    allowed = {'begin', 'inspect', 'reuse', 'seat', 'fasten', 'restart', 'cancel', 'look'}
+    if action not in allowed:
+        raise ValueError('Unknown fieldcraft control')
+    sectional = action in {'inspect', 'reuse', 'seat'}
+    if sectional != (section is not None) or sectional and (type(section) is not int or section not in range(1, 5)):
+        raise ValueError('Use the current numbered section for this control')
+    selector = '#rpg-content [data-rpg="expedition-fieldcraft-' + action + '"]'
+    return selector + ('[data-section="brace-' + str(section) + '"]' if sectional else '')
+
+
+def fieldcraft_edit(page, axis, value, control='number'):
+    """Native fill/keyboard events; report whether the same input kept focus."""
+    maximum = {'yaw': 20, 'pitch': 35}
+    if axis not in maximum or control not in {'number', 'range'} or type(value) not in (int, float) or not math.isfinite(value) or not 0 <= value <= maximum[axis]:
+        raise ValueError('Use a finite authored angle and native control')
+    if control == 'range' and value not in (0, maximum[axis]):
+        raise ValueError('This range driver uses native Home/End only')
+    selector = '#fieldcraft-' + axis + ('-number' if control == 'number' else '')
+    loc = page.locator(selector)
+    loc.focus()
+    page.evaluate('(selector)=>{window.__fieldcraftFocused=document.querySelector(selector);}', selector)
+    if control == 'number':
+        loc.fill(str(value))
+    else:
+        loc.press('Home' if value == 0 else 'End')
+    return page.evaluate('''selector=>document.querySelector(selector)===window.__fieldcraftFocused&&
+      document.activeElement===window.__fieldcraftFocused''', selector)
+
+
+def fitting_unchanged(before, after):
+    """Temporary fitting cannot record progress, pay or alter prior ownership."""
+    return (before['earthExpedition'] == after['earthExpedition'] and
+            wallet(before) == wallet(after) and preservation(before) == preservation(after))
 
 
 def main():
@@ -558,6 +597,80 @@ def main():
                         if page.locator('#target-clear').is_visible():
                             click('#target-clear')
 
+                    def fitting_views(label):
+                        # Each preset change releases framing. The authored Look
+                        # action deliberately frames this face and closes the UI.
+                        for mode in ('follow', 'adventure'):
+                            close()
+                            click('#rpg-hud [data-rpg="camera"][data-id="' + mode + '"]')
+                            workspace('expedition')
+                            reading(label + ' controls ' + mode)
+                            click(fieldcraft_selector('look'))
+                            page.wait_for_timeout(500)
+                            check(label + ' native Look keeps preset and closes workspace ' + mode,
+                                  diag()['camera']['preset'] == mode and not page.locator('#rpg-window').evaluate('(el)=>el.open'))
+                            mark(label + '-' + mode)
+
+                    def fit_support():
+                        before = state()
+                        check('First support has no generic free-work button', page.locator(
+                            '#rpg-content [data-rpg="expedition-step"][data-id="brace-root-channel"]').count() == 0)
+                        click(fieldcraft_selector('begin'))
+                        click(fieldcraft_selector('inspect', 1))
+                        check('Native range End retains yaw input focus', fieldcraft_edit(page, 'yaw', 20, 'range'))
+                        check('Native numeric edit retains pitch input focus', fieldcraft_edit(page, 'pitch', 35))
+                        wrong = reading('Section one wrong fit, inspected sockets')
+                        check('Wrong pose exposes a socket gap and refuses seating',
+                              'Far socket gap' in wrong and 'Correct the orientation' in wrong and
+                              not page.locator(fieldcraft_selector('seat', 1)).is_enabled())
+                        fitting_views('fieldcraft-wrong-fit')
+                        workspace('expedition')
+                        check('Native range Home retains yaw focus', fieldcraft_edit(page, 'yaw', 0, 'range'))
+                        check('Native fine numeric pitch retains focus', fieldcraft_edit(page, 'pitch', 14.6))
+                        correct = reading('Section one correct fit')
+                        check('Reachable numeric pose meets real inspected socket', 'Ready to seat.' in correct and
+                              page.locator(fieldcraft_selector('seat', 1)).is_enabled())
+                        fitting_views('fieldcraft-correct-fit')
+                        workspace('expedition')
+                        # Camera/time saves are real managed Store writes. Native
+                        # controls must survive them, without freezing revisions.
+                        revision = diag()['characters']['revision']
+                        close()
+                        click('#settings')
+                        hour = '9' if state()['hour'] != 9 else '17.2'
+                        click('#drawer-body [data-action="time"][data-hour="' + hour + '"]')
+                        click('#close-panel')
+                        workspace('expedition')
+                        check('Real native clock save advances owner revision while keeping current fit',
+                              diag()['characters']['revision'] > revision and
+                              page.locator(fieldcraft_selector('seat', 1)).is_enabled() and
+                              'Ready to seat.' in reading('Fit survives native clock save'))
+                        for section in range(1, 5):
+                            if section > 1:
+                                click(fieldcraft_selector('inspect', section))
+                                check('A new section still needs its own pose ' + str(section),
+                                      not page.locator(fieldcraft_selector('seat', section)).is_enabled())
+                                click(fieldcraft_selector('reuse', section))
+                            check('Temporary fitting preserves ledger, balances and prior ownership ' + str(section),
+                                  fitting_unchanged(before, state()))
+                            check('Current inspected section is deliberately seatable ' + str(section),
+                                  page.locator(fieldcraft_selector('seat', section)).is_enabled())
+                            click(fieldcraft_selector('seat', section))
+                            reading('Section ' + str(section) + ' seated, unfastened')
+                        ready = reading('All four ready for deliberate fastening')
+                        check('Four seats alone do not complete or pay', '4 of 4 sections seated' in ready and
+                              'ready, not yet fastened' in ready and fitting_unchanged(before, state()))
+                        fitting_views('fieldcraft-ready-unfastened')
+                        workspace('expedition')
+                        click(fieldcraft_selector('fasten'))
+                        after = state()
+                        check('Deliberate fastening records only the existing brace step',
+                              after['earthExpedition']['story']['steps'] == before['earthExpedition']['story']['steps'] + ['brace-root-channel'] and
+                              after['earthExpedition']['patrol'] == before['earthExpedition']['patrol'] and
+                              wallet(after) == wallet(before) and preservation(after) == preservation(before))
+                        reading('Recorded sectional support, payment remains separate')
+                        fitting_views('fieldcraft-permanent')
+
                     def objective(step, catalogue, run=None):
                         walk(step['id'], step, step['name'])
                         if step['kind'] == 'defeat':
@@ -568,8 +681,11 @@ def main():
                                 camera('adventure', 'supplied-kit-pending-third')
                             interact()
                             reading(step['name'] + ' at physical work point')
-                            action = 'patrol-step' if run else 'step'
-                            click('#rpg-content [data-rpg="expedition-' + action + '"][data-id="' + step['id'] + '"]')
+                            if run is None and step['id'] == 'brace-root-channel':
+                                fit_support()
+                            else:
+                                action = 'patrol-step' if run else 'step'
+                                click('#rpg-content [data-rpg="expedition-' + action + '"][data-id="' + step['id'] + '"]')
                             check('Native field action records ' + step['id'], step['id'] in steps_for(run))
                             mark(('patrol-' + str(run) + '-' if run else 'story-') + step['id'])
                             close()

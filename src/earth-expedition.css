@@ -29,3 +29,14 @@
 .expedition-map-key h3 { color: #d5e1ba; }
 .expedition-map-key li { margin: 12px 0; }
 @media (max-width: 650px) { .expedition-choices { grid-template-columns: 1fr; } .earth-expedition header { padding: 16px; } .expedition-binding-preview th, .expedition-binding-preview td { padding: 8px 5px; font-size: 11px; } }
+
+[data-fieldcraft-panel] { background: #162c29 !important; border-color: #819c82 !important; }
+.fieldcraft-pose { display: grid; grid-template-columns: minmax(0,1fr) 7rem; gap: 8px 14px; align-items: center; margin: 16px 0; }
+.fieldcraft-pose label:first-child { grid-column: 1 / -1; }
+.fieldcraft-pose input[type=range] { width: 100%; min-width: 0; accent-color: #d7c290; }
+.fieldcraft-pose label:nth-child(3) { grid-row: 2; grid-column: 2; font-size: 11px; }
+.fieldcraft-pose input[type=number] { grid-column: 2; width: 100%; min-height: 36px; padding: 6px; color: #f1e7cf; background: #14231f; border: 1px solid #94ad90; border-radius: 5px; }
+.fieldcraft-receivers { display: flex; flex-wrap: wrap; gap: 6px 22px; padding-left: 22px; font-size: 12px; }
+[data-fieldcraft-gap] { border-left: 3px solid #ceb680; padding: 9px 12px; background: #314636; }
+[data-fieldcraft-panel] button:focus-visible, .fieldcraft-pose input:focus-visible { outline: 3px solid #eddaa3; outline-offset: 3px; }
+@media (max-width:650px) { .earth-expedition section { padding: 12px; } .fieldcraft-pose { grid-template-columns: minmax(0,1fr) 5.8rem; gap: 6px 8px; } }

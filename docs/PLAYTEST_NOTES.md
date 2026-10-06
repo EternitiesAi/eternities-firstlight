@@ -1,3 +1,14 @@
+# Physical support evidence and pending human feel, 2026-10-06
+
+Native03 passed1159 checks across blade/bow/strongest saves and22 browser restarts, desktop1440x960/portrait390x844, both cameras and Adventure FOV45/80. Actual member/socket geometry and on/off/restored pixels, compact native controls, normal clock saves, transient reload reset, save-quota refusal/retry and old payouts passed. Root inspected current UI/scene screenshots. Software WebGL and accelerated automation do not measure human pacing.
+
+A separate normal-RAF hardware take used RTX3080 via ANGLE D3D11, Chromium143.0.7499.4/driver610.74,balanced1440x960. The17.39-second silent actual-canvas clip is4350951bytes; it excludes DOM UI, which has separate screenshots.84 capture checks passed; decoded movie inspected. Ordinary callback intervals median/p95=16.7ms,p99/max=16.8ms,0over50ms during this shared-desktop recording; these are not displayed FPS/GPU timings or sustained-world qualification. Capture used dirty f021 with exact frozen runtime/HTML bytes later committed; source binding belongs in delivery.
+
+Ask Dom after delivery: Could you understand the sockets and correction in both views? Did the useful physical work make another outing appealing? Human feedback, device touch controls, enjoyment and production-scale performance remain pending.
+
+World 9 / adventure 12 / earthHomecoming 1 and old browser keys remain. Partial fitting is transient; old completed repairs, payments, XP, gear, sockets, explicit choices and both cameras are preserved. No main merge, public deployment, paid providers, billing intervention, personal-save access or unrelated cleanup. Reuse the integrated D checkout and qualification station; retain failures and the blocked standalone deletion. Wider production goal ACTIVE; old heartbeat PAUSED. Scoped colleagues currently prepare small evidence and next-arc proposals only.
+
+---
 # Qualified road evidence and human questions, 2026-10-06
 
 Automated blade/bow journeys and a labelled historical strongest fixture passed

@@ -2,7 +2,7 @@
  * fixtures, not evidence of command-earned equipment or combat. */
 'use strict';
 const assert=require('node:assert/strict'),E=require('../src/earth-expedition.js');
-const A=require('../src/adventure.js'),C=require('../src/core.js');
+const A=require('../src/adventure.js'),C=require('../src/core.js'),F=require('../src/earth-fieldcraft.js');
 const copy=o=>JSON.parse(JSON.stringify(o));let checks=0;
 function test(name,body){body();checks++;console.log('PASS '+name);}
 function story(branch='managed-coppice'){const r=E.fresh();r.story={accepted:true,branch,steps:E.definition.steps.map(s=>s.id),claimed:true};return r;}
@@ -86,7 +86,8 @@ if(A.VERSION>=12){
   if(ready||claimed)sim.state.earthExpedition=story();if(ready)sim.state.earthExpedition.story.claimed=false;
   if(phase){const r=sim.state.earthExpedition.story;r.accepted=true;r.branch='managed-coppice';r.steps=E.definition.steps.slice(0,3).map(s=>s.id);}
   let saved=null;sim.earthExpeditionSave=value=>{saved=C.validate(value);return{ok:true};};A.syncScene(sim);
-  return{sim,ctx:{sim,active:'isolated-negative-fixture',revision:1},save:sim.earthExpeditionSave,get saved(){return saved;}};
+  const ownerLease=Object.freeze({}),active='isolated-negative-fixture';sim.fieldcraftOwnerLease=ownerLease;sim.worldTrip={active,realm:'earthlands',home:copy(sim.returnPos)};
+  return{sim,ctx:{sim,active,revision:1,ownerLease},save:sim.earthExpeditionSave,get saved(){return saved;}};
  }
  test('real Core migrates Adventure11 only and rejects missing/current/future/crossfield records',()=>{
   const raw=C.fresh(),legacy=copy(raw);legacy.adventure.version=11;delete legacy.adventure.earthBinding;delete legacy.earthExpedition;const migrated=C.validate(legacy);
@@ -115,9 +116,12 @@ if(A.VERSION>=12){
  });
  test('successful physical work confirms the completed action and keeps payment unclaimed',()=>{
   const f=fixture({ready:true});f.sim.state.earthExpedition.story.steps=E.definition.steps.slice(0,6).map(s=>s.id);
-  const before=copy(f.sim.state.adventure),work=(id,save=f.save)=>{const p=E.definition.steps.find(s=>s.id===id);f.sim.state.player={x:p.x,z:p.z,yaw:0};return E.command(f.ctx,'step',{quest:E.definition.id,step:id},{save});};
-  const refused=work('brace-root-channel',()=>({ok:false,error:'labelled refused repair'}));assert.equal(refused.ok,false);assert.equal(f.sim.state.earthExpedition.story.steps.length,6);
-  const braced=work('brace-root-channel');assert.ok(braced.ok,braced.error);assert.match(braced.text,/brace fitted/);assert.match(braced.text,/Deliver your allocation/);assert.doesNotMatch(braced.text,/^Fit /);assert.equal(f.sim.state.earthExpedition.story.steps.length,7);
+  const before=copy(f.sim.state.adventure),work=(id,save=f.save,fittingTicket)=>{const p=E.definition.steps.find(s=>s.id===id);f.sim.state.player={x:p.x,z:p.z,yaw:0};return E.command(f.ctx,'step',{quest:E.definition.id,step:id,fittingTicket},{save});};
+  assert.equal(work('brace-root-channel').ok,false,'bare proximity-only work cannot bypass fitting');const prep=f.sim.snapshot(),begun=F.begin(f.ctx);assert.ok(begun.ok,begun.error);let ticket;
+  for(let i=0;i<4;i++){assert.ok(F.inspect(f.ctx,begun.plan).ok);assert.ok(F.adjust(f.ctx,begun.plan,{yaw:F.GEOMETRY.targetYaw,pitch:F.GEOMETRY.targetPitch}).ok);const seated=F.seat(f.ctx,begun.plan);assert.ok(seated.ok,seated.error);ticket=seated.ticket;}
+  assert.deepEqual(f.sim.snapshot(),prep,'synthetic boundary fitting itself changes no durable owner');
+  const refused=work('brace-root-channel',()=>({ok:false,error:'labelled refused repair'}),ticket);assert.equal(refused.ok,false);assert.match(refused.error,/labelled refused repair/);assert.equal(f.sim.state.earthExpedition.story.steps.length,6);assert.ok(F.validate(f.ctx,ticket).ok);
+  const braced=work('brace-root-channel',f.save,ticket);assert.ok(braced.ok,braced.error);assert.match(braced.text,/brace fitted/);assert.match(braced.text,/Deliver your allocation/);assert.doesNotMatch(braced.text,/^Fit /);assert.equal(f.sim.state.earthExpedition.story.steps.length,7);assert.equal(F.validate(f.ctx,ticket).ok,false);
   const duplicate=work('brace-root-channel');assert.equal(duplicate.duplicate,true);assert.match(duplicate.text,/already recorded/);
   const delivered=work('deliver-allocation');assert.ok(delivered.ok,delivered.error);assert.match(delivered.text,/Allocation delivered/);assert.match(delivered.text,/unclaimed/);assert.equal(f.sim.state.earthExpedition.story.claimed,false);assert.equal(f.sim.state.earthExpedition.story.steps.length,8);
   for(const key of['xp','coins','ore','owned','equipment','arsenal'])assert.deepEqual(f.sim.state.adventure[key],before[key],key+' untouched by the completion caption');

@@ -1,3 +1,12 @@
+# Finish fitting qualification, then carry the first load through, 2026-10-06
+
+Commit/push the qualified fieldcraft source, open a draft stacked on PR50, and run the complete48-browser verifier in the reused clean exact remote checkout. Bind native/hardware evidence to its frozen source hashes, retain actual failures and report skips. No deployment or main merge.
+
+Next production arc is provisionally “The first load through”: an optional supplied carrier/load journey from Elderweald return glade to the existing Coastward settlement via a real supported route choice. Actual arrival, visible retained stock, wait/continue, pause/reload recovery and atomic once-only claim must be owned by a small separate commission; original paid expedition and bridge histories remain. Canon direction is ET11/ET12 practical work and connected consequences. Small colleague proposals are preparation, not implemented gameplay. No cross-scene convoy, class/economy expansion or fake online actors in that slice.
+
+World 9 / adventure 12 / earthHomecoming 1 and old browser keys remain. Partial fitting is transient; old completed repairs, payments, XP, gear, sockets, explicit choices and both cameras are preserved. No main merge, public deployment, paid providers, billing intervention, personal-save access or unrelated cleanup. Reuse the integrated D checkout and qualification station; retain failures and the blocked standalone deletion. Wider production goal ACTIVE; old heartbeat PAUSED. Scoped colleagues currently prepare small evidence and next-arc proposals only.
+
+---
 # Production next: physically fit the Living Road, 2026-10-06
 
 Connected-road PR50 has exact-source complete qualification; retain its evidence

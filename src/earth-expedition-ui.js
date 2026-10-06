@@ -21,9 +21,9 @@ function routePoints(sim){
  return active.next.flatMap(s=>s.choices?s.choices.map(c=>({...c,step:s.id,kind:'interact',quest:E.definition.id})): [{...s,step:s.id,quest:p.patrol.active?E.patrol.id:E.definition.id,run:p.patrol.active?.run??null}]).map((p,i)=>({...p,mark:String.fromCharCode(65+i)}));
 }
 class ExpeditionUI{
- constructor(rpg){this.rpg=rpg;this.pending=null;this.reading=null;this.owner=null;}
+ constructor(rpg){this.rpg=rpg;this.pending=null;this.reading=null;this.owner=null;this.fieldcraft=new G.RealmEarthFieldcraftUI.FieldcraftUI(rpg);}
  get sim(){return this.rpg.sim;}
- reset(){this.pending=null;this.reading=null;}
+ reset(reason){this.pending=null;this.reading=null;this.fieldcraft.reset(reason);}
  point(){
   if(this.sim.room!==ROOM)return null;
   return[...E.points(this.sim),{...E.definition.giver,kind:'giver'}].filter(p=>at(this.sim,p)).sort((a,b)=>Math.hypot(a.x-this.sim.state.player.x,a.z-this.sim.state.player.z)-Math.hypot(b.x-this.sim.state.player.x,b.z-this.sim.state.player.z))[0]||null;
@@ -31,6 +31,7 @@ class ExpeditionUI{
  context(){const p=this.point();return p?'E · '+p.name:null;}
  interact(){const p=this.point();if(!p)return false;this.reading=p.id;this.rpg.open('expedition');return true;}
  action(el){
+  if(this.fieldcraft.action(el))return true;
   const action=el.dataset.rpg;if(!action?.startsWith('expedition-'))return false;
   const type=action.slice(11),id=el.dataset.id;
   if(type==='open'){this.rpg.open('expedition');return true;}
@@ -56,7 +57,7 @@ class ExpeditionUI{
   if(type==='step'||type==='patrol-step'){payload.step=id;if(el.dataset.choice)payload.branch=el.dataset.choice;}
   const result=this.rpg.api.expeditionCommand(type,payload);
   if(result.ok){this.rpg.quest='expedition';this.reading=null;}
-  this.rpg.api.toast(result.text||result.error);this.rpg.paint();return true;
+  this.rpg.api.toast([result.text||result.error,result.warning].filter(Boolean).join(' '));this.rpg.paint();return true;
  }
  invitation(){
   const r=this.sim.state.earthExpedition.story;
@@ -73,7 +74,7 @@ class ExpeditionUI{
   else for(const s of p.next){
    html+='<article data-expedition-step="'+esc(s.id)+'"><small>'+(s.kind==='defeat'?'ACTUAL ENCOUNTER':'FIELD WORK')+'</small><h4>'+esc(s.name)+'</h4><p>'+esc(s.text)+'</p>';
    if(s.choices)for(const c of s.choices)html+='<div class="expedition-choice"><h5>'+esc(c.name)+'</h5><p>'+esc(c.text)+'</p><p><strong>Allocation:</strong> '+Object.entries(c.materials).map(([k,n])=>n+' '+({wood:'timber',fiber:'fibre'}[k]||k)).join(' · ')+'</p>'+button('Walk to this preparation','walk',c.id)+button('Prepare this allocation','step',s.id,'data-choice="'+esc(c.id)+'"')+'</div>';
-   else html+=button(s.kind==='defeat'?'Walk near the encounter':'Walk to this action','walk',s.id)+(s.kind==='defeat'?'<p class="expedition-muted">Tab selects · 1 stationary autoattack · Brace or move during the tell. The actual defeat records this objective.</p>':button('Do this work here',patrol?'patrol-step':'step',s.id,runMeta));
+   else html+=button(s.kind==='defeat'?'Walk near the encounter':'Walk to this action','walk',s.id)+(s.kind==='defeat'?'<p class="expedition-muted">Tab selects · 1 stationary autoattack · Brace or move during the tell. The actual defeat records this objective.</p>':!patrol&&s.id==='brace-root-channel'?this.fieldcraft.panel():button('Do this work here',patrol?'patrol-step':'step',s.id,runMeta));
    html+='</article>';
   }
   return html+'<p class="expedition-muted">'+p.done+' / '+p.total+' completed. Walking only takes you there; E opens the action on arrival. V changes view. Home remains available.</p></section>';
@@ -87,6 +88,7 @@ class ExpeditionUI{
    if(speech)html+='<section class="expedition-dialogue"><small>'+esc(speech.speaker)+'</small><h3>'+esc(speech.title)+'</h3>'+speech.lines.map(line=>'<p>'+esc(line)+'</p>').join('')+'<p class="expedition-muted">'+esc(speech.hint)+'</p></section>';
   }
   html+=xpNote(this.sim.state.adventure,d.reward);
+  if(r.steps.includes('brace-root-channel'))html+=this.fieldcraft.panel();
   if(!r.accepted){
    const choices=d.steps.find(s=>s.choices)?.choices||[];
    html+='<div class="expedition-choices">'+choices.map(c=>'<section><h3>'+esc(c.name)+'</h3><p>'+esc(c.text)+'</p><strong>'+Object.entries(c.materials).map(([k,n])=>n+' '+({wood:'timber',fiber:'fibre'}[k]||k)).join(' · ')+'</strong><p class="expedition-muted">'+(c.materials.fiber<6?'Two more fibre are needed for the binding: existing gathering or one completed patrol supplies them.':'This allocation supplies the six fibre needed for the binding.')+'</p></section>').join('')+'</div>';

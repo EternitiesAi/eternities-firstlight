@@ -1,3 +1,12 @@
+# Living Road support is playable; remote qualification next, 2026-10-06
+
+At the existing root-channel worksite, inspect sockets, correct yaw/pitch, seat four supplied sections and deliberately fasten through the original saved transaction. The fitted temporary pieces and installed support agree. Look frames the receiving face in both cameras, retaining chosen FOV; compact native controls keep input focus. Continuous outdoor obstacle/support checks also repair two measured route gaps without changing terrain or relaxing save validation.
+
+Source04 passed190 commands,124 syntax modules; Node1678 passed/2 explicit generic cohort skips (1680 total), Python262 methods (256 passed/6 method skips plus2 skipped setUpClass records). Current mandatory Earth-native and recording preflights pass separately with current cohort inputs. Native03:1159 checks,22 full-browser restarts,72 pixel/spatial rows,zero runtime errors; software WebGL and accelerated automation. Separate normal-RAF RTX capture:84 checks,17.39 seconds,4350951bytes. Generated pages identical3088437bytes, SHA256 `05a30536edb018a5c9559033a530ddf259321f19453060607b6877e260d53bb5`. Full fresh-remote48-browser gate/pushed source remain pending.
+
+World 9 / adventure 12 / earthHomecoming 1 and old browser keys remain. Partial fitting is transient; old completed repairs, payments, XP, gear, sockets, explicit choices and both cameras are preserved. No main merge, public deployment, paid providers, billing intervention, personal-save access or unrelated cleanup. Reuse the integrated D checkout and qualification station; retain failures and the blocked standalone deletion. Wider production goal ACTIVE; old heartbeat PAUSED. Scoped colleagues currently prepare small evidence and next-arc proposals only.
+
+---
 # Connected Earth roads qualified, 2026-10-06
 
 Hearthwater's orchard/ridge approach now connects through an explicit nearby

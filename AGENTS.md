@@ -1,3 +1,10 @@
+# Living Road fieldcraft: source qualified, 2026-10-06
+
+Root owns `gameplay/living-road-fieldcraft-20261006` in this reused integrated D checkout, based on PR50 final `f021adf539488d879b72c3d9e69f1ff10527c0f8`. Read docs/development/LIVING_ROAD_FIELDCRAFT_2026-10-06.md before older fronts. Four actual sections/five receivers now gate the existing first brace transaction. Native03 passed 1159 checks/22 browser restarts; a separate 17.39-second actual RTX canvas clip passed84 capture checks. Complete source04 passed190 commands/124 syntax modules. Exact pushed-source remote complete48-browser qualification is next; targeted results do not replace that gate.
+
+World 9 / adventure 12 / earthHomecoming 1 and old browser keys remain. Partial fitting is transient; old completed repairs, payments, XP, gear, sockets, explicit choices and both cameras are preserved. No main merge, public deployment, paid providers, billing intervention, personal-save access or unrelated cleanup. Reuse the integrated D checkout and qualification station; retain failures and the blocked standalone deletion. Wider production goal ACTIVE; old heartbeat PAUSED. Scoped colleagues currently prepare small evidence and next-arc proposals only.
+
+---
 # Wider production: connected Earth qualified, 2026-10-06
 
 Dom resumed the wider production goal after the finite draft. Root owns the

@@ -6,6 +6,7 @@ require('../src/coastward-settlement-art.js');require('../src/coastward-woodland
 const WA=require('../src/world-foundations-art.js'),F=1.57,R=.31,BODY=1.7,EPS=2e-5;
 const Trail=require('../src/elderweald-trail-art.js'),A=require('../src/adventure.js'),AR=require('../src/arsenal.js'),Rig=require('../src/traveler-art.js'),Equipment=require('../src/traveler-equipment-art.js');
 require('../src/realm-givers-art.js');require('../src/world.js');require('../src/earth-road.js');require('../src/earth-road-art.js');
+const Fieldcraft=require('../src/earth-fieldcraft.js'),FieldcraftArt=require('../src/earth-fieldcraft-art.js');
 const d=W.definition('earthlands'),empty=()=>({box:[],round:[],octa:[],disc:[],'timber-panel':[]});
 function ledger(branch='managed-coppice',n=EE.definition.steps.length,claimed=false){const r=EE.fresh();r.story.accepted=true;r.story.steps=EE.definition.steps.slice(0,n).map(s=>s.id);r.story.branch=n>=2?branch:null;r.story.claimed=claimed;return EE.validate(r);}
 const matrix=p=>p.opt?.m||p.m||E.M.compose(...p.p,...p.s,...(p.opt?.r||p.r||[0,0,0]));
@@ -38,10 +39,13 @@ function staticSubmission(quality='balanced'){
 }
 
 test('installed brace actually contacts the east wall outer face and clears the open passage',()=>{
- const p=EA.parts(ledger()).find(p=>p.opt.expeditionPart==='installed-brace'),b=bounds(p),s=d.solids.find(s=>s.id==='elderweald-root-east-wall'),face=s.x+s.w/2;
- assert.ok(b.min[0]<=face+EPS&&b.max[0]>face,'actual brace mesh must touch wall face, gap '+(b.min[0]-face));
- assert.ok(b.min[0]>s.x,'brace remains outside corridor-facing half of wall');assert.ok(b.min[2]>=s.z-s.d/2&&b.max[2]<=s.z+s.d/2);
- for(const fastener of EA.parts(ledger()).filter(p=>p.opt.expeditionPart==='brace-fastening'))assert.ok(overlap(bounds(fastener),b),'fastening intersects the real brace');
+ const parts=EA.parts(ledger()),sections=parts.filter(p=>p.opt.fieldcraftPart==='installed-section'),wall=d.solids.find(s=>s.id==='elderweald-root-east-wall'),face=wall.x+wall.w/2;
+ assert.equal(sections.length,4);for(const p of sections){const b=bounds(p);
+  assert.ok(b.min[0]<=face+EPS&&b.max[0]>face,'actual section mesh touches wall face');
+  assert.ok(b.min[0]>wall.x,'section remains outside corridor-facing half');assert.ok(b.min[2]>=wall.z-wall.d/2&&b.max[2]<=wall.z+wall.d/2);
+ }
+ for(const receiver of parts.filter(p=>p.opt.fieldcraftPart==='receiver'))assert.ok(sections.some(p=>overlap(bounds(receiver),bounds(p))),'each receiver contacts an actual section end');
+ for(const collar of parts.filter(p=>p.opt.fieldcraftPart==='joint-collar'))assert.ok(sections.some(p=>overlap(bounds(collar),bounds(p))),'collar touches actual sections');
 });
 test('delivered boards rest on the real glade rack and stack without unsupported gaps',()=>{
  const rack=staticSubmission().find(p=>p.elderwealdPart==='glade-stock'&&Math.abs(p.p[0]+110.7)<EPS),rb=bounds(rack);
@@ -59,13 +63,13 @@ test('managed allocation material rests on ground and connects its prepared band
 test('both shape-valid allocation histories project only their recorded steps and explicit claim',()=>{
  assert.deepEqual(EA.parts(undefined),[]);let maximum=0;
  for(const branch of ['stormfall-recovery','managed-coppice'])for(let n=0;n<=EE.definition.steps.length;n++)for(const claimed of n===EE.definition.steps.length?[false,true]:[false]){
-  const r=ledger(branch,n,claimed),before=JSON.stringify(r),p=EA.parts(r),again=EA.parts(EE.validate(JSON.parse(before)));assert.deepEqual(p,again);assert.equal(JSON.stringify(r),before);maximum=Math.max(maximum,p.length);
+  const r=ledger(branch,n,claimed),before=JSON.stringify(r),p=EA.parts(r),again=EA.parts(EE.validate(JSON.parse(before)));assert.deepEqual(p,again);assert.equal(JSON.stringify(r),before);maximum=Math.max(maximum,p.filter(q=>!q.opt.fieldcraftPart).length);assert.ok(p.filter(q=>q.opt.fieldcraftPart).length<=29,'separate sectional fitting budget');
   const roles=p.map(p=>p.opt.expeditionPart),has=role=>roles.includes(role);
-  assert.equal(has('prepared-allocation-band'),n>=2);assert.equal(has('installed-brace'),n>=7);assert.equal(has('delivered-stock'),n>=8);assert.equal(has('claimed-board-seal'),claimed);assert.equal(has('claimed-board-mark'),claimed);
+  assert.equal(has('prepared-allocation-band'),n>=2);assert.equal(has('installed-section'),n>=7);assert.equal(has('delivered-stock'),n>=8);assert.equal(has('claimed-board-seal'),claimed);assert.equal(has('claimed-board-mark'),claimed);
   if(n>=2)assert.ok(p.filter(p=>p.opt.allocation).every(p=>p.opt.allocation===branch));
   for(const q of p){finiteMesh(q);assert.equal(q.opt.appearanceOnly,true);assert.equal(q.opt.cameraSolid,false);assert.equal(q.opt.cutaway,false);assert.equal(q.opt.worldSolid,undefined);assert.equal(E.solidBounds(q.kind,{p:q.p,s:q.s,...q.opt}),null);}
  }
- assert.ok(maximum<=30,'bounded field marker/staging budget');const r=ledger(),a=EA.parts(r);a[0].p[0]=999;assert.notEqual(EA.parts(r)[0].p[0],999);
+ assert.ok(maximum<=27,'unchanged non-fitting field components stay bounded');const r=ledger(),a=EA.parts(r);a[0].p[0]=999;assert.notEqual(EA.parts(r)[0].p[0],999);
  const completed=ledger('managed-coppice',8,true),old=EA.parts(completed);completed.patrol={lastClaim:2,active:{run:3,steps:['inspect-water']}};const enduring=ps=>ps.filter(p=>p.opt.patrolRun===undefined&&!['story-clear-tag','patrol-clear-tag','patrol-check-tag','clearance-check'].includes(p.opt.expeditionPart));assert.deepEqual(enduring(EA.parts(EE.validate(completed))),enduring(old),'patrol does not undo or replay first repair art');
 });
 test('worksite actual mesh stays supported and full-body routes/choice/work/foe anchors remain clear',()=>{

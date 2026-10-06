@@ -68,7 +68,49 @@ function walkable(x,z,room=null,r=.31){
  if(!island&&!garden&&!crossing&&!pier)return false;
  return !OBSTACLES.some(o=>solid(x,z,o,r));
 }
-function segment(a,b,room,radius=.31){if(!Number.isFinite(radius)||radius<0||radius>2)return false;if(W.handles(room?.id))return W.segment(room.id,a,b,radius);if(room?.id===N.ROOM)return N.segment(a,b,radius);if(room?.id===E.ROOM)return E.segment(a,b,radius);let d=Math.hypot(a.x-b.x,a.z-b.z),n=Math.ceil(d/.18);for(let i=0;i<=n;i++){let t=n?i/n:0;if(!walkable(a.x+(b.x-a.x)*t,a.z+(b.z-a.z)*t,room,radius))return false;}return true;}
+// Sampling still checks the irregular shoreline and authored room rules. Valley
+// solids need a continuous check: a short corner crossing can fall between the
+// .18 m samples but be reached by a resident's smaller movement steps.
+function crossesSolid(a,b,o,r){
+ const dx=b.x-a.x,dz=b.z-a.z;
+ if(o.r!==undefined){const length=dx*dx+dz*dz,t=length?clamp(((o.x-a.x)*dx+(o.z-a.z)*dz)/length,0,1):0;return Math.hypot(a.x+dx*t-o.x,a.z+dz*t-o.z)<o.r+r;}
+ let lo=0,hi=1;
+ for(const [p,d,c,h] of [[a.x,dx,o.x,o.w/2+r],[a.z,dz,o.z,o.d/2+r]]){
+  if(d===0){if(Math.abs(p-c)>=h)return false;continue;}
+  const u=(c-h-p)/d,v=(c+h-p)/d;lo=Math.max(lo,Math.min(u,v));hi=Math.min(hi,Math.max(u,v));if(lo>=hi)return false;
+ }
+ return lo<hi;
+}
+function valleySupportedBall(q,h,r,landRadius,outdoor=null){
+ if(!q||![q.x,q.z,h,r].every(Number.isFinite)||h<0||r<0||r>2)return false;
+ const d=Math.hypot(q.x,q.z);
+ if(d+h<21.55-r)return true;
+ if(h<d&&d+h<landRadius(q.x,q.z)-7.95*Math.asin(h/d)-r)return true;
+ if(Math.hypot((q.x-37)*.95,q.z-2)+h<11.6-r)return true;
+ if(q.x-h>=20&&q.x+h<=28.5&&Math.abs(q.z-2)+h<1.75-r)return true;
+ if(Math.abs(q.x)+h<1.7-r&&q.z-h>=18&&q.z+h<29-r)return true;
+ if(outdoor?.bridge){
+  // These existing sandbox supports deliberately have their existing fixed
+  // footprint; walkable currently does not substitute the caller radius here.
+  if(Math.hypot(q.x,(q.z+40)*.92)+h<11.4-.31)return true;
+  if(Math.abs(q.x)+h<1.4&&q.z-h>=-30.7&&q.z+h<=-20)return true;
+ }
+ return false;
+}
+function valleySupportedSegment(a,b,r,landRadius,outdoor=null){
+ if(!a||!b||![a.x,a.z,b.x,b.z,r].every(Number.isFinite)||r<0||r>2)return false;
+ if(!valleySupportedBall(a,0,r,landRadius,outdoor)||!valleySupportedBall(b,0,r,landRadius,outdoor))return false;
+ const stack=[{a,b,depth:0}];let budget=2048;
+ while(stack.length){
+  if(--budget<0)return false;
+  const part=stack.pop(),q={x:(part.a.x+part.b.x)/2,z:(part.a.z+part.b.z)/2},h=Math.hypot(part.a.x-part.b.x,part.a.z-part.b.z)/2;
+  if(valleySupportedBall(q,h+1e-12,r,landRadius,outdoor))continue;
+  if(!valleySupportedBall(q,0,r,landRadius,outdoor)||part.depth>=20)return false;
+  stack.push({a:part.a,b:q,depth:part.depth+1},{a:q,b:part.b,depth:part.depth+1});
+ }
+ return true;
+}
+function segment(a,b,room,radius=.31){if(!Number.isFinite(radius)||radius<0||radius>2||!a||!b||![a.x,a.z,b.x,b.z].every(finite))return false;if(W.handles(room?.id))return W.segment(room.id,a,b,radius);if(room?.id===N.ROOM)return N.segment(a,b,radius);if(room?.id===E.ROOM)return E.segment(a,b,radius);const outdoor=room&&typeof room==='object'&&room.id==='outdoors'?room.sandbox:null;if(!room||outdoor){if(OBSTACLES.some(o=>crossesSolid(a,b,o,radius))||outdoor&&outdoor.placed.some(p=>{const box=S.rectFor(p);return box&&crossesSolid(a,b,box,radius);}))return false;if(!valleySupportedSegment(a,b,radius,landRadius,outdoor))return false;}let d=Math.hypot(a.x-b.x,a.z-b.z),n=Math.ceil(d/.18);for(let i=0;i<=n;i++){let t=n?i/n:0;if(!walkable(a.x+(b.x-a.x)*t,a.z+(b.z-a.z)*t,room,radius))return false;}return true;}
 class Heap{constructor(){this.a=[];}push(n){let a=this.a,i=a.push(n)-1;while(i){let p=(i-1)>>1;if(a[p].f<=n.f)break;a[i]=a[p];i=p;}a[i]=n;}pop(){let a=this.a,r=a[0],n=a.pop();if(a.length){let i=0;while(true){let c=i*2+1;if(c>=a.length)break;if(c+1<a.length&&a[c+1].f<a[c].f)c++;if(n.f<=a[c].f)break;a[i]=a[c];i=c;}a[i]=n;}return r;}}
 function pathfind(start,end,room=null,fine=false,radius=.31){if(!Number.isFinite(radius)||radius<0||radius>2)return null;const clear=(x,z)=>walkable(x,z,room,radius),line=(a,b)=>segment(a,b,room,radius);if(!clear(start.x,start.z)||!clear(end.x,end.z))return null;if(line(start,end))return[{x:end.x,z:end.z}];const broad=W.handles(room?.id),cell=broad&&!fine?1.2:.6,idx=(x,z)=>x+','+z,point=(x,z)=>({x:x*cell,z:z*cell}),checked=broad?new Map():null;function gridClear(x,z){if(!checked)return clear(x*cell,z*cell);const k=idx(x,z);if(!checked.has(k))checked.set(k,clear(x*cell,z*cell));return checked.get(k);}function nearby(p){let cx=Math.round(p.x/cell),cz=Math.round(p.z/cell),best=null;for(let r=0;r<=3&&!best;r++)for(let x=-r;x<=r;x++)for(let z=-r;z<=r;z++){let q=point(cx+x,cz+z);if(gridClear(cx+x,cz+z)&&line(p,q)&&(!best||Math.hypot(p.x-q.x,p.z-q.z)<best.d))best={x:cx+x,z:cz+z,d:Math.hypot(p.x-q.x,p.z-q.z)};}return best;}
  let s=nearby(start),e=nearby(end);if(!s||!e)return broad&&!fine?pathfind(start,end,room,true,radius):null;let open=new Heap(),cost=new Map(),parents=new Map(),nodes=new Map(),closed=new Set(),key=idx(s.x,s.z),goal=idx(e.x,e.z);cost.set(key,0);nodes.set(key,s);open.push({...s,k:key,f:0});let found=false,steps=0;while(open.a.length&&steps++<(broad?24000:12000)){let cur=open.pop();if(closed.has(cur.k))continue;if(cur.k===goal){found=true;break;}closed.add(cur.k);for(let dx=-1;dx<=1;dx++)for(let dz=-1;dz<=1;dz++){if(!dx&&!dz)continue;let x=cur.x+dx,z=cur.z+dz,p=point(x,z),k=idx(x,z),g=cost.get(cur.k)+(dx&&dz?1.4142:1);if(closed.has(k)||(broad&&g>=(cost.get(k)??Infinity))||!gridClear(x,z))continue;if(dx&&dz&&(!gridClear(cur.x,z)||!gridClear(x,cur.z)))continue;if(!line(point(cur.x,cur.z),p))continue;if(g>=(cost.get(k)??Infinity))continue;cost.set(k,g);parents.set(k,cur.k);nodes.set(k,{x,z});open.push({x,z,k,f:g+Math.hypot(x-e.x,z-e.z)});}}

@@ -42,7 +42,7 @@ const rill=freeze({
  'brace-root-channel':{title:'A support beside the old root',lines:[
   'Both infestation pockets are clear. The alternate brace belongs beyond the southern end of the passage wall.',
   'Set it beside the damaged connection. We are changing its support, not cutting away the living anchor.'
- ],hint:'Go south through the root corridor. Past the wall ends, fit the brace on the east side at the marked work point.'},
+ ],hint:'Go south through the root corridor. Past the wall ends, use the east side work point. Inspect socket pairs, align and seat four sections, then fasten. Look frames the face; E reopens controls.'},
  'deliver-allocation':{title:'Bring the allocation through',lines:[
   'The alternate brace is fitted. The old organism remains alive, with its damaged connection supported alongside it.',
   'Take your chosen allocation to the return glade. The path leads back toward the fields rather than restarting the repair.'
@@ -84,7 +84,7 @@ const sela=freeze({
  'brace-root-channel':{title:'The alternate brace',lines:[
   'Both pockets are clear. Fit the alternate support beyond the south end of the passage walls.',
   'The old organism has carried this connection for a long time. Give the damaged connection another support beside it.'
- ],hint:'Use the open root corridor, then the brace work point east of its southern mouth. The living root stays alive.'},
+ ],hint:'Use the open root corridor to the kit east of its southern mouth. Inspect socket pairs, align and seat four sections, then fasten. Look preserves your view; E reopens controls. The living root stays alive.'},
  'deliver-allocation':{title:'A different return',lines:[
   'The separate brace is fitted. The old organism remains alive; the return does not undo that repair.',
   'The glade is southeast of the passage. Deliver your allocation there, then return to Rill at the camp.'

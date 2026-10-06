@@ -1,3 +1,4 @@
+require('../src/earth-fieldcraft.js');require('../src/earth-fieldcraft-art.js');
 /* Synthetic geometry/authority boundaries. Complete earned runs are separate. */
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict');
@@ -60,14 +61,14 @@ test('visible warning follows locked frame; reduced motion keeps the complete re
 });
 test('saved clearance stages only the first brace; a new patrol does not inherit a cleared inspection tag',()=>{
  const {sim}=fixture(),r=sim.state.earthExpedition,has=(role)=>Art.parts(r).some(p=>p.opt.expeditionPart===role);
- assert.equal(has('staged-brace-timber'),false);r.story.steps.push('clear-root-pests');assert.equal(has('staged-brace-timber'),true);
- r.story.steps.push('brace-root-channel');assert.equal(has('staged-brace-timber'),false);assert.equal(has('installed-brace'),true);
+ assert.equal(has('supplied-section'),false);r.story.steps.push('clear-root-pests');assert.equal(has('supplied-section'),true);
+ r.story.steps.push('brace-root-channel');assert.equal(has('supplied-section'),false);assert.equal(has('installed-section'),true);
  r.story.steps.push('deliver-allocation');r.story.claimed=true;r.patrol.active={run:1,steps:['inspect-water','clear-crossing','inspect-root']};assert.equal(has('patrol-clear-tag'),false);assert.equal(has('patrol-check-tag'),true);
- r.patrol.active.steps.push('clear-root-pests');assert.equal(has('patrol-clear-tag'),true);assert.equal(has('staged-brace-timber'),false);assert.equal(has('installed-brace'),true);
+ r.patrol.active.steps.push('clear-root-pests');assert.equal(has('patrol-clear-tag'),true);assert.equal(has('supplied-section'),false);assert.equal(has('installed-section'),true);
  const before=JSON.stringify(r);Art.parts(r);assert.equal(JSON.stringify(r),before);
 });
 test('refused actual defeat saves leave no clearance or supplied kit and can be retried',()=>{
  const {sim,e}=fixture(),before=JSON.stringify(sim.state.earthExpedition);sim.earthExpeditionSave=()=>({ok:false,error:'labelled storage refusal'});A.damageEnemy(sim,e,e.hp,'weapon');
- assert.equal(e.hp,1);assert.equal(JSON.stringify(sim.state.earthExpedition),before);assert.equal(Art.parts(sim.state.earthExpedition).some(p=>p.opt.expeditionPart==='staged-brace-timber'),false);
- sim.earthExpeditionSave=raw=>{C.validate(raw);return{ok:true};};A.damageEnemy(sim,e,1,'weapon');assert.equal(e.hp,0);assert.ok(sim.state.earthExpedition.story.steps.includes('clear-root-pests'));assert.ok(Art.parts(sim.state.earthExpedition).some(p=>p.opt.expeditionPart==='staged-brace-timber'));
+ assert.equal(e.hp,1);assert.equal(JSON.stringify(sim.state.earthExpedition),before);assert.equal(Art.parts(sim.state.earthExpedition).some(p=>p.opt.expeditionPart==='supplied-section'),false);
+ sim.earthExpeditionSave=raw=>{C.validate(raw);return{ok:true};};A.damageEnemy(sim,e,1,'weapon');assert.equal(e.hp,0);assert.ok(sim.state.earthExpedition.story.steps.includes('clear-root-pests'));assert.ok(Art.parts(sim.state.earthExpedition).some(p=>p.opt.expeditionPart==='supplied-section'));
 });
