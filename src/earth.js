@@ -39,7 +39,7 @@ const POINTS=Object.freeze([
  {id:'quarry',name:'Quarry approach',x:12,z:-26,kind:'route'},
  {id:'shelter',name:'Old ridge shelter',x:-12,z:-23,kind:'rest'},
  {id:'bellweather',name:'Bellweather west road',x:0,z:-43,kind:'boundary'},
- {id:'hearthwater-coastward-road',name:'Coastward road · bridge, fields and woodland',x:19,z:-42,kind:'route'}
+ {id:'hearthwater-coastward-road',name:'Coastward road · bridge, fields and woodland',x:18.3,z:-42,kind:'route'}
 ]);
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n)),dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z),tickets=new WeakMap();
 const fail=error=>({ok:false,error});

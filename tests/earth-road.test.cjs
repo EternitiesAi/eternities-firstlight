@@ -6,7 +6,7 @@ const copy=o=>JSON.parse(JSON.stringify(o)),context=sim=>({sim,active:'synthetic
 function hearth(kit=false){const sim=new C.Simulation();if(kit){sim.state.player={x:11,z:9,yaw:0};assert.ok(sim.adventureCommand('synthetic-road-kit','start').ok);}sim.state.player={...H.GATE,yaw:0};const ctx=context(sim);assert.ok(H.enter(H.preview(ctx).ticket,ctx,{save:()=>({ok:true}),build:()=>{}}).ok);sim.state.player={...R.endpoint(H.ROOM),yaw:0};return sim;}
 function cross(sim,extra={}){const ctx=context(sim),p=R.preview(ctx);assert.ok(p.ok,p.error);return R.enter(p.ticket,ctx,{save:()=>({ok:true}),build:()=>{},...extra});}
 test('both road endpoints, arrivals and solid posts use canonical supported geometry',()=>{
- for(const p of R.ENDPOINTS){const support=p.room===H.ROOM?H.walkable(p.x,p.z):W.walkable(p.room,p.x,p.z);assert.ok(support);assert.ok(p.destination===H.ROOM?H.walkable(p.arrival.x,p.arrival.z):W.walkable(p.destination,p.arrival.x,p.arrival.z));}
+ for(const p of R.ENDPOINTS){const support=p.room===H.ROOM?H.walkable(p.x,p.z):W.walkable(p.room,p.x,p.z);assert.ok(support);assert.ok(p.destination===H.ROOM?H.walkable(p.arrival.x,p.arrival.z):W.walkable(p.destination,p.arrival.x,p.arrival.z));const point=(p.room===H.ROOM?H.POINTS:W.definition(p.room).points).find(q=>q.id===p.id);assert.ok(point,'numbered atlas owns the same endpoint');assert.equal(point.x,p.x);assert.equal(point.z,p.z);}
  assert.equal(H.walkable(18.3,-40.4),false);assert.equal(W.walkable('world-earthlands',9.6,106),false);assert.equal(H.walkable(19.1,-42),false);
  const paths=[[H.ROOM,[{x:0,z:-35},{x:7,z:-38},{x:12,z:-42},{x:18.3,z:-42}]],['world-earthlands',[{x:8,z:106},{x:0,z:104},{x:0,z:92}]]];
  for(const[room,points]of paths)for(let i=1;i<points.length;i++){assert.ok(C.pathfind(points[i-1],points[i],{id:room}));assert.ok(room===H.ROOM?H.segment(points[i-1],points[i]):W.segment(room,points[i-1],points[i]));}
@@ -43,6 +43,7 @@ test('production road composition keeps every legacy piece except explicitly loc
  assert.equal(actual.filter(p=>!p.earthRoadPart).length,baseline.all.length-cleared.length);assert.ok(additions.length<=230,'bounded separate overlay budget');
  assert.equal(additions.filter(p=>p.earthRoadPart==='fingerpost').length,16);assert.equal(additions.filter(p=>p.earthRoadPart==='post').length,1);assert.equal(additions.filter(p=>p.earthRoadPart==='ground'&&p.terrain).length,64);
  for(const p of additions){assert.ok([...p.p,...p.s,...(p.m||[])].every(Number.isFinite));assert.equal(p.cameraSolid,false);}
+ for(const p of additions.filter(p=>p.earthRoadPart==='ground'&&p.terrain)){const m=p.m,u=m.slice(0,3),n=m.slice(4,7),v=m.slice(8,11),dot=(a,b)=>a.reduce((s,x,i)=>s+x*b[i],0),cross=[v[1]*u[2]-v[2]*u[1],v[2]*u[0]-v[0]*u[2],v[0]*u[1]-v[1]*u[0]];assert.ok(Math.abs(dot(u,n))<1e-10&&Math.abs(dot(v,n))<1e-10&&Math.abs(dot(u,v))<1e-10,'orthogonal local model supports the production normal transform');assert.ok(dot(cross,n)/Math.hypot(...cross)/Math.hypot(...n)>1-1e-12,'top normal agrees with its actual sloping plane');}
  assert.equal(JSON.stringify([H.PATCHES,H.SOLIDS,H.POINTS]),defs);
 });
 

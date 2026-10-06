@@ -719,7 +719,7 @@ const POINTS=Object.freeze([
  {id:'quarry',name:'Quarry approach',x:12,z:-26,kind:'route'},
  {id:'shelter',name:'Old ridge shelter',x:-12,z:-23,kind:'rest'},
  {id:'bellweather',name:'Bellweather west road',x:0,z:-43,kind:'boundary'},
- {id:'hearthwater-coastward-road',name:'Coastward road · bridge, fields and woodland',x:19,z:-42,kind:'route'}
+ {id:'hearthwater-coastward-road',name:'Coastward road · bridge, fields and woodland',x:18.3,z:-42,kind:'route'}
 ]);
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n)),dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z),tickets=new WeakMap();
 const fail=error=>({ok:false,error});
@@ -2282,8 +2282,11 @@ function make(a,room){const p=G.RealmEarthRoad.endpoint(room);if(!p)return;const
    const M=G.RealmEngine.M,old=legacy.m||M.compose(...legacy.p,...legacy.s,...(legacy.r||[0,0,0])),a0=M.transform(old,[.5,.5,-.5]),b0=M.transform(old,[.5,.5,.5]),low=a0[2],high=b0[2];
    const xs=[10,12,14,16,18.8];
    for(let i=1;i<xs.length;i++){const left=xs[i-1],right=xs[i],ha=i===1?a0[1]:height(left,low),hb=i===1?b0[1]:height(left,high),hc=height(right,low),hd=height(right,high),xx=(left+right)/2,mid=(ha+hb+hc+hd)/4,dx=(hc+hd-ha-hb)/2,dz=(hb+hd-ha-hc)/2;
-    const m=[right-left,dx,0,0,0,.09,0,0,0,dz,high-low,0,xx,mid-.045,(low+high)/2,1];
-    a.box(xx,mid-.045,(low+high)/2,right-left,.09,high-low,0x929768,{...decor,earthRoadPart:'ground',terrain:true,cutaway:false,m});a.box(xx,Math.min(ha,hb,hc,hd)-2.55,(low+high)/2,right-left,5,high-low+.002,0x756d5a,{...decor,earthRoadPart:'ground',cutaway:false});
+    // The renderer transforms normals with orthogonal model axes. Keep this
+    // local slope orthogonal too, while retaining its exact top-plane centre.
+    const w=right-left,d=high-low,n=[-dx*d,w*d,-w*dz],length=Math.hypot(...n),normal=n.map(v=>v/length),projection=dx*dz/(w*w+dx*dx),row=[-projection*w,dz-projection*dx,d],center=[xx-normal[0]*.045,mid-normal[1]*.045,(low+high)/2-normal[2]*.045];
+    const m=[w,dx,0,0,...normal.map(v=>v*.09),0,...row,0,...center,1];
+    a.box(...center,w,.09,d,0x929768,{...decor,earthRoadPart:'ground',terrain:true,cutaway:false,m});a.box(xx,Math.min(ha,hb,hc,hd)-2.55,(low+high)/2,right-left,5,high-low+.002,0x756d5a,{...decor,earthRoadPart:'ground',cutaway:false});
    }
   }
   for(let i=1;i<TRACK.length;i++){const u=TRACK[i-1],v=TRACK[i],d=Math.hypot(v[0]-u[0],v[1]-u[1]);for(let t=0;t<d;t+=.68){const f=t/d,xx=u[0]+(v[0]-u[0])*f,zz=u[1]+(v[1]-u[1])*f;if(G.RealmEarth.walkable(xx,zz,.08))a.add('disc',xx,height(xx,zz)+.025,zz,1.7,1,1.7,0xb0a181,{...decor,earthRoadPart:'cart-track',r:[Math.atan2(height(xx,zz-.1)-height(xx,zz+.1),.2),0,0]});}}

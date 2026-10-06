@@ -145,3 +145,25 @@ synthetic C target with the temporary fixture's unique basename. It performs no
 write there and still requires rejection/no output creation. All original
 relative/C/UNC and source/persistence guard criteria remain. Production game,
 HTML and guard implementations are unchanged by this test-fixture repair.
+
+## Complete03 cancelled for a real map caller repair
+
+The complete remote run at7ef464dcd5d63639556dfdc71eb3defa77658030
+was cancelled by root after an independent reader identified a real map bug.
+Its process closed exit-1 at2026-10-06T20:05:10.6776307Z; partial successful
+commands are not a complete gate. Only that verifier's confirmed process tree
+was stopped. Preserve FULL03_CANCELLATION.json, its console and exit receipt.
+
+The numbered Hearthwater atlas still used the prior x19 coordinate, outside the
+narrowed supported spur. It now uses the canonical18.3 endpoint. The rules
+require both atlas points to match their endpoints; browser coverage now clicks
+both actual numbered map buttons from distinct supported starts. The dedicated
+invitation path remains separately covered. No saved state or reward changes.
+
+The new sloping ground cells also now use an orthogonal local model basis with
+an upward plane normal, matching the existing renderer's normal transformation.
+Three axis dot products, actual plane-normal agreement, the untouched legacy
+2550-piece hash and sub-millimetre rendered seams are checked together. The
+renderer itself is unchanged. Focused05 passed37/37 with no skips; a separate
+read-only reviewer found both repairs complete with no remaining bounded blocker.
+Final browser04 and complete04 execution receipts are still required.
