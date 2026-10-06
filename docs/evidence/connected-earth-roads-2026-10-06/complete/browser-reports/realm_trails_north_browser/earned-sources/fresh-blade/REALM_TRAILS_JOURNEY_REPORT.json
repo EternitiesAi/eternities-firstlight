@@ -1,0 +1,924 @@
+{
+  "status": "passed",
+  "variant": "fresh-blade",
+  "method": "production commands/moveTo/ticks/targeting/Brace/autoattack/projectiles; explicit in-memory durable candidate holder",
+  "acceleratedTicks": true,
+  "browserPersistence": false,
+  "humanPacing": false,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "manualDamage": 0,
+  "plantedDefeats": 0,
+  "source": "fresh production character; initial kit and optional bow/range/socket all command-earned",
+  "harnessSha256": "dfb80cecd9ba2d1ec22d93cd1aface73cd65fbdab1aff923674944970a865727",
+  "sourceHashes": {
+    "core.js": "7ee0f2e79ed77787e4b8c720183b708f0a6d91d9b24cadab28739d0187319b00",
+    "adventure.js": "c8c9f751bfd09d4e123ef786867fd1f1321d8364cf2f83a3e8bda74c12417a5c",
+    "combat.js": "4176bbf57fd761732b5f9d96708ac8ac0d6855ef56c928d06810f06f74315a32",
+    "arsenal.js": "70cf869a8240895158960c62cc65d802adf491ac24ee66bf7a3c0389557d2b70",
+    "realm-trails.js": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+    "realm-trails-north.js": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+    "realm-trails-south.js": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+    "realm-trails-cosmos.js": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+    "realm-craft.js": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+    "world-foundations.js": "4173e396c6d002d0ec25a7c549f046e0e77e561c3ef3b0e89400f84cc070d752"
+  },
+  "sourceDrift": false,
+  "finalHashes": {
+    "core.js": "7ee0f2e79ed77787e4b8c720183b708f0a6d91d9b24cadab28739d0187319b00",
+    "adventure.js": "c8c9f751bfd09d4e123ef786867fd1f1321d8364cf2f83a3e8bda74c12417a5c",
+    "combat.js": "4176bbf57fd761732b5f9d96708ac8ac0d6855ef56c928d06810f06f74315a32",
+    "arsenal.js": "70cf869a8240895158960c62cc65d802adf491ac24ee66bf7a3c0389557d2b70",
+    "realm-trails.js": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+    "realm-trails-north.js": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+    "realm-trails-south.js": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+    "realm-trails-cosmos.js": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+    "realm-craft.js": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+    "world-foundations.js": "4173e396c6d002d0ec25a7c549f046e0e77e561c3ef3b0e89400f84cc070d752"
+  },
+  "worldVersion": 9,
+  "adventureVersion": 12,
+  "claims": [
+    {
+      "quest": "heaven-broken-choir-v1",
+      "reward": {
+        "xp": 30,
+        "coins": 12,
+        "ore": 2
+      },
+      "before": {
+        "xp": 0,
+        "coins": 0,
+        "ore": 0
+      }
+    },
+    {
+      "quest": "hell-open-cage-v1",
+      "reward": {
+        "xp": 35,
+        "coins": 14,
+        "ore": 3
+      },
+      "before": {
+        "xp": 30,
+        "coins": 12,
+        "ore": 2
+      }
+    }
+  ],
+  "combats": [
+    {
+      "quest": "heaven-broken-choir-v1",
+      "style": "blade",
+      "frames": 92,
+      "seconds": 4.600000000001046,
+      "guarded": 1,
+      "arrowSeen": false,
+      "phases": [
+        {
+          "at": 0,
+          "phase": "recover",
+          "kind": "opening",
+          "remaining": 2.100000000000002,
+          "hp": 90
+        },
+        {
+          "at": 2.2000000000005002,
+          "phase": "windup",
+          "kind": "strike",
+          "remaining": 1.35,
+          "hp": 26
+        }
+      ],
+      "impacts": [
+        {
+          "after": 0.20000000000004547,
+          "mode": "recover",
+          "before": 90,
+          "hp": 74
+        },
+        {
+          "after": 0.7500000000001705,
+          "mode": "recover",
+          "before": 74,
+          "hp": 58
+        },
+        {
+          "after": 1.3000000000002956,
+          "mode": "recover",
+          "before": 58,
+          "hp": 42
+        },
+        {
+          "after": 1.8500000000004206,
+          "mode": "recover",
+          "before": 42,
+          "hp": 26
+        },
+        {
+          "after": 4.050000000000921,
+          "mode": "recover",
+          "before": 26,
+          "hp": 10
+        },
+        {
+          "after": 4.600000000001046,
+          "mode": "recover",
+          "before": 10,
+          "hp": 0
+        }
+      ],
+      "closedObservations": 25,
+      "healthAfter": 96
+    },
+    {
+      "quest": "hell-open-cage-v1",
+      "style": "blade",
+      "frames": 48,
+      "seconds": 2.4000000000005457,
+      "guarded": 1,
+      "arrowSeen": false,
+      "phases": [
+        {
+          "at": 0,
+          "phase": "recover",
+          "kind": "opening",
+          "remaining": 1.2499999999999996,
+          "hp": 90
+        },
+        {
+          "at": 1.3000000000002956,
+          "phase": "windup",
+          "kind": "strike",
+          "remaining": 1.35,
+          "hp": 36
+        }
+      ],
+      "impacts": [
+        {
+          "after": 0.20000000000004547,
+          "mode": "recover",
+          "before": 90,
+          "hp": 72
+        },
+        {
+          "after": 0.7500000000001705,
+          "mode": "recover",
+          "before": 72,
+          "hp": 54
+        },
+        {
+          "after": 1.3000000000002956,
+          "mode": "windup",
+          "before": 54,
+          "hp": 36
+        },
+        {
+          "after": 1.8500000000004206,
+          "mode": "windup",
+          "before": 36,
+          "hp": 18
+        },
+        {
+          "after": 2.4000000000005457,
+          "mode": "windup",
+          "before": 18,
+          "hp": 0
+        }
+      ],
+      "closedObservations": 0,
+      "healthAfter": 96
+    }
+  ],
+  "events": [
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-1",
+      "type": "start",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Expedition ready · Blade, lantern, tonics and a trail salve."
+      }
+    },
+    {
+      "owner": "travel",
+      "enter": "heaven"
+    },
+    {
+      "owner": "trail",
+      "type": "accept",
+      "quest": "heaven-broken-choir-v1",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "The Broken Choir · a garden answer accepted. Read the route, danger and fixed reward."
+      }
+    },
+    {
+      "owner": "reload",
+      "realm": "heaven"
+    },
+    {
+      "owner": "travel",
+      "enter": "heaven"
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "heaven-broken-choir-v1",
+      "payload": {
+        "step": "relay-west"
+      },
+      "result": {
+        "ok": true,
+        "text": "Operate the west handle on the broad grounded apron beyond the Mirror Causeway. Its single notch marks the first isolated support. Set the east and crown relays in either order; all three are required before the service core wakes. The west Arcade service walk remains another way back to the Garden."
+      }
+    },
+    {
+      "owner": "reload",
+      "realm": "heaven"
+    },
+    {
+      "owner": "travel",
+      "enter": "heaven"
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "heaven-broken-choir-v1",
+      "payload": {
+        "step": "relay-east"
+      },
+      "result": {
+        "ok": true,
+        "text": "Operate the east handle opposite the west relay. Its two notches identify it without pitch or color alone. Set the west and crown relays if either is still unset. The bearing is isolated only when all three supports have been recorded for this accepted repair."
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "heaven-broken-choir-v1",
+      "payload": {
+        "step": "relay-crown"
+      },
+      "result": {
+        "ok": true,
+        "text": "Operate the three-notch handle on the grounded northern apron, south of the closed terrace. Complete any remaining west/east relay. When the third handle is set, the service core at (0, -95) becomes the declared encounter; the summit road stays closed and the route south stays open."
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "heaven-broken-choir-v1",
+      "payload": {
+        "step": "spillway"
+      },
+      "result": {
+        "ok": true,
+        "text": "Optional preparation. Yselle: “Send the return pressure into the side basin; the bearing will take longer to rise.” Operate the marked service handle east of the Garden. This costs no material and extends the core’s actual recovery opening by 0.8 seconds. You can omit it and still finish; continue north to the three relay handles."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-10",
+      "type": "target-select",
+      "payload": {
+        "id": "heaven-choir-core-v1"
+      },
+      "result": {
+        "ok": true,
+        "text": "Target: Crownkeeper service core"
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-11",
+      "type": "auto-toggle",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Autoattack on. Move into range; movement remains yours."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-12",
+      "type": "guard",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Braced · incoming damage halved for 3 seconds."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-13",
+      "type": "target-clear",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Target cleared."
+      }
+    },
+    {
+      "owner": "reload",
+      "realm": "heaven"
+    },
+    {
+      "owner": "travel",
+      "enter": "heaven"
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "heaven-broken-choir-v1",
+      "payload": {
+        "step": "garden-repair"
+      },
+      "result": {
+        "ok": true,
+        "text": "At the Garden response plate, physically fit the released return arm. Rielle: “Leave the hinge where the next pair of hands can reach it.” The repair stops at this useful local instrument; it opens no summit terrain. Return to Rielle at the nearby west bench and choose the explicit claim for the stated fee."
+      }
+    },
+    {
+      "owner": "reload",
+      "realm": "heaven"
+    },
+    {
+      "owner": "travel",
+      "enter": "heaven"
+    },
+    {
+      "owner": "trail",
+      "type": "claim",
+      "quest": "heaven-broken-choir-v1",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "The Broken Choir · a garden answer complete · +30 XP · +12 sunmarks · +2 ore. The declared fee is claimed once.",
+        "reward": {
+          "xp": 30,
+          "coins": 12,
+          "ore": 2
+        }
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "claim",
+      "quest": "heaven-broken-choir-v1",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "duplicate": true,
+        "text": "This trail has already been paid once."
+      }
+    },
+    {
+      "owner": "reload",
+      "realm": "heaven"
+    },
+    {
+      "owner": "travel",
+      "enter": "heaven"
+    },
+    {
+      "owner": "trail",
+      "type": "claim",
+      "quest": "heaven-broken-choir-v1",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "duplicate": true,
+        "text": "This trail has already been paid once."
+      }
+    },
+    {
+      "owner": "travel",
+      "freeHome": true
+    },
+    {
+      "owner": "travel",
+      "enter": "hell"
+    },
+    {
+      "owner": "trail",
+      "type": "accept",
+      "quest": "hell-open-cage-v1",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "The Open Cage · a return that holds accepted. Read the route, danger and fixed reward."
+      }
+    },
+    {
+      "owner": "reload",
+      "realm": "hell"
+    },
+    {
+      "owner": "travel",
+      "enter": "hell"
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "hell-open-cage-v1",
+      "payload": {
+        "step": "contact-neris"
+      },
+      "result": {
+        "ok": true,
+        "text": "Reach Neris on the west Bell Yard apron, outside the closed foundry wall. Neris: “The door is open. The route still records me as theirs. Check it before asking me to run.” Her preserved measurements identify a cooling handle and two return clamps. Leave her here while you establish safety; first operate cooling at (-34, -70)."
+      }
+    },
+    {
+      "owner": "reload",
+      "realm": "hell"
+    },
+    {
+      "owner": "travel",
+      "enter": "hell"
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "hell-open-cage-v1",
+      "payload": {
+        "step": "cooling"
+      },
+      "result": {
+        "ok": true,
+        "text": "Operate the marked cooling handle beside Moth Cut’s dry service route. Tovan’s measurement sets a finite safe pressure state; this is required route preparation, not an optional steam effect or a new water-diversion choice. Continue to the west clamp at (-30, -86) and east clamp at (14, -100), in either order."
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "hell-open-cage-v1",
+      "payload": {
+        "step": "clamp-west"
+      },
+      "result": {
+        "ok": true,
+        "text": "Seat the west clamp’s paired pins at the service approach to Bell Yard. One set clamp is insufficient: inspect the east clamp as well. When both are set after cooling, the route Reeve at (-35, -90) activates visibly. Keep the open western road behind you; no door closes."
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "hell-open-cage-v1",
+      "payload": {
+        "step": "clamp-east"
+      },
+      "result": {
+        "ok": true,
+        "text": "Seat the east clamp on the Bell Yard’s grounded loading apron. Return across the open yard to the west clamp if it remains unset. Both verified clamps and cooling make the rescue route usable; the Reeve at (-35, -90) must then be disabled before Neris is asked to follow."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-29",
+      "type": "target-select",
+      "payload": {
+        "id": "hell-return-reeve-v1"
+      },
+      "result": {
+        "ok": true,
+        "text": "Target: Route Reeve"
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-30",
+      "type": "auto-toggle",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Autoattack on. Move into range; movement remains yours."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-31",
+      "type": "guard",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Braced · incoming damage halved for 3 seconds."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-32",
+      "type": "target-clear",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Target cleared."
+      }
+    },
+    {
+      "owner": "reload",
+      "realm": "hell"
+    },
+    {
+      "owner": "travel",
+      "enter": "hell"
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "hell-open-cage-v1",
+      "payload": {
+        "step": "escort-start"
+      },
+      "result": {
+        "ok": true,
+        "text": "Neris: “Two clamps, cooling, and the inspector quiet. I can try that road with you.” Ask her to follow only after all declared safety work is complete. Walk south along Moth Cut, around the culvert and down the western service road, then enter the Refuge by its open south side. She moves at 2.5 route units per second and waits beyond 10; stay close or walk back. The explicit assisted-extraction fallback is available after this safety checkpoint if the route fails."
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "escort-wait",
+      "quest": "hell-open-cage-v1",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Neris waits here. Speak to her to resume."
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "escort-follow",
+      "quest": "hell-open-cage-v1",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Neris resumes the safe route. Stay within ten paces."
+      }
+    },
+    {
+      "owner": "escort",
+      "walked": true,
+      "frames": 1218,
+      "pauses": 4,
+      "actor": {
+        "x": -12,
+        "z": 27,
+        "yaw": 0,
+        "walking": false,
+        "status": "Safe at the refuge",
+        "quest": "hell-open-cage-v1"
+      }
+    },
+    {
+      "owner": "reload",
+      "realm": "hell"
+    },
+    {
+      "owner": "travel",
+      "enter": "hell"
+    },
+    {
+      "owner": "trail",
+      "type": "claim",
+      "quest": "hell-open-cage-v1",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "The Open Cage · a return that holds complete · +35 XP · +14 sunmarks · +3 ore. The declared fee is claimed once.",
+        "reward": {
+          "xp": 35,
+          "coins": 14,
+          "ore": 3
+        }
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "claim",
+      "quest": "hell-open-cage-v1",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "duplicate": true,
+        "text": "This trail has already been paid once."
+      }
+    },
+    {
+      "owner": "reload",
+      "realm": "hell"
+    },
+    {
+      "owner": "travel",
+      "enter": "hell"
+    },
+    {
+      "owner": "trail",
+      "type": "claim",
+      "quest": "hell-open-cage-v1",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "duplicate": true,
+        "text": "This trail has already been paid once."
+      }
+    },
+    {
+      "owner": "travel",
+      "freeHome": true
+    },
+    {
+      "owner": "reload"
+    }
+  ],
+  "routes": [
+    {
+      "room": "valley",
+      "start": {
+        "x": 2.5,
+        "z": 6,
+        "yaw": 0
+      },
+      "x": 11,
+      "z": 9,
+      "frames": 58
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 11,
+        "z": 9,
+        "yaw": 1.385448376799188
+      },
+      "x": 18,
+      "z": 6,
+      "frames": 51
+    },
+    {
+      "room": "world-heaven",
+      "start": {
+        "x": 0,
+        "z": 27,
+        "yaw": 3.141592653589793
+      },
+      "x": -14,
+      "z": 5,
+      "frames": 164
+    },
+    {
+      "room": "world-heaven",
+      "start": {
+        "x": 0,
+        "z": 27,
+        "yaw": 3.141592653589793
+      },
+      "x": -8,
+      "z": -88,
+      "frames": 722
+    },
+    {
+      "room": "world-heaven",
+      "start": {
+        "x": 0,
+        "z": 27,
+        "yaw": 3.141592653589793
+      },
+      "x": 8,
+      "z": -88,
+      "frames": 722
+    },
+    {
+      "room": "world-heaven",
+      "start": {
+        "x": 8,
+        "z": -88,
+        "yaw": 3.074386327807426
+      },
+      "x": 0,
+      "z": -102,
+      "frames": 101
+    },
+    {
+      "room": "world-heaven",
+      "start": {
+        "x": 0,
+        "z": -102,
+        "yaw": -2.622446539343203
+      },
+      "x": 25,
+      "z": -15,
+      "frames": 568
+    },
+    {
+      "room": "world-heaven",
+      "start": {
+        "x": 25,
+        "z": -15,
+        "yaw": 0.3632492071865002
+      },
+      "x": 0,
+      "z": -83,
+      "frames": 453
+    },
+    {
+      "room": "world-heaven",
+      "start": {
+        "x": 0,
+        "z": -83,
+        "yaw": -2.789283928915706
+      },
+      "x": 0,
+      "z": -93.9,
+      "frames": 69
+    },
+    {
+      "room": "world-heaven",
+      "start": {
+        "x": 0,
+        "z": 27,
+        "yaw": 3.141592653589793
+      },
+      "x": 0,
+      "z": -1,
+      "frames": 175
+    },
+    {
+      "room": "world-heaven",
+      "start": {
+        "x": 0,
+        "z": 27,
+        "yaw": 3.141592653589793
+      },
+      "x": -14,
+      "z": 5,
+      "frames": 164
+    },
+    {
+      "room": "world-heaven",
+      "start": {
+        "x": 0,
+        "z": 27,
+        "yaw": 3.141592653589793
+      },
+      "x": -14,
+      "z": 5,
+      "frames": 164
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "x": 18,
+      "z": 6,
+      "frames": 1
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": 0,
+        "z": 31,
+        "yaw": 3.141592653589793
+      },
+      "x": -10,
+      "z": 24,
+      "frames": 77
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": 0,
+        "z": 31,
+        "yaw": 3.141592653589793
+      },
+      "x": -36,
+      "z": -102,
+      "frames": 890
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": 0,
+        "z": 31,
+        "yaw": 3.141592653589793
+      },
+      "x": -34,
+      "z": -70,
+      "frames": 688
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": -34,
+        "z": -70,
+        "yaw": -2.7576655372545056
+      },
+      "x": -30,
+      "z": -86,
+      "frames": 104
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": -30,
+        "z": -86,
+        "yaw": 2.896613990462929
+      },
+      "x": 14,
+      "z": -100,
+      "frames": 289
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": 14,
+        "z": -100,
+        "yaw": 1.8788491078186484
+      },
+      "x": -35,
+      "z": -78,
+      "frames": 336
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": -35,
+        "z": -78,
+        "yaw": -1.1487912968926812
+      },
+      "x": -35,
+      "z": -88.9,
+      "frames": 69
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": 0,
+        "z": 31,
+        "yaw": 3.141592653589793
+      },
+      "x": -36,
+      "z": -102,
+      "frames": 890
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": 0,
+        "z": 31,
+        "yaw": 3.141592653589793
+      },
+      "x": -10,
+      "z": 24,
+      "frames": 77
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": 0,
+        "z": 31,
+        "yaw": 3.141592653589793
+      },
+      "x": -10,
+      "z": 24,
+      "frames": 77
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "x": 18,
+      "z": 6,
+      "frames": 1
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "x": 11,
+      "z": 9,
+      "frames": 50
+    }
+  ],
+  "saveCount": 49,
+  "fitting": {
+    "weapon": "trail_blade",
+    "attackBefore": 18,
+    "attackAfter": 21,
+    "cost": {
+      "ore": 3,
+      "coins": 8
+    }
+  },
+  "canonicalPreservation": true
+}

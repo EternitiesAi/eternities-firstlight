@@ -12,10 +12,10 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 
 
-CLI_BROWSER_OUTPUTS = frozenset({'bridge_browser', 'earth_story_transactions_browser',
+CLI_BROWSER_OUTPUTS = frozenset({'earth_road_browser', 'bridge_browser', 'earth_story_transactions_browser',
     'realm_givers_browser', 'realm_trails_north_browser',
     'coastward_bridge_posts_browser', 'practice_visibility_browser', 'hell_campaign_browser', 'heaven_campaign_browser', 'atlantis_campaign_browser', 'cosmos_campaign_browser'})
-GUARDED_BROWSER_OUTPUTS = frozenset({'realm_givers_browser', 'realm_trails_north_browser',
+GUARDED_BROWSER_OUTPUTS = frozenset({'earth_road_browser', 'realm_givers_browser', 'realm_trails_north_browser',
     'coastward_bridge_posts_browser', 'practice_visibility_browser', 'hell_campaign_browser', 'heaven_campaign_browser', 'atlantis_campaign_browser', 'cosmos_campaign_browser'})
 BROWSER_SOURCE_OUTPUTS = frozenset({'realm_trails_north_browser', 'practice_visibility_browser'})
 ENV_BROWSER_OUTPUTS = {
@@ -206,6 +206,7 @@ def main():
     run('classes-journey', ['node', 'tests/classes_journey.cjs', '--sources-ready'])
     run('cosmos-journey', ['node', 'tests/cosmos_journey.cjs', '--sources-ready'])
     run('earth-journey', ['node', 'tests/earth_journey.cjs', '--sources-ready'])
+    run('earth-road-journey', ['node', 'tests/earth_road_journey.cjs'])
     run('earth-outing-blade', ['node', 'tests/pursuit_journey.cjs', '--earth'])
     run('earth-outing-bow', ['node', 'tests/pursuit_journey.cjs', '--earth', '--bow'])
     run('earth-outing-veteran', ['node', 'tests/pursuit_journey.cjs', '--earth', '--veteran'])
@@ -312,7 +313,7 @@ def main():
         run('hell_campaign_browser', command, timeout=1200, extra_env=extra_env)
         # Qualify the recently extended Earth presentation and native giver
         # route first; fail promptly while retaining every default suite.
-        for suite in ['bridge_community_browser', 'home_history_browser', 'local_life_browser', 'earth_ground_material_browser', 'realm_givers_browser', 'crossing_browser', 'regression09_browser', 'cutaway_browser', 'reflection_browser', 'native_origin_browser', 'starter_browser', 'camera_browser', 'pursuit_browser', 'characters_browser', 'classes_browser', 'cosmos_browser', 'earth_browser', 'earth_story_browser', 'earth_notes_browser', 'gathering_browser', 'realm_atlas_browser', 'timber_browser', 'traveler_browser', 'bridge_browser', 'combat_cue_browser', 'world_foundations_browser', 'world_cutaway_browser', 'realm_trails_browser', 'realm_trails_north_browser', 'realm_trails_cosmos_browser', 'soundscape_browser', 'journey_usability_browser', 'workshop_transactions_browser', 'companion_presentation_browser', 'skitter_presentation_browser', 'coastward_scenery_browser', 'earth_story_transactions_browser', 'coastward_bridge_posts_browser', 'practice_visibility_browser', 'realm_work_presentation_browser', 'earth_expedition_browser']:
+        for suite in ['earth_road_browser', 'bridge_community_browser', 'home_history_browser', 'local_life_browser', 'earth_ground_material_browser', 'realm_givers_browser', 'crossing_browser', 'regression09_browser', 'cutaway_browser', 'reflection_browser', 'native_origin_browser', 'starter_browser', 'camera_browser', 'pursuit_browser', 'characters_browser', 'classes_browser', 'cosmos_browser', 'earth_browser', 'earth_story_browser', 'earth_notes_browser', 'gathering_browser', 'realm_atlas_browser', 'timber_browser', 'traveler_browser', 'bridge_browser', 'combat_cue_browser', 'world_foundations_browser', 'world_cutaway_browser', 'realm_trails_browser', 'realm_trails_north_browser', 'realm_trails_cosmos_browser', 'soundscape_browser', 'journey_usability_browser', 'workshop_transactions_browser', 'companion_presentation_browser', 'skitter_presentation_browser', 'coastward_scenery_browser', 'earth_story_transactions_browser', 'coastward_bridge_posts_browser', 'practice_visibility_browser', 'realm_work_presentation_browser', 'earth_expedition_browser']:
             # Giver coverage walks eleven actors and companion near/far controls.
             # Local life restarts all Chromium 48 times across three earned cases.
             # Keep the complete routes/assertions in a bounded 20-minute window.

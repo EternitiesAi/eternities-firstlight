@@ -1,0 +1,359 @@
+{
+  "status": "passed",
+  "variant": "fresh-bow",
+  "commands": 54,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedDefeats": 0,
+  "acceleratedTick": true,
+  "defeated": [
+    "river-skitter-west",
+    "river-skitter-east",
+    "river-old-bristle"
+  ],
+  "bundles": [
+    "river-rope",
+    "river-tools",
+    "river-canvas"
+  ],
+  "reward": {
+    "choice": "oren_reedbow",
+    "weapon": "oren_reedbow"
+  },
+  "stats": {
+    "level": 2,
+    "attack": 19,
+    "defense": 1,
+    "maxHP": 110
+  },
+  "actions": [
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "start",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7.9,
+        -13
+      ]
+    },
+    {
+      "walk": [
+        -13.9,
+        -11
+      ]
+    },
+    {
+      "walk": [
+        5.1,
+        10
+      ]
+    },
+    {
+      "walk": [
+        -4.9,
+        -10
+      ]
+    },
+    {
+      "walk": [
+        5.1,
+        13
+      ]
+    },
+    {
+      "walk": [
+        -2.9,
+        10
+      ]
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "arsenal-craft",
+      "p": {
+        "id": "trail_bow"
+      }
+    },
+    {
+      "type": "equip",
+      "p": {
+        "id": "trail_bow"
+      }
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "starter-accept",
+      "p": {}
+    },
+    {
+      "walk": [
+        15,
+        7
+      ]
+    },
+    {
+      "type": "starter-enter",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7,
+        3
+      ]
+    },
+    {
+      "type": "starter-pickup",
+      "p": {
+        "id": "river-rope"
+      }
+    },
+    {
+      "walk": [
+        5,
+        -3
+      ]
+    },
+    {
+      "type": "starter-pickup",
+      "p": {
+        "id": "river-tools"
+      }
+    },
+    {
+      "walk": [
+        -5,
+        -11
+      ]
+    },
+    {
+      "type": "starter-pickup",
+      "p": {
+        "id": "river-canvas"
+      }
+    },
+    {
+      "walk": [
+        0,
+        12
+      ]
+    },
+    {
+      "walk": [
+        15,
+        7
+      ]
+    },
+    {
+      "type": "starter-enter",
+      "p": {}
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "river-skitter-west"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7,
+        0
+      ]
+    },
+    {
+      "type": "loot",
+      "p": {
+        "id": "river-skitter-west"
+      }
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "river-skitter-east"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        5,
+        -6
+      ]
+    },
+    {
+      "type": "loot",
+      "p": {
+        "id": "river-skitter-east"
+      }
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "river-old-bristle"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-old-bristle"
+      }
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        -4,
+        -15
+      ]
+    },
+    {
+      "type": "loot",
+      "p": {
+        "id": "river-old-bristle"
+      }
+    },
+    {
+      "walk": [
+        15,
+        7
+      ]
+    },
+    {
+      "type": "starter-enter",
+      "p": {}
+    },
+    {
+      "walk": [
+        0,
+        12
+      ]
+    },
+    {
+      "type": "starter-leave",
+      "p": {}
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "starter-claim",
+      "p": {
+        "choice": "oren_reedbow"
+      }
+    },
+    {
+      "type": "equip",
+      "p": {
+        "id": "oren_reedbow"
+      }
+    },
+    {
+      "walk": [
+        15,
+        7
+      ]
+    },
+    {
+      "type": "starter-enter",
+      "p": {}
+    },
+    {
+      "walk": [
+        -5,
+        6
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "river-practice"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-practice"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-practice"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-practice"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-practice"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-practice"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-practice"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-practice"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-practice"
+      }
+    }
+  ]
+}

@@ -3,6 +3,10 @@
 const C=G.RealmEarth,TAU=Math.PI*2,h=C.height,{hex,blend}=G.RealmEngine;
 const col={grass:0x70865e,meadow:0x929768,stone:0xaaa58d,path:0xb0a181,wood:0x67513a,roof:0x766754,leaf:0x648657,fruit:0xc47b51,water:0x577c7a,gold:0xc2a86c};
 const decor={cameraSolid:false,rough:.96,cutaway:true};
+// Keep the established field's RNG and merged strips independent of new roads.
+// The separately tagged road overlay draws and clears only its own footprint.
+const legacyPatches=C.PATCHES.filter(p=>p.id!=='coastward-road-spur'),legacyPoints=C.POINTS.filter(p=>p.id!=='hearthwater-coastward-road');
+function fieldWalkable(x,z,r){const offsets=[[0,0],[r,0],[-r,0],[0,r],[0,-r],[r*.707,r*.707],[-r*.707,r*.707],[r*.707,-r*.707],[-r*.707,-r*.707]];return offsets.every(([dx,dz])=>legacyPatches.some(p=>Math.abs(x+dx-p.x)<=p.w/2&&Math.abs(z+dz-p.z)<=p.d/2))&&C.walkable(x,z,r);}
 const paths=[
  [[0,25],[0,17],[0,10],[-7,5],[-12,-3],[-14,-12],[-14,-22],[-10,-30],[0,-35],[0,-44]],
  [[0,10],[7,5],[13,-3],[14,-12],[14,-22],[11,-30],[0,-35],[0,-44]],
@@ -96,7 +100,7 @@ function shelter(a){
  a.box(-14.68,b+1.84,-24.6,.12,.09,1.2,col.wood,decor);for(let i=0;i<3;i++)a.add('round',-14.6,b+1.52,-25.02+i*.36,.14,.29,.23,0xbbad85,decor);
 }
 function terrain(a,rnd){
- for(let z=-52;z<29;z+=.5){let runs=C.PATCHES.filter(p=>p.id!=='bridge'&&z+.5>p.z-p.d/2&&z<p.z+p.d/2).map(p=>[p.x-p.w/2,p.x+p.w/2]).sort((u,v)=>u[0]-v[0]),merged=[];
+ for(let z=-52;z<29;z+=.5){let runs=legacyPatches.filter(p=>p.id!=='bridge'&&z+.5>p.z-p.d/2&&z<p.z+p.d/2).map(p=>[p.x-p.w/2,p.x+p.w/2]).sort((u,v)=>u[0]-v[0]),merged=[];
   for(const p of runs){const last=merged[merged.length-1];if(last&&p[0]<=last[1])last[1]=Math.max(last[1],p[1]);else merged.push(p.slice());}
   for(const [lo,hi]of merged){const x=(lo+hi)/2,ha=h(x,z),hb=h(x,z+.5),ang=Math.atan2(ha-hb,.5),green=z<-25?col.meadow:col.grass;a.box(x,(ha+hb)/2-.045,z+.25,hi-lo,.09,Math.hypot(.5,hb-ha)+.002,green,{rough:1,terrain:true,cameraSolid:false,cutaway:false,r:[ang,0,0]});a.box(x,Math.min(ha,hb)-2.55,z+.25,hi-lo,5,.502,0x756d5a,{cameraSolid:false,cutaway:false});}
  }
@@ -127,11 +131,11 @@ function terrain(a,rnd){
  G.RealmBridgeArt.shoreline(a);
  G.RealmBridgeArt.mountains(a);
  // Field dressing respects route clearance.
- for(let i=0;i<850;i++){let x=-18+rnd()*36,z=-49+rnd()*74;if(!C.walkable(x,z,.45)||pathDistance(x,z)<1.25)continue;let b=h(x,z),s=.07+rnd()*.11;a.add('leaf',x,b+.02,z,s,s*2.6,s,i%7===0?0xb3a56f:0x678150,{wind:1,rough:1,cameraSolid:false,r:[0,rnd()*TAU,0]});if(i%33===0)a.add('octa',x,b+.18,z,.10,.16,.10,[0xdfc78f,0xcaa6a1,0xd9d3a2][i%3],{cameraSolid:false});}
+ for(let i=0;i<850;i++){let x=-18+rnd()*36,z=-49+rnd()*74;if(!fieldWalkable(x,z,.45)||pathDistance(x,z)<1.25)continue;let b=h(x,z),s=.07+rnd()*.11;a.add('leaf',x,b+.02,z,s,s*2.6,s,i%7===0?0xb3a56f:0x678150,{wind:1,rough:1,cameraSolid:false,r:[0,rnd()*TAU,0]});if(i%33===0)a.add('octa',x,b+.18,z,.10,.16,.10,[0xdfc78f,0xcaa6a1,0xd9d3a2][i%3],{cameraSolid:false});}
  // Larger quiet meadow clumps vary the greens while yielding to routes,
  // carved evidence and residents. Reeds are confined to the blocked pond.
  for(let i=0;i<110;i++){
-  const x=-16+rnd()*32,z=-46+rnd()*62;if(!C.walkable(x,z,.55)||pathDistance(x,z)<1.9||C.POINTS.some(p=>Math.hypot(p.x-x,p.z-z)<2.25)||G.RealmEarthNotes.MARKS.some(p=>Math.hypot(p.x-x,p.z-z)<1.9))continue;
+  const x=-16+rnd()*32,z=-46+rnd()*62;if(!fieldWalkable(x,z,.55)||pathDistance(x,z)<1.9||legacyPoints.some(p=>Math.hypot(p.x-x,p.z-z)<2.25)||G.RealmEarthNotes.MARKS.some(p=>Math.hypot(p.x-x,p.z-z)<1.9))continue;
   const b=h(x,z),s=.28+rnd()*.25;
   for(let j=0;j<3;j++)a.add('leaf',x+Math.sin(j*2.1)*.15,b,z+Math.cos(j*2.1)*.15,s,.43+rnd()*.25,s,[0x879765,0x5f7d50,0x9ca477][i%3],{...decor,wind:1,r:[0,j*2.1,0]});
  }
@@ -149,7 +153,7 @@ function sign(a,x,z,textColor=col.gold){
  for(const side of[-1,1]){const zz=z+side*.071;for(const dy of[-.30,.30])a.box(x,b+1.55+dy,zz,2.19,.06,.025,0xab8d5c,decor);for(const dx of[-1.06,1.06])a.box(x+dx,b+1.55,zz,.06,.65,.025,col.wood,decor);for(let i=0;i<3;i++){a.box(x-.69,b+1.40+i*.12,zz,.31+(i%2)*.11,.018,.013,0x5c513b,decor);a.box(x+.59,b+1.44+i*.1,zz,.45-(i%2)*.1,.018,.013,0x5c513b,decor);}}
  a.add('octa',x,b+1.57,z+.09,.17,.17,.04,textColor,{em:.08,cameraSolid:false});
 }
-function make(a){a.begin(C.ROOM);a.e.theme='earth';a.e.earthWater=C.BRIDGE;a.e.isInterior=false;a.e.noWater=false;a.e.ambientOverride=.78;const rnd=G.RealmCore.rng(18092026);terrain(a,rnd);for(const [x,z]of [[-8,3],[-13,4],[7,2],[13,-13],[12,-26],[-12,-23],[0,-43]])sign(a,x,z);a.commit();}
+function make(a){a.begin(C.ROOM);a.e.theme='earth';a.e.earthWater=C.BRIDGE;a.e.isInterior=false;a.e.noWater=false;a.e.ambientOverride=.78;const rnd=G.RealmCore.rng(18092026);terrain(a,rnd);for(const [x,z]of [[-8,3],[-13,4],[7,2],[13,-13],[12,-26],[-12,-23],[0,-43]])sign(a,x,z);G.RealmEarthRoadArt?.make(a,C.ROOM);a.commit();}
 function story(out,sim,t,a){
  const s=sim.state.adventure.earthStory,quiet=sim.state.settings.reducedMotion,clock=quiet?0:t,done=id=>s.steps.includes(id);
  const box=(x,y,z,w,ht,d,c,r)=>out.box.push({p:[x,y,z],s:[w,ht,d],c,r:r||[0,0,0],rough:.9,cameraSolid:false});

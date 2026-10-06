@@ -1,0 +1,359 @@
+{
+  "status": "passed",
+  "variant": "fresh-blade",
+  "commands": 43,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedDefeats": 0,
+  "acceleratedTick": true,
+  "defeated": [
+    "river-skitter-west",
+    "river-skitter-east",
+    "river-old-bristle"
+  ],
+  "bundles": [
+    "river-rope",
+    "river-tools",
+    "river-canvas"
+  ],
+  "reward": {
+    "choice": "oren_sunblade",
+    "weapon": "oren_sunblade"
+  },
+  "stats": {
+    "level": 2,
+    "attack": 22,
+    "defense": 1,
+    "maxHP": 110
+  },
+  "actions": [
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "start",
+      "p": {}
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "starter-accept",
+      "p": {}
+    },
+    {
+      "walk": [
+        15,
+        7
+      ]
+    },
+    {
+      "type": "starter-enter",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7,
+        3
+      ]
+    },
+    {
+      "type": "starter-pickup",
+      "p": {
+        "id": "river-rope"
+      }
+    },
+    {
+      "walk": [
+        5,
+        -3
+      ]
+    },
+    {
+      "type": "starter-pickup",
+      "p": {
+        "id": "river-tools"
+      }
+    },
+    {
+      "walk": [
+        -5,
+        -11
+      ]
+    },
+    {
+      "type": "starter-pickup",
+      "p": {
+        "id": "river-canvas"
+      }
+    },
+    {
+      "walk": [
+        0,
+        12
+      ]
+    },
+    {
+      "walk": [
+        15,
+        7
+      ]
+    },
+    {
+      "type": "starter-enter",
+      "p": {}
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "river-skitter-west"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "pulse",
+      "p": {
+        "target": "river-skitter-west"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-skitter-west"
+      }
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7,
+        0
+      ]
+    },
+    {
+      "type": "loot",
+      "p": {
+        "id": "river-skitter-west"
+      }
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "river-skitter-east"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-skitter-east"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-skitter-east"
+      }
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        5,
+        -6
+      ]
+    },
+    {
+      "type": "loot",
+      "p": {
+        "id": "river-skitter-east"
+      }
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "river-old-bristle"
+      }
+    },
+    {
+      "type": "auto-toggle",
+      "p": {}
+    },
+    {
+      "type": "pulse",
+      "p": {
+        "target": "river-old-bristle"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-old-bristle"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-old-bristle"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-old-bristle"
+      }
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        -4,
+        -15
+      ]
+    },
+    {
+      "type": "loot",
+      "p": {
+        "id": "river-old-bristle"
+      }
+    },
+    {
+      "walk": [
+        15,
+        7
+      ]
+    },
+    {
+      "type": "starter-enter",
+      "p": {}
+    },
+    {
+      "walk": [
+        0,
+        12
+      ]
+    },
+    {
+      "type": "starter-leave",
+      "p": {}
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "starter-claim",
+      "p": {
+        "choice": "oren_sunblade"
+      }
+    },
+    {
+      "type": "equip",
+      "p": {
+        "id": "oren_sunblade"
+      }
+    },
+    {
+      "walk": [
+        15,
+        7
+      ]
+    },
+    {
+      "type": "starter-enter",
+      "p": {}
+    },
+    {
+      "walk": [
+        -5,
+        10
+      ]
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "river-practice"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-practice"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-practice"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-practice"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-practice"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-practice"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-practice"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-practice"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-practice"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-practice"
+      }
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-practice"
+      }
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{"variant":"blade","chapter":"original-I","status":"passed","outputSha256":"b108b4931029f9b2324054d98487e6f9b3db7380682544423c8b582472816178"}
+{"variant":"blade","chapter":"original-II","status":"passed","outputSha256":"974bcd7901030cd105886d7c2238cdb6bedd440056c5f1e02bc84e4da4e65292"}
+{"variant":"blade","chapter":"original-III","status":"passed","outputSha256":"38dea379cf03325e4a95b42f0963e6f330f4d2c6356c79a533b6b039cddadb75"}
+{"variant":"blade","chapter":"original-IV","status":"passed","outputSha256":"40e98041277159c3c1fc43c494ec8f4a505f3a643e1c6531e9bf75fde325eee9"}
+{"variant":"blade","chapter":"local-Earth","status":"passed","outputSha256":"1e874de00e2402b784efb23095eb5e52b52eb343652224d57588516851e1c315"}
+{"variant":"blade","chapter":"hell","status":"passed","outputSha256":"bb0a5d64ca42fdea8328e8ff1b1b531f2dce05c94064f0a76653525acca32240"}
+{"variant":"blade","chapter":"heaven","status":"passed","outputSha256":"0d0ae9ef3242792e1d19f09d681b272c8a57c602d72da73ac0c539e7c176cf52"}
+{"variant":"blade","chapter":"atlantis","status":"passed","outputSha256":"ad3b2805d2d5ef902882b9958ed1e389035b3606d8c8ccf84b01220791bab110"}
+{"variant":"blade","chapter":"cosmos","status":"passed","outputSha256":"7a5f0c52c039114de58e8689341e7dcd45e621a22ee106cb581528082aeaed1b"}
+{"variant":"blade","chapter":"Earth-homecoming","status":"passed","outputSha256":"70b715ffa5096556dcda2962e613363c0263dbdd447eb2779c98281afc0cefff"}
+{"variant":"blade-to-bow","chapter":"original-I","status":"passed","outputSha256":"b108b4931029f9b2324054d98487e6f9b3db7380682544423c8b582472816178"}
+{"variant":"blade-to-bow","chapter":"original-II","status":"passed","outputSha256":"974bcd7901030cd105886d7c2238cdb6bedd440056c5f1e02bc84e4da4e65292"}
+{"variant":"blade-to-bow","chapter":"original-III","status":"passed","outputSha256":"38dea379cf03325e4a95b42f0963e6f330f4d2c6356c79a533b6b039cddadb75"}
+{"variant":"blade-to-bow","chapter":"original-IV","status":"passed","outputSha256":"9f0c099b905dd762e2254e35550d99832246f82095514f3cd0f52ff9a624ee8d"}
+{"variant":"blade-to-bow","chapter":"local-Earth","status":"passed","outputSha256":"fd0bcbe0e22bf0a1020395ef615c319e0d0cd59e603fb6f8e01ca164ec542bb1"}
+{"variant":"blade-to-bow","chapter":"hell","status":"passed","outputSha256":"74ffebe79c218cbaee92b7582e366f9c4005f79fdd4b1c1a40b535689c9d8916"}
+{"variant":"blade-to-bow","chapter":"heaven","status":"passed","outputSha256":"566ff2ea3e84f12442ee6250aeaf054ca8518d3c5750d392d069061dd4121148"}
+{"variant":"blade-to-bow","chapter":"atlantis","status":"passed","outputSha256":"5a4928a7a26df1029fcfb3f439f054c90333c9ce392830ed77e82593c9296f4c"}
+{"variant":"blade-to-bow","chapter":"cosmos","status":"passed","outputSha256":"02a5921544a708fad49c6ebe9899f4a80668c5867b01044dbd3bb73f1584472b"}
+{"variant":"blade-to-bow","chapter":"Earth-homecoming","status":"passed","outputSha256":"aa0cc32b8fb3ce3ea4add5416129c5b4a5debf66e058e13ba84472692b3282d1"}
+TAP version 13
+# Subtest: two fresh characters bind all twenty exact chapter edges and the complete fixed home payment
+ok 1 - two fresh characters bind all twenty exact chapter edges and the complete fixed home payment
+  ---
+  duration_ms: 91.8413
+  type: 'test'
+  ...
+# Subtest: a missing or reordered campaign cannot claim draft completion
+ok 2 - a missing or reordered campaign cannot claim draft completion
+  ---
+  duration_ms: 56.6673
+  type: 'test'
+  ...
+# Subtest: a transplanted or changed input cannot enter the next chapter
+ok 3 - a transplanted or changed input cannot enter the next chapter
+  ---
+  duration_ms: 17.9779
+  type: 'test'
+  ...
+# Subtest: changed saved output bytes refuse a successful readback
+ok 4 - changed saved output bytes refuse a successful readback
+  ---
+  duration_ms: 12.192
+  type: 'test'
+  ...
+# Subtest: an external save path cannot substitute for a cohort output
+ok 5 - an external save path cannot substitute for a cohort output
+  ---
+  duration_ms: 11.375
+  type: 'test'
+  ...
+# Subtest: old fixture and native-play claims cannot be relabelled as this fresh CPU journey
+ok 6 - old fixture and native-play claims cannot be relabelled as this fresh CPU journey
+  ---
+  duration_ms: 0.7015
+  type: 'test'
+  ...
+# Subtest: a changed source byte receipt is refused before replay qualification
+ok 7 - a changed source byte receipt is refused before replay qualification
+  ---
+  duration_ms: 6.1811
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 258.2619
+{"status":"passed","variants":2,"bytesBeforeReport":11853789,"output":"D:\\07-GAMES\\Firstlight\\artifacts\\connected-earth-roads-20261006\\remote-full04\\whole-draft-earned"}

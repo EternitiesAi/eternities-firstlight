@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "method": "Fresh state; accepted movement and gameplay commands only. 50ms accelerated time. Automated decisions, not human balancing.",
+  "directInventoryGrants": 0,
+  "playerPositionEdits": 0,
+  "plantedDefeats": 0,
+  "elapsedSimulationSeconds": 130.3999999999954,
+  "acceptedCommands": 77,
+  "events": [
+    "Collected workshop supplies",
+    "Earned pickaxe and repaired crossing",
+    "Excavated central wall",
+    "Rescued Briar",
+    "Recovered and equipped armor",
+    "Freed guardian; recovered relic and cache",
+    "Returned, forged weapon, heard envoy, chose gift"
+  ],
+  "finalStats": {
+    "level": 4,
+    "attack": 31,
+    "defense": 7,
+    "maxHP": 170
+  },
+  "hp": 145,
+  "defeated": [
+    "briar-1",
+    "briar-2",
+    "sentinel",
+    "hart"
+  ],
+  "companion": {
+    "bonded": true,
+    "name": "Briar",
+    "mode": "follow"
+  },
+  "reward": "warden_stone"
+}

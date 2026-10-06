@@ -1,0 +1,83 @@
+{
+  "status": "passed",
+  "variant": "fresh-blade",
+  "method": "accepted production commands, actual Core paths and full-body World swimming; accelerated ticks, in-memory saver",
+  "humanPacing": false,
+  "browserPersistence": false,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "manualDamage": 0,
+  "plantedDefeats": 0,
+  "claims": [
+    {
+      "quest": "earthlands-coastward-materials-v1",
+      "reward": {
+        "xp": 25,
+        "coins": 10,
+        "ore": 0,
+        "materials": {
+          "wood": 6,
+          "fiber": 4,
+          "stone": 2
+        }
+      }
+    },
+    {
+      "quest": "atlantis-bellglass-chart-v1",
+      "reward": {
+        "xp": 30,
+        "coins": 12,
+        "ore": 2
+      }
+    }
+  ],
+  "walkedLegs": 36,
+  "saveCount": 24,
+  "canonicalPreservation": true,
+  "htmlSha256": "14c23bbf9325048407b50fe094d7f14cafea31e2c21f94b0347be2b30ede6d4d",
+  "sourceSha256": {
+    "src/adventure.js": "c8c9f751bfd09d4e123ef786867fd1f1321d8364cf2f83a3e8bda74c12417a5c",
+    "src/arsenal.js": "70cf869a8240895158960c62cc65d802adf491ac24ee66bf7a3c0389557d2b70",
+    "src/atlantis-campaign-data.js": "22496def70bda1c6a6aa15c24cf53bad7bacab4facc54da7856ac693e7384693",
+    "src/atlantis-campaign.js": "da23cf19fe0fd68ae3f03c040fb3c375b655570bccffd320794cd45bd19067d3",
+    "src/beacon.js": "2aded7272a8d50cbfbdb4421f0140d00401a49788a3bb465260e30f501a2bf13",
+    "src/bridge-community.js": "4308eecafc47044c3c063b46e4c3aa7cb4e7a30d5d938c64fd518e7f29cb30cc",
+    "src/classes.js": "15da8e8f26c234a5903e5321d9cbcadea773037c9536911a5dc85cb9da2aaa97",
+    "src/combat.js": "4176bbf57fd761732b5f9d96708ac8ac0d6855ef56c928d06810f06f74315a32",
+    "src/core.js": "7ee0f2e79ed77787e4b8c720183b708f0a6d91d9b24cadab28739d0187319b00",
+    "src/cosmos-campaign-data.js": "9c7d4d30b863e25812df3651e785bff3f87495b37ede488804ee03178cab93d2",
+    "src/cosmos-campaign.js": "7e03aaad5efe9db475ea82db6e8b9343361a68dec52132cf190e3c055fc681fb",
+    "src/cosmos.js": "bf4d9898600b9b5d296f3de934f6f8dd52e343f3b762fd5f0085a09f14ea2090",
+    "src/creative.js": "d0032234d3cab1a6e90c84736011a98631bcc3748de8d5fc23df872367038761",
+    "src/crossing.js": "b666c4e6e20483ad267293578020876c8791bbbf23f8116803936658400d1a8f",
+    "src/earth-expedition.js": "fd1fd97cc4e8e9e12202de4bbc9186c236d37750f574070d709d56d214418f59",
+    "src/earth-homecoming-data.js": "55485996a1651f8b5f0580c9e074f5873ddf45ca26744939238e31516051014f",
+    "src/earth-homecoming.js": "c16adf4e13bd3a57e9be6aae6cd0cc00a4b78b49106f220ee74dee105fe858c1",
+    "src/earth-notes.js": "4ab5807020f65086b190591414c871ee76412791ac0c97dca5447c595840e9e0",
+    "src/earth-story.js": "fd0ced6f17f1b15b2aee4e31aa00be249bc8e1fb08c4e735416d95c173fd52d0",
+    "src/earth.js": "cbd5ee90a4b335c66ba096f439f8f3efe6f6f68cba99086485f34fd81866a166",
+    "src/elderweald-world.js": "8d993c230ad7198e397f4bf41938522405c352bbdd903b04016d1262822d3538",
+    "src/gathering.js": "256a33c52f2b31c2c421f72a74aae543feb6c554ebae863aee55d31f0c68eb54",
+    "src/heaven-campaign-data.js": "2495650ded3f74d81d3d53f4d259f29052d3ff64b65a4a6331351b049bdc67eb",
+    "src/heaven-campaign.js": "50aa6ff6607f9dfda6f0df1ca2fa473bca36a7513a34d1a915c1a87305e69e26",
+    "src/hell-campaign-data.js": "745221292e89ed2bcdf455ffc1bf4e0e66259add5671709e77135d5ede3892ff",
+    "src/hell-campaign.js": "cc8ca64f9515e75f4bf572c3feb5978f07409e4aca5a328901b3322f399f67a1",
+    "src/home-history.js": "f002eb64b57343e38e95eafa4cd522c892aab26efc7b0c3d65bea86a45cec6e6",
+    "src/local-life.js": "005f7bd489bba2832aaec0b6c9d1cc499660e6e0047be73ab0f85d2922955d48",
+    "src/pursuit.js": "b77e1874f8278971f41d4b62551df40c81126f2a35e02958958e802ab9c8b5ff",
+    "src/realm-craft.js": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+    "src/realm-trails-cosmos.js": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+    "src/realm-trails-north.js": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+    "src/realm-trails-south.js": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+    "src/realm-trails.js": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+    "src/road.js": "d18106f1a2147d623680b285dc5882cae8d2b74c5ef8b500d75de35d20c86dbc",
+    "src/sandbox.js": "ad11196c12363b650f2697ab8fb30eb657ff0bf65953274942ce36eb28131e85",
+    "src/starter.js": "c6debd10295babafdcd714445c2ac18c0ff5ce8fd54b8dfe4f3ff78c9e0a294d",
+    "src/world-atlantis-earth.js": "6685a2da156f3b6d394b9dfef611fafb76d277df2d8a1c57e82746d276228665",
+    "src/world-foundations.js": "4173e396c6d002d0ec25a7c549f046e0e77e561c3ef3b0e89400f84cc070d752",
+    "src/world-heaven-hell.js": "7192efdcce877e359865c43d39d03fc1a2a54ebad960fd2d2a378880033f4cbd",
+    "tests/realm_trails_journey.cjs": "dfb80cecd9ba2d1ec22d93cd1aface73cd65fbdab1aff923674944970a865727",
+    "tests/realm_trails_south_journey.cjs": "b197305075af40ed6b36a9cfc2b36a8a19388eacc58dcad5029acdfed2ab8cf2"
+  },
+  "harnessSha256": "b197305075af40ed6b36a9cfc2b36a8a19388eacc58dcad5029acdfed2ab8cf2"
+}

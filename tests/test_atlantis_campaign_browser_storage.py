@@ -107,7 +107,7 @@ class AtlantisBrowserStorageTests(unittest.TestCase):
         for path in (r'D:proof', r'C:\Firstlight\proof', r'\\server\share\proof', '/tmp/proof'):
             self.assertFalse(NATIVE.on_d(path), path)
         with self.assertRaises(ValueError):
-            NATIVE.bounded(self.base / 'not-d', windows=True)
+            NATIVE.bounded(Path('C:/firstlight-guard-test') / self.base.name / 'not-d', windows=True)
 
     def test_roots_are_refused_and_actual_containment_is_component_based(self):
         with self.assertRaises(ValueError):

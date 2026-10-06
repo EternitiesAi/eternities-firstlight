@@ -1,0 +1,2074 @@
+{
+  "status": "passed",
+  "variant": "fresh-bow",
+  "approach": "lower",
+  "choice": "limited",
+  "fixture": null,
+  "fixtureHash": null,
+  "sourceHashes": {
+    "src/adventure-art.js": "2022f25ee84f5a862025344bbbc15f46336a112e09bdb820075a2fec002d05eb",
+    "src/adventure-ui.js": "d519bbc992aaabd71db76a7ff08a6128317bdea6e8898f933a865e78edc3539d",
+    "src/adventure.js": "c8c9f751bfd09d4e123ef786867fd1f1321d8364cf2f83a3e8bda74c12417a5c",
+    "src/app.js": "2a82fd3f4bf371df96a63bca1e1169b7bdcea2bccadd3c8fc2be153a76c179bb",
+    "src/arsenal-art.js": "1899a42e04fd44e18eced395229793d275a873dbe2902473968289815a3f694f",
+    "src/arsenal-ui.js": "a462102896a3c7013f29f6cdf40504b983b8fde803baf41b98b8fb032da3abe6",
+    "src/arsenal.js": "70cf869a8240895158960c62cc65d802adf491ac24ee66bf7a3c0389557d2b70",
+    "src/atlantis-campaign-art.js": "9ab549df2eeafc8314c95c7c9e488bf80472fcfaac1de7dfe41ebbf8c1830243",
+    "src/atlantis-campaign-data.js": "22496def70bda1c6a6aa15c24cf53bad7bacab4facc54da7856ac693e7384693",
+    "src/atlantis-campaign-ui.js": "3bcf9923c47710bf2d3d876629ed47e46d4b7e4289aa8f7510b9ccac2025cb5d",
+    "src/atlantis-campaign.css": "11d0f42b969895ba4ac0f561067c260b9a3d632b3b7f15a34d617eff8a4b6523",
+    "src/atlantis-campaign.js": "da23cf19fe0fd68ae3f03c040fb3c375b655570bccffd320794cd45bd19067d3",
+    "src/beacon-art.js": "aea9e5d22d23eaf73777636c56c2444edac9b0d6239f9504cc95026585618577",
+    "src/beacon.js": "2aded7272a8d50cbfbdb4421f0140d00401a49788a3bb465260e30f501a2bf13",
+    "src/bridge-art.js": "e8f85dd21a0eb6363f674a934c625b22fc29f18fc63a543ebd61ea0a87fa254d",
+    "src/bridge-community-art.js": "454eb5365082d529fe3bb05b166b38e1d01e6fbcd34f1148c5ebf0d02ad9a615",
+    "src/bridge-community-ui.js": "a51a02420b59329d0ae268d42a5632de50d87d9b031103a724ad51564737c6d6",
+    "src/bridge-community.css": "15be66090d836555498d87e00564c5b7b7094c2e3dca5951f9b1fde5023ea29c",
+    "src/bridge-community.js": "4308eecafc47044c3c063b46e4c3aa7cb4e7a30d5d938c64fd518e7f29cb30cc",
+    "src/bridge-moment-view.js": "fe58c7824f96458f2608af4d1cf76c81d2936da89a8cca1ad933974b65e0e03c",
+    "src/characters-ui.js": "58de0cb602479d45eae66f4ccd4077253e34e6e3d843a1505f9eca4d4a1f8f77",
+    "src/characters.css": "48bfb2431b5fb50e530ed334e52cf07c31b8a29bdb5bb4917365210ab9e71815",
+    "src/characters.js": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+    "src/classes-ui.js": "6fb25a35158cf3388485f57016aea745260dea8a057f8d6b4781d3f7a296d22b",
+    "src/classes.css": "4b9b47443b1817efe2b4cd43e7a3d0d34e623738a5b1e6e1cad05bc2ce88e892",
+    "src/classes.js": "15da8e8f26c234a5903e5321d9cbcadea773037c9536911a5dc85cb9da2aaa97",
+    "src/coastward-settlement-art.js": "8f08b152b5205c434ffa7408118e754799eb7ab396b2c0aaec8920cc0029c839",
+    "src/coastward-woodland-art.js": "45b2758d3f8d75457545b24c2cc96f81f70ac8296bf183f57ddd412289f130fc",
+    "src/combat-view.js": "9e674247119cece3bb6a35ca31fa424ed5e8e0187cbd2c149afb6f4aba085d5c",
+    "src/combat.js": "4176bbf57fd761732b5f9d96708ac8ac0d6855ef56c928d06810f06f74315a32",
+    "src/companion-art.js": "06821bb333cc1d61398017fcd236fb4622aae6432ce636f827642531946b2a32",
+    "src/core.js": "7ee0f2e79ed77787e4b8c720183b708f0a6d91d9b24cadab28739d0187319b00",
+    "src/cosmos-art.js": "d68fb28540196c4d6f39ca60cc99e1eb99fab534fb026578c02e75119cdd17e2",
+    "src/cosmos-campaign-art.js": "3b22a5fe117cb3731a1531a66941fba9e2953b5c23f3816150c184230a631a5e",
+    "src/cosmos-campaign-data.js": "9c7d4d30b863e25812df3651e785bff3f87495b37ede488804ee03178cab93d2",
+    "src/cosmos-campaign-ui.js": "95f8bbb9df5f97ddcb779268e5c28f412914d388c92bff00f5e79ec048e77686",
+    "src/cosmos-campaign.css": "436b9330b2bb190d022698894c76bd6e3b321d014d6e64bc553449c4dcd33ff7",
+    "src/cosmos-campaign.js": "7e03aaad5efe9db475ea82db6e8b9343361a68dec52132cf190e3c055fc681fb",
+    "src/cosmos-ui.js": "2582b2f2f4d894f44a969108af258087cf7f0be8c70dbf73eabca5810d236465",
+    "src/cosmos.css": "4d79807974082aaef0df364d312ae3d4a345ffd40b5eab403ccc55c24f02a63b",
+    "src/cosmos.js": "bf4d9898600b9b5d296f3de934f6f8dd52e343f3b762fd5f0085a09f14ea2090",
+    "src/creative.js": "d0032234d3cab1a6e90c84736011a98631bcc3748de8d5fc23df872367038761",
+    "src/crossing-art.js": "86cd8945194c6437d9ece96a7d0bcac8a4970eb5f3324300e48d08376bb61bcf",
+    "src/crossing-ui.js": "5a2a7f6989a0a7ff0a96fee7aa88ec77dadbfba15440a272f131f17a98d86913",
+    "src/crossing.css": "af6dd51f197dfa1963fc9fa0d92683b2e6f48270903aaea5ba90cbb2833862a2",
+    "src/crossing.js": "b666c4e6e20483ad267293578020876c8791bbbf23f8116803936658400d1a8f",
+    "src/drover-art.js": "0f4dda1af6b05e1c7e0931d835fca2d3faec7960788bc89b9f9b591af19206b0",
+    "src/earth-art.js": "494aa1f9d018c9490ca8b95ba212470b5a98b5e5e6e2d0cab68bd36d16b60314",
+    "src/earth-expedition-art.js": "822a0a8d7dc8271f92a5c38691ab7caf208063671b3e8dd6da05e120094d226f",
+    "src/earth-expedition-beast-art.js": "bf663c1cf48ef65a1c43e42bec63e743686506f3c028b7e72e4f4eac2ef7c0e4",
+    "src/earth-expedition-dialogue.js": "964360081bfc8a5a2966db854d2c12268de1187bf9f4a3b6e4eb0b5014aa9f9d",
+    "src/earth-expedition-ui.js": "9f9359c4e8f63108aa3e674d9fc9589de832420306e6bfc1b49c0006641715a8",
+    "src/earth-expedition.css": "a8a0f4822afcff0a7c404b3c4ff358f3d8a38287bda431da0597cecfecaf5a72",
+    "src/earth-expedition.js": "fd1fd97cc4e8e9e12202de4bbc9186c236d37750f574070d709d56d214418f59",
+    "src/earth-homecoming-art.js": "2353946d8bb28a2881f3191807fc248f95fea75f16bc585f6588d82742b750ed",
+    "src/earth-homecoming-data.js": "55485996a1651f8b5f0580c9e074f5873ddf45ca26744939238e31516051014f",
+    "src/earth-homecoming-ui.js": "5e57a2367153e516bdab12837db82812de3124a32489b09987dd285be011159d",
+    "src/earth-homecoming.css": "dbfeb49d20278ebeb9b9ae4c1d4d575acc3a806ca59898f20ebb9f8ca8f1661a",
+    "src/earth-homecoming.js": "c16adf4e13bd3a57e9be6aae6cd0cc00a4b78b49106f220ee74dee105fe858c1",
+    "src/earth-notes-art.js": "87fe4682829bfff89978d7046d62f518874a7953808431c5634327c9eb449556",
+    "src/earth-notes-ui.js": "9e0f0df26062b4929e0c3a801e8e857afc269936dbe4932279e935c56274f264",
+    "src/earth-notes.js": "4ab5807020f65086b190591414c871ee76412791ac0c97dca5447c595840e9e0",
+    "src/earth-road-art.js": "e7bd1fbc7b1177327c0756724b1ccf78b1b640568d9121a1ff416736524b1520",
+    "src/earth-road-ui.js": "e4577d03d3b97d271b8374054d34b5afdecbb47b28e74b911b931c2ed8e3c8ad",
+    "src/earth-road.js": "7417a1bdc4ab9eea8e2afc4c013a6890507b5670fca97d1f6ebe9f823390a125",
+    "src/earth-shoulder-art.js": "422a50a7aeec456b6f75095c53a319d2cbf6ac5e09f773e268ed54034c2ddb8d",
+    "src/earth-story-ui.js": "930b71ef9184a5d7b03cc79ff33d7f9e000eabb9d3934266af9e0fe8713448cb",
+    "src/earth-story.js": "fd0ced6f17f1b15b2aee4e31aa00be249bc8e1fb08c4e735416d95c173fd52d0",
+    "src/earth-ui.js": "9294c4cb9666aa6aec2d36d6eb8e34686bf01f57ead9964322ad8283cc2ba635",
+    "src/earth.css": "1f40093ded67c175c70c730b8518ff928d26db40287515256fc287c45f2a9f3d",
+    "src/earth.js": "cbd5ee90a4b335c66ba096f439f8f3efe6f6f68cba99086485f34fd81866a166",
+    "src/elderweald-trail-art.js": "e978e735ec1ee8048df1777b190959b832cd37755f682c3d51b9ec3f0a7f0491",
+    "src/elderweald-world.js": "8d993c230ad7198e397f4bf41938522405c352bbdd903b04016d1262822d3538",
+    "src/engine.js": "b98cfea8453e5b6deeb16a13c45f1c1bf7fc80fb9ba8d0a185c242a6ea9b078d",
+    "src/experience.js": "3b5a178ca757c7b58dcbfcedcc1522887dc6a178faf5e942c6e3894166d60570",
+    "src/gathering-adapter.js": "df41b2b23ae11c6ef2661e48301c488cb26ab753a7beec73349b5c959d5ab564",
+    "src/gathering-art.js": "b693bce2a519bd75e4f99e03b96184f1ed10c9a9a02e25b7affd53e739f5e0eb",
+    "src/gathering-music.js": "5e44106322e01aebc7b87d8eefcd29b2a2577d2162d70fb8f99475c7cc7deb12",
+    "src/gathering-ui.js": "0c347e1da4a897b178c405f35cfef2e6ea518fe5d9e6ba650e48e48895e0445a",
+    "src/gathering.css": "aa2e5381a0ff9fa7e4ceae5053a54a8ab11a784f81ee021e4835d485d3c5f4db",
+    "src/gathering.js": "256a33c52f2b31c2c421f72a74aae543feb6c554ebae863aee55d31f0c68eb54",
+    "src/heaven-campaign-art.js": "25ed9017108ea106579584233cc55b2a1753d62bd36174bb9c023682cb2ad24a",
+    "src/heaven-campaign-data.js": "2495650ded3f74d81d3d53f4d259f29052d3ff64b65a4a6331351b049bdc67eb",
+    "src/heaven-campaign-ui.js": "67723b2f0acf3e52da6177ad98d8a881e3b3e509bfc418bd3031ffbdc9f0383e",
+    "src/heaven-campaign.css": "7cf25161526677ee407ff09596cf8e2ecfeb92246c66c0b7255440b54d041bf0",
+    "src/heaven-campaign.js": "50aa6ff6607f9dfda6f0df1ca2fa473bca36a7513a34d1a915c1a87305e69e26",
+    "src/hell-campaign-art.js": "5ea5b875e32114b07b52ffe0000b7163b340f08adf0eae01552b84a478420f18",
+    "src/hell-campaign-data.js": "745221292e89ed2bcdf455ffc1bf4e0e66259add5671709e77135d5ede3892ff",
+    "src/hell-campaign-ui.js": "d47acd0b9ba992df6ff4c73e1b5f3dfb9c1b2ced0745c8ffe50d6cd34cc80f8c",
+    "src/hell-campaign.css": "146c66cd811e3070367e10a91c30f39cfc630dba1ee929a3b6a540f96142f0d9",
+    "src/hell-campaign.js": "cc8ca64f9515e75f4bf572c3feb5978f07409e4aca5a328901b3322f399f67a1",
+    "src/home-history-art.js": "df3acc85a5191c3938692759e85b7ee76ef5f936f29e65d6a845636600396a1f",
+    "src/home-history-ui.js": "41a330942368c7a4500759f2cbaf1cda224bd5ed25bc284b9e44463fc1f43a8e",
+    "src/home-history.css": "54ef3c501dfda4c3d74c0f17d900bdc5b25c9dcbaeb1840ec36cbcfe0a276bd2",
+    "src/home-history.js": "f002eb64b57343e38e95eafa4cd522c892aab26efc7b0c3d65bea86a45cec6e6",
+    "src/local-life-art.js": "381d1f5469310e2dc98c14b6d58c4259113fd1d6dd10f77059f45e6848fefcf2",
+    "src/local-life-ui.js": "95a0757ae7f612560c94ebca13474925251fb485e449da0bc5c6440ceb43b4c6",
+    "src/local-life.js": "005f7bd489bba2832aaec0b6c9d1cc499660e6e0047be73ab0f85d2922955d48",
+    "src/mill-gate-art.js": "fe33cbbd3f180a8d32a0d0a338cde42c40e809af99ed2da1db157ba5c7fbcdd9",
+    "src/millwright-art.js": "bd7397ee2a9f4c47b2b51117e28f3c68533da41de3122bb0a39a5575913a5661",
+    "src/pursuit-ui.js": "f8c6bab82d88b6e4dcbf05f3e78701d489f31e224c80211b94f8acc8b70b4224",
+    "src/pursuit.css": "61f36fa917eafba8cfa332f7d233db4c47a6d007bbf84d1843bc25fc17dd63ff",
+    "src/pursuit.js": "b77e1874f8278971f41d4b62551df40c81126f2a35e02958958e802ab9c8b5ff",
+    "src/quarry-art.js": "5bc6d93e99e430e7a460a1a2a510fc69e60c9dd80e758bce7470dae3ae3446f6",
+    "src/realm-art-data.js": "1ac6251a7acf23c78799d96b5554fb3fe572c40e12c54c73f0188c4f8a324435",
+    "src/realm-atlas-ui.js": "26d34bdc7afc9fbf9bb1f0f483aa6bc8312eba8a2186d21c80cab2fc1f68529b",
+    "src/realm-atlas.css": "7ef7a03b8c2a69069c2d65da8d5134c7b7dc4bc2b941e139f818a7ab7011c366",
+    "src/realm-craft.js": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+    "src/realm-givers-art.js": "8362d7a98f238b77b9afa5eff7346f430c02af6cd249502f146308a3d246fb34",
+    "src/realm-trails-art.js": "99a588e7aee9c7d43b6506de836ab2bab75a9420c6b718369c37e4517ca037e3",
+    "src/realm-trails-cosmos.js": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+    "src/realm-trails-north.js": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+    "src/realm-trails-south.js": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+    "src/realm-trails-ui.js": "7d58c16fbe3213220d439f0760e24988aee87567454490eb6ddfd19c825e6a80",
+    "src/realm-trails.js": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+    "src/road-art.js": "0cc12918587f98f4b9ed2b7beb8d1b21219b4a69959742a759f88354942df05d",
+    "src/road.js": "d18106f1a2147d623680b285dc5882cae8d2b74c5ef8b500d75de35d20c86dbc",
+    "src/rpg-ui.js": "5fb404cd66cda1431750af2967a850f78698ef7eb0e7e894631835103ecb3e16",
+    "src/rpg.css": "34ca5591b22748dbf96754fc0f6a857cbd73f77eb85e50b706e1b484291b11ae",
+    "src/sandbox-art.js": "3c3a8f9ea1a44fb84bdfe07a99b33969f253714c271e91ca3cfeca7eab76474c",
+    "src/sandbox-ui.js": "28d7530e8153ed3c8a6a31b3e204cbc9680484b013cb5880a4f05b76cf83d8f5",
+    "src/sandbox.js": "ad11196c12363b650f2697ab8fb30eb657ff0bf65953274942ce36eb28131e85",
+    "src/shell.html": "3dc6d5a2753e91c81144d1d3216e3faa6aa389f3490b94c31297bb0c4a3b239a",
+    "src/skitter-art.js": "bd84a78381cf7232a7fb92a868332308c68fcae17d25764c2b5d4bdfefa29903",
+    "src/soundscape.js": "15b7b578886b838ef20e56501940354d33a8ffcd5581332dd4c4b2035692c5af",
+    "src/starter-art.js": "cfc4f672b891fe6d53dec82a97aeac7204b8179b3490ae9df9ce3412c4661fcc",
+    "src/starter-ui.js": "44718b2835207383632d5f33e0748dba9c348041b11f9b404040bdf07a259052",
+    "src/starter.css": "f1501b06a13c2b3ec0030b39bf9d4530740aad2f60cf9608ca32957c9ce2943b",
+    "src/starter.js": "c6debd10295babafdcd714445c2ac18c0ff5ce8fd54b8dfe4f3ff78c9e0a294d",
+    "src/style.css": "f08ab48a3e661c18be404d6eafcc471a6e0b866c41304495cc94fac0bfa24d4a",
+    "src/surface-assets.js": "5cb0f81348074edbc0e4f3c7dee4962fac10bbc5e7db0ee07b16216f3b7a1e5f",
+    "src/traveler-art.js": "cf9e029046f5581aa3116f648fb657f9edff2ced67abc507afa38525f3ae1ba1",
+    "src/traveler-equipment-art.js": "13537e49de6fdcd670e75875c3b17736b76df53b65709d2b2366aab721dc98dc",
+    "src/workshop-transactions.js": "115193dc80841b531a14f85a41c8d2d5e44c6169fc4ea4d6c19637eb7a8e8dd4",
+    "src/world-atlantis-earth.js": "6685a2da156f3b6d394b9dfef611fafb76d277df2d8a1c57e82746d276228665",
+    "src/world-foundations-art.js": "e7681955e15b1f8ce5552997f374fabfe4569fbfb40c0b1dd0bc4100a95d65cd",
+    "src/world-foundations-ui.js": "a800a7d1506ac346fa060b32a68908e39901b908358ede7bc206b4c8f6b0d35a",
+    "src/world-foundations.css": "8abcf23f66cde69a92b7f3be6c099a1a2e2088d220bd83a81ea71d78f0564669",
+    "src/world-foundations.js": "4173e396c6d002d0ec25a7c549f046e0e77e561c3ef3b0e89400f84cc070d752",
+    "src/world-ground-coalescing.js": "c31024794d5b5db2c28d9aab9ecf8fd0acdf55c2630ff5edf93b988151e5d63d",
+    "src/world-heaven-hell.js": "7192efdcce877e359865c43d39d03fc1a2a54ebad960fd2d2a378880033f4cbd",
+    "src/world.js": "d13277330b9d281e56392e153f8805ccaca3f482a3db75402cfb49ed8d9b79ec",
+    "build.py": "03651acec584c1b790b43afd08cfeb638a32a8eeecca6695ec7e049529eff512",
+    "index.html": "14c23bbf9325048407b50fe094d7f14cafea31e2c21f94b0347be2b30ede6d4d",
+    "tests/atlantis_campaign_journey.cjs": "bb3cb377546ea2fe22225e2aba5dc8a16ad1f43eeeb77f8e3a1efa7799c1bc70",
+    "tests/realm_trails_journey.cjs": "dfb80cecd9ba2d1ec22d93cd1aface73cd65fbdab1aff923674944970a865727"
+  },
+  "finalHashes": {
+    "src/adventure-art.js": "2022f25ee84f5a862025344bbbc15f46336a112e09bdb820075a2fec002d05eb",
+    "src/adventure-ui.js": "d519bbc992aaabd71db76a7ff08a6128317bdea6e8898f933a865e78edc3539d",
+    "src/adventure.js": "c8c9f751bfd09d4e123ef786867fd1f1321d8364cf2f83a3e8bda74c12417a5c",
+    "src/app.js": "2a82fd3f4bf371df96a63bca1e1169b7bdcea2bccadd3c8fc2be153a76c179bb",
+    "src/arsenal-art.js": "1899a42e04fd44e18eced395229793d275a873dbe2902473968289815a3f694f",
+    "src/arsenal-ui.js": "a462102896a3c7013f29f6cdf40504b983b8fde803baf41b98b8fb032da3abe6",
+    "src/arsenal.js": "70cf869a8240895158960c62cc65d802adf491ac24ee66bf7a3c0389557d2b70",
+    "src/atlantis-campaign-art.js": "9ab549df2eeafc8314c95c7c9e488bf80472fcfaac1de7dfe41ebbf8c1830243",
+    "src/atlantis-campaign-data.js": "22496def70bda1c6a6aa15c24cf53bad7bacab4facc54da7856ac693e7384693",
+    "src/atlantis-campaign-ui.js": "3bcf9923c47710bf2d3d876629ed47e46d4b7e4289aa8f7510b9ccac2025cb5d",
+    "src/atlantis-campaign.css": "11d0f42b969895ba4ac0f561067c260b9a3d632b3b7f15a34d617eff8a4b6523",
+    "src/atlantis-campaign.js": "da23cf19fe0fd68ae3f03c040fb3c375b655570bccffd320794cd45bd19067d3",
+    "src/beacon-art.js": "aea9e5d22d23eaf73777636c56c2444edac9b0d6239f9504cc95026585618577",
+    "src/beacon.js": "2aded7272a8d50cbfbdb4421f0140d00401a49788a3bb465260e30f501a2bf13",
+    "src/bridge-art.js": "e8f85dd21a0eb6363f674a934c625b22fc29f18fc63a543ebd61ea0a87fa254d",
+    "src/bridge-community-art.js": "454eb5365082d529fe3bb05b166b38e1d01e6fbcd34f1148c5ebf0d02ad9a615",
+    "src/bridge-community-ui.js": "a51a02420b59329d0ae268d42a5632de50d87d9b031103a724ad51564737c6d6",
+    "src/bridge-community.css": "15be66090d836555498d87e00564c5b7b7094c2e3dca5951f9b1fde5023ea29c",
+    "src/bridge-community.js": "4308eecafc47044c3c063b46e4c3aa7cb4e7a30d5d938c64fd518e7f29cb30cc",
+    "src/bridge-moment-view.js": "fe58c7824f96458f2608af4d1cf76c81d2936da89a8cca1ad933974b65e0e03c",
+    "src/characters-ui.js": "58de0cb602479d45eae66f4ccd4077253e34e6e3d843a1505f9eca4d4a1f8f77",
+    "src/characters.css": "48bfb2431b5fb50e530ed334e52cf07c31b8a29bdb5bb4917365210ab9e71815",
+    "src/characters.js": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+    "src/classes-ui.js": "6fb25a35158cf3388485f57016aea745260dea8a057f8d6b4781d3f7a296d22b",
+    "src/classes.css": "4b9b47443b1817efe2b4cd43e7a3d0d34e623738a5b1e6e1cad05bc2ce88e892",
+    "src/classes.js": "15da8e8f26c234a5903e5321d9cbcadea773037c9536911a5dc85cb9da2aaa97",
+    "src/coastward-settlement-art.js": "8f08b152b5205c434ffa7408118e754799eb7ab396b2c0aaec8920cc0029c839",
+    "src/coastward-woodland-art.js": "45b2758d3f8d75457545b24c2cc96f81f70ac8296bf183f57ddd412289f130fc",
+    "src/combat-view.js": "9e674247119cece3bb6a35ca31fa424ed5e8e0187cbd2c149afb6f4aba085d5c",
+    "src/combat.js": "4176bbf57fd761732b5f9d96708ac8ac0d6855ef56c928d06810f06f74315a32",
+    "src/companion-art.js": "06821bb333cc1d61398017fcd236fb4622aae6432ce636f827642531946b2a32",
+    "src/core.js": "7ee0f2e79ed77787e4b8c720183b708f0a6d91d9b24cadab28739d0187319b00",
+    "src/cosmos-art.js": "d68fb28540196c4d6f39ca60cc99e1eb99fab534fb026578c02e75119cdd17e2",
+    "src/cosmos-campaign-art.js": "3b22a5fe117cb3731a1531a66941fba9e2953b5c23f3816150c184230a631a5e",
+    "src/cosmos-campaign-data.js": "9c7d4d30b863e25812df3651e785bff3f87495b37ede488804ee03178cab93d2",
+    "src/cosmos-campaign-ui.js": "95f8bbb9df5f97ddcb779268e5c28f412914d388c92bff00f5e79ec048e77686",
+    "src/cosmos-campaign.css": "436b9330b2bb190d022698894c76bd6e3b321d014d6e64bc553449c4dcd33ff7",
+    "src/cosmos-campaign.js": "7e03aaad5efe9db475ea82db6e8b9343361a68dec52132cf190e3c055fc681fb",
+    "src/cosmos-ui.js": "2582b2f2f4d894f44a969108af258087cf7f0be8c70dbf73eabca5810d236465",
+    "src/cosmos.css": "4d79807974082aaef0df364d312ae3d4a345ffd40b5eab403ccc55c24f02a63b",
+    "src/cosmos.js": "bf4d9898600b9b5d296f3de934f6f8dd52e343f3b762fd5f0085a09f14ea2090",
+    "src/creative.js": "d0032234d3cab1a6e90c84736011a98631bcc3748de8d5fc23df872367038761",
+    "src/crossing-art.js": "86cd8945194c6437d9ece96a7d0bcac8a4970eb5f3324300e48d08376bb61bcf",
+    "src/crossing-ui.js": "5a2a7f6989a0a7ff0a96fee7aa88ec77dadbfba15440a272f131f17a98d86913",
+    "src/crossing.css": "af6dd51f197dfa1963fc9fa0d92683b2e6f48270903aaea5ba90cbb2833862a2",
+    "src/crossing.js": "b666c4e6e20483ad267293578020876c8791bbbf23f8116803936658400d1a8f",
+    "src/drover-art.js": "0f4dda1af6b05e1c7e0931d835fca2d3faec7960788bc89b9f9b591af19206b0",
+    "src/earth-art.js": "494aa1f9d018c9490ca8b95ba212470b5a98b5e5e6e2d0cab68bd36d16b60314",
+    "src/earth-expedition-art.js": "822a0a8d7dc8271f92a5c38691ab7caf208063671b3e8dd6da05e120094d226f",
+    "src/earth-expedition-beast-art.js": "bf663c1cf48ef65a1c43e42bec63e743686506f3c028b7e72e4f4eac2ef7c0e4",
+    "src/earth-expedition-dialogue.js": "964360081bfc8a5a2966db854d2c12268de1187bf9f4a3b6e4eb0b5014aa9f9d",
+    "src/earth-expedition-ui.js": "9f9359c4e8f63108aa3e674d9fc9589de832420306e6bfc1b49c0006641715a8",
+    "src/earth-expedition.css": "a8a0f4822afcff0a7c404b3c4ff358f3d8a38287bda431da0597cecfecaf5a72",
+    "src/earth-expedition.js": "fd1fd97cc4e8e9e12202de4bbc9186c236d37750f574070d709d56d214418f59",
+    "src/earth-homecoming-art.js": "2353946d8bb28a2881f3191807fc248f95fea75f16bc585f6588d82742b750ed",
+    "src/earth-homecoming-data.js": "55485996a1651f8b5f0580c9e074f5873ddf45ca26744939238e31516051014f",
+    "src/earth-homecoming-ui.js": "5e57a2367153e516bdab12837db82812de3124a32489b09987dd285be011159d",
+    "src/earth-homecoming.css": "dbfeb49d20278ebeb9b9ae4c1d4d575acc3a806ca59898f20ebb9f8ca8f1661a",
+    "src/earth-homecoming.js": "c16adf4e13bd3a57e9be6aae6cd0cc00a4b78b49106f220ee74dee105fe858c1",
+    "src/earth-notes-art.js": "87fe4682829bfff89978d7046d62f518874a7953808431c5634327c9eb449556",
+    "src/earth-notes-ui.js": "9e0f0df26062b4929e0c3a801e8e857afc269936dbe4932279e935c56274f264",
+    "src/earth-notes.js": "4ab5807020f65086b190591414c871ee76412791ac0c97dca5447c595840e9e0",
+    "src/earth-road-art.js": "e7bd1fbc7b1177327c0756724b1ccf78b1b640568d9121a1ff416736524b1520",
+    "src/earth-road-ui.js": "e4577d03d3b97d271b8374054d34b5afdecbb47b28e74b911b931c2ed8e3c8ad",
+    "src/earth-road.js": "7417a1bdc4ab9eea8e2afc4c013a6890507b5670fca97d1f6ebe9f823390a125",
+    "src/earth-shoulder-art.js": "422a50a7aeec456b6f75095c53a319d2cbf6ac5e09f773e268ed54034c2ddb8d",
+    "src/earth-story-ui.js": "930b71ef9184a5d7b03cc79ff33d7f9e000eabb9d3934266af9e0fe8713448cb",
+    "src/earth-story.js": "fd0ced6f17f1b15b2aee4e31aa00be249bc8e1fb08c4e735416d95c173fd52d0",
+    "src/earth-ui.js": "9294c4cb9666aa6aec2d36d6eb8e34686bf01f57ead9964322ad8283cc2ba635",
+    "src/earth.css": "1f40093ded67c175c70c730b8518ff928d26db40287515256fc287c45f2a9f3d",
+    "src/earth.js": "cbd5ee90a4b335c66ba096f439f8f3efe6f6f68cba99086485f34fd81866a166",
+    "src/elderweald-trail-art.js": "e978e735ec1ee8048df1777b190959b832cd37755f682c3d51b9ec3f0a7f0491",
+    "src/elderweald-world.js": "8d993c230ad7198e397f4bf41938522405c352bbdd903b04016d1262822d3538",
+    "src/engine.js": "b98cfea8453e5b6deeb16a13c45f1c1bf7fc80fb9ba8d0a185c242a6ea9b078d",
+    "src/experience.js": "3b5a178ca757c7b58dcbfcedcc1522887dc6a178faf5e942c6e3894166d60570",
+    "src/gathering-adapter.js": "df41b2b23ae11c6ef2661e48301c488cb26ab753a7beec73349b5c959d5ab564",
+    "src/gathering-art.js": "b693bce2a519bd75e4f99e03b96184f1ed10c9a9a02e25b7affd53e739f5e0eb",
+    "src/gathering-music.js": "5e44106322e01aebc7b87d8eefcd29b2a2577d2162d70fb8f99475c7cc7deb12",
+    "src/gathering-ui.js": "0c347e1da4a897b178c405f35cfef2e6ea518fe5d9e6ba650e48e48895e0445a",
+    "src/gathering.css": "aa2e5381a0ff9fa7e4ceae5053a54a8ab11a784f81ee021e4835d485d3c5f4db",
+    "src/gathering.js": "256a33c52f2b31c2c421f72a74aae543feb6c554ebae863aee55d31f0c68eb54",
+    "src/heaven-campaign-art.js": "25ed9017108ea106579584233cc55b2a1753d62bd36174bb9c023682cb2ad24a",
+    "src/heaven-campaign-data.js": "2495650ded3f74d81d3d53f4d259f29052d3ff64b65a4a6331351b049bdc67eb",
+    "src/heaven-campaign-ui.js": "67723b2f0acf3e52da6177ad98d8a881e3b3e509bfc418bd3031ffbdc9f0383e",
+    "src/heaven-campaign.css": "7cf25161526677ee407ff09596cf8e2ecfeb92246c66c0b7255440b54d041bf0",
+    "src/heaven-campaign.js": "50aa6ff6607f9dfda6f0df1ca2fa473bca36a7513a34d1a915c1a87305e69e26",
+    "src/hell-campaign-art.js": "5ea5b875e32114b07b52ffe0000b7163b340f08adf0eae01552b84a478420f18",
+    "src/hell-campaign-data.js": "745221292e89ed2bcdf455ffc1bf4e0e66259add5671709e77135d5ede3892ff",
+    "src/hell-campaign-ui.js": "d47acd0b9ba992df6ff4c73e1b5f3dfb9c1b2ced0745c8ffe50d6cd34cc80f8c",
+    "src/hell-campaign.css": "146c66cd811e3070367e10a91c30f39cfc630dba1ee929a3b6a540f96142f0d9",
+    "src/hell-campaign.js": "cc8ca64f9515e75f4bf572c3feb5978f07409e4aca5a328901b3322f399f67a1",
+    "src/home-history-art.js": "df3acc85a5191c3938692759e85b7ee76ef5f936f29e65d6a845636600396a1f",
+    "src/home-history-ui.js": "41a330942368c7a4500759f2cbaf1cda224bd5ed25bc284b9e44463fc1f43a8e",
+    "src/home-history.css": "54ef3c501dfda4c3d74c0f17d900bdc5b25c9dcbaeb1840ec36cbcfe0a276bd2",
+    "src/home-history.js": "f002eb64b57343e38e95eafa4cd522c892aab26efc7b0c3d65bea86a45cec6e6",
+    "src/local-life-art.js": "381d1f5469310e2dc98c14b6d58c4259113fd1d6dd10f77059f45e6848fefcf2",
+    "src/local-life-ui.js": "95a0757ae7f612560c94ebca13474925251fb485e449da0bc5c6440ceb43b4c6",
+    "src/local-life.js": "005f7bd489bba2832aaec0b6c9d1cc499660e6e0047be73ab0f85d2922955d48",
+    "src/mill-gate-art.js": "fe33cbbd3f180a8d32a0d0a338cde42c40e809af99ed2da1db157ba5c7fbcdd9",
+    "src/millwright-art.js": "bd7397ee2a9f4c47b2b51117e28f3c68533da41de3122bb0a39a5575913a5661",
+    "src/pursuit-ui.js": "f8c6bab82d88b6e4dcbf05f3e78701d489f31e224c80211b94f8acc8b70b4224",
+    "src/pursuit.css": "61f36fa917eafba8cfa332f7d233db4c47a6d007bbf84d1843bc25fc17dd63ff",
+    "src/pursuit.js": "b77e1874f8278971f41d4b62551df40c81126f2a35e02958958e802ab9c8b5ff",
+    "src/quarry-art.js": "5bc6d93e99e430e7a460a1a2a510fc69e60c9dd80e758bce7470dae3ae3446f6",
+    "src/realm-art-data.js": "1ac6251a7acf23c78799d96b5554fb3fe572c40e12c54c73f0188c4f8a324435",
+    "src/realm-atlas-ui.js": "26d34bdc7afc9fbf9bb1f0f483aa6bc8312eba8a2186d21c80cab2fc1f68529b",
+    "src/realm-atlas.css": "7ef7a03b8c2a69069c2d65da8d5134c7b7dc4bc2b941e139f818a7ab7011c366",
+    "src/realm-craft.js": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+    "src/realm-givers-art.js": "8362d7a98f238b77b9afa5eff7346f430c02af6cd249502f146308a3d246fb34",
+    "src/realm-trails-art.js": "99a588e7aee9c7d43b6506de836ab2bab75a9420c6b718369c37e4517ca037e3",
+    "src/realm-trails-cosmos.js": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+    "src/realm-trails-north.js": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+    "src/realm-trails-south.js": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+    "src/realm-trails-ui.js": "7d58c16fbe3213220d439f0760e24988aee87567454490eb6ddfd19c825e6a80",
+    "src/realm-trails.js": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+    "src/road-art.js": "0cc12918587f98f4b9ed2b7beb8d1b21219b4a69959742a759f88354942df05d",
+    "src/road.js": "d18106f1a2147d623680b285dc5882cae8d2b74c5ef8b500d75de35d20c86dbc",
+    "src/rpg-ui.js": "5fb404cd66cda1431750af2967a850f78698ef7eb0e7e894631835103ecb3e16",
+    "src/rpg.css": "34ca5591b22748dbf96754fc0f6a857cbd73f77eb85e50b706e1b484291b11ae",
+    "src/sandbox-art.js": "3c3a8f9ea1a44fb84bdfe07a99b33969f253714c271e91ca3cfeca7eab76474c",
+    "src/sandbox-ui.js": "28d7530e8153ed3c8a6a31b3e204cbc9680484b013cb5880a4f05b76cf83d8f5",
+    "src/sandbox.js": "ad11196c12363b650f2697ab8fb30eb657ff0bf65953274942ce36eb28131e85",
+    "src/shell.html": "3dc6d5a2753e91c81144d1d3216e3faa6aa389f3490b94c31297bb0c4a3b239a",
+    "src/skitter-art.js": "bd84a78381cf7232a7fb92a868332308c68fcae17d25764c2b5d4bdfefa29903",
+    "src/soundscape.js": "15b7b578886b838ef20e56501940354d33a8ffcd5581332dd4c4b2035692c5af",
+    "src/starter-art.js": "cfc4f672b891fe6d53dec82a97aeac7204b8179b3490ae9df9ce3412c4661fcc",
+    "src/starter-ui.js": "44718b2835207383632d5f33e0748dba9c348041b11f9b404040bdf07a259052",
+    "src/starter.css": "f1501b06a13c2b3ec0030b39bf9d4530740aad2f60cf9608ca32957c9ce2943b",
+    "src/starter.js": "c6debd10295babafdcd714445c2ac18c0ff5ce8fd54b8dfe4f3ff78c9e0a294d",
+    "src/style.css": "f08ab48a3e661c18be404d6eafcc471a6e0b866c41304495cc94fac0bfa24d4a",
+    "src/surface-assets.js": "5cb0f81348074edbc0e4f3c7dee4962fac10bbc5e7db0ee07b16216f3b7a1e5f",
+    "src/traveler-art.js": "cf9e029046f5581aa3116f648fb657f9edff2ced67abc507afa38525f3ae1ba1",
+    "src/traveler-equipment-art.js": "13537e49de6fdcd670e75875c3b17736b76df53b65709d2b2366aab721dc98dc",
+    "src/workshop-transactions.js": "115193dc80841b531a14f85a41c8d2d5e44c6169fc4ea4d6c19637eb7a8e8dd4",
+    "src/world-atlantis-earth.js": "6685a2da156f3b6d394b9dfef611fafb76d277df2d8a1c57e82746d276228665",
+    "src/world-foundations-art.js": "e7681955e15b1f8ce5552997f374fabfe4569fbfb40c0b1dd0bc4100a95d65cd",
+    "src/world-foundations-ui.js": "a800a7d1506ac346fa060b32a68908e39901b908358ede7bc206b4c8f6b0d35a",
+    "src/world-foundations.css": "8abcf23f66cde69a92b7f3be6c099a1a2e2088d220bd83a81ea71d78f0564669",
+    "src/world-foundations.js": "4173e396c6d002d0ec25a7c549f046e0e77e561c3ef3b0e89400f84cc070d752",
+    "src/world-ground-coalescing.js": "c31024794d5b5db2c28d9aab9ecf8fd0acdf55c2630ff5edf93b988151e5d63d",
+    "src/world-heaven-hell.js": "7192efdcce877e359865c43d39d03fc1a2a54ebad960fd2d2a378880033f4cbd",
+    "src/world.js": "d13277330b9d281e56392e153f8805ccaca3f482a3db75402cfb49ed8d9b79ec",
+    "build.py": "03651acec584c1b790b43afd08cfeb638a32a8eeecca6695ec7e049529eff512",
+    "index.html": "14c23bbf9325048407b50fe094d7f14cafea31e2c21f94b0347be2b30ede6d4d",
+    "tests/atlantis_campaign_journey.cjs": "bb3cb377546ea2fe22225e2aba5dc8a16ad1f43eeeb77f8e3a1efa7799c1bc70",
+    "tests/realm_trails_journey.cjs": "dfb80cecd9ba2d1ec22d93cd1aface73cd65fbdab1aff923674944970a865727"
+  },
+  "sourceDrift": false,
+  "saveVersions": {
+    "world": 9,
+    "adventure": 12,
+    "atlantisCampaign": 1
+  },
+  "method": "command-earned kit/Bellglass, real swimming/current/depth/pressure, actual Adventure AI and weapon collisions, explicit disposition and fixed fee; accelerated ticks with in-memory holder",
+  "nativePersistence": false,
+  "humanPacing": false,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "manualDamage": 0,
+  "plantedDefeats": 0,
+  "forcedModes": 0,
+  "checkpoints": [
+    "00_EARNED_SEED",
+    "01_ACCEPTED",
+    "02_RETAINED_APPROACH",
+    "03_DIAGNOSED_AT_REAL_DEPTH",
+    "04_MANUAL_BYPASS",
+    "CHECKPOINT_INLET",
+    "CHECKPOINT_EQUALIZER",
+    "05_CORRECTED_OUTLET",
+    "06_ACTUAL_CUSTODIAN_READY",
+    "07_ACTUAL_BEARING_EXPOSED",
+    "CHECKPOINT_release-west",
+    "CHECKPOINT_release-east",
+    "08_INDEPENDENT_SAFETY",
+    "09_SELECTED_DISPOSITION",
+    "10_VERIFIED_UNPAID",
+    "11_PAID_ONCE",
+    "FINAL_WORLD"
+  ],
+  "checkpointHashes": {
+    "00_EARNED_SEED": "044fac8fe0c043e1af1e0c7f731598ccf3e16d4ebbb40881798d5be7c6bf0225",
+    "01_ACCEPTED": "70fe5486af33e70ed6d02985f88a0301e7f81e24e63c074a23c669576ba90f1f",
+    "02_RETAINED_APPROACH": "756785be3bc94519d980ff2aa4e4b6e3d74fb6d64c0257de2aae2e635b967872",
+    "03_DIAGNOSED_AT_REAL_DEPTH": "612a6be027f13d6b37f11c1902ac76ebc571bd9a33d01f4f12c7b7e7646bf9a1",
+    "04_MANUAL_BYPASS": "98092944e9fa641bdf90281a1c936a216d962a838d0046058d87bddf157560fe",
+    "CHECKPOINT_INLET": "018e4e5f779f401e2ef335f205d9208854a999296d6dec2e063238615b95836c",
+    "CHECKPOINT_EQUALIZER": "8e480c9da6bd31d02015e49dbd43986aa54503afab95079849f787ff3d755282",
+    "05_CORRECTED_OUTLET": "5964348bf33dc40f0c32c05800f813be4bc4fb7f0b7eaa6be256a5b310127a81",
+    "06_ACTUAL_CUSTODIAN_READY": "37d75dfb7e7eb71295427cb189652da6403aa83ba22a345bafcbc043ae33c8d6",
+    "07_ACTUAL_BEARING_EXPOSED": "c1c98da9a10dd588ea176b77b921e0c77fb7592fbb8ebbfc5afd314809596263",
+    "CHECKPOINT_release-west": "ffd5ce59fb2edeca1ace986980fdc54dc1cd9c5feeb784ab6977dd852c2611fc",
+    "CHECKPOINT_release-east": "5456e3889dd891abc1be18cc50770f7fe7e7c4b636e9bb04329d2e02ad9d0992",
+    "08_INDEPENDENT_SAFETY": "bdafd59d8828fa433cafa1f0e546f6f4eb0ca63a4e684594545d4adfb8731ccc",
+    "09_SELECTED_DISPOSITION": "1eede3f6a2754fbdd18f1e970e9e6ca4ceb3d9b84d6050c43fd2ced7ee072381",
+    "10_VERIFIED_UNPAID": "12244501e55687945e569367a033a0b37a5377307a8ff308bce36c6364fb3e65",
+    "11_PAID_ONCE": "38b5613cffb7c6454b1a45633fc89e32bcf235eb583ed2d6432f98fa9bb941d8",
+    "FINAL_WORLD": "409b3b67b82f4f0460ae06b03010194d2a4da5e5b4e25fd4bd7ea8652998ebbe"
+  },
+  "events": [
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-1",
+      "type": "start",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Expedition ready · Blade, lantern, tonics and a trail salve."
+      }
+    },
+    {
+      "owner": "sandbox",
+      "type": "gather",
+      "node": "timber-1"
+    },
+    {
+      "owner": "sandbox",
+      "type": "gather",
+      "node": "timber-1"
+    },
+    {
+      "owner": "sandbox",
+      "type": "gather",
+      "node": "timber-1"
+    },
+    {
+      "owner": "sandbox",
+      "type": "gather",
+      "node": "timber-1"
+    },
+    {
+      "owner": "sandbox",
+      "type": "gather",
+      "node": "timber-2"
+    },
+    {
+      "owner": "sandbox",
+      "type": "gather",
+      "node": "timber-2"
+    },
+    {
+      "owner": "sandbox",
+      "type": "gather",
+      "node": "timber-2"
+    },
+    {
+      "owner": "sandbox",
+      "type": "gather",
+      "node": "timber-2"
+    },
+    {
+      "owner": "sandbox",
+      "type": "gather",
+      "node": "fibre-1"
+    },
+    {
+      "owner": "sandbox",
+      "type": "gather",
+      "node": "fibre-2"
+    },
+    {
+      "owner": "sandbox",
+      "type": "gather",
+      "node": "stone-1"
+    },
+    {
+      "owner": "sandbox",
+      "type": "gather",
+      "node": "stone-1"
+    },
+    {
+      "owner": "sandbox",
+      "type": "gather",
+      "node": "stone-1"
+    },
+    {
+      "owner": "sandbox",
+      "type": "gather",
+      "node": "stone-1"
+    },
+    {
+      "owner": "sandbox",
+      "type": "gather",
+      "node": "stone-2"
+    },
+    {
+      "owner": "sandbox",
+      "type": "gather",
+      "node": "stone-2"
+    },
+    {
+      "owner": "sandbox",
+      "type": "gather",
+      "node": "stone-2"
+    },
+    {
+      "owner": "sandbox",
+      "type": "gather",
+      "node": "stone-2"
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-2",
+      "type": "arsenal-craft",
+      "payload": {
+        "id": "trail_bow"
+      },
+      "result": {
+        "ok": true,
+        "text": "Ashwood trail bow made."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-3",
+      "type": "equip",
+      "payload": {
+        "id": "trail_bow"
+      },
+      "result": {
+        "ok": true,
+        "text": "Ashwood trail bow equipped."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-4",
+      "type": "range-enter",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "The archery court · Practice without risk. Craft a bow at Oren’s bench."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-5",
+      "type": "range-start",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Hit each of three targets twice in 30 seconds."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-6",
+      "type": "attack",
+      "payload": {
+        "target": "range-west"
+      },
+      "result": {
+        "ok": true,
+        "text": "Arrow released"
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-7",
+      "type": "attack",
+      "payload": {
+        "target": "range-west"
+      },
+      "result": {
+        "ok": true,
+        "text": "Arrow released"
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-8",
+      "type": "attack",
+      "payload": {
+        "target": "range-mid"
+      },
+      "result": {
+        "ok": true,
+        "text": "Arrow released"
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-9",
+      "type": "attack",
+      "payload": {
+        "target": "range-mid"
+      },
+      "result": {
+        "ok": true,
+        "text": "Arrow released"
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-10",
+      "type": "attack",
+      "payload": {
+        "target": "range-east"
+      },
+      "result": {
+        "ok": true,
+        "text": "Arrow released"
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-11",
+      "type": "attack",
+      "payload": {
+        "target": "range-east"
+      },
+      "result": {
+        "ok": true,
+        "text": "Arrow released"
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-12",
+      "type": "range-leave",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Back at Oren’s workshop."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-13",
+      "type": "socket",
+      "payload": {
+        "weapon": "trail_bow",
+        "gem": "amber"
+      },
+      "result": {
+        "ok": true,
+        "text": "Wildwood amber fitted. Previous gem returned intact."
+      }
+    },
+    {
+      "owner": "travel",
+      "enter": "atlantis"
+    },
+    {
+      "owner": "trail",
+      "type": "accept",
+      "quest": "atlantis-bellglass-chart-v1",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "A Chart With Room for Depth accepted. Read the route, danger and fixed reward."
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "atlantis-bellglass-chart-v1",
+      "payload": {
+        "step": "upper-gauge"
+      },
+      "result": {
+        "ok": true,
+        "text": "The bronze gauge labels a shallower visitor depth. Read it from the water at this level; the public deck overhead is a separate road. Sahra’s instrument records this first depth without taking any material."
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "atlantis-bellglass-chart-v1",
+      "payload": {
+        "step": "lower-masonry"
+      },
+      "result": {
+        "ok": true,
+        "text": "Descend to the older worked-stone mark. Its lower depth differs from the visitor gauge. The old address is still useful history: copy the mark, leave the masonry intact, and carry both readings to Bellglass."
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "atlantis-bellglass-chart-v1",
+      "payload": {
+        "step": "depth-chart",
+        "choice": "depth-layers"
+      },
+      "result": {
+        "ok": true,
+        "text": "The two readings cannot share one flat route line. At the dry court desk, choose a chart that names both depth layers, marks their connection and shows the court’s doorway. You can correct a mistaken choice without spending supplies."
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "step",
+      "quest": "atlantis-bellglass-chart-v1",
+      "payload": {
+        "step": "modern-marker"
+      },
+      "result": {
+        "ok": true,
+        "text": "Leave through Bellglass’s open doorway, follow the wet east lane, and place the new marker beside the far landing. It names today’s visitor route; the old lower-road mark remains. Return to Sahra on the dry civic road to claim the declared payment."
+      }
+    },
+    {
+      "owner": "trail",
+      "type": "claim",
+      "quest": "atlantis-bellglass-chart-v1",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "A Chart With Room for Depth complete · +30 XP · +12 sunmarks · +2 ore. The declared fee is claimed once.",
+        "reward": {
+          "xp": 30,
+          "coins": 12,
+          "ore": 2
+        }
+      }
+    },
+    {
+      "owner": "travel",
+      "freeHome": true
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-21",
+      "type": "rest",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Rested · Health and three trail tonics restored."
+      }
+    },
+    {
+      "owner": "travel",
+      "enter": "atlantis"
+    },
+    {
+      "owner": "reload",
+      "realm": "atlantis"
+    },
+    {
+      "owner": "travel",
+      "enter": "atlantis"
+    },
+    {
+      "owner": "reload",
+      "realm": "atlantis"
+    },
+    {
+      "owner": "travel",
+      "enter": "atlantis"
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-37",
+      "type": "target-select",
+      "payload": {
+        "id": "atlantis-breakwater-custodian-v1"
+      },
+      "result": {
+        "ok": true,
+        "text": "Target: Breakwater Custodian"
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-38",
+      "type": "auto-toggle",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Autoattack on. Move into range; movement remains yours."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-39",
+      "type": "guard",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Braced · incoming damage halved for 3 seconds."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-0-40",
+      "type": "target-clear",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Target cleared."
+      }
+    },
+    {
+      "owner": "reload",
+      "realm": "atlantis"
+    },
+    {
+      "owner": "travel",
+      "enter": "atlantis"
+    },
+    {
+      "owner": "reload",
+      "realm": "atlantis"
+    },
+    {
+      "owner": "travel",
+      "enter": "atlantis"
+    },
+    {
+      "owner": "reload",
+      "realm": "atlantis"
+    },
+    {
+      "owner": "travel",
+      "enter": "atlantis"
+    },
+    {
+      "owner": "reload",
+      "realm": "atlantis"
+    },
+    {
+      "owner": "travel",
+      "enter": "atlantis"
+    },
+    {
+      "owner": "reload",
+      "realm": "atlantis"
+    },
+    {
+      "owner": "travel",
+      "enter": "atlantis"
+    },
+    {
+      "owner": "travel",
+      "freeHome": true
+    },
+    {
+      "type": "accept",
+      "p": {},
+      "result": {
+        "ok": true,
+        "text": "The Harbour Beneath the Harbour accepted. The earlier chart, lamp, equipment and free home passage retain their own history."
+      }
+    },
+    {
+      "type": "step",
+      "p": {
+        "step": "receipt-conflict"
+      },
+      "result": {
+        "ok": true,
+        "text": "Ilyra distinguishes Damar’s earlier shipping receipt from Lock Prefect Vaelor’s later destination instruction: the earlier-issued seal gives the redirected destination authority. His record says received, but his chosen arrival never happened. Preserve both records and his account. This is a concrete routing convention, not proof that every institution lies."
+      }
+    },
+    {
+      "type": "approach",
+      "p": {
+        "approach": "lower"
+      },
+      "result": {
+        "ok": true,
+        "text": "Lower · follow the quiet old-road band retained. Retain the Lower approach and read the lower masonry mark from its actual water depth. This band stays below the accepted shallow current. The public envelope covers it without a timer or a new class. An upper reading remains optional evidence with no second fee."
+      }
+    },
+    {
+      "type": "step",
+      "p": {
+        "step": "lower-reading"
+      },
+      "result": {
+        "ok": true,
+        "text": "Read the older masonry at this real lower depth, below the marked shallow current. Its depth convention identifies the same redirected outlet. This is required only when Lower was retained; for Upper it is optional supporting evidence. Keep the old mark and earlier chart intact."
+      }
+    },
+    {
+      "type": "step",
+      "p": {
+        "step": "diagnose-flow"
+      },
+      "result": {
+        "ok": true,
+        "text": "At Bellglass’s dry visitor desk, use the retained approach’s actual reading to identify the depth setting copied into the wrong destination record. The other reading is welcome but unnecessary. The correct repair isolates the redirected inlet, matches the depth bands, then selects the carrier’s chosen outlet. No occult initiation or unseen timer is required."
+      }
+    },
+    {
+      "type": "pressure",
+      "p": {
+        "step": "manual-bypass",
+        "setting": "open-bypass"
+      },
+      "result": {
+        "ok": true,
+        "text": "Operate the supplied manual bypass from the wet east lane. It stops only this accepted repair’s shallow current; the public air court and downstream visitor supply remain maintained. The three required inlet, equalizer and outlet stages still need their own correct operations. There is no hidden timing penalty, material loss, enemy-stat change or extra fee."
+      }
+    },
+    {
+      "type": "pressure",
+      "p": {
+        "step": "inlet-set",
+        "setting": "wrong-setting"
+      },
+      "result": {
+        "ok": false,
+        "error": "Read the named pressure setting. Incorrect settings have no timing penalty or material cost."
+      }
+    },
+    {
+      "type": "pressure",
+      "p": {
+        "step": "inlet-set",
+        "setting": "isolate-redirect"
+      },
+      "result": {
+        "ok": true,
+        "text": "Set isolate-redirect at the shallow inlet. Isolate the counterfeit destination branch while retaining public visitor supply. This is the first required pressure stage; an outlet action cannot substitute. The safe manual bypass remains available. Incorrect or premature settings spend no materials and leave accepted work intact."
+      }
+    },
+    {
+      "type": "pressure",
+      "p": {
+        "step": "equalizer-set",
+        "setting": "match-depth-bands"
+      },
+      "result": {
+        "ok": true,
+        "text": "Set match-depth-bands at Bellglass’s dry control desk after inlet isolation. The chosen reading and maintained depth chart establish the bands. Keep the public air volume supplied. This is the second required pressure stage, with no timing penalty or forced simultaneous switches."
+      }
+    },
+    {
+      "type": "pressure",
+      "p": {
+        "step": "outlet-set",
+        "setting": "chosen-destination"
+      },
+      "result": {
+        "ok": true,
+        "text": "Set chosen-destination at the wet east outlet after equalization. The corrected local outlet stops the accepted shallow current and permits a safe supervised handoff. Neither this setting nor the earlier optional marker pays a reward. Leave through the existing gallery landing for the dry waiting bay."
+      }
+    },
+    {
+      "type": "step",
+      "p": {
+        "step": "secure-carrier"
+      },
+      "result": {
+        "ok": true,
+        "text": "Damar waits at this supported dry service bay with his load accounted for. Record his actual account and the isolated local hold. His boat and skill were never the fault. He can remain safely here through pause, reload or retreat; no traveling escort or real-time deadline is required. The unbuilt full lower hold is not opened by this adaptation."
+      }
+    },
+    {
+      "type": "step",
+      "p": {
+        "step": "challenge-custodian"
+      },
+      "result": {
+        "ok": true,
+        "text": "Deliberately begin work on the quay-mounted Breakwater Custodian. It is a municipal service construct running a counterfeit schedule. It remains anchored at its service foundation on the supported dry quay; it does not chase a retreating traveller. Read the locked vane sector and intake lane; move, Brace or use actual cover. The machine carries no independent XP, loot or gear fee."
+      }
+    },
+    {
+      "type": "pressure",
+      "p": {
+        "step": "release-west",
+        "setting": "stabilize-west"
+      },
+      "result": {
+        "ok": true,
+        "text": "Stabilize the west release after the actual bearing exhaustion. This is the first of two sequential dry service operations. The settled machine and secured bay remain safe; no second player, timed appointment or simultaneous switch is required."
+      }
+    },
+    {
+      "type": "pressure",
+      "p": {
+        "step": "release-east",
+        "setting": "stabilize-east"
+      },
+      "result": {
+        "ok": true,
+        "text": "Stabilize the east release after the west release is recorded. The two release facts belong to this campaign, independently of combat exhaustion. Retried, remote or refused-save operations cannot manufacture stabilization or another payment."
+      }
+    },
+    {
+      "type": "step",
+      "p": {
+        "step": "custodian-stable"
+      },
+      "result": {
+        "ok": true,
+        "text": "Verify both sequential releases and the settled tools. The municipal Custodian remains part of this local service bay. Damar’s safety and your independent home passage already exist before a disposition. This is a bounded restoration; the full drydock, city circulation and distant lockworks remain unavailable."
+      }
+    },
+    {
+      "type": "choose",
+      "p": {
+        "choice": "limited"
+      },
+      "result": {
+        "ok": true,
+        "text": "Limited · keep an independent manual passage recorded. The registry and landing show the hooded custody record and independent manual-passage indicator. Sahra, Ilyra and Damar recognize the permanent local custody arrangement. The stated fee remains unchanged. No hidden corridor, deep access or future business privilege is granted."
+      }
+    },
+    {
+      "type": "step",
+      "p": {
+        "step": "verify-passage"
+      },
+      "result": {
+        "ok": true,
+        "text": "At the supported dry landing, verify the local controls and receipt fixture against the saved disposition. Record the supervised lens-consignment release to Sahra and feed-frame release into named nursery custody here. This is an authored local handoff, not a simulated voyage to a nursery or evidence that Pelan witnessed a delivery. Return to Sahra and explicitly claim the fixed fee; verified work can remain safely unpaid."
+      }
+    },
+    {
+      "type": "claim",
+      "p": {},
+      "result": {
+        "ok": false,
+        "error": "journey-labelled synchronous claim refusal"
+      }
+    },
+    {
+      "type": "claim",
+      "p": {},
+      "result": {
+        "ok": true,
+        "text": "The Harbour Beneath the Harbour complete · Limited · keep an independent manual passage · 48 XP, 18 sunmarks, 4 ore, 4 timber, 3 fibre and 1 crystal. Claimed once.",
+        "reward": {
+          "xp": 48,
+          "coins": 18,
+          "ore": 4,
+          "materials": {
+            "wood": 4,
+            "fiber": 3,
+            "crystal": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "claim",
+      "p": {
+        "request": "changed-identity"
+      },
+      "result": {
+        "ok": true,
+        "duplicate": true,
+        "text": "This local harbour campaign was already paid once. Its disposition remains in history."
+      }
+    },
+    {
+      "type": "claim",
+      "p": {
+        "request": "cold-retry"
+      },
+      "result": {
+        "ok": true,
+        "duplicate": true,
+        "text": "This local harbour campaign was already paid once. Its disposition remains in history."
+      }
+    }
+  ],
+  "swims": [
+    {
+      "target": [
+        8,
+        -0.5,
+        -19.5
+      ],
+      "frames": 0,
+      "actual": {
+        "x": 8,
+        "z": -19.5,
+        "yaw": 3.141592653589793,
+        "y": -0.5
+      },
+      "body": "air"
+    },
+    {
+      "target": [
+        8,
+        -1.05,
+        -22
+      ],
+      "frames": 19,
+      "actual": {
+        "x": 8,
+        "z": -21.96999999999998,
+        "yaw": 3.141592653589793,
+        "y": -1.05
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -2.55,
+        -28
+      ],
+      "frames": 46,
+      "actual": {
+        "x": 8,
+        "z": -27.949999999999935,
+        "yaw": 3.141592653589793,
+        "y": -2.55
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -2.7,
+        -29.5
+      ],
+      "frames": 12,
+      "actual": {
+        "x": 8,
+        "z": -29.5,
+        "yaw": 3.141592653589793,
+        "y": -2.7
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -2.7,
+        -32
+      ],
+      "frames": 19,
+      "actual": {
+        "x": 8,
+        "z": -31.96999999999998,
+        "yaw": 3.141592653589793,
+        "y": -2.7
+      },
+      "body": "air"
+    },
+    {
+      "target": [
+        8,
+        -2.7,
+        -35
+      ],
+      "frames": 23,
+      "actual": {
+        "x": 8,
+        "z": -34.960000000000036,
+        "yaw": 3.141592653589793,
+        "y": -2.7
+      },
+      "body": "air"
+    },
+    {
+      "target": [
+        8,
+        -2.7,
+        -32
+      ],
+      "frames": 23,
+      "actual": {
+        "x": 8,
+        "z": -32,
+        "yaw": 0,
+        "y": -2.7
+      },
+      "body": "air"
+    },
+    {
+      "target": [
+        8,
+        -2.7,
+        -29.5
+      ],
+      "frames": 19,
+      "actual": {
+        "x": 8,
+        "z": -29.53000000000002,
+        "yaw": 0,
+        "y": -2.7
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -1.8,
+        -29
+      ],
+      "frames": 8,
+      "actual": {
+        "x": 8,
+        "z": -29,
+        "yaw": 0,
+        "y": -1.8
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        12,
+        -1.8,
+        -29
+      ],
+      "frames": 31,
+      "actual": {
+        "x": 12,
+        "z": -29,
+        "yaw": 1.5707963267948966,
+        "y": -1.8
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        12,
+        -1.4,
+        -38.4
+      ],
+      "frames": 72,
+      "actual": {
+        "x": 12,
+        "z": -38.3600000000001,
+        "yaw": 3.141592653589793,
+        "y": -1.4
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        12,
+        -1.4,
+        -39.3
+      ],
+      "frames": 7,
+      "actual": {
+        "x": 12,
+        "z": -39.27000000000012,
+        "yaw": 3.141592653589793,
+        "y": -1.4
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -0.5,
+        -19.5
+      ],
+      "frames": 0,
+      "actual": {
+        "x": 8,
+        "z": -19.5,
+        "yaw": 3.141592653589793,
+        "y": -0.5
+      },
+      "body": "air"
+    },
+    {
+      "target": [
+        8,
+        -1.05,
+        -22
+      ],
+      "frames": 18,
+      "actual": {
+        "x": 8,
+        "z": -21.944999999999983,
+        "yaw": 3.141592653589793,
+        "y": -1.05
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -1.05,
+        -25
+      ],
+      "frames": 19,
+      "actual": {
+        "x": 8,
+        "z": -25.022884615384623,
+        "yaw": 3.141592653589793,
+        "y": -1.05
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -2.55,
+        -28
+      ],
+      "frames": 19,
+      "actual": {
+        "x": 8,
+        "z": -27.982884615384606,
+        "yaw": 3.141592653589793,
+        "y": -2.55
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -2.7,
+        -29.5
+      ],
+      "frames": 12,
+      "actual": {
+        "x": 8,
+        "z": -29.5,
+        "yaw": 3.141592653589793,
+        "y": -2.7
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -2.7,
+        -32
+      ],
+      "frames": 19,
+      "actual": {
+        "x": 8,
+        "z": -31.96999999999998,
+        "yaw": 3.141592653589793,
+        "y": -2.7
+      },
+      "body": "air"
+    },
+    {
+      "target": [
+        8,
+        -2.7,
+        -35
+      ],
+      "frames": 23,
+      "actual": {
+        "x": 8,
+        "z": -34.960000000000036,
+        "yaw": 3.141592653589793,
+        "y": -2.7
+      },
+      "body": "air"
+    },
+    {
+      "target": [
+        8,
+        -2.7,
+        -32
+      ],
+      "frames": 23,
+      "actual": {
+        "x": 8,
+        "z": -32,
+        "yaw": 0,
+        "y": -2.7
+      },
+      "body": "air"
+    },
+    {
+      "target": [
+        8,
+        -2.7,
+        -29.5
+      ],
+      "frames": 19,
+      "actual": {
+        "x": 8,
+        "z": -29.53000000000002,
+        "yaw": 0,
+        "y": -2.7
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -1.8,
+        -29
+      ],
+      "frames": 8,
+      "actual": {
+        "x": 8,
+        "z": -29,
+        "yaw": 0,
+        "y": -1.8
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        12,
+        -1.8,
+        -29
+      ],
+      "frames": 31,
+      "actual": {
+        "x": 12,
+        "z": -29,
+        "yaw": 1.5707963267948966,
+        "y": -1.8
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -1.8,
+        -29
+      ],
+      "frames": 31,
+      "actual": {
+        "x": 8,
+        "z": -29,
+        "yaw": -1.5707963267948966,
+        "y": -1.8
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -2.55,
+        -28
+      ],
+      "frames": 8,
+      "actual": {
+        "x": 8,
+        "z": -28,
+        "yaw": 0,
+        "y": -2.55
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -1.05,
+        -22
+      ],
+      "frames": 46,
+      "actual": {
+        "x": 8,
+        "z": -22.020000000000046,
+        "yaw": 0,
+        "y": -1.05
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -2.55,
+        -28
+      ],
+      "frames": 46,
+      "actual": {
+        "x": 8,
+        "z": -28,
+        "yaw": 3.141592653589793,
+        "y": -2.55
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -2.7,
+        -29.5
+      ],
+      "frames": 11,
+      "actual": {
+        "x": 8,
+        "z": -29.42999999999999,
+        "yaw": 3.141592653589793,
+        "y": -2.7
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -2.7,
+        -32
+      ],
+      "frames": 20,
+      "actual": {
+        "x": 8,
+        "z": -32,
+        "yaw": 3.141592653589793,
+        "y": -2.7
+      },
+      "body": "air"
+    },
+    {
+      "target": [
+        8,
+        -2.7,
+        -35
+      ],
+      "frames": 23,
+      "actual": {
+        "x": 8,
+        "z": -34.99000000000006,
+        "yaw": 3.141592653589793,
+        "y": -2.7
+      },
+      "body": "air"
+    },
+    {
+      "target": [
+        8,
+        -2.7,
+        -32
+      ],
+      "frames": 23,
+      "actual": {
+        "x": 8,
+        "z": -32,
+        "yaw": 0,
+        "y": -2.7
+      },
+      "body": "air"
+    },
+    {
+      "target": [
+        8,
+        -2.7,
+        -29.5
+      ],
+      "frames": 19,
+      "actual": {
+        "x": 8,
+        "z": -29.53000000000002,
+        "yaw": 0,
+        "y": -2.7
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        8,
+        -1.8,
+        -29
+      ],
+      "frames": 8,
+      "actual": {
+        "x": 8,
+        "z": -29,
+        "yaw": 0,
+        "y": -1.8
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        12,
+        -1.8,
+        -29
+      ],
+      "frames": 31,
+      "actual": {
+        "x": 12,
+        "z": -29,
+        "yaw": 1.5707963267948966,
+        "y": -1.8
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        12,
+        -1.4,
+        -38.4
+      ],
+      "frames": 72,
+      "actual": {
+        "x": 12,
+        "z": -38.3600000000001,
+        "yaw": 3.141592653589793,
+        "y": -1.4
+      },
+      "body": "water"
+    },
+    {
+      "target": [
+        12,
+        -1.4,
+        -39.3
+      ],
+      "frames": 7,
+      "actual": {
+        "x": 12,
+        "z": -39.27000000000012,
+        "yaw": 3.141592653589793,
+        "y": -1.4
+      },
+      "body": "water"
+    }
+  ],
+  "combat": {
+    "enemy": "atlantis-breakwater-custodian-v1",
+    "style": "bow",
+    "frames": 134,
+    "seconds": 6.700000000001523,
+    "guarded": 1,
+    "arrows": true,
+    "weaponImpacts": [
+      {
+        "caller": "production projectile impact",
+        "mode": "recover",
+        "before": 128,
+        "after": 113
+      },
+      {
+        "caller": "production projectile impact",
+        "mode": "recover",
+        "before": 113,
+        "after": 98
+      },
+      {
+        "caller": "production projectile impact",
+        "mode": "recover",
+        "before": 98,
+        "after": 83
+      },
+      {
+        "caller": "production projectile impact",
+        "mode": "windup",
+        "before": 83,
+        "after": 68
+      },
+      {
+        "caller": "production projectile impact",
+        "mode": "windup",
+        "before": 68,
+        "after": 53
+      },
+      {
+        "caller": "production projectile impact",
+        "mode": "intake",
+        "before": 53,
+        "after": 38
+      },
+      {
+        "caller": "production projectile impact",
+        "mode": "recover",
+        "before": 38,
+        "after": 23
+      },
+      {
+        "caller": "production projectile impact",
+        "mode": "recover",
+        "before": 23,
+        "after": 8
+      },
+      {
+        "caller": "production projectile impact",
+        "mode": "recover",
+        "before": 8,
+        "after": 0
+      }
+    ],
+    "impacts": [
+      {
+        "at": 0.3500000000000796,
+        "mode": "recover",
+        "before": 128,
+        "hp": 113
+      },
+      {
+        "at": 1.1500000000002615,
+        "mode": "recover",
+        "before": 113,
+        "hp": 98
+      },
+      {
+        "at": 1.9500000000004434,
+        "mode": "recover",
+        "before": 98,
+        "hp": 83
+      },
+      {
+        "at": 2.7500000000006253,
+        "mode": "windup",
+        "before": 83,
+        "hp": 68
+      },
+      {
+        "at": 3.550000000000807,
+        "mode": "intake",
+        "before": 68,
+        "hp": 53
+      },
+      {
+        "at": 4.350000000000989,
+        "mode": "intake",
+        "before": 53,
+        "hp": 38
+      },
+      {
+        "at": 5.10000000000116,
+        "mode": "recover",
+        "before": 38,
+        "hp": 23
+      },
+      {
+        "at": 5.9000000000013415,
+        "mode": "recover",
+        "before": 23,
+        "hp": 8
+      },
+      {
+        "at": 6.700000000001523,
+        "mode": "recover",
+        "before": 8,
+        "hp": 0
+      }
+    ],
+    "phases": [
+      {
+        "at": 0,
+        "phase": "windup",
+        "kind": "harbour-sweep",
+        "remaining": 0.09999999999999946
+      },
+      {
+        "at": 0.10000000000002274,
+        "phase": "recover",
+        "kind": "opening",
+        "remaining": 1.9
+      },
+      {
+        "at": 2.050000000000466,
+        "phase": "windup",
+        "kind": "harbour-intake",
+        "remaining": 1.5
+      },
+      {
+        "at": 3.550000000000807,
+        "phase": "intake",
+        "kind": "harbour-intake",
+        "remaining": 1.2
+      }
+    ],
+    "contacts": [
+      {
+        "at": 0.10000000000002274,
+        "hit": false,
+        "frame": {
+          "kind": "sweep",
+          "x": 8,
+          "z": -44,
+          "yaw": 0,
+          "radius": 3.4,
+          "halfAngle": 1.0471975511965976
+        }
+      },
+      {
+        "at": 3.550000000000807,
+        "hit": false,
+        "frame": {
+          "kind": "intake",
+          "x": 8,
+          "z": -44,
+          "yaw": 0,
+          "length": 5.5,
+          "halfWidth": 1
+        }
+      }
+    ],
+    "pullDistance": 1.4400000000000002,
+    "healthAfter": 101
+  },
+  "walks": [
+    {
+      "room": "valley",
+      "start": {
+        "x": 2.5,
+        "z": 6,
+        "yaw": 0
+      },
+      "x": 11,
+      "z": 9,
+      "frames": 58
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 11,
+        "z": 9,
+        "yaw": 1.385448376799188
+      },
+      "x": -7.9,
+      "z": -13,
+      "frames": 193
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": -7.9,
+        "z": -13,
+        "yaw": -2.300351987712167
+      },
+      "x": -13.9,
+      "z": -11,
+      "frames": 40
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": -13.9,
+        "z": -11,
+        "yaw": -1.2490457723982544
+      },
+      "x": 5.1,
+      "z": 10,
+      "frames": 193
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 5.1,
+        "z": 10,
+        "yaw": 0.7112486437388242
+      },
+      "x": -4.9,
+      "z": -10,
+      "frames": 146
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": -4.9,
+        "z": -10,
+        "yaw": -3.0564332609700817
+      },
+      "x": 5.1,
+      "z": 13,
+      "frames": 162
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 5.1,
+        "z": 13,
+        "yaw": 0.5897756513349778
+      },
+      "x": -2.9,
+      "z": 10,
+      "frames": 54
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": -2.9,
+        "z": 10,
+        "yaw": -1.9295669970654616
+      },
+      "x": 11,
+      "z": 9,
+      "frames": 88
+    },
+    {
+      "room": "range",
+      "start": {
+        "x": 0,
+        "z": 9,
+        "yaw": 3.141592653589793
+      },
+      "x": 0,
+      "z": -3,
+      "frames": 75
+    },
+    {
+      "room": "range",
+      "start": {
+        "x": 0,
+        "z": -3,
+        "yaw": 1.8586587321137154
+      },
+      "x": 0,
+      "z": 9,
+      "frames": 75
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 11,
+        "z": 9,
+        "yaw": 1.642615038979402
+      },
+      "x": 18,
+      "z": 6,
+      "frames": 51
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": 0,
+        "z": 39,
+        "yaw": 3.141592653589793
+      },
+      "x": -5,
+      "z": -10,
+      "frames": 308
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": -5,
+        "z": -10,
+        "yaw": -3.0399038018267137
+      },
+      "x": 8,
+      "z": -16,
+      "frames": 90
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": 8,
+        "z": -43,
+        "yaw": 0
+      },
+      "x": -5,
+      "z": -10,
+      "frames": 245
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "x": 0,
+      "z": 3,
+      "frames": 130
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 0,
+        "z": 3,
+        "yaw": -2.2142974355881795
+      },
+      "x": 18,
+      "z": 6,
+      "frames": 131
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": 0,
+        "z": 39,
+        "yaw": 3.141592653589793
+      },
+      "x": -5,
+      "z": -10,
+      "frames": 308
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": 0,
+        "z": 39,
+        "yaw": 3.141592653589793
+      },
+      "x": 0,
+      "z": -18,
+      "frames": 357
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": 0,
+        "z": -18,
+        "yaw": 3.141592653589793
+      },
+      "x": -5,
+      "z": -10,
+      "frames": 59
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": 0,
+        "z": 39,
+        "yaw": 3.141592653589793
+      },
+      "x": 8,
+      "z": -16,
+      "frames": 358
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": 8,
+        "z": -43,
+        "yaw": 0
+      },
+      "x": 15,
+      "z": -40.5,
+      "frames": 47
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": 15,
+        "z": -40.5,
+        "yaw": 1.2277723863741459
+      },
+      "x": 8,
+      "z": -44,
+      "frames": 49
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": 8,
+        "z": -44,
+        "yaw": -2.0344439357957302
+      },
+      "x": 8,
+      "z": -40,
+      "frames": 25
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": 0,
+        "z": 39,
+        "yaw": 3.141592653589793
+      },
+      "x": 2,
+      "z": -44,
+      "frames": 526
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": 2,
+        "z": -44,
+        "yaw": 2.71496516046289
+      },
+      "x": 15,
+      "z": -44,
+      "frames": 82
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": 15,
+        "z": -44,
+        "yaw": 1.5707963267948966
+      },
+      "x": 8,
+      "z": -44,
+      "frames": 44
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": 0,
+        "z": 39,
+        "yaw": 3.141592653589793
+      },
+      "x": 0,
+      "z": -18,
+      "frames": 357
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": 0,
+        "z": 39,
+        "yaw": 3.141592653589793
+      },
+      "x": 12,
+      "z": -40.1,
+      "frames": 569
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": 0,
+        "z": 39,
+        "yaw": 3.141592653589793
+      },
+      "x": -5,
+      "z": -10,
+      "frames": 308
+    },
+    {
+      "room": "world-atlantis",
+      "start": {
+        "x": 0,
+        "z": 39,
+        "yaw": 3.141592653589793
+      },
+      "x": -5,
+      "z": -10,
+      "frames": 308
+    }
+  ],
+  "saveCount": 42,
+  "baselineStats": {
+    "level": 2,
+    "attack": 15,
+    "defense": 1,
+    "maxHP": 110
+  },
+  "canonicalPreservation": true
+}

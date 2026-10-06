@@ -1,0 +1,1455 @@
+{
+  "origin": "http://127.0.0.1:61588/FIRSTLIGHT_VALLEY.html",
+  "html_sha256": "14c23bbf9325048407b50fe094d7f14cafea31e2c21f94b0347be2b30ede6d4d",
+  "default_duration_requested_seconds": null,
+  "performance_claim": false,
+  "browser_version": "143.0.7499.4",
+  "fixture": "D:\\07-GAMES\\Firstlight\\artifacts\\connected-earth-roads-20261006\\browser04\\earned-sources\\blade\\HEARTHWATER_GATE.json",
+  "fixture_sha256": "d1117f4d22d2a462c6fff4d59672e0c7ddd02be591eed187308678502fbe265d",
+  "method": "Automated accepted commands and UI on normal real-time RAF; command-earned checkpoint, no gameplay state grants; video is not an FPS measurement.",
+  "actions": [
+    {
+      "action": {
+        "evaluate": "()=>{Realm.test.quality('balanced');const d=Realm.diagnostics;if(!d.renderer?.includes('NVIDIA')||!d.renderer.includes('3080'))throw Error('RTX hardware renderer required');return{renderer:d.renderer,quality:Realm.state.settings.quality,viewport:[innerWidth,innerHeight]};}"
+      },
+      "result": {
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "quality": "balanced",
+        "viewport": [
+          1280,
+          720
+        ]
+      }
+    },
+    {
+      "action": {
+        "evaluate": "()=>{const checkpoints=[[0,10],[14,-12],[12,-26],[0,-35],[7,-38],[12,-42]];for(const[x,z]of checkpoints){const r=Realm.test.move(x,z);if(!r.ok)throw Error(r.error);let i=0;while(Realm.test.path.length&&i++<18000)Realm.test.step(.05);if(i>=18000)throw Error('setup walking timeout');}Realm.test.view({yaw:1.2,elevation:.4,distance:9});Realm.test.render();return{label:'ACCELERATED PRODUCTION-WALKING SETUP ONLY; ensuing walk/UI/bridge use normal RAF',scene:Realm.diagnostics.scene};}"
+      },
+      "result": {
+        "label": "ACCELERATED PRODUCTION-WALKING SETUP ONLY; ensuing walk/UI/bridge use normal RAF",
+        "scene": "earth-hearthwater-approach"
+      }
+    },
+    {
+      "action": {
+        "evaluate": "()=>{const m=window.__roadTiming={enabled:true,last:null,scenes:{},started:performance.now()};const tick=t=>{if(!m.enabled)return;if(m.last!==null){const key=document.body.classList.contains('in-earth')?'Hearthwater-road':'Coastward-bridge';(m.scenes[key]||(m.scenes[key]=[])).push(t-m.last);}m.last=t;requestAnimationFrame(tick);};requestAnimationFrame(tick);return{label:'Headless recorded normal-RAF callback intervals on shared desktop; exclude accelerated setup; not foreground FPS qualification'};}"
+      },
+      "result": {
+        "label": "Headless recorded normal-RAF callback intervals on shared desktop; exclude accelerated setup; not foreground FPS qualification"
+      }
+    },
+    {
+      "action": {
+        "evaluate": "()=>{const m=window.__roadTiming;m.enabled=false;const stats={};for(const[k,rows]of Object.entries(m.scenes)){const s=rows.slice().sort((a,b)=>a-b),q=p=>s[Math.min(s.length-1,Math.floor((s.length-1)*p))];stats[k]={callbacks:rows.length,p50_ms:q(.5),p95_ms:q(.95),p99_ms:q(.99),max_ms:s.at(-1),intervals_over_50ms:rows.filter(v=>v>50).length};}return{label:'Actual recorded headless RAF intervals, includes menus and recorder/shared-desktop overhead; not displayed FPS or GPU timer',duration_ms:performance.now()-m.started,scenes:stats};}"
+      },
+      "result": {
+        "label": "Actual recorded headless RAF intervals, includes menus and recorder/shared-desktop overhead; not displayed FPS or GPU timer",
+        "duration_ms": 28719.799999952316,
+        "scenes": {
+          "Hearthwater-road": {
+            "callbacks": 292,
+            "p50_ms": 16.699999999999818,
+            "p95_ms": 16.700000000000728,
+            "p99_ms": 16.800000000000182,
+            "max_ms": 16.800000000000182,
+            "intervals_over_50ms": 0
+          },
+          "Coastward-bridge": {
+            "callbacks": 1418,
+            "p50_ms": 16.69999999999891,
+            "p95_ms": 16.799999999999272,
+            "p99_ms": 16.80000000000109,
+            "max_ms": 199.89999999999782,
+            "intervals_over_50ms": 1
+          }
+        }
+      }
+    }
+  ],
+  "browser_errors": [],
+  "completed_actions": 17,
+  "last_checkpoint": {
+    "world": {
+      "earthHomecoming": {
+        "version": 1,
+        "accepted": false,
+        "steps": [],
+        "choice": null,
+        "claimed": false
+      },
+      "cosmosCampaign": {
+        "version": 1,
+        "accepted": false,
+        "steps": [],
+        "choice": null,
+        "opened": false,
+        "claimed": false
+      },
+      "atlantisCampaign": {
+        "version": 1,
+        "accepted": false,
+        "steps": [],
+        "approach": null,
+        "choice": null,
+        "claimed": false
+      },
+      "heavenCampaign": {
+        "version": 1,
+        "accepted": false,
+        "steps": [],
+        "choice": null,
+        "claimed": false
+      },
+      "hellCampaign": {
+        "version": 1,
+        "accepted": false,
+        "steps": [],
+        "choice": null,
+        "claimed": false
+      },
+      "bridgeCommunity": {
+        "version": 1,
+        "accepted": false,
+        "choice": null,
+        "steps": [],
+        "claimed": false
+      },
+      "homeHistory": {
+        "version": 1,
+        "revision": 0,
+        "owned": [],
+        "pinned": null
+      },
+      "localLife": {
+        "version": 1,
+        "records": {
+          "heaven-propagation-bed-v1": {
+            "accepted": false,
+            "choice": null,
+            "steps": [],
+            "claimed": false
+          },
+          "hell-refuge-water-v1": {
+            "accepted": false,
+            "choice": null,
+            "steps": [],
+            "claimed": false
+          },
+          "atlantis-bellglass-lamp-v1": {
+            "accepted": false,
+            "choice": null,
+            "steps": [],
+            "claimed": false
+          },
+          "cosmos-drawing-shelf-v1": {
+            "accepted": false,
+            "choice": null,
+            "steps": [],
+            "claimed": false
+          }
+        }
+      },
+      "earthExpedition": {
+        "version": 1,
+        "story": {
+          "accepted": false,
+          "branch": null,
+          "steps": [],
+          "claimed": false
+        },
+        "patrol": {
+          "lastClaim": 0,
+          "active": null
+        }
+      },
+      "realmTrails": {
+        "version": 1,
+        "records": {
+          "heaven-broken-choir-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "hell-open-cage-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "atlantis-bellglass-chart-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "earthlands-coastward-materials-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          },
+          "cosmos-split-bearing-v1": {
+            "accepted": false,
+            "steps": [],
+            "settings": {},
+            "checkpoint": 0,
+            "escortMode": "follow",
+            "assisted": false,
+            "claimed": false
+          }
+        }
+      },
+      "journeys": {
+        "version": 1,
+        "realms": {
+          "heaven": {
+            "counter": 0,
+            "lastClaim": 0,
+            "firstClaimed": false,
+            "active": null,
+            "defeated": []
+          },
+          "hell": {
+            "counter": 0,
+            "lastClaim": 0,
+            "firstClaimed": false,
+            "active": null,
+            "defeated": []
+          },
+          "earthlands": {
+            "counter": 0,
+            "lastClaim": 0,
+            "firstClaimed": false,
+            "active": null,
+            "defeated": []
+          },
+          "atlantis": {
+            "counter": 0,
+            "lastClaim": 0,
+            "firstClaimed": false,
+            "active": null,
+            "defeated": []
+          },
+          "cosmos": {
+            "counter": 0,
+            "lastClaim": 0,
+            "firstClaimed": false,
+            "active": null,
+            "defeated": []
+          }
+        }
+      },
+      "adventure": {
+        "version": 12,
+        "earthBinding": {
+          "version": 1,
+          "weapon": null,
+          "kind": null
+        },
+        "realmCraft": {
+          "version": 1,
+          "weapon": null
+        },
+        "earthGathering": {
+          "version": 1,
+          "accepted": false,
+          "prepared": [],
+          "verse": null,
+          "shared": false
+        },
+        "earthNotes": {
+          "version": 1,
+          "accepted": false,
+          "marks": [],
+          "compared": false,
+          "interpretation": null
+        },
+        "earthStory": {
+          "version": 1,
+          "accepted": false,
+          "steps": [],
+          "dispatch": null,
+          "arrived": false,
+          "claimed": false
+        },
+        "classPath": {
+          "version": 1,
+          "choice": null,
+          "readyAt": 0
+        },
+        "pursuit": {
+          "version": 1,
+          "pinned": null,
+          "claimed": 0,
+          "active": null,
+          "fittings": {}
+        },
+        "starter": {
+          "version": 1,
+          "accepted": false,
+          "bundles": [],
+          "reward": null
+        },
+        "crossing": {
+          "version": 1,
+          "entered": false,
+          "met": false,
+          "inscription": false,
+          "clapperRevealed": false,
+          "clapper": false,
+          "repaired": false,
+          "complete": false,
+          "reward": false,
+          "attuned": false,
+          "projects": []
+        },
+        "beacon": {
+          "version": 1,
+          "introduced": false,
+          "complete": false,
+          "status": "dormant",
+          "attempts": 0,
+          "failures": 0,
+          "reward": false,
+          "relic": "undecided",
+          "route": null,
+          "soul": {
+            "grace": false,
+            "equipped": null,
+            "radiance": 0,
+            "corruption": 0,
+            "scars": []
+          }
+        },
+        "arsenal": {
+          "version": 1,
+          "gems": {
+            "ruby": 0,
+            "moonstone": 0,
+            "amber": 0
+          },
+          "sockets": {},
+          "rangeMedal": false,
+          "bestTime": null
+        },
+        "road": {
+          "version": 1,
+          "entered": false,
+          "revealed": [],
+          "claimed": [],
+          "cartRepaired": false,
+          "beaconLit": false,
+          "reported": false
+        },
+        "elapsed": 95.84859999999665,
+        "revision": 1,
+        "started": true,
+        "dug": [],
+        "chips": [],
+        "defeated": [],
+        "drops": [],
+        "ore": 0,
+        "coins": 0,
+        "xp": 0,
+        "hp": 100,
+        "stamina": 100,
+        "tonics": 3,
+        "equipment": {
+          "weapon": "trail_blade",
+          "armor": "travel_coat",
+          "charm": null
+        },
+        "owned": [
+          "trail_blade",
+          "travel_coat"
+        ],
+        "companion": {
+          "bonded": false,
+          "name": "Briar",
+          "mode": "follow"
+        },
+        "relic": false,
+        "angelSeen": false,
+        "reward": null,
+        "deaths": 0,
+        "receipts": [
+          {
+            "id": "earned-north-1-0-1",
+            "fp": "[\"start\",{}]",
+            "ok": true
+          }
+        ]
+      },
+      "sandbox": {
+        "version": 1,
+        "elapsed": 95.84859999999665,
+        "revision": 0,
+        "inventory": {
+          "wood": 0,
+          "stone": 0,
+          "fiber": 0,
+          "crystal": 0,
+          "plank": 0,
+          "block": 0,
+          "seeds": 4,
+          "berry": 0,
+          "axe": 0,
+          "pick": 0,
+          "floor": 0,
+          "wall": 0,
+          "masonry": 0,
+          "lantern": 0,
+          "bench": 0,
+          "bed": 0,
+          "fire": 0,
+          "workbench": 0
+        },
+        "nodes": [
+          {
+            "id": "timber-1",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "timber-2",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "timber-3",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "timber-4",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "stone-1",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "stone-2",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "stone-3",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "fibre-1",
+            "hp": 1,
+            "readyAt": 0
+          },
+          {
+            "id": "fibre-2",
+            "hp": 1,
+            "readyAt": 0
+          },
+          {
+            "id": "fibre-3",
+            "hp": 1,
+            "readyAt": 0
+          },
+          {
+            "id": "wild-timber-1",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "wild-timber-2",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "wild-timber-3",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "wild-stone-1",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "wild-stone-2",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "wild-fibre",
+            "hp": 1,
+            "readyAt": 0
+          },
+          {
+            "id": "crystal-1",
+            "hp": 4,
+            "readyAt": 0
+          },
+          {
+            "id": "crystal-2",
+            "hp": 4,
+            "readyAt": 0
+          }
+        ],
+        "bridge": false,
+        "placed": [],
+        "nextId": 1,
+        "stats": {
+          "gathered": 0,
+          "crafted": 0,
+          "harvested": 0
+        },
+        "milestones": [],
+        "recentCommands": [],
+        "cooldownUntil": 0
+      },
+      "score": {
+        "format": "eternities.score.v1",
+        "title": "A Window Left Open",
+        "bpm": 88,
+        "voice": "felt",
+        "melody": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "bass": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "drums": [
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0
+          ]
+        ]
+      },
+      "scoreRevision": 0,
+      "retreat": {
+        "version": 1,
+        "revision": 0,
+        "wall": "moss",
+        "floor": "oak",
+        "items": [
+          {
+            "slot": "nw",
+            "kind": "shelf",
+            "rotation": 0
+          },
+          {
+            "slot": "ne",
+            "kind": "piano",
+            "rotation": 0
+          },
+          {
+            "slot": "w",
+            "kind": "sofa",
+            "rotation": 1
+          },
+          {
+            "slot": "e",
+            "kind": "plant",
+            "rotation": 0
+          },
+          {
+            "slot": "c",
+            "kind": "rug",
+            "rotation": 0
+          }
+        ]
+      },
+      "visitor": {
+        "name": "Visitor",
+        "skin": 0,
+        "cloak": 0,
+        "hair": 0
+      },
+      "version": 9,
+      "seed": 2317,
+      "day": 1,
+      "hour": 17.631318700000424,
+      "weather": "clear",
+      "player": {
+        "x": 0,
+        "z": 23,
+        "yaw": 0
+      },
+      "visited": [
+        "market"
+      ],
+      "flowers": [],
+      "notes": [],
+      "journal": [
+        {
+          "seq": 1,
+          "day": 1,
+          "hour": 17.200225,
+          "kind": "routine",
+          "text": "Ilan is heading to amphitheatre."
+        },
+        {
+          "seq": 2,
+          "day": 1,
+          "hour": 17.200225,
+          "kind": "routine",
+          "text": "Mara is heading to observatory."
+        },
+        {
+          "seq": 3,
+          "day": 1,
+          "hour": 17.200225,
+          "kind": "routine",
+          "text": "Oren is heading to workshop."
+        },
+        {
+          "seq": 4,
+          "day": 1,
+          "hour": 17.209000000000014,
+          "kind": "discovery",
+          "text": "You found The makers\u2019 exchange."
+        },
+        {
+          "seq": 5,
+          "day": 1,
+          "hour": 17.21305000000002,
+          "kind": "quest",
+          "text": "Oren supplied a trail blade, a lantern, three tonics and a salve for an injured animal. Find the northern mine."
+        },
+        {
+          "seq": 6,
+          "day": 1,
+          "hour": 17.3872747000003,
+          "kind": "routine",
+          "text": "Ilan is heading to amphitheatre."
+        },
+        {
+          "seq": 7,
+          "day": 1,
+          "hour": 17.3872747000003,
+          "kind": "routine",
+          "text": "Mara is heading to observatory."
+        },
+        {
+          "seq": 8,
+          "day": 1,
+          "hour": 17.3872747000003,
+          "kind": "routine",
+          "text": "Oren is heading to workshop."
+        }
+      ],
+      "nextEvent": 9,
+      "residents": [
+        {
+          "id": "ilan",
+          "x": 0,
+          "z": -11.6,
+          "yaw": 1.5707963267948966,
+          "progress": 0.06717174800000042,
+          "conversations": 0
+        },
+        {
+          "id": "mara",
+          "x": 9,
+          "z": -5.8,
+          "yaw": 0,
+          "progress": 0.06725274800000038,
+          "conversations": 0
+        },
+        {
+          "id": "oren",
+          "x": 11,
+          "z": 9,
+          "yaw": -1.5707963267948966,
+          "progress": 0.06717174800000042,
+          "conversations": 0
+        }
+      ],
+      "settings": {
+        "quality": "balanced",
+        "cameraMode": "follow",
+        "cameraFov": 60,
+        "cameraViews": {
+          "version": 1,
+          "lastDiorama": "follow",
+          "profiles": {
+            "adventure": {
+              "yaw": 1.2000000000000002,
+              "elevation": 0.4,
+              "distance": 9
+            },
+            "follow": {
+              "yaw": 0.7599999999999998,
+              "elevation": 0.88,
+              "zoom": 1
+            }
+          }
+        },
+        "cameraCutaway": true,
+        "reducedMotion": false,
+        "labels": true,
+        "timeFlow": true,
+        "sound": false
+      }
+    },
+    "diagnostics": {
+      "version": "10.0.0",
+      "mode": "webgl2",
+      "scene": "world-earthlands",
+      "world": {
+        "id": "earthlands",
+        "height": 1.57,
+        "dive": null,
+        "journey": {
+          "counter": 0,
+          "lastClaim": 0,
+          "firstClaimed": false,
+          "active": null,
+          "defeated": []
+        }
+      },
+      "atlantis": null,
+      "heaven": null,
+      "earthHomecoming": {
+        "record": {
+          "version": 1,
+          "accepted": false,
+          "steps": [],
+          "choice": null,
+          "claimed": false
+        },
+        "runtime": {
+          "room": "world-earthlands"
+        },
+        "missing": [
+          "first-envoy-gift",
+          "sunward-return",
+          "bellweather-thanks",
+          "fenna-paid",
+          "living-road-paid",
+          "coastward-work-paid",
+          "hell-local-paid",
+          "heaven-local-paid",
+          "atlantis-local-paid",
+          "cosmos-comparator-paid",
+          "cosmos-confluence-paid"
+        ],
+        "ready": false
+      },
+      "earth": null,
+      "cosmos": null,
+      "networkDependencies": 0,
+      "liveAI": false,
+      "multiplayer": false,
+      "adventure": {
+        "tactics": {
+          "scene": "world-earthlands",
+          "target": null,
+          "auto": false,
+          "nextAttack": 0,
+          "guardUntil": 0,
+          "shield": 0,
+          "shieldUntil": 0,
+          "cooldowns": {
+            "guard": 0,
+            "insight": 0,
+            "spirit": 0
+          },
+          "hits": [],
+          "serial": 0,
+          "windup": null,
+          "motion": null
+        },
+        "beacon": {
+          "phase": "idle",
+          "time": 0,
+          "wave": 0,
+          "ward": 100,
+          "actors": [],
+          "serial": 0,
+          "notice": "",
+          "repairAt": 0,
+          "maraAt": 0,
+          "ilanAt": 0,
+          "playerRepairAt": 0,
+          "defeats": 0
+        },
+        "crossing": {
+          "room": "world-earthlands",
+          "tones": [],
+          "seek": false,
+          "rangAt": -10,
+          "tone": null,
+          "toneSerial": 0
+        },
+        "player": {
+          "x": 0,
+          "z": 92,
+          "yaw": 0
+        },
+        "paused": false,
+        "intent": null,
+        "stats": {
+          "level": 1,
+          "attack": 16,
+          "defense": 1,
+          "maxHP": 100
+        },
+        "weapon": {
+          "style": "blade",
+          "reach": 2.65,
+          "cooldown": 0.52,
+          "stamina": 0,
+          "primary": "Sunstrike",
+          "special": "Dawn sweep"
+        },
+        "arrows": [],
+        "range": {
+          "active": false,
+          "start": 0,
+          "hits": {},
+          "shots": 0,
+          "message": "A calm place to learn a different rhythm."
+        },
+        "enemies": [
+          {
+            "id": "earthlands-coppice-skitter",
+            "x": -29,
+            "z": -20,
+            "hp": 72,
+            "maxHP": 72,
+            "hidden": false,
+            "eventEnemy": false,
+            "kind": "skitter",
+            "earthHomecoming": null,
+            "ringMode": null,
+            "custom": null,
+            "mode": "idle",
+            "timer": -22.915599999999788,
+            "aim": null,
+            "yaw": 0,
+            "strike": null,
+            "contactAt": null,
+            "contactHit": null
+          }
+        ],
+        "companion": {
+          "room": "world-earthlands",
+          "x": 8,
+          "z": 106,
+          "yaw": 3.141592653589793,
+          "path": [],
+          "nextPath": 0,
+          "nextHit": 0,
+          "seek": null,
+          "status": "Beside you"
+        }
+      },
+      "sandbox": {
+        "bridge": false,
+        "objects": 0,
+        "elapsed": 95.84859999999665,
+        "autoGather": null,
+        "buildMode": null
+      },
+      "saveState": "saved",
+      "characters": {
+        "mode": "legacy",
+        "active": "legacy",
+        "revision": 0,
+        "count": 1,
+        "writer": false,
+        "error": null
+      },
+      "fps": 52.74957140973235,
+      "errors": [],
+      "camera": {
+        "yaw": 0.76,
+        "elevation": 0.88,
+        "half": 17,
+        "distance": 9,
+        "actualDistance": 8.999999999999998,
+        "fov": 60,
+        "center": [
+          1.4205595200333067e-52,
+          2.1700000000023008,
+          91.99534894323723
+        ],
+        "overview": false,
+        "preset": "follow",
+        "tour": false,
+        "ready": true,
+        "baseHalf": 17,
+        "zoom": 1,
+        "projection": "orthographic",
+        "eye": [
+          32.921031526134534,
+          59.975415917425,
+          126.63260596322989
+        ],
+        "target": [
+          1.4205595200333067e-52,
+          2.1700000000023008,
+          91.99534894323723
+        ]
+      },
+      "metrics": {
+        "drawCalls": 31,
+        "texturedDrawCalls": 4,
+        "texturedInstances": 539,
+        "surfaceMaterials": {
+          "version": 1,
+          "id": "earth-weathered-timber-v1",
+          "status": "ready",
+          "ready": true,
+          "error": null,
+          "width": 512,
+          "height": 512,
+          "colorFormat": "SRGB8_ALPHA8",
+          "roughnessFormat": "R8",
+          "textureBytes": 1310720,
+          "mipmapBytes": 436905,
+          "totalTextureBytes": 1747625,
+          "decodedImageBytes": 2097152,
+          "decodeWallMs": 48.30000001192093,
+          "uploadCpuMs": 50.09999996423721,
+          "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+          "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+          "enabled": true
+        },
+        "instances": 1745,
+        "triangles": 71872
+      },
+      "reflection": {
+        "method": "world-plane P*V*H",
+        "height": 0.01,
+        "horizontalFlip": false
+      },
+      "cutaway": {
+        "enabled": true,
+        "focus": [
+          0,
+          2.45,
+          92
+        ]
+      },
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "music": {
+        "playing": false,
+        "scoreRevision": 0,
+        "playingRevision": -1,
+        "step": -1
+      },
+      "gathering": null,
+      "layoutRevision": 0,
+      "roadsideGathering": {
+        "status": "idle",
+        "playing": false,
+        "pending": false
+      },
+      "audio": {
+        "enabled": false,
+        "state": "not-created",
+        "soundscape": null
+      }
+    },
+    "practiceText": ""
+  },
+  "final_diagnostics": {
+    "version": "10.0.0",
+    "mode": "webgl2",
+    "scene": "world-earthlands",
+    "world": {
+      "id": "earthlands",
+      "height": 1.57,
+      "dive": null,
+      "journey": {
+        "counter": 0,
+        "lastClaim": 0,
+        "firstClaimed": false,
+        "active": null,
+        "defeated": []
+      }
+    },
+    "atlantis": null,
+    "heaven": null,
+    "earthHomecoming": {
+      "record": {
+        "version": 1,
+        "accepted": false,
+        "steps": [],
+        "choice": null,
+        "claimed": false
+      },
+      "runtime": {
+        "room": "world-earthlands"
+      },
+      "missing": [
+        "first-envoy-gift",
+        "sunward-return",
+        "bellweather-thanks",
+        "fenna-paid",
+        "living-road-paid",
+        "coastward-work-paid",
+        "hell-local-paid",
+        "heaven-local-paid",
+        "atlantis-local-paid",
+        "cosmos-comparator-paid",
+        "cosmos-confluence-paid"
+      ],
+      "ready": false
+    },
+    "earth": null,
+    "cosmos": null,
+    "networkDependencies": 0,
+    "liveAI": false,
+    "multiplayer": false,
+    "adventure": {
+      "tactics": {
+        "scene": "world-earthlands",
+        "target": null,
+        "auto": false,
+        "nextAttack": 0,
+        "guardUntil": 0,
+        "shield": 0,
+        "shieldUntil": 0,
+        "cooldowns": {
+          "guard": 0,
+          "insight": 0,
+          "spirit": 0
+        },
+        "hits": [],
+        "serial": 0,
+        "windup": null,
+        "motion": null
+      },
+      "beacon": {
+        "phase": "idle",
+        "time": 0,
+        "wave": 0,
+        "ward": 100,
+        "actors": [],
+        "serial": 0,
+        "notice": "",
+        "repairAt": 0,
+        "maraAt": 0,
+        "ilanAt": 0,
+        "playerRepairAt": 0,
+        "defeats": 0
+      },
+      "crossing": {
+        "room": "world-earthlands",
+        "tones": [],
+        "seek": false,
+        "rangAt": -10,
+        "tone": null,
+        "toneSerial": 0
+      },
+      "player": {
+        "x": 0,
+        "z": 92,
+        "yaw": 0
+      },
+      "paused": false,
+      "intent": null,
+      "stats": {
+        "level": 1,
+        "attack": 16,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "weapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "arrows": [],
+      "range": {
+        "active": false,
+        "start": 0,
+        "hits": {},
+        "shots": 0,
+        "message": "A calm place to learn a different rhythm."
+      },
+      "enemies": [
+        {
+          "id": "earthlands-coppice-skitter",
+          "x": -29,
+          "z": -20,
+          "hp": 72,
+          "maxHP": 72,
+          "hidden": false,
+          "eventEnemy": false,
+          "kind": "skitter",
+          "earthHomecoming": null,
+          "ringMode": null,
+          "custom": null,
+          "mode": "idle",
+          "timer": -22.982299999999785,
+          "aim": null,
+          "yaw": 0,
+          "strike": null,
+          "contactAt": null,
+          "contactHit": null
+        }
+      ],
+      "companion": {
+        "room": "world-earthlands",
+        "x": 8,
+        "z": 106,
+        "yaw": 3.141592653589793,
+        "path": [],
+        "nextPath": 0,
+        "nextHit": 0,
+        "seek": null,
+        "status": "Beside you"
+      }
+    },
+    "sandbox": {
+      "bridge": false,
+      "objects": 0,
+      "elapsed": 95.91529999999665,
+      "autoGather": null,
+      "buildMode": null
+    },
+    "saveState": "saved",
+    "characters": {
+      "mode": "legacy",
+      "active": "legacy",
+      "revision": 0,
+      "count": 1,
+      "writer": false,
+      "error": null
+    },
+    "fps": 52.74957140973235,
+    "errors": [],
+    "camera": {
+      "yaw": 0.76,
+      "elevation": 0.88,
+      "half": 17,
+      "distance": 9,
+      "actualDistance": 8.999999999999998,
+      "fov": 60,
+      "center": [
+        1.1943842996603337e-52,
+        2.1700000000019344,
+        91.99608946397814
+      ],
+      "overview": false,
+      "preset": "follow",
+      "tour": false,
+      "ready": true,
+      "baseHalf": 17,
+      "zoom": 1,
+      "projection": "orthographic",
+      "eye": [
+        32.921031526134534,
+        59.975415917424634,
+        126.6333464839708
+      ],
+      "target": [
+        1.1943842996603337e-52,
+        2.1700000000019344,
+        91.99608946397814
+      ]
+    },
+    "metrics": {
+      "drawCalls": 31,
+      "texturedDrawCalls": 4,
+      "texturedInstances": 539,
+      "surfaceMaterials": {
+        "version": 1,
+        "id": "earth-weathered-timber-v1",
+        "status": "ready",
+        "ready": true,
+        "error": null,
+        "width": 512,
+        "height": 512,
+        "colorFormat": "SRGB8_ALPHA8",
+        "roughnessFormat": "R8",
+        "textureBytes": 1310720,
+        "mipmapBytes": 436905,
+        "totalTextureBytes": 1747625,
+        "decodedImageBytes": 2097152,
+        "decodeWallMs": 48.30000001192093,
+        "uploadCpuMs": 50.09999996423721,
+        "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+        "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+        "enabled": true
+      },
+      "instances": 1745,
+      "triangles": 71872
+    },
+    "reflection": {
+      "method": "world-plane P*V*H",
+      "height": 0.01,
+      "horizontalFlip": false
+    },
+    "cutaway": {
+      "enabled": true,
+      "focus": [
+        0,
+        2.45,
+        92
+      ]
+    },
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "music": {
+      "playing": false,
+      "scoreRevision": 0,
+      "playingRevision": -1,
+      "step": -1
+    },
+    "gathering": null,
+    "layoutRevision": 0,
+    "roadsideGathering": {
+      "status": "idle",
+      "playing": false,
+      "pending": false
+    },
+    "audio": {
+      "enabled": false,
+      "state": "not-created",
+      "soundscape": null
+    }
+  },
+  "final_quest": {
+    "version": 1,
+    "accepted": false,
+    "bundles": [],
+    "reward": null
+  },
+  "final_pursuit": {
+    "version": 1,
+    "pinned": null,
+    "claimed": 0,
+    "active": null,
+    "fittings": {}
+  },
+  "video_path": "D:\\07-GAMES\\Firstlight\\artifacts\\connected-earth-roads-20261006\\video03\\84cdaf378935ce645d13fd1a6aa8d545.webm"
+}

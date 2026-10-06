@@ -44,17 +44,19 @@
    solid('field-store',-7,-79,8,7,3.6,0xb0a48b),
    solid('roadside-bench',-9,-65,3,.7,.95,0x8b7355),
    solid('overlook-stone',35,-23,2.8,2.5,1.8,0x8d9589),
-   ...trees.map(([x,z],i)=>solid('woodland-trunk-'+i,x,z,.65,.65,2.7,0x66553f))
+   ...trees.map(([x,z],i)=>solid('woodland-trunk-'+i,x,z,.65,.65,2.7,0x66553f)),
+   solid('hearthwater-fingerpost',9.6,106,.18,.18,2.4,0x685540)
   ],
   points:[
-   {id:'home-road',name:'Return to Hearthwater',x:0,z:104,kind:'return',text:'The home road is always open.',detail:'Return through the shared journey service. This extension does not replace your home or its existing Earth stories.'},
+   {id:'home-road',name:'Return to Firstlight checkpoint',x:0,z:104,kind:'return',text:'The home road is always open.',detail:'Return directly to your original Firstlight checkpoint, or follow the nearby signed road through Hearthwater. Existing Earth stories keep their own history.'},
    {id:'vessa',name:'Vessa · bridge keeper',x:-7,z:97,kind:'person',text:'A bridge is only impressive if the next person can cross it.',detail:'Vessa is an original provisional local. The channel crossing and both woodland lanes lead to the fields; the coppice branch is optional.'},
    {id:'channel-view',name:'The channel crossing',x:0,z:55,kind:'view',text:'A continuous timber crossing joins both banks.',detail:'The bridge is real supported ground with two solid rails. No swimming or boat control is implied.'},
    {id:'shore-view',name:'Rainward-facing overlook',x:30,z:-20,kind:'view',text:'Beyond the worked fields, the water opens toward the coast.',detail:'Rainward belongs to Earth. This is a local coastal outlook, not a completed port or the whole Earth map.'},
    {id:'merren',name:'Merren · field steward',x:-6,z:-68,kind:'person',text:'Check the water, pack the named load, then register it. I would rather have one dependable evening than a heroic story about ruined cabbages.',detail:'Merren is an original provisional local. The field-water and produce commission is ordinary work; it does not advance the prophecy or replace Fenna’s existing delivery.'},
    {id:'field-water',name:'Field-water catch',x:-15,z:-46,kind:'objective',text:'Check the catch and record the working field-water gauge.',detail:'The catch belongs to these fields. This is a bounded work interaction, not a fluid simulation or a repair of Ansel’s existing mill.'},
    {id:'produce-packing',name:'The evening produce load',x:13,z:-54,kind:'objective',text:'Pack the declared roadside produce load.',detail:'Work applies only to this commission. Decorative vegetables do not become free inventory or an unlimited harvest.'},
-   {id:'delivery-register',name:'Roadside delivery register',x:8,z:-69,kind:'objective',text:'Enter the named load and its field-water check in the local register.',detail:'This register records the local work. It does not invent online trading or replay Bellweather’s existing story reward.'}
+   {id:'delivery-register',name:'Roadside delivery register',x:8,z:-69,kind:'objective',text:'Enter the named load and its field-water check in the local register.',detail:'This register records the local work. It does not invent online trading or replay Bellweather’s existing story reward.'},
+   {id:'coastward-hearthwater-road',name:'Hearthwater road · home and Oren’s workshop',x:8,z:106,kind:'route',text:'The channel-bank track joins the orchard and ridge roads.',detail:'Continue on foot through the local scene boundary. The original Firstlight checkpoint remains unchanged; walking accepts no quest or reward.'}
   ],
   quest:{id:'earthlands-opening-v1',title:'Water, fields and the evening load',giverId:'merren',
    objectives:[{id:'first',pointId:'field-water',text:'Check the field-water catch',kind:'interact'},
@@ -68,7 +70,8 @@
    {id:'east-road',points:[[0,104],[0,92],[0,16],[14,15],[14,-34],[4,-41],[4,-67],[-6,-68]]},
    {id:'work-loop',points:[[-6,-68],[-6,-62],[-15,-46],[13,-46],[13,-54],[8,-69],[-6,-68]]},
    {id:'shore-walk',points:[[14,-19],[30,-19],[30,-20]]},
-   {id:'optional-coppice',points:[[-10,-15],[-29,-15],[-29,-20]]}
+   {id:'optional-coppice',points:[[-10,-15],[-29,-15],[-29,-20]]},
+   {id:'hearthwater-connection',points:[[8,106],[0,104],[0,92]]}
   ]
  };
  const atlantis = {

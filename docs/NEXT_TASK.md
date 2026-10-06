@@ -1,3 +1,49 @@
+# Production next: physically fit the Living Road, 2026-10-06
+
+Connected-road PR50 has exact-source complete qualification; retain its evidence
+and original return contract. Branch the next integration from the current
+pushed road evidence/continuity head in the reused integrated checkout. Do not
+replace gameplay with main, an archive or a colleague's partial module.
+
+Deepen existing Stormfall and the Living Road at its root-channel support.
+Inspect the receiving sockets, correct a supplied sectional member, seat four
+matching sections, then deliberately fasten through the existing command's
+validated transaction. The kit, joins and installed geometry must agree. No
+new quest/payout/inventory framework. Old completed and paid saves immediately
+keep their permanent brace; subsequent patrols inspect without rebuilding.
+
+Current staged rules, art, UI and command-gate proposals live under
+D:/07-GAMES/Firstlight/staging/living-road-fieldcraft-20261006. They remain
+proposals until root wires actual owners. Parent checked all four together:
+111 Node tests passed, no failures/skips; 12 files / 162654 logical bytes.
+The private hash receipt is
+D:/07-GAMES/Firstlight/artifacts/connected-earth-roads-20261006/FIELDCRAFT_PARENT_COMPOSITION01.json.
+Use the canonical `payload.fittingTicket` key. The actual app expeditionCommand
+currently passes bare worldContext; wire a fresh fieldcraftContext with the
+centrally minted/stamped lease before adopting the gated command.
+The explicit transient owner lease
+must survive harmless camera/time saves while expiring on real ownership,
+travel or import changes; do not freeze real worldContext revisions. Require
+opaque fitting proof inside incomplete E.command after old duplicate handling,
+and consume only after durable success. Wrong/incomplete/stale/save-refused
+fitting leaves history, materials and payment unchanged. Partial work resets
+with honest UI explanation; no new schema.
+
+Use usable coarse/fine or slider correction and visible socket-gap readiness,
+not dozens of repetitive button presses. Legal preview poses stay above soil.
+Prove actual WorldArt submission, receiving-point readability and controls in
+both cameras, normal-time observation/camera-save lifecycle, command-earned
+blade/bow journeys, historical completed saves, native reload, unchanged patrol
+and equipment binding, identical pages and complete remote qualification.
+
+Human clarity/feel remain pending: Did you know where to go and how to return?
+Could you understand the work and danger in either view? Did the useful result
+make another outing appealing? Full streamed countries, mounts, the full Regent
+war, Answering and Briar resolution remain wider production work. Preserve
+unresolved founder decisions and storage/merge/deployment/provider boundaries.
+
+---
+
 # Human first play is the next acceptance step, 2026-10-05
 
 The finite connected browser draft is ready for human acceptance: original chapters I-IV, local Earth, Hell, Heaven, Atlantis, Cosmos and a provisional Earth homecoming. It provides supported authored pockets and normal return routes. Full streamed countries/cities, mounts, the full Regent war, ultimate Answering and completed Briar resolution remain future scope.

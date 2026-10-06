@@ -1,0 +1,35 @@
+from pathlib import Path
+from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
+import sys,json,threading,hashlib,time
+ROOT=Path("D:/07-GAMES/Firstlight/authoring/atlantis-harbour-campaign-20261004")
+ART=Path("D:/07-GAMES/Firstlight/artifacts/connected-earth-roads-20261006")
+sys.path.insert(0,str(ROOT/"tools"))
+from browser_support import launch_kwargs
+from playwright.sync_api import sync_playwright
+class Handler(SimpleHTTPRequestHandler):
+ def __init__(self,*a,**kw):super().__init__(*a,directory=str(ROOT),**kw)
+ def log_message(self,*a):pass
+server=ThreadingHTTPServer(("127.0.0.1",0),Handler);threading.Thread(target=server.serve_forever,daemon=True).start()
+report={"method":"Supplemental isolated normal-RAF paused road terms; command-earned input and accelerated production movement setup; no video/profile retention, no personal saves", "sourceHead":"24c458037aec59f783840c2a9311896e95de1c54","htmlSha256":hashlib.sha256((ROOT/"index.html").read_bytes()).hexdigest(),"errors":[]}
+try:
+ with sync_playwright() as pw:
+  b=pw.chromium.launch(**launch_kwargs("hardware"));c=b.new_context(viewport={"width":1280,"height":720});p=c.new_page();p.on("pageerror",lambda e:report["errors"].append(str(e)))
+  p.add_init_script("window.__ETERNITIES_TEST_MODE=true;");p.goto(f"http://127.0.0.1:{server.server_port}/",wait_until="load");p.wait_for_function("window.Realm")
+  fixture=json.loads((ART/"browser04/earned-sources/blade/HEARTHWATER_GATE.json").read_text(encoding="utf-8"));p.evaluate("w=>Realm.test.replace(w)",fixture)
+  def walk(x,z):
+   r=p.evaluate("""([x,z])=>{let r=Realm.test.move(x,z);if(!r.ok)return r;let i=0;while(Realm.test.path.length&&i++<18000)Realm.test.step(.05);return{ok:i<18000&&Math.hypot(Realm.diagnostics.adventure.player.x-x,Realm.diagnostics.adventure.player.z-z)<.25};}""",[x,z]);assert r["ok"],r
+  walk(0,23);p.keyboard.press("e");p.locator('[data-rpg="earth-confirm"]').click()
+  for x,z in [(0,10),(14,-12),(12,-26),(0,-35),(7,-38),(12,-42),(18.3,-42)]:walk(x,z)
+  p.keyboard.press("e");button=p.locator('[data-rpg="earth-road-confirm"]');button.wait_for()
+  report["before"]=p.evaluate("()=>({scene:Realm.diagnostics.scene,hour:Realm.state.hour,renderer:Realm.diagnostics.renderer})")
+  started=time.monotonic();p.wait_for_timeout(8200);report["readSeconds"]=time.monotonic()-started
+  report["afterRead"]=p.evaluate("()=>({scene:Realm.diagnostics.scene,hour:Realm.state.hour})")
+  button.click();p.wait_for_function("Realm.diagnostics.scene==='world-earthlands'",timeout=5000)
+  report["afterConfirm"]=p.evaluate("()=>({scene:Realm.diagnostics.scene,hour:Realm.state.hour})")
+  assert report["before"]["hour"]==report["afterRead"]["hour"]
+  assert not report["errors"]
+  report["status"]="passed";c.close();b.close()
+except Exception as e:report["status"]="failed";report["error"]=repr(e);raise
+finally:
+ server.shutdown();(ART/"ROAD_LONG_READ_REPORT.json").write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
+ print(json.dumps(report))

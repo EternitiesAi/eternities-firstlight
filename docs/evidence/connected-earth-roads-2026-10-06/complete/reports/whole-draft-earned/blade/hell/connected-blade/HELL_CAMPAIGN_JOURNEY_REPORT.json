@@ -1,0 +1,597 @@
+{
+  "status": "passed",
+  "variant": "connected-blade",
+  "choice": "unbind",
+  "source": "D:\\07-GAMES\\Firstlight\\artifacts\\connected-earth-roads-20261006\\remote-full04\\whole-draft-earned\\blade\\local-Earth\\03_COASTWARD_FINAL_WORLD.json",
+  "method": "inherited continuous character; actual Open Cage rescue/escort and Writ campaign; production movement/combat/actions, accelerated ticks, in-memory saver",
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "manualDamage": 0,
+  "plantedDefeats": 0,
+  "nativePersistence": false,
+  "humanPacing": false,
+  "events": [
+    {
+      "type": "accept",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "The Last Unclaimed Road accepted. Neris’s rescue and the unconditional road home remain separate."
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "step": "witness-record"
+      },
+      "result": {
+        "ok": true,
+        "text": "Speak to Neris at her saved Kiln Refuge arrival. Neris: “Keep the measurements as they are, including the ones I once helped conceal.” Her safe return remains true whether it was walked or explicitly assisted. This account does not pronounce her innocent or ask her to repeat the rescue. Take the full record to Tovan."
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "step": "tovan-account"
+      },
+      "result": {
+        "ok": true,
+        "text": "Tovan identifies the Bell Yard service plate and acknowledges his earlier work on its compulsory claim. Compare his account with Neris’s measurements before operating the fixture. Tovan: “Knowing the rivets is useful. Leaving my own name out would make it a worse record.” The original Refuge water job retains its separate state."
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "step": "read-service-writ"
+      },
+      "result": {
+        "ok": true,
+        "text": "At the existing grounded Bell Yard plate, compare the named crew’s measured route with its imposed departure claim. The contradiction concerns this exterior service fixture; the inner foundry doors remain closed. Two optional preparations are nearby: the west shunt lengthens sweep recovery, and the east brace lengthens writ-line recovery. Neither is required. Read the warning before deliberately challenging Veyr."
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "step": "west-shunt"
+      },
+      "result": {
+        "ok": true,
+        "text": "Set the supplied shunt beside the west Bell Yard approach. It adds exactly 0.6 seconds to Veyr’s recovery after a sweep. It changes neither his health nor damage, and it does not extend the writ-line recovery. No ordinary material is consumed. This preparation belongs to the accepted campaign and does not repeat the old rescue cooling or clamps."
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "step": "east-brace"
+      },
+      "result": {
+        "ok": true,
+        "text": "Seat the supplied brace beside the east Bell Yard approach. It adds exactly 0.6 seconds to Veyr’s recovery after a writ-line. It changes neither his health nor damage, and it does not extend sweep recovery. No ordinary material is consumed. The eastern salvage sentinel keeps its own identity and is unrelated to this preparation."
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "step": "challenge-veyr"
+      },
+      "result": {
+        "ok": true,
+        "text": "Veyr: “An escape is a restraint I have not finished.” Explicitly begin the warned encounter on the supported Bell Yard exterior. You may inspect the site, prepare either support or retreat before choosing this action. Read the broad sweep and narrow writ-line as distinct locked shapes. The road south remains open; no combat door closes behind you."
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "step": "stabilize-service-engine"
+      },
+      "result": {
+        "ok": true,
+        "text": "Fit the supplied stabilizer at the service fixture on the open side of the closed works. This is an exterior adaptation of the Writ Engine story, not entry into the sealed full foundry. The local release can now hold a chosen configuration. Your actual home passage was already free and remains independent of the disposition. No ordinary timber, fibre, ore or equipment is spent here."
+      }
+    },
+    {
+      "type": "choose",
+      "payload": {
+        "choice": "unbind"
+      },
+      "result": {
+        "ok": true,
+        "text": "Unbind · open this local release recorded. The exterior engine and Bell Yard plate show the open release handle. Istra, Tovan and Neris recognize the local unbinding. The campaign records Unbind permanently; the stated fee remains unchanged. Any later patron advantage or restitution route needs its own implemented contract."
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "step": "verify-route"
+      },
+      "result": {
+        "ok": true,
+        "text": "Return to the Bell Yard plate and verify that its fitting matches the retained disposition: an open release handle for Unbind, a hooded service marker for Divert, or paired named-crew seals for License. This records the actual chosen local configuration; it does not certify the whole claim network. Return to Istra and explicitly claim the separate fixed fee. Completed verification can remain safely unpaid."
+      }
+    },
+    {
+      "type": "claim",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "The Last Unclaimed Road complete · Unbind · open this local release · 45 XP, 20 sunmarks, 4 ore, 3 timber and 2 fibre. Claimed once.",
+        "reward": {
+          "xp": 45,
+          "coins": 20,
+          "ore": 4,
+          "materials": {
+            "wood": 3,
+            "fiber": 2
+          }
+        }
+      }
+    },
+    {
+      "type": "claim",
+      "payload": {
+        "request": "fresh-request"
+      },
+      "result": {
+        "ok": true,
+        "duplicate": true,
+        "text": "This local campaign was already paid once. Its disposition remains in history."
+      }
+    }
+  ],
+  "fights": [
+    {
+      "enemy": "hell-tithe-warden-v1",
+      "style": "blade",
+      "stats": {
+        "level": 5,
+        "attack": 36,
+        "defense": 13,
+        "maxHP": 200
+      },
+      "frames": 32,
+      "seconds": 43.149999999960755,
+      "guards": 0,
+      "arrows": false,
+      "phases": [
+        {
+          "at": 41.54999999996221,
+          "phase": "recover",
+          "kind": "opening",
+          "remaining": 2.4500000000000015
+        }
+      ],
+      "impacts": [
+        {
+          "mode": "recover",
+          "before": 120,
+          "after": 110
+        },
+        {
+          "mode": "recover",
+          "before": 110,
+          "after": 74
+        },
+        {
+          "mode": "recover",
+          "before": 74,
+          "after": 38
+        },
+        {
+          "mode": "recover",
+          "before": 38,
+          "after": 2
+        },
+        {
+          "mode": "recover",
+          "before": 2,
+          "after": 0
+        }
+      ],
+      "weaponImpacts": [
+        {
+          "caller": "production blade command",
+          "mode": "recover",
+          "before": 110,
+          "after": 74
+        },
+        {
+          "caller": "production blade command",
+          "mode": "recover",
+          "before": 74,
+          "after": 38
+        },
+        {
+          "caller": "production blade command",
+          "mode": "recover",
+          "before": 38,
+          "after": 2
+        }
+      ],
+      "pacing": "carried command-earned equipment; no starter multi-phase/guard-count requirement"
+    }
+  ],
+  "routes": [
+    {
+      "room": "valley",
+      "start": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "x": 18,
+      "z": 6,
+      "frames": 1
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": 0,
+        "z": 31,
+        "yaw": 3.141592653589793
+      },
+      "x": -10,
+      "z": 24,
+      "frames": 77
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": -10,
+        "z": 24,
+        "yaw": -2.1815222911840926
+      },
+      "x": -36,
+      "z": -102,
+      "frames": 898
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": -36,
+        "z": -102,
+        "yaw": -2.8068558162729986
+      },
+      "x": -34,
+      "z": -70,
+      "frames": 201
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": -34,
+        "z": -70,
+        "yaw": 0.06241880999595735
+      },
+      "x": -30,
+      "z": -86,
+      "frames": 104
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": -30,
+        "z": -86,
+        "yaw": 2.896613990462929
+      },
+      "x": 14,
+      "z": -100,
+      "frames": 289
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": 14,
+        "z": -100,
+        "yaw": 1.8788491078186484
+      },
+      "x": -35,
+      "z": -88.9,
+      "frames": 315
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": -35,
+        "z": -88.9,
+        "yaw": 2.5915311821907014
+      },
+      "x": -36,
+      "z": -102,
+      "frames": 83
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": -12,
+        "z": 27,
+        "yaw": 1.8568477685122218
+      },
+      "x": -10,
+      "z": 24,
+      "frames": 23
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "x": 0,
+      "z": 3,
+      "frames": 130
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 0,
+        "z": 3,
+        "yaw": -2.2142974355881795
+      },
+      "x": 18,
+      "z": 6,
+      "frames": 131
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": 0,
+        "z": 31,
+        "yaw": 3.141592653589793
+      },
+      "x": -10,
+      "z": 24,
+      "frames": 77
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": 0,
+        "z": 31,
+        "yaw": 3.141592653589793
+      },
+      "x": -12,
+      "z": 27,
+      "frames": 80
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": -12,
+        "z": 27,
+        "yaw": -1.8925468811914157
+      },
+      "x": -15,
+      "z": 16,
+      "frames": 72
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": -15,
+        "z": 16,
+        "yaw": -2.875340604438883
+      },
+      "x": -12,
+      "z": -95,
+      "frames": 857
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": 0,
+        "z": 31,
+        "yaw": 3.141592653589793
+      },
+      "x": -18,
+      "z": -90,
+      "frames": 794
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": -18,
+        "z": -90,
+        "yaw": -3.03749271548018
+      },
+      "x": 17,
+      "z": -90,
+      "frames": 221
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": 17,
+        "z": -90,
+        "yaw": 2.0032041023654275
+      },
+      "x": 0,
+      "z": -91,
+      "frames": 108
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": 0,
+        "z": 31,
+        "yaw": 3.141592653589793
+      },
+      "x": 0,
+      "z": -97.9,
+      "frames": 831
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": 0,
+        "z": 31,
+        "yaw": 3.141592653589793
+      },
+      "x": 0,
+      "z": -105,
+      "frames": 874
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": 0,
+        "z": 31,
+        "yaw": 3.141592653589793
+      },
+      "x": 0,
+      "z": -105,
+      "frames": 874
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": 0,
+        "z": 31,
+        "yaw": 3.141592653589793
+      },
+      "x": -12,
+      "z": -95,
+      "frames": 822
+    },
+    {
+      "room": "world-hell",
+      "start": {
+        "x": 0,
+        "z": 31,
+        "yaw": 3.141592653589793
+      },
+      "x": -10,
+      "z": 24,
+      "frames": 77
+    }
+  ],
+  "sourceHashes": {
+    "adventure-art.js": "2022f25ee84f5a862025344bbbc15f46336a112e09bdb820075a2fec002d05eb",
+    "adventure-ui.js": "d519bbc992aaabd71db76a7ff08a6128317bdea6e8898f933a865e78edc3539d",
+    "adventure.js": "c8c9f751bfd09d4e123ef786867fd1f1321d8364cf2f83a3e8bda74c12417a5c",
+    "app.js": "2a82fd3f4bf371df96a63bca1e1169b7bdcea2bccadd3c8fc2be153a76c179bb",
+    "arsenal-art.js": "1899a42e04fd44e18eced395229793d275a873dbe2902473968289815a3f694f",
+    "arsenal-ui.js": "a462102896a3c7013f29f6cdf40504b983b8fde803baf41b98b8fb032da3abe6",
+    "arsenal.js": "70cf869a8240895158960c62cc65d802adf491ac24ee66bf7a3c0389557d2b70",
+    "atlantis-campaign-art.js": "9ab549df2eeafc8314c95c7c9e488bf80472fcfaac1de7dfe41ebbf8c1830243",
+    "atlantis-campaign-data.js": "22496def70bda1c6a6aa15c24cf53bad7bacab4facc54da7856ac693e7384693",
+    "atlantis-campaign-ui.js": "3bcf9923c47710bf2d3d876629ed47e46d4b7e4289aa8f7510b9ccac2025cb5d",
+    "atlantis-campaign.js": "da23cf19fe0fd68ae3f03c040fb3c375b655570bccffd320794cd45bd19067d3",
+    "beacon-art.js": "aea9e5d22d23eaf73777636c56c2444edac9b0d6239f9504cc95026585618577",
+    "beacon.js": "2aded7272a8d50cbfbdb4421f0140d00401a49788a3bb465260e30f501a2bf13",
+    "bridge-art.js": "e8f85dd21a0eb6363f674a934c625b22fc29f18fc63a543ebd61ea0a87fa254d",
+    "bridge-community-art.js": "454eb5365082d529fe3bb05b166b38e1d01e6fbcd34f1148c5ebf0d02ad9a615",
+    "bridge-community-ui.js": "a51a02420b59329d0ae268d42a5632de50d87d9b031103a724ad51564737c6d6",
+    "bridge-community.js": "4308eecafc47044c3c063b46e4c3aa7cb4e7a30d5d938c64fd518e7f29cb30cc",
+    "bridge-moment-view.js": "fe58c7824f96458f2608af4d1cf76c81d2936da89a8cca1ad933974b65e0e03c",
+    "characters-ui.js": "58de0cb602479d45eae66f4ccd4077253e34e6e3d843a1505f9eca4d4a1f8f77",
+    "characters.js": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+    "classes-ui.js": "6fb25a35158cf3388485f57016aea745260dea8a057f8d6b4781d3f7a296d22b",
+    "classes.js": "15da8e8f26c234a5903e5321d9cbcadea773037c9536911a5dc85cb9da2aaa97",
+    "coastward-settlement-art.js": "8f08b152b5205c434ffa7408118e754799eb7ab396b2c0aaec8920cc0029c839",
+    "coastward-woodland-art.js": "45b2758d3f8d75457545b24c2cc96f81f70ac8296bf183f57ddd412289f130fc",
+    "combat-view.js": "9e674247119cece3bb6a35ca31fa424ed5e8e0187cbd2c149afb6f4aba085d5c",
+    "combat.js": "4176bbf57fd761732b5f9d96708ac8ac0d6855ef56c928d06810f06f74315a32",
+    "companion-art.js": "06821bb333cc1d61398017fcd236fb4622aae6432ce636f827642531946b2a32",
+    "core.js": "7ee0f2e79ed77787e4b8c720183b708f0a6d91d9b24cadab28739d0187319b00",
+    "cosmos-art.js": "d68fb28540196c4d6f39ca60cc99e1eb99fab534fb026578c02e75119cdd17e2",
+    "cosmos-campaign-art.js": "3b22a5fe117cb3731a1531a66941fba9e2953b5c23f3816150c184230a631a5e",
+    "cosmos-campaign-data.js": "9c7d4d30b863e25812df3651e785bff3f87495b37ede488804ee03178cab93d2",
+    "cosmos-campaign-ui.js": "95f8bbb9df5f97ddcb779268e5c28f412914d388c92bff00f5e79ec048e77686",
+    "cosmos-campaign.js": "7e03aaad5efe9db475ea82db6e8b9343361a68dec52132cf190e3c055fc681fb",
+    "cosmos-ui.js": "2582b2f2f4d894f44a969108af258087cf7f0be8c70dbf73eabca5810d236465",
+    "cosmos.js": "bf4d9898600b9b5d296f3de934f6f8dd52e343f3b762fd5f0085a09f14ea2090",
+    "creative.js": "d0032234d3cab1a6e90c84736011a98631bcc3748de8d5fc23df872367038761",
+    "crossing-art.js": "86cd8945194c6437d9ece96a7d0bcac8a4970eb5f3324300e48d08376bb61bcf",
+    "crossing-ui.js": "5a2a7f6989a0a7ff0a96fee7aa88ec77dadbfba15440a272f131f17a98d86913",
+    "crossing.js": "b666c4e6e20483ad267293578020876c8791bbbf23f8116803936658400d1a8f",
+    "drover-art.js": "0f4dda1af6b05e1c7e0931d835fca2d3faec7960788bc89b9f9b591af19206b0",
+    "earth-art.js": "494aa1f9d018c9490ca8b95ba212470b5a98b5e5e6e2d0cab68bd36d16b60314",
+    "earth-expedition-art.js": "822a0a8d7dc8271f92a5c38691ab7caf208063671b3e8dd6da05e120094d226f",
+    "earth-expedition-beast-art.js": "bf663c1cf48ef65a1c43e42bec63e743686506f3c028b7e72e4f4eac2ef7c0e4",
+    "earth-expedition-dialogue.js": "964360081bfc8a5a2966db854d2c12268de1187bf9f4a3b6e4eb0b5014aa9f9d",
+    "earth-expedition-ui.js": "9f9359c4e8f63108aa3e674d9fc9589de832420306e6bfc1b49c0006641715a8",
+    "earth-expedition.js": "fd1fd97cc4e8e9e12202de4bbc9186c236d37750f574070d709d56d214418f59",
+    "earth-homecoming-art.js": "2353946d8bb28a2881f3191807fc248f95fea75f16bc585f6588d82742b750ed",
+    "earth-homecoming-data.js": "55485996a1651f8b5f0580c9e074f5873ddf45ca26744939238e31516051014f",
+    "earth-homecoming-ui.js": "5e57a2367153e516bdab12837db82812de3124a32489b09987dd285be011159d",
+    "earth-homecoming.js": "c16adf4e13bd3a57e9be6aae6cd0cc00a4b78b49106f220ee74dee105fe858c1",
+    "earth-notes-art.js": "87fe4682829bfff89978d7046d62f518874a7953808431c5634327c9eb449556",
+    "earth-notes-ui.js": "9e0f0df26062b4929e0c3a801e8e857afc269936dbe4932279e935c56274f264",
+    "earth-notes.js": "4ab5807020f65086b190591414c871ee76412791ac0c97dca5447c595840e9e0",
+    "earth-road-art.js": "e7bd1fbc7b1177327c0756724b1ccf78b1b640568d9121a1ff416736524b1520",
+    "earth-road-ui.js": "e4577d03d3b97d271b8374054d34b5afdecbb47b28e74b911b931c2ed8e3c8ad",
+    "earth-road.js": "7417a1bdc4ab9eea8e2afc4c013a6890507b5670fca97d1f6ebe9f823390a125",
+    "earth-shoulder-art.js": "422a50a7aeec456b6f75095c53a319d2cbf6ac5e09f773e268ed54034c2ddb8d",
+    "earth-story-ui.js": "930b71ef9184a5d7b03cc79ff33d7f9e000eabb9d3934266af9e0fe8713448cb",
+    "earth-story.js": "fd0ced6f17f1b15b2aee4e31aa00be249bc8e1fb08c4e735416d95c173fd52d0",
+    "earth-ui.js": "9294c4cb9666aa6aec2d36d6eb8e34686bf01f57ead9964322ad8283cc2ba635",
+    "earth.js": "cbd5ee90a4b335c66ba096f439f8f3efe6f6f68cba99086485f34fd81866a166",
+    "elderweald-trail-art.js": "e978e735ec1ee8048df1777b190959b832cd37755f682c3d51b9ec3f0a7f0491",
+    "elderweald-world.js": "8d993c230ad7198e397f4bf41938522405c352bbdd903b04016d1262822d3538",
+    "engine.js": "b98cfea8453e5b6deeb16a13c45f1c1bf7fc80fb9ba8d0a185c242a6ea9b078d",
+    "experience.js": "3b5a178ca757c7b58dcbfcedcc1522887dc6a178faf5e942c6e3894166d60570",
+    "gathering-adapter.js": "df41b2b23ae11c6ef2661e48301c488cb26ab753a7beec73349b5c959d5ab564",
+    "gathering-art.js": "b693bce2a519bd75e4f99e03b96184f1ed10c9a9a02e25b7affd53e739f5e0eb",
+    "gathering-music.js": "5e44106322e01aebc7b87d8eefcd29b2a2577d2162d70fb8f99475c7cc7deb12",
+    "gathering-ui.js": "0c347e1da4a897b178c405f35cfef2e6ea518fe5d9e6ba650e48e48895e0445a",
+    "gathering.js": "256a33c52f2b31c2c421f72a74aae543feb6c554ebae863aee55d31f0c68eb54",
+    "heaven-campaign-art.js": "25ed9017108ea106579584233cc55b2a1753d62bd36174bb9c023682cb2ad24a",
+    "heaven-campaign-data.js": "2495650ded3f74d81d3d53f4d259f29052d3ff64b65a4a6331351b049bdc67eb",
+    "heaven-campaign-ui.js": "67723b2f0acf3e52da6177ad98d8a881e3b3e509bfc418bd3031ffbdc9f0383e",
+    "heaven-campaign.js": "50aa6ff6607f9dfda6f0df1ca2fa473bca36a7513a34d1a915c1a87305e69e26",
+    "hell-campaign-art.js": "5ea5b875e32114b07b52ffe0000b7163b340f08adf0eae01552b84a478420f18",
+    "hell-campaign-data.js": "745221292e89ed2bcdf455ffc1bf4e0e66259add5671709e77135d5ede3892ff",
+    "hell-campaign-ui.js": "d47acd0b9ba992df6ff4c73e1b5f3dfb9c1b2ced0745c8ffe50d6cd34cc80f8c",
+    "hell-campaign.js": "cc8ca64f9515e75f4bf572c3feb5978f07409e4aca5a328901b3322f399f67a1",
+    "home-history-art.js": "df3acc85a5191c3938692759e85b7ee76ef5f936f29e65d6a845636600396a1f",
+    "home-history-ui.js": "41a330942368c7a4500759f2cbaf1cda224bd5ed25bc284b9e44463fc1f43a8e",
+    "home-history.js": "f002eb64b57343e38e95eafa4cd522c892aab26efc7b0c3d65bea86a45cec6e6",
+    "local-life-art.js": "381d1f5469310e2dc98c14b6d58c4259113fd1d6dd10f77059f45e6848fefcf2",
+    "local-life-ui.js": "95a0757ae7f612560c94ebca13474925251fb485e449da0bc5c6440ceb43b4c6",
+    "local-life.js": "005f7bd489bba2832aaec0b6c9d1cc499660e6e0047be73ab0f85d2922955d48",
+    "mill-gate-art.js": "fe33cbbd3f180a8d32a0d0a338cde42c40e809af99ed2da1db157ba5c7fbcdd9",
+    "millwright-art.js": "bd7397ee2a9f4c47b2b51117e28f3c68533da41de3122bb0a39a5575913a5661",
+    "pursuit-ui.js": "f8c6bab82d88b6e4dcbf05f3e78701d489f31e224c80211b94f8acc8b70b4224",
+    "pursuit.js": "b77e1874f8278971f41d4b62551df40c81126f2a35e02958958e802ab9c8b5ff",
+    "quarry-art.js": "5bc6d93e99e430e7a460a1a2a510fc69e60c9dd80e758bce7470dae3ae3446f6",
+    "realm-art-data.js": "1ac6251a7acf23c78799d96b5554fb3fe572c40e12c54c73f0188c4f8a324435",
+    "realm-atlas-ui.js": "26d34bdc7afc9fbf9bb1f0f483aa6bc8312eba8a2186d21c80cab2fc1f68529b",
+    "realm-craft.js": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+    "realm-givers-art.js": "8362d7a98f238b77b9afa5eff7346f430c02af6cd249502f146308a3d246fb34",
+    "realm-trails-art.js": "99a588e7aee9c7d43b6506de836ab2bab75a9420c6b718369c37e4517ca037e3",
+    "realm-trails-cosmos.js": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+    "realm-trails-north.js": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+    "realm-trails-south.js": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+    "realm-trails-ui.js": "7d58c16fbe3213220d439f0760e24988aee87567454490eb6ddfd19c825e6a80",
+    "realm-trails.js": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+    "road-art.js": "0cc12918587f98f4b9ed2b7beb8d1b21219b4a69959742a759f88354942df05d",
+    "road.js": "d18106f1a2147d623680b285dc5882cae8d2b74c5ef8b500d75de35d20c86dbc",
+    "rpg-ui.js": "5fb404cd66cda1431750af2967a850f78698ef7eb0e7e894631835103ecb3e16",
+    "sandbox-art.js": "3c3a8f9ea1a44fb84bdfe07a99b33969f253714c271e91ca3cfeca7eab76474c",
+    "sandbox-ui.js": "28d7530e8153ed3c8a6a31b3e204cbc9680484b013cb5880a4f05b76cf83d8f5",
+    "sandbox.js": "ad11196c12363b650f2697ab8fb30eb657ff0bf65953274942ce36eb28131e85",
+    "skitter-art.js": "bd84a78381cf7232a7fb92a868332308c68fcae17d25764c2b5d4bdfefa29903",
+    "soundscape.js": "15b7b578886b838ef20e56501940354d33a8ffcd5581332dd4c4b2035692c5af",
+    "starter-art.js": "cfc4f672b891fe6d53dec82a97aeac7204b8179b3490ae9df9ce3412c4661fcc",
+    "starter-ui.js": "44718b2835207383632d5f33e0748dba9c348041b11f9b404040bdf07a259052",
+    "starter.js": "c6debd10295babafdcd714445c2ac18c0ff5ce8fd54b8dfe4f3ff78c9e0a294d",
+    "surface-assets.js": "5cb0f81348074edbc0e4f3c7dee4962fac10bbc5e7db0ee07b16216f3b7a1e5f",
+    "traveler-art.js": "cf9e029046f5581aa3116f648fb657f9edff2ced67abc507afa38525f3ae1ba1",
+    "traveler-equipment-art.js": "13537e49de6fdcd670e75875c3b17736b76df53b65709d2b2366aab721dc98dc",
+    "workshop-transactions.js": "115193dc80841b531a14f85a41c8d2d5e44c6169fc4ea4d6c19637eb7a8e8dd4",
+    "world-atlantis-earth.js": "6685a2da156f3b6d394b9dfef611fafb76d277df2d8a1c57e82746d276228665",
+    "world-foundations-art.js": "e7681955e15b1f8ce5552997f374fabfe4569fbfb40c0b1dd0bc4100a95d65cd",
+    "world-foundations-ui.js": "a800a7d1506ac346fa060b32a68908e39901b908358ede7bc206b4c8f6b0d35a",
+    "world-foundations.js": "4173e396c6d002d0ec25a7c549f046e0e77e561c3ef3b0e89400f84cc070d752",
+    "world-ground-coalescing.js": "c31024794d5b5db2c28d9aab9ecf8fd0acdf55c2630ff5edf93b988151e5d63d",
+    "world-heaven-hell.js": "7192efdcce877e359865c43d39d03fc1a2a54ebad960fd2d2a378880033f4cbd",
+    "world.js": "d13277330b9d281e56392e153f8805ccaca3f482a3db75402cfb49ed8d9b79ec"
+  },
+  "html_sha256": "14c23bbf9325048407b50fe094d7f14cafea31e2c21f94b0347be2b30ede6d4d",
+  "saveVersions": {
+    "world": 9,
+    "adventure": 12,
+    "hellCampaign": 1
+  }
+}

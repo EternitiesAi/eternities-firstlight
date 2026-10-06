@@ -1,0 +1,79 @@
+[
+  {
+    "evaluate": "()=>{Realm.test.quality('balanced');const d=Realm.diagnostics;if(!d.renderer?.includes('NVIDIA')||!d.renderer.includes('3080'))throw Error('RTX hardware renderer required');return{renderer:d.renderer,quality:Realm.state.settings.quality,viewport:[innerWidth,innerHeight]};}"
+  },
+  {
+    "walk": [
+      0,
+      23
+    ]
+  },
+  {
+    "key": "e"
+  },
+  {
+    "click": "[data-rpg=\"earth-confirm\"]"
+  },
+  {
+    "evaluate": "()=>{const checkpoints=[[0,10],[14,-12],[12,-26],[0,-35],[7,-38],[12,-42]];for(const[x,z]of checkpoints){const r=Realm.test.move(x,z);if(!r.ok)throw Error(r.error);let i=0;while(Realm.test.path.length&&i++<18000)Realm.test.step(.05);if(i>=18000)throw Error('setup walking timeout');}Realm.test.view({yaw:1.2,elevation:.4,distance:9});Realm.test.render();return{label:'ACCELERATED PRODUCTION-WALKING SETUP ONLY; ensuing walk/UI/bridge use normal RAF',scene:Realm.diagnostics.scene};}"
+  },
+  {
+    "evaluate": "()=>{const m=window.__roadTiming={enabled:true,last:null,scenes:{},started:performance.now()};const tick=t=>{if(!m.enabled)return;if(m.last!==null){const key=document.body.classList.contains('in-earth')?'Hearthwater-road':'Coastward-bridge';(m.scenes[key]||(m.scenes[key]=[])).push(t-m.last);}m.last=t;requestAnimationFrame(tick);};requestAnimationFrame(tick);return{label:'Headless recorded normal-RAF callback intervals on shared desktop; exclude accelerated setup; not foreground FPS qualification'};}"
+  },
+  {
+    "walk": [
+      18.3,
+      -42
+    ],
+    "wait_ms": 500
+  },
+  {
+    "key": "e",
+    "wait_ms": 1600
+  },
+  {
+    "click": "[data-rpg=\"earth-road-confirm\"]",
+    "wait_ms": 900
+  },
+  {
+    "walk": [
+      0,
+      104
+    ]
+  },
+  {
+    "walk": [
+      0,
+      92
+    ]
+  },
+  {
+    "walk": [
+      0,
+      75
+    ],
+    "wait_ms": 600
+  },
+  {
+    "key": "v",
+    "wait_ms": 1800
+  },
+  {
+    "walk": [
+      0,
+      92
+    ],
+    "wait_ms": 900
+  },
+  {
+    "key": "m",
+    "wait_ms": 900
+  },
+  {
+    "key": "Escape",
+    "wait_ms": 300
+  },
+  {
+    "evaluate": "()=>{const m=window.__roadTiming;m.enabled=false;const stats={};for(const[k,rows]of Object.entries(m.scenes)){const s=rows.slice().sort((a,b)=>a-b),q=p=>s[Math.min(s.length-1,Math.floor((s.length-1)*p))];stats[k]={callbacks:rows.length,p50_ms:q(.5),p95_ms:q(.95),p99_ms:q(.99),max_ms:s.at(-1),intervals_over_50ms:rows.filter(v=>v>50).length};}return{label:'Actual recorded headless RAF intervals, includes menus and recorder/shared-desktop overhead; not displayed FPS or GPU timer',duration_ms:performance.now()-m.started,scenes:stats};}"
+  }
+]

@@ -5,7 +5,7 @@ const C=require('../src/core.js'),W=require('../src/world-foundations.js'),E=req
 require('../src/coastward-settlement-art.js');require('../src/coastward-woodland-art.js');
 const WA=require('../src/world-foundations-art.js'),F=1.57,R=.31,BODY=1.7,EPS=2e-5;
 const Trail=require('../src/elderweald-trail-art.js'),A=require('../src/adventure.js'),AR=require('../src/arsenal.js'),Rig=require('../src/traveler-art.js'),Equipment=require('../src/traveler-equipment-art.js');
-require('../src/realm-givers-art.js');require('../src/world.js');
+require('../src/realm-givers-art.js');require('../src/world.js');require('../src/earth-road.js');require('../src/earth-road-art.js');
 const d=W.definition('earthlands'),empty=()=>({box:[],round:[],octa:[],disc:[],'timber-panel':[]});
 function ledger(branch='managed-coppice',n=EE.definition.steps.length,claimed=false){const r=EE.fresh();r.story.accepted=true;r.story.steps=EE.definition.steps.slice(0,n).map(s=>s.id);r.story.branch=n>=2?branch:null;r.story.claimed=claimed;return EE.validate(r);}
 const matrix=p=>p.opt?.m||p.m||E.M.compose(...p.p,...p.s,...(p.opt?.r||p.r||[0,0,0]));
@@ -84,7 +84,7 @@ test('grounded board/posts and shallow readable record layers keep connected con
  }
 });
 test('actual static caller emits coalesced floor, unchanged seventy banks and one box per physical solid',()=>{
- for(const quality of ['low','balanced','high']){const items=staticSubmission(quality),base={low:1135,balanced:1267,high:1363}[quality],trail=items.filter(p=>p.elderwealdTrail);assert.equal(items.filter(p=>!p.elderwealdTrail).length,base);assert.ok(trail.length<=280,'explicit trail factory budget');assert.ok(items.length<=base+280);assert.equal(items.filter(p=>p.worldGround).length,64);assert.equal(items.filter(p=>p.coastBank).length,70);
+ for(const quality of ['low','balanced','high']){const items=staticSubmission(quality),base={low:1135,balanced:1267,high:1363}[quality],trail=items.filter(p=>p.elderwealdTrail);assert.equal(items.filter(p=>!p.elderwealdTrail&&!p.earthRoadPart).length,base);assert.ok(trail.length<=280,'explicit trail factory budget');assert.equal(items.filter(p=>p.earthRoadPart==='post').length,1,'new canonical road post is separately owned');assert.equal(items.filter(p=>p.earthRoadPart==='fingerpost').length,16,'real road factory is present');assert.ok(items.length<=base+297);assert.equal(items.filter(p=>p.worldGround).length,64);assert.equal(items.filter(p=>p.coastBank).length,70);
   for(const s of d.solids){const ps=items.filter(p=>p.worldSolid&&p.worldSolidId===s.id);assert.equal(ps.length,1);assert.deepEqual(ps[0].p,[s.x,F+s.h/2,s.z]);assert.deepEqual(ps[0].s,[s.w,s.h,s.d]);assert.equal(ps[0].cameraSolid,true);}
   for(const p of items)assert.ok([...p.p,...p.s,...(p.m||[])].every(Number.isFinite));
  }
