@@ -1,0 +1,116 @@
+{
+  "scope": "Current actual source and separate ordinary-RAF native boundary acceptance; not complete remote/human/AAA acceptance",
+  "sourceHead": "3763f0f4004f44ee6afc7c4368f811ea922c4ca7",
+  "source": {
+    "commands": 208,
+    "syntaxModules": 137,
+    "node": {
+      "total": 1886,
+      "passed": 1884,
+      "failed": 0,
+      "skipped": 2
+    },
+    "python": {
+      "methods": 421,
+      "passed": 415,
+      "methodSkips": 6,
+      "skippedSetUpClassRecords": 3,
+      "unittest": "OK (skipped=9)"
+    },
+    "rawReceipt": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\SOURCE08_EXIT.json",
+      "bytes": 558,
+      "sha256": "072f357ef0fffea39d268b594e5fa21046ce4d117e566ea9f5d946107c1accbd"
+    }
+  },
+  "boundary": {
+    "status": "passed",
+    "checks": 3175,
+    "cases": [
+      {
+        "name": "ready-observe-switch-import",
+        "checks": 1607,
+        "failed": 0,
+        "contextClosed": true,
+        "nativeWrites": 86,
+        "restarts": 1,
+        "nativeQuality": {
+          "requested": "balanced",
+          "actual": "balanced",
+          "rendererRequest": "hardware"
+        }
+      },
+      {
+        "name": "genuine-death-clearance-switch",
+        "checks": 1478,
+        "failed": 0,
+        "contextClosed": true,
+        "nativeWrites": 92,
+        "restarts": 1,
+        "nativeQuality": {
+          "requested": "balanced",
+          "actual": "balanced",
+          "rendererRequest": "hardware"
+        }
+      },
+      {
+        "name": "SYNTHETIC-fiber999-signed-capacity-retry",
+        "checks": 90,
+        "failed": 0,
+        "contextClosed": true,
+        "nativeWrites": 30,
+        "restarts": 1,
+        "nativeQuality": {
+          "requested": "balanced",
+          "actual": "balanced",
+          "rendererRequest": "hardware"
+        }
+      }
+    ],
+    "serverClosed": true,
+    "errors": [],
+    "browserErrors": [],
+    "externalRequests": [],
+    "rawReport": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\native-boundary04\\WILD_SIGNS_BOUNDARIES_REPORT.json",
+      "bytes": 1303237,
+      "sha256": "129cc014116ea3f4faecd58f73cf0d27dc3edd16b65068a2870ba65817b625b3"
+    },
+    "rawConsole": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\NATIVE_BOUNDARY04_CONSOLE.log",
+      "bytes": 261935,
+      "sha256": "555a26179642406032ddf1b212a83a722ecbc826c8de14a1a33911ca074a4184"
+    }
+  },
+  "unchangedPrimary": {
+    "executedSource": "04ee4424550d64336353e71cbe78f47d3750cb02",
+    "checks": 2176,
+    "mappedCurrentInputs": 166,
+    "mapping": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\NATIVE03_RUNTIME_IDENTITY_BOUNDARY04.json",
+      "bytes": 27606,
+      "sha256": "37ea7f69313d378de192faf095b4272d846dd9737e59e5c08ac6cf41b04cf2a0"
+    },
+    "meaning": "Exact unchanged production/caller bytes; not a repeated primary epoch"
+  },
+  "html": {
+    "bytes": 3253022,
+    "sha256": "05a606d1e9ff6d9e72a13221af524512f3bcc7c677166e4be7fa2119b57afc61",
+    "identical": true
+  },
+  "retainedNegatives": [
+    "Boundary01 fresh/checkpoint admission failure",
+    "Boundary02 240-second hostile approach timeout",
+    "Source07 pre-verifier dirty metadata refusal",
+    "Boundary03 pre-browser exclusive log-sharing refusal",
+    "Prolonged eight-maximum-frame CPU timing oscillation",
+    "Superseded RemoteFull01 interruption"
+  ],
+  "remote": {
+    "status": "running-not-complete",
+    "executingSource": "3763f0f4004f44ee6afc7c4368f811ea922c4ca7",
+    "scope": "Freshly fetched source in reused clean independent clone, full source and all51browser suites"
+  },
+  "humanAcceptance": "pending",
+  "productionGoal": "active-unfinished"
+}

@@ -1,0 +1,11 @@
+# Qualification epoch 3: actual current local gates passed
+
+Source08 completed at clean pushed `3763f0f4004f44ee6afc7c4368f811ea922c4ca7` on2026-10-07T15:33:30Z:208 commands/137 syntax, Node1884 pass/2 conditional skips; Python421 methods415pass/6 method skips plus3 skipped setUpClass records. Mandatory current earned/cohort/whole-draft checks passed. Source07's pre-verifier dirty-index refusal remains; no source execution is attributed to it.
+
+Boundary04 completed at the same source on2026-10-07T15:44:21Z with3175 checks:1607 ready-owner switch/import,1478 genuine death/clearance/switch,90 explicitly synthetic fibre999 capacity/refusal/craft/retry. All three contexts and the loopback server closed; errors, browser errors and external requests are empty. Original240-second approach/death and actual input/damage assertions stayed. Boundary03 refused before browser launch on a Windows exclusive log read; the shared-read correction preserves that negative. Boundary02's timeout and the disclosed prolonged CPU timing stress remain distinct retained failures.
+
+The original primary Native03 remains executed at04ee with2176 checks. Exact readback of166 production/caller inputs maps that unchanged runtime to3763; this is not a repeat native epoch. HTML stays identical3253022bytes/SHA25605a606d1e9ff6d9e72a13221af524512f3bcc7c677166e4be7fa2119b57afc61. The one decoded17-second clip/two stills remain at their original source epoch.
+
+The complete source/all51browser gate is running from freshly fetched3763 in the reused clean independent remote clone. It is not yet a complete remote pass. The roadkeeper, shorter dialogue and four crown replacements remain staged: combined source/build CPU80/80zero skips, uninstalled/unrendered. Wider production, human feel, full geography, accessibility and device-scale performance remain unfinished. World9/Adventure12/optional WildSigns1 unchanged; no main merge/deployment or extra full game/media.
+
+This small supplement binds checked-in LF receipt bytes and retains the original raw-to-Git mappings. Prior13 original and5 Qualification02 payload leaves are unchanged. Raw native reports/console/profiles stay on D; no full report, game or movie duplicate is added.

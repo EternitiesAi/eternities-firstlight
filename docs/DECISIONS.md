@@ -1,3 +1,11 @@
+# Current local wildlife qualification and next production slice, 2026-10-07
+
+Source08 and actual Boundary04 passed at3763f0f4004f44ee6afc7c4368f811ea922c4ca7:208 source commands/137 syntax; Node1884pass/2skip; Python421methods415pass/6method+3classskip; three genuine/labelled-native boundary cases3175checks, all contexts/server closed. Primary Native03's2176 checks and one decoded17-second clip remain their original04ee epoch with166 unchanged runtime/caller readbacks at3763. Read docs/evidence/wild-signs-2026-10-07/QUALIFICATION03.md; preserve every earlier refusal/timeout/stress/interruption. Complete remote51-browser gate is running in the independent STATION at3763, not yet a pass.
+
+ROOT is released for parent integration of gameplay/road-account-aftermath-20261007, stacked on this WildSigns review. Source02 shortens actual village readings; the passive roadkeeper owns no save/reward; four original crowns change appearance only. Combined actual source/build in RAM passed80 CPU checks/zero skips after a real installed-baseline test defect was repaired; independent final repair/native caller review and actual installed/rendered checks remain. Two scoped Sol colleagues only; future footfall stage owns no App installation. Reuse ROOT/STATION, keep heavy D/bounded media/source files, retain blocked standalone-deletion refusal. Preserve all saves/XP/choices/gear/sockets/companions/housing/crops/music/both cameras and World9/Adventure12/WildSigns1. Wider goal active unfinished, old heartbeat paused; no mainmerge/deploy/paid/billing/personal saves/unrelated stop/cleanup.
+
+---
+
 # Preserve supported corners and distinct evidence, 2026-10-07
 
 Repair the native driver rather than weakening navigation/body clearance, enlarging its240-second deadline, moving the enemy or injecting damage. Nearby waypoints may be skipped only when the next full actual body segment is supported; a separate precise native eight-key helper retains the shared consignment following threshold. New four actual-Core controller regressions remain distinct from browser/RAF qualification. Prolonged input stress is retained as a timing limit.

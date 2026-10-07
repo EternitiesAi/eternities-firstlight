@@ -1,0 +1,44 @@
+{
+  "scope": "Qualification03 exact checked-in LF payloads; older packets retained unchanged",
+  "sourceHead": "3763f0f4004f44ee6afc7c4368f811ea922c4ca7",
+  "files": [
+    {
+      "path": "SOURCE08_EXIT.json",
+      "bytes": 545,
+      "sha256": "caf89249a7f55b6150af671e4a752bdf90ea93cdce59968a217371e02cd5f850"
+    },
+    {
+      "path": "NATIVE_BOUNDARY04_EXIT.json",
+      "bytes": 568,
+      "sha256": "aa2b57ae185233465be38ebbf51daaf23bf137ecbc67d9297a18b4256f0c015e"
+    },
+    {
+      "path": "QUALIFICATION03_SUMMARY.json",
+      "bytes": 3728,
+      "sha256": "899b97d87a5df8fa16385e79c5a09da6e0f7e0074ab7318a0f5444dec20116c1"
+    },
+    {
+      "path": "QUALIFICATION03.md",
+      "bytes": 2222,
+      "sha256": "ae39d0f9f21572204767ccb6b43a19e507020862f4b68b18cef825e988cd29c7"
+    }
+  ],
+  "rawToGitMappings": [
+    {
+      "path": "SOURCE08_EXIT.json",
+      "rawBytes": 558,
+      "rawSha256": "072f357ef0fffea39d268b594e5fa21046ce4d117e566ea9f5d946107c1accbd",
+      "gitBytes": 545,
+      "gitSha256": "caf89249a7f55b6150af671e4a752bdf90ea93cdce59968a217371e02cd5f850",
+      "transformation": "CRLF-to-LF only"
+    },
+    {
+      "path": "NATIVE_BOUNDARY04_EXIT.json",
+      "rawBytes": 581,
+      "rawSha256": "85a6ddd735c61af995ecd8107f5c0d905df6a791b00edfabbbac52bb09b642d4",
+      "gitBytes": 568,
+      "gitSha256": "aa2b57ae185233465be38ebbf51daaf23bf137ecbc67d9297a18b4256f0c015e",
+      "transformation": "CRLF-to-LF only"
+    }
+  ]
+}
