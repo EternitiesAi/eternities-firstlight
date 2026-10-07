@@ -26,7 +26,11 @@ test('visible accept uses the exact canonical choice and first load is separatel
  const h=harness(),old=copy(h.sim.state.earthExpedition);h.accept('north-stormfall');assert.equal(h.writes,1);assert.deepEqual(h.sim.state.earthExpedition,old);assert.equal(h.ui.tracker().progress,'0/12 arrivals · J work · M route');assert.equal(h.rpg.quest,'local-life');assert.ok(h.ui.interact());assert.equal(h.rpg.civic.selected,'earthlands');assert.equal(h.rpg.civic.tracked,D.ID);
 });
 test('Continue closes the paused workspace before obtaining real moving status',()=>{
- const h=harness();h.accept('south-stormfall');assert.equal(h.sim.paused,true);h.ui.action(control('continue'));assert.equal(h.closes,1);assert.equal(h.sim.paused,false);assert.equal(M.current(h.ctx()).status,'moving');assert.equal(h.writes,1);assert.ok(h.notices.at(-1).includes('Stay nearby'));
+ const h=harness();h.accept('south-stormfall');assert.equal(h.sim.paused,true);h.ui.action(control('continue'));assert.equal(h.closes,1);assert.equal(h.sim.paused,false);assert.equal(M.current(h.ctx()).status,'moving');assert.equal(h.writes,1);assert.match(h.notices.at(-1),/Stay nearby until it stops at Meadow road/);assert.match(h.notices.at(-1),/blue dotted course/);assert.doesNotMatch(h.notices.at(-1),/next stop is marked/);
+});
+test('map describes the unaccepted board before exposing a selected physical course, without progress',()=>{
+ const h=harness(),before=JSON.stringify(h.sim.state);assert.match(U.legend(h.sim),/signed supply board/);assert.doesNotMatch(U.legend(h.sim),/chosen route|blue dotted course/);assert.deepEqual(U.routeLine(h.sim),[]);assert.equal(JSON.stringify(h.sim.state),before);assert.equal(h.writes,0);
+ h.accept('south-stormfall');const accepted=JSON.stringify(h.sim.state),writes=h.writes;assert.match(U.legend(h.sim),/chosen route/);assert.match(U.legend(h.sim),/blue dotted course/);assert.ok(U.routeLine(h.sim).length>5);assert.equal(JSON.stringify(h.sim.state),accepted);assert.equal(h.writes,writes);
 });
 test('a refused ready-arrival save retains proof/menu and retry records exactly one before continuing',()=>{
  const h=harness();h.accept('south-stormfall');h.ui.action(control('continue'));const ready=h.leg(),ticket=M.arrivalTicket(h.ctx()).ticket,before=JSON.stringify(h.sim.state),closes=h.closes;assert.ok(h.ui.panel().includes('Record this arrival and continue'));

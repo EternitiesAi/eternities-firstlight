@@ -1,3 +1,30 @@
+# Source and map repairs; qualification remains pending
+
+Initial installed candidate `154c0b237bd3de826cf09f8c24c54c9a32f63e94`
+failed source01: Node1793 passed /3 failed /2 explicit skips (1798 total).
+The three old test consumers omitted the new real outgoing-owner lifecycle,
+the carrier in the civic host sink, and the fresh fifth-record migration.
+Repair includes the actual app owner functions and actual Motion/Art resets,
+uses real ConsignmentUI for the fresh kit/starter handoff, and independently
+compares all historical world facts plus only the literal fresh fifth record.
+Original fixture bytes remain frozen. The targeted old-consumer run passed54/54;
+no production boundary, history assertion or acceptance criterion was removed.
+
+Scoped source review also caught a false next-stop-marker promise and a selected
+route legend before acceptance. Continue now names its actual next checkpoint
+and the blue course; the unaccepted legend identifies the signed board and states
+that no load/course is accepted. Actual before/after map reads retain state and
+writes; the revised UI suite passed18/18. These are CPU/source receipts, not
+rendered/human acceptance. Original failure and repair logs remain under
+D:/07-GAMES/Firstlight/artifacts/first-load-through-20261006.
+
+The rebuilt identical HTML is3144642 bytes /SHA256
+`9ac60a30aaba1a474105b8d46dfbc9054803474d21c0c7383658be691523946a`.
+Source02, the newly earned current cohort, native routes/refusals, short actual
+capture and remote full qualification are still required.
+
+---
+
 # Installed candidate; qualification pending
 
 Base `513dd6d28161f7f4c7312c72157ab9808f4c880d`; branch `gameplay/first-load-through-20261006`. The parent applied the narrow runtime port, portable tests, six guarded old-consumer adapters, reviewed native/capture callers and current-cohort verifier. Both HTML outputs are identical3144315 bytes /SHA256 e3d4d2a4534951463bffffcdf532d97873090e2c97b85dd6ad7a9a2915010b28. No integrated test/browser/capture acceptance is claimed yet.

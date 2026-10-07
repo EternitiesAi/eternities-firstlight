@@ -58,8 +58,8 @@ test('optional Core owner is canonical and missing-field migration preserves XP1
  assert.deepEqual(C.fresh().earthHomecoming,H.fresh());assert.equal(C.VERSION,9);
  for(const xp of[1,2,3,4,5,9999]){const raw=seed();delete raw.earthHomecoming;raw.adventure.xp=xp;raw.adventure.hp=Math.min(raw.adventure.hp,A.stats(raw.adventure).maxHP);const old=copy(raw),out=C.validate(raw);assert.deepEqual(out.earthHomecoming,H.fresh());delete out.earthHomecoming;assert.deepEqual(out,old);assert.deepEqual(raw,old);}
 });
-test('historical full-world input is unchanged except the real optional default; no flags transplanted',()=>{
- for(const variant of['blade','bow']){const input=JSON.parse(fs.readFileSync(historical[variant].file,'utf8')),out=seed(variant);assert.deepEqual(H.missing(out),[]);assert.equal(out.earthHomecoming.accepted,false);delete out.earthHomecoming;assert.deepEqual(out,input);}
+test('historical full-world input keeps every old fact and gains only the real optional defaults; no flags transplanted',()=>{
+ for(const variant of['blade','bow']){const bytes=fs.readFileSync(historical[variant].file),input=JSON.parse(bytes),expected=copy(input),out=seed(variant);assert.equal(Object.hasOwn(input.localLife.records,'earth-first-load-through-v1'),false);expected.localLife.records['earth-first-load-through-v1']={accepted:false,choice:null,steps:[],claimed:false};assert.deepEqual(H.missing(out),[]);assert.equal(out.earthHomecoming.accepted,false);delete out.earthHomecoming;assert.deepEqual(out,expected);assert.deepEqual(fs.readFileSync(historical[variant].file),bytes);assert.equal(Object.hasOwn(input.localLife.records,'earth-first-load-through-v1'),false);}
 });
 test('Core validates every prerequisite before accepted homecoming and rejects absent Open Confluence',()=>{
  const f=fixture();accept(f);assert.doesNotThrow(()=>C.validate(f.sim.snapshot()));

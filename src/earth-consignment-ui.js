@@ -29,7 +29,8 @@ function routeLine(sim){
 }
 function legend(sim){
  const points=routePoints(sim,sim.consignmentPresentationContext);if(!points.length)return'';
- return'<section class="local-life-map consignment-map"><h3>The supplied load · chosen route</h3><p>The blue dotted course follows supported roads. L1 marks the supplied carrier or its receiving steward. Walking moves you; the carrier must physically reach each saved arrival.</p>'+points.map(p=>'<p><strong>'+esc(p.mark)+'</strong> · '+esc(p.name)+' '+button('Walk near this load work','walk',p.id==='first-load-board'?'giver':p.id==='merren'?'return':'carrier')+'</p>').join('')+button('Read this load, its route and separate payment','open')+'</section>';
+ const r=record(sim),heading=r.accepted?'The supplied load · chosen route':'Rill’s supplied load · read the board',detail=r.accepted?'The blue dotted course follows supported roads. L1 marks the supplied carrier or its receiving steward. Stay beside the carrier until it stops, then deliberately record that arrival.':'L1 marks Rill’s signed supply board. Read the two courses and the separate payment before choosing one; no load or course has been accepted.';
+ return'<section class="local-life-map consignment-map"><h3>'+heading+'</h3><p>'+detail+'</p>'+points.map(p=>'<p><strong>'+esc(p.mark)+'</strong> · '+esc(p.name)+' '+button('Walk near this load work','walk',p.id==='first-load-board'?'giver':p.id==='merren'?'return':'carrier')+'</p>').join('')+button('Read this load, its route and separate payment','open')+'</section>';
 }
 class ConsignmentUI{
  #noticeOwner=null;
@@ -69,7 +70,7 @@ class ConsignmentUI{
   this.rpg.close?.();
   const result=this.rpg.api.consignmentControl?.('continue')||{ok:false,error:'Carrier motion is unavailable.'};
   const moving=result.ok&&result.view?.status==='moving';
-  const continuation=moving?'The carrier is continuing. Stay nearby; its next stop is marked on the map.':result.ok?'The carrier is waiting: '+(result.view?.detail||result.view?.reason||'read its current position before continuing')+'.':result.error||'The carrier could not continue.';
+  const continuation=moving?'The carrier is continuing. Stay nearby until it stops at '+name(result.view.next)+'. The blue dotted course is on the map.':result.ok?'The carrier is waiting: '+(result.view?.detail||result.view?.reason||'read its current position before continuing')+'.':result.error||'The carrier could not continue.';
   // Saved arrival is already durable even if following motion/cleanup fails.
   // Preserve its truthful completion and warnings through the combined action.
   return this.finish(savedResult?{ok:true,text:savedResult.text+' '+continuation,warning:[savedResult.warning,result.warning].filter(Boolean).join(' ')}:result.ok?{...result,text:continuation}:result,false);
