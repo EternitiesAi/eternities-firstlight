@@ -74,7 +74,7 @@ function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isIn
  a.commit();
 }
 function gate(a){const p=W.GATE;a.add('cylinder',p.x,1.3,p.z,.13,1.45,.13,0xae9569,decor);a.box(p.x,2.65,p.z,1.3,.57,.1,0x586963,decor);for(let i=0;i<5;i++)a.add('octa',p.x-.46+i*.23,2.65,p.z+.065,.12,.17,.10,[0xe5d8b1,0xc98b67,0x9dc8c5,0xa4b276,0xbeaec9][i],{...decor,em:.18});}
-function draw(out,sim,t,a){const d=W.definition(sim.room);if(!d)return;const quiet=sim.state.settings.reducedMotion;if(d.id==='earthlands'){G.RealmEarthExpeditionArt?.draw(out,sim);G.RealmEarthWildSignsArt?.draw(out,sim);}
+function draw(out,sim,t,a){const d=W.definition(sim.room);if(!d)return;const quiet=sim.state.settings.reducedMotion;if(d.id==='earthlands'){G.RealmEarthExpeditionArt?.draw(out,sim);G.RealmEarthWildSignsArt?.draw(out,sim);G.RealmEarthRoadkeeperArt?.draw(out,sim.roadkeeperPresentation,sim.roadkeeperPresentationContext);}
  // Cosmos keeps its existing people and scene owner; only accepted work adds
  // small ground records there.
  if(!d.existing)for(const p of d.points.filter(p=>p.kind==='person')){
