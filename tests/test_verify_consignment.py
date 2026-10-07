@@ -70,7 +70,7 @@ class CurrentNativeRouting(unittest.TestCase):
         self.assertEqual(before,{str(p.relative_to(self.base)):sha(p)for p in self.base.rglob('*')if p.is_file()})
     def test_browser_budget_and_current_prerequisite_command_membership(self):
         text=Path(V.__file__).read_text(encoding='utf-8')if Path(V.__file__).is_file()else __import__('wire_consignment_verifier').prepare()['tools/verify.py']
-        self.assertIn("run('earth-consignment-cohort'",text);self.assertIn("run('earth-consignment-current-preflight'",text);self.assertIn("run('earth_consignment_browser', command, timeout=3600",text)
+        self.assertIn("run('earth-consignment-cohort'",text);self.assertIn("run('earth-consignment-current-preflight'",text);self.assertIn("run('earth_consignment_browser', command, timeout=7200",text)
         self.assertEqual(text.count("'tests/earth_expedition_journey.cjs',"),3)
 
 if __name__=='__main__':unittest.main()

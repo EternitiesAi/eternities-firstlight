@@ -22,6 +22,7 @@ function epoch(){
 function write(folder,name,value){const p=path.join(folder,name+'.json');fs.writeFileSync(p,JSON.stringify(value,null,2)+'\n',{flag:'wx'});return{path:p,bytes:fs.statSync(p).size,sha256:sha(p)};}
 function assertMigrationPreserved(migrated,raw){
  const expected=copy(raw),catalogue=expected.localLife;
+ if(!('earthWildSigns' in raw))expected.earthWildSigns={version:1,accepted:false,evidence:[],observed:false,resolution:null,cleared:false,claimed:false};
  const ids=['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1'].sort();
  let catalogueMigration=null;
  if(catalogue&&catalogue.version===1&&Object.keys(catalogue).length===2&&Object.hasOwn(catalogue,'version')&&Object.hasOwn(catalogue,'records')&&catalogue.records&&Object.keys(catalogue.records).length===ids.length&&ids.every(id=>Object.hasOwn(catalogue.records,id))){
@@ -29,13 +30,13 @@ function assertMigrationPreserved(migrated,raw){
   catalogueMigration='exact-old-four-to-fresh-first-load';
  }
  const old=copy(migrated);delete old.earthHomecoming;
- assert.deepEqual(old,expected,'actual optional defaults preserve EVERY prior field and add only the literal fresh fifth record');
+ assert.deepEqual(old,expected,'actual optional defaults preserve EVERY prior field and add only declared literal fresh defaults');
  return catalogueMigration;
 }
 function migration(file,expected,folder){
  assert.equal(sha(file),expected,'byte-bound real earned checkpoint');const raw=JSON.parse(fs.readFileSync(file)),C=load('core'),H=load('earth-homecoming'),migrated=C.validate(raw);
  assert.deepEqual(migrated.earthHomecoming,H.fresh());const catalogueMigration=assertMigrationPreserved(migrated,raw);assert.equal(sha(file),expected,'original earned input bytes unchanged');
- const world=write(folder,'MIGRATED_WORLD',migrated),receipt={source:{path:file,bytes:fs.statSync(file).size,sha256:expected},output:world,newOwner:copy(migrated.earthHomecoming),localLifeCatalogueMigration:catalogueMigration,oldWorldUnchanged:true,method:'actual installed Core.validate; missing empty Earth owner and exact old-four to fresh-fifth catalogue only; no historical claims transplanted'};
+ const world=write(folder,'MIGRATED_WORLD',migrated),receipt={source:{path:file,bytes:fs.statSync(file).size,sha256:expected},output:world,newOwner:copy(migrated.earthHomecoming),localLifeCatalogueMigration:catalogueMigration,earthWildSignsMigration:!('earthWildSigns' in raw)?'missing-to-fresh-earth-wild-signs-v1':null,oldWorldUnchanged:true,method:'actual installed Core.validate; missing empty Earth owner, exact old-four to fresh-fifth catalogue and missing-only literal fresh WildSigns; no historical claims transplanted'};
  write(folder,'MIGRATION_RECEIPT',receipt);return receipt;
 }
 function preserved(final,before){

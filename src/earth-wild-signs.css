@@ -1,0 +1,22 @@
+/* Staged, scoped extension of the existing Firstlight RPG workspace. No fonts,
+ * assets, motion or external requests; the host retains its dialog/HUD layout. */
+.wild-signs-panel{--field-ink:#182728;--field-text:#edeadd;--field-moss:#b9d0bb;--field-line:#53695e;--field-gold:#e8cc98;--field-muted:#bac4b8;max-width:68ch;min-width:0;color:var(--field-text);line-height:1.6;overflow-wrap:anywhere}
+.wild-signs-panel header,.wild-signs-panel section,.wild-signs-panel fieldset,.wild-signs-panel details{margin:0 0 1.1rem}
+.wild-signs-panel h3{font-family:Georgia,serif;font-size:1.55rem;line-height:1.25;margin:0 0 .7rem;font-weight:500}
+.wild-signs-panel h4{font-size:1.05rem;line-height:1.4;margin:0 0 .45rem}
+.wild-signs-panel p{margin:.45rem 0 .75rem;max-width:65ch}
+.wild-signs-panel .wild-signs-payment{border-left:3px solid var(--field-gold);padding:.2rem 0 .2rem .85rem}
+.wild-signs-panel .wild-signs-evidence ol{list-style:none;padding:0;margin:0}
+.wild-signs-panel .wild-signs-evidence li{border-left:2px solid var(--field-line);padding:.2rem 0 .5rem .85rem;margin-bottom:1rem}
+.wild-signs-panel .wild-signs-kept{color:var(--field-moss);font-weight:650}
+.wild-signs-panel .wild-signs-source,.wild-signs-panel .wild-signs-recovery{color:var(--field-muted)}
+.wild-signs-panel .wild-signs-notice:empty{display:none}
+.wild-signs-panel .wild-signs-notice:not(:empty){padding:.6rem .8rem;border:1px solid var(--field-line);background:var(--field-ink)}
+.wild-signs-panel fieldset{min-width:0;padding:.8rem;border:1px solid var(--field-line)}
+.wild-signs-panel legend{padding:0 .35rem;font-weight:650}
+.wild-signs-panel button,.wild-signs-map button,.wild-signs-journal button{white-space:normal;text-align:left;min-height:44px;max-width:100%;padding:.55rem .8rem;margin:.25rem .4rem .25rem 0;line-height:1.4}
+.wild-signs-panel button:disabled{opacity:.6;cursor:default}
+.wild-signs-panel summary{cursor:pointer;min-height:44px;display:list-item;padding:.4rem 0}
+.wild-signs-services{display:flex;flex-wrap:wrap;gap:.25rem;border-top:1px solid var(--field-line);padding-top:.75rem}
+.wild-signs-panel :focus-visible,.wild-signs-map :focus-visible,.wild-signs-journal :focus-visible{outline:2px solid var(--field-gold,#e8cc98);outline-offset:3px}
+@media(max-width:550px){.wild-signs-panel{max-width:100%;font-size:1rem}.wild-signs-panel h3{font-size:1.3rem}.wild-signs-panel button,.wild-signs-map button,.wild-signs-journal button{display:block;width:100%;box-sizing:border-box;margin:.35rem 0}.wild-signs-services{display:block}.wild-signs-panel fieldset{padding:.65rem}}

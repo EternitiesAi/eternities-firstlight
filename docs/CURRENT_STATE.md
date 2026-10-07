@@ -1,3 +1,11 @@
+# WildSigns integration ownership, 2026-10-07
+
+Parent owns the reused authoring checkout on gameplay/earth-wild-signs-20261007, from PR52 source 279d7a5a83983a5343987fcc986aafd797d5ba5f. Read docs/development/WILD_SIGNS_2026-10-07.md for the bounded Earth creature investigation, state migration and unfinished acceptance. New source is an integrated review candidate. Actual installed targeted Node passed102/102, no skips; Python rerun passed66 methods with one no-current-cohort method skip and one skipped current-cohort class (67 methods run). The first Python output-host failures remain retained. Both HTML outputs were rebuilt identically:3252341 bytes / fb68c240e235a8c61e226f5fd0451a16601e66fec255dac1798cbdccba2ca9b0. Full source, current earned/native UI, short footage and exact remote gates remain pending. Future first-load aggregate budget is7200s based on measured six-route workload; all routes, refusal assertions and individual240s guards remain, and active STATION is unchanged.
+
+The independent reused qualification STATION remains clean and immutable at PR52 source through its running complete verifier and later capture. Its receipts cannot qualify this newer game. Colleague ROOT reads must be sealed before this transition. Preserve every old record, save, key, XP, explicit choice, gear/socket, companion, housing/crops, music/export and both cameras. Production goal stays ACTIVE and unfinished; old heartbeat stays PAUSED. No main merge/deployment, paid/billing action, personal saves, unrelated stops, extra full copies or cleanup.
+
+---
+
 # First supplied load: complete remote gate failed; repaired driver pending, 2026-10-07
 
 The complete remote verifier at source `61010762ea3600cf6396bc0fb03663a155e3372a` closed exit 1 at 2026-10-07T05:27:49Z. The source prefix and Earth homecoming suite passed; onboarding reached its final stage with 49 recorded checks passed, then its direct resume-clock assertion failed. The mandatory first-load six-route/two-refusal suite and remaining browser commands were not reached. Original process, console and private synthetic-world report remain retained under D:/07-GAMES/Firstlight/artifacts/first-load-through-20261006/remote-full01*.
