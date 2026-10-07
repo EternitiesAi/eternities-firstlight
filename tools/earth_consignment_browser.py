@@ -377,11 +377,30 @@ class Native:
         finally:
             for key in ('w','a','s','d'):self.page.keyboard.up(key)
     def compact(self):
+        before=self.state();labels=before['settings']['labels']
+        self.close();self.click('#settings')
+        self.page.locator('#setting-labels').set_checked(not labels)
+        self.page.locator('#setting-labels').set_checked(labels)
+        self.click('#close-panel')
+        self.check('native settings close restores external focus and preserves accounts',self.ev('()=>document.activeElement.id==="settings"&&!document.querySelector("#drawer").contains(document.activeElement)') and import_preserved(before,self.state()) and self.state()['settings']['labels']==labels)
+        self.panel()
+        bounds=self.ev('()=>{const d=document.querySelector("#drawer");return{width:innerWidth,documentWidth:document.documentElement.scrollWidth,drawerOpen:d.classList.contains("open"),drawerInert:d.inert,drawerRectCount:d.getClientRects().length};}')
+        self.row.setdefault('compactLayout',[]).append({'phase':'closed-wide-workspace',**bounds})
+        self.check('closed settings drawer does not extend the current work viewport',bounds['documentWidth']<=bounds['width']+1 and not bounds['drawerOpen'] and bounds['drawerInert'],bounds)
         self.page.set_viewport_size({'width':390,'height':844});self.panel()
-        self.check('compact readable controls without horizontal overflow',self.ev('()=>document.documentElement.scrollWidth<=innerWidth+1'))
+        bounds=self.ev('()=>({width:innerWidth,documentWidth:document.documentElement.scrollWidth})')
+        self.row['compactLayout'].append({'phase':'compact-workspace',**bounds})
+        self.check('compact readable controls without horizontal overflow',bounds['documentWidth']<=bounds['width']+1,bounds)
         for loc in self.page.locator('[data-consignment-panel] button').all():
             loc.scroll_into_view_if_needed();r=loc.bounding_box();self.check('compact native button remains reachable',r is not None and r['x']>=-1 and r['x']+r['width']<=391,r)
-        self.page.screenshot(path=str(self.folder/'COMPACT.png'));self.page.set_viewport_size({'width':1440,'height':960})
+        self.page.screenshot(path=str(self.folder/'COMPACT.png'))
+        self.close();self.click('#settings')
+        bounds=self.ev('()=>{const d=document.querySelector("#drawer"),r=d.getBoundingClientRect();return{left:r.left,right:r.right,open:d.classList.contains("open"),inert:d.inert,focused:d.contains(document.activeElement),display:getComputedStyle(d).display};}')
+        self.check('compact settings reopen keeps visible focused controls within viewport',bounds['open'] and not bounds['inert'] and bounds['focused'] and bounds['display']!='none' and bounds['left']>=-1 and bounds['right']<=391,bounds)
+        self.page.keyboard.press('Escape')
+        self.check('native Escape closes compact settings without layout or focus leakage',self.ev('()=>{const d=document.querySelector("#drawer");return!d.classList.contains("open")&&d.inert&&d.getClientRects().length===0&&document.activeElement.id==="settings"&&document.documentElement.scrollWidth<=innerWidth+1;}'))
+        self.page.set_viewport_size({'width':1440,'height':960});self.panel()
+        self.check('native settings roundtrip retains all original accounts and economy',import_preserved(before,self.state()) and self.state()['settings']['labels']==labels)
     def far_wait_probe(self):
         """One real standing-player retreat boundary, with visible recovery.
 
