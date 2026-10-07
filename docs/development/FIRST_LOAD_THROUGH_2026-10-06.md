@@ -1,3 +1,38 @@
+# Strict migration and verifier-consumer repairs; qualification remains pending
+
+Source02 at `e68193ce986c3c6974ad2ba19e0c47750f5727b0` passed the Node
+rules (1797 passed, zero failed, two explicit generic-cohort skips;1799 total),
+then failed Python (309 methods, three failures, seven errors, eight skips).
+The miniature onboarding source fixture lacked five new modules; the initial
+resume contract lacked the exact old-four to literal fresh-fifth migration;
+and a Windows negative path case incorrectly depended on TEMP staying on C.
+Both source attempts and their actual exit receipts are retained.
+
+The initial-resume allowance is now limited to the exact legacy four records
+plus an independently declared fresh fifth record. Both installed Core's
+prediction and the observed result must match it; existing fifth-record
+history, ordinary live ticks and UI comparisons receive no reset allowance.
+Historical fixture bytes are unchanged. Focused onboarding tests passed38/38
+using the existing SDK; the earlier missing-SDK error is retained separately.
+
+Verifier tests explicitly include all five new modules and reject each missing
+or stale embedding. They separately count the45 old native suites and the new
+CPU preflight, retaining current-cohort environment, ordering and timeout
+checks. Distinct synthetic invocations use fresh output paths while preserving
+the earlier payload. C-drive rejection and read-only D-drive acceptance are
+explicit. The first focused run failed3 of46; the repaired rerun passed46/46,
+zero failures/errors/skips. Production path guards were unchanged.
+
+The existing CI workflow now includes the supplied-load job: current original
+expedition earning for blade/bow/veteran, mandatory current-cohort intake,
+six ordinary-RAF native routes and two refusal cases. It retains only JSON and
+stills for seven days. YAML parsed locally; hosted execution is unverified and
+the prior account billing lock remains unresolved. No billing action was taken.
+Source03, actual native play, capture and exact remote qualification remain
+required. These repairs do not change runtime modules or the identical HTML.
+
+---
+
 # Source and map repairs; qualification remains pending
 
 Initial installed candidate `154c0b237bd3de826cf09f8c24c54c9a32f63e94`

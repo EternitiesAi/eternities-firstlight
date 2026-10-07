@@ -56,7 +56,18 @@ class CurrentNativeRouting(unittest.TestCase):
         self.assertEqual(keep.read_text(),'retain');self.output=self.source/'nested'
         with self.assertRaises(ValueError):self.run_spec()
     def test_windows_heavy_paths_require_data_drive(self):
-        with self.assertRaises(ValueError):V.consignment_browser_run_spec(self.root,self.source,self.base/'fresh',windows=True)
+        target=Path('C:/firstlight-guard-test')/self.base.name/'new-native'
+        with self.assertRaisesRegex(ValueError,'stay on D on Windows'):
+            V.consignment_browser_run_spec(self.root,self.source,target,windows=True)
+        self.assertFalse(target.exists());self.assertFalse(self.output.exists())
+    def test_windows_data_drive_spec_is_read_only_and_creates_no_output(self):
+        if os.name!='nt' or self.base.drive.upper()!='D:':
+            self.skipTest('Positive Windows D-drive guard needs a miniature fixture on D:')
+        before={str(p.relative_to(self.base)):sha(p)for p in self.base.rglob('*')if p.is_file()}
+        command,env=V.consignment_browser_run_spec(self.root,self.source,self.output,windows=True)
+        self.assertEqual(command[command.index('--output')+1],str(self.output));self.assertEqual(env['FIRSTLIGHT_ROOT'],str(self.root))
+        self.assertFalse(self.output.exists())
+        self.assertEqual(before,{str(p.relative_to(self.base)):sha(p)for p in self.base.rglob('*')if p.is_file()})
     def test_browser_budget_and_current_prerequisite_command_membership(self):
         text=Path(V.__file__).read_text(encoding='utf-8')if Path(V.__file__).is_file()else __import__('wire_consignment_verifier').prepare()['tools/verify.py']
         self.assertIn("run('earth-consignment-cohort'",text);self.assertIn("run('earth-consignment-current-preflight'",text);self.assertIn("run('earth_consignment_browser', command, timeout=3600",text)

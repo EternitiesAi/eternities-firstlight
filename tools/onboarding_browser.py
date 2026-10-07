@@ -169,6 +169,8 @@ def require_initial_resume(root, before, after):
     """One whole-body reload's initial routine tick, never general live ticks.
 
     Protect the entire old journal prefix and every living_signature owner.
+    An exact legacy four-job catalogue may gain only the independently declared
+    literal fresh fifth record. Existing fifth-record progress is never reset.
     Only three events reproduced by actual installed Core may be appended.
     The snapshot clock must equal this first event clock: later ticks/events
     are not silently allowed. Stored event clocks are compared exactly.
@@ -199,14 +201,28 @@ def require_initial_resume(root, before, after):
     expected = living_signature(before)
     expected['journal'] = predicted['journal']
     expected['nextEvent'] = predicted['nextEvent']
+    # Core now conditionally expands this exact legacy catalogue on load. Keep
+    # the four raw histories and every other owner protected; do not derive the
+    # allowance from Core's output or use its fresh-record builder as an oracle.
+    catalogue = expected.get('localLife')
+    legacy_ids = {'heaven-propagation-bed-v1', 'hell-refuge-water-v1',
+                  'atlantis-bellglass-lamp-v1', 'cosmos-drawing-shelf-v1'}
+    catalogue_migration = None
+    if (isinstance(catalogue, dict) and set(catalogue) == {'version', 'records'} and
+            type(catalogue['version']) is int and catalogue['version'] == 1 and
+            isinstance(catalogue['records'], dict) and set(catalogue['records']) == legacy_ids):
+        catalogue['records']['earth-first-load-through-v1'] = {
+            'accepted': False, 'choice': None, 'steps': [], 'claimed': False}
+        catalogue_migration = 'exact-old-four-to-fresh-first-load'
     assert expected == living_signature(predicted), 'Actual Core changed another protected owner; this contract does not allow it.'
     assert expected == living_signature(after), 'Resume changed an owner/history or forged an initial event.'
     assert predicted['day'] == after['day'] and predicted['hour'] == after['hour'], 'Actual Core clock prediction disagrees.'
     return {'preserved': True, 'method': 'Read-only installed Core.Simulation(before).tick(event-clock-derived seconds).snapshot()',
             'tickSeconds': seconds, 'derivedSecondsBeforeCoreClamp': derived_seconds,
-            'oldPrefixLength': len(old), 'events': predicted['journal'][len(old):],
-            'nextEventBefore': before['nextEvent'], 'nextEventAfter': predicted['nextEvent'],
-            'coreSha256': sha(root / 'src/core.js'), 'additionalFutureEventsAllowed': False}
+             'oldPrefixLength': len(old), 'events': predicted['journal'][len(old):],
+             'nextEventBefore': before['nextEvent'], 'nextEventAfter': predicted['nextEvent'],
+             'coreSha256': sha(root / 'src/core.js'), 'additionalFutureEventsAllowed': False,
+             'localLifeCatalogueMigration': catalogue_migration}
 
 
 def require_projection_preserved(before, after):

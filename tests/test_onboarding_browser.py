@@ -230,9 +230,17 @@ class Preparation(unittest.TestCase):
             with self.subTest(name=name): self.assertFalse(self.m.fresh_start_terms(prior))
 
 
-    def resume_pair(self):
+    def resume_pair(self, legacy=False):
         fixture = json.loads((HERE / 'fixtures/onboarding-resume-pair.json').read_text(encoding='utf8'))
-        return copy.deepcopy(fixture['before']), copy.deepcopy(fixture['after'])
+        pair = copy.deepcopy(fixture['before']), copy.deepcopy(fixture['after'])
+        if not legacy:
+            # The retained recorded fixture predates the fifth catalogue owner.
+            # Current boundary input adds only its literal fresh record; no
+            # historical file or accepted/paid facts are rewritten.
+            for world in pair:
+                world['localLife']['records']['earth-first-load-through-v1'] = {
+                    'accepted': False, 'choice': None, 'steps': [], 'claimed': False}
+        return pair
 
     def production_tick(self, before, seconds):
         # Actual installed owner, no validator/roster facade or saved-state writes.
@@ -347,6 +355,107 @@ class Preparation(unittest.TestCase):
         self.assertEqual(len(after['journal']), len(before['journal']) + 3)
         with self.assertRaisesRegex(AssertionError, 'another protected owner'):
             self.m.require_initial_resume(self.m.resolve_root(), before, after)
+
+    def test_34_exact_legacy_catalogue_adds_only_literal_fresh_fifth_owner(self):
+        before, _ = self.resume_pair(legacy=True)
+        original = copy.deepcopy(before)
+        after = self.production_tick(before, .1)
+        expected = copy.deepcopy(before['localLife'])
+        expected['records']['earth-first-load-through-v1'] = {
+            'accepted': False, 'choice': None, 'steps': [], 'claimed': False}
+        self.assertEqual(after['localLife'], expected)
+        result = self.m.require_initial_resume(self.m.resolve_root(), before, after)
+        self.assertTrue(result['preserved'])
+        self.assertEqual(result['localLifeCatalogueMigration'], 'exact-old-four-to-fresh-first-load')
+        self.assertEqual(before, original)
+
+    def test_35_legacy_migration_cannot_hide_missing_unknown_or_changed_old_facts(self):
+        before, _ = self.resume_pair(legacy=True)
+        after = self.production_tick(before, .1)
+        cases = []
+        bad = copy.deepcopy(after); bad['localLife']['records'].pop('cosmos-drawing-shelf-v1')
+        cases.append(('missing original owner', before, bad))
+        bad = copy.deepcopy(after); bad['localLife']['records']['unknown-job'] = {
+            'accepted': False, 'choice': None, 'steps': [], 'claimed': False}
+        cases.append(('unknown output owner', before, bad))
+        bad = copy.deepcopy(after); bad['localLife']['records']['atlantis-bellglass-lamp-v1']['choice'] = 'desk'
+        cases.append(('changed original arrangement', before, bad))
+        for label, mutate in (
+            ('partial old input', lambda w: w['localLife']['records'].pop('cosmos-drawing-shelf-v1')),
+            ('unknown old input', lambda w: w['localLife']['records'].update(unknown={
+                'accepted': False, 'choice': None, 'steps': [], 'claimed': False}))):
+            bad = copy.deepcopy(before); mutate(bad); cases.append((label, bad, after))
+        for label, source, output in cases:
+            original_source, original_output = copy.deepcopy(source), copy.deepcopy(output)
+            with self.subTest(label=label), self.assertRaises(AssertionError):
+                self.m.require_initial_resume(self.m.resolve_root(), source, output)
+            self.assertEqual(source, original_source)
+            self.assertEqual(output, original_output)
+
+    def test_36_legacy_output_must_actually_contain_exact_fresh_fifth_record(self):
+        before, _ = self.resume_pair(legacy=True)
+        after = self.production_tick(before, .1)
+        cases = []
+        bad = copy.deepcopy(after); bad['localLife']['records'].pop('earth-first-load-through-v1')
+        cases.append(('missing migrated owner', bad))
+        for label, value in (
+            ('accepted prefix', {'accepted': True, 'choice': 'south-stormfall', 'steps': [], 'claimed': False}),
+            ('unaccepted arrival', {'accepted': False, 'choice': None, 'steps': ['arrive-meadow-stop'], 'claimed': False}),
+            ('claimed', {'accepted': False, 'choice': None, 'steps': [], 'claimed': True}),
+            ('extra record field', {'accepted': False, 'choice': None, 'steps': [], 'claimed': False, 'source': 'invented'})):
+            bad = copy.deepcopy(after); bad['localLife']['records']['earth-first-load-through-v1'] = value
+            cases.append((label, bad))
+        for label, output in cases:
+            original = copy.deepcopy(output)
+            with self.subTest(label=label), self.assertRaises(AssertionError):
+                self.m.require_initial_resume(self.m.resolve_root(), before, output)
+            self.assertEqual(output, original)
+
+    def test_37_current_fifth_history_is_preserved_without_a_migration_allowance(self):
+        arrivals = ['arrive-meadow-stop', 'arrive-field-return-stop',
+            'arrive-field-gate-stop', 'arrive-settlement-approach', 'arrive-merren-receiving-bay']
+        for label, steps, claimed in (
+            ('loaded', [], False), ('one recorded stop', arrivals[:1], False),
+            ('delivered unpaid', arrivals, False), ('paid once', arrivals, True)):
+            before, _ = self.resume_pair()
+            # Explicit synthetic valid-history boundary, never an earned cohort:
+            # the original work must also be structurally complete for Core's
+            # source cross-validation to accept the first-load owner.
+            before['earthExpedition']['story'] = {'accepted': True,
+                'branch': 'stormfall-recovery', 'steps': ['assess-load',
+                    'prepare-allocation', 'read-water', 'clear-crossing',
+                    'read-root-load', 'clear-root-pests', 'brace-root-channel',
+                    'deliver-allocation'], 'claimed': True}
+            before['localLife']['records']['earth-first-load-through-v1'] = {
+                'accepted': True, 'choice': 'south-stormfall', 'steps': list(steps), 'claimed': claimed}
+            original = copy.deepcopy(before)
+            after = self.production_tick(before, .1)
+            with self.subTest(label=label):
+                result = self.m.require_initial_resume(self.m.resolve_root(), before, after)
+                self.assertTrue(result['preserved'])
+                self.assertIsNone(result['localLifeCatalogueMigration'])
+                self.assertEqual(after['localLife'], before['localLife'])
+                bad = copy.deepcopy(after)
+                bad['localLife']['records']['earth-first-load-through-v1'] = {
+                    'accepted': False, 'choice': None, 'steps': [], 'claimed': False}
+                with self.assertRaises(AssertionError):
+                    self.m.require_initial_resume(self.m.resolve_root(), before, bad)
+                self.assertEqual(before, original)
+
+    def test_38_catalogue_migration_is_not_allowed_in_ui_or_normal_live_ticks(self):
+        before, _ = self.resume_pair(legacy=True)
+        after = copy.deepcopy(before)
+        after['localLife']['records']['earth-first-load-through-v1'] = {
+            'accepted': False, 'choice': None, 'steps': [], 'claimed': False}
+        self.assertNotEqual(self.m.living_signature(before), self.m.living_signature(after))
+        with self.assertRaises(AssertionError):
+            self.m.require_projection_preserved(before, after)
+        before = after; after = copy.deepcopy(before)
+        after['localLife']['records']['earth-first-load-through-v1'] = {
+            'accepted': True, 'choice': 'south-stormfall', 'steps': ['arrive-meadow-stop'], 'claimed': False}
+        self.assertNotEqual(self.m.living_signature(before), self.m.living_signature(after))
+        with self.assertRaises(AssertionError):
+            self.m.require_projection_preserved(before, after)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

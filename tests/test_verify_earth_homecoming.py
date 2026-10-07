@@ -56,7 +56,8 @@ class Fixture:
         text(self.root/'tools/browser_support.py','# synthetic CPU dependency: never executed\n')
         text(self.root/'tools/earth-homecoming-journey/caller.cjs','// synthetic caller hash only\n')
         self.callers=self.root/'tools/earth-homecoming-journey'
-        modules=('earth-homecoming-data.js','earth-homecoming.js','earth-homecoming-ui.js','earth-homecoming-art.js','core.js','characters.js','adventure.js','adventure-ui.js','adventure-art.js','arsenal.js','combat.js','rpg-ui.js','world-foundations.js','world-foundations-ui.js','world.js','app.js','local-life-ui.js','local-life.js','realm-trails-ui.js')
+        modules=('earth-homecoming-data.js','earth-homecoming.js','earth-homecoming-ui.js','earth-homecoming-art.js','core.js','characters.js','adventure.js','adventure-ui.js','adventure-art.js','arsenal.js','combat.js','rpg-ui.js','world-foundations.js','world-foundations-ui.js','world.js','app.js','local-life-ui.js','local-life.js','realm-trails-ui.js',
+                 'earth-consignment-data.js','earth-consignment.js','earth-consignment-motion.js','earth-consignment-art.js','earth-consignment-ui.js')
         for name in modules:text(self.root/'src'/name,'// synthetic source token: '+name+'\n')
         html='\n'.join((self.root/'src'/name).read_text().strip() for name in modules)
         text(self.root/'index.html',html);text(self.root/'FIRSTLIGHT_VALLEY.html',html);text(self.root/'build.py','# synthetic build token\n')
@@ -224,7 +225,9 @@ class EarthNativeVerifier(unittest.TestCase):
         native=[(c,k) for c,k in calls if len(c)>1 and c[1]=='tools/earth_homecoming_browser.py'];self.assertEqual(len(native),1)
         c,k=native[0];self.assertEqual(k['timeout'],1800);self.assertEqual(c[c.index('--cohort-sha')+1],self.f.cohort_sha);self.assertEqual(c[c.index('--output')+1],str(browser/'earth_homecoming_browser'))
         self.assertLess(labels.index('tools/earth_homecoming_journey.cjs'),labels.index('tests/test_earth_homecoming_native.py'));self.assertLess(labels.index('tests/test_earth_homecoming_native.py'),labels.index('tools/earth_homecoming_browser.py'))
-        existing=[(c,k) for c,k in calls if len(c)>1 and c[1].startswith('tests/') and c[1].endswith('_browser.py') and c[1]!='tests/earth_road_browser.py']
+        # The new test_earth_consignment_browser.py command is CPU preflight,
+        # separate from the exact 45 legacy native suites and road native suite.
+        existing=[(c,k) for c,k in calls if len(c)>1 and c[1].startswith('tests/') and c[1].endswith('_browser.py') and c[1]not in ('tests/earth_road_browser.py','tests/test_earth_consignment_browser.py')]
         self.assertEqual(len(existing),45);self.assertEqual(len({c[1] for c,k in existing}),45)
         roads=[(c,k) for c,k in calls if len(c)>1 and c[1]=='tests/earth_road_browser.py'];self.assertEqual(len(roads),1)
         road,rk=roads[0];self.assertEqual(road[road.index('--output')+1],str(browser/'earth_road_browser'));self.assertEqual(rk['timeout'],600)
@@ -235,6 +238,9 @@ class EarthNativeVerifier(unittest.TestCase):
             spec_command,spec_env=V.browser_run_spec(suite,browser,'supported');self.assertEqual(c,spec_command);self.assertTrue(spec_env.items()<=k['env'].items())
         consignment=[(c,k) for c,k in calls if len(c)>1 and c[1]=='tools/earth_consignment_browser.py'];self.assertEqual(len(consignment),1)
         cc,ck=consignment[0];self.assertEqual(ck['timeout'],3600);self.assertEqual(cc[cc.index('--cohort')+1],str(self.f.logs/'earth-consignment-earned/FIRST_LOAD_COHORT.json'))
+        preflight=[(c,k)for c,k in calls if len(c)>1 and c[1]=='tests/test_earth_consignment_browser.py'];self.assertEqual(len(preflight),1)
+        pc,pk=preflight[0];self.assertEqual(pc,[sys.executable,'tests/test_earth_consignment_browser.py','-v']);self.assertEqual(pk['timeout'],180)
+        self.assertEqual(pk['env']['FIRSTLIGHT_ROOT'],str(self.f.root));self.assertEqual(pk['env']['FIRSTLIGHT_CONSIGNMENT_COHORT'],str(self.f.logs/'earth-consignment-earned/FIRST_LOAD_COHORT.json'))
         self.assertLess(labels.index('tools/earth_consignment_cohort.py'),labels.index('tests/test_earth_consignment_browser.py'));self.assertLess(labels.index('tests/test_earth_consignment_browser.py'),labels.index('tools/earth_consignment_browser.py'))
         self.assertEqual(len(existing)+len(roads)+len(native)+len(consignment)+1,49)
         self.assertFalse((browser/'earth_homecoming_browser').exists());self.assertFalse(any('isolated-profile' in str(p) for p in browser.rglob('*')))
