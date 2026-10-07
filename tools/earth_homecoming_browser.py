@@ -64,6 +64,23 @@ def read_json(path):
     return result
 
 
+def expected_optional_defaults(old):
+    """Independent literal old-owner expectation; never reset existing history."""
+    if 'earthHomecoming' in old:
+        raise ValueError('Optional migration input must lack the homecoming owner.')
+    expected = json.loads(json.dumps(old))
+    expected['earthHomecoming'] = json.loads(json.dumps(FRESH))
+    catalogue = expected.get('localLife')
+    old_ids = {'heaven-propagation-bed-v1', 'hell-refuge-water-v1',
+               'atlantis-bellglass-lamp-v1', 'cosmos-drawing-shelf-v1'}
+    if (isinstance(catalogue, dict) and set(catalogue) == {'version', 'records'} and
+            type(catalogue['version']) is int and catalogue['version'] == 1 and
+            isinstance(catalogue['records'], dict) and set(catalogue['records']) == old_ids):
+        catalogue['records']['earth-first-load-through-v1'] = {
+            'accepted': False, 'choice': None, 'steps': [], 'claimed': False}
+    return expected
+
+
 def within(path, parent):
     return path == parent or parent in path.parents
 
@@ -218,8 +235,12 @@ def read_provenance(sources, flags, cohort_sha, root=ROOT, caller_root=None):
             raise ValueError('Complete actually paid Earth outcome is required.')
         migrated = read_json(verify_link(row['migration']['output'], sources))
         old = read_json(verify_link(row['migration']['source']))
-        if migrated.pop('earthHomecoming', None) != FRESH or migrated != old:
-            raise ValueError('Optional migration must preserve every old field exactly.')
+        expected = expected_optional_defaults(old)
+        catalogue_migration = ('exact-old-four-to-fresh-first-load'
+                               if expected.get('localLife') != old.get('localLife') else None)
+        if (migrated != expected or
+                row['migration'].get('localLifeCatalogueMigration') != catalogue_migration):
+            raise ValueError('Optional migration must preserve every old field and add only exact fresh defaults.')
         origin = row.get('origin', {})
         if variant == 'strongest':
             if 'fixture-origin' not in origin.get('kind', '') or len(row.get('prerequisiteLineage', [])) != 4:
@@ -588,7 +609,7 @@ class EarthMixin:
         source=self.args.output/(label+'-DERIVATIVE.json'); write_new(source,world); self.begin(label); self.report['synthetic_profiles'][label]=self.record; self.record['synthetic_provenance']={'path':str(source),'sha256':sha(source),'edits':edits,'never_earned_progress':True}
         self.start(); self.import_character(source); self.definition=self.ev('RealmEarthHomecoming.definition')
         if kind=='old-owner':
-            expected=json.loads(json.dumps(world)); expected['earthHomecoming']=FRESH; self.check('real optional migration preserves rich old world', self.state()==expected); self.restart('SYNTHETIC-old-owner')
+            expected=expected_optional_defaults(world); self.check('real optional migration preserves rich old world', self.state()==expected); self.restart('SYNTHETIC-old-owner')
         elif kind=='capacity':
             self.walk_ui('claim'); self.workspace(); before=self.state(); raw=self.ev('localStorage.getItem(RealmCharacters.KEY)'); self.page.locator('[data-rpg="earth-homecoming-claim"]').click(); self.render(); self.check('whole capacity refusal retains complete unpaid world and native bytes',self.state()==before and self.ev('localStorage.getItem(RealmCharacters.KEY)')==raw and 'whole fee' in self.page.locator('#toast').inner_text())
         else:

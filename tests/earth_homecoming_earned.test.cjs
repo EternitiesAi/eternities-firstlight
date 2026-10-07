@@ -28,8 +28,17 @@ test('strongest fixture origin is disclosed and genuinely earns its missing owne
  const r=cohort.results.find(r=>r.variant==='strongest');assert.match(r.origin.kind,/fixture-origin/);assert.equal(r.prerequisiteLineage.length,4);let previous=r.migration.output.sha256;for(const e of r.prerequisiteLineage){assert.equal(e.input.sha256,previous);J.link(e.input);J.link(e.output);J.link(e.report);previous=e.output.sha256;}
  const world=earned(r,'01_ACCEPTED');assert.ok(H.eligible(world));assert.ok(world.cosmosCampaign.claimed&&world.hellCampaign.claimed&&world.heavenCampaign.claimed&&world.atlantisCampaign.claimed);assert.ok(world.adventure.earthStory.claimed&&world.earthExpedition.story.claimed);
 });
-test('actual optional migration adds only an empty Earth owner to each historical world',()=>{
- for(const r of cohort.results){J.link(r.migration.source);J.link(r.migration.output);const raw=JSON.parse(fs.readFileSync(r.migration.source.path)),out=JSON.parse(fs.readFileSync(r.migration.output.path));assert.deepEqual(out.earthHomecoming,H.fresh());delete out.earthHomecoming;assert.deepEqual(out,raw);assert.ok(r.sourceDeltas.some(p=>p.path==='src/core.js'));}
+test('actual optional migration keeps every historical fact and adds only explicit fresh defaults',()=>{
+ for(const r of cohort.results){
+  J.link(r.migration.source);J.link(r.migration.output);
+  const raw=JSON.parse(fs.readFileSync(r.migration.source.path)),expected=P.copy(raw),out=JSON.parse(fs.readFileSync(r.migration.output.path));
+  const oldIds=['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1'].sort();
+  const legacy=raw.localLife.version===1&&Object.keys(raw.localLife).length===2&&Object.hasOwn(raw.localLife,'version')&&Object.hasOwn(raw.localLife,'records')&&Object.keys(raw.localLife.records).length===oldIds.length&&oldIds.every(id=>Object.hasOwn(raw.localLife.records,id));
+  if(legacy)expected.localLife.records['earth-first-load-through-v1']={accepted:false,choice:null,steps:[],claimed:false};
+  assert.equal(r.migration.localLifeCatalogueMigration,legacy?'exact-old-four-to-fresh-first-load':null);
+  assert.deepEqual(out.earthHomecoming,H.fresh());delete out.earthHomecoming;assert.deepEqual(out,expected);
+  assert.ok(r.sourceDeltas.some(p=>p.path==='src/core.js'));J.link(r.migration.source);
+ }
 });
 test('exact portable fixture receipts, paths and variant selection reject forged metadata',()=>{
  const meta=JSON.parse(fs.readFileSync(path.join(P.ROOT,'tests/fixtures/earth-homecoming-prerequisites/PROVENANCE.json'))),changed=P.copy(meta);changed.records.blade.sha256='0'.repeat(64);assert.throws(()=>J.inputFor('blade',changed),/byte-bound fixture receipt/);changed.records.blade.sha256=meta.records.blade.sha256;changed.records.blade.path='../some-other-save.json';assert.throws(()=>J.inputFor('blade',changed),/declared repository fixture path/);assert.throws(()=>J.plan('fresh-bow-I'));assert.throws(()=>J.link({path:reportPath,sha256:'0'.repeat(64)}),/exact linked bytes/);assert.equal(J.inputFor('blade').provenance.originalReportsReplayed,false);

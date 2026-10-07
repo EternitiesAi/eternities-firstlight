@@ -20,10 +20,22 @@ function epoch(){
  return{actual,stages,manifests:preflight()};
 }
 function write(folder,name,value){const p=path.join(folder,name+'.json');fs.writeFileSync(p,JSON.stringify(value,null,2)+'\n',{flag:'wx'});return{path:p,bytes:fs.statSync(p).size,sha256:sha(p)};}
+function assertMigrationPreserved(migrated,raw){
+ const expected=copy(raw),catalogue=expected.localLife;
+ const ids=['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1'].sort();
+ let catalogueMigration=null;
+ if(catalogue&&catalogue.version===1&&Object.keys(catalogue).length===2&&Object.hasOwn(catalogue,'version')&&Object.hasOwn(catalogue,'records')&&catalogue.records&&Object.keys(catalogue.records).length===ids.length&&ids.every(id=>Object.hasOwn(catalogue.records,id))){
+  catalogue.records['earth-first-load-through-v1']={accepted:false,choice:null,steps:[],claimed:false};
+  catalogueMigration='exact-old-four-to-fresh-first-load';
+ }
+ const old=copy(migrated);delete old.earthHomecoming;
+ assert.deepEqual(old,expected,'actual optional defaults preserve EVERY prior field and add only the literal fresh fifth record');
+ return catalogueMigration;
+}
 function migration(file,expected,folder){
  assert.equal(sha(file),expected,'byte-bound real earned checkpoint');const raw=JSON.parse(fs.readFileSync(file)),C=load('core'),H=load('earth-homecoming'),migrated=C.validate(raw);
- assert.deepEqual(migrated.earthHomecoming,H.fresh());const old=copy(migrated);delete old.earthHomecoming;assert.deepEqual(old,raw,'actual optional migration preserves EVERY prior field');
- const world=write(folder,'MIGRATED_WORLD',migrated),receipt={source:{path:file,bytes:fs.statSync(file).size,sha256:expected},output:world,newOwner:copy(migrated.earthHomecoming),oldWorldUnchanged:true,method:'actual installed Core.validate; adds only missing empty Earth owner; no historical claims transplanted'};
+ assert.deepEqual(migrated.earthHomecoming,H.fresh());const catalogueMigration=assertMigrationPreserved(migrated,raw);assert.equal(sha(file),expected,'original earned input bytes unchanged');
+ const world=write(folder,'MIGRATED_WORLD',migrated),receipt={source:{path:file,bytes:fs.statSync(file).size,sha256:expected},output:world,newOwner:copy(migrated.earthHomecoming),localLifeCatalogueMigration:catalogueMigration,oldWorldUnchanged:true,method:'actual installed Core.validate; missing empty Earth owner and exact old-four to fresh-fifth catalogue only; no historical claims transplanted'};
  write(folder,'MIGRATION_RECEIPT',receipt);return receipt;
 }
 function preserved(final,before){
@@ -50,4 +62,4 @@ function callerAudit(){
  for(const f of files){const text=fs.readFileSync(path.join(__dirname,f),'utf8');for(const p of patterns)assert.equal(p.test(text),false,'no injection caller spelling '+f+' '+p);}
  return{kind:'pinned staged-caller inspection, not independent runtime telemetry',files,...ZERO};
 }
-module.exports={ROOT,ZERO,sha,copy,dist,installedEpoch,preflight,initialize,load,epoch,write,migration,preserved,profile,productionApp,callerAudit};
+module.exports={ROOT,ZERO,sha,copy,dist,installedEpoch,preflight,initialize,load,epoch,write,migration,assertMigrationPreserved,preserved,profile,productionApp,callerAudit};

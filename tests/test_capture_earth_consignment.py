@@ -87,6 +87,31 @@ class PreflightCPU(unittest.TestCase):
         for ms in (15000,17000,20000):self.assertTrue(C.valid_movie({'elapsed_ms':ms,'timedOut':False,'error':None}))
         for bad in ({'elapsed_ms':14999,'timedOut':False,'error':None},{'elapsed_ms':20001,'timedOut':False,'error':None},{'elapsed_ms':17000,'timedOut':True,'error':None},{'elapsed_ms':17000,'timedOut':False,'error':'download failed'}):self.assertFalse(C.valid_movie(bad))
 
+    def test_actual_capture_import_admission_keeps_immediate_source_economy(self):
+        # Only the actual two admission statements run against labelled stubs.
+        # Sealed intake and final native-byte guards remain separate unchanged checks.
+        tree=ast.parse(SOURCE.read_text(encoding='utf-8-sig'));main=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='main')
+        def is_import(n):
+            return (isinstance(n,ast.Expr) and isinstance(n.value,ast.Call) and isinstance(n.value.func,ast.Attribute)
+                    and isinstance(n.value.func.value,ast.Name) and n.value.func.value.id=='h' and n.value.func.attr=='import_world')
+        inner=next(n for n in ast.walk(main) if isinstance(n,ast.Try) and any(is_import(s) for s in n.body))
+        start=next(i for i,n in enumerate(inner.body) if is_import(n));body=copy.deepcopy(inner.body[start:start+2])
+        arguments=ast.arguments(posonlyargs=[],args=[ast.arg(arg=n)for n in ('h','H','a','initial')],vararg=None,kwonlyargs=[],kw_defaults=[],kwarg=None,defaults=[])
+        function=ast.FunctionDef(name='admit',args=arguments,body=body+[ast.Return(value=ast.Constant(value=True))],decorator_list=[],type_params=[])
+        namespace=dict(C.__dict__);exec(compile(ast.fix_missing_locations(ast.Module(body=[function],type_ignores=[])),str(SOURCE),'exec'),namespace)
+        class Probe:
+            check=H.Native.check;record=H.Native.record
+            def __init__(self,world):self.world=world;self.case='SYNTHETIC-CPU-capture-admission';self.row={'checks':[]}
+            def import_world(self,source):pass
+            def state(self):return self.world
+        initial,_,_,_,_=supplied();a=SimpleNamespace(source=HERE/'SYNTHETIC-CPU-input.json')
+        with patch('builtins.print'):
+            self.assertTrue(namespace['admit'](Probe(copy.deepcopy(initial)),H,a,initial))
+            for mutate in (lambda w:w['adventure'].update(coins=7),lambda w:w['sandbox']['inventory'].update(wood=1),
+                           lambda w:w['homeHistory'].update(synthetic_corruption=True),lambda w:w['localLife']['records'][H.JOB].update(claimed=True)):
+                bad=copy.deepcopy(initial);mutate(bad)
+                with self.assertRaises(AssertionError):namespace['admit'](Probe(bad),H,a,initial)
+
     def test_final_observed_native_bytes_preserve_exact_source_facts(self):
         world,store,_,_,_=supplied();self.assertTrue(C.saved_facts_match(json.dumps(store),world,H))
         for mutate in (lambda x:x['slots'][0]['world']['localLife']['records'][H.JOB]['steps'].append('arrive-meadow-stop'),lambda x:x['slots'][0]['world']['sandbox']['inventory'].update(wood=4),lambda x:x['slots'][0]['world']['adventure'].update(coins=12),lambda x:x.update(active='character-1')):

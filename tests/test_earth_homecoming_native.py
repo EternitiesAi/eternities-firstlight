@@ -24,6 +24,43 @@ SOURCES=Path(os.environ['EARTH_EARNED_SOURCES']) if os.environ.get('EARTH_EARNED
 COHORT_SHA=os.environ.get('EARTH_EARNED_COHORT_SHA')
 
 
+class OptionalCatalogueOracle(unittest.TestCase):
+    def historical(self):
+        source=N.ROOT/'tests/fixtures/earth-homecoming-prerequisites/blade/ALL_TWELVE_PREREQUISITES_EARNED.json'
+        self.assertEqual(N.sha(source),N.HISTORICAL_INPUTS['blade'][1])
+        return source,N.read_json(source)
+
+    def test_exact_legacy_input_preserves_all_facts_and_adds_only_literal_fresh_defaults(self):
+        source,old=self.historical();original=copy.deepcopy(old);expected=copy.deepcopy(old)
+        expected['earthHomecoming']={'version':1,'accepted':False,'steps':[],'choice':None,'claimed':False}
+        expected['localLife']['records']['earth-first-load-through-v1']={'accepted':False,'choice':None,'steps':[],'claimed':False}
+        self.assertEqual(N.expected_optional_defaults(old),expected)
+        self.assertEqual(old,original);self.assertEqual(N.sha(source),N.HISTORICAL_INPUTS['blade'][1])
+
+    def test_existing_fifth_history_never_receives_fresh_record_allowance(self):
+        _,old=self.historical()
+        for record in ({'accepted':True,'choice':'south-stormfall','steps':[],'claimed':False},
+                       {'accepted':True,'choice':'south-stormfall','steps':['arrive-meadow-stop'],'claimed':False}):
+            with self.subTest(record=record):
+                before=copy.deepcopy(old);before['localLife']['records']['earth-first-load-through-v1']=record
+                expected=N.expected_optional_defaults(before)
+                self.assertEqual(expected['localLife'],before['localLife'])
+                bad=copy.deepcopy(expected);bad['localLife']['records']['earth-first-load-through-v1']={'accepted':False,'choice':None,'steps':[],'claimed':False}
+                self.assertNotEqual(expected,bad)
+        for mutate in (lambda w:w['localLife']['records'].pop('cosmos-drawing-shelf-v1'),
+                       lambda w:w['localLife']['records'].update(unknown={}),
+                       lambda w:w['localLife'].update(version=True)):
+            before=copy.deepcopy(old);mutate(before)
+            self.assertEqual(N.expected_optional_defaults(before)['localLife'],before['localLife'])
+
+    def test_existing_homecoming_is_refused_instead_of_reset(self):
+        _,old=self.historical()
+        for owner in (None,N.FRESH,{**N.FRESH,'accepted':True}):
+            before=copy.deepcopy(old);before['earthHomecoming']=owner;original=copy.deepcopy(before)
+            with self.assertRaisesRegex(ValueError,'must lack'):N.expected_optional_defaults(before)
+            self.assertEqual(before,original)
+
+
 if SOURCES is None:
     class ExplicitCurrentCohortRequired(unittest.TestCase):
         @unittest.skip('Run the verifier current Earth earned cohort and explicit native preflight; generic discovery has no cohort.')
@@ -200,7 +237,10 @@ else:
             js=r"""const fs=require('fs'),path=require('path'),assert=require('assert/strict'),p=JSON.parse(process.argv[1]);
              const load=n=>require(path.join(p.root,'src',n+'.js'));load('engine');const C=load('core'),H=load('earth-homecoming'),A=load('adventure'),W=load('world-foundations'),UI=load('earth-homecoming-ui'),Art=load('earth-homecoming-art');load('earth-story');
              const read=f=>JSON.parse(fs.readFileSync(f));for(const[k,v]of Object.entries(p.proof)){const seed=read(v.seed),world=C.validate(seed);assert.deepEqual(world,seed);assert.ok(H.eligible(world));assert.deepEqual(world.earthHomecoming,H.fresh());const final=C.validate(read(v.checkpoints.FINAL_WORLD));assert.ok(H.ready(final)&&final.earthHomecoming.claimed);}
-             const old=read(p.proof.strongest.cohort_row.migration.source.path),m=C.validate(old);assert.deepEqual(m.earthHomecoming,H.fresh());delete m.earthHomecoming;assert.deepEqual(m,old);
+             const old=read(p.proof.strongest.cohort_row.migration.source.path),expected=structuredClone(old),m=C.validate(old);assert.deepEqual(m.earthHomecoming,H.fresh());delete m.earthHomecoming;
+             const ids=['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1'].sort(),l=expected.localLife;
+             if(l.version===1&&Object.keys(l).length===2&&Object.hasOwn(l,'version')&&Object.hasOwn(l,'records')&&Object.keys(l.records).length===ids.length&&ids.every(id=>Object.hasOwn(l.records,id)))l.records['earth-first-load-through-v1']={accepted:false,choice:null,steps:[],claimed:false};
+             assert.deepEqual(m,expected);assert.deepEqual(read(p.proof.strongest.cohort_row.migration.source.path),old);
              const accepted=new C.Simulation(read(p.proof.blade.checkpoints['01_ACCEPTED'])),rpg={sim:accepted,api:{worldContext:()=>({sim:accepted,active:'CPU-display-context',revision:1})}},ui=new UI.EarthHomecomingUI(rpg);
              const panel=ui.panel().html;assert.ok(panel.includes('world-select')&&panel.includes('earthlands')&&panel.includes('Broad claim lane')&&panel.includes('Narrow false shelter')&&panel.includes('Closing ring'));assert.ok(!panel.includes('earth-homecoming-claim"'));
              accepted.room=H.definition.room;const atEarth=ui.panel().html;assert.ok(atEarth.includes('earth-homecoming-walk')&&atEarth.includes('bridge-record'));assert.ok(!atEarth.includes('data-rpg="earth-homecoming-step" data-id="regent-repelled"'));

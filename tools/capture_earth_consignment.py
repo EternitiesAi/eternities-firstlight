@@ -219,7 +219,7 @@ def main(argv=None):
                     try:report['browserVersion']=session.send('Browser.getVersion')
                     finally:session.detach()
                 d=h.diag();report['rendererActual']=d['renderer'];h.check('Actual hardware NVIDIA RTX renderer',hardware_rtx(d),d['renderer'])
-                h.import_world(a.source);h.check('Native import retains supplied record and previous owners',h.record()==initial['localLife']['records'][H.JOB] and H.preserved(h.state())==H.preserved(initial))
+                h.import_world(a.source);h.check('Native import retains supplied record, previous owners and economy',h.record()==initial['localLife']['records'][H.JOB] and H.import_preserved(initial,h.state()))
                 h.enter();h.walk_work('carrier');h.action('wait');h.close();h.click('#rpg-hud [data-rpg="camera"][data-id="adventure"]');h.page.keyboard.press('r');h.action('continue')
                 before=h.state();h.check('Explicit native Continue starts actual carrier',h.view()['status']=='moving')
                 report['recorderStart']=h.ev(START_RECORDER);started=time.monotonic();report['cameraIntervals']=[]

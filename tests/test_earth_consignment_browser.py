@@ -129,6 +129,43 @@ class DriverCPU(unittest.TestCase):
         w['adventure']['elapsed']+=1;w['adventure']['revision']+=1
         self.assertEqual(H.preserved(w),p)
 
+    def test_immediate_import_keeps_source_economy_before_route_baseline(self):
+        # Synthetic dictionaries exercise the actual read-only predicate only.
+        original=copy.deepcopy(self.originals['blade']['world']);imported=copy.deepcopy(original)
+        imported['localLife']['records'][H.JOB]=copy.deepcopy(H.FRESH)
+        self.assertTrue(H.import_preserved(original,imported))
+        for mutate in (lambda w:w['adventure'].update(coins=17),lambda w:w['adventure'].update(coins=19),
+                       lambda w:w['sandbox']['inventory'].update(wood=7),lambda w:w['sandbox']['inventory'].update(fiber=5),
+                       lambda w:w['sandbox']['inventory'].update(unearned=1),lambda w:w['adventure'].update(coins=18.0),
+                       lambda w:w['sandbox']['inventory'].update(wood=8.0),lambda w:w['adventure'].update(coins=True),
+                       lambda w:w['sandbox']['inventory'].update(wood=True)):
+            bad=copy.deepcopy(imported);mutate(bad)
+            self.assertEqual(H.preserved(bad),H.preserved(original),'the old generic predicate cannot see this economy-only defect')
+            self.assertFalse(H.import_preserved(original,bad))
+        self.assertFalse(H.import_preserved(original,{}))
+
+    def test_actual_native_import_admission_rejects_economy_only_change(self):
+        # Extract the actual admission prefix. No browser or route is executed.
+        tree=ast.parse(SOURCE.read_text(encoding='utf-8-sig'))
+        method=next(n for c in tree.body if isinstance(c,ast.ClassDef) and c.name=='Native' for n in c.body if isinstance(n,ast.FunctionDef) and n.name=='run')
+        stop=next(i for i,n in enumerate(method.body) if isinstance(n,ast.Assign) and any(isinstance(t,ast.Subscript) and isinstance(t.slice,ast.Constant) and t.slice.value=='origin' for t in n.targets))
+        method=copy.deepcopy(method);method.body=method.body[:stop]+[ast.Return(value=ast.Constant(value=True))]
+        namespace=dict(H.__dict__);exec(compile(ast.fix_missing_locations(ast.Module(body=[method],type_ignores=[])),str(SOURCE),'exec'),namespace)
+        class Probe:
+            check=H.Native.check;record=H.Native.record
+            def __init__(self,world):self.world=world;self.case='SYNTHETIC-CPU-native-admission';self.row={'checks':[]}
+            def start(self):pass
+            def import_world(self,source):pass
+            def state(self):return self.world
+        original=copy.deepcopy(self.originals['blade']['world']);imported=copy.deepcopy(original)
+        imported['localLife']['records'][H.JOB]=copy.deepcopy(H.FRESH);origin={'world':original,'source':'SYNTHETIC-CPU-input.json'}
+        with patch('builtins.print'):
+            self.assertTrue(namespace['run'](Probe(imported),origin,'south'))
+            for mutate in (lambda w:w['adventure'].update(coins=17),lambda w:w['sandbox']['inventory'].update(wood=7),
+                           lambda w:w['homeHistory'].update(synthetic_corruption=True),lambda w:w['localLife']['records'][H.JOB].update(accepted=True)):
+                bad=copy.deepcopy(imported);mutate(bad)
+                with self.assertRaises(AssertionError):namespace['run'](Probe(bad),origin,'south')
+
     def test_payment_is_whole_exact_four_two_two_with_no_xp_or_other_materials(self):
         before=copy.deepcopy(self.originals['blade']['world']);after=copy.deepcopy(before)
         after['adventure']['coins']+=4

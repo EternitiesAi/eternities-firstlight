@@ -123,6 +123,25 @@ def preserved(world):
             'sandbox':{k:v for k,v in world['sandbox'].items() if k not in ('inventory','elapsed')}}
 
 
+def import_preserved(original, imported):
+    """Compare immediate live import to its sealed source before a new baseline.
+
+    The generic history predicate excludes economy for later payment checks.
+    Import has no payment authority: both economy owners must match exactly.
+    """
+    try:
+        before, after = original['adventure']['coins'], imported['adventure']['coins']
+        inventory_before, inventory_after = original['sandbox']['inventory'], imported['sandbox']['inventory']
+        return (preserved(imported) == preserved(original)
+                and type(before) is int and type(after) is int and after == before
+                and isinstance(inventory_before, dict) and isinstance(inventory_after, dict)
+                and set(inventory_after) == set(inventory_before)
+                and all(type(v) is int and type(inventory_after[k]) is int
+                        and inventory_after[k] == v for k, v in inventory_before.items()))
+    except (KeyError, TypeError):
+        return False
+
+
 def payment(before,after):
     return after['adventure']['coins']==before['adventure']['coins']+4 and after['adventure']['xp']==before['adventure']['xp'] and after['adventure']['ore']==before['adventure']['ore'] and after['sandbox']['inventory']=={k:v+(2 if k in ('wood','fiber') else 0) for k,v in before['sandbox']['inventory'].items()}
 
@@ -289,7 +308,7 @@ class Native:
     def refuse(self,on):
         self.ev(r"""on=>{if(on){if(window.__flQuota)throw Error('already refusing');window.__flQuota=Storage.prototype.setItem;window.__flRefused=0;Storage.prototype.setItem=function(k,v){if(k===RealmCharacters.KEY){__flRefused++;throw new DOMException('Labelled first-load native quota refusal','QuotaExceededError');}return __flQuota.call(this,k,v);};}else{Storage.prototype.setItem=__flQuota;delete window.__flQuota;}}""",on)
     def run(self,origin,route):
-        self.start();self.import_world(origin['source']);self.check('native import retains original earned source facts',preserved(self.state())==preserved(origin['world']) and self.record()==FRESH)
+        self.start();self.import_world(origin['source']);self.check('native import retains original earned source facts and economy',import_preserved(origin['world'],self.state()) and self.record()==FRESH)
         self.row['origin']={'source':str(origin['source']),'sha256':sha(origin['source']),'journey':str(origin['journey']),'journey_sha256':sha(origin['journey']),'producerSourceHashes':origin['receipt']['sourceHashes'],'provenance':origin['provenance'],'prerequisitesReplayedByDriver':False,'currentCallerMatched':origin['provenance']=='current-command-earned'}
         self.enter();self.walk_work('giver');self.panel();before=self.state();choices=self.ev('()=>Array.from(document.querySelectorAll("[data-rpg=consignment-accept]")).map(b=>b.dataset.id)')
         self.check('two immutable branch-matching choices before acceptance',set(choices)=={'south-'+origin['suffix'],'north-'+origin['suffix']})

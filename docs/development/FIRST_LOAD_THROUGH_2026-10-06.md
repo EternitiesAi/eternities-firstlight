@@ -1,3 +1,50 @@
+# Earned-journey migration and import-oracle review; qualification remains pending
+
+Source03 at `2bdd963a424ae9ca5d97e16943d1e3b4f2ddd73e` passed Node1797
+with two explicit generic-cohort skips and Python316 methods (zero failures or
+errors; eight skip records), then failed the long Earth earned journey before
+its first continuation. Its migration assertion assumed the historical four
+local jobs remained the entire catalogue. Actual Core added only the literal
+fresh fifth record. `SOURCE03_EXIT.json`, console and failed journey are retained;
+this attempt is a failed full gate, never a qualified build.
+
+The producer's migration oracle and independently literal cohort readback now
+allow that exact conditional addition while comparing every other old field.
+They retain byte-bound original inputs and explicitly identify the migration.
+CPU negative checks reject missing/nonfresh fifth records and changed old
+choices, XP, coins or timber; current fifth history is never refreshed. The
+initial focused installed-owner run passed34/34. The next complete source gate
+must also run the genuine long continuation and earned cohort readback.
+
+Independent review found a gap in the new native import oracle: its protected
+projection excluded currency and inventory, and later route baselines were
+taken after import. Explicit original-versus-imported economy comparisons are
+required before either native play or recording. This is a verification gap,
+not an observed import corruption. The shared read-only predicate now compares
+protected history, exact integer currency and every inventory key/value against
+the original source before either caller takes a movement baseline. Existing
+fresh/supplied records, sealed intake, refusal and final native-byte guards stay
+strict. Actual extracted old admission expressions accepted economy-only
+counterexamples; repaired expressions refused them. The staged repair passed
+11/11 CPU checks after one retained bad negative specimen. The installed native
+CPU module passed21/21 and installed capture module passed19/19, no skips.
+
+Proactive inspection found the same four-record assumption in the older native
+cohort reader, its explicit old-owner browser case and its current Core
+preflight. All now permit only independently literal fresh defaults and compare
+every prior field. An already present homecoming owner is refused by this
+missing-owner expectation; existing fifth history receives no fresh allowance.
+Three new always-run oracle tests passed; the generic invocation's current
+earned-cohort test explicitly skipped until the new full producer supplies it.
+Source04 must run that actual cohort-bound preflight. Native journeys and
+recording remain unrun. Independent rereview also hardened the three CJS
+catalogue predicates from comma-joined keys to exact counts and literal own
+keys. A malformed comma-containing key is refused by actual Core and cannot
+gain the migration allowance. The revised installed-owner suite passed35/35,
+zero skips; the reviewer closed this oracle finding without claiming execution.
+
+---
+
 # Strict migration and verifier-consumer repairs; qualification remains pending
 
 Source02 at `e68193ce986c3c6974ad2ba19e0c47750f5727b0` passed the Node
