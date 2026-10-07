@@ -1,4 +1,4 @@
-/* Staged field-account controller. UI reads real owners and delegates explicit
+/* Field-account controller. UI reads real owners and delegates explicit
  * actions; only the app's actual event/render owner can issue observation proof. */
 (function(G){'use strict';
 const D=G.RealmEarthWildSignsData,R=G.RealmEarthWildSigns;

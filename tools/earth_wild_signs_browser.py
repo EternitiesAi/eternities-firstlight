@@ -379,11 +379,21 @@ def driver_class(base):
             self.check('fresh original native retry saves actual dead enemy clearance',self.signs()['cleared'] is True)
             self.row['combat']={'nativeShotsRequested':shots,'actualProjectileIds':sorted(arrows),'quotaRefused':True,'explicitRetry':True}
             self.guard()
+        def quality_refresh(self):
+            original=self.state()['settings']['quality'];signs=self.signs()
+            self.click('#settings')
+            try:
+                for quality,count in (('balanced',128),('low',64),('high',128),(original,64 if original=='low' else 128)):
+                    self.page.locator('#quality').select_option(quality)
+                    actual=self.ev('()=>window.__flArt.e.batches.flatMap(b=>b.items).filter(p=>p.habitatPart).length')
+                    self.check('native Graphics immediately refreshes '+quality+' habitat',actual==count,{'expected':count,'actual':actual})
+                self.check('Graphics leaves accepted field-account facts unchanged',self.signs()==signs)
+            finally:self.close()
         def run_signs(self, source, resolution, reverse, variant):
             self.start();self.import_world(source['source']);self.origin_world=source['world']
             self.original_facts=self.stable_facts(self.origin_world)
             self.check('immediate import matches sealed economy and all owners',base.import_preserved(self.origin_world,self.state()) and self.signs()==FRESH and self.state()['localLife']['records'][LOAD]==self.origin_world['localLife']['records'][LOAD])
-            self.enter();self.walk_sign('elderweald-sela');self.action('accept');self.check('native invitation accepted',self.signs()['accepted'] is True)
+            self.enter();self.quality_refresh();self.walk_sign('elderweald-sela');self.action('accept');self.check('native invitation accepted',self.signs()['accepted'] is True)
             self.workspace('journal');self.click('[data-rpg="wild-signs-track"][data-quest="'+ID+'"]')
             if variant=='blade':self.restart('ACCEPTED');self.enter()
             order=['feeding-track','timber-gouge'] if reverse else ['timber-gouge','feeding-track']

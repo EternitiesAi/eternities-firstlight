@@ -4,6 +4,7 @@ const {test}=require('node:test'),assert=require('node:assert/strict');
 const C=require('../src/core.js'),W=require('../src/world-foundations.js'),E=require('../src/engine.js');
 require('../src/coastward-settlement-art.js');
 require('../src/coastward-woodland-art.js');
+require('../src/earth-grazer-motion.js');require('../src/earth-grazer-habitat-art.js');
 const Art=require('../src/world-foundations-art.js');
 const KINDS=new Set(['box','timber-panel','bridge-vault','bank-slope','coast-bank','mountain-ridge','round','ring','roof','leaf','octa','cone','disc','cylinder']);
 function submission(id){const d=W.definition(id),items=[],writer={e:{},begin(){},commit(){},add(kind,x,y,z,w,h,depth,color,opt={}){items.push({kind,p:[x,y,z],s:[w,h,depth],color,...opt});},box(x,y,z,w,h,depth,color,opt){this.add('box',x,y,z,w,h,depth,color,opt);}},sim=new C.Simulation();sim.room=d.room;sim.state.player={...d.entry};Art.make(writer,sim);return{d,items,writer};}

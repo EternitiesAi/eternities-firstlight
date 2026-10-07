@@ -1,5 +1,5 @@
-/* Staged noncombat browse actor. Host render/input witnesses are not supplied
- * by this module; parent must wire actual ordinary RAF and trusted intent. */
+/* Noncombat browse actor. App supplies actual ordinary RAF render evidence
+ * and trusted intent; this module never substitutes either on its own. */
 (function(G){'use strict';
 const ROOM='world-earthlands',ID='elderweald-moss-grazer-v1',JOB='earth-first-load-through-v1';
 const freeze=o=>{if(o&&typeof o==='object'){Object.values(o).forEach(freeze);Object.freeze(o);}return o;};

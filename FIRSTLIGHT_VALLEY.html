@@ -13050,8 +13050,8 @@ function draw(out,sim,t,a){const d=W.definition(sim.room);if(!d)return;const qui
 }
 G.RealmWorldFoundationsArt={make,gate,draw,partitions,rawPartitions,coastBanks};if(typeof module!=='undefined')module.exports=G.RealmWorldFoundationsArt;
 })(globalThis);
-</script><script>/* Staged noncombat browse actor. Host render/input witnesses are not supplied
- * by this module; parent must wire actual ordinary RAF and trusted intent. */
+</script><script>/* Noncombat browse actor. App supplies actual ordinary RAF render evidence
+ * and trusted intent; this module never substitutes either on its own. */
 (function(G){'use strict';
 const ROOM='world-earthlands',ID='elderweald-moss-grazer-v1',JOB='earth-first-load-through-v1';
 const freeze=o=>{if(o&&typeof o==='object'){Object.values(o).forEach(freeze);Object.freeze(o);}return o;};
@@ -13202,7 +13202,7 @@ function reset(sim,reason='owner-change'){end(live.get(sim),String(reason));retu
 const api=Object.freeze({ID,ROOM,PATH,LIMITS,begin,current,isProjection,tick,acknowledge,observationTicket,validateObservation,consumeObservation,reset});
 G.RealmEarthGrazerMotion=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
-</script><script>/* Staged primitive grazer; shape is appearance only. Only draw of a branded
+</script><script>/* Primitive grazer; shape is appearance only. Only draw of a branded
  * live projection returns a private submission receipt, never observed progress. */
 (function(G){'use strict';
 const E=G.RealmEngine,B=G.RealmEarthGrazerMotion;if(!E?.M||!B)throw Error('Load Engine and GrazerMotion before grazer art.');
@@ -13625,7 +13625,7 @@ function make(art,sim){
 const api=Object.freeze({ID,ROOM,MAX,PER_GROUP,GROUPS,PALETTE,RESERVES,parts,make});
 G.RealmEarthGrazerHabitatArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
-</script><script>/* Staged field-account controller. UI reads real owners and delegates explicit
+</script><script>/* Field-account controller. UI reads real owners and delegates explicit
  * actions; only the app's actual event/render owner can issue observation proof. */
 (function(G){'use strict';
 const D=G.RealmEarthWildSignsData,R=G.RealmEarthWildSigns;
@@ -13947,7 +13947,7 @@ function syncFieldcraftOwner(force=false){
  return sim.fieldcraftOwnerLease;
 }
 function fieldcraftContext(){const ownerLease=syncFieldcraftOwner();return{...worldContext(),ownerLease};}
-// Staged camera-only functions inside App; parent ownership.fragment owns grazerFrame.
+// Transient camera framing belongs to the current field-account owner below.
 const GRAZER_LOOK_POINT=Object.freeze([-163.5,2.32,-78.5]);
 let grazerCameraHalfHeld=false;
 function clearGrazerFocus(){
@@ -14030,7 +14030,6 @@ function frameFieldcraft(view){
  }else{camera.zoom=Math.max(.05,Math.max(6,(g.to[2]-g.from[2])/2+1.5)/Math.min(1,aspect)/camera.baseHalf);camera.half=fitCameraHalf(camera.baseHalf,camera.zoom);}
  camera.center=fieldcraftFrame.point.slice();updateCamera(1);save();return{ok:true,text:'Receiving face framed in your current view. Move or switch camera mode to return to following.'};
 }
-// Parent preparation only: splice inside the actual App closure after review.
 // Ordinary renderer acknowledgement is deliberately separate from photo/test rendering.
 let wildSignsOwner=null,grazerFrame=null,grazerLastInspect=-Infinity,grazerLastVisibility=null;
 const wildSignsNativeEvents=new WeakSet();
@@ -14210,6 +14209,18 @@ function resize(){
  if(camera.ready&&camera.preset!=='adventure'){camera.baseHalf=cameraHalf(camera.preset);camera.half=fitCameraHalf(camera.baseHalf,camera.zoom);}
  updateCamera(1);
 }
+function graphicsQuality(value){
+ if(!['low','balanced','high'].includes(value))return{ok:false,error:'Choose Low, Balanced or High graphics.'};
+ const changed=sim.state.settings.quality!==value;
+ sim.state.settings.quality=value;
+ if(engine){
+  engine.quality=value;
+  // Rebuild only this dry Earth scene, using its real existing art owner.
+  // Keep the same camera, Simulation, travel and encounter leases.
+  if(changed&&art&&sim.room===RealmEarthWildSignsData.ROOM&&!sim.worldDive)RealmWorldFoundationsArt.make(art,sim);
+ }
+ resize();return save();
+}
 function updateCamera(dt){
  if(!engine)return;if(camera.preset!=='adventure'||camera.tour){updateOrthographicCamera(dt);return;}
  const person=follow?sim.state.residents.find(r=>r.id===follow):sim.state.player,base=sceneHeight(person.x,person.z);
@@ -14267,7 +14278,7 @@ function renderPanel(){if(!panel)return;let s=sim.state,html='',custom=arsenal?.
  ui.body.innerHTML=html;}
 function selectResident(id){selected=id;if(panel!=='inhabitants'){panel=null;openPanel('inhabitants');}else renderPanel();}
 ui.body.addEventListener('click',e=>{let b=e.target.closest('[data-action]');if(!b)return;if(arsenal?.action(b)||adventure?.action(b)||sandbox?.action(b)||experience?.action(b))return;let id=b.dataset.id;switch(b.dataset.action){case'open-visitor':openPanel('visitor');break;case'open-retreat':openPanel('retreat');break;case'walk':navigate(id);closePanel();break;case'place-action':action(id);break;case'select-resident':selectResident(id);break;case'talk':{let r=command('talk',{id});if(r.ok){let slot=$('#dialogue-slot');if(slot)slot.innerHTML='<div class="quote">“'+esc(r.text)+'”</div><small class="muted">Authored local dialogue · no model request</small>';}break;}case'follow':follow=follow===id?null:id;camera.overview=false;toast(follow?'Following '+C.PROFILES.find(p=>p.id===id).name+'. Movement is still yours.':'Camera returned to your visitor.');renderPanel();break;case'resident-walk':navigate(sim.runs.get(id).goal);closePanel();break;case'plant':command('plant');break;case'note':{let r=command('note',{text:$('#note-text').value});if(r.ok)renderPanel();break;}case'export':exportWorld();break;case'import':openImport();break;case'time':sim.setTime(+b.dataset.hour);renderPanel();save();break;case'weather':sim.state.weather=b.dataset.weather;renderPanel();save();break;case'pause':experience?.stop();sim.paused=!sim.paused;renderPanel();toast(sim.paused?'The local world is paused.':'The local world is moving again.');break;case'photo':closePanel();togglePhoto();break;case'capture':capture();break;case'reset':if(characterStore.managed){rpg.open('characters');toast('Create another character here. Your current world stays intact.');}else if(confirm('Start a new local world? Export your current world first to keep your notes and flowers.'))replaceLegacyWorld(C.fresh());break;}});
-ui.body.addEventListener('input',e=>{if(e.target.id==='camera-fov'){camera.fov=sim.state.settings.cameraFov=Math.max(45,Math.min(80,+e.target.value));$('#camera-fov-value').textContent=camera.fov+'°';updateCamera(1);}if(e.target.id==='time-slider'){sim.setTime(+e.target.value);$('#slider-hour').textContent=formatHour(sim.state.hour);}});ui.body.addEventListener('change',e=>{if(e.target.id==='camera-mode')cameraPreset(e.target.value);if(e.target.id==='camera-fov')save();experience?.changed(e);if(e.target.id==='quality'){sim.state.settings.quality=e.target.value;if(engine)engine.quality=e.target.value;resize();save();}if(e.target.dataset.setting){sim.state.settings[e.target.dataset.setting]=e.target.checked;if(e.target.dataset.setting==='reducedMotion'){document.body.classList.toggle('reduced',e.target.checked);if(engine)engine.reducedMotion=e.target.checked;}save();}if(e.target.id==='time-slider')save();});
+ui.body.addEventListener('input',e=>{if(e.target.id==='camera-fov'){camera.fov=sim.state.settings.cameraFov=Math.max(45,Math.min(80,+e.target.value));$('#camera-fov-value').textContent=camera.fov+'°';updateCamera(1);}if(e.target.id==='time-slider'){sim.setTime(+e.target.value);$('#slider-hour').textContent=formatHour(sim.state.hour);}});ui.body.addEventListener('change',e=>{if(e.target.id==='camera-mode')cameraPreset(e.target.value);if(e.target.id==='camera-fov')save();experience?.changed(e);if(e.target.id==='quality')graphicsQuality(e.target.value);if(e.target.dataset.setting){sim.state.settings[e.target.dataset.setting]=e.target.checked;if(e.target.dataset.setting==='reducedMotion'){document.body.classList.toggle('reduced',e.target.checked);if(engine)engine.reducedMotion=e.target.checked;}save();}if(e.target.id==='time-slider')save();});
 function download(data,name,type){let url=URL.createObjectURL(new Blob([data],{type})),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function exportWorld(){download(JSON.stringify(sim.snapshot(),null,2),'Firstlight-Valley-day-'+sim.state.day+'.json','application/json');toast('World exported. Keep the JSON with your HTML.');}
 function applyWorld(state){clearGrazerFocus();syncConsignmentOwner(true);syncFieldcraftOwner(true);syncWildSignsOwner(true);keys.clear();pointers.clear();gesture=null;document.body.classList.remove('photo-mode');rpg?.reset();adventure?.reset();sandbox?.endBuild();sandbox?.stopAuto();experience?.stop();if(experience){experience.scoreUndo=[];experience.scoreRedo=[];experience.selectedSlot='nw';experience.memories.pending=null;}if(experience?.dialog.open)experience.close();audio.disable();sim=new C.Simulation(state);state=sim.state;camera.ready=false;camera.preset=state.settings.cameraMode;camera.fov=state.settings.cameraFov;scene=Symbol('rebuild');switchScene();selected=null;follow=null;closePanel();document.body.classList.toggle('reduced',sim.state.settings.reducedMotion);if(engine)engine.quality=sim.state.settings.quality;resize();sandbox?.reset();if(rpg){rpg.quest=state.adventure.pursuit.pinned?'project':state.adventure.starter.accepted&&!state.adventure.starter.reward?'starter':'story';if(state.earthExpedition.story.accepted&&!state.earthExpedition.story.claimed||state.earthExpedition.patrol.active)rpg.quest='expedition';rpg.tick();}lastSave=elapsed;}

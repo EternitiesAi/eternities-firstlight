@@ -100,3 +100,23 @@ test('installed build/shell order declares one habitat module and missing runtim
  assert.equal(build.split("('earth-grazer-habitat-art.js','EARTH_GRAZER_HABITAT_ART')").length-1,1);
  const dependency=globalThis.RealmEarthGrazerHabitatArt;try{globalThis.RealmEarthGrazerHabitatArt=undefined;assert.throws(()=>scene(),/make/);}finally{globalThis.RealmEarthGrazerHabitatArt=dependency;}
 });
+
+test('actual Graphics change refreshes64/128 static pieces immediately without replacing saved owners or camera',()=>{
+ const h=scene('balanced'),before=copy(h.sim.state),camera={preset:'follow',yaw:.9,half:6},lease=Object.freeze({});
+ h.sim.grazerOwnerLease=lease;h.sim.wildSignsOwnerLease=Object.freeze({});h.sim.worldTrip={active:'CPU-quality-owner',realm:'earthlands',home:{x:1,z:2}};
+ const trip=h.sim.worldTrip,wildLease=h.sim.wildSignsOwnerLease;let saves=0,resizes=0;
+ const start=cameraSource.indexOf('function graphicsQuality('),end=cameraSource.indexOf('function updateCamera(',start);assert.ok(start>=0&&end>start);
+ const context={sim:h.sim,engine:h.e,art:h.a,camera,RealmEarthWildSignsData:D,RealmWorldFoundationsArt:Foundation,
+  resize(){resizes++;},save(){C.validate(h.sim.state);saves++;return{ok:true};}};
+ vm.createContext(context);vm.runInContext(cameraSource.slice(start,end),context);
+ for(const [quality,count]of[['low',64],['balanced',128],['high',128],['low',64]]){
+  const result=context.graphicsQuality(quality);assert.equal(result.ok,true);assert.equal(hab(h.e).length,count);
+  assert.equal(h.e.quality,quality);assert.deepEqual(copy(h.sim.state),{...before,settings:{...before.settings,quality}});
+  assert.strictEqual(h.sim.grazerOwnerLease,lease);assert.strictEqual(h.sim.wildSignsOwnerLease,wildLease);assert.strictEqual(h.sim.worldTrip,trip);
+  assert.deepEqual(camera,{preset:'follow',yaw:.9,half:6});
+ }
+ assert.equal(saves,4);assert.equal(resizes,4);
+ const batches=h.e.batches;assert.equal(context.graphicsQuality('low').ok,true);assert.strictEqual(h.e.batches,batches,'unchanged quality does not rebuild');
+ const state=copy(h.sim.state);assert.equal(context.graphicsQuality('unbounded').ok,false);assert.deepEqual(copy(h.sim.state),state);assert.equal(saves,5);
+ assert.ok(cameraSource.includes("if(e.target.id==='quality')graphicsQuality(e.target.value);"),'actual settings change invokes this owner');
+});

@@ -5,6 +5,7 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const C=require('../src/core.js'),W=require('../src/world-foundations.js'),E=require('../src/earth-expedition.js'),Engine=require('../src/engine.js');
 require('../src/coastward-settlement-art.js');require('../src/coastward-woodland-art.js');require('../src/elderweald-trail-art.js');require('../src/earth-road.js');require('../src/earth-road-art.js');
+require('../src/earth-grazer-motion.js');require('../src/earth-grazer-habitat-art.js');
 const Art=require('../src/world-foundations-art.js');
 const source=fs.readFileSync(require.resolve('../src/app.js'),'utf8');
 function literal(name,next){const start=source.indexOf('function '+name+'('),end=source.indexOf('function '+next+'(',start);assert.ok(start>=0&&end>start);return source.slice(start,end);}

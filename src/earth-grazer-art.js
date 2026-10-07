@@ -1,4 +1,4 @@
-/* Staged primitive grazer; shape is appearance only. Only draw of a branded
+/* Primitive grazer; shape is appearance only. Only draw of a branded
  * live projection returns a private submission receipt, never observed progress. */
 (function(G){'use strict';
 const E=G.RealmEngine,B=G.RealmEarthGrazerMotion;if(!E?.M||!B)throw Error('Load Engine and GrazerMotion before grazer art.');
