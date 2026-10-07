@@ -24,6 +24,26 @@ H=importlib.util.module_from_spec(spec);spec.loader.exec_module(H)
 
 
 class DriverCPU(unittest.TestCase):
+    def test_standing_follow_boundary_accepts_observed_pre_step_wait_and_refuses_false_progress(self):
+        # Labelled native02 geometry, portable literal specimen. This oracle
+        # does not open a browser or manufacture a positive gameplay receipt.
+        initial={'player':{'x':-106,'z':-103.3}}
+        actual={'scene':'world-earthlands','paused':False,'hp':80,'focused':True,'hidden':False,'prefix':[],
+                'player':copy.deepcopy(initial['player']),
+                'view':{'x':-96.20634026600152,'z':-102.30174680797992,'status':'waiting','reason':'player-far','ready':False,'distanceTraveled':10.1585599999995}}
+        limits={'farWait':10,'speed':1.6,'maxDt':.1}
+        self.assertLess(H.distance(actual['player'],actual['view']),10)
+        self.assertTrue(H.standing_follow_boundary(initial,actual,limits))
+        for field,value in [('paused',True),('hp',0),('focused',False),('hidden',True),('scene','valley'),('prefix',['unearned-arrival'])]:
+            bad=copy.deepcopy(actual);bad[field]=value
+            with self.subTest(field=field):self.assertFalse(H.standing_follow_boundary(initial,bad,limits))
+        for field,value in [('x',-96.5),('x',-95),('status','moving'),('reason','waiting'),('ready',True),('distanceTraveled',0)]:
+            bad=copy.deepcopy(actual);bad['view'][field]=value
+            with self.subTest(view=field,value=value):self.assertFalse(H.standing_follow_boundary(initial,bad,limits))
+        moved=copy.deepcopy(actual);moved['player']['x']+=.1;self.assertFalse(H.standing_follow_boundary(initial,moved,limits))
+        for value in (None,{}, {'farWait':11,'speed':1.6,'maxDt':.1},{'farWait':10,'speed':float('nan'),'maxDt':.1}):
+            with self.subTest(limits=value):self.assertFalse(H.standing_follow_boundary(initial,actual,value))
+
     @classmethod
     def setUpClass(cls):
         # Deliberately synthetic small structures exercise the driver's actual

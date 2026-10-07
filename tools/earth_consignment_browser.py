@@ -155,6 +155,26 @@ def native_keys(player,worker,yaw):
     return max(choices,key=lambda p:(x*p[1]+z*p[2])/math.hypot(p[1],p[2]))[0]
 
 
+def standing_follow_boundary(initial,actual,limits):
+    """Read-only standing-player oracle, including prospective-step suspension.
+
+    Motion refuses the next bounded step before crossing its follow radius.
+    A stationary traveller therefore sees the load stop within one step of
+    that radius, never beyond it. A player deliberately retreating differs.
+    """
+    try:
+        if any(type(limits[k]) not in (int,float) or not math.isfinite(limits[k]) for k in ('farWait','speed','maxDt')):return False
+        if (limits['farWait'],limits['speed'],limits['maxDt'])!=(10,1.6,.1):return False
+        v=actual['view'];gap=distance(actual['player'],v)
+        return (actual['scene']=='world-earthlands' and not actual['paused'] and actual['hp']>0
+                and actual['focused'] is True and actual['hidden'] is False
+                and v['status']=='waiting' and v['reason']=='player-far' and v['ready'] is False
+                and distance(initial['player'],actual['player'])<1e-8 and v['distanceTraveled']>0
+                and actual['prefix']==[]
+                and limits['farWait']-limits['speed']*limits['maxDt']-1e-9<=gap<=limits['farWait']+1e-9)
+    except (KeyError,TypeError,ValueError):return False
+
+
 def build_epoch(root):
     html=(root/'index.html').read_text(encoding='utf-8-sig')
     for name in MODULES:
@@ -375,8 +395,9 @@ class Native:
             if v['status']=='waiting' and v['reason']=='player-far':break
             self.page.wait_for_timeout(100)
         else:raise TimeoutError('Actual standing-player separation did not suspend carrier')
-        self.check('real carrier auto-wait keeps unsaved work and unchanged standing player',distance(initial['player'],actual['player'])<1e-8 and v['distanceTraveled']>0 and distance(actual['player'],v)>10 and self.record()['steps']==[])
-        self.row['farWaitProbe']={'initial':initial,'far':actual,'seconds':time.monotonic()-start}
+        limits=self.ev('()=>RealmEarthConsignmentMotion.LIMITS')
+        self.row['farWaitProbe']={'initial':initial,'far':actual,'seconds':time.monotonic()-start,'limits':limits,'distance':distance(actual['player'],v)}
+        self.check('real carrier auto-wait refuses the next step beyond its follow boundary without moving the traveller or saving arrival',standing_follow_boundary(initial,actual,limits) and self.record()['steps']==[],self.row['farWaitProbe'])
         self.page.wait_for_function('()=>document.querySelector("#tracked-detail").textContent.includes("catch up to the load")')
         self.check('actual far tracker explains catchup and deliberate Continue','deliberately choose Continue' in self.page.locator('#tracked-detail').inner_text())
         self.page.set_viewport_size({'width':390,'height':844});self.hold_native_keys_for_frames(())

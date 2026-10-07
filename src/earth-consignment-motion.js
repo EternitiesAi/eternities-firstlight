@@ -105,7 +105,7 @@ function update(ctx,dt){
  const {C,W}=dependencies(),duration=Math.min(dt,available);let budget=duration*LIMITS.speed;
  while(budget>0&&r.path.length){
   const target=r.path[0],length=distance(r,target),amount=Math.min(length,budget),to=length===0?{x:target.x,z:target.z}:{x:r.x+(target.x-r.x)*amount/length,z:r.z+(target.z-r.z)*amount/length};
-  if(distance(r.sim.state.player,to)>LIMITS.farWait)return suspend(r,'player-far','The traveller is more than 10 metres away.','waiting');
+  if(distance(r.sim.state.player,to)>LIMITS.farWait)return suspend(r,'player-far','The next step would carry the load more than 10 metres away.','waiting');
   const t=threat(ctx,r,to);if(!t.clear)return suspend(r,t.unavailable?'threat-unavailable':'threat',t.reason||'A living hostile is near the load.');
   let supported=false;try{const verified=C.pathfind(r,to,{id:ROOM},false,LIMITS.radius);supported=Array.isArray(verified)&&verified.length>0&&!verified.some(p=>!finitePoint(p))&&distance(verified.at(-1),to)<=1e-9&&W.segment(ROOM,r,to,LIMITS.radius);}catch{}
   if(!supported)return suspend(r,'route-blocked','The next physical movement segment is blocked.');

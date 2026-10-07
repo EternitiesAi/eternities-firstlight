@@ -1,3 +1,15 @@
+# Prospective carrier wait boundary repaired; fresh qualification pending
+
+Source06 actually closed exit0 at `2026-10-07T02:52:40.8764597Z`, at `90e3b5cad4f9951cbc641f9b432f182d9e15a11f`: 197 commands,129 syntax modules, Node1806 passed/2 explicit generic-cohort skips, Python343 methods with0 failures/errors and8 skip records (6 method skips plus2 class setup records). Its current earned cohort and22-check mandatory preflight passed. This receipt stays bound to that source.
+
+Actual native02 closed exit1 at `2026-10-07T02:58:28.8013974Z`. Its first blade-south case passed native import/economy/history, cold restart, compact controls, supplied cargo pixels in both cameras and deliberate Wait/Continue. The new stationary catchup probe then wrongly required a current gap greater than10m. Motion correctly refuses a proposed next step that would cross10m, so the observed carrier waited at roughly9.844m. The report, five atomic diagnostic rows, screenshots and closed resources are retained in native02; no complete native route gate or video is claimed.
+
+The parent retained all numeric gameplay rules and corrected the prospective-stop explanation to “The next step would carry the load more than 10 metres away.” The native oracle now reads actual Motion limits, records the observation before asserting, and accepts only a living, visible, focused, unpaused stationary player and genuine `player-far` wait within one maximum bounded step of10m, without an arrival prefix or overshoot. Installed focused checks passed7/7 Node and22/22 Python, zero skips; independent source review found no P1/P2 in this repair and made no execution claim. The real Core/Motion test also proves that the next outward step would cross10m and waiting does not resume automatically. A fresh source07 cohort, native03 six-route/eight-case gate, one sealed hardware clip and exact remote qualification remain pending.
+
+Regenerated pages are identical3144861 bytes / SHA256 `e2c6818d742940bab89eea3d211f2b5f093dfe6af9fe50ac41b9976089502c86`. The broader production goal remains active and the old heartbeat paused. Colleagues stage independent small future-arc files; the parent owns this checkout. No historical receipt is relabelled, no personal save is read, and no AAA completion or human acceptance is claimed.
+
+---
+
 # Frame-based input and terminal recording repair await fresh qualification
 
 Source05 actually closed exit0 at `2026-10-07T02:41:42.6013616Z`, at `1bb966d89a748dc39917490f1c3f6947d7b9bcf8`. Independent source review identified a further native-driver boundary: a diagnostic sample begun before240 seconds could finish late and still be accepted as ready. After source05 closed, the parent added a post-sample wall check. The original extracted caller failed three targeted late/exact-deadline negatives; the proposed and installed callers passed11/11, including the239.999-second positive and retained diagnostics/key releases. This is a CPU scheduling boundary, not an observed game failure. New source06 and fresh command-earned inputs are required; source05 stays at its original epoch and is not relabelled.

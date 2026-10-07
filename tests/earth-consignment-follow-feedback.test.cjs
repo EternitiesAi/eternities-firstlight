@@ -58,3 +58,20 @@ test('copied projection cannot display the new far-wait message, and a real new 
  try{globalThis.RealmEarthConsignmentMotion={...real,current(ctx){return JSON.parse(JSON.stringify(real.current(ctx)));}};assert.equal(h.ui.live(),null);assert.equal(h.ui.tracker().detail,'E · continue at the supplied carrier');}finally{globalThis.RealmEarthConsignmentMotion=real;}
  h.sim.consignmentOwnerLease=Object.freeze({});assert.equal(M.isProjection(v,h.ctx()),false);assert.equal(h.ui.tracker().detail,'E · continue at the supplied carrier');
 });
+
+test('standing traveller sees prospective-step wait before the carrier crosses ten metres',()=>{
+ const h=harness();
+ // Labelled initial supported work pose from the native02 observation;
+ // all transport and suspension below use actual Core ticks and Motion.
+ h.sim.state.player.z=-103.3;const player=JSON.stringify(h.sim.state.player),record=JSON.stringify(h.sim.state.localLife),writes=h.writes;
+ let v=h.begin();for(let i=0;i<200&&v.status==='moving';i++)v=h.tick();
+ assert.equal(v.status,'waiting');assert.equal(v.reason,'player-far');assert.equal(v.ready,false);
+ assert.equal(JSON.stringify(h.sim.state.player),player);assert.equal(JSON.stringify(h.sim.state.localLife),record);assert.equal(h.writes,writes);
+ const gap=distance(h.sim.state.player,v),step=M.LIMITS.speed*M.LIMITS.maxDt;
+ assert.ok(gap<=10,'prospective gate prevents an actual overshoot');assert.ok(gap>=10-step-1e-9,'wait occurs within one bounded step of radius');
+ const proposed={x:v.x+Math.sin(v.yaw)*step,z:v.z+Math.cos(v.yaw)*step};
+ assert.ok(W.segment('world-earthlands',v,proposed,M.LIMITS.radius));assert.ok(distance(h.sim.state.player,proposed)>10,'supported outward next step would cross follow boundary');
+ assert.equal(v.detail,'The next step would carry the load more than 10 metres away.');
+ assert.equal(h.ui.tracker().detail,'Carrier waiting · catch up to the load, then E · deliberately choose Continue');
+ const stopped=JSON.stringify(v);for(let i=0;i<3;i++)h.tick();assert.equal(JSON.stringify(M.current(h.ctx())),stopped);
+});
