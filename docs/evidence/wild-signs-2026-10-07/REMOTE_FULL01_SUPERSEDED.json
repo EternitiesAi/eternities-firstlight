@@ -1,0 +1,48 @@
+{
+  "reason": "Actual separate boundary01 proved fresh-only helper wrongly used for accepted checkpoints; exact old head cannot satisfy full gate. Correct checkpoint validator is staged and real artifact regression passes. Preserve partial logs and restart corrected source once; never a pass.",
+  "stoppedPid": 55348,
+  "sourceHead": "04ee4424550d64336353e71cbe78f47d3750cb02",
+  "browserPhaseReached": false,
+  "cleanupOrProfilesDeleted": 0,
+  "before": {
+    "logTail": [
+      "Running earth-homecoming-earned...",
+      "PASS: earth-homecoming-earned",
+      "Running earth-homecoming-native-preflight...",
+      "PASS: earth-homecoming-native-preflight",
+      "Running earth-recording-controller-preflight...",
+      "PASS: earth-recording-controller-preflight",
+      "Running whole-draft-earned..."
+    ],
+    "runner": {
+      "ProcessId": 31664,
+      "ParentProcessId": 46788,
+      "Name": "pwsh.exe",
+      "CreationDate": "2026-10-07T08:52:05.043331-05:00",
+      "CommandLine": "\"C:\\Users\\Dom\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe\" -NoProfile -File D:/07-GAMES/Firstlight/staging/first-load-through-20261006/next-production-portable/RUN_WILD_REMOTE_FULL01.ps1 -SourceHead 04ee4424550d64336353e71cbe78f47d3750cb02"
+    },
+    "dispatcher": {
+      "ProcessId": 55348,
+      "ParentProcessId": 31664,
+      "Name": "python.exe",
+      "CreationDate": "2026-10-07T08:52:16.745618-05:00",
+      "CommandLine": "\"C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe\" -B tools/verify.py --browser --output D:/07-GAMES/Firstlight/artifacts/wild-signs-20261007/remote-full01 --browser-output D:/07-GAMES/Firstlight/artifacts/wild-signs-20261007/remote-browser01 --browser-output-mode supported"
+    },
+    "children": [
+      {
+        "ProcessId": 46152,
+        "ParentProcessId": 55348,
+        "Name": "node.exe",
+        "CreationDate": "2026-10-07T09:00:32.449822-05:00",
+        "CommandLine": "node tools/whole_draft_journey.cjs --output D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\remote-full01\\whole-draft-earned"
+      }
+    ]
+  },
+  "startedUtc": "2026-10-07T14:02:46.2204711Z",
+  "nodeDrainPending": [
+    46152
+  ],
+  "recordedUtc": "2026-10-07T14:02:46.2362401Z",
+  "status": "forced-dispatcher-stop-before-browser-admission",
+  "unrelatedStops": 0
+}

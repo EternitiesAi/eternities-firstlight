@@ -310,4 +310,54 @@ class SourceBoundaryTests(unittest.TestCase):
         self.assertFalse(output.exists())
 
 
+
+class CheckpointAdmissionTests(unittest.TestCase):
+    """Labelled synthetic checkpoint boundaries; real Core/Data admission runs.
+
+    The archived whole-campaign prerequisite is command earned. The separate
+    paid-load and accepted signs below are explicit synthetic test data, not
+    native play or an authority to mint those facts in the game.
+    """
+    def setUp(self):
+        self.expected=dict(version=1,accepted=True,evidence=['timber-gouge','feeding-track'],observed=False,resolution=None,cleared=False,claimed=False)
+        code=r"""const fs=require('node:fs'),path=require('node:path'),root=process.argv[1];
+const C=require(path.join(root,'src/core.js')),CD=globalThis.RealmEarthConsignmentData;
+const world=JSON.parse(fs.readFileSync(path.join(root,'tests/fixtures/earth-homecoming-prerequisites/blade/ALL_TWELVE_PREREQUISITES_EARNED.json')));
+const choice='south-'+(world.earthExpedition.story.branch==='managed-coppice'?'coppice':'stormfall');
+world.localLife.records[CD.ID]={accepted:true,choice,steps:CD.required(choice).slice(),claimed:true};
+world.earthWildSigns={version:1,accepted:true,evidence:['timber-gouge','feeding-track'],observed:false,resolution:null,cleared:false,claimed:false};
+console.log(JSON.stringify(C.validate(world)));"""
+        self.world=json.loads(subprocess.check_output(['node','-e',code,str(ROOT)],text=True,timeout=20))
+        self.temp=tempfile.TemporaryDirectory(prefix='synthetic-checkpoint-')
+        self.addCleanup(self.temp.cleanup)
+        self.file=Path(self.temp.name)/'LABELLED_SYNTHETIC_CHECKPOINT.json'
+        self.file.write_text(json.dumps(self.world),encoding='utf-8')
+    def test_exact_checkpoint_admits_without_touching_bytes_and_fresh_admission_still_refuses(self):
+        before=self.file.read_bytes()
+        self.assertEqual(N.validate_checkpoint(ROOT,self.file,self.expected)['checkpoint'],self.expected)
+        self.assertEqual(self.file.read_bytes(),before)
+        with self.assertRaises(subprocess.CalledProcessError):S.validate_source(ROOT,self.file)
+    def test_expected_progress_requires_exact_canonical_fields_and_actual_record(self):
+        negatives=[{**self.expected,'observed':True},{**self.expected,'claimed':True},{**self.expected,'resolution':'signed-loop'},
+                   {**self.expected,'version':2},{**self.expected,'cleared':True},{**self.expected,'extra':True},
+                   {k:v for k,v in self.expected.items() if k!='accepted'}, {**self.expected,'evidence':['feeding-track']}]
+        for expected in negatives:
+            with self.subTest(expected=expected),self.assertRaises(subprocess.CalledProcessError):N.validate_checkpoint(ROOT,self.file,expected)
+    def test_no_implicit_optional_owner_migration_or_unpaid_prerequisite(self):
+        for owner in ('signs','paid-load'):
+            world=copy.deepcopy(self.world)
+            if owner=='signs':del world['earthWildSigns']
+            else:world['localLife']['records'][N.LOAD]['claimed']=False
+            self.file.write_text(json.dumps(world),encoding='utf-8')
+            with self.subTest(owner=owner),self.assertRaises(subprocess.CalledProcessError):N.validate_checkpoint(ROOT,self.file,self.expected)
+    def test_exact_unpaid_signed_checkpoint_and_labelled_capacity_derivative_both_admit(self):
+        ready={**self.expected,'evidence':self.expected['evidence']+['pest-scrape'],'observed':True,'resolution':'signed-loop'}
+        world=copy.deepcopy(self.world);world['earthWildSigns']=ready
+        self.file.write_text(json.dumps(world),encoding='utf-8')
+        self.assertEqual(N.validate_checkpoint(ROOT,self.file,ready)['checkpoint'],ready)
+        derivative=N.capacity_derivative(world)
+        self.assertTrue(N.capacity_relationship(world,derivative))
+        self.file.write_text(json.dumps(derivative),encoding='utf-8')
+        self.assertEqual(N.validate_checkpoint(ROOT,self.file,ready)['checkpoint'],ready)
+
 if __name__=='__main__':unittest.main(verbosity=2)

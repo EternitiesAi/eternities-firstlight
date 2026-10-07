@@ -43,6 +43,33 @@ def load_suite(p):
     return module
 
 
+
+CHECKPOINT_JS = r"""
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const root=process.argv[1],world=JSON.parse(fs.readFileSync(process.argv[2])),expected=JSON.parse(process.argv[3]);
+const D=require(path.join(root,'src/earth-wild-signs-data.js'));
+require(path.join(root,'src/core.js'));
+const C=globalThis.RealmCore,CD=globalThis.RealmEarthConsignmentData;
+const sorted=v=>JSON.stringify(v,(_,o)=>o&&typeof o==='object'&&!Array.isArray(o)?Object.fromEntries(Object.keys(o).sort().map(k=>[k,o[k]])):o);
+assert.equal(sorted(C.validate(world)),sorted(world),'Checkpoint admission cannot migrate, discard or change any world byte');
+assert.ok(Object.hasOwn(world,'earthWildSigns')&&Object.hasOwn(world,'localLife')&&Object.hasOwn(world.localLife,'records')&&Object.hasOwn(world.localLife.records,CD.ID),'Own explicit checkpoint prerequisites required');
+const load=CD.crossValidate(world.localLife.records[CD.ID],world.earthExpedition);
+assert.ok(load.accepted&&load.claimed);assert.deepEqual(load.steps,CD.required(load));
+assert.deepEqual(Object.keys(expected).sort(),['version','accepted','evidence','observed','resolution','cleared','claimed'].sort(),'Exact expected checkpoint record required');
+assert.deepEqual(D.crossValidate(expected,world),expected,'Expected checkpoint must satisfy actual canonical prerequisites');
+assert.deepEqual(D.crossValidate(world.earthWildSigns,world),expected,'Exact deliberately expected checkpoint required');
+assert.equal(D.ID,'earth-beast-wrong-name-v1');assert.equal(D.enemy.id,'earth-wild-signs-burrow-skitter-v1');
+assert.deepEqual(D.definition.reward,{xp:0,coins:4,ore:0,materials:{fiber:3}});
+console.log(JSON.stringify({ok:true,checkpoint:expected,choice:load.choice,arrivalIds:load.steps}));
+"""
+
+def validate_checkpoint(root, source, expected):
+    # Fresh cohort admission stays in the frozen primary suite. These are exact
+    # actual earned checkpoints or the separately labelled capacity derivative.
+    raw=subprocess.check_output(['node','-e',CHECKPOINT_JS,str(root),str(source),json.dumps(expected)],text=True,timeout=30)
+    result=json.loads(raw);need(result.get('ok') is True,'Actual Core/data checkpoint admission refused')
+    return result
+
 def import_equal(before, after):
     """Exact whole snapshot, except the real rememberCamera capture on switch.
 
@@ -212,14 +239,14 @@ def driver_class(suite, base):
             self.fresh_watch('SWITCH_FRESH')
             self.panel(); captured = self.state(); file = self.folder / 'ACTUAL_READY_UNRECORDED_IMPORT.json'
             # The file is the actual current paused snapshot, not planted saved progress.
-            dump(file, captured); suite.validate_source(self.args.root, file)
+            dump(file, captured); validate_checkpoint(self.args.root, file, expected)
             self.report.setdefault('generatedInputs', {})[str(file)] = sha(file)
             self.import_added(file, 'character-3'); self.expired_observe(expected, 'IMPORT_HOME')
             self.fresh_watch('IMPORT_FRESH'); self.native_observe()
             self.walk_sign('pest-scrape'); self.action('read', 'pest-scrape'); self.action('choose', 'signed-loop')
             self.signed_bypass(); self.walk_sign('elderweald-sela'); self.panel()
             ready = self.state(); self.check('native signed source is really durable unpaid work', ready_signed(ready) and self.stored()['earthWildSigns'] == ready['earthWildSigns'])
-            saved = self.folder / 'ACTUAL_SIGNED_READY_UNPAID.json'; dump(saved, ready); suite.validate_source(self.args.root, saved)
+            saved = self.folder / 'ACTUAL_SIGNED_READY_UNPAID.json'; dump(saved, ready); validate_checkpoint(self.args.root, saved, dict(version=1,accepted=True,evidence=expected['evidence']+['pest-scrape'],observed=True,resolution='signed-loop',cleared=False,claimed=False))
             self.report.setdefault('generatedInputs', {})[str(saved)] = sha(saved)
             self.capture('SIGNED_READY'); self.restart('SIGNED_READY_COLD')
             return saved
@@ -380,7 +407,7 @@ def driver_class(suite, base):
         def capacity_and_retry(self, source):
             self.row['boundary'] = True
             original = json.loads(Path(source).read_text(encoding='utf-8')); derivative = capacity_derivative(original)
-            file = self.folder / 'LABELLED_NEGATIVE_FIBER_999.json'; dump(file, derivative); suite.validate_source(self.args.root, file)
+            file = self.folder / 'LABELLED_NEGATIVE_FIBER_999.json'; dump(file, derivative); validate_checkpoint(self.args.root, file, dict(version=1,accepted=True,evidence=['timber-gouge','feeding-track','pest-scrape'],observed=True,resolution='signed-loop',cleared=False,claimed=False))
             self.report.setdefault('generatedInputs', {})[str(file)] = sha(file)
             self.row['negativeFixture'] = dict(kind='capacity-only', source=str(source), sourceSha256=sha(source), derivative=str(file), derivativeSha256=sha(file), exactChange='sandbox.inventory.fiber -> 999', positiveQualification=False)
             self.start(); self.import_world(file); self.origin_world = derivative; self.original_facts = self.stable_facts(derivative)

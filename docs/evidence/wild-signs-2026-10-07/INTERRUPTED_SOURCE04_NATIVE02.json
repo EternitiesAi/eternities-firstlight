@@ -1,0 +1,28 @@
+{
+  "status": "interrupted-no-terminal-receipts",
+  "checkedUtc": "2026-10-07T13:32:25.1893205Z",
+  "sourceHead": "04ee4424550d64336353e71cbe78f47d3750cb02",
+  "execHandles": [
+    "96292 unknown",
+    "65198 unknown"
+  ],
+  "liveScopedOsProcesses": 0,
+  "sourceExitReceiptPresent": false,
+  "nativeExitReceiptPresent": false,
+  "nativeReportPresent": false,
+  "reason": "Unknown; missing handles and fresh scoped OS inventory show no worker. Original logs/artifacts retained; no claimed pass or inferred exit code.",
+  "logs": [
+    {
+      "path": "D:/07-GAMES/Firstlight/artifacts/wild-signs-20261007/SOURCE04_CONSOLE.log",
+      "bytes": 13125,
+      "lastWriteUtc": "2026-10-07T12:04:56.3595773Z",
+      "sha256": "d2afad04436cab25628fc6910c1970b0857aa5433cbfee214963e25061472a32"
+    },
+    {
+      "path": "D:/07-GAMES/Firstlight/artifacts/wild-signs-20261007/NATIVE02_CONSOLE.log",
+      "bytes": 26205,
+      "lastWriteUtc": "2026-10-07T12:04:15.5813398Z",
+      "sha256": "596677936b2367da7ff3aac151365c73bc8fc51e56c200382d447576d23d90ab"
+    }
+  ]
+}
