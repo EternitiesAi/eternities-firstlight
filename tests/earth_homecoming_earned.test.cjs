@@ -32,6 +32,8 @@ test('actual optional migration keeps every historical fact and adds only explic
  for(const r of cohort.results){
   J.link(r.migration.source);J.link(r.migration.output);
   const raw=JSON.parse(fs.readFileSync(r.migration.source.path)),expected=P.copy(raw),out=JSON.parse(fs.readFileSync(r.migration.output.path));
+  const wildSignsMissing=!('earthWildSigns' in raw);if(wildSignsMissing)expected.earthWildSigns={version:1,accepted:false,evidence:[],observed:false,resolution:null,cleared:false,claimed:false};
+  assert.equal(r.migration.earthWildSignsMigration,wildSignsMissing?'missing-to-fresh-earth-wild-signs-v1':null);
   const oldIds=['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1'].sort();
   const legacy=raw.localLife.version===1&&Object.keys(raw.localLife).length===2&&Object.hasOwn(raw.localLife,'version')&&Object.hasOwn(raw.localLife,'records')&&Object.keys(raw.localLife.records).length===oldIds.length&&oldIds.every(id=>Object.hasOwn(raw.localLife.records,id));
   if(legacy)expected.localLife.records['earth-first-load-through-v1']={accepted:false,choice:null,steps:[],claimed:false};

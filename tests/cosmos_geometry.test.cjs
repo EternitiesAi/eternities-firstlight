@@ -178,10 +178,12 @@ test('paint/work/plant details stay on genuine supported surfaces and create no 
  const paint=details.filter(i=>i.cosmosExtensionPaint);assert.ok(paint.length>100);for(const it of paint)for(const v of vertices(it))assert.ok(N.walkable(v[0],v[2],0),'paint must not enlarge ground or paint over cover');
 });
 test('new static geometry stays bounded and art import/make/draw grant no campaign or economic facts',t=>{
- const triangles=extension.reduce((n,i)=>n+E.geometry(i.kind).length/(i.kind==='timber-panel'?24:18),0),sim=new C.Simulation(),before=plain(sim.snapshot());
+ const triangles=extension.reduce((n,i)=>n+E.geometry(i.kind).length/(i.kind==='timber-panel'?24:18),0),sim=new C.Simulation(),saved=sim.snapshot(),before=plain(saved);
  assert.ok(extension.length<700);assert.ok(triangles<12000);assert.equal(updated.e.noWater,true);assert.equal(updated.e.theme,'cosmos');
  const out={box:[],round:[],octa:[],disc:[]};sim.room=N.ROOM;const state=JSON.stringify(sim.state);Art.draw(out,sim,0,updated.a);assert.equal(JSON.stringify(sim.state),state);
- assert.deepEqual(plain(C.validate(before)),before);assert.deepEqual(plain(sim.state.cosmosCampaign),plain(C.fresh().cosmosCampaign));
+ // Preserve the actual installed VM realm for strict plain-record validation;
+ // the outer-host JSON copy is used only for the independent value comparison.
+ assert.deepEqual(plain(C.validate(saved)),before);assert.deepEqual(plain(sim.state.cosmosCampaign),plain(C.fresh().cosmosCampaign));
  t.diagnostic(extension.length+' added static instances / '+triangles+' actual procedural triangles / '+updated.e.batches.length+' shared static batches');
 });
 test('actual repaired Core keeps the large-body cover detour and map frames the full supported reach',()=>{

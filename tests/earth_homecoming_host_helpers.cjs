@@ -22,6 +22,7 @@ function installHosts(){
  load('earth-consignment-ui.js');global.RealmLocalLifeUI.LocalLifeUI=class extends OtherUI{constructor(rpg){super(rpg);this.carrier=new global.RealmEarthConsignmentUI.ConsignmentUI(rpg);}reset(){this.carrier.reset('owner');}};
  global.RealmVisualAtlas=class extends OtherUI{};
  global.RealmHomeHistoryUI={teaser:()=>''};
+ load('earth-grazer-motion.js');load('earth-grazer-art.js');load('earth-wild-signs.js');load('earth-wild-signs-ui.js');
  load('starter-ui.js');load('earth-homecoming-ui.js');load('earth-homecoming-art.js');load('world-foundations-ui.js');load('adventure-ui.js');load('adventure-art.js');load('rpg-ui.js');load('world.js');
 }
 const EARLIER=path.join(__dirname,'fixtures/earth-homecoming-prerequisites/blade/ALL_TWELVE_PREREQUISITES_EARNED.json');
@@ -29,7 +30,7 @@ function seed(){return C.validate(JSON.parse(fs.readFileSync(EARLIER,'utf8')));}
 function library(sim){const values=new Map([[CS.KEY,JSON.stringify({version:1,revision:1,nextId:3,active:'character-2',slots:[{id:'character-1',world:C.fresh()},{id:'character-2',world:sim.snapshot()}]})]]);const storage={getItem:k=>values.get(k)??null,setItem:(k,v)=>values.set(k,v)};const store=new CS.Store(storage);store.load();store.writer=true;return{values,storage,store};}
 function appOwner(sim,store){
  const calls=[],app=overlay.read('app.js'),first=app.slice(app.indexOf('function earthHomecomingWriter('),app.indexOf('function worldTravel(')),save=app.slice(app.indexOf('function worldSave('),app.indexOf('function worldCommand(')),command=app.slice(app.indexOf('function earthHomecomingCommand('),app.indexOf('function hellCampaignCommand('));
- const context={sim,characterStore:store,preserveExisting:false,saveState:'loaded',RealmEarthHomecoming:H,renderStatus:()=>calls.push('render-status')};
+ const context={...Object.fromEntries(Object.entries(global).filter(([key])=>key.startsWith('Realm'))),C,sim,rpg:null,camera:{},characterStore:store,preserveExisting:false,saveState:'loaded',RealmEarthHomecoming:H,renderStatus:()=>calls.push('render-status')};
  vm.createContext(context);vm.runInContext(first+'\n'+save+'\n'+command,context);
  return{context,calls,worldContext:()=>context.worldContext(),command:(...args)=>context.earthHomecomingCommand(...args)};
 }
@@ -37,7 +38,7 @@ function fixture(raw=seed()){
  const {doc,nodes}=dom();installHosts();const sim=new C.Simulation(raw),mem=library(sim),app=appOwner(sim,mem.store),calls=[];
  const old=Object.create(global.RealmAdventureUI.AdventureUI.prototype);old.sequence=0;old.intent=null;old.api={sim:()=>sim,save:()=>mem.store.save(sim.snapshot()),changed:()=>calls.push('legacy-changed'),toast:s=>calls.push(s),audio:()=>null,panel:()=>null,openPanel:name=>calls.push(name)};
  const api={sim:()=>sim,adventure:()=>old,worldContext:app.worldContext,earthHomecomingCommand:app.command,closePanel(){},endBuild(){},clearKeys(){calls.push('clear-keys');},focusWorld(){calls.push('focus-world');},toast:s=>calls.push(s),worldReturn:()=>{const r=W.leave(sim);if(r.ok)mem.store.save(sim.snapshot());return r;},walkLocal:(x,z)=>calls.push({walk:[x,z]}),project:(x,y,z)=>({x:x*10,y:y*10,depth:1,visible:true})};
- const rpg=new global.RealmRPGUI.RPGUI(api);rpg.lastPreview=Infinity;rpg.paintPreview=()=>{};
+ const rpg=new global.RealmRPGUI.RPGUI(api);app.context.rpg=rpg;rpg.lastPreview=Infinity;rpg.paintPreview=()=>{};
  const place=p=>{sim.room=p.room;sim.returnPos=p.room?{x:11,z:9,yaw:0}:null;Object.assign(sim.state.player,{x:p.x,z:p.z,yaw:0});sim.playerPath=[];assert.ok(H.at(sim,p));};
  const accept=()=>{place(D.giver);const q=app.command('accept',{quest:D.id,expectedActive:mem.store.active,expectedRevision:sim.state.adventure.revision});assert.ok(q.ok,q.error);};
  const work=id=>{place(step(id));const q=app.command('step',{quest:D.id,step:id,expectedActive:mem.store.active,expectedRevision:sim.state.adventure.revision});assert.ok(q.ok,q.error);};

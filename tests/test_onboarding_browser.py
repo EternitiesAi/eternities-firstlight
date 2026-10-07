@@ -233,6 +233,10 @@ class Preparation(unittest.TestCase):
     def resume_pair(self, legacy=False):
         fixture = json.loads((HERE / 'fixtures/onboarding-resume-pair.json').read_text(encoding='utf8'))
         pair = copy.deepcopy(fixture['before']), copy.deepcopy(fixture['after'])
+        # Labelled current boundary copies; the recorded historical file stays exact.
+        for world in pair:
+            world['earthWildSigns'] = {'version': 1, 'accepted': False, 'evidence': [],
+                'observed': False, 'resolution': None, 'cleared': False, 'claimed': False}
         if not legacy:
             # The retained recorded fixture predates the fifth catalogue owner.
             # Current boundary input adds only its literal fresh record; no
@@ -241,6 +245,28 @@ class Preparation(unittest.TestCase):
                 world['localLife']['records']['earth-first-load-through-v1'] = {
                     'accepted': False, 'choice': None, 'steps': [], 'claimed': False}
         return pair
+
+    def test_missing_wild_signs_owner_adds_only_literal_fresh_record(self):
+        before,_=self.resume_pair();before.pop('earthWildSigns');original=copy.deepcopy(before)
+        after=self.production_tick(before,.1)
+        result=self.m.require_initial_resume(self.m.resolve_root(),before,after)
+        self.assertEqual(result['earthWildSignsMigration'],'missing-to-fresh-earth-wild-signs-v1')
+        self.assertEqual(before,original)
+        for defect in ('missing','observed','additional-field','old-history'):
+            changed=copy.deepcopy(after)
+            if defect=='missing':changed.pop('earthWildSigns')
+            elif defect=='observed':changed['earthWildSigns']['observed']=True
+            elif defect=='additional-field':changed['earthWildSigns']['unknown']=True
+            else:changed['adventure']['xp']+=1
+            with self.subTest(defect=defect),self.assertRaises(AssertionError):
+                self.m.require_initial_resume(self.m.resolve_root(),before,changed)
+
+    def test_present_wild_signs_owner_is_preserved_without_default_allowance(self):
+        before,_=self.resume_pair();after=self.production_tick(before,.1)
+        result=self.m.require_initial_resume(self.m.resolve_root(),before,after)
+        self.assertIsNone(result['earthWildSignsMigration'])
+        changed=copy.deepcopy(after);changed.pop('earthWildSigns')
+        with self.assertRaises(AssertionError):self.m.require_initial_resume(self.m.resolve_root(),before,changed)
 
     def production_tick(self, before, seconds):
         # Actual installed owner, no validator/roster facade or saved-state writes.

@@ -33,6 +33,7 @@ class OptionalCatalogueOracle(unittest.TestCase):
     def test_exact_legacy_input_preserves_all_facts_and_adds_only_literal_fresh_defaults(self):
         source,old=self.historical();original=copy.deepcopy(old);expected=copy.deepcopy(old)
         expected['earthHomecoming']={'version':1,'accepted':False,'steps':[],'choice':None,'claimed':False}
+        expected['earthWildSigns']={'version': 1, 'accepted': False, 'evidence': [], 'observed': False, 'resolution': None, 'cleared': False, 'claimed': False}
         expected['localLife']['records']['earth-first-load-through-v1']={'accepted':False,'choice':None,'steps':[],'claimed':False}
         self.assertEqual(N.expected_optional_defaults(old),expected)
         self.assertEqual(old,original);self.assertEqual(N.sha(source),N.HISTORICAL_INPUTS['blade'][1])
@@ -52,6 +53,27 @@ class OptionalCatalogueOracle(unittest.TestCase):
                        lambda w:w['localLife'].update(version=True)):
             before=copy.deepcopy(old);mutate(before)
             self.assertEqual(N.expected_optional_defaults(before)['localLife'],before['localLife'])
+
+    def test_present_wild_signs_history_never_receives_fresh_allowance(self):
+        _,old=self.historical()
+        fresh={'version': 1, 'accepted': False, 'evidence': [], 'observed': False, 'resolution': None, 'cleared': False, 'claimed': False}
+        for owner in (None, fresh, {**fresh,'accepted':True},
+                      {**fresh,'accepted':True,'evidence':['timber-gouge','feeding-track'],
+                       'observed':True}, {**fresh,'claimed':True}):
+            before=copy.deepcopy(old);before['earthWildSigns']=copy.deepcopy(owner)
+            original=copy.deepcopy(before);expected=N.expected_optional_defaults(before)
+            self.assertEqual(expected['earthWildSigns'],owner)
+            self.assertEqual(before,original)
+            changed=copy.deepcopy(expected);changed['earthWildSigns']={**fresh,'observed':True}
+            self.assertNotEqual(expected,changed)
+        source,old=self.historical();expected=N.expected_optional_defaults(old)
+        self.assertEqual(expected['earthWildSigns'],fresh)
+        for key,value in (('accepted',True),('evidence',['timber-gouge']),
+                          ('observed',True),('resolution','signed-loop'),('cleared',True),
+                          ('claimed',True),('version',2)):
+            changed=copy.deepcopy(expected);changed['earthWildSigns'][key]=value
+            self.assertNotEqual(expected,changed)
+        self.assertEqual(N.sha(source),N.HISTORICAL_INPUTS['blade'][1])
 
     def test_existing_homecoming_is_refused_instead_of_reset(self):
         _,old=self.historical()
@@ -238,6 +260,7 @@ else:
              const load=n=>require(path.join(p.root,'src',n+'.js'));load('engine');const C=load('core'),H=load('earth-homecoming'),A=load('adventure'),W=load('world-foundations'),UI=load('earth-homecoming-ui'),Art=load('earth-homecoming-art');load('earth-story');
              const read=f=>JSON.parse(fs.readFileSync(f));for(const[k,v]of Object.entries(p.proof)){const seed=read(v.seed),world=C.validate(seed);assert.deepEqual(world,seed);assert.ok(H.eligible(world));assert.deepEqual(world.earthHomecoming,H.fresh());const final=C.validate(read(v.checkpoints.FINAL_WORLD));assert.ok(H.ready(final)&&final.earthHomecoming.claimed);}
              const old=read(p.proof.strongest.cohort_row.migration.source.path),expected=structuredClone(old),m=C.validate(old);assert.deepEqual(m.earthHomecoming,H.fresh());delete m.earthHomecoming;
+             if(!('earthWildSigns' in old))expected.earthWildSigns={version:1,accepted:false,evidence:[],observed:false,resolution:null,cleared:false,claimed:false};
              const ids=['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1'].sort(),l=expected.localLife;
              if(l.version===1&&Object.keys(l).length===2&&Object.hasOwn(l,'version')&&Object.hasOwn(l,'records')&&Object.keys(l.records).length===ids.length&&ids.every(id=>Object.hasOwn(l.records,id)))l.records['earth-first-load-through-v1']={accepted:false,choice:null,steps:[],claimed:false};
              assert.deepEqual(m,expected);assert.deepEqual(read(p.proof.strongest.cohort_row.migration.source.path),old);

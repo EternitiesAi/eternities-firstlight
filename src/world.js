@@ -291,6 +291,11 @@ class WorldArt{
  if(G.RealmBeaconArt)G.RealmBeaconArt.draw(out,sim,t,this);
  if(G.RealmCrossingArt)G.RealmCrossingArt.draw(out,sim,t,this);
  if(this.dynamicTimber)this.dynamicTimber.items=out['timber-panel'];this.dynamicRound.items=out.round;
+ sim.grazerSubmission=null;
+ if(G.RealmEarthGrazerArt&&sim.grazerPresentation&&sim.grazerPresentationContext){
+  const submission=G.RealmEarthGrazerArt.draw(out,sim.grazerPresentation,sim.grazerPresentationContext,{quality:sim.state.settings.quality,reducedMotion:sim.state.settings.reducedMotion});
+  if(submission){sim.grazerSubmission=submission;G.RealmEarthGrazerArt.foliage(out);}
+ }
  this.dynamicBox.items=out.box;this.dynamicOcta.items=out.octa;this.dynamicDisc.items=out.disc;}
 }
 G.RealmArt={WorldArt};})(globalThis);

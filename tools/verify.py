@@ -157,6 +157,64 @@ def consignment_browser_run_spec(root, sources, output, *, windows=None):
     return([sys.executable,'tools/earth_consignment_browser.py','--root',str(root),'--cohort',str(manifest),'--output',str(output),'--renderer','software'],{'FIRSTLIGHT_ROOT':str(root),'PYTHONDONTWRITEBYTECODE':'1'})
 
 
+def wild_signs_committed_callers(root):
+    """Both mandatory native callers must be committed before any preflight."""
+    root = Path(root).resolve()
+    callers = ['tools/earth_wild_signs_browser.py', 'tools/earth_wild_signs_boundaries_browser.py']
+    if not all((root / p).is_file() for p in callers):
+        raise ValueError('Both installed WildSigns native callers are required')
+    git = ['git', '-c', 'core.longpaths=true', '-C', str(root)]
+    subprocess.check_output(git+['ls-files', '--error-unmatch', '--']+callers, text=True)
+    if subprocess.check_output(git+['status', '--porcelain', '--untracked-files=all', '--']+callers,
+                               text=True).strip():
+        raise ValueError('Both WildSigns native callers must be committed and unchanged')
+
+
+def wild_signs_browser_run_spec(root, sources, original_sources, output, *, windows=None):
+    """Admit only this invocation's installed claimed-load/fresh-signs source.
+
+    Read-only actual preflight precedes any browser/server/profile creation.
+    """
+    root, sources, original_sources, output = map(lambda p: Path(p).resolve(),
+                                                 (root, sources, original_sources, output))
+    native = root / 'tools/earth_wild_signs_browser.py'
+    cohort = sources / 'WILD_SIGNS_COHORT.json'
+    original = original_sources / 'FIRST_LOAD_COHORT.json'
+    if not native.is_file() or not cohort.is_file() or not original.is_file():
+        raise ValueError('Actual installed WildSigns tool and both current invocation cohorts are required')
+    if output.exists() or output == Path(output.anchor):
+        raise ValueError('Use fresh bounded native evidence; preserve old outputs')
+    for owner in (root, sources, original_sources):
+        if output == owner or output.is_relative_to(owner) or owner.is_relative_to(output):
+            raise ValueError('Native evidence must be separate from gameplay and earned sources')
+    if (os.name == 'nt' if windows is None else windows) and any(
+            p.drive.upper() != 'D:' for p in (sources, original_sources, output)):
+        raise ValueError('Heavy native evidence and earned sources stay on D on Windows')
+    wild_signs_committed_callers(root)
+    spec = importlib.util.spec_from_file_location('installed_wild_signs_preflight', native)
+    module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+    module.clean_source_tree(root)
+    module.preflight(root, cohort, original)
+    return ([sys.executable, 'tools/earth_wild_signs_browser.py', '--root', str(root),
+             '--cohort', str(cohort), '--original-cohort', str(original),
+             '--output', str(output), '--renderer', 'software'],
+            {'FIRSTLIGHT_ROOT': str(root), 'PYTHONDONTWRITEBYTECODE': '1'})
+
+
+def wild_signs_boundaries_browser_run_spec(root, sources, original_sources, output, *, windows=None):
+    """Same fresh dual cohorts; separate output; exact reviewed caller pin."""
+    command, env = wild_signs_browser_run_spec(root, sources, original_sources, output, windows=windows)
+    root = Path(root).resolve()
+    caller = root / 'tools/earth_wild_signs_boundaries_browser.py'
+    spec = importlib.util.spec_from_file_location('installed_wild_signs_boundary_preflight', caller)
+    module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+    primary = root / 'tools/earth_wild_signs_browser.py'
+    module.installed_callers(root, primary)
+    module.load_suite(primary)
+    return ([sys.executable, 'tools/earth_wild_signs_boundaries_browser.py',
+             '--suite', str(primary)] + command[2:], env)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--browser', action='store_true', help='Also run the current browser suites including starter progression and native persistence (requires requirements-dev.txt and Chromium).')
@@ -262,6 +320,20 @@ def main():
     run('earth-expedition-veteran', ['node', 'tests/earth_expedition_journey.cjs', '--veteran', '--output', str(consignment_sources)])
     run('earth-consignment-cohort', [sys.executable, 'tools/earth_consignment_cohort.py', '--root', str(ROOT), '--sources', str(consignment_sources), '--output', str(consignment_sources / 'FIRST_LOAD_COHORT.json')])
     run('earth-consignment-current-preflight', [sys.executable, 'tests/test_earth_consignment_browser.py', '-v'], extra_env={'FIRSTLIGHT_ROOT': str(ROOT), 'FIRSTLIGHT_CONSIGNMENT_COHORT': str(consignment_sources / 'FIRST_LOAD_COHORT.json')})
+    wild_signs_sources = output / 'earth-wild-signs-earned'
+    run('earth-wild-signs-prerequisites', ['node',
+        'tools/earth-wild-signs-journey/produce_wild_signs_prerequisites.cjs',
+        '--root', str(ROOT), '--original-cohort', str(consignment_sources / 'FIRST_LOAD_COHORT.json'),
+        '--output', str(wild_signs_sources)], timeout=300)
+    run('earth-wild-signs-earned', ['node', '--test', '--test-reporter=tap',
+        'tests/earth_wild_signs_journey.cjs'], timeout=300,
+        extra_env={'FIRSTLIGHT_ROOT': str(ROOT), 'WILD_SIGNS_USE_INSTALLED': '1',
+                   'WILD_SIGNS_COHORT': str(consignment_sources / 'FIRST_LOAD_COHORT.json')})
+    run('earth-wild-signs-current-preflight', [sys.executable,
+        'tests/test_earth_wild_signs_browser.py', '-v'], timeout=180,
+        extra_env={'FIRSTLIGHT_ROOT': str(ROOT),
+                   'FIRSTLIGHT_WILD_SIGNS_COHORT': str(wild_signs_sources / 'WILD_SIGNS_COHORT.json'),
+                   'FIRSTLIGHT_WILD_SIGNS_ORIGINAL_COHORT': str(consignment_sources / 'FIRST_LOAD_COHORT.json')})
     run('local-life-blade', ['node', 'tests/local_life_journey.cjs'])
     run('local-life-bow', ['node', 'tests/local_life_journey.cjs', '--bow'])
     run('local-life-veteran', ['node', 'tests/local_life_journey.cjs', '--veteran'])
@@ -336,8 +408,20 @@ def main():
                               if args.browser_output is not None else output / 'earth-consignment-browser')
         command, extra_env = consignment_browser_run_spec(ROOT, consignment_sources, consignment_output)
         # Ordinary RAF six native routes and two labelled capacity/quota cases.
-        # This is a controller budget, not a pacing or frame-rate claim.
-        run('earth_consignment_browser', command, timeout=3600, extra_env=extra_env)
+        # Measured software blade pair: 31m37s; six routes project 94m52s
+        # before both refusals. Retain every per-leg guard and every case.
+        # This finite aggregate controller budget does not qualify pacing/FPS.
+        run('earth_consignment_browser', command, timeout=7200, extra_env=extra_env)
+        wild_signs_output = ((args.browser_output / 'earth_wild_signs_browser')
+                             if args.browser_output is not None else output / 'earth-wild-signs-browser')
+        command, extra_env = wild_signs_browser_run_spec(
+            ROOT, wild_signs_sources, consignment_sources, wild_signs_output)
+        run('earth_wild_signs_browser', command, timeout=1800, extra_env=extra_env)
+        wild_signs_boundary_output = ((args.browser_output / 'earth_wild_signs_boundaries_browser')
+                                      if args.browser_output is not None else output / 'earth-wild-signs-boundaries-browser')
+        command, extra_env = wild_signs_boundaries_browser_run_spec(
+            ROOT, wild_signs_sources, consignment_sources, wild_signs_boundary_output)
+        run('earth_wild_signs_boundaries_browser', command, timeout=1800, extra_env=extra_env)
         prepare_browser_sources(args.browser_output)
         command, extra_env = browser_run_spec('cosmos_campaign_browser', args.browser_output, mode=args.browser_output_mode)
         run('cosmos_campaign_browser', command, timeout=1200, extra_env=extra_env)

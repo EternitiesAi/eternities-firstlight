@@ -1,0 +1,2272 @@
+{
+  "status": "passed",
+  "head": "04ee4424550d64336353e71cbe78f47d3750cb02",
+  "html_sha256": "05a606d1e9ff6d9e72a13221af524512f3bcc7c677166e4be7fa2119b57afc61",
+  "execution": "ordinary-RAF/original-native-input",
+  "inputs": {
+    "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\source05\\earth-wild-signs-earned\\WILD_SIGNS_COHORT.json": "7be531d62c257599f6b58166381d4fbc1a1b9bafa16e48d94f1625a55ab3b2d8",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\source05\\earth-consignment-earned\\FIRST_LOAD_COHORT.json": "ef12b3111649d4f52bae6ecd0ab38bab160d624d6e66ac339d284227bcebdd3f",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\tools\\earth-wild-signs-journey\\produce_wild_signs_prerequisites.cjs": "6e3ab9ddd1050f915cc4268acc1a5104474f28e64bec5135dda6f2a12a168944",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\tools\\earth-wild-signs-journey\\earned_wild_signs.cjs": "66ba1bf00bb7b3d6e05554b2fe959bcd4838a6d1b5d795f78ff11e36ce6db35c",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\tools\\earth_consignment_browser.py": "ec5cc1c6ad921d73406530233b6d9a6dddf2d4970464f0b62d29d257ebb884e4",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\tools\\browser_support.py": "cb5b8227f4c5e99e89b5ec40a75a3cacc471bd60c287316501c4b2de6cfecaa5",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\index.html": "05a606d1e9ff6d9e72a13221af524512f3bcc7c677166e4be7fa2119b57afc61",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\FIRSTLIGHT_VALLEY.html": "05a606d1e9ff6d9e72a13221af524512f3bcc7c677166e4be7fa2119b57afc61",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\adventure-art.js": "2022f25ee84f5a862025344bbbc15f46336a112e09bdb820075a2fec002d05eb",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\adventure-ui.js": "d519bbc992aaabd71db76a7ff08a6128317bdea6e8898f933a865e78edc3539d",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\adventure.js": "51783460b7eacfbb583d47ccda705ab2890dfee51f947ad55ec9a5d771c9d7c2",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\app.js": "f18ddbb4d444d1fccfeaced940e4e196c8af45d9b437651e81c9cc909a1825c5",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\arsenal-art.js": "1899a42e04fd44e18eced395229793d275a873dbe2902473968289815a3f694f",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\arsenal-ui.js": "a462102896a3c7013f29f6cdf40504b983b8fde803baf41b98b8fb032da3abe6",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\arsenal.js": "70cf869a8240895158960c62cc65d802adf491ac24ee66bf7a3c0389557d2b70",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\atlantis-campaign-art.js": "9ab549df2eeafc8314c95c7c9e488bf80472fcfaac1de7dfe41ebbf8c1830243",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\atlantis-campaign-data.js": "0edd29113cceb2e0d6821ec6542a7434aa2ace5e964e44b4f04f4f21ccf25f3f",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\atlantis-campaign-ui.js": "3bcf9923c47710bf2d3d876629ed47e46d4b7e4289aa8f7510b9ccac2025cb5d",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\atlantis-campaign.css": "11d0f42b969895ba4ac0f561067c260b9a3d632b3b7f15a34d617eff8a4b6523",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\atlantis-campaign.js": "da23cf19fe0fd68ae3f03c040fb3c375b655570bccffd320794cd45bd19067d3",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\beacon-art.js": "aea9e5d22d23eaf73777636c56c2444edac9b0d6239f9504cc95026585618577",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\beacon.js": "2aded7272a8d50cbfbdb4421f0140d00401a49788a3bb465260e30f501a2bf13",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\bridge-art.js": "e8f85dd21a0eb6363f674a934c625b22fc29f18fc63a543ebd61ea0a87fa254d",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\bridge-community-art.js": "454eb5365082d529fe3bb05b166b38e1d01e6fbcd34f1148c5ebf0d02ad9a615",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\bridge-community-ui.js": "a51a02420b59329d0ae268d42a5632de50d87d9b031103a724ad51564737c6d6",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\bridge-community.css": "15be66090d836555498d87e00564c5b7b7094c2e3dca5951f9b1fde5023ea29c",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\bridge-community.js": "4308eecafc47044c3c063b46e4c3aa7cb4e7a30d5d938c64fd518e7f29cb30cc",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\bridge-moment-view.js": "fe58c7824f96458f2608af4d1cf76c81d2936da89a8cca1ad933974b65e0e03c",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\characters-ui.js": "58de0cb602479d45eae66f4ccd4077253e34e6e3d843a1505f9eca4d4a1f8f77",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\characters.css": "48bfb2431b5fb50e530ed334e52cf07c31b8a29bdb5bb4917365210ab9e71815",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\characters.js": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\classes-ui.js": "6fb25a35158cf3388485f57016aea745260dea8a057f8d6b4781d3f7a296d22b",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\classes.css": "4b9b47443b1817efe2b4cd43e7a3d0d34e623738a5b1e6e1cad05bc2ce88e892",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\classes.js": "15da8e8f26c234a5903e5321d9cbcadea773037c9536911a5dc85cb9da2aaa97",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\coastward-settlement-art.js": "8f08b152b5205c434ffa7408118e754799eb7ab396b2c0aaec8920cc0029c839",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\coastward-woodland-art.js": "45b2758d3f8d75457545b24c2cc96f81f70ac8296bf183f57ddd412289f130fc",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\combat-view.js": "9e674247119cece3bb6a35ca31fa424ed5e8e0187cbd2c149afb6f4aba085d5c",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\combat.js": "4176bbf57fd761732b5f9d96708ac8ac0d6855ef56c928d06810f06f74315a32",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\companion-art.js": "06821bb333cc1d61398017fcd236fb4622aae6432ce636f827642531946b2a32",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\core.js": "8936b138755cac6df6d94c5dbc42700e45a91fbf78abf1c978473ff2017b82e6",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\cosmos-art.js": "d68fb28540196c4d6f39ca60cc99e1eb99fab534fb026578c02e75119cdd17e2",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\cosmos-campaign-art.js": "3b22a5fe117cb3731a1531a66941fba9e2953b5c23f3816150c184230a631a5e",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\cosmos-campaign-data.js": "9c7d4d30b863e25812df3651e785bff3f87495b37ede488804ee03178cab93d2",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\cosmos-campaign-ui.js": "95f8bbb9df5f97ddcb779268e5c28f412914d388c92bff00f5e79ec048e77686",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\cosmos-campaign.css": "436b9330b2bb190d022698894c76bd6e3b321d014d6e64bc553449c4dcd33ff7",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\cosmos-campaign.js": "7e03aaad5efe9db475ea82db6e8b9343361a68dec52132cf190e3c055fc681fb",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\cosmos-ui.js": "2582b2f2f4d894f44a969108af258087cf7f0be8c70dbf73eabca5810d236465",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\cosmos.css": "4d79807974082aaef0df364d312ae3d4a345ffd40b5eab403ccc55c24f02a63b",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\cosmos.js": "bf4d9898600b9b5d296f3de934f6f8dd52e343f3b762fd5f0085a09f14ea2090",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\creative.js": "d0032234d3cab1a6e90c84736011a98631bcc3748de8d5fc23df872367038761",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\crossing-art.js": "86cd8945194c6437d9ece96a7d0bcac8a4970eb5f3324300e48d08376bb61bcf",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\crossing-ui.js": "5a2a7f6989a0a7ff0a96fee7aa88ec77dadbfba15440a272f131f17a98d86913",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\crossing.css": "af6dd51f197dfa1963fc9fa0d92683b2e6f48270903aaea5ba90cbb2833862a2",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\crossing.js": "b666c4e6e20483ad267293578020876c8791bbbf23f8116803936658400d1a8f",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\drover-art.js": "0f4dda1af6b05e1c7e0931d835fca2d3faec7960788bc89b9f9b591af19206b0",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-art.js": "494aa1f9d018c9490ca8b95ba212470b5a98b5e5e6e2d0cab68bd36d16b60314",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-consignment-art.js": "9c7884f4c96e771b95f1f89320f4d6882f6b743dd085e63a0167d57181f6d669",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-consignment-data.js": "1c6d73d27cd2d2b702be79deca21df40e50a1f58090d175a0e5aff8d709f0249",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-consignment-motion.js": "822e966961dd9889466d06a668abc5bde4e635a5496a019ef042ae6e141557a3",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-consignment-ui.js": "57501e2e84a483fc69ae40eaf65088b7804b14fa4bcf6dddc48b397d4740fc0a",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-consignment.js": "1af351fcaa324fa7c2da23fd9e1f4e87ed23a48d6cf5318f3e8cbf9b7aad7292",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-expedition-art.js": "06fa49ca7e7687fc98576c3339fc3d59a9015e1e336640e0c9910ec5bac675b1",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-expedition-beast-art.js": "bf663c1cf48ef65a1c43e42bec63e743686506f3c028b7e72e4f4eac2ef7c0e4",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-expedition-dialogue.js": "1ba8a7bd0b32d56efa583b5cf1f0d4d1bf24df58e07811d08853e13a56c835ac",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-expedition-ui.js": "77bc239988740432863832ae9c3ae4fef571475a54d17cc643436969816a76bc",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-expedition.css": "ad650598df3749417d4953965e72d9a2a802f1bb46c549819305a19a5b95247b",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-expedition.js": "6dc60f06910d1b0e09335ebe288e20ce6db974fdf6a5e97742f25a9ac03ca36e",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-fieldcraft-art.js": "4b7306af76245fe9d7fa55f5e9287565e0dd24048e7364289d49d7553096e55d",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-fieldcraft-ui.js": "313708ddf1546e974096ddcc5a0bc41070816b1fd6803dd662770d812a8bb0b5",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-fieldcraft.js": "60dd296ee395f027890cfc6ecb40939b1ee384ce7e7af2f82bf1f926b644c283",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-grazer-art.js": "df809bdcd8554fdd59bdb51b990046f40680807f72aa9d26aa634d42d31777ec",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-grazer-habitat-art.js": "3b7e54ba65c024108edb4d4533f80c61ff019c8b9429f7273512926b37b792a8",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-grazer-motion.js": "0845a58a5d7fd6a98b10f1d5b967832545ccab3d1da37a19c768c3e094d72589",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-grazer-visibility.js": "afd24a0d79742555c32189d76d8ef02ac763266d6d3644fda87483e53ec31163",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-homecoming-art.js": "30779f59d328ab9a3a5fac435ae6bd9d0f9effe6038f6be97a193ac6b6635717",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-homecoming-data.js": "55485996a1651f8b5f0580c9e074f5873ddf45ca26744939238e31516051014f",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-homecoming-ui.js": "5e57a2367153e516bdab12837db82812de3124a32489b09987dd285be011159d",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-homecoming.css": "dbfeb49d20278ebeb9b9ae4c1d4d575acc3a806ca59898f20ebb9f8ca8f1661a",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-homecoming.js": "c16adf4e13bd3a57e9be6aae6cd0cc00a4b78b49106f220ee74dee105fe858c1",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-notes-art.js": "87fe4682829bfff89978d7046d62f518874a7953808431c5634327c9eb449556",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-notes-ui.js": "9e0f0df26062b4929e0c3a801e8e857afc269936dbe4932279e935c56274f264",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-notes.js": "4ab5807020f65086b190591414c871ee76412791ac0c97dca5447c595840e9e0",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-road-art.js": "e7bd1fbc7b1177327c0756724b1ccf78b1b640568d9121a1ff416736524b1520",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-road-ui.js": "e4577d03d3b97d271b8374054d34b5afdecbb47b28e74b911b931c2ed8e3c8ad",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-road.js": "7417a1bdc4ab9eea8e2afc4c013a6890507b5670fca97d1f6ebe9f823390a125",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-shoulder-art.js": "422a50a7aeec456b6f75095c53a319d2cbf6ac5e09f773e268ed54034c2ddb8d",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-story-ui.js": "930b71ef9184a5d7b03cc79ff33d7f9e000eabb9d3934266af9e0fe8713448cb",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-story.js": "fd0ced6f17f1b15b2aee4e31aa00be249bc8e1fb08c4e735416d95c173fd52d0",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-ui.js": "9294c4cb9666aa6aec2d36d6eb8e34686bf01f57ead9964322ad8283cc2ba635",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-wild-signs-art.js": "7f800b7a9307f4be3104f755b673b393fb1c653c78afa81b3677af21e6c80a71",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-wild-signs-data.js": "c0096aa9e421eae3deb60ed0ff312df5e224413748e4d2d596018b0b6abba5d3",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-wild-signs-ui.js": "42b2302370c5999cf518b21d48a4faf7169d997c5e8f5be6b7cf889949b41a46",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-wild-signs.css": "c8f5b8451d066d30b0431fb64e2930b9b78163cd8591941db56ef85efe438f38",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth-wild-signs.js": "cc572066f098db73f9f574e424916673b8aed806c944c67c8407932fe03003e0",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth.css": "1f40093ded67c175c70c730b8518ff928d26db40287515256fc287c45f2a9f3d",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\earth.js": "cbd5ee90a4b335c66ba096f439f8f3efe6f6f68cba99086485f34fd81866a166",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\elderweald-trail-art.js": "e978e735ec1ee8048df1777b190959b832cd37755f682c3d51b9ec3f0a7f0491",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\elderweald-world.js": "8d993c230ad7198e397f4bf41938522405c352bbdd903b04016d1262822d3538",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\engine.js": "b98cfea8453e5b6deeb16a13c45f1c1bf7fc80fb9ba8d0a185c242a6ea9b078d",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\experience.js": "3b5a178ca757c7b58dcbfcedcc1522887dc6a178faf5e942c6e3894166d60570",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\gathering-adapter.js": "df41b2b23ae11c6ef2661e48301c488cb26ab753a7beec73349b5c959d5ab564",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\gathering-art.js": "b693bce2a519bd75e4f99e03b96184f1ed10c9a9a02e25b7affd53e739f5e0eb",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\gathering-music.js": "5e44106322e01aebc7b87d8eefcd29b2a2577d2162d70fb8f99475c7cc7deb12",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\gathering-ui.js": "0c347e1da4a897b178c405f35cfef2e6ea518fe5d9e6ba650e48e48895e0445a",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\gathering.css": "aa2e5381a0ff9fa7e4ceae5053a54a8ab11a784f81ee021e4835d485d3c5f4db",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\gathering.js": "256a33c52f2b31c2c421f72a74aae543feb6c554ebae863aee55d31f0c68eb54",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\heaven-campaign-art.js": "25ed9017108ea106579584233cc55b2a1753d62bd36174bb9c023682cb2ad24a",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\heaven-campaign-data.js": "2495650ded3f74d81d3d53f4d259f29052d3ff64b65a4a6331351b049bdc67eb",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\heaven-campaign-ui.js": "67723b2f0acf3e52da6177ad98d8a881e3b3e509bfc418bd3031ffbdc9f0383e",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\heaven-campaign.css": "7cf25161526677ee407ff09596cf8e2ecfeb92246c66c0b7255440b54d041bf0",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\heaven-campaign.js": "50aa6ff6607f9dfda6f0df1ca2fa473bca36a7513a34d1a915c1a87305e69e26",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\hell-campaign-art.js": "5ea5b875e32114b07b52ffe0000b7163b340f08adf0eae01552b84a478420f18",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\hell-campaign-data.js": "745221292e89ed2bcdf455ffc1bf4e0e66259add5671709e77135d5ede3892ff",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\hell-campaign-ui.js": "d47acd0b9ba992df6ff4c73e1b5f3dfb9c1b2ced0745c8ffe50d6cd34cc80f8c",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\hell-campaign.css": "146c66cd811e3070367e10a91c30f39cfc630dba1ee929a3b6a540f96142f0d9",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\hell-campaign.js": "cc8ca64f9515e75f4bf572c3feb5978f07409e4aca5a328901b3322f399f67a1",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\home-history-art.js": "df3acc85a5191c3938692759e85b7ee76ef5f936f29e65d6a845636600396a1f",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\home-history-ui.js": "41a330942368c7a4500759f2cbaf1cda224bd5ed25bc284b9e44463fc1f43a8e",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\home-history.css": "54ef3c501dfda4c3d74c0f17d900bdc5b25c9dcbaeb1840ec36cbcfe0a276bd2",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\home-history.js": "f002eb64b57343e38e95eafa4cd522c892aab26efc7b0c3d65bea86a45cec6e6",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\local-life-art.js": "5d8d072e20316e0bce84530f3df1ca5c03c360a9b51aca06cc36aba12bfc73b6",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\local-life-ui.js": "90e1e229f5be8d40c599473df5d6802c1a23a170c9b804a6756efe7703938c2e",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\local-life.js": "366b1b5693987564de6962a430f2cf7070d81348ad01120d154bccb202a39ac3",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\mill-gate-art.js": "fe33cbbd3f180a8d32a0d0a338cde42c40e809af99ed2da1db157ba5c7fbcdd9",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\millwright-art.js": "bd7397ee2a9f4c47b2b51117e28f3c68533da41de3122bb0a39a5575913a5661",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\pursuit-ui.js": "f8c6bab82d88b6e4dcbf05f3e78701d489f31e224c80211b94f8acc8b70b4224",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\pursuit.css": "61f36fa917eafba8cfa332f7d233db4c47a6d007bbf84d1843bc25fc17dd63ff",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\pursuit.js": "b77e1874f8278971f41d4b62551df40c81126f2a35e02958958e802ab9c8b5ff",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\quarry-art.js": "5bc6d93e99e430e7a460a1a2a510fc69e60c9dd80e758bce7470dae3ae3446f6",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\realm-art-data.js": "1ac6251a7acf23c78799d96b5554fb3fe572c40e12c54c73f0188c4f8a324435",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\realm-atlas-ui.js": "26d34bdc7afc9fbf9bb1f0f483aa6bc8312eba8a2186d21c80cab2fc1f68529b",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\realm-atlas.css": "7ef7a03b8c2a69069c2d65da8d5134c7b7dc4bc2b941e139f818a7ab7011c366",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\realm-craft.js": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\realm-givers-art.js": "8362d7a98f238b77b9afa5eff7346f430c02af6cd249502f146308a3d246fb34",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\realm-trails-art.js": "99a588e7aee9c7d43b6506de836ab2bab75a9420c6b718369c37e4517ca037e3",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\realm-trails-cosmos.js": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\realm-trails-north.js": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\realm-trails-south.js": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\realm-trails-ui.js": "7d58c16fbe3213220d439f0760e24988aee87567454490eb6ddfd19c825e6a80",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\realm-trails.js": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\road-art.js": "0cc12918587f98f4b9ed2b7beb8d1b21219b4a69959742a759f88354942df05d",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\road.js": "d18106f1a2147d623680b285dc5882cae8d2b74c5ef8b500d75de35d20c86dbc",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\rpg-ui.js": "4fdd9e4a03b8abb464c65d5765eb0bf6cc336d2ef93be10a7fd99e17c73aabb7",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\rpg.css": "34ca5591b22748dbf96754fc0f6a857cbd73f77eb85e50b706e1b484291b11ae",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\sandbox-art.js": "3c3a8f9ea1a44fb84bdfe07a99b33969f253714c271e91ca3cfeca7eab76474c",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\sandbox-ui.js": "28d7530e8153ed3c8a6a31b3e204cbc9680484b013cb5880a4f05b76cf83d8f5",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\sandbox.js": "ad11196c12363b650f2697ab8fb30eb657ff0bf65953274942ce36eb28131e85",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\shell.html": "80e5843fe01669ab6b24d565bfdd073ef84c296f187d87b6ea88819c0627b6da",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\skitter-art.js": "bd84a78381cf7232a7fb92a868332308c68fcae17d25764c2b5d4bdfefa29903",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\soundscape.js": "15b7b578886b838ef20e56501940354d33a8ffcd5581332dd4c4b2035692c5af",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\starter-art.js": "cfc4f672b891fe6d53dec82a97aeac7204b8179b3490ae9df9ce3412c4661fcc",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\starter-ui.js": "44718b2835207383632d5f33e0748dba9c348041b11f9b404040bdf07a259052",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\starter.css": "f1501b06a13c2b3ec0030b39bf9d4530740aad2f60cf9608ca32957c9ce2943b",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\starter.js": "c6debd10295babafdcd714445c2ac18c0ff5ce8fd54b8dfe4f3ff78c9e0a294d",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\style.css": "de294de870d7554ccd1d8fa0725dd7a954e8a3f3e75bd9cff86530e94a4e4eee",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\surface-assets.js": "5cb0f81348074edbc0e4f3c7dee4962fac10bbc5e7db0ee07b16216f3b7a1e5f",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\traveler-art.js": "cf9e029046f5581aa3116f648fb657f9edff2ced67abc507afa38525f3ae1ba1",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\traveler-equipment-art.js": "13537e49de6fdcd670e75875c3b17736b76df53b65709d2b2366aab721dc98dc",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\workshop-transactions.js": "115193dc80841b531a14f85a41c8d2d5e44c6169fc4ea4d6c19637eb7a8e8dd4",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\world-atlantis-earth.js": "6685a2da156f3b6d394b9dfef611fafb76d277df2d8a1c57e82746d276228665",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\world-foundations-art.js": "b364062e7adc68b8ec03cb9ab4830225021c2059892f9d9c5484b300ee2f4206",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\world-foundations-ui.js": "ff99313984e5a562444b81625710be20fed80c5aa97f48b5c778c907fd62cfca",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\world-foundations.css": "8abcf23f66cde69a92b7f3be6c099a1a2e2088d220bd83a81ea71d78f0564669",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\world-foundations.js": "4173e396c6d002d0ec25a7c549f046e0e77e561c3ef3b0e89400f84cc070d752",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\world-ground-coalescing.js": "c31024794d5b5db2c28d9aab9ecf8fd0acdf55c2630ff5edf93b988151e5d63d",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\world-heaven-hell.js": "7192efdcce877e359865c43d39d03fc1a2a54ebad960fd2d2a378880033f4cbd",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\src\\world.js": "5efbff0124faced15424e638116f10b93f6fa6ccd9d6bad16faef47c9d791069",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\source05\\earth-wild-signs-earned\\blade\\00_CLAIMED_LOAD_FRESH_SIGNS.json": "7d0e31a2072e144519578024243f853200eaeb91ad7f0fd86c96eddff4838de9",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\source05\\earth-wild-signs-earned\\blade\\WILD_SIGNS_PREREQUISITES.json": "f89148feea745a3fe9e60086355930e2dfd2058c209a041ae15e408eaf598034",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\source05\\earth-wild-signs-earned\\bow\\00_CLAIMED_LOAD_FRESH_SIGNS.json": "a6ca381bb7dedd4c9b79bdbe629ee32d3118b8bbaacff15f1cde025853be6222",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\source05\\earth-wild-signs-earned\\bow\\WILD_SIGNS_PREREQUISITES.json": "d2a5d9d9096fce08061351ac5c871a4063018646a0fb2447b0a9281a99f3d043",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\source05\\earth-wild-signs-earned\\veteran\\00_CLAIMED_LOAD_FRESH_SIGNS.json": "334910c0bf6a0b0b304eb4c48438295f9f0324e2c5c262959ccc62dcf7df3826",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\source05\\earth-wild-signs-earned\\veteran\\WILD_SIGNS_PREREQUISITES.json": "90d6d624cc287835c9bacfa747e1f4bc4b3181b36284c89dc26c05e74d168528",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\source05\\earth-consignment-earned\\fresh-blade\\04_FIRST_CLAIMED.json": "6ab6cfa37149ff2296f091dea402023442a91985069433bd11b516306359fbd1",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\source05\\earth-consignment-earned\\fresh-blade\\EARTH_EXPEDITION_JOURNEY_REPORT.json": "84a3152575c06e0434090e1458a6232f69dc5fe1400a5c2f14ac467ab9e50c92",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\source05\\earth-consignment-earned\\fresh-bow\\04_FIRST_CLAIMED.json": "ad4c772f5ae1a5ec4f3a476e12c66d9c9de7b18629b1e7af950f87efef593c7b",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\source05\\earth-consignment-earned\\fresh-bow\\EARTH_EXPEDITION_JOURNEY_REPORT.json": "dca3452b284674f4deba4e767da611bb5b27d5abcb2524ce626118de3991a2fe",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\source05\\earth-consignment-earned\\veteran\\04_FIRST_CLAIMED.json": "8297ba8eca9cd1023984099548296949af263efe35ea82a26e15eec5da21f0df",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\source05\\earth-consignment-earned\\veteran\\EARTH_EXPEDITION_JOURNEY_REPORT.json": "34c484ac478e4ac2c59a4a21e6e03da060c28280927e02bd916a8cd4010db66d",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\native03\\blade-signed-loop\\FIRST_BROWSE_READY_WORLD.json": "1636f4859195656ee0f263f68e84ac192afc6be6ae8cc32148d5c34773c36ee0",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\native03\\blade-signed-loop\\FIRST_BROWSE_READY_NATIVE_STORE.json": "a899b2c451cc684e0904b1de819238bcf1c66efe91b7fe1a72883ee96f17f0c5",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\native03\\WILD_SIGNS_NATIVE_REPORT.json": "eb906ce2f9252e9506478ea317e94b25ebdc62a570f63498fa4c4cb8000a9a79",
+    "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\tools\\capture_earth_consignment.py": "f3d56a4e35cd6ecf7462bf54afbbe9c0c0dad75f9bc2ffe965ca809166666b59",
+    "D:\\07-GAMES\\Firstlight\\staging\\first-load-through-20261006\\wild-capture02\\capture_wild_signs.py": "33891be6543d96e391dbca95b11ee2e312b34083b388c758337f3e1452572f7c"
+  },
+  "rendererActual": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "driver": "NVIDIA GeForce RTX 3080, 610.74, 7051 MiB, 10240 MiB",
+  "browserVersion": {
+    "protocolVersion": "1.3",
+    "product": "HeadlessChrome/143.0.7499.4",
+    "revision": "@ee5ecaf663495e92dfe322aa76c114a3465602ab",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36",
+    "jsVersion": "14.3.127.1"
+  },
+  "resolution": {
+    "width": 1440,
+    "height": 960
+  },
+  "quality": "balanced",
+  "recorder": {
+    "elapsed_ms": 17046.899999976158,
+    "timedOut": false,
+    "error": null,
+    "mime": "video/webm;codecs=vp8",
+    "callbacks": 1021,
+    "p50_ms": 16.69999999999709,
+    "p95_ms": 16.79999999998836,
+    "p99_ms": 16.80000000000291,
+    "max_ms": 33.40000000000873,
+    "over50ms": 0,
+    "scope": "Shared-machine recorder RAF callback intervals, including camera/menu overhead; not displayed FPS or GPU timings."
+  },
+  "movie": {
+    "path": "ACTUAL_WILD_SIGNS.webm",
+    "bytes": 5013922,
+    "sha256": "282c10a2ab205fccdd5e4d4b05e8947ec236c6ef67ce53616f0df1d85e80255e",
+    "surface": "Actual WebGL canvas, DOM HUD excluded",
+    "audio": false,
+    "partial": false
+  },
+  "errors": [],
+  "cleanupErrors": [],
+  "contextClosed": true,
+  "serverClosed": true,
+  "humanAcceptance": false,
+  "performanceCertified": false,
+  "checks": [
+    {
+      "name": "exact served epoch",
+      "passed": true
+    },
+    {
+      "name": "production ordinary RAF without test controls",
+      "passed": true
+    },
+    {
+      "name": "read-only actual consignment diagnostics installed",
+      "passed": true
+    },
+    {
+      "name": "canonical actual four compound choices and route counts",
+      "passed": true
+    },
+    {
+      "name": "requested actual WebGL2 renderer",
+      "passed": true
+    },
+    {
+      "name": "actual current WildSigns runtime and sanitized diagnostic installed",
+      "passed": true
+    },
+    {
+      "name": "Actual NVIDIA RTX hardware renderer",
+      "passed": true
+    },
+    {
+      "name": "unique native #rpg-tabs [data-rpg=\"open\"][data-id=\"characters\"]",
+      "passed": true
+    },
+    {
+      "name": "unique native [data-rpg=\"chars-import\"]",
+      "passed": true
+    },
+    {
+      "name": "unique native [data-rpg=\"chars-confirm-import\"]",
+      "passed": true
+    },
+    {
+      "name": "unique native #settings",
+      "passed": true
+    },
+    {
+      "name": "unique native #close-panel",
+      "passed": true
+    },
+    {
+      "name": "actual native rendering quality selected through settings UI",
+      "passed": true
+    },
+    {
+      "name": "Actual native import preserves exact accepted account and old ownership",
+      "passed": true
+    },
+    {
+      "name": "unique native #rpg-tabs [data-rpg=\"open\"][data-id=\"worlds\"]",
+      "passed": true
+    },
+    {
+      "name": "unique native [data-rpg=\"world-select\"][data-id=\"earthlands\"]",
+      "passed": true
+    },
+    {
+      "name": "unique native [data-rpg=\"world-preview\"]",
+      "passed": true
+    },
+    {
+      "name": "unique native [data-rpg=\"world-confirm\"]",
+      "passed": true
+    },
+    {
+      "name": "unique native #rpg-tabs [data-rpg=\"open\"][data-id=\"journal\"]",
+      "passed": true
+    },
+    {
+      "name": "unique native [data-rpg=\"wild-signs-track\"][data-quest=\"earth-beast-wrong-name-v1\"]",
+      "passed": true
+    },
+    {
+      "name": "canonical native walk target",
+      "passed": true
+    },
+    {
+      "name": "unique native #rpg-close",
+      "passed": true
+    },
+    {
+      "name": "unique native #rpg-tabs [data-rpg=\"open\"][data-id=\"journal\"]",
+      "passed": true
+    },
+    {
+      "name": "unique native [data-rpg=\"wild-signs-open\"][data-quest=\"earth-beast-wrong-name-v1\"]",
+      "passed": true
+    },
+    {
+      "name": "unique native [data-rpg=\"wild-signs-walk\"][data-quest=\"earth-beast-wrong-name-v1\"][data-id=\"grazer-overlook\"]",
+      "passed": true
+    },
+    {
+      "name": "unique native #settings",
+      "passed": true
+    },
+    {
+      "name": "unique native #close-panel",
+      "passed": true
+    },
+    {
+      "name": "native selected exact camera/FOV/reducedMotion",
+      "passed": true
+    },
+    {
+      "name": "unique native #rpg-tabs [data-rpg=\"open\"][data-id=\"journal\"]",
+      "passed": true
+    },
+    {
+      "name": "unique native [data-rpg=\"wild-signs-open\"][data-quest=\"earth-beast-wrong-name-v1\"]",
+      "passed": true
+    },
+    {
+      "name": "unique native [data-rpg=\"wild-signs-look\"][data-quest=\"earth-beast-wrong-name-v1\"]",
+      "passed": true
+    },
+    {
+      "name": "intentional Look closes account",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "watch is live Earth, alive and unpaused",
+      "passed": true
+    },
+    {
+      "name": "watching alone never saves observed fact",
+      "passed": true
+    },
+    {
+      "name": "actual visible lower/recover/resumed physical walk before original Observe",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "unique native #rpg-hud [data-rpg=\"camera\"][data-id=\"follow\"]",
+      "passed": true
+    },
+    {
+      "name": "unique native #rpg-tabs [data-rpg=\"open\"][data-id=\"journal\"]",
+      "passed": true
+    },
+    {
+      "name": "unique native [data-rpg=\"wild-signs-open\"][data-quest=\"earth-beast-wrong-name-v1\"]",
+      "passed": true
+    },
+    {
+      "name": "unique native [data-rpg=\"wild-signs-look\"][data-quest=\"earth-beast-wrong-name-v1\"]",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected camera retained during capture",
+      "passed": true
+    },
+    {
+      "name": "Actual live unpaused Earth observation during capture",
+      "passed": true
+    },
+    {
+      "name": "all old owners/XP/gear/sockets/companion and paid fifth remain",
+      "passed": true
+    },
+    {
+      "name": "old receipt order retained within existing cap",
+      "passed": true
+    },
+    {
+      "name": "ordinary production has no test issuer",
+      "passed": true
+    },
+    {
+      "name": "traveller remains alive",
+      "passed": true
+    },
+    {
+      "name": "Both actual camera intervals show at least .05m physical grazer movement",
+      "passed": true
+    },
+    {
+      "name": "Recording cannot award observations, money or inventory",
+      "passed": true
+    },
+    {
+      "name": "One silent actual 15-20 second movie",
+      "passed": true
+    },
+    {
+      "name": "No app/browser/external errors",
+      "passed": true
+    },
+    {
+      "name": "Source and every sealed input unchanged",
+      "passed": true
+    }
+  ],
+  "rawReport": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\video01\\REPORT.json",
+    "bytes": 450436,
+    "sha256": "193a7d99dd985a67721c02d7dfd750e068b60f935a6dd0a037a34af62968b25e"
+  }
+}

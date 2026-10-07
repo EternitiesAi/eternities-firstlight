@@ -4,6 +4,7 @@ const {test}=require('node:test'),assert=require('node:assert/strict');
 const C=require('../src/core.js'),E=require('../src/engine.js'),W=require('../src/world-foundations.js');
 require('../src/coastward-settlement-art.js');
 require('../src/coastward-woodland-art.js');
+require('../src/earth-grazer-motion.js');require('../src/earth-grazer-habitat-art.js');
 const A=require('../src/world-foundations-art.js');
 const d=W.definition('earthlands'),cells=A.rawPartitions(d),parts=A.coastBanks(cells);
 const contains=(x,z)=>cells.some(p=>x>=p.x-p.w/2&&x<=p.x+p.w/2&&z>=p.z-p.d/2&&z<=p.z+p.d/2);

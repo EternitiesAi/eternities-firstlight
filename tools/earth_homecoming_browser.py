@@ -70,6 +70,8 @@ def expected_optional_defaults(old):
         raise ValueError('Optional migration input must lack the homecoming owner.')
     expected = json.loads(json.dumps(old))
     expected['earthHomecoming'] = json.loads(json.dumps(FRESH))
+    if 'earthWildSigns' not in old:
+        expected['earthWildSigns'] = {'version': 1, 'accepted': False, 'evidence': [], 'observed': False, 'resolution': None, 'cleared': False, 'claimed': False}
     catalogue = expected.get('localLife')
     old_ids = {'heaven-propagation-bed-v1', 'hell-refuge-water-v1',
                'atlantis-bellglass-lamp-v1', 'cosmos-drawing-shelf-v1'}
@@ -239,7 +241,9 @@ def read_provenance(sources, flags, cohort_sha, root=ROOT, caller_root=None):
         catalogue_migration = ('exact-old-four-to-fresh-first-load'
                                if expected.get('localLife') != old.get('localLife') else None)
         if (migrated != expected or
-                row['migration'].get('localLifeCatalogueMigration') != catalogue_migration):
+                row['migration'].get('localLifeCatalogueMigration') != catalogue_migration or
+                row['migration'].get('earthWildSignsMigration') !=
+                ('missing-to-fresh-earth-wild-signs-v1' if 'earthWildSigns' not in old else None)):
             raise ValueError('Optional migration must preserve every old field and add only exact fresh defaults.')
         origin = row.get('origin', {})
         if variant == 'strongest':

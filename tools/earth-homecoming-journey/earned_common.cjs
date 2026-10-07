@@ -22,6 +22,7 @@ function epoch(){
 function write(folder,name,value){const p=path.join(folder,name+'.json');fs.writeFileSync(p,JSON.stringify(value,null,2)+'\n',{flag:'wx'});return{path:p,bytes:fs.statSync(p).size,sha256:sha(p)};}
 function assertMigrationPreserved(migrated,raw){
  const expected=copy(raw),catalogue=expected.localLife;
+ if(!('earthWildSigns' in raw))expected.earthWildSigns={version:1,accepted:false,evidence:[],observed:false,resolution:null,cleared:false,claimed:false};
  const ids=['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1'].sort();
  let catalogueMigration=null;
  if(catalogue&&catalogue.version===1&&Object.keys(catalogue).length===2&&Object.hasOwn(catalogue,'version')&&Object.hasOwn(catalogue,'records')&&catalogue.records&&Object.keys(catalogue.records).length===ids.length&&ids.every(id=>Object.hasOwn(catalogue.records,id))){
@@ -29,17 +30,17 @@ function assertMigrationPreserved(migrated,raw){
   catalogueMigration='exact-old-four-to-fresh-first-load';
  }
  const old=copy(migrated);delete old.earthHomecoming;
- assert.deepEqual(old,expected,'actual optional defaults preserve EVERY prior field and add only the literal fresh fifth record');
+ assert.deepEqual(old,expected,'actual optional defaults preserve EVERY prior field and add only declared literal fresh defaults');
  return catalogueMigration;
 }
 function migration(file,expected,folder){
  assert.equal(sha(file),expected,'byte-bound real earned checkpoint');const raw=JSON.parse(fs.readFileSync(file)),C=load('core'),H=load('earth-homecoming'),migrated=C.validate(raw);
  assert.deepEqual(migrated.earthHomecoming,H.fresh());const catalogueMigration=assertMigrationPreserved(migrated,raw);assert.equal(sha(file),expected,'original earned input bytes unchanged');
- const world=write(folder,'MIGRATED_WORLD',migrated),receipt={source:{path:file,bytes:fs.statSync(file).size,sha256:expected},output:world,newOwner:copy(migrated.earthHomecoming),localLifeCatalogueMigration:catalogueMigration,oldWorldUnchanged:true,method:'actual installed Core.validate; missing empty Earth owner and exact old-four to fresh-fifth catalogue only; no historical claims transplanted'};
+ const world=write(folder,'MIGRATED_WORLD',migrated),receipt={source:{path:file,bytes:fs.statSync(file).size,sha256:expected},output:world,newOwner:copy(migrated.earthHomecoming),localLifeCatalogueMigration:catalogueMigration,earthWildSignsMigration:!('earthWildSigns' in raw)?'missing-to-fresh-earth-wild-signs-v1':null,oldWorldUnchanged:true,method:'actual installed Core.validate; missing empty Earth owner, exact old-four to fresh-fifth catalogue and missing-only literal fresh WildSigns; no historical claims transplanted'};
  write(folder,'MIGRATION_RECEIPT',receipt);return receipt;
 }
 function preserved(final,before){
- for(const k of['journeys','realmTrails','earthExpedition','hellCampaign','heavenCampaign','atlantisCampaign','cosmosCampaign','bridgeCommunity','localLife','homeHistory','notes','score','scoreRevision','retreat','visitor','flowers','settings'])assert.deepEqual(final[k],before[k],k+' retains its original owner');
+ for(const k of['journeys','realmTrails','earthExpedition','hellCampaign','heavenCampaign','atlantisCampaign','cosmosCampaign','bridgeCommunity','localLife','earthWildSigns','homeHistory','notes','score','scoreRevision','retreat','visitor','flowers','settings'])assert.deepEqual(final[k],before[k],k+' retains its original owner');
  for(const k of['owned','equipment','arsenal','starter','pursuit','realmCraft','earthBinding','classPath','companion','beacon','crossing','road','earthStory','earthNotes','earthGathering','defeated','drops','reward','relic','angelSeen'])assert.deepEqual(final.adventure[k],before.adventure[k],k+' unchanged except documented reversible companion command');
  for(const k of['bridge','nextId','stats','milestones','recentCommands','cooldownUntil'])assert.deepEqual(final.sandbox[k],before.sandbox[k]);
  assert.deepEqual(final.sandbox.placed.map(p=>({...p,crop:null})),before.sandbox.placed.map(p=>({...p,crop:null})));for(const prior of before.sandbox.placed)if(prior.crop){const now=final.sandbox.placed.find(p=>p.id===prior.id).crop;assert.equal(now.plantedAt,prior.crop.plantedAt);assert.equal(now.readyAt,prior.crop.readyAt);assert.ok(now.stage===prior.crop.stage||prior.crop.stage==='watered'&&now.stage==='ripe');}
@@ -52,9 +53,13 @@ function profile(raw){
 function productionApp(sim,store){
  // Exact installed application functions are executed in a minimal CPU host. The
  // status-render sink cannot mutate progress; real Core, Store and EH own it.
+ // Keep App-created opaque leases in the installed modules' JavaScript realm.
+ // A separate VM realm makes their real prototype/ownership checks refuse.
  const app=overlay.read('app.js'),extract=(a,b)=>{const i=app.indexOf('function '+a+'('),j=app.indexOf('function '+b+'(',i);assert.ok(i>=0&&j>i,'exact application function boundaries');return app.slice(i,j);};
- const scope={sim,characterStore:store,preserveExisting:false,saveState:'loaded',RealmEarthHomecoming:load('earth-homecoming'),renderStatus:()=>{}};
- vm.createContext(scope);vm.runInContext(extract('earthHomecomingWriter','worldTravel')+'\n'+extract('worldSave','worldCommand')+'\n'+extract('earthHomecomingCommand','hellCampaignCommand'),scope);
+ load('engine');
+ const scope={sim,characterStore:store,rpg:null,preserveExisting:false,saveState:'loaded',RealmEarthHomecoming:load('earth-homecoming'),RealmEarthGrazerMotion:load('earth-grazer-motion'),RealmEarthGrazerArt:load('earth-grazer-art'),RealmEarthWildSignsData:load('earth-wild-signs-data'),RealmEarthWildSigns:load('earth-wild-signs'),renderStatus:()=>{}};
+ const body=extract('earthHomecomingWriter','worldTravel')+'\n'+extract('worldSave','worldCommand')+'\n'+extract('earthHomecomingCommand','hellCampaignCommand');
+ Object.assign(scope,vm.compileFunction(body+'\nreturn {earthHomecomingWriter,worldContext,worldSave,earthHomecomingCommand,syncWildSignsOwner,grazerContext,wildSignsContext};',[],{contextExtensions:[scope],filename:path.join(ROOT,'src/app.js')})());
  return{scope,context:()=>scope.worldContext(),command:(type,p)=>scope.earthHomecomingCommand(type,p),save:s=>scope.worldSave(s)};
 }
 function callerAudit(){
