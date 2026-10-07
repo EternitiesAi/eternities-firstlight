@@ -119,7 +119,7 @@ class OnboardingVerifier(unittest.TestCase):
         self._main_request_number=getattr(self,'_main_request_number',0)+1
         target=Path(self.tmp.name)/f'main-browser-{self._main_request_number}';args=['verify.py','--output',str(self.f.logs)]
         if browser:args+=['--browser','--browser-output',str(target),'--browser-output-mode','supported']
-        with patch.object(V,'ROOT',self.f.root),patch.object(V,'os',SimpleNamespace(name='posix',environ=os.environ)),patch.object(V.sys,'argv',args),patch.object(V.shutil,'which',return_value='node'),patch.object(V.subprocess,'check_output',return_value='v24.18.0\n'),patch.object(V.subprocess,'run',side_effect=fake_run),patch.object(V,'prepare_browser_sources',return_value=None),patch.object(V,'consignment_browser_run_spec',side_effect=Earth.consignment_orchestration_spec),contextlib.redirect_stdout(io.StringIO()),contextlib.redirect_stderr(io.StringIO()):
+        with patch.object(V,'ROOT',self.f.root),patch.object(V,'os',SimpleNamespace(name='posix',environ=os.environ)),patch.object(V.sys,'argv',args),patch.object(V.shutil,'which',return_value='node'),patch.object(V.subprocess,'check_output',return_value='v24.18.0\n'),patch.object(V.subprocess,'run',side_effect=fake_run),patch.object(V,'prepare_browser_sources',return_value=None),patch.object(V,'consignment_browser_run_spec',side_effect=Earth.consignment_orchestration_spec),patch.object(V,'wild_signs_browser_run_spec',side_effect=Earth.wild_signs_orchestration_spec),patch.object(V,'wild_signs_boundaries_browser_run_spec',side_effect=Earth.wild_signs_boundaries_orchestration_spec),contextlib.redirect_stdout(io.StringIO()),contextlib.redirect_stderr(io.StringIO()):
             V.main()
         return calls,target
 
@@ -131,7 +131,7 @@ class OnboardingVerifier(unittest.TestCase):
         self.assertNotEqual(c[c.index('--output')+1],earth[earth.index('--output')+1])
         labels=[c[1]for c,k in calls if len(c)>1];self.assertLess(labels.index('tools/earth_homecoming_journey.cjs'),labels.index('tests/test_earth_homecoming_native.py'));self.assertLess(labels.index('tests/test_earth_homecoming_native.py'),labels.index('tools/earth_homecoming_browser.py'));self.assertLess(labels.index('tools/earth_homecoming_browser.py'),labels.index('tools/onboarding_browser.py'))
         # Count the 45 legacy native suites separately from the new CPU preflight.
-        existing=[(c,k)for c,k in calls if len(c)>1 and c[1].startswith('tests/') and c[1].endswith('_browser.py') and c[1]not in ('tests/earth_road_browser.py','tests/test_earth_consignment_browser.py')];self.assertEqual(len(existing),45)
+        existing=[(c,k)for c,k in calls if len(c)>1 and c[1].startswith('tests/') and c[1].endswith('_browser.py') and c[1]not in ('tests/earth_road_browser.py','tests/test_earth_consignment_browser.py','tests/test_earth_wild_signs_browser.py')];self.assertEqual(len(existing),45)
         roads=[(c,k) for c,k in calls if len(c)>1 and c[1]=='tests/earth_road_browser.py'];self.assertEqual(len(roads),1)
         road,rk=roads[0];self.assertEqual(road[road.index('--output')+1],str(target/'earth_road_browser'));self.assertEqual(rk['timeout'],600)
         self.assertIn('tests/earth_road_journey.cjs',labels)
@@ -143,7 +143,7 @@ class OnboardingVerifier(unittest.TestCase):
     def test_new_consignment_is_required_once_after_current_preflight_and_retains_48_older_suites(self):
         calls,target=self.main_requests();labels=[c[1]for c,k in calls if len(c)>1]
         rows=[(c,k)for c,k in calls if len(c)>1 and c[1]=='tools/earth_consignment_browser.py'];self.assertEqual(len(rows),1)
-        c,k=rows[0];self.assertEqual(k['timeout'],3600);self.assertEqual(c[c.index('--output')+1],str(target/'earth_consignment_browser'));self.assertEqual(c[c.index('--cohort')+1],str(self.f.logs/'earth-consignment-earned/FIRST_LOAD_COHORT.json'))
+        c,k=rows[0];self.assertEqual(k['timeout'],7200);self.assertEqual(c[c.index('--output')+1],str(target/'earth_consignment_browser'));self.assertEqual(c[c.index('--cohort')+1],str(self.f.logs/'earth-consignment-earned/FIRST_LOAD_COHORT.json'))
         preflight=[(c,k)for c,k in calls if len(c)>1 and c[1]=='tests/test_earth_consignment_browser.py'];self.assertEqual(len(preflight),1)
         pc,pk=preflight[0];self.assertEqual(pc,[sys.executable,'tests/test_earth_consignment_browser.py','-v']);self.assertEqual(pk['timeout'],180)
         self.assertEqual(pk['env']['FIRSTLIGHT_ROOT'],str(self.f.root));self.assertEqual(pk['env']['FIRSTLIGHT_CONSIGNMENT_COHORT'],str(self.f.logs/'earth-consignment-earned/FIRST_LOAD_COHORT.json'))

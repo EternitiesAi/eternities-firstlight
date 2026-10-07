@@ -37,6 +37,22 @@ def consignment_orchestration_spec(root,sources,output,**kwargs):
              '--renderer','software'],{'FIRSTLIGHT_ROOT':str(root),'PYTHONDONTWRITEBYTECODE':'1'})
 
 
+def wild_signs_orchestration_spec(root,sources,original,output,**kwargs):
+    # Command transport only. The miniature fixture cannot earn or admit current
+    # gameplay; actual dual-cohort admission runs unpatched in its separate gate.
+    return ([sys.executable,'tools/earth_wild_signs_browser.py','--root',str(root),
+             '--cohort',str(Path(sources)/'WILD_SIGNS_COHORT.json'),
+             '--original-cohort',str(Path(original)/'FIRST_LOAD_COHORT.json'),
+             '--output',str(output),'--renderer','software'],
+            {'FIRSTLIGHT_ROOT':str(root),'PYTHONDONTWRITEBYTECODE':'1'})
+
+
+def wild_signs_boundaries_orchestration_spec(root,sources,original,output,**kwargs):
+    command,env=wild_signs_orchestration_spec(root,sources,original,output,**kwargs)
+    command[1]='tools/earth_wild_signs_boundaries_browser.py'
+    return command,env
+
+
 def put(p,value):
     p.parent.mkdir(parents=True,exist_ok=True)
     p.write_text(json.dumps(value)+'\n',encoding='utf8')
@@ -78,7 +94,9 @@ class Fixture:
             folder=self.sources/variant
             old={'syntheticValidatorOnly':variant}
             old_link=put(self.root/'synthetic-historical-inputs'/variant/'OLD_SOURCE.json',old)
-            migrated={**old,'earthHomecoming':copy.deepcopy(fresh)}
+            migrated={**old,'earthHomecoming':copy.deepcopy(fresh),
+                      'earthWildSigns':{'version':1,'accepted':False,'evidence':[],
+                         'observed':False,'resolution':None,'cleared':False,'claimed':False}}
             migrated_link=put(folder/'MIGRATED_INPUT.json',migrated)
             lineage=[];previous=migrated_link
             if variant=='strongest':
@@ -102,7 +120,8 @@ class Fixture:
             jl=put(self.journeys[variant],j)
             origin={'kind':'fixture-origin synthetic validator' if variant=='strongest' else 'continuous synthetic validator','rootReport':origin_report}
             if variant!='strongest':origin.update(original={'report':origin_report,'stages':[old_link],'reports':[]},lineage=[])
-            self.rows.append({'variant':variant,'earthReport':jl,'migration':{'source':old_link,'output':migrated_link},'origin':origin,'prerequisiteLineage':lineage})
+            self.rows.append({'variant':variant,'earthReport':jl,'migration':{'source':old_link,'output':migrated_link,
+                'earthWildSignsMigration':'missing-to-fresh-earth-wild-signs-v1'},'origin':origin,'prerequisiteLineage':lineage})
         self.cohort={'status':'passed','sourceFrozen':True,'variants':3,'results':self.rows,'sourceEpoch':self.epoch,'scope':'Synthetic link/validator fixture only'}
         for key in ('positionEdits','actorPositionEdits','inventoryGrants','healthGrants','manualDamage','plantedDefeats','plantedQuestFacts','forcedModes','forcedCycles'):self.cohort[key]=0
         self.cohort_path=self.sources/'CONNECTED_EARTH_HOMECOMING_REPORT.json';self.refresh()
@@ -220,14 +239,14 @@ class EarthNativeVerifier(unittest.TestCase):
         browser=Path(self.tmp.name)/'main-browser';args=['verify.py','--browser','--output',str(self.f.logs),'--browser-output',str(browser),'--browser-output-mode','supported']
         # os is local to V; pathlib/native retain the actual host. This tests
         # portable POSIX output routing on every platform, without browser work.
-        with patch.object(V,'ROOT',self.f.root),patch.object(V,'os',SimpleNamespace(name='posix',environ=os.environ)),patch.object(V.sys,'argv',args),patch.object(V.shutil,'which',return_value='node'),patch.object(V.subprocess,'check_output',return_value='v24.18.0\n'),patch.object(V.subprocess,'run',side_effect=fake_run),patch.object(V,'prepare_browser_sources',return_value=None),patch.object(V,'consignment_browser_run_spec',side_effect=consignment_orchestration_spec),contextlib.redirect_stdout(io.StringIO()):V.main()
+        with patch.object(V,'ROOT',self.f.root),patch.object(V,'os',SimpleNamespace(name='posix',environ=os.environ)),patch.object(V.sys,'argv',args),patch.object(V.shutil,'which',return_value='node'),patch.object(V.subprocess,'check_output',return_value='v24.18.0\n'),patch.object(V.subprocess,'run',side_effect=fake_run),patch.object(V,'prepare_browser_sources',return_value=None),patch.object(V,'consignment_browser_run_spec',side_effect=consignment_orchestration_spec),patch.object(V,'wild_signs_browser_run_spec',side_effect=wild_signs_orchestration_spec),patch.object(V,'wild_signs_boundaries_browser_run_spec',side_effect=wild_signs_boundaries_orchestration_spec),contextlib.redirect_stdout(io.StringIO()):V.main()
         labels=[command[1] for command,_ in calls if len(command)>1]
         native=[(c,k) for c,k in calls if len(c)>1 and c[1]=='tools/earth_homecoming_browser.py'];self.assertEqual(len(native),1)
         c,k=native[0];self.assertEqual(k['timeout'],1800);self.assertEqual(c[c.index('--cohort-sha')+1],self.f.cohort_sha);self.assertEqual(c[c.index('--output')+1],str(browser/'earth_homecoming_browser'))
         self.assertLess(labels.index('tools/earth_homecoming_journey.cjs'),labels.index('tests/test_earth_homecoming_native.py'));self.assertLess(labels.index('tests/test_earth_homecoming_native.py'),labels.index('tools/earth_homecoming_browser.py'))
         # The new test_earth_consignment_browser.py command is CPU preflight,
         # separate from the exact 45 legacy native suites and road native suite.
-        existing=[(c,k) for c,k in calls if len(c)>1 and c[1].startswith('tests/') and c[1].endswith('_browser.py') and c[1]not in ('tests/earth_road_browser.py','tests/test_earth_consignment_browser.py')]
+        existing=[(c,k) for c,k in calls if len(c)>1 and c[1].startswith('tests/') and c[1].endswith('_browser.py') and c[1]not in ('tests/earth_road_browser.py','tests/test_earth_consignment_browser.py','tests/test_earth_wild_signs_browser.py')]
         self.assertEqual(len(existing),45);self.assertEqual(len({c[1] for c,k in existing}),45)
         roads=[(c,k) for c,k in calls if len(c)>1 and c[1]=='tests/earth_road_browser.py'];self.assertEqual(len(roads),1)
         road,rk=roads[0];self.assertEqual(road[road.index('--output')+1],str(browser/'earth_road_browser'));self.assertEqual(rk['timeout'],600)
@@ -237,7 +256,7 @@ class EarthNativeVerifier(unittest.TestCase):
             self.assertEqual(k['timeout'],expected,suite)
             spec_command,spec_env=V.browser_run_spec(suite,browser,'supported');self.assertEqual(c,spec_command);self.assertTrue(spec_env.items()<=k['env'].items())
         consignment=[(c,k) for c,k in calls if len(c)>1 and c[1]=='tools/earth_consignment_browser.py'];self.assertEqual(len(consignment),1)
-        cc,ck=consignment[0];self.assertEqual(ck['timeout'],3600);self.assertEqual(cc[cc.index('--cohort')+1],str(self.f.logs/'earth-consignment-earned/FIRST_LOAD_COHORT.json'))
+        cc,ck=consignment[0];self.assertEqual(ck['timeout'],7200);self.assertEqual(cc[cc.index('--cohort')+1],str(self.f.logs/'earth-consignment-earned/FIRST_LOAD_COHORT.json'))
         preflight=[(c,k)for c,k in calls if len(c)>1 and c[1]=='tests/test_earth_consignment_browser.py'];self.assertEqual(len(preflight),1)
         pc,pk=preflight[0];self.assertEqual(pc,[sys.executable,'tests/test_earth_consignment_browser.py','-v']);self.assertEqual(pk['timeout'],180)
         self.assertEqual(pk['env']['FIRSTLIGHT_ROOT'],str(self.f.root));self.assertEqual(pk['env']['FIRSTLIGHT_CONSIGNMENT_COHORT'],str(self.f.logs/'earth-consignment-earned/FIRST_LOAD_COHORT.json'))

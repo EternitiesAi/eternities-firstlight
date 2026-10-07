@@ -1,4 +1,4 @@
-/* Proposed optional Earth investigation owner. Definitions/validation only;
+/* Optional Earth investigation owner. Definitions/validation only;
  * no proof, actor, save, reward or movement authority lives in this module. */
 (function(G){'use strict';
 const freeze=o=>{if(o&&typeof o==='object'){Object.values(o).forEach(freeze);Object.freeze(o);}return o;};
@@ -6,13 +6,13 @@ const ID='earth-beast-wrong-name-v1',ROOM='world-earthlands',VERSION=1;
 const KEYS=['version','accepted','evidence','observed','resolution','cleared','claimed'];
 const exact=(o,keys)=>!!o&&typeof o==='object'&&!Array.isArray(o)&&[Object.prototype,null].includes(Object.getPrototypeOf(o))&&Reflect.ownKeys(o).length===keys.length&&keys.every(k=>Object.hasOwn(o,k));
 const point=(id,name,x,z,text)=>({id,name,x,z,y:1.57,medium:'dry',text});
-const giver=point('elderweald-sela','Sela · herbalist',-103,-23,'Learn what the animal does before deciding how to make the path safe.');
+const giver=point('elderweald-sela','Sela · herbalist',-103,-23,'People blame the moss-backed grazer for the gouged roadside timber. Sela asks you to read the marks and watch the animal before the name sticks.');
 const evidence=freeze([
  point('timber-gouge','Gouged roadside timber',-155.5,-66.1,'The abandoned timber has a narrow fresh gouge. Record the cut before naming its maker.'),
  point('feeding-track','Feeding marks',-155.8,-72,'Broad hoof marks and disturbed foliage lie beside the narrow gouge. They need separate explanations.'),
  point('pest-scrape','Burrowing scrape',-154.8,-85.1,'The grazer’s visible feeding action differs from this small fresh scrape. Record the distinction before choosing a response.')
 ]);
-const overlook=freeze(point('grazer-overlook','West-side overlook',-157.5,-78.5,'Watch a complete visible turn, browse and recovery. Approach alone does not record an observation.'));
+const overlook=freeze(point('grazer-overlook','Overlook · face west',-157.5,-78.5,'Face west and watch a complete visible turn, browse and recovery. Approach alone does not record an observation.'));
 const bypass=freeze([{x:-148,z:-64},{x:-155.5,z:-66.1},{x:-155.8,z:-72},{x:-157.5,z:-78.5},{x:-154.8,z:-85.1},{x:-148,z:-86}]);
 const resolutions=freeze([
  {id:'signed-loop',name:'Mark the supported walking loop',text:'Keep the animal’s refuge and mark the supported west-side bypass. This resolves the new pest account without fighting it.'},

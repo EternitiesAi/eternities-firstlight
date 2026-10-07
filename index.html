@@ -4766,7 +4766,7 @@ const required=(d,r)=>isConsignment(d)?(r?.accepted?D.required(r):[]):d.steps.ma
 const api={definitions,definition,fresh,validate,required,stepSite,available,ready,carrying,at,eligible,command};
 G.RealmLocalLife=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
-</script><script>/* Proposed optional Earth investigation owner. Definitions/validation only;
+</script><script>/* Optional Earth investigation owner. Definitions/validation only;
  * no proof, actor, save, reward or movement authority lives in this module. */
 (function(G){'use strict';
 const freeze=o=>{if(o&&typeof o==='object'){Object.values(o).forEach(freeze);Object.freeze(o);}return o;};
@@ -4774,13 +4774,13 @@ const ID='earth-beast-wrong-name-v1',ROOM='world-earthlands',VERSION=1;
 const KEYS=['version','accepted','evidence','observed','resolution','cleared','claimed'];
 const exact=(o,keys)=>!!o&&typeof o==='object'&&!Array.isArray(o)&&[Object.prototype,null].includes(Object.getPrototypeOf(o))&&Reflect.ownKeys(o).length===keys.length&&keys.every(k=>Object.hasOwn(o,k));
 const point=(id,name,x,z,text)=>({id,name,x,z,y:1.57,medium:'dry',text});
-const giver=point('elderweald-sela','Sela · herbalist',-103,-23,'Learn what the animal does before deciding how to make the path safe.');
+const giver=point('elderweald-sela','Sela · herbalist',-103,-23,'People blame the moss-backed grazer for the gouged roadside timber. Sela asks you to read the marks and watch the animal before the name sticks.');
 const evidence=freeze([
  point('timber-gouge','Gouged roadside timber',-155.5,-66.1,'The abandoned timber has a narrow fresh gouge. Record the cut before naming its maker.'),
  point('feeding-track','Feeding marks',-155.8,-72,'Broad hoof marks and disturbed foliage lie beside the narrow gouge. They need separate explanations.'),
  point('pest-scrape','Burrowing scrape',-154.8,-85.1,'The grazer’s visible feeding action differs from this small fresh scrape. Record the distinction before choosing a response.')
 ]);
-const overlook=freeze(point('grazer-overlook','West-side overlook',-157.5,-78.5,'Watch a complete visible turn, browse and recovery. Approach alone does not record an observation.'));
+const overlook=freeze(point('grazer-overlook','Overlook · face west',-157.5,-78.5,'Face west and watch a complete visible turn, browse and recovery. Approach alone does not record an observation.'));
 const bypass=freeze([{x:-148,z:-64},{x:-155.5,z:-66.1},{x:-155.8,z:-72},{x:-157.5,z:-78.5},{x:-154.8,z:-85.1},{x:-148,z:-86}]);
 const resolutions=freeze([
  {id:'signed-loop',name:'Mark the supported walking loop',text:'Keep the animal’s refuge and mark the supported west-side bypass. This resolves the new pest account without fighting it.'},
@@ -13770,18 +13770,18 @@ class WildSignsUI{
   this.syncOwner();const sim=this.sim,r=readRecord(sim),eligible=D.eligible(sim.state),nearSela=at(sim,D.giver),links=preservedLinks(sim);
   if(!r)return'<article class="wild-signs-panel" data-wild-signs-panel><h3>Sela’s field account</h3><p>This account cannot be read from the current save. Existing work remains retained.</p>'+links+'</article>';
   const c=G.RealmEarthConsignmentData?.choice(sim.state.localLife?.records?.[G.RealmEarthConsignmentData.ID]?.choice),observed=r.observed;
-  let html='<article class="wild-signs-panel" data-wild-signs-panel aria-labelledby="wild-signs-title"><header><h3 id="wild-signs-title">'+esc(D.definition.title)+'</h3><p>Sela keeps a field account of the marks beside the repaired road. A scar in timber, broad hoof marks and a fresh burrowing scrape need different explanations.</p></header>'+
+  let html='<article class="wild-signs-panel" data-wild-signs-panel aria-labelledby="wild-signs-title"><header><h3 id="wild-signs-title">'+esc(D.definition.title)+'</h3><p>A roadworker blames the moss-backed grazer for the scar in the roadside timber. Sela is not convinced. Bring her the marks and a witnessed account of the animal before the accusation becomes the village story.</p></header>'+
    '<p class="wild-signs-payment"><strong>Separate payment:</strong> 4 sunmarks and 3 fibre, once from Sela after the chosen response. No acceptance cost, XP or ore. Earlier kits, repairs and payments retain their own accounts.</p>'+
    '<p class="wild-signs-notice" data-wild-signs-notice role="status" aria-live="polite">'+esc(this.notice)+'</p>';
   if(!r.accepted){
-   html+='<section aria-label="Sela’s invitation"><h4>Read before accepting</h4><p>'+esc(eligible?'The supplier-owned load is delivered and explicitly paid. Your installed support remains. Sela asks for an accurate account, not a new cargo allocation.':'First deliver the supplied load and explicitly claim its separate payment from Merren. Sela’s investigation remains optional.')+'</p>'+
+   html+='<section aria-label="Sela’s invitation"><h4>Read before accepting</h4><p>'+esc(eligible?'The supplier-owned load is delivered and explicitly paid. The repaired road remains usable. Sela asks for an accurate account, not a new cargo allocation.':'First deliver the supplied load and explicitly claim its separate payment from Merren. Sela’s investigation remains optional.')+'</p>'+
     '<p>Inspect two different marks, witness the harmless grazer, compare the separate pest scrape and choose a signed walking loop or one new pest encounter. Return to Sela to claim.</p>'+
     '<p class="wild-signs-danger">The new skitter has 72 health and 9 damage, with no kill loot or XP. The signed loop resolves this account without that fight. Independent earlier patrols remain; the northern approach can meet them. The longer southern approach through the return glade remains available.</p>';
    if(eligible&&here(sim))html+=nearSela?button('Accept Sela’s investigation','accept'):button('Walk to Sela','walk',D.giver.id);
    html+='</section>';
   }else{
    html+='<p class="wild-signs-source">'+esc(c?c.branch==='stormfall-recovery'?'Your original stormfall choice and delivered short timber remain recorded.':'Your original managed-coppice choice and delivered fibre remain recorded.':'The earlier supplied load retains its own record.')+'</p>';
-   if(r.claimed)html+='<section class="wild-signs-retained"><h4>Corrected account · paid once</h4><p>'+esc(r.resolution==='signed-loop'?'The supported bypass is recorded. The grazer’s refuge remains, and the separate pest account was resolved without that fight.':'The distinct pest pocket is recorded clear. The grazer remains harmless; that encounter granted no kill loot or XP.')+'</p><p>Sela already paid this separate 4-sunmark and 3-fibre account.</p></section>';
+   if(r.claimed)html+='<section class="wild-signs-retained"><h4>Corrected account · paid once</h4><p>'+esc(r.resolution==='signed-loop'?'The supported bypass is recorded. The grazer’s refuge remains, and the separate pest account was resolved without that fight.':'The distinct pest pocket is recorded clear. The grazer remains harmless; that encounter granted no kill loot or XP.')+'</p><p>“I have changed the road notice,” Sela says. “The grazer feeds here; the burrowing marks belong to something else. Let the next traveller hear the right account.”</p><p>Sela already paid this separate 4-sunmark and 3-fibre account.</p></section>';
    else if(D.ready(r)){
     const max=G.RealmSandbox?.MAX,full=sim.state.adventure.coins+4>9999||!Number.isSafeInteger(max)||sim.state.sandbox.inventory.fiber+3>max;
     html+='<section><h4>Response recorded · payment unclaimed</h4><p>'+esc(outcome(r.resolution)?.name)+'. Return physically to Sela. '+(full?'Make room for all 4 sunmarks and 3 fibre; completed work stays ready.':'Collect the complete payment once, when you choose.')+'</p>'+
@@ -13791,7 +13791,7 @@ class WildSignsUI{
     html+=D.evidence.slice(0,2).every(p=>r.evidence.includes(p.id))?'<details class="wild-signs-evidence"><summary>Read the two recorded marks</summary>'+marks+'</details>':'<section class="wild-signs-evidence"><h4>Your next field marks</h4>'+marks+'</section>';
     if(readyForObservation(r)){
      const v=this.view(),near=at(sim,D.overlook),ready=near&&v?.observationReady===true,canObserve=typeof this.rpg.api.wildSignsObserve==='function';
-     html+='<section class="wild-signs-observation"><h4>Watch before naming the animal</h4><p>From the west-side overlook, look west toward the moss-backed grazer. See it lower its head, browse, recover and resume walking. A clear view matters; approach alone records nothing.</p><p>V swaps third person and diorama. The default diorama direction may hide it behind canopy. Look west deliberately; your camera style stays yours.</p>'+
+     html+='<section class="wild-signs-observation"><h4>Watch before naming the animal</h4><p>From the overlook, face west toward the moss-backed grazer. See it lower its head, browse, recover and resume walking. A clear view matters; approach alone records nothing.</p><p>V swaps third person and diorama. The default diorama direction may hide it behind canopy. Look west deliberately; your camera style stays yours.</p>'+
       (here(sim)?near?button('Look west toward the grazer','look')+button('Resume watching outside this menu','resume')+button('Observe and record this behavior','observe','',!ready||!canObserve):button('Walk to the west-side overlook','walk',D.overlook.id):'')+
       '<p data-wild-signs-readiness>'+esc(ready&&canObserve?'A complete visible browse was witnessed. Opening this menu kept it ready; use Observe to record it.':ready?'Observation recording is unavailable. Your witnessed browse remains ready.':!v?'Observation controls are unavailable. Your saved evidence is retained.':'This menu pauses the world. Close it to watch the complete action; E reopens this account. P controls your own pause.')+'</p></section>';
     }else if(observed){

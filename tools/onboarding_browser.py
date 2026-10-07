@@ -170,7 +170,8 @@ def require_initial_resume(root, before, after):
 
     Protect the entire old journal prefix and every living_signature owner.
     An exact legacy four-job catalogue may gain only the independently declared
-    literal fresh fifth record. Existing fifth-record progress is never reset.
+    literal fresh fifth record. A missing WildSigns owner gains only its
+    independently declared fresh record. Present progress is never reset.
     Only three events reproduced by actual installed Core may be appended.
     The snapshot clock must equal this first event clock: later ticks/events
     are not silently allowed. Stored event clocks are compared exactly.
@@ -199,6 +200,11 @@ def require_initial_resume(root, before, after):
     assert len(predicted['journal']) == len(old) + 3, 'Actual Core produced another event; this narrow resume contract does not cover it.'
     assert all(e['kind'] == 'routine' for e in predicted['journal'][len(old):]), 'Actual Core did not produce only the initial routines.'
     expected = living_signature(before)
+    wild_signs_migration = None
+    if 'earthWildSigns' not in before:
+        expected['earthWildSigns'] = {'version': 1, 'accepted': False, 'evidence': [],
+            'observed': False, 'resolution': None, 'cleared': False, 'claimed': False}
+        wild_signs_migration = 'missing-to-fresh-earth-wild-signs-v1'
     expected['journal'] = predicted['journal']
     expected['nextEvent'] = predicted['nextEvent']
     # Core now conditionally expands this exact legacy catalogue on load. Keep
@@ -222,12 +228,14 @@ def require_initial_resume(root, before, after):
              'oldPrefixLength': len(old), 'events': predicted['journal'][len(old):],
              'nextEventBefore': before['nextEvent'], 'nextEventAfter': predicted['nextEvent'],
              'coreSha256': sha(root / 'src/core.js'), 'additionalFutureEventsAllowed': False,
-             'localLifeCatalogueMigration': catalogue_migration}
+             'localLifeCatalogueMigration': catalogue_migration,
+             'earthWildSignsMigration': wild_signs_migration}
 
 
 # Proposed instrumentation observes actual ticks; it never pauses, steps,
 # moves, edits, saves or replaces a live world. The original resume oracle above
-# this insertion remains byte-for-byte unchanged.
+# this insertion keep the same exact clock/event checks. Optional owner
+# migration is independently literal and disclosed above.
 RESUME_CAPTURE_JS = r"""owner => {
  'use strict';
  if(typeof owner!=='string'||!owner||Object.hasOwn(window,'__onboardingResumeTrace'))throw Error('Resume capture is already owned or has no requested owner.');
@@ -297,7 +305,7 @@ console.log(JSON.stringify({first,final:sim.snapshot(),elapsed:sim.elapsed}));""
 
 
 def require_resume_sequence(root, before, after, capture, owner):
-    """Exact bounded replay after the unchanged first-tick resume oracle.
+    """Exact bounded replay after the strict first-tick resume oracle.
 
     Only existing cameraViews metadata is omitted from full-world comparison.
     Three initial events and the old prefix stay exact; no future event, owner,
@@ -336,7 +344,7 @@ def require_resume_sequence(root, before, after, capture, owner):
     predicted = json.loads(result.stdout)
     assert projection_signature(predicted['first']) == projection_signature(capture['first']), 'First captured world disagrees with actual recorded Core tick.'
     assert projection_signature(predicted['final']) == projection_signature(after), 'Final world disagrees with exact actual Core tick replay.'
-    return {'preserved': True, 'method': 'Unchanged first-tick oracle plus exact read-only installed Core replay of actual captured dt/paused sequence',
+    return {'preserved': True, 'method': 'Strict first-tick oracle plus exact read-only installed Core replay of actual captured dt/paused sequence',
             'initial': initial, 'ticks': len(ticks), 'activeSeconds': active_seconds,
             'coreSha256': sha(resolve_root(root) / 'src/core.js'),
             'additionalFutureEventsAllowed': False, 'clockTolerance': 0,
