@@ -1,0 +1,160 @@
+{
+  "variant": "fresh-blade-detour",
+  "status": "passed",
+  "commands": 6,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedObjectives": 0,
+  "acceleratedTicks": true,
+  "sourceSha256": "a989c1908dd23f9aca7b7441de81a1fbf0702b2d4ddf71e38d2230e04ad520a7",
+  "gathering": {
+    "version": 1,
+    "accepted": true,
+    "prepared": [
+      "cloth",
+      "lantern",
+      "stand"
+    ],
+    "verse": "detour",
+    "shared": true
+  },
+  "weapon": "trail_blade",
+  "xp": 0,
+  "deliveryStillUnpaid": true,
+  "actions": [
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        4,
+        -42.5
+      ]
+    },
+    {
+      "type": "accept",
+      "p": {}
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        -3,
+        -40.5
+      ]
+    },
+    {
+      "type": "prepare",
+      "p": {
+        "id": "cloth"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        -5.8,
+        -35
+      ]
+    },
+    {
+      "type": "prepare",
+      "p": {
+        "id": "lantern"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        4,
+        -42.5
+      ]
+    },
+    {
+      "type": "prepare",
+      "p": {
+        "id": "stand"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        4,
+        -42.5
+      ]
+    },
+    {
+      "type": "verse",
+      "p": {
+        "verse": "detour"
+      }
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        4,
+        -42.5
+      ]
+    },
+    {
+      "type": "share",
+      "p": {}
+    },
+    {
+      "reload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ]
+    },
+    {
+      "walk": [
+        4,
+        -42.5
+      ]
+    }
+  ]
+}

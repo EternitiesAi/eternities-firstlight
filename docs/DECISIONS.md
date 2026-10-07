@@ -1,3 +1,14 @@
+# Fit real geometry through existing ownership, 2026-10-06
+
+Retain original quest/brace IDs, kit and payout. Four equal sectional members join five receivers; angular tolerance and actual far-end gap authorize seating. Branded projections and opaque WeakMap tickets are transient. The app lease survives camera/time saves and revokes at real owner/import/travel/death changes. Validate before mutation and consume only after synchronous durable completion; refusal retains ready work. Old completed/paid support bypasses fitting.
+
+Frame outside unchanged wall clearance; aspect-aware fitting preserves style/FOV and releases on movement. Repair continuous collision and conservative support proofs while preserving authored geometry and strict save validation. Retain failed native/source attempts and honest fixture/caller adaptations. Qualified source99e8 passed the complete 238-command /48-browser gate; later evidence-only heads require byte/hash readback rather than an invented new runtime epoch.
+
+The next practical Earth ET11/ET12 arc has a separate supplied-load owner: route-specific contiguous arrivals, an honest last-checkpoint recovery rule, actual roster obstruction and bounded once-only payment. It cannot borrow old expedition allocation, consume ordinary inventory, mint progress from player-only arrival or infer consent from historic choices. This is the next implementation decision; current staged components are not delivered gameplay.
+
+World 9 / adventure 12 / earthHomecoming 1 and old browser keys remain. Partial fitting is transient; old completed repairs, payments, XP, gear, sockets, explicit choices and both cameras are preserved. No main merge, public deployment, paid providers, billing intervention, personal-save access or unrelated cleanup. Reuse the integrated D checkout and qualification station; retain failures and the blocked standalone deletion. Wider production goal ACTIVE; old heartbeat PAUSED. Two scoped colleagues prepare small next-arc files; that staged work is not integrated gameplay.
+
+---
 # Road connection and next physical fieldcraft, 2026-10-06
 
 Keep Hearthwater and Coastward one voluntary outing across an authored scene

@@ -1,3 +1,16 @@
+# Living Road support qualified and playable, 2026-10-06
+
+At the existing root-channel worksite, inspect sockets, correct yaw/pitch, seat four supplied sections and deliberately fasten through the original saved transaction. Temporary and installed pieces agree. Look frames the receiving face in both cameras while retaining chosen FOV; compact native controls preserve focus. Continuous outdoor obstacle/support checks repair measured motion gaps without relaxing save validation or replacing terrain.
+
+Qualified source `99e8f46a557f51d1ffd41339d25b73d44af9bca9`, stacked on PR50 final `f021adf539488d879b72c3d9e69f1ff10527c0f8`. The reused clean remote checkout, freshly fetched to this exact source, completed the full verifier exit 0 at `2026-10-07T00:45:22.9883043Z`: 238 commands, 124 syntax modules and all 48 browser suites in one invocation. Node 1678 passed / 2 explicit generic-cohort skips (1680 total); Python 262 methods, 256 passed / 6 method skips plus 2 skipped setUpClass records. Mandatory current native/recording preflights separately passed with explicit cohort inputs. Identical HTML: 3088437 bytes / SHA256 `05a30536edb018a5c9559033a530ddf259321f19453060607b6877e260d53bb5`.
+
+[PR51](https://github.com/EternitiesAi/eternities-firstlight/pull/51) is an open stacked draft. [Retained evidence](evidence/living-road-fieldcraft-2026-10-06/README.md) binds actual source, full command logs, native03, hardware video and failed attempts. Native03: 1159/1159 checks, 22 browser restarts, 72 actual pixel/spatial rows, no runtime errors; software WebGL and accelerated simulation. Separate ordinary-RAF RTX recording: 84/84 checks, 17.3943 seconds, 4350951 bytes. Hosted run 37544398116 has 47 failed jobs and zero executed steps, with an account billing-lock annotation. No hosted execution or billing intervention is claimed.
+
+Launch with `PLAY_FIRSTLIGHT_WINDOWS.cmd`, then open `http://127.0.0.1:8780/FIRSTLIGHT_VALLEY.html`. Use an isolated browser profile for developer fixtures; personal saves are outside automated coverage. The first-load delivery is staged only and has not yet passed integrated browser verification.
+
+World 9 / adventure 12 / earthHomecoming 1 and old browser keys remain. Partial fitting is transient; old completed repairs, payments, XP, gear, sockets, explicit choices and both cameras are preserved. No main merge, public deployment, paid providers, billing intervention, personal-save access or unrelated cleanup. Reuse the integrated D checkout and qualification station; retain failures and the blocked standalone deletion. Wider production goal ACTIVE; old heartbeat PAUSED. Two scoped colleagues prepare small next-arc files; that staged work is not integrated gameplay.
+
+---
 # Connected Earth roads qualified, 2026-10-06
 
 Hearthwater's orchard/ridge approach now connects through an explicit nearby

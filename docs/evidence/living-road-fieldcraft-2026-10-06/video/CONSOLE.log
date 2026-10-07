@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "video": {
+    "path": "ACTUAL_FIELDCRAFT.webm",
+    "bytes": 4350951,
+    "sha256": "a941d0a119feba4e608f1a43f3b474b3bf763bf792d6e94f84bcf60716ea9cfb",
+    "audio": false,
+    "surface": "Actual WebGL canvas only; DOM HUD and controls excluded",
+    "requested_capture_fps": 30,
+    "partial": false
+  },
+  "raf_observation": {
+    "scope": "Additional ordinary RAF callback intervals while recording; encoding and automation overhead included, not rendered FPS",
+    "callbacks": 1043,
+    "elapsed_ms": 17394.30000001192,
+    "p50_ms": 16.69999999999709,
+    "p95_ms": 16.70000000001164,
+    "p99_ms": 16.80000000000291,
+    "max_ms": 16.80000000000291,
+    "over50ms": 0
+  },
+  "wall_seconds": 109.40496240003267
+}

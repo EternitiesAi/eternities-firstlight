@@ -1,0 +1,1263 @@
+{
+  "method": "accelerated command-earned journey, not native browser or human pacing",
+  "results": [
+    {
+      "variant": "blade",
+      "method": "command-earned kit and bow; production pathfinding/ticks; explicit one-time survey; memory persistence",
+      "sourceHashes": {
+        "earth-road.js": "7417a1bdc4ab9eea8e2afc4c013a6890507b5670fca97d1f6ebe9f823390a125",
+        "earth.js": "cbd5ee90a4b335c66ba096f439f8f3efe6f6f68cba99086485f34fd81866a166",
+        "world-atlantis-earth.js": "6685a2da156f3b6d394b9dfef611fafb76d277df2d8a1c57e82746d276228665",
+        "core.js": "5b34de7972a28fcbc922f2201a72bec384983e43dcbda9258b0701c907cfb49c",
+        "world-foundations.js": "4173e396c6d002d0ec25a7c549f046e0e77e561c3ef3b0e89400f84cc070d752"
+      },
+      "events": [
+        {
+          "connection": "hearthwater-coastward-v1",
+          "room": "world-earthlands",
+          "home": {
+            "x": 0,
+            "z": 23,
+            "yaw": -0.40489178628509614
+          }
+        },
+        {
+          "connection": "hearthwater-coastward-v1",
+          "room": "earth-hearthwater-approach",
+          "home": {
+            "x": 0,
+            "z": 23,
+            "yaw": -0.40489178628509614
+          }
+        }
+      ],
+      "checkpoints": [
+        {
+          "name": "HEARTHWATER_GATE",
+          "room": "earth-hearthwater-approach",
+          "home": {
+            "x": 0,
+            "z": 23,
+            "yaw": -0.40489178628509614
+          },
+          "xp": 0,
+          "claims": 0
+        },
+        {
+          "name": "COASTWARD_ARRIVAL",
+          "room": "world-earthlands",
+          "home": {
+            "x": 0,
+            "z": 23,
+            "yaw": -0.40489178628509614
+          },
+          "xp": 0,
+          "claims": 0
+        },
+        {
+          "name": "COMPLETED_UNPAID",
+          "room": "world-earthlands",
+          "home": {
+            "x": 0,
+            "z": 23,
+            "yaw": -0.40489178628509614
+          },
+          "xp": 0,
+          "claims": 0
+        },
+        {
+          "name": "PAID_ONCE",
+          "room": "world-earthlands",
+          "home": {
+            "x": 0,
+            "z": 23,
+            "yaw": -0.40489178628509614
+          },
+          "xp": 28,
+          "claims": 1
+        },
+        {
+          "name": "HEARTHWATER_RETURN",
+          "room": "earth-hearthwater-approach",
+          "home": {
+            "x": 0,
+            "z": 23,
+            "yaw": -0.40489178628509614
+          },
+          "xp": 28,
+          "claims": 1
+        },
+        {
+          "name": "FINAL_WORLD",
+          "room": "valley",
+          "home": null,
+          "xp": 28,
+          "claims": 1
+        }
+      ],
+      "routes": [
+        {
+          "room": "valley",
+          "start": {
+            "x": 2.5,
+            "z": 6,
+            "yaw": 0
+          },
+          "x": 11,
+          "z": 9,
+          "frames": 58
+        },
+        {
+          "room": "valley",
+          "start": {
+            "x": 11,
+            "z": 9,
+            "yaw": 1.385448376799188
+          },
+          "x": 18,
+          "z": 6,
+          "frames": 51
+        },
+        {
+          "room": "valley",
+          "start": {
+            "x": 18,
+            "z": 6,
+            "yaw": 2.2455372690188193
+          },
+          "x": 0,
+          "z": 23,
+          "frames": 157
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 0,
+          "z": 10,
+          "frames": 88
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 14,
+          "z": -12,
+          "frames": 163
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 12,
+          "z": -26,
+          "frames": 91
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 0,
+          "z": -35,
+          "frames": 94
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 7,
+          "z": -38,
+          "frames": 48
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 12,
+          "z": -42,
+          "frames": 41
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 18.3,
+          "z": -42,
+          "frames": 40
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 8,
+            "z": 106,
+            "yaw": 3.141592653589793
+          },
+          "x": 0,
+          "z": 104,
+          "frames": 52
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 0,
+            "z": 104,
+            "yaw": -1.8157749899218019
+          },
+          "x": 0,
+          "z": 92,
+          "frames": 75
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 0,
+            "z": 92.00000000000026,
+            "yaw": 3.141592653589793
+          },
+          "x": 0,
+          "z": 16,
+          "frames": 475
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 0,
+            "z": 16.00000000000152,
+            "yaw": 3.141592653589793
+          },
+          "x": 14,
+          "z": 15,
+          "frames": 88
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 14,
+            "z": 15,
+            "yaw": 1.6421037915802856
+          },
+          "x": 14,
+          "z": -34,
+          "frames": 307
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 14,
+            "z": -34,
+            "yaw": 3.141592653589793
+          },
+          "x": 4,
+          "z": -41,
+          "frames": 77
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 4,
+            "z": -41,
+            "yaw": -2.181522291184063
+          },
+          "x": 4,
+          "z": -67,
+          "frames": 163
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 4,
+            "z": -67,
+            "yaw": 3.141592653589793
+          },
+          "x": -6,
+          "z": -68,
+          "frames": 63
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": -6,
+            "z": -68,
+            "yaw": -1.6704649792860655
+          },
+          "x": -15,
+          "z": -46,
+          "frames": 151
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": -15,
+            "z": -46,
+            "yaw": -0.5307734972029365
+          },
+          "x": 13,
+          "z": -54,
+          "frames": 182
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 12.999577355300685,
+            "z": -53.99987924437163,
+            "yaw": 1.8490959858000293
+          },
+          "x": 8,
+          "z": -69,
+          "frames": 99
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 8,
+            "z": -69,
+            "yaw": -2.8198698730211955
+          },
+          "x": -6,
+          "z": -68,
+          "frames": 88
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": -6,
+            "z": -68,
+            "yaw": -1.499488862009689
+          },
+          "x": 4,
+          "z": -67,
+          "frames": 63
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 4,
+            "z": -67,
+            "yaw": 1.4711276743037245
+          },
+          "x": 4,
+          "z": -41,
+          "frames": 163
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 4,
+            "z": -41,
+            "yaw": 0
+          },
+          "x": 14,
+          "z": -34,
+          "frames": 77
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 14,
+            "z": -34,
+            "yaw": 0.9600703624056536
+          },
+          "x": 14,
+          "z": 15,
+          "frames": 307
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 14,
+            "z": 15,
+            "yaw": 0
+          },
+          "x": 0,
+          "z": 16,
+          "frames": 88
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 0,
+            "z": 16,
+            "yaw": -1.4994888620096185
+          },
+          "x": 0,
+          "z": 92,
+          "frames": 475
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 0,
+            "z": 91.99999999999874,
+            "yaw": 0
+          },
+          "x": 0,
+          "z": 104,
+          "frames": 75
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 0,
+            "z": 103.99999999999848,
+            "yaw": 0
+          },
+          "x": 8,
+          "z": 106,
+          "frames": 52
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 12,
+          "z": -42,
+          "frames": 40
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 7,
+          "z": -38,
+          "frames": 41
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 0,
+          "z": -35,
+          "frames": 48
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": -10,
+          "z": -30,
+          "frames": 70
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": -12,
+          "z": -23,
+          "frames": 107
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": -14,
+          "z": -12,
+          "frames": 70
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": -8,
+          "z": 3,
+          "frames": 114
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 0,
+          "z": 10,
+          "frames": 67
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 0,
+          "z": 24,
+          "frames": 88
+        }
+      ],
+      "adventureEvents": [
+        {
+          "owner": "adventure",
+          "id": "earned-north-1-0-1",
+          "type": "start",
+          "payload": {},
+          "result": {
+            "ok": true,
+            "text": "Expedition ready · Blade, lantern, tonics and a trail salve."
+          }
+        }
+      ],
+      "home": {
+        "x": 0,
+        "z": 23,
+        "yaw": -0.40489178628509614
+      },
+      "finalWeapon": "trail_blade",
+      "completed": true
+    },
+    {
+      "variant": "bow",
+      "method": "command-earned kit and bow; production pathfinding/ticks; explicit one-time survey; memory persistence",
+      "sourceHashes": {
+        "earth-road.js": "7417a1bdc4ab9eea8e2afc4c013a6890507b5670fca97d1f6ebe9f823390a125",
+        "earth.js": "cbd5ee90a4b335c66ba096f439f8f3efe6f6f68cba99086485f34fd81866a166",
+        "world-atlantis-earth.js": "6685a2da156f3b6d394b9dfef611fafb76d277df2d8a1c57e82746d276228665",
+        "core.js": "5b34de7972a28fcbc922f2201a72bec384983e43dcbda9258b0701c907cfb49c",
+        "world-foundations.js": "4173e396c6d002d0ec25a7c549f046e0e77e561c3ef3b0e89400f84cc070d752"
+      },
+      "events": [
+        {
+          "connection": "hearthwater-coastward-v1",
+          "room": "world-earthlands",
+          "home": {
+            "x": 0,
+            "z": 23,
+            "yaw": -0.40489178628509614
+          }
+        },
+        {
+          "connection": "hearthwater-coastward-v1",
+          "room": "earth-hearthwater-approach",
+          "home": {
+            "x": 0,
+            "z": 23,
+            "yaw": -0.40489178628509614
+          }
+        }
+      ],
+      "checkpoints": [
+        {
+          "name": "HEARTHWATER_GATE",
+          "room": "earth-hearthwater-approach",
+          "home": {
+            "x": 0,
+            "z": 23,
+            "yaw": -0.40489178628509614
+          },
+          "xp": 0,
+          "claims": 0
+        },
+        {
+          "name": "COASTWARD_ARRIVAL",
+          "room": "world-earthlands",
+          "home": {
+            "x": 0,
+            "z": 23,
+            "yaw": -0.40489178628509614
+          },
+          "xp": 0,
+          "claims": 0
+        },
+        {
+          "name": "COMPLETED_UNPAID",
+          "room": "world-earthlands",
+          "home": {
+            "x": 0,
+            "z": 23,
+            "yaw": -0.40489178628509614
+          },
+          "xp": 0,
+          "claims": 0
+        },
+        {
+          "name": "PAID_ONCE",
+          "room": "world-earthlands",
+          "home": {
+            "x": 0,
+            "z": 23,
+            "yaw": -0.40489178628509614
+          },
+          "xp": 28,
+          "claims": 1
+        },
+        {
+          "name": "HEARTHWATER_RETURN",
+          "room": "earth-hearthwater-approach",
+          "home": {
+            "x": 0,
+            "z": 23,
+            "yaw": -0.40489178628509614
+          },
+          "xp": 28,
+          "claims": 1
+        },
+        {
+          "name": "FINAL_WORLD",
+          "room": "valley",
+          "home": null,
+          "xp": 28,
+          "claims": 1
+        }
+      ],
+      "routes": [
+        {
+          "room": "valley",
+          "start": {
+            "x": 2.5,
+            "z": 6,
+            "yaw": 0
+          },
+          "x": 11,
+          "z": 9,
+          "frames": 58
+        },
+        {
+          "room": "valley",
+          "start": {
+            "x": 11,
+            "z": 9,
+            "yaw": 1.385448376799188
+          },
+          "x": -7.9,
+          "z": -13,
+          "frames": 193
+        },
+        {
+          "room": "valley",
+          "start": {
+            "x": -7.9,
+            "z": -13,
+            "yaw": -2.300351987712167
+          },
+          "x": -13.9,
+          "z": -11,
+          "frames": 40
+        },
+        {
+          "room": "valley",
+          "start": {
+            "x": -13.9,
+            "z": -11,
+            "yaw": -1.2490457723982544
+          },
+          "x": 5.1,
+          "z": 10,
+          "frames": 193
+        },
+        {
+          "room": "valley",
+          "start": {
+            "x": 5.1,
+            "z": 10,
+            "yaw": 0.7112486437388242
+          },
+          "x": -4.9,
+          "z": -10,
+          "frames": 146
+        },
+        {
+          "room": "valley",
+          "start": {
+            "x": -4.9,
+            "z": -10,
+            "yaw": -3.0564332609700817
+          },
+          "x": 5.1,
+          "z": 13,
+          "frames": 162
+        },
+        {
+          "room": "valley",
+          "start": {
+            "x": 5.1,
+            "z": 13,
+            "yaw": 0.5897756513349778
+          },
+          "x": -2.9,
+          "z": 10,
+          "frames": 54
+        },
+        {
+          "room": "valley",
+          "start": {
+            "x": -2.9,
+            "z": 10,
+            "yaw": -1.9295669970654616
+          },
+          "x": 11,
+          "z": 9,
+          "frames": 88
+        },
+        {
+          "room": "range",
+          "start": {
+            "x": 0,
+            "z": 9,
+            "yaw": 3.141592653589793
+          },
+          "x": 0,
+          "z": -3,
+          "frames": 75
+        },
+        {
+          "room": "range",
+          "start": {
+            "x": 0,
+            "z": -3,
+            "yaw": 1.8586587321137154
+          },
+          "x": 0,
+          "z": 9,
+          "frames": 75
+        },
+        {
+          "room": "valley",
+          "start": {
+            "x": 11,
+            "z": 9,
+            "yaw": 1.642615038979402
+          },
+          "x": 18,
+          "z": 6,
+          "frames": 51
+        },
+        {
+          "room": "valley",
+          "start": {
+            "x": 18,
+            "z": 6,
+            "yaw": 2.2455372690188193
+          },
+          "x": 0,
+          "z": 23,
+          "frames": 157
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 0,
+          "z": 10,
+          "frames": 88
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 14,
+          "z": -12,
+          "frames": 163
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 12,
+          "z": -26,
+          "frames": 91
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 0,
+          "z": -35,
+          "frames": 94
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 7,
+          "z": -38,
+          "frames": 48
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 12,
+          "z": -42,
+          "frames": 41
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 18.3,
+          "z": -42,
+          "frames": 40
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 8,
+            "z": 106,
+            "yaw": 3.141592653589793
+          },
+          "x": 0,
+          "z": 104,
+          "frames": 52
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 0,
+            "z": 104,
+            "yaw": -1.8157749899218019
+          },
+          "x": 0,
+          "z": 92,
+          "frames": 75
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 0,
+            "z": 92.00000000000026,
+            "yaw": 3.141592653589793
+          },
+          "x": 0,
+          "z": 16,
+          "frames": 475
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 0,
+            "z": 16.00000000000152,
+            "yaw": 3.141592653589793
+          },
+          "x": 14,
+          "z": 15,
+          "frames": 88
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 14,
+            "z": 15,
+            "yaw": 1.6421037915802856
+          },
+          "x": 14,
+          "z": -34,
+          "frames": 307
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 14,
+            "z": -34,
+            "yaw": 3.141592653589793
+          },
+          "x": 4,
+          "z": -41,
+          "frames": 77
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 4,
+            "z": -41,
+            "yaw": -2.181522291184063
+          },
+          "x": 4,
+          "z": -67,
+          "frames": 163
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 4,
+            "z": -67,
+            "yaw": 3.141592653589793
+          },
+          "x": -6,
+          "z": -68,
+          "frames": 63
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": -6,
+            "z": -68,
+            "yaw": -1.6704649792860655
+          },
+          "x": -15,
+          "z": -46,
+          "frames": 151
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": -15,
+            "z": -46,
+            "yaw": -0.5307734972029365
+          },
+          "x": 13,
+          "z": -54,
+          "frames": 182
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 12.999577355300685,
+            "z": -53.99987924437163,
+            "yaw": 1.8490959858000293
+          },
+          "x": 8,
+          "z": -69,
+          "frames": 99
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 8,
+            "z": -69,
+            "yaw": -2.8198698730211955
+          },
+          "x": -6,
+          "z": -68,
+          "frames": 88
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": -6,
+            "z": -68,
+            "yaw": -1.499488862009689
+          },
+          "x": 4,
+          "z": -67,
+          "frames": 63
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 4,
+            "z": -67,
+            "yaw": 1.4711276743037245
+          },
+          "x": 4,
+          "z": -41,
+          "frames": 163
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 4,
+            "z": -41,
+            "yaw": 0
+          },
+          "x": 14,
+          "z": -34,
+          "frames": 77
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 14,
+            "z": -34,
+            "yaw": 0.9600703624056536
+          },
+          "x": 14,
+          "z": 15,
+          "frames": 307
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 14,
+            "z": 15,
+            "yaw": 0
+          },
+          "x": 0,
+          "z": 16,
+          "frames": 88
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 0,
+            "z": 16,
+            "yaw": -1.4994888620096185
+          },
+          "x": 0,
+          "z": 92,
+          "frames": 475
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 0,
+            "z": 91.99999999999874,
+            "yaw": 0
+          },
+          "x": 0,
+          "z": 104,
+          "frames": 75
+        },
+        {
+          "room": "world-earthlands",
+          "start": {
+            "x": 0,
+            "z": 103.99999999999848,
+            "yaw": 0
+          },
+          "x": 8,
+          "z": 106,
+          "frames": 52
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 12,
+          "z": -42,
+          "frames": 40
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 7,
+          "z": -38,
+          "frames": 41
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 0,
+          "z": -35,
+          "frames": 48
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": -10,
+          "z": -30,
+          "frames": 70
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": -12,
+          "z": -23,
+          "frames": 107
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": -14,
+          "z": -12,
+          "frames": 70
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": -8,
+          "z": 3,
+          "frames": 114
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 0,
+          "z": 10,
+          "frames": 67
+        },
+        {
+          "room": "earth-hearthwater-approach",
+          "x": 0,
+          "z": 24,
+          "frames": 88
+        }
+      ],
+      "adventureEvents": [
+        {
+          "owner": "adventure",
+          "id": "earned-north-2-0-1",
+          "type": "start",
+          "payload": {},
+          "result": {
+            "ok": true,
+            "text": "Expedition ready · Blade, lantern, tonics and a trail salve."
+          }
+        },
+        {
+          "owner": "sandbox",
+          "type": "gather",
+          "node": "timber-1"
+        },
+        {
+          "owner": "sandbox",
+          "type": "gather",
+          "node": "timber-1"
+        },
+        {
+          "owner": "sandbox",
+          "type": "gather",
+          "node": "timber-1"
+        },
+        {
+          "owner": "sandbox",
+          "type": "gather",
+          "node": "timber-1"
+        },
+        {
+          "owner": "sandbox",
+          "type": "gather",
+          "node": "timber-2"
+        },
+        {
+          "owner": "sandbox",
+          "type": "gather",
+          "node": "timber-2"
+        },
+        {
+          "owner": "sandbox",
+          "type": "gather",
+          "node": "timber-2"
+        },
+        {
+          "owner": "sandbox",
+          "type": "gather",
+          "node": "timber-2"
+        },
+        {
+          "owner": "sandbox",
+          "type": "gather",
+          "node": "fibre-1"
+        },
+        {
+          "owner": "sandbox",
+          "type": "gather",
+          "node": "fibre-2"
+        },
+        {
+          "owner": "sandbox",
+          "type": "gather",
+          "node": "stone-1"
+        },
+        {
+          "owner": "sandbox",
+          "type": "gather",
+          "node": "stone-1"
+        },
+        {
+          "owner": "sandbox",
+          "type": "gather",
+          "node": "stone-1"
+        },
+        {
+          "owner": "sandbox",
+          "type": "gather",
+          "node": "stone-1"
+        },
+        {
+          "owner": "sandbox",
+          "type": "gather",
+          "node": "stone-2"
+        },
+        {
+          "owner": "sandbox",
+          "type": "gather",
+          "node": "stone-2"
+        },
+        {
+          "owner": "sandbox",
+          "type": "gather",
+          "node": "stone-2"
+        },
+        {
+          "owner": "sandbox",
+          "type": "gather",
+          "node": "stone-2"
+        },
+        {
+          "owner": "adventure",
+          "id": "earned-north-2-0-2",
+          "type": "arsenal-craft",
+          "payload": {
+            "id": "trail_bow"
+          },
+          "result": {
+            "ok": true,
+            "text": "Ashwood trail bow made."
+          }
+        },
+        {
+          "owner": "adventure",
+          "id": "earned-north-2-0-3",
+          "type": "equip",
+          "payload": {
+            "id": "trail_bow"
+          },
+          "result": {
+            "ok": true,
+            "text": "Ashwood trail bow equipped."
+          }
+        },
+        {
+          "owner": "adventure",
+          "id": "earned-north-2-0-4",
+          "type": "range-enter",
+          "payload": {},
+          "result": {
+            "ok": true,
+            "text": "The archery court · Practice without risk. Craft a bow at Oren’s bench."
+          }
+        },
+        {
+          "owner": "adventure",
+          "id": "earned-north-2-0-5",
+          "type": "range-start",
+          "payload": {},
+          "result": {
+            "ok": true,
+            "text": "Hit each of three targets twice in 30 seconds."
+          }
+        },
+        {
+          "owner": "adventure",
+          "id": "earned-north-2-0-6",
+          "type": "attack",
+          "payload": {
+            "target": "range-west"
+          },
+          "result": {
+            "ok": true,
+            "text": "Arrow released"
+          }
+        },
+        {
+          "owner": "adventure",
+          "id": "earned-north-2-0-7",
+          "type": "attack",
+          "payload": {
+            "target": "range-west"
+          },
+          "result": {
+            "ok": true,
+            "text": "Arrow released"
+          }
+        },
+        {
+          "owner": "adventure",
+          "id": "earned-north-2-0-8",
+          "type": "attack",
+          "payload": {
+            "target": "range-mid"
+          },
+          "result": {
+            "ok": true,
+            "text": "Arrow released"
+          }
+        },
+        {
+          "owner": "adventure",
+          "id": "earned-north-2-0-9",
+          "type": "attack",
+          "payload": {
+            "target": "range-mid"
+          },
+          "result": {
+            "ok": true,
+            "text": "Arrow released"
+          }
+        },
+        {
+          "owner": "adventure",
+          "id": "earned-north-2-0-10",
+          "type": "attack",
+          "payload": {
+            "target": "range-east"
+          },
+          "result": {
+            "ok": true,
+            "text": "Arrow released"
+          }
+        },
+        {
+          "owner": "adventure",
+          "id": "earned-north-2-0-11",
+          "type": "attack",
+          "payload": {
+            "target": "range-east"
+          },
+          "result": {
+            "ok": true,
+            "text": "Arrow released"
+          }
+        },
+        {
+          "owner": "adventure",
+          "id": "earned-north-2-0-12",
+          "type": "range-leave",
+          "payload": {},
+          "result": {
+            "ok": true,
+            "text": "Back at Oren’s workshop."
+          }
+        },
+        {
+          "owner": "adventure",
+          "id": "earned-north-2-0-13",
+          "type": "socket",
+          "payload": {
+            "weapon": "trail_bow",
+            "gem": "amber"
+          },
+          "result": {
+            "ok": true,
+            "text": "Wildwood amber fitted. Previous gem returned intact."
+          }
+        }
+      ],
+      "home": {
+        "x": 0,
+        "z": 23,
+        "yaw": -0.40489178628509614
+      },
+      "finalWeapon": "trail_bow",
+      "completed": true
+    }
+  ]
+}

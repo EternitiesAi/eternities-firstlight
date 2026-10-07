@@ -1,0 +1,33 @@
+{
+  "sourceHead": "99e8f46a557f51d1ffd41339d25b73d44af9bca9",
+  "originalReportedHead": "f021adf539488d879b72c3d9e69f1ff10527c0f8",
+  "htmlSha256": "05a30536edb018a5c9559033a530ddf259321f19453060607b6877e260d53bb5",
+  "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 (0x00002216) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "browserVersion": "143.0.7499.4",
+  "viewport": {
+    "width": 1440,
+    "height": 960
+  },
+  "movie": {
+    "path": "ACTUAL_FIELDCRAFT.webm",
+    "bytes": 4350951,
+    "sha256": "a941d0a119feba4e608f1a43f3b474b3bf763bf792d6e94f84bcf60716ea9cfb",
+    "audio": false,
+    "surface": "Actual WebGL canvas only; DOM HUD and controls excluded",
+    "requested_capture_fps": 30,
+    "partial": false
+  },
+  "recorderWallSeconds": 17.39430000001192,
+  "rafObservation": {
+    "scope": "Additional ordinary RAF callback intervals while recording; encoding and automation overhead included, not rendered FPS",
+    "callbacks": 1043,
+    "elapsed_ms": 17394.30000001192,
+    "p50_ms": 16.69999999999709,
+    "p95_ms": 16.70000000001164,
+    "p99_ms": 16.80000000000291,
+    "max_ms": 16.80000000000291,
+    "over50ms": 0
+  },
+  "method": "Bounded actual fieldcraft movie from a labelled command-earned root-clear save.\n\nNative character import, travel, work controls and ordinary RAF only. Recording\nstarts at the worksite, uses the actual WebGL canvas, and lasts at most90 seconds.\nThe silent canvas movie excludes DOM controls/HUD; separate screenshots preserve\nthose. This is an automated known solution, not human pacing or FPS certification.\nFailure evidence and isolated profiles remain in the fresh D-drive output.\n",
+  "limits": "Silent WebGL canvas excludes DOM HUD. Native setup and automated known solution; no human pacing, sustained/display FPS or device certification. Requested capture30 and decode nominal60 are not measured gameplay FPS."
+}

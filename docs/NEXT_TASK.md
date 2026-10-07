@@ -1,3 +1,14 @@
+# Carry the first load through, 2026-10-06
+
+PR51's exact-source full gate is closed. Finish its final evidence push/readback, then branch `gameplay/first-load-through-20261006` from the final evidence head in the reused integrated checkout. Keep the review explicitly stacked; no main merge or deployment.
+
+Implement the provisionally named first supplied carrier journey from Elderweald return glade to Coastward's existing settlement. Two real supported routes share the same receiver. A small fifth localLife1 record owns contiguous arrivals and one separate 4-coin/2-timber/2-fibre payment, with no XP. Original paid expedition and bridge histories remain unchanged. Record the source ownership, IDs, migration and route proposal before integration. New motion, wait/continue, current hostile checks, paused reading, checkpoint recovery, retained visible stock, both-camera UI and atomic retry/claim must pass through actual callers.
+
+Small colleague and parent data/rules/motion/art/UI files and CPU tests are staged under D:/07-GAMES/Firstlight/staging/first-load-through-20261006. Port the actual LocalLife owner narrowly rather than installing a prototype overlay. Preserve all four older commission checks. Native normal-RAF cases, fresh command-earned prerequisites, full verifier, fresh remote readback and short actual footage remain required. No cross-scene convoy, class/economy expansion, fake online actors or silently manufactured old consent.
+
+World 9 / adventure 12 / earthHomecoming 1 and old browser keys remain. Partial fitting is transient; old completed repairs, payments, XP, gear, sockets, explicit choices and both cameras are preserved. No main merge, public deployment, paid providers, billing intervention, personal-save access or unrelated cleanup. Reuse the integrated D checkout and qualification station; retain failures and the blocked standalone deletion. Wider production goal ACTIVE; old heartbeat PAUSED. Two scoped colleagues prepare small next-arc files; that staged work is not integrated gameplay.
+
+---
 # Production next: physically fit the Living Road, 2026-10-06
 
 Connected-road PR50 has exact-source complete qualification; retain its evidence

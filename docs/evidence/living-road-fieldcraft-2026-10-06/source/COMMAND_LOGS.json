@@ -1,0 +1,1349 @@
+{
+  "passedCommands": [
+    "build",
+    "syntax-adventure-art",
+    "syntax-adventure-ui",
+    "syntax-adventure",
+    "syntax-app",
+    "syntax-arsenal-art",
+    "syntax-arsenal-ui",
+    "syntax-arsenal",
+    "syntax-atlantis-campaign-art",
+    "syntax-atlantis-campaign-data",
+    "syntax-atlantis-campaign-ui",
+    "syntax-atlantis-campaign",
+    "syntax-beacon-art",
+    "syntax-beacon",
+    "syntax-bridge-art",
+    "syntax-bridge-community-art",
+    "syntax-bridge-community-ui",
+    "syntax-bridge-community",
+    "syntax-bridge-moment-view",
+    "syntax-characters-ui",
+    "syntax-characters",
+    "syntax-classes-ui",
+    "syntax-classes",
+    "syntax-coastward-settlement-art",
+    "syntax-coastward-woodland-art",
+    "syntax-combat-view",
+    "syntax-combat",
+    "syntax-companion-art",
+    "syntax-core",
+    "syntax-cosmos-art",
+    "syntax-cosmos-campaign-art",
+    "syntax-cosmos-campaign-data",
+    "syntax-cosmos-campaign-ui",
+    "syntax-cosmos-campaign",
+    "syntax-cosmos-ui",
+    "syntax-cosmos",
+    "syntax-creative",
+    "syntax-crossing-art",
+    "syntax-crossing-ui",
+    "syntax-crossing",
+    "syntax-drover-art",
+    "syntax-earth-art",
+    "syntax-earth-expedition-art",
+    "syntax-earth-expedition-beast-art",
+    "syntax-earth-expedition-dialogue",
+    "syntax-earth-expedition-ui",
+    "syntax-earth-expedition",
+    "syntax-earth-fieldcraft-art",
+    "syntax-earth-fieldcraft-ui",
+    "syntax-earth-fieldcraft",
+    "syntax-earth-homecoming-art",
+    "syntax-earth-homecoming-data",
+    "syntax-earth-homecoming-ui",
+    "syntax-earth-homecoming",
+    "syntax-earth-notes-art",
+    "syntax-earth-notes-ui",
+    "syntax-earth-notes",
+    "syntax-earth-road-art",
+    "syntax-earth-road-ui",
+    "syntax-earth-road",
+    "syntax-earth-shoulder-art",
+    "syntax-earth-story-ui",
+    "syntax-earth-story",
+    "syntax-earth-ui",
+    "syntax-earth",
+    "syntax-elderweald-trail-art",
+    "syntax-elderweald-world",
+    "syntax-engine",
+    "syntax-experience",
+    "syntax-gathering-adapter",
+    "syntax-gathering-art",
+    "syntax-gathering-music",
+    "syntax-gathering-ui",
+    "syntax-gathering",
+    "syntax-heaven-campaign-art",
+    "syntax-heaven-campaign-data",
+    "syntax-heaven-campaign-ui",
+    "syntax-heaven-campaign",
+    "syntax-hell-campaign-art",
+    "syntax-hell-campaign-data",
+    "syntax-hell-campaign-ui",
+    "syntax-hell-campaign",
+    "syntax-home-history-art",
+    "syntax-home-history-ui",
+    "syntax-home-history",
+    "syntax-local-life-art",
+    "syntax-local-life-ui",
+    "syntax-local-life",
+    "syntax-mill-gate-art",
+    "syntax-millwright-art",
+    "syntax-pursuit-ui",
+    "syntax-pursuit",
+    "syntax-quarry-art",
+    "syntax-realm-art-data",
+    "syntax-realm-atlas-ui",
+    "syntax-realm-craft",
+    "syntax-realm-givers-art",
+    "syntax-realm-trails-art",
+    "syntax-realm-trails-cosmos",
+    "syntax-realm-trails-north",
+    "syntax-realm-trails-south",
+    "syntax-realm-trails-ui",
+    "syntax-realm-trails",
+    "syntax-road-art",
+    "syntax-road",
+    "syntax-rpg-ui",
+    "syntax-sandbox-art",
+    "syntax-sandbox-ui",
+    "syntax-sandbox",
+    "syntax-skitter-art",
+    "syntax-soundscape",
+    "syntax-starter-art",
+    "syntax-starter-ui",
+    "syntax-starter",
+    "syntax-surface-assets",
+    "syntax-traveler-art",
+    "syntax-traveler-equipment-art",
+    "syntax-workshop-transactions",
+    "syntax-world-atlantis-earth",
+    "syntax-world-foundations-art",
+    "syntax-world-foundations-ui",
+    "syntax-world-foundations",
+    "syntax-world-ground-coalescing",
+    "syntax-world-heaven-hell",
+    "syntax-world",
+    "rules",
+    "python",
+    "crossing-blade",
+    "crossing-bow",
+    "starter-blade",
+    "starter-bow",
+    "starter-veteran",
+    "pursuit-blade",
+    "pursuit-bow",
+    "pursuit-veteran",
+    "characters-journey",
+    "classes-journey",
+    "cosmos-journey",
+    "earth-journey",
+    "earth-road-journey",
+    "earth-outing-blade",
+    "earth-outing-bow",
+    "earth-outing-veteran",
+    "earth-story-blade",
+    "earth-story-bow",
+    "earth-story-veteran",
+    "earth-notes-blade",
+    "earth-notes-bow",
+    "earth-notes-veteran",
+    "gathering-blade",
+    "gathering-bow",
+    "gathering-veteran",
+    "world-foundations-blade",
+    "world-foundations-bow",
+    "world-foundations-veteran",
+    "realm-trails-blade",
+    "realm-trails-bow",
+    "realm-trails-south-blade",
+    "realm-trails-south-bow",
+    "realm-comparator-blade",
+    "realm-comparator-bow",
+    "realm-comparator-veteran",
+    "earth-expedition-blade",
+    "earth-expedition-bow",
+    "earth-expedition-veteran",
+    "local-life-blade",
+    "local-life-bow",
+    "local-life-veteran",
+    "home-history-blade",
+    "home-history-bow",
+    "home-history-veteran",
+    "bridge-community-blade",
+    "bridge-community-bow",
+    "bridge-community-veteran",
+    "hell-campaign-blade",
+    "hell-campaign-bow",
+    "hell-campaign-veteran",
+    "heaven-campaign-blade",
+    "heaven-campaign-bow",
+    "heaven-campaign-veteran",
+    "atlantis-campaign-blade",
+    "atlantis-campaign-bow",
+    "atlantis-campaign-veteran",
+    "cosmos-campaign-blade",
+    "cosmos-campaign-bow",
+    "cosmos-campaign-veteran",
+    "earth-homecoming-earned",
+    "earth-homecoming-native-preflight",
+    "earth-recording-controller-preflight",
+    "whole-draft-earned"
+  ],
+  "commandCount": 190,
+  "logs": [
+    {
+      "command": "build",
+      "bytes": 91,
+      "sha256": "d584dfa1038750a2e998a99f303cbeaa0349749e8d51b4b3c5ec1f695345bebf",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "syntax-adventure-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-adventure-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-adventure",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-app",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-arsenal-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-arsenal-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-arsenal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-atlantis-campaign-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-atlantis-campaign-data",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-atlantis-campaign-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-atlantis-campaign",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-beacon-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-beacon",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-bridge-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-bridge-community-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-bridge-community-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-bridge-community",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-bridge-moment-view",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-characters-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-characters",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-classes-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-classes",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-coastward-settlement-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-coastward-woodland-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-combat-view",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-combat",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-companion-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-core",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-cosmos-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-cosmos-campaign-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-cosmos-campaign-data",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-cosmos-campaign-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-cosmos-campaign",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-cosmos-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-cosmos",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-creative",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-crossing-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-crossing-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-crossing",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-drover-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-expedition-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-expedition-beast-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-expedition-dialogue",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-expedition-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-expedition",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-fieldcraft-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-fieldcraft-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-fieldcraft",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-homecoming-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-homecoming-data",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-homecoming-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-homecoming",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-notes-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-notes-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-notes",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-road-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-road-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-road",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-shoulder-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-story-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-story",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-earth",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-elderweald-trail-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-elderweald-world",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-engine",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-experience",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-gathering-adapter",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-gathering-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-gathering-music",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-gathering-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-gathering",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-heaven-campaign-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-heaven-campaign-data",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-heaven-campaign-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-heaven-campaign",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-hell-campaign-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-hell-campaign-data",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-hell-campaign-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-hell-campaign",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-home-history-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-home-history-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-home-history",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-local-life-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-local-life-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-local-life",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-mill-gate-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-millwright-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-pursuit-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-pursuit",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-quarry-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-realm-art-data",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-realm-atlas-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-realm-craft",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-realm-givers-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-realm-trails-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-realm-trails-cosmos",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-realm-trails-north",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-realm-trails-south",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-realm-trails-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-realm-trails",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-road-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-road",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-rpg-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-sandbox-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-sandbox-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-sandbox",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-skitter-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-soundscape",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-starter-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-starter-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-starter",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-surface-assets",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-traveler-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-traveler-equipment-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-workshop-transactions",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-world-atlantis-earth",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-world-foundations-art",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-world-foundations-ui",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-world-foundations",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-world-ground-coalescing",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-world-heaven-hell",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "syntax-world",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "emptyOutputOmitted": true
+    },
+    {
+      "command": "rules",
+      "bytes": 388295,
+      "sha256": "50dffe271aeb8368461ee2b1f9fd84865fe4d462d86f35a8e3beeee0d1abe3d5",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "python",
+      "bytes": 44080,
+      "sha256": "2c5bdefb14e3f24bd7d048715c38c856916e31354b6d5088bae2521ec44753bb",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "crossing-blade",
+      "bytes": 625,
+      "sha256": "0b27a5083c98c2983b9d5dd15b33456d395f182b4b299bbf46412b4f244ba956",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "crossing-bow",
+      "bytes": 649,
+      "sha256": "f1f412fb8081e5e0c9e1c60e5ea9b8d1de892fbc3c23c2a76e5b1470f8c04d4a",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "starter-blade",
+      "bytes": 507,
+      "sha256": "7bf2c1aedc79943bcdc356237696bf2a1a464841e03520203f7ee7d0f4911dae",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "starter-bow",
+      "bytes": 503,
+      "sha256": "2496bd1b1ba568c3ff951073bede4e7625f178d4aa75780f9ab122264bf8b37f",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "starter-veteran",
+      "bytes": 1438,
+      "sha256": "a5ce11e73e32f6a35882e153121d316e4ff0bf6682f0b18001f5e86a2f979be0",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "pursuit-blade",
+      "bytes": 5483,
+      "sha256": "04029aab268bf30da55bb85ea9cb89e5ab63ecd7f782a59c97aa095529ce4647",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "pursuit-bow",
+      "bytes": 6710,
+      "sha256": "7954f060cccbda3f5837029b6b177c60db43a02f6d581a5880ed7382a76135d1",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "pursuit-veteran",
+      "bytes": 3496,
+      "sha256": "d7f83235ad8095162cce679fdfaebd0fdd4165b4e2517d16d8d0650bf1301d4b",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "characters-journey",
+      "bytes": 3058,
+      "sha256": "5f5acfbd47f7058c872275643611fd7926fa00bb7649e8788a08896eab87005a",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "classes-journey",
+      "bytes": 4224,
+      "sha256": "52a64c8b080ebd61c727f7ddd93d69912fa906a09f029bcd625e48482f5e54a1",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "cosmos-journey",
+      "bytes": 630,
+      "sha256": "048d3fea2abeeeb1714f3d38044a3f4fee35dbfb016f470f26dc94e5537482bb",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "earth-journey",
+      "bytes": 602,
+      "sha256": "efc29d09cebc87f64f00f1ae0637957257e20688569ae453539e812d354d39d9",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "earth-road-journey",
+      "bytes": 83,
+      "sha256": "5bd02fb1ce55fc4bc4ab0b89d8eedef30dcf3af8ab045b415e5a7f744d50d0bf",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "earth-outing-blade",
+      "bytes": 5482,
+      "sha256": "be9b2f2c5cc1dc45ed3ada36ba842c06b1e0144b009f341107d3acafb80f6a60",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "earth-outing-bow",
+      "bytes": 6715,
+      "sha256": "e4e71e12da6150014a280b35387a3f507522cee791079ddbb89e5805a720d8c6",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "earth-outing-veteran",
+      "bytes": 3499,
+      "sha256": "294392f9dda49052072984a4080a4bf9821891c5d53882ca28edcdf6d60d05b5",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "earth-story-blade",
+      "bytes": 3039,
+      "sha256": "4acd6d8107d038a0993c184bf06b5c1f715fec6848d8257d708f26431ffa965a",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "earth-story-bow",
+      "bytes": 3448,
+      "sha256": "a0a97c53d53dd1a89086cdd5160c290ec83b723ec57984ff69df19055a24c8bf",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "earth-story-veteran",
+      "bytes": 2628,
+      "sha256": "73c22248010442aca05c5edd53b505475c653491adf836f8da54828edb07f1d4",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "earth-notes-blade",
+      "bytes": 2028,
+      "sha256": "03a330c690c524eabb45cc3190a2302147bba7668532909013f84ffe401ba59a",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "earth-notes-bow",
+      "bytes": 2030,
+      "sha256": "f2c58170086fad99b1d8350ab130658136fe36c96f6e155ef9324bc1f01f2922",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "earth-notes-veteran",
+      "bytes": 2022,
+      "sha256": "d7a0197cfe4f641d07028fec10be864b8dc48e533babe9a92baa015aee9634ff",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "gathering-blade",
+      "bytes": 2008,
+      "sha256": "3e683c4be095db03109d5e74fef0638950342e1170c92d32c8fe18b0667ae3b9",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "gathering-bow",
+      "bytes": 2004,
+      "sha256": "5d6395e2a7f18faf95b93b34587c8cfc6161413b46cb82ca7455221a61154369",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "gathering-veteran",
+      "bytes": 1998,
+      "sha256": "82790a2a16e1fad354adb6c485a94d1be3694a72e33adccf5139995288da2a4f",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "world-foundations-blade",
+      "bytes": 115,
+      "sha256": "fc64a7526f2397fe2fd184a12f5b7161198deee503ca08909120d5cee37e8e24",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "world-foundations-bow",
+      "bytes": 113,
+      "sha256": "672abbfbe7a1d33774e55716e058cae4b29ce9f6c013361f41d6b31a4ad224d6",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "world-foundations-veteran",
+      "bytes": 111,
+      "sha256": "f67ce6df32a739cda65cf92f5c480d85fc7cf4969a8894534f8f0a9487566137",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "realm-trails-blade",
+      "bytes": 161,
+      "sha256": "8c99875b9853801c2052b9590857b851d349d56ab81580bfb70232c631f73fe1",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "realm-trails-bow",
+      "bytes": 159,
+      "sha256": "53a69d88317a65523229998ee60c03de091e0a8b8d41a82e5253f340965b78d5",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "realm-trails-south-blade",
+      "bytes": 5036,
+      "sha256": "6512f22f642dbff13d3d1036ae87cd0f1ff83dff774a81ab62c895925851ab7a",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "realm-trails-south-bow",
+      "bytes": 5034,
+      "sha256": "f1d65770e841ea8774e3ee7eedca99605b4821117232f28f42327f760202da90",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "realm-comparator-blade",
+      "bytes": 860,
+      "sha256": "d051c505ea0d4762ed40c3b46181cff2ef60ab5dfca172cbdff96e7e26bccab5",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "realm-comparator-bow",
+      "bytes": 859,
+      "sha256": "a07a5025afb0bff37325955e4fd9fea4c0a5b197b0afaa4f95064ca4a85245d8",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "realm-comparator-veteran",
+      "bytes": 1380,
+      "sha256": "43548878c3c7a5bcd1e0622a4d68deeb02e39a89c9d89a35811ac92360cfa47a",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "earth-expedition-blade",
+      "bytes": 834,
+      "sha256": "ae0f8b181188a9ea39a2d2f98b24be9e461949c5deb8eef97c9ce052c31a30d9",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "earth-expedition-bow",
+      "bytes": 830,
+      "sha256": "c43819230b2c2b6662b2067040461c65a4ea1843738a91b68d2eb397d5cf4312",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "earth-expedition-veteran",
+      "bytes": 831,
+      "sha256": "87c2aaa48e93f48dc9b19621192b96db9d52cbf781cc3c6550c58527e5580aad",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "local-life-blade",
+      "bytes": 1012,
+      "sha256": "982789616d67fd254b72ce9a5a0e8df923d2f9a709205db634b537ff7beb533e",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "local-life-bow",
+      "bytes": 1009,
+      "sha256": "0ca6e51f77b4d7736125395d0b37a23b4d7fa4ecb4f2090b2fc1dbf070d4e866",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "local-life-veteran",
+      "bytes": 1019,
+      "sha256": "e73bdada22bd81a4ad8ffc08b4a8f2a243ecab7eca8067b88f0c719e76becb16",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "home-history-blade",
+      "bytes": 147,
+      "sha256": "67b551344f4ce9c2a7d09fb7e1f609733c67e446b5ac9ec734aa9261bcbb20bd",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "home-history-bow",
+      "bytes": 145,
+      "sha256": "fc9771880dce1ba439c946001c3dffe04b41ae7de11625a791a300bc61987e13",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "home-history-veteran",
+      "bytes": 155,
+      "sha256": "25402427c525d6548dd3d1ef6a32544736829662f175eb870b82f27d8ae04018",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "bridge-community-blade",
+      "bytes": 115,
+      "sha256": "5ef9dbac0926b8904107f463f8215323de6ae3cedf3a4ccb99016d2d5078f960",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "bridge-community-bow",
+      "bytes": 119,
+      "sha256": "81802a66211ae7e69bbb878bb946d487913223602fdc76dfc57bbd93ed927c42",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "bridge-community-veteran",
+      "bytes": 123,
+      "sha256": "08fddde5b7978d3f70af5950ba7c6d4774ffd2d79cdff0c839c3ece5194e0022",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "hell-campaign-blade",
+      "bytes": 90,
+      "sha256": "afd9305106d14d0ff80b829c769422ab83f1681a5fcc8926a2d96c1e382dd2de",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "hell-campaign-bow",
+      "bytes": 88,
+      "sha256": "c68d5d118e02d19ff299e64a036ee685639f25a78e472684222729e781e5094e",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "hell-campaign-veteran",
+      "bytes": 99,
+      "sha256": "b99fa6da12bedd3cc060af639ecb97ed53fdccda85429d7fa7adc911507cb380",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "heaven-campaign-blade",
+      "bytes": 149,
+      "sha256": "06a4c6fad5039fe2f762ae3bba9f4aded7c5eb2295f7cfa13b554254655ea8b1",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "heaven-campaign-bow",
+      "bytes": 150,
+      "sha256": "c7daece8db21e67864161cc56d2e3fda89c126c590fc2167a32dd4e140d9b17e",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "heaven-campaign-veteran",
+      "bytes": 157,
+      "sha256": "57bbc7fa30f7dec4c2ccd610c07bbd97047de4a1e9161b90cad42d7152a4e7f6",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "atlantis-campaign-blade",
+      "bytes": 102,
+      "sha256": "bf5355c8c11cab570ef5447fbf2cb9ae92e03944a4f995011707a348ee714e0f",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "atlantis-campaign-bow",
+      "bytes": 100,
+      "sha256": "6c82fb5cdf4f3ed355520a90a7ff115892e20aa56c46b9e916ca9b0691fde357",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "atlantis-campaign-veteran",
+      "bytes": 111,
+      "sha256": "871e099cef3be692c163dd4c848a1a32f98ec981787a1f72554afdfe58fc8686",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "cosmos-campaign-blade",
+      "bytes": 128,
+      "sha256": "b6e6484740bd267cf826f2796d5db8c5b37a4040d8f78951c8c442f4e711ac46",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "cosmos-campaign-bow",
+      "bytes": 126,
+      "sha256": "983182702055d1fcf582c12bc1733815d92089bde3479d14b93e88c308b61e18",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "cosmos-campaign-veteran",
+      "bytes": 136,
+      "sha256": "906a670b557365c6ef2ca4355c5d5b63ca806c63a4603fb4cd398d660aa80126",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "earth-homecoming-earned",
+      "bytes": 5116,
+      "sha256": "0663a41c64fa3f3908e2ce161c2448b020f1f238ee60e82ab69c766335893257",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "earth-homecoming-native-preflight",
+      "bytes": 4342,
+      "sha256": "099ea88265ecfae182046996bd094015e5fab72c07c0664758f4f5125a4fe2a7",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "earth-recording-controller-preflight",
+      "bytes": 6298,
+      "sha256": "b8e750c3cbf2faf5bc3a3b51e0618a875076c873d4aa154f451054532e92dfef",
+      "emptyOutputOmitted": false
+    },
+    {
+      "command": "whole-draft-earned",
+      "bytes": 4652,
+      "sha256": "c1c73c6e6b5230c3e0f210a8839b46512644cd120f936e36055d11723afa1be5",
+      "emptyOutputOmitted": false
+    }
+  ],
+  "node": {
+    "tests": 1680,
+    "pass": 1678,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 2,
+    "todo": 0
+  },
+  "python": {
+    "tests": 262,
+    "skipped": 8
+  }
+}

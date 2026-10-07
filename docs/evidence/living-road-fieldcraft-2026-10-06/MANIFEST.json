@@ -1,0 +1,2503 @@
+{
+  "sourceHead": "99e8f46a557f51d1ffd41339d25b73d44af9bca9",
+  "payloads": [
+    {
+      "path": "README.md",
+      "bytes": 7601,
+      "sha256": "1be4a58470e40dd578450930387b537b05725f2785c8ebf100c0b9767788b54f"
+    },
+    {
+      "path": "SOURCE_BINDER.json",
+      "bytes": 39402,
+      "sha256": "360071c770eff91142b733e8090dd1bc378169b245dfd016fb42596ebc9b61ed"
+    },
+    {
+      "path": "complete/BROWSER_OUTPUT_ROUTING.json",
+      "bytes": 10383,
+      "sha256": "dc11b7eb8ea7b356a5160ecaf1185712436f23ba857d86bafea72a874523d6f3"
+    },
+    {
+      "path": "complete/COMMAND_LOGS.json",
+      "bytes": 52417,
+      "sha256": "b6047f484b83fb08ef67ace382223fc679403e8058fb7af455713b414f102841"
+    },
+    {
+      "path": "complete/CONSOLE.log",
+      "bytes": 15155,
+      "sha256": "c386614c21e9a107c090a3fb386fd528bdcc27d682d2356ce11be5aaed995347"
+    },
+    {
+      "path": "complete/PROCESS_EXIT.json",
+      "bytes": 542,
+      "sha256": "cb2ca9cea63614fa144a63805fac747510057ee33439b8235039f52eb2d44142"
+    },
+    {
+      "path": "complete/RUN.ps1.snapshot",
+      "bytes": 2108,
+      "sha256": "82eaf46e2ba19d3bb65c8eef772780b4940700e8906a30fb589c9ff57fce11b3"
+    },
+    {
+      "path": "complete/browser-reports/atlantis_campaign_browser-sources/fresh-blade/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 61321,
+      "sha256": "75b7ca9b88c493ca0abb8a2aaf938a4f5090b0f56a02fa7a7b43730c039da911"
+    },
+    {
+      "path": "complete/browser-reports/atlantis_campaign_browser-sources/fresh-blade/SEED_PROVENANCE.json",
+      "bytes": 14721,
+      "sha256": "52aed3b7d4451beb067439247c41a9631ee5f009af1bc00ca89bce20b4ceb264"
+    },
+    {
+      "path": "complete/browser-reports/atlantis_campaign_browser-sources/fresh-bow/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 68165,
+      "sha256": "29647cf2bc0615cf5c8f56ef1492ec960adb9e911d23a993158bd7d17497acd5"
+    },
+    {
+      "path": "complete/browser-reports/atlantis_campaign_browser-sources/fresh-bow/SEED_PROVENANCE.json",
+      "bytes": 14719,
+      "sha256": "b79298ad7f05936b472ce123762fbeadb363145946a833bde2e7252525052d80"
+    },
+    {
+      "path": "complete/browser-reports/atlantis_campaign_browser-sources/returning-strongest/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 59700,
+      "sha256": "b9d863b051e44b73a77adc69d7122a2e4e3ce1106b5592b64e8f9ba569b55d55"
+    },
+    {
+      "path": "complete/browser-reports/atlantis_campaign_browser-sources/returning-strongest/SEED_PROVENANCE.json",
+      "bytes": 14948,
+      "sha256": "a1306299a367d49a37b82cea8c9ecbf7412cb18acff668d7274d1939d5861d64"
+    },
+    {
+      "path": "complete/browser-reports/atlantis_campaign_browser/REPORT.json",
+      "bytes": 2682590,
+      "sha256": "7364eb691a329b43e46117c104e6b70262e8d2a419966e96a31a2754cc6798a8"
+    },
+    {
+      "path": "complete/browser-reports/bridge_browser/REPORT.json",
+      "bytes": 216567,
+      "sha256": "8c1cca8a0f8b0a5d8c978bcec19e61c4fa195bfe324a4a4e757d87e1667de0fe"
+    },
+    {
+      "path": "complete/browser-reports/bridge_community_browser/BRIDGE_BROWSER_REPORT.json",
+      "bytes": 2434135,
+      "sha256": "dcff6801cb7c86062189eb83098ee1b221d39f13b06ed6a9c43f84a7fa7d1f7b"
+    },
+    {
+      "path": "complete/browser-reports/camera_browser/REPORT.json",
+      "bytes": 11193,
+      "sha256": "2dd9cb65232a4976104b31e4df512c2ef30d4160fdf01df7aa613b76982efceb"
+    },
+    {
+      "path": "complete/browser-reports/coastward_bridge_posts_browser/REPORT.json",
+      "bytes": 315415,
+      "sha256": "7bed7d5e126004839e410e395484586db3609adb79cb798d669cd4445ad813b5"
+    },
+    {
+      "path": "complete/browser-reports/coastward_scenery_browser/REPORT.json",
+      "bytes": 838566,
+      "sha256": "743ca2b15b298faa4eefcdbc7e3a2251dc834eb2ebab36315e936eae24ec3da0"
+    },
+    {
+      "path": "complete/browser-reports/cosmos_campaign_browser-sources/fresh-blade/COSMOS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 68602,
+      "sha256": "583f71efbc5e6843c22e21e41622a4c5921e13ccccd43eb8a55535a086f700ca"
+    },
+    {
+      "path": "complete/browser-reports/cosmos_campaign_browser-sources/fresh-blade/SEED_PROVENANCE.json",
+      "bytes": 15188,
+      "sha256": "0c027a92e0f514163892f46607131af9c0f079035f134e0dd87606f1c077b840"
+    },
+    {
+      "path": "complete/browser-reports/cosmos_campaign_browser-sources/fresh-bow/COSMOS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 76205,
+      "sha256": "318e0f8eeb0d911e6fbe30fd1f0a4f24f22bf7e536560825f4dbd8ea6ff0ab77"
+    },
+    {
+      "path": "complete/browser-reports/cosmos_campaign_browser-sources/fresh-bow/SEED_PROVENANCE.json",
+      "bytes": 15186,
+      "sha256": "fb7fe86746fc62e8cd0c5ea7bfbe736e23a76919a3718acffc95b3620058c43d"
+    },
+    {
+      "path": "complete/browser-reports/cosmos_campaign_browser-sources/returning-strongest/COSMOS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 55217,
+      "sha256": "2ecb2b3b9923a061aaed6c294bbbe0791d1241e44c1114726cbf3dde0c208c16"
+    },
+    {
+      "path": "complete/browser-reports/cosmos_campaign_browser-sources/returning-strongest/SEED_PROVENANCE.json",
+      "bytes": 15415,
+      "sha256": "ac15eb100e0671fda78b3309245bae8773b07b10c8f0aa28636f8bf4aec42033"
+    },
+    {
+      "path": "complete/browser-reports/cosmos_campaign_browser/REPORT.json",
+      "bytes": 3929690,
+      "sha256": "09e8f355e959d9456f0501be10cac6340b3a4f6c0e8dec4b791880de4cd31361"
+    },
+    {
+      "path": "complete/browser-reports/earth_expedition_browser/REPORT.json",
+      "bytes": 2165821,
+      "sha256": "bf3bc58c987c90e1c9cc8de1794a3dba92d5618e4e98d27da4fdc20a5da682c4"
+    },
+    {
+      "path": "complete/browser-reports/earth_expedition_browser/earned/fresh-blade/EARTH_EXPEDITION_JOURNEY_REPORT.json",
+      "bytes": 48225,
+      "sha256": "9b1d9badea4b415bbfe9428f43aafb3af7b73ac1ca6321ce6c2d720ccde147c6"
+    },
+    {
+      "path": "complete/browser-reports/earth_expedition_browser/earned/fresh-bow/EARTH_EXPEDITION_JOURNEY_REPORT.json",
+      "bytes": 56460,
+      "sha256": "31cec398f32d45ad68b4c40a61a38a1d3fd337107530c3983000e711e14ff365"
+    },
+    {
+      "path": "complete/browser-reports/earth_expedition_browser/earned/veteran/EARTH_EXPEDITION_JOURNEY_REPORT.json",
+      "bytes": 44105,
+      "sha256": "0a74c08044e2321878821e34f468fd4107615aa1f080b92e948e8ae0d5d5befd"
+    },
+    {
+      "path": "complete/browser-reports/earth_ground_material_browser/earned/fresh-blade/EARTH_EXPEDITION_JOURNEY_REPORT.json",
+      "bytes": 48225,
+      "sha256": "9b1d9badea4b415bbfe9428f43aafb3af7b73ac1ca6321ce6c2d720ccde147c6"
+    },
+    {
+      "path": "complete/browser-reports/earth_homecoming_browser/REPORT.json",
+      "bytes": 1820444,
+      "sha256": "d39e0b969cf26c1e48121dae7a733838e0b5555804324d6eac094e1ca676fa04"
+    },
+    {
+      "path": "complete/browser-reports/earth_road_browser/earned-sources/REPORT.json",
+      "bytes": 28691,
+      "sha256": "bffe2e775cddd23aecaeeea33623439a4f68a8910646c506c796b8082476c011"
+    },
+    {
+      "path": "complete/browser-reports/earth_road_browser/report.json",
+      "bytes": 745278,
+      "sha256": "3796ee798ec903befbf4228f81d0badc28092eb7bd764d21beca5378d04a354a"
+    },
+    {
+      "path": "complete/browser-reports/earth_story_transactions_browser/REPORT.json",
+      "bytes": 921363,
+      "sha256": "f3d744898311282f678de7f2b81a07c524c692760f80b0e8634a547ca8b6a348"
+    },
+    {
+      "path": "complete/browser-reports/heaven_campaign_browser-sources/fresh-blade/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 61370,
+      "sha256": "6bfee9c92f75fc4f38f7954821b0148aab44a79abcaf969c8f3ad6d7b474539e"
+    },
+    {
+      "path": "complete/browser-reports/heaven_campaign_browser-sources/fresh-blade/SEED_PROVENANCE.json",
+      "bytes": 15203,
+      "sha256": "dd4806df67e6c08019cd0e4814b2d5c47542ea7a3c1dbf41db0db023b725f47e"
+    },
+    {
+      "path": "complete/browser-reports/heaven_campaign_browser-sources/fresh-bow/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 69411,
+      "sha256": "6c4d41236952099ee4735467e0b7b7ce8c93a765f638767946b8dabc310f61ba"
+    },
+    {
+      "path": "complete/browser-reports/heaven_campaign_browser-sources/fresh-bow/SEED_PROVENANCE.json",
+      "bytes": 15199,
+      "sha256": "8af18570db6aa8a74c2173a68ca1802054f268abd8fab8ef45b1942ad2859975"
+    },
+    {
+      "path": "complete/browser-reports/heaven_campaign_browser-sources/returning-strongest/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 56466,
+      "sha256": "0758d3e2e5a7d7eb9d6f719ebc1ec69603dd674d99a68625c775e33a184fd18f"
+    },
+    {
+      "path": "complete/browser-reports/heaven_campaign_browser-sources/returning-strongest/SEED_PROVENANCE.json",
+      "bytes": 15438,
+      "sha256": "04c2ff18060b0548e5d783068b6f36904656e7ad80a633d911b2eab0232f2063"
+    },
+    {
+      "path": "complete/browser-reports/heaven_campaign_browser/REPORT.json",
+      "bytes": 1641931,
+      "sha256": "2ff6678a6d49912fc387902e96032bf4453d92ad4bd29cb626d358dd03b48691"
+    },
+    {
+      "path": "complete/browser-reports/hell_campaign_browser/REPORT.json",
+      "bytes": 423927,
+      "sha256": "691ded28954ed6cfd85605799ef1d59bef2363c809917103514f6abfaf80181b"
+    },
+    {
+      "path": "complete/browser-reports/home_history_browser/REPORT.json",
+      "bytes": 16141403,
+      "sha256": "568e36a4912034725cfe638af9fce756ec0b52e190e4a0591683048648ee0eea"
+    },
+    {
+      "path": "complete/browser-reports/home_history_browser/journeys/earned-local-work/fresh-blade/LOCAL_LIFE_JOURNEY_REPORT.json",
+      "bytes": 26668,
+      "sha256": "5ba39f6e65bb9b8e6bea92667df6ca5fff43ac88f72e9469fbdbe85e1901f89c"
+    },
+    {
+      "path": "complete/browser-reports/home_history_browser/journeys/earned-local-work/fresh-bow/LOCAL_LIFE_JOURNEY_REPORT.json",
+      "bytes": 28347,
+      "sha256": "74b78b80b6e298f68e020fd7c9abad91cba036755b10d9805394818fca04d0cc"
+    },
+    {
+      "path": "complete/browser-reports/home_history_browser/journeys/earned-local-work/returning-strongest/LOCAL_LIFE_JOURNEY_REPORT.json",
+      "bytes": 27265,
+      "sha256": "8b1e9c7e02b748407c97294b96031a402c0da1411f858b4320d16b3674f2318e"
+    },
+    {
+      "path": "complete/browser-reports/local_life_browser/REPORT.json",
+      "bytes": 10759886,
+      "sha256": "db9dceebf0a50944930793e96db9d35c3773459c99edd0a661dc4bc81e322a8b"
+    },
+    {
+      "path": "complete/browser-reports/onboarding_browser/REPORT.json",
+      "bytes": 135526,
+      "sha256": "7067d1920f0a9c70f015992e1bc8cfd604413c569c2e6a948fde2852b372f887"
+    },
+    {
+      "path": "complete/browser-reports/practice_visibility_browser/REPORT.json",
+      "bytes": 397850,
+      "sha256": "8c9ead4469ec422990b0bf2367becef1a30cf855b81863c179bc39a6365e460b"
+    },
+    {
+      "path": "complete/browser-reports/practice_visibility_browser/earned-sources/fresh-blade/STARTER_JOURNEY_REPORT.json",
+      "bytes": 5047,
+      "sha256": "25ffd230059677947a50ec160eed09b0fa37b57b4ee03f34eb5fc0eba41075c2"
+    },
+    {
+      "path": "complete/browser-reports/practice_visibility_browser/earned-sources/fresh-bow/STARTER_JOURNEY_REPORT.json",
+      "bytes": 4787,
+      "sha256": "441346ccbb621f403a7b489f1def99f3487df7832987e506f176a549d1f89b94"
+    },
+    {
+      "path": "complete/browser-reports/practice_visibility_browser/earned-sources/veteran/STARTER_VETERAN_REPORT.json",
+      "bytes": 3483,
+      "sha256": "ab54858d5ad8fba0c3c4502b19aed6b03642f3d09712e1931c451788908458f9"
+    },
+    {
+      "path": "complete/browser-reports/realm_givers_browser/REPORT.json",
+      "bytes": 277132,
+      "sha256": "3db26df552173b8a4eb3bf0df14dc231cddd5156de7d4e8ea646d011b5042a3d"
+    },
+    {
+      "path": "complete/browser-reports/realm_trails_north_browser/REPORT.json",
+      "bytes": 121304,
+      "sha256": "13ef77ba2152d621f2956410f74faceddbe0e59a1e3214d1ad8e2b92582b56af"
+    },
+    {
+      "path": "complete/browser-reports/realm_trails_north_browser/earned-sources/fresh-blade/REALM_TRAILS_JOURNEY_REPORT.json",
+      "bytes": 22535,
+      "sha256": "bf2e43bf3e4ce4d42b965f48a593ade1fabe0392517bc795cdda7e7441f28ae9"
+    },
+    {
+      "path": "complete/browser-reports/realm_trails_north_browser/earned-sources/fresh-bow/REALM_TRAILS_JOURNEY_REPORT.json",
+      "bytes": 29156,
+      "sha256": "9135f5a8e54167b2392e65fea1f7324f470934040361e4956bb42dfdee58a6d5"
+    },
+    {
+      "path": "complete/browser-reports/realm_work_presentation_browser/REPORT.json",
+      "bytes": 3009572,
+      "sha256": "6ea47a94366741aa34b18d3de3e980a1df02124b08d12739b16a37feb3a837a1"
+    },
+    {
+      "path": "complete/browser-reports/world_foundations_browser/REPORT.json",
+      "bytes": 21138,
+      "sha256": "84f8dc813e98b55bd7caed0bf0fe729a527cf6ffa97c6145c6b34bfa64befb39"
+    },
+    {
+      "path": "complete/commands/atlantis-campaign-blade.log",
+      "bytes": 102,
+      "sha256": "bf5355c8c11cab570ef5447fbf2cb9ae92e03944a4f995011707a348ee714e0f"
+    },
+    {
+      "path": "complete/commands/atlantis-campaign-bow.log",
+      "bytes": 100,
+      "sha256": "6c82fb5cdf4f3ed355520a90a7ff115892e20aa56c46b9e916ca9b0691fde357"
+    },
+    {
+      "path": "complete/commands/atlantis-campaign-veteran.log",
+      "bytes": 111,
+      "sha256": "871e099cef3be692c163dd4c848a1a32f98ec981787a1f72554afdfe58fc8686"
+    },
+    {
+      "path": "complete/commands/atlantis_campaign_browser.log",
+      "bytes": 76018,
+      "sha256": "ecdf5708bed0dfb82353ce11aa4af48dd343c058716d73fb53be8481fa1f9398"
+    },
+    {
+      "path": "complete/commands/bridge-community-blade.log",
+      "bytes": 115,
+      "sha256": "5ef9dbac0926b8904107f463f8215323de6ae3cedf3a4ccb99016d2d5078f960"
+    },
+    {
+      "path": "complete/commands/bridge-community-bow.log",
+      "bytes": 119,
+      "sha256": "81802a66211ae7e69bbb878bb946d487913223602fdc76dfc57bbd93ed927c42"
+    },
+    {
+      "path": "complete/commands/bridge-community-veteran.log",
+      "bytes": 123,
+      "sha256": "08fddde5b7978d3f70af5950ba7c6d4774ffd2d79cdff0c839c3ece5194e0022"
+    },
+    {
+      "path": "complete/commands/bridge_browser.log",
+      "bytes": 68759,
+      "sha256": "084d8f31eb4781c78598742be89da3ebdbe327e7af43580304e8f57e1dc8140e"
+    },
+    {
+      "path": "complete/commands/bridge_community_browser.log",
+      "bytes": 14682,
+      "sha256": "36c95cf5f0620e5bbd4cf1567b212895b8b3a4c6c6cd543dbd28f99213c2db7f"
+    },
+    {
+      "path": "complete/commands/build.log",
+      "bytes": 91,
+      "sha256": "d584dfa1038750a2e998a99f303cbeaa0349749e8d51b4b3c5ec1f695345bebf"
+    },
+    {
+      "path": "complete/commands/camera_browser.log",
+      "bytes": 3026,
+      "sha256": "c29737a25023bd5e0aefa2046639f24a598017a0a5750771a799e52e6a70cbae"
+    },
+    {
+      "path": "complete/commands/characters-journey.log",
+      "bytes": 3058,
+      "sha256": "5f5acfbd47f7058c872275643611fd7926fa00bb7649e8788a08896eab87005a"
+    },
+    {
+      "path": "complete/commands/characters_browser.log",
+      "bytes": 4357,
+      "sha256": "a067d91915df7395e4d268225d48ac904837632f801bdf7c1858d12d722603a0"
+    },
+    {
+      "path": "complete/commands/classes-journey.log",
+      "bytes": 4224,
+      "sha256": "52a64c8b080ebd61c727f7ddd93d69912fa906a09f029bcd625e48482f5e54a1"
+    },
+    {
+      "path": "complete/commands/classes_browser.log",
+      "bytes": 2383,
+      "sha256": "ef23c78cd5f3a8bfae077961bab37392f61f6377eb46fcc65c0f6de96e6c4003"
+    },
+    {
+      "path": "complete/commands/coastward_bridge_posts_browser.log",
+      "bytes": 4964,
+      "sha256": "84853643162787385f4ed7c3798285793bda9efb36dddf9afe37bc9fafda87a3"
+    },
+    {
+      "path": "complete/commands/coastward_scenery_browser.log",
+      "bytes": 2616,
+      "sha256": "6cc89afbbae150a86e10eab3903e4e334d560c97c57d7074ffdd79227926ec80"
+    },
+    {
+      "path": "complete/commands/combat_cue_browser.log",
+      "bytes": 11360,
+      "sha256": "849f3eca2ea2a65860f992cde6e746aaf4209d6a7e28adfd1cae6b153adc083e"
+    },
+    {
+      "path": "complete/commands/companion_presentation_browser.log",
+      "bytes": 7843,
+      "sha256": "ba18aa0b0ce6d9c8ba2daedd4be393e4435807ec1f5caa0aed6b19b898ba6b29"
+    },
+    {
+      "path": "complete/commands/cosmos-campaign-blade.log",
+      "bytes": 128,
+      "sha256": "b6e6484740bd267cf826f2796d5db8c5b37a4040d8f78951c8c442f4e711ac46"
+    },
+    {
+      "path": "complete/commands/cosmos-campaign-bow.log",
+      "bytes": 126,
+      "sha256": "983182702055d1fcf582c12bc1733815d92089bde3479d14b93e88c308b61e18"
+    },
+    {
+      "path": "complete/commands/cosmos-campaign-veteran.log",
+      "bytes": 136,
+      "sha256": "906a670b557365c6ef2ca4355c5d5b63ca806c63a4603fb4cd398d660aa80126"
+    },
+    {
+      "path": "complete/commands/cosmos-journey.log",
+      "bytes": 630,
+      "sha256": "048d3fea2abeeeb1714f3d38044a3f4fee35dbfb016f470f26dc94e5537482bb"
+    },
+    {
+      "path": "complete/commands/cosmos_browser.log",
+      "bytes": 4039,
+      "sha256": "6879822ddd4e2466fd21ab4e419d425900165b26a4b36918e0d3d8010c70dea7"
+    },
+    {
+      "path": "complete/commands/cosmos_campaign_browser.log",
+      "bytes": 635845,
+      "sha256": "90679675bc0fc9883f3eda87c4161083ff86f8e0855110e4e2d38ed366265a02"
+    },
+    {
+      "path": "complete/commands/crossing-blade.log",
+      "bytes": 625,
+      "sha256": "0b27a5083c98c2983b9d5dd15b33456d395f182b4b299bbf46412b4f244ba956"
+    },
+    {
+      "path": "complete/commands/crossing-bow.log",
+      "bytes": 649,
+      "sha256": "f1f412fb8081e5e0c9e1c60e5ea9b8d1de892fbc3c23c2a76e5b1470f8c04d4a"
+    },
+    {
+      "path": "complete/commands/crossing_browser.log",
+      "bytes": 4046,
+      "sha256": "b7e60195cd71a79ca9b858931c055035ea08a9294c5c72a464dbd9d7a6585723"
+    },
+    {
+      "path": "complete/commands/cutaway_browser.log",
+      "bytes": 1126,
+      "sha256": "509f2c59d6dd7b02eae8306bc1e2507e3c7bd5245f50da6ab0d2708d995a512e"
+    },
+    {
+      "path": "complete/commands/earth-expedition-blade.log",
+      "bytes": 834,
+      "sha256": "ae0f8b181188a9ea39a2d2f98b24be9e461949c5deb8eef97c9ce052c31a30d9"
+    },
+    {
+      "path": "complete/commands/earth-expedition-bow.log",
+      "bytes": 830,
+      "sha256": "c43819230b2c2b6662b2067040461c65a4ea1843738a91b68d2eb397d5cf4312"
+    },
+    {
+      "path": "complete/commands/earth-expedition-veteran.log",
+      "bytes": 831,
+      "sha256": "87c2aaa48e93f48dc9b19621192b96db9d52cbf781cc3c6550c58527e5580aad"
+    },
+    {
+      "path": "complete/commands/earth-homecoming-earned.log",
+      "bytes": 5123,
+      "sha256": "18733276e5aaad46ea3d81e130ced12c68858d63dd6ca757679bc1fb80ede9d3"
+    },
+    {
+      "path": "complete/commands/earth-homecoming-native-preflight.log",
+      "bytes": 4342,
+      "sha256": "b5aafef5a4546617493292db99507cbfc2c1f81a9c9ee202a2ec0e36acafbf3d"
+    },
+    {
+      "path": "complete/commands/earth-journey.log",
+      "bytes": 602,
+      "sha256": "efc29d09cebc87f64f00f1ae0637957257e20688569ae453539e812d354d39d9"
+    },
+    {
+      "path": "complete/commands/earth-notes-blade.log",
+      "bytes": 2028,
+      "sha256": "03a330c690c524eabb45cc3190a2302147bba7668532909013f84ffe401ba59a"
+    },
+    {
+      "path": "complete/commands/earth-notes-bow.log",
+      "bytes": 2030,
+      "sha256": "f2c58170086fad99b1d8350ab130658136fe36c96f6e155ef9324bc1f01f2922"
+    },
+    {
+      "path": "complete/commands/earth-notes-veteran.log",
+      "bytes": 2022,
+      "sha256": "d7a0197cfe4f641d07028fec10be864b8dc48e533babe9a92baa015aee9634ff"
+    },
+    {
+      "path": "complete/commands/earth-outing-blade.log",
+      "bytes": 5482,
+      "sha256": "be9b2f2c5cc1dc45ed3ada36ba842c06b1e0144b009f341107d3acafb80f6a60"
+    },
+    {
+      "path": "complete/commands/earth-outing-bow.log",
+      "bytes": 6715,
+      "sha256": "e4e71e12da6150014a280b35387a3f507522cee791079ddbb89e5805a720d8c6"
+    },
+    {
+      "path": "complete/commands/earth-outing-veteran.log",
+      "bytes": 3490,
+      "sha256": "b94b2f589d992c850b89e5c694d66696fdae60e6dee9695e9620776d197f0dcb"
+    },
+    {
+      "path": "complete/commands/earth-recording-controller-preflight.log",
+      "bytes": 6298,
+      "sha256": "789866c5c1a9ae80679534caec27afb57f765b10c2769abb356020f27ea71eef"
+    },
+    {
+      "path": "complete/commands/earth-road-journey.log",
+      "bytes": 83,
+      "sha256": "5bd02fb1ce55fc4bc4ab0b89d8eedef30dcf3af8ab045b415e5a7f744d50d0bf"
+    },
+    {
+      "path": "complete/commands/earth-story-blade.log",
+      "bytes": 3039,
+      "sha256": "4acd6d8107d038a0993c184bf06b5c1f715fec6848d8257d708f26431ffa965a"
+    },
+    {
+      "path": "complete/commands/earth-story-bow.log",
+      "bytes": 3448,
+      "sha256": "a0a97c53d53dd1a89086cdd5160c290ec83b723ec57984ff69df19055a24c8bf"
+    },
+    {
+      "path": "complete/commands/earth-story-veteran.log",
+      "bytes": 2628,
+      "sha256": "73c22248010442aca05c5edd53b505475c653491adf836f8da54828edb07f1d4"
+    },
+    {
+      "path": "complete/commands/earth_browser.log",
+      "bytes": 5235,
+      "sha256": "6a25250a666ae36470b65d48796757b5c4f01f9ff168d8c88fc39ca8e29be557"
+    },
+    {
+      "path": "complete/commands/earth_expedition_browser.log",
+      "bytes": 73692,
+      "sha256": "4c56abfd8703def2267cd310b18984ab3068cb9759b8f67ba0fc8e1db767ed14"
+    },
+    {
+      "path": "complete/commands/earth_ground_material_browser.log",
+      "bytes": 3837,
+      "sha256": "47143165b1cc101919a91d61a7413186518e827efaa45d74c47f0f71a5a2898c"
+    },
+    {
+      "path": "complete/commands/earth_homecoming_browser.log",
+      "bytes": 451602,
+      "sha256": "189a70aa69073606dd2338132e6acd2a8654805119274c02dcda506a3cb2ab74"
+    },
+    {
+      "path": "complete/commands/earth_notes_browser.log",
+      "bytes": 7022,
+      "sha256": "332191c4133c3eb0bd6e07a8b4dc0cb7a0048d08890b6ba69ce4868bbdb1c747"
+    },
+    {
+      "path": "complete/commands/earth_road_browser.log",
+      "bytes": 16106,
+      "sha256": "aeb65008d3fe8432afabea07960fefbefc267b2ba7b2048582a6b260de075a5a"
+    },
+    {
+      "path": "complete/commands/earth_story_browser.log",
+      "bytes": 15524,
+      "sha256": "a991f0903f4d626b1d89e8210cd7fa0162847b777d54f81e4b752eff53af65f5"
+    },
+    {
+      "path": "complete/commands/earth_story_transactions_browser.log",
+      "bytes": 4929,
+      "sha256": "627b436792c0de45ef83076c8f5463d2647c45ef2082fa968c4ebf9ababe3d76"
+    },
+    {
+      "path": "complete/commands/gathering-blade.log",
+      "bytes": 2008,
+      "sha256": "3e683c4be095db03109d5e74fef0638950342e1170c92d32c8fe18b0667ae3b9"
+    },
+    {
+      "path": "complete/commands/gathering-bow.log",
+      "bytes": 2004,
+      "sha256": "5d6395e2a7f18faf95b93b34587c8cfc6161413b46cb82ca7455221a61154369"
+    },
+    {
+      "path": "complete/commands/gathering-veteran.log",
+      "bytes": 1998,
+      "sha256": "82790a2a16e1fad354adb6c485a94d1be3694a72e33adccf5139995288da2a4f"
+    },
+    {
+      "path": "complete/commands/gathering_browser.log",
+      "bytes": 5641,
+      "sha256": "d6f061cdf3c3510853b9ae997400adfb15609e052c526269633e39c3bd507d2f"
+    },
+    {
+      "path": "complete/commands/heaven-campaign-blade.log",
+      "bytes": 149,
+      "sha256": "06a4c6fad5039fe2f762ae3bba9f4aded7c5eb2295f7cfa13b554254655ea8b1"
+    },
+    {
+      "path": "complete/commands/heaven-campaign-bow.log",
+      "bytes": 150,
+      "sha256": "c7daece8db21e67864161cc56d2e3fda89c126c590fc2167a32dd4e140d9b17e"
+    },
+    {
+      "path": "complete/commands/heaven-campaign-veteran.log",
+      "bytes": 157,
+      "sha256": "57bbc7fa30f7dec4c2ccd610c07bbd97047de4a1e9161b90cad42d7152a4e7f6"
+    },
+    {
+      "path": "complete/commands/heaven_campaign_browser.log",
+      "bytes": 83946,
+      "sha256": "47da3d06c857968328a804234b698b48b488c269e66ca9842629f69afc1b1417"
+    },
+    {
+      "path": "complete/commands/hell-campaign-blade.log",
+      "bytes": 90,
+      "sha256": "afd9305106d14d0ff80b829c769422ab83f1681a5fcc8926a2d96c1e382dd2de"
+    },
+    {
+      "path": "complete/commands/hell-campaign-bow.log",
+      "bytes": 88,
+      "sha256": "c68d5d118e02d19ff299e64a036ee685639f25a78e472684222729e781e5094e"
+    },
+    {
+      "path": "complete/commands/hell-campaign-veteran.log",
+      "bytes": 99,
+      "sha256": "b99fa6da12bedd3cc060af639ecb97ed53fdccda85429d7fa7adc911507cb380"
+    },
+    {
+      "path": "complete/commands/hell_campaign_browser.log",
+      "bytes": 36701,
+      "sha256": "7e993356b015433b3585036fcebeef4f2f5bec60758a394551a155a832b0732e"
+    },
+    {
+      "path": "complete/commands/home-history-blade.log",
+      "bytes": 147,
+      "sha256": "67b551344f4ce9c2a7d09fb7e1f609733c67e446b5ac9ec734aa9261bcbb20bd"
+    },
+    {
+      "path": "complete/commands/home-history-bow.log",
+      "bytes": 145,
+      "sha256": "fc9771880dce1ba439c946001c3dffe04b41ae7de11625a791a300bc61987e13"
+    },
+    {
+      "path": "complete/commands/home-history-veteran.log",
+      "bytes": 155,
+      "sha256": "25402427c525d6548dd3d1ef6a32544736829662f175eb870b82f27d8ae04018"
+    },
+    {
+      "path": "complete/commands/home_history_browser.log",
+      "bytes": 17656,
+      "sha256": "4122674c31f64b3330ed43c5c67de207197a7c58c304bc20ea8fa11fafeb5db0"
+    },
+    {
+      "path": "complete/commands/journey_usability_browser.log",
+      "bytes": 5071,
+      "sha256": "1518be50787e9b978d37d5ac6afec4921e8bfe6216993f7743bfd27f0d768478"
+    },
+    {
+      "path": "complete/commands/local-life-blade.log",
+      "bytes": 1012,
+      "sha256": "982789616d67fd254b72ce9a5a0e8df923d2f9a709205db634b537ff7beb533e"
+    },
+    {
+      "path": "complete/commands/local-life-bow.log",
+      "bytes": 1009,
+      "sha256": "0ca6e51f77b4d7736125395d0b37a23b4d7fa4ecb4f2090b2fc1dbf070d4e866"
+    },
+    {
+      "path": "complete/commands/local-life-veteran.log",
+      "bytes": 1019,
+      "sha256": "e73bdada22bd81a4ad8ffc08b4a8f2a243ecab7eca8067b88f0c719e76becb16"
+    },
+    {
+      "path": "complete/commands/local_life_browser.log",
+      "bytes": 41296,
+      "sha256": "b32db1c9c6f1a9d174c92f1960f0111cb1bf4728da8c9e56518cfb6ca1862079"
+    },
+    {
+      "path": "complete/commands/native_origin_browser.log",
+      "bytes": 516,
+      "sha256": "0b81853b4503586fb0edd367582284bedfc3a2256c3d12ff3f608e63435b5263"
+    },
+    {
+      "path": "complete/commands/onboarding_browser.log",
+      "bytes": 3098,
+      "sha256": "669543715d4e9f4a23236803406247574b79146db205842d9753c0e1461f3b0d"
+    },
+    {
+      "path": "complete/commands/practice_visibility_browser.log",
+      "bytes": 7232,
+      "sha256": "3c21fadbf80afcc32e1d9337318da41fa6560535c27977f971f974ea87d516aa"
+    },
+    {
+      "path": "complete/commands/pursuit-blade.log",
+      "bytes": 5483,
+      "sha256": "04029aab268bf30da55bb85ea9cb89e5ab63ecd7f782a59c97aa095529ce4647"
+    },
+    {
+      "path": "complete/commands/pursuit-bow.log",
+      "bytes": 6710,
+      "sha256": "7954f060cccbda3f5837029b6b177c60db43a02f6d581a5880ed7382a76135d1"
+    },
+    {
+      "path": "complete/commands/pursuit-veteran.log",
+      "bytes": 3487,
+      "sha256": "2197e9ccd38de6e1f6f60618df53d19906e16b89c0decccca31e9224d425e728"
+    },
+    {
+      "path": "complete/commands/pursuit_browser.log",
+      "bytes": 6250,
+      "sha256": "96822dee04d9c5e7da7750a450efbbcdaafda025f52a218e44b172ee626d5e12"
+    },
+    {
+      "path": "complete/commands/python.log",
+      "bytes": 44081,
+      "sha256": "21ec5e217ce1afa4a6393026ea53fbad9edfb7387a69afcd04d0a42188546675"
+    },
+    {
+      "path": "complete/commands/realm-comparator-blade.log",
+      "bytes": 860,
+      "sha256": "d051c505ea0d4762ed40c3b46181cff2ef60ab5dfca172cbdff96e7e26bccab5"
+    },
+    {
+      "path": "complete/commands/realm-comparator-bow.log",
+      "bytes": 859,
+      "sha256": "a07a5025afb0bff37325955e4fd9fea4c0a5b197b0afaa4f95064ca4a85245d8"
+    },
+    {
+      "path": "complete/commands/realm-comparator-veteran.log",
+      "bytes": 1380,
+      "sha256": "43548878c3c7a5bcd1e0622a4d68deeb02e39a89c9d89a35811ac92360cfa47a"
+    },
+    {
+      "path": "complete/commands/realm-trails-blade.log",
+      "bytes": 161,
+      "sha256": "8c99875b9853801c2052b9590857b851d349d56ab81580bfb70232c631f73fe1"
+    },
+    {
+      "path": "complete/commands/realm-trails-bow.log",
+      "bytes": 159,
+      "sha256": "53a69d88317a65523229998ee60c03de091e0a8b8d41a82e5253f340965b78d5"
+    },
+    {
+      "path": "complete/commands/realm-trails-south-blade.log",
+      "bytes": 5036,
+      "sha256": "299cfb43dcf5aaa5f2e78768a0d7a9d56525e4ff73876e95a3a295f639a7060d"
+    },
+    {
+      "path": "complete/commands/realm-trails-south-bow.log",
+      "bytes": 5034,
+      "sha256": "b79600ce486c4c6bc723dee57bf5e492d0781dae6f0e6ca16a248a1c5e5ad21e"
+    },
+    {
+      "path": "complete/commands/realm_atlas_browser.log",
+      "bytes": 2177,
+      "sha256": "aeaa2edea10aa5195268cbd2a87a0e063a6d4f799176e0f0d0dc5f3bfdab35fc"
+    },
+    {
+      "path": "complete/commands/realm_givers_browser.log",
+      "bytes": 25187,
+      "sha256": "c3c54c62b28a300b4a448cdd640d42fb7ab3023458fd16385b095ab48a81a79c"
+    },
+    {
+      "path": "complete/commands/realm_trails_browser.log",
+      "bytes": 4049,
+      "sha256": "1cfc3a14a5ec86d727062b7612602dabfcc1a32cef43eb6e5b9b7a7a96aebf35"
+    },
+    {
+      "path": "complete/commands/realm_trails_cosmos_browser.log",
+      "bytes": 1928,
+      "sha256": "50c8c5292dcebda9f622a3fb057567e81b8766cb66205ca535dbb81bd5cd9921"
+    },
+    {
+      "path": "complete/commands/realm_trails_north_browser.log",
+      "bytes": 13352,
+      "sha256": "20bd8eb3a4b685e9fac155cf3dedeba7d384c96e50fdd127954a942ae27d5eab"
+    },
+    {
+      "path": "complete/commands/realm_work_presentation_browser.log",
+      "bytes": 24674,
+      "sha256": "8f99bc057bcd0186deda9c38e3a39c9a88295c29e7a0422a1b6dc99b74fcc5f9"
+    },
+    {
+      "path": "complete/commands/reflection_browser.log",
+      "bytes": 1849,
+      "sha256": "1671c3fdfb2edc69fe5c1be34632b9c9e2f7562a5cf1354a4873ea76677ea7b5"
+    },
+    {
+      "path": "complete/commands/regression09_browser.log",
+      "bytes": 4172,
+      "sha256": "f961280bfd48606e6024aa38a62f5987eaba527c66e9db533adf04933c89a9ea"
+    },
+    {
+      "path": "complete/commands/rules.log",
+      "bytes": 388257,
+      "sha256": "5e9b7e5a03535d2cad4fdd3aa962b8bd7d33717700cfc98e5f9b174bf3681c64"
+    },
+    {
+      "path": "complete/commands/skitter_presentation_browser.log",
+      "bytes": 7834,
+      "sha256": "0f1e2dd43557cd16cf6bb04859908705d94a49e317f932e6de6846cb1820f48d"
+    },
+    {
+      "path": "complete/commands/soundscape_browser.log",
+      "bytes": 3575,
+      "sha256": "958fddee60c7990b25dbb365c0070a4871d73abd7e90c52b1843c749b09eebaa"
+    },
+    {
+      "path": "complete/commands/starter-blade.log",
+      "bytes": 507,
+      "sha256": "7bf2c1aedc79943bcdc356237696bf2a1a464841e03520203f7ee7d0f4911dae"
+    },
+    {
+      "path": "complete/commands/starter-bow.log",
+      "bytes": 503,
+      "sha256": "2496bd1b1ba568c3ff951073bede4e7625f178d4aa75780f9ab122264bf8b37f"
+    },
+    {
+      "path": "complete/commands/starter-veteran.log",
+      "bytes": 1438,
+      "sha256": "a5ce11e73e32f6a35882e153121d316e4ff0bf6682f0b18001f5e86a2f979be0"
+    },
+    {
+      "path": "complete/commands/starter_browser.log",
+      "bytes": 5086,
+      "sha256": "62851f6e17391909357099954f8ffd98512b4a1e9079529032fea46df8ebba87"
+    },
+    {
+      "path": "complete/commands/timber_browser.log",
+      "bytes": 2209,
+      "sha256": "d4daadf0b4bc1a1b65c3666059fd0c3072a2bbbd5de1203c4d3b0a6b09eca177"
+    },
+    {
+      "path": "complete/commands/traveler_browser.log",
+      "bytes": 5536,
+      "sha256": "4409bf695407cf8b14c2a32f938519defea7f1ad203d0d5f994c82bbdd84b6e5"
+    },
+    {
+      "path": "complete/commands/whole-draft-earned.log",
+      "bytes": 4657,
+      "sha256": "8301978b1ef2db59bccf14ee8038c7c8920c1e2c2ae3eb33944575bfe8b5fdcd"
+    },
+    {
+      "path": "complete/commands/workshop_transactions_browser.log",
+      "bytes": 7291,
+      "sha256": "354f8e82d2cced594ec4ea90f2c6022d8a0ca34cce35174b7038354d2d9a4869"
+    },
+    {
+      "path": "complete/commands/world-foundations-blade.log",
+      "bytes": 115,
+      "sha256": "fc64a7526f2397fe2fd184a12f5b7161198deee503ca08909120d5cee37e8e24"
+    },
+    {
+      "path": "complete/commands/world-foundations-bow.log",
+      "bytes": 113,
+      "sha256": "672abbfbe7a1d33774e55716e058cae4b29ce9f6c013361f41d6b31a4ad224d6"
+    },
+    {
+      "path": "complete/commands/world-foundations-veteran.log",
+      "bytes": 111,
+      "sha256": "f67ce6df32a739cda65cf92f5c480d85fc7cf4969a8894534f8f0a9487566137"
+    },
+    {
+      "path": "complete/commands/world_cutaway_browser.log",
+      "bytes": 3716,
+      "sha256": "16c8dae593b6b8442ec993b89c21246632c7f4d18f373fc7d294fa4ffdfae560"
+    },
+    {
+      "path": "complete/commands/world_foundations_browser.log",
+      "bytes": 10501,
+      "sha256": "419c58a151f6783fb81facdbcca2e6a63c461a70d5e5f34e44352652556b298e"
+    },
+    {
+      "path": "complete/reports/atlantis-campaign-earned/fresh-blade/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 61321,
+      "sha256": "75b7ca9b88c493ca0abb8a2aaf938a4f5090b0f56a02fa7a7b43730c039da911"
+    },
+    {
+      "path": "complete/reports/atlantis-campaign-earned/fresh-blade/SEED_PROVENANCE.json",
+      "bytes": 14721,
+      "sha256": "52aed3b7d4451beb067439247c41a9631ee5f009af1bc00ca89bce20b4ceb264"
+    },
+    {
+      "path": "complete/reports/atlantis-campaign-earned/fresh-bow/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 68165,
+      "sha256": "29647cf2bc0615cf5c8f56ef1492ec960adb9e911d23a993158bd7d17497acd5"
+    },
+    {
+      "path": "complete/reports/atlantis-campaign-earned/fresh-bow/SEED_PROVENANCE.json",
+      "bytes": 14719,
+      "sha256": "b79298ad7f05936b472ce123762fbeadb363145946a833bde2e7252525052d80"
+    },
+    {
+      "path": "complete/reports/atlantis-campaign-earned/returning-strongest/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 59700,
+      "sha256": "b9d863b051e44b73a77adc69d7122a2e4e3ce1106b5592b64e8f9ba569b55d55"
+    },
+    {
+      "path": "complete/reports/atlantis-campaign-earned/returning-strongest/SEED_PROVENANCE.json",
+      "bytes": 14948,
+      "sha256": "a1306299a367d49a37b82cea8c9ecbf7412cb18acff668d7274d1939d5861d64"
+    },
+    {
+      "path": "complete/reports/cosmos-campaign-earned/fresh-blade/COSMOS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 68602,
+      "sha256": "583f71efbc5e6843c22e21e41622a4c5921e13ccccd43eb8a55535a086f700ca"
+    },
+    {
+      "path": "complete/reports/cosmos-campaign-earned/fresh-blade/SEED_PROVENANCE.json",
+      "bytes": 15188,
+      "sha256": "0c027a92e0f514163892f46607131af9c0f079035f134e0dd87606f1c077b840"
+    },
+    {
+      "path": "complete/reports/cosmos-campaign-earned/fresh-bow/COSMOS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 76205,
+      "sha256": "318e0f8eeb0d911e6fbe30fd1f0a4f24f22bf7e536560825f4dbd8ea6ff0ab77"
+    },
+    {
+      "path": "complete/reports/cosmos-campaign-earned/fresh-bow/SEED_PROVENANCE.json",
+      "bytes": 15186,
+      "sha256": "fb7fe86746fc62e8cd0c5ea7bfbe736e23a76919a3718acffc95b3620058c43d"
+    },
+    {
+      "path": "complete/reports/cosmos-campaign-earned/returning-strongest/COSMOS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 55217,
+      "sha256": "2ecb2b3b9923a061aaed6c294bbbe0791d1241e44c1114726cbf3dde0c208c16"
+    },
+    {
+      "path": "complete/reports/cosmos-campaign-earned/returning-strongest/SEED_PROVENANCE.json",
+      "bytes": 15415,
+      "sha256": "ac15eb100e0671fda78b3309245bae8773b07b10c8f0aa28636f8bf4aec42033"
+    },
+    {
+      "path": "complete/reports/earth-homecoming-earned.SOURCE_EPOCH.json",
+      "bytes": 16559,
+      "sha256": "1afbc973a618c63cc27d3afc0fee2ccab2051912989ae88bb3a4da4818033ade"
+    },
+    {
+      "path": "complete/reports/earth-homecoming-earned/CONNECTED_EARTH_HOMECOMING_REPORT.json",
+      "bytes": 100330,
+      "sha256": "4d1be1c0e3b941c2970518ccc4f7ef5068380efc4f5b1e0cc2c7a214dc53d70b"
+    },
+    {
+      "path": "complete/reports/earth-homecoming-earned/blade/earth/EARTH_HOMECOMING_JOURNEY_REPORT.json",
+      "bytes": 42357,
+      "sha256": "d0e193d6ff0fd18490eea995b36321d6e471d7247966da4c609ab71b27cc2985"
+    },
+    {
+      "path": "complete/reports/earth-homecoming-earned/bow/earth/EARTH_HOMECOMING_JOURNEY_REPORT.json",
+      "bytes": 46946,
+      "sha256": "9f2cb8ee3da1f019f6359e762375f1ec36d8927e54f02fdd3bb59ba1e93463c2"
+    },
+    {
+      "path": "complete/reports/earth-homecoming-earned/strongest/earth/EARTH_HOMECOMING_JOURNEY_REPORT.json",
+      "bytes": 43057,
+      "sha256": "2716bcc5ab9997ca0dc7554ebd394a486c86fd9832645f501d1d52695e48c947"
+    },
+    {
+      "path": "complete/reports/earth-homecoming-earned/strongest/missing-atlantis/fixture-origin-strongest/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 59691,
+      "sha256": "4dc98ee5ee32be08084894cd6e4992bed46027c861ad80cc8f919bf6b3f04f1d"
+    },
+    {
+      "path": "complete/reports/earth-homecoming-earned/strongest/missing-atlantis/fixture-origin-strongest/SEED_PROVENANCE.json",
+      "bytes": 14973,
+      "sha256": "91a3034d51bb84715d520ef4f46af6c89195773b66932614ad81847979cd510c"
+    },
+    {
+      "path": "complete/reports/earth-homecoming-earned/strongest/missing-earth/EARLY_REALMS_REPORT.json",
+      "bytes": 38999,
+      "sha256": "6d555b06d5d26004a72c678d18594210c803c58347b9eb705afb124a20e630d4"
+    },
+    {
+      "path": "complete/reports/earth-homecoming-earned/strongest/missing-heaven/fixture-origin-strongest/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 55722,
+      "sha256": "50d1889afc12e1bdc82b8354ce91814e3120b5463432491c164732418259f94f"
+    },
+    {
+      "path": "complete/reports/earth-homecoming-earned/strongest/missing-heaven/fixture-origin-strongest/SEED_PROVENANCE.json",
+      "bytes": 15484,
+      "sha256": "6661e337ed58c222e07ced78ae471e2de0a916643190902f02384dce88856ac8"
+    },
+    {
+      "path": "complete/reports/earth-homecoming-earned/strongest/missing-hell/fixture-origin-strongest/HELL_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 23720,
+      "sha256": "3253fff469b2d7a27e70a7fae80199ee012ca0245e8e39a02810809b955bd18d"
+    },
+    {
+      "path": "complete/reports/heaven-campaign-earned/fresh-blade/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 61370,
+      "sha256": "6bfee9c92f75fc4f38f7954821b0148aab44a79abcaf969c8f3ad6d7b474539e"
+    },
+    {
+      "path": "complete/reports/heaven-campaign-earned/fresh-blade/SEED_PROVENANCE.json",
+      "bytes": 15186,
+      "sha256": "47181740225756ced63afd420c64342420e479ff3c9ed3341e0d8c06ee0067ad"
+    },
+    {
+      "path": "complete/reports/heaven-campaign-earned/fresh-bow/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 69411,
+      "sha256": "6c4d41236952099ee4735467e0b7b7ce8c93a765f638767946b8dabc310f61ba"
+    },
+    {
+      "path": "complete/reports/heaven-campaign-earned/fresh-bow/SEED_PROVENANCE.json",
+      "bytes": 15182,
+      "sha256": "c65832e8c8a39a6b4eaf7dfa48c1f2b3338b5c60cf18a65bc000d24eb418309d"
+    },
+    {
+      "path": "complete/reports/heaven-campaign-earned/returning-strongest/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 56466,
+      "sha256": "0758d3e2e5a7d7eb9d6f719ebc1ec69603dd674d99a68625c775e33a184fd18f"
+    },
+    {
+      "path": "complete/reports/heaven-campaign-earned/returning-strongest/SEED_PROVENANCE.json",
+      "bytes": 15421,
+      "sha256": "7564567a2e5de1436eac1f9d964371c421af3725dcc07ffc458c526d8db0345a"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned.SOURCE_EPOCH.json",
+      "bytes": 17511,
+      "sha256": "87dd963cb9f9f2a3c22a203092ddc8546449b5da7e8cd18416209188a05a8a18"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/WHOLE_DRAFT_JOURNEY_REPORT.json",
+      "bytes": 42731,
+      "sha256": "3c38b057f1f407dc404a4f2bcf65e8995f52cdf269b91f6510e1d34915878bd4"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade-to-bow/Earth-homecoming/EARTH_HOMECOMING_JOURNEY_REPORT.json",
+      "bytes": 48091,
+      "sha256": "8609787ecffca817dd20daa037afd00b694c372330598738b7c0ae8c136218ff"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade-to-bow/atlantis/connected-blade-to-bow/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 60447,
+      "sha256": "fc48dda8af691ffa3d1fdc1174f4d7f65d785df8e6453ea42bbdc8909a024beb"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade-to-bow/atlantis/connected-blade-to-bow/SEED_PROVENANCE.json",
+      "bytes": 14959,
+      "sha256": "0ae113c3db5ada34858ea8ecb728f393ddf188d2a8c57c9be53c7b479856f2f8"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade-to-bow/cosmos/connected-blade-to-bow/COSMOS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 64787,
+      "sha256": "11e1d6b589e4cb79a0dcb8cee8c6711eea95cdba73f0eedc1428097f875c4474"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade-to-bow/cosmos/connected-blade-to-bow/SEED_PROVENANCE.json",
+      "bytes": 15428,
+      "sha256": "1cd23a2f632c898ef5a31aeb6dc76d6705d4ba7e869153b1bbddc5d377bb5657"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade-to-bow/heaven/connected-blade-to-bow/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 59809,
+      "sha256": "9f3c7310fd85c32fdeddd50e245525977ced218eeca5c4f84ebacaad05f32d68"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade-to-bow/heaven/connected-blade-to-bow/SEED_PROVENANCE.json",
+      "bytes": 15458,
+      "sha256": "a22733223c817e7023b003b15a13032f54b3e6260dc3d21d3bf67ca15b1c73da"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade-to-bow/hell/connected-blade-to-bow/HELL_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 24413,
+      "sha256": "b1974845916980fda31acb70ac86149917a78d2249ac29a2d1b0f31ffa07b24f"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade-to-bow/local-Earth/EARLY_REALMS_REPORT.json",
+      "bytes": 39328,
+      "sha256": "e76f778bf9d66c89efc00ce53a05ecbbdf305d8a7d4f8120cc95d0719e840172"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade-to-bow/original-I/CHAPTER_JOURNEY_REPORT.json",
+      "bytes": 903,
+      "sha256": "856840160c3a7696cde547deb48fbfecc20e77d97e5c6d191ab4d9e44f650069"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade-to-bow/original-II/ROAD_JOURNEY_REPORT.json",
+      "bytes": 935,
+      "sha256": "5243c95a3e08f0db12d42b89ebd858dfee27c3f0384f1d723fb04ea9a6b27c9c"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade/Earth-homecoming/EARTH_HOMECOMING_JOURNEY_REPORT.json",
+      "bytes": 43405,
+      "sha256": "98671e93c0c96b9ae1a071de39245a238e76bbc950b2565891dd23b624389448"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade/atlantis/connected-blade/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 59638,
+      "sha256": "970cec9a93e51973ee4ffca7c5d51919685ff99d8679a23e0edfb7863e05c05a"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade/atlantis/connected-blade/SEED_PROVENANCE.json",
+      "bytes": 14938,
+      "sha256": "325e5e8f718b4bd6d9c958f341d20e5e8076aef35f1f9ba1bb230613d6251b51"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade/cosmos/connected-blade/COSMOS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 64349,
+      "sha256": "22ca39454084fb628924d6165160d86eceb62be065afc0d3cb34150404b7f1c2"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade/cosmos/connected-blade/SEED_PROVENANCE.json",
+      "bytes": 15407,
+      "sha256": "9e08d045d649fbf96419d90f639ca3584c35d6eff89abc190406c1bf9ec6042a"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade/heaven/connected-blade/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 56558,
+      "sha256": "9bf23e4a89e6210ae7ed71b55a3d8784dba5a00f45fa59ad6331c90eb8f2f233"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade/heaven/connected-blade/SEED_PROVENANCE.json",
+      "bytes": 15423,
+      "sha256": "342bfa952a0ece1de2d51f70285403e7dfd1de56c8b4ee2f0c6ed6b5ac3dab0c"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade/hell/connected-blade/HELL_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 23728,
+      "sha256": "2078d1db3a09ea233400dc0a3c6493d9dc5516e760de0dfc5686626cdd66e0c6"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade/local-Earth/EARLY_REALMS_REPORT.json",
+      "bytes": 39169,
+      "sha256": "7b89e5b970a44ca427ba2c3cf1959b21a4a5df3bc9a97c2f2fb4958c213f7a57"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade/original-I/CHAPTER_JOURNEY_REPORT.json",
+      "bytes": 903,
+      "sha256": "856840160c3a7696cde547deb48fbfecc20e77d97e5c6d191ab4d9e44f650069"
+    },
+    {
+      "path": "complete/reports/whole-draft-earned/blade/original-II/ROAD_JOURNEY_REPORT.json",
+      "bytes": 935,
+      "sha256": "5243c95a3e08f0db12d42b89ebd858dfee27c3f0384f1d723fb04ea9a6b27c9c"
+    },
+    {
+      "path": "focused/NATIVE_REPORT.json",
+      "bytes": 2165587,
+      "sha256": "bffe707f6aefaa174d987398894704740407fc47b3dcada84f74a4a21e507b88"
+    },
+    {
+      "path": "focused/camera-collision03.log",
+      "bytes": 552,
+      "sha256": "a9fe44f7dc61b4c8257b1bcd05a546f7b32947b059b339d86e106d6802d4edf4"
+    },
+    {
+      "path": "focused/core-camera03.log",
+      "bytes": 3377,
+      "sha256": "8f3e82341f5b162e2e798c1a05b3ef847c0b0f15a639ff8a40cfe3fc1f66a487"
+    },
+    {
+      "path": "focused/integrated-node01.log",
+      "bytes": 21217,
+      "sha256": "2f9cf3a33fe6a152ed1771406c4960938391027ba0b44269e2b965703a620b5e"
+    },
+    {
+      "path": "focused/path-radius01.log",
+      "bytes": 1153,
+      "sha256": "ac16937d9a46c464bd69bf94072856d7f00709c070ae0ae44b48b31d247b154d"
+    },
+    {
+      "path": "focused/short-preflight01.log",
+      "bytes": 915,
+      "sha256": "5e948d7ed65542f50b8080b4e9cb028a26028a02c18fcbfff8733072a075ed2a"
+    },
+    {
+      "path": "hosted/ANNOTATIONS.json",
+      "bytes": 795,
+      "sha256": "bc1d377da161c4683ae3173bf417ae27c5f8ff3b0dd8c62c128c422b9ded1df4"
+    },
+    {
+      "path": "hosted/RUN.json",
+      "bytes": 14238,
+      "sha256": "1356da18a7fd069e58aed3829a4da404c510449d59299b7edd9d48727379f001"
+    },
+    {
+      "path": "media/ACTUAL_FIELDCRAFT.webm",
+      "bytes": 4350951,
+      "sha256": "a941d0a119feba4e608f1a43f3b474b3bf763bf792d6e94f84bcf60716ea9cfb"
+    },
+    {
+      "path": "media/DECODED-PERMANENT.png",
+      "bytes": 400026,
+      "sha256": "3808b28f3faa0b0f36e004bf303221d218b4490ea8f21307f3d5ab9481a02ab1"
+    },
+    {
+      "path": "media/PERMANENT_DIORAMA.png",
+      "bytes": 806722,
+      "sha256": "9275771b103d48fa84032035f396e05e0196693ecfd22152c5dd2a7838d0211a"
+    },
+    {
+      "path": "media/PERMANENT_THIRD.png",
+      "bytes": 785210,
+      "sha256": "ce3066a2390f5047cda69484cb8e0342cc15cae388e38f6b3a73d4f6cd546d46"
+    },
+    {
+      "path": "media/WORKSPACE_BEFORE.png",
+      "bytes": 331657,
+      "sha256": "9a3c8c6ea38cd3c87863d43d8708800eb6f14e6888677377217cdd675e6cc824"
+    },
+    {
+      "path": "media/fresh-blade-fieldcraft-compact-native-controls.png",
+      "bytes": 80194,
+      "sha256": "5c67838ab00543b4dfba80904312eca8da62e74b4c3731f450f8d8197aa4652e"
+    },
+    {
+      "path": "media/fresh-blade-fieldcraft-correct-follow-portrait.png",
+      "bytes": 249179,
+      "sha256": "92b4d973ee4899dcfa7801b42a2d7d12a06a94ea6edcaa9e9301c727a5ea383e"
+    },
+    {
+      "path": "media/fresh-blade-fieldcraft-ready-adventure-portrait.png",
+      "bytes": 250346,
+      "sha256": "6fa0b1d7e1181ca9b3567419a8e930864b73a7776e63599771d5293b6545b984"
+    },
+    {
+      "path": "media/fresh-blade-fieldcraft-wrong-adventure-portrait-fov45.png",
+      "bytes": 260041,
+      "sha256": "5c6db923d3cfdaf8acebf54e21b6073224519c78aa7253df93ae88ee1c9906bb"
+    },
+    {
+      "path": "negative/native01/FAILURE.png",
+      "bytes": 1738986,
+      "sha256": "9dd955623dcf8f866ce8c3a87aea151da7b358cb293a377b2c0df68d703ffb14"
+    },
+    {
+      "path": "negative/native01/REPORT.json",
+      "bytes": 60547,
+      "sha256": "47aef4382ab763b857d6aaf499404c4fdac801eb96684e56f5415019770aab93"
+    },
+    {
+      "path": "negative/native01/run.log",
+      "bytes": 6833,
+      "sha256": "f1f12f736202694a6a5b7f6850aaef6149ed4deef6e8147abf900589ef88ba20"
+    },
+    {
+      "path": "negative/native02/REPORT.json",
+      "bytes": 555689,
+      "sha256": "79170f1e44178c692de8d6f35aedfdd00fde283c6bd52ea5877497a592fa7833"
+    },
+    {
+      "path": "negative/native02/run.log",
+      "bytes": 31194,
+      "sha256": "f691474576142089e6669ee023a46f10556a97bde28c4e9959ca8a6b9b866e77"
+    },
+    {
+      "path": "negative/source01/CONSOLE.log",
+      "bytes": 14288,
+      "sha256": "926244d3c99843dfec6ab144a34c510342f51acf1b112a01928126a97a4fdc72"
+    },
+    {
+      "path": "negative/source01/PROCESS_EXIT.json",
+      "bytes": 73,
+      "sha256": "7690574de5943b7d9f36ce3b9951ed4649d191db6878f1b36e923c932de4394d"
+    },
+    {
+      "path": "negative/source01/rules.log",
+      "bytes": 387209,
+      "sha256": "22a3fb3a4faa4a5da0e64cd1a2f0af5ffbf9574064c8e0b46735d782427499fa"
+    },
+    {
+      "path": "negative/source02/CONSOLE.log",
+      "bytes": 14346,
+      "sha256": "cb690cbe77f55c27bf88e73c5b7eccd028c3866e42d2b18e59d810ea72c737f9"
+    },
+    {
+      "path": "negative/source02/PROCESS_EXIT.json",
+      "bytes": 73,
+      "sha256": "795200368fa60f8c8d7041c244f13f3bef81b55835ffae99bdddd1b0c7665d8c"
+    },
+    {
+      "path": "negative/source02/python.log",
+      "bytes": 46879,
+      "sha256": "2c765869fbf1137dc7f87eb64b32fcfadfa38aaf4f36583e2e5020b3d18c1771"
+    },
+    {
+      "path": "negative/source03/CONSOLE.log",
+      "bytes": 13710,
+      "sha256": "03fbeca4aa01a2baf31e3df8c072744a011ee795ccbc2fe558b3f97c1dfdce91"
+    },
+    {
+      "path": "negative/source03/PROCESS_EXIT.json",
+      "bytes": 73,
+      "sha256": "45d5b7d8dcb6305b8506f4d3b1e0575b9d4d3e0fc85f26bcd34c815863543453"
+    },
+    {
+      "path": "negative/source03/earth-homecoming-earned.log",
+      "bytes": 1798,
+      "sha256": "af217e1671d8da74f59889b55de06d6110be950037fb6d06a58d337ef2464fa3"
+    },
+    {
+      "path": "negative/source03/reports/atlantis-campaign-earned/fresh-blade/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 61321,
+      "sha256": "5fd744f44ab3da50a010a98ecc0f80a6ca6a62e49a4bfb491c69e127f6bb46e6"
+    },
+    {
+      "path": "negative/source03/reports/atlantis-campaign-earned/fresh-blade/SEED_PROVENANCE.json",
+      "bytes": 14721,
+      "sha256": "eec261451ee8764a904520695765782e13fc51a238bf46222ec742a862813bc6"
+    },
+    {
+      "path": "negative/source03/reports/atlantis-campaign-earned/fresh-bow/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 68165,
+      "sha256": "4159c0c30f3d82b211e8b38d5c8492c42e6481602db5805885a4d61dedd12b4d"
+    },
+    {
+      "path": "negative/source03/reports/atlantis-campaign-earned/fresh-bow/SEED_PROVENANCE.json",
+      "bytes": 14719,
+      "sha256": "9becfb7dbef84e3715a207b6e90203d55018cb9a621b63e371bbd6e336e6df7a"
+    },
+    {
+      "path": "negative/source03/reports/atlantis-campaign-earned/returning-strongest/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 59709,
+      "sha256": "6cc01bd6bb5fdfb8d1cad1f171c2e3a196a64f12c15e699572ed1761ad4907fa"
+    },
+    {
+      "path": "negative/source03/reports/atlantis-campaign-earned/returning-strongest/SEED_PROVENANCE.json",
+      "bytes": 14957,
+      "sha256": "9d8ce9ebd3a11a0fdb9e51904592c4011ffecdfc6c7caa28514aa8c07a393c2a"
+    },
+    {
+      "path": "negative/source03/reports/cosmos-campaign-earned/fresh-blade/COSMOS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 68611,
+      "sha256": "4a6a13792f9fa6a20f268bf38fb5efd3ad72946471387679003aca1b03380112"
+    },
+    {
+      "path": "negative/source03/reports/cosmos-campaign-earned/fresh-blade/SEED_PROVENANCE.json",
+      "bytes": 15188,
+      "sha256": "95b2372a4edbefc712929e263b119de4dfc5656f981ceed948653e823f39d06d"
+    },
+    {
+      "path": "negative/source03/reports/cosmos-campaign-earned/fresh-bow/COSMOS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 76214,
+      "sha256": "086511615a2577e37c679e8568923dfdc64e44872e39fbf072d698783c7f132a"
+    },
+    {
+      "path": "negative/source03/reports/cosmos-campaign-earned/fresh-bow/SEED_PROVENANCE.json",
+      "bytes": 15186,
+      "sha256": "33c16fa673e2e6cdfc0547486b174cf6a2817be03fa46f8c46a495bbf6a9d2b6"
+    },
+    {
+      "path": "negative/source03/reports/cosmos-campaign-earned/returning-strongest/COSMOS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 55235,
+      "sha256": "249ca73a56e410b8a88b211e60df1b61982bffe7b7ab732b1800c90d31837fd6"
+    },
+    {
+      "path": "negative/source03/reports/cosmos-campaign-earned/returning-strongest/SEED_PROVENANCE.json",
+      "bytes": 15424,
+      "sha256": "b4c21a3be66e7fc67a6b8e99b7df3d57757f6c9702d4c7848a4c1e11ae40a94b"
+    },
+    {
+      "path": "negative/source03/reports/earth-homecoming-earned.SOURCE_EPOCH.json",
+      "bytes": 16568,
+      "sha256": "c3783bf5411967549e1da050be0a9893dbd67efe26fa468e1874f2a45ce65611"
+    },
+    {
+      "path": "negative/source03/reports/earth-homecoming-earned/FAILURE.json",
+      "bytes": 89854,
+      "sha256": "cbb3d8d356e468720e12f5595089fc3786ffa02b1a795dd8bedc3940cfd91b8e"
+    },
+    {
+      "path": "negative/source03/reports/earth-homecoming-earned/blade/earth/EARTH_HOMECOMING_JOURNEY_REPORT.json",
+      "bytes": 42302,
+      "sha256": "7bfbf7602f96d7a9461d5d2b2d02b80d61fa41c081b3709121cc31eaf81a4a52"
+    },
+    {
+      "path": "negative/source03/reports/earth-homecoming-earned/bow/earth/EARTH_HOMECOMING_JOURNEY_REPORT.json",
+      "bytes": 46891,
+      "sha256": "93c87d31de98e883cfcd596534965bb8ffa3a150b4633a22470284d18f40daf0"
+    },
+    {
+      "path": "negative/source03/reports/earth-homecoming-earned/strongest/missing-earth/FAILURE.json",
+      "bytes": 44543,
+      "sha256": "50ad2707aa63ecfc31d94c45e0c676028175de52c9d7c01fec27cbfd7a7f2853"
+    },
+    {
+      "path": "negative/source03/reports/heaven-campaign-earned/fresh-blade/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 61370,
+      "sha256": "f66266a3c0fdf169ec2a2c5a6a71af3f8ae0af0a65086e4943c6839c5de79b94"
+    },
+    {
+      "path": "negative/source03/reports/heaven-campaign-earned/fresh-blade/SEED_PROVENANCE.json",
+      "bytes": 15181,
+      "sha256": "5b85201c5bd6fef60ca331516db29cd450a13533be4cc0d9d6a129f21c15c97d"
+    },
+    {
+      "path": "negative/source03/reports/heaven-campaign-earned/fresh-bow/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 69411,
+      "sha256": "45f75edc51e0b08236cc4e81546e4e045ca7672a66bf95b86a258d9db9916a87"
+    },
+    {
+      "path": "negative/source03/reports/heaven-campaign-earned/fresh-bow/SEED_PROVENANCE.json",
+      "bytes": 15177,
+      "sha256": "450e78dc721a4798db2ff80b442050032fcf0978ae50d0dce60b4cd7ab51c73f"
+    },
+    {
+      "path": "negative/source03/reports/heaven-campaign-earned/returning-strongest/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 56475,
+      "sha256": "3e311cb5b809e751e971c5d64587c9ce8f940e566dedcd925bb4ecda61882e8c"
+    },
+    {
+      "path": "negative/source03/reports/heaven-campaign-earned/returning-strongest/SEED_PROVENANCE.json",
+      "bytes": 15425,
+      "sha256": "e590929382b5cc62247c12831bf7593d264f3940904baca078af9f5f7645ae52"
+    },
+    {
+      "path": "packing/pack_evidence.py.snapshot",
+      "bytes": 26923,
+      "sha256": "e07fd1396a2851c0a69bb212b0261eec5494c98249671041c450970e1ff873e5"
+    },
+    {
+      "path": "source-snapshot/build.py.snapshot",
+      "bytes": 16532,
+      "sha256": "23ca1a14ca0dd7da37d778607cd19794a1b23a05e768abe9ced9416619e50311"
+    },
+    {
+      "path": "source-snapshot/qualified-raw/src/atlantis-campaign-data.js.snapshot",
+      "bytes": 17654,
+      "sha256": "0edd29113cceb2e0d6821ec6542a7434aa2ace5e964e44b4f04f4f21ccf25f3f"
+    },
+    {
+      "path": "source-snapshot/qualified-raw/src/earth-homecoming-art.js.snapshot",
+      "bytes": 8847,
+      "sha256": "30779f59d328ab9a3a5fac435ae6bd9d0f9effe6038f6be97a193ac6b6635717"
+    },
+    {
+      "path": "source-snapshot/qualified-raw/tools/earth-homecoming-journey/connected_cosmos.cjs.snapshot",
+      "bytes": 24401,
+      "sha256": "eba6e08a88f6f0fbe8b1d5868370ea58536040700ceb72da85f1b4f06ecb84d6"
+    },
+    {
+      "path": "source-snapshot/qualified-raw/tools/whole_draft_journey.cjs.snapshot",
+      "bytes": 9047,
+      "sha256": "fa6cbdbbcaf74063f43344359917337741991a4e5fe65fd5612092c4c9a19d96"
+    },
+    {
+      "path": "source-snapshot/src/app.js.snapshot",
+      "bytes": 77578,
+      "sha256": "80675a6bf7559cf1b02b949c33a7c4c184b24463c10f725d0e8235d48eea408c"
+    },
+    {
+      "path": "source-snapshot/src/core.js.snapshot",
+      "bytes": 32983,
+      "sha256": "5b34de7972a28fcbc922f2201a72bec384983e43dcbda9258b0701c907cfb49c"
+    },
+    {
+      "path": "source-snapshot/src/earth-expedition-art.js.snapshot",
+      "bytes": 5503,
+      "sha256": "06fa49ca7e7687fc98576c3339fc3d59a9015e1e336640e0c9910ec5bac675b1"
+    },
+    {
+      "path": "source-snapshot/src/earth-expedition-dialogue.js.snapshot",
+      "bytes": 14453,
+      "sha256": "1ba8a7bd0b32d56efa583b5cf1f0d4d1bf24df58e07811d08853e13a56c835ac"
+    },
+    {
+      "path": "source-snapshot/src/earth-expedition-ui.js.snapshot",
+      "bytes": 17355,
+      "sha256": "77bc239988740432863832ae9c3ae4fef571475a54d17cc643436969816a76bc"
+    },
+    {
+      "path": "source-snapshot/src/earth-expedition.css.snapshot",
+      "bytes": 4285,
+      "sha256": "ad650598df3749417d4953965e72d9a2a802f1bb46c549819305a19a5b95247b"
+    },
+    {
+      "path": "source-snapshot/src/earth-expedition.js.snapshot",
+      "bytes": 25390,
+      "sha256": "6dc60f06910d1b0e09335ebe288e20ce6db974fdf6a5e97742f25a9ac03ca36e"
+    },
+    {
+      "path": "source-snapshot/src/earth-fieldcraft-art.js.snapshot",
+      "bytes": 6208,
+      "sha256": "4b7306af76245fe9d7fa55f5e9287565e0dd24048e7364289d49d7553096e55d"
+    },
+    {
+      "path": "source-snapshot/src/earth-fieldcraft-ui.js.snapshot",
+      "bytes": 11326,
+      "sha256": "313708ddf1546e974096ddcc5a0bc41070816b1fd6803dd662770d812a8bb0b5"
+    },
+    {
+      "path": "source-snapshot/src/earth-fieldcraft.js.snapshot",
+      "bytes": 13183,
+      "sha256": "60dd296ee395f027890cfc6ecb40939b1ee384ce7e7af2f82bf1f926b644c283"
+    },
+    {
+      "path": "source-snapshot/src/rpg-ui.js.snapshot",
+      "bytes": 61425,
+      "sha256": "cabca7f6f7708791ef4581787fd36406ea9179b545aa29e837a1b4ed596dec54"
+    },
+    {
+      "path": "source-snapshot/tests/core.test.cjs.snapshot",
+      "bytes": 9991,
+      "sha256": "6224575b7e7074a5a31f3dc66371281b1915115f0283c55a0b35094cc8924026"
+    },
+    {
+      "path": "source-snapshot/tests/core_path_radius.test.cjs.snapshot",
+      "bytes": 10056,
+      "sha256": "dba72ebba47b70bc60193e63e760e618c929a627edc9bd4b431b24a272a66af8"
+    },
+    {
+      "path": "source-snapshot/tests/earth_encounter.test.cjs.snapshot",
+      "bytes": 8013,
+      "sha256": "0201c6e9ddae177c040ccbbc78d990533c3ea34e58f92ce30c6ce7c9d315e331"
+    },
+    {
+      "path": "source-snapshot/tests/earth_expedition.test.cjs.snapshot",
+      "bytes": 22345,
+      "sha256": "1fc15055463fb1651e3d9d2b724d8f11c131801b50ec2b90c07380a54af2594f"
+    },
+    {
+      "path": "source-snapshot/tests/earth_expedition_art.test.cjs.snapshot",
+      "bytes": 23059,
+      "sha256": "c5a8efe98d55d7f743abf0d12b35ff9c755a41dcef7fe6f86b40232a8009c617"
+    },
+    {
+      "path": "source-snapshot/tests/earth_expedition_browser.py.snapshot",
+      "bytes": 42443,
+      "sha256": "80c4afd525446b91490b921766326f05af385d351779a1f41e984e7c624dce69"
+    },
+    {
+      "path": "source-snapshot/tests/earth_expedition_journey.cjs.snapshot",
+      "bytes": 20791,
+      "sha256": "6bb8e311210f24c786d529c4bbe705a621a407690b011324613ef67a3bd10386"
+    },
+    {
+      "path": "source-snapshot/tests/earth_expedition_ui.test.cjs.snapshot",
+      "bytes": 34588,
+      "sha256": "00f81588644b77be0395b35ceff616371aec5a8895252ca4dbe3bb27d621a5a2"
+    },
+    {
+      "path": "source-snapshot/tests/earth_fieldcraft.test.cjs.snapshot",
+      "bytes": 22456,
+      "sha256": "cf1b113244c2c6af53ef475bd376d7bb803b91804fd4dffbc692fb6ba346d449"
+    },
+    {
+      "path": "source-snapshot/tests/earth_fieldcraft_art.test.cjs.snapshot",
+      "bytes": 21652,
+      "sha256": "86c7ecf5f856bb37f857eed5bf17a5a6c03b44caedb35093b35feb6a798e4644"
+    },
+    {
+      "path": "source-snapshot/tests/earth_fieldcraft_camera.test.cjs.snapshot",
+      "bytes": 7848,
+      "sha256": "2d22121a102b07f6a92bf8acddd156211a55aef8bffa031ed3ad2f31248ee30f"
+    },
+    {
+      "path": "source-snapshot/tests/earth_fieldcraft_command.test.cjs.snapshot",
+      "bytes": 17829,
+      "sha256": "c6a93be44f8362cce5292f5ea5c0354f2369eea84800ed74e6ceededf3956d2b"
+    },
+    {
+      "path": "source-snapshot/tests/earth_fieldcraft_ui.test.cjs.snapshot",
+      "bytes": 16241,
+      "sha256": "f538ee1882bac83b3249d11d7493c497e8e2aa049f80144a16aea589095c4bd2"
+    },
+    {
+      "path": "source-snapshot/tests/test_capture_earth_fieldcraft.py.snapshot",
+      "bytes": 8172,
+      "sha256": "d57769ac45cde5074f65f834ddd95c866f02570b201ee45ea93099ccbcf7097b"
+    },
+    {
+      "path": "source-snapshot/tests/test_capture_earth_homecoming.py.snapshot",
+      "bytes": 27477,
+      "sha256": "1cdbab58dce0b89794add2b81461feda23d0274bac9d014cb40ed705f5649d76"
+    },
+    {
+      "path": "source-snapshot/tests/test_capture_fieldcraft_short.py.snapshot",
+      "bytes": 3305,
+      "sha256": "9f632810736f523178adb465abed80fc6a542624087b95b67614d577441d9f6f"
+    },
+    {
+      "path": "source-snapshot/tests/test_earth_fieldcraft_browser.py.snapshot",
+      "bytes": 8675,
+      "sha256": "5b2dd23d0dcb5cf297a880647b01f13e00a8f802ec22873a232ce60258a71328"
+    },
+    {
+      "path": "source-snapshot/tests/whole_draft_onboarding.test.cjs.snapshot",
+      "bytes": 14775,
+      "sha256": "32b4a305d02f62347e2d28412b40df28546f978f4f9b2e37dfbd87ee6d613adc"
+    },
+    {
+      "path": "source-snapshot/tools/capture_earth_expedition.py.snapshot",
+      "bytes": 71547,
+      "sha256": "175be5bf3e750c5c0d87994535c7b0ccf65b85cb315db9d18b6dad16f9901f83"
+    },
+    {
+      "path": "source-snapshot/tools/capture_earth_fieldcraft.py.snapshot",
+      "bytes": 16749,
+      "sha256": "bb7ea0112f5ceb0dd61e86a0750ea6f698af3f926ac141963b16a50a5c5b8aef"
+    },
+    {
+      "path": "source-snapshot/tools/earth-homecoming-journey/early_realms.cjs.snapshot",
+      "bytes": 11144,
+      "sha256": "15e29139d1db1f9df5fa22074c7787d5723c61ad46e53317bc23c700b614a254"
+    },
+    {
+      "path": "source-snapshot/tools/inspect_earth_expedition_presentation.py.snapshot",
+      "bytes": 11216,
+      "sha256": "6866555f50c61fc676ec58a0a5caa8d728cf1cb4582c37a04c93c8ae2de242bd"
+    },
+    {
+      "path": "source/COMMAND_LOGS.json",
+      "bytes": 41689,
+      "sha256": "f3ce5f50435b93b146a8e79d40b96abbfe5212d4fedcad009e6ca5bc28eb25bc"
+    },
+    {
+      "path": "source/CONSOLE.log",
+      "bytes": 12117,
+      "sha256": "238e7348c0322103b3d32c366266f4f97fa74846e8d691c731d6ef10143daded"
+    },
+    {
+      "path": "source/IDENTITY_BINDING.json",
+      "bytes": 2603,
+      "sha256": "2f182211097a3b7b89422aa6af0c761028275c9652f106bc5a6a6c0a199c2d5e"
+    },
+    {
+      "path": "source/PROCESS_EXIT.json",
+      "bytes": 73,
+      "sha256": "55edf1cf12eec3c3270715a7d6ae8727267f42002441c18644ce6ec7c3753018"
+    },
+    {
+      "path": "source/SOURCE_EPOCH.json",
+      "bytes": 17520,
+      "sha256": "31c40d9d15268e189a6e77e3e247d02efbb2c3a02783b9326888912a3b4ef923"
+    },
+    {
+      "path": "source/commands/atlantis-campaign-blade.log",
+      "bytes": 102,
+      "sha256": "bf5355c8c11cab570ef5447fbf2cb9ae92e03944a4f995011707a348ee714e0f"
+    },
+    {
+      "path": "source/commands/atlantis-campaign-bow.log",
+      "bytes": 100,
+      "sha256": "6c82fb5cdf4f3ed355520a90a7ff115892e20aa56c46b9e916ca9b0691fde357"
+    },
+    {
+      "path": "source/commands/atlantis-campaign-veteran.log",
+      "bytes": 111,
+      "sha256": "871e099cef3be692c163dd4c848a1a32f98ec981787a1f72554afdfe58fc8686"
+    },
+    {
+      "path": "source/commands/bridge-community-blade.log",
+      "bytes": 115,
+      "sha256": "5ef9dbac0926b8904107f463f8215323de6ae3cedf3a4ccb99016d2d5078f960"
+    },
+    {
+      "path": "source/commands/bridge-community-bow.log",
+      "bytes": 119,
+      "sha256": "81802a66211ae7e69bbb878bb946d487913223602fdc76dfc57bbd93ed927c42"
+    },
+    {
+      "path": "source/commands/bridge-community-veteran.log",
+      "bytes": 123,
+      "sha256": "08fddde5b7978d3f70af5950ba7c6d4774ffd2d79cdff0c839c3ece5194e0022"
+    },
+    {
+      "path": "source/commands/build.log",
+      "bytes": 91,
+      "sha256": "d584dfa1038750a2e998a99f303cbeaa0349749e8d51b4b3c5ec1f695345bebf"
+    },
+    {
+      "path": "source/commands/characters-journey.log",
+      "bytes": 3058,
+      "sha256": "5f5acfbd47f7058c872275643611fd7926fa00bb7649e8788a08896eab87005a"
+    },
+    {
+      "path": "source/commands/classes-journey.log",
+      "bytes": 4224,
+      "sha256": "52a64c8b080ebd61c727f7ddd93d69912fa906a09f029bcd625e48482f5e54a1"
+    },
+    {
+      "path": "source/commands/cosmos-campaign-blade.log",
+      "bytes": 128,
+      "sha256": "b6e6484740bd267cf826f2796d5db8c5b37a4040d8f78951c8c442f4e711ac46"
+    },
+    {
+      "path": "source/commands/cosmos-campaign-bow.log",
+      "bytes": 126,
+      "sha256": "983182702055d1fcf582c12bc1733815d92089bde3479d14b93e88c308b61e18"
+    },
+    {
+      "path": "source/commands/cosmos-campaign-veteran.log",
+      "bytes": 136,
+      "sha256": "906a670b557365c6ef2ca4355c5d5b63ca806c63a4603fb4cd398d660aa80126"
+    },
+    {
+      "path": "source/commands/cosmos-journey.log",
+      "bytes": 630,
+      "sha256": "048d3fea2abeeeb1714f3d38044a3f4fee35dbfb016f470f26dc94e5537482bb"
+    },
+    {
+      "path": "source/commands/crossing-blade.log",
+      "bytes": 625,
+      "sha256": "0b27a5083c98c2983b9d5dd15b33456d395f182b4b299bbf46412b4f244ba956"
+    },
+    {
+      "path": "source/commands/crossing-bow.log",
+      "bytes": 649,
+      "sha256": "f1f412fb8081e5e0c9e1c60e5ea9b8d1de892fbc3c23c2a76e5b1470f8c04d4a"
+    },
+    {
+      "path": "source/commands/earth-expedition-blade.log",
+      "bytes": 834,
+      "sha256": "ae0f8b181188a9ea39a2d2f98b24be9e461949c5deb8eef97c9ce052c31a30d9"
+    },
+    {
+      "path": "source/commands/earth-expedition-bow.log",
+      "bytes": 830,
+      "sha256": "c43819230b2c2b6662b2067040461c65a4ea1843738a91b68d2eb397d5cf4312"
+    },
+    {
+      "path": "source/commands/earth-expedition-veteran.log",
+      "bytes": 831,
+      "sha256": "87c2aaa48e93f48dc9b19621192b96db9d52cbf781cc3c6550c58527e5580aad"
+    },
+    {
+      "path": "source/commands/earth-homecoming-earned.log",
+      "bytes": 5116,
+      "sha256": "0663a41c64fa3f3908e2ce161c2448b020f1f238ee60e82ab69c766335893257"
+    },
+    {
+      "path": "source/commands/earth-homecoming-native-preflight.log",
+      "bytes": 4342,
+      "sha256": "099ea88265ecfae182046996bd094015e5fab72c07c0664758f4f5125a4fe2a7"
+    },
+    {
+      "path": "source/commands/earth-journey.log",
+      "bytes": 602,
+      "sha256": "efc29d09cebc87f64f00f1ae0637957257e20688569ae453539e812d354d39d9"
+    },
+    {
+      "path": "source/commands/earth-notes-blade.log",
+      "bytes": 2028,
+      "sha256": "03a330c690c524eabb45cc3190a2302147bba7668532909013f84ffe401ba59a"
+    },
+    {
+      "path": "source/commands/earth-notes-bow.log",
+      "bytes": 2030,
+      "sha256": "f2c58170086fad99b1d8350ab130658136fe36c96f6e155ef9324bc1f01f2922"
+    },
+    {
+      "path": "source/commands/earth-notes-veteran.log",
+      "bytes": 2022,
+      "sha256": "d7a0197cfe4f641d07028fec10be864b8dc48e533babe9a92baa015aee9634ff"
+    },
+    {
+      "path": "source/commands/earth-outing-blade.log",
+      "bytes": 5482,
+      "sha256": "be9b2f2c5cc1dc45ed3ada36ba842c06b1e0144b009f341107d3acafb80f6a60"
+    },
+    {
+      "path": "source/commands/earth-outing-bow.log",
+      "bytes": 6715,
+      "sha256": "e4e71e12da6150014a280b35387a3f507522cee791079ddbb89e5805a720d8c6"
+    },
+    {
+      "path": "source/commands/earth-outing-veteran.log",
+      "bytes": 3499,
+      "sha256": "294392f9dda49052072984a4080a4bf9821891c5d53882ca28edcdf6d60d05b5"
+    },
+    {
+      "path": "source/commands/earth-recording-controller-preflight.log",
+      "bytes": 6298,
+      "sha256": "b8e750c3cbf2faf5bc3a3b51e0618a875076c873d4aa154f451054532e92dfef"
+    },
+    {
+      "path": "source/commands/earth-road-journey.log",
+      "bytes": 83,
+      "sha256": "5bd02fb1ce55fc4bc4ab0b89d8eedef30dcf3af8ab045b415e5a7f744d50d0bf"
+    },
+    {
+      "path": "source/commands/earth-story-blade.log",
+      "bytes": 3039,
+      "sha256": "4acd6d8107d038a0993c184bf06b5c1f715fec6848d8257d708f26431ffa965a"
+    },
+    {
+      "path": "source/commands/earth-story-bow.log",
+      "bytes": 3448,
+      "sha256": "a0a97c53d53dd1a89086cdd5160c290ec83b723ec57984ff69df19055a24c8bf"
+    },
+    {
+      "path": "source/commands/earth-story-veteran.log",
+      "bytes": 2628,
+      "sha256": "73c22248010442aca05c5edd53b505475c653491adf836f8da54828edb07f1d4"
+    },
+    {
+      "path": "source/commands/gathering-blade.log",
+      "bytes": 2008,
+      "sha256": "3e683c4be095db03109d5e74fef0638950342e1170c92d32c8fe18b0667ae3b9"
+    },
+    {
+      "path": "source/commands/gathering-bow.log",
+      "bytes": 2004,
+      "sha256": "5d6395e2a7f18faf95b93b34587c8cfc6161413b46cb82ca7455221a61154369"
+    },
+    {
+      "path": "source/commands/gathering-veteran.log",
+      "bytes": 1998,
+      "sha256": "82790a2a16e1fad354adb6c485a94d1be3694a72e33adccf5139995288da2a4f"
+    },
+    {
+      "path": "source/commands/heaven-campaign-blade.log",
+      "bytes": 149,
+      "sha256": "06a4c6fad5039fe2f762ae3bba9f4aded7c5eb2295f7cfa13b554254655ea8b1"
+    },
+    {
+      "path": "source/commands/heaven-campaign-bow.log",
+      "bytes": 150,
+      "sha256": "c7daece8db21e67864161cc56d2e3fda89c126c590fc2167a32dd4e140d9b17e"
+    },
+    {
+      "path": "source/commands/heaven-campaign-veteran.log",
+      "bytes": 157,
+      "sha256": "57bbc7fa30f7dec4c2ccd610c07bbd97047de4a1e9161b90cad42d7152a4e7f6"
+    },
+    {
+      "path": "source/commands/hell-campaign-blade.log",
+      "bytes": 90,
+      "sha256": "afd9305106d14d0ff80b829c769422ab83f1681a5fcc8926a2d96c1e382dd2de"
+    },
+    {
+      "path": "source/commands/hell-campaign-bow.log",
+      "bytes": 88,
+      "sha256": "c68d5d118e02d19ff299e64a036ee685639f25a78e472684222729e781e5094e"
+    },
+    {
+      "path": "source/commands/hell-campaign-veteran.log",
+      "bytes": 99,
+      "sha256": "b99fa6da12bedd3cc060af639ecb97ed53fdccda85429d7fa7adc911507cb380"
+    },
+    {
+      "path": "source/commands/home-history-blade.log",
+      "bytes": 147,
+      "sha256": "67b551344f4ce9c2a7d09fb7e1f609733c67e446b5ac9ec734aa9261bcbb20bd"
+    },
+    {
+      "path": "source/commands/home-history-bow.log",
+      "bytes": 145,
+      "sha256": "fc9771880dce1ba439c946001c3dffe04b41ae7de11625a791a300bc61987e13"
+    },
+    {
+      "path": "source/commands/home-history-veteran.log",
+      "bytes": 155,
+      "sha256": "25402427c525d6548dd3d1ef6a32544736829662f175eb870b82f27d8ae04018"
+    },
+    {
+      "path": "source/commands/local-life-blade.log",
+      "bytes": 1012,
+      "sha256": "982789616d67fd254b72ce9a5a0e8df923d2f9a709205db634b537ff7beb533e"
+    },
+    {
+      "path": "source/commands/local-life-bow.log",
+      "bytes": 1009,
+      "sha256": "0ca6e51f77b4d7736125395d0b37a23b4d7fa4ecb4f2090b2fc1dbf070d4e866"
+    },
+    {
+      "path": "source/commands/local-life-veteran.log",
+      "bytes": 1019,
+      "sha256": "e73bdada22bd81a4ad8ffc08b4a8f2a243ecab7eca8067b88f0c719e76becb16"
+    },
+    {
+      "path": "source/commands/pursuit-blade.log",
+      "bytes": 5483,
+      "sha256": "04029aab268bf30da55bb85ea9cb89e5ab63ecd7f782a59c97aa095529ce4647"
+    },
+    {
+      "path": "source/commands/pursuit-bow.log",
+      "bytes": 6710,
+      "sha256": "7954f060cccbda3f5837029b6b177c60db43a02f6d581a5880ed7382a76135d1"
+    },
+    {
+      "path": "source/commands/pursuit-veteran.log",
+      "bytes": 3496,
+      "sha256": "d7f83235ad8095162cce679fdfaebd0fdd4165b4e2517d16d8d0650bf1301d4b"
+    },
+    {
+      "path": "source/commands/python.log",
+      "bytes": 44080,
+      "sha256": "2c5bdefb14e3f24bd7d048715c38c856916e31354b6d5088bae2521ec44753bb"
+    },
+    {
+      "path": "source/commands/realm-comparator-blade.log",
+      "bytes": 860,
+      "sha256": "d051c505ea0d4762ed40c3b46181cff2ef60ab5dfca172cbdff96e7e26bccab5"
+    },
+    {
+      "path": "source/commands/realm-comparator-bow.log",
+      "bytes": 859,
+      "sha256": "a07a5025afb0bff37325955e4fd9fea4c0a5b197b0afaa4f95064ca4a85245d8"
+    },
+    {
+      "path": "source/commands/realm-comparator-veteran.log",
+      "bytes": 1380,
+      "sha256": "43548878c3c7a5bcd1e0622a4d68deeb02e39a89c9d89a35811ac92360cfa47a"
+    },
+    {
+      "path": "source/commands/realm-trails-blade.log",
+      "bytes": 161,
+      "sha256": "8c99875b9853801c2052b9590857b851d349d56ab81580bfb70232c631f73fe1"
+    },
+    {
+      "path": "source/commands/realm-trails-bow.log",
+      "bytes": 159,
+      "sha256": "53a69d88317a65523229998ee60c03de091e0a8b8d41a82e5253f340965b78d5"
+    },
+    {
+      "path": "source/commands/realm-trails-south-blade.log",
+      "bytes": 5036,
+      "sha256": "6512f22f642dbff13d3d1036ae87cd0f1ff83dff774a81ab62c895925851ab7a"
+    },
+    {
+      "path": "source/commands/realm-trails-south-bow.log",
+      "bytes": 5034,
+      "sha256": "f1d65770e841ea8774e3ee7eedca99605b4821117232f28f42327f760202da90"
+    },
+    {
+      "path": "source/commands/rules.log",
+      "bytes": 388295,
+      "sha256": "50dffe271aeb8368461ee2b1f9fd84865fe4d462d86f35a8e3beeee0d1abe3d5"
+    },
+    {
+      "path": "source/commands/starter-blade.log",
+      "bytes": 507,
+      "sha256": "7bf2c1aedc79943bcdc356237696bf2a1a464841e03520203f7ee7d0f4911dae"
+    },
+    {
+      "path": "source/commands/starter-bow.log",
+      "bytes": 503,
+      "sha256": "2496bd1b1ba568c3ff951073bede4e7625f178d4aa75780f9ab122264bf8b37f"
+    },
+    {
+      "path": "source/commands/starter-veteran.log",
+      "bytes": 1438,
+      "sha256": "a5ce11e73e32f6a35882e153121d316e4ff0bf6682f0b18001f5e86a2f979be0"
+    },
+    {
+      "path": "source/commands/whole-draft-earned.log",
+      "bytes": 4652,
+      "sha256": "c1c73c6e6b5230c3e0f210a8839b46512644cd120f936e36055d11723afa1be5"
+    },
+    {
+      "path": "source/commands/world-foundations-blade.log",
+      "bytes": 115,
+      "sha256": "fc64a7526f2397fe2fd184a12f5b7161198deee503ca08909120d5cee37e8e24"
+    },
+    {
+      "path": "source/commands/world-foundations-bow.log",
+      "bytes": 113,
+      "sha256": "672abbfbe7a1d33774e55716e058cae4b29ce9f6c013361f41d6b31a4ad224d6"
+    },
+    {
+      "path": "source/commands/world-foundations-veteran.log",
+      "bytes": 111,
+      "sha256": "f67ce6df32a739cda65cf92f5c480d85fc7cf4969a8894534f8f0a9487566137"
+    },
+    {
+      "path": "source/reports/atlantis-campaign-earned/fresh-blade/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 61321,
+      "sha256": "5fd744f44ab3da50a010a98ecc0f80a6ca6a62e49a4bfb491c69e127f6bb46e6"
+    },
+    {
+      "path": "source/reports/atlantis-campaign-earned/fresh-blade/SEED_PROVENANCE.json",
+      "bytes": 14721,
+      "sha256": "eec261451ee8764a904520695765782e13fc51a238bf46222ec742a862813bc6"
+    },
+    {
+      "path": "source/reports/atlantis-campaign-earned/fresh-bow/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 68165,
+      "sha256": "4159c0c30f3d82b211e8b38d5c8492c42e6481602db5805885a4d61dedd12b4d"
+    },
+    {
+      "path": "source/reports/atlantis-campaign-earned/fresh-bow/SEED_PROVENANCE.json",
+      "bytes": 14719,
+      "sha256": "9becfb7dbef84e3715a207b6e90203d55018cb9a621b63e371bbd6e336e6df7a"
+    },
+    {
+      "path": "source/reports/atlantis-campaign-earned/returning-strongest/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 59709,
+      "sha256": "6cc01bd6bb5fdfb8d1cad1f171c2e3a196a64f12c15e699572ed1761ad4907fa"
+    },
+    {
+      "path": "source/reports/atlantis-campaign-earned/returning-strongest/SEED_PROVENANCE.json",
+      "bytes": 14957,
+      "sha256": "9d8ce9ebd3a11a0fdb9e51904592c4011ffecdfc6c7caa28514aa8c07a393c2a"
+    },
+    {
+      "path": "source/reports/cosmos-campaign-earned/fresh-blade/COSMOS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 68611,
+      "sha256": "4a6a13792f9fa6a20f268bf38fb5efd3ad72946471387679003aca1b03380112"
+    },
+    {
+      "path": "source/reports/cosmos-campaign-earned/fresh-blade/SEED_PROVENANCE.json",
+      "bytes": 15188,
+      "sha256": "95b2372a4edbefc712929e263b119de4dfc5656f981ceed948653e823f39d06d"
+    },
+    {
+      "path": "source/reports/cosmos-campaign-earned/fresh-bow/COSMOS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 76214,
+      "sha256": "086511615a2577e37c679e8568923dfdc64e44872e39fbf072d698783c7f132a"
+    },
+    {
+      "path": "source/reports/cosmos-campaign-earned/fresh-bow/SEED_PROVENANCE.json",
+      "bytes": 15186,
+      "sha256": "33c16fa673e2e6cdfc0547486b174cf6a2817be03fa46f8c46a495bbf6a9d2b6"
+    },
+    {
+      "path": "source/reports/cosmos-campaign-earned/returning-strongest/COSMOS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 55235,
+      "sha256": "249ca73a56e410b8a88b211e60df1b61982bffe7b7ab732b1800c90d31837fd6"
+    },
+    {
+      "path": "source/reports/cosmos-campaign-earned/returning-strongest/SEED_PROVENANCE.json",
+      "bytes": 15424,
+      "sha256": "b4c21a3be66e7fc67a6b8e99b7df3d57757f6c9702d4c7848a4c1e11ae40a94b"
+    },
+    {
+      "path": "source/reports/earth-homecoming-earned.SOURCE_EPOCH.json",
+      "bytes": 16568,
+      "sha256": "14d07c9ccc0cae2dedcfb223875b53516321fac3aa518becdc03f82991e37372"
+    },
+    {
+      "path": "source/reports/earth-homecoming-earned/CONNECTED_EARTH_HOMECOMING_REPORT.json",
+      "bytes": 99437,
+      "sha256": "e3ff8cb2c45a44cbefe8fadc865e8b895d1caa7fc57edcf212cf043591c6a82d"
+    },
+    {
+      "path": "source/reports/earth-homecoming-earned/blade/earth/EARTH_HOMECOMING_JOURNEY_REPORT.json",
+      "bytes": 42302,
+      "sha256": "61c5fdbde411cd056534014c1ecead82a10a487733b15c5b585d60f2dc891b7e"
+    },
+    {
+      "path": "source/reports/earth-homecoming-earned/bow/earth/EARTH_HOMECOMING_JOURNEY_REPORT.json",
+      "bytes": 46891,
+      "sha256": "5e71289e5d01c48d893ed68adee5c6c08f179fc1bbd1f1aa8508c855a9e81bd5"
+    },
+    {
+      "path": "source/reports/earth-homecoming-earned/strongest/earth/EARTH_HOMECOMING_JOURNEY_REPORT.json",
+      "bytes": 43002,
+      "sha256": "f197b5ef0d98de0a1e8c7e05de32b4f07b12acd41a1ead9913add404fa75df5c"
+    },
+    {
+      "path": "source/reports/earth-homecoming-earned/strongest/missing-atlantis/fixture-origin-strongest/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 59686,
+      "sha256": "389dd511a9a8ef22bc8b5f51e5d793d9a96fa360c6f5ca506235c229148d05a2"
+    },
+    {
+      "path": "source/reports/earth-homecoming-earned/strongest/missing-atlantis/fixture-origin-strongest/SEED_PROVENANCE.json",
+      "bytes": 14968,
+      "sha256": "b18d1830cdef51916a8a45a4ddc3ecbc86bf31b77f5b015d648dca70513c5b91"
+    },
+    {
+      "path": "source/reports/earth-homecoming-earned/strongest/missing-earth/EARLY_REALMS_REPORT.json",
+      "bytes": 38974,
+      "sha256": "5ad2b4754dc425bfdf3d0e4c1cbfe9e4bc2c5946162f64ab779042634e898fcb"
+    },
+    {
+      "path": "source/reports/earth-homecoming-earned/strongest/missing-heaven/fixture-origin-strongest/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 55717,
+      "sha256": "8e26570a57d488e29282d4b69f0ec5efc8e18a0cf616b29c405476238ff5ade5"
+    },
+    {
+      "path": "source/reports/earth-homecoming-earned/strongest/missing-heaven/fixture-origin-strongest/SEED_PROVENANCE.json",
+      "bytes": 15474,
+      "sha256": "18d3e514ac1d5c5f3d4776d798c028e6603773005cdadd1b903de7ecb623ea01"
+    },
+    {
+      "path": "source/reports/earth-homecoming-earned/strongest/missing-hell/fixture-origin-strongest/HELL_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 23715,
+      "sha256": "14b535d853e00504d9e1b86a057c2c0cb2315d7d0f75f4c05933ce3665fdf479"
+    },
+    {
+      "path": "source/reports/heaven-campaign-earned/fresh-blade/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 61370,
+      "sha256": "f66266a3c0fdf169ec2a2c5a6a71af3f8ae0af0a65086e4943c6839c5de79b94"
+    },
+    {
+      "path": "source/reports/heaven-campaign-earned/fresh-blade/SEED_PROVENANCE.json",
+      "bytes": 15181,
+      "sha256": "9b2bddc9a16111aa634c7a82f62f878fd0ee516cad189b54996beae4f30291b7"
+    },
+    {
+      "path": "source/reports/heaven-campaign-earned/fresh-bow/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 69411,
+      "sha256": "45f75edc51e0b08236cc4e81546e4e045ca7672a66bf95b86a258d9db9916a87"
+    },
+    {
+      "path": "source/reports/heaven-campaign-earned/fresh-bow/SEED_PROVENANCE.json",
+      "bytes": 15177,
+      "sha256": "b0772094bc52935fb576730c66c225e91b43b0f163db50676c99e5b416723b09"
+    },
+    {
+      "path": "source/reports/heaven-campaign-earned/returning-strongest/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 56475,
+      "sha256": "3e311cb5b809e751e971c5d64587c9ce8f940e566dedcd925bb4ecda61882e8c"
+    },
+    {
+      "path": "source/reports/heaven-campaign-earned/returning-strongest/SEED_PROVENANCE.json",
+      "bytes": 15425,
+      "sha256": "74722c1972860ae1b3d3357a3451adfcfc2af5c1c90bf0fd840416f314786b34"
+    },
+    {
+      "path": "source/reports/whole-draft-earned.SOURCE_EPOCH.json",
+      "bytes": 17520,
+      "sha256": "31c40d9d15268e189a6e77e3e247d02efbb2c3a02783b9326888912a3b4ef923"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/WHOLE_DRAFT_JOURNEY_REPORT.json",
+      "bytes": 42435,
+      "sha256": "7fb0d087224bd9cee351a9988da6daf881c968058d8de0768ea5603d591871ef"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade-to-bow/Earth-homecoming/EARTH_HOMECOMING_JOURNEY_REPORT.json",
+      "bytes": 48036,
+      "sha256": "fe50beb3a62f94dfe9a3e517a01f6c45e3336a11c03f560b7dbafc42c4b7f9a7"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade-to-bow/atlantis/connected-blade-to-bow/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 60442,
+      "sha256": "e819c9320a3ed53e3a9b677165439e8076ee7ec259ffa597df4aa46abec92ada"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade-to-bow/atlantis/connected-blade-to-bow/SEED_PROVENANCE.json",
+      "bytes": 14954,
+      "sha256": "6c09905de2e8aa21e8e4539f0872a65609ab1fc29c1835d0f641f14f9b6830c3"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade-to-bow/cosmos/connected-blade-to-bow/COSMOS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 64791,
+      "sha256": "778e9aa1c7c045278fdc7b1b58aef5085c1e9f1f3dd5a5b8aa6762cd52618c9d"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade-to-bow/cosmos/connected-blade-to-bow/SEED_PROVENANCE.json",
+      "bytes": 15423,
+      "sha256": "ba06b1977dac09f502e399f961cd2034946ed2ddd067d77ffc8dd180fabaf73a"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade-to-bow/heaven/connected-blade-to-bow/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 59804,
+      "sha256": "b5a9a11c42dde5e832b0fb58d1c5e6cf1dd09118be524e0fa51285efd097de00"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade-to-bow/heaven/connected-blade-to-bow/SEED_PROVENANCE.json",
+      "bytes": 15448,
+      "sha256": "1d1004bedab52da0e64c8be246f540b7b418e38f9960e0705fd4415e5aea15a4"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade-to-bow/hell/connected-blade-to-bow/HELL_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 24408,
+      "sha256": "2b77a2192ba3bad0ba24b2e15e34a5e49ee676788b9e0835040f641d39a4c047"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade-to-bow/local-Earth/EARLY_REALMS_REPORT.json",
+      "bytes": 39303,
+      "sha256": "dd8c694c7eba0a202394b1be870e6ca10a9bd81d700d6e88c70ae6cf3fa29d0a"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade-to-bow/original-I/CHAPTER_JOURNEY_REPORT.json",
+      "bytes": 903,
+      "sha256": "856840160c3a7696cde547deb48fbfecc20e77d97e5c6d191ab4d9e44f650069"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade-to-bow/original-II/ROAD_JOURNEY_REPORT.json",
+      "bytes": 935,
+      "sha256": "5243c95a3e08f0db12d42b89ebd858dfee27c3f0384f1d723fb04ea9a6b27c9c"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade/Earth-homecoming/EARTH_HOMECOMING_JOURNEY_REPORT.json",
+      "bytes": 43350,
+      "sha256": "4095e6b1e7f4f1754abde15c8603d022e90d8b390650346571e4fba064a31983"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade/atlantis/connected-blade/ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 59633,
+      "sha256": "6823c7cb2b22a2ff4819911777d7859fa3393b27cf286f4729db4b6dc4f1967a"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade/atlantis/connected-blade/SEED_PROVENANCE.json",
+      "bytes": 14933,
+      "sha256": "0e886350474702b767404265e58593fab76b0499a50500c40f1d0558af7e42a1"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade/cosmos/connected-blade/COSMOS_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 64353,
+      "sha256": "0609b7f42c9897361b7b46b439ce4ed702efee0cc12822dcd9c2bb937ebbcea1"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade/cosmos/connected-blade/SEED_PROVENANCE.json",
+      "bytes": 15402,
+      "sha256": "f3e5fae0314d43ea9c405b9f4d5afdde44705e0593351d656cce1ad1b196821c"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade/heaven/connected-blade/HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 56553,
+      "sha256": "4adb80468941652e73069c613d3b7aa5d175015466a523021c21e8dcd5970e0f"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade/heaven/connected-blade/SEED_PROVENANCE.json",
+      "bytes": 15413,
+      "sha256": "d110cd7790d6c217e1ddbf4efae86c9ad208a51adf78f86998b284663e4ea253"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade/hell/connected-blade/HELL_CAMPAIGN_JOURNEY_REPORT.json",
+      "bytes": 23723,
+      "sha256": "4790e5d50a9ab03fc0d52cadfcf68caec3377af0c8c17641e928fe833c61742a"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade/local-Earth/EARLY_REALMS_REPORT.json",
+      "bytes": 39144,
+      "sha256": "07e08bea0a671ed77c8b87f528d334e5d52291f2635332ba4af8cccac661858e"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade/original-I/CHAPTER_JOURNEY_REPORT.json",
+      "bytes": 903,
+      "sha256": "856840160c3a7696cde547deb48fbfecc20e77d97e5c6d191ab4d9e44f650069"
+    },
+    {
+      "path": "source/reports/whole-draft-earned/blade/original-II/ROAD_JOURNEY_REPORT.json",
+      "bytes": 935,
+      "sha256": "5243c95a3e08f0db12d42b89ebd858dfee27c3f0384f1d723fb04ea9a6b27c9c"
+    },
+    {
+      "path": "video/CONSOLE.log",
+      "bytes": 871,
+      "sha256": "64c67cf2762d2588021e8321af9f3bec5f694a7fecb561e0d4d16ca2d5c32981"
+    },
+    {
+      "path": "video/DECODE.log",
+      "bytes": 2815,
+      "sha256": "4cf98e9e641cebfa1e02cab8726d170cd439d68f644845ea45e03a822af79a81"
+    },
+    {
+      "path": "video/FINAL_WORLD.json",
+      "bytes": 21875,
+      "sha256": "66ce893f7553d6f592e5681f7026614144bb157c29f33eef27b4663c2ffa58a0"
+    },
+    {
+      "path": "video/PROVENANCE.json",
+      "bytes": 1876,
+      "sha256": "2927a644efff79384f49af04368d0cb0d52ff0f478b5010a1c926cf96685bcc9"
+    },
+    {
+      "path": "video/REPORT.json",
+      "bytes": 40005,
+      "sha256": "7433a6c929b1629d0bc47735de71e0c0fa542ef7816acc367bc8fa877902171a"
+    },
+    {
+      "path": "video/SOURCE_WORLD.json",
+      "bytes": 19801,
+      "sha256": "c374094fe086e5423738afca7e1cc4dc8bf015852a91a12872b18009acfd83e0"
+    }
+  ],
+  "payloadCount": 449,
+  "payloadBytes": 71380786,
+  "emptyOutputsOmitted": [
+    "source/commands/syntax-adventure-art.log",
+    "source/commands/syntax-adventure-ui.log",
+    "source/commands/syntax-adventure.log",
+    "source/commands/syntax-app.log",
+    "source/commands/syntax-arsenal-art.log",
+    "source/commands/syntax-arsenal-ui.log",
+    "source/commands/syntax-arsenal.log",
+    "source/commands/syntax-atlantis-campaign-art.log",
+    "source/commands/syntax-atlantis-campaign-data.log",
+    "source/commands/syntax-atlantis-campaign-ui.log",
+    "source/commands/syntax-atlantis-campaign.log",
+    "source/commands/syntax-beacon-art.log",
+    "source/commands/syntax-beacon.log",
+    "source/commands/syntax-bridge-art.log",
+    "source/commands/syntax-bridge-community-art.log",
+    "source/commands/syntax-bridge-community-ui.log",
+    "source/commands/syntax-bridge-community.log",
+    "source/commands/syntax-bridge-moment-view.log",
+    "source/commands/syntax-characters-ui.log",
+    "source/commands/syntax-characters.log",
+    "source/commands/syntax-classes-ui.log",
+    "source/commands/syntax-classes.log",
+    "source/commands/syntax-coastward-settlement-art.log",
+    "source/commands/syntax-coastward-woodland-art.log",
+    "source/commands/syntax-combat-view.log",
+    "source/commands/syntax-combat.log",
+    "source/commands/syntax-companion-art.log",
+    "source/commands/syntax-core.log",
+    "source/commands/syntax-cosmos-art.log",
+    "source/commands/syntax-cosmos-campaign-art.log",
+    "source/commands/syntax-cosmos-campaign-data.log",
+    "source/commands/syntax-cosmos-campaign-ui.log",
+    "source/commands/syntax-cosmos-campaign.log",
+    "source/commands/syntax-cosmos-ui.log",
+    "source/commands/syntax-cosmos.log",
+    "source/commands/syntax-creative.log",
+    "source/commands/syntax-crossing-art.log",
+    "source/commands/syntax-crossing-ui.log",
+    "source/commands/syntax-crossing.log",
+    "source/commands/syntax-drover-art.log",
+    "source/commands/syntax-earth-art.log",
+    "source/commands/syntax-earth-expedition-art.log",
+    "source/commands/syntax-earth-expedition-beast-art.log",
+    "source/commands/syntax-earth-expedition-dialogue.log",
+    "source/commands/syntax-earth-expedition-ui.log",
+    "source/commands/syntax-earth-expedition.log",
+    "source/commands/syntax-earth-fieldcraft-art.log",
+    "source/commands/syntax-earth-fieldcraft-ui.log",
+    "source/commands/syntax-earth-fieldcraft.log",
+    "source/commands/syntax-earth-homecoming-art.log",
+    "source/commands/syntax-earth-homecoming-data.log",
+    "source/commands/syntax-earth-homecoming-ui.log",
+    "source/commands/syntax-earth-homecoming.log",
+    "source/commands/syntax-earth-notes-art.log",
+    "source/commands/syntax-earth-notes-ui.log",
+    "source/commands/syntax-earth-notes.log",
+    "source/commands/syntax-earth-road-art.log",
+    "source/commands/syntax-earth-road-ui.log",
+    "source/commands/syntax-earth-road.log",
+    "source/commands/syntax-earth-shoulder-art.log",
+    "source/commands/syntax-earth-story-ui.log",
+    "source/commands/syntax-earth-story.log",
+    "source/commands/syntax-earth-ui.log",
+    "source/commands/syntax-earth.log",
+    "source/commands/syntax-elderweald-trail-art.log",
+    "source/commands/syntax-elderweald-world.log",
+    "source/commands/syntax-engine.log",
+    "source/commands/syntax-experience.log",
+    "source/commands/syntax-gathering-adapter.log",
+    "source/commands/syntax-gathering-art.log",
+    "source/commands/syntax-gathering-music.log",
+    "source/commands/syntax-gathering-ui.log",
+    "source/commands/syntax-gathering.log",
+    "source/commands/syntax-heaven-campaign-art.log",
+    "source/commands/syntax-heaven-campaign-data.log",
+    "source/commands/syntax-heaven-campaign-ui.log",
+    "source/commands/syntax-heaven-campaign.log",
+    "source/commands/syntax-hell-campaign-art.log",
+    "source/commands/syntax-hell-campaign-data.log",
+    "source/commands/syntax-hell-campaign-ui.log",
+    "source/commands/syntax-hell-campaign.log",
+    "source/commands/syntax-home-history-art.log",
+    "source/commands/syntax-home-history-ui.log",
+    "source/commands/syntax-home-history.log",
+    "source/commands/syntax-local-life-art.log",
+    "source/commands/syntax-local-life-ui.log",
+    "source/commands/syntax-local-life.log",
+    "source/commands/syntax-mill-gate-art.log",
+    "source/commands/syntax-millwright-art.log",
+    "source/commands/syntax-pursuit-ui.log",
+    "source/commands/syntax-pursuit.log",
+    "source/commands/syntax-quarry-art.log",
+    "source/commands/syntax-realm-art-data.log",
+    "source/commands/syntax-realm-atlas-ui.log",
+    "source/commands/syntax-realm-craft.log",
+    "source/commands/syntax-realm-givers-art.log",
+    "source/commands/syntax-realm-trails-art.log",
+    "source/commands/syntax-realm-trails-cosmos.log",
+    "source/commands/syntax-realm-trails-north.log",
+    "source/commands/syntax-realm-trails-south.log",
+    "source/commands/syntax-realm-trails-ui.log",
+    "source/commands/syntax-realm-trails.log",
+    "source/commands/syntax-road-art.log",
+    "source/commands/syntax-road.log",
+    "source/commands/syntax-rpg-ui.log",
+    "source/commands/syntax-sandbox-art.log",
+    "source/commands/syntax-sandbox-ui.log",
+    "source/commands/syntax-sandbox.log",
+    "source/commands/syntax-skitter-art.log",
+    "source/commands/syntax-soundscape.log",
+    "source/commands/syntax-starter-art.log",
+    "source/commands/syntax-starter-ui.log",
+    "source/commands/syntax-starter.log",
+    "source/commands/syntax-surface-assets.log",
+    "source/commands/syntax-traveler-art.log",
+    "source/commands/syntax-traveler-equipment-art.log",
+    "source/commands/syntax-workshop-transactions.log",
+    "source/commands/syntax-world-atlantis-earth.log",
+    "source/commands/syntax-world-foundations-art.log",
+    "source/commands/syntax-world-foundations-ui.log",
+    "source/commands/syntax-world-foundations.log",
+    "source/commands/syntax-world-ground-coalescing.log",
+    "source/commands/syntax-world-heaven-hell.log",
+    "source/commands/syntax-world.log",
+    "complete/commands/syntax-adventure-art.log",
+    "complete/commands/syntax-adventure-ui.log",
+    "complete/commands/syntax-adventure.log",
+    "complete/commands/syntax-app.log",
+    "complete/commands/syntax-arsenal-art.log",
+    "complete/commands/syntax-arsenal-ui.log",
+    "complete/commands/syntax-arsenal.log",
+    "complete/commands/syntax-atlantis-campaign-art.log",
+    "complete/commands/syntax-atlantis-campaign-data.log",
+    "complete/commands/syntax-atlantis-campaign-ui.log",
+    "complete/commands/syntax-atlantis-campaign.log",
+    "complete/commands/syntax-beacon-art.log",
+    "complete/commands/syntax-beacon.log",
+    "complete/commands/syntax-bridge-art.log",
+    "complete/commands/syntax-bridge-community-art.log",
+    "complete/commands/syntax-bridge-community-ui.log",
+    "complete/commands/syntax-bridge-community.log",
+    "complete/commands/syntax-bridge-moment-view.log",
+    "complete/commands/syntax-characters-ui.log",
+    "complete/commands/syntax-characters.log",
+    "complete/commands/syntax-classes-ui.log",
+    "complete/commands/syntax-classes.log",
+    "complete/commands/syntax-coastward-settlement-art.log",
+    "complete/commands/syntax-coastward-woodland-art.log",
+    "complete/commands/syntax-combat-view.log",
+    "complete/commands/syntax-combat.log",
+    "complete/commands/syntax-companion-art.log",
+    "complete/commands/syntax-core.log",
+    "complete/commands/syntax-cosmos-art.log",
+    "complete/commands/syntax-cosmos-campaign-art.log",
+    "complete/commands/syntax-cosmos-campaign-data.log",
+    "complete/commands/syntax-cosmos-campaign-ui.log",
+    "complete/commands/syntax-cosmos-campaign.log",
+    "complete/commands/syntax-cosmos-ui.log",
+    "complete/commands/syntax-cosmos.log",
+    "complete/commands/syntax-creative.log",
+    "complete/commands/syntax-crossing-art.log",
+    "complete/commands/syntax-crossing-ui.log",
+    "complete/commands/syntax-crossing.log",
+    "complete/commands/syntax-drover-art.log",
+    "complete/commands/syntax-earth-art.log",
+    "complete/commands/syntax-earth-expedition-art.log",
+    "complete/commands/syntax-earth-expedition-beast-art.log",
+    "complete/commands/syntax-earth-expedition-dialogue.log",
+    "complete/commands/syntax-earth-expedition-ui.log",
+    "complete/commands/syntax-earth-expedition.log",
+    "complete/commands/syntax-earth-fieldcraft-art.log",
+    "complete/commands/syntax-earth-fieldcraft-ui.log",
+    "complete/commands/syntax-earth-fieldcraft.log",
+    "complete/commands/syntax-earth-homecoming-art.log",
+    "complete/commands/syntax-earth-homecoming-data.log",
+    "complete/commands/syntax-earth-homecoming-ui.log",
+    "complete/commands/syntax-earth-homecoming.log",
+    "complete/commands/syntax-earth-notes-art.log",
+    "complete/commands/syntax-earth-notes-ui.log",
+    "complete/commands/syntax-earth-notes.log",
+    "complete/commands/syntax-earth-road-art.log",
+    "complete/commands/syntax-earth-road-ui.log",
+    "complete/commands/syntax-earth-road.log",
+    "complete/commands/syntax-earth-shoulder-art.log",
+    "complete/commands/syntax-earth-story-ui.log",
+    "complete/commands/syntax-earth-story.log",
+    "complete/commands/syntax-earth-ui.log",
+    "complete/commands/syntax-earth.log",
+    "complete/commands/syntax-elderweald-trail-art.log",
+    "complete/commands/syntax-elderweald-world.log",
+    "complete/commands/syntax-engine.log",
+    "complete/commands/syntax-experience.log",
+    "complete/commands/syntax-gathering-adapter.log",
+    "complete/commands/syntax-gathering-art.log",
+    "complete/commands/syntax-gathering-music.log",
+    "complete/commands/syntax-gathering-ui.log",
+    "complete/commands/syntax-gathering.log",
+    "complete/commands/syntax-heaven-campaign-art.log",
+    "complete/commands/syntax-heaven-campaign-data.log",
+    "complete/commands/syntax-heaven-campaign-ui.log",
+    "complete/commands/syntax-heaven-campaign.log",
+    "complete/commands/syntax-hell-campaign-art.log",
+    "complete/commands/syntax-hell-campaign-data.log",
+    "complete/commands/syntax-hell-campaign-ui.log",
+    "complete/commands/syntax-hell-campaign.log",
+    "complete/commands/syntax-home-history-art.log",
+    "complete/commands/syntax-home-history-ui.log",
+    "complete/commands/syntax-home-history.log",
+    "complete/commands/syntax-local-life-art.log",
+    "complete/commands/syntax-local-life-ui.log",
+    "complete/commands/syntax-local-life.log",
+    "complete/commands/syntax-mill-gate-art.log",
+    "complete/commands/syntax-millwright-art.log",
+    "complete/commands/syntax-pursuit-ui.log",
+    "complete/commands/syntax-pursuit.log",
+    "complete/commands/syntax-quarry-art.log",
+    "complete/commands/syntax-realm-art-data.log",
+    "complete/commands/syntax-realm-atlas-ui.log",
+    "complete/commands/syntax-realm-craft.log",
+    "complete/commands/syntax-realm-givers-art.log",
+    "complete/commands/syntax-realm-trails-art.log",
+    "complete/commands/syntax-realm-trails-cosmos.log",
+    "complete/commands/syntax-realm-trails-north.log",
+    "complete/commands/syntax-realm-trails-south.log",
+    "complete/commands/syntax-realm-trails-ui.log",
+    "complete/commands/syntax-realm-trails.log",
+    "complete/commands/syntax-road-art.log",
+    "complete/commands/syntax-road.log",
+    "complete/commands/syntax-rpg-ui.log",
+    "complete/commands/syntax-sandbox-art.log",
+    "complete/commands/syntax-sandbox-ui.log",
+    "complete/commands/syntax-sandbox.log",
+    "complete/commands/syntax-skitter-art.log",
+    "complete/commands/syntax-soundscape.log",
+    "complete/commands/syntax-starter-art.log",
+    "complete/commands/syntax-starter-ui.log",
+    "complete/commands/syntax-starter.log",
+    "complete/commands/syntax-surface-assets.log",
+    "complete/commands/syntax-traveler-art.log",
+    "complete/commands/syntax-traveler-equipment-art.log",
+    "complete/commands/syntax-workshop-transactions.log",
+    "complete/commands/syntax-world-atlantis-earth.log",
+    "complete/commands/syntax-world-foundations-art.log",
+    "complete/commands/syntax-world-foundations-ui.log",
+    "complete/commands/syntax-world-foundations.log",
+    "complete/commands/syntax-world-ground-coalescing.log",
+    "complete/commands/syntax-world-heaven-hell.log",
+    "complete/commands/syntax-world.log"
+  ],
+  "exclusions": "Manifest itself; profiles; personal saves; raw frames; copied games; duplicate movies; canonical cohorts retained as reports/manifests, not full replay payloads"
+}

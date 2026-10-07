@@ -1,0 +1,12 @@
+✔ actual third-person Look clears canonical padded wall/cap and preserves current branded view (45.7092ms)
+✔ diorama and wide framing stay inside actual saved camera-profile bounds (63.3814ms)
+✔ actual framing rejects cloned/expired authority and unrelated recorded-looking characters (21.7941ms)
+✔ actual movement/owner synchronization releases framing while synthetic raw revision observations preserve it (23.6661ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 257.774

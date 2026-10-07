@@ -1,0 +1,271 @@
+{
+  "mode": "supported",
+  "cli": [
+    "atlantis_campaign_browser",
+    "bridge_browser",
+    "coastward_bridge_posts_browser",
+    "cosmos_campaign_browser",
+    "earth_road_browser",
+    "earth_story_transactions_browser",
+    "heaven_campaign_browser",
+    "hell_campaign_browser",
+    "practice_visibility_browser",
+    "realm_givers_browser",
+    "realm_trails_north_browser"
+  ],
+  "environment": {
+    "bridge_community_browser": "FIRSTLIGHT_BRIDGE_COMMUNITY_OUTPUT",
+    "home_history_browser": "FIRSTLIGHT_HOME_HISTORY_OUTPUT",
+    "local_life_browser": "FIRSTLIGHT_LOCAL_LIFE_OUTPUT",
+    "earth_ground_material_browser": "FIRSTLIGHT_EARTH_GROUND_OUTPUT",
+    "camera_browser": "FIRSTLIGHT_CAMERA_OUTPUT",
+    "earth_expedition_browser": "FIRSTLIGHT_EXPEDITION_OUTPUT",
+    "coastward_scenery_browser": "FIRSTLIGHT_SCENERY_OUTPUT",
+    "realm_work_presentation_browser": "FIRSTLIGHT_REALM_WORK_OUTPUT",
+    "world_foundations_browser": "FIRSTLIGHT_WORLD_FOUNDATIONS_OUTPUT"
+  },
+  "strictNative": [
+    "earth_homecoming_browser",
+    "onboarding_browser"
+  ],
+  "routed": [
+    {
+      "suite": "atlantis_campaign_browser",
+      "contract": "cli",
+      "argument": "--output",
+      "retainedDirectory": "atlantis_campaign_browser"
+    },
+    {
+      "suite": "bridge_browser",
+      "contract": "cli",
+      "argument": "--output",
+      "retainedDirectory": "bridge_browser"
+    },
+    {
+      "suite": "bridge_community_browser",
+      "contract": "environment",
+      "argument": "FIRSTLIGHT_BRIDGE_COMMUNITY_OUTPUT",
+      "retainedDirectory": "bridge_community_browser"
+    },
+    {
+      "suite": "camera_browser",
+      "contract": "environment",
+      "argument": "FIRSTLIGHT_CAMERA_OUTPUT",
+      "retainedDirectory": "camera_browser"
+    },
+    {
+      "suite": "coastward_bridge_posts_browser",
+      "contract": "cli",
+      "argument": "--output",
+      "retainedDirectory": "coastward_bridge_posts_browser"
+    },
+    {
+      "suite": "coastward_scenery_browser",
+      "contract": "environment",
+      "argument": "FIRSTLIGHT_SCENERY_OUTPUT",
+      "retainedDirectory": "coastward_scenery_browser"
+    },
+    {
+      "suite": "cosmos_campaign_browser",
+      "contract": "cli",
+      "argument": "--output",
+      "retainedDirectory": "cosmos_campaign_browser"
+    },
+    {
+      "suite": "earth_expedition_browser",
+      "contract": "environment",
+      "argument": "FIRSTLIGHT_EXPEDITION_OUTPUT",
+      "retainedDirectory": "earth_expedition_browser"
+    },
+    {
+      "suite": "earth_ground_material_browser",
+      "contract": "environment",
+      "argument": "FIRSTLIGHT_EARTH_GROUND_OUTPUT",
+      "retainedDirectory": "earth_ground_material_browser"
+    },
+    {
+      "suite": "earth_homecoming_browser",
+      "contract": "strict-native",
+      "argument": "--output",
+      "retainedDirectory": "earth_homecoming_browser"
+    },
+    {
+      "suite": "earth_road_browser",
+      "contract": "cli",
+      "argument": "--output",
+      "retainedDirectory": "earth_road_browser"
+    },
+    {
+      "suite": "earth_story_transactions_browser",
+      "contract": "cli",
+      "argument": "--output",
+      "retainedDirectory": "earth_story_transactions_browser"
+    },
+    {
+      "suite": "heaven_campaign_browser",
+      "contract": "cli",
+      "argument": "--output",
+      "retainedDirectory": "heaven_campaign_browser"
+    },
+    {
+      "suite": "hell_campaign_browser",
+      "contract": "cli",
+      "argument": "--output",
+      "retainedDirectory": "hell_campaign_browser"
+    },
+    {
+      "suite": "home_history_browser",
+      "contract": "environment",
+      "argument": "FIRSTLIGHT_HOME_HISTORY_OUTPUT",
+      "retainedDirectory": "home_history_browser"
+    },
+    {
+      "suite": "local_life_browser",
+      "contract": "environment",
+      "argument": "FIRSTLIGHT_LOCAL_LIFE_OUTPUT",
+      "retainedDirectory": "local_life_browser"
+    },
+    {
+      "suite": "onboarding_browser",
+      "contract": "strict-native",
+      "argument": "--output",
+      "retainedDirectory": "onboarding_browser"
+    },
+    {
+      "suite": "practice_visibility_browser",
+      "contract": "cli",
+      "argument": "--output",
+      "retainedDirectory": "practice_visibility_browser"
+    },
+    {
+      "suite": "realm_givers_browser",
+      "contract": "cli",
+      "argument": "--output",
+      "retainedDirectory": "realm_givers_browser"
+    },
+    {
+      "suite": "realm_trails_north_browser",
+      "contract": "cli",
+      "argument": "--output",
+      "retainedDirectory": "realm_trails_north_browser"
+    },
+    {
+      "suite": "realm_work_presentation_browser",
+      "contract": "environment",
+      "argument": "FIRSTLIGHT_REALM_WORK_OUTPUT",
+      "retainedDirectory": "realm_work_presentation_browser"
+    },
+    {
+      "suite": "world_foundations_browser",
+      "contract": "environment",
+      "argument": "FIRSTLIGHT_WORLD_FOUNDATIONS_OUTPUT",
+      "retainedDirectory": "world_foundations_browser"
+    }
+  ],
+  "legacyDefaults": [
+    {
+      "suite": "characters_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "classes_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "combat_cue_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "companion_presentation_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "cosmos_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "crossing_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "cutaway_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "earth_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "earth_notes_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "earth_story_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "gathering_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "journey_usability_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "native_origin_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "pursuit_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "realm_atlas_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "realm_trails_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "realm_trails_cosmos_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "reflection_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "regression09_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "skitter_presentation_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "soundscape_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "starter_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "timber_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "traveler_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "workshop_transactions_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    },
+    {
+      "suite": "world_cutaway_browser",
+      "disposition": "Station default output outside ARC; not copied. Execution retained through complete process receipt, console and hashed command log."
+    }
+  ]
+}

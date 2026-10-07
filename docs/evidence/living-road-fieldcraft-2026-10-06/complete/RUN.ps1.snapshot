@@ -1,0 +1,24 @@
+$ErrorActionPreference='Stop'
+$taskSourceHead='99e8f46a557f51d1ffd41339d25b73d44af9bca9'
+$taskStation='D:/07-GAMES/Firstlight/verification/current-qualified-game'
+$taskRoot='D:/07-GAMES/Firstlight/authoring/atlantis-harbour-campaign-20261004'
+$taskArtifact='D:/07-GAMES/Firstlight/artifacts/living-road-fieldcraft-20261006'
+$taskLogs="$taskArtifact/remote-full01"; $taskBrowser="$taskArtifact/remote-full01-browser"; $taskConsole="$taskArtifact/remote-full01-console.log"; $taskExitReceipt="$taskArtifact/REMOTE_FULL01_PROCESS_EXIT.json"
+foreach($taskCheckout in @($taskStation,$taskRoot)){
+ if((git -C $taskCheckout rev-parse HEAD).Trim() -ne $taskSourceHead){throw 'Unexpected source head'}
+ if(git -C $taskCheckout status --porcelain){throw 'Checkout dirty'}
+}
+foreach($taskNewPath in @($taskLogs,$taskBrowser,$taskConsole,$taskExitReceipt)){if(Test-Path -LiteralPath $taskNewPath){throw 'Qualification output already exists'}}
+$taskStart=[DateTime]::UtcNow.ToString('o')
+$env:PYTHONPATH='C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Lib/site-packages';$env:PYTHONUTF8='1';$env:PYTHONDONTWRITEBYTECODE='1'
+$env:TEMP='D:/07-GAMES/Firstlight/cache/browser-temp';$env:TMP=$env:TEMP
+Set-Location -LiteralPath $taskStation
+& 'C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe' -B tools/verify.py --browser --output $taskLogs --browser-output $taskBrowser --browser-output-mode supported *> $taskConsole
+$taskActualExit=$LASTEXITCODE
+$taskObserved=[DateTime]::UtcNow.ToString('o');$taskConsoleInfo=Get-Item -LiteralPath $taskConsole
+@{scope='Actual complete48-suite verifier process in reused clean freshly fetched remote checkout';sourceHead=$taskSourceHead;processId=$PID;startedUtc=$taskStart;observedUtc=$taskObserved;exitCode=$taskActualExit;console=@{path=$taskConsole;bytes=$taskConsoleInfo.Length;sha256=(Get-FileHash -LiteralPath $taskConsole -Algorithm SHA256).Hash.ToLower()}} | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $taskExitReceipt -Encoding utf8
+Write-Output "Observed complete verifier exit=$taskActualExit at $taskObserved"
+exit $taskActualExit
+
+
+

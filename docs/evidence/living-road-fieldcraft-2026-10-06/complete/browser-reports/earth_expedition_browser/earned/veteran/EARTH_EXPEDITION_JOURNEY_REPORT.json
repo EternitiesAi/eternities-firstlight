@@ -1,0 +1,2041 @@
+{
+  "status": "passed",
+  "variant": "veteran",
+  "source": {
+    "path": "docs\\evidence\\world-production-2026-10-03\\captures\\returning-fit-final-01\\FINAL_WORLD.json",
+    "sha256": "2cef646220c1796508305f43a3fcfc01ac42109df2c778c15f7d1854d38d85d5",
+    "label": "existing command-earned fully fitted returning character, actual prior normal-RAF capture final snapshot"
+  },
+  "method": "actual Simulation/moveTo/WorldFoundations.segment/target-select/auto-toggle/Brace/projectile/ticks, Fieldcraft.begin/inspect/adjust/seat and E.command fittingTicket; durable in-memory full candidate holder",
+  "acceleratedTicks": true,
+  "browserPersistence": false,
+  "humanPacing": false,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "manualDamage": 0,
+  "plantedDefeats": 0,
+  "worldVersion": 9,
+  "adventureVersion": 12,
+  "branch": "stormfall-recovery",
+  "companionMayAssist": true,
+  "claims": [
+    {
+      "type": "story",
+      "reward": {
+        "xp": 45,
+        "coins": 18,
+        "ore": 3,
+        "materials": {
+          "wood": 8,
+          "fiber": 4
+        }
+      },
+      "before": {
+        "xp": 588,
+        "coins": 94,
+        "ore": 16,
+        "wood": 2,
+        "fiber": 0
+      },
+      "after": {
+        "xp": 633,
+        "coins": 112,
+        "ore": 19,
+        "wood": 10,
+        "fiber": 4
+      }
+    },
+    {
+      "type": "patrol",
+      "run": 1,
+      "reward": {
+        "xp": 5,
+        "coins": 4,
+        "ore": 3,
+        "materials": {
+          "wood": 2,
+          "fiber": 2
+        }
+      },
+      "before": {
+        "xp": 633,
+        "coins": 112,
+        "ore": 19,
+        "wood": 10,
+        "fiber": 4
+      },
+      "after": {
+        "xp": 638,
+        "coins": 116,
+        "ore": 22,
+        "wood": 12,
+        "fiber": 6
+      }
+    },
+    {
+      "type": "patrol",
+      "run": 2,
+      "reward": {
+        "xp": 5,
+        "coins": 4,
+        "ore": 3,
+        "materials": {
+          "wood": 2,
+          "fiber": 2
+        }
+      },
+      "before": {
+        "xp": 638,
+        "coins": 116,
+        "ore": 22,
+        "wood": 12,
+        "fiber": 6
+      },
+      "after": {
+        "xp": 643,
+        "coins": 120,
+        "ore": 25,
+        "wood": 14,
+        "fiber": 8
+      }
+    }
+  ],
+  "combats": [
+    {
+      "id": "earth-stormfall-crossing-v1",
+      "run": null,
+      "style": "blade",
+      "hp": 64,
+      "damage": 9,
+      "seconds": 0.7999999999992724,
+      "frames": 16,
+      "guards": 1,
+      "arrowSeen": false,
+      "phases": [
+        {
+          "at": 0,
+          "phase": "windup",
+          "kind": "strike",
+          "remaining": 0.29999999999999943
+        },
+        {
+          "at": 0.29999999999972715,
+          "phase": "recover",
+          "kind": "opening",
+          "remaining": 2.3
+        }
+      ],
+      "transitions": [
+        {
+          "at": 0.29999999999972715,
+          "from": "windup",
+          "to": "recover",
+          "timer": 2.3
+        }
+      ],
+      "impacts": [
+        {
+          "after": 0.1999999999998181,
+          "before": 54,
+          "hp": 3,
+          "mode": "windup"
+        },
+        {
+          "after": 0.7999999999992724,
+          "before": 3,
+          "hp": 0,
+          "mode": "recover"
+        }
+      ],
+      "retreats": [
+        {
+          "from": {
+            "x": -119,
+            "z": -42.9,
+            "yaw": 3.141592653589793
+          },
+          "to": {
+            "x": -119,
+            "z": -38,
+            "yaw": 0
+          },
+          "segmentsValidated": true
+        },
+        {
+          "freeHomeWhileActive": true,
+          "acceptedProgressPreserved": true
+        }
+      ],
+      "healthAfter": 200
+    },
+    {
+      "id": "earth-stormfall-root-v1",
+      "run": null,
+      "style": "blade",
+      "hp": 136,
+      "damage": 11,
+      "seconds": 1.3999999999987267,
+      "frames": 28,
+      "guards": 1,
+      "arrowSeen": false,
+      "phases": [
+        {
+          "at": 0,
+          "phase": "windup",
+          "kind": "bank-sweep",
+          "remaining": 0.8999999999999997
+        },
+        {
+          "at": 0.8999999999991815,
+          "phase": "recover",
+          "kind": "opening",
+          "remaining": 2.3
+        }
+      ],
+      "transitions": [
+        {
+          "at": 0.8999999999991815,
+          "from": "windup",
+          "to": "recover",
+          "timer": 2.3
+        }
+      ],
+      "impacts": [
+        {
+          "after": 0.049999999999954525,
+          "before": 126,
+          "hp": 106,
+          "mode": "windup"
+        },
+        {
+          "after": 0.1999999999998181,
+          "before": 106,
+          "hp": 55,
+          "mode": "windup"
+        },
+        {
+          "after": 0.7999999999992724,
+          "before": 55,
+          "hp": 4,
+          "mode": "windup"
+        },
+        {
+          "after": 1.3999999999987267,
+          "before": 4,
+          "hp": 0,
+          "mode": "recover"
+        }
+      ],
+      "retreats": [
+        {
+          "from": {
+            "x": -134,
+            "z": -68.9,
+            "yaw": 3.141592653589793
+          },
+          "to": {
+            "x": -134,
+            "z": -64,
+            "yaw": 0
+          },
+          "segmentsValidated": true
+        }
+      ],
+      "healthAfter": 199
+    },
+    {
+      "id": "earth-living-road-patrol-v1-run-1-crossing",
+      "run": 1,
+      "style": "blade",
+      "hp": 64,
+      "damage": 9,
+      "seconds": 0.7999999999992724,
+      "frames": 16,
+      "guards": 1,
+      "arrowSeen": false,
+      "phases": [
+        {
+          "at": 0,
+          "phase": "windup",
+          "kind": "strike",
+          "remaining": 0.4499999999999994
+        },
+        {
+          "at": 0.4499999999995907,
+          "phase": "recover",
+          "kind": "opening",
+          "remaining": 2.3
+        }
+      ],
+      "transitions": [
+        {
+          "at": 0.4499999999995907,
+          "from": "windup",
+          "to": "recover",
+          "timer": 2.3
+        }
+      ],
+      "impacts": [
+        {
+          "after": 0.1999999999998181,
+          "before": 54,
+          "hp": 3,
+          "mode": "windup"
+        },
+        {
+          "after": 0.7999999999992724,
+          "before": 3,
+          "hp": 0,
+          "mode": "recover"
+        }
+      ],
+      "retreats": [],
+      "healthAfter": 200
+    },
+    {
+      "id": "earth-living-road-patrol-v1-run-1-root",
+      "run": 1,
+      "style": "blade",
+      "hp": 136,
+      "damage": 11,
+      "seconds": 1.3999999999987267,
+      "frames": 28,
+      "guards": 1,
+      "arrowSeen": false,
+      "phases": [
+        {
+          "at": 0,
+          "phase": "windup",
+          "kind": "bank-sweep",
+          "remaining": 0.29999999999999943
+        },
+        {
+          "at": 0.29999999999972715,
+          "phase": "recover",
+          "kind": "opening",
+          "remaining": 2.3
+        }
+      ],
+      "transitions": [
+        {
+          "at": 0.29999999999972715,
+          "from": "windup",
+          "to": "recover",
+          "timer": 2.3
+        }
+      ],
+      "impacts": [
+        {
+          "after": 0.1999999999998181,
+          "before": 126,
+          "hp": 75,
+          "mode": "windup"
+        },
+        {
+          "after": 0.7999999999992724,
+          "before": 75,
+          "hp": 24,
+          "mode": "recover"
+        },
+        {
+          "after": 1.3999999999987267,
+          "before": 24,
+          "hp": 0,
+          "mode": "recover"
+        }
+      ],
+      "retreats": [],
+      "healthAfter": 200
+    },
+    {
+      "id": "earth-living-road-patrol-v1-run-2-crossing",
+      "run": 2,
+      "style": "blade",
+      "hp": 64,
+      "damage": 9,
+      "seconds": 0.7999999999992724,
+      "frames": 16,
+      "guards": 1,
+      "arrowSeen": false,
+      "phases": [
+        {
+          "at": 0,
+          "phase": "windup",
+          "kind": "strike",
+          "remaining": 0.4499999999999994
+        },
+        {
+          "at": 0.4499999999995907,
+          "phase": "recover",
+          "kind": "opening",
+          "remaining": 2.3
+        }
+      ],
+      "transitions": [
+        {
+          "at": 0.4499999999995907,
+          "from": "windup",
+          "to": "recover",
+          "timer": 2.3
+        }
+      ],
+      "impacts": [
+        {
+          "after": 0.1999999999998181,
+          "before": 54,
+          "hp": 3,
+          "mode": "windup"
+        },
+        {
+          "after": 0.7999999999992724,
+          "before": 3,
+          "hp": 0,
+          "mode": "recover"
+        }
+      ],
+      "retreats": [],
+      "healthAfter": 200
+    },
+    {
+      "id": "earth-living-road-patrol-v1-run-2-root",
+      "run": 2,
+      "style": "blade",
+      "hp": 136,
+      "damage": 11,
+      "seconds": 1.3999999999987267,
+      "frames": 28,
+      "guards": 1,
+      "arrowSeen": false,
+      "phases": [
+        {
+          "at": 0,
+          "phase": "windup",
+          "kind": "bank-sweep",
+          "remaining": 0.29999999999999943
+        },
+        {
+          "at": 0.29999999999972715,
+          "phase": "recover",
+          "kind": "opening",
+          "remaining": 2.3
+        }
+      ],
+      "transitions": [
+        {
+          "at": 0.29999999999972715,
+          "from": "windup",
+          "to": "recover",
+          "timer": 2.3
+        }
+      ],
+      "impacts": [
+        {
+          "after": 0.1999999999998181,
+          "before": 126,
+          "hp": 75,
+          "mode": "windup"
+        },
+        {
+          "after": 0.7999999999992724,
+          "before": 75,
+          "hp": 24,
+          "mode": "recover"
+        },
+        {
+          "after": 1.3999999999987267,
+          "before": 24,
+          "hp": 0,
+          "mode": "recover"
+        }
+      ],
+      "retreats": [],
+      "healthAfter": 200
+    }
+  ],
+  "events": [
+    {
+      "type": "accept",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Stormfall and the Living Road explicitly accepted. The route, danger and fixed payment are retained."
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "step": "assess-load"
+      },
+      "result": {
+        "ok": true,
+        "text": "Read the camp load board recorded."
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "step": "prepare-allocation",
+        "branch": "stormfall-recovery"
+      },
+      "result": {
+        "ok": true,
+        "text": "Stormfall allocation prepared. The standing refuge remains intact. Check the wetland watercourse."
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "step": "read-water"
+      },
+      "result": {
+        "ok": true,
+        "text": "Check the wetland watercourse recorded."
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "step": "read-root-load"
+      },
+      "result": {
+        "ok": true,
+        "text": "Read the living root anchor recorded."
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "step": "brace-root-channel",
+        "fittingProof": "opaque current fitting authority; not serialized"
+      },
+      "result": {
+        "ok": true,
+        "text": "Alternate brace fitted; the old root stays alive. Deliver your allocation at the return glade."
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "step": "deliver-allocation"
+      },
+      "result": {
+        "ok": true,
+        "text": "Allocation delivered. Return to Rill for the declared payment; it remains unclaimed."
+      }
+    },
+    {
+      "type": "claim",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Stormfall and the Living Road paid once · +45 XP · +18 sunmarks · +3 ore · +8 wood · +4 fiber. The allocation is delivered and a separate brace carries the damaged connection. The old root organism remains alive. Rill recognizes your chosen practical approach; one Trailward binding is available at an outdoor home workbench.",
+        "reward": {
+          "xp": 45,
+          "coins": 18,
+          "ore": 3,
+          "materials": {
+            "wood": 8,
+            "fiber": 4
+          }
+        }
+      }
+    },
+    {
+      "type": "claim",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "duplicate": true,
+        "text": "The first delivery was already paid once."
+      }
+    },
+    {
+      "type": "patrol-accept",
+      "payload": {
+        "run": 1,
+        "priorClaim": 0
+      },
+      "result": {
+        "ok": true,
+        "text": "Living Road patrol · run 1 explicitly accepted. The route, danger and fixed payment are retained."
+      }
+    },
+    {
+      "type": "patrol-step",
+      "payload": {
+        "step": "inspect-water",
+        "run": 1,
+        "priorClaim": 0
+      },
+      "result": {
+        "ok": true,
+        "text": "Inspect the wetland course recorded."
+      }
+    },
+    {
+      "type": "patrol-step",
+      "payload": {
+        "step": "inspect-root",
+        "run": 1,
+        "priorClaim": 0
+      },
+      "result": {
+        "ok": true,
+        "text": "Inspect the supported root passage recorded."
+      }
+    },
+    {
+      "type": "patrol-step",
+      "payload": {
+        "step": "inspect-glade",
+        "run": 1,
+        "priorClaim": 0
+      },
+      "result": {
+        "ok": true,
+        "text": "Stormfall checking billets squared for this circuit. The standing shelter remains. Return to Rill for the separate payment; claiming also settles the borrowed kit."
+      }
+    },
+    {
+      "type": "patrol-claim",
+      "payload": {
+        "run": 1,
+        "priorClaim": 0
+      },
+      "result": {
+        "ok": true,
+        "text": "Living Road patrol paid once · +5 XP · +4 sunmarks · +3 ore · +2 wood · +2 fiber. The accepted inspection circuit is recorded and paid once. Your first support repair and allocation remain recognized.",
+        "reward": {
+          "xp": 5,
+          "coins": 4,
+          "ore": 3,
+          "materials": {
+            "wood": 2,
+            "fiber": 2
+          }
+        }
+      }
+    },
+    {
+      "type": "patrol-claim",
+      "payload": {
+        "run": 1,
+        "priorClaim": 0
+      },
+      "result": {
+        "ok": true,
+        "duplicate": true,
+        "text": "That accepted patrol was already paid. No new run was claimed."
+      }
+    },
+    {
+      "type": "patrol-accept",
+      "payload": {
+        "run": 2,
+        "priorClaim": 1
+      },
+      "result": {
+        "ok": true,
+        "text": "Living Road patrol · run 2 explicitly accepted. The route, danger and fixed payment are retained."
+      }
+    },
+    {
+      "type": "patrol-step",
+      "payload": {
+        "step": "inspect-water",
+        "run": 2,
+        "priorClaim": 1
+      },
+      "result": {
+        "ok": true,
+        "text": "Inspect the wetland course recorded."
+      }
+    },
+    {
+      "type": "patrol-step",
+      "payload": {
+        "step": "inspect-root",
+        "run": 2,
+        "priorClaim": 1
+      },
+      "result": {
+        "ok": true,
+        "text": "Inspect the supported root passage recorded."
+      }
+    },
+    {
+      "type": "patrol-step",
+      "payload": {
+        "step": "inspect-glade",
+        "run": 2,
+        "priorClaim": 1
+      },
+      "result": {
+        "ok": true,
+        "text": "Stormfall checking billets squared for this circuit. The standing shelter remains. Return to Rill for the separate payment; claiming also settles the borrowed kit."
+      }
+    },
+    {
+      "type": "patrol-claim",
+      "payload": {
+        "run": 2,
+        "priorClaim": 1
+      },
+      "result": {
+        "ok": true,
+        "text": "Living Road patrol paid once · +5 XP · +4 sunmarks · +3 ore · +2 wood · +2 fiber. The accepted inspection circuit is recorded and paid once. Your first support repair and allocation remain recognized.",
+        "reward": {
+          "xp": 5,
+          "coins": 4,
+          "ore": 3,
+          "materials": {
+            "wood": 2,
+            "fiber": 2
+          }
+        }
+      }
+    },
+    {
+      "type": "patrol-claim",
+      "payload": {
+        "run": 2,
+        "priorClaim": 1
+      },
+      "result": {
+        "ok": true,
+        "duplicate": true,
+        "text": "That accepted patrol was already paid. No new run was claimed."
+      }
+    },
+    {
+      "type": "patrol-accept",
+      "payload": {
+        "run": 3,
+        "priorClaim": 2
+      },
+      "result": {
+        "ok": true,
+        "text": "Living Road patrol · run 3 explicitly accepted. The route, danger and fixed payment are retained."
+      }
+    },
+    {
+      "type": "patrol-step",
+      "payload": {
+        "run": 3,
+        "priorClaim": 2,
+        "step": "inspect-water"
+      },
+      "result": {
+        "ok": true,
+        "text": "Inspect the wetland course recorded."
+      }
+    }
+  ],
+  "legacyEvents": [
+    {
+      "owner": "travel",
+      "enter": "earthlands"
+    },
+    {
+      "owner": "reload",
+      "realm": "earthlands"
+    },
+    {
+      "owner": "travel",
+      "enter": "earthlands"
+    },
+    {
+      "owner": "reload",
+      "realm": "earthlands"
+    },
+    {
+      "owner": "travel",
+      "enter": "earthlands"
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-13",
+      "type": "target-select",
+      "payload": {
+        "id": "earth-stormfall-crossing-v1"
+      },
+      "result": {
+        "ok": true,
+        "text": "Target: Channel skitter"
+      }
+    },
+    {
+      "owner": "travel",
+      "freeHome": true
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-15",
+      "type": "rest",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Rested · Health and three trail tonics restored."
+      }
+    },
+    {
+      "owner": "travel",
+      "enter": "earthlands"
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-18",
+      "type": "target-select",
+      "payload": {
+        "id": "earth-stormfall-crossing-v1"
+      },
+      "result": {
+        "ok": true,
+        "text": "Target: Channel skitter"
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-19",
+      "type": "auto-toggle",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Autoattack on. Move into range; movement remains yours."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-20",
+      "type": "guard",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Braced · incoming damage halved for 3 seconds."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-21",
+      "type": "target-clear",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Target cleared."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-23",
+      "type": "target-select",
+      "payload": {
+        "id": "earth-stormfall-root-v1"
+      },
+      "result": {
+        "ok": true,
+        "text": "Target: Root-bank brute"
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-24",
+      "type": "auto-toggle",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Autoattack on. Move into range; movement remains yours."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-25",
+      "type": "guard",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Braced · incoming damage halved for 3 seconds."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-26",
+      "type": "target-clear",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Target cleared."
+      }
+    },
+    {
+      "owner": "reload",
+      "realm": "earthlands"
+    },
+    {
+      "owner": "travel",
+      "enter": "earthlands"
+    },
+    {
+      "owner": "reload",
+      "realm": "earthlands"
+    },
+    {
+      "owner": "travel",
+      "enter": "earthlands"
+    },
+    {
+      "owner": "travel",
+      "freeHome": true
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-53",
+      "type": "rest",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Rested · Health and three trail tonics restored."
+      }
+    },
+    {
+      "owner": "travel",
+      "enter": "earthlands"
+    },
+    {
+      "owner": "reload",
+      "realm": "earthlands"
+    },
+    {
+      "owner": "travel",
+      "enter": "earthlands"
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-60",
+      "type": "target-select",
+      "payload": {
+        "id": "earth-living-road-patrol-v1-run-1-crossing"
+      },
+      "result": {
+        "ok": true,
+        "text": "Target: Patrol channel skitter"
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-61",
+      "type": "auto-toggle",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Autoattack on. Move into range; movement remains yours."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-62",
+      "type": "guard",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Braced · incoming damage halved for 3 seconds."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-63",
+      "type": "target-clear",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Target cleared."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-65",
+      "type": "target-select",
+      "payload": {
+        "id": "earth-living-road-patrol-v1-run-1-root"
+      },
+      "result": {
+        "ok": true,
+        "text": "Target: Patrol root-bank brute"
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-66",
+      "type": "auto-toggle",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Autoattack on. Move into range; movement remains yours."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-67",
+      "type": "guard",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Braced · incoming damage halved for 3 seconds."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-68",
+      "type": "target-clear",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Target cleared."
+      }
+    },
+    {
+      "owner": "reload",
+      "realm": "earthlands"
+    },
+    {
+      "owner": "travel",
+      "enter": "earthlands"
+    },
+    {
+      "owner": "reload",
+      "realm": "earthlands"
+    },
+    {
+      "owner": "travel",
+      "enter": "earthlands"
+    },
+    {
+      "owner": "travel",
+      "freeHome": true
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-77",
+      "type": "rest",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Rested · Health and three trail tonics restored."
+      }
+    },
+    {
+      "owner": "travel",
+      "enter": "earthlands"
+    },
+    {
+      "owner": "reload",
+      "realm": "earthlands"
+    },
+    {
+      "owner": "travel",
+      "enter": "earthlands"
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-85",
+      "type": "target-select",
+      "payload": {
+        "id": "earth-living-road-patrol-v1-run-2-crossing"
+      },
+      "result": {
+        "ok": true,
+        "text": "Target: Patrol channel skitter"
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-86",
+      "type": "auto-toggle",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Autoattack on. Move into range; movement remains yours."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-87",
+      "type": "guard",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Braced · incoming damage halved for 3 seconds."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-88",
+      "type": "target-clear",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Target cleared."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-90",
+      "type": "target-select",
+      "payload": {
+        "id": "earth-living-road-patrol-v1-run-2-root"
+      },
+      "result": {
+        "ok": true,
+        "text": "Target: Patrol root-bank brute"
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-91",
+      "type": "auto-toggle",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Autoattack on. Move into range; movement remains yours."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-92",
+      "type": "guard",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Braced · incoming damage halved for 3 seconds."
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-93",
+      "type": "target-clear",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Target cleared."
+      }
+    },
+    {
+      "owner": "reload",
+      "realm": "earthlands"
+    },
+    {
+      "owner": "travel",
+      "enter": "earthlands"
+    },
+    {
+      "owner": "reload",
+      "realm": "earthlands"
+    },
+    {
+      "owner": "travel",
+      "enter": "earthlands"
+    },
+    {
+      "owner": "travel",
+      "freeHome": true
+    },
+    {
+      "owner": "reload"
+    },
+    {
+      "owner": "travel",
+      "enter": "earthlands"
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-109",
+      "type": "target-select",
+      "payload": {
+        "id": "earth-living-road-patrol-v1-run-3-crossing"
+      },
+      "result": {
+        "ok": true,
+        "text": "Target: Patrol channel skitter"
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-110",
+      "type": "attack",
+      "payload": {
+        "target": "earth-living-road-patrol-v1-run-3-crossing"
+      },
+      "result": {
+        "ok": true,
+        "text": "Sunstrike"
+      }
+    },
+    {
+      "owner": "adventure",
+      "id": "earned-north-1-335-111",
+      "type": "target-clear",
+      "payload": {},
+      "result": {
+        "ok": true,
+        "text": "Target cleared."
+      }
+    },
+    {
+      "owner": "travel",
+      "freeHome": true
+    },
+    {
+      "owner": "reload"
+    }
+  ],
+  "routes": [
+    {
+      "room": "valley",
+      "start": {
+        "x": 15,
+        "z": 7,
+        "yaw": 3.141592653589793
+      },
+      "x": 18,
+      "z": 6,
+      "frames": 20
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "x": -67,
+      "z": -4,
+      "frames": 1068
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "x": -76,
+      "z": -12,
+      "frames": 1114
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "x": -82,
+      "z": -18,
+      "frames": 1154
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -82,
+        "z": -18,
+        "yaw": -1.6660486042136853
+      },
+      "x": -109,
+      "z": -28,
+      "frames": 180
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -109,
+        "z": -28,
+        "yaw": -1.925501978805825
+      },
+      "x": -119,
+      "z": -34,
+      "frames": 73
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -119,
+        "z": -34,
+        "yaw": -2.111215827065524
+      },
+      "x": -119,
+      "z": -42.9,
+      "frames": 56
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -119,
+        "z": -42.9,
+        "yaw": 3.141592653589793
+      },
+      "x": -119,
+      "z": -38,
+      "frames": 31
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -119,
+        "z": -38,
+        "yaw": 0
+      },
+      "x": -119,
+      "z": -42.9,
+      "frames": 31
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 18,
+        "z": 6,
+        "yaw": 1.8925468811915411
+      },
+      "x": 0,
+      "z": 3,
+      "frames": 130
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 0,
+        "z": 3,
+        "yaw": -2.2142974355881795
+      },
+      "x": 18,
+      "z": 6,
+      "frames": 131
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "x": -119,
+      "z": -42.9,
+      "frames": 1413
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -119,
+        "z": -42.9,
+        "yaw": 1.456852281609739
+      },
+      "x": -148,
+      "z": -66,
+      "frames": 244
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -148,
+        "z": -66,
+        "yaw": -2.136280214949614
+      },
+      "x": -134,
+      "z": -60,
+      "frames": 96
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -134,
+        "z": -60,
+        "yaw": 1.1659045405098132
+      },
+      "x": -134,
+      "z": -68.9,
+      "frames": 56
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -134,
+        "z": -68.9,
+        "yaw": 3.141592653589793
+      },
+      "x": -134,
+      "z": -64,
+      "frames": 31
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -134,
+        "z": -64,
+        "yaw": 0
+      },
+      "x": -134,
+      "z": -68.9,
+      "frames": 31
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -134,
+        "z": -68.9,
+        "yaw": 0
+      },
+      "x": -145,
+      "z": -84,
+      "frames": 121
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -145,
+        "z": -84,
+        "yaw": -1.5707963267948966
+      },
+      "x": -106,
+      "z": -105,
+      "frames": 277
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "x": -67,
+      "z": -4,
+      "frames": 1068
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "x": 0,
+      "z": 3,
+      "frames": 130
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 0,
+        "z": 3,
+        "yaw": -2.2142974355881795
+      },
+      "x": 18,
+      "z": 6,
+      "frames": 131
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "x": -67,
+      "z": -4,
+      "frames": 1068
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -67,
+        "z": -4,
+        "yaw": -1.1549845377701553
+      },
+      "x": -109,
+      "z": -28,
+      "frames": 303
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "x": -119,
+      "z": -34,
+      "frames": 1398
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -119,
+        "z": -34,
+        "yaw": -1.7877671210428212
+      },
+      "x": -119,
+      "z": -42.9,
+      "frames": 56
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -119,
+        "z": -42.9,
+        "yaw": 0
+      },
+      "x": -148,
+      "z": -66,
+      "frames": 244
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -148,
+        "z": -66,
+        "yaw": -2.136280214949614
+      },
+      "x": -134,
+      "z": -60,
+      "frames": 96
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -134,
+        "z": -60,
+        "yaw": 1.1659045405098132
+      },
+      "x": -134,
+      "z": -68.9,
+      "frames": 56
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -134,
+        "z": -68.9,
+        "yaw": 0
+      },
+      "x": -106,
+      "z": -105,
+      "frames": 289
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "x": -67,
+      "z": -4,
+      "frames": 1068
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "x": 0,
+      "z": 3,
+      "frames": 130
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 0,
+        "z": 3,
+        "yaw": -2.2142974355881795
+      },
+      "x": 18,
+      "z": 6,
+      "frames": 131
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "x": -67,
+      "z": -4,
+      "frames": 1068
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -67,
+        "z": -4,
+        "yaw": -1.1549845377701553
+      },
+      "x": -109,
+      "z": -28,
+      "frames": 303
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "x": -119,
+      "z": -34,
+      "frames": 1398
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -119,
+        "z": -34,
+        "yaw": -1.7877671210428212
+      },
+      "x": -119,
+      "z": -42.9,
+      "frames": 56
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -119,
+        "z": -42.9,
+        "yaw": 0
+      },
+      "x": -148,
+      "z": -66,
+      "frames": 244
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -148,
+        "z": -66,
+        "yaw": -2.136280214949614
+      },
+      "x": -134,
+      "z": -60,
+      "frames": 96
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -134,
+        "z": -60,
+        "yaw": 1.1659045405098132
+      },
+      "x": -134,
+      "z": -68.9,
+      "frames": 56
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -134,
+        "z": -68.9,
+        "yaw": 0
+      },
+      "x": -106,
+      "z": -105,
+      "frames": 289
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "x": -67,
+      "z": -4,
+      "frames": 1068
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "x": 11,
+      "z": 9,
+      "frames": 50
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 11,
+        "z": 9,
+        "yaw": -1.396124127786667
+      },
+      "x": 18,
+      "z": 6,
+      "frames": 51
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "x": -67,
+      "z": -4,
+      "frames": 1068
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -67,
+        "z": -4,
+        "yaw": -1.1549845377701553
+      },
+      "x": -109,
+      "z": -28,
+      "frames": 303
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -109,
+        "z": -28,
+        "yaw": -2.089942441041428
+      },
+      "x": -119,
+      "z": -42.9,
+      "frames": 113
+    }
+  ],
+  "saveCount": 59,
+  "fieldcraft": {
+    "sectionIds": [
+      "brace-1",
+      "brace-2",
+      "brace-3",
+      "brace-4"
+    ],
+    "inspectedReceiverCount": 5,
+    "seatedMemberCount": 4,
+    "stages": [
+      {
+        "operation": "begin",
+        "sectionIds": [
+          "brace-1",
+          "brace-2",
+          "brace-3",
+          "brace-4"
+        ],
+        "room": "world-earthlands",
+        "workPoint": {
+          "x": -145,
+          "z": -84,
+          "yaw": -1.5707963267948966
+        },
+        "bareStepRefused": true
+      },
+      {
+        "operation": "inspect",
+        "section": "brace-1",
+        "receivers": [
+          "east-joint-0",
+          "east-joint-1"
+        ],
+        "contextRevision": 29
+      },
+      {
+        "operation": "seat-refused",
+        "section": "brace-1",
+        "yaw": 0.20943951023931895,
+        "pitch": 0,
+        "endError": 0.6584066517791254
+      },
+      {
+        "operation": "adjust",
+        "section": "brace-1",
+        "yaw": 0,
+        "pitch": 0.2546082180145337
+      },
+      {
+        "operation": "seat",
+        "section": "brace-1",
+        "seatedCount": 1
+      },
+      {
+        "operation": "inspect",
+        "section": "brace-2",
+        "receivers": [
+          "east-joint-1",
+          "east-joint-2"
+        ],
+        "contextRevision": 34
+      },
+      {
+        "operation": "adjust",
+        "section": "brace-2",
+        "yaw": 0,
+        "pitch": 0.2546082180145337
+      },
+      {
+        "operation": "seat",
+        "section": "brace-2",
+        "seatedCount": 2
+      },
+      {
+        "operation": "inspect",
+        "section": "brace-3",
+        "receivers": [
+          "east-joint-2",
+          "east-joint-3"
+        ],
+        "contextRevision": 37
+      },
+      {
+        "operation": "adjust",
+        "section": "brace-3",
+        "yaw": 0,
+        "pitch": 0.2546082180145337
+      },
+      {
+        "operation": "seat",
+        "section": "brace-3",
+        "seatedCount": 3
+      },
+      {
+        "operation": "inspect",
+        "section": "brace-4",
+        "receivers": [
+          "east-joint-3",
+          "east-joint-4"
+        ],
+        "contextRevision": 40
+      },
+      {
+        "operation": "adjust",
+        "section": "brace-4",
+        "yaw": 0,
+        "pitch": 0.2546082180145337
+      },
+      {
+        "operation": "seat",
+        "section": "brace-4",
+        "seatedCount": 4
+      },
+      {
+        "operation": "fasten",
+        "step": "brace-root-channel",
+        "saved": true,
+        "consumed": true,
+        "onceOnly": true
+      }
+    ],
+    "leaseMethod": "caller-owned opaque generation renewed at actual harness enter/home/reload or owner tuple change; raw serial context revision remains unchanged",
+    "ownerTransitions": [
+      {
+        "generation": 1,
+        "reason": "initial-harness-owner",
+        "active": "command-earned-north",
+        "room": null,
+        "contextRevision": 1
+      },
+      {
+        "generation": 2,
+        "reason": "actual-harness-enter",
+        "active": "command-earned-north",
+        "room": "world-earthlands",
+        "contextRevision": 3
+      },
+      {
+        "generation": 3,
+        "reason": "actual-harness-reload",
+        "active": "command-earned-north",
+        "room": "world-earthlands",
+        "contextRevision": 7
+      },
+      {
+        "generation": 4,
+        "reason": "actual-harness-reload",
+        "active": "command-earned-north",
+        "room": "world-earthlands",
+        "contextRevision": 10
+      },
+      {
+        "generation": 5,
+        "reason": "actual-harness-home",
+        "active": "command-earned-north",
+        "room": null,
+        "contextRevision": 14
+      },
+      {
+        "generation": 6,
+        "reason": "actual-harness-enter",
+        "active": "command-earned-north",
+        "room": "world-earthlands",
+        "contextRevision": 17
+      },
+      {
+        "generation": 7,
+        "reason": "actual-harness-reload",
+        "active": "command-earned-north",
+        "room": "world-earthlands",
+        "contextRevision": 47
+      },
+      {
+        "generation": 8,
+        "reason": "actual-harness-reload",
+        "active": "command-earned-north",
+        "room": "world-earthlands",
+        "contextRevision": 51
+      },
+      {
+        "generation": 9,
+        "reason": "actual-harness-home",
+        "active": "command-earned-north",
+        "room": null,
+        "contextRevision": 52
+      },
+      {
+        "generation": 10,
+        "reason": "actual-harness-enter",
+        "active": "command-earned-north",
+        "room": "world-earthlands",
+        "contextRevision": 55
+      },
+      {
+        "generation": 11,
+        "reason": "actual-harness-reload",
+        "active": "command-earned-north",
+        "room": "world-earthlands",
+        "contextRevision": 59
+      },
+      {
+        "generation": 12,
+        "reason": "actual-harness-reload",
+        "active": "command-earned-north",
+        "room": "world-earthlands",
+        "contextRevision": 71
+      },
+      {
+        "generation": 13,
+        "reason": "actual-harness-reload",
+        "active": "command-earned-north",
+        "room": "world-earthlands",
+        "contextRevision": 75
+      },
+      {
+        "generation": 14,
+        "reason": "actual-harness-home",
+        "active": "command-earned-north",
+        "room": null,
+        "contextRevision": 76
+      },
+      {
+        "generation": 15,
+        "reason": "actual-harness-enter",
+        "active": "command-earned-north",
+        "room": "world-earthlands",
+        "contextRevision": 79
+      },
+      {
+        "generation": 16,
+        "reason": "actual-harness-reload",
+        "active": "command-earned-north",
+        "room": "world-earthlands",
+        "contextRevision": 84
+      },
+      {
+        "generation": 17,
+        "reason": "actual-harness-reload",
+        "active": "command-earned-north",
+        "room": "world-earthlands",
+        "contextRevision": 96
+      },
+      {
+        "generation": 18,
+        "reason": "actual-harness-reload",
+        "active": "command-earned-north",
+        "room": "world-earthlands",
+        "contextRevision": 100
+      },
+      {
+        "generation": 19,
+        "reason": "actual-harness-home",
+        "active": "command-earned-north",
+        "room": null,
+        "contextRevision": 101
+      },
+      {
+        "generation": 20,
+        "reason": "actual-harness-reload",
+        "active": "command-earned-north",
+        "room": null,
+        "contextRevision": 104
+      },
+      {
+        "generation": 21,
+        "reason": "actual-harness-enter",
+        "active": "command-earned-north",
+        "room": "world-earthlands",
+        "contextRevision": 106
+      },
+      {
+        "generation": 22,
+        "reason": "actual-harness-home",
+        "active": "command-earned-north",
+        "room": null,
+        "contextRevision": 112
+      },
+      {
+        "generation": 23,
+        "reason": "actual-harness-reload",
+        "active": "command-earned-north",
+        "room": null,
+        "contextRevision": 113
+      }
+    ]
+  },
+  "fitting": {
+    "weapon": "dawn_edge",
+    "kind": "edge",
+    "cost": {
+      "ore": 3,
+      "coins": 8,
+      "fiber": 6
+    },
+    "before": {
+      "level": 5,
+      "attack": 51,
+      "defense": 13,
+      "maxHP": 200
+    },
+    "after": {
+      "level": 5,
+      "attack": 53,
+      "defense": 13,
+      "maxHP": 200
+    },
+    "currentHPBefore": 200,
+    "currentHPAfter": 200,
+    "actualPostBindingDamagePackets": [
+      {
+        "n": 53,
+        "at": 1630.8315999991535,
+        "hpBefore": 54
+      }
+    ],
+    "arrowObserved": false,
+    "probe": "one newly accepted unpaid third patrol; only T.hit observation wrapper, restored before continuing"
+  },
+  "sourceHashes": {
+    "earth-expedition.js": "6dc60f06910d1b0e09335ebe288e20ce6db974fdf6a5e97742f25a9ac03ca36e",
+    "earth-fieldcraft.js": "60dd296ee395f027890cfc6ecb40939b1ee384ce7e7af2f82bf1f926b644c283",
+    "core.js": "5b34de7972a28fcbc922f2201a72bec384983e43dcbda9258b0701c907cfb49c",
+    "adventure.js": "c8c9f751bfd09d4e123ef786867fd1f1321d8364cf2f83a3e8bda74c12417a5c",
+    "combat.js": "4176bbf57fd761732b5f9d96708ac8ac0d6855ef56c928d06810f06f74315a32",
+    "arsenal.js": "70cf869a8240895158960c62cc65d802adf491ac24ee66bf7a3c0389557d2b70",
+    "world-foundations.js": "4173e396c6d002d0ec25a7c549f046e0e77e561c3ef3b0e89400f84cc070d752",
+    "elderweald-world.js": "8d993c230ad7198e397f4bf41938522405c352bbdd903b04016d1262822d3538"
+  },
+  "sourceDrift": false,
+  "harnessSha256": "6bb8e311210f24c786d529c4bbe705a621a407690b011324613ef67a3bd10386",
+  "canonicalPreservation": true
+}

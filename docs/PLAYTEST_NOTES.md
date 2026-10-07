@@ -1,3 +1,16 @@
+# Qualified support evidence; human feel remains open, 2026-10-06
+
+Qualified source `99e8f46a557f51d1ffd41339d25b73d44af9bca9`, stacked on PR50 final `f021adf539488d879b72c3d9e69f1ff10527c0f8`. The reused clean remote checkout, freshly fetched to this exact source, completed the full verifier exit 0 at `2026-10-07T00:45:22.9883043Z`: 238 commands, 124 syntax modules and all 48 browser suites in one invocation. Node 1678 passed / 2 explicit generic-cohort skips (1680 total); Python 262 methods, 256 passed / 6 method skips plus 2 skipped setUpClass records. Mandatory current native/recording preflights separately passed with explicit cohort inputs. Identical HTML: 3088437 bytes / SHA256 `05a30536edb018a5c9559033a530ddf259321f19453060607b6877e260d53bb5`.
+
+Native03 passed 1159 checks across blade/bow/strongest saves and 22 whole-browser restarts, desktop 1440x960 / portrait 390x844, both cameras and Adventure FOV45/80. Actual member/socket geometry and removed/restored pixels, native degree controls, clock/settings saves, transient reload reset, quota refusal/retry and old payouts passed. Root inspected scene/UI screenshots. Accelerated software-WebGL automation does not measure human pacing.
+
+The separate 17.3943-second normal-RAF canvas recording used RTX3080 ANGLE D3D11, Chromium143.0.7499.4 / driver610.74, balanced1440x960. It is 4350951bytes; DOM HUD is absent and preserved in stills. 84 capture checks passed and the decoded movie was inspected. 1043 callbacks: median/p95 16.7ms, p99/max16.8ms, none over50ms. Recorder/shared-machine callback intervals are not display FPS, GPU timings or sustained-world qualification. Original report head f021 was dirty; exact frozen qualified bytes are separately bound to source99e8 with four disclosed CRLF-to-LF text mappings.
+
+Ask Dom: Could you understand the sockets and corrections in both views? Did the physical work make another outing appealing? No new human feedback was supplied. Touch/controller coverage, enjoyment, accessibility and production-scale performance remain pending. [Evidence](evidence/living-road-fieldcraft-2026-10-06/README.md) retains failures and hosted unexecuted jobs.
+
+World 9 / adventure 12 / earthHomecoming 1 and old browser keys remain. Partial fitting is transient; old completed repairs, payments, XP, gear, sockets, explicit choices and both cameras are preserved. No main merge, public deployment, paid providers, billing intervention, personal-save access or unrelated cleanup. Reuse the integrated D checkout and qualification station; retain failures and the blocked standalone deletion. Wider production goal ACTIVE; old heartbeat PAUSED. Two scoped colleagues prepare small next-arc files; that staged work is not integrated gameplay.
+
+---
 # Qualified road evidence and human questions, 2026-10-06
 
 Automated blade/bow journeys and a labelled historical strongest fixture passed

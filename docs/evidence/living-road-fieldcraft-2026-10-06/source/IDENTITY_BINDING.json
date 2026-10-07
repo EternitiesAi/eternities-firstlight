@@ -1,0 +1,59 @@
+{
+  "sourceHead": "99e8f46a557f51d1ffd41339d25b73d44af9bca9",
+  "sourceEpochSha256": "31c40d9d15268e189a6e77e3e247d02efbb2c3a02783b9326888912a3b4ef923",
+  "frozenLeavesMatchedToCommit": 175,
+  "consoleSha256": "238e7348c0322103b3d32c366266f4f97fa74846e8d691c731d6ef10143daded",
+  "consoleBytes": 12117,
+  "rawToGitMappings": [
+    {
+      "path": "src/atlantis-campaign-data.js",
+      "qualifiedBytes": 17654,
+      "qualifiedSha256": "0edd29113cceb2e0d6821ec6542a7434aa2ace5e964e44b4f04f4f21ccf25f3f",
+      "gitBlobBytes": 17542,
+      "gitBlobSha256": "22496def70bda1c6a6aa15c24cf53bad7bacab4facc54da7856ac693e7384693",
+      "relation": "declared-crlf-to-lf",
+      "gitAttributes": [
+        "src/atlantis-campaign-data.js: text: auto",
+        "src/atlantis-campaign-data.js: eol: lf"
+      ]
+    },
+    {
+      "path": "src/earth-homecoming-art.js",
+      "qualifiedBytes": 8847,
+      "qualifiedSha256": "30779f59d328ab9a3a5fac435ae6bd9d0f9effe6038f6be97a193ac6b6635717",
+      "gitBlobBytes": 8803,
+      "gitBlobSha256": "2353946d8bb28a2881f3191807fc248f95fea75f16bc585f6588d82742b750ed",
+      "relation": "declared-crlf-to-lf",
+      "gitAttributes": [
+        "src/earth-homecoming-art.js: text: auto",
+        "src/earth-homecoming-art.js: eol: lf"
+      ]
+    },
+    {
+      "path": "tools/earth-homecoming-journey/connected_cosmos.cjs",
+      "qualifiedBytes": 24401,
+      "qualifiedSha256": "eba6e08a88f6f0fbe8b1d5868370ea58536040700ceb72da85f1b4f06ecb84d6",
+      "gitBlobBytes": 24220,
+      "gitBlobSha256": "54a8559e833c589d9dec3b43cdb201240a12c361fc1af14be1a0b77578ba0bc2",
+      "relation": "declared-crlf-to-lf",
+      "gitAttributes": [
+        "tools/earth-homecoming-journey/connected_cosmos.cjs: text: auto",
+        "tools/earth-homecoming-journey/connected_cosmos.cjs: eol: lf"
+      ]
+    },
+    {
+      "path": "tools/whole_draft_journey.cjs",
+      "qualifiedBytes": 9047,
+      "qualifiedSha256": "fa6cbdbbcaf74063f43344359917337741991a4e5fe65fd5612092c4c9a19d96",
+      "gitBlobBytes": 8986,
+      "gitBlobSha256": "c27e7b8ebe207e300b6d63f14be2121e1b7c63743ec4749560608827d4487c62",
+      "relation": "declared-crlf-to-lf",
+      "gitAttributes": [
+        "tools/whole_draft_journey.cjs: text: auto",
+        "tools/whole_draft_journey.cjs: eol: lf"
+      ]
+    }
+  ],
+  "originalReceipt": "Exit/time only; sourceHead and console hashes were absent",
+  "binding": "Pack-time comparison of original frozen raw epoch and adjacent successful console. Four declared text leaves map CRLF to LF; every other leaf is byte-exact. Not an amended original process receipt"
+}
