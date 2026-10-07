@@ -1,3 +1,11 @@
+# Current native approach repair, 2026-10-07
+
+Parent owns reused D ROOT on gameplay/earth-wild-signs-20261007 / draftPR53, basePR52 279d7a5a83983a5343987fcc986aafd797d5ba5f. Read docs/development/NATIVE_APPROACH_REPAIR_2026-10-07.md before older fronts. Source06 passed at668; primary native03/movie executed04ee with unchanged runtime/caller mapping. Boundary02 failed240-second hostile approach after the owner-switch/import case. Reviewed precision tooling and four actual-Core CPU regressions are installed; original27 tests pass. New native/current-source/full remote acceptance remains pending. Keep raw failure and stress limits visible.
+
+ROOT must stay frozen through the next actual epoch. STATION remains clean inactive04ee; do not start full remote until corrected boundaries pass. Reading/roadkeeper/woodland stages are uninstalled, with parent-owned App/art integration. Two scoped Sol colleagues only. Preserve World9/Adventure12/WildSigns1, all saves/XP/choices/gear/sockets/companion/housing/crops/music/both cameras. Heavy D, reuse checkouts, one clip/few stills, no cleanup/blocked deletion retry/main merge/deploy/paid/billing/personal-save reads/unrelated stops. Wider production goal active unfinished; old heartbeat paused.
+
+---
+
 # Earth wildlife: source/native delivery and checkpoint repair, 2026-10-07
 
 Parent owns the reused integrated D checkout, gameplay/earth-wild-signs-20261007, open draft PR53 stacked on PR52 base279d7a5a83983a5343987fcc986aafd797d5ba5f. The Beast With the Wrong Name is implemented: clues, actual rendered grazer observation, deliberate bypass/pest resolution and one4-coin/3-fibre payment. The timber culprit remains unresolved. Read docs/development/WILD_SIGNS_2026-10-07.md and docs/evidence/wild-signs-2026-10-07/README.md.

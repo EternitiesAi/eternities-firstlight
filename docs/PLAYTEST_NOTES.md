@@ -1,3 +1,11 @@
+# Native approach failure and honest art limits, 2026-10-07
+
+The actual two-camera Wildlife clip is retained and decoded. It shows a readable moving grazer, simple flat ground, sparse horizon and conspicuous faceted crowns. Four smaller organic crowns are a measured unrendered source experiment, with no new terrain or collision. Their seven stage CPU checks cannot establish appearance. Parent screenshot comparison and both-camera browse visibility remain required.
+
+Boundary02 failed240-second original-hostile approach, not a completed death test. Actual supported Core paths and a labelled Core.manual CPU reproduction show early waypoint popping at a concave ground corner. The original native episode did not retain the final live position, so the CPU stalled coordinate is not relabelled native evidence. Four repaired CPU cases and original27 checks pass; prolonged eight-max-frame stress can still oscillate. The actual new epoch must resolve acceptance. Human questions remain unanswered: was the outing clear, did observation change your interpretation, did the resolution matter, and does the visible aftermath make another walk appealing? No FPS, accessibility, human balance or full-world quality is certified.
+
+---
+
 # Earth wildlife: source/native delivery and checkpoint repair, 2026-10-07
 
 Parent owns the reused integrated D checkout, gameplay/earth-wild-signs-20261007, open draft PR53 stacked on PR52 base279d7a5a83983a5343987fcc986aafd797d5ba5f. The Beast With the Wrong Name is implemented: clues, actual rendered grazer observation, deliberate bypass/pest resolution and one4-coin/3-fibre payment. The timber culprit remains unresolved. Read docs/development/WILD_SIGNS_2026-10-07.md and docs/evidence/wild-signs-2026-10-07/README.md.

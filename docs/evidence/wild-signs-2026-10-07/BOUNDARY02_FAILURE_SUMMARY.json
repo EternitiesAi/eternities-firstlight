@@ -1,0 +1,38 @@
+{
+  "scope": "Retained failed actual native epoch, not a three-case pass",
+  "source": "668c501acdac688bd4efc5906025093721b7fbc1",
+  "report": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\wild-signs-20261007\\native-boundary02\\WILD_SIGNS_BOUNDARIES_REPORT.json",
+    "bytes": 1804085,
+    "sha256": "737c52ebbad88d65db12b28362c432169390624ee5de5b2e33bd63945150d378"
+  },
+  "cases": {
+    "ready-observe-switch-import": {
+      "checks": 1563,
+      "failedChecks": 0,
+      "closed": true
+    },
+    "genuine-death-clearance-switch": {
+      "checks": 6662,
+      "failedChecks": 0,
+      "closed": true
+    }
+  },
+  "errors": [
+    "Traceback (most recent call last):\n  File \"D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\tools\\earth_wild_signs_boundaries_browser.py\", line 468, in main\n    try: bow.death_and_clearance_owners(rows['bow'])\n         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^\n  File \"D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\tools\\earth_wild_signs_boundaries_browser.py\", line 364, in death_and_clearance_owners\n    self.walk_world('field-water'); self.walk_keys(dict(x=target['x'],z=target['z'])); self.real_death()\n                                    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\tools\\earth_wild_signs_boundaries_browser.py\", line 278, in walk_keys\n    else: raise TimeoutError('Native existing-hostile approach stalled within240 seconds')\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTimeoutError: Native existing-hostile approach stalled within240 seconds\n"
+  ],
+  "browserErrors": [],
+  "externalRequests": [],
+  "serverClosed": true,
+  "missingAcceptance": [
+    "Real death/recovery",
+    "Unsaved clearance switch/reload",
+    "Third capacity/quota/craft retry"
+  ],
+  "repair": {
+    "sourceSha256": "683fcb6bf3775312789101619e4fe7359a53c0af014547b59688e0f49f6dd0ab",
+    "reviewSeal": "D:\\07-GAMES\\Firstlight\\staging\\first-load-through-20261006\\native-approach-review01\\SEAL.json",
+    "reviewSha256": "fd7e716e6dadc90daabc2f838c008381a0ba1d5c048fb05c52e686519654d74e",
+    "nativeRerun": "pending"
+  }
+}

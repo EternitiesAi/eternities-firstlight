@@ -1,3 +1,11 @@
+# Preserve supported corners and distinct evidence, 2026-10-07
+
+Repair the native driver rather than weakening navigation/body clearance, enlarging its240-second deadline, moving the enemy or injecting damage. Nearby waypoints may be skipped only when the next full actual body segment is supported; a separate precise native eight-key helper retains the shared consignment following threshold. New four actual-Core controller regressions remain distinct from browser/RAF qualification. Prolonged input stress is retained as a timing limit.
+
+No game or save migration: World9/Adventure12/optional WildSigns1 and HTML remain unchanged by this tooling repair. Preserve once-only owners and all prior systems. The future roadkeeper derives only an own canonical deliberately claimed outcome, owns no reward or saved routine, and cannot resolve the timber culprit/Briar/forest canon. Geometry dressing replaces four crowns only; live screenshots decide acceptance. Wider production remains active unfinished, heartbeat paused. No main merge, public deployment, paid provider/billing, personal saves, unrelated stop or cleanup.
+
+---
+
 # Earth wildlife: source/native delivery and checkpoint repair, 2026-10-07
 
 Parent owns the reused integrated D checkout, gameplay/earth-wild-signs-20261007, open draft PR53 stacked on PR52 base279d7a5a83983a5343987fcc986aafd797d5ba5f. The Beast With the Wrong Name is implemented: clues, actual rendered grazer observation, deliberate bypass/pest resolution and one4-coin/3-fibre payment. The timber culprit remains unresolved. Read docs/development/WILD_SIGNS_2026-10-07.md and docs/evidence/wild-signs-2026-10-07/README.md.

@@ -1,3 +1,11 @@
+# Qualify the repair, then make the account visible, 2026-10-07
+
+Run the current source verifier and genuine three-case native lifecycle/capacity suite with the reviewed conservative-corner driver. Preserve the240-second limits, actual death/damage/input, cold restart, owner expiry and atomic capacity/quota/craft assertions. A passed primary Native03 or intermediate checks cannot replace that gate. Then normally fetch the exact pushed head into the clean independent STATION and run all51 current browser suites. Retain failures/skips and exact source/evidence epochs.
+
+Continue from that gameplay source on gameplay/road-account-aftermath-20261007: nearby choice-specific Sela/Rill/Merren reading, passive route inspection by an actual roadkeeper, four existing crown replacements. Integrate reviewed real App/art/load seams; port stage-only woodland tests and run actual installed caller checks, ordinary native/cameras/visible UI and screenshots before claiming delivery. Larger terrain/geography, countries/cities, Regent/Answering/Briar, mounts and real online systems remain production work. No automatic main merge/deploy or new full game copies. Active goal unfinished, old heartbeat paused.
+
+---
+
 # Earth wildlife: source/native delivery and checkpoint repair, 2026-10-07
 
 Parent owns the reused integrated D checkout, gameplay/earth-wild-signs-20261007, open draft PR53 stacked on PR52 base279d7a5a83983a5343987fcc986aafd797d5ba5f. The Beast With the Wrong Name is implemented: clues, actual rendered grazer observation, deliberate bypass/pest resolution and one4-coin/3-fibre payment. The timber culprit remains unresolved. Read docs/development/WILD_SIGNS_2026-10-07.md and docs/evidence/wild-signs-2026-10-07/README.md.

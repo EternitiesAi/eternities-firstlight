@@ -12,6 +12,7 @@ import copy
 import hashlib
 import importlib.util
 import json
+import math
 import os
 import subprocess
 import sys
@@ -156,6 +157,22 @@ def payment(before, after):
             and after['adventure']['ore'] == before['adventure']['ore'])
 
 
+def approach_keys(player, target, yaw):
+    """Precise original native key directions; no avatar/model mutation.
+
+    Consignment's1.05m following stop remains unchanged. A conservative path
+    corner needs finer convergence before its next supported segment opens.
+    """
+    values=[player.get('x'),player.get('z'),target.get('x'),target.get('z'),yaw]
+    if any(type(v) not in (int,float) or not math.isfinite(v) for v in values):
+        raise ValueError('Finite current native approach positions/camera required')
+    dx,dz=target['x']-player['x'],target['z']-player['z']
+    if math.hypot(dx,dz)<=.15:return ()
+    x,z=dx*math.cos(yaw)-dz*math.sin(yaw),dx*math.sin(yaw)+dz*math.cos(yaw)
+    choices=[(('w',),0,-1),(('w','d'),1,-1),(('d',),1,0),(('s','d'),1,1),(('s',),0,1),(('s','a'),-1,1),(('a',),-1,0),(('w','a'),-1,-1)]
+    return max(choices,key=lambda p:(x*p[1]+z*p[2])/math.hypot(p[1],p[2]))[0]
+
+
 def driver_class(suite, base):
     class Boundaries(suite.driver_class(base)):
         def prefix(self, source, reverse=False):
@@ -267,11 +284,16 @@ def driver_class(suite, base):
                 d = self.diag(); player = d['adventure']['player']
                 self.check('physical approach stays unpaused and alive', not d['adventure']['paused'] and self.state()['adventure']['hp'] > 0)
                 if base.distance(player, target) <= 1.1: break
-                while route and base.distance(player, route[0]) <= 1.05: route.pop(0)
+                while route and base.distance(player, route[0]) <= 1.05:
+                    # Closeness alone cannot cut an actual concave ground/solid
+                    # corner. Keep steering to its authored path point until
+                    # the next full body segment is genuinely supported.
+                    if len(route)>1 and not self.ev('p=>RealmWorldFoundations.segment("world-earthlands",p[0],p[1],.31)', [player,route[1]]): break
+                    route.pop(0)
                 point = route[0] if route else target
                 remaining = 240-(time.monotonic()-started)
                 if remaining <= 0: raise TimeoutError('Native approach deadline expired before another input interval')
-                self.hold_native_keys_for_frames(base.native_keys(player, point, d['camera']['yaw']), timeout_ms=max(1,min(10000,int(remaining*1000))))
+                self.hold_native_keys_for_frames(approach_keys(player, point, d['camera']['yaw']), timeout_ms=max(1,min(10000,int(remaining*1000))))
                 after = self.diag()['adventure']['player']
                 self.check('complete native approach segment retains actual support', self.ev('p=>RealmWorldFoundations.segment("world-earthlands",p[0],p[1],.31)', [last,after]))
                 last = after

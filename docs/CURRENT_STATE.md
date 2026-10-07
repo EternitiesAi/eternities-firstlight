@@ -1,3 +1,11 @@
+# Earth wildlife: approach repair awaiting native rerun, 2026-10-07
+
+The Beast With the Wrong Name is installed on draftPR53. Source06 at668 passed208 commands/137 syntax, Node1884/0fail/2skip; Python417 methods411pass/6method+3class skips. Actual primary native03 passed2176 checks at04ee, and one5MB17-second two-camera clip passed508 capture checks and full decoding. Exact game/primary caller bytes match668. Those receipts remain separate from current boundary/full-gate acceptance.
+
+Boundary02 exited1 after1563 owner-switch/import checks; its second case timed out on the original-hostile approach after6662 intermediate checks. Real death/clearance and capacity were not completed. Both contexts/server closed. Reviewed driver precision now follows conservative Core corners without changing game/nav/enemy/save/HTML. Four CPU regression cases and original27 checks pass; prolonged-input stress remains disclosed. Corrected native and fresh full remote51-browser gate remain pending. Roadkeeper/narrative/four-tree geometry are staged, not installed. See the repair task note and evidence/QUALIFICATION02.md. Production goal stays active and unfinished; main and paused heartbeat unchanged.
+
+---
+
 # Earth wildlife: source/native delivery and checkpoint repair, 2026-10-07
 
 Parent owns the reused integrated D checkout, gameplay/earth-wild-signs-20261007, open draft PR53 stacked on PR52 base279d7a5a83983a5343987fcc986aafd797d5ba5f. The Beast With the Wrong Name is implemented: clues, actual rendered grazer observation, deliberate bypass/pest resolution and one4-coin/3-fibre payment. The timber culprit remains unresolved. Read docs/development/WILD_SIGNS_2026-10-07.md and docs/evidence/wild-signs-2026-10-07/README.md.
