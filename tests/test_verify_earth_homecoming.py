@@ -29,6 +29,14 @@ spec=importlib.util.spec_from_file_location('actual_proposed_verifier',VERIFY)
 V=importlib.util.module_from_spec(spec);spec.loader.exec_module(V)
 sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
+def consignment_orchestration_spec(root,sources,output,**kwargs):
+    # Explicit orchestration stub: this miniature fixture earns no gameplay.
+    # Real current-cohort guards are exercised separately and never patched in a native run.
+    return ([sys.executable,'tools/earth_consignment_browser.py','--root',str(root),
+             '--cohort',str(Path(sources)/'FIRST_LOAD_COHORT.json'),'--output',str(output),
+             '--renderer','software'],{'FIRSTLIGHT_ROOT':str(root),'PYTHONDONTWRITEBYTECODE':'1'})
+
+
 def put(p,value):
     p.parent.mkdir(parents=True,exist_ok=True)
     p.write_text(json.dumps(value)+'\n',encoding='utf8')
@@ -211,7 +219,7 @@ class EarthNativeVerifier(unittest.TestCase):
         browser=Path(self.tmp.name)/'main-browser';args=['verify.py','--browser','--output',str(self.f.logs),'--browser-output',str(browser),'--browser-output-mode','supported']
         # os is local to V; pathlib/native retain the actual host. This tests
         # portable POSIX output routing on every platform, without browser work.
-        with patch.object(V,'ROOT',self.f.root),patch.object(V,'os',SimpleNamespace(name='posix',environ=os.environ)),patch.object(V.sys,'argv',args),patch.object(V.shutil,'which',return_value='node'),patch.object(V.subprocess,'check_output',return_value='v24.18.0\n'),patch.object(V.subprocess,'run',side_effect=fake_run),patch.object(V,'prepare_browser_sources',return_value=None),contextlib.redirect_stdout(io.StringIO()):V.main()
+        with patch.object(V,'ROOT',self.f.root),patch.object(V,'os',SimpleNamespace(name='posix',environ=os.environ)),patch.object(V.sys,'argv',args),patch.object(V.shutil,'which',return_value='node'),patch.object(V.subprocess,'check_output',return_value='v24.18.0\n'),patch.object(V.subprocess,'run',side_effect=fake_run),patch.object(V,'prepare_browser_sources',return_value=None),patch.object(V,'consignment_browser_run_spec',side_effect=consignment_orchestration_spec),contextlib.redirect_stdout(io.StringIO()):V.main()
         labels=[command[1] for command,_ in calls if len(command)>1]
         native=[(c,k) for c,k in calls if len(c)>1 and c[1]=='tools/earth_homecoming_browser.py'];self.assertEqual(len(native),1)
         c,k=native[0];self.assertEqual(k['timeout'],1800);self.assertEqual(c[c.index('--cohort-sha')+1],self.f.cohort_sha);self.assertEqual(c[c.index('--output')+1],str(browser/'earth_homecoming_browser'))
@@ -225,6 +233,10 @@ class EarthNativeVerifier(unittest.TestCase):
             suite=Path(c[1]).stem;expected=1200 if suite in ('cosmos_campaign_browser','atlantis_campaign_browser','heaven_campaign_browser','hell_campaign_browser','realm_givers_browser','local_life_browser') else 600
             self.assertEqual(k['timeout'],expected,suite)
             spec_command,spec_env=V.browser_run_spec(suite,browser,'supported');self.assertEqual(c,spec_command);self.assertTrue(spec_env.items()<=k['env'].items())
+        consignment=[(c,k) for c,k in calls if len(c)>1 and c[1]=='tools/earth_consignment_browser.py'];self.assertEqual(len(consignment),1)
+        cc,ck=consignment[0];self.assertEqual(ck['timeout'],3600);self.assertEqual(cc[cc.index('--cohort')+1],str(self.f.logs/'earth-consignment-earned/FIRST_LOAD_COHORT.json'))
+        self.assertLess(labels.index('tools/earth_consignment_cohort.py'),labels.index('tests/test_earth_consignment_browser.py'));self.assertLess(labels.index('tests/test_earth_consignment_browser.py'),labels.index('tools/earth_consignment_browser.py'))
+        self.assertEqual(len(existing)+len(roads)+len(native)+len(consignment)+1,49)
         self.assertFalse((browser/'earth_homecoming_browser').exists());self.assertFalse(any('isolated-profile' in str(p) for p in browser.rglob('*')))
     def test_legacy_guarded_supported_and_default_routing_remain_exact(self):
         guarded={'earth_road_browser','realm_givers_browser','realm_trails_north_browser','coastward_bridge_posts_browser','practice_visibility_browser','hell_campaign_browser','heaven_campaign_browser','atlantis_campaign_browser','cosmos_campaign_browser'}

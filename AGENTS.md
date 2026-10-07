@@ -1,3 +1,15 @@
+# First supplied load: integrated candidate, 2026-10-06
+
+Read docs/development/FIRST_LOAD_THROUGH_2026-10-06.md before older task fronts. Root owns `gameplay/first-load-through-20261006`. Data, command rules, transient motion, procedural art and native UI have one actual owner each; the LocalLife prototype overlay was not installed. Real app RAF runs Core then carrier motion under an app-owned lease and actual roster/world checks. Arrival proof is consumed only after synchronous saved adoption.
+
+PR51's prior fitting source99e8 passed the full 238-command/48-browser gate. Final evidence head `513dd6d28161f7f4c7312c72157ab9808f4c880d` is pushed; the reused clean remote checkout rebuilt the identical HTML and verified all449 retained payloads/71380786 bytes. Its first Windows long commit:path read failed; a scoped `core.longpaths=true` reader then verified the already materialized clean copy without deletion or replacement. That readback failure and successful receipt remain retained. PR51 stays an open draft; this branch is stacked against it.
+
+Integrated source and native qualification are pending. Pre-installation CPU composition passed118 checks; frozen original commission/home CPU53/53 and adapter11/11 passed. Current-cohort routing9/9, native guard19/19 and capture18/18 are preparation only. The actual original EE producer must earn fresh blade/bow/veteran prerequisites at this source epoch. Six ordinary-RAF native routes plus separately labelled capacity/quota refusal, cold reloads, current pixel geometry and both cameras must pass. One short actual hardware recording follows a passed native report and explicitly sealed input; it cannot qualify human pacing or production FPS. Full source, relevant/full remote checks and exact final readback remain required.
+
+Root owns this reused integrated D checkout and branch. STATION is currently inactive at the final PR51 head; colleagues have read-only review scopes. No main merge, public deployment, billing changes, paid providers, personal saves, proprietary extraction, fake online participants, unrelated workers or cleanup. Keep all earlier saves, XP, equipment identity/sockets/upgrades, explicit choices, housing/crops, companion, music/exports and both cameras. Heavy evidence stays D; no extra full game or raw recording copies. Retain failures and respect the blocked standalone-clone deletion. Wider production goal ACTIVE; old heartbeat PAUSED.
+
+---
+
 # Living Road fieldcraft qualified, 2026-10-06
 
 Root owns `gameplay/living-road-fieldcraft-20261006` in this reused integrated D checkout. Read docs/development/LIVING_ROAD_FIELDCRAFT_2026-10-06.md and the current evidence before older fronts. Four real sections and five receivers now gate the original first brace transaction.

@@ -1,3 +1,19 @@
+# Carry useful supplies through the repaired road, 2026-10-06
+
+This checkout now contains the supplied carrier, southern meadow and northern root routes, deliberate Wait/Continue/arrival controls, map course and settlement stock. World9 / Adventure12 / LocalLife1 and old browser keys remain. A strict four-record owner is validated and preserved before appending one fresh fifth record; an accepted fifth record must match the player's original paid expedition branch. Older strict four-record clients refuse this expanded catalogue. There is no backward-play or cryptographic-history claim.
+
+After the kit and deliberate original expedition claim, read Rill's signed board at the Elderweald return glade (-106,-105). Choose a branch-compatible course. Supplier cargo remains separate from inventory; five or twelve physical arrivals lead to Merren's settlement bay (5.8,-69). Explicit payment at (-6,-68) gives4 coins,2 timber and2 fibre with0 XP/ore once. The original workshop at (8,-69), Rill/patrol, old commissions and old payments remain.
+
+PR51's prior fitting source99e8 passed the full 238-command/48-browser gate. Final evidence head `513dd6d28161f7f4c7312c72157ab9808f4c880d` is pushed; the reused clean remote checkout rebuilt the identical HTML and verified all449 retained payloads/71380786 bytes. Its first Windows long commit:path read failed; a scoped `core.longpaths=true` reader then verified the already materialized clean copy without deletion or replacement. That readback failure and successful receipt remain retained. PR51 stays an open draft; this branch is stacked against it.
+
+Integrated source and native qualification are pending. Pre-installation CPU composition passed118 checks; frozen original commission/home CPU53/53 and adapter11/11 passed. Current-cohort routing9/9, native guard19/19 and capture18/18 are preparation only. The actual original EE producer must earn fresh blade/bow/veteran prerequisites at this source epoch. Six ordinary-RAF native routes plus separately labelled capacity/quota refusal, cold reloads, current pixel geometry and both cameras must pass. One short actual hardware recording follows a passed native report and explicitly sealed input; it cannot qualify human pacing or production FPS. Full source, relevant/full remote checks and exact final readback remain required.
+
+Launch `PLAY_FIRSTLIGHT_WINDOWS.cmd`, then `http://127.0.0.1:8780/FIRSTLIGHT_VALLEY.html`. This candidate has not yet been declared qualified.
+
+Root owns this reused integrated D checkout and branch. STATION is currently inactive at the final PR51 head; colleagues have read-only review scopes. No main merge, public deployment, billing changes, paid providers, personal saves, proprietary extraction, fake online participants, unrelated workers or cleanup. Keep all earlier saves, XP, equipment identity/sockets/upgrades, explicit choices, housing/crops, companion, music/exports and both cameras. Heavy evidence stays D; no extra full game or raw recording copies. Retain failures and respect the blocked standalone-clone deletion. Wider production goal ACTIVE; old heartbeat PAUSED.
+
+---
+
 # Living Road support qualified and playable, 2026-10-06
 
 At the existing root-channel worksite, inspect sockets, correct yaw/pitch, seat four supplied sections and deliberately fasten through the original saved transaction. Temporary and installed pieces agree. Look frames the receiving face in both cameras while retaining chosen FOV; compact native controls preserve focus. Continuous outdoor obstacle/support checks repair measured motion gaps without relaxing save validation or replacing terrain.

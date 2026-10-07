@@ -132,6 +132,31 @@ def onboarding_browser_run_spec(root, output, *, windows=None):
             {'FIRSTLIGHT_ROOT': str(root), 'PYTHONDONTWRITEBYTECODE': '1'})
 
 
+def consignment_browser_run_spec(root, sources, output, *, windows=None):
+    """Require this invocation's current earned cohort before a native run.
+
+    The installed validator import is read-only; no browser/server/profile here.
+    """
+    root,sources,output=Path(root).resolve(),Path(sources).resolve(),Path(output).resolve()
+    manifest=sources/'FIRST_LOAD_COHORT.json';native=root/'tools/earth_consignment_browser.py'
+    if not native.is_file() or not manifest.is_file():raise ValueError('Installed native tool and this invocation current cohort are required')
+    if output.exists() or output==Path(output.anchor) or output==sources or output.is_relative_to(sources) or sources.is_relative_to(output):raise ValueError('Use fresh separate native evidence; preserve all prior outputs')
+    if output==root or output.is_relative_to(root) or root.is_relative_to(output):raise ValueError('Native evidence must be outside the game checkout')
+    if (os.name=='nt' if windows is None else windows)and(output.drive.upper()!='D:' or sources.drive.upper()!='D:'):raise ValueError('Native evidence and earned sources stay on D on Windows')
+    import json
+    value=json.loads(manifest.read_text(encoding='utf-8'));epoch=value.get('epoch',{})
+    if epoch.get('mode')!='current-command-earned' or not epoch.get('runtimeSources') or epoch.get('callerSha256')!=hashlib.sha256((root/'tests/earth_expedition_journey.cjs').read_bytes()).hexdigest():raise ValueError('Historical or drifted prerequisites cannot replace the mandatory current cohort')
+    for name,digest in epoch['runtimeSources'].items():
+        p=(root/name).resolve()
+        if not p.is_relative_to(root/'src')or not p.is_file()or hashlib.sha256(p.read_bytes()).hexdigest()!=digest:raise ValueError('Current native runtime epoch changed')
+    expected={str(p.relative_to(root)).replace('\\','/')for p in(root/'src').glob('*')if p.is_file()}
+    if set(epoch['runtimeSources'])!=expected:raise ValueError('Current runtime membership changed')
+    spec=importlib.util.spec_from_file_location('installed_consignment_preflight',native);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+    m.cohort(manifest,root)
+    if m.build_epoch(root)!=epoch.get('htmlSha256'):raise ValueError('Current native build differs from earned epoch')
+    return([sys.executable,'tools/earth_consignment_browser.py','--root',str(root),'--cohort',str(manifest),'--output',str(output),'--renderer','software'],{'FIRSTLIGHT_ROOT':str(root),'PYTHONDONTWRITEBYTECODE':'1'})
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--browser', action='store_true', help='Also run the current browser suites including starter progression and native persistence (requires requirements-dev.txt and Chromium).')
@@ -229,9 +254,14 @@ def main():
     run('realm-comparator-blade', ['node', 'tests/realm_trails_cosmos_journey.cjs'])
     run('realm-comparator-bow', ['node', 'tests/realm_trails_cosmos_journey.cjs', '--bow'])
     run('realm-comparator-veteran', ['node', 'tests/realm_trails_cosmos_journey.cjs', '--veteran'])
-    run('earth-expedition-blade', ['node', 'tests/earth_expedition_journey.cjs'])
-    run('earth-expedition-bow', ['node', 'tests/earth_expedition_journey.cjs', '--bow'])
-    run('earth-expedition-veteran', ['node', 'tests/earth_expedition_journey.cjs', '--veteran'])
+    consignment_sources = output / 'earth-consignment-earned'
+    if os.name == 'nt' and consignment_sources.drive.upper() != 'D:':
+        consignment_sources = ROOT / 'evidence10/earth-consignment-earned'
+    run('earth-expedition-blade', ['node', 'tests/earth_expedition_journey.cjs', '--output', str(consignment_sources)])
+    run('earth-expedition-bow', ['node', 'tests/earth_expedition_journey.cjs', '--bow', '--output', str(consignment_sources)])
+    run('earth-expedition-veteran', ['node', 'tests/earth_expedition_journey.cjs', '--veteran', '--output', str(consignment_sources)])
+    run('earth-consignment-cohort', [sys.executable, 'tools/earth_consignment_cohort.py', '--root', str(ROOT), '--sources', str(consignment_sources), '--output', str(consignment_sources / 'FIRST_LOAD_COHORT.json')])
+    run('earth-consignment-current-preflight', [sys.executable, 'tests/test_earth_consignment_browser.py', '-v'], extra_env={'FIRSTLIGHT_ROOT': str(ROOT), 'FIRSTLIGHT_CONSIGNMENT_COHORT': str(consignment_sources / 'FIRST_LOAD_COHORT.json')})
     run('local-life-blade', ['node', 'tests/local_life_journey.cjs'])
     run('local-life-bow', ['node', 'tests/local_life_journey.cjs', '--bow'])
     run('local-life-veteran', ['node', 'tests/local_life_journey.cjs', '--veteran'])
@@ -302,6 +332,12 @@ def main():
                              if args.browser_output is not None else output / 'onboarding-browser')
         command, extra_env = onboarding_browser_run_spec(ROOT, onboarding_output)
         run('onboarding_browser', command, timeout=600, extra_env=extra_env)
+        consignment_output = ((args.browser_output / 'earth_consignment_browser')
+                              if args.browser_output is not None else output / 'earth-consignment-browser')
+        command, extra_env = consignment_browser_run_spec(ROOT, consignment_sources, consignment_output)
+        # Ordinary RAF six native routes and two labelled capacity/quota cases.
+        # This is a controller budget, not a pacing or frame-rate claim.
+        run('earth_consignment_browser', command, timeout=3600, extra_env=extra_env)
         prepare_browser_sources(args.browser_output)
         command, extra_env = browser_run_spec('cosmos_campaign_browser', args.browser_output, mode=args.browser_output_mode)
         run('cosmos_campaign_browser', command, timeout=1200, extra_env=extra_env)

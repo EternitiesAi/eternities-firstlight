@@ -16,6 +16,25 @@ import argparse,base64,hashlib,json,os,subprocess,sys,tempfile,threading,traceba
 from playwright.sync_api import sync_playwright
 from browser_support import chromium_launch_kwargs
 
+# Frozen original membership; the supplied carrier is covered by its own suites.
+OLD_LOCAL_IDS = ('heaven-propagation-bed-v1', 'hell-refuge-water-v1',
+                 'atlantis-bellglass-lamp-v1', 'cosmos-drawing-shelf-v1')
+NEW_LOCAL_ID = 'earth-first-load-through-v1'
+
+def fresh_consignment(world):
+ records=world['localLife']['records'];record=records.get(NEW_LOCAL_ID)
+ return (set(records)==set((*OLD_LOCAL_IDS,NEW_LOCAL_ID)) and isinstance(record,dict)
+         and set(record)=={'accepted','choice','steps','claimed'}
+         and record['accepted'] is False and record['choice'] is None
+         and isinstance(record['steps'],list) and len(record['steps'])==0
+         and record['claimed'] is False)
+
+def legacy_definitions(definitions):
+ by_id={d['id']:d for d in definitions}
+ if len(by_id)!=len(definitions) or set(by_id)!=set((*OLD_LOCAL_IDS,NEW_LOCAL_ID)):
+  raise ValueError('Expected the exact five-job catalogue, including all four original commissions')
+ return [by_id[id] for id in OLD_LOCAL_IDS]
+
 parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--variant',choices=['fresh-blade','fresh-bow','returning-strongest']);args=parser.parse_args()
 ROOT=Path(os.environ.get('FIRSTLIGHT_TEST_ROOT',Path(__file__).resolve().parents[1])).resolve()
 OUT=Path(os.environ.get('FIRSTLIGHT_LOCAL_LIFE_OUTPUT',ROOT/'evidence10/local-life-browser')).resolve()
@@ -142,7 +161,9 @@ try:
     chooser.value.set_files(str(fixture));page.wait_for_selector('[data-rpg="chars-confirm-import"]');page.locator('[data-rpg="chars-confirm-import"]').click();page.wait_for_function('()=>Realm.diagnostics.characters.active==="character-2"',polling=100);render();initial=state()
     check(variant+' native migration retains real earned history wallet inventory and old browser key',preserved(initial)==preserved(source) and economic(initial)==economic(source) and initial['localLife']==ev('RealmLocalLife.fresh()') and ev('localStorage.getItem(RealmCore.KEY)')==old_key)
     check(variant+' migrated camera preferences retained before deliberate reset',initial['settings']['cameraMode']==source['settings']['cameraMode'] and initial['settings']['cameraFov']==source['settings']['cameraFov'] and initial['settings']['cameraViews']==source['settings']['cameraViews'])
-    for definition in ev('RealmLocalLife.definitions'):
+    check(variant+' exact original catalogue membership',ev('RealmEarthConsignmentData.OLD_IDS')==list(OLD_LOCAL_IDS))
+    check(variant+' separate supplied load begins fresh',fresh_consignment(initial))
+    for definition in legacy_definitions(ev('RealmLocalLife.definitions')):
      realm=definition['realm'];qid=definition['id'];choice=definition['choices'][0 if variant=='fresh-blade' else 1]
      checkpoint=legacy_cosmos() if realm=='cosmos' and variant=='fresh-blade' else None
      if checkpoint is None:enter(realm)
@@ -186,7 +207,7 @@ try:
      check(variant+' exact whole once-only payment '+realm,after['localLife']['records'][qid]['claimed'] and all(after['adventure'][k]-before['adventure'][k]==reward[k] for k in ['xp','coins','ore']) and all(after['sandbox']['inventory'][k]-before['sandbox']['inventory'][k]==n for k,n in reward.get('materials',{}).items()) and preserved(after)==preserved(before))
      dup=ev('id=>Realm.test.localLifeCommand("claim",{quest:id,request:"new-request"})',qid);check(variant+' changed request cannot repay '+realm,dup.get('duplicate') and state()==after);shot(realm+'-paid');restart(realm+' paid');check(variant+' old browser key still untouched '+realm,ev('localStorage.getItem(RealmCore.KEY)')==old_key)
      enter(realm);before=state();durable=ev('localStorage.getItem(RealmCharacters.KEY)');dup=ev('id=>Realm.test.localLifeCommand("claim",{quest:id,request:"after-full-browser-restart"})',qid);check(variant+' cold duplicate changes neither live nor durable bytes '+realm,dup.get('duplicate') and state()==before and ev('localStorage.getItem(RealmCharacters.KEY)')==durable);home()
-    final=state();record['final_world']=final;check(variant+' preserves campaign XP curve gear sockets and all prior history',preserved(final)==preserved(initial) and all(final['adventure'][k]-initial['adventure'][k]==n for k,n in {'xp':92,'coins':33,'ore':2}.items()) and all(final['sandbox']['inventory'][k]-initial['sandbox']['inventory'][k]==n for k,n in {'wood':4,'fiber':5,'crystal':1}.items()))
+    final=state();check(variant+' original journeys leave separate supplied load fresh',fresh_consignment(final));check(variant+' all four original commissions paid',all(final['localLife']['records'][id]['claimed'] for id in OLD_LOCAL_IDS));record['final_world']=final;check(variant+' preserves campaign XP curve gear sockets and all prior history',preserved(final)==preserved(initial) and all(final['adventure'][k]-initial['adventure'][k]==n for k,n in {'xp':92,'coins':33,'ore':2}.items()) and all(final['sandbox']['inventory'][k]-initial['sandbox']['inventory'][k]==n for k,n in {'wood':4,'fiber':5,'crystal':1}.items()))
     check(variant+' no runtime errors',not diag()['errors'] and not report['browser_errors']);context.close();context=None
  check('HTML and all runtime sources unchanged throughout native qualification',sha(ROOT/'index.html')==report['html_sha256'] and sha(ROOT/'FIRSTLIGHT_VALLEY.html')==report['html_sha256'] and all(sha(ROOT/p)==h for p,h in report['sources'].items()));report['status']='passed'
 except Exception:

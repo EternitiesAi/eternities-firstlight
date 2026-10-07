@@ -2,11 +2,19 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 const C=require('../src/core.js'),H=require('../src/home-history.js'),L=require('../src/local-life.js'),RT=require('../src/realm-trails.js'),X=require('../src/creative.js'),Art=require('../src/home-history-art.js');
 const copy=structuredClone;
+// These fixed-step regressions retain the exact original four commissions.
+// The supplied carrier has separate physical-authority tests and stays fresh here.
+const D=require('../src/earth-consignment-data.js');
+const OLD_IDS=Object.freeze(['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1']);
+assert.deepEqual(D.OLD_IDS,OLD_IDS,'canonical legacy membership cannot drift');
+assert.deepEqual(L.definitions.map(d=>d.id),[...OLD_IDS,D.ID],'five-job catalogue is exact');
+const LEGACY_DEFINITIONS=Object.freeze(OLD_IDS.map(id=>{const d=L.definition(id);assert.ok(d,'missing original commission '+id);return d;}));
+const assertFreshConsignment=state=>assert.deepEqual(state.localLife.records[D.ID],D.freshRecord(),'legacy coverage leaves the separate supplied commission fresh');
 /* Explicit synthetic boundaries, distinct from the command-earned journeys. */
 function fixture(){const s=C.fresh();s.adventure.started=true;
- for(const d of L.definitions){if(d.prerequisite){const old=RT.definition(d.prerequisite),r=s.realmTrails.records[old.id];r.accepted=r.claimed=true;r.steps=old.steps.map(s=>s.id);if(old.escort){r.checkpoint=old.escort.route.length-1;r.assisted=true;}}s.localLife.records[d.id]={accepted:true,claimed:true,choice:d.choices[0].id,steps:d.steps.map(s=>s.id)};}
+ for(const d of LEGACY_DEFINITIONS){if(d.prerequisite){const old=RT.definition(d.prerequisite),r=s.realmTrails.records[old.id];r.accepted=r.claimed=true;r.steps=old.steps.map(s=>s.id);if(old.escort){r.checkpoint=old.escort.route.length-1;r.assisted=true;}}s.localLife.records[d.id]={accepted:true,claimed:true,choice:d.choices[0].id,steps:d.steps.map(s=>s.id)};}
  s.bridgeCommunity={version:1,accepted:true,choice:'shelter',steps:['fittings','fit','inspect'],claimed:true};
- Object.assign(s.sandbox.inventory,{wood:9,stone:9,fiber:9,crystal:9});s.player={x:12,z:9,yaw:0};const sim=new C.Simulation(s),writes=[];
+ Object.assign(s.sandbox.inventory,{wood:9,stone:9,fiber:9,crystal:9});s.player={x:12,z:9,yaw:0};assertFreshConsignment(s);const sim=new C.Simulation(s),writes=[];assertFreshConsignment(sim.state);
  const io={save:s=>{writes.push(C.validate(s));return{ok:true};}},act=(type,payload={},saver=io)=>H.command({sim},type,{expectedRevision:H.layoutAction(type)?sim.state.retreat.revision:sim.state.homeHistory.revision,...payload},saver);return{sim,writes,io,act};
 }
 function home(h,kind,slot='n'){const layout=copy(h.sim.state.retreat);layout.items=layout.items.filter(i=>i.slot!==slot&&i.kind!==kind);layout.items.push({kind,slot,rotation:0});return layout;}

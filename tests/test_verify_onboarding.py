@@ -90,17 +90,18 @@ class OnboardingVerifier(unittest.TestCase):
         self.assertEqual(before,{name:sha(name)for name in before})
         self.assertEqual(len(module.STAGES),12)
 
-    def main_requests(self,browser=True,onboarding_exit=0,capture_cpu_exit=0):
+    def main_requests(self,browser=True,onboarding_exit=0,capture_cpu_exit=0,consignment_exit=0):
         calls=[]
         def fake_run(command,**kw):
             calls.append((command,kw));kw['stdout'].write(b'CPU orchestration sink only; no subprocess launched\n')
             code=0
             if len(command)>1 and command[1]=='tools/onboarding_browser.py':code=onboarding_exit
+            if len(command)>1 and command[1]=='tools/earth_consignment_browser.py':code=consignment_exit
             if len(command)>1 and command[1]=='tests/test_capture_earth_homecoming.py':code=capture_cpu_exit
             return SimpleNamespace(returncode=code)
         target=Path(self.tmp.name)/'main-browser';args=['verify.py','--output',str(self.f.logs)]
         if browser:args+=['--browser','--browser-output',str(target),'--browser-output-mode','supported']
-        with patch.object(V,'ROOT',self.f.root),patch.object(V,'os',SimpleNamespace(name='posix',environ=os.environ)),patch.object(V.sys,'argv',args),patch.object(V.shutil,'which',return_value='node'),patch.object(V.subprocess,'check_output',return_value='v24.18.0\n'),patch.object(V.subprocess,'run',side_effect=fake_run),patch.object(V,'prepare_browser_sources',return_value=None),contextlib.redirect_stdout(io.StringIO()),contextlib.redirect_stderr(io.StringIO()):
+        with patch.object(V,'ROOT',self.f.root),patch.object(V,'os',SimpleNamespace(name='posix',environ=os.environ)),patch.object(V.sys,'argv',args),patch.object(V.shutil,'which',return_value='node'),patch.object(V.subprocess,'check_output',return_value='v24.18.0\n'),patch.object(V.subprocess,'run',side_effect=fake_run),patch.object(V,'prepare_browser_sources',return_value=None),patch.object(V,'consignment_browser_run_spec',side_effect=Earth.consignment_orchestration_spec),contextlib.redirect_stdout(io.StringIO()),contextlib.redirect_stderr(io.StringIO()):
             V.main()
         return calls,target
 
@@ -119,6 +120,14 @@ class OnboardingVerifier(unittest.TestCase):
             suite=Path(c[1]).stem;want=1200 if suite in ('cosmos_campaign_browser','atlantis_campaign_browser','heaven_campaign_browser','hell_campaign_browser','realm_givers_browser','local_life_browser') else 600
             self.assertEqual(k['timeout'],want,suite);expected,env=V.browser_run_spec(suite,target,'supported');self.assertEqual(c,expected);self.assertTrue(env.items()<=k['env'].items())
         self.assertEqual(len(existing)+len(onboarding)+1,47);self.assertEqual(len(existing)+len(onboarding)+len(roads)+1,48);self.assertFalse((target/'onboarding_browser').exists());self.assertFalse(any(len(c)>1 and c[1].startswith('tools/capture_') for c,k in calls))
+
+    def test_new_consignment_is_required_once_after_current_preflight_and_retains_48_older_suites(self):
+        calls,target=self.main_requests();labels=[c[1]for c,k in calls if len(c)>1]
+        rows=[(c,k)for c,k in calls if len(c)>1 and c[1]=='tools/earth_consignment_browser.py'];self.assertEqual(len(rows),1)
+        c,k=rows[0];self.assertEqual(k['timeout'],3600);self.assertEqual(c[c.index('--output')+1],str(target/'earth_consignment_browser'));self.assertEqual(c[c.index('--cohort')+1],str(self.f.logs/'earth-consignment-earned/FIRST_LOAD_COHORT.json'))
+        self.assertLess(labels.index('tools/earth_consignment_cohort.py'),labels.index('tests/test_earth_consignment_browser.py'));self.assertLess(labels.index('tests/test_earth_consignment_browser.py'),labels.index('tools/earth_consignment_browser.py'))
+        self.assertLess(labels.index('tools/onboarding_browser.py'),labels.index('tools/earth_consignment_browser.py'))
+        with self.assertRaisesRegex(SystemExit,'FAILED: earth_consignment_browser'):self.main_requests(consignment_exit=1)
 
     def test_browser_gate_failure_is_not_swallowed_or_relabelled_as_optional(self):
         with self.assertRaisesRegex(SystemExit,'FAILED: onboarding_browser'):self.main_requests(onboarding_exit=1)

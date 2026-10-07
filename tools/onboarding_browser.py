@@ -27,7 +27,10 @@ sys.dont_write_bytecode = True
 LOCKED_ACTIONS = ('earth-homecoming-open', 'cosmos-campaign-open',
                   'atlantis-campaign-open', 'heaven-campaign-open', 'hell-campaign-open')
 MODULES = ('core.js', 'characters.js', 'app.js', 'rpg-ui.js', 'local-life-ui.js',
-           'local-life.js', 'realm-trails-ui.js', 'world-foundations-ui.js')
+           'local-life.js', 'realm-trails-ui.js', 'world-foundations-ui.js',
+           'earth-consignment-data.js', 'earth-consignment.js',
+           'earth-consignment-motion.js', 'earth-consignment-art.js',
+           'earth-consignment-ui.js')
 STAGES = ('fresh-journal', 'keyboard-later-requests', 'touch-later-requests',
           'earned-kit', 'earned-trail-acceptance', 'earned-commission-acceptance',
           'manual-homestead', 'manual-story', 'actual-civic-track',

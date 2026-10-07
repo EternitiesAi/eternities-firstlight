@@ -1,3 +1,15 @@
+# Qualify the first supplied load through actual gameplay, 2026-10-06
+
+The separate branch is integrated from PR51 final513dd6d. Regenerated outputs are identical3144315 bytes, SHA256 `e3d4d2a4534951463bffffcdf532d97873090e2c97b85dd6ad7a9a2915010b28`. Run the installed source verifier, freshly command-earned current prerequisite maker and mandatory preflight, then six real native routes/two labelled refusal cases. Inspect rendered UI/cargo/stock in both views and compact portrait. Preserve failed attempts and fix actual causes. Record one short ordinary-RAF RTX take from the exact passed native input; push a stacked draft, execute the fresh remote gate and reconcile final hashes. No staged-only acceptance or historical-cohort fallback.
+
+Integrated source and native qualification are pending. Pre-installation CPU composition passed118 checks; frozen original commission/home CPU53/53 and adapter11/11 passed. Current-cohort routing9/9, native guard19/19 and capture18/18 are preparation only. The actual original EE producer must earn fresh blade/bow/veteran prerequisites at this source epoch. Six ordinary-RAF native routes plus separately labelled capacity/quota refusal, cold reloads, current pixel geometry and both cameras must pass. One short actual hardware recording follows a passed native report and explicitly sealed input; it cannot qualify human pacing or production FPS. Full source, relevant/full remote checks and exact final readback remain required.
+
+Ask Dom after the delivered build: Did you know where the load was going? Was staying with the carrier enjoyable? Did the visible supply make the road repair feel useful? Human acceptance remains open.
+
+Root owns this reused integrated D checkout and branch. STATION is currently inactive at the final PR51 head; colleagues have read-only review scopes. No main merge, public deployment, billing changes, paid providers, personal saves, proprietary extraction, fake online participants, unrelated workers or cleanup. Keep all earlier saves, XP, equipment identity/sockets/upgrades, explicit choices, housing/crops, companion, music/exports and both cameras. Heavy evidence stays D; no extra full game or raw recording copies. Retain failures and respect the blocked standalone-clone deletion. Wider production goal ACTIVE; old heartbeat PAUSED.
+
+---
+
 # Carry the first load through, 2026-10-06
 
 PR51's exact-source full gate is closed. Finish its final evidence push/readback, then branch `gameplay/first-load-through-20261006` from the final evidence head in the reused integrated checkout. Keep the review explicitly stacked; no main merge or deployment.

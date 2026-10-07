@@ -7,23 +7,25 @@ const material={wood:'timber',fiber:'meadow fibre',crystal:'moon crystal'};
 const fee=d=>d.reward.xp+' XP · '+d.reward.coins+' sunmarks'+(d.reward.ore?' · '+d.reward.ore+' ore':'')+Object.entries(d.reward.materials||{}).map(([k,n])=>' · '+n+' '+(material[k]||k)).join('');
 function routePoints(sim){
  const realm=W.definition(sim.room)?.id,d=L.definitions.find(d=>d.realm===realm);if(!d)return[];
+ if(d.kind==='earth-consignment-motion-v1')return G.RealmEarthConsignmentUI.routePoints(sim,sim.consignmentPresentationContext);
  const r=sim.state.localLife.records[d.id];if(!r.accepted||r.claimed)return[];
  const points=L.ready(sim.state,d)?[{...(d.returner||d.giver),id:'return',name:'Return to '+(d.returner||d.giver).name,kind:'giver',medium:'dry'}]:L.available(sim.state,d);
  return points.map((p,i)=>({...p,quest:d.id,mark:'L'+(i+1)}));
 }
 class LocalLifeUI{
- constructor(rpg){this.rpg=rpg;this.selected=null;this.reading=null;this.tracked=null;this.seen=new WeakSet();}
+ constructor(rpg){this.rpg=rpg;this.selected=null;this.reading=null;this.tracked=null;this.seen=new WeakSet();const carrier=G.RealmEarthConsignmentUI||(typeof require==='function'?require('./earth-consignment-ui.js'):null);this.carrier=new carrier.ConsignmentUI(rpg);}
  get sim(){return this.rpg.sim;}
  local(){return L.definitions.find(d=>d.realm===W.definition(this.sim.room)?.id)||null;}
  point(){
-  const d=this.local();if(!d)return null;const r=this.sim.state.localLife.records[d.id];
+  const d=this.local();if(!d)return null;if(d.kind==='earth-consignment-motion-v1')return this.carrier.point();const r=this.sim.state.localLife.records[d.id];
   if(!r.accepted||this.rpg.quest!=='local-life'&&this.rpg.tab!=='local-life'||r.claimed&&this.rpg.quest!=='local-life')return null;
   const points=r.claimed?[{...(d.returner||d.giver),id:'return',kind:'giver'}]:routePoints(this.sim);
   return points.filter(p=>L.at(this.sim,p)).sort((a,b)=>Math.hypot(a.x-this.sim.state.player.x,a.z-this.sim.state.player.z)-Math.hypot(b.x-this.sim.state.player.x,b.z-this.sim.state.player.z))[0]||null;
  }
  context(){const p=this.point();return p?'E · '+p.name:null;}
- interact(){const p=this.point();if(!p)return false;this.selected=this.local().realm;this.reading=p.id;this.rpg.open('local-life');return true;}
+ interact(){if(this.carrier.interact())return true;const p=this.point();if(!p)return false;this.selected=this.local().realm;this.reading=p.id;this.rpg.open('local-life');return true;}
  action(el){
+  if(this.carrier.action(el))return true;
   const action=el.dataset.rpg,id=el.dataset.id;if(!action?.startsWith('civic-'))return false;
   const type=action.slice(6);
   if(type==='open'){this.selected=id||W.definition(this.sim.room)?.id||'all';this.rpg.open('local-life');return true;}
@@ -49,16 +51,17 @@ class LocalLifeUI{
  }
  teaser(realm){const d=L.definitions.find(d=>d.realm===realm);if(!d)return'';const r=this.sim.state.localLife.records[d.id];return'<section class="local-life-teaser"><small>LOCAL LIFE · SEPARATE ONCE-ONLY WORK</small><h3>'+esc(d.title)+'</h3><p>'+esc(r.claimed?d.completionText:d.summary)+'</p>'+button(r.accepted?'Read saved local work':'Read the commission, arrangements and payment','open',realm)+'</section>';}
  journal(){
-  return'<section class="local-life-board" aria-label="Local life across the roads"><div class="local-life-heading"><div><small>PLACES PEOPLE INHABIT</small><h2>Local life across the roads</h2><p>Four finite commissions keep their own arrangements, supplied parts and payments.</p></div>'+button('Read all local commissions','all')+'</div><div class="local-life-grid">'+L.definitions.map(d=>{
-   const r=this.sim.state.localLife.records[d.id],state=r.claimed?'Paid once':!r.accepted?'Not accepted':L.ready(this.sim.state,d)?'Ready to return · unpaid':r.steps.length+'/'+d.steps.length+' actions';
+  return'<section class="local-life-board" aria-label="Local life across the roads"><div class="local-life-heading"><div><small>PLACES PEOPLE INHABIT</small><h2>Local life across the roads</h2><p>Finite local commissions keep their own arrangements, supplied parts and payments.</p></div>'+button('Read all local commissions','all')+'</div><div class="local-life-grid">'+L.definitions.map(d=>{
+   const r=this.sim.state.localLife.records[d.id],state=r.claimed?'Paid once':!r.accepted?'Not accepted':L.ready(this.sim.state,d)?'Ready to return · unpaid':r.steps.length+'/'+L.required(d,r).length+' actions';
    return'<article data-local-work="'+d.id+'"><small>'+esc(W.definition(d.realm).name)+' · '+esc(state)+'</small><h3>'+esc(d.title)+'</h3><p>'+esc((d.returner||d.giver).name)+' · '+esc(fee(d))+'</p>'+button('Read local work','open',d.realm)+(r.accepted&&!r.claimed?button('Track this local work','track',d.id):'')+'</article>';
   }).join('')+'</div><p>Supplied job parts never occupy equipment slots. These payments contribute to ordinary crafting and building; fully fitted gear gains no new power tier from them.</p></section>';
  }
  page(tab){
   if(tab!=='local-life')return null;
   const selected=this.selected||W.definition(this.sim.room)?.id||'all',list=L.definitions.filter(d=>selected==='all'||d.realm===selected);
-  let html='<section class="local-life-page"><p>Practical work, lasting arrangements and separate once-only payments. Reading accepts nothing.</p><div class="world-actions">'+button('All four commissions','all')+'</div>';
+  let html='<section class="local-life-page"><p>Practical work, lasting arrangements and separate once-only payments. Reading accepts nothing.</p><div class="world-actions">'+button('All local commissions','all')+'</div>';
   for(const d of list){
+   if(d.kind==='earth-consignment-motion-v1'){html+=this.carrier.panel();continue;}
    const r=this.sim.state.localLife.records[d.id],here=W.definition(this.sim.room)?.id===d.realm,eligible=L.eligible(this.sim.state,d),choice=d.choices.find(c=>c.id===r.choice);
    html+='<article class="local-life-card" data-local-quest="'+d.id+'"><small>'+esc(W.definition(d.realm).name)+' · '+(r.claimed?'CLAIMED ONCE':r.accepted?'ACCEPTED LOCAL WORK':'OPTIONAL LOCAL COMMISSION')+'</small><h3>'+esc(d.title)+'</h3><p><strong>Commissioned by:</strong> '+esc(d.giver.name)+(d.returner?'<br><strong>Return to:</strong> '+esc(d.returner.name):'')+'</p><p>'+esc(d.summary)+'</p><p><strong>Route and danger:</strong> '+esc(d.danger)+'</p><p><strong>Exact once-only payment:</strong> '+esc(fee(d))+'. XP credits only up to the existing 9999 stored cap.</p>';
    if(!r.accepted){
@@ -82,7 +85,7 @@ class LocalLifeUI{
    }
    html+='</article>';
   }
-  if(!list.length)html+='<p>The living-road expedition remains Earth’s current local continuation. Read the other four commissions here.</p>'+button('Read other local commissions','all');
+  if(!list.length)html+='<p>Read the local commissions across Earth and the other roads here.</p>'+button('Read other local commissions','all');
   return{title:'Local life',html:html+'<p>Accepted work, supplied parts, selected arrangements and unpaid completion survive reload. Reopening resumes your home checkpoint; revisit the realm to continue. Full pouches or a refused save preserve unpaid work. Nothing auto-equips or places furniture at home.</p></section>'};
  }
  tick(){
@@ -95,6 +98,7 @@ class LocalLifeUI{
   const r=this.sim.state.localLife.records[d.id],next=L.available(this.sim.state,d)[0],same=W.definition(this.sim.room)?.id===d.realm;
   document.querySelector('#tracked-chapter').textContent='LOCAL LIFE · '+W.definition(d.realm).name;
   document.querySelector('#tracked-title').textContent=d.title;
+  if(d.kind==='earth-consignment-motion-v1'){const view=this.carrier.tracker();if(view){document.querySelector('#tracked-detail').textContent=view.detail;document.querySelector('#tracked-progress').textContent=view.progress;}return;}
   document.querySelector('#tracked-detail').textContent=same?next?.name||'Return to '+(d.returner||d.giver).name:'Revisit '+W.definition(d.realm).name+' to resume';
   document.querySelector('#tracked-progress').textContent=r.steps.length+'/'+d.steps.length+' · '+(L.carrying(this.sim.state,d)?d.carry.name+' · ':'')+'J work · M routes';
  }

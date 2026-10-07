@@ -1,3 +1,17 @@
+# Separate supplied logistics from earlier ownership, 2026-10-06
+
+The fifth LocalLife1 job `earth-first-load-through-v1` owns exact `{accepted,choice,steps,claimed}` data. Preserve original four records, including prior raw step order. Accept only after the original EE story is deliberately paid; visible new acceptance freezes route and compatible cargo. No old-choice backfill, inventory borrowing, prior-payment reuse or consent inference. New-arrival prefixes are route-specific and contiguous. Whole-world/capacity validation precedes mutation; retryable refusal retains completion and opaque ready proof.
+
+Carrier position/lease/tickets stay transient. Core-supported paths and actual roster awareness authorize movement; arrival requires physical progress under the app-owned lease. Menu pause retains the live position; reload/import/character switch/death/home/travel resets an unfinished leg to the last recorded checkpoint. No worker HP, timed failure, automatic claim, cross-scene convoy or equipment/class/XP expansion. Art submits the same cargo pieces as recovered stock without duplicate inventory or collision authority.
+
+The finite4-coin/2-timber/2-fibre payment is a modest practical reward, not a universally valuable veteran weapon upgrade. Major streamed-world, Regent/Answering/Briar, mounts and genuine online scope remain later production arcs. Current source/browser checks and human acceptance remain distinct.
+
+PR51's prior fitting source99e8 passed the full 238-command/48-browser gate. Final evidence head `513dd6d28161f7f4c7312c72157ab9808f4c880d` is pushed; the reused clean remote checkout rebuilt the identical HTML and verified all449 retained payloads/71380786 bytes. Its first Windows long commit:path read failed; a scoped `core.longpaths=true` reader then verified the already materialized clean copy without deletion or replacement. That readback failure and successful receipt remain retained. PR51 stays an open draft; this branch is stacked against it.
+
+Root owns this reused integrated D checkout and branch. STATION is currently inactive at the final PR51 head; colleagues have read-only review scopes. No main merge, public deployment, billing changes, paid providers, personal saves, proprietary extraction, fake online participants, unrelated workers or cleanup. Keep all earlier saves, XP, equipment identity/sockets/upgrades, explicit choices, housing/crops, companion, music/exports and both cameras. Heavy evidence stays D; no extra full game or raw recording copies. Retain failures and respect the blocked standalone-clone deletion. Wider production goal ACTIVE; old heartbeat PAUSED.
+
+---
+
 # Fit real geometry through existing ownership, 2026-10-06
 
 Retain original quest/brace IDs, kit and payout. Four equal sectional members join five receivers; angular tolerance and actual far-end gap authorize seating. Branded projections and opaque WeakMap tickets are transient. The app lease survives camera/time saves and revokes at real owner/import/travel/death changes. Validate before mutation and consume only after synchronous durable completion; refusal retains ready work. Old completed/paid support bypasses fitting.

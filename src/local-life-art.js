@@ -2,7 +2,7 @@
 (function(G){'use strict';
 const decor={appearanceOnly:true,cameraSolid:false,cutaway:false,rough:.86};
 function draw(out,sim){
- const L=G.RealmLocalLife,W=G.RealmWorldFoundations,d=L.definitions.find(d=>d.realm===W.definition(sim.room)?.id);if(!d)return;
+ const L=G.RealmLocalLife,W=G.RealmWorldFoundations,d=L.definitions.find(d=>d.realm===W.definition(sim.room)?.id);if(!d||d.kind==='earth-consignment-motion-v1')return;
  const r=sim.state.localLife.records[d.id];if(!r.accepted)return;
  const emit=(kind,p,s,c,part,extra={})=>out[kind].push({p,s,c,...decor,localLifeQuest:d.id,localLifePart:part,localLifeChoice:r.choice,...extra});
  const box=(x,y,z,w,h,depth,c,part,extra)=>emit('box',[x,y,z],[w,h,depth],c,part,extra);
