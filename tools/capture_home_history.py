@@ -13,6 +13,19 @@ import argparse,hashlib,json,math,os,subprocess,sys,tempfile,threading,time,trac
 from playwright.sync_api import sync_playwright
 from browser_support import launch_kwargs
 
+# Frozen original membership; the supplied carrier is covered by its own suites.
+OLD_LOCAL_IDS = ('heaven-propagation-bed-v1', 'hell-refuge-water-v1',
+                 'atlantis-bellglass-lamp-v1', 'cosmos-drawing-shelf-v1')
+NEW_LOCAL_ID = 'earth-first-load-through-v1'
+
+def fresh_consignment(world):
+ records=world['localLife']['records'];record=records.get(NEW_LOCAL_ID)
+ return (set(records)==set((*OLD_LOCAL_IDS,NEW_LOCAL_ID)) and isinstance(record,dict)
+         and set(record)=={'accepted','choice','steps','claimed'}
+         and record['accepted'] is False and record['choice'] is None
+         and isinstance(record['steps'],list) and len(record['steps'])==0
+         and record['claimed'] is False)
+
 ROOT=Path(__file__).resolve().parents[1]
 def main():
  ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--fixture',type=Path,required=True);ap.add_argument('--output',type=Path,required=True);ap.add_argument('--renderer',choices=['software','hardware'],default='software');args=ap.parse_args()
@@ -81,7 +94,7 @@ def main():
    workspace('characters');old_key=ev('localStorage.getItem(RealmCore.KEY)')
    with page.expect_file_chooser() as chooser:page.locator('[data-rpg="chars-import"]').click()
    chooser.value.set_files(str(fixture));page.wait_for_selector('[data-rpg="chars-confirm-import"]');page.locator('[data-rpg="chars-confirm-import"]').click();page.wait_for_function('()=>Realm.diagnostics.characters.active==="character-2"&&Realm.diagnostics.characters.writer',polling=100)
-   initial=state();check('earned import has four claimed commissions and no home pieces',len(initial['homeHistory']['owned'])==0 and all(r['claimed'] for r in initial['localLife']['records'].values()));close();page.locator('#settings').click();page.locator('#quality').select_option('balanced' if args.renderer=='hardware' else 'low');page.locator('#close-panel').click()
+   initial=state();check('exact original catalogue membership',ev('RealmEarthConsignmentData.OLD_IDS')==list(OLD_LOCAL_IDS));check('separate supplied load remains fresh in the earned home fixture',fresh_consignment(initial));check('earned import has four claimed commissions and no home pieces',len(initial['homeHistory']['owned'])==0 and all(initial['localLife']['records'][id]['claimed'] for id in OLD_LOCAL_IDS));close();page.locator('#settings').click();page.locator('#quality').select_option('balanced' if args.renderer=='hardware' else 'low');page.locator('#close-panel').click()
    ev('label=>{const el=document.createElement("div");el.textContent="ACTUAL HOME PLAYTHROUGH · NORMAL TIME · "+label;el.style="position:fixed;bottom:4px;right:8px;z-index:100000;background:#193236e8;color:#e9eddd;padding:5px 8px;font:10px sans-serif;pointer-events:none";document.body.append(el);}',args.renderer.upper())
    def room():
     workspace('journal');page.locator('[data-rpg="panel"][data-id="retreat"]').first.click()

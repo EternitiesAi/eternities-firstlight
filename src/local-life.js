@@ -4,7 +4,9 @@
 const freeze=o=>{if(o&&typeof o==='object'){Object.values(o).forEach(freeze);Object.freeze(o);}return o;};
 const clone=o=>JSON.parse(JSON.stringify(o));
 const site=(id,name,x,z,requires=[],extra={})=>({id,name,x,z,y:1.57,medium:'dry',requires,...extra});
-const definitions=freeze([
+const D=G.RealmEarthConsignmentData||(typeof require==='function'?require('./earth-consignment-data.js'):null);
+const isConsignment=d=>d?.id===D.ID;
+const legacyDefinitions=freeze([
  {
   id:'heaven-propagation-bed-v1',realm:'heaven',title:'A Harvest That Leaves a Garden',
   giver:{id:'heaven-yselle',name:'Yselle · gardener',x:25,z:5},prerequisite:'heaven-broken-choir-v1',
@@ -59,30 +61,34 @@ const definitions=freeze([
   ],completionText:'Teren keeps the chosen shelf at Farroad, and Anik’s supplied board has a lasting use. There is room for an ordinary page beneath the extraordinary sky.'
  }
 ]);
+const definitions=freeze([...legacyDefinitions,D.definition]);
 const definition=id=>definitions.find(d=>d.id===id)||null;
 const freshRecord=()=>({accepted:false,choice:null,steps:[],claimed:false});
 const fresh=()=>({version:1,records:Object.fromEntries(definitions.map(d=>[d.id,freshRecord()]))});
-function validate(raw){
+function validate(raw,source){
  if(raw===undefined)return fresh();
  const no=s=>{throw Error('Invalid local life: '+s);};
- if(!raw||raw.version!==1||!raw.records||typeof raw.records!=='object'||Array.isArray(raw.records)||Object.keys(raw.records).length!==definitions.length||Object.keys(raw.records).some(id=>!definition(id)))no('version or catalogue');
+ if(!raw||raw.version!==1||!raw.records||typeof raw.records!=='object'||Array.isArray(raw.records))no('version or catalogue');
+ const ids=Object.keys(raw.records),hasNew=Object.hasOwn(raw.records,D.ID);
+ if(ids.length!==(hasNew?5:4)||D.OLD_IDS.some(id=>!Object.hasOwn(raw.records,id))||ids.some(id=>!D.OLD_IDS.includes(id)&&id!==D.ID)||hasNew&&raw.records[D.ID]===undefined)no('version or catalogue');
  const out=fresh();
- for(const d of definitions){
+ for(const d of legacyDefinitions){
   const r=raw.records[d.id];if(!r||typeof r!=='object'||typeof r.accepted!=='boolean'||typeof r.claimed!=='boolean')no('record');
   if(!Array.isArray(r.steps)||new Set(r.steps).size!==r.steps.length||r.steps.some(id=>!d.steps.some(s=>s.id===id)))no('steps');
   if(r.accepted?!d.choices.some(c=>c.id===r.choice):r.choice!==null||r.steps.length||r.claimed)no('unaccepted choice or work');
   if(r.steps.some(id=>!d.steps.find(s=>s.id===id).requires.every(req=>r.steps.includes(req))))no('prerequisites');
   if(r.claimed&&!d.steps.every(s=>r.steps.includes(s.id)))no('unearned payment');
-  out.records[d.id]={accepted:r.accepted,choice:r.choice,steps:d.steps.filter(s=>r.steps.includes(s.id)).map(s=>s.id),claimed:r.claimed};
+  out.records[d.id]=clone(r); // Keep validated original histories and their raw step order.
  }
+ out.records[D.ID]=hasNew?(source===undefined?D.validateRecord(raw.records[D.ID]):D.crossValidate(raw.records[D.ID],source)):D.freshRecord();
  return out;
 }
 function stepSite(d,s,choice){return{...s,...(s.sites?.[choice]||{})};}
-function available(state,d){const r=state.localLife.records[d.id];return r.accepted&&!r.claimed?d.steps.filter(s=>!r.steps.includes(s.id)&&s.requires.every(id=>r.steps.includes(id))).map(s=>stepSite(d,s,r.choice)):[];}
-function ready(state,d){return d.steps.every(s=>state.localLife.records[d.id].steps.includes(s.id));}
-function carrying(state,d){const r=state.localLife.records[d.id];return !!(r.accepted&&!r.claimed&&d.carry&&r.steps.includes(d.carry.after)&&!r.steps.includes(d.carry.until));}
+function available(state,d){if(isConsignment(d)){const r=D.validateRecord(state.localLife.records[D.ID]);if(!r.accepted||r.claimed||ready(state,d))return[];const q=D.routes[D.choice(r.choice).route][r.steps.length+1];return[{...q,id:'arrive-'+q.id,name:'Carrier arrival · '+q.id.replace(/-/g,' '),kind:'motion',medium:'dry',actor:'worker'}];}const r=state.localLife.records[d.id];return r.accepted&&!r.claimed?d.steps.filter(s=>!r.steps.includes(s.id)&&s.requires.every(id=>r.steps.includes(id))).map(s=>stepSite(d,s,r.choice)):[];}
+function ready(state,d){if(isConsignment(d)){const r=D.validateRecord(state.localLife.records[D.ID]);return r.accepted&&r.steps.length===D.required(r).length;}return d.steps.every(s=>state.localLife.records[d.id].steps.includes(s.id));}
+function carrying(state,d){if(isConsignment(d))return false;const r=state.localLife.records[d.id];return !!(r.accepted&&!r.claimed&&d.carry&&r.steps.includes(d.carry.after)&&!r.steps.includes(d.carry.until));}
 function at(sim,p){return G.RealmTrails.at(sim,{medium:'dry',...p});}
-function eligible(state,d){return state.adventure.started&&(!d.prerequisite||state.realmTrails.records[d.prerequisite]?.claimed===true);}
+function eligible(state,d){if(isConsignment(d)){try{if(!state.adventure.started||!G.RealmEarthExpedition.validate(state.earthExpedition).story.claimed)return false;const r=state.localLife?.records[D.ID];if(r?.accepted)D.crossValidate(r,state.earthExpedition);return true;}catch{return false;}}return state.adventure.started&&(!d.prerequisite||state.realmTrails.records[d.prerequisite]?.claimed===true);}
 function commit(sim,candidate,io,text){
  const fail=error=>({ok:false,error});
  if(candidate.adventure.revision>=1e9||candidate.nextEvent>=Number.MAX_SAFE_INTEGER-1)return fail('Export this character before continuing: record limit reached.');
@@ -96,6 +102,7 @@ function commit(sim,candidate,io,text){
  return{ok:true,text};
 }
 function command(ctx,type,payload,io){
+ if(payload?.quest===D.ID){const rules=G.RealmEarthConsignment||(typeof require==='function'?require('./earth-consignment.js'):null);return rules?.command?rules.command(ctx,type,payload,io):{ok:false,error:'The physical consignment rules are unavailable. No work was recorded.'};}
  const sim=ctx?.sim,d=definition(payload?.quest),fail=error=>({ok:false,error});
  if(!sim||!d||G.RealmWorldFoundations.definition(sim.room)?.id!==d.realm||sim.state.adventure.hp<=0)return fail('Reach this local commission’s realm while able to act.');
  const current=sim.state.localLife.records[d.id];
@@ -123,6 +130,7 @@ function command(ctx,type,payload,io){
  }else return fail('Unknown local work action.');
  const result=commit(sim,candidate,io,text);if(result.ok&&reward){result.reward=reward;const level=G.RealmAdventure.level(sim.state.adventure);if(level>beforeLevel)G.RealmAdventure.notify(sim,'Level '+level+' · useful local work.');}return result;
 }
-const api={definitions,definition,fresh,validate,stepSite,available,ready,carrying,at,eligible,command};
+const required=(d,r)=>isConsignment(d)?(r?.accepted?D.required(r):[]):d.steps.map(s=>s.id);
+const api={definitions,definition,fresh,validate,required,stepSite,available,ready,carrying,at,eligible,command};
 G.RealmLocalLife=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

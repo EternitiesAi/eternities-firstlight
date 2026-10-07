@@ -1,3 +1,29 @@
+# First-load qualification and next creature preview, 2026-10-07
+
+The complete remote verifier at source `61010762ea3600cf6396bc0fb03663a155e3372a` closed exit 1 at 2026-10-07T05:27:49Z. The source prefix and Earth homecoming suite passed; onboarding reached its final stage with 49 recorded checks passed, then its direct resume-clock assertion failed. The mandatory first-load six-route/two-refusal suite and remaining browser commands were not reached. Original process, console and private synthetic-world report remain retained under D:/07-GAMES/Firstlight/artifacts/first-load-through-20261006/remote-full01*.
+
+The driver now captures the first actual incoming unpaused Core tick and the bounded subsequent actual dt/paused sequence, without changing advancement. The original first-tick predictor and oracle remain byte-identical. Genuine installed Core replays the sequence and compares the complete final world with only the existing cameraViews allowance; 32 ticks / 1.6 active seconds are the finite bounds. Parent browser execution and a new complete source/remote gate are pending. Runtime modules and both generated HTML outputs remain unchanged.
+
+ROOT owns the integrated D checkout; STATION is the reused detached remote qualification checkout. Two colleagues prepare small independent next-encounter files; those files and the labelled RAM visual previews are uninstalled and unqualified. Preserve old saves, stored XP, choices, gear/sockets, all ledgers, housing, companion, music and both cameras. No main merge, public deployment, paid providers, billing intervention, personal-save access, unrelated stops or cleanup. Production goal remains ACTIVE and unfinished; old heartbeat remains PAUSED.
+
+Two labelled synthetic native previews used RTX3080 ANGLE D3D11 with the RAM candidate: third person and explicitly focused diorama, including 390-pixel width. The animal is visible after using Look west again following a camera switch. These previews contain no earned observation, encounter resolution or payment, and measure neither FPS nor human enjoyment. Ask Dom after qualification: Was the carrier outing enjoyable? Did the animal signs make the next action clear? Did avoiding or clearing the real pest feel worthwhile? Human answers remain pending.
+
+---
+
+# First-load candidate: visible acceptance pending, 2026-10-06
+
+Integrated source and native qualification are pending. Pre-installation CPU composition passed118 checks; frozen original commission/home CPU53/53 and adapter11/11 passed. Current-cohort routing9/9, native guard19/19 and capture18/18 are preparation only. The actual original EE producer must earn fresh blade/bow/veteran prerequisites at this source epoch. Six ordinary-RAF native routes plus separately labelled capacity/quota refusal, cold reloads, current pixel geometry and both cameras must pass. One short actual hardware recording follows a passed native report and explicitly sealed input; it cannot qualify human pacing or production FPS. Full source, relevant/full remote checks and exact final readback remain required.
+
+The route lengths137.709/294.855 and speed1.6 imply86/184 seconds of pure carrier motion, excluding walking, reading, waits and recovery. These are arithmetic, not measured human outing duration. Current foes can block a course; no universally safe route or suppressed roster is claimed. Native known-route following will test mechanics while discoverability and enjoyment remain human questions.
+
+Source/capture negative evidence remains: obsolete ARC test export and Windows cp1252 formatter were repaired; the Node118-pass receipt was hash-bound without rerunning gameplay solely for formatting. Independent capture review found a second-download reporting gap; two actual extracted-helper negatives caught the old bug, repaired18/18 passed and scoped re-review closed it. No recording has yet occurred for this candidate.
+
+PR51's prior fitting source99e8 passed the full 238-command/48-browser gate. Final evidence head `513dd6d28161f7f4c7312c72157ab9808f4c880d` is pushed; the reused clean remote checkout rebuilt the identical HTML and verified all449 retained payloads/71380786 bytes. Its first Windows long commit:path read failed; a scoped `core.longpaths=true` reader then verified the already materialized clean copy without deletion or replacement. That readback failure and successful receipt remain retained. PR51 stays an open draft; this branch is stacked against it.
+
+Root owns this reused integrated D checkout and branch. STATION is currently inactive at the final PR51 head; colleagues have read-only review scopes. No main merge, public deployment, billing changes, paid providers, personal saves, proprietary extraction, fake online participants, unrelated workers or cleanup. Keep all earlier saves, XP, equipment identity/sockets/upgrades, explicit choices, housing/crops, companion, music/exports and both cameras. Heavy evidence stays D; no extra full game or raw recording copies. Retain failures and respect the blocked standalone-clone deletion. Wider production goal ACTIVE; old heartbeat PAUSED.
+
+---
+
 # Qualified support evidence; human feel remains open, 2026-10-06
 
 Qualified source `99e8f46a557f51d1ffd41339d25b73d44af9bca9`, stacked on PR50 final `f021adf539488d879b72c3d9e69f1ff10527c0f8`. The reused clean remote checkout, freshly fetched to this exact source, completed the full verifier exit 0 at `2026-10-07T00:45:22.9883043Z`: 238 commands, 124 syntax modules and all 48 browser suites in one invocation. Node 1678 passed / 2 explicit generic-cohort skips (1680 total); Python 262 methods, 256 passed / 6 method skips plus 2 skipped setUpClass records. Mandatory current native/recording preflights separately passed with explicit cohort inputs. Identical HTML: 3088437 bytes / SHA256 `05a30536edb018a5c9559033a530ddf259321f19453060607b6877e260d53bb5`.

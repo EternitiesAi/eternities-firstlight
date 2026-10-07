@@ -17,6 +17,9 @@ function dom(){const nodes=new Map(),doc={body:new Node('body'),querySelector:k=
 class OtherUI{constructor(rpg){this.rpg=rpg;this.notes={active:()=>false,reset(){}};}reset(){}context(){return null;}action(){return false;}interact(){return false;}page(){return null;}tick(){}invitation(){return'';}journal(){return'';}fitting(){return'';}status(){return'';}}
 function installHosts(){
  for(const[n,k]of [['RealmCrossingUI','CrossingUI'],['RealmPursuitUI','PursuitUI'],['RealmCharactersUI','CharactersUI'],['RealmClassesUI','ClassesUI'],['RealmCosmosUI','CosmosUI'],['RealmGatheringUI','GatheringUI'],['RealmEarthUI','EarthUI'],['RealmTrailsUI','TrailsUI'],['RealmHellCampaignUI','HellCampaignUI'],['RealmHeavenCampaignUI','HeavenCampaignUI'],['RealmCosmosCampaignUI','CosmosCampaignUI'],['RealmAtlantisCampaignUI','AtlantisCampaignUI'],['RealmBridgeCommunityUI','BridgeCommunityUI'],['RealmLocalLifeUI','LocalLifeUI'],['RealmEarthExpeditionUI','ExpeditionUI']])global[n]={[k]:OtherUI,routePoints:()=>[],legend:()=>''};
+ // Keep the carrier interaction real while the other civic lifecycle is a sink.
+ // A fresh ineligible character must still reach the original kit/starter owner.
+ load('earth-consignment-ui.js');global.RealmLocalLifeUI.LocalLifeUI=class extends OtherUI{constructor(rpg){super(rpg);this.carrier=new global.RealmEarthConsignmentUI.ConsignmentUI(rpg);}reset(){this.carrier.reset('owner');}};
  global.RealmVisualAtlas=class extends OtherUI{};
  global.RealmHomeHistoryUI={teaser:()=>''};
  load('starter-ui.js');load('earth-homecoming-ui.js');load('earth-homecoming-art.js');load('world-foundations-ui.js');load('adventure-ui.js');load('adventure-art.js');load('rpg-ui.js');load('world.js');

@@ -6,6 +6,14 @@ const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypt
 const {createHarness,earnedKit}=require('./realm_trails_journey.cjs');
 const L=require('../src/local-life.js'),W=require('../src/world-foundations.js'),R=require('../src/realm-trails.js'),A=require('../src/adventure.js');
 const T=require('../src/combat.js'),AR=require('../src/arsenal.js');
+// These fixed-step regressions retain the exact original four commissions.
+// The supplied carrier has separate physical-authority tests and stays fresh here.
+const D=require('../src/earth-consignment-data.js');
+const OLD_IDS=Object.freeze(['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1']);
+assert.deepEqual(D.OLD_IDS,OLD_IDS,'canonical legacy membership cannot drift');
+assert.deepEqual(L.definitions.map(d=>d.id),[...OLD_IDS,D.ID],'five-job catalogue is exact');
+const LEGACY_DEFINITIONS=Object.freeze(OLD_IDS.map(id=>{const d=L.definition(id);assert.ok(d,'missing original commission '+id);return d;}));
+const assertFreshConsignment=state=>assert.deepEqual(state.localLife.records[D.ID],D.freshRecord(),'legacy coverage leaves the separate supplied commission fresh');
 const ROOT=path.resolve(__dirname,'..'),copy=structuredClone,sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 function journey({bow=false,veteran=false,output=null,seedOnly=false}={}){
  const variant=veteran?'returning-strongest':bow?'fresh-bow':'fresh-blade',source=veteran?path.join(ROOT,'docs/evidence/world-production-2026-10-03/captures/returning-fit-final-01/FINAL_WORLD.json'):null;
@@ -45,7 +53,7 @@ function journey({bow=false,veteran=false,output=null,seedOnly=false}={}){
  }
  /* Legitimate prior work opens the two continuing north commissions. */
  earnNorth('heaven');earnNorth('hell');
- const starting=h.sim.snapshot();snapshot('00_EARNED_REGIONAL_HISTORY');
+ const starting=h.sim.snapshot();assertFreshConsignment(starting);snapshot('00_EARNED_REGIONAL_HISTORY');
  if(seedOnly)return{status:'passed',variant,claims:[],routes:h.routes,saveCount:h.checkpoints.length,swims:[],sourceDrift:JSON.stringify(beforeHashes)!==JSON.stringify(hashes())};
  function swim(target){
   let frames=0;
@@ -58,7 +66,7 @@ function journey({bow=false,veteran=false,output=null,seedOnly=false}={}){
   }
   assert.ok(frames<2400,'actual swimming reaches '+target);swims.push({target,frames,body:W.divingStatus(h.sim).body});
  }
- for(const d of L.definitions){
+ for(const d of LEGACY_DEFINITIONS){
   const choice=d.choices[bow||veteran?1:0];h.enter(d.realm);h.walk(d.giver.x,d.giver.z);const old=h.sim.snapshot();
   local('accept',d,{choice:choice.id});snapshot(d.realm+'_01_ACCEPTED');h.reload(d.realm);assert.equal(h.sim.state.localLife.records[d.id].choice,choice.id);
   for(const original of d.steps){
@@ -85,7 +93,7 @@ function journey({bow=false,veteran=false,output=null,seedOnly=false}={}){
   claims.push({quest:d.id,choice:choice.id,reward:copy(result.reward)});h.reload(d.realm);h.walk(receiver.x,receiver.z);const reloaded=h.sim.snapshot();assert.equal(local('claim',d,{request:'after-cold-reload'}).duplicate,true);assert.deepEqual(h.sim.snapshot(),reloaded);
   h.home();h.walk(W.GATE.x,W.GATE.z);
  }
- const final=h.sim.snapshot();snapshot('FINAL_WORLD');
+ const final=h.sim.snapshot();assertFreshConsignment(final);assert.deepEqual(claims.map(c=>c.quest),OLD_IDS,'all four original journeys still claimed');snapshot('FINAL_WORLD');
  for(const k of['realmTrails','journeys','earthExpedition','notes','score','scoreRevision','retreat','visitor','flowers'])assert.deepEqual(final[k],starting[k],k+' preserved');
  for(const k of['owned','equipment','arsenal','companion','realmCraft','earthBinding','starter','pursuit','classPath','road','beacon','crossing','earthStory','earthNotes','earthGathering','defeated','drops','reward'])assert.deepEqual(final.adventure[k],starting.adventure[k],k+' preserved');
  assert.equal(final.adventure.xp-starting.adventure.xp,92);assert.equal(final.adventure.coins-starting.adventure.coins,33);assert.equal(final.adventure.ore-starting.adventure.ore,2);

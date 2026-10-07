@@ -1,3 +1,29 @@
+# Preserve strict resume evidence and separate future ownership, 2026-10-07
+
+The complete remote verifier at source `61010762ea3600cf6396bc0fb03663a155e3372a` closed exit 1 at 2026-10-07T05:27:49Z. The source prefix and Earth homecoming suite passed; onboarding reached its final stage with 49 recorded checks passed, then its direct resume-clock assertion failed. The mandatory first-load six-route/two-refusal suite and remaining browser commands were not reached. Original process, console and private synthetic-world report remain retained under D:/07-GAMES/Firstlight/artifacts/first-load-through-20261006/remote-full01*.
+
+The driver now captures the first actual incoming unpaused Core tick and the bounded subsequent actual dt/paused sequence, without changing advancement. The original first-tick predictor and oracle remain byte-identical. Genuine installed Core replays the sequence and compares the complete final world with only the existing cameraViews allowance; 32 ticks / 1.6 active seconds are the finite bounds. Parent browser execution and a new complete source/remote gate are pending. Runtime modules and both generated HTML outputs remain unchanged.
+
+ROOT owns the integrated D checkout; STATION is the reused detached remote qualification checkout. Two colleagues prepare small independent next-encounter files; those files and the labelled RAM visual previews are uninstalled and unqualified. Preserve old saves, stored XP, choices, gear/sockets, all ledgers, housing, companion, music and both cameras. No main merge, public deployment, paid providers, billing intervention, personal-save access, unrelated stops or cleanup. Production goal remains ACTIVE and unfinished; old heartbeat remains PAUSED.
+
+The failed later snapshot advanced 0.1334 seconds; its three initial routine events occurred at the first 0.1-second tick. A test comparing that later snapshot against a one-tick clock was mismatched. Observe the exact live sequence and replay genuine Core instead of widening clock tolerance, changing game timing or relabelling the old failure. The next optional wild-signs version1 owner stays separate from LocalLife, with a finite once-only 4-coin/3-fibre fee and no XP; it remains a proposal until integration and actual earned/native checks.
+
+---
+
+# Separate supplied logistics from earlier ownership, 2026-10-06
+
+The fifth LocalLife1 job `earth-first-load-through-v1` owns exact `{accepted,choice,steps,claimed}` data. Preserve original four records, including prior raw step order. Accept only after the original EE story is deliberately paid; visible new acceptance freezes route and compatible cargo. No old-choice backfill, inventory borrowing, prior-payment reuse or consent inference. New-arrival prefixes are route-specific and contiguous. Whole-world/capacity validation precedes mutation; retryable refusal retains completion and opaque ready proof.
+
+Carrier position/lease/tickets stay transient. Core-supported paths and actual roster awareness authorize movement; arrival requires physical progress under the app-owned lease. Menu pause retains the live position; reload/import/character switch/death/home/travel resets an unfinished leg to the last recorded checkpoint. No worker HP, timed failure, automatic claim, cross-scene convoy or equipment/class/XP expansion. Art submits the same cargo pieces as recovered stock without duplicate inventory or collision authority.
+
+The finite4-coin/2-timber/2-fibre payment is a modest practical reward, not a universally valuable veteran weapon upgrade. Major streamed-world, Regent/Answering/Briar, mounts and genuine online scope remain later production arcs. Current source/browser checks and human acceptance remain distinct.
+
+PR51's prior fitting source99e8 passed the full 238-command/48-browser gate. Final evidence head `513dd6d28161f7f4c7312c72157ab9808f4c880d` is pushed; the reused clean remote checkout rebuilt the identical HTML and verified all449 retained payloads/71380786 bytes. Its first Windows long commit:path read failed; a scoped `core.longpaths=true` reader then verified the already materialized clean copy without deletion or replacement. That readback failure and successful receipt remain retained. PR51 stays an open draft; this branch is stacked against it.
+
+Root owns this reused integrated D checkout and branch. STATION is currently inactive at the final PR51 head; colleagues have read-only review scopes. No main merge, public deployment, billing changes, paid providers, personal saves, proprietary extraction, fake online participants, unrelated workers or cleanup. Keep all earlier saves, XP, equipment identity/sockets/upgrades, explicit choices, housing/crops, companion, music/exports and both cameras. Heavy evidence stays D; no extra full game or raw recording copies. Retain failures and respect the blocked standalone-clone deletion. Wider production goal ACTIVE; old heartbeat PAUSED.
+
+---
+
 # Fit real geometry through existing ownership, 2026-10-06
 
 Retain original quest/brace IDs, kit and payout. Four equal sectional members join five receivers; angular tolerance and actual far-end gap authorize seating. Branded projections and opaque WeakMap tickets are transient. The app lease survives camera/time saves and revokes at real owner/import/travel/death changes. Validate before mutation and consume only after synchronous durable completion; refusal retains ready work. Old completed/paid support bypasses fitting.

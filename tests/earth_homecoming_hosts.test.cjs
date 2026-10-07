@@ -16,6 +16,7 @@ test('actual RPG constructor owns one EH component and retains old menu/tracker/
 });
 test('actual RPG read/close hands fresh ineligible interaction to original initial-kit and starter owners',()=>{
  const f=fixture(C.fresh());f.place(D.giver);const before=copy(f.sim.state);f.rpg.open('earth-homecoming');assert.match(f.nodes.get('#rpg-content').innerHTML,/Finish these accounts before accepting/);f.rpg.close();assert.deepEqual(f.sim.state,before);
+ assert.ok(f.rpg.civic.carrier instanceof global.RealmEarthConsignmentUI.ConsignmentUI);assert.equal(f.rpg.civic.carrier.interact(),false);assert.deepEqual(f.sim.state,before);
  assert.equal(f.rpg.interact(),false);assert.equal(f.old.context(),'Take Oren’s expedition supplies');assert.equal(f.old.interact(),true);assert.equal(f.sim.state.adventure.started,true);assert.deepEqual(f.sim.state.earthHomecoming,H.fresh());
  assert.equal(f.rpg.interact(),true);assert.equal(f.rpg.tab,'starter');assert.equal(f.sim.state.earthHomecoming.accepted,false);
 });

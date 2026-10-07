@@ -1,3 +1,25 @@
+# Current ownership and qualification repair, 2026-10-07
+
+The complete remote verifier at source `61010762ea3600cf6396bc0fb03663a155e3372a` closed exit 1 at 2026-10-07T05:27:49Z. The source prefix and Earth homecoming suite passed; onboarding reached its final stage with 49 recorded checks passed, then its direct resume-clock assertion failed. The mandatory first-load six-route/two-refusal suite and remaining browser commands were not reached. Original process, console and private synthetic-world report remain retained under D:/07-GAMES/Firstlight/artifacts/first-load-through-20261006/remote-full01*.
+
+The driver now captures the first actual incoming unpaused Core tick and the bounded subsequent actual dt/paused sequence, without changing advancement. The original first-tick predictor and oracle remain byte-identical. Genuine installed Core replays the sequence and compares the complete final world with only the existing cameraViews allowance; 32 ticks / 1.6 active seconds are the finite bounds. Parent browser execution and a new complete source/remote gate are pending. Runtime modules and both generated HTML outputs remain unchanged.
+
+ROOT owns the integrated D checkout; STATION is the reused detached remote qualification checkout. Two colleagues prepare small independent next-encounter files; those files and the labelled RAM visual previews are uninstalled and unqualified. Preserve old saves, stored XP, choices, gear/sockets, all ledgers, housing, companion, music and both cameras. No main merge, public deployment, paid providers, billing intervention, personal-save access, unrelated stops or cleanup. Production goal remains ACTIVE and unfinished; old heartbeat remains PAUSED.
+
+---
+
+# First supplied load: integrated candidate, 2026-10-06
+
+Read docs/development/FIRST_LOAD_THROUGH_2026-10-06.md before older task fronts. Root owns `gameplay/first-load-through-20261006`. Data, command rules, transient motion, procedural art and native UI have one actual owner each; the LocalLife prototype overlay was not installed. Real app RAF runs Core then carrier motion under an app-owned lease and actual roster/world checks. Arrival proof is consumed only after synchronous saved adoption.
+
+PR51's prior fitting source99e8 passed the full 238-command/48-browser gate. Final evidence head `513dd6d28161f7f4c7312c72157ab9808f4c880d` is pushed; the reused clean remote checkout rebuilt the identical HTML and verified all449 retained payloads/71380786 bytes. Its first Windows long commit:path read failed; a scoped `core.longpaths=true` reader then verified the already materialized clean copy without deletion or replacement. That readback failure and successful receipt remain retained. PR51 stays an open draft; this branch is stacked against it.
+
+Integrated source and native qualification are pending. Pre-installation CPU composition passed118 checks; frozen original commission/home CPU53/53 and adapter11/11 passed. Current-cohort routing9/9, native guard19/19 and capture18/18 are preparation only. The actual original EE producer must earn fresh blade/bow/veteran prerequisites at this source epoch. Six ordinary-RAF native routes plus separately labelled capacity/quota refusal, cold reloads, current pixel geometry and both cameras must pass. One short actual hardware recording follows a passed native report and explicitly sealed input; it cannot qualify human pacing or production FPS. Full source, relevant/full remote checks and exact final readback remain required.
+
+Root owns this reused integrated D checkout and branch. STATION is currently inactive at the final PR51 head; colleagues have read-only review scopes. No main merge, public deployment, billing changes, paid providers, personal saves, proprietary extraction, fake online participants, unrelated workers or cleanup. Keep all earlier saves, XP, equipment identity/sockets/upgrades, explicit choices, housing/crops, companion, music/exports and both cameras. Heavy evidence stays D; no extra full game or raw recording copies. Retain failures and respect the blocked standalone-clone deletion. Wider production goal ACTIVE; old heartbeat PAUSED.
+
+---
+
 # Living Road fieldcraft qualified, 2026-10-06
 
 Root owns `gameplay/living-road-fieldcraft-20261006` in this reused integrated D checkout. Read docs/development/LIVING_ROAD_FIELDCRAFT_2026-10-06.md and the current evidence before older fronts. Four real sections and five receivers now gate the original first brace transaction.

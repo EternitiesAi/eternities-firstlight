@@ -154,6 +154,8 @@
 .road-heading{padding:18px;border:1px solid #bea57166;background:linear-gradient(135deg,#2e514a,#213b42);border-radius:14px;margin-bottom:18px}.road-heading small{font-size:10px;letter-spacing:.13em;color:#e3c698}.road-heading h3{font:27px Georgia,serif;color:#f0dfb9;margin:9px 0}.road-heading p{line-height:1.6;color:#c9d3c1}.road-heading button{margin:4px 4px 0 0}.shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.shop-grid button{min-height:48px;text-align:left;white-space:normal}.chapter-previous{margin:18px 0;color:#bbc8b8;font-size:12px}.chapter-previous summary{cursor:pointer}#battle-seek[hidden]{display:none}.battle-actions{display:flex;justify-content:center}.battle-actions button{flex:1;min-width:0}
 @media(max-width:650px){.battle-actions button{padding:7px 3px;min-height:48px}.battle-actions button small{font-size:9px}#battle-hud{max-width:calc(100vw - 24px)}.shop-grid{grid-template-columns:1fr}}
 
+/* A closed drawer owns no layout, including during viewport changes. */
+#drawer:not(.open){display:none}
 /* Realm08: compact practice status, full-size touch targets and legible gem choices. */
 .armory-hero{padding:16px;border:1px solid #ad9e7366;background:linear-gradient(130deg,#324637aa,#75604044);border-radius:14px;margin-bottom:15px}.armory-hero h3{font:26px Georgia,serif;margin:12px 0;color:#f0dfb7}.armory-hero p{color:#c2cbb9;line-height:1.6}.gem-pouch{display:flex;gap:7px;margin:12px 0}.gem-pouch>span{flex:1;display:flex;flex-direction:column;gap:4px;font-size:11px;padding:9px;border:1px solid #bfcabe33;border-radius:10px;color:#c6cdbd}.gem-pouch i{color:var(--gem);font-size:24px;font-style:normal}.gem-pouch b{font-size:18px;color:#f3dfb5}.socket-card label{display:block;font-size:12px;color:#c4cebf;margin-top:14px}.socket-card select{display:block;width:100%;margin:8px 0 10px;background:#243b3a;color:#ede5ca;border:1px solid #adad7e55;padding:11px;border-radius:8px;font:12px system-ui}.socket-card button{min-height:42px}
 #range-round{position:fixed;z-index:3;top:88px;left:50%;transform:translateX(-50%);padding:14px 20px;background:#162e32ee;border:1px solid #d5c29077;border-radius:14px;text-align:center;box-shadow:0 10px 40px #10212855;pointer-events:auto;min-width:310px}#range-round[hidden]{display:none}#range-round strong{display:block;color:#ead5a6;font:17px Georgia,serif;letter-spacing:.04em}#range-progress{display:block;margin:7px 0;color:#c9d3c4;font-size:12px;max-width:430px}#range-round button{min-height:36px;padding:7px 12px;background:#344d49;border:1px solid #dcc9a04d;border-radius:7px;color:#eadbb9;cursor:pointer;margin:3px}#range-round button:disabled{opacity:.4}.in-range #journey,.in-range #chapter-open{display:none}.in-range .place-title p{max-width:400px}
@@ -4559,13 +4561,62 @@ function command(ctx,type,payload={},io){
 const api={definition,fresh,validate,at,next,worker,command};G.RealmBridgeCommunity=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 
-/* Four finite civic commissions. Job supplies and arrangement choices have
+/* Canonical bounded consignment catalogue. No runtime authority or world writes. */
+(function(G){'use strict';
+const freeze=o=>{if(o&&typeof o==='object'){Object.values(o).forEach(freeze);Object.freeze(o);}return o;};
+const ID='earth-first-load-through-v1',ROOM='world-earthlands';
+const OLD_IDS=freeze(['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1']);
+const p=(id,x,z)=>({id,x,z}),glade=p('load-glade',-106,-105),bay=p('merren-receiving-bay',5.8,-69);
+const routes=freeze({
+ 'southern-meadow':[glade,p('meadow-stop',-68,-99),p('field-return-stop',-54,-65),p('field-gate-stop',-26,-61.5),p('settlement-approach',-6,-61.5),bay],
+ 'northern-root':[glade,p('root-south-stop',-148,-86),p('root-mouth-stop',-148,-64),p('wetland-south-stop',-125,-57),p('wetland-north-stop',-125,-44),p('wetland-check-stop',-109,-28),p('camp-stop',-70,-8),p('north-pocket-bypass',-29,-9),p('west-spur-join',-20.4,-15),p('west-lane-north',-10,-15),p('west-lane-stop',-10,-34),p('settlement-approach',-6,-61.5),bay]
+});
+const timber={id:'first-load-consignment-v1',kind:'supplier-short-timber',quantity:4},fibre={id:'first-load-consignment-v1',kind:'supplier-binding-fibre',quantity:3};
+const choices=freeze([
+ {id:'south-stormfall',name:'Southern meadow · supplied short timber',route:'southern-meadow',branch:'stormfall-recovery',cargo:timber},
+ {id:'north-stormfall',name:'Northern root road · supplied short timber',route:'northern-root',branch:'stormfall-recovery',cargo:timber},
+ {id:'south-coppice',name:'Southern meadow · supplied binding fibre',route:'southern-meadow',branch:'managed-coppice',cargo:fibre},
+ {id:'north-coppice',name:'Northern root road · supplied binding fibre',route:'northern-root',branch:'managed-coppice',cargo:fibre}
+]);
+const choice=id=>choices.find(c=>c.id===id)||null;
+const lists=freeze(Object.fromEntries(choices.map(c=>[c.id,routes[c.route].slice(1).map(q=>'arrive-'+q.id)])));
+const definition=freeze({id:ID,kind:'earth-consignment-motion-v1',realm:'earthlands',room:ROOM,title:'The first load through',
+ giver:{id:'first-load-board',name:'Rill-signed consignment board',x:glade.x,z:glade.z,y:1.57,medium:'dry'},
+ returner:{id:'merren',name:'Merren · field steward',x:-6,z:-68,y:1.57,medium:'dry'},workerId:'first-load-carrier-v1',cargoId:'first-load-consignment-v1',
+ choices,routes,reward:{xp:0,coins:4,ore:0,materials:{wood:2,fiber:2}},
+ summary:'Guide a new camp-supplied load from the return glade to Coastward. The old allocation, installed brace, checking kit and your ordinary materials keep their owners.',
+ danger:'Supported Earth roads only. The northern course passes the woodland route; actual living patrol threats can make the carrier wait. There is no chase deadline or worker health system.',
+ completionText:'Merren registers this supplied consignment once. The load remains at its receiving bay, and its separate payment is retained.'});
+const fail=message=>{throw Error('Invalid Earth consignment: '+message);};
+const freshRecord=()=>({accepted:false,choice:null,steps:[],claimed:false});
+function required(value){const id=typeof value==='string'?value:value?.choice;if(!choice(id))fail('choice');return lists[id];}
+function validateRecord(raw){
+ if(raw===undefined)return freshRecord();
+ if(!raw||typeof raw!=='object'||Array.isArray(raw)||Object.keys(raw).length!==4||!['accepted','choice','steps','claimed'].every(k=>Object.hasOwn(raw,k))||typeof raw.accepted!=='boolean'||typeof raw.claimed!=='boolean'||!Array.isArray(raw.steps))fail('record');
+ if(!raw.accepted){if(raw.choice!==null||raw.steps.length||raw.claimed)fail('unaccepted history');return freshRecord();}
+ const list=required(raw);if(raw.steps.length>list.length)fail('contiguous arrivals');
+ for(let i=0;i<raw.steps.length;i++)if(raw.steps[i]!==list[i])fail('contiguous arrivals');
+ if(raw.claimed&&raw.steps.length!==list.length)fail('unearned payment');
+ return{accepted:true,choice:raw.choice,steps:raw.steps.slice(),claimed:raw.claimed};
+}
+function crossValidate(raw,source){
+ const r=validateRecord(raw);if(!r.accepted)return r;const E=G.RealmEarthExpedition;
+ if(typeof E?.validate!=='function')fail('original source validator unavailable');
+ const ee=E.validate(source);if(!ee.story.claimed||ee.story.branch!==choice(r.choice).branch)fail('paid original allocation provenance');return r;
+}
+function checkpoint(raw){const r=validateRecord(raw);return r.accepted?routes[choice(r.choice).route][r.steps.length]:glade;}
+const api=freeze({ID,ROOM,OLD_IDS,routes,choices,definition,choice,required,checkpoint,freshRecord,validateRecord,crossValidate});
+G.RealmEarthConsignmentData=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* Four finite civic commissions. Job supplies and arrangement choices have
  * their own ledger; old stories, equipment and inventory retain their owners. */
 (function(G){'use strict';
 const freeze=o=>{if(o&&typeof o==='object'){Object.values(o).forEach(freeze);Object.freeze(o);}return o;};
 const clone=o=>JSON.parse(JSON.stringify(o));
 const site=(id,name,x,z,requires=[],extra={})=>({id,name,x,z,y:1.57,medium:'dry',requires,...extra});
-const definitions=freeze([
+const D=G.RealmEarthConsignmentData||(typeof require==='function'?require('./earth-consignment-data.js'):null);
+const isConsignment=d=>d?.id===D.ID;
+const legacyDefinitions=freeze([
  {
   id:'heaven-propagation-bed-v1',realm:'heaven',title:'A Harvest That Leaves a Garden',
   giver:{id:'heaven-yselle',name:'Yselle · gardener',x:25,z:5},prerequisite:'heaven-broken-choir-v1',
@@ -4620,30 +4671,34 @@ const definitions=freeze([
   ],completionText:'Teren keeps the chosen shelf at Farroad, and Anik’s supplied board has a lasting use. There is room for an ordinary page beneath the extraordinary sky.'
  }
 ]);
+const definitions=freeze([...legacyDefinitions,D.definition]);
 const definition=id=>definitions.find(d=>d.id===id)||null;
 const freshRecord=()=>({accepted:false,choice:null,steps:[],claimed:false});
 const fresh=()=>({version:1,records:Object.fromEntries(definitions.map(d=>[d.id,freshRecord()]))});
-function validate(raw){
+function validate(raw,source){
  if(raw===undefined)return fresh();
  const no=s=>{throw Error('Invalid local life: '+s);};
- if(!raw||raw.version!==1||!raw.records||typeof raw.records!=='object'||Array.isArray(raw.records)||Object.keys(raw.records).length!==definitions.length||Object.keys(raw.records).some(id=>!definition(id)))no('version or catalogue');
+ if(!raw||raw.version!==1||!raw.records||typeof raw.records!=='object'||Array.isArray(raw.records))no('version or catalogue');
+ const ids=Object.keys(raw.records),hasNew=Object.hasOwn(raw.records,D.ID);
+ if(ids.length!==(hasNew?5:4)||D.OLD_IDS.some(id=>!Object.hasOwn(raw.records,id))||ids.some(id=>!D.OLD_IDS.includes(id)&&id!==D.ID)||hasNew&&raw.records[D.ID]===undefined)no('version or catalogue');
  const out=fresh();
- for(const d of definitions){
+ for(const d of legacyDefinitions){
   const r=raw.records[d.id];if(!r||typeof r!=='object'||typeof r.accepted!=='boolean'||typeof r.claimed!=='boolean')no('record');
   if(!Array.isArray(r.steps)||new Set(r.steps).size!==r.steps.length||r.steps.some(id=>!d.steps.some(s=>s.id===id)))no('steps');
   if(r.accepted?!d.choices.some(c=>c.id===r.choice):r.choice!==null||r.steps.length||r.claimed)no('unaccepted choice or work');
   if(r.steps.some(id=>!d.steps.find(s=>s.id===id).requires.every(req=>r.steps.includes(req))))no('prerequisites');
   if(r.claimed&&!d.steps.every(s=>r.steps.includes(s.id)))no('unearned payment');
-  out.records[d.id]={accepted:r.accepted,choice:r.choice,steps:d.steps.filter(s=>r.steps.includes(s.id)).map(s=>s.id),claimed:r.claimed};
+  out.records[d.id]=clone(r); // Keep validated original histories and their raw step order.
  }
+ out.records[D.ID]=hasNew?(source===undefined?D.validateRecord(raw.records[D.ID]):D.crossValidate(raw.records[D.ID],source)):D.freshRecord();
  return out;
 }
 function stepSite(d,s,choice){return{...s,...(s.sites?.[choice]||{})};}
-function available(state,d){const r=state.localLife.records[d.id];return r.accepted&&!r.claimed?d.steps.filter(s=>!r.steps.includes(s.id)&&s.requires.every(id=>r.steps.includes(id))).map(s=>stepSite(d,s,r.choice)):[];}
-function ready(state,d){return d.steps.every(s=>state.localLife.records[d.id].steps.includes(s.id));}
-function carrying(state,d){const r=state.localLife.records[d.id];return !!(r.accepted&&!r.claimed&&d.carry&&r.steps.includes(d.carry.after)&&!r.steps.includes(d.carry.until));}
+function available(state,d){if(isConsignment(d)){const r=D.validateRecord(state.localLife.records[D.ID]);if(!r.accepted||r.claimed||ready(state,d))return[];const q=D.routes[D.choice(r.choice).route][r.steps.length+1];return[{...q,id:'arrive-'+q.id,name:'Carrier arrival · '+q.id.replace(/-/g,' '),kind:'motion',medium:'dry',actor:'worker'}];}const r=state.localLife.records[d.id];return r.accepted&&!r.claimed?d.steps.filter(s=>!r.steps.includes(s.id)&&s.requires.every(id=>r.steps.includes(id))).map(s=>stepSite(d,s,r.choice)):[];}
+function ready(state,d){if(isConsignment(d)){const r=D.validateRecord(state.localLife.records[D.ID]);return r.accepted&&r.steps.length===D.required(r).length;}return d.steps.every(s=>state.localLife.records[d.id].steps.includes(s.id));}
+function carrying(state,d){if(isConsignment(d))return false;const r=state.localLife.records[d.id];return !!(r.accepted&&!r.claimed&&d.carry&&r.steps.includes(d.carry.after)&&!r.steps.includes(d.carry.until));}
 function at(sim,p){return G.RealmTrails.at(sim,{medium:'dry',...p});}
-function eligible(state,d){return state.adventure.started&&(!d.prerequisite||state.realmTrails.records[d.prerequisite]?.claimed===true);}
+function eligible(state,d){if(isConsignment(d)){try{if(!state.adventure.started||!G.RealmEarthExpedition.validate(state.earthExpedition).story.claimed)return false;const r=state.localLife?.records[D.ID];if(r?.accepted)D.crossValidate(r,state.earthExpedition);return true;}catch{return false;}}return state.adventure.started&&(!d.prerequisite||state.realmTrails.records[d.prerequisite]?.claimed===true);}
 function commit(sim,candidate,io,text){
  const fail=error=>({ok:false,error});
  if(candidate.adventure.revision>=1e9||candidate.nextEvent>=Number.MAX_SAFE_INTEGER-1)return fail('Export this character before continuing: record limit reached.');
@@ -4657,6 +4712,7 @@ function commit(sim,candidate,io,text){
  return{ok:true,text};
 }
 function command(ctx,type,payload,io){
+ if(payload?.quest===D.ID){const rules=G.RealmEarthConsignment||(typeof require==='function'?require('./earth-consignment.js'):null);return rules?.command?rules.command(ctx,type,payload,io):{ok:false,error:'The physical consignment rules are unavailable. No work was recorded.'};}
  const sim=ctx?.sim,d=definition(payload?.quest),fail=error=>({ok:false,error});
  if(!sim||!d||G.RealmWorldFoundations.definition(sim.room)?.id!==d.realm||sim.state.adventure.hp<=0)return fail('Reach this local commission’s realm while able to act.');
  const current=sim.state.localLife.records[d.id];
@@ -4684,8 +4740,85 @@ function command(ctx,type,payload,io){
  }else return fail('Unknown local work action.');
  const result=commit(sim,candidate,io,text);if(result.ok&&reward){result.reward=reward;const level=G.RealmAdventure.level(sim.state.adventure);if(level>beforeLevel)G.RealmAdventure.notify(sim,'Level '+level+' · useful local work.');}return result;
 }
-const api={definitions,definition,fresh,validate,stepSite,available,ready,carrying,at,eligible,command};
+const required=(d,r)=>isConsignment(d)?(r?.accepted?D.required(r):[]):d.steps.map(s=>s.id);
+const api={definitions,definition,fresh,validate,required,stepSite,available,ready,carrying,at,eligible,command};
 G.RealmLocalLife=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* One optional supplied Earth load. Motion owns arrival authority; these rules
+ * own a synchronous whole-candidate commit and the exact once-only payment. */
+(function(G){'use strict';
+const D=G.RealmEarthConsignmentData;if(!D)throw Error('Load consignment data before command rules.');
+const fail=error=>({ok:false,error}),same=(a,b)=>JSON.stringify(a)===JSON.stringify(b),point=p=>!!p&&Number.isFinite(p.x)&&Number.isFinite(p.z);
+const opaque=o=>!!o&&typeof o==='object'&&!Array.isArray(o)&&Object.isFrozen(o)&&Reflect.ownKeys(o).length===0&&(Object.getPrototypeOf(o)===Object.prototype||Object.getPrototypeOf(o)===null);
+function scope(ctx){
+ const sim=ctx?.sim,C=G.RealmCore,W=G.RealmWorldFoundations,a=sim?.state?.adventure,trip=sim?.worldTrip;
+ if(typeof C?.Simulation!=='function'||typeof C.validate!=='function'||typeof W?.definition!=='function'||typeof W.walkable!=='function'||typeof W.segment!=='function')return fail('The actual Core and supported-world dependencies are unavailable.');
+ if(!(sim instanceof C.Simulation)||ctx.definition!==D.definition||typeof ctx.active!=='string'||!ctx.active||!Number.isSafeInteger(ctx.revision)||ctx.revision<0||!opaque(ctx.ownerLease)||sim.consignmentOwnerLease!==ctx.ownerLease)return fail('Use the current character, app-owned load lease and canonical commission.');
+ if(sim.room!==D.ROOM||W?.definition(sim.room)?.id!=='earthlands'||sim.worldDive||!a?.started||!Number.isFinite(a.hp)||a.hp<=0||!Number.isSafeInteger(a.revision)||!Number.isSafeInteger(a.deaths))return fail('Reach dry Earthlands while able to act.');
+ if(!trip||trip.active!==ctx.active||trip.realm!=='earthlands'||!point(sim.returnPos)||!Number.isFinite(sim.returnPos.yaw)||!same(trip.home,sim.returnPos))return fail('Retain this character’s Earth outing and original home checkpoint.');
+ if(!point(sim.state.player)||!W.walkable(sim.room,sim.state.player.x,sim.state.player.z,.31)||!Object.hasOwn(sim.state.localLife?.records||{},D.ID))return fail('Stand on supported ground with the current five-record save owner.');
+ try{
+  const source=G.RealmEarthExpedition.validate(sim.state.earthExpedition);
+  if(!source.story.claimed)return fail('Explicitly claim the original Living Road before this separate supplied commission.');
+  return{ok:true,sim,source,record:D.crossValidate(sim.state.localLife.records[D.ID],source)};
+ }catch(e){return fail(e.message);}
+}
+function at(sim,p){const W=G.RealmWorldFoundations;return point(p)&&Math.hypot(sim.state.player.x-p.x,sim.state.player.z-p.z)<=2.8&&W.walkable(sim.room,p.x,p.z,.31)&&W.segment(sim.room,sim.state.player,p,.31);}
+function commit(sim,candidate,io,text){
+ if(typeof io?.save!=='function'||io.save.constructor?.name==='AsyncFunction')return fail('A synchronous durable consignment saver is required.');
+ if(candidate.adventure.revision>=1e9||candidate.nextEvent>=Number.MAX_SAFE_INTEGER-1)return fail('Export this world before continuing: record limit reached.');
+ candidate.adventure.revision++;candidate.journal.push({seq:candidate.nextEvent++,day:candidate.day,hour:candidate.hour,kind:'local-life',text:text.slice(0,350)});if(candidate.journal.length>200)candidate.journal.shift();
+ let checked,saved;
+ try{
+  checked=G.RealmCore.validate(candidate);
+  const expected=D.crossValidate(candidate.localLife.records[D.ID],candidate.earthExpedition);
+  if(!same(checked.localLife?.records?.[D.ID],expected)||!same(checked.localLife,candidate.localLife)||!same(checked.earthExpedition,candidate.earthExpedition)||!same(checked.sandbox.inventory,candidate.sandbox.inventory)||!same(checked.adventure,candidate.adventure))throw Error('The current Core save validator does not retain the exact consignment, original histories and payment.');
+  saved=io.save(checked);
+ }catch(e){return fail('Consignment save refused: '+e.message);}
+ if(saved?.then!==undefined)return fail('The saver returned an asynchronous receipt; local completion was not adopted. Inspect durable state before retrying.');
+ if(saved?.ok!==true)return fail(saved?.error||'Consignment save refused. Finished work remains unpaid.');
+ sim.state.localLife=checked.localLife;
+ sim.state.adventure.coins=checked.adventure.coins;sim.state.adventure.revision=checked.adventure.revision;
+ Object.assign(sim.state.sandbox.inventory,checked.sandbox.inventory);sim.state.journal=checked.journal;sim.state.nextEvent=checked.nextEvent;
+ return{ok:true,text};
+}
+function command(ctx,type,payload={},io){
+ if(typeof type!=='string'||!payload||typeof payload!=='object'||payload.quest!==D.ID)return fail('Read this exact consignment before acting.');
+ const c=scope(ctx);if(!c.ok)return c;const {sim,record:r,source}=c;
+ if(type==='accept'&&r.accepted)return{ok:true,duplicate:true,text:'This supplied load and its selected course are already retained.'};
+ if(type==='claim'&&r.claimed)return{ok:true,duplicate:true,text:'This consignment was already paid once.'};
+ if(type==='step'&&r.accepted&&r.steps.includes(payload.step))return{ok:true,duplicate:true,text:'This carrier arrival is already recorded.'};
+ let candidate,next,text,motion=null,ticket=null,reward=null;
+ try{candidate=sim.snapshot();next=candidate.localLife.records[D.ID];}catch(e){return fail('Consignment candidate refused: '+e.message);}
+ if(type==='accept'){
+  const choice=D.choice(payload.choice);
+  if(!choice||choice.branch!==source.story.branch||!at(sim,D.definition.giver))return fail('Read the supplied consignment board at the glade and choose one course matching your retained allocation.');
+  next.accepted=true;next.choice=choice.id;
+  text=D.definition.title+' accepted · '+choice.name+'. A new camp-supplied consignment remains at the glade; no ordinary inventory or earlier allocation was spent.';
+ }else if(type==='step'){
+  if(!r.accepted||r.claimed)return fail('Only an accepted, unpaid carrier arrival can be recorded.');
+  const step=D.required(r)[r.steps.length],target=D.routes[D.choice(r.choice).route][r.steps.length+1];
+  if(!step||payload.step!==step||!at(sim,target))return fail('Approach this load’s exact next receiving stop in its chosen course.');
+  motion=G.RealmEarthConsignmentMotion;ticket=payload.motionTicket;
+  if(motion?.DEFINITION!==D.definition||typeof motion.validateArrival!=='function'||typeof motion.consume!=='function')return fail('The physical carrier authority is unavailable. No arrival was recorded.');
+  let proof;try{proof=motion.validateArrival(ctx,ticket,step);}catch(e){return fail('Carrier arrival refused: '+e.message);}
+  if(proof?.ok!==true||proof?.then!==undefined)return fail(proof?.error||'Physically bring the supplied carrier to this stop before recording arrival.');
+  next.steps.push(step);text='Supplied consignment arrived · '+target.id.replace(/-/g,' ')+'. Its physical carrier checkpoint is retained.';
+ }else if(type==='claim'){
+  if(!r.accepted||r.steps.length!==D.required(r).length||!at(sim,D.definition.returner))return fail('Bring the supplied load to its receiving bay, then return to Merren for the separate declared payment.');
+  const a=candidate.adventure,inv=candidate.sandbox.inventory,fee=D.definition.reward,max=G.RealmSandbox?.MAX;
+  if(!Number.isSafeInteger(max)||a.coins+fee.coins>9999||Object.entries(fee.materials).some(([id,n])=>!Object.hasOwn(inv,id)||inv[id]+n>max))return fail('Make room for all 4 sunmarks, 2 timber and 2 fibre. Completed work remains unpaid.');
+  a.coins+=fee.coins;for(const[id,n]of Object.entries(fee.materials))inv[id]+=n;next.claimed=true;
+  reward={xp:0,coins:fee.coins,ore:0,materials:{...fee.materials}};
+  text='Merren registered this supplied load · +4 sunmarks, +2 timber, +2 fibre. Claimed once; the receiving stock remains separate.';
+ }else return fail('Unknown consignment action.');
+ const result=commit(sim,candidate,io,text);if(!result.ok)return result;if(reward)result.reward=reward;
+ const warnings=[];
+ if(motion){try{const consumed=motion.consume(ctx,ticket);if(consumed?.ok!==true||consumed?.then!==undefined)throw Error(consumed?.error||'physical arrival cleanup refused');}catch(e){warnings.push('Arrival was saved; carrier cleanup needs refresh: '+e.message);}}
+ try{const sync=typeof io?.sync==='function'?io.sync:typeof G.RealmAdventure?.syncScene==='function'?()=>G.RealmAdventure.syncScene(sim):null;if(sync){const s=sync(sim);if(s===false||s?.ok===false||s?.then!==undefined)throw Error(s?.error||'scene synchronization refused');}}catch(e){warnings.push('Consignment completion was saved; scene refresh needs attention: '+e.message);}
+ if(warnings.length)result.warning=warnings.join(' ');return result;
+}
+const api=Object.freeze({definition:D.definition,command});G.RealmEarthConsignment=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* One deliberate finite fitting. Canonical weapon identity and prior work survive. */
 (function(G){'use strict';
@@ -5387,11 +5520,99 @@ function draw(out,sim){const B=G.RealmBridgeCommunity,r=sim.state.bridgeCommunit
 const api={draw};G.RealmBridgeCommunityArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 
-/* Original appearance-only work, keyed exclusively to accepted local facts. */
+/* One supplied carrier and load. Presentation cannot earn an arrival or payment. */
+(function(G){'use strict';
+const ROOM='world-earthlands',ID='earth-first-load-through-v1',GLADE={x:-106,z:-105},BAY={x:5.8,z:-69};
+const motion=new WeakMap(),frames=new WeakMap();
+function owned(sim){
+ let r=sim?.state?.localLife?.records?.[ID],source,s;
+ if(sim?.room!==ROOM||sim.worldDive||!sim.state.adventure?.started||!r)return null;
+ const D=G.RealmEarthConsignmentData;if(typeof D?.required!=='function'||typeof D?.crossValidate!=='function')return null;
+ try{source=G.RealmEarthExpedition.validate(sim.state.earthExpedition);s=source.story;if(!s.claimed)return null;r=D.crossValidate(r,source);}catch{return null;}
+ if(!r.accepted)return{record:r,kind:s.branch==='stormfall-recovery'?'timber':s.branch==='managed-coppice'?'fiber':null,arrived:false};
+ let sequence;try{sequence=D.required(r.choice);}catch{return null;}
+ const timber=r.choice==='south-stormfall'||r.choice==='north-stormfall',fiber=r.choice==='south-coppice'||r.choice==='north-coppice';
+ if(!Array.isArray(sequence)||!sequence.length||(!timber&&!fiber)||!Array.isArray(r.steps)||r.steps.length>sequence.length||r.steps.some((v,i)=>v!==sequence[i])||timber&&s.branch!=='stormfall-recovery'||fiber&&s.branch!=='managed-coppice')return null;
+ return{record:r,kind:timber?'timber':'fiber',arrived:r.steps.length===sequence.length};
+}
+function add(out,kind,part,position,size,color,frame,rotation=[0,0,0],extra={}){
+ const {M,hex}=G.RealmEngine;
+ const matrix=M.mul(frame,M.compose(...position,...size,...rotation));
+ const item={p:M.transform(frame,position),s:size.slice(),m:matrix,c:hex(color),rough:.93,cameraSolid:false,cutaway:false,appearanceOnly:true,
+  consignmentPart:part,consignmentJob:ID,...extra};
+ if(Array.isArray(out[kind]))out[kind].push(item);return item;
+}
+function bundle(out,kind,frame,stock=false){
+ const parts=[],push=(mesh,name,p,s,c,rotation,extra)=>parts.push(add(out,mesh,name,p,s,c,frame,rotation,extra));
+ if(kind==='timber'){
+  for(let i=0;i<4;i++){
+   const p=stock?[0,.123+Math.floor(i/2)*.13,(i%2?1:-1)*.145]:[(i-1.5)*.16,1.19,-.30];
+   push('timber-panel',stock?'received-timber':'carried-timber',p,[.13,1.05,.13],0x98764f,stock?[0,0,Math.PI/2]:[0,0,0],{consignmentPiece:'short-timber-'+(i+1),consignmentSource:'new-supplier'});
+  }
+  if(stock)for(const z of[-.145,.145]){
+   for(const y of[.041,.335])push('box','received-timber-binding',[0,y,z],[.055,.034,.19],0xcab488);
+   for(const side of[-.080,.080])push('box','received-timber-binding',[0,.188,z+side],[.055,.26,.03],0xcab488);
+  }
+  else for(const y of[1.01,1.37])push('box','carried-timber-binding',[0,y,-.30],[.64,.035,.17],0xcab488);
+ }else if(kind==='fiber'){
+  for(let i=0;i<3;i++)push('round',stock?'received-fibre':'carried-fibre',[(i-1)*.205,stock?.358:1.18,stock?0:-.30],[.18,.60,.19],0x9d9d70,undefined,{consignmentPiece:'binding-fibre-'+(i+1),consignmentSource:'new-supplier'});
+  for(const y of stock?[.20,.47]:[1.04,1.31])push('box',stock?'received-fibre-binding':'carried-fibre-binding',[0,y,stock?0:-.30],[.64,.029,.21],0xd4bd8e);
+ }
+ return parts;
+}
+function board(out,sim,claimed){
+ const {M}=G.RealmEngine,W=G.RealmWorldFoundations,y=W.height(ROOM,GLADE.x,GLADE.z),root=M.compose(GLADE.x-.9,y,GLADE.z-.85,1,1,1);
+ for(const x of[-.39,.39])add(out,'timber-panel','work-order-post',[x,.45,0],[.08,.9,.10],0x736047,root);
+ add(out,'timber-panel','work-order-board',[0,.91,0],[.96,.46,.065],0x8a7353,root);
+ add(out,'box','work-order-page',[0,.91,.042],[.38,.34,.014],0xe2d3b0,root);
+ add(out,'octa',claimed?'paid-work-order-seal':'supplied-work-order-seal',[.25,.77,.056],[.10,.10,.016],claimed?0x92b88b:0xc2aa73,root);
+}
+function actor(out,sim,view,kind,carrying){
+ const {M}=G.RealmEngine,T=G.RealmTravelerArt,W=G.RealmWorldFoundations;
+ if(!T?.motion||!T?.pose||!T?.draw)return null;
+ const reduced=!!sim.state.settings?.reducedMotion,scene=ROOM+':consignment:'+(view.choice||'available');
+ const sample=T.motion(motion.get(sim),{x:view.x,z:view.z,scene,time:sim.elapsed,walking:!!view.moving,paused:!!sim.paused,reducedMotion:reduced});motion.set(sim,sample);
+ const pose=T.pose({...sample,time:sample.time,reducedMotion:reduced,style:'blade',combatScene:false,combatPhase:'idle',combatProgress:0,guarded:false});
+ const starts=Object.fromEntries(Object.entries(out).filter(([,v])=>Array.isArray(v)).map(([k,v])=>[k,v.length]));
+ const base=W.height(ROOM,view.x,view.z),frame=T.draw(out,{x:view.x,z:view.z,yaw:view.yaw||0,base,color:0x927352,profile:{skin:2,hair:1}},pose);
+ // The shared rig's player tags/marker must not leak into player-only observers.
+ for(const[k,start]of Object.entries(starts)){
+  const list=out[k];for(let i=list.length-1;i>=start;i--){const item=list[i];if(item.travelerPart==='ground-marker'){list.splice(i,1);continue;}
+   item.consignmentPart='carrier-'+item.travelerPart;item.consignmentJob=ID;item.consignmentActor='first-load-carrier-v1';item.appearanceOnly=true;
+   if(item.travelerJoints)item.consignmentJoints=item.travelerJoints;
+   delete item.travelerPart;delete item.travelerJoints;
+  }
+ }
+ const cargo=carrying?bundle(out,kind,frame.root):[];
+ // Strap is visible whether the paid worker is carrying or receiving the load.
+ add(out,'box','carrier-pack-strap',[-.19,1.17,.157],[.036,.39,.031],0x4f4336,frame.root,[0,0,-.13]);
+ return{root:Array.from(frame.root),x:view.x,z:view.z,yaw:view.yaw||0,base,walking:!!view.moving,carrying,cargoKind:kind,cargoPieces:cargo.filter(p=>p.consignmentPiece).map(p=>p.consignmentPiece),reducedMotion:reduced};
+}
+function draw(out,sim,projection=sim?.consignmentPresentation){
+ frames.delete(sim);const state=owned(sim);if(!state?.kind)return;
+ board(out,sim,state.record.claimed);
+ const M=G.RealmEarthConsignmentMotion,context=sim.consignmentPresentationContext;
+ const live=!!projection&&context?.sim===sim&&M?.isProjection?.(projection,context)===true&&projection.job===ID&&projection.room===ROOM;
+ if(state.record.accepted&&!live&&!state.arrived)return; // No made-up intermediate actor/cargo position.
+ const view=live?projection:state.arrived?{x:BAY.x,z:BAY.z,yaw:Math.PI/2,moving:false,choice:state.record.choice}:{x:GLADE.x,z:GLADE.z,yaw:Math.PI/2,moving:false,choice:null};
+ const carrying=!state.arrived,frame=actor(out,sim,view,state.kind,carrying);
+ let stock=[];if(state.arrived){
+  const {M}=G.RealmEngine,y=G.RealmWorldFoundations.height(ROOM,BAY.x+.25,BAY.z+.9),root=M.compose(BAY.x+.25,y,BAY.z+.9,1,1,1);
+  add(out,'timber-panel','receiving-stock-tray',[0,.029,0],[1.23,.058,.62],0x7d694b,root);
+  stock=bundle(out,state.kind,root,true);
+  add(out,'box','receiving-stock-label',[.53,.16,.30],[.20,.23,.018],0xd8caab,root);
+ }
+ if(frame)frames.set(sim,Object.freeze({...frame,arrived:state.arrived,claimed:state.record.claimed,stockPieces:stock.filter(p=>p.consignmentPiece).map(p=>p.consignmentPiece)}));
+}
+function snapshot(sim){const frame=frames.get(sim);return frame?JSON.parse(JSON.stringify(frame)):null;}
+function reset(sim){motion.delete(sim);frames.delete(sim);}
+const api=Object.freeze({draw,snapshot,owned,bundle,reset});G.RealmEarthConsignmentArt=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* Original appearance-only work, keyed exclusively to accepted local facts. */
 (function(G){'use strict';
 const decor={appearanceOnly:true,cameraSolid:false,cutaway:false,rough:.86};
 function draw(out,sim){
- const L=G.RealmLocalLife,W=G.RealmWorldFoundations,d=L.definitions.find(d=>d.realm===W.definition(sim.room)?.id);if(!d)return;
+ const L=G.RealmLocalLife,W=G.RealmWorldFoundations,d=L.definitions.find(d=>d.realm===W.definition(sim.room)?.id);if(!d||d.kind==='earth-consignment-motion-v1')return;
  const r=sim.state.localLife.records[d.id];if(!r.accepted)return;
  const emit=(kind,p,s,c,part,extra={})=>out[kind].push({p,s,c,...decor,localLifeQuest:d.id,localLifePart:part,localLifeChoice:r.choice,...extra});
  const box=(x,y,z,w,h,depth,c,part,extra)=>emit('box',[x,y,z],[w,h,depth],c,part,extra);
@@ -5630,7 +5851,138 @@ class BridgeCommunityUI{
 G.RealmBridgeCommunityUI={BridgeCommunityUI,routePoints,legend};if(typeof module!=='undefined')module.exports=G.RealmBridgeCommunityUI;
 })(globalThis);
 
-/* Local work is deliberate. Reading, walking and an assembly preview pay nothing. */
+/* The supplied load's UI reads canonical records and real motion. Reading,
+ * map markers and walking cannot earn an arrival or its separate payment. */
+(function(G){'use strict';
+const D=G.RealmEarthConsignmentData,PREFIX='consignment-';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const names=Object.freeze({'load-glade':'Elderweald return glade','meadow-stop':'Meadow road','field-return-stop':'Field return lane','field-gate-stop':'Field gate','settlement-approach':'Settlement approach','merren-receiving-bay':'Merren’s receiving bay','root-south-stop':'Southern root approach','root-mouth-stop':'Root passage mouth','wetland-south-stop':'Southern wetland lane','wetland-north-stop':'Northern wetland lane','wetland-check-stop':'Wetland check','camp-stop':'Woodland camp','north-pocket-bypass':'Northern clearing bypass','west-spur-join':'West spur','west-lane-north':'Northern west lane','west-lane-stop':'West settlement lane'});
+const name=p=>names[p?.id]||p?.name||'Carrier stop';
+const button=(label,action,id='')=>'<button type="button" data-rpg="'+PREFIX+action+'" data-job="'+D.ID+'" data-id="'+esc(id)+'">'+esc(label)+'</button>';
+const record=sim=>{try{const source=G.RealmEarthExpedition.validate(sim.state.earthExpedition);return D.crossValidate(sim.state.localLife?.records?.[D.ID],source);}catch{return null;}};
+const at=(sim,p)=>sim.room===D.ROOM&&!sim.worldDive&&G.RealmLocalLife.at(sim,p);
+function routePoints(sim,ctx){
+ const r=record(sim);if(!r||sim.room!==D.ROOM)return[];
+ if(!r.accepted)return sim.state.adventure.started&&sim.state.earthExpedition.story.claimed?[{...D.definition.giver,kind:'giver',quest:D.ID,mark:'L1',name:'Read the supplied load at the glade'}]:[];
+ if(r.claimed)return[];
+ if(r.steps.length===D.required(r).length)return[{...D.definition.returner,kind:'giver',quest:D.ID,mark:'L1',name:'Merren · claim the separate load payment'}];
+ const M=G.RealmEarthConsignmentMotion,view=ctx?.sim===sim&&typeof M?.current==='function'?M.current(ctx):null,p=view&&M?.isProjection?.(view,ctx)===true?view:D.checkpoint(r);
+ return[{id:'carrier',x:p.x,z:p.z,y:1.57,medium:'dry',kind:'work',quest:D.ID,mark:'L1',name:'Supplied carrier · '+name(view?.ready?view.next:view?.checkpoint||D.checkpoint(r))}];
+}
+function routeLine(sim){
+ const r=record(sim);if(!r?.accepted||r.claimed||sim.room!==D.ROOM)return[];
+ const route=D.routes[D.choice(r.choice).route],points=[{x:route[0].x,z:route[0].z}],C=G.RealmCore,W=G.RealmWorldFoundations;
+ for(let i=1;i<route.length;i++){
+  let path;try{path=C.pathfind(route[i-1],route[i],{id:D.ROOM},false,.65);}catch{return[];}
+  if(!Array.isArray(path)||!path.length||Math.hypot(path.at(-1).x-route[i].x,path.at(-1).z-route[i].z)>1e-9)return[];
+  for(const p of path){if(!Number.isFinite(p.x)||!Number.isFinite(p.z)||!W.segment(D.ROOM,points.at(-1),p,.65))return[];points.push({x:p.x,z:p.z});}
+  if(points.length>512)return[];
+ }
+ return points;
+}
+function legend(sim){
+ const points=routePoints(sim,sim.consignmentPresentationContext);if(!points.length)return'';
+ const r=record(sim),heading=r.accepted?'The supplied load · chosen route':'Rill’s supplied load · read the board',detail=r.accepted?'The blue dotted course follows supported roads. L1 marks the supplied carrier or its receiving steward. Stay beside the carrier until it stops, then deliberately record that arrival.':'L1 marks Rill’s signed supply board. Read the two courses and the separate payment before choosing one; no load or course has been accepted.';
+ return'<section class="local-life-map consignment-map"><h3>'+heading+'</h3><p>'+detail+'</p>'+points.map(p=>'<p><strong>'+esc(p.mark)+'</strong> · '+esc(p.name)+' '+button('Walk near this load work','walk',p.id==='first-load-board'?'giver':p.id==='merren'?'return':'carrier')+'</p>').join('')+button('Read this load, its route and separate payment','open')+'</section>';
+}
+class ConsignmentUI{
+ #noticeOwner=null;
+ constructor(rpg){this.rpg=rpg;this.notice='';}
+ get sim(){return this.rpg.sim;}
+ context(){const ctx=this.rpg.api.consignmentContext?.();return ctx?.sim===this.sim?ctx:null;}
+ live(){const ctx=this.context(),M=G.RealmEarthConsignmentMotion,v=ctx&&typeof M?.current==='function'?M.current(ctx):null;return v&&M?.isProjection?.(v,ctx)===true?v:null;}
+ point(){
+  const r=record(this.sim);if(!r||r.claimed)return null;
+  return routePoints(this.sim,this.context()).find(p=>at(this.sim,p))||null;
+ }
+ contextLabel(){const p=this.point();return p?'E · '+p.name:null;}
+ interact(){if(!this.point())return false;this.rpg.civic.selected='earthlands';this.rpg.civic.tracked=D.ID;this.rpg.open('local-life');return true;}
+ syncNoticeOwner(){const ctx=this.context(),next=[this.sim,this.sim.state,ctx?.active,ctx?.ownerLease,this.sim.state.adventure.deaths];if(this.#noticeOwner&&next.some((v,i)=>v!==this.#noticeOwner[i]))this.notice='';this.#noticeOwner=next;}
+ reset(reason='presentation'){if(['owner','character','import','travel','death','reload'].includes(reason)){this.notice='';this.#noticeOwner=null;}}
+ finish(result,paint=true){this.syncNoticeOwner();this.notice=[result?.text||result?.error||'',result?.warning||''].filter(Boolean).join(' ');if(this.notice)this.rpg.api.toast?.(this.notice);if(paint)this.rpg.paint();return true;}
+ command(type,payload={}){
+  if(typeof this.rpg.api.localLifeCommand!=='function')return{ok:false,error:'The durable load command is unavailable. No payment or arrival was adopted.'};
+  const result=this.rpg.api.localLifeCommand(type,{...payload,quest:D.ID});
+  if(result?.then)return{ok:false,error:'Load storage did not return synchronous confirmation. Read its saved checkpoint before retrying.'};
+  if(result?.ok&&!result.duplicate&&['accept','step'].includes(type)&&record(this.sim)?.accepted){this.rpg.civic.tracked=D.ID;this.rpg.quest='local-life';}
+  return result||{ok:false,error:'Load command returned no confirmation.'};
+ }
+ advance(continueRoute){
+  const M=G.RealmEarthConsignmentMotion,ctx=this.context(),r=record(this.sim),v=this.live();
+  if(!ctx||!r?.accepted||r.claimed||!v)return this.finish({ok:false,error:'Read the current accepted load and its carrier before continuing.'});
+  let savedResult=null;
+  if(v.ready){
+   const step=D.required(r)[r.steps.length],proof=M.arrivalTicket(ctx);
+   if(!proof.ok)return this.finish(proof);
+   const result=this.command('step',{step,motionTicket:proof.ticket});if(!result.ok)return this.finish(result);
+   const saved=record(this.sim);if(saved?.steps[r.steps.length]!==step||saved.steps.length!==r.steps.length+1)return this.finish({ok:false,error:'Arrival returned without its exact saved checkpoint. Read the load before continuing.'});
+   if(!continueRoute||saved.steps.length===D.required(saved).length)return this.finish(result);savedResult=result;
+  }else if(!continueRoute)return this.finish({ok:false,error:'Physically reach the marked stop with the carrier before recording arrival.'});
+  // Dialogs pause the real world. Close presentation before requesting motion;
+  // this preserves the app lease and obtains a fresh current context.
+  this.rpg.close?.();
+  const result=this.rpg.api.consignmentControl?.('continue')||{ok:false,error:'Carrier motion is unavailable.'};
+  const moving=result.ok&&result.view?.status==='moving';
+  const continuation=moving?'The carrier is continuing. Stay nearby until it stops at '+name(result.view.next)+'. The blue dotted course is on the map.':result.ok?'The carrier is waiting: '+(result.view?.detail||result.view?.reason||'read its current position before continuing')+'.':result.error||'The carrier could not continue.';
+  // Saved arrival is already durable even if following motion/cleanup fails.
+  // Preserve its truthful completion and warnings through the combined action.
+  return this.finish(savedResult?{ok:true,text:savedResult.text+' '+continuation,warning:[savedResult.warning,result.warning].filter(Boolean).join(' ')}:result.ok?{...result,text:continuation}:result,false);
+ }
+ action(el){
+  const action=el?.dataset?.rpg;if(!action?.startsWith(PREFIX))return false;
+  if(el.dataset.job!==D.ID)return this.finish({ok:false,error:'That load control belongs to another commission.'});
+  const type=action.slice(PREFIX.length),r=record(this.sim);
+  if(type==='continue')return this.advance(true);
+  if(type==='record')return this.advance(false);
+  if(type==='wait'){const result=this.rpg.api.consignmentControl?.('wait')||{ok:false,error:'Carrier motion is unavailable.'};return this.finish(result.ok?{...result,text:'The carrier will wait here until you deliberately continue. Reload keeps the last recorded stop.'}:result);}
+  if(type==='accept')return this.finish(this.command('accept',{choice:el.dataset.id}));
+  if(type==='claim')return this.finish(this.command('claim'));
+  if(type==='walk'){
+   const id=el.dataset.id,p=id==='giver'?D.definition.giver:id==='return'?D.definition.returner:id==='carrier'?routePoints(this.sim,this.context())[0]:null;
+   if(!p||this.sim.room!==D.ROOM||this.sim.worldDive)return this.finish({ok:false,error:'Visit dry Earthlands and read the current load route.'});
+   const q=G.RealmTrailsUI.approach(this.sim,p);this.rpg.close?.();this.rpg.api.walkLocal(q.x,q.z);return true;
+  }
+  if(type==='open'){this.rpg.civic.selected='earthlands';this.rpg.open('local-life');return true;}
+  return this.finish({ok:false,error:'Unknown supplied-load control.'});
+ }
+ panel(){
+  this.syncNoticeOwner();
+  const sim=this.sim,r=record(sim);if(!r)return'<article data-consignment-panel><p>This load’s source allocation cannot be validated. Existing work is retained.</p></article>';
+  const here=sim.room===D.ROOM&&!sim.worldDive,paid=!!sim.state.earthExpedition.story.claimed,eligible=paid&&sim.state.adventure.started,branch=sim.state.earthExpedition.story.branch;
+  let html='<article class="local-life-card" data-local-quest="'+D.ID+'" data-consignment-panel><small>COASTWARD · '+(r.claimed?'PAID ONCE':r.accepted?'ACCEPTED SUPPLIED LOAD':'OPTIONAL SUPPLIED LOAD')+'</small><h3>'+esc(D.definition.title)+'</h3><p>'+esc(D.definition.summary)+'</p><p><strong>Route and danger:</strong> Choose the southern meadow road or the longer northern root road. Stay near the carrier. Nearby living threats, leaving the area or your retreat make it wait. There is no deadline.</p><p><strong>Separate payment:</strong> 4 sunmarks · 2 timber · 2 meadow fibre · no XP. Claim once from Merren after delivery. Your kit, earlier payments and installed support remain yours.</p><p data-consignment-notice role="status" aria-live="polite">'+esc(this.notice)+'</p>';
+  if(!r.accepted){
+   html+='<p>'+(!sim.state.adventure.started?'Collect Oren’s initial expedition kit first.':!paid?'Finish and deliberately claim Rill’s original Living Road work first. This is a new supplied load; the earlier allocation is not spent again.':'A camp supplier has left '+(branch==='stormfall-recovery'?'four short timbers':'three binding-fibre bundles')+' with a carrier at the return glade. Choose one route there.')+'</p>';
+   for(const c of D.choices.filter(c=>c.branch===branch)){
+    html+='<div class="local-life-choice"><strong>'+esc(c.name)+'</strong><p>'+esc(c.route==='southern-meadow'?'Through meadow and fields to the receiving bay. Five arrival checkpoints.':'Through the root passage, wetland and woodland camp, then the west settlement lane. Twelve arrival checkpoints.')+'</p>';
+    if(here&&eligible&&at(sim,D.definition.giver))html+=button('Accept this course','accept',c.id);html+='</div>';
+   }
+   if(here&&eligible&&!at(sim,D.definition.giver))html+=button('Walk to the consignment board','walk','giver');
+  }else{
+   const chosen=D.choice(r.choice),list=D.required(r),v=this.live(),route=D.routes[chosen.route];
+   html+='<p><strong>Chosen course:</strong> '+esc(chosen.name)+'</p><p>Recorded stops: '+r.steps.length+' of '+list.length+'. Reload or leaving Earthlands resumes the last recorded stop; an unfinished leg returns there. Going home is free. Reading a dialog pauses the carrier at its current position.</p>';
+   if(r.claimed)html+='<p class="local-life-complete">'+esc(D.definition.completionText)+'</p>';
+   else if(r.steps.length===list.length)html+='<p><strong>Delivered · separate payment still unpaid.</strong> The actual load remains at the receiving bay. Return to Merren.</p>'+(here&&at(sim,D.definition.returner)?button('Claim 4 sunmarks, 2 timber and 2 fibre once','claim'):here?button('Walk to Merren','walk','return'):'');
+   else if(here){
+    const next=route[r.steps.length+1];html+='<p><strong>Next arrival:</strong> '+esc(name(next))+'.</p><p><strong>Carrier:</strong> '+esc(v?.ready?'At the next stop · arrival not recorded':v?.status==='moving'?'Walking to '+name(next):v?.status==='blocked'?'Waiting · '+(v.detail||v.reason):v?.status==='paused'?'Paused while you read':v?.detail||'Waiting at its current position')+'</p><div class="world-actions">';
+    if(v?.ready&&at(sim,v))html+=button(r.steps.length===list.length-1?'Register delivery at this receiving bay':'Record this arrival and continue','continue');
+    else if(v&&at(sim,v))html+=button('Continue with the carrier','continue')+button('Ask the carrier to wait here','wait');
+    else html+=button('Walk to the supplied carrier','walk','carrier');
+    html+='</div>';
+   }else html+='<p>Revisit Coastward through its Road of Light or the Hearthwater road to continue this load.</p>';
+   html+='<details><summary>Read the selected route</summary><ol>'+route.slice(1).map((p,i)=>'<li>'+esc(name(p))+(i<r.steps.length?' · recorded':i===r.steps.length?' · next':'')+'</li>').join('')+'</ol></details>';
+   if(!r.claimed)html+='<button data-rpg="civic-track" data-id="'+D.ID+'">Track this supplied load</button>';
+  }
+  return html+'<p>Acceptance and recorded arrivals survive saving. No ordinary materials are spent or equipment auto-equipped. A full pouch or refused save leaves the payment unclaimed.</p><div class="world-actions"><button data-rpg="community-open">Read Merren’s separate bridge workshop</button><button data-rpg="expedition-open">Read Rill’s Living Road and patrol</button></div></article>';
+ }
+ tracker(){
+  const r=record(this.sim);if(!r?.accepted||r.claimed)return null;
+  const v=this.live(),route=D.routes[D.choice(r.choice).route],complete=r.steps.length===D.required(r).length;
+  return{title:D.definition.title,detail:this.sim.room!==D.ROOM?'Revisit Coastward to resume the supplied load':complete?'Delivered · return to Merren for the separate payment':v?.ready?'E · record arrival at '+name(v.next):v?.status==='blocked'?'Carrier waiting · '+(v.detail||v.reason):v?.status==='moving'?'Stay nearby · '+name(v.next):v?.status==='waiting'&&v.reason==='player-far'?(at(this.sim,v)?'Carrier waiting · E · deliberately choose Continue':'Carrier waiting · catch up to the load, then E · deliberately choose Continue'):'E · continue at the supplied carrier',progress:r.steps.length+'/'+D.required(r).length+' arrivals · J work · M route'};
+ }
+}
+const api=Object.freeze({ConsignmentUI,routePoints,routeLine,legend,name});G.RealmEarthConsignmentUI=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* Local work is deliberate. Reading, walking and an assembly preview pay nothing. */
 (function(G){'use strict';
 const L=G.RealmLocalLife,W=G.RealmWorldFoundations;
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -5639,23 +5991,25 @@ const material={wood:'timber',fiber:'meadow fibre',crystal:'moon crystal'};
 const fee=d=>d.reward.xp+' XP · '+d.reward.coins+' sunmarks'+(d.reward.ore?' · '+d.reward.ore+' ore':'')+Object.entries(d.reward.materials||{}).map(([k,n])=>' · '+n+' '+(material[k]||k)).join('');
 function routePoints(sim){
  const realm=W.definition(sim.room)?.id,d=L.definitions.find(d=>d.realm===realm);if(!d)return[];
+ if(d.kind==='earth-consignment-motion-v1')return G.RealmEarthConsignmentUI.routePoints(sim,sim.consignmentPresentationContext);
  const r=sim.state.localLife.records[d.id];if(!r.accepted||r.claimed)return[];
  const points=L.ready(sim.state,d)?[{...(d.returner||d.giver),id:'return',name:'Return to '+(d.returner||d.giver).name,kind:'giver',medium:'dry'}]:L.available(sim.state,d);
  return points.map((p,i)=>({...p,quest:d.id,mark:'L'+(i+1)}));
 }
 class LocalLifeUI{
- constructor(rpg){this.rpg=rpg;this.selected=null;this.reading=null;this.tracked=null;this.seen=new WeakSet();}
+ constructor(rpg){this.rpg=rpg;this.selected=null;this.reading=null;this.tracked=null;this.seen=new WeakSet();const carrier=G.RealmEarthConsignmentUI||(typeof require==='function'?require('./earth-consignment-ui.js'):null);this.carrier=new carrier.ConsignmentUI(rpg);}
  get sim(){return this.rpg.sim;}
  local(){return L.definitions.find(d=>d.realm===W.definition(this.sim.room)?.id)||null;}
  point(){
-  const d=this.local();if(!d)return null;const r=this.sim.state.localLife.records[d.id];
+  const d=this.local();if(!d)return null;if(d.kind==='earth-consignment-motion-v1')return this.carrier.point();const r=this.sim.state.localLife.records[d.id];
   if(!r.accepted||this.rpg.quest!=='local-life'&&this.rpg.tab!=='local-life'||r.claimed&&this.rpg.quest!=='local-life')return null;
   const points=r.claimed?[{...(d.returner||d.giver),id:'return',kind:'giver'}]:routePoints(this.sim);
   return points.filter(p=>L.at(this.sim,p)).sort((a,b)=>Math.hypot(a.x-this.sim.state.player.x,a.z-this.sim.state.player.z)-Math.hypot(b.x-this.sim.state.player.x,b.z-this.sim.state.player.z))[0]||null;
  }
  context(){const p=this.point();return p?'E · '+p.name:null;}
- interact(){const p=this.point();if(!p)return false;this.selected=this.local().realm;this.reading=p.id;this.rpg.open('local-life');return true;}
+ interact(){if(this.carrier.interact())return true;const p=this.point();if(!p)return false;this.selected=this.local().realm;this.reading=p.id;this.rpg.open('local-life');return true;}
  action(el){
+  if(this.carrier.action(el))return true;
   const action=el.dataset.rpg,id=el.dataset.id;if(!action?.startsWith('civic-'))return false;
   const type=action.slice(6);
   if(type==='open'){this.selected=id||W.definition(this.sim.room)?.id||'all';this.rpg.open('local-life');return true;}
@@ -5681,16 +6035,17 @@ class LocalLifeUI{
  }
  teaser(realm){const d=L.definitions.find(d=>d.realm===realm);if(!d)return'';const r=this.sim.state.localLife.records[d.id];return'<section class="local-life-teaser"><small>LOCAL LIFE · SEPARATE ONCE-ONLY WORK</small><h3>'+esc(d.title)+'</h3><p>'+esc(r.claimed?d.completionText:d.summary)+'</p>'+button(r.accepted?'Read saved local work':'Read the commission, arrangements and payment','open',realm)+'</section>';}
  journal(){
-  return'<section class="local-life-board" aria-label="Local life across the roads"><div class="local-life-heading"><div><small>PLACES PEOPLE INHABIT</small><h2>Local life across the roads</h2><p>Four finite commissions keep their own arrangements, supplied parts and payments.</p></div>'+button('Read all local commissions','all')+'</div><div class="local-life-grid">'+L.definitions.map(d=>{
-   const r=this.sim.state.localLife.records[d.id],state=r.claimed?'Paid once':!r.accepted?'Not accepted':L.ready(this.sim.state,d)?'Ready to return · unpaid':r.steps.length+'/'+d.steps.length+' actions';
+  return'<section class="local-life-board" aria-label="Local life across the roads"><div class="local-life-heading"><div><small>PLACES PEOPLE INHABIT</small><h2>Local life across the roads</h2><p>Finite local commissions keep their own arrangements, supplied parts and payments.</p></div>'+button('Read all local commissions','all')+'</div><div class="local-life-grid">'+L.definitions.map(d=>{
+   const r=this.sim.state.localLife.records[d.id],state=r.claimed?'Paid once':!r.accepted?'Not accepted':L.ready(this.sim.state,d)?'Ready to return · unpaid':r.steps.length+'/'+L.required(d,r).length+' actions';
    return'<article data-local-work="'+d.id+'"><small>'+esc(W.definition(d.realm).name)+' · '+esc(state)+'</small><h3>'+esc(d.title)+'</h3><p>'+esc((d.returner||d.giver).name)+' · '+esc(fee(d))+'</p>'+button('Read local work','open',d.realm)+(r.accepted&&!r.claimed?button('Track this local work','track',d.id):'')+'</article>';
   }).join('')+'</div><p>Supplied job parts never occupy equipment slots. These payments contribute to ordinary crafting and building; fully fitted gear gains no new power tier from them.</p></section>';
  }
  page(tab){
   if(tab!=='local-life')return null;
   const selected=this.selected||W.definition(this.sim.room)?.id||'all',list=L.definitions.filter(d=>selected==='all'||d.realm===selected);
-  let html='<section class="local-life-page"><p>Practical work, lasting arrangements and separate once-only payments. Reading accepts nothing.</p><div class="world-actions">'+button('All four commissions','all')+'</div>';
+  let html='<section class="local-life-page"><p>Practical work, lasting arrangements and separate once-only payments. Reading accepts nothing.</p><div class="world-actions">'+button('All local commissions','all')+'</div>';
   for(const d of list){
+   if(d.kind==='earth-consignment-motion-v1'){html+=this.carrier.panel();continue;}
    const r=this.sim.state.localLife.records[d.id],here=W.definition(this.sim.room)?.id===d.realm,eligible=L.eligible(this.sim.state,d),choice=d.choices.find(c=>c.id===r.choice);
    html+='<article class="local-life-card" data-local-quest="'+d.id+'"><small>'+esc(W.definition(d.realm).name)+' · '+(r.claimed?'CLAIMED ONCE':r.accepted?'ACCEPTED LOCAL WORK':'OPTIONAL LOCAL COMMISSION')+'</small><h3>'+esc(d.title)+'</h3><p><strong>Commissioned by:</strong> '+esc(d.giver.name)+(d.returner?'<br><strong>Return to:</strong> '+esc(d.returner.name):'')+'</p><p>'+esc(d.summary)+'</p><p><strong>Route and danger:</strong> '+esc(d.danger)+'</p><p><strong>Exact once-only payment:</strong> '+esc(fee(d))+'. XP credits only up to the existing 9999 stored cap.</p>';
    if(!r.accepted){
@@ -5714,7 +6069,7 @@ class LocalLifeUI{
    }
    html+='</article>';
   }
-  if(!list.length)html+='<p>The living-road expedition remains Earth’s current local continuation. Read the other four commissions here.</p>'+button('Read other local commissions','all');
+  if(!list.length)html+='<p>Read the local commissions across Earth and the other roads here.</p>'+button('Read other local commissions','all');
   return{title:'Local life',html:html+'<p>Accepted work, supplied parts, selected arrangements and unpaid completion survive reload. Reopening resumes your home checkpoint; revisit the realm to continue. Full pouches or a refused save preserve unpaid work. Nothing auto-equips or places furniture at home.</p></section>'};
  }
  tick(){
@@ -5727,6 +6082,7 @@ class LocalLifeUI{
   const r=this.sim.state.localLife.records[d.id],next=L.available(this.sim.state,d)[0],same=W.definition(this.sim.room)?.id===d.realm;
   document.querySelector('#tracked-chapter').textContent='LOCAL LIFE · '+W.definition(d.realm).name;
   document.querySelector('#tracked-title').textContent=d.title;
+  if(d.kind==='earth-consignment-motion-v1'){const view=this.carrier.tracker();if(view){document.querySelector('#tracked-detail').textContent=view.detail;document.querySelector('#tracked-progress').textContent=view.progress;}return;}
   document.querySelector('#tracked-detail').textContent=same?next?.name||'Return to '+(d.returner||d.giver).name:'Revisit '+W.definition(d.realm).name+' to resume';
   document.querySelector('#tracked-progress').textContent=r.steps.length+'/'+d.steps.length+' · '+(L.carrying(this.sim.state,d)?d.carry.name+' · ':'')+'J work · M routes';
  }
@@ -7868,7 +8224,7 @@ function validateCameraViews(raw){
  return out;
 }
 function fresh(){return{earthHomecoming:EH.fresh(),cosmosCampaign:CC.fresh(),atlantisCampaign:AT.fresh(),heavenCampaign:HV.fresh(),hellCampaign:HC.fresh(),bridgeCommunity:BC.fresh(),homeHistory:HH.fresh(),localLife:LL.fresh(),earthExpedition:EE.fresh(),realmTrails:RT.fresh(),journeys:W.fresh(),adventure:A.fresh(),sandbox:S.fresh(),score:X.preset(),scoreRevision:0,retreat:X.freshHome(),visitor:X.freshVisitor(),version:VERSION,seed:2317,day:1,hour:17.2,weather:'clear',player:{x:2.5,z:6,yaw:0},visited:[],flowers:[],notes:[],journal:[],nextEvent:1,residents:PROFILES.map((p,i)=>{let l=LANDMARKS.find(x=>x.id===schedule(p.id,17.2));return{id:p.id,x:l.x+(i-1)*.5,z:l.z,yaw:0,progress:.05,conversations:0};}),settings:{quality:'balanced',cameraMode:'adventure',cameraFov:60,cameraViews:validateCameraViews(null),cameraCutaway:true,reducedMotion:false,labels:true,timeFlow:true,sound:false}};}
-function validate(raw){if(raw&&raw.version===2)raw={...clone(raw),version:3,score:X.preset(),scoreRevision:0,retreat:X.freshHome(),visitor:X.freshVisitor()};if(raw&&raw.version===3)raw={...clone(raw),version:4,sandbox:S.fresh()};if(raw&&raw.version===4)raw={...clone(raw),version:5,adventure:A.fresh()};if(raw&&raw.version===5)raw={...clone(raw),version:6};if(raw&&raw.version===6)raw={...clone(raw),version:7};if(raw&&raw.version===7)raw={...clone(raw),version:8};if(raw&&raw.version===8)raw={...clone(raw),version:9};function no(s){throw new Error('Invalid save: '+s);}if(!raw||typeof raw!=='object'||raw.version!==VERSION)no('unsupported version');let s=fresh();s.adventure=A.validate(raw.adventure);s.journeys=W.validate(raw.journeys);s.realmTrails=RT.validate(raw.realmTrails);s.cosmosCampaign=CC.validate(raw.cosmosCampaign);if(s.cosmosCampaign.accepted&&!CC.eligible(s))no('Cosmos campaign without claimed comparator');s.atlantisCampaign=AT.validate(raw.atlantisCampaign);if(s.atlantisCampaign.accepted&&!AT.eligible(s))no('Atlantis campaign without claimed Bellglass chart');s.earthExpedition=EE.validate(raw.earthExpedition);s.localLife=LL.validate(raw.localLife);s.homeHistory=HH.validate(raw.homeHistory);s.bridgeCommunity=BC.validate(raw.bridgeCommunity);s.heavenCampaign=HV.validate(raw.heavenCampaign);if(s.heavenCampaign.accepted&&!HV.eligible(s))no('Heaven campaign without claimed Broken Choir');s.hellCampaign=HC.validate(raw.hellCampaign);if(s.hellCampaign.accepted&&!HC.eligible(s))no('Hell campaign without claimed rescue');s.earthHomecoming=EH.validate(raw.earthHomecoming);if(s.earthHomecoming.accepted&&!EH.eligible(s))no('Earth homecoming without independently claimed road, realm and Open Confluence accounts');if(s.bridgeCommunity.accepted&&!s.adventure.started)no('community work without initial kit');if(LL.definitions.some(d=>s.localLife.records[d.id].accepted&&!LL.eligible(s,d)))no('local work without its entry state');if(!s.adventure.started&&s.earthExpedition.story.accepted)no('expedition without initial kit');if(s.adventure.earthBinding.weapon&&!s.earthExpedition.story.claimed)no('binding without earned living road');if(!s.adventure.started&&Object.values(s.realmTrails.records).some(r=>r.accepted))no('trail without initial kit');if(s.adventure.realmCraft.weapon&&!Object.values(s.realmTrails.records).some(r=>r.claimed))no('realm fitting without earned trail');s.sandbox=S.validate(raw.sandbox);const outdoors={id:'outdoors',sandbox:s.sandbox};if(!Number.isSafeInteger(raw.day)||raw.day<1||raw.day>100000||!finite(raw.hour)||raw.hour<0||raw.hour>=24)no('clock');s.day=raw.day;s.hour=raw.hour;if(!['clear','rain'].includes(raw.weather))no('weather');s.weather=raw.weather;if(!raw.player||!walkable(raw.player.x,raw.player.z,outdoors)||!finite(raw.player.yaw))no('player position');s.player={x:raw.player.x,z:raw.player.z,yaw:raw.player.yaw};for(let k of['visited','flowers','notes','journal','residents'])if(!Array.isArray(raw[k]))no(k);if(raw.visited.length>LANDMARKS.length||raw.visited.some(id=>!LANDMARKS.some(l=>l.id===id)))no('places');s.visited=[...new Set(raw.visited)];if(raw.flowers.length>12)no('garden');s.flowers=raw.flowers.map(f=>{if(!f||!finite(f.x)||!finite(f.z)||Math.hypot(f.x+6,f.z-13)>5||!Number.isInteger(f.color)||f.color<0||f.color>3)no('flower');return{x:f.x,z:f.z,color:f.color};});if(raw.notes.length>20)no('notes');s.notes=raw.notes.map(n=>{if(!n||typeof n.text!=='string'||n.text.length>1200||!Number.isInteger(n.day)||n.day<1)no('note');return{text:n.text,day:n.day};});if(raw.journal.length>200)no('journal');let last=0;s.journal=raw.journal.map(j=>{if(!j||!Number.isSafeInteger(j.seq)||j.seq<=last||!Number.isInteger(j.day)||j.day<1||j.day>100000||!finite(j.hour)||j.hour<0||j.hour>=24||typeof j.kind!=='string'||j.kind.length>40||typeof j.text!=='string'||j.text.length>350)no('event');last=j.seq;return{seq:j.seq,day:j.day,hour:j.hour,kind:j.kind,text:j.text};});if(!Number.isSafeInteger(raw.nextEvent)||raw.nextEvent<=last)no('event sequence');s.nextEvent=raw.nextEvent;if(raw.residents.length!==3||new Set(raw.residents.map(r=>r.id)).size!==3)no('roster');s.residents=PROFILES.map(p=>{let r=raw.residents.find(r=>r.id===p.id);if(!r||!walkable(r.x,r.z)||!finite(r.yaw)||!finite(r.progress)||r.progress<0||r.progress>1||!Number.isSafeInteger(r.conversations)||r.conversations<0)no('inhabitant');return{id:p.id,x:r.x,z:r.z,yaw:r.yaw,progress:r.progress,conversations:r.conversations};});if(raw.settings){s.settings.cameraViews=validateCameraViews(raw.settings.cameraViews);if(['adventure','follow','tactical','wide'].includes(raw.settings.cameraMode))s.settings.cameraMode=raw.settings.cameraMode;if(finite(raw.settings.cameraFov)&&raw.settings.cameraFov>=45&&raw.settings.cameraFov<=80)s.settings.cameraFov=raw.settings.cameraFov;for(let k of['reducedMotion','labels','timeFlow','cameraCutaway'])if(typeof raw.settings[k]==='boolean')s.settings[k]=raw.settings[k];if(['low','balanced','high'].includes(raw.settings.quality))s.settings.quality=raw.settings.quality;}s.settings.sound=false;s.score=X.validateScore(raw.score);s.retreat=X.validateHome(raw.retreat);HH.validateWorld(s);s.visitor=X.validateVisitor(raw.visitor);if(!Number.isSafeInteger(raw.scoreRevision)||raw.scoreRevision<0||raw.scoreRevision>1e8)no('score revision');s.scoreRevision=raw.scoreRevision;return s;}
+function validate(raw){if(raw&&raw.version===2)raw={...clone(raw),version:3,score:X.preset(),scoreRevision:0,retreat:X.freshHome(),visitor:X.freshVisitor()};if(raw&&raw.version===3)raw={...clone(raw),version:4,sandbox:S.fresh()};if(raw&&raw.version===4)raw={...clone(raw),version:5,adventure:A.fresh()};if(raw&&raw.version===5)raw={...clone(raw),version:6};if(raw&&raw.version===6)raw={...clone(raw),version:7};if(raw&&raw.version===7)raw={...clone(raw),version:8};if(raw&&raw.version===8)raw={...clone(raw),version:9};function no(s){throw new Error('Invalid save: '+s);}if(!raw||typeof raw!=='object'||raw.version!==VERSION)no('unsupported version');let s=fresh();s.adventure=A.validate(raw.adventure);s.journeys=W.validate(raw.journeys);s.realmTrails=RT.validate(raw.realmTrails);s.cosmosCampaign=CC.validate(raw.cosmosCampaign);if(s.cosmosCampaign.accepted&&!CC.eligible(s))no('Cosmos campaign without claimed comparator');s.atlantisCampaign=AT.validate(raw.atlantisCampaign);if(s.atlantisCampaign.accepted&&!AT.eligible(s))no('Atlantis campaign without claimed Bellglass chart');s.earthExpedition=EE.validate(raw.earthExpedition);s.localLife=LL.validate(raw.localLife,s.earthExpedition);s.homeHistory=HH.validate(raw.homeHistory);s.bridgeCommunity=BC.validate(raw.bridgeCommunity);s.heavenCampaign=HV.validate(raw.heavenCampaign);if(s.heavenCampaign.accepted&&!HV.eligible(s))no('Heaven campaign without claimed Broken Choir');s.hellCampaign=HC.validate(raw.hellCampaign);if(s.hellCampaign.accepted&&!HC.eligible(s))no('Hell campaign without claimed rescue');s.earthHomecoming=EH.validate(raw.earthHomecoming);if(s.earthHomecoming.accepted&&!EH.eligible(s))no('Earth homecoming without independently claimed road, realm and Open Confluence accounts');if(s.bridgeCommunity.accepted&&!s.adventure.started)no('community work without initial kit');if(LL.definitions.some(d=>s.localLife.records[d.id].accepted&&!LL.eligible(s,d)))no('local work without its entry state');if(!s.adventure.started&&s.earthExpedition.story.accepted)no('expedition without initial kit');if(s.adventure.earthBinding.weapon&&!s.earthExpedition.story.claimed)no('binding without earned living road');if(!s.adventure.started&&Object.values(s.realmTrails.records).some(r=>r.accepted))no('trail without initial kit');if(s.adventure.realmCraft.weapon&&!Object.values(s.realmTrails.records).some(r=>r.claimed))no('realm fitting without earned trail');s.sandbox=S.validate(raw.sandbox);const outdoors={id:'outdoors',sandbox:s.sandbox};if(!Number.isSafeInteger(raw.day)||raw.day<1||raw.day>100000||!finite(raw.hour)||raw.hour<0||raw.hour>=24)no('clock');s.day=raw.day;s.hour=raw.hour;if(!['clear','rain'].includes(raw.weather))no('weather');s.weather=raw.weather;if(!raw.player||!walkable(raw.player.x,raw.player.z,outdoors)||!finite(raw.player.yaw))no('player position');s.player={x:raw.player.x,z:raw.player.z,yaw:raw.player.yaw};for(let k of['visited','flowers','notes','journal','residents'])if(!Array.isArray(raw[k]))no(k);if(raw.visited.length>LANDMARKS.length||raw.visited.some(id=>!LANDMARKS.some(l=>l.id===id)))no('places');s.visited=[...new Set(raw.visited)];if(raw.flowers.length>12)no('garden');s.flowers=raw.flowers.map(f=>{if(!f||!finite(f.x)||!finite(f.z)||Math.hypot(f.x+6,f.z-13)>5||!Number.isInteger(f.color)||f.color<0||f.color>3)no('flower');return{x:f.x,z:f.z,color:f.color};});if(raw.notes.length>20)no('notes');s.notes=raw.notes.map(n=>{if(!n||typeof n.text!=='string'||n.text.length>1200||!Number.isInteger(n.day)||n.day<1)no('note');return{text:n.text,day:n.day};});if(raw.journal.length>200)no('journal');let last=0;s.journal=raw.journal.map(j=>{if(!j||!Number.isSafeInteger(j.seq)||j.seq<=last||!Number.isInteger(j.day)||j.day<1||j.day>100000||!finite(j.hour)||j.hour<0||j.hour>=24||typeof j.kind!=='string'||j.kind.length>40||typeof j.text!=='string'||j.text.length>350)no('event');last=j.seq;return{seq:j.seq,day:j.day,hour:j.hour,kind:j.kind,text:j.text};});if(!Number.isSafeInteger(raw.nextEvent)||raw.nextEvent<=last)no('event sequence');s.nextEvent=raw.nextEvent;if(raw.residents.length!==3||new Set(raw.residents.map(r=>r.id)).size!==3)no('roster');s.residents=PROFILES.map(p=>{let r=raw.residents.find(r=>r.id===p.id);if(!r||!walkable(r.x,r.z)||!finite(r.yaw)||!finite(r.progress)||r.progress<0||r.progress>1||!Number.isSafeInteger(r.conversations)||r.conversations<0)no('inhabitant');return{id:p.id,x:r.x,z:r.z,yaw:r.yaw,progress:r.progress,conversations:r.conversations};});if(raw.settings){s.settings.cameraViews=validateCameraViews(raw.settings.cameraViews);if(['adventure','follow','tactical','wide'].includes(raw.settings.cameraMode))s.settings.cameraMode=raw.settings.cameraMode;if(finite(raw.settings.cameraFov)&&raw.settings.cameraFov>=45&&raw.settings.cameraFov<=80)s.settings.cameraFov=raw.settings.cameraFov;for(let k of['reducedMotion','labels','timeFlow','cameraCutaway'])if(typeof raw.settings[k]==='boolean')s.settings[k]=raw.settings[k];if(['low','balanced','high'].includes(raw.settings.quality))s.settings.quality=raw.settings.quality;}s.settings.sound=false;s.score=X.validateScore(raw.score);s.retreat=X.validateHome(raw.retreat);HH.validateWorld(s);s.visitor=X.validateVisitor(raw.visitor);if(!Number.isSafeInteger(raw.scoreRevision)||raw.scoreRevision<0||raw.scoreRevision>1e8)no('score revision');s.scoreRevision=raw.scoreRevision;return s;}
 function load(storage){try{let data=storage.getItem(KEY),legacy=false;if(!data){data=storage.getItem(LEGACY_KEY);legacy=!!data;}if(!data){data=storage.getItem('eternities.realm08.save.v7');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm07.save.v6');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm06.save.v5');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm05.save.v4');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm03.save.v3');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm02.save.v2');legacy=!!data;}if(!data)return{state:fresh(),status:'new'};return{state:validate(JSON.parse(data)),status:legacy?'migrated':'loaded'};}catch(e){return{state:fresh(),status:'unavailable-or-corrupt',preserveExisting:true,error:String(e.message)};}}
 class Simulation{
  constructor(state=fresh()){this.state=validate(state);this.room=null;this.returnPos=null;this.playerPath=[];this.runs=new Map();this.elapsed=0;this.paused=false;this.gathering=null;this.homeUndo=[];this.homeRedo=[];this.commands=new Map();for(let r of this.state.residents)this.runs.set(r.id,{goal:schedule(r.id,this.state.hour),path:[],walking:false,inside:false});}
@@ -7894,6 +8250,150 @@ case'plant':{if(this.room||Math.hypot(this.state.player.x+6,this.state.player.z-
  save(storage){try{storage.setItem(KEY,JSON.stringify(this.snapshot()));return{ok:true};}catch(e){return{ok:false,error:e.message};}}
 }
 const api={VERSION,KEY,LEGACY_KEY,LANDMARKS,TREES,OBSTACLES,PROFILES,rng,landRadius,walkable,segment,pathfind,schedule,fresh,validate,load,Simulation};G.RealmCore=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* First load through: transient physical motion, never saved progress or cargo.
+ * Load Core, WorldFoundations and EarthConsignmentData first. The app owns the
+ * lease and living-hostile query; command rules own whole-candidate persistence. */
+(function(G){'use strict';
+const D=G.RealmEarthConsignmentData;
+if(!D)throw Error('Load EarthConsignmentData before consignment motion.');
+const DEFINITION=D.definition,ROOM=D.ROOM,ID=D.ID;
+const LIMITS=Object.freeze({radius:.65,speed:1.6,approach:2.8,farWait:10,maxDt:.1});
+const bySim=new WeakMap(),views=new WeakMap(),tickets=new WeakMap();
+const fail=error=>({ok:false,error}),distance=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
+const copyPoint=p=>p?Object.freeze({id:p.id,x:p.x,z:p.z}):null;
+const opaque=v=>!!v&&typeof v==='object'&&!Array.isArray(v)&&Object.isFrozen(v)&&Reflect.ownKeys(v).length===0&&(Object.getPrototypeOf(v)===Object.prototype||Object.getPrototypeOf(v)===null);
+const tuple=v=>JSON.stringify(v),finitePoint=p=>!!p&&Number.isFinite(p.x)&&Number.isFinite(p.z);
+const dependencies=()=>({C:G.RealmCore,W:G.RealmWorldFoundations});
+function record(sim){
+ const owner=sim?.state?.localLife;
+ if(!owner||owner.version!==1||!owner.records||!Object.hasOwn(owner.records,ID))throw Error('The accepted first-load record is unavailable.');
+ return D.crossValidate(owner.records[ID],sim.state.earthExpedition);
+}
+function owned(ctx){
+ const {C,W}=dependencies(),sim=ctx?.sim,a=sim?.state?.adventure,trip=sim?.worldTrip;
+ if(!C||!W||!sim||!(sim instanceof C.Simulation)||!sim.state||ctx.definition!==DEFINITION||typeof ctx.active!=='string'||!ctx.active||!Number.isSafeInteger(ctx.revision)||ctx.revision<0)return fail('Read this load with the current character and canonical commission.');
+ if(!opaque(ctx.ownerLease)||sim.consignmentOwnerLease!==ctx.ownerLease)return fail('The current app-owned consignment lease is required.');
+ if(sim.room!==ROOM||W.definition(ROOM)?.id!=='earthlands'||sim.worldDive)return fail('The supplied load stays on dry Earthlands ground.');
+ if(!a?.started||!Number.isFinite(a.hp)||a.hp<=0||!Number.isSafeInteger(a.deaths)||!Number.isSafeInteger(a.revision)||!Number.isFinite(sim.elapsed)||sim.elapsed<0)return fail('The living traveller must be able to act.');
+ if(!trip||trip.active!==ctx.active||trip.realm!=='earthlands'||!finitePoint(sim.returnPos)||!Number.isFinite(sim.returnPos.yaw)||tuple(trip.home)!==tuple(sim.returnPos))return fail('The Earth outing must retain its original home checkpoint.');
+ if(!finitePoint(sim.state.player)||!W.walkable(ROOM,sim.state.player.x,sim.state.player.z,.31))return fail('Stand on supported Earthlands ground.');
+ let value;try{value=record(sim);}catch(e){return fail(e.message);}
+ if(!value.accepted||value.claimed)return fail('Only an accepted, unpaid first load has a transient carrier.');
+ return{ok:true,record:value};
+}
+function remembered(r){return{sim:r.sim,active:r.active,revision:r.observedRevision,ownerLease:r.lease,definition:DEFINITION,threat:r.threat};}
+function check(r,ctx){
+ if(!r||r.ended)return fail('This transient load journey has ended. Read its saved checkpoint again.');
+ const sim=ctx?.sim;
+ if(sim!==r.sim||ctx.active!==r.active||ctx.ownerLease!==r.lease||sim?.state!==r.state||sim.state.adventure!==r.adventure||sim.room!==r.room||sim.worldTrip!==r.trip||sim.earthTrip!==r.earthTrip||tuple(sim.returnPos)!==r.home||tuple(sim.worldTrip)!==r.tripValue||sim.state.adventure.deaths!==r.deaths)return fail('The character, imported world, death or Earth outing changed.');
+ const c=owned(ctx);if(!c.ok)return c;if(sim.elapsed+1e-9<r.lastElapsed)return fail('The simulation clock changed outside this load journey.');
+ if(tuple(c.record)!==r.recordValue)return fail('The accepted route, payment or saved arrival prefix changed.');
+ const {W}=dependencies();if(!W.walkable(ROOM,r.x,r.z,LIMITS.radius))return fail('The load no longer stands on supported ground.');
+ return c;
+}
+function end(r,reason){
+ if(!r)return;r.ended=true;r.epoch++;r.path=[];r.reason=reason;
+ if(r.ticket){const t=tickets.get(r.ticket);if(t)t.used=true;}
+ if(bySim.get(r.sim)===r)bySim.delete(r.sim);
+}
+function get(ctx,initialize=true){
+ const sim=ctx?.sim;let r=sim&&typeof sim==='object'?bySim.get(sim):null;
+ if(r){const c=check(r,ctx);if(c.ok){r.observedRevision=ctx.revision;r.threat=ctx.threat;return{ok:true,r};}end(r,c.error);if(!initialize)return c;}
+ if(!initialize)return fail('Read the accepted load before moving it.');
+ const c=owned(ctx);if(!c.ok)return c;
+ const value=c.record,choice=D.choice(value.choice),route=D.routes[choice.route],index=value.steps.length,p=route[index];
+ const {W}=dependencies();if(!p||!W.walkable(ROOM,p.x,p.z,LIMITS.radius))return fail('The saved load checkpoint is unsupported.');
+ r={sim,state:sim.state,adventure:sim.state.adventure,active:ctx.active,lease:ctx.ownerLease,observedRevision:ctx.revision,threat:ctx.threat,
+  room:sim.room,trip:sim.worldTrip,earthTrip:sim.earthTrip,home:tuple(sim.returnPos),tripValue:tuple(sim.worldTrip),deaths:sim.state.adventure.deaths,
+  recordValue:tuple(value),choice:value.choice,cargoKind:choice.cargo.kind,route,index,x:p.x,z:p.z,yaw:0,
+  status:index===route.length-1?'complete':'waiting',reason:index===route.length-1?'durable-arrival':'waiting',detail:'',path:[],ticket:null,epoch:0,ended:false,distanceTraveled:0,lastElapsed:sim.elapsed};
+ bySim.set(sim,r);return{ok:true,r};
+}
+function view(r){
+ const next=r.route[r.index+1]||null,paused=r.sim.paused&&r.status==='moving';
+ const value=Object.freeze({kind:'earth-consignment-projection-v1',job:ID,room:ROOM,choice:r.choice,cargoKind:r.cargoKind,
+  x:r.x,z:r.z,yaw:r.yaw,moving:r.status==='moving'&&!paused,status:paused?'paused':r.status,reason:paused?'paused':r.reason,detail:r.detail,
+  checkpointIndex:r.index,checkpoint:copyPoint(r.route[r.index]),next:copyPoint(next),loaded:true,arrived:r.index===r.route.length-1,ready:r.status==='ready',distanceTraveled:r.distanceTraveled});
+ views.set(value,{r,epoch:r.epoch});return value;
+}
+function current(ctx){const c=get(ctx);return c.ok?view(c.r):null;}
+function isProjection(value,ctx){
+ const v=value&&typeof value==='object'?views.get(value):null;if(!v||v.epoch!==v.r.epoch)return false;
+ const c=check(v.r,ctx||remembered(v.r));if(!c.ok){end(v.r,c.error);return false;}return true;
+}
+function nearby(r){const {W}=dependencies(),p=r.sim.state.player;return distance(p,r)<=LIMITS.approach&&W.segment(ROOM,p,r,.31);}
+function suspend(r,reason,detail='',status='blocked'){
+ r.status=status;r.reason=reason;r.detail=detail;r.path=[];r.epoch++;return{ok:true,view:view(r)};
+}
+function threat(ctx,r,to){
+ if(typeof ctx.threat!=='function'||ctx.threat.constructor?.name==='AsyncFunction')return{clear:false,reason:'The live hostile check is unavailable.',unavailable:true};
+ try{
+  const result=ctx.threat(Object.freeze({job:ID,room:ROOM,from:Object.freeze({x:r.x,z:r.z}),to:Object.freeze({x:to.x,z:to.z}),radius:LIMITS.radius}));
+  if(!result||typeof result!=='object'||Array.isArray(result)||result.then!==undefined||typeof result.clear!=='boolean'||result.reason!==undefined&&(typeof result.reason!=='string'||result.reason.length>200))throw Error('Invalid hostile check');
+  return result;
+ }catch{return{clear:false,reason:'The live hostile check was refused.',unavailable:true};}
+}
+function resume(ctx){
+ const c=get(ctx);if(!c.ok)return c;const r=c.r;
+ if(r.status==='ready'||r.status==='complete')return{ok:true,view:view(r)};
+ if(r.sim.paused)return fail('Resume time before asking the carrier to continue.');
+ if(!nearby(r))return fail('Approach within 2.8 supported metres of the load before continuing.');
+ const next=r.route[r.index+1],t=threat(ctx,r,r);if(!t.clear)return suspend(r,t.unavailable?'threat-unavailable':'threat',t.reason||'A living hostile is near the load.');
+ const {C,W}=dependencies();let path;
+ try{path=C.pathfind(r,next,{id:ROOM},false,LIMITS.radius);}catch{path=null;}
+ let previous=r;
+ let supported=false;try{supported=Array.isArray(path)&&path.length>0&&finitePoint(path.at(-1))&&distance(path.at(-1),next)<=1e-9&&!path.some(p=>{const good=finitePoint(p)&&W.segment(ROOM,previous,p,LIMITS.radius);previous=p;return!good;});}catch{}
+ if(!supported)return suspend(r,'route-blocked','The supported route to the next stop is blocked.');
+ r.path=path.map(p=>({x:p.x,z:p.z}));r.status='moving';r.reason='continuing';r.detail='';r.lastElapsed=r.sim.elapsed;r.epoch++;return{ok:true,view:view(r)};
+}
+function wait(ctx){const c=get(ctx);if(!c.ok)return c;const r=c.r;if(r.status==='ready'||r.status==='complete')return{ok:true,view:view(r)};return suspend(r,'waiting','', 'waiting');}
+function update(ctx,dt){
+ if(!Number.isFinite(dt)||dt<0||dt>LIMITS.maxDt)return fail('Supply one finite simulation step from 0 to 0.1 seconds.');
+ const c=get(ctx);if(!c.ok)return c;const r=c.r;
+ const available=r.sim.elapsed-r.lastElapsed;r.lastElapsed=r.sim.elapsed;
+ if(r.sim.paused||dt===0||r.status!=='moving')return{ok:true,view:view(r)};
+ if(available<=0||available+1e-9<dt)return fail('Advance motion after one fresh Core simulation tick; elapsed time cannot be reused.');
+ if(distance(r.sim.state.player,r)>LIMITS.farWait)return suspend(r,'player-far','The traveller is more than 10 metres away.','waiting');
+ const {C,W}=dependencies(),duration=Math.min(dt,available);let budget=duration*LIMITS.speed;
+ while(budget>0&&r.path.length){
+  const target=r.path[0],length=distance(r,target),amount=Math.min(length,budget),to=length===0?{x:target.x,z:target.z}:{x:r.x+(target.x-r.x)*amount/length,z:r.z+(target.z-r.z)*amount/length};
+  if(distance(r.sim.state.player,to)>LIMITS.farWait)return suspend(r,'player-far','The next step would carry the load more than 10 metres away.','waiting');
+  const t=threat(ctx,r,to);if(!t.clear)return suspend(r,t.unavailable?'threat-unavailable':'threat',t.reason||'A living hostile is near the load.');
+  let supported=false;try{const verified=C.pathfind(r,to,{id:ROOM},false,LIMITS.radius);supported=Array.isArray(verified)&&verified.length>0&&!verified.some(p=>!finitePoint(p))&&distance(verified.at(-1),to)<=1e-9&&W.segment(ROOM,r,to,LIMITS.radius);}catch{}
+  if(!supported)return suspend(r,'route-blocked','The next physical movement segment is blocked.');
+  const moved=distance(r,to);if(moved>LIMITS.speed*duration+1e-9||moved>amount+1e-9)return suspend(r,'route-blocked','The movement solver refused a bounded step.');
+  if(moved>0)r.yaw=Math.atan2(to.x-r.x,to.z-r.z);
+  r.x=to.x;r.z=to.z;r.distanceTraveled+=moved;r.epoch++;budget-=amount;
+  if(amount===length){r.path.shift();}else break;
+ }
+ if(!r.path.length){
+  const next=r.route[r.index+1];if(distance(r,next)>1e-9)return suspend(r,'route-blocked','The solver did not reach the exact receiving stop.');
+  r.status='ready';r.reason='arrival-ready';r.detail='';r.epoch++;
+  r.ticket=Object.freeze({kind:'earth-consignment-arrival-v1'});tickets.set(r.ticket,{r,used:false,validated:false,step:D.required(r.choice)[r.index]});
+ }
+ return{ok:true,view:view(r)};
+}
+function arrivalTicket(ctx){const c=get(ctx,false);if(!c.ok)return c;const r=c.r;if(r.status!=='ready'||!r.ticket)return fail('Physically bring this load to its next stop first.');return{ok:true,ticket:r.ticket};}
+const otherRecords=sim=>tuple(Object.fromEntries(Object.entries(sim.state.localLife.records).filter(([id])=>id!==ID)));
+function validateArrival(ctx,ticket,expectedStep){
+ const t=ticket&&typeof ticket==='object'?tickets.get(ticket):null;if(!t||t.used)return fail('A current physical arrival ticket is required.');
+ const c=check(t.r,ctx);if(!c.ok){end(t.r,c.error);return c;}const r=t.r;
+ if(expectedStep!==t.step||r.status!=='ready'||r.ticket!==ticket||distance(r,r.route[r.index+1])>1e-9||!nearby(r))return fail('Record only this load’s exact next stop while standing nearby.');
+ t.validated=true;t.adventureRevision=r.adventure.revision;t.otherRecords=otherRecords(r.sim);r.observedRevision=ctx.revision;
+ return{ok:true};
+}
+function consume(ctx,ticket){
+ const t=ticket&&typeof ticket==='object'?tickets.get(ticket):null;if(!t||t.used||!t.validated||t.r.ended)return fail('Validate this physical arrival before its durable command.');
+ const r=t.r,sim=ctx?.sim,c=owned(ctx);if(!c.ok)return c;
+ const expected=JSON.parse(r.recordValue);expected.steps.push(t.step);
+ if(sim!==r.sim||ctx.active!==r.active||ctx.ownerLease!==r.lease||sim.state!==r.state||sim.state.adventure!==r.adventure||sim.room!==r.room||sim.worldTrip!==r.trip||sim.earthTrip!==r.earthTrip||tuple(sim.returnPos)!==r.home||tuple(sim.worldTrip)!==r.tripValue||sim.state.adventure.deaths!==r.deaths||sim.state.adventure.revision!==t.adventureRevision+1||tuple(c.record)!==tuple(expected)||otherRecords(sim)!==t.otherRecords||r.status!=='ready'||r.ticket!==ticket||distance(r,r.route[r.index+1])>1e-9)return fail('Consume arrival authority only after the single expected arrival was saved.');
+ t.used=true;r.ticket=null;r.index++;r.recordValue=tuple(c.record);r.path=[];r.status=r.index===r.route.length-1?'complete':'waiting';r.reason=r.status==='complete'?'durable-arrival':'waiting';r.detail='';r.observedRevision=ctx.revision;r.epoch++;
+ return{ok:true,view:view(r)};
+}
+function reset(sim,reason='owner-change'){if(sim&&typeof sim==='object')end(bySim.get(sim),String(reason));return{ok:true};}
+const api=Object.freeze({DEFINITION,LIMITS,current,isProjection,continue:resume,wait,update,arrivalTicket,validateArrival,consume,reset});
+G.RealmEarthConsignmentMotion=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* Synchronous durable boundary for explicitly reviewed state-only workshop and
  * finite Road After Rain actions. Combat, movement, healing, other story effects
@@ -8770,7 +9270,7 @@ class WorldArt{
  if(G.RealmAdventureArt)G.RealmAdventureArt.draw(out,sim,t);
  if(G.RealmStarterArt)G.RealmStarterArt.draw(out,sim,t);
  if(G.RealmCosmosArt)G.RealmCosmosArt.draw(out,sim,t,this);
- if(G.RealmWorldFoundationsArt)G.RealmWorldFoundationsArt.draw(out,sim,t,this);if(G.RealmTrailsArt)G.RealmTrailsArt.draw(out,sim,t,this);if(G.RealmLocalLifeArt)G.RealmLocalLifeArt.draw(out,sim);if(G.RealmBridgeCommunityArt)G.RealmBridgeCommunityArt.draw(out,sim);if(G.RealmEarthHomecomingArt)G.RealmEarthHomecomingArt.draw(out,sim,t);if(G.RealmCosmosCampaignArt)G.RealmCosmosCampaignArt.draw(out,sim,t);if(G.RealmAtlantisCampaignArt)G.RealmAtlantisCampaignArt.draw(out,sim,t);if(G.RealmHellCampaignArt)G.RealmHellCampaignArt.draw(out,sim,t);if(G.RealmHeavenCampaignArt){G.RealmHeavenCampaignArt.draw(out,sim,t);G.RealmHeavenCampaignArt.drawEscort(out,sim,G.RealmHeavenCampaign.runtime(sim).escort,t);}
+ if(G.RealmWorldFoundationsArt)G.RealmWorldFoundationsArt.draw(out,sim,t,this);if(G.RealmTrailsArt)G.RealmTrailsArt.draw(out,sim,t,this);if(G.RealmLocalLifeArt)G.RealmLocalLifeArt.draw(out,sim);if(G.RealmEarthConsignmentArt)G.RealmEarthConsignmentArt.draw(out,sim);if(G.RealmBridgeCommunityArt)G.RealmBridgeCommunityArt.draw(out,sim);if(G.RealmEarthHomecomingArt)G.RealmEarthHomecomingArt.draw(out,sim,t);if(G.RealmCosmosCampaignArt)G.RealmCosmosCampaignArt.draw(out,sim,t);if(G.RealmAtlantisCampaignArt)G.RealmAtlantisCampaignArt.draw(out,sim,t);if(G.RealmHellCampaignArt)G.RealmHellCampaignArt.draw(out,sim,t);if(G.RealmHeavenCampaignArt){G.RealmHeavenCampaignArt.draw(out,sim,t);G.RealmHeavenCampaignArt.drawEscort(out,sim,G.RealmHeavenCampaign.runtime(sim).escort,t);}
  if(G.RealmEarthArt)G.RealmEarthArt.draw(out,sim,t,this);if(G.RealmEarthNotesArt)G.RealmEarthNotesArt.draw(out,sim);
  if(G.RealmArsenalArt)G.RealmArsenalArt.draw(out,sim,t);
  if(this.room==='mine')this.e.torch=[p.x,2.6,p.z];
@@ -9840,7 +10340,7 @@ function homecomingPoints(sim){return G.RealmEarthHomecomingUI&&(sim.state.earth
 function homecomingLegend(sim){return homecomingPoints(sim).length?G.RealmEarthHomecomingUI.legend(sim):'';}
 function civicPoints(sim){return [...homecomingPoints(sim),...(G.RealmCosmosCampaignUI?.routePoints(sim)||[]),...(G.RealmAtlantisCampaignUI?.routePoints(sim)||[]),...(G.RealmHeavenCampaignUI?.routePoints(sim)||[]),...(G.RealmHellCampaignUI?.routePoints(sim)||[]),...(G.RealmLocalLifeUI?.routePoints(sim)||[]),...(G.RealmBridgeCommunityUI?.routePoints(sim)||[])];}
 function civicLegend(sim){
- const campaign=homecomingLegend(sim)+(G.RealmCosmosCampaignUI?.legend(sim)||'')+(G.RealmAtlantisCampaignUI?.legend(sim)||'')+(G.RealmHellCampaignUI?.legend(sim)||'')+(G.RealmHeavenCampaignUI?.legend(sim)||'');const points=civicPoints(sim).filter(p=>!p.earthHomecoming&&!p.cosmosCampaign&&!p.community&&!p.hellCampaign&&!p.atlantisCampaign&&!p.heavenCampaign);if(!points.length)return campaign+(G.RealmBridgeCommunityUI?.legend(sim)||'');
+ const carrierLegend=G.RealmEarthConsignmentUI?.legend(sim)||'';const campaign=carrierLegend+homecomingLegend(sim)+(G.RealmCosmosCampaignUI?.legend(sim)||'')+(G.RealmAtlantisCampaignUI?.legend(sim)||'')+(G.RealmHellCampaignUI?.legend(sim)||'')+(G.RealmHeavenCampaignUI?.legend(sim)||'');const points=civicPoints(sim).filter(p=>!p.earthHomecoming&&!p.cosmosCampaign&&!p.community&&!p.hellCampaign&&!p.atlantisCampaign&&!p.heavenCampaign&&p.quest!==G.RealmEarthConsignmentData?.ID);if(!points.length)return campaign+(G.RealmBridgeCommunityUI?.legend(sim)||'');
  return '<section class="trail-map-key local-life-map-key"><h3>Local life · available physical work</h3><p>Blue L labels belong to your separate accepted local commission. Walking records nothing.</p><ul>'+points.map(p=>'<li data-local-route="'+esc(p.id)+'"><strong>'+p.mark+'</strong> · '+esc(p.name)+(p.medium==='water'||p.medium==='court'?'<p>Use Tide Steps and F / G. Required foot height '+p.y.toFixed(2)+' m; body must be '+(p.medium==='water'?'in water':'inside the air court')+'.</p>':sim.worldDive?'<p>Use the east water lane to the far dry gallery landing and press E to exit before walking.</p>':'<button data-rpg="civic-walk" data-id="'+esc(p.id)+'">Walk near this work</button>')+'</li>').join('')+'</ul><button data-rpg="civic-open" data-id="'+esc(G.RealmWorldFoundations.definition(sim.room).id)+'">Read the selected arrangement and exact payment</button></section>'+(G.RealmBridgeCommunityUI?.legend(sim)||'')+campaign;
 }
 function surfaceRoutes(d){return(d.routes||[]).map(r=>({id:r.id,points:r.points.map(p=>({x:p[0],z:p[1]}))}));}
@@ -9850,8 +10350,8 @@ function expeditionLegend(sim){
  return'<section class="trail-map-key expedition-map-key"><h3>Your living-road work · available now</h3><p>Green letters show the next accepted work. The pale dotted line follows supported country; it is a guide, not a shortcut across water. The footbridge and root passage connect the same road.</p><ul>'+points.map(p=>'<li data-expedition-route="'+esc(p.id||p.step)+'"><strong>'+p.mark+'</strong> · '+esc(p.name)+(p.kind==='defeat'?'<p>Tab selects the accepted foe. Attack in range; Brace or retreat during the tell.</p>':'')+'<button data-rpg="expedition-walk" data-id="'+esc(p.id||p.step)+'">'+(p.kind==='giver'?'Walk back to Rill':'Walk near this action')+'</button></li>').join('')+'</ul><button data-rpg="expedition-open">Read the expedition and exact reward</button></section>';
 }
 function routeSVG(d,s,ox,oy){return surfaceRoutes(d).map(r=>'<polyline data-world-route="'+esc(r.id)+'" points="'+r.points.map(p=>(ox+p.x*s)+','+(oy+p.z*s)).join(' ')+'" fill="none" stroke="#e1d6ab" stroke-opacity=".66" stroke-width="1.4" stroke-dasharray="3 3"/>').join('');}
-function mapCanvas(canvas,sim){const d=W.definition(sim.room),g=canvas.getContext('2d');if(!d||!g)return;const w=canvas.width,h=canvas.height,{scale:s,x:ox,y:oy}=projection(d,w,h);g.fillStyle='#182728';g.fillRect(0,0,w,h);g.fillStyle='#889783';for(const p of d.patches)g.fillRect(ox+(p.x-p.w/2)*s,oy+(p.z-p.d/2)*s,p.w*s,p.d*s);for(const r of surfaceRoutes(d)){g.strokeStyle='#d5c89e';g.lineWidth=1;g.setLineDash([2,2]);g.beginPath();r.points.forEach((p,i)=>g[i?'lineTo':'moveTo'](ox+p.x*s,oy+p.z*s));g.stroke();g.setLineDash([]);}g.fillStyle='#344549';for(const p of d.solids)g.fillRect(ox+(p.x-p.w/2)*s,oy+(p.z-p.d/2)*s,p.w*s,p.d*s);if(d.dive){const p=d.dive.volume;g.fillStyle='#408585';g.fillRect(ox+(p.x-p.w/2)*s,oy+(p.z-p.d/2)*s,p.w*s,p.d*s);}for(const p of d.points){g.fillStyle=p.kind==='return'?'#ffda9c':'#d5dec9';g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,2.5,0,Math.PI*2);g.fill();}for(const p of trailPoints(sim)){g.strokeStyle='#d2b5f0';g.lineWidth=2;g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,5,0,Math.PI*2);g.stroke();}for(const p of expeditionPoints(sim)){g.strokeStyle='#ade5a8';g.lineWidth=2;g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,5,0,Math.PI*2);g.stroke();}for(const p of civicPoints(sim)){g.strokeStyle='#90c6cf';g.lineWidth=2;g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,5,0,Math.PI*2);g.stroke();}g.fillStyle='#ffffff';g.beginPath();g.arc(ox+sim.state.player.x*s,oy+sim.state.player.z*s,4,0,Math.PI*2);g.fill();}
-function mapSVG(d,sim){const{scale:s,x:ox,y:oy}=projection(d,420,500);let v='<rect width="420" height="500" rx="12" fill="#182728"/>';for(const p of d.patches)v+='<rect x="'+(ox+(p.x-p.w/2)*s)+'" y="'+(oy+(p.z-p.d/2)*s)+'" width="'+p.w*s+'" height="'+p.d*s+'" fill="#889783"/>';v+=routeSVG(d,s,ox,oy);for(const p of d.solids)v+='<rect x="'+(ox+(p.x-p.w/2)*s)+'" y="'+(oy+(p.z-p.d/2)*s)+'" width="'+p.w*s+'" height="'+p.d*s+'" fill="#344549"/>';if(d.dive&&sim.worldDive){for(const[p,c]of [[d.dive.volume,'#408585'],...(d.dive.dryCourts||[]).map(p=>[p,'#d2c6a0'])])v+='<rect x="'+(ox+(p.x-p.w/2)*s)+'" y="'+(oy+(p.z-p.d/2)*s)+'" width="'+p.w*s+'" height="'+p.d*s+'" fill="'+c+'"/>';for(const line of d.dive.routes||[])v+='<polyline points="'+line.points.map(p=>(ox+p[0]*s)+','+(oy+p[2]*s)).join(' ')+'" fill="none" stroke="#f2ead2" stroke-width="1.5" stroke-dasharray="4 3"/>';}for(const[i,p]of d.points.entries()){if(sim.worldDive&&p.kind!=='dive')continue;v+='<circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="7" fill="#e8cc98"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#172e2b" text-anchor="middle" font-size="9">'+(i+1)+'</text>';}for(const p of trailPoints(sim)){v+='<g data-trail-marker="'+esc(p.id||'escort-person')+'"><circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="10" fill="#27303c" stroke="#d2b5f0" stroke-width="2"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#f8e8ff" text-anchor="middle" font-size="10">'+p.mark+'</text></g>';}for(const p of expeditionPoints(sim))v+='<g data-expedition-marker="'+esc(p.id||p.step)+'"><circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="10" fill="#26382b" stroke="#ade5a8" stroke-width="2"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#efffe9" text-anchor="middle" font-size="10">'+p.mark+'</text></g>';for(const p of civicPoints(sim))v+='<g data-local-marker="'+esc(p.id)+'"><circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="10" fill="#21343a" stroke="#90c6cf" stroke-width="2"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#d8f4f4" text-anchor="middle" font-size="9">'+p.mark+'</text></g>';const p=sim.state.player;return'<svg viewBox="0 0 420 500" role="img" aria-label="'+esc(d.name)+' physical routes">'+v+'<circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" '+([...trailPoints(sim),...expeditionPoints(sim),...civicPoints(sim)].some(q=>Math.hypot(q.x-p.x,q.z-p.z)*s<14)?'r="13" fill="none" stroke="white" stroke-width="2"':'r="4" fill="white"')+'/></svg>';}
+function mapCanvas(canvas,sim){const d=W.definition(sim.room),g=canvas.getContext('2d');if(!d||!g)return;const w=canvas.width,h=canvas.height,{scale:s,x:ox,y:oy}=projection(d,w,h);g.fillStyle='#182728';g.fillRect(0,0,w,h);g.fillStyle='#889783';for(const p of d.patches)g.fillRect(ox+(p.x-p.w/2)*s,oy+(p.z-p.d/2)*s,p.w*s,p.d*s);for(const r of surfaceRoutes(d)){g.strokeStyle='#d5c89e';g.lineWidth=1;g.setLineDash([2,2]);g.beginPath();r.points.forEach((p,i)=>g[i?'lineTo':'moveTo'](ox+p.x*s,oy+p.z*s));g.stroke();g.setLineDash([]);}const loadLine=G.RealmEarthConsignmentUI?.routeLine(sim)||[];if(loadLine.length){g.strokeStyle='#90c6cf';g.lineWidth=2;g.setLineDash([5,3]);g.beginPath();loadLine.forEach((p,i)=>g[i?'lineTo':'moveTo'](ox+p.x*s,oy+p.z*s));g.stroke();g.setLineDash([]);}g.fillStyle='#344549';for(const p of d.solids)g.fillRect(ox+(p.x-p.w/2)*s,oy+(p.z-p.d/2)*s,p.w*s,p.d*s);if(d.dive){const p=d.dive.volume;g.fillStyle='#408585';g.fillRect(ox+(p.x-p.w/2)*s,oy+(p.z-p.d/2)*s,p.w*s,p.d*s);}for(const p of d.points){g.fillStyle=p.kind==='return'?'#ffda9c':'#d5dec9';g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,2.5,0,Math.PI*2);g.fill();}for(const p of trailPoints(sim)){g.strokeStyle='#d2b5f0';g.lineWidth=2;g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,5,0,Math.PI*2);g.stroke();}for(const p of expeditionPoints(sim)){g.strokeStyle='#ade5a8';g.lineWidth=2;g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,5,0,Math.PI*2);g.stroke();}for(const p of civicPoints(sim)){g.strokeStyle='#90c6cf';g.lineWidth=2;g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,5,0,Math.PI*2);g.stroke();}g.fillStyle='#ffffff';g.beginPath();g.arc(ox+sim.state.player.x*s,oy+sim.state.player.z*s,4,0,Math.PI*2);g.fill();}
+function mapSVG(d,sim){const{scale:s,x:ox,y:oy}=projection(d,420,500);let v='<rect width="420" height="500" rx="12" fill="#182728"/>';for(const p of d.patches)v+='<rect x="'+(ox+(p.x-p.w/2)*s)+'" y="'+(oy+(p.z-p.d/2)*s)+'" width="'+p.w*s+'" height="'+p.d*s+'" fill="#889783"/>';v+=routeSVG(d,s,ox,oy);const loadLine=G.RealmEarthConsignmentUI?.routeLine(sim)||[];if(loadLine.length)v+='<polyline data-consignment-route="selected" points="'+loadLine.map(p=>(ox+p.x*s)+','+(oy+p.z*s)).join(' ')+'" fill="none" stroke="#90c6cf" stroke-width="2" stroke-dasharray="5 3"/>';for(const p of d.solids)v+='<rect x="'+(ox+(p.x-p.w/2)*s)+'" y="'+(oy+(p.z-p.d/2)*s)+'" width="'+p.w*s+'" height="'+p.d*s+'" fill="#344549"/>';if(d.dive&&sim.worldDive){for(const[p,c]of [[d.dive.volume,'#408585'],...(d.dive.dryCourts||[]).map(p=>[p,'#d2c6a0'])])v+='<rect x="'+(ox+(p.x-p.w/2)*s)+'" y="'+(oy+(p.z-p.d/2)*s)+'" width="'+p.w*s+'" height="'+p.d*s+'" fill="'+c+'"/>';for(const line of d.dive.routes||[])v+='<polyline points="'+line.points.map(p=>(ox+p[0]*s)+','+(oy+p[2]*s)).join(' ')+'" fill="none" stroke="#f2ead2" stroke-width="1.5" stroke-dasharray="4 3"/>';}for(const[i,p]of d.points.entries()){if(sim.worldDive&&p.kind!=='dive')continue;v+='<circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="7" fill="#e8cc98"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#172e2b" text-anchor="middle" font-size="9">'+(i+1)+'</text>';}for(const p of trailPoints(sim)){v+='<g data-trail-marker="'+esc(p.id||'escort-person')+'"><circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="10" fill="#27303c" stroke="#d2b5f0" stroke-width="2"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#f8e8ff" text-anchor="middle" font-size="10">'+p.mark+'</text></g>';}for(const p of expeditionPoints(sim))v+='<g data-expedition-marker="'+esc(p.id||p.step)+'"><circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="10" fill="#26382b" stroke="#ade5a8" stroke-width="2"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#efffe9" text-anchor="middle" font-size="10">'+p.mark+'</text></g>';for(const p of civicPoints(sim))v+='<g data-local-marker="'+esc(p.id)+'"><circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="10" fill="#21343a" stroke="#90c6cf" stroke-width="2"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#d8f4f4" text-anchor="middle" font-size="9">'+p.mark+'</text></g>';const p=sim.state.player;return'<svg viewBox="0 0 420 500" role="img" aria-label="'+esc(d.name)+' physical routes">'+v+'<circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" '+([...trailPoints(sim),...expeditionPoints(sim),...civicPoints(sim)].some(q=>Math.hypot(q.x-p.x,q.z-p.z)*s<14)?'r="13" fill="none" stroke="white" stroke-width="2"':'r="4" fill="white"')+'/></svg>';}
 class WorldUI{
  constructor(rpg){this.rpg=rpg;this.selected=null;this.reading=null;this.ticket=null;const labels=document.createElement('div');labels.id='world-labels';labels.setAttribute('aria-hidden','true');$('#hud').append(labels);const home=document.createElement('button');home.id='world-home';home.hidden=true;home.textContent='Return to Firstlight';home.onclick=()=>this.returnHome();$('#rpg-hud').append(home);const depth=document.createElement('section');depth.id='world-depth';depth.hidden=true;$('#rpg-hud').append(depth);}
  get sim(){return this.rpg.sim;}
@@ -9859,7 +10359,7 @@ class WorldUI{
  current(){return W.definition(this.sim.room);}
  local(){return W.handles(this.sim.room)||this.sim.room===G.RealmCosmos.ROOM&&(this.sim.state.cosmosCampaign?.accepted||this.sim.worldTrip?.realm==='cosmos'||!!this.sim.state.journeys.realms.cosmos.active||Object.entries(this.sim.state.realmTrails.records).some(([id,r])=>G.RealmTrails.definition(id)?.realm==='cosmos'&&r.accepted&&!r.claimed)||Object.entries(this.sim.state.localLife.records).some(([id,r])=>G.RealmLocalLife.definition(id)?.realm==='cosmos'&&r.accepted));}
  point(){const d=this.current();if(!d)return null;return d.points.filter(p=>W.near(this.sim,p,p.kind==='return'?2.7:2.8)).sort((a,b)=>Math.hypot(a.x-this.sim.state.player.x,a.z-this.sim.state.player.z)-Math.hypot(b.x-this.sim.state.player.x,b.z-this.sim.state.player.z))[0]||null;}
- context(){const road=this.rpg.earth?.road?.context();if(road)return road;const homecoming=this.rpg.earthHomecoming?.context();if(homecoming)return homecoming;const cosmos=this.rpg.cosmosCampaign?.context();if(cosmos)return cosmos;const atlantis=this.rpg.atlantisCampaign?.context();if(atlantis)return atlantis;const heaven=this.rpg.heavenCampaign?.context();if(heaven)return heaven;const campaign=this.rpg.hellCampaign?.context();if(campaign)return campaign;const community=this.rpg.community?.context();if(community)return community;const civic=this.rpg.civic?.context();if(civic)return civic;const expedition=this.rpg.expedition?.context();if(expedition)return expedition;const trail=this.rpg.trails?.context();if(trail)return trail;if(this.sim.worldDive)return W.near(this.sim,this.current()?.points.find(p=>p.id===this.current()?.dive?.exitId),3.5)?'E · Dry gallery landing':this.rpg.api.worldDiveStatus()?.dryCourt?'WASD · air courtyard · doorway leads back to the water':'F / G · change depth · E at the gallery landing';if(this.local()){const p=this.point();return p?'E · '+p.name:'M · local routes and work';}return !this.sim.room&&W.near(this.sim,W.GATE)?'E · Roads of Light':null;}
+ context(){const road=this.rpg.earth?.road?.context();if(road)return road;const homecoming=this.rpg.earthHomecoming?.context();if(homecoming)return homecoming;const cosmos=this.rpg.cosmosCampaign?.context();if(cosmos)return cosmos;const atlantis=this.rpg.atlantisCampaign?.context();if(atlantis)return atlantis;const heaven=this.rpg.heavenCampaign?.context();if(heaven)return heaven;const campaign=this.rpg.hellCampaign?.context();if(campaign)return campaign;const carrier=this.rpg.civic?.carrier?.contextLabel();if(carrier)return carrier;const community=this.rpg.community?.context();if(community)return community;const civic=this.rpg.civic?.context();if(civic)return civic;const expedition=this.rpg.expedition?.context();if(expedition)return expedition;const trail=this.rpg.trails?.context();if(trail)return trail;if(this.sim.worldDive)return W.near(this.sim,this.current()?.points.find(p=>p.id===this.current()?.dive?.exitId),3.5)?'E · Dry gallery landing':this.rpg.api.worldDiveStatus()?.dryCourt?'WASD · air courtyard · doorway leads back to the water':'F / G · change depth · E at the gallery landing';if(this.local()){const p=this.point();return p?'E · '+p.name:'M · local routes and work';}return !this.sim.room&&W.near(this.sim,W.GATE)?'E · Roads of Light':null;}
  interact(){if(this.rpg.earth?.road?.interact())return true;if(this.sim.worldDive){const r=this.rpg.api.worldDiveExit();this.rpg.api.toast(r.text||r.error);return true;}if(!this.context())return false;const p=this.point();if(p?.kind==='return'){this.returnHome();return true;}this.selected=this.current()?.id||null;this.reading=p?.id||null;this.rpg.open('worlds');return true;}
  returnHome(){const r=this.rpg.api.worldReturn();if(r.ok){this.rpg.close();this.reset();}else this.rpg.api.toast(r.error);}
  action(el){const a=el.dataset.rpg,id=el.dataset.id;if(typeof a!=='string'||!a.startsWith('world-'))return false;
@@ -10256,7 +10756,7 @@ class RPGUI{
  }
  close(){this.earthHomecoming?.reset();this.cosmosCampaign?.reset();this.atlantisCampaign?.reset();this.heavenCampaign?.reset();this.hellCampaign?.reset();this.expedition?.reset();this.worlds?.reset();this.gathering?.reset();this.cosmos?.reset();this.earth?.reset();if(!this.dialog.open)return;this.dialog.close();this.sim.paused=this.wasPaused;this.api.clearKeys();this.api.focusWorld();}
  cameraPaint(mode){for(const el of document.querySelectorAll('[data-rpg="camera"]'))el.setAttribute('aria-pressed',String(el.dataset.id===mode));}
- reset(){this.expedition?.reset('owner');this.earthHomecoming?.reset();this.realmAtlas?.reset();this.gathering?.reset();if(this.dialog.open)this.close();this.item=null;this.seenPhase='';this.filter='all';this.search='';this.recipe='trail_bow';this.craftFilter='weapons';this.avatarDrag=null;this.lastPreview=-1;this.pursuit.selected=null;this.starter.temper=null;this.starter.destination=null;this.starter.lastSound=0;this.starter.lastSoundScene=null;this.crossing.destination=null;this.crossing.uiRoom=null;this.characters.reset();this.classes.reset();this.earth?.notes.reset();this.earth?.reset();}
+ reset(){this.civic?.carrier?.reset('owner');this.expedition?.reset('owner');this.earthHomecoming?.reset();this.realmAtlas?.reset();this.gathering?.reset();if(this.dialog.open)this.close();this.item=null;this.seenPhase='';this.filter='all';this.search='';this.recipe='trail_bow';this.craftFilter='weapons';this.avatarDrag=null;this.lastPreview=-1;this.pursuit.selected=null;this.starter.temper=null;this.starter.destination=null;this.starter.lastSound=0;this.starter.lastSoundScene=null;this.crossing.destination=null;this.crossing.uiRoom=null;this.characters.reset();this.classes.reset();this.earth?.notes.reset();this.earth?.reset();}
  action(el){const act=el.dataset.rpg,tracking=act==='track'||act==='civic-track'||/^(earth-homecoming|cosmos-campaign|atlantis-campaign|heaven-campaign|hell-campaign|community|local-life)-track$/.test(act)||act==='pursuit-pin'||act==='pursuit-start';
   if(!tracking)return this.dispatchAction(el);this.trackerSelecting=true;
   try{return this.dispatchAction(el);}finally{this.trackerSelecting=false;this.tick();}
@@ -10330,7 +10830,7 @@ class RPGUI{
  }
  intercept(name){const map={armory:'craft',craft:'craft',pack:'bag',adventure:'journal',journey:'journal'};if(map[name]){if(name==='journey')this.quest='homestead';this.open(map[name]);return true;}return false;}
  interact(){
-  if(this.earthHomecoming.interact())return true;if(this.cosmosCampaign.interact())return true;if(this.atlantisCampaign.interact())return true;if(this.heavenCampaign.interact())return true;if(this.hellCampaign.interact())return true;if(this.community.interact())return true;if(this.civic.interact())return true;if(this.expedition.interact())return true;if(this.trails.interact())return true;if(this.worlds.interact())return true;
+  if(this.earthHomecoming.interact())return true;if(this.cosmosCampaign.interact())return true;if(this.atlantisCampaign.interact())return true;if(this.heavenCampaign.interact())return true;if(this.hellCampaign.interact())return true;if(this.civic.carrier.interact())return true;if(this.community.interact())return true;if(this.civic.interact())return true;if(this.expedition.interact())return true;if(this.trails.interact())return true;if(this.worlds.interact())return true;
   if(this.gathering.interact())return true;
   if(this.earth.interact())return true;
   if(this.cosmos.interact())return true;
@@ -12500,6 +13000,40 @@ function earthHomecomingWriter(){const owner=sim,state=owner.state,store=charact
  const current=()=>sim===owner&&owner.state===state&&characterStore===store&&store.active===active;
  return candidate=>{if(!current())return{ok:false,error:'The homecoming writer no longer belongs to this character.'};const result=worldSave(candidate);return current()?result:{ok:false,error:'The character changed while saving the homecoming account.'};};
 }
+// Parent app owns this transient lease independently from the fitting lease.
+let consignmentOwner=null;
+function syncConsignmentOwner(force=false){
+ const next=[sim,sim.state,sim.state.adventure,characterStore,characterStore.active,sim.room,sim.worldTrip,sim.earthTrip,sim.worldDive,JSON.stringify(sim.returnPos),JSON.stringify(sim.worldTrip),sim.state.adventure.deaths];
+ if(force||!consignmentOwner||next.some((v,i)=>v!==consignmentOwner[i])){
+  if(consignmentOwner){const outgoing=consignmentOwner[0];RealmEarthConsignmentMotion.reset(outgoing,'actual-app-owner-change');RealmEarthConsignmentArt.reset(outgoing);outgoing.consignmentOwnerLease=Object.freeze({});rpg?.civic?.carrier?.reset('owner');}
+  sim.consignmentOwnerLease=Object.freeze({});consignmentOwner=next;
+ }
+ return sim.consignmentOwnerLease;
+}
+function consignmentThreat(query){
+ const runtime=sim.adventureRuntime;
+ if(!runtime||runtime.room!==sim.room||!Array.isArray(runtime.enemies)||!query?.from||!query?.to)return{clear:false,reason:'The local danger check is unavailable. The carrier will wait.'};
+ const a=query.from,b=query.to,dx=b.x-a.x,dz=b.z-a.z,n=dx*dx+dz*dz;
+ if(![a.x,a.z,b.x,b.z].every(Number.isFinite))return{clear:false,reason:'The load position could not be checked. The carrier will wait.'};
+ for(const e of runtime.enemies){
+  if(!(e.hp>0)||e.hidden)continue;
+  if(!Number.isFinite(e.x)||!Number.isFinite(e.z))return{clear:false,reason:'A local threat position is unavailable. The carrier will wait.'};
+  const t=n?Math.max(0,Math.min(1,((e.x-a.x)*dx+(e.z-a.z)*dz)/n)):0,reach=e.kind==='charger'?10:e.kind==='boss'?7:8.5;
+  if(Math.hypot(e.x-a.x-t*dx,e.z-a.z-t*dz)<reach)return{clear:false,reason:'Nearby '+(e.name||'regional creature')+'. Make the route safe, or return with the carrier later.'};
+ }
+ return{clear:true};
+}
+function consignmentContext(){return{...worldContext(),ownerLease:syncConsignmentOwner(),definition:RealmEarthConsignmentData.definition,threat:consignmentThreat};}
+function consignmentControl(type){const ctx=consignmentContext();return type==='continue'?RealmEarthConsignmentMotion.continue(ctx):type==='wait'?RealmEarthConsignmentMotion.wait(ctx):{ok:false,error:'Unknown supplied-carrier control.'};}
+function consignmentPresentation(){
+ const ctx=consignmentContext();sim.consignmentPresentationContext=ctx;sim.consignmentPresentation=RealmEarthConsignmentMotion.current(ctx);
+}
+function tickConsignment(dt){
+ const ctx=consignmentContext(),r=sim.state.localLife.records[RealmEarthConsignmentData.ID];
+ if(sim.room===RealmEarthConsignmentData.ROOM&&!sim.worldDive&&sim.state.adventure.hp>0&&r.accepted&&!r.claimed){const result=RealmEarthConsignmentMotion.update(ctx,dt);if(!result.ok)throw Error(result.error);}
+ consignmentPresentation();
+}
+
 let fieldcraftOwner=null,fieldcraftFrame=null;
 function syncFieldcraftOwner(force=false){
  const next=[sim,sim.state,sim.state.adventure,characterStore,characterStore.active,sim.room,sim.worldTrip,sim.earthTrip,JSON.stringify(sim.returnPos),JSON.stringify(sim.worldTrip),sim.state.adventure.deaths];
@@ -12545,7 +13079,7 @@ function cosmosCampaignCommand(type,payload){return RealmCosmosCampaign.command(
 function atlantisCampaignCommand(type,payload){return RealmAtlantisCampaign.command(worldContext(),type,payload,{save:worldSave});}
 function heavenCampaignCommand(type,payload){return RealmHeavenCampaign.command(worldContext(),type,payload,{save:worldSave});}
 function bridgeCommunityCommand(type,payload){return RealmBridgeCommunity.command(worldContext(),type,payload,{save:worldSave});}
-function localLifeCommand(type,payload){return RealmLocalLife.command(worldContext(),type,payload,{save:worldSave});}
+function localLifeCommand(type,payload){const load=payload?.quest===RealmEarthConsignmentData.ID,ctx=load?consignmentContext():worldContext(),result=RealmLocalLife.command(ctx,type,payload,{save:worldSave});if(load)consignmentPresentation();return result;}
 function trailCommand(type,payload){return RealmTrails.command(worldContext(),type,payload,{save:worldSave});}
 function expeditionCommand(type,payload){return RealmEarthExpedition.command(fieldcraftContext(),type,payload,{save:worldSave});}
 function earthBinding(weapon,kind){return RealmEarthExpedition.bindingCommand(worldContext(),weapon,kind,{save:worldSave});}
@@ -12639,7 +13173,7 @@ ui.body.addEventListener('click',e=>{let b=e.target.closest('[data-action]');if(
 ui.body.addEventListener('input',e=>{if(e.target.id==='camera-fov'){camera.fov=sim.state.settings.cameraFov=Math.max(45,Math.min(80,+e.target.value));$('#camera-fov-value').textContent=camera.fov+'°';updateCamera(1);}if(e.target.id==='time-slider'){sim.setTime(+e.target.value);$('#slider-hour').textContent=formatHour(sim.state.hour);}});ui.body.addEventListener('change',e=>{if(e.target.id==='camera-mode')cameraPreset(e.target.value);if(e.target.id==='camera-fov')save();experience?.changed(e);if(e.target.id==='quality'){sim.state.settings.quality=e.target.value;if(engine)engine.quality=e.target.value;resize();save();}if(e.target.dataset.setting){sim.state.settings[e.target.dataset.setting]=e.target.checked;if(e.target.dataset.setting==='reducedMotion'){document.body.classList.toggle('reduced',e.target.checked);if(engine)engine.reducedMotion=e.target.checked;}save();}if(e.target.id==='time-slider')save();});
 function download(data,name,type){let url=URL.createObjectURL(new Blob([data],{type})),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function exportWorld(){download(JSON.stringify(sim.snapshot(),null,2),'Firstlight-Valley-day-'+sim.state.day+'.json','application/json');toast('World exported. Keep the JSON with your HTML.');}
-function applyWorld(state){syncFieldcraftOwner(true);keys.clear();pointers.clear();gesture=null;document.body.classList.remove('photo-mode');rpg?.reset();adventure?.reset();sandbox?.endBuild();sandbox?.stopAuto();experience?.stop();if(experience){experience.scoreUndo=[];experience.scoreRedo=[];experience.selectedSlot='nw';experience.memories.pending=null;}if(experience?.dialog.open)experience.close();audio.disable();sim=new C.Simulation(state);state=sim.state;camera.ready=false;camera.preset=state.settings.cameraMode;camera.fov=state.settings.cameraFov;scene=Symbol('rebuild');switchScene();selected=null;follow=null;closePanel();document.body.classList.toggle('reduced',sim.state.settings.reducedMotion);if(engine)engine.quality=sim.state.settings.quality;resize();sandbox?.reset();if(rpg){rpg.quest=state.adventure.pursuit.pinned?'project':state.adventure.starter.accepted&&!state.adventure.starter.reward?'starter':'story';if(state.earthExpedition.story.accepted&&!state.earthExpedition.story.claimed||state.earthExpedition.patrol.active)rpg.quest='expedition';rpg.tick();}lastSave=elapsed;}
+function applyWorld(state){syncConsignmentOwner(true);syncFieldcraftOwner(true);keys.clear();pointers.clear();gesture=null;document.body.classList.remove('photo-mode');rpg?.reset();adventure?.reset();sandbox?.endBuild();sandbox?.stopAuto();experience?.stop();if(experience){experience.scoreUndo=[];experience.scoreRedo=[];experience.selectedSlot='nw';experience.memories.pending=null;}if(experience?.dialog.open)experience.close();audio.disable();sim=new C.Simulation(state);state=sim.state;camera.ready=false;camera.preset=state.settings.cameraMode;camera.fov=state.settings.cameraFov;scene=Symbol('rebuild');switchScene();selected=null;follow=null;closePanel();document.body.classList.toggle('reduced',sim.state.settings.reducedMotion);if(engine)engine.quality=sim.state.settings.quality;resize();sandbox?.reset();if(rpg){rpg.quest=state.adventure.pursuit.pinned?'project':state.adventure.starter.accepted&&!state.adventure.starter.reward?'starter':'story';if(state.earthExpedition.story.accepted&&!state.earthExpedition.story.claimed||state.earthExpedition.patrol.active)rpg.quest='expedition';rpg.tick();}lastSave=elapsed;}
 let importRead=0;
 $('#import-file').addEventListener('click',()=>{importRead++;});
 $('#import-file').addEventListener('change',async e=>{
@@ -12684,7 +13218,7 @@ function characterImport(){openImport(true);}
 function characterReload(){if(confirm('Reload the saved character library? Export first to keep any play that could not be saved.'))location.reload();}
 $('#import-file').addEventListener('cancel',()=>{importRead++;characterImportPending=false;});
 window.addEventListener('storage',e=>{if(e.key===RealmCharacters.KEY||e.key===null){const r=characterStore.checkSource();if(!r.ok){saveState='unavailable';toast(r.error);renderStatus();if(rpg?.dialog.open&&rpg.tab==='characters')rpg.paint();}}});
-function capture(){if(!engine){toast('Photo capture requires the 3D renderer; JSON export still works.');return;}try{syncFieldcraftOwner();art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');ui.canvas.toBlob(blob=>{if(blob){download(blob,'Firstlight-Valley.png','image/png');toast('Your view captured as a PNG.');}else toast('The browser could not capture that frame.');},'image/png');}catch(e){toast('Photo unavailable: '+e.message);}}
+function capture(){if(!engine){toast('Photo capture requires the 3D renderer; JSON export still works.');return;}try{syncFieldcraftOwner();consignmentPresentation();art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');ui.canvas.toBlob(blob=>{if(blob){download(blob,'Firstlight-Valley.png','image/png');toast('Your view captured as a PNG.');}else toast('The browser could not capture that frame.');},'image/png');}catch(e){toast('Photo unavailable: '+e.message);}}
 function togglePhoto(){document.body.classList.toggle('photo-mode');if(document.body.classList.contains('photo-mode'))toast('Press H to return.');}
 // Web Audio: one quiet soundscape and one original pentatonic motif; opt-in only.
 const audio={ctx:null,master:null,enabled:false,soundscape:null,
@@ -12716,7 +13250,7 @@ adventure=new RealmAdventureUI.AdventureUI({workshopCommand,earthRiverReturn,sim
 
 arsenal=new RealmArsenalUI.ArsenalUI({sim:()=>sim,adventure:()=>adventure,openPanel,closePanel,renderPanel,panel:()=>panel,walk:walkAdventure,endBuild:()=>{sandbox?.endBuild();sandbox?.stopAuto();keys.clear();}});
 
-rpg=new RealmRPGUI.RPGUI({fieldcraftContext,frameFieldcraft,earthRoadTravel,frameFoe,canFrameFoe:()=>!!engine&&!sim.paused&&!sim.worldDive&&RealmCombatView.plan({preset:camera.preset,player:sim.state.player,enemy:RealmCombat.selected(sim),distance:camera.distance}).ok,earthHomecomingCommand,cosmosCampaignCommand,atlantisCampaignCommand,heavenCampaignCommand,hellCampaignCommand,bridgeCommunityCommand,localLifeCommand,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,earthContext,earthTravel,earthReturn,bridgeView,cosmosContext,cosmosTravel,cosmosReturn,sim:()=>sim,adventure:()=>adventure,closePanel,openPanel,endBuild:()=>{sandbox.endBuild();sandbox.stopAuto();},clearKeys:()=>keys.clear(),focusWorld:()=>ui.canvas.focus({preventScroll:true}),toast,save,exportWorld,characters:()=>characterStore.describe(sim.snapshot()),characterAction,characterExport,characterImport,characterReload,characterRecovery,panel:()=>panel,camera:cameraPreset,resetCamera,rotate:a=>{camera.yaw+=a;camera.tour=false;},direction:()=>adventure.api.direction(),music:()=>experience.open(),gather:id=>sandbox.seek(id),walkLocal:walkAdventure,stopPersonalMusic:()=>experience?.stop(),audio:()=>audio,project:(x,y,z)=>engine?.project(x,y,z)});
+rpg=new RealmRPGUI.RPGUI({consignmentContext,consignmentControl,fieldcraftContext,frameFieldcraft,earthRoadTravel,frameFoe,canFrameFoe:()=>!!engine&&!sim.paused&&!sim.worldDive&&RealmCombatView.plan({preset:camera.preset,player:sim.state.player,enemy:RealmCombat.selected(sim),distance:camera.distance}).ok,earthHomecomingCommand,cosmosCampaignCommand,atlantisCampaignCommand,heavenCampaignCommand,hellCampaignCommand,bridgeCommunityCommand,localLifeCommand,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,earthContext,earthTravel,earthReturn,bridgeView,cosmosContext,cosmosTravel,cosmosReturn,sim:()=>sim,adventure:()=>adventure,closePanel,openPanel,endBuild:()=>{sandbox.endBuild();sandbox.stopAuto();},clearKeys:()=>keys.clear(),focusWorld:()=>ui.canvas.focus({preventScroll:true}),toast,save,exportWorld,characters:()=>characterStore.describe(sim.snapshot()),characterAction,characterExport,characterImport,characterReload,characterRecovery,panel:()=>panel,camera:cameraPreset,resetCamera,rotate:a=>{camera.yaw+=a;camera.tour=false;},direction:()=>adventure.api.direction(),music:()=>experience.open(),gather:id=>sandbox.seek(id),walkLocal:walkAdventure,stopPersonalMusic:()=>experience?.stop(),audio:()=>audio,project:(x,y,z)=>engine?.project(x,y,z)});
 // Input distinguishes clicks from drags, with two-finger zoom on touch screens.
 let pointers=new Map(),gesture=null,keys=new Set();function zoom(k){camera.tour=false;if(camera.preset==='adventure'){camera.distance=Math.max(3.5,Math.min(20,camera.distance*k));return;}camera.half=C.clamp?C.clamp(camera.half*k,6,52):Math.max(6,Math.min(52,camera.half*k));camera.zoom=camera.half/camera.baseHalf;camera.overview=false;}
 function pointerDown(e){e.currentTarget.focus({preventScroll:true});camera.tour=false;if(e.button!==0&&e.button!==2&&e.pointerType!=='touch')return;e.preventDefault();e.currentTarget.setPointerCapture(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size===1)gesture={x:e.clientX,y:e.clientY,lastX:e.clientX,lastY:e.clientY,moved:false,pinch:false,orbitOnly:e.button===2};else if(pointers.size===2){let p=[...pointers.values()];gesture.pinch=true;gesture.moved=true;gesture.distance=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y);}}
@@ -12761,11 +13295,11 @@ function mapMine(canvas,full){let g=canvas.getContext('2d');if(!g)return;let w=c
 function mapToWorld(x,y){if(RealmWorldFoundations.handles(sim.room)){const p=RealmWorldFoundationsUI.projection(RealmWorldFoundations.definition(sim.room),innerWidth,innerHeight);return{x:(x-p.x)/p.scale,z:(y-p.y)/p.scale};}if(sim.room===RealmEarth.ROOM){const p=RealmEarthUI.projection(innerWidth,innerHeight);return{x:(x-p.x)/p.scale,z:(y-p.y)/p.scale};}if(sim.room===RealmCosmos.ROOM){const p=RealmCosmosUI.projection(innerWidth,innerHeight);return{x:(x-p.x)/p.scale,z:(y-p.y)/p.scale};}if(sim.room==='riverbank'){const p=RealmStarterUI.projection(innerWidth,innerHeight);return{x:(x-p.x)/p.scale,z:(y-p.y)/p.scale};}if(sim.room==='crossing'){let sc=Math.min(innerWidth,innerHeight)/68;return{x:(x-innerWidth/2)/sc,z:(y-innerHeight/2)/sc-1};}if(sim.room==='range'){let sc=Math.min(innerWidth,innerHeight)/36;return{x:(x-innerWidth/2)/sc,z:(y-innerHeight/2)/sc};}if(sim.room==='road'){let sc=Math.min(innerWidth,innerHeight)/65;return{x:(x-innerWidth/2)/sc,z:(y-innerHeight/2)/sc-3};}if(sim.room==='mine'){let sc=Math.min(innerWidth,innerHeight)/36;return{x:(x-innerWidth/2)/sc,z:(y-innerHeight/2)/sc};}let w=innerWidth,h=innerHeight,sc=Math.min(w,h)/(sim.room?17:108);return{x:(x-w/2)/sc+(sim.room?0:10),z:(y-h*.53)/sc-(sim.room?0:10)};}$('#minimap').onclick=()=>rpg.open('atlas');
 
 function refreshUI(){let s=sim.state;$('#tour').setAttribute('aria-pressed',String(!!camera.tour));$('#time-display').textContent=formatHour(s.hour);$('#day-display').textContent='DAY '+String(s.day).padStart(2,'0')+' · '+(sim.paused?'PAUSED':s.weather==='rain'?'RAIN':s.hour>20||s.hour<6?'NIGHT':s.hour>16?'GOLDEN HOUR':'DAYLIGHT');$('#fps').textContent=engine?Math.round(fps)+' FPS · '+s.settings.quality.toUpperCase():'MAP VIEW';$('#discovery').textContent=s.visited.length+' / '+C.LANDMARKS.length+' PLACES DISCOVERED';let l=RealmWorldFoundations.handles(sim.room)?{short:RealmWorldFoundations.definition(sim.room).name,description:RealmWorldFoundations.definition(sim.room).description}:sim.room===RealmEarth.ROOM?{short:'Hearthwater Vale',description:'A lake road. Orchard lanes. Bellweather on the horizon.'}:sim.room===RealmCosmos.ROOM?{short:'The Near Expanse',description:'Three lamps. Two roads. An inhabited horizon.'}:sim.room==='riverbank'?{short:'Oren’s riverbank worksite',description:'A nearby path. Useful supplies. A reason to come home.'}:sim.room==='crossing'?{short:'Bellweather Crossing',description:'A village to meet. A silence to break. A road home.'}:sim.room==='range'?{short:'The Archery Court',description:'Take a breath. Find your distance. Let the arrow travel.'}:sim.room==='road'?{short:'The Sunward Road',description:'A traveller to help. A trail to follow. A light to bring home.'}:sim.room==='mine'?{short:'The Rootbound Underways',description:'Copper in the walls. A heartbeat beneath the roots.'}:sim.room?C.LANDMARKS.find(l=>l.id===sim.room):closest(),sbContext=rpg?.worlds.context()||rpg?.earth.context()||rpg?.cosmos.context()||rpg?.starter.context()||rpg?.crossing.context()||(RealmBeacon.near(sim)&&sim.state.adventure.road.beaconLit?(RealmBeacon.runtime(sim).phase==='assault'?'Repair ward · E · 20 stamina':'The envoy at the beacon · E'):null)||adventure?.context()||sandbox?.context();$('#place-name').textContent=sim.room?l.short:sim.state.player.z<-29?'Wildwood Reach':'Firstlight Valley';$('#place-kicker').textContent=RealmWorldFoundations.handles(sim.room)?RealmWorldFoundations.definition(sim.room).kicker:sim.room===RealmEarth.ROOM?'EARTH · HEARTHWATER VALE · CONNECTED APPROACH':sim.room===RealmCosmos.ROOM?'COSMOS · THE MOON BENEATH THE ROAD':sim.room==='riverbank'?'CLOSE TO HOME · THE RIVERBANK':sim.room==='crossing'?'THE BELL ROAD · CHAPTER IV':sim.room==='range'?'THE PRACTICE COURT · A NEW DISCIPLINE':sim.room==='road'?(s.adventure.beacon.introduced?'THE BEACON ANSWERS · CHAPTER III':'BEYOND THE VALLEY · CHAPTER II'):sim.room==='mine'?'BENEATH WILDWOOD · CHAPTER I':sim.room?'A PRIVATE PLACE · LOCAL INTERIOR':'THE REALM · FIRST INHABITED DISTRICT';$('#place-description').textContent=sim.room?l.description:'Gather. Make. Grow. A new shore to call your own.';$('#context').style.display=(l||sbContext)&&!sandbox?.build?'flex':'none';let contextKey=sbContext?.match(/^([A-Z0-9]+) · /)?.[1]||'E';$('#context kbd').textContent=contextKey;$('#context-text').textContent=(sim.room===RealmEarth.ROOM||sim.room===RealmCosmos.ROOM)?sbContext?.replace(/^([A-Z0-9]+) · /,''):RealmAdventure.combatScene(sim)?sbContext?.replace(/^([A-Z0-9]+) · /,''):sim.room?(sbContext?.replace(/^([A-Z0-9]+) · /,'')||'Return to the valley'):sbContext|| (l?l.action:'');mapDraw($('#minimap'));renderStatus();}
-function frame(now){let dt=lastFrame?Math.min((now-lastFrame)/1000,.1):.016;lastFrame=now;frames++;if(now-fpsStart>1500){fps=frames*1000/(now-fpsStart);frames=0;fpsStart=now;}if(!document.hidden){let dx=(keys.has('d')||keys.has('arrowright')?1:0)-(keys.has('a')||keys.has('arrowleft')?1:0),dz=(keys.has('s')||keys.has('arrowdown')?1:0)-(keys.has('w')||keys.has('arrowup')?1:0);if(sim.worldDive&&!sim.paused){RealmWorldFoundations.swim(sim,dx*Math.cos(camera.yaw)+dz*Math.sin(camera.yaw),-dx*Math.sin(camera.yaw)+dz*Math.cos(camera.yaw),(keys.has('f')?1:0)-(keys.has('g')?1:0),dt);camera.overview=false;}else if((dx||dz)&&!sim.paused){sandbox?.stopAuto();adventure?.stopAuto();camera.tour=false;sim.manual(dx*Math.cos(camera.yaw)+dz*Math.sin(camera.yaw),-dx*Math.sin(camera.yaw)+dz*Math.cos(camera.yaw),dt);camera.overview=false;follow=null;target=null;sim.walking=true;}sim.tick(dt);if((dx||dz)&&!sim.paused)sim.walking=true;elapsed+=sim.paused?0:dt;if(!sim.playerPath.length)target=null;switchScene();updateCamera(dt);experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);engine.reducedMotion=sim.state.settings.reducedMotion;syncFieldcraftOwner();art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);audio.tick(elapsed);if(now-lastUi>350){refreshUI();lastUi=now;}if(elapsed-lastSave>6){save();lastSave=elapsed;}}if(!G_CAPTURE)requestAnimationFrame(frame);}
+function frame(now){let dt=lastFrame?Math.min((now-lastFrame)/1000,.1):.016;lastFrame=now;frames++;if(now-fpsStart>1500){fps=frames*1000/(now-fpsStart);frames=0;fpsStart=now;}if(!document.hidden){let dx=(keys.has('d')||keys.has('arrowright')?1:0)-(keys.has('a')||keys.has('arrowleft')?1:0),dz=(keys.has('s')||keys.has('arrowdown')?1:0)-(keys.has('w')||keys.has('arrowup')?1:0);if(sim.worldDive&&!sim.paused){RealmWorldFoundations.swim(sim,dx*Math.cos(camera.yaw)+dz*Math.sin(camera.yaw),-dx*Math.sin(camera.yaw)+dz*Math.cos(camera.yaw),(keys.has('f')?1:0)-(keys.has('g')?1:0),dt);camera.overview=false;}else if((dx||dz)&&!sim.paused){sandbox?.stopAuto();adventure?.stopAuto();camera.tour=false;sim.manual(dx*Math.cos(camera.yaw)+dz*Math.sin(camera.yaw),-dx*Math.sin(camera.yaw)+dz*Math.cos(camera.yaw),dt);camera.overview=false;follow=null;target=null;sim.walking=true;}sim.tick(dt);tickConsignment(dt);if((dx||dz)&&!sim.paused)sim.walking=true;elapsed+=sim.paused?0:dt;if(!sim.playerPath.length)target=null;switchScene();updateCamera(dt);experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);engine.reducedMotion=sim.state.settings.reducedMotion;syncFieldcraftOwner();consignmentPresentation();art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);audio.tick(elapsed);if(now-lastUi>350){refreshUI();lastUi=now;}if(elapsed-lastSave>6){save();lastSave=elapsed;}}if(!G_CAPTURE)requestAnimationFrame(frame);}
 // Keep a read-only-ish diagnostics surface for inspection; this local prototype is not a security boundary.
 const G_CAPTURE=!!window.__ETERNITIES_CAPTURE_MODE;
-window.Realm={get state(){return sim.snapshot();},get diagnostics(){let g=engine?.gl,dbg=g?.getExtension('WEBGL_debug_renderer_info');return{version:'10.0.0',mode:engine?'webgl2':'map',scene:sim.room||'valley',world:RealmWorldFoundations.definition(sim.room)?{id:RealmWorldFoundations.definition(sim.room).id,height:sceneHeight(),dive:worldDiveStatus(),journey:JSON.parse(JSON.stringify(sim.state.journeys.realms[RealmWorldFoundations.definition(sim.room).id]))}:null,atlantis:sim.room===RealmAtlantisCampaign.definition.room?JSON.parse(JSON.stringify({current:RealmAtlantisCampaign.currentStatus(sim),motion:{currentDistance:RealmAtlantisCampaign.runtime(sim).currentDistance,pullDistance:RealmAtlantisCampaign.runtime(sim).pullDistance},witnesses:RealmAtlantisCampaign.runtime(sim).witnesses})):null,heaven:sim.room===RealmHeavenCampaign.definition.room?JSON.parse(JSON.stringify({escort:RealmHeavenCampaign.runtime(sim).escort,activation:RealmHeavenCampaign.runtime(sim).activation,status:RealmHeavenCampaign.escortStatus(sim)})):null,earthHomecoming:JSON.parse(JSON.stringify({record:sim.state.earthHomecoming,runtime:[null,RealmEarthHomecoming.definition.room].includes(sim.room)?RealmEarthHomecoming.runtime(sim):null,missing:RealmEarthHomecoming.missing(sim.state),ready:RealmEarthHomecoming.ready(sim.state)})),earth:sim.room===RealmEarth.ROOM?{trip:sim.earthTrip,height:sceneHeight(),walkable:RealmEarth.walkable(sim.state.player.x,sim.state.player.z)}:null,cosmos:sim.room===RealmCosmos.ROOM?{trip:sim.cosmosTrip,height:sceneHeight(),walkable:RealmCosmos.walkable(sim.state.player.x,sim.state.player.z),campaign:JSON.parse(JSON.stringify(RealmCosmosCampaign.runtime(sim)))}:null,networkDependencies:0,liveAI:false,multiplayer:false,adventure:{tactics:JSON.parse(JSON.stringify(RealmCombat.runtime(sim))),beacon:JSON.parse(JSON.stringify(RealmBeacon.runtime(sim))),crossing:JSON.parse(JSON.stringify(RealmCrossing.runtime(sim))),player:{...sim.state.player},paused:sim.paused,intent:adventure?.intent||null,stats:RealmAdventure.stats(sim.state.adventure),weapon:RealmArsenal.weapon(sim.state.adventure),arrows:RealmArsenal.runtime(sim).arrows.map(a=>({...a})),range:{...RealmArsenal.runtime(sim).range},enemies:RealmAdventure.runtime(sim).enemies.map(e=>({id:e.id,x:e.x,z:e.z,hp:e.hp,maxHP:e.maxHP,hidden:!!e.hidden,eventEnemy:!!e.eventEnemy,kind:e.kind,earthHomecoming:e.earthHomecoming||null,ringMode:e.ringMode,custom:e.custom,mode:e.mode,timer:e.timer,aim:e.aim,yaw:e.yaw,strike:e.strike||null,contactAt:e.contactAt??null,contactHit:e.contactHit??null})),companion:{...RealmAdventure.runtime(sim).companion}},sandbox:{bridge:sim.state.sandbox.bridge,objects:sim.state.sandbox.placed.length,elapsed:sim.state.sandbox.elapsed,autoGather:sandbox?.auto||null,buildMode:sandbox?.build||null},saveState,characters:{mode:characterStore.blocked?'blocked':characterStore.managed?'managed':'legacy',active:characterStore.active,revision:characterStore.revision,count:characterStore.record?.slots.length||1,writer:characterStore.writer,error:characterStore.error},fps,errors:errors.slice(),camera:{...camera,projection:engine?.camera.projection||'orthographic',eye:engine?.camera.eye,target:engine?.camera.target},metrics:engine?.metrics||null,reflection:engine?.reflectionInfo||null,cutaway:{enabled:!!engine?.cutaway,focus:engine?.cutawayFocus||null},renderer:dbg?g.getParameter(dbg.UNMASKED_RENDERER_WEBGL):null,music:{playing:experience?.playing||false,scoreRevision:sim.state.scoreRevision,playingRevision:experience?.playingRevision,step:experience?.step},gathering:sim.gathering?{...sim.gathering}:null,layoutRevision:sim.state.retreat.revision,roadsideGathering:{status:rpg?.gathering?.player.status||'idle',playing:!!rpg?.gathering?.player.source,pending:!!rpg?.gathering?.pending},audio:{enabled:audio.enabled,state:audio.ctx?.state||'not-created',soundscape:audio.soundscape?.snapshot()||null}};},navigate,export:()=>JSON.stringify(sim.snapshot(),null,2),project:(x,y,z)=>engine?.project(x,y,z)};
-if(window.__ETERNITIES_TEST_MODE||location.search.includes('test'))window.Realm.test={fieldcraftContext,frameFieldcraft,fieldcraft:()=>({view:RealmEarthFieldcraft.current(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.fieldcraftPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),earthRoad:()=>({route:RealmEarthRoad.endpoint(sim.room),parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.earthRoadPart||i.worldSolidId==='hearthwater-fingerpost').map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),earthRoadTravel,earthHomecomingCommand,homeCommand,cosmosCampaignCommand,atlantisCampaignCommand,heavenCampaignCommand,hellCampaignCommand,bridgeCommunityCommand,localLifeCommand,bridgeView,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,worldSwim:(...a)=>RealmWorldFoundations.swim(sim,...a),step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){sim.tick(.05);adventure?.tick();arsenal?.tick();rpg?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,bridge:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({definition:RealmEarth.BRIDGE,waterHeight:RealmEngine.WATER_HEIGHT,railCutaway:{eligible:engine?.railCutawayActive===true,enabled:engine?.cutaway===true},parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.bridgePart||i.mountainPart||i.shorelinePart).map(i=>({kind:b.kind,railBatch:b.railCutaway===true,...i,m:i.m?Array.from(i.m):null})))||[]})):null,traveler:()=>art?.travelerSnapshot()||null,companion:()=>RealmAdventureArt.companionSnapshot(sim),skitters:()=>RealmAdventureArt.skitterSnapshot(sim),drover:()=>sim.room===RealmEarth.ROOM&&art?.droverFrame?JSON.parse(JSON.stringify({frame:{...art.droverFrame,root:Array.from(art.droverFrame.root),coilRoot:Array.from(art.droverFrame.coilRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.droverPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,earthShoulder:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({frame:art?.earthShoulderFrame,parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.quarryShoulder||i.terrain).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,quarry:()=>sim.room===RealmEarth.ROOM&&art?.quarryFrame?JSON.parse(JSON.stringify({frame:{actor:{...art.quarryFrame.actor,root:Array.from(art.quarryFrame.actor.root),toolRoot:Array.from(art.quarryFrame.actor.toolRoot)},works:art.quarryFrame.works},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.stoneworkerPart||i.quarryPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))})):null,millwright:()=>sim.room===RealmEarth.ROOM&&art?.millwrightFrame?JSON.parse(JSON.stringify({frame:{...art.millwrightFrame,root:Array.from(art.millwrightFrame.root),toolRoot:Array.from(art.millwrightFrame.toolRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.millwrightPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millGate:()=>sim.room===RealmEarth.ROOM&&art?.millGateFrame?JSON.parse(JSON.stringify({gate:art.millGateFrame,parts:[...engine.batches,...engine.dynamic].flatMap(b=>b.items.filter(i=>i.millPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null}))),wheel:art.dynamicBox.items.filter(i=>i.p[0]===3.55&&i.p[1]===2.71)})):null,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);syncFieldcraftOwner();art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
+window.Realm={get state(){return sim.snapshot();},get diagnostics(){let g=engine?.gl,dbg=g?.getExtension('WEBGL_debug_renderer_info');return{version:'10.0.0',mode:engine?'webgl2':'map',scene:sim.room||'valley',world:RealmWorldFoundations.definition(sim.room)?{id:RealmWorldFoundations.definition(sim.room).id,height:sceneHeight(),dive:worldDiveStatus(),journey:JSON.parse(JSON.stringify(sim.state.journeys.realms[RealmWorldFoundations.definition(sim.room).id]))}:null,consignment:sim.room===RealmEarthConsignmentData.ROOM?JSON.parse(JSON.stringify({view:RealmEarthConsignmentMotion.current(consignmentContext()),frame:RealmEarthConsignmentArt.snapshot(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.consignmentPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,atlantis:sim.room===RealmAtlantisCampaign.definition.room?JSON.parse(JSON.stringify({current:RealmAtlantisCampaign.currentStatus(sim),motion:{currentDistance:RealmAtlantisCampaign.runtime(sim).currentDistance,pullDistance:RealmAtlantisCampaign.runtime(sim).pullDistance},witnesses:RealmAtlantisCampaign.runtime(sim).witnesses})):null,heaven:sim.room===RealmHeavenCampaign.definition.room?JSON.parse(JSON.stringify({escort:RealmHeavenCampaign.runtime(sim).escort,activation:RealmHeavenCampaign.runtime(sim).activation,status:RealmHeavenCampaign.escortStatus(sim)})):null,earthHomecoming:JSON.parse(JSON.stringify({record:sim.state.earthHomecoming,runtime:[null,RealmEarthHomecoming.definition.room].includes(sim.room)?RealmEarthHomecoming.runtime(sim):null,missing:RealmEarthHomecoming.missing(sim.state),ready:RealmEarthHomecoming.ready(sim.state)})),earth:sim.room===RealmEarth.ROOM?{trip:sim.earthTrip,height:sceneHeight(),walkable:RealmEarth.walkable(sim.state.player.x,sim.state.player.z)}:null,cosmos:sim.room===RealmCosmos.ROOM?{trip:sim.cosmosTrip,height:sceneHeight(),walkable:RealmCosmos.walkable(sim.state.player.x,sim.state.player.z),campaign:JSON.parse(JSON.stringify(RealmCosmosCampaign.runtime(sim)))}:null,networkDependencies:0,liveAI:false,multiplayer:false,adventure:{tactics:JSON.parse(JSON.stringify(RealmCombat.runtime(sim))),beacon:JSON.parse(JSON.stringify(RealmBeacon.runtime(sim))),crossing:JSON.parse(JSON.stringify(RealmCrossing.runtime(sim))),player:{...sim.state.player},paused:sim.paused,intent:adventure?.intent||null,stats:RealmAdventure.stats(sim.state.adventure),weapon:RealmArsenal.weapon(sim.state.adventure),arrows:RealmArsenal.runtime(sim).arrows.map(a=>({...a})),range:{...RealmArsenal.runtime(sim).range},enemies:RealmAdventure.runtime(sim).enemies.map(e=>({id:e.id,x:e.x,z:e.z,hp:e.hp,maxHP:e.maxHP,hidden:!!e.hidden,eventEnemy:!!e.eventEnemy,kind:e.kind,earthHomecoming:e.earthHomecoming||null,ringMode:e.ringMode,custom:e.custom,mode:e.mode,timer:e.timer,aim:e.aim,yaw:e.yaw,strike:e.strike||null,contactAt:e.contactAt??null,contactHit:e.contactHit??null})),companion:{...RealmAdventure.runtime(sim).companion}},sandbox:{bridge:sim.state.sandbox.bridge,objects:sim.state.sandbox.placed.length,elapsed:sim.state.sandbox.elapsed,autoGather:sandbox?.auto||null,buildMode:sandbox?.build||null},saveState,characters:{mode:characterStore.blocked?'blocked':characterStore.managed?'managed':'legacy',active:characterStore.active,revision:characterStore.revision,count:characterStore.record?.slots.length||1,writer:characterStore.writer,error:characterStore.error},fps,errors:errors.slice(),camera:{...camera,projection:engine?.camera.projection||'orthographic',eye:engine?.camera.eye,target:engine?.camera.target},metrics:engine?.metrics||null,reflection:engine?.reflectionInfo||null,cutaway:{enabled:!!engine?.cutaway,focus:engine?.cutawayFocus||null},renderer:dbg?g.getParameter(dbg.UNMASKED_RENDERER_WEBGL):null,music:{playing:experience?.playing||false,scoreRevision:sim.state.scoreRevision,playingRevision:experience?.playingRevision,step:experience?.step},gathering:sim.gathering?{...sim.gathering}:null,layoutRevision:sim.state.retreat.revision,roadsideGathering:{status:rpg?.gathering?.player.status||'idle',playing:!!rpg?.gathering?.player.source,pending:!!rpg?.gathering?.pending},audio:{enabled:audio.enabled,state:audio.ctx?.state||'not-created',soundscape:audio.soundscape?.snapshot()||null}};},navigate,export:()=>JSON.stringify(sim.snapshot(),null,2),project:(x,y,z)=>engine?.project(x,y,z)};
+if(window.__ETERNITIES_TEST_MODE||location.search.includes('test'))window.Realm.test={consignmentContext,consignmentControl,consignment:()=>({view:RealmEarthConsignmentMotion.current(consignmentContext()),frame:RealmEarthConsignmentArt.snapshot(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.consignmentPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),fieldcraftContext,frameFieldcraft,fieldcraft:()=>({view:RealmEarthFieldcraft.current(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.fieldcraftPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),earthRoad:()=>({route:RealmEarthRoad.endpoint(sim.room),parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.earthRoadPart||i.worldSolidId==='hearthwater-fingerpost').map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),earthRoadTravel,earthHomecomingCommand,homeCommand,cosmosCampaignCommand,atlantisCampaignCommand,heavenCampaignCommand,hellCampaignCommand,bridgeCommunityCommand,localLifeCommand,bridgeView,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,worldSwim:(...a)=>RealmWorldFoundations.swim(sim,...a),step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){sim.tick(.05);tickConsignment(.05);adventure?.tick();arsenal?.tick();rpg?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,bridge:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({definition:RealmEarth.BRIDGE,waterHeight:RealmEngine.WATER_HEIGHT,railCutaway:{eligible:engine?.railCutawayActive===true,enabled:engine?.cutaway===true},parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.bridgePart||i.mountainPart||i.shorelinePart).map(i=>({kind:b.kind,railBatch:b.railCutaway===true,...i,m:i.m?Array.from(i.m):null})))||[]})):null,traveler:()=>art?.travelerSnapshot()||null,companion:()=>RealmAdventureArt.companionSnapshot(sim),skitters:()=>RealmAdventureArt.skitterSnapshot(sim),drover:()=>sim.room===RealmEarth.ROOM&&art?.droverFrame?JSON.parse(JSON.stringify({frame:{...art.droverFrame,root:Array.from(art.droverFrame.root),coilRoot:Array.from(art.droverFrame.coilRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.droverPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,earthShoulder:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({frame:art?.earthShoulderFrame,parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.quarryShoulder||i.terrain).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,quarry:()=>sim.room===RealmEarth.ROOM&&art?.quarryFrame?JSON.parse(JSON.stringify({frame:{actor:{...art.quarryFrame.actor,root:Array.from(art.quarryFrame.actor.root),toolRoot:Array.from(art.quarryFrame.actor.toolRoot)},works:art.quarryFrame.works},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.stoneworkerPart||i.quarryPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))})):null,millwright:()=>sim.room===RealmEarth.ROOM&&art?.millwrightFrame?JSON.parse(JSON.stringify({frame:{...art.millwrightFrame,root:Array.from(art.millwrightFrame.root),toolRoot:Array.from(art.millwrightFrame.toolRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.millwrightPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millGate:()=>sim.room===RealmEarth.ROOM&&art?.millGateFrame?JSON.parse(JSON.stringify({gate:art.millGateFrame,parts:[...engine.batches,...engine.dynamic].flatMap(b=>b.items.filter(i=>i.millPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null}))),wheel:art.dynamicBox.items.filter(i=>i.p[0]===3.55&&i.p[1]===2.71)})):null,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);syncFieldcraftOwner();consignmentPresentation();art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
 window.addEventListener('resize',resize);window.addEventListener('pagehide',()=>{save();characterStore.writer=false;characterLock.release();});window.addEventListener('pageshow',e=>{if(e.persisted&&characterStore.managed)acquireCharacterWriter().then(()=>save());});ui.canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();fallback('Graphics context lost. Your local state is intact; use the map and export a backup.');toast('Graphics paused; world state preserved.');});document.body.classList.toggle('reduced',sim.state.settings.reducedMotion);cameraPreset(sim.state.settings.cameraMode,false);if(camera.preset==='adventure'&&!sim.state.settings.cameraViews.profiles.adventure)camera.yaw=.22;labelsRebuild();resize();refreshUI();if(characterStore.managed){acquireCharacterWriter().then(ok=>{if(ok)save();else{saveState='unavailable';toast(characterLock.error);renderStatus();}});}else save();if(loaded.status==='migrated')toast('Your earlier world was copied into Realm 10. The original save was not changed.');setTimeout(()=>$('#loading').classList.add('hidden'),400);if(G_CAPTURE){if(window.Realm.test)window.Realm.test.render();}else requestAnimationFrame(frame);
 })();
 </script></body></html>

@@ -3,10 +3,18 @@ const test=require('node:test'),assert=require('node:assert/strict');
 const C=require('../src/core.js'),L=require('../src/local-life.js'),W=require('../src/world-foundations.js'),R=require('../src/realm-trails.js'),A=require('../src/adventure.js'),S=require('../src/sandbox.js');
 const Art=require('../src/local-life-art.js');
 const clone=structuredClone;
+// These fixed-step regressions retain the exact original four commissions.
+// The supplied carrier has separate physical-authority tests and stays fresh here.
+const D=require('../src/earth-consignment-data.js');
+const OLD_IDS=Object.freeze(['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1']);
+assert.deepEqual(D.OLD_IDS,OLD_IDS,'canonical legacy membership cannot drift');
+assert.deepEqual(L.definitions.map(d=>d.id),[...OLD_IDS,D.ID],'five-job catalogue is exact');
+const LEGACY_DEFINITIONS=Object.freeze(OLD_IDS.map(id=>{const d=L.definition(id);assert.ok(d,'missing original commission '+id);return d;}));
+const assertFreshConsignment=state=>assert.deepEqual(state.localLife.records[D.ID],D.freshRecord(),'legacy coverage leaves the separate supplied commission fresh');
 /* Boundary fixtures below are explicitly synthetic. Command-earned traversal
  * is owned by local_life_journey.cjs, not claimed by these unit checks. */
 function fixture(d){
- const raw=C.fresh();raw.adventure.started=true;
+ const raw=C.fresh();assertFreshConsignment(raw);raw.adventure.started=true;
  if(d.prerequisite){const old=R.definition(d.prerequisite),record=raw.realmTrails.records[old.id];record.accepted=true;record.steps=old.steps.map(s=>s.id);record.claimed=true;if(old.escort){record.checkpoint=old.escort.route.length-1;record.assisted=true;}}
  const sim=new C.Simulation(C.validate(raw));
  const saved=[];const io={save:state=>{saved.push(C.validate(state));return{ok:true};}};
@@ -19,10 +27,10 @@ test('older world9 migrates optional localLife1 without altering existing histor
 });
 test('current malformed/future local work refuses rather than resetting progress',()=>{
  for(const bad of[{version:2,records:{}},{version:1,records:{}},null])assert.throws(()=>L.validate(bad));
- const d=L.definitions[0];for(const change of[r=>r.choice='channel',r=>r.claimed=true,r=>r.steps=['plant-cuttings'],r=>r.steps=['not-a-step']]){const raw=L.fresh();change(raw.records[d.id]);assert.throws(()=>L.validate(raw));}
+ const d=LEGACY_DEFINITIONS[0];for(const change of[r=>r.choice='channel',r=>r.claimed=true,r=>r.steps=['plant-cuttings'],r=>r.steps=['not-a-step']]){const raw=L.fresh();change(raw.records[d.id]);assert.throws(()=>L.validate(raw));}
 });
-test('the new local ledger does not extend or rewrite the old five trail definitions',()=>{assert.equal(R.definitions().length,5);assert.equal(R.fresh().version,1);assert.equal(L.definitions.length,4);assert.ok(Object.isFrozen(L.definitions));assert.equal(A.VERSION,12);});
-for(const d of L.definitions){
+test('the new local ledger does not extend or rewrite the old five trail definitions',()=>{assert.equal(R.definitions().length,5);assert.equal(R.fresh().version,1);assert.equal(LEGACY_DEFINITIONS.length,4);assert.equal(L.definitions.length,5);assertFreshConsignment(C.fresh());assert.ok(Object.isFrozen(L.definitions));assert.equal(A.VERSION,12);});
+for(const d of LEGACY_DEFINITIONS){
  test(d.id+' rejects offsite acceptance, invalid arrangement and absent prerequisite atomically',()=>{
   const h=fixture(d),before=h.sim.snapshot();h.place({x:0,z:W.definition(d.realm).bounds.maxZ});const offsite=h.sim.snapshot();assert.equal(h.act('accept',{choice:d.choices[0].id}).ok,false);assert.deepEqual(h.sim.snapshot(),offsite);h.place(d.giver);
   assert.equal(h.act('accept',{choice:'invented'}).ok,false);assert.deepEqual(h.sim.snapshot(),before);
@@ -49,7 +57,7 @@ for(const d of L.definitions){
    h.sim.state.adventure.coins=9999;const blocked=h.sim.snapshot();assert.equal(h.act('claim').ok,false);assert.deepEqual(h.sim.snapshot(),blocked);h.sim.state.adventure.coins=complete.adventure.coins;
    assert.equal(h.act('claim',{}, {save:()=>({ok:false,error:'synthetic claim refusal'})}).ok,false);assert.deepEqual(h.sim.snapshot(),complete);
    const refs={adventure:h.sim.state.adventure,companion:h.sim.state.adventure.companion,equipment:h.sim.state.adventure.equipment,inventory:h.sim.state.sandbox.inventory};
-   const result=h.act('claim');assert.ok(result.ok,result.error);const paid=h.sim.snapshot();
+   const result=h.act('claim');assert.ok(result.ok,result.error);const paid=h.sim.snapshot();assertFreshConsignment(paid);
    for(const k of['xp','coins','ore'])assert.equal(paid.adventure[k]-before.adventure[k],d.reward[k]);
    for(const[k,n]of Object.entries(d.reward.materials||{}))assert.equal(paid.sandbox.inventory[k]-before.sandbox.inventory[k],n);
    assert.equal(h.act('claim',{request:'different'}).duplicate,true);assert.deepEqual(h.sim.snapshot(),paid);
@@ -60,7 +68,7 @@ for(const d of L.definitions){
  }
 }
 test('dry sites and both selected Heaven beds retain full canonical foot support',()=>{
- for(const d of L.definitions)for(const choice of d.choices)for(const source of d.steps){const p=L.stepSite(d,source,choice.id);if(p.medium==='dry')assert.ok(W.walkable(W.definition(d.realm).room,p.x,p.z),d.id+':'+p.id+':'+choice.id);}
+ for(const d of LEGACY_DEFINITIONS)for(const choice of d.choices)for(const source of d.steps){const p=L.stepSite(d,source,choice.id);if(p.medium==='dry')assert.ok(W.walkable(W.definition(d.realm).room,p.x,p.z),d.id+':'+p.id+':'+choice.id);}
 });
 test('Atlantis work requires actual gallery body depth and medium',()=>{
  const d=L.definitions.find(d=>d.realm==='atlantis'),h=fixture(d);h.act('accept',{choice:'desk'});h.place(d.steps[0]);h.act('step',{step:d.steps[0].id,assembly:'keyed'});
@@ -75,7 +83,7 @@ test('material capacity and 9999 XP boundary retain whole-payment atomicity',()=
  h.sim.state.sandbox.inventory.wood=0;h.sim.state.adventure.xp=9999;const result=h.act('claim');assert.ok(result.ok);assert.equal(result.reward.xp,0);assert.equal(h.sim.state.adventure.xp,9999);
 });
 test('new art reads accepted state, emits finite supported shapes and preserves canonical state',()=>{
- for(const d of L.definitions)for(const choice of d.choices){const h=fixture(d),empty={box:[],octa:[],disc:[]};Art.draw(empty,h.sim);assert.equal(Object.values(empty).flat().length,0);h.act('accept',{choice:choice.id});
+ for(const d of LEGACY_DEFINITIONS)for(const choice of d.choices){const h=fixture(d),empty={box:[],octa:[],disc:[]};Art.draw(empty,h.sim);assert.equal(Object.values(empty).flat().length,0);h.act('accept',{choice:choice.id});
   const r=h.sim.state.localLife.records[d.id];r.steps=d.steps.map(s=>s.id);const before=h.sim.snapshot(),out={box:[],octa:[],disc:[]};Art.draw(out,h.sim);assert.deepEqual(h.sim.snapshot(),before);const parts=Object.values(out).flat();assert.ok(parts.length>5&&parts.length<100);for(const p of parts){assert.ok([...p.p,...p.s].every(Number.isFinite));assert.ok(p.s.every(v=>v>0));assert.equal(p.cameraSolid,false);assert.equal(p.localLifeChoice,choice.id);}
  }
 });

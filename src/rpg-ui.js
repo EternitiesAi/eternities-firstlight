@@ -88,7 +88,7 @@ class RPGUI{
  }
  close(){this.earthHomecoming?.reset();this.cosmosCampaign?.reset();this.atlantisCampaign?.reset();this.heavenCampaign?.reset();this.hellCampaign?.reset();this.expedition?.reset();this.worlds?.reset();this.gathering?.reset();this.cosmos?.reset();this.earth?.reset();if(!this.dialog.open)return;this.dialog.close();this.sim.paused=this.wasPaused;this.api.clearKeys();this.api.focusWorld();}
  cameraPaint(mode){for(const el of document.querySelectorAll('[data-rpg="camera"]'))el.setAttribute('aria-pressed',String(el.dataset.id===mode));}
- reset(){this.expedition?.reset('owner');this.earthHomecoming?.reset();this.realmAtlas?.reset();this.gathering?.reset();if(this.dialog.open)this.close();this.item=null;this.seenPhase='';this.filter='all';this.search='';this.recipe='trail_bow';this.craftFilter='weapons';this.avatarDrag=null;this.lastPreview=-1;this.pursuit.selected=null;this.starter.temper=null;this.starter.destination=null;this.starter.lastSound=0;this.starter.lastSoundScene=null;this.crossing.destination=null;this.crossing.uiRoom=null;this.characters.reset();this.classes.reset();this.earth?.notes.reset();this.earth?.reset();}
+ reset(){this.civic?.carrier?.reset('owner');this.expedition?.reset('owner');this.earthHomecoming?.reset();this.realmAtlas?.reset();this.gathering?.reset();if(this.dialog.open)this.close();this.item=null;this.seenPhase='';this.filter='all';this.search='';this.recipe='trail_bow';this.craftFilter='weapons';this.avatarDrag=null;this.lastPreview=-1;this.pursuit.selected=null;this.starter.temper=null;this.starter.destination=null;this.starter.lastSound=0;this.starter.lastSoundScene=null;this.crossing.destination=null;this.crossing.uiRoom=null;this.characters.reset();this.classes.reset();this.earth?.notes.reset();this.earth?.reset();}
  action(el){const act=el.dataset.rpg,tracking=act==='track'||act==='civic-track'||/^(earth-homecoming|cosmos-campaign|atlantis-campaign|heaven-campaign|hell-campaign|community|local-life)-track$/.test(act)||act==='pursuit-pin'||act==='pursuit-start';
   if(!tracking)return this.dispatchAction(el);this.trackerSelecting=true;
   try{return this.dispatchAction(el);}finally{this.trackerSelecting=false;this.tick();}
@@ -162,7 +162,7 @@ class RPGUI{
  }
  intercept(name){const map={armory:'craft',craft:'craft',pack:'bag',adventure:'journal',journey:'journal'};if(map[name]){if(name==='journey')this.quest='homestead';this.open(map[name]);return true;}return false;}
  interact(){
-  if(this.earthHomecoming.interact())return true;if(this.cosmosCampaign.interact())return true;if(this.atlantisCampaign.interact())return true;if(this.heavenCampaign.interact())return true;if(this.hellCampaign.interact())return true;if(this.community.interact())return true;if(this.civic.interact())return true;if(this.expedition.interact())return true;if(this.trails.interact())return true;if(this.worlds.interact())return true;
+  if(this.earthHomecoming.interact())return true;if(this.cosmosCampaign.interact())return true;if(this.atlantisCampaign.interact())return true;if(this.heavenCampaign.interact())return true;if(this.hellCampaign.interact())return true;if(this.civic.carrier.interact())return true;if(this.community.interact())return true;if(this.civic.interact())return true;if(this.expedition.interact())return true;if(this.trails.interact())return true;if(this.worlds.interact())return true;
   if(this.gathering.interact())return true;
   if(this.earth.interact())return true;
   if(this.cosmos.interact())return true;

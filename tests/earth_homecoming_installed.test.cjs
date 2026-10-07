@@ -58,8 +58,47 @@ test('optional Core owner is canonical and missing-field migration preserves XP1
  assert.deepEqual(C.fresh().earthHomecoming,H.fresh());assert.equal(C.VERSION,9);
  for(const xp of[1,2,3,4,5,9999]){const raw=seed();delete raw.earthHomecoming;raw.adventure.xp=xp;raw.adventure.hp=Math.min(raw.adventure.hp,A.stats(raw.adventure).maxHP);const old=copy(raw),out=C.validate(raw);assert.deepEqual(out.earthHomecoming,H.fresh());delete out.earthHomecoming;assert.deepEqual(out,old);assert.deepEqual(raw,old);}
 });
-test('historical full-world input is unchanged except the real optional default; no flags transplanted',()=>{
- for(const variant of['blade','bow']){const input=JSON.parse(fs.readFileSync(historical[variant].file,'utf8')),out=seed(variant);assert.deepEqual(H.missing(out),[]);assert.equal(out.earthHomecoming.accepted,false);delete out.earthHomecoming;assert.deepEqual(out,input);}
+test('historical full-world input keeps every old fact and gains only the real optional defaults; no flags transplanted',()=>{
+ for(const variant of['blade','bow']){const bytes=fs.readFileSync(historical[variant].file),input=JSON.parse(bytes),expected=copy(input),out=seed(variant);assert.equal(Object.hasOwn(input.localLife.records,'earth-first-load-through-v1'),false);expected.localLife.records['earth-first-load-through-v1']={accepted:false,choice:null,steps:[],claimed:false};assert.deepEqual(H.missing(out),[]);assert.equal(out.earthHomecoming.accepted,false);delete out.earthHomecoming;assert.deepEqual(out,expected);assert.deepEqual(fs.readFileSync(historical[variant].file),bytes);assert.equal(Object.hasOwn(input.localLife.records,'earth-first-load-through-v1'),false);}
+});
+test('long earned-journey migration oracle requires the exact fresh catalogue addition and every prior field',()=>{
+ const P=require('../tools/earth-homecoming-journey/earned_common.cjs');
+ for(const variant of['blade','bow']){
+  const bytes=fs.readFileSync(historical[variant].file),raw=JSON.parse(bytes),out=C.validate(raw),original=copy(raw);
+  assert.equal(P.assertMigrationPreserved(out,raw),'exact-old-four-to-fresh-first-load');
+  for(const mutate of[
+   w=>{delete w.localLife.records['earth-first-load-through-v1'];},
+   w=>{w.localLife.records['earth-first-load-through-v1'].accepted=true;},
+   w=>{w.localLife.records['earth-first-load-through-v1'].claimed=true;},
+   w=>{w.localLife.records['atlantis-bellglass-lamp-v1'].choice='desk';},
+   w=>{w.adventure.xp++;},w=>{w.adventure.coins++;},w=>{w.sandbox.inventory.wood++;}
+  ]){const bad=copy(out);mutate(bad);assert.throws(()=>P.assertMigrationPreserved(bad,raw),/EVERY prior field/);}
+  assert.deepEqual(raw,original);assert.deepEqual(fs.readFileSync(historical[variant].file),bytes);
+ }
+});
+test('earned migration oracle never refreshes existing fifth-record history',()=>{
+ const P=require('../tools/earth-homecoming-journey/earned_common.cjs'),raw=seed();delete raw.earthHomecoming;
+ // Labelled catalogue-history oracle boundaries, not command-earned progress.
+ for(const record of[
+  {accepted:true,choice:'south-stormfall',steps:[],claimed:false},
+  {accepted:true,choice:'south-stormfall',steps:['arrive-meadow-stop'],claimed:false},
+  {accepted:true,choice:'south-stormfall',steps:['arrive-meadow-stop','arrive-field-return-stop','arrive-field-gate-stop','arrive-settlement-approach','arrive-merren-receiving-bay'],claimed:true}
+ ]){
+  const input=copy(raw);input.localLife.records['earth-first-load-through-v1']=copy(record);
+  const output=copy(input);output.earthHomecoming=H.fresh();assert.equal(P.assertMigrationPreserved(output,input),null);
+  output.localLife.records['earth-first-load-through-v1']={accepted:false,choice:null,steps:[],claimed:false};
+  assert.throws(()=>P.assertMigrationPreserved(output,input),/EVERY prior field/);
+ }
+});
+test('malformed comma-joined catalogue keys cannot impersonate the four original IDs',()=>{
+ const P=require('../tools/earth-homecoming-journey/earned_common.cjs'),raw=seed();delete raw.earthHomecoming;
+ // Negative oracle-only specimen; actual Core refuses this malformed catalogue.
+ const ids=['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1'].sort();
+ raw.localLife.records={[ids.join(',')]:{accepted:false,choice:null,steps:[],claimed:false}};
+ assert.throws(()=>C.validate(raw));const output=copy(raw);output.earthHomecoming=H.fresh();
+ assert.equal(P.assertMigrationPreserved(output,raw),null);
+ output.localLife.records['earth-first-load-through-v1']={accepted:false,choice:null,steps:[],claimed:false};
+ assert.throws(()=>P.assertMigrationPreserved(output,raw),/EVERY prior field/);
 });
 test('Core validates every prerequisite before accepted homecoming and rejects absent Open Confluence',()=>{
  const f=fixture();accept(f);assert.doesNotThrow(()=>C.validate(f.sim.snapshot()));
