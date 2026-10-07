@@ -1,3 +1,24 @@
+# Frame-based input and terminal recording repair await fresh qualification
+
+The parent adopted the reviewed frame-input/HP/far-wait repairs and an explicit capture deadline outcome. The actual shared RAF promise distinguishes two confirmed frames from a validated expired budget; native journeys still fail on expiry, while recording may finish only its intentional camera interval and must retain walking, displacement, sample, state and 15–20-second recorder guards. A real 120 ms budget with callbacks at 80/160 ms is covered by the unchanged actual JS and capture caller. Unexpected errors and early deadlines propagate; keys release in every outcome. Staged composition passed57/57 with zero skips; the parent installed deadline regression passed10/10. The first56/57 fixture failure and original-source negative remain retained. These are labelled CPU schedules, not actual native gameplay.
+
+The regenerated identical pages remain3144843 bytes / SHA256 `5d28fb7bcaca0de8284a7e38dbac3f35ebe2c0c64e721585ca73f6ea0e20ea5d`. The next committed source requires a fresh source05 earned cohort, native02 six routes plus two refusal boundaries and far-wait recovery, then one sealed hardware clip and complete remote qualification. Source04 and native01 keep their original head and outcomes; no historical rehash or fallback is permitted. ROOT is parent-owned; colleagues stage only small independent files. Wider production remains active, the heartbeat paused and AAA completion unclaimed.
+
+---
+
+# First-load source checks pass; native input repair awaits fresh qualification
+
+Draft PR52 is open and stacked against PR51. Source `287120fc574201597094f209bfeedc822113f81f` completed the full source verifier at `2026-10-07T01:41:10.7622185Z`: 197 commands/129 syntax modules, Node1800 passed with2 explicit generic-cohort skips, Python322 methods with0 failures/errors and8 skip records. The current earned cohort and22-check mandatory native preflight passed. That source-only result does not qualify its browser journeys.
+
+Actual native01 failed after69 earlier checks passed: native acceptance/restart, compact controls and supplied cargo pixels in both cameras passed, but the first blade-south leg timed out. A retained normal-RAF diagnostic reproduced `waiting/player-far`: the carrier moved10.48m while 110ms key taps left the player nearly stationary at2-5FPS software rendering. Actual Core/World geometry ruled out a collision at the stalled point. A second diagnostic from the same approach held keys through real frames and transported the carrier19.92m with the player following and no saved arrival. Both diagnostic attempts ultimately failed on their auxiliary scripts requesting near/far controls that the actual UI correctly omitted; neither is a completed route or Low-quality qualification. Native01, both traces, screenshots and errors remain retained.
+
+The repair holds native keys across two actual RAF callbacks, bounds and releases input, retains the last five atomic diagnostics, and reports unexpected waiting/pause. Software verification deliberately selects Low through the real settings UI; hardware capture selects Balanced. Production defaults and simulation timing stay unchanged. A branded far-wait tracker now explains catchup and deliberate Continue. One actual blade-south boundary will verify that cue, compact rendering, native catchup and explicit resume before the complete six-route/eight-case gate.
+
+Installed focused checks passed24 UI/motion-feedback,21 native guard,7 actual extracted scheduler/JS-wait and19 shared capture-controller checks, no skips or failures. The new source candidate still needs its own full verifier/current earned cohort, native routes, short RTX clip and exact fresh remote gate/readback. Regenerated pages are identical3144843 bytes / SHA256 `5d28fb7bcaca0de8284a7e38dbac3f35ebe2c0c64e721585ca73f6ea0e20ea5d`.
+
+Hosted source run37558067551 failed48 jobs without executing steps; the inspected annotation says the account is locked by a billing issue. No billing action or rerun was attempted. Human pacing/enjoyment, display/GPU performance and wider AAA completion remain unqualified. World9/Adventure12/LocalLife1, old keys, XP, histories, inventory/equipment, companion/housing/music and both cameras remain protected. Heavy work stays D; no additional full checkout, cleanup, main merge or public deployment. Root owns integration; source/native/capture processes are closed. Wider goal ACTIVE; old heartbeat PAUSED.
+
+---
 # Earned-journey migration and import-oracle review; qualification remains pending
 
 Source03 at `2bdd963a424ae9ca5d97e16943d1e3b4f2ddd73e` passed Node1797

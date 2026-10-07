@@ -84,10 +84,36 @@ class DriverCPU(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'source epoch changed'):H.cohort(HERE/'SYNTHETIC-header.json',HERE)
 
     def test_native_follow_reads_real_hp_snapshot_not_absent_diagnostic_field(self):
-        tree=ast.parse(SOURCE.read_text());node=next(n for c in tree.body if isinstance(c,ast.ClassDef) and c.name=='Native' for n in c.body if isinstance(n,ast.FunctionDef) and n.name=='follow')
-        text=ast.get_source_segment(SOURCE.read_text(),node)
-        self.assertIn("self.state()['adventure']['hp']",text)
-        self.assertNotIn("d['adventure']['hp']",text)
+        # Explicit synthetic CPU fixture: diagnostics has no HP; actual state does.
+        # Execute the actual atomic JS sample and the actual dead-traveller guard.
+        from types import SimpleNamespace
+        tree=ast.parse(SOURCE.read_text());owner=next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='Native')
+        sample=next(n for n in owner.body if isinstance(n,ast.FunctionDef) and n.name=='follow_sample')
+        text=ast.get_source_segment(SOURCE.read_text(),sample)
+        self.assertIn('s=Realm.state',text);self.assertIn('hp:s.adventure.hp',text)
+        self.assertNotIn('d.adventure.hp',text)
+        runner=r"""const fs=require('fs'),vm=require('vm'),p=JSON.parse(fs.readFileSync(0,'utf8')),canvas={};
+         const context={Realm:{diagnostics:{scene:'world-earthlands',adventure:{player:{x:0,z:0},paused:false},
+          camera:{yaw:0},fps:5,consignment:{view:{x:0,z:0,status:'moving',ready:false,distanceTraveled:0},frame:{walking:true}}},
+          state:{adventure:{hp:p.hp,elapsed:0},settings:{quality:'low'},localLife:{records:{'earth-first-load-through-v1':{steps:[]}}}}},
+          document:{activeElement:canvas,hidden:false,querySelector:()=>canvas}};
+         const value=vm.runInNewContext('('+p.js+')()',context);
+         if(Object.hasOwn(context.Realm.diagnostics.adventure,'hp'))throw Error('Synthetic diagnostic HP must stay absent');
+         process.stdout.write(JSON.stringify(value));"""
+        for hp in (0,80):
+            def evaluate(js,arg=None):
+                self.assertIsNone(arg)
+                result=subprocess.run(['node','-e',runner],input=json.dumps({'js':js,'hp':hp}),text=True,capture_output=True,check=True,timeout=5)
+                return json.loads(result.stdout)
+            observer=SimpleNamespace(ev=evaluate,report={'head':'SYNTHETIC-HP-BOUNDARY'},row={})
+            value=H.Native.follow_sample(observer)
+            self.assertEqual(value['hp'],hp);self.assertEqual(observer.row['followDiagnostics'][-1]['hp'],hp)
+            if hp==0:
+                released=[];observer.close=lambda:None;observer.view=lambda:value['view'];observer.record=lambda:{'steps':[]}
+                observer.follow_sample=lambda:value
+                observer.page=SimpleNamespace(locator=lambda selector:SimpleNamespace(focus=lambda:None),keyboard=SimpleNamespace(up=released.append))
+                with self.assertRaisesRegex(AssertionError,'Actual traveller died'):H.Native.follow(observer)
+                self.assertEqual(set(released),{'w','a','s','d'})
 
     def test_every_native_case_receives_its_served_origin_and_unique_case(self):
         # Static correspondence catches a real constructor/caller mismatch

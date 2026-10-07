@@ -4,7 +4,7 @@ No passed native report, current cohort or GPU/recording result is fabricated.
 Real installed capture preflight remains mandatory before browser import.
 """
 from pathlib import Path
-from types import SimpleNamespace
+from types import SimpleNamespace, MethodType
 import ast
 import copy
 import hashlib
@@ -183,10 +183,23 @@ class ControllerCPU(unittest.TestCase):
     def driver(self,*,blocked=False,ready=False,auto=False,focus=True,walking=True):
         clock=[0.0];pressed=[];released=[]
         keys=SimpleNamespace(down=lambda k:pressed.append(k),up=lambda k:released.append(k))
-        page=SimpleNamespace(locator=lambda s:SimpleNamespace(focus=lambda:None),keyboard=keys,wait_for_timeout=lambda ms:clock.__setitem__(0,clock[0]+ms/1000))
+        def pulse_refused(ms):raise AssertionError('Capture must share frame-held native input rather than wall-time key pulses')
+        page=SimpleNamespace(locator=lambda s:SimpleNamespace(focus=lambda:None),keyboard=keys,wait_for_timeout=pulse_refused)
+        def evaluate(js,limit=None):
+            if js==H.RAF_NATIVE_INPUT:
+                self.assertIsInstance(limit,int);self.assertGreaterEqual(limit,1);self.assertLessEqual(limit,10000)
+                if limit<34:
+                    clock[0]+=limit/1000
+                    return {'deadline':True,'frames':0,'elapsedMs':limit}
+                clock[0]+=.034
+                return {'frames':2,'elapsedMs':34}
+            return focus
         view=lambda:{'x':clock[0]*1.6,'z':0,'status':'blocked' if blocked else 'moving','ready':ready}
         steps=lambda:{'steps':['synthetic-illegal-auto-arrival'] if auto and clock[0]>.1 else []}
-        d=SimpleNamespace(page=page,close=lambda:None,ev=lambda js:focus,view=view,record=steps,state=lambda:{'adventure':{'hp':100}},diag=lambda:{'consignment':{'view':view(),'frame':{'walking':walking}},'adventure':{'player':{'x':clock[0]*1.6-2,'z':0},'paused':False},'camera':{'yaw':0,'preset':'adventure'}})
+        d=SimpleNamespace(page=page,close=lambda:None,ev=evaluate,view=view,record=steps,state=lambda:{'adventure':{'hp':100}},diag=lambda:{'consignment':{'view':view(),'frame':{'walking':walking}},'adventure':{'player':{'x':clock[0]*1.6-2,'z':0},'paused':False},'camera':{'yaw':0,'preset':'adventure'}})
+        # The actual shared helper owns key release; this CPU surface supplies
+        # labelled callback confirmations, never real gameplay or GPU evidence.
+        d.hold_native_keys_for_frames=MethodType(H.Native.hold_native_keys_for_frames,d)
         return d,clock,pressed,released
 
     def test_follow_controller_uses_native_keys_and_observed_motion(self):
@@ -200,8 +213,11 @@ class ControllerCPU(unittest.TestCase):
 
     def test_pressed_native_keys_are_released_when_waiting_throws(self):
         h,clock,pressed,released=self.driver()
-        def fail(ms):raise OSError('synthetic controller failure')
-        h.page.wait_for_timeout=fail
+        original=h.ev
+        def fail(js,limit=None):
+            if js==H.RAF_NATIVE_INPUT:raise OSError('synthetic frame-wait failure')
+            return original(js,limit)
+        h.ev=fail
         with self.assertRaises(OSError):C.follow_until(h,H,1.5,{'motionSamples':[]},clock=lambda:clock[0])
         self.assertEqual(pressed,released)
 

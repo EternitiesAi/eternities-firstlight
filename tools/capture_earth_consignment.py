@@ -109,7 +109,7 @@ def follow_until(h,H,deadline,report,clock=time.monotonic):
     """Bounded real native controls; test seams do not advance a real simulation."""
     h.close();h.page.locator('#world').focus()
     if h.ev('()=>document.activeElement===document.querySelector("#world")') is not True:raise AssertionError('Native canvas focus unavailable')
-    prefix=list(h.record()['steps']);start=h.view();walking=False;samples=0;last_sample=-math.inf
+    prefix=list(h.record()['steps']);start=h.view();walking=False;samples=0;last_sample=-math.inf;terminal=None
     while clock()<deadline:
         d=h.diag();v=d['consignment']['view'];p=d['adventure']['player']
         if h.record()['steps']!=prefix:raise AssertionError('Short capture cannot auto-record an arrival')
@@ -119,14 +119,21 @@ def follow_until(h,H,deadline,report,clock=time.monotonic):
         if clock()-last_sample>=.5:
             report['motionSamples'].append({'player':p,'worker':{'x':v['x'],'z':v['z']},'status':v['status'],'walking':bool(frame and frame['walking']),'camera':d['camera']['preset']});last_sample=clock()
         keys=H.native_keys(p,v,d['camera']['yaw'])
+        remaining=deadline-clock()
+        if remaining<=0:break
         try:
-            for key in keys:h.page.keyboard.down(key)
-            h.page.wait_for_timeout(min(110 if keys else 80,max(1,(deadline-clock())*1000)))
-        finally:
-            for key in keys:h.page.keyboard.up(key)
-    end=h.view()
+            # Ceil covers the final fractional millisecond of the real interval.
+            h.hold_native_keys_for_frames(keys,min(10000,max(1,math.ceil(remaining*1000))))
+        except H.NativeInputDeadline as error:
+            if clock()<deadline:raise
+            terminal={'budgetMs':error.timeout_ms,'frames':error.frames,'elapsedMs':error.elapsed_ms}
+            break
+    d=h.diag();end=d['consignment']['view']
+    if h.record()['steps']!=prefix:raise AssertionError('Short capture cannot auto-record an arrival')
+    if h.state()['adventure']['hp']<=0 or end['status']=='blocked':raise AssertionError('Actual death/threat/support interrupted capture')
+    if end['ready'] or end['status']!='moving' or d['adventure']['paused']:raise AssertionError('Real carrier movement stopped before bounded clip end')
     if not walking or samples<2 or H.distance(start,end)<1:raise AssertionError('No real walking carrier motion in this camera interval')
-    return {'initial':start,'final':end,'samples':samples,'walkingObserved':walking}
+    return {'initial':start,'final':end,'samples':samples,'walkingObserved':walking,'terminalDeadline':terminal}
 
 
 def close_owned(h,server,report,retain):

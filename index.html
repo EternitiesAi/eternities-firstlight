@@ -5975,7 +5975,7 @@ class ConsignmentUI{
  tracker(){
   const r=record(this.sim);if(!r?.accepted||r.claimed)return null;
   const v=this.live(),route=D.routes[D.choice(r.choice).route],complete=r.steps.length===D.required(r).length;
-  return{title:D.definition.title,detail:this.sim.room!==D.ROOM?'Revisit Coastward to resume the supplied load':complete?'Delivered · return to Merren for the separate payment':v?.ready?'E · record arrival at '+name(v.next):v?.status==='blocked'?'Carrier waiting · '+(v.detail||v.reason):v?.status==='moving'?'Stay nearby · '+name(v.next):'E · continue at the supplied carrier',progress:r.steps.length+'/'+D.required(r).length+' arrivals · J work · M route'};
+  return{title:D.definition.title,detail:this.sim.room!==D.ROOM?'Revisit Coastward to resume the supplied load':complete?'Delivered · return to Merren for the separate payment':v?.ready?'E · record arrival at '+name(v.next):v?.status==='blocked'?'Carrier waiting · '+(v.detail||v.reason):v?.status==='moving'?'Stay nearby · '+name(v.next):v?.status==='waiting'&&v.reason==='player-far'?(at(this.sim,v)?'Carrier waiting · E · deliberately choose Continue':'Carrier waiting · catch up to the load, then E · deliberately choose Continue'):'E · continue at the supplied carrier',progress:r.steps.length+'/'+D.required(r).length+' arrivals · J work · M route'};
  }
 }
 const api=Object.freeze({ConsignmentUI,routePoints,routeLine,legend,name});G.RealmEarthConsignmentUI=api;if(typeof module!=='undefined')module.exports=api;

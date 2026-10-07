@@ -168,6 +168,25 @@ def pixels_valid(data):
     return data['changed']>10 and data['delta']==0 and data['glError']==0 and data['unchanged'] is True and data['restored'] is True
 
 
+class NativeInputDeadline(RuntimeError):
+    """Validated ordinary-RAF budget expiry; native journeys remain strict."""
+    def __init__(self,timeout_ms,frames,elapsed_ms):
+        self.timeout_ms,self.frames,self.elapsed_ms=timeout_ms,frames,elapsed_ms
+        super().__init__('Native input RAF deadline: two ordinary frames were not observed within '+str(timeout_ms)+' ms')
+
+
+RAF_NATIVE_INPUT = r"""limit=>new Promise(resolve=>{
+ const start=performance.now();let done=false,frames=0,timer;
+ const deadline=()=>{if(done)return;const elapsedMs=performance.now()-start;
+  if(elapsedMs<limit){timer=setTimeout(deadline,Math.ceil(limit-elapsedMs));return;}
+  done=true;clearTimeout(timer);resolve({deadline:true,frames,elapsedMs});};
+ timer=setTimeout(deadline,limit);
+ const frame=()=>{if(done)return;if(performance.now()-start>=limit){deadline();return;}
+  if(++frames===2){done=true;clearTimeout(timer);resolve({frames,elapsedMs:performance.now()-start});}
+  else requestAnimationFrame(frame);};
+ requestAnimationFrame(frame);
+})"""
+
 class Native:
     def __init__(self,pw,args,report,origin,case):
         self.pw,self.args,self.report,self.origin,self.case=pw,args,report,origin,case
@@ -221,7 +240,11 @@ class Native:
         with self.page.expect_file_chooser() as chooser:self.click('[data-rpg="chars-import"]')
         chooser.value.set_files(str(source));self.page.wait_for_selector('[data-rpg="chars-confirm-import"]');self.click('[data-rpg="chars-confirm-import"]')
         self.page.wait_for_function('()=>Realm.diagnostics.characters.active==="character-2"&&Realm.diagnostics.characters.writer===true')
-        self.close();self.click('#settings');self.page.locator('#setting-timeFlow').uncheck();self.click('#close-panel')
+        self.close();self.click('#settings');self.page.locator('#setting-timeFlow').uncheck()
+        quality='low' if self.args.renderer=='software' else 'balanced'
+        self.page.locator('#quality').select_option(quality);self.click('#close-panel')
+        actual=self.state()['settings']['quality'];self.row['nativeQuality']={'requested':quality,'actual':actual,'rendererRequest':self.args.renderer}
+        self.check('actual native rendering quality selected through settings UI',actual==quality,self.row['nativeQuality'])
     def stored(self):
         return self.ev('()=>{const s=RealmCharacters.validate(JSON.parse(localStorage.getItem(RealmCharacters.KEY)));return s.slots.find(v=>v.id===s.active).world;}')
     def capture(self,label):
@@ -270,32 +293,97 @@ class Native:
         self.check('startup reads exact final native bytes',self.ev('()=>window.__flStartup')==raw)
         after=self.state();self.check('whole browser restart preserves saved checkpoint and owner facts',self.diag()['scene']=='valley' and after['localLife']==before['localLife'] and after['sandbox']['inventory']==before['sandbox']['inventory'] and after['adventure']['coins']==before['adventure']['coins'] and preserved(after)==preserved(before))
         self.row['restarts'].append(label)
+    def follow_sample(self):
+        # One JS turn: no RAF tick can separate player/view/prefix/clock reads.
+        value=self.ev(r"""()=>{const d=Realm.diagnostics,s=Realm.state;return {
+         scene:d.scene,player:d.adventure.player,view:d.consignment?.view||null,
+         paused:d.adventure.paused,fps:d.fps,yaw:d.camera.yaw,frame:d.consignment?.frame||null,
+         hp:s.adventure.hp,elapsed:s.adventure.elapsed,quality:s.settings.quality,
+         prefix:s.localLife.records["earth-first-load-through-v1"].steps,
+         focused:document.activeElement===document.querySelector("#world"),hidden:document.hidden};}""")
+        value['head']=self.report.get('head')
+        retained={k:v for k,v in value.items() if k!='frame'}
+        history=self.row.setdefault('followDiagnostics',[]);history.append(retained);del history[:-5]
+        return value
+
+    def hold_native_keys_for_frames(self,keys,timeout_ms=10000):
+        # Capture may share this helper with its own smaller remaining budget.
+        if type(timeout_ms) is not int or not 1<=timeout_ms<=10000:
+            raise ValueError('Native RAF input budget must be 1..10000 ms')
+        if not isinstance(keys,(tuple,list)) or any(k not in ('w','a','s','d') for k in keys):
+            raise ValueError('Only native traveller movement keys are allowed')
+        try:
+            for key in keys:self.page.keyboard.down(key)
+            observed=self.ev(RAF_NATIVE_INPUT,timeout_ms)
+            valid=(isinstance(observed,dict) and type(observed.get('frames')) is int and
+                   type(observed.get('elapsedMs')) in (int,float) and math.isfinite(observed['elapsedMs']))
+            if valid and observed.get('deadline') is True:
+                if set(observed)!={'deadline','frames','elapsedMs'} or not 0<=observed['frames']<2 or observed['elapsedMs']<timeout_ms:
+                    raise RuntimeError('Native input did not confirm a valid ordinary RAF deadline')
+                raise NativeInputDeadline(timeout_ms,observed['frames'],observed['elapsedMs'])
+            if (not valid or set(observed)!={'frames','elapsedMs'} or observed['frames']!=2 or
+                    not 0<=observed['elapsedMs']<timeout_ms):
+                raise RuntimeError('Native input did not confirm two bounded ordinary RAF callbacks')
+            return observed
+        finally:
+            for key in keys:self.page.keyboard.up(key)
+
     def follow(self,stop_after=None):
         self.close();start=time.monotonic();initial=self.view();prefix=self.record()['steps'];moving_sample=None
         self.page.locator('#world').focus()
-        while time.monotonic()-start<240:
-            d=self.diag();v=d['consignment']['view'];p=d['adventure']['player']
-            if self.record()['steps']!=prefix:raise AssertionError('Automatic durable arrival bypassed native record control')
-            if self.state()['adventure']['hp']<=0:raise AssertionError('Actual traveller died; no rescued positive result')
-            if v['status']=='blocked':raise AssertionError('Actual threat/support blocked: '+str(v.get('detail') or v.get('reason')))
-            if v['ready']:
-                self.check('normal RAF actually transported carrier without automatic arrival',distance(initial,v)>.5 and v['distanceTraveled']>0 and moving_sample is not None)
-                self.row['samples'].append({'initial':initial,'ready':v,'seconds':time.monotonic()-start,'movingFrame':moving_sample});return v
-            if v['status']=='moving' and d['consignment']['frame'] and d['consignment']['frame']['walking']:moving_sample=d['consignment']['frame']
-            if stop_after is not None and distance(initial,v)>=stop_after:return v
-            keys=native_keys(p,v,d['camera']['yaw'])
-            try:
-                for key in keys:self.page.keyboard.down(key)
-                self.page.wait_for_timeout(110 if keys else 80)
-            finally:
-                for key in keys:self.page.keyboard.up(key)
-        raise TimeoutError('Real native carrier leg did not complete')
+        try:
+            while time.monotonic()-start<240:
+                d=self.follow_sample();v=d['view'];p=d['player']
+                if d['prefix']!=prefix:raise AssertionError('Automatic durable arrival bypassed native record control')
+                if d['hp']<=0:raise AssertionError('Actual traveller died; no rescued positive result')
+                if not v or d['scene']!='world-earthlands':raise AssertionError('Actual Earthlands carrier context disappeared')
+                if d['paused'] or v['status']=='paused':raise AssertionError('Actual traveller/carrier paused unexpectedly during native following')
+                if d['hidden'] or not d['focused']:raise AssertionError('Actual native canvas lost visible input focus')
+                if v['status']=='blocked':raise AssertionError('Actual threat/support blocked: '+str(v.get('detail') or v.get('reason')))
+                if v['ready']:
+                    self.check('normal RAF actually transported carrier without automatic arrival',distance(initial,v)>.5 and v['distanceTraveled']>0 and moving_sample is not None)
+                    self.row['samples'].append({'initial':initial,'ready':v,'seconds':time.monotonic()-start,'movingFrame':moving_sample});return v
+                if v['status']!='moving':raise AssertionError('Actual carrier stopped during native following: '+str(v['status'])+' / '+str(v.get('detail') or v.get('reason')))
+                if d['frame'] and d['frame']['walking']:moving_sample=d['frame']
+                if stop_after is not None and distance(initial,v)>=stop_after:return v
+                remaining=240-(time.monotonic()-start)
+                if remaining<=0:break
+                self.hold_native_keys_for_frames(native_keys(p,v,d['yaw']),min(10000,max(1,math.floor(remaining*1000))))
+            raise TimeoutError('Real native carrier leg did not complete within 240 seconds')
+        except Exception as error:
+            self.row['followError']=str(error);raise
+        finally:
+            for key in ('w','a','s','d'):self.page.keyboard.up(key)
     def compact(self):
         self.page.set_viewport_size({'width':390,'height':844});self.panel()
         self.check('compact readable controls without horizontal overflow',self.ev('()=>document.documentElement.scrollWidth<=innerWidth+1'))
         for loc in self.page.locator('[data-consignment-panel] button').all():
             loc.scroll_into_view_if_needed();r=loc.bounding_box();self.check('compact native button remains reachable',r is not None and r['x']>=-1 and r['x']+r['width']<=391,r)
         self.page.screenshot(path=str(self.folder/'COMPACT.png'));self.page.set_viewport_size({'width':1440,'height':960})
+    def far_wait_probe(self):
+        """One real standing-player retreat boundary, with visible recovery.
+
+        The carrier walks normally while the player deliberately stays behind.
+        Neither position nor saved progress is edited to manufacture this wait.
+        """
+        self.close();self.page.locator('#world').focus();start=time.monotonic();initial=self.follow_sample()
+        while time.monotonic()-start<60:
+            actual=self.follow_sample();v=actual['view']
+            if actual['paused'] or actual['hp']<=0 or not v or v['status']=='blocked':raise AssertionError('Actual carrier far-wait probe interrupted')
+            if v['status']=='waiting' and v['reason']=='player-far':break
+            self.page.wait_for_timeout(100)
+        else:raise TimeoutError('Actual standing-player separation did not suspend carrier')
+        self.check('real carrier auto-wait keeps unsaved work and unchanged standing player',distance(initial['player'],actual['player'])<1e-8 and v['distanceTraveled']>0 and distance(actual['player'],v)>10 and self.record()['steps']==[])
+        self.row['farWaitProbe']={'initial':initial,'far':actual,'seconds':time.monotonic()-start}
+        self.page.wait_for_function('()=>document.querySelector("#tracked-detail").textContent.includes("catch up to the load")')
+        self.check('actual far tracker explains catchup and deliberate Continue','deliberately choose Continue' in self.page.locator('#tracked-detail').inner_text())
+        self.page.set_viewport_size({'width':390,'height':844});self.hold_native_keys_for_frames(())
+        self.check('actual compact far-wait feedback stays visible without overflow',self.page.locator('#tracked-detail').is_visible() and self.ev('()=>document.documentElement.scrollWidth<=innerWidth+1'))
+        self.page.screenshot(path=str(self.folder/'FAR_WAIT_COMPACT.png'));self.page.set_viewport_size({'width':1440,'height':960})
+        self.walk_work('carrier');near=self.follow_sample()
+        self.check('native catchup retains actual waiting load without auto-resume',near['view']['status']=='waiting' and near['view']['reason']=='player-far' and distance(near['view'],v)<1e-8 and self.record()['steps']==[])
+        self.page.wait_for_function('()=>document.querySelector("#tracked-detail").textContent.includes("Carrier waiting · E · deliberately choose Continue")')
+        self.action('continue');self.check('deliberate native Continue resumes after catchup',self.view()['status']=='moving')
     def pixels(self,label,stock=False):
         for camera in ('follow','adventure'):
             self.close();self.click('#rpg-hud [data-rpg="camera"][data-id="'+camera+'"]');self.page.keyboard.press('r');self.page.wait_for_timeout(250)
@@ -316,6 +404,7 @@ class Native:
         self.compact();self.action('accept',route+'-'+origin['suffix']);self.check('native acceptance changes no earlier history or materials',preserved(self.state())==preserved(before) and self.state()['sandbox']['inventory']==before['sandbox']['inventory'] and self.record()['steps']==[])
         self.restart('ACCEPTED');self.enter();self.walk_work('carrier');self.pixels('SUPPLIED');self.action('wait');self.close();v=self.view();self.page.wait_for_timeout(450);self.check('explicit Wait retains actual unsaved position',distance(v,self.view())<1e-8 and self.record()['steps']==[])
         count=5 if route=='south' else 12;self.action('continue')
+        if self.case=='blade-south':self.far_wait_probe()
         for index in range(count):
             self.follow();self.panel();ready=self.state();self.check('leg is unpaid and materials retained before native arrival',preserved(ready)==preserved(before) and ready['sandbox']['inventory']==before['sandbox']['inventory'] and ready['adventure']['coins']==before['adventure']['coins'])
             self.action('continue');self.check('native arrival appends exactly one expected contiguous stop',len(self.record()['steps'])==index+1 and self.record()['steps']==self.ev('()=>RealmEarthConsignmentData.required(Realm.state.localLife.records[RealmEarthConsignmentData.ID]).slice(0,Realm.state.localLife.records[RealmEarthConsignmentData.ID].steps.length)'))
