@@ -1,3 +1,15 @@
+# First-load qualification and next creature preview, 2026-10-07
+
+The complete remote verifier at source `61010762ea3600cf6396bc0fb03663a155e3372a` closed exit 1 at 2026-10-07T05:27:49Z. The source prefix and Earth homecoming suite passed; onboarding reached its final stage with 49 recorded checks passed, then its direct resume-clock assertion failed. The mandatory first-load six-route/two-refusal suite and remaining browser commands were not reached. Original process, console and private synthetic-world report remain retained under D:/07-GAMES/Firstlight/artifacts/first-load-through-20261006/remote-full01*.
+
+The driver now captures the first actual incoming unpaused Core tick and the bounded subsequent actual dt/paused sequence, without changing advancement. The original first-tick predictor and oracle remain byte-identical. Genuine installed Core replays the sequence and compares the complete final world with only the existing cameraViews allowance; 32 ticks / 1.6 active seconds are the finite bounds. Parent browser execution and a new complete source/remote gate are pending. Runtime modules and both generated HTML outputs remain unchanged.
+
+ROOT owns the integrated D checkout; STATION is the reused detached remote qualification checkout. Two colleagues prepare small independent next-encounter files; those files and the labelled RAM visual previews are uninstalled and unqualified. Preserve old saves, stored XP, choices, gear/sockets, all ledgers, housing, companion, music and both cameras. No main merge, public deployment, paid providers, billing intervention, personal-save access, unrelated stops or cleanup. Production goal remains ACTIVE and unfinished; old heartbeat remains PAUSED.
+
+Two labelled synthetic native previews used RTX3080 ANGLE D3D11 with the RAM candidate: third person and explicitly focused diorama, including 390-pixel width. The animal is visible after using Look west again following a camera switch. These previews contain no earned observation, encounter resolution or payment, and measure neither FPS nor human enjoyment. Ask Dom after qualification: Was the carrier outing enjoyable? Did the animal signs make the next action clear? Did avoiding or clearing the real pest feel worthwhile? Human answers remain pending.
+
+---
+
 # First-load candidate: visible acceptance pending, 2026-10-06
 
 Integrated source and native qualification are pending. Pre-installation CPU composition passed118 checks; frozen original commission/home CPU53/53 and adapter11/11 passed. Current-cohort routing9/9, native guard19/19 and capture18/18 are preparation only. The actual original EE producer must earn fresh blade/bow/veteran prerequisites at this source epoch. Six ordinary-RAF native routes plus separately labelled capacity/quota refusal, cold reloads, current pixel geometry and both cameras must pass. One short actual hardware recording follows a passed native report and explicitly sealed input; it cannot qualify human pacing or production FPS. Full source, relevant/full remote checks and exact final readback remain required.

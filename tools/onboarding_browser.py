@@ -225,6 +225,123 @@ def require_initial_resume(root, before, after):
              'localLifeCatalogueMigration': catalogue_migration}
 
 
+# Proposed instrumentation observes actual ticks; it never pauses, steps,
+# moves, edits, saves or replaces a live world. The original resume oracle above
+# this insertion remains byte-for-byte unchanged.
+RESUME_CAPTURE_JS = r"""owner => {
+ 'use strict';
+ if(typeof owner!=='string'||!owner||Object.hasOwn(window,'__onboardingResumeTrace'))throw Error('Resume capture is already owned or has no requested owner.');
+ const proto=RealmCore.Simulation.prototype,original=proto.tick;
+ if(typeof original!=='function'||typeof Realm.test?.worldContext!=='function')throw Error('Actual Core tick/context is unavailable.');
+ let body=null,state=null,adventure=null,first=null,firstIndex=null,activeSeconds=0,error=null,seen=0,closed=false;
+ // The actual context supplies Store.active directly. Do not invoke the broad
+ // diagnostics getter: it can initialize unrelated adventure presentation.
+ const ticks=[],fail=message=>{error??=message;},current=()=>{const c=Realm.test.worldContext();return{sim:c.sim,active:c.active};};
+ function wrapped(...args){
+  let tracked=false,entry=null;
+  try{
+   const live=current();
+   if(body&&(live.active!==owner||live.sim!==body||body.state!==state||body.state.adventure!==adventure))fail('Incoming resume owner changed during capture.');
+   if(live.active===owner&&this===live.sim){
+    if(!body){body=this;state=this.state;adventure=state.adventure;}
+    tracked=true;seen++;
+    if(args.length!==1||!Number.isFinite(args[0])||args[0]<0||args[0]>.1||typeof this.paused!=='boolean'||this.room!==null)fail('Unexpected actual tick input/scene during resume capture.');
+    if(seen>32)fail('Resume capture exceeded 32 actual ticks.');
+    entry={dt:args[0],paused:this.paused,beforeElapsed:this.elapsed,afterElapsed:null};
+   }
+  }catch(e){fail('Resume capture could not read actual tick owner: '+e.message);}
+  // Genuine Core is always called with the original receiver/arguments. No
+  // telemetry failure changes game advancement or its original exception.
+  const result=original.apply(this,args);
+  if(tracked)try{
+   entry.afterElapsed=this.elapsed;
+   if(!entry.paused)activeSeconds+=Math.min(entry.dt,.1);
+   if(activeSeconds>1.6)fail('Resume capture exceeded 1.6 active seconds.');
+   if(ticks.length<32){ticks.push(entry);if(first===null&&!entry.paused){first=this.snapshot();firstIndex=ticks.length-1;}}
+  }catch(e){fail('Resume capture snapshot failed: '+e.message);}
+  return result;
+ }
+ function finish(){
+  if(closed)throw Error('Resume capture was already closed.');closed=true;
+  let final=null,finalOwner=null,restored=false;
+  try{
+   const live=current();finalOwner=live.active;
+   if(!body||live.active!==owner||live.sim!==body||body.state!==state||body.state.adventure!==adventure||body.room!==null||body.returnPos!==null||body.worldTrip||body.earthTrip||body.worldDive)fail('Resume final snapshot belongs to another owner or scene.');
+   if(body)final=body.snapshot();
+  }catch(e){fail('Resume final snapshot failed: '+e.message);}
+  finally{
+   if(proto.tick===wrapped){proto.tick=original;restored=proto.tick===original;}else fail('Actual Core tick was changed during capture.');
+   delete window.__onboardingResumeTrace;
+  }
+  return{version:1,owner,finalOwner,firstIndex,first,final,ticks,activeSeconds,error,restored};
+ }
+ proto.tick=wrapped;
+ Object.defineProperty(window,'__onboardingResumeTrace',{value:Object.freeze({finish}),configurable:true});
+ return{armed:true,owner,maxTicks:32,maxActiveSeconds:1.6};
+}"""
+
+
+RESUME_SEQUENCE_REPLAYER = r"""const fs=require('node:fs'),C=require('./src/core.js');
+require('./src/combat.js');
+const q=JSON.parse(fs.readFileSync(0,'utf8')),sim=new C.Simulation(q.before);
+C.validate(q.after);C.validate(q.capture.first);
+let first=null;
+for(let i=0;i<q.capture.ticks.length;i++){
+ const t=q.capture.ticks[i];
+ if(sim.elapsed!==t.beforeElapsed)throw Error('Captured transient elapsed before tick disagrees with Core.');
+ sim.paused=t.paused;sim.tick(t.dt);
+ if(sim.elapsed!==t.afterElapsed)throw Error('Captured transient elapsed after tick disagrees with Core.');
+ if(i===q.capture.firstIndex)first=sim.snapshot();
+}
+console.log(JSON.stringify({first,final:sim.snapshot(),elapsed:sim.elapsed}));"""
+
+
+def require_resume_sequence(root, before, after, capture, owner):
+    """Exact bounded replay after the unchanged first-tick resume oracle.
+
+    Only existing cameraViews metadata is omitted from full-world comparison.
+    Three initial events and the old prefix stay exact; no future event, owner,
+    XP, equipment, socket, accepted history or clock tolerance is allowed.
+    """
+    keys = {'version', 'owner', 'finalOwner', 'firstIndex', 'first', 'final',
+            'ticks', 'activeSeconds', 'error', 'restored'}
+    assert type(capture) is dict and set(capture) == keys, 'Resume capture has unexpected fields.'
+    assert type(capture['version']) is int and capture['version'] == 1, 'Resume capture version changed.'
+    assert type(owner) is str and owner and capture['owner'] == capture['finalOwner'] == owner, 'Resume capture belongs to another owner.'
+    assert capture['error'] is None and capture['restored'] is True, 'Resume capture failed or did not restore actual Core tick.'
+    ticks = capture['ticks']
+    assert type(ticks) is list and 1 <= len(ticks) <= 32, 'Resume capture tick count is outside its finite bound.'
+    active_seconds = 0.0
+    first_index = None
+    for i, tick in enumerate(ticks):
+        assert type(tick) is dict and set(tick) == {'dt', 'paused', 'beforeElapsed', 'afterElapsed'}, 'Resume capture tick fields changed.'
+        assert type(tick['paused']) is bool, 'Captured paused flag must be boolean.'
+        for key in ('dt', 'beforeElapsed', 'afterElapsed'):
+            assert type(tick[key]) in (int, float) and math.isfinite(tick[key]), 'Captured tick must be finite.'
+        assert 0 <= tick['dt'] <= .1 and tick['beforeElapsed'] >= 0 and tick['afterElapsed'] >= tick['beforeElapsed'], 'Captured tick exceeds actual ordinary-frame bounds.'
+        if not tick['paused']:
+            active_seconds += tick['dt']
+            if first_index is None:
+                first_index = i
+    assert first_index is not None and type(capture['firstIndex']) is int and capture['firstIndex'] == first_index, 'Capture did not preserve the first actual unpaused incoming tick.'
+    assert type(capture['activeSeconds']) in (int, float) and capture['activeSeconds'] == active_seconds <= 1.6, 'Resume capture exceeds its exact active-time bound.'
+    assert capture['final'] == after, 'The final world is not the synchronous captured snapshot.'
+    initial = require_initial_resume(root, before, capture['first'])
+    assert after['journal'] == capture['first']['journal'] and after['nextEvent'] == capture['first']['nextEvent'], 'Resume sequence added future history or rewrote the initial routines.'
+    assert living_signature(after) == living_signature(capture['first']), 'Resume sequence changed a protected owner or history.'
+    result = subprocess.run(['node', '-e', RESUME_SEQUENCE_REPLAYER], cwd=resolve_root(root),
+        input=json.dumps({'before': before, 'after': after, 'capture': capture}),
+        capture_output=True, text=True, timeout=20)
+    assert result.returncode == 0, 'Actual Core resume-sequence replay failed: ' + result.stderr.strip()
+    predicted = json.loads(result.stdout)
+    assert projection_signature(predicted['first']) == projection_signature(capture['first']), 'First captured world disagrees with actual recorded Core tick.'
+    assert projection_signature(predicted['final']) == projection_signature(after), 'Final world disagrees with exact actual Core tick replay.'
+    return {'preserved': True, 'method': 'Unchanged first-tick oracle plus exact read-only installed Core replay of actual captured dt/paused sequence',
+            'initial': initial, 'ticks': len(ticks), 'activeSeconds': active_seconds,
+            'coreSha256': sha(resolve_root(root) / 'src/core.js'),
+            'additionalFutureEventsAllowed': False, 'clockTolerance': 0,
+            'cameraMetadataAllowance': 'existing settings.cameraViews only',
+            'prototypeRestored': capture['restored']}
 def require_projection_preserved(before, after):
     assert projection_signature(before) == projection_signature(after), 'UI changed saved owners, choices, history or non-camera metadata.'
 
@@ -491,14 +608,31 @@ class OnboardingBrowser:
         self.shot('05-cold-story-default'); self.complete('whole-browser-cold-defaults')
 
         self.stage('old-character-preserved'); self.workspace('characters')
-        self.page.locator(f'[data-rpg="chars-switch"][data-id="{old["id"]}"]').click()
-        self.page.wait_for_function('id=>Realm.diagnostics.characters.active===id', arg=old['id'], timeout=15000)
-        self.workspace()
-        self.check('switch resumes the accepted unpaid commission and chosen arrangement', self.state()['localLife']['records']['atlantis-bellglass-lamp-v1'] == first['localLife']['records']['atlantis-bellglass-lamp-v1'])
-        self.report['first_character_after_switch'] = self.state()
-        resume = require_initial_resume(self.root, first, self.report['first_character_after_switch'])
+        armed = self.ev(RESUME_CAPTURE_JS, old['id'])
+        assert armed == {'armed': True, 'owner': old['id'], 'maxTicks': 32, 'maxActiveSeconds': 1.6}
+        trace = None
+        try:
+            self.page.locator(f'[data-rpg="chars-switch"][data-id="{old["id"]}"]').click()
+            self.page.wait_for_function('id=>Realm.diagnostics.characters.active===id', arg=old['id'], timeout=15000)
+            self.workspace()
+            trace = self.ev('() => window.__onboardingResumeTrace.finish()')
+        except Exception as err:
+            self.report['resume_capture_native_error'] = str(err)
+            raise
+        finally:
+            pending = self.ev('() => {if(window.__onboardingResumeTrace)return window.__onboardingResumeTrace.finish();return null;}')
+            if trace is None:
+                trace = pending
+            if trace is not None:
+                self.report['resume_tick_capture'] = trace
+        self.report['resume_tick_capture'] = trace
+        self.report['first_character_after_switch'] = trace['final']
+        self.check('switch resumes the accepted unpaid commission and chosen arrangement', trace['final']['localLife']['records']['atlantis-bellglass-lamp-v1'] == first['localLife']['records']['atlantis-bellglass-lamp-v1'])
+        resume = require_initial_resume(self.root, first, trace['first'])
+        replay = require_resume_sequence(self.root, first, trace['final'], trace, old['id'])
         self.report['initial_resume_contract'] = resume
-        self.check('switch retains all old quest/equipment/history owners', resume['preserved'])
+        self.report['resume_replay_contract'] = replay
+        self.check('switch retains all old quest/equipment/history owners', resume['preserved'] and replay['preserved'])
         self.check('old defaults choose pending Local life rather than old Homestead preference', self.page.locator('.tracker-switch [data-id="local-life"]').get_attribute('aria-pressed') == 'true')
         require_old_keys(initial_old, self.old_keys())
         self.report['final_native_library'] = self.raw_library()

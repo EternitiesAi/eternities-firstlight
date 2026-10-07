@@ -1,3 +1,15 @@
+# Preserve strict resume evidence and separate future ownership, 2026-10-07
+
+The complete remote verifier at source `61010762ea3600cf6396bc0fb03663a155e3372a` closed exit 1 at 2026-10-07T05:27:49Z. The source prefix and Earth homecoming suite passed; onboarding reached its final stage with 49 recorded checks passed, then its direct resume-clock assertion failed. The mandatory first-load six-route/two-refusal suite and remaining browser commands were not reached. Original process, console and private synthetic-world report remain retained under D:/07-GAMES/Firstlight/artifacts/first-load-through-20261006/remote-full01*.
+
+The driver now captures the first actual incoming unpaused Core tick and the bounded subsequent actual dt/paused sequence, without changing advancement. The original first-tick predictor and oracle remain byte-identical. Genuine installed Core replays the sequence and compares the complete final world with only the existing cameraViews allowance; 32 ticks / 1.6 active seconds are the finite bounds. Parent browser execution and a new complete source/remote gate are pending. Runtime modules and both generated HTML outputs remain unchanged.
+
+ROOT owns the integrated D checkout; STATION is the reused detached remote qualification checkout. Two colleagues prepare small independent next-encounter files; those files and the labelled RAM visual previews are uninstalled and unqualified. Preserve old saves, stored XP, choices, gear/sockets, all ledgers, housing, companion, music and both cameras. No main merge, public deployment, paid providers, billing intervention, personal-save access, unrelated stops or cleanup. Production goal remains ACTIVE and unfinished; old heartbeat remains PAUSED.
+
+The failed later snapshot advanced 0.1334 seconds; its three initial routine events occurred at the first 0.1-second tick. A test comparing that later snapshot against a one-tick clock was mismatched. Observe the exact live sequence and replay genuine Core instead of widening clock tolerance, changing game timing or relabelling the old failure. The next optional wild-signs version1 owner stays separate from LocalLife, with a finite once-only 4-coin/3-fibre fee and no XP; it remains a proposal until integration and actual earned/native checks.
+
+---
+
 # Separate supplied logistics from earlier ownership, 2026-10-06
 
 The fifth LocalLife1 job `earth-first-load-through-v1` owns exact `{accepted,choice,steps,claimed}` data. Preserve original four records, including prior raw step order. Accept only after the original EE story is deliberately paid; visible new acceptance freezes route and compatible cargo. No old-choice backfill, inventory borrowing, prior-payment reuse or consent inference. New-arrival prefixes are route-specific and contiguous. Whole-world/capacity validation precedes mutation; retryable refusal retains completion and opaque ready proof.

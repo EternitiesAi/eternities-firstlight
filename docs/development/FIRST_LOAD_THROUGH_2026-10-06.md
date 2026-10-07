@@ -1,3 +1,17 @@
+# Remote full01 failure and scoped resume-driver repair, 2026-10-07
+
+The complete remote verifier at source `61010762ea3600cf6396bc0fb03663a155e3372a` closed exit 1 at 2026-10-07T05:27:49Z. The source prefix and Earth homecoming suite passed; onboarding reached its final stage with 49 recorded checks passed, then its direct resume-clock assertion failed. The mandatory first-load six-route/two-refusal suite and remaining browser commands were not reached. Original process, console and private synthetic-world report remain retained under D:/07-GAMES/Firstlight/artifacts/first-load-through-20261006/remote-full01*.
+
+The driver now captures the first actual incoming unpaused Core tick and the bounded subsequent actual dt/paused sequence, without changing advancement. The original first-tick predictor and oracle remain byte-identical. Genuine installed Core replays the sequence and compares the complete final world with only the existing cameraViews allowance; 32 ticks / 1.6 active seconds are the finite bounds. Parent browser execution and a new complete source/remote gate are pending. Runtime modules and both generated HTML outputs remain unchanged.
+
+ROOT owns the integrated D checkout; STATION is the reused detached remote qualification checkout. Two colleagues prepare small independent next-encounter files; those files and the labelled RAM visual previews are uninstalled and unqualified. Preserve old saves, stored XP, choices, gear/sockets, all ledgers, housing, companion, music and both cameras. No main merge, public deployment, paid providers, billing intervention, personal-save access, unrelated stops or cleanup. Production goal remains ACTIVE and unfinished; old heartbeat remains PAUSED.
+
+Source09 previously closed exit0: 197 unique commands / 129 syntax modules; generic Node1807 passed and2 cohort skips; Python349 methods with6 method skips plus2 class skip records. Explicit current consignment28/28, homecoming preflight29/29 and recording37/37 passed. These targeted/source results do not close the failed complete browser gate. Hosted610 run37573684346 failed48 jobs with0 executed steps under an account billing-lock annotation. No hosted tests or billing action are claimed.
+
+Local-calendar Oct7 frontier check read Oct6 sweep0bb173ea46005c3f4b7c6731cfa3863d010c6617 and index527dc1ef575f1677813214b77fa7d9e62f23ca9e: no Oct7 report or Firstlight-specific delta; no external research was promoted into runtime.
+
+---
+
 # Refused payment driver corrected; complete remote qualification pending
 
 At `de914881047ca60b9497a6d6d3a35d8b91cf04aa`, source08 closed exit0 at `2026-10-07T03:42:16.8446570Z`:197 commands/129 syntax modules; generic Node1807 passed with2 explicitly conditional cohort skips; Python344 methods,0 failures/errors,8 skip records (6 methods and2 class setups). The current original expedition cohort and23-check mandatory native preflight passed. These results retain that original epoch.

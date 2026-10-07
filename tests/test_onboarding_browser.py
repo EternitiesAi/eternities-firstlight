@@ -457,5 +457,135 @@ class Preparation(unittest.TestCase):
         with self.assertRaises(AssertionError):
             self.m.require_projection_preserved(before, after)
 
+    def capture_actual_resume(self, before, ticks=None, fault=None):
+        """Labelled JS frame/owner host; genuine installed Core executes ticks.
+
+        This does not launch browser/native frames, load personal storage, or
+        create gameplay facts. The capture source is the actual new driver JS.
+        """
+        code = r"""const fs=require('node:fs'),C=require('./src/core.js');require('./src/combat.js');
+const q=JSON.parse(fs.readFileSync(0,'utf8'));global.window=globalThis;
+let active='character-2',sim=new C.Simulation(C.fresh());
+global.Realm={test:{worldContext:()=>({sim,active})},get diagnostics(){throw Error('CPU telemetry must not consult broad mutable diagnostics.');}};
+const original=C.Simulation.prototype.tick,capture=eval('('+q.source+')');
+const armed=capture('character-1');
+// One real outgoing-owner tick is deliberately outside the incoming trace.
+sim.tick(.016);active='character-1';sim=new C.Simulation(q.before);
+const incoming=sim;
+for(const [i,t]of q.ticks.entries()){
+ sim.paused=t.paused;sim.tick(t.dt);
+ if(q.fault==='owner'&&i===1){active='character-2';sim=new C.Simulation(C.fresh());}
+}
+if(q.fault==='prototype')C.Simulation.prototype.tick=function(){throw Error('CPU foreign tick tamper');};
+if(q.fault==='scene')incoming.room='CPU-labelled-foreign-scene';
+const trace=window.__onboardingResumeTrace.finish();
+if(q.fault==='lateTick'){incoming.paused=false;incoming.tick(.05);}
+const crypto=require('node:crypto'),path=require('node:path'),base=path.resolve('src')+path.sep;
+const runtimeSources=Object.keys(require.cache).filter(p=>p.startsWith(base)).map(p=>{const b=fs.readFileSync(p);return{path:p,bytes:b.length,sha256:crypto.createHash('sha256').update(b).digest('hex')};});
+console.log(JSON.stringify({trace,after:incoming.snapshot(),armed,runtimeSources,
+ restored:C.Simulation.prototype.tick===original,removed:!Object.hasOwn(window,'__onboardingResumeTrace')}));"""
+        ticks = ticks if ticks is not None else [
+            {'dt': .1, 'paused': True}, {'dt': .1, 'paused': False},
+            {'dt': .0334, 'paused': False}, {'dt': .1, 'paused': True}]
+        result = subprocess.run(['node', '-e', code], cwd=self.m.resolve_root(),
+            input=json.dumps({'before': before, 'source': self.m.RESUME_CAPTURE_JS,
+                             'ticks': ticks, 'fault': fault}),
+            capture_output=True, text=True, check=True, timeout=20)
+        got = json.loads(result.stdout)
+        owned = getattr(self.m, '_resume_cpu_runtime_sources', {})
+        for entry in got['runtimeSources']:
+            if entry['path'] in owned:
+                self.assertEqual(owned[entry['path']], entry)
+            owned[entry['path']] = entry
+        self.m._resume_cpu_runtime_sources = owned
+        return got
+
+    def test_39_first_tick_oracle_still_rejects_later_native_style_snapshot(self):
+        before, _ = self.resume_pair()
+        got = self.capture_actual_resume(before)
+        self.assertEqual(got['trace']['firstIndex'], 1)
+        self.assertNotEqual(got['trace']['first']['hour'], got['after']['hour'])
+        self.assertEqual(got['after']['journal'], got['trace']['first']['journal'])
+        with self.assertRaisesRegex(AssertionError, 'one initial event clock'):
+            self.m.require_initial_resume(self.m.resolve_root(), before, got['after'])
+        self.assertTrue(self.m.require_initial_resume(self.m.resolve_root(), before, got['trace']['first'])['preserved'])
+
+    def test_40_actual_capture_and_exact_core_sequence_preserve_complete_final_world(self):
+        before, _ = self.resume_pair()
+        original = copy.deepcopy(before); got = self.capture_actual_resume(before)
+        self.assertTrue(got['restored']); self.assertTrue(got['removed'])
+        self.assertEqual(got['trace']['activeSeconds'], .13340000000000002)
+        self.assertEqual(got['trace']['ticks'][0]['beforeElapsed'], 0)
+        result = self.m.require_resume_sequence(self.m.resolve_root(), before,
+                    got['after'], got['trace'], 'character-1')
+        self.assertTrue(result['preserved']); self.assertEqual(result['ticks'], 4)
+        self.assertEqual(result['clockTolerance'], 0)
+        self.assertFalse(result['additionalFutureEventsAllowed'])
+        self.assertEqual(before, original)
+        camera = copy.deepcopy(got['after'])
+        camera['settings']['cameraViews']['profiles'] = {}
+        trace = copy.deepcopy(got['trace']); trace['final'] = camera
+        self.assertTrue(self.m.require_resume_sequence(self.m.resolve_root(), before, camera, trace, 'character-1')['preserved'])
+
+    def test_41_resume_sequence_rejects_protected_history_equipment_xp_and_socket_changes(self):
+        before, _ = self.resume_pair(); got = self.capture_actual_resume(before)
+        for name, mutate in (
+            ('old history', lambda w: w['journal'][0].update(text='forged old event')),
+            ('XP', lambda w: w['adventure'].update(xp=w['adventure']['xp']+1)),
+            ('equipment', lambda w: w['adventure']['equipment'].update(weapon='old_sword')),
+            ('socket identity', lambda w: w['adventure']['arsenal']['sockets'].update(trail_blade='amber')),
+            ('paid fifth history', lambda w: w['localLife']['records']['earth-first-load-through-v1'].update(claimed=True))):
+            after = copy.deepcopy(got['after']); mutate(after)
+            trace = copy.deepcopy(got['trace']); trace['final'] = after
+            with self.subTest(name=name), self.assertRaises(AssertionError):
+                self.m.require_resume_sequence(self.m.resolve_root(), before, after, trace, 'character-1')
+
+    def test_42_resume_sequence_rejects_future_ticks_clocks_and_forged_initial_capture(self):
+        before, _ = self.resume_pair(); got = self.capture_actual_resume(before)
+        late = self.capture_actual_resume(before, fault='lateTick')
+        self.assertGreater(late['after']['hour'], late['trace']['final']['hour'])
+        for name in ('changed dt', 'unrecorded future tick', 'forged clock', 'forged first', 'first index', 'pause flag'):
+            trace = copy.deepcopy(got['trace']); after = copy.deepcopy(got['after'])
+            if name == 'changed dt':
+                trace['ticks'][2]['dt'] = .04; trace['activeSeconds'] = .14
+            elif name == 'unrecorded future tick':
+                after = copy.deepcopy(late['after'])
+            elif name == 'forged clock':
+                after['hour'] += .0000001
+            elif name == 'forged first':
+                trace['first']['residents'][0]['x'] += .0001
+            elif name == 'first index':
+                trace['firstIndex'] = 2
+            else:
+                trace['ticks'][2]['paused'] = True; trace['activeSeconds'] = .1
+            trace['final'] = after
+            with self.subTest(name=name), self.assertRaises(AssertionError):
+                self.m.require_resume_sequence(self.m.resolve_root(), before, after, trace, 'character-1')
+
+    def test_43_resume_capture_rejects_actual_owner_change_and_prototype_tamper(self):
+        before, _ = self.resume_pair()
+        for fault in ('owner', 'prototype', 'scene'):
+            got = self.capture_actual_resume(before, fault=fault)
+            self.assertIsNotNone(got['trace']['error'])
+            self.assertTrue(got['removed'])
+            self.assertEqual(got['restored'], fault != 'prototype')
+            with self.subTest(fault=fault), self.assertRaises(AssertionError):
+                self.m.require_resume_sequence(self.m.resolve_root(), before, got['after'], got['trace'], 'character-1')
+        got = self.capture_actual_resume(before)
+        for key, value in (('owner', 'character-2'), ('finalOwner', 'character-2'), ('restored', False), ('error', 'tampered capture')):
+            trace = copy.deepcopy(got['trace']); trace[key] = value
+            with self.subTest(key=key), self.assertRaises(AssertionError):
+                self.m.require_resume_sequence(self.m.resolve_root(), before, got['after'], trace, 'character-1')
+
+    def test_44_resume_capture_keeps_finite_tick_and_active_time_bounds(self):
+        before, _ = self.resume_pair()
+        for name, ticks in (('tick count', [{'dt': .001, 'paused': False}] * 33),
+                            ('active seconds', [{'dt': .1, 'paused': False}] * 17),
+                            ('oversized dt', [{'dt': .2, 'paused': False}])):
+            got = self.capture_actual_resume(before, ticks=ticks)
+            self.assertIsNotNone(got['trace']['error']); self.assertTrue(got['restored'])
+            self.assertLessEqual(len(got['trace']['ticks']), 32)
+            with self.subTest(name=name), self.assertRaises(AssertionError):
+                self.m.require_resume_sequence(self.m.resolve_root(), before, got['after'], got['trace'], 'character-1')
 if __name__ == '__main__':
     unittest.main(verbosity=2)
