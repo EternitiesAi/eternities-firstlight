@@ -3,28 +3,71 @@
   "files": [
     {
       "path": "SOURCE06_EXIT.json",
-      "bytes": 558,
-      "sha256": "61a84f24afb37acd8707d11e18daacd6461057fb8d4b501882649e218deecb8c"
+      "bytes": 545,
+      "sha256": "2c1376e08516866a819f9154c70d959642e759ba1991b055c9fe84e5cf806fbf"
     },
     {
       "path": "NATIVE_BOUNDARY02_EXIT.json",
-      "bytes": 581,
-      "sha256": "8ef04fd7413eb5b9e9b50afe9c9c9578d4cd272e29b988fc132dae5ea540c211"
+      "bytes": 568,
+      "sha256": "100459b8f7e658015a12443260c88e414ebf85d6599f508b985247e839ff4da8"
     },
     {
       "path": "BOUNDARY02_FAILURE_SUMMARY.json",
-      "bytes": 2313,
-      "sha256": "c5a513e58bf890bc62d4504524b97ea908595a6027e7c6e0b47063cac20306eb"
+      "bytes": 2275,
+      "sha256": "2e2ce9e2c46d2a596bedd9153e4be17216c18829d7b02e5becb29381f0b11507"
     },
     {
       "path": "QUALIFICATION02.md",
-      "bytes": 1662,
-      "sha256": "7dc275922e4e130995d6fe5920fbbafa47e8b3276f59f2aed49bf107c2b0b54c"
+      "bytes": 1653,
+      "sha256": "79831f03ee7d08bc4dab16ee0e81a69a3928a989ab3770e3a0be8146389aad75"
     },
     {
       "bytes": 8309,
       "path": "NATIVE_APPROACH_REVIEW.md",
       "sha256": "6ef769eac68e087027f70283d7f0e67794025c7839565049028bc7471b1e6fd0"
+    }
+  ],
+  "byteScope": "Exact checked-in LF payload bytes; retained original raw receipt mapping below",
+  "rawToGitMappings": [
+    {
+      "path": "SOURCE06_EXIT.json",
+      "rawBytes": 558,
+      "rawSha256": "61a84f24afb37acd8707d11e18daacd6461057fb8d4b501882649e218deecb8c",
+      "gitBytes": 545,
+      "gitSha256": "2c1376e08516866a819f9154c70d959642e759ba1991b055c9fe84e5cf806fbf",
+      "transformation": "CRLF-to-LF only"
+    },
+    {
+      "path": "NATIVE_BOUNDARY02_EXIT.json",
+      "rawBytes": 581,
+      "rawSha256": "8ef04fd7413eb5b9e9b50afe9c9c9578d4cd272e29b988fc132dae5ea540c211",
+      "gitBytes": 568,
+      "gitSha256": "100459b8f7e658015a12443260c88e414ebf85d6599f508b985247e839ff4da8",
+      "transformation": "CRLF-to-LF only"
+    },
+    {
+      "path": "BOUNDARY02_FAILURE_SUMMARY.json",
+      "rawBytes": 2313,
+      "rawSha256": "c5a513e58bf890bc62d4504524b97ea908595a6027e7c6e0b47063cac20306eb",
+      "gitBytes": 2275,
+      "gitSha256": "2e2ce9e2c46d2a596bedd9153e4be17216c18829d7b02e5becb29381f0b11507",
+      "transformation": "CRLF-to-LF only"
+    },
+    {
+      "path": "QUALIFICATION02.md",
+      "rawBytes": 1662,
+      "rawSha256": "7dc275922e4e130995d6fe5920fbbafa47e8b3276f59f2aed49bf107c2b0b54c",
+      "gitBytes": 1653,
+      "gitSha256": "79831f03ee7d08bc4dab16ee0e81a69a3928a989ab3770e3a0be8146389aad75",
+      "transformation": "CRLF-to-LF only"
+    },
+    {
+      "path": "NATIVE_APPROACH_REVIEW.md",
+      "rawBytes": 8309,
+      "rawSha256": "6ef769eac68e087027f70283d7f0e67794025c7839565049028bc7471b1e6fd0",
+      "gitBytes": 8309,
+      "gitSha256": "6ef769eac68e087027f70283d7f0e67794025c7839565049028bc7471b1e6fd0",
+      "transformation": "unchanged"
     }
   ]
 }
