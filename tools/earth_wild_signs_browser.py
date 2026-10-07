@@ -191,11 +191,29 @@ def pixels_valid(p):
             and p.get('span',{}).get('width',0) >= 40 and p.get('span',{}).get('height',0) >= 20)
 
 
+PIXEL_SNAPSHOT_JS = r"""()=>{
+ const d=Realm.diagnostics;
+ return JSON.parse(JSON.stringify({world:Realm.state,sample:{elapsed:Realm.state.adventure.elapsed,
+  paused:d.adventure.paused,scene:d.scene,signs:Realm.state.earthWildSigns,
+  view:d.wildSigns?.view||null,visibility:d.wildSigns?.visibility||null,player:d.adventure.player}}));
+}"""
+
+
+def changed_fields(before, after, path=''):
+    if before == after: return []
+    if type(before) is dict and type(after) is dict:
+        return [field for key in sorted(set(before) | set(after))
+                for field in (changed_fields(before[key], after[key], path+'.'+key if path else key)
+                              if key in before and key in after else [path+'.'+key if path else key])]
+    return [path]
+
+
 # Deliberately manual rendering while native P-paused. No app frame ACK is called.
 # The same actual submitted matrices feed projection and full/on-off/restored pixels.
+# Exact snapshots bracket this synchronous operation, including the final render.
 PIXELS_JS = r"""actor=>{
  const art=window.__flArt,e=art?.e,g=e?.gl;if(!g||!Realm.diagnostics.adventure.paused)throw Error('Actual paused renderer required');
- const before=JSON.stringify(Realm.state),t=Realm.state.adventure.elapsed,h=Realm.state.hour,rain=Realm.state.weather==='rain';
+ const before=JSON.stringify(Realm.state),snapshot=PIXEL_SNAPSHOT,probeBefore=snapshot(),t=Realm.state.adventure.elapsed,h=Realm.state.hour,rain=Realm.state.weather==='rain';
  const snap=e.dynamic.map(b=>({b,items:b.items,data:b.data,count:b.count}));
  const all=snap.flatMap(q=>q.items.map((item,i)=>({kind:q.b.kind,item,packed:q.data.subarray(i*24,(i+1)*24)}))).filter(q=>q.item.grazerActor===actor);
  const head=new Set(['slender-head','feeding-muzzle','soft-nose','left-eye','right-eye']);
@@ -207,9 +225,12 @@ PIXELS_JS = r"""actor=>{
  const restore=()=>{for(const q of snap){q.b.items=q.items;q.b.data=q.data;e.updateBatch(q.b);q.b.count=q.count;}};
  const hide=predicate=>{for(const q of snap){q.b.items=q.items.filter(v=>!predicate(v));e.updateBatch(q.b);}};
  const diff=(a,b)=>{let n=0;for(let i=0;i<a.length;i+=4)if(Math.abs(a[i]-b[i])+Math.abs(a[i+1]-b[i+1])+Math.abs(a[i+2]-b[i+2])>12)n++;return n;};
- try{const on=read();hide(v=>v.grazerActor===actor);const off=read();restore();hide(v=>v.grazerActor===actor&&head.has(v.grazerPart));const noHead=read();restore();const back=read();return {parts:all.length,span,clipped,pixels:diff(on,off),headPixels:diff(on,noHead),restored:diff(on,back)===0&&snap.every(q=>q.b.items===q.items&&q.b.data===q.data&&q.b.count===q.count),stateUnchanged:before===JSON.stringify(Realm.state),glError:g.getError()};}
+ let result;
+ try{const on=read();hide(v=>v.grazerActor===actor);const off=read();restore();hide(v=>v.grazerActor===actor&&head.has(v.grazerPart));const noHead=read();restore();const back=read();result={parts:all.length,span,clipped,pixels:diff(on,off),headPixels:diff(on,noHead),restored:diff(on,back)===0&&snap.every(q=>q.b.items===q.items&&q.b.data===q.data&&q.b.count===q.count),stateUnchanged:before===JSON.stringify(Realm.state),glError:g.getError()};}
  finally{restore();e.render(t,h,rain);}
-}"""
+ const probeAfter=snapshot();
+ return {...result,stateUnchanged:result.stateUnchanged&&before===JSON.stringify(Realm.state),probeBefore,probeAfter};
+}""".replace('PIXEL_SNAPSHOT', PIXEL_SNAPSHOT_JS)
 
 
 def driver_class(base):
@@ -306,10 +327,20 @@ def driver_class(base):
             # No cached diagnostic can certify a changed camera. Only the actual
             # new packed silhouette and head pixels below certify this view.
             self.clear_toast()
-            self.page.keyboard.press('p');before=self.sample();self.check('pixel probe uses native pause', before['paused'] is True)
-            data=self.ev(PIXELS_JS,ACTOR);self.check('actual mesh silhouette and full/head on-off-restored pixels',pixels_valid(data),data)
-            after=self.sample();self.check('manual renderer never issues witness or mutates state',after==before)
+            self.page.keyboard.press('p');before=self.ev(PIXEL_SNAPSHOT_JS);self.check('pixel probe uses native pause', before['sample']['paused'] is True)
+            data=self.ev(PIXELS_JS,ACTOR);after=self.ev(PIXEL_SNAPSHOT_JS)
+            # Ordinary RAF can refresh prepared paused/walking projection between
+            # evaluate calls. Retain that exact delta separately from manual proof.
+            data['ordinaryRafBoundary']={'before':before,'after':after,'changedFields':changed_fields(before,after),
+                                        'scope':'Separate evaluate calls may include ordinary paused App RAF; not manual-render attribution.'}
             self.row.setdefault('pixelControls',[]).append({'configuration':list(config),**data,'scope':'Actual GPU packed WorldArt probes; manual paused render is not ordinary-frame proof.'})
+            self.check('actual mesh silhouette and full/head on-off-restored pixels',pixels_valid(data),data)
+            self.check('manual renderer never issues witness or mutates state',data['probeAfter']==data['probeBefore'],
+                       {'before':data['probeBefore'],'after':data['probeAfter'],'changedFields':changed_fields(data['probeBefore'],data['probeAfter'])})
+            witnesses=lambda v:tuple((v.get('sample',{}).get('view') or {}).get(k) for k in ('observedBehavior','observationReady'))
+            self.check('native paused interval preserves complete world and existing witness',
+                       before['world']==after['world'] and before['sample']['paused'] is True and after['sample']['paused'] is True
+                       and witnesses(before)==witnesses(after),data['ordinaryRafBoundary'])
             self.page.screenshot(path=str(self.folder/(label+'.png')))
             self.page.keyboard.press('p')
             self.panel();self.check('native account fits and scrolls at requested width', self.ev('()=>{const d=document.querySelector("#rpg-window"),p=d.getBoundingClientRect();return document.documentElement.scrollWidth<=innerWidth&&p.left>=0&&p.right<=innerWidth&&d.open;}'))

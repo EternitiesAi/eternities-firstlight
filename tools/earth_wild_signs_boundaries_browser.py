@@ -19,7 +19,7 @@ import threading
 import time
 import traceback
 
-FROZEN_SUITE_SHA256 = '643b8f71faf7b2226b44a86679aa454717c4f3ed063104ac1c660262a49e2723'
+FROZEN_SUITE_SHA256 = 'ecfa615cbeb243cba38c28d99bda2aff22ed6cc40536209c09fec8a6ccac6f8f'
 ID = 'earth-beast-wrong-name-v1'
 PEST = 'earth-wild-signs-burrow-skitter-v1'
 BASELINE = 'earthlands-coppice-skitter'

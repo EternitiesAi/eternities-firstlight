@@ -40,7 +40,7 @@ function migration(file,expected,folder){
  write(folder,'MIGRATION_RECEIPT',receipt);return receipt;
 }
 function preserved(final,before){
- for(const k of['journeys','realmTrails','earthExpedition','hellCampaign','heavenCampaign','atlantisCampaign','cosmosCampaign','bridgeCommunity','localLife','homeHistory','notes','score','scoreRevision','retreat','visitor','flowers','settings'])assert.deepEqual(final[k],before[k],k+' retains its original owner');
+ for(const k of['journeys','realmTrails','earthExpedition','hellCampaign','heavenCampaign','atlantisCampaign','cosmosCampaign','bridgeCommunity','localLife','earthWildSigns','homeHistory','notes','score','scoreRevision','retreat','visitor','flowers','settings'])assert.deepEqual(final[k],before[k],k+' retains its original owner');
  for(const k of['owned','equipment','arsenal','starter','pursuit','realmCraft','earthBinding','classPath','companion','beacon','crossing','road','earthStory','earthNotes','earthGathering','defeated','drops','reward','relic','angelSeen'])assert.deepEqual(final.adventure[k],before.adventure[k],k+' unchanged except documented reversible companion command');
  for(const k of['bridge','nextId','stats','milestones','recentCommands','cooldownUntil'])assert.deepEqual(final.sandbox[k],before.sandbox[k]);
  assert.deepEqual(final.sandbox.placed.map(p=>({...p,crop:null})),before.sandbox.placed.map(p=>({...p,crop:null})));for(const prior of before.sandbox.placed)if(prior.crop){const now=final.sandbox.placed.find(p=>p.id===prior.id).crop;assert.equal(now.plantedAt,prior.crop.plantedAt);assert.equal(now.readyAt,prior.crop.readyAt);assert.ok(now.stage===prior.crop.stage||prior.crop.stage==='watered'&&now.stage==='ripe');}
@@ -53,9 +53,13 @@ function profile(raw){
 function productionApp(sim,store){
  // Exact installed application functions are executed in a minimal CPU host. The
  // status-render sink cannot mutate progress; real Core, Store and EH own it.
+ // Keep App-created opaque leases in the installed modules' JavaScript realm.
+ // A separate VM realm makes their real prototype/ownership checks refuse.
  const app=overlay.read('app.js'),extract=(a,b)=>{const i=app.indexOf('function '+a+'('),j=app.indexOf('function '+b+'(',i);assert.ok(i>=0&&j>i,'exact application function boundaries');return app.slice(i,j);};
- const scope={sim,characterStore:store,preserveExisting:false,saveState:'loaded',RealmEarthHomecoming:load('earth-homecoming'),renderStatus:()=>{}};
- vm.createContext(scope);vm.runInContext(extract('earthHomecomingWriter','worldTravel')+'\n'+extract('worldSave','worldCommand')+'\n'+extract('earthHomecomingCommand','hellCampaignCommand'),scope);
+ load('engine');
+ const scope={sim,characterStore:store,rpg:null,preserveExisting:false,saveState:'loaded',RealmEarthHomecoming:load('earth-homecoming'),RealmEarthGrazerMotion:load('earth-grazer-motion'),RealmEarthGrazerArt:load('earth-grazer-art'),RealmEarthWildSignsData:load('earth-wild-signs-data'),RealmEarthWildSigns:load('earth-wild-signs'),renderStatus:()=>{}};
+ const body=extract('earthHomecomingWriter','worldTravel')+'\n'+extract('worldSave','worldCommand')+'\n'+extract('earthHomecomingCommand','hellCampaignCommand');
+ Object.assign(scope,vm.compileFunction(body+'\nreturn {earthHomecomingWriter,worldContext,worldSave,earthHomecomingCommand,syncWildSignsOwner,grazerContext,wildSignsContext};',[],{contextExtensions:[scope],filename:path.join(ROOT,'src/app.js')})());
  return{scope,context:()=>scope.worldContext(),command:(type,p)=>scope.earthHomecomingCommand(type,p),save:s=>scope.worldSave(s)};
 }
 function callerAudit(){

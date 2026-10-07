@@ -234,6 +234,41 @@ class CallerTests(unittest.TestCase):
         code="const vm=require('node:vm');const x=JSON.parse(require('node:fs').readFileSync(0,'utf8'));for(const s of x)new vm.Script('('+s+')');"
         subprocess.run(['node','-e',code],input=json.dumps([N.PIXELS_JS]),text=True,check=True,capture_output=True)
         subprocess.run(['node','-e',"new(require('node:vm').Script)(require('node:fs').readFileSync(0,'utf8'))"],input=N.VALIDATE_JS,text=True,check=True,capture_output=True)
+    def pixel_host(self):
+        # Synthetic evaluate/DOM host exercises the real Python comparator and
+        # receipt routing. Actual probe JS/App frame run in the separate Node test.
+        d=self.harness();d.configure=lambda _:None;d.clear_toast=lambda:None;d.panel=lambda:None;d.close=lambda:None
+        d.page.keyboard=SimpleNamespace(press=lambda _:None);d.page.screenshot=lambda **_:None
+        d.page.locator=lambda _:SimpleNamespace(focus=lambda:None,evaluate=lambda _:True)
+        d.folder=HERE;before=dict(world=world(),sample=dict(elapsed=1,paused=True,scene='world-earthlands',
+             signs=copy.deepcopy(N.FRESH),view=dict(paused=False,walking=True,observedBehavior=False,observationReady=False),
+             visibility={'visible':True,'at':100},player={'x':0,'z':0,'yaw':0}))
+        after=copy.deepcopy(before);after['sample']['view'].update(paused=True,walking=False)
+        data=dict(restored=True,stateUnchanged=True,glError=0,pixels=40,headPixels=7,parts=40,clipped=0,
+                  span=dict(width=100,height=80),probeBefore=copy.deepcopy(before),probeAfter=copy.deepcopy(before))
+        snapshots=iter((before,after))
+        d.ev=lambda expression,arg=None:copy.deepcopy(data) if expression==N.PIXELS_JS else (copy.deepcopy(next(snapshots)) if expression==N.PIXEL_SNAPSHOT_JS else True)
+        return d,before,after,data
+    def test_paused_projection_refresh_is_reported_separately_from_exact_manual_probe(self):
+        d,before,after,_=self.pixel_host();d.pixel_config(N.CONFIGS[0],'SYNTHETIC_NO_PIXELS')
+        receipt=d.row['pixelControls'][0];self.assertEqual(receipt['probeBefore'],receipt['probeAfter'])
+        self.assertEqual(receipt['ordinaryRafBoundary']['before'],before);self.assertEqual(receipt['ordinaryRafBoundary']['after'],after)
+        self.assertEqual(receipt['ordinaryRafBoundary']['changedFields'],['sample.view.paused','sample.view.walking'])
+    def test_manual_world_mutation_or_witness_promotion_fails_and_retains_both_snapshots(self):
+        for kind in ('world','witness'):
+            d,_,_,data=self.pixel_host()
+            if kind=='world':data['probeAfter']['world']['adventure']['coins']+=1
+            else:data['probeAfter']['sample']['view']['observationReady']=True
+            with self.assertRaises(AssertionError):d.pixel_config(N.CONFIGS[0],'SYNTHETIC_NEGATIVE')
+            receipt=d.row['pixelControls'][0];self.assertNotEqual(receipt['probeBefore'],receipt['probeAfter'])
+    def test_intervening_paused_raf_cannot_mutate_complete_world_or_promote_witness(self):
+        for kind in ('world','witness','unpause'):
+            d,_,after,_=self.pixel_host()
+            if kind=='world':after['world']['adventure']['coins']+=1
+            elif kind=='witness':after['sample']['view']['observedBehavior']=True
+            else:after['sample']['paused']=False
+            with self.assertRaises(AssertionError):d.pixel_config(N.CONFIGS[0],'SYNTHETIC_RAF_NEGATIVE')
+            self.assertEqual(d.row['pixelControls'][0]['ordinaryRafBoundary']['after'],after)
     def test_all_read_or_render_evaluations_exclude_positive_mutation_issuers(self):
         tree=ast.parse(DRIVER.read_text(encoding='utf-8'))
         calls=[n for n in ast.walk(tree) if isinstance(n,ast.Call) and isinstance(n.func,ast.Attribute) and n.func.attr=='ev']
