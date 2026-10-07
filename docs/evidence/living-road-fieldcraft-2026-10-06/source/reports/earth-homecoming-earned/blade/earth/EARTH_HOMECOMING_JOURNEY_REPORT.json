@@ -1,0 +1,1172 @@
+{
+  "status": "passed",
+  "scope": "staged caller executes actual installed-owner accelerated continuation; native/browser and human qualification remain pending",
+  "variant": "blade",
+  "choice": "public-watch",
+  "prepared": false,
+  "input": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-fieldcraft-20261006\\source04\\earth-homecoming-earned\\blade\\MIGRATED_WORLD.json",
+    "sha256": "53bb831db9140963f95d5514a1ef07c19e752dac60c24de4fd1f67fa93bb0fff"
+  },
+  "final": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-fieldcraft-20261006\\source04\\earth-homecoming-earned\\blade\\earth\\FINAL_WORLD.json",
+    "bytes": 82395,
+    "sha256": "b8ac54f03cd8834261d4c075132d2b051dafc076ff8dd5d4b6b930576ea3f72e"
+  },
+  "initialStats": {
+    "level": 5,
+    "attack": 36,
+    "defense": 13,
+    "maxHP": 200
+  },
+  "finalStats": {
+    "level": 5,
+    "attack": 36,
+    "defense": 13,
+    "maxHP": 200
+  },
+  "all12Paid": true,
+  "priorOwnersPreserved": true,
+  "combat": {
+    "enemy": "earth-regent-incursion-v1",
+    "style": "blade",
+    "startStats": {
+      "level": 5,
+      "attack": 36,
+      "defense": 13,
+      "maxHP": 200
+    },
+    "seconds": 10.300000000037471,
+    "totalTicks": 191,
+    "guards": 2,
+    "arrowFrames": 0,
+    "frames": [
+      {
+        "at": 0.0500000000001819,
+        "frame": {
+          "kind": "line",
+          "x": 1,
+          "z": -35,
+          "yaw": 0,
+          "pattern": "claim-lane",
+          "phase": "claims",
+          "halfWidth": 1.1,
+          "length": 4
+        },
+        "hp": 168,
+        "windup": 1.45,
+        "recovery": 2.4
+      },
+      {
+        "at": 3.95000000001437,
+        "frame": {
+          "kind": "line",
+          "x": 1,
+          "z": -35,
+          "yaw": 0,
+          "pattern": "false-shelter",
+          "phase": "false-shelter",
+          "halfWidth": 0.55,
+          "length": 11
+        },
+        "hp": 96,
+        "windup": 1.85,
+        "recovery": 2.6
+      },
+      {
+        "at": 8.500000000030923,
+        "frame": {
+          "kind": "annulus",
+          "x": 1,
+          "z": -35,
+          "yaw": 0,
+          "pattern": "closing-ring",
+          "phase": "local-stand",
+          "innerRadius": 1.5,
+          "outerRadius": 3.2
+        },
+        "hp": 24,
+        "windup": 1.6,
+        "recovery": 2.6
+      }
+    ],
+    "contacts": [
+      {
+        "at": 1.450000000005275,
+        "hit": true,
+        "frame": {
+          "kind": "line",
+          "x": 1,
+          "z": -35,
+          "yaw": 0,
+          "pattern": "claim-lane",
+          "phase": "claims",
+          "halfWidth": 1.1,
+          "length": 4
+        },
+        "beforeHP": 198,
+        "hp": 197,
+        "damage": 1
+      },
+      {
+        "at": 5.8000000000211,
+        "hit": true,
+        "frame": {
+          "kind": "line",
+          "x": 1,
+          "z": -35,
+          "yaw": 0,
+          "pattern": "false-shelter",
+          "phase": "false-shelter",
+          "halfWidth": 0.55,
+          "length": 11
+        },
+        "beforeHP": 197,
+        "hp": 196,
+        "damage": 1
+      },
+      {
+        "at": 10.100000000036744,
+        "hit": true,
+        "frame": {
+          "kind": "annulus",
+          "x": 1,
+          "z": -35,
+          "yaw": 0,
+          "pattern": "closing-ring",
+          "phase": "local-stand",
+          "innerRadius": 1.5,
+          "outerRadius": 3.2
+        },
+        "beforeHP": 196,
+        "hp": 195,
+        "damage": 1
+      }
+    ],
+    "weaponImpacts": [
+      {
+        "caller": "production blade command",
+        "mode": "recover",
+        "before": 168,
+        "after": 132,
+        "at": 1.450000000005275
+      },
+      {
+        "caller": "production blade command",
+        "mode": "recover",
+        "before": 132,
+        "after": 96,
+        "at": 2.000000000007276
+      },
+      {
+        "caller": "production blade command",
+        "mode": "recover",
+        "before": 96,
+        "after": 60,
+        "at": 5.8000000000211
+      },
+      {
+        "caller": "production blade command",
+        "mode": "recover",
+        "before": 60,
+        "after": 24,
+        "at": 6.350000000023101
+      },
+      {
+        "caller": "production blade command",
+        "mode": "recover",
+        "before": 24,
+        "after": 0,
+        "at": 10.300000000037471
+      }
+    ],
+    "method": "deliberate actual attacks at real HP bands, ordinary movement, existing target/auto/Brace; no forced HP, cycle or mode; companion deliberately asked to wait through actual command"
+  },
+  "events": [
+    {
+      "type": "accept",
+      "payload": {
+        "quest": "earth-road-can-refuse-v1",
+        "expectedActive": "character-2",
+        "expectedRevision": 416
+      },
+      "result": {
+        "ok": true,
+        "text": "The Road That Can Refuse accepted. Bring the checked records to Vessa and Merren, then examine the new claim at the junction."
+      },
+      "room": null,
+      "player": {
+        "x": 11,
+        "z": 9,
+        "yaw": -1.396124127786667
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "quest": "earth-road-can-refuse-v1",
+        "expectedActive": "character-2",
+        "expectedRevision": 418,
+        "step": "bridge-record"
+      },
+      "result": {
+        "ok": true,
+        "text": "Vessa: A bridge belongs to its crossings, not to whoever can hold a chain across it. Let me compare the records you brought with the road we have kept open."
+      },
+      "room": "world-earthlands",
+      "player": {
+        "x": -7,
+        "z": 97,
+        "yaw": -2.3561944901923537
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "quest": "earth-road-can-refuse-v1",
+        "expectedActive": "character-2",
+        "expectedRevision": 419,
+        "step": "register-record"
+      },
+      "result": {
+        "ok": true,
+        "text": "Merren: My evening load is accounted for. So are your other journeys. This new order calls every departure a debt. Lay the checked records beside it and see what it leaves out."
+      },
+      "room": "world-earthlands",
+      "player": {
+        "x": 8,
+        "z": -69,
+        "yaw": 3.0777190207304854
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "quest": "earth-road-can-refuse-v1",
+        "expectedActive": "character-2",
+        "expectedRevision": 420,
+        "step": "inspect-claim"
+      },
+      "result": {
+        "ok": true,
+        "text": "The portable claim engine bears the same command on both relays: every road must answer to one keeper. Follow the two cables. Neither belongs to the bridge or the field register."
+      },
+      "room": "world-earthlands",
+      "player": {
+        "x": 1,
+        "z": -35,
+        "yaw": -0.20304521725344557
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "quest": "earth-road-can-refuse-v1",
+        "expectedActive": "character-2",
+        "expectedRevision": 421,
+        "step": "west-relay-isolated"
+      },
+      "result": {
+        "ok": true,
+        "text": "Disconnect the west claim relay. The public road keeps its own support; no traveller needs the relay to pass."
+      },
+      "room": "world-earthlands",
+      "player": {
+        "x": -6,
+        "z": -35,
+        "yaw": -1.5707963267948966
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "quest": "earth-road-can-refuse-v1",
+        "expectedActive": "character-2",
+        "expectedRevision": 422,
+        "step": "east-relay-isolated"
+      },
+      "result": {
+        "ok": true,
+        "text": "With the west relay quiet, disconnect the east. The two cables fall slack. The engine can still strike, but it cannot make this road its property."
+      },
+      "room": "world-earthlands",
+      "player": {
+        "x": 8,
+        "z": -35,
+        "yaw": 1.5707963267948966
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "quest": "earth-road-can-refuse-v1",
+        "expectedActive": "character-2",
+        "expectedRevision": 423,
+        "step": "challenge-regent"
+      },
+      "result": {
+        "ok": true,
+        "text": "Regent of Ash: I can keep a road for you that never loses anything. Why settle for a bridge where someone may leave? Read his three signals, then deliberately challenge his claim here."
+      },
+      "room": "world-earthlands",
+      "player": {
+        "x": 1,
+        "z": -35,
+        "yaw": 3.1343985330995006
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "quest": "earth-road-can-refuse-v1",
+        "expectedActive": "character-2",
+        "expectedRevision": 435,
+        "step": "passage-secured"
+      },
+      "result": {
+        "ok": true,
+        "text": "Fit the independent restraint and disconnect the claim engine from the road. Travellers can pass safely before you decide what becomes of its evidence."
+      },
+      "room": "world-earthlands",
+      "player": {
+        "x": 1,
+        "z": -35,
+        "yaw": 3.1343985330995006
+      }
+    },
+    {
+      "type": "choose",
+      "payload": {
+        "quest": "earth-road-can-refuse-v1",
+        "expectedActive": "character-2",
+        "expectedRevision": 436,
+        "choice": "public-watch"
+      },
+      "result": {
+        "ok": true,
+        "text": "Public watch · post the checked local record recorded. The public watch marker and checked return record remain beside the quiet engine. Vessa names the public watch at the bridge."
+      },
+      "room": "world-earthlands",
+      "player": {
+        "x": 1,
+        "z": -35,
+        "yaw": 3.1343985330995006
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "quest": "earth-road-can-refuse-v1",
+        "expectedActive": "character-2",
+        "expectedRevision": 437,
+        "step": "return-verified"
+      },
+      "result": {
+        "ok": true,
+        "text": "Vessa: The bridge is still open. I have named the outcome you chose beside the checked return record. Take the free road home; you owe no departure fee."
+      },
+      "room": "world-earthlands",
+      "player": {
+        "x": -7,
+        "z": 97,
+        "yaw": -2.3561944901923537
+      }
+    },
+    {
+      "type": "step",
+      "payload": {
+        "quest": "earth-road-can-refuse-v1",
+        "expectedActive": "character-2",
+        "expectedRevision": 438,
+        "step": "home-return"
+      },
+      "result": {
+        "ok": true,
+        "text": "Oren: There you are. Set the local account on the workshop bench. You stopped one claim without making another. The payment is waiting when you choose to take it; the ordinary work here is still yours."
+      },
+      "room": null,
+      "player": {
+        "x": 11,
+        "z": 9,
+        "yaw": -1.396124127786667
+      }
+    },
+    {
+      "type": "claim",
+      "payload": {
+        "quest": "earth-road-can-refuse-v1",
+        "expectedActive": "character-2",
+        "expectedRevision": 440
+      },
+      "result": {
+        "ok": true,
+        "text": "Oren paid 50 XP, 20 sunmarks, 4 ore, 4 timber, 3 fibre and 1 crystal once. Public watch · post the checked local record remains; the road and ordinary exploration stay open.",
+        "reward": {
+          "xp": 50,
+          "coins": 20,
+          "ore": 4,
+          "materials": {
+            "wood": 4,
+            "fiber": 3,
+            "crystal": 1
+          }
+        }
+      },
+      "room": null,
+      "player": {
+        "x": 11,
+        "z": 9,
+        "yaw": -1.396124127786667
+      }
+    },
+    {
+      "type": "claim",
+      "payload": {
+        "quest": "earth-road-can-refuse-v1",
+        "expectedActive": "character-2",
+        "expectedRevision": 441
+      },
+      "result": {
+        "ok": true,
+        "duplicate": true,
+        "text": "Oren has already paid this account once. Your chosen outcome remains."
+      },
+      "room": null,
+      "player": {
+        "x": 11,
+        "z": 9,
+        "yaw": -1.396124127786667
+      }
+    },
+    {
+      "type": "claim",
+      "payload": {
+        "quest": "earth-road-can-refuse-v1",
+        "expectedActive": "character-2",
+        "expectedRevision": 441
+      },
+      "result": {
+        "ok": true,
+        "duplicate": true,
+        "text": "Oren has already paid this account once. Your chosen outcome remains."
+      },
+      "room": null,
+      "player": {
+        "x": 11,
+        "z": 9,
+        "yaw": -1.396124127786667
+      }
+    }
+  ],
+  "commands": [
+    {
+      "id": "earned-earth-blade-1",
+      "type": "companion-mode",
+      "p": {
+        "mode": "stay"
+      },
+      "result": {
+        "ok": true,
+        "text": "Briar will stay."
+      }
+    },
+    {
+      "id": "earned-earth-blade-2",
+      "type": "target-select",
+      "p": {
+        "id": "earth-regent-incursion-v1"
+      },
+      "result": {
+        "ok": true,
+        "text": "Target: Regent of Ash · local incursion"
+      }
+    },
+    {
+      "id": "earned-earth-blade-3",
+      "type": "guard",
+      "p": {},
+      "result": {
+        "ok": true,
+        "text": "Braced · incoming damage halved for 3 seconds."
+      }
+    },
+    {
+      "id": "earned-earth-blade-4",
+      "type": "attack",
+      "p": {
+        "target": "earth-regent-incursion-v1"
+      },
+      "result": {
+        "ok": true,
+        "text": "Sunstrike"
+      }
+    },
+    {
+      "id": "earned-earth-blade-5",
+      "type": "attack",
+      "p": {
+        "target": "earth-regent-incursion-v1"
+      },
+      "result": {
+        "ok": true,
+        "text": "Sunstrike"
+      }
+    },
+    {
+      "id": "earned-earth-blade-6",
+      "type": "attack",
+      "p": {
+        "target": "earth-regent-incursion-v1"
+      },
+      "result": {
+        "ok": true,
+        "text": "Sunstrike"
+      }
+    },
+    {
+      "id": "earned-earth-blade-7",
+      "type": "attack",
+      "p": {
+        "target": "earth-regent-incursion-v1"
+      },
+      "result": {
+        "ok": true,
+        "text": "Sunstrike"
+      }
+    },
+    {
+      "id": "earned-earth-blade-8",
+      "type": "guard",
+      "p": {},
+      "result": {
+        "ok": true,
+        "text": "Braced · incoming damage halved for 3 seconds."
+      }
+    },
+    {
+      "id": "earned-earth-blade-9",
+      "type": "auto-toggle",
+      "p": {},
+      "result": {
+        "ok": true,
+        "text": "Autoattack on. Move into range; movement remains yours."
+      }
+    },
+    {
+      "id": "earned-earth-blade-10",
+      "type": "target-clear",
+      "p": {},
+      "result": {
+        "ok": true,
+        "text": "Target cleared."
+      }
+    },
+    {
+      "id": "earned-earth-blade-11",
+      "type": "companion-mode",
+      "p": {
+        "mode": "follow"
+      },
+      "result": {
+        "ok": true,
+        "text": "Briar will follow."
+      }
+    }
+  ],
+  "walks": [
+    {
+      "room": "valley",
+      "start": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "x": 11,
+      "z": 9,
+      "frames": 50
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 11,
+        "z": 9,
+        "yaw": -1.396124127786667
+      },
+      "x": 18,
+      "z": 6,
+      "frames": 51
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "x": -7,
+      "z": 97,
+      "frames": 62
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -7,
+        "z": 97,
+        "yaw": -2.3561944901923537
+      },
+      "x": 8,
+      "z": -69,
+      "frames": 1055
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 8,
+        "z": -69,
+        "yaw": 3.0777190207304854
+      },
+      "x": 1,
+      "z": -35,
+      "frames": 217
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 1,
+        "z": -35,
+        "yaw": -0.20304521725344557
+      },
+      "x": -6,
+      "z": -35,
+      "frames": 44
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": -6,
+        "z": -35,
+        "yaw": -1.5707963267948966
+      },
+      "x": 8,
+      "z": -35,
+      "frames": 88
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "x": 18,
+      "z": 6,
+      "frames": 1
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "x": 1,
+      "z": -35,
+      "frames": 869
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 1,
+        "z": -35,
+        "yaw": 3.1343985330995006
+      },
+      "x": 1,
+      "z": -32.9,
+      "frames": 14
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 1,
+        "z": -32.9,
+        "yaw": 3.141592653589793
+      },
+      "x": 1,
+      "z": -32.9,
+      "frames": 1
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "x": 18,
+      "z": 6,
+      "frames": 1
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "x": 1,
+      "z": -35,
+      "frames": 869
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 1,
+        "z": -35,
+        "yaw": 3.1343985330995006
+      },
+      "x": 1,
+      "z": -35,
+      "frames": 1
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "x": 18,
+      "z": 6,
+      "frames": 1
+    },
+    {
+      "room": "world-earthlands",
+      "start": {
+        "x": 0,
+        "z": 104,
+        "yaw": 3.141592653589793
+      },
+      "x": -7,
+      "z": 97,
+      "frames": 62
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "x": 18,
+      "z": 6,
+      "frames": 1
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 18,
+        "z": 6,
+        "yaw": 2.2455372690188193
+      },
+      "x": 11,
+      "z": 9,
+      "frames": 50
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 11,
+        "z": 9,
+        "yaw": -1.396124127786667
+      },
+      "x": 11,
+      "z": 9,
+      "frames": 1
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 11,
+        "z": 9,
+        "yaw": -1.396124127786667
+      },
+      "x": 11,
+      "z": 9,
+      "frames": 1
+    },
+    {
+      "room": "valley",
+      "start": {
+        "x": 11,
+        "z": 9,
+        "yaw": -1.396124127786667
+      },
+      "x": 11,
+      "z": 9,
+      "frames": 1
+    }
+  ],
+  "checkpoints": [
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-fieldcraft-20261006\\source04\\earth-homecoming-earned\\blade\\earth\\01_ACCEPTED.json",
+      "bytes": 83251,
+      "sha256": "91609bfaa4f78deca99a48a4798748159b9109a7cf73839c870de5ebe85bac67"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-fieldcraft-20261006\\source04\\earth-homecoming-earned\\blade\\earth\\02_RELAYS.json",
+      "bytes": 83043,
+      "sha256": "73d103d0bad9a8e67314169ca015ba4fcb2c0a452630ef1d31476fda2156fda0"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-fieldcraft-20261006\\source04\\earth-homecoming-earned\\blade\\earth\\03_REGENT_REPELLED.json",
+      "bytes": 82574,
+      "sha256": "f2b86c04baf27bc03adbcc4fc5426fec0ae244f54281a1d91dd47cfff8f016b1"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-fieldcraft-20261006\\source04\\earth-homecoming-earned\\blade\\earth\\04_CHOICE.json",
+      "bytes": 82928,
+      "sha256": "43353e3a72a053927c2d0ffabbc4cdd6333fa4700d20a060ff267800879f6958"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-fieldcraft-20261006\\source04\\earth-homecoming-earned\\blade\\earth\\05_VERIFIED.json",
+      "bytes": 82976,
+      "sha256": "f74554bb6737c9ce951278026493f69fe69763e24ee2777e37d65402c128a06f"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-fieldcraft-20261006\\source04\\earth-homecoming-earned\\blade\\earth\\06_HOME_UNPAID.json",
+      "bytes": 82877,
+      "sha256": "3ddce66fd020cd50ae64fe5b55678f140a1ad48a2a28afc444a7f36d94271bcd"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-fieldcraft-20261006\\source04\\earth-homecoming-earned\\blade\\earth\\07_PAID.json",
+      "bytes": 82720,
+      "sha256": "c221e344aff0f77c1c3abd21ba3dd6a1dd34809658b4e1119cc0dc3bcf5be863"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-fieldcraft-20261006\\source04\\earth-homecoming-earned\\blade\\earth\\FINAL_WORLD.json",
+      "bytes": 82395,
+      "sha256": "b8ac54f03cd8834261d4c075132d2b051dafc076ff8dd5d4b6b930576ea3f72e"
+    }
+  ],
+  "reloads": 7,
+  "coldReloads": [
+    {
+      "label": "accepted",
+      "accepted": true,
+      "steps": [],
+      "choice": null,
+      "claimed": false,
+      "wholeSnapshotPreserved": true
+    },
+    {
+      "label": "ordered-relays",
+      "accepted": true,
+      "steps": [
+        "bridge-record",
+        "register-record",
+        "inspect-claim",
+        "west-relay-isolated",
+        "east-relay-isolated"
+      ],
+      "choice": null,
+      "claimed": false,
+      "wholeSnapshotPreserved": true
+    },
+    {
+      "label": "regent-repelled",
+      "accepted": true,
+      "steps": [
+        "bridge-record",
+        "register-record",
+        "inspect-claim",
+        "west-relay-isolated",
+        "east-relay-isolated",
+        "challenge-regent",
+        "regent-repelled"
+      ],
+      "choice": null,
+      "claimed": false,
+      "wholeSnapshotPreserved": true
+    },
+    {
+      "label": "chosen",
+      "accepted": true,
+      "steps": [
+        "bridge-record",
+        "register-record",
+        "inspect-claim",
+        "west-relay-isolated",
+        "east-relay-isolated",
+        "challenge-regent",
+        "regent-repelled",
+        "passage-secured",
+        "aftermath"
+      ],
+      "choice": "public-watch",
+      "claimed": false,
+      "wholeSnapshotPreserved": true
+    },
+    {
+      "label": "verified-away-from-home",
+      "accepted": true,
+      "steps": [
+        "bridge-record",
+        "register-record",
+        "inspect-claim",
+        "west-relay-isolated",
+        "east-relay-isolated",
+        "challenge-regent",
+        "regent-repelled",
+        "passage-secured",
+        "aftermath",
+        "return-verified"
+      ],
+      "choice": "public-watch",
+      "claimed": false,
+      "wholeSnapshotPreserved": true
+    },
+    {
+      "label": "home-unpaid",
+      "accepted": true,
+      "steps": [
+        "bridge-record",
+        "register-record",
+        "inspect-claim",
+        "west-relay-isolated",
+        "east-relay-isolated",
+        "challenge-regent",
+        "regent-repelled",
+        "passage-secured",
+        "aftermath",
+        "return-verified",
+        "home-return"
+      ],
+      "choice": "public-watch",
+      "claimed": false,
+      "wholeSnapshotPreserved": true
+    },
+    {
+      "label": "paid",
+      "accepted": true,
+      "steps": [
+        "bridge-record",
+        "register-record",
+        "inspect-claim",
+        "west-relay-isolated",
+        "east-relay-isolated",
+        "challenge-regent",
+        "regent-repelled",
+        "passage-secured",
+        "aftermath",
+        "return-verified",
+        "home-return"
+      ],
+      "choice": "public-watch",
+      "claimed": true,
+      "wholeSnapshotPreserved": true
+    }
+  ],
+  "sourceEpoch": {
+    "actual": {
+      "FIRSTLIGHT_VALLEY.html": "05a30536edb018a5c9559033a530ddf259321f19453060607b6877e260d53bb5",
+      "build.py": "23ca1a14ca0dd7da37d778607cd19794a1b23a05e768abe9ced9416619e50311",
+      "index.html": "05a30536edb018a5c9559033a530ddf259321f19453060607b6877e260d53bb5",
+      "src/adventure-art.js": "2022f25ee84f5a862025344bbbc15f46336a112e09bdb820075a2fec002d05eb",
+      "src/adventure-ui.js": "d519bbc992aaabd71db76a7ff08a6128317bdea6e8898f933a865e78edc3539d",
+      "src/adventure.js": "c8c9f751bfd09d4e123ef786867fd1f1321d8364cf2f83a3e8bda74c12417a5c",
+      "src/app.js": "80675a6bf7559cf1b02b949c33a7c4c184b24463c10f725d0e8235d48eea408c",
+      "src/arsenal-art.js": "1899a42e04fd44e18eced395229793d275a873dbe2902473968289815a3f694f",
+      "src/arsenal-ui.js": "a462102896a3c7013f29f6cdf40504b983b8fde803baf41b98b8fb032da3abe6",
+      "src/arsenal.js": "70cf869a8240895158960c62cc65d802adf491ac24ee66bf7a3c0389557d2b70",
+      "src/atlantis-campaign-art.js": "9ab549df2eeafc8314c95c7c9e488bf80472fcfaac1de7dfe41ebbf8c1830243",
+      "src/atlantis-campaign-data.js": "0edd29113cceb2e0d6821ec6542a7434aa2ace5e964e44b4f04f4f21ccf25f3f",
+      "src/atlantis-campaign-ui.js": "3bcf9923c47710bf2d3d876629ed47e46d4b7e4289aa8f7510b9ccac2025cb5d",
+      "src/atlantis-campaign.css": "11d0f42b969895ba4ac0f561067c260b9a3d632b3b7f15a34d617eff8a4b6523",
+      "src/atlantis-campaign.js": "da23cf19fe0fd68ae3f03c040fb3c375b655570bccffd320794cd45bd19067d3",
+      "src/beacon-art.js": "aea9e5d22d23eaf73777636c56c2444edac9b0d6239f9504cc95026585618577",
+      "src/beacon.js": "2aded7272a8d50cbfbdb4421f0140d00401a49788a3bb465260e30f501a2bf13",
+      "src/bridge-art.js": "e8f85dd21a0eb6363f674a934c625b22fc29f18fc63a543ebd61ea0a87fa254d",
+      "src/bridge-community-art.js": "454eb5365082d529fe3bb05b166b38e1d01e6fbcd34f1148c5ebf0d02ad9a615",
+      "src/bridge-community-ui.js": "a51a02420b59329d0ae268d42a5632de50d87d9b031103a724ad51564737c6d6",
+      "src/bridge-community.css": "15be66090d836555498d87e00564c5b7b7094c2e3dca5951f9b1fde5023ea29c",
+      "src/bridge-community.js": "4308eecafc47044c3c063b46e4c3aa7cb4e7a30d5d938c64fd518e7f29cb30cc",
+      "src/bridge-moment-view.js": "fe58c7824f96458f2608af4d1cf76c81d2936da89a8cca1ad933974b65e0e03c",
+      "src/characters-ui.js": "58de0cb602479d45eae66f4ccd4077253e34e6e3d843a1505f9eca4d4a1f8f77",
+      "src/characters.css": "48bfb2431b5fb50e530ed334e52cf07c31b8a29bdb5bb4917365210ab9e71815",
+      "src/characters.js": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+      "src/classes-ui.js": "6fb25a35158cf3388485f57016aea745260dea8a057f8d6b4781d3f7a296d22b",
+      "src/classes.css": "4b9b47443b1817efe2b4cd43e7a3d0d34e623738a5b1e6e1cad05bc2ce88e892",
+      "src/classes.js": "15da8e8f26c234a5903e5321d9cbcadea773037c9536911a5dc85cb9da2aaa97",
+      "src/coastward-settlement-art.js": "8f08b152b5205c434ffa7408118e754799eb7ab396b2c0aaec8920cc0029c839",
+      "src/coastward-woodland-art.js": "45b2758d3f8d75457545b24c2cc96f81f70ac8296bf183f57ddd412289f130fc",
+      "src/combat-view.js": "9e674247119cece3bb6a35ca31fa424ed5e8e0187cbd2c149afb6f4aba085d5c",
+      "src/combat.js": "4176bbf57fd761732b5f9d96708ac8ac0d6855ef56c928d06810f06f74315a32",
+      "src/companion-art.js": "06821bb333cc1d61398017fcd236fb4622aae6432ce636f827642531946b2a32",
+      "src/core.js": "5b34de7972a28fcbc922f2201a72bec384983e43dcbda9258b0701c907cfb49c",
+      "src/cosmos-art.js": "d68fb28540196c4d6f39ca60cc99e1eb99fab534fb026578c02e75119cdd17e2",
+      "src/cosmos-campaign-art.js": "3b22a5fe117cb3731a1531a66941fba9e2953b5c23f3816150c184230a631a5e",
+      "src/cosmos-campaign-data.js": "9c7d4d30b863e25812df3651e785bff3f87495b37ede488804ee03178cab93d2",
+      "src/cosmos-campaign-ui.js": "95f8bbb9df5f97ddcb779268e5c28f412914d388c92bff00f5e79ec048e77686",
+      "src/cosmos-campaign.css": "436b9330b2bb190d022698894c76bd6e3b321d014d6e64bc553449c4dcd33ff7",
+      "src/cosmos-campaign.js": "7e03aaad5efe9db475ea82db6e8b9343361a68dec52132cf190e3c055fc681fb",
+      "src/cosmos-ui.js": "2582b2f2f4d894f44a969108af258087cf7f0be8c70dbf73eabca5810d236465",
+      "src/cosmos.css": "4d79807974082aaef0df364d312ae3d4a345ffd40b5eab403ccc55c24f02a63b",
+      "src/cosmos.js": "bf4d9898600b9b5d296f3de934f6f8dd52e343f3b762fd5f0085a09f14ea2090",
+      "src/creative.js": "d0032234d3cab1a6e90c84736011a98631bcc3748de8d5fc23df872367038761",
+      "src/crossing-art.js": "86cd8945194c6437d9ece96a7d0bcac8a4970eb5f3324300e48d08376bb61bcf",
+      "src/crossing-ui.js": "5a2a7f6989a0a7ff0a96fee7aa88ec77dadbfba15440a272f131f17a98d86913",
+      "src/crossing.css": "af6dd51f197dfa1963fc9fa0d92683b2e6f48270903aaea5ba90cbb2833862a2",
+      "src/crossing.js": "b666c4e6e20483ad267293578020876c8791bbbf23f8116803936658400d1a8f",
+      "src/drover-art.js": "0f4dda1af6b05e1c7e0931d835fca2d3faec7960788bc89b9f9b591af19206b0",
+      "src/earth-art.js": "494aa1f9d018c9490ca8b95ba212470b5a98b5e5e6e2d0cab68bd36d16b60314",
+      "src/earth-expedition-art.js": "06fa49ca7e7687fc98576c3339fc3d59a9015e1e336640e0c9910ec5bac675b1",
+      "src/earth-expedition-beast-art.js": "bf663c1cf48ef65a1c43e42bec63e743686506f3c028b7e72e4f4eac2ef7c0e4",
+      "src/earth-expedition-dialogue.js": "1ba8a7bd0b32d56efa583b5cf1f0d4d1bf24df58e07811d08853e13a56c835ac",
+      "src/earth-expedition-ui.js": "77bc239988740432863832ae9c3ae4fef571475a54d17cc643436969816a76bc",
+      "src/earth-expedition.css": "ad650598df3749417d4953965e72d9a2a802f1bb46c549819305a19a5b95247b",
+      "src/earth-expedition.js": "6dc60f06910d1b0e09335ebe288e20ce6db974fdf6a5e97742f25a9ac03ca36e",
+      "src/earth-fieldcraft-art.js": "4b7306af76245fe9d7fa55f5e9287565e0dd24048e7364289d49d7553096e55d",
+      "src/earth-fieldcraft-ui.js": "313708ddf1546e974096ddcc5a0bc41070816b1fd6803dd662770d812a8bb0b5",
+      "src/earth-fieldcraft.js": "60dd296ee395f027890cfc6ecb40939b1ee384ce7e7af2f82bf1f926b644c283",
+      "src/earth-homecoming-art.js": "30779f59d328ab9a3a5fac435ae6bd9d0f9effe6038f6be97a193ac6b6635717",
+      "src/earth-homecoming-data.js": "55485996a1651f8b5f0580c9e074f5873ddf45ca26744939238e31516051014f",
+      "src/earth-homecoming-ui.js": "5e57a2367153e516bdab12837db82812de3124a32489b09987dd285be011159d",
+      "src/earth-homecoming.css": "dbfeb49d20278ebeb9b9ae4c1d4d575acc3a806ca59898f20ebb9f8ca8f1661a",
+      "src/earth-homecoming.js": "c16adf4e13bd3a57e9be6aae6cd0cc00a4b78b49106f220ee74dee105fe858c1",
+      "src/earth-notes-art.js": "87fe4682829bfff89978d7046d62f518874a7953808431c5634327c9eb449556",
+      "src/earth-notes-ui.js": "9e0f0df26062b4929e0c3a801e8e857afc269936dbe4932279e935c56274f264",
+      "src/earth-notes.js": "4ab5807020f65086b190591414c871ee76412791ac0c97dca5447c595840e9e0",
+      "src/earth-road-art.js": "e7bd1fbc7b1177327c0756724b1ccf78b1b640568d9121a1ff416736524b1520",
+      "src/earth-road-ui.js": "e4577d03d3b97d271b8374054d34b5afdecbb47b28e74b911b931c2ed8e3c8ad",
+      "src/earth-road.js": "7417a1bdc4ab9eea8e2afc4c013a6890507b5670fca97d1f6ebe9f823390a125",
+      "src/earth-shoulder-art.js": "422a50a7aeec456b6f75095c53a319d2cbf6ac5e09f773e268ed54034c2ddb8d",
+      "src/earth-story-ui.js": "930b71ef9184a5d7b03cc79ff33d7f9e000eabb9d3934266af9e0fe8713448cb",
+      "src/earth-story.js": "fd0ced6f17f1b15b2aee4e31aa00be249bc8e1fb08c4e735416d95c173fd52d0",
+      "src/earth-ui.js": "9294c4cb9666aa6aec2d36d6eb8e34686bf01f57ead9964322ad8283cc2ba635",
+      "src/earth.css": "1f40093ded67c175c70c730b8518ff928d26db40287515256fc287c45f2a9f3d",
+      "src/earth.js": "cbd5ee90a4b335c66ba096f439f8f3efe6f6f68cba99086485f34fd81866a166",
+      "src/elderweald-trail-art.js": "e978e735ec1ee8048df1777b190959b832cd37755f682c3d51b9ec3f0a7f0491",
+      "src/elderweald-world.js": "8d993c230ad7198e397f4bf41938522405c352bbdd903b04016d1262822d3538",
+      "src/engine.js": "b98cfea8453e5b6deeb16a13c45f1c1bf7fc80fb9ba8d0a185c242a6ea9b078d",
+      "src/experience.js": "3b5a178ca757c7b58dcbfcedcc1522887dc6a178faf5e942c6e3894166d60570",
+      "src/gathering-adapter.js": "df41b2b23ae11c6ef2661e48301c488cb26ab753a7beec73349b5c959d5ab564",
+      "src/gathering-art.js": "b693bce2a519bd75e4f99e03b96184f1ed10c9a9a02e25b7affd53e739f5e0eb",
+      "src/gathering-music.js": "5e44106322e01aebc7b87d8eefcd29b2a2577d2162d70fb8f99475c7cc7deb12",
+      "src/gathering-ui.js": "0c347e1da4a897b178c405f35cfef2e6ea518fe5d9e6ba650e48e48895e0445a",
+      "src/gathering.css": "aa2e5381a0ff9fa7e4ceae5053a54a8ab11a784f81ee021e4835d485d3c5f4db",
+      "src/gathering.js": "256a33c52f2b31c2c421f72a74aae543feb6c554ebae863aee55d31f0c68eb54",
+      "src/heaven-campaign-art.js": "25ed9017108ea106579584233cc55b2a1753d62bd36174bb9c023682cb2ad24a",
+      "src/heaven-campaign-data.js": "2495650ded3f74d81d3d53f4d259f29052d3ff64b65a4a6331351b049bdc67eb",
+      "src/heaven-campaign-ui.js": "67723b2f0acf3e52da6177ad98d8a881e3b3e509bfc418bd3031ffbdc9f0383e",
+      "src/heaven-campaign.css": "7cf25161526677ee407ff09596cf8e2ecfeb92246c66c0b7255440b54d041bf0",
+      "src/heaven-campaign.js": "50aa6ff6607f9dfda6f0df1ca2fa473bca36a7513a34d1a915c1a87305e69e26",
+      "src/hell-campaign-art.js": "5ea5b875e32114b07b52ffe0000b7163b340f08adf0eae01552b84a478420f18",
+      "src/hell-campaign-data.js": "745221292e89ed2bcdf455ffc1bf4e0e66259add5671709e77135d5ede3892ff",
+      "src/hell-campaign-ui.js": "d47acd0b9ba992df6ff4c73e1b5f3dfb9c1b2ced0745c8ffe50d6cd34cc80f8c",
+      "src/hell-campaign.css": "146c66cd811e3070367e10a91c30f39cfc630dba1ee929a3b6a540f96142f0d9",
+      "src/hell-campaign.js": "cc8ca64f9515e75f4bf572c3feb5978f07409e4aca5a328901b3322f399f67a1",
+      "src/home-history-art.js": "df3acc85a5191c3938692759e85b7ee76ef5f936f29e65d6a845636600396a1f",
+      "src/home-history-ui.js": "41a330942368c7a4500759f2cbaf1cda224bd5ed25bc284b9e44463fc1f43a8e",
+      "src/home-history.css": "54ef3c501dfda4c3d74c0f17d900bdc5b25c9dcbaeb1840ec36cbcfe0a276bd2",
+      "src/home-history.js": "f002eb64b57343e38e95eafa4cd522c892aab26efc7b0c3d65bea86a45cec6e6",
+      "src/local-life-art.js": "381d1f5469310e2dc98c14b6d58c4259113fd1d6dd10f77059f45e6848fefcf2",
+      "src/local-life-ui.js": "95a0757ae7f612560c94ebca13474925251fb485e449da0bc5c6440ceb43b4c6",
+      "src/local-life.js": "005f7bd489bba2832aaec0b6c9d1cc499660e6e0047be73ab0f85d2922955d48",
+      "src/mill-gate-art.js": "fe33cbbd3f180a8d32a0d0a338cde42c40e809af99ed2da1db157ba5c7fbcdd9",
+      "src/millwright-art.js": "bd7397ee2a9f4c47b2b51117e28f3c68533da41de3122bb0a39a5575913a5661",
+      "src/pursuit-ui.js": "f8c6bab82d88b6e4dcbf05f3e78701d489f31e224c80211b94f8acc8b70b4224",
+      "src/pursuit.css": "61f36fa917eafba8cfa332f7d233db4c47a6d007bbf84d1843bc25fc17dd63ff",
+      "src/pursuit.js": "b77e1874f8278971f41d4b62551df40c81126f2a35e02958958e802ab9c8b5ff",
+      "src/quarry-art.js": "5bc6d93e99e430e7a460a1a2a510fc69e60c9dd80e758bce7470dae3ae3446f6",
+      "src/realm-art-data.js": "1ac6251a7acf23c78799d96b5554fb3fe572c40e12c54c73f0188c4f8a324435",
+      "src/realm-atlas-ui.js": "26d34bdc7afc9fbf9bb1f0f483aa6bc8312eba8a2186d21c80cab2fc1f68529b",
+      "src/realm-atlas.css": "7ef7a03b8c2a69069c2d65da8d5134c7b7dc4bc2b941e139f818a7ab7011c366",
+      "src/realm-craft.js": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+      "src/realm-givers-art.js": "8362d7a98f238b77b9afa5eff7346f430c02af6cd249502f146308a3d246fb34",
+      "src/realm-trails-art.js": "99a588e7aee9c7d43b6506de836ab2bab75a9420c6b718369c37e4517ca037e3",
+      "src/realm-trails-cosmos.js": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+      "src/realm-trails-north.js": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+      "src/realm-trails-south.js": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+      "src/realm-trails-ui.js": "7d58c16fbe3213220d439f0760e24988aee87567454490eb6ddfd19c825e6a80",
+      "src/realm-trails.js": "e2831ec735c5ecf177bb0048f842b895dfa98d00cd53d2b0e78c8c6357b6be79",
+      "src/road-art.js": "0cc12918587f98f4b9ed2b7beb8d1b21219b4a69959742a759f88354942df05d",
+      "src/road.js": "d18106f1a2147d623680b285dc5882cae8d2b74c5ef8b500d75de35d20c86dbc",
+      "src/rpg-ui.js": "cabca7f6f7708791ef4581787fd36406ea9179b545aa29e837a1b4ed596dec54",
+      "src/rpg.css": "34ca5591b22748dbf96754fc0f6a857cbd73f77eb85e50b706e1b484291b11ae",
+      "src/sandbox-art.js": "3c3a8f9ea1a44fb84bdfe07a99b33969f253714c271e91ca3cfeca7eab76474c",
+      "src/sandbox-ui.js": "28d7530e8153ed3c8a6a31b3e204cbc9680484b013cb5880a4f05b76cf83d8f5",
+      "src/sandbox.js": "ad11196c12363b650f2697ab8fb30eb657ff0bf65953274942ce36eb28131e85",
+      "src/shell.html": "2783586b5766fc413d78c14debfd55c2ac81f7d1d1f86d9cdf71a6e3b4848e73",
+      "src/skitter-art.js": "bd84a78381cf7232a7fb92a868332308c68fcae17d25764c2b5d4bdfefa29903",
+      "src/soundscape.js": "15b7b578886b838ef20e56501940354d33a8ffcd5581332dd4c4b2035692c5af",
+      "src/starter-art.js": "cfc4f672b891fe6d53dec82a97aeac7204b8179b3490ae9df9ce3412c4661fcc",
+      "src/starter-ui.js": "44718b2835207383632d5f33e0748dba9c348041b11f9b404040bdf07a259052",
+      "src/starter.css": "f1501b06a13c2b3ec0030b39bf9d4530740aad2f60cf9608ca32957c9ce2943b",
+      "src/starter.js": "c6debd10295babafdcd714445c2ac18c0ff5ce8fd54b8dfe4f3ff78c9e0a294d",
+      "src/style.css": "f08ab48a3e661c18be404d6eafcc471a6e0b866c41304495cc94fac0bfa24d4a",
+      "src/surface-assets.js": "5cb0f81348074edbc0e4f3c7dee4962fac10bbc5e7db0ee07b16216f3b7a1e5f",
+      "src/traveler-art.js": "cf9e029046f5581aa3116f648fb657f9edff2ced67abc507afa38525f3ae1ba1",
+      "src/traveler-equipment-art.js": "13537e49de6fdcd670e75875c3b17736b76df53b65709d2b2366aab721dc98dc",
+      "src/workshop-transactions.js": "115193dc80841b531a14f85a41c8d2d5e44c6169fc4ea4d6c19637eb7a8e8dd4",
+      "src/world-atlantis-earth.js": "6685a2da156f3b6d394b9dfef611fafb76d277df2d8a1c57e82746d276228665",
+      "src/world-foundations-art.js": "e7681955e15b1f8ce5552997f374fabfe4569fbfb40c0b1dd0bc4100a95d65cd",
+      "src/world-foundations-ui.js": "a800a7d1506ac346fa060b32a68908e39901b908358ede7bc206b4c8f6b0d35a",
+      "src/world-foundations.css": "8abcf23f66cde69a92b7f3be6c099a1a2e2088d220bd83a81ea71d78f0564669",
+      "src/world-foundations.js": "4173e396c6d002d0ec25a7c549f046e0e77e561c3ef3b0e89400f84cc070d752",
+      "src/world-ground-coalescing.js": "c31024794d5b5db2c28d9aab9ecf8fd0acdf55c2630ff5edf93b988151e5d63d",
+      "src/world-heaven-hell.js": "7192efdcce877e359865c43d39d03fc1a2a54ebad960fd2d2a378880033f4cbd",
+      "src/world.js": "d13277330b9d281e56392e153f8805ccaca3f482a3db75402cfb49ed8d9b79ec",
+      "tests/earth_homecoming_earned.test.cjs": "5e5ec74ddbc7598465a096c242712536bc07c26accf0a7b6eebadfe618314122",
+      "tests/fixtures/earth-homecoming-prerequisites/PROVENANCE.json": "4b18502ab94c1e468013638ae79ffb1c53e100cd4e086abc8576a730ee932a3a",
+      "tests/fixtures/earth-homecoming-prerequisites/README.md": "c5e43e3e405250df82e57fae4d385f89b44db71d5a0ecfaa1097975f70caa732",
+      "tests/fixtures/earth-homecoming-prerequisites/blade/ALL_TWELVE_PREREQUISITES_EARNED.json": "3b8e39f119e5eda83211f036b13f982961a96830d24235a1a86065ee32c99a93",
+      "tests/fixtures/earth-homecoming-prerequisites/bow/ALL_TWELVE_PREREQUISITES_EARNED.json": "ea92d097b01b1d9610a25e02300b07a629c257a58d1a57e09e67de27648f657f",
+      "tests/fixtures/earth-homecoming-prerequisites/strongest/FINAL_WORLD.json": "1cc37eafe2f1a10943ee11e8eba6423f3ca51be6f15d359bf9928e0fe5cb53e6",
+      "tools/earth-homecoming-journey/connected_atlantis.cjs": "c72b0bca308d0293e088cc4d3636780b285f2e8822663ac4ef298317716bc006",
+      "tools/earth-homecoming-journey/connected_cosmos.cjs": "eba6e08a88f6f0fbe8b1d5868370ea58536040700ceb72da85f1b4f06ecb84d6",
+      "tools/earth-homecoming-journey/connected_heaven.cjs": "cfdd7a0eabd56a777189340e81c60fc072d0e4888b0d2ae6051f7b45c402cbf8",
+      "tools/earth-homecoming-journey/connected_hell.cjs": "ceebdad6db57e7cc55390a5df35a5034b889d6061172a0bdc9f30e36c2333630",
+      "tools/earth-homecoming-journey/connected_homecoming.cjs": "d230919fdfd2de80940a99f7dd07bfa478163a2aadc8f1a6792dc403cc507ea2",
+      "tools/earth-homecoming-journey/connected_support.cjs": "ac0fd246193839e5ac681aab4cf6eaec800342d8f9245affb09f39133793bbc1",
+      "tools/earth-homecoming-journey/early_realms.cjs": "15e29139d1db1f9df5fa22074c7787d5723c61ad46e53317bc23c700b614a254",
+      "tools/earth-homecoming-journey/earned_common.cjs": "684e3e63dd02a48701922f72127aebf2c4fcfd38c0c42ca6fa178e0d2c78d3c0",
+      "tools/earth-homecoming-journey/earned_earth_homecoming.cjs": "4c65d4a4ca88de60b146f2bab18f5f1a84de3ce79c0d90806ebe5c8e55b63ed6",
+      "tools/earth_homecoming_journey.cjs": "46386a35da401357a31e782866e2eaac78dc572ee0ec84fe367e4ac1c06c9143"
+    },
+    "stages": {
+      "caller/connected_atlantis.cjs": "c72b0bca308d0293e088cc4d3636780b285f2e8822663ac4ef298317716bc006",
+      "caller/connected_cosmos.cjs": "eba6e08a88f6f0fbe8b1d5868370ea58536040700ceb72da85f1b4f06ecb84d6",
+      "caller/connected_heaven.cjs": "cfdd7a0eabd56a777189340e81c60fc072d0e4888b0d2ae6051f7b45c402cbf8",
+      "caller/connected_hell.cjs": "ceebdad6db57e7cc55390a5df35a5034b889d6061172a0bdc9f30e36c2333630",
+      "caller/connected_homecoming.cjs": "d230919fdfd2de80940a99f7dd07bfa478163a2aadc8f1a6792dc403cc507ea2",
+      "caller/connected_support.cjs": "ac0fd246193839e5ac681aab4cf6eaec800342d8f9245affb09f39133793bbc1",
+      "caller/early_realms.cjs": "15e29139d1db1f9df5fa22074c7787d5723c61ad46e53317bc23c700b614a254",
+      "caller/earned_common.cjs": "684e3e63dd02a48701922f72127aebf2c4fcfd38c0c42ca6fa178e0d2c78d3c0",
+      "caller/earned_earth_homecoming.cjs": "4c65d4a4ca88de60b146f2bab18f5f1a84de3ce79c0d90806ebe5c8e55b63ed6"
+    },
+    "manifests": {
+      "mode": "installed source, explicit switch from historical d3 overlay base",
+      "installedManifest": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-fieldcraft-20261006\\source04\\earth-homecoming-earned.SOURCE_EPOCH.json",
+        "sha256": "14d07c9ccc0cae2dedcfb223875b53516321fac3aa518becdc03f82991e37372"
+      }
+    }
+  },
+  "sourceFrozen": true,
+  "positionEdits": 0,
+  "actorPositionEdits": 0,
+  "inventoryGrants": 0,
+  "healthGrants": 0,
+  "manualDamage": 0,
+  "plantedDefeats": 0,
+  "plantedQuestFacts": 0,
+  "forcedModes": 0,
+  "forcedCycles": 0,
+  "method": "actual Core movement/World travel, exact installed app command fragments/synchronous Character Store writes, actual Adventure target/auto/guard/weapons/AI, cold Core+Store reloads; in-memory storage",
+  "nativePersistence": false,
+  "browserExecuted": false,
+  "normalRAF": false,
+  "humanPacing": false,
+  "syntheticGameplaySetup": false,
+  "managedProfileShellSynthetic": true
+}

@@ -1,8 +1,12 @@
-# Living Road fieldcraft: source qualified, 2026-10-06
+# Living Road fieldcraft qualified, 2026-10-06
 
-Root owns `gameplay/living-road-fieldcraft-20261006` in this reused integrated D checkout, based on PR50 final `f021adf539488d879b72c3d9e69f1ff10527c0f8`. Read docs/development/LIVING_ROAD_FIELDCRAFT_2026-10-06.md before older fronts. Four actual sections/five receivers now gate the existing first brace transaction. Native03 passed 1159 checks/22 browser restarts; a separate 17.39-second actual RTX canvas clip passed84 capture checks. Complete source04 passed190 commands/124 syntax modules. Exact pushed-source remote complete48-browser qualification is next; targeted results do not replace that gate.
+Root owns `gameplay/living-road-fieldcraft-20261006` in this reused integrated D checkout. Read docs/development/LIVING_ROAD_FIELDCRAFT_2026-10-06.md and the current evidence before older fronts. Four real sections and five receivers now gate the original first brace transaction.
 
-World 9 / adventure 12 / earthHomecoming 1 and old browser keys remain. Partial fitting is transient; old completed repairs, payments, XP, gear, sockets, explicit choices and both cameras are preserved. No main merge, public deployment, paid providers, billing intervention, personal-save access or unrelated cleanup. Reuse the integrated D checkout and qualification station; retain failures and the blocked standalone deletion. Wider production goal ACTIVE; old heartbeat PAUSED. Scoped colleagues currently prepare small evidence and next-arc proposals only.
+Qualified source `99e8f46a557f51d1ffd41339d25b73d44af9bca9`, stacked on PR50 final `f021adf539488d879b72c3d9e69f1ff10527c0f8`. The reused clean remote checkout, freshly fetched to this exact source, completed the full verifier exit 0 at `2026-10-07T00:45:22.9883043Z`: 238 commands, 124 syntax modules and all 48 browser suites in one invocation. Node 1678 passed / 2 explicit generic-cohort skips (1680 total); Python 262 methods, 256 passed / 6 method skips plus 2 skipped setUpClass records. Mandatory current native/recording preflights separately passed with explicit cohort inputs. Identical HTML: 3088437 bytes / SHA256 `05a30536edb018a5c9559033a530ddf259321f19453060607b6877e260d53bb5`.
+
+Open draft PR51 remains stacked against PR50; main is unmerged. The next bounded arc is the first supplied load through the repaired local route. Integrate only from the final pushed PR51 evidence head; staged data/rules/motion/UI/art and CPU composition are preparation.
+
+World 9 / adventure 12 / earthHomecoming 1 and old browser keys remain. Partial fitting is transient; old completed repairs, payments, XP, gear, sockets, explicit choices and both cameras are preserved. No main merge, public deployment, paid providers, billing intervention, personal-save access or unrelated cleanup. Reuse the integrated D checkout and qualification station; retain failures and the blocked standalone deletion. Wider production goal ACTIVE; old heartbeat PAUSED. Two scoped colleagues prepare small next-arc files; that staged work is not integrated gameplay.
 
 ---
 # Wider production: connected Earth qualified, 2026-10-06

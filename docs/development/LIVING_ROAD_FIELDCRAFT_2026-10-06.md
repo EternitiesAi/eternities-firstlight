@@ -1,3 +1,11 @@
+# Delivered qualification
+
+Qualified source `99e8f46a557f51d1ffd41339d25b73d44af9bca9`, stacked on PR50 final `f021adf539488d879b72c3d9e69f1ff10527c0f8`. The reused clean remote checkout, freshly fetched to this exact source, completed the full verifier exit 0 at `2026-10-07T00:45:22.9883043Z`: 238 commands, 124 syntax modules and all 48 browser suites in one invocation. Node 1678 passed / 2 explicit generic-cohort skips (1680 total); Python 262 methods, 256 passed / 6 method skips plus 2 skipped setUpClass records. Mandatory current native/recording preflights separately passed with explicit cohort inputs. Identical HTML: 3088437 bytes / SHA256 `05a30536edb018a5c9559033a530ddf259321f19453060607b6877e260d53bb5`.
+
+[Draft PR51](https://github.com/EternitiesAi/eternities-firstlight/pull/51). [Retained evidence](../evidence/living-road-fieldcraft-2026-10-06/README.md) preserves exact epochs, all executed commands, explicit skips, negative attempts and one short actual recording. The final evidence commit is reported externally because a commit cannot contain its own hash. Human acceptance and wider production remain open.
+
+---
+
 # Living Road: physical support fitting
 
 Source implementation qualified locally on `gameplay/living-road-fieldcraft-20261006`, from

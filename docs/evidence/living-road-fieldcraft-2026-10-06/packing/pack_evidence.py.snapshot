@@ -1,0 +1,410 @@
+"""Staged proposal: retain qualified receipts; never execute a verifier or browser.
+
+Default import is inert. main() refuses pending/mismatched qualification before
+creating the one explicitly named evidence directory. A partial copy is retained.
+"""
+import argparse
+import ast
+import hashlib
+import json
+import os
+from pathlib import Path, PurePosixPath
+import re
+import shutil
+import subprocess
+
+BASE = 'f021adf539488d879b72c3d9e69f1ff10527c0f8'
+DESTINATION = 'docs/evidence/living-road-fieldcraft-2026-10-06'
+ROOT = Path('D:/07-GAMES/Firstlight/authoring/atlantis-harbour-campaign-20261004')
+ARC = Path('D:/07-GAMES/Firstlight/artifacts/living-road-fieldcraft-20261006')
+RAW_EOL_LEAVES = {'src/atlantis-campaign-data.js', 'src/earth-homecoming-art.js',
+                  'tools/earth-homecoming-journey/connected_cosmos.cjs', 'tools/whole_draft_journey.cjs'}
+
+
+def need(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+
+def digest_bytes(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def digest(path):
+    h = hashlib.sha256()
+    with path.open('rb') as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b''):
+            h.update(block)
+    return h.hexdigest()
+
+
+def read_json(path):
+    return json.loads(path.read_text(encoding='utf-8-sig'))
+
+
+def relative(name):
+    name = str(name).replace('\\', '/')
+    p = PurePosixPath(name)
+    need(not p.is_absolute() and ':' not in name and '..' not in p.parts,
+         'Unsafe relative evidence/source path: ' + name)
+    return p.as_posix()
+
+
+def git(root, *args):
+    return subprocess.check_output(['git', *args], cwd=root)
+
+
+def bind_leaf(root, head, name, expected):
+    """Keep qualified raw bytes distinct from Git's four declared LF text blobs."""
+    name = relative(name); path = root / name
+    need(path.is_file() and not path.is_symlink(), 'Missing qualified source leaf: ' + name)
+    raw = path.read_bytes(); canonical = git(root, 'show', head + ':' + name)
+    need(digest_bytes(raw) == expected, 'Qualified raw source changed: ' + name)
+    relation = 'raw-exact'
+    attributes = None
+    if raw != canonical:
+        need(name in RAW_EOL_LEAVES and b'\r\n' in raw and raw.replace(b'\r\n', b'\n') == canonical,
+             'Unapproved raw/Git content difference: ' + name)
+        attributes = git(root, 'check-attr', '--cached', 'text', 'eol', '--', name).decode().splitlines()
+        need(name + ': text: auto' in attributes and name + ': eol: lf' in attributes,
+             'Git text-normalization declaration changed: ' + name)
+        relation = 'declared-crlf-to-lf'
+    return {'path': name, 'qualifiedBytes': len(raw), 'qualifiedSha256': expected,
+            'gitBlobBytes': len(canonical), 'gitBlobSha256': digest_bytes(canonical),
+            'relation': relation, 'gitAttributes': attributes}
+
+
+def verifier_plan(text, module_names):
+    """Read the committed caller graph, without importing/executing verifier code."""
+    tree = ast.parse(text)
+    main = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == 'main')
+    blocks = [n for n in ast.walk(main) if isinstance(n, ast.If)
+              and isinstance(n.test, ast.Attribute) and isinstance(n.test.value, ast.Name)
+              and n.test.value.id == 'args' and n.test.attr == 'browser']
+    need(len(blocks) == 1, 'Unrecognized verifier browser ownership; review caller graph')
+    block = blocks[0]
+    source, browser = ['syntax-' + PurePosixPath(n).stem for n in sorted(module_names)], []
+    for node in ast.walk(main):
+        if not (isinstance(node, ast.Call) and isinstance(node.func, ast.Name)
+                and node.func.id == 'run'):
+            continue
+        target = browser if block.lineno <= node.lineno <= block.end_lineno else source
+        arg = node.args[0]
+        if isinstance(arg, ast.Constant) and isinstance(arg.value, str):
+            target.append(arg.value)
+        elif isinstance(arg, ast.Name) and arg.id == 'suite':
+            loops = [n for n in ast.walk(block) if isinstance(n, ast.For)
+                     and isinstance(n.target, ast.Name) and n.target.id == 'suite'
+                     and n.lineno <= node.lineno <= n.end_lineno]
+            need(len(loops) == 1, 'Unrecognized dynamic browser suite loop')
+            names = ast.literal_eval(loops[0].iter)
+            need(isinstance(names, list) and all(isinstance(x, str) for x in names), 'Invalid suite list')
+            target.extend(names)
+        else:
+            need(isinstance(arg, ast.BinOp) and isinstance(arg.op, ast.Add)
+                 and isinstance(arg.left, ast.Constant) and arg.left.value == 'syntax-'
+                 and isinstance(arg.right, ast.Attribute) and arg.right.attr == 'stem',
+                 'Unknown dynamic verifier command; review rather than weaken membership')
+    need(len(set(source + browser)) == len(source + browser), 'Duplicate verifier commands')
+    need(len(browser) >= 48 and 'earth_expedition_browser' in browser, 'Missing required browser suites')
+    return source, browser
+
+
+def browser_routing(text, browser_names):
+    """Read existing supported contracts; legacy defaults remain outside ARC."""
+    assignments = {target.id: node.value for node in ast.parse(text).body
+                   if isinstance(node, ast.Assign) for target in node.targets if isinstance(target, ast.Name)}
+    value = assignments.get('CLI_BROWSER_OUTPUTS')
+    need(isinstance(value, ast.Call) and isinstance(value.func, ast.Name)
+         and value.func.id == 'frozenset' and len(value.args) == 1, 'Unrecognized CLI output contract')
+    cli = ast.literal_eval(value.args[0])
+    env = ast.literal_eval(assignments['ENV_BROWSER_OUTPUTS'])
+    native = {'earth_homecoming_browser', 'onboarding_browser'}
+    need(isinstance(cli, set) and all(isinstance(s, str) for s in cli)
+         and isinstance(env, dict) and all(isinstance(s, str) and isinstance(v, str) for s, v in env.items()),
+         'Invalid browser output declarations')
+    need(not cli.intersection(env) and not native.intersection(cli | set(env)), 'Overlapping output owners')
+    routed = cli | set(env) | native
+    need(routed.issubset(browser_names), 'Output contract refers to an unexecuted suite')
+    return {'mode': 'supported', 'cli': sorted(cli), 'environment': env, 'strictNative': sorted(native),
+            'routed': [{'suite': s, 'contract': 'cli' if s in cli else 'environment' if s in env else 'strict-native',
+                        'argument': env.get(s, '--output'), 'retainedDirectory': s} for s in sorted(routed)],
+            'legacyDefaults': [{'suite': s, 'disposition': 'Station default output outside ARC; not copied. '
+                               'Execution retained through complete process receipt, console and hashed command log.'}
+                              for s in sorted(set(browser_names) - routed)]}
+
+
+def require_routed_directories(output, routing):
+    for row in routing['routed']:
+        need((output / row['suite']).is_dir(), 'Missing routed browser output directory: ' + row['suite'])
+
+
+def node_counts(text):
+    stats = {name: int(value) for name, value in re.findall(
+        r'^# (tests|pass|fail|cancelled|skipped|todo) (\d+)\s*$', text, re.M)}
+    need(set(stats) == {'tests', 'pass', 'fail', 'cancelled', 'skipped', 'todo'}, 'Incomplete Node TAP totals')
+    need(stats['pass'] > 0 and stats['fail'] == stats['cancelled'] == stats['todo'] == 0,
+         'Node gate has failure/cancellation/todo')
+    need(stats['tests'] == stats['pass'] + stats['skipped'], 'Node totals do not reconcile')
+    return stats
+
+
+def python_counts(text):
+    runs = re.findall(r'^Ran (\d+) tests? in [^\n]+$', text, re.M)
+    ok = re.findall(r'^OK(?: \(skipped=(\d+)\))?\s*$', text, re.M)
+    need(len(runs) == len(ok) == 1 and int(runs[0]) > 0, 'Python discovery did not finish successfully')
+    need(not re.search(r'^(?:FAILED|ERROR:|FAIL:)', text, re.M), 'Python discovery reports a failure')
+    return {'tests': int(runs[0]), 'skipped': int(ok[0] or 0)}
+
+
+def gate(receipt_path, console_path, logs, head, expected, html_hash, html_bytes, exit_only=False):
+    r = read_json(receipt_path)
+    need(type(r.get('exitCode')) is int and r['exitCode'] == 0, 'Gate has not exited zero')
+    need(r.get('observedUtc'), 'Missing gate observation time')
+    need(r.get('sourceHead') == head or exit_only and 'sourceHead' not in r,
+         'Missing/wrong gate source receipt')
+    recorded = r.get('console', {})
+    need(exit_only and not recorded or recorded.get('sha256') == digest(console_path)
+         and recorded.get('bytes') == console_path.stat().st_size, 'Console receipt/hash mismatch')
+    text = console_path.read_text(encoding='utf-8-sig')
+    need('Verification passed.' in text and not re.search(r'^(?:FAILED:|FAIL:|ERROR:)', text, re.M),
+         'Incomplete or failed verifier console')
+    passed = re.findall(r'^PASS: ([^\r\n]+)', text, re.M)
+    need(len(passed) == len(expected) and len(set(passed)) == len(passed)
+         and set(passed) == set(expected), 'Exact verifier command membership/count mismatch')
+    need(re.search(r'HTML: ' + str(html_bytes) + r' bytes; SHA-256 ' + html_hash, text), 'Gate HTML identity mismatch')
+    rows = []
+    for command in passed:
+        path = logs / (command + '.log')
+        need(path.is_file() and not path.is_symlink(), 'Missing command log: ' + command)
+        rows.append({'command': command, 'bytes': path.stat().st_size, 'sha256': digest(path),
+                     'emptyOutputOmitted': path.stat().st_size == 0})
+    return {'passedCommands': passed, 'commandCount': len(passed), 'logs': rows,
+            'node': node_counts((logs / 'rules.log').read_text(encoding='utf-8-sig')),
+            'python': python_counts((logs / 'python.log').read_text(encoding='utf-8-sig'))}
+
+
+def good_report(report, key='passed'):
+    checks = report.get('checks')
+    need(report.get('status') == 'passed' and isinstance(checks, list) and checks
+         and all(c.get(key) is True for c in checks), 'Failed/incomplete rendered report')
+    need(not report.get('errors') and not report.get('error') and not report.get('browser_errors'),
+         'Rendered report contains errors')
+    return len(checks)
+
+
+def source_hashes(report):
+    value = report.get('sources_sha256')
+    need(isinstance(value, dict) and value, 'Runtime source hashes missing')
+    result = {relative(p): h for p, h in value.items()}
+    need(len(result) == len(value), 'Duplicate normalized runtime paths')
+    return result
+
+
+def report_files(directory):
+    """Prune browser profiles and copied trees before visiting their contents."""
+    for parent, dirs, files in os.walk(directory, followlinks=False):
+        dirs[:] = sorted(d for d in dirs if not re.search(
+            r'profile|isolated|raw|frames|copy|checkout|^default$|^\.git$|^node_modules$|^(src|assets|tests|tools|docs)$', d, re.I)
+            and not (Path(parent) / d).is_symlink())
+        for name in sorted(files):
+            p = Path(parent) / name
+            if p.suffix.lower() == '.json' and re.search(r'report|summary|manifest|provenance|source_epoch|failure', name, re.I):
+                need(not p.is_symlink(), 'Refuse report symlink')
+                yield p
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--root', type=Path, default=ROOT)
+    parser.add_argument('--arc', type=Path, default=ARC)
+    parser.add_argument('--source-head', required=True)
+    for name in ['source-receipt', 'source-console', 'source-output', 'remote-receipt',
+                 'remote-console', 'remote-output', 'remote-browser-output', 'remote-run-script']:
+        parser.add_argument('--' + name, required=True, type=Path)
+    parser.add_argument('--check-only', action='store_true', help='Validate inputs; write nothing')
+    parser.add_argument('--max-payload-bytes', type=int, default=100 * 1024 * 1024)
+    parser.add_argument('--max-payload-count', type=int, default=512)
+    args = parser.parse_args(argv)
+    root, arc, head = args.root.resolve(), args.arc.resolve(), args.source_head
+    need(root == ROOT.resolve() and arc == ARC.resolve(), 'This scoped draft uses only its named ROOT/ARC')
+    need(re.fullmatch(r'[0-9a-f]{40}', head), 'Require exact lowercase 40-digit sourceHead')
+    need(git(root, 'rev-parse', 'HEAD').decode().strip() == head, 'ROOT HEAD differs from sourceHead')
+    for name in ['source_receipt', 'source_console', 'source_output', 'remote_receipt',
+                 'remote_console', 'remote_output', 'remote_browser_output', 'remote_run_script']:
+        p = getattr(args, name).resolve()
+        need(p.is_relative_to(arc), 'Input outside scoped ARC: ' + name)
+        setattr(args, name, p)
+    out = root / DESTINATION
+    need(not out.exists(), 'Evidence directory already exists; preserve it')
+    leaves = git(root, 'ls-tree', '-r', '--name-only', head).decode().splitlines()
+    html = git(root, 'show', head + ':index.html')
+    need(html == git(root, 'show', head + ':FIRSTLIGHT_VALLEY.html'), 'Committed pages differ')
+    html_hash = digest_bytes(html)
+    verifier_text = git(root, 'show', head + ':tools/verify.py').decode()
+    src, browsers = verifier_plan(verifier_text,
+                                 [p for p in leaves if p.startswith('src/') and p.count('/') == 1 and p.endswith('.js')])
+    routing = browser_routing(verifier_text, browsers)
+    # The original source04 receipt records exit/time only. Preserve it verbatim;
+    # bind its adjacent frozen logs through the independently recorded whole-
+    # draft source epoch, without retroactively manufacturing a process receipt.
+    need(args.source_receipt == arc / 'SOURCE04_EXIT.json'
+         and args.source_console == arc / 'source04-console.log'
+         and args.source_output == arc / 'source04', 'Require the actual source04 attempt')
+    epoch_path = args.source_output / 'whole-draft-earned.SOURCE_EPOCH.json'
+    epoch = read_json(epoch_path); frozen = {relative(p): h for p, h in epoch['sourceHashes'].items()}
+    need(set(p for p in frozen if p.startswith('src/')) == set(p for p in leaves if p.startswith('src/') and p.count('/') == 1),
+         'Frozen source04 runtime membership incomplete')
+    bindings = {}
+    for p, h in frozen.items():
+        need(p in leaves, 'Source04 frozen leaf is not committed: ' + p)
+        bindings[p] = bind_leaf(root, head, p, h)
+    mappings = [b for b in bindings.values() if b['relation'] == 'declared-crlf-to-lf']
+    need(set(b['path'] for b in mappings) == RAW_EOL_LEAVES, 'Known four-file raw/Git mapping changed; review epoch')
+    source = gate(args.source_receipt, args.source_console, args.source_output, head, src, html_hash, len(html), exit_only=True)
+    remote = gate(args.remote_receipt, args.remote_console, args.remote_output, head, src + browsers, html_hash, len(html))
+    need(source['node'] == remote['node'] and source['python'] == remote['python'], 'Same-head CPU counts differ')
+    run_text = args.remote_run_script.read_text(encoding='utf-8-sig')
+    need(re.search(r'--browser-output-mode\s+supported(?:\s|$)', run_text), 'Require actual supported-routing invocation')
+    require_routed_directories(args.remote_browser_output, routing)
+    native = read_json(arc / 'native03/REPORT.json')
+    video = read_json(arc / 'video01/REPORT.json')
+    need(good_report(native) == 1159 and good_report(video, 'ok') == 84, 'Focused report counts changed; review epoch')
+    runtime = source_hashes(native)
+    need(runtime == source_hashes(video), 'Native/video runtime epochs differ')
+    need(native['html_sha256'] == video['html_sha256'] == html_hash, 'Focused/committed HTML epochs differ')
+    for p, h in runtime.items():
+        need(p in leaves, 'Runtime leaf is not committed: ' + p)
+        bind_leaf(root, head, p, h)
+    need(digest_bytes(git(root, 'show', head + ':tests/earth_expedition_browser.py')) == native.get('harness_sha256'),
+         'Native harness differs from committed caller')
+    stages, restarts = 0, 0
+    need(set(native.get('variants', {})) == {'fresh-blade', 'fresh-bow', 'veteran'}, 'Native variant membership changed')
+    for variant in native['variants'].values():
+        rows = variant['fieldcraft_pixels']
+        need(set(rows) == {'wrong', 'correct', 'ready', 'permanent'} and all(len(v) == 6 for v in rows.values()),
+             'Incomplete both-view/FOV/viewport mesh evidence')
+        stages += sum(len(v) for v in rows.values())
+        restarts += len(variant['restarts'])
+    need(stages == 72 and restarts == 22, 'Native coverage totals changed')
+    movie = video['video']; movie_path = arc / 'video01' / relative(movie['path'])
+    need(movie_path.name == 'ACTUAL_FIELDCRAFT.webm' and movie_path.stat().st_size == movie['bytes'] == 4350951
+         and digest(movie_path) == movie['sha256'] and movie.get('partial') is False and movie.get('audio') is False,
+         'Movie identity/completion mismatch')
+    need('NVIDIA GeForce RTX 3080' in video.get('renderer', '') and video.get('context_closed') is True
+         and video.get('server_closed') is True and video.get('download_retained') is True
+         and not video.get('external_requests') and not video.get('recording_cleanup_error'), 'Hardware capture incomplete')
+    need(0 < video['raf_observation']['elapsed_ms'] < 90000, 'Recording duration was not bounded')
+    seed = Path(video['source']['path']).resolve()
+    need(seed.is_relative_to(arc / 'native03/earned') and digest(seed) == video['source']['sha256']
+         and digest(arc / 'video01/SOURCE_WORLD.json') == video['source']['sha256'], 'Movie earned source snapshot mismatch')
+    items = {}; omitted = []
+    def add(path, target, nonempty=True):
+        target = relative(target)
+        need(target not in items and path.is_file() and not path.is_symlink(), 'Missing/duplicate input: ' + target)
+        size = path.stat().st_size
+        if not size:
+            need(not nonempty, 'Empty required input: ' + target); omitted.append(target); return
+        items[target] = {'path': path, 'bytes': size, 'sha256': digest(path)}
+    def generated(target, value):
+        need(target not in items, 'Duplicate generated path')
+        data = (json.dumps(value, indent=2) + '\n').encode()
+        items[target] = {'data': data, 'bytes': len(data), 'sha256': digest_bytes(data)}
+    for label, receipt, console, logs, result in [
+        ('source', args.source_receipt, args.source_console, args.source_output, source),
+        ('complete', args.remote_receipt, args.remote_console, args.remote_output, remote)]:
+        add(receipt, label + '/PROCESS_EXIT.json'); add(console, label + '/CONSOLE.log')
+        for row in result['logs']: add(logs / (row['command'] + '.log'), label + '/commands/' + row['command'] + '.log', False)
+        generated(label + '/COMMAND_LOGS.json', result)
+        for p in report_files(logs): add(p, label + '/reports/' + p.relative_to(logs).as_posix())
+    add(args.remote_run_script, 'complete/RUN.ps1.snapshot')
+    generated('complete/BROWSER_OUTPUT_ROUTING.json', routing)
+    add(epoch_path, 'source/SOURCE_EPOCH.json')
+    generated('source/IDENTITY_BINDING.json', {'sourceHead': head, 'sourceEpochSha256': digest(epoch_path),
+              'frozenLeavesMatchedToCommit': len(frozen), 'consoleSha256': digest(args.source_console),
+              'consoleBytes': args.source_console.stat().st_size,
+              'rawToGitMappings': mappings,
+              'originalReceipt': 'Exit/time only; sourceHead and console hashes were absent',
+              'binding': 'Pack-time comparison of original frozen raw epoch and adjacent successful console. Four declared text leaves map CRLF to LF; every other leaf is byte-exact. Not an amended original process receipt'})
+    hosted = read_json(arc / 'HOSTED_SOURCE_RUN.json')
+    annotations = read_json(arc / 'HOSTED_SOURCE_ANNOTATIONS.json')
+    need(hosted.get('headSha') == head and hosted.get('status') == 'completed'
+         and hosted.get('conclusion') == 'failure' and len(hosted.get('jobs', [])) == 47
+         and sum(len(j.get('steps', [])) for j in hosted['jobs']) == 0
+         and 'billing' in json.dumps(annotations).lower(), 'Hosted billing-lock epoch changed; review actual result')
+    add(arc / 'HOSTED_SOURCE_RUN.json', 'hosted/RUN.json')
+    add(arc / 'HOSTED_SOURCE_ANNOTATIONS.json', 'hosted/ANNOTATIONS.json')
+    for p in report_files(args.remote_browser_output): add(p, 'complete/browser-reports/' + p.relative_to(args.remote_browser_output).as_posix())
+    for epoch, failed in [('01', 'rules'), ('02', 'python'), ('03', 'earth-homecoming-earned')]:
+        need(read_json(arc / ('SOURCE' + epoch + '_EXIT.json')).get('exitCode') == 1, 'Negative source receipt changed')
+        prefix = 'negative/source' + epoch + '/'
+        add(arc / ('SOURCE' + epoch + '_EXIT.json'), prefix + 'PROCESS_EXIT.json')
+        add(arc / ('source' + epoch + '-console.log'), prefix + 'CONSOLE.log')
+        add(arc / ('source' + epoch) / (failed + '.log'), prefix + failed + '.log')
+        for p in report_files(arc / ('source' + epoch)): add(p, prefix + 'reports/' + p.relative_to(arc / ('source' + epoch)).as_posix())
+    for epoch in ['01', '02']:
+        report = read_json(arc / ('native' + epoch) / 'REPORT.json')
+        need(report.get('status') == 'failed', 'Negative native receipt changed')
+        for name in ['REPORT.json', 'run.log']: add(arc / ('native' + epoch) / name, 'negative/native' + epoch + '/' + name)
+    add(arc / 'native01/FAILURE.png', 'negative/native01/FAILURE.png')
+    add(arc / 'native03/REPORT.json', 'focused/NATIVE_REPORT.json')
+    for name in ['REPORT.json', 'SOURCE_WORLD.json', 'FINAL_WORLD.json', 'DECODE.log']:
+        add(arc / 'video01' / name, 'video/' + name)
+    add(arc / 'video01-console.log', 'video/CONSOLE.log')
+    add(movie_path, 'media/ACTUAL_FIELDCRAFT.webm')
+    for name in ['WORKSPACE_BEFORE.png', 'PERMANENT_DIORAMA.png', 'PERMANENT_THIRD.png', 'DECODED-PERMANENT.png']:
+        add(arc / 'video01' / name, 'media/' + name)
+    for name in ['fresh-blade-fieldcraft-compact-native-controls.png', 'fresh-blade-fieldcraft-wrong-adventure-portrait-fov45.png',
+                 'fresh-blade-fieldcraft-correct-follow-portrait.png', 'fresh-blade-fieldcraft-ready-adventure-portrait.png']:
+        add(arc / 'native03' / name, 'media/' + name)
+    for name in ['integrated-node01.log', 'core-camera03.log', 'camera-collision03.log', 'short-preflight01.log', 'path-radius01.log']:
+        add(arc / name, 'focused/' + name)
+    add(Path(__file__).with_name('README.draft.md'), 'README.md')
+    add(Path(__file__), 'packing/pack_evidence.py.snapshot')
+    for mapping in mappings:
+        add(root / mapping['path'], 'source-snapshot/qualified-raw/' + mapping['path'] + '.snapshot')
+    changed = git(root, 'diff', '--name-only', BASE, head).decode().splitlines(); changed_rows = []
+    for name in changed:
+        if name not in leaves:
+            changed_rows.append({'path': name, 'deleted': True}); continue
+        data = git(root, 'show', head + ':' + name)
+        row = {'path': name, 'bytes': len(data), 'sha256': digest_bytes(data), 'snapshot': None}
+        if PurePosixPath(name).suffix in {'.js', '.css', '.py', '.cjs'}:
+            target = 'source-snapshot/' + relative(name) + '.snapshot'
+            items[target] = {'data': data, 'bytes': len(data), 'sha256': digest_bytes(data)}; row['snapshot'] = target
+        changed_rows.append(row)
+    generated('SOURCE_BINDER.json', {'base': BASE, 'sourceHead': head, 'htmlBytes': len(html), 'htmlSha256': html_hash,
+              'runtimeSources': runtime, 'rawToGitMappings': mappings, 'changedLeaves': changed_rows, 'nativeReportedHead': native.get('head'),
+              'videoReportedHead': video.get('head'), 'focusedEpochBinding': 'HTML/harness exact; raw runtime sources match commit through the separately disclosed text mappings. Original report heads retained',
+              'sourceCommands': len(src), 'completeCommands': len(src + browsers), 'browserSuites': browsers,
+              'browserOutputRouting': routing,
+              'node': remote['node'], 'python': remote['python'], 'nativeChecks': 1159, 'nativePixelRows': stages,
+              'nativeRestarts': restarts, 'videoChecks': 84, 'schema': {'world': 9, 'adventure': 12, 'earthHomecoming': 1},
+              'migration': 'none', 'humanAcceptance': False, 'negativeSourceIdentity': 'Original source01/02/03 exit receipts omit sourceHead/console hashes; no exact head invented'})
+    generated('video/PROVENANCE.json', {'sourceHead': head, 'originalReportedHead': video.get('head'), 'htmlSha256': html_hash,
+              'renderer': video['renderer'], 'browserVersion': video['browser_version'], 'viewport': video['viewport'],
+              'movie': movie, 'recorderWallSeconds': video['raf_observation']['elapsed_ms'] / 1000,
+              'rafObservation': video['raf_observation'], 'method': video['method'],
+              'limits': 'Silent WebGL canvas excludes DOM HUD. Native setup and automated known solution; no human pacing, sustained/display FPS or device certification. Requested capture30 and decode nominal60 are not measured gameplay FPS.'})
+    manifest = {'sourceHead': head, 'payloads': [{'path': p, 'bytes': v['bytes'], 'sha256': v['sha256']} for p, v in sorted(items.items())],
+                'payloadCount': len(items), 'payloadBytes': sum(v['bytes'] for v in items.values()), 'emptyOutputsOmitted': omitted,
+                'exclusions': 'Manifest itself; profiles; personal saves; raw frames; copied games; duplicate movies; canonical cohorts retained as reports/manifests, not full replay payloads'}
+    need(manifest['payloadCount'] <= args.max_payload_count and manifest['payloadBytes'] <= args.max_payload_bytes,
+         'Evidence exceeds bounded payload budget; review membership before widening it')
+    if args.check_only:
+        print(json.dumps({'status': 'inputs-validated-no-write', **{k: manifest[k] for k in ['sourceHead', 'payloadCount', 'payloadBytes']}})); return 0
+    out.mkdir(parents=True, exist_ok=False)
+    for name, item in sorted(items.items()):
+        target = out / name; target.parent.mkdir(parents=True, exist_ok=True)
+        with target.open('xb') as handle:
+            if 'data' in item: handle.write(item['data'])
+            else:
+                with item['path'].open('rb') as source_handle: shutil.copyfileobj(source_handle, handle, 1024 * 1024)
+        need(target.stat().st_size == item['bytes'] and digest(target) == item['sha256'], 'Copy changed: ' + name)
+    with (out / 'MANIFEST.json').open('x', encoding='utf-8') as handle: json.dump(manifest, handle, indent=2); handle.write('\n')
+    print(json.dumps({'status': 'retained', 'directory': str(out), 'payloadCount': len(items), 'payloadBytes': manifest['payloadBytes']}))
+    return 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

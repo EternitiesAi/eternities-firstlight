@@ -1,0 +1,24 @@
+D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\earth-homecoming-journey\connected_homecoming.cjs:36
+ }catch(error){P.write(output,'FAILURE',{status:'failed',current,error:error.stack,completed:results,initialEpoch:frozen,finalEpoch:P.epoch(),...P.ZERO});throw error;}
+                                                                                                                                                          ^
+
+AssertionError [ERR_ASSERTION]: step: The brace fitting rules are unavailable. Inspect and seat the supplied sections before fastening.
+    at actEE (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\earth-homecoming-journey\early_realms.cjs:12:149)
+    at Object.run (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\earth-homecoming-journey\early_realms.cjs:35:168)
+    at remainingStrongest (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\earth-homecoming-journey\connected_homecoming.cjs:16:44)
+    at Object.run (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\earth-homecoming-journey\connected_homecoming.cjs:29:73)
+    at Object.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\earth_homecoming_journey.cjs:16:77)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.18.0

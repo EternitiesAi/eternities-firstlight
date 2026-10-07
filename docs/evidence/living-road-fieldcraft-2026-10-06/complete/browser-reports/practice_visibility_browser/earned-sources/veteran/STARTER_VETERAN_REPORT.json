@@ -1,0 +1,225 @@
+{
+  "status": "passed",
+  "variant": "veteran",
+  "source": "evidence10/veteran-source/HOME_AFTER_BELL_EARNED.json",
+  "commands": 16,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedDefeats": 0,
+  "temperOnly": true,
+  "migrationFixture": "Command-earned campaign data represented as adventure schema 5 with no starter record",
+  "attackBefore": 42,
+  "attackAfter": 44,
+  "equipment": {
+    "weapon": "dawn_edge",
+    "armor": "keeper_coat",
+    "charm": "chime_clasp"
+  },
+  "chapters": {
+    "crossing": {
+      "version": 1,
+      "entered": true,
+      "met": true,
+      "inscription": true,
+      "clapperRevealed": true,
+      "clapper": true,
+      "repaired": true,
+      "complete": true,
+      "reward": true,
+      "attuned": true,
+      "projects": []
+    },
+    "beacon": {
+      "version": 1,
+      "introduced": true,
+      "complete": true,
+      "status": "stable",
+      "attempts": 1,
+      "failures": 0,
+      "reward": true,
+      "relic": "renounced",
+      "route": "forest",
+      "soul": {
+        "grace": true,
+        "equipped": "aegis",
+        "radiance": 2,
+        "corruption": 0,
+        "scars": [
+          "cinder-invoked",
+          "cinder-renounced"
+        ]
+      }
+    }
+  },
+  "actions": [
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "starter-accept",
+      "p": {}
+    },
+    {
+      "walk": [
+        15,
+        7
+      ]
+    },
+    {
+      "type": "starter-enter",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7,
+        3
+      ]
+    },
+    {
+      "type": "starter-pickup",
+      "p": {
+        "id": "river-rope"
+      }
+    },
+    {
+      "walk": [
+        5,
+        -3
+      ]
+    },
+    {
+      "type": "starter-pickup",
+      "p": {
+        "id": "river-tools"
+      }
+    },
+    {
+      "walk": [
+        -5,
+        -11
+      ]
+    },
+    {
+      "type": "starter-pickup",
+      "p": {
+        "id": "river-canvas"
+      }
+    },
+    {
+      "walk": [
+        -1.6059079988442613,
+        -0.34440686699357625
+      ]
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        -7,
+        0
+      ]
+    },
+    {
+      "type": "loot",
+      "p": {
+        "id": "river-skitter-west"
+      }
+    },
+    {
+      "walk": [
+        -2.921634009996139,
+        -2.2538193084071327
+      ]
+    },
+    {
+      "type": "attack",
+      "p": {
+        "target": "river-skitter-east"
+      }
+    },
+    {
+      "type": "pulse",
+      "p": {
+        "target": "river-skitter-east"
+      }
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        5,
+        -6
+      ]
+    },
+    {
+      "type": "loot",
+      "p": {
+        "id": "river-skitter-east"
+      }
+    },
+    {
+      "walk": [
+        -4.305132628273386,
+        -3.173769345097218
+      ]
+    },
+    {
+      "type": "target-clear",
+      "p": {}
+    },
+    {
+      "walk": [
+        -4,
+        -15
+      ]
+    },
+    {
+      "type": "loot",
+      "p": {
+        "id": "river-old-bristle"
+      }
+    },
+    {
+      "walk": [
+        0,
+        12
+      ]
+    },
+    {
+      "type": "starter-leave",
+      "p": {}
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "starter-claim",
+      "p": {
+        "choice": "temper",
+        "weapon": "dawn_edge"
+      }
+    },
+    {
+      "walk": [
+        11,
+        9
+      ]
+    },
+    {
+      "type": "equip",
+      "p": {
+        "id": "dawn_edge"
+      }
+    }
+  ]
+}
