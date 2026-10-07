@@ -333,7 +333,9 @@ class Native:
         self.page.locator('#world').focus()
         try:
             while time.monotonic()-start<240:
-                d=self.follow_sample();v=d['view'];p=d['player']
+                d=self.follow_sample()
+                if time.monotonic()-start>=240:raise TimeoutError('Real native carrier leg did not complete within 240 seconds')
+                v=d['view'];p=d['player']
                 if d['prefix']!=prefix:raise AssertionError('Automatic durable arrival bypassed native record control')
                 if d['hp']<=0:raise AssertionError('Actual traveller died; no rescued positive result')
                 if not v or d['scene']!='world-earthlands':raise AssertionError('Actual Earthlands carrier context disappeared')

@@ -179,4 +179,66 @@ class NativeInputRegression(unittest.TestCase):
         self.assertEqual(b.now,10);self.assertEqual(b.callback_times,[]);self.assertFalse(b.keys)
 
 
+class DelayedWallSampleFixture(BrowserFixture):
+    """Synthetic slow diagnostic delivery; never a native gameplay receipt."""
+    def __init__(self,trigger,delivered_ms):
+        super().__init__();self.goal=1.28;self.trigger=trigger
+        self.delivered_ms=delivered_ms;self.delivery=None
+    def sample(self):
+        value=super().sample()
+        due=value['view']['ready'] if self.trigger=='ready' else value['view']['distanceTraveled']>=.5
+        if due and self.delivery is None:
+            # Actual synthetic motion generated this sample before the slow
+            # transport finishes. Wall time advances; no frame/position/progress
+            # is granted during the delay, nor is returned data rewritten.
+            self.delivery={'observedMs':self.now,'deliveredMs':self.delivered_ms,
+                           'view':copy.deepcopy(value['view']),'prefix':list(value['prefix'])}
+            if self.delivered_ms<=self.now:raise AssertionError('Synthetic delay must be positive')
+            self.now=self.delivered_ms
+        return value
+
+
+class NativeWallDeadlineRegression(unittest.TestCase):
+    def refused(self,trigger,delivered_ms,stop_after=None):
+        b=DelayedWallSampleFixture(trigger,delivered_ms);h=extracted(CURRENT,b)
+        with self.assertRaisesRegex(TimeoutError,'within 240 seconds'):
+            h.follow(stop_after=stop_after)
+        self.assertIsNotNone(b.delivery)
+        self.assertLess(b.delivery['observedMs'],240000)
+        self.assertEqual(b.delivery['deliveredMs'],delivered_ms)
+        self.assertEqual(h.row['samples'],[])
+        self.assertIn('within 240 seconds',h.row['followError'])
+        terminal=h.row['followDiagnostics'][-1]
+        self.assertEqual(terminal['view'],b.delivery['view'])
+        self.assertEqual(terminal['prefix'],[]);self.assertEqual(b.prefix,[])
+        self.assertEqual(terminal['head'],'SYNTHETIC-CONTROLLER-SOURCE-ONLY')
+        self.assertFalse(b.keys)
+        self.assertGreater(len(b.callback_times),1)
+        # The shared helper has already held/released real fixture keys, and
+        # outer follow cleanup still attempts every allowed key at refusal.
+        downs=[key for kind,key,when in b.events if kind=='down']
+        ups=[key for kind,key,when in b.events if kind=='up']
+        self.assertTrue(downs);self.assertTrue(all(key in ups for key in downs))
+        self.assertEqual([key for kind,key,when in b.events[-4:]],['w','a','s','d'])
+        self.assertTrue(all(kind=='up' for kind,key,when in b.events[-4:]))
+        return b,h
+    def test_actual_ready_sample_delivered_after_wall_deadline_refuses_and_retains_truth(self):
+        b,h=self.refused('ready',240050)
+        self.assertTrue(h.row['followDiagnostics'][-1]['view']['ready'])
+        self.assertGreater(b.delivery['view']['distanceTraveled'],.5)
+    def test_actual_stop_after_sample_delivered_after_wall_deadline_refuses(self):
+        b,h=self.refused('stop',240050,stop_after=.5)
+        self.assertFalse(b.delivery['view']['ready'])
+        self.assertEqual(b.delivery['view']['status'],'moving')
+        self.assertGreaterEqual(b.delivery['view']['distanceTraveled'],.5)
+    def test_exact_240_second_sample_is_expired_not_a_success(self):
+        self.refused('ready',240000)
+    def test_actual_ready_sample_delivered_just_before_deadline_still_passes(self):
+        b=DelayedWallSampleFixture('ready',239999);h=extracted(CURRENT,b)
+        value=h.follow()
+        self.assertTrue(value['ready']);self.assertEqual(b.now,239999)
+        self.assertEqual(len(h.row['samples']),1);self.assertNotIn('followError',h.row)
+        self.assertTrue(all(ok for name,ok in h.checks));self.assertEqual(b.prefix,[])
+        self.assertFalse(b.keys)
+
 if __name__=='__main__':unittest.main()
