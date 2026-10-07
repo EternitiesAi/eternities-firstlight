@@ -283,4 +283,117 @@ if 'FIRSTLIGHT_CONSIGNMENT_COHORT' in os.environ:
             self.assertTrue(all(r['provenance']=='current-command-earned' for r in rows.values()))
 
 
+# CPU-only refusal driver specimens. No browser, gameplay earning, Core state
+# authority or persistence positive is asserted by these deliberately tiny mocks.
+# The actual Native boundary/click/panel/workspace/action/check/state/record and
+# actual payment oracle execute unchanged; only a synthetic page/controller/store
+# and the lifecycle endpoints are supplied. A reopened workspace makes the
+# otherwise unpaused interval observable before the existing exact-state guard.
+class _RefusalBoundarySpecimen:
+    def __init__(self,capacity=False,mutation=None,tick_writes=False,controls=1):
+        from types import SimpleNamespace
+        self.world={'version':9,'adventure':{'coins':9999 if capacity else 18,'xp':45,'ore':3,'elapsed':10,'revision':0,'equipment':{'weapon':'dawn_edge'}},
+                    'sandbox':{'elapsed':10,'inventory':{'wood':8,'fiber':4,'stone':3}},
+                    'localLife':{'version':1,'records':{H.JOB:{'accepted':True,'choice':'south-stormfall','steps':['arrive-meadow-stop','arrive-field-return-stop','arrive-field-gate-stop','arrive-settlement-approach','arrive-merren-receiving-bay'],'claimed':False}}},
+                    'homeHistory':{'version':1,'owned':['literal-earlier-account'],'pinned':None},
+                    'syntheticResident':{'progress':.4}}
+        self.initial=copy.deepcopy(self.world);self.raw=json.dumps(self.world,sort_keys=True,separators=(',',':'))
+        self.refused=False;self.attempts=0;self.open=False;self.paused=False;self.notice='';self.claim_clicks=0;self.reopened=0;self.tick_writes=tick_writes;self.mutation=mutation;self.controls=controls;self.captures=[];self.restarts=[];self.refuse_calls=[];self.clicks=[]
+        host=self
+        class Locator:
+            def __init__(self,selector):self.selector=selector
+            def count(self):return host.controls if 'consignment-claim' in self.selector else 1
+            def evaluate(self,js):
+                if self.selector=='#rpg-window':return host.open
+                if self.selector=='#drawer':return False
+                raise AssertionError('Unimplemented synthetic locator evaluate '+self.selector)
+            def click(self):
+                host.clicks.append(self.selector)
+                if self.selector=='#rpg-close':
+                    host.open=False;host.paused=False;host.reopened+=1
+                    host.world['adventure']['elapsed']+=.0166;host.world['sandbox']['elapsed']+=.0166;host.world['syntheticResident']['progress']+=.0166
+                    if host.tick_writes:host.raw=json.dumps(host.world,sort_keys=True,separators=(',',':'))
+                elif 'consignment-claim' in self.selector:host.claim()
+                elif self.selector.startswith('#rpg-tabs ') or 'civic-open' in self.selector:pass
+                else:raise AssertionError('Unimplemented synthetic native click '+self.selector)
+            def inner_text(self):return host.notice
+        class Page:
+            keyboard=SimpleNamespace(press=lambda key:host.pause(key))
+            def locator(self,selector):return Locator(selector)
+            def wait_for_selector(self,selector):
+                if selector!='[data-consignment-panel]' or not host.open or not host.paused:raise AssertionError('Existing paused panel required')
+            def evaluate(self,js,arg=None):
+                if js=='()=>Realm.state':return copy.deepcopy(host.world)
+                if js=='()=>localStorage.getItem(RealmCharacters.KEY)':return host.raw
+                if js=='()=>window.__flRefused':return host.attempts
+                raise AssertionError('Unimplemented synthetic page evaluation '+js)
+        self.native=object.__new__(H.Native);self.native.page=Page();self.native.case='SYNTHETIC-CPU-refusal-boundary';self.native.row={'checks':[]}
+        self.native.start=lambda:None;self.native.import_world=lambda source:None;self.native.enter=lambda:None;self.native.walk_work=lambda where:None
+        self.native.refuse=self.refuse;self.native.capture=self.capture;self.native.restart=self.restart
+    def pause(self,key):
+        if key!='j':raise AssertionError('Existing native Journal key required')
+        self.open=True;self.paused=True
+    def refuse(self,on):
+        self.refused=on;self.refuse_calls.append(on)
+        if on:self.attempts=0
+    def claim(self):
+        if not self.open or not self.paused:raise AssertionError('Boundary must click the live paused workspace')
+        self.claim_clicks+=1
+        if self.world['adventure']['coins']+4>9999:self.notice='Make room for the whole fee'
+        elif self.refused:self.attempts+=1;self.notice='Labelled synchronous quota refusal'
+        else:
+            next_world=copy.deepcopy(self.world);next_world['adventure']['coins']+=4
+            for k in ('wood','fiber'):next_world['sandbox']['inventory'][k]+=2
+            next_world['localLife']['records'][H.JOB]['claimed']=True
+            if self.mutation=='wrong-payment':next_world['sandbox']['inventory']['stone']+=1
+            self.raw=json.dumps(next_world,sort_keys=True,separators=(',',':'));self.world=next_world;self.notice='Paid once'
+        if self.claim_clicks==1:
+            if self.mutation=='world':self.world['homeHistory']['owned'].append('forbidden')
+            elif self.mutation=='elapsed':self.world['adventure']['elapsed']+=.001
+            elif self.mutation=='native':self.raw+=' '
+            elif self.mutation=='claimed':self.world['localLife']['records'][H.JOB]['claimed']=True
+            elif self.mutation=='notice':self.notice='Ready to claim'
+            elif self.mutation=='attempt':self.attempts=0
+    def capture(self,label):self.captures.append(label);return copy.deepcopy(self.world)
+    def restart(self,label):
+        self.restarts.append(label);self.world=json.loads(self.raw);self.open=False;self.paused=False
+        if self.mutation=='cold-status':self.world['localLife']['records'][H.JOB]['claimed']=not self.world['localLife']['records'][H.JOB]['claimed']
+    def run(self,capacity):
+        with patch('builtins.print'):H.Native.boundary(self.native,'SYNTHETIC-CPU-unpaid-source.json',capacity)
+        return self.native.row['checks']
+
+
+class RefusalBoundaryCPU(unittest.TestCase):
+    def test_capacity_clicks_existing_paused_panel_and_retains_exact_world_native_bytes(self):
+        for tick_writes in (False,True):
+            with self.subTest(tick_writes=tick_writes):
+                s=_RefusalBoundarySpecimen(capacity=True,tick_writes=tick_writes);raw=s.raw;checks=s.run(True)
+                self.assertEqual(s.world,s.initial);self.assertEqual(s.raw,raw);self.assertEqual(s.claim_clicks,1);self.assertEqual(s.reopened,0);self.assertEqual(s.attempts,0);self.assertEqual(s.refuse_calls,[])
+                self.assertTrue(all(row['passed'] for row in checks));self.assertEqual(s.captures,['BOUNDARY_FINAL']);self.assertEqual(s.restarts,['BOUNDARY_COLD'])
+    def test_quota_attempt_retry_exact_payment_and_cold_status_without_a_reopen(self):
+        s=_RefusalBoundarySpecimen();before=copy.deepcopy(s.world);checks=s.run(False)
+        self.assertEqual(s.reopened,0);self.assertEqual(s.claim_clicks,2);self.assertEqual(s.attempts,1);self.assertEqual(s.refuse_calls,[True,False]);self.assertTrue(H.payment(before,s.world));self.assertTrue(s.world['localLife']['records'][H.JOB]['claimed'])
+        self.assertEqual(s.world['homeHistory'],before['homeHistory']);self.assertEqual(s.world['adventure']['equipment'],before['adventure']['equipment']);self.assertEqual(s.world['adventure']['elapsed'],before['adventure']['elapsed']);self.assertEqual(s.world['syntheticResident'],before['syntheticResident']);self.assertTrue(all(row['passed'] for row in checks))
+    def test_exact_guard_still_detects_injected_world_elapsed_native_or_claimed_changes(self):
+        for capacity in (True,False):
+            for mutation in ('world','elapsed','native','claimed'):
+                with self.subTest(capacity=capacity,mutation=mutation):
+                    s=_RefusalBoundarySpecimen(capacity=capacity,mutation=mutation)
+                    with self.assertRaisesRegex(AssertionError,'exact paused world and native bytes'):s.run(capacity)
+                    if not capacity:self.assertEqual(s.refuse_calls,[True,False]);self.assertFalse(s.refused)
+    def test_cause_attempt_payment_and_cold_refusals_remain_meaningful(self):
+        cases=[(True,'notice','refusal cause'),(False,'notice','refusal cause'),(False,'attempt','attempted refused write'),(False,'wrong-payment','retries once'),(False,'cold-status','cold status')]
+        for capacity,mutation,message in cases:
+            with self.subTest(capacity=capacity,mutation=mutation):
+                s=_RefusalBoundarySpecimen(capacity=capacity,mutation=mutation)
+                with self.assertRaisesRegex(AssertionError,message):s.run(capacity)
+                if not capacity:self.assertFalse(s.refused)
+    def test_direct_native_control_is_unique_and_never_falls_back_to_reopening(self):
+        for n in (0,2):
+            with self.subTest(count=n):
+                s=_RefusalBoundarySpecimen(capacity=True,controls=n)
+                with self.assertRaisesRegex(AssertionError,'unique native'):s.run(True)
+                self.assertEqual(s.claim_clicks,0);self.assertEqual(s.reopened,0)
+
+
 if __name__=='__main__':unittest.main()

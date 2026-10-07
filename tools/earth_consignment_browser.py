@@ -462,13 +462,13 @@ class Native:
         self.start();self.import_world(source);self.enter();self.walk_work('return');self.panel();before=self.state();raw=self.ev('()=>localStorage.getItem(RealmCharacters.KEY)')
         if not capacity:self.refuse(True)
         try:
-            self.action('claim');self.check('labelled refused fee retains exact paused world and native bytes',self.state()==before and self.ev('()=>localStorage.getItem(RealmCharacters.KEY)')==raw and not self.record()['claimed'])
+            self.click('[data-rpg="consignment-claim"][data-job="'+JOB+'"]');self.check('labelled refused fee retains exact paused world and native bytes',self.state()==before and self.ev('()=>localStorage.getItem(RealmCharacters.KEY)')==raw and not self.record()['claimed'])
             self.check('refusal cause shown by actual native controller',('Make room' if capacity else 'refus') in self.page.locator('[data-consignment-notice]').inner_text())
             if not capacity:self.check('actual Store attempted refused write',self.ev('()=>window.__flRefused')>0)
         finally:
             if not capacity:self.refuse(False)
         if not capacity:
-            self.action('claim');self.check('same actual earned unpaid record retries once after quota refusal',payment(before,self.state()) and self.record()['claimed'])
+            self.click('[data-rpg="consignment-claim"][data-job="'+JOB+'"]');self.check('same actual earned unpaid record retries once after quota refusal',payment(before,self.state()) and self.record()['claimed'])
         self.capture('BOUNDARY_FINAL');self.restart('BOUNDARY_COLD');self.check('boundary cold status retained',self.record()['claimed'] is (not capacity))
     def finish(self):
         failing=sys.exc_info()[0] is not None;problem=None;closed=self.context is None
