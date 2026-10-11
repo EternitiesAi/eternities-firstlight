@@ -1,3 +1,21 @@
+# Current repair and honest qualification, 2026-10-11
+
+Complete current source repair, commit/push forward normally, then earn fresh current cohorts and execute actual primary, boundary and road-account browser gates. Diagnose the original crossing refusal before retrying its affected journey; do not lengthen its timeout or replay a full suite without a cause. Reuse the clean independent STATION only after prior ownership and failure evidence are checked. Qualify fresh remote source and relevant/full browser checks before claiming delivery.
+
+The earlier SOURCE01 closed with exit1: Node1914 passed /28 failed /2 skipped (1944 total). Missing real woodland dependencies and three App extraction helpers caused integration failures. Parent repaired actual CommonJS ownership and portable Motion test-root selection. COMMONJS_REPAIR02 passed86/87 with no skips; its remaining count failure compared deliberate new crowns to old scene instance totals. The correction retains the original budget minus exactly20/28 old crown pieces plus exactly8/20 new pieces; all ground/bank/solid checks remain. COMMONJS_REPAIR03 passed all13 affected tests. New identical HTML is3,286,539 bytes, SHA256 `6a5e34ed9d41e028fcff56b0aefdbd67eb906ba76a3f8151bc0505c9031b2bbd`. Complete source/native acceptance remains pending.
+
+---
+
+# Road account aftermath: installed candidate, 2026-10-07
+
+Parent owns gameplay/road-account-aftermath-20261007, stacked on PR53's pushed751db8caf324a30b393674d10341f5f087b93a5f. Actual installed Source02 reading/Motion/Art/App/woodland checks pass80/80, zero skips; the actual builder regenerated identical3,286,180-byte HTML, SHA25604f1259bc5f080823c806c4a284f17d33e440b0c60aa596ab5c3ce18271ff0b3. Sela has one compact public notice and the original paid receipt; Rill/Merren retain practical role lines and existing services. A passive roadkeeper follows the deliberately claimed route; four existing crowns change upper appearance only. Save/schema/XP/reward/navigation owners remain unchanged.
+
+Current source-only native-controller checks pass14 with one explicit actual-input Admission class skip. New verifier routing requires both complete current WildSigns native gates closed/passed at the exact current HEAD/page, then fresh manifest, mandatory26 CPU admission and the two actual aftermath cases. The independently reviewed startup ownership repair is installed; seven synthetic resource-ownership CPU tests pass without browser/network/Core execution. Routing01's63/64 success included one test incorrectly expecting D TEMP to be rejected; explicit C-target correction passed all8 new cases in Routing02. Retain raw failures. Current full source/native/visible qualification is pending; earlier wildlife receipts cannot qualify this changed page.
+
+The independent STATION remains owned by running RemoteFull02 at3763f0f4004f44ee6afc7c4368f811ea922c4ca7: its complete source phase, Earth homecoming and onboarding passed; remaining51-browser gate is still in flight. Do not switch/duplicate that checkout. Only two scoped Sol colleagues; future grounded footfalls stay staged until partial audio allocation/lifecycle failures are repaired. Reuse ROOT/STATION and bounded D evidence, preserve every save/XP/explicit choice/gear/socket/companion/housing/crop/music and both cameras. World9/Adventure12/optional WildSigns1 stay. Wider AAA/browser production goal ACTIVE unfinished; old heartbeat PAUSED; no mainmerge/deploy/paid/billing/personal-save reads/unrelated stop/cleanup/blocked-deletion retry.
+
+---
+
 # Current local wildlife qualification and next production slice, 2026-10-07
 
 Source08 and actual Boundary04 passed at3763f0f4004f44ee6afc7c4368f811ea922c4ca7:208 source commands/137 syntax; Node1884pass/2skip; Python421methods415pass/6method+3classskip; three genuine/labelled-native boundary cases3175checks, all contexts/server closed. Primary Native03's2176 checks and one decoded17-second clip remain their original04ee epoch with166 unchanged runtime/caller readbacks at3763. Read docs/evidence/wild-signs-2026-10-07/QUALIFICATION03.md; preserve every earlier refusal/timeout/stress/interruption. Complete remote51-browser gate is running in the independent STATION at3763, not yet a pass.

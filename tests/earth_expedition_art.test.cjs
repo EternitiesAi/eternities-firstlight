@@ -89,7 +89,16 @@ test('grounded board/posts and shallow readable record layers keep connected con
  }
 });
 test('actual static caller emits coalesced floor, unchanged seventy banks and one box per physical solid',()=>{
- for(const quality of ['low','balanced','high']){const items=staticSubmission(quality),base={low:1135,balanced:1267,high:1363}[quality],trail=items.filter(p=>p.elderwealdTrail);assert.equal(items.filter(p=>!p.elderwealdTrail&&!p.earthRoadPart&&!p.habitatPart).length,base);assert.ok(trail.length<=280,'explicit trail factory budget');assert.equal(items.filter(p=>p.earthRoadPart==='post').length,1,'new canonical road post is separately owned');assert.equal(items.filter(p=>p.earthRoadPart==='fingerpost').length,16,'real road factory is present');const habitat=items.filter(p=>p.habitatPart);assert.equal(habitat.length,quality==='low'?64:128,'separately owned finite clearing dressing');assert.ok(items.length<=base+297+habitat.length);assert.equal(items.filter(p=>p.worldGround).length,64);assert.equal(items.filter(p=>p.coastBank).length,70);
+ const crowns=require('../src/woodland-shapes.js');
+ for(const quality of ['low','balanced','high']){
+  // Retain the original scene budget while accounting for the four deliberately
+  // replaced crowns. Every ground, bank and physical-solid assertion stays exact.
+  const items=staticSubmission(quality),originalBase={low:1135,balanced:1267,high:1363}[quality];
+  const replaced=EW.parts({quality,height:(x,z)=>W.height(d.room,x,z)}).filter(p=>crowns.IDS.includes(p.opt.solidId)&&crowns.ROLES.includes(p.opt.elderwealdPart));
+  const replacement=items.filter(p=>p.woodlandShapes===crowns.SEED),trail=items.filter(p=>p.elderwealdTrail);
+  assert.equal(replaced.length,quality==='low'?20:28);assert.equal(replacement.length,quality==='low'?8:20);
+  const base=originalBase-replaced.length+replacement.length;
+  assert.equal(items.filter(p=>!p.elderwealdTrail&&!p.earthRoadPart&&!p.habitatPart).length,base);assert.ok(trail.length<=280,'explicit trail factory budget');assert.equal(items.filter(p=>p.earthRoadPart==='post').length,1,'new canonical road post is separately owned');assert.equal(items.filter(p=>p.earthRoadPart==='fingerpost').length,16,'real road factory is present');const habitat=items.filter(p=>p.habitatPart);assert.equal(habitat.length,quality==='low'?64:128,'separately owned finite clearing dressing');assert.ok(items.length<=base+297+habitat.length);assert.equal(items.filter(p=>p.worldGround).length,64);assert.equal(items.filter(p=>p.coastBank).length,70);
   for(const s of d.solids){const ps=items.filter(p=>p.worldSolid&&p.worldSolidId===s.id);assert.equal(ps.length,1);assert.deepEqual(ps[0].p,[s.x,F+s.h/2,s.z]);assert.deepEqual(ps[0].s,[s.w,s.h,s.d]);assert.equal(ps[0].cameraSolid,true);}
   for(const p of items)assert.ok([...p.p,...p.s,...(p.m||[])].every(Number.isFinite));
  }

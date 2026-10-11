@@ -4,6 +4,7 @@ from pathlib import Path
 import argparse
 import hashlib
 import importlib.util
+import json
 import os
 import shutil
 import subprocess
@@ -215,6 +216,71 @@ def wild_signs_boundaries_browser_run_spec(root, sources, original_sources, outp
              '--suite', str(primary)] + command[2:], env)
 
 
+def road_account_browser_run_specs(root, primary_output, boundary_output, output, *, windows=None):
+    """Admit this invocation's two closed native gates before an aftermath run.
+
+    Only reads here. The subsequent explicit commands freeze exact checkpoints,
+    run mandatory CPU admission, and finally execute ordinary native controls.
+    """
+    root, primary_output, boundary_output, output = map(lambda p: Path(p).resolve(),
+                                                      (root, primary_output, boundary_output, output))
+    manifest = output.parent / (output.name + '-inputs.json')
+    cpu = output.parent / (output.name + '-cpu')
+    for target in (output, manifest, cpu):
+        if target.exists() or target == Path(target.anchor):
+            raise ValueError('Aftermath requires fresh outputs; preserve prior evidence')
+        for owner in (root, primary_output, boundary_output):
+            if target == owner or target.is_relative_to(owner) or owner.is_relative_to(target):
+                raise ValueError('Aftermath evidence must be separate from game and prior native gates')
+    if (os.name == 'nt' if windows is None else windows) and any(
+            p.drive.upper() != 'D:' for p in (primary_output, boundary_output, output)):
+        raise ValueError('Aftermath evidence stays on D: on Windows')
+    head = subprocess.check_output(['git', '-C', str(root), 'rev-parse', 'HEAD'], text=True).strip()
+    pages = [root / 'index.html', root / 'FIRSTLIGHT_VALLEY.html']
+    if not all(p.is_file() for p in pages) or pages[0].read_bytes() != pages[1].read_bytes():
+        raise ValueError('Current matching installed pages required')
+    html_sha = hashlib.sha256(pages[0].read_bytes()).hexdigest()
+    reports = ((primary_output / 'WILD_SIGNS_NATIVE_REPORT.json',
+                'tools/earth_wild_signs_browser.py',
+                {'blade-signed-loop', 'bow-cleared-pocket', 'veteran-signed-loop'}),
+               (boundary_output / 'WILD_SIGNS_BOUNDARIES_REPORT.json',
+                'tools/earth_wild_signs_boundaries_browser.py',
+                {'ready-observe-switch-import', 'genuine-death-clearance-switch',
+                 'SYNTHETIC-fiber999-signed-capacity-retry'}))
+    for path, caller, cases in reports:
+        receipt = json.loads(path.read_text(encoding='utf-8-sig'))
+        if (receipt.get('status') != 'passed' or receipt.get('head') != head or
+                receipt.get('html_sha256') != html_sha or receipt.get('serverClosed') is not True or
+                receipt.get('execution') != 'ordinary-RAF/original-native-input' or
+                receipt.get('harnessSha256') != hashlib.sha256((root / caller).read_bytes()).hexdigest() or
+                any(receipt.get(k) != [] for k in ('errors', 'browserErrors', 'externalRequests')) or
+                set(receipt.get('cases', {})) != cases):
+            raise ValueError('Both exact current closed WildSigns gates must pass before aftermath')
+        for row in receipt['cases'].values():
+            checks = row.get('checks')
+            if (row.get('contextClosed') is not True or not isinstance(checks, list) or not checks or
+                    any(c.get('passed') is not True for c in checks)):
+                raise ValueError('Every prerequisite native case and check must pass and close')
+        pins = receipt.get('admittedInputs')
+        if not isinstance(pins, dict) or not 1 <= len(pins) <= 512:
+            raise ValueError('Exact current native input closure required')
+        for name, digest in pins.items():
+            p = Path(name)
+            if not p.is_absolute() or not p.is_file() or hashlib.sha256(p.read_bytes()).hexdigest() != digest:
+                raise ValueError('Current prerequisite native input bytes drifted')
+    expectations = root / 'tools/SOURCE_EXPECTATIONS04.json'
+    common = {'FIRSTLIGHT_ROOT': str(root), 'PYTHONDONTWRITEBYTECODE': '1',
+              'ROAD_ACCOUNT_NATIVE_EXPECTATIONS': str(expectations),
+              'ROAD_ACCOUNT_NATIVE_INPUTS': str(manifest), 'ROAD_ACCOUNT_CPU_OUTPUT': str(cpu)}
+    prepare = [sys.executable, 'tools/prepare_road_account_inputs.py', '--root', str(root),
+               '--report', str(reports[0][0]), '--expected-report-head', head,
+               '--expectations', str(expectations), '--output', str(manifest)]
+    command = [sys.executable, 'tools/road_account_browser.py', '--root', str(root),
+               '--inputs', str(manifest), '--expectations', str(expectations),
+               '--expected-head', head, '--output', str(output), '--renderer', 'software', '--execute']
+    return prepare, [sys.executable, 'tools/test_road_account_browser.py'], command, common
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--browser', action='store_true', help='Also run the current browser suites including starter progression and native persistence (requires requirements-dev.txt and Chromium).')
@@ -277,6 +343,12 @@ def main():
     # their measured disk work on Windows while retaining a bounded failure.
     run('python', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_*.py', '-v'], timeout=600)
     print('\n'.join((output / 'python.log').read_text(encoding='utf-8').splitlines()[-5:]), flush=True)
+    # No native checkpoints exist yet. Its Admission-class skip is explicit;
+    # the same file runs all mandatory checks after current native gates below.
+    run('road-account-controller-preflight', [sys.executable, 'tools/test_road_account_browser.py'],
+        extra_env={'FIRSTLIGHT_ROOT': str(ROOT), 'ROAD_ACCOUNT_NATIVE_INPUTS': '',
+                   'ROAD_ACCOUNT_NATIVE_EXPECTATIONS': str(ROOT / 'tools/SOURCE_EXPECTATIONS04.json'),
+                   'ROAD_ACCOUNT_CPU_OUTPUT': str(output / 'road-account-source-cpu')})
     run('crossing-blade', ['node', 'tests/crossing_journey.cjs'])
     run('crossing-bow', ['node', 'tests/crossing_journey.cjs', '--bow'])
     run('starter-blade', ['node', 'tests/starter_journey.cjs'])
@@ -422,6 +494,16 @@ def main():
         command, extra_env = wild_signs_boundaries_browser_run_spec(
             ROOT, wild_signs_sources, consignment_sources, wild_signs_boundary_output)
         run('earth_wild_signs_boundaries_browser', command, timeout=1800, extra_env=extra_env)
+        road_account_output = ((args.browser_output / 'road_account_browser')
+                               if args.browser_output is not None else output / 'road-account-browser')
+        prepare, preflight, command, extra_env = road_account_browser_run_specs(
+            ROOT, wild_signs_output, wild_signs_boundary_output, road_account_output)
+        run('road-account-current-inputs', prepare, extra_env=extra_env)
+        Path(extra_env['ROAD_ACCOUNT_CPU_OUTPUT']).mkdir()
+        run('road-account-current-preflight', preflight, timeout=300, extra_env=extra_env)
+        # Two cases each retain a 30-minute local guard; bounded aggregate adds
+        # only setup/closure time. No stage can borrow the other case's budget.
+        run('road_account_browser', command, timeout=3700, extra_env=extra_env)
         prepare_browser_sources(args.browser_output)
         command, extra_env = browser_run_spec('cosmos_campaign_browser', args.browser_output, mode=args.browser_output_mode)
         run('cosmos_campaign_browser', command, timeout=1200, extra_env=extra_env)
