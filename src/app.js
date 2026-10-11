@@ -423,9 +423,9 @@ function graphicsQuality(value){
  sim.state.settings.quality=value;
  if(engine){
   engine.quality=value;
-  // Rebuild only this dry Earth scene, using its real existing art owner.
+  // Rebuild quality-dependent Earth/Heaven art with its existing scene owner.
   // Keep the same camera, Simulation, travel and encounter leases.
-  if(changed&&art&&sim.room===RealmEarthWildSignsData.ROOM&&!sim.worldDive)RealmWorldFoundationsArt.make(art,sim);
+  if(changed&&art&&[RealmEarthWildSignsData.ROOM,'world-heaven'].includes(sim.room)&&!sim.worldDive)RealmWorldFoundationsArt.make(art,sim);
  }
  resize();return save();
 }

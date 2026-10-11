@@ -1,0 +1,25 @@
+# Heaven garden polish and loaded-resume proof, 2026-10-11
+
+Working branch: `gameplay/heaven-garden-polish-20261011`, stacked on draft PR60 at `3aa1e0a440a465644410c3942f4277f755c6013a`. Parent fetched origin and found that same current head and no PR60 comments or reviews before starting. Reuse the integrated D-drive checkout and independent qualification station. This is a bounded presentation pass on the existing playable Heaven outing, not another realm or a claim of AAA completion.
+
+## Intent and ownership recorded before implementation
+
+The actual preceding Briar screenshots show primitive garden trees and instruments. Canonical `REALM_ENVIRONMENT_ART_2026-10-02.md` supports a welcoming inhabited garden in bone, gold, ruby and sage. Twelve existing `heaven-tree-0..11` trees keep their exact transforms, colours, wind, roles and physical envelopes. Balanced/High replace their sixty round crown masses with the existing lobed canopy mesh; Low and unsupported quality retain the original round masses. Six existing chime pipes receive connected pale collars and ruby finials with stable `heaven-garden-chime-{j}-collar/finial` decorative IDs. Their original pedestal, ring, navigation and solids remain exact. Hell is unchanged. These are Codex-authored geometric refinements within the existing canon, not recovered founder assets.
+
+`src/world-heaven-hell.js` owns those two bounded art seams. `src/app.js` refreshes the existing actual `world-heaven` scene owner on a real quality change, alongside its existing Earth owner, so High/Low toggles update cached art. It changes no renderer, camera, geometry authority, player route, companion, quest, reward or scene-transition rule. Three focused art/quality tests cover the old envelopes, original ordered stream, exact instrument objects, live cache refresh and refusal boundaries. Net source geometry accounting: 11,088 fewer triangles, twelve additional instances, 1,152 additional instance bytes, one existing shared canopy bucket and at most 9,216 first-use mesh bytes per active Heaven pass. These counts are not measured FPS or rendered benefit.
+
+## Verification repair kept separate
+
+At the exact PR60 head, complete SOURCE15 passed: 214 commands, 142 syntax checks, Node 2,078 passes/zero failures/two existing skips, Python 454 tests/ten reported skips, and all fresh command-earned journeys. The exact independent remote full06 source/earned phases and first Earth homecoming browser passed 6,205 checks and 30 stages. Onboarding then failed outside its 49 passing check records: eleven of twelve stages completed because its stale oracle expected three fresh routine events on a loaded character. Remaining browser suites did not run. Keep that failed gate and its original evidence; no current complete browser success follows from the targeted pass.
+
+The proposed separate verifier commit changes only `tools/onboarding_browser.py`, its tests and an attributed synthetic capture fixture. Both predictors use explicit hydrated construction and exactly replay the recorded tick prefix/full sequence. The first captured snapshot follows the actual recorded first tick, not construction. Full journal, nextEvent, clock, owner, reward and independently literal migration checks remain strict; the existing cameraViews metadata allowance is unchanged. No browser stage, locator, capture, budget, quality, renderer or cleanup guard is relaxed. The old historical fresh-construction fixture remains byte-identical. Runtime hydration is unchanged.
+
+## Save and acceptance contract
+
+World9 / Adventure12 / WildSigns1 remain unchanged: no new persistent field or migration. Preserve old browser keys, personal saves, notes/music/exports, stored XP, inventories, gear, sockets/upgrades, ledgers, explicit story choices, companion, housing/crafting and both cameras. Starting or finishing the guide retains the existing optional physical handle and once-only reward path.
+
+Independent source review precedes integration. Then run installed affected components, real identical HTML regeneration, the complete current source verifier, actual ordinary-UI Heaven High/Low in both cameras, and one normally fetched exact independent remote full gate. Keep original failures and skips, inspect actual PNGs, label any failed visible requirement honestly, and retain only bounded evidence. Source-derived projections do not prove drawn pixels or cached live meshes. Dom's camera comfort, visual taste and combat enjoyment remain human acceptance. No merge, deployment, paid assets or scheduling activation.
+
+## Results
+
+Oracle commit `7c88aefde206f23d0879fd36954311ecf0244f62` is installed separately. Actual installed onboarding component: 50 tests, OK with two explicit-checkout skips, 17.244s. Actual installed garden components: 10/10 passed, zero skips, 741.9335ms. Real builder emits identical 3,315,543-byte pages, SHA256 `a29203a03aca3685aa899385320a613d24c57446e57283e875384b15c6fe4873`. Complete current source/native/remote qualification remains pending. Earlier evidence stays attributed to its exact head; the previous full06 remains FAILED.
