@@ -53,6 +53,17 @@ def wild_signs_boundaries_orchestration_spec(root,sources,original,output,**kwar
     return command,env
 
 
+def road_account_orchestration_specs(root,primary,boundary,output,**kwargs):
+    # Transport-only stub for old orchestration fixtures. Actual closure and
+    # epoch admission is separately covered without patching native execution.
+    output=Path(output);manifest=output.parent/(output.name+'-inputs.json')
+    env={'FIRSTLIGHT_ROOT':str(root),'ROAD_ACCOUNT_NATIVE_INPUTS':str(manifest),
+         'ROAD_ACCOUNT_CPU_OUTPUT':str(output.parent/(output.name+'-cpu'))}
+    return ([sys.executable,'tools/prepare_road_account_inputs.py','--output',str(manifest)],
+            [sys.executable,'tools/test_road_account_browser.py'],
+            [sys.executable,'tools/road_account_browser.py','--output',str(output),'--execute'],env)
+
+
 def put(p,value):
     p.parent.mkdir(parents=True,exist_ok=True)
     p.write_text(json.dumps(value)+'\n',encoding='utf8')
@@ -239,7 +250,7 @@ class EarthNativeVerifier(unittest.TestCase):
         browser=Path(self.tmp.name)/'main-browser';args=['verify.py','--browser','--output',str(self.f.logs),'--browser-output',str(browser),'--browser-output-mode','supported']
         # os is local to V; pathlib/native retain the actual host. This tests
         # portable POSIX output routing on every platform, without browser work.
-        with patch.object(V,'ROOT',self.f.root),patch.object(V,'os',SimpleNamespace(name='posix',environ=os.environ)),patch.object(V.sys,'argv',args),patch.object(V.shutil,'which',return_value='node'),patch.object(V.subprocess,'check_output',return_value='v24.18.0\n'),patch.object(V.subprocess,'run',side_effect=fake_run),patch.object(V,'prepare_browser_sources',return_value=None),patch.object(V,'consignment_browser_run_spec',side_effect=consignment_orchestration_spec),patch.object(V,'wild_signs_browser_run_spec',side_effect=wild_signs_orchestration_spec),patch.object(V,'wild_signs_boundaries_browser_run_spec',side_effect=wild_signs_boundaries_orchestration_spec),contextlib.redirect_stdout(io.StringIO()):V.main()
+        with patch.object(V,'ROOT',self.f.root),patch.object(V,'os',SimpleNamespace(name='posix',environ=os.environ)),patch.object(V.sys,'argv',args),patch.object(V.shutil,'which',return_value='node'),patch.object(V.subprocess,'check_output',return_value='v24.18.0\n'),patch.object(V.subprocess,'run',side_effect=fake_run),patch.object(V,'prepare_browser_sources',return_value=None),patch.object(V,'consignment_browser_run_spec',side_effect=consignment_orchestration_spec),patch.object(V,'wild_signs_browser_run_spec',side_effect=wild_signs_orchestration_spec),patch.object(V,'wild_signs_boundaries_browser_run_spec',side_effect=wild_signs_boundaries_orchestration_spec),patch.object(V,'road_account_browser_run_specs',side_effect=road_account_orchestration_specs),contextlib.redirect_stdout(io.StringIO()):V.main()
         labels=[command[1] for command,_ in calls if len(command)>1]
         native=[(c,k) for c,k in calls if len(c)>1 and c[1]=='tools/earth_homecoming_browser.py'];self.assertEqual(len(native),1)
         c,k=native[0];self.assertEqual(k['timeout'],1800);self.assertEqual(c[c.index('--cohort-sha')+1],self.f.cohort_sha);self.assertEqual(c[c.index('--output')+1],str(browser/'earth_homecoming_browser'))

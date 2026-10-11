@@ -1,3 +1,49 @@
+# Source storage repair, 2026-10-11
+
+SOURCE03 at pushed `13983cd94cb8d2ae207a66d463e9694aa762c008` closed exit1 at07:12:35Z. All141 syntax checks and Node1964pass/2explicit skips passed. Python completed438 tests in293.036 seconds:425 method passes,7 method skips plus3 class skips,1 failure and2 errors. All three failures came from positive native-output fixtures using C paths that the actual Windows D-output guard correctly refused. Preserve the raw SOURCE03 receipt, console and Python log; this is a failed complete gate, not current native qualification.
+
+The narrow repair retains all55 methods/122 assertions in the two affected files and changes only three temporary-output parents to actual D storage. Independent review reproduces3/3 passing cases with real guards; production browser tools are unchanged. The optional `--cpu-temp` verifier argument overrides only the Python unittest child, retains the600-second budget and validates an existing absolute directory before allocation. Independent four-test transport review passes4/4; default behavior and all native/earned children retain their original environment. Game/source/cohorts/evidence and actual browser profiles remain D; small transient synthetic CPU fixtures may use ordinary C temporary storage. No project or personal data is moved.
+
+Run complete SOURCE04 at the next exact clean pushed head with global D TEMP/TMP and explicit `--cpu-temp C:/Users/Dom/AppData/Local/Temp`. Original fresh-per-test fixtures stay installed; optional reusable-fixture03 remains uninstalled despite bounded link-safety review. Current browser gates, visible roadkeeper/town/crown acceptance, short footage and exact remote full verification remain pending. Reuse ROOT and the clean independent STATION (currently detached13983cd), retain failures, both cameras, every existing save/system and schema World9/Adventure12/WildSigns1. Wider production goal ACTIVE unfinished; old heartbeat PAUSED. No main merge, deployment, paid provider, personal-save inspection, unrelated shutdown or blocked-deletion retry.
+
+---
+
+# CPU temporary storage correction, 2026-10-11
+
+Keep all original test files and fresh-per-test fixture isolation. Run complete SOURCE03 at the exact clean pushed head with ordinary C TEMP/TMP for lightweight CPU tests; source/cohorts/evidence and every actual native profile remain D. The unchanged 600-second Python budget still applies. Same-method C diagnosis passed in 4.111 seconds versus variable D samples through 68.423; this is sufficient to try the minimal environment correction, not to claim the whole gate passed. Reusable fixture candidate02 stays staged and uninstalled unless evidence establishes further need.
+
+After an actual complete source pass, run the one current bow crossing diagnostic with the original software renderer/30-second scene wait. Preserve the old failure's unknown cause if it does not reproduce. Then execute current primary, boundary and aftermath native gates, inspect actual UI/geometry in both cameras, record the bounded short clip, and qualify the exact remote head in the reused clean STATION. Never rebind old receipts to a changed HEAD. Wider production goal remains active and unfinished.
+
+---
+
+Do not install optional fixture candidate02: independent real NTFS controls found junction traversal before refusal and hard-link mutation of an outside synthetic inode. Both endpoints were owned review fixtures; ROOT/personal data were untouched. Preserve failures; any candidate03 repair stays staged and requires new independent controls. This does not block unchanged-test SOURCE03.
+
+# Source budget diagnosis, 2026-10-11
+
+At pushed `c87fdac76ec1935fda7a4f839ba7cd593988432b`, SOURCE02 closed exit1 at2026-10-11T06:36:14Z. All141 syntax checks and Node1964pass/2explicit skips passed; Python exceeded its unchanged600-second budget after412 completed method lines, with no reported assertion failure before termination. This is a failed complete source gate. Native gameplay, current footage and fresh remote qualification remain pending. Original SOURCE01/COMMONJS failures and all timeout evidence remain retained.
+
+Measure repeated synthetic fixture setup, real validation/subprocess and cleanup costs under the exact Source02 D TEMP environment. Preserve all assertions, filesystem validators and existing budget. Two scoped workers only: one profiles the Python bottleneck, one finishes the small actual-gameplay recorder. Neither may edit ROOT/STATION or launch a browser. Parent owns forward integration. No cached production admission, fake filesystem, skipped cases or timeout waiver.
+
+---
+
+# Current repair and honest qualification, 2026-10-11
+
+Complete current source repair, commit/push forward normally, then earn fresh current cohorts and execute actual primary, boundary and road-account browser gates. Diagnose the original crossing refusal before retrying its affected journey; do not lengthen its timeout or replay a full suite without a cause. Reuse the clean independent STATION only after prior ownership and failure evidence are checked. Qualify fresh remote source and relevant/full browser checks before claiming delivery.
+
+The earlier SOURCE01 closed with exit1: Node1914 passed /28 failed /2 skipped (1944 total). Missing real woodland dependencies and three App extraction helpers caused integration failures. Parent repaired actual CommonJS ownership and portable Motion test-root selection. COMMONJS_REPAIR02 passed86/87 with no skips; its remaining count failure compared deliberate new crowns to old scene instance totals. The correction retains the original budget minus exactly20/28 old crown pieces plus exactly8/20 new pieces; all ground/bank/solid checks remain. COMMONJS_REPAIR03 passed all13 affected tests. New identical HTML is3,286,539 bytes, SHA256 `6a5e34ed9d41e028fcff56b0aefdbd67eb906ba76a3f8151bc0505c9031b2bbd`. Complete source/native acceptance remains pending.
+
+---
+
+# Road account aftermath: installed candidate, 2026-10-07
+
+Parent owns gameplay/road-account-aftermath-20261007, stacked on PR53's pushed751db8caf324a30b393674d10341f5f087b93a5f. Actual installed Source02 reading/Motion/Art/App/woodland checks pass80/80, zero skips; the actual builder regenerated identical3,286,180-byte HTML, SHA25604f1259bc5f080823c806c4a284f17d33e440b0c60aa596ab5c3ce18271ff0b3. Sela has one compact public notice and the original paid receipt; Rill/Merren retain practical role lines and existing services. A passive roadkeeper follows the deliberately claimed route; four existing crowns change upper appearance only. Save/schema/XP/reward/navigation owners remain unchanged.
+
+Current source-only native-controller checks pass14 with one explicit actual-input Admission class skip. New verifier routing requires both complete current WildSigns native gates closed/passed at the exact current HEAD/page, then fresh manifest, mandatory26 CPU admission and the two actual aftermath cases. The independently reviewed startup ownership repair is installed; seven synthetic resource-ownership CPU tests pass without browser/network/Core execution. Routing01's63/64 success included one test incorrectly expecting D TEMP to be rejected; explicit C-target correction passed all8 new cases in Routing02. Retain raw failures. Current full source/native/visible qualification is pending; earlier wildlife receipts cannot qualify this changed page.
+
+The independent STATION remains owned by running RemoteFull02 at3763f0f4004f44ee6afc7c4368f811ea922c4ca7: its complete source phase, Earth homecoming and onboarding passed; remaining51-browser gate is still in flight. Do not switch/duplicate that checkout. Only two scoped Sol colleagues; future grounded footfalls stay staged until partial audio allocation/lifecycle failures are repaired. Reuse ROOT/STATION and bounded D evidence, preserve every save/XP/explicit choice/gear/socket/companion/housing/crop/music and both cameras. World9/Adventure12/optional WildSigns1 stay. Wider AAA/browser production goal ACTIVE unfinished; old heartbeat PAUSED; no mainmerge/deploy/paid/billing/personal-save reads/unrelated stop/cleanup/blocked-deletion retry.
+
+---
+
 # Current local wildlife qualification and next production slice, 2026-10-07
 
 Source08 and actual Boundary04 passed at3763f0f4004f44ee6afc7c4368f811ea922c4ca7:208 source commands/137 syntax; Node1884pass/2skip; Python421methods415pass/6method+3classskip; three genuine/labelled-native boundary cases3175checks, all contexts/server closed. Primary Native03's2176 checks and one decoded17-second clip remain their original04ee epoch with166 unchanged runtime/caller readbacks at3763. Read docs/evidence/wild-signs-2026-10-07/QUALIFICATION03.md; preserve every earlier refusal/timeout/stress/interruption. Complete remote51-browser gate is running in the independent STATION at3763, not yet a pass.

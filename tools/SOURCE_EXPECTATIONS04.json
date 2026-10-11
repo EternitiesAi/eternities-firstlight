@@ -1,0 +1,36 @@
+{
+  "schema": "road-account-installed-source-expectations-v1",
+  "preparedSourceHead": "668c501acdac688bd4efc5906025093721b7fbc1",
+  "helpers": {
+    "tools/earth_consignment_browser.py": "ec5cc1c6ad921d73406530233b6d9a6dddf2d4970464f0b62d29d257ebb884e4",
+    "tools/earth_wild_signs_browser.py": "ecfa615cbeb243cba38c28d99bda2aff22ed6cc40536209c09fec8a6ccac6f8f",
+    "tools/browser_support.py": "cb5b8227f4c5e99e89b5ec40a75a3cacc471bd60c287316501c4b2de6cfecaa5"
+  },
+  "reviewedModules": {
+    "earth-road-account.js": "c35d9e1f4a12525598514db10b177c323e9ed0cbdac35119bc86c499102ff51c",
+    "earth-roadkeeper-motion.js": "40ed91f8435eb4f99237d491db925043fc81fa347a35b5c2e5a682cd017936f3",
+    "earth-roadkeeper-art.js": "607b2714dbca0bc38c293ca6884706466bea80499382b49bacfb2e9b3a6b340e"
+  },
+  "appHookBodySHA256": "d779e0ea351370bfebca5c3d7d0c8f65f5b933da1869169e41a1bfb55d9cf99a",
+  "historicalReportSHA256": "eb906ce2f9252e9506478ea317e94b25ebdc62a570f63498fa4c4cb8000a9a79",
+  "installationQualified": false,
+  "referenceOnlyHelpers": {
+    "tools/earth_wild_signs_boundaries_browser.py": "14bc628fc4e8ec0d45dcf3e316530463dcbabc990ef645d31cf3984a6537fc91"
+  },
+  "helpersLF": {
+    "tools/earth_consignment_browser.py": "ec5cc1c6ad921d73406530233b6d9a6dddf2d4970464f0b62d29d257ebb884e4",
+    "tools/earth_wild_signs_browser.py": "ecfa615cbeb243cba38c28d99bda2aff22ed6cc40536209c09fec8a6ccac6f8f",
+    "tools/browser_support.py": "cb5b8227f4c5e99e89b5ec40a75a3cacc471bd60c287316501c4b2de6cfecaa5"
+  },
+  "reviewedModulesLF": {
+    "earth-road-account.js": "c35d9e1f4a12525598514db10b177c323e9ed0cbdac35119bc86c499102ff51c",
+    "earth-roadkeeper-motion.js": "40ed91f8435eb4f99237d491db925043fc81fa347a35b5c2e5a682cd017936f3",
+    "earth-roadkeeper-art.js": "607b2714dbca0bc38c293ca6884706466bea80499382b49bacfb2e9b3a6b340e"
+  },
+  "textIdentityRule": "Only CRLF bytes replaced by LF for reviewed text; actual current report/runtime/checkpoint raw SHA256 remains separately sealed",
+  "source02Review": {
+    "narrativeSealSHA256": "8720e8dc70258af3f550b989c2dd43bf240f30acc11dca006194b864e0d0cff0",
+    "portableReadingTestSHA256": "4bf81f7b5546a79dc84980c6e10e5f55a42239f2e92cf84a63464d12d56d8ea2",
+    "scope": "Shortened role readings and consolidated claimed Sela notice; current native integration remains unqualified"
+  }
+}

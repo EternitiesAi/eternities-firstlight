@@ -5,6 +5,7 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const P=require('./earth_homecoming_host_helpers.cjs'),{C,A,H,D,W,CS,E,T,ROOT,fixture,actor,synthetic,step,empty,copy}=P;
+P.load('earth-roadkeeper-motion.js');
 const all=o=>Object.values(o).flat(),commandPayload=f=>({quest:D.id,expectedActive:f.mem.store.active,expectedRevision:f.sim.state.adventure.revision});
 function elements(f,type,id=''){const b=f.rpg.earthHomecoming.binding;return{dataset:{rpg:'earth-homecoming-'+type,id,binding:String(b.id),revision:String(b.revision)}};}
 function windup(f,e,d=2){Object.assign(f.sim.state.player,{x:e.x,z:e.z+d});assert.ok(W.walkable(D.room,f.sim.state.player.x,f.sim.state.player.z,.31));f.sim.tick(.05);assert.equal(e.mode,'windup');assert.ok(Object.isFrozen(e.strike));return e.strike;}
@@ -105,7 +106,15 @@ test('actual road fixture draw and reset retain foreign scene/nonaccepted bounda
 });
 test('app Realm diagnostics copy actual EH facts/runtime rather than expose mutable owner references',()=>{
  const f=fixture();f.accept();const app=P.overlay.read('app.js'),snippet=app.slice(app.indexOf('window.Realm={get state()'),app.indexOf('if(window.__ETERNITIES_TEST_MODE'));
- const ctx={...Object.fromEntries(Object.entries(global).filter(([k])=>k.startsWith('Realm'))),window:{},sim:f.sim,engine:null,errors:[],adventure:f.old,experience:null,rpg:f.rpg,art:null,sandbox:null,audio:{enabled:false,ctx:null,soundscape:null},camera:{},saveState:'saved',characterStore:f.mem.store,navigate:()=>{},sceneHeight:()=>1.3,worldDiveStatus:()=>null,fps:0};f.rpg.gathering.player={status:'idle'};const wildDiagnostics=app.slice(app.indexOf('let wildSignsDiagnosticFrame='),app.indexOf('function worldContext('));vm.runInNewContext(wildDiagnostics+'\n'+snippet,ctx);const d=ctx.window.Realm.diagnostics;assert.equal(d.earthHomecoming.record.accepted,true);assert.equal(d.earthHomecoming.runtime.room,null);d.earthHomecoming.record.accepted=false;d.earthHomecoming.record.steps.push('invented');assert.equal(f.sim.state.earthHomecoming.accepted,true);assert.ok(!f.sim.state.earthHomecoming.steps.includes('invented'));
+ const ctx={...Object.fromEntries(Object.entries(global).filter(([k])=>k.startsWith('Realm'))),document:f.doc,panel:null,window:{},sim:f.sim,engine:null,errors:[],adventure:f.old,experience:null,rpg:f.rpg,art:null,sandbox:null,audio:{enabled:false,ctx:null,soundscape:null},camera:{},saveState:'saved',characterStore:f.mem.store,navigate:()=>{},sceneHeight:()=>1.3,worldDiveStatus:()=>null,fps:0};f.rpg.gathering.player={status:'idle'};
+ const start='// BEGIN EARTH ROADKEEPER APP HOOKS',end='// END EARTH ROADKEEPER APP HOOKS';
+ const a=app.indexOf(start),b=app.indexOf(end,a);assert.ok(a>=0&&b>a,'actual installed roadkeeper hook block');
+ assert.equal(app.indexOf(start,a+1),-1);assert.equal(app.indexOf(end,b+1),-1);
+ // Keep the actual read-only diagnostics owner; the unclaimed home fixture
+ // remains ineligible under the actual Motion guard.
+ Object.assign(ctx,vm.compileFunction(app.slice(a+start.length,b)+'\nreturn {roadkeeperPresentation,prepareRoadkeeperDiagnostics,roadkeeperDiagnostics};',[],{contextExtensions:[ctx]})());
+ const before=f.sim.snapshot();assert.equal(ctx.roadkeeperPresentation(),null);ctx.prepareRoadkeeperDiagnostics();
+ const wildDiagnostics=app.slice(app.indexOf('let wildSignsDiagnosticFrame='),app.indexOf('function worldContext('));vm.runInNewContext(wildDiagnostics+'\n'+snippet,ctx);const d=ctx.window.Realm.diagnostics;assert.equal(d.roadkeeper,null);assert.deepEqual(f.sim.snapshot(),before);assert.equal(d.earthHomecoming.record.accepted,true);assert.equal(d.earthHomecoming.runtime.room,null);d.earthHomecoming.record.accepted=false;d.earthHomecoming.record.steps.push('invented');assert.equal(f.sim.state.earthHomecoming.accepted,true);assert.ok(!f.sim.state.earthHomecoming.steps.includes('invented'));
 });
 test('build/shell ordered tokens load data+rules before Core/Adventure and repaired UI/art/CSS exactly once',()=>{
  const shell=fs.readFileSync(path.join(ROOT,'src/shell.html'),'utf8'),build=fs.readFileSync(path.join(ROOT,'build.py'),'utf8');

@@ -1,3 +1,45 @@
+# Source storage repair, 2026-10-11
+
+SOURCE03 at pushed `13983cd94cb8d2ae207a66d463e9694aa762c008` closed exit1 at07:12:35Z. All141 syntax checks and Node1964pass/2explicit skips passed. Python completed438 tests in293.036 seconds:425 method passes,7 method skips plus3 class skips,1 failure and2 errors. All three failures came from positive native-output fixtures using C paths that the actual Windows D-output guard correctly refused. Preserve the raw SOURCE03 receipt, console and Python log; this is a failed complete gate, not current native qualification.
+
+The narrow repair retains all55 methods/122 assertions in the two affected files and changes only three temporary-output parents to actual D storage. Independent review reproduces3/3 passing cases with real guards; production browser tools are unchanged. The optional `--cpu-temp` verifier argument overrides only the Python unittest child, retains the600-second budget and validates an existing absolute directory before allocation. Independent four-test transport review passes4/4; default behavior and all native/earned children retain their original environment. Game/source/cohorts/evidence and actual browser profiles remain D; small transient synthetic CPU fixtures may use ordinary C temporary storage. No project or personal data is moved.
+
+Run complete SOURCE04 at the next exact clean pushed head with global D TEMP/TMP and explicit `--cpu-temp C:/Users/Dom/AppData/Local/Temp`. Original fresh-per-test fixtures stay installed; optional reusable-fixture03 remains uninstalled despite bounded link-safety review. Current browser gates, visible roadkeeper/town/crown acceptance, short footage and exact remote full verification remain pending. Reuse ROOT and the clean independent STATION (currently detached13983cd), retain failures, both cameras, every existing save/system and schema World9/Adventure12/WildSigns1. Wider production goal ACTIVE unfinished; old heartbeat PAUSED. No main merge, deployment, paid provider, personal-save inspection, unrelated shutdown or blocked-deletion retry.
+
+---
+
+# CPU temporary storage correction, 2026-10-11
+
+No new human or native gameplay result is claimed. The original same mocked-orchestration check passed in 4.111 seconds using ordinary C CPU temporary storage, versus variable D observations up to 68.423 seconds. This measures synthetic test filesystem overhead, not player pacing/FPS. All original assertions and per-test isolation stay. SOURCE02 remains failed; complete SOURCE03/current native/visible acceptance are pending. Browser profiles, real source/evidence and heavy work stay on D.
+
+The staged capture02 caller has 29 passing CPU boundary tests and a strict current-native admission/one 24-second silent movie/two UI still contract. It has produced no browser footage. Staged grounded footfalls have 21 passing tests composed over the actual current App audio seams; no installation, actual AudioContext or listening acceptance follows.
+
+---
+
+# Source budget diagnosis, 2026-10-11
+
+At pushed `c87fdac76ec1935fda7a4f839ba7cd593988432b`, SOURCE02 closed exit1 at2026-10-11T06:36:14Z. All141 syntax checks and Node1964pass/2explicit skips passed; Python exceeded its unchanged600-second budget after412 completed method lines, with no reported assertion failure before termination. This is a failed complete source gate. Native gameplay, current footage and fresh remote qualification remain pending. Original SOURCE01/COMMONJS failures and all timeout evidence remain retained.
+
+---
+
+# Current repair and honest qualification, 2026-10-11
+
+No new human playtest, actual roadkeeper browser acceptance or road-account movie exists yet. Current scene repair is CPU evidence only. SOURCE01 failed28 checks; the targeted repair now passes the affected geometry checks, with the87-check run's final count defect separately corrected13/13. Old remote bow consignment never entered Earth in its failed case; preserve that screenshot and failure.
+
+Questions stay open: did the town remember the chosen account, did someone using the repaired route make the outing matter, and did the woodland feel clearer? Both camera modes and portrait still need fresh rendered inspection at the repaired source. Footfalls remains staged and unheard, with synthetic AudioContext checks only.
+
+---
+
+# Road account aftermath: installed candidate, 2026-10-07
+
+Parent owns gameplay/road-account-aftermath-20261007, stacked on PR53's pushed751db8caf324a30b393674d10341f5f087b93a5f. Actual installed Source02 reading/Motion/Art/App/woodland checks pass80/80, zero skips; the actual builder regenerated identical3,286,180-byte HTML, SHA25604f1259bc5f080823c806c4a284f17d33e440b0c60aa596ab5c3ce18271ff0b3. Sela has one compact public notice and the original paid receipt; Rill/Merren retain practical role lines and existing services. A passive roadkeeper follows the deliberately claimed route; four existing crowns change upper appearance only. Save/schema/XP/reward/navigation owners remain unchanged.
+
+Current source-only native-controller checks pass14 with one explicit actual-input Admission class skip. New verifier routing requires both complete current WildSigns native gates closed/passed at the exact current HEAD/page, then fresh manifest, mandatory26 CPU admission and the two actual aftermath cases. The independently reviewed startup ownership repair is installed; seven synthetic resource-ownership CPU tests pass without browser/network/Core execution. Routing01's63/64 success included one test incorrectly expecting D TEMP to be rejected; explicit C-target correction passed all8 new cases in Routing02. Retain raw failures. Current full source/native/visible qualification is pending; earlier wildlife receipts cannot qualify this changed page.
+
+The independent STATION remains owned by running RemoteFull02 at3763f0f4004f44ee6afc7c4368f811ea922c4ca7: its complete source phase, Earth homecoming and onboarding passed; remaining51-browser gate is still in flight. Do not switch/duplicate that checkout. Only two scoped Sol colleagues; future grounded footfalls stay staged until partial audio allocation/lifecycle failures are repaired. Reuse ROOT/STATION and bounded D evidence, preserve every save/XP/explicit choice/gear/socket/companion/housing/crop/music and both cameras. World9/Adventure12/optional WildSigns1 stay. Wider AAA/browser production goal ACTIVE unfinished; old heartbeat PAUSED; no mainmerge/deploy/paid/billing/personal-save reads/unrelated stop/cleanup/blocked-deletion retry.
+
+---
+
 # Current local wildlife qualification and next production slice, 2026-10-07
 
 Source08 and actual Boundary04 passed at3763f0f4004f44ee6afc7c4368f811ea922c4ca7:208 source commands/137 syntax; Node1884pass/2skip; Python421methods415pass/6method+3classskip; three genuine/labelled-native boundary cases3175checks, all contexts/server closed. Primary Native03's2176 checks and one decoded17-second clip remain their original04ee epoch with166 unchanged runtime/caller readbacks at3763. Read docs/evidence/wild-signs-2026-10-07/QUALIFICATION03.md; preserve every earlier refusal/timeout/stress/interruption. Complete remote51-browser gate is running in the independent STATION at3763, not yet a pass.

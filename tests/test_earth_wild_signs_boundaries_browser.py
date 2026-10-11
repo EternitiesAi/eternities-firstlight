@@ -26,6 +26,18 @@ SUITE_FILE = Path(os.environ.get('FIRSTLIGHT_WILD_SIGNS_DRIVER',str(ROOT/'tools/
 S = N.load_suite(SUITE_FILE); H = S.load_base(ROOT)
 
 
+def native_output_parent():
+    """Keep only native output parents on the production-required D: volume."""
+    if os.name != 'nt':
+        return os.environ.get('TEMP')
+    if ROOT.drive.lower() == 'd:':
+        return ROOT.parent
+    parent = Path('D:/')
+    if not parent.is_dir():
+        raise ValueError('Windows admission tests require an available D: output volume')
+    return parent
+
+
 def negative_world():
     """Not Core-importable: deliberately miniature capacity/controller host."""
     w = dict(earthWildSigns=dict(version=1,accepted=True,evidence=['feeding-track','timber-gouge','pest-scrape'],
@@ -287,7 +299,7 @@ class SourceBoundaryTests(unittest.TestCase):
         self.assertEqual(N.sha(SUITE_FILE),N.FROZEN_SUITE_SHA256)
         with self.assertRaisesRegex(ValueError,'Exact frozen'):
             N.load_suite(HERE/'ABSENT-FROZEN-SUITE.py')
-        temporary=tempfile.TemporaryDirectory(prefix='wild-signs-boundary-',dir=os.environ.get('TEMP'))
+        temporary=tempfile.TemporaryDirectory(prefix='wild-signs-boundary-',dir=native_output_parent())
         self.addCleanup(temporary.cleanup)
         output=Path(temporary.name)/'native-not-created'
         # Explicit miniature caller transport. Real committed-caller guards have separate negative coverage.
@@ -298,7 +310,7 @@ class SourceBoundaryTests(unittest.TestCase):
                         '--output',str(output.resolve()),'--renderer','hardware','--check-only'])
         self.assertFalse(output.exists())
     def test_check_only_returns_no_native_or_storage_qualification(self):
-        temporary=tempfile.TemporaryDirectory(prefix='wild-signs-boundary-',dir=os.environ.get('TEMP'))
+        temporary=tempfile.TemporaryDirectory(prefix='wild-signs-boundary-',dir=native_output_parent())
         self.addCleanup(temporary.cleanup)
         output=Path(temporary.name)/'native-not-created'
         # Explicit miniature caller transport; this method never admits a current gameplay source.

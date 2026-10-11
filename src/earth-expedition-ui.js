@@ -86,6 +86,7 @@ class ExpeditionUI{
   if(at(this.sim,d.giver)){
    const speech=G.RealmEarthExpeditionDialogue?.reading(d.giver.id,this.sim.state.earthExpedition,this.sim.state.adventure.earthBinding);
    if(speech)html+='<section class="expedition-dialogue"><small>'+esc(speech.speaker)+'</small><h3>'+esc(speech.title)+'</h3>'+speech.lines.map(line=>'<p>'+esc(line)+'</p>').join('')+'<p class="expedition-muted">'+esc(speech.hint)+'</p></section>';
+   html+=G.RealmEarthRoadAccount?.html(d.giver.id,this.sim.state)||'';
   }
   html+=xpNote(this.sim.state.adventure,d.reward);
   if(r.steps.includes('brace-root-channel'))html+=this.fieldcraft.panel();

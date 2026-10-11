@@ -11,6 +11,7 @@ const C=require(path.join(ROOT,'src/core.js')),W=require(path.join(ROOT,'src/wor
 const X=require(path.join(ROOT,'src/earth-expedition.js')),CD=require(path.join(ROOT,'src/earth-consignment-data.js'));
 const D=require(path.join(ROOT,'src/earth-wild-signs-data.js')),O=require(path.join(ROOT,'src/earth-grazer-motion.js'));
 const E=require(path.join(ROOT,'src/engine.js')),CH=require(path.join(ROOT,'src/characters.js'));
+const R=require(path.join(ROOT,'src/earth-roadkeeper-motion.js'));
 const copy=v=>JSON.parse(JSON.stringify(v));
 const app=fs.readFileSync(path.join(ROOT,'src/app.js'),'utf8');
 function section(begin,end){const a=app.indexOf(begin),b=app.indexOf(end,a);assert.ok(a>=0&&b>a);return app.slice(a,b);}
@@ -28,15 +29,21 @@ function appFixture(){
  for(let n=0;n<500&&O.current(context()).phase!=='walk';n++){sim.tick(.1);assert.ok(O.tick(context(),.1).ok);}
  assert.equal(O.current(context()).phase,'walk');
  let inspectCalls=0,renderCalls=0;const queued=[];
- const h={sim,characterStore:store,RealmEarthWildSignsData:D,RealmEarthGrazerMotion:O,
+ const h={sim,characterStore:store,RealmEarthWildSignsData:D,RealmEarthGrazerMotion:O,RealmEarthRoadkeeperMotion:R,RealmEarthConsignmentData:CD,
   RealmEarthGrazerVisibility:{inspect(){inspectCalls++;throw Error('Paused App must never inspect or issue a witness');}},
-  grazerContext:context,grazerMenusOpen:()=>false,G_CAPTURE:false,document:{hidden:false},panel:null,
+  grazerContext:context,grazerMenusOpen:()=>false,G_CAPTURE:false,document:{hidden:false,querySelector:()=>null},panel:null,
   engine:{_contextLost:false,render(){renderCalls++;}},camera:{preset:'adventure',yaw:0},
   art:{update(){}},keys:new Set(),target:null,experience:null,sandbox:null,adventure:null,arsenal:null,rpg:null,
   lastFrame:0,frames:0,fpsStart:0,fps:0,elapsed:0,lastSave:0,lastUi:200,
   grazerLastInspect:-Infinity,grazerLastVisibility:{visible:true,phase:'walk',lower:0,at:100,parts:31,samples:4,span:{width:100,height:80},blocked:[]},
   bindWildSignsClearance(){},tickConsignment(){},switchScene(){},updateCamera(){},syncFieldcraftOwner(){},consignmentPresentation(){},
   updateLabels(){},audio:{tick(){}},requestAnimationFrame:f=>queued.push(f),refreshUI(){},save(){throw Error('No CPU host autosave expected');}};
+ // The actual new RAF dependencies share native Core/Motion lease identity.
+ const start='// BEGIN EARTH ROADKEEPER APP HOOKS',end='// END EARTH ROADKEEPER APP HOOKS';
+ const a=app.indexOf(start),b=app.indexOf(end,a);assert.ok(a>=0&&b>a,'actual installed roadkeeper hook block');
+ assert.equal(app.indexOf(start,a+1),-1);assert.equal(app.indexOf(end,b+1),-1);
+ Object.assign(h,vm.compileFunction(app.slice(a+start.length,b)+'\nreturn {roadkeeperContext,tickRoadkeeper,roadkeeperPresentation,prepareRoadkeeperDiagnostics,roadkeeperDiagnostics};',[],{contextExtensions:[h]})());
+ const refused=R.begin(h.roadkeeperContext());assert.equal(refused.ok,false);assert.match(refused.error,/already claimed canonical account/);
  vm.createContext(h);
  vm.runInContext(section('function grazerPresentation(){','function grazerMenusOpen(){')+
   section('function acknowledgeOrdinaryGrazer(now){','function wildSignsNativeEvent(')+
@@ -52,6 +59,7 @@ test('native pause before the next actual App RAF changes only prepared walking/
  assert.equal(before.paused,true);assert.equal(before.view.paused,false);assert.equal(before.view.walking,true);
  f.h.frame(200);const after=f.sample();assert.notDeepEqual(after,before);
  assert.deepEqual({...after,view:{...after.view,paused:false,walking:true}},before);
+ assert.equal(f.h.roadkeeperDiagnostics(),null,'unclaimed account never gains a roadkeeper from the real RAF');
  assert.equal(JSON.stringify(f.sim.state),world);assert.equal(after.view.paused,true);assert.equal(after.view.walking,false);
  assert.equal(after.view.observedBehavior,false);assert.equal(after.view.observationReady,false);assert.equal(f.sim.grazerPresentedFrame,undefined);
  assert.deepEqual(f.counts(),{inspectCalls:0,renderCalls:1});assert.equal(f.queued.length,1);

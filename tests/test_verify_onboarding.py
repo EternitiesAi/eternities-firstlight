@@ -107,7 +107,7 @@ class OnboardingVerifier(unittest.TestCase):
         self.assertEqual(before,{name:sha(name)for name in before})
         self.assertEqual(len(module.STAGES),12)
 
-    def main_requests(self,browser=True,onboarding_exit=0,capture_cpu_exit=0,consignment_exit=0):
+    def main_requests(self,browser=True,onboarding_exit=0,capture_cpu_exit=0,consignment_exit=0,road_account_cpu_exit=0,road_account_exit=0):
         calls=[]
         def fake_run(command,**kw):
             calls.append((command,kw));kw['stdout'].write(b'CPU orchestration sink only; no subprocess launched\n')
@@ -115,13 +115,35 @@ class OnboardingVerifier(unittest.TestCase):
             if len(command)>1 and command[1]=='tools/onboarding_browser.py':code=onboarding_exit
             if len(command)>1 and command[1]=='tools/earth_consignment_browser.py':code=consignment_exit
             if len(command)>1 and command[1]=='tests/test_capture_earth_homecoming.py':code=capture_cpu_exit
+            if len(command)>1 and command[1]=='tools/test_road_account_browser.py' and kw['env'].get('ROAD_ACCOUNT_NATIVE_INPUTS'):code=road_account_cpu_exit
+            if len(command)>1 and command[1]=='tools/road_account_browser.py':code=road_account_exit
             return SimpleNamespace(returncode=code)
         self._main_request_number=getattr(self,'_main_request_number',0)+1
         target=Path(self.tmp.name)/f'main-browser-{self._main_request_number}';args=['verify.py','--output',str(self.f.logs)]
         if browser:args+=['--browser','--browser-output',str(target),'--browser-output-mode','supported']
-        with patch.object(V,'ROOT',self.f.root),patch.object(V,'os',SimpleNamespace(name='posix',environ=os.environ)),patch.object(V.sys,'argv',args),patch.object(V.shutil,'which',return_value='node'),patch.object(V.subprocess,'check_output',return_value='v24.18.0\n'),patch.object(V.subprocess,'run',side_effect=fake_run),patch.object(V,'prepare_browser_sources',return_value=None),patch.object(V,'consignment_browser_run_spec',side_effect=Earth.consignment_orchestration_spec),patch.object(V,'wild_signs_browser_run_spec',side_effect=Earth.wild_signs_orchestration_spec),patch.object(V,'wild_signs_boundaries_browser_run_spec',side_effect=Earth.wild_signs_boundaries_orchestration_spec),contextlib.redirect_stdout(io.StringIO()),contextlib.redirect_stderr(io.StringIO()):
+        with patch.object(V,'ROOT',self.f.root),patch.object(V,'os',SimpleNamespace(name='posix',environ=os.environ)),patch.object(V.sys,'argv',args),patch.object(V.shutil,'which',return_value='node'),patch.object(V.subprocess,'check_output',return_value='v24.18.0\n'),patch.object(V.subprocess,'run',side_effect=fake_run),patch.object(V,'prepare_browser_sources',return_value=None),patch.object(V,'consignment_browser_run_spec',side_effect=Earth.consignment_orchestration_spec),patch.object(V,'wild_signs_browser_run_spec',side_effect=Earth.wild_signs_orchestration_spec),patch.object(V,'wild_signs_boundaries_browser_run_spec',side_effect=Earth.wild_signs_boundaries_orchestration_spec),patch.object(V,'road_account_browser_run_specs',side_effect=Earth.road_account_orchestration_specs),contextlib.redirect_stdout(io.StringIO()),contextlib.redirect_stderr(io.StringIO()):
             V.main()
         return calls,target
+
+    def test_aftermath_runs_once_after_both_current_native_gates_with_required_cpu_admission(self):
+        calls,target=self.main_requests();labels=[c[1] for c,k in calls if len(c)>1]
+        ordered=['tools/earth_wild_signs_browser.py','tools/earth_wild_signs_boundaries_browser.py',
+                 'tools/prepare_road_account_inputs.py','tools/road_account_browser.py']
+        self.assertEqual([labels.count(label) for label in ordered],[1,1,1,1])
+        self.assertEqual([labels.index(label) for label in ordered],sorted(labels.index(label) for label in ordered))
+        current=[(c,k) for c,k in calls if len(c)>1 and c[1]=='tools/test_road_account_browser.py' and k['env'].get('ROAD_ACCOUNT_NATIVE_INPUTS')]
+        self.assertEqual(len(current),1);cpu,ck=current[0]
+        self.assertEqual(ck['timeout'],300);self.assertTrue(ck['env']['ROAD_ACCOUNT_NATIVE_INPUTS'].endswith('road_account_browser-inputs.json'))
+        ci=next(i for i,(c,k) in enumerate(calls) if (c,k)==current[0])
+        self.assertLess(next(i for i,(c,k) in enumerate(calls) if len(c)>1 and c[1]=='tools/prepare_road_account_inputs.py'),ci)
+        self.assertLess(ci,next(i for i,(c,k) in enumerate(calls) if len(c)>1 and c[1]=='tools/road_account_browser.py'))
+        native=[(c,k) for c,k in calls if len(c)>1 and c[1]=='tools/road_account_browser.py'][0]
+        self.assertEqual(native[1]['timeout'],3700);self.assertIn('--execute',native[0])
+        self.assertFalse((target/'road_account_browser').exists())
+
+    def test_aftermath_actual_input_failure_and_native_failure_stop_complete_gate(self):
+        for kwargs in ({'road_account_cpu_exit':1},{'road_account_exit':1}):
+            with self.subTest(**kwargs),self.assertRaises(SystemExit):self.main_requests(**kwargs)
 
     def test_main_preserves_all46_contracts_and_adds_required47th_after_same_invocation_earth(self):
         calls,target=self.main_requests();by={c[1]:(c,k)for c,k in calls if len(c)>1}

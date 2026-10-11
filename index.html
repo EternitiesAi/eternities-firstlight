@@ -2062,7 +2062,8 @@ const api=Object.freeze({parts});G.RealmElderwealdTrailArt=api;if(typeof module!
    }
    count+=G.RealmCoastwardWoodlandArt.decorate(art,def,{height});
    const trailArt=G.RealmElderwealdTrailArt||(typeof require==='function'?require('./elderweald-trail-art.js'):null);
-   const woodland=[...EW.parts({quality:context.sim?.state.settings.quality||'balanced',height}),...trailArt.parts(def,context.sim?.state.settings.quality||'balanced')];
+   const woodlandShapes=G.RealmWoodlandShapes||(typeof require==='function'?require('./woodland-shapes.js'):null);
+   const woodland=[...woodlandShapes.replace(EW.parts({quality:context.sim?.state.settings.quality||'balanced',height}),def,{quality:context.sim?.state.settings.quality||'balanced'}),...trailArt.parts(def,context.sim?.state.settings.quality||'balanced')];
    for(const p of woodland){art.add(p.kind,...p.p,...p.s,p.c,p.opt);count++;}
    // Field rows leave the authored work-loop and settlement road entirely clear.
    for(const side of [-1,1]) for(let row=0;row<4;row++) for(let n=0;n<9;n++) {
@@ -5393,6 +5394,68 @@ function reading(personId,ledger,binding){
 }
 const api=freeze({people,reading});G.RealmEarthExpeditionDialogue=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
+</script><script>/* Authored readings for the existing provisional Earth people. The claimed
+ * WildSigns owner selects words only: no quest, save, reward or routine owner.
+ * ET09 supports a revised public claim; this timber-damage adaptation leaves
+ * the gouge's maker and the older forest stories unresolved. */
+(function(G){'use strict';
+const D=G.RealmEarthWildSignsData;
+if(typeof D?.crossValidate!=='function')throw Error('Load canonical Earth wild-signs data before the road account.');
+const freeze=o=>{if(o&&typeof o==='object'){Object.values(o).forEach(freeze);Object.freeze(o);}return o;};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const people=freeze({
+ 'elderweald-sela':{speaker:'Sela · herbalist',title:"Sela's revised notice"},
+ 'elderweald-rill':{speaker:'Rill · forestkeeper',title:'A quieter way through'},
+ merren:{speaker:'Merren · field steward',title:'The way along the lane'}
+});
+const observed=freeze([
+ 'The grazer was witnessed feeding. Its broad marks do not match the narrow timber gouge; a separate burrowing scrape was recorded. The gouge’s maker remains unproven. The older stories of the forest are still unanswered.'
+]);
+const responses=freeze({
+ 'signed-loop':{
+  'elderweald-sela':['I have changed the notice. Let the next traveller see the marks before putting the blame on the grazer.','Take the signed bypass. We can leave the pest pocket alone, and the grazer can keep its refuge.'],
+  'elderweald-rill':['Take the signed bypass when you inspect the lane. There is room for the grazer to feed without sending you through the pest pocket.','The brace still supports the living road. Keep an eye on it when you return; the older patrols still need their own checks.'],
+  merren:['Use the signed bypass when you set out from the bench. Give the grazer room to feed.','The bench and the river work are still here when you need them.']
+ },
+ 'cleared-pocket':{
+  'elderweald-sela':['I have changed the notice. The grazer was feeding; the separate pest pocket was cleared.','That still leaves the timber gouge unanswered. Keep the refuge quiet, and do not mistake one cleared pocket for the whole forest.'],
+  'elderweald-rill':['The separate pocket was cleared. You can check that stretch of lane while leaving the grazer and its refuge alone.','The brace still supports the living road. Keep an eye on it when you return; the older patrols still need their own checks.'],
+  merren:['That pocket was cleared, but keep your eyes open along the rest of the lane. Leave the grazer’s refuge quiet.','The bench and the river work are still here when you need them.']
+ }
+});
+function claimed(state){
+ try{
+  // Missing or inherited ownership stays unreadable; this projection never
+  // asks a validator to manufacture the optional fresh owner for an old save.
+  if(!state||typeof state!=='object'||!Object.hasOwn(state,'earthWildSigns')||
+   !Object.hasOwn(state,'localLife')||!Object.hasOwn(state.localLife,'records')||
+   !Object.hasOwn(state.localLife.records,G.RealmEarthConsignmentData?.ID)||
+   !Object.hasOwn(state,'earthExpedition'))return null;
+  const r=D.crossValidate(state.earthWildSigns,state);
+  return r.claimed===true&&Object.hasOwn(responses,r.resolution)?r:null;
+ }catch{return null;}
+}
+function reading(personId,state){
+ if(typeof personId!=='string'||!Object.hasOwn(people,personId))return null;
+ const r=claimed(state);if(!r)return null;
+ return freeze({personId,speaker:people[personId].speaker,title:people[personId].title,resolution:r.resolution,
+  lines:[...responses[r.resolution][personId]]});
+}
+function notice(state){
+ const r=claimed(state);if(!r)return null;
+ const practical=r.resolution==='signed-loop'?
+  'Follow the signed bypass around the pest pocket. Leave the grazer’s refuge undisturbed; the route avoids that fight.':
+  'This pest pocket is recorded clear. Leave the grazer’s refuge undisturbed, and keep watch elsewhere: other patrols and dangers remain.';
+ return freeze({title:'Corrected field notice · evidence & road use',resolution:r.resolution,lines:[...observed,practical]});
+}
+function html(personId,state){
+ const r=reading(personId,state);return r?'<section class="road-account-reading" data-road-account-service="'+esc(r.personId)+'" data-road-account-outcome="'+esc(r.resolution)+'"><small>'+esc(r.speaker)+'</small><h3>'+esc(r.title)+'</h3>'+r.lines.map(line=>'<p>'+esc(line)+'</p>').join('')+'</section>':'';
+}
+function noticeHTML(state){
+ const r=notice(state);return r?'<section class="road-account-notice" data-road-account-notice data-road-account-outcome="'+esc(r.resolution)+'"><h4>'+esc(r.title)+'</h4>'+r.lines.map(line=>'<p>'+esc(line)+'</p>').join('')+'</section>':'';
+}
+const api=Object.freeze({reading,notice,html,noticeHTML});G.RealmEarthRoadAccount=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
 </script><script>/* Original read-only work props and ally projection, sharing the rule anchors. */
 (function(G){'use strict';
 const decor={cameraSolid:false,cutaway:false,rough:.88};
@@ -5896,6 +5959,7 @@ class BridgeCommunityUI{
  page(tab){if(tab!=='community')return null;const sim=this.sim,r=sim.state.bridgeCommunity,here=sim.room===B.definition.room;
   const act=(label,type,id='')=>button(label,type,id).replace('<button ','<button data-revision="'+sim.state.adventure.revision+'" ');
   let html='<article class="community-page"><small>COASTWARD · AN ORDINARY PLACE THAT LASTS</small><h2>'+esc(B.definition.title)+'</h2><p>Merren needs a dependable place for roadside work. Vessa has a labelled set of braces and ties across the channel. Bring them back and choose where they help.</p><div class="community-terms"><strong>Exact once-only fee: 10 sunmarks · 2 timber · 4 meadow fibre</strong><p>No XP or ore. Supplied fittings cost no ordinary inventory and occupy no equipment slot. Stronger equipped weapons stay stronger; this work offers materials, a community arrangement and an optional home design.</p></div><p><strong>Route:</strong> settlement → existing woodland lane → long timber bridge → Vessa → chosen site → Merren. Optional creatures and the separate living-road expedition keep their own rules. Both cameras and free home return remain available.</p>';
+  if(B.at(sim,B.definition.giver))html+=G.RealmEarthRoadAccount?.html(B.definition.giver.id,sim.state)||'';
   html+='<div class="community-options"><section><h3>Sheltered sorting bench</h3><p>A fitted canopy over the settlement’s existing bench. The road worker sorts and checks fittings beside the sheltered place.</p></section><section><h3>River observation stand</h3><p>A fitted board on the existing shore overlook. The road worker makes river readings from safe, supported ground.</p></section></div>';
   if(!here)html+='<p>Reopening resumes your home checkpoint. Revisit Coastward Road to continue this saved episode.</p><button data-rpg="world-select" data-id="earthlands">Read Coastward travel</button>';
   if(!r.accepted){html+='<p>Available after Oren’s initial kit. No campaign chapter, class or previous local reward is required.</p>'+(here&&B.at(sim,B.definition.giver)&&sim.state.adventure.started?act('Accept Merren’s community episode','accept'):here?button('Walk to Merren','walk','giver'):'');}
@@ -10526,6 +10590,7 @@ class WorldUI{
   if(here&&!diving&&d.id==='earthlands'&&p&&W.near(this.sim,p)){
    const speech=G.RealmEarthExpeditionDialogue?.reading(p.id,this.sim.state.earthExpedition,this.sim.state.adventure.earthBinding);
    if(speech)html+='<section class="expedition-dialogue"><small>'+esc(speech.speaker)+'</small><h3>'+esc(speech.title)+'</h3>'+speech.lines.map(line=>'<p>'+esc(line)+'</p>').join('')+'<p>'+esc(speech.hint)+'</p></section>';
+   if(this.sim.state.adventure.hp>0)html+=G.RealmEarthRoadAccount?.html(p.id,this.sim.state)||'';
   }
   if(here&&!diving&&d.id==='earthlands'&&p?.id==='channel-view'&&W.near(this.sim,p))html+='<section><h3>The crossing in profile</h3><p>Frame the supported bridge from the side, then keep walking. Your camera style stays yours. V swaps third person and diorama; R resets the current view.</p>'+button('Frame the channel bridge','world-bridge-view')+'</section>';
   html+='<p><strong>Return to Firstlight:</strong> available at any time, free. Reopening or switching characters resumes your saved home checkpoint, retaining accepted work. Crossing makes no allegiance, class or main-story choice.</p>'+(d.id==='earthlands'?(this.rpg.community?.invitation()||'')+(this.rpg.expedition?.invitation()||'')+(G.RealmEarthWildSignsData?.eligible(this.sim.state)?this.rpg.wildSigns?.journal()||'':''):'')+(this.rpg.trails?.page(d.id)||'')+(this.rpg.civic?.teaser(d.id)||'')+'<details class="world-surveys"'+(!this.sim.state.realmTrails.records[G.RealmTrails.definitions().find(q=>q.realm===d.id)?.id]?.accepted||this.sim.state.realmTrails.records[G.RealmTrails.definitions().find(q=>q.realm===d.id)?.id]?.claimed||this.sim.state.journeys.realms[d.id].active?' open':'')+'><summary>Routine local survey · first fee and intentional repeat work</summary>'+this.work(d)+'</details><section><h3>Bring useful progress home</h3><p>Use sunmarks and ore at Oren’s workbench. The item guide compares blade and bow projects with your current equipment before you choose what to pursue.</p>'+button('Inspect item & recipe guide','open','pursuit')+'</section>';
@@ -10752,6 +10817,7 @@ class ExpeditionUI{
   if(at(this.sim,d.giver)){
    const speech=G.RealmEarthExpeditionDialogue?.reading(d.giver.id,this.sim.state.earthExpedition,this.sim.state.adventure.earthBinding);
    if(speech)html+='<section class="expedition-dialogue"><small>'+esc(speech.speaker)+'</small><h3>'+esc(speech.title)+'</h3>'+speech.lines.map(line=>'<p>'+esc(line)+'</p>').join('')+'<p class="expedition-muted">'+esc(speech.hint)+'</p></section>';
+   html+=G.RealmEarthRoadAccount?.html(d.giver.id,this.sim.state)||'';
   }
   html+=xpNote(this.sim.state.adventure,d.reward);
   if(r.steps.includes('brace-root-channel'))html+=this.fieldcraft.panel();
@@ -13033,7 +13099,7 @@ function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isIn
  a.commit();
 }
 function gate(a){const p=W.GATE;a.add('cylinder',p.x,1.3,p.z,.13,1.45,.13,0xae9569,decor);a.box(p.x,2.65,p.z,1.3,.57,.1,0x586963,decor);for(let i=0;i<5;i++)a.add('octa',p.x-.46+i*.23,2.65,p.z+.065,.12,.17,.10,[0xe5d8b1,0xc98b67,0x9dc8c5,0xa4b276,0xbeaec9][i],{...decor,em:.18});}
-function draw(out,sim,t,a){const d=W.definition(sim.room);if(!d)return;const quiet=sim.state.settings.reducedMotion;if(d.id==='earthlands'){G.RealmEarthExpeditionArt?.draw(out,sim);G.RealmEarthWildSignsArt?.draw(out,sim);}
+function draw(out,sim,t,a){const d=W.definition(sim.room);if(!d)return;const quiet=sim.state.settings.reducedMotion;if(d.id==='earthlands'){G.RealmEarthExpeditionArt?.draw(out,sim);G.RealmEarthWildSignsArt?.draw(out,sim);G.RealmEarthRoadkeeperArt?.draw(out,sim.roadkeeperPresentation,sim.roadkeeperPresentationContext);}
  // Cosmos keeps its existing people and scene owner; only accepted work adds
  // small ground records there.
  if(!d.existing)for(const p of d.points.filter(p=>p.kind==='person')){
@@ -13049,6 +13115,197 @@ function draw(out,sim,t,a){const d=W.definition(sim.room);if(!d)return;const qui
  if(sim.worldDive&&W.medium(sim,[sim.state.player.x,W.playerHeight(sim)+.85,sim.state.player.z])==='water'){const p=sim.state.player,y=W.playerHeight(sim);out.octa.push({p:[p.x,y+1.85,p.z],s:[.08,.08,.08],c:0xb4e7dd,em:.4,...decor});}
 }
 G.RealmWorldFoundationsArt={make,gate,draw,partitions,rawPartitions,coastBanks};if(typeof module!=='undefined')module.exports=G.RealmWorldFoundationsArt;
+})(globalThis);
+</script><script>/* Passive public consequence of an already claimed canonical account.
+ * All motion is transient. No command, proof, combat, payout or saved owner. */
+(function(G){'use strict';
+const C=G.RealmCore,W=G.RealmWorldFoundations,D=G.RealmEarthWildSignsData;
+if(!C?.Simulation||!W?.segment||!D?.crossValidate)throw Error('Load actual Core, World and WildSigns Data before Roadkeeper Motion.');
+const freeze=o=>{if(o&&typeof o==='object'){Object.values(o).forEach(freeze);Object.freeze(o);}return o;};
+const ID='earth-wild-signs-roadkeeper-v1',ROOM=D.ROOM;
+const LIMITS=freeze({radius:.6,height:1.78,speed:1.15,turnSpeed:1.5,maxDt:.1,homeWait:4,returnWait:18,inspectWait:5,enemyReserve:5,serviceReserve:3,noticeReserve:1});
+const HOME=freeze({x:D.giver.x+2.4,z:D.giver.z-4.4});
+const APPROACH=freeze([HOME,{x:-109,z:-28},{x:-125,z:-38},{x:-125,z:-44},{x:-125,z:-57},{x:-137,z:-62}]);
+const ROUTES=freeze({
+ 'signed-loop':[...APPROACH,...D.bypass.map(p=>({x:p.x,z:p.z}))],
+ 'cleared-pocket':[...APPROACH,...D.bypass.slice(0,5).map(p=>({x:p.x,z:p.z})),{x:-158,z:-90},{x:-160,z:-92.5}]
+});
+const bySim=new WeakMap(),views=new WeakMap(),observedOwners=new WeakMap(),tuple=o=>JSON.stringify(o),dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
+const fail=error=>({ok:false,error});
+const own=(o,key)=>!!o&&typeof o==='object'&&Object.hasOwn(o,key);
+function opaque(lease){try{return!!lease&&typeof lease==='object'&&!Array.isArray(lease)&&Object.isFrozen(lease)&&
+ Reflect.ownKeys(lease).length===0&&[Object.prototype,null].includes(Object.getPrototypeOf(lease));}catch{return false;}}
+function threatSource(sim){
+ const owner=sim.adventureRuntime;
+ if(!own(sim,'adventureRuntime')||!owner||typeof owner!=='object'||Array.isArray(owner)||!own(owner,'room')||owner.room!==ROOM||
+  !own(owner,'enemies')||!Array.isArray(owner.enemies))return fail('The actual current-room hostile owner is unavailable.');
+ const list=owner.enemies;
+ for(let index=0;index<list.length;index++){
+  const e=list[index];if(!own(list,index)||!e||typeof e!=='object'||Array.isArray(e)||!own(e,'hp')||!Number.isFinite(e.hp)||e.hp<0||
+   own(e,'hidden')&&typeof e.hidden!=='boolean'||e.hp>0&&(!own(e,'x')||!own(e,'z')||!Number.isFinite(e.x)||!Number.isFinite(e.z)))
+   return fail('The current hostile roster or live position is unreadable.');
+ }
+ return{ok:true,owner};
+}
+function observeOwner(ctx){
+ const prior=observedOwners.get(ctx.sim);
+ if(prior?.lease===ctx.ownerLease){
+  if(prior.active!==ctx.active||ctx.revision<prior.revision)return fail('The observed character revision requires a fresh current owner.');
+  prior.revision=ctx.revision;
+ }else observedOwners.set(ctx.sim,{lease:ctx.ownerLease,active:ctx.active,revision:ctx.revision});
+ return{ok:true};
+}
+function toSegment(p,a,b){const dx=b.x-a.x,dz=b.z-a.z,n=dx*dx+dz*dz,t=n?Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.z-a.z)*dz)/n)):0;return Math.hypot(p.x-a.x-t*dx,p.z-a.z-t*dz);}
+function reserves(){const def=W.definition(ROOM),E=G.RealmEarthExpedition;if(!def||!E?.definition?.enemies)throw Error('Retain the actual Earth service and independent enemy catalogues.');return{
+ enemies:[...E.definition.enemies,...def.enemies,D.enemy],services:def.points.filter(p=>p.kind==='person'),notice:{x:D.giver.x+1.4,z:D.giver.z+.45}};}
+function measure(resolution){
+ const route=ROUTES[resolution];if(!route)throw TypeError('Use one canonical claimed outcome.');
+ const reserve=reserves(),segments=[];let meters=0;
+ for(let i=1;i<route.length;i++){
+  const from=route[i-1],to=route[i],length=dist(from,to),samples=Math.ceil(length/.1),heights=[];meters+=length;
+  for(let step=0;step<=samples;step++){const t=step/samples;heights.push(W.height(ROOM,from.x+(to.x-from.x)*t,from.z+(to.z-from.z)*t));}
+  segments.push({from:{...from},to:{...to},length,supported:W.segment(ROOM,from,to,LIMITS.radius)&&heights.every(h=>Number.isFinite(h)&&Math.abs(h-1.57)<1e-7),
+   floorMin:Math.min(...heights),floorMax:Math.max(...heights),heightSamples:heights.length,
+   enemyClearance:Math.min(...reserve.enemies.map(p=>toSegment(p,from,to)))-LIMITS.enemyReserve-LIMITS.radius,
+   serviceClearance:Math.min(...reserve.services.map(p=>toSegment(p,from,to)))-LIMITS.serviceReserve-LIMITS.radius,
+   noticeClearance:toSegment(reserve.notice,from,to)-LIMITS.noticeReserve-LIMITS.radius});
+ }
+ const pointsSupported=route.every(p=>W.walkable(ROOM,p.x,p.z,LIMITS.radius)&&Number.isFinite(W.height(ROOM,p.x,p.z)));
+ return freeze({resolution,radius:LIMITS.radius,outboundMeters:meters,roundTripMeters:meters*2,segments,pointsSupported,
+  ok:pointsSupported&&segments.every(s=>s.supported&&s.enemyClearance>=0&&s.serviceClearance>=0&&s.noticeClearance>=0)});
+}
+function owned(ctx){
+ const sim=ctx?.sim,a=sim?.state?.adventure;
+ if(!(sim instanceof C.Simulation)||typeof ctx.active!=='string'||!ctx.active||!Number.isSafeInteger(ctx.revision)||ctx.revision<0||
+  typeof ctx.hidden!=='boolean'||typeof ctx.menuOpen!=='boolean')return fail('Use the actual traveller, character and explicit visibility/menu context.');
+ const lease=ctx.ownerLease;if(!opaque(lease)||sim.roadkeeperOwnerLease!==lease)
+  return fail('Use the app-owned transient roadkeeper lease.');
+ if(sim.room!==ROOM||sim.worldDive||a?.started!==true||!Number.isFinite(a.hp)||a.hp<=0||!Number.isSafeInteger(a.deaths)||
+  !Number.isFinite(sim.elapsed)||sim.elapsed<0)return fail('The current living traveller must remain in dry Earthlands.');
+ const t=sim.worldTrip,h=sim.returnPos;
+ if(!t||t.active!==ctx.active||t.realm!=='earthlands'||!h||!['x','z','yaw'].every(k=>Number.isFinite(h[k]))||tuple(t.home)!==tuple(h))
+  return fail('Retain this real trip and its original home checkpoint.');
+ if(!W.walkable(ROOM,sim.state.player.x,sim.state.player.z,.31))return fail('The traveller must remain on actual supported ground.');
+ try{const loadId=G.RealmEarthConsignmentData?.ID;
+  if(!own(sim.state,'earthWildSigns')||!own(sim.state,'localLife')||!own(sim.state.localLife,'records')||typeof loadId!=='string'||
+   !own(sim.state.localLife.records,loadId)||!own(sim.state,'earthExpedition'))return fail('The own canonical account and paid-load prerequisites are required.');
+  const record=D.crossValidate(sim.state.earthWildSigns,sim.state);
+  if(!record.claimed)return fail('Only an already claimed canonical account selects this routine.');
+  const threat=threatSource(sim);if(!threat.ok)return threat;
+  return{ok:true,record,threatOwner:threat.owner};
+ }catch(e){return fail(e.message);}
+}
+function end(r,reason){if(r){r.ended=true;r.epoch++;if(bySim.get(r.sim)===r)bySim.delete(r.sim);}return fail(reason);}
+function check(r,ctx){
+ if(!r||r.ended)return fail('Begin this current transient roadkeeper again.');
+ if(ctx?.sim!==r.sim||ctx.active!==r.active||ctx.ownerLease!==r.lease||r.sim.state!==r.state||r.sim.state.adventure!==r.adventure||
+  r.sim.worldTrip!==r.trip||r.sim.earthTrip!==r.earthTrip||tuple(r.sim.worldTrip)!==r.tripValue||tuple(r.sim.returnPos)!==r.home||r.adventure.deaths!==r.deaths)
+  return end(r,'Roadkeeper character, state, death or travel ownership changed.');
+ const c=owned(ctx);if(!c.ok)return end(r,c.error);
+ if(c.threatOwner!==r.threatOwner)return end(r,'The actual hostile owner changed.');
+ if(c.record.resolution!==r.resolution||tuple(c.record)!==r.account)return end(r,'The canonical claimed account changed.');
+ if(r.sim.elapsed+1e-9<r.lastElapsed||ctx.revision<r.revision||!W.walkable(ROOM,r.x,r.z,LIMITS.radius))return end(r,'Roadkeeper clock, revision or ground support changed.');
+ const observed=observeOwner(ctx);if(!observed.ok)return end(r,observed.error);
+ if(ctx.revision>r.revision){r.revision=ctx.revision;r.epoch++;}
+ return{ok:true};
+}
+function hostiles(r){return r.threatOwner.enemies;}
+const liveThreat=e=>e.hp>0&&!(own(e,'hidden')&&e.hidden===true);
+function nearHostile(r){return hostiles(r).some(e=>liveThreat(e)&&dist(e,r)<LIMITS.enemyReserve+LIMITS.radius);}
+function suspended(r,ctx){return r.sim.paused?'paused':ctx.hidden?'hidden':ctx.menuOpen?'menu':r.hazard||nearHostile(r)?'hostile-nearby':null;}
+function projection(r,ctx){const reason=suspended(r,ctx),v=freeze({kind:'earth-roadkeeper-view-v1',actor:ID,room:ROOM,resolution:r.resolution,
+ x:r.x,z:r.z,base:W.height(ROOM,r.x,r.z),yaw:r.yaw,phase:r.phase,phaseTime:r.phaseTime,gait:r.gait,cycle:r.cycle,
+ walking:['outbound','return'].includes(r.phase)&&r.moved&&!reason,paused:!!r.sim.paused,suspended:reason,hidden:ctx.hidden,menuOpen:ctx.menuOpen,
+ reducedMotion:!!r.sim.state.settings.reducedMotion,radius:LIMITS.radius,height:LIMITS.height});views.set(v,{r,epoch:r.epoch});return v;}
+function begin(ctx){
+ const c=owned(ctx);if(!c.ok)return c;const observed=observeOwner(ctx);if(!observed.ok)return observed;const route=ROUTES[c.record.resolution];
+ try{if(!measure(c.record.resolution).ok)return fail('The measured complete route no longer preserves actual support and reserves.');}catch(e){return fail(e.message);}
+ const old=bySim.get(ctx.sim);if(old&&!old.ended&&check(old,ctx).ok)return{ok:true,view:projection(old,ctx)};
+ const sim=ctx.sim,r={sim,state:sim.state,adventure:sim.state.adventure,threatOwner:c.threatOwner,active:ctx.active,lease:ctx.ownerLease,revision:ctx.revision,
+  trip:sim.worldTrip,earthTrip:sim.earthTrip,tripValue:tuple(sim.worldTrip),home:tuple(sim.returnPos),deaths:sim.state.adventure.deaths,
+  resolution:c.record.resolution,account:tuple(c.record),route,x:HOME.x,z:HOME.z,yaw:Math.PI,phase:'home',phaseTime:0,
+  index:1,gait:0,moved:false,cycle:0,epoch:0,lastElapsed:sim.elapsed,hazard:false,ended:false};
+ bySim.set(sim,r);return{ok:true,view:projection(r,ctx)};
+}
+function current(ctx){const r=bySim.get(ctx?.sim),c=check(r,ctx);if(!c.ok)return null;return projection(r,ctx);}
+function isProjection(value,ctx){const v=value&&views.get(value);return!!v&&check(v.r,ctx).ok&&v.epoch===v.r.epoch&&
+ value.paused===!!v.r.sim.paused&&value.hidden===ctx.hidden&&value.menuOpen===ctx.menuOpen&&
+ value.reducedMotion===!!v.r.sim.state.settings.reducedMotion&&value.suspended===suspended(v.r,ctx);}
+const angle=a=>Math.atan2(Math.sin(a),Math.cos(a));
+function tick(ctx,dt){
+ if(!Number.isFinite(dt)||dt<0||dt>LIMITS.maxDt)return fail('Supply one actual finite Core step between0 and0.1 seconds.');
+ const r=bySim.get(ctx?.sim),c=check(r,ctx);if(!c.ok)return c;
+ const available=r.sim.elapsed-r.lastElapsed;
+ if(r.sim.paused||ctx.hidden||ctx.menuOpen){r.moved=false;r.lastElapsed=r.sim.elapsed;r.epoch++;return{ok:true,view:projection(r,ctx)};}
+ if(dt===0)return{ok:true,view:projection(r,ctx)};
+ if(available<=0||available+1e-9<dt)return fail('A fresh actual Core tick is required; elapsed time cannot be reused.');
+ if(available>dt+1e-7){r.lastElapsed=r.sim.elapsed;r.epoch++;return fail('Clock gap suspended the roadkeeper; resume with the next fresh Core step.');}
+ r.lastElapsed=r.sim.elapsed;r.revision=ctx.revision;r.epoch++;r.moved=false;r.hazard=false;
+ const enemies=hostiles(r);
+ if(nearHostile(r)){
+  r.hazard=true;return{ok:true,view:projection(r,ctx)};
+ }
+ if(r.phase==='home'){
+  r.phaseTime+=dt;if(r.phaseTime>=(r.cycle?LIMITS.returnWait:LIMITS.homeWait)){r.phase='outbound';r.phaseTime=0;r.index=1;}
+ }else if(r.phase==='inspect'){
+  r.phaseTime+=dt;if(r.phaseTime>=LIMITS.inspectWait){r.phase='return';r.phaseTime=0;r.index=r.route.length-2;}
+ }else{
+  const next=r.route[r.index],distance=dist(r,next),goal=Math.atan2(next.x-r.x,next.z-r.z),delta=angle(goal-r.yaw),turn=LIMITS.turnSpeed*dt;
+  r.yaw=angle(r.yaw+Math.sign(delta)*Math.min(Math.abs(delta),turn));
+  if(Math.abs(delta)>turn)return{ok:true,view:projection(r,ctx)};
+  const amount=Math.min(distance,LIMITS.speed*dt),to=distance?{x:r.x+(next.x-r.x)*amount/distance,z:r.z+(next.z-r.z)*amount/distance}:{...next};
+  if(!W.segment(ROOM,r,to,LIMITS.radius)||Math.abs(W.height(ROOM,to.x,to.z)-1.57)>1e-7)return end(r,'The next real roadkeeper segment lost ground support.');
+  if(enemies.some(e=>liveThreat(e)&&toSegment(e,r,to)<LIMITS.enemyReserve+LIMITS.radius)){
+   r.hazard=true;return{ok:true,view:projection(r,ctx)};
+  }
+  r.x=to.x;r.z=to.z;r.moved=amount>0;r.gait+=amount*5;
+  if(amount===distance){r.phaseTime=0;if(r.phase==='outbound'){
+   if(r.index===r.route.length-1){r.phase='inspect';r.moved=false;}else r.index++;
+  }else if(r.index===0){r.phase='home';r.cycle++;r.moved=false;}else r.index--;}
+ }
+ return{ok:true,view:projection(r,ctx)};
+}
+function reset(sim,reason='owner-change'){end(bySim.get(sim),String(reason));return{ok:true};}
+const api=Object.freeze({ID,ROOM,LIMITS,HOME,ROUTES,measure,begin,current,isProjection,tick,reset});G.RealmEarthRoadkeeperMotion=api;
+if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* Ordinary civilian primitives. Geometry carries no cargo or gameplay power. */
+(function(G){'use strict';
+const E=G.RealmEngine,O=G.RealmEarthRoadkeeperMotion;if(!E?.M||!O)throw Error('Load Engine and Roadkeeper Motion before Roadkeeper Art.');
+const KINDS=['box','round','octa'],PALETTE=Object.freeze({coat:0x6d7770,shirt:0xc1b79a,skin:0xb79b80,boots:0x3f433d,cap:0x536064,
+ signed:0x749268,cleared:0xb19a69,leather:0x75624b,wood:0x8e7955});
+function shape(pose){
+ if(!pose||!['x','z','base','yaw','gait'].every(k=>Number.isFinite(pose[k]))||!['signed-loop','cleared-pocket'].includes(pose.resolution))throw TypeError('Use a bounded canonical roadkeeper pose.');
+ const root=E.M.compose(pose.x,pose.base,pose.z,1,1,1,0,pose.yaw,0),out=[],quiet=pose.reducedMotion||pose.paused||!!pose.suspended;
+ const emit=(kind,p,s,c,part,rotation=[0,0,0])=>out.push({kind,p:E.M.transform(root,p),s:s.slice(),m:E.M.mul(root,E.M.compose(...p,...s,...rotation)),
+  c:E.hex(c),rough:.97,cameraSolid:false,cutaway:false,appearanceOnly:true,roadkeeperActor:O.ID,roadkeeperPart:part,roadkeeperResolution:pose.resolution});
+ const stride=pose.walking&&!quiet?Math.sin(pose.gait)*.12:0,lift=pose.walking&&!quiet?Math.abs(Math.cos(pose.gait))*.025:0;
+ emit('box',[0,.98,0],[.48,.64,.28],PALETTE.coat,'work-coat');
+ emit('box',[0,1.24,.151],[.16,.23,.018],PALETTE.shirt,'shirt-front');
+ emit('box',[0,.91,.157],[.44,.10,.025],pose.resolution==='signed-loop'?PALETTE.signed:PALETTE.cleared,'chosen-account-band');
+ emit('round',[0,1.53,0],[.26,.33,.25],PALETTE.skin,'head');
+ emit('box',[0,1.72,-.012],[.32,.11,.29],PALETTE.cap,'soft-work-cap');
+ emit('box',[0,1.687,.12],[.34,.035,.16],PALETTE.cap,'cap-brim');
+ emit('round',[0,1.515,.132],[.075,.075,.09],PALETTE.skin,'nose');
+ for(const side of[-1,1]){
+  const id=side<0?'left':'right',step=side*stride;
+  emit('box',[side*.135,.45,step*.4],[.15,.63,.17],PALETTE.coat,id+'-trouser',[step*.8,0,0]);
+  emit('box',[side*.135,.09+lift,step+.04],[.18,.18,.27],PALETTE.boots,id+'-boot');
+  emit('box',[side*.30,1.02,-step*.35],[.14,.49,.16],PALETTE.coat,id+'-sleeve',[-step*.7,0,side*-.10]);
+  emit('round',[side*.31,.755,-step*.35],[.12,.14,.13],PALETTE.skin,id+'-hand');
+ }
+ emit('box',[-.275,.78,-.035],[.15,.25,.22],PALETTE.leather,'small-tool-pouch');
+ emit('box',[-.28,.865,.085],[.11,.035,.018],PALETTE.shirt,'pouch-fastener');
+ emit('box',[.30,.66,.05],[.035,.32,.035],PALETTE.wood,'plain-handled-tool');
+ emit('box',[.30,.84,.05],[.07,.08,.04],PALETTE.cap,'small-tool-head');
+ if(out.length>24)throw RangeError('Roadkeeper primitive budget exceeded.');return out;
+}
+function draw(out,view,ctx){
+ if(!out||!KINDS.every(k=>Array.isArray(out[k])&&Object.isExtensible(out[k])&&Object.getOwnPropertyDescriptor(out[k],'length').writable))throw TypeError('Use actual writable primitive output arrays.');
+ if(!O.isProjection(view,ctx)||view.hidden)return 0;
+ const parts=shape(view);for(const {kind,...item}of parts)out[kind].push(item);return parts.length;
+}
+const api=Object.freeze({PALETTE,shape,draw});G.RealmEarthRoadkeeperArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* Noncombat browse actor. App supplies actual ordinary RAF render evidence
  * and trusted intent; this module never substitutes either on its own. */
@@ -13625,6 +13882,84 @@ function make(art,sim){
 const api=Object.freeze({ID,ROOM,MAX,PER_GROUP,GROUPS,PALETTE,RESERVES,parts,make});
 G.RealmEarthGrazerHabitatArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
+</script><script>/* Four authored crown replacements, appearance only. Trunks, roots, ground,
+ * collision, camera solids, services, actors and saved worlds keep their owners. */
+(function(G){'use strict';
+const SEED=23171007,ROOM='world-earthlands',FLOOR=1.57;
+const IDS=Object.freeze(['elderweald-trunk-16','elderweald-trunk-17','elderweald-trunk-18','elderweald-trunk-31']);
+const ROLES=Object.freeze(['crown-branch','crown-lobe','upper-crown']),PROFILE=Object.freeze([.9,1,.85,1]);
+const PALETTE=Object.freeze([0x49664d,0x617b55,0x7f8c63,0x567361]);
+const vary=(i,n)=>{let x=(SEED^(i+1)*2654435761^(n+1)*1597334677)>>>0;x=Math.imul(x^(x>>>16),2246822507);x=Math.imul(x^(x>>>13),3266489909);return((x^(x>>>16))>>>0)/4294967296;};
+function dependencies(def){
+ const owner=(name,file)=>G[name]||(typeof require==='function'?require('./'+file+'.js'):null);
+ const E=owner('RealmEngine','engine'),W=owner('RealmWorldFoundations','world-foundations'),EW=owner('RealmElderwealdWorld','elderweald-world'),D=owner('RealmEarthWildSignsData','earth-wild-signs-data'),grazer=owner('RealmEarthGrazerMotion','earth-grazer-motion'),expedition=owner('RealmEarthExpedition','earth-expedition');
+ if(!E?.geometry||!E?.M||!EW?.parts||!D?.definition||!grazer?.PATH||!expedition?.definition||def!==W?.definition(ROOM))throw TypeError('Use the actual Engine, canonical Earth and authored creature/route catalogues.');
+ return{E,W,EW,D,grazer,expedition};
+}
+function qualityOf(options={}){
+ if(!options||typeof options!=='object'||Array.isArray(options)||Reflect.ownKeys(options).some(k=>k!=='quality')||!['low','balanced','high'].includes(options.quality??'balanced'))throw TypeError('Use one declared quality and the fixed authored seed.');
+ return options.quality??'balanced';
+}
+const toSegment=(p,a,b)=>{const dx=b.x-a.x,dz=b.z-a.z,n=dx*dx+dz*dz,t=n?Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.z-a.z)*dz)/n)):0;return Math.hypot(p.x-a.x-t*dx,p.z-a.z-t*dz);};
+function reserves(def,{D,grazer,expedition}){
+ const routes=[{points:D.bypass,r:1.6},{points:[D.evidence[2],{x:-158,z:-90},{x:-160,z:-92.5}],r:1.6},
+  {points:[...grazer.PATH.points,grazer.PATH.points[0]],r:grazer.PATH.radius+.2},
+  ...def.routes.map(route=>({points:route.points.map(([x,z])=>({x,z})),r:.6}))];
+ // The parent may install the separately reviewed roadkeeper alongside this
+ // dressing. Its real catalogue, when available, receives the full reserve.
+ const roadkeeper=G.RealmEarthRoadkeeperMotion;
+ if(roadkeeper?.ROOM===ROOM&&roadkeeper.ROUTES)for(const points of Object.values(roadkeeper.ROUTES))routes.push({points,r:1+roadkeeper.LIMITS.radius});
+ const circles=[...D.evidence.map(p=>({...p,r:1.8})),{...D.overlook,r:2.8},...def.points.map(p=>({...p,r:3})),
+  ...[...expedition.definition.enemies,...def.enemies,D.enemy].map(p=>({...p,r:5.6}))];
+ return{routes,circles};
+}
+function parts(def,options={}){
+ const quality=qualityOf(options),deps=dependencies(def),{E,W}=deps,out=[],protectedSpace=reserves(def,deps);
+ for(let i=0;i<IDS.length;i++){
+  const t=def.solids.find(p=>p.id===IDS[i]);if(!t||Math.abs(W.height(ROOM,t.x,t.z)-FLOOR)>1e-7)throw Error('An original tree anchor lost its exact supported floor.');
+  const {x,z,h,id}=t,scale=PROFILE[i],yaw=vary(i,0)*Math.PI*2;
+  const emit=(kind,p,s,c,role,extra={})=>out.push({kind,p,s,c,opt:{rough:.9+Math.floor(vary(i,1)*3)*.025,appearanceOnly:true,cameraSolid:false,cutaway:true,
+   solidId:id,worldSolidId:id,structureId:id,elderwealdPart:role,woodlandShapes:SEED,...extra}});
+  const branch=(end,slot)=>{
+   const start=[x,FLOOR+h*.84,z],d=end.map((v,k)=>v-start[k]),length=Math.hypot(...d),yy=d.map(v=>v/length),ref=[0,0,1];
+   let xx=[ref[1]*yy[2]-ref[2]*yy[1],ref[2]*yy[0]-ref[0]*yy[2],ref[0]*yy[1]-ref[1]*yy[0]],n=Math.hypot(...xx);xx=xx.map(v=>v/n);
+   const zz=[xx[1]*yy[2]-xx[2]*yy[1],xx[2]*yy[0]-xx[0]*yy[2],xx[0]*yy[1]-xx[1]*yy[0]],width=.16+vary(i,slot+5)*.055;
+   emit('cylinder',start,[width,length,width*.9],t.color,'organic-crown-branch',{rough:.98,m:[...xx.map(v=>v*width),0,...yy.map(v=>v*length),0,...zz.map(v=>v*width*.9),0,...start,1],anchorFrom:start,anchorTo:end});
+  };
+  if(quality==='low'){
+   branch([x+.1*scale,FLOOR+h+.5,z-.08*scale],0);
+   emit('round',[x+.07*scale,FLOOR+h+1.1,z-.08*scale],[3.1*scale,3.1,2.7*scale],PALETTE[i],'organic-crown',{foliage:true,wind:2,r:[0,yaw,0]});
+  }else{
+   for(let side=0;side<2;side++){
+    const angle=yaw+side*2.55,offset=(.68+vary(i,side+2)*.1)*scale;
+    const p=[x+Math.cos(angle)*offset,FLOOR+h+.75+vary(i,side+3)*.12,z+Math.sin(angle)*offset];
+    branch([p[0],p[1]-.28,p[2]],side);
+    emit('round',p,[2.35*scale,2.2+vary(i,side+7)*.15,2.25*scale],PALETTE[(i+side)%4],'organic-crown',{foliage:true,wind:2,r:[0,angle,0],rough:.86+.03*((i+side)%4)});
+   }
+   emit('round',[x-.09*scale,FLOOR+h+1.25,z+.06*scale],[2.7*scale,2.6,2.5*scale],PALETTE[(i+2)%4],'organic-crown',{foliage:true,wind:2,r:[0,yaw+.4,0]});
+  }
+  // Actual transformed meshes and conservative current shader wind envelope.
+  // Keep the whole canopy column clear, rather than relying on overhead height.
+  const points=[];
+  for(const p of out.filter(p=>p.opt.solidId===id)){
+   const m=p.opt.m||E.M.compose(...p.p,...p.s,...(p.opt.r||[0,0,0])),raw=E.geometry(p.kind);
+   for(let v=0;v<raw.length;v+=6){const q=E.M.transform(m,Array.from(raw.slice(v,v+3)));points.push(q);
+    if(!q.every(Number.isFinite)||q[1]-(p.opt.wind ? .05 : 0)<=FLOOR+2.2||[q[0]-.095,q[0]+.095].some(qx=>W.height(ROOM,qx,q[2])!==FLOOR))throw Error('An authored crown lost real ground projection or overhead clearance.');
+   }
+  }
+  const radius=Math.max(...points.map(p=>Math.hypot(p[0]-x,p[2]-z)))+.095;
+  if(protectedSpace.routes.some(route=>route.points.slice(1).some((b,k)=>toSegment(t,route.points[k],b)-route.r-radius<.015))||
+   protectedSpace.circles.some(p=>Math.hypot(x-p.x,z-p.z)-p.r-radius<.015))throw Error('An authored crown would enter an existing actor, clue, service, hostile or walking reserve.');
+ }
+ if(out.length>(quality==='low'?8:20))throw RangeError('Four-crown instance budget exceeded.');return out;
+}
+function replace(original,def,options={}){
+ const quality=qualityOf(options),{EW,W}=dependencies(def),canonical=EW.parts({quality,height:(x,z)=>W.height(ROOM,x,z)});
+ if(!Array.isArray(original)||JSON.stringify(original)!==JSON.stringify(canonical))throw TypeError('Replace only the complete actual Elderweald painter output for this exact tier.');
+ const kept=original.filter(p=>!IDS.includes(p.opt.solidId)||!ROLES.includes(p.opt.elderwealdPart));return[...kept,...parts(def,{quality})];
+}
+const api=Object.freeze({SEED,IDS,ROLES,PALETTE,parts,replace});G.RealmWoodlandShapes=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
 </script><script>/* Field-account controller. UI reads real owners and delegates explicit
  * actions; only the app's actual event/render owner can issue observation proof. */
 (function(G){'use strict';
@@ -13770,8 +14105,8 @@ class WildSignsUI{
   this.syncOwner();const sim=this.sim,r=readRecord(sim),eligible=D.eligible(sim.state),nearSela=at(sim,D.giver),links=preservedLinks(sim);
   if(!r)return'<article class="wild-signs-panel" data-wild-signs-panel><h3>Sela’s field account</h3><p>This account cannot be read from the current save. Existing work remains retained.</p>'+links+'</article>';
   const c=G.RealmEarthConsignmentData?.choice(sim.state.localLife?.records?.[G.RealmEarthConsignmentData.ID]?.choice),observed=r.observed;
-  let html='<article class="wild-signs-panel" data-wild-signs-panel aria-labelledby="wild-signs-title"><header><h3 id="wild-signs-title">'+esc(D.definition.title)+'</h3><p>A roadworker blames the moss-backed grazer for the scar in the roadside timber. Sela is not convinced. Bring her the marks and a witnessed account of the animal before the accusation becomes the village story.</p></header>'+
-   '<p class="wild-signs-payment"><strong>Separate payment:</strong> 4 sunmarks and 3 fibre, once from Sela after the chosen response. No acceptance cost, XP or ore. Earlier kits, repairs and payments retain their own accounts.</p>'+
+  let html='<article class="wild-signs-panel" data-wild-signs-panel aria-labelledby="wild-signs-title"><header><h3 id="wild-signs-title">'+esc(D.definition.title)+'</h3><p>'+esc(r.claimed?"Sela has revised the road notice. Your witnessed account leaves the grazer’s refuge undisturbed.":"A roadworker blames the moss-backed grazer for the scar in the roadside timber. Sela is not convinced. Bring her the marks and a witnessed account of the animal before the accusation becomes the village story.")+'</p></header>'+
+   (r.claimed?'':'<p class="wild-signs-payment"><strong>Separate payment:</strong> 4 sunmarks and 3 fibre, once from Sela after the chosen response. No acceptance cost, XP or ore. Earlier kits, repairs and payments retain their own accounts.</p>')+
    '<p class="wild-signs-notice" data-wild-signs-notice role="status" aria-live="polite">'+esc(this.notice)+'</p>';
   if(!r.accepted){
    html+='<section aria-label="Sela’s invitation"><h4>Read before accepting</h4><p>'+esc(eligible?'The supplier-owned load is delivered and explicitly paid. The repaired road remains usable. Sela asks for an accurate account, not a new cargo allocation.':'First deliver the supplied load and explicitly claim its separate payment from Merren. Sela’s investigation remains optional.')+'</p>'+
@@ -13781,7 +14116,10 @@ class WildSignsUI{
    html+='</section>';
   }else{
    html+='<p class="wild-signs-source">'+esc(c?c.branch==='stormfall-recovery'?'Your original stormfall choice and delivered short timber remain recorded.':'Your original managed-coppice choice and delivered fibre remain recorded.':'The earlier supplied load retains its own record.')+'</p>';
-   if(r.claimed)html+='<section class="wild-signs-retained"><h4>Corrected account · paid once</h4><p>'+esc(r.resolution==='signed-loop'?'The supported bypass is recorded. The grazer’s refuge remains, and the separate pest account was resolved without that fight.':'The distinct pest pocket is recorded clear. The grazer remains harmless; that encounter granted no kill loot or XP.')+'</p><p>“I have changed the road notice,” Sela says. “The grazer feeds here; the burrowing marks belong to something else. Let the next traveller hear the right account.”</p><p>Sela already paid this separate 4-sunmark and 3-fibre account.</p></section>';
+   if(r.claimed){
+    const publicNotice=G.RealmEarthRoadAccount?.noticeHTML(sim.state)||'';
+    html+=publicNotice?'<section class="wild-signs-retained" data-road-account-service="'+esc(D.giver.id)+'" data-road-account-outcome="'+esc(r.resolution)+'">'+publicNotice+'<p class="wild-signs-payment">Sela paid you 4 sunmarks and 3 fibre. Claimed once; no XP or ore.</p></section>':'<section class="wild-signs-retained"><h4>Corrected account · paid once</h4><p>'+esc(r.resolution==='signed-loop'?'The supported bypass is recorded. The grazer’s refuge remains, and the separate pest account was resolved without that fight.':'The distinct pest pocket is recorded clear. The grazer remains harmless; that encounter granted no kill loot or XP.')+'</p><p>“I have changed the road notice,” Sela says. “The grazer feeds here; the burrowing marks belong to something else. Let the next traveller hear the right account.”</p><p>Sela already paid this separate 4-sunmark and 3-fibre account.</p></section>';
+   }
    else if(D.ready(r)){
     const max=G.RealmSandbox?.MAX,full=sim.state.adventure.coins+4>9999||!Number.isSafeInteger(max)||sim.state.sandbox.inventory.fiber+3>max;
     html+='<section><h4>Response recorded · payment unclaimed</h4><p>'+esc(outcome(r.resolution)?.name)+'. Return physically to Sela. '+(full?'Make room for all 4 sunmarks and 3 fibre; completed work stays ready.':'Collect the complete payment once, when you choose.')+'</p>'+
@@ -14121,6 +14459,79 @@ function wildSignsRetryClearance(event){
  wildSignsContext();return RealmAdventure.retryWildSignsClearance(sim);
 }
 
+// BEGIN EARTH ROADKEEPER APP HOOKS
+// Passive road use derives from the claimed field account. The App alone owns
+// this routine's lease; it never issues a quest/combat receipt or save.
+let roadkeeperOwner=null,roadkeeperDiagnosticFrame=null;
+function roadkeeperOwnership(){
+ return[sim,sim.state,sim.state.adventure,characterStore,characterStore.active,
+  sim.room,sim.worldTrip,sim.earthTrip,sim.worldDive,JSON.stringify(sim.returnPos),
+  JSON.stringify(sim.worldTrip),sim.state.adventure.deaths,sim.state.earthWildSigns,JSON.stringify(sim.state.earthWildSigns)];
+}
+function syncRoadkeeperOwner(force=false){
+ const next=roadkeeperOwnership();
+ if(force||!roadkeeperOwner||next.some((v,i)=>v!==roadkeeperOwner[i])){
+  if(roadkeeperOwner){const outgoing=roadkeeperOwner[0];
+   RealmEarthRoadkeeperMotion.reset(outgoing,'actual-app-owner-change');
+   outgoing.roadkeeperOwnerLease=Object.freeze({});
+   delete outgoing.roadkeeperPresentation;delete outgoing.roadkeeperPresentationContext;
+  }
+  sim.roadkeeperOwnerLease=Object.freeze({});roadkeeperOwner=next;roadkeeperDiagnosticFrame=null;
+ }
+ return sim.roadkeeperOwnerLease;
+}
+function roadkeeperContext(){return{sim,active:characterStore.active,revision:characterStore.revision,
+ ownerLease:syncRoadkeeperOwner(),hidden:document.hidden,menuOpen:!!panel||!!document.querySelector('dialog[open]')};}
+function roadkeeperPresentation(){
+ const context=roadkeeperContext();sim.roadkeeperPresentationContext=context;
+ sim.roadkeeperPresentation=RealmEarthRoadkeeperMotion.current(context);
+ return sim.roadkeeperPresentation;
+}
+function tickRoadkeeper(dt){
+ const context=roadkeeperContext();
+ if(sim.room===RealmEarthRoadkeeperMotion.ROOM&&!sim.worldDive&&sim.state.adventure.hp>0&&sim.state.earthWildSigns?.claimed===true){
+  const result=RealmEarthRoadkeeperMotion.current(context)?RealmEarthRoadkeeperMotion.tick(context,dt):RealmEarthRoadkeeperMotion.begin(context);
+  // This optional civilian cannot interrupt the game's RAF on a refused
+  // presentation step. Discard its transient cursor; retry only at a fresh frame.
+  if(!result.ok)RealmEarthRoadkeeperMotion.reset(sim,'refused-presentation-step');
+ }
+ roadkeeperPresentation();
+}
+function roadkeeperDiagnosticIdentity(){
+ // Only plain live metadata is compared. This does not ask Motion to repair a
+ // stale projection, raise its revision watermark, or issue another lease.
+ try{
+  const state=sim.state,local=state.localLife,records=local?.records,paid=records?.[RealmEarthConsignmentData.ID],
+   runtime=sim.adventureRuntime,enemies=runtime?.enemies,typed=value=>[typeof value,
+    typeof value==='number'?(Number.isFinite(value)?value:String(value)):typeof value==='boolean'||typeof value==='string'?value:null];
+  const threats=Array.isArray(enemies)?enemies.map((e,i)=>[Object.hasOwn(enemies,i),Array.isArray(e),typeof e,
+   e&&typeof e==='object'?['hp','hidden','x','z'].map(k=>[Object.hasOwn(e,k),...typed(e[k])]):'invalid']):null;
+  return[...roadkeeperOwnership(),sim.roadkeeperOwnerLease,characterStore.revision,sim.elapsed,
+   sim.paused,document.hidden,!!panel,!!document.querySelector('dialog[open]'),state.settings.reducedMotion,state.adventure.hp,state.adventure.started,
+   Object.hasOwn(state,'earthWildSigns'),
+   Object.hasOwn(state,'localLife'),local,!!local&&Object.hasOwn(local,'records'),records,
+   !!records&&Object.hasOwn(records,RealmEarthConsignmentData.ID),paid,JSON.stringify(paid),
+   Object.hasOwn(state,'earthExpedition'),state.earthExpedition,JSON.stringify(state.earthExpedition),
+   Object.hasOwn(sim,'adventureRuntime'),runtime,!!runtime&&Object.hasOwn(runtime,'room'),runtime?.room,
+   !!runtime&&Object.hasOwn(runtime,'enemies'),enemies,JSON.stringify(threats)];
+ }catch{return null;}
+}
+function prepareRoadkeeperDiagnostics(){
+ const context=sim.roadkeeperPresentationContext,view=sim.roadkeeperPresentation;let safe=null;
+ if(context?.sim===sim&&view&&RealmEarthRoadkeeperMotion.isProjection(view,context)){
+  safe={};for(const key of['actor','resolution','x','z','base','yaw','phase','phaseTime','gait','cycle','walking','paused','suspended','hidden','menuOpen','reducedMotion','radius','height']){
+   const value=view[key];if(value===null||typeof value==='string'||typeof value==='boolean'||typeof value==='number'&&Number.isFinite(value))safe[key]=value;
+  }
+ }
+ roadkeeperDiagnosticFrame={owner:roadkeeperDiagnosticIdentity(),view:safe};
+}
+function roadkeeperDiagnostics(){
+ // Read only the prepared copy; never call Motion, renew a lease or advance time.
+ const frame=roadkeeperDiagnosticFrame,now=roadkeeperDiagnosticIdentity();
+ return frame?.owner&&now&&frame.owner.length===now.length&&now.every((v,i)=>v===frame.owner[i])&&frame.view?{...frame.view}:null;
+}
+// END EARTH ROADKEEPER APP HOOKS
+
 // A prepared presentation copy, never proof issuance or Motion advancement.
 let wildSignsDiagnosticFrame=null;
 function wildSignsDiagnosticOwner(){
@@ -14259,7 +14670,7 @@ function bridgeView(){
  clearGrazerFocus();Object.assign(camera,result.view);follow=null;
  updateCamera(1);save();return result;
 }
-function switchScene(){syncFieldcraftOwner();bindWildSignsClearance();if(scene===sim.room)return;rememberCamera();scene=sim.room;camera.tour=false;if(engine){if(RealmWorldFoundations.handles(scene)){RealmWorldFoundationsArt.make(art,sim);engine.surfacePick=(start,ray,max)=>sim.worldDive?null:RealmWorldFoundations.pick(scene,start,ray,max);}else if(scene===RealmEarth.ROOM){RealmEarthArt.make(art,sim);engine.surfacePick=RealmEarth.pick;}else if(scene===RealmCosmos.ROOM){RealmCosmosArt.make(art,sim);engine.surfacePick=RealmCosmos.pick;}else if(scene==='riverbank')RealmStarterArt.make(art,sim);else if(scene==='crossing')RealmCrossingArt.make(art,sim);else if(scene==='range')RealmArsenalArt.court(art);else if(scene==='road')RealmRoadArt.make(art,sim);else if(scene==='mine')RealmAdventureArt.cave(art,sim);else if(scene)art.makeInterior(scene,sim.state.retreat);else art.makeExterior();}camera.center=[sim.state.player.x,sceneHeight()+1.5,sim.state.player.z];cameraPreset(camera.preset,false);target=null;follow=null;labelsRebuild();resize();}
+function switchScene(){syncRoadkeeperOwner();syncFieldcraftOwner();bindWildSignsClearance();if(scene===sim.room)return;rememberCamera();scene=sim.room;camera.tour=false;if(engine){if(RealmWorldFoundations.handles(scene)){RealmWorldFoundationsArt.make(art,sim);engine.surfacePick=(start,ray,max)=>sim.worldDive?null:RealmWorldFoundations.pick(scene,start,ray,max);}else if(scene===RealmEarth.ROOM){RealmEarthArt.make(art,sim);engine.surfacePick=RealmEarth.pick;}else if(scene===RealmCosmos.ROOM){RealmCosmosArt.make(art,sim);engine.surfacePick=RealmCosmos.pick;}else if(scene==='riverbank')RealmStarterArt.make(art,sim);else if(scene==='crossing')RealmCrossingArt.make(art,sim);else if(scene==='range')RealmArsenalArt.court(art);else if(scene==='road')RealmRoadArt.make(art,sim);else if(scene==='mine')RealmAdventureArt.cave(art,sim);else if(scene)art.makeInterior(scene,sim.state.retreat);else art.makeExterior();}camera.center=[sim.state.player.x,sceneHeight()+1.5,sim.state.player.z];cameraPreset(camera.preset,false);target=null;follow=null;labelsRebuild();resize();}
 function save(){rememberCamera();if(preserveExisting){saveState='preserved';renderStatus();return{ok:false,error:'Existing storage could not be read. Export a JSON backup; it has not been overwritten.'};}let r=characterStore.save(sim.snapshot());saveState=r.ok?'saved':'unavailable';renderStatus();return r;}
 function renderStatus(){$('#save-status').innerHTML=characterStore.managed&&!characterStore.writer?'SAVING UNAVAILABLE · EXPORT TO KEEP':saveState==='saved'?'<i class="dot"></i>SAVED ON THIS DEVICE':saveState==='new'?'<i class="dot"></i>LOCAL WORLD':'MEMORY ONLY · EXPORT TO KEEP';}
 function command(type,payload){if(RealmHomeHistory.layoutAction(type)){const r=homeCommand(type,{...payload,expectedRevision:payload?.expectedRevision??sim.state.retreat.revision});toast(r.text||r.error);return r;}let r=sim.act('ui-'+Date.now()+'-'+(++commandCount),type,payload);if(r.ok)save();if(r.text)toast(r.text);else if(r.error)toast(r.error);return r;}
@@ -14281,7 +14692,7 @@ ui.body.addEventListener('click',e=>{let b=e.target.closest('[data-action]');if(
 ui.body.addEventListener('input',e=>{if(e.target.id==='camera-fov'){camera.fov=sim.state.settings.cameraFov=Math.max(45,Math.min(80,+e.target.value));$('#camera-fov-value').textContent=camera.fov+'°';updateCamera(1);}if(e.target.id==='time-slider'){sim.setTime(+e.target.value);$('#slider-hour').textContent=formatHour(sim.state.hour);}});ui.body.addEventListener('change',e=>{if(e.target.id==='camera-mode')cameraPreset(e.target.value);if(e.target.id==='camera-fov')save();experience?.changed(e);if(e.target.id==='quality')graphicsQuality(e.target.value);if(e.target.dataset.setting){sim.state.settings[e.target.dataset.setting]=e.target.checked;if(e.target.dataset.setting==='reducedMotion'){document.body.classList.toggle('reduced',e.target.checked);if(engine)engine.reducedMotion=e.target.checked;}save();}if(e.target.id==='time-slider')save();});
 function download(data,name,type){let url=URL.createObjectURL(new Blob([data],{type})),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function exportWorld(){download(JSON.stringify(sim.snapshot(),null,2),'Firstlight-Valley-day-'+sim.state.day+'.json','application/json');toast('World exported. Keep the JSON with your HTML.');}
-function applyWorld(state){clearGrazerFocus();syncConsignmentOwner(true);syncFieldcraftOwner(true);syncWildSignsOwner(true);keys.clear();pointers.clear();gesture=null;document.body.classList.remove('photo-mode');rpg?.reset();adventure?.reset();sandbox?.endBuild();sandbox?.stopAuto();experience?.stop();if(experience){experience.scoreUndo=[];experience.scoreRedo=[];experience.selectedSlot='nw';experience.memories.pending=null;}if(experience?.dialog.open)experience.close();audio.disable();sim=new C.Simulation(state);state=sim.state;camera.ready=false;camera.preset=state.settings.cameraMode;camera.fov=state.settings.cameraFov;scene=Symbol('rebuild');switchScene();selected=null;follow=null;closePanel();document.body.classList.toggle('reduced',sim.state.settings.reducedMotion);if(engine)engine.quality=sim.state.settings.quality;resize();sandbox?.reset();if(rpg){rpg.quest=state.adventure.pursuit.pinned?'project':state.adventure.starter.accepted&&!state.adventure.starter.reward?'starter':'story';if(state.earthExpedition.story.accepted&&!state.earthExpedition.story.claimed||state.earthExpedition.patrol.active)rpg.quest='expedition';rpg.tick();}lastSave=elapsed;}
+function applyWorld(state){syncRoadkeeperOwner(true);clearGrazerFocus();syncConsignmentOwner(true);syncFieldcraftOwner(true);syncWildSignsOwner(true);keys.clear();pointers.clear();gesture=null;document.body.classList.remove('photo-mode');rpg?.reset();adventure?.reset();sandbox?.endBuild();sandbox?.stopAuto();experience?.stop();if(experience){experience.scoreUndo=[];experience.scoreRedo=[];experience.selectedSlot='nw';experience.memories.pending=null;}if(experience?.dialog.open)experience.close();audio.disable();sim=new C.Simulation(state);state=sim.state;camera.ready=false;camera.preset=state.settings.cameraMode;camera.fov=state.settings.cameraFov;scene=Symbol('rebuild');switchScene();selected=null;follow=null;closePanel();document.body.classList.toggle('reduced',sim.state.settings.reducedMotion);if(engine)engine.quality=sim.state.settings.quality;resize();sandbox?.reset();if(rpg){rpg.quest=state.adventure.pursuit.pinned?'project':state.adventure.starter.accepted&&!state.adventure.starter.reward?'starter':'story';if(state.earthExpedition.story.accepted&&!state.earthExpedition.story.claimed||state.earthExpedition.patrol.active)rpg.quest='expedition';rpg.tick();}lastSave=elapsed;}
 let importRead=0;
 $('#import-file').addEventListener('click',()=>{importRead++;});
 $('#import-file').addEventListener('change',async e=>{
@@ -14326,7 +14737,7 @@ function characterImport(){openImport(true);}
 function characterReload(){if(confirm('Reload the saved character library? Export first to keep any play that could not be saved.'))location.reload();}
 $('#import-file').addEventListener('cancel',()=>{importRead++;characterImportPending=false;});
 window.addEventListener('storage',e=>{if(e.key===RealmCharacters.KEY||e.key===null){const r=characterStore.checkSource();if(!r.ok){saveState='unavailable';toast(r.error);renderStatus();if(rpg?.dialog.open&&rpg.tab==='characters')rpg.paint();}}});
-function capture(){if(!engine){toast('Photo capture requires the 3D renderer; JSON export still works.');return;}try{syncFieldcraftOwner();consignmentPresentation();grazerPresentation();prepareWildSignsDiagnostics();art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');ui.canvas.toBlob(blob=>{if(blob){download(blob,'Firstlight-Valley.png','image/png');toast('Your view captured as a PNG.');}else toast('The browser could not capture that frame.');},'image/png');}catch(e){toast('Photo unavailable: '+e.message);}}
+function capture(){if(!engine){toast('Photo capture requires the 3D renderer; JSON export still works.');return;}try{syncFieldcraftOwner();consignmentPresentation();grazerPresentation();prepareWildSignsDiagnostics();roadkeeperPresentation();prepareRoadkeeperDiagnostics();art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');ui.canvas.toBlob(blob=>{if(blob){download(blob,'Firstlight-Valley.png','image/png');toast('Your view captured as a PNG.');}else toast('The browser could not capture that frame.');},'image/png');}catch(e){toast('Photo unavailable: '+e.message);}}
 function togglePhoto(){document.body.classList.toggle('photo-mode');if(document.body.classList.contains('photo-mode'))toast('Press H to return.');}
 // Web Audio: one quiet soundscape and one original pentatonic motif; opt-in only.
 const audio={ctx:null,master:null,enabled:false,soundscape:null,
@@ -14403,11 +14814,11 @@ function mapMine(canvas,full){let g=canvas.getContext('2d');if(!g)return;let w=c
 function mapToWorld(x,y){if(RealmWorldFoundations.handles(sim.room)){const p=RealmWorldFoundationsUI.projection(RealmWorldFoundations.definition(sim.room),innerWidth,innerHeight);return{x:(x-p.x)/p.scale,z:(y-p.y)/p.scale};}if(sim.room===RealmEarth.ROOM){const p=RealmEarthUI.projection(innerWidth,innerHeight);return{x:(x-p.x)/p.scale,z:(y-p.y)/p.scale};}if(sim.room===RealmCosmos.ROOM){const p=RealmCosmosUI.projection(innerWidth,innerHeight);return{x:(x-p.x)/p.scale,z:(y-p.y)/p.scale};}if(sim.room==='riverbank'){const p=RealmStarterUI.projection(innerWidth,innerHeight);return{x:(x-p.x)/p.scale,z:(y-p.y)/p.scale};}if(sim.room==='crossing'){let sc=Math.min(innerWidth,innerHeight)/68;return{x:(x-innerWidth/2)/sc,z:(y-innerHeight/2)/sc-1};}if(sim.room==='range'){let sc=Math.min(innerWidth,innerHeight)/36;return{x:(x-innerWidth/2)/sc,z:(y-innerHeight/2)/sc};}if(sim.room==='road'){let sc=Math.min(innerWidth,innerHeight)/65;return{x:(x-innerWidth/2)/sc,z:(y-innerHeight/2)/sc-3};}if(sim.room==='mine'){let sc=Math.min(innerWidth,innerHeight)/36;return{x:(x-innerWidth/2)/sc,z:(y-innerHeight/2)/sc};}let w=innerWidth,h=innerHeight,sc=Math.min(w,h)/(sim.room?17:108);return{x:(x-w/2)/sc+(sim.room?0:10),z:(y-h*.53)/sc-(sim.room?0:10)};}$('#minimap').onclick=()=>rpg.open('atlas');
 
 function refreshUI(){let s=sim.state;$('#tour').setAttribute('aria-pressed',String(!!camera.tour));$('#time-display').textContent=formatHour(s.hour);$('#day-display').textContent='DAY '+String(s.day).padStart(2,'0')+' · '+(sim.paused?'PAUSED':s.weather==='rain'?'RAIN':s.hour>20||s.hour<6?'NIGHT':s.hour>16?'GOLDEN HOUR':'DAYLIGHT');$('#fps').textContent=engine?Math.round(fps)+' FPS · '+s.settings.quality.toUpperCase():'MAP VIEW';$('#discovery').textContent=s.visited.length+' / '+C.LANDMARKS.length+' PLACES DISCOVERED';let l=RealmWorldFoundations.handles(sim.room)?{short:RealmWorldFoundations.definition(sim.room).name,description:RealmWorldFoundations.definition(sim.room).description}:sim.room===RealmEarth.ROOM?{short:'Hearthwater Vale',description:'A lake road. Orchard lanes. Bellweather on the horizon.'}:sim.room===RealmCosmos.ROOM?{short:'The Near Expanse',description:'Three lamps. Two roads. An inhabited horizon.'}:sim.room==='riverbank'?{short:'Oren’s riverbank worksite',description:'A nearby path. Useful supplies. A reason to come home.'}:sim.room==='crossing'?{short:'Bellweather Crossing',description:'A village to meet. A silence to break. A road home.'}:sim.room==='range'?{short:'The Archery Court',description:'Take a breath. Find your distance. Let the arrow travel.'}:sim.room==='road'?{short:'The Sunward Road',description:'A traveller to help. A trail to follow. A light to bring home.'}:sim.room==='mine'?{short:'The Rootbound Underways',description:'Copper in the walls. A heartbeat beneath the roots.'}:sim.room?C.LANDMARKS.find(l=>l.id===sim.room):closest(),sbContext=rpg?.worlds.context()||rpg?.earth.context()||rpg?.cosmos.context()||rpg?.starter.context()||rpg?.crossing.context()||(RealmBeacon.near(sim)&&sim.state.adventure.road.beaconLit?(RealmBeacon.runtime(sim).phase==='assault'?'Repair ward · E · 20 stamina':'The envoy at the beacon · E'):null)||adventure?.context()||sandbox?.context();$('#place-name').textContent=sim.room?l.short:sim.state.player.z<-29?'Wildwood Reach':'Firstlight Valley';$('#place-kicker').textContent=RealmWorldFoundations.handles(sim.room)?RealmWorldFoundations.definition(sim.room).kicker:sim.room===RealmEarth.ROOM?'EARTH · HEARTHWATER VALE · CONNECTED APPROACH':sim.room===RealmCosmos.ROOM?'COSMOS · THE MOON BENEATH THE ROAD':sim.room==='riverbank'?'CLOSE TO HOME · THE RIVERBANK':sim.room==='crossing'?'THE BELL ROAD · CHAPTER IV':sim.room==='range'?'THE PRACTICE COURT · A NEW DISCIPLINE':sim.room==='road'?(s.adventure.beacon.introduced?'THE BEACON ANSWERS · CHAPTER III':'BEYOND THE VALLEY · CHAPTER II'):sim.room==='mine'?'BENEATH WILDWOOD · CHAPTER I':sim.room?'A PRIVATE PLACE · LOCAL INTERIOR':'THE REALM · FIRST INHABITED DISTRICT';$('#place-description').textContent=sim.room?l.description:'Gather. Make. Grow. A new shore to call your own.';$('#context').style.display=(l||sbContext)&&!sandbox?.build?'flex':'none';let contextKey=sbContext?.match(/^([A-Z0-9]+) · /)?.[1]||'E';$('#context kbd').textContent=contextKey;$('#context-text').textContent=(sim.room===RealmEarth.ROOM||sim.room===RealmCosmos.ROOM)?sbContext?.replace(/^([A-Z0-9]+) · /,''):RealmAdventure.combatScene(sim)?sbContext?.replace(/^([A-Z0-9]+) · /,''):sim.room?(sbContext?.replace(/^([A-Z0-9]+) · /,'')||'Return to the valley'):sbContext|| (l?l.action:'');mapDraw($('#minimap'));renderStatus();}
-function frame(now){let dt=lastFrame?Math.min((now-lastFrame)/1000,.1):.016;lastFrame=now;frames++;if(now-fpsStart>1500){fps=frames*1000/(now-fpsStart);frames=0;fpsStart=now;}if(!document.hidden){let dx=(keys.has('d')||keys.has('arrowright')?1:0)-(keys.has('a')||keys.has('arrowleft')?1:0),dz=(keys.has('s')||keys.has('arrowdown')?1:0)-(keys.has('w')||keys.has('arrowup')?1:0);if(sim.worldDive&&!sim.paused){RealmWorldFoundations.swim(sim,dx*Math.cos(camera.yaw)+dz*Math.sin(camera.yaw),-dx*Math.sin(camera.yaw)+dz*Math.cos(camera.yaw),(keys.has('f')?1:0)-(keys.has('g')?1:0),dt);camera.overview=false;}else if((dx||dz)&&!sim.paused){sandbox?.stopAuto();adventure?.stopAuto();camera.tour=false;sim.manual(dx*Math.cos(camera.yaw)+dz*Math.sin(camera.yaw),-dx*Math.sin(camera.yaw)+dz*Math.cos(camera.yaw),dt);camera.overview=false;follow=null;target=null;sim.walking=true;}bindWildSignsClearance();sim.tick(dt);tickConsignment(dt);tickGrazer(dt);if((dx||dz)&&!sim.paused)sim.walking=true;elapsed+=sim.paused?0:dt;if(!sim.playerPath.length)target=null;switchScene();updateCamera(dt);experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);engine.reducedMotion=sim.state.settings.reducedMotion;syncFieldcraftOwner();consignmentPresentation();grazerPresentation();prepareWildSignsDiagnostics();art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');acknowledgeOrdinaryGrazer(now);updateLabels();}else mapDraw(ui.map,true);audio.tick(elapsed);if(now-lastUi>350){refreshUI();lastUi=now;}if(elapsed-lastSave>6){save();lastSave=elapsed;}}if(!G_CAPTURE)requestAnimationFrame(frame);}
+function frame(now){let dt=lastFrame?Math.min((now-lastFrame)/1000,.1):.016;lastFrame=now;frames++;if(now-fpsStart>1500){fps=frames*1000/(now-fpsStart);frames=0;fpsStart=now;}if(!document.hidden){let dx=(keys.has('d')||keys.has('arrowright')?1:0)-(keys.has('a')||keys.has('arrowleft')?1:0),dz=(keys.has('s')||keys.has('arrowdown')?1:0)-(keys.has('w')||keys.has('arrowup')?1:0);if(sim.worldDive&&!sim.paused){RealmWorldFoundations.swim(sim,dx*Math.cos(camera.yaw)+dz*Math.sin(camera.yaw),-dx*Math.sin(camera.yaw)+dz*Math.cos(camera.yaw),(keys.has('f')?1:0)-(keys.has('g')?1:0),dt);camera.overview=false;}else if((dx||dz)&&!sim.paused){sandbox?.stopAuto();adventure?.stopAuto();camera.tour=false;sim.manual(dx*Math.cos(camera.yaw)+dz*Math.sin(camera.yaw),-dx*Math.sin(camera.yaw)+dz*Math.cos(camera.yaw),dt);camera.overview=false;follow=null;target=null;sim.walking=true;}bindWildSignsClearance();sim.tick(dt);tickRoadkeeper(dt);tickConsignment(dt);tickGrazer(dt);if((dx||dz)&&!sim.paused)sim.walking=true;elapsed+=sim.paused?0:dt;if(!sim.playerPath.length)target=null;switchScene();updateCamera(dt);experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);engine.reducedMotion=sim.state.settings.reducedMotion;syncFieldcraftOwner();consignmentPresentation();grazerPresentation();prepareWildSignsDiagnostics();roadkeeperPresentation();prepareRoadkeeperDiagnostics();art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');acknowledgeOrdinaryGrazer(now);updateLabels();}else mapDraw(ui.map,true);audio.tick(elapsed);if(now-lastUi>350){refreshUI();lastUi=now;}if(elapsed-lastSave>6){save();lastSave=elapsed;}}if(!G_CAPTURE)requestAnimationFrame(frame);}
 // Keep a read-only-ish diagnostics surface for inspection; this local prototype is not a security boundary.
 const G_CAPTURE=!!window.__ETERNITIES_CAPTURE_MODE;
-window.Realm={get state(){return sim.snapshot();},get diagnostics(){let g=engine?.gl,dbg=g?.getExtension('WEBGL_debug_renderer_info');return{version:'10.0.0',mode:engine?'webgl2':'map',scene:sim.room||'valley',world:RealmWorldFoundations.definition(sim.room)?{id:RealmWorldFoundations.definition(sim.room).id,height:sceneHeight(),dive:worldDiveStatus(),journey:JSON.parse(JSON.stringify(sim.state.journeys.realms[RealmWorldFoundations.definition(sim.room).id]))}:null,wildSigns:wildSignsDiagnostics(),consignment:sim.room===RealmEarthConsignmentData.ROOM?JSON.parse(JSON.stringify({view:RealmEarthConsignmentMotion.current(consignmentContext()),frame:RealmEarthConsignmentArt.snapshot(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.consignmentPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,atlantis:sim.room===RealmAtlantisCampaign.definition.room?JSON.parse(JSON.stringify({current:RealmAtlantisCampaign.currentStatus(sim),motion:{currentDistance:RealmAtlantisCampaign.runtime(sim).currentDistance,pullDistance:RealmAtlantisCampaign.runtime(sim).pullDistance},witnesses:RealmAtlantisCampaign.runtime(sim).witnesses})):null,heaven:sim.room===RealmHeavenCampaign.definition.room?JSON.parse(JSON.stringify({escort:RealmHeavenCampaign.runtime(sim).escort,activation:RealmHeavenCampaign.runtime(sim).activation,status:RealmHeavenCampaign.escortStatus(sim)})):null,earthHomecoming:JSON.parse(JSON.stringify({record:sim.state.earthHomecoming,runtime:[null,RealmEarthHomecoming.definition.room].includes(sim.room)?RealmEarthHomecoming.runtime(sim):null,missing:RealmEarthHomecoming.missing(sim.state),ready:RealmEarthHomecoming.ready(sim.state)})),earth:sim.room===RealmEarth.ROOM?{trip:sim.earthTrip,height:sceneHeight(),walkable:RealmEarth.walkable(sim.state.player.x,sim.state.player.z)}:null,cosmos:sim.room===RealmCosmos.ROOM?{trip:sim.cosmosTrip,height:sceneHeight(),walkable:RealmCosmos.walkable(sim.state.player.x,sim.state.player.z),campaign:JSON.parse(JSON.stringify(RealmCosmosCampaign.runtime(sim)))}:null,networkDependencies:0,liveAI:false,multiplayer:false,adventure:{tactics:JSON.parse(JSON.stringify(RealmCombat.runtime(sim))),beacon:JSON.parse(JSON.stringify(RealmBeacon.runtime(sim))),crossing:JSON.parse(JSON.stringify(RealmCrossing.runtime(sim))),player:{...sim.state.player},paused:sim.paused,intent:adventure?.intent||null,stats:RealmAdventure.stats(sim.state.adventure),weapon:RealmArsenal.weapon(sim.state.adventure),arrows:RealmArsenal.runtime(sim).arrows.map(a=>({...a})),range:{...RealmArsenal.runtime(sim).range},enemies:RealmAdventure.runtime(sim).enemies.map(e=>({id:e.id,x:e.x,z:e.z,hp:e.hp,maxHP:e.maxHP,hidden:!!e.hidden,eventEnemy:!!e.eventEnemy,kind:e.kind,earthHomecoming:e.earthHomecoming||null,ringMode:e.ringMode,custom:e.custom,mode:e.mode,timer:e.timer,aim:e.aim,yaw:e.yaw,strike:e.strike||null,contactAt:e.contactAt??null,contactHit:e.contactHit??null})),companion:{...RealmAdventure.runtime(sim).companion}},sandbox:{bridge:sim.state.sandbox.bridge,objects:sim.state.sandbox.placed.length,elapsed:sim.state.sandbox.elapsed,autoGather:sandbox?.auto||null,buildMode:sandbox?.build||null},saveState,characters:{mode:characterStore.blocked?'blocked':characterStore.managed?'managed':'legacy',active:characterStore.active,revision:characterStore.revision,count:characterStore.record?.slots.length||1,writer:characterStore.writer,error:characterStore.error},fps,errors:errors.slice(),camera:{...camera,projection:engine?.camera.projection||'orthographic',eye:engine?.camera.eye,target:engine?.camera.target},metrics:engine?.metrics||null,reflection:engine?.reflectionInfo||null,cutaway:{enabled:!!engine?.cutaway,focus:engine?.cutawayFocus||null},renderer:dbg?g.getParameter(dbg.UNMASKED_RENDERER_WEBGL):null,music:{playing:experience?.playing||false,scoreRevision:sim.state.scoreRevision,playingRevision:experience?.playingRevision,step:experience?.step},gathering:sim.gathering?{...sim.gathering}:null,layoutRevision:sim.state.retreat.revision,roadsideGathering:{status:rpg?.gathering?.player.status||'idle',playing:!!rpg?.gathering?.player.source,pending:!!rpg?.gathering?.pending},audio:{enabled:audio.enabled,state:audio.ctx?.state||'not-created',soundscape:audio.soundscape?.snapshot()||null}};},navigate,export:()=>JSON.stringify(sim.snapshot(),null,2),project:(x,y,z)=>engine?.project(x,y,z)};
-if(window.__ETERNITIES_TEST_MODE||location.search.includes('test'))window.Realm.test={consignmentContext,consignmentControl,consignment:()=>({view:RealmEarthConsignmentMotion.current(consignmentContext()),frame:RealmEarthConsignmentArt.snapshot(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.consignmentPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),fieldcraftContext,frameFieldcraft,fieldcraft:()=>({view:RealmEarthFieldcraft.current(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.fieldcraftPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),earthRoad:()=>({route:RealmEarthRoad.endpoint(sim.room),parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.earthRoadPart||i.worldSolidId==='hearthwater-fingerpost').map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),earthRoadTravel,earthHomecomingCommand,homeCommand,cosmosCampaignCommand,atlantisCampaignCommand,heavenCampaignCommand,hellCampaignCommand,bridgeCommunityCommand,localLifeCommand,bridgeView,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,worldSwim:(...a)=>RealmWorldFoundations.swim(sim,...a),step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){bindWildSignsClearance();sim.tick(.05);tickConsignment(.05);tickGrazer(.05);adventure?.tick();arsenal?.tick();rpg?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,bridge:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({definition:RealmEarth.BRIDGE,waterHeight:RealmEngine.WATER_HEIGHT,railCutaway:{eligible:engine?.railCutawayActive===true,enabled:engine?.cutaway===true},parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.bridgePart||i.mountainPart||i.shorelinePart).map(i=>({kind:b.kind,railBatch:b.railCutaway===true,...i,m:i.m?Array.from(i.m):null})))||[]})):null,traveler:()=>art?.travelerSnapshot()||null,companion:()=>RealmAdventureArt.companionSnapshot(sim),skitters:()=>RealmAdventureArt.skitterSnapshot(sim),drover:()=>sim.room===RealmEarth.ROOM&&art?.droverFrame?JSON.parse(JSON.stringify({frame:{...art.droverFrame,root:Array.from(art.droverFrame.root),coilRoot:Array.from(art.droverFrame.coilRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.droverPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,earthShoulder:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({frame:art?.earthShoulderFrame,parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.quarryShoulder||i.terrain).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,quarry:()=>sim.room===RealmEarth.ROOM&&art?.quarryFrame?JSON.parse(JSON.stringify({frame:{actor:{...art.quarryFrame.actor,root:Array.from(art.quarryFrame.actor.root),toolRoot:Array.from(art.quarryFrame.actor.toolRoot)},works:art.quarryFrame.works},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.stoneworkerPart||i.quarryPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))})):null,millwright:()=>sim.room===RealmEarth.ROOM&&art?.millwrightFrame?JSON.parse(JSON.stringify({frame:{...art.millwrightFrame,root:Array.from(art.millwrightFrame.root),toolRoot:Array.from(art.millwrightFrame.toolRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.millwrightPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millGate:()=>sim.room===RealmEarth.ROOM&&art?.millGateFrame?JSON.parse(JSON.stringify({gate:art.millGateFrame,parts:[...engine.batches,...engine.dynamic].flatMap(b=>b.items.filter(i=>i.millPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null}))),wheel:art.dynamicBox.items.filter(i=>i.p[0]===3.55&&i.p[1]===2.71)})):null,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);syncFieldcraftOwner();consignmentPresentation();grazerPresentation();prepareWildSignsDiagnostics();art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
+window.Realm={get state(){return sim.snapshot();},get diagnostics(){let g=engine?.gl,dbg=g?.getExtension('WEBGL_debug_renderer_info');return{version:'10.0.0',mode:engine?'webgl2':'map',scene:sim.room||'valley',world:RealmWorldFoundations.definition(sim.room)?{id:RealmWorldFoundations.definition(sim.room).id,height:sceneHeight(),dive:worldDiveStatus(),journey:JSON.parse(JSON.stringify(sim.state.journeys.realms[RealmWorldFoundations.definition(sim.room).id]))}:null,wildSigns:wildSignsDiagnostics(),roadkeeper:roadkeeperDiagnostics(),consignment:sim.room===RealmEarthConsignmentData.ROOM?JSON.parse(JSON.stringify({view:RealmEarthConsignmentMotion.current(consignmentContext()),frame:RealmEarthConsignmentArt.snapshot(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.consignmentPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,atlantis:sim.room===RealmAtlantisCampaign.definition.room?JSON.parse(JSON.stringify({current:RealmAtlantisCampaign.currentStatus(sim),motion:{currentDistance:RealmAtlantisCampaign.runtime(sim).currentDistance,pullDistance:RealmAtlantisCampaign.runtime(sim).pullDistance},witnesses:RealmAtlantisCampaign.runtime(sim).witnesses})):null,heaven:sim.room===RealmHeavenCampaign.definition.room?JSON.parse(JSON.stringify({escort:RealmHeavenCampaign.runtime(sim).escort,activation:RealmHeavenCampaign.runtime(sim).activation,status:RealmHeavenCampaign.escortStatus(sim)})):null,earthHomecoming:JSON.parse(JSON.stringify({record:sim.state.earthHomecoming,runtime:[null,RealmEarthHomecoming.definition.room].includes(sim.room)?RealmEarthHomecoming.runtime(sim):null,missing:RealmEarthHomecoming.missing(sim.state),ready:RealmEarthHomecoming.ready(sim.state)})),earth:sim.room===RealmEarth.ROOM?{trip:sim.earthTrip,height:sceneHeight(),walkable:RealmEarth.walkable(sim.state.player.x,sim.state.player.z)}:null,cosmos:sim.room===RealmCosmos.ROOM?{trip:sim.cosmosTrip,height:sceneHeight(),walkable:RealmCosmos.walkable(sim.state.player.x,sim.state.player.z),campaign:JSON.parse(JSON.stringify(RealmCosmosCampaign.runtime(sim)))}:null,networkDependencies:0,liveAI:false,multiplayer:false,adventure:{tactics:JSON.parse(JSON.stringify(RealmCombat.runtime(sim))),beacon:JSON.parse(JSON.stringify(RealmBeacon.runtime(sim))),crossing:JSON.parse(JSON.stringify(RealmCrossing.runtime(sim))),player:{...sim.state.player},paused:sim.paused,intent:adventure?.intent||null,stats:RealmAdventure.stats(sim.state.adventure),weapon:RealmArsenal.weapon(sim.state.adventure),arrows:RealmArsenal.runtime(sim).arrows.map(a=>({...a})),range:{...RealmArsenal.runtime(sim).range},enemies:RealmAdventure.runtime(sim).enemies.map(e=>({id:e.id,x:e.x,z:e.z,hp:e.hp,maxHP:e.maxHP,hidden:!!e.hidden,eventEnemy:!!e.eventEnemy,kind:e.kind,earthHomecoming:e.earthHomecoming||null,ringMode:e.ringMode,custom:e.custom,mode:e.mode,timer:e.timer,aim:e.aim,yaw:e.yaw,strike:e.strike||null,contactAt:e.contactAt??null,contactHit:e.contactHit??null})),companion:{...RealmAdventure.runtime(sim).companion}},sandbox:{bridge:sim.state.sandbox.bridge,objects:sim.state.sandbox.placed.length,elapsed:sim.state.sandbox.elapsed,autoGather:sandbox?.auto||null,buildMode:sandbox?.build||null},saveState,characters:{mode:characterStore.blocked?'blocked':characterStore.managed?'managed':'legacy',active:characterStore.active,revision:characterStore.revision,count:characterStore.record?.slots.length||1,writer:characterStore.writer,error:characterStore.error},fps,errors:errors.slice(),camera:{...camera,projection:engine?.camera.projection||'orthographic',eye:engine?.camera.eye,target:engine?.camera.target},metrics:engine?.metrics||null,reflection:engine?.reflectionInfo||null,cutaway:{enabled:!!engine?.cutaway,focus:engine?.cutawayFocus||null},renderer:dbg?g.getParameter(dbg.UNMASKED_RENDERER_WEBGL):null,music:{playing:experience?.playing||false,scoreRevision:sim.state.scoreRevision,playingRevision:experience?.playingRevision,step:experience?.step},gathering:sim.gathering?{...sim.gathering}:null,layoutRevision:sim.state.retreat.revision,roadsideGathering:{status:rpg?.gathering?.player.status||'idle',playing:!!rpg?.gathering?.player.source,pending:!!rpg?.gathering?.pending},audio:{enabled:audio.enabled,state:audio.ctx?.state||'not-created',soundscape:audio.soundscape?.snapshot()||null}};},navigate,export:()=>JSON.stringify(sim.snapshot(),null,2),project:(x,y,z)=>engine?.project(x,y,z)};
+if(window.__ETERNITIES_TEST_MODE||location.search.includes('test'))window.Realm.test={consignmentContext,consignmentControl,consignment:()=>({view:RealmEarthConsignmentMotion.current(consignmentContext()),frame:RealmEarthConsignmentArt.snapshot(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.consignmentPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),fieldcraftContext,frameFieldcraft,fieldcraft:()=>({view:RealmEarthFieldcraft.current(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.fieldcraftPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),earthRoad:()=>({route:RealmEarthRoad.endpoint(sim.room),parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.earthRoadPart||i.worldSolidId==='hearthwater-fingerpost').map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),earthRoadTravel,earthHomecomingCommand,homeCommand,cosmosCampaignCommand,atlantisCampaignCommand,heavenCampaignCommand,hellCampaignCommand,bridgeCommunityCommand,localLifeCommand,bridgeView,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,worldSwim:(...a)=>RealmWorldFoundations.swim(sim,...a),step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){bindWildSignsClearance();sim.tick(.05);tickRoadkeeper(.05);tickConsignment(.05);tickGrazer(.05);adventure?.tick();arsenal?.tick();rpg?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,bridge:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({definition:RealmEarth.BRIDGE,waterHeight:RealmEngine.WATER_HEIGHT,railCutaway:{eligible:engine?.railCutawayActive===true,enabled:engine?.cutaway===true},parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.bridgePart||i.mountainPart||i.shorelinePart).map(i=>({kind:b.kind,railBatch:b.railCutaway===true,...i,m:i.m?Array.from(i.m):null})))||[]})):null,traveler:()=>art?.travelerSnapshot()||null,companion:()=>RealmAdventureArt.companionSnapshot(sim),skitters:()=>RealmAdventureArt.skitterSnapshot(sim),drover:()=>sim.room===RealmEarth.ROOM&&art?.droverFrame?JSON.parse(JSON.stringify({frame:{...art.droverFrame,root:Array.from(art.droverFrame.root),coilRoot:Array.from(art.droverFrame.coilRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.droverPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,earthShoulder:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({frame:art?.earthShoulderFrame,parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.quarryShoulder||i.terrain).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,quarry:()=>sim.room===RealmEarth.ROOM&&art?.quarryFrame?JSON.parse(JSON.stringify({frame:{actor:{...art.quarryFrame.actor,root:Array.from(art.quarryFrame.actor.root),toolRoot:Array.from(art.quarryFrame.actor.toolRoot)},works:art.quarryFrame.works},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.stoneworkerPart||i.quarryPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))})):null,millwright:()=>sim.room===RealmEarth.ROOM&&art?.millwrightFrame?JSON.parse(JSON.stringify({frame:{...art.millwrightFrame,root:Array.from(art.millwrightFrame.root),toolRoot:Array.from(art.millwrightFrame.toolRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.millwrightPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millGate:()=>sim.room===RealmEarth.ROOM&&art?.millGateFrame?JSON.parse(JSON.stringify({gate:art.millGateFrame,parts:[...engine.batches,...engine.dynamic].flatMap(b=>b.items.filter(i=>i.millPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null}))),wheel:art.dynamicBox.items.filter(i=>i.p[0]===3.55&&i.p[1]===2.71)})):null,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);syncFieldcraftOwner();consignmentPresentation();grazerPresentation();prepareWildSignsDiagnostics();roadkeeperPresentation();prepareRoadkeeperDiagnostics();art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
 window.addEventListener('resize',resize);window.addEventListener('pagehide',()=>{save();characterStore.writer=false;characterLock.release();});window.addEventListener('pageshow',e=>{if(e.persisted&&characterStore.managed)acquireCharacterWriter().then(()=>save());});ui.canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();fallback('Graphics context lost. Your local state is intact; use the map and export a backup.');toast('Graphics paused; world state preserved.');});document.body.classList.toggle('reduced',sim.state.settings.reducedMotion);cameraPreset(sim.state.settings.cameraMode,false);if(camera.preset==='adventure'&&!sim.state.settings.cameraViews.profiles.adventure)camera.yaw=.22;labelsRebuild();resize();refreshUI();if(characterStore.managed){acquireCharacterWriter().then(ok=>{if(ok)save();else{saveState='unavailable';toast(characterLock.error);renderStatus();}});}else save();if(loaded.status==='migrated')toast('Your earlier world was copied into Realm 10. The original save was not changed.');setTimeout(()=>$('#loading').classList.add('hidden'),400);if(G_CAPTURE){if(window.Realm.test)window.Realm.test.render();}else requestAnimationFrame(frame);
 })();
 </script></body></html>
