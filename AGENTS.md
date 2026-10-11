@@ -1,3 +1,15 @@
+# Earth graphics recovery integration, 2026-10-11
+
+Parent owns PR55's `gameplay/earth-walk-sensory-20261011`, stacked on PR54. The independently reviewed graphics recovery is installed: genuine context loss retains the map, while a trusted restoration rebuilds current-room Engine/WorldArt resources without logical scene entry, new Simulation, writer, audio, input registration or RAF. Dispose retired renderer listeners, decoders and resources; handle only a render exception confirmed to come from a lost context. Non-loss exceptions retain their behavior. The actual camera and current character remain the owners. Read docs/development/EARTH_WALK_SENSORY_2026-10-11.md.
+
+Installed focused lifecycle/material/roadkeeper checks pass49/49 with zero skips. Identical HTML is3,302,304 bytes, SHA256aab1cb8251608b55cce9a69befd24e35aff872d1db203eadb6ab3f4f743aec2d. Fresh SOURCE09/cohorts and controlled native restoration are pending at this integration checkpoint. Keep original test budgets/guards, current exact-head admission and all older receipts. Parent owns native/GPU execution and freezes ROOT while a case is live. Both colleagues stage small D files only; no duplicate full game.
+
+The prior59c SOURCE08 passed214commands/142syntax, Node2011PASS/2skip and Python442tests/10reported skips. Primary03 passed1937, Footfalls03 passed44, and real-control Withdrawal03 passed33 with six advancing lowering frames for each weapon. Stone01's two actual PNGs were inspected. Boundary03 failed after190passes at its original30s owner predicate; native bytes committed the switch, then the owned log recorded WebGL context loss. Cause and handler completion remain UNKNOWN. Independent software remoteFull02 atdc6f closed FAILED with1371consignment passes and TargetClosed in the sixth route. Do not equate these failures or call the complete browser gate passed. Recording/cadence still wait for complete current aftermath success.
+
+ROOT and independent STATION are released after those closed cases; fetch normally and reuse them. Preserve World9/Adventure12/WildSigns1, all saves/XP/gear/sockets/upgrades/claims/choices, systems and both cameras. Wider production goal ACTIVE unfinished, heartbeat PAUSED. No main merge, deployment, paid providers, personal-save inspection, unrelated shutdown, full-copy accumulation or blocked standalone-deletion retry. Frontier Oct11 already checked. Later qualification receipts belong to PR55 and their exact recorded epochs.
+
+---
+
 # Earth readability and movement integration, 2026-10-11
 
 Parent owns `gameplay/earth-walk-sensory-20261011` / draft PR55, stacked on PR54/239ccb0. The independently reviewed roadkeeper profile, one original faceted overlook stone and observed cancelled-attack lowering are now installed with existing water/footsteps/western ridges. Actual installed focused checks pass43/43, zero skips; builder outputs are identical3,298,465 bytes, SHA2566507dc92a51b1f9be211919e3709d059a5c1ada062591f25d15f264b893b78dc. These are CPU/build results; current native rendering and complete qualification are pending. Read docs/development/EARTH_WALK_SENSORY_2026-10-11.md.

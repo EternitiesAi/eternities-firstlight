@@ -275,7 +275,7 @@ class Engine{
   if(this._surfaceInitialized)return;this._surfaceInitialized=true;
   this.surfaceMaterialsEnabled=true;this._surfaceGeneration=0;this._surfaceLoads=[];this._surfaceTextures=null;this._contextLost=false;
   this.surfaceMaterialInfo={version:1,id:'earth-weathered-timber-v1',status:'unavailable',ready:false,error:null,width:512,height:512,colorFormat:'SRGB8_ALPHA8',roughnessFormat:'R8',textureBytes:0,mipmapBytes:0,totalTextureBytes:0,decodedImageBytes:0,decodeWallMs:0,uploadCpuMs:0,timingScope:'CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion',memoryScope:'Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload'};
-  this._onSurfaceContextLost=()=>{this._contextLost=true;this.cancelSurfaceMaterials('context-lost');};
+  this._onSurfaceContextLost=()=>{if(this._surfaceDisposed||!this.gl.isContextLost())return;this._contextLost=true;this.cancelSurfaceMaterials('context-lost');};
   this.canvas.addEventListener?.('webglcontextlost',this._onSurfaceContextLost);
   const start=surfaceNow(),generation=this._surfaceGeneration;
   try{
@@ -325,7 +325,19 @@ class Engine{
   this._surfaceTextures=null;
   Object.assign(this.surfaceMaterialInfo,{status,ready:false,error,textureBytes:0,mipmapBytes:0,totalTextureBytes:0,decodedImageBytes:0});
  }
- disposeSurfaceMaterials(){this.cancelSurfaceMaterials('disposed');}
+ disposeSurfaceMaterials(){if(this._surfaceDisposed)return;this._surfaceDisposed=true;this.canvas.removeEventListener?.('webglcontextlost',this._onSurfaceContextLost);this.cancelSurfaceMaterials('disposed');}
+ dispose(){
+  if(this._disposed)return;this._disposed=true;this.disposeSurfaceMaterials();const g=this.gl,lost=g.isContextLost();this._contextLost=true;
+  if(!lost){
+   this.clear();for(const mesh of this.meshes.values())g.deleteBuffer(mesh.buffer);
+   for(const buffer of this._singleBuffers||[])g.deleteBuffer(buffer);
+   for(const vao of [this.emptyVAO,this.waterVAO,this.particleVAO])g.deleteVertexArray(vao);
+   for(const program of [this.program,this.depthP,this.skyP,this.waterP,this.particleP,this.postP])g.deleteProgram(program);
+   for(const f of [this.mainF,this.refF]){g.deleteFramebuffer(f.f);g.deleteTexture(f.tex);g.deleteRenderbuffer(f.depth);}
+   g.deleteFramebuffer(this.shadowF);g.deleteTexture(this.shadowTex);
+  }
+  this.batches=[];this.dynamic=[];this.cameraSolids=[];this.meshes.clear();this.cache.clear();this._singleBuffers=[];
+ }
  uploadSurfaceMaterials(images){
   const g=this.gl,active=g.getParameter(g.ACTIVE_TEXTURE);g.activeTexture(g.TEXTURE3);
   const binding=g.getParameter(g.TEXTURE_BINDING_2D),flip=g.getParameter(g.UNPACK_FLIP_Y_WEBGL),premultiply=g.getParameter(g.UNPACK_PREMULTIPLY_ALPHA_WEBGL),conversion=g.getParameter(g.UNPACK_COLORSPACE_CONVERSION_WEBGL),alignment=g.getParameter(g.UNPACK_ALIGNMENT),textures={};
@@ -343,7 +355,7 @@ class Engine{
   }catch(e){for(const texture of Object.values(textures))g.deleteTexture(texture);throw e;}
   finally{g.pixelStorei(g.UNPACK_FLIP_Y_WEBGL,flip);g.pixelStorei(g.UNPACK_PREMULTIPLY_ALPHA_WEBGL,premultiply);g.pixelStorei(g.UNPACK_COLORSPACE_CONVERSION_WEBGL,conversion);g.pixelStorei(g.UNPACK_ALIGNMENT,alignment);g.bindTexture(g.TEXTURE_2D,binding);g.activeTexture(active);}
  }
- singleVAO(data,n){let g=this.gl,v=g.createVertexArray(),b=g.createBuffer();g.bindVertexArray(v);g.bindBuffer(g.ARRAY_BUFFER,b);g.bufferData(g.ARRAY_BUFFER,data,g.STATIC_DRAW);g.enableVertexAttribArray(0);g.vertexAttribPointer(0,n,g.FLOAT,false,n*4,0);g.bindVertexArray(null);return v;}
+ singleVAO(data,n){let g=this.gl,v=g.createVertexArray(),b=g.createBuffer();(this._singleBuffers||(this._singleBuffers=[])).push(b);g.bindVertexArray(v);g.bindBuffer(g.ARRAY_BUFFER,b);g.bufferData(g.ARRAY_BUFFER,data,g.STATIC_DRAW);g.enableVertexAttribArray(0);g.vertexAttribPointer(0,n,g.FLOAT,false,n*4,0);g.bindVertexArray(null);return v;}
  programOf(vs,fs){let g=this.gl;function c(type,s){let o=g.createShader(type);g.shaderSource(o,s);g.compileShader(o);if(!g.getShaderParameter(o,g.COMPILE_STATUS))throw new Error(g.getShaderInfoLog(o));return o;}let p=g.createProgram(),v=c(g.VERTEX_SHADER,vs),f=c(g.FRAGMENT_SHADER,fs);g.attachShader(p,v);g.attachShader(p,f);g.linkProgram(p);if(!g.getProgramParameter(p,g.LINK_STATUS))throw new Error(g.getProgramInfoLog(p));g.deleteShader(v);g.deleteShader(f);return p;}
  uni(p,n,t,v){let g=this.gl,c=this.cache.get(p);if(!c){c=new Map();this.cache.set(p,c);}if(!c.has(n))c.set(n,g.getUniformLocation(p,n));let l=c.get(n);if(l===null)return;if(t==='m')g.uniformMatrix4fv(l,false,v);else if(t==='4')g.uniform4fv(l,v);else if(t==='3')g.uniform3fv(l,v);else if(t==='2')g.uniform2fv(l,v);else if(t==='i')g.uniform1i(l,v);else g.uniform1f(l,v);}
  framebuffer(w,h){let g=this.gl,f=g.createFramebuffer(),tex=g.createTexture(),depth=g.createRenderbuffer();g.bindTexture(g.TEXTURE_2D,tex);g.texImage2D(g.TEXTURE_2D,0,g.RGBA,w,h,0,g.RGBA,g.UNSIGNED_BYTE,null);for(let p of[g.TEXTURE_MIN_FILTER,g.TEXTURE_MAG_FILTER])g.texParameteri(g.TEXTURE_2D,p,g.LINEAR);for(let p of[g.TEXTURE_WRAP_S,g.TEXTURE_WRAP_T])g.texParameteri(g.TEXTURE_2D,p,g.CLAMP_TO_EDGE);g.bindRenderbuffer(g.RENDERBUFFER,depth);g.renderbufferStorage(g.RENDERBUFFER,g.DEPTH_COMPONENT16,w,h);g.bindFramebuffer(g.FRAMEBUFFER,f);g.framebufferTexture2D(g.FRAMEBUFFER,g.COLOR_ATTACHMENT0,g.TEXTURE_2D,tex,0);g.framebufferRenderbuffer(g.FRAMEBUFFER,g.DEPTH_ATTACHMENT,g.RENDERBUFFER,depth);g.bindFramebuffer(g.FRAMEBUFFER,null);return{f,tex,depth,w,h};}

@@ -1,3 +1,13 @@
+# Qualify current graphics recovery and Earth travel, 2026-10-11
+
+Run SOURCE09 from the clean normally pushed integration head with original fixtures/assertions/budgets, D browser TEMP and explicit small CPU temp. Generate new legitimate blade/bow/veteran cohorts. The independently reviewed controlled restoration caller must bind this new App/Engine/page/cohort before allocation: one actual WEBGL_lose_context cycle, ordinary RAF, usable map, native character switch and camera controls, then trusted restoration. Its120s/2MB/one-profile limits remain; it is labelled fault injection, not normal play. Native restoration/pixels/animation continuity remain unqualified until measured.
+
+Run relevant original primary, footsteps, boundary and aftermath gates without weakening30s owner or10x24 portrait guards. Preserve original Boundary03 context-loss evidence and UNKNOWN cause, and dc6f software remoteFull02 TargetClosed failure. A new restoration consumer does not make either old report pass. Recording/cadence wait for complete current aftermath success. Keep actual ordinary blade/bow Withdrawal03 evidence at59c and do not claim it came from a newer page.
+
+Reuse released ROOT and clean independent STATION. Normally fetch the final review head for exact independent verification; no new full clone, replayed old cohorts or rehashed old results. Update PR55 with actual counts, closures, failures/skips and exact commits. Human questions remain route clarity, camera comfort, audio balance and whether combat/rewards encourage another outing. Finish this slice before the next coherent geography milestone. Wider goal ACTIVE unfinished; heartbeat PAUSED; all save/storage/authority boundaries remain.
+
+---
+
 # Qualify the installed readable Earth movement, 2026-10-11
 
 Freeze and normally push the reviewed combined presentation head. Run SOURCE08 with the original full verifier, fixtures/assertions/budgets, global D browser TEMP and explicit small CPU child temp. Use freshly command-earned blade/bow/veteran/current cohorts, then original native-primary03, footsteps03, native-boundary03 and unchanged native-aftermath03. Preserve the actual dc6f portrait-width failure; do not lower10x24, change cameras, backfill rewards or reuse historical cohorts. Recording and desktop cadence must wait for complete current aftermath success.

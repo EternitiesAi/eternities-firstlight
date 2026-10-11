@@ -1,3 +1,15 @@
+# Earth travel polish and graphics recovery, 2026-10-11
+
+PR55 now also rebuilds 3D after genuine graphics-context restoration. It retires the old renderer and rebuilds current-room resources on the same canvas while retaining the logical world, active character, writer, camera, route/target, dialog and audio. Loss keeps the existing usable map and export path. A lost-render exception continues the original frame tail; other exceptions keep their prior behavior. This fixes a missing restoration consumer, not an established cause of the earlier native failures.
+
+Actual installed focused tests pass49/49, zero skips. The real builder produced identical3,302,304-byte pages, SHA256aab1cb8251608b55cce9a69befd24e35aff872d1db203eadb6ab3f4f743aec2d. Complete source/cohorts and native restoration of this changed page are pending at integration; later exact receipts are returned in PR55. World9/Adventure12/WildSigns1 and stored XP/keys/choices remain unchanged. Existing Earth water, footsteps, ridges, civilian silhouette, faceted stone and observed attack lowering remain installed.
+
+At59c, SOURCE08 passed214commands/142syntax, Node2011passes/2skips, Python442tests/10reported skips, three command-earned weapon paths and two continuous opening-to-ending journeys. Native Primary03 passed1937 and Footfalls03 passed44. Withdrawal03 passed33 through ordinary controls/RAF, with six advancing lowering samples each for blade and bow, then idle, with no hit/arrow. Two stone PNGs were inspected; these observations retain59c as their source.
+
+Boundary03 failed after190passes at the original30s owner predicate. Stored synthetic bytes committed active character1/revision29; the owned Chromium log then recorded WebGL context loss. Post-switch DOM/getter/handler completion and cause remain UNKNOWN. Current aftermath/capture/cadence were not allocated. Independent dc6f software/low remoteFull02 closed FAILED: source/homecoming/onboarding passed,1371consignment checks passed before sixth-route TargetClosed; remaining browser gates were not run. Complete current browser/remote qualification and human acceptance remain outstanding. Wider production goal ACTIVE, heartbeat PAUSED.
+
+---
+
 # Earth readability and movement, 2026-10-11
 
 PR55's current gameplay branch now includes clearer Earth water, supported soil/timber/stone footsteps, three distant western ridges, the autosave presentation refresh, a fuller roadkeeper work-coat profile, one original faceted overlook stone, and100ms lowering when an actually observed blade/bow windup is cancelled. Existing input, attacks/hits/arrows, geography/ground/collision, storedXP/gear/sockets/rewards/choices and World9/Adventure12/WildSigns1 remain unchanged. Both cameras remain interchangeable.

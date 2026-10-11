@@ -1,3 +1,13 @@
+# Observed Earth movement and pending restoration, 2026-10-11
+
+At59c, real-control Withdrawal03 passed33checks with game test/capture flags off. Blade produced13samples and bow12; each contained six advancing100ms lowering frames followed by idle, exactly stationary root translation and no hit/projectile. These are actual cached rendered-rig observations through native UI and keys, not a movie, pixel comparison, FPS or human feel judgment. Its reported page/resource errors and external requests are empty, while the owned startup log retains a network-service crash/restart warning. All owned observer/context/socket/thread/protocol resources closed.
+
+Two actual1440x960 balanced stone PNGs at59c were inspected by parent and colleague: facets are unobscured in Adventure and a controlled overhead Follow view. This does not establish every camera or the default Follow angle; square peninsula banks remain visible. Current footsteps03 passed44native checks; human listening and full-mix balance remain unanswered. Older horizon/audio/water media retain their original epochs.
+
+Boundary03 retained actual WebGL context-loss warning after its character-write event, but no completed post-switch predicate/DOM snapshot; cause remains UNKNOWN. New graphics restoration has49focused installed passes and awaits native loss/map/character/restore acceptance. Original portrait aftermath guard remains10x24; no current new aftermath movie/cadence or founder acceptance is claimed. Ask Dom after qualification: could you read the route and people in both cameras, was the sound comfortable, and did combat and reward make another outing appealing?
+
+---
+
 # Earth rendering and pending human acceptance, 2026-10-11
 
 Parent and independent colleague inspected two actual1440x960 balanced horizon PNGs at dc6f. Adventure shows clear layered pale western peaks behind the trees; lower/wider Follow crops the mountain mass across the top. The benefit is camera-dependent. Earlier239/7636 paired water photographs retain their original epochs. Square country banks remain a visible landscape limitation.

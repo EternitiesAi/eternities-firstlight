@@ -1,3 +1,13 @@
+# Recover graphics without replaying the world, 2026-10-11
+
+Add a missing trusted webglcontextrestored consumer, separate from diagnosis of prior failures. A matching genuine loss retires Engine listeners/decoders/GL ownership; an actual restoration creates new Engine/WorldArt resources for the current room. Preserve Simulation, character/writer, actual camera object/profiles, targets, dialog/audio and every durable ledger. Use an isolated camera copy only while sizing/projecting reconstruction. No scene re-entry, timer retry, new input/RAF, writer acquisition, save command or new consent. Transient WorldArt animation caches rebuild and are explicitly unqualified for native continuity.
+
+Retire live GL handles exactly once, skip invalid lost-context deletions, detach the exact surface listener and fence late decoder callbacks. Narrow ordinary-frame catch to art.update/render only and require that exact renderer to report context loss; keep non-loss/rule exception identity and behavior.49focused installed methods pass; two original-source RED controls and five detecting RAM mutants are retained. CPU GL/DOM fixtures do not establish real events, GLSL, pixels or performance.
+
+Keep original59c Boundary03 failed190-pass/30s report and independent dc6f software TargetClosed failure. Committed native bytes and a later context-loss log do not establish completed adoption or root cause. Controlled actual WebGL-extension fault injection is a separate bounded native test; it cannot qualify either old failed report. Preserve all old epochs,30s/10x24 guards, schemas/XP/choices/cameras and storage/authority limits. Wider production unfinished; heartbeat paused.
+
+---
+
 # Source-led Earth readability, 2026-10-11
 
 Keep the native10x24 portrait guard. Fix the roadkeeper's actual side profile with coat depth.28→.50 and corresponding front trim only; retain19parts/4380vertices, radius.6, height1.78, materials/ownership/rules. A1296-sample actual packed-geometry CPU sweep gains min8.86209→13.14402px at original mobile Follow scale. The retained camera-profile reconstruction reproduces9.97786px, but it does not recover unretained live camera metadata or qualify all continuous poses/occlusion. Require original native rerun and visual inspection.
