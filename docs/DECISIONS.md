@@ -1,3 +1,21 @@
+# CPU temporary storage correction, 2026-10-11
+
+Prefer the measured minimal configuration correction over a new test-state reuse interface. Keep original fresh-per-test fixtures and all assertions. Normal C CPU temporary storage reduced one unchanged test to 4.111 seconds (body 1.189, cleanup 0.100), versus variable forced-D observations up to 68.423. The staged FixtureBaseline remains optional and uninstalled. SOURCE03 will retain the original 600-second budget; no cached production admission, skipped cases or timeout waiver.
+
+This is a narrow distinction between small transient synthetic CPU files and heavy development storage. The gameplay checkout, source/cohorts/evidence, caches, videos and all actual native browser profiles remain D; no project or personal data is moved. Disk-driver/antivirus/other-worker causation and whole-gate success are not established. SOURCE02/raw failures remain retained. Parent owns forward documentation integration, current native execution and exact remote qualification; wider production goal remains unfinished.
+
+---
+
+Independent review01 establishes two material defects in uninstalled optional fixture02: junction target enumeration occurs before refusal, and an ordinary hard link lets reset overwrite the outside synthetic inode. No user path or product data was involved. Do not promote the helper; retain raw negative controls and require pre-descent/link-count guards if a separate staged repair proceeds. Original per-test fixtures remain installed.
+
+# Source budget diagnosis, 2026-10-11
+
+At pushed `c87fdac76ec1935fda7a4f839ba7cd593988432b`, SOURCE02 closed exit1 at2026-10-11T06:36:14Z. All141 syntax checks and Node1964pass/2explicit skips passed; Python exceeded its unchanged600-second budget after412 completed method lines, with no reported assertion failure before termination. This is a failed complete source gate. Native gameplay, current footage and fresh remote qualification remain pending. Original SOURCE01/COMMONJS failures and all timeout evidence remain retained.
+
+Measure repeated synthetic fixture setup, real validation/subprocess and cleanup costs under the exact Source02 D TEMP environment. Preserve all assertions, filesystem validators and existing budget. Two scoped workers only: one profiles the Python bottleneck, one finishes the small actual-gameplay recorder. Neither may edit ROOT/STATION or launch a browser. Parent owns forward integration. No cached production admission, fake filesystem, skipped cases or timeout waiver.
+
+---
+
 # Current repair and honest qualification, 2026-10-11
 
 Repair CommonJS ownership with the actual canonical modules resolved at call time; do not provide fake geometry or weaken their identity guards. Legacy App extraction fixtures must include the unchanged production helpers and real Core/Motion owners. The explicit crown-piece accounting preserves the old scene budget and every physical-solid assertion. Preserve all original failing evidence.

@@ -1,3 +1,17 @@
+# CPU temporary storage correction, 2026-10-11
+
+No new human or native gameplay result is claimed. The original same mocked-orchestration check passed in 4.111 seconds using ordinary C CPU temporary storage, versus variable D observations up to 68.423 seconds. This measures synthetic test filesystem overhead, not player pacing/FPS. All original assertions and per-test isolation stay. SOURCE02 remains failed; complete SOURCE03/current native/visible acceptance are pending. Browser profiles, real source/evidence and heavy work stay on D.
+
+The staged capture02 caller has 29 passing CPU boundary tests and a strict current-native admission/one 24-second silent movie/two UI still contract. It has produced no browser footage. Staged grounded footfalls have 21 passing tests composed over the actual current App audio seams; no installation, actual AudioContext or listening acceptance follows.
+
+---
+
+# Source budget diagnosis, 2026-10-11
+
+At pushed `c87fdac76ec1935fda7a4f839ba7cd593988432b`, SOURCE02 closed exit1 at2026-10-11T06:36:14Z. All141 syntax checks and Node1964pass/2explicit skips passed; Python exceeded its unchanged600-second budget after412 completed method lines, with no reported assertion failure before termination. This is a failed complete source gate. Native gameplay, current footage and fresh remote qualification remain pending. Original SOURCE01/COMMONJS failures and all timeout evidence remain retained.
+
+---
+
 # Current repair and honest qualification, 2026-10-11
 
 No new human playtest, actual roadkeeper browser acceptance or road-account movie exists yet. Current scene repair is CPU evidence only. SOURCE01 failed28 checks; the targeted repair now passes the affected geometry checks, with the87-check run's final count defect separately corrected13/13. Old remote bow consignment never entered Earth in its failed case; preserve that screenshot and failure.

@@ -1,3 +1,21 @@
+# CPU temporary storage correction, 2026-10-11
+
+Parent owns the six continuity leaves; runtime/build/tests remain unchanged from pushed c87fdac. SOURCE02 remains a failed 600-second Python timeout, never a native pass. The exact original mocked-orchestration method passed with normal C CPU temporary storage in 4.111 seconds (body 1.189, cleanup 0.100), against variable D samples of 9.214/19.846 seconds and a staged D run of 68.423 seconds. Evidence: D staging source-python-budget-review-oct11/comparison-c-default01/TIMING.json. This identifies avoidable forced-D small-file work; no disk-driver or competing-worker cause is established.
+
+Run SOURCE03 with the existing complete verifier, original fresh-per-test fixtures, unchanged assertions and 600-second budget. Restore ordinary C TEMP/TMP for small CPU fixtures only; explicit game/source/cohort/evidence outputs and every native browser profile remain on D. FixtureBaseline/candidate02 is an uninstalled researched fallback, not product code or a gate pass. Two scoped colleagues finish bounded recorder/review artifacts and release read ownership. No main merge, deployment, paid provider, personal-save access, unrelated stop or blocked deletion retry.
+
+---
+
+Independent optional-fixture review found real private-junction traversal before refusal and a hard-link reset that changed an outside synthetic inode. Candidate02 is uninstalled and must not be promoted. Preserve review01 failures; any staged repair must refuse links before descent/read/mutation. The production/source tests remain their original fresh-per-test implementation.
+
+# Source budget diagnosis, 2026-10-11
+
+At pushed `c87fdac76ec1935fda7a4f839ba7cd593988432b`, SOURCE02 closed exit1 at2026-10-11T06:36:14Z. All141 syntax checks and Node1964pass/2explicit skips passed; Python exceeded its unchanged600-second budget after412 completed method lines, with no reported assertion failure before termination. This is a failed complete source gate. Native gameplay, current footage and fresh remote qualification remain pending. Original SOURCE01/COMMONJS failures and all timeout evidence remain retained.
+
+Measure repeated synthetic fixture setup, real validation/subprocess and cleanup costs under the exact Source02 D TEMP environment. Preserve all assertions, filesystem validators and existing budget. Two scoped workers only: one profiles the Python bottleneck, one finishes the small actual-gameplay recorder. Neither may edit ROOT/STATION or launch a browser. Parent owns forward integration. No cached production admission, fake filesystem, skipped cases or timeout waiver.
+
+---
+
 # Current repair and honest qualification, 2026-10-11
 
 PR54 remains an open draft on `gameplay/road-account-aftermath-20261007`, pushed head `3dca2d6c48d77324c1bb9261a6bf116f7272cfed`, stacked on PR53 `751db8caf324a30b393674d10341f5f087b93a5f`. Normal origin fetch and review inspection found no newer head, reviews or comments. Both old owned processes are absent; no unrelated worker was stopped. Parent owns the existing ROOT; STATION is clean detached `3763f0f4004f44ee6afc7c4368f811ea922c4ca7`. Two scoped Sol colleagues diagnose legacy App fixtures and the crossing failure; they write only small D stages.

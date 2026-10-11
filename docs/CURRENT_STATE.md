@@ -1,3 +1,17 @@
+# CPU temporary storage correction, 2026-10-11
+
+The gameplay runtime, generated pages and original test files remain unchanged from c87fdac. SOURCE02 failed at its original 600-second Python budget after 412 completed method lines; no assertion failure was reported before termination. Node passed 1964 with two explicit skips. No current native/footage/remote acceptance follows.
+
+Measured diagnosis found forced-D tiny-file test work: the same unchanged orchestration method passed in 4.111 seconds with normal C temporary storage, including 1.189 seconds in its real body and 0.100 seconds cleanup. D samples ranged from 9.214 to 68.423 seconds; one original Earth module spent 194.51 of 211.45 seconds on fixture setup/removal. This is an observed local I/O bottleneck, not a GPU or game-runtime measurement. SOURCE03 will preserve all tests/budgets and use ordinary C CPU TEMP/TMP while the game, generated cohorts/evidence, caches and all native profiles remain explicit D. The staged reusable fixture is optional and uninstalled. Complete source and actual browser gates remain pending.
+
+---
+
+# Source budget diagnosis, 2026-10-11
+
+At pushed `c87fdac76ec1935fda7a4f839ba7cd593988432b`, SOURCE02 closed exit1 at2026-10-11T06:36:14Z. All141 syntax checks and Node1964pass/2explicit skips passed; Python exceeded its unchanged600-second budget after412 completed method lines, with no reported assertion failure before termination. This is a failed complete source gate. Native gameplay, current footage and fresh remote qualification remain pending. Original SOURCE01/COMMONJS failures and all timeout evidence remain retained.
+
+---
+
 # Current repair and honest qualification, 2026-10-11
 
 PR54 remains an open draft on `gameplay/road-account-aftermath-20261007`, pushed head `3dca2d6c48d77324c1bb9261a6bf116f7272cfed`, stacked on PR53 `751db8caf324a30b393674d10341f5f087b93a5f`. Normal origin fetch and review inspection found no newer head, reviews or comments. Both old owned processes are absent; no unrelated worker was stopped. Parent owns the existing ROOT; STATION is clean detached `3763f0f4004f44ee6afc7c4368f811ea922c4ca7`. Two scoped Sol colleagues diagnose legacy App fixtures and the crossing failure; they write only small D stages.

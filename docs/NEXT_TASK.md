@@ -1,3 +1,21 @@
+# CPU temporary storage correction, 2026-10-11
+
+Keep all original test files and fresh-per-test fixture isolation. Run complete SOURCE03 at the exact clean pushed head with ordinary C TEMP/TMP for lightweight CPU tests; source/cohorts/evidence and every actual native profile remain D. The unchanged 600-second Python budget still applies. Same-method C diagnosis passed in 4.111 seconds versus variable D samples through 68.423; this is sufficient to try the minimal environment correction, not to claim the whole gate passed. Reusable fixture candidate02 stays staged and uninstalled unless evidence establishes further need.
+
+After an actual complete source pass, run the one current bow crossing diagnostic with the original software renderer/30-second scene wait. Preserve the old failure's unknown cause if it does not reproduce. Then execute current primary, boundary and aftermath native gates, inspect actual UI/geometry in both cameras, record the bounded short clip, and qualify the exact remote head in the reused clean STATION. Never rebind old receipts to a changed HEAD. Wider production goal remains active and unfinished.
+
+---
+
+Do not install optional fixture candidate02: independent real NTFS controls found junction traversal before refusal and hard-link mutation of an outside synthetic inode. Both endpoints were owned review fixtures; ROOT/personal data were untouched. Preserve failures; any candidate03 repair stays staged and requires new independent controls. This does not block unchanged-test SOURCE03.
+
+# Source budget diagnosis, 2026-10-11
+
+At pushed `c87fdac76ec1935fda7a4f839ba7cd593988432b`, SOURCE02 closed exit1 at2026-10-11T06:36:14Z. All141 syntax checks and Node1964pass/2explicit skips passed; Python exceeded its unchanged600-second budget after412 completed method lines, with no reported assertion failure before termination. This is a failed complete source gate. Native gameplay, current footage and fresh remote qualification remain pending. Original SOURCE01/COMMONJS failures and all timeout evidence remain retained.
+
+Measure repeated synthetic fixture setup, real validation/subprocess and cleanup costs under the exact Source02 D TEMP environment. Preserve all assertions, filesystem validators and existing budget. Two scoped workers only: one profiles the Python bottleneck, one finishes the small actual-gameplay recorder. Neither may edit ROOT/STATION or launch a browser. Parent owns forward integration. No cached production admission, fake filesystem, skipped cases or timeout waiver.
+
+---
+
 # Current repair and honest qualification, 2026-10-11
 
 Complete current source repair, commit/push forward normally, then earn fresh current cohorts and execute actual primary, boundary and road-account browser gates. Diagnose the original crossing refusal before retrying its affected journey; do not lengthen its timeout or replay a full suite without a cause. Reuse the clean independent STATION only after prior ownership and failure evidence are checked. Qualify fresh remote source and relevant/full browser checks before claiming delivery.

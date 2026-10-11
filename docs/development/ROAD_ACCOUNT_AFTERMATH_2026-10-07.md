@@ -1,5 +1,9 @@
 # A corrected account changes the road
 
+## CPU temporary storage correction, 2026-10-11
+
+SOURCE02 failed its unchanged 600-second Python gate after 412 completed method lines, while Node passed 1964/2 explicit skips. The same original orchestration method passed in 4.111 seconds with ordinary C CPU TEMP, against variable forced-D observations up to 68.423 seconds. Retain the raw D comparison receipts/failure. SOURCE03 uses normal C temporary storage only for lightweight synthetic CPU tests; game/source/cohorts/evidence and every native browser profile remain D. All original tests, fresh-per-test fixture isolation and budgets stay unchanged; the new FixtureBaseline candidate is staged and uninstalled. No current native/video/remote success is claimed yet.
+
 Prepared before installation from WildSigns review source `751db8caf324a30b393674d10341f5f087b93a5f` (records-only child of qualified local source3763f0f), stacked PR53. This is the next connected Earth production step. ET09's public-account idea informs the timber-damage adaptation; it does not establish the culprit, settle Briar's story or override newer gameplay. Sela, Rill, Merren and the roadkeeper are provisional interpretations of the founder material.
 
 The player returns from **The Beast With the Wrong Name** with one deliberately claimed canonical outcome. Nearby Sela, Rill and Merren acknowledge what was witnessed, retain uncertainty about the timber gouge and describe the practical route. A visible ordinary roadkeeper subsequently inspects the supported bypass or the separately cleared pocket and returns. Existing service actions remain available. Opening a reading cannot accept, complete or pay any quest.
@@ -39,3 +43,7 @@ The earlier SOURCE01 closed with exit1: Node1914 passed /28 failed /2 skipped (1
 Old RemoteFull02 also closed exit1, on Oct7: homecoming and onboarding passed, then bow-south consignment setup timed out waiting for Earth after the crossing confirmation. That is a failed incomplete51-browser gate, not a qualified game. Its original report, screenshots, closed contexts/server and console remain preserved. New road-account native gameplay and video have not run. Historical wildlife footage qualifies only its original source. World9/Adventure12/optional WildSigns1, XP, saves and both cameras remain unchanged. Wider production goal active unfinished; heartbeat paused; current authorization excludes main merge, deployment, paid providers, personal saves, unrelated stops and blocked deletion retries.
 
 The three repaired legacy App hosts were installed from their exact reviewed preimages/replacements. Real installed execution passed45 substantive cases (20 expedition,21 homecoming,4 paused-probe); the Node wrapper reports26 tests, zero failures/skips. All395 original assertion call substrings were retained. These are CPU hosts, not gameplay/browser acceptance.
+
+## Complete Source02 timeout
+
+At pushed `c87fdac76ec1935fda7a4f839ba7cd593988432b`, SOURCE02 closed exit1 at2026-10-11T06:36:14Z. All141 syntax checks and Node1964pass/2explicit skips passed; Python exceeded its unchanged600-second budget after412 completed method lines, with no reported assertion failure before termination. This is a failed complete source gate. Native gameplay, current footage and fresh remote qualification remain pending. Original SOURCE01/COMMONJS failures and all timeout evidence remain retained.
