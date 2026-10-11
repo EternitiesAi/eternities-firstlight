@@ -1,3 +1,13 @@
+# Loaded characters preserve their journal, 2026-10-11
+
+The independently reviewed journal hydration repair is installed on gameplay/journal-hydration-20261011, stacked on PR57 head414b. Existing characters rebuild canonical resident routes without repeating three startup notices; fresh creation and genuine live events retain them. No durable field or schema change: World9/Adventure12/WildSigns1. Both cameras and the integrated five-realm game remain.
+
+Installed four-component Node checks53/53PASS, zero fail/skip; identical regenerated3310250B pages SHA256a2984c6de859ed4431cc2cefcc2565ddea7fb973c72afb15d7bfafc5213e112a. Fresh complete source/native/remote gates are pending; tests are actual modules with labelled synthetic interface boundaries, not human acceptance.
+
+Prior414b Source12 passed214commands/142syntax; Node2056PASS/2existing skips and Python447tests/10reported skips OK. RemoteFull04 failed original30s first-browser goto/load before earned stages; cause UNKNOWN. Country15 closed failed on forest movement support after five actual1440x960 RTX3080 valley/shore PNGs and a supported keyboard shore crossing; all owned resources closed. These original failures and epochs remain. New startup timeline tooling is a separate reviewed preparation. See docs/development/JOURNAL_HYDRATION_2026-10-11.md for exact receipts and limits. Goal ACTIVE unfinished; heartbeat PAUSED; no merge/deploy or AAA completion claim.
+
+---
+
 # Living Earth landmarks: installed, awaiting visible qualification, 2026-10-11
 
 The player can keep the existing Coastward outing and woodland route while selected western trees gain lobed crowns, the northern root passage gains tapering connected timber, and Balanced/High shoreline floor paint matches the existing apron. Low and all physical navigation/camera envelopes remain unchanged. No new realm, quest, reward or equipment authority is introduced by this pass.

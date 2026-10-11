@@ -1,3 +1,13 @@
+# Active journal-load milestone, 2026-10-11
+
+Current review branch gameplay/journal-hydration-20261011 starts from PR57 living-landmarks414b. The reviewed two-runtime-leaf fix distinguishes fresh creation from loaded hydration; preserve its explicit Store/character/reset/import intent and original live schedule/gathering events. Hydration is transient; World9/Adventure12/WildSigns1 and all systems/cameras remain. See docs/development/JOURNAL_HYDRATION_2026-10-11.md.
+
+Installed four-component checks pass53/53, zero failures/skips, and real build emits identical3310250B pages a2984c6de859ed4431cc2cefcc2565ddea7fb973c72afb15d7bfafc5213e112a. Current complete/native/remote qualification is pending. Prior414b Source12 passed; remoteFull04 startup and partial Country15 forest movement failed and remain retained. Country15 yielded five actual valley/shore PNGs with all owned resources closed; no forest screenshot acceptance. Do not rebind old epoch evidence or weaken support/deadline/owner guards.
+
+Parent owns ROOT/native integration; colleagues stage small independent source/visual analysis. Production goal ACTIVE unfinished, heartbeat PAUSED. Preserve saves/XP/keys/history/choices/all systems; heavy D storage, existing checkouts, no duplicate games/raw movies/profiles. No merge/deploy/paid provider/personal save read/unrelated shutdown/blocked deletion retry. Frontier Oct11 already checked.
+
+---
+
 # Living Earth landmarks: integrated art and ownership, 2026-10-11
 
 Parent owns gameplay/earth-living-landmarks-20261011, stacked on PR56/f2f3a4a9d7bbbc57b246ab5550ff1820619a8f44, in the existing integrated ROOT. Read docs/development/EARTH_LIVING_LANDMARKS_2026-10-11.md. Two existing Sol colleagues stage small source/review files only. Parent freezes each checkout during its own verifier/native execution; do not duplicate work or mutate a live checkout.

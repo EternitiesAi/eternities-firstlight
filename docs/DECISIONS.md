@@ -1,3 +1,11 @@
+# Explicit load intent preserves bounded journal history, 2026-10-11
+
+Use a transient strict boolean hydrated constructor option, default fresh/false. App explicitly distinguishes actual Store new and reset/create from loaded/migrated/import/switch/reload intent. Corrupt/unavailable display placeholders hydrate while existing blocked storage and raw recovery remain untouched. Do not infer intent from empty history or filter/erase existing events. Reuse the exact canonical schedule/pathfinder without a first hydration tick; retain every actual live transition/gathering branch.
+
+No persistent field, schema migration, XP reset, reward or other system/camera change. The two state-only Simulation callers retain defaults. Separate tooling may record missing browser startup timeline and secondary interruption while re-raising the original error; no event-wait/deadline/renderer/quality waiver. Preserve current failedFull04/Country15 and their exact epochs. Country15's partial shore images do not certify the forest route. Wider production goal remains ACTIVE unfinished and scheduling PAUSED. See the journal task note for current evidence/acceptance.
+
+---
+
 # Refine Earth presentation inside canonical authority, 2026-10-11
 
 Use original lobed canopy geometry for only twelve declared Balanced/High western crowns; preserve all selected matrices, roles, wind, reserves and old convex envelopes. Shape only the two northern root beams with timber UVs through the shared Engine timber-kind/stride8 definition and actual grazer visibility reader. Preserve positive-volume endpoint masonry/cap/keystone joins, standing clearance and conservative old solid/camera envelopes. Match only the Earth shore-spur floor RGB to the existing apron in Balanced/High; Low/canonical floor colours and all other owners stay exact.

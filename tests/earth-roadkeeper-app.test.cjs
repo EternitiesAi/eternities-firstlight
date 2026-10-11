@@ -193,8 +193,8 @@ test('primitive lease, inherited prerequisite and unclaimed accounts refuse opti
 test('installed App seams retain Core-first ordinary/test ticks, prep before every art submission, scene sync and outgoing force reset', {skip:hookFile?'staged hooks only; actual installed App pipeline is parent-owned and not yet integrated':false},()=>{
  for(const site of ['sim.tick(dt);tickRoadkeeper(dt);','sim.tick(.05);tickRoadkeeper(.05);'])assert.ok(app.includes(site),site);
  assert.match(app,/function switchScene\(\)\{syncRoadkeeperOwner\(\);/);
- const apply=app.slice(app.indexOf('function applyWorld(state)'),app.indexOf('function applyWorld(state)')+1500);
- assert.ok(apply.indexOf('syncRoadkeeperOwner(true)')>=0&&apply.indexOf('syncRoadkeeperOwner(true)')<apply.indexOf('sim=new C.Simulation(state)'));
+ const apply=app.slice(app.indexOf('function applyWorld(state,hydrated=true)'),app.indexOf('function applyWorld(state,hydrated=true)')+1500);
+ assert.ok(apply.indexOf('syncRoadkeeperOwner(true)')>=0&&apply.indexOf('syncRoadkeeperOwner(true)')<apply.indexOf('sim=new C.Simulation(state,{hydrated})'));
  for(const m of app.matchAll(/art\.update\(sim,elapsed,target\)/g)){
   const before=app.slice(Math.max(0,m.index-220),m.index);assert.match(before,/roadkeeperPresentation\(\);prepareRoadkeeperDiagnostics\(\);/);
  }

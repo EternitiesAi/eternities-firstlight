@@ -1,3 +1,13 @@
+# Qualify loaded history, then repair the actual route, 2026-10-11
+
+Commit/push the reviewed journal hydration source on its separate branch stacked against PR57. Integrate the accepted startup-observation tooling separately without changing renderer/quality/navigation deadlines or failedFull04 status. Run the original complete current verifier with fresh blade/bow/veteran and whole-draft journeys. Current installed four-component53/53 and identical real build pass; wider gates are pending.
+
+Use the reviewed one-profile native caller at the new clean head: command-earned import, exact journal/sequence/durable ownership, four real UI reloads, whole-browser restart, ordinary RAF and one bounded screenshot. No personal saves or test-facade rendering. Normally fetch into released independent STATION and run the original complete browser gate; preserve mandatory source/admission/owner/portrait/support checks and raw failures/skips.
+
+Separately investigate closed414b Country15's full-body/segment failure while Atlas walking from the shoreline toward Root-channel load. Five actual valley/shore PNGs are available for pixel review; no forest frames exist. Do not waiver the predicate or endlessly repair capture callers instead of the game. Human route clarity, camera comfort, journal usefulness, fights and rewards remain pending. World9/Adventure12/WildSigns1 unchanged; goal ACTIVE unfinished, heartbeat PAUSED. Reuse checkouts/small D evidence; all prior safety/storage/system boundaries remain.
+
+---
+
 # Qualify the installed living landmarks, 2026-10-11
 
 Run the original complete Source12 verifier at the clean committed new head with fresh blade/bow/veteran earned cohorts and both whole-draft journeys. Use independently reviewed observer02 only after its exact current source/page/runtime/cohort admission; inspect shore seam, selected canopy silhouettes, timber passage texture, actual default Adventure/Follow, Low and cutaway controls. Keep twelve PNG attempts/2MB each/24MB total and original300/280/120-second route limits. A projected or hidden aperture is not a visible acceptance.
