@@ -1,3 +1,17 @@
+# Living Earth visible acceptance, 2026-10-11
+
+Current installed75-test/build success is CPU evidence. Default Adventure/Follow canopy/root/shore views, Low controls, real timber grain, cutaway, reflection behavior and useful silhouette remain pending native inspection at the new page. The f2 shoreline screenshots showed a continuous exposed cap; hidden joins were not demonstrated. Cream/green rectangles and detached approximate foam remained visible. This pass addresses the ground palette only; detached foam is still an honest limitation.
+
+Human questions remain simple: did you know where to go; did the fights and cameras feel better; did the reward make you want another outing? Also inspect audio balance and returning-character usefulness. No current movie, human approval, seamless open world or performance certification is claimed.
+
+At the previous exact f2f3a4a9d7bbbc57b246ab5550ff1820619a8f44 epoch, SOURCE11 passed214 commands/142 syntax checks, Node2041 passes with2 existing skips and447 Python tests with10 reported skips. Native shore30, primary1984, boundaries2935, footfalls44 and mandatory aftermath361 all passed with owned resources closed. These are historical f2 receipts, never rebound to this changed page. Old independent-clone765 remoteFull03 closed FAILED after five passing browser suites at the stale roadkeeper-Art admission; the correction is in this branch's base. Current complete remote qualification remains pending. Retain all raw failures and skips.
+
+Actual f2 Capture07 closed FAILED during moving-civilian projected-click preparation; all owned resources closed and no movie was recorded. Its separate 30,009.1 ms ordinary RAF cadence observation did run on the RTX3080 before that later failure, without recording; it is not presented FPS/GPU time/human acceptance. Two actual UI stills and all failure evidence remain. The first source-only new landscape observer also had a cold-null startup defect, caught before native allocation; independently reviewed observer02 fixes only that startup boundary and post-import writer binding, preserving all original controls, guards and budgets.
+
+World9 / Adventure12 / WildSigns1 are unchanged, with no migration or new persistent field. Preserve saves, keys, notes/music/exports, storedXP, claims, gear/sockets/upgrades, explicit choices, companion, housing, crafting and both cameras. Wider production goal ACTIVE unfinished; heartbeat PAUSED. No main merge, deployment, paid provider, proprietary extraction, personal-save inspection, unrelated shutdown, duplicate full game or blocked standalone-deletion retry. Reuse ROOT and the now-released independent STATION with small D stages and bounded evidence. Frontier Oct11 already checked.
+
+---
+
 # Coastward visual checks and pending founder play, 2026-10-11
 
 New apron/cloth/source checks are CPU evidence. Actual current shoreline grass/bank joins, water contact, coat silhouette, occlusion and both-camera benefit remain pending native inspection. Existing foam is still an approximate presentation and requires observation at the new edge.

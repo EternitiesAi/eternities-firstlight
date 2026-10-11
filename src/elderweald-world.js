@@ -83,13 +83,13 @@
   const out=[],meta=(role,parent,extra={})=>({appearanceOnly:true,cameraSolid:false,cutaway:false,
    rough:.96,elderwealdPart:role,...(parent?{solidId:parent,worldSolidId:parent,structureId:parent}:{}),...extra});
   const add=(kind,p,s,c,role,parent,extra={})=>out.push({kind,p,s,c,opt:meta(role,parent,extra)});
-  const beam=(a,b,w,d,c,role,parent,extra={},reference=[0,1,0])=>{
+  const beam=(a,b,w,d,c,role,parent,extra={},reference=[0,1,0],kind='timber-panel')=>{
    const delta=b.map((v,i)=>v-a[i]),length=Math.hypot(...delta),axis=unit(delta);
    const ref=Math.abs(dot(reference,axis))>.95?[1,0,0]:reference;
    const up=unit(ref.map((v,i)=>v-axis[i]*dot(ref,axis))),side=cross(axis,up);
    const p=a.map((v,i)=>(v+b[i])/2),s=[length,w,d];
    const m=[...axis.map(v=>v*length),0,...up.map(v=>v*w),0,...side.map(v=>v*d),0,...p,1];
-   add('timber-panel',p,s,c,role,parent,{m,anchorFrom:a,anchorTo:b,...extra});
+   add(kind,p,s,c,role,parent,{m,anchorFrom:a,anchorTo:b,...extra});
   };
   const treeSolids=extension.solids.filter(s=>s.id.startsWith('elderweald-trunk-'));
   for(const [i,t] of treeSolids.entries()){
@@ -137,7 +137,7 @@
   for(const side of [-1,1]){
    const x=-148+side*4,id=side<0?'elderweald-root-west-wall':'elderweald-root-east-wall';
    for(let i=0;i<7;i++)add('box',[x,FLOOR+2.44,-81+i*2],[1.48,.18,1.92],i%2?0x89907a:0x78816e,'masonry-cap',id);
-   for(const z of [-80,-70])beam([x,FLOOR+2.28,z],[-148,FLOOR+3.52,z],.42,.52,0x5b4d39,'root-arch',id,{cutaway:true});
+   for(const z of [-80,-70])beam([x,FLOOR+2.28,z],[-148,FLOOR+3.52,z],.42,.52,0x5b4d39,'root-arch',id,{cutaway:true},[0,1,0],quality!=='low'&&z===-70?'elderweald-root-arch':'timber-panel');
   }
   for(const z of [-80,-70])beam([-148,FLOOR+3.52,z-1],[-148,FLOOR+3.52,z+1],.68,.68,0x514331,'root-keystone',null,{cutaway:true});
   // Reeds indicate the river edge; none occupy the bridge or interaction line.

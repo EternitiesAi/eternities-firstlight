@@ -51,10 +51,12 @@ function coastBanks(cells){
  });
 }
 function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isInterior=false;a.e.worldFog=def.id==='earthlands'?{clear:30,span:130}:null;a.e.theme=def.theme||null;a.e.noWater=!def.water;a.e.ambientOverride=def.id==='hell'?.6:def.id==='heaven'?.87:.76;a.e.worldAtmosphere=def.id==='heaven'?{top:0x9fb8bd,fog:0xe4cdbd,night:.12,power:.85,sunColor:0xffe5c2}:def.id==='hell'?{top:0x32292f,fog:0x75605a,night:.38,power:.68,sunColor:0xffc185}:null;
- const cells=partitions(def);
+ // Coastward floor paint shares the existing apron palette at Balanced/High.
+ // Canonical partition colors, owners and Low material remain unchanged.
+ const cells=partitions(def),shorePaint=def.id==='earthlands'&&['balanced','high'].includes(sim.state.settings.quality)?def.patches.find(p=>p.id==='shore-overlook').color:null;
  for(const p of cells){
   const gallery=p.gallery;
-  a.box(p.x,p.y-.055,p.z,p.w,.11,p.d,p.color,{...decor,cutaway:!!gallery,terrain:true,worldGround:p.source});
+  a.box(p.x,p.y-.055,p.z,p.w,.11,p.d,shorePaint!==null&&(p.source==='shore-spur'||p.source==='shore-overlook')?shorePaint:p.color,{...decor,cutaway:!!gallery,terrain:true,worldGround:p.source});
   // Bridge decks have open water underneath. Other ground has a closed shore.
   if(!gallery&&!/bridge/.test(p.source))a.box(p.x,(p.y-.11-.5)/2,p.z,p.w,p.y-.11+.5,p.d,def.palette.stone,decor);
  }

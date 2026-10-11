@@ -50,9 +50,9 @@ function parts(def,options={}){
     const angle=yaw+side*2.55,offset=(.68+vary(i,side+2)*.1)*scale;
     const p=[x+Math.cos(angle)*offset,FLOOR+h+.75+vary(i,side+3)*.12,z+Math.sin(angle)*offset];
     branch([p[0],p[1]-.28,p[2]],side);
-    emit('round',p,[2.35*scale,2.2+vary(i,side+7)*.15,2.25*scale],PALETTE[(i+side)%4],'organic-crown',{foliage:true,wind:2,r:[0,angle,0],rough:.86+.03*((i+side)%4)});
+    emit('woodland-canopy',p,[2.35*scale,2.2+vary(i,side+7)*.15,2.25*scale],PALETTE[(i+side)%4],'organic-crown',{foliage:true,wind:2,r:[0,angle,0],rough:.86+.03*((i+side)%4)});
    }
-   emit('round',[x-.09*scale,FLOOR+h+1.25,z+.06*scale],[2.7*scale,2.6,2.5*scale],PALETTE[(i+2)%4],'organic-crown',{foliage:true,wind:2,r:[0,yaw+.4,0]});
+   emit('woodland-canopy',[x-.09*scale,FLOOR+h+1.25,z+.06*scale],[2.7*scale,2.6,2.5*scale],PALETTE[(i+2)%4],'organic-crown',{foliage:true,wind:2,r:[0,yaw+.4,0]});
   }
   // Actual transformed meshes and conservative current shader wind envelope.
   // Keep the whole canopy column clear, rather than relying on overhead height.
