@@ -354,7 +354,12 @@ def driver_class(suite,base):
    trace=self.row['roadkeeperTrip']=dict(samples=retained,totalSamples=0,phaseOrder=[],meters=0,complete=False,before=before)
    reserve=self.ev('()=>({services:RealmWorldFoundations.definition("earthlands").points.filter(p=>p.kind==="person"),notice:{x:RealmEarthWildSignsData.giver.x+1.4,z:RealmEarthWildSignsData.giver.z+.45}})')
    while time.monotonic()-started<BUDGETS['tripSeconds'] and samples<BUDGETS['samplesPerTrip']:
-    s=self.sample();v=s['view'];need(safe_view(v,outcome) and s['scene']==ROOM and not s['paused'] and not s['hidden'] and not v['menuOpen'] and v['suspended'] is None,'Actual live same-room unsuspended roadkeeper required')
+    s=self.sample();v=s['view']
+    if not (safe_view(v,outcome) and s['scene']==ROOM and not s['paused'] and not s['hidden'] and not v['menuOpen'] and v['suspended'] is None):
+     # Retain only the bounded rejected observation before the original guard.
+     # No retry, repair, scene step, owner mutation or relaxed acceptance.
+     trace['rejectedSample']={k:s.get(k) for k in ('view','elapsed','scene','paused','hidden','active','player','parts')}
+    need(safe_view(v,outcome) and s['scene']==ROOM and not s['paused'] and not s['hidden'] and not v['menuOpen'] and v['suspended'] is None,'Actual live same-room unsuspended roadkeeper required')
     need(reaction_facts(s['world'])==facts,'Passive trip changed progression/economy/history')
     need(self.ev('p=>RealmWorldFoundations.walkable("world-earthlands",p.x,p.z,.6)',v),'Sampled civilian ground is unsupported')
     if last:need(self.ev('p=>RealmWorldFoundations.segment("world-earthlands",p[0],p[1],.6)',[last,v]),'Sampled actual civilian segment lost support')

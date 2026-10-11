@@ -200,3 +200,41 @@ test('installed App seams retain Core-first ordinary/test ticks, prep before eve
  }
  assert.ok(app.includes('roadkeeper:roadkeeperDiagnostics()'));
 });
+
+test('actual complete frame republishes roadkeeper after periodic Store save without changing motion or getter authority',()=>{
+ // Existing explicitly synthetic paid-world/storage fixtures; actual Core,
+ // Store, Motion/hooks and exact installed frame/save source. No native RAF.
+ const f=walking(),control=walking(),lease=f.sim.roadkeeperOwnerLease;
+ const frameSource=app.split('\n').find(s=>s.startsWith('function frame(now)'));
+ const saveSource=app.split('\n').find(s=>s.startsWith('function save(){'));
+ assert.ok(frameSource&&saveSource);
+ let presentationCalls=0,prepareCalls=0;
+ const env={get sim(){return f.sim;},get characterStore(){return f.store;},panel:null,
+  document:{hidden:false,querySelector:()=>null},RealmEarthRoadkeeperMotion:O,RealmWorldFoundations:W,RealmCombat:globalThis.RealmCombat,
+  lastFrame:0,frames:0,fpsStart:0,fps:0,lastUi:0,lastSave:0,elapsed:f.sim.elapsed,target:null,follow:null,keys:new Set(),camera:{yaw:0},
+  engine:{render(){}},art:{update(){},makeRetreat(){}},experience:null,sandbox:null,adventure:null,arsenal:null,rpg:null,audio:{tick(){}},G_CAPTURE:true,
+  preserveExisting:false,saveState:'new',rememberCamera(){},renderStatus(){},bindWildSignsClearance(){},tickConsignment(){},tickGrazer(){},switchScene(){},updateCamera(){},
+  syncFieldcraftOwner(){},consignmentPresentation(){},grazerPresentation(){},prepareWildSignsDiagnostics(){},acknowledgeOrdinaryGrazer(){},updateLabels(){},refreshUI(){},mapDraw(){},ui:{map:{}},
+  tickRoadkeeper:f.api.tickRoadkeeper,
+  roadkeeperPresentation(...args){presentationCalls++;return Reflect.apply(f.api.roadkeeperPresentation,f.api,args);},
+  prepareRoadkeeperDiagnostics(...args){prepareCalls++;return Reflect.apply(f.api.prepareRoadkeeperDiagnostics,f.api,args);}};
+ const frame=vm.compileFunction(saveSource+'\n'+frameSource+'\nreturn frame;',[],{filename:path.join(ROOT,'src/app.js')+':complete-frame',contextExtensions:[env]})();
+ const revision=f.store.revision,writes=f.writes();frame(100);
+ const view=f.api.roadkeeperDiagnostics();assert.ok(view,'complete periodic-save frame must publish a current prepared view');
+ assert.equal(view.suspended,null);assert.equal(view.phase,'outbound');assert.equal(f.sim.roadkeeperOwnerLease,lease);
+ assert.equal(f.store.revision,revision+1);assert.equal(f.writes(),writes+1);assert.equal(presentationCalls,2);assert.equal(prepareCalls,2);
+ control.frame(.016);assert.ok(control.store.save(control.sim.snapshot()).ok);
+ assert.deepEqual(f.sim.snapshot(),control.sim.snapshot());assert.equal(f.map.get(CH.KEY),control.map.get(CH.KEY));
+ assert.deepEqual(pose(view),pose(control.view()));assert.equal(view.yaw,control.view().yaw);
+ const before=simBytes(f.sim),disk=f.map.get(CH.KEY),pureWrites=f.writes();
+ for(let n=0;n<25;n++)assert.deepEqual(f.api.roadkeeperDiagnostics(),view);
+ assert.equal(simBytes(f.sim),before);assert.equal(f.map.get(CH.KEY),disk);assert.equal(f.writes(),pureWrites);
+ presentationCalls=prepareCalls=0;frame(116);
+ assert.ok(f.api.roadkeeperDiagnostics());assert.equal(f.store.revision,revision+1);assert.equal(f.writes(),pureWrites);
+ assert.equal(presentationCalls,1);assert.equal(prepareCalls,1,'no extra preparation on non-save frame');
+ // A genuine later Store revision outside any prepared frame must still
+ // withdraw cached diagnostics; the getter never repairs or renews authority.
+ f.sim.setTime(f.sim.state.hour+.01);assert.ok(f.store.save(f.sim.snapshot()).ok);
+ assert.equal(f.store.revision,revision+2);const external=simBytes(f.sim),externalWrites=f.writes();
+ assert.equal(f.api.roadkeeperDiagnostics(),null);assert.equal(simBytes(f.sim),external);assert.equal(f.writes(),externalWrites);
+});
