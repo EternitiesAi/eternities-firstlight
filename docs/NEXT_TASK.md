@@ -1,3 +1,14 @@
+# Prove the walk and complete the outing, 2026-10-11
+
+1. Let exact56d remoteFull07 close before changing STATION or allocating another browser. Preserve both native garden failures and their partial evidence.
+2. Run the original complete current source verifier once on this coherent Choir-plan/path-repair head; then normally fetch the exact pushed head into the released independent remote station. Keep old-head receipts distinct.
+3. Use ordinary Atlas movement for the forest route. Retain rejected raw support facts before assertion and observe each actual immediate movement leg; a sparse chord across a safe bridge turn is not the traversed path. Keep original .31 body, endpoint/owner/deadline guards. No terrain or camera change to make evidence pass.
+4. Complete the ordinary-control Broken Choir arc: visible acceptance, optional spillway, relays, real selected-target stationary blade/bow combat and Brace/recovery, physical return arm, once-only fee, reload, free Earth return and truthful workshop plan. Walk to existing trees for High/Low frames. No test-facade damage, quest progress, currency or equipment.
+
+Human route, combat enjoyment and reward motivation remain open. Goal ACTIVE; heartbeat PAUSED; all save/system/camera/storage/review boundaries remain.
+
+---
+
 # Complete one readable outing and return, 2026-10-11
 
 1. Let the parent-owned exact56d remoteFull07 close before changing STATION or allocating another browser. Keep both native garden failures: original30s launch, then default Follow framing with48passing checks. Two retained High PNGs show the real garden, not Low or a complete outing.

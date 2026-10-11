@@ -1,3 +1,11 @@
+# Forest movement regression; native walk still pending, 2026-10-11
+
+No human playtest. Current installed navigation13/13PASS, zero failures/skips; three added actual-module CPU methods use labelled synthetic coordinates and frame intervals. Original candidate RED had1pass/2fail; wrong-anchor mutant had two detecting failures. Actual Core advancement detects the original rail intersection and clears it after the repair. This establishes a production pathfinding defect and source repair, not rendered forest movement or historical Country15 causality.
+
+Country15 retained five valley/shore images before failure, but not its rejected audit/path. A separate supported shore-to-root route passes actual immediate frames while a sparse100ms chord can reject its safe turn. Keep UNKNOWN historical cause and correct future observation without weakening physical guards. Current complete source/native/remote qualification, full Choir combat and human feel remain pending. Generated pages are identical3317150B/7244ad08cf03cdfffc67a3ebc1d6c601decbe8a0d3db6aa3544d7ca1dd07b00c. No new clip/profile/game copy was made.
+
+---
+
 # A useful return plan; complete combat play remains open, 2026-10-11
 
 No new human playtest. Current installed trail component26/26PASS with zero skips; the four new UI cases use labelled synthetic completion/resource/veteran boundaries and real production claim/refusal/craft/fitting/equip commands. They establish paid-only, truthful costs, owned/equipped naming and read-only state, not earned combat or rendering. Real pages3317122B/b2d630d76447711f9808c114b7329c8dddb284c555773f7386b8c6e01948a05f are identical; current complete source/native/remote remain pending.
