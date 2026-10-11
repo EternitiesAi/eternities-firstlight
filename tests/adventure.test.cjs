@@ -64,3 +64,68 @@ test('invalid command envelope cannot mutate persistent state',()=>{let s=mine()
 test('prototype-looking item key safely refuses',()=>{let s=begun();let b=state(s);a.equal(act(s,'equip',{id:'__proto__'}).ok,false);a.equal(state(s),b);});
 test('circular command data is safely refused',()=>{let s=begun(),p={};p.self=p;let b=state(s);a.equal(s.adventureCommand('x','attack',p).ok,false);a.equal(state(s),b);});
 test('no private memory or credentials enter save',()=>{let s=begun();a.equal('apiKey'in s.snapshot(),false);a.equal('residentHost'in s.snapshot(),false);});
+
+
+// New guide uses actual Core/Adventure; these negative fixtures are labelled
+// isolated known-answer state, not command-earned progress or native footage.
+function guideScene(){
+ const W=require('../src/world-foundations.js'),R=require('../src/realm-trails.js');
+ const s=begun();s.state.adventure.companion.bonded=true;
+ s.returnPos={...s.state.player};s.worldTrip={active:'cpu-known-owner',realm:'heaven',home:{...s.returnPos}};s.room='world-heaven';s.state.player={x:-14,z:5,yaw:0};
+ s.state.realmTrails.records['heaven-broken-choir-v1'].accepted=true;A.syncScene(s);
+ return {s,W,R};
+}
+test('Briar Heaven guide refuses invalid intent and records one ordinary accepted command',()=>{
+ const {s}=guideScene(),before=state(s),r=A.runtime(s);
+ a.equal(act(s,'companion-guide',{x:0,z:0}).ok,false,'caller cannot select or inject a destination');a.equal(state(s),before);
+ const revision=s.state.adventure.revision,count=s.state.adventure.receipts.length;
+ const result=s.adventureCommand('guide-once','companion-guide',{});a.equal(result.ok,true,result.error);
+ a.equal(s.state.adventure.revision,revision+1);a.equal(s.state.adventure.receipts.length,count+1);
+ const accepted=state(s);a.equal(s.adventureCommand('guide-once','companion-guide',{}).duplicate,true);a.equal(state(s),accepted);
+ a.equal(s.adventureCommand('guide-once','companion-guide',{x:25}).ok,false);a.equal(state(s),accepted);
+ a.equal(act(s,'companion-guide').ok,false,'one current transient guide');a.equal(state(s),accepted);
+ a.deepEqual(s.playerPath,[],'no player autowalk');a.ok(r.companion.guide);a.equal(r.companion.seek,null);
+});
+test('Briar Heaven guide rejects unbonded Stay dead paused unaccepted completed and wrong-room requests atomically',()=>{
+ for(const mutate of[
+  s=>s.state.adventure.companion.bonded=false,s=>s.state.adventure.companion.mode='stay',s=>s.state.adventure.hp=0,
+  s=>s.paused=true,s=>s.state.realmTrails.records['heaven-broken-choir-v1'].accepted=false,
+  s=>s.state.realmTrails.records['heaven-broken-choir-v1'].steps.push('spillway'),s=>{s.room='world-hell';A.syncScene(s);},
+ ]){const {s}=guideScene();mutate(s);const before=state(s);a.equal(act(s,'companion-guide').ok,false);a.equal(state(s),before);}
+});
+test('Briar Heaven guide cancels current owner Stay death dive scene and actual danger without progress',()=>{
+ for(const mode of ['stay','death','dive','scene','owner','adventure','companion','record','trip','active','danger']){
+  const {s}=guideScene();a.equal(act(s,'companion-guide').ok,true);const old=A.runtime(s).companion;
+  if(mode==='stay')a.equal(act(s,'companion-mode',{mode:'stay'}).ok,true);
+  if(mode==='death')s.state.adventure.hp=0;
+  if(mode==='dive')s.worldDive={surface:{...s.state.player},y:1.57};
+  if(mode==='scene')s.room='world-hell';
+  if(mode==='owner')s.state={...s.state};
+  if(mode==='adventure')s.state.adventure={...s.state.adventure};
+  if(mode==='companion')s.state.adventure.companion={...s.state.adventure.companion};
+  if(mode==='record')s.state.realmTrails.records['heaven-broken-choir-v1']={...s.state.realmTrails.records['heaven-broken-choir-v1']};
+  if(mode==='trip')s.worldTrip={active:'different-controlled-owner'};
+  if(mode==='active')s.worldTrip.active='different-controlled-owner';
+  if(mode==='danger'){
+   const r=s.state.realmTrails.records['heaven-broken-choir-v1'];r.steps.push('relay-west','relay-east','relay-crown');A.syncScene(s);
+   const e=A.runtime(s).enemies.find(e=>e.id==='heaven-choir-core-v1');a.ok(e);e.x=old.x+3;e.z=old.z;
+  }
+  // Actual Adventure tick with isolated negative transient boundaries. These
+  // state/scene mutations are CPU fault controls, never native input proof.
+  A.tick(s,0);a.equal(old.guide,null,mode);if(old.path.length)a.notDeepEqual(old.path.at(-1),{x:25,z:-15},mode+' cannot keep the cancelled guide destination; ordinary following may resume');
+  a.equal(s.state.realmTrails.records['heaven-broken-choir-v1'].steps.includes('spillway'),false,mode);
+ }
+});
+test('Briar Heaven guide body guard refuses a corrupted path through a real solid',()=>{
+ const {s,W}=guideScene();a.equal(act(s,'companion-guide').ok,true);const c=A.runtime(s).companion;
+ const solid=W.definition('heaven').solids.find(p=>W.walkable(s.room,p.x-p.w/2-.32,p.z)&&A.runtime(s).enemies.every(e=>Math.hypot(e.x-(p.x-p.w/2-.32),e.z-p.z)>15));a.ok(solid);c.x=solid.x-solid.w/2-.32;c.z=solid.z;
+ c.path=[{x:solid.x,z:solid.z}];c.guide.waiting=false;s.state.player={x:c.x,z:c.z,yaw:0};
+ const old={x:c.x,z:c.z};A.tick(s,.1);a.deepEqual({x:c.x,z:c.z},old);a.equal(c.guide,null);a.deepEqual(c.path,[]);
+});
+test('Briar Heaven guide reload replacement cannot retain the old transient request',()=>{
+ const {s}=guideScene();a.equal(act(s,'companion-guide').ok,true);const raw=s.snapshot();
+ a.equal(JSON.stringify(raw).includes('companion-guide'),true,'normal receipt is honest persistent intent');
+ a.equal(Object.hasOwn(raw.adventure.companion,'guide'),false,'no new saved guide field');
+ const cold=new C.Simulation(raw,{hydrated:true});A.syncScene(cold);a.equal(A.runtime(cold).companion.guide??null,null);
+ a.equal(cold.room,null);a.deepEqual(cold.state.realmTrails,raw.realmTrails);
+});

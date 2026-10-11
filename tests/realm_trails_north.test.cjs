@@ -220,3 +220,97 @@ test('catalogue is deterministic inert data in browser and CommonJS hosts, with 
  };
  assert.equal(load(false),load(true));assert.equal(load(false),load(false));
 });
+
+
+// This helper earns both real weapon variants and Briar through commands and
+// production paths/combat. Accelerated CPU ticks, in-memory saver and omitted
+// renderer construction are explicit: no native, storage or human-feel claim.
+const GuideAdventure=require('../src/adventure.js'),GuideTrails=require('../src/realm-trails.js');
+const guideEarnedRaw=new Map();let guideSerial=0;
+function earnedGuideRaw(bow=false){
+ if(guideEarnedRaw.has(bow))return structuredClone(guideEarnedRaw.get(bow));
+ const J=require('./realm_trails_journey.cjs'),S=require('../src/sandbox.js'),h=J.createHarness();J.earnedKit(h,bow);
+ function sb(type,payload={}){const r=h.sim.sandboxCommand('guide-earn-'+(++guideSerial),type,payload);assert.ok(r.ok,r.error);}
+ for(const id of ['timber-1','timber-2','stone-1','stone-2']){
+  const n=S.NODES.find(n=>n.id===id);h.walk(n.x+1.1,n.z);let wait=0;
+  while(!h.sim.state.sandbox.nodes.find(q=>q.id===id).hp&&wait++<400)h.tick(.5);
+  assert.ok(wait<400,'genuine resource regeneration bounded');
+  while(h.sim.state.sandbox.nodes.find(q=>q.id===id).hp){sb('gather',{node:id});h.tick(.55);}
+ }
+ h.walk(11,9);sb('craft',{recipe:'pick'});sb('craft',{recipe:'plank'});sb('craft',{recipe:'plank'});
+ h.walk(0,-21.3);sb('bridge');h.walk(0,-48);h.command('enter');h.walk(0,4);h.command('dig',{gx:0,gz:1});h.tick(.5);h.command('dig',{gx:0,gz:1});
+ h.walk(-4,3.3);h.command('target-select',{id:'briar-1'});h.command('auto-toggle');let frames=0;
+ while(!h.sim.state.adventure.defeated.includes('briar-1')&&frames++<600){
+  const s=h.sim.state.adventure,r=GuideAdventure.runtime(h.sim);
+  if(s.hp<65&&s.tonics&&s.elapsed>=r.cooldowns.heal)h.command('heal');h.tick(.05);assert.ok(s.hp>0);
+ }
+ assert.ok(frames<600,'actual weapon earns threat clearance');h.command('auto-toggle');h.walk(-8,2);h.command('rescue');
+ h.walk(0,11);h.command('leave');h.walk(0,3);h.command('rest');h.walk(W.GATE.x,W.GATE.z);
+ assert.equal(h.sim.state.adventure.companion.bonded,true);assert.equal(require('../src/arsenal.js').weapon(h.sim.state.adventure).style,bow?'bow':'blade');
+ const raw=h.sim.snapshot();guideEarnedRaw.set(bow,structuredClone(raw));return raw;
+}
+function earnedGuideScene(bow=false){
+ const raw=earnedGuideRaw(bow),sim=new C.Simulation(raw,{hydrated:true});let saved=null,serial=0;
+ const save=candidate=>{saved=C.validate(candidate);return{ok:true};},ctx=()=>({sim,active:'guide-cpu-earned',revision:++serial});
+ const preview=W.preview(ctx(),'heaven');assert.ok(preview.ok,preview.error);
+ // Ticket context terms are stable through the original enter transaction.
+ const context={sim,active:'guide-cpu-earned',revision:serial};assert.ok(W.enter(preview.ticket,context,{save,build:()=>{}}).ok);
+ const move=(x,z)=>{assert.ok(sim.moveTo(x,z).ok);let n=0;while(sim.playerPath.length&&n++<3000){const old={...sim.state.player};sim.tick(.05);assert.ok(W.segment(sim.room,old,sim.state.player));}assert.ok(n<3000);};
+ const d=byRealm('heaven');move(d.giver.x,d.giver.z);assert.ok(GuideTrails.command(ctx(),'accept',{quest:d.id},{save}).ok);GuideAdventure.syncScene(sim);
+ return {sim,d,save,ctx,move,get saved(){return saved;}};
+}
+test('Briar Heaven guide projects only the existing accepted unfinished optional spillway without mutation',()=>{
+ const h=earnedGuideScene(),before=JSON.stringify(h.sim.snapshot());
+ assert.equal(typeof GuideTrails.companionGuide,'function','missing finite guide projection');
+ assert.deepEqual(GuideTrails.companionGuide(h.sim),{quest:'heaven-broken-choir-v1',step:'spillway',name:'Set Yselle’s service spillway',x:25,z:-15});
+ assert.equal(JSON.stringify(h.sim.snapshot()),before);
+ const r=h.sim.state.realmTrails.records[h.d.id];r.steps.push('spillway');assert.equal(GuideTrails.companionGuide(h.sim),null);
+});
+test('Briar Heaven guide earned blade and bow walk bounded supported short leads and arrival never operates or pays',()=>{
+ for(const bow of [false,true]){
+  const h=earnedGuideScene(bow),s=h.sim;assert.ok(s.adventureCommand('guide-earned-'+bow,'companion-guide').ok);
+  const c=GuideAdventure.runtime(s).companion,baseline=structuredClone(s.snapshot()),player={...s.state.player};
+  for(let i=0;i<160;i++){const old={x:c.x,z:c.z};s.tick(.05);assert.ok(W.segment(s.room,old,c));}
+  assert.ok(c.guide&&c.guide.waiting,'fox waits for the actual player');assert.ok(distance(c,s.state.player)<=4.2,'bounded lead');assert.deepEqual(s.state.player,player);
+  assert.deepEqual(s.playerPath,[]);const waited={x:c.x,z:c.z};for(let i=0;i<80;i++)s.tick(.05);assert.deepEqual({x:c.x,z:c.z},waited,'no creeping beyond leash');
+  let frames=0,maxLead=0;
+  while(c.guide&&frames++<6000){
+   if(frames%8===1)assert.ok(s.moveTo(c.x,c.z).ok,'player chooses ordinary legal follower route');
+   const p={...s.state.player},f={x:c.x,z:c.z};s.tick(.05);assert.ok(W.segment(s.room,p,s.state.player));assert.ok(W.segment(s.room,f,c));maxLead=Math.max(maxLead,distance(c,s.state.player));
+  }
+  assert.ok(frames<6000&&distance(c,{x:25,z:-15})<.7,'actual guide reaches the existing handle');assert.ok(maxLead<=4.2);assert.equal(c.guide,null);
+  const after=s.snapshot();for(const k of ['realmTrails','journal','nextEvent','journeys'])assert.deepEqual(after[k],baseline[k],k+' cannot be earned by arrival');
+  for(const k of ['coins','ore','xp','revision','receipts','owned','equipment','arsenal','companion','defeated','drops'])assert.deepEqual(after.adventure[k],baseline.adventure[k],k+' guide movement preserves');
+  assert.equal(after.realmTrails.records[h.d.id].steps.includes('spillway'),false);
+  console.log(JSON.stringify({cpuGuideVariant:bow?'command-earned-bow':'command-earned-blade',frames,maximumLeadMetres:maxLead,arrival:{x:c.x,z:c.z},journalBefore:baseline.nextEvent,journalAfter:after.nextEvent,guideArrivalPaid:false,browserPersistence:false,nativeRAF:false}));
+  h.move(25,-15);assert.ok(GuideTrails.command(h.ctx(),'step',{quest:h.d.id,step:'spillway'},{save:h.save}).ok);
+  assert.equal(GuideTrails.command(h.ctx(),'step',{quest:h.d.id,step:'spillway'},{save:h.save}).duplicate,true,'physical step still once-only');
+  assert.equal(s.state.realmTrails.records[h.d.id].steps.includes('spillway'),true);
+  const beforeReturn=structuredClone(s.snapshot());assert.ok(W.leave(s).ok);assert.deepEqual(s.state.player,s.returnPos??beforeReturn.player); // snapshot stores the legitimate exterior return.
+  assert.deepEqual(s.state.realmTrails,beforeReturn.realmTrails);assert.equal(s.room,null);
+ }
+});
+test('Briar Heaven guide actual UI offers only eligible intent and closes ordinary menu before command',()=>{
+ for(const wasPaused of [false,true]){
+ const h=earnedGuideScene(),s=h.sim;
+ const context={RealmAdventure:GuideAdventure,RealmTrails:GuideTrails,RealmCore:C,RealmArsenal:globalThis.RealmArsenal,RealmCombat:globalThis.RealmCombat,RealmSandbox:globalThis.RealmSandbox,RealmBeacon:globalThis.RealmBeacon};
+ vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../src/rpg-ui.js'),'utf8'),context);
+ const ui=Object.create(context.RealmRPGUI.RPGUI.prototype);
+ ui.dialog={open:true,close(){this.open=false;}};ui.wasPaused=wasPaused;s.paused=true;
+ for(const k of ['wildSigns','earthHomecoming','cosmosCampaign','atlantisCampaign','heavenCampaign','hellCampaign','community','civic','expedition','trails','worlds','realmAtlas','gathering','earth','cosmos','classes','characters','starter','crossing','pursuit'])ui[k]={action(){return false;},reset(){}};
+ ui.api={sim:()=>s,clearKeys(){},focusWorld(){},adventure(){return{run:(type,payload)=>s.adventureCommand('guide-ui-'+(++guideSerial),type,payload)}}};
+ assert.match(ui.companion(),/data-rpg="companion-guide"/,'actual rendered companion action');
+ const before=JSON.stringify(s.snapshot());ui.action({dataset:{rpg:'companion-guide'}});assert.equal(ui.dialog.open,false);assert.equal(s.paused,wasPaused);
+ if(wasPaused){assert.equal(GuideAdventure.runtime(s).companion.guide??null,null,'preexisting P pause refuses');assert.equal(JSON.stringify(s.snapshot()),before);}else{assert.ok(GuideAdventure.runtime(s).companion.guide,'actual dispatch accepts normal unpaused command');assert.doesNotMatch(ui.companion(),/data-rpg="companion-guide"/,'no second concurrent request');}
+ }
+});
+test('Briar Heaven guide original optional handle alone grants the conditional recovery extension and cannot claim unfinished work',()=>{
+ for(const prepared of [false,true]){
+  const h=earnedGuideScene(),s=h.sim;
+  if(prepared){h.move(25,-15);assert.ok(GuideTrails.command(h.ctx(),'step',{quest:h.d.id,step:'spillway'},{save:h.save}).ok);}
+  for(const [id,x,z] of [['relay-west',-8,-88],['relay-east',8,-88],['relay-crown',0,-102]]){h.move(x,z);assert.ok(GuideTrails.command(h.ctx(),'step',{quest:h.d.id,step:id},{save:h.save}).ok);}
+  const enemy=GuideTrails.enemies(s).find(e=>e.id==='heaven-choir-core-v1');assert.ok(enemy);assert.equal(enemy.recovery,prepared?2.6:1.8);
+  const before=JSON.stringify(s.snapshot());assert.equal(GuideTrails.command(h.ctx(),'claim',{quest:h.d.id},{save:h.save}).ok,false);assert.equal(JSON.stringify(s.snapshot()),before,'unfinished claim preserves all facts');
+  assert.equal(s.state.realmTrails.records[h.d.id].claimed,false);
+ }
+});

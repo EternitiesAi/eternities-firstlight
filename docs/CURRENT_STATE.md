@@ -1,3 +1,13 @@
+# Briar can guide the optional Heaven preparation, 2026-10-11
+
+The companion pane offers “Guide me to the service handle” after the original Broken Choir acceptance, with a following bonded fox and no nearby danger. Briar walks the real supported route, waits about four metres ahead and announces arrival; the player walks and operates the original handle. Arrival adds no quest step, journal event, XP, currency or reward. Optional physical preparation retains the original recovery1.8→2.6s; original final30XP/12coins/2ore once-only fee remains. This is a Codex-authored interaction within existing provisional content, not recovered founder canon.
+
+Actual installed85/85 focused tests and build pass; generated pages3314786B/9b5a7a8fc520590ad90a2a97862f5ba4b91ee5ffaf73daad5b80a625eb5b8046 identical. Current full/native gates and visual/ordinary controls remain pending. Prior c5 Source13 passed214commands142syntax, Node2065pass2existing skips/Python454tests10reported skips; exact remoteFull05 source/earned phase passed but first browser load FAILED30s. Trace shows exact HTTP delivery3.2165s and eventual DOM/load51.092s, not a measured shader/decode cause. Native16 zero-check startup failure remains separate.
+
+World9 / Adventure12 / WildSigns1 are unchanged. Preserve saves/keys/music/exports, stored XP, gear/sockets/upgrades, all ledgers and explicit choices, companion, housing/crafting and both cameras. Production goal ACTIVE unfinished; heartbeat PAUSED. Use existing D checkouts and small stages, no duplicate full games/raw videos, blocked standalone deletion retry, main merge, public deploy, paid provider, personal-save inspection or unrelated shutdown. Frontier Oct11 already checked.
+
+---
+
 # Loaded characters preserve their journal, 2026-10-11
 
 The independently reviewed journal hydration repair is installed on gameplay/journal-hydration-20261011, stacked on PR57 head414b. Existing characters rebuild canonical resident routes without repeating three startup notices; fresh creation and genuine live events retain them. No durable field or schema change: World9/Adventure12/WildSigns1. Both cameras and the integrated five-realm game remain.
