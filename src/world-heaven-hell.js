@@ -261,6 +261,20 @@ function decorate(art,def,options={}){
  // restore the main saga or write through the supplied simulation projection.
  const claimed=options.sim?.state?.journeys?.realms?.[def.id]?.firstClaimed===true;
  if(claimed){const x=isHeaven?-15:-16,z=isHeaven?2:13,s=def.solids.find(s=>s.id===(isHeaven?'heaven-rielle-bench':'hell-tovan-bench'));box(x,h(x,z)+s.h+.025,z,.78,.04,.55,isHeaven?0xf0cd80:0xb1ada1,{surveyRecord:true});}
+  // Nine stationary flowers connect the existing lower garden without a new bed.
+  if(isHeaven&&['balanced','high'].includes(options.sim?.state?.settings?.quality)){
+   const groups=[['instrument-edge',-6,0],['east-garden',14,1],['tree-east',39,14]],offsets=[[-.48,.18],[.06,-.25],[.48,.24]],stems=[.28,.34,.24];
+   for(const [group,[name,x,z]]of groups.entries())for(const [plant,[dx,dz]]of offsets.entries()){
+    const xx=x+dx,zz=z+dz;if(!clear(def,xx,zz,.75)||routeDistance(def,xx,zz)<3||def.points.some(p=>Math.hypot(xx-p.x,zz-p.z)<4))continue;
+    const root=h(xx,zz)+.012,stem=stems[plant],phase=group*.37+plant*.41,flora=part=>({gardenPlanting:name,gardenPlant:name+'-'+plant,gardenPart:part,gardenDetailId:'heaven-garden-planting-'+name+'-'+plant+'-'+part,wind:0,foliage:true,rough:.98});
+    at('cylinder',xx,root,zz,.028,stem,.028,0x647b55,flora('stem'));
+    for(const [leaf,lean]of[-1,1].entries())at('leaf',xx,root+stem*.22,zz,.28,stem*.6,.24,plant%2?0x92a38e:0x739474,{...flora('leaf-'+leaf),r:[0,phase,lean*.5]});
+    const bloom=(group+plant)%2?ruby:0xf0e6cf,size=.30+plant*.025;
+    for(let petal=0;petal<3;petal++)at('leaf',xx,root+stem,zz,size,size,.24,bloom,{...flora('petal-'+petal),r:[Math.PI/2,0,petal*TAU/3+phase]});
+    at('octa',xx,root+stem+.01,zz,.095,.08,.095,0xbfa263,flora('heart'));
+   }
+  }
+  // End authored lower-garden planting.
  return{realmId:def.id,instances,distantInstances,localInstances:instances-distantInstances};
 }
 const api={realms,decorate};G.RealmWorldHeavenHell=api;
