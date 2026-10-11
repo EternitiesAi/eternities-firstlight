@@ -1,3 +1,14 @@
+# Complete one readable outing and return, 2026-10-11
+
+1. Let the parent-owned exact56d remoteFull07 close before changing STATION or allocating another browser. Keep both native garden failures: original30s launch, then default Follow framing with48passing checks. Two retained High PNGs show the real garden, not Low or a complete outing.
+2. Qualify the current paid-Choir return-plan branch with the original complete source verifier and relevant actual browser checks; normally fetch the exact pushed head into the reused independent remote station when released. Do not rebind base56d Source16/full07 results to its changed page.
+3. Demonstrate the complete ordinary-control Broken Choir: visible acceptance, optional service spillway, three physical relays, actual Tab/click selection and stationary blade/bow attack, Brace/recovery, physical Garden return arm, explicit once-only fee, reload and free Earth return. Inspect the truthful workshop plan. Never grant damage, progress, currency or equipment through a test facade. A veteran keeps the already fitted weapon; nothing auto-equips or spends.
+4. For actual High/Low crown comparison, walk along supported existing ground to a tree-view pocket before photographing both default cameras. Trees live atx±51; the Rielle diorama frame contains none. Retain the original visibility predicate, camera presets and failure. Do not change FOV, scenery or requirements to make a capture pass.
+
+Ask Dom later whether the route and combat opening were clear and whether the deliberate reward motivated another outing. No human playtest occurred. Goal ACTIVE unfinished, heartbeat PAUSED; preserve all saves/systems/XP/choices/both cameras and existing storage/review boundaries.
+
+---
+
 # Qualify the garden; complete the outing, 2026-10-11
 
 1. Run complete Source16 against the committed garden/oracle head. Fill the independently reviewed inert native preparation with exact current source/page/App/Engine/Heaven pins only after source success. Use its original ordinary UI guide and three bounded actual stills: Adventure High, Follow High and Follow Low, with real High-Low-High settings and inspected PNGs. Source-derived projections do not prove live cached meshes or drawn detail.

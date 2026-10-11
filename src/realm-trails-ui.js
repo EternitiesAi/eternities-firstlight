@@ -91,7 +91,21 @@ class TrailsUI{
    const complete=R.required(d).every(id=>r.steps.includes(id));
    html+=r.claimed?'<p>'+esc(d.completionText)+'</p>':complete?'<p class="trail-ready"><strong>Ready to return · unpaid.</strong> All required trail actions are recorded. Return to '+esc(d.giver.name)+' for the one declared fee.</p>'+(here&&R.at(this.sim,{...d.giver,medium:'dry'})?button('Return the completed trail · claim once','trail-claim'):here&&!this.sim.worldDive?button('Return to '+d.giver.name,'trail-walk'):''):'<p>'+progress(this.sim.state,d).done+'/'+R.required(d).length+' required actions recorded. Finish the available preparations before returning for payment.</p>';
   }
+  if(d.id==='heaven-broken-choir-v1')html+=this.choirReturnPlan();
   return html+'<p class="world-note">Accepted facts survive reload. Reopening starts at your home checkpoint; revisit this realm to resume. Full reward pouches or a refused save retain unpaid completion. Ordinary repeat surveys remain separate.</p></section>';
+ }
+ choirReturnPlan(){
+  const r=this.sim.state.realmTrails.records['heaven-broken-choir-v1'];if(!r.claimed)return'';
+  const a=this.sim.state.adventure,RC=G.RealmCraft,weapon=a.realmCraft.weapon;
+  const home=this.sim.room===null?'Craft at an outdoor Firstlight workbench.':W.definition(this.sim.room)?'Use Return to Firstlight, then craft at an outdoor workbench.':'Leave this area before returning to an outdoor Firstlight workbench.';
+  let html='<section class="choir-return-plan"><h4>Bring the repaired Choir home</h4><p>'+home+' Inspect item &amp; recipe guide to plan without spending.</p>';
+  if(weapon){const equipped=a.equipment.weapon===weapon;html+='<p>Fitting retained on your '+(equipped?'equipped':'owned')+' <strong>'+esc(G.RealmAdventure.GEAR[weapon].name)+'</strong>.'+(equipped?'':' It is not currently equipped; choose it deliberately in Character if wanted.')+' This outing grants no second fitting.</p>';}
+  else{
+   html+='<p>One optional fitting: '+RC.COST.ore+' ore and '+RC.COST.coins+' sunmarks · +'+RC.BONUS+' attack on one owned blade or bow. Nothing equips automatically.</p>';
+   const ore=Math.max(0,RC.COST.ore-a.ore),coins=Math.max(0,RC.COST.coins-a.coins);
+   html+=ore||coins?'<p>Current: '+a.ore+' ore · '+a.coins+' sunmarks. Still needed: '+[ore?ore+' ore':null,coins?coins+' sunmark'+(coins===1?'':'s'):null].filter(Boolean).join(' · ')+'.</p>':'<p>Materials covered. Inspect an owned blade or bow before confirming the one spend.</p>';
+  }
+  return html+'</section>';
  }
  fitting(){
   const a=this.sim.state.adventure,A=G.RealmAdventure,RC=G.RealmCraft,unlocked=R.definitions().some(d=>this.sim.state.realmTrails.records[d.id].claimed);

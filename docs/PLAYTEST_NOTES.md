@@ -1,3 +1,13 @@
+# A useful return plan; complete combat play remains open, 2026-10-11
+
+No new human playtest. Current installed trail component26/26PASS with zero skips; the four new UI cases use labelled synthetic completion/resource/veteran boundaries and real production claim/refusal/craft/fitting/equip commands. They establish paid-only, truthful costs, owned/equipped naming and read-only state, not earned combat or rendering. Real pages3317122B/b2d630d76447711f9808c114b7329c8dddb284c555773f7386b8c6e01948a05f are identical; current complete source/native/remote remain pending.
+
+Base56d native garden01: FAILED before0checks at Chromium143 original30s persistent-context launch. Alternate garden02 used existing fullChromium151, achieved actualRTX3080/D3D11 at1440x960, passed48/49checks and captured AdventureHigh/FollowHigh. Parent inspected both: the third-person frame contains pale/sage crown lobes and the gold instrument's pale/ruby chime ends; Follow shows the work area and instrument while all tree crowns are outside the frame. Its original crown visibility requirement correctly failed. No Low frame, reload, arrival or complete combat follows from that case. Both failures remain; all four owned closures true in02, no page errors. Browser-version variation is confounded, not a cause fix. The displayed instantaneous FPS is not a measured frame-time distribution.
+
+Human questions remain: could you follow Briar, read the warning/recovery in either camera, understand the one-ore gap, and choose a useful fitting without believing it auto-equipped? Finite prototype content and source tests do not establish AAA completion or seamless open world. Reuse bounded stills and the earlier labelled short guide clip rather than accumulating videos.
+
+---
+
 # Garden source acceptance; actual views pending, 2026-10-11
 
 No new human playtest. Installed complete onboarding CPU component:50tests, OK with2explicit-checkout skips,17.244s; installed three garden components:10/10PASS,0skip,741.9335ms. Real builder produces identical3315543B pages SHA256a29203a03aca3685aa899385320a613d24c57446e57283e875384b15c6fe4873. These are affected source/build checks; complete current source, visible garden and exact remote gates remain pending.

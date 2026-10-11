@@ -1,3 +1,15 @@
+# The Choir points back to useful Earth work, 2026-10-11
+
+After the existing Broken Choir fee is deliberately claimed, its page now explains the actual optional workshop fitting, current material shortfall and return route. The fee remains30XP/12sunmarks/2ore; the fitting remains3ore/8sunmarks/+3attack on one selected owned blade or bow. An empty-start fee is one ore short. Characters with an existing fitting see its owned/equipped weapon named and no promise of another fitting. Reading changes no state or equipment and adds no controls. See docs/development/CHOIR_RETURN_PLAN_2026-10-11.md.
+
+Installed trail component26/26PASS, no failures/skips,291.3139ms. Real builder emits identical3317122B pages SHA256b2d630d76447711f9808c114b7329c8dddb284c555773f7386b8c6e01948a05f. These are current component/build results; complete current source, exact remote qualification and ordinary-control combat/return acceptance remain pending. World9 / Adventure12 / WildSigns1 and all saves/systems/both cameras remain unchanged.
+
+At base56d, complete Source16 passed214commands/142syntax, Node2088pass/0fail/2existing skips, Python458testsOK/10reported skips and all earned journeys. Original native garden01 failed browser launch before0checks. Alternate Chromium151 garden02 captured two actual1440x960 High RTX3080/D3D11 PNGs, passed48of49checks, then failed because the default Follow frame at Rielle excludes all tree crowns. All owned resources closed; browser errors empty. Low, reload and later guide arrival did not run. Keep that framing failure and the143/151browser confound. Independent remoteFull07 is running separately at exact56d; do not attribute it to this newer page.
+
+Finite five-realm campaign foundations exist. Seamless open world, production art/performance, a full ordinary-control Choir fight and human taste/pacing remain unfinished. Goal ACTIVE; heartbeat PAUSED. No merge/deployment or storage expansion.
+
+---
+
 # A more shaped Heaven garden, 2026-10-11
 
 The existing optional Heaven outing keeps its real guide, preparation, combat and once-only payment rules. Twelve garden trees now use lobed crown geometry in Balanced/High; six original gold chimes have attached pale collars and ruby finials. Low retains original round crowns. Actual world-heaven quality changes rebuild its cached scene art; Hell, routes, solids, camera and simulation owners are unchanged. See docs/development/HEAVEN_GARDEN_POLISH_2026-10-11.md. This is a geometric refinement, not a new realm or new founder asset.
