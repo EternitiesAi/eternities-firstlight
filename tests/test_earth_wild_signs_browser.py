@@ -26,6 +26,18 @@ N=importlib.util.module_from_spec(spec);spec.loader.exec_module(N)
 H=N.load_base(ROOT)
 
 
+def native_output_parent():
+    """Keep only native output parents on the production-required D: volume."""
+    if os.name != 'nt':
+        return os.environ.get('TEMP')
+    if ROOT.drive.lower() == 'd:':
+        return ROOT.parent
+    parent = Path('D:/')
+    if not parent.is_dir():
+        raise ValueError('Windows admission tests require an available D: output volume')
+    return parent
+
+
 def world():
     # Intentionally miniature synthetic records, never a Core-importable save.
     keys=('journeys','realmTrails','hellCampaign','heavenCampaign','atlantisCampaign','cosmosCampaign',
@@ -152,7 +164,7 @@ class AdmissionTests(unittest.TestCase):
         with patch.object(N.subprocess,'check_output',side_effect=subprocess.CalledProcessError(1,['git'],output='not tracked')):
             with self.assertRaises(subprocess.CalledProcessError):N.clean_source_tree(ROOT)
     def test_check_only_admission_never_creates_output_server_or_browser(self):
-        temporary=tempfile.TemporaryDirectory(prefix='wild-signs-admission-',dir=os.environ.get('TEMP'))
+        temporary=tempfile.TemporaryDirectory(prefix='wild-signs-admission-',dir=native_output_parent())
         self.addCleanup(temporary.cleanup)
         output=(Path(temporary.name)/'native-not-created').resolve();self.assertFalse(output.exists())
         with patch.object(N,'clean_source_tree'),patch.object(N,'load_base'),\

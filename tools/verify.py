@@ -281,13 +281,32 @@ def road_account_browser_run_specs(root, primary_output, boundary_output, output
     return prepare, [sys.executable, 'tools/test_road_account_browser.py'], command, common
 
 
+def cpu_test_environment(directory):
+    """Only the Python unit-test child uses this optional existing directory.
+
+    Logs, earned gameplay and browser children keep their original environment.
+    No path is created, relocated or cleaned by this configuration helper.
+    """
+    if directory is None:
+        return {}
+    directory = Path(directory)
+    if not directory.is_absolute() or not directory.is_dir():
+        raise ValueError('--cpu-temp must name an existing absolute directory')
+    return {key: str(directory.resolve()) for key in ('TMPDIR', 'TEMP', 'TMP')}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--browser', action='store_true', help='Also run the current browser suites including starter progression and native persistence (requires requirements-dev.txt and Chromium).')
     parser.add_argument('--output', type=Path, default=ROOT / 'verification', help='Directory for fresh command logs.')
     parser.add_argument('--browser-output', type=Path, help='Route suites with existing output contracts to a separate evidence directory (D: on Windows); requires --browser. Legacy small screenshots keep their defaults.')
     parser.add_argument('--browser-output-mode', choices=('guarded', 'supported'), default='guarded', help='guarded routes only the four suites requiring D: on Windows; supported routes every existing output contract.')
+    parser.add_argument('--cpu-temp', type=Path, help='Existing absolute directory for lightweight Python unit-test temporary files only. Browser profiles and earned evidence keep their original storage.')
     args = parser.parse_args()
+    try:
+        cpu_env = cpu_test_environment(args.cpu_temp)
+    except ValueError as error:
+        parser.error(str(error))
     if args.browser_output is not None:
         if not args.browser:
             parser.error('--browser-output requires --browser')
@@ -341,7 +360,7 @@ def main():
     print('\n'.join((output / 'rules.log').read_text(encoding='utf-8').splitlines()[-9:]), flush=True)
     # The wrapper cases execute complete command-earned journeys. Allow for
     # their measured disk work on Windows while retaining a bounded failure.
-    run('python', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_*.py', '-v'], timeout=600)
+    run('python', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_*.py', '-v'], timeout=600, extra_env=cpu_env)
     print('\n'.join((output / 'python.log').read_text(encoding='utf-8').splitlines()[-5:]), flush=True)
     # No native checkpoints exist yet. Its Admission-class skip is explicit;
     # the same file runs all mandatory checks after current native gates below.

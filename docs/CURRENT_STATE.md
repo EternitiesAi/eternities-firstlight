@@ -1,3 +1,13 @@
+# Source storage repair, 2026-10-11
+
+SOURCE03 at pushed `13983cd94cb8d2ae207a66d463e9694aa762c008` closed exit1 at07:12:35Z. All141 syntax checks and Node1964pass/2explicit skips passed. Python completed438 tests in293.036 seconds:425 method passes,7 method skips plus3 class skips,1 failure and2 errors. All three failures came from positive native-output fixtures using C paths that the actual Windows D-output guard correctly refused. Preserve the raw SOURCE03 receipt, console and Python log; this is a failed complete gate, not current native qualification.
+
+The narrow repair retains all55 methods/122 assertions in the two affected files and changes only three temporary-output parents to actual D storage. Independent review reproduces3/3 passing cases with real guards; production browser tools are unchanged. The optional `--cpu-temp` verifier argument overrides only the Python unittest child, retains the600-second budget and validates an existing absolute directory before allocation. Independent four-test transport review passes4/4; default behavior and all native/earned children retain their original environment. Game/source/cohorts/evidence and actual browser profiles remain D; small transient synthetic CPU fixtures may use ordinary C temporary storage. No project or personal data is moved.
+
+Run complete SOURCE04 at the next exact clean pushed head with global D TEMP/TMP and explicit `--cpu-temp C:/Users/Dom/AppData/Local/Temp`. Original fresh-per-test fixtures stay installed; optional reusable-fixture03 remains uninstalled despite bounded link-safety review. Current browser gates, visible roadkeeper/town/crown acceptance, short footage and exact remote full verification remain pending. Reuse ROOT and the clean independent STATION (currently detached13983cd), retain failures, both cameras, every existing save/system and schema World9/Adventure12/WildSigns1. Wider production goal ACTIVE unfinished; old heartbeat PAUSED. No main merge, deployment, paid provider, personal-save inspection, unrelated shutdown or blocked-deletion retry.
+
+---
+
 # CPU temporary storage correction, 2026-10-11
 
 The gameplay runtime, generated pages and original test files remain unchanged from c87fdac. SOURCE02 failed at its original 600-second Python budget after 412 completed method lines; no assertion failure was reported before termination. Node passed 1964 with two explicit skips. No current native/footage/remote acceptance follows.
