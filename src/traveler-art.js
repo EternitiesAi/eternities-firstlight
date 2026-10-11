@@ -166,6 +166,7 @@ function pose(options={}){
 
 function draw(out,input={},posed=pose()){
  const {M,hex,blend}=G.RealmEngine;
+ out['traveler-cloth']||=([]);
  const x=finite(input.x),z=finite(input.z),base=finite(input.base),yaw=finite(input.yaw);
  const root=M.compose(x,base,z,1,1,1,0,yaw,0),j=posed.joints;
  const body=posed.upperBody||{yaw:0,lean:0,shift:[0,0,0]},pivotY=.985+posed.bob;
@@ -199,13 +200,13 @@ function draw(out,input={},posed=pose()){
  const y=posed.bob;
  // Narrow waist, broader shoulder line and a split hem make fitted clothing
  // with existing primitives, rather than a stack of rounded doll volumes.
- upperAdd('box','jacket-waist',[0,1.035+y,0],[.335,.27,.24],darkCoat);
+ upperAdd('traveler-cloth','jacket-waist',[0,1.035+y,0],[.335,.27,.24],darkCoat);
  upperAdd('round','jacket-chest',[0,1.255+y,0],[.465,.30,.29],coat);
  upperAdd('octa','jacket-left-side',[-.155,1.13+y,0],[.155,.35,.245],coat);
  upperAdd('octa','jacket-right-side',[.155,1.13+y,0],[.155,.35,.245],coat);
  upperAdd('box','jacket-front-seam',[0,1.18+y,.132],[.025,.30,.022],seam);
- add('box','jacket-left-hem',[-.096,.89+y,.008],[.18,.20,.245],darkCoat,[0,0,-.045]);
- add('box','jacket-right-hem',[.096,.89+y,.008],[.18,.20,.245],darkCoat,[0,0,.045]);
+ add('traveler-cloth','jacket-left-hem',[-.096,.89+y,.008],[.18,.20,.245],darkCoat,[0,0,-.045]);
+ add('traveler-cloth','jacket-right-hem',[.096,.89+y,.008],[.18,.20,.245],darkCoat,[0,0,.045]);
  add('box','belt',[0,.985+y,.008],[.355,.063,.267],leather);
  add('box','belt-buckle',[0,.985+y,.152],[.065,.060,.028],metal);
  upperAdd('box','collar-left',[-.09,1.407+y,.042],[.09,.10,.18],seam,[0,0,-.18]);

@@ -1871,7 +1871,12 @@ const api=Object.freeze({parts});G.RealmElderwealdTrailArt=api;if(typeof module!
    patch('working-fields',0,-50,58,25,0x8d9e69),
    patch('roadside-settlement',0,-73,52,26,0xa49d80),
    patch('shore-spur',22,-19,20,8,0x8f9c73),
-   patch('shore-overlook',30,-20,16,16,0x9b9e7c),
+   // One authored outward shoreline. The original rectangle stays contained,
+   // retaining every old saved support position; this adds real dry land only.
+   {...patch('shore-overlook',30,-20,16,16,0x9b9e7c),footprint:[
+    [22,-28],[30,-30],[38,-30],[40,-28],[41,-20],
+    [40,-12],[38,-10],[30,-10],[22,-12]
+   ]},
    patch('coppice-spur',-21,-15,20,8,0x7e9167),
    patch('coppice-pocket',-29,-17,16,22,0x7b8d64)
   ],
@@ -2136,7 +2141,13 @@ const api=Object.freeze({parts});G.RealmElderwealdTrailArt=api;if(typeof module!
 (function(G){'use strict';
 const IDS=Object.freeze(['heaven','hell','earthlands','atlantis','cosmos']),OBJECTIVES=Object.freeze(['first','second','third']),GATE=Object.freeze({x:18,z:6});
 const clone=o=>JSON.parse(JSON.stringify(o)),dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z),finite=Number.isFinite,tickets=new WeakMap();
-const fail=error=>({ok:false,error}),yes=text=>({ok:true,text}),inside=(x,z,p,r=0)=>Math.abs(x-p.x)<=p.w/2-r&&Math.abs(z-p.z)<=p.d/2-r;
+const fail=error=>({ok:false,error}),yes=text=>({ok:true,text});
+// Authored convex footprint uses counterclockwise X/Z edges. Rectangles,
+// solids and galleries retain their original exact containment branch.
+function inside(x,z,p,r=0){
+ if(!p.footprint)return Math.abs(x-p.x)<=p.w/2-r&&Math.abs(z-p.z)<=p.d/2-r;
+ return p.footprint.every((a,i)=>{const b=p.footprint[(i+1)%p.footprint.length],dx=b[0]-a[0],dz=b[1]-a[1];return dx*(z-a[1])-dz*(x-a[0])>=r*Math.hypot(dx,dz);});
+}
 function data(name,file){return G[name]||(typeof require==='function'?require('./'+file):null);}
 let catalogueCache=null;
 function definitions(){
@@ -2174,7 +2185,15 @@ function land(room,x,z,r=.31){const d=definition(room);if(!d||![x,z,r].every(fin
  return[[0,0],[r,0],[-r,0],[0,r],[0,-r],[r*.707,r*.707],[-r*.707,r*.707],[r*.707,-r*.707],[-r*.707,-r*.707]].every(([dx,dz])=>d.patches.some(p=>inside(x+dx,z+dz,p)));
 }
 function walkable(room,x,z,r=.31){if(room===G.RealmCosmos?.ROOM)return G.RealmCosmos.walkable(x,z,r);const d=definition(room);return land(room,x,z,r)&&!d.solids.some(p=>inside(x,z,p,-r));}
-function interval(a,b,p,r=0){let lo=0,hi=1;for(const[k,s]of[['x','w'],['z','d']]){const step=b[k]-a[k],min=p[k]-p[s]/2-r,max=p[k]+p[s]/2+r;
+function interval(a,b,p,r=0){let lo=0,hi=1;
+ if(p.footprint){
+  for(let i=0;i<p.footprint.length;i++){
+   const u=p.footprint[i],v=p.footprint[(i+1)%p.footprint.length],dx=v[0]-u[0],dz=v[1]-u[1],offset=dx*(a.z-u[1])-dz*(a.x-u[0])+r*Math.hypot(dx,dz),step=dx*(b.z-a.z)-dz*(b.x-a.x);
+   if(Math.abs(step)<1e-10){if(offset<0)return null;}
+   else{const t=-offset/step;if(step>0)lo=Math.max(lo,t);else hi=Math.min(hi,t);if(lo>hi)return null;}
+  }return[lo,hi];
+ }
+ for(const[k,s]of[['x','w'],['z','d']]){const step=b[k]-a[k],min=p[k]-p[s]/2-r,max=p[k]+p[s]/2+r;
  if(Math.abs(step)<1e-10){if(a[k]<min||a[k]>max)return null;}else{const u=(min-a[k])/step,v=(max-a[k])/step;lo=Math.max(lo,Math.min(u,v));hi=Math.min(hi,Math.max(u,v));if(lo>hi)return null;}}return[lo,hi];}
 function segment(room,a,b,r=.31){const d=definition(room);if(!d||!a||!b||!finite(dist(a,b))||dist(a,b)>600||!walkable(room,a.x,a.z,r)||!walkable(room,b.x,b.z,r))return false;
  if(room===G.RealmCosmos?.ROOM)return G.RealmCosmos.segment(a,b,r);
@@ -2249,7 +2268,7 @@ function swim(sim,dx,dz,vertical,dt){const d=diveDefinition(sim),v=sim.worldDive
 function medium(sim,point){const d=diveDefinition(sim);if(!d||!point||!inside(point[0],point[2],d.volume,0)||point[1]>=d.surfaceY)return'air';
  if((d.dryCourts||[]).some(p=>inside(point[0],point[2],p,0)&&point[1]>=p.minY&&point[1]<=p.maxY))return'air';return'water';}
 function divingStatus(sim,cameraEye){return sim.worldDive?{y:sim.worldDive.y,depth:Math.max(0,diveDefinition(sim).surfaceY-sim.worldDive.y),hold:sim.worldDive.hold,body:medium(sim,[sim.state.player.x,sim.worldDive.y+.85,sim.state.player.z]),camera:medium(sim,cameraEye),dryCourt:dryAt(diveDefinition(sim),sim.state.player.x,sim.worldDive.y,sim.state.player.z)?.id||null}:null;}
-const api={IDS,OBJECTIVES,GATE,definitions,definition,handles,fresh,validate,height,playerHeight,land,walkable,segment,near,atRoad,preview,cancel,enter,leave,rewards,command,enemies,defeat,recover,pick,diveEnter,diveExit,swim,swimClear,medium,divingStatus};
+const api={patchContains:inside,IDS,OBJECTIVES,GATE,definitions,definition,handles,fresh,validate,height,playerHeight,land,walkable,segment,near,atRoad,preview,cancel,enter,leave,rewards,command,enemies,defeat,recover,pick,diveEnter,diveExit,swim,swimClear,medium,divingStatus};
 G.RealmWorldFoundations=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* Ordinary Earth-road continuation. Transient travel only; no reward or save schema. */
@@ -8046,6 +8065,36 @@ function geometry(kind){let v=[],timber=kind==='timber-panel';function tri(a,b,c
  const along=Math.abs(n[0])>.5?p[2]:p[0],across=Math.abs(n[1])>.5?p[2]:p[1];v.push(.1+(across+.5)*.1,along+.5);
  }}}function q(a,b,c,d){tri(a,b,c);tri(a,c,d);}
  if(kind==='box'||timber){let n=-.5,p=.5;q([n,n,p],[p,n,p],[p,p,p],[n,p,p]);q([p,n,n],[n,n,n],[n,p,n],[p,p,n]);q([p,n,p],[p,n,n],[p,p,n],[p,p,p]);q([n,n,n],[n,n,p],[n,p,p],[n,p,n]);q([n,p,p],[p,p,p],[p,p,n],[n,p,n]);q([n,n,n],[p,n,n],[p,n,p],[n,n,p]);}
+ else if(kind==='coastward-shore-apron'||kind==='coastward-shore-bank'){
+  // Only this original canonical shoreline: no generated coastline or new
+  // ground authority. Its ring excludes the entire old rectangular cap.
+  const data=G.RealmWorldAtlantisEarth||(typeof require==='function'?require('./world-atlantis-earth.js'):null),p=data.realms.find(d=>d.id==='earthlands').patches.find(p=>p.id==='shore-overlook');
+  if(!p.footprint||p.footprint.length!==9)throw Error('Canonical Coastward shoreline footprint required.');
+  const cap=kind==='coastward-shore-apron',top=cap?p.y:p.y-.11,bottom=cap?p.y-.11:-.5;
+  const outer=p.footprint.map(([x,z])=>[x,top,z]),inner=p.footprint.map(([x,z])=>[Math.max(p.x-p.w/2,Math.min(p.x+p.w/2,x)),top,Math.max(p.z-p.d/2,Math.min(p.z+p.d/2,z))]);
+  const lowOuter=outer.map(([x,y,z])=>{const d=Math.hypot(x-p.x,z-p.z);return[x+(cap?0:.65*(x-p.x)/d),bottom,z+(cap?0:.65*(z-p.z)/d)];}),lowInner=inner.map(([x,y,z])=>[x,bottom,z]);
+  const face=(a,b,c)=>{if(Math.hypot(...cross(sub(b,a),sub(c,a)))>1e-10)tri(a,b,c);};
+  const quad=(a,b,c,d)=>{face(a,b,c);face(a,c,d);};
+  for(let i=0;i<outer.length;i++){const j=(i+1)%outer.length;
+   quad(inner[i],inner[j],outer[j],outer[i]);
+   quad(lowInner[i],lowOuter[i],lowOuter[j],lowInner[j]);
+   // The west edge has zero apron width; do not emit two coincident caps.
+   if(!outer[i].every((n,k)=>n===inner[i][k])||!outer[j].every((n,k)=>n===inner[j][k])||!lowOuter[i].every((n,k)=>n===lowInner[i][k])||!lowOuter[j].every((n,k)=>n===lowInner[j][k])){
+    quad(outer[i],outer[j],lowOuter[j],lowOuter[i]);
+    quad(inner[i],lowInner[i],lowInner[j],inner[j]);
+   }
+  }
+ }
+  else if(kind==='traveler-cloth'){
+   // Original fitted cloth block: bevel only the old centered box envelope.
+   // Four octagonal rings soften the waist/hem edges; no rig or solid authority.
+   const outline=[[-.5,-.32],[-.32,-.5],[.32,-.5],[.5,-.32],[.5,.32],[.32,.5],[-.32,.5],[-.5,.32]],
+    rings=[[-.5,.84],[-.42,1],[.42,1],[.5,.84]].map(([y,s])=>outline.map(([x,z])=>[x*s,y,z*s]));
+   for(let i=0;i<8;i++){const j=(i+1)%8;
+    for(let k=0;k<3;k++)q(rings[k][i],rings[k+1][i],rings[k+1][j],rings[k][j]);
+    tri([0,-.5,0],rings[0][i],rings[0][j]);tri([0,.5,0],rings[3][j],rings[3][i]);
+   }
+  }
  else if(kind==='overlook-stone'){
   // One original faceted landmark, contained by its unchanged centered solid.
   // Three irregular rings bevel the outline; full extrema retain its envelope.
@@ -9054,6 +9103,7 @@ function pose(options={}){
 
 function draw(out,input={},posed=pose()){
  const {M,hex,blend}=G.RealmEngine;
+ out['traveler-cloth']||=([]);
  const x=finite(input.x),z=finite(input.z),base=finite(input.base),yaw=finite(input.yaw);
  const root=M.compose(x,base,z,1,1,1,0,yaw,0),j=posed.joints;
  const body=posed.upperBody||{yaw:0,lean:0,shift:[0,0,0]},pivotY=.985+posed.bob;
@@ -9087,13 +9137,13 @@ function draw(out,input={},posed=pose()){
  const y=posed.bob;
  // Narrow waist, broader shoulder line and a split hem make fitted clothing
  // with existing primitives, rather than a stack of rounded doll volumes.
- upperAdd('box','jacket-waist',[0,1.035+y,0],[.335,.27,.24],darkCoat);
+ upperAdd('traveler-cloth','jacket-waist',[0,1.035+y,0],[.335,.27,.24],darkCoat);
  upperAdd('round','jacket-chest',[0,1.255+y,0],[.465,.30,.29],coat);
  upperAdd('octa','jacket-left-side',[-.155,1.13+y,0],[.155,.35,.245],coat);
  upperAdd('octa','jacket-right-side',[.155,1.13+y,0],[.155,.35,.245],coat);
  upperAdd('box','jacket-front-seam',[0,1.18+y,.132],[.025,.30,.022],seam);
- add('box','jacket-left-hem',[-.096,.89+y,.008],[.18,.20,.245],darkCoat,[0,0,-.045]);
- add('box','jacket-right-hem',[.096,.89+y,.008],[.18,.20,.245],darkCoat,[0,0,.045]);
+ add('traveler-cloth','jacket-left-hem',[-.096,.89+y,.008],[.18,.20,.245],darkCoat,[0,0,-.045]);
+ add('traveler-cloth','jacket-right-hem',[.096,.89+y,.008],[.18,.20,.245],darkCoat,[0,0,.045]);
  add('box','belt',[0,.985+y,.008],[.355,.063,.267],leather);
  add('box','belt-buckle',[0,.985+y,.152],[.065,.060,.028],metal);
  upperAdd('box','collar-left',[-.09,1.407+y,.042],[.09,.10,.18],seam,[0,0,-.18]);
@@ -9300,7 +9350,7 @@ class WorldArt{
  // Detail beams share the box instance buffer. Their endpoints keep joinery on
  // the authored walls instead of enlarging navigation or camera obstacles.
  beam(from,to,width,c,opt={}){const d=to.map((v,i)=>v-from[i]),len=Math.hypot(...d);if(len<.001)return;const yy=d.map(v=>v/len),ref=Math.abs(yy[1])>.95?[1,0,0]:[0,1,0],xx=[ref[1]*yy[2]-ref[2]*yy[1],ref[2]*yy[0]-ref[0]*yy[2],ref[0]*yy[1]-ref[1]*yy[0]],n=Math.hypot(...xx);for(let i=0;i<3;i++)xx[i]/=n;const zz=[xx[1]*yy[2]-xx[2]*yy[1],xx[2]*yy[0]-xx[0]*yy[2],xx[0]*yy[1]-xx[1]*yy[0]],p=from.map((v,i)=>(v+to[i])/2);this.box(...p,width,len,width,c,{cameraSolid:false,cutaway:true,...opt,m:new Float32Array([...xx.map(v=>v*width),0,...yy.map(v=>v*len),0,...zz.map(v=>v*width),0,...p,1])});}
- commit(){this.e.viewShelters=Object.values(this.map).flat().filter(i=>i.worldRoof).map(i=>({minX:i.p[0]-i.s[0]/2,maxX:i.p[0]+i.s[0]/2,minZ:i.p[2]-i.s[2]/2,maxZ:i.p[2]+i.s[2]/2,base:i.p[1]-i.s[1]/2}));if(!this.room&&G.RealmWorldFoundationsArt)G.RealmWorldFoundationsArt.gate(this);if(!this.room&&G.RealmEarthArt)G.RealmEarthArt.gate(this);if(!this.room&&G.RealmCosmosArt)G.RealmCosmosArt.gate(this);if(!this.room&&G.RealmRoadArt)G.RealmRoadArt.gate(this);if(!this.room&&G.RealmAdventureArt)G.RealmAdventureArt.entrance(this);if(!this.room&&G.RealmSandboxArt)G.RealmSandboxArt.scenery(this);for(let[k,a]of Object.entries(this.map)){const rails=k==='box'?a.filter(i=>i.bridgeRail===true):[];this.e.batch(k,rails.length?a.filter(i=>i.bridgeRail!==true):a);if(rails.length)this.e.batch(k,rails,false,{railCutaway:true});}this.dynamicBox=this.e.batch('box',[],true);this.dynamicOcta=this.e.batch('octa',[],true);this.dynamicRound=this.e.batch('round',[],true);this.dynamicDisc=this.e.batch('disc',[],true);this.dynamicTimber=(this.room===G.RealmEarth?.ROOM||this.room===G.RealmElderwealdWorld?.extension.room)?this.e.batch('timber-panel',[],true):null;}
+ commit(){this.e.viewShelters=Object.values(this.map).flat().filter(i=>i.worldRoof).map(i=>({minX:i.p[0]-i.s[0]/2,maxX:i.p[0]+i.s[0]/2,minZ:i.p[2]-i.s[2]/2,maxZ:i.p[2]+i.s[2]/2,base:i.p[1]-i.s[1]/2}));if(!this.room&&G.RealmWorldFoundationsArt)G.RealmWorldFoundationsArt.gate(this);if(!this.room&&G.RealmEarthArt)G.RealmEarthArt.gate(this);if(!this.room&&G.RealmCosmosArt)G.RealmCosmosArt.gate(this);if(!this.room&&G.RealmRoadArt)G.RealmRoadArt.gate(this);if(!this.room&&G.RealmAdventureArt)G.RealmAdventureArt.entrance(this);if(!this.room&&G.RealmSandboxArt)G.RealmSandboxArt.scenery(this);for(let[k,a]of Object.entries(this.map)){const rails=k==='box'?a.filter(i=>i.bridgeRail===true):[];this.e.batch(k,rails.length?a.filter(i=>i.bridgeRail!==true):a);if(rails.length)this.e.batch(k,rails,false,{railCutaway:true});}this.dynamicBox=this.e.batch('box',[],true);this.dynamicOcta=this.e.batch('octa',[],true);this.dynamicRound=this.e.batch('round',[],true);this.dynamicDisc=this.e.batch('disc',[],true);this.dynamicTravelerCloth=this.e.batch('traveler-cloth',[],true);this.dynamicTimber=(this.room===G.RealmEarth?.ROOM||this.room===G.RealmElderwealdWorld?.extension.room)?this.e.batch('timber-panel',[],true):null;}
  begin(room){this.earthShoulderFrame=null;this.quarryFrame=null;this.droverFrame=null;this.millwrightFrame=null;this.millGateFrame=null;this.travelerPoseOwner=null;this.travelerMotion=null;this.travelerFrame=null;this.travelerParts=null;this.e.theme=null;this.e.worldAtmosphere=null;this.e.worldFog=null;this.e.worldFogCenter=null;this.e.cameraMedium=null;this.e.galleryFocus=null;this.e.worldRoofOpen=false;this.e.viewShelters=[];this.e.earthWater=null;this.e.railCutawayActive=false;this.e.noWater=false;this.e.surfacePick=null;this.e.ambientOverride=null;this.e.reflectionStrength=1;this.e.clear();this.e.isInterior=!!room;this.room=room;this.map={};}
  tree(x,z,s=1,style=0,base=1.2){let bark=0x68503c;this.add('cylinder',x,base,z,.42*s,2.6*s,.42*s,bark);for(let a of[-.6,.8,2.3])this.box(x+Math.sin(a)*.45*s,base+2*s,z+Math.cos(a)*.45*s,.18*s,1.2*s,.18*s,bark,{r:[.3,a,.55]});let colors=style===3?[0xd9a4ba,0xc489a5,0xe9bdbe]:style===1?[0xaab961,0x8fa856,0xbdc16f]:style===2?[0x87a897,0x669586,0xa0b59b]:[0x557d65,0x638f69,0x779c73];if(style===0){for(let i=0;i<3;i++)this.add('cone',x,base+(1.6+i*.85)*s,z,(3.2-i*.6)*s,2.2*s,(3.2-i*.6)*s,colors[i],{wind:2});}else{for(let i=0;i<7;i++){let a=i*2.4,r=i===0?0:1.05;this.add(style===3?'round':style===1?'round':'octa',x+Math.cos(a)*r*s,base+(3.25+(i%3)*.42)*s,z+Math.sin(a)*r*s,(2.25+(i%2)*.3)*s,(2.1+(i%3)*.23)*s,(2.15+(i%2)*.35)*s,colors[i%3],{r:[0,a,0],wind:2});}}}
  lamp(x,z,height=3.4,base=1.2){this.box(x,base+height/2,z,.13,height,.13,0x5a4735);this.box(x,base+height,z,.55,.12,.55,0x443c32);this.box(x,base+height-.35,z,.32,.54,.32,0xffd185,{em:1.4,rough:.35});this.add('cone',x,base+height+.07,z,.77,.37,.77,0x594739);this.box(x,base+.09,z,.48,.18,.48,0x777565);}
@@ -9576,7 +9626,7 @@ class WorldArt{
   const f=this.travelerFrame;
   return JSON.parse(JSON.stringify({motion:this.travelerMotion,frame:{...f,root:Array.from(f.root)},equipment:this.travelerEquipment,parts:Object.entries(this.travelerParts).flatMap(([kind,v])=>v.map(it=>({kind,p:it.p,s:it.s,m:it.m?Array.from(it.m):null,c:it.c,part:it.travelerPart||null,weaponPart:it.weaponPart||null,weaponId:it.weaponId||null,attachment:it.attachment||null,gemId:it.gemId||null,fittingStage:it.fittingStage||null,temper:it.temper||null})))}));
  }
- update(sim,t,target){this.e.cameraMedium=sim.worldDive?G.RealmWorldFoundations.medium(sim,this.e.camera.eye):null;sim.presentation=sim.presentation||{};sim.presentation.perspective=this.e.camera.projection==='perspective';this.e.cutaway=sim.state.settings.cameraCutaway!==false;const bridge=G.RealmEarth?.BRIDGE;this.e.railCutawayActive=!!bridge&&sim.room===G.RealmEarth.ROOM&&sim.state.player.z>=bridge.from&&sim.state.player.z<=bridge.to&&Math.abs(sim.state.player.x)<=bridge.walkWidth/2;this.e.galleryFocus=sim.worldDive?[sim.state.player.x,G.RealmWorldFoundations.playerHeight(sim)+.88,sim.state.player.z]:null;this.e.worldRoofOpen=(this.e.viewShelters||[]).some(b=>sim.state.player.x>=b.minX&&sim.state.player.x<=b.maxX&&sim.state.player.z>=b.minZ&&sim.state.player.z<=b.maxZ&&this.e.camera.eye[1]>b.base);this.e.cutawayFocus=[sim.state.player.x,G.RealmWorldFoundations?.handles(this.room)?G.RealmWorldFoundations.playerHeight(sim)+.88:sim.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(sim.state.player.x,sim.state.player.z)+.88:sim.room===G.RealmEarth?.ROOM?G.RealmEarth.height(sim.state.player.x,sim.state.player.z)+.88:sim.room?2.45:2.18,sim.state.player.z];if(this.e.worldFog)this.e.worldFogCenter=[sim.state.player.x,sim.state.player.z];let out={box:[],octa:[],disc:[],round:[],'timber-panel':[]},p=sim.state.player;this.traveler(out,sim);for(let i=0;i<C.PROFILES.length;i++){let info=C.PROFILES[i],r=sim.state.residents.find(r=>r.id===info.id),run=sim.runs.get(info.id);if(this.room){if(this.room==='home'&&run.inside){let pos=[[-3.1,1.1],[3.2,1.1],[2,3.2]][i];this.person(out,pos[0],pos[1],i?-.7:.7,info.color,t+i,false,info.role.toLowerCase(),false,1.57);}else if(this.room==='atelier'&&info.id==='ilan'&&run.goal==='atelier')this.person(out,2.5,1.1,-1,info.color,t,false,'musician',false,1.57);else if(this.room==='observatory'&&info.id==='mara'&&run.goal==='observatory')this.person(out,2.5,1.1,-1,info.color,t,false,'researcher',false,1.57);}else if(!run.inside)this.person(out,r.x,r.z,r.yaw,info.color,t+i,run.walking,info.role.toLowerCase());}
+ update(sim,t,target){this.e.cameraMedium=sim.worldDive?G.RealmWorldFoundations.medium(sim,this.e.camera.eye):null;sim.presentation=sim.presentation||{};sim.presentation.perspective=this.e.camera.projection==='perspective';this.e.cutaway=sim.state.settings.cameraCutaway!==false;const bridge=G.RealmEarth?.BRIDGE;this.e.railCutawayActive=!!bridge&&sim.room===G.RealmEarth.ROOM&&sim.state.player.z>=bridge.from&&sim.state.player.z<=bridge.to&&Math.abs(sim.state.player.x)<=bridge.walkWidth/2;this.e.galleryFocus=sim.worldDive?[sim.state.player.x,G.RealmWorldFoundations.playerHeight(sim)+.88,sim.state.player.z]:null;this.e.worldRoofOpen=(this.e.viewShelters||[]).some(b=>sim.state.player.x>=b.minX&&sim.state.player.x<=b.maxX&&sim.state.player.z>=b.minZ&&sim.state.player.z<=b.maxZ&&this.e.camera.eye[1]>b.base);this.e.cutawayFocus=[sim.state.player.x,G.RealmWorldFoundations?.handles(this.room)?G.RealmWorldFoundations.playerHeight(sim)+.88:sim.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(sim.state.player.x,sim.state.player.z)+.88:sim.room===G.RealmEarth?.ROOM?G.RealmEarth.height(sim.state.player.x,sim.state.player.z)+.88:sim.room?2.45:2.18,sim.state.player.z];if(this.e.worldFog)this.e.worldFogCenter=[sim.state.player.x,sim.state.player.z];let out={box:[],octa:[],disc:[],round:[],'timber-panel':[],'traveler-cloth':[]},p=sim.state.player;this.traveler(out,sim);for(let i=0;i<C.PROFILES.length;i++){let info=C.PROFILES[i],r=sim.state.residents.find(r=>r.id===info.id),run=sim.runs.get(info.id);if(this.room){if(this.room==='home'&&run.inside){let pos=[[-3.1,1.1],[3.2,1.1],[2,3.2]][i];this.person(out,pos[0],pos[1],i?-.7:.7,info.color,t+i,false,info.role.toLowerCase(),false,1.57);}else if(this.room==='atelier'&&info.id==='ilan'&&run.goal==='atelier')this.person(out,2.5,1.1,-1,info.color,t,false,'musician',false,1.57);else if(this.room==='observatory'&&info.id==='mara'&&run.goal==='observatory')this.person(out,2.5,1.1,-1,info.color,t,false,'researcher',false,1.57);}else if(!run.inside)this.person(out,r.x,r.z,r.yaw,info.color,t+i,run.walking,info.role.toLowerCase());}
  if(!this.room){if(sim.state.weather==='rain'&&!sim.state.settings.reducedMotion){for(let i=0;i<110;i++){let x=((i*17.13)%42)-21,z=((i*23.77)%42)-21,y=1.4+((i*.61-t*10)%9+9)%9;out.box.push({p:[x,y,z],s:[.017,.32,.017],r:[0,0,-.13],c:0x9ebdc1,em:.2});}}for(let f of sim.state.flowers){out.box.push({p:[f.x,1.72,f.z],s:[.055,.48,.055],c:0x57784c});out.octa.push({p:[f.x,1.99,f.z],s:[.29,.3,.29],c:[0xe5bb94,0xc49fac,0xe5d29d,0xb7cad0][f.color]});}for(let i=0;i<13;i++){let a=t*.11+i*.8,r=26+i%3*4,x=Math.sin(a)*r,z=Math.cos(a)*r,y=9+i%4*1.3;for(let s of[-1,1])out.box.push({p:[x+s*.18,y,z],s:[.45,.055,.15],r:[0,a,s*(.25+Math.sin(t*3+i)*.2)],c:0x4a646b});}for(let j=0;j<3;j++)for(let i=0;i<4;i++){let u=(t*.3+i*.8)%3.7,x=[-13,-14.6,9.4][j],z=[-7.3,5.75,3.7][j];out.octa.push({p:[x+Math.sin(u+j)*.2,6.4+u,z],s:[.3+u*.16,.4+u*.19,.3+u*.16],c:blend(hex(0xb5bbb0),hex(0x9faeac),u/4),rough:1});}let w=t*.5;out.octa.push({p:[7+Math.cos(w)*.7,2+Math.sin(t)*.14,10+Math.sin(w)*.7],s:[.3,.43,.3],c:0x8ad6d1,em:1.3});}
  if(target)for(let i=0;i<16;i++){let a=i/16*TAU;out.box.push({p:[target.x+Math.cos(a)*.4,this.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(target.x,target.z)+.02:this.room?1.59:1.31,target.z+Math.sin(a)*.4],s:[.12,.025,.05],r:[0,-a,0],c:0xe5ce93,em:.35});}
 
@@ -9605,7 +9655,7 @@ class WorldArt{
   const submission=G.RealmEarthGrazerArt.draw(out,sim.grazerPresentation,sim.grazerPresentationContext,{quality:sim.state.settings.quality,reducedMotion:sim.state.settings.reducedMotion});
   if(submission){sim.grazerSubmission=submission;G.RealmEarthGrazerArt.foliage(out);}
  }
- this.dynamicBox.items=out.box;this.dynamicOcta.items=out.octa;this.dynamicDisc.items=out.disc;}
+ this.dynamicBox.items=out.box;this.dynamicOcta.items=out.octa;this.dynamicDisc.items=out.disc;this.dynamicTravelerCloth.items=out['traveler-cloth'];}
 }
 G.RealmArt={WorldArt};})(globalThis);
 </script><script>/* Original procedural Wildwood artwork; consumes local state, never changes it. */
@@ -10681,8 +10731,8 @@ function expeditionLegend(sim){
  return'<section class="trail-map-key expedition-map-key"><h3>Your living-road work · available now</h3><p>Green letters show the next accepted work. The pale dotted line follows supported country; it is a guide, not a shortcut across water. The footbridge and root passage connect the same road.</p><ul>'+points.map(p=>'<li data-expedition-route="'+esc(p.id||p.step)+'"><strong>'+p.mark+'</strong> · '+esc(p.name)+(p.kind==='defeat'?'<p>Tab selects the accepted foe. Attack in range; Brace or retreat during the tell.</p>':'')+'<button data-rpg="expedition-walk" data-id="'+esc(p.id||p.step)+'">'+(p.kind==='giver'?'Walk back to Rill':'Walk near this action')+'</button></li>').join('')+'</ul><button data-rpg="expedition-open">Read the expedition and exact reward</button></section>';
 }
 function routeSVG(d,s,ox,oy){return surfaceRoutes(d).map(r=>'<polyline data-world-route="'+esc(r.id)+'" points="'+r.points.map(p=>(ox+p.x*s)+','+(oy+p.z*s)).join(' ')+'" fill="none" stroke="#e1d6ab" stroke-opacity=".66" stroke-width="1.4" stroke-dasharray="3 3"/>').join('');}
-function mapCanvas(canvas,sim,wildSignsTracked=false){const d=W.definition(sim.room),g=canvas.getContext('2d');if(!d||!g)return;const w=canvas.width,h=canvas.height,{scale:s,x:ox,y:oy}=projection(d,w,h);g.fillStyle='#182728';g.fillRect(0,0,w,h);g.fillStyle='#889783';for(const p of d.patches)g.fillRect(ox+(p.x-p.w/2)*s,oy+(p.z-p.d/2)*s,p.w*s,p.d*s);for(const r of surfaceRoutes(d)){g.strokeStyle='#d5c89e';g.lineWidth=1;g.setLineDash([2,2]);g.beginPath();r.points.forEach((p,i)=>g[i?'lineTo':'moveTo'](ox+p.x*s,oy+p.z*s));g.stroke();g.setLineDash([]);}const loadLine=G.RealmEarthConsignmentUI?.routeLine(sim)||[];if(loadLine.length){g.strokeStyle='#90c6cf';g.lineWidth=2;g.setLineDash([5,3]);g.beginPath();loadLine.forEach((p,i)=>g[i?'lineTo':'moveTo'](ox+p.x*s,oy+p.z*s));g.stroke();g.setLineDash([]);}const signsLine=wildSignsLine(sim,wildSignsTracked);if(signsLine.length){g.strokeStyle='#b9e8ad';g.lineWidth=2;g.setLineDash([4,3]);g.beginPath();signsLine.forEach((p,i)=>g[i?'lineTo':'moveTo'](ox+p.x*s,oy+p.z*s));g.stroke();g.setLineDash([]);}g.fillStyle='#344549';for(const p of d.solids)g.fillRect(ox+(p.x-p.w/2)*s,oy+(p.z-p.d/2)*s,p.w*s,p.d*s);if(d.dive){const p=d.dive.volume;g.fillStyle='#408585';g.fillRect(ox+(p.x-p.w/2)*s,oy+(p.z-p.d/2)*s,p.w*s,p.d*s);}for(const p of d.points){g.fillStyle=p.kind==='return'?'#ffda9c':'#d5dec9';g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,2.5,0,Math.PI*2);g.fill();}for(const p of trailPoints(sim)){g.strokeStyle='#d2b5f0';g.lineWidth=2;g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,5,0,Math.PI*2);g.stroke();}for(const p of expeditionPoints(sim)){g.strokeStyle='#ade5a8';g.lineWidth=2;g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,5,0,Math.PI*2);g.stroke();}for(const p of civicPoints(sim)){g.strokeStyle='#90c6cf';g.lineWidth=2;g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,5,0,Math.PI*2);g.stroke();}for(const p of wildSignsPoints(sim,wildSignsTracked)){g.strokeStyle='#b9e8ad';g.lineWidth=2;g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,5,0,Math.PI*2);g.stroke();g.fillStyle='#efffe9';g.font='9px sans-serif';g.fillText(p.mark,ox+p.x*s+7,oy+p.z*s-5);}g.fillStyle='#ffffff';g.beginPath();g.arc(ox+sim.state.player.x*s,oy+sim.state.player.z*s,4,0,Math.PI*2);g.fill();}
-function mapSVG(d,sim,wildSignsTracked=false){const{scale:s,x:ox,y:oy}=projection(d,420,500);let v='<rect width="420" height="500" rx="12" fill="#182728"/>';for(const p of d.patches)v+='<rect x="'+(ox+(p.x-p.w/2)*s)+'" y="'+(oy+(p.z-p.d/2)*s)+'" width="'+p.w*s+'" height="'+p.d*s+'" fill="#889783"/>';v+=routeSVG(d,s,ox,oy);const loadLine=G.RealmEarthConsignmentUI?.routeLine(sim)||[];if(loadLine.length)v+='<polyline data-consignment-route="selected" points="'+loadLine.map(p=>(ox+p.x*s)+','+(oy+p.z*s)).join(' ')+'" fill="none" stroke="#90c6cf" stroke-width="2" stroke-dasharray="5 3"/>';const signsLine=wildSignsLine(sim,wildSignsTracked);if(signsLine.length)v+='<polyline data-wild-signs-route="selected" points="'+signsLine.map(p=>(ox+p.x*s)+','+(oy+p.z*s)).join(' ')+'" fill="none" stroke="#b9e8ad" stroke-width="2" stroke-dasharray="4 3"/>';for(const p of d.solids)v+='<rect x="'+(ox+(p.x-p.w/2)*s)+'" y="'+(oy+(p.z-p.d/2)*s)+'" width="'+p.w*s+'" height="'+p.d*s+'" fill="#344549"/>';if(d.dive&&sim.worldDive){for(const[p,c]of [[d.dive.volume,'#408585'],...(d.dive.dryCourts||[]).map(p=>[p,'#d2c6a0'])])v+='<rect x="'+(ox+(p.x-p.w/2)*s)+'" y="'+(oy+(p.z-p.d/2)*s)+'" width="'+p.w*s+'" height="'+p.d*s+'" fill="'+c+'"/>';for(const line of d.dive.routes||[])v+='<polyline points="'+line.points.map(p=>(ox+p[0]*s)+','+(oy+p[2]*s)).join(' ')+'" fill="none" stroke="#f2ead2" stroke-width="1.5" stroke-dasharray="4 3"/>';}for(const[i,p]of d.points.entries()){if(sim.worldDive&&p.kind!=='dive')continue;v+='<circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="7" fill="#e8cc98"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#172e2b" text-anchor="middle" font-size="9">'+(i+1)+'</text>';}for(const p of trailPoints(sim)){v+='<g data-trail-marker="'+esc(p.id||'escort-person')+'"><circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="10" fill="#27303c" stroke="#d2b5f0" stroke-width="2"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#f8e8ff" text-anchor="middle" font-size="10">'+p.mark+'</text></g>';}for(const p of expeditionPoints(sim))v+='<g data-expedition-marker="'+esc(p.id||p.step)+'"><circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="10" fill="#26382b" stroke="#ade5a8" stroke-width="2"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#efffe9" text-anchor="middle" font-size="10">'+p.mark+'</text></g>';for(const p of civicPoints(sim))v+='<g data-local-marker="'+esc(p.id)+'"><circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="10" fill="#21343a" stroke="#90c6cf" stroke-width="2"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#d8f4f4" text-anchor="middle" font-size="9">'+p.mark+'</text></g>';for(const p of wildSignsPoints(sim,wildSignsTracked))v+='<g data-wild-signs-marker="'+esc(p.id)+'"><circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="10" fill="#26382b" stroke="#b9e8ad" stroke-width="2"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#efffe9" text-anchor="middle" font-size="9">'+esc(p.mark)+'</text></g>';const p=sim.state.player;return'<svg viewBox="0 0 420 500" role="img" aria-label="'+esc(d.name)+' physical routes">'+v+'<circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" '+([...trailPoints(sim),...expeditionPoints(sim),...civicPoints(sim),...wildSignsPoints(sim,wildSignsTracked)].some(q=>Math.hypot(q.x-p.x,q.z-p.z)*s<14)?'r="13" fill="none" stroke="white" stroke-width="2"':'r="4" fill="white"')+'/></svg>';}
+function mapCanvas(canvas,sim,wildSignsTracked=false){const d=W.definition(sim.room),g=canvas.getContext('2d');if(!d||!g)return;const w=canvas.width,h=canvas.height,{scale:s,x:ox,y:oy}=projection(d,w,h);g.fillStyle='#182728';g.fillRect(0,0,w,h);g.fillStyle='#889783';for(const p of d.patches){if(p.footprint){g.beginPath();p.footprint.forEach(([x,z],i)=>g[i?'lineTo':'moveTo'](ox+x*s,oy+z*s));g.closePath();g.fill();}else g.fillRect(ox+(p.x-p.w/2)*s,oy+(p.z-p.d/2)*s,p.w*s,p.d*s);}for(const r of surfaceRoutes(d)){g.strokeStyle='#d5c89e';g.lineWidth=1;g.setLineDash([2,2]);g.beginPath();r.points.forEach((p,i)=>g[i?'lineTo':'moveTo'](ox+p.x*s,oy+p.z*s));g.stroke();g.setLineDash([]);}const loadLine=G.RealmEarthConsignmentUI?.routeLine(sim)||[];if(loadLine.length){g.strokeStyle='#90c6cf';g.lineWidth=2;g.setLineDash([5,3]);g.beginPath();loadLine.forEach((p,i)=>g[i?'lineTo':'moveTo'](ox+p.x*s,oy+p.z*s));g.stroke();g.setLineDash([]);}const signsLine=wildSignsLine(sim,wildSignsTracked);if(signsLine.length){g.strokeStyle='#b9e8ad';g.lineWidth=2;g.setLineDash([4,3]);g.beginPath();signsLine.forEach((p,i)=>g[i?'lineTo':'moveTo'](ox+p.x*s,oy+p.z*s));g.stroke();g.setLineDash([]);}g.fillStyle='#344549';for(const p of d.solids)g.fillRect(ox+(p.x-p.w/2)*s,oy+(p.z-p.d/2)*s,p.w*s,p.d*s);if(d.dive){const p=d.dive.volume;g.fillStyle='#408585';g.fillRect(ox+(p.x-p.w/2)*s,oy+(p.z-p.d/2)*s,p.w*s,p.d*s);}for(const p of d.points){g.fillStyle=p.kind==='return'?'#ffda9c':'#d5dec9';g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,2.5,0,Math.PI*2);g.fill();}for(const p of trailPoints(sim)){g.strokeStyle='#d2b5f0';g.lineWidth=2;g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,5,0,Math.PI*2);g.stroke();}for(const p of expeditionPoints(sim)){g.strokeStyle='#ade5a8';g.lineWidth=2;g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,5,0,Math.PI*2);g.stroke();}for(const p of civicPoints(sim)){g.strokeStyle='#90c6cf';g.lineWidth=2;g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,5,0,Math.PI*2);g.stroke();}for(const p of wildSignsPoints(sim,wildSignsTracked)){g.strokeStyle='#b9e8ad';g.lineWidth=2;g.beginPath();g.arc(ox+p.x*s,oy+p.z*s,5,0,Math.PI*2);g.stroke();g.fillStyle='#efffe9';g.font='9px sans-serif';g.fillText(p.mark,ox+p.x*s+7,oy+p.z*s-5);}g.fillStyle='#ffffff';g.beginPath();g.arc(ox+sim.state.player.x*s,oy+sim.state.player.z*s,4,0,Math.PI*2);g.fill();}
+function mapSVG(d,sim,wildSignsTracked=false){const{scale:s,x:ox,y:oy}=projection(d,420,500);let v='<rect width="420" height="500" rx="12" fill="#182728"/>';for(const p of d.patches){if(p.footprint)v+='<polygon data-world-ground="'+esc(p.id)+'" points="'+p.footprint.map(([x,z])=>(ox+x*s)+','+(oy+z*s)).join(' ')+'" fill="#889783"/>';else v+='<rect x="'+(ox+(p.x-p.w/2)*s)+'" y="'+(oy+(p.z-p.d/2)*s)+'" width="'+p.w*s+'" height="'+p.d*s+'" fill="#889783"/>';}v+=routeSVG(d,s,ox,oy);const loadLine=G.RealmEarthConsignmentUI?.routeLine(sim)||[];if(loadLine.length)v+='<polyline data-consignment-route="selected" points="'+loadLine.map(p=>(ox+p.x*s)+','+(oy+p.z*s)).join(' ')+'" fill="none" stroke="#90c6cf" stroke-width="2" stroke-dasharray="5 3"/>';const signsLine=wildSignsLine(sim,wildSignsTracked);if(signsLine.length)v+='<polyline data-wild-signs-route="selected" points="'+signsLine.map(p=>(ox+p.x*s)+','+(oy+p.z*s)).join(' ')+'" fill="none" stroke="#b9e8ad" stroke-width="2" stroke-dasharray="4 3"/>';for(const p of d.solids)v+='<rect x="'+(ox+(p.x-p.w/2)*s)+'" y="'+(oy+(p.z-p.d/2)*s)+'" width="'+p.w*s+'" height="'+p.d*s+'" fill="#344549"/>';if(d.dive&&sim.worldDive){for(const[p,c]of [[d.dive.volume,'#408585'],...(d.dive.dryCourts||[]).map(p=>[p,'#d2c6a0'])])v+='<rect x="'+(ox+(p.x-p.w/2)*s)+'" y="'+(oy+(p.z-p.d/2)*s)+'" width="'+p.w*s+'" height="'+p.d*s+'" fill="'+c+'"/>';for(const line of d.dive.routes||[])v+='<polyline points="'+line.points.map(p=>(ox+p[0]*s)+','+(oy+p[2]*s)).join(' ')+'" fill="none" stroke="#f2ead2" stroke-width="1.5" stroke-dasharray="4 3"/>';}for(const[i,p]of d.points.entries()){if(sim.worldDive&&p.kind!=='dive')continue;v+='<circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="7" fill="#e8cc98"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#172e2b" text-anchor="middle" font-size="9">'+(i+1)+'</text>';}for(const p of trailPoints(sim)){v+='<g data-trail-marker="'+esc(p.id||'escort-person')+'"><circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="10" fill="#27303c" stroke="#d2b5f0" stroke-width="2"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#f8e8ff" text-anchor="middle" font-size="10">'+p.mark+'</text></g>';}for(const p of expeditionPoints(sim))v+='<g data-expedition-marker="'+esc(p.id||p.step)+'"><circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="10" fill="#26382b" stroke="#ade5a8" stroke-width="2"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#efffe9" text-anchor="middle" font-size="10">'+p.mark+'</text></g>';for(const p of civicPoints(sim))v+='<g data-local-marker="'+esc(p.id)+'"><circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="10" fill="#21343a" stroke="#90c6cf" stroke-width="2"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#d8f4f4" text-anchor="middle" font-size="9">'+p.mark+'</text></g>';for(const p of wildSignsPoints(sim,wildSignsTracked))v+='<g data-wild-signs-marker="'+esc(p.id)+'"><circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="10" fill="#26382b" stroke="#b9e8ad" stroke-width="2"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+3)+'" fill="#efffe9" text-anchor="middle" font-size="9">'+esc(p.mark)+'</text></g>';const p=sim.state.player;return'<svg viewBox="0 0 420 500" role="img" aria-label="'+esc(d.name)+' physical routes">'+v+'<circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" '+([...trailPoints(sim),...expeditionPoints(sim),...civicPoints(sim),...wildSignsPoints(sim,wildSignsTracked)].some(q=>Math.hypot(q.x-p.x,q.z-p.z)*s<14)?'r="13" fill="none" stroke="white" stroke-width="2"':'r="4" fill="white"')+'/></svg>';}
 class WorldUI{
  constructor(rpg){this.rpg=rpg;this.selected=null;this.reading=null;this.ticket=null;const labels=document.createElement('div');labels.id='world-labels';labels.setAttribute('aria-hidden','true');$('#hud').append(labels);const home=document.createElement('button');home.id='world-home';home.hidden=true;home.textContent='Return to Firstlight';home.onclick=()=>this.returnHome();$('#rpg-hud').append(home);const depth=document.createElement('section');depth.id='world-depth';depth.hidden=true;$('#rpg-hud').append(depth);}
  get sim(){return this.rpg.sim;}
@@ -13204,7 +13254,14 @@ function coastBanks(cells){
    parts.push({kind:'coast-bank',p,s,r,c:colors[index%colors.length],rough:1,cameraSolid:false,cutaway:false,coastBank:true,id:'coast-bank-'+index,seam:{...e,from,to}});
   }
  });
- return parts;
+ // Keep every other original skirt ID/transform. The old three overlook
+ // intervals are now internal to the canonical outward apron, not a shoreline.
+ const shore=W.definition('earthlands').patches.find(p=>p.id==='shore-overlook');
+ return parts.filter(bank=>{
+  if(!shore.footprint)return true;
+  const e=bank.seam,mid=(e.from+e.to)/2,x=e.axis==='z'?e.at:mid,z=e.axis==='z'?mid:e.at;
+  return !W.patchContains(x+e.nx*eps,z+e.nz*eps,shore);
+ });
 }
 function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isInterior=false;a.e.worldFog=def.id==='earthlands'?{clear:30,span:130}:null;a.e.theme=def.theme||null;a.e.noWater=!def.water;a.e.ambientOverride=def.id==='hell'?.6:def.id==='heaven'?.87:.76;a.e.worldAtmosphere=def.id==='heaven'?{top:0x9fb8bd,fog:0xe4cdbd,night:.12,power:.85,sunColor:0xffe5c2}:def.id==='hell'?{top:0x32292f,fog:0x75605a,night:.38,power:.68,sunColor:0xffc185}:null;
  const cells=partitions(def);
@@ -13213,6 +13270,13 @@ function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isIn
   a.box(p.x,p.y-.055,p.z,p.w,.11,p.d,p.color,{...decor,cutaway:!!gallery,terrain:true,worldGround:p.source});
   // Bridge decks have open water underneath. Other ground has a closed shore.
   if(!gallery&&!/bridge/.test(p.source))a.box(p.x,(p.y-.11-.5)/2,p.z,p.w,p.y-.11+.5,p.d,def.palette.stone,decor);
+ }
+ // Original coalesced rectangles remain unchanged. Only the new supported
+ // area outside the old overlook rectangle is drawn by this canonical apron.
+ const shore=def.id==='earthlands'&&def.patches.find(p=>p.id==='shore-overlook');
+ if(shore?.footprint){
+  a.add('coastward-shore-apron',0,0,0,1,1,1,shore.color,{...decor,terrain:true,shorelineGround:shore.id});
+  a.add('coastward-shore-bank',0,0,0,1,1,1,def.palette.stone,{...decor,shorelineBank:shore.id});
  }
  if(def.id==='earthlands')for(const bank of coastBanks(rawPartitions(def))){const{kind,p,s,c,...opt}=bank;a.add(kind,...p,...s,c,opt);}
  for(const p of def.solids){

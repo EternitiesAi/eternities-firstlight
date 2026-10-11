@@ -12,11 +12,16 @@ assert.deepEqual(E.geometry('country-ridge'),E.geometry('mountain-ridge'),'expli
 KINDS.add('country-ridge');
 assert.equal(E.geometry('overlook-stone').length,864,'explicit original 48-triangle stone mesh, not unknown cylinder fallback');
 KINDS.add('overlook-stone');
+for(const [kind,count] of [['coastward-shore-apron',52],['coastward-shore-bank',60]]){
+ assert.equal(E.geometry(kind).length,count*18,'exact original authored shoreline mesh');KINDS.add(kind);
+}
 function submission(id){const d=W.definition(id),items=[],writer={e:{},begin(){},commit(){},add(kind,x,y,z,w,h,depth,color,opt={}){items.push({kind,p:[x,y,z],s:[w,h,depth],color,...opt});},box(x,y,z,w,h,depth,color,opt){this.add('box',x,y,z,w,h,depth,color,opt);}},sim=new C.Simulation();sim.room=d.room;sim.state.player={...d.entry};Art.make(writer,sim);return{d,items,writer};}
 function bounds(it){const m=E.M.compose(...it.p,...it.s,...(it.r||[0,0,0])),mesh=E.geometry(it.kind),stride=it.kind==='timber-panel'?8:6,min=[Infinity,Infinity,Infinity],max=[-Infinity,-Infinity,-Infinity];for(let i=0;i<mesh.length;i+=stride){const p=E.M.transform(m,[mesh[i],mesh[i+1],mesh[i+2]]);for(let j=0;j<3;j++){min[j]=Math.min(min[j],p[j]);max[j]=Math.max(max[j],p[j]);}}return{min,max};}
 test('all new static scenery uses supported finite meshes instead of silent cylinder fallback',()=>{for(const id of W.IDS.filter(id=>id!=='cosmos')){const {d,items}=submission(id);assert.ok(items.length>40&&items.length<4000,'bounded original scene');
  const countryWest=items.filter(p=>p.kind==='country-ridge');assert.equal(countryWest.length,id==='earthlands'?3:0,'exact separately owned western skyline');
  if(id==='earthlands'){assert.deepEqual(countryWest.map(p=>p.vistaLayer),[0,1,2]);assert.equal(countryWest.reduce((n,p)=>n+E.geometry(p.kind).length/18,0),1008);}
+ const shore=items.filter(p=>p.shorelineGround||p.shorelineBank);assert.equal(shore.length,id==='earthlands'?2:0);
+ for(const p of shore){assert.equal(p.shorelineGround||p.shorelineBank,'shore-overlook');assert.deepEqual(p.p,[0,0,0]);assert.deepEqual(p.s,[1,1,1]);assert.equal(p.cameraSolid,false);assert.equal(p.cutaway,false);assert.equal(E.solidBounds(p.kind,p),null);}
  for(const p of countryWest){assert.equal(p.vista,'country-west');assert.equal(p.appearanceOnly,true);assert.equal(p.skyImage,true);assert.equal(p.cameraSolid,false);assert.equal(p.cutaway,false);assert.equal(p.worldSolid,undefined);assert.equal(E.solidBounds(p.kind,p),null);assert.ok(bounds(p).max[0]<d.bounds.minX,'full rotated mesh is outside western country');}
 for(const it of items){assert.ok(KINDS.has(it.kind),id+' unknown mesh '+it.kind);assert.ok([...it.p,...it.s].every(Number.isFinite));assert.ok(it.s.every(n=>n>0));assert.ok([...E.geometry(it.kind)].every(Number.isFinite));}}});
 test('visible solid boxes match canonical body collision footprints and heights',()=>{for(const id of W.IDS.filter(id=>id!=='cosmos')){const {d,items}=submission(id);for(const p of [...d.solids,...(d.dive?.solids||[])]){const boxes=items.filter(it=>it.worldSolid&&it.worldSolidId===p.id);assert.equal(boxes.length,1,p.id+' one authoritative visible solid');const it=boxes[0],base=p.y??W.height(d.room,p.x,p.z);assert.deepEqual(it.p,[p.x,base+p.h/2,p.z]);assert.deepEqual(it.s,[p.w,p.h,p.d]);assert.equal(it.cameraSolid,true);}}});
