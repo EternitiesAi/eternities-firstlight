@@ -269,7 +269,7 @@ test('roadkeeper revised profile reaches the actual WorldArt dynamic consumer wi
  const f=fixture('cleared-pocket'),view=start(f);f.sim.roadkeeperPresentation=view;f.sim.roadkeeperPresentationContext=f.context();
  const before=bytes(f.sim),disk=f.map.get(CH.KEY),writes=f.writes(),engine=roadkeeperCamera();
  engine.camera.eye=[f.sim.state.player.x+10,20,f.sim.state.player.z+10];engine.viewShelters=[];
- const art=Object.create(globalThis.RealmArt.WorldArt.prototype);Object.assign(art,{room:D.ROOM,e:engine,dynamicBox:{kind:'box',items:[]},dynamicRound:{kind:'round',items:[]},dynamicOcta:{kind:'octa',items:[]},dynamicDisc:{kind:'disc',items:[]}});
+ const art=Object.create(globalThis.RealmArt.WorldArt.prototype);Object.assign(art,{room:D.ROOM,e:engine,dynamicBox:{kind:'box',items:[]},dynamicRound:{kind:'round',items:[]},dynamicOcta:{kind:'octa',items:[]},dynamicDisc:{kind:'disc',items:[]},dynamicTravelerCloth:{kind:'traveler-cloth',items:[]}});
  art.update(f.sim,0,null);
  const actual=[art.dynamicBox,art.dynamicRound,art.dynamicOcta].flatMap(b=>b.items.filter(p=>p.roadkeeperActor===O.ID).map(p=>({kind:b.kind,...p}))),expected=Art.shape(view);
  assert.equal(actual.length,19);assert.deepEqual(actual.sort((a,b)=>a.roadkeeperPart.localeCompare(b.roadkeeperPart)),expected.sort((a,b)=>a.roadkeeperPart.localeCompare(b.roadkeeperPart)));

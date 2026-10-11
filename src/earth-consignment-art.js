@@ -54,8 +54,8 @@ function actor(out,sim,view,kind,carrying){
  const starts=Object.fromEntries(Object.entries(out).filter(([,v])=>Array.isArray(v)).map(([k,v])=>[k,v.length]));
  const base=W.height(ROOM,view.x,view.z),frame=T.draw(out,{x:view.x,z:view.z,yaw:view.yaw||0,base,color:0x927352,profile:{skin:2,hair:1}},pose);
  // The shared rig's player tags/marker must not leak into player-only observers.
- for(const[k,start]of Object.entries(starts)){
-  const list=out[k];for(let i=list.length-1;i>=start;i--){const item=list[i];if(item.travelerPart==='ground-marker'){list.splice(i,1);continue;}
+ for(const[k,list]of Object.entries(out)){
+  if(!Array.isArray(list))continue;const start=starts[k]??0;for(let i=list.length-1;i>=start;i--){const item=list[i];if(item.travelerPart==='ground-marker'){list.splice(i,1);continue;}
    item.consignmentPart='carrier-'+item.travelerPart;item.consignmentJob=ID;item.consignmentActor='first-load-carrier-v1';item.appearanceOnly=true;
    if(item.travelerJoints)item.consignmentJoints=item.travelerJoints;
    delete item.travelerPart;delete item.travelerJoints;

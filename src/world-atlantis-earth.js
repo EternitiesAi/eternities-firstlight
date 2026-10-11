@@ -29,7 +29,12 @@
    patch('working-fields',0,-50,58,25,0x8d9e69),
    patch('roadside-settlement',0,-73,52,26,0xa49d80),
    patch('shore-spur',22,-19,20,8,0x8f9c73),
-   patch('shore-overlook',30,-20,16,16,0x9b9e7c),
+   // One authored outward shoreline. The original rectangle stays contained,
+   // retaining every old saved support position; this adds real dry land only.
+   {...patch('shore-overlook',30,-20,16,16,0x9b9e7c),footprint:[
+    [22,-28],[30,-30],[38,-30],[40,-28],[41,-20],
+    [40,-12],[38,-10],[30,-10],[22,-12]
+   ]},
    patch('coppice-spur',-21,-15,20,8,0x7e9167),
    patch('coppice-pocket',-29,-17,16,22,0x7b8d64)
   ],

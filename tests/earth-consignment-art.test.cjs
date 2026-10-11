@@ -63,3 +63,17 @@ test('paused and reduced-motion presentation does not advance motion or checkpoi
  const h=specimen();render(h);const before=JSON.stringify(h.sim.state),v=M.current(h.ctx());h.sim.paused=true;h.sim.elapsed+=100;render(h);assert.equal(Art.snapshot(h.sim).walking,false);assert.equal(M.current(h.ctx()).x,v.x);assert.equal(JSON.stringify(h.sim.state),before);
  h.sim.state.settings.reducedMotion=true;render(h);assert.equal(Art.snapshot(h.sim).reducedMotion,true);assert.deepEqual(h.sim.state.localLife.records[D.ID].steps,[]);
 });
+
+
+test('public primitive output gains a carrier-owned newly created cloth array',()=>{
+ const h=specimen(),out=empty();assert.equal(out['traveler-cloth'],undefined);h.sim.consignmentPresentationContext=h.ctx();h.sim.consignmentPresentation=M.current(h.ctx());const before=JSON.stringify(h.sim.snapshot());Art.draw(out,h.sim);
+ const ps=all(out),body=worker(ps);assert.equal(body.length,48,'complete shared rig except its existing removed ground marker');assert.equal(out['traveler-cloth'].length,3);assert.deepEqual(out['traveler-cloth'].map(p=>p.consignmentPart),['carrier-jacket-waist','carrier-jacket-left-hem','carrier-jacket-right-hem']);
+ for(const p of body){assert.equal(p.consignmentActor,'first-load-carrier-v1');assert.equal(p.consignmentJob,D.ID);assert.equal(p.travelerPart,undefined);assert.equal(p.travelerJoints,undefined);assert.equal(p.appearanceOnly,true);assert.equal(p.cameraSolid,false);assert.equal(p.cutaway,false);assert.equal(E.solidBounds(p.kind,p),null);assert.ok([...p.m,...p.p,...p.s].every(Number.isFinite));}
+ assert.equal(named(ps,'carrier-ground-marker').length,0);assert.equal(JSON.stringify(h.sim.snapshot()),before);assert.ok(Art.snapshot(h.sim));
+});
+
+test('public primitive output preserves all preexisting foreign carrier arrays and markers',()=>{
+ const h=specimen(),out=empty(),foreign=Object.freeze({travelerPart:'foreign-player',travelerJoints:[[1,2,3],[4,5,6]],cameraSolid:true,cutaway:true}),marker=Object.freeze({travelerPart:'ground-marker',owner:'foreign-player'}),cloth=Object.freeze({travelerPart:'foreign-cloth',travelerJoints:[[7,8,9]],owner:'foreign-player'});
+ out.box.push(foreign);out.disc.push(marker);out['traveler-cloth']=[cloth];const box=out.box,disc=out.disc,clothArray=out['traveler-cloth'],saved=JSON.stringify([foreign,marker,cloth]);h.sim.consignmentPresentationContext=h.ctx();h.sim.consignmentPresentation=M.current(h.ctx());const before=JSON.stringify(h.sim.snapshot());Art.draw(out,h.sim);
+ assert.equal(out.box,box);assert.equal(out.disc,disc);assert.equal(out['traveler-cloth'],clothArray);assert.equal(out.box[0],foreign);assert.equal(out.disc[0],marker);assert.equal(out['traveler-cloth'][0],cloth);assert.equal(JSON.stringify([foreign,marker,cloth]),saved);assert.equal(out['traveler-cloth'].length,4);assert.equal(out['traveler-cloth'].slice(1).filter(p=>p.consignmentActor==='first-load-carrier-v1').length,3);assert.equal(worker(all(out)).length,48);assert.equal(out.disc.length,1,'only the new carrier marker is removed');assert.equal(JSON.stringify(h.sim.snapshot()),before);
+});

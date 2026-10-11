@@ -42,6 +42,36 @@ function geometry(kind){let v=[],timber=kind==='timber-panel';function tri(a,b,c
  const along=Math.abs(n[0])>.5?p[2]:p[0],across=Math.abs(n[1])>.5?p[2]:p[1];v.push(.1+(across+.5)*.1,along+.5);
  }}}function q(a,b,c,d){tri(a,b,c);tri(a,c,d);}
  if(kind==='box'||timber){let n=-.5,p=.5;q([n,n,p],[p,n,p],[p,p,p],[n,p,p]);q([p,n,n],[n,n,n],[n,p,n],[p,p,n]);q([p,n,p],[p,n,n],[p,p,n],[p,p,p]);q([n,n,n],[n,n,p],[n,p,p],[n,p,n]);q([n,p,p],[p,p,p],[p,p,n],[n,p,n]);q([n,n,n],[p,n,n],[p,n,p],[n,n,p]);}
+ else if(kind==='coastward-shore-apron'||kind==='coastward-shore-bank'){
+  // Only this original canonical shoreline: no generated coastline or new
+  // ground authority. Its ring excludes the entire old rectangular cap.
+  const data=G.RealmWorldAtlantisEarth||(typeof require==='function'?require('./world-atlantis-earth.js'):null),p=data.realms.find(d=>d.id==='earthlands').patches.find(p=>p.id==='shore-overlook');
+  if(!p.footprint||p.footprint.length!==9)throw Error('Canonical Coastward shoreline footprint required.');
+  const cap=kind==='coastward-shore-apron',top=cap?p.y:p.y-.11,bottom=cap?p.y-.11:-.5;
+  const outer=p.footprint.map(([x,z])=>[x,top,z]),inner=p.footprint.map(([x,z])=>[Math.max(p.x-p.w/2,Math.min(p.x+p.w/2,x)),top,Math.max(p.z-p.d/2,Math.min(p.z+p.d/2,z))]);
+  const lowOuter=outer.map(([x,y,z])=>{const d=Math.hypot(x-p.x,z-p.z);return[x+(cap?0:.65*(x-p.x)/d),bottom,z+(cap?0:.65*(z-p.z)/d)];}),lowInner=inner.map(([x,y,z])=>[x,bottom,z]);
+  const face=(a,b,c)=>{if(Math.hypot(...cross(sub(b,a),sub(c,a)))>1e-10)tri(a,b,c);};
+  const quad=(a,b,c,d)=>{face(a,b,c);face(a,c,d);};
+  for(let i=0;i<outer.length;i++){const j=(i+1)%outer.length;
+   quad(inner[i],inner[j],outer[j],outer[i]);
+   quad(lowInner[i],lowOuter[i],lowOuter[j],lowInner[j]);
+   // The west edge has zero apron width; do not emit two coincident caps.
+   if(!outer[i].every((n,k)=>n===inner[i][k])||!outer[j].every((n,k)=>n===inner[j][k])||!lowOuter[i].every((n,k)=>n===lowInner[i][k])||!lowOuter[j].every((n,k)=>n===lowInner[j][k])){
+    quad(outer[i],outer[j],lowOuter[j],lowOuter[i]);
+    quad(inner[i],lowInner[i],lowInner[j],inner[j]);
+   }
+  }
+ }
+  else if(kind==='traveler-cloth'){
+   // Original fitted cloth block: bevel only the old centered box envelope.
+   // Four octagonal rings soften the waist/hem edges; no rig or solid authority.
+   const outline=[[-.5,-.32],[-.32,-.5],[.32,-.5],[.5,-.32],[.5,.32],[.32,.5],[-.32,.5],[-.5,.32]],
+    rings=[[-.5,.84],[-.42,1],[.42,1],[.5,.84]].map(([y,s])=>outline.map(([x,z])=>[x*s,y,z*s]));
+   for(let i=0;i<8;i++){const j=(i+1)%8;
+    for(let k=0;k<3;k++)q(rings[k][i],rings[k+1][i],rings[k+1][j],rings[k][j]);
+    tri([0,-.5,0],rings[0][i],rings[0][j]);tri([0,.5,0],rings[3][j],rings[3][i]);
+   }
+  }
  else if(kind==='overlook-stone'){
   // One original faceted landmark, contained by its unchanged centered solid.
   // Three irregular rings bevel the outline; full extrema retain its envelope.

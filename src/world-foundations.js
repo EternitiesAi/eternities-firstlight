@@ -2,7 +2,13 @@
 (function(G){'use strict';
 const IDS=Object.freeze(['heaven','hell','earthlands','atlantis','cosmos']),OBJECTIVES=Object.freeze(['first','second','third']),GATE=Object.freeze({x:18,z:6});
 const clone=o=>JSON.parse(JSON.stringify(o)),dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z),finite=Number.isFinite,tickets=new WeakMap();
-const fail=error=>({ok:false,error}),yes=text=>({ok:true,text}),inside=(x,z,p,r=0)=>Math.abs(x-p.x)<=p.w/2-r&&Math.abs(z-p.z)<=p.d/2-r;
+const fail=error=>({ok:false,error}),yes=text=>({ok:true,text});
+// Authored convex footprint uses counterclockwise X/Z edges. Rectangles,
+// solids and galleries retain their original exact containment branch.
+function inside(x,z,p,r=0){
+ if(!p.footprint)return Math.abs(x-p.x)<=p.w/2-r&&Math.abs(z-p.z)<=p.d/2-r;
+ return p.footprint.every((a,i)=>{const b=p.footprint[(i+1)%p.footprint.length],dx=b[0]-a[0],dz=b[1]-a[1];return dx*(z-a[1])-dz*(x-a[0])>=r*Math.hypot(dx,dz);});
+}
 function data(name,file){return G[name]||(typeof require==='function'?require('./'+file):null);}
 let catalogueCache=null;
 function definitions(){
@@ -40,7 +46,15 @@ function land(room,x,z,r=.31){const d=definition(room);if(!d||![x,z,r].every(fin
  return[[0,0],[r,0],[-r,0],[0,r],[0,-r],[r*.707,r*.707],[-r*.707,r*.707],[r*.707,-r*.707],[-r*.707,-r*.707]].every(([dx,dz])=>d.patches.some(p=>inside(x+dx,z+dz,p)));
 }
 function walkable(room,x,z,r=.31){if(room===G.RealmCosmos?.ROOM)return G.RealmCosmos.walkable(x,z,r);const d=definition(room);return land(room,x,z,r)&&!d.solids.some(p=>inside(x,z,p,-r));}
-function interval(a,b,p,r=0){let lo=0,hi=1;for(const[k,s]of[['x','w'],['z','d']]){const step=b[k]-a[k],min=p[k]-p[s]/2-r,max=p[k]+p[s]/2+r;
+function interval(a,b,p,r=0){let lo=0,hi=1;
+ if(p.footprint){
+  for(let i=0;i<p.footprint.length;i++){
+   const u=p.footprint[i],v=p.footprint[(i+1)%p.footprint.length],dx=v[0]-u[0],dz=v[1]-u[1],offset=dx*(a.z-u[1])-dz*(a.x-u[0])+r*Math.hypot(dx,dz),step=dx*(b.z-a.z)-dz*(b.x-a.x);
+   if(Math.abs(step)<1e-10){if(offset<0)return null;}
+   else{const t=-offset/step;if(step>0)lo=Math.max(lo,t);else hi=Math.min(hi,t);if(lo>hi)return null;}
+  }return[lo,hi];
+ }
+ for(const[k,s]of[['x','w'],['z','d']]){const step=b[k]-a[k],min=p[k]-p[s]/2-r,max=p[k]+p[s]/2+r;
  if(Math.abs(step)<1e-10){if(a[k]<min||a[k]>max)return null;}else{const u=(min-a[k])/step,v=(max-a[k])/step;lo=Math.max(lo,Math.min(u,v));hi=Math.min(hi,Math.max(u,v));if(lo>hi)return null;}}return[lo,hi];}
 function segment(room,a,b,r=.31){const d=definition(room);if(!d||!a||!b||!finite(dist(a,b))||dist(a,b)>600||!walkable(room,a.x,a.z,r)||!walkable(room,b.x,b.z,r))return false;
  if(room===G.RealmCosmos?.ROOM)return G.RealmCosmos.segment(a,b,r);
@@ -115,6 +129,6 @@ function swim(sim,dx,dz,vertical,dt){const d=diveDefinition(sim),v=sim.worldDive
 function medium(sim,point){const d=diveDefinition(sim);if(!d||!point||!inside(point[0],point[2],d.volume,0)||point[1]>=d.surfaceY)return'air';
  if((d.dryCourts||[]).some(p=>inside(point[0],point[2],p,0)&&point[1]>=p.minY&&point[1]<=p.maxY))return'air';return'water';}
 function divingStatus(sim,cameraEye){return sim.worldDive?{y:sim.worldDive.y,depth:Math.max(0,diveDefinition(sim).surfaceY-sim.worldDive.y),hold:sim.worldDive.hold,body:medium(sim,[sim.state.player.x,sim.worldDive.y+.85,sim.state.player.z]),camera:medium(sim,cameraEye),dryCourt:dryAt(diveDefinition(sim),sim.state.player.x,sim.worldDive.y,sim.state.player.z)?.id||null}:null;}
-const api={IDS,OBJECTIVES,GATE,definitions,definition,handles,fresh,validate,height,playerHeight,land,walkable,segment,near,atRoad,preview,cancel,enter,leave,rewards,command,enemies,defeat,recover,pick,diveEnter,diveExit,swim,swimClear,medium,divingStatus};
+const api={patchContains:inside,IDS,OBJECTIVES,GATE,definitions,definition,handles,fresh,validate,height,playerHeight,land,walkable,segment,near,atRoad,preview,cancel,enter,leave,rewards,command,enemies,defeat,recover,pick,diveEnter,diveExit,swim,swimClear,medium,divingStatus};
 G.RealmWorldFoundations=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

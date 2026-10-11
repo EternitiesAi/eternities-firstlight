@@ -41,7 +41,14 @@ function coastBanks(cells){
    parts.push({kind:'coast-bank',p,s,r,c:colors[index%colors.length],rough:1,cameraSolid:false,cutaway:false,coastBank:true,id:'coast-bank-'+index,seam:{...e,from,to}});
   }
  });
- return parts;
+ // Keep every other original skirt ID/transform. The old three overlook
+ // intervals are now internal to the canonical outward apron, not a shoreline.
+ const shore=W.definition('earthlands').patches.find(p=>p.id==='shore-overlook');
+ return parts.filter(bank=>{
+  if(!shore.footprint)return true;
+  const e=bank.seam,mid=(e.from+e.to)/2,x=e.axis==='z'?e.at:mid,z=e.axis==='z'?mid:e.at;
+  return !W.patchContains(x+e.nx*eps,z+e.nz*eps,shore);
+ });
 }
 function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isInterior=false;a.e.worldFog=def.id==='earthlands'?{clear:30,span:130}:null;a.e.theme=def.theme||null;a.e.noWater=!def.water;a.e.ambientOverride=def.id==='hell'?.6:def.id==='heaven'?.87:.76;a.e.worldAtmosphere=def.id==='heaven'?{top:0x9fb8bd,fog:0xe4cdbd,night:.12,power:.85,sunColor:0xffe5c2}:def.id==='hell'?{top:0x32292f,fog:0x75605a,night:.38,power:.68,sunColor:0xffc185}:null;
  const cells=partitions(def);
@@ -50,6 +57,13 @@ function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isIn
   a.box(p.x,p.y-.055,p.z,p.w,.11,p.d,p.color,{...decor,cutaway:!!gallery,terrain:true,worldGround:p.source});
   // Bridge decks have open water underneath. Other ground has a closed shore.
   if(!gallery&&!/bridge/.test(p.source))a.box(p.x,(p.y-.11-.5)/2,p.z,p.w,p.y-.11+.5,p.d,def.palette.stone,decor);
+ }
+ // Original coalesced rectangles remain unchanged. Only the new supported
+ // area outside the old overlook rectangle is drawn by this canonical apron.
+ const shore=def.id==='earthlands'&&def.patches.find(p=>p.id==='shore-overlook');
+ if(shore?.footprint){
+  a.add('coastward-shore-apron',0,0,0,1,1,1,shore.color,{...decor,terrain:true,shorelineGround:shore.id});
+  a.add('coastward-shore-bank',0,0,0,1,1,1,def.palette.stone,{...decor,shorelineBank:shore.id});
  }
  if(def.id==='earthlands')for(const bank of coastBanks(rawPartitions(def))){const{kind,p,s,c,...opt}=bank;a.add(kind,...p,...s,c,opt);}
  for(const p of def.solids){
