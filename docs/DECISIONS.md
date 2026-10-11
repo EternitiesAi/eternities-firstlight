@@ -1,3 +1,11 @@
+# 2026-10-11: Connect the paid Choir to its existing finite workshop lesson
+
+Add one pure post-claim projection in realm-trails-ui.js. Read actual RealmCraft.COST/BONUS and character balances; the declared2ore/12sunmark fee alone leaves1ore toward the3ore/8sunmark fitting. Preserve a veteran's already fitted owned/equipped weapon and make no second-upgrade promise. Keep original controls, claims, sockets, XP, cameras and every rule unchanged. Four appended tests retain every old test byte and detect unpaid progress, state writes and hidden costs; independent source review accepted. World9 / Adventure12 / WildSigns1 and keys stay unchanged, with no migration.
+
+Source16 at base56d passed completely. Preserve current native01 launch failure and native02 Follow crown-framing failure, its48passing checks/two High PNGs/true owned closures, and the143/151browser confound. Move the player along actual supported ground for later coverage; do not weaken visibility or change cameras to pass an observer. Complete ordinary-control combat/return and exact current qualification remain open. Parent owns live base56d full07 and all integration/native execution. Goal ACTIVE unfinished; old heartbeat PAUSED; existing storage and review boundaries remain.
+
+---
+
 # Refine existing garden owners; replay loaded intent exactly, 2026-10-11
 
 Keep original Heaven tree transforms, palette, wind, cutaway/camera roles and convex envelopes while changing only sixty Balanced/High crowns to the existing lobed mesh. Add twelve attached collar/finial parts inside the original chime pedestal/ring envelope with stable decorative IDs. Low crowns, Hell and the original ordered stream remain exact. Rebuild cached art for actual roomworld-heaven on a legitimate quality change, preserving the existing Earth owner and Simulation/camera/travel/encounter identities. See docs/development/HEAVEN_GARDEN_POLISH_2026-10-11.md.

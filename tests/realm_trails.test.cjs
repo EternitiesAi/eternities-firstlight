@@ -207,3 +207,54 @@ test('accepted Atlantis pages are readable at home and from another realm after 
  loaded.state.player={...W.GATE,yaw:0};assert.ok(W.enter(W.preview(ctx(loaded),'earthlands').ticket,ctx(loaded),{save:()=>({ok:true}),build:()=>{}}).ok);
  assert.match(reader.page('atlantis'),/F ascends/);assert.equal(reader.rpg.sim.state.realmTrails.records[d.id].accepted,true);
 });
+
+
+// Pure UI return-plan fixtures: accepted/completed trail boundary is synthetic;
+// initial kit, travel, actual claim/refusal, bow craft and finite fitting use
+// production commands. No earned/native/browser acceptance is claimed here.
+function choirReturnReady(){
+ const sim=enter('heaven'),d=definition('heaven');assert.ok(accept(sim,d).ok);
+ sim.state.realmTrails.records[d.id].steps=R.required(d).slice();
+ sim.state.adventure.ore=0;sim.state.adventure.coins=0;
+ assert.doesNotThrow(()=>C.validate(sim.snapshot()));pose(sim,{...d.giver,medium:'dry'});return{sim,d};
+}
+function choirReader(sim){require('../src/realm-trails-ui.js');const reader=Object.create(global.RealmTrailsUI.TrailsUI.prototype);reader.rpg={sim};reader.reading=null;return reader;}
+function choirBow(sim){const realm=W.definition(sim.room)?.id;if(realm)assert.ok(W.leave(sim).ok);sim.state.player={x:11,z:9,yaw:0};sim.state.sandbox.inventory.wood=10;sim.state.sandbox.inventory.fiber=10;sim.state.sandbox.inventory.stone=2;sim.state.adventure.coins=20;sim.state.adventure.ore=10;bow(sim);if(realm)enter(realm,sim);return sim;}
+test('Choir return: unpaid completion and a refused claim do not promise paid workshop progress',()=>{
+ const{sim,d}=choirReturnReady(),reader=choirReader(sim),before=sim.snapshot();
+ assert.doesNotMatch(reader.page('heaven'),/choir-return-plan/);assert.deepEqual(sim.snapshot(),before);
+ unchanged(sim,()=>action(sim,d,'claim',{}, {save:()=>({ok:false,error:'Synthetic claim refusal'})}));
+ assert.doesNotMatch(reader.page('heaven'),/choir-return-plan/);assert.equal(sim.state.realmTrails.records[d.id].claimed,false);
+});
+test('Choir return: the actual two-ore fee shows the one-ore shortfall without spending or equipping',()=>{
+ const{sim,d}=choirReturnReady();assert.ok(action(sim,d,'claim').ok);
+ assert.equal(sim.state.adventure.ore,2);assert.equal(sim.state.adventure.coins,12);
+ const before=sim.snapshot(),html=choirReader(sim).page('heaven');
+ assert.match(html,/class="choir-return-plan"/);assert.match(html,/3 ore and 8 sunmarks/);
+ assert.match(html,/Current: 2 ore · 12 sunmarks/);assert.match(html,/Still needed: 1 ore/);
+ assert.match(html,/Return to Firstlight/);assert.match(html,/Inspect item &amp; recipe guide/);
+ assert.match(html,/Nothing equips automatically/);assert.deepEqual(sim.snapshot(),before);
+ assert.equal((html.match(/data-rpg="world-return"/g)||[]).length,0,'the original outer return control remains unique');
+ assert.equal((html.match(/data-rpg="trail-fit-confirm"/g)||[]).length,0,'a plan cannot authorize a spend');
+});
+test('Choir return: covered costs and coin shortages are current and weapon-independent',()=>{
+ for(const style of ['blade','bow']){
+  const{sim,d}=choirReturnReady();assert.ok(action(sim,d,'claim').ok);if(style==='bow')choirBow(sim);
+  sim.state.adventure.ore=3;sim.state.adventure.coins=8;const before=sim.snapshot(),reader=choirReader(sim);
+  let html=reader.page('heaven');assert.match(html,/Materials covered/);assert.doesNotMatch(html,/Still needed:/);assert.doesNotMatch(html,/Current:/);assert.deepEqual(sim.snapshot(),before);
+  sim.state.adventure.coins=7;html=reader.page('heaven');assert.match(html,/Still needed: 1 sunmark/);assert.doesNotMatch(html,/Still needed:.*ore/);
+  assert.ok(W.leave(sim).ok);const atHome=sim.snapshot();html=reader.page('heaven');assert.match(html,/Craft at an outdoor Firstlight workbench/);assert.deepEqual(sim.snapshot(),atHome);
+ }
+});
+test('Choir return: a veteran fitting stays on its owned weapon and never implies auto-equip or another upgrade',()=>{
+ const{sim,d}=choirReturnReady();assert.ok(action(sim,d,'claim').ok);choirBow(sim);assert.ok(W.leave(sim).ok);sim.state.player={x:11,z:9,yaw:0};
+ const a=sim.state.adventure;a.xp=9999;a.defeated.push('river-old-bristle');a.starter={version:1,accepted:true,bundles:Q.BUNDLES.map(b=>b.id),reward:{choice:'temper',weapon:'trail_blade'}};
+ a.pursuit.fittings.trail_blade=2;a.pursuit.pinned='trail_blade';a.arsenal.sockets.trail_blade='ruby';a.ore=3;a.coins=8;
+ assert.ok(RC.command(ctx(sim),'trail_bow',success).ok);assert.equal(a.equipment.weapon,'trail_blade');
+ const before=sim.snapshot(),reader=choirReader(sim);let html=reader.page('heaven');
+ assert.match(html,/Fitting retained on your owned/);assert.match(html,/not currently equipped/);assert.match(html,/no second fitting/);
+ assert.doesNotMatch(html,/Still needed:|Materials covered|Current:/);assert.deepEqual(sim.snapshot(),before);
+ assert.equal(a.xp,9999);assert.equal(a.arsenal.sockets.trail_blade,'ruby');assert.deepEqual(a.realmCraft,{version:1,weapon:'trail_bow'});
+ assert.ok(sim.adventureCommand('choir-return-equip-'+(++serial),'equip',{id:'trail_bow'}).ok);
+ const equipped=sim.snapshot();html=reader.page('heaven');assert.match(html,/Fitting retained on your equipped/);assert.doesNotMatch(html,/not currently equipped/);assert.deepEqual(sim.snapshot(),equipped);
+});

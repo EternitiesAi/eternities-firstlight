@@ -1,3 +1,13 @@
+# Choir return-plan integration, 2026-10-11
+
+Parent owns gameplay/choir-return-plan-20261011, stacked against PR61 at56d15c0cb23081c46723e341a67da792c6adb634. Read docs/development/CHOIR_RETURN_PLAN_2026-10-11.md. Two independently reviewed leaves add a pure paid-Choir workshop plan and four detecting tests; no new controls, rewards, spending, equipment changes or persistent fields. Installed trail component26/26PASS, zero failures/skips; real identical3317122B pages SHA256b2d630d76447711f9808c114b7329c8dddb284c555773f7386b8c6e01948a05f. Current complete source and ordinary outing qualification are pending.
+
+Independent STATION remains frozen at exact56d by parent-owned live remoteFull07. Do not change or duplicate it before closure. Complete Source16 at56d passed214commands/142syntax, Node2088pass/0fail/2existing skips, Python458testsOK/10reported skips and all command-earned journeys. Native garden01 failed30s browser launch before0checks. Alternate Chromium151 garden02 reached actualRTX3080/D3D11 and48/49checks, then failed original FollowHigh crown-framing guard; two actual High PNGs retained, all owned resources closed, no browser errors. Low/reload/later guide arrival did not run. Preserve both failures and the browser-version confound; no full current native or performance acceptance follows.
+
+World9 / Adventure12 / WildSigns1, browser keys, saves/XP/equipment/sockets/upgrades/claims/choices and all systems/both cameras stay unchanged. Goal ACTIVE unfinished; heartbeat PAUSED. Two existing colleagues stage small D files; parent owns integration/native execution. Reuse checkouts and bounded evidence. All prior storage/no-merge/no-deploy/no-paid/no-personal-save/no-unrelated-stop/blocked-deletion boundaries remain. Frontier Oct11 already checked.
+
+---
+
 # Heaven garden integration and verification ownership, 2026-10-11
 
 Parent owns gameplay/heaven-garden-polish-20261011, stacked against draft PR60/3aa. Read docs/development/HEAVEN_GARDEN_POLISH_2026-10-11.md. Oracle commit7c88aefde206f23d0879fd36954311ecf0244f62 changes only the verifier/tests/attributed capture. Two independently reviewed Heaven art seams and the actual world-heaven quality refresh are integrated separately. Keep exact original physical/data ownership, High/Low boundaries and error/budget guards. Freeze ROOT during its source verifier and STATION during each native/remote run; do not duplicate a live worker.
