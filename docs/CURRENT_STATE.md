@@ -1,3 +1,11 @@
+# Earth travel sensory integration, 2026-10-11
+
+The current review branch is `gameplay/earth-walk-sensory-20261011`, based on PR54/239. The playable changes are clearer Earth water, soil/timber/stone footsteps through the existing audio master, and three small western mountain silhouettes outside supported terrain. The ordinary-frame autosave refresh keeps the prepared roadkeeper view current without changing the read-only getter, actor behavior or save contents. Both cameras and World9/Adventure12/WildSigns1 remain.
+
+Installed focused checks pass: water4, footfalls21, roadkeeper28 and western-horizon20, all with zero skips. Actual paired water captures passed31 native checks per phase at239/7636, with unchanged earned history and closed resources. These do not qualify the subsequently integrated audio/horizon head. Current complete source, native audio/aftermath, footage and exact remote qualification remain pending. Preserve the failed239 aftermath report and its unknown exact failing predicate. Full remote verification at239 is still running in STATION.
+
+---
+
 # Source storage repair, 2026-10-11
 
 SOURCE03 at pushed `13983cd94cb8d2ae207a66d463e9694aa762c008` closed exit1 at07:12:35Z. All141 syntax checks and Node1964pass/2explicit skips passed. Python completed438 tests in293.036 seconds:425 method passes,7 method skips plus3 class skips,1 failure and2 errors. All three failures came from positive native-output fixtures using C paths that the actual Windows D-output guard correctly refused. Preserve the raw SOURCE03 receipt, console and Python log; this is a failed complete gate, not current native qualification.

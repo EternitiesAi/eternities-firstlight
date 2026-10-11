@@ -1,3 +1,11 @@
+# Earth sensory evidence and open human questions, 2026-10-11
+
+Parent inspected actual paired1440x960 water PNGs at239/7636 in Adventure and Diorama, with balanced/high captures retained. The Adventure view has a clearer teal water body and less washed reflection; the Diorama difference is subtler. Reduced motion froze water time, so these images do not establish moving ripples. Square banks and the large box-shaped overlook stone remain visible limitations.
+
+Footsteps and western silhouettes are integrated but have no current native/listening acceptance yet. Ask Dom after the qualified build: do the footsteps sound grounded and unobtrusive, does the horizon make the walk feel larger, and are the route and scenery readable in both cameras? No human answer, general FPS, mobile quality or AAA completion is implied by automated checks.
+
+---
+
 # Source storage repair, 2026-10-11
 
 SOURCE03 at pushed `13983cd94cb8d2ae207a66d463e9694aa762c008` closed exit1 at07:12:35Z. All141 syntax checks and Node1964pass/2explicit skips passed. Python completed438 tests in293.036 seconds:425 method passes,7 method skips plus3 class skips,1 failure and2 errors. All three failures came from positive native-output fixtures using C paths that the actual Windows D-output guard correctly refused. Preserve the raw SOURCE03 receipt, console and Python log; this is a failed complete gate, not current native qualification.

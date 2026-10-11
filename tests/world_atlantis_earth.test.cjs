@@ -132,7 +132,7 @@ test('dive entry and wet exit anchors agree with reachable transfer destinations
 });
 
 test('actual decoration is finite, deterministic, bounded and pure across claimed/unclaimed worlds',()=>{
- const kinds=new Set(['box','cylinder','cone','roof','round','octa','leaf','ring','mountain-ridge','timber-panel']);
+ const kinds=new Set(['box','cylinder','cone','roof','round','octa','leaf','ring','mountain-ridge','country-ridge','timber-panel']);
  for(const def of W.realms)for(const claimed of [false,true]){
   const parts=record(def,claimed);assert.ok(parts.length<1500);assert.deepEqual(parts,record(def,claimed));
   for(const p of parts){assert.ok(kinds.has(p.kind));assert.ok(p.p.every(Number.isFinite));assert.ok(p.s.every(n=>Number.isFinite(n)&&n>0));assert.ok(Number.isInteger(p.color));assert.equal(p.opt.cameraSolid,false);if(p.opt.skyImage)assert.equal(p.opt.cutaway,false);}
@@ -240,4 +240,129 @@ test('distant ridges use the actual mountain mesh and remain outside Earth rathe
  assert.deepEqual([0,1,2].map(layer=>channel.filter(p=>p.opt.vistaLayer===layer).length),[3,3,2]);
  assert.equal(new Set(channel.map(p=>p.color)).size,3);assert.ok(channel.every(p=>p.opt.skyImage));
  assert.equal(ridges.reduce((n,p)=>n+E.geometry(p.kind).length/18,0),3360,'bounded existing mesh budget across all passes');
+});
+
+/* Western skyline source/geometry/transport checks. Synthetic GL records CPU
+ * submissions only; these checks do not compile shaders or prove a GPU image. */
+function countryCpuGL(){
+ const calls=[];let id=0;
+ const gl=new Proxy({ARRAY_BUFFER:1,STATIC_DRAW:2,DYNAMIC_DRAW:3,FLOAT:4,TRIANGLES:5,
+  TEXTURE0:6,TEXTURE_2D:7,TEXTURE3:8,TEXTURE4:9}, {get(o,k){
+  if(k in o)return o[k];
+  if(k==='createBuffer'||k==='createVertexArray')return()=>({id:++id});
+  return(...args)=>calls.push([k,...args]);
+ }});
+ const host=Object.create(E.Engine.prototype);
+ Object.assign(host,{gl,meshes:new Map(),batches:[],dynamic:[],cameraSolids:[],calls:0,
+  canvas:{clientWidth:1440,clientHeight:960},camera:{eye:[-150,5,-78.5],target:[-157.5,2.17,-78.5]},
+  lightVP:E.M.identity(),theme:'earth',quality:'balanced',surfaceMaterialInfo:{ready:false},shadowSize:2048});
+ return{host,calls};
+}
+const countryItems=parts=>parts.map(p=>({p:p.p,s:p.s,c:p.color,...p.opt}));
+
+test('actual geometry shader keeps world fog for country sky images without extending positive-X mountain haze',()=>{
+ const source=fs.readFileSync(require.resolve('../src/engine.js'),'utf8'),shader=source.match(/const FS=`([\s\S]*?)`;/)[1];
+ assert.ok(shader.includes('uniform float uCutaway,uCountryRidge,uMountainHaze,uRailCutaway'));
+ assert.ok(shader.includes('if(vParams.z>2.5&&uCountryRidge<.5)fog=0.;'),'country sky-image branch must retain its world fog');
+ assert.ok(shader.includes('length(vPos.xz-uWorldFog.xy)-uWorldFog.z'),'existing ground-focus distance remains the only country haze coordinate');
+ assert.ok(shader.includes('if(uMountainHaze>.5)'),'positive-X authored haze still belongs to original mountain submissions only');
+ assert.equal((shader.match(/texture\(/g)||[]).length,3,'no additional material or atmosphere texture samples');
+});
+
+test('western country skyline adds exactly three scenic actual ridge meshes outside every rotated country bound',()=>{
+ const expectedColors=new Set([0x65796c,0x83938a,0xa1aba2]);
+ for(const claimed of [false,true]){
+  const all=record(earth,claimed),parts=all.filter(p=>p.kind==='country-ridge');
+  assert.equal(parts.length,3);assert.equal(all.filter(p=>p.kind==='mountain-ridge').length,10);
+  assert.deepEqual(parts.map(p=>p.opt.vistaLayer),[0,1,2]);
+  assert.equal(parts.reduce((n,p)=>n+E.geometry(p.kind).length/18,0),1008);
+  for(const p of parts){
+   assert.deepEqual(E.geometry(p.kind),E.geometry('mountain-ridge'),'explicit alias cannot use the unknown-kind cylinder fallback');
+   assert.equal(p.opt.appearanceOnly,true);assert.equal(p.opt.skyImage,true);assert.equal(p.opt.vista,'country-west');
+   assert.equal(p.opt.cameraSolid,false);assert.equal(p.opt.cutaway,false);assert.ok(expectedColors.has(p.color));
+   assert.equal(E.solidBounds(p.kind,{p:p.p,s:p.s,...p.opt}),null);
+   const mesh=E.geometry(p.kind),m=E.M.compose(...p.p,...p.s,...p.opt.r);
+   for(let i=0;i<mesh.length;i+=6){
+    const v=E.M.transform(m,[mesh[i],mesh[i+1],mesh[i+2]]);
+    assert.ok(v.every(Number.isFinite));assert.ok(v[0]<earth.bounds.minX,'all transformed vertices remain strictly west of supported terrain');
+    assert.ok(v[0]<=-171+1e-5,'at least one metre of visual boundary clearance');
+    assert.ok(Math.abs(Math.hypot(mesh[i+3],mesh[i+4],mesh[i+5])-1)<1e-5,'finite unit face normals');
+   }
+  }
+  assert.deepEqual(parts,record(earth,!claimed).filter(p=>p.kind==='country-ridge'),'appearance has no claimed reward dependency');
+ }
+ assert.equal(record(sea).filter(p=>p.kind==='country-ridge').length,0,'no Atlantis scene change');
+ assert.throws(()=>W.decorate({add(){},box(){}},{...earth}),/canonical|authored|Unknown/,'cloned definitions still refuse');
+});
+
+test('country ridge batch retains a semantic kind while sharing the original cached ridge buffer and no camera solids',()=>{
+ const {host,calls}=countryCpuGL(),old=host.batch('mountain-ridge',countryItems(record(earth).filter(p=>p.kind==='mountain-ridge'))),
+  ridge=host.batch('country-ridge',countryItems(record(earth).filter(p=>p.kind==='country-ridge')));
+ assert.equal(old.kind,'mountain-ridge');assert.equal(ridge.kind,'country-ridge');
+ assert.equal(ridge.geom,old.geom);assert.equal(host.meshes.size,1);assert.equal(host.meshes.get('mountain-ridge'),old.geom);
+ assert.equal(ridge.geom.count,1008);assert.equal(ridge.count,3);assert.equal(ridge.data.byteLength,288);
+ assert.equal(calls.filter(c=>c[0]==='bufferData'&&c[2].length===6048).length,1,'one original 24,192-byte ridge mesh upload');
+ assert.deepEqual(host.cameraSolids,[]);
+ for(let i=0;i<3;i++)assert.equal(ridge.data[i*24+22],3,'original still sky-image/no-shadow encoding retained');
+});
+
+test('actual geometry pass gives western country ridges ordinary world fog and preserves positive-X mountain haze',()=>{
+ for(const quality of ['low','balanced','high'])for(const projection of ['perspective','orthographic'])for(const ref of [false,true]){
+  const {host}=countryCpuGL(),uniforms=[];
+  host.quality=quality;host.camera.projection=projection;host.worldFog={clear:30,span:130};host.worldFogCenter=[-157.5,-78.5];
+  host.uni=(p,n,k,v)=>uniforms.push([n,k,Array.isArray(v)||ArrayBuffer.isView(v)?Array.from(v):v]);
+  host.batch('country-ridge',countryItems(record(earth).filter(p=>p.kind==='country-ridge')));
+  host.batch('mountain-ridge',countryItems(record(earth).filter(p=>p.kind==='mountain-ridge')));
+  host.geometryPass({},E.M.identity(),host.palette(17.2,0),12,ref?[-150,-4.98,-78.5]:[-150,5,-78.5],ref,false);
+  assert.deepEqual(uniforms.filter(u=>u[0]==='uCountryRidge').map(u=>u[2]),[1,0],'flag resets before the unchanged mountain batch');
+  assert.deepEqual(uniforms.filter(u=>u[0]==='uMountainHaze').map(u=>u[2]),[0,1]);
+  assert.deepEqual(uniforms.find(u=>u[0]==='uWorldFog'),['uWorldFog','4',[-157.5,-78.5,30,130]],'ground focus is independent of camera projection/reflected eye');
+  assert.deepEqual(uniforms.filter(u=>u[0]==='uMountainDepth').map(u=>u[2]),[[62,138],[62,138]]);
+  uniforms.length=0;host.theme='atlantis';host.geometryPass({},E.M.identity(),host.palette(17.2,0),12,host.camera.eye,false,false);
+  assert.deepEqual(uniforms.filter(u=>u[0]==='uMountainHaze').map(u=>u[2]),[0,0]);
+  uniforms.length=0;host.geometryPass({},E.M.identity(),host.palette(17.2,0),12,host.camera.eye,false,true);
+  assert.equal(uniforms.some(u=>u[0]==='uCountryRidge'||u[0]==='uMountainHaze'),false,'no extra depth-pass material branch');
+ }
+});
+
+test('actual WorldArt and Core retain canonical scene/save ownership while admitting the small country ridge batch',()=>{
+ const Ccountry=require('../src/core.js');require('../src/earth-grazer-motion.js');require('../src/earth-grazer-habitat-art.js');
+ require('../src/world.js');require('../src/world-foundations-art.js');
+ const factory=globalThis.RealmWorldFoundationsArt,WorldArt=globalThis.RealmArt.WorldArt;
+ for(const quality of ['low','balanced','high']){
+  const state=Ccountry.fresh();state.settings.quality=quality;
+  const sim=new Ccountry.Simulation(state);sim.room=earth.room;
+  const before=JSON.stringify(sim.snapshot()),{host}=countryCpuGL(),a=Object.create(WorldArt.prototype);
+  Object.assign(a,{e:host,map:{},room:null,time:0});factory.make(a,sim);
+  assert.equal(JSON.stringify(sim.snapshot()),before,'real scene factory never earns progress or modifies saves');
+  assert.deepEqual(host.worldFog,{clear:30,span:130});assert.equal(host.theme,'earth');
+  const b=host.batches.filter(b=>b.kind==='country-ridge');assert.equal(b.length,1);assert.equal(b[0].count,3);
+  assert.equal(host.batches.filter(b=>b.kind==='mountain-ridge')[0].count,10);
+  assert.ok(host.cameraSolids.length>0,'actual authored structural camera authorities remain installed');
+  assert.equal(host.cameraSolids.some(s=>s.max[0]<-170),false,'scenic ridges do not become structural camera blockers');
+ }
+});
+
+test('original ordinary App camera math projects the country skyline from grazer and Sela without a camera-source change',()=>{
+ const Ccountry=require('../src/core.js'),foundation=require('../src/world-foundations.js'),
+  source=fs.readFileSync(require.resolve('../src/app.js'),'utf8'),
+  cameraSource=source.slice(source.indexOf('function updateCamera(dt){'),source.indexOf('function cameraPreset(')),
+  parts=record(earth).filter(p=>p.kind==='country-ridge');
+ assert.ok(cameraSource.includes('function updateOrthographicCamera(dt)'));
+ const projected=(x,z,preset,elevation=.28,half=17)=>{
+  const sim=new Ccountry.Simulation(Ccountry.fresh());sim.room=earth.room;sim.state.player.x=x;sim.state.player.z=z;
+  const {host}=countryCpuGL(),center=[x,G+(preset==='adventure'?1.5:.6),z],camera={preset,tour:false,overview:false,yaw:Math.PI/2,elevation,
+   distance:7.5,actualDistance:7.5,fov:60,half,center:center.slice()};
+  sim.state.settings.reducedMotion=true;
+  vm.runInNewContext(cameraSource+'\nupdateCamera(1);',{engine:host,camera,sim,follow:null,innerWidth:1440,innerHeight:960,
+   grazerFocus:()=>null,fieldcraftFocus:()=>null,sceneHeight:()=>G,RealmWorldFoundations:foundation});
+  return parts.map(p=>{const m=E.M.compose(...p.p,...p.s,...p.opt.r),mesh=E.geometry(p.kind);let visible=0;
+   for(let i=0;i<mesh.length;i+=6){const v=E.M.transform(m,[mesh[i],mesh[i+1],mesh[i+2]]),point=host.project(...v);
+    if(point.visible&&point.x>=0&&point.x<=1440&&point.y>=0&&point.y<=960)visible++;
+   }return visible;});
+ };
+ for(const [x,z]of[[-157.5,-78.5],[-103,-23]])assert.ok(projected(x,z,'adventure').every(n=>n>=500),'west-facing ordinary orbit admits each silhouette');
+ assert.ok(projected(-157.5,-78.5,'follow',.88)[0]>0,'nearest ridge reaches the grazer normal Diorama viewport');
+ assert.deepEqual(projected(-103,-23,'follow',.88),[0,0,0],'tight Sela Diorama limit is retained honestly');
+ assert.ok(projected(-103,-23,'follow',.39,34)[0]>0,'ordinary lower orbit/wider zoom can reach nearest skyline');
 });

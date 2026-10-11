@@ -1,3 +1,11 @@
+# Qualify the integrated Earth walk, 2026-10-11
+
+Freeze the sensory review head, run the complete source verifier with D heavy storage and the explicit C CPU-fixture override, then use freshly command-earned current-head cohorts. Run native footsteps and the required fresh wildlife primary/boundary/aftermath checks without loosening their guards. Inspect western ridges and water in both cameras; record one short bounded actual gameplay clip. Keep a separate labelled30-second real-GPU frame-cadence sample if available. Human audio, pacing and exploration acceptance remain pending.
+
+Push a draft review stacked on PR54, attach it, and verify the exact pushed head in the existing independent STATION after its current job closes. Preserve all older failures and source epochs. Reuse checkouts, small stages and bounded media; no new full-game copy or broad cleanup. This milestone leaves the wider production goal active and the old heartbeat paused.
+
+---
+
 # Source storage repair, 2026-10-11
 
 SOURCE03 at pushed `13983cd94cb8d2ae207a66d463e9694aa762c008` closed exit1 at07:12:35Z. All141 syntax checks and Node1964pass/2explicit skips passed. Python completed438 tests in293.036 seconds:425 method passes,7 method skips plus3 class skips,1 failure and2 errors. All three failures came from positive native-output fixtures using C paths that the actual Windows D-output guard correctly refused. Preserve the raw SOURCE03 receipt, console and Python log; this is a failed complete gate, not current native qualification.

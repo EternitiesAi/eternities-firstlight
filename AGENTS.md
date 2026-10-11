@@ -1,3 +1,11 @@
+# Earth travel sensory integration, 2026-10-11
+
+Parent owns `gameplay/earth-walk-sensory-20261011`, stacked on PR54 head `239ccb0349ba164069748c474016e298d8bc9d26`. Earth water optics, optional ground-aware footsteps, the post-autosave roadkeeper diagnostic refresh and three western scenic ridges are integrated. Read `docs/development/EARTH_WALK_SENSORY_2026-10-11.md` for the bounded scope and evidence. Current source/native/remote qualification is pending; do not reuse older-head receipts as a current pass.
+
+The independent STATION remains owned by the running full verifier at239. Do not mutate it while live. Two existing colleagues own only small D staging files; parent owns integration and browser execution. Preserve all saves, ledgers, cameras and World9/Adventure12/WildSigns1. Keep the production goal active and the old heartbeat paused. Existing storage, blocked-deletion, no-main-merge, no-deploy and no-paid-provider restrictions remain in force.
+
+---
+
 # Source storage repair, 2026-10-11
 
 SOURCE03 at pushed `13983cd94cb8d2ae207a66d463e9694aa762c008` closed exit1 at07:12:35Z. All141 syntax checks and Node1964pass/2explicit skips passed. Python completed438 tests in293.036 seconds:425 method passes,7 method skips plus3 class skips,1 failure and2 errors. All three failures came from positive native-output fixtures using C paths that the actual Windows D-output guard correctly refused. Preserve the raw SOURCE03 receipt, console and Python log; this is a failed complete gate, not current native qualification.

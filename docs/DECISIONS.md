@@ -1,3 +1,11 @@
+# Bounded Earth sensory rules, 2026-10-11
+
+Separate Earth optical appearance from legacy bridge-channel admission; retain channel geometry, current, foam and reflection ownership. Grounded footsteps use three original procedural buffers, at most two voices, actual displacement and supported ground. Unknown ground, menus, mute, hidden state, death, teleport and clock gaps reset or stay silent. Keep the existing master/music/ambient path and avoid adding durable fields.
+
+Three western ridges are scenery outside the rotated physical boundary, sharing the original336-triangle mountain mesh:1008 added triangles per pass, at most3024 across three passes. They grant no ground, travel or reward authority. Refresh roadkeeper presentation only after the existing periodic save; keep the getter fail-closed and preserve all original failed evidence. Stored XP, equipment, sockets, choices and World9/Adventure12/WildSigns1 do not migrate.
+
+---
+
 # Source storage repair, 2026-10-11
 
 SOURCE03 at pushed `13983cd94cb8d2ae207a66d463e9694aa762c008` closed exit1 at07:12:35Z. All141 syntax checks and Node1964pass/2explicit skips passed. Python completed438 tests in293.036 seconds:425 method passes,7 method skips plus3 class skips,1 failure and2 errors. All three failures came from positive native-output fixtures using C paths that the actual Windows D-output guard correctly refused. Preserve the raw SOURCE03 receipt, console and Python log; this is a failed complete gate, not current native qualification.
