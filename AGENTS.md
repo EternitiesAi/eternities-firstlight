@@ -1,3 +1,13 @@
+# Flowers along Heaven's work route, 2026-10-11
+
+Three small groups of stationary pale and ruby flowers now connect the lower garden's instrument edge, east garden and tree-view area at Balanced/High. They reuse existing meshes and preserve the original 24 Ruby-fork plants, every old ordered decoration, routes, solids, markers, work/combat rules, saves and both cameras. Low is unchanged. This is a provisional art embellishment with no harvest, reward or lore addition. See docs/development/HEAVEN_GARDEN_PLANTING_2026-10-11.md.
+
+The installed focused component passed 3/3 tests, with zero failures/skips in 1513.5253 ms across 37 labelled synthetic Core/decorator/scene cases. Actual primitive vertices, clearance/material flags, old streams/state and WorldArt dispatch pass through synthetic renderer interfaces. The real builder emits identical 3,318,517-byte pages, SHA256 0f6ea4495808e246d3cb3c9e81fb89755e1db266e030b40296d15ae9bf6ffaa1. Source accounting adds 63 instances, 738 triangles and 6,048 packed instance bytes in existing buckets; actual GL packing, pixels and performance are unmeasured.
+
+Complete current Source17, exact remote qualification and ordinary-control/pixel checks remain pending. Original independent full07 continues solely at older 56d: source/earned/Earth/onboarding passed, consignment running. Hosted base 3be run 38182214328 has 48 failed jobs with zero executed steps; its source annotation reports an account billing lock. No hosted game checks ran, and no billing/account/workflow change or rerun was attempted. Prior failures, skips and browser-version confounds stay retained. World9 / Adventure12 / WildSigns1 and all ledgers, XP, keys and systems are unchanged. The production goal remains ACTIVE and unfinished; heartbeat PAUSED. Parent owns integration/native runs; reuse D storage, preserve the blocked standalone deletion, and do not merge main or deploy.
+
+---
+
 # Forest path connection repair, 2026-10-11
 
 Parent owns gameplay/forest-path-connections-20261011, stacked on PR62 at6408c2f639429b585ec6b7a15e373d1d493cad9c. Read docs/development/FOREST_PATH_CONNECTIONS_2026-10-11.md. The independently reviewed28-byte Core insertion retains its already validated starting grid waypoint before unchanged smoothing. All ten old navigation methods/assertions remain, plus three regressions. Installed13/13PASS, zero failures/skips; identical generated3317150B pages SHA2567244ad08cf03cdfffc67a3ebc1d6c601decbe8a0d3db6aa3544d7ca1dd07b00c. Complete current source/native/remote acceptance remains pending.
