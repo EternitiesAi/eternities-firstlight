@@ -17,6 +17,11 @@ sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
 raw=SOURCE.read_bytes();text=raw.decode('utf-8').replace('\r\n','\n')
 OUTSIDE_MAIN_AST_SHA='668b3fbe327fb221a0565215637e788ce2e9180f25df89cc3b0948248f5f6d5f'
 PREFLIGHT_PREFIX_SHA='99d479249eee5ca765ac6b861e3e1ad49899640b7d026fbc0db941d6b13d3faa'
+
+# Exact independently reviewed rejected observation: one insertion only.
+EXTENDED_OUTSIDE_MAIN_AST_SHA='bb678ef1740a134415e6fea1b234975f8b52c831c1221ff70d5c1491fed564cb'
+REVIEWED_TRIP_OBSERVATION="    s=self.sample();v=s['view']\n    if not (safe_view(v,outcome) and s['scene']==ROOM and not s['paused'] and not s['hidden'] and not v['menuOpen'] and v['suspended'] is None):\n     # Retain only the bounded rejected observation before the original guard.\n     # No retry, repair, scene step, owner mutation or relaxed acceptance.\n     trace['rejectedSample']={k:s.get(k) for k in ('view','elapsed','scene','paused','hidden','active','player','parts')}\n    need(safe_view(v,outcome) and s['scene']==ROOM and not s['paused'] and not s['hidden'] and not v['menuOpen'] and v['suspended'] is None,'Actual live same-room unsuspended roadkeeper required')\n"
+ORIGINAL_TRIP_GUARD="    s=self.sample();v=s['view'];need(safe_view(v,outcome) and s['scene']==ROOM and not s['paused'] and not s['hidden'] and not v['menuOpen'] and v['suspended'] is None,'Actual live same-room unsuspended roadkeeper required')\n"
 TREE=ast.parse(text);MAIN=next(n for n in TREE.body if isinstance(n,ast.FunctionDef) and n.name=='main')
 TRY=next(n for n in MAIN.body if isinstance(n,ast.Try))
 RECEIPTS=[]
@@ -131,9 +136,15 @@ class Startup(unittest.TestCase):
     self.assertEqual(len(f.reports),1);self.assertEqual(f.reports[0][1]['status'],'failed');self.assertIn('server_close',f.events)
     if mode=='close':self.assertFalse(f.reports[0][1]['serverClosed'])
  def test_patch_changes_only_main_and_retains_exact_readonly_prefix_native_methods_and_probes(self):
-  outside=ast.dump(ast.Module(body=[x for x in TREE.body if not isinstance(x,ast.FunctionDef) or x.name!='main'],type_ignores=[]),include_attributes=False)
+  self.assertEqual(text.count(REVIEWED_TRIP_OBSERVATION),1,'Exact reviewed rejected observation must occur once')
+  extended=ast.dump(ast.Module(body=[x for x in TREE.body if not isinstance(x,ast.FunctionDef) or x.name!='main'],type_ignores=[]),include_attributes=False)
+  self.assertEqual(hashlib.sha256(extended.encode()).hexdigest(),EXTENDED_OUTSIDE_MAIN_AST_SHA)
+  # Remove only that exact addition and rejoin the original sample/guard line.
+  original=text.replace(REVIEWED_TRIP_OBSERVATION,ORIGINAL_TRIP_GUARD,1)
+  original_tree=ast.parse(original)
+  outside=ast.dump(ast.Module(body=[x for x in original_tree.body if not isinstance(x,ast.FunctionDef) or x.name!='main'],type_ignores=[]),include_attributes=False)
   self.assertEqual(hashlib.sha256(outside.encode()).hexdigest(),OUTSIDE_MAIN_AST_SHA)
-  prefix=text.split(' # Resource ownership starts')[0]
+  prefix=original.split(' # Resource ownership starts')[0]
   self.assertEqual(hashlib.sha256(prefix.encode()).hexdigest(),PREFLIGHT_PREFIX_SHA)
   self.assertIn('if output_owned and a.output.is_dir():',text)
   self.assertIn('serve_entered.wait(timeout=1)',text);self.assertIn('server_thread.join(timeout=5)',text)
