@@ -1,3 +1,23 @@
+# Integrate and visibly qualify Coastward exploration, 2026-10-11
+
+The Earth recovery/travel runtime at765 has closed current source, controlled recovery, primary, boundary and footstep checks. Its original complete remote browser gate is still running; the independently reviewed source-expectation correction addresses a real stale later admission entry. Preserve all original reports, budgets and negative evidence. Never rewrite765 receipts to a newer head.
+
+Proceed on a separate gameplay/coastward-shore-and-traveler-20261011 branch from the normally committed correction. Integrate the independently reviewed authored shoreline apron and shaped traveler cloth together with their portable regression tests. Regenerate identical pages and commit the complete coherent slice before exact-head source/cohort/native qualification. Use existing ROOT/STATION and small patches. The shoreline retains all old support/routes/solids/bridge and adds92m2; both map renderers, movement, projectile ground and visible geometry must share the canonical footprint. Inspect actual joins/water, walk and click the new edge, and see both cameras/material/weapon families. Geometry CPU checks alone do not prove visual benefit.
+
+Run current original primary/boundary/aftermath gates at the new exact head, retain30s owner and10x24 portrait guards, then a short real gameplay clip and separately labelled desktop cadence. Fresh remote verification uses STATION only after the existing owned run closes. Human questions remain route clarity, camera comfort, audio balance and combat/reward enjoyment. The wider production goal remains ACTIVE and unfinished; the heartbeat is PAUSED. Preserve World9/Adventure12/WildSigns1, every existing save/XP/gear/socket/upgrade/claim/choice and both cameras. No main merge, deployment, paid provider, personal-save read, unrelated stop, duplicate full-game copy or blocked standalone-deletion retry. Reuse ROOT and independent STATION; do not mutate a live owned checkout. Frontier Oct11 was already checked.
+
+---
+
+# Qualify the installed readable Earth movement, 2026-10-11
+
+Freeze and normally push the reviewed combined presentation head. Run SOURCE08 with the original full verifier, fixtures/assertions/budgets, global D browser TEMP and explicit small CPU child temp. Use freshly command-earned blade/bow/veteran/current cohorts, then original native-primary03, footsteps03, native-boundary03 and unchanged native-aftermath03. Preserve the actual dc6f portrait-width failure; do not lower10x24, change cameras, backfill rewards or reuse historical cohorts. Recording and desktop cadence must wait for complete current aftermath success.
+
+Inspect two bounded native stone views, then the real-input cancelled windup for blade/bow with ordinary RAF/test flags off. Missed short observation windows stay nonqualifying; accepted in-flight arrows retain their actual ownership. No pixel/occlusion/human-feel claim follows from CPU projections. Ask Dom about route clarity, camera comfort, unobtrusive audio and whether fights/rewards encourage another outing after actual qualification.
+
+Do not duplicate or mutate live independent STATION full remote02 at dc6f. After closure, fetch final review head normally and reuse that clean independent checkout for exact required remote verification. Finish current evidence/continuity and PR55 before the next geography/terrain production slice. Keep broad production goal ACTIVE and heartbeat PAUSED; source/render checks do not establish AAA or complete seamless world. Preserve every existing system/save/choice/camera and storage/authority boundaries.
+
+---
+
 # Source storage repair, 2026-10-11
 
 SOURCE03 at pushed `13983cd94cb8d2ae207a66d463e9694aa762c008` closed exit1 at07:12:35Z. All141 syntax checks and Node1964pass/2explicit skips passed. Python completed438 tests in293.036 seconds:425 method passes,7 method skips plus3 class skips,1 failure and2 errors. All three failures came from positive native-output fixtures using C paths that the actual Windows D-output guard correctly refused. Preserve the raw SOURCE03 receipt, console and Python log; this is a failed complete gate, not current native qualification.

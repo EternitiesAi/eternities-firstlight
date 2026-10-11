@@ -1,3 +1,25 @@
+# Advance reviewed source identity without weakening admission, 2026-10-11
+
+The actual installed_epoch validator found one active stale identity: Roadkeeper Art LF607b2714 versus independently reviewed installedea1fba39. Correct that single active JSON value, preserve historical raw/prepared/reference fields and all validator logic, and retain a detecting regression for stale/unreviewed/altered bytes and fallback. No dynamic acceptance of current source, dual hash, admission waiver or rewritten report. Five genuine CPU methods passed for the reviewed candidate; independent source peer verified53 checks. A private CRLF summary-parser mistake is retained with both original raw logs and no successful-control replay.
+
+Separate the next coherent authored shoreline/cloth product branch from PR55. All former ground support, solids, routes, bridge, reward/navigation identity and save schemas remain; authored convex geometry is sufficient, no procedural terrain framework or new realm. Shared mesh costs and resource lifetime must be explicit. Parent integrates seven source/four test leaves from small reviewed patches, then fresh actual source/native evidence at the resulting exact head. Prior765 native successes are historical evidence, never a pass for the future geometry. Keep the live independent remoteFull03 checkout frozen until closure and retain its known stale later-admission limitation.
+
+The wider production goal remains ACTIVE and unfinished; the heartbeat is PAUSED. Preserve World9/Adventure12/WildSigns1, every existing save/XP/gear/socket/upgrade/claim/choice and both cameras. No main merge, deployment, paid provider, personal-save read, unrelated stop, duplicate full-game copy or blocked standalone-deletion retry. Reuse ROOT and independent STATION; do not mutate a live owned checkout. Frontier Oct11 was already checked.
+
+---
+
+# Source-led Earth readability, 2026-10-11
+
+Keep the native10x24 portrait guard. Fix the roadkeeper's actual side profile with coat depth.28→.50 and corresponding front trim only; retain19parts/4380vertices, radius.6, height1.78, materials/ownership/rules. A1296-sample actual packed-geometry CPU sweep gains min8.86209→13.14402px at original mobile Follow scale. The retained camera-profile reconstruction reproduces9.97786px, but it does not recover unretained live camera metadata or qualify all continuous poses/occlusion. Require original native rerun and visual inspection.
+
+One canonical Earth overlook-stone changes its box mesh to an original closed48-triangle faceted shape. Location/full2.8x1.8x2.5 camera/physical envelope, ground, material, collision and every other box stay unchanged. Conservative box corners remain the physical authority. No world expansion or new navigation is inferred from a mesh.
+
+Only genuinely observed windup can lower through100ms render-only withdrawal. Accepted releases/new anticipation take priority; no new damage, sound, arrow, stamina, cooldown or durable field. Existing reduced-motion/death/guard/dive/owner/clock fences remain. Legacy test/CAPTURE-mode traveler suites are labelled facades, never ordinary-RAF acceptance. Missed native short windows and old released arrows must not be counted as successful cancellation proof.
+
+Preserve old failed source/native epochs and exact source separation. New source/page requires new legitimate cohorts and current gates; recording/cadence remain held until aftermath passes. World9/Adventure12/WildSigns1 and storedXP/keys/choices do not migrate. Wider production unfinished; heartbeat paused, no merge/deploy/paidprovider/personal-save read/full-copy/unrelated stop/blocked-deletion retry.
+
+---
+
 # Source storage repair, 2026-10-11
 
 SOURCE03 at pushed `13983cd94cb8d2ae207a66d463e9694aa762c008` closed exit1 at07:12:35Z. All141 syntax checks and Node1964pass/2explicit skips passed. Python completed438 tests in293.036 seconds:425 method passes,7 method skips plus3 class skips,1 failure and2 errors. All three failures came from positive native-output fixtures using C paths that the actual Windows D-output guard correctly refused. Preserve the raw SOURCE03 receipt, console and Python log; this is a failed complete gate, not current native qualification.

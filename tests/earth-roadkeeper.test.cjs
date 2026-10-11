@@ -199,3 +199,79 @@ test('review negative: unknown current live threat position or malformed HP inva
   f.sim.elapsed-=.1;assert.equal(JSON.stringify(f.sim),before);assert.equal(f.writes(),writes);
  }
 });
+
+// Actual packed Engine geometry/project and original App camera functions in a
+// labelled synthetic CPU host. No GL/ordinary RAF/native screenshot claim.
+function roadkeeperCamera(width=390,height=844,preset='follow',yaw=0,elevation=.65){
+ const fs=require('node:fs'),vm=require('node:vm'),source=fs.readFileSync(path.join(ROOT,'src/app.js'),'utf8');
+ const cameraSource=source.slice(source.indexOf('function updateCamera(dt){'),source.indexOf('function cameraPreset('));
+ assert.ok(cameraSource.includes('function updateOrthographicCamera(dt)'));
+ const sim=new C.Simulation(C.fresh());sim.room=D.ROOM;Object.assign(sim.state.player,O.HOME);sim.state.settings.reducedMotion=true;
+ const base=W.height(D.ROOM,sim.state.player.x,sim.state.player.z),center=[sim.state.player.x,base+(preset==='adventure'?1.5:.6),sim.state.player.z];
+ const engine=Object.create(E.Engine.prototype);Object.assign(engine,{canvas:{clientWidth:width,clientHeight:height},cameraSolids:[],camera:{projection:'orthographic'},gl:{bindBuffer(){},bufferData(){}}});
+ const camera={preset,tour:false,overview:false,yaw,elevation,distance:7.5,actualDistance:7.5,fov:80,half:17,center};
+ vm.runInNewContext(cameraSource+'\nupdateCamera(1);',{engine,camera,sim,follow:null,innerWidth:width,innerHeight:height,grazerFocus:()=>null,fieldcraftFocus:()=>null,sceneHeight:()=>base,RealmWorldFoundations:W});
+ return engine;
+}
+function roadkeeperPacked(parts,engine){
+ const points=[],body=[];let count=0;
+ for(const kind of ['box','round','octa']){
+  const batch={kind,items:parts.filter(p=>p.kind===kind),dynamic:true};engine.updateBatch(batch);assert.equal(batch.cameraSolids.length,0);
+  const raw=E.geometry(kind);
+  for(let n=0;n<batch.items.length;n++)for(let i=0;i<raw.length;i+=6){
+   const v=E.M.transform(batch.data.subarray(n*24,n*24+16),Array.from(raw.slice(i,i+3)));body.push(v);points.push(engine.project(...v));count++;
+  }
+ }
+ return {vertices:count,body,width:Math.max(...points.map(p=>p.x))-Math.min(...points.map(p=>p.x)),height:Math.max(...points.map(p=>p.y))-Math.min(...points.map(p=>p.y))};
+}
+
+test('roadkeeper quiet side profiles retain twelve CSS pixels of genuine packed body width at original mobile Follow scale',()=>{
+ const f=fixture('cleared-pocket'),view=start(f),engine=roadkeeperCamera(),before=bytes(f.sim),disk=f.map.get(CH.KEY);
+ for(const quiet of [false,true])for(let degrees=0;degrees<360;degrees++){
+  const pose={...view,yaw:degrees*Math.PI/180,walking:quiet,reducedMotion:quiet,gait:1.234},parts=Art.shape(pose),span=roadkeeperPacked(parts,engine);
+  assert.equal(parts.length,19);assert.equal(span.vertices,4380);
+  assert.ok(span.width>=12,'Roadkeeper profile lacks readable width: '+span.width+'px at '+degrees+' degrees, reduced='+quiet);
+  assert.ok(span.height>=24);
+ }
+ assert.equal(bytes(f.sim),before);assert.equal(f.map.get(CH.KEY),disk);
+});
+
+test('roadkeeper walking profile margin keeps canonical height, radial reserve, materials and nineteen-instance geometry budget',()=>{
+ const f=fixture(),view=start(f),engine=roadkeeperCamera(),before=bytes(f.sim);
+ for(let degrees=0;degrees<360;degrees+=5)for(let gait=0;gait<8;gait++){
+  const pose={...view,yaw:degrees*Math.PI/180,walking:true,reducedMotion:false,gait:gait*Math.PI/4},parts=Art.shape(pose),span=roadkeeperPacked(parts,engine);
+  assert.equal(parts.length,19);assert.equal(span.vertices,4380);assert.ok(span.width>=12);
+  for(const p of parts){assert.equal(p.rough,.97);assert.equal(p.cameraSolid,false);assert.equal(p.cutaway,false);assert.equal(p.appearanceOnly,true);}
+  for(const p of span.body){assert.ok(Math.hypot(p[0]-view.x,p[2]-view.z)<O.LIMITS.radius);assert.ok(p[1]>=view.base-1e-5&&p[1]<=view.base+O.LIMITS.height+1e-5);}
+ }
+ assert.deepEqual(O.LIMITS.radius,.6);assert.deepEqual(O.LIMITS.height,1.78);assert.equal(bytes(f.sim),before);
+});
+
+test('roadkeeper wider coat keeps front trim on its real surface and both outcomes change only the existing band color',()=>{
+ const f=fixture(),v=start(f),signed=Art.shape({...v,yaw:0}),cleared=Art.shape({...v,yaw:0,resolution:'cleared-pocket'});
+ const coat=signed.find(p=>p.roadkeeperPart==='work-coat');
+ for(const id of ['shirt-front','chosen-account-band']){
+  const p=signed.find(p=>p.roadkeeperPart===id);
+  // This explicitly synthetic orientation has yaw0; Z is the front face.
+  assert.ok(p.p[2]-p.s[2]/2>coat.p[2]+coat.s[2]/2,'Front trim is buried inside the coat');
+ }
+ for(let i=0;i<signed.length;i++){
+  const s={...signed[i]},c={...cleared[i]};delete s.roadkeeperResolution;delete c.roadkeeperResolution;
+  if(s.roadkeeperPart==='chosen-account-band'){assert.notDeepEqual(s.c,c.c);delete s.c;delete c.c;}
+  assert.deepEqual(s,c);
+ }
+});
+
+test('roadkeeper revised profile reaches the actual WorldArt dynamic consumer without state/store or projection-owner changes',()=>{
+ const fs=require('node:fs'),vm=require('node:vm');
+ for(const name of ['creative.js','traveler-art.js','traveler-equipment-art.js','realm-givers-art.js','world-foundations-art.js'])require(path.join(ROOT,'src',name));
+ vm.runInThisContext(fs.readFileSync(path.join(ROOT,'src/world.js'),'utf8'),{filename:path.join(ROOT,'src/world.js')});
+ const f=fixture('cleared-pocket'),view=start(f);f.sim.roadkeeperPresentation=view;f.sim.roadkeeperPresentationContext=f.context();
+ const before=bytes(f.sim),disk=f.map.get(CH.KEY),writes=f.writes(),engine=roadkeeperCamera();
+ engine.camera.eye=[f.sim.state.player.x+10,20,f.sim.state.player.z+10];engine.viewShelters=[];
+ const art=Object.create(globalThis.RealmArt.WorldArt.prototype);Object.assign(art,{room:D.ROOM,e:engine,dynamicBox:{kind:'box',items:[]},dynamicRound:{kind:'round',items:[]},dynamicOcta:{kind:'octa',items:[]},dynamicDisc:{kind:'disc',items:[]}});
+ art.update(f.sim,0,null);
+ const actual=[art.dynamicBox,art.dynamicRound,art.dynamicOcta].flatMap(b=>b.items.filter(p=>p.roadkeeperActor===O.ID).map(p=>({kind:b.kind,...p}))),expected=Art.shape(view);
+ assert.equal(actual.length,19);assert.deepEqual(actual.sort((a,b)=>a.roadkeeperPart.localeCompare(b.roadkeeperPart)),expected.sort((a,b)=>a.roadkeeperPart.localeCompare(b.roadkeeperPart)));
+ assert.equal(roadkeeperPacked(actual,engine).vertices,4380);assert.equal(bytes(f.sim),before);assert.equal(f.map.get(CH.KEY),disk);assert.equal(f.writes(),writes);assert.deepEqual(O.current(f.context()),view);
+});

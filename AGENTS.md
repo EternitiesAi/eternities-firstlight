@@ -1,3 +1,25 @@
+# Earth qualification and reviewed expectation correction, 2026-10-11
+
+Parent owns PR55/gameplay/earth-walk-sensory-20261011, stacked on PR54/239ccb0. This checkpoint corrects only the active LF roadkeeper-art expectation from historical607b2714 to independently reviewed installedea1fba39 and adds five real installed_epoch regression methods. Raw historical fallback/prepared head/reference pins remain untouched; removal of the LF map still refuses current Art. No runtime/page/original browser assertion or budget changes. Source/native evidence stays bound to765d697, whose pages remain identical3,302,304B/SHAaab1cb8251608b55cce9a69befd24e35aff872d1db203eadb6ab3f4f743aec2d. New-head full qualification is pending.
+
+Closed765 checks: complete SOURCE09 passed214commands142syntax, Node2022pass/2skip, Python442tests/10reported skips, all earned campaigns and two continuous journeys. Genuine controlled graphics restoration passed42. Original primary passed1981/227writes/7restarts; boundary passed2837/214writes/3restarts; footsteps passed44/31writes. All owned contexts/servers closed, reported errors/external requests empty. Footfall recording is a small isolated bus with stone25/soil0/timber0 during that recording, not full-mix or listening qualification. Detailed exact epochs and failures: docs/evidence/earth-walk-2026-10-11/QUALIFICATION01.md.
+
+Independent STATION remains frozen by actual complete remoteFull03 at765, still at consignment. Its later mandatory aftermath admission has the newly discovered stale Art expectation and cannot pass until a normally fetched new reviewed head is verified. Do not rewrite that run or count partial successes as the whole gate. Current aftermath/capture were never allocated. Next coherent separately stacked shoreline/traveler geometry is independently CPU/source reviewed, but uninstalled and not visually qualified at this checkpoint. Parent owns integration/rendering; the two colleagues stage small D files.
+
+The wider production goal remains ACTIVE and unfinished; the heartbeat is PAUSED. Preserve World9/Adventure12/WildSigns1, every existing save/XP/gear/socket/upgrade/claim/choice and both cameras. No main merge, deployment, paid provider, personal-save read, unrelated stop, duplicate full-game copy or blocked standalone-deletion retry. Reuse ROOT and independent STATION; do not mutate a live owned checkout. Frontier Oct11 was already checked.
+
+---
+
+# Earth readability and movement integration, 2026-10-11
+
+Parent owns `gameplay/earth-walk-sensory-20261011` / draft PR55, stacked on PR54/239ccb0. The independently reviewed roadkeeper profile, one original faceted overlook stone and observed cancelled-attack lowering are now installed with existing water/footsteps/western ridges. Actual installed focused checks pass43/43, zero skips; builder outputs are identical3,298,465 bytes, SHA2566507dc92a51b1f9be211919e3709d059a5c1ada062591f25d15f264b893b78dc. These are CPU/build results; current native rendering and complete qualification are pending. Read docs/development/EARTH_WALK_SENSORY_2026-10-11.md.
+
+Previous clean dc6f Source07/Primary02/Footfalls02/Boundary02 passed. Aftermath02 failed one actual portrait width assertion after311 passing checks, with both contexts/server closed. Keep that failure and the original10x24 guard; never rebind old reports/cohorts. Source08 and fresh current cohorts precede Primary03/Footfalls03/Boundary03/Aftermath03. Recording/cadence remain held until complete current aftermath passes. Parent owns all browser/GPU execution and freezes ROOT while an owned case is live.
+
+Independent STATION remains owned by live full remote02 at dc6f, not239; do not mutate it before closure. Two existing Sol colleagues write small D stages only: A stone observation, B original-input cancelled-attack observation. Reuse ROOT/STATION, preserve all systems/saves/ledgers/XP/choices and World9/Adventure12/WildSigns1, both cameras. Wider production goal ACTIVE unfinished, old heartbeat PAUSED. All existing storage/no-merge/no-deploy/no-paid/no-personal-save/no-unrelated-stop/blocked-deletion boundaries remain. Frontier Oct11 check already done.
+
+---
+
 # Source storage repair, 2026-10-11
 
 SOURCE03 at pushed `13983cd94cb8d2ae207a66d463e9694aa762c008` closed exit1 at07:12:35Z. All141 syntax checks and Node1964pass/2explicit skips passed. Python completed438 tests in293.036 seconds:425 method passes,7 method skips plus3 class skips,1 failure and2 errors. All three failures came from positive native-output fixtures using C paths that the actual Windows D-output guard correctly refused. Preserve the raw SOURCE03 receipt, console and Python log; this is a failed complete gate, not current native qualification.

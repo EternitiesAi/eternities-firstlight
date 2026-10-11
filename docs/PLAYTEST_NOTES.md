@@ -1,3 +1,23 @@
+# Earth native checks and remaining visual acceptance, 2026-10-11
+
+At765d697 the original three-case primary passed1981 checks,227 native writes and7 whole-browser restarts. Original boundary passed2837 checks,214writes and3restarts: ready-owner switch/import, actual death/clearance/switch, and labelled synthetic fibre999 capacity/refusal/retry. Footsteps passed44 with31writes and actual soil/timber/stone scheduling. All contexts/servers closed and reported errors/external requests were empty. The isolated18.0036-second footstep bus is only28,678B and scheduled stone25/soil0/timber0 during recording; it excludes ambient/master mix and is not human listening evidence. The controlled42-check genuine graphics restoration remains valley/fault-injection evidence only.
+
+These successes do not change the historical Boundary03 failure after190 passes or software remoteFull02 TargetClosed after1371partial consignment checks. Both causes remain UNKNOWN. Fresh current aftermath/recording and complete independent browser gate remain pending; remoteFull03 is still live and has a known stale later source-expectation entry. Current metadata correction never rebinds old gameplay evidence. Source-led shoreline and cloth candidates await installed/native views; sharper CPU silhouettes are not rendered acceptance.
+
+Dom has not accepted current route clarity, camera comfort, audio balance, combat enjoyment or reward pacing. Keep these simple human questions pending. The wider production goal remains ACTIVE and unfinished; the heartbeat is PAUSED. Preserve World9/Adventure12/WildSigns1, every existing save/XP/gear/socket/upgrade/claim/choice and both cameras. No main merge, deployment, paid provider, personal-save read, unrelated stop, duplicate full-game copy or blocked standalone-deletion retry. Reuse ROOT and independent STATION; do not mutate a live owned checkout. Frontier Oct11 was already checked.
+
+---
+
+# Earth rendering and pending human acceptance, 2026-10-11
+
+Parent and independent colleague inspected two actual1440x960 balanced horizon PNGs at dc6f. Adventure shows clear layered pale western peaks behind the trees; lower/wider Follow crops the mountain mass across the top. The benefit is camera-dependent. Earlier239/7636 paired water photographs retain their original epochs. Square country banks remain a visible landscape limitation.
+
+Actual dc6f Aftermath02 failed civilian portrait readability:19parts/4380vertices,0clipped,9.97786px wide/41.30425px high at390x844 Follow/reduced motion. The exact rejected live camera metadata was not retained. A source-led fuller coat/trim is now installed with sampled CPU width margin, unchanged height/radius and native guard; actual new appearance/occlusion remains pending. The new stone and cancelled-attack lowering also await ordinary native view/input inspection despite43 installed CPU passes.
+
+Footsteps02 passed44 native checks and scheduled soil11/timber100/stone42. The retained32,283-byte isolated stone-bus WebM decodes correctly as sparse timestamped Opus audio; it is not18continuous PCM seconds or the full ambient/music mix. Human listening, combat feel, pacing, camera comfort and mobile usability remain unanswered. No current gameplay clip, FPS certification or founder approval is claimed. Ask after qualification: were the route and people readable in both cameras, did sound sit comfortably in the mix, and did the fight and reward make another outing appealing?
+
+---
+
 # Source storage repair, 2026-10-11
 
 SOURCE03 at pushed `13983cd94cb8d2ae207a66d463e9694aa762c008` closed exit1 at07:12:35Z. All141 syntax checks and Node1964pass/2explicit skips passed. Python completed438 tests in293.036 seconds:425 method passes,7 method skips plus3 class skips,1 failure and2 errors. All three failures came from positive native-output fixtures using C paths that the actual Windows D-output guard correctly refused. Preserve the raw SOURCE03 receipt, console and Python log; this is a failed complete gate, not current native qualification.

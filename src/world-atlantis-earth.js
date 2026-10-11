@@ -242,6 +242,15 @@
     [162,47,76,40,113,.40,2],[175,-5,78,38,100,-.80,2]
    ];
    for(const[x,z,w,h,d,yaw,layer]of skyline)add('mountain-ridge',x,-.4,z,w,h,d,[0x596f66,0x768b85,0xa2ada7][layer],{r:[0,yaw,0],skyImage:true,vista:'channel-east',vistaLayer:layer});
+   // Original scenic ridges close the western country backdrop; they are not
+   // supported terrain, named places or a new travel/reward owner. Even the
+   // full rotated mesh remains west of the existing -170 country boundary.
+   const countrySkyline=[
+    [-211,-78.5,80,30,92,0,0],
+    [-258,-105,98,44,118,-.15,1],
+    [-282,-32,116,52,142,.18,2]
+   ];
+   for(const[x,z,w,h,d,yaw,layer]of countrySkyline)add('country-ridge',x,-.4,z,w,h,d,[0x65796c,0x83938a,0xa1aba2][layer],{r:[0,yaw,0],skyImage:true,vista:'country-west',vistaLayer:layer,appearanceOnly:true});
   } else {
    for(let z=23;z<=42;z+=1.25) box(0,height(0,z)+.018,z,8.7,.025,.04,0x766947);
    for(const [x,z] of [[-3,25],[3,25],[-10,-4],[10,-4],[-3,-25],[-3,-39],[15,-43]]) lamp(x,z);

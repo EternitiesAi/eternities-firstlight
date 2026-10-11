@@ -1,3 +1,23 @@
+# Earth travel qualification and source-admission correction, 2026-10-11
+
+The765d697 runtime passed fresh source and original native primary/boundary/footstep checks. The map-to-3D restoration test also passed a genuine extension-induced loss/restoration cycle, retaining the current character, camera and save authority. This is a bounded browser draft with finite authored regions; complete seamless-world, AAA, human pacing and current full browser verification remain unqualified.
+
+The newly reviewed metadata correction advances only the active LF Roadkeeper Art pin to actualea1fba39. Five portable tests exercise the real installed_epoch validator: accepted exact Art passes; stale/unreviewed pins, changed Art bytes and historical fallback refuse. Runtime/pages stay byte-identical to765. Original source/native receipts remain at765; no result is rebound to this metadata commit. Independent remoteFull03 is still running in frozen STATION and its known stale later admission remains visible. Complete current aftermath/footage/fresh-clone qualification is pending.
+
+Read docs/evidence/earth-walk-2026-10-11/QUALIFICATION01.md for actual counts and retained failures. The next reviewed terrain and traveler candidates will use a separate gameplay branch from this corrected head, fresh build/source/cohorts and native rendering. The wider production goal remains ACTIVE and unfinished; the heartbeat is PAUSED. Preserve World9/Adventure12/WildSigns1, every existing save/XP/gear/socket/upgrade/claim/choice and both cameras. No main merge, deployment, paid provider, personal-save read, unrelated stop, duplicate full-game copy or blocked standalone-deletion retry. Reuse ROOT and independent STATION; do not mutate a live owned checkout. Frontier Oct11 was already checked.
+
+---
+
+# Earth readability and movement, 2026-10-11
+
+PR55's current gameplay branch now includes clearer Earth water, supported soil/timber/stone footsteps, three distant western ridges, the autosave presentation refresh, a fuller roadkeeper work-coat profile, one original faceted overlook stone, and100ms lowering when an actually observed blade/bow windup is cancelled. Existing input, attacks/hits/arrows, geography/ground/collision, storedXP/gear/sockets/rewards/choices and World9/Adventure12/WildSigns1 remain unchanged. Both cameras remain interchangeable.
+
+Actual combined installed CPU checks pass43/43 with no skips. The real builder produced identical3,298,465-byte pages, SHA2566507dc92a51b1f9be211919e3709d059a5c1ada062591f25d15f264b893b78dc. Full current source/native/rendered/remote qualification remains pending and must use the new committed head. Individual original mesh/material/owner controls and negative failures are retained in small D stages, not new full game copies.
+
+At previous dc6f, Source07 passed214commands/142syntax, Node1996pass/2skips, Python442tests/10reported skips; hardware primary1939, footsteps44 and boundaries2820 passed. Aftermath02 closed failed311pass/1fail: the fully unclipped19-part civilian was9.97786px wide in portrait Follow against the unchanged10px minimum. No movie/cadence ran. Independent horizon collection closed; Adventure shows layered pale mountains, wider Follow crops the mass. Native audio decodes sparse timestamped stone-bus recording only; listening remains unqualified. These original epochs cannot qualify this changed page. The live independent remote02 verifier remains frozen at dc6f and is progressing through actual consignment cases.
+
+---
+
 # Source storage repair, 2026-10-11
 
 SOURCE03 at pushed `13983cd94cb8d2ae207a66d463e9694aa762c008` closed exit1 at07:12:35Z. All141 syntax checks and Node1964pass/2explicit skips passed. Python completed438 tests in293.036 seconds:425 method passes,7 method skips plus3 class skips,1 failure and2 errors. All three failures came from positive native-output fixtures using C paths that the actual Windows D-output guard correctly refused. Preserve the raw SOURCE03 receipt, console and Python log; this is a failed complete gate, not current native qualification.

@@ -98,7 +98,13 @@ test('actual static caller emits coalesced floor, unchanged seventy banks and on
   const replacement=items.filter(p=>p.woodlandShapes===crowns.SEED),trail=items.filter(p=>p.elderwealdTrail);
   assert.equal(replaced.length,quality==='low'?20:28);assert.equal(replacement.length,quality==='low'?8:20);
   const base=originalBase-replaced.length+replacement.length;
-  assert.equal(items.filter(p=>!p.elderwealdTrail&&!p.earthRoadPart&&!p.habitatPart).length,base);assert.ok(trail.length<=280,'explicit trail factory budget');assert.equal(items.filter(p=>p.earthRoadPart==='post').length,1,'new canonical road post is separately owned');assert.equal(items.filter(p=>p.earthRoadPart==='fingerpost').length,16,'real road factory is present');const habitat=items.filter(p=>p.habitatPart);assert.equal(habitat.length,quality==='low'?64:128,'separately owned finite clearing dressing');assert.ok(items.length<=base+297+habitat.length);assert.equal(items.filter(p=>p.worldGround).length,64);assert.equal(items.filter(p=>p.coastBank).length,70);
+  // The original static budget excludes exactly three separately owned scenic ridges.
+  const countryWest=items.filter(p=>p.kind==='country-ridge');assert.equal(countryWest.length,3);
+  assert.deepEqual(E.geometry('country-ridge'),E.geometry('mountain-ridge'),'actual Engine owns the explicit ridge alias');
+  assert.equal(countryWest.reduce((n,p)=>n+E.geometry(p.kind).length/18,0),1008);
+  assert.deepEqual(countryWest.map(p=>p.vistaLayer),[0,1,2]);
+  for(const p of countryWest){assert.equal(p.vista,'country-west');assert.equal(p.appearanceOnly,true);assert.equal(p.skyImage,true);assert.equal(p.cameraSolid,false);assert.equal(p.cutaway,false);assert.equal(p.worldSolid,undefined);assert.equal(E.solidBounds(p.kind,p),null);assert.ok(vertices(p).every(v=>v[0]<d.bounds.minX),'entire actual ridge stays outside supported western country');}
+  assert.equal(items.filter(p=>!p.elderwealdTrail&&!p.earthRoadPart&&!p.habitatPart&&p.kind!=='country-ridge').length,base);assert.ok(trail.length<=280,'explicit trail factory budget');assert.equal(items.filter(p=>p.earthRoadPart==='post').length,1,'new canonical road post is separately owned');assert.equal(items.filter(p=>p.earthRoadPart==='fingerpost').length,16,'real road factory is present');const habitat=items.filter(p=>p.habitatPart);assert.equal(habitat.length,quality==='low'?64:128,'separately owned finite clearing dressing');assert.ok(items.length-countryWest.length<=base+297+habitat.length);assert.equal(items.filter(p=>p.worldGround).length,64);assert.equal(items.filter(p=>p.coastBank).length,70);
   for(const s of d.solids){const ps=items.filter(p=>p.worldSolid&&p.worldSolidId===s.id);assert.equal(ps.length,1);assert.deepEqual(ps[0].p,[s.x,F+s.h/2,s.z]);assert.deepEqual(ps[0].s,[s.w,s.h,s.d]);assert.equal(ps[0].cameraSolid,true);}
   for(const p of items)assert.ok([...p.p,...p.s,...(p.m||[])].every(Number.isFinite));
  }
