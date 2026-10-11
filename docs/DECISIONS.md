@@ -1,3 +1,15 @@
+# Share the original transform without caching live object state, 2026-10-11
+
+Within updateBatch, compose ordinary item transforms once for the original upload and camera-bound collection. An explicit item matrix remains double precision for bounds, even though the upload is Float32. Dynamic opt-in items recompute from current live values on every update; retain no per-item cache. Bounds publish only after successful buffer upload so a failed upload preserves prior camera data and its primary error. Geometry, shaders, material quality, collision authority and first-draw lifecycle remain unchanged.
+
+This source-driven reduction addresses measured batch work without assigning the unresolved pre-context startup gap or promising a frame-time improvement. New focused tests compare exact packed data, eight-corner bounds, double-vs-Float32 precision, live dynamic edits and upload refusal; peer independently checked original inverses and detecting mutants. Full current source/native/remote gates remain separate.
+
+Briar’s original explicit transient guide now has an actual b0 fresh-blade UI receipt; do not promote its1395 checks to human feel, bow acceptance or changed-renderer evidence. The camera recording caller’s rejected03 could label a V press outside the capture as a two-camera movie; preserve that unexecuted P2 and require actual same-page camera witnesses inside the recorder timestamps in04. These evidence tools never mutate gameplay or widen original budgets.
+
+World9 / Adventure12 / WildSigns1 stay unchanged. Preserve every save/key, stored XP, gear/socket/upgrade, claim and explicit story choice; both cameras, companion, housing, crafting and music remain. Production goal ACTIVE and unfinished; heartbeat PAUSED. Parent owns ROOT and native execution, colleagues stage small independent D files only. Reuse ROOT/STATION; no duplicate full games/raw movies, blocked standalone-deletion retry, personal-save inspection, unrelated shutdown, paid provider, main merge or public deployment. Frontier Oct11 already checked.
+
+---
+
 # A fox can guide without completing the player’s work, 2026-10-11
 
 Reuse stable heaven-broken-choir-v1/spillway IDs and original physical target25,-15. RealmTrails projects that accepted unfinished optional handle; Adventure owns empty-payload companion-guide, original command revision/receipt and transient owner-bound Core path; RPGUI closes its normal menu before dispatch and retains preexisting P pause refusal. The player never autowalks. Stay/death/dive/scene/state/record/trip/active-owner/danger changes cancel. Full-body .31 segment checks remain. Arrival is a transient notice only; no saved guide field/migration, quest/loot/XP/reward or new economy. Retain original key4 and searches.
