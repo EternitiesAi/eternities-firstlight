@@ -1,3 +1,11 @@
+# Forest path connection repair, 2026-10-11
+
+Parent owns gameplay/forest-path-connections-20261011, stacked on PR62 at6408c2f639429b585ec6b7a15e373d1d493cad9c. Read docs/development/FOREST_PATH_CONNECTIONS_2026-10-11.md. The independently reviewed28-byte Core insertion retains its already validated starting grid waypoint before unchanged smoothing. All ten old navigation methods/assertions remain, plus three regressions. Installed13/13PASS, zero failures/skips; identical generated3317150B pages SHA2567244ad08cf03cdfffc67a3ebc1d6c601decbe8a0d3db6aa3544d7ca1dd07b00c. Complete current source/native/remote acceptance remains pending.
+
+STATION remains frozen at56d for parent-owned remoteFull07. Do not duplicate or mutate it. Historical Country15 keeps UNKNOWN cause: its rejected audit was not retained, and a sparse observation chord can misrepresent a supported bridge turn. Preserve original predicates/deadlines; retain actual immediate frame failures in later observation. World9 / Adventure12 / WildSigns1 and all keys, saves, stored XP, ledgers, choices, gear/sockets/upgrades, systems and both cameras stay unchanged. Goal ACTIVE unfinished, heartbeat PAUSED. Two existing colleagues stage small D files; parent owns integration/native. Existing storage, blocked-deletion, no-merge/no-deploy/no-paid/no-personal-save/no-unrelated-stop boundaries remain.
+
+---
+
 # Choir return-plan integration, 2026-10-11
 
 Parent owns gameplay/choir-return-plan-20261011, stacked against PR61 at56d15c0cb23081c46723e341a67da792c6adb634. Read docs/development/CHOIR_RETURN_PLAN_2026-10-11.md. Two independently reviewed leaves add a pure paid-Choir workshop plan and four detecting tests; no new controls, rewards, spending, equipment changes or persistent fields. Installed trail component26/26PASS, zero failures/skips; real identical3317122B pages SHA256b2d630d76447711f9808c114b7329c8dddb284c555773f7386b8c6e01948a05f. Current complete source and ordinary outing qualification are pending.

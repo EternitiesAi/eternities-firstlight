@@ -1,3 +1,11 @@
+# A supported connection into the forest, 2026-10-11
+
+An off-grid forest walk could receive a first waypoint through a bridge rail. Core had checked the safe player-to-grid connection, then omitted that grid point from the returned path. The repair retains it; unchanged smoothing can remove it when a later safe connection exists. Geometry, body radius, search budgets, cameras, scene rules and all persistent data are unchanged. See docs/development/FOREST_PATH_CONNECTIONS_2026-10-11.md.
+
+Installed navigation component13/13PASS, zero failures/skips,2819.2276ms. The three added cases check broad/fine .31/.4 paths, actual advancement at three bounded intervals, rail collision detection, exact already-safe paths and blocked endpoint refusal. Both regenerated3317150B pages are byte-identical, SHA2567244ad08cf03cdfffc67a3ebc1d6c601decbe8a0d3db6aa3544d7ca1dd07b00c. Current complete source and actual ordinary forest/Choir acceptance remain pending. Base56d Source16 passed; live remoteFull07 remains bound only to56d. Neither proves this newer page. Historical Country15 stays failed with UNKNOWN cause. No human playtest or AAA/open-world completion follows.
+
+---
+
 # The Choir points back to useful Earth work, 2026-10-11
 
 After the existing Broken Choir fee is deliberately claimed, its page now explains the actual optional workshop fitting, current material shortfall and return route. The fee remains30XP/12sunmarks/2ore; the fitting remains3ore/8sunmarks/+3attack on one selected owned blade or bow. An empty-start fee is one ore short. Characters with an existing fitting see its owned/equipped weapon named and no promise of another fitting. Reading changes no state or equipment and adds no controls. See docs/development/CHOIR_RETURN_PLAN_2026-10-11.md.

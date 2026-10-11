@@ -114,3 +114,41 @@ test('installed Cosmos extension uses the actual body-qualified Core and permane
   wholePath(C,{name:'installed public service loop',geometry,room:{id:geometry.ROOM},a,b},radius);
  }
 });
+
+// Retained Country15's final successful position is only a CPU starting
+// witness. Its rejected audit/native path was not retained; these regressions
+// establish the separate current reconstruction defect, not historical cause.
+test('forest replan connects an off-grid player to the safe start anchor before smoothing',()=>{
+ const {C}=core(),a={x:-127.10833981377773,z:-52.586126232148075},b={x:-148,z:-66},room={id:'world-earthlands'};
+ for(const fine of [false,true])for(const radius of [.31,.4]){
+  assert.ok(W.walkable(room.id,a.x,a.z,radius)&&W.walkable(room.id,b.x,b.z,radius));
+  const route=C.pathfind(a,b,room,fine,radius);assert.ok(route?.length);let previous=a;
+  for(const q of route){assert.ok(W.segment(room.id,previous,q,radius),'Every complete initial/remaining returned leg must clear the original rail');previous=q;}
+  assert.deepEqual(clone(previous),b);
+ }
+});
+test('actual Core advance follows the replan without intersecting the expanded bridge rail',()=>{
+ const {C}=core(),a={x:-127.10833981377773,z:-52.586126232148075},b={x:-148,z:-66},room={id:'world-earthlands'};
+ const route=C.pathfind(a,b,room);assert.ok(route?.length);
+ const rail=W.definition(room.id).solids.find(s=>s.id==='elderweald-bridge-west-rail');
+ function walk(points,dt){const p={...a},todo=clone(points);let frames=0,blocked=false;
+  while(todo.length&&frames++<1000){const before={...p};C.Simulation.prototype.advance.call(null,p,todo,dt,3.2);
+   if(Math.abs(p.x-rail.x)<=rail.w/2+.31&&Math.abs(p.z-rail.z)<=rail.d/2+.31)blocked=true;
+   if(!W.walkable(room.id,p.x,p.z,.31)||!W.segment(room.id,before,p,.31))blocked=true;
+  }assert.ok(frames<1000);assert.ok(Math.hypot(p.x-b.x,p.z-b.z)<.002);return blocked;}
+ for(const dt of [.0166,.05,.1])assert.equal(walk(route,dt),false,'Actual frame legs/body must stay clear');
+ assert.equal(walk([{x:-128.4,z:-54},b],.0166),true,'Original missing-anchor path genuinely intersects the expanded rail');
+});
+test('preserved clear routes retain exact waypoints without forcing a redundant grid anchor',()=>{
+ const corrected=core().C,prior=core(code.replace('rev.reverse();rev.unshift(point(s.x,s.z));','rev.reverse();')).C;
+ const cases=[{a:{x:30,z:-20},b:{x:-148,z:-66},room:{id:'world-earthlands'},radius:.31},
+  {a:{x:0,z:3},b:{x:7,z:2},room:null,radius:.31},
+  {a:{x:0,z:13},b:{x:0,z:23},room:{id:E.ROOM},radius:.65},
+  {a:{x:0,z:15},b:{x:0,z:18},room:{id:N.ROOM},radius:.2},
+  {a:{x:0,z:0},b:{x:0,z:1},room:{id:'atelier'},radius:.31}];
+ for(const f of cases){const old=prior.pathfind(f.a,f.b,f.room,false,f.radius);assert.ok(old?.length);let p=f.a;
+  for(const q of old){assert.ok(prior.segment(p,q,f.room,f.radius),'Compatibility witness was already a complete safe path');p=q;}
+  assert.deepEqual(clone(corrected.pathfind(f.a,f.b,f.room,false,f.radius)),clone(old));
+ }
+ const bad={x:-127.65,z:-49},good={x:-148,z:-66};assert.equal(corrected.pathfind(bad,good,{id:'world-earthlands'}),null);
+});

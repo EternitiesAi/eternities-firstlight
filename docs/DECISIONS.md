@@ -1,3 +1,11 @@
+# 2026-10-11: Retain the validated navigation start anchor
+
+Repair the returned path, preserving existing ground and movement rules. nearby(start) already validates the connection to grid node s; prepend that node during reconstruction before unchanged smoothing. This28-byte insertion restores the safety proof for its first emitted leg without changing search, radius, timers, scenes, geometry or saves. Preserve all ten original tests/assertions and add three physical regressions; independently reviewed source and installed13/13 component pass.
+
+Do not claim to resolve historical Country15: its rejected audit is absent and a separate sparse-chord observer defect is demonstrated. Later ordinary-control observation must retain immediate-frame facts before assertion and restore only owned wrappers. Complete current qualification stays pending. World9 / Adventure12 / WildSigns1 and all systems/cameras unchanged; no migration. Goal ACTIVE unfinished, heartbeat PAUSED, storage/review boundaries preserved.
+
+---
+
 # 2026-10-11: Connect the paid Choir to its existing finite workshop lesson
 
 Add one pure post-claim projection in realm-trails-ui.js. Read actual RealmCraft.COST/BONUS and character balances; the declared2ore/12sunmark fee alone leaves1ore toward the3ore/8sunmark fitting. Preserve a veteran's already fitted owned/equipped weapon and make no second-upgrade promise. Keep original controls, claims, sockets, XP, cameras and every rule unchanged. Four appended tests retain every old test byte and detect unpaid progress, state writes and hidden costs; independent source review accepted. World9 / Adventure12 / WildSigns1 and keys stay unchanged, with no migration.
