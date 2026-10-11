@@ -1,3 +1,16 @@
+# Qualify the changed renderer; refine the garden, 2026-10-11
+
+1. Complete at b0: earned ordinary-UI blade1395/1395 and bow1293/1293, all owned closures true. The bounded silent2084184B VP8 clip has both actual camera witnesses inside capture; cached decode passed108frames/PTS0..6.932s and first/late frames were inspected. Human acceptance and a complete combat playthrough remain open.
+2. Commit/push the separately reviewed Engine matrix-sharing branch and run the unchanged complete source verifier. Normally fetch its exact head into the released independent STATION and run the original complete browser gate; preserve failures/skips, original load/deadline/renderer/quality/ownership/physical guards. Do not replay a still-live checkout or claim old b0 evidence at a new head.
+3. One colleague stages a bounded original Heaven garden/entrance art improvement informed by canon and the actual b0 PNGs. Review route/solid/data invariance, instance cost and source; integrate separately only after current rendering qualification. Native appearance remains a distinct acceptance step.
+4. Ask Dom later whether the guide was clear, waiting comfortable, and preparation helped the encounter. Automated success cannot settle human combat enjoyment or the final visual standard. The held local shoreline foam candidate remains separate until actual matched cost/pixel checks.
+
+The Engine change passes installed23/23 and identical real build; complete current gates and native speed remain pending. No level-cap expansion, new campaign claim, unearned rewards or rewritten renderer is implied. See docs/development/ENGINE_MATRIX_SHARING_2026-10-11.md.
+
+World9 / Adventure12 / WildSigns1 stay unchanged. Preserve every save/key, stored XP, gear/socket/upgrade, claim and explicit story choice; both cameras, companion, housing, crafting and music remain. Production goal ACTIVE and unfinished; heartbeat PAUSED. Parent owns ROOT and native execution, colleagues stage small independent D files only. Reuse ROOT/STATION; no duplicate full games/raw movies, blocked standalone-deletion retry, personal-save inspection, unrelated shutdown, paid provider, main merge or public deployment. Frontier Oct11 already checked.
+
+---
+
 # Qualify Briar and fix the measured startup bottleneck, 2026-10-11
 
 Push the reviewed five-leaf guide branch stacked against PR58/c5 and run the original complete Source14 with fresh command-earned blade/bow/veteran and whole-draft journeys. Do not rebind c5 evidence to its changed page. Independently reviewed one-attempt phase observation may diagnose the clean c5 remote load failure while ROOT source qualification runs only if shared resources are explicitly owned; preserve original30s/navigation/readiness/quality/renderer/capture and primary errors. Choose the production startup repair from actual dominant-phase evidence. Do not defer a required draw or raise deadlines to claim a pass.
