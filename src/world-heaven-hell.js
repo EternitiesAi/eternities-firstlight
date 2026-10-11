@@ -134,7 +134,7 @@ function decorate(art,def,options={}){
  for(const s of def.solids){const base=h(s.x,s.z),top=base+s.h;
   if(s.id.includes('tree')){
    detail(s,s.x,base+s.h/2,s.z,s.w*.8,s.h,s.d*.8,isHeaven?0x967d61:0x49494a);
-   if(isHeaven)for(let j=0;j<5;j++){const a=j*TAU/5;at('round',s.x+Math.cos(a)*1.25,top+.65+(j%2)*.5,s.z+Math.sin(a)*1.25,3.6,2.8,3.6,[0x8eaa92,0xb5c1a7,0xd7cdbb][j%3],{wind:2,foliage:true});}
+   if(isHeaven)for(let j=0;j<5;j++){const a=j*TAU/5,kind=['balanced','high'].includes(options.sim?.state?.settings?.quality)?'woodland-canopy':'round';at(kind,s.x+Math.cos(a)*1.25,top+.65+(j%2)*.5,s.z+Math.sin(a)*1.25,3.6,2.8,3.6,[0x8eaa92,0xb5c1a7,0xd7cdbb][j%3],{wind:2,foliage:true});}
    else for(let j=0;j<3;j++)at('box',s.x+(j-1)*.5,top-.25+j*.5,s.z,.17,1.9,.17,0x77716a,{r:[0,j*.7,(j-1)*.55],foliage:true});
   }else if(s.id.includes('lamp')||s.id.includes('return-post')){
    detail(s,s.x,base+s.h*.47,s.z,s.w*.56,s.h*.9,s.d*.56,isHeaven?gold:iron);
@@ -207,6 +207,13 @@ function decorate(art,def,options={}){
  if(isHeaven){
   const s=def.solids.find(s=>s.id==='heaven-garden-instrument'),b=h(s.x,s.z);
   for(let j=0;j<6;j++)at('cylinder',s.x-1.5+j*.6,b+s.h,s.z,.18,2.8-(j%3)*.4,.18,gold,{ornament:true});
+  // Pale collars and ruby tips dress the six existing response chimes.
+  // Their shared pedestal remains the only physical/camera solid owner.
+  for(let j=0;j<6;j++){
+   const x=s.x-1.5+j*.6,tip=b+s.h+2.8-(j%3)*.4,opt={ornament:true,gardenInstrument:s.id,gardenChime:j,wind:0,rough:.82};
+   at('cylinder',x,tip-.20,s.z,.32,.22,.32,bone,{...opt,gardenPart:'collar',gardenDetailId:`heaven-garden-chime-${j}-collar`});
+   at('octa',x,tip-.02,s.z,.28,.30,.28,ruby,{...opt,gardenPart:'finial',gardenDetailId:`heaven-garden-chime-${j}-finial`});
+  }
   at('ring',s.x,b+4.3,s.z,3.7,3.7,.18,gold,{ornament:true});
   // Skyline-facing arcade lintels are above the head corridor, rooted at the
   // physical columns. They supply shade, never a ground door/collider.

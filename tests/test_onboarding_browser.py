@@ -230,7 +230,7 @@ class Preparation(unittest.TestCase):
             with self.subTest(name=name): self.assertFalse(self.m.fresh_start_terms(prior))
 
 
-    def resume_pair(self, legacy=False):
+    def resume_pair(self, legacy=False, historical=False):
         fixture = json.loads((HERE / 'fixtures/onboarding-resume-pair.json').read_text(encoding='utf8'))
         pair = copy.deepcopy(fixture['before']), copy.deepcopy(fixture['after'])
         # Labelled current boundary copies; the recorded historical file stays exact.
@@ -244,12 +244,15 @@ class Preparation(unittest.TestCase):
             for world in pair:
                 world['localLife']['records']['earth-first-load-through-v1'] = {
                     'accepted': False, 'choice': None, 'steps': [], 'claimed': False}
+        # Historical fresh +3 output remains a separate unchanged fixture/control.
+        if not historical:
+            pair = pair[0], self.production_tick(pair[0], .1)
         return pair
 
     def test_missing_wild_signs_owner_adds_only_literal_fresh_record(self):
         before,_=self.resume_pair();before.pop('earthWildSigns');original=copy.deepcopy(before)
         after=self.production_tick(before,.1)
-        result=self.m.require_initial_resume(self.m.resolve_root(),before,after)
+        result=self.initial_resume(before,after)
         self.assertEqual(result['earthWildSignsMigration'],'missing-to-fresh-earth-wild-signs-v1')
         self.assertEqual(before,original)
         for defect in ('missing','observed','additional-field','old-history'):
@@ -259,34 +262,50 @@ class Preparation(unittest.TestCase):
             elif defect=='additional-field':changed['earthWildSigns']['unknown']=True
             else:changed['adventure']['xp']+=1
             with self.subTest(defect=defect),self.assertRaises(AssertionError):
-                self.m.require_initial_resume(self.m.resolve_root(),before,changed)
+                self.initial_resume(before,changed)
 
     def test_present_wild_signs_owner_is_preserved_without_default_allowance(self):
         before,_=self.resume_pair();after=self.production_tick(before,.1)
-        result=self.m.require_initial_resume(self.m.resolve_root(),before,after)
+        result=self.initial_resume(before,after)
         self.assertIsNone(result['earthWildSignsMigration'])
         changed=copy.deepcopy(after);changed.pop('earthWildSigns')
-        with self.assertRaises(AssertionError):self.m.require_initial_resume(self.m.resolve_root(),before,changed)
+        with self.assertRaises(AssertionError):self.initial_resume(before,changed)
 
-    def production_tick(self, before, seconds):
+    def initial_resume(self, before, after, seconds=.1):
+        """Labelled synthetic tick metadata; actual installed Core is the oracle.
+
+        Mutated output inputs are deliberate CPU faults, never native captures.
+        The independently recorded modern fixture below uses its raw trace.
+        """
+        trace = {'version': 1, 'owner': 'character-1', 'finalOwner': 'character-1',
+            'firstIndex': 0, 'first': copy.deepcopy(after), 'final': copy.deepcopy(after),
+            'ticks': [{'dt': seconds, 'paused': False, 'beforeElapsed': 0, 'afterElapsed': seconds}],
+            'activeSeconds': seconds, 'error': None, 'restored': True}
+        return self.m.require_initial_resume(self.m.resolve_root(), before, after, trace, 'character-1')
+
+    def production_tick(self, before, seconds, hydrated=True):
         # Actual installed owner, no validator/roster facade or saved-state writes.
         root = self.m.resolve_root()
-        code = "const fs=require('node:fs'),C=require('./src/core.js');require('./src/combat.js');const q=JSON.parse(fs.readFileSync(0,'utf8'));const s=new C.Simulation(q.before);s.tick(q.seconds);console.log(JSON.stringify(s.snapshot()));"
+        code = "const fs=require('node:fs'),C=require('./src/core.js');require('./src/combat.js');const q=JSON.parse(fs.readFileSync(0,'utf8'));const s=new C.Simulation(q.before,{hydrated:q.hydrated});s.tick(q.seconds);console.log(JSON.stringify(s.snapshot()));"
         result = subprocess.run(['node', '-e', code], cwd=root,
-            input=json.dumps({'before': before, 'seconds': seconds}),
+            input=json.dumps({'before': before, 'seconds': seconds, 'hydrated': hydrated}),
             capture_output=True, text=True, check=True, timeout=20)
         return json.loads(result.stdout)
 
     def test_24_recorded_whole_resume_pair_matches_actual_production_core(self):
-        before, after = self.resume_pair()
-        predicted = self.production_tick(before, .1)
+        before, after = self.resume_pair(historical=True)
+        predicted = self.production_tick(before, .1, hydrated=False)
         self.assertEqual(predicted['journal'], after['journal'])
         self.assertEqual(predicted['nextEvent'], after['nextEvent'])
         self.assertEqual(self.m.living_signature(predicted), self.m.living_signature(after))
-        result = self.m.require_initial_resume(self.m.resolve_root(), before, after)
+        self.assertEqual(len(after['journal']), len(before['journal']) + 3)
+        with self.assertRaisesRegex(AssertionError, 'complete old journal'):
+            self.initial_resume(before, after)
+        hydrated = self.production_tick(before, .1)
+        result = self.initial_resume(before, hydrated)
         self.assertTrue(result['preserved']); self.assertEqual(result['tickSeconds'], .1)
         self.assertEqual(result['oldPrefixLength'], len(before['journal']))
-        self.assertEqual(result['events'], after['journal'][len(before['journal']):])
+        self.assertEqual(result['events'], [])
         self.assertEqual(before, self.resume_pair()[0])
 
     def test_25_resume_cannot_rewrite_or_drop_old_history(self):
@@ -296,7 +315,7 @@ class Preparation(unittest.TestCase):
             ('dropped original entry', lambda w: w['journal'].pop(0))):
             bad = copy.deepcopy(after); mutate(bad)
             with self.subTest(name=name), self.assertRaises(AssertionError):
-                self.m.require_initial_resume(self.m.resolve_root(), before, bad)
+                self.initial_resume(before, bad)
 
     def test_26_resume_preserves_xp_equipment_socket_and_explicit_choice(self):
         before, after = self.resume_pair()
@@ -307,30 +326,30 @@ class Preparation(unittest.TestCase):
             ('choice', lambda w: w['localLife']['records']['atlantis-bellglass-lamp-v1'].update(choice='desk'))):
             bad = copy.deepcopy(after); mutate(bad)
             with self.subTest(name=name), self.assertRaises(AssertionError):
-                self.m.require_initial_resume(self.m.resolve_root(), before, bad)
+                self.initial_resume(before, bad)
 
     def test_27_resume_rejects_forged_routine_text_kind_or_order(self):
-        before, after = self.resume_pair(); n = len(before['journal'])
+        before, after = self.resume_pair(); n = 0
         for name, mutate in (
             ('forged text', lambda w: w['journal'][n].update(text='Ilan received a quest payment.')),
             ('wrong kind', lambda w: w['journal'][n].update(kind='quest')),
             ('reordered people', lambda w: w['journal'].__setitem__(slice(n, n+2), list(reversed(w['journal'][n:n+2]))))):
             bad = copy.deepcopy(after); mutate(bad)
             with self.subTest(name=name), self.assertRaises(AssertionError):
-                self.m.require_initial_resume(self.m.resolve_root(), before, bad)
+                self.initial_resume(before, bad)
 
     def test_28_resume_rejects_sequence_or_next_event_forgery(self):
-        before, after = self.resume_pair(); n = len(before['journal'])
+        before, after = self.resume_pair(); n = 0
         for name, mutate in (
             ('sequence jump', lambda w: w['journal'][n+1].update(seq=w['journal'][n+1]['seq']+1)),
             ('nextEvent extra', lambda w: w.update(nextEvent=w['nextEvent']+1))):
             bad = copy.deepcopy(after); mutate(bad)
             with self.subTest(name=name), self.assertRaises(AssertionError):
-                self.m.require_initial_resume(self.m.resolve_root(), before, bad)
+                self.initial_resume(before, bad)
 
     def test_29_resume_rejects_mixed_forged_future_or_invalid_clocks(self):
         import math
-        before, after = self.resume_pair(); n = len(before['journal'])
+        before, after = self.resume_pair(); n = 0
         cases=[]
         for value in (float('nan'), float('inf'), True, before['hour']-.001):
             bad=copy.deepcopy(after); bad['journal'][n]['hour']=value; cases.append(('invalid first '+str(value),bad))
@@ -344,26 +363,26 @@ class Preparation(unittest.TestCase):
         cases.append(('beyond actual clamped clock',bad))
         for name,bad in cases:
             with self.subTest(name=name),self.assertRaises(AssertionError):
-                self.m.require_initial_resume(self.m.resolve_root(), before, bad)
+                self.initial_resume(before, bad)
 
     def test_30_resume_does_not_allow_a_fourth_or_missing_event(self):
         before, after = self.resume_pair()
         bad=copy.deepcopy(after);extra=copy.deepcopy(bad['journal'][-1]);extra['seq']=bad['nextEvent'];bad['nextEvent']+=1;bad['journal'].append(extra)
-        with self.assertRaises(AssertionError):self.m.require_initial_resume(self.m.resolve_root(), before, bad)
+        with self.assertRaises(AssertionError):self.initial_resume(before, bad)
         bad=copy.deepcopy(after);bad['journal'].pop();bad['nextEvent']-=1
-        with self.assertRaises(AssertionError):self.m.require_initial_resume(self.m.resolve_root(), before, bad)
+        with self.assertRaises(AssertionError):self.initial_resume(before, bad)
 
     def test_31_actual_core_tick_clocks_allow_binary64_clamped_endpoint(self):
         before,_=self.resume_pair()
         for seconds in (0, .016, .05, .1):
             after=self.production_tick(before,seconds)
-            result=self.m.require_initial_resume(self.m.resolve_root(),before,after)
+            result=self.initial_resume(before,after,seconds)
             with self.subTest(seconds=seconds):
                 self.assertTrue(result['preserved']);self.assertLessEqual(result['tickSeconds'],.1)
                 self.assertEqual(result['events'],after['journal'][len(before['journal']):])
 
     def test_32_normal_tracker_tick_history_comparison_remains_strict(self):
-        before,after=self.resume_pair()
+        before,after=self.resume_pair(historical=True)
         self.assertNotEqual(self.m.living_signature(before),self.m.living_signature(after))
         source=inspect.getsource(self.m.OnboardingBrowser.tick_tracker)
         self.assertIn('living_signature(before) == living_signature(after)',source)
@@ -378,9 +397,9 @@ class Preparation(unittest.TestCase):
         before['settings']['sound'] = True
         after = self.production_tick(before, .1)
         self.assertFalse(after['settings']['sound'])
-        self.assertEqual(len(after['journal']), len(before['journal']) + 3)
+        self.assertEqual(len(after['journal']), len(before['journal']))
         with self.assertRaisesRegex(AssertionError, 'another protected owner'):
-            self.m.require_initial_resume(self.m.resolve_root(), before, after)
+            self.initial_resume(before, after)
 
     def test_34_exact_legacy_catalogue_adds_only_literal_fresh_fifth_owner(self):
         before, _ = self.resume_pair(legacy=True)
@@ -390,7 +409,7 @@ class Preparation(unittest.TestCase):
         expected['records']['earth-first-load-through-v1'] = {
             'accepted': False, 'choice': None, 'steps': [], 'claimed': False}
         self.assertEqual(after['localLife'], expected)
-        result = self.m.require_initial_resume(self.m.resolve_root(), before, after)
+        result = self.initial_resume(before, after)
         self.assertTrue(result['preserved'])
         self.assertEqual(result['localLifeCatalogueMigration'], 'exact-old-four-to-fresh-first-load')
         self.assertEqual(before, original)
@@ -414,7 +433,7 @@ class Preparation(unittest.TestCase):
         for label, source, output in cases:
             original_source, original_output = copy.deepcopy(source), copy.deepcopy(output)
             with self.subTest(label=label), self.assertRaises(AssertionError):
-                self.m.require_initial_resume(self.m.resolve_root(), source, output)
+                self.initial_resume(source, output)
             self.assertEqual(source, original_source)
             self.assertEqual(output, original_output)
 
@@ -434,7 +453,7 @@ class Preparation(unittest.TestCase):
         for label, output in cases:
             original = copy.deepcopy(output)
             with self.subTest(label=label), self.assertRaises(AssertionError):
-                self.m.require_initial_resume(self.m.resolve_root(), before, output)
+                self.initial_resume(before, output)
             self.assertEqual(output, original)
 
     def test_37_current_fifth_history_is_preserved_without_a_migration_allowance(self):
@@ -457,7 +476,7 @@ class Preparation(unittest.TestCase):
             original = copy.deepcopy(before)
             after = self.production_tick(before, .1)
             with self.subTest(label=label):
-                result = self.m.require_initial_resume(self.m.resolve_root(), before, after)
+                result = self.initial_resume(before, after)
                 self.assertTrue(result['preserved'])
                 self.assertIsNone(result['localLifeCatalogueMigration'])
                 self.assertEqual(after['localLife'], before['localLife'])
@@ -465,7 +484,7 @@ class Preparation(unittest.TestCase):
                 bad['localLife']['records']['earth-first-load-through-v1'] = {
                     'accepted': False, 'choice': None, 'steps': [], 'claimed': False}
                 with self.assertRaises(AssertionError):
-                    self.m.require_initial_resume(self.m.resolve_root(), before, bad)
+                    self.initial_resume(before, bad)
                 self.assertEqual(before, original)
 
     def test_38_catalogue_migration_is_not_allowed_in_ui_or_normal_live_ticks(self):
@@ -496,7 +515,7 @@ global.Realm={test:{worldContext:()=>({sim,active})},get diagnostics(){throw Err
 const original=C.Simulation.prototype.tick,capture=eval('('+q.source+')');
 const armed=capture('character-1');
 // One real outgoing-owner tick is deliberately outside the incoming trace.
-sim.tick(.016);active='character-1';sim=new C.Simulation(q.before);
+sim.tick(.016);active='character-1';sim=new C.Simulation(q.before,{hydrated:true});
 const incoming=sim;
 for(const [i,t]of q.ticks.entries()){
  sim.paused=t.paused;sim.tick(t.dt);
@@ -532,9 +551,9 @@ console.log(JSON.stringify({trace,after:incoming.snapshot(),armed,runtimeSources
         self.assertEqual(got['trace']['firstIndex'], 1)
         self.assertNotEqual(got['trace']['first']['hour'], got['after']['hour'])
         self.assertEqual(got['after']['journal'], got['trace']['first']['journal'])
-        with self.assertRaisesRegex(AssertionError, 'one initial event clock'):
-            self.m.require_initial_resume(self.m.resolve_root(), before, got['after'])
-        self.assertTrue(self.m.require_initial_resume(self.m.resolve_root(), before, got['trace']['first'])['preserved'])
+        with self.assertRaisesRegex(AssertionError, 'one actual clamped tick'):
+            self.initial_resume(before, got['after'])
+        self.assertTrue(self.initial_resume(before, got['trace']['first'])['preserved'])
 
     def test_40_actual_capture_and_exact_core_sequence_preserve_complete_final_world(self):
         before, _ = self.resume_pair()
@@ -613,5 +632,71 @@ console.log(JSON.stringify({trace,after:incoming.snapshot(),armed,runtimeSources
             self.assertLessEqual(len(got['trace']['ticks']), 32)
             with self.subTest(name=name), self.assertRaises(AssertionError):
                 self.m.require_resume_sequence(self.m.resolve_root(), before, got['after'], got['trace'], 'character-1')
+
+    def current_resume_capture(self):
+        fixture = json.loads((HERE / 'fixtures/onboarding-hydrated-resume-capture.json').read_text(encoding='utf8'))
+        self.assertEqual(fixture['sourceReport']['sha256'], '3527cd630b8bfefe3a37ef541fc8033392dcc2c80742b7469aed05ae6d957402')
+        self.assertEqual(fixture['sourceHead'], '3aa1e0a440a465644410c3942f4277f755c6013a')
+        self.assertIn('synthetic-owned native', fixture['scope'])
+        return fixture['before'], fixture['after'], fixture['capture']
+
+    def test_45_actual_hydrated_remote_capture_matches_exact_initial_and_sequence(self):
+        before, after, capture = self.current_resume_capture()
+        originals = copy.deepcopy((before, after, capture))
+        initial = self.m.require_initial_resume(self.m.resolve_root(), before, capture['first'], capture, capture['owner'])
+        result = self.m.require_resume_sequence(self.m.resolve_root(), before, after, capture, capture['owner'])
+        self.assertTrue(initial['preserved']); self.assertEqual(initial['events'], [])
+        self.assertEqual(initial['nextEventBefore'], initial['nextEventAfter'])
+        self.assertTrue(result['preserved']); self.assertEqual(result['clockTolerance'], 0)
+        self.assertEqual(result['ticks'], 3); self.assertEqual((before, after, capture), originals)
+
+    def test_46_exact_capture_rejects_changed_dropped_reordered_or_extra_history(self):
+        before, after, capture = self.current_resume_capture()
+        for label in ('changed', 'dropped', 'reordered', 'extra', 'nextEvent'):
+            changed = copy.deepcopy(after); trace = copy.deepcopy(capture)
+            if label == 'changed': changed['journal'][0]['text'] += ' forged'
+            elif label == 'dropped': changed['journal'].pop(0)
+            elif label == 'reordered': changed['journal'][:2] = reversed(changed['journal'][:2])
+            elif label == 'extra':
+                event = copy.deepcopy(changed['journal'][-1]); event['seq'] = changed['nextEvent']; changed['nextEvent'] += 1; changed['journal'].append(event)
+            else: changed['nextEvent'] += 1
+            trace['final'] = changed
+            with self.subTest(label=label), self.assertRaises(AssertionError):
+                self.m.require_resume_sequence(self.m.resolve_root(), before, changed, trace, capture['owner'])
+
+    def test_47_exact_capture_rejects_clock_reward_migration_and_tick_forgery(self):
+        before, after, capture = self.current_resume_capture()
+        for label in ('hour', 'day', 'adventure clock', 'sandbox clock', 'XP', 'coins', 'migration', 'dt', 'paused', 'dropped tick', 'elapsed'):
+            changed = copy.deepcopy(after); trace = copy.deepcopy(capture)
+            if label == 'hour': changed['hour'] += .000001
+            elif label == 'day': changed['day'] += 1
+            elif label == 'adventure clock': changed['adventure']['elapsed'] += .000001
+            elif label == 'sandbox clock': changed['sandbox']['elapsed'] += .000001
+            elif label == 'XP': changed['adventure']['xp'] += 1
+            elif label == 'coins': changed['adventure']['coins'] += 1
+            elif label == 'migration': changed['localLife']['records']['earth-first-load-through-v1']['accepted'] = True
+            elif label == 'dt': trace['ticks'][1]['dt'] = .09; trace['activeSeconds'] -= .01
+            elif label == 'paused': trace['ticks'][1]['paused'] = True; trace['activeSeconds'] -= .1
+            elif label == 'dropped tick': trace['ticks'].pop(); trace['activeSeconds'] = sum(t['dt'] for t in trace['ticks'] if not t['paused'])
+            else: trace['ticks'][1]['afterElapsed'] += .000001
+            trace['final'] = changed
+            with self.subTest(label=label), self.assertRaises(AssertionError):
+                self.m.require_resume_sequence(self.m.resolve_root(), before, changed, trace, capture['owner'])
+
+
+    def test_48_initial_oracle_rejects_unrecorded_small_offset_and_tick_owner_faults(self):
+        before, after, capture = self.current_resume_capture()
+        for label in ('small hour offset', 'adventure offset', 'sandbox offset', 'owner', 'index', 'first paused', 'first dt'):
+            trace = copy.deepcopy(capture)
+            if label == 'small hour offset': trace['first']['hour'] += .0000001
+            elif label == 'adventure offset': trace['first']['adventure']['elapsed'] += .0000001
+            elif label == 'sandbox offset': trace['first']['sandbox']['elapsed'] += .0000001
+            elif label == 'owner': trace['owner'] = 'character-2'
+            elif label == 'index': trace['firstIndex'] = 1
+            elif label == 'first paused': trace['ticks'][0]['paused'] = True; trace['activeSeconds'] -= trace['ticks'][0]['dt']
+            else: trace['ticks'][0]['dt'] += .0000001; trace['activeSeconds'] += .0000001
+            with self.subTest(label=label), self.assertRaises(AssertionError):
+                self.m.require_initial_resume(self.m.resolve_root(), before, trace['first'], trace, capture['owner'])
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

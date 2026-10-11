@@ -160,53 +160,50 @@ RESUME_PREDICTOR = """const fs=require('node:fs'),C=require('./src/core.js');
 require('./src/combat.js');
 const q=JSON.parse(fs.readFileSync(0,'utf8'));
 C.validate(q.after);
-const sim=new C.Simulation(q.before);
-sim.tick(q.seconds);
+const sim=new C.Simulation(q.before,{hydrated:true});
+for(let i=0;i<=q.capture.firstIndex;i++){
+ const t=q.capture.ticks[i];
+ if(sim.elapsed!==t.beforeElapsed)throw Error('Captured transient elapsed before initial tick disagrees with Core.');
+ sim.paused=t.paused;sim.tick(t.dt);
+ if(sim.elapsed!==t.afterElapsed)throw Error('Captured transient elapsed after initial tick disagrees with Core.');
+}
 console.log(JSON.stringify(sim.snapshot()));"""
 
 
-def require_initial_resume(root, before, after):
-    """One whole-body reload's initial routine tick, never general live ticks.
+def require_initial_resume(root, before, after, capture, owner):
+    """Exactly the captured loaded owner's first unpaused hydrated tick.
 
-    Protect the entire old journal prefix and every living_signature owner.
-    An exact legacy four-job catalogue may gain only the independently declared
-    literal fresh fifth record. A missing WildSigns owner gains only its
-    independently declared fresh record. Present progress is never reset.
-    Only three events reproduced by actual installed Core may be appended.
-    The snapshot clock must equal this first event clock: later ticks/events
-    are not silently allowed. Stored event clocks are compared exactly.
+    Protect the entire journal, nextEvent and every living_signature owner.
+    The exact legacy catalogue and missing WildSigns literal migrations below
+    remain the only owner allowances. The installed Core uses hydrated:true;
+    no cue-initialization event or hidden preliminary tick is permitted. The
+    actual finite dt/paused/elapsed prefix and complete first snapshot are
+    reproduced exactly; all later captured steps have the separate full replay.
     """
+    ticks, first_index, _ = resume_capture_terms(capture, owner)
+    assert capture['first'] == after, 'Initial world is not the captured first snapshot.'
     old, journal = before['journal'], after['journal']
-    assert journal[:len(old)] == old, 'Resume changed the old journal prefix.'
-    assert len(journal) == len(old) + 3, 'Resume must append exactly the three initial routine events.'
-    events = journal[len(old):]
-    for value in (before['hour'], after['hour'], events[0]['hour']):
+    assert journal == old, 'Loaded resume changed the complete old journal.'
+    assert after['nextEvent'] == before['nextEvent'], 'Loaded resume changed nextEvent.'
+    for value in (before['hour'], after['hour']):
         assert isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value), 'Resume clock must be finite.'
-    clock = events[0]['hour']
-    assert before['day'] == after['day'] == events[0]['day'], 'Initial resume cannot invent a later day.'
-    assert after['hour'] == clock, 'Resume snapshot is not at its one initial event clock.'
-    # Check the actual binary64 clock ceiling, not an arbitrary epsilon on
-    # history. Inverting the rounded .1 tick can give .10000000000016; Core
-    # clamps it back to .1 and must still reproduce the exact stored clock.
-    assert before['hour'] <= clock <= before['hour'] + .1 * .0045, 'Resume event clock exceeds one actual clamped tick.'
-    derived_seconds = (clock - before['hour']) / .0045
-    seconds = min(derived_seconds, .1)
+    clock = after['hour']
+    assert before['day'] == after['day'], 'Initial resume cannot invent a later day.'
+    assert before['hour'] <= clock <= before['hour'] + .1 * .0045, 'Resume snapshot clock exceeds one actual clamped tick.'
+    seconds = ticks[first_index]['dt']
     root = resolve_root(root)
     result = subprocess.run(['node', '-e', RESUME_PREDICTOR], cwd=root,
-        input=json.dumps({'before': before, 'after': after, 'seconds': seconds}),
+        input=json.dumps({'before': before, 'after': after, 'capture': capture}),
         capture_output=True, text=True, timeout=20)
     assert result.returncode == 0, 'Actual Core resume validation/prediction failed: ' + result.stderr.strip()
     predicted = json.loads(result.stdout)
-    assert len(predicted['journal']) == len(old) + 3, 'Actual Core produced another event; this narrow resume contract does not cover it.'
-    assert all(e['kind'] == 'routine' for e in predicted['journal'][len(old):]), 'Actual Core did not produce only the initial routines.'
+    assert predicted['journal'] == old and predicted['nextEvent'] == before['nextEvent'], 'Actual hydrated Core produced another event; this narrow resume contract does not cover it.'
     expected = living_signature(before)
     wild_signs_migration = None
     if 'earthWildSigns' not in before:
         expected['earthWildSigns'] = {'version': 1, 'accepted': False, 'evidence': [],
             'observed': False, 'resolution': None, 'cleared': False, 'claimed': False}
         wild_signs_migration = 'missing-to-fresh-earth-wild-signs-v1'
-    expected['journal'] = predicted['journal']
-    expected['nextEvent'] = predicted['nextEvent']
     # Core now conditionally expands this exact legacy catalogue on load. Keep
     # the four raw histories and every other owner protected; do not derive the
     # allowance from Core's output or use its fresh-record builder as an oracle.
@@ -221,10 +218,10 @@ def require_initial_resume(root, before, after):
             'accepted': False, 'choice': None, 'steps': [], 'claimed': False}
         catalogue_migration = 'exact-old-four-to-fresh-first-load'
     assert expected == living_signature(predicted), 'Actual Core changed another protected owner; this contract does not allow it.'
-    assert expected == living_signature(after), 'Resume changed an owner/history or forged an initial event.'
-    assert predicted['day'] == after['day'] and predicted['hour'] == after['hour'], 'Actual Core clock prediction disagrees.'
-    return {'preserved': True, 'method': 'Read-only installed Core.Simulation(before).tick(event-clock-derived seconds).snapshot()',
-            'tickSeconds': seconds, 'derivedSecondsBeforeCoreClamp': derived_seconds,
+    assert expected == living_signature(after), 'Resume changed an owner/history or forged a hydrated snapshot.'
+    assert projection_signature(predicted) == projection_signature(after), 'Initial world disagrees with exact actual captured Core ticks; only existing cameraViews may differ.'
+    return {'preserved': True, 'method': 'Read-only installed Core.Simulation(before,{hydrated:true}) replay of actual captured first-tick prefix',
+            'tickSeconds': seconds, 'capturedFirstIndex': first_index,
              'oldPrefixLength': len(old), 'events': predicted['journal'][len(old):],
              'nextEventBefore': before['nextEvent'], 'nextEventAfter': predicted['nextEvent'],
              'coreSha256': sha(root / 'src/core.js'), 'additionalFutureEventsAllowed': False,
@@ -234,7 +231,7 @@ def require_initial_resume(root, before, after):
 
 # Proposed instrumentation observes actual ticks; it never pauses, steps,
 # moves, edits, saves or replaces a live world. The original resume oracle above
-# this insertion keep the same exact clock/event checks. Optional owner
+# this insertion keep the same exact loaded clock/history checks. Optional owner
 # migration is independently literal and disclosed above.
 RESUME_CAPTURE_JS = r"""owner => {
  'use strict';
@@ -291,7 +288,7 @@ RESUME_CAPTURE_JS = r"""owner => {
 
 RESUME_SEQUENCE_REPLAYER = r"""const fs=require('node:fs'),C=require('./src/core.js');
 require('./src/combat.js');
-const q=JSON.parse(fs.readFileSync(0,'utf8')),sim=new C.Simulation(q.before);
+const q=JSON.parse(fs.readFileSync(0,'utf8')),sim=new C.Simulation(q.before,{hydrated:true});
 C.validate(q.after);C.validate(q.capture.first);
 let first=null;
 for(let i=0;i<q.capture.ticks.length;i++){
@@ -304,13 +301,7 @@ for(let i=0;i<q.capture.ticks.length;i++){
 console.log(JSON.stringify({first,final:sim.snapshot(),elapsed:sim.elapsed}));"""
 
 
-def require_resume_sequence(root, before, after, capture, owner):
-    """Exact bounded replay after the strict first-tick resume oracle.
-
-    Only existing cameraViews metadata is omitted from full-world comparison.
-    Three initial events and the old prefix stay exact; no future event, owner,
-    XP, equipment, socket, accepted history or clock tolerance is allowed.
-    """
+def resume_capture_terms(capture, owner):
     keys = {'version', 'owner', 'finalOwner', 'firstIndex', 'first', 'final',
             'ticks', 'activeSeconds', 'error', 'restored'}
     assert type(capture) is dict and set(capture) == keys, 'Resume capture has unexpected fields.'
@@ -333,9 +324,20 @@ def require_resume_sequence(root, before, after, capture, owner):
                 first_index = i
     assert first_index is not None and type(capture['firstIndex']) is int and capture['firstIndex'] == first_index, 'Capture did not preserve the first actual unpaused incoming tick.'
     assert type(capture['activeSeconds']) in (int, float) and capture['activeSeconds'] == active_seconds <= 1.6, 'Resume capture exceeds its exact active-time bound.'
+    return ticks, first_index, active_seconds
+
+
+def require_resume_sequence(root, before, after, capture, owner):
+    """Exact bounded replay after the strict first-tick resume oracle.
+
+    Only existing cameraViews metadata is omitted from full-world comparison.
+    The complete old journal and nextEvent stay exact; no future event, owner,
+    XP, equipment, socket, accepted history or clock tolerance is allowed.
+    """
+    ticks, first_index, active_seconds = resume_capture_terms(capture, owner)
     assert capture['final'] == after, 'The final world is not the synchronous captured snapshot.'
-    initial = require_initial_resume(root, before, capture['first'])
-    assert after['journal'] == capture['first']['journal'] and after['nextEvent'] == capture['first']['nextEvent'], 'Resume sequence added future history or rewrote the initial routines.'
+    initial = require_initial_resume(root, before, capture['first'], capture, owner)
+    assert after['journal'] == capture['first']['journal'] and after['nextEvent'] == capture['first']['nextEvent'], 'Resume sequence added future history or rewrote the loaded history.'
     assert living_signature(after) == living_signature(capture['first']), 'Resume sequence changed a protected owner or history.'
     result = subprocess.run(['node', '-e', RESUME_SEQUENCE_REPLAYER], cwd=resolve_root(root),
         input=json.dumps({'before': before, 'after': after, 'capture': capture}),
@@ -636,7 +638,7 @@ class OnboardingBrowser:
         self.report['resume_tick_capture'] = trace
         self.report['first_character_after_switch'] = trace['final']
         self.check('switch resumes the accepted unpaid commission and chosen arrangement', trace['final']['localLife']['records']['atlantis-bellglass-lamp-v1'] == first['localLife']['records']['atlantis-bellglass-lamp-v1'])
-        resume = require_initial_resume(self.root, first, trace['first'])
+        resume = require_initial_resume(self.root, first, trace['first'], trace, old['id'])
         replay = require_resume_sequence(self.root, first, trace['final'], trace, old['id'])
         self.report['initial_resume_contract'] = resume
         self.report['resume_replay_contract'] = replay
