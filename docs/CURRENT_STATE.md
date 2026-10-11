@@ -1,3 +1,17 @@
+# Living Earth landmarks: installed, awaiting visible qualification, 2026-10-11
+
+The player can keep the existing Coastward outing and woodland route while selected western trees gain lobed crowns, the northern root passage gains tapering connected timber, and Balanced/High shoreline floor paint matches the existing apron. Low and all physical navigation/camera envelopes remain unchanged. No new realm, quest, reward or equipment authority is introduced by this pass.
+
+Actual installed affected checks pass75/75, zero failures/skips. The real builder emits identical3,309,832-byte pages, SHA256916bd95c44c12c256e08a127aded6f86740858476963a0013ca403b062913ff3. Selected Balanced/High geometry has2,264 fewer triangles, unchanged instance count,12,288 new shared vertex bytes and two additional static batches per active geometry pass. This is source accounting, not FPS or rendered-quality qualification. Current Source12/default-camera native/fresh-remote complete gates are pending. Finite five-realm campaign draft foundations remain; seamless continents and production/human acceptance are unfinished.
+
+At the previous exact f2f3a4a9d7bbbc57b246ab5550ff1820619a8f44 epoch, SOURCE11 passed214 commands/142 syntax checks, Node2041 passes with2 existing skips and447 Python tests with10 reported skips. Native shore30, primary1984, boundaries2935, footfalls44 and mandatory aftermath361 all passed with owned resources closed. These are historical f2 receipts, never rebound to this changed page. Old independent-clone765 remoteFull03 closed FAILED after five passing browser suites at the stale roadkeeper-Art admission; the correction is in this branch's base. Current complete remote qualification remains pending. Retain all raw failures and skips.
+
+Actual f2 Capture07 closed FAILED during moving-civilian projected-click preparation; all owned resources closed and no movie was recorded. Its separate 30,009.1 ms ordinary RAF cadence observation did run on the RTX3080 before that later failure, without recording; it is not presented FPS/GPU time/human acceptance. Two actual UI stills and all failure evidence remain. The first source-only new landscape observer also had a cold-null startup defect, caught before native allocation; independently reviewed observer02 fixes only that startup boundary and post-import writer binding, preserving all original controls, guards and budgets.
+
+World9 / Adventure12 / WildSigns1 are unchanged, with no migration or new persistent field. Preserve saves, keys, notes/music/exports, storedXP, claims, gear/sockets/upgrades, explicit choices, companion, housing, crafting and both cameras. Wider production goal ACTIVE unfinished; heartbeat PAUSED. No main merge, deployment, paid provider, proprietary extraction, personal-save inspection, unrelated shutdown, duplicate full game or blocked standalone-deletion retry. Reuse ROOT and the now-released independent STATION with small D stages and bounded evidence. Frontier Oct11 already checked.
+
+---
+
 # Coastward exploration and shaped traveler cloth, 2026-10-11
 
 The existing overlook gains 92 square metres of authored walkable shoreline. Movement, height, segments, picking, projectiles and both maps share its nine-point footprint; all formerly valid ground, routes, solids and bridge remain. Three traveler coat parts are beveled inside their old envelopes. Controls, equipment ownership and both cameras remain interchangeable.

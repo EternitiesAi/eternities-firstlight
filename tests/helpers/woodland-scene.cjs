@@ -13,7 +13,7 @@ const originalCrownCall="EW.parts({quality:context.sim?.state.settings.quality||
 const installedCrownCall="woodlandShapes.replace("+originalCrownCall+",def,{quality:context.sim?.state.settings.quality||'balanced'})";
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 function modules(){const O=load('earth-roadkeeper-motion.js'),A=load('woodland-shapes.js');assert.equal(O,globalThis.RealmEarthRoadkeeperMotion);assert.equal(A,globalThis.RealmWoodlandShapes);return{O,A};}
-const stride=kind=>kind==='timber-panel'?8:6,triangles=kind=>E.geometry(kind).length/stride(kind)/3;
+const stride=kind=>E.meshStride(kind),triangles=kind=>E.geometry(kind).length/stride(kind)/3;
 function tally(items){const byKind={};for(const p of items)byKind[p.kind]=(byKind[p.kind]||0)+1;return{instances:items.length,triangles:items.reduce((n,p)=>n+triangles(p.kind),0),byKind};}
 const replaced=p=>selected.includes(p.opt?.solidId)&&oldRoles.includes(p.opt?.elderwealdPart);
 function snapshot(value,seen=new Map()){
@@ -68,7 +68,7 @@ function compare(quality){
  assert.equal(JSON.stringify(newOther),JSON.stringify(oldOther),'Exact other instance metadata');
  assert.deepEqual(packed(newOther),packed(oldOther),'Exact actual Engine packing for every other instance');
  assert.equal(JSON.stringify(after.filter(p=>p.worldSolid)),JSON.stringify(before.filter(p=>p.worldSolid)),'Exact physical/camera solids');
- assert.deepEqual(new Set(after.map(p=>p.kind)),new Set(before.map(p=>p.kind)),'No new draw kinds');
+ assert.deepEqual(new Set(after.map(p=>p.kind)),new Set([...before.map(p=>p.kind),...(quality==='low'?[]:['woodland-canopy'])]),'Only the declared Balanced/High crown draw kind; Low retains the exact old kinds');
  assert.equal(after.filter(added).length,quality==='low'?8:20);
  const a=tally(after),b=tally(before);
  return{quality,before:b,after:a,delta:{instances:a.instances-b.instances,triangles:a.triangles-b.triangles,trianglePercent:(a.triangles-b.triangles)/b.triangles*100},

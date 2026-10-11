@@ -12,11 +12,15 @@ assert.deepEqual(E.geometry('country-ridge'),E.geometry('mountain-ridge'),'expli
 KINDS.add('country-ridge');
 assert.equal(E.geometry('overlook-stone').length,864,'explicit original 48-triangle stone mesh, not unknown cylinder fallback');
 KINDS.add('overlook-stone');
+assert.equal(E.geometry('woodland-canopy').length,2304,'exact original 128-triangle crown mesh, not unknown cylinder fallback');
+KINDS.add('woodland-canopy');
+assert.equal(E.geometry('elderweald-root-arch').length,32*3*8,'explicit original 32-triangle timber root mesh');
+KINDS.add('elderweald-root-arch');
 for(const [kind,count] of [['coastward-shore-apron',52],['coastward-shore-bank',60]]){
  assert.equal(E.geometry(kind).length,count*18,'exact original authored shoreline mesh');KINDS.add(kind);
 }
 function submission(id){const d=W.definition(id),items=[],writer={e:{},begin(){},commit(){},add(kind,x,y,z,w,h,depth,color,opt={}){items.push({kind,p:[x,y,z],s:[w,h,depth],color,...opt});},box(x,y,z,w,h,depth,color,opt){this.add('box',x,y,z,w,h,depth,color,opt);}},sim=new C.Simulation();sim.room=d.room;sim.state.player={...d.entry};Art.make(writer,sim);return{d,items,writer};}
-function bounds(it){const m=E.M.compose(...it.p,...it.s,...(it.r||[0,0,0])),mesh=E.geometry(it.kind),stride=it.kind==='timber-panel'?8:6,min=[Infinity,Infinity,Infinity],max=[-Infinity,-Infinity,-Infinity];for(let i=0;i<mesh.length;i+=stride){const p=E.M.transform(m,[mesh[i],mesh[i+1],mesh[i+2]]);for(let j=0;j<3;j++){min[j]=Math.min(min[j],p[j]);max[j]=Math.max(max[j],p[j]);}}return{min,max};}
+function bounds(it){const m=E.M.compose(...it.p,...it.s,...(it.r||[0,0,0])),mesh=E.geometry(it.kind),stride=E.meshStride(it.kind),min=[Infinity,Infinity,Infinity],max=[-Infinity,-Infinity,-Infinity];for(let i=0;i<mesh.length;i+=stride){const p=E.M.transform(m,[mesh[i],mesh[i+1],mesh[i+2]]);for(let j=0;j<3;j++){min[j]=Math.min(min[j],p[j]);max[j]=Math.max(max[j],p[j]);}}return{min,max};}
 test('all new static scenery uses supported finite meshes instead of silent cylinder fallback',()=>{for(const id of W.IDS.filter(id=>id!=='cosmos')){const {d,items}=submission(id);assert.ok(items.length>40&&items.length<4000,'bounded original scene');
  const countryWest=items.filter(p=>p.kind==='country-ridge');assert.equal(countryWest.length,id==='earthlands'?3:0,'exact separately owned western skyline');
  if(id==='earthlands'){assert.deepEqual(countryWest.map(p=>p.vistaLayer),[0,1,2]);assert.equal(countryWest.reduce((n,p)=>n+E.geometry(p.kind).length/18,0),1008);}

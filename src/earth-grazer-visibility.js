@@ -2,11 +2,11 @@
  * remain the authority; this function cannot record progress or mint a ticket. */
 (function(G){'use strict';
 const E=G.RealmEngine||(typeof require==='function'?require('./engine.js'):null);
-if(!E?.geometry||!E?.M)throw Error('Load the actual Engine before visibility inspection.');
+if(!E?.geometry||!E?.M||typeof E.meshStride!=='function')throw Error('Load the actual Engine before visibility inspection.');
 const unitMeshes=new Map(),meshes=new WeakMap(),finite=a=>Array.isArray(a)&&a.every(Number.isFinite);
 function unit(kind){
  if(!unitMeshes.has(kind)){
-  const raw=E.geometry(kind),stride=kind==='timber-panel'?8:6,points=[];
+  const raw=E.geometry(kind),stride=E.meshStride(kind),points=[];
   if(!raw.length||raw.length%(stride*3))throw Error('Unrecognised triangle mesh.');
   for(let i=0;i<raw.length;i+=stride)points.push(Array.from(raw.slice(i,i+3)));
   unitMeshes.set(kind,points);

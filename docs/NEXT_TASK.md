@@ -1,3 +1,17 @@
+# Qualify the installed living landmarks, 2026-10-11
+
+Run the original complete Source12 verifier at the clean committed new head with fresh blade/bow/veteran earned cohorts and both whole-draft journeys. Use independently reviewed observer02 only after its exact current source/page/runtime/cohort admission; inspect shore seam, selected canopy silhouettes, timber passage texture, actual default Adventure/Follow, Low and cutaway controls. Keep twelve PNG attempts/2MB each/24MB total and original300/280/120-second route limits. A projected or hidden aperture is not a visible acceptance.
+
+Normally fetch the new pushed head into the released independent STATION and run the complete current browser verifier with every mandatory suite, original26-CPU road-account admission and unchanged native owner/portrait guards. Do not declare success from prior partial gates. After closure, a supported fixed-route short clip may use that checkout's own exact native reports; no rebind from ROOT or waiver of the failed civilian approach. Human route clarity, camera comfort, fights and reward enjoyment remain pending. The adjacent repeated resident-load journal cues are diagnosed only, not silently changed in this art milestone.
+
+At the previous exact f2f3a4a9d7bbbc57b246ab5550ff1820619a8f44 epoch, SOURCE11 passed214 commands/142 syntax checks, Node2041 passes with2 existing skips and447 Python tests with10 reported skips. Native shore30, primary1984, boundaries2935, footfalls44 and mandatory aftermath361 all passed with owned resources closed. These are historical f2 receipts, never rebound to this changed page. Old independent-clone765 remoteFull03 closed FAILED after five passing browser suites at the stale roadkeeper-Art admission; the correction is in this branch's base. Current complete remote qualification remains pending. Retain all raw failures and skips.
+
+Actual f2 Capture07 closed FAILED during moving-civilian projected-click preparation; all owned resources closed and no movie was recorded. Its separate 30,009.1 ms ordinary RAF cadence observation did run on the RTX3080 before that later failure, without recording; it is not presented FPS/GPU time/human acceptance. Two actual UI stills and all failure evidence remain. The first source-only new landscape observer also had a cold-null startup defect, caught before native allocation; independently reviewed observer02 fixes only that startup boundary and post-import writer binding, preserving all original controls, guards and budgets.
+
+World9 / Adventure12 / WildSigns1 are unchanged, with no migration or new persistent field. Preserve saves, keys, notes/music/exports, storedXP, claims, gear/sockets/upgrades, explicit choices, companion, housing, crafting and both cameras. Wider production goal ACTIVE unfinished; heartbeat PAUSED. No main merge, deployment, paid provider, proprietary extraction, personal-save inspection, unrelated shutdown, duplicate full game or blocked standalone-deletion retry. Reuse ROOT and the now-released independent STATION with small D stages and bounded evidence. Frontier Oct11 already checked.
+
+---
+
 # Qualify and inspect the Coastward upgrade, 2026-10-11
 
 Run SOURCE11 with the original complete verifier, original fixtures/assertions/budgets, D browser TEMP and explicit small CPU temp. Earn fresh blade/bow/veteran cohorts and both complete journeys at the committed clean head. Current native primary05 and boundary05 must precede mandatory original aftermath05; keep the 30-second owner and 10-by-24-pixel portrait guards.

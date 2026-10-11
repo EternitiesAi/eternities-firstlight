@@ -1,3 +1,17 @@
+# Living Earth landmarks: integrated art and ownership, 2026-10-11
+
+Parent owns gameplay/earth-living-landmarks-20261011, stacked on PR56/f2f3a4a9d7bbbc57b246ab5550ff1820619a8f44, in the existing integrated ROOT. Read docs/development/EARTH_LIVING_LANDMARKS_2026-10-11.md. Two existing Sol colleagues stage small source/review files only. Parent freezes each checkout during its own verifier/native execution; do not duplicate work or mutate a live checkout.
+
+Eleven independently reviewed leaves refine twelve selected western crowns, the two northern timber root beams and one Coastward spur paint. Actual installed six-file checks pass75/75, zero skips; real builder outputs identical3,309,832-byte pages, SHA256916bd95c44c12c256e08a127aded6f86740858476963a0013ca403b062913ff3. Source12, fresh current earned cohorts, actual default-camera/Low/cutaway views and normally fetched complete remote verification are pending. Keep original assertions, 30-second owner and10x24-pixel portrait guards. ROOT/STATION are currently released before the next admitted runs.
+
+At the previous exact f2f3a4a9d7bbbc57b246ab5550ff1820619a8f44 epoch, SOURCE11 passed214 commands/142 syntax checks, Node2041 passes with2 existing skips and447 Python tests with10 reported skips. Native shore30, primary1984, boundaries2935, footfalls44 and mandatory aftermath361 all passed with owned resources closed. These are historical f2 receipts, never rebound to this changed page. Old independent-clone765 remoteFull03 closed FAILED after five passing browser suites at the stale roadkeeper-Art admission; the correction is in this branch's base. Current complete remote qualification remains pending. Retain all raw failures and skips.
+
+Actual f2 Capture07 closed FAILED during moving-civilian projected-click preparation; all owned resources closed and no movie was recorded. Its separate 30,009.1 ms ordinary RAF cadence observation did run on the RTX3080 before that later failure, without recording; it is not presented FPS/GPU time/human acceptance. Two actual UI stills and all failure evidence remain. The first source-only new landscape observer also had a cold-null startup defect, caught before native allocation; independently reviewed observer02 fixes only that startup boundary and post-import writer binding, preserving all original controls, guards and budgets.
+
+World9 / Adventure12 / WildSigns1 are unchanged, with no migration or new persistent field. Preserve saves, keys, notes/music/exports, storedXP, claims, gear/sockets/upgrades, explicit choices, companion, housing, crafting and both cameras. Wider production goal ACTIVE unfinished; heartbeat PAUSED. No main merge, deployment, paid provider, proprietary extraction, personal-save inspection, unrelated shutdown, duplicate full game or blocked standalone-deletion retry. Reuse ROOT and the now-released independent STATION with small D stages and bounded evidence. Frontier Oct11 already checked.
+
+---
+
 # Coastward cloth integration and current qualification, 2026-10-11
 
 Parent owns gameplay/coastward-shore-and-traveler-20261011 / draft PR56, stacked on PR55 at 11cbea03e264eca945fb85e1d49d6f1a001d216e. ROOT freezes during parent-owned source/native execution. Two existing colleagues stage small independent files. Independent STATION remains frozen by the original remoteFull03 at 765 until actual closure; source/homecoming/onboarding passed, consignment is running and a known stale later Art admission is unresolved in that old epoch. Do not mutate or duplicate its live run.
