@@ -26,7 +26,7 @@ The apron covers only the new 92 square metres outside the old cap, with no dupl
 
 The three cloth parts retain centered-box envelopes, palette, matrices, names and all 49 body instances. Original beveled cloth uses 64 triangles per shared mesh. Head, limbs, faces, joints, attack motion, all seven canonical weapon families and socket markers remain unchanged.
 
-Combined cost relative to PR55: three additional mesh batches/draws per active geometry pass; 12,672 bytes of new shared mesh data; 140 fewer submitted triangles overall; one fewer static bank instance and 96 fewer static instance bytes. The body itself gains 156 triangles (8,280 to 8,436), with unchanged instance count. These are source/packed-geometry counts, not a frame-rate measurement.
+Cost relative to PR55 for the shoreline plus one player: three additional mesh batches/draws per active geometry pass; 12,672 bytes of new shared mesh data; net 140 fewer submitted triangles; one fewer static bank instance and 96 fewer static instance bytes. The player body gains 156 triangles (8,280 to 8,436), with unchanged instance count. Each additional active civilian using the shared rig also gains 156 triangles; the shared cloth batch does not add a separate draw for every actor. The ownership repair adds no geometry cost. These are source/packed-geometry counts, not a frame-rate measurement.
 
 ## Review and checks
 
@@ -39,3 +39,12 @@ Independent STATION remains owned by the live original remoteFull03 at 765. Its 
 After current gates pass, record one short actual gameplay clip and bounded screenshots, then reuse the released independent checkout for exact normally fetched verification. Check grass joins, water contact, edge picking/walking, coat silhouette and both cameras. Human route clarity, camera comfort, audio balance, combat/reward enjoyment and performance remain separate pending acceptance. No merge, deployment, paid work, personal-save read, unrelated shutdown, extra full game, asset download or blocked deletion occurs.
 
 Final installation: the narrow material repair is independently accepted, 15 final shoreline/cloth cases pass with zero skips, and the real builder emits identical 3,306,999-byte pages, SHA256 5cee224384d0034ecd4b1025682a16e811791509fb3b083fa9cd29ecee560fa2. Current complete source/native rendering is still pending. No new mesh or draw cost comes from the material flag.
+
+
+## Full-source failure and actor compatibility repair
+
+The complete SOURCE10 gate at 68c3485 closed FAILED: Node 2,032 passes, five failures and two existing skips. Python and command-earned stages did not execute. Two failures exposed missing civilian ownership for newly created cloth output arrays; three exposed prototype-only CPU fixtures missing the mandatory cloth batch. The original raw failure logs remain retained. Independently reviewed repairs now visit each actual post-draw array from its recorded start, using zero only for newly created arrays; foreign prefixes and original actor/marker behavior remain intact. Two test fixtures now provide the mandatory batch, without a production fallback or removed assertion.
+
+Actual installed four-file checks passed 65/65, zero failures/skips. The real builder emitted identical 3,307,104-byte pages, SHA256 8c3d3a6d457c3cad3ef68139832ece3e8c5397fdcd864b2476b28be05f46697a. New SOURCE11 and exact-head command-earned/native/remote qualification are pending; SOURCE10 remains failed and prior 765 results remain historical.
+
+Parent retained the exact sealed colleague payloads and inverses: cloth-fixture-forward01 (two fixture sinks) and npc-rig-consumers-forward01 (two civilian consumers and four new detecting methods). The existing actor identity, state, marker, projection, collision and foreign-prefix assertions remain unchanged. Current qualification must use the new committed source; earlier SOURCE10 and 765 receipts are not rebound.
