@@ -1,3 +1,11 @@
+# Current repair and honest qualification, 2026-10-11
+
+No new human playtest, actual roadkeeper browser acceptance or road-account movie exists yet. Current scene repair is CPU evidence only. SOURCE01 failed28 checks; the targeted repair now passes the affected geometry checks, with the87-check run's final count defect separately corrected13/13. Old remote bow consignment never entered Earth in its failed case; preserve that screenshot and failure.
+
+Questions stay open: did the town remember the chosen account, did someone using the repaired route make the outing matter, and did the woodland feel clearer? Both camera modes and portrait still need fresh rendered inspection at the repaired source. Footfalls remains staged and unheard, with synthetic AudioContext checks only.
+
+---
+
 # Road account aftermath: installed candidate, 2026-10-07
 
 Parent owns gameplay/road-account-aftermath-20261007, stacked on PR53's pushed751db8caf324a30b393674d10341f5f087b93a5f. Actual installed Source02 reading/Motion/Art/App/woodland checks pass80/80, zero skips; the actual builder regenerated identical3,286,180-byte HTML, SHA25604f1259bc5f080823c806c4a284f17d33e440b0c60aa596ab5c3ce18271ff0b3. Sela has one compact public notice and the original paid receipt; Rill/Merren retain practical role lines and existing services. A passive roadkeeper follows the deliberately claimed route; four existing crowns change upper appearance only. Save/schema/XP/reward/navigation owners remain unchanged.

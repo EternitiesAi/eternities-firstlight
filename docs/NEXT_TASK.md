@@ -1,3 +1,11 @@
+# Current repair and honest qualification, 2026-10-11
+
+Complete current source repair, commit/push forward normally, then earn fresh current cohorts and execute actual primary, boundary and road-account browser gates. Diagnose the original crossing refusal before retrying its affected journey; do not lengthen its timeout or replay a full suite without a cause. Reuse the clean independent STATION only after prior ownership and failure evidence are checked. Qualify fresh remote source and relevant/full browser checks before claiming delivery.
+
+The earlier SOURCE01 closed with exit1: Node1914 passed /28 failed /2 skipped (1944 total). Missing real woodland dependencies and three App extraction helpers caused integration failures. Parent repaired actual CommonJS ownership and portable Motion test-root selection. COMMONJS_REPAIR02 passed86/87 with no skips; its remaining count failure compared deliberate new crowns to old scene instance totals. The correction retains the original budget minus exactly20/28 old crown pieces plus exactly8/20 new pieces; all ground/bank/solid checks remain. COMMONJS_REPAIR03 passed all13 affected tests. New identical HTML is3,286,539 bytes, SHA256 `6a5e34ed9d41e028fcff56b0aefdbd67eb906ba76a3f8151bc0505c9031b2bbd`. Complete source/native acceptance remains pending.
+
+---
+
 # Road account aftermath: installed candidate, 2026-10-07
 
 Parent owns gameplay/road-account-aftermath-20261007, stacked on PR53's pushed751db8caf324a30b393674d10341f5f087b93a5f. Actual installed Source02 reading/Motion/Art/App/woodland checks pass80/80, zero skips; the actual builder regenerated identical3,286,180-byte HTML, SHA25604f1259bc5f080823c806c4a284f17d33e440b0c60aa596ab5c3ce18271ff0b3. Sela has one compact public notice and the original paid receipt; Rill/Merren retain practical role lines and existing services. A passive roadkeeper follows the deliberately claimed route; four existing crowns change upper appearance only. Save/schema/XP/reward/navigation owners remain unchanged.

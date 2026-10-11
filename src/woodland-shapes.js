@@ -7,7 +7,8 @@ const ROLES=Object.freeze(['crown-branch','crown-lobe','upper-crown']),PROFILE=O
 const PALETTE=Object.freeze([0x49664d,0x617b55,0x7f8c63,0x567361]);
 const vary=(i,n)=>{let x=(SEED^(i+1)*2654435761^(n+1)*1597334677)>>>0;x=Math.imul(x^(x>>>16),2246822507);x=Math.imul(x^(x>>>13),3266489909);return((x^(x>>>16))>>>0)/4294967296;};
 function dependencies(def){
- const E=G.RealmEngine,W=G.RealmWorldFoundations,EW=G.RealmElderwealdWorld,D=G.RealmEarthWildSignsData,grazer=G.RealmEarthGrazerMotion,expedition=G.RealmEarthExpedition;
+ const owner=(name,file)=>G[name]||(typeof require==='function'?require('./'+file+'.js'):null);
+ const E=owner('RealmEngine','engine'),W=owner('RealmWorldFoundations','world-foundations'),EW=owner('RealmElderwealdWorld','elderweald-world'),D=owner('RealmEarthWildSignsData','earth-wild-signs-data'),grazer=owner('RealmEarthGrazerMotion','earth-grazer-motion'),expedition=owner('RealmEarthExpedition','earth-expedition');
  if(!E?.geometry||!E?.M||!EW?.parts||!D?.definition||!grazer?.PATH||!expedition?.definition||def!==W?.definition(ROOM))throw TypeError('Use the actual Engine, canonical Earth and authored creature/route catalogues.');
  return{E,W,EW,D,grazer,expedition};
 }

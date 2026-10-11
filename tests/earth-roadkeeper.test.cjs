@@ -3,7 +3,7 @@
 // Core/World/CharacterStore and staged Motion/Art execute, with no validator facade.
 // CPU composition is not earned prerequisite, native, camera or pixel evidence.
 const test=require('node:test'),assert=require('node:assert/strict'),path=require('node:path');
-const ROOT=process.env.FIRSTLIGHT_ROOT;if(!ROOT)throw Error('Supply explicit frozen installed FIRSTLIGHT_ROOT.');
+const ROOT=path.resolve(process.env.FIRSTLIGHT_ROOT||path.join(__dirname,'..'));
 const C=require(path.join(ROOT,'src/core.js')),W=require(path.join(ROOT,'src/world-foundations.js')),
  EE=require(path.join(ROOT,'src/earth-expedition.js')),CD=require(path.join(ROOT,'src/earth-consignment-data.js')),
  D=require(path.join(ROOT,'src/earth-wild-signs-data.js')),CH=require(path.join(ROOT,'src/characters.js'));

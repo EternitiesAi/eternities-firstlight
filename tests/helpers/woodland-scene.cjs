@@ -10,7 +10,7 @@ const W=globalThis.RealmWorldFoundations,EW=globalThis.RealmElderwealdWorld,Art=
 const selected=Object.freeze(['elderweald-trunk-16','elderweald-trunk-17','elderweald-trunk-18','elderweald-trunk-31']);
 const oldRoles=Object.freeze(['crown-branch','crown-lobe','upper-crown']);
 const originalCrownCall="EW.parts({quality:context.sim?.state.settings.quality||'balanced',height})";
-const installedCrownCall="G.RealmWoodlandShapes.replace("+originalCrownCall+",def,{quality:context.sim?.state.settings.quality||'balanced'})";
+const installedCrownCall="woodlandShapes.replace("+originalCrownCall+",def,{quality:context.sim?.state.settings.quality||'balanced'})";
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 function modules(){const O=load('earth-roadkeeper-motion.js'),A=load('woodland-shapes.js');assert.equal(O,globalThis.RealmEarthRoadkeeperMotion);assert.equal(A,globalThis.RealmWoodlandShapes);return{O,A};}
 const stride=kind=>kind==='timber-panel'?8:6,triangles=kind=>E.geometry(kind).length/stride(kind)/3;

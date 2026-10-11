@@ -1,3 +1,11 @@
+# Current repair and honest qualification, 2026-10-11
+
+Repair CommonJS ownership with the actual canonical modules resolved at call time; do not provide fake geometry or weaken their identity guards. Legacy App extraction fixtures must include the unchanged production helpers and real Core/Motion owners. The explicit crown-piece accounting preserves the old scene budget and every physical-solid assertion. Preserve all original failing evidence.
+
+The Oct11 Central frontier check read the Oct8/Oct9 scaffolds (latest Oct9 blob `a3e6a0628f7de684fe5883f1202d072e4d589f3a`); no Firstlight-lane design delta was adopted. The independently sealed footfalls02 repair and review02 were rehashed, but future audio stays uninstalled until current gameplay qualification completes. No new save version, paid provider, class/level reset or deployment decision follows.
+
+---
+
 # Road account aftermath: installed candidate, 2026-10-07
 
 Parent owns gameplay/road-account-aftermath-20261007, stacked on PR53's pushed751db8caf324a30b393674d10341f5f087b93a5f. Actual installed Source02 reading/Motion/Art/App/woodland checks pass80/80, zero skips; the actual builder regenerated identical3,286,180-byte HTML, SHA25604f1259bc5f080823c806c4a284f17d33e440b0c60aa596ab5c3ce18271ff0b3. Sela has one compact public notice and the original paid receipt; Rill/Merren retain practical role lines and existing services. A passive roadkeeper follows the deliberately claimed route; four existing crowns change upper appearance only. Save/schema/XP/reward/navigation owners remain unchanged.
