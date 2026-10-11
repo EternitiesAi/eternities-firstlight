@@ -6,6 +6,9 @@ Inspect new edge walking/picking and canonical map agreement, grass joins, water
 
 Independent STATION remains owned by original remoteFull03 at765. Reuse it for exact normally fetched new-head verification only after that run closes; do not make a full clone per attempt. Update the implementation PR and exact evidence. World 9, Adventure 12 and WildSigns 1 stay unchanged. Preserve all saves, stored XP, gear/sockets/upgrades, claims, explicit choices, companion, housing, crafting, music and both cameras. Wider production is ACTIVE and unfinished; heartbeat PAUSED. No main merge, deployment, paid work, personal-save read, unrelated stop, duplicate full game or blocked standalone-deletion retry. Use small D stages and the current checkouts. Frontier Oct11 was already checked.
 
+
+Final installed shoreline/material/cloth cases passed 15/15 with zero skips after the independently reviewed terrain flag repair. The actual builder regenerated identical 3,306,999-byte index.html/FIRSTLIGHT_VALLEY.html, SHA256 5cee224384d0034ecd4b1025682a16e811791509fb3b083fa9cd29ecee560fa2. Complete SOURCE10 and current native qualification remain pending; earlier 92 focused cases are the pre-material checkpoint and are not added to these overlapping 15.
+
 ---
 
 # Qualify the installed readable Earth movement, 2026-10-11

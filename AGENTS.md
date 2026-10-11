@@ -11,6 +11,9 @@ World 9, Adventure 12 and WildSigns 1 stay unchanged. Preserve all saves, stored
 
 Final installed shoreline/material/cloth cases passed15/15 with zero skips after the independently reviewed terrain flag repair. The actual builder regenerated identical3,306,999-byte index.html/FIRSTLIGHT_VALLEY.html, SHA2565cee224384d0034ecd4b1025682a16e811791509fb3b083fa9cd29ecee560fa2. Complete SOURCE10 and current native qualification remain pending; earlier92 focused cases are the pre-material checkpoint and are not added to these overlapping15.
 
+
+Final installed shoreline/material/cloth cases passed 15/15 with zero skips after the independently reviewed terrain flag repair. The actual builder regenerated identical 3,306,999-byte index.html/FIRSTLIGHT_VALLEY.html, SHA256 5cee224384d0034ecd4b1025682a16e811791509fb3b083fa9cd29ecee560fa2. Complete SOURCE10 and current native qualification remain pending; earlier 92 focused cases are the pre-material checkpoint and are not added to these overlapping 15.
+
 ---
 
 # Earth readability and movement integration, 2026-10-11

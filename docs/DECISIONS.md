@@ -6,6 +6,9 @@ Refine only three traveler cloth kinds inside their old envelopes, retaining49 b
 
 The current base11cbea0 contains the independently reviewed exact Art expectation fix and five detecting real-validator tests. Historical raw fallback remains inactive; no dual hash or dynamic approval. New geometry needs new exact-head source/cohorts/native qualification. Prior765 receipts remain historical, and live independent remoteFull03 stays frozen until closure. World 9, Adventure 12 and WildSigns 1 stay unchanged. Preserve all saves, stored XP, gear/sockets/upgrades, claims, explicit choices, companion, housing, crafting, music and both cameras. Wider production is ACTIVE and unfinished; heartbeat PAUSED. No main merge, deployment, paid work, personal-save read, unrelated stop, duplicate full game or blocked standalone-deletion retry. Use small D stages and the current checkouts. Frontier Oct11 was already checked.
 
+
+Final installed shoreline/material/cloth cases passed 15/15 with zero skips after the independently reviewed terrain flag repair. The actual builder regenerated identical 3,306,999-byte index.html/FIRSTLIGHT_VALLEY.html, SHA256 5cee224384d0034ecd4b1025682a16e811791509fb3b083fa9cd29ecee560fa2. Complete SOURCE10 and current native qualification remain pending; earlier 92 focused cases are the pre-material checkpoint and are not added to these overlapping 15.
+
 ---
 
 # Source-led Earth readability, 2026-10-11
