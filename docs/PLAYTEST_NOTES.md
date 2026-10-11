@@ -1,3 +1,13 @@
+# Briar guide CPU acceptance, visual play pending, 2026-10-11
+
+No new human playtest or gameplay movie. Actual installed85 methods pass, including real command-earned blade/bow kit, crossing/mine clearance and rescue, legal Heaven entry and explicit original trail acceptance. Selected accelerated .05s CPU follow runs reach the handle in260/259frames with measured max leads3.95168/3.89735m; arrival preserves journal/sequence/trails/currency/XP/gear/receipts. These are CPU counts, not human pacing. With the actual public .1s tick cap, a stationary lead can overshoot the four-metre threshold by less than.32m before waiting; the selected4.2 test is not a universal4.2 promise.
+
+Leading/waiting uses the existing projected world label and pane; blocked/arrival uses original toast. Labels can be offscreen or hidden near a realm person. Native readability, ordinary camera/control comfort and cold browser reload are pending. Ask Dom later: could you follow Briar, did waiting feel natural, and did the spillway preparation help you read the fight? Prior five shore PNGs remain partial414b evidence; no forest/cutaway or new foam pixel acceptance. c5 remoteFull05 original30s startup gate FAILED despite eventual real valley rendering around51s; no FPS/decode/compiler attribution.
+
+World9 / Adventure12 / WildSigns1 are unchanged. Preserve saves/keys/music/exports, stored XP, gear/sockets/upgrades, all ledgers and explicit choices, companion, housing/crafting and both cameras. Production goal ACTIVE unfinished; heartbeat PAUSED. Use existing D checkouts and small stages, no duplicate full games/raw videos, blocked standalone deletion retry, main merge, public deploy, paid provider, personal-save inspection or unrelated shutdown. Frontier Oct11 already checked.
+
+---
+
 # Journal-load repair and partial landscape observation, 2026-10-11
 
 No new human playtest. Installed actual-module hydration checks pass53/53 with zero skips/failures and preserve genuine fresh/live cues; native repeated-load/whole-browser history proof is pending at the changed App/Core head. A source fixture showed repeated initialization could crowd bounded journal history, not loss of separate notebook or inspected personal saves.

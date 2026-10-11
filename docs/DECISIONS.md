@@ -1,3 +1,13 @@
+# A fox can guide without completing the player’s work, 2026-10-11
+
+Reuse stable heaven-broken-choir-v1/spillway IDs and original physical target25,-15. RealmTrails projects that accepted unfinished optional handle; Adventure owns empty-payload companion-guide, original command revision/receipt and transient owner-bound Core path; RPGUI closes its normal menu before dispatch and retains preexisting P pause refusal. The player never autowalks. Stay/death/dive/scene/state/record/trip/active-owner/danger changes cancel. Full-body .31 segment checks remain. Arrival is a transient notice only; no saved guide field/migration, quest/loot/XP/reward or new economy. Retain original key4 and searches.
+
+Keep the existing final trail transaction and optional .8s recovery benefit, not a new claim. Independent source peer accepts five leaves; complete original runtime inverses and original test prefixes are verified. Actual focused85/85 plus identical real build is proportional installed evidence, not native/full acceptance. Separate source-only water candidate must bound actual16-contact shader work to local influence before integration. The51s browser startup phase remains UNKNOWN until one bounded original-once observer measures it; deadlines/renderer/quality/required draw are not waived.
+
+World9 / Adventure12 / WildSigns1 are unchanged. Preserve saves/keys/music/exports, stored XP, gear/sockets/upgrades, all ledgers and explicit choices, companion, housing/crafting and both cameras. Production goal ACTIVE unfinished; heartbeat PAUSED. Use existing D checkouts and small stages, no duplicate full games/raw videos, blocked standalone deletion retry, main merge, public deploy, paid provider, personal-save inspection or unrelated shutdown. Frontier Oct11 already checked.
+
+---
+
 # Explicit load intent preserves bounded journal history, 2026-10-11
 
 Use a transient strict boolean hydrated constructor option, default fresh/false. App explicitly distinguishes actual Store new and reset/create from loaded/migrated/import/switch/reload intent. Corrupt/unavailable display placeholders hydrate while existing blocked storage and raw recovery remain untouched. Do not infer intent from empty history or filter/erase existing events. Reuse the exact canonical schedule/pathfinder without a first hydration tick; retain every actual live transition/gathering branch.

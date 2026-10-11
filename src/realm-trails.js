@@ -112,5 +112,12 @@ function tick(sim,dt){
  const result=commit(sim,candidate,{save:sim.realmTrailSave||(()=>({ok:false,error:"A durable trail saver is required; no checkpoint was recorded."}))},q.steps.includes(d.escort.arrivalStep)?'Neris reached the Kiln Refuge on the walked route.':'Neris reached a safe route checkpoint.');
  if(result.ok)actors.delete(sim);else a.status='Checkpoint save refused · retrying safely';
 }
-const api={definitions,definition,required,fresh,validate,at,commit,setting,adjust,command,enemies,signature,canDamage,defeat,escort,tick};G.RealmTrails=api;if(typeof module!=='undefined')module.exports=api;
+// One optional companion route; projection never operates or records the handle.
+function companionGuide(sim){
+ const d=definition('heaven-broken-choir-v1'),r=sim?.state?.realmTrails?.records?.[d.id];
+ if(!d||G.RealmWorldFoundations.definition(sim?.room)?.id!=='heaven'||sim.worldDive||!r?.accepted||r.claimed||r.steps.includes('spillway'))return null;
+ const s=d.steps.find(s=>s.id==='spillway');
+ return Object.freeze({quest:d.id,step:s.id,name:s.name,x:s.x,z:s.z});
+}
+const api={definitions,definition,required,fresh,validate,at,commit,setting,adjust,command,enemies,signature,canDamage,defeat,escort,tick,companionGuide};G.RealmTrails=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

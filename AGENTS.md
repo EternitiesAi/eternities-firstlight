@@ -1,3 +1,13 @@
+# Active optional Briar service guide, 2026-10-11
+
+Parent owns gameplay/briar-service-guide-20261011 in the existing ROOT, stacked on PR58/c5f8ba509965c778a94909967e496864b478d958. Independently reviewed five leaves add one transient, explicit companion request for the existing accepted unfinished Heaven spillway. Do not manufacture trail progress or a payout on fox arrival. Original key4/Sunward/Crossing/Follow/Stay and physical handle/recovery/reward transactions remain. See docs/development/BRIAR_SERVICE_GUIDE_2026-10-11.md.
+
+Actual installed two-component85/85, zero failures/skips, and real identical3314786B pages9b5a7a8fc520590ad90a2a97862f5ba4b91ee5ffaf73daad5b80a625eb5b8046 pass. Complete current source/native/remote gates pending. Source13 at c5 passed; fresh independent remoteFull05 at c5 FAILED original30s initial load before0/30earned stages. HTTP finished3.2165s, DOM/load51.092s, dominant phase UNKNOWN. Keep failure and original guards. Independent STATION is clean released c5; only an explicitly admitted, one-attempt startup phase observer may use it. Two colleagues stage source only; parent owns integration/native.
+
+World9 / Adventure12 / WildSigns1 are unchanged. Preserve saves/keys/music/exports, stored XP, gear/sockets/upgrades, all ledgers and explicit choices, companion, housing/crafting and both cameras. Production goal ACTIVE unfinished; heartbeat PAUSED. Use existing D checkouts and small stages, no duplicate full games/raw videos, blocked standalone deletion retry, main merge, public deploy, paid provider, personal-save inspection or unrelated shutdown. Frontier Oct11 already checked.
+
+---
+
 # Active journal-load milestone, 2026-10-11
 
 Current review branch gameplay/journal-hydration-20261011 starts from PR57 living-landmarks414b. The reviewed two-runtime-leaf fix distinguishes fresh creation from loaded hydration; preserve its explicit Store/character/reset/import intent and original live schedule/gathering events. Hydration is transient; World9/Adventure12/WildSigns1 and all systems/cameras remain. See docs/development/JOURNAL_HYDRATION_2026-10-11.md.

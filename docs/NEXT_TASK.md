@@ -1,3 +1,13 @@
+# Qualify Briar and fix the measured startup bottleneck, 2026-10-11
+
+Push the reviewed five-leaf guide branch stacked against PR58/c5 and run the original complete Source14 with fresh command-earned blade/bow/veteran and whole-draft journeys. Do not rebind c5 evidence to its changed page. Independently reviewed one-attempt phase observation may diagnose the clean c5 remote load failure while ROOT source qualification runs only if shared resources are explicitly owned; preserve original30s/navigation/readiness/quality/renderer/capture and primary errors. Choose the production startup repair from actual dominant-phase evidence. Do not defer a required draw or raise deadlines to claim a pass.
+
+Then demonstrate optional-guide acceptance/waiting/physical arrival/Stay cancellation and original handle benefit through actual visible UI and ordinary controls in both cameras; verify saved intent cold-reloads without a transient guide or duplicated reward. Complete relevant original browser suites and exact fresh remote qualification, with a short bounded clip/screenshots only after admitted gates. Shoreline foam remains a separate held source candidate; its unnecessary32-loop/outside-local work is being reduced before possible integration. Keep all failures, skips, pending human route/comfort/feel/reward questions and forest-route uncertainty visible.
+
+World9 / Adventure12 / WildSigns1 are unchanged. Preserve saves/keys/music/exports, stored XP, gear/sockets/upgrades, all ledgers and explicit choices, companion, housing/crafting and both cameras. Production goal ACTIVE unfinished; heartbeat PAUSED. Use existing D checkouts and small stages, no duplicate full games/raw videos, blocked standalone deletion retry, main merge, public deploy, paid provider, personal-save inspection or unrelated shutdown. Frontier Oct11 already checked.
+
+---
+
 # Qualify loaded history, then repair the actual route, 2026-10-11
 
 Commit/push the reviewed journal hydration source on its separate branch stacked against PR57. The accepted startup-observation tooling is installed separately, with seven detecting CPU checks passing and renderer/quality/navigation deadlines and failedFull04 status preserved. Run the original complete current verifier with fresh blade/bow/veteran and whole-draft journeys. Current installed four-component53/53 and identical real build pass; wider gates are pending.
