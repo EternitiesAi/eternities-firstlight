@@ -9,6 +9,14 @@ return routes, rather than streamed continents or the full canonical saga.
 Both third-person and diorama cameras, creative tools, housing and companion
 play remain available.
 
+Continuing Earth production is under review in
+[PR55](https://github.com/EternitiesAi/eternities-firstlight/pull/55), stacked
+on the wildlife and working-road changes. It adds optional ground-aware
+footsteps, clearer Earth water and a small western scenic horizon. See the
+[sensory pass record](docs/development/EARTH_WALK_SENSORY_2026-10-11.md) for
+current checks and remaining native/human gates. The exact older finite-draft
+qualification below retains its original source epoch.
+
 The current finite draft is under review in
 [PR49](https://github.com/EternitiesAi/eternities-firstlight/pull/49).
 At source `b5fee766e6f77a2d901bb953af8faac13175fee4`, full05 actually completed
