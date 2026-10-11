@@ -212,7 +212,7 @@ test('actual app worldContext installs synchronous savers on fresh restored Sim 
  A.syncScene(sim);assert.ok(A.runtime(sim).enemies.some(e=>e.expeditionQuest===E.definition.id));const candidate=sim.snapshot();assert.ok(E.commit(sim,candidate,{save:sim.earthExpeditionSave},'Labelled saver installation probe.').ok);assert.equal(saved.length,1);
  // Native import/switch starts at its saved home checkpoint and travels through
  // worldTravel(worldContext()). Direct test-only room injection is not that path.
- assert.ok(/RealmWorldFoundations\.enter\(ticket,worldContext\(\)/.test(source),'actual travel caller installs saver');assert.ok(/applyWorld\(result\.state\)/.test(source),'actual character result restores through applyWorld');
+ assert.ok(/RealmWorldFoundations\.enter\(ticket,worldContext\(\)/.test(source),'actual travel caller installs saver');assert.ok(/applyWorld\(result\.state,type!=='create'\)/.test(source),'actual character result restores through applyWorld');
 });
 
 if(arg('--earned-sources'))test('separate command-earned snapshots render accepted/partial/ready/paid/bound and two exact patrol histories',()=>{

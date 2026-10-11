@@ -1,3 +1,11 @@
+# Journal-load repair and partial landscape observation, 2026-10-11
+
+No new human playtest. Installed actual-module hydration checks pass53/53 with zero skips/failures and preserve genuine fresh/live cues; native repeated-load/whole-browser history proof is pending at the changed App/Core head. A source fixture showed repeated initialization could crowd bounded journal history, not loss of separate notebook or inspected personal saves.
+
+At prior414b, Country15 actually captured Valley plus Balanced/Low shore in default Adventure/Follow on RTX3080 at1440x960. Keyboard crossed oldx38 to38.86599 with81supported observations over3.014767s. The run later FAILED the forest-route full-body/segment guard; all owned resources closed. Five frames are partial evidence, not successful twelve-frame or forest/cutaway acceptance. Independent pixel review confirms the Balanced shore spur blends with the apron in both default views; Low intentionally retains its green rectangle. Dark terminal seams, detached foam and other rectangular terrain remain visible/unresolved. Follow shows the faceted shore outline; its small traveler does not qualify cloth detail. Valley pine/building crowding is observed without regression attribution. RemoteFull04's initial original30s load timeout remains UNKNOWN. Full/human/performance gates remain pending; failures are retained. Ask Dom later about route clarity, camera comfort, history readability and whether combat/rewards motivate another outing.
+
+---
+
 # Living Earth visible acceptance, 2026-10-11
 
 Current installed75-test/build success is CPU evidence. Default Adventure/Follow canopy/root/shore views, Low controls, real timber grain, cutaway, reflection behavior and useful silhouette remain pending native inspection at the new page. The f2 shoreline screenshots showed a continuous exposed cap; hidden joins were not demonstrated. Cream/green rectangles and detached approximate foam remained visible. This pass addresses the ground palette only; detached foam is still an honest limitation.

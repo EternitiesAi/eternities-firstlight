@@ -314,8 +314,57 @@ class EarthMixin:
         self.context.route('**/*', lambda r: r.continue_() if r.request.url.startswith(self.url) else r.abort())
         self.page.on('pageerror', lambda e: self.report['browser_errors'].append(str(e)))
         self.page.on('console', self.console)
-        response = self.page.goto(self.url, wait_until='load', timeout=30000)
-        self.page.wait_for_function('()=>!!window.Realm&&!!RealmEarthHomecoming', timeout=30000)
+        events, observation_errors = [], []
+        began = time.monotonic()
+        self.server.navigation_http_events = []
+        page = self.page
+        def observe(event, subject=None):
+            try:
+                detail = {}
+                if event in ('request', 'response', 'requestfinished'):
+                    request = subject.request if event == 'response' else subject
+                    if request.resource_type != 'document':
+                        return
+                    detail['url'] = subject.url
+                    if event == 'response':
+                        detail['status'] = subject.status
+                elif event == 'commit':
+                    if subject != page.main_frame:
+                        return
+                    detail['url'] = subject.url
+                elif event == 'requestfailed':
+                    detail = {'url': subject.url, 'failure': subject.failure}
+                events.append({'event': event, 'seconds': time.monotonic() - began, **detail})
+            except Exception as error:
+                observation_errors.append({'event': event, 'error': repr(error)})
+        page.on('request', lambda r: observe('request', r))
+        page.on('response', lambda r: observe('response', r))
+        page.on('requestfinished', lambda r: observe('requestfinished', r))
+        page.on('framenavigated', lambda f: observe('commit', f))
+        page.on('crash', lambda: observe('crash'))
+        page.on('close', lambda: observe('close'))
+        page.on('requestfailed', lambda r: observe('requestfailed', r))
+        page.on('domcontentloaded', lambda: observe('domcontentloaded'))
+        page.on('load', lambda: observe('load'))
+        finished, failed_http_events = None, None
+        try:
+            response = self.page.goto(self.url, wait_until='load', timeout=30000)
+            self.page.wait_for_function('()=>!!window.Realm&&!!RealmEarthHomecoming', timeout=30000)
+        except Exception:
+            finished = time.monotonic()
+            failed_http_events = list(self.server.navigation_http_events)
+            try:
+                self.record['navigation_failure'] = self.base.capture_navigation_failure(
+                    self.page, self.url, self.report['html_sha256'],
+                    self.args.output / f'{self.variant}-STARTUP_FAILURE.png')
+            except BaseException as observation_error:
+                observation_errors.append({'event': 'failure_capture', 'error': repr(observation_error)})
+            raise
+        finally:
+            http_events = [{**e, 'seconds': e['at'] - began} for e in (
+                failed_http_events if failed_http_events is not None else self.server.navigation_http_events)]
+            self.record['navigation'].append({'seconds': (finished or time.monotonic()) - began,
+                'events': events, 'http_events': http_events, 'observation_errors': observation_errors})
         self.check('exact frozen actual HTML served', response is not None and hashlib.sha256(response.body()).hexdigest() == self.report['html_sha256'])
         self.ev(r"""()=>{const p=RealmEngine.Engine.prototype,r=p.render;p.render=function(...args){
          window.__hvcArt={e:this};this.__hvcLastRender=args.slice();return r.apply(this,args);};}""")
