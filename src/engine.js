@@ -42,6 +42,17 @@ function geometry(kind){let v=[],timber=kind==='timber-panel';function tri(a,b,c
  const along=Math.abs(n[0])>.5?p[2]:p[0],across=Math.abs(n[1])>.5?p[2]:p[1];v.push(.1+(across+.5)*.1,along+.5);
  }}}function q(a,b,c,d){tri(a,b,c);tri(a,c,d);}
  if(kind==='box'||timber){let n=-.5,p=.5;q([n,n,p],[p,n,p],[p,p,p],[n,p,p]);q([p,n,n],[n,n,n],[n,p,n],[p,p,n]);q([p,n,p],[p,n,n],[p,p,n],[p,p,p]);q([n,n,n],[n,n,p],[n,p,p],[n,p,n]);q([n,p,p],[p,p,p],[p,p,n],[n,p,n]);q([n,n,n],[p,n,n],[p,n,p],[n,n,p]);}
+ else if(kind==='overlook-stone'){
+  // One original faceted landmark, contained by its unchanged centered solid.
+  // Three irregular rings bevel the outline; full extrema retain its envelope.
+  const low=[[.5,-.5,-.05],[.38,-.5,.35],[.02,-.5,.5],[-.37,-.5,.36],[-.5,-.5,-.03],[-.35,-.5,-.38],[-.01,-.5,-.5],[.36,-.5,-.35]],
+   middle=[[.5,-.08,-.06],[.39,-.02,.32],[.05,.05,.47],[-.35,-.04,.37],[-.48,.02,-.04],[-.32,.08,-.38],[-.03,-.02,-.48],[.38,-.1,-.31]],
+   upper=[[.31,.28,-.06],[.26,.36,.21],[.06,.43,.3],[-.2,.37,.24],[-.3,.25,-.02],[-.21,.29,-.27],[-.02,.36,-.3],[.24,.41,-.23]],top=[.04,.5,-.07],bottom=[0,-.5,0];
+  for(let i=0;i<8;i++){const j=(i+1)%8;
+   q(low[i],middle[i],middle[j],low[j]);q(middle[i],upper[i],upper[j],middle[j]);
+   tri(top,upper[j],upper[i]);tri(bottom,low[i],low[j]);
+  }
+ }
  else if(kind==='bridge-vault'){
   // Metre-sized ellipse/spandrel in Y/Z, unit-width extrusion in X. The open
   // underside reaches y=1.1; its flat crown meets the deck at y=1.27.

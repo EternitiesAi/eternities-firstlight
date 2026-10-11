@@ -8046,6 +8046,17 @@ function geometry(kind){let v=[],timber=kind==='timber-panel';function tri(a,b,c
  const along=Math.abs(n[0])>.5?p[2]:p[0],across=Math.abs(n[1])>.5?p[2]:p[1];v.push(.1+(across+.5)*.1,along+.5);
  }}}function q(a,b,c,d){tri(a,b,c);tri(a,c,d);}
  if(kind==='box'||timber){let n=-.5,p=.5;q([n,n,p],[p,n,p],[p,p,p],[n,p,p]);q([p,n,n],[n,n,n],[n,p,n],[p,p,n]);q([p,n,p],[p,n,n],[p,p,n],[p,p,p]);q([n,n,n],[n,n,p],[n,p,p],[n,p,n]);q([n,p,p],[p,p,p],[p,p,n],[n,p,n]);q([n,n,n],[p,n,n],[p,n,p],[n,n,p]);}
+ else if(kind==='overlook-stone'){
+  // One original faceted landmark, contained by its unchanged centered solid.
+  // Three irregular rings bevel the outline; full extrema retain its envelope.
+  const low=[[.5,-.5,-.05],[.38,-.5,.35],[.02,-.5,.5],[-.37,-.5,.36],[-.5,-.5,-.03],[-.35,-.5,-.38],[-.01,-.5,-.5],[.36,-.5,-.35]],
+   middle=[[.5,-.08,-.06],[.39,-.02,.32],[.05,.05,.47],[-.35,-.04,.37],[-.48,.02,-.04],[-.32,.08,-.38],[-.03,-.02,-.48],[.38,-.1,-.31]],
+   upper=[[.31,.28,-.06],[.26,.36,.21],[.06,.43,.3],[-.2,.37,.24],[-.3,.25,-.02],[-.21,.29,-.27],[-.02,.36,-.3],[.24,.41,-.23]],top=[.04,.5,-.07],bottom=[0,-.5,0];
+  for(let i=0;i<8;i++){const j=(i+1)%8;
+   q(low[i],middle[i],middle[j],low[j]);q(middle[i],upper[i],upper[j],middle[j]);
+   tri(top,upper[j],upper[i]);tri(bottom,low[i],low[j]);
+  }
+ }
  else if(kind==='bridge-vault'){
   // Metre-sized ellipse/spandrel in Y/Z, unit-width extrusion in X. The open
   // underside reaches y=1.1; its flat crown meets the deck at y=1.27.
@@ -8948,7 +8959,7 @@ function pose(options={}){
  const phase=finite(options.phase),walkingBlend=unit(options.blend),time=finite(options.time);
  const reducedMotion=!!options.reducedMotion,combatScene=!!options.combatScene,swimming=!!options.swimming;
  const style=['blade','bow'].includes(options.style)?options.style:'none';
- const combatPhase=combatScene&&['anticipate','recover'].includes(options.combatPhase)?options.combatPhase:'idle';
+ const combatPhase=combatScene&&['anticipate','recover','withdraw'].includes(options.combatPhase)?options.combatPhase:'idle';
  const combatProgress=combatPhase==='idle'?0:unit(options.combatProgress),guarded=combatScene&&!!options.guarded;
  const releaseOrigin=options.releaseOrigin==='ready'?'ready':'queued';
  const gait=(swimming?0:walkingBlend)*(reducedMotion?.55:1),stride=Math.sin(phase)*gait;
@@ -8967,14 +8978,15 @@ function pose(options={}){
  }
  const swing=reducedMotion?0:stride*.16;
  let left=[-.265,.845+torsoY,swing],right=[.265,.845+torsoY,-swing];
- const p=smooth(combatProgress);
+ // Withdrawal reverses only the observed preparation; no follow-through cut.
+ const p=smooth(combatPhase==='withdraw'?unit(options.withdrawFrom)*(1-smooth(combatProgress)):combatProgress);
  const upperBody={yaw:0,lean:0,shift:[0,0,0]},pivot=[0,.985+torsoY,0];
  let bladeAxis=norm([.18,.94,.28]);
  if(combatScene&&style==='bow'){
   const readyLeft=[0,1.30+torsoY,.50],readyRight=[0,1.30+torsoY,.28];
   const drawnLeft=[0,1.37+torsoY,.52],drawnRight=[0,1.43+torsoY,.14];
   left=readyLeft;right=readyRight;
-  if(combatPhase==='anticipate'){
+  if(combatPhase==='anticipate'||combatPhase==='withdraw'){
    left=mix(readyLeft,drawnLeft,p);right=mix(readyRight,drawnRight,p);
    if(!reducedMotion){upperBody.yaw=.09*p;upperBody.lean=-.025*p;}
   }else if(combatPhase==='recover'){
@@ -8997,7 +9009,7 @@ function pose(options={}){
   const outsideRight=releaseOrigin==='ready'?[.36,1.03+torsoY,.37]:[.40,1.19+torsoY,.38];
   const readyAxis=bladeAxis,preparedAxis=norm([.38,.27,-.88]),followAxis=norm([-.62,.20,.76]);
   right=readyRight;left=readyLeft;
-  if(combatPhase==='anticipate'){
+  if(combatPhase==='anticipate'||combatPhase==='withdraw'){
    right=mix(readyRight,preparedRight,p);left=mix(readyLeft,preparedLeft,p);
    if(!reducedMotion){bladeAxis=directionMix(readyAxis,preparedAxis,p);upperBody.yaw=-.14*p;upperBody.lean=-.04*p;upperBody.shift=[.008*p,0,-.012*p];}
   }else if(combatPhase==='recover'){
@@ -9523,8 +9535,24 @@ class WorldArt{
    if(weapon.style!=='bow')for(let i=r.fx.length-1;i>=0;i--)if(!owner.blockedFx.has(r.fx[i])&&(r.fx[i].kind==='slash'||r.fx[i].kind==='pulse')){release=r.fx[i].at;break;}
    if(Number.isFinite(release)&&a.elapsed>=release&&a.elapsed-release<.28)combat={phase:'recover',progress:(a.elapsed-release)/.28,releaseOrigin:'ready'};
   }
+  // An observed windup withdrawn by the real combat owner lowers to ready.
+  // This local presentation never fabricates a release, hit or rule cooldown.
+  const now=a.elapsed,observed=owner.observedWindup;
+  if(reducedMotion||!combatScene||sim.worldDive||now<tactics.guardUntil){
+   owner.observedWindup=null;owner.withdrawal=null;
+  }else if(combat.phase==='anticipate'){
+   owner.observedWindup={progress:combat.progress,at:now};owner.withdrawal=null;
+  }else if(combat.phase==='recover'){
+   owner.observedWindup=null;owner.withdrawal=null;
+  }else{
+   if(!sim.paused&&observed&&now>=observed.at&&now-observed.at<=.12)owner.withdrawal={from:observed.progress,at:now};
+   owner.observedWindup=null;
+   const q=owner.withdrawal;
+   if(q&&now>=q.at&&now-q.at<.10)combat={phase:'withdraw',progress:(now-q.at)/.10,withdrawFrom:q.from};
+   else owner.withdrawal=null;
+  }
   this.travelerMotion=G.RealmTravelerArt.motion(this.travelerMotion,{x:p.x,z:p.z,scene:this.room,time:sim.elapsed,walking:sim.walking,paused:sim.paused,reducedMotion});
-  const pose=G.RealmTravelerArt.pose({...this.travelerMotion,time:this.travelerMotion.time,reducedMotion,swimming:!!sim.worldDive&&!G.RealmWorldFoundations.divingStatus(sim,null)?.dryCourt,style:weapon.style,combatScene,combatPhase:combat.phase,combatProgress:combat.progress,releaseOrigin:combat.releaseOrigin,guarded:combatScene&&a.elapsed<G.RealmCombat.runtime(sim).guardUntil});
+  const pose=G.RealmTravelerArt.pose({...this.travelerMotion,time:this.travelerMotion.time,reducedMotion,swimming:!!sim.worldDive&&!G.RealmWorldFoundations.divingStatus(sim,null)?.dryCourt,style:weapon.style,combatScene,combatPhase:combat.phase,combatProgress:combat.progress,withdrawFrom:combat.withdrawFrom,releaseOrigin:combat.releaseOrigin,guarded:combatScene&&a.elapsed<G.RealmCombat.runtime(sim).guardUntil});
   const starts=Object.fromEntries(Object.entries(out).map(([k,v])=>[k,v.length]));
   const armorColor=G.RealmAdventure.GEAR[a.equipment.armor]?.color||null;
   this.travelerFrame=G.RealmTravelerArt.draw(out,{x:p.x,z:p.z,yaw:p.yaw,base,profile:sim.state.visitor,color:X.CLOAKS[sim.state.visitor.cloak],armorColor},pose);
@@ -13175,7 +13203,13 @@ function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isIn
   if(!gallery&&!/bridge/.test(p.source))a.box(p.x,(p.y-.11-.5)/2,p.z,p.w,p.y-.11+.5,p.d,def.palette.stone,decor);
  }
  if(def.id==='earthlands')for(const bank of coastBanks(rawPartitions(def))){const{kind,p,s,c,...opt}=bank;a.add(kind,...p,...s,c,opt);}
- for(const p of def.solids)a.box(p.x,W.height(def.room,p.x,p.z)+p.h/2,p.z,p.w,p.h,p.d,p.color??def.palette.stone,{rough:.96,cameraSolid:true,cutaway:true,worldSolid:true,worldSolidId:p.id,...(p.id==='hearthwater-fingerpost'?{earthRoadPart:'post'}:{})});
+ for(const p of def.solids){
+  const args=[p.x,W.height(def.room,p.x,p.z)+p.h/2,p.z,p.w,p.h,p.d,p.color??def.palette.stone,{rough:.96,cameraSolid:true,cutaway:true,worldSolid:true,worldSolidId:p.id,...(p.id==='hearthwater-fingerpost'?{earthRoadPart:'post'}:{})}];
+  // Only this canonical Earth landmark changes mesh; the full physical and
+  // camera envelope, material and worldSolid owner remain the original ones.
+  if(def.id==='earthlands'&&p.id==='overlook-stone')a.add('overlook-stone',...args);
+  else a.box(...args);
+ }
  if(def.dive){const d=def.dive,v=d.volume;
   a.box(v.x,d.minY-.36,v.z,v.w,.12,v.d,0x638b84,decor);
   // The maintained air court uses the existing preference-controlled roof
@@ -13378,9 +13412,10 @@ function shape(pose){
  const emit=(kind,p,s,c,part,rotation=[0,0,0])=>out.push({kind,p:E.M.transform(root,p),s:s.slice(),m:E.M.mul(root,E.M.compose(...p,...s,...rotation)),
   c:E.hex(c),rough:.97,cameraSolid:false,cutaway:false,appearanceOnly:true,roadkeeperActor:O.ID,roadkeeperPart:part,roadkeeperResolution:pose.resolution});
  const stride=pose.walking&&!quiet?Math.sin(pose.gait)*.12:0,lift=pose.walking&&!quiet?Math.abs(Math.cos(pose.gait))*.025:0;
- emit('box',[0,.98,0],[.48,.64,.28],PALETTE.coat,'work-coat');
- emit('box',[0,1.24,.151],[.16,.23,.018],PALETTE.shirt,'shirt-front');
- emit('box',[0,.91,.157],[.44,.10,.025],pose.resolution==='signed-loop'?PALETTE.signed:PALETTE.cleared,'chosen-account-band');
+ // The work coat keeps volume in profile; its front trim follows the surface.
+ emit('box',[0,.98,0],[.48,.64,.50],PALETTE.coat,'work-coat');
+ emit('box',[0,1.24,.261],[.16,.23,.018],PALETTE.shirt,'shirt-front');
+ emit('box',[0,.91,.267],[.44,.10,.025],pose.resolution==='signed-loop'?PALETTE.signed:PALETTE.cleared,'chosen-account-band');
  emit('round',[0,1.53,0],[.26,.33,.25],PALETTE.skin,'head');
  emit('box',[0,1.72,-.012],[.32,.11,.29],PALETTE.cap,'soft-work-cap');
  emit('box',[0,1.687,.12],[.34,.035,.16],PALETTE.cap,'cap-brim');

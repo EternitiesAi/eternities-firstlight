@@ -10,6 +10,8 @@ const KINDS=new Set(['box','timber-panel','bridge-vault','bank-slope','coast-ban
 assert.equal(E.geometry('country-ridge').length,6048,'actual finite 336-triangle ridge ownership, not unknown cylinder fallback');
 assert.deepEqual(E.geometry('country-ridge'),E.geometry('mountain-ridge'),'explicit alias uses the original production mesh');
 KINDS.add('country-ridge');
+assert.equal(E.geometry('overlook-stone').length,864,'explicit original 48-triangle stone mesh, not unknown cylinder fallback');
+KINDS.add('overlook-stone');
 function submission(id){const d=W.definition(id),items=[],writer={e:{},begin(){},commit(){},add(kind,x,y,z,w,h,depth,color,opt={}){items.push({kind,p:[x,y,z],s:[w,h,depth],color,...opt});},box(x,y,z,w,h,depth,color,opt){this.add('box',x,y,z,w,h,depth,color,opt);}},sim=new C.Simulation();sim.room=d.room;sim.state.player={...d.entry};Art.make(writer,sim);return{d,items,writer};}
 function bounds(it){const m=E.M.compose(...it.p,...it.s,...(it.r||[0,0,0])),mesh=E.geometry(it.kind),stride=it.kind==='timber-panel'?8:6,min=[Infinity,Infinity,Infinity],max=[-Infinity,-Infinity,-Infinity];for(let i=0;i<mesh.length;i+=stride){const p=E.M.transform(m,[mesh[i],mesh[i+1],mesh[i+2]]);for(let j=0;j<3;j++){min[j]=Math.min(min[j],p[j]);max[j]=Math.max(max[j],p[j]);}}return{min,max};}
 test('all new static scenery uses supported finite meshes instead of silent cylinder fallback',()=>{for(const id of W.IDS.filter(id=>id!=='cosmos')){const {d,items}=submission(id);assert.ok(items.length>40&&items.length<4000,'bounded original scene');
@@ -29,4 +31,50 @@ test('only the two exact Atlantis shelter roofs receive preference-controlled ro
  assert.deepEqual(roof.p,[solid.x,solid.y+solid.h/2,solid.z]);assert.deepEqual(roof.s,[solid.w,solid.h,solid.d]);
  const canopy=roofs.find(p=>p.worldRoof==='farwake-civic-canopy');assert.equal(canopy.structureId,'farwake-civic-canopy');assert.equal(canopy.cutaway,true);assert.equal(canopy.cameraSolid,false);assert.deepEqual(canopy.p,[0,W.height(d.room,0,-12)+4.1,-12]);assert.deepEqual(canopy.s,[27,.2,19.7]);
  for(const id of ['earthlands','heaven'])assert.equal(submission(id).items.some(it=>it.worldRoof),false);
+});
+
+
+test('overlook stone is a closed finite faceted mesh with outward unit normals and the original centered envelope',()=>{
+ const mesh=E.geometry('overlook-stone'),edges=new Map(),points=new Set(),facets=new Set(),lo=[Infinity,Infinity,Infinity],hi=[-Infinity,-Infinity,-Infinity];
+ assert.equal(mesh.length/18,48);assert.equal(mesh.byteLength,3456);assert.ok([...mesh].every(Number.isFinite));
+ const key=p=>p.join(','),edge=(a,b)=>{const u=key(a),v=key(b),k=[u,v].sort().join('|');if(!edges.has(k))edges.set(k,[]);edges.get(k).push([u,v]);};
+ for(let i=0;i<mesh.length;i+=18){
+  const p=[0,6,12].map(n=>Array.from(mesh.slice(i+n,i+n+3))),n=Array.from(mesh.slice(i+3,i+6)),cross=E.cross(E.sub(p[1],p[0]),E.sub(p[2],p[0]));
+  assert.ok(Math.hypot(...cross)>1e-6,'nondegenerate original facet');assert.ok(Math.abs(Math.hypot(...n)-1)<1e-6);
+  assert.ok(E.dot(E.norm(cross),n)>.999999,'normal follows winding');
+  assert.ok(E.dot(n,[0,1,2].map(j=>(p[0][j]+p[1][j]+p[2][j])/3))>0,'facet faces out from enclosed core');
+  for(const q of p){points.add(key(q));q.forEach((v,j)=>{lo[j]=Math.min(lo[j],v);hi[j]=Math.max(hi[j],v);});}
+  facets.add(n.map(v=>Math.round(v*10000)).join(','));edge(p[0],p[1]);edge(p[1],p[2]);edge(p[2],p[0]);
+ }
+ assert.deepEqual(lo,[-.5,-.5,-.5]);assert.deepEqual(hi,[.5,.5,.5]);assert.equal(points.size,26);assert.equal(edges.size,72);assert.ok(facets.size>20,'irregular stone facets replace six planar box faces');
+ for(const rows of edges.values()){assert.equal(rows.length,2,'closed two-face edge');assert.deepEqual(rows[0],rows[1].slice().reverse(),'consistent surface winding');}
+ const box=E.geometry('box');assert.equal(require('node:crypto').createHash('sha256').update(Buffer.from(box.buffer,box.byteOffset,box.byteLength)).digest('hex'),'e8d0b82261a50b117086e715e953b7d62d49a4ae176177f501fd16ef318dd48d','every other box keeps its exact original mesh');
+});
+
+test('only the canonical Earth overlook stone changes kind and retains exact solid camera and dry-route ownership',()=>{
+ for(const id of W.IDS.filter(id=>id!=='cosmos')){
+  const {d,items}=submission(id),landmarks=items.filter(p=>p.kind==='overlook-stone');assert.equal(landmarks.length,id==='earthlands'?1:0);
+  for(const item of items.filter(p=>p.worldSolid))assert.equal(item.kind,id==='earthlands'&&item.worldSolidId==='overlook-stone'?'overlook-stone':'box');
+  if(id!=='earthlands')continue;
+  const stone=d.solids.find(p=>p.id==='overlook-stone'),item=landmarks[0],base=W.height(d.room,stone.x,stone.z);
+  assert.deepEqual([stone.x,stone.z,stone.w,stone.d,stone.h,stone.color],[35,-23,2.8,2.5,1.8,0x8d9589]);assert.equal(base,1.57);
+  assert.deepEqual(item.p,[35,2.47,-23]);assert.deepEqual(item.s,[2.8,1.8,2.5]);assert.equal(item.color,stone.color);assert.equal(item.rough,.96);
+  assert.equal(item.worldSolid,true);assert.equal(item.worldSolidId,stone.id);assert.equal(item.cameraSolid,true);assert.equal(item.cutaway,true);assert.equal(item.terrain,undefined);assert.equal(item.wind,undefined);
+  const envelope=E.solidBounds('box',item),actual=E.solidBounds(item.kind,item),meshBounds=bounds(item);assert.deepEqual(actual,envelope);
+  for(const axis of [0,1,2]){assert.ok(meshBounds.min[axis]>=envelope.min[axis]-1e-6);assert.ok(meshBounds.max[axis]<=envelope.max[axis]+1e-6);assert.ok(Math.abs(meshBounds.min[axis]-envelope.min[axis])<1e-6);assert.ok(Math.abs(meshBounds.max[axis]-envelope.max[axis])<1e-6);}
+  assert.equal(W.land(d.room,35,-23,.31),true);assert.equal(W.walkable(d.room,35,-23,.31),false,'canonical stone stays solid');
+  assert.equal(W.walkable(d.room,30,-20,.31),true);assert.equal(W.segment(d.room,{x:22,z:-19},{x:30,z:-20},.31),true,'original shore spur remains supported');
+ }
+});
+
+test('actual WorldArt add and commit keep one static stone batch and preserve the original simulation',()=>{
+ require('../src/world.js');
+ // Explicit CPU batch transport, never a renderer/GPU or native acceptance.
+ const calls=[],engine={clear(){calls.length=0;},batch(kind,items,dynamic=false,opt={}){const b={kind,items,dynamic,opt};calls.push(b);return b;}};
+ const art=Object.create(globalThis.RealmArt.WorldArt.prototype);art.e=engine;
+ const sim=new C.Simulation();sim.room='world-earthlands';const before=JSON.stringify(sim.state);Art.make(art,sim);
+ const batches=calls.filter(b=>b.kind==='overlook-stone');assert.equal(batches.length,1);assert.equal(batches[0].dynamic,false);assert.equal(batches[0].items.length,1);
+ assert.equal(batches[0].items[0].worldSolidId,'overlook-stone');assert.equal(batches[0].items[0].cameraSolid,true);
+ assert.equal(calls.filter(b=>b.kind==='box').flatMap(b=>b.items).filter(p=>p.worldSolidId==='overlook-stone').length,0,'no duplicate opaque box');
+ assert.deepEqual(engine.worldFog,{clear:30,span:130});assert.equal(JSON.stringify(sim.state),before);
 });

@@ -1,8 +1,10 @@
-# Qualify the integrated Earth walk, 2026-10-11
+# Qualify the installed readable Earth movement, 2026-10-11
 
-Freeze the sensory review head, run the complete source verifier with D heavy storage and the explicit C CPU-fixture override, then use freshly command-earned current-head cohorts. Run native footsteps and the required fresh wildlife primary/boundary/aftermath checks without loosening their guards. Inspect western ridges and water in both cameras; record one short bounded actual gameplay clip. Keep a separate labelled30-second real-GPU frame-cadence sample if available. Human audio, pacing and exploration acceptance remain pending.
+Freeze and normally push the reviewed combined presentation head. Run SOURCE08 with the original full verifier, fixtures/assertions/budgets, global D browser TEMP and explicit small CPU child temp. Use freshly command-earned blade/bow/veteran/current cohorts, then original native-primary03, footsteps03, native-boundary03 and unchanged native-aftermath03. Preserve the actual dc6f portrait-width failure; do not lower10x24, change cameras, backfill rewards or reuse historical cohorts. Recording and desktop cadence must wait for complete current aftermath success.
 
-Push a draft review stacked on PR54, attach it, and verify the exact pushed head in the existing independent STATION after its current job closes. Preserve all older failures and source epochs. Reuse checkouts, small stages and bounded media; no new full-game copy or broad cleanup. This milestone leaves the wider production goal active and the old heartbeat paused.
+Inspect two bounded native stone views, then the real-input cancelled windup for blade/bow with ordinary RAF/test flags off. Missed short observation windows stay nonqualifying; accepted in-flight arrows retain their actual ownership. No pixel/occlusion/human-feel claim follows from CPU projections. Ask Dom about route clarity, camera comfort, unobtrusive audio and whether fights/rewards encourage another outing after actual qualification.
+
+Do not duplicate or mutate live independent STATION full remote02 at dc6f. After closure, fetch final review head normally and reuse that clean independent checkout for exact required remote verification. Finish current evidence/continuity and PR55 before the next geography/terrain production slice. Keep broad production goal ACTIVE and heartbeat PAUSED; source/render checks do not establish AAA or complete seamless world. Preserve every existing system/save/choice/camera and storage/authority boundaries.
 
 ---
 

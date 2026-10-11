@@ -83,7 +83,7 @@ function pose(options={}){
  const phase=finite(options.phase),walkingBlend=unit(options.blend),time=finite(options.time);
  const reducedMotion=!!options.reducedMotion,combatScene=!!options.combatScene,swimming=!!options.swimming;
  const style=['blade','bow'].includes(options.style)?options.style:'none';
- const combatPhase=combatScene&&['anticipate','recover'].includes(options.combatPhase)?options.combatPhase:'idle';
+ const combatPhase=combatScene&&['anticipate','recover','withdraw'].includes(options.combatPhase)?options.combatPhase:'idle';
  const combatProgress=combatPhase==='idle'?0:unit(options.combatProgress),guarded=combatScene&&!!options.guarded;
  const releaseOrigin=options.releaseOrigin==='ready'?'ready':'queued';
  const gait=(swimming?0:walkingBlend)*(reducedMotion?.55:1),stride=Math.sin(phase)*gait;
@@ -102,14 +102,15 @@ function pose(options={}){
  }
  const swing=reducedMotion?0:stride*.16;
  let left=[-.265,.845+torsoY,swing],right=[.265,.845+torsoY,-swing];
- const p=smooth(combatProgress);
+ // Withdrawal reverses only the observed preparation; no follow-through cut.
+ const p=smooth(combatPhase==='withdraw'?unit(options.withdrawFrom)*(1-smooth(combatProgress)):combatProgress);
  const upperBody={yaw:0,lean:0,shift:[0,0,0]},pivot=[0,.985+torsoY,0];
  let bladeAxis=norm([.18,.94,.28]);
  if(combatScene&&style==='bow'){
   const readyLeft=[0,1.30+torsoY,.50],readyRight=[0,1.30+torsoY,.28];
   const drawnLeft=[0,1.37+torsoY,.52],drawnRight=[0,1.43+torsoY,.14];
   left=readyLeft;right=readyRight;
-  if(combatPhase==='anticipate'){
+  if(combatPhase==='anticipate'||combatPhase==='withdraw'){
    left=mix(readyLeft,drawnLeft,p);right=mix(readyRight,drawnRight,p);
    if(!reducedMotion){upperBody.yaw=.09*p;upperBody.lean=-.025*p;}
   }else if(combatPhase==='recover'){
@@ -132,7 +133,7 @@ function pose(options={}){
   const outsideRight=releaseOrigin==='ready'?[.36,1.03+torsoY,.37]:[.40,1.19+torsoY,.38];
   const readyAxis=bladeAxis,preparedAxis=norm([.38,.27,-.88]),followAxis=norm([-.62,.20,.76]);
   right=readyRight;left=readyLeft;
-  if(combatPhase==='anticipate'){
+  if(combatPhase==='anticipate'||combatPhase==='withdraw'){
    right=mix(readyRight,preparedRight,p);left=mix(readyLeft,preparedLeft,p);
    if(!reducedMotion){bladeAxis=directionMix(readyAxis,preparedAxis,p);upperBody.yaw=-.14*p;upperBody.lean=-.04*p;upperBody.shift=[.008*p,0,-.012*p];}
   }else if(combatPhase==='recover'){

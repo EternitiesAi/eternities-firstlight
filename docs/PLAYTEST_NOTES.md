@@ -1,8 +1,10 @@
-# Earth sensory evidence and open human questions, 2026-10-11
+# Earth rendering and pending human acceptance, 2026-10-11
 
-Parent inspected actual paired1440x960 water PNGs at239/7636 in Adventure and Diorama, with balanced/high captures retained. The Adventure view has a clearer teal water body and less washed reflection; the Diorama difference is subtler. Reduced motion froze water time, so these images do not establish moving ripples. Square banks and the large box-shaped overlook stone remain visible limitations.
+Parent and independent colleague inspected two actual1440x960 balanced horizon PNGs at dc6f. Adventure shows clear layered pale western peaks behind the trees; lower/wider Follow crops the mountain mass across the top. The benefit is camera-dependent. Earlier239/7636 paired water photographs retain their original epochs. Square country banks remain a visible landscape limitation.
 
-Footsteps and western silhouettes are integrated but have no current native/listening acceptance yet. Ask Dom after the qualified build: do the footsteps sound grounded and unobtrusive, does the horizon make the walk feel larger, and are the route and scenery readable in both cameras? No human answer, general FPS, mobile quality or AAA completion is implied by automated checks.
+Actual dc6f Aftermath02 failed civilian portrait readability:19parts/4380vertices,0clipped,9.97786px wide/41.30425px high at390x844 Follow/reduced motion. The exact rejected live camera metadata was not retained. A source-led fuller coat/trim is now installed with sampled CPU width margin, unchanged height/radius and native guard; actual new appearance/occlusion remains pending. The new stone and cancelled-attack lowering also await ordinary native view/input inspection despite43 installed CPU passes.
+
+Footsteps02 passed44 native checks and scheduled soil11/timber100/stone42. The retained32,283-byte isolated stone-bus WebM decodes correctly as sparse timestamped Opus audio; it is not18continuous PCM seconds or the full ambient/music mix. Human listening, combat feel, pacing, camera comfort and mobile usability remain unanswered. No current gameplay clip, FPS certification or founder approval is claimed. Ask after qualification: were the route and people readable in both cameras, did sound sit comfortably in the mix, and did the fight and reward make another outing appealing?
 
 ---
 

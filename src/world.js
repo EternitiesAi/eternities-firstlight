@@ -254,8 +254,24 @@ class WorldArt{
    if(weapon.style!=='bow')for(let i=r.fx.length-1;i>=0;i--)if(!owner.blockedFx.has(r.fx[i])&&(r.fx[i].kind==='slash'||r.fx[i].kind==='pulse')){release=r.fx[i].at;break;}
    if(Number.isFinite(release)&&a.elapsed>=release&&a.elapsed-release<.28)combat={phase:'recover',progress:(a.elapsed-release)/.28,releaseOrigin:'ready'};
   }
+  // An observed windup withdrawn by the real combat owner lowers to ready.
+  // This local presentation never fabricates a release, hit or rule cooldown.
+  const now=a.elapsed,observed=owner.observedWindup;
+  if(reducedMotion||!combatScene||sim.worldDive||now<tactics.guardUntil){
+   owner.observedWindup=null;owner.withdrawal=null;
+  }else if(combat.phase==='anticipate'){
+   owner.observedWindup={progress:combat.progress,at:now};owner.withdrawal=null;
+  }else if(combat.phase==='recover'){
+   owner.observedWindup=null;owner.withdrawal=null;
+  }else{
+   if(!sim.paused&&observed&&now>=observed.at&&now-observed.at<=.12)owner.withdrawal={from:observed.progress,at:now};
+   owner.observedWindup=null;
+   const q=owner.withdrawal;
+   if(q&&now>=q.at&&now-q.at<.10)combat={phase:'withdraw',progress:(now-q.at)/.10,withdrawFrom:q.from};
+   else owner.withdrawal=null;
+  }
   this.travelerMotion=G.RealmTravelerArt.motion(this.travelerMotion,{x:p.x,z:p.z,scene:this.room,time:sim.elapsed,walking:sim.walking,paused:sim.paused,reducedMotion});
-  const pose=G.RealmTravelerArt.pose({...this.travelerMotion,time:this.travelerMotion.time,reducedMotion,swimming:!!sim.worldDive&&!G.RealmWorldFoundations.divingStatus(sim,null)?.dryCourt,style:weapon.style,combatScene,combatPhase:combat.phase,combatProgress:combat.progress,releaseOrigin:combat.releaseOrigin,guarded:combatScene&&a.elapsed<G.RealmCombat.runtime(sim).guardUntil});
+  const pose=G.RealmTravelerArt.pose({...this.travelerMotion,time:this.travelerMotion.time,reducedMotion,swimming:!!sim.worldDive&&!G.RealmWorldFoundations.divingStatus(sim,null)?.dryCourt,style:weapon.style,combatScene,combatPhase:combat.phase,combatProgress:combat.progress,withdrawFrom:combat.withdrawFrom,releaseOrigin:combat.releaseOrigin,guarded:combatScene&&a.elapsed<G.RealmCombat.runtime(sim).guardUntil});
   const starts=Object.fromEntries(Object.entries(out).map(([k,v])=>[k,v.length]));
   const armorColor=G.RealmAdventure.GEAR[a.equipment.armor]?.color||null;
   this.travelerFrame=G.RealmTravelerArt.draw(out,{x:p.x,z:p.z,yaw:p.yaw,base,profile:sim.state.visitor,color:X.CLOAKS[sim.state.visitor.cloak],armorColor},pose);

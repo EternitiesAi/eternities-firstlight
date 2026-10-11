@@ -52,7 +52,13 @@ function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isIn
   if(!gallery&&!/bridge/.test(p.source))a.box(p.x,(p.y-.11-.5)/2,p.z,p.w,p.y-.11+.5,p.d,def.palette.stone,decor);
  }
  if(def.id==='earthlands')for(const bank of coastBanks(rawPartitions(def))){const{kind,p,s,c,...opt}=bank;a.add(kind,...p,...s,c,opt);}
- for(const p of def.solids)a.box(p.x,W.height(def.room,p.x,p.z)+p.h/2,p.z,p.w,p.h,p.d,p.color??def.palette.stone,{rough:.96,cameraSolid:true,cutaway:true,worldSolid:true,worldSolidId:p.id,...(p.id==='hearthwater-fingerpost'?{earthRoadPart:'post'}:{})});
+ for(const p of def.solids){
+  const args=[p.x,W.height(def.room,p.x,p.z)+p.h/2,p.z,p.w,p.h,p.d,p.color??def.palette.stone,{rough:.96,cameraSolid:true,cutaway:true,worldSolid:true,worldSolidId:p.id,...(p.id==='hearthwater-fingerpost'?{earthRoadPart:'post'}:{})}];
+  // Only this canonical Earth landmark changes mesh; the full physical and
+  // camera envelope, material and worldSolid owner remain the original ones.
+  if(def.id==='earthlands'&&p.id==='overlook-stone')a.add('overlook-stone',...args);
+  else a.box(...args);
+ }
  if(def.dive){const d=def.dive,v=d.volume;
   a.box(v.x,d.minY-.36,v.z,v.w,.12,v.d,0x638b84,decor);
   // The maintained air court uses the existing preference-controlled roof

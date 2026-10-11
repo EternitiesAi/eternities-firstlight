@@ -12,7 +12,7 @@ play remain available.
 Continuing Earth production is under review in
 [PR55](https://github.com/EternitiesAi/eternities-firstlight/pull/55), stacked
 on the wildlife and working-road changes. It adds optional ground-aware
-footsteps, clearer Earth water and a small western scenic horizon. See the
+footsteps, clearer Earth water, a small western scenic horizon, a readable roadkeeper profile, a faceted overlook stone and cancelled-attack lowering. See the
 [sensory pass record](docs/development/EARTH_WALK_SENSORY_2026-10-11.md) for
 current checks and remaining native/human gates. The exact older finite-draft
 qualification below retains its original source epoch.

@@ -1,8 +1,10 @@
-# Earth travel sensory integration, 2026-10-11
+# Earth readability and movement integration, 2026-10-11
 
-Parent owns `gameplay/earth-walk-sensory-20261011`, stacked on PR54 head `239ccb0349ba164069748c474016e298d8bc9d26`. Earth water optics, optional ground-aware footsteps, the post-autosave roadkeeper diagnostic refresh and three western scenic ridges are integrated. Read `docs/development/EARTH_WALK_SENSORY_2026-10-11.md` for the bounded scope and evidence. Current source/native/remote qualification is pending; do not reuse older-head receipts as a current pass.
+Parent owns `gameplay/earth-walk-sensory-20261011` / draft PR55, stacked on PR54/239ccb0. The independently reviewed roadkeeper profile, one original faceted overlook stone and observed cancelled-attack lowering are now installed with existing water/footsteps/western ridges. Actual installed focused checks pass43/43, zero skips; builder outputs are identical3,298,465 bytes, SHA2566507dc92a51b1f9be211919e3709d059a5c1ada062591f25d15f264b893b78dc. These are CPU/build results; current native rendering and complete qualification are pending. Read docs/development/EARTH_WALK_SENSORY_2026-10-11.md.
 
-The independent STATION remains owned by the running full verifier at239. Do not mutate it while live. Two existing colleagues own only small D staging files; parent owns integration and browser execution. Preserve all saves, ledgers, cameras and World9/Adventure12/WildSigns1. Keep the production goal active and the old heartbeat paused. Existing storage, blocked-deletion, no-main-merge, no-deploy and no-paid-provider restrictions remain in force.
+Previous clean dc6f Source07/Primary02/Footfalls02/Boundary02 passed. Aftermath02 failed one actual portrait width assertion after311 passing checks, with both contexts/server closed. Keep that failure and the original10x24 guard; never rebind old reports/cohorts. Source08 and fresh current cohorts precede Primary03/Footfalls03/Boundary03/Aftermath03. Recording/cadence remain held until complete current aftermath passes. Parent owns all browser/GPU execution and freezes ROOT while an owned case is live.
+
+Independent STATION remains owned by live full remote02 at dc6f, not239; do not mutate it before closure. Two existing Sol colleagues write small D stages only: A stone observation, B original-input cancelled-attack observation. Reuse ROOT/STATION, preserve all systems/saves/ledgers/XP/choices and World9/Adventure12/WildSigns1, both cameras. Wider production goal ACTIVE unfinished, old heartbeat PAUSED. All existing storage/no-merge/no-deploy/no-paid/no-personal-save/no-unrelated-stop/blocked-deletion boundaries remain. Frontier Oct11 check already done.
 
 ---
 

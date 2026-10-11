@@ -9,9 +9,10 @@ function shape(pose){
  const emit=(kind,p,s,c,part,rotation=[0,0,0])=>out.push({kind,p:E.M.transform(root,p),s:s.slice(),m:E.M.mul(root,E.M.compose(...p,...s,...rotation)),
   c:E.hex(c),rough:.97,cameraSolid:false,cutaway:false,appearanceOnly:true,roadkeeperActor:O.ID,roadkeeperPart:part,roadkeeperResolution:pose.resolution});
  const stride=pose.walking&&!quiet?Math.sin(pose.gait)*.12:0,lift=pose.walking&&!quiet?Math.abs(Math.cos(pose.gait))*.025:0;
- emit('box',[0,.98,0],[.48,.64,.28],PALETTE.coat,'work-coat');
- emit('box',[0,1.24,.151],[.16,.23,.018],PALETTE.shirt,'shirt-front');
- emit('box',[0,.91,.157],[.44,.10,.025],pose.resolution==='signed-loop'?PALETTE.signed:PALETTE.cleared,'chosen-account-band');
+ // The work coat keeps volume in profile; its front trim follows the surface.
+ emit('box',[0,.98,0],[.48,.64,.50],PALETTE.coat,'work-coat');
+ emit('box',[0,1.24,.261],[.16,.23,.018],PALETTE.shirt,'shirt-front');
+ emit('box',[0,.91,.267],[.44,.10,.025],pose.resolution==='signed-loop'?PALETTE.signed:PALETTE.cleared,'chosen-account-band');
  emit('round',[0,1.53,0],[.26,.33,.25],PALETTE.skin,'head');
  emit('box',[0,1.72,-.012],[.32,.11,.29],PALETTE.cap,'soft-work-cap');
  emit('box',[0,1.687,.12],[.34,.035,.16],PALETTE.cap,'cap-brim');

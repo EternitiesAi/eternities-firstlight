@@ -1,3 +1,27 @@
+# Earth movement and silhouette follow-up, 2026-10-11
+
+This continues PR55 from clean pushed dc6f3ac2b19a14fdd40f0e66287050b190f0827c, stacked on PR54/239ccb0349ba164069748c474016e298d8bc9d26. The next integration combines three independently reviewed presentation changes: a readable roadkeeper profile, one original faceted Earth overlook stone, and a short lowering motion when an observed blade/bow windup is actually cancelled. This is a bounded production slice, not whole-game completion.
+
+The unchanged native aftermath02 gate failed at dc6f after311 passing checks: the fully unclipped19-part civilian measured9.9778627px wide in390x844 Follow, below the original10px guard. Both cases/server closed; raw rejection/screenshot/stores remain. Exact rejected live camera metadata is unknown. A retained close-world camera-profile reconstruction with actual App camera, Engine geometry and Float32 instance packing reproduces its width. Coat depth.28→.50 and corresponding front trim improve the1296-sample minimum8.86209→13.14402px while retaining19 parts/4380 vertices, height1.78, radius.6 and existing materials. Keep the original native10x24 guard unchanged; sampled CPU projections do not establish rendered occlusion or every camera.
+
+The single canonical overlook-stone at35,-23 replaces only its box appearance with an original closed48-triangle irregular mesh. Its location, full2.8x1.8x2.5 envelope, cameraSolid/worldSolid/cutaway/material and dry-route owner stay unchanged. All other boxes and physical scenery remain. It adds36 triangles per pass and one3456-byte shared mesh; conservative original box corners remain collision authority. Actual paired final pixels are pending.
+
+Cancelled-attack lowering uses the existing WorldArt presentation owner. Only a genuinely observed windup can reverse into a100ms withdrawal; actual releases/new anticipation win. It changes no hit/sound/projectile, stamina, range, cooldown, target control or save field. Reduced motion, death, guard, dive, simulation/scene/equipment ownership and stale clocks keep their existing fences. Legacy traveler_browser runs a test/CAPTURE facade; it must not be described as ordinary-RAF native coverage. Actual visible native cancellation acceptance remains pending.
+
+At dc6f SOURCE07 passed214 commands/142 syntax, Node1996PASS/0FAIL/2skips and Python442tests/10reported skips. Fresh command-earned blade/bow/veteran and whole-draft journeys passed. Hardware primary02 passed1939 checks; footsteps02 passed44 and boundaries02 passed2820. Footsteps scheduled soil11/timber100/stone42; one32,283-byte isolated stone-bus recording decodes successfully to sparse timestamped Opus audio, not18continuous PCM seconds or fullmix/human listening. Aftermath02 remains failed and no capture02 movie/GPU cadence was executed.
+
+Independent horizon-native01 closed successfully with two1440x960 balanced PNGs1,800,102bytes and all owned resources closed. Parent and independent colleague inspected: Adventure shows clear layered pale western peaks; wider/lower Follow crops the mountain mass at the top. This is camera-dependent scenery evidence at dc6f, not a substitute for failed aftermath or full-gate acceptance. Historical water photos retain exact239/7636 epochs.
+
+After integration regenerate identical HTML, commit/push normally and freeze the exact new head. Run SOURCE08 with original fixtures/budgets and fresh legitimate cohorts. Then native-primary03, footsteps03, native-boundary03 and unchanged native-aftermath03; recording/cadence remain held until the complete current aftermath passes. Inspect a bounded two-camera stone collection separately and qualify actual cancellation through production input. Reuse the independent remote STATION only after its live dc6f full02 closes, then normally fetch exact final source and run the required remote checks. Do not rebind old reports/cohorts to the new head.
+
+World9/Adventure12/WildSigns1 and browser keys do not migrate. Preserve personal saves (not inspected), notes/exports/music, gear/sockets/upgrades, all claims/rewards, storedXP/choices, companion, housing/construction/crops/crafting and both cameras. Reuse ROOT/STATION and small D stages, no asset download/full-game copy/cleanup. Wider production goal ACTIVE, original heartbeat PAUSED. No main merge/deployment/paidprovider/billing/fakeonline/proprietary extraction/Unreal rewrite/unrelated shutdown/blocked deletion retry. Frontier Oct11 research check already completed; no authority expanded.
+
+Actual installed combined follow-up checks passed43/43/zero skips. Builder pages are identical3,298,465 bytes, SHA2566507dc92a51b1f9be211919e3709d059a5c1ada062591f25d15f264b893b78dc. Current complete source/native/remote gates remain pending.
+
+---
+
+## Earlier implementation and evidence epochs
+
 # Earth walk sensory pass
 
 This review branch starts at PR54 head `239ccb0349ba164069748c474016e298d8bc9d26`. It keeps the browser game, both cameras, existing geography and every save and reward ledger. World9, Adventure12 and WildSigns1 remain unchanged. No new realm, class, level cap, economy or consent is introduced.

@@ -1,8 +1,12 @@
-# Bounded Earth sensory rules, 2026-10-11
+# Source-led Earth readability, 2026-10-11
 
-Separate Earth optical appearance from legacy bridge-channel admission; retain channel geometry, current, foam and reflection ownership. Grounded footsteps use three original procedural buffers, at most two voices, actual displacement and supported ground. Unknown ground, menus, mute, hidden state, death, teleport and clock gaps reset or stay silent. Keep the existing master/music/ambient path and avoid adding durable fields.
+Keep the native10x24 portrait guard. Fix the roadkeeper's actual side profile with coat depth.28→.50 and corresponding front trim only; retain19parts/4380vertices, radius.6, height1.78, materials/ownership/rules. A1296-sample actual packed-geometry CPU sweep gains min8.86209→13.14402px at original mobile Follow scale. The retained camera-profile reconstruction reproduces9.97786px, but it does not recover unretained live camera metadata or qualify all continuous poses/occlusion. Require original native rerun and visual inspection.
 
-Three western ridges are scenery outside the rotated physical boundary, sharing the original336-triangle mountain mesh:1008 added triangles per pass, at most3024 across three passes. They grant no ground, travel or reward authority. Refresh roadkeeper presentation only after the existing periodic save; keep the getter fail-closed and preserve all original failed evidence. Stored XP, equipment, sockets, choices and World9/Adventure12/WildSigns1 do not migrate.
+One canonical Earth overlook-stone changes its box mesh to an original closed48-triangle faceted shape. Location/full2.8x1.8x2.5 camera/physical envelope, ground, material, collision and every other box stay unchanged. Conservative box corners remain the physical authority. No world expansion or new navigation is inferred from a mesh.
+
+Only genuinely observed windup can lower through100ms render-only withdrawal. Accepted releases/new anticipation take priority; no new damage, sound, arrow, stamina, cooldown or durable field. Existing reduced-motion/death/guard/dive/owner/clock fences remain. Legacy test/CAPTURE-mode traveler suites are labelled facades, never ordinary-RAF acceptance. Missed native short windows and old released arrows must not be counted as successful cancellation proof.
+
+Preserve old failed source/native epochs and exact source separation. New source/page requires new legitimate cohorts and current gates; recording/cadence remain held until aftermath passes. World9/Adventure12/WildSigns1 and storedXP/keys/choices do not migrate. Wider production unfinished; heartbeat paused, no merge/deploy/paidprovider/personal-save read/full-copy/unrelated stop/blocked-deletion retry.
 
 ---
 
