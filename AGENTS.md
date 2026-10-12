@@ -10,6 +10,13 @@ Ten existing affected CPU components pass 64 / 0 / 0, serially. The older
 garden-quality oracle was repaired after its same failure reproduced on the
 clean predecessor; all original nonplant, state and owner assertions remain.
 
+Implementation commit 3ee05aca8240eb236be9a6b53db734fc4f483766 was pushed,
+then normally fetched into the existing clean independent D clone. All eleven
+affected components passed 77 / 0 / 0 in 50,186.076 ms. Its actual rebuild
+closed exit0 with unchanged identical 3,319,540-byte pages, SHA256
+7855015a4ec987795b94b1a6644bad5fd123cdf98f95e7b0905a72f63455b55d;
+head and Git status remained unchanged/clean. These are focused results.
+
 Keep all failed probes and logs. No new browser, rendered worktable image,
 footage, GPU measurement or complete gate is claimed. Host-only immediate
 admission refused the next full verifier at 2,681,140 KiB free; later free RAM

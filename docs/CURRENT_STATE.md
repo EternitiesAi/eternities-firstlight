@@ -19,6 +19,13 @@ The fresh full-source admission refused before launch under low host RAM.
 VM/Claude stay untouched; schemas, systems and both cameras are preserved.
 Goal ACTIVE unfinished; heartbeat PAUSED; no merge or deployment.
 
+Pushed implementation: 3ee05aca8240eb236be9a6b53db734fc4f483766. Fresh remote
+fetch in the reused independent clean D clone passed all eleven affected
+components: 77 / 0 / 0, 50,186.076 ms. Rebuild exit0 retained checked-in bytes,
+unchanged head and clean Git. Both pages: 3,319,540 bytes / SHA256
+7855015a4ec987795b94b1a6644bad5fd123cdf98f95e7b0905a72f63455b55d.
+This exact-head component/build evidence is separate from the pending full gate.
+
 ---
 
 # Paid Choir accounts keep an honest optional history, 2026-10-12

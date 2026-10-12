@@ -15,6 +15,11 @@ rules: paid markers need canonical claim history, and the existing High-only
 flowers invalidate an old all-tier-equal oracle. Preserve both failures and
 the clean predecessor reproduction; retain all substantive original assertions.
 
+The pushed implementation 3ee05aca8240eb236be9a6b53db734fc4f483766 reproduces
+77 / 0 / 0 affected tests and the byte-identical checked-in rebuild in the reused
+independent clean remote clone. That exact focused success grants no native,
+full-source, human or production-completion claim.
+
 The Rielle garden failure is a pose/framing observation, not a camera-identity
 or absent-mesh defect: internal Follow means UI Diorama. Do not change cameras,
 trees or the visibility predicate to obtain a pass. Later ordinary play must

@@ -8,6 +8,13 @@ pass 64 / 0 / 0 in 37,671.791 ms. The paid survey marker is earned through real
 kit/travel/accept/observe/claim commands with synthetic poses and storage;
 this is not an ordinary-control journey or native persistence test.
 
+Fresh exact remote implementation 3ee05aca8240eb236be9a6b53db734fc4f483766:
+77 pass / 0 fail / 0 skip across the eleven affected components, 50,186.076 ms.
+The real rebuild closed exit0 with no stale input or Git change; both existing
+pages remain identical 3,319,540 bytes, SHA256
+7855015a4ec987795b94b1a6644bad5fd123cdf98f95e7b0905a72f63455b55d.
+The independent clone was reused and normally fetched, not newly duplicated.
+
 Retain RED01 (7 pass / 6 fail), GREEN01 (12 / 1; invalid new claim fixture),
 RELATED01 (63 / 1; older quality oracle), and clean predecessor BASE_QUALITY01
 (3 / 1). The corrected fixture preserves strict claim validation. The corrected

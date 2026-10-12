@@ -117,6 +117,17 @@ source reviews are separate from the parent's actual executions.
 Growth is 959 bytes per existing page; no third full build or media copy is
 added. Fresh pushed-head reproduction is a separate delivery step.
 
+The implementation was committed and pushed as
+`3ee05aca8240eb236be9a6b53db734fc4f483766`. REMOTE_PREP01 normally fetched
+that exact branch into the existing clean independent D qualification clone;
+no new full copy was allocated. REMOTE_COMPONENT01 closed exit0: **77 pass /
+0 fail / 0 skip**, 50,186.076 ms, across the eleven affected components (the
+ten listed above plus tests/world_art.test.cjs), with serial file workers.
+The subsequent actual rebuild closed exit0, retained both checked-in page
+hashes/sizes exactly, reported staleInput=false and left head unchanged and
+Git clean. Raw component/build logs and the closed receipt are retained.
+This is focused remote source/build proof; the complete gate remains pending.
+
 ## Remaining acceptance and launch
 
 World9 / Adventure12 / WildSigns1 are unchanged; there is no save migration.

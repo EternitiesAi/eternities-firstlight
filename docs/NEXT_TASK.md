@@ -1,7 +1,9 @@
 # Qualify crafted worktables and complete the ordinary outing, 2026-10-12
 
-Finish the real offline build and exact pushed-head component/build checks in
-the existing independent D qualification clone. Retain the failed worktable
+The real offline build and exact implementation-head checks are complete:
+freshly fetched clean 3ee05aca8240eb236be9a6b53db734fc4f483766 passed all
+eleven focused components, 77 / 0 / 0, and rebuilt identical unchanged HTML in
+the reused independent D clone. Retain the failed worktable
 fixture, the preexisting quality-oracle failure and its clean predecessor
 reproduction. No validator, deadline or actual visibility requirement is waived.
 Read development/HEAVEN_WORKTABLES_2026-10-12.md.
