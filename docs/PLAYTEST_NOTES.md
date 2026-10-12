@@ -1,3 +1,11 @@
+# A detecting paid-account projection check, 2026-10-12
+
+Four new labelled fixture cases exercise actual page/point projection and production physical/claim/equip/fitting commands. Complete component30pass/0fail/0skip659.5023ms. RED01 had one genuine dead-route failure and one new oracle error about legitimate revision increments; correctedRED02 new4cases3pass/1fail precedes the UI fix. All original26cases retained. Matching rebuilt pages3318581B/SHA2cb6e1aa906be8d5448fc11c1380d6bf341e21d323b206c54e29981d183f32d0.
+
+No browser pixels, actual combat footage, native persistence, GPU or human playtest is claimed. Old whole-source timeout/startup/camera failures remain. Fresh remote and full-current gates are separate. VM/Claude/personal saves untouched; no new profiles/videos/full copies. See development/CHOIR_COMPLETED_ACCOUNT_2026-10-12.md.
+
+---
+
 # A timeout stays failed; no new gameplay claim, 2026-10-12
 
 Complete source at fetched9ef6e9b failed at original180s rules deadline after build/all142syntax. Partial record775 has no total; Python/later journeys unrun. Final remote focused component5OK4.462s, no skip, with synthetic external transport. Neither supplies gameplay, native persistence, performance or human acceptance. Preserve the full raw failure and existing garden/startup negative evidence.

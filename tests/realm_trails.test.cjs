@@ -258,3 +258,57 @@ test('Choir return: a veteran fitting stays on its owned weapon and never implie
  assert.ok(sim.adventureCommand('choir-return-equip-'+(++serial),'equip',{id:'trail_bow'}).ok);
  const equipped=sim.snapshot();html=reader.page('heaven');assert.match(html,/Fitting retained on your equipped/);assert.doesNotMatch(html,/not currently equipped/);assert.deepEqual(sim.snapshot(),equipped);
 });
+
+test('Paid Choir account: omitted spillway has no refused route and preserves blade, bow and veteran history',()=>{
+ for(const variant of ['blade','bow','veteran']){
+  const{sim,d}=choirReturnReady();assert.ok(action(sim,d,'claim').ok);
+  if(variant!=='blade')choirBow(sim);
+  if(variant==='bow')assert.ok(sim.adventureCommand('paid-account-bow-'+(++serial),'equip',{id:'trail_bow'}).ok);
+  if(variant==='veteran'){
+   assert.ok(W.leave(sim).ok);sim.state.player={x:11,z:9,yaw:0};
+   const a=sim.state.adventure;a.xp=9999;a.defeated.push('river-old-bristle');
+   a.starter={version:1,accepted:true,bundles:Q.BUNDLES.map(b=>b.id),reward:{choice:'temper',weapon:'trail_blade'}};
+   a.pursuit.fittings.trail_blade=2;a.arsenal.sockets.trail_blade='ruby';a.ore=3;a.coins=8;
+   assert.ok(RC.command(ctx(sim),'trail_bow',success).ok);enter('heaven',sim);
+  }
+  pose(sim,{...d.giver,medium:'dry'});const before=sim.snapshot(),html=choirReader(sim).page('heaven');
+  assert.doesNotMatch(html,/data-rpg="trail-walk" data-id="spillway"/);
+  assert.match(html,/optional · not recorded at payment/);
+  assert.match(html,/TRAIL COMPLETE · ONCE-ONLY CLAIM/);assert.match(html,/choir-return-plan/);
+  assert.deepEqual(sim.snapshot(),before,variant+' page is read only');assert.doesNotThrow(()=>C.validate(before));
+ }
+});
+test('Paid Choir account: the late optional physical interaction remains deliberate and cannot pay again',()=>{
+ const{sim,d}=choirReturnReady();let writes=0;
+ assert.ok(action(sim,d,'claim',{}, {save:()=>{writes++;return{ok:true};}}).ok);
+ const spillway=d.steps.find(s=>s.id==='spillway');pose(sim,spillway);
+ const reader=choirReader(sim),before=sim.snapshot(),html=reader.page('heaven');
+ assert.match(html,/data-rpg="trail-step" data-id="spillway"/);assert.match(reader.context(),/E · Set Yselle/);
+ assert.deepEqual(sim.snapshot(),before);assert.equal(writes,1);
+ const economy=copy(sim.state.adventure);
+ assert.ok(action(sim,d,'step',{step:spillway.id},{save:()=>{writes++;return{ok:true};}}).ok);
+ assert.equal(writes,2);assert.ok(sim.state.realmTrails.records[d.id].steps.includes(spillway.id));
+ economy.revision++;assert.deepEqual(sim.state.adventure,economy);assert.equal(sim.state.realmTrails.records[d.id].claimed,true);
+ const recorded=sim.snapshot();const duplicate=action(sim,d,'claim',{}, {save:()=>{writes++;return{ok:true};}});
+ assert.ok(duplicate.ok&&duplicate.duplicate);assert.equal(writes,2);assert.deepEqual(sim.snapshot(),recorded);
+ assert.doesNotThrow(()=>C.validate(recorded));
+});
+test('Paid Choir account: an optional preparation recorded before payment remains complete',()=>{
+ const{sim,d}=choirReturnReady(),spillway=d.steps.find(s=>s.id==='spillway');pose(sim,spillway);
+ assert.ok(action(sim,d,'step',{step:spillway.id}).ok);pose(sim,{...d.giver,medium:'dry'});assert.ok(action(sim,d,'claim').ok);
+ const before=sim.snapshot(),html=choirReader(sim).page('heaven');
+ assert.match(html,/Set Yselle’s service spillway · optional · complete/);
+ assert.doesNotMatch(html,/not recorded at payment/);assert.deepEqual(sim.snapshot(),before);
+});
+test('Unpaid partial Choir: optional routes and nearby work remain available without read side effects',()=>{
+ for(const variant of ['blade','bow']){
+  const sim=enter('heaven'),d=definition('heaven');assert.ok(accept(sim,d).ok);if(variant==='bow')choirBow(sim);
+  if(variant==='bow')assert.ok(sim.adventureCommand('unpaid-account-bow-'+(++serial),'equip',{id:'trail_bow'}).ok);
+  const west=d.steps.find(s=>s.id==='relay-west'),spillway=d.steps.find(s=>s.id==='spillway');pose(sim,west);
+  assert.ok(action(sim,d,'step',{step:west.id}).ok);pose(sim,{...d.giver,medium:'dry'});
+  const reader=choirReader(sim),far=sim.snapshot();assert.match(reader.page('heaven'),/data-rpg="trail-walk" data-id="spillway"/);
+  assert.deepEqual(sim.snapshot(),far);pose(sim,spillway);const near=sim.snapshot();
+  assert.match(reader.page('heaven'),/data-rpg="trail-step" data-id="spillway"/);assert.doesNotMatch(reader.page('heaven'),/not recorded at payment/);
+  assert.deepEqual(sim.snapshot(),near);assert.equal(sim.state.realmTrails.records[d.id].claimed,false);
+ }
+});
