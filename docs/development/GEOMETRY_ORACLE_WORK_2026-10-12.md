@@ -53,10 +53,45 @@ edits in memory and reproduced both clean54ad hashes exactly. All other bytes,
 The colleague executed no product module, test, benchmark, Git or browser.
 Parent execution results and source-only review remain distinct.
 
+## Fresh remote and complete Source04 attempt
+
+Pushed94189d5f31de29b2049ef25776ddde5f47d6773b was normally fetched into the
+reused independent clean qualification clone. The two components passed34 /
+0 / 0 in21,796.4325ms; actual build exit0 kept identical pages and clean Git.
+Host conditions differ from the paired observation; no controlled speed claim.
+
+Complete REMOTE_SOURCE04 was admitted immediately after Git/network preparation
+at10,405,800KiB free host memory. Build/all142 syntax passed. The complete
+main Node suite passed2107 / 0 / 2 existing skips,2109 total,51,765.4825ms.
+Python then FAILED:469 tests in86.811s,4fail / 1error / 10skip. All five
+failures were tests/test_roadkeeper_expectations.py: its historical helper
+pin refused the later reviewed consignment diagnostic helper before the
+intended ART guard. Later command-earned journeys did not run. The closed
+receipt retains exit1, same94189 head and clean Git; cause of the older
+timeouts remains UNKNOWN. Raw failure evidence is unchanged under
+D:/07-GAMES/Firstlight/artifacts/bounded-rule-workers-20261012/REMOTE_SOURCE04.
+
+The bounded fixture repair changes only tests/test_roadkeeper_expectations.py.
+It transports a copied expectation document in RAM with the single literal
+reviewed consignment LF pin079b8d4efb5179a0e4d55e2fb47d3988878b7bb54ccef5a4bb0b2e52a8474c8b
+from the independent actual-diff checkpoint in NATIVE_RESTART_EVIDENCE_2026-10-12.md.
+The original JSON/driver/raw helper pin and all ART pins remain unchanged.
+It adds detecting controls: real frozen JSON still refuses the newer helper;
+unreviewed actual helper bytes and an unreviewed helper pin both refuse under
+the declared view. All four original ART negative errors stay exact. These
+synthetic expectations confer no native/source admission. No accepted digest
+is derived from unknown current bytes. Component PIN_COMPONENT01 passed all
+eight tests in4.326s; final explicit synthetic naming and nonnested contexts
+then passed all eight in0.840s (PIN_COMPONENT02). Independent source review
+found the single-pin design sound and
+verified the remaining real source/page/hook operands without execution.
+
 The original142 rule files,214 ordered source commands and180/600-second
-budgets remain unchanged. Fresh exact remote focused checks and one complete
-gate with immediate at-least6GiB host free memory are still required. Neither
-the operation reduction nor the paired results waive complete acceptance.
+budgets remain unchanged; Python gains three strict detecting cases. A fresh
+exact pushed clone and complete gate with immediate at-least6GiB host free
+memory are still required after this repair. Neither operation reduction nor
+focused successes waive complete acceptance. Actual native remains separately
+unqualified and its older frozen expectations continue to refuse newer callers.
 Retain Source01/Source03 timeout, Source02 false admission, native startup and
 garden-framing failures. VM/Claude/personal saves remain untouched. Source
 schema World9 / Adventure12 / WildSigns1 and all runtime systems/both cameras

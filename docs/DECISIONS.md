@@ -1,3 +1,24 @@
+# Complete Node passes; a stale Python fixture is isolated, 2026-10-12
+
+Fresh exact remote94189 passed34 geometric cases and rebuilt unchanged matching
+3,319,540B HTML. Complete Source04 then passed all142 syntax checks and the
+main Node suite:2107 pass / 0 fail / 2 existing skips,51,765.4825ms. Python
+FAILED469 tests:4 failures /1 error /10 skips at an older helper pin in the
+roadkeeper ART regression. Later journeys did not run; raw failure retained.
+
+The bounded test-only repair selects one literal independently reviewed helper
+LF pin in an explicitly synthetic expectation view. The real frozen JSON and
+driver remain strict; new controls reject the real historical-helper mismatch,
+unreviewed helper bytes and an unreviewed helper pin. All original ART negative
+checks remain exact. This is no native/source admission. Read
+docs/development/GEOMETRY_ORACLE_WORK_2026-10-12.md.
+
+World9 / Adventure12 / WildSigns1, runtime/pages/saves/both cameras unchanged.
+Full142/214 coverage and180/600-second budgets remain. Fresh remote complete
+verification is pending. VM/Claude/personal saves remain untouched; no new full
+clone/profile/video. Goal ACTIVE unfinished; heartbeat PAUSED; no merge/deploy.
+
+---
 # Remove duplicate calculations, preserve every geometric acceptance check, 2026-10-12
 
 Reuse unchanged bounds only within the freshly generated quality/pose/state
