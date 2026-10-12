@@ -1,3 +1,30 @@
+# Refine two worktable silhouettes without moving their gameplay owners, 2026-10-12
+
+Use one explicit six-float mesh for exactly heaven-rielle-bench and
+heaven-yselle-table at Balanced/High. Seven closed members replace each old box
+within its exact original centered envelope. Keep the original tan material,
+static batching, camera/cutaway/solid flags and full collision/targeting proxy;
+the opening underneath is a decorative simplification. Low, fallback and
+foreign scenes stay exact. Seats and Arcade response furniture are separate.
+No new reward, inventory, lore, model pipeline or external texture is implied.
+
+Source cost is +144 scene triangles, unchanged instance count and one additional
+static mesh bucket; cached mesh 6,048 bytes. Native draw cost, shadow appearance
+and taste are unmeasured. Correct detecting fixtures, not validators or product
+rules: paid markers need canonical claim history, and the existing High-only
+flowers invalidate an old all-tier-equal oracle. Preserve both failures and
+the clean predecessor reproduction; retain all substantive original assertions.
+
+The Rielle garden failure is a pose/framing observation, not a camera-identity
+or absent-mesh defect: internal Follow means UI Diorama. Do not change cameras,
+trees or the visibility predicate to obtain a pass. Later ordinary play must
+reach an existing crown-view pocket and separately inspect the worktables.
+Keep immediate conservative 6 GiB broad admission, VM/Claude separation,
+bounded D storage, all save/system/camera contracts and prior negative evidence.
+Goal ACTIVE unfinished; heartbeat PAUSED; no main merge or public deployment.
+
+---
+
 # Remove a refused page route, keep a valid physical interaction, 2026-10-12
 
 The paid account suppresses a step walk button the existing dispatcher rejects and records optional omission honestly. Do not prohibit or hide the independently valid nearbyE/late physical action; its existing revision/save commit remains and its once-only fee stays paid. Reading changes no state, gear, reward or history. No new save migration, navigation rule or camera change.

@@ -1,3 +1,26 @@
+# Framed worktables in Heaven, 2026-10-12
+
+Rielle's craft bench and Yselle's worktable use a plank top, two aprons and four
+feet at Balanced/High instead of a full block. Their original warm material,
+dimensions, top details, persistent survey record and collision/camera proxies
+remain. Low and every other solid keep the old submission. The visible opening
+is decorative, not a crawl or projectile route. No interaction, reward, lore,
+renderer replacement or texture is added. See
+development/HEAVEN_WORKTABLES_2026-10-12.md.
+
+Current source components pass: WorldArt 13 / 0 / 0 in 10,137.5504 ms; ten
+affected existing components 64 / 0 / 0 in 37,671.791 ms, serially. These use
+synthetic authoring/GL transports and labelled positions. The garden-quality
+test's older flowers omission was reproduced on clean 0d83144, then corrected
+without changing the decorator or App handler. Actual new pixels, shadows,
+GPU cost, full current source/native and human acceptance are pending. Retain
+the earlier full-source timeout, startup mismatch and garden-framing failure.
+The fresh full-source admission refused before launch under low host RAM.
+VM/Claude stay untouched; schemas, systems and both cameras are preserved.
+Goal ACTIVE unfinished; heartbeat PAUSED; no merge or deployment.
+
+---
+
 # Paid Choir accounts keep an honest optional history, 2026-10-12
 
 After claiming the Choir without its optional spillway, the page now labels that omission and removes a walk control its dispatcher would always refuse. Unpaid routes and the legitimately available late physical interaction remain. No rule/save/fee/gear/camera changes. Complete affected component30P0F0skip659.5023ms; regenerated matching3318581B pagesSHA2cb6e1aa906be8d5448fc11c1380d6bf341e21d323b206c54e29981d183f32d0. Read development/CHOIR_COMPLETED_ACCOUNT_2026-10-12.md for labelled fixture and RED-oracle limits.

@@ -1,3 +1,26 @@
+# Two crafted Heaven worktables, 2026-10-12
+
+Parent owns gameplay/heaven-crafted-worktables-20261012, based on clean pushed
+0d83144 / draft PR67. Only Rielle's and Yselle's existing worktable base meshes
+change at Balanced/High. Their full solid/camera/targeting envelopes, materials,
+IDs and top dressing remain; Low and foreign scenes retain their old streams.
+Read docs/development/HEAVEN_WORKTABLES_2026-10-12.md. Five cases extend the
+existing eight WorldArt tests: final component 13 pass / 0 fail / 0 skip.
+Ten existing affected CPU components pass 64 / 0 / 0, serially. The older
+garden-quality oracle was repaired after its same failure reproduced on the
+clean predecessor; all original nonplant, state and owner assertions remain.
+
+Keep all failed probes and logs. No new browser, rendered worktable image,
+footage, GPU measurement or complete gate is claimed. Host-only immediate
+admission refused the next full verifier at 2,681,140 KiB free; later free RAM
+fell below 1 GiB. Do not touch the VM, guest, Claude Code, unrelated processes
+or shared installs to obtain headroom. Broad admission still requires at least
+6 GiB immediately before launch. Reuse existing D source/qualification storage.
+World9 / Adventure12 / WildSigns1, saves and both cameras stay unchanged.
+Goal ACTIVE unfinished; heartbeat PAUSED; no main merge or deployment.
+
+---
+
 # A completed Choir account; source review and focused qualification, 2026-10-12
 
 Parent owns gameplay/choir-completed-account-20261012 based onfb29966/PR66. Only the paid optional-step page route/label changes; late physical spillway/E and all command/save/reward/camera owners stay intact. Read docs/development/CHOIR_COMPLETED_ACCOUNT_2026-10-12.md. Four cases appended to the unchanged26-test prefix; complete component30P0F0skip659.5023ms. Both offline3318581B pages identicalSHA2cb6e1aa906be8d5448fc11c1380d6bf341e21d323b206c54e29981d183f32d0.

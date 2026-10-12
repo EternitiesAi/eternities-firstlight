@@ -1,3 +1,30 @@
+# Worktable geometry checks; native appearance pending, 2026-10-12
+
+No new browser or human playtest occurred. Actual production mesh/submission,
+Engine CPU packing and quality dispatch pass through labelled synthetic
+transports. Five new cases retain the original eight WorldArt tests: 13 pass,
+zero failure/skip, 10,137.5504 ms. Ten affected existing components, run serially,
+pass 64 / 0 / 0 in 37,671.791 ms. The paid survey marker is earned through real
+kit/travel/accept/observe/claim commands with synthetic poses and storage;
+this is not an ordinary-control journey or native persistence test.
+
+Retain RED01 (7 pass / 6 fail), GREEN01 (12 / 1; invalid new claim fixture),
+RELATED01 (63 / 1; older quality oracle), and clean predecessor BASE_QUALITY01
+(3 / 1). The corrected fixture preserves strict claim validation. The corrected
+quality test checks all 63 intended higher-tier flower parts separately while
+retaining complete nonplant ordered-stream, state and owner assertions. Its
+High reference is production-derived; existing planting tests independently
+retain clearance/material/budget checks. See
+development/HEAVEN_WORKTABLES_2026-10-12.md.
+
+Historical garden02 High captures are older 56d evidence: third-person shows
+crowns, but none project on-canvas at Rielle's default Follow/Diorama pose.
+The original 48 pass / 1 fail remains. No current worktable image, performance
+or full gate follows. VM/Claude and personal saves remain untouched; no new
+profile, video or full copy. Goal ACTIVE unfinished; heartbeat PAUSED.
+
+---
+
 # A detecting paid-account projection check, 2026-10-12
 
 Four new labelled fixture cases exercise actual page/point projection and production physical/claim/equip/fitting commands. Complete component30pass/0fail/0skip659.5023ms. RED01 had one genuine dead-route failure and one new oracle error about legitimate revision increments; correctedRED02 new4cases3pass/1fail precedes the UI fix. All original26cases retained. Matching rebuilt pages3318581B/SHA2cb6e1aa906be8d5448fc11c1380d6bf341e21d323b206c54e29981d183f32d0.

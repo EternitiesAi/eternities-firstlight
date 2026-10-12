@@ -1,3 +1,28 @@
+# Qualify crafted worktables and complete the ordinary outing, 2026-10-12
+
+Finish the real offline build and exact pushed-head component/build checks in
+the existing independent D qualification clone. Retain the failed worktable
+fixture, the preexisting quality-oracle failure and its clean predecessor
+reproduction. No validator, deadline or actual visibility requirement is waived.
+Read development/HEAVEN_WORKTABLES_2026-10-12.md.
+
+Admit one complete current source gate only with at least 6 GiB host free RAM
+immediately before launch. The retained SOURCE02 admission at 2,681,140 KiB is
+false and started no verifier; do not reuse its exclusive evidence identity or
+borrow the earlier failed two-worker run. VM/Claude and unrelated workers stay
+outside this lane. Reconcile strict native preparations only to an actual
+complete current source gate, then prove blade/bow Choir work, claim, return,
+workshop shortfall, forest travel and persistence through ordinary controls.
+
+Qualify the two tables in both unchanged cameras at High/Low, including tops,
+feet, shadows and honest full-box blocking. For garden crowns, physically walk
+to the existing tree-view pocket: internal Follow is UI Diorama and the retained
+Rielle Diorama frame excludes the crowns. Preserve that failed visibility check.
+Human route clarity, combat enjoyment, reward motivation and art taste remain
+unanswered. Goal ACTIVE unfinished; heartbeat PAUSED; no merge/deployment.
+
+---
+
 # Qualify the current account and complete outing, 2026-10-12
 
 Finish fresh exact remote affected component/build checks for the completed-account UI. Then admit one complete current verifier with supported scheduling only if immediate host free memory is at least6GiB; keep all rules/214ordered commands and original180/600s budgets. The prior two-worker9ef timeout is FAILED and cannot admit native work. Bind new command metadata/head/source/cohort/HTML/raw logs in a separately reviewed forward prep; old sealed prep stays immutable and refuses drift.
