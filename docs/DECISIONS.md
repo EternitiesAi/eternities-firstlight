@@ -1,3 +1,11 @@
+# Limit requested scheduling, preserve the complete gate, 2026-10-12
+
+Offer only explicit1/2/4 Node test-file worker requests. Omission retains the original argv. Apply the option solely to the main complete rules command, never NODE_OPTIONS or unrelated children. Record its exact vector and ordered membership before dispatch; this is provenance, not success. Keep original180s rules/600s Python bounds and all214 ordered commands. Do not omit cases, widen deadlines, normalize arbitrary args or reinterpret timeout as a pass.
+
+Old forest source pins must continue refusing until reviewed forward reconciliation binds the new verifier, command record, clean exact head and actual closed complete gate. Preserve historical receipts rather than backfilling scheduling declarations. Host memory admission never authorizes VM/Claude access or unrelated process control. Save/runtime/camera contracts stay unchanged; goal ACTIVE unfinished, heartbeat PAUSED. See development/BOUNDED_RULE_WORKERS_2026-10-12.md.
+
+---
+
 # Preserve exact acceptance; retain the missing operands, 2026-10-12
 
 Native startup equality still compares immutable raw strings. Metadata hashes, parsed JSON equivalence and preclose bytes never grant acceptance. Retain a same-turn world/native observation, frozen expected-close operand, one startup read and observed-write counts before assertion; save raw startup only on mismatch. Preserve null distinctly and exclusive creation. If evidence writing fails, record its secondary error while the original mismatch remains primary. Matching bytes still require the original complete owner/history predicate before recording a successful restart.

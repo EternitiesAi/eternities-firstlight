@@ -302,6 +302,7 @@ def main():
     parser.add_argument('--browser-output', type=Path, help='Route suites with existing output contracts to a separate evidence directory (D: on Windows); requires --browser. Legacy small screenshots keep their defaults.')
     parser.add_argument('--browser-output-mode', choices=('guarded', 'supported'), default='guarded', help='guarded routes only the four suites requiring D: on Windows; supported routes every existing output contract.')
     parser.add_argument('--cpu-temp', type=Path, help='Existing absolute directory for lightweight Python unit-test temporary files only. Browser profiles and earned evidence keep their original storage.')
+    parser.add_argument('--rule-workers', type=int, choices=(1, 2, 4), help='Optional Node test-file worker cap for the complete rules suite. Keeps every test and the original 180-second deadline; omission keeps Node scheduling. Does not bound all child processes or memory.')
     args = parser.parse_args()
     try:
         cpu_env = cpu_test_environment(args.cpu_temp)
@@ -356,7 +357,24 @@ def main():
         raise SystemExit('FAILED: source modules or rule tests are missing.')
     for module in modules:
         run('syntax-' + module.stem, ['node', '--check', str(module)])
-    run('rules', ['node', '--test', '--test-reporter=tap', *map(str, rules)])
+    rules_command = ['node', '--test']
+    if args.rule_workers is not None:
+        rules_command.append(f'--test-concurrency={args.rule_workers}')
+    rules_command += ['--test-reporter=tap', *map(str, rules)]
+    # Declare the exact vector being dispatched, including failed attempts.
+    # This record is provenance, not a successful source-gate receipt.
+    rules_record = {'schema': 'firstlight-rule-command/v1', 'root': str(ROOT),
+                    'verifierSha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+                    'requestedWorkers': args.rule_workers, 'command': rules_command,
+                    'ruleFileCount': len(rules),
+                    'ruleFiles': [p.relative_to(ROOT).as_posix() for p in rules],
+                    'rulesTimeoutSeconds': 180, 'pythonTimeoutSeconds': 600}
+    rules_record_bytes = (json.dumps(rules_record, indent=2) + '\n').encode('utf-8')
+    rules_record_path = output / 'rules-command.json'
+    rules_record_path.write_bytes(rules_record_bytes)
+    mode = 'Node default' if args.rule_workers is None else str(args.rule_workers)
+    print(f'Rule workers: {mode}; command: {rules_record_path}; SHA-256 {hashlib.sha256(rules_record_bytes).hexdigest()}', flush=True)
+    run('rules', rules_command)
     print('\n'.join((output / 'rules.log').read_text(encoding='utf-8').splitlines()[-9:]), flush=True)
     # The wrapper cases execute complete command-earned journeys. Allow for
     # their measured disk work on Windows while retaining a bounded failure.

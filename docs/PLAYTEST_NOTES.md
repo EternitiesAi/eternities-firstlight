@@ -1,3 +1,11 @@
+# Requested worker coverage is not gameplay, 2026-10-12
+
+Five new CPU tests use actual verifier dispatch with tiny labelled synthetic filesystem inputs and external subprocess transport. They check complete142-file sorting, supported/default scheduling, allocation refusal and unchanged failure/budget behavior. Final five-test GREEN1.257s includes strengthened inherited-environment coverage. Related verifier components:75tests OK93.000s/one explicit skip, loaded before that test repair. No browser, gameplay recording, human playtest or GPU measurement occurred for this change. See development/BOUNDED_RULE_WORKERS_2026-10-12.md.
+
+Actual complete source/remote and ordinary native gates remain pending at this implementation checkpoint. Keep historical failures/skips and camera framing separate. VM/Claude were not accessed; no personal saves, runtime, save contracts or camera behavior changed.
+
+---
+
 # Strict restart CPU coverage; real play remains pending, 2026-10-12
 
 No human or new browser playtest occurred. Six new tests exercise actual Native.restart/check/write_new/preserved with labelled external browser/read doubles. They detect loss of operands, contamination by a later autosave, one-byte mismatch, null startup, an observation gap, evidence collision and changed owner history. All six pass; the related serial components report60tests OK with one actual-cohort class skip. Expected negative fixture refusals in the log are not native failures or gameplay proof.

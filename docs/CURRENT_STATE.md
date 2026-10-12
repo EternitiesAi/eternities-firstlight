@@ -1,3 +1,11 @@
+# A smaller rule-test worker request, 2026-10-12
+
+The verifier accepts --rule-workers1/2/4 for its complete main rules command, retains default argv and the original180/600s deadlines, and records the exact requested vector. Final detecting transport component: five tests OK1.257s after inherited-environment review repair. Affected verifier components:75tests OK93.000s/one explicit skip, loaded before that test repair. Actual full source/remote timing and memory remain pending at this checkpoint. No game source, generated HTML or save version changed. See development/BOUNDED_RULE_WORKERS_2026-10-12.md.
+
+Dom's VM and Claude Code remain outside this lane. One contained source run may be admitted using host memory only; no broad parallel/browser run or unrelated stop. Old native startup mismatch, ordinary Choir/forest acceptance, garden framing and human taste remain unresolved. Original native preparation remains pinned and refuses newer source until reviewed reconciliation. Goal ACTIVE; heartbeat PAUSED; no production completion, merge or deployment.
+
+---
+
 # Restart diagnostics integrated; native cause remains open, 2026-10-12
 
 The review branch verification/native-restart-evidence-20261012 adds evidence to the strict native restart check. Six new CPU tests passed after six expected RED failures; the three affected components ran60tests OK with one explicitly reported actual-cohort class skip. Offline build remains identical3318517B pages SHA2560f6ea4495808e246d3cb3c9e81fb89755e1db266e030b40296d15ae9bf6ffaa1. No game module or save contract changed. See development/NATIVE_RESTART_EVIDENCE_2026-10-12.md.

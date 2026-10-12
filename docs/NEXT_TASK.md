@@ -1,3 +1,11 @@
+# Measure the complete gate with fewer requested workers, 2026-10-12
+
+Finish affected verifier checks, commit the reviewed implementation, then run the complete source command with explicit --rule-workers2 and the unchanged180/600s deadlines when host headroom supports it. Preserve exact argv, all142 rule-file arguments, all214 ordered source commands, raw logs/console, failures/skips and clean exact-head receipt. Do not infer success or memory bounds from synthetic dispatch or historical timings. Freshly fetch into the existing D qualification checkout and qualify the pushed source.
+
+Only after a current complete gate should ordinary forest/Choir preparations be reconciled to new verifier/head/record pins. Keep the native restart's strict exact-byte/history check and collect actual mismatch operands. Blade/bow deliberate claim, honest workshop shortfall, both cameras, garden framing and human route/combat/reward questions remain required. Leave VM/Claude untouched and heartbeat PAUSED. See development/BOUNDED_RULE_WORKERS_2026-10-12.md.
+
+---
+
 # Qualify exact persistence and the complete outing, 2026-10-12
 
 Use the current integrated review head and preserve Dom's VM/Claude Code boundary. When host resources support one contained verifier, run the original complete source gate, earn its current cohorts, and qualify the strict native restart with retained preclose/expected/startup operands. A mismatch must still fail; diagnose actual values before changing saving or the observer. Keep old56d failure and its two closed case contexts/server separate from missing whole-browser closure evidence.
