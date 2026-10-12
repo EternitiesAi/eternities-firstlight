@@ -1,3 +1,11 @@
+# Preserve exact acceptance; retain the missing operands, 2026-10-12
+
+Native startup equality still compares immutable raw strings. Metadata hashes, parsed JSON equivalence and preclose bytes never grant acceptance. Retain a same-turn world/native observation, frozen expected-close operand, one startup read and observed-write counts before assertion; save raw startup only on mismatch. Preserve null distinctly and exclusive creation. If evidence writing fails, record its secondary error while the original mismatch remains primary. Matching bytes still require the original complete owner/history predicate before recording a successful restart.
+
+Do not alter production saves or claim the old failure's cause from this diagnostic improvement. Six detecting regressions and independent source review support the change; actual native/full gates remain pending. Respect Dom's separate VM/Claude Code ownership and current low resource availability. World9 / Adventure12 / WildSigns1, existing ledgers/keys/XP/systems/both cameras stay unchanged. See development/NATIVE_RESTART_EVIDENCE_2026-10-12.md.
+
+---
+
 # Flowers along Heaven's work route, 2026-10-11
 
 Three small groups of stationary pale and ruby flowers now connect the lower garden's instrument edge, east garden and tree-view area at Balanced/High. They reuse existing meshes and preserve the original 24 Ruby-fork plants, every old ordered decoration, routes, solids, markers, work/combat rules, saves and both cameras. Low is unchanged. This is a provisional art embellishment with no harvest, reward or lore addition. See docs/development/HEAVEN_GARDEN_PLANTING_2026-10-11.md.

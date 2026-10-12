@@ -1,3 +1,11 @@
+# Restart diagnostics integrated; native cause remains open, 2026-10-12
+
+The review branch verification/native-restart-evidence-20261012 adds evidence to the strict native restart check. Six new CPU tests passed after six expected RED failures; the three affected components ran60tests OK with one explicitly reported actual-cohort class skip. Offline build remains identical3318517B pages SHA2560f6ea4495808e246d3cb3c9e81fb89755e1db266e030b40296d15ae9bf6ffaa1. No game module or save contract changed. See development/NATIVE_RESTART_EVIDENCE_2026-10-12.md.
+
+Old56d remoteFull07 closed FAILED: consignment1593checks passed; WildSigns blade767passed, bow55passed/1failed at startup-byte equality; later suites did not run. Actual mismatch operands were absent, so historical cause remains UNKNOWN. Complete latest-head source/native/remote qualification is pending. Hosted CI's billing lock is separate. Dom resumed the production goal but requires the VM and Claude Code's lane untouched; broad/browser runs are deferred under low host memory. Heartbeat PAUSED; no human acceptance or production completion is claimed.
+
+---
+
 # Flowers along Heaven's work route, 2026-10-11
 
 Three small groups of stationary pale and ruby flowers now connect the lower garden's instrument edge, east garden and tree-view area at Balanced/High. They reuse existing meshes and preserve the original 24 Ruby-fork plants, every old ordered decoration, routes, solids, markers, work/combat rules, saves and both cameras. Low is unchanged. This is a provisional art embellishment with no harvest, reward or lore addition. See docs/development/HEAVEN_GARDEN_PLANTING_2026-10-11.md.

@@ -1,3 +1,11 @@
+# Strict restart CPU coverage; real play remains pending, 2026-10-12
+
+No human or new browser playtest occurred. Six new tests exercise actual Native.restart/check/write_new/preserved with labelled external browser/read doubles. They detect loss of operands, contamination by a later autosave, one-byte mismatch, null startup, an observation gap, evidence collision and changed owner history. All six pass; the related serial components report60tests OK with one actual-cohort class skip. Expected negative fixture refusals in the log are not native failures or gameplay proof.
+
+Old WildSigns native failure remains: blade767pass, bow55pass/1fail. Its retained bow captures differ only in revision, two elapsed clocks and three resident progress values; all other captured facts match. This supports investigation of an observation gap, not a demonstrated save fix. Complete current ordinary controls, pixels, combat, native persistence, performance and human acceptance remain open. VM and Claude Code were not accessed. See development/NATIVE_RESTART_EVIDENCE_2026-10-12.md.
+
+---
+
 # Flowers along Heaven's work route, 2026-10-11
 
 Three small groups of stationary pale and ruby flowers now connect the lower garden's instrument edge, east garden and tree-view area at Balanced/High. They reuse existing meshes and preserve the original 24 Ruby-fork plants, every old ordered decoration, routes, solids, markers, work/combat rules, saves and both cameras. Low is unchanged. This is a provisional art embellishment with no harvest, reward or lore addition. See docs/development/HEAVEN_GARDEN_PLANTING_2026-10-11.md.

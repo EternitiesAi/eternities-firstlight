@@ -1,3 +1,11 @@
+# Native restart evidence and VM boundary, 2026-10-12
+
+Dom resumed development and explicitly requires that the VM and Claude Code's work stay untouched. Parent owns this Firstlight checkout and review branch verification/native-restart-evidence-20261012, based on8243/PR64. Use only Firstlight source, labelled synthetic evidence and scoped colleagues. No VM/guest access, shared installs, unrelated process/service control or heavy parallel verification. Low host memory requires deferring the full source/browser gate, not changing its requirements.
+
+Read docs/development/NATIVE_RESTART_EVIDENCE_2026-10-12.md. Original remoteFull07 has closed FAILED at older56d in the WildSigns bow restart; it is no longer live. The new diagnostic patch preserves exact byte/history refusal and retains comparison operands before failure. Six new CPU regressions pass; affected serial run:60tests OK with one reported actual-cohort class skip. Game modules, generated pages, schemas, keys and every existing test are unchanged. Production goal ACTIVE unfinished; heartbeat remains PAUSED. Parent owns later native qualification; preserve all prior failures, bounded D storage, personal saves, both cameras and no-merge/no-deploy boundaries.
+
+---
+
 # Flowers along Heaven's work route, 2026-10-11
 
 Three small groups of stationary pale and ruby flowers now connect the lower garden's instrument edge, east garden and tree-view area at Balanced/High. They reuse existing meshes and preserve the original 24 Ruby-fork plants, every old ordered decoration, routes, solids, markers, work/combat rules, saves and both cameras. Low is unchanged. This is a provisional art embellishment with no harvest, reward or lore addition. See docs/development/HEAVEN_GARDEN_PLANTING_2026-10-11.md.
