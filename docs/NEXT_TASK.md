@@ -1,3 +1,11 @@
+# Qualify exact persistence and the complete outing, 2026-10-12
+
+Use the current integrated review head and preserve Dom's VM/Claude Code boundary. When host resources support one contained verifier, run the original complete source gate, earn its current cohorts, and qualify the strict native restart with retained preclose/expected/startup operands. A mismatch must still fail; diagnose actual values before changing saving or the observer. Keep old56d failure and its two closed case contexts/server separate from missing whole-browser closure evidence.
+
+Then reconcile the sealed Choir/forest admission preparations to the exact qualified head without borrowing an older receipt, and complete the ordinary blade/bow Choir outing, deliberate claim, honest one-ore workshop shortfall and supported forest walk in both cameras. Existing garden quality/framing checks and human route/combat/reward questions remain. Small source/art work can proceed independently while the VM consumes host resources; no duplicate games, personal-save access, unrelated stops or automatic deployment. Read development/NATIVE_RESTART_EVIDENCE_2026-10-12.md.
+
+---
+
 # Flowers along Heaven's work route, 2026-10-11
 
 Three small groups of stationary pale and ruby flowers now connect the lower garden's instrument edge, east garden and tree-view area at Balanced/High. They reuse existing meshes and preserve the original 24 Ruby-fork plants, every old ordered decoration, routes, solids, markers, work/combat rules, saves and both cameras. Low is unchanged. This is a provisional art embellishment with no harvest, reward or lore addition. See docs/development/HEAVEN_GARDEN_PLANTING_2026-10-11.md.

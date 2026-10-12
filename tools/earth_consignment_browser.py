@@ -39,6 +39,14 @@ def read(path):return json.loads(Path(path).read_text(encoding='utf-8-sig'))
 def write_new(path, value):
     with Path(path).open('x',encoding='utf-8',newline='\n') as f:
         f.write(value if isinstance(value,str) else json.dumps(value,indent=2)+'\n')
+
+
+def native_byte_evidence(value):
+    """Describe an operand; metadata never substitutes for exact equality."""
+    if isinstance(value,str):
+        raw=value.encode('utf-8')
+        return {'kind':'string','utf8Bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()}
+    return {'kind':'null' if value is None else type(value).__name__,'utf8Bytes':None,'sha256':None}
 def distance(a,b):return math.hypot(a['x']-b['x'],a['z']-b['z'])
 
 
@@ -306,11 +314,26 @@ class Native:
         self.close();self.click('#world-home');self.page.wait_for_function('()=>Realm.diagnostics.scene==="valley"')
         self.check('free return actual original travel checkpoint',distance(self.diag()['adventure']['player'],self.home_checkpoint)<.01)
     def restart(self,label):
-        self.close();before=self.state();stored=self.stored();self.check('exact record/economy/history durable before restart',stored['localLife']==before['localLife'] and stored['sandbox']['inventory']==before['sandbox']['inventory'] and stored['adventure']['coins']==before['adventure']['coins'] and preserved(stored)==preserved(before))
+        self.close();checkpoint=self.ev('()=>({world:Realm.state,native:localStorage.getItem(RealmCharacters.KEY)})');before=checkpoint['world']
+        counts={'beforeClose':self.row['nativeWrites']}
+        stored=self.stored();self.check('exact record/economy/history durable before restart',stored['localLife']==before['localLife'] and stored['sandbox']['inventory']==before['sandbox']['inventory'] and stored['adventure']['coins']==before['adventure']['coins'] and preserved(stored)==preserved(before))
         self.context.close();self.context=None
         self.check('successful native writes captured through close',self.raw is not None)
-        write_new(self.folder/(label+'_CLOSED_NATIVE_BYTES.json'),self.raw);raw=self.raw;self.start()
-        self.check('startup reads exact final native bytes',self.ev('()=>window.__flStartup')==raw)
+        raw=self.raw;counts['afterClose']=self.row['nativeWrites']
+        write_new(self.folder/(label+'_CLOSED_NATIVE_BYTES.json'),raw);self.start()
+        startup=self.ev('()=>window.__flStartup');counts['afterStart']=self.row['nativeWrites']
+        comparison={'label':label,'beforeClose':native_byte_evidence(checkpoint['native']),
+                    'expectedClose':native_byte_evidence(raw),'actualStartup':native_byte_evidence(startup),
+                    'observedWrites':counts,'matched':startup==raw}
+        self.row.setdefault('restartComparisons',[]).append(comparison)
+        if startup!=raw:
+            path=self.folder/(label+'_STARTUP_NATIVE_BYTES.json')
+            comparison['startupEvidence']={'path':str(path),'retained':False}
+            try:
+                write_new(path,startup);comparison['startupEvidence']['retained']=True
+            except OSError as e:
+                comparison['startupEvidenceError']=repr(e)
+        self.check('startup reads exact final native bytes',startup==raw)
         after=self.state();self.check('whole browser restart preserves saved checkpoint and owner facts',self.diag()['scene']=='valley' and after['localLife']==before['localLife'] and after['sandbox']['inventory']==before['sandbox']['inventory'] and after['adventure']['coins']==before['adventure']['coins'] and preserved(after)==preserved(before))
         self.row['restarts'].append(label)
     def follow_sample(self):
