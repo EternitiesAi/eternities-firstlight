@@ -1,3 +1,11 @@
+# A completed Choir account; source review and focused qualification, 2026-10-12
+
+Parent owns gameplay/choir-completed-account-20261012 based onfb29966/PR66. Only the paid optional-step page route/label changes; late physical spillway/E and all command/save/reward/camera owners stay intact. Read docs/development/CHOIR_COMPLETED_ACCOUNT_2026-10-12.md. Four cases appended to the unchanged26-test prefix; complete component30P0F0skip659.5023ms. Both offline3318581B pages identicalSHA2cb6e1aa906be8d5448fc11c1380d6bf341e21d323b206c54e29981d183f32d0.
+
+Do not claim rendered/native/full acceptance. Retain predecessor9ef full timeout and the RED oracle correction. VM/Claude/unrelated work remains untouched; broad admission requires immediate at-least6GiB host-free observation, no heavy parallel work or unrelated stops. Existing two colleagues review source only. Reuse D checkout/qualification storage; goal ACTIVE unfinished, heartbeat PAUSED. No merge/deployment.
+
+---
+
 # Broad run failed at two workers; protect host headroom, 2026-10-12
 
 Fresh remote9ef6e9b complete source attempt closed FAILED exit1 at the unchanged180s rules deadline after build/all142syntax passed. Partial rule output has no final summary; Python and later journeys did not run. Preserve REMOTE_SOURCE01 and do not claim a complete pass. Final focused five-test remote component passed4.462s. See docs/development/BOUNDED_RULE_WORKERS_2026-10-12.md.

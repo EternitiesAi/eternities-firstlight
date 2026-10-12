@@ -1,3 +1,11 @@
+# Remove a refused page route, keep a valid physical interaction, 2026-10-12
+
+The paid account suppresses a step walk button the existing dispatcher rejects and records optional omission honestly. Do not prohibit or hide the independently valid nearbyE/late physical action; its existing revision/save commit remains and its once-only fee stays paid. Reading changes no state, gear, reward or history. No new save migration, navigation rule or camera change.
+
+Detecting UI tests cover the dead control, paid omission/recorded preparation, legitimate late action/no second payout, unpaid partial work and blade/bow/synthetic veteran history. Preserve the initial oracle error and real RED before claiming green. Full source/native/actual pixels/human acceptance still required; retain old timeout and use immediate conservative RAM admission. VM/Claude untouched; goal ACTIVEunfinished, heartbeat PAUSED. See development/CHOIR_COMPLETED_ACCOUNT_2026-10-12.md.
+
+---
+
 # Retain failed measurement and defer broad work under low RAM, 2026-10-12
 
 Two-worker full source at9ef6e9b timed out at the unchanged180s deadline; it grants no complete admission. Preserve exact raw logs/metadata/receipt. Four remains a supported request, not a measured timing/RAM guarantee. Check at least6GiB free host memory immediately before any next broad launch; no reliance on pre-fetch snapshots. Do not free resources by touching VM/Claude/unrelated workers or relaxing test coverage/deadlines.

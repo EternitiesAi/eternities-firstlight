@@ -1,3 +1,11 @@
+# Paid Choir accounts keep an honest optional history, 2026-10-12
+
+After claiming the Choir without its optional spillway, the page now labels that omission and removes a walk control its dispatcher would always refuse. Unpaid routes and the legitimately available late physical interaction remain. No rule/save/fee/gear/camera changes. Complete affected component30P0F0skip659.5023ms; regenerated matching3318581B pagesSHA2cb6e1aa906be8d5448fc11c1380d6bf341e21d323b206c54e29981d183f32d0. Read development/CHOIR_COMPLETED_ACCOUNT_2026-10-12.md for labelled fixture and RED-oracle limits.
+
+Current whole-source/browser/ordinary/native/human qualification remains pending. Prior9ef full source failed original180s rules deadline; later stages unrun. No failure is waived. VM/Claude untouched; heavy admission requires immediate≥6GiB free host memory. Save9/Adventure12/WildSigns1 and all histories/systems/both cameras preserved. Goal ACTIVE unfinished; heartbeat PAUSED; no merge/deployment.
+
+---
+
 # Full two-worker attempt failed; focused remote check passes, 2026-10-12
 
 At freshly fetched9ef6e9b, build/all142syntax passed, then the complete rules attempt exceeded the original180s deadline. REMOTE_SOURCE01 closed FAILED exit1; partial TAP ends at record775 without totals. Python/later journeys did not run. The final focused five-test component separately passed on that exact clean remote head4.462s. All raw evidence is retained. See development/BOUNDED_RULE_WORKERS_2026-10-12.md.

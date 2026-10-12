@@ -1,3 +1,11 @@
+# Qualify the current account and complete outing, 2026-10-12
+
+Finish fresh exact remote affected component/build checks for the completed-account UI. Then admit one complete current verifier with supported scheduling only if immediate host free memory is at least6GiB; keep all rules/214ordered commands and original180/600s budgets. The prior two-worker9ef timeout is FAILED and cannot admit native work. Bind new command metadata/head/source/cohort/HTML/raw logs in a separately reviewed forward prep; old sealed prep stays immutable and refuses drift.
+
+Complete strict native restart diagnostic proof and ordinary blade/bow Choir claim/return/workshop, supported forest walk and both camera garden checks. Verify paid optional page remotely has no dead route while nearbyE/late physical command remains; no repeat payout. Human route/combat/reward/framing questions remain unanswered. VM/Claude are separate, goal ACTIVE, heartbeat PAUSED. See development/CHOIR_COMPLETED_ACCOUNT_2026-10-12.md.
+
+---
+
 # Continue small product work; admit broad verification only with headroom, 2026-10-12
 
 Keep failed remote two-worker REMOTE_SOURCE01: build/all142syntax passed then original180s rules timeout; Python/later journeys unrun. Do not reuse it as source admission. A four-worker full retry needs at least6GiB host free immediately before launch, fresh evidence namespace and unchanged tests/deadlines. VM/Claude/unrelated work remains untouched. Exact fetched9ef focused worker tests5OK4.462s are component proof only.
