@@ -1,3 +1,65 @@
+# Complete source gate passes in the independent remote clone, 2026-10-12
+
+At pushed implementation49cd5d6adbe4029147cbaa14dd0cc7788b3c3561 /draft PR69,
+the unchanged complete verifier closed0: all214 source commands passed, including
+build/all142 syntax and command-earned journeys. Main Node2107pass /0fail /
+2existing skips; Python472tests OK /10skips. Road-account CPU preflight has
+1explicit missing-native-input skip. Matching3319540B pages remain unchanged,
+SHA2567855015a4ec987795b94b1a6644bad5fd123cdf98f95e7b0905a72f63455b55d.
+Source05 started/closed23:39:26/23:44:36UTC; same head afterward, clean Git.
+Read docs/development/GEOMETRY_ORACLE_WORK_2026-10-12.md for exact evidence.
+
+This front update is documentation only; the full gate is at49cd, not a later
+record commit. Source04 FAILED and older timeouts/native failures remain. No
+current native/browser/GPU/footage/human acceptance or production completion.
+Next playable work is the recorded three-piece branch-sensitive glade fitting
+and honest local Rill handover, not installed yet; keep legacy ready claims,
+existing five-step patrol/payout and first-brace/consignment owners intact.
+World9 /Adventure12 /WildSigns1 and both views stay. All own source controllers
+closed; VM/Claude/personal saves untouched; reuse ROOT/STATION/D evidence.
+Goal ACTIVE unfinished; heartbeat PAUSED; no merge/deploy or extra full copy.
+
+---
+# Complete Node passes; a stale Python fixture is isolated, 2026-10-12
+
+Fresh exact remote94189 passed34 geometric cases and rebuilt unchanged matching
+3,319,540B HTML. Complete Source04 then passed all142 syntax checks and the
+main Node suite:2107 pass / 0 fail / 2 existing skips,51,765.4825ms. Python
+FAILED469 tests:4 failures /1 error /10 skips at an older helper pin in the
+roadkeeper ART regression. Later journeys did not run; raw failure retained.
+
+The bounded test-only repair selects one literal independently reviewed helper
+LF pin in an explicitly synthetic expectation view. The real frozen JSON and
+driver remain strict; new controls reject the real historical-helper mismatch,
+unreviewed helper bytes and an unreviewed helper pin. All original ART negative
+checks remain exact. This is no native/source admission. Read
+docs/development/GEOMETRY_ORACLE_WORK_2026-10-12.md.
+
+World9 / Adventure12 / WildSigns1, runtime/pages/saves/both cameras unchanged.
+Full142/214 coverage and180/600-second budgets remain. Fresh remote complete
+verification is pending. VM/Claude/personal saves remain untouched; no new full
+clone/profile/video. Goal ACTIVE unfinished; heartbeat PAUSED; no merge/deploy.
+
+---
+# Acceptance geometry does less redundant work, 2026-10-12
+
+Two existing test files reuse unchanged part bounds within each current quality
+or pose, and Elderweald composes one matrix per traversal. All old tests/math/
+counterexamples remain. Paired actual34-case observation:10,196.6932ms before,
+2,148.2472ms after, with exactly251,433 unchanged assertions by method. Plain
+unobserved34/0/0 passed1,673.9453ms. Source reviewer inverse-reconstructed exact
+baseline hashes outside these edits. See
+development/GEOMETRY_ORACLE_WORK_2026-10-12.md.
+
+Actual rebuild remains identical unchanged3,319,540B pages SHA256
+7855015a4ec987795b94b1a6644bad5fd123cdf98f95e7b0905a72f63455b55d.
+No runtime/save/camera changes; this is no game frame-rate or full-gate claim.
+Source03's timeout/causeUNKNOWN and native/human gates remain. Fresh remote and
+the original complete gate are separate next steps. VM/Claude stay untouched;
+goal ACTIVE unfinished, heartbeat PAUSED; no merge or deployment.
+
+---
+
 # Exact remote components pass; complete gate still fails, 2026-10-12
 
 Freshly fetched final 3c39adff441a64b33122a732c1d697a824f6f7a6 passed all

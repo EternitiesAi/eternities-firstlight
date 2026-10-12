@@ -1,7 +1,10 @@
-"""Read-only real installed source-epoch regressions; no native admission.
+"""Read-only ART boundary regressions with a declared helper fixture view.
 
-The negative cases transport one declared JSON/module byte change in RAM.
-All other source/page/git reads use the ordinary production implementation.
+The frozen native expectations still refuse the later reviewed helper. ART
+cases transport a copy with that one literal reviewed helper pin in RAM;
+their negative cases change one further declared JSON/module byte operand.
+All validators and other source/page/git reads remain production. These
+synthetic declarations are not native/source admission or a new native epoch.
 No command-earned checkpoint, save, browser, profile or server is created.
 """
 from contextlib import contextmanager
@@ -17,6 +20,10 @@ EXPECTATIONS = ROOT / 'tools/SOURCE_EXPECTATIONS04.json'
 ART = ROOT / 'src/earth-roadkeeper-art.js'
 OLD_ART = '607b2714dbca0bc38c293ca6884706466bea80499382b49bacfb2e9b3a6b340e'
 REVIEWED_ART = 'ea1fba39cd658a65487b88a05f1d51c2a45a1724ac6cad31ac9e57657e8eff2c'
+HELPER = ROOT / 'tools/earth_consignment_browser.py'
+# Independent actual-diff review, NATIVE_RESTART_EVIDENCE_2026-10-12.md:23.
+# Never derive an accepted pin from unknown current source bytes.
+REVIEWED_HELPER = '079b8d4efb5179a0e4d55e2fb47d3988878b7bb54ccef5a4bb0b2e52a8474c8b'
 spec = importlib.util.spec_from_file_location('roadkeeper_actual_source_epoch', ROOT / 'tools/road_account_browser.py')
 DRIVER = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(DRIVER)
@@ -47,12 +54,34 @@ class RoadkeeperSourceEpoch(unittest.TestCase):
         self.head = subprocess.check_output(['git', '-C', str(ROOT), 'rev-parse', 'HEAD'], text=True).strip()
         self.expectations = json.loads(EXPECTATIONS.read_text(encoding='utf-8-sig'))
 
-    def epoch(self):
-        return DRIVER.installed_epoch(ROOT, self.head, EXPECTATIONS)
+    def synthetic_expectation_epoch(self):
+        with ram_bytes({EXPECTATIONS: json.dumps(self.expectations).encode()}):
+            return DRIVER.installed_epoch(ROOT, self.head, EXPECTATIONS)
 
-    def test_reviewed_current_art_passes_real_installed_source_epoch(self):
-        # Against the stale original file this actual call must refuse first.
-        epoch = self.epoch()
+    def select_reviewed_helper_view(self):
+        self.expectations['helpersLF']['tools/earth_consignment_browser.py'] = REVIEWED_HELPER
+
+    def test_frozen_original_still_refuses_the_newer_helper(self):
+        with self.assertRaisesRegex(ValueError, 'Actual original browser helper text changed: tools/earth_consignment_browser.py'):
+            DRIVER.installed_epoch(ROOT, self.head, EXPECTATIONS)
+
+    def test_unreviewed_changed_helper_is_refused_in_the_selected_view(self):
+        self.select_reviewed_helper_view()
+        altered = HELPER.read_bytes() + b'\n# Explicit synthetic unreviewed helper mutation.\n'
+        with ram_bytes({HELPER: altered}):
+            with self.assertRaisesRegex(ValueError, 'Actual original browser helper text changed: tools/earth_consignment_browser.py'):
+                self.synthetic_expectation_epoch()
+
+    def test_unreviewed_helper_pin_is_refused_in_the_selected_view(self):
+        self.select_reviewed_helper_view()
+        self.expectations['helpersLF']['tools/earth_consignment_browser.py'] = '0' * 64
+        with self.assertRaisesRegex(ValueError, 'Actual original browser helper text changed: tools/earth_consignment_browser.py'):
+            self.synthetic_expectation_epoch()
+
+    def test_reviewed_current_art_passes_with_selected_synthetic_expectations(self):
+        self.select_reviewed_helper_view()
+        self.assertEqual(DRIVER.lf_sha(HELPER), REVIEWED_HELPER)
+        epoch = self.synthetic_expectation_epoch()
         self.assertEqual(self.expectations['reviewedModulesLF']['earth-roadkeeper-art.js'], REVIEWED_ART)
         self.assertEqual(self.expectations['reviewedModules']['earth-roadkeeper-art.js'], OLD_ART)
         self.assertEqual(DRIVER.lf_sha(ART), REVIEWED_ART)
@@ -60,29 +89,30 @@ class RoadkeeperSourceEpoch(unittest.TestCase):
         self.assertEqual(epoch['htmlSha256'], DRIVER.sha(ROOT / 'index.html'))
         self.assertEqual(epoch['runtimeSources']['src/earth-roadkeeper-art.js'], DRIVER.sha(ART))
 
-    def test_stale_lf_art_pin_refuses_real_installed_source_epoch(self):
+    def test_stale_lf_art_pin_refuses_with_selected_synthetic_expectations(self):
+        self.select_reviewed_helper_view()
         self.expectations['reviewedModulesLF']['earth-roadkeeper-art.js'] = OLD_ART
-        with ram_bytes({EXPECTATIONS: json.dumps(self.expectations).encode()}):
-            with self.assertRaisesRegex(ValueError, 'Reviewed future runtime is not installed: earth-roadkeeper-art.js'):
-                self.epoch()
+        with self.assertRaisesRegex(ValueError, 'Reviewed future runtime is not installed: earth-roadkeeper-art.js'):
+            self.synthetic_expectation_epoch()
 
     def test_unreviewed_lf_pin_is_not_accepted(self):
+        self.select_reviewed_helper_view()
         self.expectations['reviewedModulesLF']['earth-roadkeeper-art.js'] = '0' * 64
-        with ram_bytes({EXPECTATIONS: json.dumps(self.expectations).encode()}):
-            with self.assertRaisesRegex(ValueError, 'Reviewed future runtime is not installed: earth-roadkeeper-art.js'):
-                self.epoch()
+        with self.assertRaisesRegex(ValueError, 'Reviewed future runtime is not installed: earth-roadkeeper-art.js'):
+            self.synthetic_expectation_epoch()
 
     def test_unreviewed_changed_art_bytes_are_refused_by_the_hash_guard(self):
+        self.select_reviewed_helper_view()
         altered = ART.read_bytes() + b'\n// Explicit synthetic unreviewed source-identity mutation.\n'
         with ram_bytes({ART: altered}):
             with self.assertRaisesRegex(ValueError, 'Reviewed future runtime is not installed: earth-roadkeeper-art.js'):
-                self.epoch()
+                self.synthetic_expectation_epoch()
 
     def test_retained_historical_raw_fallback_is_not_a_second_accepted_hash(self):
+        self.select_reviewed_helper_view()
         self.expectations.pop('reviewedModulesLF')
-        with ram_bytes({EXPECTATIONS: json.dumps(self.expectations).encode()}):
-            with self.assertRaisesRegex(ValueError, 'Reviewed future runtime is not installed: earth-roadkeeper-art.js'):
-                self.epoch()
+        with self.assertRaisesRegex(ValueError, 'Reviewed future runtime is not installed: earth-roadkeeper-art.js'):
+            self.synthetic_expectation_epoch()
 
 
 if __name__ == '__main__':
