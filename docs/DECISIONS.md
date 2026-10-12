@@ -1,3 +1,11 @@
+# Retain failed measurement and defer broad work under low RAM, 2026-10-12
+
+Two-worker full source at9ef6e9b timed out at the unchanged180s deadline; it grants no complete admission. Preserve exact raw logs/metadata/receipt. Four remains a supported request, not a measured timing/RAM guarantee. Check at least6GiB free host memory immediately before any next broad launch; no reliance on pre-fetch snapshots. Do not free resources by touching VM/Claude/unrelated workers or relaxing test coverage/deadlines.
+
+Continue only appropriately small independent source/component work while headroom is low. Preserve late optional physical Choir interactions when removing a page control its dispatcher already refuses. World9/Adventure12/WildSigns1, ledgers/saves/XP/consent and both cameras unchanged; goal ACTIVEunfinished, heartbeat PAUSED. See development/BOUNDED_RULE_WORKERS_2026-10-12.md.
+
+---
+
 # Limit requested scheduling, preserve the complete gate, 2026-10-12
 
 Offer only explicit1/2/4 Node test-file worker requests. Omission retains the original argv. Apply the option solely to the main complete rules command, never NODE_OPTIONS or unrelated children. Record its exact vector and ordered membership before dispatch; this is provenance, not success. Keep original180s rules/600s Python bounds and all214 ordered commands. Do not omit cases, widen deadlines, normalize arbitrary args or reinterpret timeout as a pass.

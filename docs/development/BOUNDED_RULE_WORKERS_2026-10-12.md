@@ -49,9 +49,23 @@ had loaded the earlier worker tests before the review repair, so GREEN02
 separately checks the final bytes. The transport fixture is not gameplay or
 timing proof. Two colleagues reviewed source only; neither independently ran it.
 
-Actual complete source and fresh remote qualification are pending at this
-implementation checkpoint. Measure the requested mode honestly with all tests
-and original deadlines; retain any timeout or failure. Native startup mismatch,
+The reused independent D checkout freshly fetched implementation commit
+9ef6e9b07f1871b4064e4597ec61da0729cea460. Its complete two-worker attempt closed
+FAILED exit1: build and all142 syntax commands passed, then rules exceeded the
+original180s deadline. The partial TAP log ends at record775 without a complete
+summary. Python and later earned journeys did not run. This is not a passed
+gate or a demonstrated gameplay assertion defect. Initial and final host free
+memory were2971716KiB and685504KiB; current unrelated load/cause is UNKNOWN.
+All partial logs, command metadata and raw failure are retained under
+D:/07-GAMES/Firstlight/artifacts/bounded-rule-workers-20261012/REMOTE_SOURCE01.
+
+The final five-test component separately passed on that exact fetched head in
+4.462seconds. Four-worker broad execution is deferred: host free memory fell
+below1.5GiB. A next broad admission must check at least6GiB free immediately
+before launch, not use a snapshot before network fetch. This is a conservative
+development policy, not a demonstrated total RAM bound or timing guarantee.
+Leave VM/Claude/unrelated work untouched. Current complete source/native
+qualification remains pending. Native startup mismatch,
 ordinary Choir/forest play, garden camera framing and human feel/pacing gates
 remain open. Hosted CI at the base reported an account billing lock and started
 zero job steps; do not change billing or retry hosted work merely for this patch.

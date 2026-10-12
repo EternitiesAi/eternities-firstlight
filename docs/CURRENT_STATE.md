@@ -1,3 +1,11 @@
+# Full two-worker attempt failed; focused remote check passes, 2026-10-12
+
+At freshly fetched9ef6e9b, build/all142syntax passed, then the complete rules attempt exceeded the original180s deadline. REMOTE_SOURCE01 closed FAILED exit1; partial TAP ends at record775 without totals. Python/later journeys did not run. The final focused five-test component separately passed on that exact clean remote head4.462s. All raw evidence is retained. See development/BOUNDED_RULE_WORKERS_2026-10-12.md.
+
+Host free memory at broad launch was2971716KiB and at closure685504KiB; causality is UNKNOWN. Four-worker execution is deferred under less1.5GiB available. Future broad admission requires a fresh at-least6GiB observation immediately before launch. VM/Claude are untouched. No complete source/native/production claim; all prior failures and save/runtime/camera contracts remain. Goal ACTIVE; heartbeat PAUSED.
+
+---
+
 # A smaller rule-test worker request, 2026-10-12
 
 The verifier accepts --rule-workers1/2/4 for its complete main rules command, retains default argv and the original180/600s deadlines, and records the exact requested vector. Final detecting transport component: five tests OK1.257s after inherited-environment review repair. Affected verifier components:75tests OK93.000s/one explicit skip, loaded before that test repair. Actual full source/remote timing and memory remain pending at this checkpoint. No game source, generated HTML or save version changed. See development/BOUNDED_RULE_WORKERS_2026-10-12.md.
