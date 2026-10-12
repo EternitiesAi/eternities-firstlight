@@ -1,3 +1,51 @@
+# Diagnose complete-rule timing; preserve playable progress, 2026-10-12
+
+REMOTE_SOURCE03 at clean exact3c39 closed FAILED: original 180-second rules
+timeout after build/all142syntax, partial test1979/no footer, Python/later
+journeys unrun. Admission had 6,983,516 KiB free and closure 9,079,352 KiB;
+do not assume RAM or VM caused the failure. Inspect exact retained timing and
+execution evidence before choosing a real performance correction. Keep all
+tests, ordered commands, original budgets and failed records. No matching own
+qualification-path Node was seen after closure; full descendant closure is
+unproven. Do not stop unrelated processes or repeat an unchanged attempt.
+
+Current affected worktable/renderer/world components and build reproduce on
+the exact remote head: 77 / 0 / 0, 20,204.6548 ms, identical unchanged HTML,
+clean Git. Full/native acceptance is still required. Read
+development/HEAVEN_WORKTABLES_2026-10-12.md; VM/Claude remain separate. The
+already recorded Living Road glade carrier proposal remains a substantive
+independent source opportunity, not an implemented or approved new reward.
+Goal ACTIVE unfinished; heartbeat PAUSED; no merge/deployment.
+
+---
+
+# Qualify crafted worktables and complete the ordinary outing, 2026-10-12
+
+The real offline build and exact implementation-head checks are complete:
+freshly fetched clean 3ee05aca8240eb236be9a6b53db734fc4f483766 passed all
+eleven focused components, 77 / 0 / 0, and rebuilt identical unchanged HTML in
+the reused independent D clone. Retain the failed worktable
+fixture, the preexisting quality-oracle failure and its clean predecessor
+reproduction. No validator, deadline or actual visibility requirement is waived.
+Read development/HEAVEN_WORKTABLES_2026-10-12.md.
+
+Admit one complete current source gate only with at least 6 GiB host free RAM
+immediately before launch. The retained SOURCE02 admission at 2,681,140 KiB is
+false and started no verifier; do not reuse its exclusive evidence identity or
+borrow the earlier failed two-worker run. VM/Claude and unrelated workers stay
+outside this lane. Reconcile strict native preparations only to an actual
+complete current source gate, then prove blade/bow Choir work, claim, return,
+workshop shortfall, forest travel and persistence through ordinary controls.
+
+Qualify the two tables in both unchanged cameras at High/Low, including tops,
+feet, shadows and honest full-box blocking. For garden crowns, physically walk
+to the existing tree-view pocket: internal Follow is UI Diorama and the retained
+Rielle Diorama frame excludes the crowns. Preserve that failed visibility check.
+Human route clarity, combat enjoyment, reward motivation and art taste remain
+unanswered. Goal ACTIVE unfinished; heartbeat PAUSED; no merge/deployment.
+
+---
+
 # Qualify the current account and complete outing, 2026-10-12
 
 Finish fresh exact remote affected component/build checks for the completed-account UI. Then admit one complete current verifier with supported scheduling only if immediate host free memory is at least6GiB; keep all rules/214ordered commands and original180/600s budgets. The prior two-worker9ef timeout is FAILED and cannot admit native work. Bind new command metadata/head/source/cohort/HTML/raw logs in a separately reviewed forward prep; old sealed prep stays immutable and refuses drift.

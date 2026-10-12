@@ -1,3 +1,52 @@
+# Full four-worker attempt remains failed, 2026-10-12
+
+Fresh final remote 3c39adff441a64b33122a732c1d697a824f6f7a6 passed 77 focused
+tests and rebuilt matching unchanged HTML with clean Git. Subsequent complete
+REMOTE_SOURCE03 was admitted at 6,983,516 KiB host free, but closed FAILED
+exit1 at the original 180-second rules deadline after build/all142syntax.
+Partial TAP ends at test1979 without totals; Python/later journeys did not run.
+Closure free memory was 9,079,352 KiB. Cause is UNKNOWN; do not attribute this
+to the VM or waive the deadline. No matching own qualification-path Node was
+observed afterward, which is not whole descendant-tree closure proof. No
+process was stopped. Read docs/development/HEAVEN_WORKTABLES_2026-10-12.md.
+
+Parent retains source/canonical integration ownership. A colleague is reading
+the exact failed log for timing evidence only. Full/native admission remains
+unearned; do not relabel focused success. VM/Claude remain untouched, all save
+and system/camera contracts stay, goal ACTIVE unfinished and heartbeat PAUSED.
+
+---
+
+# Two crafted Heaven worktables, 2026-10-12
+
+Parent owns gameplay/heaven-crafted-worktables-20261012, based on clean pushed
+0d83144 / draft PR67. Only Rielle's and Yselle's existing worktable base meshes
+change at Balanced/High. Their full solid/camera/targeting envelopes, materials,
+IDs and top dressing remain; Low and foreign scenes retain their old streams.
+Read docs/development/HEAVEN_WORKTABLES_2026-10-12.md. Five cases extend the
+existing eight WorldArt tests: final component 13 pass / 0 fail / 0 skip.
+Ten existing affected CPU components pass 64 / 0 / 0, serially. The older
+garden-quality oracle was repaired after its same failure reproduced on the
+clean predecessor; all original nonplant, state and owner assertions remain.
+
+Implementation commit 3ee05aca8240eb236be9a6b53db734fc4f483766 was pushed,
+then normally fetched into the existing clean independent D clone. All eleven
+affected components passed 77 / 0 / 0 in 50,186.076 ms. Its actual rebuild
+closed exit0 with unchanged identical 3,319,540-byte pages, SHA256
+7855015a4ec987795b94b1a6644bad5fd123cdf98f95e7b0905a72f63455b55d;
+head and Git status remained unchanged/clean. These are focused results.
+
+Keep all failed probes and logs. No new browser, rendered worktable image,
+footage, GPU measurement or complete gate is claimed. Host-only immediate
+admission refused the next full verifier at 2,681,140 KiB free; later free RAM
+fell below 1 GiB. Do not touch the VM, guest, Claude Code, unrelated processes
+or shared installs to obtain headroom. Broad admission still requires at least
+6 GiB immediately before launch. Reuse existing D source/qualification storage.
+World9 / Adventure12 / WildSigns1, saves and both cameras stay unchanged.
+Goal ACTIVE unfinished; heartbeat PAUSED; no main merge or deployment.
+
+---
+
 # A completed Choir account; source review and focused qualification, 2026-10-12
 
 Parent owns gameplay/choir-completed-account-20261012 based onfb29966/PR66. Only the paid optional-step page route/label changes; late physical spillway/E and all command/save/reward/camera owners stay intact. Read docs/development/CHOIR_COMPLETED_ACCOUNT_2026-10-12.md. Four cases appended to the unchanged26-test prefix; complete component30P0F0skip659.5023ms. Both offline3318581B pages identicalSHA2cb6e1aa906be8d5448fc11c1380d6bf341e21d323b206c54e29981d183f32d0.

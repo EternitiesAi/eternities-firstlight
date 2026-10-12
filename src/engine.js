@@ -44,6 +44,14 @@ function geometry(kind){let v=[],timber=timberKind(kind);function tri(a,b,c){let
  const along=Math.abs(n[0])>.5?p[2]:p[0],across=Math.abs(n[1])>.5?p[2]:p[1];v.push(.1+(across+.5)*.1,along+.5);
  }}}function q(a,b,c,d){tri(a,b,c);tri(a,c,d);}
  if(kind==='box'||kind==='timber-panel'){let n=-.5,p=.5;q([n,n,p],[p,n,p],[p,p,p],[n,p,p]);q([p,n,n],[n,n,n],[n,p,n],[p,p,n]);q([p,n,p],[p,n,n],[p,p,n],[p,p,p]);q([n,n,n],[n,n,p],[n,p,p],[n,p,n]);q([n,p,p],[p,p,p],[p,p,n],[n,p,n]);q([n,n,n],[p,n,n],[p,n,p],[n,n,p]);}
+ else if(kind==='heaven-workbench'){
+  // Seven closed joinery members inside the original centered solid envelope.
+  // A plank top, two aprons and four feet open the visible underside only;
+  // camera/body clearance remains the canonical full box, with no crawl route.
+  const cube=geometry('box'),parts=[[0,.425,0,1,.15,1],[0,.25,.37,.76,.2,.08],[0,.25,-.37,.76,.2,.08]];
+  for(const x of[-.42,.42])for(const z of[-.37,.37])parts.push([x,-.075,z,.08,.85,.18]);
+  for(const [x,y,z,sx,sy,sz]of parts)for(let i=0;i<cube.length;i+=6)v.push(x+cube[i]*sx,y+cube[i+1]*sy,z+cube[i+2]*sz,cube[i+3],cube[i+4],cube[i+5]);
+ }
  else if(kind==='elderweald-root-arch'){
   // Original north-channel root: three tapered hexagonal rings bend inside
   // the old centered beam envelope. Local X and existing timber UVs stay shared.

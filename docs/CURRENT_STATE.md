@@ -1,3 +1,47 @@
+# Exact remote components pass; complete gate still fails, 2026-10-12
+
+Freshly fetched final 3c39adff441a64b33122a732c1d697a824f6f7a6 passed all
+eleven affected components, 77 / 0 / 0 in 20,204.6548 ms, and rebuilt identical
+unchanged 3,319,540-byte HTML with clean Git. Its subsequent complete source
+attempt REMOTE_SOURCE03 closed FAILED at the original 180-second rules limit.
+Build/all142syntax passed; partial TAP ends at1979 without totals, so Python
+and later journeys did not run. Host free RAM at admission/closure was
+6,983,516/9,079,352 KiB; cause remains UNKNOWN. VM/Claude were not accessed or
+controlled. No complete current source/native, GPU or human proof is claimed.
+See development/HEAVEN_WORKTABLES_2026-10-12.md. Goal ACTIVE; heartbeat PAUSED.
+
+---
+
+# Framed worktables in Heaven, 2026-10-12
+
+Rielle's craft bench and Yselle's worktable use a plank top, two aprons and four
+feet at Balanced/High instead of a full block. Their original warm material,
+dimensions, top details, persistent survey record and collision/camera proxies
+remain. Low and every other solid keep the old submission. The visible opening
+is decorative, not a crawl or projectile route. No interaction, reward, lore,
+renderer replacement or texture is added. See
+development/HEAVEN_WORKTABLES_2026-10-12.md.
+
+Current source components pass: WorldArt 13 / 0 / 0 in 10,137.5504 ms; ten
+affected existing components 64 / 0 / 0 in 37,671.791 ms, serially. These use
+synthetic authoring/GL transports and labelled positions. The garden-quality
+test's older flowers omission was reproduced on clean 0d83144, then corrected
+without changing the decorator or App handler. Actual new pixels, shadows,
+GPU cost, full current source/native and human acceptance are pending. Retain
+the earlier full-source timeout, startup mismatch and garden-framing failure.
+The fresh full-source admission refused before launch under low host RAM.
+VM/Claude stay untouched; schemas, systems and both cameras are preserved.
+Goal ACTIVE unfinished; heartbeat PAUSED; no merge or deployment.
+
+Pushed implementation: 3ee05aca8240eb236be9a6b53db734fc4f483766. Fresh remote
+fetch in the reused independent clean D clone passed all eleven affected
+components: 77 / 0 / 0, 50,186.076 ms. Rebuild exit0 retained checked-in bytes,
+unchanged head and clean Git. Both pages: 3,319,540 bytes / SHA256
+7855015a4ec987795b94b1a6644bad5fd123cdf98f95e7b0905a72f63455b55d.
+This exact-head component/build evidence is separate from the pending full gate.
+
+---
+
 # Paid Choir accounts keep an honest optional history, 2026-10-12
 
 After claiming the Choir without its optional spillway, the page now labels that omission and removes a walk control its dispatcher would always refuse. Unpaid routes and the legitimately available late physical interaction remain. No rule/save/fee/gear/camera changes. Complete affected component30P0F0skip659.5023ms; regenerated matching3318581B pagesSHA2cb6e1aa906be8d5448fc11c1380d6bf341e21d323b206c54e29981d183f32d0. Read development/CHOIR_COMPLETED_ACCOUNT_2026-10-12.md for labelled fixture and RED-oracle limits.

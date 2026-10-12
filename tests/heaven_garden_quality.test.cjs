@@ -21,13 +21,20 @@ function boundary({room=def.room,quality='high',enginePresent=true,artPresent=tr
 }
 test('Heaven graphics quality: actual UI function refreshes cached canonical crowns in both directions and preserves state and owners',()=>{
  assert.equal(def.room,'world-heaven','realm ID is not a scene room');
+ // The previously shipped nine flowers intentionally exist only at higher
+ // tiers. Preserve all other ordered details while checking their full payload
+ // separately through both actual UI transitions; never ignore arbitrary art.
+ const planting=rows=>rows.filter(p=>typeof p.args[7]?.gardenPlanting==='string'),stable=rows=>rows.filter(p=>typeof p.args[7]?.gardenPlanting!=='string').map(p=>p.kind==='woodland-canopy'?{...p,kind:'round'}:p);
+ const highPlants=planting(boundary({quality:'high'}).read().cached);
+ assert.equal(highPlants.length,63);assert.equal(new Set(highPlants.map(p=>p.args[7].gardenDetailId)).size,63);assert.equal(new Set(highPlants.map(p=>p.args[7].gardenPlant)).size,9);assert.deepEqual(new Set(highPlants.map(p=>p.args[7].gardenPlanting)),new Set(['instrument-edge','east-garden','tree-east']));
  for(const [from,to,beforeKind,afterKind]of [['high','low','woodland-canopy','round'],['low','high','round','woodland-canopy']]){
   const b=boundary({quality:from}),before=b.read().cached,state=structuredClone(b.sim.state),camera=structuredClone(b.camera),leases=structuredClone(b.leases);
   assert.equal(before.filter(p=>p.kind===beforeKind&&p.args[7]?.wind===2).length,60);
+  assert.deepEqual(planting(before),from==='high'?highPlants:[]);
   assert.equal(b.change(to).ok,true);const after=b.read();
   assert.deepEqual(b.calls,{make:1,resize:1,save:1});assert.equal(b.engine.quality,to);
   assert.equal(after.cached.filter(p=>p.kind===afterKind&&p.args[7]?.wind===2).length,60,'already-loaded crowns must immediately match UI quality');
-  assert.deepEqual(after.cached.map(p=>p.kind==='woodland-canopy'?{...p,kind:'round'}:p),before.map(p=>p.kind==='woodland-canopy'?{...p,kind:'round'}:p));
+  assert.deepEqual(stable(after.cached),stable(before));assert.deepEqual(planting(after.cached),to==='high'?highPlants:[]);
   assert.deepEqual(b.sim.state,{...state,settings:{quality:to}});assert.deepEqual(after.saved,b.sim.state);
   assert.deepEqual(b.camera,camera);assert.deepEqual(b.leases,leases);assert.equal(b.host.sim,b.sim);assert.equal(b.host.art,b.art);assert.equal(b.host.engine,b.engine);
  }

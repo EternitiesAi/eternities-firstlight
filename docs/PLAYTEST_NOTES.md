@@ -1,3 +1,50 @@
+# Full timeout is not a gameplay pass, 2026-10-12
+
+Exact final remote3c39 focused run: 77 pass / 0 fail / 0 skip, 20,204.6548 ms;
+real build unchanged and Git clean. Complete REMOTE_SOURCE03 then failed at
+the unchanged 180-second rules deadline. Its partial TAP ends at1979 with no
+summary; do not call that a total or complete pass. Python/later journeys did
+not run. Start/closure free RAM: 6,983,516/9,079,352 KiB, cause UNKNOWN. No
+new browser, footage, GPU or human playtest. VM/Claude and personal saves
+remain untouched. Retain all raw logs/metadata and prior failures. See
+development/HEAVEN_WORKTABLES_2026-10-12.md.
+
+---
+
+# Worktable geometry checks; native appearance pending, 2026-10-12
+
+No new browser or human playtest occurred. Actual production mesh/submission,
+Engine CPU packing and quality dispatch pass through labelled synthetic
+transports. Five new cases retain the original eight WorldArt tests: 13 pass,
+zero failure/skip, 10,137.5504 ms. Ten affected existing components, run serially,
+pass 64 / 0 / 0 in 37,671.791 ms. The paid survey marker is earned through real
+kit/travel/accept/observe/claim commands with synthetic poses and storage;
+this is not an ordinary-control journey or native persistence test.
+
+Fresh exact remote implementation 3ee05aca8240eb236be9a6b53db734fc4f483766:
+77 pass / 0 fail / 0 skip across the eleven affected components, 50,186.076 ms.
+The real rebuild closed exit0 with no stale input or Git change; both existing
+pages remain identical 3,319,540 bytes, SHA256
+7855015a4ec987795b94b1a6644bad5fd123cdf98f95e7b0905a72f63455b55d.
+The independent clone was reused and normally fetched, not newly duplicated.
+
+Retain RED01 (7 pass / 6 fail), GREEN01 (12 / 1; invalid new claim fixture),
+RELATED01 (63 / 1; older quality oracle), and clean predecessor BASE_QUALITY01
+(3 / 1). The corrected fixture preserves strict claim validation. The corrected
+quality test checks all 63 intended higher-tier flower parts separately while
+retaining complete nonplant ordered-stream, state and owner assertions. Its
+High reference is production-derived; existing planting tests independently
+retain clearance/material/budget checks. See
+development/HEAVEN_WORKTABLES_2026-10-12.md.
+
+Historical garden02 High captures are older 56d evidence: third-person shows
+crowns, but none project on-canvas at Rielle's default Follow/Diorama pose.
+The original 48 pass / 1 fail remains. No current worktable image, performance
+or full gate follows. VM/Claude and personal saves remain untouched; no new
+profile, video or full copy. Goal ACTIVE unfinished; heartbeat PAUSED.
+
+---
+
 # A detecting paid-account projection check, 2026-10-12
 
 Four new labelled fixture cases exercise actual page/point projection and production physical/claim/equip/fitting commands. Complete component30pass/0fail/0skip659.5023ms. RED01 had one genuine dead-route failure and one new oracle error about legitimate revision increments; correctedRED02 new4cases3pass/1fail precedes the UI fix. All original26cases retained. Matching rebuilt pages3318581B/SHA2cb6e1aa906be8d5448fc11c1380d6bf341e21d323b206c54e29981d183f32d0.

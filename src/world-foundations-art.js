@@ -73,6 +73,9 @@ function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isIn
   // Only this canonical Earth landmark changes mesh; the full physical and
   // camera envelope, material and worldSolid owner remain the original ones.
   if(def.id==='earthlands'&&p.id==='overlook-stone')a.add('overlook-stone',...args);
+  // Only two existing public worktables gain framed joinery at higher tiers.
+  // Keep their complete original solid/camera flags, material and transforms.
+  else if(def.id==='heaven'&&['heaven-rielle-bench','heaven-yselle-table'].includes(p.id)&&['balanced','high'].includes(sim.state.settings?.quality))a.add('heaven-workbench',...args);
   else a.box(...args);
  }
  if(def.dive){const d=def.dive,v=d.volume;
