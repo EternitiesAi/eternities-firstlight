@@ -1,3 +1,24 @@
+# Diagnose complete-rule timing; preserve playable progress, 2026-10-12
+
+REMOTE_SOURCE03 at clean exact3c39 closed FAILED: original 180-second rules
+timeout after build/all142syntax, partial test1979/no footer, Python/later
+journeys unrun. Admission had 6,983,516 KiB free and closure 9,079,352 KiB;
+do not assume RAM or VM caused the failure. Inspect exact retained timing and
+execution evidence before choosing a real performance correction. Keep all
+tests, ordered commands, original budgets and failed records. No matching own
+qualification-path Node was seen after closure; full descendant closure is
+unproven. Do not stop unrelated processes or repeat an unchanged attempt.
+
+Current affected worktable/renderer/world components and build reproduce on
+the exact remote head: 77 / 0 / 0, 20,204.6548 ms, identical unchanged HTML,
+clean Git. Full/native acceptance is still required. Read
+development/HEAVEN_WORKTABLES_2026-10-12.md; VM/Claude remain separate. The
+already recorded Living Road glade carrier proposal remains a substantive
+independent source opportunity, not an implemented or approved new reward.
+Goal ACTIVE unfinished; heartbeat PAUSED; no merge/deployment.
+
+---
+
 # Qualify crafted worktables and complete the ordinary outing, 2026-10-12
 
 The real offline build and exact implementation-head checks are complete:

@@ -1,3 +1,17 @@
+# Exact remote components pass; complete gate still fails, 2026-10-12
+
+Freshly fetched final 3c39adff441a64b33122a732c1d697a824f6f7a6 passed all
+eleven affected components, 77 / 0 / 0 in 20,204.6548 ms, and rebuilt identical
+unchanged 3,319,540-byte HTML with clean Git. Its subsequent complete source
+attempt REMOTE_SOURCE03 closed FAILED at the original 180-second rules limit.
+Build/all142syntax passed; partial TAP ends at1979 without totals, so Python
+and later journeys did not run. Host free RAM at admission/closure was
+6,983,516/9,079,352 KiB; cause remains UNKNOWN. VM/Claude were not accessed or
+controlled. No complete current source/native, GPU or human proof is claimed.
+See development/HEAVEN_WORKTABLES_2026-10-12.md. Goal ACTIVE; heartbeat PAUSED.
+
+---
+
 # Framed worktables in Heaven, 2026-10-12
 
 Rielle's craft bench and Yselle's worktable use a plank top, two aprons and four

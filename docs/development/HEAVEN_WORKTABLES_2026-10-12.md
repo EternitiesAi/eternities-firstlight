@@ -128,6 +128,34 @@ hashes/sizes exactly, reported staleInput=false and left head unchanged and
 Git clean. Raw component/build logs and the closed receipt are retained.
 This is focused remote source/build proof; the complete gate remains pending.
 
+The records-only head `3c39adff441a64b33122a732c1d697a824f6f7a6` was pushed and
+normally fetched into the same independent clone. REMOTE_COMPONENT02 closed
+exit0: **77 pass / 0 fail / 0 skip**, 20,204.6548 ms. Its actual rebuild remained
+byte-identical, staleInput=false, unchanged head and clean Git. The record
+commit changed only the six continuity documents, not source/tests/HTML.
+
+Host headroom then recovered. A separate immutable RUN_REMOTE_SOURCE03.ps1
+controller (SHA2560fa865a39cdd1eec7731dbdb3f482739b19c5d4ddcb7be0f9b4fbc03d41b1dd6)
+actually admitted the complete four-worker verifier at **6,983,516 KiB** free
+immediately before launch. Its recorded command is the same original complete
+verifier plus --rule-workers4/output/cpu-temp; old false SOURCE02 admission is
+retained separately. REMOTE_SOURCE03 **closed FAILED exit1** at exact clean3c39:
+build/all142syntax passed, then the original **180-second rules deadline**.
+Partial rules.log ends at test1979 without summary; Python and later journeys
+did not run. Closure host free RAM was **9,079,352 KiB**; cause is UNKNOWN.
+The exact nine-key rule-command record SHA256 is
+`ee919d4d28cd8dc6836f91de1ffcb59aa974173718220c2319b7166bcdd295f9`.
+Retain console, admission, rules.log, command record and closed receipt under
+D:/07-GAMES/Firstlight/artifacts/bounded-rule-workers-20261012.
+
+A subsequent read-only host query found zero Node commands matching the exact
+qualification path. That does not prove closure of every descendant. No
+process stop or VM/Claude interaction occurred. A colleague is examining only
+the retained timing data for a real correction; no cause or performance fix
+is claimed, and no unchanged retry or deadline relaxation is authorized by
+this failure. This current full failure supersedes the earlier deferred status
+below while preserving both historical observations and the focused successes.
+
 ## Remaining acceptance and launch
 
 World9 / Adventure12 / WildSigns1 are unchanged; there is no save migration.

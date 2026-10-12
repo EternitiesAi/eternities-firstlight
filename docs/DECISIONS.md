@@ -1,3 +1,16 @@
+# Four workers do not waive the complete gate, 2026-10-12
+
+Retain actual REMOTE_SOURCE03 failure at exact3c39: original 180-second rule
+timeout, partial1979/no footer, later stages unrun. Four workers were requested
+through the exact recorded command; this is not a passed gate or memory/timing
+guarantee. Admission/closure host-free observations of6,983,516/9,079,352 KiB
+do not establish a cause. Diagnose source/test timing from evidence, preserve
+all acceptance and avoid an unchanged retry. VM/Claude/unrelated work stays
+untouched. Exact final remote77 focused tests and unchanged build remain
+separate positive evidence; no new native or human claim follows.
+
+---
+
 # Refine two worktable silhouettes without moving their gameplay owners, 2026-10-12
 
 Use one explicit six-float mesh for exactly heaven-rielle-bench and

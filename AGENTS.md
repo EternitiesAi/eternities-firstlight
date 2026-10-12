@@ -1,3 +1,22 @@
+# Full four-worker attempt remains failed, 2026-10-12
+
+Fresh final remote 3c39adff441a64b33122a732c1d697a824f6f7a6 passed 77 focused
+tests and rebuilt matching unchanged HTML with clean Git. Subsequent complete
+REMOTE_SOURCE03 was admitted at 6,983,516 KiB host free, but closed FAILED
+exit1 at the original 180-second rules deadline after build/all142syntax.
+Partial TAP ends at test1979 without totals; Python/later journeys did not run.
+Closure free memory was 9,079,352 KiB. Cause is UNKNOWN; do not attribute this
+to the VM or waive the deadline. No matching own qualification-path Node was
+observed afterward, which is not whole descendant-tree closure proof. No
+process was stopped. Read docs/development/HEAVEN_WORKTABLES_2026-10-12.md.
+
+Parent retains source/canonical integration ownership. A colleague is reading
+the exact failed log for timing evidence only. Full/native admission remains
+unearned; do not relabel focused success. VM/Claude remain untouched, all save
+and system/camera contracts stay, goal ACTIVE unfinished and heartbeat PAUSED.
+
+---
+
 # Two crafted Heaven worktables, 2026-10-12
 
 Parent owns gameplay/heaven-crafted-worktables-20261012, based on clean pushed
