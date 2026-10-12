@@ -1,3 +1,19 @@
+# Broad run failed at two workers; protect host headroom, 2026-10-12
+
+Fresh remote9ef6e9b complete source attempt closed FAILED exit1 at the unchanged180s rules deadline after build/all142syntax passed. Partial rule output has no final summary; Python and later journeys did not run. Preserve REMOTE_SOURCE01 and do not claim a complete pass. Final focused five-test remote component passed4.462s. See docs/development/BOUNDED_RULE_WORKERS_2026-10-12.md.
+
+VM/Claude remain untouched. Four-worker retry is deferred under less1.5GiB free host RAM. For a future broad run require at least6GiB free immediately before launch; old pre-fetch memory observations are insufficient. This conservative admission is not a measured RAM bound. Scoped small source/tests may continue; no unrelated stops, changed deadlines or skipped requirements. Goal ACTIVE unfinished, heartbeat PAUSED.
+
+---
+
+# Optional rule workers; VM and Claude remain separate, 2026-10-12
+
+Parent owns verification/bounded-rule-workers-20261012, based on42950a8/PR65. Read docs/development/BOUNDED_RULE_WORKERS_2026-10-12.md. The optional cap changes only Node test-file scheduling for the complete rules suite. Every test, ordered source command, original180s rules/600s Python deadline and native admission gate remains required. The new rules-command.json is declared-dispatch provenance, never a passed gate. Default argv stays unchanged.
+
+Do not touch the VM, guest, Claude Code, unrelated services/processes or shared installs. Read-only scoped colleagues support review; parent admits one contained source run when host headroom permits. Native prep retains its old source pin and must refuse until reviewed exact-head reconciliation. Preserve failed/UNKNOWN evidence, saves/all systems/both cameras and bounded D storage. Goal ACTIVE unfinished; heartbeat PAUSED. No merge or deployment.
+
+---
+
 # Native restart evidence and VM boundary, 2026-10-12
 
 Dom resumed development and explicitly requires that the VM and Claude Code's work stay untouched. Parent owns this Firstlight checkout and review branch verification/native-restart-evidence-20261012, based on8243/PR64. Use only Firstlight source, labelled synthetic evidence and scoped colleagues. No VM/guest access, shared installs, unrelated process/service control or heavy parallel verification. Low host memory requires deferring the full source/browser gate, not changing its requirements.
