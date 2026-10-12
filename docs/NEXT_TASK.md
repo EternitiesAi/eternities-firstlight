@@ -1,3 +1,24 @@
+# Verify the bounded calculation change, then return to play, 2026-10-12
+
+Finish exact pushed-head checks in the existing clean independent clone for the
+two geometric oracles. One complete current source run may follow when host
+free RAM is at least6GiB immediately before launch. Retain all142 files/214
+ordered commands and original180/600 budgets; source timing/cause is not fixed
+until actual evidence supports it. Paired34-case counts and plain34/0/0 are
+focused proof only. Read development/GEOMETRY_ORACLE_WORK_2026-10-12.md.
+
+Keep this improvement bounded: no resident-policy or companion disabling, no
+shortened transport routes, no global cache of adjusted or mutated specimens.
+Preserve all existing source/native failures. With a complete gate, reconcile
+strict exact-head native preparations and prove the ordinary Choir/forest/
+garden/worktable experience. Independent substantive gameplay direction remains
+the recorded Living Road three-piece branch-sensitive carrier assembly and
+honest local handover; inspect canon and preserve old ready claim rights,
+unchanged payout and separate first-brace/consignment owners before building.
+VM/Claude remain outside this lane; goal ACTIVE, heartbeat PAUSED, no merge/deploy.
+
+---
+
 # Diagnose complete-rule timing; preserve playable progress, 2026-10-12
 
 REMOTE_SOURCE03 at clean exact3c39 closed FAILED: original 180-second rules

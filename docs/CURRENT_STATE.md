@@ -1,3 +1,22 @@
+# Acceptance geometry does less redundant work, 2026-10-12
+
+Two existing test files reuse unchanged part bounds within each current quality
+or pose, and Elderweald composes one matrix per traversal. All old tests/math/
+counterexamples remain. Paired actual34-case observation:10,196.6932ms before,
+2,148.2472ms after, with exactly251,433 unchanged assertions by method. Plain
+unobserved34/0/0 passed1,673.9453ms. Source reviewer inverse-reconstructed exact
+baseline hashes outside these edits. See
+development/GEOMETRY_ORACLE_WORK_2026-10-12.md.
+
+Actual rebuild remains identical unchanged3,319,540B pages SHA256
+7855015a4ec987795b94b1a6644bad5fd123cdf98f95e7b0905a72f63455b55d.
+No runtime/save/camera changes; this is no game frame-rate or full-gate claim.
+Source03's timeout/causeUNKNOWN and native/human gates remain. Fresh remote and
+the original complete gate are separate next steps. VM/Claude stay untouched;
+goal ACTIVE unfinished, heartbeat PAUSED; no merge or deployment.
+
+---
+
 # Exact remote components pass; complete gate still fails, 2026-10-12
 
 Freshly fetched final 3c39adff441a64b33122a732c1d697a824f6f7a6 passed all

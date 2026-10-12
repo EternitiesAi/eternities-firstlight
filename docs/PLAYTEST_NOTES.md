@@ -1,3 +1,20 @@
+# Same acceptance assertions, fewer repeated calculations, 2026-10-12
+
+No new browser/GPU/human playtest. Actual two-file CPU benchmark delegates all
+real calls: before34/0/0 in10,196.6932ms; after34/0/0 in2,148.2472ms. Exactly
+251,433 assertions by method remain. Host conditions were not controlled;
+operation counts, not the timing ratio, substantiate eliminated redundant work.
+Plain observer-free34/0/0 passed1,673.9453ms, with unchanged real HTML rebuild.
+Source review independently inverse-reconstructed both full baseline files
+outside the intended edits. See development/GEOMETRY_ORACLE_WORK_2026-10-12.md.
+
+All48 poses/routes/anchors/wind/full-body and mutated negative controls remain.
+No runtime, saves, both-camera or gameplay performance claim. Full-current and
+exact remote gates are separate; Source03 timeout/startup/garden failures stay.
+VM/Claude/personal saves untouched; no new recordings, profiles or full copies.
+
+---
+
 # Full timeout is not a gameplay pass, 2026-10-12
 
 Exact final remote3c39 focused run: 77 pass / 0 fail / 0 skip, 20,204.6548 ms;

@@ -1,3 +1,20 @@
+# Remove duplicate calculations, preserve every geometric acceptance check, 2026-10-12
+
+Reuse unchanged bounds only within the freshly generated quality/pose/state
+specimen and compose a matrix once per vertex traversal. Keep exact original
+body radius/height/floor/wind/interval arithmetic, assertion traversal/messages,
+all48 poses and fresh geometry for altered controls. No global or cross-pose
+cache. This changes only test-oracle cost; no game or fixture-history change.
+
+Paired operation observation and source inverse reconstruction support scope:
+all34 methods and251,433 per-method assertions remain. Plain34/0/0 and identical
+build pass. Do not generalize one timing pair to a game-performance, resource
+bound or complete-source repair. Keep all original budgets/coverage and old
+failures, then earn fresh remote/full/native acceptance. VM/Claude/unrelated
+workers stay untouched; goal ACTIVE unfinished, heartbeat PAUSED; no merge/deploy.
+
+---
+
 # Four workers do not waive the complete gate, 2026-10-12
 
 Retain actual REMOTE_SOURCE03 failure at exact3c39: original 180-second rule

@@ -1,3 +1,23 @@
+# Reuse acceptance geometry; keep complete coverage, 2026-10-12
+
+Parent owns verification/geometry-oracle-work-20261012 based on clean54ad/PR68.
+Only two acceptance-oracle files change: per-traversal matrix and per-fresh-
+specimen bounds reuse. All34 methods,48 poses, every old assertion/negative
+control, radius/height/wind/interval math and source142/214 inventory remain.
+Paired delegating observation verified251,433 identical per-method assertions;
+plain uninstrumented component34/0/0 passed1,673.9453ms. Independent source
+review reversed only the intended edits and reproduced both baseline hashes.
+Read docs/development/GEOMETRY_ORACLE_WORK_2026-10-12.md.
+
+Game modules, HTML, saves and both cameras are unchanged. Original full180/600
+budgets stay; actual complete current gate remains required, with immediate
+6GiB host-free admission and no VM/Claude/unrelated controls. Keep Source03's
+timeout and unknown cause; improvement in two tests does not establish that
+cause or game performance. Reuse D source/qualification/evidence, no new full
+clone/profile/video. Goal ACTIVE unfinished; heartbeat PAUSED; no merge/deploy.
+
+---
+
 # Full four-worker attempt remains failed, 2026-10-12
 
 Fresh final remote 3c39adff441a64b33122a732c1d697a824f6f7a6 passed 77 focused

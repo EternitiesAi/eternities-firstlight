@@ -21,14 +21,15 @@ vm.runInNewContext(fs.readFileSync(require.resolve('../src/world-foundations.js'
 const W=sandbox.module.exports;
 const InstalledW=installedContainsExtension?require('../src/world-foundations.js'):null;
 const matrix=p=>p.opt.m||E.M.compose(...p.p,...p.s);
-function vertices(p){const data=E.geometry(p.kind),stride=E.meshStride(p.kind),out=[];for(let i=0;i<data.length;i+=stride)out.push(E.M.transform(matrix(p),data.slice(i,i+3)));return out;}
+function vertices(p){const data=E.geometry(p.kind),stride=E.meshStride(p.kind),m=matrix(p),out=[];for(let i=0;i<data.length;i+=stride)out.push(E.M.transform(m,data.slice(i,i+3)));return out;}
 function bounds(p,wind=true){const vs=vertices(p),min=[0,1,2].map(i=>Math.min(...vs.map(v=>v[i]))),max=[0,1,2].map(i=>Math.max(...vs.map(v=>v[i])));if(wind&&p.opt.wind===2){min[0]-=.095;max[0]+=.095;min[1]-=.05;max[1]+=.05;}return{min,max};}
 function interval(a,b,lo,hi){let first=0,last=1;for(let i=0;i<3;i++){const d=b[i]-a[i];if(Math.abs(d)<1e-9){if(a[i]<lo[i]||a[i]>hi[i])return null;}else{const x=(lo[i]-a[i])/d,y=(hi[i]-a[i])/d;first=Math.max(first,Math.min(x,y));last=Math.min(last,Math.max(x,y));if(first>last)return null;}}return[first,last];}
 const near=(a,b)=>a.forEach((v,i)=>assert.ok(Math.abs(v-b[i])<EPS,`${v} != ${b[i]}`));
 function deeplyFrozen(o){if(o&&typeof o==='object'){assert.ok(Object.isFrozen(o));Object.values(o).forEach(deeplyFrozen);}}
 const allAnchors=[...ext.points,...ext.landmarks,...ext.encounterClearings];
-function bodyClear(a,b,p){const bb=bounds(p);return interval([a[0],F+.03,a[1]],[b[0],F+.03,b[1]],
+function bodyClearBounds(a,b,bb){return interval([a[0],F+.03,a[1]],[b[0],F+.03,b[1]],
  [bb.min[0]-R,bb.min[1]-BODY,bb.min[2]-R],[bb.max[0]+R,bb.max[1],bb.max[2]+R])===null;}
+function bodyClear(a,b,p){return bodyClearBounds(a,b,bounds(p));}
 function local(p,q){const m=matrix(p);return[0,4,8].map(i=>{const c=Array.from(m.slice(i,i+3));return E.dot(c,q.map((v,j)=>v-m[12+j]))/E.dot(c,c);});}
 function inside(p,q){const [x,y,z]=local(p,q);if(p.kind==='octa')return Math.abs(x)/.5+Math.abs(y)/.65+Math.abs(z)/.5<=1+1e-6;if(p.kind==='round')return x*x+y*y+z*z<=.25+1e-6;return[x,y,z].every(n=>Math.abs(n)<=.5+1e-6);}
 
@@ -141,8 +142,11 @@ test('every ground-detail vertex rests on actual land and low roots remain withi
 });
 test('actual opaque mesh envelopes clear every full-body route and task/NPC/encounter anchor',()=>{
  for(const quality of ['low','balanced','high']){
-  const parts=X.parts({quality});for(const r of ext.routes)for(let i=1;i<r.points.length;i++)for(const p of parts)assert.ok(bodyClear(r.points[i-1],r.points[i],p),quality+' '+r.id+' '+p.opt.elderwealdPart+' '+p.opt.solidId);
-  for(const a of allAnchors)for(const p of parts)assert.ok(bodyClear([a.x,a.z],[a.x,a.z],p),quality+' '+a.id+' '+p.opt.elderwealdPart);
+  // Reuse only within this immutable quality specimen. Lazy calculation keeps
+  // the original assertion order; negative controls still take fresh bounds.
+  const parts=X.parts({quality}),bb=new Map(),of=p=>{if(!bb.has(p))bb.set(p,bounds(p));return bb.get(p);};
+  for(const r of ext.routes)for(let i=1;i<r.points.length;i++)for(const p of parts)assert.ok(bodyClearBounds(r.points[i-1],r.points[i],of(p)),quality+' '+r.id+' '+p.opt.elderwealdPart+' '+p.opt.solidId);
+  for(const a of allAnchors)for(const p of parts)assert.ok(bodyClearBounds([a.x,a.z],[a.x,a.z],of(p)),quality+' '+a.id+' '+p.opt.elderwealdPart);
  }
 });
 test('branches intersect their parent and actual crown volume, with a bounded existing shader envelope',()=>{

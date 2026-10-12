@@ -33,7 +33,8 @@ function meshIntersects(a,b){
 function dimensions(p){const m=matrix(p);return[0,4,8].map(i=>{const axis=unit(Array.from(m.slice(i,i+3))),r=range(vertices(p),axis);return r[1]-r[0];});}
 function centerAtEnd(p,sign){return E.M.transform(matrix(p),[0,sign*.5,0]);}
 function interval(a,b,lo,hi){let first=0,last=1;for(let i=0;i<3;i++){const d=b[i]-a[i];if(Math.abs(d)<1e-9){if(a[i]<lo[i]||a[i]>hi[i])return null;}else{const x=(lo[i]-a[i])/d,y=(hi[i]-a[i])/d;first=Math.max(first,Math.min(x,y));last=Math.min(last,Math.max(x,y));if(first>last)return null;}}return[first,last];}
-function bodyClear(a,b,p){const q=bounds(p);return interval([a[0],g.floor+.03,a[1]],[b[0],g.floor+.03,b[1]],[q.min[0]-R,q.min[1]-BODY,q.min[2]-R],[q.max[0]+R,q.max[1],q.max[2]+R])===null;}
+function bodyClearBounds(a,b,q){return interval([a[0],g.floor+.03,a[1]],[b[0],g.floor+.03,b[1]],[q.min[0]-R,q.min[1]-BODY,q.min[2]-R],[q.max[0]+R,q.max[1],q.max[2]+R])===null;}
+function bodyClear(a,b,p){return bodyClearBounds(a,b,bounds(p));}
 function context(){
  const sim=new C.Simulation();sim.room=g.room;sim.state.player.x=g.workPoint.x;sim.state.player.z=g.workPoint.z;sim.state.adventure.started=true;sim.state.adventure.hp=100;sim.state.earthExpedition=ledger();
  sim.returnPos={room:'hearthwater',x:12.3,z:-4.2,yaw:.4};sim.worldTrip={active:'synthetic-art-character',realm:'earthlands',home:{...sim.returnPos}};
@@ -168,7 +169,7 @@ test('legal wrong-pose extrema keep each actual active section above soil and at
    assert.ok(b.min[1]>=g.floor-EPS,'wrong pose never buries timber');assert.ok(b.min[0]>=allowedMinX-EPS,'wrong pose has at most legacy6.5mm face contact');assert.ok(b.max[0]>face,'actual timber includes an exposed outer surface');assert.ok(b.min[0]>wall.x,'no swing into corridor-facing wall half');
    const d=dimensions(active);near(d[0],.16);near(d[1],g.sectionLength);near(d[2],.025);near(matrix(active)[0],0,'stable roll keeps width inYZ plane');
    if([yaw.min,yaw.max].includes(y)&&[pitch.min,pitch.max].includes(p))assert.ok(Math.hypot(...sub(centerAtEnd(active,1),g.sections[index].to))>g.endpointTolerance,'wrong extreme really misses the receiving socket');
-   for(const q of ps){finite(q);assert.ok(bounds(q).min[1]>=g.floor-EPS);for(const v of vertices(q))assert.ok(W.land(g.room,v[0],v[2],0),q.opt.fieldcraftPart+' unsupported');for(const route of EW.extension.routes)for(let i=1;i<route.points.length;i++)assert.ok(bodyClear(route.points[i-1],route.points[i],q),route.id+' / '+q.opt.fieldcraftPart);for(const a of anchors)assert.ok(bodyClear([a.x,a.z],[a.x,a.z],q),a.id+' / '+q.opt.fieldcraftPart);}
+   for(const q of ps){finite(q);const qb=bounds(q);assert.ok(qb.min[1]>=g.floor-EPS);for(const v of vertices(q))assert.ok(W.land(g.room,v[0],v[2],0),q.opt.fieldcraftPart+' unsupported');for(const route of EW.extension.routes)for(let i=1;i<route.points.length;i++)assert.ok(bodyClearBounds(route.points[i-1],route.points[i],qb),route.id+' / '+q.opt.fieldcraftPart);for(const a of anchors)assert.ok(bodyClearBounds([a.x,a.z],[a.x,a.z],qb),a.id+' / '+q.opt.fieldcraftPart);}
    specimens++;
   }
   const extremum=F.adjust(ctx,plan,{yaw:yaw.max,pitch:pitch.max}),active=role(Art.parts(ctx.sim.state.earthExpedition,extremum.view),'preview-section').find(p=>p.opt.active);
@@ -185,8 +186,8 @@ test('all supplied, fitting and permanent actual meshes keep root routes, full b
  for(let i=0;i<4;i++)states.push(Art.parts(ctx.sim.state.earthExpedition,fit(ctx,plan)));
  const anchors=[EE.definition.giver,...EE.definition.steps,...EE.definition.steps.flatMap(s=>s.choices||[]),...EE.definition.enemies,...EW.extension.points];
  for(const ps of states)for(const p of ps){finite(p);const b=bounds(p);assert.ok(b.min[1]>=g.floor-EPS,'no buried '+p.opt.fieldcraftPart);for(const v of vertices(p))assert.ok(W.land(g.room,v[0],v[2],0),p.opt.fieldcraftPart+' unsupported');
-  for(const route of EW.extension.routes)for(let i=1;i<route.points.length;i++)assert.ok(bodyClear(route.points[i-1],route.points[i],p),route.id+' / '+p.opt.fieldcraftPart);
-  for(const a of anchors)assert.ok(bodyClear([a.x,a.z],[a.x,a.z],p),a.id+' / '+p.opt.fieldcraftPart);
+  for(const route of EW.extension.routes)for(let i=1;i<route.points.length;i++)assert.ok(bodyClearBounds(route.points[i-1],route.points[i],b),route.id+' / '+p.opt.fieldcraftPart);
+  for(const a of anchors)assert.ok(bodyClearBounds([a.x,a.z],[a.x,a.z],b),a.id+' / '+p.opt.fieldcraftPart);
  }
  assert.ok(Math.max(...states.map(p=>p.length))<=29,'bounded per-state geometry budget');
 });
