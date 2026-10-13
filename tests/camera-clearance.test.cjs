@@ -90,7 +90,7 @@ test('retains the current clear side under small doorway movements instead of al
   assert.equal(r.yaw,first.yaw);assert.ok(r.distance>=3.4);
  }
 });
-test('no safe orbit never forces the eye through enclosed solids or claims readable clearance',()=>{
+test('an enclosed focus retains the inherited short fallback and never claims readable clearance',()=>{
  const e=fixture();e.cameraSolids=[{min:[-2,0,-2],max:[2,6,2]}];
  const r=resolve(e,[0,2,0],.4);
  assert.equal(r.yaw,.4);assert.equal(r.distance,.45);

@@ -149,7 +149,8 @@ function runFrame(kind){
  const briarStart=frameApp.indexOf('function briarSaveGuard('),briarEnd=frameApp.indexOf('// Parent app owns this transient lease independently',briarStart);assert.ok(briarStart>=0&&briarEnd>briarStart);
  Object.assign(f.env,vm.compileFunction(frameApp.slice(briarStart,briarEnd)+'\nreturn{briarContext,syncBriarOwner};',[],{contextExtensions:[f.env]})());
  const frame=frameApp.split('\n').find(l=>l.startsWith('function frame(now)'));
- const invoke=vm.compileFunction(frame+'\nreturn frame;',[],{contextExtensions:[f.env,{graphicsContextLost:f.api.graphicsContextLost}]})();
+ const heading=frameApp.split('\n').find(l=>l.startsWith('function cameraHeading('))||'';
+ const invoke=vm.compileFunction(heading+'\n'+frame+'\nreturn frame;',[],{contextExtensions:[f.env,{graphicsContextLost:f.api.graphicsContextLost}]})();
  let thrown;try{invoke(1000);}catch(e){thrown=e;}return{f,calls,thrown,rule,render};
 }
 test('pre-event lost renderer alone falls back and continues exactly one ordinary RAF/audio/UI tail',()=>{
