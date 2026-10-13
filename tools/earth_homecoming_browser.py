@@ -242,10 +242,12 @@ def read_provenance(sources, flags, cohort_sha, root=ROOT, caller_root=None):
         expected = expected_optional_defaults(old)
         catalogue_migration = ('exact-old-four-to-fresh-first-load'
                                if expected.get('localLife') != old.get('localLife') else None)
-        if (migrated != expected or
+        if (migrated != expected or 'briarMomentsMigration' not in row['migration'] or
                 row['migration'].get('localLifeCatalogueMigration') != catalogue_migration or
                 row['migration'].get('earthWildSignsMigration') !=
-                ('missing-to-fresh-earth-wild-signs-v1' if 'earthWildSigns' not in old else None)):
+                ('missing-to-fresh-earth-wild-signs-v1' if 'earthWildSigns' not in old else None) or
+                row['migration'].get('briarMomentsMigration') !=
+                ('missing-to-fresh-briar-moments-v1' if 'briarMoments' not in old else None)):
             raise ValueError('Optional migration must preserve every old field and add only exact fresh defaults.')
         origin = row.get('origin', {})
         if variant == 'strongest':

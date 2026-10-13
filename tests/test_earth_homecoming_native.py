@@ -262,6 +262,7 @@ else:
              const read=f=>JSON.parse(fs.readFileSync(f));for(const[k,v]of Object.entries(p.proof)){const seed=read(v.seed),world=C.validate(seed);assert.deepEqual(world,seed);assert.ok(H.eligible(world));assert.deepEqual(world.earthHomecoming,H.fresh());const final=C.validate(read(v.checkpoints.FINAL_WORLD));assert.ok(H.ready(final)&&final.earthHomecoming.claimed);}
              const old=read(p.proof.strongest.cohort_row.migration.source.path),expected=structuredClone(old),m=C.validate(old);assert.deepEqual(m.earthHomecoming,H.fresh());delete m.earthHomecoming;
              if(!('earthWildSigns' in old))expected.earthWildSigns={version:1,accepted:false,evidence:[],observed:false,resolution:null,cleared:false,claimed:false};
+             if(!Object.hasOwn(old,'briarMoments'))expected.briarMoments={version:1,revision:0,moments:[]};
              const ids=['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1'].sort(),l=expected.localLife;
              if(l.version===1&&Object.keys(l).length===2&&Object.hasOwn(l,'version')&&Object.hasOwn(l,'records')&&Object.keys(l.records).length===ids.length&&ids.every(id=>Object.hasOwn(l.records,id)))l.records['earth-first-load-through-v1']={accepted:false,choice:null,steps:[],claimed:false};
              assert.deepEqual(m,expected);assert.deepEqual(read(p.proof.strongest.cohort_row.migration.source.path),old);

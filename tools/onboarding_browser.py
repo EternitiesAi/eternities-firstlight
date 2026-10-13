@@ -230,7 +230,9 @@ def require_initial_resume(root, before, after, capture, owner):
              'nextEventBefore': before['nextEvent'], 'nextEventAfter': predicted['nextEvent'],
              'coreSha256': sha(root / 'src/core.js'), 'additionalFutureEventsAllowed': False,
              'localLifeCatalogueMigration': catalogue_migration,
-             'earthWildSignsMigration': wild_signs_migration}
+             'earthWildSignsMigration': wild_signs_migration,
+             'briarMomentsMigration': ('missing-to-fresh-briar-moments-v1'
+                                       if 'briarMoments' not in before else None)}
 
 
 # Proposed instrumentation observes actual ticks; it never pauses, steps,

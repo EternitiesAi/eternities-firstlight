@@ -132,7 +132,8 @@ class Fixture:
             origin={'kind':'fixture-origin synthetic validator' if variant=='strongest' else 'continuous synthetic validator','rootReport':origin_report}
             if variant!='strongest':origin.update(original={'report':origin_report,'stages':[old_link],'reports':[]},lineage=[])
             self.rows.append({'variant':variant,'earthReport':jl,'migration':{'source':old_link,'output':migrated_link,
-                'earthWildSignsMigration':'missing-to-fresh-earth-wild-signs-v1'},'origin':origin,'prerequisiteLineage':lineage})
+                'earthWildSignsMigration':'missing-to-fresh-earth-wild-signs-v1',
+                'briarMomentsMigration':'missing-to-fresh-briar-moments-v1'},'origin':origin,'prerequisiteLineage':lineage})
         self.cohort={'status':'passed','sourceFrozen':True,'variants':3,'results':self.rows,'sourceEpoch':self.epoch,'scope':'Synthetic link/validator fixture only'}
         for key in ('positionEdits','actorPositionEdits','inventoryGrants','healthGrants','manualDamage','plantedDefeats','plantedQuestFacts','forcedModes','forcedCycles'):self.cohort[key]=0
         self.cohort_path=self.sources/'CONNECTED_EARTH_HOMECOMING_REPORT.json';self.refresh()
@@ -157,6 +158,17 @@ class EarthNativeVerifier(unittest.TestCase):
         original=self.f.cohort_sha;self.f.cohort['scope']='modified receipt';self.f.refresh()
         with self.assertRaisesRegex(ValueError,'hash changed'):self.f.spec(cohort_sha=original)
         with self.assertRaisesRegex(ValueError,'hash changed'):self.f.spec(cohort_sha='bad')
+    def test_missing_wrong_or_null_briar_migration_disclosure_refuses_before_native_allocation(self):
+        migration=self.f.rows[0]['migration']
+        for value in ('missing',None,True,'automatic-history-backfill'):
+            if value=='missing':migration.pop('briarMomentsMigration',None)
+            else:migration['briarMomentsMigration']=value
+            self.f.refresh()
+            with self.subTest(value=value),self.assertRaisesRegex(ValueError,'Optional migration'):
+                self.f.spec()
+            self.assertFalse(self.f.output.exists())
+        migration['briarMomentsMigration']='missing-to-fresh-briar-moments-v1';self.f.refresh()
+        self.f.spec();self.assertFalse(self.f.output.exists())
     def test_failed_or_seed_only_report_refuses_even_when_hash_matches(self):
         self.f.cohort['status']='failed';self.f.refresh()
         with self.assertRaisesRegex(ValueError,'Complete three-path'):self.f.spec()

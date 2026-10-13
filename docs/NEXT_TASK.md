@@ -1,3 +1,27 @@
+# Historical migration receipt repaired, 2026-10-13
+
+Complete Source09 at a1c525f140c4d6a05478ad4436a8f723571edf7c failed in the
+explicit Earth homecoming earned regression:18 passed/1 failed. Actual migration
+preserved prior fields and added the optional empty Briar owner; one independent
+expectation omitted that owner. Before that failure, Node2193 passed/0 failed/2
+existing skips and Python486 methods were OK with8 skips. This was not a complete
+source pass and reached no new native browser qualification.
+
+The narrow repair adds missing-only literal expectations and an explicit Briar
+migration flag; current/present memories remain protected by full-world equality.
+Native admission rejects absent/wrong flags. Onboarding discloses the same
+missing-owner migration. No runtime/HTML/schema/camera/reward/XP changes. Three
+new actual migration boundary cases went RED3 then GREEN3; related Node14 passed.
+Focused Python75 methods had one SDK import-path error and2 skips; that SDK
+method passed on its own with the bundled PYTHONPATH. Keep both original logs.
+
+Next is fresh committed complete verification, then current Briar native UI,
+cold restart and both-camera evidence. Reuse STATION and fresh6GiB admission;
+keep original timeouts/workers. VM/Claude/personal saves/unrelated work remain
+excluded. Production objective unfinished; separate heartbeat PAUSED.
+
+---
+
 # Briar world interaction refined, 2026-10-13
 
 Current source fixes the shared-house doorway overlap: during a privately owned

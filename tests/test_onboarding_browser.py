@@ -272,6 +272,17 @@ class Preparation(unittest.TestCase):
         changed=copy.deepcopy(after);changed.pop('earthWildSigns')
         with self.assertRaises(AssertionError):self.initial_resume(before,changed)
 
+    def test_briar_resume_disclosure_distinguishes_missing_default_from_existing_empty_owner(self):
+        before,_=self.resume_pair();original=copy.deepcopy(before)
+        self.assertIsNone(self.initial_resume(before,self.production_tick(before,.1))['briarMomentsMigration'])
+        before.pop('briarMoments');missing=copy.deepcopy(before)
+        after=self.production_tick(before,.1);result=self.initial_resume(before,after)
+        self.assertEqual(result['briarMomentsMigration'],'missing-to-fresh-briar-moments-v1')
+        self.assertEqual(before,missing)
+        changed=copy.deepcopy(after);changed.pop('briarMoments')
+        with self.assertRaises(AssertionError):self.initial_resume(before,changed)
+        self.assertEqual(original['briarMoments'],{'version':1,'revision':0,'moments':[]})
+
     def initial_resume(self, before, after, seconds=.1):
         """Labelled synthetic tick metadata; actual installed Core is the oracle.
 
