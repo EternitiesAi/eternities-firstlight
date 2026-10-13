@@ -91,3 +91,14 @@ all prior files, negative cases and original180s/600s deadlines remain.
 
 VM/Claude Code/personal saves untouched. Heavy work D; reuse qualification,
 no extra full games/profiles/raw media. No main merge/deploy/paid provider.
+
+
+The follow-up emits actual PATROL_n_GLADE_OPEN before P.begin and extends the
+existing short fieldcraft driver with --work carrier. It uses native import,
+travel/walk, controls and ordinary RAF, a90s canvas window, no test flags or
+scripted game mutation. Fixed four prerequisite IDs, actual claimed original
+story, bounded current run and alive owned equipment are checked before
+browser acquisition. Matching pages and current required module embedding
+are enforced without rebuilding. SHORT_PROTOCOL02:8 Python pass,2.709s; no
+actual recorder execution yet. Updated pages3349384B/SHA256
+eebff3d6fb2e2cebad4f7b0a710e9d7188cbc6822b4e7d84d48d3688820552af.

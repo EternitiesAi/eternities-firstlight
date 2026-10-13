@@ -81,6 +81,7 @@ function journey({bow=false,veteran=false,output=null}={}){
  }
  function fitCarrier(run){
   const before=h.sim.snapshot(),writes=h.checkpoints.length,bare=E.command(h.context(),'patrol-step',{quest:E.patrol.id,run,priorClaim:run-1,step:'inspect-glade'},{save:h.save});assert.equal(bare.ok,false);assert.deepEqual(h.sim.snapshot(),before);assert.equal(h.checkpoints.length,writes);
+  snap('PATROL_'+run+'_GLADE_OPEN'); // Actual earned prerequisites before any temporary kit placement.
   const started=P.begin(h.context());assert.ok(started.ok,started.error);let view=started.view,ticket;
   while(view.activePiece){const id=view.activePiece,r=view.receivers.find(r=>r.pieceId===id);assert.ok(P.inspect(h.context(),started.plan,id,r.id).ok);
    const wrong=P.seat(h.context(),started.plan,id);assert.equal(wrong.ok,false,'supplied starting pose needs actual correction');

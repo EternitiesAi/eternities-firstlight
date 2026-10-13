@@ -14,10 +14,19 @@ owner contract, source review and retained red/green results. Three fresh
 command-earned journeys closed0; targeted rules/art35 pass; latest custom UI
 23/23 and actual-App camera6 pass. Those are CPU/earned results, not current
 full/native/GPU/human qualification. Current source has145 modules/145 rule
-files. Both rebuilt HTML pages match3349355B SHA256
-c47f0d6b65d0ef11405761dc517d35639a45622cc5df066de17e490ce5fe3aa9.
+files. Both rebuilt HTML pages match3349384B SHA256
+eebff3d6fb2e2cebad4f7b0a710e9d7188cbc6822b4e7d84d48d3688820552af.
 
-Next: push committed review source, verify the exact head in the reused
+Source e2d755a is pushed. A bounded follow-up adds current earned glade-prefix
+snapshots and reuses the existing90s canvas recorder via --work carrier. It
+checks exact unfinished/claimed prerequisites and current source embedding
+before browser acquisition;8 Python preflights pass. Recorder execution and
+current native results remain pending. Only the fetch-spawned Firstlight Git
+auto-maintenance chain was stopped after exact PID/parent/creation/command
+checks; its geometric-repack failure remains recorded. No VM/Claude worker
+was inspected or stopped. Qualification checkout update then closed0.
+
+Next: verify the exact pushed head in the reused
 independent checkout, then qualify visible current controls and brief footage
 through valid native admission. Earlier source/native failures remain intact.
 Ask Dom whether this feels like useful work or busywork and whether all guides

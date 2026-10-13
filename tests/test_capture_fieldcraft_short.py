@@ -19,6 +19,56 @@ def synthetic():
             'earthExpedition':{'version':1,'story':{'accepted':True,'claimed':False,'steps':ids,'branch':'managed-coppice'},'patrol':{'lastClaim':0,'active':None}}}
 
 class ShortCapturePreflight(unittest.TestCase):
+    def carrier(self):
+        world=synthetic();world['earthExpedition']['story']['claimed']=True
+        world['earthExpedition']['story']['steps']+=['brace-root-channel','deliver-allocation']
+        world['earthExpedition']['patrol']={'lastClaim':0,'active':{'run':1,'steps':['inspect-water','clear-crossing','inspect-root','clear-root-pests']}}
+        return world
+
+    def test_carrier_mode_accepts_only_current_original_paid_and_actual_four_step_prefix(self):
+        world=self.carrier();before=copy.deepcopy(world)
+        actual=json.loads(subprocess.check_output(['node','-e',"console.log(JSON.stringify(require('./src/earth-expedition.js').patrol.steps.slice(0,4).map(s=>s.id)))"],cwd=ROOT,text=True))
+        self.assertEqual(tool.validate_source(world,'carrier'),actual);self.assertEqual(world,before)
+        world['earthExpedition']['patrol']['lastClaim']=1;world['earthExpedition']['patrol']['active']['run']=2
+        self.assertEqual(tool.validate_source(world,'carrier'),actual)
+
+    def test_carrier_mode_refuses_recorded_partial_stale_run_or_unpaid_sources_without_mutation(self):
+        world=self.carrier();cases=[]
+        for run in [True,0,1000001,1.5,'1']:
+            c=copy.deepcopy(world);c['earthExpedition']['patrol']['active']['run']=run;cases.append(c)
+        for steps in [world['earthExpedition']['patrol']['active']['steps'][:-1],list(reversed(world['earthExpedition']['patrol']['active']['steps'])),world['earthExpedition']['patrol']['active']['steps']+['inspect-glade']]:
+            c=copy.deepcopy(world);c['earthExpedition']['patrol']['active']['steps']=steps;cases.append(c)
+        c=copy.deepcopy(world);c['earthExpedition']['patrol']['lastClaim']=1;cases.append(c)
+        c=copy.deepcopy(world);c['earthExpedition']['story']['claimed']=False;cases.append(c)
+        c=copy.deepcopy(world);c['earthExpedition']['patrol']['active']=None;cases.append(c)
+        for c in cases:
+            before=copy.deepcopy(c)
+            with self.assertRaises(ValueError):tool.validate_source(c,'carrier')
+            self.assertEqual(c,before)
+        with self.assertRaises(ValueError):tool.validate_source(world,'invented')
+
+    def test_current_capture_sources_are_embedded_and_new_cli_mode_is_inert(self):
+        html=(ROOT/'index.html').read_bytes().replace(b'\r\n',b'\n')
+        for filename in ['earth-patrol-carrier.js','earth-patrol-carrier-ui.js','earth-patrol-carrier-art.js']:
+            self.assertIn((ROOT/'src'/filename).read_bytes().replace(b'\r\n',b'\n'),html)
+        result=subprocess.run([sys.executable,'-B',str(ROOT/'tools/capture_earth_fieldcraft.py'),'--help'],capture_output=True,text=True,cwd=ROOT)
+        self.assertEqual(result.returncode,0);self.assertIn('--work {support,carrier}',result.stdout)
+        embedded=tool.validate_build(ROOT);self.assertIn('src/earth-patrol-carrier.js',embedded);self.assertIn('src/app.js',embedded)
+
+    def test_equal_stale_pages_or_unequal_pages_refuse_before_browser_acquisition(self):
+        with tempfile.TemporaryDirectory(prefix='synthetic-short-build-') as d:
+            root=Path(d);chunks=[]
+            for name in tool.CORE_FILES:
+                if name.startswith('src/') and name.endswith('.js'):
+                    p=root/name;p.parent.mkdir(parents=True,exist_ok=True);body=('/* synthetic runtime '+name+' */\r\n').encode();p.write_bytes(body);chunks.append(body.replace(b'\r\n',b'\n'))
+            page=b'<html>'+b'\n'.join(chunks)+b'</html>';(root/'index.html').write_bytes(page);(root/'FIRSTLIGHT_VALLEY.html').write_bytes(page)
+            self.assertTrue(tool.validate_build(root))
+            (root/'src/earth-patrol-carrier.js').write_bytes(b'/* changed current rule */\n')
+            with self.assertRaisesRegex(ValueError,'not embedded'):tool.validate_build(root)
+            self.assertEqual((root/'index.html').read_bytes(),page,'recorder never blesses a stale page')
+            (root/'FIRSTLIGHT_VALLEY.html').write_bytes(page+b'changed')
+            with self.assertRaisesRegex(ValueError,'pages differ'):tool.validate_build(root)
+
     def test_prefix_is_bound_to_the_actual_existing_definition(self):
         world=synthetic();before=copy.deepcopy(world)
         self.assertEqual(tool.validate_source(world),world['earthExpedition']['story']['steps'])

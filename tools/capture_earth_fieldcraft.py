@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bounded actual fieldcraft movie from a labelled command-earned root-clear save.
+"""Bounded actual field-work movie from a labelled command-earned unfinished save.
 
 Native character import, travel, work controls and ordinary RAF only. Recording
 starts at the worksite, uses the actual WebGL canvas, and lasts at most90 seconds.
@@ -21,7 +21,7 @@ import time
 import traceback
 
 from browser_support import launch_kwargs
-from capture_earth_expedition import fieldcraft_selector, fieldcraft_edit, fitting_unchanged
+from capture_earth_expedition import CORE_FILES, fieldcraft_selector, fieldcraft_edit, fitting_unchanged
 
 ROOT = Path(__file__).resolve().parents[1]
 VIEWPORT = {'width':1440, 'height':960}
@@ -29,17 +29,40 @@ VIEWPORT = {'width':1440, 'height':960}
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
-def validate_source(world):
+def validate_build(root=ROOT):
+    """Refuse stale equal pages before browser acquisition; never rebuild here."""
+    html=(root/'index.html').read_bytes()
+    if (root/'FIRSTLIGHT_VALLEY.html').read_bytes()!=html:raise ValueError('Checked-in HTML pages differ')
+    lf=lambda body:body.replace(b'\r\n',b'\n').replace(b'\r',b'\n')
+    embedded={}
+    for name in CORE_FILES:
+        if name.startswith('src/') and name.endswith('.js'):
+            body=(root/name).read_bytes()
+            if lf(body) not in lf(html):raise ValueError('Current runtime source not embedded: '+name)
+            embedded[name]=sha(root/name)
+    return embedded
+
+def validate_source(world, work='support'):
     # Fixed existing IDs; a declared earned prefix, never invented completion.
     expected = ['assess-load','prepare-allocation','read-water','clear-crossing','read-root-load','clear-root-pests']
     ledger = world.get('earthExpedition', {})
     story = ledger.get('story', {})
     if world.get('version') !=9 or world.get('adventure', {}).get('version') !=12:
         raise ValueError('Current world9/adventure12 command-earned snapshot required')
-    if not story.get('accepted') or story.get('claimed') or story.get('steps') != expected:
-        raise ValueError('Use the exact command-earned 02A_ROOT_CLEAR snapshot before fitting')
-    if ledger.get('patrol') != {'lastClaim':0,'active':None} or story.get('branch') not in ['stormfall-recovery','managed-coppice']:
-        raise ValueError('Unpaid original story prefix required')
+    if work not in ['support','carrier']:raise ValueError('Unknown field-work mode')
+    if work=='support':
+        if not story.get('accepted') or story.get('claimed') or story.get('steps') != expected:
+            raise ValueError('Use the exact command-earned 02A_ROOT_CLEAR snapshot before fitting')
+        if ledger.get('patrol') != {'lastClaim':0,'active':None}:
+            raise ValueError('Unpaid original story prefix required')
+    else:
+        patrol=ledger.get('patrol',{});active=patrol.get('active') or {};run=active.get('run')
+        expected=['inspect-water','clear-crossing','inspect-root','clear-root-pests']
+        if type(run) is not int or not 1<=run<=1000000 or type(patrol.get('lastClaim')) is not int or patrol['lastClaim']!=run-1 or active.get('steps')!=expected:
+            raise ValueError('Use the exact command-earned PATROL_n_GLADE_OPEN snapshot before fitting')
+        if not story.get('accepted') or not story.get('claimed') or story.get('steps')!=['assess-load','prepare-allocation','read-water','clear-crossing','read-root-load','clear-root-pests','brace-root-channel','deliver-allocation']:
+            raise ValueError('Actually claimed complete original delivery required')
+    if story.get('branch') not in ['stormfall-recovery','managed-coppice']:raise ValueError('Saved allocation required')
     a = world['adventure']
     if not a.get('started') or a.get('hp',0)<=0 or a.get('equipment', {}).get('weapon') not in a.get('owned', []):
         raise ValueError('Alive character with earned owned equipment required')
@@ -54,15 +77,17 @@ def main():
     parser.add_argument('--source',type=Path,required=True)
     parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--renderer',choices=['hardware','software'],required=True)
+    parser.add_argument('--work',choices=['support','carrier'],default='support')
     args=parser.parse_args(); source=args.source.resolve(); out=args.output.resolve()
     if not args.output.is_absolute() or os.name=='nt' and out.drive.lower()!='d:':parser.error('Fresh absolute D-drive output required')
     if out.exists() or not source.is_file():parser.error('Output must be new and source must exist')
-    initial=json.loads(source.read_text(encoding='utf-8-sig')); validate_source(initial)
+    initial=json.loads(source.read_text(encoding='utf-8-sig')); validate_source(initial,args.work)
+    embedded=validate_build()
     from playwright.sync_api import sync_playwright
     out.mkdir(parents=True); (out/'SOURCE_WORLD.json').write_bytes(source.read_bytes())
     report={'status':'running','method':__doc__,'source':{'path':str(source),'sha256':sha(source)},
             'head':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
-            'html_sha256':sha(ROOT/'index.html'),'viewport':VIEWPORT,'renderer_requested':args.renderer,
+            'html_sha256':sha(ROOT/'index.html'),'embedded_sources':embedded,'viewport':VIEWPORT,'renderer_requested':args.renderer,'work':args.work,
             'checks':[],'events':[],'browser_errors':[],'external_requests':[],
             'human_acceptance':False,'context_closed':False,'server_closed':False}
     sources={p.relative_to(ROOT).as_posix():sha(p) for p in (ROOT/'src').rglob('*') if p.is_file()};report['sources_sha256']=sources
@@ -108,7 +133,7 @@ def main():
                 def workspace(tab):
                     close();page.keyboard.press('j');click('#rpg-tabs [data-rpg="open"][data-id="'+tab+'"]')
                 def observe(label,picture=False):
-                    w=state();d=page.evaluate('()=>Realm.diagnostics');report['events'].append({'label':label,'seconds':time.monotonic()-started,'camera':d['camera'],'steps':w['earthExpedition']['story']['steps']})
+                    w=state();d=page.evaluate('()=>Realm.diagnostics');report['events'].append({'label':label,'seconds':time.monotonic()-started,'camera':d['camera'],'steps':w['earthExpedition']['story']['steps'],'patrol':w['earthExpedition']['patrol']})
                     if picture:page.screenshot(path=str(out/(label+'.png')))
                     return w
                 workspace('characters');legacy=page.evaluate('()=>localStorage.getItem(RealmCore.KEY)')
@@ -125,12 +150,15 @@ def main():
                 if page.locator('[data-rpg="world-list"]').count():click('[data-rpg="world-list"]')
                 click('[data-rpg="world-select"][data-id="earthlands"]');click('[data-rpg="world-preview"]');click('[data-rpg="world-confirm"]')
                 page.wait_for_function('()=>Realm.diagnostics.scene==="world-earthlands"')
-                workspace('expedition');click('[data-rpg="expedition-walk"][data-id="brace-root-channel"]')
+                work_id='brace-root-channel' if args.work=='support' else 'inspect-glade'
+                work_x,work_z=(-145,-84) if args.work=='support' else (-106,-105)
+                selector=fieldcraft_selector if args.work=='support' else lambda action,section=None:'[data-rpg="expedition-carrier-'+action+'"]'
+                workspace('expedition');click('[data-rpg="expedition-walk"][data-id="'+work_id+'"]')
                 walking=time.monotonic();stable=None;previous=None
                 while time.monotonic()-walking<240:
                     d=page.evaluate('()=>Realm.diagnostics');p=d['adventure']['player']
                     motion=math.hypot(p['x']-previous['x'],p['z']-previous['z']) if previous else math.inf
-                    if not d['adventure']['paused'] and math.hypot(p['x']+145,p['z']+84)<2.8 and motion<.01:
+                    if not d['adventure']['paused'] and math.hypot(p['x']-work_x,p['z']-work_z)<2.8 and motion<.01:
                         stable=stable if stable is not None else time.monotonic()
                         if time.monotonic()-stable>=.3:break
                     else:stable=None
@@ -138,31 +166,49 @@ def main():
                 else:raise TimeoutError('Native worksite route did not settle')
                 report['worksite_arrival']={'player':p,'walk_seconds':time.monotonic()-walking,'stable_seconds':time.monotonic()-stable}
                 close();page.keyboard.press('e');page.wait_for_selector('#rpg-window[open]')
-                check('Native fitting entry at actual worksite',page.locator(fieldcraft_selector('begin')).count()==1)
-                click(fieldcraft_selector('begin'))
-                check('Native fitting controls at actual worksite',page.locator(fieldcraft_selector('inspect',1)).count()==1)
+                check('Native fitting entry at actual worksite',page.locator(selector('begin')).count()==1)
+                click(selector('begin'))
+                check('Native fitting controls at actual worksite',page.locator(selector('inspect',1)).count()==1)
                 before=state();observe('WORKSPACE_BEFORE',True)
                 close()
                 # Recording instrumentation only: no gameplay or renderer changes.
                 page.evaluate('''()=>{const c=document.querySelector('#world'),stream=c.captureStream(30),chunks=[],mime=MediaRecorder.isTypeSupported('video/webm;codecs=vp8')?'video/webm;codecs=vp8':'video/webm',rec=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:2500000});window.__fieldcraftMovie={rec,stream,chunks,intervals:[],previous:null,start:performance.now(),done:false};rec.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};rec.onstop=async()=>{const s=__fieldcraftMovie,blob=new Blob(chunks,{type:mime}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ACTUAL_FIELDCRAFT.webm';a.click();s.stream.getTracks().forEach(t=>t.stop());s.done=true;};requestAnimationFrame(function sample(t){const s=__fieldcraftMovie;if(s.done)return;if(s.previous!==null)s.intervals.push(t-s.previous);s.previous=t;requestAnimationFrame(sample)});rec.start(1000);setTimeout(()=>{if(rec.state==='recording'){__fieldcraftMovie.stopped=performance.now();rec.stop()}},90000)}''')
                 def look(mode,label):
-                    close();click('#rpg-hud [data-rpg="camera"][data-id="'+mode+'"]');workspace('expedition');click(fieldcraft_selector('look'));page.wait_for_timeout(1800);observe(label)
+                    close();click('#rpg-hud [data-rpg="camera"][data-id="'+mode+'"]');workspace('expedition');fov=page.evaluate('()=>Realm.diagnostics.camera.fov');click(selector('look'));page.wait_for_timeout(1800);observe(label)
                     check(label+' workspace closed for visible work',not page.locator('#rpg-window').evaluate('(e)=>e.open'))
+                    check(label+' retains chosen view/FOV',page.evaluate('()=>Realm.diagnostics.camera.preset')==mode and page.evaluate('()=>Realm.diagnostics.camera.fov')==fov)
                 look('follow','WRONG_DIORAMA');look('adventure','WRONG_THIRD')
-                for n in range(1,5):
-                    workspace('expedition');click(fieldcraft_selector('inspect',n))
-                    if n==1:
+                for n in range(1,5 if args.work=='support' else 4):
+                    workspace('expedition');click(selector('inspect',n))
+                    if args.work=='carrier':
+                        piece=page.locator(selector('seat')).get_attribute('data-piece')
+                        target=page.evaluate('''([branch,id])=>RealmEarthPatrolCarrier.definition(branch).pieces.find(p=>p.id===id).target''',[before['earthExpedition']['story']['branch'],piece])
+                        check('Starting supplied piece needs correction '+piece,not page.locator(selector('seat')).is_enabled())
+                        for axis in ['x','z','yaw']:
+                            control=page.locator('#carrier-'+axis+'-number');control.focus()
+                            if axis=='x':
+                                control.press('ControlOrMeta+A');control.press('Backspace');control.press('-')
+                                check('Partial typing preserves focused native input '+piece,page.evaluate('()=>document.activeElement?.id==="carrier-x-number"') and not page.locator(selector('seat')).is_enabled())
+                            control.fill(str(target[axis]*180/math.pi if axis=='yaw' else target[axis]*100))
+                            check('Actual native carrier edit retains focus '+axis,page.evaluate('id=>document.activeElement?.id===id','carrier-'+axis+'-number'))
+                        check('Supplied placement changes no ownership or ledger',fitting_unchanged(before,state()))
+                    elif n==1:
                         check('Native yaw edit retains focus',fieldcraft_edit(page,'yaw',0));check('Native pitch edit retains focus',fieldcraft_edit(page,'pitch',14.6))
                         check('Temporary correction changes no ownership or ledger',fitting_unchanged(before,state()))
                         look('adventure','CORRECT_THIRD');look('follow','CORRECT_DIORAMA');workspace('expedition')
                     else:click(fieldcraft_selector('reuse',n))
-                    click(fieldcraft_selector('seat',n));observe('SEATED_'+str(n));close();page.wait_for_timeout(550)
-                check('Four seats remain unpaid and unrecorded',fitting_unchanged(before,state()))
-                look('follow','READY_DIORAMA');workspace('expedition');click(fieldcraft_selector('fasten'))
-                after=state();check('Fastening records only original brace',after['earthExpedition']['story']['steps']==before['earthExpedition']['story']['steps']+['brace-root-channel'] and after['earthExpedition']['patrol']==before['earthExpedition']['patrol'])
+                    click(selector('seat',n));observe('SEATED_'+str(n));close();page.wait_for_timeout(550)
+                check('Seats remain unpaid and unrecorded',fitting_unchanged(before,state()))
+                look('follow','READY_DIORAMA');page.screenshot(path=str(out/'READY_DIORAMA.png'));look('adventure','READY_THIRD');page.screenshot(path=str(out/'READY_THIRD.png'))
+                workspace('expedition');click(selector('fasten' if args.work=='support' else 'record'))
+                after=state()
+                if args.work=='support':check('Fastening records only original brace',after['earthExpedition']['story']['steps']==before['earthExpedition']['story']['steps']+['brace-root-channel'] and after['earthExpedition']['patrol']==before['earthExpedition']['patrol'])
+                else:check('Recording appends only original patrol inspection',after['earthExpedition']['story']==before['earthExpedition']['story'] and after['earthExpedition']['patrol']['lastClaim']==before['earthExpedition']['patrol']['lastClaim'] and after['earthExpedition']['patrol']['active']=={**before['earthExpedition']['patrol']['active'],'steps':before['earthExpedition']['patrol']['active']['steps']+['inspect-glade']})
                 for key in ['xp','coins','ore','owned','equipment','arsenal','earthBinding']:check('Fastening preserves '+key,after['adventure'][key]==before['adventure'][key])
                 check('Fastening preserves normal material ownership',after['sandbox']['inventory']==before['sandbox']['inventory'])
-                look('follow','PERMANENT_DIORAMA');page.screenshot(path=str(out/'PERMANENT_DIORAMA.png'));look('adventure','PERMANENT_THIRD');page.screenshot(path=str(out/'PERMANENT_THIRD.png'))
+                if args.work=='support':
+                    look('follow','PERMANENT_DIORAMA');page.screenshot(path=str(out/'PERMANENT_DIORAMA.png'));look('adventure','PERMANENT_THIRD');page.screenshot(path=str(out/'PERMANENT_THIRD.png'))
+                else:close();page.wait_for_timeout(1500);observe('RECORDED_THIRD',True)
                 page.evaluate('()=>{if(__fieldcraftMovie.rec.state!=="recording")throw Error("Capture exceeded bounded duration");__fieldcraftMovie.stopped=performance.now();__fieldcraftMovie.rec.stop()}')
                 page.wait_for_function('()=>__fieldcraftMovie.done');wait_retained()
                 movie=page.evaluate('()=>({intervals:__fieldcraftMovie.intervals,elapsed:__fieldcraftMovie.stopped-__fieldcraftMovie.start})')
