@@ -35,6 +35,14 @@ the colleague did not execute the tests.
 
 ## Evidence and limits
 
+[Fresh remote checkout receipt](../evidence/road-account-epoch05-2026-10-13/REMOTE_CHECK01.json)
+repeats the build and all34 focused checks at pushed source/test head
+a66756433601fbac90521ce9dbb37e9727e94957. A fresh origin fetch into the existing
+clean remote clone verified the exact head, regenerated identical pages and all
+seven original evidence payload hashes. The station was then restored cleanly
+to890d409 for resident qualification. This reused checkout is not a newly created
+clone. Later delivery commits add only evidence and records.
+
 [Focused CPU receipt and logs](../evidence/road-account-epoch05-2026-10-13/CPU_GATE01.json):
 34 passed, zero failures, zero skips. This covers10 current identity cases,
 8 routing cases,9 historical refusal/preservation cases and7 startup/closure cases.

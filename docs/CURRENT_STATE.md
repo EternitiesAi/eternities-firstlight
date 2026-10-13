@@ -7,6 +7,10 @@ helper text identities change; historical raw identities and frozen04 remain.
 files remain identical to resident checkpoint890d409; no gameplay/save migration.
 [Source review and exact limits](development/ROAD_ACCOUNT_EPOCH05_2026-10-13.md).
 
+Pushed source/test head a66756433601fbac90521ce9dbb37e9727e94957 also passes all34
+focused checks and identical regeneration in a freshly fetched, reused clean
+remote checkout. Exact resident checkpoint890d409 was restored afterward.
+
 Resident PR76 and the reused station remain frozen at890d409 for pending
 Source04/Native04. Fresh RAM has stayed below the6GiB admission threshold; no
 full source or browser was launched during this separate tooling work. Current

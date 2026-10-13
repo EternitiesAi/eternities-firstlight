@@ -1,0 +1,15 @@
+test_changed_actual_app_hook_is_rejected (test_roadkeeper_current_epoch.ProspectiveEpoch.test_changed_actual_app_hook_is_rejected) ... ok
+test_changed_reviewed_module_is_rejected (test_roadkeeper_current_epoch.ProspectiveEpoch.test_changed_reviewed_module_is_rejected) ... ok
+test_current_actual_files_admit_with_reviewed_epoch (test_roadkeeper_current_epoch.ProspectiveEpoch.test_current_actual_files_admit_with_reviewed_epoch) ... ok
+test_different_generated_pages_are_rejected (test_roadkeeper_current_epoch.ProspectiveEpoch.test_different_generated_pages_are_rejected) ... ok
+test_each_unreviewed_helper_mutation_is_rejected (test_roadkeeper_current_epoch.ProspectiveEpoch.test_each_unreviewed_helper_mutation_is_rejected) ... ok
+test_frozen_04_still_refuses_current_helpers (test_roadkeeper_current_epoch.ProspectiveEpoch.test_frozen_04_still_refuses_current_helpers) ... ok
+test_matching_pages_with_reviewed_module_removed_are_rejected (test_roadkeeper_current_epoch.ProspectiveEpoch.test_matching_pages_with_reviewed_module_removed_are_rejected) ... ok
+test_only_two_reviewed_text_pins_and_provenance_change (test_roadkeeper_current_epoch.ProspectiveEpoch.test_only_two_reviewed_text_pins_and_provenance_change) ... ok
+test_unknown_candidate_pin_is_rejected (test_roadkeeper_current_epoch.ProspectiveEpoch.test_unknown_candidate_pin_is_rejected) ... ok
+test_wrong_installed_head_is_rejected (test_roadkeeper_current_epoch.ProspectiveEpoch.test_wrong_installed_head_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 3.441s
+
+OK
