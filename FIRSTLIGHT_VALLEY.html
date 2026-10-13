@@ -15288,7 +15288,7 @@ function draw(out,sim){
   add('box',p,[width,len,width],c,id,{m:[...x.map(v=>v*width),0,...y.map(v=>v*len),0,...z.map(v=>v*width),0,...p,1]});
  };
  const motion=sim.state.settings.reducedMotion?0:Math.sin(v.time*3)*.035;
- const tip=[.95,3.32-v.tension*.24,28.95],float=[.2+(v.pulling?.12:0),.15+motion,31.2-v.progress*1.7];
+ const tip=[.95,3.32-v.tension*.24,28.95],float=[3+(v.pulling?.12:0),.15+motion,31.2-v.progress*1.7];
  add('box',[1.10,1.45,27.8],[.18,.32,.18],0x71634f,'rod-holder');
  beam([1.10,1.55,27.8],[1.03,2.65,28.3],.058,0x8e7051,'rod-lower');
  beam([1.03,2.65,28.3],tip,.034,0xc2a277,'rod-tip');

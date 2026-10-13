@@ -79,6 +79,6 @@ test('projected rod, float and catch use finite existing geometry without touchi
  for(const phase of ['waiting','bite','playing','caught','lost']){
   sim.presentation={fishing:{...h.view(),phase}};const out={box:[],round:[],octa:[],disc:[]};art.draw(out,sim);
   for(const [kind,parts] of Object.entries(out)){assert.ok(engine.geometry(kind).length);for(const part of parts){assert.ok(part.p.every(Number.isFinite));assert.ok(part.s.every(n=>Number.isFinite(n)&&n>0));if(part.m)assert.ok(part.m.every(Number.isFinite));assert.equal(part.cameraSolid,false);}}
-  assert.equal(out.round.some(p=>p.fishingPart==='silverfin-body'),phase==='caught');assert.equal(JSON.stringify(sim.snapshot()),before);
+  assert.equal(out.round.some(p=>p.fishingPart==='silverfin-body'),phase==='caught');const float=out.round.find(p=>p.fishingPart==='float');if(float){assert.ok(float.p[0]>2.5,'Float stays outboard of the 3.4m deck so its water contact is not hidden behind the planks');assert.equal(C.walkable(float.p[0],float.p[2],sim.navRoom,.31),false);}assert.equal(JSON.stringify(sim.snapshot()),before);
  }
 });
