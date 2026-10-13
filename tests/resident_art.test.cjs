@@ -121,3 +121,22 @@ test('Mara retains the shared short hem envelope instead of a closed skirt acros
   }
  }
 });
+
+test('Oren apron clears actual thigh triangles across the full gait',()=>{
+ // Clip each real triangle against the apron bounding box in resident space.
+ // This catches a leg emerging through its front even when all vertices are outside.
+ const clip=(polygon,axis,value,sign)=>{
+  const result=[];for(let i=0;i<polygon.length;i++){
+   const a=polygon[i],b=polygon[(i+1)%polygon.length],da=sign*(a[axis]-value),db=sign*(b[axis]-value);
+   if(da>=0)result.push(a);if((da<0)!==(db<0)){const t=da/(da-db);result.push(a.map((v,j)=>v+(b[j]-v)*t));}
+  }return result;
+ };
+ for(const reducedMotion of [false,true])for(let i=0;i<120;i++){
+  const r=render('oren',{phase:i*Math.PI/60,blend:1,time:i*.03,reducedMotion},{x:0,z:0,base:0,yaw:0});
+  const local=p=>p.map((v,k)=>(v-r.frame.root[12+k])/r.frame.scale[k]);
+  const ap=verts(r.parts.find(p=>p.residentPart==='work-apron')).map(local),lo=[0,1,2].map(k=>Math.min(...ap.map(v=>v[k]))),hi=[0,1,2].map(k=>Math.max(...ap.map(v=>v[k])));
+  for(const side of ['left','right']){const v=verts(r.parts.find(p=>p.residentPart===side+'-thigh')).map(local);
+   for(let j=0;j<v.length;j+=3){let tri=v.slice(j,j+3);for(let k=0;k<3&&tri.length;k++){tri=clip(tri,k,lo[k],1);tri=clip(tri,k,hi[k],-1);}assert.equal(tri.length,0,side+' thigh intersects apron at phase '+i);}
+  }
+ }
+});

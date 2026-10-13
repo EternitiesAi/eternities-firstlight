@@ -62,7 +62,7 @@ function draw(out,input,posed=pose(input.id)){
   add('box','notebook-spine',plus(center,[-.191,0,0]),[.018,.28,.07],0x334e54);
   add('round','hair-gather',plus(j.head,[0,-.025,-.15]),[.16,.135,.12],appearance.hair);
  }else{
-  add('traveler-cloth','work-apron',[0,.96+posed.bob,.15],[.30,.46,.026],0x75614b);
+  add('traveler-cloth','work-apron',[0,1.045+posed.bob,.15],[.30,.35,.026],0x75614b);
   add('box','apron-pocket',[.03,1.03+posed.bob,.169],[.14,.10,.018],0x947c59);
   add('box','folding-rule',j.leftHand,[.05,.245,.045],0xd1b77a);
   add('box','rule-hinge',plus(j.leftHand,[0,.086,.025]),[.055,.022,.008],0x71563b);

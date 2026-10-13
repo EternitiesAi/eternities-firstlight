@@ -61,3 +61,4 @@ deadlines. No cleanup, full clone, billing action, merge, deploy or heartbeat re
 Source review identified that a longer closed hem would intersect the forward
 thigh at full stride. Retain the shared short hem instead; pale gathered hair
 and the held notebook distinguish Mara without pretending a cloth simulation.
+A real triangle-versus-apron test also exposed Oren's initial long apron at lifted-knee onset. Shorten its lower edge to local y=.87; 120 phases in each motion setting now clear both thigh meshes. Preserve RED_APRON01 and its successful repair receipt.
