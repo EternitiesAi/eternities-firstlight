@@ -1,3 +1,32 @@
+# Next: readable character moments, 2026-10-13
+
+Continue from gameplay/companion-presence-20261013 after fetching current work.
+Read its [qualification](development/COMPANION_PRESENCE_QUALIFICATION_2026-10-13.md).
+The finite realm draft already exists; deepen and qualify its inhabited places.
+
+1. Fix third-person camera readability around house walls. The retained
+   BRIAR_NATIVE02/early-rescued-blade/REST_adventure.png is a concrete failing
+   visual reference: supported resting pose exists, but the player fills the
+   frame and hides Briar. Preserve explicit orbit, both camera styles, collisions,
+   reduced motion and saves. Qualify actual unframed approaches and building edges;
+   a geometry-only assertion or a curated orbit cannot close this defect.
+2. Improve character/companion animation with the current rig and measured art
+   budget. Fishing is intentionally a rod-in-holder prototype; hand alignment,
+   casting/reeling animation and audio are not delivered. Do not silently turn
+   it into a grinding economy or reward ledger.
+3. Run the full current browser regression under current resource admission.
+   Targeted native results are useful but not that gate. Keep all failures/skips.
+4. Dom's fresh and returning human route remains pending. Use the short
+   [pier and companion playtest](playtests/PIER_AND_COMPANION_2026-10-13.md).
+   Ask about navigation, line readability and enjoyment without claiming answers.
+
+Reuse the integrated checkout and qualification station on D. Never touch the
+VM, Claude Code, personal saves or unrelated workers. No automatic merge/deploy,
+cleanup, paid work or new full-game copy. Goal service remains usageLimited and
+the separate heartbeat PAUSED; future running work must be reported honestly.
+
+---
+
 # Briar outing qualified, 2026-10-13
 
 Briar can bring the dropped cloth home, then accompany an explicitly chosen

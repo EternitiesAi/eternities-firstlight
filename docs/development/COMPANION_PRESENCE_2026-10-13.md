@@ -1,5 +1,8 @@
 # Companion presence
 
+Implemented and qualified at `1f233c9c71c30161a8db105fa85d88187aa66a90`.
+Read [the results and retained visual limitations](COMPANION_PRESENCE_QUALIFICATION_2026-10-13.md).
+
 Base: fced43a050fa6feda1abf98aceb66a48d2ff477b, stacked on PR72.
 Parent owns runtime, tests, build and delivery in the reused integrated checkout.
 Two read-only colleagues review movement and the next production priorities.

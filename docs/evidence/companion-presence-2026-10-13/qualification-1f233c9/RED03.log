@@ -1,0 +1,35 @@
+✔ peaceful following steps out of the player centre and settles beside them (13.8071ms)
+✔ the narrow pier uses a supported alternative when a shoulder points into water (2.3164ms)
+✔ following catches up through actual waypoints and keeps room at a new destination (7.9571ms)
+✔ Stay and pause never become permission to move a crowded companion (1.8876ms)
+✖ a stale follow path cannot move an already crowded fox farther into the player (0.9376ms)
+✔ the authored doorstep rest leaves the ordinary house approach clear (0.4325ms)
+✔ crowding a resting Briar yields through real steps and requires actual re-arrival (23.0245ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 122.7452
+
+✖ failing tests:
+
+test at tests\companion_presence.test.cjs:45:1
+✖ a stale follow path cannot move an already crowded fox farther into the player (0.9376ms)
+  AssertionError [ERR_ASSERTION]: Crowded movement must yield outward
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\companion_presence.test.cjs:49:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

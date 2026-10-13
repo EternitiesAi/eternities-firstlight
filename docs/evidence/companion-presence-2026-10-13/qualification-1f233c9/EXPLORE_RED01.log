@@ -1,0 +1,43 @@
+✔ opening the pier choices has no implicit rest, cast or persistent mutation (7.3725ms)
+✔ a previously paused world is not silently resumed to permit casting (1.1038ms)
+✔ stale modal ownership and an active Briar outing cannot start a new activity (0.3823ms)
+✔ actual keyboard control chooses Hook then reel/ease, protects typing and cancels only its line (7.4201ms)
+✔ a non-pausing drawer freezes the fishing clock and discards elapsed menu time (7.5414ms)
+✔ App native fishing buttons retain Space and Enter without invoking dodge (1.3169ms)
+✔ the original quiet-water rest reach still opens the choices without an implicit cast (0.5235ms)
+✔ the fishing HUD yields to drawers and returns when controls are available again (0.8357ms)
+✔ framing the water is an explicit camera action that retains the chosen style and FOV (2.214ms)
+✔ the actual App boundary gives photo mode its controls and suspends the hidden line (1.1704ms)
+✔ global App E cannot act on a line hidden behind photo or menu controls (9.0574ms)
+✖ the nearby Explore shore action dismisses its drawer before opening native choices (2.0186ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 11
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 124.9726
+
+✖ failing tests:
+
+test at tests\pier_fishing_ui.test.cjs:101:1
+✖ the nearby Explore shore action dismisses its drawer before opening native choices (2.0186ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_fishing_ui.test.cjs:105:29)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

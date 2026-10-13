@@ -1,3 +1,26 @@
+# Lantern pier and companion observations, 2026-10-13
+
+Automated native fishing passed44 checks: a fresh character without expedition
+progress, an earned Chapter IV bow, current controls, exact cold save readback,
+pause/menu/photo behavior and explicit release. Both cameras show the float and
+fish after Look along the line. Footage is ordinary-RAF automation,46.36s and
+4,237,185B, not human play or a pacing/performance result.
+
+One current early-blade Briar native case passed103 checks and3 exact-byte
+restarts. Diorama shows physical doorstep separation. The third-person rest
+image is visibly too tight against the house and hides the fox: keep this as
+an open visual failure even though the submitted resting pose passes. Pier
+cloth visibility improves through the sign's cutaway. Initial readiness failure
+was preserved; the accepted walk must finish and actual yielding must clear.
+
+No human feedback was supplied for this milestone. Follow
+[the fresh/returning route](playtests/PIER_AND_COMPANION_2026-10-13.md).
+Did you find the activity? Could you read the line and fish in both views?
+Did this feel like a pleasant place to spend time with Briar?
+[Source, native evidence and limits](development/COMPANION_PRESENCE_QUALIFICATION_2026-10-13.md).
+
+---
+
 # Briar outing qualified, 2026-10-13
 
 Briar can bring the dropped cloth home, then accompany an explicitly chosen

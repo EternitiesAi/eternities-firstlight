@@ -1,3 +1,29 @@
+# Ordinary Earth life without a new economy, 2026-10-13
+
+The founder Earth charter informs a bounded catch-and-release activity at the
+existing lantern pier. Silverfin naming and tuning are provisional. No new
+campaign prerequisite, class assignment, level curve, collection, rare-pet rule
+or economic profession follows. Rest is a separate explicit choice. The line
+exists only during the current accepted session and ends on reload or departure.
+
+Physical companion spacing uses accepted Core movement, never a render-only
+offset. Quiet Follow settles nearby; active combat/scent/guide/outing ownership
+keeps priority. At the doorstep, crowding suspends resting/readiness until actual
+space is available. Existing remembered facts and sole writer remain unchanged.
+
+Camera changes for fishing require explicit Look and retain preset/FOV. The
+pier board may cut away; no renderer replacement or Unreal migration. Current
+native evidence identifies a remaining close-camera defect at the house: a
+passing pose test cannot substitute for a readable moment. That is next priority.
+
+Keep World9/Adventure12 and all existing nested owners/keys/XP. No fishing
+migration, grant, auto-equip or old reward replay. Preserve failed receipts,
+bounded storage and VM/Claude exclusions. Full current browser qualification,
+real GPU measurement and human acceptance stay separate from targeted success.
+See [the exact qualification](development/COMPANION_PRESENCE_QUALIFICATION_2026-10-13.md).
+
+---
+
 # Briar outing qualified, 2026-10-13
 
 Briar can bring the dropped cloth home, then accompany an explicitly chosen

@@ -1,3 +1,29 @@
+# Lantern pier and companion presence, 2026-10-13
+
+Current gameplay branch: gameplay/companion-presence-20261013, stacked on PR72.
+Qualified runtime/test head: 1f233c9c71c30161a8db105fa85d88187aa66a90.
+Read docs/development/COMPANION_PRESENCE_QUALIFICATION_2026-10-13.md before
+continuing: complete source223 commands passed; Node2225/0fail/2skip and
+Python488 OK/8skip. Native fishing44 checks and one early-blade Briar103 checks
+passed. Four other Briar cases are CPU-only. Full current --browser remains open.
+
+The pier has explicit catch/release and separate legacy rest. Fishing is transient,
+has no economy/save owner, and pauses behind menus/photo controls. Existing save
+versions, XP, choices and ledgers remain. Briar's supported idle spacing and rest
+yielding are qualified; traveling shoulder formation is not claimed. The default
+close-camera doorstep image still crowds the player against a house wall. Preserve
+that negative visual evidence and fix camera readability next.
+
+One46.36s/4.24MB finished clip and bounded14.02MB evidence bundle are retained.
+Reuse ROOT/STATION; preserve failed evidence and the blocked standalone deletion.
+VM/Claude Code/personal profiles/unrelated work remain excluded. Fresh host-only
+6GiB admission before full source verification or every whole browser launch;
+Node180/Python600/four workers unchanged. No main merge or public deployment.
+Production unfinished. Goal service reports usageLimited; this was directly
+authorized work, not a resumed background loop. Separate heartbeat stays PAUSED.
+
+---
+
 # Briar outing qualified, 2026-10-13
 
 Briar can bring the dropped cloth home, then accompany an explicitly chosen

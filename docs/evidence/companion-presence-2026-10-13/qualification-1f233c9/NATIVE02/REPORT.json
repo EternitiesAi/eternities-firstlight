@@ -1,0 +1,132 @@
+{
+  "status": "failed",
+  "head": "1b809e0a1854afb7b5d322c14eecca11d6bd637d",
+  "htmlSha256": "be0d8935cede8e57e998bfe929a90ccf070aab799038feca30032aa2f94d421a",
+  "callerSha256": "6a223f4ceb8f33d577f2978b2cb72cd76d74ced696971e01533d6d23c5505dc5",
+  "checks": [
+    {
+      "name": "served exact current HTML",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual software WebGL2",
+      "passed": true,
+      "detail": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    {
+      "name": "accepted supported walk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "fresh fishing requires no expedition or campaign",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "explicit original water rest still records once",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "cast closes choices and opens live HUD",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "old conflicting E context hidden",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "sustained bite available",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Space hooks native button without dodge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "keyboard hold reels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "keyboard release eases",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "pointer hold reels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "pointer release eases",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "non-pausing settings cannot progress fish",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "catch required multiple tension decisions",
+      "passed": true,
+      "detail": 7
+    },
+    {
+      "name": "economic story and creative owners unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "shared moments unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no fishing journal reward",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "explicit release ends activity and restores context",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "errors": [
+    "Traceback (most recent call last):\n  File \"D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\qualify_pier02.py\", line 138, in main\n    click('#rpg-close');render();check('returning input preserves earned owners',N.stable(state())==N.stable(row['worlds']['input']))\n    ~~~~~^^^^^^^^^^^^^^\n  File \"D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\qualify_pier02.py\", line 80, in click\n    q=page.locator(s);assert q.count()==1,s;q.click(timeout=15000)\n                                            ~~~~~~~^^^^^^^^^^^^^^^\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\sync_api\\_generated.py\", line 15637, in click\n    self._sync(\n    ~~~~~~~~~~^\n        self._impl_obj.click(\n        ^^^^^^^^^^^^^^^^^^^^^\n    ...<10 lines>...\n        )\n        ^\n    )\n    ^\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\_impl\\_sync_base.py\", line 115, in _sync\n    return task.result()\n           ~~~~~~~~~~~^^\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\_impl\\_locator.py\", line 162, in click\n    return await self._frame._click(self._selector, strict=True, **params)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\_impl\\_frame.py\", line 566, in _click\n    await self._channel.send(\"click\", self._timeout, locals_to_params(locals()))\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\_impl\\_connection.py\", line 69, in send\n    return await self._connection.wrap_api_call(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<3 lines>...\n    )\n    ^\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\_impl\\_connection.py\", line 559, in wrap_api_call\n    raise rewrite_error(error, f\"{parsed_st['apiName']}: {error}\") from None\nplaywright._impl._errors.TimeoutError: Locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator(\"#rpg-close\")\n    - locator resolved to <button id=\"rpg-close\" aria-label=\"Close character workspace\">\u00d7</button>\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n      - waiting 100ms\n    28 \u00d7 waiting for element to be visible, enabled and stable\n       - element is not visible\n     - retrying click action\n       - waiting 500ms\n\n"
+  ],
+  "browserErrors": [],
+  "externalRequests": [],
+  "admissions": [
+    {
+      "freeHostKiB": 7773372,
+      "minimumFreeKiB": 6291456
+    }
+  ],
+  "sourceGate": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\REMOTE_SOURCE04_EXIT.json",
+    "sha256": "90a1bd85744eff64d1a82e624eb6f6a74a04112e27e585319e47264526a382ca",
+    "commandsPassed": 223,
+    "ruleFiles": 157,
+    "head": "1b809e0a1854afb7b5d322c14eecca11d6bd637d",
+    "output": "D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\REMOTE_SOURCE04"
+  },
+  "cohortSha256": "db36c31c93350dc1955ee409b8a2ff0b5b9e38e5a1302869fee7215890fa0280",
+  "method": "Actual native controls, current earned import and one short ordinary-RAF clip.\nAccelerated setup/first two cases are labelled. No direct state/pose/reward edits.\nOnly task-owned loopback server, D profile and browser/driver are created/closed.\n",
+  "performanceCertified": false,
+  "humanAcceptance": false,
+  "positionEdits": 0,
+  "actorPositionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedQuestFacts": 0,
+  "ownedBrowserDriverClosed": true,
+  "ownedServerClosed": true
+}

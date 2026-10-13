@@ -1,3 +1,30 @@
+# A line on the water, 2026-10-13
+
+The full integrated browser game now includes an optional lantern-pier fishing
+loop for fresh and returning characters, plus supported quiet spacing and
+doorstep yielding for Briar. The rod, line, float and silverfin are original
+procedural presentation; there is no retained catch or reward economy. The old
+water rest remains explicit. Both cameras and all save versions remain.
+
+Source1f233c9c71c30161a8db105fa85d88187aa66a90 passed the complete223-command
+source verifier (Node2225 passed/0failed/2skips; Python488 OK/8skips), both
+continuous ten-chapter draft variants and five earned Briar continuations.
+Actual native fishing44 and one early-blade Briar103 checks passed, including
+four whole-browser restarts across the two callers. The other four Briar cases
+are CPU-only. One ordinary-RAF clip is46.36s/4,237,185B; full1159-frame decode
+passed. Software WebGL2/Low only; no human or RTX performance certification.
+
+The framed fishing views and pier board cutaway are visibly improved. The
+third-person house-door sample remains too tightly framed and obscures Briar;
+its passing pose check is not a passing legibility judgment. Current full
+--browser, close-camera polish, animation and human acceptance remain open.
+See [the qualification and original failures](development/COMPANION_PRESENCE_QUALIFICATION_2026-10-13.md)
+and [the playtest route](playtests/PIER_AND_COMPANION_2026-10-13.md).
+Review branch gameplay/companion-presence-20261013 is stacked on PR72; no merge
+or public deployment. VM and Claude work were untouched; checkouts were reused.
+
+---
+
 # Briar outing qualified, 2026-10-13
 
 Briar can bring the dropped cloth home, then accompany an explicitly chosen

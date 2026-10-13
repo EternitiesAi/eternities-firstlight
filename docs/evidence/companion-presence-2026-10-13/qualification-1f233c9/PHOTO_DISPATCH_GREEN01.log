@@ -1,0 +1,28 @@
+✔ pier-only explicit cast does not spend, equip, record or duplicate an activity (10.0858ms)
+✔ readable bite, tension decisions, catch and explicit release use actual elapsed time (107.4916ms)
+✔ holding through a strong pull loses the fish without costing any inventory (65.9702ms)
+✔ pause and long clock gaps cannot advance the float or catch up offline play (33.3015ms)
+✔ walking, scene, death, character and world replacement release transient fishing (1.9404ms)
+✔ commands cannot inject progress and current snapshots cannot alter the owned fish (0.925ms)
+✔ releasing a held input while paused cannot latch reeling on resume (16.5471ms)
+✔ a command-earned early blade and crafted bow can fish without advancing story or equipment (259.1046ms)
+✔ projected rod, float and catch use finite existing geometry without touching game state (9.883ms)
+✔ opening the pier choices has no implicit rest, cast or persistent mutation (8.9574ms)
+✔ a previously paused world is not silently resumed to permit casting (1.0377ms)
+✔ stale modal ownership and an active Briar outing cannot start a new activity (0.391ms)
+✔ actual keyboard control chooses Hook then reel/ease, protects typing and cancels only its line (7.0758ms)
+✔ a non-pausing drawer freezes the fishing clock and discards elapsed menu time (6.5611ms)
+✔ App native fishing buttons retain Space and Enter without invoking dodge (1.2641ms)
+✔ the original quiet-water rest reach still opens the choices without an implicit cast (0.4803ms)
+✔ the fishing HUD yields to drawers and returns when controls are available again (0.6851ms)
+✔ framing the water is an explicit camera action that retains the chosen style and FOV (1.5531ms)
+✔ the actual App boundary gives photo mode its controls and suspends the hidden line (0.9818ms)
+✔ global App E cannot act on a line hidden behind photo or menu controls (8.4036ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 699.7588

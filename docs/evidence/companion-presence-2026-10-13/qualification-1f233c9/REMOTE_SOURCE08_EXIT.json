@@ -1,0 +1,39 @@
+{
+  "scope": "Complete current source; four Node file workers; original rules180/Python600; no native browser",
+  "command": [
+    "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+    "-B",
+    "tools/verify.py",
+    "--rule-workers",
+    "4",
+    "--output",
+    "D:/07-GAMES/Firstlight/artifacts/companion-presence-20261013/REMOTE_SOURCE08",
+    "--cpu-temp",
+    "C:/Users/Dom/AppData/Local/Temp"
+  ],
+  "requestedRuleWorkers": 4,
+  "sourceHead": "1f233c9c71c30161a8db105fa85d88187aa66a90",
+  "headAfter": "1f233c9c71c30161a8db105fa85d88187aa66a90",
+  "statusAfter": [],
+  "startedUtc": "2026-10-13T16:48:06.8043526Z",
+  "closedUtc": "2026-10-13T16:52:15.1868238Z",
+  "exitCode": 0,
+  "freeHostKiBBefore": 9860896,
+  "freeHostKiBAfter": 8702196,
+  "admission": {
+    "sha256": "06cad39b73545f1e8b637e2ae422494cffb2b3b98a2d4818119ad60a5692f478",
+    "path": "D:/07-GAMES/Firstlight/artifacts/companion-presence-20261013/SOURCE08_ADMISSION01.json"
+  },
+  "unitChildTemp": "C:/Users/Dom/AppData/Local/Temp",
+  "allOtherChildTemp": "D:/07-GAMES/Firstlight/cache/browser-temp",
+  "console": {
+    "bytes": 14754,
+    "sha256": "330c66f8cac8c22be1651af5a89325a4a61781019f18aa37a32343994bcf9d5e",
+    "path": "D:/07-GAMES/Firstlight/artifacts/companion-presence-20261013/REMOTE_SOURCE08_CONSOLE.log"
+  },
+  "rulesCommand": {
+    "bytes": 23345,
+    "sha256": "e31d56f202e4d2e2b110e343db7c73f8640071e13c4e1687e68d138f2587bc65",
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\REMOTE_SOURCE08\\rules-command.json"
+  }
+}
