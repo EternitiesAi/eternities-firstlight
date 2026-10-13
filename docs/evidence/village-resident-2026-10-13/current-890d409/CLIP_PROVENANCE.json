@@ -1,0 +1,17 @@
+{
+  "sourceHead": "890d409c3f1610aad923d7b30d00384425230152",
+  "rawLocalOnly": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\NATIVE04\\video\\10aa0bd6043be88d3aa31ac895855c18.webm",
+    "bytes": 8328327,
+    "sha256": "4de52b9a541012ddd5c8133127e68d6c9b3265f6e2e01555ef62f15b74c448ef"
+  },
+  "clip": {
+    "path": "NATIVE04/village-residents.webm",
+    "bytes": 5325769,
+    "sha256": "6d34a2f65806b74f41d3c64885101111d3c09c4c293256198e99444cb3dce37f",
+    "seconds": 44,
+    "decodedFrames": 1100
+  },
+  "processing": "Trim raw seconds 20 through 64; VP8 single-thread 900k target; no retiming, no audio. Complete 1100-frame decode through image2/PNG to a single overwritten one-pixel diagnostic. Contains ordinary-RAF movement, actual UI controls and paused observation; software WebGL2/Low, Chrome155, 1280x800. Not a cinematic, human playtest or GPU measurement.",
+  "preservedProcessingFailures": "Bundled minimal ffmpeg lacks fps/tile filters and null muxer; first two processing attempts failed, then supported encoding and full decoding passed."
+}

@@ -1,0 +1,13 @@
+[libvpx @ 0000014cae8dde40] v1.14.1
+Input #0, matroska,webm, from 'D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/NATIVE04/village-residents.webm':
+  Metadata:
+    ENCODER         : Lavf61.1.100
+  Duration: 00:00:44.00, start: 0.000000, bitrate: 968 kb/s
+  Stream #0:0: Video: vp8 (libvpx), yuv420p(tv, progressive), 1280x800, SAR 1:1 DAR 8:5, 25 fps, 25 tbr, 1k tbn
+      Metadata:
+        ENCODER         : Lavc61.3.100 libvpx
+        DURATION        : 00:00:44.000000000
+[AVFormatContext @ 0000014cae8de4c0] Requested output format 'null' is not known.
+[out#0 @ 0000014cae8de000] Error initializing the muxer for pipe:: Invalid argument
+Error opening output file -.
+Error opening output files: Invalid argument

@@ -1,0 +1,85 @@
+{
+  "head": "1ca07f7b9179f925575f0ccf3e63dc14cfad1e81",
+  "scope": "Focused CPU checks, native-origin persistent restart, recursive Earth presentation caller; not complete browser gate",
+  "startedUtc": "2026-10-13T22:50:16.281705+00:00",
+  "commands": [
+    {
+      "name": "cpu-budget-output",
+      "command": [
+        "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_browser*.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "log": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\BUDGET_SMOKE01\\cpu-budget-output.log",
+      "sha256": "9b6fee03509f6386a354bd1f275c57c35caed8a8baa1190528f2f16e45528f3b"
+    },
+    {
+      "name": "cpu-verifier-dispatch",
+      "command": [
+        "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_verify_browser_budget.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "log": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\BUDGET_SMOKE01\\cpu-verifier-dispatch.log",
+      "sha256": "c3e813a29af6f365a9b354a88ab11f7f06c446a1b5d60f7238227dcb28eeb5ed"
+    },
+    {
+      "name": "native-origin",
+      "command": [
+        "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-B",
+        "tools/browser_budget.py",
+        "--root",
+        "D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game",
+        "--output",
+        "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\BUDGET_SMOKE01\\native-origin-admission",
+        "--temp-dir",
+        "D:/07-GAMES/Firstlight/cache/browser-temp",
+        "--",
+        "tests/native_origin_browser.py"
+      ],
+      "exitCode": 0,
+      "log": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\BUDGET_SMOKE01\\native-origin.log",
+      "sha256": "0b81853b4503586fb0edd367582284bedfc3a2256c3d12ff3f608e63435b5263"
+    },
+    {
+      "name": "recursive-earth",
+      "command": [
+        "C:\\Users\\Dom\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-B",
+        "tools/browser_budget.py",
+        "--root",
+        "D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game",
+        "--output",
+        "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\BUDGET_SMOKE01\\recursive-earth-admission",
+        "--temp-dir",
+        "D:/07-GAMES/Firstlight/cache/browser-temp",
+        "--",
+        "tests/earth_ground_material_browser.py"
+      ],
+      "exitCode": 0,
+      "log": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\BUDGET_SMOKE01\\recursive-earth.log",
+      "sha256": "696394c9d8a4bbb1da9115f225d1b99f10c0e1f2c23afd8c4f284398290d01fa"
+    }
+  ],
+  "passed": true,
+  "closedUtc": "2026-10-13T22:52:18.403174+00:00",
+  "headAfter": "1ca07f7b9179f925575f0ccf3e63dc14cfad1e81",
+  "statusAfter": ""
+}

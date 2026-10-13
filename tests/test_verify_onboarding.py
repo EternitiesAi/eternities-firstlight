@@ -10,6 +10,7 @@ import io
 import json
 import os
 from pathlib import Path
+import shutil
 import sys
 import tempfile
 from types import SimpleNamespace
@@ -109,7 +110,25 @@ class OnboardingVerifier(unittest.TestCase):
 
     def main_requests(self,browser=True,onboarding_exit=0,capture_cpu_exit=0,consignment_exit=0,road_account_cpu_exit=0,road_account_exit=0):
         calls=[]
+        self._main_request_number=getattr(self,'_main_request_number',0)+1
+        prepared=None
+        if browser:
+            # Retain this invocation's tiny synthetic source bytes separately
+            # until its source transport publishes them into fresh command logs.
+            # A retry preserves prior logs and evidence instead of reusing them.
+            prepared=Path(self.tmp.name)/f'synthetic-prepared-inputs-{self._main_request_number}'
+            self.f.logs.rename(prepared)
         def fake_run(command,**kw):
+            if prepared is not None and command[1:2]==['tools/earth_homecoming_journey.cjs']:
+                shutil.copytree(prepared/'earth-homecoming-earned',self.f.sources)
+            if command[1:2]==[str(self.f.root/'tools/browser_budget.py')]:
+                target=command[command.index('--')+1:]
+                self.assertEqual(command[command.index('--root')+1],str(self.f.root))
+                self.assertEqual(command[command.index('--temp-dir')+1],str(Path(self.tmp.name).resolve()))
+                self.assertEqual(command[command.index('--output')+1],str(self.f.logs/'browser-admission'/Path(target[0]).stem))
+                # Observe the unchanged target vector after the budget wrapper;
+                # the transport below still supplies its exact failure outcome.
+                command=[command[0],*target]
             calls.append((command,kw));kw['stdout'].write(b'CPU orchestration sink only; no subprocess launched\n')
             code=0
             if len(command)>1 and command[1]=='tools/onboarding_browser.py':code=onboarding_exit
@@ -118,9 +137,8 @@ class OnboardingVerifier(unittest.TestCase):
             if len(command)>1 and command[1]=='tools/test_road_account_browser.py' and kw['env'].get('ROAD_ACCOUNT_NATIVE_INPUTS'):code=road_account_cpu_exit
             if len(command)>1 and command[1]=='tools/road_account_browser.py':code=road_account_exit
             return SimpleNamespace(returncode=code)
-        self._main_request_number=getattr(self,'_main_request_number',0)+1
         target=Path(self.tmp.name)/f'main-browser-{self._main_request_number}';args=['verify.py','--output',str(self.f.logs)]
-        if browser:args+=['--browser','--browser-output',str(target),'--browser-output-mode','supported']
+        if browser:args+=['--browser','--browser-output',str(target),'--browser-output-mode','supported','--browser-temp',self.tmp.name]
         with patch.object(V,'ROOT',self.f.root),patch.object(V,'os',SimpleNamespace(name='posix',environ=os.environ)),patch.object(V.sys,'argv',args),patch.object(V.shutil,'which',return_value='node'),patch.object(V.subprocess,'check_output',return_value='v24.18.0\n'),patch.object(V.subprocess,'run',side_effect=fake_run),patch.object(V,'prepare_browser_sources',return_value=None),patch.object(V,'consignment_browser_run_spec',side_effect=Earth.consignment_orchestration_spec),patch.object(V,'wild_signs_browser_run_spec',side_effect=Earth.wild_signs_orchestration_spec),patch.object(V,'wild_signs_boundaries_browser_run_spec',side_effect=Earth.wild_signs_boundaries_orchestration_spec),patch.object(V,'road_account_browser_run_specs',side_effect=Earth.road_account_orchestration_specs),contextlib.redirect_stdout(io.StringIO()),contextlib.redirect_stderr(io.StringIO()):
             V.main()
         return calls,target
@@ -143,7 +161,8 @@ class OnboardingVerifier(unittest.TestCase):
 
     def test_aftermath_actual_input_failure_and_native_failure_stop_complete_gate(self):
         for kwargs in ({'road_account_cpu_exit':1},{'road_account_exit':1}):
-            with self.subTest(**kwargs),self.assertRaises(SystemExit):self.main_requests(**kwargs)
+            label='road-account-current-preflight' if 'road_account_cpu_exit' in kwargs else 'road_account_browser'
+            with self.subTest(**kwargs),self.assertRaisesRegex(SystemExit,'FAILED: '+label):self.main_requests(**kwargs)
 
     def test_main_preserves_all46_contracts_and_adds_required47th_after_same_invocation_earth(self):
         calls,target=self.main_requests();by={c[1]:(c,k)for c,k in calls if len(c)>1}

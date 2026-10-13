@@ -22,3 +22,6 @@ docs/evidence/connected-earth-roads-2026-10-06/** -text whitespace=cr-at-eol,-bl
 
 # Preserve byte-hashed fieldcraft reports, failures and one short actual recording.
 docs/evidence/living-road-fieldcraft-2026-10-06/** -text whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof
+
+# Preserve original bytes of native-admission receipts and retained failures.
+docs/evidence/native-budget-2026-10-13/** -text

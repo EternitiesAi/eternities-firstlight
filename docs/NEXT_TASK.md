@@ -1,3 +1,84 @@
+# Continue the masterwork while preserving the open regression gate, 2026-10-13
+
+The complete current gate remains pending. REMOTE_BROWSER01 at1ca07f7 passed
+Node2257/0fail/2skip, then stopped in Python538run/2fail/3error/8skip on five old
+onboarding transport fixtures. No native command ran in that complete attempt.
+The source repair at04fd08ce768cb886abdffa788d8148c0a9068b3d retains all original
+assertions;86 verifier regressions passed with one existing platform-fixture skip.
+Independent source review found no assertion weakening.
+
+Reused STATION was freshly fetched clean at04fd08c. REMOTE_BROWSER02 was refused
+before any verifier launch:5,403,692KiB free host RAM against the6,291,456KiB floor.
+No source/native gate worker is running at this checkpoint. Preserve both receipts;
+do not mistake refusal or focused smoke for complete qualification.
+
+1. Recheck current ownership/RAM before another complete gate; preserve4 Node
+   workers and180s/600s timeouts, current source inputs and all52 native commands.
+   A new admitted attempt must have fresh paths; never replay02 as if it ran.
+2. Continue ET06, The Masterwork Without a Name, in ROOT on a separate gameplay
+   review branch. Canon: misattributed commission, compared marks/records, private
+   acknowledgment or public correction with apprentice participation. An optional
+   blade/bow lesson is provisional Codex design; qualify actual usefulness and
+   preserve original specials, saves, explicit choices and existing ownership.
+3. Complete relevant rules, ordinary UI and persistence checks before claiming
+   the new quest playable. The broad existing gate and human acceptance stay open.
+
+Reuse D checkouts, no VM/Claude/personal-save access, merge/deploy/paid work/billing,
+cleanup or heartbeat resume. Goal ACTIVE. [Record](development/NATIVE_GATE_ADMISSION_2026-10-13.md).
+
+---
+
+# Next: the complete current browser chain, 2026-10-13
+
+Resident Source04, Native04 and the additional Mara corridor witness are complete
+at clean remote890d409. See the [qualification record](development/VILLAGE_RESIDENT_QUALIFICATION_2026-10-13.md)
+for exact counts and negative attempts; do not rerun those unchanged checks.
+PR77's helper-tooling source is a66756433601fbac90521ce9dbb37e9727e94957; subsequent
+delivery commits only add records/evidence. It has34 focused passes, not full
+source or browser qualification. ROOT is verification/road-account-current-epoch-20261013.
+
+1. Fetch and inspect current ownership, branch and reviews. Reuse STATION from
+   its clean890d409 resident checkpoint; no new full clone. Confirm target HEAD,
+   build identical HTML, and run complete source at the current review head.
+   Preserve four workers and180s/600s deadlines; admit only above6291456KiB.
+2. Qualify the complete current --browser chain using reviewed epoch05. Current
+   primary/boundary native outputs must precede road-account; historical inputs
+   cannot substitute. Each browser needs fresh RAM admission after driver start,
+   isolated owned state, actual persistence/error/closure checks. Do not weaken
+   source pins or native guards to obtain a pass. Preserve the first new failure.
+3. Repair an actual product or harness defect within scope, then repeat only
+   affected checks and required gates. Keep the human village route pending;
+   automated passes supply no human answers. Resume the production roadmap after
+   this broader regression gate, not another disconnected realm.
+
+No VM/Claude/personal-profile access, unrelated shutdown, new full copy, cleanup,
+blocked-deletion retry, paid work, billing change, merge/deploy or heartbeat resume.
+Goal ACTIVE; production unfinished. There are no running workers at checkpoint.
+
+---
+
+# Next: finish native residents, then qualify the current helper epoch, 2026-10-13
+
+ROOT is verification/road-account-current-epoch-20261013, a separate tooling
+branch based on890d409. The old resident branch and STATION remain at890d409.
+Do not mistake the34 targeted CPU passes for complete source/browser acceptance.
+[Epoch05 record](development/ROAD_ACCOUNT_EPOCH05_2026-10-13.md).
+
+1. When fresh host RAM reaches6291456KiB, finish frozen resident Source04/Native04
+   in STATION using the existing ARC controllers. Native04's reviewed correction
+   now retains full paused screenshot operands and checks recorder lifetime
+   through closure. No successful run exists yet. Preserve prior failures.
+2. Qualify the exact current helper review branch afterward. Reuse STATION,
+   fetch/verify its exact SHA and keep every native admission/closure guard.
+   Complete current primary/boundary outputs are prerequisites for road-account;
+   old receipts cannot stand in. Full source uses four workers/180s/600s.
+3. Update each review branch with its own exact results. No VM/Claude/personal
+   save access, new full copy, deletion, paid work, main merge or public deploy.
+
+Goal ACTIVE, production unfinished. The separate heartbeat remains PAUSED.
+
+---
+
 # Next: finish the resident visual gate, 2026-10-13
 
 Continue draft PR76 / gameplay/village-resident-articulation-20261013 from actual

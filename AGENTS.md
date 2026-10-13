@@ -1,3 +1,80 @@
+# Current verifier repaired; full gate awaiting admission, 2026-10-13
+
+ROOT remains verification/road-account-current-epoch-20261013 / PR77. STATION is
+clean and detached at04fd08ce768cb886abdffa788d8148c0a9068b3d. Inspect live ownership
+and host RAM before acting; no verifier launched after the retained admission
+refusal. Read docs/development/NATIVE_GATE_ADMISSION_2026-10-13.md.
+
+The complete current gate remains pending. REMOTE_BROWSER01 at1ca07f7 passed
+Node2257/0fail/2skip, then stopped in Python538run/2fail/3error/8skip on five old
+onboarding transport fixtures. No native command ran in that complete attempt.
+The source repair at04fd08ce768cb886abdffa788d8148c0a9068b3d retains all original
+assertions;86 verifier regressions passed with one existing platform-fixture skip.
+Independent source review found no assertion weakening.
+
+Reused STATION was freshly fetched clean at04fd08c. REMOTE_BROWSER02 was refused
+before any verifier launch:5,403,692KiB free host RAM against the6,291,456KiB floor.
+No source/native gate worker is running at this checkpoint. Preserve both receipts;
+do not mistake refusal or focused smoke for complete qualification.
+
+All52 native commands retain original checks/deadlines with fresh per-allocation
+RAM admission and D outputs. Source uses four Node workers/180s/600s. Fresh remote
+smoke at1ca07f7 passed38 CPU and11+46 native checks; earlier complete Source05 passed
+224 commands atc852574. Both HTML and World9/Adventure12 are unchanged.
+
+ET06 source work may proceed independently on a separate gameplay review branch;
+the broader verification gate remains open. VM/Claude/personal data, other workers,
+new full copies, cleanup, blocked deletion retry, paid work, billing, main merge,
+deployment and heartbeat resume remain excluded. Goal ACTIVE; heartbeat PAUSED.
+
+---
+
+# Residents qualified in both views; current broad browser gate next, 2026-10-13
+
+ROOT remains verification/road-account-current-epoch-20261013 / PR77. Reused
+STATION and PR76 remain clean at890d409c3f1610aad923d7b30d00384425230152.
+New receipts supersede the pending Source04/Native04 wording in older sections:
+complete Source04 passed224 commands (Node2257/0fail/2skip; Python490 run/8skip),
+Native04 passed168 checks, and Mara's precise repaired commons corridor passed
+28 additional checks. Both requested cameras, exact cold production save readback,
+ordinary RAF movement and owned resource closure were checked. Source/runtime
+boundaries, retained failed attempts and44-second clip are in
+docs/development/VILLAGE_RESIDENT_QUALIFICATION_2026-10-13.md.
+
+These qualify resident runtime d8d07ad on remote checkpoint890d409, not the full
+source/browser suite at PR77's later helper-tooling head a667564. PR77 has34
+focused local and remote CPU passes. Its native driver/guards remain unchanged.
+Next: exact current source then complete --browser chain, using reviewed epoch05,
+current admitted inputs and reused STATION. Check live ownership and RAM first;
+four Node file workers/Node180/Python600; >=6291456KiB before full source and every
+browser after driver startup. No worker remains active at this checkpoint.
+
+World9/Adventure12 unchanged; human/GPU/production acceptance still open. Hosted
+run38473931523 could not start: GitHub account billing lock. No billing actions.
+Keep the VM, Claude Code, personal saves/profiles and unrelated workers excluded.
+Reuse D checkouts; no new full copies, cleanup, blocked deletion retry, paid work,
+main merge, public deploy or heartbeat resume. Goal ACTIVE; heartbeat PAUSED.
+
+---
+
+# Separate current-helper verification branch, 2026-10-13
+
+ROOT now carries verification/road-account-current-epoch-20261013, based on
+resident checkpoint890d409c3f1610aad923d7b30d00384425230152. PR76 and reused
+STATION remain frozen there for Source04/Native04. This branch changes only
+tooling/tests/records, selecting reviewed SOURCE_EXPECTATIONS05. Frozen04 and
+every native driver/admission guard remain. Read
+docs/development/ROAD_ACCOUNT_EPOCH05_2026-10-13.md.
+
+34 focused CPU checks passed; identical HTML rebuilt. This is not complete
+source/native qualification. Parent prepared this independent work while host
+free memory remained below6291456KiB. Continue the resident gate first when
+admitted, then qualify the new review branch. No new game copy or profile.
+World9/Adventure12 remain. Goal ACTIVE; separate heartbeat PAUSED.
+All VM/Claude/personal-save/storage/paid-work/merge/deploy exclusions below remain.
+
+---
+
 # Village residents implemented; current visual gate open, 2026-10-13
 
 Continue gameplay/village-resident-articulation-20261013 / draft PR76, stacked on

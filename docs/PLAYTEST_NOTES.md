@@ -1,3 +1,71 @@
+# Targeted persistence smoke passed; broader gate remains open, 2026-10-13
+
+Fresh remote1ca07f7 passed11 native-origin checks, including real Map/Character
+controls and labelled synthetic notebook save through whole-browser restart.
+The recursive Earth material caller passed46 checks with command-earned equipment
+and explicitly synthetic camera/body placement. Pixels were inspected; its HUD
+still shows Diorama, so this does not prove follow-camera UI selection or an
+ordinary-control outing. Three admissions exceeded6GiB; exact caller cleanup ran.
+Logs alone do not independently prove descendant closure.
+
+The complete current gate remains pending. REMOTE_BROWSER01 at1ca07f7 passed
+Node2257/0fail/2skip, then stopped in Python538run/2fail/3error/8skip on five old
+onboarding transport fixtures. No native command ran in that complete attempt.
+The source repair at04fd08ce768cb886abdffa788d8148c0a9068b3d retains all original
+assertions;86 verifier regressions passed with one existing platform-fixture skip.
+Independent source review found no assertion weakening.
+
+Reused STATION was freshly fetched clean at04fd08c. REMOTE_BROWSER02 was refused
+before any verifier launch:5,403,692KiB free host RAM against the6,291,456KiB floor.
+No source/native gate worker is running at this checkpoint. Preserve both receipts;
+do not mistake refusal or focused smoke for complete qualification.
+
+No new gameplay footage was warranted for tooling. Retain the earlier44-second
+resident clip and unanswered human route/feel/reward questions. No RTX or human
+acceptance follows from these software-browser checks.
+[Evidence](evidence/native-budget-2026-10-13/EVIDENCE_INDEX.json).
+
+---
+
+# Residents observed walking, settling and at home, 2026-10-13
+
+At exact remote890d409, Native04 passed168 checks: three residents in both requested
+views, ordinary RAF displacement and stride, hand-held props, settled/home anchors,
+pause/reduced motion, render-only state preservation and exact nonempty whole-
+browser cold save readback. Preparation, settled and home checks used labelled
+accelerated Core ticks; moving observations and the recording used ordinary RAF.
+Actual Settings, People, Follow and P controls were used, with no actor placement
+or item/reward injection. Screenshots bracket paused simulation/geometry; camera
+easing can continue and is recorded separately. All owned resources closed.
+
+A separate corrected Mara corridor witness passed28 checks and retained32 frame
+snapshots,26 in the repaired corridor, minimum distance4.327875m. Inspected pixels
+show her full figure beside the bench. CORRIDOR01 remains failed on an overstrict
+walking assumption at a legitimate Core waypoint and has aliased historical
+camera centers; CORRIDOR02 refused its second browser below the memory floor.
+CORRIDOR03 uses deep snapshots and accepts only verified canonical waypoint
+continuation, preserving every-frame visibility/unpaused/distance checks.
+
+The44-second,5,325,769-byte clip contains actual movement, UI and paused observation.
+It was trimmed without retiming and fully decoded1100 frames. Chrome155,1280x800,
+software WebGL2/Low: no RTX performance or human-playtest claim. Original negative
+evidence is retained. [Qualification](development/VILLAGE_RESIDENT_QUALIFICATION_2026-10-13.md).
+
+Dom's questions remain unanswered: are they recognizable, do strides/stops/props
+feel connected, and are both views comfortable? [Human route](playtests/VILLAGE_RESIDENTS_2026-10-13.md).
+
+---
+
+# Current helper review adds no human-playtest result, 2026-10-13
+
+The separate epoch05 branch passes34 focused CPU tests and preserves identical
+game pages. It launches no browser and supplies no new gameplay movie. Native04
+now records full paused image operands and a recorder lifecycle acceptance limit,
+following independent source review; execution remains pending host memory.
+The resident recognition/stride/prop/camera questions below still need Dom.
+
+---
+
 # The residents and an honest failed capture, 2026-10-13
 
 Native03 at166550d used actual Settings and People/Follow controls in installed

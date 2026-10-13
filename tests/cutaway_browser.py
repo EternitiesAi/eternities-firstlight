@@ -4,9 +4,9 @@ the corresponding water reflection must remain pixel-identical. No FPS claim.
 """
 from pathlib import Path
 from playwright.sync_api import sync_playwright
-from browser_support import chromium_launch_kwargs, read_utf8
+from browser_support import chromium_launch_kwargs, read_utf8, browser_output
 import json,hashlib
-R=Path(__file__).resolve().parents[1];O=R/'evidence10';O.mkdir(parents=True,exist_ok=True);rep={'method':__doc__,'engine_sha256':hashlib.sha256((R/'src/engine.js').read_bytes()).hexdigest(),'checks':[]}
+R=Path(__file__).resolve().parents[1];O=browser_output(R/'evidence10');O.mkdir(parents=True,exist_ok=True);rep={'method':__doc__,'engine_sha256':hashlib.sha256((R/'src/engine.js').read_bytes()).hexdigest(),'checks':[]}
 with sync_playwright() as pw:
  b=pw.chromium.launch(**chromium_launch_kwargs())
  ctx=b.new_context(viewport={'width':800,'height':600},offline=True);p=ctx.new_page();errs=[];p.on('pageerror',lambda e:errs.append(str(e)))

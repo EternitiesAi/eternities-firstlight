@@ -1,0 +1,24 @@
+[libvpx @ 000001a5ad9fe280] v1.14.1
+Input #0, matroska,webm, from 'D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/NATIVE04/village-residents.webm':
+  Metadata:
+    ENCODER         : Lavf61.1.100
+  Duration: 00:00:44.00, start: 0.000000, bitrate: 968 kb/s
+  Stream #0:0: Video: vp8 (libvpx), yuv420p(tv, progressive), 1280x800, SAR 1:1 DAR 8:5, 25 fps, 25 tbr, 1k tbn
+      Metadata:
+        ENCODER         : Lavc61.3.100 libvpx
+        DURATION        : 00:00:44.000000000
+[libvpx @ 000001a5af204d40] v1.14.1
+Stream mapping:
+  Stream #0:0 -> #0:0 (vp8 (libvpx) -> png (native))
+Press [q] to stop, [?] for help
+[png @ 000001a5afcca300] ignoring invalid SAR: 8/5
+Output #0, image2, to 'D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/NATIVE04/DECODE_LAST_FRAME.png':
+  Metadata:
+    encoder         : Lavf61.1.100
+  Stream #0:0: Video: png, rgb24(pc, gbr/unknown/unknown, progressive), 1x1, q=2-31, 200 kb/s, SAR 8:5 DAR 8:5, 25 fps, 25 tbn
+      Metadata:
+        DURATION        : 00:00:44.000000000
+        encoder         : Lavc61.3.100 png
+frame=  569 fps=0.0 q=-0.0 size=N/A time=00:00:22.88 bitrate=N/A speed=45.2x    
+[out#0/image2 @ 000001a5af210300] video:97KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+frame= 1100 fps=0.0 q=-0.0 Lsize=N/A time=00:00:44.00 bitrate=N/A speed=45.9x    

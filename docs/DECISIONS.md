@@ -1,3 +1,59 @@
+# Admit each native allocation and retain fresh evidence, 2026-10-13
+
+Wrap individual synchronous browser suites, including their reviewed Python child
+scripts, at actual allocation time after normal driver startup. Preserve CPU
+preflights, suite actions, source pins and original deadlines. A caught refusal,
+failed receipt or unfinished owned child must never be reported as success.
+Cleanup is limited to exact newly owned resources; do not enumerate/stop other
+workers or alter VM resources. Admission traces do not replace native cleanup,
+persistence or gameplay checks.
+
+Require fresh logs and evidence for the complete gate. Older standalone defaults
+remain compatible when no output override is set; complete verification selects
+explicit fresh paths. Retain failed attempts and the historical04 expectation
+map. Never change pinned helpers merely to make this execution instrumentation
+pass. No runtime/schema/HTML change accompanies this verification milestone.
+
+---
+
+# Preserve real waypoint transitions and exact evidence epochs, 2026-10-13
+
+Core.advance may shift an already-reached tiny path segment and legitimately
+return walking:false for one frame. Do not require perpetual walking as a camera
+test proxy. Permit that frame only at a canonical Core path waypoint with remaining
+path and actual next-frame time and forward movement; retain every observed
+corridor frame's visibility, unpaused mode and >=3.4m camera distance, plus actual
+overall displacement/stride. Do not modify runtime navigation to satisfy a harness.
+
+Snapshot mutable camera arrays when buffering RAF evidence. Keep prior shallow
+center traces labelled; their copied scalar distances remain usable but centers
+cannot be claimed as exact historical per-frame operands. Paused screenshot
+brackets and ordinary unpaused movement answer different questions.
+
+Publish bounded evidence: one44-second clip, selected pixels, byte-exact gzip
+reports and a small top-level log ZIP. Keep raw recordings and synthetic profiles
+local, without new full-game copies. Fresh remote fetch and hash readback into
+the reused station are not a newly created clone. Resident runtime qualification
+at890d409 does not qualify later helper-tooling/full-browser work automatically.
+
+---
+
+# Review source changes as a new expectation epoch, 2026-10-13
+
+When reviewed helper semantics change, create an explicit new expectation file.
+Retain the historical raw map for its actual legacy provenance and select only
+the reviewed current LF identities for current text admission. Do not pretend
+semantic changes are newline-only changes or mutate frozen04 to obtain a pass.
+Current native qualification must still bind current HEAD/page/raw outputs,
+required cases, accepted checks and closed resources.
+
+Keep independent tooling work on a separate branch while the resident checkout
+is frozen for native qualification. Focused CPU success and a source review are
+useful progress under the memory boundary; neither implies browser qualification.
+Do not free resources by changing VM/Claude work.
+
+---
+
 # Resident articulation preserves the existing simulation, 2026-10-13
 
 Reuse the traveler skeleton for only Ilan/Mara/Oren, with an immutable presentation

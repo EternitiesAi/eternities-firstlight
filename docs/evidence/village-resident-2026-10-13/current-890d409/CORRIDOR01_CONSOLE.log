@@ -1,0 +1,31 @@
+PASS exact source page
+PASS software WebGL2
+PASS ordinary home exit
+PASS accepted Core route returned family home
+PASS accepted preparation before corridor
+PASS production save
+PASS exact source page
+PASS software WebGL2
+PASS exact whole-browser cold readback
+PASS actual pause control
+PASS APPROACH paused image operands stable
+PASS APPROACH third-person readable image brackets
+PASS ordinary sample starts before repaired corridor
+PASS actual pause control
+PASS actual pause control
+PASS BENCH paused image operands stable
+PASS BENCH third-person readable image brackets
+PASS actual pause control
+PASS actual pause control
+PASS DEPARTURE paused image operands stable
+PASS DEPARTURE third-person readable image brackets
+PASS ordinary continuous repaired corridor sampled
+FAIL every observed corridor frame readable and unpaused
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\artifacts\village-resident-articulation-20261013\qualify_corridor01.py", line 106, in main
+    check('every observed corridor frame readable and unpaused',all(r['visible'] and r['walking'] and not r['paused'] and r['mode']=='adventure' and r['camera']['preset']=='adventure' and r['camera']['actualDistance']>=3.4 for r in corridor))
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\artifacts\village-resident-articulation-20261013\qualify_corridor01.py", line 26, in check
+    if not ok:raise AssertionError(name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: every observed corridor frame readable and unpaused

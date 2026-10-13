@@ -1,3 +1,73 @@
+# Browser admission verified; full regression repair preserved, 2026-10-13
+
+The complete current gate remains pending. REMOTE_BROWSER01 at1ca07f7 passed
+Node2257/0fail/2skip, then stopped in Python538run/2fail/3error/8skip on five old
+onboarding transport fixtures. No native command ran in that complete attempt.
+The source repair at04fd08ce768cb886abdffa788d8148c0a9068b3d retains all original
+assertions;86 verifier regressions passed with one existing platform-fixture skip.
+Independent source review found no assertion weakening.
+
+Reused STATION was freshly fetched clean at04fd08c. REMOTE_BROWSER02 was refused
+before any verifier launch:5,403,692KiB free host RAM against the6,291,456KiB floor.
+No source/native gate worker is running at this checkpoint. Preserve both receipts;
+do not mistake refusal or focused smoke for complete qualification.
+
+At1ca07f7, fresh remote38 CPU checks and actual11 native-origin persistence plus46
+recursive Earth presentation checks passed. The latter uses labelled synthetic
+camera/body placement, not an ordinary outing. Three actual admissions exceeded
+6GiB. Earlier Source05 atc852574 passed224 commands, Node2257/0fail/2skip and
+Python500run/8skip/no failures. [Exact record](development/NATIVE_GATE_ADMISSION_2026-10-13.md).
+
+Runtime, both HTML and save versions remain unchanged. ET06 is in design/source
+preparation; no new playable quest is delivered yet. Human/GPU/production gates
+remain open. Hosted jobs cannot start due to the recorded billing lock; no action.
+
+---
+
+# Ilan, Mara and Oren now move with their carried tools, 2026-10-13
+
+The familiar three residents use articulated walking and settling in their
+existing village routes and interiors. Instrument, notebook and folding rule
+follow the hands. The commons seats now fit their existing navigation footprint,
+fixing the reproduced Mara follow-camera close-up without changing old save rules.
+
+Clean remote resident checkpoint890d409c3f1610aad923d7b30d00384425230152 now passes
+the complete224-command source gate:2257 Node passed/0failed/2skipped; Python490
+run/8skipped/no failures; both ten-chapter variants and five earned Briar cases.
+Native04 passed168 checks in both requested camera modes. A separate precise
+commons witness passed28 checks with32 ordinary RAF samples,26 in the corridor,
+minimum camera distance4.327875m. Actual screenshots inspected; a decoded44-second
+gameplay clip is retained. [Evidence and limits](development/VILLAGE_RESIDENT_QUALIFICATION_2026-10-13.md).
+
+World9/Adventure12 remain unchanged. Current ROOT is PR77's separate helper-tooling
+branch; its34 focused checks pass locally and after fresh remote fetch. Complete
+source/browser at that later head remains pending, distinct from resident proof.
+Hosted CI is blocked before start by GitHub account billing. Human recognition,
+motion comfort, actual RTX performance and production completion remain open.
+No new game clone, personal-save access, VM/Claude work, merge or deployment.
+
+---
+
+# Browser verification now selects explicitly reviewed current helpers, 2026-10-13
+
+The separate verification/road-account-current-epoch-20261013 branch selects
+SOURCE_EXPECTATIONS05 for the current road-account chain. Only two reviewed
+helper text identities change; historical raw identities and frozen04 remain.
+34 focused CPU checks passed with zero failures/skips. Both regenerated HTML
+files remain identical to resident checkpoint890d409; no gameplay/save migration.
+[Source review and exact limits](development/ROAD_ACCOUNT_EPOCH05_2026-10-13.md).
+
+Pushed source/test head a66756433601fbac90521ce9dbb37e9727e94957 also passes all34
+focused checks and identical regeneration in a freshly fetched, reused clean
+remote checkout. Exact resident checkpoint890d409 was restored afterward.
+
+Resident PR76 and the reused station remain frozen at890d409 for pending
+Source04/Native04. Fresh RAM has stayed below the6GiB admission threshold; no
+full source or browser was launched during this separate tooling work. Current
+complete browser, human acceptance, hosted jobs and GPU qualification remain open.
+
+---
+
 # Three familiar people, with visual qualification still open, 2026-10-13
 
 Draft PR76 adds articulated Ilan, Mara and Oren to their existing village routes

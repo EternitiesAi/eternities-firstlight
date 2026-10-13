@@ -5,9 +5,9 @@ Accelerated time is NOT a human playtest or performance measurement.
 """
 from pathlib import Path
 from playwright.sync_api import sync_playwright
-from browser_support import chromium_launch_kwargs, read_utf8
+from browser_support import chromium_launch_kwargs, read_utf8, browser_output
 import json, hashlib, traceback, math
-ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'evidence10/regression09';OUT.mkdir(parents=True,exist_ok=True)
+ROOT=Path(__file__).resolve().parents[1];OUT=browser_output(ROOT/'evidence10/regression09');OUT.mkdir(parents=True,exist_ok=True)
 HTML=read_utf8(ROOT/'FIRSTLIGHT_VALLEY.html')
 report={'method':__doc__,'build_sha256':hashlib.sha256(HTML.encode()).hexdigest(),'checks':[],'errors':[]}
 errors=[];requests=[]

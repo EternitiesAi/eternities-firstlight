@@ -8,10 +8,10 @@ from pathlib import Path
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 import hashlib, json, tempfile, threading, traceback
 from playwright.sync_api import sync_playwright
-from browser_support import chromium_launch_kwargs
+from browser_support import chromium_launch_kwargs, browser_output
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'evidence10' / 'characters-browser'
+OUT = browser_output(ROOT / 'evidence10' / 'characters-browser')
 OUT.mkdir(parents=True, exist_ok=True)
 KEY = 'eternities.realm10.characters.v1'
 OLD = 'eternities.realm10.save.v9'

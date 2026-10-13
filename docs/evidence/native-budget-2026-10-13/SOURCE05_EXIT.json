@@ -1,0 +1,39 @@
+{
+  "scope": "Complete current source; four Node file workers; original rules180/Python600; no native browser",
+  "command": [
+    "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+    "-B",
+    "tools/verify.py",
+    "--rule-workers",
+    "4",
+    "--output",
+    "D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/REMOTE_SOURCE05",
+    "--cpu-temp",
+    "C:/Users/Dom/AppData/Local/Temp"
+  ],
+  "requestedRuleWorkers": 4,
+  "sourceHead": "c8525743f25e739f00ed441b8dcdd62a8cfccad9",
+  "headAfter": "c8525743f25e739f00ed441b8dcdd62a8cfccad9",
+  "statusAfter": [],
+  "startedUtc": "2026-10-13T22:25:07.6173543Z",
+  "closedUtc": "2026-10-13T22:30:56.8866748Z",
+  "exitCode": 0,
+  "freeHostKiBBefore": 10285744,
+  "freeHostKiBAfter": 10748532,
+  "admission": {
+    "sha256": "2751971babeee1030114add02e3c6e80ef62fa54b3b297d520a51ee780cce16e",
+    "path": "D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/SOURCE05_ADMISSION01.json"
+  },
+  "unitChildTemp": "C:/Users/Dom/AppData/Local/Temp",
+  "allOtherChildTemp": "D:/07-GAMES/Firstlight/cache/browser-temp",
+  "console": {
+    "path": "D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/REMOTE_SOURCE05_CONSOLE.log",
+    "sha256": "9f1a45ba13608b6ec31da3d743e5c460fabcba38b6421701b1ba401c9f146341",
+    "bytes": 14835
+  },
+  "rulesCommand": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\REMOTE_SOURCE05\\rules-command.json",
+    "sha256": "e5e7dd409cfc8e9326eeb9a576c47a23eaa4bc95335a17621053cd4a2e3f69b4",
+    "bytes": 23760
+  }
+}
