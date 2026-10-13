@@ -1,7 +1,7 @@
 """Read-only ART boundary regressions with a declared helper fixture view.
 
-The frozen native expectations still refuse the later reviewed helper. ART
-cases transport a copy with that one literal reviewed helper pin in RAM;
+The frozen native expectations still refuse the later reviewed helpers. ART
+cases transport a copy with two literal reviewed helper pins in RAM;
 their negative cases change one further declared JSON/module byte operand.
 All validators and other source/page/git reads remain production. These
 synthetic declarations are not native/source admission or a new native epoch.
@@ -21,9 +21,13 @@ ART = ROOT / 'src/earth-roadkeeper-art.js'
 OLD_ART = '607b2714dbca0bc38c293ca6884706466bea80499382b49bacfb2e9b3a6b340e'
 REVIEWED_ART = 'ea1fba39cd658a65487b88a05f1d51c2a45a1724ac6cad31ac9e57657e8eff2c'
 HELPER = ROOT / 'tools/earth_consignment_browser.py'
-# Independent actual-diff review, NATIVE_RESTART_EVIDENCE_2026-10-12.md:23.
+# Independent actual-diff review, PR74: follow_sample retains yaw and adds the
+# actual heading in the same turn; native follow consumes it with legacy fallback.
+# The frozen SOURCE_EXPECTATIONS04 stays unchanged and still refuses this helper.
 # Never derive an accepted pin from unknown current source bytes.
-REVIEWED_HELPER = '079b8d4efb5179a0e4d55e2fb47d3988878b7bb54ccef5a4bb0b2e52a8474c8b'
+REVIEWED_HELPER = '9212846db04bf76c1e12ac81219ca3b24ff2b8e85145fc071b986738cdad52bd'
+WILD_SIGNS_HELPER = ROOT / 'tools/earth_wild_signs_browser.py'
+REVIEWED_WILD_SIGNS_HELPER = 'e8516952228fdd645ff7e92cb8983c93eb6f6e328d0c1a8962188d3b62e39e8a'
 spec = importlib.util.spec_from_file_location('roadkeeper_actual_source_epoch', ROOT / 'tools/road_account_browser.py')
 DRIVER = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(DRIVER)
@@ -60,6 +64,7 @@ class RoadkeeperSourceEpoch(unittest.TestCase):
 
     def select_reviewed_helper_view(self):
         self.expectations['helpersLF']['tools/earth_consignment_browser.py'] = REVIEWED_HELPER
+        self.expectations['helpersLF']['tools/earth_wild_signs_browser.py'] = REVIEWED_WILD_SIGNS_HELPER
 
     def test_frozen_original_still_refuses_the_newer_helper(self):
         with self.assertRaisesRegex(ValueError, 'Actual original browser helper text changed: tools/earth_consignment_browser.py'):
@@ -81,6 +86,7 @@ class RoadkeeperSourceEpoch(unittest.TestCase):
     def test_reviewed_current_art_passes_with_selected_synthetic_expectations(self):
         self.select_reviewed_helper_view()
         self.assertEqual(DRIVER.lf_sha(HELPER), REVIEWED_HELPER)
+        self.assertEqual(DRIVER.lf_sha(WILD_SIGNS_HELPER), REVIEWED_WILD_SIGNS_HELPER)
         epoch = self.synthetic_expectation_epoch()
         self.assertEqual(self.expectations['reviewedModulesLF']['earth-roadkeeper-art.js'], REVIEWED_ART)
         self.assertEqual(self.expectations['reviewedModules']['earth-roadkeeper-art.js'], OLD_ART)
@@ -88,6 +94,13 @@ class RoadkeeperSourceEpoch(unittest.TestCase):
         self.assertEqual(epoch['head'], self.head)
         self.assertEqual(epoch['htmlSha256'], DRIVER.sha(ROOT / 'index.html'))
         self.assertEqual(epoch['runtimeSources']['src/earth-roadkeeper-art.js'], DRIVER.sha(ART))
+
+    def test_unreviewed_wild_signs_bytes_are_refused_in_the_selected_view(self):
+        self.select_reviewed_helper_view()
+        altered = WILD_SIGNS_HELPER.read_bytes() + b'\n# Explicit synthetic unreviewed helper mutation.\n'
+        with ram_bytes({WILD_SIGNS_HELPER: altered}):
+            with self.assertRaisesRegex(ValueError, 'Actual original browser helper text changed: tools/earth_wild_signs_browser.py'):
+                self.synthetic_expectation_epoch()
 
     def test_stale_lf_art_pin_refuses_with_selected_synthetic_expectations(self):
         self.select_reviewed_helper_view()
