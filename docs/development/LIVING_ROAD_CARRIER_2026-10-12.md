@@ -127,3 +127,7 @@ pixel removal/restoration in both views after live payment. This is source,
 not executed native evidence. Native capture/current full qualification and
 human acceptance remain pending. VM/Claude excluded; no unrelated stop,
 personal-save read, extra full copy, main merge/deploy or schema/reward change.
+
+Native review placed the exact duplicate-payment assertion before the
+receiving probe's legitimate preference/camera writes. It is unchanged; no
+probe-induced setting difference can be misreported as duplicate mutation.
