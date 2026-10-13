@@ -199,10 +199,10 @@ const app=fs.readFileSync(path.join(root,'src/app.js'),'utf8'),start=app.indexOf
 const sim=new C.Simulation(C.fresh());sim.room='world-earthlands';const out={};
 for(const preset of['adventure','follow']){let projection=null;
 const scope={sim,RealmWorldFoundations:W,RealmEarth:require(path.join(root,'src/earth.js')),RealmCosmos:require(path.join(root,'src/cosmos.js')),
- Math,innerWidth:1440,innerHeight:900,follow:null,fieldcraftFocus:()=>null,sceneHeight:()=>W.height(sim.room,sim.state.player.x,sim.state.player.z),
+ Math,innerWidth:1440,innerHeight:900,follow:null,carrierFrame:null,fieldcraftFocus:()=>null,sceneHeight:()=>W.height(sim.room,sim.state.player.x,sim.state.player.z),
  camera:{preset,yaw:.22,elevation:.28,distance:7.5,actualDistance:7.5,fov:60,half:17,center:[0,3,0],tour:false,overview:false},
  engine:{clearCameraDistance:()=>7.5,setCamera:v=>{projection=v.projection||'orthographic';}}};
-const cameraOwner=app.slice(app.indexOf('const GRAZER_LOOK_POINT='),app.indexOf('function fieldcraftFocus(')),wildOwner=app.slice(app.indexOf('let wildSignsOwner='),app.indexOf('function wildSignsCommand('));vm.runInNewContext(cameraOwner+'\n'+wildOwner+'\n'+app.slice(start,end)+';updateCamera(.016)',scope);out[preset]=projection;}
+const cameraOwner=app.slice(app.indexOf('const GRAZER_LOOK_POINT='),app.indexOf('function fieldcraftFocus(')),carrierOwner=app.slice(app.indexOf('function carrierFocus(){'),app.indexOf('function frameCarrier(')),wildOwner=app.slice(app.indexOf('let wildSignsOwner='),app.indexOf('function wildSignsCommand('));vm.runInNewContext(cameraOwner+'\n'+carrierOwner+'\n'+wildOwner+'\n'+app.slice(start,end)+';updateCamera(.016)',scope);out[preset]=projection;}
 console.log(JSON.stringify(out));
 """,{})
         for view,want in actual.items():self.assertEqual(H.camera_projection(view),want)

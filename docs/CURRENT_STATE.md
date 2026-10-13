@@ -1,3 +1,24 @@
+# Complete Node passes; one Python camera host repaired, 2026-10-12
+
+Fresh remote Source03 at308a83d97356c3f053da44abd7bc2adff202c7d0 passed all145
+syntax checks and the complete Node suite:2135pass/0fail/2existing skips,
+2137total,48734.2859ms. Python FAILED476tests/errors1/skipped10,420.152s,
+at test_capture_earth_homecoming's exact camera host, which omitted the new
+carrierFocus. Subsequent required source commands were unrun. Raw run/exit
+receipts remain under living-road-carrier-20261012/REMOTE_SOURCE03.
+
+That labelled host now compiles actual carrierFocus with carrierFrame:null;
+its original projection equality remains. Parent HOMECOMING_CAMERA_FIX01:
+28tests OK/skipped2,16.896s. The repaired test executed; the two skips need
+explicit current earned source/cohort, not personal or historical inputs.
+No runtime/HTML change: both pages3349389B/SHA256
+32fcf10c5f86d8d98d13547b1b4242650407bff20081017ede4c85f4d3647a89.
+A new complete gate remains necessary. No current native/video/GPU/human
+qualification; Source02 launch was refused at5825672KiB host-free RAM.
+VM/Claude remain excluded. Preserve old failures, deadlines, save/system
+contracts, both cameras and bounded D evidence. Goal ACTIVE unfinished.
+
+---
 # Complete gate exposed App-fragment integration gaps; repair verified, 2026-10-12
 
 Fresh remote Source01 at04d21d8c94d6fcce7d7d39b05f2256ceddf620d5 FAILED
