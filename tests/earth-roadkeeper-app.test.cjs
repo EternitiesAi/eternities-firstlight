@@ -210,7 +210,7 @@ test('actual complete frame republishes roadkeeper after periodic Store save wit
  assert.ok(frameSource&&saveSource);
  let presentationCalls=0,prepareCalls=0;
  const env={get sim(){return f.sim;},get characterStore(){return f.store;},panel:null,
-  document:{hidden:false,querySelector:()=>null},RealmEarthRoadkeeperMotion:O,RealmWorldFoundations:W,RealmCombat:globalThis.RealmCombat,
+  document:{hidden:false,querySelector:()=>null},RealmAdventure:require(path.join(ROOT,'src/adventure.js')),RealmBriarOuting:require(path.join(ROOT,'src/briar-outing.js')),RealmEarthRoadkeeperMotion:O,RealmWorldFoundations:W,RealmCombat:globalThis.RealmCombat,
   lastFrame:0,frames:0,fpsStart:0,fps:0,lastUi:0,lastSave:0,elapsed:f.sim.elapsed,target:null,follow:null,keys:new Set(),camera:{yaw:0},
   engine:{render(){}},art:{update(){},makeRetreat(){}},experience:null,sandbox:null,adventure:null,arsenal:null,rpg:null,audio:{tick(){}},G_CAPTURE:true,
   preserveExisting:false,saveState:'new',rememberCamera(){},renderStatus(){},bindWildSignsClearance(){},tickConsignment(){},tickGrazer(){},switchScene(){},updateCamera(){},
@@ -218,7 +218,8 @@ test('actual complete frame republishes roadkeeper after periodic Store save wit
   tickRoadkeeper:f.api.tickRoadkeeper,
   roadkeeperPresentation(...args){presentationCalls++;return Reflect.apply(f.api.roadkeeperPresentation,f.api,args);},
   prepareRoadkeeperDiagnostics(...args){prepareCalls++;return Reflect.apply(f.api.prepareRoadkeeperDiagnostics,f.api,args);}};
- const frame=vm.compileFunction(saveSource+'\n'+frameSource+'\nreturn frame;',[],{filename:path.join(ROOT,'src/app.js')+':complete-frame',contextExtensions:[env]})();
+ const briarSource=app.slice(app.indexOf('function briarSaveGuard('),app.indexOf('// Parent app owns this transient lease independently from the fitting lease.'));
+ const frame=vm.compileFunction(briarSource+'\n'+saveSource+'\n'+frameSource+'\nreturn frame;',[],{filename:path.join(ROOT,'src/app.js')+':complete-frame',contextExtensions:[env]})();
  const revision=f.store.revision,writes=f.writes();frame(100);
  const view=f.api.roadkeeperDiagnostics();assert.ok(view,'complete periodic-save frame must publish a current prepared view');
  assert.equal(view.suspended,null);assert.equal(view.phase,'outbound');assert.equal(f.sim.roadkeeperOwnerLease,lease);

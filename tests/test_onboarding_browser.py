@@ -235,6 +235,7 @@ class Preparation(unittest.TestCase):
         pair = copy.deepcopy(fixture['before']), copy.deepcopy(fixture['after'])
         # Labelled current boundary copies; the recorded historical file stays exact.
         for world in pair:
+            world['briarMoments'] = {'version': 1, 'revision': 0, 'moments': []}
             world['earthWildSigns'] = {'version': 1, 'accepted': False, 'evidence': [],
                 'observed': False, 'resolution': None, 'cleared': False, 'claimed': False}
         if not legacy:
@@ -270,6 +271,17 @@ class Preparation(unittest.TestCase):
         self.assertIsNone(result['earthWildSignsMigration'])
         changed=copy.deepcopy(after);changed.pop('earthWildSigns')
         with self.assertRaises(AssertionError):self.initial_resume(before,changed)
+
+    def test_briar_resume_disclosure_distinguishes_missing_default_from_existing_empty_owner(self):
+        before,_=self.resume_pair();original=copy.deepcopy(before)
+        self.assertIsNone(self.initial_resume(before,self.production_tick(before,.1))['briarMomentsMigration'])
+        before.pop('briarMoments');missing=copy.deepcopy(before)
+        after=self.production_tick(before,.1);result=self.initial_resume(before,after)
+        self.assertEqual(result['briarMomentsMigration'],'missing-to-fresh-briar-moments-v1')
+        self.assertEqual(before,missing)
+        changed=copy.deepcopy(after);changed.pop('briarMoments')
+        with self.assertRaises(AssertionError):self.initial_resume(before,changed)
+        self.assertEqual(original['briarMoments'],{'version':1,'revision':0,'moments':[]})
 
     def initial_resume(self, before, after, seconds=.1):
         """Labelled synthetic tick metadata; actual installed Core is the oracle.
@@ -638,6 +650,12 @@ console.log(JSON.stringify({trace,after:incoming.snapshot(),armed,runtimeSources
         self.assertEqual(fixture['sourceReport']['sha256'], '3527cd630b8bfefe3a37ef541fc8033392dcc2c80742b7469aed05ae6d957402')
         self.assertEqual(fixture['sourceHead'], '3aa1e0a440a465644410c3942f4277f755c6013a')
         self.assertIn('synthetic-owned native', fixture['scope'])
+        # Current CPU boundary copies of retained historical observations. These
+        # add only the independently specified empty owner; the old native bytes
+        # and their source receipt remain historical and are never rewritten.
+        for world in (fixture['before'], fixture['after'], fixture['capture']['first'], fixture['capture']['final']):
+            self.assertNotIn('briarMoments', world)
+            world['briarMoments'] = {'version': 1, 'revision': 0, 'moments': []}
         return fixture['before'], fixture['after'], fixture['capture']
 
     def test_45_actual_hydrated_remote_capture_matches_exact_initial_and_sequence(self):

@@ -1,0 +1,21 @@
+PASS exact served HTML
+PASS no test/capture hooks
+PASS software WebGL2
+PASS real earned input owners retained
+PASS labelled earned cloth checkpoint
+PASS unique enabled rest
+PASS Remember did not enter house
+PASS both facts saved
+PASS old economic/story owners preserved
+PASS no browser errors or external requests
+PASS recording caller remained frozen
+PASS native proof remained frozen
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\artifacts\briar-shared-outing-20261013\capture_briar_normal_ui03.py", line 133, in main
+    final=OUT/'BRIAR_NORMAL_UI.webm';assert not final.exists();generated.rename(final)
+                                                               ~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 767, in rename
+    os.rename(self, target)
+    ~~~~~~~~~^^^^^^^^^^^^^^
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'D:\\07-GAMES\\Firstlight\\artifacts\\briar-shared-outing-20261013\\NORMAL_UI03\\08f6dcf3c6d87eafb348bc7cba7b7ba2.webm' -> 'D:\\07-GAMES\\Firstlight\\artifacts\\briar-shared-outing-20261013\\NORMAL_UI03\\BRIAR_NORMAL_UI.webm'
+

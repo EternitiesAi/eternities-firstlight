@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\briar_outing_browser.py", line 529, in <module>
+    main()
+    ~~~~^^
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\briar_outing_browser.py", line 456, in main
+    admitted = cohort(args.cohort, args.cohort_sha, args.root, args.scope, args.source_gate)
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\briar_outing_browser.py", line 147, in cohort
+    epoch = source_epoch(root, report.get('sourceEpoch'))
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\briar_outing_browser.py", line 96, in source_epoch
+    raise ValueError('Current JavaScript must be embedded: '+name)
+ValueError: Current JavaScript must be embedded: src/gathering-adapter.js

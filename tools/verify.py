@@ -498,7 +498,13 @@ def main():
     whole_draft_output = output / 'whole-draft-earned'
     if os.name == 'nt' and whole_draft_output.drive.upper() != 'D:':
         whole_draft_output = ROOT / 'evidence10/whole-draft-earned'
-    run('whole-draft-earned', ['node', 'tools/whole_draft_journey.cjs', '--output', str(whole_draft_output)], timeout=600)
+    run('whole-draft-earned', ['node', 'tools/whole_draft_journey.cjs', '--output', str(whole_draft_output)], timeout=600,
+        extra_env={'FIRSTLIGHT_ROOT': str(ROOT)})
+    # Reuse exact current earned chapter edges; do not replay whole campaigns
+    # or replace the fixed whole-draft chronology with an optional companion arc.
+    run('briar-outing-earned', ['node', 'tests/briar_outing_journey.cjs',
+        '--whole-draft-report', str(whole_draft_output / 'WHOLE_DRAFT_JOURNEY_REPORT.json'),
+        '--output', str(whole_draft_output.parent / 'briar-earned')], extra_env={'FIRSTLIGHT_ROOT': str(ROOT)})
     if args.browser:
         # Separate native gate, bound to the exact cohort earned above. Only
         # this new command receives its own bounded 30-minute allowance.

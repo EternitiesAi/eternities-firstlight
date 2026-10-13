@@ -1,0 +1,33 @@
+{
+  "scope": "Accelerated native UI; three cases, both cameras, whole-browser restarts; no ordinary RAF/human/physical GPU claim",
+  "sourceHead": "875d55f37e10d2dac98ecf54da41803972e5bdf0",
+  "headAfter": "875d55f37e10d2dac98ecf54da41803972e5bdf0",
+  "statusAfter": [],
+  "command": [
+    "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+    "-B",
+    "tools/briar_outing_browser.py",
+    "--root",
+    "D:/07-GAMES/Firstlight/verification/current-qualified-game",
+    "--cohort",
+    "D:/07-GAMES/Firstlight/artifacts/briar-shared-outing-20261013/REMOTE_SOURCE10/briar-earned/BRIAR_OUTING_JOURNEY_REPORT.json",
+    "--cohort-sha",
+    "dc6d0de6c873f9d968d79ae617b79bd2ce0178a2d6a243709f39bd7e507beb3d",
+    "--scope",
+    "complete",
+    "--source-gate",
+    "D:/07-GAMES/Firstlight/artifacts/briar-shared-outing-20261013/REMOTE_SOURCE10_EXIT.json",
+    "--output",
+    "D:/07-GAMES/Firstlight/artifacts/briar-shared-outing-20261013/NATIVE_CONTEXT02"
+  ],
+  "startedUtc": "2026-10-13T12:27:45.5388139Z",
+  "closedUtc": "2026-10-13T12:27:48.8597248Z",
+  "exitCode": 1,
+  "controllerSha256": "e7e465ceaeb6db6f06561567939e09b01e1335ab37e2b7edb7de557059530c00",
+  "cohortSha256": "dc6d0de6c873f9d968d79ae617b79bd2ce0178a2d6a243709f39bd7e507beb3d",
+  "console": {
+    "path": "D:/07-GAMES/Firstlight/artifacts/briar-shared-outing-20261013/NATIVE_CONTEXT02_CONSOLE.log",
+    "bytes": 3618,
+    "sha256": "33eda846c19dc3c3a47c71beede7974882f19ed8193a6a9161da7e4ffded2473"
+  }
+}

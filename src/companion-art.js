@@ -54,10 +54,11 @@
  }
  function pose(options={}) {
   const bonded=options.bonded===true,reducedMotion=!!options.reducedMotion;
-  const phase=bonded?finite(options.phase):0,blend=bonded?clamp(finite(options.blend),0,1):0;
+  const resting=bonded&&options.resting===true,carrying=bonded&&options.carrying===true;
+  const phase=bonded&&!resting?finite(options.phase):0,blend=bonded&&!resting?clamp(finite(options.blend),0,1):0;
   const time=bonded?finite(options.time):0;
   const bob=bonded&&!reducedMotion?Math.abs(Math.sin(phase*2))*.012*blend:0;
-  const bodyY=(bonded?.51:.42)+bob,gait=blend;
+  const bodyY=(resting?.30:bonded?.51:.42)+bob,gait=blend;
   const legs={};
   for(const side of [-1,1])for(const front of [false,true]) {
    const id=(side<0?'left':'right')+(front?'Front':'Hind');
@@ -69,16 +70,16 @@
   }
   const secondary=bonded&&!reducedMotion?1:0,idle=1-blend;
   const headYaw=secondary&&idle>0?Math.sin(time*.83)*.035*idle:0;
-  const headPitch=secondary&&idle>0?Math.sin(time*1.07)*.026*idle:0;
+  const headPitch=resting?-.09:secondary&&idle>0?Math.sin(time*1.07)*.026*idle:0;
   const tailSway=secondary?Math.sin(time*1.8)*.045*idle+Math.sin(phase)*.035*blend:0;
-  const headAnchor=[0,bodyY+.28,.49],earAngles=secondary&&idle>0?[
+  const headAnchor=[0,bodyY+(resting?.18:.28),.49],earAngles=secondary&&idle>0?[
    Math.sin(time*1.3)*.055*idle,
    Math.sin(time*1.3+.6)*.055*idle]:[0,0];
   const tail=[ [0,bodyY+.02,-.47],
    [tailSway*.35,bodyY+.07,-.78],
    [tailSway*.8,bodyY+.105,-1.07],
    [tailSway,bodyY+.14,-1.34] ];
-  return {bonded,reducedMotion,phase,blend,bob,bodyY,legs,headAnchor,headYaw,headPitch,earAngles,tail};
+  return {bonded,reducedMotion,carrying,resting,phase,blend,bob,bodyY,legs,headAnchor,headYaw,headPitch,earAngles,tail};
  }
  function parts(placement={},posed=pose({bonded:placement.bonded})) {
   if(!['x','z','base','yaw'].every(k=>Number.isFinite(placement[k])) || typeof placement.bonded!=='boolean')
@@ -133,6 +134,10 @@
   }
   emit('round',head,[0,-.07,.335],[.205,.16,.345],cream,'muzzle');
   emit('round',head,[0,-.051,.502],[.098,.083,.07],0x343d3b,'nose');
+  if(posed.carrying&&posed.bonded){
+   emit('box',head,[0,-.16,.455],[.28,.25,.018],0x8eb7bd,'outing-cloth-main');
+   emit('box',head,[0,-.048,.455],[.28,.045,.03],0xc1d5d0,'outing-cloth-fold');
+  }
   for(const [id,l] of Object.entries(posed.legs)) {
    member(l.hip,l.knee,.112,.13,fur,id+'-upper');
    member(l.knee,l.foot,.085,.10,dark,id+'-stocking');

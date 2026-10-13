@@ -1,3 +1,174 @@
+# Briar outing qualified, 2026-10-13
+
+Briar can bring the dropped cloth home, then accompany an explicitly chosen
+rest at the shared-house door. Actual E/HUD actions take or remember the arrived
+moment before the overlapping house interaction. Both cameras remain available.
+The optional two facts never award money/XP, replay old caches or start a new
+activity from completed history. World9/Adventure12/keys/XP/caps remain unchanged;
+only a missing briarMoments owner receives its literal empty version1 default.
+
+Source qualification at875d55f37e10d2dac98ecf54da41803972e5bdf0 passed220
+commands:154 Node files,2196 passes/0 failures/2 generic skips; Python488 methods
+OK with8 skip records; mandatory earned continuations passed. Briar's five CPU
+cases passed2342 supported tick segments, with two fact writes each. Whole-draft
+proof is two continuous variants (blade and blade-to-bow), ten chapters each.
+
+Targeted native qualification passed272 checks across early blade (E), early
+bow (HUD click) and the cache-complete returning case (Companion), both cameras,
+seven exact startup-byte restarts and10 balanced owned driver starts/stops.
+The other two returning cases remain CPU-only. All ten whole-browser admissions
+exceeded6291456KiB. Browser/request errors are empty; owned contexts/server closed.
+A reviewed transport wrapper recreates only its own Playwright driver per launch;
+installed Native.run controls and oracles are unchanged. Native03's earlier
+memory refusal and Native02's missing default C-cache launch remain failed.
+
+Actual ordinary-RAF footage is55.52s/5458501B, starting from the explicitly
+command-earned cloth-taken checkpoint and completing the doorstep rest through
+visible ground clicks. Twelve gameplay checks passed. Original Normal03 remains
+failed at its locked video rename; separate finalization and full1388-frame
+media decode passed after confirmed closure, without replay. Normal02's full
+fresh-outing keyboard script took the cloth but aimed into the Commons obstacle
+and hit150s; retain it as a failed capture, not a verified fresh-player journey.
+Normal01 was refused before allocation. No actual render-FPS or RTX claim follows.
+
+Exact raw receipts, scripts, screenshots and one finished clip are published at
+`docs/evidence/briar-shared-outing-2026-10-13/qualification-875d55f/MANIFEST.json`:
+52 files/9715346B. Reuse the primary checkout and independent STATION. No new
+full game copy, VM/Claude action, personal-save inspection, merge or deployment.
+The complete current --browser regression, human playtest and real-GPU gates
+remain open. Close-camera pier-sign occlusion and player/fox overlap at rest are
+visible polish limits. Next is a fresh and returning human route check, then
+bounded companion spacing/close-camera visibility refinement. Production remains
+unfinished; independent heartbeat PAUSED.
+
+---
+
+# Historical migration receipt repaired, 2026-10-13
+
+Complete Source09 at a1c525f140c4d6a05478ad4436a8f723571edf7c failed in the
+explicit Earth homecoming earned regression:18 passed/1 failed. Actual migration
+preserved prior fields and added the optional empty Briar owner; one independent
+expectation omitted that owner. Before that failure, Node2193 passed/0 failed/2
+existing skips and Python486 methods were OK with8 skips. This was not a complete
+source pass and reached no new native browser qualification.
+
+The narrow repair adds missing-only literal expectations and an explicit Briar
+migration flag; current/present memories remain protected by full-world equality.
+Native admission rejects absent/wrong flags. Onboarding discloses the same
+missing-owner migration. No runtime/HTML/schema/camera/reward/XP changes. Three
+new actual migration boundary cases went RED3 then GREEN3; related Node14 passed.
+Focused Python75 methods had one SDK import-path error and2 skips; that SDK
+method passed on its own with the bundled PYTHONPATH. Keep both original logs.
+
+Next is fresh committed complete verification, then current Briar native UI,
+cold restart and both-camera evidence. Reuse STATION and fresh6GiB admission;
+keep original timeouts/workers. VM/Claude/personal saves/unrelated work remain
+excluded. Production objective unfinished; separate heartbeat PAUSED.
+
+---
+
+# Briar world interaction refined, 2026-10-13
+
+Current source fixes the shared-house doorway overlap: during a privately owned
+Briar outing, contextual E/click takes or remembers the actual arrived moment
+before entering the house. Walking/waiting/out-of-range/paused/uncertain-save
+states guide without recording or falling through. The HUD hides the E badge
+for guidance; clicking that guidance opens Companion. Initial retrieval and
+starting rest remain explicit Companion choices. Completed history alone gives
+no live reminder. Trackers, cameras, saves, reward ledgers and XP are unchanged.
+
+Focused current CPU regression passes61 tests, including10 contextual cases
+through actual App interaction, keyboard callback, HUD projection and memory
+Store. Native admission/preservation unit preparation passed8 methods. These
+are targeted CPU results, not native keyboard/pixels or a complete source gate.
+Rebuilt HTML is3380299B, SHAe54149afdd54cab675dbb71ac8b474e93a5c1660462528ca38e7c97dc61f5fed.
+The changed runtime requires a new earned cohort and fresh committed qualification;
+older662 receipts remain historical. The native caller is prepared to exercise
+E on early blade, the HUD click on early bow and Companion on the returning case.
+
+Next: fetch the pushed code into reused STATION, admit the complete verifier
+against fresh host memory>=6291456KiB, then qualify native saves/controls/both
+camera views and one ordinary take. Keep Node180/Python600/fourworkers. VM,
+guest and Claude Code stay excluded. No new full-game copy or cleanup. Goal
+ACTIVE unfinished; separate heartbeat PAUSED. Preserve original failures/skips.
+
+---
+
+Earlier checkpoints below retain their own source epochs.
+
+# Briar browser qualification prepared; no native result yet, 2026-10-13
+
+The Briar playable implementation remains `dbc5874593afe2d18b06ab17817f4beae9d653d3`
+in open draft PR72. This follow-up adds an installed bounded native caller and
+eight CPU admission/preservation tests; it changes no runtime, HTML, save schema,
+quest reward or camera behavior. Actual current early blade/bow cohort preparation
+passed against the reused STATION with frozen report SHA
+`9ba760ba359ccb661641c97570bf65d59d4469e8f659f8e34a3e445d5c145de6`.
+Those preparation checks allocated zero profiles and ran no browser.
+
+The caller imports INPUT_WORLD through Characters, uses real Companion buttons,
+checks immediate native writes before pagehide can heal a failure, and compares
+closed storage bytes to the next whole-Chromium startup. It is explicitly
+accelerated native automation when run. Complete mode requires all five earned
+cases plus the successful same-invocation current source receipt; early-only
+mode cannot claim returning-character or full-source qualification.
+
+Prepared caller/test head `2ea1338e0797f93ede4354292edd5594a4d44523` was
+freshly fetched into clean reused STATION. Its eight focused CPU tests and real
+early-cohort preparation passed. Actual rebuild and raw comparison matched169
+runtime files,81 changed files and four HTML copies. Source08 was not launched:
+final host reading2735528KiB was below6291456 at2026-10-13T08:43:17.0110975Z.
+No native/browser/video result is claimed. Subsequent checkpoint changes are
+records/evidence only; full returning/source/native gates remain open.
+Keep original180/600 source deadlines, four workers and fresh6GiB host admission
+before source/native/clip launch. VM/guest/Claude Code remain excluded. ROOT and
+STATION are reused on D; no full-game copy, cleanup, shared install or billing
+change. Goal remains ACTIVE unfinished; independent heartbeat remains PAUSED.
+
+Next: admitted complete source/returning cohort, targeted native UI/restarts and
+both-camera pixels, then one short ordinary-RAF take. Retain failures and do not
+transfer older PR71 verification. Human play and physical GPU remain unqualified.
+
+---
+
+Earlier checkpoints below retain their original scope and epoch.
+
+# Briar review branch pushed; full qualification pending, 2026-10-13
+
+OPEN DRAFT PR72 https://github.com/EternitiesAi/eternities-firstlight/pull/72,
+stacked on PR71/b6b813ccaa7ae445fa233a1214ea1c144d1c2476. Product/source head
+`dbc5874593afe2d18b06ab17817f4beae9d653d3`. Optional Earth ET02 has actual fox
+cloth retrieval/carry/return, explicit taking, chosen doorstep rest and two
+strict optional briarMoments v1 facts. World9/Adventure12/keys/XP/caps/claims,
+gear/sockets/upgrades, all other owners and both cameras remain. No old cache
+backfill, payout, grief/loss/timer, forced class or new realm.
+
+Fresh canonical fetch/rebuild in reused independent STATION:169 runtime files,
+44 changed files and four HTML copies match;3378270B SHA13d793eec31077faa15ecdd2f3a3aca07dfb55b8e6d64a0a1460c17a162599e0.
+Current remote targeted Node124P0F0skip; committed-epoch Python8 methodsOK.
+Two early earned rescue continuations each finish the actual App/Store outing
+before relic/angelic reward over445 supported tick segments and two writes.
+The bow then explicitly gathered/crafted/equipped its weapon. These are CPU
+accelerated/memory readback receipts, not native or human observations.
+
+SOURCE01/03 failures remain retained; SOURCE03's earlier rules2182P0F2skip do
+not replace a final complete gate. Remote Source04/05 were NOT LAUNCHED;
+latest07:37:24Z free3626772KiB below6291456. Use the clean committed game and
+existing Firstlight Python313/browser-env with UTF-8, original180/600 deadlines
+and four workers once fresh host admission permits. Returning whole-cohort,
+full source, new native pixels/restarts and ordinary footage remain pending.
+Never transfer PR71's native/movie success to this runtime. Public checkpoint
+receipts are under docs/evidence/briar-shared-outing-2026-10-13; current task and
+result notes carry ownership, migration, actual failures and launch steps.
+
+VM/guest/Claude Code and unrelated work remain excluded. No personal-save,
+shared-install, billing/paid, merge/deploy, cleanup or new full-game action.
+Reuse ROOT/STATION on D. Goal ACTIVE unfinished; separate heartbeat PAUSED.
+
+---
+
+Earlier checkpoints below retain their original epochs.
+
 # Returned-kit footage delivered, 2026-10-13
 
 PR71 remains an open draft, stacked against PR70. Qualified code is

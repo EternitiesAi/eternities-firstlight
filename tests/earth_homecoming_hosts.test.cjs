@@ -114,6 +114,7 @@ test('app Realm diagnostics copy actual EH facts/runtime rather than expose muta
  // remains ineligible under the actual Motion guard.
  Object.assign(ctx,vm.compileFunction(app.slice(a+start.length,b)+'\nreturn {roadkeeperPresentation,prepareRoadkeeperDiagnostics,roadkeeperDiagnostics};',[],{contextExtensions:[ctx]})());
  const before=f.sim.snapshot();assert.equal(ctx.roadkeeperPresentation(),null);ctx.prepareRoadkeeperDiagnostics();
+ ctx.briarContext=()=>f.app.context.briarContext();
  const wildDiagnostics=app.slice(app.indexOf('let wildSignsDiagnosticFrame='),app.indexOf('function worldContext('));vm.runInNewContext(wildDiagnostics+'\n'+snippet,ctx);const d=ctx.window.Realm.diagnostics;assert.equal(d.roadkeeper,null);assert.deepEqual(f.sim.snapshot(),before);assert.equal(d.earthHomecoming.record.accepted,true);assert.equal(d.earthHomecoming.runtime.room,null);d.earthHomecoming.record.accepted=false;d.earthHomecoming.record.steps.push('invented');assert.equal(f.sim.state.earthHomecoming.accepted,true);assert.ok(!f.sim.state.earthHomecoming.steps.includes('invented'));
 });
 test('build/shell ordered tokens load data+rules before Core/Adventure and repaired UI/art/CSS exactly once',()=>{

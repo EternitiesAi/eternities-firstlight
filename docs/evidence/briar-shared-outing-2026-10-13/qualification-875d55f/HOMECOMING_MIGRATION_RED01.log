@@ -1,0 +1,89 @@
+TAP version 13
+# Subtest: historical missing Briar owner receives only the declared empty owner and an honest migration receipt
+not ok 1 - historical missing Briar owner receives only the declared empty owner and an honest migration receipt
+  ---
+  duration_ms: 71485.19
+  type: 'test'
+  location: 'D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\tests\\earth_homecoming_briar_migration.test.cjs:18:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + undefined
+    - 'missing-to-fresh-briar-moments-v1'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'missing-to-fresh-briar-moments-v1'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\earth_homecoming_briar_migration.test.cjs:20:9)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.start (node:internal/test_runner/test:1191:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17)
+  ...
+# Subtest: synthetic existing empty owner is preserved without a missing-owner migration claim
+not ok 2 - synthetic existing empty owner is preserved without a missing-owner migration claim
+  ---
+  duration_ms: 13.5245
+  type: 'test'
+  location: 'D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\tests\\earth_homecoming_briar_migration.test.cjs:25:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + undefined
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\earth_homecoming_briar_migration.test.cjs:27:9)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)
+  ...
+# Subtest: synthetic completed shared memories retain identity and order through the actual historical migration
+not ok 3 - synthetic completed shared memories retain identity and order through the actual historical migration
+  ---
+  duration_ms: 14.4992
+  type: 'test'
+  location: 'D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\tests\\earth_homecoming_briar_migration.test.cjs:29:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + undefined
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\earth_homecoming_briar_migration.test.cjs:34:9)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 0
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 74213.5708

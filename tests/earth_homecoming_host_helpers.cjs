@@ -22,6 +22,7 @@ function installHosts(){
  load('earth-consignment-ui.js');global.RealmLocalLifeUI.LocalLifeUI=class extends OtherUI{constructor(rpg){super(rpg);this.carrier=new global.RealmEarthConsignmentUI.ConsignmentUI(rpg);}reset(){this.carrier.reset('owner');}};
  global.RealmVisualAtlas=class extends OtherUI{};
  global.RealmHomeHistoryUI={teaser:()=>''};
+ load('briar-outing.js');
  load('earth-grazer-motion.js');load('earth-grazer-art.js');load('earth-wild-signs.js');load('earth-wild-signs-ui.js');
  load('starter-ui.js');load('earth-homecoming-ui.js');load('earth-homecoming-art.js');load('world-foundations-ui.js');load('adventure-ui.js');load('adventure-art.js');load('rpg-ui.js');load('world.js');
 }

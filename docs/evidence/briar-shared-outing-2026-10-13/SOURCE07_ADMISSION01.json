@@ -1,0 +1,21 @@
+{
+  "head": "087bdb12087890bc90276514de2e233b0685e927",
+  "observedUtc": "2026-10-13T07:58:53.9486987Z",
+  "freeHostKiB": 5273360,
+  "minimumFreeKiB": 6291456,
+  "requestedRuleWorkers": 4,
+  "admitted": false,
+  "controllerSha256": "2756599964dbfceb384b53c90d90181453d463511f5307a5b0f486103f62e11a",
+  "scope": "Read host free memory only; no VM/Claude interaction",
+  "command": [
+    "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+    "-B",
+    "tools/verify.py",
+    "--rule-workers",
+    "4",
+    "--output",
+    "D:/07-GAMES/Firstlight/artifacts/briar-shared-outing-20261013/REMOTE_SOURCE07",
+    "--cpu-temp",
+    "C:/Users/Dom/AppData/Local/Temp"
+  ]
+}

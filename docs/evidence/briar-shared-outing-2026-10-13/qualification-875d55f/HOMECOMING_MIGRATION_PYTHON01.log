@@ -1,0 +1,13 @@
+.........................................sEs...............................
+======================================================================
+ERROR: test_19_installed_browser_sdk_accepts_controller_arguments (tests.test_onboarding_browser.Preparation.test_19_installed_browser_sdk_accepts_controller_arguments)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\test_onboarding_browser.py", line 170, in test_19_installed_browser_sdk_accepts_controller_arguments
+    from playwright.sync_api import Page, BrowserContext, BrowserType
+ModuleNotFoundError: No module named 'playwright'
+
+----------------------------------------------------------------------
+Ran 75 tests in 40.101s
+
+FAILED (errors=1, skipped=2)

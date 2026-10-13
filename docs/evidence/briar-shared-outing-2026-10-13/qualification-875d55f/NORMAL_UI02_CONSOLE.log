@@ -1,0 +1,20 @@
+PASS exact served HTML
+PASS no test/capture hooks
+PASS software WebGL2
+PASS real earned input owners retained
+PASS unique enabled start
+PASS Take context visible
+PASS Take retained valley
+PASS unique enabled rest
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\artifacts\briar-shared-outing-20261013\capture_briar_normal_ui02.py", line 122, in main
+    check('Take retained valley',diag()['scene']=='valley');action('rest');accompany('settled');reach({'x':-11,'z':-1.6})
+                                                                           ~~~~~~~~~^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\artifacts\briar-shared-outing-20261013\capture_briar_normal_ui02.py", line 84, in accompany
+    guard();d=diag();view=d['briar']['view'];assert view is not None,'current owned outing'
+    ~~~~~^^
+  File "D:\07-GAMES\Firstlight\artifacts\briar-shared-outing-20261013\capture_briar_normal_ui02.py", line 53, in guard
+    assert time.monotonic()-start<150,'bounded recording wall time'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: bounded recording wall time
+

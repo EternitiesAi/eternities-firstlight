@@ -1,0 +1,378 @@
+TAP version 13
+# Subtest: missing legacy moment data starts empty without inventing shared history
+ok 1 - missing legacy moment data starts empty without inventing shared history
+  ---
+  duration_ms: 1.3777
+  type: 'test'
+  ...
+# Subtest: only completed chronological moments survive copied validation
+ok 2 - only completed chronological moments survive copied validation
+  ---
+  duration_ms: 0.5539
+  type: 'test'
+  ...
+# Subtest: malformed, future, inherited and unearned history is refused
+ok 3 - malformed, future, inherited and unearned history is refused
+  ---
+  duration_ms: 0.332
+  type: 'test'
+  ...
+# Subtest: world-level migration distinguishes absent, own undefined and inherited owners
+ok 4 - world-level migration distinguishes absent, own undefined and inherited owners
+  ---
+  duration_ms: 0.2787
+  type: 'test'
+  ...
+# Subtest: sparse or decorated lists cannot invent a completed event
+ok 5 - sparse or decorated lists cannot invent a completed event
+  ---
+  duration_ms: 1.2514
+  type: 'test'
+  ...
+# Subtest: completed moments require a boolean start and normalized Adventure prerequisites
+ok 6 - completed moments require a boolean start and normalized Adventure prerequisites
+  ---
+  duration_ms: 0.3905
+  type: 'test'
+  ...
+# Subtest: the real world factory retains an empty distinct Briar owner
+ok 7 - the real world factory retains an empty distinct Briar owner
+  ---
+  duration_ms: 5.1276
+  type: 'test'
+  ...
+# Subtest: real Core accepts a missing legacy owner without shared-history backfill
+ok 8 - real Core accepts a missing legacy owner without shared-history backfill
+  ---
+  duration_ms: 5.4047
+  type: 'test'
+  ...
+# Subtest: Core and actual snapshot retain earned prerequisites and only valid moments
+ok 9 - Core and actual snapshot retain earned prerequisites and only valid moments
+  ---
+  duration_ms: 5.5891
+  type: 'test'
+  ...
+# Subtest: raw own undefined and inherited owners refuse through Core, including legacy migration
+ok 10 - raw own undefined and inherited owners refuse through Core, including legacy migration
+  ---
+  duration_ms: 1.9199
+  type: 'test'
+  ...
+# Subtest: defined outing points and whole routes are actually supported
+ok 11 - defined outing points and whole routes are actually supported
+  ---
+  duration_ms: 19.749
+  type: 'test'
+  ...
+# Subtest: acceptance creates only an intent and refuses injected terms or repeated starts
+ok 12 - acceptance creates only an intent and refuses injected terms or repeated starts
+  ---
+  duration_ms: 2.9578
+  type: 'test'
+  ...
+# Subtest: actual outbound/carry/return and explicit save produce one useful shared fact
+ok 13 - actual outbound/carry/return and explicit save produce one useful shared fact
+  ---
+  duration_ms: 26.8627
+  type: 'test'
+  ...
+# Subtest: refused turn-in is unchanged and retryable; cold completed load cannot duplicate
+ok 14 - refused turn-in is unchanged and retryable; cold completed load cannot duplicate
+  ---
+  duration_ms: 18.3274
+  type: 'test'
+  ...
+# Subtest: rest requires the returned cloth and actual arrival before remembering
+ok 15 - rest requires the returned cloth and actual arrival before remembering
+  ---
+  duration_ms: 52.9471
+  type: 'test'
+  ...
+# Subtest: revisiting the recorded doorstep rests again without suggesting or writing a second moment
+ok 16 - revisiting the recorded doorstep rests again without suggesting or writing a second moment
+  ---
+  duration_ms: 49.0607
+  type: 'test'
+  ...
+# Subtest: Follow, Stay, travel, death, lease changes and forged displacement cancel unfinished intent
+ok 17 - Follow, Stay, travel, death, lease changes and forged displacement cancel unfinished intent
+  ---
+  duration_ms: 10.8749
+  type: 'test'
+  ...
+# Subtest: reload and copied actor diagnostics never establish a physical return
+ok 18 - reload and copied actor diagnostics never establish a physical return
+  ---
+  duration_ms: 1.7794
+  type: 'test'
+  ...
+# Subtest: a successful outgoing save is never adopted into a replacement character
+ok 19 - a successful outgoing save is never adopted into a replacement character
+  ---
+  duration_ms: 15.9629
+  type: 'test'
+  ...
+# Subtest: a known saved moment with a changed same-simulation owner blocks older local snapshots until readback
+ok 20 - a known saved moment with a changed same-simulation owner blocks older local snapshots until readback
+  ---
+  duration_ms: 35.2561
+  type: 'test'
+  ...
+# Subtest: an asynchronous or uncertain saver cannot trigger blind replay
+ok 21 - an asynchronous or uncertain saver cannot trigger blind replay
+  ---
+  duration_ms: 12.4592
+  type: 'test'
+  ...
+# Subtest: uncertain resting save preserves the real settled pose and cannot invent a carried cloth
+ok 22 - uncertain resting save preserves the real settled pose and cannot invent a carried cloth
+  ---
+  duration_ms: 36.1169
+  type: 'test'
+  ...
+# Subtest: uncertain saves stay quarantined through cancellation, Follow and scene changes
+ok 23 - uncertain saves stay quarantined through cancellation, Follow and scene changes
+  ---
+  duration_ms: 11.0682
+  type: 'test'
+  ...
+# Subtest: a post-write throw is unknown until saved-state readback, never a retryable refusal
+ok 24 - a post-write throw is unknown until saved-state readback, never a retryable refusal
+  ---
+  duration_ms: 11.9657
+  type: 'test'
+  ...
+# Subtest: ordinary and transaction saving cannot overwrite a post-write unknown moment
+ok 25 - ordinary and transaction saving cannot overwrite a post-write unknown moment
+  ---
+  duration_ms: 52.6267
+  type: 'test'
+  ...
+# Subtest: all character mutations including inactive deletion preserve uncertain outgoing bytes
+ok 26 - all character mutations including inactive deletion preserve uncertain outgoing bytes
+  ---
+  duration_ms: 45.738
+  type: 'test'
+  ...
+# Subtest: legacy replacement refuses both before and after writer acquisition
+ok 27 - legacy replacement refuses both before and after writer acquisition
+  ---
+  duration_ms: 16.2433
+  type: 'test'
+  ...
+# Subtest: uncertainty arising during the editing-lock await blocks the later character write
+ok 28 - uncertainty arising during the editing-lock await blocks the later character write
+  ---
+  duration_ms: 9.1002
+  type: 'test'
+  ...
+# Subtest: actual carrying adds a restrained cloth attached to the same articulated mouth frame
+ok 29 - actual carrying adds a restrained cloth attached to the same articulated mouth frame
+  ---
+  duration_ms: 4.3554
+  type: 'test'
+  ...
+# Subtest: the settled bonded rig is visibly lower, complete and supported
+ok 30 - the settled bonded rig is visibly lower, complete and supported
+  ---
+  duration_ms: 19.0746
+  type: 'test'
+  ...
+# Subtest: unbonded and default rigs cannot fabricate an outing pose
+ok 31 - unbonded and default rigs cannot fabricate an outing pose
+  ---
+  duration_ms: 1.1969
+  type: 'test'
+  ...
+# Subtest: the actual shallow bowl has a supported inset and contained rim above the doorstep ground
+ok 32 - the actual shallow bowl has a supported inset and contained rim above the doorstep ground
+  ---
+  duration_ms: 77.5076
+  type: 'test'
+  ...
+# Subtest: context button click opens the current account for guidance and executes only current arrival
+ok 33 - context button click opens the current account for guidance and executes only current arrival
+  ---
+  duration_ms: 81.5629
+  type: 'test'
+  ...
+# Subtest: actual App keyboard callback protects dialogs, typed text and repeated E before contextual writing
+ok 34 - actual App keyboard callback protects dialogs, typed text and repeated E before contextual writing
+  ---
+  duration_ms: 99.7429
+  type: 'test'
+  ...
+# Subtest: actual HUD projection shows live guidance, then E arrival and resets its badge after cancel
+ok 35 - actual HUD projection shows live guidance, then E arrival and resets its badge after cancel
+  ---
+  duration_ms: 39.8437
+  type: 'test'
+  ...
+# Subtest: E at the arrived doorstep records the moment instead of entering the overlapping house
+ok 36 - E at the arrived doorstep records the moment instead of entering the overlapping house
+  ---
+  duration_ms: 73.734
+  type: 'test'
+  ...
+# Subtest: out-of-range E gives current guidance, preserves arrival, and cannot enter the house
+ok 37 - out-of-range E gives current guidance, preserves arrival, and cannot enter the house
+  ---
+  duration_ms: 74.2869
+  type: 'test'
+  ...
+# Subtest: waiting and paused guidance have no implicit action, save, tracker or camera change
+ok 38 - waiting and paused guidance have no implicit action, save, tracker or camera change
+  ---
+  duration_ms: 26.0011
+  type: 'test'
+  ...
+# Subtest: a known refused contextual save remains arrived and explicitly retryable
+ok 39 - a known refused contextual save remains arrived and explicitly retryable
+  ---
+  duration_ms: 66.695
+  type: 'test'
+  ...
+# Subtest: post-write uncertainty shows readback guidance and consumes E without another write or entry
+ok 40 - post-write uncertainty shows readback guidance and consumes E without another write or entry
+  ---
+  duration_ms: 68.242
+  type: 'test'
+  ...
+# Subtest: changed owner after a contextual Store write leaves the saved fact and blocks its older local snapshot
+ok 41 - changed owner after a contextual Store write leaves the saved fact and blocks its older local snapshot
+  ---
+  duration_ms: 62.5334
+  type: 'test'
+  ...
+# Subtest: completed history alone, cancel, reload and changed owner cannot invent a live contextual action
+ok 42 - completed history alone, cancel, reload and changed owner cannot invent a live contextual action
+  ---
+  duration_ms: 67.9994
+  type: 'test'
+  ...
+# Subtest: earned early blade keeps both explicit moments through actual App writer and Store readback
+ok 43 - earned early blade keeps both explicit moments through actual App writer and Store readback
+  ---
+  duration_ms: 97.8102
+  type: 'test'
+  ...
+# Subtest: earned early bow keeps both explicit moments through actual App writer and Store readback
+ok 44 - earned early bow keeps both explicit moments through actual App writer and Store readback
+  ---
+  duration_ms: 80.713
+  type: 'test'
+  ...
+# Subtest: later journey preservation oracles cannot silently erase completed companion history
+ok 45 - later journey preservation oracles cannot silently erase completed companion history
+  ---
+  duration_ms: 180.0657
+  type: 'test'
+  ...
+# Subtest: Companion page exposes the real new outing without a fake reward
+ok 46 - Companion page exposes the real new outing without a fake reward
+  ---
+  duration_ms: 14.5795
+  type: 'test'
+  ...
+# Subtest: native movement action closes the workspace, restores pause and reaches the real owner
+ok 47 - native movement action closes the workspace, restores pause and reaches the real owner
+  ---
+  duration_ms: 4.1535
+  type: 'test'
+  ...
+# Subtest: a prior P pause stays paused and cannot secretly start a route
+ok 48 - a prior P pause stays paused and cannot secretly start a route
+  ---
+  duration_ms: 1.7286
+  type: 'test'
+  ...
+# Subtest: nonmovement actions preserve the dialog pause even when saving refuses
+ok 49 - nonmovement actions preserve the dialog pause even when saving refuses
+  ---
+  duration_ms: 1.8599
+  type: 'test'
+  ...
+# \# Scope: actual Core/commands/moveTo/tick and UI owners; DOM string/attribute sink, validated RAM save acknowledgement. No native/browser/pixel proof.
+# \# Setup counters: 27 production movement legs; 940 production ticks. Late-history cases are labelled synthetic derivatives of the installed fixture.
+# Subtest: fresh actual Journal prioritizes usable Chapter I and retains all locked requests
+ok 50 - fresh actual Journal prioritizes usable Chapter I and retains all locked requests
+  ---
+  duration_ms: 75.0817
+  type: 'test'
+  ...
+# Subtest: actual kit, crossing and accepted trail retain manual Homestead
+ok 51 - actual kit, crossing and accepted trail retain manual Homestead
+  ---
+  duration_ms: 35.5848
+  type: 'test'
+  ...
+# Subtest: manual Story keeps actual chapter and its visible tracker opens Journal in a local realm
+ok 52 - manual Story keeps actual chapter and its visible tracker opens Journal in a local realm
+  ---
+  duration_ms: 16.3782
+  type: 'test'
+  ...
+# Subtest: a different explicit tracker choice replaces the transient selection
+ok 53 - a different explicit tracker choice replaces the transient selection
+  ---
+  duration_ms: 15.7253
+  type: 'test'
+  ...
+# Subtest: real accepted commission card Track replaces Homestead without changing any saved facts
+ok 54 - real accepted commission card Track replaces Homestead without changing any saved facts
+  ---
+  duration_ms: 19.4978
+  type: 'test'
+  ...
+# Subtest: failed actual project pin does not create a manual preference or alter the current tracker
+ok 55 - failed actual project pin does not create a manual preference or alter the current tracker
+  ---
+  duration_ms: 1.9409
+  type: 'test'
+  ...
+# Subtest: passive acceptance projection cannot steal a manual choice; no preference is saved
+ok 56 - passive acceptance projection cannot steal a manual choice; no preference is saved
+  ---
+  duration_ms: 15.2144
+  type: 'test'
+  ...
+# Subtest: actual continuation acceptance retains manual Homestead and appears outside the locked Journal group (synthetic late history)
+ok 57 - actual continuation acceptance retains manual Homestead and appears outside the locked Journal group (synthetic late history)
+  ---
+  duration_ms: 142.1383
+  type: 'test'
+  ...
+# Subtest: claimed campaign stays visibly completed after a prior explicit track (labelled synthetic late history)
+ok 58 - claimed campaign stays visibly completed after a prior explicit track (labelled synthetic late history)
+  ---
+  duration_ms: 12.1765
+  type: 'test'
+  ...
+# Subtest: actual legacy Cosmos and Hearthwater visits cannot overwrite a manually selected Homestead
+ok 59 - actual legacy Cosmos and Hearthwater visits cannot overwrite a manually selected Homestead
+  ---
+  duration_ms: 30.1081
+  type: 'test'
+  ...
+# Subtest: no manual preference survives a new Simulation body or a cold UI constructor
+ok 60 - no manual preference survives a new Simulation body or a cold UI constructor
+  ---
+  duration_ms: 13.873
+  type: 'test'
+  ...
+# Subtest: realm concept catalogue accurately names installed local arcs without promising full realms
+ok 61 - realm concept catalogue accurately names installed local arcs without promising full realms
+  ---
+  duration_ms: 0.423
+  type: 'test'
+  ...
+1..61
+# tests 61
+# suites 0
+# pass 61
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5350.8414

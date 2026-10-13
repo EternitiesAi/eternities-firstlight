@@ -22,7 +22,7 @@ function readInherited(file,bow){
 function createInherited(file,bow){return require(path.join(ROOT,'tests/realm_trails_journey.cjs')).createHarness(readInherited(file,bow));}
 function preserve(final,before,changed=[]){
  const permit=new Set(changed);
- for(const k of ['journeys','realmTrails','earthExpedition','hellCampaign','heavenCampaign','atlantisCampaign','cosmosCampaign','bridgeCommunity','localLife','homeHistory','notes','score','scoreRevision','retreat','visitor','flowers','settings'])if(!permit.has(k))assert.deepEqual(final[k],before[k],'old world owner '+k+' retained');
+ for(const k of ['briarMoments','journeys','realmTrails','earthExpedition','hellCampaign','heavenCampaign','atlantisCampaign','cosmosCampaign','bridgeCommunity','localLife','homeHistory','notes','score','scoreRevision','retreat','visitor','flowers','settings'])if(!permit.has(k))assert.deepEqual(final[k],before[k],'old world owner '+k+' retained');
  for(const k of ['owned','equipment','arsenal','starter','pursuit','realmCraft','earthBinding','classPath','companion','beacon','crossing','road','earthStory','earthNotes','earthGathering','defeated','drops','reward','relic','angelSeen'])if(!permit.has('adventure.'+k))assert.deepEqual(final.adventure[k],before.adventure[k],'old adventure owner '+k+' retained');
  for(const k of ['bridge','nextId','stats','milestones','recentCommands','cooldownUntil'])assert.deepEqual(final.sandbox[k],before.sandbox[k],'sandbox '+k+' retained');
  assert.deepEqual(final.sandbox.placed.map(p=>({...p,crop:null})),before.sandbox.placed.map(p=>({...p,crop:null})),'construction and positions retained');

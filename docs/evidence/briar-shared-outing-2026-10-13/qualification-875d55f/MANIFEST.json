@@ -1,0 +1,308 @@
+{
+  "scope": "Exact source qualification, original failures, accelerated native UI/cold restarts and one ordinary-RAF scripted-input recording; no human or GPU qualification",
+  "sourceHead": "875d55f37e10d2dac98ecf54da41803972e5bdf0",
+  "reviewBase": "b6b813ccaa7ae445fa233a1214ea1c144d1c2476",
+  "htmlSha256": "e54149afdd54cab675dbb71ac8b474e93a5c1660462528ca38e7c97dc61f5fed",
+  "freshlyCreatedClone": false,
+  "verificationClone": "Reused clean independent STATION, fetched exact canonical HTTPS head",
+  "sourceCommandsPassed": 220,
+  "nodeTests": {
+    "total": 2198,
+    "passed": 2196,
+    "failed": 0,
+    "skipped": 2
+  },
+  "pythonFooter": "Ran 488 tests; OK (skipped=8)",
+  "nativeCases": 3,
+  "nativeRestarts": 7,
+  "originalNative02And03RemainFailed": true,
+  "nativeTransport": "Owned Playwright driver recreated for each whole browser; installed Native.run assertions unchanged",
+  "normalTimeRecording": {
+    "status": "passed",
+    "scope": "Artifact finalized and fully decoded; original recording invocation remains failed only at locked rename after all12 gameplay checks passed",
+    "sourceHead": "875d55f37e10d2dac98ecf54da41803972e5bdf0",
+    "normalRAF": true,
+    "fullFreshOutingRecorded": false,
+    "startStage": "command-earned cloth already taken",
+    "humanAcceptance": false,
+    "gpuPerformanceCertified": false,
+    "gameplayChecksPassed": 12,
+    "contextClosed": true,
+    "driverClosed": true,
+    "decodedFrames": 1388,
+    "containerDurationSeconds": 55.52,
+    "containerFrameRate": 25,
+    "video": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\briar-shared-outing-20261013\\NORMAL_UI03\\BRIAR_NORMAL_UI.webm",
+      "bytes": 5458501,
+      "sha256": "a64fcd0af3e1799963c366ed80e3e9c5364752e3d9f56db9c39e894951b2b740"
+    },
+    "priorReportSha256": "7382f299ec6b8f72c0d61d97645ffa5b237be3f06648e89c5307629a9892b5ee",
+    "finalizationSha256": "dde81b3ff3cafda8bc0ab3dc82bdf8b798b36eee22aa20cef1e4b3d06a3f5501",
+    "decodeLogSha256": "069aabd0d72deb9e78fa0aa4807db3211ab1459c4fdc41f8f153daae4572422f",
+    "decodeReceiptSha256": "4b97f15e5c0d5c4d958fdfb26b038af2c977178a7f63d6a84c67d3bdb7c0d5ab"
+  },
+  "publishedBytes": 9715346,
+  "files": [
+    {
+      "path": "SOURCE09_ADMISSION01.json",
+      "bytes": 700,
+      "sha256": "16f1a4856b7282c0184b37f0e2916c96a6859581e758528787061dbd51f34227"
+    },
+    {
+      "path": "REMOTE_SOURCE09_EXIT.json",
+      "bytes": 1606,
+      "sha256": "f006193fdf523bbc0e227eaf834f86fd2ffce7b1d008bea5a6b938c58d4d09eb"
+    },
+    {
+      "path": "REMOTE_SOURCE09_CONSOLE.log",
+      "bytes": 20475,
+      "sha256": "7bfd30aa749c8d961e9329eb787847929ac3e5e9734b1a91a5ee11690edd7f92"
+    },
+    {
+      "path": "REMOTE_SOURCE09/earth-homecoming-earned.log",
+      "bytes": 167330,
+      "sha256": "e283e10dc26b73ff1f442c87d53e4a83153f3f6c5c7b81f073c185ebfe74fc3d"
+    },
+    {
+      "path": "SOURCE10_ADMISSION01.json",
+      "bytes": 700,
+      "sha256": "3d5a3b4cb253aaf8bdae65cfd241a29583aa7131ba632f4ffaf9521dc388866e"
+    },
+    {
+      "path": "REMOTE_SOURCE10_EXIT.json",
+      "bytes": 1606,
+      "sha256": "3b5877d68ac18cef888b0ca632154485b2445a907c6af96af2f45c52252eb762"
+    },
+    {
+      "path": "REMOTE_SOURCE10_CONSOLE.log",
+      "bytes": 14566,
+      "sha256": "8e807cf8bd524fc7002ff9a0d2911f5143ef7f8050896f1dd528248865090a35"
+    },
+    {
+      "path": "RUN_REMOTE_SOURCE10.ps1",
+      "bytes": 3596,
+      "sha256": "f5fb0445cc32c73d2187d93bf05a467bb4379d933cd153fdba2693d02d40d6c3"
+    },
+    {
+      "path": "REMOTE_SOURCE10/build.log",
+      "bytes": 91,
+      "sha256": "5c9df3266e637fdd12ceea2ffd35caeffb89a4cae1e5eac0e5c4a652cb81d190"
+    },
+    {
+      "path": "REMOTE_SOURCE10/rules-command.json",
+      "bytes": 22922,
+      "sha256": "2970e286fd41127a7a638fd770e92aaeea3dddea1b680ef3b575aa2a88895405"
+    },
+    {
+      "path": "REMOTE_SOURCE10/rules.log",
+      "bytes": 533661,
+      "sha256": "66a616989b830145e1bfef2715a9203ab976b0d6ebaef3d557e82f46d1396d27"
+    },
+    {
+      "path": "REMOTE_SOURCE10/python.log",
+      "bytes": 142582,
+      "sha256": "855eaa87deec896a180ef8fdd9f38d6014a9f10da877e9b868939d04ebbcb827"
+    },
+    {
+      "path": "REMOTE_SOURCE10/earth-homecoming-earned.log",
+      "bytes": 5147,
+      "sha256": "3a7c3897497ccbb4b0cfed0dd96805e271fcd6877e988e396f16ea3dc56bbc83"
+    },
+    {
+      "path": "REMOTE_SOURCE10/earth-homecoming-native-preflight.log",
+      "bytes": 5040,
+      "sha256": "a27a90ce4043d790d6ea40a7fad6c1d088b24fc15c1de8e4e78a8662f80226ed"
+    },
+    {
+      "path": "REMOTE_SOURCE10/whole-draft-earned/WHOLE_DRAFT_JOURNEY_REPORT.json",
+      "bytes": 45175,
+      "sha256": "701e3984761babf591e96f02846997ca9d086eda7abdaa91334ec2050ce51667"
+    },
+    {
+      "path": "REMOTE_SOURCE10/briar-earned/BRIAR_OUTING_JOURNEY_REPORT.json",
+      "bytes": 47768,
+      "sha256": "dc6d0de6c873f9d968d79ae617b79bd2ce0178a2d6a243709f39bd7e507beb3d"
+    },
+    {
+      "path": "HOMECOMING_MIGRATION_RED01.log",
+      "bytes": 3658,
+      "sha256": "c36061eebfa54a0724c62fa7056459ed90e85cfe90e496c4fc7d9d6f3d4da5a0"
+    },
+    {
+      "path": "HOMECOMING_MIGRATION_GREEN01.log",
+      "bytes": 3320,
+      "sha256": "24037504a13bb2ea139d66e5bcc8f2c94aec437e67020a9c8f364416d6fff9a8"
+    },
+    {
+      "path": "HOMECOMING_MIGRATION_GREEN02.log",
+      "bytes": 925,
+      "sha256": "1c6ca875a14f4a7cd9c6ee6f85c10969099495432ebb3ab4f18d82e9a62cb9ed"
+    },
+    {
+      "path": "HOMECOMING_MIGRATION_PYTHON01.log",
+      "bytes": 864,
+      "sha256": "d076496101cdefda9481337f275e53d2be7c044d687693c630292ce32877c666"
+    },
+    {
+      "path": "HOMECOMING_MIGRATION_PYTHON_SDK01.log",
+      "bytes": 103,
+      "sha256": "12a0645ce84436fb34939037f4081297e53abeb18c8702689613f573257f7387"
+    },
+    {
+      "path": "CONTEXT_RED01.log",
+      "bytes": 34864,
+      "sha256": "36b199e02b9580e081dce27661cfe3aa1be7d18434ccf59cd6c5e6660c0a7e53"
+    },
+    {
+      "path": "CONTEXT_REGRESSION02.log",
+      "bytes": 14888,
+      "sha256": "f563f54f1d08c05a2649c9c86b3cc90ea3ff998dd3616b29b1469157bec812d5"
+    },
+    {
+      "path": "NATIVE_CONTEXT02_EXIT.json",
+      "bytes": 1524,
+      "sha256": "dc530c80d827abc15c0b2ebe4c5f4c332fd5dc9e2086623eb1b565cdcb88ba43"
+    },
+    {
+      "path": "NATIVE_CONTEXT02_CONSOLE.log",
+      "bytes": 3618,
+      "sha256": "33eda846c19dc3c3a47c71beede7974882f19ed8193a6a9161da7e4ffded2473"
+    },
+    {
+      "path": "NATIVE_CONTEXT02/BRIAR_NATIVE_REPORT.json",
+      "bytes": 5928,
+      "sha256": "3bff04e25e929707ebe333bb1e09b423279d164a4276e0436b2b02aacaa322a8"
+    },
+    {
+      "path": "NATIVE_CONTEXT03_EXIT.json",
+      "bytes": 1524,
+      "sha256": "45e6a9f2a5534655800d57ec3da2e4f49e65082f75257cd0b6144bb72d9bec81"
+    },
+    {
+      "path": "NATIVE_CONTEXT03_CONSOLE.log",
+      "bytes": 6247,
+      "sha256": "57bbecdcf557a422f55f996f7cb315e36fdc20998903de6db111899c70d3620b"
+    },
+    {
+      "path": "NATIVE_CONTEXT03/BRIAR_NATIVE_REPORT.json",
+      "bytes": 202951,
+      "sha256": "6722bf0bc0dc769545a9097836ad11f109a999461db5cf9234522fd6b1b85f25"
+    },
+    {
+      "path": "NATIVE_CONTEXT04_EXIT.json",
+      "bytes": 1010,
+      "sha256": "0b85d26b708b2c9daf22d18d0001f88fa72d833d1869e8eba04d6e1c184a5d46"
+    },
+    {
+      "path": "NATIVE_CONTEXT04_CONSOLE.log",
+      "bytes": 17621,
+      "sha256": "67974209735477e822d31feecaf413bec0207442203a5bc731019617634955ff"
+    },
+    {
+      "path": "NATIVE_CONTEXT04/BRIAR_NATIVE_REPORT.json",
+      "bytes": 606928,
+      "sha256": "4deb679c3a8cc59d5870fb3fb812f7b2fca31671d6838b1a6d30a2c7df515c48"
+    },
+    {
+      "path": "RUN_NATIVE_CONTEXT04.ps1",
+      "bytes": 2707,
+      "sha256": "5abe6d07e8b4d91eeace43fb169d8db95c4e489ec029b9092847cefb4320f876"
+    },
+    {
+      "path": "qualify_briar_owned_drivers04.py",
+      "bytes": 4498,
+      "sha256": "7eeae7caff30d46427725b9b73119f4aa50cc672aac4047245b7c20a7ff495b1"
+    },
+    {
+      "path": "capture_briar_normal_ui01.py",
+      "bytes": 11039,
+      "sha256": "fdbe93ac14dd7eedb3a19965dcd04ca293ac8e12f44541743f2c316188f0be6c"
+    },
+    {
+      "path": "capture_briar_normal_ui02.py",
+      "bytes": 11039,
+      "sha256": "4c3aeded0ce99da2063f751e282c6eb1356ede4da22b3e0fcb10b6e659664c25"
+    },
+    {
+      "path": "NORMAL_UI01_CONSOLE.log",
+      "bytes": 725,
+      "sha256": "e3085d9b6512c84c25c64ce0038f5c3e9c174148a5b910102b034530853a592b"
+    },
+    {
+      "path": "NORMAL_UI02/REPORT.json",
+      "bytes": 85318,
+      "sha256": "6e68d47c2c8d1d38fad1c88e1c6f514d58f54ce2cae7388a19ce371e82b48247"
+    },
+    {
+      "path": "NORMAL_UI02_CONSOLE.log",
+      "bytes": 1102,
+      "sha256": "2fff74ab2ce39e65537b90ddb57e0d4dadff970af09ec7da9a736748cd4f7b15"
+    },
+    {
+      "path": "capture_briar_normal_ui03.py",
+      "bytes": 10964,
+      "sha256": "c892993622c130ac859ad20d6ad4c3291fd96a1db5728e54a43d379503474c56"
+    },
+    {
+      "path": "NORMAL_UI03/REPORT.json",
+      "bytes": 34586,
+      "sha256": "7382f299ec6b8f72c0d61d97645ffa5b237be3f06648e89c5307629a9892b5ee"
+    },
+    {
+      "path": "NORMAL_UI03/FINALIZE03.json",
+      "bytes": 907,
+      "sha256": "dde81b3ff3cafda8bc0ab3dc82bdf8b798b36eee22aa20cef1e4b3d06a3f5501"
+    },
+    {
+      "path": "NORMAL_UI03/QUALIFIED_MEDIA.json",
+      "bytes": 1210,
+      "sha256": "cf3cb7ba774898a7ecd0ac0c28be57b8deba048c2f384afd2c6e323d6c51c407"
+    },
+    {
+      "path": "NORMAL_UI03/DECODE.log",
+      "bytes": 244,
+      "sha256": "0d6693c48f360de9935bdcead28e2d3aee1ace982725901d9a8c0b79c2dd4236"
+    },
+    {
+      "path": "NORMAL_UI03/DECODE_EXIT.json",
+      "bytes": 146,
+      "sha256": "1e1e5e81c8eeeb45d7db7af9f1bfd9be05d5ce3f1f756509daa3f8c0cc9bdefd"
+    },
+    {
+      "path": "NORMAL_UI03/DECODE02.log",
+      "bytes": 1438,
+      "sha256": "069aabd0d72deb9e78fa0aa4807db3211ab1459c4fdc41f8f153daae4572422f"
+    },
+    {
+      "path": "NORMAL_UI03/DECODE02_EXIT.json",
+      "bytes": 191,
+      "sha256": "4b97f15e5c0d5c4d958fdfb26b038af2c977178a7f63d6a84c67d3bdb7c0d5ab"
+    },
+    {
+      "path": "NORMAL_UI03_CONSOLE.log",
+      "bytes": 1234,
+      "sha256": "afc77a02eef0a960e8bd7332cb7a5bbf2a1bc7bdfee1d46b18aaaf985f1ea2fc"
+    },
+    {
+      "path": "NORMAL_UI03/BRIAR_NORMAL_UI.webm",
+      "bytes": 5458501,
+      "sha256": "a64fcd0af3e1799963c366ed80e3e9c5364752e3d9f56db9c39e894951b2b740"
+    },
+    {
+      "path": "NORMAL_UI02/02_CARRY_THIRD_PERSON.png",
+      "bytes": 548448,
+      "sha256": "6f035504256c09a1d3c3c8b50cc3c21f6bb35cd4a5d625ff643c19967097a444"
+    },
+    {
+      "path": "NORMAL_UI03/04_REST_DIORAMA.png",
+      "bytes": 924638,
+      "sha256": "b27f361374350c071aee15742d3ca13c7189f7e030133eb25e63fad7a064b8d6"
+    },
+    {
+      "path": "NORMAL_UI03/03_REST_THIRD_PERSON.png",
+      "bytes": 697473,
+      "sha256": "b82918f0df7e4fd36c5ba3c9126f326c6e4b6bd007542a57135313f53b5eb140"
+    }
+  ]
+}

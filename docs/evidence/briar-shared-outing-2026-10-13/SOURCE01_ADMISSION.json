@@ -1,0 +1,19 @@
+{
+  "atUtc": "2026-10-13T07:10:20.9510407Z",
+  "root": "D:/07-GAMES/Firstlight/authoring/atlantis-harbour-campaign-20261004",
+  "freeKiB": 6378972,
+  "requiredKiB": 6291456,
+  "browserInvoked": false,
+  "vmActions": false,
+  "command": [
+    "python",
+    "tools/verify.py",
+    "--output",
+    "D:/07-GAMES/Firstlight/artifacts/briar-shared-outing-20261013/SOURCE01",
+    "--cpu-temp",
+    "C:/Users/Dom/AppData/Local/Temp",
+    "--rule-workers",
+    "4"
+  ],
+  "launched": true
+}
