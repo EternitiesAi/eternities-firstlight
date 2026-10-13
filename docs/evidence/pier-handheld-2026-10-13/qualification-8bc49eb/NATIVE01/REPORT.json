@@ -1,0 +1,481 @@
+{
+  "status": "passed",
+  "head": "289043429e2925e9ded26b3fd609ccaa909ba11d",
+  "htmlSha256": "9138329a893e3ce3f1bddc479bb65c1e8149ecb9b8998bbdc2db10c8d2998557",
+  "nativeModulePins": {
+    "D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game\\tools\\briar_outing_browser.py": "b50581f2e6f83361296927a180fd892ecd1225559831a3c2cca1cabf5601f1a2",
+    "D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game\\tools\\browser_support.py": "cb5b8227f4c5e99e89b5ec40a75a3cacc471bd60c287316501c4b2de6cfecaa5"
+  },
+  "callerSha256": "7d57e6c4293c706879565b77ce078d9893fc24aebd43c1b7b22c6c87eaa3b296",
+  "checks": [
+    {
+      "name": "served exact current HTML",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual software WebGL2",
+      "passed": true,
+      "detail": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    {
+      "name": "accepted supported walk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "fresh fishing requires no expedition or campaign",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Explore shore action opens explicit choices",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "explicit original water rest still records once",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "cast preserves physical facing and saved camera",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fresh cast actual held frame",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fresh cast grip follows resolved right hand",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fresh cast crank follows resolved left hand",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fresh cast no old rod holder",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "cast closes choices and opens live HUD",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "old conflicting E context hidden",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "sustained bite available",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Space hooks native button without dodge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "keyboard hold reels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "keyboard release eases",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "pointer hold reels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "pointer release eases",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "non-pausing settings cannot progress fish",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "photo mode suspends the hidden fishing controls",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "global E cannot change a hidden fishing line",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Escape returns from photo without cancelling fish",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fresh hooked actual held frame",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fresh hooked grip follows resolved right hand",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fresh hooked crank follows resolved left hand",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fresh hooked no old rod holder",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "catch required multiple tension decisions",
+      "passed": true,
+      "detail": 7
+    },
+    {
+      "name": "economic story and creative owners unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "shared moments unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no fishing journal reward",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "explicit release ends activity and restores context",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "blade input preserves earned owners",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "accepted supported walk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "cast preserves physical facing and saved camera",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Earned blade hooked actual held frame",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Earned blade hooked grip follows resolved right hand",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Earned blade hooked crank follows resolved left hand",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Earned blade hooked no old rod holder",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "catch required multiple tension decisions",
+      "passed": true,
+      "detail": 7
+    },
+    {
+      "name": "economic story and creative owners unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "shared moments unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no fishing journal reward",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "returning input preserves earned owners",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "accepted supported walk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual peaceful companion remains outside player",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "cast preserves physical facing and saved camera",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Earned bow hooked actual held frame",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Earned bow hooked grip follows resolved right hand",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Earned bow hooked crank follows resolved left hand",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Earned bow hooked no old rod holder",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "catch required multiple tension decisions",
+      "passed": true,
+      "detail": 7
+    },
+    {
+      "name": "economic story and creative owners unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "shared moments unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no fishing journal reward",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "accepted supported walk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "cast preserves physical facing and saved camera",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "partial before cold restart",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "production save accepted",
+      "passed": true,
+      "detail": {
+        "ok": true
+      }
+    },
+    {
+      "name": "exact active world stored before close",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "served exact current HTML",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual software WebGL2",
+      "passed": true,
+      "detail": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    {
+      "name": "cold startup contains exact saved world",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "cold startup preserves active identity and inactive slots",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "cold launch has no invented partial fish",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "earned story survives native restart",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "cast preserves physical facing and saved camera",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ordinary cast reaches actual bite",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "native P pauses ordinary fishing frames",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary hooked actual held frame",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary hooked grip follows resolved right hand",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary hooked crank follows resolved left hand",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Ordinary hooked no old rod holder",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "catch required multiple tension decisions",
+      "passed": true,
+      "detail": 5
+    },
+    {
+      "name": "ordinary RAF explicit release",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no page errors or external requests",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "source stayed exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "sampled render hand connections continuous",
+      "passed": true,
+      "detail": 3.553147333202946e-15
+    },
+    {
+      "name": "sampled rod clears conservative head sphere",
+      "passed": true,
+      "detail": 0.4342549701434636
+    },
+    {
+      "name": "ordinary samples include visible crank travel",
+      "passed": true,
+      "detail": 37
+    },
+    {
+      "name": "ordinary reeling observed in both camera modes",
+      "passed": true,
+      "detail": [
+        "adventure",
+        "follow"
+      ]
+    },
+    {
+      "name": "ordinary submitted crank geometry actually travels",
+      "passed": true,
+      "detail": 0.09541544539441116
+    },
+    {
+      "name": "native module pins stayed exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "native controller stayed exact",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "errors": [],
+  "browserErrors": [],
+  "externalRequests": [],
+  "admissions": [
+    {
+      "freeHostKiB": 10202228,
+      "minimumFreeKiB": 6291456
+    },
+    {
+      "freeHostKiB": 10701728,
+      "minimumFreeKiB": 6291456
+    }
+  ],
+  "sourceGate": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE02_EXIT.json",
+    "sha256": "e8163d19a71dabf610b954a9e199de4ba4c2bd290fd9576caeeb1eebf6f2e73e",
+    "commandsPassed": 223,
+    "ruleFiles": 159,
+    "head": "289043429e2925e9ded26b3fd609ccaa909ba11d",
+    "output": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE02"
+  },
+  "cohortSha256": "b678e534f5c172c33d029da644ec039852533c649b45283363fb023e49bc0b9f",
+  "method": "Actual native controls, current earned import and one short ordinary-RAF clip.\nAccelerated setup/first two cases are labelled. No direct state/pose/reward edits.\nOnly task-owned loopback server, D profile and browser/driver are created/closed.\n",
+  "performanceCertified": false,
+  "humanAcceptance": false,
+  "positionEdits": 0,
+  "actorPositionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedQuestFacts": 0,
+  "ordinaryRecording": {
+    "secondsAfterReady": 25.313235099999474,
+    "normalRAF": true,
+    "setup": "current earned Chapter IV bow saved at pier; no accelerated ticks after cold launch",
+    "humanPlay": false,
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\NATIVE01\\video\\b6b3dbea982d2c5ac7c39fe73b5c8d45.webm",
+    "bytes": 3002576
+  },
+  "motion": {
+    "samples": 85,
+    "maximumHandErrorMetres": 3.553147333202946e-15,
+    "minimumRodHeadClearanceMetres": 0.4342549701434636
+  },
+  "ownedBrowserDriverClosed": true,
+  "ownedServerClosed": true
+}

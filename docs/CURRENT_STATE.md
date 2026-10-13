@@ -1,3 +1,25 @@
+# A rod held by the traveler, 2026-10-13
+
+The lantern-pier activity now uses the traveler's articulated arms: a short cast,
+a held rod and a reeling hand. Displayed facing eases toward the line; physical
+facing, camera preference and equipment remain. Reduced motion retains a stable
+held stance and every control. The existing catch-and-release rules stay in charge.
+
+Draft PR75, gameplay/pier-handheld-animation-20261013, is stacked on PR74.
+Qualified source: 8bc49eb4ab66071213f7e6242abea9bc2894447d. Complete source passed
+223 commands; Node 2,246 passed, 0 failed, 2 skipped; Python 490 tests run, 8 skipped, no failures. Both continuous ten-chapter draft variants
+and all five earned Briar cases passed. Native02: 87 native checks passed, including
+fresh/blade/bow, both views and exact cold save ownership. Final clip: 48.80s / 3,665,860 bytes / 1220 decoded frames.
+
+World9/Adventure12: no migration, new persistent owner, XP, inventory or reward.
+An earlier low cast sweep near Briar was found visually despite green checks,
+then repaired and recaptured. [Evidence, failures and limits](development/PIER_HANDHELD_QUALIFICATION_2026-10-13.md).
+Hosted checks did not start because of GitHub's billing lock. Current full
+--browser, human enjoyment and real GPU qualification remain open. No complete
+game or AAA claim follows. Integrated/qualification checkouts were reused on D.
+
+---
+
 # A readable return home, 2026-10-13
 
 The third-person camera now moves to a clear side when a wall would push it into

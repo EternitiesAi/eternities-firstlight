@@ -1,0 +1,428 @@
+{
+  "qualifiedHead": "8bc49eb4ab66071213f7e6242abea9bc2894447d",
+  "scope": "Selected exact source/native/media evidence. First two source epochs and Native01 are historical; Native02 and Source03 qualify final source. No browser profiles or complete game copies. One final short movie; earlier low-sweep movie remains local diagnostic evidence.",
+  "fileCount": 84,
+  "totalBytes": 17105279,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 81,
+      "sha256": "eac6a49b1af69f25c5cbb441254739c93aae37edd285997eea6770a395d665c7"
+    },
+    {
+      "path": "decode_video01.py",
+      "bytes": 1652,
+      "sha256": "61bf55b23b14650bed0b92bc6eb0c5821764b1d07dac9859ef4e176e225dbcd2"
+    },
+    {
+      "path": "decode_video02.py",
+      "bytes": 1652,
+      "sha256": "5e8885da30edf022ccdaa5ba2151ca79b84a670ff08788fdfa9ea48eb7251c85"
+    },
+    {
+      "path": "extract_frames02.py",
+      "bytes": 1790,
+      "sha256": "bdbf92879b062782e853208d09096ea529ff7f2506c989ab1ee7e0d57d6adcb4"
+    },
+    {
+      "path": "FOCUSED01.log",
+      "bytes": 7459,
+      "sha256": "0ed784ae7b9607063c798d5cd512511089a7d7bfdf56671a76d12827a0a32dbe"
+    },
+    {
+      "path": "FOCUSED02.log",
+      "bytes": 8757,
+      "sha256": "985608b97ef5ca4f9bc86e6ca2eb257faa9b42054b1485748c9e2794cc8dcaa3"
+    },
+    {
+      "path": "FOCUSED03.log",
+      "bytes": 7676,
+      "sha256": "fa6ab34546594863bc26d509ee28c69f783f7a954252cd11b7493635c31e8398"
+    },
+    {
+      "path": "GREEN01.log",
+      "bytes": 643,
+      "sha256": "7eb79e71aa1022189af53f3b35e36c21c9c1f2dd6193c44e8f102f85981208e7"
+    },
+    {
+      "path": "HANDHELD_FINAL01.log",
+      "bytes": 1064,
+      "sha256": "a6e8b666fd70bde8e3a28ded5eec2d0fa48f617948038df65ba32f99dd4b708e"
+    },
+    {
+      "path": "HOSTED_RUN01.json",
+      "bytes": 3164,
+      "sha256": "001abf502006c25bf976d1714c52d626f24c3b39bea90a81cc8a49e6bf6970e2"
+    },
+    {
+      "path": "NATIVE01/BEFORE_LOW_SWEEP.png",
+      "bytes": 603482,
+      "sha256": "8f2c4fe9a66dff652f341b5fa5fed98562f43f9a210c976abed78ddc2d38c813"
+    },
+    {
+      "path": "NATIVE01/REPORT.json",
+      "bytes": 11938,
+      "sha256": "baabdd8756376954f63695907027ddf68e0428a61d71e9d14dda2b873f70b3c2"
+    },
+    {
+      "path": "NATIVE01_CONSOLE.log",
+      "bytes": 3662,
+      "sha256": "6cf1572b7cbd00105bedf56faf7bd49f546cb560a57b0d45660085bafff6e92e"
+    },
+    {
+      "path": "NATIVE02/BLADE_CAUGHT_adventure.png",
+      "bytes": 541511,
+      "sha256": "41b499d4028046e5de39cdb808c95cdc13a8fa2e78f4fb38c9ade8675a8bef6d"
+    },
+    {
+      "path": "NATIVE02/BLADE_CAUGHT_follow.png",
+      "bytes": 579065,
+      "sha256": "d45ef664fc325369b34033e56a99d475fb2d08c99b4056bfb85af9a95c1db5ed"
+    },
+    {
+      "path": "NATIVE02/CAST_adventure_0.png",
+      "bytes": 565578,
+      "sha256": "6e0941ada2d9bef68babbd075582a3a597d788e9fd97ffb4941a50882fb91405"
+    },
+    {
+      "path": "NATIVE02/CAST_adventure_1.png",
+      "bytes": 569792,
+      "sha256": "48c631051096ffac038cff18fc27517252d718197b51adb7b32905f886ffbde8"
+    },
+    {
+      "path": "NATIVE02/CAST_adventure_2.png",
+      "bytes": 574288,
+      "sha256": "c958ec782749f20f4110c530900009549bab047a6008d2e58f256b8200e2f42e"
+    },
+    {
+      "path": "NATIVE02/CAST_adventure_3.png",
+      "bytes": 576959,
+      "sha256": "44156f6039db5375df038be66dd4a1d180502b062c1c9d15c31b44bd745c3684"
+    },
+    {
+      "path": "NATIVE02/CAST_follow_0.png",
+      "bytes": 585106,
+      "sha256": "6960cc39840c5ed737fd4679846b1dc255f025fe8b280891d5c692186507b085"
+    },
+    {
+      "path": "NATIVE02/CAST_follow_1.png",
+      "bytes": 653581,
+      "sha256": "d453448262f857741efc18ba45ebd5c3dae1c5899b7a6981306cde32b7781ecf"
+    },
+    {
+      "path": "NATIVE02/CAST_follow_2.png",
+      "bytes": 662582,
+      "sha256": "634a44153d1a171e51f9e74ac8d2306b8a1da3d42553e8fef277f8560f800b21"
+    },
+    {
+      "path": "NATIVE02/CAST_follow_3.png",
+      "bytes": 670178,
+      "sha256": "c6acb54f98c54b328a39f8a05a45aea15a8a3a981188134e51ee20192a3bb599"
+    },
+    {
+      "path": "NATIVE02/FRESH_CAUGHT_adventure.png",
+      "bytes": 534895,
+      "sha256": "2fe05104446cabff59d492c603b167163c0e18995a6c85c6185eb7112f3b1798"
+    },
+    {
+      "path": "NATIVE02/FRESH_CAUGHT_follow.png",
+      "bytes": 600475,
+      "sha256": "140d4af675e11922f37913b407f68f34c9ef829baa57e3dd15ea440c1fc84d4f"
+    },
+    {
+      "path": "NATIVE02/FRESH_FISHING_adventure.png",
+      "bytes": 531491,
+      "sha256": "f72da76861290165154a4f1f6e71c3bca4461d6b586bede5bccce52cd037a1b6"
+    },
+    {
+      "path": "NATIVE02/FRESH_FISHING_follow.png",
+      "bytes": 596989,
+      "sha256": "e21421358aea2624d3879a34857bafda6650cb4ba02e3a0e94797f28ef578639"
+    },
+    {
+      "path": "NATIVE02/gameplay.webm",
+      "bytes": 3665860,
+      "sha256": "2b1871aaf4ba89eca2f1c6f94c439bd98ed7630b4bd022d583e5031a965ce60b"
+    },
+    {
+      "path": "NATIVE02/MOTION_SAMPLES.json",
+      "bytes": 458621,
+      "sha256": "7cb3ddfc488553c84d5de5ae2208af21b21c85f23b40fa581e859aef10cfcddc"
+    },
+    {
+      "path": "NATIVE02/NORMAL_CAUGHT.png",
+      "bytes": 484871,
+      "sha256": "5d9c3a7fc42246fca5c35af2a120125bd716c162deefbd9f964880df462f2d7c"
+    },
+    {
+      "path": "NATIVE02/REPORT.json",
+      "bytes": 12303,
+      "sha256": "4f63df526034af10d720bc3b92d78e489cfefdc53a61746dc26c7bd9508f9303"
+    },
+    {
+      "path": "NATIVE02/RETURNING_CAUGHT_adventure.png",
+      "bytes": 485592,
+      "sha256": "5248d0533cb9f100bbb3d9db81a5a08f11a107a2f38bd98131401e30e5b62801"
+    },
+    {
+      "path": "NATIVE02/RETURNING_CAUGHT_follow.png",
+      "bytes": 512374,
+      "sha256": "e03d321d519f8f287ce6d2e3a78fc458e38f00bdbd01b5d5ca0e12c3bee3b146"
+    },
+    {
+      "path": "NATIVE02_CONSOLE.log",
+      "bytes": 3818,
+      "sha256": "fd0364987d2d1397eed25eda73368813b7eee4bd2c9abc46fc9c8d6d12e92179"
+    },
+    {
+      "path": "publish_evidence.py",
+      "bytes": 3091,
+      "sha256": "3091bef0fa0ef80ae1b9be8804b81fe57025d1cdb1b3bf0d62f94901c4199796"
+    },
+    {
+      "path": "qualify_handheld01.py",
+      "bytes": 19962,
+      "sha256": "7d57e6c4293c706879565b77ce078d9893fc24aebd43c1b7b22c6c87eaa3b296"
+    },
+    {
+      "path": "qualify_handheld02.py",
+      "bytes": 20661,
+      "sha256": "aa64c0613fb701d2a9e94ce0791ae2f2c2156bd0ada6479257a7ea5184d18f0a"
+    },
+    {
+      "path": "RED01.log",
+      "bytes": 6083,
+      "sha256": "fc77af9abea178f8a0363537a2430b6b33fc24b4af132751b65080737cd75555"
+    },
+    {
+      "path": "remote_readback01.py",
+      "bytes": 3599,
+      "sha256": "55a7187c19bda56c372890ce7c9b932edf2f118c226defd7cf6b345d22412a80"
+    },
+    {
+      "path": "REMOTE_SOURCE01/briar-earned/BRIAR_OUTING_JOURNEY_REPORT.json",
+      "bytes": 49942,
+      "sha256": "d94e1c2150df5ffcce3d2be32f2d4358eda7705ff5ba8bff15bef773c3351364"
+    },
+    {
+      "path": "REMOTE_SOURCE01/briar-outing-earned.log",
+      "bytes": 493,
+      "sha256": "42a72e5e142fb1aec3934aa4859ae529cda95a6a45d953d5d249a62128df8172"
+    },
+    {
+      "path": "REMOTE_SOURCE01/python.log",
+      "bytes": 142988,
+      "sha256": "3e9ccd31947c3d2d606cb1c7750ac47104bd07040c7a4b40ef9805daa9546aed"
+    },
+    {
+      "path": "REMOTE_SOURCE01/rules-command.json",
+      "bytes": 23625,
+      "sha256": "5838a6b44013350996c9e36881a0cddfcdb63d5ee09902f1df01769d5396ad57"
+    },
+    {
+      "path": "REMOTE_SOURCE01/rules.log",
+      "bytes": 544432,
+      "sha256": "b15c3a99b6352d90fca9afe2a9a5b663a90d9e88a29df60495cb9be5770378bb"
+    },
+    {
+      "path": "REMOTE_SOURCE01/whole-draft-earned/WHOLE_DRAFT_JOURNEY_REPORT.json",
+      "bytes": 45205,
+      "sha256": "a99c86b2271382e694a6160f548b2b53b4f2bd7ba6ef353fdb0e9d36db373344"
+    },
+    {
+      "path": "REMOTE_SOURCE01/whole-draft-earned.log",
+      "bytes": 4648,
+      "sha256": "4540ca895e5ac16fc88e0502b317caff62c45a4bdd76f2b0a427cc582b928680"
+    },
+    {
+      "path": "REMOTE_SOURCE01_CONSOLE.log",
+      "bytes": 14744,
+      "sha256": "13585b3b79aa8ba02c0a915887361bd0ee1976ef3a2c00ca159487ecdabd3629"
+    },
+    {
+      "path": "REMOTE_SOURCE01_EXIT.json",
+      "bytes": 1584,
+      "sha256": "e5225350ade76b9d1a3d31d8dc68ae775c3c67a6628be1f33f3a5b9da5516b1b"
+    },
+    {
+      "path": "REMOTE_SOURCE02/briar-earned/BRIAR_OUTING_JOURNEY_REPORT.json",
+      "bytes": 49942,
+      "sha256": "b678e534f5c172c33d029da644ec039852533c649b45283363fb023e49bc0b9f"
+    },
+    {
+      "path": "REMOTE_SOURCE02/briar-outing-earned.log",
+      "bytes": 493,
+      "sha256": "42a72e5e142fb1aec3934aa4859ae529cda95a6a45d953d5d249a62128df8172"
+    },
+    {
+      "path": "REMOTE_SOURCE02/python.log",
+      "bytes": 142988,
+      "sha256": "3d3d64e08a1adf9f95803c75dd0b76e890f10cb6ecc4362ff72030734ea3358c"
+    },
+    {
+      "path": "REMOTE_SOURCE02/rules-command.json",
+      "bytes": 23625,
+      "sha256": "5838a6b44013350996c9e36881a0cddfcdb63d5ee09902f1df01769d5396ad57"
+    },
+    {
+      "path": "REMOTE_SOURCE02/rules.log",
+      "bytes": 544932,
+      "sha256": "ae9fd82201b99dc2d70fd201bd7e107d85f68debd25fd47e6ddf5e057c460a81"
+    },
+    {
+      "path": "REMOTE_SOURCE02/whole-draft-earned/WHOLE_DRAFT_JOURNEY_REPORT.json",
+      "bytes": 45205,
+      "sha256": "32d74ba8233804b5889deb39d05cef3ac983cf603fa380ccc178751d5272b6f1"
+    },
+    {
+      "path": "REMOTE_SOURCE02/whole-draft-earned.log",
+      "bytes": 4648,
+      "sha256": "1ed3e2865b010d0d21bc8af30f5311041a6b4d976cc1da2a16e1cbc8930729f3"
+    },
+    {
+      "path": "REMOTE_SOURCE02_CONSOLE.log",
+      "bytes": 14744,
+      "sha256": "95014a2aa642d9d73d9cb0fb2a981bdf865eb4276c23f749eaf511c1e09b0d7e"
+    },
+    {
+      "path": "REMOTE_SOURCE02_EXIT.json",
+      "bytes": 1584,
+      "sha256": "e8163d19a71dabf610b954a9e199de4ba4c2bd290fd9576caeeb1eebf6f2e73e"
+    },
+    {
+      "path": "REMOTE_SOURCE03/briar-earned/BRIAR_OUTING_JOURNEY_REPORT.json",
+      "bytes": 49942,
+      "sha256": "f7ecb5b1d877b4808070ae27b7b679e1ee6b992dea7429125d664af6655a3700"
+    },
+    {
+      "path": "REMOTE_SOURCE03/briar-outing-earned.log",
+      "bytes": 493,
+      "sha256": "42a72e5e142fb1aec3934aa4859ae529cda95a6a45d953d5d249a62128df8172"
+    },
+    {
+      "path": "REMOTE_SOURCE03/python.log",
+      "bytes": 142988,
+      "sha256": "6a74ade6254b441b1764c8ff4ca07b552e06c8518717cc86c1848fcc4e6ae992"
+    },
+    {
+      "path": "REMOTE_SOURCE03/rules-command.json",
+      "bytes": 23625,
+      "sha256": "5838a6b44013350996c9e36881a0cddfcdb63d5ee09902f1df01769d5396ad57"
+    },
+    {
+      "path": "REMOTE_SOURCE03/rules.log",
+      "bytes": 545163,
+      "sha256": "926140dd130b8674e777db06d7e53f1e6d20db81603ba5100eecc8e8b7e66ea4"
+    },
+    {
+      "path": "REMOTE_SOURCE03/whole-draft-earned/WHOLE_DRAFT_JOURNEY_REPORT.json",
+      "bytes": 45205,
+      "sha256": "38fb6778355b479ed2a5a0257d1de1ff53262ab2bd79e474e613cf19dd2c48c7"
+    },
+    {
+      "path": "REMOTE_SOURCE03/whole-draft-earned.log",
+      "bytes": 4650,
+      "sha256": "427c902ca57cb6fe7f0a9e89c89de635fa405cf3c8d2bf495a87a42c7a47183b"
+    },
+    {
+      "path": "REMOTE_SOURCE03_CONSOLE.log",
+      "bytes": 14744,
+      "sha256": "c281589894ace7bfb4bd3e65329a07b143d21ecf30e832c5005e557c5886f138"
+    },
+    {
+      "path": "REMOTE_SOURCE03_EXIT.json",
+      "bytes": 1582,
+      "sha256": "e61fd984d0d5f4cca1105eba091d084144c9927ad58471efc858bdd3ea1cb0ee"
+    },
+    {
+      "path": "REVIEW_NOTES.md",
+      "bytes": 3038,
+      "sha256": "47d935a405940ea3b24b064061d787fbfed061204b19d1b1b323f73960c075db"
+    },
+    {
+      "path": "RUN_REMOTE_SOURCE01.ps1",
+      "bytes": 3639,
+      "sha256": "627e0fe9248f88ced4fe910ef05b6062563fdfacc516e61e7a6e5c7fdfa38fa7"
+    },
+    {
+      "path": "RUN_REMOTE_SOURCE02.ps1",
+      "bytes": 3639,
+      "sha256": "f943f948a61dc45084c780bf8f5b5c710aad05d93fa98754e1a2eb9215373ba0"
+    },
+    {
+      "path": "RUN_REMOTE_SOURCE03.ps1",
+      "bytes": 3639,
+      "sha256": "79e1ce3d82cca7034b2b7b164736f661cc2514aef3e43937e4c83be2d093584d"
+    },
+    {
+      "path": "SOURCE01_ADMISSION01.json",
+      "bytes": 695,
+      "sha256": "9f565e2a32a603d89b4d178d476b17b14de8fce54a9611d58ac1544cf30e80e6"
+    },
+    {
+      "path": "SOURCE02_ADMISSION01.json",
+      "bytes": 695,
+      "sha256": "d8d0d5df6cc8545bc09d6172398f5fd2d9ca6ca5aca0bd148ac5fc4a1cb216af"
+    },
+    {
+      "path": "SOURCE03_ADMISSION01.json",
+      "bytes": 694,
+      "sha256": "09fa7a045cccb386ecc6e76a23bcf1890be49951e4d8e62099a906632a4e3cde"
+    },
+    {
+      "path": "SOURCE_SUMMARY.json",
+      "bytes": 647,
+      "sha256": "0d8b5575249dba117967499a11d52ba895e9ab1b1b77bc7890d0620704b4f09d"
+    },
+    {
+      "path": "SOURCE_SUMMARY_FINAL.json",
+      "bytes": 647,
+      "sha256": "f303d39d4a4997f21548b8bbd37f5cb0537ce78cb105351ffcd6f3e7d7a534e4"
+    },
+    {
+      "path": "UPRIGHT01.log",
+      "bytes": 1180,
+      "sha256": "fc53bd00dcb0783abb41d8903c90537969d14859aaa9dae46a44cc5b2dac7dcf"
+    },
+    {
+      "path": "VIDEO_DECODE01.json",
+      "bytes": 1075,
+      "sha256": "71f8bd8af1aa31a6194e1683c2c35f6896b31fef10dc23f51b526fe2085f0573"
+    },
+    {
+      "path": "VIDEO_DECODE01.log",
+      "bytes": 3252,
+      "sha256": "7c56a9ff784e2e7b210afbb3b1a5b14b8f6ce3316196062fccfe566387c92e04"
+    },
+    {
+      "path": "VIDEO_DECODE02.json",
+      "bytes": 1075,
+      "sha256": "abc83338f96fe4cc9f9090e855e3e17119f5db2ff12cf68abfdf2b7cdb31d750"
+    },
+    {
+      "path": "VIDEO_DECODE02.log",
+      "bytes": 3550,
+      "sha256": "d366e07fe3ef7896042595571f3d305ef26bbefdd06d949faf06c8194d3803dd"
+    },
+    {
+      "path": "VIDEO_FRAMES01.json",
+      "bytes": 1591,
+      "sha256": "2f3570079969e235c714e7da282f3f4fc9bf26bc607e9fbdf1b2210c660fa7f6"
+    },
+    {
+      "path": "VIDEO_FRAMES02.json",
+      "bytes": 2361,
+      "sha256": "cb5dd54e55366c180f2602b8645463bb53764d93c9f55ed5aa33c45945da8a17"
+    },
+    {
+      "path": "VIDEO_OBSERVATION_FINAL.json",
+      "bytes": 1669,
+      "sha256": "e5f4a48d30bda27e804e474bf3b7229a6d3937134d6c91562d4f374ab70541e1"
+    },
+    {
+      "path": "write_delivery_docs.py",
+      "bytes": 15634,
+      "sha256": "5e658cb59e1824218fac25d826ebe383c43499f6c0d44b8c7258b6d60b64bb76"
+    }
+  ]
+}

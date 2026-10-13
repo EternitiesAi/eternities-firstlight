@@ -1,0 +1,80 @@
+{
+  "observedUtc": "2026-10-13T20:03:26.169371+00:00",
+  "run": {
+    "conclusion": "failure",
+    "createdAt": "2026-10-13T20:01:19Z",
+    "headSha": "8bc49eb4ab66071213f7e6242abea9bc2894447d",
+    "status": "completed",
+    "updatedAt": "2026-10-13T20:01:37Z",
+    "url": "https://github.com/EternitiesAi/eternities-firstlight/actions/runs/38459480155"
+  },
+  "representativeJobs": [
+    {
+      "id": "115510602072",
+      "name": "source (ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "failure",
+      "steps": [],
+      "annotations": [
+        {
+          "path": ".github",
+          "blob_href": "https://github.com/EternitiesAi/eternities-firstlight/blob/8bc49eb4ab66071213f7e6242abea9bc2894447d/.github",
+          "start_line": 1,
+          "start_column": null,
+          "end_line": 1,
+          "end_column": null,
+          "annotation_level": "failure",
+          "title": "",
+          "message": "The job was not started because your account is locked due to a billing issue.",
+          "raw_details": ""
+        },
+        {
+          "path": ".github",
+          "blob_href": "https://github.com/EternitiesAi/eternities-firstlight/blob/8bc49eb4ab66071213f7e6242abea9bc2894447d/.github",
+          "start_line": 1,
+          "start_column": null,
+          "end_line": 1,
+          "end_column": null,
+          "annotation_level": "notice",
+          "title": "",
+          "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+          "raw_details": ""
+        }
+      ]
+    },
+    {
+      "id": "115510602028",
+      "name": "browser (bridge_community_browser)",
+      "status": "completed",
+      "conclusion": "failure",
+      "steps": [],
+      "annotations": [
+        {
+          "path": ".github",
+          "blob_href": "https://github.com/EternitiesAi/eternities-firstlight/blob/8bc49eb4ab66071213f7e6242abea9bc2894447d/.github",
+          "start_line": 1,
+          "start_column": null,
+          "end_line": 1,
+          "end_column": null,
+          "annotation_level": "failure",
+          "title": "",
+          "message": "The job was not started because your account is locked due to a billing issue.",
+          "raw_details": ""
+        },
+        {
+          "path": ".github",
+          "blob_href": "https://github.com/EternitiesAi/eternities-firstlight/blob/8bc49eb4ab66071213f7e6242abea9bc2894447d/.github",
+          "start_line": 1,
+          "start_column": null,
+          "end_line": 1,
+          "end_column": null,
+          "annotation_level": "notice",
+          "title": "",
+          "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+          "raw_details": ""
+        }
+      ]
+    }
+  ],
+  "scope": "Read-only API evidence. Representative source and browser jobs were not started due to account billing lock; no hosted test result. Billing untouched."
+}

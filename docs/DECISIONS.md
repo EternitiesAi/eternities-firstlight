@@ -1,3 +1,28 @@
+# Fishing presentation follows accepted rules and solved hands, 2026-10-13
+
+Keep the existing transient fishing session as sole owner of timing, tension,
+catch and release. Its accepted fight/reel clocks drive presentation. The cast
+uses0.85s within the existing3.5s bite wait. The actual articulated rig solves
+both arms, and rod grip/reel handle attach to its resulting hands. No new timer,
+callback, reward or persistent state; World9/Adventure12 stay unchanged.
+
+Displayed orientation eases independently of physical player yaw and saved camera
+preferences. Identity/scene changes invalidate the cache; WorldArt.begin clears
+it even for a same-room rebuild. Reduced motion uses a stable held pose. Combat
+and swimming retain their existing articulation and equipment.
+
+The original cloth source fixture is now an immutable copy of the exact PR74
+traveler source; its old reconstructed-source hash remains enforced. Later rig
+development cannot silently rewrite the historical comparison.
+
+Treat visual review as evidence with its own failures. Native01's automated pass
+did not excuse the low rod sweep across Briar; upright acquisition, regression
+coverage and final recapture address it. Geometry is not human animation approval.
+Keep the old failure and one final short published clip. [Qualification](development/PIER_HANDHELD_QUALIFICATION_2026-10-13.md).
+No paid service, billing change, cleanup, VM/Claude action, main merge or deploy.
+
+---
+
 # Keep displayed orientation separate from saved preference, 2026-10-13
 
 A wall correction owns transient camera.actualYaw. Perspective movement and

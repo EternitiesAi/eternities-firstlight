@@ -1,0 +1,21 @@
+{
+  "head": "1f1af16acb488ca14a0f56484a76e5c369f64fae",
+  "observedUtc": "2026-10-13T19:40:42.9566706Z",
+  "freeHostKiB": 10691272,
+  "minimumFreeKiB": 6291456,
+  "requestedRuleWorkers": 4,
+  "admitted": true,
+  "controllerSha256": "627e0fe9248f88ced4fe910ef05b6062563fdfacc516e61e7a6e5c7fdfa38fa7",
+  "scope": "Read host free memory only; no VM/Claude interaction",
+  "command": [
+    "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+    "-B",
+    "tools/verify.py",
+    "--rule-workers",
+    "4",
+    "--output",
+    "D:/07-GAMES/Firstlight/artifacts/pier-handheld-20261013/REMOTE_SOURCE01",
+    "--cpu-temp",
+    "C:/Users/Dom/AppData/Local/Temp"
+  ]
+}
