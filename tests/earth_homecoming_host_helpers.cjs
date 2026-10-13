@@ -5,7 +5,7 @@
 const vm=require('node:vm'),fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const overlay=require('./earth_homecoming_actual_owners.cjs'),{C,ROOT,load}=overlay;
 const A=load('adventure.js'),H=load('earth-homecoming.js'),DATA=load('earth-homecoming-data.js'),W=load('world-foundations.js'),CS=load('characters.js'),E=load('engine.js'),T=load('combat.js');
-for(const n of ['road.js','starter.js','classes.js','earth-story.js','earth-expedition.js','hell-campaign.js','heaven-campaign.js','atlantis-campaign.js','cosmos-campaign.js','realm-trails.js','traveler-art.js','traveler-equipment-art.js','companion-art.js','skitter-art.js','earth-expedition-beast-art.js'])load(n);
+for(const n of ['road.js','starter.js','classes.js','earth-story.js','earth-expedition.js','hell-campaign.js','heaven-campaign.js','atlantis-campaign.js','cosmos-campaign.js','realm-trails.js','traveler-art.js','resident-art.js','traveler-equipment-art.js','companion-art.js','skitter-art.js','earth-expedition-beast-art.js'])load(n);
 const D=H.definition,copy=structuredClone,step=id=>D.steps.find(s=>s.id===id);
 class Node{
  constructor(tag='div'){this.tagName=tag;this.children=[];this.dataset={};this.style={setProperty(){}};this.listeners={};this.open=false;this.hidden=false;this.textContent='';this.innerHTML='';this.scrollLeft=0;this.classList={add(){},toggle(){},remove(){}};}
