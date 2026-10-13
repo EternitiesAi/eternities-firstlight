@@ -90,12 +90,14 @@ def main():
     args=parser.parse_args(); source=args.source.resolve(); out=args.output.resolve()
     if not args.output.is_absolute() or os.name=='nt' and out.drive.lower()!='d:':parser.error('Fresh absolute D-drive output required')
     if out.exists() or not source.is_file():parser.error('Output must be new and source must exist')
-    initial=json.loads(source.read_text(encoding='utf-8-sig')); validate_source(initial,args.work)
+    source_bytes=source.read_bytes();source_sha256=hashlib.sha256(source_bytes).hexdigest()
+    initial=json.loads(source_bytes.decode('utf-8-sig')); validate_source(initial,args.work)
     producer=validate_checkpoint(source,args.journey_report.resolve())
+    if producer['checkpoint_sha256']!=source_sha256:raise ValueError('Source changed during checkpoint preflight')
     embedded=validate_build()
     from playwright.sync_api import sync_playwright
-    out.mkdir(parents=True); (out/'SOURCE_WORLD.json').write_bytes(source.read_bytes())
-    report={'status':'running','method':__doc__,'source':{'path':str(source),'sha256':sha(source)},
+    out.mkdir(parents=True); retained_source=out/'SOURCE_WORLD.json';retained_source.write_bytes(source_bytes)
+    report={'status':'running','method':__doc__,'source':{'path':str(source),'sha256':source_sha256,'imported_retained_copy':str(retained_source)},
             'producer':producer,'head':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
             'html_sha256':sha(ROOT/'index.html'),'embedded_sources':embedded,'viewport':VIEWPORT,'renderer_requested':args.renderer,'work':args.work,
             'checks':[],'events':[],'browser_errors':[],'external_requests':[],
@@ -148,7 +150,7 @@ def main():
                     return w
                 workspace('characters');legacy=page.evaluate('()=>localStorage.getItem(RealmCore.KEY)')
                 with page.expect_file_chooser() as chooser:click('#rpg-content [data-rpg="chars-import"]')
-                chooser.value.set_files(str(source));page.wait_for_selector('[data-rpg="chars-confirm-import"]');click('[data-rpg="chars-confirm-import"]')
+                chooser.value.set_files(str(retained_source));page.wait_for_selector('[data-rpg="chars-confirm-import"]');click('[data-rpg="chars-confirm-import"]')
                 page.wait_for_function('()=>Realm.diagnostics.characters.active==="character-2"&&Realm.diagnostics.characters.writer===true')
                 base=state();check('Native import preserves exact earned prefix',base['earthExpedition']==initial['earthExpedition'])
                 check('Legacy storage untouched',page.evaluate('()=>localStorage.getItem(RealmCore.KEY)')==legacy)
@@ -231,6 +233,7 @@ def main():
                 check('No runtime errors',not report['browser_errors'] and not page.evaluate('()=>Realm.diagnostics.errors'))
                 check('Runtime sources unchanged',all(sha(ROOT/p)==h for p,h in sources.items()))
                 check('HTML unchanged',sha(ROOT/'index.html')==report['html_sha256'])
+                check('Selected source and producer unchanged',sha(source)==source_sha256 and sha(args.journey_report.resolve())==producer['sha256'] and sha(retained_source)==source_sha256)
                 (out/'FINAL_WORLD.json').write_text(json.dumps(state(),indent=2)+'\n',encoding='utf-8')
                 report['status']='passed'
             finally:
@@ -242,7 +245,7 @@ def main():
                             page.wait_for_function('()=>__fieldcraftMovie.done',timeout=15000);wait_retained()
                         if video.exists():
                             report['video']={**report.get('video',{}),'path':video.name,'bytes':video.stat().st_size,'sha256':sha(video),'partial':report['status']!='passed','audio':False,'surface':'Actual WebGL canvas only; DOM HUD and controls excluded'}
-                    except Exception:report['recording_cleanup_error']=traceback.format_exc()
+                    except Exception:report['recording_cleanup_error']=traceback.format_exc();report['status']='failed'
                 if context:context.close();report['context_closed']=True
     except Exception:report['status']='failed';report['error']=traceback.format_exc();print(report['error'])
     finally:

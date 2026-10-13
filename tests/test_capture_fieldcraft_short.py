@@ -116,8 +116,10 @@ class ShortCapturePreflight(unittest.TestCase):
     def test_cli_refuses_existing_evidence_before_importing_playwright_or_mutating_it(self):
         with tempfile.TemporaryDirectory(prefix='fieldcraft-preflight-') as d:
             p=Path(d);sentinel=p/'KEEP.txt';sentinel.write_text('preserve failed evidence',encoding='utf-8')
-            result=subprocess.run([sys.executable,'-B',str(ROOT/'tools/capture_earth_fieldcraft.py'),'--source',str(p/'absent.json'),'--output',str(p),'--renderer','hardware'],capture_output=True,text=True,cwd=ROOT)
+            result=subprocess.run([sys.executable,'-B',str(ROOT/'tools/capture_earth_fieldcraft.py'),'--source',str(p/'absent.json'),'--journey-report',str(p/'absent-journey.json'),'--output',str(p),'--renderer','hardware'],capture_output=True,text=True,cwd=ROOT)
             self.assertEqual(result.returncode,2);self.assertEqual(sentinel.read_text(encoding='utf-8'),'preserve failed evidence')
+            expected='Fresh absolute D-drive output required' if sys.platform=='win32' and p.drive.lower()!='d:' else 'Output must be new and source must exist'
+            self.assertIn(expected,result.stderr);self.assertNotIn('the following arguments are required',result.stderr)
             self.assertEqual(sorted(q.name for q in p.iterdir()),['KEEP.txt'])
 
 if __name__=='__main__':unittest.main()
