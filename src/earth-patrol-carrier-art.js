@@ -18,8 +18,12 @@ function parts(ledger,view){
  }
  if(!paid&&view.status!=='checked')for(const r of view.receivers){
   if(view.pieces.find(p=>p.id===r.pieceId)?.seated)continue;
-  const c=r.pieceId===view.activePiece?0xe5cd85:0xa9b9b1,cos=Math.cos(r.yaw),sin=Math.sin(r.yaw);
-  const put=(x,z,w,d,role)=>add('box',[r.position[0]+cos*x+sin*z,2.095,r.position[2]-sin*x+cos*z],[w,.010,d],c,role,[0,r.yaw,0]);
+  const c=r.pieceId===view.activePiece?0xffe49a:0xc3eed7,cos=Math.cos(r.yaw),sin=Math.sin(r.yaw);
+  const put=(x,z,w,d,role)=>{
+   const p=[r.position[0]+cos*x+sin*z,2.095,r.position[2]-sin*x+cos*z];
+   add('box',[p[0],2.094,p[2]],[w+.014,.014,d+.014],0x18382e,'carrier-receiver-underlay',[0,r.yaw,0]);
+   add('box',[p[0],2.106,p[2]],[w,.014,d],c,role,[0,r.yaw,0]);
+  };
   for(const x of[-r.width/2,r.width/2])put(x,0,.012,r.depth,'carrier-receiver-edge');
   // Corner brackets leave the existing central inspection tab visible.
   for(const z of[-r.depth/2,r.depth/2])for(const sign of[-1,1])put(sign*(r.width/2-.03),z,.06,.012,'carrier-receiver-edge');

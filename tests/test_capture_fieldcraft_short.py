@@ -19,6 +19,24 @@ def synthetic():
             'earthExpedition':{'version':1,'story':{'accepted':True,'claimed':False,'steps':ids,'branch':'managed-coppice'},'patrol':{'lastClaim':0,'active':None}}}
 
 class ShortCapturePreflight(unittest.TestCase):
+    def test_checkpoint_producer_binding_refuses_changed_bytes_missing_map_or_unsuccessful_journey(self):
+        with tempfile.TemporaryDirectory(prefix='synthetic-checkpoint-binding-') as d:
+            root=Path(d);source=root/'PATROL_1_GLADE_OPEN.json';journey=root/'JOURNEY.json'
+            source.write_text('{"synthetic":true}\n',encoding='utf-8')
+            accepted={'status':'passed','sourceDrift':False,'harnessSha256':'labelled-synthetic-harness','checkpoints':{source.name:{'sha256':tool.sha(source)}}}
+            journey.write_text(json.dumps(accepted),encoding='utf-8');before=source.read_bytes()
+            bound=tool.validate_checkpoint(source,journey);self.assertEqual(bound['checkpoint_sha256'],tool.sha(source));self.assertEqual(source.read_bytes(),before)
+            cases=[]
+            for field,value in [('status','failed'),('sourceDrift',True),('checkpoints',{})]:
+                rejected=copy.deepcopy(accepted);rejected[field]=value;cases.append(rejected)
+            rejected=copy.deepcopy(accepted);rejected['checkpoints'][source.name]['sha256']='0'*64;cases.append(rejected)
+            for rejected in cases:
+                journey.write_text(json.dumps(rejected),encoding='utf-8')
+                with self.assertRaisesRegex(ValueError,'checkpoint digest'):tool.validate_checkpoint(source,journey)
+                self.assertEqual(source.read_bytes(),before)
+            journey.write_text(json.dumps(accepted),encoding='utf-8');source.write_bytes(before+b'changed')
+            with self.assertRaisesRegex(ValueError,'checkpoint digest'):tool.validate_checkpoint(source,journey)
+
     def carrier(self):
         world=synthetic();world['earthExpedition']['story']['claimed']=True
         world['earthExpedition']['story']['steps']+=['brace-root-channel','deliver-allocation']
@@ -50,7 +68,7 @@ class ShortCapturePreflight(unittest.TestCase):
     def test_current_capture_sources_are_embedded_and_new_cli_mode_is_inert(self):
         html=(ROOT/'index.html').read_bytes().replace(b'\r\n',b'\n')
         for filename in ['earth-patrol-carrier.js','earth-patrol-carrier-ui.js','earth-patrol-carrier-art.js']:
-            self.assertIn((ROOT/'src'/filename).read_bytes().replace(b'\r\n',b'\n'),html)
+            self.assertTrue((ROOT/'src'/filename).read_bytes().replace(b'\r\n',b'\n') in html, filename+' is not embedded in the checked-in build')
         result=subprocess.run([sys.executable,'-B',str(ROOT/'tools/capture_earth_fieldcraft.py'),'--help'],capture_output=True,text=True,cwd=ROOT)
         self.assertEqual(result.returncode,0);self.assertIn('--work {support,carrier}',result.stdout)
         embedded=tool.validate_build(ROOT);self.assertIn('src/earth-patrol-carrier.js',embedded);self.assertIn('src/app.js',embedded)

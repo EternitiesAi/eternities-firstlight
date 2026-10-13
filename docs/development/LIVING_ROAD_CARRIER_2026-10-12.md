@@ -153,3 +153,29 @@ VM/Claude remain excluded. Preserve old failures, deadlines, save/system
 contracts, both cameras and bounded D evidence. Goal ACTIVE unfinished.
 
 ---
+
+
+# Living Road source/native pass; tracked-E refinement pending, 2026-10-12
+
+At d40921881ec4155ee1503a9d413a6f4d3520cc3f, Source04 closed0 with all217
+commands,145syntax/145rules,Node2135pass/0fail/2skip and Python476 OK/skipped10.
+Native01 closed0 with1324pass/0fail across blade/bow/veteran and22 whole-browser
+restarts. This is complete source plus targeted accelerated software browser,
+not full-browser/ordinary/hardware/controller/human or production completion.
+
+CLIP01 failed before recording at the glade: actual E opened the overlapping
+unaccepted consignment invitation. It retained no movie; context/server closed.
+The real RPG/WorldUI now prioritize only the tracked expedition's nearby action
+and hint, preserving the original order for other tracking. Actual-method UI
+RED02 reproduced the wrong hint; GREEN01 passes24/24. Guide outlines gained a
+dark backing. Software short capture selects declared Low quality and requires
+the successful current producer's explicit checkpoint hash.9 CPU preflights
+pass;43 related rule/camera cases pass. New HTML3349854B/SHA256
+401bb15382e0bb54fe639a3f3e81db0cde0518ccd073f9766c6bc6fe523df08b.
+These refinements need fresh Source05/Native02/Clip02 before delivery.
+
+World9/Adventure12/Expedition1/WildSigns1, keys/XP/payments/owners/both cameras
+remain unchanged. VM/Claude Code and personal saves excluded. Heavy work D;
+reuse ROOT/STATION, retain failures, no additional full copy/main merge/deploy.
+See docs/development/LIVING_ROAD_CARRIER_RESULTS_2026-10-12.md for exact prior
+receipts and honest visual limits. Production goal ACTIVE and unfinished.

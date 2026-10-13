@@ -72,9 +72,18 @@ def percentile(values, fraction):
     if not values:return None
     return sorted(values)[min(len(values)-1, int((len(values)-1)*fraction))]
 
+def validate_checkpoint(source, journey):
+    """Bind selected bytes to the successful producer's emitted checkpoint map."""
+    report=json.loads(journey.read_text(encoding='utf-8-sig'))
+    checkpoint=report.get('checkpoints',{}).get(source.name)
+    if report.get('status')!='passed' or report.get('sourceDrift') is not False or not isinstance(checkpoint,dict) or checkpoint.get('sha256')!=sha(source):
+        raise ValueError('Successful current journey checkpoint digest required')
+    return {'path':str(journey),'sha256':sha(journey),'checkpoint':source.name,'checkpoint_sha256':checkpoint['sha256'],'harness_sha256':report.get('harnessSha256')}
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source',type=Path,required=True)
+    parser.add_argument('--journey-report',type=Path,required=True)
     parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--renderer',choices=['hardware','software'],required=True)
     parser.add_argument('--work',choices=['support','carrier'],default='support')
@@ -82,11 +91,12 @@ def main():
     if not args.output.is_absolute() or os.name=='nt' and out.drive.lower()!='d:':parser.error('Fresh absolute D-drive output required')
     if out.exists() or not source.is_file():parser.error('Output must be new and source must exist')
     initial=json.loads(source.read_text(encoding='utf-8-sig')); validate_source(initial,args.work)
+    producer=validate_checkpoint(source,args.journey_report.resolve())
     embedded=validate_build()
     from playwright.sync_api import sync_playwright
     out.mkdir(parents=True); (out/'SOURCE_WORLD.json').write_bytes(source.read_bytes())
     report={'status':'running','method':__doc__,'source':{'path':str(source),'sha256':sha(source)},
-            'head':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+            'producer':producer,'head':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
             'html_sha256':sha(ROOT/'index.html'),'embedded_sources':embedded,'viewport':VIEWPORT,'renderer_requested':args.renderer,'work':args.work,
             'checks':[],'events':[],'browser_errors':[],'external_requests':[],
             'human_acceptance':False,'context_closed':False,'server_closed':False}
@@ -142,7 +152,9 @@ def main():
                 page.wait_for_function('()=>Realm.diagnostics.characters.active==="character-2"&&Realm.diagnostics.characters.writer===true')
                 base=state();check('Native import preserves exact earned prefix',base['earthExpedition']==initial['earthExpedition'])
                 check('Legacy storage untouched',page.evaluate('()=>localStorage.getItem(RealmCore.KEY)')==legacy)
-                close();click('#settings');page.locator('#quality').select_option('balanced');page.locator('#setting-timeFlow').uncheck();click('#close-panel')
+                chosen_quality='low' if args.renderer=='software' else 'balanced'
+                close();click('#settings');page.locator('#quality').select_option(chosen_quality);page.locator('#setting-timeFlow').uncheck();click('#close-panel')
+                report['quality']=state()['settings']['quality'];check('Declared capture quality selected',report['quality']==chosen_quality)
                 d=page.evaluate('()=>Realm.diagnostics');report['renderer']=d['renderer'];check('Actual WebGL2',d['mode']=='webgl2')
                 software=any(s in d['renderer'].lower() for s in ['swiftshader','llvmpipe','software'])
                 check('Requested renderer verified',software==(args.renderer=='software'),d['renderer'])
@@ -166,6 +178,7 @@ def main():
                 else:raise TimeoutError('Native worksite route did not settle')
                 report['worksite_arrival']={'player':p,'walk_seconds':time.monotonic()-walking,'stable_seconds':time.monotonic()-stable}
                 close();page.keyboard.press('e');page.wait_for_selector('#rpg-window[open]')
+                observe('WORKSITE_E',True)
                 check('Native fitting entry at actual worksite',page.locator(selector('begin')).count()==1)
                 click(selector('begin'))
                 check('Native fitting controls at actual worksite',page.locator(selector('inspect',1)).count()==1)

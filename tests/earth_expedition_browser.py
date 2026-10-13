@@ -216,7 +216,11 @@ def objective(step,run=None):
  walk_button(step['id'],step,step['name'])
  if step['kind']=='defeat':fight(step,run);return
  if run and step['id']=='inspect-glade':kit_appearance('pending',run)
+ if run and step['id']=='inspect-glade':
+  expected=ev('()=>RealmEarthExpeditionUI.routePoints(Realm.test.worldContext().sim).find(p=>p.id==="inspect-glade").name')
+  check(variant+' tracked glade hint names patrol rather than overlapping invitation',page.locator('#context-text').inner_text()==expected)
  page.keyboard.press('e');render()
+ if run and step['id']=='inspect-glade':check(variant+' actual E opens tracked patrol fitting controls',page.locator('[data-rpg="expedition-carrier-begin"]').count()==1 and page.locator('#rpg-window').evaluate('e=>e.open'))
  if run is None and step['id']=='brace-root-channel':fit_support()
  elif run and step['id']=='inspect-glade':fit_carrier()
  else:

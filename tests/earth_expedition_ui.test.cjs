@@ -34,6 +34,17 @@ function fixture({steps=[],claimed=false,branch=null,patrol=null,xp=0}={}){
  f.ui=new UI.ExpeditionUI(f.rpg);f.rpg.expedition=f.ui;f.rpg.civic=new CUI.LocalLifeUI(f.rpg);f.rpg.community=new BUI.BridgeCommunityUI(f.rpg);f.rpg.hellCampaign=new HCUI.HellCampaignUI(f.rpg);f.rpg.heavenCampaign=new HVUI.HeavenCampaignUI(f.rpg);f.rpg.atlantisCampaign=new ATUI.AtlantisCampaignUI(f.rpg);f.rpg.cosmosCampaign=new CCUI.CosmosCampaignUI(f.rpg);f.rpg.earthHomecoming=new EHUI.EarthHomecomingUI(f.rpg);f.rpg.wildSigns=new WSUI.WildSignsUI(f.rpg);A.syncScene(sim);return f;
 }
 const paid=()=>({steps:E.definition.steps.map(s=>s.id),claimed:true,branch:'managed-coppice'});
+test('tracked glade patrol owns actual E and hint ahead of overlapping unaccepted consignment',()=>{
+ const f=fixture({...paid(),patrol:{lastClaim:0,active:{run:1,steps:E.patrol.steps.slice(0,4).map(s=>s.id)}}});
+ f.sim.state.player={x:-106,z:-103.3,yaw:0};f.rpg.worlds=Object.assign(Object.create(WUI.WorldUI.prototype),{rpg:f.rpg}); // Real context method; no constructor DOM observation.
+ assert.equal(f.rpg.civic.carrier.point().id,'first-load-board','real offered consignment occupies the same glade');
+ assert.equal(f.ui.point().id,'inspect-glade');const before=f.sim.snapshot();
+ f.rpg.quest='expedition';assert.equal(f.rpg.worlds.context(),f.ui.context(),'hint identifies the tracked patrol work');
+ assert.equal(f.rpg.interact(),true);assert.equal(f.rpg.opened,'expedition');assert.ok(buttons(f.ui.page('expedition').html).some(b=>b.dataset.rpg==='expedition-carrier-begin'));
+ assert.deepEqual(f.sim.snapshot(),before,'opening a tracked action accepts nothing and records nothing');
+ f.rpg.quest='local-life';assert.equal(f.rpg.worlds.context(),f.rpg.civic.carrier.contextLabel());
+ assert.equal(f.rpg.interact(),true);assert.equal(f.rpg.opened,'local-life','the offered consignment remains reachable when patrol is not tracked');assert.deepEqual(f.sim.snapshot(),before);
+});
 const event=(type,id='',extra={})=>({dataset:{rpg:'expedition-'+type,id,...extra}});
 function buttons(html){return[...html.matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/g)].map(m=>({dataset:Object.fromEntries([...m[1].matchAll(/data-([\w-]+)="([^"]*)"/g)].map(a=>[a[1].replace(/-([a-z])/g,(_,c)=>c.toUpperCase()),a[2]])),label:m[2]}));}
 function choose(f,type,id='',extra={}){

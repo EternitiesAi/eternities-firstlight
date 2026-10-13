@@ -163,6 +163,9 @@ class RPGUI{
  }
  intercept(name){const map={armory:'craft',craft:'craft',pack:'bag',adventure:'journal',journey:'journal'};if(map[name]){if(name==='journey')this.quest='homestead';this.open(map[name]);return true;}return false;}
  interact(){
+  // A deliberately tracked expedition owns its nearby action before an
+  // overlapping invitation. Other tracked work retains the existing order.
+  if(this.quest==='expedition'&&this.expedition.interact())return true;
   if(this.earthHomecoming.interact())return true;if(this.cosmosCampaign.interact())return true;if(this.atlantisCampaign.interact())return true;if(this.heavenCampaign.interact())return true;if(this.hellCampaign.interact())return true;if(this.civic.carrier.interact())return true;if(this.community.interact())return true;if(this.civic.interact())return true;if(this.expedition.interact())return true;if(this.trails.interact())return true;if(this.wildSigns.interact())return true;if(this.worlds.interact())return true;
   if(this.gathering.interact())return true;
   if(this.earth.interact())return true;

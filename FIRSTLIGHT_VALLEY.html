@@ -11018,7 +11018,7 @@ class WorldUI{
  current(){return W.definition(this.sim.room);}
  local(){return W.handles(this.sim.room)||this.sim.room===G.RealmCosmos.ROOM&&(this.sim.state.cosmosCampaign?.accepted||this.sim.worldTrip?.realm==='cosmos'||!!this.sim.state.journeys.realms.cosmos.active||Object.entries(this.sim.state.realmTrails.records).some(([id,r])=>G.RealmTrails.definition(id)?.realm==='cosmos'&&r.accepted&&!r.claimed)||Object.entries(this.sim.state.localLife.records).some(([id,r])=>G.RealmLocalLife.definition(id)?.realm==='cosmos'&&r.accepted));}
  point(){const d=this.current();if(!d)return null;return d.points.filter(p=>W.near(this.sim,p,p.kind==='return'?2.7:2.8)).sort((a,b)=>Math.hypot(a.x-this.sim.state.player.x,a.z-this.sim.state.player.z)-Math.hypot(b.x-this.sim.state.player.x,b.z-this.sim.state.player.z))[0]||null;}
- context(){const road=this.rpg.earth?.road?.context();if(road)return road;const homecoming=this.rpg.earthHomecoming?.context();if(homecoming)return homecoming;const cosmos=this.rpg.cosmosCampaign?.context();if(cosmos)return cosmos;const atlantis=this.rpg.atlantisCampaign?.context();if(atlantis)return atlantis;const heaven=this.rpg.heavenCampaign?.context();if(heaven)return heaven;const campaign=this.rpg.hellCampaign?.context();if(campaign)return campaign;const carrier=this.rpg.civic?.carrier?.contextLabel();if(carrier)return carrier;const community=this.rpg.community?.context();if(community)return community;const civic=this.rpg.civic?.context();if(civic)return civic;const expedition=this.rpg.expedition?.context();if(expedition)return expedition;const trail=this.rpg.trails?.context();if(trail)return trail;const signs=this.rpg.wildSigns?.contextLabel();if(signs)return signs;if(this.sim.worldDive)return W.near(this.sim,this.current()?.points.find(p=>p.id===this.current()?.dive?.exitId),3.5)?'E · Dry gallery landing':this.rpg.api.worldDiveStatus()?.dryCourt?'WASD · air courtyard · doorway leads back to the water':'F / G · change depth · E at the gallery landing';if(this.local()){const p=this.point();return p?'E · '+p.name:'M · local routes and work';}return !this.sim.room&&W.near(this.sim,W.GATE)?'E · Roads of Light':null;}
+ context(){const tracked=this.rpg.quest==='expedition'&&this.rpg.expedition?.context();if(tracked)return tracked;const road=this.rpg.earth?.road?.context();if(road)return road;const homecoming=this.rpg.earthHomecoming?.context();if(homecoming)return homecoming;const cosmos=this.rpg.cosmosCampaign?.context();if(cosmos)return cosmos;const atlantis=this.rpg.atlantisCampaign?.context();if(atlantis)return atlantis;const heaven=this.rpg.heavenCampaign?.context();if(heaven)return heaven;const campaign=this.rpg.hellCampaign?.context();if(campaign)return campaign;const carrier=this.rpg.civic?.carrier?.contextLabel();if(carrier)return carrier;const community=this.rpg.community?.context();if(community)return community;const civic=this.rpg.civic?.context();if(civic)return civic;const expedition=this.rpg.expedition?.context();if(expedition)return expedition;const trail=this.rpg.trails?.context();if(trail)return trail;const signs=this.rpg.wildSigns?.contextLabel();if(signs)return signs;if(this.sim.worldDive)return W.near(this.sim,this.current()?.points.find(p=>p.id===this.current()?.dive?.exitId),3.5)?'E · Dry gallery landing':this.rpg.api.worldDiveStatus()?.dryCourt?'WASD · air courtyard · doorway leads back to the water':'F / G · change depth · E at the gallery landing';if(this.local()){const p=this.point();return p?'E · '+p.name:'M · local routes and work';}return !this.sim.room&&W.near(this.sim,W.GATE)?'E · Roads of Light':null;}
  interact(){if(this.rpg.earth?.road?.interact())return true;if(this.sim.worldDive){const r=this.rpg.api.worldDiveExit();this.rpg.api.toast(r.text||r.error);return true;}if(this.rpg.wildSigns?.interact())return true;if(!this.context())return false;const p=this.point();if(p?.kind==='return'){this.returnHome();return true;}this.selected=this.current()?.id||null;this.reading=p?.id||null;this.rpg.open('worlds');return true;}
  returnHome(){const r=this.rpg.api.worldReturn();if(r.ok){this.rpg.close();this.reset();}else this.rpg.api.toast(r.error);}
  action(el){const a=el.dataset.rpg,id=el.dataset.id;if(typeof a!=='string'||!a.startsWith('world-'))return false;
@@ -11583,6 +11583,9 @@ class RPGUI{
  }
  intercept(name){const map={armory:'craft',craft:'craft',pack:'bag',adventure:'journal',journey:'journal'};if(map[name]){if(name==='journey')this.quest='homestead';this.open(map[name]);return true;}return false;}
  interact(){
+  // A deliberately tracked expedition owns its nearby action before an
+  // overlapping invitation. Other tracked work retains the existing order.
+  if(this.quest==='expedition'&&this.expedition.interact())return true;
   if(this.earthHomecoming.interact())return true;if(this.cosmosCampaign.interact())return true;if(this.atlantisCampaign.interact())return true;if(this.heavenCampaign.interact())return true;if(this.hellCampaign.interact())return true;if(this.civic.carrier.interact())return true;if(this.community.interact())return true;if(this.civic.interact())return true;if(this.expedition.interact())return true;if(this.trails.interact())return true;if(this.wildSigns.interact())return true;if(this.worlds.interact())return true;
   if(this.gathering.interact())return true;
   if(this.earth.interact())return true;
@@ -13467,8 +13470,12 @@ function parts(ledger,view){
  }
  if(!paid&&view.status!=='checked')for(const r of view.receivers){
   if(view.pieces.find(p=>p.id===r.pieceId)?.seated)continue;
-  const c=r.pieceId===view.activePiece?0xe5cd85:0xa9b9b1,cos=Math.cos(r.yaw),sin=Math.sin(r.yaw);
-  const put=(x,z,w,d,role)=>add('box',[r.position[0]+cos*x+sin*z,2.095,r.position[2]-sin*x+cos*z],[w,.010,d],c,role,[0,r.yaw,0]);
+  const c=r.pieceId===view.activePiece?0xffe49a:0xc3eed7,cos=Math.cos(r.yaw),sin=Math.sin(r.yaw);
+  const put=(x,z,w,d,role)=>{
+   const p=[r.position[0]+cos*x+sin*z,2.095,r.position[2]-sin*x+cos*z];
+   add('box',[p[0],2.094,p[2]],[w+.014,.014,d+.014],0x18382e,'carrier-receiver-underlay',[0,r.yaw,0]);
+   add('box',[p[0],2.106,p[2]],[w,.014,d],c,role,[0,r.yaw,0]);
+  };
   for(const x of[-r.width/2,r.width/2])put(x,0,.012,r.depth,'carrier-receiver-edge');
   // Corner brackets leave the existing central inspection tab visible.
   for(const z of[-r.depth/2,r.depth/2])for(const sign of[-1,1])put(sign*(r.width/2-.03),z,.06,.012,'carrier-receiver-edge');
