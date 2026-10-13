@@ -40,7 +40,7 @@ function lifecycle(){
   RealmEngine:h.context.RealmEngine,RealmArt:h.context.RealmArt,RealmWorldFoundations:W,
   RealmWorldFoundationsArt:globalThis.RealmWorldFoundationsArt,RealmEarth:{ROOM:'earth'},RealmCosmos:{ROOM:'cosmos'},
   RealmEarthArt:{},RealmCosmosArt:{},RealmStarterArt:{},RealmCrossingArt:{},RealmArsenalArt:{},RealmRoadArt:{},RealmAdventureArt:{},
-  C,carrierFrame:null,grazerFocus:()=>null,fieldcraftFocus:()=>null,cameraHalf:()=>17,fitCameraHalf:(b,z)=>b*z,
+  C,carrierFrame:null,carrierInspectionView:null,grazerFocus:()=>null,fieldcraftFocus:()=>null,cameraHalf:()=>17,fitCameraHalf:(b,z)=>b*z,
   toast:s=>env.toasts.push(s),toasts:[],rpg:{dialog:{open:true}},audio:{identity:'original-audio',ctx:{state:'running'}},labelNodes:[],
  };
  const start=app.indexOf('// BEGIN GRAPHICS CONTEXT RECOVERY'),end=app.indexOf('// END GRAPHICS CONTEXT RECOVERY');

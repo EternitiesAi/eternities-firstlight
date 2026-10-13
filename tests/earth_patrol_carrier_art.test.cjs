@@ -50,3 +50,18 @@ test('both-view Low and reduced-motion settings preserve exact readonly live sub
   assert.deepEqual(parts,baseline);assert.deepEqual(f.sim.snapshot(),before);for(const p of parts)assert.ok([...p.p,...p.s,...p.opt.r].every(Number.isFinite));
  }
 });
+
+test('receiving framing shares actual submitted bodies and rejects copied or glade-only proof',()=>{
+ for(const branch of['stormfall-recovery','managed-coppice']){
+  const f=fixture(branch),r=fitted(f);assert.equal(ART.receivingFrame(f.sim.state.earthExpedition,P.current(f.sim)),null);
+  assert.ok(E.command(f.ctx,'patrol-step',{quest:E.patrol.id,run:1,priorClaim:0,step:'inspect-glade',carrierTicket:r.ticket},{save:f.save}).ok);
+  f.sim.state.player={x:-67,z:-4,yaw:0};assert.ok(E.command(f.ctx,'patrol-claim',{quest:E.patrol.id,run:1,priorClaim:0},{save:f.save}).ok);
+  const before=f.sim.snapshot(),view=P.current(f.sim),frame=ART.receivingFrame(f.sim.state.earthExpedition,view),parts=ART.parts(f.sim.state.earthExpedition,view);
+  assert.deepEqual(frame.point,[-68.65,2.03,-4.85]);assert.equal(frame.corners.length,56);assert.ok(Object.isFrozen(frame)&&Object.isFrozen(frame.corners));
+  // Hand-derived feet/tray extents, independent of the production helper.
+  assert.ok(Math.abs(Math.min(...frame.corners.map(c=>c[1]))-1.57)<2e-5);
+  assert.ok(Math.abs(Math.max(...frame.corners.map(c=>c[1]))-(branch==='managed-coppice'?2.30:2.27))<2e-5);
+  assert.equal(parts.length,7);const M=globalThis.RealmEngine.M,submitted=parts.flatMap(p=>{const m=M.compose(...p.p,...p.s,...p.opt.r),out=[];for(const x of[-.5,.5])for(const y of[-.5,.5])for(const z of[-.5,.5])out.push(M.transform(m,[x,y,z]));return out;});
+  assert.deepEqual(frame.corners,submitted);assert.equal(ART.receivingFrame(f.sim.state.earthExpedition,copy(view)),null);assert.deepEqual(f.sim.snapshot(),before);
+ }
+});

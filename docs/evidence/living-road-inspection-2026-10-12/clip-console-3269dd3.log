@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "video": {
+    "path": "ACTUAL_FIELDCRAFT.webm",
+    "bytes": 546513,
+    "sha256": "3ecad2a99ff3f6793274d77e38e95724c283a9abe206e1e8ced9ba071da9d3e1",
+    "audio": false,
+    "surface": "Actual WebGL canvas only; DOM HUD and controls excluded",
+    "requested_capture_fps": 30,
+    "partial": false
+  },
+  "raf_observation": {
+    "scope": "Additional ordinary RAF callback intervals while recording; encoding and automation overhead included, not rendered FPS",
+    "callbacks": 77,
+    "elapsed_ms": 18500.70000001788,
+    "p50_ms": 216.70000000001164,
+    "p95_ms": 483.3999999999651,
+    "p99_ms": 516.5999999999767,
+    "max_ms": 3283.2000000000116,
+    "over50ms": 62
+  },
+  "wall_seconds": 423.5669101999956
+}

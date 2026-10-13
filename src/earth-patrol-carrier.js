@@ -73,12 +73,23 @@ function fits(r,p,pose){
  }
  return true;
 }
+function diagnostics(r,p,pose){
+ const eps=GEOMETRY.epsilon,t=p.target,f=frame(r,p,t),c=Math.cos(f.yaw),s=Math.sin(f.yaw),q=corners(r,p,pose);
+ const local=q.map(v=>{const x=v[0]-GEOMETRY.center[0]-f.x,z=v[2]-GEOMETRY.center[2]-f.z;return{x:c*x-s*z,z:s*x+c*z};});
+ const tray=q.map(v=>({x:v[0]-GEOMETRY.center[0],z:v[2]-GEOMETRY.center[2]})),i=GEOMETRY.indicator;
+ const ends=[-.20,.20].map(z=>[-.035,.035].map(x=>pose.z-Math.sin(pose.yaw)*x+Math.cos(pose.yaw)*z));
+ return{offset:{x:pose.x-t.x,z:pose.z-t.z,yaw:wrap(pose.yaw-t.yaw)},tolerance:{...p.tolerance},
+  receiverOverhang:{x:Math.max(...local.map(v=>Math.abs(v.x)))-p.receiver.width/2,z:Math.max(...local.map(v=>Math.abs(v.z)))-p.receiver.depth/2},
+  trayClear:tray.every(v=>Math.abs(v.x)<=GEOMETRY.tray.halfX+eps&&Math.abs(v.z)<=GEOMETRY.tray.halfZ+eps),
+  tabClear:Math.max(...tray.map(v=>v.x))<=i.minX+eps||Math.min(...tray.map(v=>v.x))>=i.maxX-eps||Math.max(...tray.map(v=>v.z))<=i.minZ+eps||Math.min(...tray.map(v=>v.z))>=i.maxZ-eps,
+  lashingEndsClear:!p.id.startsWith('lashing')||(Math.max(...ends[0])<=-.185+eps&&Math.min(...ends[1])>=.185-eps)};
+}
 function projection(plan){
  const r=plans.get(plan);if(!r||!check(r,remembered(r)).ok)return null;
  const active=r.phase==='fitting'?r.definition.pieces[r.seated.length]:null;
  const v=freeze({kind:KIND+'-projection',branch:r.branch,run:r.run,status:r.phase==='fitting'?(active?'fitting':'ready'):r.phase,
   activePiece:active?.id??null,complete:r.seated.length===3,
-  pieces:r.definition.pieces.map(p=>{const pose=r.poses.get(p.id),f=frame(r,p,pose);return{id:p.id,size:[...p.size],pose:{...pose},position:[GEOMETRY.center[0]+f.x,GEOMETRY.center[1],GEOMETRY.center[2]+f.z],yaw:f.yaw,corners:corners(r,p,pose),seated:r.seated.includes(p.id),preview:p===active,fits:fits(r,p,pose)};}),
+  pieces:r.definition.pieces.map(p=>{const pose=r.poses.get(p.id),f=frame(r,p,pose);return{id:p.id,size:[...p.size],pose:{...pose},position:[GEOMETRY.center[0]+f.x,GEOMETRY.center[1],GEOMETRY.center[2]+f.z],yaw:f.yaw,corners:corners(r,p,pose),seated:r.seated.includes(p.id),preview:p===active,fits:fits(r,p,pose),diagnostics:diagnostics(r,p,pose)};}),
   receivers:r.definition.pieces.map(p=>{const f=frame(r,p,p.target);return{id:p.receiverId,pieceId:p.id,target:{...p.target},position:[GEOMETRY.center[0]+f.x,GEOMETRY.center[1],GEOMETRY.center[2]+f.z],yaw:f.yaw,width:p.receiver.width,depth:p.receiver.depth,inspected:r.inspected.has(p.id),frame:p.id.startsWith('lashing')?'seated-bundle':'tray'};})});
  views.set(v,{r,epoch:r.epoch});return v;
 }
@@ -107,7 +118,8 @@ function adjust(ctx,plan,pose){
  const next={x:pose.x,z:pose.z,yaw:pose.yaw},candidate={...r,poses:new Map(r.poses)};candidate.poses.set(p.id,next);
  // A bundle edit also transforms its waiting lashings. Keep the whole
  // projected supplied kit on the tray before accepting any changed pose.
- if(!r.definition.pieces.every(q=>clearance(candidate,q,candidate.poses.get(q.id))))return fail('Keep every supplied piece on the tray and clear of the inspection tab. Your last pose stays.');
+ const obstructed=r.definition.pieces.find(q=>!clearance(candidate,q,candidate.poses.get(q.id)));
+ if(obstructed)return fail('The '+obstructed.id+' would leave the tray or cover the inspection tab. Your last valid pose stays.');
  r.poses.set(p.id,next);r.epoch++;return{ok:true,view:projection(plan)};
 }
 function seat(ctx,plan,id){

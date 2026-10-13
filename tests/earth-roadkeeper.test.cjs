@@ -210,7 +210,7 @@ function roadkeeperCamera(width=390,height=844,preset='follow',yaw=0,elevation=.
  const base=W.height(D.ROOM,sim.state.player.x,sim.state.player.z),center=[sim.state.player.x,base+(preset==='adventure'?1.5:.6),sim.state.player.z];
  const engine=Object.create(E.Engine.prototype);Object.assign(engine,{canvas:{clientWidth:width,clientHeight:height},cameraSolids:[],camera:{projection:'orthographic'},gl:{bindBuffer(){},bufferData(){}}});
  const camera={preset,tour:false,overview:false,yaw,elevation,distance:7.5,actualDistance:7.5,fov:80,half:17,center};
- vm.runInNewContext(cameraSource+'\nupdateCamera(1);',{engine,camera,sim,carrierFrame:null,follow:null,innerWidth:width,innerHeight:height,grazerFocus:()=>null,fieldcraftFocus:()=>null,sceneHeight:()=>base,RealmWorldFoundations:W});
+ vm.runInNewContext(cameraSource+'\nupdateCamera(1);',{engine,camera,sim,carrierFrame:null,carrierInspectionView:null,follow:null,innerWidth:width,innerHeight:height,grazerFocus:()=>null,fieldcraftFocus:()=>null,sceneHeight:()=>base,RealmWorldFoundations:W});
  return engine;
 }
 function roadkeeperPacked(parts,engine){

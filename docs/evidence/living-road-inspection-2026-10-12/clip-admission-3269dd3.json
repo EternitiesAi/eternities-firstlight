@@ -1,0 +1,37 @@
+{
+  "head": "3269dd308f44f2ea9dc47c68f72aefc5eac5e0a1",
+  "observedUtc": "2026-10-13T05:30:13.6864105Z",
+  "freeHostKiB": 11345480,
+  "minimumFreeKiB": 6291456,
+  "admitted": true,
+  "htmlSha256": "dbd5ad604e450264086af554fa74e4b8dd846bb4eb3d47f7de3ff56190a515f3",
+  "inputs": {
+    "D:/07-GAMES/Firstlight/artifacts/living-road-inspection-20261012/RECEIVING_CAPTURE_CALLER.py": "ecfa4335cf805b648527300d6739881c17c058e7dd40257dc89dfb6b37d9ef27",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-inspection-20261012\\REMOTE_SOURCE06/earth-consignment-earned/fresh-blade/PATROL_1_GLADE_OPEN.json": "f1742c18e10a08ecd4cb50d455edf65a8ef580a735cdfd062f935249347a4ddc",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-inspection-20261012\\REMOTE_SOURCE06/earth-consignment-earned/fresh-blade/EARTH_EXPEDITION_JOURNEY_REPORT.json": "7042607229fcda12f46459714c684372272a84c743527547b01c40ddd8a9ccb4",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-inspection-20261012\\REMOTE_SOURCE06/earth-consignment-earned/FIRST_LOAD_COHORT.json": "c429506844a39a967520264cd4d7c24f6af50f79e004ae253a05f63d021d9a58",
+    "D:/07-GAMES/Firstlight/artifacts/living-road-inspection-20261012/REMOTE_SOURCE06_EXIT.json": "3056e1adb9a77c4203641c70a9287b086d9bdf48acd0d35c34d3610108f29e0b",
+    "D:/07-GAMES/Firstlight/artifacts/living-road-inspection-20261012/NATIVE01_EXIT.json": "115888c5fa118083d17c456a1905ef06ab0cb0fd1fc0f62a150a9f5968ea03ef",
+    "D:/07-GAMES/Firstlight/artifacts/living-road-inspection-20261012/NATIVE01/REPORT.json": "46560bff8e65a43c40c693c43e91195e2b4c189bf239229bc0c9fbea728e6271",
+    "D:/07-GAMES/Firstlight/verification/current-qualified-game/tools/capture_earth_fieldcraft.py": "ac677b4cd85187757a80d40246d87f85cd7db2e7e4b640ca02d836391b3a1e87",
+    "D:/07-GAMES/Firstlight/verification/current-qualified-game/tools/capture_earth_expedition.py": "18b4a3b87a52b81e142f28ec2318c68b0f55ce49a296f7fc175d09912473e456",
+    "D:/07-GAMES/Firstlight/verification/current-qualified-game/tools/browser_support.py": "cb5b8227f4c5e99e89b5ec40a75a3cacc471bd60c287316501c4b2de6cfecaa5"
+  },
+  "controllerSha256": "0df7b647750ab5f78866fd454dfe763277b7d958ae4c19441abace7dadc9bd6d",
+  "command": [
+    "C:/dev/firstlight-artifacts/bootstrap-2026-09-12/browser-env/Scripts/python.exe",
+    "-B",
+    "D:/07-GAMES/Firstlight/artifacts/living-road-inspection-20261012/RECEIVING_CAPTURE_CALLER.py",
+    "--work",
+    "carrier",
+    "--renderer",
+    "software",
+    "--source",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-inspection-20261012\\REMOTE_SOURCE06/earth-consignment-earned/fresh-blade/PATROL_1_GLADE_OPEN.json",
+    "--journey-report",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-inspection-20261012\\REMOTE_SOURCE06/earth-consignment-earned/fresh-blade/EARTH_EXPEDITION_JOURNEY_REPORT.json",
+    "--output",
+    "D:/07-GAMES/Firstlight/artifacts/living-road-inspection-20261012/CLIP01"
+  ],
+  "scope": "One ordinary-RAF native-control take; isolated synthetic earned profile, software WebGL, silent canvas only, hard90s window; not full browser/GPU/human admission"
+}

@@ -5,7 +5,8 @@ labelled accelerated ticks in software WebGL; no human/GPU/normal-time claim.
 from pathlib import Path
 from contextlib import ExitStack
 from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
-import hashlib,json,math,os,subprocess,tempfile,threading,traceback
+import hashlib,json,math,os,subprocess,tempfile,threading,traceback,time
+from datetime import datetime,timezone
 from playwright.sync_api import sync_playwright
 from browser_support import chromium_launch_kwargs
 ROOT=Path(os.environ.get('FIRSTLIGHT_TEST_ROOT',Path(__file__).resolve().parents[1])).resolve()
@@ -16,7 +17,7 @@ class Handler(SimpleHTTPRequestHandler):
  def __init__(self,*a,**kw):super().__init__(*a,directory=str(ROOT),**kw)
  def log_message(self,*a):pass
 server=ThreadingHTTPServer(('127.0.0.1',0),Handler);threading.Thread(target=server.serve_forever,daemon=True).start();url=f'http://127.0.0.1:{server.server_port}/'
-context=None;serial=0
+context=None;page=None;serial=0
 
 def check(name,ok,evidence=None):
  row={'name':name,'passed':bool(ok)}
@@ -190,6 +191,7 @@ def fit_carrier():
   inspect=page.locator('[data-rpg="expedition-carrier-inspect"]');piece=inspect.get_attribute('data-piece');inspect.click();render()
   target=ev('''([branch,id])=>RealmEarthPatrolCarrier.definition(branch).pieces.find(p=>p.id===id).target''',[before['earthExpedition']['story']['branch'],piece])
   check(variant+' supplied starting pose needs correction '+piece,not page.locator('[data-rpg="expedition-carrier-seat"]').is_enabled())
+  feedback=page.locator('[data-carrier-feedback]').inner_text();check(variant+' fitting feedback identifies actual directional correction '+piece,('Increase ' in feedback or 'Decrease ' in feedback) and ('Across' in feedback or 'Along' in feedback or 'Turn' in feedback),feedback)
   for axis in ['x','z','yaw']:
    value=target[axis]*180/math.pi if axis=='yaw' else target[axis]*100
    loc=page.locator('#carrier-'+axis+'-number');loc.focus()
@@ -198,6 +200,7 @@ def fit_carrier():
     check(variant+' actual partial typing retains control focus and last valid pose '+piece,ev('id=>document.activeElement?.id===id','carrier-x-number') and ev('Realm.test.carrier().view')==pose and not page.locator('[data-rpg="expedition-carrier-seat"]').is_enabled())
    loc.fill(str(value));render()
    check(variant+' carrier edit keeps focused native control '+axis,ev('id=>document.activeElement?.id===id','carrier-'+axis+'-number'))
+  check(variant+' allowed fitted pose gives ready guidance '+piece,'Ready to seat' in page.locator('[data-carrier-feedback]').inner_text())
   page.locator('[data-rpg="expedition-carrier-seat"]').click();render();check(variant+' supplied seat is transient '+piece,fitting_unchanged(before,state()))
  page.locator('[data-rpg="expedition-carrier-record"]').click();render()
  check(variant+' actual carrier inspection saved without payment',state()['earthExpedition']['patrol']['active']['steps']==before['earthExpedition']['patrol']['active']['steps']+['inspect-glade'] and all(state()['adventure'][k]==before['adventure'][k] for k in ['xp','coins','ore']) and state()['sandbox']['inventory']==before['sandbox']['inventory'])
@@ -206,11 +209,22 @@ def received_carrier(run):
  carrier_lab_preferences()
  for view in ['follow','adventure']:
   close();page.locator('#rpg-hud [data-rpg="camera"][data-id="'+view+'"]').click();render()
+  before=state();native_profiles=saved_world()['settings']['cameraViews']['profiles'];check(variant+' ordinary profiles agree with native baseline '+view+' run'+str(run),native_profiles==before['settings']['cameraViews']['profiles']);fov=diag()['camera']['fov'];workspace('expedition');look=page.locator('[data-rpg="expedition-carrier-look-received"]');look.focus();look.press('Enter');render()
+  check(variant+' keyboard paid Look retains camera and closes to world '+view+' run'+str(run),diag()['camera']['preset']==view and diag()['camera']['fov']==fov and not page.locator('#rpg-window').evaluate('e=>e.open') and ev('document.activeElement===document.querySelector("#world")') and fitting_unchanged(before,state()))
+  save_result=ev('Realm.test.save()');check(variant+' saved profile retains ordinary scale and paid private proof '+view+' run'+str(run),save_result.get('ok') is True and saved_world()['settings']['cameraViews']['profiles']==native_profiles and ev('Realm.test.carrier().view.status')=='paid' and fitting_unchanged(before,state()),save_result)
+  bounds=ev('''()=>{const sim=Realm.test.worldContext().sim,v=Realm.test.carrier().view,b=RealmEarthPatrolCarrierArt.receivingFrame(sim.state.earthExpedition,v);return{points:b.corners.map(p=>Realm.project(...p)),width:innerWidth,height:innerHeight,barTop:document.querySelector('#skillbar').getBoundingClientRect().top};}''')
+  check(variant+' actual received bodies clear viewport and HUD '+view+' run'+str(run),all(p['visible'] and 8<p['x']<bounds['width']-8 and 8<p['y']<bounds['barTop']-8 for p in bounds['points']) and max(p['x'] for p in bounds['points'])-min(p['x'] for p in bounds['points'])>90,bounds)
   data=ev('''run=>{const sim=Realm.test.worldContext().sim,e=__encounterArt.e,v=Realm.test.carrier().view,saved=e.dynamic.map(b=>({b,items:b.items,data:b.data,count:b.count})),received=i=>i.carrierRun===run&&/^carrier-receiv/.test(i.carrierPart||''),items=saved.flatMap(q=>q.items).filter(received),roles={};for(const i of items)roles[i.carrierPart]=(roles[i.carrierPart]||0)+1;
    const read=()=>{const g=e.gl,a=new Uint8Array(e.mainF.w*e.mainF.h*4);g.bindFramebuffer(g.FRAMEBUFFER,e.mainF.f);g.readPixels(0,0,e.mainF.w,e.mainF.h,g.RGBA,g.UNSIGNED_BYTE,a);g.bindFramebuffer(g.FRAMEBUFFER,null);return a;},args=[sim.elapsed,sim.state.hour,sim.state.weather==='rain'],before=JSON.stringify(sim.state),restore=()=>{for(const q of saved){q.b.items=q.items;q.b.data=q.data;e.updateBatch(q.b);q.b.count=q.count;}};
    e.render(...args);const baseline=read();try{for(const q of saved){q.b.items=q.items.filter(i=>!received(i));e.updateBatch(q.b);}e.render(...args);const absent=read();restore();e.render(...args);const again=read();let changed=0,delta=0;for(let i=0;i<baseline.length;i+=4){if(Math.max(...[0,1,2].map(k=>Math.abs(baseline[i+k]-absent[i+k])))>2)changed++;for(let k=0;k<3;k++)delta+=Math.abs(baseline[i+k]-again[i+k]);}return{phase:v?.status,run:v?.run,roles,parts:items.length,changed,delta,stateUnchanged:before===JSON.stringify(sim.state),glError:e.gl.getError(),restored:saved.every(q=>q.b.items===q.items&&q.b.data===q.data&&q.b.count===q.count),quality:sim.state.settings.quality,rendererQuality:e.quality,reducedMotion:sim.state.settings.reducedMotion,rendererReducedMotion:e.reducedMotion};}finally{restore();}}''',run)
   check(variant+' actual receiving kit has restored Low reduced-motion pixels '+view+' run'+str(run),data['phase']=='paid' and data['run']==run and data['roles']=={'carrier-received-piece':3,'carrier-receiving-foot':2,'carrier-receiving-tray':1,'carrier-received-tag':1} and data['parts']==7 and data['changed']>10 and data['delta']==0 and data['stateUnchanged'] and data['restored'] and data['glError']==0 and data['quality']=='low' and data['rendererQuality']=='low' and data['reducedMotion'] and data['rendererReducedMotion'],data)
   shot('carrier-received-'+view+'-'+str(run));record.setdefault('carrier_receiving_pixels',[]).append({'view':view,**data})
+  if variant=='fresh-blade' and run==1:
+   page.set_viewport_size({'width':390,'height':844});render();portrait_before=state();portrait_fov=diag()['camera']['fov'];workspace('expedition');look=page.locator('[data-rpg="expedition-carrier-look-received"]');look.focus();look.press('Enter');render()
+   check(variant+' portrait keyboard paid Look retains view and closes to world '+view,diag()['camera']['preset']==view and diag()['camera']['fov']==portrait_fov and not page.locator('#rpg-window').evaluate('e=>e.open') and ev('document.activeElement===document.querySelector("#world")') and fitting_unchanged(portrait_before,state()))
+   compact=ev('''()=>{const sim=Realm.test.worldContext().sim,v=Realm.test.carrier().view,b=RealmEarthPatrolCarrierArt.receivingFrame(sim.state.earthExpedition,v);return{points:b.corners.map(p=>Realm.project(...p)),width:innerWidth,height:innerHeight,barTop:document.querySelector('#skillbar').getBoundingClientRect().top};}''')
+   check(variant+' portrait keyboard Look contains complete actual received kit '+view,all(p['visible'] and 8<p['x']<382 and 8<p['y']<compact['barTop']-8 for p in compact['points']) and max(p['x'] for p in compact['points'])-min(p['x'] for p in compact['points'])>90 and fitting_unchanged(before,state()),compact);shot('carrier-received-portrait-'+view)
+   page.set_viewport_size({'width':1440,'height':960});render()
 
 def objective(step,run=None):
  walk_button(step['id'],step,step['name'])
@@ -252,7 +266,19 @@ try:
     cleanup.callback(release)
     def start():return pw.chromium.launch_persistent_context(profile,**chromium_launch_kwargs(),accept_downloads=True,viewport={'width':1440,'height':960})
     def spawn():
-     p=context.new_page();p.on('pageerror',lambda e:report['browser_errors'].append(str(e)));p.add_init_script('window.__ETERNITIES_TEST_MODE=true;window.__ETERNITIES_CAPTURE_MODE=true;');response=p.goto(url,wait_until='load');p.wait_for_function('()=>!!window.Realm');check(variant+' exact assembled HTML loads',sha(ROOT/'index.html')==hashlib.sha256(response.body()).hexdigest());p.evaluate("Realm.test.quality('low');Realm.test.render()");return p
+     global page
+     p=context.new_page();page=p # Failure inspection owns the attempted page even if goto raises.
+     p.on('pageerror',lambda e:report['browser_errors'].append(str(e)));p.add_init_script('window.__ETERNITIES_TEST_MODE=true;window.__ETERNITIES_CAPTURE_MODE=true;')
+     attempt={'startedUTC':datetime.now(timezone.utc).isoformat(),'url':url};record.setdefault('navigation_attempts',[]).append(attempt);started=time.monotonic()
+     try:
+      response=p.goto(url,wait_until='load');p.wait_for_function('()=>!!window.Realm')
+     except Exception:
+      attempt.update({'endedUTC':datetime.now(timezone.utc).isoformat(),'elapsedSeconds':time.monotonic()-started,'outcome':'failed'})
+      try:attempt['page']=p.evaluate('()=>({url:location.href,readyState:document.readyState,navigation:performance.getEntriesByType("navigation").map(n=>n.toJSON())})')
+      except Exception as e:attempt['inspectionError']=str(e)
+      raise
+     attempt.update({'endedUTC':datetime.now(timezone.utc).isoformat(),'elapsedSeconds':time.monotonic()-started,'outcome':'loaded'})
+     check(variant+' exact assembled HTML loads',sha(ROOT/'index.html')==hashlib.sha256(response.body()).hexdigest());p.evaluate("Realm.test.quality('low');Realm.test.render()");return p
     context=start();page=spawn();workspace('characters');old_key=ev('localStorage.getItem(RealmCore.KEY)');
     with page.expect_file_chooser() as chooser:page.locator('[data-rpg="chars-import"]').click()
     chooser.value.set_files(str(fixture));page.wait_for_selector('[data-rpg="chars-confirm-import"]');page.locator('[data-rpg="chars-confirm-import"]').click();page.wait_for_function('()=>Realm.diagnostics.characters.active==="character-2"');render();check(variant+' native import adds separate complete earned character',diag()['characters']['count']==2 and ownership(state())==ownership(source) and ev('localStorage.getItem(RealmCore.KEY)')==old_key);carrier_lab_preferences();initial=state();enter();workspace('expedition');text=page.locator('#rpg-content').inner_text();check(variant+' terms expose route danger rewards choices and binding cost',all(t in text for t in ['wetland footbridge','64 health / 9 damage', '136 health / 11 damage', '2.6 m', '3.1 m','45 XP','18 sunmarks','3 ore','8 timber','8 fibre','+2 attack','6 fibre']));check(variant+' reading never accepts or spends',not state()['earthExpedition']['story']['accepted'] and state()['adventure']['coins']==initial['adventure']['coins']);shot('terms')

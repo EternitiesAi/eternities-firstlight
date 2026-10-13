@@ -75,6 +75,7 @@ function tickConsignment(dt){
 
 let fieldcraftOwner=null,fieldcraftFrame=null;
 let carrierFrame=null;
+let carrierInspectionView=null;
 function syncFieldcraftOwner(force=false){
  const next=[sim,sim.state,sim.state.adventure,characterStore,characterStore.active,sim.room,sim.worldTrip,sim.earthTrip,JSON.stringify(sim.returnPos),JSON.stringify(sim.worldTrip),sim.state.adventure.deaths];
  if(force||!fieldcraftOwner||next.some((v,i)=>v!==fieldcraftOwner[i])){
@@ -127,7 +128,7 @@ function frameGrazer(request){
  if(request!==canonical||!Object.isFrozen(canonical)||!Object.isFrozen(canonical.from))return{ok:false,error:'Use the explicit field-account Look control.'};
  try{
   const ctx=grazerLookContext(),fit=fitGrazerLook();
-  clearGrazerFocus();fieldcraftFrame=null;
+  clearGrazerFocus();clearCarrierFocus();fieldcraftFrame=null;
   grazerFrame={sim,state:sim.state,adventure:sim.state.adventure,engine,lease:ctx.ownerLease,grazerLease:sim.grazerOwnerLease,trip:sim.worldTrip,home:JSON.stringify(sim.returnPos),deaths:sim.state.adventure.deaths,preset:camera.preset,player:{x:sim.state.player.x,z:sim.state.player.z},point:GRAZER_LOOK_POINT};
   camera.tour=false;camera.overview=false;follow=null;applyGrazerLookFit(fit);camera.center=GRAZER_LOOK_POINT.slice();updateCamera(1);
   return{ok:true,text:'The whole browse loop is framed west in your current view. Watch outside the menu; movement or camera controls release this framing.'};
@@ -149,20 +150,57 @@ function fieldcraftFocus(){
  if(f.sim!==sim||f.lease!==syncFieldcraftOwner()||sim.room!==g.room||sim.worldDive||sim.state.adventure.hp<=0||Math.hypot(sim.state.player.x-f.player.x,sim.state.player.z-f.player.z)>.15||(!RealmEarthFieldcraft.current(sim)&&!sim.state.earthExpedition.story.steps.includes('brace-root-channel'))){fieldcraftFrame=null;return null;}
  return f.point;
 }
+function clearCarrierFocus(){
+ const held=carrierInspectionView;carrierFrame=null;carrierInspectionView=null;
+ if(held&&held.preset===camera.preset){
+  for(const axis of['yaw','elevation','distance','zoom'])if(Math.abs(camera[axis]-held.applied[axis])<1e-9)camera[axis]=held.before[axis];
+  camera.actualDistance=camera.distance;if(camera.preset!=='adventure')camera.half=fitCameraHalf(camera.baseHalf,camera.zoom);
+ }
+}
+function fitCarrierReceiving(view){
+ if(!engine||engine._contextLost||typeof engine.clearCameraDistance!=='function'||!['adventure','follow','tactical','wide'].includes(camera.preset)||!Number.isFinite(innerWidth)||!Number.isFinite(innerHeight)||innerWidth<=0||innerHeight<=0||!Number.isFinite(camera.fov)||camera.fov<45||camera.fov>80)throw Error('The current 3D view cannot inspect this returned kit.');
+ const body=RealmEarthPatrolCarrierArt.receivingFrame(sim.state.earthExpedition,view);if(!body||body.corners.length!==56)throw Error('Read this outing’s actual received kit first.');
+ const perspective=camera.preset==='adventure',aspect=innerWidth/innerHeight,yaw=2.1,elevation=perspective?.65:.72;
+ const direction=[Math.sin(yaw)*Math.cos(elevation),Math.sin(elevation),Math.cos(yaw)*Math.cos(elevation)],right=[Math.cos(yaw),0,-Math.sin(yaw)],up=[-Math.sin(yaw)*Math.sin(elevation),Math.cos(elevation),-Math.cos(yaw)*Math.sin(elevation)],tan=Math.tan(camera.fov*Math.PI/360);
+ let distance=3.5,half=1.35;
+ for(const corner of body.corners){const delta=corner.map((n,i)=>n-body.point[i]),dot=v=>v.reduce((n,x,i)=>n+x*delta[i],0);
+  distance=Math.max(distance,dot(direction)+Math.max(Math.abs(dot(right))/(tan*aspect*.75),Math.abs(dot(up))/(tan*.65)));
+  half=Math.max(half,Math.abs(dot(right))/(aspect*.75),Math.abs(dot(up))/.65);
+ }
+ if(perspective){
+  if(distance>20)throw Error('This viewport is too narrow for the complete kit at your chosen FOV.');
+  const wanted=body.point.map((n,i)=>n+direction[i]*distance),clear=engine.clearCameraDistance(body.point,wanted);
+  if(!Number.isFinite(clear)||clear<distance-1e-6)throw Error('Scenery obstructs this close inspection. Your view is retained.');
+ }
+ return{point:body.point,yaw,elevation,distance,half,perspective,lens:JSON.stringify([innerWidth,innerHeight,camera.fov,camera.preset])};
+}
 function carrierFocus(){
- if(!carrierFrame)return null;const f=carrierFrame;
- if(f.sim!==sim||f.lease!==syncFieldcraftOwner()||f.preset!==camera.preset||Math.abs(f.yaw-camera.yaw)>1e-9||Math.abs(f.elevation-camera.elevation)>1e-9||!RealmEarthPatrolCarrier.current(sim)||Math.hypot(sim.state.player.x-f.player.x,sim.state.player.z-f.player.z)>.15){carrierFrame=null;return null;}
+ if(!carrierFrame){if(carrierInspectionView)clearCarrierFocus();return null;}const f=carrierFrame,v=RealmEarthPatrolCarrier.current(sim);
+ if(f.sim!==sim||f.lease!==syncFieldcraftOwner()||f.preset!==camera.preset||Math.abs(f.yaw-camera.yaw)>1e-9||Math.abs(f.elevation-camera.elevation)>1e-9||!v||v.run!==f.run||v.branch!==f.branch||(f.purpose==='receiving')!==(v.status==='paid')||Math.hypot(sim.state.player.x-f.player.x,sim.state.player.z-f.player.z)>.15||(f.purpose==='receiving'&&(f.lens!==JSON.stringify([innerWidth,innerHeight,camera.fov,camera.preset])||!RealmEarthExpedition.at(sim,RealmEarthExpedition.patrol.giver)))){clearCarrierFocus();return null;}
+ if(f.purpose==='receiving'&&camera.preset!=='adventure')camera.half=f.half;
  return f.point;
 }
-function frameCarrier(view){
+function frameCarrier(view,purpose='checking'){
  const ctx=fieldcraftContext(),P=RealmEarthPatrolCarrier;
+ if(purpose==='receiving'){
+  try{
+   if(!P.isProjection(view,sim.state.earthExpedition)||view.status!=='paid'||!RealmEarthExpedition.at(sim,RealmEarthExpedition.patrol.giver))throw Error('Stand beside Rill with this outing’s actually received kit.');
+   const fit=fitCarrierReceiving(view);clearCarrierFocus();clearGrazerFocus();fieldcraftFrame=null;
+   carrierInspectionView={preset:camera.preset,before:{yaw:camera.yaw,elevation:camera.elevation,distance:camera.distance,zoom:camera.zoom},applied:{yaw:fit.yaw,elevation:fit.elevation,distance:fit.perspective?fit.distance:camera.distance,zoom:camera.zoom}};
+   camera.tour=false;camera.overview=false;follow=null;camera.yaw=fit.yaw;camera.elevation=fit.elevation;
+   if(fit.perspective)camera.distance=camera.actualDistance=fit.distance;else camera.half=fit.half;
+   carrierFrame={sim,lease:ctx.ownerLease,player:{...sim.state.player},preset:camera.preset,purpose,run:view.run,branch:view.branch,...fit};
+   camera.center=fit.point.slice();updateCamera(1);return{ok:true,text:'Returned kit framed in your current view. Move, orbit or change view to follow again. Payment is unchanged.'};
+  }catch(e){return{ok:false,error:e.message};}
+ }
+ if(purpose!=='checking')return{ok:false,error:'Use the current kit’s explicit Look control.'};
  if(!engine||!P.isProjection(view,sim.state.earthExpedition)||view.status==='paid'||!RealmEarthExpedition.at(sim,P.GEOMETRY.workPoint))return{ok:false,error:'Inspect the supplied checking tray at its glade before framing it.'};
- clearGrazerFocus();fieldcraftFrame=null;camera.tour=false;camera.overview=false;follow=null;
+ clearCarrierFocus();clearGrazerFocus();fieldcraftFrame=null;camera.tour=false;camera.overview=false;follow=null;
  const perspective=camera.preset==='adventure';camera.yaw=2.1;camera.elevation=perspective?.65:.72;
  if(perspective)camera.distance=camera.actualDistance=4;
  else{camera.zoom=6/camera.baseHalf;camera.half=fitCameraHalf(camera.baseHalf,camera.zoom);}
  const point=[P.GEOMETRY.center[0],2.24,P.GEOMETRY.center[2]];
- carrierFrame={sim,lease:ctx.ownerLease,player:{...sim.state.player},preset:camera.preset,yaw:camera.yaw,elevation:camera.elevation,point};
+ carrierFrame={sim,lease:ctx.ownerLease,player:{...sim.state.player},preset:camera.preset,purpose,run:view.run,branch:view.branch,yaw:camera.yaw,elevation:camera.elevation,point};
  camera.center=point.slice();updateCamera(1);save();return{ok:true,text:'Checking tray framed in your current view. Move, orbit or change view to follow again.'};
 }
 function frameFieldcraft(view){
@@ -171,7 +209,7 @@ function frameFieldcraft(view){
  if(!engine||!recorded&&!F.isProjection(view,sim.state.earthExpedition))return{ok:false,error:'Stand at the supported work point and inspect the current support before framing its receiving face.'};
  // Keep the focus outside the wall's existing .3 m camera clearance. A target
  // touching the wall would correctly pull the perspective eye down to .45 m.
- clearGrazerFocus();const g=F.GEOMETRY;fieldcraftFrame={sim,lease:ctx.ownerLease,player:{...sim.state.player},point:[g.from[0]+1,(g.from[1]+g.to[1])/2,(g.from[2]+g.to[2])/2]};
+ clearGrazerFocus();clearCarrierFocus();const g=F.GEOMETRY;fieldcraftFrame={sim,lease:ctx.ownerLease,player:{...sim.state.player},point:[g.from[0]+1,(g.from[1]+g.to[1])/2,(g.from[2]+g.to[2])/2]};
  const aspect=Math.max(.2,innerWidth/innerHeight),perspective=camera.preset==='adventure';
  camera.tour=false;camera.overview=false;follow=null;camera.yaw=perspective&&aspect<.75?.35:Math.PI/2;camera.elevation=perspective?.30:.50;
  if(perspective){
@@ -427,7 +465,9 @@ function cameraHalf(mode){
 function fitCameraHalf(base,zoom){return Math.max(6,Math.min(Math.max(52,base),base*zoom));}
 function rememberCamera(){
  if(!camera.ready||camera.tour)return;const views=sim.state.settings.cameraViews,yaw=((camera.yaw%(Math.PI*2))+Math.PI*2)%(Math.PI*2);
- views.profiles[camera.preset]=camera.preset==='adventure'?{yaw,elevation:camera.elevation,distance:camera.distance}:{yaw,elevation:camera.elevation,zoom:camera.zoom};
+ const held=carrierInspectionView?.preset===camera.preset?carrierInspectionView:null,preference=axis=>held&&Math.abs(camera[axis]-held.applied[axis])<1e-9?held.before[axis]:camera[axis];
+ const savedYaw=held?((preference('yaw')%(Math.PI*2))+Math.PI*2)%(Math.PI*2):yaw;
+ views.profiles[camera.preset]=camera.preset==='adventure'?{yaw:savedYaw,elevation:preference('elevation'),distance:preference('distance')}:{yaw:savedYaw,elevation:preference('elevation'),zoom:preference('zoom')};
 }
 function resize(){
  let w=innerWidth,h=innerHeight;if(engine)engine.resize(w,h,devicePixelRatio||1);ui.map.width=Math.round(w*(devicePixelRatio||1));ui.map.height=Math.round(h*(devicePixelRatio||1));
@@ -461,7 +501,7 @@ function updateCamera(dt){
 function updateOrthographicCamera(dt){if(!engine)return;let desired;const fittingFocus=grazerFocus()||carrierFocus()||fieldcraftFocus();if(fittingFocus)desired=fittingFocus;else if(camera.tour&&!sim.room){camera.tourTime=(camera.tourTime||0)+dt;let spots=[[0,1.7,2,23,.72],[14,1.8,3,19,.87],[33,2,1,17,1.05],[37,2,-1,14,1.23],[23,2,3,23,.85],[0,1.7,2,23,.72]],f=(camera.tourTime%60)/12,i=Math.min(4,Math.floor(f)),u=f-i;u=u*u*(3-2*u);let a=spots[i],b=spots[i+1];desired=a.slice(0,3).map((v,j)=>v+(b[j]-v)*u);camera.half=a[3]+(b[3]-a[3])*u;camera.yaw=a[4]+(b[4]-a[4])*u;}else if(RealmWorldFoundations.handles(sim.room)){const b=RealmWorldFoundations.definition(sim.room).bounds;desired=camera.overview?[(b.minX+b.maxX)/2,3,(b.minZ+b.maxZ)/2]:[sim.state.player.x,sceneHeight()+.6,sim.state.player.z];}else if(sim.room===RealmEarth.ROOM)desired=camera.overview?[0,3,-10]:[sim.state.player.x,sceneHeight()+.5,sim.state.player.z];else if(sim.room===RealmCosmos.ROOM)desired=camera.overview?[(RealmCosmos.BOUNDS.minX+RealmCosmos.BOUNDS.maxX)/2,4,(RealmCosmos.BOUNDS.minZ+RealmCosmos.BOUNDS.maxZ)/2]:[sim.state.player.x,sceneHeight()+.5,sim.state.player.z];else if(sim.room==='riverbank')desired=camera.overview?[0,2,-2.5]:[sim.state.player.x,2,sim.state.player.z];else if(sim.room==='range')desired=camera.overview?[0,2,0]:[sim.state.player.x,2,sim.state.player.z];else if(sim.room==='crossing')desired=camera.overview?[0,2,-1]:[sim.state.player.x,2,sim.state.player.z];else if(sim.room==='road')desired=camera.overview?[0,1.7,-3]:[sim.state.player.x,2,sim.state.player.z];else if(sim.room==='mine')desired=camera.overview?[0,2,-1]:[sim.state.player.x,2,sim.state.player.z];else if(sim.room)desired=[0,2,0];else if(camera.overview)desired=[10,1.7,-10];else{let p=follow?sim.state.residents.find(r=>r.id===follow):sim.state.player;desired=[p.x,1.9,p.z];}let factor=sim.state.settings.reducedMotion?1:1-Math.exp(-Math.max(dt,.001)*2.6);for(let i=0;i<3;i++)camera.center[i]+=(desired[i]-camera.center[i])*factor;let d=75,ce=Math.cos(camera.elevation),eye=[camera.center[0]+Math.sin(camera.yaw)*ce*d,camera.center[1]+Math.sin(camera.elevation)*d,camera.center[2]+Math.cos(camera.yaw)*ce*d];engine.setCamera({eye,target:camera.center.slice(),half:camera.half,aspect:innerWidth/innerHeight});}
 function cameraPreset(mode='adventure',remember=true,reset=false){
  if(!['adventure','follow','tactical','wide'].includes(mode))return;
- clearGrazerFocus();fieldcraftFrame=null;carrierFrame=null;if(remember)rememberCamera();const views=sim.state.settings.cameraViews,p=reset?null:views.profiles[mode];
+ clearGrazerFocus();clearCarrierFocus();fieldcraftFrame=null;if(remember)rememberCamera();const views=sim.state.settings.cameraViews,p=reset?null:views.profiles[mode];
  camera.tour=false;follow=null;camera.preset=mode;camera.overview=mode==='wide';
  if(mode==='adventure'){camera.yaw=p?.yaw??sim.state.player.yaw+Math.PI;camera.elevation=p?.elevation??.28;camera.distance=p?.distance??7.5;camera.actualDistance=camera.distance;camera.fov=sim.state.settings.cameraFov;}
  else{views.lastDiorama=mode;camera.yaw=p?.yaw??.76;camera.elevation=p?.elevation??(mode==='tactical'?1.08:.88);camera.baseHalf=cameraHalf(mode);camera.zoom=p?.zoom??1;camera.half=fitCameraHalf(camera.baseHalf,camera.zoom);}
@@ -473,15 +513,16 @@ function toggleCamera(){cameraPreset(camera.preset==='adventure'?sim.state.setti
 function resetCamera(){cameraPreset(camera.preset,true,true);}
 function frameFoe(){
  if(!engine||sim.paused||sim.worldDive)return{ok:false,error:'Return to active dry play before framing a foe.'};
- const result=RealmCombatView.plan({preset:camera.preset,player:sim.state.player,enemy:RealmCombat.selected(sim),distance:camera.distance});
- if(!result.ok)return result;clearGrazerFocus();Object.assign(camera,result.view);follow=null;updateCamera(1);save();return result;
+ const held=carrierInspectionView,distance=held?.preset===camera.preset&&Math.abs(camera.distance-held.applied.distance)<1e-9?held.before.distance:camera.distance;
+ const result=RealmCombatView.plan({preset:camera.preset,player:sim.state.player,enemy:RealmCombat.selected(sim),distance});
+ if(!result.ok)return result;clearGrazerFocus();clearCarrierFocus();Object.assign(camera,result.view);follow=null;updateCamera(1);save();return result;
 }
 function bridgeView(){
  if(!engine)return{ok:false,error:'3D is unavailable for framing this crossing.'};
  const result=RealmBridgeMomentView.plan({scene:sim.room,player:sim.state.player,
   preset:camera.preset,diving:!!sim.worldDive,baseHalf:camera.baseHalf});
  if(!result.ok)return result;
- clearGrazerFocus();Object.assign(camera,result.view);follow=null;
+ clearGrazerFocus();clearCarrierFocus();Object.assign(camera,result.view);follow=null;
  updateCamera(1);save();return result;
 }
 function switchScene(){syncRoadkeeperOwner();syncFieldcraftOwner();bindWildSignsClearance();if(scene===sim.room)return;rememberCamera();scene=sim.room;camera.tour=false;if(engine){if(RealmWorldFoundations.handles(scene)){RealmWorldFoundationsArt.make(art,sim);engine.surfacePick=(start,ray,max)=>sim.worldDive?null:RealmWorldFoundations.pick(scene,start,ray,max);}else if(scene===RealmEarth.ROOM){RealmEarthArt.make(art,sim);engine.surfacePick=RealmEarth.pick;}else if(scene===RealmCosmos.ROOM){RealmCosmosArt.make(art,sim);engine.surfacePick=RealmCosmos.pick;}else if(scene==='riverbank')RealmStarterArt.make(art,sim);else if(scene==='crossing')RealmCrossingArt.make(art,sim);else if(scene==='range')RealmArsenalArt.court(art);else if(scene==='road')RealmRoadArt.make(art,sim);else if(scene==='mine')RealmAdventureArt.cave(art,sim);else if(scene)art.makeInterior(scene,sim.state.retreat);else art.makeExterior();}camera.center=[sim.state.player.x,sceneHeight()+1.5,sim.state.player.z];cameraPreset(camera.preset,false);target=null;follow=null;labelsRebuild();resize();}
@@ -586,7 +627,7 @@ arsenal=new RealmArsenalUI.ArsenalUI({sim:()=>sim,adventure:()=>adventure,openPa
 
 rpg=new RealmRPGUI.RPGUI({wildSignsContext,wildSignsCommand,wildSignsObserve,wildSignsRetryClearance,consignmentContext,consignmentControl,fieldcraftContext,frameFieldcraft,frameCarrier,frameGrazer,earthRoadTravel,frameFoe,canFrameFoe:()=>!!engine&&!sim.paused&&!sim.worldDive&&RealmCombatView.plan({preset:camera.preset,player:sim.state.player,enemy:RealmCombat.selected(sim),distance:camera.distance}).ok,earthHomecomingCommand,cosmosCampaignCommand,atlantisCampaignCommand,heavenCampaignCommand,hellCampaignCommand,bridgeCommunityCommand,localLifeCommand,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,earthContext,earthTravel,earthReturn,bridgeView,cosmosContext,cosmosTravel,cosmosReturn,sim:()=>sim,adventure:()=>adventure,closePanel,openPanel,endBuild:()=>{sandbox.endBuild();sandbox.stopAuto();},clearKeys:()=>keys.clear(),focusWorld:()=>ui.canvas.focus({preventScroll:true}),toast,save,exportWorld,characters:()=>characterStore.describe(sim.snapshot()),characterAction,characterExport,characterImport,characterReload,characterRecovery,panel:()=>panel,camera:cameraPreset,resetCamera,rotate:a=>{clearGrazerFocus();camera.yaw+=a;camera.tour=false;},direction:()=>adventure.api.direction(),music:()=>experience.open(),gather:id=>sandbox.seek(id),walkLocal:walkAdventure,stopPersonalMusic:()=>experience?.stop(),audio:()=>audio,project:(x,y,z)=>engine?.project(x,y,z)});
 // Input distinguishes clicks from drags, with two-finger zoom on touch screens.
-let pointers=new Map(),gesture=null,keys=new Set();function zoom(k){clearGrazerFocus();camera.tour=false;if(camera.preset==='adventure'){camera.distance=Math.max(3.5,Math.min(20,camera.distance*k));return;}camera.half=C.clamp?C.clamp(camera.half*k,6,52):Math.max(6,Math.min(52,camera.half*k));camera.zoom=camera.half/camera.baseHalf;camera.overview=false;}
+let pointers=new Map(),gesture=null,keys=new Set();function zoom(k){clearGrazerFocus();clearCarrierFocus();camera.tour=false;if(camera.preset==='adventure'){camera.distance=Math.max(3.5,Math.min(20,camera.distance*k));return;}camera.half=C.clamp?C.clamp(camera.half*k,6,52):Math.max(6,Math.min(52,camera.half*k));camera.zoom=camera.half/camera.baseHalf;camera.overview=false;}
 function pointerDown(e){e.currentTarget.focus({preventScroll:true});camera.tour=false;if(e.button!==0&&e.button!==2&&e.pointerType!=='touch')return;e.preventDefault();e.currentTarget.setPointerCapture(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size===1)gesture={x:e.clientX,y:e.clientY,lastX:e.clientX,lastY:e.clientY,moved:false,pinch:false,orbitOnly:e.button===2};else if(pointers.size===2){let p=[...pointers.values()];gesture.pinch=true;gesture.moved=true;gesture.distance=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y);}}
 function pointerMove(e){if(sandbox?.build&&engine){const p=engine.groundAt(e.clientX,e.clientY,1.3);if(p)sandbox.cursor(p);}if(!pointers.has(e.pointerId)||!gesture)return;let before=pointers.get(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size===2){let p=[...pointers.values()],d=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y);if(gesture.distance>1&&d>1)zoom(gesture.distance/d);gesture.distance=d;return;}let distance=Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y);if(distance>6)gesture.moved=true;if(gesture.moved&&!gesture.pinch){clearGrazerFocus();camera.yaw-=(e.clientX-before.x)*.007;camera.elevation=Math.max(camera.preset==='adventure'?-.08:.39,Math.min(1.2,camera.elevation+(e.clientY-before.y)*.004));}}
 function pointerUp(e){if(!pointers.has(e.pointerId)||!gesture)return;let click=!gesture.moved&&!gesture.pinch&&!gesture.orbitOnly;pointers.delete(e.pointerId);if(click){if(engine&&adventure?.screenClick(e.clientX,e.clientY)){if(!pointers.size)gesture=null;return;}let p=engine?engine.groundAt(e.clientX,e.clientY,sim.room?1.58:1.3):mapToWorld(e.clientX,e.clientY);if(!p){if(!pointers.size)gesture=null;return;}if(adventure?.worldClick(p)||sandbox?.worldClick(p,e.pointerType==='touch')){if(!pointers.size)gesture=null;return;}let r=sim.moveTo(p.x,p.z);if(r.ok){target=p;follow=null;camera.overview=false;}else toast('That point is outside the walkable ground. Choose a path or use Explore.');}if(!pointers.size)gesture=null;if(gesture===null){rememberCamera();save();}}

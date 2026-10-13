@@ -34,8 +34,9 @@ class Guards(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         self = cls
-        # Tests use only small disposable schema files on the stage's D drive.
-        self.temp = tempfile.TemporaryDirectory(prefix='cpu-schema-', dir=STAGE)
+        # Tiny CPU-only schemas honour the verifier's --cpu-temp child env.
+        # Native profiles, earned sources and heavy evidence retain D-only guards.
+        self.temp = tempfile.TemporaryDirectory(prefix='cpu-schema-')
         self.base = Path(self.temp.name)
         self.root = self.base/'fake-source-schema'
         (self.root/'src').mkdir(parents=True)

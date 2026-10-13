@@ -126,6 +126,27 @@ test('actual generated tray Look delegates private proof and closes without repa
  for(const raw of[undefined,Promise.resolve({ok:true}),{}]){f.rpg.api.frameCarrier=()=>raw;choose(f,'carrier-look');assert.equal(f.closed,1);assert.match(f.toasts.at(-1),/no synchronous confirmation/);assert.ok(P.current(f.sim));}
 });
 
+test('paid generated Look is distinct, fenced and readonly; reload and legacy payment get none',()=>{
+ const P=globalThis.RealmEarthPatrolCarrier,f=fixture({...paid(),patrol:{lastClaim:0,active:{run:1,steps:E.patrol.steps.slice(0,4).map(s=>s.id)}}});locate(f,E.patrol.steps.at(-1));fitCarrierUI(f);choose(f,'carrier-record');locate(f,E.patrol.giver);assert.ok(choose(f,'patrol-claim','',{run:'1',priorClaim:'0'}).ok);
+ let calls=0,closes=0;f.rpg.close=()=>{f.rpg.closed=true;closes++;};f.rpg.api.frameCarrier=(view,purpose)=>{calls++;assert.equal(view.status,'paid');assert.ok(P.isProjection(view,f.sim.state.earthExpedition));assert.equal(purpose,'receiving');return{ok:true,text:'Readonly receiving observer'};};
+ const el=buttons(f.ui.page('expedition').html).find(b=>b.dataset.rpg==='expedition-carrier-look-received');assert.ok(el,'explicit paid inspection control');
+ const before=f.sim.snapshot(),writes=f.saves.length,commands=f.commands.length,paints=f.rpg.paints;assert.equal(f.ui.action(el),true);assert.equal(calls,1);assert.equal(f.rpg.closed,true);assert.equal(f.rpg.paints,paints);assert.deepEqual(f.sim.snapshot(),before);assert.equal(f.saves.length,writes);assert.equal(f.commands.length,commands);
+ for(const key of['carrierRun','carrierPrior','carrierBranch','carrierStamp']){const forged={dataset:{...el.dataset,[key]:'wrong'}};assert.equal(f.ui.action(forged),true);assert.equal(calls,1);assert.deepEqual(f.sim.snapshot(),before);}
+ for(const raw of[undefined,Promise.resolve({ok:true}),{}, {ok:false,error:'Receiving renderer unavailable'}]){f.rpg.api.frameCarrier=()=>raw;f.ui.action(el);assert.equal(closes,1);assert.deepEqual(f.sim.snapshot(),before);assert.equal(f.commands.length,commands);assert.equal(P.current(f.sim).status,'paid');}
+ assert.ok(E.command(f.context(),'patrol-accept',{quest:E.patrol.id,run:2,priorClaim:1},{save:f.save}).ok);const after=f.sim.snapshot();f.ui.action(el);assert.equal(calls,1);assert.deepEqual(f.sim.snapshot(),after);
+ const reloaded=new C.Simulation(before);f.sim=reloaded;assert.ok(!f.ui.carrier.panel().includes('look-received'));
+ const legacy=fixture({...paid(),patrol:{lastClaim:0,active:{run:1,steps:E.patrol.steps.map(s=>s.id)}}});legacy.rpg.api.frameCarrier=()=>{throw Error('No legacy receiving recognition');};assert.ok(choose(legacy,'patrol-claim','',{run:'1',priorClaim:'0'}).ok);assert.ok(!legacy.ui.carrier.panel().includes('look-received'));
+});
+
+test('actual feedback describes signed control axes and accepts tolerance instead of demanding exact zero',()=>{
+ const P=globalThis.RealmEarthPatrolCarrier,f=fixture({...paid(),patrol:{lastClaim:0,active:{run:1,steps:E.patrol.steps.slice(0,4).map(s=>s.id)}}});locate(f,E.patrol.steps.at(-1));choose(f,'carrier-begin');choose(f,'carrier-inspect');
+ let v=P.current(f.sim),p=v.pieces[0],r=v.receivers[0];assert.match(f.ui.carrier.feedback(p,r),/Decrease Across by at least 2\.5 cm/);assert.match(f.ui.carrier.feedback(p,r),/Decrease Turn by at least 3\.8°/);assert.match(f.ui.carrier.feedback(p,r),/actual corners overhang/);
+ f.ui.carrier.input(carrierInput(f,'x',-4));v=P.current(f.sim);assert.match(f.ui.carrier.feedback(v.pieces[0],v.receivers[0]),/Increase Across/);
+ f.ui.carrier.input(carrierInput(f,'yaw',0));f.ui.carrier.input(carrierInput(f,'x',1));v=P.current(f.sim);assert.equal(v.pieces[0].fits,true);assert.match(f.ui.carrier.feedback(v.pieces[0],v.receivers[0]),/Ready to seat/);assert.ok(!/Decrease Across|Increase Across/.test(f.ui.carrier.feedback(v.pieces[0],v.receivers[0])));
+ const g=fixture({...paid(),patrol:{lastClaim:0,active:{run:1,steps:E.patrol.steps.slice(0,4).map(s=>s.id)}}});locate(g,E.patrol.steps.at(-1));const start=P.begin(g.context()),guide=start.view.receivers[0];assert.ok(P.inspect(g.context(),start.plan,'bundle',guide.id).ok);
+ const edge=P.adjust(g.context(),start.plan,{pieceId:'bundle',receiverId:guide.id,x:0,z:0,yaw:2*Math.PI/180+2e-12});assert.ok(edge.ok);assert.equal(edge.view.pieces[0].fits,false);assert.match(g.ui.carrier.feedback(edge.view.pieces[0],edge.view.receivers[0]),/Decrease Turn slightly/);assert.ok(!g.ui.carrier.feedback(edge.view.pieces[0],edge.view.receivers[0]).includes('0.0°'));
+});
+
 test('old ready run claim refusal retains its checked kit and successful claim settles it once',()=>{
  const Art=require('../src/earth-expedition-art.js'),f=fixture({...paid(),patrol:{lastClaim:0,active:{run:1,steps:E.patrol.steps.map(s=>s.id)}}});const before=f.sim.snapshot(),parts=Art.parts(f.sim.state.earthExpedition);assert.ok(parts.some(p=>p.opt.expeditionPart==='patrol-kit-checked'));
  f.save=()=>({ok:false,error:'claim refused'});assert.equal(choose(f,'patrol-claim','',{run:'1',priorClaim:'0'}).ok,false);assert.deepEqual(f.sim.snapshot(),before);assert.deepEqual(Art.parts(f.sim.state.earthExpedition),parts);

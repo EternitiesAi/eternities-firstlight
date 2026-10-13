@@ -39,7 +39,9 @@ class ReceiptGuards(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.guards = H.load_guards(SOURCE_ROOT)
-        cls.temp = tempfile.TemporaryDirectory(prefix='cpu-capture-schema-', dir=STAGE)
+        # Small portable CPU schemas use the configured temporary directory.
+        # They are never native profiles, game copies or earned evidence.
+        cls.temp = tempfile.TemporaryDirectory(prefix='cpu-capture-schema-')
         cls.base = Path(cls.temp.name)
         cls.root = cls.base/'synthetic-source-schema'
         (cls.root/'src').mkdir(parents=True)
@@ -153,8 +155,22 @@ class ReceiptGuards(unittest.TestCase):
             self.run_preflight(output=self.root/'new-capture')
 
     def test_windows_native_paths_are_D_only_and_not_drive_root(self):
-        for output in ('C:/source-scratch/capture','D:/'):
-            with self.assertRaises(ValueError):H.preflight(self.source(),output,self.root,guards=self.guards,windows=True)
+        # The output guard runs before reading this nonexistent D source. Keep
+        # that source on D so each refusal exercises the original output rule,
+        # even when the portable CPU schema itself resides on C.
+        source=self.source()
+        if os.name=='nt':
+            source=Path('D:/07-GAMES/Firstlight/cache/cpu-output-boundary-never-created')/(H.CHECKPOINT+'.json')
+        # POSIX retains the original portable refusals; D-drive positives and
+        # boundary-specific messages below are exercised on actual Windows.
+        for output,message in (('C:/source-scratch/capture','must resolve to D:'),('D:/','bounded directory, not a drive root')):
+            refusal=self.assertRaisesRegex(ValueError,message) if os.name=='nt' else self.assertRaises(ValueError)
+            with refusal:H.preflight(source,output,self.root,guards=self.guards,windows=True)
+        if os.name=='nt':
+            self.assertEqual(self.guards.bounded(source,windows=True),source.resolve())
+            if self.source().drive.upper()!='D:':
+                with self.assertRaisesRegex(ValueError,'must resolve to D:'):
+                    H.preflight(self.source(),'D:/07-GAMES/Firstlight/cache/cpu-native-never-created',self.root,guards=self.guards,windows=True)
 
     def test_strongest_original_bytes_are_bound(self):
         (self.root/self.guards.VETERAN_FIXTURE).write_text('wrong original',encoding='utf8')

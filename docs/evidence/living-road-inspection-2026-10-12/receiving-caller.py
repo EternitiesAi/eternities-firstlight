@@ -1,0 +1,288 @@
+#!/usr/bin/env python3
+"""Bounded actual returned-kit movie after native fitting, inspection, walk and payment.
+
+Native character import, travel, work controls and ordinary RAF only. Recording
+starts beside Rill after inspection, ordinary return and original payment,
+uses the actual WebGL canvas, and lasts at most90 seconds.
+The silent canvas movie excludes DOM controls/HUD; separate screenshots preserve
+those. This is an automated known solution, not human pacing or FPS certification.
+Failure evidence and isolated profiles remain in the fresh D-drive output.
+"""
+from pathlib import Path
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+import argparse
+import hashlib
+import json
+import math
+import os
+import subprocess
+import tempfile
+import threading
+import time
+import traceback
+
+import sys
+sys.path.insert(0, str(Path('D:/07-GAMES/Firstlight/verification/current-qualified-game/tools')))
+from browser_support import launch_kwargs
+from capture_earth_expedition import CORE_FILES, fieldcraft_selector, fieldcraft_edit, fitting_unchanged, preservation
+
+ROOT = Path('D:/07-GAMES/Firstlight/verification/current-qualified-game')
+VIEWPORT = {'width':1440, 'height':960}
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+def validate_build(root=ROOT):
+    """Refuse stale equal pages before browser acquisition; never rebuild here."""
+    html=(root/'index.html').read_bytes()
+    if (root/'FIRSTLIGHT_VALLEY.html').read_bytes()!=html:raise ValueError('Checked-in HTML pages differ')
+    lf=lambda body:body.replace(b'\r\n',b'\n').replace(b'\r',b'\n')
+    embedded={}
+    for name in CORE_FILES:
+        if name.startswith('src/') and name.endswith('.js'):
+            body=(root/name).read_bytes()
+            if lf(body) not in lf(html):raise ValueError('Current runtime source not embedded: '+name)
+            embedded[name]=sha(root/name)
+    return embedded
+
+def validate_source(world, work='carrier'):
+    # Fixed existing IDs; a declared earned prefix, never invented completion.
+    expected = ['assess-load','prepare-allocation','read-water','clear-crossing','read-root-load','clear-root-pests']
+    ledger = world.get('earthExpedition', {})
+    story = ledger.get('story', {})
+    if world.get('version') !=9 or world.get('adventure', {}).get('version') !=12:
+        raise ValueError('Current world9/adventure12 command-earned snapshot required')
+    if work!='carrier':raise ValueError('This private returned-kit caller admits carrier work only')
+    if work=='support':
+        if not story.get('accepted') or story.get('claimed') or story.get('steps') != expected:
+            raise ValueError('Use the exact command-earned 02A_ROOT_CLEAR snapshot before fitting')
+        if ledger.get('patrol') != {'lastClaim':0,'active':None}:
+            raise ValueError('Unpaid original story prefix required')
+    else:
+        patrol=ledger.get('patrol',{});active=patrol.get('active') or {};run=active.get('run')
+        expected=['inspect-water','clear-crossing','inspect-root','clear-root-pests']
+        if type(run) is not int or run!=1 or type(patrol.get('lastClaim')) is not int or patrol['lastClaim']!=0 or active.get('steps')!=expected:
+            raise ValueError('Use the exact command-earned PATROL_n_GLADE_OPEN snapshot before fitting')
+        if not story.get('accepted') or not story.get('claimed') or story.get('steps')!=['assess-load','prepare-allocation','read-water','clear-crossing','read-root-load','clear-root-pests','brace-root-channel','deliver-allocation']:
+            raise ValueError('Actually claimed complete original delivery required')
+    if story.get('branch') not in ['stormfall-recovery','managed-coppice']:raise ValueError('Saved allocation required')
+    a = world['adventure']
+    if not a.get('started') or a.get('hp',0)<=0 or a.get('equipment', {}).get('weapon') not in a.get('owned', []):
+        raise ValueError('Alive character with earned owned equipment required')
+    return expected
+
+def percentile(values, fraction):
+    if not values:return None
+    return sorted(values)[min(len(values)-1, int((len(values)-1)*fraction))]
+
+def validate_checkpoint(source, journey):
+    """Bind selected bytes to the successful producer's emitted checkpoint map."""
+    report_bytes=journey.read_bytes();report=json.loads(report_bytes.decode('utf-8-sig'))
+    checkpoint=report.get('checkpoints',{}).get(source.name)
+    if report.get('status')!='passed' or report.get('sourceDrift') is not False or not isinstance(checkpoint,dict) or checkpoint.get('sha256')!=sha(source):
+        raise ValueError('Successful current journey checkpoint digest required')
+    expected={'earth-expedition.js','earth-fieldcraft.js','earth-patrol-carrier.js','core.js','adventure.js','combat.js','arsenal.js','world-foundations.js','elderweald-world.js'}
+    declared=report.get('sourceHashes')
+    if report.get('harnessSha256')!=sha(ROOT/'tests/earth_expedition_journey.cjs'):
+        raise ValueError('Current command-earned producer harness required')
+    if not isinstance(declared,dict) or set(declared)!=expected or any(declared[name]!=sha(ROOT/'src'/name) for name in expected):
+        raise ValueError('Exact current nine-member producer source map required')
+    return {'path':str(journey),'sha256':hashlib.sha256(report_bytes).hexdigest(),'checkpoint':source.name,'checkpoint_sha256':checkpoint['sha256'],'harness_sha256':report.get('harnessSha256')}
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--source',type=Path,required=True)
+    parser.add_argument('--journey-report',type=Path,required=True)
+    parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--renderer',choices=['hardware','software'],required=True)
+    parser.add_argument('--work',choices=['carrier'],default='carrier')
+    args=parser.parse_args(); source=args.source.resolve(); out=args.output.resolve()
+    if not args.output.is_absolute() or os.name=='nt' and out.drive.lower()!='d:':parser.error('Fresh absolute D-drive output required')
+    if out.exists() or not source.is_file():parser.error('Output must be new and source must exist')
+    source_bytes=source.read_bytes();source_sha256=hashlib.sha256(source_bytes).hexdigest()
+    initial=json.loads(source_bytes.decode('utf-8-sig')); validate_source(initial,args.work)
+    producer=validate_checkpoint(source,args.journey_report.resolve())
+    if producer['checkpoint_sha256']!=source_sha256:raise ValueError('Source changed during checkpoint preflight')
+    embedded=validate_build()
+    from playwright.sync_api import sync_playwright
+    out.mkdir(parents=True); retained_source=out/'SOURCE_WORLD.json';retained_source.write_bytes(source_bytes)
+    report={'status':'running','method':__doc__,'source':{'path':str(source),'sha256':source_sha256,'imported_retained_copy':str(retained_source)},
+            'producer':producer,'head':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+            'html_sha256':sha(ROOT/'index.html'),'embedded_sources':embedded,'viewport':VIEWPORT,'renderer_requested':args.renderer,'work':args.work,
+            'checks':[],'events':[],'browser_errors':[],'external_requests':[],
+            'human_acceptance':False,'context_closed':False,'server_closed':False}
+    sources={p.relative_to(ROOT).as_posix():sha(p) for p in (ROOT/'src').rglob('*') if p.is_file()};report['sources_sha256']=sources
+    def check(label,condition,detail=None):
+        report['checks'].append({'name':label,'ok':bool(condition),'detail':detail})
+        if not condition:raise AssertionError(label+': '+repr(detail))
+    class Handler(SimpleHTTPRequestHandler):
+        def __init__(self,*a,**kw):super().__init__(*a,directory=str(ROOT),**kw)
+        def log_message(self,*_):pass
+    server=ThreadingHTTPServer(('127.0.0.1',0),Handler);threading.Thread(target=server.serve_forever,daemon=True).start()
+    origin='http://127.0.0.1:'+str(server.server_port);report['origin']=origin
+    profile=Path(tempfile.mkdtemp(prefix='fieldcraft-',dir=out));report['profile']=str(profile)
+    context=page=None;started=time.monotonic();video=out/'ACTUAL_FIELDCRAFT.webm'
+    try:
+        check('Identical checked-in HTML',sha(ROOT/'FIRSTLIGHT_VALLEY.html')==report['html_sha256'])
+        with sync_playwright() as pw:
+            try:
+                context=pw.chromium.launch_persistent_context(str(profile),**launch_kwargs(args.renderer),viewport=VIEWPORT,accept_downloads=True)
+                report['browser_version']=context.browser.version if context.browser else None
+                def route(r):
+                    if r.request.url.startswith(origin+'/'):r.continue_()
+                    else:report['external_requests'].append(r.request.url);r.abort()
+                context.route('**/*',route);page=context.new_page();page.on('pageerror',lambda e:report['browser_errors'].append(str(e)))
+                def retain_movie(download):
+                    if download.suggested_filename!='ACTUAL_FIELDCRAFT.webm':raise ValueError('Unexpected recording download')
+                    if video.exists():raise ValueError('A retained take cannot be overwritten')
+                    download.save_as(str(video))
+                    report['download_retained']=True
+                page.on('download',retain_movie)
+                def wait_retained():
+                    deadline=time.monotonic()+15
+                    while not report.get('download_retained'):
+                        if time.monotonic()>=deadline:raise TimeoutError('Recorder download was not confirmed retained')
+                        page.wait_for_timeout(100)
+                response=page.goto(origin+'/index.html',wait_until='load');page.wait_for_function('()=>!!window.Realm&&getComputedStyle(document.querySelector("#loading")).opacity==="0"')
+                check('Production page without test controls',page.evaluate('()=>typeof Realm.test==="undefined"'))
+                check('Exact served build',hashlib.sha256(response.body()).hexdigest()==report['html_sha256'])
+                def state():return page.evaluate('()=>Realm.state')
+                def close():
+                    if page.locator('#rpg-window').evaluate('(e)=>e.open'):page.locator('#rpg-close').click()
+                def click(selector):
+                    loc=page.locator(selector);check('Unique native control '+selector,loc.count()==1);loc.click()
+                def workspace(tab):
+                    close();page.keyboard.press('j');click('#rpg-tabs [data-rpg="open"][data-id="'+tab+'"]')
+                def observe(label,picture=False):
+                    w=state();d=page.evaluate('()=>Realm.diagnostics');report['events'].append({'label':label,'seconds':time.monotonic()-started,'camera':d['camera'],'steps':w['earthExpedition']['story']['steps'],'patrol':w['earthExpedition']['patrol']})
+                    if picture:page.screenshot(path=str(out/(label+'.png')))
+                    return w
+                workspace('characters');legacy=page.evaluate('()=>localStorage.getItem(RealmCore.KEY)')
+                with page.expect_file_chooser() as chooser:click('#rpg-content [data-rpg="chars-import"]')
+                chooser.value.set_files(str(retained_source));page.wait_for_selector('[data-rpg="chars-confirm-import"]');click('[data-rpg="chars-confirm-import"]')
+                page.wait_for_function('()=>Realm.diagnostics.characters.active==="character-2"&&Realm.diagnostics.characters.writer===true')
+                base=state();check('Native import preserves exact earned prefix',base['earthExpedition']==initial['earthExpedition'])
+                check('Legacy storage untouched',page.evaluate('()=>localStorage.getItem(RealmCore.KEY)')==legacy)
+                chosen_quality='low' if args.renderer=='software' else 'balanced'
+                close();click('#settings');page.locator('#quality').select_option(chosen_quality);page.locator('#setting-timeFlow').uncheck();click('#close-panel')
+                report['quality']=state()['settings']['quality'];check('Declared capture quality selected',report['quality']==chosen_quality)
+                d=page.evaluate('()=>Realm.diagnostics');report['renderer']=d['renderer'];check('Actual WebGL2',d['mode']=='webgl2')
+                software=any(s in d['renderer'].lower() for s in ['swiftshader','llvmpipe','software'])
+                check('Requested renderer verified',software==(args.renderer=='software'),d['renderer'])
+                workspace('worlds')
+                if page.locator('[data-rpg="world-list"]').count():click('[data-rpg="world-list"]')
+                click('[data-rpg="world-select"][data-id="earthlands"]');click('[data-rpg="world-preview"]');click('[data-rpg="world-confirm"]')
+                page.wait_for_function('()=>Realm.diagnostics.scene==="world-earthlands"')
+                work_id='brace-root-channel' if args.work=='support' else 'inspect-glade'
+                work_x,work_z=(-145,-84) if args.work=='support' else (-106,-105)
+                selector=fieldcraft_selector if args.work=='support' else lambda action,section=None:'[data-rpg="expedition-carrier-'+action+'"]'
+                workspace('expedition');click('[data-rpg="expedition-walk"][data-id="'+work_id+'"]')
+                walking=time.monotonic();stable=None;previous=None
+                while time.monotonic()-walking<240:
+                    d=page.evaluate('()=>Realm.diagnostics');p=d['adventure']['player']
+                    motion=math.hypot(p['x']-previous['x'],p['z']-previous['z']) if previous else math.inf
+                    if not d['adventure']['paused'] and math.hypot(p['x']-work_x,p['z']-work_z)<2.8 and motion<.01:
+                        stable=stable if stable is not None else time.monotonic()
+                        if time.monotonic()-stable>=.3:break
+                    else:stable=None
+                    previous=p;page.wait_for_timeout(120)
+                else:raise TimeoutError('Native worksite route did not settle')
+                report['worksite_arrival']={'player':p,'walk_seconds':time.monotonic()-walking,'stable_seconds':time.monotonic()-stable}
+                close();page.keyboard.press('e');page.wait_for_selector('#rpg-window[open]')
+                observe('WORKSITE_E',True)
+                check('Native fitting entry at actual worksite',page.locator(selector('begin')).count()==1)
+                click(selector('begin'))
+                check('Native fitting controls at actual worksite',page.locator(selector('inspect',1)).count()==1)
+                before=state();observe('WORKSPACE_BEFORE',True)
+                close()
+                def look(mode,label):
+                    close();click('#rpg-hud [data-rpg="camera"][data-id="'+mode+'"]');workspace('expedition');fov=page.evaluate('()=>Realm.diagnostics.camera.fov');click('[data-rpg="expedition-carrier-look-received"]');page.wait_for_timeout(1800);observe(label)
+                    check(label+' workspace closed for visible work',not page.locator('#rpg-window').evaluate('(e)=>e.open'))
+                    check(label+' retains chosen view/FOV',page.evaluate('()=>Realm.diagnostics.camera.preset')==mode and page.evaluate('()=>Realm.diagnostics.camera.fov')==fov)
+                for n in range(1,5 if args.work=='support' else 4):
+                    workspace('expedition');click(selector('inspect',n))
+                    if args.work=='carrier':
+                        piece=page.locator(selector('seat')).get_attribute('data-piece')
+                        target=page.evaluate('''([branch,id])=>RealmEarthPatrolCarrier.definition(branch).pieces.find(p=>p.id===id).target''',[before['earthExpedition']['story']['branch'],piece])
+                        check('Starting supplied piece needs correction '+piece,not page.locator(selector('seat')).is_enabled())
+                        for axis in ['x','z','yaw']:
+                            control=page.locator('#carrier-'+axis+'-number');control.focus()
+                            if axis=='x':
+                                control.press('ControlOrMeta+A');control.press('Backspace');control.press('-')
+                                check('Partial typing preserves focused native input '+piece,page.evaluate('()=>document.activeElement?.id==="carrier-x-number"') and not page.locator(selector('seat')).is_enabled())
+                            control.fill(str(target[axis]*180/math.pi if axis=='yaw' else target[axis]*100))
+                            check('Actual native carrier edit retains focus '+axis,page.evaluate('id=>document.activeElement?.id===id','carrier-'+axis+'-number'))
+                        check('Supplied placement changes no ownership or ledger',fitting_unchanged(before,state()))
+                    elif n==1:
+                        check('Native yaw edit retains focus',fieldcraft_edit(page,'yaw',0));check('Native pitch edit retains focus',fieldcraft_edit(page,'pitch',14.6))
+                        check('Temporary correction changes no ownership or ledger',fitting_unchanged(before,state()))
+                        look('adventure','CORRECT_THIRD');look('follow','CORRECT_DIORAMA');workspace('expedition')
+                    else:click(fieldcraft_selector('reuse',n))
+                    click(selector('seat',n));observe('SEATED_'+str(n));close();page.wait_for_timeout(550)
+                check('Seats remain unpaid and unrecorded',fitting_unchanged(before,state()))
+                workspace('expedition');click(selector('fasten' if args.work=='support' else 'record'))
+                after=state()
+                if args.work=='support':check('Fastening records only original brace',after['earthExpedition']['story']['steps']==before['earthExpedition']['story']['steps']+['brace-root-channel'] and after['earthExpedition']['patrol']==before['earthExpedition']['patrol'])
+                else:check('Recording appends only original patrol inspection',after['earthExpedition']['story']==before['earthExpedition']['story'] and after['earthExpedition']['patrol']['lastClaim']==before['earthExpedition']['patrol']['lastClaim'] and after['earthExpedition']['patrol']['active']=={**before['earthExpedition']['patrol']['active'],'steps':before['earthExpedition']['patrol']['active']['steps']+['inspect-glade']})
+                for key in ['xp','coins','ore','owned','equipment','arsenal','earthBinding']:check('Fastening preserves '+key,after['adventure'][key]==before['adventure'][key])
+                check('Fastening preserves normal material ownership',after['sandbox']['inventory']==before['sandbox']['inventory'])
+                if args.work=='support':
+                    look('follow','PERMANENT_DIORAMA');page.screenshot(path=str(out/'PERMANENT_DIORAMA.png'));look('adventure','PERMANENT_THIRD');page.screenshot(path=str(out/'PERMANENT_THIRD.png'))
+                else:
+                    close();observe('INSPECTION_RECORDED',True)
+                    checked=state();workspace('expedition');click('[data-rpg="expedition-walk"][data-id="giver"]')
+                    walking=time.monotonic();stable=None;previous=None
+                    while time.monotonic()-walking<240:
+                        d=page.evaluate('()=>Realm.diagnostics');p=d['adventure']['player']
+                        motion=math.hypot(p['x']-previous['x'],p['z']-previous['z']) if previous else math.inf
+                        if not d['adventure']['paused'] and math.hypot(p['x']+67,p['z']+4)<2.8 and motion<.01:
+                            stable=stable if stable is not None else time.monotonic()
+                            if time.monotonic()-stable>=.3:break
+                        else:stable=None
+                        previous=p;page.wait_for_timeout(120)
+                    else:raise TimeoutError('Native return route did not settle near Rill')
+                    report['return_arrival']={'player':p,'walk_seconds':time.monotonic()-walking}
+                    check('Return walk alone records and pays nothing',fitting_unchanged(checked,state()))
+                    close();page.keyboard.press('e');page.wait_for_selector('#rpg-window[open]');payment_before=state()
+                    click('[data-rpg="expedition-patrol-claim"]');payment_after=state()
+                    check('Actual original patrol payment occurs once',all(payment_after['adventure'][k]-payment_before['adventure'][k]==n for k,n in {'xp':5,'coins':4,'ore':3}.items()) and all(payment_after['sandbox']['inventory'][k]-payment_before['sandbox']['inventory'][k]==2 for k in ['wood','fiber']) and payment_after['earthExpedition']['patrol']=={'lastClaim':1,'active':None})
+                    for key in ['owned','equipment','arsenal','earthBinding']:check('Return preserves '+key,payment_after['adventure'][key]==payment_before['adventure'][key])
+                    check('Original claim retains old world ownership and history',preservation(payment_before)==preservation(payment_after) and payment_before['earthExpedition']['story']==payment_after['earthExpedition']['story'] and payment_before['adventure']['earthBinding']==payment_after['adventure']['earthBinding'])
+                    check('Paid private inspection control exists',page.locator('[data-rpg="expedition-carrier-look-received"]').count()==1)
+                    observe('RECEIVING_TERMS',True);close()
+                    # Recording instrumentation only: no gameplay or renderer changes.
+                    page.evaluate('''()=>{const c=document.querySelector('#world'),stream=c.captureStream(30),chunks=[],mime=MediaRecorder.isTypeSupported('video/webm;codecs=vp8')?'video/webm;codecs=vp8':'video/webm',rec=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:2500000});window.__fieldcraftMovie={rec,stream,chunks,intervals:[],previous:null,start:performance.now(),done:false};rec.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};rec.onstop=async()=>{const s=__fieldcraftMovie,blob=new Blob(chunks,{type:mime}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ACTUAL_FIELDCRAFT.webm';a.click();s.stream.getTracks().forEach(t=>t.stop());s.done=true;};requestAnimationFrame(function sample(t){const s=__fieldcraftMovie;if(s.done)return;if(s.previous!==null)s.intervals.push(t-s.previous);s.previous=t;requestAnimationFrame(sample)});rec.start(1000);setTimeout(()=>{if(rec.state==='recording'){__fieldcraftMovie.stopped=performance.now();rec.stop()}},90000)}''')
+                    look('follow','RECEIVED_DIORAMA');page.screenshot(path=str(out/'RECEIVED_DIORAMA.png'))
+                    look('adventure','RECEIVED_THIRD');page.screenshot(path=str(out/'RECEIVED_THIRD.png'))
+                    check('Repeated Look pays and records nothing',fitting_unchanged(payment_after,state()))
+                page.evaluate('()=>{if(__fieldcraftMovie.rec.state!=="recording")throw Error("Capture exceeded bounded duration");__fieldcraftMovie.stopped=performance.now();__fieldcraftMovie.rec.stop()}')
+                page.wait_for_function('()=>__fieldcraftMovie.done');wait_retained()
+                movie=page.evaluate('()=>({intervals:__fieldcraftMovie.intervals,elapsed:__fieldcraftMovie.stopped-__fieldcraftMovie.start})')
+                intervals=movie['intervals'];report['raf_observation']={'scope':'Additional ordinary RAF callback intervals while recording; encoding and automation overhead included, not rendered FPS','callbacks':len(intervals),'elapsed_ms':movie['elapsed'],'p50_ms':percentile(intervals,.5),'p95_ms':percentile(intervals,.95),'p99_ms':percentile(intervals,.99),'max_ms':max(intervals) if intervals else None,'over50ms':sum(t>50 for t in intervals)}
+                report['video']={'path':video.name,'bytes':video.stat().st_size,'sha256':sha(video),'audio':False,'surface':'Actual WebGL canvas only; DOM HUD and controls excluded','requested_capture_fps':30}
+                check('Short recording retained',video.stat().st_size>10000 and movie['elapsed']<90000)
+                check('No runtime errors',not report['browser_errors'] and not page.evaluate('()=>Realm.diagnostics.errors'))
+                check('Runtime sources unchanged',all(sha(ROOT/p)==h for p,h in sources.items()))
+                check('HTML unchanged',sha(ROOT/'index.html')==report['html_sha256'])
+                check('Selected source and producer unchanged',sha(source)==source_sha256 and sha(args.journey_report.resolve())==producer['sha256'] and sha(retained_source)==source_sha256)
+                (out/'FINAL_WORLD.json').write_text(json.dumps(state(),indent=2)+'\n',encoding='utf-8')
+                report['status']='passed'
+            finally:
+                if page and not page.is_closed():
+                    try:
+                        recording=page.evaluate('()=>typeof __fieldcraftMovie!=="undefined"')
+                        if recording:
+                            page.evaluate('()=>{if(__fieldcraftMovie.rec.state==="recording"){__fieldcraftMovie.stopped=performance.now();__fieldcraftMovie.rec.stop()}}')
+                            page.wait_for_function('()=>__fieldcraftMovie.done',timeout=15000);wait_retained()
+                        if video.exists():
+                            report['video']={**report.get('video',{}),'path':video.name,'bytes':video.stat().st_size,'sha256':sha(video),'partial':report['status']!='passed','audio':False,'surface':'Actual WebGL canvas only; DOM HUD and controls excluded'}
+                    except Exception:report['recording_cleanup_error']=traceback.format_exc();report['status']='failed'
+                if context:context.close();report['context_closed']=True
+    except Exception:report['status']='failed';report['error']=traceback.format_exc();print(report['error'])
+    finally:
+        server.shutdown();server.server_close();report['server_closed']=True;report['wall_seconds']=time.monotonic()-started
+        (out/'REPORT.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+    print(json.dumps({k:report.get(k) for k in ['status','renderer','video','raf_observation','wall_seconds']},indent=2))
+    return 0 if report['status']=='passed' else 1
+
+if __name__=='__main__':raise SystemExit(main())

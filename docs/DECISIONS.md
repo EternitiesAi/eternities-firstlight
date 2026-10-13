@@ -1,3 +1,131 @@
+# Returned-kit footage delivered, 2026-10-13
+
+PR71 remains an open draft, stacked against PR70. Qualified code is
+`3269dd308f44f2ea9dc47c68f72aefc5eac5e0a1`: complete Source06 passed217
+commands (Node2144 pass/0fail/2 skips; Python478 methods OK/10 skips), and
+Native01 passed1424 checks/0fail with22 Chromium restarts across three variants.
+One ordinary-RAF take now passed88 checks/0fail. It shows the actually paid kit
+beside Rill in both cameras. The original WebM plus MP4 total1113933B; both
+decode55 frames with identical timestamps, no warnings. The18.5007s capture
+window contains frames at0–16.776s; no interpolated frames or repeated take.
+
+Chromium143/Low used SwiftShader. Recording RAF p50/p95/p99 were216.7/483.4/
+516.6ms, maximum3283.2ms,62 intervals over50ms. These include encoding and
+automation overhead and do not measure rendered FPS or the RTX3080. The silent
+canvas excludes DOM HUD/controls. Human play, physical-GPU and full-browser
+acceptance remain open. See the current results and portable clip receipt.
+
+World9/Adventure12/Expedition1/WildSigns1 and all existing saves/systems/cameras
+remain. VM/guest/Claude Code are excluded. Reuse ROOT/STATION on D; no new full
+game copy or cleanup. Goal active/unfinished, heartbeat paused.
+
+Next coherent arc: Earth ET02, an optional shared outing with Briar, a new
+misplaced object, its actual retrieval/return and a deliberately chosen rest.
+Do not invent old shared history, reuse old cache payouts or force grief/loss.
+
+---
+
+Earlier checkpoints below retain their original epochs.
+
+# Returned-kit inspection source and native qualified, 2026-10-13
+
+OPEN DRAFT [PR71](https://github.com/EternitiesAi/eternities-firstlight/pull/71),
+`gameplay/living-road-inspection-20261012`, stacked against PR70/base
+`e5492e5e27c830c93368bf158c6835959457c182`. Qualified source/test head:
+`3269dd308f44f2ea9dc47c68f72aefc5eac5e0a1`. Product remains95af8b67;
+3269 repairs two tiny CPU fixtures, with native guards and deadlines intact.
+
+Fresh complete Source06 passed all217 commands:145 syntax/145 rule files,
+Node2144 pass/0fail/2 original skips; Python478 methods OK/10 original skips
+in71.106s; all command-earned journeys and whole-draft caller passed.
+Targeted Native01 passed1424 checks/0fail, three variants,22 whole-Chromium
+restarts and12 receiving observations in both views; no runtime/browser errors.
+Both saved ordinary profiles and the actual paid kit survive the intended
+checks. Native portrait receiving scope is fresh-blade run1 only.
+
+Both pages remain identical3357566B, SHA
+`dbd5ad604e450264086af554fa74e4b8dd846bb4eb3d47f7de3ff56190a515f3`.
+World9/Adventure12/Expedition1/WildSigns1, keys/caps/XP and existing histories
+remain. No migration, payout/cost/cargo/hauling/auto-fit or legacy backfill.
+
+Source05 FAILED at the original Python600 deadline:362 completed methods,
+356 individual OK/6skips, no complete footer or reported assertion failure.
+An actual one-case profile isolated69.994s in tiny D-fixture setup, with a
+.024s assertion body. Two pure CPU fixtures now honour the existing CPU-temp
+child environment. Same case then passed.129s;47 component methods OK2skip.
+Host conditions were not controlled; underlying D I/O latency cause is unknown.
+No VM/Claude action or game-performance claim follows. Earlier failures and
+resource denials stay retained. Current hosted3269 run38347778428 has48 failed
+jobs/zero executed steps with checked account-billing-lock annotation.
+
+Later host-only read at05:06:11Z:2077988KiB. Recording controller not invoked;
+no processes explicitly naming our Native01 profile paths remained, no process
+control action. The05:06:11Z snapshot measured192436546 logicalB in the arc;
+initial portable evidence before later hold metadata measured3316185B,
+zero new full-game copies/movies/cleanup, three isolated synthetic profiles.
+
+No new ordinary-RAF recording yet: the post-native host observation5340196KiB
+is below6291456KiB. Do not launch or weaken that margin. Current screenshots
+are Low/reduced-motion native automation. Kit clears the HUD; the small tag
+is not independently legible, and portrait toast spacing remains a UX concern.
+No human play, full-browser, ordinary forest, controller or RTX qualification.
+
+VM/guest/Claude Code and unrelated workers/projects remain outside this task.
+Heavy evidence D; reuse ROOT/STATION, no new full-game copy or cleanup. Keep
+the blocked standalone-clone deletion blocked. No personal-save/profile,
+shared-install, paid-provider/billing, main merge or public deployment action.
+Goal ACTIVE unfinished; separate heartbeat PAUSED, no unattended promise.
+Read the current result for exact epochs, portable evidence and open gates.
+
+Keep received Look explicit and transient; shared submitted Art corners own
+framing, saved ordinary preferences stay distinct, and original fits/payment
+owners remain. Tiny CPU synthetic schema placement follows the existing
+CPU-temp setting; actual native D-only guards remain strict and detected.
+
+---
+
+Earlier checkpoints retain their original epochs.
+
+# Returned-kit inspection implemented; qualification pending, 2026-10-12
+
+Branch `gameplay/living-road-inspection-20261012`, stacked on PR70 at
+`e5492e5e27c830c93368bf158c6835959457c182`. Product95af8b67e571b5298a10a40ce7b10669cefe8e69;
+fixture correctiona7a975bb9de7fa13feac98b8d2d2426b93379938. Both views now have
+an explicit paid-kit Look near Rill, temporary close scale, conserved preferences
+and directional geometry feedback. Legacy/reloaded payment gets no backfill.
+World9/Adventure12/Expedition1/WildSigns1, original fits/payment/claim/choice/XP,
+all other systems and both cameras remain. No migration or saved cargo.
+
+Focused80 Node/26 UI pass. Three command-earned variants pass. Identical pages
+3357566B SHA dbd5ad604e450264086af554fa74e4b8dd846bb4eb3d47f7de3ff56190a515f3.
+Full remote Source01 FAILED at Python:147 commands passed,145 syntax,
+Node2144P0F2skip; Python478 methods1error10skip. Missing inactive inspection
+state in the Homecoming camera fixture is repaired; original assertion retained,
+28-method ROOT and remote checks OK2skip. Source02 was NOT LAUNCHED: fresh
+host-free5325428KiB below6291456KiB. No current full/native/browser/movie pass.
+Source03 also NOT LAUNCHED at fetcheded587:3198848KiB at03:48:38Z.
+Current hostedrun38343440508:48 failed jobs,zero executed steps,account billing
+lock. No test execution, retry or billing change. Native/movie remain pending.
+Continuation2c8b781 tightened native successful-save/native-baseline and portrait
+closure/focus/FOV/span assertions. Private recording admission7 CPU cases pass;
+no browser. Source04 also NOT LAUNCHED:3574100KiB at04:03:28Z. Complete
+source/native/movie acceptance remains pending; gameplay and HTML unchanged.
+167 runtime raw hashes match the clean exact fetched independent clone.
+Keep failures/skips visible; prior PR70 footage qualifies only its older epoch.
+
+VM/guest/Claude Code, personal saves/profiles and unrelated workers are outside
+this work. Heavy work D; reuse existing checkouts, no new full game or deletion.
+Full/native/clip require fresh >=6GiB after preparation. Do not weaken original
+180/600 limits/assertions or retry blocked deletion. No merge/deploy/billing.
+Goal ACTIVE unfinished; separate heartbeat PAUSED. No unattended promise.
+Read the [current result](development/LIVING_ROAD_INSPECTION_RESULTS_2026-10-12.md) for exact scope, commands and pending gates.
+
+Use distinct paid Look, current private proof, shared submitted Art corners and transient scale/preferences; diagnostics stay readonly and fits stays authority. Retain saved/legacy reward behavior and original schema. Both cameras stay available.
+
+---
+
+Earlier checkpoints below retain their original epochs.
+
 # Living Road supplied-kit milestone verified, 2026-10-12
 
 Gameplay branch `gameplay/living-road-carrier-20261012`, stacked on draft PR69
