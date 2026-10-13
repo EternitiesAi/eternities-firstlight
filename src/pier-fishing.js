@@ -17,7 +17,7 @@ function owned(ctx){
 }
 function current(ctx){
  const o=owned(ctx);return o?Object.freeze({phase:o.phase,time:o.time,reeling:o.reeling,tension:o.tension,progress:o.progress,
-  pulling:o.phase==='playing'&&o.fightTime%5<2,message:o.message,fish:'Lantern silverfin'}):null;
+  fightTime:o.fightTime,reelTime:o.reelTime,pulling:o.phase==='playing'&&o.fightTime%5<2,message:o.message,fish:'Lantern silverfin'}):null;
 }
 function command(ctx,type,payload={}){
  if(!payload||typeof payload!=='object'||Array.isArray(payload)||Reflect.ownKeys(payload).length)return fail('Use the pier controls without extra terms.');
@@ -30,7 +30,7 @@ function command(ctx,type,payload={}){
  if(type==='cast'){
   if(o&&!['lost'].includes(o.phase))return fail('Finish or release this line before casting again.');
   const sim=ctx.sim;o={state:sim.state,active:ctx.active,player:sim.state.player,origin:{x:sim.state.player.x,z:sim.state.player.z},
-   last:sim.elapsed,time:0,fightTime:0,slack:0,phase:'waiting',reeling:false,tension:.28,progress:.08,message:'Float is out · watch for a bite.'};
+   last:sim.elapsed,time:0,fightTime:0,reelTime:0,slack:0,phase:'waiting',reeling:false,tension:.28,progress:.08,message:'Float is out · watch for a bite.'};
   sessions.set(sim,o);return{ok:true,text:o.message};
  }
  if(!o)return fail('There is no current line.');
@@ -49,6 +49,7 @@ function tick(ctx,suspended=false){
  if(o.phase==='waiting'&&o.time>=3.5){o.phase='bite';o.message='A bite · press E or Hook when you are ready.';return;}
  if(o.phase!=='playing')return;
  o.fightTime+=dt;const pull=o.fightTime%5<2;
+ if(o.reeling)o.reelTime+=dt;
  o.tension=Math.max(0,Math.min(1,o.tension+dt*(o.reeling?(pull?.24:.105):-.22)));
  o.progress=Math.max(0,Math.min(1,o.progress+dt*(o.reeling?(pull?.055:.14):-.014)));
  o.slack=o.tension<.035?o.slack+dt:0;

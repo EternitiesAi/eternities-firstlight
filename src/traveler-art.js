@@ -152,6 +152,9 @@ function pose(options={}){
  // hip/leg/foot anchors or rotates the physical player/camera root.
  if(guarded||swimming){upperBody.yaw=0;upperBody.lean=0;upperBody.shift=[0,0,0];bladeAxis=guarded?norm([-.63,.72,.19]):norm([.18,.94,.28]);}
  if(options.activity==='record'&&!combatScene&&!swimming){left=[-.20,1.36+torsoY,.33];right=[.20,1.36+torsoY,.33];}
+ const fish=options.fishing,point=v=>Array.isArray(v)&&v.length===3&&v.every(Number.isFinite);
+ const fishing=!combatScene&&!swimming&&fish&&point(fish.left)&&point(fish.right)&&point(fish.axis)?fish:null;
+ if(fishing){left=plus(fishing.left,[0,torsoY,0]);right=plus(fishing.right,[0,torsoY,0]);}
  if(swimming){const stroke=reducedMotion?0:Math.sin(time*1.9)*.12;left=[-.42,1.08+torsoY,.18+stroke];right=[.42,1.08+torsoY,.18-stroke];}
  for(const key of ['spine','chest','neck','head','back','leftShoulder','rightShoulder'])joints[key]=bodyPoint(joints[key],upperBody,pivot);
  left=bodyPoint(left,upperBody,pivot);right=bodyPoint(right,upperBody,pivot);bladeAxis=norm(bodyVector(bladeAxis,upperBody));
@@ -160,7 +163,7 @@ function pose(options={}){
   const arm=twoBone(joints[name+'Shoulder'],target,.305,.285,bodyVector([side,-.3,-.25],upperBody));
   joints[name+'Elbow']=arm.middle;joints[name+'Hand']=arm.end;
  }
- return {joints,phase,walkingBlend,time,reducedMotion,style,combatScene,combatPhase,combatProgress,releaseOrigin,guarded,swimming,upperBody,bladeAxis,bladeLateral,
+ return {joints,phase,walkingBlend,time,reducedMotion,style,combatScene,combatPhase,combatProgress,releaseOrigin,guarded,swimming,upperBody,bladeAxis,bladeLateral,fishing,
   bob:torsoY,cloakSwing:reducedMotion?0:Math.sin(phase)*walkingBlend*.025};
 }
 
@@ -243,7 +246,8 @@ function draw(out,input={},posed=pose()){
  const joints=Object.fromEntries(Object.entries(j).map(([name,v])=>[name,v.slice()]));
  return {root,joints,style:posed.style,combatScene:posed.combatScene,combatPhase:posed.combatPhase,
   combatProgress:posed.combatProgress,releaseOrigin:posed.releaseOrigin,bladeAxis:posed.bladeAxis.slice(),bladeLateral:posed.bladeLateral.slice(),
-  upperBody:{yaw:body.yaw,lean:body.lean,shift:body.shift.slice()},guarded:posed.guarded,reducedMotion:posed.reducedMotion,swimming:posed.swimming,walkingBlend:posed.walkingBlend};
+  upperBody:{yaw:body.yaw,lean:body.lean,shift:body.shift.slice()},guarded:posed.guarded,reducedMotion:posed.reducedMotion,swimming:posed.swimming,walkingBlend:posed.walkingBlend,
+  fishing:posed.fishing?{phase:posed.fishing.phase,cast:posed.fishing.cast,axis:posed.fishing.axis.slice(),reelAngle:posed.fishing.reelAngle}:null};
 }
 const api={motion,pose,draw};G.RealmTravelerArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

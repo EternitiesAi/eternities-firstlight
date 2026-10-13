@@ -9632,6 +9632,9 @@ function pose(options={}){
  // hip/leg/foot anchors or rotates the physical player/camera root.
  if(guarded||swimming){upperBody.yaw=0;upperBody.lean=0;upperBody.shift=[0,0,0];bladeAxis=guarded?norm([-.63,.72,.19]):norm([.18,.94,.28]);}
  if(options.activity==='record'&&!combatScene&&!swimming){left=[-.20,1.36+torsoY,.33];right=[.20,1.36+torsoY,.33];}
+ const fish=options.fishing,point=v=>Array.isArray(v)&&v.length===3&&v.every(Number.isFinite);
+ const fishing=!combatScene&&!swimming&&fish&&point(fish.left)&&point(fish.right)&&point(fish.axis)?fish:null;
+ if(fishing){left=plus(fishing.left,[0,torsoY,0]);right=plus(fishing.right,[0,torsoY,0]);}
  if(swimming){const stroke=reducedMotion?0:Math.sin(time*1.9)*.12;left=[-.42,1.08+torsoY,.18+stroke];right=[.42,1.08+torsoY,.18-stroke];}
  for(const key of ['spine','chest','neck','head','back','leftShoulder','rightShoulder'])joints[key]=bodyPoint(joints[key],upperBody,pivot);
  left=bodyPoint(left,upperBody,pivot);right=bodyPoint(right,upperBody,pivot);bladeAxis=norm(bodyVector(bladeAxis,upperBody));
@@ -9640,7 +9643,7 @@ function pose(options={}){
   const arm=twoBone(joints[name+'Shoulder'],target,.305,.285,bodyVector([side,-.3,-.25],upperBody));
   joints[name+'Elbow']=arm.middle;joints[name+'Hand']=arm.end;
  }
- return {joints,phase,walkingBlend,time,reducedMotion,style,combatScene,combatPhase,combatProgress,releaseOrigin,guarded,swimming,upperBody,bladeAxis,bladeLateral,
+ return {joints,phase,walkingBlend,time,reducedMotion,style,combatScene,combatPhase,combatProgress,releaseOrigin,guarded,swimming,upperBody,bladeAxis,bladeLateral,fishing,
   bob:torsoY,cloakSwing:reducedMotion?0:Math.sin(phase)*walkingBlend*.025};
 }
 
@@ -9723,7 +9726,8 @@ function draw(out,input={},posed=pose()){
  const joints=Object.fromEntries(Object.entries(j).map(([name,v])=>[name,v.slice()]));
  return {root,joints,style:posed.style,combatScene:posed.combatScene,combatPhase:posed.combatPhase,
   combatProgress:posed.combatProgress,releaseOrigin:posed.releaseOrigin,bladeAxis:posed.bladeAxis.slice(),bladeLateral:posed.bladeLateral.slice(),
-  upperBody:{yaw:body.yaw,lean:body.lean,shift:body.shift.slice()},guarded:posed.guarded,reducedMotion:posed.reducedMotion,swimming:posed.swimming,walkingBlend:posed.walkingBlend};
+  upperBody:{yaw:body.yaw,lean:body.lean,shift:body.shift.slice()},guarded:posed.guarded,reducedMotion:posed.reducedMotion,swimming:posed.swimming,walkingBlend:posed.walkingBlend,
+  fishing:posed.fishing?{phase:posed.fishing.phase,cast:posed.fishing.cast,axis:posed.fishing.axis.slice(),reelAngle:posed.fishing.reelAngle}:null};
 }
 const api={motion,pose,draw};G.RealmTravelerArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
@@ -10157,19 +10161,24 @@ class WorldArt{
    else owner.withdrawal=null;
   }
   this.travelerMotion=G.RealmTravelerArt.motion(this.travelerMotion,{x:p.x,z:p.z,scene:this.room,time:sim.elapsed,walking:sim.walking,paused:sim.paused,reducedMotion});
-  const pose=G.RealmTravelerArt.pose({...this.travelerMotion,time:this.travelerMotion.time,reducedMotion,swimming:!!sim.worldDive&&!G.RealmWorldFoundations.divingStatus(sim,null)?.dryCourt,style:weapon.style,combatScene,combatPhase:combat.phase,combatProgress:combat.progress,withdrawFrom:combat.withdrawFrom,releaseOrigin:combat.releaseOrigin,guarded:combatScene&&a.elapsed<G.RealmCombat.runtime(sim).guardUntil});
+  const fishing=this.room===null&&!combatScene&&!sim.worldDive?G.RealmPierFishingArt?.pose(sim.presentation?.fishing,reducedMotion):null;
+  const pose=G.RealmTravelerArt.pose({...this.travelerMotion,time:this.travelerMotion.time,reducedMotion,fishing,swimming:!!sim.worldDive&&!G.RealmWorldFoundations.divingStatus(sim,null)?.dryCourt,style:weapon.style,combatScene,combatPhase:combat.phase,combatProgress:combat.progress,withdrawFrom:combat.withdrawFrom,releaseOrigin:combat.releaseOrigin,guarded:combatScene&&a.elapsed<G.RealmCombat.runtime(sim).guardUntil});
   const starts=Object.fromEntries(Object.entries(out).map(([k,v])=>[k,v.length]));
   const armorColor=G.RealmAdventure.GEAR[a.equipment.armor]?.color||null;
-  this.travelerFrame=G.RealmTravelerArt.draw(out,{x:p.x,z:p.z,yaw:p.yaw,base,profile:sim.state.visitor,color:X.CLOAKS[sim.state.visitor.cloak],armorColor},pose);
+  // Only the displayed body turns toward the line. Physical facing and camera
+  // preferences remain owned by the existing movement/camera controls.
+  const yaw=fishing?Math.atan2(3-p.x,31.2-p.z):p.yaw;
+  this.travelerFrame=G.RealmTravelerArt.draw(out,{x:p.x,z:p.z,yaw,base,profile:sim.state.visitor,color:X.CLOAKS[sim.state.visitor.cloak],armorColor},pose);
   this.travelerEquipment=G.RealmTravelerEquipmentArt.draw(out,sim,this.travelerFrame);
+  G.RealmPierFishingArt?.draw(out,sim,this.travelerFrame);
   this.travelerParts=Object.fromEntries(Object.entries(out).map(([k,v])=>[k,v.slice(starts[k])]));
  }
  travelerSnapshot(){
   if(!this.travelerFrame)return null;
   const f=this.travelerFrame;
-  return JSON.parse(JSON.stringify({motion:this.travelerMotion,frame:{...f,root:Array.from(f.root)},equipment:this.travelerEquipment,parts:Object.entries(this.travelerParts).flatMap(([kind,v])=>v.map(it=>({kind,p:it.p,s:it.s,m:it.m?Array.from(it.m):null,c:it.c,part:it.travelerPart||null,weaponPart:it.weaponPart||null,weaponId:it.weaponId||null,attachment:it.attachment||null,gemId:it.gemId||null,fittingStage:it.fittingStage||null,temper:it.temper||null})))}));
+  return JSON.parse(JSON.stringify({motion:this.travelerMotion,frame:{...f,root:Array.from(f.root)},equipment:this.travelerEquipment,parts:Object.entries(this.travelerParts).flatMap(([kind,v])=>v.map(it=>({kind,p:it.p,s:it.s,m:it.m?Array.from(it.m):null,c:it.c,part:it.travelerPart||null,fishingPart:it.fishingPart||null,segment:it.segment||null,weaponPart:it.weaponPart||null,weaponId:it.weaponId||null,attachment:it.attachment||null,gemId:it.gemId||null,fittingStage:it.fittingStage||null,temper:it.temper||null})))}));
  }
- update(sim,t,target){this.e.cameraMedium=sim.worldDive?G.RealmWorldFoundations.medium(sim,this.e.camera.eye):null;sim.presentation=sim.presentation||{};sim.presentation.perspective=this.e.camera.projection==='perspective';this.e.cutaway=sim.state.settings.cameraCutaway!==false;const bridge=G.RealmEarth?.BRIDGE;this.e.railCutawayActive=!!bridge&&sim.room===G.RealmEarth.ROOM&&sim.state.player.z>=bridge.from&&sim.state.player.z<=bridge.to&&Math.abs(sim.state.player.x)<=bridge.walkWidth/2;this.e.galleryFocus=sim.worldDive?[sim.state.player.x,G.RealmWorldFoundations.playerHeight(sim)+.88,sim.state.player.z]:null;this.e.worldRoofOpen=(this.e.viewShelters||[]).some(b=>sim.state.player.x>=b.minX&&sim.state.player.x<=b.maxX&&sim.state.player.z>=b.minZ&&sim.state.player.z<=b.maxZ&&this.e.camera.eye[1]>b.base);this.e.cutawayFocus=[sim.state.player.x,G.RealmWorldFoundations?.handles(this.room)?G.RealmWorldFoundations.playerHeight(sim)+.88:sim.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(sim.state.player.x,sim.state.player.z)+.88:sim.room===G.RealmEarth?.ROOM?G.RealmEarth.height(sim.state.player.x,sim.state.player.z)+.88:sim.room?2.45:2.18,sim.state.player.z];if(this.e.worldFog)this.e.worldFogCenter=[sim.state.player.x,sim.state.player.z];let out={box:[],octa:[],disc:[],round:[],'timber-panel':[],'traveler-cloth':[]},p=sim.state.player;this.traveler(out,sim);G.RealmPierFishingArt?.draw(out,sim);for(let i=0;i<C.PROFILES.length;i++){let info=C.PROFILES[i],r=sim.state.residents.find(r=>r.id===info.id),run=sim.runs.get(info.id);if(this.room){if(this.room==='home'&&run.inside){let pos=[[-3.1,1.1],[3.2,1.1],[2,3.2]][i];this.person(out,pos[0],pos[1],i?-.7:.7,info.color,t+i,false,info.role.toLowerCase(),false,1.57);}else if(this.room==='atelier'&&info.id==='ilan'&&run.goal==='atelier')this.person(out,2.5,1.1,-1,info.color,t,false,'musician',false,1.57);else if(this.room==='observatory'&&info.id==='mara'&&run.goal==='observatory')this.person(out,2.5,1.1,-1,info.color,t,false,'researcher',false,1.57);}else if(!run.inside)this.person(out,r.x,r.z,r.yaw,info.color,t+i,run.walking,info.role.toLowerCase());}
+ update(sim,t,target){this.e.cameraMedium=sim.worldDive?G.RealmWorldFoundations.medium(sim,this.e.camera.eye):null;sim.presentation=sim.presentation||{};sim.presentation.perspective=this.e.camera.projection==='perspective';this.e.cutaway=sim.state.settings.cameraCutaway!==false;const bridge=G.RealmEarth?.BRIDGE;this.e.railCutawayActive=!!bridge&&sim.room===G.RealmEarth.ROOM&&sim.state.player.z>=bridge.from&&sim.state.player.z<=bridge.to&&Math.abs(sim.state.player.x)<=bridge.walkWidth/2;this.e.galleryFocus=sim.worldDive?[sim.state.player.x,G.RealmWorldFoundations.playerHeight(sim)+.88,sim.state.player.z]:null;this.e.worldRoofOpen=(this.e.viewShelters||[]).some(b=>sim.state.player.x>=b.minX&&sim.state.player.x<=b.maxX&&sim.state.player.z>=b.minZ&&sim.state.player.z<=b.maxZ&&this.e.camera.eye[1]>b.base);this.e.cutawayFocus=[sim.state.player.x,G.RealmWorldFoundations?.handles(this.room)?G.RealmWorldFoundations.playerHeight(sim)+.88:sim.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(sim.state.player.x,sim.state.player.z)+.88:sim.room===G.RealmEarth?.ROOM?G.RealmEarth.height(sim.state.player.x,sim.state.player.z)+.88:sim.room?2.45:2.18,sim.state.player.z];if(this.e.worldFog)this.e.worldFogCenter=[sim.state.player.x,sim.state.player.z];let out={box:[],octa:[],disc:[],round:[],'timber-panel':[],'traveler-cloth':[]},p=sim.state.player;this.traveler(out,sim);for(let i=0;i<C.PROFILES.length;i++){let info=C.PROFILES[i],r=sim.state.residents.find(r=>r.id===info.id),run=sim.runs.get(info.id);if(this.room){if(this.room==='home'&&run.inside){let pos=[[-3.1,1.1],[3.2,1.1],[2,3.2]][i];this.person(out,pos[0],pos[1],i?-.7:.7,info.color,t+i,false,info.role.toLowerCase(),false,1.57);}else if(this.room==='atelier'&&info.id==='ilan'&&run.goal==='atelier')this.person(out,2.5,1.1,-1,info.color,t,false,'musician',false,1.57);else if(this.room==='observatory'&&info.id==='mara'&&run.goal==='observatory')this.person(out,2.5,1.1,-1,info.color,t,false,'researcher',false,1.57);}else if(!run.inside)this.person(out,r.x,r.z,r.yaw,info.color,t+i,run.walking,info.role.toLowerCase());}
  if(!this.room){if(sim.state.weather==='rain'&&!sim.state.settings.reducedMotion){for(let i=0;i<110;i++){let x=((i*17.13)%42)-21,z=((i*23.77)%42)-21,y=1.4+((i*.61-t*10)%9+9)%9;out.box.push({p:[x,y,z],s:[.017,.32,.017],r:[0,0,-.13],c:0x9ebdc1,em:.2});}}for(let f of sim.state.flowers){out.box.push({p:[f.x,1.72,f.z],s:[.055,.48,.055],c:0x57784c});out.octa.push({p:[f.x,1.99,f.z],s:[.29,.3,.29],c:[0xe5bb94,0xc49fac,0xe5d29d,0xb7cad0][f.color]});}for(let i=0;i<13;i++){let a=t*.11+i*.8,r=26+i%3*4,x=Math.sin(a)*r,z=Math.cos(a)*r,y=9+i%4*1.3;for(let s of[-1,1])out.box.push({p:[x+s*.18,y,z],s:[.45,.055,.15],r:[0,a,s*(.25+Math.sin(t*3+i)*.2)],c:0x4a646b});}for(let j=0;j<3;j++)for(let i=0;i<4;i++){let u=(t*.3+i*.8)%3.7,x=[-13,-14.6,9.4][j],z=[-7.3,5.75,3.7][j];out.octa.push({p:[x+Math.sin(u+j)*.2,6.4+u,z],s:[.3+u*.16,.4+u*.19,.3+u*.16],c:blend(hex(0xb5bbb0),hex(0x9faeac),u/4),rough:1});}let w=t*.5;out.octa.push({p:[7+Math.cos(w)*.7,2+Math.sin(t)*.14,10+Math.sin(w)*.7],s:[.3,.43,.3],c:0x8ad6d1,em:1.3});}
  if(target)for(let i=0;i<16;i++){let a=i/16*TAU;out.box.push({p:[target.x+Math.cos(a)*.4,this.room===G.RealmCosmos?.ROOM?G.RealmCosmos.height(target.x,target.z)+.02:this.room?1.59:1.31,target.z+Math.sin(a)*.4],s:[.12,.025,.05],r:[0,-a,0],c:0xe5ce93,em:.35});}
 
@@ -15170,7 +15179,7 @@ function owned(ctx){
 }
 function current(ctx){
  const o=owned(ctx);return o?Object.freeze({phase:o.phase,time:o.time,reeling:o.reeling,tension:o.tension,progress:o.progress,
-  pulling:o.phase==='playing'&&o.fightTime%5<2,message:o.message,fish:'Lantern silverfin'}):null;
+  fightTime:o.fightTime,reelTime:o.reelTime,pulling:o.phase==='playing'&&o.fightTime%5<2,message:o.message,fish:'Lantern silverfin'}):null;
 }
 function command(ctx,type,payload={}){
  if(!payload||typeof payload!=='object'||Array.isArray(payload)||Reflect.ownKeys(payload).length)return fail('Use the pier controls without extra terms.');
@@ -15183,7 +15192,7 @@ function command(ctx,type,payload={}){
  if(type==='cast'){
   if(o&&!['lost'].includes(o.phase))return fail('Finish or release this line before casting again.');
   const sim=ctx.sim;o={state:sim.state,active:ctx.active,player:sim.state.player,origin:{x:sim.state.player.x,z:sim.state.player.z},
-   last:sim.elapsed,time:0,fightTime:0,slack:0,phase:'waiting',reeling:false,tension:.28,progress:.08,message:'Float is out · watch for a bite.'};
+   last:sim.elapsed,time:0,fightTime:0,reelTime:0,slack:0,phase:'waiting',reeling:false,tension:.28,progress:.08,message:'Float is out · watch for a bite.'};
   sessions.set(sim,o);return{ok:true,text:o.message};
  }
  if(!o)return fail('There is no current line.');
@@ -15202,6 +15211,7 @@ function tick(ctx,suspended=false){
  if(o.phase==='waiting'&&o.time>=3.5){o.phase='bite';o.message='A bite · press E or Hook when you are ready.';return;}
  if(o.phase!=='playing')return;
  o.fightTime+=dt;const pull=o.fightTime%5<2;
+ if(o.reeling)o.reelTime+=dt;
  o.tension=Math.max(0,Math.min(1,o.tension+dt*(o.reeling?(pull?.24:.105):-.22)));
  o.progress=Math.max(0,Math.min(1,o.progress+dt*(o.reeling?(pull?.055:.14):-.014)));
  o.slack=o.tension<.035?o.slack+dt:0;
@@ -15299,31 +15309,56 @@ const api=Object.freeze({FishingUI});G.RealmPierFishingUI=api;if(typeof module!=
 </script><script>/* Original pier rod/float and a release fish, projected from current activity.
  * Appearance only. Never creates an activity, result, collision or reward. */
 (function(G){'use strict';
-function draw(out,sim){
- const v=sim.presentation?.fishing;if(sim.room!==null||!v||!['waiting','bite','playing','caught','lost'].includes(v.phase))return;
+const phases=['waiting','bite','playing','caught','lost'],clamp=n=>Math.max(0,Math.min(1,Number.isFinite(n)?n:0));
+const add3=(a,b)=>a.map((n,i)=>n+b[i]),scale=(a,n)=>a.map(v=>v*n),mix=(a,b,t)=>a.map((n,i)=>n+(b[i]-n)*t),smooth=n=>n*n*(3-2*n);
+function pose(v,reducedMotion=false){
+ if(!v||!phases.includes(v.phase))return null;
+ const cast=reducedMotion||v.phase!=='waiting'?1:clamp(v.time/.85),u=smooth(cast<.35?cast/.35:(cast-.35)/.65);
+ const ready=[.25,1.12,.36],raised=[.36,1.25,.20];
+ const right=cast===1?ready:cast<.35?mix([.26,.88,.12],raised,u):mix(raised,ready,u);
+ const angle=cast===1?.38:cast<.35?.38+(2.25-.38)*u:2.25+(.38-2.25)*u;
+ const pitch=angle+(v.phase==='playing'?.18*clamp(v.tension):0),axis=[.32,Math.sin(pitch),Math.cos(pitch)],len=Math.hypot(...axis);
+ // Accepted reeling time is monotonic only while actually reeling. Easing,
+ // menus and pause freeze the hand where it is, instead of resetting the crank.
+ const reelAngle=reducedMotion?0:(Number.isFinite(v.reelTime)?v.reelTime:0)*7;
+ const left=add3(right,[-.20,-.07+Math.sin(reelAngle)*.048,-.035+Math.cos(reelAngle)*.048]);
+ return{phase:v.phase,cast,right,left,axis:scale(axis,1/len),reelAngle};
+}
+function draw(out,sim,frame){
+ const v=sim.presentation?.fishing;
+ if(sim.room!==null||!v||!phases.includes(v.phase)||!frame?.fishing||frame.combatScene||frame.swimming)return;
+ const M=G.RealmEngine.M,root=frame.root,hand=frame.joints.rightHand,left=frame.joints.leftHand,f=frame.fishing;
+ const world=p=>M.transform(root,p);
  const add=(kind,p,s,c,id,extra={})=>out[kind].push({p,s,c,fishingPart:id,appearanceOnly:true,cameraSolid:false,cutaway:false,rough:.7,...extra});
  const beam=(a,b,width,c,id)=>{
   const d=b.map((x,i)=>x-a[i]),len=Math.hypot(...d),y=d.map(x=>x/len),ref=Math.abs(y[1])>.95?[1,0,0]:[0,1,0];
+  if(len<1e-7)return;
   let x=[ref[1]*y[2]-ref[2]*y[1],ref[2]*y[0]-ref[0]*y[2],ref[0]*y[1]-ref[1]*y[0]],n=Math.hypot(...x);x=x.map(v=>v/n);
   const z=[x[1]*y[2]-x[2]*y[1],x[2]*y[0]-x[0]*y[2],x[0]*y[1]-x[1]*y[0]],p=a.map((x,i)=>(x+b[i])/2);
-  add('box',p,[width,len,width],c,id,{m:[...x.map(v=>v*width),0,...y.map(v=>v*len),0,...z.map(v=>v*width),0,...p,1]});
+  add('box',p,[width,len,width],c,id,{m:[...x.map(v=>v*width),0,...y.map(v=>v*len),0,...z.map(v=>v*width),0,...p,1],segment:[a.slice(),b.slice()]});
  };
  const motion=sim.state.settings.reducedMotion?0:Math.sin(v.time*3)*.035;
- const tip=[.95,3.32-v.tension*.24,28.95],float=[3+(v.pulling?.12:0),.15+motion,31.2-v.progress*1.7];
- add('box',[1.10,1.45,27.8],[.18,.32,.18],0x71634f,'rod-holder');
- beam([1.10,1.55,27.8],[1.03,2.65,28.3],.058,0x8e7051,'rod-lower');
- beam([1.03,2.65,28.3],tip,.034,0xc2a277,'rod-tip');
+ const knee=add3(hand,scale(f.axis,1.1)),tip=world(add3(add3(hand,scale(f.axis,1.95)),[0,-clamp(v.tension)*.20,.04]));
+ const center=add3(hand,[-.16,-.07,-.035]),crank=add3(center,[-.04,0,0]);
+ beam(world(add3(hand,scale(f.axis,-.14))),world(add3(hand,scale(f.axis,.14))),.078,0x4d4333,'rod-grip');
+ beam(world(hand),world(knee),.049,0x8e7051,'rod-lower');beam(world(knee),tip,.028,0xc2a277,'rod-tip');
+ beam(world(hand),world(center),.038,0x88764f,'reel-mount');
+ add('round',world(center),[.055,.17,.17],0xb49b65,'reel-spool',{rough:.38,m:M.mul(root,M.compose(...center,.055,.17,.17))});
+ beam(world(center),world(crank),.030,0x4d5146,'reel-axle');beam(world(crank),world(left),.027,0xb49b65,'reel-crank');
+ add('round',world(left),[.064,.060,.061],0x4d4333,'reel-handle');
  if(v.phase==='lost')return;
+ const target=[3+(v.pulling?.12:0),.15+motion,31.2-v.progress*1.7],flight=smooth(clamp((f.cast-.35)/.65));
+ const float=mix(tip,target,flight);float[1]+=Math.sin(flight*Math.PI)*.8;
  beam(tip,float,.012,0xe1d8b7,'line');
  add('round',float,[.13,.17,.13],v.phase==='bite'?0xf2d28d:0xd18c62,'float');
- add('disc',[float[0],.065,float[2]],[.55,1,.55],0x8eaaa0,'float-ripple',{em:.06});
+ if(flight===1)add('disc',[float[0],.065,float[2]],[.55,1,.55],0x8eaaa0,'float-ripple',{em:.06});
  if(v.phase==='caught'){
   add('round',[float[0],.18,float[2]],[.19,.19,.58],0xaac7bf,'silverfin-body',{rough:.25});
   add('octa',[float[0],.17,float[2]-.34],[.28,.045,.22],0x648d87,'silverfin-tail');
   add('round',[float[0]+.078,.22,float[2]+.17],[.029,.03,.029],0x233e42,'silverfin-eye');
  }
 }
-const api=Object.freeze({draw});G.RealmPierFishingArt=api;if(typeof module!=='undefined')module.exports=api;
+const api=Object.freeze({pose,draw});G.RealmPierFishingArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* Interface, camera and local persistence. Nothing in this file calls a server.
  * Residents use explicit routines and authored dialogue, not a hidden AI API. */
