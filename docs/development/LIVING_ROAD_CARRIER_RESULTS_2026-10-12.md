@@ -1,163 +1,163 @@
-# Living Road supplied-kit implementation and qualification
+# Living Road supplied-kit fitting: implementation and evidence
 
-The existing Living Road patrol now includes a small physical fitting task at
-its return glade. The saved stormfall allocation uses three billets; managed
-coppice uses a bundle and two lashings. Inspect, adjust and seat the supplied
-pieces, deliberately record the inspection, then return to Rill for the existing
-declared payment. Explicit Look frames the work in either selected camera.
-A successful nonduplicate payment with retained live checked fitting proof
-places this outing's kit on a receiving table beside Rill. Legacy ready claims
-still pay without a backfilled receiving scene.
+Accepted Living Road patrols now finish with three supplied pieces at the return
+glade: stormfall billets, or a coppice bundle with two lashings. Inspect, adjust
+and seat them, deliberately record the existing inspection, then return for its
+original payment. Look frames the tray in either selected camera. Actual
+nonduplicate payment with this outing's retained checked proof shows its kit
+beside Rill for this session. Legacy ready claims still pay without live fitting
+or a backfilled receiving scene. This adapts Earth ET11/ET12 woodland support;
+part names, receivers and handover remain provisional, not additional founder canon.
 
-This is practical woodland play informed by ET11/ET12 in the Earth atlas. Part
-names, receivers and local handover are provisional adaptations, not additional
-founder canon. It does not simulate physical hauling or lashing tension.
+## Exact source and compatibility
 
-## Source and ownership
-
-- Base: `aeed88e4783d88d1157c626fbe773f8bd9c8fac1`, open draft PR69,
+- Base: `aeed88e4783d88d1157c626fbe773f8bd9c8fac1`, open draft [PR69](https://github.com/EternitiesAi/eternities-firstlight/pull/69),
   `verification/geometry-oracle-work-20261012`.
-- Gameplay branch: `gameplay/living-road-carrier-20261012`.
-- Code head verified by the complete source gate and targeted expedition browser
-  gate: `d40921881ec4155ee1503a9d413a6f4d3520cc3f`.
-- Implementation `e2d755a7fa4a7414a47a2a2739c6922186d57577`; capture/journey
-  `04d21d8c94d6fcce7d7d39b05f2256ceddf620d5`; App extraction/camera hosts
-  `691d13af6451731b2884870176bb3daa0b2cf60e`; native probe ordering
-  `3667dba6fba6afce2b25434b110567148432fa64`; native receiving roles
-  `308a83d97356c3f053da44abd7bc2adff202c7d0`; final Python host and records
-  `d40921881ec4155ee1503a9d413a6f4d3520cc3f`.
+- Branch: `gameplay/living-road-carrier-20261012`.
+- Complete-source, targeted-native and ordinary-recording code: `c73288adc15de0f6b460fdeb1a5b37d4d8a04655`.
+- First implementation: `e2d755a7fa4a7414a47a2a2739c6922186d57577`.
+  Capture/journey: `04d21d8c94d6fcce7d7d39b05f2256ceddf620d5`.
+  Interaction/guide/checkpoint refinement: `3f7e40bbe53d4ad1c5a7b8daca81f79c3de1e223`.
+  The intervening camera, probe, capture and producer-binding fixes remain in Git.
+- Final records/media commit is identified by the review PR's exact head. Its
+  source/tests/tools/build/pages must remain byte-identical to the qualified code.
 
-Rules, UI and art have separate modules. Private plan/ticket/projection owners
-and actual synchronous Expedition command witnesses control progress. Actual
-transformed corners, the tray, receivers and clearance determine valid seating.
-Control generation, run, previous claim and branch fences reject stale actions.
-Temporary work survives closing the panel or walking away in the same outing;
-reload, travel, death or owner changes revoke it. Recorded objectives survive.
-Old ready saves can still claim without a new live fitting. Only a real,
-nonduplicate claim with live checked fitting proof creates this session's
-receiving kit; legacy ready claims infer no receiving scene.
+Private plan/ticket/projection owners and actual synchronous Expedition command
+witnesses control progress. Real Engine-transformed corners, tray/tab clearance
+and bundle-relative lashing receivers govern seating. Generation/run/prior/branch
+fences reject stale controls. Temporary poses survive panel closure/walking away
+in one outing; reload/import/travel/death/owner changes revoke them. Recorded
+objectives persist. Capacity/storage refusal preserves checked work. Only actual
+nonduplicate claim with retained checked proof creates the receiving scene.
 
-Migration: none. World9 / Adventure12 / Expedition1 / WildSigns1, old browser
-keys, XP and level caps remain unchanged. No normal materials are consumed by
-the supplied kit. Patrol payment remains 5XP /4sunmarks /3ore /2wood /2fibre.
-Original story delivery, finite bindings and consignment remain separate.
-Personal saves were not inspected. Both cameras and existing system owners stay.
+Migration: **none**. World9 /Adventure12 /Expedition1 /WildSigns1, old browser
+keys, stored XP/caps, choices, gear/sockets/upgrades, companion, housing/crops,
+crafting, music, notes and existing ledgers remain. Supplies consume no normal
+materials. Patrol stays five steps/run/lastClaim and pays5XP/4sunmarks/3ore/
+2timber/2fibre. Original delivery, finite bindings and consignment stay separate.
+No hauling or lashing-tension simulation is claimed. Personal saves were excluded.
 
-## Complete source gate
+## Fresh verification at the qualified code
 
-Run from the reused clean remote qualification clone at the code head:
+| Gate | Actual closed result | Scope |
+|---|---|---|
+| Source06 | Exit0; all 217 commands passed;145syntax/145rule files | Complete source verifier |
+| Node | 2137 total:2135passed,0failed,2skipped;57760.8463ms | Four workers, original180s deadline |
+| Python | 478 methods run, OK/skipped10;89.430s | 471method passes/7method skips plus3class skips; original600s |
+| Road-account preflight | 14methods passed,1Admission class skipped | Missing native inputs; not a browser run |
+| Native04 | 1336passed,0failed, no errors | Existing expedition UI/restart software-WebGL suite |
+| CLIP05 | 86passed/0failed; context/server closed, no browser errors |  Native controls, ordinary RAF, known automated solution |
+
+Source06 ran01:50:09–02:11:04 UTC on2026-10-13; same clean head after. All required
+later journeys/cohorts/preflights passed, including freshly earned blade/bow/
+veteran, consignment, WildSigns, homecoming/controller and whole-draft stages.
+Those stage counts are not added to the main Node total. Generic cohort skips
+do not waive mandatory later cohort stages. Command:
 
 ```powershell
 python -B tools/verify.py --rule-workers 4 --output <fresh-D-output> --cpu-temp <host-temp>
 ```
 
-`REMOTE_SOURCE04` closed0, 2026-10-13 01:02:24–01:13:47 UTC, same head after and
-clean tree. All **217 commands passed**; 145 JavaScript syntax checks and 145
-rule files were dispatched. Node: **2137 total, 2135 passed, 0 failed, 2 skipped**,
-47095.0352ms. Python discovery: **476 methods run, OK (skipped=10)**, 196.313s;
-469 methods passed, 7 method skips plus 3 class-level skips. The separate
-road-account controller preflight passed14 methods and skipped one Admission
-class for absent native inputs. Original rules180s/Python600s budgets remain.
+Both regenerated checked-in pages are identical:3349854bytes, SHA256
+`401bb15382e0bb54fe639a3f3e81db0cde0518ccd073f9766c6bc6fe523df08b`. Source06 receipt SHA256:
+`c729c16310f093c8a9fe2423d9340f3f719879713b132321f9bad23c8b2abb1e`.
 
-All mandatory later journeys/cohorts/preflights passed, including freshly earned
-blade/bow/veteran expedition journeys, current consignment, WildSigns,
-homecoming, recording-controller and whole-draft earned stages. Their counts
-are not added to the main rules total. The two generic Node skips require
-explicit cohorts; this does not waive later mandatory cohort stages.
+Native04 ran02:35:29–02:43:32 UTC, three variants/22 whole-browser restarts,
+two deliberately accepted patrols each and an unpaid next run. Actual numeric
+typing/focus, E/hint routing, seating, inspection, exact payment, duplicate
+refusal, original finite binding, both Look views, viewport bounds and saved
+camera profiles were exercised. All12 receiving-group observations found exact
+seven roles (3pieces/2feet/tray/tag), restored geometry, zero restoration delta,
+unchanged state and GLerror0. Removing the group changed414–415pixels in Follow
+and2715–2763 in Adventure. This measures aggregate presence, not each part's
+legibility. State/renderer both used Low and reduced motion. Report SHA256:
+`b7ffaca713ded6e8873942b8bf360f121b0283a1eb896931655220dfd58ca3f7`.
 
-Both rebuilt, checked-in HTML pages are identical: **3349389 bytes**,
-SHA256 `32fcf10c5f86d8d98d13547b1b4242650407bff20081017ede4c85f4d3647a89`.
-Source admission required at least6GiB free host RAM immediately before launch;
-7675820KiB was observed. This is a conservative local rule, not a VM guarantee.
+Native uses test/capture flags and accelerated Core ticks. Its report lacks
+individual context/server/process closure fields; the successful closed caller
+uses its actual finally cleanup. This is not the full `verify.py --browser`
+gate, ordinary forest, human play, controller or hardware qualification.
 
-## Targeted browser gate
+## Actual bounded recording and selected evidence
 
-`NATIVE01` at the same head closed0, 01:15:56–01:26:34 UTC: **1324 passed,
-0 failed, no browser/runtime errors**. Fresh blade, bow and returning veteran
-used actual production movement/combat, visible UI and isolated persistent
-Chromium profiles, with22 whole-Chromium restarts across the three journeys.
-Accepted, partial, ready, claimed, bound and next-unpaid-run states retained their
-appropriate owners. Each case completed two intentional patrols and rejected
-duplicate payment before the presentation probe changed legitimate preferences.
+[Actual movie](../evidence/living-road-carrier-2026-10-12/ACTUAL_CARRIER.mp4),
+[controls](../evidence/living-road-carrier-2026-10-12/ACTUAL_CONTROLS.png),
+[guides](../evidence/living-road-carrier-2026-10-12/GUIDES_THIRD.png),
+[receiving kit](../evidence/living-road-carrier-2026-10-12/RECEIVED_THIRD.png),
+and [receipt](../evidence/living-road-carrier-2026-10-12/RECEIPT.json).
 
-New checks exercise native partial numeric typing/focus, fine placement,
-original inspection/payment, both deliberate Look views, portrait/desktop
-viewport bounds, saved view profiles, Low quality and reduced-motion settings.
-All12 receiving observations (two runs × two cameras × three variants) found
-the exact seven submitted roles, visible framebuffer contribution, full
-restoration, unchanged state and zero GL error.
+CLIP05 imported a labelled fresh command-earned four-step glade checkpoint
+through the real character UI, crossed/walked through actual controls, fitted
+three pieces in both views and recorded the original inspection. It used no
+test flags, accelerated ticks or direct state edits. This movie covers the
+fitting, not the entire outing or return payment. Source/producer checkpoint
+maps and raw digests were bound before import and rechecked after capture.
+Input source SHA256:`f1742c18e10a08ecd4cb50d455edf65a8ef580a735cdfd062f935249347a4ddc`.
 
-This is the targeted existing Earth expedition suite, using labelled accelerated
-Core ticks, test/capture flags and software WebGL. It is not the complete
-`verify.py --browser` gate, ordinary gameplay timing, an RTX measurement or
-human acceptance. Owned browser contexts/server close on success/finally; the
-native report does not contain explicit context/server closure fields.
+Software SwiftShader/Chromium143.0.7499.4, Low quality;1440x960 viewport/
+1224x816 canvas. Recording window43094.7ms; encoded movie41.60s/579151bytes,
+silent canvas only (DOM/HUD excluded). Separate unedited screenshots show the
+controls and native receiving scene. H.264 High 4.0 / 30fps packaging holds actual
+source frames; conversion duplicated 1,102 and dropped 10 for output cadence. No
+interpolation, editorial cuts, enlargement or invented poses. Full
+decode passed. Container cadence is not rendered FPS or a mobile-device test.
+Ordinary RAF observation:215callbacks, median166.7ms/p95383.3ms/p99866.6ms/
+max5633.2ms,168intervals over50ms. Encoding/automation overhead is included;
+stutter is visible. No RTX or60FPS claim follows. Context/server closure flags
+are true; the complete take's wall time was241.326s.
 
-## Retained failures and remaining presentation limits
+## Retained failures, interpretation and next acceptance
 
-Source01 at04d failed15 Node assertions: an exact App extraction boundary and
-three camera fixtures omitted the new inactive focus dependency. The original
-fieldcraft declaration was restored and the hosts compile the real inactive
-focus; frozen helper/JSON/driver and old assertions were preserved. Source02
-did not launch:5825672KiB free host RAM was below admission. Source03 at308
-passed Node but failed one Python camera host; later commands were unrun. That
-host was repaired with the real inactive dependency. All raw failures remain.
+- Source01 failed15Node assertions at04d: exact App extraction declaration and
+  missing inactive carrier focus in camera fixtures. Original declaration and
+  actual focus hosts were repaired without changing frozen helpers/old assertions.
+- Source02 did not launch:5825672KiB was below the unchanged6GiB admission.
+- Source03 at308 passed Node but failed one Python camera host; later stages
+  were unrun. Source04 atd409 and Source05 at0ca subsequently passed but are older
+  epochs, not substitutes for Source06.
+- Historical Native01 atd409 passed1324checks. Current Native02 failed its cold
+  Characters click before import; the saved frame showed Characters had opened.
+  Native03 passed10checks then failed30s navigation on first restart. Its
+  inspector referenced the old closed page, so that does not prove a browser crash.
+- StartupTrace01 failed before browser launch due to the parent's helper import.
+  Corrected Trace02, same flags/original30s limit/exact page bytes, loaded default
+  synthetic worlds in16.962s/.354s. Its major delay was before JavaScript;
+  only about:blank was restored. It did not reproduce accepted-import state or
+  qualify gameplay. Cause remains unknown, with no VM attribution. New evidence
+  justified the final unchanged Native04 run; both failures remain retained.
+- CLIP01 failed before recording: E opened overlapping consignment. Actual UI
+  RED02 reproduced it; tracked-expedition interaction/hint priority fixed it,
+  preserving other tracking. Current native and ordinary controls exercised it.
+- Earlier preflights/raw failures remain. The media copier correctly refused
+  two CRLF-only root files despite clean normalized Git status; original bytes
+  were retained and restored to exact committed LF, with unchanged blob IDs.
+  First export decoded but had nominal1000fps/High6.1 metadata; it stays private,
+  replaced with explicit30fps/High4.0 packaging. No game source or criteria changed.
 
-Independent review of four actual native desktop PNGs found an unobstructed
-tray in both views. Alignment guides have marginal contrast against timber,
-especially in Diorama. The received kit is visible but small beside Rill in
-distant Diorama; its individual parts/tag are clearer in Adventure. Pixel
-presence and viewport bounds do not establish fine-alignment legibility.
-Look PNG names were reused between runs, so those files show run2; the ordered
-report retains both runs and receiving PNGs have explicit run suffixes.
+Independent saved-frame review found clearer guide backing, unobstructed trays
+and matching patrol hints. Fine alignment/tab comfort remains unproven, and the
+receiving kit is too distant for comfortable detail in Diorama. Next playable
+polish is deliberate receiving inspection near Rill while preserving all owners.
+Future failed navigation should retain the attempted new page and request timing.
+No more blind startup retries or unrelated/VM resource controls are authorized.
 
-Next playable refinement: increase guide clarity and provide a deliberate
-close inspection of the receiving kit without changing reward/save owners.
-Pending human questions: can you tell which piece to adjust; does fitting feel
-worthwhile rather than busywork; does the return make sense in both cameras?
-No human playtest occurred. Complete browser, ordinary forest, controller,
-hardware performance and whole-game production acceptance remain open.
+No human playtest occurred. Ask whether the next action was clear, which piece
+needed adjustment, and whether fitting/return felt worthwhile rather than
+busywork. Full-browser, ordinary forest, controller, real GPU and whole-game
+production acceptance remain open. Existing historical hosted billing failure
+is not repaired or a current local-test failure; no billing change was made.
 
-## Local evidence and launch
+## Launch, storage and boundaries
 
-Heavy evidence stays under
-`D:/07-GAMES/Firstlight/artifacts/living-road-carrier-20261012`: Source01/03/04
-logs and exit/admission receipts, Native01 report/PNGs/three isolated profiles,
-and the bounded ordinary-RAF clip attempt. Source04 exit receipt SHA256:
-`f8bf576ae5a8c5b8779efd2a2b8ed3677d83faf46d51072a743d6327bd4a0a32`.
-Native01 exit receipt:
-`666a6a58b4ac36bd1c2101dd42631846c5e3dfe02919b38d5ed1ca6a80b8adce`.
+Use `PLAY_FIRSTLIGHT_WINDOWS.cmd` or `python tools/play_local.py`, then
+`http://127.0.0.1:8780/`. Patrol eligibility is the existing claimed first Living
+Road delivery plus explicit current-run acceptance and its four prerequisites;
+no new campaign, class or soul consent was introduced.
 
-Use the integrated checkout's `PLAY_FIRSTLIGHT_WINDOWS.cmd`, or
-`python tools/play_local.py`, then `http://127.0.0.1:8780/`. The current local
-host guards source/build identity. Use your existing character or a fresh one;
-the patrol is available after the existing first Living Road delivery is claimed.
-The VM and Claude Code are outside this work. No main merge, public deployment,
-paid provider, shared installation, personal profile or unrelated worker change.
-No additional full game copy was created. Production goal remains unfinished.
-
-
-# Living Road source/native pass; tracked-E refinement pending, 2026-10-12
-
-At d40921881ec4155ee1503a9d413a6f4d3520cc3f, Source04 closed0 with all217
-commands,145syntax/145rules,Node2135pass/0fail/2skip and Python476 OK/skipped10.
-Native01 closed0 with1324pass/0fail across blade/bow/veteran and22 whole-browser
-restarts. This is complete source plus targeted accelerated software browser,
-not full-browser/ordinary/hardware/controller/human or production completion.
-
-CLIP01 failed before recording at the glade: actual E opened the overlapping
-unaccepted consignment invitation. It retained no movie; context/server closed.
-The real RPG/WorldUI now prioritize only the tracked expedition's nearby action
-and hint, preserving the original order for other tracking. Actual-method UI
-RED02 reproduced the wrong hint; GREEN01 passes24/24. Guide outlines gained a
-dark backing. Software short capture selects declared Low quality and requires
-the successful current producer's explicit checkpoint hash.9 CPU preflights
-pass;43 related rule/camera cases pass. New HTML3349854B/SHA256
-401bb15382e0bb54fe639a3f3e81db0cde0518ccd073f9766c6bc6fe523df08b.
-These refinements need fresh Source05/Native02/Clip02 before delivery.
-
-World9/Adventure12/Expedition1/WildSigns1, keys/XP/payments/owners/both cameras
-remain unchanged. VM/Claude Code and personal saves excluded. Heavy work D;
-reuse ROOT/STATION, retain failures, no additional full copy/main merge/deploy.
-See docs/development/LIVING_ROAD_CARRIER_RESULTS_2026-10-12.md for exact prior
-receipts and honest visual limits. Production goal ACTIVE and unfinished.
+Heavy reports, failed profiles, raw source movie and diagnostic receipts remain
+under `D:/07-GAMES/Firstlight/artifacts/living-road-carrier-20261012`.
+Only one compact movie/three PNGs/receipt/README are added to Git. Reused ROOT
+and independent STATION; no new full-game checkout. Preserve the blocked clone
+deletion and unique failures. VM/guest/Claude Code/personal saves/unrelated
+workers were untouched. No merge/deploy/paid provider/shared installation.
+The production goal is ACTIVE and unfinished; heartbeat remains PAUSED.

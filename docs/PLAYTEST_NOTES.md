@@ -1,3 +1,50 @@
+# Living Road supplied-kit milestone verified, 2026-10-12
+
+Gameplay branch `gameplay/living-road-carrier-20261012`, stacked on draft PR69
+at `aeed88e4783d88d1157c626fbe773f8bd9c8fac1`. Qualified code head: `c73288adc15de0f6b460fdeb1a5b37d4d8a04655`.
+The final delivery commit adds records/media only; use the review PR's head for
+that immutable delivery identity. This is one playable refinement, not whole-game
+production completion. Goal remains ACTIVE; the separate heartbeat is PAUSED.
+
+Accepted patrols now require three supplied pieces fitted at the remembered
+glade. Explicit Look retains either camera. The existing inspection/payment
+owners remain; a nonduplicate claim with this outing's retained checked proof
+shows its session-local kit beside Rill. Old ready saves still pay without a
+backfilled kit. Tracked expedition E/hints now select this action rather than
+the overlapping unaccepted consignment. Guides gained a dark contrasting backing.
+
+Fresh gates in the reused clean independent qualification checkout, code above: Source06 exited 0, all 217 commands,
+145 syntax / 145 rule files; Node 2,135 passed / 0 failed / 2 skipped; Python 478 methods OK (10 skips).
+Native04 exited 0: 1,336 passed / 0 failed, three variants, 22 whole-Chromium restarts,
+12 actual receiving-group observations in both cameras. Original limits remain.
+CLIP05 passed 86 checks / 0 failures, normal controls/ordinary RAF: 43.095s capture window;42s silent
+actual canvas movie, 579151 bytes. Container 30fps duplicated 1,102 frames and dropped 10 for cadence;
+software stutter remains and this is not 30 rendered FPS or an RTX measurement.
+
+World 9 / Adventure 12 / Expedition 1 / WildSigns 1, keys/caps/XP and all histories remain.
+No migration, normal-material cost or payout change. No hauling/tension simulation.
+Native02/03 startup failures, prior source failures and CLIP01 remain diagnostic
+evidence; the later pass does not erase them. Complete browser/ordinary forest,
+controller, hardware and human acceptance remain open. Guide contrast is clearer
+in actual frames; fine-alignment comfort and distant Diorama receiving detail
+remain unproven. Read the [current results](development/LIVING_ROAD_CARRIER_RESULTS_2026-10-12.md)
+and portable evidence under `docs/evidence/living-road-carrier-2026-10-12`.
+
+The VM, guest and Claude Code are outside this work. Preserve personal saves,
+colleague ownership and unresolved founder decisions. Heavy work stays D; reuse
+the integrated checkout and qualification clone. No extra full-game copy,
+unrelated shutdown, main merge, public deployment, billing or shared install.
+Never retry the recorded blocked standalone-clone deletion.
+
+No human playtest took place. Pending questions: was the next action clear;
+could you tell which piece needed adjustment; did fitting and returning feel
+worthwhile rather than busywork? Test one fresh and one returning character,
+including both camera styles. Scripted completion cannot answer those questions.
+
+---
+
+Earlier checkpoints below retain their original evidence epochs.
+
 # Living Road source/native pass; tracked-E refinement pending, 2026-10-12
 
 At d40921881ec4155ee1503a9d413a6f4d3520cc3f, Source04 closed0 with all217

@@ -1,3 +1,9 @@
+# Current qualification, 2026-10-12
+
+Code c73288adc15de0f6b460fdeb1a5b37d4d8a04655 passed complete Source06 and targeted Native04; normal-control CLIP05 passed. Read [current results](LIVING_ROAD_CARRIER_RESULTS_2026-10-12.md) and selected media. The original proposal and intermediate checkpoints below retain their dates/epochs. No migration/reward change or whole-production acceptance.
+
+---
+
 # Three supplied pieces at the remembered glade
 
 Base aeed88e4783d88d1157c626fbe773f8bd9c8fac1 /draft PR69.
