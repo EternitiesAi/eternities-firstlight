@@ -1,3 +1,34 @@
+# Returned-kit inspection implemented; qualification pending, 2026-10-12
+
+Branch `gameplay/living-road-inspection-20261012`, stacked on PR70 at
+`e5492e5e27c830c93368bf158c6835959457c182`. Product95af8b67e571b5298a10a40ce7b10669cefe8e69;
+fixture correctiona7a975bb9de7fa13feac98b8d2d2426b93379938. Both views now have
+an explicit paid-kit Look near Rill, temporary close scale, conserved preferences
+and directional geometry feedback. Legacy/reloaded payment gets no backfill.
+World9/Adventure12/Expedition1/WildSigns1, original fits/payment/claim/choice/XP,
+all other systems and both cameras remain. No migration or saved cargo.
+
+Focused80 Node/26 UI pass. Three command-earned variants pass. Identical pages
+3357566B SHA dbd5ad604e450264086af554fa74e4b8dd846bb4eb3d47f7de3ff56190a515f3.
+Full remote Source01 FAILED at Python:147 commands passed,145 syntax,
+Node2144P0F2skip; Python478 methods1error10skip. Missing inactive inspection
+state in the Homecoming camera fixture is repaired; original assertion retained,
+28-method ROOT and remote checks OK2skip. Source02 was NOT LAUNCHED: fresh
+host-free5325428KiB below6291456KiB. No current full/native/browser/movie pass.
+167 runtime raw hashes match the clean exact fetched independent clone.
+Keep failures/skips visible; prior PR70 footage qualifies only its older epoch.
+
+VM/guest/Claude Code, personal saves/profiles and unrelated workers are outside
+this work. Heavy work D; reuse existing checkouts, no new full game or deletion.
+Full/native/clip require fresh >=6GiB after preparation. Do not weaken original
+180/600 limits/assertions or retry blocked deletion. No merge/deploy/billing.
+Goal ACTIVE unfinished; separate heartbeat PAUSED. No unattended promise.
+Read the [current result](development/LIVING_ROAD_INSPECTION_RESULTS_2026-10-12.md) for exact scope, commands and pending gates.
+
+---
+
+Earlier checkpoints below retain their original epochs.
+
 # Living Road supplied-kit milestone verified, 2026-10-12
 
 Gameplay branch `gameplay/living-road-carrier-20261012`, stacked on draft PR69
