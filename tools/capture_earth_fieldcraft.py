@@ -74,11 +74,11 @@ def percentile(values, fraction):
 
 def validate_checkpoint(source, journey):
     """Bind selected bytes to the successful producer's emitted checkpoint map."""
-    report=json.loads(journey.read_text(encoding='utf-8-sig'))
+    report_bytes=journey.read_bytes();report=json.loads(report_bytes.decode('utf-8-sig'))
     checkpoint=report.get('checkpoints',{}).get(source.name)
     if report.get('status')!='passed' or report.get('sourceDrift') is not False or not isinstance(checkpoint,dict) or checkpoint.get('sha256')!=sha(source):
         raise ValueError('Successful current journey checkpoint digest required')
-    return {'path':str(journey),'sha256':sha(journey),'checkpoint':source.name,'checkpoint_sha256':checkpoint['sha256'],'harness_sha256':report.get('harnessSha256')}
+    return {'path':str(journey),'sha256':hashlib.sha256(report_bytes).hexdigest(),'checkpoint':source.name,'checkpoint_sha256':checkpoint['sha256'],'harness_sha256':report.get('harnessSha256')}
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)

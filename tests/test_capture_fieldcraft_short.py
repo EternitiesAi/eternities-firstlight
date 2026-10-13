@@ -19,6 +19,20 @@ def synthetic():
             'earthExpedition':{'version':1,'story':{'accepted':True,'claimed':False,'steps':ids,'branch':'managed-coppice'},'patrol':{'lastClaim':0,'active':None}}}
 
 class ShortCapturePreflight(unittest.TestCase):
+    def test_producer_digest_identifies_the_report_bytes_whose_checkpoint_was_accepted(self):
+        with tempfile.TemporaryDirectory(prefix='synthetic-report-drift-') as d:
+            root=Path(d);source=root/'SYNTHETIC_SOURCE.json';journey=root/'SYNTHETIC_JOURNEY.json'
+            source.write_text('{"synthetic":true}\n',encoding='utf-8')
+            accepted=json.dumps({'status':'passed','sourceDrift':False,'checkpoints':{source.name:{'sha256':tool.sha(source)}}}).encode()
+            journey.write_bytes(accepted);accepted_digest=tool.sha(journey)
+            class ChangingReport:
+                def __str__(self):return str(journey)
+                def read_text(self,**kwargs):
+                    text=journey.read_text(**kwargs);journey.write_text('{"status":"failed"}',encoding='utf-8');return text
+                def read_bytes(self):return journey.read_bytes()
+            bound=tool.validate_checkpoint(source,ChangingReport())
+            self.assertEqual(bound['sha256'],accepted_digest,'a successful checkpoint must be bound to the parsed report, even if a later path read could change')
+
     def test_checkpoint_producer_binding_refuses_changed_bytes_missing_map_or_unsuccessful_journey(self):
         with tempfile.TemporaryDirectory(prefix='synthetic-checkpoint-binding-') as d:
             root=Path(d);source=root/'PATROL_1_GLADE_OPEN.json';journey=root/'JOURNEY.json'
@@ -114,9 +128,13 @@ class ShortCapturePreflight(unittest.TestCase):
             self.assertEqual(c,before)
 
     def test_cli_refuses_existing_evidence_before_importing_playwright_or_mutating_it(self):
-        with tempfile.TemporaryDirectory(prefix='fieldcraft-preflight-') as d:
-            p=Path(d);sentinel=p/'KEEP.txt';sentinel.write_text('preserve failed evidence',encoding='utf-8')
-            result=subprocess.run([sys.executable,'-B',str(ROOT/'tools/capture_earth_fieldcraft.py'),'--source',str(p/'absent.json'),'--journey-report',str(p/'absent-journey.json'),'--output',str(p),'--renderer','hardware'],capture_output=True,text=True,cwd=ROOT)
+        owned_temp=Path('D:/07-GAMES/Firstlight/cache/browser-temp')
+        parent=str(owned_temp) if sys.platform=='win32' and owned_temp.is_dir() else None
+        with tempfile.TemporaryDirectory(prefix='fieldcraft-preflight-',dir=parent) as d:
+            base=Path(d);p=base/'existing-evidence';p.mkdir();sentinel=p/'KEEP.txt';sentinel.write_text('preserve failed evidence',encoding='utf-8')
+            source=base/'SYNTHETIC_SOURCE.json';source.write_text(json.dumps(synthetic()),encoding='utf-8')
+            journey=base/'SYNTHETIC_JOURNEY.json';journey.write_text(json.dumps({'status':'passed','sourceDrift':False,'checkpoints':{source.name:{'sha256':tool.sha(source)}}}),encoding='utf-8')
+            result=subprocess.run([sys.executable,'-B',str(ROOT/'tools/capture_earth_fieldcraft.py'),'--source',str(source),'--journey-report',str(journey),'--output',str(p),'--renderer','hardware'],capture_output=True,text=True,cwd=ROOT)
             self.assertEqual(result.returncode,2);self.assertEqual(sentinel.read_text(encoding='utf-8'),'preserve failed evidence')
             expected='Fresh absolute D-drive output required' if sys.platform=='win32' and p.drive.lower()!='d:' else 'Output must be new and source must exist'
             self.assertIn(expected,result.stderr);self.assertNotIn('the following arguments are required',result.stderr)
