@@ -78,3 +78,21 @@ test('the actual App boundary gives photo mode its controls and suspends the hid
  assert.equal(env.fishingControlsCovered(),false);photo=true;assert.equal(env.fishingControlsCovered(),true);
  photo=false;dialog=true;assert.equal(env.fishingControlsCovered(),true);dialog=false;env.panel='settings';assert.equal(env.fishingControlsCovered(),true);
 });
+
+test('global App E cannot act on a line hidden behind photo or menu controls',()=>{
+ const h=fixture(),fs=require('node:fs'),vm=require('node:vm'),s=fs.readFileSync(require.resolve('../src/app.js'),'utf8');let callback;
+ const env={window:{addEventListener:(n,f)=>callback=f},document:{querySelector:()=>null},sim:h.sim,panel:null,fishing:h.ui,
+  briarInteract:()=>false,rpg:{key:()=>false},adventure:{key:()=>false},sandbox:{key:()=>false}};
+ vm.createContext(env);vm.runInContext(s.split('\n').find(l=>l.startsWith('function interact(){')),env);
+ vm.runInContext(s.slice(s.indexOf("window.addEventListener('keydown',e=>{"),s.indexOf("window.addEventListener('keyup'")),env);
+ const press=()=>callback({key:'e',target:{tagName:'CANVAS'},preventDefault(){}});
+ h.ui.open();h.ui.cast();for(let i=0;i<80;i++){h.sim.tick(.05);h.ui.tick();}
+ assert.equal(F.current(h.ui.context()).phase,'bite');h.menu=true;let before=F.current(h.ui.context());press();assert.deepEqual(F.current(h.ui.context()),before);
+ h.menu=false;press();assert.equal(F.current(h.ui.context()).phase,'playing');
+ for(let i=0;i<1600&&F.current(h.ui.context()).phase==='playing';i++){
+  const v=F.current(h.ui.context());if(v.tension<.35&&!v.reeling||v.tension>.7&&v.reeling)press();h.sim.tick(.05);h.ui.tick();
+ }
+ assert.equal(F.current(h.ui.context()).phase,'caught');h.menu=true;before=F.current(h.ui.context());press();assert.deepEqual(F.current(h.ui.context()),before);
+ h.menu=false;press();assert.equal(F.current(h.ui.context()),null);
+ h.menu=true;assert.equal(h.ui.open(),false,'Photo mode cannot open invisible pier choices');
+});

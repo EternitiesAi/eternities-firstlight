@@ -28,7 +28,7 @@ class FishingUI{
  active(){return F.current(this.context());}
  modalCurrent(){return this.modalOwner?.sim===this.api.sim()&&this.modalOwner?.state===this.api.sim().state&&this.modalOwner?.active===this.api.active();}
  open(){
-  if(this.api.blocked()||!F.eligible(this.context()))return false;
+  if(this.api.menuOpen()||this.api.blocked()||!F.eligible(this.context()))return false;
   this.api.prepare();const sim=this.api.sim();this.modalOwner={sim,state:sim.state,active:this.api.active(),paused:sim.paused};
   sim.paused=true;this.dialog.showModal();return true;
  }
@@ -41,6 +41,9 @@ class FishingUI{
   this.close();if(this.api.blocked())return;return this.act('cast');
  }
  act(type,quiet=false){
+  // Global E also reaches interact() when photo mode owns the capture phase.
+  // Only lifecycle cleanup may act on a line whose controls are covered.
+  if(this.api.menuOpen()&&!(quiet&&['ease','cancel'].includes(type)))return{ok:false,error:'Return to the fishing controls first.'};
   const result=F.command(this.context(),type);
   if(!quiet&&(!result.ok||['release','cancel','cast'].includes(type)))this.api.toast(result.text||result.error);
   this.paint();return result;
