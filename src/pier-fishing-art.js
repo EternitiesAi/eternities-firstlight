@@ -8,7 +8,9 @@ function pose(v,reducedMotion=false){
  const cast=reducedMotion||v.phase!=='waiting'?1:clamp(v.time/.85),u=smooth(cast<.35?cast/.35:(cast-.35)/.65);
  const ready=[.25,1.12,.36],raised=[.36,1.25,.20];
  const right=cast===1?ready:cast<.35?mix([.26,.96,.12],raised,u):mix(raised,ready,u);
- const angle=cast===1?.38:cast<.35?.38+(2.25-.38)*u:2.25+(.38-2.25)*u;
+ // Acquire the borrowed rod upright while turning. A low full-length pole
+ // otherwise sweeps across a nearby companion before the body faces the water.
+ const angle=cast===1?.38:cast<.35?1.42+(2.25-1.42)*u:2.25+(.38-2.25)*u;
  const pitch=angle+(v.phase==='playing'?.18*clamp(v.tension):0),axis=[.32,Math.sin(pitch),Math.cos(pitch)],len=Math.hypot(...axis);
  // Accepted reeling time is monotonic only while actually reeling. Easing,
  // menus and pause freeze the hand where it is, instead of resetting the crank.

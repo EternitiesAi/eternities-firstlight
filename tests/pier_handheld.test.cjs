@@ -89,6 +89,15 @@ test('both authored hand targets remain reachable throughout casting and every c
  }
 });
 
+test('grip acquisition keeps the lower rod beside the body rather than sweeping a low full-length pole',()=>{
+ const f=Art.pose(view({phase:'waiting',time:0,reelTime:0}));
+ assert.ok(f.axis[1]>.9,'The acquired rod is upright before turning toward water');
+ for(let n=0;n<=100;n++){
+  const p=f.right.map((v,i)=>v+f.axis[i]*1.95*n/100);
+  if(p[1]<1.4)assert.ok(Math.hypot(p[0],p[2])<.65,'Low rod stays inside the immediate body envelope');
+ }
+});
+
 test('displayed fishing facing enters and exits continuously on accepted time without stale catch-up',()=>{
  const input={view:view({phase:'waiting',time:0}),yaw:-2.5,x:0,z:27,time:10,paused:false,reducedMotion:false};
  let p=Art.facing(null,input);assert.equal(p.yaw,input.yaw);
