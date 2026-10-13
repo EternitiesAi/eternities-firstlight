@@ -104,7 +104,9 @@ try:
         for mode in ['follow','wide','adventure']:
             page.locator(f'[data-rpg="camera"][data-id="{mode}"]').click();render();check(f'{mode} camera control works',diag()['camera']['preset']==mode)
         walk(-11,-1.6);view(yaw=math.pi,elevation=.12,distance=7.5)
-        check('Actual house wall pulls the camera in before penetration',diag()['camera']['actualDistance']<2 and diag()['camera']['actualDistance']>=.45)
+        check('Actual house wall resolves a readable perspective orbit',diag()['camera']['actualDistance']>=3.4 and abs(diag()['camera']['actualYaw']-math.pi)>.1)
+        check('Automatic clearance preserves the requested orbit',math.isclose(diag()['camera']['yaw'],math.pi,abs_tol=.001) and math.isclose(diag()['camera']['elevation'],.12,abs_tol=.001))
+        page.screenshot(path=str(OUT/'DOORSTEP_CLEARANCE.png'))
         # South faces the music room, another legitimate obstruction. West is clear.
         view(yaw=-math.pi/2,elevation=.28)
         check('Camera returns after the wall clears',diag()['camera']['actualDistance']>7)
