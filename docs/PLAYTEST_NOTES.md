@@ -1,3 +1,27 @@
+# Hand-held casting and reeling observations, 2026-10-13
+
+Native02 passed 87 checks on source8bc49eb4ab66071213f7e6242abea9bc2894447d. Its initial
+fresh, earned blade and earned Chapter IV bow cases use labelled accelerated
+accepted ticks. A cold browser restart then records ordinary RAF only, using
+actual controls: cast, hook, pause, reel/ease, switch cameras, catch, release,
+and a second cast/cancel in the other view. No manual render calls or accelerated
+ticks occur in this recorded phase. Video: 48.80s / 3,665,860 bytes / 1220 decoded frames; full decode passed.
+
+Automated geometry samples check actual submitted grips/crank and head clearance.
+The initial Native01 checks passed but its first cast projected a low rod across
+Briar. That visual failure remains recorded. Source8bc49eb starts acquisition
+upright; final raw movie frames are reviewed separately from the geometric checks.
+See [the final visual observation and qualification](development/PIER_HANDHELD_QUALIFICATION_2026-10-13.md).
+
+The footage is automated software-WebGL2/Low play, not human play or frame-rate
+qualification. Cast-frame timing is approximately aligned to the trace; no exact
+frame-clock claim. No personal profile was opened. World owners and inactive
+character slots survive exact cold readback. Pending questions for Dom: do the
+cast/body turn/reel feel connected, can you read the line in both views, and is
+this a pleasant quiet activity? [Human route](playtests/PIER_HANDHELD_2026-10-13.md).
+
+---
+
 # Current building-camera observations, 2026-10-13
 
 Camera02's final-build doorway screenshot visibly shows the full traveler and

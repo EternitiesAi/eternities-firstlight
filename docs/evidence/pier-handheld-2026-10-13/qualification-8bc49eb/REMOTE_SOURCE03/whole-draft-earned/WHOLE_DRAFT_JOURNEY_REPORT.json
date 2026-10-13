@@ -1,0 +1,667 @@
+{
+  "status": "passed",
+  "scope": "Current-source fresh beginning-to-provisional-Earth-ending CPU journey; ordinary UI/native persistence/human play remain separately qualified.",
+  "root": "D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game",
+  "sourceEpoch": {
+    "actual": {
+      "FIRSTLIGHT_VALLEY.html": "31a406704aee2438bcb022de565b7b6a5090770fad6ae2a266819c185df9a6a5",
+      "build.py": "5cdc56463e39ff074ced05be1136162660e0ec56fe03e393939c33872a1774f2",
+      "index.html": "31a406704aee2438bcb022de565b7b6a5090770fad6ae2a266819c185df9a6a5",
+      "src/adventure-art.js": "9f308f6e104065b18fc3c1f1b041ea380330b816e9dd8890a5db86388da7758b",
+      "src/adventure-ui.js": "d519bbc992aaabd71db76a7ff08a6128317bdea6e8898f933a865e78edc3539d",
+      "src/adventure.js": "4ad8cf64755bd3c3411431376c8aeeb3469465fb2475f1badf4942223a954139",
+      "src/app.js": "8477d189cbdca3f924b0b45ccefe0403924116b16b300ebab46c0eaf22ac0d48",
+      "src/arsenal-art.js": "1899a42e04fd44e18eced395229793d275a873dbe2902473968289815a3f694f",
+      "src/arsenal-ui.js": "a462102896a3c7013f29f6cdf40504b983b8fde803baf41b98b8fb032da3abe6",
+      "src/arsenal.js": "70cf869a8240895158960c62cc65d802adf491ac24ee66bf7a3c0389557d2b70",
+      "src/atlantis-campaign-art.js": "9ab549df2eeafc8314c95c7c9e488bf80472fcfaac1de7dfe41ebbf8c1830243",
+      "src/atlantis-campaign-data.js": "22496def70bda1c6a6aa15c24cf53bad7bacab4facc54da7856ac693e7384693",
+      "src/atlantis-campaign-ui.js": "3bcf9923c47710bf2d3d876629ed47e46d4b7e4289aa8f7510b9ccac2025cb5d",
+      "src/atlantis-campaign.css": "11d0f42b969895ba4ac0f561067c260b9a3d632b3b7f15a34d617eff8a4b6523",
+      "src/atlantis-campaign.js": "da23cf19fe0fd68ae3f03c040fb3c375b655570bccffd320794cd45bd19067d3",
+      "src/beacon-art.js": "aea9e5d22d23eaf73777636c56c2444edac9b0d6239f9504cc95026585618577",
+      "src/beacon.js": "2aded7272a8d50cbfbdb4421f0140d00401a49788a3bb465260e30f501a2bf13",
+      "src/briar-moments.js": "987fbaa10fe6467c2b065f3234d04280c803dd3b69bb646eb00de244278662d5",
+      "src/briar-outing.js": "722076ab20a18d16bc940ab02b438b7111cd3b0436fb5a3a254027b62b4ec90c",
+      "src/bridge-art.js": "e8f85dd21a0eb6363f674a934c625b22fc29f18fc63a543ebd61ea0a87fa254d",
+      "src/bridge-community-art.js": "202fba58c63a88cffe7ae792325bbdf6bd62d4c070dfd16636beb1a5c11de1c5",
+      "src/bridge-community-ui.js": "cdc8f8552466f00706e4865f30777b7abb6d6ad704365ef0a4367b0998787333",
+      "src/bridge-community.css": "15be66090d836555498d87e00564c5b7b7094c2e3dca5951f9b1fde5023ea29c",
+      "src/bridge-community.js": "4308eecafc47044c3c063b46e4c3aa7cb4e7a30d5d938c64fd518e7f29cb30cc",
+      "src/bridge-moment-view.js": "fe58c7824f96458f2608af4d1cf76c81d2936da89a8cca1ad933974b65e0e03c",
+      "src/characters-ui.js": "58de0cb602479d45eae66f4ccd4077253e34e6e3d843a1505f9eca4d4a1f8f77",
+      "src/characters.css": "48bfb2431b5fb50e530ed334e52cf07c31b8a29bdb5bb4917365210ab9e71815",
+      "src/characters.js": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+      "src/classes-ui.js": "6fb25a35158cf3388485f57016aea745260dea8a057f8d6b4781d3f7a296d22b",
+      "src/classes.css": "4b9b47443b1817efe2b4cd43e7a3d0d34e623738a5b1e6e1cad05bc2ce88e892",
+      "src/classes.js": "15da8e8f26c234a5903e5321d9cbcadea773037c9536911a5dc85cb9da2aaa97",
+      "src/coastward-settlement-art.js": "8f08b152b5205c434ffa7408118e754799eb7ab396b2c0aaec8920cc0029c839",
+      "src/coastward-woodland-art.js": "45b2758d3f8d75457545b24c2cc96f81f70ac8296bf183f57ddd412289f130fc",
+      "src/combat-view.js": "9e674247119cece3bb6a35ca31fa424ed5e8e0187cbd2c149afb6f4aba085d5c",
+      "src/combat.js": "4176bbf57fd761732b5f9d96708ac8ac0d6855ef56c928d06810f06f74315a32",
+      "src/companion-art.js": "53a14620dc045b28d665b328287631d52f96f114a3b8d5e693f276800114c35d",
+      "src/core.js": "db0e1c647c479a32481cc0525b9c7d8d47e013a05eca669345aba63e5ac21118",
+      "src/cosmos-art.js": "d68fb28540196c4d6f39ca60cc99e1eb99fab534fb026578c02e75119cdd17e2",
+      "src/cosmos-campaign-art.js": "3b22a5fe117cb3731a1531a66941fba9e2953b5c23f3816150c184230a631a5e",
+      "src/cosmos-campaign-data.js": "9c7d4d30b863e25812df3651e785bff3f87495b37ede488804ee03178cab93d2",
+      "src/cosmos-campaign-ui.js": "95f8bbb9df5f97ddcb779268e5c28f412914d388c92bff00f5e79ec048e77686",
+      "src/cosmos-campaign.css": "436b9330b2bb190d022698894c76bd6e3b321d014d6e64bc553449c4dcd33ff7",
+      "src/cosmos-campaign.js": "7e03aaad5efe9db475ea82db6e8b9343361a68dec52132cf190e3c055fc681fb",
+      "src/cosmos-ui.js": "2582b2f2f4d894f44a969108af258087cf7f0be8c70dbf73eabca5810d236465",
+      "src/cosmos.css": "4d79807974082aaef0df364d312ae3d4a345ffd40b5eab403ccc55c24f02a63b",
+      "src/cosmos.js": "bf4d9898600b9b5d296f3de934f6f8dd52e343f3b762fd5f0085a09f14ea2090",
+      "src/creative.js": "d0032234d3cab1a6e90c84736011a98631bcc3748de8d5fc23df872367038761",
+      "src/crossing-art.js": "86cd8945194c6437d9ece96a7d0bcac8a4970eb5f3324300e48d08376bb61bcf",
+      "src/crossing-ui.js": "5a2a7f6989a0a7ff0a96fee7aa88ec77dadbfba15440a272f131f17a98d86913",
+      "src/crossing.css": "af6dd51f197dfa1963fc9fa0d92683b2e6f48270903aaea5ba90cbb2833862a2",
+      "src/crossing.js": "b666c4e6e20483ad267293578020876c8791bbbf23f8116803936658400d1a8f",
+      "src/drover-art.js": "0f4dda1af6b05e1c7e0931d835fca2d3faec7960788bc89b9f9b591af19206b0",
+      "src/earth-art.js": "fdcba31d0ae3b43a24a6994a8bd8e07e31c9e731e198285bf83a41138204a8c9",
+      "src/earth-consignment-art.js": "2c7762c9b4e33e689af4a1a21f3aa7a969956214c2bde7d959e28a60dc40270d",
+      "src/earth-consignment-data.js": "1c6d73d27cd2d2b702be79deca21df40e50a1f58090d175a0e5aff8d709f0249",
+      "src/earth-consignment-motion.js": "822e966961dd9889466d06a668abc5bde4e635a5496a019ef042ae6e141557a3",
+      "src/earth-consignment-ui.js": "57501e2e84a483fc69ae40eaf65088b7804b14fa4bcf6dddc48b397d4740fc0a",
+      "src/earth-consignment.js": "1af351fcaa324fa7c2da23fd9e1f4e87ed23a48d6cf5318f3e8cbf9b7aad7292",
+      "src/earth-expedition-art.js": "1a5da68241d9634319ebf859abf890e1aa32000ed69895c16192697225678e42",
+      "src/earth-expedition-beast-art.js": "bf663c1cf48ef65a1c43e42bec63e743686506f3c028b7e72e4f4eac2ef7c0e4",
+      "src/earth-expedition-dialogue.js": "1ba8a7bd0b32d56efa583b5cf1f0d4d1bf24df58e07811d08853e13a56c835ac",
+      "src/earth-expedition-ui.js": "5f8b2a2911527eb3d1125c8f252a2d08c9e4087aa02a8288649b2177f2509c0d",
+      "src/earth-expedition.css": "ad650598df3749417d4953965e72d9a2a802f1bb46c549819305a19a5b95247b",
+      "src/earth-expedition.js": "8d0a066679b49f2ac331ece1175d332dc96a10741909ccfd237f2b2e50b4ecd6",
+      "src/earth-fieldcraft-art.js": "4b7306af76245fe9d7fa55f5e9287565e0dd24048e7364289d49d7553096e55d",
+      "src/earth-fieldcraft-ui.js": "313708ddf1546e974096ddcc5a0bc41070816b1fd6803dd662770d812a8bb0b5",
+      "src/earth-fieldcraft.js": "60dd296ee395f027890cfc6ecb40939b1ee384ce7e7af2f82bf1f926b644c283",
+      "src/earth-grazer-art.js": "df809bdcd8554fdd59bdb51b990046f40680807f72aa9d26aa634d42d31777ec",
+      "src/earth-grazer-habitat-art.js": "3b7e54ba65c024108edb4d4533f80c61ff019c8b9429f7273512926b37b792a8",
+      "src/earth-grazer-motion.js": "0845a58a5d7fd6a98b10f1d5b967832545ccab3d1da37a19c768c3e094d72589",
+      "src/earth-grazer-visibility.js": "276157ce0c7e2d1e0d90e485b3c039d040a9aae379f43e72a9608c00454844da",
+      "src/earth-homecoming-art.js": "2353946d8bb28a2881f3191807fc248f95fea75f16bc585f6588d82742b750ed",
+      "src/earth-homecoming-data.js": "55485996a1651f8b5f0580c9e074f5873ddf45ca26744939238e31516051014f",
+      "src/earth-homecoming-ui.js": "5e57a2367153e516bdab12837db82812de3124a32489b09987dd285be011159d",
+      "src/earth-homecoming.css": "dbfeb49d20278ebeb9b9ae4c1d4d575acc3a806ca59898f20ebb9f8ca8f1661a",
+      "src/earth-homecoming.js": "c16adf4e13bd3a57e9be6aae6cd0cc00a4b78b49106f220ee74dee105fe858c1",
+      "src/earth-notes-art.js": "87fe4682829bfff89978d7046d62f518874a7953808431c5634327c9eb449556",
+      "src/earth-notes-ui.js": "9e0f0df26062b4929e0c3a801e8e857afc269936dbe4932279e935c56274f264",
+      "src/earth-notes.js": "4ab5807020f65086b190591414c871ee76412791ac0c97dca5447c595840e9e0",
+      "src/earth-patrol-carrier-art.js": "1bde299a979e9cb1d8ed96883c9a4f926a3f5d85ff664ce6887099bbc0cc0ca2",
+      "src/earth-patrol-carrier-ui.js": "491aa14c529d2194d6dfb06ab9440d98001bc3a89d86a90d2e9ad82f8abdf233",
+      "src/earth-patrol-carrier.js": "e8f4f33b97f46ddd1abf1b3c757cef8ba63e8f8a4617717b644d4af8478e5645",
+      "src/earth-road-account.js": "c35d9e1f4a12525598514db10b177c323e9ed0cbdac35119bc86c499102ff51c",
+      "src/earth-road-art.js": "e7bd1fbc7b1177327c0756724b1ccf78b1b640568d9121a1ff416736524b1520",
+      "src/earth-road-ui.js": "e4577d03d3b97d271b8374054d34b5afdecbb47b28e74b911b931c2ed8e3c8ad",
+      "src/earth-road.js": "7417a1bdc4ab9eea8e2afc4c013a6890507b5670fca97d1f6ebe9f823390a125",
+      "src/earth-roadkeeper-art.js": "ea1fba39cd658a65487b88a05f1d51c2a45a1724ac6cad31ac9e57657e8eff2c",
+      "src/earth-roadkeeper-motion.js": "40ed91f8435eb4f99237d491db925043fc81fa347a35b5c2e5a682cd017936f3",
+      "src/earth-shoulder-art.js": "422a50a7aeec456b6f75095c53a319d2cbf6ac5e09f773e268ed54034c2ddb8d",
+      "src/earth-story-ui.js": "930b71ef9184a5d7b03cc79ff33d7f9e000eabb9d3934266af9e0fe8713448cb",
+      "src/earth-story.js": "fd0ced6f17f1b15b2aee4e31aa00be249bc8e1fb08c4e735416d95c173fd52d0",
+      "src/earth-ui.js": "9294c4cb9666aa6aec2d36d6eb8e34686bf01f57ead9964322ad8283cc2ba635",
+      "src/earth-wild-signs-art.js": "7f800b7a9307f4be3104f755b673b393fb1c653c78afa81b3677af21e6c80a71",
+      "src/earth-wild-signs-data.js": "c0096aa9e421eae3deb60ed0ff312df5e224413748e4d2d596018b0b6abba5d3",
+      "src/earth-wild-signs-ui.js": "c9de9541ef1a0e49fb67aba42418c0113e1fe08030f6907cf1b563a045e98365",
+      "src/earth-wild-signs.css": "c8f5b8451d066d30b0431fb64e2930b9b78163cd8591941db56ef85efe438f38",
+      "src/earth-wild-signs.js": "cc572066f098db73f9f574e424916673b8aed806c944c67c8407932fe03003e0",
+      "src/earth.css": "1f40093ded67c175c70c730b8518ff928d26db40287515256fc287c45f2a9f3d",
+      "src/earth.js": "cbd5ee90a4b335c66ba096f439f8f3efe6f6f68cba99086485f34fd81866a166",
+      "src/elderweald-trail-art.js": "e978e735ec1ee8048df1777b190959b832cd37755f682c3d51b9ec3f0a7f0491",
+      "src/elderweald-world.js": "576649e890df9cc0ffb5d755565f8911024080cbe09b18a1eea1fefbfddf8d22",
+      "src/engine.js": "a05dfb26cf6c9151f4968f8f4172bc1d201a59f64c452ff0dd5203baa910857f",
+      "src/experience.js": "3b5a178ca757c7b58dcbfcedcc1522887dc6a178faf5e942c6e3894166d60570",
+      "src/gathering-adapter.js": "df41b2b23ae11c6ef2661e48301c488cb26ab753a7beec73349b5c959d5ab564",
+      "src/gathering-art.js": "b693bce2a519bd75e4f99e03b96184f1ed10c9a9a02e25b7affd53e739f5e0eb",
+      "src/gathering-music.js": "5e44106322e01aebc7b87d8eefcd29b2a2577d2162d70fb8f99475c7cc7deb12",
+      "src/gathering-ui.js": "0c347e1da4a897b178c405f35cfef2e6ea518fe5d9e6ba650e48e48895e0445a",
+      "src/gathering.css": "aa2e5381a0ff9fa7e4ceae5053a54a8ab11a784f81ee021e4835d485d3c5f4db",
+      "src/gathering.js": "256a33c52f2b31c2c421f72a74aae543feb6c554ebae863aee55d31f0c68eb54",
+      "src/grounded-footfalls.js": "c85980e73234578c6eb02c07f5f817dc6972d1be15d0bbfe4a3372b02224370f",
+      "src/heaven-campaign-art.js": "25ed9017108ea106579584233cc55b2a1753d62bd36174bb9c023682cb2ad24a",
+      "src/heaven-campaign-data.js": "2495650ded3f74d81d3d53f4d259f29052d3ff64b65a4a6331351b049bdc67eb",
+      "src/heaven-campaign-ui.js": "67723b2f0acf3e52da6177ad98d8a881e3b3e509bfc418bd3031ffbdc9f0383e",
+      "src/heaven-campaign.css": "7cf25161526677ee407ff09596cf8e2ecfeb92246c66c0b7255440b54d041bf0",
+      "src/heaven-campaign.js": "50aa6ff6607f9dfda6f0df1ca2fa473bca36a7513a34d1a915c1a87305e69e26",
+      "src/hell-campaign-art.js": "5ea5b875e32114b07b52ffe0000b7163b340f08adf0eae01552b84a478420f18",
+      "src/hell-campaign-data.js": "745221292e89ed2bcdf455ffc1bf4e0e66259add5671709e77135d5ede3892ff",
+      "src/hell-campaign-ui.js": "d47acd0b9ba992df6ff4c73e1b5f3dfb9c1b2ced0745c8ffe50d6cd34cc80f8c",
+      "src/hell-campaign.css": "146c66cd811e3070367e10a91c30f39cfc630dba1ee929a3b6a540f96142f0d9",
+      "src/hell-campaign.js": "cc8ca64f9515e75f4bf572c3feb5978f07409e4aca5a328901b3322f399f67a1",
+      "src/home-history-art.js": "df3acc85a5191c3938692759e85b7ee76ef5f936f29e65d6a845636600396a1f",
+      "src/home-history-ui.js": "41a330942368c7a4500759f2cbaf1cda224bd5ed25bc284b9e44463fc1f43a8e",
+      "src/home-history.css": "54ef3c501dfda4c3d74c0f17d900bdc5b25c9dcbaeb1840ec36cbcfe0a276bd2",
+      "src/home-history.js": "f002eb64b57343e38e95eafa4cd522c892aab26efc7b0c3d65bea86a45cec6e6",
+      "src/local-life-art.js": "5d8d072e20316e0bce84530f3df1ca5c03c360a9b51aca06cc36aba12bfc73b6",
+      "src/local-life-ui.js": "90e1e229f5be8d40c599473df5d6802c1a23a170c9b804a6756efe7703938c2e",
+      "src/local-life.js": "366b1b5693987564de6962a430f2cf7070d81348ad01120d154bccb202a39ac3",
+      "src/mill-gate-art.js": "fe33cbbd3f180a8d32a0d0a338cde42c40e809af99ed2da1db157ba5c7fbcdd9",
+      "src/millwright-art.js": "bd7397ee2a9f4c47b2b51117e28f3c68533da41de3122bb0a39a5575913a5661",
+      "src/pier-fishing-art.js": "cb3be303e85e4991613058bc24d7eb3a78d33a3fcb09d39ccb62507774e70e46",
+      "src/pier-fishing-ui.js": "9d946421c2cbdf66cc770906633c41d69d96a21048852242147679ec07d9057b",
+      "src/pier-fishing.css": "4fd4c003f3ba802aca101a9fd6e7d55a09e6d9cac1e98b0c463fabce990efdc8",
+      "src/pier-fishing.js": "ace7e8101629d5c3ca8936045f48c57a87a06a15556e7308df863e3ab89ec85b",
+      "src/pursuit-ui.js": "f8c6bab82d88b6e4dcbf05f3e78701d489f31e224c80211b94f8acc8b70b4224",
+      "src/pursuit.css": "61f36fa917eafba8cfa332f7d233db4c47a6d007bbf84d1843bc25fc17dd63ff",
+      "src/pursuit.js": "b77e1874f8278971f41d4b62551df40c81126f2a35e02958958e802ab9c8b5ff",
+      "src/quarry-art.js": "5bc6d93e99e430e7a460a1a2a510fc69e60c9dd80e758bce7470dae3ae3446f6",
+      "src/realm-art-data.js": "1ac6251a7acf23c78799d96b5554fb3fe572c40e12c54c73f0188c4f8a324435",
+      "src/realm-atlas-ui.js": "26d34bdc7afc9fbf9bb1f0f483aa6bc8312eba8a2186d21c80cab2fc1f68529b",
+      "src/realm-atlas.css": "7ef7a03b8c2a69069c2d65da8d5134c7b7dc4bc2b941e139f818a7ab7011c366",
+      "src/realm-craft.js": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+      "src/realm-givers-art.js": "8362d7a98f238b77b9afa5eff7346f430c02af6cd249502f146308a3d246fb34",
+      "src/realm-trails-art.js": "99a588e7aee9c7d43b6506de836ab2bab75a9420c6b718369c37e4517ca037e3",
+      "src/realm-trails-cosmos.js": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+      "src/realm-trails-north.js": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+      "src/realm-trails-south.js": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+      "src/realm-trails-ui.js": "476e29ae44b666b6982f60ca2c8e7b9357b9b625b6b52eb06a1defedb2303def",
+      "src/realm-trails.js": "e5903d90b83dcce6d30f15f3c82644aab745aff1c2a058f2aad3214ce14934b4",
+      "src/road-art.js": "0cc12918587f98f4b9ed2b7beb8d1b21219b4a69959742a759f88354942df05d",
+      "src/road.js": "d18106f1a2147d623680b285dc5882cae8d2b74c5ef8b500d75de35d20c86dbc",
+      "src/rpg-ui.js": "c00d8324a1f0a12fe9e36833069af0640bb59ca140e102483e5b9d846a99e819",
+      "src/rpg.css": "34ca5591b22748dbf96754fc0f6a857cbd73f77eb85e50b706e1b484291b11ae",
+      "src/sandbox-art.js": "3c3a8f9ea1a44fb84bdfe07a99b33969f253714c271e91ca3cfeca7eab76474c",
+      "src/sandbox-ui.js": "28d7530e8153ed3c8a6a31b3e204cbc9680484b013cb5880a4f05b76cf83d8f5",
+      "src/sandbox.js": "ad11196c12363b650f2697ab8fb30eb657ff0bf65953274942ce36eb28131e85",
+      "src/shell.html": "3b1799c4fe48c7511f66024c4b0eb1d606606c21fb4421a8f21cd037a85ffceb",
+      "src/skitter-art.js": "bd84a78381cf7232a7fb92a868332308c68fcae17d25764c2b5d4bdfefa29903",
+      "src/soundscape.js": "15b7b578886b838ef20e56501940354d33a8ffcd5581332dd4c4b2035692c5af",
+      "src/starter-art.js": "cfc4f672b891fe6d53dec82a97aeac7204b8179b3490ae9df9ce3412c4661fcc",
+      "src/starter-ui.js": "44718b2835207383632d5f33e0748dba9c348041b11f9b404040bdf07a259052",
+      "src/starter.css": "f1501b06a13c2b3ec0030b39bf9d4530740aad2f60cf9608ca32957c9ce2943b",
+      "src/starter.js": "c6debd10295babafdcd714445c2ac18c0ff5ce8fd54b8dfe4f3ff78c9e0a294d",
+      "src/style.css": "de294de870d7554ccd1d8fa0725dd7a954e8a3f3e75bd9cff86530e94a4e4eee",
+      "src/surface-assets.js": "5cb0f81348074edbc0e4f3c7dee4962fac10bbc5e7db0ee07b16216f3b7a1e5f",
+      "src/traveler-art.js": "4f617f4f4a14808c45a937fda035d21c8854d9321cfdff9b0c7f92d530767fe9",
+      "src/traveler-equipment-art.js": "13537e49de6fdcd670e75875c3b17736b76df53b65709d2b2366aab721dc98dc",
+      "src/woodland-shapes.js": "7f2fba3a9c1f7e01b5ad2bfa6cf1788e47282d40324c6312bc4718f514a97e01",
+      "src/workshop-transactions.js": "115193dc80841b531a14f85a41c8d2d5e44c6169fc4ea4d6c19637eb7a8e8dd4",
+      "src/world-atlantis-earth.js": "a21ac70e5e1b669363a1bdc086d7e2a26ac6969e9384ef35259d30b27999ce4f",
+      "src/world-foundations-art.js": "f38b8b5aacaff894a52e18b3ff1006a17105abb6ada0f9a68bdd8c29af05b56f",
+      "src/world-foundations-ui.js": "a83ecccb689a9556483c3d489bae8f60b26e0521bbb5fc2934f02a7401df2db1",
+      "src/world-foundations.css": "8abcf23f66cde69a92b7f3be6c099a1a2e2088d220bd83a81ea71d78f0564669",
+      "src/world-foundations.js": "6ec902e94da54024cc5a8c198d4b8effc7e55d493fae818fdf27358e9e443d61",
+      "src/world-ground-coalescing.js": "c31024794d5b5db2c28d9aab9ecf8fd0acdf55c2630ff5edf93b988151e5d63d",
+      "src/world-heaven-hell.js": "ce3da0fce6f82abebe9ead604ba3b60dbeffde5b1cc619a25b066e77bc67687f",
+      "src/world.js": "94fb84db5d326c4e6642996ac3459fd21303c150da2da1360370ca8945e81114",
+      "tests/atlantis_campaign_journey.cjs": "bb3cb377546ea2fe22225e2aba5dc8a16ad1f43eeeb77f8e3a1efa7799c1bc70",
+      "tests/beacon_journey.cjs": "2fe70a55c36613acbed06ef8d3a14eb09b44e1b14a006d315d8aa22f13dc80f7",
+      "tests/chapter_journey.cjs": "a4786d2c84424c9d9325ff56650764a504a6f68df0778359183d138d3ccbc5e1",
+      "tests/cosmos_campaign_journey.cjs": "8623215dc3c485af50dfdd2e2a544aca40aea5a4816313ac6155f01bbbcacfc2",
+      "tests/crossing_journey.cjs": "e9854e5a059c85c2c5aa7838ec2ec1d613b5293ca2d479730853666bd5d56c0e",
+      "tests/earth_expedition_journey.cjs": "6a147bea4f682c3f61027c7858155689946286593edc3176ea25c6004a4d3efa",
+      "tests/earth_homecoming_earned.test.cjs": "fe4a5d23e1c9ef5aa7c830067e1cd731109f4bf8ecc4021f01681208370844ae",
+      "tests/earth_story_journey.cjs": "f3a457bc97decc853f186f2cd02bc8eb593eb0934bcd9d4465ad8062d87c0f0e",
+      "tests/heaven_campaign_journey.cjs": "17938427655d8ca59642d58a65a7975c771ccfe86c0794d2eb512d91fd44972e",
+      "tests/hell_campaign_journey.cjs": "7107cb273e359e423a3f61174a9adf949580cc1ddc299d4c758f41e2ba3f2a06",
+      "tests/realm_trails_cosmos_journey.cjs": "33706c2bd200e36f1ae323c484849126d222bc249c661ffcb3d6b47be3ee0c78",
+      "tests/realm_trails_journey.cjs": "dfb80cecd9ba2d1ec22d93cd1aface73cd65fbdab1aff923674944970a865727",
+      "tests/road_journey.cjs": "8985b86bdaf1e96abfbe009e3cc787d513dfb4827afcbdfb87d86a66fa03fbe9",
+      "tests/whole_draft_earned.test.cjs": "6f5c131f5a1f0aa49b71e0f674d6afafb4a462c4dc83b0748c95c7e1b50c15eb",
+      "tests/world_foundations_journey.cjs": "5a94ebf7a32a1e245af7803acec84cafe2890e698a3c79878e9242991da1a399",
+      "tools/earth-homecoming-journey/connected_atlantis.cjs": "c72b0bca308d0293e088cc4d3636780b285f2e8822663ac4ef298317716bc006",
+      "tools/earth-homecoming-journey/connected_cosmos.cjs": "54a8559e833c589d9dec3b43cdb201240a12c361fc1af14be1a0b77578ba0bc2",
+      "tools/earth-homecoming-journey/connected_heaven.cjs": "cfdd7a0eabd56a777189340e81c60fc072d0e4888b0d2ae6051f7b45c402cbf8",
+      "tools/earth-homecoming-journey/connected_hell.cjs": "ceebdad6db57e7cc55390a5df35a5034b889d6061172a0bdc9f30e36c2333630",
+      "tools/earth-homecoming-journey/connected_homecoming.cjs": "d230919fdfd2de80940a99f7dd07bfa478163a2aadc8f1a6792dc403cc507ea2",
+      "tools/earth-homecoming-journey/connected_support.cjs": "b017d206d4a32ae60f9732b108e5a14c4700b3de39d8a62bcfc9db8167b65195",
+      "tools/earth-homecoming-journey/early_realms.cjs": "15e29139d1db1f9df5fa22074c7787d5723c61ad46e53317bc23c700b614a254",
+      "tools/earth-homecoming-journey/earned_common.cjs": "c9793c17b26693355d414eee6b7029312e8a4b866709bd0dca13b6f337029a0a",
+      "tools/earth-homecoming-journey/earned_earth_homecoming.cjs": "4c65d4a4ca88de60b146f2bab18f5f1a84de3ce79c0d90806ebe5c8e55b63ed6",
+      "tools/earth_homecoming_journey.cjs": "46386a35da401357a31e782866e2eaac78dc572ee0ec84fe367e4ac1c06c9143",
+      "tools/whole_draft_journey.cjs": "c27e7b8ebe207e300b6d63f14be2121e1b7c63743ec4749560608827d4487c62",
+      "tools/whole_draft_readback.cjs": "f547df4350320e6f4c4260811d2c8fbf209adb6c560d2e49788800d9d36a2a8c"
+    },
+    "stages": {
+      "caller/connected_atlantis.cjs": "c72b0bca308d0293e088cc4d3636780b285f2e8822663ac4ef298317716bc006",
+      "caller/connected_cosmos.cjs": "54a8559e833c589d9dec3b43cdb201240a12c361fc1af14be1a0b77578ba0bc2",
+      "caller/connected_heaven.cjs": "cfdd7a0eabd56a777189340e81c60fc072d0e4888b0d2ae6051f7b45c402cbf8",
+      "caller/connected_hell.cjs": "ceebdad6db57e7cc55390a5df35a5034b889d6061172a0bdc9f30e36c2333630",
+      "caller/connected_homecoming.cjs": "d230919fdfd2de80940a99f7dd07bfa478163a2aadc8f1a6792dc403cc507ea2",
+      "caller/connected_support.cjs": "b017d206d4a32ae60f9732b108e5a14c4700b3de39d8a62bcfc9db8167b65195",
+      "caller/early_realms.cjs": "15e29139d1db1f9df5fa22074c7787d5723c61ad46e53317bc23c700b614a254",
+      "caller/earned_common.cjs": "c9793c17b26693355d414eee6b7029312e8a4b866709bd0dca13b6f337029a0a",
+      "caller/earned_earth_homecoming.cjs": "4c65d4a4ca88de60b146f2bab18f5f1a84de3ce79c0d90806ebe5c8e55b63ed6"
+    },
+    "manifests": {
+      "mode": "installed source, explicit switch from historical d3 overlay base",
+      "installedManifest": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned.SOURCE_EPOCH.json",
+        "sha256": "91ec9af5263dc3e5b54ed942a7d3beeb67be0859ed0685007ab598011b65c7cc"
+      }
+    }
+  },
+  "callerHashes": {
+    "tools/whole_draft_journey.cjs": "c27e7b8ebe207e300b6d63f14be2121e1b7c63743ec4749560608827d4487c62",
+    "tools/earth-homecoming-journey/connected_cosmos.cjs": "54a8559e833c589d9dec3b43cdb201240a12c361fc1af14be1a0b77578ba0bc2"
+  },
+  "sourceFrozen": true,
+  "results": [
+    {
+      "variant": "blade",
+      "status": "passed",
+      "chapters": [
+        {
+          "chapter": "original-I",
+          "input": null,
+          "output": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\original-I\\CHAPTER_COMPLETED.json",
+            "bytes": 30042,
+            "sha256": "2d7e983dcedf3a81634233f463b31ba4f9f58b43b76e0eb278d25e360fd27576"
+          },
+          "report": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\original-I\\CHAPTER_JOURNEY_REPORT.json",
+            "bytes": 903,
+            "sha256": "856840160c3a7696cde547deb48fbfecc20e77d97e5c6d191ab4d9e44f650069"
+          }
+        },
+        {
+          "chapter": "original-II",
+          "input": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\original-I\\CHAPTER_COMPLETED.json",
+            "bytes": 30042,
+            "sha256": "2d7e983dcedf3a81634233f463b31ba4f9f58b43b76e0eb278d25e360fd27576"
+          },
+          "output": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\original-II\\CHAPTER_II_COMPLETE_EARNED.json",
+            "bytes": 36730,
+            "sha256": "dd7f86e9914b70d11070e31836bbfe410f12b9e6160c58a07fc0e21a3bff8ce7"
+          },
+          "report": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\original-II\\ROAD_JOURNEY_REPORT.json",
+            "bytes": 935,
+            "sha256": "5243c95a3e08f0db12d42b89ebd858dfee27c3f0384f1d723fb04ea9a6b27c9c"
+          }
+        },
+        {
+          "chapter": "original-III",
+          "input": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\original-II\\CHAPTER_II_COMPLETE_EARNED.json",
+            "bytes": 36730,
+            "sha256": "dd7f86e9914b70d11070e31836bbfe410f12b9e6160c58a07fc0e21a3bff8ce7"
+          },
+          "output": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\original-III\\CHAPTER_III_COMPLETE_EARNED.json",
+            "bytes": 44040,
+            "sha256": "a9405bdbd47de21bdb4e954965a1aa2f24d11ee4d841d3ea6f11cc4dcb93741d"
+          },
+          "report": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\original-III\\BEACON_JOURNEY.json",
+            "bytes": 1635,
+            "sha256": "8289ac528259d8e72a15b4fdd031b3ffab1760c0d36a3b3dc24feb1248097b27"
+          }
+        },
+        {
+          "chapter": "original-IV",
+          "input": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\original-III\\CHAPTER_III_COMPLETE_EARNED.json",
+            "bytes": 44040,
+            "sha256": "a9405bdbd47de21bdb4e954965a1aa2f24d11ee4d841d3ea6f11cc4dcb93741d"
+          },
+          "output": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\original-IV\\HOME_AFTER_BELL_EARNED.json",
+            "bytes": 46273,
+            "sha256": "ad0e3d895310c73d6739d2f3bcb335460358460cff4fb5ff28454c35f1837b97"
+          },
+          "report": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\original-IV\\CROSSING_JOURNEY.json",
+            "bytes": 5237,
+            "sha256": "f0d90bcc1be3a2c7c8ad8c63093cabb46af25fd3eb51b0202440bd4f6b00e6f9"
+          }
+        },
+        {
+          "chapter": "local-Earth",
+          "input": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\original-IV\\HOME_AFTER_BELL_EARNED.json",
+            "bytes": 46273,
+            "sha256": "ad0e3d895310c73d6739d2f3bcb335460358460cff4fb5ff28454c35f1837b97"
+          },
+          "output": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\local-Earth\\03_COASTWARD_FINAL_WORLD.json",
+            "bytes": 53311,
+            "sha256": "07144dc9b1747db5661f93f1a31dc2fe300c9e5844872eb9f0f28e1ce580c679"
+          },
+          "report": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\local-Earth\\EARLY_REALMS_REPORT.json",
+            "bytes": 41979,
+            "sha256": "862ca87e56b70043f842dad2ffa17a5bf725cd5da238d66fa666599c53737bfa"
+          }
+        },
+        {
+          "chapter": "hell",
+          "input": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\local-Earth\\03_COASTWARD_FINAL_WORLD.json",
+            "bytes": 53311,
+            "sha256": "07144dc9b1747db5661f93f1a31dc2fe300c9e5844872eb9f0f28e1ce580c679"
+          },
+          "output": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\hell\\connected-blade\\FINAL_WORLD.json",
+            "bytes": 66820,
+            "sha256": "b88a0898338353bda2045de2b79a497b00c2b4d483f2a2feeb0c8e7c55ff37be"
+          },
+          "report": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\hell\\connected-blade\\HELL_CAMPAIGN_JOURNEY_REPORT.json",
+            "bytes": 26265,
+            "sha256": "31f1cc1b3848fb6772182f7b16043dbde39251ea842310d709abba481d6a9047"
+          }
+        },
+        {
+          "chapter": "heaven",
+          "input": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\hell\\connected-blade\\FINAL_WORLD.json",
+            "bytes": 66820,
+            "sha256": "b88a0898338353bda2045de2b79a497b00c2b4d483f2a2feeb0c8e7c55ff37be"
+          },
+          "output": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\heaven\\connected-blade\\FINAL_WORLD.json",
+            "bytes": 77012,
+            "sha256": "3a8ac6227d26a1535590c0950b34aee29edf8a4a8962d4a8ddfcced6fa3aaa1f"
+          },
+          "report": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\heaven\\connected-blade\\HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+            "bytes": 62483,
+            "sha256": "6fa023eaac6ae1c43c72761196f680a24e23677a7bdf4cc65d0949d74afb6c02"
+          }
+        },
+        {
+          "chapter": "atlantis",
+          "input": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\heaven\\connected-blade\\FINAL_WORLD.json",
+            "bytes": 77012,
+            "sha256": "3a8ac6227d26a1535590c0950b34aee29edf8a4a8962d4a8ddfcced6fa3aaa1f"
+          },
+          "output": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\atlantis\\connected-blade\\FINAL_WORLD.json",
+            "bytes": 81994,
+            "sha256": "362dd538da80b55b2a5bd6d7702ba31af985734aec6e223be3be84be3c9d1524"
+          },
+          "report": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\atlantis\\connected-blade\\ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+            "bytes": 65438,
+            "sha256": "b4d16738df64899ccc5665f07d9cafb01bfadcca16f4ca12f1fc01dd74bbb73f"
+          }
+        },
+        {
+          "chapter": "cosmos",
+          "input": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\atlantis\\connected-blade\\FINAL_WORLD.json",
+            "bytes": 81994,
+            "sha256": "362dd538da80b55b2a5bd6d7702ba31af985734aec6e223be3be84be3c9d1524"
+          },
+          "output": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\cosmos\\connected-blade\\FINAL_WORLD.json",
+            "bytes": 83300,
+            "sha256": "08fe4861ee4887e7f33e8b1965d3d4d79a7bd66a2c653ffc63ea0c36ff730012"
+          },
+          "report": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\cosmos\\connected-blade\\COSMOS_CAMPAIGN_JOURNEY_REPORT.json",
+            "bytes": 70029,
+            "sha256": "9b66bdaa80de22796b24dd4ab56c74356a473a301bed886bf1a3bf78aa747269"
+          }
+        },
+        {
+          "chapter": "Earth-homecoming",
+          "input": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\cosmos\\connected-blade\\FINAL_WORLD.json",
+            "bytes": 83300,
+            "sha256": "08fe4861ee4887e7f33e8b1965d3d4d79a7bd66a2c653ffc63ea0c36ff730012"
+          },
+          "output": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\Earth-homecoming\\FINAL_WORLD.json",
+            "bytes": 82438,
+            "sha256": "c4105c7ceed5be8a3d875d15206e043f77cfa02172965dd7935361d6beaabc2a"
+          },
+          "report": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\Earth-homecoming\\EARTH_HOMECOMING_JOURNEY_REPORT.json",
+            "bytes": 46229,
+            "sha256": "353944e58e6ea1cda11d71fa36fdf8c0a3809534247c5a09967dd81600f41ac8"
+          }
+        }
+      ],
+      "final": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade\\Earth-homecoming\\FINAL_WORLD.json",
+        "bytes": 82438,
+        "sha256": "c4105c7ceed5be8a3d875d15206e043f77cfa02172965dd7935361d6beaabc2a"
+      },
+      "finalStats": {
+        "level": 5,
+        "attack": 36,
+        "defense": 13,
+        "maxHP": 200
+      },
+      "finalWeapon": "copper_blade",
+      "all12PrerequisitesEarned": true,
+      "note": "One fresh blade character earns all original chapters and subsequent realm arcs, then comes home.",
+      "historicalFixtureInputs": 0,
+      "positionEdits": 0,
+      "actorPositionEdits": 0,
+      "inventoryGrants": 0,
+      "healthGrants": 0,
+      "manualDamage": 0,
+      "plantedDefeats": 0,
+      "plantedQuestFacts": 0,
+      "forcedModes": 0,
+      "forcedCycles": 0
+    },
+    {
+      "variant": "blade-to-bow",
+      "status": "passed",
+      "chapters": [
+        {
+          "chapter": "original-I",
+          "input": null,
+          "output": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\original-I\\CHAPTER_COMPLETED.json",
+            "bytes": 30042,
+            "sha256": "2d7e983dcedf3a81634233f463b31ba4f9f58b43b76e0eb278d25e360fd27576"
+          },
+          "report": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\original-I\\CHAPTER_JOURNEY_REPORT.json",
+            "bytes": 903,
+            "sha256": "856840160c3a7696cde547deb48fbfecc20e77d97e5c6d191ab4d9e44f650069"
+          }
+        },
+        {
+          "chapter": "original-II",
+          "input": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\original-I\\CHAPTER_COMPLETED.json",
+            "bytes": 30042,
+            "sha256": "2d7e983dcedf3a81634233f463b31ba4f9f58b43b76e0eb278d25e360fd27576"
+          },
+          "output": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\original-II\\CHAPTER_II_COMPLETE_EARNED.json",
+            "bytes": 36730,
+            "sha256": "dd7f86e9914b70d11070e31836bbfe410f12b9e6160c58a07fc0e21a3bff8ce7"
+          },
+          "report": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\original-II\\ROAD_JOURNEY_REPORT.json",
+            "bytes": 935,
+            "sha256": "5243c95a3e08f0db12d42b89ebd858dfee27c3f0384f1d723fb04ea9a6b27c9c"
+          }
+        },
+        {
+          "chapter": "original-III",
+          "input": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\original-II\\CHAPTER_II_COMPLETE_EARNED.json",
+            "bytes": 36730,
+            "sha256": "dd7f86e9914b70d11070e31836bbfe410f12b9e6160c58a07fc0e21a3bff8ce7"
+          },
+          "output": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\original-III\\CHAPTER_III_COMPLETE_EARNED.json",
+            "bytes": 44040,
+            "sha256": "a9405bdbd47de21bdb4e954965a1aa2f24d11ee4d841d3ea6f11cc4dcb93741d"
+          },
+          "report": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\original-III\\BEACON_JOURNEY.json",
+            "bytes": 1642,
+            "sha256": "2f9432391ef90b84ea20312bb400fed45a1d7b2b3292de3c4d471cc24dc4e540"
+          }
+        },
+        {
+          "chapter": "original-IV",
+          "input": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\original-III\\CHAPTER_III_COMPLETE_EARNED.json",
+            "bytes": 44040,
+            "sha256": "a9405bdbd47de21bdb4e954965a1aa2f24d11ee4d841d3ea6f11cc4dcb93741d"
+          },
+          "output": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\original-IV\\HOME_AFTER_BELL_EARNED.json",
+            "bytes": 49752,
+            "sha256": "fc43a2426fc4ddbbc1a11cd51153ee6c78b3a21f969c48fa8fe8b83ac08e2f39"
+          },
+          "report": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\original-IV\\CROSSING_JOURNEY.json",
+            "bytes": 6773,
+            "sha256": "4afc7b1667c58848cf1c7ee60c0ec40144fa14d2e2c6f8bf6d9ccf699dccc8f7"
+          }
+        },
+        {
+          "chapter": "local-Earth",
+          "input": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\original-IV\\HOME_AFTER_BELL_EARNED.json",
+            "bytes": 49752,
+            "sha256": "fc43a2426fc4ddbbc1a11cd51153ee6c78b3a21f969c48fa8fe8b83ac08e2f39"
+          },
+          "output": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\local-Earth\\03_COASTWARD_FINAL_WORLD.json",
+            "bytes": 56624,
+            "sha256": "448fae10c54f93a046b1a94fb9edaeacf144148a6dfd6412e1512f3ad1118eda"
+          },
+          "report": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\local-Earth\\EARLY_REALMS_REPORT.json",
+            "bytes": 42070,
+            "sha256": "669a864c0d2efb8a9acad0471f7758628084b85af38335ce54e88025129d7e69"
+          }
+        },
+        {
+          "chapter": "hell",
+          "input": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\local-Earth\\03_COASTWARD_FINAL_WORLD.json",
+            "bytes": 56624,
+            "sha256": "448fae10c54f93a046b1a94fb9edaeacf144148a6dfd6412e1512f3ad1118eda"
+          },
+          "output": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\hell\\connected-blade-to-bow\\FINAL_WORLD.json",
+            "bytes": 70320,
+            "sha256": "f685d6176ce70c0a1be449dd0eba7b8556716968278bce207fb8d6bb0a9fe206"
+          },
+          "report": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\hell\\connected-blade-to-bow\\HELL_CAMPAIGN_JOURNEY_REPORT.json",
+            "bytes": 26951,
+            "sha256": "2b000c420faacdf36e0db48af89727991e6fb0daedab0db1d51c15707764cbb7"
+          }
+        },
+        {
+          "chapter": "heaven",
+          "input": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\hell\\connected-blade-to-bow\\FINAL_WORLD.json",
+            "bytes": 70320,
+            "sha256": "f685d6176ce70c0a1be449dd0eba7b8556716968278bce207fb8d6bb0a9fe206"
+          },
+          "output": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\heaven\\connected-blade-to-bow\\FINAL_WORLD.json",
+            "bytes": 79691,
+            "sha256": "2fa472b753cbb7a3cfcd52657149ab0e2a475510589cb657ef53375d35bf975e"
+          },
+          "report": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\heaven\\connected-blade-to-bow\\HEAVEN_CAMPAIGN_JOURNEY_REPORT.json",
+            "bytes": 65365,
+            "sha256": "72a9787cc522152f3f2b5c40fe8e7a8b128c48269f623c0475765d1371817699"
+          }
+        },
+        {
+          "chapter": "atlantis",
+          "input": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\heaven\\connected-blade-to-bow\\FINAL_WORLD.json",
+            "bytes": 79691,
+            "sha256": "2fa472b753cbb7a3cfcd52657149ab0e2a475510589cb657ef53375d35bf975e"
+          },
+          "output": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\atlantis\\connected-blade-to-bow\\FINAL_WORLD.json",
+            "bytes": 85054,
+            "sha256": "4999564e4c463ada9cc1087949cdb2eb3594861c23473cd6073b33c2fb6d719e"
+          },
+          "report": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\atlantis\\connected-blade-to-bow\\ATLANTIS_CAMPAIGN_JOURNEY_REPORT.json",
+            "bytes": 66012,
+            "sha256": "d401351b6627f29c631c8c945162cb9c575be87f7aa433e66f9133117cd4842f"
+          }
+        },
+        {
+          "chapter": "cosmos",
+          "input": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\atlantis\\connected-blade-to-bow\\FINAL_WORLD.json",
+            "bytes": 85054,
+            "sha256": "4999564e4c463ada9cc1087949cdb2eb3594861c23473cd6073b33c2fb6d719e"
+          },
+          "output": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\cosmos\\connected-blade-to-bow\\FINAL_WORLD.json",
+            "bytes": 86268,
+            "sha256": "13aab7632e6b4fbe79758b3bdd0cb5d89184a27c937a570015f9db14b545fd09"
+          },
+          "report": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\cosmos\\connected-blade-to-bow\\COSMOS_CAMPAIGN_JOURNEY_REPORT.json",
+            "bytes": 70001,
+            "sha256": "56529860d72b86e8777063396bfbc4c4f8ca38bd5956d291b29bcf064d37b4ca"
+          }
+        },
+        {
+          "chapter": "Earth-homecoming",
+          "input": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\cosmos\\connected-blade-to-bow\\FINAL_WORLD.json",
+            "bytes": 86268,
+            "sha256": "13aab7632e6b4fbe79758b3bdd0cb5d89184a27c937a570015f9db14b545fd09"
+          },
+          "output": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\Earth-homecoming\\FINAL_WORLD.json",
+            "bytes": 85576,
+            "sha256": "dd01f4eb7dc2c25ca5d942e460ceec65fc6aac6b0ded46abd85257b3b54dc1af"
+          },
+          "report": {
+            "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\Earth-homecoming\\EARTH_HOMECOMING_JOURNEY_REPORT.json",
+            "bytes": 50915,
+            "sha256": "b7b046fc46760bf7a530e0e960e7f573bc0e76f8c3834cc2bade8c28db9b9333"
+          }
+        }
+      ],
+      "final": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE03\\whole-draft-earned\\blade-to-bow\\Earth-homecoming\\FINAL_WORLD.json",
+        "bytes": 85576,
+        "sha256": "dd01f4eb7dc2c25ca5d942e460ceec65fc6aac6b0ded46abd85257b3b54dc1af"
+      },
+      "finalStats": {
+        "level": 5,
+        "attack": 26,
+        "defense": 13,
+        "maxHP": 200
+      },
+      "finalWeapon": "trail_bow",
+      "all12PrerequisitesEarned": true,
+      "note": "This fresh character uses a blade in I–III and explicitly crafts/equips a bow before IV, then keeps that bow through all later arcs. No fresh-bow-I or strongest-fresh claim.",
+      "historicalFixtureInputs": 0,
+      "positionEdits": 0,
+      "actorPositionEdits": 0,
+      "inventoryGrants": 0,
+      "healthGrants": 0,
+      "manualDamage": 0,
+      "plantedDefeats": 0,
+      "plantedQuestFacts": 0,
+      "forcedModes": 0,
+      "forcedCycles": 0
+    }
+  ],
+  "filesBeforeReport": 185,
+  "bytesBeforeReport": 11996533,
+  "historicalFixtureInputs": 0,
+  "acceleratedTicks": true,
+  "inMemorySaves": true,
+  "browserExecuted": false,
+  "nativePersistence": false,
+  "normalRAF": false,
+  "humanPacing": false,
+  "positionEdits": 0,
+  "actorPositionEdits": 0,
+  "inventoryGrants": 0,
+  "healthGrants": 0,
+  "manualDamage": 0,
+  "plantedDefeats": 0,
+  "plantedQuestFacts": 0,
+  "forcedModes": 0,
+  "forcedCycles": 0
+}

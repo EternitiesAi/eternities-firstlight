@@ -1,0 +1,39 @@
+{
+  "scope": "Complete current source; four Node file workers; original rules180/Python600; no native browser",
+  "command": [
+    "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+    "-B",
+    "tools/verify.py",
+    "--rule-workers",
+    "4",
+    "--output",
+    "D:/07-GAMES/Firstlight/artifacts/pier-handheld-20261013/REMOTE_SOURCE01",
+    "--cpu-temp",
+    "C:/Users/Dom/AppData/Local/Temp"
+  ],
+  "requestedRuleWorkers": 4,
+  "sourceHead": "1f1af16acb488ca14a0f56484a76e5c369f64fae",
+  "headAfter": "1f1af16acb488ca14a0f56484a76e5c369f64fae",
+  "statusAfter": [],
+  "startedUtc": "2026-10-13T19:40:42.9891446Z",
+  "closedUtc": "2026-10-13T19:45:59.0069966Z",
+  "exitCode": 0,
+  "freeHostKiBBefore": 10691272,
+  "freeHostKiBAfter": 10254300,
+  "admission": {
+    "path": "D:/07-GAMES/Firstlight/artifacts/pier-handheld-20261013/SOURCE01_ADMISSION01.json",
+    "sha256": "9f565e2a32a603d89b4d178d476b17b14de8fce54a9611d58ac1544cf30e80e6"
+  },
+  "unitChildTemp": "C:/Users/Dom/AppData/Local/Temp",
+  "allOtherChildTemp": "D:/07-GAMES/Firstlight/cache/browser-temp",
+  "console": {
+    "bytes": 14744,
+    "sha256": "13585b3b79aa8ba02c0a915887361bd0ee1976ef3a2c00ca159487ecdabd3629",
+    "path": "D:/07-GAMES/Firstlight/artifacts/pier-handheld-20261013/REMOTE_SOURCE01_CONSOLE.log"
+  },
+  "rulesCommand": {
+    "bytes": 23625,
+    "sha256": "5838a6b44013350996c9e36881a0cddfcdb63d5ee09902f1df01769d5396ad57",
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\pier-handheld-20261013\\REMOTE_SOURCE01\\rules-command.json"
+  }
+}

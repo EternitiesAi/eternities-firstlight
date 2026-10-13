@@ -1,3 +1,33 @@
+# Next: the people who inhabit the village, 2026-10-13
+
+Continue gameplay/pier-handheld-animation-20261013 / PR75 after fetching and
+checking ownership. [The fishing animation qualification](development/PIER_HANDHELD_QUALIFICATION_2026-10-13.md) records the
+current source, actual footage, failures and limits. The finite realm draft is
+already present; improve its lived-in character before adding more breadth.
+
+1. Adapt the existing rig for Ilan, Mara and Oren only. Give their actual routes
+   articulated walk-to-stop motion, distinct silhouettes and hand-aligned props.
+   Preserve Core's schedules, physical positions/yaw, dialogue and project facts.
+   Keep generic person() and RealmGiversArt callers unchanged. Use transient
+   per-resident/world/scene ownership, pause/reduced motion and a measured art
+   budget. Observe actual movement and an interior in both cameras. This is a
+   scoped next assignment, not an implemented feature or new canon commitment.
+2. Close the current complete --browser gate separately. Review an explicit new
+   road-account expectation epoch for the newer heading helpers; preserve the
+   original SOURCE_EXPECTATIONS04 and negative receipts. Four current Briar
+   variants remain CPU-only at the prior camera milestone.
+3. GitHub's account billing lock prevents hosted jobs from starting. Leave billing
+   to Dom; local successful checks do not turn unavailable hosted jobs green.
+4. Keep [the hand-held pier human route](playtests/PIER_HANDHELD_2026-10-13.md)
+   pending. Human comfort/recognition/enjoyment and real GPU performance are open.
+
+Reuse ROOT/STATION; fresh host-only free memory >=6291456KiB before complete source
+or each browser. Four workers, Node180/Python600 remain. VM/Claude/personal saves
+and unrelated workers excluded. No cleanup, new full copy, blocked deletion retry,
+paid provider, automatic main merge/deploy or heartbeat resume. Game unfinished.
+
+---
+
 # Next: animate inhabited moments and close broad qualification, 2026-10-13
 
 Continue gameplay/building-camera-clearance-20261013 / PR74 after fetching

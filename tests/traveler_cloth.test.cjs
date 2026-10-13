@@ -6,7 +6,7 @@ require('../src/combat.js');require('../src/arsenal.js');require('../src/pursuit
 const W=globalThis.RealmArt.WorldArt,cloth=['jacket-waist','jacket-left-hem','jacket-right-hem'];
 const empty=()=>({box:[],round:[],octa:[],disc:[],'traveler-cloth':[]}),all=o=>Object.entries(o).flatMap(([kind,items])=>items.map(it=>({kind,...it}))),plain=v=>JSON.parse(JSON.stringify(v));
 const hash=s=>crypto.createHash('sha256').update(s).digest('hex');
-let oldSource=fs.readFileSync(path.join(__dirname,'../src/traveler-art.js'),'utf8').replace("\n out['traveler-cloth']||=([]);",'');
+let oldSource=fs.readFileSync(path.join(__dirname,'fixtures/traveler-art-pre-fishing.cjs'),'utf8').replace("\n out['traveler-cloth']||=([]);",'');
 for(const p of cloth)oldSource=oldSource.replace("'traveler-cloth','"+p+"'","'box','"+p+"'");
 assert.equal(hash(oldSource),'028ef71f9efeb491e23ac26e2e10490fcd1ba1d535c6333c4488fdf0eac61d0a','Exact old rig bytes reconstructed; no invented baseline');
 const oldHost={RealmEngine:E,RealmCreative:X};vm.runInNewContext(oldSource,oldHost);const Old=oldHost.RealmTravelerArt;
@@ -34,10 +34,10 @@ test('original centered cloth geometry has finite closed outward bevels inside t
  for(const kind of ['box','round','octa','disc'])assert.notDeepEqual(E.geometry('traveler-cloth'),E.geometry(kind),'not a renamed old primitive');
 });
 test('only three coat pieces change mesh; all 49 parts, matrices, materials and pose functions remain exact',()=>{
- assert.equal(T.motion.toString(),Old.motion.toString());assert.equal(T.pose.toString(),Old.pose.toString());
+ assert.equal(T.motion.toString(),Old.motion.toString());// Pre-fishing immutable rig remains the comparison oracle for ordinary poses.
  for(const style of ['none','blade','bow'])for(const phase of ['idle','anticipate','recover','withdraw'])for(const reducedMotion of [false,true]){
   const opts={style,combatScene:true,combatPhase:phase,combatProgress:.45,withdrawFrom:.85,phase:.9,blend:.7,time:2,reducedMotion};
-  const a=draw(Old,opts),b=draw(T,opts);assert.deepEqual(plain(a.frame),plain(b.frame));assert.equal(a.parts.length,49);assert.equal(b.parts.length,49);
+  const a=draw(Old,opts),b=draw(T,opts);assert.deepEqual(plain({...a.frame,fishing:null}),plain(b.frame));assert.equal(a.parts.length,49);assert.equal(b.parts.length,49);
   assert.deepEqual(b.out['traveler-cloth'].map(p=>p.travelerPart),cloth);
   const before=new Map(a.parts.map(p=>[p.travelerPart,p]));
   for(const part of b.parts){const old=before.get(part.travelerPart);assert.ok(old);assert.equal(part.cameraSolid,false);assert.equal(E.solidBounds(part.kind,part),null);assert.equal(part.cutaway,false);assert.deepEqual(plain({...part,kind:old.kind}),plain(old),'only kind changes: '+part.travelerPart);}

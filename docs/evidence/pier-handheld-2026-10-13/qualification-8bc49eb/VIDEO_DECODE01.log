@@ -1,0 +1,35 @@
+ffmpeg version n7.0.1-playwright-build-1011 Copyright (c) 2000-2024 the FFmpeg developers
+  built with gcc 9.3-win32 (GCC) 20200320
+  configuration: --arch=x86_64 --target-os=mingw32 --cross-prefix=/usr/bin/x86_64-w64-mingw32- --disable-doc --pkg-config=pkg-config --pkg-config-flags=--static --extra-cflags=-I//root/prefix/include --extra-ldflags='-L//root/prefix/lib -static' --prefix=/root/prefix --bindir=/root/ffmpeg/bin --extra-version=playwright-build-1011 --disable-debug --disable-autodetect --disable-everything --enable-ffmpeg --enable-protocol=pipe --enable-protocol=file --enable-parser=mjpeg --enable-decoder=mjpeg --enable-demuxer=image2pipe --enable-filter=pad --enable-filter=crop --enable-filter=scale --enable-muxer=webm --enable-libvpx --enable-static --enable-encoder=libvpx_vp8 --enable-decoder=libvpx_vp8 --enable-demuxer=matroska --enable-encoder=png --enable-zlib --enable-muxer=image2 --disable-iconv --disable-bzlib
+  libavutil      59.  8.100 / 59.  8.100
+  libavcodec     61.  3.100 / 61.  3.100
+  libavformat    61.  1.100 / 61.  1.100
+  libavdevice    61.  1.100 / 61.  1.100
+  libavfilter    10.  1.100 / 10.  1.100
+  libswscale      8.  1.100 /  8.  1.100
+  libswresample   5.  1.100 /  5.  1.100
+[libvpx @ 0000020424fa29c0] v1.14.1
+Input #0, matroska,webm, from 'D:\07-GAMES\Firstlight\artifacts\pier-handheld-20261013\NATIVE01\video\b6b3dbea982d2c5ac7c39fe73b5c8d45.webm':
+  Metadata:
+    ENCODER         : Lavf61.1.100
+  Duration: 00:00:28.56, start: 0.000000, bitrate: 841 kb/s
+  Stream #0:0: Video: vp8 (libvpx), yuv420p(tv, progressive), 1280x800, SAR 1:1 DAR 8:5, 25 fps, 25 tbr, 1k tbn
+      Metadata:
+        ENCODER         : Lavc61.3.100 libvpx
+        DURATION        : 00:00:28.560000000
+[libvpx @ 0000020424f90780] v1.14.1
+Stream mapping:
+  Stream #0:0 -> #0:0 (vp8 (libvpx) -> vp8 (libvpx))
+[libvpx @ 0000020425930380] v1.14.1
+[libvpx @ 0000020425930380] Neither bitrate nor constrained quality specified, using default CRF of 32 and bitrate of 256kbit/sec
+Output #0, webm, to 'NUL':
+  Metadata:
+    encoder         : Lavf61.1.100
+  Stream #0:0: Video: vp8, yuv420p(tv, progressive), 1280x800 [SAR 1:1 DAR 8:5], q=2-31, 256 kb/s, 25 fps, 1k tbn
+      Metadata:
+        DURATION        : 00:00:28.560000000
+        encoder         : Lavc61.3.100 libvpx
+      Side data:
+        cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=  106 fps=0.0 q=63.0 size=       0KiB time=00:00:04.24 bitrate=   0.9kbits/s speed=8.39x    frame=  203 fps=199 q=48.0 size=     176KiB time=00:00:08.12 bitrate= 177.7kbits/s speed=7.98x    frame=  322 fps=212 q=46.0 size=     256KiB time=00:00:12.88 bitrate= 162.8kbits/s speed=8.48x    frame=  448 fps=222 q=42.0 size=     256KiB time=00:00:17.92 bitrate= 117.0kbits/s speed=8.87x    frame=  581 fps=230 q=40.0 size=     256KiB time=00:00:23.24 bitrate=  90.2kbits/s speed=9.22x    frame=  713 fps=236 q=39.0 size=     512KiB time=00:00:28.52 bitrate= 147.1kbits/s speed=9.43x    [out#0/webm @ 0000020425056ec0] video:725KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.743756%
+frame=  714 fps=236 q=39.0 Lsize=     730KiB time=00:00:28.56 bitrate= 209.4kbits/s speed=9.45x    

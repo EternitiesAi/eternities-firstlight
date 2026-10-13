@@ -1,0 +1,112 @@
+✔ pier-only explicit cast does not spend, equip, record or duplicate an activity (12.9204ms)
+✔ readable bite, tension decisions, catch and explicit release use actual elapsed time (126.086ms)
+✔ holding through a strong pull loses the fish without costing any inventory (78.6257ms)
+✔ pause and long clock gaps cannot advance the float or catch up offline play (39.3587ms)
+✔ walking, scene, death, character and world replacement release transient fishing (2.4356ms)
+✔ commands cannot inject progress and current snapshots cannot alter the owned fish (0.973ms)
+✔ releasing a held input while paused cannot latch reeling on resume (16.2671ms)
+✔ a command-earned early blade and crafted bow can fish without advancing story or equipment (305.1044ms)
+✔ projected rod, float and catch use finite existing geometry without touching game state (12.4018ms)
+✔ opening the pier choices has no implicit rest, cast or persistent mutation (8.8501ms)
+✔ a previously paused world is not silently resumed to permit casting (1.2187ms)
+✔ stale modal ownership and an active Briar outing cannot start a new activity (0.4218ms)
+✔ actual keyboard control chooses Hook then reel/ease, protects typing and cancels only its line (9.4656ms)
+✔ a non-pausing drawer freezes the fishing clock and discards elapsed menu time (10.0636ms)
+✔ App native fishing buttons retain Space and Enter without invoking dodge (1.5611ms)
+✔ the original quiet-water rest reach still opens the choices without an implicit cast (0.6895ms)
+✔ the fishing HUD yields to drawers and returns when controls are available again (0.8515ms)
+✔ framing the water is an explicit camera action that retains the chosen style and FOV (1.9981ms)
+✔ the actual App boundary gives photo mode its controls and suspends the hidden line (1.3023ms)
+✔ global App E cannot act on a line hidden behind photo or menu controls (8.3367ms)
+✔ the nearby Explore shore action dismisses its drawer before opening native choices (1.6094ms)
+✔ accepted reel time advances only on actual reeling ticks and survives no pause catch-up (17.9487ms)
+✔ hand-held cast and reel share actual solved arm anchors and never mutate a pose (25.0655ms)
+✔ the reel hand moves with accepted turns, holds while eased, and reduces to a stable stance (1.2633ms)
+✔ cast anticipation visibly changes the rod, lands the float outboard, and leaves feet anchored (1.0484ms)
+✔ combat and swimming retain arms and cannot draw a borrowed rod from stale presentation (1.2656ms)
+✔ the entire intermediate cast keeps its rod outside the head in every facing (22.2713ms)
+✔ both authored hand targets remain reachable throughout casting and every crank phase (3.2946ms)
+✖ displayed fishing facing enters and exits continuously on accepted time without stale catch-up (0.9301ms)
+✔ actual WorldArt submits the held rod once, stows blade/bow, and preserves physical facing and state (347.9838ms)
+✔ original centered cloth geometry has finite closed outward bevels inside the old box (5.9547ms)
+✔ only three coat pieces change mesh; all 49 parts, matrices, materials and pose functions remain exact (28.1557ms)
+✔ actual production camera projection contains every new coat vertex in its original projected box (60.7335ms)
+✔ real WorldArt commits one ordinary cloth batch and retains traveler owner/snapshot dispatch (10.9967ms)
+✔ actual Engine batch packs the same three transforms in one supported 6-float mesh (0.6553ms)
+✔ every canonical weapon and finite marker remains byte-identical with the same original attachment frame (19.6038ms)
+✔ envelope, normal, topology and unsupported-mesh counterexamples fail the meaningful mesh guards (1.1627ms)
+✔ unstarted, absent, unknown and unowned equipment produce no gear (39.0293ms)
+✔ read-only attachment summary reports exactly the rendered grip and actual markers (14.4858ms)
+✔ a command-earned kit is held at the right palm through actual root yaw and terrain height (3.7714ms)
+✔ curved bow grip and both string segments attach to the two moving palms (3.9427ms)
+✔ ordinary travel stows blade at hip and bow at back without hand-held copies (29.0414ms)
+✔ each catalogue weapon preserves its own colour, gem, fittings and separate Oren temper (123.2756ms)
+✔ markers project only the selected weapon rather than another owned weapon (2.6601ms)
+✔ family silhouettes differ within a bounded traveller scale (16.6459ms)
+✔ blade anticipation, recovery and guard keep the grip connected while changing orientation (3.2504ms)
+✔ reduced motion keeps essential palm connections without phase-driven blade flourishes (5.4972ms)
+✔ all equipment transforms stay finite, orthogonal and under forty instances (36.1885ms)
+✔ read-only rendering does not create runtime, commands, effects or arrows (5.1575ms)
+✔ gathered and command-crafted bow projects the actual equipped item (58.6032ms)
+✔ finite realm collars preserve prior markers and follow the actual blade or curved bow segment (227.0097ms)
+✔ queued release joins the actual full windup pose, including submitted blade axis (23.5295ms)
+✔ direct accepted strikes start at ready and never fabricate a prior windup (0.5504ms)
+✔ a bounded cut has intermediate poses and settles without a phase-boundary jump (2.6406ms)
+✔ submitted blade basis has no arbitrary roll flips during its complete cut and settle (43.5846ms)
+✔ actual blade and tip volumes clear the conservative head bounds through the whole attack (205.0132ms)
+✔ body balance is visible above fixed physical feet and quiet in reduced motion (14.6969ms)
+✔ reduced motion bounds the blade hand cue and suppresses secondary equipment/body sweep (2.2851ms)
+✔ guard and swim override both release origins without adding a second attack pose (2.2866ms)
+✔ rendered palms, balanced torso and canonical gear share one frame through actual world yaw (17.6607ms)
+✔ carried gear and the held blade sheath remain outside the accepted-release curves (7.282ms)
+✔ production autoattack still uses its real queued epoch and accepted manual attack has no fake anticipation (11.8797ms)
+✔ CommonJS and browser globals expose the same bounded rig API (1.1692ms)
+✔ gallery stroke keeps limbs connected and reduced motion settles the arms (0.9957ms)
+✔ gait phase follows accepted distance and survives frame subdivision (1.0249ms)
+✔ stationary walking intent never drives foot shuffling (0.3976ms)
+✔ stopping holds phase and eases the feet into a settled stance (0.2514ms)
+✔ repeated samples and long pauses preserve the complete drawable pose (1.5573ms)
+✔ paused coordinates are consumed without turning skipped travel into steps (0.1202ms)
+✔ scene changes, teleports and clock discontinuities reset the stance (0.127ms)
+✔ reduced motion keeps essential gait and weapon alignment without secondary drift (0.6598ms)
+✔ walking has visible foot clearance and preserves fixed limb lengths (2.7156ms)
+✔ blade/bow anticipation, recovery and guard are connected and distinct (1.5068ms)
+✔ draw segments actually connect the named joints under root translation and yaw (1.9767ms)
+✔ palette choices and explicitly supplied armor colour are retained (1.5676ms)
+✔ all transforms stay finite, actor geometry has no camera authority, and budget stays bounded (26.2651ms)
+✔ malformed numerical motion inputs cannot poison matrices (0.7746ms)
+✔ sampling, posing and drawing leave input rules, motion and profiles immutable (0.5758ms)
+ℹ tests 78
+ℹ suites 0
+ℹ pass 77
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 794.3639
+
+✖ failing tests:
+
+test at tests\pier_handheld.test.cjs:92:1
+✖ displayed fishing facing enters and exits continuously on accepted time without stale catch-up (0.9301ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 0.6202494859828216
+  - 0.6202494859828215
+                     ^
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_handheld.test.cjs:102:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0.6202494859828216,
+    expected: 0.6202494859828215,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

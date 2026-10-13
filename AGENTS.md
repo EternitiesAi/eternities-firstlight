@@ -1,3 +1,35 @@
+# Hand-held pier animation qualified, 2026-10-13
+
+Continue gameplay/pier-handheld-animation-20261013 / draft PR75, stacked on
+PR74 at92fff25f82ab2df6cd99e6a5693203df923a41d8. Qualified runtime/test head:
+8bc49eb4ab66071213f7e6242abea9bc2894447d. Subsequent delivery edits are documentation/evidence.
+Read docs/development/PIER_HANDHELD_QUALIFICATION_2026-10-13.md.
+
+Complete Source03 passed 223 commands; Node 2,246 passed, 0 failed, 2 skipped; Python 490 tests run, 8 skipped, no failures.
+Both continuous ten-chapter variants and five earned Briar continuations passed.
+Native02: 87 native checks passed; fresh, earned starter blade and Chapter IV bow,
+exact cold save readback and ordinary-time cast/reel in both cameras. One short
+clip: 48.80s / 3,665,860 bytes / 1220 decoded frames. Software WebGL2/Low; no human or GPU certification.
+
+The rod/grip/crank follow solved hands; display facing eases without changing
+physical yaw. Scene generations clear transient orientation. Upright acquisition
+repairs the first clip's low sweep near Briar. Keep that negative visual evidence.
+World9/Adventure12 and every persistent owner remain; no migration or fishing reward.
+
+Hosted run38459480155 could not start jobs because GitHub reports an account
+billing lock. No billing changes. Full current --browser still awaits a reviewed
+road-account expectation epoch; never relax SOURCE_EXPECTATIONS04's old guards.
+Human acceptance and real GPU qualification remain open. Next bounded product
+arc: articulate only Ilan/Mara/Oren in existing places, preserving Core ownership.
+
+Reuse ROOT/STATION on D. Fresh host-only6GiB admission before complete source or
+every whole browser; four Node workers and original Node180/Python600 deadlines.
+No VM/Claude/personal profiles/unrelated workers, cleanup, new game copy, blocked
+deletion retry, paid provider, main merge or public deploy. Production unfinished.
+Goal service ACTIVE; separate heartbeat remains PAUSED.
+
+---
+
 # Building camera qualified on current source, 2026-10-13
 
 Continue gameplay/building-camera-clearance-20261013 / PR74, stacked on PR73

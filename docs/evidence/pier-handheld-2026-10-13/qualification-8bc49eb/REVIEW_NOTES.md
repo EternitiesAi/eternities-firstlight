@@ -1,0 +1,15 @@
+# Bounded independent read-only reviews
+
+Two existing/authorized Sol 6.1 xhigh colleagues reviewed source and the native controller. They made no edits and ran no tests or browser. Parent owns implementation and execution. No paid provider was invoked.
+
+Source review found an initial unreachable left-hand target and immediate displayed-yaw changes. The initial grip height was raised to0.96m; actual target-versus-solved checks cover101 cast and101 crank samples. A pure facing sampler follows accepted activity time; cancellation returns through bounded Core deltas. Review then found scene-generation invalidation missing. Both new caches now clear in WorldArt.begin, including same-room rebuilds. The colleague read final289043429e2925e9ded26b3fd609ccaa909ba11d and closed that finding. Historical cloth fixture matches the exact pre-fishing source at92fff25 after LF normalization; the original reconstructed-source hash remains.
+
+Controller review confirmed visible imports produce character-2 blade and character-3 bow. Its suggested source preallocation, inactive-slot restart, ordinary-sample tagging and submitted crank-geometry checks were adopted. Ordinary recording now avoids explicit test-render calls; only its accelerated first phase uses them. Closure errors are reflected in report and process exit. Final video still requires independent decode and visual inspection after actual capture.
+
+The review does not certify natural motion or the game. Remaining visual checks: cast grip acquisition, large facing turn and boot pivot, reel/ease changes, both cameras and release/cancel. Native coverage, current complete source, whole browser, human feel and hardware performance are distinct.
+
+## Final upright repair and actual frame review
+
+The final source reviewer found no source-level blocker in8bc49eb. Native01's retained03.20s frame shows the low rod projected across Briar;03.45s shows it raised clear. Starting at1.42rad addresses acquisition while preserving the existing cast descent. The new test is explicitly time-zero acquisition geometry, not complete companion-occlusion proof.
+
+After final Source03 and Native02 execution, the independent reviewer read the87-check report, decode receipt and all eight final raw cast frames. No delivery blocker or recurrence of the low sweep was found. Adventure frames1-3 show upright acquisition, diagonal cast and lower extension with Briar separate. Adventure0 and follow0-1 are insufficient to identify exact early phases: the smaller avatar, lantern and labels obscure the pole. Follow2-3 show outboard extension and the float/ripple away from Briar. Some lantern projection overlap remains, without proving physical collision. The final frame manifest explicitly uses approximate alignment; it does not claim exact phase times or continuous clearance. The reviewer ran no code, tests or browser. Parent inspected the same eight frames. See VIDEO_OBSERVATION_FINAL.json for the bounded acceptance and remaining legibility/human/performance limits.

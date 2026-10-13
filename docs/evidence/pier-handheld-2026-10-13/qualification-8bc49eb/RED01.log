@@ -1,0 +1,132 @@
+✖ accepted reel time advances only on actual reeling ticks and survives no pause catch-up (11.0268ms)
+✖ hand-held cast and reel share actual solved arm anchors and never mutate a pose (0.3141ms)
+✖ the reel hand moves with accepted turns, holds while eased, and reduces to a stable stance (0.1094ms)
+✖ cast anticipation visibly changes the rod, lands the float outboard, and leaves feet anchored (0.1228ms)
+✖ combat and swimming retain arms and cannot draw a borrowed rod from stale presentation (0.1041ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 0
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 88.6916
+
+✖ failing tests:
+
+test at tests\pier_handheld.test.cjs:23:1
+✖ accepted reel time advances only on actual reeling ticks and survives no pause catch-up (11.0268ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  undefined !== 0
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_handheld.test.cjs:25:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\pier_handheld.test.cjs:33:1
+✖ hand-held cast and reel share actual solved arm anchors and never mutate a pose (0.3141ms)
+  AssertionError [ERR_ASSERTION]: Actual fishing pose sampler required
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at rendered (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_handheld.test.cjs:14:9)
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_handheld.test.cjs:35:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\pier_handheld.test.cjs:49:1
+✖ the reel hand moves with accepted turns, holds while eased, and reduces to a stable stance (0.1094ms)
+  AssertionError [ERR_ASSERTION]: Actual fishing pose sampler required
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at rendered (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_handheld.test.cjs:14:9)
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_handheld.test.cjs:50:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\pier_handheld.test.cjs:59:1
+✖ cast anticipation visibly changes the rod, lands the float outboard, and leaves feet anchored (0.1228ms)
+  AssertionError [ERR_ASSERTION]: Actual fishing pose sampler required
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at rendered (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_handheld.test.cjs:14:9)
+      at D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_handheld.test.cjs:60:42
+      at Array.map (<anonymous>)
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_handheld.test.cjs:60:32)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\pier_handheld.test.cjs:67:1
+✖ combat and swimming retain arms and cannot draw a borrowed rod from stale presentation (0.1041ms)
+  AssertionError [ERR_ASSERTION]: Actual fishing pose sampler required
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at rendered (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_handheld.test.cjs:14:9)
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_handheld.test.cjs:69:11)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

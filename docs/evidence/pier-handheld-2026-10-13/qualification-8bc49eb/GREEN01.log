@@ -1,0 +1,13 @@
+✔ accepted reel time advances only on actual reeling ticks and survives no pause catch-up (11.6741ms)
+✔ hand-held cast and reel share actual solved arm anchors and never mutate a pose (19.8111ms)
+✔ the reel hand moves with accepted turns, holds while eased, and reduces to a stable stance (1.2682ms)
+✔ cast anticipation visibly changes the rod, lands the float outboard, and leaves feet anchored (0.9758ms)
+✔ combat and swimming retain arms and cannot draw a borrowed rod from stale presentation (1.1362ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 103.7338
