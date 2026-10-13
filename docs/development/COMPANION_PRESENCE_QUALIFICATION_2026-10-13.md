@@ -98,6 +98,12 @@ coordinate injection. The first media decode failed because bundled FFmpeg lacks
 the null muxer; Decode02 fully decoded and re-encoded to the Windows null device
 with one thread, producing no second stored movie. Earlier failures remain failed.
 
+Final remote readback initially failed because the repository-wide
+`MANIFEST.json` ignore rule omitted this evidence index from the delivery commit.
+The bounded index was explicitly added; gameplay and evidence bytes were unchanged.
+The failed readback and subsequent exact-head retry are retained in the local
+artifact folder as `FINAL_REMOTE01.json` and `FINAL_REMOTE02.json`.
+
 ## Evidence, launch and next acceptance
 
 [The byte manifest](../evidence/companion-presence-2026-10-13/qualification-1f233c9/MANIFEST.json)
