@@ -1,0 +1,55 @@
+✔ opening the pier choices has no implicit rest, cast or persistent mutation (7.3214ms)
+✔ a previously paused world is not silently resumed to permit casting (1.0204ms)
+✔ stale modal ownership and an active Briar outing cannot start a new activity (0.4288ms)
+✔ actual keyboard control chooses Hook then reel/ease, protects typing and cancels only its line (7.0884ms)
+✔ a non-pausing drawer freezes the fishing clock and discards elapsed menu time (7.0927ms)
+✔ App native fishing buttons retain Space and Enter without invoking dodge (1.3049ms)
+✔ the original quiet-water rest reach still opens the choices without an implicit cast (0.5148ms)
+✔ the fishing HUD yields to drawers and returns when controls are available again (0.6869ms)
+✔ framing the water is an explicit camera action that retains the chosen style and FOV (1.4637ms)
+✔ the actual App boundary gives photo mode its controls and suspends the hidden line (1.2272ms)
+✖ global App E cannot act on a line hidden behind photo or menu controls (3.6465ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 10
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 107.7028
+
+✖ failing tests:
+
+test at tests\pier_fishing_ui.test.cjs:82:1
+✖ global App E cannot act on a line hidden behind photo or menu controls (3.6465ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      fish: 'Lantern silverfin',
+  +   message: 'Fish on · reel gently, ease when it pulls.',
+  +   phase: 'playing',
+  -   message: 'A bite · press E or Hook when you are ready.',
+  -   phase: 'bite',
+      progress: 0.08,
+  +   pulling: true,
+  -   pulling: false,
+      reeling: false,
+      tension: 0.28,
+      time: 3.999999999999994
+    }
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_fishing_ui.test.cjs:90:119)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { phase: 'playing', time: 3.999999999999994, reeling: false, tension: 0.28, progress: 0.08, pulling: true, message: 'Fish on · reel gently, ease when it pulls.', fish: 'Lantern silverfin' },
+    expected: { phase: 'bite', time: 3.999999999999994, reeling: false, tension: 0.28, progress: 0.08, pulling: false, message: 'A bite · press E or Hook when you are ready.', fish: 'Lantern silverfin' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,34 @@
+✔ context button click opens the current account for guidance and executes only current arrival (42.2697ms)
+✔ actual App keyboard callback protects dialogs, typed text and repeated E before contextual writing (47.514ms)
+✔ actual HUD projection shows live guidance, then E arrival and resets its badge after cancel (21.1342ms)
+✔ E at the arrived doorstep records the moment instead of entering the overlapping house (41.6332ms)
+✔ out-of-range E gives current guidance, preserves arrival, and cannot enter the house (43.5581ms)
+✔ waiting and paused guidance have no implicit action, save, tracker or camera change (13.8393ms)
+✔ a known refused contextual save remains arrived and explicitly retryable (42.143ms)
+✔ post-write uncertainty shows readback guidance and consumes E without another write or entry (37.1705ms)
+✔ changed owner after a contextual Store write leaves the saved fact and blocks its older local snapshot (38.7347ms)
+✔ completed history alone, cancel, reload and changed owner cannot invent a live contextual action (49.5968ms)
+✔ pier-only explicit cast does not spend, equip, record or duplicate an activity (9.0994ms)
+✔ readable bite, tension decisions, catch and explicit release use actual elapsed time (107.4077ms)
+✔ holding through a strong pull loses the fish without costing any inventory (71.8425ms)
+✔ pause and long clock gaps cannot advance the float or catch up offline play (38.9657ms)
+✔ walking, scene, death, character and world replacement release transient fishing (2.1784ms)
+✔ commands cannot inject progress and current snapshots cannot alter the owned fish (1.1517ms)
+✔ releasing a held input while paused cannot latch reeling on resume (14.5497ms)
+✔ a command-earned early blade and crafted bow can fish without advancing story or equipment (261.1607ms)
+✔ projected rod, float and catch use finite existing geometry without touching game state (7.276ms)
+✔ opening the pier choices has no implicit rest, cast or persistent mutation (7.5809ms)
+✔ a previously paused world is not silently resumed to permit casting (1.0146ms)
+✔ stale modal ownership and an active Briar outing cannot start a new activity (0.4129ms)
+✔ actual keyboard control chooses Hook then reel/ease, protects typing and cancels only its line (7.1266ms)
+✔ a non-pausing drawer freezes the fishing clock and discards elapsed menu time (6.9003ms)
+✔ App native fishing buttons retain Space and Enter without invoking dodge (1.3487ms)
+✔ the original quiet-water rest reach still opens the choices without an implicit cast (0.6114ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1151.3336

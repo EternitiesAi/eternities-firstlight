@@ -1,0 +1,14 @@
+✔ pier-only explicit cast does not spend, equip, record or duplicate an activity (9.2962ms)
+✔ readable bite, tension decisions, catch and explicit release use actual elapsed time (105.7319ms)
+✔ holding through a strong pull loses the fish without costing any inventory (66.0932ms)
+✔ pause and long clock gaps cannot advance the float or catch up offline play (37.1036ms)
+✔ walking, scene, death, character and world replacement release transient fishing (3.0022ms)
+✔ commands cannot inject progress and current snapshots cannot alter the owned fish (1.2221ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 308.132

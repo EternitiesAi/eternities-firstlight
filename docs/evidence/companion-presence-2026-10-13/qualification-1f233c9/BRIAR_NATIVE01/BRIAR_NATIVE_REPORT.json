@@ -1,0 +1,3623 @@
+{
+  "status": "failed",
+  "scope": "complete",
+  "head": "1f233c9c71c30161a8db105fa85d88187aa66a90",
+  "htmlSha256": "47ab42ac7866a7e5e7e6ef4cd43c7c336cd3285b1ab8c474ae1f7c90960991c8",
+  "callerSha256": "b50581f2e6f83361296927a180fd892ecd1225559831a3c2cca1cabf5601f1a2",
+  "supportSha256": "cb5b8227f4c5e99e89b5ec40a75a3cacc471bd60c287316501c4b2de6cfecaa5",
+  "brokerWrapperSha256": "fdcd42d1e104d06f83609bd523dcedf44b8011401bea28674a73111b21ca29f8",
+  "cohortSha256": "329820e9bb1a9d422da6ef39dac5c6ad34f12556bf1c2816016113d9d0e491f5",
+  "sourceGate": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\REMOTE_SOURCE08_EXIT.json",
+    "sha256": "7af8e796e9b1b5c1c108ef5a1dbb2a7964d68eaab3deb2fbbd9d6bf804753812",
+    "commandsPassed": 223,
+    "ruleFiles": 157,
+    "head": "1f233c9c71c30161a8db105fa85d88187aa66a90",
+    "output": "D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\REMOTE_SOURCE08"
+  },
+  "admission": {
+    "freeHostKiB": 9237848,
+    "minimumFreeKiB": 6291456
+  },
+  "cases": {
+    "early-rescued-blade": {
+      "profile": "D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\BRIAR_NATIVE01\\early-rescued-blade\\synthetic-native-profile",
+      "checks": [
+        {
+          "name": "exact served HTML bytes",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "actual software WebGL2",
+          "passed": true,
+          "detail": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+        },
+        {
+          "name": "accelerated production test controls",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "unique native #rpg-tabs [data-rpg=\"open\"][data-id=\"characters\"]",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "unique native [data-rpg=\"chars-import\"]",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "unique native [data-rpg=\"chars-confirm-import\"]",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "input imported without economic/story changes",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "unique native #settings",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "unique native #close-panel",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "native Low quality selected",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "accepted supported player move",
+          "passed": true,
+          "detail": {
+            "ok": true,
+            "waypoints": 1
+          }
+        },
+        {
+          "name": "unique native #rpg-tabs [data-rpg=\"open\"][data-id=\"companion\"]",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "unique native #rpg-content .briar-outing [data-rpg=\"briar\"][data-id=\"start\"]",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Start closes workspace",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "physical phase returning",
+          "passed": true,
+          "detail": {
+            "phase": "returning",
+            "uncertain": false,
+            "carrying": true,
+            "resting": false,
+            "readyToRemember": false,
+            "yielding": false,
+            "waiting": false,
+            "distanceTravelled": 17.119999999999912,
+            "status": "Carrying the cloth home \u00b7 keep Briar company",
+            "object": "briar-wayward-cloth-v1"
+          }
+        },
+        {
+          "name": "unique native #rpg-hud [data-rpg=\"camera\"][data-id=\"adventure\"]",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "requested camera adventure",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "model follows physical fox",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "actual submitted carrying pose",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "correct cloth parts",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "unique native #rpg-hud [data-rpg=\"camera\"][data-id=\"follow\"]",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "requested camera follow",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "model follows physical fox",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "actual submitted carrying pose",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "correct cloth parts",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "native close write observed",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "exact served HTML bytes",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "actual software WebGL2",
+          "passed": true,
+          "detail": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+        },
+        {
+          "name": "accelerated production test controls",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "exact closed bytes read before startup writes",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "completed facts survive whole browser",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "no fabricated transient activity",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "all old owners survive browser",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "inactive characters unchanged",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "accepted supported player move",
+          "passed": true,
+          "detail": {
+            "ok": true,
+            "waypoints": 1
+          }
+        },
+        {
+          "name": "unique native #rpg-tabs [data-rpg=\"open\"][data-id=\"companion\"]",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "unique native #rpg-content .briar-outing [data-rpg=\"briar\"][data-id=\"start\"]",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "physical phase await-take",
+          "passed": true,
+          "detail": {
+            "phase": "await-take",
+            "uncertain": false,
+            "carrying": true,
+            "resting": false,
+            "readyToRemember": false,
+            "yielding": false,
+            "waiting": false,
+            "distanceTravelled": 30.719999999999914,
+            "status": "Cloth brought home \u00b7 take it beside Briar",
+            "object": "briar-wayward-cloth-v1"
+          }
+        },
+        {
+          "name": "accepted supported player move",
+          "passed": true,
+          "detail": {
+            "ok": true,
+            "waypoints": 1
+          }
+        },
+        {
+          "name": "take stays in Firstlight instead of entering the overlapping house",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Take saves exactly one fact",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Take changes no old owner",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Take factual journal appended",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Take exact atomic live boundary",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Take immediate active native bytes match live candidate",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Take actual save completed immediately",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "native close write observed",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "exact served HTML bytes",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "actual software WebGL2",
+          "passed": true,
+          "detail": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+        },
+        {
+          "name": "accelerated production test controls",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "exact closed bytes read before startup writes",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "completed facts survive whole browser",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "no fabricated transient activity",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "all old owners survive browser",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "inactive characters unchanged",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "accepted supported player move",
+          "passed": true,
+          "detail": {
+            "ok": true,
+            "waypoints": 1
+          }
+        },
+        {
+          "name": "unique native #rpg-tabs [data-rpg=\"open\"][data-id=\"companion\"]",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "unique native #rpg-content .briar-outing [data-rpg=\"briar\"][data-id=\"rest\"]",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "physical phase settled",
+          "passed": true,
+          "detail": {
+            "phase": "settled",
+            "uncertain": false,
+            "carrying": false,
+            "resting": true,
+            "readyToRemember": true,
+            "yielding": false,
+            "waiting": false,
+            "distanceTravelled": 16.80000000000001,
+            "status": "Resting at the doorstep \u00b7 choose Remember this moment",
+            "object": "briar-wayward-cloth-v1"
+          }
+        },
+        {
+          "name": "accepted supported player move",
+          "passed": true,
+          "detail": {
+            "ok": true,
+            "waypoints": 1
+          }
+        },
+        {
+          "name": "unique native #rpg-hud [data-rpg=\"camera\"][data-id=\"adventure\"]",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "requested camera adventure",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "model follows physical fox",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "actual submitted resting pose",
+          "passed": false,
+          "detail": null
+        }
+      ],
+      "restarts": [
+        {
+          "label": "PARTIAL",
+          "matched": true,
+          "closedSha256": "a33140db5030d73ad7bf49e1e33ef4698351b342f90318a008e902e63d7ab132",
+          "startupSha256": "a33140db5030d73ad7bf49e1e33ef4698351b342f90318a008e902e63d7ab132"
+        },
+        {
+          "label": "TAKEN",
+          "matched": true,
+          "closedSha256": "2bd9812ab35c8c9c9c4d2ac07912c989fbabaa1e542d6f89d3290f23b57f0de1",
+          "startupSha256": "2bd9812ab35c8c9c9c4d2ac07912c989fbabaa1e542d6f89d3290f23b57f0de1"
+        }
+      ],
+      "samples": [
+        {
+          "label": "CARRY",
+          "camera": "adventure",
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\BRIAR_NATIVE01\\early-rescued-blade\\CARRY_adventure.png",
+          "sha256": "452099a450bd4b7b8c0e0b81cfcde3a0376bfbd71333c48e8bb06f7ff96d0aa6",
+          "frame": {
+            "placement": {
+              "x": 0.04505568466864063,
+              "z": 25.008015543382818,
+              "base": 1.31,
+              "yaw": -0.11444030527006169,
+              "bonded": true
+            },
+            "motion": {
+              "lastX": 0.04505568466864063,
+              "lastZ": 25.008015543382818,
+              "lastTime": 5.399999999999989,
+              "scene": null,
+              "time": 5.399999999999989,
+              "phase": 1.9148755221876992,
+              "blend": 0.30119421191220336,
+              "moving": false,
+              "paused": false,
+              "reducedMotion": false
+            },
+            "pose": {
+              "bonded": true,
+              "reducedMotion": false,
+              "carrying": true,
+              "resting": false,
+              "phase": 1.9148755221876992,
+              "blend": 0.30119421191220336,
+              "bob": 0.002295518325245489,
+              "bodyY": 0.5122955183252454,
+              "legs": {
+                "leftHind": {
+                  "hip": [
+                    -0.215,
+                    0.4872955183252454,
+                    -0.33
+                  ],
+                  "knee": [
+                    -0.215,
+                    0.2677254488611255,
+                    -0.23310322711502962
+                  ],
+                  "foot": [
+                    -0.215,
+                    0.055,
+                    -0.344224257558563
+                  ]
+                },
+                "leftFront": {
+                  "hip": [
+                    -0.215,
+                    0.4872955183252454,
+                    0.29
+                  ],
+                  "knee": [
+                    -0.215,
+                    0.2788077413365765,
+                    0.17111834941285908
+                  ],
+                  "foot": [
+                    -0.215,
+                    0.07910091316911644,
+                    0.30422425755856297
+                  ]
+                },
+                "rightHind": {
+                  "hip": [
+                    0.215,
+                    0.4872955183252454,
+                    -0.33
+                  ],
+                  "knee": [
+                    0.215,
+                    0.2875886901577853,
+                    -0.19689409185429607
+                  ],
+                  "foot": [
+                    0.215,
+                    0.07910091316911644,
+                    -0.315775742441437
+                  ]
+                },
+                "rightFront": {
+                  "hip": [
+                    0.215,
+                    0.4872955183252454,
+                    0.29
+                  ],
+                  "knee": [
+                    0.215,
+                    0.2745700694641199,
+                    0.17887896955646654
+                  ],
+                  "foot": [
+                    0.215,
+                    0.055,
+                    0.275775742441437
+                  ]
+                }
+              },
+              "headAnchor": [
+                0,
+                0.7922955183252455,
+                0.49
+              ],
+              "headYaw": -0.02381195921213552,
+              "headPitch": -0.008793219848913188,
+              "earAngles": [
+                0.025825257836730422,
+                0.037387019928322524
+              ],
+              "tail": [
+                [
+                  0,
+                  0.5322955183252455,
+                  -0.47
+                ],
+                [
+                  0.00027109036879435566,
+                  0.5822955183252454,
+                  -0.78
+                ],
+                [
+                  0.0006196351286728131,
+                  0.6172955183252454,
+                  -1.07
+                ],
+                [
+                  0.0007745439108410163,
+                  0.6522955183252455,
+                  -1.34
+                ]
+              ]
+            },
+            "parts": [
+              {
+                "kind": "round",
+                "p": [
+                  0.05019426493674285,
+                  1.8222955183252454,
+                  24.96330989505033
+                ],
+                "s": [
+                  0.6,
+                  0.46,
+                  1.02
+                ],
+                "c": 13345393,
+                "m": [
+                  0.5960753110998673,
+                  0,
+                  0.06851440357469633,
+                  0,
+                  0,
+                  0.46,
+                  0,
+                  0,
+                  -0.11647448607698377,
+                  0,
+                  1.0133280288697746,
+                  0,
+                  0.05019426493674285,
+                  1.8222955183252454,
+                  24.96330989505033,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "body",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.08388051336096855,
+                  1.8122955183252456,
+                  24.67023953375956
+                ],
+                "s": [
+                  0.55,
+                  0.48,
+                  0.5
+                ],
+                "c": 13345393,
+                "m": [
+                  0.5464023685082118,
+                  0,
+                  0.06280486994347165,
+                  0,
+                  0,
+                  0.48,
+                  0,
+                  0,
+                  -0.05709533631224695,
+                  0,
+                  0.4967294259165561,
+                  0,
+                  0.08388051336096855,
+                  1.8122955183252456,
+                  24.67023953375956,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "haunch",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.011940389607537398,
+                  1.8572955183252455,
+                  25.29611861041442
+                ],
+                "s": [
+                  0.45,
+                  0.4,
+                  0.39
+                ],
+                "c": 15655098,
+                "m": [
+                  0.4470564833249005,
+                  0,
+                  0.051385802681022254,
+                  0,
+                  0,
+                  0.4,
+                  0,
+                  0,
+                  -0.04453436232355262,
+                  0,
+                  0.38744895221491377,
+                  0,
+                  0.011940389607537398,
+                  1.8572955183252455,
+                  25.29611861041442,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "cream-bib",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.0022341824344554173,
+                  1.9797955183252456,
+                  25.380562612820235
+                ],
+                "s": [
+                  0.33,
+                  0.33604315199093104,
+                  0.33
+                ],
+                "c": 13345393,
+                "m": [
+                  0.32784142110492703,
+                  0,
+                  0.037682921966082986,
+                  0,
+                  -0.02626385470363359,
+                  0.24499999999999997,
+                  0.22849553592161576,
+                  0,
+                  -0.027473602205527126,
+                  -0.2258638497773891,
+                  0.23902033918808968,
+                  0,
+                  0.0022341824344554173,
+                  1.9797955183252456,
+                  25.380562612820235,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "neck",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  0.015366109786272213,
+                  1.8572955183252455,
+                  25.266314844859426
+                ],
+                "anchorTo": [
+                  -0.010897744917361382,
+                  2.1022955183252456,
+                  25.494810380781043
+                ],
+                "capOverlap": 0
+              },
+              {
+                "kind": "round",
+                "p": [
+                  -0.012964862717812643,
+                  2.102427377531702,
+                  25.509666680358958
+                ],
+                "s": [
+                  0.4,
+                  0.36,
+                  0.46
+                ],
+                "c": 14729363,
+                "m": [
+                  0.39618338932431457,
+                  8.374452313258973e-05,
+                  0.0551245409083238,
+                  0,
+                  0.000361472669806761,
+                  0.3599860823609211,
+                  -0.0031448122273188693,
+                  0,
+                  -0.0633916125471721,
+                  0.004043682331330559,
+                  0.4555931870560319,
+                  0,
+                  -0.012964862717812643,
+                  2.102427377531702,
+                  25.509666680358958,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "head",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  -0.14692503269245838,
+                  2.0286808394851885,
+                  25.638084439981675
+                ],
+                "s": [
+                  0.19,
+                  0.16,
+                  0.28
+                ],
+                "c": 15655098,
+                "m": [
+                  0.1881871099290494,
+                  3.977864848798012e-05,
+                  0.026184156931453803,
+                  0,
+                  0.000160654519914116,
+                  0.1599938143826316,
+                  -0.0013976943232528309,
+                  0,
+                  -0.03858619894175693,
+                  0.002461371853853384,
+                  0.27731759212106294,
+                  0,
+                  -0.14692503269245838,
+                  2.0286808394851885,
+                  25.638084439981675,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "left-cheek",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  -0.18279133821772311,
+                  2.128942782939159,
+                  25.663503936884666
+                ],
+                "s": [
+                  0.048,
+                  0.052,
+                  0.035
+                ],
+                "c": 3423547,
+                "m": [
+                  0.04754200671891775,
+                  1.0049342775910767e-05,
+                  0.0066149449089988556,
+                  0,
+                  5.22127189720877e-05,
+                  0.05199798967435527,
+                  -0.00045425065505717,
+                  0,
+                  -0.0048232748677196164,
+                  0.000307671481731673,
+                  0.03466469901513287,
+                  0,
+                  -0.18279133821772311,
+                  2.128942782939159,
+                  25.663503936884666,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "left-eye",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "octa",
+                "p": [
+                  -0.14534284174916756,
+                  2.314685536437844,
+                  25.408589755962986
+                ],
+                "s": [
+                  0.17,
+                  0.32,
+                  0.16
+                ],
+                "c": 13345393,
+                "m": [
+                  0.16726220874898165,
+                  -0.019331454795196556,
+                  0.02344458103514237,
+                  0,
+                  0.03642795514545458,
+                  0.31791186723392484,
+                  0.002246943648624825,
+                  0,
+                  -0.02204925653814682,
+                  0.0014064982022019335,
+                  0.15846719549775024,
+                  0,
+                  -0.14534284174916756,
+                  2.314685536437844,
+                  25.408589755962986,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "left-ear",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  -0.1711478424588576,
+                  2.388070218814108,
+                  25.433396492871665
+                ],
+                "s": [
+                  0.045,
+                  0.11,
+                  0.01
+                ],
+                "c": 11041131,
+                "m": [
+                  -0.02799107754851389,
+                  0.0034551935100099245,
+                  -0.03506509967876131,
+                  0,
+                  0.035040378076946266,
+                  0.10273071037788643,
+                  -0.01784861477760886,
+                  0,
+                  0.007152711477834923,
+                  -0.0034915076978246544,
+                  -0.0060537668034769685,
+                  0,
+                  -0.1711478424588576,
+                  2.388070218814108,
+                  25.433396492871665,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "left-ear-inner",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.0808804161690225,
+                  2.0287289925859895,
+                  25.669781051003962
+                ],
+                "s": [
+                  0.19,
+                  0.16,
+                  0.28
+                ],
+                "c": 15655098,
+                "m": [
+                  0.1881871099290494,
+                  3.977864848798012e-05,
+                  0.026184156931453803,
+                  0,
+                  0.000160654519914116,
+                  0.1599938143826316,
+                  -0.0013976943232528309,
+                  0,
+                  -0.03858619894175693,
+                  0.002461371853853384,
+                  0.27731759212106294,
+                  0,
+                  0.0808804161690225,
+                  2.0287289925859895,
+                  25.669781051003962,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "right-cheek",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.10840345293564801,
+                  2.1290043351636614,
+                  25.70402047445228
+                ],
+                "s": [
+                  0.048,
+                  0.052,
+                  0.035
+                ],
+                "c": 3423547,
+                "m": [
+                  0.04754200671891775,
+                  1.0049342775910767e-05,
+                  0.0066149449089988556,
+                  0,
+                  5.22127189720877e-05,
+                  0.05199798967435527,
+                  -0.00045425065505717,
+                  0,
+                  -0.0048232748677196164,
+                  0.000307671481731673,
+                  0.03466469901513287,
+                  0,
+                  0.10840345293564801,
+                  2.1290043351636614,
+                  25.70402047445228,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "right-eye",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "octa",
+                "p": [
+                  0.14189011551096042,
+                  2.314746251217115,
+                  25.44855504812152
+                ],
+                "s": [
+                  0.17,
+                  0.32,
+                  0.16
+                ],
+                "c": 13345393,
+                "m": [
+                  0.16576589704027006,
+                  0.03003176741065301,
+                  0.022798252666093324,
+                  0,
+                  -0.05561157948257305,
+                  0.31495460393878344,
+                  -0.010533265648293835,
+                  0,
+                  -0.02204925653814682,
+                  0.0014064982022019335,
+                  0.15846719549775024,
+                  0,
+                  0.14189011551096042,
+                  2.314746251217115,
+                  25.44855504812152,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "right-ear",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.1552937969273584,
+                  2.3893907226282862,
+                  25.47880613202579
+                ],
+                "s": [
+                  0.045,
+                  0.11,
+                  0.01
+                ],
+                "c": 11041131,
+                "m": [
+                  0.036203027681488455,
+                  0.0055177731604650684,
+                  -0.02615138554729046,
+                  0,
+                  -0.03525719310704894,
+                  0.10047202417483048,
+                  -0.027609829634109375,
+                  0,
+                  0.005000278513116317,
+                  0.003881987629863738,
+                  0.007741278113648429,
+                  0,
+                  0.1552937969273584,
+                  2.3893907226282862,
+                  25.47880613202579,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "right-ear-inner",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  -0.05713366214656872,
+                  2.0352430801437045,
+                  25.82721256262088
+                ],
+                "s": [
+                  0.205,
+                  0.16,
+                  0.345
+                ],
+                "c": 15655098,
+                "m": [
+                  0.2030439870287112,
+                  4.2919068105452234e-05,
+                  0.02825132721551594,
+                  0,
+                  0.000160654519914116,
+                  0.1599938143826316,
+                  -0.0013976943232528309,
+                  0,
+                  -0.047543709410379074,
+                  0.0030327617484979187,
+                  0.3416948902920239,
+                  0,
+                  -0.05713366214656872,
+                  2.0352430801437045,
+                  25.82721256262088,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "muzzle",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  -0.08012849593401966,
+                  2.05571037810019,
+                  25.99244672172077
+                ],
+                "s": [
+                  0.098,
+                  0.083,
+                  0.07
+                ],
+                "c": 3423547,
+                "m": [
+                  0.09706493038445707,
+                  2.0517408167484485e-05,
+                  0.01350551252253933,
+                  0,
+                  8.333953220544768e-05,
+                  0.08299679121099016,
+                  -0.000725053930187406,
+                  0,
+                  -0.009646549735439233,
+                  0.000615342963463346,
+                  0.06932939803026573,
+                  0,
+                  -0.08012849593401966,
+                  2.05571037810019,
+                  25.99244672172077,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "nose",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "box",
+                "p": [
+                  -0.07376097271763052,
+                  1.9463014332051256,
+                  25.946849162301024
+                ],
+                "s": [
+                  0.28,
+                  0.25,
+                  0.018
+                ],
+                "c": 9353149,
+                "m": [
+                  0.2773283725270202,
+                  5.8621166192812814e-05,
+                  0.03858717863582666,
+                  0,
+                  0.00025102268736580625,
+                  0.24999033497286188,
+                  -0.002183897380082548,
+                  0,
+                  -0.002480541360541517,
+                  0.0001582310477477175,
+                  0.0178275594934969,
+                  0,
+                  -0.07376097271763052,
+                  1.9463014332051256,
+                  25.946849162301024,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "outing-cloth-main",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "box",
+                "p": [
+                  -0.07364851455369062,
+                  2.0582971032729676,
+                  25.945870776274745
+                ],
+                "s": [
+                  0.28,
+                  0.045,
+                  0.03
+                ],
+                "c": 12703184,
+                "m": [
+                  0.2773283725270202,
+                  5.8621166192812814e-05,
+                  0.03858717863582666,
+                  0,
+                  4.5184083725845125e-05,
+                  0.04499826029511514,
+                  -0.00039310152841485867,
+                  0,
+                  -0.004134235600902528,
+                  0.0002637184129128625,
+                  0.029712599155828166,
+                  0,
+                  -0.07364851455369062,
+                  2.0582971032729676,
+                  25.945870776274745,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "outing-cloth-fold",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "box",
+                "p": [
+                  -0.13638740034483432,
+                  1.6875104835931856,
+                  24.703754606031943
+                ],
+                "s": [
+                  0.112,
+                  0.24,
+                  0.13
+                ],
+                "c": 13345393,
+                "m": [
+                  0.11126739140530857,
+                  0,
+                  0.012789355333943316,
+                  0,
+                  -0.011064707670877591,
+                  -0.21957006946411994,
+                  0.09626295673663653,
+                  0,
+                  0.013581129206837132,
+                  -0.052485751979358966,
+                  -0.11815582409948487,
+                  0,
+                  -0.13638740034483432,
+                  1.6875104835931856,
+                  24.703754606031943,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "leftHind-upper",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  -0.1308550465093955,
+                  1.7972955183252455,
+                  24.655623127663624
+                ],
+                "anchorTo": [
+                  -0.1419197541802731,
+                  1.5777254488611256,
+                  24.75188608440026
+                ],
+                "capOverlap": 0
+              },
+              {
+                "kind": "box",
+                "p": [
+                  -0.13557526157573613,
+                  1.4713627244305627,
+                  24.69668899874079
+                ],
+                "s": [
+                  0.085,
+                  0.24,
+                  0.1
+                ],
+                "c": 6183247,
+                "m": [
+                  0.08444400240581454,
+                  0,
+                  0.009706207173081982,
+                  0,
+                  0.012688985209073942,
+                  -0.2127254488611255,
+                  -0.110394171318945,
+                  0,
+                  0.010121359204083042,
+                  0.04630042935147225,
+                  -0.08805582507552383,
+                  0,
+                  -0.13557526157573613,
+                  1.4713627244305627,
+                  24.69668899874079,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "leftHind-stocking",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  -0.1419197541802731,
+                  1.5777254488611256,
+                  24.75188608440026
+                ],
+                "anchorTo": [
+                  -0.12923076897119917,
+                  1.365,
+                  24.641491913081317
+                ],
+                "capOverlap": 0
+              },
+              {
+                "kind": "round",
+                "p": [
+                  -0.12923076897119917,
+                  1.365,
+                  24.641491913081317
+                ],
+                "s": [
+                  0.145,
+                  0.105,
+                  0.22
+                ],
+                "c": 6183247,
+                "m": [
+                  0.14405153351580127,
+                  0,
+                  0.016557647530551615,
+                  0,
+                  0,
+                  0.105,
+                  0,
+                  0,
+                  -0.025121947977388658,
+                  0,
+                  0.2185609474032847,
+                  0,
+                  -0.12923076897119917,
+                  1.365,
+                  24.641491913081317,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "leftHind-paw",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "box",
+                "p": [
+                  -0.1948656757149539,
+                  1.693051629830911,
+                  25.212515601751992
+                ],
+                "s": [
+                  0.112,
+                  0.24000000000000002,
+                  0.13
+                ],
+                "c": 13345393,
+                "m": [
+                  0.11126739140530857,
+                  0,
+                  0.012789355333943316,
+                  0,
+                  0.013575175643255678,
+                  -0.2084877769886689,
+                  -0.11810402809632621,
+                  0,
+                  0.01289565305617419,
+                  0.06439422740136798,
+                  -0.1121921815887172,
+                  0,
+                  -0.1948656757149539,
+                  1.693051629830911,
+                  25.212515601751992,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "leftFront-upper",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  -0.20165326353658172,
+                  1.7972955183252455,
+                  25.271567615800155
+                ],
+                "anchorTo": [
+                  -0.18807808789332606,
+                  1.5888077413365767,
+                  25.15346358770383
+                ],
+                "capOverlap": 0
+              },
+              {
+                "kind": "box",
+                "p": [
+                  -0.19567781448405205,
+                  1.4889543272528465,
+                  25.219581209043145
+                ],
+                "s": [
+                  0.085,
+                  0.23999999999999994,
+                  0.1
+                ],
+                "c": 6183247,
+                "m": [
+                  0.08444400240581454,
+                  0,
+                  0.009706207173081982,
+                  0,
+                  -0.015199453181452029,
+                  -0.19970682816746005,
+                  0.13223524267863468,
+                  0,
+                  0.009501940431727706,
+                  -0.05546079506070997,
+                  -0.08266688175603232,
+                  0,
+                  -0.19567781448405205,
+                  1.4889543272528465,
+                  25.219581209043145,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "leftFront-stocking",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  -0.18807808789332606,
+                  1.5888077413365767,
+                  25.15346358770383
+                ],
+                "anchorTo": [
+                  -0.20327754107477808,
+                  1.3891009131691165,
+                  25.28569883038246
+                ],
+                "capOverlap": 0
+              },
+              {
+                "kind": "round",
+                "p": [
+                  -0.20327754107477808,
+                  1.3891009131691165,
+                  25.28569883038246
+                ],
+                "s": [
+                  0.145,
+                  0.105,
+                  0.22
+                ],
+                "c": 6183247,
+                "m": [
+                  0.14405153351580127,
+                  0,
+                  0.016557647530551615,
+                  0,
+                  0,
+                  0.105,
+                  0,
+                  0,
+                  -0.025121947977388658,
+                  0,
+                  0.2185609474032847,
+                  0,
+                  -0.20327754107477808,
+                  1.3891009131691165,
+                  25.28569883038246,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "leftFront-paw",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "box",
+                "p": [
+                  0.28873253318811676,
+                  1.6974421042415155,
+                  24.770842738231476
+                ],
+                "s": [
+                  0.112,
+                  0.24000000000000005,
+                  0.13
+                ],
+                "c": 13345393,
+                "m": [
+                  0.11126739140530857,
+                  0,
+                  0.012789355333943316,
+                  0,
+                  -0.015199453181452036,
+                  -0.1997068281674601,
+                  0.13223524267863473,
+                  0,
+                  0.012352522561246016,
+                  -0.07209903357892296,
+                  -0.10746694628284201,
+                  0,
+                  0.28873253318811676,
+                  1.6974421042415155,
+                  24.770842738231476,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "rightHind-upper",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  0.29633225977884275,
+                  1.7972955183252455,
+                  24.704725116892156
+                ],
+                "anchorTo": [
+                  0.2811328065973907,
+                  1.5975886901577854,
+                  24.836960359570792
+                ],
+                "capOverlap": 0
+              },
+              {
+                "kind": "box",
+                "p": [
+                  0.28792039441901857,
+                  1.493344801663451,
+                  24.77790834552263
+                ],
+                "s": [
+                  0.085,
+                  0.24,
+                  0.1
+                ],
+                "c": 6183247,
+                "m": [
+                  0.08444400240581454,
+                  0,
+                  0.009706207173081982,
+                  0,
+                  0.013575175643255685,
+                  -0.20848777698866888,
+                  -0.11810402809632628,
+                  0,
+                  0.009919733120133993,
+                  0.0495340210779754,
+                  -0.08630167814516708,
+                  0,
+                  0.28792039441901857,
+                  1.493344801663451,
+                  24.77790834552263,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "rightHind-stocking",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  0.2811328065973907,
+                  1.5975886901577854,
+                  24.836960359570792
+                ],
+                "anchorTo": [
+                  0.2947079822406464,
+                  1.3891009131691165,
+                  24.718856331474466
+                ],
+                "capOverlap": 0
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.2947079822406464,
+                  1.3891009131691165,
+                  24.718856331474466
+                ],
+                "s": [
+                  0.145,
+                  0.105,
+                  0.22
+                ],
+                "c": 6183247,
+                "m": [
+                  0.14405153351580127,
+                  0,
+                  0.016557647530551615,
+                  0,
+                  0,
+                  0.105,
+                  0,
+                  0,
+                  -0.025121947977388658,
+                  0,
+                  0.2185609474032847,
+                  0,
+                  0.2947079822406464,
+                  1.3891009131691165,
+                  24.718856331474466,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "rightHind-paw",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "box",
+                "p": [
+                  0.23187853535619352,
+                  1.6909327938946828,
+                  25.265472519369215
+                ],
+                "s": [
+                  0.112,
+                  0.24000000000000005,
+                  0.13
+                ],
+                "c": 13345393,
+                "m": [
+                  0.11126739140530857,
+                  0,
+                  0.012789355333943316,
+                  0,
+                  0.012688985209073949,
+                  -0.21272544886112557,
+                  -0.11039417131894505,
+                  0,
+                  0.013157766965307956,
+                  0.06019055815691394,
+                  -0.11447257259818099,
+                  0,
+                  0.23187853535619352,
+                  1.6909327938946828,
+                  25.265472519369215,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "rightFront-upper",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  0.22553404275165653,
+                  1.7972955183252455,
+                  25.320669605028687
+                ],
+                "anchorTo": [
+                  0.23822302796073047,
+                  1.58457006946412,
+                  25.210275433709743
+                ],
+                "capOverlap": 0
+              },
+              {
+                "kind": "box",
+                "p": [
+                  0.23269067412529168,
+                  1.47478503473206,
+                  25.25840691207806
+                ],
+                "s": [
+                  0.085,
+                  0.23999999999999996,
+                  0.1
+                ],
+                "c": 6183247,
+                "m": [
+                  0.08444400240581454,
+                  0,
+                  0.009706207173081982,
+                  0,
+                  -0.011064707670877597,
+                  -0.21957006946411986,
+                  0.09626295673663658,
+                  0,
+                  0.010447022466797792,
+                  -0.040373655368737695,
+                  -0.0908890954611422,
+                  0,
+                  0.23269067412529168,
+                  1.47478503473206,
+                  25.25840691207806,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "rightFront-stocking",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  0.23822302796073047,
+                  1.58457006946412,
+                  25.210275433709743
+                ],
+                "anchorTo": [
+                  0.2271583202898529,
+                  1.365,
+                  25.306538390446377
+                ],
+                "capOverlap": 0
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.2271583202898529,
+                  1.365,
+                  25.306538390446377
+                ],
+                "s": [
+                  0.145,
+                  0.105,
+                  0.22
+                ],
+                "c": 6183247,
+                "m": [
+                  0.14405153351580127,
+                  0,
+                  0.016557647530551615,
+                  0,
+                  0,
+                  0.105,
+                  0,
+                  0,
+                  -0.025121947977388658,
+                  0,
+                  0.2185609474032847,
+                  0,
+                  0.2271583202898529,
+                  1.365,
+                  25.306538390446377,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "rightFront-paw",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.11655951362221204,
+                  1.8672955183252455,
+                  24.3871192389829
+                ],
+                "s": [
+                  0.29,
+                  0.49400648638203015,
+                  0.29
+                ],
+                "c": 14994329,
+                "m": [
+                  0.28807473509505876,
+                  -3.986621584822068e-05,
+                  0.03336083647926884,
+                  0,
+                  0.05611487147375713,
+                  0.07866182830710791,
+                  -0.4844644946271973,
+                  0,
+                  -0.005273029194976367,
+                  0.2862999250066676,
+                  0.0458753539962951,
+                  0,
+                  0.11655951362221204,
+                  1.8672955183252455,
+                  24.3871192389829,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "tail-0",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  0.09872530080215275,
+                  1.8422955183252454,
+                  24.541089883021254
+                ],
+                "anchorTo": [
+                  0.13439372644227132,
+                  1.8922955183252455,
+                  24.233148594944545
+                ],
+                "capOverlap": 0.18
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.1511245064113036,
+                  1.9097955183252455,
+                  24.089116961709028
+                ],
+                "s": [
+                  0.29,
+                  0.47210464132473084,
+                  0.29
+                ],
+                "c": 14994329,
+                "m": [
+                  0.28806363281396824,
+                  -4.146178487321316e-05,
+                  0.033456564840695535,
+                  0,
+                  0.054081159686758,
+                  0.05656761348066477,
+                  -0.46557290044888805,
+                  0,
+                  -0.003967879958988925,
+                  0.28791072777289056,
+                  0.03452055564320418,
+                  0,
+                  0.1511245064113036,
+                  1.9097955183252455,
+                  24.089116961709028,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "tail-1",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  0.13439372644227132,
+                  1.8922955183252455,
+                  24.233148594944545
+                ],
+                "anchorTo": [
+                  0.16785528638033587,
+                  1.9272955183252454,
+                  23.945085328473514
+                ],
+                "capOverlap": 0.18
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.18334797493507837,
+                  1.9447955183252454,
+                  23.810977228045058
+                ],
+                "s": [
+                  0.245,
+                  0.4522591118708992,
+                  0.245
+                ],
+                "c": 15786683,
+                "m": [
+                  0.24338159331413012,
+                  -1.7920304783514278e-05,
+                  0.02811404835199007,
+                  0,
+                  0.05147089122646344,
+                  0.058139721409902236,
+                  -0.44554329129837317,
+                  0,
+                  -0.0035965193947915864,
+                  0.24296711413223607,
+                  0.031289718734687284,
+                  0,
+                  0.18334797493507837,
+                  1.9447955183252454,
+                  23.810977228045058,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "tail-2",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  0.16785528638033587,
+                  1.9272955183252454,
+                  23.945085328473514
+                ],
+                "anchorTo": [
+                  0.19884066348982088,
+                  1.9622955183252455,
+                  23.676869127616605
+                ],
+                "capOverlap": 0.18
+              },
+              {
+                "kind": "box",
+                "p": [
+                  -0.011188294833551035,
+                  1.8420155941527407,
+                  25.497338165051893
+                ],
+                "s": [
+                  0.37,
+                  0.075,
+                  0.055
+                ],
+                "c": 6590089,
+                "m": [
+                  0.3675797751782515,
+                  0,
+                  0.04225054887106274,
+                  0,
+                  -0.005861714756281297,
+                  0.054680477465869896,
+                  0.05099691837964807,
+                  0,
+                  -0.004578933700921188,
+                  -0.03764397496289818,
+                  0.03983672319801495,
+                  0,
+                  -0.011188294833551035,
+                  1.8420155941527407,
+                  25.497338165051893,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "bond-collar-front",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "box",
+                "p": [
+                  -0.17005799270133087,
+                  1.9652140576676804,
+                  25.346980066876377
+                ],
+                "s": [
+                  0.055,
+                  0.075,
+                  0.36
+                ],
+                "c": 6590089,
+                "m": [
+                  0.05464023685082117,
+                  0,
+                  0.0062804869943471646,
+                  0,
+                  -0.005861714756281297,
+                  0.054680477465869896,
+                  0.05099691837964807,
+                  0,
+                  -0.029971202406029587,
+                  -0.246396927029879,
+                  0.26074946093246143,
+                  0,
+                  -0.17005799270133087,
+                  1.9652140576676804,
+                  25.346980066876377,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "bond-collar-left",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "box",
+                "p": [
+                  0.1776526054402584,
+                  1.9652140576676804,
+                  25.38694680229495
+                ],
+                "s": [
+                  0.055,
+                  0.075,
+                  0.36
+                ],
+                "c": 6590089,
+                "m": [
+                  0.05464023685082117,
+                  0,
+                  0.0062804869943471646,
+                  0,
+                  -0.005861714756281297,
+                  0.054680477465869896,
+                  0.05099691837964807,
+                  0,
+                  -0.029971202406029587,
+                  -0.246396927029879,
+                  0.26074946093246143,
+                  0,
+                  0.1776526054402584,
+                  1.9652140576676804,
+                  25.38694680229495,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "bond-collar-right",
+                "appearanceOnly": true
+              }
+            ]
+          },
+          "visibility": "Actual screenshot retained; submitted geometry is not human legibility approval"
+        },
+        {
+          "label": "CARRY",
+          "camera": "follow",
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\BRIAR_NATIVE01\\early-rescued-blade\\CARRY_follow.png",
+          "sha256": "ce6dc62689b6a6e3ccb75c0bafb65bacda68519591ab7326c1b8cb2ca8595122",
+          "frame": {
+            "placement": {
+              "x": 0.04505568466864063,
+              "z": 25.008015543382818,
+              "base": 1.31,
+              "yaw": -0.11444030527006169,
+              "bonded": true
+            },
+            "motion": {
+              "lastX": 0.04505568466864063,
+              "lastZ": 25.008015543382818,
+              "lastTime": 5.399999999999989,
+              "scene": null,
+              "time": 5.399999999999989,
+              "phase": 1.9148755221876992,
+              "blend": 0.30119421191220336,
+              "moving": false,
+              "paused": false,
+              "reducedMotion": false
+            },
+            "pose": {
+              "bonded": true,
+              "reducedMotion": false,
+              "carrying": true,
+              "resting": false,
+              "phase": 1.9148755221876992,
+              "blend": 0.30119421191220336,
+              "bob": 0.002295518325245489,
+              "bodyY": 0.5122955183252454,
+              "legs": {
+                "leftHind": {
+                  "hip": [
+                    -0.215,
+                    0.4872955183252454,
+                    -0.33
+                  ],
+                  "knee": [
+                    -0.215,
+                    0.2677254488611255,
+                    -0.23310322711502962
+                  ],
+                  "foot": [
+                    -0.215,
+                    0.055,
+                    -0.344224257558563
+                  ]
+                },
+                "leftFront": {
+                  "hip": [
+                    -0.215,
+                    0.4872955183252454,
+                    0.29
+                  ],
+                  "knee": [
+                    -0.215,
+                    0.2788077413365765,
+                    0.17111834941285908
+                  ],
+                  "foot": [
+                    -0.215,
+                    0.07910091316911644,
+                    0.30422425755856297
+                  ]
+                },
+                "rightHind": {
+                  "hip": [
+                    0.215,
+                    0.4872955183252454,
+                    -0.33
+                  ],
+                  "knee": [
+                    0.215,
+                    0.2875886901577853,
+                    -0.19689409185429607
+                  ],
+                  "foot": [
+                    0.215,
+                    0.07910091316911644,
+                    -0.315775742441437
+                  ]
+                },
+                "rightFront": {
+                  "hip": [
+                    0.215,
+                    0.4872955183252454,
+                    0.29
+                  ],
+                  "knee": [
+                    0.215,
+                    0.2745700694641199,
+                    0.17887896955646654
+                  ],
+                  "foot": [
+                    0.215,
+                    0.055,
+                    0.275775742441437
+                  ]
+                }
+              },
+              "headAnchor": [
+                0,
+                0.7922955183252455,
+                0.49
+              ],
+              "headYaw": -0.02381195921213552,
+              "headPitch": -0.008793219848913188,
+              "earAngles": [
+                0.025825257836730422,
+                0.037387019928322524
+              ],
+              "tail": [
+                [
+                  0,
+                  0.5322955183252455,
+                  -0.47
+                ],
+                [
+                  0.00027109036879435566,
+                  0.5822955183252454,
+                  -0.78
+                ],
+                [
+                  0.0006196351286728131,
+                  0.6172955183252454,
+                  -1.07
+                ],
+                [
+                  0.0007745439108410163,
+                  0.6522955183252455,
+                  -1.34
+                ]
+              ]
+            },
+            "parts": [
+              {
+                "kind": "round",
+                "p": [
+                  0.05019426493674285,
+                  1.8222955183252454,
+                  24.96330989505033
+                ],
+                "s": [
+                  0.6,
+                  0.46,
+                  1.02
+                ],
+                "c": 13345393,
+                "m": [
+                  0.5960753110998673,
+                  0,
+                  0.06851440357469633,
+                  0,
+                  0,
+                  0.46,
+                  0,
+                  0,
+                  -0.11647448607698377,
+                  0,
+                  1.0133280288697746,
+                  0,
+                  0.05019426493674285,
+                  1.8222955183252454,
+                  24.96330989505033,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "body",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.08388051336096855,
+                  1.8122955183252456,
+                  24.67023953375956
+                ],
+                "s": [
+                  0.55,
+                  0.48,
+                  0.5
+                ],
+                "c": 13345393,
+                "m": [
+                  0.5464023685082118,
+                  0,
+                  0.06280486994347165,
+                  0,
+                  0,
+                  0.48,
+                  0,
+                  0,
+                  -0.05709533631224695,
+                  0,
+                  0.4967294259165561,
+                  0,
+                  0.08388051336096855,
+                  1.8122955183252456,
+                  24.67023953375956,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "haunch",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.011940389607537398,
+                  1.8572955183252455,
+                  25.29611861041442
+                ],
+                "s": [
+                  0.45,
+                  0.4,
+                  0.39
+                ],
+                "c": 15655098,
+                "m": [
+                  0.4470564833249005,
+                  0,
+                  0.051385802681022254,
+                  0,
+                  0,
+                  0.4,
+                  0,
+                  0,
+                  -0.04453436232355262,
+                  0,
+                  0.38744895221491377,
+                  0,
+                  0.011940389607537398,
+                  1.8572955183252455,
+                  25.29611861041442,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "cream-bib",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.0022341824344554173,
+                  1.9797955183252456,
+                  25.380562612820235
+                ],
+                "s": [
+                  0.33,
+                  0.33604315199093104,
+                  0.33
+                ],
+                "c": 13345393,
+                "m": [
+                  0.32784142110492703,
+                  0,
+                  0.037682921966082986,
+                  0,
+                  -0.02626385470363359,
+                  0.24499999999999997,
+                  0.22849553592161576,
+                  0,
+                  -0.027473602205527126,
+                  -0.2258638497773891,
+                  0.23902033918808968,
+                  0,
+                  0.0022341824344554173,
+                  1.9797955183252456,
+                  25.380562612820235,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "neck",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  0.015366109786272213,
+                  1.8572955183252455,
+                  25.266314844859426
+                ],
+                "anchorTo": [
+                  -0.010897744917361382,
+                  2.1022955183252456,
+                  25.494810380781043
+                ],
+                "capOverlap": 0
+              },
+              {
+                "kind": "round",
+                "p": [
+                  -0.012964862717812643,
+                  2.102427377531702,
+                  25.509666680358958
+                ],
+                "s": [
+                  0.4,
+                  0.36,
+                  0.46
+                ],
+                "c": 14729363,
+                "m": [
+                  0.39618338932431457,
+                  8.374452313258973e-05,
+                  0.0551245409083238,
+                  0,
+                  0.000361472669806761,
+                  0.3599860823609211,
+                  -0.0031448122273188693,
+                  0,
+                  -0.0633916125471721,
+                  0.004043682331330559,
+                  0.4555931870560319,
+                  0,
+                  -0.012964862717812643,
+                  2.102427377531702,
+                  25.509666680358958,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "head",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  -0.14692503269245838,
+                  2.0286808394851885,
+                  25.638084439981675
+                ],
+                "s": [
+                  0.19,
+                  0.16,
+                  0.28
+                ],
+                "c": 15655098,
+                "m": [
+                  0.1881871099290494,
+                  3.977864848798012e-05,
+                  0.026184156931453803,
+                  0,
+                  0.000160654519914116,
+                  0.1599938143826316,
+                  -0.0013976943232528309,
+                  0,
+                  -0.03858619894175693,
+                  0.002461371853853384,
+                  0.27731759212106294,
+                  0,
+                  -0.14692503269245838,
+                  2.0286808394851885,
+                  25.638084439981675,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "left-cheek",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  -0.18279133821772311,
+                  2.128942782939159,
+                  25.663503936884666
+                ],
+                "s": [
+                  0.048,
+                  0.052,
+                  0.035
+                ],
+                "c": 3423547,
+                "m": [
+                  0.04754200671891775,
+                  1.0049342775910767e-05,
+                  0.0066149449089988556,
+                  0,
+                  5.22127189720877e-05,
+                  0.05199798967435527,
+                  -0.00045425065505717,
+                  0,
+                  -0.0048232748677196164,
+                  0.000307671481731673,
+                  0.03466469901513287,
+                  0,
+                  -0.18279133821772311,
+                  2.128942782939159,
+                  25.663503936884666,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "left-eye",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "octa",
+                "p": [
+                  -0.14534284174916756,
+                  2.314685536437844,
+                  25.408589755962986
+                ],
+                "s": [
+                  0.17,
+                  0.32,
+                  0.16
+                ],
+                "c": 13345393,
+                "m": [
+                  0.16726220874898165,
+                  -0.019331454795196556,
+                  0.02344458103514237,
+                  0,
+                  0.03642795514545458,
+                  0.31791186723392484,
+                  0.002246943648624825,
+                  0,
+                  -0.02204925653814682,
+                  0.0014064982022019335,
+                  0.15846719549775024,
+                  0,
+                  -0.14534284174916756,
+                  2.314685536437844,
+                  25.408589755962986,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "left-ear",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  -0.1711478424588576,
+                  2.388070218814108,
+                  25.433396492871665
+                ],
+                "s": [
+                  0.045,
+                  0.11,
+                  0.01
+                ],
+                "c": 11041131,
+                "m": [
+                  -0.02799107754851389,
+                  0.0034551935100099245,
+                  -0.03506509967876131,
+                  0,
+                  0.035040378076946266,
+                  0.10273071037788643,
+                  -0.01784861477760886,
+                  0,
+                  0.007152711477834923,
+                  -0.0034915076978246544,
+                  -0.0060537668034769685,
+                  0,
+                  -0.1711478424588576,
+                  2.388070218814108,
+                  25.433396492871665,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "left-ear-inner",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.0808804161690225,
+                  2.0287289925859895,
+                  25.669781051003962
+                ],
+                "s": [
+                  0.19,
+                  0.16,
+                  0.28
+                ],
+                "c": 15655098,
+                "m": [
+                  0.1881871099290494,
+                  3.977864848798012e-05,
+                  0.026184156931453803,
+                  0,
+                  0.000160654519914116,
+                  0.1599938143826316,
+                  -0.0013976943232528309,
+                  0,
+                  -0.03858619894175693,
+                  0.002461371853853384,
+                  0.27731759212106294,
+                  0,
+                  0.0808804161690225,
+                  2.0287289925859895,
+                  25.669781051003962,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "right-cheek",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.10840345293564801,
+                  2.1290043351636614,
+                  25.70402047445228
+                ],
+                "s": [
+                  0.048,
+                  0.052,
+                  0.035
+                ],
+                "c": 3423547,
+                "m": [
+                  0.04754200671891775,
+                  1.0049342775910767e-05,
+                  0.0066149449089988556,
+                  0,
+                  5.22127189720877e-05,
+                  0.05199798967435527,
+                  -0.00045425065505717,
+                  0,
+                  -0.0048232748677196164,
+                  0.000307671481731673,
+                  0.03466469901513287,
+                  0,
+                  0.10840345293564801,
+                  2.1290043351636614,
+                  25.70402047445228,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "right-eye",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "octa",
+                "p": [
+                  0.14189011551096042,
+                  2.314746251217115,
+                  25.44855504812152
+                ],
+                "s": [
+                  0.17,
+                  0.32,
+                  0.16
+                ],
+                "c": 13345393,
+                "m": [
+                  0.16576589704027006,
+                  0.03003176741065301,
+                  0.022798252666093324,
+                  0,
+                  -0.05561157948257305,
+                  0.31495460393878344,
+                  -0.010533265648293835,
+                  0,
+                  -0.02204925653814682,
+                  0.0014064982022019335,
+                  0.15846719549775024,
+                  0,
+                  0.14189011551096042,
+                  2.314746251217115,
+                  25.44855504812152,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "right-ear",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.1552937969273584,
+                  2.3893907226282862,
+                  25.47880613202579
+                ],
+                "s": [
+                  0.045,
+                  0.11,
+                  0.01
+                ],
+                "c": 11041131,
+                "m": [
+                  0.036203027681488455,
+                  0.0055177731604650684,
+                  -0.02615138554729046,
+                  0,
+                  -0.03525719310704894,
+                  0.10047202417483048,
+                  -0.027609829634109375,
+                  0,
+                  0.005000278513116317,
+                  0.003881987629863738,
+                  0.007741278113648429,
+                  0,
+                  0.1552937969273584,
+                  2.3893907226282862,
+                  25.47880613202579,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "right-ear-inner",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  -0.05713366214656872,
+                  2.0352430801437045,
+                  25.82721256262088
+                ],
+                "s": [
+                  0.205,
+                  0.16,
+                  0.345
+                ],
+                "c": 15655098,
+                "m": [
+                  0.2030439870287112,
+                  4.2919068105452234e-05,
+                  0.02825132721551594,
+                  0,
+                  0.000160654519914116,
+                  0.1599938143826316,
+                  -0.0013976943232528309,
+                  0,
+                  -0.047543709410379074,
+                  0.0030327617484979187,
+                  0.3416948902920239,
+                  0,
+                  -0.05713366214656872,
+                  2.0352430801437045,
+                  25.82721256262088,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "muzzle",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  -0.08012849593401966,
+                  2.05571037810019,
+                  25.99244672172077
+                ],
+                "s": [
+                  0.098,
+                  0.083,
+                  0.07
+                ],
+                "c": 3423547,
+                "m": [
+                  0.09706493038445707,
+                  2.0517408167484485e-05,
+                  0.01350551252253933,
+                  0,
+                  8.333953220544768e-05,
+                  0.08299679121099016,
+                  -0.000725053930187406,
+                  0,
+                  -0.009646549735439233,
+                  0.000615342963463346,
+                  0.06932939803026573,
+                  0,
+                  -0.08012849593401966,
+                  2.05571037810019,
+                  25.99244672172077,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "nose",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "box",
+                "p": [
+                  -0.07376097271763052,
+                  1.9463014332051256,
+                  25.946849162301024
+                ],
+                "s": [
+                  0.28,
+                  0.25,
+                  0.018
+                ],
+                "c": 9353149,
+                "m": [
+                  0.2773283725270202,
+                  5.8621166192812814e-05,
+                  0.03858717863582666,
+                  0,
+                  0.00025102268736580625,
+                  0.24999033497286188,
+                  -0.002183897380082548,
+                  0,
+                  -0.002480541360541517,
+                  0.0001582310477477175,
+                  0.0178275594934969,
+                  0,
+                  -0.07376097271763052,
+                  1.9463014332051256,
+                  25.946849162301024,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "outing-cloth-main",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "box",
+                "p": [
+                  -0.07364851455369062,
+                  2.0582971032729676,
+                  25.945870776274745
+                ],
+                "s": [
+                  0.28,
+                  0.045,
+                  0.03
+                ],
+                "c": 12703184,
+                "m": [
+                  0.2773283725270202,
+                  5.8621166192812814e-05,
+                  0.03858717863582666,
+                  0,
+                  4.5184083725845125e-05,
+                  0.04499826029511514,
+                  -0.00039310152841485867,
+                  0,
+                  -0.004134235600902528,
+                  0.0002637184129128625,
+                  0.029712599155828166,
+                  0,
+                  -0.07364851455369062,
+                  2.0582971032729676,
+                  25.945870776274745,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "outing-cloth-fold",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "box",
+                "p": [
+                  -0.13638740034483432,
+                  1.6875104835931856,
+                  24.703754606031943
+                ],
+                "s": [
+                  0.112,
+                  0.24,
+                  0.13
+                ],
+                "c": 13345393,
+                "m": [
+                  0.11126739140530857,
+                  0,
+                  0.012789355333943316,
+                  0,
+                  -0.011064707670877591,
+                  -0.21957006946411994,
+                  0.09626295673663653,
+                  0,
+                  0.013581129206837132,
+                  -0.052485751979358966,
+                  -0.11815582409948487,
+                  0,
+                  -0.13638740034483432,
+                  1.6875104835931856,
+                  24.703754606031943,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "leftHind-upper",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  -0.1308550465093955,
+                  1.7972955183252455,
+                  24.655623127663624
+                ],
+                "anchorTo": [
+                  -0.1419197541802731,
+                  1.5777254488611256,
+                  24.75188608440026
+                ],
+                "capOverlap": 0
+              },
+              {
+                "kind": "box",
+                "p": [
+                  -0.13557526157573613,
+                  1.4713627244305627,
+                  24.69668899874079
+                ],
+                "s": [
+                  0.085,
+                  0.24,
+                  0.1
+                ],
+                "c": 6183247,
+                "m": [
+                  0.08444400240581454,
+                  0,
+                  0.009706207173081982,
+                  0,
+                  0.012688985209073942,
+                  -0.2127254488611255,
+                  -0.110394171318945,
+                  0,
+                  0.010121359204083042,
+                  0.04630042935147225,
+                  -0.08805582507552383,
+                  0,
+                  -0.13557526157573613,
+                  1.4713627244305627,
+                  24.69668899874079,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "leftHind-stocking",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  -0.1419197541802731,
+                  1.5777254488611256,
+                  24.75188608440026
+                ],
+                "anchorTo": [
+                  -0.12923076897119917,
+                  1.365,
+                  24.641491913081317
+                ],
+                "capOverlap": 0
+              },
+              {
+                "kind": "round",
+                "p": [
+                  -0.12923076897119917,
+                  1.365,
+                  24.641491913081317
+                ],
+                "s": [
+                  0.145,
+                  0.105,
+                  0.22
+                ],
+                "c": 6183247,
+                "m": [
+                  0.14405153351580127,
+                  0,
+                  0.016557647530551615,
+                  0,
+                  0,
+                  0.105,
+                  0,
+                  0,
+                  -0.025121947977388658,
+                  0,
+                  0.2185609474032847,
+                  0,
+                  -0.12923076897119917,
+                  1.365,
+                  24.641491913081317,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "leftHind-paw",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "box",
+                "p": [
+                  -0.1948656757149539,
+                  1.693051629830911,
+                  25.212515601751992
+                ],
+                "s": [
+                  0.112,
+                  0.24000000000000002,
+                  0.13
+                ],
+                "c": 13345393,
+                "m": [
+                  0.11126739140530857,
+                  0,
+                  0.012789355333943316,
+                  0,
+                  0.013575175643255678,
+                  -0.2084877769886689,
+                  -0.11810402809632621,
+                  0,
+                  0.01289565305617419,
+                  0.06439422740136798,
+                  -0.1121921815887172,
+                  0,
+                  -0.1948656757149539,
+                  1.693051629830911,
+                  25.212515601751992,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "leftFront-upper",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  -0.20165326353658172,
+                  1.7972955183252455,
+                  25.271567615800155
+                ],
+                "anchorTo": [
+                  -0.18807808789332606,
+                  1.5888077413365767,
+                  25.15346358770383
+                ],
+                "capOverlap": 0
+              },
+              {
+                "kind": "box",
+                "p": [
+                  -0.19567781448405205,
+                  1.4889543272528465,
+                  25.219581209043145
+                ],
+                "s": [
+                  0.085,
+                  0.23999999999999994,
+                  0.1
+                ],
+                "c": 6183247,
+                "m": [
+                  0.08444400240581454,
+                  0,
+                  0.009706207173081982,
+                  0,
+                  -0.015199453181452029,
+                  -0.19970682816746005,
+                  0.13223524267863468,
+                  0,
+                  0.009501940431727706,
+                  -0.05546079506070997,
+                  -0.08266688175603232,
+                  0,
+                  -0.19567781448405205,
+                  1.4889543272528465,
+                  25.219581209043145,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "leftFront-stocking",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  -0.18807808789332606,
+                  1.5888077413365767,
+                  25.15346358770383
+                ],
+                "anchorTo": [
+                  -0.20327754107477808,
+                  1.3891009131691165,
+                  25.28569883038246
+                ],
+                "capOverlap": 0
+              },
+              {
+                "kind": "round",
+                "p": [
+                  -0.20327754107477808,
+                  1.3891009131691165,
+                  25.28569883038246
+                ],
+                "s": [
+                  0.145,
+                  0.105,
+                  0.22
+                ],
+                "c": 6183247,
+                "m": [
+                  0.14405153351580127,
+                  0,
+                  0.016557647530551615,
+                  0,
+                  0,
+                  0.105,
+                  0,
+                  0,
+                  -0.025121947977388658,
+                  0,
+                  0.2185609474032847,
+                  0,
+                  -0.20327754107477808,
+                  1.3891009131691165,
+                  25.28569883038246,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "leftFront-paw",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "box",
+                "p": [
+                  0.28873253318811676,
+                  1.6974421042415155,
+                  24.770842738231476
+                ],
+                "s": [
+                  0.112,
+                  0.24000000000000005,
+                  0.13
+                ],
+                "c": 13345393,
+                "m": [
+                  0.11126739140530857,
+                  0,
+                  0.012789355333943316,
+                  0,
+                  -0.015199453181452036,
+                  -0.1997068281674601,
+                  0.13223524267863473,
+                  0,
+                  0.012352522561246016,
+                  -0.07209903357892296,
+                  -0.10746694628284201,
+                  0,
+                  0.28873253318811676,
+                  1.6974421042415155,
+                  24.770842738231476,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "rightHind-upper",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  0.29633225977884275,
+                  1.7972955183252455,
+                  24.704725116892156
+                ],
+                "anchorTo": [
+                  0.2811328065973907,
+                  1.5975886901577854,
+                  24.836960359570792
+                ],
+                "capOverlap": 0
+              },
+              {
+                "kind": "box",
+                "p": [
+                  0.28792039441901857,
+                  1.493344801663451,
+                  24.77790834552263
+                ],
+                "s": [
+                  0.085,
+                  0.24,
+                  0.1
+                ],
+                "c": 6183247,
+                "m": [
+                  0.08444400240581454,
+                  0,
+                  0.009706207173081982,
+                  0,
+                  0.013575175643255685,
+                  -0.20848777698866888,
+                  -0.11810402809632628,
+                  0,
+                  0.009919733120133993,
+                  0.0495340210779754,
+                  -0.08630167814516708,
+                  0,
+                  0.28792039441901857,
+                  1.493344801663451,
+                  24.77790834552263,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "rightHind-stocking",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  0.2811328065973907,
+                  1.5975886901577854,
+                  24.836960359570792
+                ],
+                "anchorTo": [
+                  0.2947079822406464,
+                  1.3891009131691165,
+                  24.718856331474466
+                ],
+                "capOverlap": 0
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.2947079822406464,
+                  1.3891009131691165,
+                  24.718856331474466
+                ],
+                "s": [
+                  0.145,
+                  0.105,
+                  0.22
+                ],
+                "c": 6183247,
+                "m": [
+                  0.14405153351580127,
+                  0,
+                  0.016557647530551615,
+                  0,
+                  0,
+                  0.105,
+                  0,
+                  0,
+                  -0.025121947977388658,
+                  0,
+                  0.2185609474032847,
+                  0,
+                  0.2947079822406464,
+                  1.3891009131691165,
+                  24.718856331474466,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "rightHind-paw",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "box",
+                "p": [
+                  0.23187853535619352,
+                  1.6909327938946828,
+                  25.265472519369215
+                ],
+                "s": [
+                  0.112,
+                  0.24000000000000005,
+                  0.13
+                ],
+                "c": 13345393,
+                "m": [
+                  0.11126739140530857,
+                  0,
+                  0.012789355333943316,
+                  0,
+                  0.012688985209073949,
+                  -0.21272544886112557,
+                  -0.11039417131894505,
+                  0,
+                  0.013157766965307956,
+                  0.06019055815691394,
+                  -0.11447257259818099,
+                  0,
+                  0.23187853535619352,
+                  1.6909327938946828,
+                  25.265472519369215,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "rightFront-upper",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  0.22553404275165653,
+                  1.7972955183252455,
+                  25.320669605028687
+                ],
+                "anchorTo": [
+                  0.23822302796073047,
+                  1.58457006946412,
+                  25.210275433709743
+                ],
+                "capOverlap": 0
+              },
+              {
+                "kind": "box",
+                "p": [
+                  0.23269067412529168,
+                  1.47478503473206,
+                  25.25840691207806
+                ],
+                "s": [
+                  0.085,
+                  0.23999999999999996,
+                  0.1
+                ],
+                "c": 6183247,
+                "m": [
+                  0.08444400240581454,
+                  0,
+                  0.009706207173081982,
+                  0,
+                  -0.011064707670877597,
+                  -0.21957006946411986,
+                  0.09626295673663658,
+                  0,
+                  0.010447022466797792,
+                  -0.040373655368737695,
+                  -0.0908890954611422,
+                  0,
+                  0.23269067412529168,
+                  1.47478503473206,
+                  25.25840691207806,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "rightFront-stocking",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  0.23822302796073047,
+                  1.58457006946412,
+                  25.210275433709743
+                ],
+                "anchorTo": [
+                  0.2271583202898529,
+                  1.365,
+                  25.306538390446377
+                ],
+                "capOverlap": 0
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.2271583202898529,
+                  1.365,
+                  25.306538390446377
+                ],
+                "s": [
+                  0.145,
+                  0.105,
+                  0.22
+                ],
+                "c": 6183247,
+                "m": [
+                  0.14405153351580127,
+                  0,
+                  0.016557647530551615,
+                  0,
+                  0,
+                  0.105,
+                  0,
+                  0,
+                  -0.025121947977388658,
+                  0,
+                  0.2185609474032847,
+                  0,
+                  0.2271583202898529,
+                  1.365,
+                  25.306538390446377,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "rightFront-paw",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.11655951362221204,
+                  1.8672955183252455,
+                  24.3871192389829
+                ],
+                "s": [
+                  0.29,
+                  0.49400648638203015,
+                  0.29
+                ],
+                "c": 14994329,
+                "m": [
+                  0.28807473509505876,
+                  -3.986621584822068e-05,
+                  0.03336083647926884,
+                  0,
+                  0.05611487147375713,
+                  0.07866182830710791,
+                  -0.4844644946271973,
+                  0,
+                  -0.005273029194976367,
+                  0.2862999250066676,
+                  0.0458753539962951,
+                  0,
+                  0.11655951362221204,
+                  1.8672955183252455,
+                  24.3871192389829,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "tail-0",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  0.09872530080215275,
+                  1.8422955183252454,
+                  24.541089883021254
+                ],
+                "anchorTo": [
+                  0.13439372644227132,
+                  1.8922955183252455,
+                  24.233148594944545
+                ],
+                "capOverlap": 0.18
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.1511245064113036,
+                  1.9097955183252455,
+                  24.089116961709028
+                ],
+                "s": [
+                  0.29,
+                  0.47210464132473084,
+                  0.29
+                ],
+                "c": 14994329,
+                "m": [
+                  0.28806363281396824,
+                  -4.146178487321316e-05,
+                  0.033456564840695535,
+                  0,
+                  0.054081159686758,
+                  0.05656761348066477,
+                  -0.46557290044888805,
+                  0,
+                  -0.003967879958988925,
+                  0.28791072777289056,
+                  0.03452055564320418,
+                  0,
+                  0.1511245064113036,
+                  1.9097955183252455,
+                  24.089116961709028,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "tail-1",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  0.13439372644227132,
+                  1.8922955183252455,
+                  24.233148594944545
+                ],
+                "anchorTo": [
+                  0.16785528638033587,
+                  1.9272955183252454,
+                  23.945085328473514
+                ],
+                "capOverlap": 0.18
+              },
+              {
+                "kind": "round",
+                "p": [
+                  0.18334797493507837,
+                  1.9447955183252454,
+                  23.810977228045058
+                ],
+                "s": [
+                  0.245,
+                  0.4522591118708992,
+                  0.245
+                ],
+                "c": 15786683,
+                "m": [
+                  0.24338159331413012,
+                  -1.7920304783514278e-05,
+                  0.02811404835199007,
+                  0,
+                  0.05147089122646344,
+                  0.058139721409902236,
+                  -0.44554329129837317,
+                  0,
+                  -0.0035965193947915864,
+                  0.24296711413223607,
+                  0.031289718734687284,
+                  0,
+                  0.18334797493507837,
+                  1.9447955183252454,
+                  23.810977228045058,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "tail-2",
+                "appearanceOnly": true,
+                "anchorFrom": [
+                  0.16785528638033587,
+                  1.9272955183252454,
+                  23.945085328473514
+                ],
+                "anchorTo": [
+                  0.19884066348982088,
+                  1.9622955183252455,
+                  23.676869127616605
+                ],
+                "capOverlap": 0.18
+              },
+              {
+                "kind": "box",
+                "p": [
+                  -0.011188294833551035,
+                  1.8420155941527407,
+                  25.497338165051893
+                ],
+                "s": [
+                  0.37,
+                  0.075,
+                  0.055
+                ],
+                "c": 6590089,
+                "m": [
+                  0.3675797751782515,
+                  0,
+                  0.04225054887106274,
+                  0,
+                  -0.005861714756281297,
+                  0.054680477465869896,
+                  0.05099691837964807,
+                  0,
+                  -0.004578933700921188,
+                  -0.03764397496289818,
+                  0.03983672319801495,
+                  0,
+                  -0.011188294833551035,
+                  1.8420155941527407,
+                  25.497338165051893,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "bond-collar-front",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "box",
+                "p": [
+                  -0.17005799270133087,
+                  1.9652140576676804,
+                  25.346980066876377
+                ],
+                "s": [
+                  0.055,
+                  0.075,
+                  0.36
+                ],
+                "c": 6590089,
+                "m": [
+                  0.05464023685082117,
+                  0,
+                  0.0062804869943471646,
+                  0,
+                  -0.005861714756281297,
+                  0.054680477465869896,
+                  0.05099691837964807,
+                  0,
+                  -0.029971202406029587,
+                  -0.246396927029879,
+                  0.26074946093246143,
+                  0,
+                  -0.17005799270133087,
+                  1.9652140576676804,
+                  25.346980066876377,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "bond-collar-left",
+                "appearanceOnly": true
+              },
+              {
+                "kind": "box",
+                "p": [
+                  0.1776526054402584,
+                  1.9652140576676804,
+                  25.38694680229495
+                ],
+                "s": [
+                  0.055,
+                  0.075,
+                  0.36
+                ],
+                "c": 6590089,
+                "m": [
+                  0.05464023685082117,
+                  0,
+                  0.0062804869943471646,
+                  0,
+                  -0.005861714756281297,
+                  0.054680477465869896,
+                  0.05099691837964807,
+                  0,
+                  -0.029971202406029587,
+                  -0.246396927029879,
+                  0.26074946093246143,
+                  0,
+                  0.1776526054402584,
+                  1.9652140576676804,
+                  25.38694680229495,
+                  1
+                ],
+                "cameraSolid": false,
+                "cutaway": false,
+                "rough": 0.9,
+                "companionPart": "bond-collar-right",
+                "appearanceOnly": true
+              }
+            ]
+          },
+          "visibility": "Actual screenshot retained; submitted geometry is not human legibility approval"
+        }
+      ],
+      "nativeWrites": 7,
+      "ownedDriverStarts": 3,
+      "ownedDriverStops": 3,
+      "admissions": [
+        {
+          "freeHostKiB": 9185288,
+          "minimumFreeKiB": 6291456
+        },
+        {
+          "freeHostKiB": 9185472,
+          "minimumFreeKiB": 6291456
+        },
+        {
+          "freeHostKiB": 8579732,
+          "minimumFreeKiB": 6291456
+        }
+      ],
+      "browser": "143.0.7499.4",
+      "acceptedTickSegments": 519,
+      "completionControls": [
+        {
+          "kind": "take",
+          "control": "keyboard E"
+        }
+      ],
+      "failureEvidence": [
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\BRIAR_NATIVE01\\early-rescued-blade\\FAILURE_WORLD.json",
+          "sha256": "3104d20f31b940f567254897c61aa43cc8e76ce444fcdafdc9e0eed20d1756e6",
+          "beforeClose": true
+        },
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\BRIAR_NATIVE01\\early-rescued-blade\\FAILURE_DIAGNOSTICS.json",
+          "sha256": "43e62eb4ba8fb15934b610ebe7d26adf4f130e9529f709579afa7821819eb5ca",
+          "beforeClose": true
+        },
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\BRIAR_NATIVE01\\early-rescued-blade\\FAILURE_NATIVE_BYTES.json",
+          "sha256": "5338928fa00069cd8767db0010ad7734025dcabe1d869a10d22ccb1b72be8ea6",
+          "beforeClose": true
+        },
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\BRIAR_NATIVE01\\early-rescued-blade\\FAILURE.png",
+          "sha256": "8aa2cdc10c2aa7e5eb969ff4102a7ad2eeb894884e06858ee2ba7a20c013f007",
+          "beforeClose": true
+        }
+      ],
+      "captureErrors": [],
+      "closed": true
+    }
+  },
+  "browserErrors": [],
+  "externalRequests": [],
+  "errors": [
+    "Traceback (most recent call last):\n  File \"D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\qualify_briar01.py\", line 61, in main\n    try:h.run(accepted['rows'][label])\n        ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game\\tools\\briar_outing_browser.py\", line 516, in run\n    self.samples('REST', 'resting')\n    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\n  File \"D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game\\tools\\briar_outing_browser.py\", line 427, in samples\n    self.check('actual submitted '+pose+' pose', frame['pose'][pose] is True)\n    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game\\tools\\briar_outing_browser.py\", line 297, in check\n    raise AssertionError(name+' '+repr(detail))\nAssertionError: actual submitted resting pose None\n"
+  ],
+  "execution": "accelerated-native-UI-whole-browser-restarts-with-owned-drivers",
+  "normalRAF": false,
+  "humanAcceptance": false,
+  "performanceCertified": false,
+  "method": "Current Native.run checks with a separately owned driver per whole launch.\nNo game rules, fixtures, checks, timeouts or memory threshold are overridden.\nThe retained failed shared-driver attempt remains failed.\n",
+  "nativeLabels": [
+    "early-rescued-blade"
+  ],
+  "cpuOnlyLabels": [
+    "early-rescued-bow",
+    "earned-chapter-I-blade",
+    "earned-chapter-IV-blade-to-bow",
+    "earned-both-sunward-caches"
+  ],
+  "origin": "http://127.0.0.1:64358",
+  "serverClosed": true
+}

@@ -1,0 +1,27 @@
+{
+  "head": "1f233c9c71c30161a8db105fa85d88187aa66a90",
+  "observedUtc": "2026-10-13T16:58:22.763383+00:00",
+  "command": [
+    "D:/07-GAMES/Firstlight/cache/ms-playwright-1.57/ffmpeg-1011/ffmpeg-win64.exe",
+    "-nostdin",
+    "-threads",
+    "1",
+    "-filter_threads",
+    "1",
+    "-i",
+    "D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\NATIVE05\\video\\9d9368fb3a4dc9e889fa6cebe69d4809.webm",
+    "-map",
+    "0:v:0",
+    "-an",
+    "-f",
+    "null",
+    "-"
+  ],
+  "exitCode": 4294967274,
+  "path": "D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\NATIVE05\\video\\9d9368fb3a4dc9e889fa6cebe69d4809.webm",
+  "bytes": 4237185,
+  "sha256": "dfb5e282148fe1f7827eb82835ab612d5d0401ce2754879364e2076eba4254f3",
+  "durationSeconds": 46.36,
+  "decodedFrames": null,
+  "note": "Encoded movie duration and full media decode; not measured render FPS, RTX qualification or human play."
+}

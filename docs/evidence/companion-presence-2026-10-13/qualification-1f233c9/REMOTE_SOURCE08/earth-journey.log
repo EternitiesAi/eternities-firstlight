@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "variant": "command-earned-returning-veteran",
+  "source": "evidence10/pursuit/veteran/07_PRACTICE_PERSISTED.json",
+  "sourceSha256": "6db008e4c8648ff1064a3158fe705eaf9b9ab8ac330df8fb908d8ddef3d02068",
+  "checks": {
+    "staleIdentityRefused": true,
+    "writeRefusalAtomic": true,
+    "entryNoCanonicalMutation": true,
+    "orchardRouteWalked": true,
+    "ridgeRouteWalked": true,
+    "bellweatherBoundaryReachable": true,
+    "returnPreserved": true,
+    "sceneFailureRollback": true,
+    "reopenSourceSide": true
+  },
+  "acceleratedTicks": true,
+  "personalSaves": false
+}

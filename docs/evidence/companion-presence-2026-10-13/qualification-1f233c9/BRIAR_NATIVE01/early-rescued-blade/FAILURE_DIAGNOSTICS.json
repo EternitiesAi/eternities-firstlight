@@ -1,0 +1,263 @@
+{
+  "briar": {
+    "ok": true,
+    "error": null,
+    "savingBlocked": false,
+    "view": {
+      "phase": "settled",
+      "uncertain": false,
+      "carrying": false,
+      "resting": false,
+      "readyToRemember": false,
+      "yielding": true,
+      "waiting": false,
+      "distanceTravelled": 17.120000000000008,
+      "status": "Giving you room \u00b7 leave a little space beside the doorstep",
+      "object": "briar-wayward-cloth-v1"
+    },
+    "moments": [
+      "briar-cloth-home-v1"
+    ],
+    "nearHome": false
+  },
+  "fishing": null,
+  "version": "10.0.0",
+  "mode": "webgl2",
+  "scene": "valley",
+  "world": null,
+  "wildSigns": {
+    "record": {
+      "version": 1,
+      "accepted": false,
+      "evidence": [],
+      "observed": false,
+      "resolution": null,
+      "cleared": false,
+      "claimed": false
+    },
+    "view": null,
+    "visibility": null,
+    "prepared": true,
+    "renderer": true
+  },
+  "roadkeeper": null,
+  "consignment": null,
+  "atlantis": null,
+  "heaven": null,
+  "earthHomecoming": {
+    "record": {
+      "version": 1,
+      "accepted": false,
+      "steps": [],
+      "choice": null,
+      "claimed": false
+    },
+    "runtime": {
+      "room": null
+    },
+    "missing": [
+      "first-envoy-gift",
+      "sunward-return",
+      "bellweather-thanks",
+      "fenna-paid",
+      "living-road-paid",
+      "coastward-work-paid",
+      "hell-local-paid",
+      "heaven-local-paid",
+      "atlantis-local-paid",
+      "cosmos-comparator-paid",
+      "cosmos-confluence-paid"
+    ],
+    "ready": false
+  },
+  "earth": null,
+  "cosmos": null,
+  "networkDependencies": 0,
+  "liveAI": false,
+  "multiplayer": false,
+  "adventure": {
+    "tactics": {
+      "scene": null,
+      "target": null,
+      "auto": false,
+      "nextAttack": 0,
+      "guardUntil": 0,
+      "shield": 0,
+      "shieldUntil": 0,
+      "cooldowns": {
+        "guard": 0,
+        "insight": 0,
+        "spirit": 0
+      },
+      "hits": [],
+      "serial": 0,
+      "windup": null
+    },
+    "beacon": {
+      "phase": "idle",
+      "time": 0,
+      "wave": 0,
+      "ward": 100,
+      "actors": [],
+      "serial": 0,
+      "notice": "",
+      "repairAt": 0,
+      "maraAt": 0,
+      "ilanAt": 0,
+      "playerRepairAt": 0,
+      "defeats": 0
+    },
+    "crossing": {
+      "room": null,
+      "tones": [],
+      "seek": false,
+      "rangAt": -10,
+      "tone": null,
+      "toneSerial": 0
+    },
+    "player": {
+      "x": -11.000826808921133,
+      "z": -1.0454542096622819,
+      "yaw": 3.140101688690447
+    },
+    "paused": false,
+    "intent": null,
+    "stats": {
+      "level": 2,
+      "attack": 18,
+      "defense": 1,
+      "maxHP": 110
+    },
+    "weapon": {
+      "style": "blade",
+      "reach": 2.65,
+      "cooldown": 0.52,
+      "stamina": 0,
+      "primary": "Sunstrike",
+      "special": "Dawn sweep"
+    },
+    "arrows": [],
+    "range": {
+      "active": false,
+      "start": 0,
+      "hits": {},
+      "shots": 0,
+      "message": "A calm place to learn a different rhythm."
+    },
+    "enemies": [],
+    "companion": {
+      "room": null,
+      "x": -12.176585664552892,
+      "z": -0.33525934111435285,
+      "yaw": -1.3773425255506262,
+      "path": [],
+      "nextPath": 0,
+      "nextHit": 0,
+      "seek": null,
+      "status": "Giving you room \u00b7 leave a little space beside the doorstep"
+    }
+  },
+  "sandbox": {
+    "bridge": true,
+    "objects": 0,
+    "elapsed": 119.64999999999534,
+    "autoGather": null,
+    "buildMode": null
+  },
+  "saveState": "saved",
+  "characters": {
+    "mode": "managed",
+    "active": "character-2",
+    "revision": 7,
+    "count": 2,
+    "writer": true,
+    "error": null
+  },
+  "fps": 0,
+  "errors": [],
+  "camera": {
+    "yaw": 2.7173982456860273,
+    "elevation": 0.28,
+    "half": 17,
+    "distance": 7.5,
+    "actualDistance": 0.6530914740451826,
+    "fov": 60,
+    "center": [
+      -11.000826808921154,
+      2.799999986293018,
+      -1.0454542096477606
+    ],
+    "overview": false,
+    "preset": "adventure",
+    "tour": false,
+    "baseHalf": 17,
+    "zoom": 1,
+    "ready": true,
+    "projection": "perspective",
+    "eye": [
+      -10.742491475037388,
+      2.9804855041744673,
+      -1.6174824489618154
+    ],
+    "target": [
+      -11.000826808921154,
+      2.799999986293018,
+      -1.0454542096477606
+    ]
+  },
+  "metrics": {
+    "drawCalls": 15,
+    "texturedDrawCalls": 0,
+    "texturedInstances": 0,
+    "surfaceMaterials": {
+      "version": 1,
+      "id": "earth-weathered-timber-v1",
+      "status": "ready",
+      "ready": true,
+      "error": null,
+      "width": 512,
+      "height": 512,
+      "colorFormat": "SRGB8_ALPHA8",
+      "roughnessFormat": "R8",
+      "textureBytes": 1310720,
+      "mipmapBytes": 436905,
+      "totalTextureBytes": 1747625,
+      "decodedImageBytes": 2097152,
+      "decodeWallMs": 65.30000001192093,
+      "uploadCpuMs": 69.69999998807907,
+      "timingScope": "CPU wall-clock; decode includes asynchronous wait; upload excludes GPU completion",
+      "memoryScope": "Estimated texture storage; excludes driver overhead; decodedImageBytes is peak RGBA decoder storage, released after upload",
+      "enabled": true
+    },
+    "instances": 6996,
+    "triangles": 177420
+  },
+  "reflection": null,
+  "cutaway": {
+    "enabled": true,
+    "focus": [
+      -11.000826808921133,
+      2.18,
+      -1.0454542096622819
+    ]
+  },
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "music": {
+    "playing": false,
+    "scoreRevision": 0,
+    "playingRevision": -1,
+    "step": -1
+  },
+  "gathering": null,
+  "layoutRevision": 0,
+  "roadsideGathering": {
+    "status": "idle",
+    "playing": false,
+    "pending": false
+  },
+  "audio": {
+    "enabled": false,
+    "state": "not-created",
+    "soundscape": null
+  }
+}

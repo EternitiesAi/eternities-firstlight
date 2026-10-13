@@ -18,7 +18,7 @@ function fixture(){
  env.RealmBriarOuting=B;env.briarContext=h.app.context;
  env.rpg.open=tab=>legacy.push('open:'+tab);
  vm.runInContext(source.slice(source.indexOf('function contextInteract('),source.indexOf('// Parent app owns this transient lease independently',source.indexOf('function contextInteract('))),env);
- const ready=()=>{h.walk(B.definition.home);h.command('start');h.accompany('await-take');h.walk(B.definition.home);h.command('take');h.walk(B.definition.home);h.command('rest');h.accompany('settled');h.walk(B.definition.rest);};
+ const ready=()=>{h.walk(B.definition.home);h.command('start');h.accompany('await-take');h.walk(B.definition.home);h.command('take');h.walk(B.definition.home);h.command('rest');h.accompany('settled');h.walk(C.LANDMARKS.find(q=>q.id==='home'));};
  return{h,legacy,env,ready};
 }
 test('context button click opens the current account for guidance and executes only current arrival',()=>{
@@ -74,7 +74,7 @@ test('out-of-range E gives current guidance, preserves arrival, and cannot enter
  const p=B.prompt(f.h.app.context());assert.equal(p.action,null);assert.match(p.text,/beside|closer/);
  f.env.interact();assert.equal(JSON.stringify(f.h.sim.snapshot()),before);assert.equal(f.h.writes,writes);
  assert.equal(f.h.sim.room,null);assert.deepEqual(f.legacy,[]);
- f.h.walk(B.definition.rest);assert.equal(B.prompt(f.h.app.context()).action,'remember');
+ f.h.walk(C.LANDMARKS.find(q=>q.id==='home'));assert.equal(B.prompt(f.h.app.context()).action,'remember');
 });
 test('waiting and paused guidance have no implicit action, save, tracker or camera change',()=>{
  const f=fixture();f.h.walk(B.definition.home);f.h.command('start');f.h.walk({x:20,z:8});

@@ -1,0 +1,35 @@
+ffmpeg version n7.0.1-playwright-build-1011 Copyright (c) 2000-2024 the FFmpeg developers
+  built with gcc 9.3-win32 (GCC) 20200320
+  configuration: --arch=x86_64 --target-os=mingw32 --cross-prefix=/usr/bin/x86_64-w64-mingw32- --disable-doc --pkg-config=pkg-config --pkg-config-flags=--static --extra-cflags=-I//root/prefix/include --extra-ldflags='-L//root/prefix/lib -static' --prefix=/root/prefix --bindir=/root/ffmpeg/bin --extra-version=playwright-build-1011 --disable-debug --disable-autodetect --disable-everything --enable-ffmpeg --enable-protocol=pipe --enable-protocol=file --enable-parser=mjpeg --enable-decoder=mjpeg --enable-demuxer=image2pipe --enable-filter=pad --enable-filter=crop --enable-filter=scale --enable-muxer=webm --enable-libvpx --enable-static --enable-encoder=libvpx_vp8 --enable-decoder=libvpx_vp8 --enable-demuxer=matroska --enable-encoder=png --enable-zlib --enable-muxer=image2 --disable-iconv --disable-bzlib
+  libavutil      59.  8.100 / 59.  8.100
+  libavcodec     61.  3.100 / 61.  3.100
+  libavformat    61.  1.100 / 61.  1.100
+  libavdevice    61.  1.100 / 61.  1.100
+  libavfilter    10.  1.100 / 10.  1.100
+  libswscale      8.  1.100 /  8.  1.100
+  libswresample   5.  1.100 /  5.  1.100
+[libvpx @ 000002a14ce129c0] v1.14.1
+Input #0, matroska,webm, from 'D:\07-GAMES\Firstlight\artifacts\companion-presence-20261013\NATIVE05\video\9d9368fb3a4dc9e889fa6cebe69d4809.webm':
+  Metadata:
+    ENCODER         : Lavf61.1.100
+  Duration: 00:00:46.36, start: 0.000000, bitrate: 731 kb/s
+  Stream #0:0: Video: vp8 (libvpx), yuv420p(tv, progressive), 1280x800, SAR 1:1 DAR 8:5, 25 fps, 25 tbr, 1k tbn
+      Metadata:
+        ENCODER         : Lavc61.3.100 libvpx
+        DURATION        : 00:00:46.360000000
+[libvpx @ 000002a14ce006c0] v1.14.1
+Stream mapping:
+  Stream #0:0 -> #0:0 (vp8 (libvpx) -> vp8 (libvpx))
+[libvpx @ 000002a14ed40380] v1.14.1
+[libvpx @ 000002a14ed40380] Neither bitrate nor constrained quality specified, using default CRF of 32 and bitrate of 256kbit/sec
+Output #0, webm, to 'NUL':
+  Metadata:
+    encoder         : Lavf61.1.100
+  Stream #0:0: Video: vp8, yuv420p(tv, progressive), 1280x800 [SAR 1:1 DAR 8:5], q=2-31, 256 kb/s, 25 fps, 1k tbn
+      Metadata:
+        DURATION        : 00:00:46.360000000
+        encoder         : Lavc61.3.100 libvpx
+      Side data:
+        cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=   70 fps=0.0 q=63.0 size=       0KiB time=00:00:02.80 bitrate=   1.4kbits/s speed=5.49x    frame=  128 fps=125 q=63.0 size=     174KiB time=00:00:05.12 bitrate= 279.2kbits/s speed=5.01x    frame=  194 fps=127 q=48.0 size=     174KiB time=00:00:07.76 bitrate= 184.2kbits/s speed=5.08x    frame=  270 fps=133 q=45.0 size=     256KiB time=00:00:10.80 bitrate= 194.2kbits/s speed=5.31x    frame=  357 fps=141 q=43.0 size=     256KiB time=00:00:14.28 bitrate= 146.9kbits/s speed=5.63x    frame=  445 fps=146 q=41.0 size=     256KiB time=00:00:17.80 bitrate= 117.8kbits/s speed=5.84x    frame=  521 fps=147 q=55.0 size=     256KiB time=00:00:20.84 bitrate= 100.6kbits/s speed=5.86x    frame=  595 fps=147 q=39.0 size=     256KiB time=00:00:23.80 bitrate=  88.1kbits/s speed=5.87x    frame=  670 fps=147 q=46.0 size=     512KiB time=00:00:26.80 bitrate= 156.5kbits/s speed=5.88x    frame=  747 fps=148 q=38.0 size=     512KiB time=00:00:29.88 bitrate= 140.4kbits/s speed=5.91x    frame=  815 fps=147 q=37.0 size=     512KiB time=00:00:32.60 bitrate= 128.7kbits/s speed=5.86x    frame=  896 fps=148 q=36.0 size=     768KiB time=00:00:35.84 bitrate= 175.5kbits/s speed= 5.9x    frame=  979 fps=149 q=36.0 size=     768KiB time=00:00:39.16 bitrate= 160.7kbits/s speed=5.94x    frame= 1059 fps=149 q=36.0 size=     768KiB time=00:00:42.36 bitrate= 148.5kbits/s speed=5.96x    frame= 1135 fps=149 q=39.0 size=     768KiB time=00:00:45.40 bitrate= 138.6kbits/s speed=5.97x    [out#0/webm @ 000002a14cec6ec0] video:1121KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.741889%
+frame= 1159 fps=149 q=45.0 Lsize=    1129KiB time=00:00:46.36 bitrate= 199.5kbits/s speed=5.97x    

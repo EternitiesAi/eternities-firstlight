@@ -1,0 +1,70 @@
+✖ peaceful following steps out of the player centre and settles beside them (12.5491ms)
+✖ the narrow pier uses a supported alternative when a shoulder points into water (4.3062ms)
+✔ following catches up through actual waypoints and keeps room at a new destination (6.152ms)
+✔ Stay and pause never become permission to move a crowded companion (2.104ms)
+✖ the authored doorstep rest leaves the ordinary house approach clear (0.5193ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 2
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 101.9859
+
+✖ failing tests:
+
+test at tests\companion_presence.test.cjs:21:1
+✖ peaceful following steps out of the player centre and settles beside them (12.5491ms)
+  AssertionError [ERR_ASSERTION]: A stopped player should not stand on Briar
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\companion_presence.test.cjs:23:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\companion_presence.test.cjs:29:1
+✖ the narrow pier uses a supported alternative when a shoulder points into water (4.3062ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(gap(fox,sim.state.player)>=1.05)
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\companion_presence.test.cjs:31:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\companion_presence.test.cjs:45:1
+✖ the authored doorstep rest leaves the ordinary house approach clear (0.5193ms)
+  AssertionError [ERR_ASSERTION]: Fox rests beside the door, outside the player approach
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\companion_presence.test.cjs:47:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

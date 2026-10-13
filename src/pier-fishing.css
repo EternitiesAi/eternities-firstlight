@@ -1,0 +1,20 @@
+#pier-fishing dialog{max-width:540px;border:1px solid #b9b58a;border-radius:18px;background:#172d30;color:#eee9d5;padding:32px;box-shadow:0 24px 90px #071719aa;font:15px/1.6 system-ui,sans-serif}
+#pier-fishing dialog::backdrop{background:#08161b88}
+#pier-fishing h2{font:32px/1.15 Georgia,serif;margin:12px 0 18px}
+#pier-fishing h3{font:23px/1.15 Georgia,serif;margin:10px 0}
+#pier-fishing small{font-size:10px;letter-spacing:.1em;color:#c9caa6}
+#pier-fishing button{border:1px solid #7b9b93;border-radius:8px;background:#243f41;color:#f1ecd8;padding:11px 14px;cursor:pointer;font:13px system-ui,sans-serif;touch-action:none}
+#pier-fishing button:focus-visible{outline:3px solid #f4d593;outline-offset:3px}
+#pier-fishing button:hover{background:#345453}#pier-fishing button:disabled{opacity:.5;cursor:default}
+#pier-fishing .fish-close{float:right;padding:4px 12px}
+#pier-fishing .fish-choices{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
+#pier-fishing .fish-hud{position:fixed;z-index:24;right:24px;top:100px;width:310px;box-sizing:border-box;padding:20px;border:1px solid #b5b78e80;border-radius:15px;background:#152b30ee;box-shadow:0 10px 32px #07171955;color:#eee9d5;font:13px/1.5 system-ui,sans-serif}
+#pier-fishing [hidden]{display:none!important}
+#pier-fishing .fish-message{min-height:42px;color:#f1db9d}
+#pier-fishing label{display:block;margin-top:12px}#pier-fishing label span{float:right;color:#bfd7d0}
+#pier-fishing meter,#pier-fishing progress{display:block;width:100%;height:13px;margin-top:6px;accent-color:#8cbaa5}
+#pier-fishing .fish-controls{display:block;letter-spacing:0;margin-top:12px}
+.photo-mode #pier-fishing .fish-hud{display:none}
+@media(max-width:700px){#pier-fishing .fish-hud{top:75px;right:10px;width:255px;padding:14px;font-size:12px}#pier-fishing dialog{width:calc(100vw - 40px);box-sizing:border-box;padding:22px}}
+
+.pier-fishing-active #context{display:none!important}

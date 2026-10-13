@@ -1,0 +1,88 @@
+✖ opening the pier choices has no implicit rest, cast or persistent mutation (0.7893ms)
+✖ a previously paused world is not silently resumed to permit casting (0.1035ms)
+✖ stale modal ownership and an active Briar outing cannot start a new activity (0.0667ms)
+✖ actual keyboard control chooses Hook then reel/ease, protects typing and cancels only its line (0.0821ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 0
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 113.8423
+
+✖ failing tests:
+
+test at tests\pier_fishing_ui.test.cjs:9:1
+✖ opening the pier choices has no implicit rest, cast or persistent mutation (0.7893ms)
+  AssertionError [ERR_ASSERTION]: The fishing rules need a visible production caller
+      at fixture (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_fishing_ui.test.cjs:4:27)
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_fishing_ui.test.cjs:10:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\pier_fishing_ui.test.cjs:14:1
+✖ a previously paused world is not silently resumed to permit casting (0.1035ms)
+  AssertionError [ERR_ASSERTION]: The fishing rules need a visible production caller
+      at fixture (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_fishing_ui.test.cjs:4:27)
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_fishing_ui.test.cjs:15:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\pier_fishing_ui.test.cjs:17:1
+✖ stale modal ownership and an active Briar outing cannot start a new activity (0.0667ms)
+  AssertionError [ERR_ASSERTION]: The fishing rules need a visible production caller
+      at fixture (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_fishing_ui.test.cjs:4:27)
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_fishing_ui.test.cjs:18:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\pier_fishing_ui.test.cjs:21:1
+✖ actual keyboard control chooses Hook then reel/ease, protects typing and cancels only its line (0.0821ms)
+  AssertionError [ERR_ASSERTION]: The fishing rules need a visible production caller
+      at fixture (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_fishing_ui.test.cjs:4:27)
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\pier_fishing_ui.test.cjs:22:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

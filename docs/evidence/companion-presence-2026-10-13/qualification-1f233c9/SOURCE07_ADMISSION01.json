@@ -1,0 +1,21 @@
+{
+  "head": "5aeaca7f96388fa4551194280c8565b23dd04673",
+  "observedUtc": "2026-10-13T16:43:41.1688541Z",
+  "freeHostKiB": 6579372,
+  "minimumFreeKiB": 6291456,
+  "requestedRuleWorkers": 4,
+  "admitted": true,
+  "controllerSha256": "411571b64dcc1e3cc3d5c305c76d639dc453ec9b7fc315ea31dc997d1209ec78",
+  "scope": "Read host free memory only; no VM/Claude interaction",
+  "command": [
+    "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+    "-B",
+    "tools/verify.py",
+    "--rule-workers",
+    "4",
+    "--output",
+    "D:/07-GAMES/Firstlight/artifacts/companion-presence-20261013/REMOTE_SOURCE07",
+    "--cpu-temp",
+    "C:/Users/Dom/AppData/Local/Temp"
+  ]
+}

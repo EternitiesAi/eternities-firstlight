@@ -1,0 +1,152 @@
+{
+  "status": "failed",
+  "head": "1f233c9c71c30161a8db105fa85d88187aa66a90",
+  "htmlSha256": "47ab42ac7866a7e5e7e6ef4cd43c7c336cd3285b1ab8c474ae1f7c90960991c8",
+  "callerSha256": "c1237cb1abbb41cbc627f4a578f66a18eb4263ccc2d6d2e016d65adac01c9b90",
+  "checks": [
+    {
+      "name": "served exact current HTML",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual software WebGL2",
+      "passed": true,
+      "detail": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    {
+      "name": "accepted supported walk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "fresh fishing requires no expedition or campaign",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Explore shore action opens explicit choices",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "explicit original water rest still records once",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "cast closes choices and opens live HUD",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "old conflicting E context hidden",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "sustained bite available",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Space hooks native button without dodge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "keyboard hold reels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "keyboard release eases",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "pointer hold reels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "pointer release eases",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "non-pausing settings cannot progress fish",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "photo mode suspends the hidden fishing controls",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "global E cannot change a hidden fishing line",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Escape returns from photo without cancelling fish",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "catch required multiple tension decisions",
+      "passed": true,
+      "detail": 7
+    },
+    {
+      "name": "economic story and creative owners unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "shared moments unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no fishing journal reward",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "explicit release ends activity and restores context",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "errors": [
+    "Traceback (most recent call last):\n  File \"D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\qualify_pier04.py\", line 143, in main\n    chooser.value.set_files(str(row['paths']['input']));click('[data-rpg=\"chars-confirm-import\"]')\n                                                        ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\qualify_pier04.py\", line 80, in click\n    q=page.locator(s);assert q.count()==1,s;q.click(timeout=15000)\n                             ^^^^^^^^^^^^\nAssertionError: [data-rpg=\"chars-confirm-import\"]\n"
+  ],
+  "browserErrors": [],
+  "externalRequests": [],
+  "admissions": [
+    {
+      "freeHostKiB": 9202708,
+      "minimumFreeKiB": 6291456
+    }
+  ],
+  "sourceGate": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\REMOTE_SOURCE08_EXIT.json",
+    "sha256": "7af8e796e9b1b5c1c108ef5a1dbb2a7964d68eaab3deb2fbbd9d6bf804753812",
+    "commandsPassed": 223,
+    "ruleFiles": 157,
+    "head": "1f233c9c71c30161a8db105fa85d88187aa66a90",
+    "output": "D:\\07-GAMES\\Firstlight\\artifacts\\companion-presence-20261013\\REMOTE_SOURCE08"
+  },
+  "cohortSha256": "329820e9bb1a9d422da6ef39dac5c6ad34f12556bf1c2816016113d9d0e491f5",
+  "method": "Actual native controls, current earned import and one short ordinary-RAF clip.\nAccelerated setup/first two cases are labelled. No direct state/pose/reward edits.\nOnly task-owned loopback server, D profile and browser/driver are created/closed.\n",
+  "performanceCertified": false,
+  "humanAcceptance": false,
+  "positionEdits": 0,
+  "actorPositionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedQuestFacts": 0,
+  "ownedBrowserDriverClosed": true,
+  "ownedServerClosed": true
+}

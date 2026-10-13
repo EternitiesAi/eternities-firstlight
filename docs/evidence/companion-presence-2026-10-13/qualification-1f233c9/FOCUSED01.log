@@ -1,0 +1,234 @@
+✔ missing legacy moment data starts empty without inventing shared history (0.78ms)
+✔ only completed chronological moments survive copied validation (0.3332ms)
+✔ malformed, future, inherited and unearned history is refused (0.2481ms)
+✔ world-level migration distinguishes absent, own undefined and inherited owners (0.181ms)
+✔ sparse or decorated lists cannot invent a completed event (0.5285ms)
+✔ completed moments require a boolean start and normalized Adventure prerequisites (0.1901ms)
+✔ the real world factory retains an empty distinct Briar owner (2.2227ms)
+✔ real Core accepts a missing legacy owner without shared-history backfill (2.7576ms)
+✔ Core and actual snapshot retain earned prerequisites and only valid moments (1.9873ms)
+✔ raw own undefined and inherited owners refuse through Core, including legacy migration (1.6563ms)
+✔ defined outing points and whole routes are actually supported (17.3337ms)
+✔ acceptance creates only an intent and refuses injected terms or repeated starts (1.9488ms)
+✔ actual outbound/carry/return and explicit save produce one useful shared fact (14.4048ms)
+✔ refused turn-in is unchanged and retryable; cold completed load cannot duplicate (10.5228ms)
+✔ rest requires the returned cloth and actual arrival before remembering (28.8548ms)
+✔ revisiting the recorded doorstep rests again without suggesting or writing a second moment (48.0508ms)
+✔ Follow, Stay, travel, death, lease changes and forged displacement cancel unfinished intent (4.7234ms)
+✔ reload and copied actor diagnostics never establish a physical return (0.9282ms)
+✔ a successful outgoing save is never adopted into a replacement character (7.9621ms)
+✔ a known saved moment with a changed same-simulation owner blocks older local snapshots until readback (20.615ms)
+✔ an asynchronous or uncertain saver cannot trigger blind replay (5.5657ms)
+✔ uncertain resting save preserves the real settled pose and cannot invent a carried cloth (23.4921ms)
+✔ uncertain saves stay quarantined through cancellation, Follow and scene changes (6.5604ms)
+✔ a post-write throw is unknown until saved-state readback, never a retryable refusal (6.387ms)
+✔ ordinary and transaction saving cannot overwrite a post-write unknown moment (35.9277ms)
+✔ all character mutations including inactive deletion preserve uncertain outgoing bytes (32.3011ms)
+✔ legacy replacement refuses both before and after writer acquisition (13.616ms)
+✔ uncertainty arising during the editing-lock await blocks the later character write (6.7257ms)
+✔ actual carrying adds a restrained cloth attached to the same articulated mouth frame (2.4317ms)
+✔ the settled bonded rig is visibly lower, complete and supported (10.4416ms)
+✔ unbonded and default rigs cannot fabricate an outing pose (0.6126ms)
+✔ the actual shallow bowl has a supported inset and contained rim above the doorstep ground (25.7491ms)
+✔ context button click opens the current account for guidance and executes only current arrival (42.1069ms)
+✖ actual App keyboard callback protects dialogs, typed text and repeated E before contextual writing (48.9528ms)
+✔ actual HUD projection shows live guidance, then E arrival and resets its badge after cancel (20.5506ms)
+✖ E at the arrived doorstep records the moment instead of entering the overlapping house (41.2296ms)
+✖ out-of-range E gives current guidance, preserves arrival, and cannot enter the house (40.4075ms)
+✔ waiting and paused guidance have no implicit action, save, tracker or camera change (15.8231ms)
+✖ a known refused contextual save remains arrived and explicitly retryable (45.9902ms)
+✖ post-write uncertainty shows readback guidance and consumes E without another write or entry (33.8728ms)
+✖ changed owner after a contextual Store write leaves the saved fact and blocks its older local snapshot (34.4278ms)
+✖ completed history alone, cancel, reload and changed owner cannot invent a live contextual action (33.9957ms)
+✔ earned early blade keeps both explicit moments through actual App writer and Store readback (49.1702ms)
+✔ earned early bow keeps both explicit moments through actual App writer and Store readback (36.4067ms)
+✔ later journey preservation oracles cannot silently erase completed companion history (167.3511ms)
+✔ Companion page exposes the real new outing without a fake reward (9.1288ms)
+✔ native movement action closes the workspace, restores pause and reaches the real owner (1.3754ms)
+✔ a prior P pause stays paused and cannot secretly start a route (0.7035ms)
+✔ nonmovement actions preserve the dialog pause even when saving refuses (0.8254ms)
+✔ isolated browser global and CommonJS expose the same bounded pure API (1.76ms)
+✔ gait phase follows actual displacement and is independent of sampling subdivision/speed (0.4183ms)
+✔ stationary blocked intent cannot trot and stopping settles without advancing stride (0.4233ms)
+✔ repeated samples and long pauses preserve the full pose; paused travel is consumed (1.577ms)
+✔ scene, teleport and clock discontinuities reset gait without mutating previous samples (0.1671ms)
+✔ injured unbonded Briar is completely still and has no bond collar (0.4312ms)
+✔ reduced motion retains all four essential legs while suppressing time-driven secondary drift (0.1983ms)
+✔ diagonal trot has visible clearance, fixed leg lengths and no paw below supplied ground (1164.5999ms)
+✔ actual bone transforms meet shared joints through every authored pose and placement (10.4057ms)
+✔ tail segments overlap at shared anchors and cream tip remains attached (2.7201ms)
+✔ familiar teal collar touches the neck and head details stay in a shared articulated frame (0.9609ms)
+✔ inner ear patches stay on and within the actual outer-ear front facets (7.9546ms)
+✔ all actual mesh transforms are finite, positive and bounded for all part kinds (240.9345ms)
+✔ pure pose/draw never changes placement, motion, supplied state or existing output entries (0.8751ms)
+✔ invalid or mismatched actual placement refuses before any partial draw (0.4654ms)
+✔ peaceful following steps out of the player centre and settles beside them (13.6999ms)
+✔ the narrow pier uses a supported alternative when a shoulder points into water (2.2448ms)
+✔ following catches up through actual waypoints and keeps room at a new destination (7.6635ms)
+✔ Stay and pause never become permission to move a crowded companion (1.9397ms)
+✔ the authored doorstep rest leaves the ordinary house approach clear (0.5106ms)
+✔ crowding a resting Briar yields through real steps and requires actual re-arrival (22.5066ms)
+✔ historical missing Briar owner receives only the declared empty owner and an honest migration receipt (81.1114ms)
+✔ synthetic existing empty owner is preserved without a missing-owner migration claim (10.2801ms)
+✔ synthetic completed shared memories retain identity and order through the actual historical migration (9.6109ms)
+ℹ tests 73
+ℹ suites 0
+ℹ pass 66
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3936.9467
+
+✖ failing tests:
+
+test at tests\briar_outing_context.test.cjs:31:1
+✖ actual App keyboard callback protects dialogs, typed text and repeated E before contextual writing (48.9528ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 2
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\briar_outing_context.test.cjs:42:57)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\briar_outing_context.test.cjs:62:1
+✖ E at the arrived doorstep records the moment instead of entering the overlapping house (41.2296ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'briar-cloth-home-v1',
+  -   'briar-commons-rest-v1'
+    ]
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\briar_outing_context.test.cjs:65:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'briar-cloth-home-v1' ],
+    expected: [ 'briar-cloth-home-v1', 'briar-commons-rest-v1' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\briar_outing_context.test.cjs:71:1
+✖ out-of-range E gives current guidance, preserves arrival, and cannot enter the house (40.4075ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  null !== 'remember'
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\briar_outing_context.test.cjs:77:37)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: 'remember',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\briar_outing_context.test.cjs:87:1
+✖ a known refused contextual save remains arrived and explicitly retryable (45.9902ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 3
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\briar_outing_context.test.cjs:91:48)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\briar_outing_context.test.cjs:93:1
+✖ post-write uncertainty shows readback guidance and consumes E without another write or entry (33.8728ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\briar_outing_context.test.cjs:96:26)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\briar_outing_context.test.cjs:101:1
+✖ changed owner after a contextual Store write leaves the saved fact and blocks its older local snapshot (34.4278ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 2
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\briar_outing_context.test.cjs:105:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\briar_outing_context.test.cjs:110:1
+✖ completed history alone, cancel, reload and changed owner cannot invent a live contextual action (33.9957ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  null !== 'cancel'
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\briar_outing_context.test.cjs:111:54)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: 'cancel',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

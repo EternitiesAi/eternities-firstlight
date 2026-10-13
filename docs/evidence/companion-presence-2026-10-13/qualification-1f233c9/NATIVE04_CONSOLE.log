@@ -1,0 +1,43 @@
+PASS served exact current HTML
+PASS actual software WebGL2
+PASS accepted supported walk
+PASS fresh fishing requires no expedition or campaign
+PASS Explore shore action opens explicit choices
+PASS explicit original water rest still records once
+PASS cast closes choices and opens live HUD
+PASS old conflicting E context hidden
+PASS sustained bite available
+PASS Space hooks native button without dodge
+PASS keyboard hold reels
+PASS keyboard release eases
+PASS pointer hold reels
+PASS pointer release eases
+PASS non-pausing settings cannot progress fish
+PASS photo mode suspends the hidden fishing controls
+PASS global E cannot change a hidden fishing line
+PASS Escape returns from photo without cancelling fish
+PASS catch required multiple tension decisions
+PASS economic story and creative owners unchanged
+PASS shared moments unchanged
+PASS no fishing journal reward
+PASS explicit release ends activity and restores context
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\artifacts\companion-presence-20261013\qualify_pier04.py", line 143, in main
+    chooser.value.set_files(str(row['paths']['input']));click('[data-rpg="chars-confirm-import"]')
+                                                        ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\artifacts\companion-presence-20261013\qualify_pier04.py", line 80, in click
+    q=page.locator(s);assert q.count()==1,s;q.click(timeout=15000)
+                             ^^^^^^^^^^^^
+AssertionError: [data-rpg="chars-confirm-import"]
+
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\artifacts\companion-presence-20261013\qualify_pier04.py", line 195, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "D:\07-GAMES\Firstlight\artifacts\companion-presence-20261013\qualify_pier04.py", line 143, in main
+    chooser.value.set_files(str(row['paths']['input']));click('[data-rpg="chars-confirm-import"]')
+                                                        ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\artifacts\companion-presence-20261013\qualify_pier04.py", line 80, in click
+    q=page.locator(s);assert q.count()==1,s;q.click(timeout=15000)
+                             ^^^^^^^^^^^^
+AssertionError: [data-rpg="chars-confirm-import"]

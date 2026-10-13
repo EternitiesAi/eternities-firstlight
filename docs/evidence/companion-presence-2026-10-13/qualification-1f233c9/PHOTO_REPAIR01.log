@@ -1,0 +1,18 @@
+✔ opening the pier choices has no implicit rest, cast or persistent mutation (6.9943ms)
+✔ a previously paused world is not silently resumed to permit casting (1.103ms)
+✔ stale modal ownership and an active Briar outing cannot start a new activity (0.4622ms)
+✔ actual keyboard control chooses Hook then reel/ease, protects typing and cancels only its line (7.2129ms)
+✔ a non-pausing drawer freezes the fishing clock and discards elapsed menu time (8.7136ms)
+✔ App native fishing buttons retain Space and Enter without invoking dodge (1.4068ms)
+✔ the original quiet-water rest reach still opens the choices without an implicit cast (0.5613ms)
+✔ the fishing HUD yields to drawers and returns when controls are available again (0.8928ms)
+✔ framing the water is an explicit camera action that retains the chosen style and FOV (2.1858ms)
+✔ the actual App boundary gives photo mode its controls and suspends the hidden line (1.5133ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 116.6892

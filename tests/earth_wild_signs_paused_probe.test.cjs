@@ -34,7 +34,7 @@ function appFixture(){
   RealmEarthGrazerVisibility:{inspect(){inspectCalls++;throw Error('Paused App must never inspect or issue a witness');}},
   grazerContext:context,grazerMenusOpen:()=>false,G_CAPTURE:false,document:{hidden:false,querySelector:()=>null},panel:null,
   engine:{_contextLost:false,render(){renderCalls++;}},camera:{preset:'adventure',yaw:0},
-  art:{update(){}},keys:new Set(),target:null,experience:null,sandbox:null,adventure:null,arsenal:null,rpg:null,
+  art:{update(){}},keys:new Set(),target:null,experience:null,sandbox:null,adventure:null,arsenal:null,fishing:null,rpg:null,
   lastFrame:0,frames:0,fpsStart:0,fps:0,elapsed:0,lastSave:0,lastUi:200,
   grazerLastInspect:-Infinity,grazerLastVisibility:{visible:true,phase:'walk',lower:0,at:100,parts:31,samples:4,span:{width:100,height:80},blocked:[]},
   bindWildSignsClearance(){},tickConsignment(){},switchScene(){},updateCamera(){},syncFieldcraftOwner(){},consignmentPresentation(){},

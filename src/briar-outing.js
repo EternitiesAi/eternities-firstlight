@@ -6,7 +6,7 @@ const C=G.RealmCore||(typeof require==='function'?require('./core.js'):null);
 const A=G.RealmAdventure||(typeof require==='function'?require('./adventure.js'):null);
 const definition=Object.freeze({id:'briar-wayward-cloth-v1',title:'The Bowl Beside the Door',
  cloth:Object.freeze({x:0,z:25.4}),home:Object.freeze({x:2,z:8}),
- rest:Object.freeze({x:-11,z:-1.6}),speed:3.2,arrival:.55});
+ rest:Object.freeze({x:-12.25,z:-.65}),speed:3.2,arrival:.55});
 const activities=new WeakMap(),quarantines=new WeakMap(),copy=o=>JSON.parse(JSON.stringify(o)),canonical=o=>JSON.stringify(o);
 const fail=error=>({ok:false,error}),dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 const opaque=o=>o&&typeof o==='object'&&Object.isFrozen(o)&&Reflect.ownKeys(o).length===0&&[Object.prototype,null].includes(Object.getPrototypeOf(o));
@@ -23,6 +23,7 @@ function scope(ctx,allowPaused=false){
  try{return{ok:true,sim,actor,record:M.fromWorld(sim.state)};}catch(e){return fail(e.message);}
 }
 function at(sim,actor,q,r=2.8){return dist(actor,q)<=definition.arrival&&dist(sim.state.player,q)<=r&&C.segment(actor,q,sim.navRoom,.31)&&C.segment(sim.state.player,q,sim.navRoom,.31);}
+function restReady(o){return !o.yielding&&dist(o.actor,o.sim.state.player)>=1.05&&at(o.sim,o.actor,definition.rest);}
 function owned(ctx,o){
  const s=scope(ctx,true),sim=ctx?.sim;
  return s.ok&&o&&o.sim===sim&&o.state===sim.state&&o.adventure===sim.state.adventure&&o.companion===sim.state.adventure.companion&&o.actor===s.actor&&o.active===ctx.active&&o.lease===ctx.ownerLease&&o.deaths===sim.state.adventure.deaths&&o.record===sim.state.briarMoments&&dist(o.last,s.actor)<1e-8?o:null;
@@ -35,7 +36,7 @@ function cancel(sim,reason='Outing cancelled · follow or ask again'){
 function current(ctx){
  const o=owned(ctx,activities.get(ctx?.sim));if(!o)return null;
  const actualPhase=o.uncertainFrom||o.phase;
- return{phase:o.phase,uncertain:o.phase==='uncertain',carrying:['returning','await-take'].includes(actualPhase),resting:['settled','rested'].includes(actualPhase),waiting:o.waiting,distanceTravelled:o.travelled,status:o.actor.status,object:definition.id};
+ return{phase:o.phase,uncertain:o.phase==='uncertain',carrying:['returning','await-take'].includes(actualPhase),resting:!o.yielding&&dist(o.actor,o.sim.state.player)>=1.05&&['settled','rested'].includes(actualPhase)&&dist(o.actor,definition.rest)<=definition.arrival,readyToRemember:o.phase==='settled'&&restReady(o),yielding:!!o.yielding,waiting:o.waiting,distanceTravelled:o.travelled,status:o.actor.status,object:definition.id};
 }
 function availability(ctx){
  const s=scope(ctx,true),v=current(ctx);
@@ -48,12 +49,13 @@ function prompt(ctx){
  const guide=(text,action=null)=>Object.freeze({text,action});
  if(!saveAllowed(s.sim))return guide('Reload the saved character before continuing this moment.');
  if(s.sim.paused)return guide('Outing paused · resume before continuing with Briar.');
+ if(v.yielding)return guide('Give Briar a little room beside the doorstep.');
  if(v.waiting)return guide('Briar is waiting · walk closer to your companion.');
  if(v.phase==='outbound')return guide('Walk beside Briar toward the lantern pier.');
  if(v.phase==='returning')return guide('Walk with Briar as the cloth comes home to the Commons.');
  if(v.phase==='resting')return guide('Walk with Briar to the shared-house doorstep.');
  if(v.phase==='await-take')return at(s.sim,s.actor,definition.home)?guide('Take the cloth from Briar','take'):guide('Walk beside Briar at the Commons to take the cloth.');
- if(v.phase==='settled')return at(s.sim,s.actor,definition.rest)?guide('Remember this doorstep moment with Briar','remember'):guide('Walk closer to Briar at the doorstep before remembering.');
+ if(v.phase==='settled')return v.readyToRemember?guide('Remember this doorstep moment with Briar','remember'):guide('Stand beside Briar with a little room at the doorstep before remembering.');
  if(v.phase==='rested')return guide('Doorstep moment kept · return to following','cancel');
  return null;
 }
@@ -71,13 +73,34 @@ function begin(ctx,phase,target){
  activities.set(s.sim,o);s.actor.path=path.map(p=>({...p}));s.actor.status=phase==='outbound'?'Finding the dropped cloth · walk beside Briar':'Going to the sheltered doorstep';
  return{ok:true,text:s.actor.status};
 }
+function restSpace(sim,o,dt){
+ const c=o.actor,p=sim.state.player,target=definition.rest,gap=dist(c,p);
+ if(gap<.9)o.yielding=true;
+ if(!o.yielding)return;
+ c.status='Giving you room · leave a little space beside the doorstep';
+ let q;
+ if(gap<1.15){
+  const angle=gap>.01?Math.atan2(c.x-p.x,c.z-p.z):Math.PI/2;
+  const choices=Array.from({length:12},(_,i)=>{const a=angle+(i%2?1:-1)*Math.ceil(i/2)*Math.PI/6;return{x:p.x+Math.sin(a)*1.35,z:p.z+Math.cos(a)*1.35};});
+  q=choices.find(q=>dist(q,target)<2.3&&C.walkable(q.x,q.z,sim.navRoom,.31)&&C.segment(c,q,sim.navRoom,.31));
+ }else if(dist(p,target)>=1.5){
+  if(dist(c,target)<=definition.arrival){o.yielding=false;c.path=[];c.status=o.phase==='rested'?'Resting at the doorstep · Follow whenever you wish':'Resting at the doorstep · choose Remember this moment';return;}
+  q=(C.pathfind(c,target,sim.navRoom,false,.31)||[])[0];
+ }
+ c.path=[];if(!q)return;
+ const d=dist(c,q),amount=Math.min(d,dt*1.6),to={x:c.x+(q.x-c.x)/(d||1)*amount,z:c.z+(q.z-c.z)/(d||1)*amount};
+ if(!C.segment(c,to,sim.navRoom,.31)||gap<1.05&&dist(to,p)<=gap)return;
+ const old={x:c.x,z:c.z};sim.advance(c,[q],dt,1.6);
+ o.last={x:c.x,z:c.z};o.travelled+=dist(old,c);o.legTravelled+=dist(old,c);
+}
 function tick(sim,dt){
  const o=activities.get(sim);if(!o)return false;
  let ctx;try{ctx=typeof sim.briarContext==='function'?sim.briarContext():null;}catch{}
  if(!owned(ctx,o)){cancel(sim,'Outing interrupted · nothing was recorded');return true;}
  if(sim.paused)return true;
- if(['await-take','settled','rested','uncertain'].includes(o.phase))return true;
  if(!Number.isFinite(dt)||dt<=0||dt>.2)return true;
+ if(['settled','rested'].includes(o.phase)){restSpace(sim,o,dt);return true;}
+ if(['await-take','uncertain'].includes(o.phase))return true;
  const target=o.phase==='outbound'?definition.cloth:o.phase==='returning'?definition.home:definition.rest,c=o.actor;
  if(!C.walkable(target.x,target.z,sim.navRoom,.31)){cancel(sim,'The destination is blocked · clear it and ask again');return true;}
  const gap=dist(c,sim.state.player);
@@ -126,7 +149,7 @@ function command(ctx,type,payload={},io){
  if(type==='start'){if(s.record.moments.includes(M.CLOTH_HOME))return fail('The dropped cloth is already home. Briar can still rest at the familiar door.');return begin(ctx,'outbound',definition.cloth);}
  if(type==='rest'){if(!s.record.moments.includes(M.CLOTH_HOME))return fail('Bring the cloth home together before choosing a resting place.');return begin(ctx,'resting',definition.rest);}
  const o=owned(ctx,activities.get(s.sim));
- if(!o||o.phase!==(type==='take'?'await-take':'settled')||!at(s.sim,o.actor,type==='take'?definition.home:definition.rest))return fail('Complete the actual outing and stand beside Briar before recording that moment.');
+ if(!o||o.yielding||o.phase!==(type==='take'?'await-take':'settled')||!(type==='take'?at(s.sim,o.actor,definition.home):restReady(o)))return fail('Complete the actual outing and stand beside Briar before recording that moment.');
  return commit(ctx,o,type==='take'?M.CLOTH_HOME:M.COMMONS_REST,io,type==='take'?'Briar brought the misplaced cloth home. You took it beside the Commons path.':'You chose the shared-house doorstep, and Briar settled there after your outing.');
 }
 const api=Object.freeze({definition,current,availability,prompt,command,tick,cancel,saveAllowed,saveBlockReason});
