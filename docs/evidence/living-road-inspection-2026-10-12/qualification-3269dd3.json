@@ -101,5 +101,10 @@
     "portableEvidenceBytes": 3316185,
     "cleanupActions": 0,
     "measurementScope": "05:06:11Z snapshot; portable bytes measured before later hold metadata, not the current file-tree total"
-  }
+  },
+  "portableRawFileHashes": {
+    "native-report-3269dd3.json": "46560bff8e65a43c40c693c43e91195e2b4c189bf239229bc0c9fbea728e6271",
+    "source-console-3269dd3.log": "7b564b6267b190710e3a6d9364640e33de37bc00da6c541d9941cf7cbb4f8453"
+  },
+  "portableTextPolicy": "Directory-scoped -text attributes preserve raw UTF8 CRLF/LF bytes; snapshots retain original measurement epochs"
 }
