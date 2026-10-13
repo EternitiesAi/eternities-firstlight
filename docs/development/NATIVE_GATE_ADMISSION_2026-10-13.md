@@ -97,3 +97,62 @@ gate. GPU performance, human enjoyment and production acceptance remain open.
 These are focused source/transport results. Fresh remote native smoke and the
 complete current browser gate are still required; no result is inferred from
 the earlier source-only pass or from this review.
+
+## Fresh remote execution and the first complete attempt
+
+The reused checkout was freshly fetched and switched to exact implementation
+`1ca07f7b9179f925575f0ccf3e63dc14cfad1e81`. Its narrow historical refspec did not
+populate the new remote-tracking branch on a generic fetch; the first readback
+therefore failed before switching. An explicit branch fetch verified FETCH_HEAD
+and the remote branch identity, then installed the exact clean checkout. The
+existing remote/refspec configuration was preserved.
+
+At that head, 38 relevant CPU checks passed again. Real native-origin persistence
+passed 11 checks across two whole-browser launches, with exact served page,
+Map/Character controls and a labelled synthetic notebook event through production
+save/restart/load. The real nested Python Earth presentation caller passed 46
+checks. Its earned state and synthetic camera/body placement retain their original
+labels; this does not qualify an ordinary-control outing or a follow-camera UI
+selection. Selected actual pixels were inspected.
+
+Three actual browser allocations recorded 9,392,276 / 9,151,100 / 9,097,816 KiB
+free host RAM, each above the floor. Parent and child admission logs terminated
+with zero process status; the existing native cleanup code executed, and the
+checkout remained clean. These traces do not independently prove descendant
+closure. No new video or full game copy was made.
+
+The first complete attempt, REMOTE_BROWSER01 at the same head, was admitted with
+9,207,212 KiB free host memory. Its unchanged game rules passed 2,257 tests with
+zero failures and two skips. Python ran 538 tests and stopped with two failures,
+three errors and eight skips. All five affected cases were older synthetic
+`test_verify_onboarding.py` callers that pre-created the log directory now
+correctly refused by fresh storage admission. No native command ran in that
+complete attempt. Its failed receipt and full Python output are retained alongside
+the successful targeted smoke, without relabelling it as a complete pass.
+
+The follow-up repairs only those synthetic callers: stage their exact input bytes
+until the source transport publishes them, use explicit existing CPU temp, and
+observe unchanged target argv after verifying the new wrapper fields. Keep every
+ordering, cohort, timing and failure-propagation requirement. Complete current
+qualification remains pending until the rerun's final receipt.
+
+The bounded published [evidence index](../evidence/native-budget-2026-10-13/EVIDENCE_INDEX.json)
+contains exact receipts, CPU logs and a byte-preserving gzip of the Earth report
+and failed Python output. Raw screenshots and temporary native state remain local.
+Hosted run38480170971 again failed before starting because GitHub reported an
+account billing lock. No billing action was taken.
+
+## Repair and deferred fresh run
+
+The test-only repair is pushed at04fd08ce768cb886abdffa788d8148c0a9068b3d. Its
+19 focused onboarding cases and86 verifier cases passed (the86 include one
+existing Windows platform-fixture skip). A separate read-only review checked
+preserved ordering, cohort, timeout, suite-count and intended failure injection.
+The clean reused remote checkout now contains that exact commit.
+
+REMOTE_BROWSER02 was refused before launching verification at23:03:25Z:
+5,403,692KiB free host memory, below6,291,456KiB. No native/source worker ran and
+no02 output directory exists. Preserve the admission receipt and original failed
+01 result. Continue independent lightweight product work; another full attempt
+needs fresh paths and fresh admission. No VM or unrelated process was inspected
+or stopped. Complete qualification remains pending.

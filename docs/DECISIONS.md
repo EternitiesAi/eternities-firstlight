@@ -1,3 +1,21 @@
+# Admit each native allocation and retain fresh evidence, 2026-10-13
+
+Wrap individual synchronous browser suites, including their reviewed Python child
+scripts, at actual allocation time after normal driver startup. Preserve CPU
+preflights, suite actions, source pins and original deadlines. A caught refusal,
+failed receipt or unfinished owned child must never be reported as success.
+Cleanup is limited to exact newly owned resources; do not enumerate/stop other
+workers or alter VM resources. Admission traces do not replace native cleanup,
+persistence or gameplay checks.
+
+Require fresh logs and evidence for the complete gate. Older standalone defaults
+remain compatible when no output override is set; complete verification selects
+explicit fresh paths. Retain failed attempts and the historical04 expectation
+map. Never change pinned helpers merely to make this execution instrumentation
+pass. No runtime/schema/HTML change accompanies this verification milestone.
+
+---
+
 # Preserve real waypoint transitions and exact evidence epochs, 2026-10-13
 
 Core.advance may shift an already-reached tiny path segment and legitimately

@@ -1,0 +1,163 @@
+test_actual_current_game_source_readback_is_pure_without_browser_execution (test_verify_onboarding.OnboardingVerifier.test_actual_current_game_source_readback_is_pure_without_browser_execution) ... ok
+test_actual_native_preflight_is_inert_and_needs_no_renderer_dependencies (test_verify_onboarding.OnboardingVerifier.test_actual_native_preflight_is_inert_and_needs_no_renderer_dependencies) ... ok
+test_actual_native_source_validator_refuses_stale_caller_embedding (test_verify_onboarding.OnboardingVerifier.test_actual_native_source_validator_refuses_stale_caller_embedding) ... ok
+test_actual_native_source_validator_refuses_unequal_pages (test_verify_onboarding.OnboardingVerifier.test_actual_native_source_validator_refuses_unequal_pages) ... ok
+test_actual_native_source_validator_requires_each_consignment_module_and_current_embedding (test_verify_onboarding.OnboardingVerifier.test_actual_native_source_validator_requires_each_consignment_module_and_current_embedding) ... ok
+test_aftermath_actual_input_failure_and_native_failure_stop_complete_gate (test_verify_onboarding.OnboardingVerifier.test_aftermath_actual_input_failure_and_native_failure_stop_complete_gate) ... ok
+test_aftermath_runs_once_after_both_current_native_gates_with_required_cpu_admission (test_verify_onboarding.OnboardingVerifier.test_aftermath_runs_once_after_both_current_native_gates_with_required_cpu_admission) ... ERROR
+test_browser_gate_failure_is_not_swallowed_or_relabelled_as_optional (test_verify_onboarding.OnboardingVerifier.test_browser_gate_failure_is_not_swallowed_or_relabelled_as_optional) ... FAIL
+test_existing_output_preserves_payload_and_is_never_reused (test_verify_onboarding.OnboardingVerifier.test_existing_output_preserves_payload_and_is_never_reused) ... ok
+test_explicit_args_override_unrelated_root_output_environment (test_verify_onboarding.OnboardingVerifier.test_explicit_args_override_unrelated_root_output_environment) ... ok
+test_game_output_ancestors_descendants_and_drive_root_are_refused (test_verify_onboarding.OnboardingVerifier.test_game_output_ancestors_descendants_and_drive_root_are_refused) ... ok
+test_main_preserves_all46_contracts_and_adds_required47th_after_same_invocation_earth (test_verify_onboarding.OnboardingVerifier.test_main_preserves_all46_contracts_and_adds_required47th_after_same_invocation_earth) ... ERROR
+test_new_consignment_is_required_once_after_current_preflight_and_retains_48_older_suites (test_verify_onboarding.OnboardingVerifier.test_new_consignment_is_required_once_after_current_preflight_and_retains_48_older_suites) ... ERROR
+test_recording_cpu_uses_same_current_cohort_without_launching_a_take (test_verify_onboarding.OnboardingVerifier.test_recording_cpu_uses_same_current_cohort_without_launching_a_take) ... ok
+test_required_command_has_current_root_fresh_child_and_software_no_seed_or_video_flags (test_verify_onboarding.OnboardingVerifier.test_required_command_has_current_root_fresh_child_and_software_no_seed_or_video_flags) ... ok
+test_required_recording_cpu_failure_stops_the_invocation (test_verify_onboarding.OnboardingVerifier.test_required_recording_cpu_failure_stops_the_invocation) ... FAIL
+test_source_only_invocation_never_requests_onboarding_browser (test_verify_onboarding.OnboardingVerifier.test_source_only_invocation_never_requests_onboarding_browser) ... ok
+test_windows_non_d_output_is_refused_without_coercing_path (test_verify_onboarding.OnboardingVerifier.test_windows_non_d_output_is_refused_without_coercing_path) ... ok
+test_wrong_root_missing_tool_or_core_refuse_before_output (test_verify_onboarding.OnboardingVerifier.test_wrong_root_missing_tool_or_core_refuse_before_output) ... ok
+
+======================================================================
+ERROR: test_aftermath_runs_once_after_both_current_native_gates_with_required_cpu_admission (test_verify_onboarding.OnboardingVerifier.test_aftermath_runs_once_after_both_current_native_gates_with_required_cpu_admission)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\verify.py", line 372, in main
+    output, args.browser_output, browser_temp = configure_browser_storage(args)
+                                                ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\verify.py", line 97, in configure_browser_storage
+    raise ValueError('Browser logs and evidence must name new directories; retain prior evidence.')
+ValueError: Browser logs and evidence must name new directories; retain prior evidence.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\test_verify_onboarding.py", line 129, in test_aftermath_runs_once_after_both_current_native_gates_with_required_cpu_admission
+    calls,target=self.main_requests();labels=[c[1] for c,k in calls if len(c)>1]
+                 ~~~~~~~~~~~~~~~~~~^^
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\test_verify_onboarding.py", line 125, in main_requests
+    V.main()
+    ~~~~~~^^
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\verify.py", line 374, in main
+    parser.error(str(error))
+    ~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\argparse.py", line 2686, in error
+    self.exit(2, _('%(prog)s: error: %(message)s\n') % args)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\argparse.py", line 2673, in exit
+    _sys.exit(status)
+    ~~~~~~~~~^^^^^^^^
+SystemExit: 2
+
+======================================================================
+ERROR: test_main_preserves_all46_contracts_and_adds_required47th_after_same_invocation_earth (test_verify_onboarding.OnboardingVerifier.test_main_preserves_all46_contracts_and_adds_required47th_after_same_invocation_earth)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\verify.py", line 372, in main
+    output, args.browser_output, browser_temp = configure_browser_storage(args)
+                                                ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\verify.py", line 97, in configure_browser_storage
+    raise ValueError('Browser logs and evidence must name new directories; retain prior evidence.')
+ValueError: Browser logs and evidence must name new directories; retain prior evidence.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\test_verify_onboarding.py", line 149, in test_main_preserves_all46_contracts_and_adds_required47th_after_same_invocation_earth
+    calls,target=self.main_requests();by={c[1]:(c,k)for c,k in calls if len(c)>1}
+                 ~~~~~~~~~~~~~~~~~~^^
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\test_verify_onboarding.py", line 125, in main_requests
+    V.main()
+    ~~~~~~^^
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\verify.py", line 374, in main
+    parser.error(str(error))
+    ~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\argparse.py", line 2686, in error
+    self.exit(2, _('%(prog)s: error: %(message)s\n') % args)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\argparse.py", line 2673, in exit
+    _sys.exit(status)
+    ~~~~~~~~~^^^^^^^^
+SystemExit: 2
+
+======================================================================
+ERROR: test_new_consignment_is_required_once_after_current_preflight_and_retains_48_older_suites (test_verify_onboarding.OnboardingVerifier.test_new_consignment_is_required_once_after_current_preflight_and_retains_48_older_suites)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\verify.py", line 372, in main
+    output, args.browser_output, browser_temp = configure_browser_storage(args)
+                                                ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\verify.py", line 97, in configure_browser_storage
+    raise ValueError('Browser logs and evidence must name new directories; retain prior evidence.')
+ValueError: Browser logs and evidence must name new directories; retain prior evidence.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\test_verify_onboarding.py", line 166, in test_new_consignment_is_required_once_after_current_preflight_and_retains_48_older_suites
+    calls,target=self.main_requests();labels=[c[1]for c,k in calls if len(c)>1]
+                 ~~~~~~~~~~~~~~~~~~^^
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\test_verify_onboarding.py", line 125, in main_requests
+    V.main()
+    ~~~~~~^^
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\verify.py", line 374, in main
+    parser.error(str(error))
+    ~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\argparse.py", line 2686, in error
+    self.exit(2, _('%(prog)s: error: %(message)s\n') % args)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\argparse.py", line 2673, in exit
+    _sys.exit(status)
+    ~~~~~~~~~^^^^^^^^
+SystemExit: 2
+
+======================================================================
+FAIL: test_browser_gate_failure_is_not_swallowed_or_relabelled_as_optional (test_verify_onboarding.OnboardingVerifier.test_browser_gate_failure_is_not_swallowed_or_relabelled_as_optional)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\verify.py", line 372, in main
+    output, args.browser_output, browser_temp = configure_browser_storage(args)
+                                                ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\verify.py", line 97, in configure_browser_storage
+    raise ValueError('Browser logs and evidence must name new directories; retain prior evidence.')
+ValueError: Browser logs and evidence must name new directories; retain prior evidence.
+
+During handling of the above exception, another exception occurred:
+
+SystemExit: 2
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\test_verify_onboarding.py", line 179, in test_browser_gate_failure_is_not_swallowed_or_relabelled_as_optional
+    with self.assertRaisesRegex(SystemExit,'FAILED: onboarding_browser'):self.main_requests(onboarding_exit=1)
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "FAILED: onboarding_browser" does not match "2"
+
+======================================================================
+FAIL: test_required_recording_cpu_failure_stops_the_invocation (test_verify_onboarding.OnboardingVerifier.test_required_recording_cpu_failure_stops_the_invocation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\verify.py", line 372, in main
+    output, args.browser_output, browser_temp = configure_browser_storage(args)
+                                                ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\verify.py", line 97, in configure_browser_storage
+    raise ValueError('Browser logs and evidence must name new directories; retain prior evidence.')
+ValueError: Browser logs and evidence must name new directories; retain prior evidence.
+
+During handling of the above exception, another exception occurred:
+
+SystemExit: 2
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\test_verify_onboarding.py", line 199, in test_required_recording_cpu_failure_stops_the_invocation
+    with self.assertRaisesRegex(SystemExit,'FAILED: earth-recording-controller-preflight'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "FAILED: earth-recording-controller-preflight" does not match "2"
+
+----------------------------------------------------------------------
+Ran 19 tests in 7.045s
+
+FAILED (failures=2, errors=3)

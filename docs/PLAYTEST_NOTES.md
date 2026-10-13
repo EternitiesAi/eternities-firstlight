@@ -1,3 +1,32 @@
+# Targeted persistence smoke passed; broader gate remains open, 2026-10-13
+
+Fresh remote1ca07f7 passed11 native-origin checks, including real Map/Character
+controls and labelled synthetic notebook save through whole-browser restart.
+The recursive Earth material caller passed46 checks with command-earned equipment
+and explicitly synthetic camera/body placement. Pixels were inspected; its HUD
+still shows Diorama, so this does not prove follow-camera UI selection or an
+ordinary-control outing. Three admissions exceeded6GiB; exact caller cleanup ran.
+Logs alone do not independently prove descendant closure.
+
+The complete current gate remains pending. REMOTE_BROWSER01 at1ca07f7 passed
+Node2257/0fail/2skip, then stopped in Python538run/2fail/3error/8skip on five old
+onboarding transport fixtures. No native command ran in that complete attempt.
+The source repair at04fd08ce768cb886abdffa788d8148c0a9068b3d retains all original
+assertions;86 verifier regressions passed with one existing platform-fixture skip.
+Independent source review found no assertion weakening.
+
+Reused STATION was freshly fetched clean at04fd08c. REMOTE_BROWSER02 was refused
+before any verifier launch:5,403,692KiB free host RAM against the6,291,456KiB floor.
+No source/native gate worker is running at this checkpoint. Preserve both receipts;
+do not mistake refusal or focused smoke for complete qualification.
+
+No new gameplay footage was warranted for tooling. Retain the earlier44-second
+resident clip and unanswered human route/feel/reward questions. No RTX or human
+acceptance follows from these software-browser checks.
+[Evidence](evidence/native-budget-2026-10-13/EVIDENCE_INDEX.json).
+
+---
+
 # Residents observed walking, settling and at home, 2026-10-13
 
 At exact remote890d409, Native04 passed168 checks: three residents in both requested

@@ -1,3 +1,34 @@
+# Current verifier repaired; full gate awaiting admission, 2026-10-13
+
+ROOT remains verification/road-account-current-epoch-20261013 / PR77. STATION is
+clean and detached at04fd08ce768cb886abdffa788d8148c0a9068b3d. Inspect live ownership
+and host RAM before acting; no verifier launched after the retained admission
+refusal. Read docs/development/NATIVE_GATE_ADMISSION_2026-10-13.md.
+
+The complete current gate remains pending. REMOTE_BROWSER01 at1ca07f7 passed
+Node2257/0fail/2skip, then stopped in Python538run/2fail/3error/8skip on five old
+onboarding transport fixtures. No native command ran in that complete attempt.
+The source repair at04fd08ce768cb886abdffa788d8148c0a9068b3d retains all original
+assertions;86 verifier regressions passed with one existing platform-fixture skip.
+Independent source review found no assertion weakening.
+
+Reused STATION was freshly fetched clean at04fd08c. REMOTE_BROWSER02 was refused
+before any verifier launch:5,403,692KiB free host RAM against the6,291,456KiB floor.
+No source/native gate worker is running at this checkpoint. Preserve both receipts;
+do not mistake refusal or focused smoke for complete qualification.
+
+All52 native commands retain original checks/deadlines with fresh per-allocation
+RAM admission and D outputs. Source uses four Node workers/180s/600s. Fresh remote
+smoke at1ca07f7 passed38 CPU and11+46 native checks; earlier complete Source05 passed
+224 commands atc852574. Both HTML and World9/Adventure12 are unchanged.
+
+ET06 source work may proceed independently on a separate gameplay review branch;
+the broader verification gate remains open. VM/Claude/personal data, other workers,
+new full copies, cleanup, blocked deletion retry, paid work, billing, main merge,
+deployment and heartbeat resume remain excluded. Goal ACTIVE; heartbeat PAUSED.
+
+---
+
 # Residents qualified in both views; current broad browser gate next, 2026-10-13
 
 ROOT remains verification/road-account-current-epoch-20261013 / PR77. Reused

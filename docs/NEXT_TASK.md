@@ -1,3 +1,33 @@
+# Continue the masterwork while preserving the open regression gate, 2026-10-13
+
+The complete current gate remains pending. REMOTE_BROWSER01 at1ca07f7 passed
+Node2257/0fail/2skip, then stopped in Python538run/2fail/3error/8skip on five old
+onboarding transport fixtures. No native command ran in that complete attempt.
+The source repair at04fd08ce768cb886abdffa788d8148c0a9068b3d retains all original
+assertions;86 verifier regressions passed with one existing platform-fixture skip.
+Independent source review found no assertion weakening.
+
+Reused STATION was freshly fetched clean at04fd08c. REMOTE_BROWSER02 was refused
+before any verifier launch:5,403,692KiB free host RAM against the6,291,456KiB floor.
+No source/native gate worker is running at this checkpoint. Preserve both receipts;
+do not mistake refusal or focused smoke for complete qualification.
+
+1. Recheck current ownership/RAM before another complete gate; preserve4 Node
+   workers and180s/600s timeouts, current source inputs and all52 native commands.
+   A new admitted attempt must have fresh paths; never replay02 as if it ran.
+2. Continue ET06, The Masterwork Without a Name, in ROOT on a separate gameplay
+   review branch. Canon: misattributed commission, compared marks/records, private
+   acknowledgment or public correction with apprentice participation. An optional
+   blade/bow lesson is provisional Codex design; qualify actual usefulness and
+   preserve original specials, saves, explicit choices and existing ownership.
+3. Complete relevant rules, ordinary UI and persistence checks before claiming
+   the new quest playable. The broad existing gate and human acceptance stay open.
+
+Reuse D checkouts, no VM/Claude/personal-save access, merge/deploy/paid work/billing,
+cleanup or heartbeat resume. Goal ACTIVE. [Record](development/NATIVE_GATE_ADMISSION_2026-10-13.md).
+
+---
+
 # Next: the complete current browser chain, 2026-10-13
 
 Resident Source04, Native04 and the additional Mara corridor witness are complete

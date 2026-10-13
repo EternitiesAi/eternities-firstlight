@@ -1,3 +1,29 @@
+# Browser admission verified; full regression repair preserved, 2026-10-13
+
+The complete current gate remains pending. REMOTE_BROWSER01 at1ca07f7 passed
+Node2257/0fail/2skip, then stopped in Python538run/2fail/3error/8skip on five old
+onboarding transport fixtures. No native command ran in that complete attempt.
+The source repair at04fd08ce768cb886abdffa788d8148c0a9068b3d retains all original
+assertions;86 verifier regressions passed with one existing platform-fixture skip.
+Independent source review found no assertion weakening.
+
+Reused STATION was freshly fetched clean at04fd08c. REMOTE_BROWSER02 was refused
+before any verifier launch:5,403,692KiB free host RAM against the6,291,456KiB floor.
+No source/native gate worker is running at this checkpoint. Preserve both receipts;
+do not mistake refusal or focused smoke for complete qualification.
+
+At1ca07f7, fresh remote38 CPU checks and actual11 native-origin persistence plus46
+recursive Earth presentation checks passed. The latter uses labelled synthetic
+camera/body placement, not an ordinary outing. Three actual admissions exceeded
+6GiB. Earlier Source05 atc852574 passed224 commands, Node2257/0fail/2skip and
+Python500run/8skip/no failures. [Exact record](development/NATIVE_GATE_ADMISSION_2026-10-13.md).
+
+Runtime, both HTML and save versions remain unchanged. ET06 is in design/source
+preparation; no new playable quest is delivered yet. Human/GPU/production gates
+remain open. Hosted jobs cannot start due to the recorded billing lock; no action.
+
+---
+
 # Ilan, Mara and Oren now move with their carried tools, 2026-10-13
 
 The familiar three residents use articulated walking and settling in their

@@ -1,0 +1,80 @@
+test_failed_owned_close_is_not_hidden_by_receipt_failure (test_browser_budget.Admission.test_failed_owned_close_is_not_hidden_by_receipt_failure) ... ok
+test_fresh_probe_before_each_allocation_even_with_reused_options (test_browser_budget.Admission.test_fresh_probe_before_each_allocation_even_with_reused_options) ... ok
+test_original_launch_exception_is_preserved_and_marks_gate_failed (test_browser_budget.Admission.test_original_launch_exception_is_preserved_and_marks_gate_failed) ... ok
+test_patches_only_the_two_local_sync_allocation_methods_and_restores (test_browser_budget.Admission.test_patches_only_the_two_local_sync_allocation_methods_and_restores) ... ok
+test_receipt_failure_after_allocation_closes_only_that_owned_result (test_browser_budget.Admission.test_receipt_failure_after_allocation_closes_only_that_owned_result) ... ok
+test_suite_cannot_hide_caught_receipt_failure_with_a_zero_exit (test_browser_budget.Admission.test_suite_cannot_hide_caught_receipt_failure_with_a_zero_exit) ... ok
+test_suite_preserves_nonzero_original_exit (test_browser_budget.Admission.test_suite_preserves_nonzero_original_exit) ... Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tools\browser_budget.py", line 243, in run_suite
+    execute_target(script, arguments)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1234, in _execute_mock_call
+    raise effect
+SystemExit: 9
+ok
+test_unavailable_or_invalid_probe_never_calls_allocator (test_browser_budget.Admission.test_unavailable_or_invalid_probe_never_calls_allocator) ... ok
+test_unwritable_admission_receipt_prevents_allocation (test_browser_budget.Admission.test_unwritable_admission_receipt_prevents_allocation) ... ok
+test_caught_child_dispatch_refusal_is_retained_and_real_child_is_registered (test_browser_budget.ChildDispatch.test_caught_child_dispatch_refusal_is_retained_and_real_child_is_registered) ... ok
+test_node_and_git_commands_remain_exact (test_browser_budget.ChildDispatch.test_node_and_git_commands_remain_exact) ... ok
+test_popen_forwarding_keeps_process_options_and_restores_original (test_browser_budget.ChildDispatch.test_popen_forwarding_keeps_process_options_and_restores_original) ... ok
+test_python_child_uses_same_interpreter_and_guard_with_original_arguments (test_browser_budget.ChildDispatch.test_python_child_uses_same_interpreter_and_guard_with_original_arguments) ... ok
+test_relative_script_resolves_against_child_cwd (test_browser_budget.ChildDispatch.test_relative_script_resolves_against_child_cwd) ... ok
+test_unknown_python_shapes_outside_scripts_and_runner_recursion_refuse (test_browser_budget.ChildDispatch.test_unknown_python_shapes_outside_scripts_and_runner_recursion_refuse) ... ok
+test_completed_children_keep_original_status_without_cleanup (test_browser_budget.ChildFinalization.test_completed_children_keep_original_status_without_cleanup) ... ok
+test_receipt_or_cleanup_failure_does_not_abandon_later_owned_child (test_browser_budget.ChildFinalization.test_receipt_or_cleanup_failure_does_not_abandon_later_owned_child) ... Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tools\browser_budget.py", line 173, in finish_children
+    try:child.wait(timeout=5)
+        ~~~~~~~~~~^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tests\test_browser_budget.py", line 186, in wait
+    raise subprocess.TimeoutExpired('owned fixture',timeout)
+subprocess.TimeoutExpired: Command 'owned fixture' timed out after 5 seconds
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tools\browser_budget.py", line 175, in finish_children
+    child.terminate();row['terminatedOwnedChild'] = True
+    ~~~~~~~~~~~~~~~^^
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tests\test_browser_budget.py", line 190, in terminate
+    if self.fail_cleanup:raise OSError('owned cleanup failed')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: owned cleanup failed
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tools\browser_budget.py", line 188, in finish_children
+    try:emit(row)
+        ~~~~^^^^^
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tests\test_browser_budget.py", line 209, in emit
+    def emit(row):rows.append(row);raise OSError('receipt failed')
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: receipt failed
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tools\browser_budget.py", line 188, in finish_children
+    try:emit(row)
+        ~~~~^^^^^
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tests\test_browser_budget.py", line 209, in emit
+    def emit(row):rows.append(row);raise OSError('receipt failed')
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: receipt failed
+ok
+test_unfinished_owned_child_is_bounded_and_never_counts_as_pass (test_browser_budget.ChildFinalization.test_unfinished_owned_child_is_bounded_and_never_counts_as_pass) ... ok
+test_ledger_requires_all_started_processes_finished_without_refusal (test_browser_budget.TargetAndLedger.test_ledger_requires_all_started_processes_finished_without_refusal) ... ok
+test_target_has_own_main_file_parent_path_cwd_and_argv (test_browser_budget.TargetAndLedger.test_target_has_own_main_file_parent_path_cwd_and_argv) ... ok
+test_temp_environment_is_bounded_and_set_before_dependency_import (test_browser_budget.TargetAndLedger.test_temp_environment_is_bounded_and_set_before_dependency_import) ... ok
+test_configured_output_reserves_fresh_nested_directory_and_rejects_retry (test_browser_output_routing.BrowserOutputRouting.test_configured_output_reserves_fresh_nested_directory_and_rejects_retry) ... ok
+test_exact_legacy_membership_and_actual_suite_output_initializers (test_browser_output_routing.BrowserOutputRouting.test_exact_legacy_membership_and_actual_suite_output_initializers) ... ok
+test_existing_file_cannot_be_replaced (test_browser_output_routing.BrowserOutputRouting.test_existing_file_cannot_be_replaced) ... ok
+test_missing_override_preserves_default_identity_without_reservation (test_browser_output_routing.BrowserOutputRouting.test_missing_override_preserves_default_identity_without_reservation) ... ok
+test_reflection_routes_both_real_output_paths_from_the_chosen_namespace (test_browser_output_routing.BrowserOutputRouting.test_reflection_routes_both_real_output_paths_from_the_chosen_namespace) ... ok
+test_relative_empty_and_filesystem_root_overrides_are_refused (test_browser_output_routing.BrowserOutputRouting.test_relative_empty_and_filesystem_root_overrides_are_refused) ... ok
+test_windows_override_must_stay_on_d_before_any_directory_is_created (test_browser_output_routing.BrowserOutputRouting.test_windows_override_must_stay_on_d_before_any_directory_is_created) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.747s
+
+OK
