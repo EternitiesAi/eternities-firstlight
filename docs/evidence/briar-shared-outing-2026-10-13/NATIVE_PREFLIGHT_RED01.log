@@ -1,0 +1,25 @@
+test_briar_outing_native (unittest.loader._FailedTest.test_briar_outing_native) ... ERROR
+
+======================================================================
+ERROR: test_briar_outing_native (unittest.loader._FailedTest.test_briar_outing_native)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_briar_outing_native
+Traceback (most recent call last):
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\unittest\loader.py", line 403, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "C:\Users\Dom\AppData\Local\Programs\Python\Python313\Lib\unittest\loader.py", line 346, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\test_briar_outing_native.py", line 7, in <module>
+    N=importlib.util.module_from_spec(spec);spec.loader.exec_module(N)
+                                            ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "<frozen importlib._bootstrap_external>", line 1019, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1156, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1214, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\tools\\briar_outing_browser.py'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

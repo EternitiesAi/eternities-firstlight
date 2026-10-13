@@ -1,3 +1,35 @@
+# Briar browser qualification prepared; no native result yet, 2026-10-13
+
+The Briar playable implementation remains `dbc5874593afe2d18b06ab17817f4beae9d653d3`
+in open draft PR72. This follow-up adds an installed bounded native caller and
+seven CPU admission/preservation tests; it changes no runtime, HTML, save schema,
+quest reward or camera behavior. Actual current early blade/bow cohort preparation
+passed against the reused STATION with frozen report SHA
+`9ba760ba359ccb661641c97570bf65d59d4469e8f659f8e34a3e445d5c145de6`.
+Those preparation checks allocated zero profiles and ran no browser.
+
+The caller imports INPUT_WORLD through Characters, uses real Companion buttons,
+checks immediate native writes before pagehide can heal a failure, and compares
+closed storage bytes to the next whole-Chromium startup. It is explicitly
+accelerated native automation when run. Complete mode requires all five earned
+cases plus the successful same-invocation current source receipt; early-only
+mode cannot claim returning-character or full-source qualification.
+
+Source07 was not launched after final preparation at5273360KiB, below6291456,
+on2026-10-13T07:58:53.9486987Z. No native/browser/video result is claimed.
+Keep original180/600 source deadlines, four workers and fresh6GiB host admission
+before source/native/clip launch. VM/guest/Claude Code remain excluded. ROOT and
+STATION are reused on D; no full-game copy, cleanup, shared install or billing
+change. Goal remains ACTIVE unfinished; independent heartbeat remains PAUSED.
+
+Next: admitted complete source/returning cohort, targeted native UI/restarts and
+both-camera pixels, then one short ordinary-RAF take. Retain failures and do not
+transfer older PR71 verification. Human play and physical GPU remain unqualified.
+
+---
+
+Earlier checkpoints below retain their original scope and epoch.
+
 # Briar review branch pushed; full qualification pending, 2026-10-13
 
 OPEN DRAFT PR72 https://github.com/EternitiesAi/eternities-firstlight/pull/72,
