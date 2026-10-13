@@ -1,3 +1,33 @@
+# Living Road supplied-kit gameplay implemented, qualification pending, 2026-10-12
+
+The parent-owned gameplay/living-road-carrier-20261012 branch builds from
+PR69 head aeed88e4783d88d1157c626fbe773f8bd9c8fac1. The existing patrol's
+final inspection now requires three supplied pieces fitted through visible
+controls. Stormfall billets or coppice bundle/lashings follow the player's
+saved allocation. Explicit Look keeps either camera; no extra inventory cost,
+reward, schema or XP change. Original once-only delivery and consignment
+remain separate. Only an actual live paid command shows Rill's receiving kit.
+Legacy ready saves still claim normally; reload does not invent live transport.
+
+Read docs/development/LIVING_ROAD_CARRIER_2026-10-12.md for fixed IDs, geometry,
+owner contract, source review and retained red/green results. Three fresh
+command-earned journeys closed0; targeted rules/art35 pass; latest custom UI
+23/23 and actual-App camera6 pass. Those are CPU/earned results, not current
+full/native/GPU/human qualification. Current source has145 modules/145 rule
+files. Both rebuilt HTML pages match3349355B SHA256
+c47f0d6b65d0ef11405761dc517d35639a45622cc5df066de17e490ce5fe3aa9.
+
+Next: push committed review source, verify the exact head in the reused
+independent checkout, then qualify visible current controls and brief footage
+through valid native admission. Earlier source/native failures remain intact.
+Ask Dom whether this feels like useful work or busywork and whether all guides
+are readable in both views. No human acceptance yet. Goal ACTIVE unfinished;
+heartbeat PAUSED. World9/Adventure12/Expedition1/WildSigns1 and all saves,
+histories, XP, gear/sockets, companion, housing, crafting and music preserved.
+VM/Claude Code/personal saves untouched; heavy work D, no additional full game,
+merge, public deploy or paid service.
+
+---
 # Complete source gate passes in the independent remote clone, 2026-10-12
 
 At pushed implementation49cd5d6adbe4029147cbaa14dd0cc7788b3c3561 /draft PR69,

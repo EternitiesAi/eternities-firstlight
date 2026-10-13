@@ -3,15 +3,15 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto');
 const C=require('../src/core.js'),A=require('../src/adventure.js'),AR=require('../src/arsenal.js'),T=require('../src/combat.js'),W=require('../src/world-foundations.js');
-const E=require('../src/earth-expedition.js'),F=require('../src/earth-fieldcraft.js'),S=require('../src/sandbox.js');
+const E=require('../src/earth-expedition.js'),F=require('../src/earth-fieldcraft.js'),S=require('../src/sandbox.js'),P=require('../src/earth-patrol-carrier.js');require('../src/engine.js');
 const {createHarness,earnedKit}=require('./realm_trails_journey.cjs');
 const ROOT=path.resolve(__dirname,'..'),copy=o=>JSON.parse(JSON.stringify(o)),dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 const hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 function journey({bow=false,veteran=false,output=null}={}){
  assert.equal(A.VERSION,12,'requires real Adventure12/Core/roster integration; no validator substitution');
  const variant=veteran?'veteran':bow?'fresh-bow':'fresh-blade',source=veteran?path.join(ROOT,'docs/evidence/world-production-2026-10-03/captures/returning-fit-final-01/FINAL_WORLD.json'):null;
- const h=createHarness(source?JSON.parse(fs.readFileSync(source,'utf8')):undefined),events=[],combats=[],claims=[],fieldcraftStages=[],ownerTransitions=[];
- const sources=['earth-expedition.js','earth-fieldcraft.js','core.js','adventure.js','combat.js','arsenal.js','world-foundations.js','elderweald-world.js'];
+ const h=createHarness(source?JSON.parse(fs.readFileSync(source,'utf8')):undefined),events=[],combats=[],claims=[],fieldcraftStages=[],carrierStages=[],ownerTransitions=[];
+ const sources=['earth-expedition.js','earth-fieldcraft.js','earth-patrol-carrier.js','core.js','adventure.js','combat.js','arsenal.js','world-foundations.js','elderweald-world.js'];
  const hashes=()=>Object.fromEntries(sources.map(file=>[file,hash(path.join(ROOT,'src',file))]));const initialHashes=hashes();
  // This caller owns its lease. Preserve createHarness's real changing serial;
  // persistence observations never substitute a fabricated context revision.
@@ -28,7 +28,7 @@ function journey({bow=false,veteran=false,output=null}={}){
  if(!veteran)earnedKit(h,bow);else{assert.equal(h.sim.state.adventure.equipment.weapon,'dawn_edge');assert.equal(h.sim.state.adventure.realmCraft.weapon,'dawn_edge');assert.equal(A.stats(h.sim.state.adventure).attack,51);h.walk(W.GATE.x,W.GATE.z);}
  const before=h.sim.snapshot(),initialWeapon=before.adventure.equipment.weapon,branch=bow?'managed-coppice':'stormfall-recovery';
  const snap=name=>{if(output){const dir=path.join(output,variant);fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(path.join(dir,name+'.json'),JSON.stringify(h.sim.snapshot(),null,2)+'\n');}};
- const command=(type,payload={})=>{const d=type.startsWith('patrol-')?E.patrol:E.definition;const result=E.command(h.context(),type,{quest:d.id,...payload},{save:h.save});assert.ok(result.ok,type+': '+result.error);const recorded={...payload};if(recorded.fittingTicket){delete recorded.fittingTicket;recorded.fittingProof='opaque current fitting authority; not serialized';}events.push({type,payload:recorded,result});return result;};
+ const command=(type,payload={})=>{const d=type.startsWith('patrol-')?E.patrol:E.definition;const result=E.command(h.context(),type,{quest:d.id,...payload},{save:h.save});assert.ok(result.ok,type+': '+result.error);const recorded={...payload};if(recorded.fittingTicket){delete recorded.fittingTicket;recorded.fittingProof='opaque current fitting authority; not serialized';}if(recorded.carrierTicket){delete recorded.carrierTicket;recorded.carrierProof='opaque current carrier authority; not serialized';}events.push({type,payload:recorded,result});return result;};
  const reload=realm=>{h.reload(realm);hook();};
  const balance=()=>({xp:h.sim.state.adventure.xp,coins:h.sim.state.adventure.coins,ore:h.sim.state.adventure.ore,wood:h.sim.state.sandbox.inventory.wood,fiber:h.sim.state.sandbox.inventory.fiber});
  const unchangedCombat=()=>({xp:h.sim.state.adventure.xp,coins:h.sim.state.adventure.coins,ore:h.sim.state.adventure.ore,drops:copy(h.sim.state.adventure.drops),defeated:copy(h.sim.state.adventure.defeated)});
@@ -79,6 +79,17 @@ function journey({bow=false,veteran=false,output=null}={}){
   const result=command('step',{step:'brace-root-channel',fittingTicket:ticket});assert.equal(result.warning,undefined,'earned commit consumes fitting before ordinary scene sync');assert.ok(h.sim.state.earthExpedition.story.steps.includes('brace-root-channel'));assert.equal(h.checkpoints.length,saveCount+1);assert.equal(F.consume(ticket).ok,false);assert.equal(F.current(h.sim),null);
   fieldcraftStages.push({operation:'fasten',step:'brace-root-channel',saved:true,consumed:true,onceOnly:true});snap('02B_BRACE_FITTED');
  }
+ function fitCarrier(run){
+  const before=h.sim.snapshot(),writes=h.checkpoints.length,bare=E.command(h.context(),'patrol-step',{quest:E.patrol.id,run,priorClaim:run-1,step:'inspect-glade'},{save:h.save});assert.equal(bare.ok,false);assert.deepEqual(h.sim.snapshot(),before);assert.equal(h.checkpoints.length,writes);
+  const started=P.begin(h.context());assert.ok(started.ok,started.error);let view=started.view,ticket;
+  while(view.activePiece){const id=view.activePiece,r=view.receivers.find(r=>r.pieceId===id);assert.ok(P.inspect(h.context(),started.plan,id,r.id).ok);
+   const wrong=P.seat(h.context(),started.plan,id);assert.equal(wrong.ok,false,'supplied starting pose needs actual correction');
+   assert.ok(P.adjust(h.context(),started.plan,{pieceId:id,receiverId:r.id,...r.target}).ok);const seated=P.seat(h.context(),started.plan,id);assert.ok(seated.ok,seated.error);view=seated.view;ticket=seated.ticket;
+   carrierStages.push({run,piece:id,receiver:r.id,wrongPoseRefused:true,seated:true});assert.deepEqual(h.sim.snapshot(),before);assert.equal(h.checkpoints.length,writes);
+  }
+  const result=command('patrol-step',{step:'inspect-glade',run,priorClaim:run-1,carrierTicket:ticket});assert.equal(result.warning,undefined);assert.equal(P.current(h.sim).status,'checked');assert.equal(h.checkpoints.length,writes+1);assert.equal(P.consume(ticket,result).ok,false);
+  carrierStages.push({run,operation:'record',saved:true,onceOnly:true});
+ }
  function circuit(run=null){
   const d=run===null?E.definition:E.patrol;
   for(const step of d.steps){
@@ -91,7 +102,7 @@ function journey({bow=false,veteran=false,output=null}={}){
     continue;
    }
    const choice=step.choices?.find(c=>c.id===branch),p=choice||step;h.walk(p.x,p.z);
-   if(run===null&&step.id==='brace-root-channel')fitBrace();else command(run===null?'step':'patrol-step',{step:step.id,...(choice?{branch:choice.id}:{}),...(run===null?{}:{run,priorClaim:run-1})});
+   if(run===null&&step.id==='brace-root-channel')fitBrace();else if(run!==null&&step.id==='inspect-glade')fitCarrier(run);else command(run===null?'step':'patrol-step',{step:step.id,...(choice?{branch:choice.id}:{}),...(run===null?{}:{run,priorClaim:run-1})});
    if(step===d.steps[0]){snap(run===null?'02_PARTIAL':'PATROL_'+run+'_PARTIAL');reload('earthlands');}
   }
  }
@@ -105,8 +116,11 @@ function journey({bow=false,veteran=false,output=null}={}){
  for(const run of[1,2]){
   h.home();h.walk(0,3);h.command('rest');h.walk(W.GATE.x,W.GATE.z);h.enter('earthlands');hook();h.walk(E.patrol.giver.x,E.patrol.giver.z);
   if(run===2){const beforeStale=h.sim.snapshot();assert.equal(E.command(h.context(),'patrol-accept',{quest:E.patrol.id,run:1,priorClaim:0},{save:h.save}).ok,false);assert.deepEqual(h.sim.snapshot(),beforeStale);}
-  command('patrol-accept',{run,priorClaim:run-1});circuit(run);snap('PATROL_'+run+'_READY');reload('earthlands');h.walk(E.patrol.giver.x,E.patrol.giver.z);
-  old=balance();const reward=command('patrol-claim',{run,priorClaim:run-1});assert.deepEqual(reward.reward,E.patrol.reward);claims.push({type:'patrol',run,reward:reward.reward,before:old,after:balance()});const once=h.sim.snapshot();assert.equal(command('patrol-claim',{run,priorClaim:run-1}).duplicate,true);assert.deepEqual(h.sim.snapshot(),once);snap('PATROL_'+run+'_CLAIMED');reload('earthlands');
+  command('patrol-accept',{run,priorClaim:run-1});circuit(run);snap('PATROL_'+run+'_READY');
+  // Run1 retains the original cold-ready claim route; run2 additionally proves
+  // live fitting survives the actual supported walk and original payment.
+  if(run===1)reload('earthlands');h.walk(E.patrol.giver.x,E.patrol.giver.z);if(run===2)assert.equal(P.current(h.sim).status,'checked');
+  old=balance();const reward=command('patrol-claim',{run,priorClaim:run-1});assert.deepEqual(reward.reward,E.patrol.reward);if(run===2)assert.equal(P.current(h.sim).status,'paid');else assert.equal(P.current(h.sim),null);claims.push({type:'patrol',run,reward:reward.reward,before:old,after:balance()});const once=h.sim.snapshot();assert.equal(command('patrol-claim',{run,priorClaim:run-1}).duplicate,true);assert.deepEqual(h.sim.snapshot(),once);snap('PATROL_'+run+'_CLAIMED');reload('earthlands');
  }
  h.home();h.walk(11,9);const fitBefore=h.sim.snapshot(),stats=A.stats(fitBefore.adventure),kind=bow?'shelter':'edge';
  const fit=E.bindingCommand(h.context(),initialWeapon,kind,{save:h.save});assert.ok(fit.ok,fit.error);const fitAfter=h.sim.snapshot(),afterStats=A.stats(fitAfter.adventure);
@@ -123,7 +137,7 @@ function journey({bow=false,veteran=false,output=null}={}){
  const after=h.sim.snapshot();for(const key of['equipment','owned','arsenal','pursuit','starter','realmCraft','classPath','road','beacon','crossing','earthStory','earthNotes','earthGathering','companion','defeated','drops','reward','relic','angelSeen'])assert.deepEqual(after.adventure[key],before.adventure[key],key+' retained across expedition');
  for(const key of['notes','score','scoreRevision','retreat','visitor','flowers','journeys','realmTrails'])assert.deepEqual(after[key],before[key],key+' retained');
  assert.deepEqual({xp:after.adventure.xp-before.adventure.xp,coins:after.adventure.coins-before.adventure.coins,ore:after.adventure.ore-before.adventure.ore,wood:after.sandbox.inventory.wood-before.sandbox.inventory.wood,fiber:after.sandbox.inventory.fiber-before.sandbox.inventory.fiber},{xp:55,coins:18,ore:6,wood:branch==='stormfall-recovery'?12:8,fiber:branch==='stormfall-recovery'?2:6});
- const finalHashes=hashes(),report={status:'passed',variant,source:source?{path:path.relative(ROOT,source),sha256:hash(source),label:'existing command-earned fully fitted returning character, actual prior normal-RAF capture final snapshot'}:{label:'fresh production character; start/gather/craft/range/socket all command-earned'},method:'actual Simulation/moveTo/WorldFoundations.segment/target-select/auto-toggle/Brace/projectile/ticks, Fieldcraft.begin/inspect/adjust/seat and E.command fittingTicket; durable in-memory full candidate holder',acceleratedTicks:true,browserPersistence:false,humanPacing:false,positionEdits:0,inventoryGrants:0,manualDamage:0,plantedDefeats:0,worldVersion:C.VERSION,adventureVersion:A.VERSION,branch,companionMayAssist:before.adventure.companion.bonded,claims,combats,events,legacyEvents:h.events,routes:h.routes,saveCount:h.checkpoints.length,fieldcraft:{sectionIds:F.GEOMETRY.sections.map(s=>s.id),inspectedReceiverCount:5,seatedMemberCount:4,stages:fieldcraftStages,leaseMethod:'caller-owned opaque generation renewed at actual harness enter/home/reload or owner tuple change; raw serial context revision remains unchanged',ownerTransitions},fitting:{weapon:initialWeapon,kind,cost:E.BINDING_COST,before:stats,after:afterStats,currentHPBefore:fitBefore.adventure.hp,currentHPAfter:fitAfter.adventure.hp,actualPostBindingDamagePackets:packets,arrowObserved,probe:'one newly accepted unpaid third patrol; only T.hit observation wrapper, restored before continuing'},sourceHashes:initialHashes,sourceDrift:JSON.stringify(initialHashes)!==JSON.stringify(finalHashes),harnessSha256:hash(__filename),canonicalPreservation:true};
+ const finalHashes=hashes(),report={status:'passed',variant,source:source?{path:path.relative(ROOT,source),sha256:hash(source),label:'existing command-earned fully fitted returning character, actual prior normal-RAF capture final snapshot'}:{label:'fresh production character; start/gather/craft/range/socket all command-earned'},method:'actual Simulation/moveTo/WorldFoundations.segment/target-select/auto-toggle/Brace/projectile/ticks, Fieldcraft and PatrolCarrier begin/inspect/adjust/seat plus gated E.command; durable in-memory full candidate holder',acceleratedTicks:true,browserPersistence:false,humanPacing:false,positionEdits:0,inventoryGrants:0,manualDamage:0,plantedDefeats:0,worldVersion:C.VERSION,adventureVersion:A.VERSION,branch,companionMayAssist:before.adventure.companion.bonded,claims,combats,events,legacyEvents:h.events,routes:h.routes,saveCount:h.checkpoints.length,fieldcraft:{sectionIds:F.GEOMETRY.sections.map(s=>s.id),inspectedReceiverCount:5,seatedMemberCount:4,stages:fieldcraftStages,leaseMethod:'caller-owned opaque generation renewed at actual harness enter/home/reload or owner tuple change; raw serial context revision remains unchanged',ownerTransitions},fitting:{weapon:initialWeapon,kind,cost:E.BINDING_COST,before:stats,after:afterStats,currentHPBefore:fitBefore.adventure.hp,currentHPAfter:fitAfter.adventure.hp,actualPostBindingDamagePackets:packets,arrowObserved,probe:'one newly accepted unpaid third patrol; only T.hit observation wrapper, restored before continuing'},carrier:{pieceIds:P.definition(branch).pieces.map(p=>p.id),stages:carrierStages,temporaryPreparation:true,savedExistingStepOnly:true,legacyReadyClaimsPreserved:true},sourceHashes:initialHashes,sourceDrift:JSON.stringify(initialHashes)!==JSON.stringify(finalHashes),harnessSha256:hash(__filename),canonicalPreservation:true};
  if(output)fs.writeFileSync(path.join(output,variant,'EARTH_EXPEDITION_JOURNEY_REPORT.json'),JSON.stringify(report,null,2)+'\n');return report;
 }
 if(require.main===module){const i=process.argv.indexOf('--output'),output=i>=0?path.resolve(process.argv[i+1]):null;const r=journey({bow:process.argv.includes('--bow'),veteran:process.argv.includes('--veteran'),output});console.log(JSON.stringify({status:r.status,variant:r.variant,claims:r.claims.length,combats:r.combats.length,commands:r.events.length+r.legacyEvents.filter(e=>e.type).length,walkedLegs:r.routes.length,saves:r.saveCount,fitting:r.fitting,sourceDrift:r.sourceDrift},null,2));}

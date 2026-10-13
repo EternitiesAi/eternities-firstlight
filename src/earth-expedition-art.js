@@ -1,7 +1,7 @@
 /* Read-only worksite changes. The quest ledger owns every transition. */
 (function(G){'use strict';
 const FLOOR=1.57,ROOM='world-earthlands',safe=['stormfall-recovery','managed-coppice'];
-function parts(ledger,pendingProjection){
+function parts(ledger,pendingProjection,carrierProjection){
  const story=ledger?.story;if(!story||!Array.isArray(story.steps))return[];
  const steps=new Set(story.steps),out=[],base={cameraSolid:false,cutaway:false,rough:.95,appearanceOnly:true};
  const add=(kind,p,s,c,role,extra={})=>out.push({kind,p,s,c,opt:{...base,expeditionPart:role,...extra}});
@@ -43,21 +43,22 @@ function parts(ledger,pendingProjection){
  // Borrowed checking equipment belongs to the accepted run. Old paid claims
  // never construct a new rack; first delivered stock and brace stay untouched.
  if(story.claimed&&inspection){
-  const x=-104.8,z=-104.2,done=inspection.steps.includes('inspect-glade'),fiber=story.branch==='managed-coppice';
+  const x=-104.8,z=-104.2,done=inspection.steps.includes('inspect-glade'),fiber=story.branch==='managed-coppice',live=G.RealmEarthPatrolCarrier?.isProjection(carrierProjection,ledger);
   for(const dx of[-.48,.48])add('timber-panel',[x+dx,FLOOR+.22,z],[.09,.44,.48],0x715b43,'patrol-kit-foot',{patrolRun:inspection.run});
   add('timber-panel',[x,FLOOR+.47,z],[1.16,.10,.58],0x947856,'patrol-kit-tray',{patrolRun:inspection.run});
-  if(fiber){
+  if(!live&&fiber){
    add('timber-panel',[x,FLOOR+.61,z],[.90,.18,.34],0xa2a279,'patrol-test-bundle',{patrolRun:inspection.run});
    for(const dx of[-.26,.26])add('box',[x+dx,FLOOR+.61,z],[done?.035:.07,.24,.40],done?0xd2c18c:0x93835f,done?'patrol-lashing-seated':'patrol-lashing-loose',{patrolRun:inspection.run});
-  }else for(let i=0;i<3;i++)add('timber-panel',[x-.36+i*.36,FLOOR+.61,z+(done?0:(i-1)*.06)],[.22,.18,.40],0xa28256,done?'patrol-billet-squared':'patrol-billet-check',{patrolRun:inspection.run,r:[0,done?0:(i-1)*.15,0]});
+  }else if(!live)for(let i=0;i<3;i++)add('timber-panel',[x-.36+i*.36,FLOOR+.61,z+(done?0:(i-1)*.06)],[.22,.18,.40],0xa28256,done?'patrol-billet-squared':'patrol-billet-check',{patrolRun:inspection.run,r:[0,done?0:(i-1)*.15,0]});
   add('box',[x,FLOOR+.529,z+.26],[.15,.018,.06],done?0x9fc6a0:0xd9b278,done?'patrol-kit-checked':'patrol-kit-pending',{patrolRun:inspection.run});
  }
  if(story.claimed){
   add('box',[-76,FLOOR+1.11,-14.735],[.24,.26,.018],0x91b982,'claimed-board-seal');
   add('octa',[-76,FLOOR+1.11,-14.721],[.13,.16,.023],0xe4d9ad,'claimed-board-mark');
  }
+ for(const p of G.RealmEarthPatrolCarrierArt?.parts(ledger,carrierProjection)||[])out.push(p);
  return out;
 }
-function draw(out,sim){if(sim?.room!==ROOM)return;for(const r of parts(sim.state.earthExpedition,G.RealmEarthFieldcraft?.current(sim))){out[r.kind]?.push({p:r.p,s:r.s,c:r.c,...r.opt});}}
+function draw(out,sim){if(sim?.room!==ROOM)return;for(const r of parts(sim.state.earthExpedition,G.RealmEarthFieldcraft?.current(sim),G.RealmEarthPatrolCarrier?.current(sim))){out[r.kind]?.push({p:r.p,s:r.s,c:r.c,...r.opt});}}
 const api=Object.freeze({parts,draw});G.RealmEarthExpeditionArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

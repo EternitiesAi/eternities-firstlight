@@ -4,6 +4,7 @@
  * Optional --earned-sources reads the separate command-earned journey receipts.
  */
 'use strict';
+require('../src/earth-patrol-carrier.js');require('../src/earth-patrol-carrier-ui.js');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
 const ROOT=path.resolve(__dirname,'..'),C=require('../src/core.js'),A=require('../src/adventure.js'),E=require('../src/earth-expedition.js'),W=require('../src/world-foundations.js');
 const AR=require('../src/arsenal.js'),R=require('../src/realm-trails.js'),CH=require('../src/characters.js');
@@ -23,17 +24,34 @@ function fixture({steps=[],claimed=false,branch=null,patrol=null,xp=0}={}){
  if(patrol)sim.state.earthExpedition.patrol=copy(patrol);sim.state.adventure.xp=xp;C.validate(sim.snapshot());
  const f={sim,active:'labelled-ui-fixture',revision:1,saves:[],commands:[],walks:[],toasts:[],boundCalls:0};
  f.save=value=>{f.saves.push(C.validate(value));return{ok:true};};sim.earthExpeditionSave=f.save;
- f.context=()=>({sim:f.sim,active:f.active,revision:f.revision});
+ f.lease=Object.freeze({});sim.fieldcraftOwnerLease=f.lease;sim.worldTrip={active:f.active,realm:'earthlands',home:copy(sim.returnPos)};
+ f.context=()=>({sim:f.sim,active:f.active,revision:f.revision,ownerLease:f.lease});
  f.rpg={get sim(){return f.sim;},get state(){return f.sim.state.adventure;},quest:'story',dialog:{open:false},open(tab){this.opened=tab;},close(){this.closed=true;},paint(){this.paints=(this.paints||0)+1;},api:{worldContext:f.context,toast:s=>f.toasts.push(s),project:()=>({visible:false}),walkLocal:(x,z)=>{f.walks.push({x,z});return f.sim.moveTo(x,z);},expeditionCommand:(type,payload)=>{f.commands.push({type,payload});return f.result=E.command(f.context(),type,payload,{save:f.save});},earthBinding:(weapon,kind)=>{f.boundCalls++;return f.result=E.bindingCommand(f.context(),weapon,kind,{save:f.save});}}};
  // Partial DOM fixture; current production helpers/accessors own dispatch and
  // tick. Do not replace new helpers with permissive facade callbacks.
+ f.rpg.api.fieldcraftContext=f.context;
  Object.setPrototypeOf(f.rpg,RPG.RPGUI.prototype);delete f.rpg.quest;f.rpg.quest='story';
  f.ui=new UI.ExpeditionUI(f.rpg);f.rpg.expedition=f.ui;f.rpg.civic=new CUI.LocalLifeUI(f.rpg);f.rpg.community=new BUI.BridgeCommunityUI(f.rpg);f.rpg.hellCampaign=new HCUI.HellCampaignUI(f.rpg);f.rpg.heavenCampaign=new HVUI.HeavenCampaignUI(f.rpg);f.rpg.atlantisCampaign=new ATUI.AtlantisCampaignUI(f.rpg);f.rpg.cosmosCampaign=new CCUI.CosmosCampaignUI(f.rpg);f.rpg.earthHomecoming=new EHUI.EarthHomecomingUI(f.rpg);f.rpg.wildSigns=new WSUI.WildSignsUI(f.rpg);A.syncScene(sim);return f;
 }
 const paid=()=>({steps:E.definition.steps.map(s=>s.id),claimed:true,branch:'managed-coppice'});
 const event=(type,id='',extra={})=>({dataset:{rpg:'expedition-'+type,id,...extra}});
 function buttons(html){return[...html.matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/g)].map(m=>({dataset:Object.fromEntries([...m[1].matchAll(/data-([\w-]+)="([^"]*)"/g)].map(a=>[a[1].replace(/-([a-z])/g,(_,c)=>c.toUpperCase()),a[2]])),label:m[2]}));}
-function choose(f,type,id='',extra={}){assert.equal(f.ui.action(event(type,id,extra)),true);return f.result;}
+function choose(f,type,id='',extra={}){
+ const el=type.startsWith('carrier-')?buttons(f.ui.carrier.panel()).find(b=>b.dataset.rpg==='expedition-'+type):event(type,id,extra);assert.ok(el,'actual generated control '+type);assert.equal(f.ui.action(el),true);return f.result;
+}
+function carrierInput(f,axis,value){
+ const html=f.ui.carrier.panel(),match=[...html.matchAll(/<input\b([^>]*)>/g)].find(m=>m[1].includes('id="carrier-'+axis+'-number"'));assert.ok(match);
+ const dataset=Object.fromEntries([...match[1].matchAll(/data-([\w-]+)="([^"]*)"/g)].map(a=>[a[1].replace(/-([a-z])/g,(_,c)=>c.toUpperCase()),a[2]]));return{dataset,value:String(value)};
+}
+function fitCarrierUI(f){
+ const P=globalThis.RealmEarthPatrolCarrier,before=f.sim.snapshot();if(!P.current(f.sim))choose(f,'carrier-begin');
+ let view=P.current(f.sim);assert.ok(view);
+ while(view.activePiece){const id=view.activePiece,r=view.receivers.find(r=>r.pieceId===id);choose(f,'carrier-inspect','',{piece:id,receiver:r.id});
+  for(const axis of['x','z','yaw'])assert.ok(f.ui.carrier.input(carrierInput(f,axis,axis==='yaw'?r.target[axis]*180/Math.PI:r.target[axis]*100)));
+  choose(f,'carrier-seat','',{piece:id,receiver:r.id});view=P.current(f.sim);
+ }
+ assert.equal(view.status,'ready');assert.deepEqual(f.sim.snapshot(),before,'actual UI preparation is transient');
+}
 function locate(f,p){const q=[[0,1.7],[1.7,0],[-1.7,0],[0,-1.7],[0,0]].map(([dx,dz])=>({x:p.x+dx,z:p.z+dz})).find(q=>W.walkable(f.sim.room,q.x,q.z)&&W.segment(f.sim.room,q,p));assert.ok(q,'supported labelled physical fixture '+p.id);f.sim.state.player={...q,yaw:0};}
 function literalFunction(source,name){const line=source.split(/\r?\n/).find(l=>l.startsWith('function '+name+'('));assert.ok(line,'actual app function '+name);return line;}
 function installRoadkeeperHost(source,context){
@@ -61,10 +79,42 @@ test('patrol terms and accepted final action remember either actual allocation',
  for(const branch of ['stormfall-recovery','managed-coppice']){
   const f=fixture({...paid(),branch,patrol:{lastClaim:0,active:{run:1,steps:E.patrol.steps.slice(0,-1).map(s=>s.id)}}});
   const before=f.sim.snapshot(),work=E.returnWork(f.sim);assert.equal(work.branch,branch);assert.ok(f.ui.page('expedition').html.includes(work.name));assert.equal(E.progress(f.sim).patrol.next[0].name,work.name);assert.equal(UI.routePoints(f.sim)[0].name,work.name);assert.deepEqual(f.sim.snapshot(),before);
-  locate(f,E.patrol.steps.at(-1));const moved=f.sim.snapshot();f.save=()=>({ok:false,error:'supplied-check refused'});assert.equal(choose(f,'patrol-step','inspect-glade',{run:'1',priorClaim:'0'}).ok,false);assert.deepEqual(f.sim.snapshot(),moved);
-  f.save=value=>{f.saves.push(C.validate(value));return{ok:true};};const result=choose(f,'patrol-step','inspect-glade',{run:'1',priorClaim:'0'});assert.ok(result.ok,result.error);assert.ok(result.text.includes(work.completed));assert.deepEqual(f.sim.state.sandbox.inventory,before.sandbox.inventory);assert.equal(f.sim.state.adventure.coins,before.adventure.coins);assert.ok(E.progress(f.sim).patrol.ready);
+  locate(f,E.patrol.steps.at(-1));const moved=f.sim.snapshot();fitCarrierUI(f);f.ui.reset('presentation');assert.equal(globalThis.RealmEarthPatrolCarrier.current(f.sim).status,'ready');f.save=()=>({ok:false,error:'supplied-check refused'});assert.equal(choose(f,'carrier-record').ok,false);assert.deepEqual(f.sim.snapshot(),moved);
+  f.save=value=>{f.saves.push(C.validate(value));return{ok:true};};const result=choose(f,'carrier-record');assert.ok(result.ok,result.error);assert.ok(result.text.includes(work.completed));assert.deepEqual(f.sim.state.sandbox.inventory,before.sandbox.inventory);assert.equal(f.sim.state.adventure.coins,before.adventure.coins);assert.ok(E.progress(f.sim).patrol.ready);
  }
 });
+test('carrier controls from an older run or generation cannot operate current identical pieces',()=>{
+ const P=globalThis.RealmEarthPatrolCarrier,f=fixture({...paid(),branch:'stormfall-recovery',patrol:{lastClaim:0,active:{run:1,steps:E.patrol.steps.slice(0,4).map(s=>s.id)}}});locate(f,E.patrol.steps.at(-1));
+ const oldBegin=buttons(f.ui.carrier.panel()).find(b=>b.dataset.rpg==='expedition-carrier-begin');choose(f,'carrier-begin');
+ const stale=buttons(f.ui.carrier.panel()).filter(b=>['expedition-carrier-inspect','expedition-carrier-seat'].includes(b.dataset.rpg)),oldInput=carrierInput(f,'x',-36);
+ fitCarrierUI(f);stale.push(buttons(f.ui.carrier.panel()).find(b=>b.dataset.rpg==='expedition-carrier-record'));const oldCancel=buttons(f.ui.carrier.panel()).find(b=>b.dataset.rpg==='expedition-carrier-cancel');
+ choose(f,'carrier-record');assert.equal(f.ui.action(oldCancel),true);assert.equal(P.current(f.sim).status,'checked','stale unrecorded cancel cannot discard saved inspection recognition');locate(f,E.patrol.giver);assert.ok(choose(f,'patrol-claim','',{run:'1',priorClaim:'0'}).ok);
+ assert.ok(E.command(f.context(),'patrol-accept',{quest:E.patrol.id,run:2,priorClaim:1},{save:f.save}).ok);
+ // Labelled ready-prefix fixture for stale controls, not earned run2 combat.
+ f.sim.state.earthExpedition.patrol.active.steps=E.patrol.steps.slice(0,4).map(s=>s.id);locate(f,E.patrol.steps.at(-1));choose(f,'carrier-begin');const currentInput=carrierInput(f,'x',0);fitCarrierUI(f);
+ const before=f.sim.snapshot(),projected=P.current(f.sim),writes=f.saves.length;
+ for(const el of[oldBegin,...stale])assert.equal(f.ui.action(el),true);assert.equal(f.ui.carrier.input(oldInput),true);
+ assert.deepEqual(f.sim.snapshot(),before);assert.deepEqual(P.current(f.sim),projected);assert.equal(f.saves.length,writes);assert.ok(f.toasts.some(s=>/older run or fitting/.test(s)));
+ currentInput.dataset.carrierStamp='invented';assert.equal(f.ui.carrier.input(currentInput),true);assert.deepEqual(P.current(f.sim),projected);
+ choose(f,'carrier-record');assert.ok(E.progress(f.sim).patrol.ready);assert.equal(f.sim.state.earthExpedition.patrol.active.run,2);
+});
+
+test('native-like intermediate number editing retains the control and last valid world pose',()=>{
+ const P=globalThis.RealmEarthPatrolCarrier,f=fixture({...paid(),patrol:{lastClaim:0,active:{run:1,steps:E.patrol.steps.slice(0,4).map(s=>s.id)}}});locate(f,E.patrol.steps.at(-1));choose(f,'carrier-begin');
+ const input=carrierInput(f,'x',''),before=P.current(f.sim),paints=f.rpg.paints,seat={disabled:false},notice={textContent:''},feedback={textContent:''};
+ const root={querySelector:s=>s==='[data-carrier-notice]'?notice:s==='[data-carrier-feedback]'?feedback:seat,querySelectorAll:()=>[input]};input.closest=()=>root;
+ assert.equal(f.ui.carrier.input(input),true);assert.equal(input.value,'');assert.equal(seat.disabled,true);assert.deepEqual(P.current(f.sim),before);
+ input.value='-';assert.equal(f.ui.carrier.input(input),true);assert.equal(input.value,'-');assert.equal(seat.disabled,true);assert.deepEqual(P.current(f.sim),before);assert.equal(f.rpg.paints,paints,'input never replaces the native controls');
+ input.value='-1';assert.equal(f.ui.carrier.input(input),true);assert.equal(input.value,'-1');assert.ok(P.current(f.sim));
+});
+
+test('actual generated tray Look delegates private proof and closes without repaint or command',()=>{
+ const P=globalThis.RealmEarthPatrolCarrier,f=fixture({...paid(),patrol:{lastClaim:0,active:{run:1,steps:E.patrol.steps.slice(0,4).map(s=>s.id)}}});locate(f,E.patrol.steps.at(-1));choose(f,'carrier-begin');
+ let calls=0;f.rpg.api.frameCarrier=v=>{calls++;assert.ok(P.isProjection(v,f.sim.state.earthExpedition));return{ok:true,text:'Synthetic host observer only'};};f.rpg.close=()=>{f.closed=(f.closed||0)+1;};
+ const before=f.sim.snapshot(),writes=f.saves.length,commands=f.commands.length,paints=f.rpg.paints;choose(f,'carrier-look');assert.equal(calls,1);assert.equal(f.closed,1);assert.equal(f.rpg.paints,paints);assert.deepEqual(f.sim.snapshot(),before);assert.equal(f.saves.length,writes);assert.equal(f.commands.length,commands);assert.ok(P.current(f.sim));
+ for(const raw of[undefined,Promise.resolve({ok:true}),{}]){f.rpg.api.frameCarrier=()=>raw;choose(f,'carrier-look');assert.equal(f.closed,1);assert.match(f.toasts.at(-1),/no synchronous confirmation/);assert.ok(P.current(f.sim));}
+});
+
 test('old ready run claim refusal retains its checked kit and successful claim settles it once',()=>{
  const Art=require('../src/earth-expedition-art.js'),f=fixture({...paid(),patrol:{lastClaim:0,active:{run:1,steps:E.patrol.steps.map(s=>s.id)}}});const before=f.sim.snapshot(),parts=Art.parts(f.sim.state.earthExpedition);assert.ok(parts.some(p=>p.opt.expeditionPart==='patrol-kit-checked'));
  f.save=()=>({ok:false,error:'claim refused'});assert.equal(choose(f,'patrol-claim','',{run:'1',priorClaim:'0'}).ok,false);assert.deepEqual(f.sim.snapshot(),before);assert.deepEqual(Art.parts(f.sim.state.earthExpedition),parts);
@@ -224,6 +274,6 @@ if(arg('--earned-sources'))test('separate command-earned snapshots render accept
  }
 });
 
-const report={method:'CPU production page/action/rule/Store qualification; explicit DOM/event/position/history stubs. Not native browser, new earned combat, RAF, hardware or human acceptance.',head:require('node:child_process').execFileSync('git',['rev-parse','HEAD'],{cwd:ROOT,encoding:'utf8'}).trim(),harnessSha256:hash(__filename),sourceHashes:Object.fromEntries(['src/earth-expedition-ui.js','src/earth-fieldcraft.js','src/earth-fieldcraft-ui.js','src/world-foundations-ui.js','src/rpg-ui.js','src/app.js','src/earth-expedition.js','src/core.js','src/adventure.js','src/characters.js'].map(p=>[p,hash(path.join(ROOT,p))])),cases:results.length,passed:results.filter(r=>r.ok).length,failed:results.filter(r=>!r.ok).length,results,evidence};
+const report={method:'CPU production page/action/rule/Store qualification; explicit DOM/event/position/history stubs. Not native browser, new earned combat, RAF, hardware or human acceptance.',head:require('node:child_process').execFileSync('git',['rev-parse','HEAD'],{cwd:ROOT,encoding:'utf8'}).trim(),harnessSha256:hash(__filename),sourceHashes:Object.fromEntries(['src/earth-patrol-carrier.js','src/earth-patrol-carrier-ui.js','src/earth-patrol-carrier-art.js','src/earth-expedition-ui.js','src/earth-fieldcraft.js','src/earth-fieldcraft-ui.js','src/world-foundations-ui.js','src/rpg-ui.js','src/app.js','src/earth-expedition.js','src/core.js','src/adventure.js','src/characters.js'].map(p=>[p,hash(path.join(ROOT,p))])),cases:results.length,passed:results.filter(r=>r.ok).length,failed:results.filter(r=>!r.ok).length,results,evidence};
 if(arg('--output')){const out=path.resolve(arg('--output'));if(process.platform==='win32')assert.match(out,/^D:/i,'local heavy output belongs on D');fs.mkdirSync(out,{recursive:true});fs.writeFileSync(path.join(out,'EARTH_EXPEDITION_UI_REPORT.json'),JSON.stringify(report,null,2)+'\n');}
 console.log('Earth expedition CPU UI: '+report.passed+'/'+report.cases+' cases passed; '+report.failed+' failed.');if(report.failed)process.exitCode=1;

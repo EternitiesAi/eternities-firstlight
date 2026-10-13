@@ -5100,10 +5100,151 @@ function consume(ticket){
 function cancel(plan){const r=plan&&typeof plan==='object'?plans.get(plan):null;if(!r)return fail('Unknown fitting plan.');r.cancelled=true;r.epoch++;if(r.ticket){const t=tickets.get(r.ticket);if(t)t.used=true;}return{ok:true};}
 const api=Object.freeze({GEOMETRY,previewBounds,begin,inspect,adjust,seat,validate,consume,cancel,projection,isProjection,current});G.RealmEarthFieldcraft=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
+</script><script>/* Three job-supplied pieces. Transient geometry and command witnesses only;
+ * the existing expedition ledger/saver remain the sole payout authority. */
+(function(G){'use strict';
+const ROOM='world-earthlands',STEP='inspect-glade',KIND='earth-patrol-carrier-v1';
+const plans=new WeakMap(),tickets=new WeakMap(),views=new WeakMap(),claims=new WeakMap(),bySim=new WeakMap();
+const fail=error=>({ok:false,error}),copy=v=>JSON.parse(JSON.stringify(v)),rad=n=>n*Math.PI/180;
+function freeze(v){if(v&&typeof v==='object'){Object.values(v).forEach(freeze);Object.freeze(v);}return v;}
+const GEOMETRY=freeze({kind:KIND,room:ROOM,center:[-104.8,2.18,-104.2],workPoint:{x:-106,z:-105,y:1.57},
+ tray:{halfX:.58,halfZ:.29,top:2.09},indicator:{minX:-.075,maxX:.075,minZ:.23,maxZ:.29},epsilon:2e-5,
+ previewBounds:{x:{min:-.5,max:.5},z:{min:-.15,max:.15},yaw:{min:rad(-20),max:rad(20)}}});
+const piece=(id,size,x,width,depth,tx,tz,yaw,initial)=>({id,receiverId:'carrier-'+id+'-receiver',size,target:{x,z:0,yaw:0},receiver:{width,depth},tolerance:{x:tx,z:tz,yaw:rad(yaw)},initial});
+const DEFINITIONS=freeze({
+ 'stormfall-recovery':{branch:'stormfall-recovery',pieces:[-.36,0,.36].map((x,i)=>piece('billet-'+i,[.22,.18,.40],x,.30,.46,.025,.020,3,{x,z:(i-1)*.06,yaw:(i-1)*.15||.12}))},
+ 'managed-coppice':{branch:'managed-coppice',pieces:[
+  piece('bundle',[.90,.18,.34],0,.96,.40,.015,.010,2,{x:.04,z:0,yaw:.10}),
+  piece('lashing-left',[.07,.24,.40],-.26,.12,.42,.010,.005,3,{x:-.23,z:-.035,yaw:.10}),
+  piece('lashing-right',[.07,.24,.40],.26,.12,.42,.010,.005,3,{x:.23,z:-.035,yaw:-.10})]}
+});
+const definition=branch=>typeof branch==='string'&&Object.hasOwn(DEFINITIONS,branch)?DEFINITIONS[branch]:null,wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
+const opaque=v=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.isFrozen(v)&&Reflect.ownKeys(v).length===0&&(Object.getPrototypeOf(v)===Object.prototype||Object.getPrototypeOf(v)===null);
+function ledger(sim){try{return G.RealmEarthExpedition.validate(sim?.state?.earthExpedition);}catch{return null;}}
+function owner(ctx){
+ const sim=ctx?.sim,a=sim?.state?.adventure,t=sim?.worldTrip;
+ return !!sim&&typeof ctx.active==='string'&&ctx.active&&Number.isSafeInteger(ctx.revision)&&ctx.revision>=0&&
+  opaque(ctx.ownerLease)&&sim.fieldcraftOwnerLease===ctx.ownerLease&&sim.room===ROOM&&!sim.worldDive&&
+  a?.started&&Number.isFinite(a.hp)&&a.hp>0&&Number.isSafeInteger(a.revision)&&Number.isSafeInteger(a.deaths)&&
+  t?.active===ctx.active&&t.realm==='earthlands'&&sim.returnPos&&[sim.returnPos.x,sim.returnPos.z,sim.returnPos.yaw].every(Number.isFinite)&&JSON.stringify(t.home)===JSON.stringify(sim.returnPos);
+}
+function at(sim){try{return G.RealmEarthExpedition.at(sim,GEOMETRY.workPoint);}catch{return false;}}
+function validOwner(r,ctx){
+ const s=ctx?.sim,a=s?.state?.adventure;
+ return !!r&&!r.cancelled&&owner(ctx)&&r.sim===s&&r.state===s.state&&r.adventure===a&&r.active===ctx.active&&r.lease===ctx.ownerLease&&
+  r.trip===s.worldTrip&&r.earthTrip===s.earthTrip&&r.home===JSON.stringify(s.returnPos)&&r.tripValue===JSON.stringify(s.worldTrip)&&r.deaths===a.deaths;
+}
+const remembered=r=>({sim:r.sim,active:r.active,revision:r.revision,ownerLease:r.lease});
+function check(r,ctx,physical=false){
+ if(!validOwner(r,ctx))return fail('This character or outing no longer owns the supplied kit. Recorded work stays.');
+ const l=ledger(r.sim),p=l?.patrol;
+ if(!l?.story.claimed||l.story.branch!==r.branch)return fail('Read the current remembered allocation.');
+ if(r.phase==='paid'){
+  if(p.lastClaim!==r.run||p.active!==null)return fail('This receiving scene belongs to its paid run only.');
+ }else if(p?.lastClaim!==r.priorClaim||p.active?.run!==r.run||JSON.stringify(l)!==r.ledgerText)return fail('The accepted patrol changed. Read its current work.');
+ if(r.phase==='fitting'&&r.sim.state.adventure.revision!==r.startRevision)return fail('The unfinished work context changed. Inspect the kit again.');
+ if(physical&&!at(r.sim))return fail('Stand beside the supplied glade checking tray to handle its pieces.');
+ return{ok:true};
+}
+function frame(r,p,pose){
+ const bundle=r.definition.pieces[0].id==='bundle'&&p.id!=='bundle'?r.poses.get('bundle'):null;
+ if(!bundle)return{x:pose.x,z:pose.z,yaw:pose.yaw};
+ const c=Math.cos(bundle.yaw),s=Math.sin(bundle.yaw);return{x:bundle.x+c*pose.x+s*pose.z,z:bundle.z-s*pose.x+c*pose.z,yaw:bundle.yaw+pose.yaw};
+}
+function corners(r,p,pose){
+ const f=frame(r,p,pose),m=G.RealmEngine.M.compose(GEOMETRY.center[0]+f.x,GEOMETRY.center[1],GEOMETRY.center[2]+f.z,...p.size,0,f.yaw,0),out=[];
+ for(const x of[-.5,.5])for(const y of[-.5,.5])for(const z of[-.5,.5])out.push(G.RealmEngine.M.transform(m,[x,y,z]));return out;
+}
+function clearance(r,p,pose){
+ const eps=GEOMETRY.epsilon,q=corners(r,p,pose).map(v=>({x:v[0]-GEOMETRY.center[0],z:v[2]-GEOMETRY.center[2]}));
+ if(q.some(v=>Math.abs(v.x)>GEOMETRY.tray.halfX+eps||Math.abs(v.z)>GEOMETRY.tray.halfZ+eps))return false;
+ const i=GEOMETRY.indicator,minX=Math.min(...q.map(v=>v.x)),maxX=Math.max(...q.map(v=>v.x)),minZ=Math.min(...q.map(v=>v.z)),maxZ=Math.max(...q.map(v=>v.z));
+ return maxX<=i.minX+eps||minX>=i.maxX-eps||maxZ<=i.minZ+eps||minZ>=i.maxZ-eps;
+}
+function fits(r,p,pose){
+ const eps=GEOMETRY.epsilon,t=p.target;
+ if(Math.abs(pose.x-t.x)>p.tolerance.x+eps||Math.abs(pose.z-t.z)>p.tolerance.z+eps||Math.abs(wrap(pose.yaw))>p.tolerance.yaw+1e-12||!clearance(r,p,pose))return false;
+ const f=frame(r,p,p.target),c=Math.cos(f.yaw),s=Math.sin(f.yaw),targetX=GEOMETRY.center[0]+f.x,targetZ=GEOMETRY.center[2]+f.z;
+ const local=corners(r,p,pose).map(v=>{const x=v[0]-targetX,z=v[2]-targetZ;return{x:c*x-s*z,z:s*x+c*z};});
+ if(local.some(v=>Math.abs(v.x)>p.receiver.width/2+eps||Math.abs(v.z)>p.receiver.depth/2+eps))return false;
+ if(p.id.startsWith('lashing')){
+  // Preserve the seated bundle frame; the transverse ends must extend past
+  // both bundle faces. Intended bundle/strap overlap is not an obstruction.
+  const ends=[-.20,.20].map(z=>[-.035,.035].map(x=>pose.z-Math.sin(pose.yaw)*x+Math.cos(pose.yaw)*z));
+  if(Math.max(...ends[0])>-.185+eps||Math.min(...ends[1])<.185-eps)return false;
+ }
+ return true;
+}
+function projection(plan){
+ const r=plans.get(plan);if(!r||!check(r,remembered(r)).ok)return null;
+ const active=r.phase==='fitting'?r.definition.pieces[r.seated.length]:null;
+ const v=freeze({kind:KIND+'-projection',branch:r.branch,run:r.run,status:r.phase==='fitting'?(active?'fitting':'ready'):r.phase,
+  activePiece:active?.id??null,complete:r.seated.length===3,
+  pieces:r.definition.pieces.map(p=>{const pose=r.poses.get(p.id),f=frame(r,p,pose);return{id:p.id,size:[...p.size],pose:{...pose},position:[GEOMETRY.center[0]+f.x,GEOMETRY.center[1],GEOMETRY.center[2]+f.z],yaw:f.yaw,corners:corners(r,p,pose),seated:r.seated.includes(p.id),preview:p===active,fits:fits(r,p,pose)};}),
+  receivers:r.definition.pieces.map(p=>{const f=frame(r,p,p.target);return{id:p.receiverId,pieceId:p.id,target:{...p.target},position:[GEOMETRY.center[0]+f.x,GEOMETRY.center[1],GEOMETRY.center[2]+f.z],yaw:f.yaw,width:p.receiver.width,depth:p.receiver.depth,inspected:r.inspected.has(p.id),frame:p.id.startsWith('lashing')?'seated-bundle':'tray'};})});
+ views.set(v,{r,epoch:r.epoch});return v;
+}
+function isProjection(v,l){const q=v&&typeof v==='object'?views.get(v):null;return !!q&&q.epoch===q.r.epoch&&(l===undefined||l===q.r.sim.state.earthExpedition)&&check(q.r,remembered(q.r)).ok;}
+function current(sim){const p=bySim.get(sim);return p?projection(p):null;}
+function begin(ctx){
+ if(!owner(ctx)||!at(ctx.sim))return fail('Reach the glade tray with the current Earth outing and kit.');
+ const l=ledger(ctx.sim),p=l?.patrol.active,d=definition(l?.story.branch);
+ if(!d||!l.story.claimed||!p||p.steps.includes(STEP)||!G.RealmEarthExpedition.patrol.steps.slice(0,4).every(s=>p.steps.includes(s.id)))return fail('Complete this accepted patrol’s bank inspection before fitting its supplied kit.');
+ const previous=bySim.get(ctx.sim);if(previous)cancel(previous);
+ const s=ctx.sim,r={sim:s,state:s.state,adventure:s.state.adventure,active:ctx.active,lease:ctx.ownerLease,revision:ctx.revision,
+  trip:s.worldTrip,earthTrip:s.earthTrip,home:JSON.stringify(s.returnPos),tripValue:JSON.stringify(s.worldTrip),deaths:s.state.adventure.deaths,
+  startRevision:s.state.adventure.revision,branch:d.branch,run:p.run,priorClaim:l.patrol.lastClaim,ledgerText:JSON.stringify(l),definition:d,
+  poses:new Map(d.pieces.map(p=>[p.id,{...p.initial}])),inspected:new Set(),seated:[],phase:'fitting',cancelled:false,ticket:null,epoch:0};
+ const plan=Object.freeze({kind:KIND+'-plan'});plans.set(plan,r);bySim.set(s,plan);return{ok:true,plan,view:projection(plan)};
+}
+function active(ctx,plan,id){
+ const r=plans.get(plan),c=check(r,ctx,true);if(!c.ok)return c;
+ const p=r.phase==='fitting'?r.definition.pieces[r.seated.length]:null;
+ if(!p||p.id!==id)return fail('Use this run’s current supplied piece; previous controls are stale.');r.revision=ctx.revision;return{ok:true,r,p};
+}
+function inspect(ctx,plan,id,receiver){const c=active(ctx,plan,id);if(!c.ok)return c;if(receiver!==c.p.receiverId)return fail('Inspect this piece’s assigned tray receiver.');c.r.inspected.add(id);c.r.epoch++;return{ok:true,view:projection(plan)};}
+function adjust(ctx,plan,pose){
+ const c=active(ctx,plan,pose?.pieceId);if(!c.ok)return c;const{r,p}=c,b=GEOMETRY.previewBounds;
+ if(pose.receiverId!==p.receiverId||!['x','z','yaw'].every(k=>Number.isFinite(pose[k])&&pose[k]>=b[k].min&&pose[k]<=b[k].max))return fail('Use finite placement controls within the supplied tray bounds.');
+ const next={x:pose.x,z:pose.z,yaw:pose.yaw},candidate={...r,poses:new Map(r.poses)};candidate.poses.set(p.id,next);
+ // A bundle edit also transforms its waiting lashings. Keep the whole
+ // projected supplied kit on the tray before accepting any changed pose.
+ if(!r.definition.pieces.every(q=>clearance(candidate,q,candidate.poses.get(q.id))))return fail('Keep every supplied piece on the tray and clear of the inspection tab. Your last pose stays.');
+ r.poses.set(p.id,next);r.epoch++;return{ok:true,view:projection(plan)};
+}
+function seat(ctx,plan,id){
+ const c=active(ctx,plan,id);if(!c.ok)return c;const{r,p}=c;
+ if(!r.inspected.has(id)||!fits(r,p,r.poses.get(id)))return fail('Inspect the receiver, align this supplied piece and leave its packing clearance before seating.');
+ r.seated.push(id);r.epoch++;
+ if(r.seated.length===3){r.ticket=Object.freeze({kind:KIND+'-fitting'});tickets.set(r.ticket,{r,used:false});}
+ return{ok:true,view:projection(plan),...(r.ticket?{ticket:r.ticket}:{})};
+}
+function validate(ctx,ticket){const t=tickets.get(ticket);if(!t||t.used)return fail('Three current supplied pieces must be inspected and seated.');const c=check(t.r,ctx,true);if(!c.ok)return c;return t.r.seated.length===3&&t.r.definition.pieces.every(p=>fits(t.r,p,t.r.poses.get(p.id)))?{ok:true}:fail('Fit all three pieces before recording.');}
+function consume(ticket,result){
+ const t=tickets.get(ticket);if(!t||t.used)return fail('This fitting has already ended.');const r=t.r,s=r.sim,l=ledger(s),expected=JSON.parse(r.ledgerText);expected.patrol.active.steps.push(STEP);
+ if(!validOwner(r,remembered(r))||!at(s)||s.state.adventure.revision!==r.startRevision+1||JSON.stringify(l)!==JSON.stringify(expected)||!G.RealmEarthExpedition.confirmed(result,s,'patrol-step',r.run,STEP))return fail('Only this run’s actual saved inspection can consume the fitting.');
+ t.used=true;r.phase='checked';r.ledgerText=JSON.stringify(l);r.epoch++;return{ok:true};
+}
+function prepareClaim(ctx){
+ const plan=bySim.get(ctx?.sim),r=plan?plans.get(plan):null;if(r?.phase!=='checked'||!check(r,ctx).ok)return null;
+ const a=Object.freeze({kind:KIND+'-claim'});claims.set(a,{r,revision:ctx.sim.state.adventure.revision,used:false});return a;
+}
+function acknowledgeClaim(ticket,result){
+ const t=claims.get(ticket);if(!t||t.used)return fail('No live receiving acknowledgement.');const r=t.r,s=r.sim,l=ledger(s);
+ if(r.phase!=='checked'||!validOwner(r,remembered(r))||s.state.adventure.revision!==t.revision+1||l?.story.branch!==r.branch||l?.patrol.lastClaim!==r.run||l.patrol.active!==null||!G.RealmEarthExpedition.confirmed(result,s,'patrol-claim',r.run))return fail('Only the original saved payment can acknowledge this carrier.');
+ t.used=true;r.phase='paid';r.epoch++;return{ok:true};
+}
+function cancel(plan){const r=plans.get(plan);if(!r)return fail('Unknown carrier plan.');r.cancelled=true;r.epoch++;if(r.ticket)tickets.get(r.ticket).used=true;return{ok:true};}
+const api=Object.freeze({GEOMETRY,definition,begin,inspect,adjust,seat,validate,consume,prepareClaim,acknowledgeClaim,cancel,projection,isProjection,current});
+G.RealmEarthPatrolCarrier=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
 </script><script>/* ET11/ET12-inspired local work. Pure definitions and candidate transactions;
  * actual movement/combat and the durable saver remain production authorities. */
 (function(G){'use strict';
-const clone=o=>JSON.parse(JSON.stringify(o)),fail=error=>({ok:false,error}),MAX_RUN=1000000;
+const clone=o=>JSON.parse(JSON.stringify(o)),fail=error=>({ok:false,error}),MAX_RUN=1000000,commandCommits=new WeakMap();
+// A result witness exists only after this command's synchronous durable commit.
+// Copied success objects and arbitrary direct commit() calls confer no authority.
+function confirmed(result,sim,type,run,step){const c=result&&typeof result==='object'?commandCommits.get(result):null;return !!c&&c.sim===sim&&c.state===sim.state&&c.adventure===sim.state.adventure&&c.type===type&&c.run===run&&c.step===step&&c.afterRevision===sim.state.adventure.revision&&c.ledger===JSON.stringify(sim.state.earthExpedition);}
 function freeze(o){if(o&&typeof o==='object'){Object.values(o).forEach(freeze);Object.freeze(o);}return o;}
 const point=(id,name,kind,x,z,requires,text,completed=name+' recorded.')=>({id,name,kind,x,z,y:1.57,medium:'dry',requires,text,completed});
 const giver={id:'elderweald-rill',name:'Rill · forestkeeper',x:-67,z:-4,y:1.57,medium:'dry'};
@@ -5223,7 +5364,7 @@ function command(ctx,type,payload={},io){
  const repeat=type.startsWith('patrol-'),d=repeat?patrol:definition;if(payload.quest!==d.id)return fail('Read this exact expedition contract before acting.');
  let current;try{current=validate(sim.state.earthExpedition);}catch(e){return fail(e.message);}
  if(repeat){if(!Number.isSafeInteger(payload.run)||payload.run<1||payload.run>MAX_RUN||payload.priorClaim!==payload.run-1)return fail('This patrol invitation has an invalid run identity.');if(type==='patrol-claim'&&payload.run<=current.patrol.lastClaim)return{ok:true,duplicate:true,text:'That accepted patrol was already paid. No new run was claimed.'};if(payload.priorClaim!==current.patrol.lastClaim)return fail('This patrol invitation is stale. Read the current run and payment again.');}
- const candidate=sim.snapshot();candidate.earthExpedition=clone(current);const r=repeat?candidate.earthExpedition.patrol:candidate.earthExpedition.story;let text,reward=null,fittingRules=null,fittingTicket=null;
+ const candidate=sim.snapshot();candidate.earthExpedition=clone(current);const r=repeat?candidate.earthExpedition.patrol:candidate.earthExpedition.story;let text,reward=null,fittingRules=null,fittingTicket=null,claimRules=null,claimTicket=null;
  if(type==='accept'||type==='patrol-accept'){
   if(!at(sim,giver))return fail('Speak to Rill at the camp to explicitly accept this work.');
   if(repeat){if(!current.story.claimed)return fail('Claim the first living-road delivery before accepting a patrol.');if(r.active)return{ok:true,duplicate:true,text:'This exact patrol is already accepted; its progress is retained.'};r.active={run:payload.run,steps:[]};}
@@ -5242,6 +5383,13 @@ function command(ctx,type,payload={},io){
    if(fitted?.then||fitted?.ok!==true)return fail(fitted?.error||'Inspect and seat all four supplied sections before fastening.');
    fittingRules=F;fittingTicket=payload.fittingTicket;
   }
+  if(repeat&&s.id==='inspect-glade'){
+   const P=G.RealmEarthPatrolCarrier;
+   if(typeof P?.validate!=='function'||typeof P?.consume!=='function')return fail('The supplied glade fitting rules are unavailable. Inspect and seat the three pieces before recording.');
+   let fitted;try{fitted=P.validate(ctx,payload.carrierTicket);}catch(e){return fail('Glade fitting refused: '+e.message);}
+   if(fitted?.then||fitted?.ok!==true)return fail(fitted?.error||'Inspect and seat the three supplied pieces before recording.');
+   fittingRules=P;fittingTicket=payload.carrierTicket;
+  }
   record.steps.push(s.id);if(choice)r.branch=choice.id;text=choice?choice.completed:s.completed;
  }else if(type==='claim'||type==='patrol-claim'){
   if(!repeat&&r.claimed)return{ok:true,duplicate:true,text:'The first delivery was already paid once.'};
@@ -5249,14 +5397,19 @@ function command(ctx,type,payload={},io){
   const declared=repeat?d.reward:{...d.reward,materials:definition.steps[1].choices.find(c=>c.id===r.branch).materials};reward=pay(candidate,declared);if(!reward)return fail('Make room for the complete declared payment. Finished work remains ready; nothing was changed.');
   if(repeat){r.lastClaim=payload.run;r.active=null;}else r.claimed=true;
   text=d.title+' paid once · +'+reward.xp+' XP · +'+reward.coins+' sunmarks · +'+reward.ore+' ore'+Object.entries(reward.materials).map(([k,n])=>' · +'+n+' '+k).join('')+'. '+(reward.xp<declared.xp?'Stored XP remains at its existing 9999 cap. ':'')+d.completionText;
+  // Optional live recognition cannot become a prerequisite for old ready claims.
+  if(repeat&&typeof G.RealmEarthPatrolCarrier?.prepareClaim==='function'){
+   claimRules=G.RealmEarthPatrolCarrier;try{claimTicket=claimRules.prepareClaim(ctx);}catch{claimTicket=null;}
+  }
  }else return fail('Unknown expedition action.');
- const beforeLevel=A.level(sim.state.adventure),result=commit(sim,candidate,io,text);if(result.ok){if(reward){result.reward=reward;if(A.level(sim.state.adventure)>beforeLevel)A.notify(sim,'Level '+A.level(sim.state.adventure)+' · the living road recognizes useful work.');}
-  if(fittingRules){
-   const warnings=[];
-   try{const consumed=fittingRules.consume(fittingTicket);if(consumed?.then||consumed?.ok!==true)warnings.push('Fitting cleanup needs refresh: '+(consumed?.error||'cleanup did not finish.'));}catch(e){warnings.push('Fitting cleanup needs refresh: '+e.message);}
-   try{const synced=A.syncScene(sim);if(synced===false||synced?.ok===false||synced?.then)warnings.push('Scene refresh did not finish: '+(synced?.error||'refresh the view.'));}catch(e){warnings.push('Scene refresh did not finish: '+e.message);}
-   if(warnings.length)result.warning='Brace completion was saved. '+warnings.join(' ');
-  }else A.syncScene(sim);
+ const beforeLevel=A.level(sim.state.adventure),result=commit(sim,candidate,io,text);if(result.ok){
+  commandCommits.set(result,{sim,state:sim.state,adventure:sim.state.adventure,type,run:payload.run,step:payload.step,afterRevision:sim.state.adventure.revision,ledger:JSON.stringify(sim.state.earthExpedition)});
+  if(reward){result.reward=reward;if(A.level(sim.state.adventure)>beforeLevel)A.notify(sim,'Level '+A.level(sim.state.adventure)+' · the living road recognizes useful work.');}
+  const warnings=[];
+  if(fittingRules)try{const consumed=fittingRules.consume(fittingTicket,result);if(consumed?.then||consumed?.ok!==true)warnings.push('Fitting cleanup needs refresh: '+(consumed?.error||'cleanup did not finish.'));}catch(e){warnings.push('Fitting cleanup needs refresh: '+e.message);}
+  if(claimTicket)try{const received=claimRules.acknowledgeClaim(claimTicket,result);if(received?.then||received?.ok!==true)warnings.push('Receiving presentation needs refresh: '+(received?.error||'presentation did not finish.'));}catch(e){warnings.push('Receiving presentation needs refresh: '+e.message);}
+  try{const synced=A.syncScene(sim);if(synced===false||synced?.ok===false||synced?.then)warnings.push('Scene refresh did not finish: '+(synced?.error||'refresh the view.'));}catch(e){warnings.push('Scene refresh did not finish: '+e.message);}
+  if(warnings.length)result.warning=(fittingRules===G.RealmEarthFieldcraft?'Brace completion':repeat?'Patrol completion':'Expedition completion')+' was saved. '+warnings.join(' ');
  }return result;
 }
 function enemyId(d,e,run){return d===patrol?patrol.id+'-run-'+run+'-'+e.id:e.id;}
@@ -5306,7 +5459,7 @@ function bindingCommand(ctx,weapon,kind,io){
  const candidate=sim.snapshot();candidate.earthExpedition=clone(sim.state.earthExpedition);candidate.adventure.ore-=BINDING_COST.ore;candidate.adventure.coins-=BINDING_COST.coins;candidate.sandbox.inventory.fiber-=BINDING_COST.fiber;candidate.adventure.earthBinding={version:1,weapon,kind};
  return commit(sim,candidate,io,'Trailward '+kind+' binding applied to '+A.GEAR[weapon].name+' · '+(kind==='edge'?'+2 attack':'+1 defense / +10 maximum HP')+'. Identity, sockets, earlier fittings and current health retained; nothing was equipped.');
 }
-const api={definition,patrol,RETURN_WORK,returnWork,patrolStep,MAX_RUN,BINDING_COST,fresh,validate,progress,points,at,commit,command,enemies,signature,defeat,freshBinding,validateBinding,bonus,bindingCommand,encounter,strikeContains};G.RealmEarthExpedition=api;if(typeof module!=='undefined')module.exports=api;
+const api={definition,patrol,RETURN_WORK,returnWork,patrolStep,MAX_RUN,BINDING_COST,fresh,validate,progress,points,at,commit,command,confirmed,enemies,signature,defeat,freshBinding,validateBinding,bonus,bindingCommand,encounter,strikeContains};G.RealmEarthExpedition=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* Original local speech for the existing provisional Elderweald people.
  * ET11/ET12 supply the living-support and limited-allocation premise, not these
@@ -11042,6 +11195,96 @@ class FieldcraftUI{
 }
 const api=Object.freeze({FieldcraftUI});G.RealmEarthFieldcraftUI=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
+</script><script>/* Expedition-owned controls; pose edits are temporary, final inspection uses
+ * the actual gated expedition command. No DOM dataset is fitting authority. */
+(function(G){'use strict';
+const PREFIX='expedition-carrier-',esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const button=(label,type,extra='',disabled=false)=>'<button type="button" data-rpg="'+PREFIX+type+'" '+extra+(disabled?' disabled':'')+'>'+esc(label)+'</button>';
+const names={'billet-0':'West stormfall billet','billet-1':'Middle stormfall billet','billet-2':'East stormfall billet',bundle:'Coppice test bundle','lashing-left':'West test lashing','lashing-right':'East test lashing'};
+const unit=(axis,n)=>axis==='yaw'?n*180/Math.PI:n*100,fromUnit=(axis,n)=>axis==='yaw'?n*Math.PI/180:n/100;
+let controllerSequence=0;
+class CarrierUI{
+ #plan=null;#ticket=null;#notice='';#controller=++controllerSequence;#generation=0;
+ constructor(rpg){this.rpg=rpg;}
+ #context(){const c=this.rpg.api.fieldcraftContext?.();if(!c||c.sim!==this.rpg.sim)throw Error('Read the supplied kit with the current character.');return c;}
+ reset(reason){if(['owner','cancel','restart','travel','import','character','death','reload'].includes(reason)){if(this.#plan)G.RealmEarthPatrolCarrier?.cancel(this.#plan);this.#plan=null;this.#ticket=null;this.#generation++;this.#notice='Unrecorded fitting ended. Recorded patrol work stays.';}}
+ #view(ctx){const P=G.RealmEarthPatrolCarrier,v=this.#plan?P?.projection(this.#plan):P?.current(ctx.sim);return P?.isProjection(v,ctx.sim.state.earthExpedition)?v:null;}
+ #identity(ctx,view){const l=G.RealmEarthExpedition.validate(ctx.sim.state.earthExpedition);return{run:view?.run??l.patrol.active?.run,branch:l.story.branch,stamp:this.#controller+':'+this.#generation};}
+ #meta(ctx,view){const i=this.#identity(ctx,view);return' data-carrier-run="'+i.run+'" data-carrier-prior="'+(i.run-1)+'" data-carrier-branch="'+esc(i.branch)+'" data-carrier-stamp="'+i.stamp+'" ';}
+ #fence(el,ctx,view){const i=this.#identity(ctx,view),d=el?.dataset;if(!Number.isSafeInteger(i.run)||d?.carrierRun!==String(i.run)||d.carrierPrior!==String(i.run-1)||d.carrierBranch!==i.branch||d.carrierStamp!==i.stamp)throw Error('That supplied-kit control belongs to an older run or fitting. Read the current kit.');}
+ #finish(result,paint=true){this.#notice=[result?.text||result?.error||'',result?.warning||''].filter(Boolean).join(' ');if(this.#notice)this.rpg.api.toast?.(this.#notice);if(paint)this.rpg.paint();return true;}
+ panel(){
+  const P=G.RealmEarthPatrolCarrier;let ctx;try{ctx=this.#context();}catch(e){return'<p>'+esc(e.message)+'</p>';}
+  const projected=this.#view(ctx),view=!this.#plan&&['fitting','ready'].includes(projected?.status)?null:projected,l=G.RealmEarthExpedition.validate(ctx.sim.state.earthExpedition),meta=this.#meta(ctx,view);
+  if(!l.patrol.active)return view?.status==='paid'?'<section data-carrier-panel><h4>Rill checks the returned kit</h4><p>Your fitted '+(view.branch==='stormfall-recovery'?'stormfall billets':'coppice bundle and lashings')+' are settled beside Rill. This patrol’s fixed payment was claimed once.</p></section>':'';
+  if(l.patrol.active.steps.includes('inspect-glade'))return'<section data-carrier-panel><h4>The glade inspection is recorded</h4><p>'+esc(view?.status==='checked'?'Your fitted kit is ready for Rill to receive. Walk back and claim the separate patrol payment.':'The saved inspection remains complete. Return to Rill for its separate payment.')+'</p></section>';
+  if(!P)return'<p>Supplied kit controls are unavailable.</p>';
+  let html='<section data-carrier-panel aria-label="Fit the supplied glade kit"><h4>Three supplied pieces, one packing check</h4><p>Borrowed job parts cost none of your timber or fibre. Leave the tray tab and packing gaps clear.</p><p data-carrier-notice role="status" aria-live="polite">'+esc(this.#notice)+'</p>';
+  if(!view)return html+'<p>Inspect the tray at the glade to begin. Unrecorded placement survives closing this panel or walking away in this outing; reloading, leaving Earth or changing character returns it to the loose kit. Recorded work stays.</p>'+button('Inspect the supplied checking kit','begin',meta)+'</section>';
+  if(typeof this.rpg.api.frameCarrier==='function')html+=button('Look at the checking tray','look',meta);
+  html+='<p>'+view.pieces.filter(p=>p.seated).length+' of 3 pieces seated.</p>';
+  const p=view.pieces.find(p=>p.id===view.activePiece),r=view.receivers.find(r=>r.pieceId===view.activePiece);
+  if(p){
+   const extra=meta+'data-piece="'+esc(p.id)+'" data-receiver="'+esc(r.id)+'"';
+   html+='<h5>'+esc(names[p.id])+'</h5><p>'+(r.frame==='seated-bundle'?'Place across your already seated bundle; its actual position is retained.':'Place within this piece’s guide on the tray.')+' Across '+unit('x',r.target.x).toFixed(1)+' cm · along '+unit('z',r.target.z).toFixed(1)+' cm · turn '+unit('yaw',r.target.yaw).toFixed(1)+'°.</p>'+button('Inspect this receiving guide','inspect',extra);
+   for(const axis of['x','z','yaw']){
+    const b=P.GEOMETRY.previewBounds[axis],label=axis==='x'?'Across':axis==='z'?'Along':'Turn',suffix=axis==='yaw'?'degrees':'centimetres',value=unit(axis,p.pose[axis]).toFixed(1),attrs=meta+' data-rpg="'+PREFIX+'pose" data-carrier-axis="'+axis+'" data-carrier-piece="'+esc(p.id)+'" min="'+unit(axis,b.min)+'" max="'+unit(axis,b.max)+'" step="0.1" value="'+value+'"';
+    html+='<div class="fieldcraft-pose"><label for="carrier-'+axis+'">'+label+' in '+suffix+'</label><input id="carrier-'+axis+'" type="range"'+attrs+' aria-label="'+label+' in '+suffix+'"><label for="carrier-'+axis+'-number">'+label+' value</label><input id="carrier-'+axis+'-number" type="number"'+attrs+' aria-label="'+label+' value in '+suffix+'"></div>';
+   }
+   html+='<p data-carrier-feedback role="status">'+this.feedback(p,r)+'</p>'+button('Seat this supplied piece','seat',extra,!p.fits||!r.inspected);
+  }else html+='<p>All three pieces are fitted. Nothing has been recorded or paid yet.</p>'+button('Record this patrol inspection','record',meta);
+  return html+button('Return unrecorded pieces to the kit','cancel',meta)+'</section>';
+ }
+ feedback(p,r){return esc(!r.inspected?'Inspect this receiving guide first.':p.fits?'The actual piece fits its guide and clearance. Ready to seat.':'Correct the placement and turn until the piece fits its guide, packing gaps and tray tab.');}
+ input(el){
+  if(el?.dataset?.rpg!==PREFIX+'pose')return false;let view,result;
+  try{
+   const ctx=this.#context();view=this.#view(ctx);this.#fence(el,ctx,view);const axis=el.dataset.carrierAxis,p=view?.pieces.find(p=>p.id===view.activePiece),r=view?.receivers.find(r=>r.pieceId===view.activePiece),text=String(el.value??'').trim();
+   if(!p||p.id!==el.dataset.carrierPiece||!['x','z','yaw'].includes(axis)||!/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?$/i.test(text))throw Error('Use the current piece’s finite placement controls.');
+   result=G.RealmEarthPatrolCarrier.adjust(ctx,this.#plan,{...p.pose,[axis]:fromUnit(axis,Number(text)),pieceId:p.id,receiverId:r.id});this.#notice=result.error||'';if(result.ok)view=result.view;
+  }catch(e){this.#notice=e.message;}
+  const root=el.closest?.('[data-carrier-panel]');if(root){const notice=root.querySelector('[data-carrier-notice]');if(notice)notice.textContent=this.#notice;
+   const p=view?.pieces.find(p=>p.id===view.activePiece),r=view?.receivers.find(r=>r.pieceId===view.activePiece);if(p&&r){const status=root.querySelector('[data-carrier-feedback]'),seat=root.querySelector('[data-rpg="'+PREFIX+'seat"]');if(status)status.textContent=this.feedback(p,r);if(seat)seat.disabled=!result?.ok||!p.fits||!r.inspected;
+    // A number edit may temporarily be empty or contain only a minus sign.
+    // Keep its DOM/focus/text so native typing can finish; rules keep the last
+    // valid world pose and other controls display that pose until correction.
+    for(const input of root.querySelectorAll('[data-carrier-axis]'))if(input!==el)input.value=unit(input.dataset.carrierAxis,p.pose[input.dataset.carrierAxis]).toFixed(1);
+   }
+  }return true;
+ }
+ action(el){
+  const action=el?.dataset?.rpg;if(!action?.startsWith(PREFIX))return false;const type=action.slice(PREFIX.length),P=G.RealmEarthPatrolCarrier;if(type==='pose')return true;
+  try{
+   if(!P)throw Error('The supplied fitting rules are unavailable.');
+   const ctx=this.#context();let view=this.#view(ctx),result;this.#fence(el,ctx,view);
+   if(type==='cancel'){
+    if(!view||!['fitting','ready'].includes(view.status))throw Error('This inspection is recorded. Unrecorded-piece controls cannot discard it.');
+    this.reset('cancel');return this.#finish({ok:true,text:this.#notice});
+   }
+   if(type==='begin'){
+    if(view&&this.#plan)return this.#finish({ok:true,text:'This kit is already open; your placed pieces stay.'});
+    result=P.begin(ctx);if(result.ok){this.#plan=result.plan;this.#ticket=null;this.#generation++;}
+   }else{
+    if(!view)throw Error('Inspect this current patrol’s supplied kit first.');
+    if(type==='look'){
+     if(view.status==='paid')throw Error('The borrowed kit is settled with Rill; this old tray control has ended.');
+     result=this.rpg.api.frameCarrier?.(view);
+     if(!result||result.then||typeof result.ok!=='boolean')throw Error('Tray framing returned no synchronous confirmation.');
+     if(result.ok){this.rpg.close?.();return this.#finish(result,false);}
+    }
+    else if(type==='inspect')result=P.inspect(ctx,this.#plan,el.dataset.piece,el.dataset.receiver);
+    else if(type==='seat'){result=P.seat(ctx,this.#plan,el.dataset.piece);if(result.ticket)this.#ticket=result.ticket;}
+    else if(type==='record'){
+     const valid=P.validate(ctx,this.#ticket);if(!valid.ok)return this.#finish(valid);
+     result=this.rpg.api.expeditionCommand('patrol-step',{quest:G.RealmEarthExpedition.patrol.id,run:view.run,priorClaim:view.run-1,step:'inspect-glade',carrierTicket:this.#ticket});
+     if(result?.then)throw Error('Inspection did not return synchronous confirmation. Read the recorded patrol before retrying.');
+    }else throw Error('Unknown supplied kit action.');
+   }return this.#finish(result||{ok:false,error:'No fitting confirmation returned.'});
+  }catch(e){return this.#finish({ok:false,error:e.message});}
+ }
+}
+G.RealmEarthPatrolCarrierUI=Object.freeze({CarrierUI});if(typeof module!=='undefined')module.exports=G.RealmEarthPatrolCarrierUI;
+})(globalThis);
 </script><script>/* A local expedition interface. Every fact and payment belongs to its rules. */
 (function(G){'use strict';
 const E=G.RealmEarthExpedition,W=G.RealmWorldFoundations,A=G.RealmAdventure,ROOM='world-earthlands';
@@ -11065,9 +11308,9 @@ function routePoints(sim){
  return active.next.flatMap(s=>s.choices?s.choices.map(c=>({...c,step:s.id,kind:'interact',quest:E.definition.id})): [{...s,step:s.id,quest:p.patrol.active?E.patrol.id:E.definition.id,run:p.patrol.active?.run??null}]).map((p,i)=>({...p,mark:String.fromCharCode(65+i)}));
 }
 class ExpeditionUI{
- constructor(rpg){this.rpg=rpg;this.pending=null;this.reading=null;this.owner=null;this.fieldcraft=new G.RealmEarthFieldcraftUI.FieldcraftUI(rpg);}
+ constructor(rpg){this.rpg=rpg;this.pending=null;this.reading=null;this.owner=null;this.fieldcraft=new G.RealmEarthFieldcraftUI.FieldcraftUI(rpg);this.carrier=new G.RealmEarthPatrolCarrierUI.CarrierUI(rpg);}
  get sim(){return this.rpg.sim;}
- reset(reason){this.pending=null;this.reading=null;this.fieldcraft.reset(reason);}
+ reset(reason){this.pending=null;this.reading=null;this.fieldcraft.reset(reason);this.carrier.reset(reason);}
  point(){
   if(this.sim.room!==ROOM)return null;
   return[...E.points(this.sim),{...E.definition.giver,kind:'giver'}].filter(p=>at(this.sim,p)).sort((a,b)=>Math.hypot(a.x-this.sim.state.player.x,a.z-this.sim.state.player.z)-Math.hypot(b.x-this.sim.state.player.x,b.z-this.sim.state.player.z))[0]||null;
@@ -11075,7 +11318,7 @@ class ExpeditionUI{
  context(){const p=this.point();return p?'E · '+p.name:null;}
  interact(){const p=this.point();if(!p)return false;this.reading=p.id;this.rpg.open('expedition');return true;}
  action(el){
-  if(this.fieldcraft.action(el))return true;
+  if(this.fieldcraft.action(el)||this.carrier.action(el))return true;
   const action=el.dataset.rpg;if(!action?.startsWith('expedition-'))return false;
   const type=action.slice(11),id=el.dataset.id;
   if(type==='open'){this.rpg.open('expedition');return true;}
@@ -11114,11 +11357,11 @@ class ExpeditionUI{
   const runMeta=patrol?'data-run="'+active.run+'" data-prior-claim="'+p.lastClaim+'"':'';
   let html='<section class="expedition-objectives"><h3>'+(p.ready?'Work complete · payment ready':'Your next action')+'</h3>';
   if(active.steps.includes('clear-root-pests'))html+='<p class="expedition-clearance">'+(patrol?'Patrol '+active.run+' · bank pocket checked clear. The permanent brace remains. '+(p.ready?'The glade inspection is complete. Return to Rill.':'Complete the supplied check at the return glade.'):active.steps.includes('brace-root-channel')?'The staged kit is now the installed brace. The living support remains.':'Bank pocket cleared · kit staged at the alternate support, south of the passage. Fit the brace next.')+' Your payment is still separate and must be claimed from Rill.</p>';
-  if(p.ready)html+='<p>Return to Rill at the camp. Your payment remains unclaimed until you deliberately collect it.</p>'+button('Walk back to Rill','walk','giver')+button(patrol?'Claim patrol '+active.run:'Claim the declared story payment',patrol?'patrol-claim':'claim','',runMeta);
+  if(p.ready)html+=(patrol?this.carrier.panel():'')+'<p>Return to Rill at the camp. Your payment remains unclaimed until you deliberately collect it.</p>'+button('Walk back to Rill','walk','giver')+button(patrol?'Claim patrol '+active.run:'Claim the declared story payment',patrol?'patrol-claim':'claim','',runMeta);
   else for(const s of p.next){
    html+='<article data-expedition-step="'+esc(s.id)+'"><small>'+(s.kind==='defeat'?'ACTUAL ENCOUNTER':'FIELD WORK')+'</small><h4>'+esc(s.name)+'</h4><p>'+esc(s.text)+'</p>';
    if(s.choices)for(const c of s.choices)html+='<div class="expedition-choice"><h5>'+esc(c.name)+'</h5><p>'+esc(c.text)+'</p><p><strong>Allocation:</strong> '+Object.entries(c.materials).map(([k,n])=>n+' '+({wood:'timber',fiber:'fibre'}[k]||k)).join(' · ')+'</p>'+button('Walk to this preparation','walk',c.id)+button('Prepare this allocation','step',s.id,'data-choice="'+esc(c.id)+'"')+'</div>';
-   else html+=button(s.kind==='defeat'?'Walk near the encounter':'Walk to this action','walk',s.id)+(s.kind==='defeat'?'<p class="expedition-muted">Tab selects · 1 stationary autoattack · Brace or move during the tell. The actual defeat records this objective.</p>':!patrol&&s.id==='brace-root-channel'?this.fieldcraft.panel():button('Do this work here',patrol?'patrol-step':'step',s.id,runMeta));
+   else html+=button(s.kind==='defeat'?'Walk near the encounter':'Walk to this action','walk',s.id)+(s.kind==='defeat'?'<p class="expedition-muted">Tab selects · 1 stationary autoattack · Brace or move during the tell. The actual defeat records this objective.</p>':!patrol&&s.id==='brace-root-channel'?this.fieldcraft.panel():patrol&&s.id==='inspect-glade'?this.carrier.panel():button('Do this work here',patrol?'patrol-step':'step',s.id,runMeta));
    html+='</article>';
   }
   return html+'<p class="expedition-muted">'+p.done+' / '+p.total+' completed. Walking only takes you there; E opens the action on arrival. V changes view. Home remains available.</p></section>';
@@ -11131,6 +11374,7 @@ class ExpeditionUI{
    const speech=G.RealmEarthExpeditionDialogue?.reading(d.giver.id,this.sim.state.earthExpedition,this.sim.state.adventure.earthBinding);
    if(speech)html+='<section class="expedition-dialogue"><small>'+esc(speech.speaker)+'</small><h3>'+esc(speech.title)+'</h3>'+speech.lines.map(line=>'<p>'+esc(line)+'</p>').join('')+'<p class="expedition-muted">'+esc(speech.hint)+'</p></section>';
    html+=G.RealmEarthRoadAccount?.html(d.giver.id,this.sim.state)||'';
+   if(G.RealmEarthPatrolCarrier?.current(this.sim)?.status==='paid')html+=this.carrier.panel();
   }
   html+=xpNote(this.sim.state.adventure,d.reward);
   if(r.steps.includes('brace-root-channel'))html+=this.fieldcraft.panel();
@@ -11235,8 +11479,8 @@ class RPGUI{
   const d=document.createElement('dialog');d.id='rpg-window';d.setAttribute('aria-labelledby','rpg-heading');d.innerHTML='<header><div><small>FIRSTLIGHT · YOUR JOURNEY</small><h2 id="rpg-heading">Character</h2></div><span class="paused-note">World paused while open</span><button id="rpg-close" aria-label="Close character workspace">×</button></header><nav id="rpg-tabs" aria-label="Character sections"></nav><div id="rpg-content"></div>';document.body.append(d);this.dialog=d;
   $('#rpg-close').onclick=()=>this.close();d.addEventListener('cancel',e=>{e.preventDefault();this.close();});
   const click=e=>{const b=e.target.closest('[data-rpg],[data-realm-art]');if(b)this.action(b,e);};d.addEventListener('click',click);hud.addEventListener('click',click);
-  d.addEventListener('change',e=>{this.expedition?.fieldcraft.input(e.target);});
-  d.addEventListener('input',e=>{if(this.expedition?.fieldcraft.input(e.target))return;if(e.target.id==='bag-search'){this.search=e.target.value;this.paintBag();}});
+  d.addEventListener('change',e=>{if(this.expedition?.fieldcraft.input(e.target))return;this.expedition?.carrier?.input(e.target);});
+  d.addEventListener('input',e=>{if(this.expedition?.fieldcraft.input(e.target)||this.expedition?.carrier?.input(e.target))return;if(e.target.id==='bag-search'){this.search=e.target.value;this.paintBag();}});
   $('#tracked-open').onclick=()=>this.open(this.trackerSelection?.sim===this.sim&&['story','homestead'].includes(this.quest)?'journal':this.quest==='earth-homecoming'?'earth-homecoming':this.quest==='cosmos-campaign'?'cosmos-campaign':this.quest==='atlantis-campaign'?'atlantis-campaign':this.quest==='heaven-campaign'?'heaven-campaign':this.quest==='hell-campaign'?'hell-campaign':this.quest==='community'?'community':this.quest==='local-life'?'local-life':this.quest==='expedition'?'expedition':this.quest==='wild-signs'?'wild-signs':this.worlds.local()?'worlds':this.earth.notes.active()&&[null,G.RealmEarth.ROOM,'observatory'].includes(this.sim.room)?'earth-notes':this.sim.room===G.RealmEarth.ROOM&&this.state.earthStory.accepted?'earth-story':this.quest==='project'?'pursuit':'journal');$('#beacon-menu').onclick=()=>{if(B.runtime(this.sim).phase==='assault')this.run('beacon-repair');else this.open('beacon');};$('#target-framing').onclick=()=>{const r=this.api.frameFoe();if(!r.ok)this.api.toast(r.error);};$('#target-clear').onclick=()=>this.run('target-clear');$('#health-orb').onclick=()=>this.open('equipment');
   for(const el of hud.querySelectorAll('[data-skill]'))el.onclick=()=>this.skill(el.dataset.skill);
   this.crossing=new G.RealmCrossingUI.CrossingUI(this);this.starter=new G.RealmStarterUI.StarterUI(this);this.pursuit=new G.RealmPursuitUI.PursuitUI(this);this.characters=new G.RealmCharactersUI.CharactersUI(this);this.classes=new G.RealmClassesUI.ClassesUI(this);this.cosmos=new G.RealmCosmosUI.CosmosUI(this);this.realmAtlas=new G.RealmVisualAtlas(this);this.gathering=new G.RealmGatheringUI.GatheringUI(this);this.earth=new G.RealmEarthUI.EarthUI(this);this.worlds=new G.RealmWorldFoundationsUI.WorldUI(this);this.trails=new G.RealmTrailsUI.TrailsUI(this);this.hellCampaign=new G.RealmHellCampaignUI.HellCampaignUI(this);this.heavenCampaign=new G.RealmHeavenCampaignUI.HeavenCampaignUI(this);this.cosmosCampaign=new G.RealmCosmosCampaignUI.CosmosCampaignUI(this);this.earthHomecoming=new G.RealmEarthHomecomingUI.EarthHomecomingUI(this);this.atlantisCampaign=new G.RealmAtlantisCampaignUI.AtlantisCampaignUI(this);this.community=new G.RealmBridgeCommunityUI.BridgeCommunityUI(this);this.civic=new G.RealmLocalLifeUI.LocalLifeUI(this);this.expedition=new G.RealmEarthExpeditionUI.ExpeditionUI(this);this.wildSigns=new G.RealmEarthWildSignsUI.WildSignsUI(this);if(this.state.starter.accepted&&!this.state.starter.reward)this.quest='starter';if(this.sim.state.earthExpedition.story.accepted&&!this.sim.state.earthExpedition.story.claimed||this.sim.state.earthExpedition.patrol.active)this.quest='expedition';
@@ -13203,10 +13447,40 @@ function parts(ledger,pendingProjection){
 }
 const api=Object.freeze({parts});G.RealmEarthFieldcraftArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
+</script><script>/* Read-only authorized kit projection. No collision/NPC/payment ownership. */
+(function(G){'use strict';
+function parts(ledger,view){
+ const P=G.RealmEarthPatrolCarrier;if(!P?.isProjection(view,ledger))return[];
+ const paid=view.status==='paid',g=P.GEOMETRY,out=[],giver=G.RealmEarthExpedition.patrol.giver;
+ const destination=paid?[giver.x-1.65,2.18,giver.z-.85]:g.center,offset=destination.map((n,i)=>n-g.center[i]);
+ const base={cameraSolid:false,cutaway:false,appearanceOnly:true,rough:.95,carrierRun:view.run};
+ const add=(kind,p,s,c,role,r=[0,0,0])=>out.push({kind,p,s,c,opt:{...base,carrierPart:role,expeditionPart:role,r}});
+ if(paid){
+  for(const dx of[-.48,.48])add('timber-panel',[destination[0]+dx,1.79,destination[2]],[.09,.44,.48],0x715b43,'carrier-receiving-foot');
+  add('timber-panel',[destination[0],2.04,destination[2]],[1.16,.10,.58],0x947856,'carrier-receiving-tray');
+  add('box',[destination[0],2.099,destination[2]+.26],[.15,.018,.06],0x9fc6a0,'carrier-received-tag');
+ }
+ for(const p of view.pieces){
+  const lashing=p.id.startsWith('lashing'),bundle=p.id==='bundle';
+  add(lashing?'box':'timber-panel',p.position.map((n,i)=>n+offset[i]),p.size,lashing?(p.seated?0xd2c18c:0x93835f):bundle?0xa2a279:0xa28256,
+   paid?'carrier-received-piece':p.seated?'carrier-seated-piece':'carrier-loose-piece',[0,p.yaw,0]);
+ }
+ if(!paid&&view.status!=='checked')for(const r of view.receivers){
+  if(view.pieces.find(p=>p.id===r.pieceId)?.seated)continue;
+  const c=r.pieceId===view.activePiece?0xe5cd85:0xa9b9b1,cos=Math.cos(r.yaw),sin=Math.sin(r.yaw);
+  const put=(x,z,w,d,role)=>add('box',[r.position[0]+cos*x+sin*z,2.095,r.position[2]-sin*x+cos*z],[w,.010,d],c,role,[0,r.yaw,0]);
+  for(const x of[-r.width/2,r.width/2])put(x,0,.012,r.depth,'carrier-receiver-edge');
+  // Corner brackets leave the existing central inspection tab visible.
+  for(const z of[-r.depth/2,r.depth/2])for(const sign of[-1,1])put(sign*(r.width/2-.03),z,.06,.012,'carrier-receiver-edge');
+ }
+ return out;
+}
+const api=Object.freeze({parts});G.RealmEarthPatrolCarrierArt=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
 </script><script>/* Read-only worksite changes. The quest ledger owns every transition. */
 (function(G){'use strict';
 const FLOOR=1.57,ROOM='world-earthlands',safe=['stormfall-recovery','managed-coppice'];
-function parts(ledger,pendingProjection){
+function parts(ledger,pendingProjection,carrierProjection){
  const story=ledger?.story;if(!story||!Array.isArray(story.steps))return[];
  const steps=new Set(story.steps),out=[],base={cameraSolid:false,cutaway:false,rough:.95,appearanceOnly:true};
  const add=(kind,p,s,c,role,extra={})=>out.push({kind,p,s,c,opt:{...base,expeditionPart:role,...extra}});
@@ -13248,22 +13522,23 @@ function parts(ledger,pendingProjection){
  // Borrowed checking equipment belongs to the accepted run. Old paid claims
  // never construct a new rack; first delivered stock and brace stay untouched.
  if(story.claimed&&inspection){
-  const x=-104.8,z=-104.2,done=inspection.steps.includes('inspect-glade'),fiber=story.branch==='managed-coppice';
+  const x=-104.8,z=-104.2,done=inspection.steps.includes('inspect-glade'),fiber=story.branch==='managed-coppice',live=G.RealmEarthPatrolCarrier?.isProjection(carrierProjection,ledger);
   for(const dx of[-.48,.48])add('timber-panel',[x+dx,FLOOR+.22,z],[.09,.44,.48],0x715b43,'patrol-kit-foot',{patrolRun:inspection.run});
   add('timber-panel',[x,FLOOR+.47,z],[1.16,.10,.58],0x947856,'patrol-kit-tray',{patrolRun:inspection.run});
-  if(fiber){
+  if(!live&&fiber){
    add('timber-panel',[x,FLOOR+.61,z],[.90,.18,.34],0xa2a279,'patrol-test-bundle',{patrolRun:inspection.run});
    for(const dx of[-.26,.26])add('box',[x+dx,FLOOR+.61,z],[done?.035:.07,.24,.40],done?0xd2c18c:0x93835f,done?'patrol-lashing-seated':'patrol-lashing-loose',{patrolRun:inspection.run});
-  }else for(let i=0;i<3;i++)add('timber-panel',[x-.36+i*.36,FLOOR+.61,z+(done?0:(i-1)*.06)],[.22,.18,.40],0xa28256,done?'patrol-billet-squared':'patrol-billet-check',{patrolRun:inspection.run,r:[0,done?0:(i-1)*.15,0]});
+  }else if(!live)for(let i=0;i<3;i++)add('timber-panel',[x-.36+i*.36,FLOOR+.61,z+(done?0:(i-1)*.06)],[.22,.18,.40],0xa28256,done?'patrol-billet-squared':'patrol-billet-check',{patrolRun:inspection.run,r:[0,done?0:(i-1)*.15,0]});
   add('box',[x,FLOOR+.529,z+.26],[.15,.018,.06],done?0x9fc6a0:0xd9b278,done?'patrol-kit-checked':'patrol-kit-pending',{patrolRun:inspection.run});
  }
  if(story.claimed){
   add('box',[-76,FLOOR+1.11,-14.735],[.24,.26,.018],0x91b982,'claimed-board-seal');
   add('octa',[-76,FLOOR+1.11,-14.721],[.13,.16,.023],0xe4d9ad,'claimed-board-mark');
  }
+ for(const p of G.RealmEarthPatrolCarrierArt?.parts(ledger,carrierProjection)||[])out.push(p);
  return out;
 }
-function draw(out,sim){if(sim?.room!==ROOM)return;for(const r of parts(sim.state.earthExpedition,G.RealmEarthFieldcraft?.current(sim))){out[r.kind]?.push({p:r.p,s:r.s,c:r.c,...r.opt});}}
+function draw(out,sim){if(sim?.room!==ROOM)return;for(const r of parts(sim.state.earthExpedition,G.RealmEarthFieldcraft?.current(sim),G.RealmEarthPatrolCarrier?.current(sim))){out[r.kind]?.push({p:r.p,s:r.s,c:r.c,...r.opt});}}
 const api=Object.freeze({parts,draw});G.RealmEarthExpeditionArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* Exact appearance-cell coalescing, after canonical patch ownership is chosen.
@@ -14636,11 +14911,11 @@ function tickConsignment(dt){
  consignmentPresentation();
 }
 
-let fieldcraftOwner=null,fieldcraftFrame=null;
+let fieldcraftOwner=null,fieldcraftFrame=null,carrierFrame=null;
 function syncFieldcraftOwner(force=false){
  const next=[sim,sim.state,sim.state.adventure,characterStore,characterStore.active,sim.room,sim.worldTrip,sim.earthTrip,JSON.stringify(sim.returnPos),JSON.stringify(sim.worldTrip),sim.state.adventure.deaths];
  if(force||!fieldcraftOwner||next.some((v,i)=>v!==fieldcraftOwner[i])){
-  rpg?.expedition?.reset('owner');fieldcraftFrame=null;sim.fieldcraftOwnerLease=Object.freeze({});fieldcraftOwner=next;
+  rpg?.expedition?.reset('owner');fieldcraftFrame=null;carrierFrame=null;sim.fieldcraftOwnerLease=Object.freeze({});fieldcraftOwner=next;
  }
  return sim.fieldcraftOwnerLease;
 }
@@ -14710,6 +14985,22 @@ function fieldcraftFocus(){
  const f=fieldcraftFrame,g=RealmEarthFieldcraft.GEOMETRY;
  if(f.sim!==sim||f.lease!==syncFieldcraftOwner()||sim.room!==g.room||sim.worldDive||sim.state.adventure.hp<=0||Math.hypot(sim.state.player.x-f.player.x,sim.state.player.z-f.player.z)>.15||(!RealmEarthFieldcraft.current(sim)&&!sim.state.earthExpedition.story.steps.includes('brace-root-channel'))){fieldcraftFrame=null;return null;}
  return f.point;
+}
+function carrierFocus(){
+ if(!carrierFrame)return null;const f=carrierFrame;
+ if(f.sim!==sim||f.lease!==syncFieldcraftOwner()||f.preset!==camera.preset||Math.abs(f.yaw-camera.yaw)>1e-9||Math.abs(f.elevation-camera.elevation)>1e-9||!RealmEarthPatrolCarrier.current(sim)||Math.hypot(sim.state.player.x-f.player.x,sim.state.player.z-f.player.z)>.15){carrierFrame=null;return null;}
+ return f.point;
+}
+function frameCarrier(view){
+ const ctx=fieldcraftContext(),P=RealmEarthPatrolCarrier;
+ if(!engine||!P.isProjection(view,sim.state.earthExpedition)||view.status==='paid'||!RealmEarthExpedition.at(sim,P.GEOMETRY.workPoint))return{ok:false,error:'Inspect the supplied checking tray at its glade before framing it.'};
+ clearGrazerFocus();fieldcraftFrame=null;camera.tour=false;camera.overview=false;follow=null;
+ const perspective=camera.preset==='adventure';camera.yaw=2.1;camera.elevation=perspective?.65:.72;
+ if(perspective)camera.distance=camera.actualDistance=4;
+ else{camera.zoom=6/camera.baseHalf;camera.half=fitCameraHalf(camera.baseHalf,camera.zoom);}
+ const point=[P.GEOMETRY.center[0],2.24,P.GEOMETRY.center[2]];
+ carrierFrame={sim,lease:ctx.ownerLease,player:{...sim.state.player},preset:camera.preset,yaw:camera.yaw,elevation:camera.elevation,point};
+ camera.center=point.slice();updateCamera(1);save();return{ok:true,text:'Checking tray framed in your current view. Move, orbit or change view to follow again.'};
 }
 function frameFieldcraft(view){
  const ctx=fieldcraftContext(),F=RealmEarthFieldcraft;
@@ -14995,7 +15286,7 @@ function graphicsQuality(value){
 function updateCamera(dt){
  if(!engine)return;if(camera.preset!=='adventure'||camera.tour){updateOrthographicCamera(dt);return;}
  const person=follow?sim.state.residents.find(r=>r.id===follow):sim.state.player,base=sceneHeight(person.x,person.z);
- const desired=grazerFocus()||fieldcraftFocus()||[person.x,base+1.5,person.z],still=sim.state.settings.reducedMotion,factor=still?1:1-Math.exp(-Math.max(dt,.001)*9);
+ const desired=grazerFocus()||carrierFocus()||fieldcraftFocus()||[person.x,base+1.5,person.z],still=sim.state.settings.reducedMotion,factor=still?1:1-Math.exp(-Math.max(dt,.001)*9);
  for(let i=0;i<3;i++)camera.center[i]+=(desired[i]-camera.center[i])*factor;
  const d=camera.distance,ce=Math.cos(camera.elevation),direction=[Math.sin(camera.yaw)*ce,Math.sin(camera.elevation),Math.cos(camera.yaw)*ce];
  const wanted=camera.center.map((v,i)=>v+direction[i]*d),clear=engine.clearCameraDistance(camera.center,wanted);
@@ -15004,10 +15295,10 @@ function updateCamera(dt){
  const eye=camera.center.map((v,i)=>v+direction[i]*camera.actualDistance);eye[1]=Math.max(base+.45,eye[1]);
  engine.setCamera({eye,target:camera.center.slice(),projection:'perspective',fov:camera.fov,half:camera.half,aspect:innerWidth/innerHeight});
 }
-function updateOrthographicCamera(dt){if(!engine)return;let desired;const fittingFocus=grazerFocus()||fieldcraftFocus();if(fittingFocus)desired=fittingFocus;else if(camera.tour&&!sim.room){camera.tourTime=(camera.tourTime||0)+dt;let spots=[[0,1.7,2,23,.72],[14,1.8,3,19,.87],[33,2,1,17,1.05],[37,2,-1,14,1.23],[23,2,3,23,.85],[0,1.7,2,23,.72]],f=(camera.tourTime%60)/12,i=Math.min(4,Math.floor(f)),u=f-i;u=u*u*(3-2*u);let a=spots[i],b=spots[i+1];desired=a.slice(0,3).map((v,j)=>v+(b[j]-v)*u);camera.half=a[3]+(b[3]-a[3])*u;camera.yaw=a[4]+(b[4]-a[4])*u;}else if(RealmWorldFoundations.handles(sim.room)){const b=RealmWorldFoundations.definition(sim.room).bounds;desired=camera.overview?[(b.minX+b.maxX)/2,3,(b.minZ+b.maxZ)/2]:[sim.state.player.x,sceneHeight()+.6,sim.state.player.z];}else if(sim.room===RealmEarth.ROOM)desired=camera.overview?[0,3,-10]:[sim.state.player.x,sceneHeight()+.5,sim.state.player.z];else if(sim.room===RealmCosmos.ROOM)desired=camera.overview?[(RealmCosmos.BOUNDS.minX+RealmCosmos.BOUNDS.maxX)/2,4,(RealmCosmos.BOUNDS.minZ+RealmCosmos.BOUNDS.maxZ)/2]:[sim.state.player.x,sceneHeight()+.5,sim.state.player.z];else if(sim.room==='riverbank')desired=camera.overview?[0,2,-2.5]:[sim.state.player.x,2,sim.state.player.z];else if(sim.room==='range')desired=camera.overview?[0,2,0]:[sim.state.player.x,2,sim.state.player.z];else if(sim.room==='crossing')desired=camera.overview?[0,2,-1]:[sim.state.player.x,2,sim.state.player.z];else if(sim.room==='road')desired=camera.overview?[0,1.7,-3]:[sim.state.player.x,2,sim.state.player.z];else if(sim.room==='mine')desired=camera.overview?[0,2,-1]:[sim.state.player.x,2,sim.state.player.z];else if(sim.room)desired=[0,2,0];else if(camera.overview)desired=[10,1.7,-10];else{let p=follow?sim.state.residents.find(r=>r.id===follow):sim.state.player;desired=[p.x,1.9,p.z];}let factor=sim.state.settings.reducedMotion?1:1-Math.exp(-Math.max(dt,.001)*2.6);for(let i=0;i<3;i++)camera.center[i]+=(desired[i]-camera.center[i])*factor;let d=75,ce=Math.cos(camera.elevation),eye=[camera.center[0]+Math.sin(camera.yaw)*ce*d,camera.center[1]+Math.sin(camera.elevation)*d,camera.center[2]+Math.cos(camera.yaw)*ce*d];engine.setCamera({eye,target:camera.center.slice(),half:camera.half,aspect:innerWidth/innerHeight});}
+function updateOrthographicCamera(dt){if(!engine)return;let desired;const fittingFocus=grazerFocus()||carrierFocus()||fieldcraftFocus();if(fittingFocus)desired=fittingFocus;else if(camera.tour&&!sim.room){camera.tourTime=(camera.tourTime||0)+dt;let spots=[[0,1.7,2,23,.72],[14,1.8,3,19,.87],[33,2,1,17,1.05],[37,2,-1,14,1.23],[23,2,3,23,.85],[0,1.7,2,23,.72]],f=(camera.tourTime%60)/12,i=Math.min(4,Math.floor(f)),u=f-i;u=u*u*(3-2*u);let a=spots[i],b=spots[i+1];desired=a.slice(0,3).map((v,j)=>v+(b[j]-v)*u);camera.half=a[3]+(b[3]-a[3])*u;camera.yaw=a[4]+(b[4]-a[4])*u;}else if(RealmWorldFoundations.handles(sim.room)){const b=RealmWorldFoundations.definition(sim.room).bounds;desired=camera.overview?[(b.minX+b.maxX)/2,3,(b.minZ+b.maxZ)/2]:[sim.state.player.x,sceneHeight()+.6,sim.state.player.z];}else if(sim.room===RealmEarth.ROOM)desired=camera.overview?[0,3,-10]:[sim.state.player.x,sceneHeight()+.5,sim.state.player.z];else if(sim.room===RealmCosmos.ROOM)desired=camera.overview?[(RealmCosmos.BOUNDS.minX+RealmCosmos.BOUNDS.maxX)/2,4,(RealmCosmos.BOUNDS.minZ+RealmCosmos.BOUNDS.maxZ)/2]:[sim.state.player.x,sceneHeight()+.5,sim.state.player.z];else if(sim.room==='riverbank')desired=camera.overview?[0,2,-2.5]:[sim.state.player.x,2,sim.state.player.z];else if(sim.room==='range')desired=camera.overview?[0,2,0]:[sim.state.player.x,2,sim.state.player.z];else if(sim.room==='crossing')desired=camera.overview?[0,2,-1]:[sim.state.player.x,2,sim.state.player.z];else if(sim.room==='road')desired=camera.overview?[0,1.7,-3]:[sim.state.player.x,2,sim.state.player.z];else if(sim.room==='mine')desired=camera.overview?[0,2,-1]:[sim.state.player.x,2,sim.state.player.z];else if(sim.room)desired=[0,2,0];else if(camera.overview)desired=[10,1.7,-10];else{let p=follow?sim.state.residents.find(r=>r.id===follow):sim.state.player;desired=[p.x,1.9,p.z];}let factor=sim.state.settings.reducedMotion?1:1-Math.exp(-Math.max(dt,.001)*2.6);for(let i=0;i<3;i++)camera.center[i]+=(desired[i]-camera.center[i])*factor;let d=75,ce=Math.cos(camera.elevation),eye=[camera.center[0]+Math.sin(camera.yaw)*ce*d,camera.center[1]+Math.sin(camera.elevation)*d,camera.center[2]+Math.cos(camera.yaw)*ce*d];engine.setCamera({eye,target:camera.center.slice(),half:camera.half,aspect:innerWidth/innerHeight});}
 function cameraPreset(mode='adventure',remember=true,reset=false){
  if(!['adventure','follow','tactical','wide'].includes(mode))return;
- clearGrazerFocus();fieldcraftFrame=null;if(remember)rememberCamera();const views=sim.state.settings.cameraViews,p=reset?null:views.profiles[mode];
+ clearGrazerFocus();fieldcraftFrame=null;carrierFrame=null;if(remember)rememberCamera();const views=sim.state.settings.cameraViews,p=reset?null:views.profiles[mode];
  camera.tour=false;follow=null;camera.preset=mode;camera.overview=mode==='wide';
  if(mode==='adventure'){camera.yaw=p?.yaw??sim.state.player.yaw+Math.PI;camera.elevation=p?.elevation??.28;camera.distance=p?.distance??7.5;camera.actualDistance=camera.distance;camera.fov=sim.state.settings.cameraFov;}
  else{views.lastDiorama=mode;camera.yaw=p?.yaw??.76;camera.elevation=p?.elevation??(mode==='tactical'?1.08:.88);camera.baseHalf=cameraHalf(mode);camera.zoom=p?.zoom??1;camera.half=fitCameraHalf(camera.baseHalf,camera.zoom);}
@@ -15130,7 +15421,7 @@ adventure=new RealmAdventureUI.AdventureUI({workshopCommand,earthRiverReturn,sim
 
 arsenal=new RealmArsenalUI.ArsenalUI({sim:()=>sim,adventure:()=>adventure,openPanel,closePanel,renderPanel,panel:()=>panel,walk:walkAdventure,endBuild:()=>{sandbox?.endBuild();sandbox?.stopAuto();keys.clear();}});
 
-rpg=new RealmRPGUI.RPGUI({wildSignsContext,wildSignsCommand,wildSignsObserve,wildSignsRetryClearance,consignmentContext,consignmentControl,fieldcraftContext,frameFieldcraft,frameGrazer,earthRoadTravel,frameFoe,canFrameFoe:()=>!!engine&&!sim.paused&&!sim.worldDive&&RealmCombatView.plan({preset:camera.preset,player:sim.state.player,enemy:RealmCombat.selected(sim),distance:camera.distance}).ok,earthHomecomingCommand,cosmosCampaignCommand,atlantisCampaignCommand,heavenCampaignCommand,hellCampaignCommand,bridgeCommunityCommand,localLifeCommand,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,earthContext,earthTravel,earthReturn,bridgeView,cosmosContext,cosmosTravel,cosmosReturn,sim:()=>sim,adventure:()=>adventure,closePanel,openPanel,endBuild:()=>{sandbox.endBuild();sandbox.stopAuto();},clearKeys:()=>keys.clear(),focusWorld:()=>ui.canvas.focus({preventScroll:true}),toast,save,exportWorld,characters:()=>characterStore.describe(sim.snapshot()),characterAction,characterExport,characterImport,characterReload,characterRecovery,panel:()=>panel,camera:cameraPreset,resetCamera,rotate:a=>{clearGrazerFocus();camera.yaw+=a;camera.tour=false;},direction:()=>adventure.api.direction(),music:()=>experience.open(),gather:id=>sandbox.seek(id),walkLocal:walkAdventure,stopPersonalMusic:()=>experience?.stop(),audio:()=>audio,project:(x,y,z)=>engine?.project(x,y,z)});
+rpg=new RealmRPGUI.RPGUI({wildSignsContext,wildSignsCommand,wildSignsObserve,wildSignsRetryClearance,consignmentContext,consignmentControl,fieldcraftContext,frameFieldcraft,frameCarrier,frameGrazer,earthRoadTravel,frameFoe,canFrameFoe:()=>!!engine&&!sim.paused&&!sim.worldDive&&RealmCombatView.plan({preset:camera.preset,player:sim.state.player,enemy:RealmCombat.selected(sim),distance:camera.distance}).ok,earthHomecomingCommand,cosmosCampaignCommand,atlantisCampaignCommand,heavenCampaignCommand,hellCampaignCommand,bridgeCommunityCommand,localLifeCommand,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,earthContext,earthTravel,earthReturn,bridgeView,cosmosContext,cosmosTravel,cosmosReturn,sim:()=>sim,adventure:()=>adventure,closePanel,openPanel,endBuild:()=>{sandbox.endBuild();sandbox.stopAuto();},clearKeys:()=>keys.clear(),focusWorld:()=>ui.canvas.focus({preventScroll:true}),toast,save,exportWorld,characters:()=>characterStore.describe(sim.snapshot()),characterAction,characterExport,characterImport,characterReload,characterRecovery,panel:()=>panel,camera:cameraPreset,resetCamera,rotate:a=>{clearGrazerFocus();camera.yaw+=a;camera.tour=false;},direction:()=>adventure.api.direction(),music:()=>experience.open(),gather:id=>sandbox.seek(id),walkLocal:walkAdventure,stopPersonalMusic:()=>experience?.stop(),audio:()=>audio,project:(x,y,z)=>engine?.project(x,y,z)});
 // Input distinguishes clicks from drags, with two-finger zoom on touch screens.
 let pointers=new Map(),gesture=null,keys=new Set();function zoom(k){clearGrazerFocus();camera.tour=false;if(camera.preset==='adventure'){camera.distance=Math.max(3.5,Math.min(20,camera.distance*k));return;}camera.half=C.clamp?C.clamp(camera.half*k,6,52):Math.max(6,Math.min(52,camera.half*k));camera.zoom=camera.half/camera.baseHalf;camera.overview=false;}
 function pointerDown(e){e.currentTarget.focus({preventScroll:true});camera.tour=false;if(e.button!==0&&e.button!==2&&e.pointerType!=='touch')return;e.preventDefault();e.currentTarget.setPointerCapture(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size===1)gesture={x:e.clientX,y:e.clientY,lastX:e.clientX,lastY:e.clientY,moved:false,pinch:false,orbitOnly:e.button===2};else if(pointers.size===2){let p=[...pointers.values()];gesture.pinch=true;gesture.moved=true;gesture.distance=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y);}}
@@ -15179,7 +15470,7 @@ function frame(now){let dt=lastFrame?Math.min((now-lastFrame)/1000,.1):.016;last
 // Keep a read-only-ish diagnostics surface for inspection; this local prototype is not a security boundary.
 const G_CAPTURE=!!window.__ETERNITIES_CAPTURE_MODE;
 window.Realm={get state(){return sim.snapshot();},get diagnostics(){let g=engine?.gl,dbg=g?.getExtension('WEBGL_debug_renderer_info');return{version:'10.0.0',mode:engine?'webgl2':'map',scene:sim.room||'valley',world:RealmWorldFoundations.definition(sim.room)?{id:RealmWorldFoundations.definition(sim.room).id,height:sceneHeight(),dive:worldDiveStatus(),journey:JSON.parse(JSON.stringify(sim.state.journeys.realms[RealmWorldFoundations.definition(sim.room).id]))}:null,wildSigns:wildSignsDiagnostics(),roadkeeper:roadkeeperDiagnostics(),consignment:sim.room===RealmEarthConsignmentData.ROOM?JSON.parse(JSON.stringify({view:RealmEarthConsignmentMotion.current(consignmentContext()),frame:RealmEarthConsignmentArt.snapshot(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.consignmentPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,atlantis:sim.room===RealmAtlantisCampaign.definition.room?JSON.parse(JSON.stringify({current:RealmAtlantisCampaign.currentStatus(sim),motion:{currentDistance:RealmAtlantisCampaign.runtime(sim).currentDistance,pullDistance:RealmAtlantisCampaign.runtime(sim).pullDistance},witnesses:RealmAtlantisCampaign.runtime(sim).witnesses})):null,heaven:sim.room===RealmHeavenCampaign.definition.room?JSON.parse(JSON.stringify({escort:RealmHeavenCampaign.runtime(sim).escort,activation:RealmHeavenCampaign.runtime(sim).activation,status:RealmHeavenCampaign.escortStatus(sim)})):null,earthHomecoming:JSON.parse(JSON.stringify({record:sim.state.earthHomecoming,runtime:[null,RealmEarthHomecoming.definition.room].includes(sim.room)?RealmEarthHomecoming.runtime(sim):null,missing:RealmEarthHomecoming.missing(sim.state),ready:RealmEarthHomecoming.ready(sim.state)})),earth:sim.room===RealmEarth.ROOM?{trip:sim.earthTrip,height:sceneHeight(),walkable:RealmEarth.walkable(sim.state.player.x,sim.state.player.z)}:null,cosmos:sim.room===RealmCosmos.ROOM?{trip:sim.cosmosTrip,height:sceneHeight(),walkable:RealmCosmos.walkable(sim.state.player.x,sim.state.player.z),campaign:JSON.parse(JSON.stringify(RealmCosmosCampaign.runtime(sim)))}:null,networkDependencies:0,liveAI:false,multiplayer:false,adventure:{tactics:JSON.parse(JSON.stringify(RealmCombat.runtime(sim))),beacon:JSON.parse(JSON.stringify(RealmBeacon.runtime(sim))),crossing:JSON.parse(JSON.stringify(RealmCrossing.runtime(sim))),player:{...sim.state.player},paused:sim.paused,intent:adventure?.intent||null,stats:RealmAdventure.stats(sim.state.adventure),weapon:RealmArsenal.weapon(sim.state.adventure),arrows:RealmArsenal.runtime(sim).arrows.map(a=>({...a})),range:{...RealmArsenal.runtime(sim).range},enemies:RealmAdventure.runtime(sim).enemies.map(e=>({id:e.id,x:e.x,z:e.z,hp:e.hp,maxHP:e.maxHP,hidden:!!e.hidden,eventEnemy:!!e.eventEnemy,kind:e.kind,earthHomecoming:e.earthHomecoming||null,ringMode:e.ringMode,custom:e.custom,mode:e.mode,timer:e.timer,aim:e.aim,yaw:e.yaw,strike:e.strike||null,contactAt:e.contactAt??null,contactHit:e.contactHit??null})),companion:{...RealmAdventure.runtime(sim).companion}},sandbox:{bridge:sim.state.sandbox.bridge,objects:sim.state.sandbox.placed.length,elapsed:sim.state.sandbox.elapsed,autoGather:sandbox?.auto||null,buildMode:sandbox?.build||null},saveState,characters:{mode:characterStore.blocked?'blocked':characterStore.managed?'managed':'legacy',active:characterStore.active,revision:characterStore.revision,count:characterStore.record?.slots.length||1,writer:characterStore.writer,error:characterStore.error},fps,errors:errors.slice(),camera:{...camera,projection:engine?.camera.projection||'orthographic',eye:engine?.camera.eye,target:engine?.camera.target},metrics:engine?.metrics||null,reflection:engine?.reflectionInfo||null,cutaway:{enabled:!!engine?.cutaway,focus:engine?.cutawayFocus||null},renderer:dbg?g.getParameter(dbg.UNMASKED_RENDERER_WEBGL):null,music:{playing:experience?.playing||false,scoreRevision:sim.state.scoreRevision,playingRevision:experience?.playingRevision,step:experience?.step},gathering:sim.gathering?{...sim.gathering}:null,layoutRevision:sim.state.retreat.revision,roadsideGathering:{status:rpg?.gathering?.player.status||'idle',playing:!!rpg?.gathering?.player.source,pending:!!rpg?.gathering?.pending},audio:{enabled:audio.enabled,state:audio.ctx?.state||'not-created',soundscape:audio.soundscape?.snapshot()||null}};},navigate,export:()=>JSON.stringify(sim.snapshot(),null,2),project:(x,y,z)=>engine?.project(x,y,z)};
-if(window.__ETERNITIES_TEST_MODE||location.search.includes('test'))window.Realm.test={consignmentContext,consignmentControl,consignment:()=>({view:RealmEarthConsignmentMotion.current(consignmentContext()),frame:RealmEarthConsignmentArt.snapshot(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.consignmentPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),fieldcraftContext,frameFieldcraft,fieldcraft:()=>({view:RealmEarthFieldcraft.current(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.fieldcraftPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),earthRoad:()=>({route:RealmEarthRoad.endpoint(sim.room),parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.earthRoadPart||i.worldSolidId==='hearthwater-fingerpost').map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),earthRoadTravel,earthHomecomingCommand,homeCommand,cosmosCampaignCommand,atlantisCampaignCommand,heavenCampaignCommand,hellCampaignCommand,bridgeCommunityCommand,localLifeCommand,bridgeView,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,worldSwim:(...a)=>RealmWorldFoundations.swim(sim,...a),step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){bindWildSignsClearance();sim.tick(.05);tickRoadkeeper(.05);tickConsignment(.05);tickGrazer(.05);adventure?.tick();arsenal?.tick();rpg?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,bridge:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({definition:RealmEarth.BRIDGE,waterHeight:RealmEngine.WATER_HEIGHT,railCutaway:{eligible:engine?.railCutawayActive===true,enabled:engine?.cutaway===true},parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.bridgePart||i.mountainPart||i.shorelinePart).map(i=>({kind:b.kind,railBatch:b.railCutaway===true,...i,m:i.m?Array.from(i.m):null})))||[]})):null,traveler:()=>art?.travelerSnapshot()||null,companion:()=>RealmAdventureArt.companionSnapshot(sim),skitters:()=>RealmAdventureArt.skitterSnapshot(sim),drover:()=>sim.room===RealmEarth.ROOM&&art?.droverFrame?JSON.parse(JSON.stringify({frame:{...art.droverFrame,root:Array.from(art.droverFrame.root),coilRoot:Array.from(art.droverFrame.coilRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.droverPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,earthShoulder:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({frame:art?.earthShoulderFrame,parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.quarryShoulder||i.terrain).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,quarry:()=>sim.room===RealmEarth.ROOM&&art?.quarryFrame?JSON.parse(JSON.stringify({frame:{actor:{...art.quarryFrame.actor,root:Array.from(art.quarryFrame.actor.root),toolRoot:Array.from(art.quarryFrame.actor.toolRoot)},works:art.quarryFrame.works},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.stoneworkerPart||i.quarryPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))})):null,millwright:()=>sim.room===RealmEarth.ROOM&&art?.millwrightFrame?JSON.parse(JSON.stringify({frame:{...art.millwrightFrame,root:Array.from(art.millwrightFrame.root),toolRoot:Array.from(art.millwrightFrame.toolRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.millwrightPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millGate:()=>sim.room===RealmEarth.ROOM&&art?.millGateFrame?JSON.parse(JSON.stringify({gate:art.millGateFrame,parts:[...engine.batches,...engine.dynamic].flatMap(b=>b.items.filter(i=>i.millPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null}))),wheel:art.dynamicBox.items.filter(i=>i.p[0]===3.55&&i.p[1]===2.71)})):null,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);syncFieldcraftOwner();consignmentPresentation();grazerPresentation();prepareWildSignsDiagnostics();roadkeeperPresentation();prepareRoadkeeperDiagnostics();art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
+if(window.__ETERNITIES_TEST_MODE||location.search.includes('test'))window.Realm.test={consignmentContext,consignmentControl,consignment:()=>({view:RealmEarthConsignmentMotion.current(consignmentContext()),frame:RealmEarthConsignmentArt.snapshot(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.consignmentPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),fieldcraftContext,frameFieldcraft,frameCarrier,carrier:()=>({view:RealmEarthPatrolCarrier.current(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.carrierPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),fieldcraft:()=>({view:RealmEarthFieldcraft.current(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.fieldcraftPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),earthRoad:()=>({route:RealmEarthRoad.endpoint(sim.room),parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.earthRoadPart||i.worldSolidId==='hearthwater-fingerpost').map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),earthRoadTravel,earthHomecomingCommand,homeCommand,cosmosCampaignCommand,atlantisCampaignCommand,heavenCampaignCommand,hellCampaignCommand,bridgeCommunityCommand,localLifeCommand,bridgeView,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,worldSwim:(...a)=>RealmWorldFoundations.swim(sim,...a),step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){bindWildSignsClearance();sim.tick(.05);tickRoadkeeper(.05);tickConsignment(.05);tickGrazer(.05);adventure?.tick();arsenal?.tick();rpg?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,bridge:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({definition:RealmEarth.BRIDGE,waterHeight:RealmEngine.WATER_HEIGHT,railCutaway:{eligible:engine?.railCutawayActive===true,enabled:engine?.cutaway===true},parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.bridgePart||i.mountainPart||i.shorelinePart).map(i=>({kind:b.kind,railBatch:b.railCutaway===true,...i,m:i.m?Array.from(i.m):null})))||[]})):null,traveler:()=>art?.travelerSnapshot()||null,companion:()=>RealmAdventureArt.companionSnapshot(sim),skitters:()=>RealmAdventureArt.skitterSnapshot(sim),drover:()=>sim.room===RealmEarth.ROOM&&art?.droverFrame?JSON.parse(JSON.stringify({frame:{...art.droverFrame,root:Array.from(art.droverFrame.root),coilRoot:Array.from(art.droverFrame.coilRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.droverPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,earthShoulder:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({frame:art?.earthShoulderFrame,parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.quarryShoulder||i.terrain).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,quarry:()=>sim.room===RealmEarth.ROOM&&art?.quarryFrame?JSON.parse(JSON.stringify({frame:{actor:{...art.quarryFrame.actor,root:Array.from(art.quarryFrame.actor.root),toolRoot:Array.from(art.quarryFrame.actor.toolRoot)},works:art.quarryFrame.works},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.stoneworkerPart||i.quarryPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))})):null,millwright:()=>sim.room===RealmEarth.ROOM&&art?.millwrightFrame?JSON.parse(JSON.stringify({frame:{...art.millwrightFrame,root:Array.from(art.millwrightFrame.root),toolRoot:Array.from(art.millwrightFrame.toolRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.millwrightPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millGate:()=>sim.room===RealmEarth.ROOM&&art?.millGateFrame?JSON.parse(JSON.stringify({gate:art.millGateFrame,parts:[...engine.batches,...engine.dynamic].flatMap(b=>b.items.filter(i=>i.millPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null}))),wheel:art.dynamicBox.items.filter(i=>i.p[0]===3.55&&i.p[1]===2.71)})):null,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);syncFieldcraftOwner();consignmentPresentation();grazerPresentation();prepareWildSignsDiagnostics();roadkeeperPresentation();prepareRoadkeeperDiagnostics();art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
 window.addEventListener('resize',resize);window.addEventListener('pagehide',()=>{save();characterStore.writer=false;characterLock.release();});window.addEventListener('pageshow',e=>{if(e.persisted&&characterStore.managed)acquireCharacterWriter().then(()=>save());});ui.canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();graphicsContextLost();});ui.canvas.addEventListener('webglcontextrestored',restoreGraphics);document.body.classList.toggle('reduced',sim.state.settings.reducedMotion);cameraPreset(sim.state.settings.cameraMode,false);if(camera.preset==='adventure'&&!sim.state.settings.cameraViews.profiles.adventure)camera.yaw=.22;labelsRebuild();resize();refreshUI();if(characterStore.managed){acquireCharacterWriter().then(ok=>{if(ok)save();else{saveState='unavailable';toast(characterLock.error);renderStatus();}});}else save();if(loaded.status==='migrated')toast('Your earlier world was copied into Realm 10. The original save was not changed.');setTimeout(()=>$('#loading').classList.add('hidden'),400);if(G_CAPTURE){if(window.Realm.test)window.Realm.test.render();}else requestAnimationFrame(frame);
 })();
 </script></body></html>

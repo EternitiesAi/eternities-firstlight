@@ -179,7 +179,9 @@ test('existing accepted patrol glade inspection and payment remain independent o
  const f=fixture({steps:E.definition.steps.map(s=>s.id),claimed:true});
  f.sim.state.earthExpedition.patrol.active={run:1,steps:E.patrol.steps.slice(0,4).map(s=>s.id)};f.sim.state.player={x:-106,z:-105,yaw:0};
  const payload={quest:E.patrol.id,run:1,priorClaim:0};withRules(undefined,()=>{
-  const r=E.command(f.ctx(),'patrol-step',{...payload,step:'inspect-glade'},{save:f.save});assert.ok(r.ok,r.error);
+  require('../src/engine.js');const P=require('../src/earth-patrol-carrier.js'),begun=P.begin(f.ctx());assert.ok(begun.ok,begun.error);let view=begun.view,ticket;
+  while(view.activePiece){const id=view.activePiece,r=view.receivers.find(r=>r.pieceId===id);assert.ok(P.inspect(f.ctx(),begun.plan,id,r.id).ok);assert.ok(P.adjust(f.ctx(),begun.plan,{pieceId:id,receiverId:r.id,...r.target}).ok);const seated=P.seat(f.ctx(),begun.plan,id);assert.ok(seated.ok,seated.error);view=seated.view;ticket=seated.ticket;}
+  const r=E.command(f.ctx(),'patrol-step',{...payload,step:'inspect-glade',carrierTicket:ticket},{save:f.save});assert.ok(r.ok,r.error);
   f.sim.state.player={x:E.patrol.giver.x,z:E.patrol.giver.z,yaw:0};const paid=E.command(f.ctx(),'patrol-claim',payload,{save:f.save});assert.ok(paid.ok);assert.equal(paid.reward.xp,5);
   const before=snapshot(f),calls=f.saveCalls;assert.ok(E.command(f.ctx(),'patrol-claim',payload,{save:f.save}).duplicate);assert.equal(snapshot(f),before);assert.equal(f.saveCalls,calls);
  });assert.ok(f.sim.state.earthExpedition.story.steps.includes(STEP));

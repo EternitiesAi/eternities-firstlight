@@ -96,7 +96,7 @@ def fight(step,patrol_run=None):
 def kit_appearance(label,run):
  for view in ['follow','adventure']:
   page.locator('#rpg-hud [data-rpg="camera"][data-id="'+view+'"]').click();page.keyboard.press('r');render()
-  data=ev("""run=>{const sim=Realm.test.worldContext().sim,e=__encounterArt.e,saved=e.dynamic.map(b=>({b,items:b.items,data:b.data,count:b.count})),read=()=>{const g=e.gl,a=new Uint8Array(e.mainF.w*e.mainF.h*4);g.bindFramebuffer(g.FRAMEBUFFER,e.mainF.f);g.readPixels(0,0,e.mainF.w,e.mainF.h,g.RGBA,g.UNSIGNED_BYTE,a);g.bindFramebuffer(g.FRAMEBUFFER,null);return a;},args=[sim.elapsed,sim.state.hour,sim.state.weather==='rain'],before=JSON.stringify(sim.state);e.render(...args);const baseline=read();let parts=0;try{for(const q of saved){q.b.items=q.items.filter(i=>!(i.patrolRun===run&&/^patrol-(kit|billet|test|lashing)/.test(i.expeditionPart||'')));parts+=q.items.length-q.b.items.length;e.updateBatch(q.b);}e.render(...args);const absent=read();for(const q of saved){q.b.items=q.items;q.b.data=q.data;e.updateBatch(q.b);q.b.count=q.count;}e.render(...args);const restored=read();let changed=0,delta=0;for(let i=0;i<baseline.length;i+=4){if(Math.max(...[0,1,2].map(k=>Math.abs(baseline[i+k]-absent[i+k])))>2)changed++;for(let k=0;k<3;k++)delta+=Math.abs(baseline[i+k]-restored[i+k]);}return{parts,changed,delta,pure:before===JSON.stringify(sim.state),glError:e.gl.getError()};}finally{for(const q of saved){q.b.items=q.items;q.b.data=q.data;e.updateBatch(q.b);q.b.count=q.count;}}}""",run)
+  data=ev("""run=>{const sim=Realm.test.worldContext().sim,e=__encounterArt.e,saved=e.dynamic.map(b=>({b,items:b.items,data:b.data,count:b.count})),read=()=>{const g=e.gl,a=new Uint8Array(e.mainF.w*e.mainF.h*4);g.bindFramebuffer(g.FRAMEBUFFER,e.mainF.f);g.readPixels(0,0,e.mainF.w,e.mainF.h,g.RGBA,g.UNSIGNED_BYTE,a);g.bindFramebuffer(g.FRAMEBUFFER,null);return a;},args=[sim.elapsed,sim.state.hour,sim.state.weather==='rain'],before=JSON.stringify(sim.state);e.render(...args);const baseline=read();let parts=0;try{for(const q of saved){q.b.items=q.items.filter(i=>!((i.patrolRun===run&&/^patrol-(kit|billet|test|lashing)/.test(i.expeditionPart||''))||(i.carrierRun===run&&['carrier-seated-piece','carrier-loose-piece'].includes(i.carrierPart))));parts+=q.items.length-q.b.items.length;e.updateBatch(q.b);}e.render(...args);const absent=read();for(const q of saved){q.b.items=q.items;q.b.data=q.data;e.updateBatch(q.b);q.b.count=q.count;}e.render(...args);const restored=read();let changed=0,delta=0;for(let i=0;i<baseline.length;i+=4){if(Math.max(...[0,1,2].map(k=>Math.abs(baseline[i+k]-absent[i+k])))>2)changed++;for(let k=0;k<3;k++)delta+=Math.abs(baseline[i+k]-restored[i+k]);}return{parts,changed,delta,pure:before===JSON.stringify(sim.state),glError:e.gl.getError()};}finally{for(const q of saved){q.b.items=q.items;q.b.data=q.data;e.updateBatch(q.b);q.b.count=q.count;}}}""",run)
   check(variant+' actual supplied '+label+' kit pixels '+view,data['parts']==7 and data['changed']>10 and data['delta']==0 and data['pure'] and data['glError']==0,data);shot('kit-'+str(run)+'-'+label+'-'+view)
 
 def fieldcraft_control(action,section=None):
@@ -171,12 +171,37 @@ def fit_support():
   finally:ev('()=>{Storage.prototype.setItem=window.__fittingSetItem;delete window.__fittingSetItem;}')
  fieldcraft_control('fasten').click();render();after=state();check(variant+' deliberate fastening records existing step without payment',after['earthExpedition']['story']['steps']==before['earthExpedition']['story']['steps']+['brace-root-channel'] and all(after['adventure'][k]==before['adventure'][k] for k in ['xp','coins','ore']) and after['sandbox']['inventory']==before['sandbox']['inventory'] and ownership(after)==ownership(before));check(variant+' actual native Store contains only durable completed brace',saved_world()['earthExpedition']==after['earthExpedition'] and fieldcraft_view() is None);fieldcraft_pixels('permanent',True);close()
 
+def fit_carrier():
+ before=state();page.locator('[data-rpg="expedition-carrier-begin"]').click();render()
+ for view in ['follow','adventure']:
+  close();page.locator('#rpg-hud [data-rpg="camera"][data-id="'+view+'"]').click();render();workspace('expedition');fov=diag()['camera']['fov'];page.locator('[data-rpg="expedition-carrier-look"]').click();render()
+  points=ev('''()=>{const v=Realm.test.carrier().view;return{points:v.pieces.flatMap(p=>p.corners).map(p=>Realm.project(...p)),width:innerWidth,barTop:document.querySelector('#skillbar').getBoundingClientRect().top};}''')
+  check(variant+' actual carrier Look retains preset/FOV and closes native menu '+view,diag()['camera']['preset']==view and diag()['camera']['fov']==fov and not page.locator('#rpg-window').evaluate('e=>e.open'))
+  check(variant+' actual transformed supplied pieces clear viewport/HUD '+view,all(p['visible'] and 8<p['x']<points['width']-8 and 8<p['y']<points['barTop']-8 for p in points['points']),points);shot('carrier-look-'+view)
+ workspace('expedition')
+ for _ in range(3):
+  inspect=page.locator('[data-rpg="expedition-carrier-inspect"]');piece=inspect.get_attribute('data-piece');inspect.click();render()
+  target=ev('''([branch,id])=>RealmEarthPatrolCarrier.definition(branch).pieces.find(p=>p.id===id).target''',[before['earthExpedition']['story']['branch'],piece])
+  check(variant+' supplied starting pose needs correction '+piece,not page.locator('[data-rpg="expedition-carrier-seat"]').is_enabled())
+  for axis in ['x','z','yaw']:
+   value=target[axis]*180/math.pi if axis=='yaw' else target[axis]*100
+   loc=page.locator('#carrier-'+axis+'-number');loc.focus()
+   if axis=='x':
+    pose=ev('Realm.test.carrier().view');loc.press('ControlOrMeta+A');loc.press('Backspace');loc.press('-');render()
+    check(variant+' actual partial typing retains control focus and last valid pose '+piece,ev('id=>document.activeElement?.id===id','carrier-x-number') and ev('Realm.test.carrier().view')==pose and not page.locator('[data-rpg="expedition-carrier-seat"]').is_enabled())
+   loc.fill(str(value));render()
+   check(variant+' carrier edit keeps focused native control '+axis,ev('id=>document.activeElement?.id===id','carrier-'+axis+'-number'))
+  page.locator('[data-rpg="expedition-carrier-seat"]').click();render();check(variant+' supplied seat is transient '+piece,fitting_unchanged(before,state()))
+ page.locator('[data-rpg="expedition-carrier-record"]').click();render()
+ check(variant+' actual carrier inspection saved without payment',state()['earthExpedition']['patrol']['active']['steps']==before['earthExpedition']['patrol']['active']['steps']+['inspect-glade'] and all(state()['adventure'][k]==before['adventure'][k] for k in ['xp','coins','ore']) and state()['sandbox']['inventory']==before['sandbox']['inventory'])
+
 def objective(step,run=None):
  walk_button(step['id'],step,step['name'])
  if step['kind']=='defeat':fight(step,run);return
  if run and step['id']=='inspect-glade':kit_appearance('pending',run)
  page.keyboard.press('e');render()
  if run is None and step['id']=='brace-root-channel':fit_support()
+ elif run and step['id']=='inspect-glade':fit_carrier()
  else:
   action='patrol-step' if run else 'step';page.locator('[data-rpg="expedition-'+action+'"][data-id="'+step['id']+'"]').click();render()
  steps=state()['earthExpedition']['patrol']['active']['steps'] if run else state()['earthExpedition']['story']['steps'];check(variant+' visible field action '+step['id'],step['id'] in steps);close()
