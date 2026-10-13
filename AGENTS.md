@@ -1,3 +1,38 @@
+# Village residents implemented; current visual gate open, 2026-10-13
+
+Continue gameplay/village-resident-articulation-20261013 / draft PR76, stacked on
+PR75 at708411ebe85d9bca75b0e13964564174ec1b61cb. Runtime/test head:
+d8d07ad8d34afc1371e13c39e0a685c2a4a61d94. Read
+ docs/development/VILLAGE_RESIDENT_QUALIFICATION_2026-10-13.md.
+
+Ilan/Mara/Oren have transient articulated gait and hand-aligned props. Native03
+at166550d exposed a real commons-bench camera close-up and correctly failed the
+last Oren movement pair on arrival home. All its owned resources closed. Current
+source compacts commons seats into unchanged Core navigation reservations; a
+clean remote STATION passed28 focused tests. Complete Source02 at166550d passed
+224 commands, Node2256/0fail/2skip, Python490 run/8skip, both ten-chapter variants
+and five Briar cases. That older complete pass does not qualify d8d07ad's repair.
+
+Source03 refused host-memory admission before launch. Source04 and Native04 are
+prepared in D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013;
+complete source and actual visual recapture remain required. Native04 uses real
+P pauses around UI/evidence and unpaused RAF displacement, both requested modes,
+exact cold save readback and home/interior checks. Do not claim it has run without
+its receipt. Preserve failed footage locally and publish only a useful final clip.
+
+World9/Adventure12 remain; no migration, Core changes, rewards or personal-save
+inspection. Full --browser still needs separately reviewed road-account epoch05;
+preserve04 and negative receipts. Hosted jobs remain blocked by account billing;
+no billing actions. Human/GPU/production acceptance remain open.
+
+Reuse ROOT/STATION on D; no new copies/cleanup. Fresh host free memory>=6291456KiB
+before complete source or each whole browser; four workers/Node180/Python600.
+VM/Claude/personal profiles/unrelated workers and the blocked deletion remain
+excluded. No paid provider, merge, deploy or heartbeat resume. Goal ACTIVE,
+production unfinished. This checkpoint has no running browser/source worker.
+
+---
+
 # Hand-held pier animation qualified, 2026-10-13
 
 Continue gameplay/pier-handheld-animation-20261013 / draft PR75, stacked on

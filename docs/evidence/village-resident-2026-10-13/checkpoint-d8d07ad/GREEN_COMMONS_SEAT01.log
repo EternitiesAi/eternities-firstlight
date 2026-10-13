@@ -1,0 +1,36 @@
+✔ actual App resolves the house camera without rewriting orbit preference or any world state (9.9725ms)
+✔ every eased camera frame is rechecked against the actual wall, including return to the requested orbit (3.7421ms)
+✔ reduced motion resolves immediately and camera-relative controls use only the displayed perspective heading (1.5274ms)
+✔ first real pointer drag begins at the visible corrected orbit and keeps subsequent deltas intentional (0.7633ms)
+✔ leaving an actual tour keeps the displayed heading for movement and drag, not a stale perspective correction (1.1792ms)
+✔ clear endpoints around a side wall do not allow a one-frame close-up on the intervening orbit arc (1.8675ms)
+✔ supported doorstep and near-wall edge keep a readable, collision-safe perspective distance (0.5475ms)
+✔ an unobstructed requested view remains exact and returns after leaving the wall (0.2164ms)
+✔ retains the current clear side under small doorway movements instead of alternating orbit sides (0.2197ms)
+✔ an enclosed focus retains the inherited short fallback and never claims readable clearance (0.539ms)
+✔ opted-in dynamic walls take part in the same camera correction (0.2511ms)
+✔ commons seats fit their existing navigation reservations and leave the actual Mara route readable (122.1084ms)
+✔ only the three existing identities use distinct original appearance and supported props (3.7825ms)
+✔ submitted body vertices stay finite and grounded; solved limb endpoints connect in every facing (2559.0408ms)
+✔ carried props remain at actual hand contact throughout gait and carry-height settling (8.9327ms)
+✔ real WorldArt caller preserves outdoor and indoor membership, bases and exact state owners (505.8201ms)
+✔ actual accepted routes drive separate gait and settle; pause and repeated renders stay exact (840.8916ms)
+✔ scene generation, owner replacement, hydration and hidden actors cannot inherit stale gait (37.9076ms)
+✔ reduced motion retains essential walking/contact and omits optional drift (1.306ms)
+✔ Mara retains the shared short hem envelope instead of a closed skirt across the stride (3.4357ms)
+✔ Oren apron clears actual thigh triangles across the full gait (209.3889ms)
+✔ original centered cloth geometry has finite closed outward bevels inside the old box (5.1076ms)
+✔ only three coat pieces change mesh; all 49 parts, matrices, materials and pose functions remain exact (25.3606ms)
+✔ actual production camera projection contains every new coat vertex in its original projected box (58.4525ms)
+✔ real WorldArt commits one ordinary cloth batch and retains traveler owner/snapshot dispatch (10.6838ms)
+✔ actual Engine batch packs the same three transforms in one supported 6-float mesh (0.6661ms)
+✔ every canonical weapon and finite marker remains byte-identical with the same original attachment frame (17.8487ms)
+✔ envelope, normal, topology and unsupported-mesh counterexamples fail the meaningful mesh guards (0.8962ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4394.9263

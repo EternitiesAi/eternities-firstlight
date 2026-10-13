@@ -1,0 +1,20 @@
+✔ actual App resolves the house camera without rewriting orbit preference or any world state (9.3877ms)
+✔ every eased camera frame is rechecked against the actual wall, including return to the requested orbit (3.587ms)
+✔ reduced motion resolves immediately and camera-relative controls use only the displayed perspective heading (1.5541ms)
+✔ first real pointer drag begins at the visible corrected orbit and keeps subsequent deltas intentional (0.6042ms)
+✔ leaving an actual tour keeps the displayed heading for movement and drag, not a stale perspective correction (1.3378ms)
+✔ clear endpoints around a side wall do not allow a one-frame close-up on the intervening orbit arc (1.8349ms)
+✔ supported doorstep and near-wall edge keep a readable, collision-safe perspective distance (0.4938ms)
+✔ an unobstructed requested view remains exact and returns after leaving the wall (0.2219ms)
+✔ retains the current clear side under small doorway movements instead of alternating orbit sides (0.2338ms)
+✔ an enclosed focus retains the inherited short fallback and never claims readable clearance (0.8625ms)
+✔ opted-in dynamic walls take part in the same camera correction (0.3037ms)
+✔ commons seats fit their existing navigation reservations and leave the actual Mara route readable (294.9546ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 395.7349

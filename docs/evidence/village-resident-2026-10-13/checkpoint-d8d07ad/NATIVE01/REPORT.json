@@ -1,0 +1,39 @@
+{
+  "status": "failed",
+  "head": "166550d516b6127d831bfef0e96e145fa9a819ae",
+  "htmlSha256": "41ac8100ae62daf7b29c41c3b7f4ebe314bcd02200cbb46e1c028664b74051ad",
+  "sourceGate": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\REMOTE_SOURCE02_EXIT.json",
+    "sha256": "6c6e5484196f583c244d6f5bcc6a3b5bf149f1079afbd2fc7d20963d6982f39f",
+    "commandsPassed": 224,
+    "ruleFiles": 160,
+    "head": "166550d516b6127d831bfef0e96e145fa9a819ae",
+    "output": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\REMOTE_SOURCE02"
+  },
+  "callerSha256": "d719fa69b53bb1a0b95e3679d08fc39c664f439ed2d1bd04474ce70df39e4f55",
+  "method": "Native village family: actual Settings/People controls and Core movement.\nPreparation/settled/interior checks use labelled accelerated ticks; one bounded\nordinary-RAF recording uses no step/render/actor-position injection. Software Low.\nRange values are changed through their DOM input event, not sim/state assignment.\nEach camera observes a real outgoing or homeward route selected by the clock.\n10:00 was selected for readable daytime exterior art; 19:00 triggers the real return.\n",
+  "checks": [],
+  "errors": [
+    "TimeoutError('BrowserType.launch_persistent_context: Timeout 180000ms exceeded.\\nCall log:\\n  - <launching> D:\\\\07-GAMES\\\\Firstlight\\\\cache\\\\ms-playwright-1.57\\\\chromium_headless_shell-1200\\\\chrome-headless-shell-win64\\\\chrome-headless-shell.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AcceptCHFrame,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --disable-infobars --disable-search-engine-choice-screen --disable-sync --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --no-sandbox --disable-dev-shm-usage --enable-webgl --ignore-gpu-blocklist --disable-gpu-sandbox --use-angle=swiftshader --user-data-dir=D:\\\\07-GAMES\\\\Firstlight\\\\artifacts\\\\village-resident-articulation-20261013\\\\NATIVE01\\\\task-owned-profile --remote-debugging-pipe about:blank\\n  - <launched> pid=46232\\n  - [pid=46232][err] [1013/160944.507:ERROR:content\\\\browser\\\\network_service_instance_impl.cc:613] Network service crashed or was terminated, restarting service.\\n')"
+  ],
+  "browserErrors": [],
+  "externalRequests": [],
+  "admissions": [
+    {
+      "freeHostKiB": 6439588,
+      "minimumFreeKiB": 6291456
+    }
+  ],
+  "samples": [],
+  "actorPositionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedQuestFacts": 0,
+  "humanAcceptance": false,
+  "performanceCertified": false,
+  "ownedServerClosed": true,
+  "ownedBrowserDriverClosed": true,
+  "successfulClosures": {
+    "browser": true,
+    "driver": true
+  }
+}

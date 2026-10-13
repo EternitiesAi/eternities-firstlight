@@ -1,3 +1,27 @@
+# Resident articulation preserves the existing simulation, 2026-10-13
+
+Reuse the traveler skeleton for only Ilan/Mara/Oren, with an immutable presentation
+adapter and quiet hand targets. Actual accepted displacement drives gait; Core
+retains schedules, positions, conversations and projects. Renderer caches are
+transient, isolated and reset on owner/scene changes. Generic actors and realm
+givers retain their separate callers. No new save owner, migration or reward.
+
+Treat rendered failures as product findings even when source checks pass. Native03
+exposed a bench back around the followed camera pivot. Preserve Core's original
+.65m obstacle reservations: enlarging them would invalidate old saved coordinates.
+Compact the four commons seats and lower their backs instead; preserve real
+camera solids and conservative collision. Tests bound readability to the affected
+route corridor, not every possible view.
+
+Do not count arrival as failed game movement or relax a strict displacement test:
+Native03's final Oren pair ran into legitimate home arrival. Prepare camera/evidence
+while truly paused, then measure unpaused ordinary movement on the full outward
+route. Pair actual mode identity with projection and bracket image timing. Keep
+source epochs, negative evidence, software measurements and human acceptance
+distinct. No resource-admission bypass to obtain a pass.
+
+---
+
 # Fishing presentation follows accepted rules and solved hands, 2026-10-13
 
 Keep the existing transient fishing session as sole owner of timing, tension,

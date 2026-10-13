@@ -1,0 +1,34 @@
+{
+  "status": "failed",
+  "head": "166550d516b6127d831bfef0e96e145fa9a819ae",
+  "htmlSha256": "41ac8100ae62daf7b29c41c3b7f4ebe314bcd02200cbb46e1c028664b74051ad",
+  "sourceGate": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\REMOTE_SOURCE02_EXIT.json",
+    "sha256": "6c6e5484196f583c244d6f5bcc6a3b5bf149f1079afbd2fc7d20963d6982f39f",
+    "commandsPassed": 224,
+    "ruleFiles": 160,
+    "head": "166550d516b6127d831bfef0e96e145fa9a819ae",
+    "output": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\REMOTE_SOURCE02"
+  },
+  "callerSha256": "7fb69c99c6189f8ad08e64ee5568a724cb90e9d2aa614ee1a464fc2afb5b3800",
+  "method": "Native village family: actual Settings/People controls and Core movement.\nPreparation/settled/interior checks use labelled accelerated ticks; one bounded\nordinary-RAF recording uses no step/render/actor-position injection. Software Low.\nRange values are changed through their DOM input event, not sim/state assignment.\nEach camera observes a real outgoing or homeward route selected by the clock.\n10:00 was selected for readable daytime exterior art; 19:00 triggers the real return.\n",
+  "checks": [],
+  "errors": [
+    "ValueError('Host memory admission refused: 6052728KiB < 6291456KiB; no VM/unrelated action')"
+  ],
+  "browserErrors": [],
+  "externalRequests": [],
+  "admissions": [],
+  "samples": [],
+  "actorPositionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedQuestFacts": 0,
+  "humanAcceptance": false,
+  "performanceCertified": false,
+  "ownedServerClosed": true,
+  "ownedBrowserDriverClosed": true,
+  "successfulClosures": {
+    "browser": true,
+    "driver": true
+  }
+}

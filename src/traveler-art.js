@@ -154,6 +154,12 @@ function pose(options={}){
  if(options.activity==='record'&&!combatScene&&!swimming){left=[-.20,1.36+torsoY,.33];right=[.20,1.36+torsoY,.33];}
  const fish=options.fishing,point=v=>Array.isArray(v)&&v.length===3&&v.every(Number.isFinite);
  const fishing=!combatScene&&!swimming&&fish&&point(fish.left)&&point(fish.right)&&point(fish.axis)?fish:null;
+ // A quiet carried object can request either hand. Existing activity and combat
+ // owners remain authoritative; the same arm solver supplies the final anchors.
+ if(!combatScene&&!swimming&&options.activity!=='record'&&!fishing&&options.carry){
+  if(point(options.carry.left))left=plus(options.carry.left,[0,torsoY,0]);
+  if(point(options.carry.right))right=plus(options.carry.right,[0,torsoY,0]);
+ }
  if(fishing){left=plus(fishing.left,[0,torsoY,0]);right=plus(fishing.right,[0,torsoY,0]);}
  if(swimming){const stroke=reducedMotion?0:Math.sin(time*1.9)*.12;left=[-.42,1.08+torsoY,.18+stroke];right=[.42,1.08+torsoY,.18-stroke];}
  for(const key of ['spine','chest','neck','head','back','leftShoulder','rightShoulder'])joints[key]=bodyPoint(joints[key],upperBody,pivot);

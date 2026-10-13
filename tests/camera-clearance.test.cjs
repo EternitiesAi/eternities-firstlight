@@ -100,3 +100,34 @@ test('opted-in dynamic walls take part in the same camera correction',()=>{
  const r=resolve(e,[0,2.8,0],0);
  assert.ok(r.distance>=3.4);assert.notEqual(r.yaw,0);
 });
+
+test('commons seats fit their existing navigation reservations and leave the actual Mara route readable',()=>{
+ const art=Object.create(global.RealmArt.WorldArt.prototype);art.map={};
+ const centers=[.22,2.2,3.4,5.3].map(a=>({x:Math.cos(a)*6.3,z:Math.sin(a)*6.3,yaw:-a+Math.PI/2}));
+ for(const c of centers){
+  art.map={};art.bench(c.x,c.z,c.yaw,1.2,{compact:true});
+  for(const p of art.map.box){
+   const m=E.M.compose(...p.p,...p.s,...p.r);
+   for(const x of[-.5,.5])for(const y of[-.5,.5])for(const z of[-.5,.5]){
+    const v=E.M.transform(m,[x,y,z]);assert.ok(Math.hypot(v[0]-c.x,v[2]-c.z)<=.65+1e-6,'actual seat vertices must stay inside the original Core circle');
+   }
+  }
+ }
+ const f=appFixture();f.engine.clear=function(){this.cameraSolids=[]};f.engine.batch=function(kind,items){this.cameraSolids.push(...items.map(i=>E.solidBounds(kind,i)).filter(Boolean));return{kind,items}};
+ new global.RealmArt.WorldArt(f.engine);
+ f.sim.state.settings.timeFlow=false;f.sim.setTime(19);for(let i=0;i<1600;i++)f.sim.tick(.1);
+ // The same accepted home-to-observatory route that exposed the native close-up.
+ const sourceAt=source.indexOf('function cameraHeading('),sourceEnd=source.indexOf('function cameraPreset(',sourceAt);
+ const host={...f,follow:'mara',sceneHeight:()=>1.3,grazerFocus:()=>null,carrierFocus:()=>null,fieldcraftFocus:()=>null,innerWidth:1440,innerHeight:960};
+ vm.createContext(host);vm.runInContext(source.slice(sourceAt,sourceEnd),host);f.sim.setTime(10);f.camera.yaw=.22;f.camera.actualYaw=.22;
+ for(const reduced of[false,true])for(const hour of[10,19]){
+  f.sim.state.settings.reducedMotion=reduced;f.sim.setTime(hour);let samples=0;
+  for(let i=0;i<1500;i++){
+   f.sim.tick(.05);host.follow=i<20?'ilan':i<40?'oren':'mara';host.updateCamera(.05);
+   const p=f.sim.state.residents.find(r=>r.id===host.follow);
+   if(p.x>-7&&p.x<-4&&p.z>-2&&p.z<1){samples++;assert.ok(f.camera.actualDistance>=3.4,'real route must not collapse to a face close-up beside the commons seat');}
+   assert.ok(f.engine.clearCameraDistance(f.camera.center,f.engine.camera.eye)>=f.camera.actualDistance-.03,'every frame retains the actual solid sweep');
+  }
+  assert.ok(samples>30);assert.equal(f.sim.runs.get('mara').walking,false);
+ }
+});

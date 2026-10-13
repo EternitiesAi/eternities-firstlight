@@ -1,0 +1,40 @@
+✔ actual App resolves the house camera without rewriting orbit preference or any world state (9.5605ms)
+✔ every eased camera frame is rechecked against the actual wall, including return to the requested orbit (3.3625ms)
+✔ reduced motion resolves immediately and camera-relative controls use only the displayed perspective heading (1.439ms)
+✔ first real pointer drag begins at the visible corrected orbit and keeps subsequent deltas intentional (0.5694ms)
+✔ leaving an actual tour keeps the displayed heading for movement and drag, not a stale perspective correction (1.099ms)
+✔ clear endpoints around a side wall do not allow a one-frame close-up on the intervening orbit arc (1.9393ms)
+✔ supported doorstep and near-wall edge keep a readable, collision-safe perspective distance (0.4399ms)
+✔ an unobstructed requested view remains exact and returns after leaving the wall (0.2066ms)
+✔ retains the current clear side under small doorway movements instead of alternating orbit sides (0.2147ms)
+✔ an enclosed focus retains the inherited short fallback and never claims readable clearance (0.4419ms)
+✔ opted-in dynamic walls take part in the same camera correction (0.2078ms)
+✖ commons seats fit their existing navigation reservations and leave the actual Mara route readable (0.5393ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 11
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 93.322
+
+✖ failing tests:
+
+test at D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\camera-clearance.test.cjs:104:1
+✖ commons seats fit their existing navigation reservations and leave the actual Mara route readable (0.5393ms)
+  AssertionError [ERR_ASSERTION]: actual seat vertices must stay inside the original Core circle
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\camera-clearance.test.cjs:112:45)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

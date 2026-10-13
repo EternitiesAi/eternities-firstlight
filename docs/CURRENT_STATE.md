@@ -1,3 +1,25 @@
+# Three familiar people, with visual qualification still open, 2026-10-13
+
+Draft PR76 adds articulated Ilan, Mara and Oren to their existing village routes
+and interiors. Hands support the instrument/notebook/folding rule; actual distance
+drives their strides and stopping. The commons seats now fit their existing
+navigation footprint after real capture exposed a camera close-up on Mara's route.
+
+Current runtime d8d07ad8d34afc1371e13c39e0a685c2a4a61d94 passes28 focused tests
+in the reused clean remote checkout. Prior166550d passed the complete224-command
+source gate: Node2256 passed/2 skipped; Python490 run/8 skipped; both ten-chapter
+journeys and all five earned Briar cases. Current complete source and Native04
+recapture remain pending memory admission. Native03's failure is retained, not
+reported as visual success. [Exact evidence and open gates](development/VILLAGE_RESIDENT_QUALIFICATION_2026-10-13.md).
+
+World9/Adventure12, Core navigation/schedules/save validation and every persistent
+owner remain. No migration or new reward. Both cameras remain; human recognition,
+comfort and real-GPU performance are unqualified. Full current --browser awaits
+its separately reviewed expectation epoch; hosted jobs cannot start because of
+GitHub's account billing lock. No AAA/completion or deployment claim.
+
+---
+
 # A rod held by the traveler, 2026-10-13
 
 The lantern-pier activity now uses the traveler's articulated arms: a short cast,

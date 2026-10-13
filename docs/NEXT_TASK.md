@@ -1,3 +1,33 @@
+# Next: finish the resident visual gate, 2026-10-13
+
+Continue draft PR76 / gameplay/village-resident-articulation-20261013 from actual
+fetched current head. Runtime d8d07ad8d34afc1371e13c39e0a685c2a4a61d94 is pushed;
+[qualification](development/VILLAGE_RESIDENT_QUALIFICATION_2026-10-13.md) separates
+its28 focused passes from the older full source pass and failed Native03 capture.
+
+1. In clean reused STATION, run the prepared RUN_REMOTE_SOURCE04.ps1 with the
+   actual exact installed head only when fresh host free memory>=6291456KiB.
+   Original four workers/Node180/Python600 remain. SOURCE03 refused before launch.
+2. After that same installed head passes, run qualify_family04.py in the existing
+   task artifact directory. It rechecks memory after driver startup before each
+   browser. Installed Chrome155 override uses a task-only D profile and SwiftShader.
+   Inspect actual outgoing/settled/home pictures in both views. Keep strict real
+   displacement, exact save readback and resource closure. Fix actual failures;
+   finish a bounded short movie and decode it. Do not reuse Native03 as acceptance.
+3. Update PR76, its continuity and exact remote readback with the new receipts.
+   Then close the separate complete --browser gate with explicitly reviewed
+   epoch05; never relax04 or substitute old WildSigns/road-account inputs.
+4. Keep [the human village route](playtests/VILLAGE_RESIDENTS_2026-10-13.md) pending.
+   No human answers or real-GPU measurements follow from CPU/software checks.
+
+Artifact directory: D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013.
+Recheck current controllers/ownership before running; no duplicate workers. Reuse
+ROOT/STATION; no new full copies, cleanup, blocked-deletion retry, VM/Claude or
+personal-profile access, paid work, billing changes, merge/deploy or heartbeat
+resume. Goal ACTIVE, production unfinished; no worker remains running at checkpoint.
+
+---
+
 # Next: the people who inhabit the village, 2026-10-13
 
 Continue gameplay/pier-handheld-animation-20261013 / PR75 after fetching and
