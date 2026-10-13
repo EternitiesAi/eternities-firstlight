@@ -1,0 +1,21 @@
+{
+  "head": "b4a3ed366fbce89d71ab1a8af6fe7671f31a8952",
+  "observedUtc": "2026-10-13T20:48:35.4136823Z",
+  "freeHostKiB": 7350584,
+  "minimumFreeKiB": 6291456,
+  "requestedRuleWorkers": 4,
+  "admitted": true,
+  "controllerSha256": "01184f5323cc14454b87bf471817139f578fe7a861dcdabf4af09d8554562b32",
+  "scope": "Read host free memory only; no VM/Claude interaction",
+  "command": [
+    "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+    "-B",
+    "tools/verify.py",
+    "--rule-workers",
+    "4",
+    "--output",
+    "D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/REMOTE_SOURCE01",
+    "--cpu-temp",
+    "C:/Users/Dom/AppData/Local/Temp"
+  ]
+}

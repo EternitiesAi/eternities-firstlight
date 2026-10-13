@@ -1,0 +1,73 @@
+PASS served exact qualified HTML
+PASS actual software WebGL2
+PASS all family reached home through Core
+PASS fresh character retains optional campaign
+PASS save accepted
+PASS nonempty production save exists
+PASS served exact qualified HTML
+PASS actual software WebGL2
+PASS whole-browser restart retained exact store
+PASS walking_adventure_ilan unique visible IDs
+PASS walking_adventure_ilan ilan bounded submitted geometry
+PASS walking_adventure_ilan mara bounded submitted geometry
+PASS walking_adventure_ilan oren bounded submitted geometry
+PASS motion_adventure_ilan unique visible IDs
+PASS motion_adventure_ilan ilan bounded submitted geometry
+PASS motion_adventure_ilan mara bounded submitted geometry
+PASS motion_adventure_ilan oren bounded submitted geometry
+PASS ordinary adventure ilan actual displacement and stride
+PASS bounded recording window
+PASS walking_adventure_mara unique visible IDs
+PASS walking_adventure_mara ilan bounded submitted geometry
+PASS walking_adventure_mara mara bounded submitted geometry
+PASS walking_adventure_mara oren bounded submitted geometry
+PASS motion_adventure_mara unique visible IDs
+PASS motion_adventure_mara ilan bounded submitted geometry
+PASS motion_adventure_mara mara bounded submitted geometry
+PASS motion_adventure_mara oren bounded submitted geometry
+PASS ordinary adventure mara actual displacement and stride
+PASS bounded recording window
+PASS walking_adventure_oren unique visible IDs
+PASS walking_adventure_oren ilan bounded submitted geometry
+PASS walking_adventure_oren mara bounded submitted geometry
+PASS walking_adventure_oren oren bounded submitted geometry
+PASS motion_adventure_oren unique visible IDs
+PASS motion_adventure_oren ilan bounded submitted geometry
+PASS motion_adventure_oren mara bounded submitted geometry
+PASS motion_adventure_oren oren bounded submitted geometry
+PASS ordinary adventure oren actual displacement and stride
+PASS bounded recording window
+PASS walking_follow_ilan unique visible IDs
+PASS walking_follow_ilan ilan bounded submitted geometry
+PASS walking_follow_ilan mara bounded submitted geometry
+PASS walking_follow_ilan oren bounded submitted geometry
+PASS motion_follow_ilan unique visible IDs
+PASS motion_follow_ilan ilan bounded submitted geometry
+PASS motion_follow_ilan mara bounded submitted geometry
+PASS motion_follow_ilan oren bounded submitted geometry
+PASS ordinary follow ilan actual displacement and stride
+PASS bounded recording window
+PASS walking_follow_mara unique visible IDs
+PASS walking_follow_mara ilan bounded submitted geometry
+PASS walking_follow_mara mara bounded submitted geometry
+PASS walking_follow_mara oren bounded submitted geometry
+PASS motion_follow_mara unique visible IDs
+PASS motion_follow_mara ilan bounded submitted geometry
+PASS motion_follow_mara mara bounded submitted geometry
+PASS motion_follow_mara oren bounded submitted geometry
+PASS ordinary follow mara actual displacement and stride
+PASS bounded recording window
+PASS walking_follow_oren unique visible IDs
+PASS walking_follow_oren ilan bounded submitted geometry
+PASS walking_follow_oren mara bounded submitted geometry
+PASS walking_follow_oren oren bounded submitted geometry
+PASS motion_follow_oren unique visible IDs
+FAIL ordinary follow oren actual displacement and stride
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\artifacts\village-resident-articulation-20261013\qualify_family03.py", line 117, in main
+    check('ordinary '+mode+' '+id+' actual displacement and stride',a['visible'] and b['visible'] and __import__('math').hypot(a['core']['x']-b['core']['x'],a['core']['z']-b['core']['z'])>1e-6 and a['motion']['phase']!=b['motion']['phase'])
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\artifacts\village-resident-articulation-20261013\qualify_family03.py", line 29, in check
+    if not ok:raise AssertionError(name+' '+repr(detail))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ordinary follow oren actual displacement and stride None

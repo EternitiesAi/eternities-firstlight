@@ -1,0 +1,15 @@
+{
+  "observedUtc": "2026-10-13T21:12:00.0688658Z",
+  "scope": "Only exact PIDs observed from Native01 Python driver and its browser tree",
+  "observedPids": [
+    39456,
+    46300,
+    46232,
+    9844,
+    44576,
+    45644
+  ],
+  "remaining": [],
+  "allObservedOwnedPidsAbsent": true,
+  "note": "Raw failed-launch report flags alone do not prove process closure. This separate host readback records actual absence. No stop command was used."
+}

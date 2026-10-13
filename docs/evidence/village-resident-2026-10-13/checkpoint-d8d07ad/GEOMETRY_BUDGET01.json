@@ -1,0 +1,71 @@
+{
+  "scope": "Submitted CPU geometry count, not GPU performance",
+  "newMeshes": 0,
+  "newDynamicBatches": 0,
+  "residents": [
+    {
+      "id": "ilan",
+      "before": {
+        "instances": 27,
+        "triangles": 7404,
+        "batches": {
+          "box": 3,
+          "round": 23,
+          "octa": 1
+        }
+      },
+      "after": {
+        "instances": 49,
+        "triangles": 8736,
+        "batches": {
+          "box": 16,
+          "round": 26,
+          "octa": 4,
+          "traveler-cloth": 3
+        }
+      }
+    },
+    {
+      "id": "mara",
+      "before": {
+        "instances": 26,
+        "triangles": 7396,
+        "batches": {
+          "box": 3,
+          "round": 23
+        }
+      },
+      "after": {
+        "instances": 49,
+        "triangles": 8740,
+        "batches": {
+          "box": 17,
+          "round": 26,
+          "octa": 3,
+          "traveler-cloth": 3
+        }
+      }
+    },
+    {
+      "id": "oren",
+      "before": {
+        "instances": 25,
+        "triangles": 7384,
+        "batches": {
+          "box": 2,
+          "round": 23
+        }
+      },
+      "after": {
+        "instances": 48,
+        "triangles": 8472,
+        "batches": {
+          "box": 16,
+          "round": 25,
+          "octa": 3,
+          "traveler-cloth": 4
+        }
+      }
+    }
+  ]
+}

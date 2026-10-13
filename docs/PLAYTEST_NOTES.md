@@ -1,3 +1,26 @@
+# The residents and an honest failed capture, 2026-10-13
+
+Native03 at166550d used actual Settings and People/Follow controls in installed
+Chrome155,1280x800, software WebGL2/Low. Preparation used labelled accelerated Core
+ticks; the recorded movement used ordinary RAF only. Exact nonempty cold store
+readback passed. Five movement pairs passed; the sixth correctly failed when
+Oren reached home and disappeared outdoors. Browser/driver/server closure passed.
+
+Actual pixels also revealed a face-filling Mara close-up beside a commons bench.
+The camera sample preceded the screenshot and is not an exact image-frame operand.
+A CPU reproduction identified padded bench-back containment. Current d8d07ad fits
+commons seats to original navigation and lowers the back. The repaired source
+passes focused regressions; new pixels are still required. Do not present Native03
+as successful visual acceptance. [Full record](development/VILLAGE_RESIDENT_QUALIFICATION_2026-10-13.md).
+
+Native04 is prepared with actual P pauses around UI/evidence and strict unpaused
+movement pairs, combined observations, screenshot brackets and requested-mode
+checks. It has not run at this checkpoint. Source/current native gates wait for
+host memory admission, without VM/Claude intervention. Human questions remain:
+recognizable people, connected strides/stops/props, comfort in both cameras.
+
+---
+
 # Hand-held casting and reeling observations, 2026-10-13
 
 Native02 passed 87 checks on source8bc49eb4ab66071213f7e6242abea9bc2894447d. Its initial

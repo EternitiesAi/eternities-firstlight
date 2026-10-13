@@ -1,0 +1,40 @@
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\artifacts\village-resident-articulation-20261013\qualify_family01.py", line 102, in main
+    launch();click('#settings');page.locator('#quality').select_option('low');page.locator('#setting-timeFlow').uncheck();page.locator('#time-slider').evaluate('(el)=>{el.value="19";el.dispatchEvent(new Event("input",{bubbles:true}))}');click('#close-panel');settle()
+    ~~~~~~^^
+  File "D:\07-GAMES\Firstlight\artifacts\village-resident-articulation-20261013\qualify_family01.py", line 38, in launch
+    ctx=pw.chromium.launch_persistent_context(str(profile),viewport={'width':1280,'height':800},**opts);closed['browser']=False
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\sync_api\_generated.py", line 14870, in launch_persistent_context
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.launch_persistent_context(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<51 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_browser_type.py", line 166, in launch_persistent_context
+    result = await self._channel.send_return_as_dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        "launchPersistentContext", TimeoutSettings.launch_timeout, params
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_connection.py", line 83, in send_return_as_dict
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\dev\firstlight-artifacts\bootstrap-2026-09-12\browser-env\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: BrowserType.launch_persistent_context: Timeout 180000ms exceeded.
+Call log:
+  - <launching> D:\07-GAMES\Firstlight\cache\ms-playwright-1.57\chromium_headless_shell-1200\chrome-headless-shell-win64\chrome-headless-shell.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AcceptCHFrame,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --disable-infobars --disable-search-engine-choice-screen --disable-sync --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --no-sandbox --disable-dev-shm-usage --enable-webgl --ignore-gpu-blocklist --disable-gpu-sandbox --use-angle=swiftshader --user-data-dir=D:\07-GAMES\Firstlight\artifacts\village-resident-articulation-20261013\NATIVE01\task-owned-profile --remote-debugging-pipe about:blank
+  - <launched> pid=46232
+  - [pid=46232][err] [1013/160944.507:ERROR:content\browser\network_service_instance_impl.cc:613] Network service crashed or was terminated, restarting service.
+

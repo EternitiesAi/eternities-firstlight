@@ -1,0 +1,30 @@
+{
+  "base": "708411ebe85d9bca75b0e13964564174ec1b61cb",
+  "head": "d8d07ad8d34afc1371e13c39e0a685c2a4a61d94",
+  "scope": "Exact Git blob identity for retained rule owners and generic rendering, not exhaustive subsystem proof",
+  "unchanged": {
+    "src/core.js": "db0e1c647c479a32481cc0525b9c7d8d47e013a05eca669345aba63e5ac21118",
+    "src/adventure.js": "4ad8cf64755bd3c3411431376c8aeeb3469465fb2475f1badf4942223a954139",
+    "src/arsenal.js": "70cf869a8240895158960c62cc65d802adf491ac24ee66bf7a3c0389557d2b70",
+    "src/characters.js": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+    "src/creative.js": "d0032234d3cab1a6e90c84736011a98631bcc3748de8d5fc23df872367038761",
+    "src/realm-givers-art.js": "8362d7a98f238b77b9afa5eff7346f430c02af6cd249502f146308a3d246fb34"
+  },
+  "genericPersonSha256": "b8b09f2973b46ee179b213743599decc8d532261f7f2cafa7cea792ca59a612b",
+  "changedFiles": [
+    "FIRSTLIGHT_VALLEY.html",
+    "build.py",
+    "docs/development/VILLAGE_RESIDENT_ARTICULATION_2026-10-13.md",
+    "index.html",
+    "src/app.js",
+    "src/resident-art.js",
+    "src/shell.html",
+    "src/traveler-art.js",
+    "src/world.js",
+    "tests/camera-clearance.test.cjs",
+    "tests/earth_homecoming_host_helpers.cjs",
+    "tests/resident_art.test.cjs",
+    "tests/traveler_cloth.test.cjs",
+    "tests/traveler_rig.test.cjs"
+  ]
+}

@@ -1,0 +1,31 @@
+✔ only the three existing identities use distinct original appearance and supported props (6.9853ms)
+✔ submitted body vertices stay finite and grounded; solved limb endpoints connect in every facing (5002.9889ms)
+✔ carried props remain at actual hand contact throughout gait and carry-height settling (18.6919ms)
+✔ real WorldArt caller preserves outdoor and indoor membership, bases and exact state owners (877.5071ms)
+✔ actual accepted routes drive separate gait and settle; pause and repeated renders stay exact (1322.7054ms)
+✖ scene generation, owner replacement, hydration and hidden actors cannot inherit stale gait (38.3191ms)
+✔ reduced motion retains essential walking/contact and omits optional drift (2.1996ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7488.1255
+
+✖ failing tests:
+
+test at tests\resident_art.test.cjs:96:1
+✖ scene generation, owner replacement, hydration and hidden actors cannot inherit stale gait (38.3191ms)
+  TypeError: Cannot read properties of undefined (reading 'length')
+      at WorldArt.traveler (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\world.js:244:297)
+      at WorldArt.update (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\world.js:331:1355)
+      at snapshot (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\resident_art.test.cjs:18:56)
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\resident_art.test.cjs:100:128)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)

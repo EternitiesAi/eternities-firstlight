@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\artifacts\village-resident-articulation-20261013\qualify_family02.py", line 104, in main
+    launch();click('#settings');page.locator('#quality').select_option('low');page.locator('#setting-timeFlow').uncheck();page.locator('#time-slider').evaluate('(el)=>{el.value="19";el.dispatchEvent(new Event("input",{bubbles:true}))}');click('#close-panel');settle()
+    ~~~~~~^^
+  File "D:\07-GAMES\Firstlight\artifacts\village-resident-articulation-20261013\qualify_family02.py", line 36, in launch
+    assert ctx is None;ordinary=normal;report['admissions'].append(N.admission());pw=sync_playwright().start();closed['driver']=False;opts=launch_kwargs('software')
+                                                                   ~~~~~~~~~~~^^
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tools\briar_outing_browser.py", line 242, in admission
+    raise ValueError(f'Host memory admission refused: {free}KiB < {MIN_FREE_KIB}KiB; no VM/unrelated action')
+ValueError: Host memory admission refused: 6052728KiB < 6291456KiB; no VM/unrelated action
