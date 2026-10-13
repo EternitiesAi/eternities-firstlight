@@ -5,3 +5,6 @@
 ADOPTION_RED01.log whitespace=cr-at-eol,-blank-at-eol
 REVIEW_RED01.log whitespace=cr-at-eol,-blank-at-eol
 RUN_REMOTE_SOURCE05.ps1 whitespace=cr-at-eol,-blank-at-eof
+SOURCE01/rules.log whitespace=cr-at-eol,-blank-at-eol
+# Original unittest progress lines end with a diagnostic space.
+SOURCE03/python.log whitespace=cr-at-eol,-blank-at-eol
