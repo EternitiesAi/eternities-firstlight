@@ -19,7 +19,8 @@ assert.ok(W.walkable(D.room,sim.state.player.x,sim.state.player.z,.31));sim.tick
 assert.equal(e.mode,'windup');assert.equal(e.strike.pattern,'closing-ring');assert.ok(Object.isFrozen(e.strike));
 const locked=e.strike,app=fs.readFileSync(path.join(root,'src/app.js'),'utf8'),frame=app.slice(app.indexOf('function frame(now)'));
 const start=frame.indexOf('let dx='),end=frame.indexOf(';if(sim.worldDive',start);assert.ok(start>=0&&end>start);
-const manual=new vm.Script(frame.slice(start,end)+';'+frame.match(/sim\.manual\([^;]+\);/)[0]);
+const heading=app.split('\n').find(line=>line.startsWith('function cameraHeading('));assert.ok(heading);
+const manual=new vm.Script(heading+'\n'+frame.slice(start,end)+';'+frame.match(/sim\.manual\([^;]+\);/)[0]);
 function advance(ms,keys=[],yaw=.76){let left=ms/1000;while(left>1e-10){const dt=Math.min(1/60,left);if(keys.length)manual.runInNewContext({sim,dt,keys:new Set(keys),camera:{yaw},Math});sim.tick(dt);left-=dt;}assert.equal(e.strike,locked,'steering never rewrites the locked ring');assert.ok(C.walkable(sim.state.player.x,sim.state.player.z,sim.navRoom,.31));}
 function state(yaw=.76){return{adventure:{player:{...sim.state.player},enemies:[{id:e.id,x:e.x,z:e.z,hp:e.hp,mode:e.mode,timer:e.timer,strike:e.strike,contactAt:e.contactAt,contactHit:e.contactHit}],tactics:A.runtime(sim).tactics},camera:{yaw}};}
 readline.createInterface({input:process.stdin}).on('line',line=>{try{const input=JSON.parse(line);if(input.action==='hold')advance(input.ms,input.keys,input.yaw);if(input.action==='wait')advance(input.ms);

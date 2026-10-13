@@ -340,7 +340,7 @@ class Native:
         # One JS turn: no RAF tick can separate player/view/prefix/clock reads.
         value=self.ev(r"""()=>{const d=Realm.diagnostics,s=Realm.state;return {
          scene:d.scene,player:d.adventure.player,view:d.consignment?.view||null,
-         paused:d.adventure.paused,fps:d.fps,yaw:d.camera.yaw,frame:d.consignment?.frame||null,
+         paused:d.adventure.paused,fps:d.fps,yaw:d.camera.yaw,heading:d.camera.heading,frame:d.consignment?.frame||null,
          hp:s.adventure.hp,elapsed:s.adventure.elapsed,quality:s.settings.quality,
          prefix:s.localLife.records["earth-first-load-through-v1"].steps,
          focused:document.activeElement===document.querySelector("#world"),hidden:document.hidden};}""")
@@ -393,7 +393,7 @@ class Native:
                 if stop_after is not None and distance(initial,v)>=stop_after:return v
                 remaining=240-(time.monotonic()-start)
                 if remaining<=0:break
-                self.hold_native_keys_for_frames(native_keys(p,v,d['yaw']),min(10000,max(1,math.floor(remaining*1000))))
+                self.hold_native_keys_for_frames(native_keys(p,v,d.get('heading',d['yaw'])),min(10000,max(1,math.floor(remaining*1000))))
             raise TimeoutError('Real native carrier leg did not complete within 240 seconds')
         except Exception as error:
             self.row['followError']=str(error);raise

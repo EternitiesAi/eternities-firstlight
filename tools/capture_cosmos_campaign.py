@@ -67,7 +67,7 @@ def wallet(world):
 
 def direction_keys(point, snapshot):
     """Nearest of eight camera-relative headings, using ordinary WASD only."""
-    player, yaw = snapshot['adventure']['player'], snapshot['camera']['yaw']
+    player, yaw = snapshot['adventure']['player'], snapshot['camera'].get('heading', snapshot['camera']['yaw'])
     dx, dz = point['x']-player['x'], point['z']-player['z']
     x, z = dx*math.cos(yaw)-dz*math.sin(yaw), dx*math.sin(yaw)+dz*math.cos(yaw)
     if x == 0 and z == 0:
@@ -180,7 +180,7 @@ class Capture:
         return self.page.evaluate('()=>Realm.state')
 
     def diag(self):
-        return self.page.evaluate('()=>{const d=Realm.diagnostics;return{scene:d.scene,mode:d.mode,renderer:d.renderer,cosmos:d.cosmos,adventure:d.adventure,characters:d.characters,camera:{preset:d.camera.preset,yaw:d.camera.yaw,projection:d.camera.projection},saveState:d.saveState,errors:d.errors};}')
+        return self.page.evaluate('()=>{const d=Realm.diagnostics;return{scene:d.scene,mode:d.mode,renderer:d.renderer,cosmos:d.cosmos,adventure:d.adventure,characters:d.characters,camera:{preset:d.camera.preset,yaw:d.camera.yaw,heading:d.camera.heading,projection:d.camera.projection},saveState:d.saveState,errors:d.errors};}')
 
     def click(self,selector):
         control=self.page.locator(selector)

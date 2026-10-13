@@ -95,6 +95,19 @@ class ProductionGeometry(unittest.TestCase):
         self.assertTrue(reached, 'same actual geometry and tolerances')
         self.assertLess(elapsed, 15)
 
+    def test_corrected_displayed_heading_steers_actual_swim_without_using_saved_yaw(self):
+        failure = self.report['failure_diagnostics']
+        p = failure['adventure']['player']
+        s = self.send({'init': {'x':p['x'], 'z':p['z'], 'y':failure['world']['dive']['y']},
+                       'yaw':failure['camera']['yaw']+math.pi/2,
+                       'actualYaw':failure['camera']['yaw'], 'preset':'adventure'})
+        self.assertNotEqual(s['camera']['heading'], s['camera']['yaw'])
+        keys = swim_keys({'x':12, 'z':-38.4}, s)
+        self.assertEqual(set(keys), {'w','d'})
+        t = self.send({'keys':keys, 'milliseconds':110})
+        self.assertGreater(t['adventure']['player']['x'], s['adventure']['player']['x'])
+        self.assertLess(t['adventure']['player']['z'], s['adventure']['player']['z'])
+
     def test_all_remaining_ordinary_key_waypoints_keep_actual_clearance(self):
         event = next(e for e in self.report['events'] if e['label'] == 'actual_equalizer_recorded')['diagnostics']
         s = self.start(event['adventure']['player'], event['world']['dive']['y'], event['camera']['yaw'])
