@@ -89,10 +89,18 @@ test('global App E cannot act on a line hidden behind photo or menu controls',()
  h.ui.open();h.ui.cast();for(let i=0;i<80;i++){h.sim.tick(.05);h.ui.tick();}
  assert.equal(F.current(h.ui.context()).phase,'bite');h.menu=true;let before=F.current(h.ui.context());press();assert.deepEqual(F.current(h.ui.context()),before);
  h.menu=false;press();assert.equal(F.current(h.ui.context()).phase,'playing');
+ h.menu=true;before=F.current(h.ui.context());press();assert.deepEqual(F.current(h.ui.context()),before);h.menu=false;
  for(let i=0;i<1600&&F.current(h.ui.context()).phase==='playing';i++){
   const v=F.current(h.ui.context());if(v.tension<.35&&!v.reeling||v.tension>.7&&v.reeling)press();h.sim.tick(.05);h.ui.tick();
  }
  assert.equal(F.current(h.ui.context()).phase,'caught');h.menu=true;before=F.current(h.ui.context());press();assert.deepEqual(F.current(h.ui.context()),before);
  h.menu=false;press();assert.equal(F.current(h.ui.context()),null);
  h.menu=true;assert.equal(h.ui.open(),false,'Photo mode cannot open invisible pier choices');
+});
+
+test('the nearby Explore shore action dismisses its drawer before opening native choices',()=>{
+ const h=fixture(),fs=require('node:fs'),vm=require('node:vm'),s=fs.readFileSync(require.resolve('../src/app.js'),'utf8');h.menu=true;
+ const env={C,sim:h.sim,RealmAdventure:{combatScene:()=>false},fishing:h.ui,closePanel:()=>{h.menu=false;}};
+ vm.createContext(env);vm.runInContext(s.split('\n').find(l=>l.startsWith('function action(id){')),env);
+ env.action('shore');assert.equal(h.ui.dialog.open,true);assert.equal(F.current(h.ui.context()),null);assert.equal(h.rests,undefined);
 });
