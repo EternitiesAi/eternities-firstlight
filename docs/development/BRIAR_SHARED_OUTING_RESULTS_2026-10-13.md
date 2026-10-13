@@ -1,3 +1,48 @@
+# Briar outing qualified, 2026-10-13
+
+Briar can bring the dropped cloth home, then accompany an explicitly chosen
+rest at the shared-house door. Actual E/HUD actions take or remember the arrived
+moment before the overlapping house interaction. Both cameras remain available.
+The optional two facts never award money/XP, replay old caches or start a new
+activity from completed history. World9/Adventure12/keys/XP/caps remain unchanged;
+only a missing briarMoments owner receives its literal empty version1 default.
+
+Source qualification at875d55f37e10d2dac98ecf54da41803972e5bdf0 passed220
+commands:154 Node files,2196 passes/0 failures/2 generic skips; Python488 methods
+OK with8 skip records; mandatory earned continuations passed. Briar's five CPU
+cases passed2342 supported tick segments, with two fact writes each. Whole-draft
+proof is two continuous variants (blade and blade-to-bow), ten chapters each.
+
+Targeted native qualification passed272 checks across early blade (E), early
+bow (HUD click) and the cache-complete returning case (Companion), both cameras,
+seven exact startup-byte restarts and10 balanced owned driver starts/stops.
+The other two returning cases remain CPU-only. All ten whole-browser admissions
+exceeded6291456KiB. Browser/request errors are empty; owned contexts/server closed.
+A reviewed transport wrapper recreates only its own Playwright driver per launch;
+installed Native.run controls and oracles are unchanged. Native03's earlier
+memory refusal and Native02's missing default C-cache launch remain failed.
+
+Actual ordinary-RAF footage is55.52s/5458501B, starting from the explicitly
+command-earned cloth-taken checkpoint and completing the doorstep rest through
+visible ground clicks. Twelve gameplay checks passed. Original Normal03 remains
+failed at its locked video rename; separate finalization and full1388-frame
+media decode passed after confirmed closure, without replay. Normal02's full
+fresh-outing keyboard script took the cloth but aimed into the Commons obstacle
+and hit150s; retain it as a failed capture, not a verified fresh-player journey.
+Normal01 was refused before allocation. No actual render-FPS or RTX claim follows.
+
+Exact raw receipts, scripts, screenshots and one finished clip are published at
+`docs/evidence/briar-shared-outing-2026-10-13/qualification-875d55f/MANIFEST.json`:
+52 files/9715346B. Reuse the primary checkout and independent STATION. No new
+full game copy, VM/Claude action, personal-save inspection, merge or deployment.
+The complete current --browser regression, human playtest and real-GPU gates
+remain open. Close-camera pier-sign occlusion and player/fox overlap at rest are
+visible polish limits. Next is a fresh and returning human route check, then
+bounded companion spacing/close-camera visibility refinement. Production remains
+unfinished; independent heartbeat PAUSED.
+
+---
+
 # Historical migration receipt repaired, 2026-10-13
 
 Complete Source09 at a1c525f140c4d6a05478ad4436a8f723571edf7c failed in the

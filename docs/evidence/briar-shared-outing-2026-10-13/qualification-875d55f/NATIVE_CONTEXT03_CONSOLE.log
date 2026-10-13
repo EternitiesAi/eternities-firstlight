@@ -1,0 +1,98 @@
+PASS early-rescued-blade exact served HTML bytes
+PASS early-rescued-blade actual software WebGL2
+PASS early-rescued-blade accelerated production test controls
+PASS early-rescued-blade unique native #rpg-tabs [data-rpg="open"][data-id="characters"]
+PASS early-rescued-blade unique native [data-rpg="chars-import"]
+PASS early-rescued-blade unique native [data-rpg="chars-confirm-import"]
+PASS early-rescued-blade input imported without economic/story changes
+PASS early-rescued-blade unique native #settings
+PASS early-rescued-blade unique native #close-panel
+PASS early-rescued-blade native Low quality selected
+PASS early-rescued-blade accepted supported player move
+PASS early-rescued-blade unique native #rpg-tabs [data-rpg="open"][data-id="companion"]
+PASS early-rescued-blade unique native #rpg-content .briar-outing [data-rpg="briar"][data-id="start"]
+PASS early-rescued-blade Start closes workspace
+PASS early-rescued-blade physical phase returning
+PASS early-rescued-blade unique native #rpg-hud [data-rpg="camera"][data-id="adventure"]
+PASS early-rescued-blade requested camera adventure
+PASS early-rescued-blade model follows physical fox
+PASS early-rescued-blade actual submitted carrying pose
+PASS early-rescued-blade correct cloth parts
+PASS early-rescued-blade unique native #rpg-hud [data-rpg="camera"][data-id="follow"]
+PASS early-rescued-blade requested camera follow
+PASS early-rescued-blade model follows physical fox
+PASS early-rescued-blade actual submitted carrying pose
+PASS early-rescued-blade correct cloth parts
+PASS early-rescued-blade native close write observed
+PASS early-rescued-blade exact served HTML bytes
+PASS early-rescued-blade actual software WebGL2
+PASS early-rescued-blade accelerated production test controls
+PASS early-rescued-blade exact closed bytes read before startup writes
+PASS early-rescued-blade completed facts survive whole browser
+PASS early-rescued-blade no fabricated transient activity
+PASS early-rescued-blade all old owners survive browser
+PASS early-rescued-blade inactive characters unchanged
+PASS early-rescued-blade accepted supported player move
+PASS early-rescued-blade unique native #rpg-tabs [data-rpg="open"][data-id="companion"]
+PASS early-rescued-blade unique native #rpg-content .briar-outing [data-rpg="briar"][data-id="start"]
+PASS early-rescued-blade physical phase await-take
+PASS early-rescued-blade accepted supported player move
+PASS early-rescued-blade take stays in Firstlight instead of entering the overlapping house
+PASS early-rescued-blade Take saves exactly one fact
+PASS early-rescued-blade Take changes no old owner
+PASS early-rescued-blade Take factual journal appended
+PASS early-rescued-blade Take exact atomic live boundary
+PASS early-rescued-blade Take immediate active native bytes match live candidate
+PASS early-rescued-blade Take actual save completed immediately
+PASS early-rescued-blade native close write observed
+PASS early-rescued-blade exact served HTML bytes
+PASS early-rescued-blade actual software WebGL2
+PASS early-rescued-blade accelerated production test controls
+PASS early-rescued-blade exact closed bytes read before startup writes
+PASS early-rescued-blade completed facts survive whole browser
+PASS early-rescued-blade no fabricated transient activity
+PASS early-rescued-blade all old owners survive browser
+PASS early-rescued-blade inactive characters unchanged
+PASS early-rescued-blade accepted supported player move
+PASS early-rescued-blade unique native #rpg-tabs [data-rpg="open"][data-id="companion"]
+PASS early-rescued-blade unique native #rpg-content .briar-outing [data-rpg="briar"][data-id="rest"]
+PASS early-rescued-blade physical phase settled
+PASS early-rescued-blade accepted supported player move
+PASS early-rescued-blade unique native #rpg-hud [data-rpg="camera"][data-id="adventure"]
+PASS early-rescued-blade requested camera adventure
+PASS early-rescued-blade model follows physical fox
+PASS early-rescued-blade actual submitted resting pose
+PASS early-rescued-blade correct cloth parts
+PASS early-rescued-blade lowered supported rest
+PASS early-rescued-blade unique native #rpg-hud [data-rpg="camera"][data-id="follow"]
+PASS early-rescued-blade requested camera follow
+PASS early-rescued-blade model follows physical fox
+PASS early-rescued-blade actual submitted resting pose
+PASS early-rescued-blade correct cloth parts
+PASS early-rescued-blade lowered supported rest
+PASS early-rescued-blade remember stays in Firstlight instead of entering the overlapping house
+PASS early-rescued-blade Remember saves exact second fact
+PASS early-rescued-blade Remember changes no old owner
+PASS early-rescued-blade Remember exact atomic live boundary
+PASS early-rescued-blade Remember immediate active native bytes match live candidate
+PASS early-rescued-blade Remember actual save completed immediately
+PASS early-rescued-blade native close write observed
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tools\briar_outing_browser.py", line 669, in <module>
+    main()
+    ~~~~^^
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tools\briar_outing_browser.py", line 641, in main
+    h.run(admitted['rows'][label])
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tools\briar_outing_browser.py", line 524, in run
+    self.restart('REMEMBERED', FACTS)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tools\briar_outing_browser.py", line 458, in restart
+    self.start()
+    ~~~~~~~~~~^^
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tools\briar_outing_browser.py", line 353, in start
+    self.row.setdefault('admissions', []).append(admission())
+                                                 ~~~~~~~~~^^
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tools\briar_outing_browser.py", line 242, in admission
+    raise ValueError(f'Host memory admission refused: {free}KiB < {MIN_FREE_KIB}KiB; no VM/unrelated action')
+ValueError: Host memory admission refused: 5442080KiB < 6291456KiB; no VM/unrelated action

@@ -1,0 +1,39 @@
+{
+  "scope": "Complete current source; four Node file workers; original rules180/Python600; no native browser",
+  "command": [
+    "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+    "-B",
+    "tools/verify.py",
+    "--rule-workers",
+    "4",
+    "--output",
+    "D:/07-GAMES/Firstlight/artifacts/briar-shared-outing-20261013/REMOTE_SOURCE10",
+    "--cpu-temp",
+    "C:/Users/Dom/AppData/Local/Temp"
+  ],
+  "requestedRuleWorkers": 4,
+  "sourceHead": "875d55f37e10d2dac98ecf54da41803972e5bdf0",
+  "headAfter": "875d55f37e10d2dac98ecf54da41803972e5bdf0",
+  "statusAfter": [],
+  "startedUtc": "2026-10-13T12:19:36.8583253Z",
+  "closedUtc": "2026-10-13T12:26:39.9646692Z",
+  "exitCode": 0,
+  "freeHostKiBBefore": 8176612,
+  "freeHostKiBAfter": 7489696,
+  "admission": {
+    "sha256": "3d5a3b4cb253aaf8bdae65cfd241a29583aa7131ba632f4ffaf9521dc388866e",
+    "path": "D:/07-GAMES/Firstlight/artifacts/briar-shared-outing-20261013/SOURCE10_ADMISSION01.json"
+  },
+  "unitChildTemp": "C:/Users/Dom/AppData/Local/Temp",
+  "allOtherChildTemp": "D:/07-GAMES/Firstlight/cache/browser-temp",
+  "console": {
+    "path": "D:/07-GAMES/Firstlight/artifacts/briar-shared-outing-20261013/REMOTE_SOURCE10_CONSOLE.log",
+    "bytes": 14566,
+    "sha256": "8e807cf8bd524fc7002ff9a0d2911f5143ef7f8050896f1dd528248865090a35"
+  },
+  "rulesCommand": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\briar-shared-outing-20261013\\REMOTE_SOURCE10\\rules-command.json",
+    "bytes": 22922,
+    "sha256": "2970e286fd41127a7a638fd770e92aaeea3dddea1b680ef3b575aa2a88895405"
+  }
+}

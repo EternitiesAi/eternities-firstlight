@@ -1,0 +1,26 @@
+[libvpx @ 0000015ba0a02b40] v1.14.1
+Input #0, matroska,webm, from 'D:/07-GAMES/Firstlight/artifacts/briar-shared-outing-20261013/NORMAL_UI03/BRIAR_NORMAL_UI.webm':
+  Metadata:
+    ENCODER         : Lavf61.1.100
+  Duration: 00:00:55.52, start: 0.000000, bitrate: 786 kb/s
+  Stream #0:0: Video: vp8 (libvpx), yuv420p(tv, progressive), 1280x800, SAR 1:1 DAR 8:5, 25 fps, 25 tbr, 1k tbn
+      Metadata:
+        ENCODER         : Lavc61.3.100 libvpx
+        DURATION        : 00:00:55.520000000
+[libvpx @ 0000015ba09f0e00] v1.14.1
+Stream mapping:
+  Stream #0:0 -> #0:0 (vp8 (libvpx) -> vp8 (libvpx))
+Press [q] to stop, [?] for help
+[libvpx @ 0000015ba1370700] v1.14.1
+[libvpx @ 0000015ba1370700] Neither bitrate nor constrained quality specified, using default CRF of 32 and bitrate of 256kbit/sec
+Output #0, webm, to 'NUL':
+  Metadata:
+    encoder         : Lavf61.1.100
+  Stream #0:0: Video: vp8, yuv420p(tv, progressive), 1280x800 [SAR 1:1 DAR 8:5], q=2-31, 256 kb/s, 25 fps, 1k tbn
+      Metadata:
+        DURATION        : 00:00:55.520000000
+        encoder         : Lavc61.3.100 libvpx
+      Side data:
+        cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+[out#0/webm @ 0000015b9f21d740] video:1674KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.595968%
+frame= 1388 fps=116 q=63.0 Lsize=    1684KiB time=00:00:55.52 bitrate= 248.5kbits/s speed=4.64x    

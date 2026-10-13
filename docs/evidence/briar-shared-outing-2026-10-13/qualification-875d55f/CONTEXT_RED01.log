@@ -1,0 +1,1584 @@
+TAP version 13
+# Subtest: E at the arrived doorstep records the moment instead of entering the overlapping house
+not ok 1 - E at the arrived doorstep records the moment instead of entering the overlapping house
+  ---
+  duration_ms: 338.0243
+  type: 'test'
+  location: 'D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\tests\\briar_outing_context.test.cjs:20:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    'home' !== null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'home'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\briar_outing_context.test.cjs:22:26)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.start (node:internal/test_runner/test:1191:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17)
+  ...
+# Subtest: out-of-range E gives current guidance, preserves arrival, and cannot enter the house
+not ok 2 - out-of-range E gives current guidance, preserves arrival, and cannot enter the house
+  ---
+  duration_ms: 126.1227
+  type: 'test'
+  location: 'D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\tests\\briar_outing_context.test.cjs:29:1'
+  failureType: 'testCodeFailure'
+  error: 'B.prompt is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\briar_outing_context.test.cjs:32:12)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)
+  ...
+# Subtest: waiting and paused guidance have no implicit action, save, tracker or camera change
+not ok 3 - waiting and paused guidance have no implicit action, save, tracker or camera change
+  ---
+  duration_ms: 49.3129
+  type: 'test'
+  location: 'D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\tests\\briar_outing_context.test.cjs:37:1'
+  failureType: 'testCodeFailure'
+  error: 'B.prompt is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\briar_outing_context.test.cjs:40:17)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: a known refused contextual save remains arrived and explicitly retryable
+not ok 4 - a known refused contextual save remains arrived and explicitly retryable
+  ---
+  duration_ms: 115.3567
+  type: 'test'
+  location: 'D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\tests\\briar_outing_context.test.cjs:45:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    ... Skipped lines
+    
+      {
+        adventure: {
+          angelSeen: false,
+          arsenal: {
+            bestTime: null,
+    ...
+          },
+    +     {
+    +       day: 1,
+    +       hour: 17.332975000000214,
+    +       kind: 'visit',
+    +       seq: 4,
+    +       text: 'You entered The shared house.'
+    +     }
+        ],
+        journeys: {
+          realms: {
+            atlantis: {
+              active: null,
+    ...
+        },
+    +   nextEvent: 5,
+    -   nextEvent: 4,
+        notes: [],
+        player: {
+          x: -11,
+          yaw: -2.2122578223484215,
+          z: -1.6
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    briarMoments:
+      version: 1
+      revision: 1
+      moments:
+        0: 'briar-cloth-home-v1'
+    earthWildSigns:
+      version: 1
+      accepted: false
+      evidence:
+      observed: false
+      resolution: ~
+      cleared: false
+      claimed: false
+    earthHomecoming:
+      version: 1
+      accepted: false
+      steps:
+      choice: ~
+      claimed: false
+    cosmosCampaign:
+      version: 1
+      accepted: false
+      steps:
+      choice: ~
+      opened: false
+      claimed: false
+    atlantisCampaign:
+      version: 1
+      accepted: false
+      steps:
+      approach: ~
+      choice: ~
+      claimed: false
+    heavenCampaign:
+      version: 1
+      accepted: false
+      steps:
+      choice: ~
+      claimed: false
+    hellCampaign:
+      version: 1
+      accepted: false
+      steps:
+      choice: ~
+      claimed: false
+    bridgeCommunity:
+      version: 1
+      accepted: false
+      choice: ~
+      steps:
+      claimed: false
+    homeHistory:
+      version: 1
+      revision: 0
+      owned:
+      pinned: ~
+    localLife:
+      version: 1
+      records:
+        heaven-propagation-bed-v1:
+          accepted: false
+          choice: ~
+          steps:
+          claimed: false
+        hell-refuge-water-v1:
+          accepted: false
+          choice: ~
+          steps:
+          claimed: false
+        atlantis-bellglass-lamp-v1:
+          accepted: false
+          choice: ~
+          steps:
+          claimed: false
+        cosmos-drawing-shelf-v1:
+          accepted: false
+          choice: ~
+          steps:
+          claimed: false
+        earth-first-load-through-v1:
+          accepted: false
+          choice: ~
+          steps:
+          claimed: false
+    earthExpedition:
+      version: 1
+      story:
+        accepted: false
+        branch: ~
+        steps:
+        claimed: false
+      patrol:
+        lastClaim: 0
+        active: ~
+    realmTrails:
+      version: 1
+      records:
+        heaven-broken-choir-v1:
+          accepted: false
+          steps:
+          settings:
+          checkpoint: 0
+          escortMode: 'follow'
+          assisted: false
+          claimed: false
+        hell-open-cage-v1:
+          accepted: false
+          steps:
+          settings:
+          checkpoint: 0
+          escortMode: 'follow'
+          assisted: false
+          claimed: false
+        atlantis-bellglass-chart-v1:
+          accepted: false
+          steps:
+          settings:
+          checkpoint: 0
+          escortMode: 'follow'
+          assisted: false
+          claimed: false
+        earthlands-coastward-materials-v1:
+          accepted: false
+          steps:
+          settings:
+          checkpoint: 0
+          escortMode: 'follow'
+          assisted: false
+          claimed: false
+        cosmos-split-bearing-v1:
+          accepted: false
+          steps:
+          settings:
+          checkpoint: 0
+          escortMode: 'follow'
+          assisted: false
+          claimed: false
+    journeys:
+      version: 1
+      realms:
+        heaven:
+          counter: 0
+          lastClaim: 0
+          firstClaimed: false
+          active: ~
+          defeated:
+        hell:
+          counter: 0
+          lastClaim: 0
+          firstClaimed: false
+          active: ~
+          defeated:
+        earthlands:
+          counter: 0
+          lastClaim: 0
+          firstClaimed: false
+          active: ~
+          defeated:
+        atlantis:
+          counter: 0
+          lastClaim: 0
+          firstClaimed: false
+          active: ~
+          defeated:
+        cosmos:
+          counter: 0
+          lastClaim: 0
+          firstClaimed: false
+          active: ~
+          defeated:
+    adventure:
+      version: 12
+      earthBinding:
+        version: 1
+        weapon: ~
+        kind: ~
+      realmCraft:
+        version: 1
+        weapon: ~
+      earthGathering:
+        version: 1
+        accepted: false
+        prepared:
+        verse: ~
+        shared: false
+      earthNotes:
+        version: 1
+        accepted: false
+        marks:
+        compared: false
+        interpretation: ~
+      earthStory:
+        version: 1
+        accepted: false
+        steps:
+        dispatch: ~
+        arrived: false
+        claimed: false
+      classPath:
+        version: 1
+        choice: ~
+        readyAt: 0
+      pursuit:
+        version: 1
+        pinned: ~
+        claimed: 0
+        active: ~
+        fittings:
+      starter:
+        version: 1
+        accepted: false
+        bundles:
+        reward: ~
+      crossing:
+        version: 1
+        entered: false
+        met: false
+        inscription: false
+        clapperRevealed: false
+        clapper: false
+        repaired: false
+        complete: false
+        reward: false
+        attuned: false
+        projects:
+      beacon:
+        version: 1
+        introduced: false
+        complete: false
+        status: 'dormant'
+        attempts: 0
+        failures: 0
+        reward: false
+        relic: 'undecided'
+        route: ~
+        soul:
+          grace: false
+          equipped: ~
+          radiance: 0
+          corruption: 0
+          scars:
+      arsenal:
+        version: 1
+        gems:
+          ruby: 0
+          moonstone: 0
+          amber: 0
+        sockets:
+        rangeMedal: false
+        bestTime: ~
+      road:
+        version: 1
+        entered: false
+        revealed:
+        claimed:
+        cartRepaired: false
+        beaconLit: false
+        reported: false
+      elapsed: 29.550000000000285
+      revision: 1
+      started: true
+      dug:
+      chips:
+      defeated:
+      drops:
+      ore: 0
+      coins: 0
+      xp: 0
+      hp: 100
+      stamina: 100
+      tonics: 3
+      equipment:
+        weapon: ~
+        armor: ~
+        charm: ~
+      owned:
+      companion:
+        bonded: true
+        name: 'Briar'
+        mode: 'follow'
+      relic: false
+      angelSeen: false
+      reward: ~
+      deaths: 0
+      receipts:
+    sandbox:
+      version: 1
+      elapsed: 29.550000000000285
+      revision: 0
+      inventory:
+        wood: 0
+        stone: 0
+        fiber: 0
+        crystal: 0
+        plank: 0
+        block: 0
+        seeds: 4
+        berry: 0
+        axe: 0
+        pick: 0
+        floor: 0
+        wall: 0
+        masonry: 0
+        lantern: 0
+        bench: 0
+        bed: 0
+        fire: 0
+        workbench: 0
+      nodes:
+        0:
+          id: 'timber-1'
+          hp: 4
+          readyAt: 0
+        1:
+          id: 'timber-2'
+          hp: 4
+          readyAt: 0
+        2:
+          id: 'timber-3'
+          hp: 4
+          readyAt: 0
+        3:
+          id: 'timber-4'
+          hp: 4
+          readyAt: 0
+        4:
+          id: 'stone-1'
+          hp: 4
+          readyAt: 0
+        5:
+          id: 'stone-2'
+          hp: 4
+          readyAt: 0
+        6:
+          id: 'stone-3'
+          hp: 4
+          readyAt: 0
+        7:
+          id: 'fibre-1'
+          hp: 1
+          readyAt: 0
+        8:
+          id: 'fibre-2'
+          hp: 1
+          readyAt: 0
+        9:
+          id: 'fibre-3'
+          hp: 1
+          readyAt: 0
+        10:
+          id: 'wild-timber-1'
+          hp: 4
+          readyAt: 0
+        11:
+          id: 'wild-timber-2'
+          hp: 4
+          readyAt: 0
+        12:
+          id: 'wild-timber-3'
+          hp: 4
+          readyAt: 0
+        13:
+          id: 'wild-stone-1'
+          hp: 4
+          readyAt: 0
+        14:
+          id: 'wild-stone-2'
+          hp: 4
+          readyAt: 0
+        15:
+          id: 'wild-fibre'
+          hp: 1
+          readyAt: 0
+        16:
+          id: 'crystal-1'
+          hp: 4
+          readyAt: 0
+        17:
+          id: 'crystal-2'
+          hp: 4
+          readyAt: 0
+      bridge: false
+      placed:
+      nextId: 1
+      stats:
+        gathered: 0
+        crafted: 0
+        harvested: 0
+      milestones:
+      recentCommands:
+      cooldownUntil: 0
+    score:
+      format: 'eternities.score.v1'
+      title: 'A Window Left Open'
+      bpm: 88
+      voice: 'felt'
+      melody:
+        0:
+          0: 0
+          1: 0
+          2: 0
+          3: 0
+          4: 0
+          5: 0
+          6: 0
+          7: 0
+          8: 0
+          9: 0
+          10: 0
+          11: 0
+          12: 0
+          13: 0
+          14: 0
+          15: 0
+        1:
+          0: 0
+          1: 0
+          2: 0
+          3: 0
+          4: 0
+          5: 0
+          6: 0
+          7: 0
+          8: 0
+          9: 0
+          10: 0
+          11: 0
+          12: 0
+          13: 0
+          14: 0
+          15: 0
+        2:
+          0: 0
+          1: 0
+          2: 0
+          3: 0
+          4: 1
+          5: 0
+          6: 0
+          7: 0
+          8: 0
+          9: 0
+          10: 0
+          11: 0
+          12: 0
+          13: 0
+          14: 0
+          15: 0
+        3:
+          0: 0
+          1: 0
+          2: 0
+          3: 1
+          4: 0
+          5: 0
+          6: 1
+          7: 0
+          8: 0
+          9: 0
+          10: 0
+          11: 0
+          12: 0
+          13: 0
+          14: 0
+          15: 0
+        4:
+          0: 0
+          1: 0
+          2: 1
+          3: 0
+          4: 0
+          5: 0
+          6: 0
+          7: 0
+          8: 1
+          9: 0
+          10: 0
+          11: 0
+          12: 0
+          13: 0
+          14: 0
+          15: 0
+        5:
+          0: 1
+          1: 0
+          2: 0
+          3: 0
+          4: 0
+          5: 0
+          6: 0
+          7: 0
+          8: 0
+          9: 1
+          10: 0
+          11: 0
+          12: 0
+          13: 0
+          14: 1
+          15: 0
+        6:
+          0: 0
+          1: 0
+          2: 0
+          3: 0
+          4: 0
+          5: 0
+          6: 0
+          7: 0
+          8: 0
+          9: 0
+          10: 0
+          11: 1
+          12: 0
+          13: 0
+          14: 0
+          15: 0
+        7:
+          0: 0
+          1: 0
+          2: 0
+          3: 0
+          4: 0
+          5: 0
+          6: 0
+          7: 0
+          8: 0
+          9: 0
+          10: 0
+          11: 0
+          12: 1
+          13: 0
+          14: 0
+          15: 0
+      bass:
+        0: 1
+        1: 0
+        2: 0
+        3: 0
+        4: 1
+        5: 0
+        6: 0
+        7: 0
+        8: 1
+        9: 0
+        10: 0
+        11: 0
+        12: 1
+        13: 0
+        14: 0
+        15: 0
+      drums:
+        0:
+          0: 1
+          1: 0
+          2: 0
+          3: 0
+          4: 0
+          5: 0
+          6: 0
+          7: 0
+          8: 1
+          9: 0
+          10: 0
+          11: 0
+          12: 0
+          13: 0
+          14: 0
+          15: 0
+        1:
+          0: 0
+          1: 0
+          2: 0
+          3: 0
+          4: 1
+          5: 0
+          6: 0
+          7: 0
+          8: 0
+          9: 0
+          10: 0
+          11: 0
+          12: 1
+          13: 0
+          14: 0
+          15: 0
+        2:
+          0: 0
+          1: 0
+          2: 1
+          3: 0
+          4: 0
+          5: 0
+          6: 1
+          7: 0
+          8: 0
+          9: 0
+          10: 1
+          11: 0
+          12: 0
+          13: 0
+          14: 1
+          15: 0
+    scoreRevision: 0
+    retreat:
+      version: 1
+      revision: 0
+      wall: 'moss'
+      floor: 'oak'
+      items:
+        0:
+          slot: 'nw'
+          kind: 'shelf'
+          rotation: 0
+        1:
+          slot: 'ne'
+          kind: 'piano'
+          rotation: 0
+        2:
+          slot: 'w'
+          kind: 'sofa'
+          rotation: 1
+        3:
+          slot: 'e'
+          kind: 'plant'
+          rotation: 0
+        4:
+          slot: 'c'
+          kind: 'rug'
+          rotation: 0
+    visitor:
+      name: 'Visitor'
+      skin: 0
+      cloak: 0
+      hair: 0
+    version: 9
+    seed: 2317
+    day: 1
+    hour: 17.332975000000214
+    weather: 'clear'
+    player:
+      x: -11
+      z: -1.6
+      yaw: -2.2122578223484215
+    visited:
+      0: 'shore'
+      1: 'home'
+    flowers:
+    notes:
+    journal:
+      0:
+        seq: 1
+        day: 1
+        hour: 17.242525000000068
+        kind: 'discovery'
+        text: 'You found The lantern pier.'
+      1:
+        seq: 2
+        day: 1
+        hour: 17.28122500000013
+        kind: 'briar-moment'
+        text: 'Briar brought the misplaced cloth home. You took it beside the Commons path.'
+      2:
+        seq: 3
+        day: 1
+        hour: 17.315425000000186
+        kind: 'discovery'
+        text: 'You found The shared house.'
+    nextEvent: 4
+    residents:
+      0:
+        id: 'ilan'
+        x: 0
+        z: -11.6
+        yaw: 1.5707963267948966
+        progress: 0.0552380000000012
+        conversations: 0
+      1:
+        id: 'mara'
+        x: 9
+        z: -5.8
+        yaw: 0
+        progress: 0.05531900000000122
+        conversations: 0
+      2:
+        id: 'oren'
+        x: 11
+        z: 9
+        yaw: -1.5707963267948966
+        progress: 0.0552380000000012
+        conversations: 0
+    settings:
+      quality: 'balanced'
+      cameraMode: 'adventure'
+      cameraFov: 60
+      cameraViews:
+        version: 1
+        lastDiorama: 'follow'
+        profiles:
+      cameraCutaway: true
+      reducedMotion: false
+      labels: true
+      timeFlow: true
+      sound: false
+  actual:
+    briarMoments:
+      version: 1
+      revision: 1
+      moments:
+        0: 'briar-cloth-home-v1'
+    earthWildSigns:
+      version: 1
+      accepted: false
+      evidence:
+      observed: false
+      resolution: ~
+      cleared: false
+      claimed: false
+    earthHomecoming:
+      version: 1
+      accepted: false
+      steps:
+      choice: ~
+      claimed: false
+    cosmosCampaign:
+      version: 1
+      accepted: false
+      steps:
+      choice: ~
+      opened: false
+      claimed: false
+    atlantisCampaign:
+      version: 1
+      accepted: false
+      steps:
+      approach: ~
+      choice: ~
+      claimed: false
+    heavenCampaign:
+      version: 1
+      accepted: false
+      steps:
+      choice: ~
+      claimed: false
+    hellCampaign:
+      version: 1
+      accepted: false
+      steps:
+      choice: ~
+      claimed: false
+    bridgeCommunity:
+      version: 1
+      accepted: false
+      choice: ~
+      steps:
+      claimed: false
+    homeHistory:
+      version: 1
+      revision: 0
+      owned:
+      pinned: ~
+    localLife:
+      version: 1
+      records:
+        heaven-propagation-bed-v1:
+          accepted: false
+          choice: ~
+          steps:
+          claimed: false
+        hell-refuge-water-v1:
+          accepted: false
+          choice: ~
+          steps:
+          claimed: false
+        atlantis-bellglass-lamp-v1:
+          accepted: false
+          choice: ~
+          steps:
+          claimed: false
+        cosmos-drawing-shelf-v1:
+          accepted: false
+          choice: ~
+          steps:
+          claimed: false
+        earth-first-load-through-v1:
+          accepted: false
+          choice: ~
+          steps:
+          claimed: false
+    earthExpedition:
+      version: 1
+      story:
+        accepted: false
+        branch: ~
+        steps:
+        claimed: false
+      patrol:
+        lastClaim: 0
+        active: ~
+    realmTrails:
+      version: 1
+      records:
+        heaven-broken-choir-v1:
+          accepted: false
+          steps:
+          settings:
+          checkpoint: 0
+          escortMode: 'follow'
+          assisted: false
+          claimed: false
+        hell-open-cage-v1:
+          accepted: false
+          steps:
+          settings:
+          checkpoint: 0
+          escortMode: 'follow'
+          assisted: false
+          claimed: false
+        atlantis-bellglass-chart-v1:
+          accepted: false
+          steps:
+          settings:
+          checkpoint: 0
+          escortMode: 'follow'
+          assisted: false
+          claimed: false
+        earthlands-coastward-materials-v1:
+          accepted: false
+          steps:
+          settings:
+          checkpoint: 0
+          escortMode: 'follow'
+          assisted: false
+          claimed: false
+        cosmos-split-bearing-v1:
+          accepted: false
+          steps:
+          settings:
+          checkpoint: 0
+          escortMode: 'follow'
+          assisted: false
+          claimed: false
+    journeys:
+      version: 1
+      realms:
+        heaven:
+          counter: 0
+          lastClaim: 0
+          firstClaimed: false
+          active: ~
+          defeated:
+        hell:
+          counter: 0
+          lastClaim: 0
+          firstClaimed: false
+          active: ~
+          defeated:
+        earthlands:
+          counter: 0
+          lastClaim: 0
+          firstClaimed: false
+          active: ~
+          defeated:
+        atlantis:
+          counter: 0
+          lastClaim: 0
+          firstClaimed: false
+          active: ~
+          defeated:
+        cosmos:
+          counter: 0
+          lastClaim: 0
+          firstClaimed: false
+          active: ~
+          defeated:
+    adventure:
+      version: 12
+      earthBinding:
+        version: 1
+        weapon: ~
+        kind: ~
+      realmCraft:
+        version: 1
+        weapon: ~
+      earthGathering:
+        version: 1
+        accepted: false
+        prepared:
+        verse: ~
+        shared: false
+      earthNotes:
+        version: 1
+        accepted: false
+        marks:
+        compared: false
+        interpretation: ~
+      earthStory:
+        version: 1
+        accepted: false
+        steps:
+        dispatch: ~
+        arrived: false
+        claimed: false
+      classPath:
+        version: 1
+        choice: ~
+        readyAt: 0
+      pursuit:
+        version: 1
+        pinned: ~
+        claimed: 0
+        active: ~
+        fittings:
+      starter:
+        version: 1
+        accepted: false
+        bundles:
+        reward: ~
+      crossing:
+        version: 1
+        entered: false
+        met: false
+        inscription: false
+        clapperRevealed: false
+        clapper: false
+        repaired: false
+        complete: false
+        reward: false
+        attuned: false
+        projects:
+      beacon:
+        version: 1
+        introduced: false
+        complete: false
+        status: 'dormant'
+        attempts: 0
+        failures: 0
+        reward: false
+        relic: 'undecided'
+        route: ~
+        soul:
+          grace: false
+          equipped: ~
+          radiance: 0
+          corruption: 0
+          scars:
+      arsenal:
+        version: 1
+        gems:
+          ruby: 0
+          moonstone: 0
+          amber: 0
+        sockets:
+        rangeMedal: false
+        bestTime: ~
+      road:
+        version: 1
+        entered: false
+        revealed:
+        claimed:
+        cartRepaired: false
+        beaconLit: false
+        reported: false
+      elapsed: 29.550000000000285
+      revision: 1
+      started: true
+      dug:
+      chips:
+      defeated:
+      drops:
+      ore: 0
+      coins: 0
+      xp: 0
+      hp: 100
+      stamina: 100
+      tonics: 3
+      equipment:
+        weapon: ~
+        armor: ~
+        charm: ~
+      owned:
+      companion:
+        bonded: true
+        name: 'Briar'
+        mode: 'follow'
+      relic: false
+      angelSeen: false
+      reward: ~
+      deaths: 0
+      receipts:
+    sandbox:
+      version: 1
+      elapsed: 29.550000000000285
+      revision: 0
+      inventory:
+        wood: 0
+        stone: 0
+        fiber: 0
+        crystal: 0
+        plank: 0
+        block: 0
+        seeds: 4
+        berry: 0
+        axe: 0
+        pick: 0
+        floor: 0
+        wall: 0
+        masonry: 0
+        lantern: 0
+        bench: 0
+        bed: 0
+        fire: 0
+        workbench: 0
+      nodes:
+        0:
+          id: 'timber-1'
+          hp: 4
+          readyAt: 0
+        1:
+          id: 'timber-2'
+          hp: 4
+          readyAt: 0
+        2:
+          id: 'timber-3'
+          hp: 4
+          readyAt: 0
+        3:
+          id: 'timber-4'
+          hp: 4
+          readyAt: 0
+        4:
+          id: 'stone-1'
+          hp: 4
+          readyAt: 0
+        5:
+          id: 'stone-2'
+          hp: 4
+          readyAt: 0
+        6:
+          id: 'stone-3'
+          hp: 4
+          readyAt: 0
+        7:
+          id: 'fibre-1'
+          hp: 1
+          readyAt: 0
+        8:
+          id: 'fibre-2'
+          hp: 1
+          readyAt: 0
+        9:
+          id: 'fibre-3'
+          hp: 1
+          readyAt: 0
+        10:
+          id: 'wild-timber-1'
+          hp: 4
+          readyAt: 0
+        11:
+          id: 'wild-timber-2'
+          hp: 4
+          readyAt: 0
+        12:
+          id: 'wild-timber-3'
+          hp: 4
+          readyAt: 0
+        13:
+          id: 'wild-stone-1'
+          hp: 4
+          readyAt: 0
+        14:
+          id: 'wild-stone-2'
+          hp: 4
+          readyAt: 0
+        15:
+          id: 'wild-fibre'
+          hp: 1
+          readyAt: 0
+        16:
+          id: 'crystal-1'
+          hp: 4
+          readyAt: 0
+        17:
+          id: 'crystal-2'
+          hp: 4
+          readyAt: 0
+      bridge: false
+      placed:
+      nextId: 1
+      stats:
+        gathered: 0
+        crafted: 0
+        harvested: 0
+      milestones:
+      recentCommands:
+      cooldownUntil: 0
+    score:
+      format: 'eternities.score.v1'
+      title: 'A Window Left Open'
+      bpm: 88
+      voice: 'felt'
+      melody:
+        0:
+          0: 0
+          1: 0
+          2: 0
+          3: 0
+          4: 0
+          5: 0
+          6: 0
+          7: 0
+          8: 0
+          9: 0
+          10: 0
+          11: 0
+          12: 0
+          13: 0
+          14: 0
+          15: 0
+        1:
+          0: 0
+          1: 0
+          2: 0
+          3: 0
+          4: 0
+          5: 0
+          6: 0
+          7: 0
+          8: 0
+          9: 0
+          10: 0
+          11: 0
+          12: 0
+          13: 0
+          14: 0
+          15: 0
+        2:
+          0: 0
+          1: 0
+          2: 0
+          3: 0
+          4: 1
+          5: 0
+          6: 0
+          7: 0
+          8: 0
+          9: 0
+          10: 0
+          11: 0
+          12: 0
+          13: 0
+          14: 0
+          15: 0
+        3:
+          0: 0
+          1: 0
+          2: 0
+          3: 1
+          4: 0
+          5: 0
+          6: 1
+          7: 0
+          8: 0
+          9: 0
+          10: 0
+          11: 0
+          12: 0
+          13: 0
+          14: 0
+          15: 0
+        4:
+          0: 0
+          1: 0
+          2: 1
+          3: 0
+          4: 0
+          5: 0
+          6: 0
+          7: 0
+          8: 1
+          9: 0
+          10: 0
+          11: 0
+          12: 0
+          13: 0
+          14: 0
+          15: 0
+        5:
+          0: 1
+          1: 0
+          2: 0
+          3: 0
+          4: 0
+          5: 0
+          6: 0
+          7: 0
+          8: 0
+          9: 1
+          10: 0
+          11: 0
+          12: 0
+          13: 0
+          14: 1
+          15: 0
+        6:
+          0: 0
+          1: 0
+          2: 0
+          3: 0
+          4: 0
+          5: 0
+          6: 0
+          7: 0
+          8: 0
+          9: 0
+          10: 0
+          11: 1
+          12: 0
+          13: 0
+          14: 0
+          15: 0
+        7:
+          0: 0
+          1: 0
+          2: 0
+          3: 0
+          4: 0
+          5: 0
+          6: 0
+          7: 0
+          8: 0
+          9: 0
+          10: 0
+          11: 0
+          12: 1
+          13: 0
+          14: 0
+          15: 0
+      bass:
+        0: 1
+        1: 0
+        2: 0
+        3: 0
+        4: 1
+        5: 0
+        6: 0
+        7: 0
+        8: 1
+        9: 0
+        10: 0
+        11: 0
+        12: 1
+        13: 0
+        14: 0
+        15: 0
+      drums:
+        0:
+          0: 1
+          1: 0
+          2: 0
+          3: 0
+          4: 0
+          5: 0
+          6: 0
+          7: 0
+          8: 1
+          9: 0
+          10: 0
+          11: 0
+          12: 0
+          13: 0
+          14: 0
+          15: 0
+        1:
+          0: 0
+          1: 0
+          2: 0
+          3: 0
+          4: 1
+          5: 0
+          6: 0
+          7: 0
+          8: 0
+          9: 0
+          10: 0
+          11: 0
+          12: 1
+          13: 0
+          14: 0
+          15: 0
+        2:
+          0: 0
+          1: 0
+          2: 1
+          3: 0
+          4: 0
+          5: 0
+          6: 1
+          7: 0
+          8: 0
+          9: 0
+          10: 1
+          11: 0
+          12: 0
+          13: 0
+          14: 1
+          15: 0
+    scoreRevision: 0
+    retreat:
+      version: 1
+      revision: 0
+      wall: 'moss'
+      floor: 'oak'
+      items:
+        0:
+          slot: 'nw'
+          kind: 'shelf'
+          rotation: 0
+        1:
+          slot: 'ne'
+          kind: 'piano'
+          rotation: 0
+        2:
+          slot: 'w'
+          kind: 'sofa'
+          rotation: 1
+        3:
+          slot: 'e'
+          kind: 'plant'
+          rotation: 0
+        4:
+          slot: 'c'
+          kind: 'rug'
+          rotation: 0
+    visitor:
+      name: 'Visitor'
+      skin: 0
+      cloak: 0
+      hair: 0
+    version: 9
+    seed: 2317
+    day: 1
+    hour: 17.332975000000214
+    weather: 'clear'
+    player:
+      x: -11
+      z: -1.6
+      yaw: -2.2122578223484215
+    visited:
+      0: 'shore'
+      1: 'home'
+    flowers:
+    notes:
+    journal:
+      0:
+        seq: 1
+        day: 1
+        hour: 17.242525000000068
+        kind: 'discovery'
+        text: 'You found The lantern pier.'
+      1:
+        seq: 2
+        day: 1
+        hour: 17.28122500000013
+        kind: 'briar-moment'
+        text: 'Briar brought the misplaced cloth home. You took it beside the Commons path.'
+      2:
+        seq: 3
+        day: 1
+        hour: 17.315425000000186
+        kind: 'discovery'
+        text: 'You found The shared house.'
+      3:
+        seq: 4
+        day: 1
+        hour: 17.332975000000214
+        kind: 'visit'
+        text: 'You entered The shared house.'
+    nextEvent: 5
+    residents:
+      0:
+        id: 'ilan'
+        x: 0
+        z: -11.6
+        yaw: 1.5707963267948966
+        progress: 0.0552380000000012
+        conversations: 0
+      1:
+        id: 'mara'
+        x: 9
+        z: -5.8
+        yaw: 0
+        progress: 0.05531900000000122
+        conversations: 0
+      2:
+        id: 'oren'
+        x: 11
+        z: 9
+        yaw: -1.5707963267948966
+        progress: 0.0552380000000012
+        conversations: 0
+    settings:
+      quality: 'balanced'
+      cameraMode: 'adventure'
+      cameraFov: 60
+      cameraViews:
+        version: 1
+        lastDiorama: 'follow'
+        profiles:
+      cameraCutaway: true
+      reducedMotion: false
+      labels: true
+      timeFlow: true
+      sound: false
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\briar_outing_context.test.cjs:47:49)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: post-write uncertainty shows readback guidance and consumes E without another write or entry
+not ok 5 - post-write uncertainty shows readback guidance and consumes E without another write or entry
+  ---
+  duration_ms: 103.2589
+  type: 'test'
+  location: 'D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\tests\\briar_outing_context.test.cjs:51:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\briar_outing_context.test.cjs:54:26)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+# Subtest: completed history alone, cancel, reload and changed owner cannot invent a live contextual action
+not ok 6 - completed history alone, cancel, reload and changed owner cannot invent a live contextual action
+  ---
+  duration_ms: 97.2714
+  type: 'test'
+  location: 'D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\tests\\briar_outing_context.test.cjs:59:1'
+  failureType: 'testCodeFailure'
+  error: 'B.prompt is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\briar_outing_context.test.cjs:60:62)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1325:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+    Test.postRun (node:internal/test_runner/test:1465:19)
+    Test.run (node:internal/test_runner/test:1390:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 0
+# fail 6
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4242.8423

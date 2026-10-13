@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: missing legacy moment data starts empty without inventing shared history
+ok 1 - missing legacy moment data starts empty without inventing shared history
+  ---
+  duration_ms: 1.2183
+  type: 'test'
+  ...
+# Subtest: only completed chronological moments survive copied validation
+ok 2 - only completed chronological moments survive copied validation
+  ---
+  duration_ms: 0.488
+  type: 'test'
+  ...
+# Subtest: malformed, future, inherited and unearned history is refused
+ok 3 - malformed, future, inherited and unearned history is refused
+  ---
+  duration_ms: 0.2711
+  type: 'test'
+  ...
+# Subtest: world-level migration distinguishes absent, own undefined and inherited owners
+ok 4 - world-level migration distinguishes absent, own undefined and inherited owners
+  ---
+  duration_ms: 0.1749
+  type: 'test'
+  ...
+# Subtest: sparse or decorated lists cannot invent a completed event
+ok 5 - sparse or decorated lists cannot invent a completed event
+  ---
+  duration_ms: 0.838
+  type: 'test'
+  ...
+# Subtest: completed moments require a boolean start and normalized Adventure prerequisites
+ok 6 - completed moments require a boolean start and normalized Adventure prerequisites
+  ---
+  duration_ms: 0.3134
+  type: 'test'
+  ...
+# Subtest: the real world factory retains an empty distinct Briar owner
+ok 7 - the real world factory retains an empty distinct Briar owner
+  ---
+  duration_ms: 4.0869
+  type: 'test'
+  ...
+# Subtest: real Core accepts a missing legacy owner without shared-history backfill
+ok 8 - real Core accepts a missing legacy owner without shared-history backfill
+  ---
+  duration_ms: 4.7151
+  type: 'test'
+  ...
+# Subtest: Core and actual snapshot retain earned prerequisites and only valid moments
+ok 9 - Core and actual snapshot retain earned prerequisites and only valid moments
+  ---
+  duration_ms: 3.1732
+  type: 'test'
+  ...
+# Subtest: raw own undefined and inherited owners refuse through Core, including legacy migration
+ok 10 - raw own undefined and inherited owners refuse through Core, including legacy migration
+  ---
+  duration_ms: 1.1356
+  type: 'test'
+  ...
+# Subtest: historical missing Briar owner receives only the declared empty owner and an honest migration receipt
+ok 11 - historical missing Briar owner receives only the declared empty owner and an honest migration receipt
+  ---
+  duration_ms: 53.4777
+  type: 'test'
+  ...
+# Subtest: synthetic existing empty owner is preserved without a missing-owner migration claim
+ok 12 - synthetic existing empty owner is preserved without a missing-owner migration claim
+  ---
+  duration_ms: 16.9927
+  type: 'test'
+  ...
+# Subtest: synthetic completed shared memories retain identity and order through the actual historical migration
+ok 13 - synthetic completed shared memories retain identity and order through the actual historical migration
+  ---
+  duration_ms: 13.1464
+  type: 'test'
+  ...
+# Subtest: old homecoming preservation refuses any mutation of the separate WildSigns owner
+ok 14 - old homecoming preservation refuses any mutation of the separate WildSigns owner
+  ---
+  duration_ms: 7.0135
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 450.2799

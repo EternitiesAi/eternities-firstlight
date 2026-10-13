@@ -1,0 +1,61 @@
+{
+  "status": "failed",
+  "scope": "complete",
+  "head": "875d55f37e10d2dac98ecf54da41803972e5bdf0",
+  "htmlSha256": "e54149afdd54cab675dbb71ac8b474e93a5c1660462528ca38e7c97dc61f5fed",
+  "callerSha256": "b50581f2e6f83361296927a180fd892ecd1225559831a3c2cca1cabf5601f1a2",
+  "supportSha256": "cb5b8227f4c5e99e89b5ec40a75a3cacc471bd60c287316501c4b2de6cfecaa5",
+  "cohortSha256": "dc6d0de6c873f9d968d79ae617b79bd2ce0178a2d6a243709f39bd7e507beb3d",
+  "sourceGate": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\briar-shared-outing-20261013\\REMOTE_SOURCE10_EXIT.json",
+    "sha256": "3b5877d68ac18cef888b0ca632154485b2445a907c6af96af2f45c52252eb762",
+    "commandsPassed": 220,
+    "ruleFiles": 154,
+    "head": "875d55f37e10d2dac98ecf54da41803972e5bdf0",
+    "output": "D:\\07-GAMES\\Firstlight\\artifacts\\briar-shared-outing-20261013\\REMOTE_SOURCE10"
+  },
+  "admission": {
+    "freeHostKiB": 7499248,
+    "minimumFreeKiB": 6291456
+  },
+  "cases": {
+    "early-rescued-blade": {
+      "profile": "D:\\07-GAMES\\Firstlight\\artifacts\\briar-shared-outing-20261013\\NATIVE_CONTEXT02\\early-rescued-blade\\synthetic-native-profile",
+      "checks": [],
+      "restarts": [],
+      "samples": [],
+      "nativeWrites": 0,
+      "admissions": [
+        {
+          "freeHostKiB": 7438196,
+          "minimumFreeKiB": 6291456
+        }
+      ],
+      "failureEvidence": [],
+      "captureErrors": [
+        "No page was allocated"
+      ],
+      "closed": true
+    }
+  },
+  "browserErrors": [],
+  "externalRequests": [],
+  "execution": "accelerated-native-UI-whole-browser-restarts",
+  "normalRAF": false,
+  "humanAcceptance": false,
+  "performanceCertified": false,
+  "errors": [
+    "Traceback (most recent call last):\n  File \"D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game\\tools\\briar_outing_browser.py\", line 641, in main\n    h.run(admitted['rows'][label])\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game\\tools\\briar_outing_browser.py\", line 474, in run\n    self.start()\n    ~~~~~~~~~~^^\n  File \"D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game\\tools\\briar_outing_browser.py\", line 354, in start\n    self.context = self.pw.chromium.launch_persistent_context(str(self.profile), **self.args.support.launch_kwargs('software'),\n                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                                                              viewport={'width':1440, 'height':960})\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\sync_api\\_generated.py\", line 14870, in launch_persistent_context\n    self._sync(\n    ~~~~~~~~~~^\n        self._impl_obj.launch_persistent_context(\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<51 lines>...\n        )\n        ^\n    )\n    ^\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\_impl\\_sync_base.py\", line 115, in _sync\n    return task.result()\n           ~~~~~~~~~~~^^\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\_impl\\_browser_type.py\", line 166, in launch_persistent_context\n    result = await self._channel.send_return_as_dict(\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        \"launchPersistentContext\", TimeoutSettings.launch_timeout, params\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\_impl\\_connection.py\", line 83, in send_return_as_dict\n    return await self._connection.wrap_api_call(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<3 lines>...\n    )\n    ^\n  File \"C:\\dev\\firstlight-artifacts\\bootstrap-2026-09-12\\browser-env\\Lib\\site-packages\\playwright\\_impl\\_connection.py\", line 559, in wrap_api_call\n    raise rewrite_error(error, f\"{parsed_st['apiName']}: {error}\") from None\nplaywright._impl._errors.Error: BrowserType.launch_persistent_context: Executable doesn't exist at C:\\Users\\Dom\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1200\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551 Looks like Playwright was just installed or updated.       \u2551\n\u2551 Please run the following command to download new browsers: \u2551\n\u2551                                                            \u2551\n\u2551     playwright install                                     \u2551\n\u2551                                                            \u2551\n\u2551 <3 Playwright Team                                         \u2551\n\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d\n"
+  ],
+  "origin": "http://127.0.0.1:56117",
+  "nativeLabels": [
+    "early-rescued-blade",
+    "early-rescued-bow",
+    "earned-both-sunward-caches"
+  ],
+  "cpuOnlyLabels": [
+    "earned-chapter-I-blade",
+    "earned-chapter-IV-blade-to-bow"
+  ],
+  "serverClosed": true
+}
