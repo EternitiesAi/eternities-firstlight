@@ -115,7 +115,10 @@ test('app Realm diagnostics copy actual EH facts/runtime rather than expose muta
  Object.assign(ctx,vm.compileFunction(app.slice(a+start.length,b)+'\nreturn {roadkeeperPresentation,prepareRoadkeeperDiagnostics,roadkeeperDiagnostics};',[],{contextExtensions:[ctx]})());
  const before=f.sim.snapshot();assert.equal(ctx.roadkeeperPresentation(),null);ctx.prepareRoadkeeperDiagnostics();
  ctx.briarContext=()=>f.app.context.briarContext();
+ const heading=app.split('\n').find(line=>line.startsWith('function cameraHeading('));assert.ok(heading);
+ Object.assign(ctx.camera,{preset:'adventure',yaw:.2,actualYaw:1.3});vm.runInNewContext(heading,ctx);
  const wildDiagnostics=app.slice(app.indexOf('let wildSignsDiagnosticFrame='),app.indexOf('function worldContext('));vm.runInNewContext(wildDiagnostics+'\n'+snippet,ctx);const d=ctx.window.Realm.diagnostics;assert.equal(d.roadkeeper,null);assert.deepEqual(f.sim.snapshot(),before);assert.equal(d.earthHomecoming.record.accepted,true);assert.equal(d.earthHomecoming.runtime.room,null);d.earthHomecoming.record.accepted=false;d.earthHomecoming.record.steps.push('invented');assert.equal(f.sim.state.earthHomecoming.accepted,true);assert.ok(!f.sim.state.earthHomecoming.steps.includes('invented'));
+ assert.equal(d.camera.heading,1.3);assert.equal(d.camera.yaw,.2,'diagnostic heading never overwrites preferred yaw');
 });
 test('build/shell ordered tokens load data+rules before Core/Adventure and repaired UI/art/CSS exactly once',()=>{
  const shell=fs.readFileSync(path.join(ROOT,'src/shell.html'),'utf8'),build=fs.readFileSync(path.join(ROOT,'build.py'),'utf8');
