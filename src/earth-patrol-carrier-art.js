@@ -1,15 +1,15 @@
 /* Read-only authorized kit projection. No collision/NPC/payment ownership. */
 (function(G){'use strict';
+function destination(view){const g=G.RealmEarthExpedition.patrol.giver;return view.status==='paid'?[g.x-1.65,2.18,g.z-.85]:G.RealmEarthPatrolCarrier.GEOMETRY.center;}
 function parts(ledger,view){
  const P=G.RealmEarthPatrolCarrier;if(!P?.isProjection(view,ledger))return[];
- const paid=view.status==='paid',g=P.GEOMETRY,out=[],giver=G.RealmEarthExpedition.patrol.giver;
- const destination=paid?[giver.x-1.65,2.18,giver.z-.85]:g.center,offset=destination.map((n,i)=>n-g.center[i]);
+ const paid=view.status==='paid',g=P.GEOMETRY,out=[],center=destination(view),offset=center.map((n,i)=>n-g.center[i]);
  const base={cameraSolid:false,cutaway:false,appearanceOnly:true,rough:.95,carrierRun:view.run};
  const add=(kind,p,s,c,role,r=[0,0,0])=>out.push({kind,p,s,c,opt:{...base,carrierPart:role,expeditionPart:role,r}});
  if(paid){
-  for(const dx of[-.48,.48])add('timber-panel',[destination[0]+dx,1.79,destination[2]],[.09,.44,.48],0x715b43,'carrier-receiving-foot');
-  add('timber-panel',[destination[0],2.04,destination[2]],[1.16,.10,.58],0x947856,'carrier-receiving-tray');
-  add('box',[destination[0],2.099,destination[2]+.26],[.15,.018,.06],0x9fc6a0,'carrier-received-tag');
+  for(const dx of[-.48,.48])add('timber-panel',[center[0]+dx,1.79,center[2]],[.09,.44,.48],0x715b43,'carrier-receiving-foot');
+  add('timber-panel',[center[0],2.04,center[2]],[1.16,.10,.58],0x947856,'carrier-receiving-tray');
+  add('box',[center[0],2.099,center[2]+.26],[.15,.018,.06],0x9fc6a0,'carrier-received-tag');
  }
  for(const p of view.pieces){
   const lashing=p.id.startsWith('lashing'),bundle=p.id==='bundle';
@@ -30,5 +30,11 @@ function parts(ledger,view){
  }
  return out;
 }
-const api=Object.freeze({parts});G.RealmEarthPatrolCarrierArt=api;if(typeof module!=='undefined')module.exports=api;
+function receivingFrame(ledger,view){
+ if(view?.status!=='paid'||!G.RealmEarthPatrolCarrier?.isProjection(view,ledger))return null;
+ const center=destination(view),corners=parts(ledger,view).flatMap(p=>{const m=G.RealmEngine.M.compose(...p.p,...p.s,...p.opt.r),out=[];
+  for(const x of[-.5,.5])for(const y of[-.5,.5])for(const z of[-.5,.5])out.push(Object.freeze(G.RealmEngine.M.transform(m,[x,y,z])));return out;});
+ return Object.freeze({point:Object.freeze([center[0],2.03,center[2]]),corners:Object.freeze(corners)});
+}
+const api=Object.freeze({parts,receivingFrame});G.RealmEarthPatrolCarrierArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

@@ -168,6 +168,17 @@ test('literal billet center and yaw boundaries are evaluated before seating',()=
  for(const pose of[{x:-.3855,z:0,yaw:0},{x:-.36,z:0,yaw:3.01*Math.PI/180}]){assert.ok(P.adjust(f.ctx(),s.plan,{pieceId:id,receiverId:r.id,...pose}).ok);assert.equal(P.seat(f.ctx(),s.plan,id).ok,false);}
  assert.ok(P.adjust(f.ctx(),s.plan,{pieceId:id,receiverId:r.id,x:-.385,z:.020,yaw:3*Math.PI/180}).ok);assert.ok(P.seat(f.ctx(),s.plan,id).ok);
 });
+
+test('authenticated diagnostics report independent signed errors and geometric limits without seating',()=>{
+ const P=carrier(),f=fixture('managed-coppice'),s=P.begin(f.ctx()),before=bytes(f),p=s.view.pieces[0],d=p.diagnostics;
+ assert.ok(Object.isFrozen(d)&&Object.isFrozen(d.offset));assert.equal(d.offset.x,.04);assert.equal(d.tolerance.x,.015);assert.ok(Math.abs((d.offset.yaw-d.tolerance.yaw)*180/Math.PI-3.729577951308232)<1e-12);
+ // Independent rotated rectangle half-depth: .45*sin(.1)+.17*cos(.1).
+ assert.ok(Math.abs(d.receiverOverhang.z-(.45*Math.sin(.1)+.17*Math.cos(.1)-.20))<2e-5);assert.equal(p.fits,false);assert.equal(d.trayClear,true);assert.equal(d.tabClear,true);assert.equal(d.lashingEndsClear,true);assert.equal(bytes(f),before);
+ assert.ok(P.inspect(f.ctx(),s.plan,p.id,s.view.receivers[0].id).ok);assert.ok(P.adjust(f.ctx(),s.plan,{pieceId:p.id,receiverId:s.view.receivers[0].id,x:.010,z:.005,yaw:.020}).ok);let seated=P.seat(f.ctx(),s.plan,p.id);assert.ok(seated.ok);
+ const l=seated.view.pieces.find(p=>p.id==='lashing-left'),ld=l.diagnostics;assert.ok(Math.abs(ld.offset.x-.03)<1e-12);assert.equal(ld.offset.z,-.035);assert.equal(ld.lashingEndsClear,false,'independent lower end exceeds required .185 clearance');
+ const r=seated.view.receivers.find(r=>r.pieceId===l.id);assert.ok(P.inspect(f.ctx(),s.plan,l.id,r.id).ok);assert.ok(P.adjust(f.ctx(),s.plan,{pieceId:l.id,receiverId:r.id,...r.target}).ok);seated=P.seat(f.ctx(),s.plan,l.id);assert.ok(seated.ok);assert.equal(seated.view.pieces.find(p=>p.id===l.id).diagnostics.lashingEndsClear,true);
+ const g=fixture('managed-coppice'),b=P.begin(g.ctx()),unchanged=P.projection(b.plan),bad=P.adjust(g.ctx(),b.plan,{pieceId:'bundle',receiverId:unchanged.receivers[0].id,x:0,z:-.10,yaw:0});assert.equal(bad.ok,false);assert.match(bad.error,/lashing-left.*last valid pose stays/);assert.deepEqual(P.projection(b.plan),unchanged);
+});
 test('actual Store claim refusal preserves exact bytes and checked proof for retry',()=>{
  const P=carrier(),f=managed(),r=fit(f);assert.ok(glade(f,r.ticket).ok);giver(f);const before=bytes(f),raw=f.storage.getItem(CH.KEY),revision=f.store.revision;f.storage.fail=true;
  assert.equal(claim(f).ok,false);assert.equal(bytes(f),before);assert.equal(f.storage.getItem(CH.KEY),raw);assert.equal(f.store.revision,revision);assert.equal(P.current(f.sim).status,'checked');

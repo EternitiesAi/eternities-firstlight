@@ -19,7 +19,7 @@ class CarrierUI{
  panel(){
   const P=G.RealmEarthPatrolCarrier;let ctx;try{ctx=this.#context();}catch(e){return'<p>'+esc(e.message)+'</p>';}
   const projected=this.#view(ctx),view=!this.#plan&&['fitting','ready'].includes(projected?.status)?null:projected,l=G.RealmEarthExpedition.validate(ctx.sim.state.earthExpedition),meta=this.#meta(ctx,view);
-  if(!l.patrol.active)return view?.status==='paid'?'<section data-carrier-panel><h4>Rill checks the returned kit</h4><p>Your fitted '+(view.branch==='stormfall-recovery'?'stormfall billets':'coppice bundle and lashings')+' are settled beside Rill. This patrol’s fixed payment was claimed once.</p></section>':'';
+  if(!l.patrol.active)return view?.status==='paid'?'<section data-carrier-panel><h4>Rill checks the returned kit</h4><p>Your fitted '+(view.branch==='stormfall-recovery'?'stormfall billets':'coppice bundle and lashings')+' are settled beside Rill. This patrol’s fixed payment was claimed once.</p>'+(typeof this.rpg.api.frameCarrier==='function'?button('Look at the returned kit','look-received',meta):'')+'</section>':'';
   if(l.patrol.active.steps.includes('inspect-glade'))return'<section data-carrier-panel><h4>The glade inspection is recorded</h4><p>'+esc(view?.status==='checked'?'Your fitted kit is ready for Rill to receive. Walk back and claim the separate patrol payment.':'The saved inspection remains complete. Return to Rill for its separate payment.')+'</p></section>';
   if(!P)return'<p>Supplied kit controls are unavailable.</p>';
   let html='<section data-carrier-panel aria-label="Fit the supplied glade kit"><h4>Three supplied pieces, one packing check</h4><p>Borrowed job parts cost none of your timber or fibre. Leave the tray tab and packing gaps clear.</p><p data-carrier-notice role="status" aria-live="polite">'+esc(this.#notice)+'</p>';
@@ -34,11 +34,22 @@ class CarrierUI{
     const b=P.GEOMETRY.previewBounds[axis],label=axis==='x'?'Across':axis==='z'?'Along':'Turn',suffix=axis==='yaw'?'degrees':'centimetres',value=unit(axis,p.pose[axis]).toFixed(1),attrs=meta+' data-rpg="'+PREFIX+'pose" data-carrier-axis="'+axis+'" data-carrier-piece="'+esc(p.id)+'" min="'+unit(axis,b.min)+'" max="'+unit(axis,b.max)+'" step="0.1" value="'+value+'"';
     html+='<div class="fieldcraft-pose"><label for="carrier-'+axis+'">'+label+' in '+suffix+'</label><input id="carrier-'+axis+'" type="range"'+attrs+' aria-label="'+label+' in '+suffix+'"><label for="carrier-'+axis+'-number">'+label+' value</label><input id="carrier-'+axis+'-number" type="number"'+attrs+' aria-label="'+label+' value in '+suffix+'"></div>';
    }
-   html+='<p data-carrier-feedback role="status">'+this.feedback(p,r)+'</p>'+button('Seat this supplied piece','seat',extra,!p.fits||!r.inspected);
+   html+='<p data-carrier-feedback role="status" aria-live="polite">'+esc(this.feedback(p,r))+'</p>'+button('Seat this supplied piece','seat',extra,!p.fits||!r.inspected);
   }else html+='<p>All three pieces are fitted. Nothing has been recorded or paid yet.</p>'+button('Record this patrol inspection','record',meta);
   return html+button('Return unrecorded pieces to the kit','cancel',meta)+'</section>';
  }
- feedback(p,r){return esc(!r.inspected?'Inspect this receiving guide first.':p.fits?'The actual piece fits its guide and clearance. Ready to seat.':'Correct the placement and turn until the piece fits its guide, packing gaps and tray tab.');}
+ feedback(p,r){
+  if(!r.inspected)return'Inspect this receiving guide first.';
+  if(p.fits)return'The actual piece fits its guide and clearance. Ready to seat.';
+  const d=p.diagnostics;if(!d)return'Check placement, turn, guide corners and tray clearance.';
+  const cues=[],eps=G.RealmEarthPatrolCarrier.GEOMETRY.epsilon;
+  for(const [axis,label]of[['x','Across'],['z','Along'],['yaw','Turn']]){const error=d.offset[axis],excess=Math.abs(error)-d.tolerance[axis];
+   if(excess>(axis==='yaw'?1e-12:eps)){const amount=unit(axis,excess),change=amount<.1?' slightly':' by at least '+(Math.ceil(amount*10-1e-8)/10).toFixed(1)+(axis==='yaw'?'°':' cm');cues.push((error>0?'Decrease ':'Increase ')+label+change+' to reach its allowed band.');}}
+  if(d.receiverOverhang.x>eps||d.receiverOverhang.z>eps)cues.push('The actual corners overhang the guide; check placement and turn.');
+  if(!d.lashingEndsClear)cues.push('Both lashing ends must extend beyond the bundle faces. Check Along and Turn.');
+  if(!d.trayClear||!d.tabClear)cues.push('Keep the whole piece on the tray and its inspection tab clear.');
+  return cues.join(' ')||'Check the actual guide and packing clearance before seating.';
+ }
  input(el){
   if(el?.dataset?.rpg!==PREFIX+'pose')return false;let view,result;
   try{
@@ -69,9 +80,10 @@ class CarrierUI{
     result=P.begin(ctx);if(result.ok){this.#plan=result.plan;this.#ticket=null;this.#generation++;}
    }else{
     if(!view)throw Error('Inspect this current patrol’s supplied kit first.');
-    if(type==='look'){
-     if(view.status==='paid')throw Error('The borrowed kit is settled with Rill; this old tray control has ended.');
-     result=this.rpg.api.frameCarrier?.(view);
+    if(type==='look'||type==='look-received'){
+     if(type==='look'&&view.status==='paid')throw Error('The borrowed kit is settled with Rill; this old tray control has ended.');
+     if(type==='look-received'&&view.status!=='paid')throw Error('This returned-kit view belongs to its actually paid run.');
+     result=type==='look-received'?this.rpg.api.frameCarrier?.(view,'receiving'):this.rpg.api.frameCarrier?.(view);
      if(!result||result.then||typeof result.ok!=='boolean')throw Error('Tray framing returned no synchronous confirmation.');
      if(result.ok){this.rpg.close?.();return this.#finish(result,false);}
     }
