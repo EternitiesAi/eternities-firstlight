@@ -106,7 +106,7 @@ test('actual road fixture draw and reset retain foreign scene/nonaccepted bounda
 });
 test('app Realm diagnostics copy actual EH facts/runtime rather than expose mutable owner references',()=>{
  const f=fixture();f.accept();const app=P.overlay.read('app.js'),snippet=app.slice(app.indexOf('window.Realm={get state()'),app.indexOf('if(window.__ETERNITIES_TEST_MODE'));
- const ctx={...Object.fromEntries(Object.entries(global).filter(([k])=>k.startsWith('Realm'))),document:f.doc,panel:null,window:{},sim:f.sim,engine:null,errors:[],adventure:f.old,experience:null,rpg:f.rpg,art:null,sandbox:null,audio:{enabled:false,ctx:null,soundscape:null},camera:{},saveState:'saved',characterStore:f.mem.store,navigate:()=>{},sceneHeight:()=>1.3,worldDiveStatus:()=>null,fps:0};f.rpg.gathering.player={status:'idle'};
+ const ctx={...Object.fromEntries(Object.entries(global).filter(([k])=>k.startsWith('Realm'))),document:f.doc,panel:null,window:{},sim:f.sim,RealmPierFishing:require(path.join(ROOT,'src/pier-fishing.js')),fishing:{context:()=>({sim:f.sim})},engine:null,errors:[],adventure:f.old,experience:null,rpg:f.rpg,art:null,sandbox:null,audio:{enabled:false,ctx:null,soundscape:null},camera:{},saveState:'saved',characterStore:f.mem.store,navigate:()=>{},sceneHeight:()=>1.3,worldDiveStatus:()=>null,fps:0};f.rpg.gathering.player={status:'idle'};
  const start='// BEGIN EARTH ROADKEEPER APP HOOKS',end='// END EARTH ROADKEEPER APP HOOKS';
  const a=app.indexOf(start),b=app.indexOf(end,a);assert.ok(a>=0&&b>a,'actual installed roadkeeper hook block');
  assert.equal(app.indexOf(start,a+1),-1);assert.equal(app.indexOf(end,b+1),-1);
