@@ -1,3 +1,80 @@
+# Current complete source and targeted native qualification
+
+Qualification head: `3269dd308f44f2ea9dc47c68f72aefc5eac5e0a1`.
+Final delivery commits may add records/media only; report their immutable head
+separately and verify exact remote runtime identity. Current [portable receipt](../evidence/living-road-inspection-2026-10-12/qualification-3269dd3.json),
+[source console](../evidence/living-road-inspection-2026-10-12/source-console-3269dd3.log)
+and [full targeted native report](../evidence/living-road-inspection-2026-10-12/native-report-3269dd3.json)
+preserve this epoch.
+
+Source06 closed exit0,04:43:13–04:48:50Z on2026-10-13, clean same head:
+`python -B tools/verify.py --rule-workers 4 --output <D-arc>/REMOTE_SOURCE06 --cpu-temp C:/Users/Dom/AppData/Local/Temp`.
+All217 source commands passed,145 syntax/145 rule files, Node2144P0F2skip
+in44924.2858ms; Python478 methods OK10skip in71.106s. Full existing180/600
+limits remain. Complete journeys/current cohorts/whole-draft caller passed.
+
+Native01 closed exit0,04:50:09–05:01:26Z, clean same head:
+`python -B tests/earth_expedition_browser.py` with exact FIRSTLIGHT_TEST_ROOT,
+D FIRSTLIGHT_EXPEDITION_OUTPUT and existing software-browser environment.
+1424 checks pass/0fail;22 whole browser restarts (blade8,bow7,veteran7),
+three retained isolated synthetic profiles,12 real receiving-group observations
+(four per variant). Saved pre-Look native profiles agree with ordinary state;
+successful post-Look production saving preserves them. Both views/keyboard
+closure/world focus/FOV/corners/HUD/span, actual group pixels and restoration
+pass. Portrait receiving coverage is blade run1; no bow/coppice portrait claim.
+No browser/runtime errors, unchanged runtime-source/page hashes.
+
+The original source/receiver/owner/capacity/duplicate/claim/choice/binding and
+restart journeys remain. These are accelerated native automation; no ordinary
+cadence/human fun/physical RTX/complete browser claim follows.
+
+Source05 atd3fdf05 failed the original Python600 deadline after147 passed
+commands. Node2144P0F2skip passed; Python362 completed (356 OK6skip), no footer
+or reported assertion failure. One unchanged synthetic-schema case profiled
+70.921s: setup69.994s dominated actual file open/close, assertion.024s.
+Repair3269 changes only2 tiny CPU schema temp-directory choices. They now
+honour existing --cpu-temp child settings; heavy/native data stays D. Windows
+output-specific negative errors, valid D path and actual C-source refusal
+remain, POSIX original portable refusals remain, no new skips or helper change.
+Two-file component47methods OK2skip1.301s; same profiled case.129s/body.027s;
+final actual Windows boundary method passes. Source-only peer review found
+no weakened boundary. Host conditions were uncontrolled; D-latency cause is
+unknown. The later complete pass does not erase Source05 or earlier failures.
+
+Native screenshots were inspected by parent and a read-only colleague:
+[desktop Diorama](../evidence/living-road-inspection-2026-10-12/fresh-blade-carrier-received-follow-1.png),
+[portrait Adventure](../evidence/living-road-inspection-2026-10-12/fresh-blade-carrier-received-portrait-adventure.png).
+Three billets/tray/supports are distinct and clear of the HUD. The small tag
+is not independently readable; portrait toast spacing is a composition concern,
+not established clipping. This source/image review is not human playtesting.
+
+Later host-only read at05:06:11Z:2077988KiB. Recording controller not invoked;
+no processes explicitly naming our Native01 profile paths remained, no process
+control action. The05:06:11Z snapshot measured192436546 logicalB in the arc;
+initial portable evidence before later hold metadata measured3316185B,
+zero new full-game copies/movies/cleanup, three isolated synthetic profiles.
+
+Ordinary recording is pending and has not launched. Post-native host read at
+05:02:34Z was5340196KiB, below6291456KiB. The reviewed one-take controller must
+bind these exact successful source/native receipts and freshly read sufficient
+memory after its preparation. No parallel run, lower threshold or VM action.
+
+Current3269 hosted run38347778428 has48 failed jobs/zero steps; checked billing
+lock annotation. No retry/billing change. Old hosted failures remain visible.
+Frontier check:2026-10-13 | sweep:daily-2026-10-12-frontier-sweep.md@6a1befdc4b2c138a5a74d032465875453ac34dae | index:527dc1ef575f1677813214b77fa7d9e62f23ca9e | lane:Firstlight | result:no gameplay delta; no other newly dated Oct12/13 report in current directory.
+
+World9/Adventure12/Expedition1/WildSigns1 unchanged, no migration/payout/cost/
+saved cargo/auto-fit/backfill/hauling; old keys/stored XP and all owners remain.
+Launch `PLAY_FIRSTLIGHT_WINDOWS.cmd`, or `python tools/play_local.py` and open
+`http://127.0.0.1:8780/`. Complete the Living Road patrol and claim beside Rill,
+then deliberately Look at the returned kit in the same live session. A saved
+paid ledger alone does not recreate private receiving proof. No Dom server
+started. Pending human/control/RTX/full-browser/ordinary forest gates remain.
+
+---
+
+Earlier evidence and failures retain their original epochs.
+
 # Returned-kit inspection: implemented, qualification pending
 
 Continuation review tightened the unexecuted native checks: retain the actual

@@ -1,3 +1,57 @@
+# Returned-kit inspection source and native qualified, 2026-10-13
+
+OPEN DRAFT [PR71](https://github.com/EternitiesAi/eternities-firstlight/pull/71),
+`gameplay/living-road-inspection-20261012`, stacked against PR70/base
+`e5492e5e27c830c93368bf158c6835959457c182`. Qualified source/test head:
+`3269dd308f44f2ea9dc47c68f72aefc5eac5e0a1`. Product remains95af8b67;
+3269 repairs two tiny CPU fixtures, with native guards and deadlines intact.
+
+Fresh complete Source06 passed all217 commands:145 syntax/145 rule files,
+Node2144 pass/0fail/2 original skips; Python478 methods OK/10 original skips
+in71.106s; all command-earned journeys and whole-draft caller passed.
+Targeted Native01 passed1424 checks/0fail, three variants,22 whole-Chromium
+restarts and12 receiving observations in both views; no runtime/browser errors.
+Both saved ordinary profiles and the actual paid kit survive the intended
+checks. Native portrait receiving scope is fresh-blade run1 only.
+
+Both pages remain identical3357566B, SHA
+`dbd5ad604e450264086af554fa74e4b8dd846bb4eb3d47f7de3ff56190a515f3`.
+World9/Adventure12/Expedition1/WildSigns1, keys/caps/XP and existing histories
+remain. No migration, payout/cost/cargo/hauling/auto-fit or legacy backfill.
+
+Source05 FAILED at the original Python600 deadline:362 completed methods,
+356 individual OK/6skips, no complete footer or reported assertion failure.
+An actual one-case profile isolated69.994s in tiny D-fixture setup, with a
+.024s assertion body. Two pure CPU fixtures now honour the existing CPU-temp
+child environment. Same case then passed.129s;47 component methods OK2skip.
+Host conditions were not controlled; underlying D I/O latency cause is unknown.
+No VM/Claude action or game-performance claim follows. Earlier failures and
+resource denials stay retained. Current hosted3269 run38347778428 has48 failed
+jobs/zero executed steps with checked account-billing-lock annotation.
+
+Later host-only read at05:06:11Z:2077988KiB. Recording controller not invoked;
+no processes explicitly naming our Native01 profile paths remained, no process
+control action. The05:06:11Z snapshot measured192436546 logicalB in the arc;
+initial portable evidence before later hold metadata measured3316185B,
+zero new full-game copies/movies/cleanup, three isolated synthetic profiles.
+
+No new ordinary-RAF recording yet: the post-native host observation5340196KiB
+is below6291456KiB. Do not launch or weaken that margin. Current screenshots
+are Low/reduced-motion native automation. Kit clears the HUD; the small tag
+is not independently legible, and portrait toast spacing remains a UX concern.
+No human play, full-browser, ordinary forest, controller or RTX qualification.
+
+VM/guest/Claude Code and unrelated workers/projects remain outside this task.
+Heavy evidence D; reuse ROOT/STATION, no new full-game copy or cleanup. Keep
+the blocked standalone-clone deletion blocked. No personal-save/profile,
+shared-install, paid-provider/billing, main merge or public deployment action.
+Goal ACTIVE unfinished; separate heartbeat PAUSED, no unattended promise.
+Read the current result for exact epochs, portable evidence and open gates.
+
+---
+
+Earlier checkpoints retain their original epochs.
+
 # Returned-kit inspection implemented; qualification pending, 2026-10-12
 
 Branch `gameplay/living-road-inspection-20261012`, stacked on PR70 at

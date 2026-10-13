@@ -1,0 +1,105 @@
+{
+  "qualificationHead": "3269dd308f44f2ea9dc47c68f72aefc5eac5e0a1",
+  "scope": "Complete current source and targeted software-WebGL Earth expedition; not complete browser/ordinary-RAF/GPU/controller/human qualification",
+  "source": {
+    "scope": "Complete current source; four Node file workers; original rules180/Python600; no native browser",
+    "command": [
+      "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+      "-B",
+      "tools/verify.py",
+      "--rule-workers",
+      "4",
+      "--output",
+      "D:/07-GAMES/Firstlight/artifacts/living-road-inspection-20261012/REMOTE_SOURCE06",
+      "--cpu-temp",
+      "C:/Users/Dom/AppData/Local/Temp"
+    ],
+    "requestedRuleWorkers": 4,
+    "sourceHead": "3269dd308f44f2ea9dc47c68f72aefc5eac5e0a1",
+    "headAfter": "3269dd308f44f2ea9dc47c68f72aefc5eac5e0a1",
+    "statusAfter": [],
+    "startedUtc": "2026-10-13T04:43:13.0636258Z",
+    "closedUtc": "2026-10-13T04:48:50.5909877Z",
+    "exitCode": 0,
+    "freeHostKiBBefore": 10347432,
+    "freeHostKiBAfter": 10111604,
+    "admission": {
+      "sha256": "0543bb94efd9feec46ea317c55d08a0a4a6953dd6c8cd9391429becbfa335918",
+      "path": "D:/07-GAMES/Firstlight/artifacts/living-road-inspection-20261012/SOURCE06_ADMISSION01.json"
+    },
+    "unitChildTemp": "C:/Users/Dom/AppData/Local/Temp",
+    "allOtherChildTemp": "D:/07-GAMES/Firstlight/cache/browser-temp",
+    "console": {
+      "path": "D:/07-GAMES/Firstlight/artifacts/living-road-inspection-20261012/REMOTE_SOURCE06_CONSOLE.log",
+      "bytes": 14393,
+      "sha256": "7b564b6267b190710e3a6d9364640e33de37bc00da6c541d9941cf7cbb4f8453"
+    },
+    "rulesCommand": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\living-road-inspection-20261012\\REMOTE_SOURCE06\\rules-command.json",
+      "bytes": 21601,
+      "sha256": "e2a2e96aa281c2bf615fb8e91c87c20d2db0a017197bcd01f812866cc617c7df"
+    }
+  },
+  "native": {
+    "sourceHead": "3269dd308f44f2ea9dc47c68f72aefc5eac5e0a1",
+    "headAfter": "3269dd308f44f2ea9dc47c68f72aefc5eac5e0a1",
+    "statusAfter": [],
+    "startedUtc": "2026-10-13T04:50:09.8998307Z",
+    "closedUtc": "2026-10-13T05:01:26.8951608Z",
+    "exitCode": 0,
+    "freeHostKiBBefore": 9593312,
+    "freeHostKiBAfter": 5761664,
+    "sourceGate": {
+      "sha256": "3056e1adb9a77c4203641c70a9287b086d9bdf48acd0d35c34d3610108f29e0b",
+      "path": "D:/07-GAMES/Firstlight/artifacts/living-road-inspection-20261012/REMOTE_SOURCE06_EXIT.json"
+    },
+    "reportPath": "D:/07-GAMES/Firstlight/artifacts/living-road-inspection-20261012/NATIVE01/REPORT.json",
+    "console": {
+      "bytes": 92919,
+      "path": "D:/07-GAMES/Firstlight/artifacts/living-road-inspection-20261012/NATIVE01_CONSOLE.log",
+      "sha256": "496cd988387b3e0cfc24bc3291e607ff494cf613221262d2820f55ab1623995a"
+    },
+    "scope": "Targeted software browser only; no full-browser/forest/ordinary/hardware/human claim"
+  },
+  "nativeCounts": {
+    "passed": 1424,
+    "failed": 0,
+    "wholeBrowserRestarts": 22,
+    "receivingObservations": 12
+  },
+  "ordinaryRecording": {
+    "status": "pending; no launch",
+    "lastHostFreeKiB": 5340196,
+    "minimumFreeKiB": 6291456,
+    "laterHostObservation": {
+      "utc": "2026-10-13T05:06:11.6671771Z",
+      "freeHostKiB": 2077988,
+      "controllerInvoked": false
+    }
+  },
+  "saveVersions": {
+    "world": 9,
+    "adventure": 12,
+    "expedition": 1,
+    "wildSigns": 1
+  },
+  "humanPlaytest": "not performed",
+  "visualLimits": [
+    "Small received tag not independently legible in these Low frames",
+    "Portrait toast is close beneath the front support; no demonstrated clipping",
+    "Receiving portrait native coverage is fresh-blade run1 only"
+  ],
+  "images": {
+    "fresh-blade-carrier-received-follow-1.png": "509ec1ed695e3953f66d61f07b9fd7adf7ca24aae6f65ff25bef6dac970f6429",
+    "fresh-blade-carrier-received-portrait-adventure.png": "6ff05dba79761445eb2c1c742645c20c3f60a5d1cec384542537a5c6225f444f"
+  },
+  "storage": {
+    "scopedArcLogicalBytes": 192436546,
+    "newFullCopies": 0,
+    "newMovies": 0,
+    "nativeProfiles": 3,
+    "portableEvidenceBytes": 3316185,
+    "cleanupActions": 0,
+    "measurementScope": "05:06:11Z snapshot; portable bytes measured before later hold metadata, not the current file-tree total"
+  }
+}
