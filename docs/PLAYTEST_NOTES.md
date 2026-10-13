@@ -1,3 +1,32 @@
+# Residents observed walking, settling and at home, 2026-10-13
+
+At exact remote890d409, Native04 passed168 checks: three residents in both requested
+views, ordinary RAF displacement and stride, hand-held props, settled/home anchors,
+pause/reduced motion, render-only state preservation and exact nonempty whole-
+browser cold save readback. Preparation, settled and home checks used labelled
+accelerated Core ticks; moving observations and the recording used ordinary RAF.
+Actual Settings, People, Follow and P controls were used, with no actor placement
+or item/reward injection. Screenshots bracket paused simulation/geometry; camera
+easing can continue and is recorded separately. All owned resources closed.
+
+A separate corrected Mara corridor witness passed28 checks and retained32 frame
+snapshots,26 in the repaired corridor, minimum distance4.327875m. Inspected pixels
+show her full figure beside the bench. CORRIDOR01 remains failed on an overstrict
+walking assumption at a legitimate Core waypoint and has aliased historical
+camera centers; CORRIDOR02 refused its second browser below the memory floor.
+CORRIDOR03 uses deep snapshots and accepts only verified canonical waypoint
+continuation, preserving every-frame visibility/unpaused/distance checks.
+
+The44-second,5,325,769-byte clip contains actual movement, UI and paused observation.
+It was trimmed without retiming and fully decoded1100 frames. Chrome155,1280x800,
+software WebGL2/Low: no RTX performance or human-playtest claim. Original negative
+evidence is retained. [Qualification](development/VILLAGE_RESIDENT_QUALIFICATION_2026-10-13.md).
+
+Dom's questions remain unanswered: are they recognizable, do strides/stops/props
+feel connected, and are both views comfortable? [Human route](playtests/VILLAGE_RESIDENTS_2026-10-13.md).
+
+---
+
 # Current helper review adds no human-playtest result, 2026-10-13
 
 The separate epoch05 branch passes34 focused CPU tests and preserves identical

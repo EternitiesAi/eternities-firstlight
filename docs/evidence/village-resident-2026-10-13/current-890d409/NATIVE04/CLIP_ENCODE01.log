@@ -1,0 +1,44 @@
+[libvpx @ 0000021387ff6a00] v1.14.1
+Input #0, matroska,webm, from 'D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/NATIVE04/video/10aa0bd6043be88d3aa31ac895855c18.webm':
+  Metadata:
+    ENCODER         : Lavf61.1.100
+  Duration: 00:01:07.24, start: 0.000000, bitrate: 990 kb/s
+  Stream #0:0: Video: vp8 (libvpx), yuv420p(tv, progressive), 1280x800, SAR 1:1 DAR 8:5, 25 fps, 25 tbr, 1k tbn
+      Metadata:
+        ENCODER         : Lavc61.3.100 libvpx
+        DURATION        : 00:01:07.240000000
+[libvpx @ 00000213897d2ac0] v1.14.1
+Stream mapping:
+  Stream #0:0 -> #0:0 (vp8 (libvpx) -> vp8 (libvpx))
+Press [q] to stop, [?] for help
+[libvpx @ 0000021387ff6fc0] v1.14.1
+Output #0, webm, to 'D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/NATIVE04/village-residents.webm':
+  Metadata:
+    encoder         : Lavf61.1.100
+  Stream #0:0: Video: vp8, yuv420p(tv, progressive), 1280x800 [SAR 1:1 DAR 8:5], q=2-31, 900 kb/s, 25 fps, 1k tbn
+      Metadata:
+        DURATION        : 00:01:07.240000000
+        encoder         : Lavc61.3.100 libvpx
+      Side data:
+        cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+frame=   79 fps=0.0 q=48.0 size=       0KiB time=00:00:03.16 bitrate=   1.2kbits/s speed=6.13x    
+frame=  127 fps=123 q=28.0 size=       0KiB time=00:00:05.40 bitrate=   0.7kbits/s speed=5.25x    
+frame=  127 fps= 82 q=28.0 size=       0KiB time=00:00:05.40 bitrate=   0.7kbits/s speed= 3.5x    
+frame=  127 fps= 62 q=28.0 size=       0KiB time=00:00:05.40 bitrate=   0.7kbits/s speed=2.64x    
+frame=  195 fps= 77 q=29.0 size=     512KiB time=00:00:07.80 bitrate= 537.7kbits/s speed=3.06x    
+frame=  255 fps= 84 q=26.0 size=     512KiB time=00:00:10.52 bitrate= 398.7kbits/s speed=3.45x    
+frame=  255 fps= 72 q=26.0 size=     512KiB time=00:00:10.52 bitrate= 398.7kbits/s speed=2.96x    
+frame=  335 fps= 83 q=37.0 size=    1024KiB time=00:00:13.40 bitrate= 626.0kbits/s speed= 3.3x    
+frame=  383 fps= 84 q=29.0 size=    1024KiB time=00:00:15.64 bitrate= 536.4kbits/s speed=3.43x    
+frame=  455 fps= 90 q=41.0 size=    1792KiB time=00:00:18.20 bitrate= 806.6kbits/s speed= 3.6x    
+frame=  509 fps= 92 q=44.0 size=    1792KiB time=00:00:20.68 bitrate= 709.9kbits/s speed=3.72x    
+frame=  591 fps= 98 q=29.0 size=    2560KiB time=00:00:23.64 bitrate= 887.1kbits/s speed= 3.9x    
+frame=  669 fps=102 q=31.0 size=    3072KiB time=00:00:26.76 bitrate= 940.4kbits/s speed=4.08x    
+frame=  764 fps=108 q=31.0 size=    3072KiB time=00:00:30.56 bitrate= 823.5kbits/s speed=4.32x    
+frame=  827 fps=109 q=22.0 size=    3584KiB time=00:00:33.08 bitrate= 887.5kbits/s speed=4.36x    
+frame=  920 fps=114 q=38.0 size=    4096KiB time=00:00:36.80 bitrate= 911.8kbits/s speed=4.55x    
+frame= 1011 fps=118 q=18.0 size=    4096KiB time=00:00:40.44 bitrate= 829.7kbits/s speed=4.71x    
+frame= 1023 fps=112 q=15.0 size=    4096KiB time=00:00:41.24 bitrate= 813.6kbits/s speed=4.53x    
+frame= 1071 fps=112 q=36.0 size=    4864KiB time=00:00:42.84 bitrate= 930.1kbits/s speed=4.46x    
+[out#0/webm @ 0000021389896e00] video:5193KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.160346%
+frame= 1100 fps=108 q=37.0 Lsize=    5201KiB time=00:00:44.00 bitrate= 968.3kbits/s speed=4.32x    

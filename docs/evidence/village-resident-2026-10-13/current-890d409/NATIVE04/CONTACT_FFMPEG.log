@@ -1,0 +1,15 @@
+[libvpx @ 000001b928e5e080] v1.14.1
+Input #0, matroska,webm, from 'D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/NATIVE04/video/10aa0bd6043be88d3aa31ac895855c18.webm':
+  Metadata:
+    ENCODER         : Lavf61.1.100
+  Duration: 00:01:07.24, start: 0.000000, bitrate: 990 kb/s
+  Stream #0:0: Video: vp8 (libvpx), yuv420p(tv, progressive), 1280x800, SAR 1:1 DAR 8:5, 25 fps, 25 tbr, 1k tbn
+      Metadata:
+        ENCODER         : Lavc61.3.100 libvpx
+        DURATION        : 00:01:07.240000000
+[AVFilterGraph @ 000001b929063bc0] No option name near '1/6'
+[AVFilterGraph @ 000001b929063bc0] Error parsing a filter description around: ,scale=320:-1,tile=4x3
+[AVFilterGraph @ 000001b929063bc0] Error parsing filterchain 'fps=1/6,scale=320:-1,tile=4x3' around: ,scale=320:-1,tile=4x3
+[vost#0:0/png @ 000001b92b15a840] Error initializing a simple filtergraph
+Error opening output file D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/NATIVE04/CONTACT.png.
+Error opening output files: Invalid argument

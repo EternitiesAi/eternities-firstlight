@@ -1,3 +1,25 @@
+# Preserve real waypoint transitions and exact evidence epochs, 2026-10-13
+
+Core.advance may shift an already-reached tiny path segment and legitimately
+return walking:false for one frame. Do not require perpetual walking as a camera
+test proxy. Permit that frame only at a canonical Core path waypoint with remaining
+path and actual next-frame time and forward movement; retain every observed
+corridor frame's visibility, unpaused mode and >=3.4m camera distance, plus actual
+overall displacement/stride. Do not modify runtime navigation to satisfy a harness.
+
+Snapshot mutable camera arrays when buffering RAF evidence. Keep prior shallow
+center traces labelled; their copied scalar distances remain usable but centers
+cannot be claimed as exact historical per-frame operands. Paused screenshot
+brackets and ordinary unpaused movement answer different questions.
+
+Publish bounded evidence: one44-second clip, selected pixels, byte-exact gzip
+reports and a small top-level log ZIP. Keep raw recordings and synthetic profiles
+local, without new full-game copies. Fresh remote fetch and hash readback into
+the reused station are not a newly created clone. Resident runtime qualification
+at890d409 does not qualify later helper-tooling/full-browser work automatically.
+
+---
+
 # Review source changes as a new expectation epoch, 2026-10-13
 
 When reviewed helper semantics change, create an explicit new expectation file.

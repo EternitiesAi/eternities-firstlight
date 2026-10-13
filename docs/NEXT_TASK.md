@@ -1,3 +1,32 @@
+# Next: the complete current browser chain, 2026-10-13
+
+Resident Source04, Native04 and the additional Mara corridor witness are complete
+at clean remote890d409. See the [qualification record](development/VILLAGE_RESIDENT_QUALIFICATION_2026-10-13.md)
+for exact counts and negative attempts; do not rerun those unchanged checks.
+PR77's helper-tooling source is a66756433601fbac90521ce9dbb37e9727e94957; subsequent
+delivery commits only add records/evidence. It has34 focused passes, not full
+source or browser qualification. ROOT is verification/road-account-current-epoch-20261013.
+
+1. Fetch and inspect current ownership, branch and reviews. Reuse STATION from
+   its clean890d409 resident checkpoint; no new full clone. Confirm target HEAD,
+   build identical HTML, and run complete source at the current review head.
+   Preserve four workers and180s/600s deadlines; admit only above6291456KiB.
+2. Qualify the complete current --browser chain using reviewed epoch05. Current
+   primary/boundary native outputs must precede road-account; historical inputs
+   cannot substitute. Each browser needs fresh RAM admission after driver start,
+   isolated owned state, actual persistence/error/closure checks. Do not weaken
+   source pins or native guards to obtain a pass. Preserve the first new failure.
+3. Repair an actual product or harness defect within scope, then repeat only
+   affected checks and required gates. Keep the human village route pending;
+   automated passes supply no human answers. Resume the production roadmap after
+   this broader regression gate, not another disconnected realm.
+
+No VM/Claude/personal-profile access, unrelated shutdown, new full copy, cleanup,
+blocked-deletion retry, paid work, billing change, merge/deploy or heartbeat resume.
+Goal ACTIVE; production unfinished. There are no running workers at checkpoint.
+
+---
+
 # Next: finish native residents, then qualify the current helper epoch, 2026-10-13
 
 ROOT is verification/road-account-current-epoch-20261013, a separate tooling

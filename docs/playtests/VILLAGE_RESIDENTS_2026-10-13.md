@@ -1,6 +1,7 @@
 # A morning with Ilan, Mara and Oren
 
-Human acceptance is pending. The latest visual recapture is also pending; see
+Human acceptance is pending. Current automated source, both-view native recapture
+and the focused Mara commons corridor now pass at remote890d409; see
 the [qualification record](../development/VILLAGE_RESIDENT_QUALIFICATION_2026-10-13.md).
 
 Launch the current checked build with `PLAY_FIRSTLIGHT_WINDOWS.cmd` or

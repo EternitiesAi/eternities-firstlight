@@ -1,3 +1,31 @@
+# Residents qualified in both views; current broad browser gate next, 2026-10-13
+
+ROOT remains verification/road-account-current-epoch-20261013 / PR77. Reused
+STATION and PR76 remain clean at890d409c3f1610aad923d7b30d00384425230152.
+New receipts supersede the pending Source04/Native04 wording in older sections:
+complete Source04 passed224 commands (Node2257/0fail/2skip; Python490 run/8skip),
+Native04 passed168 checks, and Mara's precise repaired commons corridor passed
+28 additional checks. Both requested cameras, exact cold production save readback,
+ordinary RAF movement and owned resource closure were checked. Source/runtime
+boundaries, retained failed attempts and44-second clip are in
+docs/development/VILLAGE_RESIDENT_QUALIFICATION_2026-10-13.md.
+
+These qualify resident runtime d8d07ad on remote checkpoint890d409, not the full
+source/browser suite at PR77's later helper-tooling head a667564. PR77 has34
+focused local and remote CPU passes. Its native driver/guards remain unchanged.
+Next: exact current source then complete --browser chain, using reviewed epoch05,
+current admitted inputs and reused STATION. Check live ownership and RAM first;
+four Node file workers/Node180/Python600; >=6291456KiB before full source and every
+browser after driver startup. No worker remains active at this checkpoint.
+
+World9/Adventure12 unchanged; human/GPU/production acceptance still open. Hosted
+run38473931523 could not start: GitHub account billing lock. No billing actions.
+Keep the VM, Claude Code, personal saves/profiles and unrelated workers excluded.
+Reuse D checkouts; no new full copies, cleanup, blocked deletion retry, paid work,
+main merge, public deploy or heartbeat resume. Goal ACTIVE; heartbeat PAUSED.
+
+---
+
 # Separate current-helper verification branch, 2026-10-13
 
 ROOT now carries verification/road-account-current-epoch-20261013, based on

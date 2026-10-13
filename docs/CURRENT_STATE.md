@@ -1,3 +1,27 @@
+# Ilan, Mara and Oren now move with their carried tools, 2026-10-13
+
+The familiar three residents use articulated walking and settling in their
+existing village routes and interiors. Instrument, notebook and folding rule
+follow the hands. The commons seats now fit their existing navigation footprint,
+fixing the reproduced Mara follow-camera close-up without changing old save rules.
+
+Clean remote resident checkpoint890d409c3f1610aad923d7b30d00384425230152 now passes
+the complete224-command source gate:2257 Node passed/0failed/2skipped; Python490
+run/8skipped/no failures; both ten-chapter variants and five earned Briar cases.
+Native04 passed168 checks in both requested camera modes. A separate precise
+commons witness passed28 checks with32 ordinary RAF samples,26 in the corridor,
+minimum camera distance4.327875m. Actual screenshots inspected; a decoded44-second
+gameplay clip is retained. [Evidence and limits](development/VILLAGE_RESIDENT_QUALIFICATION_2026-10-13.md).
+
+World9/Adventure12 remain unchanged. Current ROOT is PR77's separate helper-tooling
+branch; its34 focused checks pass locally and after fresh remote fetch. Complete
+source/browser at that later head remains pending, distinct from resident proof.
+Hosted CI is blocked before start by GitHub account billing. Human recognition,
+motion comfort, actual RTX performance and production completion remain open.
+No new game clone, personal-save access, VM/Claude work, merge or deployment.
+
+---
+
 # Browser verification now selects explicitly reviewed current helpers, 2026-10-13
 
 The separate verification/road-account-current-epoch-20261013 branch selects

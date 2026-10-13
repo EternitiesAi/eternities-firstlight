@@ -1,0 +1,16 @@
+PASS exact source page
+PASS software WebGL2
+PASS ordinary home exit
+PASS accepted Core route returned family home
+PASS accepted preparation before corridor
+PASS production save
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\artifacts\village-resident-articulation-20261013\qualify_corridor02.py", line 93, in main
+    launch(False);check('exact whole-browser cold readback',ev('()=>window.__corridorCold')==store);pause(True)
+    ~~~~~~^^^^^^^
+  File "D:\07-GAMES\Firstlight\artifacts\village-resident-articulation-20261013\qualify_corridor02.py", line 34, in launch
+    pw=sync_playwright().start();closed['driver']=False;report['admissions'].append(N.admission());closed['browser']=False
+                                                                                    ~~~~~~~~~~~^^
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tools\briar_outing_browser.py", line 242, in admission
+    raise ValueError(f'Host memory admission refused: {free}KiB < {MIN_FREE_KIB}KiB; no VM/unrelated action')
+ValueError: Host memory admission refused: 6263180KiB < 6291456KiB; no VM/unrelated action
