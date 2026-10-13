@@ -1,3 +1,28 @@
+# Next: qualify the implemented camera, then animate inhabited moments, 2026-10-13
+
+Continue gameplay/building-camera-clearance-20261013 after fetching current work.
+Read [its qualification record](development/BUILDING_CAMERA_QUALIFICATION_2026-10-13.md).
+The camera implementation and53 focused checks are delivered; its full source
+retry and final native qualification are resource-deferred, not passed.
+
+1. With fresh host free RAM >=6291456KiB, run prepared Source03 against the exact
+   clean fetched head in reused STATION. Preserve original timeouts/four workers.
+2. Re-run the updated native camera caller and command-earned Briar doorstep rest
+   on that successful source epoch. Inspect actual unframed player/fox visibility,
+   movement/orbit, tour exit, both views and saved framing. Camera01 is earlier
+   evidence, not final runtime qualification. Keep source/native failures visible.
+3. Current full --browser, cutaway/reflection, human comfort and real-GPU gates
+   remain open. Respect resource admission; never stop the VM or Claude to proceed.
+4. Once qualified, refine character/companion animation with the existing rig.
+   Fishing still uses a rod holder; hand casting/reeling and audio are not delivered.
+   Keep the finite realm draft's inhabited places the priority over more breadth.
+
+Use the existing fresh/returning pier-and-companion playtest. No human answers
+have arrived. Do not resume the separate PAUSED heartbeat, imply unattended work,
+merge/deploy, create another full-game copy or retry the blocked deletion.
+
+---
+
 # Next: readable character moments, 2026-10-13
 
 Continue from gameplay/companion-presence-20261013 after fetching current work.

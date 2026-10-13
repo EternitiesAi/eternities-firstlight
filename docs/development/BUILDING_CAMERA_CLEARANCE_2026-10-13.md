@@ -13,8 +13,9 @@ and do not clear its closest supported strip, so this is not the selected fix.
 Use a transient nearest clear orbit when the desired boom would become unreadable.
 Retain a clear side through small movements and restore the requested orbit when
 there is enough clearance. Every interpolated angle must be swept again. A fully
-enclosed focus keeps the conservative collision fallback; never force distance
-through a wall. The actual perspective movement basis follows the displayed yaw.
+enclosed focus keeps the inherited 0.45m minimum-distance fallback; this does not
+establish nonpenetration when the focus already lies inside a solid. The actual
+perspective movement basis follows the displayed yaw.
 The first deliberate drag starts from that displayed yaw. Automatic correction
 does not rewrite saved yaw, elevation, distance, FOV or game state.
 

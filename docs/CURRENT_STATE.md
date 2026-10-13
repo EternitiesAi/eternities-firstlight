@@ -1,3 +1,25 @@
+# A readable approach to home, 2026-10-13
+
+The third-person camera now seeks a clear side when a building would squeeze it
+into the player's face, then restores the preferred orbit in open space. Movement
+follows the displayed view and deliberate orbit starts there. Both camera styles,
+saved framing and all gameplay/save owners remain. This addresses the next defect
+found in the prior pier/Briar pictures; it adds no new realm or economy.
+
+Runtime2e90c69 plus test repair11e40c0 are pushed on
+gameplay/building-camera-clearance-20261013, stacked on PR73. Focused final CPU
+checks pass53. Earlier native Camera01 passes56 and visibly shows the whole
+character at the doorway, but predates the last two transition corrections.
+Complete Source01 failed2 host checks (repaired in focused tests); final complete
+verification and unframed Briar native readback remain pending host6GiB admission.
+No complete final gate or human camera-comfort result is claimed.
+
+See [exact evidence and remaining checks](development/BUILDING_CAMERA_QUALIFICATION_2026-10-13.md).
+Reuse the integrated launcher and qualification checkout. VM/Claude work and
+personal saves were untouched. No new full-game copy/video or public deployment.
+
+---
+
 # A line on the water, 2026-10-13
 
 The full integrated browser game now includes an optional lantern-pier fishing

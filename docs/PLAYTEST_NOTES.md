@@ -1,3 +1,24 @@
+# Building-camera observations, 2026-10-13
+
+Initial native Camera01 now shows the entire character and shared-house facade
+at the doorway in third person; the previous face-filling view is reproduced
+and corrected by the real geometry/production-App regression. The native caller
+passes56 checks. Its screenshot is from an earlier build in this same milestone,
+before tour-exit and intermediate-orbit fixes. Final focused CPU tests pass53.
+No fresh final Briar-rest picture or human-comfort conclusion exists yet.
+
+The intended next play is an ordinary approach along the shared-house wall,
+without a curated Look/orbit, followed by deliberate dragging and walking back
+into the open. Try both cameras and a remembered rest with Briar. Can you see
+both characters? Does the automatic turn feel comfortable or surprising? Does
+movement still follow the direction you expect? These questions remain unanswered.
+
+Final native checks are deferred by host memory; source failures and the exact
+earlier/final HTML identities are in [the qualification record](development/BUILDING_CAMERA_QUALIFICATION_2026-10-13.md).
+No new movie was recorded; retain the prior short pier clip and bounded new images.
+
+---
+
 # Lantern pier and companion observations, 2026-10-13
 
 Automated native fishing passed44 checks: a fresh character without expedition

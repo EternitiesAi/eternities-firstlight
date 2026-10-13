@@ -1,3 +1,25 @@
+# Transient wall clearance preserves deliberate framing, 2026-10-13
+
+Use a nearest clear orbit to preserve a readable third-person character near
+buildings. Raising pitch alone needs nearly80 degrees at the doorway and still
+fails at its closest supported strip; it is not the selected approach. Retain
+side hysteresis and re-sweep eased angles. If an intervening arc is cramped,
+take the clear endpoint immediately instead of allowing a one-frame close-up.
+
+Displayed yaw owns perspective movement conversion and the start of deliberate
+drag. Requested yaw remains the saved preference. Orthographic/tour transitions
+synchronize transient heading. Reduced motion resolves immediately. The existing
+enclosed-focus0.45m clamp remains a limit, not proof of clearance inside solids.
+No new save field, collision-envelope change, reward or campaign consequence.
+
+Source review and focused regression support these decisions; final complete
+source/native qualification remains pending. Do not trade away the6GiB host
+admission rule, VM/Claude isolation or original assertions to obtain a pass.
+Human comfort of automatic orientation changes still needs real play.
+See [implementation evidence](development/BUILDING_CAMERA_QUALIFICATION_2026-10-13.md).
+
+---
+
 # Ordinary Earth life without a new economy, 2026-10-13
 
 The founder Earth charter informs a bounded catch-and-release activity at the

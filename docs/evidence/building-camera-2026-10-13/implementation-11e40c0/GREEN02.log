@@ -1,0 +1,28 @@
+✔ actual App resolves the house camera without rewriting orbit preference or any world state (9.6554ms)
+✔ every eased camera frame is rechecked against the actual wall, including return to the requested orbit (3.8524ms)
+✔ supported doorstep and near-wall edge keep a readable, collision-safe perspective distance (0.6869ms)
+✔ an unobstructed requested view remains exact and returns after leaving the wall (0.4893ms)
+✔ retains the current clear side under small doorway movements instead of alternating orbit sides (0.2476ms)
+✔ no safe orbit never forces the eye through enclosed solids or claims readable clearance (0.1997ms)
+✔ opted-in dynamic walls take part in the same camera correction (0.3412ms)
+✔ per-view preferences roundtrip without changing progression or creative content (5.1029ms)
+✔ old camera preferences acquire empty view memory and keep their selected mode (0.6788ms)
+✔ invalid optional view profiles cannot inject nonfinite camera state or discard valid peers (0.6181ms)
+✔ unknown view-memory versions fall back while keeping ordinary settings and saves (0.4826ms)
+✔ perspective has depth and the requested vertical field of view (0.5445ms)
+✔ production picking inverts ground projection across orbit, FOV and aspect (1.9757ms)
+✔ perspective sky and behind-camera points never become movement destinations (0.1426ms)
+✔ obstruction sweep pulls in before a wall, ignores a clear ray and handles a grazing near plane (0.1976ms)
+✔ perspective water reflection retains contact UV and actual world mirror (0.1448ms)
+✔ presentation preferences roundtrip without modifying old progression or creative state (7.4968ms)
+✔ clearance bounds preserve rotated wall extents and explicitly exclude foliage and low ground (0.2746ms)
+✔ clearance sees opted-in dynamic construction and keeps actor batches out (0.1338ms)
+✔ explicit realm walls keep camera clearance below the legacy floor cutoff (0.2212ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 108.4303

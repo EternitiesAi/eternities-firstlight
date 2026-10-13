@@ -1,0 +1,60 @@
+✔ actual App resolves the house camera without rewriting orbit preference or any world state (18.9274ms)
+✔ every eased camera frame is rechecked against the actual wall, including return to the requested orbit (7.6454ms)
+✔ reduced motion resolves immediately and camera-relative controls use only the displayed perspective heading (3.6467ms)
+✔ first real pointer drag begins at the visible corrected orbit and keeps subsequent deltas intentional (0.9557ms)
+✖ leaving an actual tour keeps the displayed heading for movement and drag, not a stale perspective correction (6.6285ms)
+✖ clear endpoints around a side wall do not allow a one-frame close-up on the intervening orbit arc (2.0037ms)
+✔ supported doorstep and near-wall edge keep a readable, collision-safe perspective distance (0.8939ms)
+✔ an unobstructed requested view remains exact and returns after leaving the wall (0.4403ms)
+✔ retains the current clear side under small doorway movements instead of alternating orbit sides (0.5085ms)
+✔ no safe orbit never forces the eye through enclosed solids or claims readable clearance (0.8155ms)
+✔ opted-in dynamic walls take part in the same camera correction (0.3994ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 9
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 180.4542
+
+✖ failing tests:
+
+test at tests\camera-clearance.test.cjs:58:1
+✖ leaving an actual tour keeps the displayed heading for movement and drag, not a stale perspective correction (6.6285ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(Math.abs(Math.atan2(Math.sin(f.heading()-shown),Math.cos(f.heading()-shown)))<1e-9)
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\camera-clearance.test.cjs:62:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\camera-clearance.test.cjs:64:1
+✖ clear endpoints around a side wall do not allow a one-frame close-up on the intervening orbit arc (2.0037ms)
+  AssertionError [ERR_ASSERTION]: readable endpoint must avoid collapsed intermediate frame 3
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\camera-clearance.test.cjs:68:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

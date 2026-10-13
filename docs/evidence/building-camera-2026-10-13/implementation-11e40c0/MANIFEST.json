@@ -1,0 +1,170 @@
+{
+  "schema": 1,
+  "baseHead": "cf636d211b765aaa59767099d22616fd1faef714",
+  "runtimeHead": "2e90c69eff69093fe0be6ad6127d4b3a8f1b12f0",
+  "finalTestHead": "11e40c065eadd312a42fb52e04098ba193c956ac",
+  "finalHtmlSha256": "463c84437b91a347958169837cc1e0a7da331257f21a610b29b26bc589566da1",
+  "earlierNativeHtmlSha256": "c5fdbba9d3431c5408e4197fcfc79f36065cb7bfc41454dd93a5fe13ca784b89",
+  "completeFinalGatePassed": false,
+  "finalNativePassed": false,
+  "scope": "Final focused CPU pass; earlier native camera pass; preserved failures/refusals; Source03 and Briar callers prepared but not executed.",
+  "fileCount": 31,
+  "totalBytes": 1843627,
+  "files": [
+    {
+      "path": "PROBE01.log",
+      "bytes": 1660,
+      "sha256": "66139104939456b450b86f52987b2b6dd6ea351c9a09b16c34c1eb81c8bc0912"
+    },
+    {
+      "path": "probe.cjs",
+      "bytes": 966,
+      "sha256": "4c3b11f8276e53a3cd5f5f2f96058f110458b0ac7efc7c1e3761e451e0541ba0"
+    },
+    {
+      "path": "RED01.log",
+      "bytes": 4849,
+      "sha256": "b115d5f7108ff2f6091c2d586b1ce9b1ed24fda9043e5362b9d57b29e5737f99"
+    },
+    {
+      "path": "RED02.log",
+      "bytes": 6948,
+      "sha256": "964228b83670df1c11cd1180fb17b2ff680d0c73b066f83c657362cc4ff4efd5"
+    },
+    {
+      "path": "GREEN01.log",
+      "bytes": 3103,
+      "sha256": "b4cf718270cde23ad347573ea5e9f36c252292423de93d54be860a889780d959"
+    },
+    {
+      "path": "GREEN02.log",
+      "bytes": 2091,
+      "sha256": "245f04f2b516d37af46ad6e275c5a1e79dad2ab4b37ff97628656603910fe550"
+    },
+    {
+      "path": "FOCUSED01.log",
+      "bytes": 4213,
+      "sha256": "2fb5cb737070cdbf33ea4a55f4e07f00fe6fa550a3ac4bd81644449c82dab54e"
+    },
+    {
+      "path": "TOUR_RED01.log",
+      "bytes": 2282,
+      "sha256": "77162fce4117354e8b46a8801da39360b335f6903400bbfa773c0bcad710f397"
+    },
+    {
+      "path": "ARC_RED01.log",
+      "bytes": 3345,
+      "sha256": "0139c47104ec563d56dd06e829fc7056a5ab000482aeb4770fee33ef124dd84b"
+    },
+    {
+      "path": "TRANSITIONS_GREEN01.log",
+      "bytes": 1326,
+      "sha256": "8e4053bc6ee59c1a436de838375af11ecbcea3a92536d8269cfde411fc4f894e"
+    },
+    {
+      "path": "HOST_GREEN01.log",
+      "bytes": 2648,
+      "sha256": "88cf2ce93732571a044202fe5c2f504fd92069a2acf1a052fe0cc3e25ac48d44"
+    },
+    {
+      "path": "FOCUSED_FINAL01.log",
+      "bytes": 5776,
+      "sha256": "09f8b5cae32d62ed35452d566f65741abbca84d9eed079520735160e7c9a3dc4"
+    },
+    {
+      "path": "FOCUSED_FINAL01.json",
+      "bytes": 662,
+      "sha256": "a19cdae7f5d00ad6824ef766d5fb85674e22732b776ff52b581c415b22701ce2"
+    },
+    {
+      "path": "CAMERA01_ADMISSION.json",
+      "bytes": 133,
+      "sha256": "13d00044b6de2d23b335ed5093b9022efb6e171142d662d1cfcdd10eb2ae913a"
+    },
+    {
+      "path": "CAMERA01_CONSOLE.log",
+      "bytes": 3081,
+      "sha256": "85d49e5fd7515f1fa2fc9d9a1cf46a6ac6b6c801b2b800dd32c12a737736a782"
+    },
+    {
+      "path": "CAMERA01/REPORT.json",
+      "bytes": 11463,
+      "sha256": "15032d5c7f08ae28dff2889341c532867940ce7bbebae1f0d165feb34997c29e"
+    },
+    {
+      "path": "CAMERA01/DOORSTEP_CLEARANCE.png",
+      "bytes": 642366,
+      "sha256": "6fd672d82ca360bb197468ef0796725f39041bf9a45fb391113983f39a1a2b69"
+    },
+    {
+      "path": "CAMERA01/HOME.png",
+      "bytes": 322536,
+      "sha256": "9b36c0d87a8091e297483b916b2f029b6df77235f4dcd5fa0711b9461648d73a"
+    },
+    {
+      "path": "CAMERA01/NARROW.png",
+      "bytes": 217463,
+      "sha256": "b182d3eb8abc54da4a7fe953cb5a679fcede8e17e366b595bec0ae331a9bf0fd"
+    },
+    {
+      "path": "SOURCE01_ADMISSION01.json",
+      "bytes": 696,
+      "sha256": "01f3ae463182d774bd22e16784ada77abd5a717554b0f6f93944ac48e4b19fe5"
+    },
+    {
+      "path": "REMOTE_SOURCE01_EXIT.json",
+      "bytes": 1590,
+      "sha256": "4c223620c9dd93e2bc0f1f1e105a65a31dbcb177cc22a7c8119deb4228df2594"
+    },
+    {
+      "path": "REMOTE_SOURCE01_CONSOLE.log",
+      "bytes": 16374,
+      "sha256": "f1a999acac5fe2b9366ca5513968fba2ae56996624dc03f1bca79ca3b01c37ed"
+    },
+    {
+      "path": "REMOTE_SOURCE01/build.log",
+      "bytes": 91,
+      "sha256": "8e7a574fe9eb55ea2f7bfb03d23712f896e880febdf24dcf55c62bd1b9fdec8c"
+    },
+    {
+      "path": "REMOTE_SOURCE01/rules-command.json",
+      "bytes": 23488,
+      "sha256": "d69293508e7c2037d442c1bce80444d5cb2c0a9681b8e8f3b43e4e56581b658f"
+    },
+    {
+      "path": "REMOTE_SOURCE01/rules.log",
+      "bytes": 546071,
+      "sha256": "348189f51a709a4bc5c9e4af4c965001a6bed5ca883efd31bbecbe80afc52ce5"
+    },
+    {
+      "path": "SOURCE02_PREFLIGHT01.json",
+      "bytes": 442,
+      "sha256": "0544da61eb3f22cdbf184c0c971c22a8c6581055e8ed6b38ae0e6571f8427ad9"
+    },
+    {
+      "path": "SOURCE02_ADMISSION01.json",
+      "bytes": 697,
+      "sha256": "6cd6331b6ae37b514b76c3b94c26551ca98eac31e06d4c7bebf69cf555547d95"
+    },
+    {
+      "path": "RUN_REMOTE_SOURCE01.ps1",
+      "bytes": 3639,
+      "sha256": "8a7b36183a5265c3bc10bf61df2d75b4daf65d277203026f29fd03cdb0b64692"
+    },
+    {
+      "path": "RUN_REMOTE_SOURCE02.ps1",
+      "bytes": 3641,
+      "sha256": "687df9a7d3d863b2451ed4bdfaec8c047adcd840e778ac033426707cb45193ad"
+    },
+    {
+      "path": "RUN_REMOTE_SOURCE03.ps1",
+      "bytes": 3641,
+      "sha256": "84334c238c5d055a8fc7039c8f083c43ad0f83ce737d97b79f2e4fbf6a0f90a4"
+    },
+    {
+      "path": "qualify_briar01.py",
+      "bytes": 6346,
+      "sha256": "b48e64e884d47b2e38e622d0946184984b7bd426b5ebbd04a4ef0753aa26fd46"
+    }
+  ]
+}
