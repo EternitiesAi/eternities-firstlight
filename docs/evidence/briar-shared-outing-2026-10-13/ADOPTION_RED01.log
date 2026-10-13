@@ -1,0 +1,49 @@
+✔ defined outing points and whole routes are actually supported (39.6295ms)
+✔ acceptance creates only an intent and refuses injected terms or repeated starts (4.1612ms)
+✔ actual outbound/carry/return and explicit save produce one useful shared fact (61.0875ms)
+✔ refused turn-in is unchanged and retryable; cold completed load cannot duplicate (22.3615ms)
+✔ rest requires the returned cloth and actual arrival before remembering (169.0626ms)
+✔ revisiting the recorded doorstep rests again without suggesting or writing a second moment (101.3474ms)
+✔ Follow, Stay, travel, death, lease changes and forged displacement cancel unfinished intent (13.5078ms)
+✔ reload and copied actor diagnostics never establish a physical return (2.8864ms)
+✔ a successful outgoing save is never adopted into a replacement character (63.779ms)
+✖ a known saved moment with a changed same-simulation owner blocks older local snapshots until readback (51.0933ms)
+✔ an asynchronous or uncertain saver cannot trigger blind replay (58.414ms)
+✔ uncertain resting save preserves the real settled pose and cannot invent a carried cloth (119.1551ms)
+✔ uncertain saves stay quarantined through cancellation, Follow and scene changes (15.7692ms)
+✔ a post-write throw is unknown until saved-state readback, never a retryable refusal (40.1033ms)
+✔ actual carrying adds a restrained cloth attached to the same articulated mouth frame (7.2605ms)
+✔ the settled bonded rig is visibly lower, complete and supported (58.1752ms)
+✔ unbonded and default rigs cannot fabricate an outing pose (1.0963ms)
+✔ the actual shallow bowl has a supported inset and contained rim above the doorstep ground (145.291ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 17
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2123.5703
+
+✖ failing tests:
+
+test at tests\briar_outing.test.cjs:93:1
+✖ a known saved moment with a changed same-simulation owner blocks older local snapshots until readback (51.0933ms)
+  AssertionError [ERR_ASSERTION]: state
+  
+  true !== false
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\briar_outing.test.cjs:97:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

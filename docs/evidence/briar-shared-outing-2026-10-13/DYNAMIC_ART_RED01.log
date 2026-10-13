@@ -1,0 +1,27 @@
+✔ actual carrying adds a restrained cloth attached to the same articulated mouth frame (6.8376ms)
+✔ the settled bonded rig is visibly lower, complete and supported (22.5965ms)
+✔ unbonded and default rigs cannot fabricate an outing pose (1.2722ms)
+✖ the actual shallow bowl has a supported inset and contained rim above the doorstep ground (54.9153ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 251.8561
+
+✖ failing tests:
+
+test at tests\briar_outing_art.test.cjs:26:1
+✖ the actual shallow bowl has a supported inset and contained rim above the doorstep ground (54.9153ms)
+  TypeError: Cannot read properties of undefined (reading 'push')
+      at add (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\adventure-art.js:26:51)
+      at Object.draw (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\adventure-art.js:91:76)
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\briar_outing_art.test.cjs:31:109)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)

@@ -1,5 +1,31 @@
 # Briar's shared outing: implementation checkpoint
 
+Pushed implementation head `dbc5874593afe2d18b06ab17817f4beae9d653d3` is
+open draft [PR72](https://github.com/EternitiesAi/eternities-firstlight/pull/72),
+stacked against PR71. The later checkpoint commit adds records/evidence only.
+Both pages are identical 3378270B, SHA
+`13d793eec31077faa15ecdd2f3a3aca07dfb55b8e6d64a0a1460c17a162599e0`.
+Fresh canonical fetch/rebuild in the reused independent qualification clone
+matched all169 runtime files, all44 implementation-changed files and all four
+HTML copies. This is a reused clone, not a newly created full-game copy.
+
+At that exact committed head, the remote targeted suite passed124 Node tests,
+0 failures/0 skips; the committed-epoch Python preparation passed8 methods.
+Two new early rescue continuations each completed the outing through actual
+App/Store over445 supported tick segments and two writes. These are current
+accelerated CPU/memory receipts. Their frozen input maps, raw logs and selected
+worlds are in `docs/evidence/briar-shared-outing-2026-10-13`.
+
+Full remote Source04/05 were **not launched**: their fresh host-only readings
+were4027000/3626772KiB, below6291456. The second observation was
+2026-10-13T07:37:24.2076758Z. VM/Claude Code were untouched. Full final source,
+current returning whole-cohort, native persistence/pixels and new ordinary
+footage remain pending; this checkpoint does not declare the arc fully qualified.
+
+---
+
+Earlier implementation evidence below retains its original scope.
+
 Branch `gameplay/briar-shared-outing-20261013`, based on PR71 delivery
 `b6b813ccaa7ae445fa233a1214ea1c144d1c2476`. This checkpoint implements Earth
 ET02's optional retrieval, actual return and deliberately remembered doorstep

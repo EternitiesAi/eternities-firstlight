@@ -1,0 +1,696 @@
+{
+  "status": "passed",
+  "head": "dbc5874593afe2d18b06ab17817f4beae9d653d3",
+  "root": "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004",
+  "independentClone": "D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game",
+  "freshlyCreatedClone": false,
+  "method": "Fresh canonical HTTPS fetch of exact branch, clean detached checkout, actual build, then raw runtime/changed-file/four-HTML equality. Reused existing independent clone; no full-game copy.",
+  "runtimeFiles": 169,
+  "runtime": {
+    "adventure-art.js": {
+      "sha256": "9f308f6e104065b18fc3c1f1b041ea380330b816e9dd8890a5db86388da7758b",
+      "bytes": 15274
+    },
+    "adventure-ui.js": {
+      "sha256": "d519bbc992aaabd71db76a7ff08a6128317bdea6e8898f933a865e78edc3539d",
+      "bytes": 26528
+    },
+    "adventure.js": {
+      "sha256": "8268618f42041e4a65d224c8cb07aebbb09d76f61335c39ddf1e84319a751820",
+      "bytes": 51797
+    },
+    "app.js": {
+      "sha256": "087679ea85752a3d9d28cc05c12582eda26ced85f4420622f9e9106ec81ef9a2",
+      "bytes": 113876
+    },
+    "arsenal-art.js": {
+      "sha256": "1899a42e04fd44e18eced395229793d275a873dbe2902473968289815a3f694f",
+      "bytes": 3909
+    },
+    "arsenal-ui.js": {
+      "sha256": "a462102896a3c7013f29f6cdf40504b983b8fde803baf41b98b8fb032da3abe6",
+      "bytes": 6451
+    },
+    "arsenal.js": {
+      "sha256": "70cf869a8240895158960c62cc65d802adf491ac24ee66bf7a3c0389557d2b70",
+      "bytes": 14855
+    },
+    "atlantis-campaign-art.js": {
+      "sha256": "9ab549df2eeafc8314c95c7c9e488bf80472fcfaac1de7dfe41ebbf8c1830243",
+      "bytes": 10561
+    },
+    "atlantis-campaign-data.js": {
+      "sha256": "22496def70bda1c6a6aa15c24cf53bad7bacab4facc54da7856ac693e7384693",
+      "bytes": 17542
+    },
+    "atlantis-campaign-ui.js": {
+      "sha256": "3bcf9923c47710bf2d3d876629ed47e46d4b7e4289aa8f7510b9ccac2025cb5d",
+      "bytes": 17684
+    },
+    "atlantis-campaign.css": {
+      "sha256": "11d0f42b969895ba4ac0f561067c260b9a3d632b3b7f15a34d617eff8a4b6523",
+      "bytes": 2781
+    },
+    "atlantis-campaign.js": {
+      "sha256": "da23cf19fe0fd68ae3f03c040fb3c375b655570bccffd320794cd45bd19067d3",
+      "bytes": 20387
+    },
+    "beacon-art.js": {
+      "sha256": "aea9e5d22d23eaf73777636c56c2444edac9b0d6239f9504cc95026585618577",
+      "bytes": 4850
+    },
+    "beacon.js": {
+      "sha256": "2aded7272a8d50cbfbdb4421f0140d00401a49788a3bb465260e30f501a2bf13",
+      "bytes": 15449
+    },
+    "briar-moments.js": {
+      "sha256": "987fbaa10fe6467c2b065f3234d04280c803dd3b69bb646eb00de244278662d5",
+      "bytes": 2006
+    },
+    "briar-outing.js": {
+      "sha256": "243177b4f1f6496c647d6f17f51f92f8e78be477c306accd0c9faecd8974f8d5",
+      "bytes": 12614
+    },
+    "bridge-art.js": {
+      "sha256": "e8f85dd21a0eb6363f674a934c625b22fc29f18fc63a543ebd61ea0a87fa254d",
+      "bytes": 4882
+    },
+    "bridge-community-art.js": {
+      "sha256": "202fba58c63a88cffe7ae792325bbdf6bd62d4c070dfd16636beb1a5c11de1c5",
+      "bytes": 3497
+    },
+    "bridge-community-ui.js": {
+      "sha256": "cdc8f8552466f00706e4865f30777b7abb6d6ad704365ef0a4367b0998787333",
+      "bytes": 8250
+    },
+    "bridge-community.css": {
+      "sha256": "15be66090d836555498d87e00564c5b7b7094c2e3dca5951f9b1fde5023ea29c",
+      "bytes": 1456
+    },
+    "bridge-community.js": {
+      "sha256": "4308eecafc47044c3c063b46e4c3aa7cb4e7a30d5d938c64fd518e7f29cb30cc",
+      "bytes": 8275
+    },
+    "bridge-moment-view.js": {
+      "sha256": "fe58c7824f96458f2608af4d1cf76c81d2936da89a8cca1ad933974b65e0e03c",
+      "bytes": 3356
+    },
+    "characters-ui.js": {
+      "sha256": "58de0cb602479d45eae66f4ccd4077253e34e6e3d843a1505f9eca4d4a1f8f77",
+      "bytes": 10376
+    },
+    "characters.css": {
+      "sha256": "48bfb2431b5fb50e530ed334e52cf07c31b8a29bdb5bb4917365210ab9e71815",
+      "bytes": 4628
+    },
+    "characters.js": {
+      "sha256": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+      "bytes": 9115
+    },
+    "classes-ui.js": {
+      "sha256": "6fb25a35158cf3388485f57016aea745260dea8a057f8d6b4781d3f7a296d22b",
+      "bytes": 4829
+    },
+    "classes.css": {
+      "sha256": "4b9b47443b1817efe2b4cd43e7a3d0d34e623738a5b1e6e1cad05bc2ce88e892",
+      "bytes": 2847
+    },
+    "classes.js": {
+      "sha256": "15da8e8f26c234a5903e5321d9cbcadea773037c9536911a5dc85cb9da2aaa97",
+      "bytes": 5418
+    },
+    "coastward-settlement-art.js": {
+      "sha256": "8f08b152b5205c434ffa7408118e754799eb7ab396b2c0aaec8920cc0029c839",
+      "bytes": 6920
+    },
+    "coastward-woodland-art.js": {
+      "sha256": "45b2758d3f8d75457545b24c2cc96f81f70ac8296bf183f57ddd412289f130fc",
+      "bytes": 4518
+    },
+    "combat-view.js": {
+      "sha256": "9e674247119cece3bb6a35ca31fa424ed5e8e0187cbd2c149afb6f4aba085d5c",
+      "bytes": 988
+    },
+    "combat.js": {
+      "sha256": "4176bbf57fd761732b5f9d96708ac8ac0d6855ef56c928d06810f06f74315a32",
+      "bytes": 10994
+    },
+    "companion-art.js": {
+      "sha256": "53a14620dc045b28d665b328287631d52f96f114a3b8d5e693f276800114c35d",
+      "bytes": 9652
+    },
+    "core.js": {
+      "sha256": "db0e1c647c479a32481cc0525b9c7d8d47e013a05eca669345aba63e5ac21118",
+      "bytes": 34101
+    },
+    "cosmos-art.js": {
+      "sha256": "d68fb28540196c4d6f39ca60cc99e1eb99fab534fb026578c02e75119cdd17e2",
+      "bytes": 12517
+    },
+    "cosmos-campaign-art.js": {
+      "sha256": "3b22a5fe117cb3731a1531a66941fba9e2953b5c23f3816150c184230a631a5e",
+      "bytes": 7490
+    },
+    "cosmos-campaign-data.js": {
+      "sha256": "9c7d4d30b863e25812df3651e785bff3f87495b37ede488804ee03178cab93d2",
+      "bytes": 21871
+    },
+    "cosmos-campaign-ui.js": {
+      "sha256": "95f8bbb9df5f97ddcb779268e5c28f412914d388c92bff00f5e79ec048e77686",
+      "bytes": 12216
+    },
+    "cosmos-campaign.css": {
+      "sha256": "436b9330b2bb190d022698894c76bd6e3b321d014d6e64bc553449c4dcd33ff7",
+      "bytes": 1254
+    },
+    "cosmos-campaign.js": {
+      "sha256": "7e03aaad5efe9db475ea82db6e8b9343361a68dec52132cf190e3c055fc681fb",
+      "bytes": 19536
+    },
+    "cosmos-ui.js": {
+      "sha256": "2582b2f2f4d894f44a969108af258087cf7f0be8c70dbf73eabca5810d236465",
+      "bytes": 10697
+    },
+    "cosmos.css": {
+      "sha256": "4d79807974082aaef0df364d312ae3d4a345ffd40b5eab403ccc55c24f02a63b",
+      "bytes": 2167
+    },
+    "cosmos.js": {
+      "sha256": "bf4d9898600b9b5d296f3de934f6f8dd52e343f3b762fd5f0085a09f14ea2090",
+      "bytes": 10809
+    },
+    "creative.js": {
+      "sha256": "d0032234d3cab1a6e90c84736011a98631bcc3748de8d5fc23df872367038761",
+      "bytes": 9788
+    },
+    "crossing-art.js": {
+      "sha256": "86cd8945194c6437d9ece96a7d0bcac8a4970eb5f3324300e48d08376bb61bcf",
+      "bytes": 10979
+    },
+    "crossing-ui.js": {
+      "sha256": "5a2a7f6989a0a7ff0a96fee7aa88ec77dadbfba15440a272f131f17a98d86913",
+      "bytes": 21528
+    },
+    "crossing.css": {
+      "sha256": "af6dd51f197dfa1963fc9fa0d92683b2e6f48270903aaea5ba90cbb2833862a2",
+      "bytes": 5024
+    },
+    "crossing.js": {
+      "sha256": "b666c4e6e20483ad267293578020876c8791bbbf23f8116803936658400d1a8f",
+      "bytes": 18813
+    },
+    "drover-art.js": {
+      "sha256": "0f4dda1af6b05e1c7e0931d835fca2d3faec7960788bc89b9f9b591af19206b0",
+      "bytes": 8787
+    },
+    "earth-art.js": {
+      "sha256": "494aa1f9d018c9490ca8b95ba212470b5a98b5e5e6e2d0cab68bd36d16b60314",
+      "bytes": 18847
+    },
+    "earth-consignment-art.js": {
+      "sha256": "2c7762c9b4e33e689af4a1a21f3aa7a969956214c2bde7d959e28a60dc40270d",
+      "bytes": 7228
+    },
+    "earth-consignment-data.js": {
+      "sha256": "1c6d73d27cd2d2b702be79deca21df40e50a1f58090d175a0e5aff8d709f0249",
+      "bytes": 4720
+    },
+    "earth-consignment-motion.js": {
+      "sha256": "822e966961dd9889466d06a668abc5bde4e635a5496a019ef042ae6e141557a3",
+      "bytes": 13513
+    },
+    "earth-consignment-ui.js": {
+      "sha256": "57501e2e84a483fc69ae40eaf65088b7804b14fa4bcf6dddc48b397d4740fc0a",
+      "bytes": 15220
+    },
+    "earth-consignment.js": {
+      "sha256": "1af351fcaa324fa7c2da23fd9e1f4e87ed23a48d6cf5318f3e8cbf9b7aad7292",
+      "bytes": 8710
+    },
+    "earth-expedition-art.js": {
+      "sha256": "1a5da68241d9634319ebf859abf890e1aa32000ed69895c16192697225678e42",
+      "bytes": 5743
+    },
+    "earth-expedition-beast-art.js": {
+      "sha256": "bf663c1cf48ef65a1c43e42bec63e743686506f3c028b7e72e4f4eac2ef7c0e4",
+      "bytes": 8326
+    },
+    "earth-expedition-dialogue.js": {
+      "sha256": "1ba8a7bd0b32d56efa583b5cf1f0d4d1bf24df58e07811d08853e13a56c835ac",
+      "bytes": 14453
+    },
+    "earth-expedition-ui.js": {
+      "sha256": "5f8b2a2911527eb3d1125c8f252a2d08c9e4087aa02a8288649b2177f2509c0d",
+      "bytes": 17719
+    },
+    "earth-expedition.css": {
+      "sha256": "ad650598df3749417d4953965e72d9a2a802f1bb46c549819305a19a5b95247b",
+      "bytes": 4285
+    },
+    "earth-expedition.js": {
+      "sha256": "8d0a066679b49f2ac331ece1175d332dc96a10741909ccfd237f2b2e50b4ecd6",
+      "bytes": 27439
+    },
+    "earth-fieldcraft-art.js": {
+      "sha256": "4b7306af76245fe9d7fa55f5e9287565e0dd24048e7364289d49d7553096e55d",
+      "bytes": 6208
+    },
+    "earth-fieldcraft-ui.js": {
+      "sha256": "313708ddf1546e974096ddcc5a0bc41070816b1fd6803dd662770d812a8bb0b5",
+      "bytes": 11326
+    },
+    "earth-fieldcraft.js": {
+      "sha256": "60dd296ee395f027890cfc6ecb40939b1ee384ce7e7af2f82bf1f926b644c283",
+      "bytes": 13183
+    },
+    "earth-grazer-art.js": {
+      "sha256": "df809bdcd8554fdd59bdb51b990046f40680807f72aa9d26aa634d42d31777ec",
+      "bytes": 5765
+    },
+    "earth-grazer-habitat-art.js": {
+      "sha256": "3b7e54ba65c024108edb4d4533f80c61ff019c8b9429f7273512926b37b792a8",
+      "bytes": 5684
+    },
+    "earth-grazer-motion.js": {
+      "sha256": "0845a58a5d7fd6a98b10f1d5b967832545ccab3d1da37a19c768c3e094d72589",
+      "bytes": 12665
+    },
+    "earth-grazer-visibility.js": {
+      "sha256": "276157ce0c7e2d1e0d90e485b3c039d040a9aae379f43e72a9608c00454844da",
+      "bytes": 5667
+    },
+    "earth-homecoming-art.js": {
+      "sha256": "2353946d8bb28a2881f3191807fc248f95fea75f16bc585f6588d82742b750ed",
+      "bytes": 8803
+    },
+    "earth-homecoming-data.js": {
+      "sha256": "55485996a1651f8b5f0580c9e074f5873ddf45ca26744939238e31516051014f",
+      "bytes": 14337
+    },
+    "earth-homecoming-ui.js": {
+      "sha256": "5e57a2367153e516bdab12837db82812de3124a32489b09987dd285be011159d",
+      "bytes": 19256
+    },
+    "earth-homecoming.css": {
+      "sha256": "dbfeb49d20278ebeb9b9ae4c1d4d575acc3a806ca59898f20ebb9f8ca8f1661a",
+      "bytes": 3421
+    },
+    "earth-homecoming.js": {
+      "sha256": "c16adf4e13bd3a57e9be6aae6cd0cc00a4b78b49106f220ee74dee105fe858c1",
+      "bytes": 16782
+    },
+    "earth-notes-art.js": {
+      "sha256": "87fe4682829bfff89978d7046d62f518874a7953808431c5634327c9eb449556",
+      "bytes": 1342
+    },
+    "earth-notes-ui.js": {
+      "sha256": "9e0f0df26062b4929e0c3a801e8e857afc269936dbe4932279e935c56274f264",
+      "bytes": 8315
+    },
+    "earth-notes.js": {
+      "sha256": "4ab5807020f65086b190591414c871ee76412791ac0c97dca5447c595840e9e0",
+      "bytes": 5498
+    },
+    "earth-patrol-carrier-art.js": {
+      "sha256": "1bde299a979e9cb1d8ed96883c9a4f926a3f5d85ff664ce6887099bbc0cc0ca2",
+      "bytes": 2859
+    },
+    "earth-patrol-carrier-ui.js": {
+      "sha256": "491aa14c529d2194d6dfb06ab9440d98001bc3a89d86a90d2e9ad82f8abdf233",
+      "bytes": 11786
+    },
+    "earth-patrol-carrier.js": {
+      "sha256": "e8f4f33b97f46ddd1abf1b3c757cef8ba63e8f8a4617717b644d4af8478e5645",
+      "bytes": 13980
+    },
+    "earth-road-account.js": {
+      "sha256": "c35d9e1f4a12525598514db10b177c323e9ed0cbdac35119bc86c499102ff51c",
+      "bytes": 4892
+    },
+    "earth-road-art.js": {
+      "sha256": "e7bd1fbc7b1177327c0756724b1ccf78b1b640568d9121a1ff416736524b1520",
+      "bytes": 4240
+    },
+    "earth-road-ui.js": {
+      "sha256": "e4577d03d3b97d271b8374054d34b5afdecbb47b28e74b911b931c2ed8e3c8ad",
+      "bytes": 3907
+    },
+    "earth-road.js": {
+      "sha256": "7417a1bdc4ab9eea8e2afc4c013a6890507b5670fca97d1f6ebe9f823390a125",
+      "bytes": 4297
+    },
+    "earth-roadkeeper-art.js": {
+      "sha256": "ea1fba39cd658a65487b88a05f1d51c2a45a1724ac6cad31ac9e57657e8eff2c",
+      "bytes": 3207
+    },
+    "earth-roadkeeper-motion.js": {
+      "sha256": "40ed91f8435eb4f99237d491db925043fc81fa347a35b5c2e5a682cd017936f3",
+      "bytes": 12618
+    },
+    "earth-shoulder-art.js": {
+      "sha256": "422a50a7aeec456b6f75095c53a319d2cbf6ac5e09f773e268ed54034c2ddb8d",
+      "bytes": 2253
+    },
+    "earth-story-ui.js": {
+      "sha256": "930b71ef9184a5d7b03cc79ff33d7f9e000eabb9d3934266af9e0fe8713448cb",
+      "bytes": 10846
+    },
+    "earth-story.js": {
+      "sha256": "fd0ced6f17f1b15b2aee4e31aa00be249bc8e1fb08c4e735416d95c173fd52d0",
+      "bytes": 7815
+    },
+    "earth-ui.js": {
+      "sha256": "9294c4cb9666aa6aec2d36d6eb8e34686bf01f57ead9964322ad8283cc2ba635",
+      "bytes": 15859
+    },
+    "earth-wild-signs-art.js": {
+      "sha256": "7f800b7a9307f4be3104f755b673b393fb1c653c78afa81b3677af21e6c80a71",
+      "bytes": 5743
+    },
+    "earth-wild-signs-data.js": {
+      "sha256": "c0096aa9e421eae3deb60ed0ff312df5e224413748e4d2d596018b0b6abba5d3",
+      "bytes": 5575
+    },
+    "earth-wild-signs-ui.js": {
+      "sha256": "c9de9541ef1a0e49fb67aba42418c0113e1fe08030f6907cf1b563a045e98365",
+      "bytes": 24799
+    },
+    "earth-wild-signs.css": {
+      "sha256": "c8f5b8451d066d30b0431fb64e2930b9b78163cd8591941db56ef85efe438f38",
+      "bytes": 2573
+    },
+    "earth-wild-signs.js": {
+      "sha256": "cc572066f098db73f9f574e424916673b8aed806c944c67c8407932fe03003e0",
+      "bytes": 14528
+    },
+    "earth.css": {
+      "sha256": "1f40093ded67c175c70c730b8518ff928d26db40287515256fc287c45f2a9f3d",
+      "bytes": 3752
+    },
+    "earth.js": {
+      "sha256": "cbd5ee90a4b335c66ba096f439f8f3efe6f6f68cba99086485f34fd81866a166",
+      "bytes": 8744
+    },
+    "elderweald-trail-art.js": {
+      "sha256": "e978e735ec1ee8048df1777b190959b832cd37755f682c3d51b9ec3f0a7f0491",
+      "bytes": 2607
+    },
+    "elderweald-world.js": {
+      "sha256": "576649e890df9cc0ffb5d755565f8911024080cbe09b18a1eea1fefbfddf8d22",
+      "bytes": 12184
+    },
+    "engine.js": {
+      "sha256": "ef47b064e08a6d9900105b6359efe4c11262cc5d9d6d9e355783d5e646ed38f3",
+      "bytes": 57508
+    },
+    "experience.js": {
+      "sha256": "3b5a178ca757c7b58dcbfcedcc1522887dc6a178faf5e942c6e3894166d60570",
+      "bytes": 16387
+    },
+    "gathering-adapter.js": {
+      "sha256": "df41b2b23ae11c6ef2661e48301c488cb26ab753a7beec73349b5c959d5ab564",
+      "bytes": 440
+    },
+    "gathering-art.js": {
+      "sha256": "b693bce2a519bd75e4f99e03b96184f1ed10c9a9a02e25b7affd53e739f5e0eb",
+      "bytes": 1486
+    },
+    "gathering-music.js": {
+      "sha256": "5e44106322e01aebc7b87d8eefcd29b2a2577d2162d70fb8f99475c7cc7deb12",
+      "bytes": 3821
+    },
+    "gathering-ui.js": {
+      "sha256": "0c347e1da4a897b178c405f35cfef2e6ea518fe5d9e6ba650e48e48895e0445a",
+      "bytes": 9067
+    },
+    "gathering.css": {
+      "sha256": "aa2e5381a0ff9fa7e4ceae5053a54a8ab11a784f81ee021e4835d485d3c5f4db",
+      "bytes": 2294
+    },
+    "gathering.js": {
+      "sha256": "256a33c52f2b31c2c421f72a74aae543feb6c554ebae863aee55d31f0c68eb54",
+      "bytes": 6058
+    },
+    "grounded-footfalls.js": {
+      "sha256": "c85980e73234578c6eb02c07f5f817dc6972d1be15d0bbfe4a3372b02224370f",
+      "bytes": 8144
+    },
+    "heaven-campaign-art.js": {
+      "sha256": "25ed9017108ea106579584233cc55b2a1753d62bd36174bb9c023682cb2ad24a",
+      "bytes": 12464
+    },
+    "heaven-campaign-data.js": {
+      "sha256": "2495650ded3f74d81d3d53f4d259f29052d3ff64b65a4a6331351b049bdc67eb",
+      "bytes": 14474
+    },
+    "heaven-campaign-ui.js": {
+      "sha256": "67723b2f0acf3e52da6177ad98d8a881e3b3e509bfc418bd3031ffbdc9f0383e",
+      "bytes": 17424
+    },
+    "heaven-campaign.css": {
+      "sha256": "7cf25161526677ee407ff09596cf8e2ecfeb92246c66c0b7255440b54d041bf0",
+      "bytes": 2778
+    },
+    "heaven-campaign.js": {
+      "sha256": "50aa6ff6607f9dfda6f0df1ca2fa473bca36a7513a34d1a915c1a87305e69e26",
+      "bytes": 15844
+    },
+    "hell-campaign-art.js": {
+      "sha256": "5ea5b875e32114b07b52ffe0000b7163b340f08adf0eae01552b84a478420f18",
+      "bytes": 8478
+    },
+    "hell-campaign-data.js": {
+      "sha256": "745221292e89ed2bcdf455ffc1bf4e0e66259add5671709e77135d5ede3892ff",
+      "bytes": 10615
+    },
+    "hell-campaign-ui.js": {
+      "sha256": "d47acd0b9ba992df6ff4c73e1b5f3dfb9c1b2ced0745c8ffe50d6cd34cc80f8c",
+      "bytes": 13728
+    },
+    "hell-campaign.css": {
+      "sha256": "146c66cd811e3070367e10a91c30f39cfc630dba1ee929a3b6a540f96142f0d9",
+      "bytes": 2214
+    },
+    "hell-campaign.js": {
+      "sha256": "cc8ca64f9515e75f4bf572c3feb5978f07409e4aca5a328901b3322f399f67a1",
+      "bytes": 9041
+    },
+    "home-history-art.js": {
+      "sha256": "df3acc85a5191c3938692759e85b7ee76ef5f936f29e65d6a845636600396a1f",
+      "bytes": 2496
+    },
+    "home-history-ui.js": {
+      "sha256": "41a330942368c7a4500759f2cbaf1cda224bd5ed25bc284b9e44463fc1f43a8e",
+      "bytes": 8721
+    },
+    "home-history.css": {
+      "sha256": "54ef3c501dfda4c3d74c0f17d900bdc5b25c9dcbaeb1840ec36cbcfe0a276bd2",
+      "bytes": 1000
+    },
+    "home-history.js": {
+      "sha256": "f002eb64b57343e38e95eafa4cd522c892aab26efc7b0c3d65bea86a45cec6e6",
+      "bytes": 7264
+    },
+    "local-life-art.js": {
+      "sha256": "5d8d072e20316e0bce84530f3df1ca5c03c360a9b51aca06cc36aba12bfc73b6",
+      "bytes": 6014
+    },
+    "local-life-ui.js": {
+      "sha256": "90e1e229f5be8d40c599473df5d6802c1a23a170c9b804a6756efe7703938c2e",
+      "bytes": 12682
+    },
+    "local-life.js": {
+      "sha256": "366b1b5693987564de6962a430f2cf7070d81348ad01120d154bccb202a39ac3",
+      "bytes": 16981
+    },
+    "mill-gate-art.js": {
+      "sha256": "fe33cbbd3f180a8d32a0d0a338cde42c40e809af99ed2da1db157ba5c7fbcdd9",
+      "bytes": 2941
+    },
+    "millwright-art.js": {
+      "sha256": "bd7397ee2a9f4c47b2b51117e28f3c68533da41de3122bb0a39a5575913a5661",
+      "bytes": 5892
+    },
+    "pursuit-ui.js": {
+      "sha256": "f8c6bab82d88b6e4dcbf05f3e78701d489f31e224c80211b94f8acc8b70b4224",
+      "bytes": 14301
+    },
+    "pursuit.css": {
+      "sha256": "61f36fa917eafba8cfa332f7d233db4c47a6d007bbf84d1843bc25fc17dd63ff",
+      "bytes": 5647
+    },
+    "pursuit.js": {
+      "sha256": "b77e1874f8278971f41d4b62551df40c81126f2a35e02958958e802ab9c8b5ff",
+      "bytes": 10072
+    },
+    "quarry-art.js": {
+      "sha256": "5bc6d93e99e430e7a460a1a2a510fc69e60c9dd80e758bce7470dae3ae3446f6",
+      "bytes": 7056
+    },
+    "realm-art-data.js": {
+      "sha256": "1ac6251a7acf23c78799d96b5554fb3fe572c40e12c54c73f0188c4f8a324435",
+      "bytes": 264
+    },
+    "realm-atlas-ui.js": {
+      "sha256": "26d34bdc7afc9fbf9bb1f0f483aa6bc8312eba8a2186d21c80cab2fc1f68529b",
+      "bytes": 5497
+    },
+    "realm-atlas.css": {
+      "sha256": "7ef7a03b8c2a69069c2d65da8d5134c7b7dc4bc2b941e139f818a7ab7011c366",
+      "bytes": 1750
+    },
+    "realm-craft.js": {
+      "sha256": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+      "bytes": 1849
+    },
+    "realm-givers-art.js": {
+      "sha256": "8362d7a98f238b77b9afa5eff7346f430c02af6cd249502f146308a3d246fb34",
+      "bytes": 16040
+    },
+    "realm-trails-art.js": {
+      "sha256": "99a588e7aee9c7d43b6506de836ab2bab75a9420c6b718369c37e4517ca037e3",
+      "bytes": 13006
+    },
+    "realm-trails-cosmos.js": {
+      "sha256": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+      "bytes": 3605
+    },
+    "realm-trails-north.js": {
+      "sha256": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+      "bytes": 10730
+    },
+    "realm-trails-south.js": {
+      "sha256": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+      "bytes": 6813
+    },
+    "realm-trails-ui.js": {
+      "sha256": "476e29ae44b666b6982f60ca2c8e7b9357b9b625b6b52eb06a1defedb2303def",
+      "bytes": 22248
+    },
+    "realm-trails.js": {
+      "sha256": "e5903d90b83dcce6d30f15f3c82644aab745aff1c2a058f2aad3214ce14934b4",
+      "bytes": 14257
+    },
+    "road-art.js": {
+      "sha256": "0cc12918587f98f4b9ed2b7beb8d1b21219b4a69959742a759f88354942df05d",
+      "bytes": 5375
+    },
+    "road.js": {
+      "sha256": "d18106f1a2147d623680b285dc5882cae8d2b74c5ef8b500d75de35d20c86dbc",
+      "bytes": 4486
+    },
+    "rpg-ui.js": {
+      "sha256": "514566697e80467ef010830e94cacb622ef8e92d6190bea7ef4eda83145716a1",
+      "bytes": 64932
+    },
+    "rpg.css": {
+      "sha256": "34ca5591b22748dbf96754fc0f6a857cbd73f77eb85e50b706e1b484291b11ae",
+      "bytes": 34482
+    },
+    "sandbox-art.js": {
+      "sha256": "3c3a8f9ea1a44fb84bdfe07a99b33969f253714c271e91ca3cfeca7eab76474c",
+      "bytes": 7642
+    },
+    "sandbox-ui.js": {
+      "sha256": "28d7530e8153ed3c8a6a31b3e204cbc9680484b013cb5880a4f05b76cf83d8f5",
+      "bytes": 14437
+    },
+    "sandbox.js": {
+      "sha256": "ad11196c12363b650f2697ab8fb30eb657ff0bf65953274942ce36eb28131e85",
+      "bytes": 18638
+    },
+    "shell.html": {
+      "sha256": "69e98da91080d7e703f32e6cdbef2be7fe6f8c2659b1ab184c4eef029158a8dc",
+      "bytes": 14295
+    },
+    "skitter-art.js": {
+      "sha256": "bd84a78381cf7232a7fb92a868332308c68fcae17d25764c2b5d4bdfefa29903",
+      "bytes": 7975
+    },
+    "soundscape.js": {
+      "sha256": "15b7b578886b838ef20e56501940354d33a8ffcd5581332dd4c4b2035692c5af",
+      "bytes": 4636
+    },
+    "starter-art.js": {
+      "sha256": "cfc4f672b891fe6d53dec82a97aeac7204b8179b3490ae9df9ce3412c4661fcc",
+      "bytes": 4246
+    },
+    "starter-ui.js": {
+      "sha256": "44718b2835207383632d5f33e0748dba9c348041b11f9b404040bdf07a259052",
+      "bytes": 14861
+    },
+    "starter.css": {
+      "sha256": "f1501b06a13c2b3ec0030b39bf9d4530740aad2f60cf9608ca32957c9ce2943b",
+      "bytes": 2525
+    },
+    "starter.js": {
+      "sha256": "c6debd10295babafdcd714445c2ac18c0ff5ce8fd54b8dfe4f3ff78c9e0a294d",
+      "bytes": 8861
+    },
+    "style.css": {
+      "sha256": "de294de870d7554ccd1d8fa0725dd7a954e8a3f3e75bd9cff86530e94a4e4eee",
+      "bytes": 32880
+    },
+    "surface-assets.js": {
+      "sha256": "5cb0f81348074edbc0e4f3c7dee4962fac10bbc5e7db0ee07b16216f3b7a1e5f",
+      "bytes": 509
+    },
+    "traveler-art.js": {
+      "sha256": "8d42e6f66f2c0cd081f700b20d9f3ef9e53f3366c2bc809ab2f682b2ab051a42",
+      "bytes": 17098
+    },
+    "traveler-equipment-art.js": {
+      "sha256": "13537e49de6fdcd670e75875c3b17736b76df53b65709d2b2366aab721dc98dc",
+      "bytes": 11937
+    },
+    "woodland-shapes.js": {
+      "sha256": "7f2fba3a9c1f7e01b5ad2bfa6cf1788e47282d40324c6312bc4718f514a97e01",
+      "bytes": 6706
+    },
+    "workshop-transactions.js": {
+      "sha256": "115193dc80841b531a14f85a41c8d2d5e44c6169fc4ea4d6c19637eb7a8e8dd4",
+      "bytes": 3657
+    },
+    "world-atlantis-earth.js": {
+      "sha256": "a21ac70e5e1b669363a1bdc086d7e2a26ac6969e9384ef35259d30b27999ce4f",
+      "bytes": 23542
+    },
+    "world-foundations-art.js": {
+      "sha256": "f38b8b5aacaff894a52e18b3ff1006a17105abb6ada0f9a68bdd8c29af05b56f",
+      "bytes": 10153
+    },
+    "world-foundations-ui.js": {
+      "sha256": "a83ecccb689a9556483c3d489bae8f60b26e0521bbb5fc2934f02a7401df2db1",
+      "bytes": 30393
+    },
+    "world-foundations.css": {
+      "sha256": "8abcf23f66cde69a92b7f3be6c099a1a2e2088d220bd83a81ea71d78f0564669",
+      "bytes": 7377
+    },
+    "world-foundations.js": {
+      "sha256": "6ec902e94da54024cc5a8c198d4b8effc7e55d493fae818fdf27358e9e443d61",
+      "bytes": 17457
+    },
+    "world-ground-coalescing.js": {
+      "sha256": "c31024794d5b5db2c28d9aab9ecf8fd0acdf55c2630ff5edf93b988151e5d63d",
+      "bytes": 4777
+    },
+    "world-heaven-hell.js": {
+      "sha256": "ce3da0fce6f82abebe9ead604ba3b60dbeffde5b1cc619a25b066e77bc67687f",
+      "bytes": 27493
+    },
+    "world.js": {
+      "sha256": "48b874b3c5925c09b94edb66cedc9910b415b4503daa5008bb2e14a51e4be06d",
+      "bytes": 40722
+    }
+  },
+  "changedFiles": 44,
+  "html": {
+    "bytes": 3378270,
+    "sha256": "13d793eec31077faa15ecdd2f3a3aca07dfb55b8e6d64a0a1460c17a162599e0",
+    "copies": 4
+  },
+  "sourceVerifierExecuted": false,
+  "nativeExecuted": false,
+  "vmActions": false
+}

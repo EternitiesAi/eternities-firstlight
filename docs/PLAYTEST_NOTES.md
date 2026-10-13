@@ -1,23 +1,34 @@
-# Briar's shared outing implemented; qualification pending, 2026-10-13
+# Briar review branch pushed; full qualification pending, 2026-10-13
 
-Current branch `gameplay/briar-shared-outing-20261013`, from PR71 delivery
-`b6b813ccaa7ae445fa233a1214ea1c144d1c2476`. Optional Earth ET02 now has actual
-fox retrieval/carry/return, explicit taking and chosen doorstep rest. Early
-command-earned blade/bow App/Store journeys pass before relic or angelic gift.
-Strict optional briarMoments v1 records only two completed facts; no old cache
-backfill, reward, grief, timer, cap change or camera replacement.
+OPEN DRAFT PR72 https://github.com/EternitiesAi/eternities-firstlight/pull/72,
+stacked on PR71/b6b813ccaa7ae445fa233a1214ea1c144d1c2476. Product/source head
+`dbc5874593afe2d18b06ab17817f4beae9d653d3`. Optional Earth ET02 has actual fox
+cloth retrieval/carry/return, explicit taking, chosen doorstep rest and two
+strict optional briarMoments v1 facts. World9/Adventure12/keys/XP/caps/claims,
+gear/sockets/upgrades, all other owners and both cameras remain. No old cache
+backfill, payout, grief/loss/timer, forced class or new realm.
 
-New source/save/App/geometry checks pass. SOURCE03 rules passed2182/0fail/2skip,
-but its full Python gate FAILED and retained its 20 failures/11 errors/10 skips.
-Focused host/default/UTF-8 repairs pass; current complete committed source,
-returning cohort, native pixels/restarts, exact remote clone and new movie are
-still pending. Never transfer PR71's native/movie success to this new runtime.
+Fresh canonical fetch/rebuild in reused independent STATION:169 runtime files,
+44 changed files and four HTML copies match;3378270B SHA13d793eec31077faa15ecdd2f3a3aca07dfb55b8e6d64a0a1460c17a162599e0.
+Current remote targeted Node124P0F0skip; committed-epoch Python8 methodsOK.
+Two early earned rescue continuations each finish the actual App/Store outing
+before relic/angelic reward over445 supported tick segments and two writes.
+The bow then explicitly gathered/crafted/equipped its weapon. These are CPU
+accelerated/memory readback receipts, not native or human observations.
 
-VM/guest/Claude Code and unrelated work are excluded. Reuse ROOT/STATION on D;
-no new full game or cleanup. Broad/native/movie require fresh >=6GiB host free
-memory after preparation; original180/600/four-worker gate stays. Goal ACTIVE
-unfinished, independent heartbeat PAUSED. Read the current task/result note for
-source ownership, migration, failures and the next concrete qualification step.
+SOURCE01/03 failures remain retained; SOURCE03's earlier rules2182P0F2skip do
+not replace a final complete gate. Remote Source04/05 were NOT LAUNCHED;
+latest07:37:24Z free3626772KiB below6291456. Use the clean committed game and
+existing Firstlight Python313/browser-env with UTF-8, original180/600 deadlines
+and four workers once fresh host admission permits. Returning whole-cohort,
+full source, new native pixels/restarts and ordinary footage remain pending.
+Never transfer PR71's native/movie success to this runtime. Public checkpoint
+receipts are under docs/evidence/briar-shared-outing-2026-10-13; current task and
+result notes carry ownership, migration, actual failures and launch steps.
+
+VM/guest/Claude Code and unrelated work remain excluded. No personal-save,
+shared-install, billing/paid, merge/deploy, cleanup or new full-game action.
+Reuse ROOT/STATION on D. Goal ACTIVE unfinished; separate heartbeat PAUSED.
 
 ---
 

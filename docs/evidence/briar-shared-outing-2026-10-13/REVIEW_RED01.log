@@ -1,0 +1,71 @@
+✔ defined outing points and whole routes are actually supported (127.4045ms)
+✔ acceptance creates only an intent and refuses injected terms or repeated starts (7.4368ms)
+✔ actual outbound/carry/return and explicit save produce one useful shared fact (49.5357ms)
+✔ refused turn-in is unchanged and retryable; cold completed load cannot duplicate (24.5322ms)
+✔ rest requires the returned cloth and actual arrival before remembering (74.7281ms)
+✖ revisiting the recorded doorstep rests again without suggesting or writing a second moment (80.9821ms)
+✔ Follow, Stay, travel, death, lease changes and forged displacement cancel unfinished intent (14.2549ms)
+✔ reload and copied actor diagnostics never establish a physical return (3.2423ms)
+✔ a successful outgoing save is never adopted into a replacement character (25.002ms)
+✔ an asynchronous or uncertain saver cannot trigger blind replay (19.5791ms)
+✔ uncertain resting save preserves the real settled pose and cannot invent a carried cloth (60.817ms)
+✔ uncertain saves stay quarantined through cancellation, Follow and scene changes (19.4854ms)
+✔ a post-write throw is unknown until saved-state readback, never a retryable refusal (21.2173ms)
+✔ actual carrying adds a restrained cloth attached to the same articulated mouth frame (7.2927ms)
+✔ the settled bonded rig is visibly lower, complete and supported (27.7855ms)
+✔ unbonded and default rigs cannot fabricate an outing pose (0.9751ms)
+✖ the actual shallow bowl has a supported inset and contained rim above the doorstep ground (76.9916ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 15
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1827.2702
+
+✖ failing tests:
+
+test at tests\briar_outing.test.cjs:62:1
+✖ revisiting the recorded doorstep rests again without suggesting or writing a second moment (80.9821ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Follow whenever/. Input:
+  
+  'Resting at the doorstep · choose Remember this moment'
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\briar_outing.test.cjs:69:30)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Resting at the doorstep · choose Remember this moment',
+    expected: /Follow whenever/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests\briar_outing_art.test.cjs:26:1
+✖ the actual shallow bowl has a supported inset and contained rim above the doorstep ground (76.9916ms)
+  AssertionError [ERR_ASSERTION]: A flat supporting base prevents the inset hovering above an ellipsoid
+  + actual - expected
+  
+  + 'round'
+  - 'cylinder'
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\briar_outing_art.test.cjs:31:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'round',
+    expected: 'cylinder',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
