@@ -18,6 +18,10 @@ host-free5325428KiB below6291456KiB. No current full/native/browser/movie pass.
 Source03 also NOT LAUNCHED at fetcheded587:3198848KiB at03:48:38Z.
 Current hostedrun38343440508:48 failed jobs,zero executed steps,account billing
 lock. No test execution, retry or billing change. Native/movie remain pending.
+Continuation2c8b781 tightened native successful-save/native-baseline and portrait
+closure/focus/FOV/span assertions. Private recording admission7 CPU cases pass;
+no browser. Source04 also NOT LAUNCHED:3574100KiB at04:03:28Z. Complete
+source/native/movie acceptance remains pending; gameplay and HTML unchanged.
 167 runtime raw hashes match the clean exact fetched independent clone.
 Keep failures/skips visible; prior PR70 footage qualifies only its older epoch.
 

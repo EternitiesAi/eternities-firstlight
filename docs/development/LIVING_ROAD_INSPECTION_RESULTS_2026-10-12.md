@@ -11,9 +11,21 @@ producer harness and nine-source map, and checks claim-side old world/story
 preservation. CPU admission RED cases reproduced accepted support/other-run
 inputs; the corrected caller passes7 admission cases with no browser/server/
 profile/game action. Its reviewed26KB digest is
-`78b8e8db7c4b5367a3e66fb677e31049d7f54284320f69b87808d0e1972ef2aa`.
+`ecfa4335cf805b648527300d6739881c17c058e7dd40257dc89dfb6b37d9ef27`.
 The original unused caller and failed preparations remain private evidence.
 This is preflight evidence, **not a movie, native result or complete source pass**.
+The small recording controller now requires the selected native receipt to link
+the exact selected source receipt, current complete cohort mode/caller/membership,
+current verifier and native harness, and the reviewed caller digest. Its absent-
+receipt trial refused before creating a clip directory/admission or a browser.
+An initial controller-preparation PowerShell syntax error occurred before any
+file write or launch; corrected preparation parsed with zero errors. These
+preparation/refusal records remain private, separate from gameplay evidence.
+
+Source04 at `2c8b7815edd80d651783b5f14d8bc3a10be06f6e` was also **not launched**:
+3574100KiB host-free at2026-10-13T04:03:28Z, below6291456KiB. Hosted run38344584605
+at that head also reports48 failed jobs/zero executed steps with the checked
+account-billing-lock annotation. No manual retry, VM or billing change.
 
 Review branch: `gameplay/living-road-inspection-20261012`, stacked on PR70
 `gameplay/living-road-carrier-20261012` at
