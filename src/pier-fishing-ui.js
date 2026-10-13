@@ -4,7 +4,7 @@ const F=G.RealmPierFishing||(typeof require==='function'?require('./pier-fishing
 class FishingUI{
  constructor(api){
   this.api=api;const host=document.createElement('div');host.id='pier-fishing';
-  host.innerHTML='<dialog aria-labelledby="fishing-title"><button class="fish-close" aria-label="Close pier choices">×</button><small>FIRSTLIGHT · AN ORDINARY EVENING</small><h2 id="fishing-title">A line on the water</h2><p>A borrowed pier rod, the lake below, and nowhere you have to hurry.</p><p>Watch the float. Hook when a bite appears, then reel while the fish turns. Ease the line during a strong pull; too much tension or a slack line lets the fish escape.</p><p>Press E to switch between reel and ease, or hold the Reel button. Catch and release only: no bait cost, equipment requirement, XP, money or stored catches. Walking away puts the rod back.</p><div class="fish-choices"><button data-fish="cast">Cast a line</button><button data-fish="rest">Rest beside the water</button></div></dialog><section class="fish-hud" hidden aria-label="Fishing"><small>LANTERN PIER · CATCH & RELEASE</small><h3>Read the water</h3><p class="fish-message" role="status" aria-live="polite"></p><label>Line tension <span class="fish-tension-text"></span><meter class="fish-tension" min="0" max="100" low="12" high="80" optimum="45" value="28"></meter></label><label>Fish brought closer <span class="fish-progress-text"></span><progress max="100" value="0"></progress></label><div class="fish-choices"><button data-fish="primary">Watch the float</button><button data-fish="hold" hidden>Hold to reel</button><button data-fish="cancel">Put rod away</button></div><small class="fish-controls">E · choose / switch reel and ease · Esc · put away<br>V · change camera · P · pause</small></section>';
+  host.innerHTML='<dialog aria-labelledby="fishing-title"><button class="fish-close" aria-label="Close pier choices">×</button><small>FIRSTLIGHT · AN ORDINARY EVENING</small><h2 id="fishing-title">A line on the water</h2><p>A borrowed pier rod, the lake below, and nowhere you have to hurry.</p><p>Watch the float. Hook when a bite appears, then reel while the fish turns. Ease the line during a strong pull; too much tension or a slack line lets the fish escape.</p><p>Press E to switch between reel and ease, or hold the Reel button. Catch and release only: no bait cost, equipment requirement, XP, money or stored catches. Walking away puts the rod back.</p><div class="fish-choices"><button data-fish="cast">Cast a line</button><button data-fish="rest">Rest beside the water</button></div></dialog><section class="fish-hud" hidden aria-label="Fishing"><small>LANTERN PIER · CATCH & RELEASE</small><h3>Read the water</h3><p class="fish-message" role="status" aria-live="polite"></p><label>Line tension <span class="fish-tension-text"></span><meter class="fish-tension" min="0" max="100" low="12" high="80" optimum="45" value="28"></meter></label><label>Fish brought closer <span class="fish-progress-text"></span><progress max="100" value="0"></progress></label><div class="fish-choices"><button data-fish="primary">Watch the float</button><button data-fish="hold" hidden>Hold to reel</button><button data-fish="look">Look along the line</button><button data-fish="cancel">Put rod away</button></div><small class="fish-controls">E · choose / switch reel and ease · Esc · put away<br>V · change camera · P · pause</small></section>';
   document.body.append(host);this.host=host;this.dialog=host.querySelector('dialog');this.hud=host.querySelector('.fish-hud');
   host.querySelector('.fish-close').onclick=()=>this.close();
   this.dialog.addEventListener('cancel',e=>{e.preventDefault();this.close();});
@@ -12,6 +12,7 @@ class FishingUI{
   host.querySelector('[data-fish="rest"]').onclick=()=>{if(!this.modalCurrent())return this.close();this.close();api.rest();};
   host.querySelector('[data-fish="primary"]').onclick=()=>this.primary();
   host.querySelector('[data-fish="cancel"]').onclick=()=>this.act('cancel');
+  host.querySelector('[data-fish="look"]').onclick=()=>api.look();
   const hold=host.querySelector('[data-fish="hold"]');
   hold.onpointerdown=e=>{e.preventDefault();hold.setPointerCapture(e.pointerId);this.act('reel');};
   hold.onkeydown=e=>{if([' ','Enter'].includes(e.key)){e.preventDefault();if(!e.repeat)this.act('reel');}};
@@ -64,7 +65,7 @@ class FishingUI{
  paint(){
   if(!this.host)return;const ctx=this.context(),v=F.current(ctx),sim=ctx.sim;
   sim.presentation=sim.presentation||{};sim.presentation.fishing=v;
-  this.hud.hidden=!v;document.body.classList.toggle('pier-fishing-active',!!v);if(!v)return;
+  this.hud.hidden=!v||this.api.menuOpen();document.body.classList.toggle('pier-fishing-active',!!v);if(!v)return;
   const q=s=>this.hud.querySelector(s),paused=sim.paused||this.api.menuOpen();
   const message=paused?'Paused · resume when you are ready.':v.message;
   if(q('.fish-message').textContent!==message)q('.fish-message').textContent=message;

@@ -50,3 +50,23 @@ test('the original quiet-water rest reach still opens the choices without an imp
  const h=fixture();h.sim.state.player.z=24;assert.equal(h.ui.open(),true);assert.equal(h.ui.dialog.open,true);
  assert.equal(F.current(h.ui.context()),null);
 });
+
+test('the fishing HUD yields to drawers and returns when controls are available again',()=>{
+ const h=fixture();h.ui.open();h.ui.cast();const previous=global.document,parts=new Map();
+ global.document={body:{classList:{toggle(){}}}};
+ try{
+  h.ui.host={};h.ui.hud={hidden:false,dataset:{},querySelector:s=>{if(!parts.has(s))parts.set(s,{});return parts.get(s);}};
+  h.menu=true;UI.prototype.paint.call(h.ui);assert.equal(h.ui.hud.hidden,true,'Do not cover the drawer close control');
+  h.menu=false;UI.prototype.paint.call(h.ui);assert.equal(h.ui.hud.hidden,false);
+  h.ui.act('cancel');UI.prototype.paint.call(h.ui);assert.equal(h.ui.hud.hidden,true);
+ }finally{if(previous===undefined)delete global.document;else global.document=previous;}
+});
+test('framing the water is an explicit camera action that retains the chosen style and FOV',()=>{
+ const fs=require('node:fs'),vm=require('node:vm'),s=fs.readFileSync(require.resolve('../src/app.js'),'utf8');
+ let saves=0;const camera={preset:'adventure',fov:72};const env={engine:{},fishing:{active:()=>true},sim:{room:null},camera,
+  clearGrazerFocus(){},clearCarrierFocus(){},fieldcraftFrame:null,follow:null,updateCamera(){},save:()=>{saves++;return{ok:true};},fitCameraHalf:(half,zoom)=>half*zoom};
+ vm.createContext(env);vm.runInContext(s.slice(s.indexOf('function frameFishing(){'),s.indexOf('function bridgeView(){')),env);
+ assert.equal(env.frameFishing().ok,true);assert.equal(camera.preset,'adventure');assert.equal(camera.fov,72);assert.equal(saves,1);
+ camera.preset='follow';camera.baseHalf=18;env.frameFishing();assert.equal(camera.preset,'follow');assert.equal(camera.fov,72);assert.equal(saves,2);
+ env.fishing.active=()=>false;assert.equal(env.frameFishing().ok,false);assert.equal(saves,2);
+});
