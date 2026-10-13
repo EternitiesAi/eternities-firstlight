@@ -1,7 +1,10 @@
 /* ET11/ET12-inspired local work. Pure definitions and candidate transactions;
  * actual movement/combat and the durable saver remain production authorities. */
 (function(G){'use strict';
-const clone=o=>JSON.parse(JSON.stringify(o)),fail=error=>({ok:false,error}),MAX_RUN=1000000;
+const clone=o=>JSON.parse(JSON.stringify(o)),fail=error=>({ok:false,error}),MAX_RUN=1000000,commandCommits=new WeakMap();
+// A result witness exists only after this command's synchronous durable commit.
+// Copied success objects and arbitrary direct commit() calls confer no authority.
+function confirmed(result,sim,type,run,step){const c=result&&typeof result==='object'?commandCommits.get(result):null;return !!c&&c.sim===sim&&c.state===sim.state&&c.adventure===sim.state.adventure&&c.type===type&&c.run===run&&c.step===step&&c.afterRevision===sim.state.adventure.revision&&c.ledger===JSON.stringify(sim.state.earthExpedition);}
 function freeze(o){if(o&&typeof o==='object'){Object.values(o).forEach(freeze);Object.freeze(o);}return o;}
 const point=(id,name,kind,x,z,requires,text,completed=name+' recorded.')=>({id,name,kind,x,z,y:1.57,medium:'dry',requires,text,completed});
 const giver={id:'elderweald-rill',name:'Rill · forestkeeper',x:-67,z:-4,y:1.57,medium:'dry'};
@@ -49,7 +52,7 @@ const patrol=freeze({
 // Supplied checks specialize the existing inspection, keeping its owner and IDs.
 const RETURN_WORK=freeze({
  'stormfall-recovery':{id:'stormfall-stock-check',branch:'stormfall-recovery',name:'Square the supplied stormfall check',line:'Your timber choice asks for a packing check: square the supplied gauge billets at the glade. It consumes none of your timber.',text:'Rill remembers your recovered timber. At the return glade, space the supplied gauge billets in their checking cradle and square their packing. Air gaps remain; this does not instantly dry timber or harvest standing trees. Borrowed job parts cost none of your inventory. Record this circuit’s final inspection, then return to Rill. Claiming settles the borrowed kit with the fixed payment.',completed:'Stormfall checking billets squared for this circuit. The standing shelter remains. Return to Rill for the separate payment; claiming also settles the borrowed kit.'},
- 'managed-coppice':{id:'coppice-binding-check',branch:'managed-coppice',name:'Seat the supplied coppice lashings',line:'Your fibre choice asks for a binding check: seat the supplied test lashings at the glade. It consumes none of your fibre.',text:'Rill remembers your fibre allocation. At the return glade, seat and tension the supplied transport bundle’s test lashings. This checks packing condition without spending your fibre or regenerating managed growth. Borrowed job parts cost none of your inventory. Record this circuit’s final inspection, then return to Rill. Claiming settles the borrowed kit with the fixed payment.',completed:'Coppice test lashings seated for this circuit. The managed boundary remains. Return to Rill for the separate payment; claiming also settles the borrowed kit.'}
+ 'managed-coppice':{id:'coppice-binding-check',branch:'managed-coppice',name:'Seat the supplied coppice lashings',line:'Your fibre choice asks for a binding check: seat the supplied test lashings at the glade. It consumes none of your fibre.',text:'Rill remembers your fibre allocation. At the return glade, seat and check the supplied transport bundle’s test lashings against their receiving guides. This checks packing condition without spending your fibre or regenerating managed growth. Borrowed job parts cost none of your inventory. Record this circuit’s final inspection, then return to Rill. Claiming settles the borrowed kit with the fixed payment.',completed:'Coppice test lashings seated for this circuit. The managed boundary remains. Return to Rill for the separate payment; claiming also settles the borrowed kit.'}
 });
 function returnWork(value){return RETURN_WORK[ledger(value).story?.branch]||null;}
 function patrolStep(value,s){const work=s.id==='inspect-glade'?returnWork(value):null;return work?{...s,name:work.name,text:work.text,completed:work.completed,workId:work.id}:s;}
@@ -121,7 +124,7 @@ function command(ctx,type,payload={},io){
  const repeat=type.startsWith('patrol-'),d=repeat?patrol:definition;if(payload.quest!==d.id)return fail('Read this exact expedition contract before acting.');
  let current;try{current=validate(sim.state.earthExpedition);}catch(e){return fail(e.message);}
  if(repeat){if(!Number.isSafeInteger(payload.run)||payload.run<1||payload.run>MAX_RUN||payload.priorClaim!==payload.run-1)return fail('This patrol invitation has an invalid run identity.');if(type==='patrol-claim'&&payload.run<=current.patrol.lastClaim)return{ok:true,duplicate:true,text:'That accepted patrol was already paid. No new run was claimed.'};if(payload.priorClaim!==current.patrol.lastClaim)return fail('This patrol invitation is stale. Read the current run and payment again.');}
- const candidate=sim.snapshot();candidate.earthExpedition=clone(current);const r=repeat?candidate.earthExpedition.patrol:candidate.earthExpedition.story;let text,reward=null,fittingRules=null,fittingTicket=null;
+ const candidate=sim.snapshot();candidate.earthExpedition=clone(current);const r=repeat?candidate.earthExpedition.patrol:candidate.earthExpedition.story;let text,reward=null,fittingRules=null,fittingTicket=null,claimRules=null,claimTicket=null;
  if(type==='accept'||type==='patrol-accept'){
   if(!at(sim,giver))return fail('Speak to Rill at the camp to explicitly accept this work.');
   if(repeat){if(!current.story.claimed)return fail('Claim the first living-road delivery before accepting a patrol.');if(r.active)return{ok:true,duplicate:true,text:'This exact patrol is already accepted; its progress is retained.'};r.active={run:payload.run,steps:[]};}
@@ -140,6 +143,13 @@ function command(ctx,type,payload={},io){
    if(fitted?.then||fitted?.ok!==true)return fail(fitted?.error||'Inspect and seat all four supplied sections before fastening.');
    fittingRules=F;fittingTicket=payload.fittingTicket;
   }
+  if(repeat&&s.id==='inspect-glade'){
+   const P=G.RealmEarthPatrolCarrier;
+   if(typeof P?.validate!=='function'||typeof P?.consume!=='function')return fail('The supplied glade fitting rules are unavailable. Inspect and seat the three pieces before recording.');
+   let fitted;try{fitted=P.validate(ctx,payload.carrierTicket);}catch(e){return fail('Glade fitting refused: '+e.message);}
+   if(fitted?.then||fitted?.ok!==true)return fail(fitted?.error||'Inspect and seat the three supplied pieces before recording.');
+   fittingRules=P;fittingTicket=payload.carrierTicket;
+  }
   record.steps.push(s.id);if(choice)r.branch=choice.id;text=choice?choice.completed:s.completed;
  }else if(type==='claim'||type==='patrol-claim'){
   if(!repeat&&r.claimed)return{ok:true,duplicate:true,text:'The first delivery was already paid once.'};
@@ -147,14 +157,19 @@ function command(ctx,type,payload={},io){
   const declared=repeat?d.reward:{...d.reward,materials:definition.steps[1].choices.find(c=>c.id===r.branch).materials};reward=pay(candidate,declared);if(!reward)return fail('Make room for the complete declared payment. Finished work remains ready; nothing was changed.');
   if(repeat){r.lastClaim=payload.run;r.active=null;}else r.claimed=true;
   text=d.title+' paid once · +'+reward.xp+' XP · +'+reward.coins+' sunmarks · +'+reward.ore+' ore'+Object.entries(reward.materials).map(([k,n])=>' · +'+n+' '+k).join('')+'. '+(reward.xp<declared.xp?'Stored XP remains at its existing 9999 cap. ':'')+d.completionText;
+  // Optional live recognition cannot become a prerequisite for old ready claims.
+  if(repeat&&typeof G.RealmEarthPatrolCarrier?.prepareClaim==='function'){
+   claimRules=G.RealmEarthPatrolCarrier;try{claimTicket=claimRules.prepareClaim(ctx);}catch{claimTicket=null;}
+  }
  }else return fail('Unknown expedition action.');
- const beforeLevel=A.level(sim.state.adventure),result=commit(sim,candidate,io,text);if(result.ok){if(reward){result.reward=reward;if(A.level(sim.state.adventure)>beforeLevel)A.notify(sim,'Level '+A.level(sim.state.adventure)+' · the living road recognizes useful work.');}
-  if(fittingRules){
-   const warnings=[];
-   try{const consumed=fittingRules.consume(fittingTicket);if(consumed?.then||consumed?.ok!==true)warnings.push('Fitting cleanup needs refresh: '+(consumed?.error||'cleanup did not finish.'));}catch(e){warnings.push('Fitting cleanup needs refresh: '+e.message);}
-   try{const synced=A.syncScene(sim);if(synced===false||synced?.ok===false||synced?.then)warnings.push('Scene refresh did not finish: '+(synced?.error||'refresh the view.'));}catch(e){warnings.push('Scene refresh did not finish: '+e.message);}
-   if(warnings.length)result.warning='Brace completion was saved. '+warnings.join(' ');
-  }else A.syncScene(sim);
+ const beforeLevel=A.level(sim.state.adventure),result=commit(sim,candidate,io,text);if(result.ok){
+  commandCommits.set(result,{sim,state:sim.state,adventure:sim.state.adventure,type,run:payload.run,step:payload.step,afterRevision:sim.state.adventure.revision,ledger:JSON.stringify(sim.state.earthExpedition)});
+  if(reward){result.reward=reward;if(A.level(sim.state.adventure)>beforeLevel)A.notify(sim,'Level '+A.level(sim.state.adventure)+' · the living road recognizes useful work.');}
+  const warnings=[];
+  if(fittingRules)try{const consumed=fittingRules.consume(fittingTicket,result);if(consumed?.then||consumed?.ok!==true)warnings.push('Fitting cleanup needs refresh: '+(consumed?.error||'cleanup did not finish.'));}catch(e){warnings.push('Fitting cleanup needs refresh: '+e.message);}
+  if(claimTicket)try{const received=claimRules.acknowledgeClaim(claimTicket,result);if(received?.then||received?.ok!==true)warnings.push('Receiving presentation needs refresh: '+(received?.error||'presentation did not finish.'));}catch(e){warnings.push('Receiving presentation needs refresh: '+e.message);}
+  try{const synced=A.syncScene(sim);if(synced===false||synced?.ok===false||synced?.then)warnings.push('Scene refresh did not finish: '+(synced?.error||'refresh the view.'));}catch(e){warnings.push('Scene refresh did not finish: '+e.message);}
+  if(warnings.length)result.warning=(fittingRules===G.RealmEarthFieldcraft?'Brace completion':repeat?'Patrol completion':'Expedition completion')+' was saved. '+warnings.join(' ');
  }return result;
 }
 function enemyId(d,e,run){return d===patrol?patrol.id+'-run-'+run+'-'+e.id:e.id;}
@@ -204,5 +219,5 @@ function bindingCommand(ctx,weapon,kind,io){
  const candidate=sim.snapshot();candidate.earthExpedition=clone(sim.state.earthExpedition);candidate.adventure.ore-=BINDING_COST.ore;candidate.adventure.coins-=BINDING_COST.coins;candidate.sandbox.inventory.fiber-=BINDING_COST.fiber;candidate.adventure.earthBinding={version:1,weapon,kind};
  return commit(sim,candidate,io,'Trailward '+kind+' binding applied to '+A.GEAR[weapon].name+' · '+(kind==='edge'?'+2 attack':'+1 defense / +10 maximum HP')+'. Identity, sockets, earlier fittings and current health retained; nothing was equipped.');
 }
-const api={definition,patrol,RETURN_WORK,returnWork,patrolStep,MAX_RUN,BINDING_COST,fresh,validate,progress,points,at,commit,command,enemies,signature,defeat,freshBinding,validateBinding,bonus,bindingCommand,encounter,strikeContains};G.RealmEarthExpedition=api;if(typeof module!=='undefined')module.exports=api;
+const api={definition,patrol,RETURN_WORK,returnWork,patrolStep,MAX_RUN,BINDING_COST,fresh,validate,progress,points,at,commit,command,confirmed,enemies,signature,defeat,freshBinding,validateBinding,bonus,bindingCommand,encounter,strikeContains};G.RealmEarthExpedition=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

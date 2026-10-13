@@ -2,6 +2,7 @@
  * are labelled synthetic. Rule operations, Core/E.command/Store validators
  * and original ExpeditionUI dispatch are real. No browser/earned claim. */
 'use strict';
+require('../src/earth-patrol-carrier.js');require('../src/earth-patrol-carrier-ui.js');
 const {test}=require('node:test'),assert=require('node:assert/strict'),path=require('node:path');
 const ROOT=path.resolve(__dirname,'..');
 const C=require(path.join(ROOT,'src/core.js')),CH=require(path.join(ROOT,'src/characters.js'));

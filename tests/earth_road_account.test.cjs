@@ -1,4 +1,5 @@
 'use strict';
+require('../src/earth-patrol-carrier.js');require('../src/earth-patrol-carrier-ui.js');
 /* Pure projection and real installed-interface CPU tests. Completed histories,
  * equipment/XP and service poses below are labelled synthetic boundary fixtures,
  * never earned, native-event, pixel, browser or human acceptance receipts. */

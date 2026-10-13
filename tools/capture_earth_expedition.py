@@ -29,6 +29,7 @@ CORE_FILES = [
     'src/combat-view.js', 'src/core.js', 'src/adventure.js', 'src/combat.js', 'src/arsenal.js',
     'src/characters.js', 'src/characters-ui.js', 'src/earth-fieldcraft.js',
     'src/earth-expedition.js', 'src/earth-fieldcraft-ui.js',
+    'src/earth-patrol-carrier.js', 'src/earth-patrol-carrier-ui.js', 'src/earth-patrol-carrier-art.js',
     'src/earth-expedition-ui.js', 'src/earth-expedition-dialogue.js',
     'src/earth-fieldcraft-art.js',
     'src/earth-expedition-art.js', 'src/earth-expedition-beast-art.js',
@@ -671,6 +672,45 @@ def main():
                         reading('Recorded sectional support, payment remains separate')
                         fitting_views('fieldcraft-permanent')
 
+                    def fit_carrier():
+                        before = state()
+                        click('[data-rpg="expedition-carrier-begin"]')
+                        for mode in ('follow', 'adventure'):
+                            close()
+                            click('#rpg-hud [data-rpg="camera"][data-id="' + mode + '"]')
+                            workspace('expedition')
+                            fov = diag()['camera']['fov']
+                            click('[data-rpg="expedition-carrier-look"]')
+                            page.wait_for_timeout(500)
+                            check('Carrier native Look retains preset/FOV and closes workspace ' + mode,
+                                  diag()['camera']['preset'] == mode and diag()['camera']['fov'] == fov and not page.locator('#rpg-window').evaluate('(el)=>el.open'))
+                            mark('carrier-look-' + mode)
+                        workspace('expedition')
+                        for _ in range(3):
+                            locator = page.locator('[data-rpg="expedition-carrier-inspect"]')
+                            piece = locator.get_attribute('data-piece')
+                            click('[data-rpg="expedition-carrier-inspect"]')
+                            target = page.evaluate('''([branch,id])=>RealmEarthPatrolCarrier.definition(branch).pieces.find(p=>p.id===id).target''', [before['earthExpedition']['story']['branch'], piece])
+                            check('Supplied starting pose needs correction ' + piece, not page.locator('[data-rpg="expedition-carrier-seat"]').is_enabled())
+                            for axis in ['x', 'z', 'yaw']:
+                                value = target[axis] * 180 / math.pi if axis == 'yaw' else target[axis] * 100
+                                control = page.locator('#carrier-' + axis + '-number')
+                                control.focus()
+                                if axis == 'x':
+                                    control.press('ControlOrMeta+A')
+                                    control.press('Backspace')
+                                    control.press('-')
+                                    check('Native partial carrier typing retains focus ' + piece, page.evaluate('()=>document.activeElement?.id==="carrier-x-number"'))
+                                control.fill(str(value))
+                                check('Native carrier edit retains control focus ' + axis, page.evaluate('id=>document.activeElement?.id===id', 'carrier-' + axis + '-number'))
+                            click('[data-rpg="expedition-carrier-seat"]')
+                            check('Supplied placement changes no durable owner ' + piece, fitting_unchanged(before, state()))
+                        reading('Three supplied pieces fitted, not yet recorded')
+                        click('[data-rpg="expedition-carrier-record"]')
+                        after = state()
+                        check('Carrier records original inspection without payment', after['earthExpedition']['patrol']['active']['steps'] == before['earthExpedition']['patrol']['active']['steps'] + ['inspect-glade'] and
+                              all(after['adventure'][k] == before['adventure'][k] for k in ['xp', 'coins', 'ore']) and after['sandbox']['inventory'] == before['sandbox']['inventory'])
+
                     def objective(step, catalogue, run=None):
                         walk(step['id'], step, step['name'])
                         if step['kind'] == 'defeat':
@@ -683,6 +723,8 @@ def main():
                             reading(step['name'] + ' at physical work point')
                             if run is None and step['id'] == 'brace-root-channel':
                                 fit_support()
+                            elif run and step['id'] == 'inspect-glade':
+                                fit_carrier()
                             else:
                                 action = 'patrol-step' if run else 'step'
                                 click('#rpg-content [data-rpg="expedition-' + action + '"][data-id="' + step['id'] + '"]')

@@ -1,4 +1,5 @@
 'use strict';
+require('../src/earth-patrol-carrier.js');require('../src/earth-patrol-carrier-ui.js');
 /* Real Core, production movement/commands and all UI owner methods. The DOM
  * below is a string/attribute sink, not native rendering or browser proof.
  * A late claimed-history fixture is explicitly separate from the fresh

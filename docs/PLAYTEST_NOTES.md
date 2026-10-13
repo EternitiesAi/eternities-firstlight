@@ -1,3 +1,161 @@
+# Living Road supplied-kit milestone verified, 2026-10-12
+
+Gameplay branch `gameplay/living-road-carrier-20261012`, stacked on draft PR69
+at `aeed88e4783d88d1157c626fbe773f8bd9c8fac1`. Qualified code head: `c73288adc15de0f6b460fdeb1a5b37d4d8a04655`.
+The final delivery commit adds records/media only; use the review PR's head for
+that immutable delivery identity. This is one playable refinement, not whole-game
+production completion. Goal remains ACTIVE; the separate heartbeat is PAUSED.
+
+Accepted patrols now require three supplied pieces fitted at the remembered
+glade. Explicit Look retains either camera. The existing inspection/payment
+owners remain; a nonduplicate claim with this outing's retained checked proof
+shows its session-local kit beside Rill. Old ready saves still pay without a
+backfilled kit. Tracked expedition E/hints now select this action rather than
+the overlapping unaccepted consignment. Guides gained a dark contrasting backing.
+
+Fresh gates in the reused clean independent qualification checkout, code above: Source06 exited 0, all 217 commands,
+145 syntax / 145 rule files; Node 2,135 passed / 0 failed / 2 skipped; Python 478 methods OK (10 skips).
+Native04 exited 0: 1,336 passed / 0 failed, three variants, 22 whole-Chromium restarts,
+12 actual receiving-group observations in both cameras. Original limits remain.
+CLIP05 passed 86 checks / 0 failures, normal controls/ordinary RAF: 43.095s capture window;42s silent
+actual canvas movie, 579151 bytes. Container 30fps duplicated 1,102 frames and dropped 10 for cadence;
+software stutter remains and this is not 30 rendered FPS or an RTX measurement.
+
+World 9 / Adventure 12 / Expedition 1 / WildSigns 1, keys/caps/XP and all histories remain.
+No migration, normal-material cost or payout change. No hauling/tension simulation.
+Native02/03 startup failures, prior source failures and CLIP01 remain diagnostic
+evidence; the later pass does not erase them. Complete browser/ordinary forest,
+controller, hardware and human acceptance remain open. Guide contrast is clearer
+in actual frames; fine-alignment comfort and distant Diorama receiving detail
+remain unproven. Read the [current results](development/LIVING_ROAD_CARRIER_RESULTS_2026-10-12.md)
+and portable evidence under `docs/evidence/living-road-carrier-2026-10-12`.
+
+The VM, guest and Claude Code are outside this work. Preserve personal saves,
+colleague ownership and unresolved founder decisions. Heavy work stays D; reuse
+the integrated checkout and qualification clone. No extra full-game copy,
+unrelated shutdown, main merge, public deployment, billing or shared install.
+Never retry the recorded blocked standalone-clone deletion.
+
+No human playtest took place. Pending questions: was the next action clear;
+could you tell which piece needed adjustment; did fitting and returning feel
+worthwhile rather than busywork? Test one fresh and one returning character,
+including both camera styles. Scripted completion cannot answer those questions.
+
+---
+
+Earlier checkpoints below retain their original evidence epochs.
+
+# Living Road source/native pass; tracked-E refinement pending, 2026-10-12
+
+At d40921881ec4155ee1503a9d413a6f4d3520cc3f, Source04 closed0 with all217
+commands,145syntax/145rules,Node2135pass/0fail/2skip and Python476 OK/skipped10.
+Native01 closed0 with1324pass/0fail across blade/bow/veteran and22 whole-browser
+restarts. This is complete source plus targeted accelerated software browser,
+not full-browser/ordinary/hardware/controller/human or production completion.
+
+CLIP01 failed before recording at the glade: actual E opened the overlapping
+unaccepted consignment invitation. It retained no movie; context/server closed.
+The real RPG/WorldUI now prioritize only the tracked expedition's nearby action
+and hint, preserving the original order for other tracking. Actual-method UI
+RED02 reproduced the wrong hint; GREEN01 passes24/24. Guide outlines gained a
+dark backing. Software short capture selects declared Low quality and requires
+the successful current producer's explicit checkpoint hash.9 CPU preflights
+pass;43 related rule/camera cases pass. New HTML3349854B/SHA256
+401bb15382e0bb54fe639a3f3e81db0cde0518ccd073f9766c6bc6fe523df08b.
+These refinements need fresh Source05/Native02/Clip02 before delivery.
+
+World9/Adventure12/Expedition1/WildSigns1, keys/XP/payments/owners/both cameras
+remain unchanged. VM/Claude Code and personal saves excluded. Heavy work D;
+reuse ROOT/STATION, retain failures, no additional full copy/main merge/deploy.
+See docs/development/LIVING_ROAD_CARRIER_RESULTS_2026-10-12.md for exact prior
+receipts and honest visual limits. Production goal ACTIVE and unfinished.
+
+---
+# Complete Node passes; one Python camera host repaired, 2026-10-12
+
+Fresh remote Source03 at308a83d97356c3f053da44abd7bc2adff202c7d0 passed all145
+syntax checks and the complete Node suite:2135pass/0fail/2existing skips,
+2137total,48734.2859ms. Python FAILED476tests/errors1/skipped10,420.152s,
+at test_capture_earth_homecoming's exact camera host, which omitted the new
+carrierFocus. Subsequent required source commands were unrun. Raw run/exit
+receipts remain under living-road-carrier-20261012/REMOTE_SOURCE03.
+
+That labelled host now compiles actual carrierFocus with carrierFrame:null;
+its original projection equality remains. Parent HOMECOMING_CAMERA_FIX01:
+28tests OK/skipped2,16.896s. The repaired test executed; the two skips need
+explicit current earned source/cohort, not personal or historical inputs.
+No runtime/HTML change: both pages3349389B/SHA256
+32fcf10c5f86d8d98d13547b1b4242650407bff20081017ede4c85f4d3647a89.
+A new complete gate remains necessary. No current native/video/GPU/human
+qualification; Source02 launch was refused at5825672KiB host-free RAM.
+VM/Claude remain excluded. Preserve old failures, deadlines, save/system
+contracts, both cameras and bounded D evidence. Goal ACTIVE unfinished.
+
+---
+# Complete gate exposed App-fragment integration gaps; repair verified, 2026-10-12
+
+Fresh remote Source01 at04d21d8c94d6fcce7d7d39b05f2256ceddf620d5 FAILED
+rules:2114pass/15fail/2skip,2131total,71080.9481ms. Build and all145 syntax
+checks passed; Python and subsequent journeys were unrun. Raw source/exit
+receipts remain in living-road-carrier-20261012/REMOTE_SOURCE01.
+
+The15 failures came from an existing exact fieldcraft declaration used as
+an extraction boundary, and three camera harnesses lacking carrierFocus.
+Restore the original declaration, put carrierFrame on its own following line,
+and compile the real inactive carrierFocus in those labelled camera fixtures.
+The frozen consignment helper and all old assertions remain untouched.
+Parent APP_INTEGRATION_FIX01:77pass/0fail/0skip,12066.4646ms, including the five
+failed files and six current carrier-camera cases. New complete gate pending.
+
+Current pages3349389B SHA256
+32fcf10c5f86d8d98d13547b1b4242650407bff20081017ede4c85f4d3647a89.
+The current native expedition caller also explicitly selects Low/reduced motion
+through visible setting events and checks actual receiving-kit instances and
+pixel removal/restoration in both views after live payment. This is source,
+not executed native evidence. Native capture/current full qualification and
+human acceptance remain pending. VM/Claude excluded; no unrelated stop,
+personal-save read, extra full copy, main merge/deploy or schema/reward change.
+
+---
+# Living Road supplied-kit gameplay implemented, qualification pending, 2026-10-12
+
+The parent-owned gameplay/living-road-carrier-20261012 branch builds from
+PR69 head aeed88e4783d88d1157c626fbe773f8bd9c8fac1. The existing patrol's
+final inspection now requires three supplied pieces fitted through visible
+controls. Stormfall billets or coppice bundle/lashings follow the player's
+saved allocation. Explicit Look keeps either camera; no extra inventory cost,
+reward, schema or XP change. Original once-only delivery and consignment
+remain separate. Only an actual live paid command shows Rill's receiving kit.
+Legacy ready saves still claim normally; reload does not invent live transport.
+
+Read docs/development/LIVING_ROAD_CARRIER_2026-10-12.md for fixed IDs, geometry,
+owner contract, source review and retained red/green results. Three fresh
+command-earned journeys closed0; targeted rules/art35 pass; latest custom UI
+23/23 and actual-App camera6 pass. Those are CPU/earned results, not current
+full/native/GPU/human qualification. Current source has145 modules/145 rule
+files. Both rebuilt HTML pages match3349384B SHA256
+eebff3d6fb2e2cebad4f7b0a710e9d7188cbc6822b4e7d84d48d3688820552af.
+
+Source e2d755a is pushed. A bounded follow-up adds current earned glade-prefix
+snapshots and reuses the existing90s canvas recorder via --work carrier. It
+checks exact unfinished/claimed prerequisites and current source embedding
+before browser acquisition;8 Python preflights pass. Recorder execution and
+current native results remain pending. Only the fetch-spawned Firstlight Git
+auto-maintenance chain was stopped after exact PID/parent/creation/command
+checks; its geometric-repack failure remains recorded. No VM/Claude worker
+was inspected or stopped. Qualification checkout update then closed0.
+
+Next: verify the exact pushed head in the reused
+independent checkout, then qualify visible current controls and brief footage
+through valid native admission. Earlier source/native failures remain intact.
+Ask Dom whether this feels like useful work or busywork and whether all guides
+are readable in both views. No human acceptance yet. Goal ACTIVE unfinished;
+heartbeat PAUSED. World9/Adventure12/Expedition1/WildSigns1 and all saves,
+histories, XP, gear/sockets, companion, housing, crafting and music preserved.
+VM/Claude Code/personal saves untouched; heavy work D, no additional full game,
+merge, public deploy or paid service.
+
+---
 # Complete source gate passes in the independent remote clone, 2026-10-12
 
 At pushed implementation49cd5d6adbe4029147cbaa14dd0cc7788b3c3561 /draft PR69,

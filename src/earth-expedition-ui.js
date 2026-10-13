@@ -21,9 +21,9 @@ function routePoints(sim){
  return active.next.flatMap(s=>s.choices?s.choices.map(c=>({...c,step:s.id,kind:'interact',quest:E.definition.id})): [{...s,step:s.id,quest:p.patrol.active?E.patrol.id:E.definition.id,run:p.patrol.active?.run??null}]).map((p,i)=>({...p,mark:String.fromCharCode(65+i)}));
 }
 class ExpeditionUI{
- constructor(rpg){this.rpg=rpg;this.pending=null;this.reading=null;this.owner=null;this.fieldcraft=new G.RealmEarthFieldcraftUI.FieldcraftUI(rpg);}
+ constructor(rpg){this.rpg=rpg;this.pending=null;this.reading=null;this.owner=null;this.fieldcraft=new G.RealmEarthFieldcraftUI.FieldcraftUI(rpg);this.carrier=new G.RealmEarthPatrolCarrierUI.CarrierUI(rpg);}
  get sim(){return this.rpg.sim;}
- reset(reason){this.pending=null;this.reading=null;this.fieldcraft.reset(reason);}
+ reset(reason){this.pending=null;this.reading=null;this.fieldcraft.reset(reason);this.carrier.reset(reason);}
  point(){
   if(this.sim.room!==ROOM)return null;
   return[...E.points(this.sim),{...E.definition.giver,kind:'giver'}].filter(p=>at(this.sim,p)).sort((a,b)=>Math.hypot(a.x-this.sim.state.player.x,a.z-this.sim.state.player.z)-Math.hypot(b.x-this.sim.state.player.x,b.z-this.sim.state.player.z))[0]||null;
@@ -31,7 +31,7 @@ class ExpeditionUI{
  context(){const p=this.point();return p?'E · '+p.name:null;}
  interact(){const p=this.point();if(!p)return false;this.reading=p.id;this.rpg.open('expedition');return true;}
  action(el){
-  if(this.fieldcraft.action(el))return true;
+  if(this.fieldcraft.action(el)||this.carrier.action(el))return true;
   const action=el.dataset.rpg;if(!action?.startsWith('expedition-'))return false;
   const type=action.slice(11),id=el.dataset.id;
   if(type==='open'){this.rpg.open('expedition');return true;}
@@ -70,11 +70,11 @@ class ExpeditionUI{
   const runMeta=patrol?'data-run="'+active.run+'" data-prior-claim="'+p.lastClaim+'"':'';
   let html='<section class="expedition-objectives"><h3>'+(p.ready?'Work complete · payment ready':'Your next action')+'</h3>';
   if(active.steps.includes('clear-root-pests'))html+='<p class="expedition-clearance">'+(patrol?'Patrol '+active.run+' · bank pocket checked clear. The permanent brace remains. '+(p.ready?'The glade inspection is complete. Return to Rill.':'Complete the supplied check at the return glade.'):active.steps.includes('brace-root-channel')?'The staged kit is now the installed brace. The living support remains.':'Bank pocket cleared · kit staged at the alternate support, south of the passage. Fit the brace next.')+' Your payment is still separate and must be claimed from Rill.</p>';
-  if(p.ready)html+='<p>Return to Rill at the camp. Your payment remains unclaimed until you deliberately collect it.</p>'+button('Walk back to Rill','walk','giver')+button(patrol?'Claim patrol '+active.run:'Claim the declared story payment',patrol?'patrol-claim':'claim','',runMeta);
+  if(p.ready)html+=(patrol?this.carrier.panel():'')+'<p>Return to Rill at the camp. Your payment remains unclaimed until you deliberately collect it.</p>'+button('Walk back to Rill','walk','giver')+button(patrol?'Claim patrol '+active.run:'Claim the declared story payment',patrol?'patrol-claim':'claim','',runMeta);
   else for(const s of p.next){
    html+='<article data-expedition-step="'+esc(s.id)+'"><small>'+(s.kind==='defeat'?'ACTUAL ENCOUNTER':'FIELD WORK')+'</small><h4>'+esc(s.name)+'</h4><p>'+esc(s.text)+'</p>';
    if(s.choices)for(const c of s.choices)html+='<div class="expedition-choice"><h5>'+esc(c.name)+'</h5><p>'+esc(c.text)+'</p><p><strong>Allocation:</strong> '+Object.entries(c.materials).map(([k,n])=>n+' '+({wood:'timber',fiber:'fibre'}[k]||k)).join(' · ')+'</p>'+button('Walk to this preparation','walk',c.id)+button('Prepare this allocation','step',s.id,'data-choice="'+esc(c.id)+'"')+'</div>';
-   else html+=button(s.kind==='defeat'?'Walk near the encounter':'Walk to this action','walk',s.id)+(s.kind==='defeat'?'<p class="expedition-muted">Tab selects · 1 stationary autoattack · Brace or move during the tell. The actual defeat records this objective.</p>':!patrol&&s.id==='brace-root-channel'?this.fieldcraft.panel():button('Do this work here',patrol?'patrol-step':'step',s.id,runMeta));
+   else html+=button(s.kind==='defeat'?'Walk near the encounter':'Walk to this action','walk',s.id)+(s.kind==='defeat'?'<p class="expedition-muted">Tab selects · 1 stationary autoattack · Brace or move during the tell. The actual defeat records this objective.</p>':!patrol&&s.id==='brace-root-channel'?this.fieldcraft.panel():patrol&&s.id==='inspect-glade'?this.carrier.panel():button('Do this work here',patrol?'patrol-step':'step',s.id,runMeta));
    html+='</article>';
   }
   return html+'<p class="expedition-muted">'+p.done+' / '+p.total+' completed. Walking only takes you there; E opens the action on arrival. V changes view. Home remains available.</p></section>';
@@ -87,6 +87,7 @@ class ExpeditionUI{
    const speech=G.RealmEarthExpeditionDialogue?.reading(d.giver.id,this.sim.state.earthExpedition,this.sim.state.adventure.earthBinding);
    if(speech)html+='<section class="expedition-dialogue"><small>'+esc(speech.speaker)+'</small><h3>'+esc(speech.title)+'</h3>'+speech.lines.map(line=>'<p>'+esc(line)+'</p>').join('')+'<p class="expedition-muted">'+esc(speech.hint)+'</p></section>';
    html+=G.RealmEarthRoadAccount?.html(d.giver.id,this.sim.state)||'';
+   if(G.RealmEarthPatrolCarrier?.current(this.sim)?.status==='paid')html+=this.carrier.panel();
   }
   html+=xpNote(this.sim.state.adventure,d.reward);
   if(r.steps.includes('brace-root-channel'))html+=this.fieldcraft.panel();
