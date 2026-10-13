@@ -15,8 +15,8 @@ function rendered(view,options={}){
  const h=owner(),out=empty();h.sim.presentation={fishing:view};
  h.sim.state.settings.reducedMotion=!!options.reducedMotion;
  const fishing=Art.pose(view,!!options.reducedMotion),pose=T.pose({fishing,...options});
- const frame=T.draw(out,{x:0,z:27,base:1.3,yaw:.64},pose);
- Art.draw(out,h.sim,frame);return{out,frame,pose,parts:Object.values(out).flat()};
+ const before=JSON.stringify({fishing,pose,view}),frame=T.draw(out,{x:0,z:27,base:1.3,yaw:options.yaw??.64},pose);
+ Art.draw(out,h.sim,frame);assert.equal(JSON.stringify({fishing,pose,view}),before);return{out,frame,pose,parts:Object.values(out).flat()};
 }
 const view=(patch={})=>({phase:'playing',time:5,fightTime:1,reelTime:.2,tension:.4,progress:.2,reeling:true,pulling:true,...patch});
 
@@ -73,13 +73,33 @@ test('combat and swimming retain arms and cannot draw a borrowed rod from stale 
 });
 
 test('the entire intermediate cast keeps its rod outside the head in every facing',()=>{
- for(let i=0;i<=100;i++){
-  const r=rendered(view({phase:'waiting',time:i*.0085})),head=E.M.transform(r.frame.root,r.frame.joints.head);
+ for(const yaw of [0,.8,1.6,2.4,-2.4,-1.6,-.8])for(let i=0;i<=100;i++){
+  const r=rendered(view({phase:'waiting',time:i*.0085}),{yaw}),head=E.M.transform(r.frame.root,r.frame.joints.head);
   for(const p of r.parts.filter(p=>['rod-grip','rod-lower','rod-tip'].includes(p.fishingPart))){
    const [a,b]=p.segment,d=b.map((n,j)=>n-a[j]),u=Math.max(0,Math.min(1,d.reduce((n,x,j)=>n+x*(head[j]-a[j]),0)/d.reduce((n,x)=>n+x*x,0)));
-   assert.ok(distance(head,a.map((n,j)=>n+d[j]*u))>.19+p.s[0]/2,'Head sphere and rod radius must stay separated at '+i);
+   assert.ok(distance(head,a.map((n,j)=>n+d[j]*u))>.19+Math.SQRT2*p.s[0]/2,'Head sphere and rod radius must stay separated at '+i);
   }
  }
+});
+
+test('both authored hand targets remain reachable throughout casting and every crank phase',()=>{
+ for(let i=0;i<=100;i++)for(const phase of ['waiting','playing']){
+  const f=Art.pose(view({phase,time:i*.0085,reelTime:i*Math.PI/350})),p=T.pose({fishing:f});
+  near(p.joints.rightHand,f.right);near(p.joints.leftHand,f.left);
+ }
+});
+
+test('displayed fishing facing enters and exits continuously on accepted time without stale catch-up',()=>{
+ const input={view:view({phase:'waiting',time:0}),yaw:-2.5,x:0,z:27,time:10,paused:false,reducedMotion:false};
+ let p=Art.facing(null,input);assert.equal(p.yaw,input.yaw);
+ const next=Art.facing(p,{...input,view:{...input.view,time:.05},time:10.05});assert.ok(Math.abs(next.yaw-p.yaw)>.01);assert.ok(Math.abs(next.yaw-p.yaw)<1.5);
+ const frozen=Art.facing(next,{...input,view:{...input.view,time:.05},time:20});assert.equal(frozen.yaw,next.yaw,'Menus freeze accepted fish time');
+ const paused=Art.facing(next,{...input,view:{...input.view,time:.1},time:10.1,paused:true});assert.equal(paused.yaw,next.yaw);
+ const exit=Art.facing(next,{...input,view:null,time:10.05});assert.equal(exit.yaw,next.yaw,'Cancel/release starts from the displayed root');
+ const easing=Art.facing(exit,{...input,view:null,time:10.1});assert.ok(Math.abs(easing.yaw-input.yaw)<Math.abs(exit.yaw-input.yaw));
+ const gap=Art.facing(easing,{...input,view:null,time:99});assert.equal(gap.yaw,easing.yaw);
+ assert.equal(Art.facing(null,{...input,view:null}),null,'New owner inherits no transition');
+ assert.ok(Math.abs(Art.facing(p,{...input,reducedMotion:true}).yaw-Math.atan2(3,4.2))<1e-12);
 });
 
 test('actual WorldArt submits the held rod once, stows blade/bow, and preserves physical facing and state',()=>{

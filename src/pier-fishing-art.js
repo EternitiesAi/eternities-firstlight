@@ -7,7 +7,7 @@ function pose(v,reducedMotion=false){
  if(!v||!phases.includes(v.phase))return null;
  const cast=reducedMotion||v.phase!=='waiting'?1:clamp(v.time/.85),u=smooth(cast<.35?cast/.35:(cast-.35)/.65);
  const ready=[.25,1.12,.36],raised=[.36,1.25,.20];
- const right=cast===1?ready:cast<.35?mix([.26,.88,.12],raised,u):mix(raised,ready,u);
+ const right=cast===1?ready:cast<.35?mix([.26,.96,.12],raised,u):mix(raised,ready,u);
  const angle=cast===1?.38:cast<.35?.38+(2.25-.38)*u:2.25+(.38-2.25)*u;
  const pitch=angle+(v.phase==='playing'?.18*clamp(v.tension):0),axis=[.32,Math.sin(pitch),Math.cos(pitch)],len=Math.hypot(...axis);
  // Accepted reeling time is monotonic only while actually reeling. Easing,
@@ -15,6 +15,17 @@ function pose(v,reducedMotion=false){
  const reelAngle=reducedMotion?0:(Number.isFinite(v.reelTime)?v.reelTime:0)*7;
  const left=add3(right,[-.20,-.07+Math.sin(reelAngle)*.048,-.035+Math.cos(reelAngle)*.048]);
  return{phase:v.phase,cast,right,left,axis:scale(axis,1/len),reelAngle};
+}
+function facing(prior,{view,yaw,x,z,time,paused,reducedMotion}){
+ const active=!!view&&phases.includes(view.phase);
+ if(!active&&!prior)return null;
+ const target=active?Math.atan2(3-x,31.2-z):yaw;
+ const delta=prior?(active&&prior.active?view.time-prior.fishTime:time-prior.time):0;
+ const dt=!paused&&delta>0&&delta<=.25?delta:0;
+ const from=prior?.yaw??yaw,arc=Math.atan2(Math.sin(target-from),Math.cos(target-from));
+ const next=reducedMotion?target:from+arc*(1-Math.exp(-12*dt));
+ if(!active&&(reducedMotion||Math.abs(Math.atan2(Math.sin(yaw-next),Math.cos(yaw-next)))<.002))return null;
+ return{yaw:next,time,fishTime:active?view.time:null,active};
 }
 function draw(out,sim,frame){
  const v=sim.presentation?.fishing;
@@ -50,5 +61,5 @@ function draw(out,sim,frame){
   add('round',[float[0]+.078,.22,float[2]+.17],[.029,.03,.029],0x233e42,'silverfin-eye');
  }
 }
-const api=Object.freeze({pose,draw});G.RealmPierFishingArt=api;if(typeof module!=='undefined')module.exports=api;
+const api=Object.freeze({pose,facing,draw});G.RealmPierFishingArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

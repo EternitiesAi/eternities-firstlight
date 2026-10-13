@@ -277,7 +277,11 @@ class WorldArt{
   const armorColor=G.RealmAdventure.GEAR[a.equipment.armor]?.color||null;
   // Only the displayed body turns toward the line. Physical facing and camera
   // preferences remain owned by the existing movement/camera controls.
-  const yaw=fishing?Math.atan2(3-p.x,31.2-p.z):p.yaw;
+  const fo=this.travelerFishingOwner;
+  if(!fo||fo.sim!==sim||fo.state!==sim.state||fo.player!==p||fo.room!==this.room||a.hp<=0||sim.worldDive||combatScene)this.travelerFishingFacing=null;
+  this.travelerFishingOwner={sim,state:sim.state,player:p,room:this.room};
+  this.travelerFishingFacing=G.RealmPierFishingArt?.facing(this.travelerFishingFacing,{view:fishing?sim.presentation.fishing:null,yaw:p.yaw,x:p.x,z:p.z,time:sim.elapsed,paused:sim.paused,reducedMotion})||null;
+  const yaw=this.travelerFishingFacing?.yaw??p.yaw;
   this.travelerFrame=G.RealmTravelerArt.draw(out,{x:p.x,z:p.z,yaw,base,profile:sim.state.visitor,color:X.CLOAKS[sim.state.visitor.cloak],armorColor},pose);
   this.travelerEquipment=G.RealmTravelerEquipmentArt.draw(out,sim,this.travelerFrame);
   G.RealmPierFishingArt?.draw(out,sim,this.travelerFrame);
