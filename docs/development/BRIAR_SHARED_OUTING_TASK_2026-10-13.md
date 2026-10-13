@@ -1,5 +1,18 @@
 # ET02: a cloth brought home
 
+Current refinement: world guidance and explicit Take/Remember/Follow use the
+existing context button and E. The rest point overlaps the shared-house door;
+an active outing must own that interaction instead of accidentally entering
+the house and losing unfinished work. A current read-only prompt derives its
+action from private ownership and the existing actual range/segment checks.
+Walking, waiting, out-of-range and save-blocked prompts record nothing. The
+Companion page keeps initial opt-in and the deliberate choice to start rest;
+completed facts alone do not add a permanent contextual reminder. No tracker
+pin, camera preference, durable field, reward or navigation owner is changed.
+Keyboard/menu guards and unrelated interactions remain when no outing is active.
+CPU rule/App/RPG tests precede implementation; native pixels and actual E/click
+in both cameras remain a separate memory-admitted gate.
+
 Implemented on `gameplay/briar-shared-outing-20261013`, based on PR71 delivery
 `b6b813ccaa7ae445fa233a1214ea1c144d1c2476`. The attributed Earth ET02
 atlas/world-bible proposal informs this slice; it does not replace the game.

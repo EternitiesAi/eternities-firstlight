@@ -1,3 +1,42 @@
+# World interaction refinement, 2026-10-13
+
+Source-level player-flow review found that the chosen rest point overlaps the
+shared-house door. The first actual App interaction regression reproduced
+`room === 'home'` instead of remembering the arrived moment. Current source
+projects only a privately owned active outing into the existing HUD context
+button and gives it E/click precedence. Exact physical proximity and supported
+segments enable Take/Remember; guidance consumes E without recording or entering
+the house. A separate Follow action releases a remembered rest, after which the
+usual door interaction works. The initial outing and starting rest stay explicit
+in Companion. Facts alone never recreate live guidance after cancellation or
+reload. No new persistent field, reward, tracker pin or camera change.
+
+Current focused regression:61 Node passes,0 failures/0 skips, including10 new
+context cases. These exercise actual App interaction and keyboard/HUD code,
+actual supported rule movement and the real memory Store with labelled bond/DOM
+boundaries. They cover dialog/input/repeat guards, waiting/pause, range, refusal
+and retry, unknown writes and saved/not-adopted owner changes. Python admission
+preparation:8 methods OK. Rebuilt identical HTML3380299B, SHA
+`e54149afdd54cab675dbb71ac8b474e93a5c1660462528ca38e7c97dc61f5fed`.
+
+Read-only colleague review found no remaining source-level integrity/wiring
+blocker. Its copy correction is applied: C opens Character, then Companion is
+selected; it does not directly open Companion. The earned caller now invokes
+the actual App world-context Take/Remember and records that source provenance.
+The native caller is prepared to use keyboard E for early blade, the HUD click
+for early bow and original Companion controls for the returning case, retaining
+the immediate-write, exact-mutation and whole-Chromium restart oracles.
+
+Native execution/pixels, complete current source and returning cohort remain
+pending. Old662 reports cannot qualify the changed runtime. Original doorway
+RED and intermediate CPU-adapter failures remain in the existing artifact
+directory, with the current passing results. No native profiles/video/full
+game copy or VM/Claude intervention was created for this refinement.
+
+---
+
+Earlier preparation checkpoints follow at their original source epochs.
+
 # Native caller prepared, 2026-10-13
 
 Prepared caller/test head `2ea1338e0797f93ede4354292edd5594a4d44523` was pushed

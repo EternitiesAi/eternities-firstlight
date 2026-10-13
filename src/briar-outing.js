@@ -42,6 +42,21 @@ function availability(ctx){
  const uncertain=quarantines.has(ctx?.sim);
  return{ok:s.ok&&!uncertain,error:uncertain?quarantines.get(ctx.sim)+' Reload the saved character before writing again.':s.error||null,savingBlocked:uncertain,view:v,moments:s.ok?s.record.moments.slice():[],nearHome:s.ok&&dist(s.sim.state.player,definition.home)<=2.8&&C.segment(s.sim.state.player,definition.home,s.sim.navRoom,.31)};
 }
+function prompt(ctx){
+ const v=current(ctx);if(!v)return null;
+ const s=scope(ctx,true);if(!s.ok)return null;
+ const guide=(text,action=null)=>Object.freeze({text,action});
+ if(!saveAllowed(s.sim))return guide('Reload the saved character before continuing this moment.');
+ if(s.sim.paused)return guide('Outing paused · resume before continuing with Briar.');
+ if(v.waiting)return guide('Briar is waiting · walk closer to your companion.');
+ if(v.phase==='outbound')return guide('Walk beside Briar toward the lantern pier.');
+ if(v.phase==='returning')return guide('Walk with Briar as the cloth comes home to the Commons.');
+ if(v.phase==='resting')return guide('Walk with Briar to the shared-house doorstep.');
+ if(v.phase==='await-take')return at(s.sim,s.actor,definition.home)?guide('Take the cloth from Briar','take'):guide('Walk beside Briar at the Commons to take the cloth.');
+ if(v.phase==='settled')return at(s.sim,s.actor,definition.rest)?guide('Remember this doorstep moment with Briar','remember'):guide('Walk closer to Briar at the doorstep before remembering.');
+ if(v.phase==='rested')return guide('Doorstep moment kept · return to following','cancel');
+ return null;
+}
 function saveAllowed(sim){return!quarantines.has(sim);}
 function saveBlockReason(sim){return quarantines.get(sim)||null;}
 function uncertain(sim,o,reason){quarantines.set(sim,'A save outcome is uncertain. '+reason);o.uncertainFrom=o.phase;o.phase='uncertain';return fail(reason+' Reload the saved character before retrying; no local moment was adopted.');}
@@ -114,6 +129,6 @@ function command(ctx,type,payload={},io){
  if(!o||o.phase!==(type==='take'?'await-take':'settled')||!at(s.sim,o.actor,type==='take'?definition.home:definition.rest))return fail('Complete the actual outing and stand beside Briar before recording that moment.');
  return commit(ctx,o,type==='take'?M.CLOTH_HOME:M.COMMONS_REST,io,type==='take'?'Briar brought the misplaced cloth home. You took it beside the Commons path.':'You chose the shared-house doorstep, and Briar settled there after your outing.');
 }
-const api=Object.freeze({definition,current,availability,command,tick,cancel,saveAllowed,saveBlockReason});
+const api=Object.freeze({definition,current,availability,prompt,command,tick,cancel,saveAllowed,saveBlockReason});
 G.RealmBriarOuting=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

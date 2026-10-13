@@ -1,3 +1,32 @@
+# Briar world interaction refined, 2026-10-13
+
+Current source fixes the shared-house doorway overlap: during a privately owned
+Briar outing, contextual E/click takes or remembers the actual arrived moment
+before entering the house. Walking/waiting/out-of-range/paused/uncertain-save
+states guide without recording or falling through. The HUD hides the E badge
+for guidance; clicking that guidance opens Companion. Initial retrieval and
+starting rest remain explicit Companion choices. Completed history alone gives
+no live reminder. Trackers, cameras, saves, reward ledgers and XP are unchanged.
+
+Focused current CPU regression passes61 tests, including10 contextual cases
+through actual App interaction, keyboard callback, HUD projection and memory
+Store. Native admission/preservation unit preparation passed8 methods. These
+are targeted CPU results, not native keyboard/pixels or a complete source gate.
+Rebuilt HTML is3380299B, SHAe54149afdd54cab675dbb71ac8b474e93a5c1660462528ca38e7c97dc61f5fed.
+The changed runtime requires a new earned cohort and fresh committed qualification;
+older662 receipts remain historical. The native caller is prepared to exercise
+E on early blade, the HUD click on early bow and Companion on the returning case.
+
+Next: fetch the pushed code into reused STATION, admit the complete verifier
+against fresh host memory>=6291456KiB, then qualify native saves/controls/both
+camera views and one ordinary take. Keep Node180/Python600/fourworkers. VM,
+guest and Claude Code stay excluded. No new full-game copy or cleanup. Goal
+ACTIVE unfinished; separate heartbeat PAUSED. Preserve original failures/skips.
+
+---
+
+Earlier checkpoints below retain their own source epochs.
+
 # Briar browser qualification prepared; no native result yet, 2026-10-13
 
 The Briar playable implementation remains `dbc5874593afe2d18b06ab17817f4beae9d653d3`

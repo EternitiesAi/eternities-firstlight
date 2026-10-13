@@ -169,8 +169,9 @@ def cohort(path, digest, root, scope, gate=None):
     rows = {}
     for row in report['cases']:
         if (row.get('status') != 'passed' or row.get('currentAppOwnershipFunctions') is not True
+                or row.get('currentContextActions') is not True
                 or type(row.get('storeWrites')) is not int or row['storeWrites'] != 2):
-            raise ValueError('Actual App-hook two-write earned continuation required')
+            raise ValueError('Actual App-context two-write earned continuation required')
         expected_style = 'bow' if row['label'] in (EARLY[1], RETURNING[1]) else 'blade'
         if row.get('weaponStyle') != expected_style:
             raise ValueError('The labelled blade/bow family must be its actual canonical weapon')
@@ -328,6 +329,26 @@ class Native:
         self.click('#rpg-content .briar-outing [data-rpg="briar"][data-id="'+kind+'"]')
         self.render()
 
+    def completion_action(self, kind):
+        # Keep one original menu caller; the two early cases qualify the newly
+        # repaired trigger through actual keyboard E and actual HUD clicking.
+        if self.label not in EARLY:
+            self.action(kind)
+            control = 'Companion button'
+        else:
+            self.close()
+            self.render()
+            if self.label == EARLY[0]:
+                self.page.locator('#world').focus()
+                self.page.keyboard.press('e')
+                control = 'keyboard E'
+            else:
+                self.click('#context')
+                control = 'context button'
+            self.render()
+        self.row.setdefault('completionControls', []).append({'kind':kind,'control':control})
+        self.check(kind+' stays in Firstlight instead of entering the overlapping house', self.diag()['scene'] == 'valley')
+
     def start(self):
         self.row.setdefault('admissions', []).append(admission())
         self.context = self.pw.chromium.launch_persistent_context(str(self.profile), **self.args.support.launch_kwargs('software'),
@@ -480,7 +501,7 @@ class Native:
         self.walk({'x':2,'z':8})
         before = self.state()
         writes_before = self.row['nativeWrites']
-        self.action('take')
+        self.completion_action('take')
         after = self.state()
         self.check('Take saves exactly one fact', after['briarMoments'] == {'version':1,'revision':1,'moments':FACTS[:1]})
         self.check('Take changes no old owner', stable(after) == stable(before))
@@ -495,7 +516,7 @@ class Native:
         self.samples('REST', 'resting')
         before = self.state()
         writes_before = self.row['nativeWrites']
-        self.action('remember')
+        self.completion_action('remember')
         self.check('Remember saves exact second fact', self.state()['briarMoments'] == {'version':1,'revision':2,'moments':FACTS})
         self.check('Remember changes no old owner', stable(self.state()) == stable(before))
         self.check('Remember exact atomic live boundary', fact_boundary(before, self.state(), FACTS[1]))
