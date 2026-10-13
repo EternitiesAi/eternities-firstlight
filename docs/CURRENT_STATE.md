@@ -2,7 +2,7 @@
 
 The Briar playable implementation remains `dbc5874593afe2d18b06ab17817f4beae9d653d3`
 in open draft PR72. This follow-up adds an installed bounded native caller and
-seven CPU admission/preservation tests; it changes no runtime, HTML, save schema,
+eight CPU admission/preservation tests; it changes no runtime, HTML, save schema,
 quest reward or camera behavior. Actual current early blade/bow cohort preparation
 passed against the reused STATION with frozen report SHA
 `9ba760ba359ccb661641c97570bf65d59d4469e8f659f8e34a3e445d5c145de6`.

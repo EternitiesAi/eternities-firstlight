@@ -523,9 +523,37 @@ class Native:
 
     def finish(self):
         if self.context:
-            self.context.close()
+            try:
+                self.context.close()
+            except Exception as e:
+                self.row['closed'] = False
+                self.row['closureError'] = repr(e)
+                return
             self.context = None
         self.row['closed'] = True
+
+    def retain_failure(self):
+        # Capture before pagehide can autosave or destroy the failing pose.
+        # Every source is read independently; a disconnected page remains an
+        # honest capture error and never replaces the original assertion.
+        self.row['failureEvidence'], self.row['captureErrors'] = [], []
+        if self.page is None:
+            self.row['captureErrors'].append('No page was allocated')
+            return
+        for name, observe in [('WORLD', self.state), ('DIAGNOSTICS', self.diag),
+                              ('NATIVE_BYTES', lambda: self.ev('()=>localStorage.getItem(RealmCharacters.KEY)'))]:
+            try:
+                path = self.folder/('FAILURE_'+name+'.json')
+                write_new(path, observe())
+                self.row['failureEvidence'].append({'path':str(path), 'sha256':sha(path), 'beforeClose':True})
+            except Exception as e:
+                self.row['captureErrors'].append(name+': '+repr(e))
+        try:
+            path = self.folder/'FAILURE.png'
+            self.page.screenshot(path=str(path), timeout=3000)
+            self.row['failureEvidence'].append({'path':str(path), 'sha256':sha(path), 'beforeClose':True})
+        except Exception as e:
+            self.row['captureErrors'].append('SCREENSHOT: '+repr(e))
 
 
 def main(argv=None):
@@ -590,14 +618,19 @@ def main(argv=None):
                 h = Native(pw, args, report, origin, label)
                 try:
                     h.run(admitted['rows'][label])
+                except Exception:
+                    h.retain_failure()
+                    raise
                 finally:
                     h.finish()
+                if not h.row.get('closed'):
+                    raise AssertionError('Owned context closure unconfirmed; no next browser admitted')
         cohort(args.cohort, args.cohort_sha, args.root, args.scope, args.source_gate)
         if git(args.root, 'rev-parse','HEAD') != admitted['head'] or git(args.root,'status','--porcelain=v1','--untracked-files=all'):
             raise AssertionError('Clean source head changed during native run')
         if sha(__file__) != report['callerSha256'] or sha(support_path) != support_sha:
             raise AssertionError('Native caller/support changed during run')
-        if report['browserErrors'] or report['externalRequests']:
+        if report['browserErrors'] or report['externalRequests'] or any(not r.get('closed') for r in report['cases'].values()):
             raise AssertionError('Browser errors or unexpected requests retained')
         report['status'] = 'passed'
     except Exception:

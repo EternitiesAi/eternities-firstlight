@@ -1,7 +1,7 @@
 # Native caller prepared, 2026-10-13
 
-The playable runtime and HTML remain the implementation atdbc5874593. This
-follow-up installs `tools/briar_outing_browser.py` and seven meaningful CPU
+The playable runtime and HTML remain the implementation at `dbc5874593`. This
+follow-up installs `tools/briar_outing_browser.py` and eight meaningful CPU
 admission/preservation tests. Current real early blade/bow cohort preparation
 passed against STATION without allocating a profile or opening a browser.
 The source epoch contains174 frozen inputs; source membership/hash checks cover
@@ -18,11 +18,17 @@ other two returning cases remain explicitly CPU-only. One blade partial restart
 plus two completed-fact restarts per case gives seven complete-mode restarts.
 There is no ordinary RAF, human pacing, performance or full-browser claim.
 
-Final current preparation receipts: `NATIVE_PREFLIGHT_GREEN04.log` (seven CPU
-tests OK), `NATIVE_EARLY_PREFLIGHT04.log` (real frozen early cohort), and retained
+Final current preparation receipts: `NATIVE_PREFLIGHT_GREEN05.log` (eight CPU
+tests OK), `NATIVE_EARLY_PREFLIGHT05.log` (real frozen early cohort), and retained
 `NATIVE_PREFLIGHT_RED01.log` / `NATIVE_EARLY_PREFLIGHT01.log` (missing caller and
 incorrect all-source raw-embedding assumption). These are small files in the
 existing Briar artifact directory; no new full game or browser profile.
+
+Read-only colleagues reviewed native APIs/phase sequence and source/provenance
+boundaries. Their last failure-path finding was repaired: failed live world,
+diagnostics, native bytes and screenshot are captured before pagehide, with
+capture/closure errors retained separately. A CPU transport test verifies this
+ordering and original-byte preservation. It is not native browser execution.
 
 Source07 final admission refused5273360KiB at2026-10-13T07:58:53.9486987Z; it
 did not launch the verifier. Original180/600 deadlines, four Node workers and

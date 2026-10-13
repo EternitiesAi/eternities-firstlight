@@ -7,6 +7,25 @@ spec=importlib.util.spec_from_file_location('briar_native',ROOT/'tools/briar_out
 N=importlib.util.module_from_spec(spec);spec.loader.exec_module(N)
 
 class Admission(unittest.TestCase):
+    def test_failure_keeps_original_bytes_before_close_and_capture_error(self):
+        # SYNTHETIC transport only. No Chromium/profile/source qualification.
+        with tempfile.TemporaryDirectory(prefix='firstlight-briar-failure-cpu-')as temp:
+            h=N.Native.__new__(N.Native);h.folder=Path(temp);h.row={};calls=[]
+            class Page:
+                def screenshot(self,**kwargs):
+                    calls.append('screenshot');raise RuntimeError('SYNTHETIC screenshot unavailable')
+            class Context:
+                def close(self):calls.append('close')
+            h.page=Page();h.context=Context();h.state=lambda:{'label':'SYNTHETIC failed live state'}
+            h.diag=lambda:{'label':'SYNTHETIC failed diagnostics'}
+            h.ev=lambda code:'SYNTHETIC original native bytes'
+            h.retain_failure();self.assertNotIn('close',calls)
+            self.assertEqual((h.folder/'FAILURE_NATIVE_BYTES.json').read_text(),'SYNTHETIC original native bytes')
+            self.assertEqual(len(h.row['failureEvidence']),3)
+            self.assertTrue(all(r['beforeClose']for r in h.row['failureEvidence']))
+            self.assertEqual(len(h.row['captureErrors']),1)
+            h.finish();self.assertEqual(calls,['screenshot','close']);self.assertTrue(h.row['closed'])
+
     def test_fact_action_cannot_hide_health_settings_or_economy_mutation(self):
         before={'briarMoments':{'version':1,'revision':0,'moments':[]},'adventure':{'revision':3,'hp':10,'coins':9},
             'settings':{'cameraFov':60},'journal':[],'nextEvent':8,'day':2,'hour':17}
