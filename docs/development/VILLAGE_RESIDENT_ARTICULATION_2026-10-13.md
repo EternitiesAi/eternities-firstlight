@@ -62,3 +62,13 @@ Source review identified that a longer closed hem would intersect the forward
 thigh at full stride. Retain the shared short hem instead; pale gathered hair
 and the held notebook distinguish Mara without pretending a cloth simulation.
 A real triangle-versus-apron test also exposed Oren's initial long apron at lifted-knee onset. Shorten its lower edge to local y=.87; 120 phases in each motion setting now clear both thigh meshes. Preserve RED_APRON01 and its successful repair receipt.
+
+Native03 exposed a scenery/clearance defect on Mara's real morning route: the
+commons bench back's padded bounds contained the camera focus, correctly forcing
+the conservative .45m boom. Keep that failed close-up. The four commons seats now
+fit the original .65m navigation reservation, with lower backs ending at world
+Y2.46, below the outdoor focus after camera padding. Other benches retain their
+original dimensions. Core, camera collision and save validation remain unchanged;
+expanding the obstacle would have rejected previously valid saved positions.
+Actual mesh-corner and outgoing/homeward Core-route regressions cover both motion
+settings and follow transitions. Native recapture is required, not inferred.

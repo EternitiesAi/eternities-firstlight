@@ -1,6 +1,6 @@
-require('../src/resident-art.js');
 /* Actual module/mesh CPU checks only; no WebGL or rendered-appearance claim. */
 'use strict';
+require('../src/resident-art.js');
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
 const E=require('../src/engine.js'),T=require('../src/traveler-art.js'),C=require('../src/core.js'),X=require('../src/creative.js'),Gear=require('../src/traveler-equipment-art.js');
 require('../src/combat.js');require('../src/arsenal.js');require('../src/pursuit.js');require('../src/starter.js');require('../src/realm-craft.js');require('../src/world.js');

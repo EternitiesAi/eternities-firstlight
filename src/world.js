@@ -11,7 +11,14 @@ class WorldArt{
  begin(room){this.familyOwner=null;this.familyMotion=new Map();this.familyFrames=new Map();this.familyParts=[];this.earthShoulderFrame=null;this.quarryFrame=null;this.droverFrame=null;this.millwrightFrame=null;this.millGateFrame=null;this.travelerPoseOwner=null;this.travelerFishingOwner=null;this.travelerFishingFacing=null;this.travelerMotion=null;this.travelerFrame=null;this.travelerParts=null;this.e.theme=null;this.e.worldAtmosphere=null;this.e.worldFog=null;this.e.worldFogCenter=null;this.e.cameraMedium=null;this.e.galleryFocus=null;this.e.worldRoofOpen=false;this.e.viewShelters=[];this.e.earthWater=null;this.e.railCutawayActive=false;this.e.noWater=false;this.e.surfacePick=null;this.e.ambientOverride=null;this.e.reflectionStrength=1;this.e.clear();this.e.isInterior=!!room;this.room=room;this.map={};}
  tree(x,z,s=1,style=0,base=1.2){let bark=0x68503c;this.add('cylinder',x,base,z,.42*s,2.6*s,.42*s,bark);for(let a of[-.6,.8,2.3])this.box(x+Math.sin(a)*.45*s,base+2*s,z+Math.cos(a)*.45*s,.18*s,1.2*s,.18*s,bark,{r:[.3,a,.55]});let colors=style===3?[0xd9a4ba,0xc489a5,0xe9bdbe]:style===1?[0xaab961,0x8fa856,0xbdc16f]:style===2?[0x87a897,0x669586,0xa0b59b]:[0x557d65,0x638f69,0x779c73];if(style===0){for(let i=0;i<3;i++)this.add('cone',x,base+(1.6+i*.85)*s,z,(3.2-i*.6)*s,2.2*s,(3.2-i*.6)*s,colors[i],{wind:2});}else{for(let i=0;i<7;i++){let a=i*2.4,r=i===0?0:1.05;this.add(style===3?'round':style===1?'round':'octa',x+Math.cos(a)*r*s,base+(3.25+(i%3)*.42)*s,z+Math.sin(a)*r*s,(2.25+(i%2)*.3)*s,(2.1+(i%3)*.23)*s,(2.15+(i%2)*.35)*s,colors[i%3],{r:[0,a,0],wind:2});}}}
  lamp(x,z,height=3.4,base=1.2){this.box(x,base+height/2,z,.13,height,.13,0x5a4735);this.box(x,base+height,z,.55,.12,.55,0x443c32);this.box(x,base+height-.35,z,.32,.54,.32,0xffd185,{em:1.4,rough:.35});this.add('cone',x,base+height+.07,z,.77,.37,.77,0x594739);this.box(x,base+.09,z,.48,.18,.48,0x777565);}
- bench(x,z,yaw=0,base=1.2,opt={}){let at=(a,b,c,sx,sy,sz,col)=>this.box(x+a*Math.cos(yaw)+c*Math.sin(yaw),base+b,z-a*Math.sin(yaw)+c*Math.cos(yaw),sx,sy,sz,col,{r:[0,yaw,0],...opt});for(let a of[-.72,.72])at(a,.38,0,.14,.75,.5,0x514c43);at(0,.74,0,1.95,.16,.68,0xa88d62);at(0,1.24,-.31,1.95,.52,.11,0xa68b62);}
+ bench(x,z,yaw=0,base=1.2,opt={}){
+  const {compact=false,...detail}=opt,s=compact?.6:1;
+  // Commons seats must fit Core's existing .65 m reservation. A low back also
+  // leaves the resident camera pivot above the padded furniture bounds.
+  const at=(a,b,c,sx,sy,sz,col)=>this.box(x+(a*Math.cos(yaw)+c*Math.sin(yaw))*s,base+b,z+(-a*Math.sin(yaw)+c*Math.cos(yaw))*s,sx*s,sy,sz*s,col,{r:[0,yaw,0],...detail});
+  for(let a of[-.72,.72])at(a,.38,0,.14,.75,.5,0x514c43);
+  at(0,.74,0,1.95,.16,.68,0xa88d62);at(0,compact?1.07:1.24,-.31,1.95,compact?.38:.52,.11,0xa68b62);
+ }
  flowers(x,z,s=.7,base=1.35){for(let i=0;i<5;i++){let a=i*2.4;this.add('leaf',x+Math.cos(a)*.28,base,z+Math.sin(a)*.28,.11,s*.8,.1,0x547a48,{r:[0,a,0],wind:1,cameraSolid:false});this.add('octa',x+Math.cos(a)*.28,base+s*.7,z+Math.sin(a)*.28,.18,.20,.18,[0xdbc18c,0xbca5b4,0xf0dfb4][i%3],{cameraSolid:false});}}
  building(x,z,w,d,roof,wall=0xc8c0a5){
   const y=1.2,wood=0x5b4936,edge=0x8b7350,stone=0xa7a38c,detail={rough:.94,cameraSolid:false,cutaway:true},front=z+d/2;
@@ -117,7 +124,7 @@ class WorldArt{
  for(let i=0;i<3;i++)this.box(0,1.25+i*.18,-14.65,8-i*.4,.22,3.5-i*.35,0x8e9888);for(let a of[-1,1]){this.box(a*3.6,3.35,-15.5,.16,4.1,.16,0x756347);this.box(a*3.25,4.07,-15.42,.82,1.9,.07,0x825567);this.box(a*3.25,3.1,-15.41,.9,.15,.08,0xc5ad77);}for(let i=0;i<11;i++)this.box(-3.3+i*.66,4.6-Math.sin(i/10*Math.PI)*.7,-15.1,.11,.16,.11,0xffcf7f,{em:2});
  // Garden beds, sculpted supports.
  for(let[x,z]of[[-7.8,14.8],[-4.5,15.5]]){this.box(x,1.4,z,2.1,.4,1.3,0x806648);this.box(x,1.62,z,1.92,.06,1.11,0x4f5640);}
- for(let a of[.22,2.2,3.4,5.3])this.bench(Math.cos(a)*6.3,Math.sin(a)*6.3,-a+Math.PI/2);
+ for(let a of[.22,2.2,3.4,5.3])this.bench(Math.cos(a)*6.3,Math.sin(a)*6.3,-a+Math.PI/2,1.2,{compact:true});
  for(let[x,z]of[[-5,4],[5,4],[-5,-4],[5,-4],[0,13],[-11,-2],[11,2],[0,-12]])this.lamp(x,z);
  // Gate to the water; no false portal into another platform.
  for(let x of[-3.2,3.2]){this.box(x,3.5,18,.75,4.6,.75,0x8d978a);this.box(x,5.85,18,1.1,.28,1.1,0xb5b6a0);this.add('cone',x,5.99,18,1.3,.72,1.3,0x688077);}this.box(0,5.5,18,6.7,.38,.65,0xa4ae98);this.box(0,5.8,18,3.2,.2,.75,0xc0b99b);this.add('octa',0,6.27,18,.7,.7,.25,0xdbc58d,{em:.3});
