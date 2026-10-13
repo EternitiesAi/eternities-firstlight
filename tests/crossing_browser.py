@@ -5,9 +5,9 @@ separate and labelled. Map-backed localStorage is not native persistence proof.
 """
 from pathlib import Path
 from playwright.sync_api import sync_playwright
-from browser_support import chromium_launch_kwargs, read_utf8
+from browser_support import chromium_launch_kwargs, read_utf8, browser_output
 import json,hashlib,math,traceback
-R=Path(__file__).resolve().parents[1];O=R/'evidence10/browser';O.mkdir(parents=True,exist_ok=True)
+R=Path(__file__).resolve().parents[1];O=browser_output(R/'evidence10/browser');O.mkdir(parents=True,exist_ok=True)
 HTML=read_utf8(R/'FIRSTLIGHT_VALLEY.html');report={'method':__doc__,'build_sha256':hashlib.sha256(HTML.encode()).hexdigest(),'checks':[],'errors':[]};errors=[];requests=[]
 def ck(name,v):
  report['checks'].append({'name':name,'passed':bool(v)});print(('PASS ' if v else 'FAIL ')+name,flush=True)

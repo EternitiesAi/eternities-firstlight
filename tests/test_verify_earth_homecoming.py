@@ -13,6 +13,7 @@ import io
 import json
 import os
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -217,6 +218,9 @@ class EarthNativeVerifier(unittest.TestCase):
         tree=ast.parse(VERIFY.read_text(encoding='utf8'))
         main=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='main')
         branches=[n for n in main.body if isinstance(n,ast.If) and isinstance(n.test,ast.Attribute) and n.test.attr=='browser']
+        # Browser storage setup is also conditional; select the native execution
+        # branch while retaining the global exactly-one-native-call check below.
+        branches=[n for n in branches if any(isinstance(c,ast.Call) and isinstance(c.func,ast.Name) and c.func.id=='run' and c.args and isinstance(c.args[0],ast.Constant) and c.args[0].value=='earth_homecoming_browser' for c in ast.walk(n))]
         self.assertEqual(len(branches),1)
         calls=[n for n in ast.walk(branches[0]) if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id=='run']
         self.assertTrue(any(isinstance(c.args[0],ast.Constant) and c.args[0].value=='earth_homecoming_browser' for c in calls))
@@ -257,9 +261,19 @@ class EarthNativeVerifier(unittest.TestCase):
             command,_=self.f.spec();self.assertEqual(command[command.index('--root')+1],str(self.f.root))
     def test_main_dispatches_native_only_after_current_earned_preflight_in_same_invocation(self):
         calls=[]
+        # Stage the tiny synthetic input bytes until the corresponding source
+        # transport publishes them. The real browser CLI must claim fresh logs.
+        prepared=self.f.logs.with_name('synthetic-prepared-inputs')
+        self.f.logs.rename(prepared)
         def fake_run(command,**kw):
+            if command[1:2]==['tools/earth_homecoming_journey.cjs']:
+                shutil.copytree(prepared/'earth-homecoming-earned',self.f.sources)
+            if command[1:2]==[str(self.f.root/'tools/browser_budget.py')]:
+                self.assertEqual(command[command.index('--root')+1],str(self.f.root))
+                self.assertEqual(command[command.index('--temp-dir')+1],str(Path(self.tmp.name).resolve()))
+                command=[command[0],*command[command.index('--')+1:]]
             calls.append((command,kw));kw['stdout'].write(b'CPU orchestration sink: no subprocess launched\n');return SimpleNamespace(returncode=0)
-        browser=Path(self.tmp.name)/'main-browser';args=['verify.py','--browser','--output',str(self.f.logs),'--browser-output',str(browser),'--browser-output-mode','supported']
+        browser=Path(self.tmp.name)/'main-browser';args=['verify.py','--browser','--output',str(self.f.logs),'--browser-output',str(browser),'--browser-output-mode','supported','--browser-temp',self.tmp.name]
         # os is local to V; pathlib/native retain the actual host. This tests
         # portable POSIX output routing on every platform, without browser work.
         with patch.object(V,'ROOT',self.f.root),patch.object(V,'os',SimpleNamespace(name='posix',environ=os.environ)),patch.object(V.sys,'argv',args),patch.object(V.shutil,'which',return_value='node'),patch.object(V.subprocess,'check_output',return_value='v24.18.0\n'),patch.object(V.subprocess,'run',side_effect=fake_run),patch.object(V,'prepare_browser_sources',return_value=None),patch.object(V,'consignment_browser_run_spec',side_effect=consignment_orchestration_spec),patch.object(V,'wild_signs_browser_run_spec',side_effect=wild_signs_orchestration_spec),patch.object(V,'wild_signs_boundaries_browser_run_spec',side_effect=wild_signs_boundaries_orchestration_spec),patch.object(V,'road_account_browser_run_specs',side_effect=road_account_orchestration_specs),contextlib.redirect_stdout(io.StringIO()):V.main()

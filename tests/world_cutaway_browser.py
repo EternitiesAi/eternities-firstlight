@@ -11,9 +11,9 @@ reflection freshly, with an empty-scene control proving geometry reaches it.
 from pathlib import Path
 import hashlib, json
 from playwright.sync_api import sync_playwright
-from browser_support import chromium_launch_kwargs, read_utf8
+from browser_support import chromium_launch_kwargs, read_utf8, browser_output
 ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'evidence10/world-cutaway-browser';OUT.mkdir(parents=True,exist_ok=True)
+OUT=browser_output(ROOT/'evidence10/world-cutaway-browser');OUT.mkdir(parents=True,exist_ok=True)
 report={'method':__doc__,'engine_sha256':hashlib.sha256((ROOT/'src/engine.js').read_bytes()).hexdigest(),'checks':[]}
 with sync_playwright() as pw:
  browser=pw.chromium.launch(**chromium_launch_kwargs());context=browser.new_context(viewport={'width':800,'height':600},offline=True);page=context.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))

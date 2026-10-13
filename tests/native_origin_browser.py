@@ -8,10 +8,10 @@ from pathlib import Path
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 import hashlib, json, tempfile, threading, traceback
 from playwright.sync_api import sync_playwright
-from browser_support import chromium_launch_kwargs, read_utf8
+from browser_support import chromium_launch_kwargs, read_utf8, browser_output
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "evidence10" / "native"
+OUT = browser_output(ROOT / "evidence10" / "native")
 OUT.mkdir(parents=True, exist_ok=True)
 HTML = read_utf8(ROOT / "FIRSTLIGHT_VALLEY.html")
 EXPECTED_HASH = hashlib.sha256(HTML.encode("utf-8")).hexdigest()

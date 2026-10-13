@@ -32,6 +32,15 @@ ENV_BROWSER_OUTPUTS = {
 }
 
 
+def legacy_browser_outputs():
+    """Read only the portable output helper, never either browser runtime."""
+    path = Path(__file__).resolve().parents[1] / 'tests/browser_support.py'
+    spec = importlib.util.spec_from_file_location('firstlight_output_contracts', path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.LEGACY_BROWSER_OUTPUTS
+
+
 def browser_run_spec(suite, output, mode="guarded"):
     command = [sys.executable, f'tests/{suite}.py']
     extra_env = {}
@@ -47,13 +56,60 @@ def browser_run_spec(suite, output, mode="guarded"):
                 command += ['--sources', str(target / 'earned-sources')]
         elif suite in ENV_BROWSER_OUTPUTS:
             extra_env[ENV_BROWSER_OUTPUTS[suite]] = str(target)
+        elif suite in legacy_browser_outputs():
+            extra_env['FIRSTLIGHT_BROWSER_OUTPUT'] = str(target)
     return command, extra_env
+
+
+def browser_budget_run_spec(root, command, name, output, temp):
+    """Wrap native execution only; preserve CPU preflights and all suite arguments."""
+    if not name.endswith('_browser') or not command or command[0] != sys.executable:
+        raise ValueError('Browser budget requires a named Python browser suite')
+    return [sys.executable, str(Path(root) / 'tools/browser_budget.py'),
+            '--root', str(root), '--output', str(Path(output) / 'browser-admission' / name),
+            '--temp-dir', str(temp), '--', *command[1:]]
 
 
 def reserve_browser_output(output):
     if output is not None:
         # Atomically claim a fresh root before any source/suite work can run.
         output.mkdir(parents=True, exist_ok=False)
+
+
+def configure_browser_storage(args, *, windows=None):
+    """Validate browser storage, then atomically reserve fresh logs/evidence.
+
+    The platform override is for tiny CPU fixtures; main uses the actual host.
+    This helper never allocates a driver or changes the inherited environment.
+    """
+    if args.browser_output_mode != 'supported':
+        raise ValueError('The complete browser gate requires --browser-output-mode supported.')
+    output = args.output.resolve()
+    evidence = (args.browser_output.resolve() if args.browser_output is not None
+                else output / 'browser')
+    is_windows = os.name == 'nt' if windows is None else windows
+    for path in (output, evidence):
+        if path == Path(path.anchor):
+            raise ValueError('Browser logs and evidence require bounded directories.')
+        if is_windows and path.drive.upper() != 'D:':
+            raise ValueError('Browser logs and evidence must stay on D: on Windows.')
+        if path.exists():
+            raise ValueError('Browser logs and evidence must name new directories; retain prior evidence.')
+    admission = output / 'browser-admission'
+    if (output.is_relative_to(evidence) or evidence.is_relative_to(admission)
+            or admission.is_relative_to(evidence)):
+        raise ValueError('Browser evidence must be separate from logs and browser-admission ledgers.')
+    temp = args.browser_temp or Path(os.environ.get('TEMP') or os.environ.get('TMPDIR') or '/tmp')
+    if not temp.is_absolute() or not temp.is_dir():
+        raise ValueError('--browser-temp must name an existing absolute directory.')
+    temp = temp.resolve()
+    if temp == Path(temp.anchor) or is_windows and temp.drive.upper() != 'D:':
+        raise ValueError('--browser-temp requires a bounded D: on Windows directory.')
+    # Reserve logs first: the default nested evidence root must not create it
+    # implicitly and turn a racing/prior directory into reusable command logs.
+    output.mkdir(parents=True, exist_ok=False)
+    reserve_browser_output(evidence)
+    return output, evidence, temp
 
 
 def prepare_browser_sources(output, *, root=ROOT):
@@ -299,8 +355,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--browser', action='store_true', help='Also run the current browser suites including starter progression and native persistence (requires requirements-dev.txt and Chromium).')
     parser.add_argument('--output', type=Path, default=ROOT / 'verification', help='Directory for fresh command logs.')
-    parser.add_argument('--browser-output', type=Path, help='Route suites with existing output contracts to a separate evidence directory (D: on Windows); requires --browser. Legacy small screenshots keep their defaults.')
-    parser.add_argument('--browser-output-mode', choices=('guarded', 'supported'), default='guarded', help='guarded routes only the four suites requiring D: on Windows; supported routes every existing output contract.')
+    parser.add_argument('--browser-output', type=Path, help='Fresh evidence root for every native suite (D: on Windows); defaults to <output>/browser and requires --browser.')
+    parser.add_argument('--browser-output-mode', choices=('guarded', 'supported'), default='supported', help='The complete browser gate requires supported routing so every suite has fresh evidence; guarded remains a historical run-spec mode.')
+    parser.add_argument('--browser-temp', type=Path, help='Existing bounded temporary directory, D: on Windows; defaults to the inherited TEMP/TMPDIR. Set before driver startup.')
     parser.add_argument('--cpu-temp', type=Path, help='Existing absolute directory for lightweight Python unit-test temporary files only. Browser profiles and earned evidence keep their original storage.')
     parser.add_argument('--rule-workers', type=int, choices=(1, 2, 4), help='Optional Node test-file worker cap for the complete rules suite. Keeps every test and the original 180-second deadline; omission keeps Node scheduling. Does not bound all child processes or memory.')
     args = parser.parse_args()
@@ -308,25 +365,25 @@ def main():
         cpu_env = cpu_test_environment(args.cpu_temp)
     except ValueError as error:
         parser.error(str(error))
-    if args.browser_output is not None:
-        if not args.browser:
-            parser.error('--browser-output requires --browser')
-        args.browser_output = args.browser_output.resolve()
-        if os.name == 'nt' and args.browser_output.drive.upper() != 'D:':
-            parser.error('--browser-output must stay on D: on Windows')
+    if args.browser_output is not None and not args.browser:
+        parser.error('--browser-output requires --browser')
+    if args.browser:
         try:
-            reserve_browser_output(args.browser_output)
-        except FileExistsError:
-            parser.error('--browser-output must name a new directory; prior evidence stays untouched')
+            output, args.browser_output, browser_temp = configure_browser_storage(args)
+        except (ValueError, OSError) as error:
+            parser.error(str(error))
     if not shutil.which('node'):
         parser.error('Node.js is required for development checks. Install Node 22 or 24.')
-    output = args.output.resolve()
-    output.mkdir(parents=True, exist_ok=True)
+    if not args.browser:
+        output = args.output.resolve()
+        output.mkdir(parents=True, exist_ok=True)
     env = {**os.environ, 'PYTHONUTF8': '1'}
     print(f'Python: {sys.version.split()[0]}; Node: {subprocess.check_output(["node", "--version"], text=True).strip()}', flush=True)
     print(f'Logs: {output}', flush=True)
 
-    def run(name, command, timeout=180, extra_env=None):
+    def run(name, command, timeout=180, extra_env=None, native=False):
+        if native:
+            command = browser_budget_run_spec(ROOT, command, name, output, browser_temp)
         print(f'Running {name}...', flush=True)
         log = output / (name + '.log')
         with log.open('wb') as stream:
@@ -512,13 +569,13 @@ def main():
                                 if args.browser_output is not None else output / 'earth-homecoming-browser')
         command, extra_env = earth_homecoming_browser_run_spec(
             ROOT, homecoming_output, cohort_path, homecoming_cohort_sha, earth_browser_output)
-        run('earth_homecoming_browser', command, timeout=1800, extra_env=extra_env)
+        run('earth_homecoming_browser', command, timeout=1800, extra_env=extra_env, native=True)
         # Twelve onboarding stages, two fresh characters and one cold restart.
         # Ten minutes is a provisional controller allowance, not measured pacing.
         onboarding_output = ((args.browser_output / 'onboarding_browser')
                              if args.browser_output is not None else output / 'onboarding-browser')
         command, extra_env = onboarding_browser_run_spec(ROOT, onboarding_output)
-        run('onboarding_browser', command, timeout=600, extra_env=extra_env)
+        run('onboarding_browser', command, timeout=600, extra_env=extra_env, native=True)
         consignment_output = ((args.browser_output / 'earth_consignment_browser')
                               if args.browser_output is not None else output / 'earth-consignment-browser')
         command, extra_env = consignment_browser_run_spec(ROOT, consignment_sources, consignment_output)
@@ -526,17 +583,17 @@ def main():
         # Measured software blade pair: 31m37s; six routes project 94m52s
         # before both refusals. Retain every per-leg guard and every case.
         # This finite aggregate controller budget does not qualify pacing/FPS.
-        run('earth_consignment_browser', command, timeout=7200, extra_env=extra_env)
+        run('earth_consignment_browser', command, timeout=7200, extra_env=extra_env, native=True)
         wild_signs_output = ((args.browser_output / 'earth_wild_signs_browser')
                              if args.browser_output is not None else output / 'earth-wild-signs-browser')
         command, extra_env = wild_signs_browser_run_spec(
             ROOT, wild_signs_sources, consignment_sources, wild_signs_output)
-        run('earth_wild_signs_browser', command, timeout=1800, extra_env=extra_env)
+        run('earth_wild_signs_browser', command, timeout=1800, extra_env=extra_env, native=True)
         wild_signs_boundary_output = ((args.browser_output / 'earth_wild_signs_boundaries_browser')
                                       if args.browser_output is not None else output / 'earth-wild-signs-boundaries-browser')
         command, extra_env = wild_signs_boundaries_browser_run_spec(
             ROOT, wild_signs_sources, consignment_sources, wild_signs_boundary_output)
-        run('earth_wild_signs_boundaries_browser', command, timeout=1800, extra_env=extra_env)
+        run('earth_wild_signs_boundaries_browser', command, timeout=1800, extra_env=extra_env, native=True)
         road_account_output = ((args.browser_output / 'road_account_browser')
                                if args.browser_output is not None else output / 'road-account-browser')
         prepare, preflight, command, extra_env = road_account_browser_run_specs(
@@ -546,16 +603,16 @@ def main():
         run('road-account-current-preflight', preflight, timeout=300, extra_env=extra_env)
         # Two cases each retain a 30-minute local guard; bounded aggregate adds
         # only setup/closure time. No stage can borrow the other case's budget.
-        run('road_account_browser', command, timeout=3700, extra_env=extra_env)
+        run('road_account_browser', command, timeout=3700, extra_env=extra_env, native=True)
         prepare_browser_sources(args.browser_output)
         command, extra_env = browser_run_spec('cosmos_campaign_browser', args.browser_output, mode=args.browser_output_mode)
-        run('cosmos_campaign_browser', command, timeout=1200, extra_env=extra_env)
+        run('cosmos_campaign_browser', command, timeout=1200, extra_env=extra_env, native=True)
         command, extra_env = browser_run_spec('atlantis_campaign_browser', args.browser_output, mode=args.browser_output_mode)
-        run('atlantis_campaign_browser', command, timeout=1200, extra_env=extra_env)
+        run('atlantis_campaign_browser', command, timeout=1200, extra_env=extra_env, native=True)
         command, extra_env = browser_run_spec('heaven_campaign_browser', args.browser_output, mode=args.browser_output_mode)
-        run('heaven_campaign_browser', command, timeout=1200, extra_env=extra_env)
+        run('heaven_campaign_browser', command, timeout=1200, extra_env=extra_env, native=True)
         command, extra_env = browser_run_spec('hell_campaign_browser', args.browser_output, mode=args.browser_output_mode)
-        run('hell_campaign_browser', command, timeout=1200, extra_env=extra_env)
+        run('hell_campaign_browser', command, timeout=1200, extra_env=extra_env, native=True)
         # Qualify the recently extended Earth presentation and native giver
         # route first; fail promptly while retaining every default suite.
         for suite in ['earth_road_browser', 'bridge_community_browser', 'home_history_browser', 'local_life_browser', 'earth_ground_material_browser', 'realm_givers_browser', 'crossing_browser', 'regression09_browser', 'cutaway_browser', 'reflection_browser', 'native_origin_browser', 'starter_browser', 'camera_browser', 'pursuit_browser', 'characters_browser', 'classes_browser', 'cosmos_browser', 'earth_browser', 'earth_story_browser', 'earth_notes_browser', 'gathering_browser', 'realm_atlas_browser', 'timber_browser', 'traveler_browser', 'bridge_browser', 'combat_cue_browser', 'world_foundations_browser', 'world_cutaway_browser', 'realm_trails_browser', 'realm_trails_north_browser', 'realm_trails_cosmos_browser', 'soundscape_browser', 'journey_usability_browser', 'workshop_transactions_browser', 'companion_presentation_browser', 'skitter_presentation_browser', 'coastward_scenery_browser', 'earth_story_transactions_browser', 'coastward_bridge_posts_browser', 'practice_visibility_browser', 'realm_work_presentation_browser', 'earth_expedition_browser']:
@@ -563,7 +620,7 @@ def main():
             # Local life restarts all Chromium 48 times across three earned cases.
             # Keep the complete routes/assertions in a bounded 20-minute window.
             command, extra_env = browser_run_spec(suite, args.browser_output, mode=args.browser_output_mode)
-            run(suite, command, timeout=1200 if suite in ('realm_givers_browser', 'local_life_browser') else 600, extra_env=extra_env)
+            run(suite, command, timeout=1200 if suite in ('realm_givers_browser', 'local_life_browser') else 600, extra_env=extra_env, native=True)
     print('Verification passed. Automated checks do not qualify human pacing or device performance.', flush=True)
 
 

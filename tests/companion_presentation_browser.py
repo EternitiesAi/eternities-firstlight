@@ -12,10 +12,10 @@ from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from contextlib import contextmanager
 import hashlib, json, os, subprocess, tempfile, threading, traceback
 from playwright.sync_api import sync_playwright
-from browser_support import chromium_launch_kwargs
+from browser_support import chromium_launch_kwargs, browser_output
 
 ROOT=Path(os.environ.get('FIRSTLIGHT_TEST_ROOT',Path(__file__).resolve().parents[1])).resolve()
-OUT=ROOT/'evidence10/companion-presentation-browser';OUT.mkdir(parents=True,exist_ok=True)
+OUT=browser_output(ROOT/'evidence10/companion-presentation-browser');OUT.mkdir(parents=True,exist_ok=True)
 LEGACY='eternities.realm10.save.v9'
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 fixtures={k:ROOT/'examples'/p for k,p in {'bonded':'CHAPTER_COMPLETED_EARNED.json','injured':'CHAPTER_START_EARNED.json'}.items()}

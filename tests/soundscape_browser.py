@@ -9,10 +9,10 @@ from pathlib import Path
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 import hashlib, json, tempfile, threading, traceback
 from playwright.sync_api import sync_playwright
-from browser_support import chromium_launch_kwargs
+from browser_support import chromium_launch_kwargs, browser_output
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'evidence10/soundscape-browser'
+OUT = browser_output(ROOT / 'evidence10/soundscape-browser')
 OUT.mkdir(parents=True, exist_ok=True)
 report = {'method': __doc__, 'checks': [], 'errors': [], 'browser_errors': [],
           'html_sha256': hashlib.sha256((ROOT / 'index.html').read_bytes()).hexdigest()}
