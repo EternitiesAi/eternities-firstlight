@@ -67,6 +67,10 @@ class Routing(unittest.TestCase):
         self.assertEqual(prepare[prepare.index('--report') + 1], str(self.reports[0]))
         self.assertEqual(env['ROAD_ACCOUNT_NATIVE_INPUTS'], str(self.base / 'aftermath-inputs.json'))
         self.assertEqual(env['ROAD_ACCOUNT_CPU_OUTPUT'], str(self.base / 'aftermath-cpu'))
+        selected = str(self.root / 'tools/SOURCE_EXPECTATIONS05.json')
+        self.assertEqual(env['ROAD_ACCOUNT_NATIVE_EXPECTATIONS'], selected)
+        self.assertEqual(prepare[prepare.index('--expectations') + 1], selected)
+        self.assertEqual(native[native.index('--expectations') + 1], selected)
         self.assertEqual(before, {p: self.sha(p) for p in self.base.rglob('*') if p.is_file()})
         self.assertFalse(self.out.exists())
 

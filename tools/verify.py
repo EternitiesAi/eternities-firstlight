@@ -268,7 +268,7 @@ def road_account_browser_run_specs(root, primary_output, boundary_output, output
             p = Path(name)
             if not p.is_absolute() or not p.is_file() or hashlib.sha256(p.read_bytes()).hexdigest() != digest:
                 raise ValueError('Current prerequisite native input bytes drifted')
-    expectations = root / 'tools/SOURCE_EXPECTATIONS04.json'
+    expectations = root / 'tools/SOURCE_EXPECTATIONS05.json'
     common = {'FIRSTLIGHT_ROOT': str(root), 'PYTHONDONTWRITEBYTECODE': '1',
               'ROAD_ACCOUNT_NATIVE_EXPECTATIONS': str(expectations),
               'ROAD_ACCOUNT_NATIVE_INPUTS': str(manifest), 'ROAD_ACCOUNT_CPU_OUTPUT': str(cpu)}
@@ -384,7 +384,7 @@ def main():
     # the same file runs all mandatory checks after current native gates below.
     run('road-account-controller-preflight', [sys.executable, 'tools/test_road_account_browser.py'],
         extra_env={'FIRSTLIGHT_ROOT': str(ROOT), 'ROAD_ACCOUNT_NATIVE_INPUTS': '',
-                   'ROAD_ACCOUNT_NATIVE_EXPECTATIONS': str(ROOT / 'tools/SOURCE_EXPECTATIONS04.json'),
+                   'ROAD_ACCOUNT_NATIVE_EXPECTATIONS': str(ROOT / 'tools/SOURCE_EXPECTATIONS05.json'),
                    'ROAD_ACCOUNT_CPU_OUTPUT': str(output / 'road-account-source-cpu')})
     run('crossing-blade', ['node', 'tests/crossing_journey.cjs'])
     run('crossing-bow', ['node', 'tests/crossing_journey.cjs', '--bow'])

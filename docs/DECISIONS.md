@@ -1,3 +1,19 @@
+# Review source changes as a new expectation epoch, 2026-10-13
+
+When reviewed helper semantics change, create an explicit new expectation file.
+Retain the historical raw map for its actual legacy provenance and select only
+the reviewed current LF identities for current text admission. Do not pretend
+semantic changes are newline-only changes or mutate frozen04 to obtain a pass.
+Current native qualification must still bind current HEAD/page/raw outputs,
+required cases, accepted checks and closed resources.
+
+Keep independent tooling work on a separate branch while the resident checkout
+is frozen for native qualification. Focused CPU success and a source review are
+useful progress under the memory boundary; neither implies browser qualification.
+Do not free resources by changing VM/Claude work.
+
+---
+
 # Resident articulation preserves the existing simulation, 2026-10-13
 
 Reuse the traveler skeleton for only Ilan/Mara/Oren, with an immutable presentation

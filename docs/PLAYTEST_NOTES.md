@@ -1,3 +1,13 @@
+# Current helper review adds no human-playtest result, 2026-10-13
+
+The separate epoch05 branch passes34 focused CPU tests and preserves identical
+game pages. It launches no browser and supplies no new gameplay movie. Native04
+now records full paused image operands and a recorder lifecycle acceptance limit,
+following independent source review; execution remains pending host memory.
+The resident recognition/stride/prop/camera questions below still need Dom.
+
+---
+
 # The residents and an honest failed capture, 2026-10-13
 
 Native03 at166550d used actual Settings and People/Follow controls in installed

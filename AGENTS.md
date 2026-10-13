@@ -1,3 +1,21 @@
+# Separate current-helper verification branch, 2026-10-13
+
+ROOT now carries verification/road-account-current-epoch-20261013, based on
+resident checkpoint890d409c3f1610aad923d7b30d00384425230152. PR76 and reused
+STATION remain frozen there for Source04/Native04. This branch changes only
+tooling/tests/records, selecting reviewed SOURCE_EXPECTATIONS05. Frozen04 and
+every native driver/admission guard remain. Read
+docs/development/ROAD_ACCOUNT_EPOCH05_2026-10-13.md.
+
+34 focused CPU checks passed; identical HTML rebuilt. This is not complete
+source/native qualification. Parent prepared this independent work while host
+free memory remained below6291456KiB. Continue the resident gate first when
+admitted, then qualify the new review branch. No new game copy or profile.
+World9/Adventure12 remain. Goal ACTIVE; separate heartbeat PAUSED.
+All VM/Claude/personal-save/storage/paid-work/merge/deploy exclusions below remain.
+
+---
+
 # Village residents implemented; current visual gate open, 2026-10-13
 
 Continue gameplay/village-resident-articulation-20261013 / draft PR76, stacked on

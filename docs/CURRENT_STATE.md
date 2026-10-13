@@ -1,3 +1,19 @@
+# Browser verification now selects explicitly reviewed current helpers, 2026-10-13
+
+The separate verification/road-account-current-epoch-20261013 branch selects
+SOURCE_EXPECTATIONS05 for the current road-account chain. Only two reviewed
+helper text identities change; historical raw identities and frozen04 remain.
+34 focused CPU checks passed with zero failures/skips. Both regenerated HTML
+files remain identical to resident checkpoint890d409; no gameplay/save migration.
+[Source review and exact limits](development/ROAD_ACCOUNT_EPOCH05_2026-10-13.md).
+
+Resident PR76 and the reused station remain frozen at890d409 for pending
+Source04/Native04. Fresh RAM has stayed below the6GiB admission threshold; no
+full source or browser was launched during this separate tooling work. Current
+complete browser, human acceptance, hosted jobs and GPU qualification remain open.
+
+---
+
 # Three familiar people, with visual qualification still open, 2026-10-13
 
 Draft PR76 adds articulated Ilan, Mara and Oren to their existing village routes

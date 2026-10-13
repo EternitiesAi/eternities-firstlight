@@ -1,3 +1,25 @@
+# Next: finish native residents, then qualify the current helper epoch, 2026-10-13
+
+ROOT is verification/road-account-current-epoch-20261013, a separate tooling
+branch based on890d409. The old resident branch and STATION remain at890d409.
+Do not mistake the34 targeted CPU passes for complete source/browser acceptance.
+[Epoch05 record](development/ROAD_ACCOUNT_EPOCH05_2026-10-13.md).
+
+1. When fresh host RAM reaches6291456KiB, finish frozen resident Source04/Native04
+   in STATION using the existing ARC controllers. Native04's reviewed correction
+   now retains full paused screenshot operands and checks recorder lifetime
+   through closure. No successful run exists yet. Preserve prior failures.
+2. Qualify the exact current helper review branch afterward. Reuse STATION,
+   fetch/verify its exact SHA and keep every native admission/closure guard.
+   Complete current primary/boundary outputs are prerequisites for road-account;
+   old receipts cannot stand in. Full source uses four workers/180s/600s.
+3. Update each review branch with its own exact results. No VM/Claude/personal
+   save access, new full copy, deletion, paid work, main merge or public deploy.
+
+Goal ACTIVE, production unfinished. The separate heartbeat remains PAUSED.
+
+---
+
 # Next: finish the resident visual gate, 2026-10-13
 
 Continue draft PR76 / gameplay/village-resident-articulation-20261013 from actual

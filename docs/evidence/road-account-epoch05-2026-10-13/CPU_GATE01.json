@@ -1,0 +1,65 @@
+{
+  "scope": "Focused CPU tests of installed review changes; no full-source or native browser qualification",
+  "baseHead": "890d409c3f1610aad923d7b30d00384425230152",
+  "branch": "verification/road-account-current-epoch-20261013",
+  "workingFiles": {
+    "tools/SOURCE_EXPECTATIONS05.json": "d09c49ed357c5e50218978e3bcc3043f9b1627422f5ae5ceb3ed4a160d2d8409",
+    "tools/verify.py": "5aa495d33d4da24bc9fbdf40763f057567d2cd52f753a61214f68c3035469d6a",
+    "tests/test_roadkeeper_current_epoch.py": "aa6513a3225ac49428191ab07caeea2fdb655601e5759187d0998c1c4ab3f9cb",
+    "tests/test_verify_road_account.py": "319faf3ae020cc0cc3844ca2f02a2b545fb82697058537eabae4461103db0ec3"
+  },
+  "historical04SHA256": "5586f62a1ce6efa54d6edd72244c47892bbc8a0e0dc9e3ed0d2a9dd6dd1bd307",
+  "allOtherVerifierASTUnchanged": true,
+  "html": {
+    "bytes": 3415558,
+    "sha256": "6e4bc861f4f55267f57a397fc442ff26a75af36d2cfb9a56fb8c03b664ce8afe",
+    "regeneratedIdentical": true
+  },
+  "tests": [
+    {
+      "command": "python -B -m unittest discover -s tests -p test_roadkeeper_current_epoch.py -v",
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "log": "CPU_INTEGRATED01.log"
+    },
+    {
+      "command": "python -B -m unittest discover -s tests -p test_verify_road_account.py -v",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "log": "CPU_ROUTING01.log"
+    },
+    {
+      "command": "python -B -m unittest discover -s tests -p test_roadkeeper_expectations.py -v",
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "log": "CPU_HISTORICAL01.log"
+    },
+    {
+      "command": "python -B -m unittest discover -s tests -p test_road_account_startup.py -v",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "log": "CPU_CLOSURE01.log"
+    }
+  ],
+  "testFixtureScope": "Actual source/HEAD/page admission plus explicitly labelled synthetic RAM byte mutations and routing/startup receipt fixtures; no command-earned native inputs fabricated",
+  "independentReview": "Read-only Sol colleague compared final JSON/patch, unchanged admission guards and provenance. No blocker found; no independent test execution.",
+  "pending": [
+    "complete current source",
+    "current full --browser",
+    "resident Native04",
+    "human playtest",
+    "real GPU performance"
+  ],
+  "saveVersions": {
+    "world": 9,
+    "adventure": 12,
+    "migration": false
+  },
+  "runtimeChanges": false,
+  "browserExecuted": false,
+  "completeSourceExecuted": false
+}
