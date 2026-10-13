@@ -1,5 +1,15 @@
 # Native caller prepared, 2026-10-13
 
+Prepared caller/test head `2ea1338e0797f93ede4354292edd5594a4d44523` was pushed
+and freshly fetched into the clean reused independent STATION. At that exact
+head, eight focused CPU tests passed in0.284s and actual early-cohort preparation
+passed with zero profiles/browser execution. Actual rebuild and raw comparison
+matched169 runtime files,81 changed files and all four3378270B HTML copies.
+Latest Source08 **did not launch**: final host admission was2735528KiB against
+6291456 at2026-10-13T08:43:17.0110975Z. No resources belonging to the VM or
+Claude Code were inspected, changed or reclaimed. Later checkpoint changes add
+records and raw receipts only. The complete gate remains unresolved.
+
 The playable runtime and HTML remain the implementation at `dbc5874593`. This
 follow-up installs `tools/briar_outing_browser.py` and eight meaningful CPU
 admission/preservation tests. Current real early blade/bow cohort preparation

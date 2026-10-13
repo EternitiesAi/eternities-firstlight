@@ -15,8 +15,13 @@ accelerated native automation when run. Complete mode requires all five earned
 cases plus the successful same-invocation current source receipt; early-only
 mode cannot claim returning-character or full-source qualification.
 
-Source07 was not launched after final preparation at5273360KiB, below6291456,
-on2026-10-13T07:58:53.9486987Z. No native/browser/video result is claimed.
+Prepared caller/test head `2ea1338e0797f93ede4354292edd5594a4d44523` was
+freshly fetched into clean reused STATION. Its eight focused CPU tests and real
+early-cohort preparation passed. Actual rebuild and raw comparison matched169
+runtime files,81 changed files and four HTML copies. Source08 was not launched:
+final host reading2735528KiB was below6291456 at2026-10-13T08:43:17.0110975Z.
+No native/browser/video result is claimed. Subsequent checkpoint changes are
+records/evidence only; full returning/source/native gates remain open.
 Keep original180/600 source deadlines, four workers and fresh6GiB host admission
 before source/native/clip launch. VM/guest/Claude Code remain excluded. ROOT and
 STATION are reused on D; no full-game copy, cleanup, shared install or billing
