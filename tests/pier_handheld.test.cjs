@@ -118,5 +118,7 @@ test('actual WorldArt submits the held rod once, stows blade/bow, and preserves 
   near(snap.parts.find(p=>p.fishingPart==='rod-grip').p,E.M.transform(snap.frame.root,snap.frame.joints.rightHand));
   F.command(ctx,'cancel');sim.presentation.fishing=F.current(ctx);art.traveler(empty(),sim);
   assert.equal(art.travelerSnapshot().frame.fishing,null);assert.ok(!art.travelerSnapshot().parts.some(p=>p.fishingPart));
+  art.e={clear(){}};art.travelerFishingOwner={sim};art.travelerFishingFacing={yaw:2};art.begin(null);
+  assert.equal(art.travelerFishingOwner,null,'Same-scene generation clears prior activity ownership');assert.equal(art.travelerFishingFacing,null);
  }
 });
