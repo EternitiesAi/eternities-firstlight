@@ -1,3 +1,44 @@
+# Ordinary receiving footage, qualified code3269dd3, 2026-10-13
+
+The single final controller invocation passed88 actual native/ordinary-RAF
+checks, with no browser errors and confirmed context/server closure. Admission
+observed11345480KiB host-free RAM above the unchanged6291456KiB bound. Prior
+resource holds stay historical; no VM or unrelated process action preceded it.
+
+Portable raw report, synthetic command-earned source/final worlds, admission,
+exit, console, reviewed caller/controller and media proof live in
+`docs/evidence/living-road-inspection-2026-10-12/clip-qualification-3269dd3.json`.
+Its file map hashes every raw receipt. The existing source/native qualification
+is an immutable earlier snapshot; this receipt supplements it.
+
+[Actual returned-kit movie (MP4)](../evidence/living-road-inspection-2026-10-12/receiving-actual-3269dd3.mp4)
+and [original WebM](../evidence/living-road-inspection-2026-10-12/receiving-actual-3269dd3.webm)
+show both views after legitimate fitting, inspection, walk and original payment.
+Viewport1440×960; actualLow raster1224×816; sound off, reducedMotion=false,
+timeFlow=false. The movie excludes DOM HUD/controls. Entire caller423.5669s;
+recording callback window18.5007s;55 decoded frames at0–16.776s. Main4.1/yuv420p
+faststart MP4 preserves every millisecond timestamp and frame count; both full
+decodes had0 warnings. Human mobile playback has not occurred. Two earlier
+conversion diagnostics remain private; they are not shipped as successful media.
+
+SwiftShader/Chromium143 software recording visibly stutters:77 RAF callbacks,
+p50=216.7ms,p95=483.4ms,p99=516.6ms,max=3283.2ms,62>50ms. This includes encoding
+and automation, is not rendered FPS, and qualifies no RTX/human experience.
+Source06 and Native01 remain the exact3269 code epoch (217 commands and1424
+checks); records/media delivery is separately rebuilt and compared remotely.
+No runtime/HTML/save-schema change accompanies this footage. Both generated
+pages remain3357566B, SHA dbd5ad604e450264086af554fa74e4b8dd846bb4eb3d47f7de3ff56190a515f3.
+
+Next: optional Earth ET02 shared Briar retrieval/return/rest, with a new object
+and validated completed-moment history. No backfilled old relationship, power
+reward, affection clock, compulsory grief or replayed cache reward. Human
+questions remain: is the kit readable, is Look useful, and are both views
+comfortable? Existing hosted billing failure is separate from local validation.
+
+---
+
+Prior exact snapshots follow.
+
 # Current complete source and targeted native qualification
 
 Qualification head: `3269dd308f44f2ea9dc47c68f72aefc5eac5e0a1`.

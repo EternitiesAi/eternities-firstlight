@@ -1,3 +1,13 @@
 *.json -text
 *.log -text
 *.png -text
+
+*.webm -text
+*.mp4 -text
+*.py -text
+*.ps1 -text
+*.txt -text
+# Preserve original Windows receipt bytes and recognize their CRLF line endings.
+* whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# FFmpeg progress lines contain original padding; do not alter raw evidence.
+encode-receiving-main41.log -whitespace

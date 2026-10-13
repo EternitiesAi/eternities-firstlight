@@ -1,0 +1,163 @@
+{
+  "observedUTC": "2026-10-13T05:52:34.378117+00:00",
+  "qualifiedCodeHead": "3269dd308f44f2ea9dc47c68f72aefc5eac5e0a1",
+  "status": "passed",
+  "checks": {
+    "pass": 88,
+    "fail": 0
+  },
+  "capture": {
+    "ordinaryRAF": true,
+    "testFlags": false,
+    "humanAcceptance": false,
+    "viewport": {
+      "width": 1440,
+      "height": 960
+    },
+    "raster": {
+      "width": 1224,
+      "height": 816
+    },
+    "quality": "low",
+    "browserVersion": "143.0.7499.4",
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "rafObservation": {
+      "scope": "Additional ordinary RAF callback intervals while recording; encoding and automation overhead included, not rendered FPS",
+      "callbacks": 77,
+      "elapsed_ms": 18500.70000001788,
+      "p50_ms": 216.70000000001164,
+      "p95_ms": 483.3999999999651,
+      "p99_ms": 516.5999999999767,
+      "max_ms": 3283.2000000000116,
+      "over50ms": 62
+    },
+    "video": {
+      "path": "ACTUAL_FIELDCRAFT.webm",
+      "bytes": 546513,
+      "sha256": "3ecad2a99ff3f6793274d77e38e95724c283a9abe206e1e8ced9ba071da9d3e1",
+      "audio": false,
+      "surface": "Actual WebGL canvas only; DOM HUD and controls excluded",
+      "requested_capture_fps": 30,
+      "partial": false
+    },
+    "wallSeconds": 423.5669101999956,
+    "decodedFrames": 55,
+    "firstFrameMs": 0,
+    "lastFrameMs": 16776,
+    "decodedTimestampsConserved": true,
+    "decodeWarnings": [],
+    "audio": false,
+    "domHUDIncluded": false
+  },
+  "nativeController": {
+    "file": "receiving-controller.ps1",
+    "sha256": "0df7b647750ab5f78866fd454dfe763277b7d958ae4c19441abace7dadc9bd6d"
+  },
+  "nativeCaller": {
+    "file": "receiving-caller.py",
+    "sha256": "ecfa4335cf805b648527300d6739881c17c058e7dd40257dc89dfb6b37d9ef27"
+  },
+  "sourceGate": "Complete Source06 at qualifiedCodeHead; original180/600/4 workers",
+  "nativeGate": "Native01 at same code:1424pass0fail/22 whole restarts/3variants",
+  "epoch": "This supplements the immutable preclip qualification-3269dd3 snapshot; prior insufficient-RAM holds and failed encodes remain private diagnostics.",
+  "conversion": "Single original take plus H264 Main4.1 yuv420p faststart VFR copy.55 frames and millisecond PTS preserved; no smoothing/interpolation or retake.30 requested capture FPS and nominal demux rates are not achieved game FPS.",
+  "limits": [
+    "Software renderer, encoding/automation-influenced RAF intervals and visible stutter; no RTX benchmark",
+    "Canvas-only silent capture starts after paid return near Rill; UI controls/HUD evidenced by separate native screenshots",
+    "No human mobile playback, human pacing, comfort or complete browser gate",
+    "No VM/Claude/unrelated process/control/personal profile actions; no new full-game copy or cleanup"
+  ],
+  "files": [
+    {
+      "file": "receiving-actual-3269dd3.webm",
+      "bytes": 546513,
+      "sha256": "3ecad2a99ff3f6793274d77e38e95724c283a9abe206e1e8ced9ba071da9d3e1"
+    },
+    {
+      "file": "receiving-actual-3269dd3.mp4",
+      "bytes": 567420,
+      "sha256": "ac5c6e1c180c276064778c8a11acb3d43a666de38a5161ad6397a0e366854e47"
+    },
+    {
+      "file": "clip-report-3269dd3.json",
+      "bytes": 44937,
+      "sha256": "016743d659c11d980c3fbfefc473e34ba77401e04087b827f8e8883d6398fb99"
+    },
+    {
+      "file": "clip-source-world-3269dd3.json",
+      "bytes": 26590,
+      "sha256": "f1742c18e10a08ecd4cb50d455edf65a8ef580a735cdfd062f935249347a4ddc"
+    },
+    {
+      "file": "clip-final-world-3269dd3.json",
+      "bytes": 28671,
+      "sha256": "6d0a62308a96a86b7063bebb36eaf47f6c2feed434567d30991dbdeb7b38890f"
+    },
+    {
+      "file": "clip-admission-3269dd3.json",
+      "bytes": 3139,
+      "sha256": "71c74624a10e65ea4e2ebc568019053f131a3ea9e53c5d504d148d14222527ba"
+    },
+    {
+      "file": "clip-exit-3269dd3.json",
+      "bytes": 778,
+      "sha256": "c62ce5749df8c4b487ca6a385ee8beef24e2b1d87c9ea7cd39be26653faab9db"
+    },
+    {
+      "file": "clip-console-3269dd3.log",
+      "bytes": 878,
+      "sha256": "bc70c1165ee11efaaadac83aaba40116138e9b4a053660765039435f390a9131"
+    },
+    {
+      "file": "receiving-caller.py",
+      "bytes": 26172,
+      "sha256": "ecfa4335cf805b648527300d6739881c17c058e7dd40257dc89dfb6b37d9ef27"
+    },
+    {
+      "file": "receiving-controller.ps1",
+      "bytes": 8961,
+      "sha256": "0df7b647750ab5f78866fd454dfe763277b7d958ae4c19441abace7dadc9bd6d"
+    },
+    {
+      "file": "media-validation-3269dd3.json",
+      "bytes": 3081,
+      "sha256": "cb2f59cbd615a7652f05e86e5a438fd128bfe9e5ecced89aa91f1e36b34f0564"
+    },
+    {
+      "file": "media-validator.py",
+      "bytes": 2267,
+      "sha256": "6e6f2fafe08c9cc9948aa8f01d90d90718930d03e93ae9581d6f6d7f2414c988"
+    },
+    {
+      "file": "encode-receiving-main41.log",
+      "bytes": 3327,
+      "sha256": "8235c9cc40651193d16400da8645d92309b5339904aee06fb8d08f9db46e1dc9"
+    },
+    {
+      "file": "frames-original.txt",
+      "bytes": 6380,
+      "sha256": "0ea317af6da5e6134f1075f01bf960ede184b723c4d07260d9aa92d061401996"
+    },
+    {
+      "file": "frames-mobile.txt",
+      "bytes": 6380,
+      "sha256": "cb9e84a4c61393fcab1e65e9a53ac24b59e1726ae42a115e3972025c32d2dbf4"
+    },
+    {
+      "file": "decode-original.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "decode-mobile.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "conversion-command.json",
+      "bytes": 1018,
+      "sha256": "12390b8d5354f71c20e712ff31e52db97ddf66f528ff38ac9fe560d2b00e467b"
+    }
+  ],
+  "callerPortability": "Caller/controller/validator are exact original provenance sources using ARC/STATION paths; exported copies are not standalone portable revalidation commands."
+}

@@ -1,3 +1,32 @@
+# Returned-kit footage delivered, 2026-10-13
+
+PR71 remains an open draft, stacked against PR70. Qualified code is
+`3269dd308f44f2ea9dc47c68f72aefc5eac5e0a1`: complete Source06 passed217
+commands (Node2144 pass/0fail/2 skips; Python478 methods OK/10 skips), and
+Native01 passed1424 checks/0fail with22 Chromium restarts across three variants.
+One ordinary-RAF take now passed88 checks/0fail. It shows the actually paid kit
+beside Rill in both cameras. The original WebM plus MP4 total1113933B; both
+decode55 frames with identical timestamps, no warnings. The18.5007s capture
+window contains frames at0–16.776s; no interpolated frames or repeated take.
+
+Chromium143/Low used SwiftShader. Recording RAF p50/p95/p99 were216.7/483.4/
+516.6ms, maximum3283.2ms,62 intervals over50ms. These include encoding and
+automation overhead and do not measure rendered FPS or the RTX3080. The silent
+canvas excludes DOM HUD/controls. Human play, physical-GPU and full-browser
+acceptance remain open. See the current results and portable clip receipt.
+
+World9/Adventure12/Expedition1/WildSigns1 and all existing saves/systems/cameras
+remain. VM/guest/Claude Code are excluded. Reuse ROOT/STATION on D; no new full
+game copy or cleanup. Goal active/unfinished, heartbeat paused.
+
+Next coherent arc: Earth ET02, an optional shared outing with Briar, a new
+misplaced object, its actual retrieval/return and a deliberately chosen rest.
+Do not invent old shared history, reuse old cache payouts or force grief/loss.
+
+---
+
+Earlier checkpoints below retain their original epochs.
+
 # Returned-kit inspection source and native qualified, 2026-10-13
 
 OPEN DRAFT [PR71](https://github.com/EternitiesAi/eternities-firstlight/pull/71),
