@@ -70,3 +70,11 @@ test('framing the water is an explicit camera action that retains the chosen sty
  camera.preset='follow';camera.baseHalf=18;env.frameFishing();assert.equal(camera.preset,'follow');assert.equal(camera.fov,72);assert.equal(saves,2);
  env.fishing.active=()=>false;assert.equal(env.frameFishing().ok,false);assert.equal(saves,2);
 });
+
+test('the actual App boundary gives photo mode its controls and suspends the hidden line',()=>{
+ const fs=require('node:fs'),vm=require('node:vm'),s=fs.readFileSync(require.resolve('../src/app.js'),'utf8');let photo=false,dialog=false;
+ const env={panel:null,document:{querySelector:()=>dialog?{}:null,body:{classList:{contains:()=>photo}}}};
+ vm.createContext(env);vm.runInContext(s.split('\n').find(l=>l.startsWith('function fishingControlsCovered(')),env);
+ assert.equal(env.fishingControlsCovered(),false);photo=true;assert.equal(env.fishingControlsCovered(),true);
+ photo=false;dialog=true;assert.equal(env.fishingControlsCovered(),true);dialog=false;env.panel='settings';assert.equal(env.fishingControlsCovered(),true);
+});
