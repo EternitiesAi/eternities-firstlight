@@ -110,3 +110,14 @@ test('reduced motion retains essential walking/contact and omits optional drift'
   assert.notDeepEqual(a.frame.joints.leftFoot,render(id,{reducedMotion:true}).frame.joints.leftFoot);
  }
 });
+
+test('Mara retains the shared short hem envelope instead of a closed skirt across the stride',()=>{
+ for(let i=0;i<24;i++){
+  const motion={phase:i*Math.PI/12,blend:1,time:i*.02},r=render('mara',motion),out=empty();
+  T.draw(out,{},R.pose('mara',motion));
+  for(const name of ['jacket-left-hem','jacket-right-hem']){
+   const old=parts(out).find(p=>p.travelerPart===name),now=r.parts.find(p=>p.residentPart===name);
+   near(Array.from(now.m),Array.from(E.M.mul(r.frame.root,old.m)));assert.deepEqual(now.s,old.s);
+  }
+ }
+});

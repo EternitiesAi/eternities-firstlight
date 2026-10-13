@@ -11,7 +11,7 @@ presentation of current people, not new quests, personalities or simulation.
 
 Ilan keeps the rust palette, brown hair and recognizable small string instrument.
 He carries it quietly; no perpetual performance or implied audio playback. Mara
-keeps teal clothing and pale hair, with a longer split jacket and a supported
+keeps teal clothing and pale hair, with a short split jacket and a supported
 notebook that lowers during travel. Oren keeps ochre, a broader work silhouette,
 short apron and compact folding rule. That new small prop is original provisional
 art, not inventory or an upgraded project. Adult proportions stay near existing
@@ -57,3 +57,7 @@ short bounded footage when useful. Human recognition/warmth and RTX performance
 remain separate. Preserve failures. VM/Claude/personal profiles excluded; fresh
 host6GiB admission before complete source/every browser, four workers and original
 deadlines. No cleanup, full clone, billing action, merge, deploy or heartbeat resume.
+
+Source review identified that a longer closed hem would intersect the forward
+thigh at full stride. Retain the shared short hem instead; pale gathered hair
+and the held notebook distinguish Mara without pretending a cloth simulation.

@@ -29,11 +29,6 @@ function draw(out,input,posed=pose(input.id)){
   if(name.startsWith('cloak-')||name==='ground-marker')continue;
   if(/^(head|neck|nose|left-ear|right-ear|left-hand|right-hand)$/.test(name))part.c=skin;
   if(name.startsWith('hair-')||name.endsWith('-brow'))part.c=hair;
-  if(input.id==='mara'&&name.endsWith('-hem')){
-   const side=name.includes('left')?-1:1;
-   part.p=[side*.098,.815+posed.bob,.008];part.s=[.185,.34,.25];
-   part.m=M.compose(...part.p,...part.s,0,0,side*.045);
-  }
   const {travelerPart,travelerJoints,...rest}=part;
   (out[kind]||=[]).push({...rest,p:M.transform(root,part.p),m:M.mul(root,part.m),residentId:input.id,residentPart:name,
    ...(travelerJoints?{residentJoints:travelerJoints.map(v=>M.transform(root,v))}:{})});
