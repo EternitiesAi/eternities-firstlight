@@ -15,6 +15,9 @@ Node2144P0F2skip; Python478 methods1error10skip. Missing inactive inspection
 state in the Homecoming camera fixture is repaired; original assertion retained,
 28-method ROOT and remote checks OK2skip. Source02 was NOT LAUNCHED: fresh
 host-free5325428KiB below6291456KiB. No current full/native/browser/movie pass.
+Source03 also NOT LAUNCHED at fetcheded587:3198848KiB at03:48:38Z.
+Current hostedrun38343440508:48 failed jobs,zero executed steps,account billing
+lock. No test execution, retry or billing change. Native/movie remain pending.
 167 runtime raw hashes match the clean exact fetched independent clone.
 Keep failures/skips visible; prior PR70 footage qualifies only its older epoch.
 

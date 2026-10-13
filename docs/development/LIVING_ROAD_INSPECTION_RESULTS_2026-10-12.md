@@ -40,6 +40,7 @@ No earlier PR70 browser/movie result qualifies this changed runtime.
 | REMOTE_SOURCE01 at95af | **FAILED**,147 passed commands;145 syntax; Node2144 pass/0 fail/2 skip; Python478 methods,1 error/10 skips | Full verifier stopped at Python; remaining commands did not run |
 | Homecoming correction | ROOT28 methods OK/2 skips; independent remote clone28 OK/2 skips | Missing inactive `carrierInspectionView` in extracted App fixture; original camera-dispatch assertion retained |
 | REMOTE_SOURCE02 ata7a9 | **NOT LAUNCHED** | Fresh admission5325428KiB below6291456KiB; no full rerun/browser/clip |
+| REMOTE_SOURCE03 ated587 | **NOT LAUNCHED** | Post-fetch admission3198848KiB at2026-10-13T03:48:38Z below6291456KiB |
 | Remote identity | Clean exact fetched a7a9;167 runtime raw hashes match ROOT | Reused independent qualification clone, no new full-game copy |
 | Source review | Two authorized Sol6.1 xhigh read-only reviews | Concrete findings repaired; final source peer no remaining finding in this scope, no peer test execution |
 
@@ -48,7 +49,10 @@ then closed with exit1 at03:41:42Z. It discovered the missing fixture dependency
 this is our integration error, not evidence of VM or game failure. Original
 rules180/Python600 deadlines, four workers, assertions, skips and negative
 controls remain. The narrow repair is green; complete source qualification is
-still **pending**. Hosted verification is not claimed.
+still **pending**. Hosted run38343440508 ated587 completed with48 failed jobs
+and **zero executed steps**. The checked annotation says the job was not started
+because the account is locked due to a billing issue. This is an execution block,
+not a hosted code/test failure; no retry or billing change was made.
 
 The native harness now exercises the distinct paid button with keyboard closure,
 actual corner/HUD bounds, portrait, ordinary saved profiles and conservation,
