@@ -1,5 +1,20 @@
 # Returned-kit inspection: implemented, qualification pending
 
+Continuation review tightened the unexecuted native checks: retain the actual
+native profile baseline, require a successful save result, and apply desktop
+closure/focus/FOV/readable-span checks in portrait. This changes test evidence
+requirements, not gameplay, generated HTML or save data. Two read-only colleagues
+reviewed the native extension and the private recording caller before launch.
+
+The private caller now admits carrier run1 only, checks the exact current
+producer harness and nine-source map, and checks claim-side old world/story
+preservation. CPU admission RED cases reproduced accepted support/other-run
+inputs; the corrected caller passes7 admission cases with no browser/server/
+profile/game action. Its reviewed26KB digest is
+`78b8e8db7c4b5367a3e66fb677e31049d7f54284320f69b87808d0e1972ef2aa`.
+The original unused caller and failed preparations remain private evidence.
+This is preflight evidence, **not a movie, native result or complete source pass**.
+
 Review branch: `gameplay/living-road-inspection-20261012`, stacked on PR70
 `gameplay/living-road-carrier-20261012` at
 `e5492e5e27c830c93368bf158c6835959457c182`. Product commit:
