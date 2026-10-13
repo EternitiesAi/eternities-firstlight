@@ -178,6 +178,6 @@ function story(out,sim,t,a){
  if(s.arrived){const table=G.RealmGathering?.TABLE||{x:3.8,z:-44},x=table.x,z=table.z-1,y=h(x,z);box(x,y+.85,z,2.6,.15,1.4,0x9e8155);for(const dx of [-1,1])box(x+dx,y+.43,z,.14,.85,1.1,col.wood);box(x,y+.96,z,1.25,.04,.85,0xcdbd99);for(let i=0;i<3;i++)round(x-.5+i*.5,y+1.05,z,.34,.12,.34,0xbc985b);}
 }
 function draw(out,sim,t,a){if(sim.room!==C.ROOM)return;story(out,sim,t,a);const p=sim.state.player;if(!sim.state.settings?.reducedMotion){for(let i=0;i<5;i++){let q=t*.13+i*1.7,x=-4+Math.sin(q)*5,z=-30+Math.cos(q*.7)*4,b=h(x,z);out.box.push({p:[x,b+5+Math.sin(q*1.8)*.35,z],s:[.38,.045,.12],r:[0,q,.2],c:0x4c5f55});}}out.disc.push({p:[p.x,h(p.x,p.z)+.02,p.z],s:[.8,1,.8],c:0xd5bd83,rough:.8,em:.04});if(G.RealmGatheringArt)G.RealmGatheringArt.draw(out,sim,t,a);}
-function gate(a){const b=1.3;a.box(C.GATE.x,b+.75,C.GATE.z,.18,1.5,.18,col.wood,{cameraSolid:false});a.box(C.GATE.x,b+1.35,C.GATE.z,1.9,.55,.12,0x826c4b,{cameraSolid:false});a.add('octa',C.GATE.x,b+1.38,C.GATE.z+.08,.12,.12,.04,col.gold,{em:.15,cameraSolid:false});}
+function gate(a){const b=1.3;a.box(C.GATE.x,b+.75,C.GATE.z,.18,1.5,.18,col.wood,{cameraSolid:false,cutaway:true});a.box(C.GATE.x,b+1.35,C.GATE.z,1.9,.55,.12,0x826c4b,{cameraSolid:false,cutaway:true});a.add('octa',C.GATE.x,b+1.38,C.GATE.z+.08,.12,.12,.04,col.gold,{em:.15,cameraSolid:false,cutaway:true});}
 G.RealmEarthArt={make,draw,gate};
 })(globalThis);

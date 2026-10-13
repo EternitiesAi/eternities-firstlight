@@ -18,7 +18,14 @@ function fixture(){
 }
 function accompany(f,phase){
  for(let i=0;i<1800;i++){
-  const v=B.current(f.ctx());if(v?.phase===phase)return v;
+  const v=B.current(f.ctx());if(v?.phase===phase){
+   if(['settled','rested'].includes(phase)){
+    const door=C.LANDMARKS.find(q=>q.id==='home');assert.ok(f.sim.moveTo(door.x,door.z).ok);
+    for(let n=0;n<1800&&f.sim.playerPath.length;n++)f.sim.tick(.05);
+    for(let n=0;n<60;n++)f.sim.tick(.05);
+   }
+   return B.current(f.ctx());
+  }
   assert.ok(v,'Actual current outing was lost before '+phase);
   const c=A.runtime(f.sim).companion,prior={x:c.x,z:c.z};
   if(i%6===0)assert.equal(f.sim.moveTo(c.x,c.z).ok,true);

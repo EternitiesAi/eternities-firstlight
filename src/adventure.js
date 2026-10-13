@@ -146,6 +146,30 @@ function visible(sim,a,b){if(G.RealmWorldFoundations?.handles(sim.room))return !
 function ground(sim,x,z,r=.31){if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&G.RealmWorldFoundations.walkable(sim.room,x,z,r);if(sim.room===G.RealmCosmos?.ROOM)return G.RealmCosmos.walkable(x,z,r);return sim.room===Q.ROOM?Q.walkable(x,z,r):sim.room==='crossing'?CROSS.walkable(x,z,r):sim.room==='range'?AR.rangeWalkable(x,z,r):sim.room==='road'?ROAD.walkable(x,z,r):sim.room==='mine'?walkable(sim.state.adventure,x,z,r):G.RealmCore.walkable(x,z,sim.navRoom,r);}
 function safeNear(sim,p,radius=.7){const options=[{x:p.x,z:p.z},...Array.from({length:12},(_,i)=>({x:p.x+Math.sin(i*Math.PI/6)*radius,z:p.z+Math.cos(i*Math.PI/6)*radius}))];return options.find(q=>ground(sim,q.x,q.z))||{x:p.x,z:p.z};}
 function newFox(sim){const source=sim.worldDive?.surface||sim.state.player,q=safeNear(sim,source);return{room:sim.room,...q,yaw:source.yaw,path:[],nextPath:0,nextHit:0,seek:null,status:'Beside you'};}
+// Peaceful proximity has its own goal. It never pushes the player, teleports
+// the fox, or replaces combat/scent/guide/outing movement ownership.
+function companionBeside(sim,c,p,dt){
+ const gap=dist(c,p);
+ if(gap>=1.1&&gap<=2.15){c.path=[];c.nextPath=0;c.status='Beside you';return;}
+ const yaw=p.yaw,side=Math.cos(yaw),forward=Math.sin(yaw);
+ const offsets=[[1.4,-.35],[-1.4,-.35],[0,-1.45],[0,1.45],[1.15,0],[-1.15,0]];
+ const candidates=offsets.map(([x,z])=>({x:p.x+x*side+z*forward,z:p.z-x*forward+z*side}))
+  .filter(q=>ground(sim,q.x,q.z,.31)&&G.RealmCore.segment(p,q,sim.navRoom,.31));
+ // Prefer the shoulder already nearest Briar so turns do not make him cross
+ // back and forth through the traveler. A blocked shoulder has real fallbacks.
+ candidates.sort((a,b)=>dist(c,a)-dist(c,b));
+ const goal=candidates[0];if(!goal){c.path=[];c.nextPath=0;c.status='Waiting for room beside you';return;}
+ if(sim.state.adventure.elapsed>=(c.nextPath||0)||!c.path?.length){
+  c.path=G.RealmCore.pathfind(c,goal,sim.navRoom,false,.31)||[];c.nextPath=sim.state.adventure.elapsed+.35;
+ }
+ const q=c.path[0];if(!q){c.status='Waiting for a clear path';return;}
+ const d=dist(c,q),amount=Math.min(d,Math.max(0,dt)*3.4),to={x:c.x+(q.x-c.x)/(d||1)*amount,z:c.z+(q.z-c.z)/(d||1)*amount};
+ const dx=to.x-c.x,dz=to.z-c.z,len=dx*dx+dz*dz,u=len?Math.max(0,Math.min(1,((p.x-c.x)*dx+(p.z-c.z)*dz)/len)):0;
+ const bodyGap=Math.hypot(c.x+dx*u-p.x,c.z+dz*u-p.z);
+ if(!G.RealmCore.segment(c,to,sim.navRoom,.31)||(gap<1.05?dist(to,p)<=gap:bodyGap<1.05)){c.path=[];c.nextPath=0;c.status='Waiting for a clear path';return;}
+ const step=[q];sim.advance(c,step,dt,3.4);if(!step.length)c.path.shift();
+ c.status=gap<1.1?'Making room beside you':'Following';
+}
 function followPath(sim,actor,target,dt,speed){
  const now=sim.state.adventure.elapsed,radius=wildSignsEntry(actor)||AT.encounter(actor)||HC.encounter(actor)||HV.encounter(actor)?actor.radius:.31;
  if(now>=(actor.nextPath||0)){actor.nextPath=now+.7;const goal=safeNear(sim,target);actor.path=G.RealmCore.pathfind(actor,goal,sim.navRoom,false,radius)||[];}
@@ -340,6 +364,7 @@ function tick(sim,dt){
   else{c.status='Following a scent';followPath(sim,c,q,dt,3.6);}return;
  }
  const foe=combatScene(sim)&&sim.room!=='range'?r.enemies.filter(e=>e.hp>0&&!e.hidden&&['pursue','windup','charge','recover'].includes(e.mode)&&dist(p,e)<7).sort((a,b)=>dist(c,a)-dist(c,b))[0]:null,target=foe||p;
+ if(!foe){companionBeside(sim,c,p,dt);return;}
  if(dist(c,target)>(foe?1.3:1.25)){c.status=foe?'Helping in combat':'Following';followPath(sim,c,target,dt,3.4);}else{c.path=[];c.status=foe?'Helping in combat':'Beside you';}
  if(foe&&dist(c,foe)<1.65&&visible(sim,c,foe)&&s.elapsed>=c.nextHit){c.nextHit=s.elapsed+1.5;damageEnemy(sim,foe,5+level(s)+(AR.activeGem(s)?.companion||0));fx(sim,'companion',c.x,c.z,0xb7d58c);}
 }
