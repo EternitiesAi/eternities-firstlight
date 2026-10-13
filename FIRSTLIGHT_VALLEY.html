@@ -14911,7 +14911,8 @@ function tickConsignment(dt){
  consignmentPresentation();
 }
 
-let fieldcraftOwner=null,fieldcraftFrame=null,carrierFrame=null;
+let fieldcraftOwner=null,fieldcraftFrame=null;
+let carrierFrame=null;
 function syncFieldcraftOwner(force=false){
  const next=[sim,sim.state,sim.state.adventure,characterStore,characterStore.active,sim.room,sim.worldTrip,sim.earthTrip,JSON.stringify(sim.returnPos),JSON.stringify(sim.worldTrip),sim.state.adventure.deaths];
  if(force||!fieldcraftOwner||next.some((v,i)=>v!==fieldcraftOwner[i])){

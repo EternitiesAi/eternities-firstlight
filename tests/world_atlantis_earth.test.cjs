@@ -346,7 +346,7 @@ test('actual WorldArt and Core retain canonical scene/save ownership while admit
 test('original ordinary App camera math projects the country skyline from grazer and Sela without a camera-source change',()=>{
  const Ccountry=require('../src/core.js'),foundation=require('../src/world-foundations.js'),
   source=fs.readFileSync(require.resolve('../src/app.js'),'utf8'),
-  cameraSource=source.slice(source.indexOf('function updateCamera(dt){'),source.indexOf('function cameraPreset(')),
+  cameraSource=source.slice(source.indexOf('function carrierFocus(){'),source.indexOf('function frameCarrier('))+'\n'+source.slice(source.indexOf('function updateCamera(dt){'),source.indexOf('function cameraPreset(')),
   parts=record(earth).filter(p=>p.kind==='country-ridge');
  assert.ok(cameraSource.includes('function updateOrthographicCamera(dt)'));
  const projected=(x,z,preset,elevation=.28,half=17)=>{
@@ -355,7 +355,7 @@ test('original ordinary App camera math projects the country skyline from grazer
    distance:7.5,actualDistance:7.5,fov:60,half,center:center.slice()};
   sim.state.settings.reducedMotion=true;
   vm.runInNewContext(cameraSource+'\nupdateCamera(1);',{engine:host,camera,sim,follow:null,innerWidth:1440,innerHeight:960,
-   grazerFocus:()=>null,fieldcraftFocus:()=>null,sceneHeight:()=>G,RealmWorldFoundations:foundation});
+   carrierFrame:null,grazerFocus:()=>null,fieldcraftFocus:()=>null,sceneHeight:()=>G,RealmWorldFoundations:foundation});
   return parts.map(p=>{const m=E.M.compose(...p.p,...p.s,...p.opt.r),mesh=E.geometry(p.kind);let visible=0;
    for(let i=0;i<mesh.length;i+=6){const v=E.M.transform(m,[mesh[i],mesh[i+1],mesh[i+2]]),point=host.project(...v);
     if(point.visible&&point.x>=0&&point.x<=1440&&point.y>=0&&point.y<=960)visible++;

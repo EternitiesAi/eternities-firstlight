@@ -204,13 +204,13 @@ test('review negative: unknown current live threat position or malformed HP inva
 // labelled synthetic CPU host. No GL/ordinary RAF/native screenshot claim.
 function roadkeeperCamera(width=390,height=844,preset='follow',yaw=0,elevation=.65){
  const fs=require('node:fs'),vm=require('node:vm'),source=fs.readFileSync(path.join(ROOT,'src/app.js'),'utf8');
- const cameraSource=source.slice(source.indexOf('function updateCamera(dt){'),source.indexOf('function cameraPreset('));
+ const cameraSource=source.slice(source.indexOf('function carrierFocus(){'),source.indexOf('function frameCarrier('))+'\n'+source.slice(source.indexOf('function updateCamera(dt){'),source.indexOf('function cameraPreset('));
  assert.ok(cameraSource.includes('function updateOrthographicCamera(dt)'));
  const sim=new C.Simulation(C.fresh());sim.room=D.ROOM;Object.assign(sim.state.player,O.HOME);sim.state.settings.reducedMotion=true;
  const base=W.height(D.ROOM,sim.state.player.x,sim.state.player.z),center=[sim.state.player.x,base+(preset==='adventure'?1.5:.6),sim.state.player.z];
  const engine=Object.create(E.Engine.prototype);Object.assign(engine,{canvas:{clientWidth:width,clientHeight:height},cameraSolids:[],camera:{projection:'orthographic'},gl:{bindBuffer(){},bufferData(){}}});
  const camera={preset,tour:false,overview:false,yaw,elevation,distance:7.5,actualDistance:7.5,fov:80,half:17,center};
- vm.runInNewContext(cameraSource+'\nupdateCamera(1);',{engine,camera,sim,follow:null,innerWidth:width,innerHeight:height,grazerFocus:()=>null,fieldcraftFocus:()=>null,sceneHeight:()=>base,RealmWorldFoundations:W});
+ vm.runInNewContext(cameraSource+'\nupdateCamera(1);',{engine,camera,sim,carrierFrame:null,follow:null,innerWidth:width,innerHeight:height,grazerFocus:()=>null,fieldcraftFocus:()=>null,sceneHeight:()=>base,RealmWorldFoundations:W});
  return engine;
 }
 function roadkeeperPacked(parts,engine){

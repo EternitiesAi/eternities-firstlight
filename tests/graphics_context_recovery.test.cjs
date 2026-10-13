@@ -40,12 +40,12 @@ function lifecycle(){
   RealmEngine:h.context.RealmEngine,RealmArt:h.context.RealmArt,RealmWorldFoundations:W,
   RealmWorldFoundationsArt:globalThis.RealmWorldFoundationsArt,RealmEarth:{ROOM:'earth'},RealmCosmos:{ROOM:'cosmos'},
   RealmEarthArt:{},RealmCosmosArt:{},RealmStarterArt:{},RealmCrossingArt:{},RealmArsenalArt:{},RealmRoadArt:{},RealmAdventureArt:{},
-  C,grazerFocus:()=>null,fieldcraftFocus:()=>null,cameraHalf:()=>17,fitCameraHalf:(b,z)=>b*z,
+  C,carrierFrame:null,grazerFocus:()=>null,fieldcraftFocus:()=>null,cameraHalf:()=>17,fitCameraHalf:(b,z)=>b*z,
   toast:s=>env.toasts.push(s),toasts:[],rpg:{dialog:{open:true}},audio:{identity:'original-audio',ctx:{state:'running'}},labelNodes:[],
  };
  const start=app.indexOf('// BEGIN GRAPHICS CONTEXT RECOVERY'),end=app.indexOf('// END GRAPHICS CONTEXT RECOVERY');
  assert.ok(start>=0&&end>start,'actual recovery functions must exist');
- const body=app.slice(start,end)+'\n'+fragment('resize','function graphicsQuality')+'\n'+fragment('updateCamera','function cameraPreset')+'\n'+fragment('sceneHeight','function earthHomecomingWriter')+'\n'+fragment('labelsRebuild','function mapDraw');
+ const body=app.slice(start,end)+'\n'+fragment('resize','function graphicsQuality')+'\n'+fragment('carrierFocus','function frameCarrier')+'\n'+fragment('updateCamera','function cameraPreset')+'\n'+fragment('sceneHeight','function earthHomecomingWriter')+'\n'+fragment('labelsRebuild','function mapDraw');
  const api=vm.compileFunction(body+'\nreturn {fallback,graphicsContextLost,restoreGraphics,buildGraphicsScene,get lost(){return graphicsLost;}};',[],{contextExtensions:[env]})();
  const event=()=>({isTrusted:true,target:h.canvas});
  const facts=()=>({state:JSON.stringify(env.sim.snapshot()),sim:env.sim,commands:env.sim.commands,path:env.sim.playerPath,store,revision:store.revision,active:store.active,writer:store.writer,camera:env.camera,cameraBytes:JSON.stringify(env.camera),target:env.target,follow:env.follow,scene:env.scene,audio:env.audio,dialog:env.rpg.dialog,writes:writes.length});

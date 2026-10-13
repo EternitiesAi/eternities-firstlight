@@ -102,3 +102,28 @@ browser acquisition. Matching pages and current required module embedding
 are enforced without rebuilding. SHORT_PROTOCOL02:8 Python pass,2.709s; no
 actual recorder execution yet. Updated pages3349384B/SHA256
 eebff3d6fb2e2cebad4f7b0a710e9d7188cbc6822b4e7d84d48d3688820552af.
+
+
+# Complete gate exposed App-fragment integration gaps; repair verified, 2026-10-12
+
+Fresh remote Source01 at04d21d8c94d6fcce7d7d39b05f2256ceddf620d5 FAILED
+rules:2114pass/15fail/2skip,2131total,71080.9481ms. Build and all145 syntax
+checks passed; Python and subsequent journeys were unrun. Raw source/exit
+receipts remain in living-road-carrier-20261012/REMOTE_SOURCE01.
+
+The15 failures came from an existing exact fieldcraft declaration used as
+an extraction boundary, and three camera harnesses lacking carrierFocus.
+Restore the original declaration, put carrierFrame on its own following line,
+and compile the real inactive carrierFocus in those labelled camera fixtures.
+The frozen consignment helper and all old assertions remain untouched.
+Parent APP_INTEGRATION_FIX01:77pass/0fail/0skip,12066.4646ms, including the five
+failed files and six current carrier-camera cases. New complete gate pending.
+
+Current pages3349389B SHA256
+32fcf10c5f86d8d98d13547b1b4242650407bff20081017ede4c85f4d3647a89.
+The current native expedition caller also explicitly selects Low/reduced motion
+through visible setting events and checks actual receiving-kit instances and
+pixel removal/restoration in both views after live payment. This is source,
+not executed native evidence. Native capture/current full qualification and
+human acceptance remain pending. VM/Claude excluded; no unrelated stop,
+personal-save read, extra full copy, main merge/deploy or schema/reward change.
