@@ -18,6 +18,21 @@ function walk(parts,distance=1.08,duration=.36){
 test('CommonJS and browser globals expose the same bounded rig API',()=>{
  assert.equal(global.RealmTravelerArt,T);assert.deepEqual(Object.keys(T),['motion','pose','draw']);
 });
+
+test('quiet carrying targets reach solved hands without taking combat or activity ownership',()=>{
+ const carry={left:[-.19,1.20,.28],right:[.19,1.20,.28]},options={reducedMotion:true};
+ const held=T.pose({...options,carry});
+ vclose(held.joints.leftHand,carry.left,1e-10);vclose(held.joints.rightHand,carry.right,1e-10);
+ for(const own of [{combatScene:true,style:'blade'},{swimming:true},{activity:'record'},
+  {fishing:{left:[-.2,1.1,.3],right:[.2,1.1,.3],axis:[0,1,0]}}]){
+  assert.deepEqual(T.pose({...options,...own,carry}),T.pose({...options,...own}),'existing pose owner retains priority');
+ }
+ assert.deepEqual(T.pose({...options,carry:{left:[NaN,1,0],right:[0,1]}}),T.pose(options));
+ const leftOnly=T.pose({...options,carry:{left:carry.left}});
+ vclose(leftOnly.joints.leftHand,carry.left,1e-10);
+ assert.deepEqual(leftOnly.joints.rightHand,T.pose(options).joints.rightHand);
+ assert.deepEqual(carry,{left:[-.19,1.20,.28],right:[.19,1.20,.28]});
+});
 test('gallery stroke keeps limbs connected and reduced motion settles the arms',()=>{
  const poses=[T.pose({swimming:true,time:0,blend:1,phase:1}),T.pose({swimming:true,time:1,blend:1,phase:2})];
  assert.notDeepEqual(poses[0].joints.leftHand,poses[1].joints.leftHand);

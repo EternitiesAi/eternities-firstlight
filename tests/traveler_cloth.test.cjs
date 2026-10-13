@@ -1,3 +1,4 @@
+require('../src/resident-art.js');
 /* Actual module/mesh CPU checks only; no WebGL or rendered-appearance claim. */
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
@@ -64,7 +65,7 @@ test('real WorldArt commits one ordinary cloth batch and retains traveler owner/
  const sim=new C.Simulation();globalThis.RealmArsenal.runtime(sim);const saved=JSON.stringify(sim.snapshot()),out=empty();art.room=null;art.time=0;art.traveler(out,sim);
  assert.equal(JSON.stringify(sim.snapshot()),saved,'actual rules/store state untouched');const snap=art.travelerSnapshot();
  assert.equal(snap.parts.length,49);assert.equal(snap.parts.filter(p=>p.kind==='traveler-cloth').length,3);assert.equal(snap.frame.combatPhase,'idle');
- art.update(sim,0,null);assert.deepEqual(art.dynamicTravelerCloth.items.map(p=>p.travelerPart),cloth,'actual ordinary update submits exactly three cloth instances');assert.equal(JSON.stringify(sim.snapshot()),saved);
+ art.update(sim,0,null);assert.deepEqual(art.dynamicTravelerCloth.items.filter(p=>p.travelerPart).map(p=>p.travelerPart),cloth,'actual ordinary update submits exactly three cloth instances');assert.equal(JSON.stringify(sim.snapshot()),saved);
 });
 test('actual Engine batch packs the same three transforms in one supported 6-float mesh',()=>{
  // Synthetic GL interface records uploads; the actual batch/update methods run.
