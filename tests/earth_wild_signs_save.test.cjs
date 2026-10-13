@@ -27,6 +27,7 @@ test('historical command-earned blade bow and strongest fixtures preserve raw ow
   assert.ok(!Object.hasOwn(world,'earthWildSigns'),'Historical fixture really predates this owner.');
   if(Object.keys(expected.localLife.records).length===4)expected.localLife.records[CD.ID]={accepted:false,choice:null,steps:[],claimed:false};
   if(!Object.hasOwn(expected,'earthHomecoming'))expected.earthHomecoming={version:1,accepted:false,choice:null,steps:[],claimed:false};
+  if(!Object.hasOwn(expected,'briarMoments'))expected.briarMoments={version:1,revision:0,moments:[]};
   const next=C.validate(world);assert.deepEqual(strip(next),expected);assert.deepEqual(next.earthWildSigns,D.fresh());assert.ok(fs.readFileSync(file).equals(raw));
  }
 });

@@ -105,7 +105,7 @@ class Fixture:
             folder=self.sources/variant
             old={'syntheticValidatorOnly':variant}
             old_link=put(self.root/'synthetic-historical-inputs'/variant/'OLD_SOURCE.json',old)
-            migrated={**old,'earthHomecoming':copy.deepcopy(fresh),
+            migrated={**old,'briarMoments':{'version':1,'revision':0,'moments':[]},'earthHomecoming':copy.deepcopy(fresh),
                       'earthWildSigns':{'version':1,'accepted':False,'evidence':[],
                          'observed':False,'resolution':None,'cleared':False,'claimed':False}}
             migrated_link=put(folder/'MIGRATED_INPUT.json',migrated)

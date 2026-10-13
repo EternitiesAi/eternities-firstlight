@@ -1,3 +1,28 @@
+# Briar's shared outing implemented; qualification pending, 2026-10-13
+
+Current branch `gameplay/briar-shared-outing-20261013`, from PR71 delivery
+`b6b813ccaa7ae445fa233a1214ea1c144d1c2476`. Optional Earth ET02 now has actual
+fox retrieval/carry/return, explicit taking and chosen doorstep rest. Early
+command-earned blade/bow App/Store journeys pass before relic or angelic gift.
+Strict optional briarMoments v1 records only two completed facts; no old cache
+backfill, reward, grief, timer, cap change or camera replacement.
+
+New source/save/App/geometry checks pass. SOURCE03 rules passed2182/0fail/2skip,
+but its full Python gate FAILED and retained its 20 failures/11 errors/10 skips.
+Focused host/default/UTF-8 repairs pass; current complete committed source,
+returning cohort, native pixels/restarts, exact remote clone and new movie are
+still pending. Never transfer PR71's native/movie success to this new runtime.
+
+VM/guest/Claude Code and unrelated work are excluded. Reuse ROOT/STATION on D;
+no new full game or cleanup. Broad/native/movie require fresh >=6GiB host free
+memory after preparation; original180/600/four-worker gate stays. Goal ACTIVE
+unfinished, independent heartbeat PAUSED. Read the current task/result note for
+source ownership, migration, failures and the next concrete qualification step.
+
+---
+
+Earlier checkpoints below retain their original epochs.
+
 # Returned-kit footage delivered, 2026-10-13
 
 PR71 remains an open draft, stacked against PR70. Qualified code is

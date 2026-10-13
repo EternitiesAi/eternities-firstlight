@@ -145,6 +145,9 @@ function runFrame(kind){
   rpg:{tick:()=>{}},syncFieldcraftOwner:()=>{},consignmentPresentation:()=>{},grazerPresentation:()=>{},prepareWildSignsDiagnostics:()=>{},roadkeeperPresentation:()=>{},prepareRoadkeeperDiagnostics:()=>{},
   acknowledgeOrdinaryGrazer:()=>{},updateLabels:()=>{},mapDraw:()=>calls.push('map'),audio:{tick:()=>calls.push('audio')},refreshUI:()=>calls.push('ui'),save:()=>calls.push('save'),requestAnimationFrame:()=>calls.push('raf')});
  const frameApp=process.env.GRAPHICS_FRAME_SOURCE?fs.readFileSync(process.env.GRAPHICS_FRAME_SOURCE,'utf8'):app;
+ Object.assign(f.env,{RealmAdventure:require(path.join(ROOT,'src/adventure.js')),RealmBriarOuting:require(path.join(ROOT,'src/briar-outing.js'))});
+ const briarStart=frameApp.indexOf('function briarSaveGuard('),briarEnd=frameApp.indexOf('// Parent app owns this transient lease independently',briarStart);assert.ok(briarStart>=0&&briarEnd>briarStart);
+ Object.assign(f.env,vm.compileFunction(frameApp.slice(briarStart,briarEnd)+'\nreturn{briarContext,syncBriarOwner};',[],{contextExtensions:[f.env]})());
  const frame=frameApp.split('\n').find(l=>l.startsWith('function frame(now)'));
  const invoke=vm.compileFunction(frame+'\nreturn frame;',[],{contextExtensions:[f.env,{graphicsContextLost:f.api.graphicsContextLost}]})();
  let thrown;try{invoke(1000);}catch(e){thrown=e;}return{f,calls,thrown,rule,render};

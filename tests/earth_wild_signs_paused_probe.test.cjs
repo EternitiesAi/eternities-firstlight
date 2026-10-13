@@ -12,6 +12,7 @@ const X=require(path.join(ROOT,'src/earth-expedition.js')),CD=require(path.join(
 const D=require(path.join(ROOT,'src/earth-wild-signs-data.js')),O=require(path.join(ROOT,'src/earth-grazer-motion.js'));
 const E=require(path.join(ROOT,'src/engine.js')),CH=require(path.join(ROOT,'src/characters.js'));
 const R=require(path.join(ROOT,'src/earth-roadkeeper-motion.js'));
+const A=require(path.join(ROOT,'src/adventure.js')),B=require(path.join(ROOT,'src/briar-outing.js'));
 const copy=v=>JSON.parse(JSON.stringify(v));
 const app=fs.readFileSync(path.join(ROOT,'src/app.js'),'utf8');
 function section(begin,end){const a=app.indexOf(begin),b=app.indexOf(end,a);assert.ok(a>=0&&b>a);return app.slice(a,b);}
@@ -39,6 +40,9 @@ function appFixture(){
   bindWildSignsClearance(){},tickConsignment(){},switchScene(){},updateCamera(){},syncFieldcraftOwner(){},consignmentPresentation(){},
   updateLabels(){},audio:{tick(){}},requestAnimationFrame:f=>queued.push(f),refreshUI(){},save(){throw Error('No CPU host autosave expected');}};
  // The actual new RAF dependencies share native Core/Motion lease identity.
+ Object.assign(h,{RealmAdventure:A,RealmBriarOuting:B});
+ const briar=section('function briarSaveGuard(){','// Parent app owns this transient lease independently');
+ Object.assign(h,vm.compileFunction(briar+'\nreturn {briarContext,syncBriarOwner};',[],{contextExtensions:[h]})());
  const start='// BEGIN EARTH ROADKEEPER APP HOOKS',end='// END EARTH ROADKEEPER APP HOOKS';
  const a=app.indexOf(start),b=app.indexOf(end,a);assert.ok(a>=0&&b>a,'actual installed roadkeeper hook block');
  assert.equal(app.indexOf(start,a+1),-1);assert.equal(app.indexOf(end,b+1),-1);

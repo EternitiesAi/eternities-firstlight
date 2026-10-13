@@ -34,6 +34,7 @@ class OptionalCatalogueOracle(unittest.TestCase):
         source,old=self.historical();original=copy.deepcopy(old);expected=copy.deepcopy(old)
         expected['earthHomecoming']={'version':1,'accepted':False,'steps':[],'choice':None,'claimed':False}
         expected['earthWildSigns']={'version': 1, 'accepted': False, 'evidence': [], 'observed': False, 'resolution': None, 'cleared': False, 'claimed': False}
+        expected['briarMoments']={'version': 1, 'revision': 0, 'moments': []}
         expected['localLife']['records']['earth-first-load-through-v1']={'accepted':False,'choice':None,'steps':[],'claimed':False}
         self.assertEqual(N.expected_optional_defaults(old),expected)
         self.assertEqual(old,original);self.assertEqual(N.sha(source),N.HISTORICAL_INPUTS['blade'][1])

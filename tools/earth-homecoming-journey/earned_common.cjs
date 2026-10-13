@@ -23,6 +23,7 @@ function write(folder,name,value){const p=path.join(folder,name+'.json');fs.writ
 function assertMigrationPreserved(migrated,raw){
  const expected=copy(raw),catalogue=expected.localLife;
  if(!('earthWildSigns' in raw))expected.earthWildSigns={version:1,accepted:false,evidence:[],observed:false,resolution:null,cleared:false,claimed:false};
+ if(!Object.hasOwn(raw,'briarMoments'))expected.briarMoments=load('briar-moments').fresh();
  const ids=['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1'].sort();
  let catalogueMigration=null;
  if(catalogue&&catalogue.version===1&&Object.keys(catalogue).length===2&&Object.hasOwn(catalogue,'version')&&Object.hasOwn(catalogue,'records')&&catalogue.records&&Object.keys(catalogue.records).length===ids.length&&ids.every(id=>Object.hasOwn(catalogue.records,id))){
@@ -40,7 +41,7 @@ function migration(file,expected,folder){
  write(folder,'MIGRATION_RECEIPT',receipt);return receipt;
 }
 function preserved(final,before){
- for(const k of['journeys','realmTrails','earthExpedition','hellCampaign','heavenCampaign','atlantisCampaign','cosmosCampaign','bridgeCommunity','localLife','earthWildSigns','homeHistory','notes','score','scoreRevision','retreat','visitor','flowers','settings'])assert.deepEqual(final[k],before[k],k+' retains its original owner');
+ for(const k of['briarMoments','journeys','realmTrails','earthExpedition','hellCampaign','heavenCampaign','atlantisCampaign','cosmosCampaign','bridgeCommunity','localLife','earthWildSigns','homeHistory','notes','score','scoreRevision','retreat','visitor','flowers','settings'])assert.deepEqual(final[k],before[k],k+' retains its original owner');
  for(const k of['owned','equipment','arsenal','starter','pursuit','realmCraft','earthBinding','classPath','companion','beacon','crossing','road','earthStory','earthNotes','earthGathering','defeated','drops','reward','relic','angelSeen'])assert.deepEqual(final.adventure[k],before.adventure[k],k+' unchanged except documented reversible companion command');
  for(const k of['bridge','nextId','stats','milestones','recentCommands','cooldownUntil'])assert.deepEqual(final.sandbox[k],before.sandbox[k]);
  assert.deepEqual(final.sandbox.placed.map(p=>({...p,crop:null})),before.sandbox.placed.map(p=>({...p,crop:null})));for(const prior of before.sandbox.placed)if(prior.crop){const now=final.sandbox.placed.find(p=>p.id===prior.id).crop;assert.equal(now.plantedAt,prior.crop.plantedAt);assert.equal(now.readyAt,prior.crop.readyAt);assert.ok(now.stage===prior.crop.stage||prior.crop.stage==='watered'&&now.stage==='ripe');}
@@ -57,7 +58,7 @@ function productionApp(sim,store){
  // A separate VM realm makes their real prototype/ownership checks refuse.
  const app=overlay.read('app.js'),extract=(a,b)=>{const i=app.indexOf('function '+a+'('),j=app.indexOf('function '+b+'(',i);assert.ok(i>=0&&j>i,'exact application function boundaries');return app.slice(i,j);};
  load('engine');
- const scope={sim,characterStore:store,rpg:null,preserveExisting:false,saveState:'loaded',RealmEarthHomecoming:load('earth-homecoming'),RealmEarthGrazerMotion:load('earth-grazer-motion'),RealmEarthGrazerArt:load('earth-grazer-art'),RealmEarthWildSignsData:load('earth-wild-signs-data'),RealmEarthWildSigns:load('earth-wild-signs'),renderStatus:()=>{}};
+ const scope={sim,characterStore:store,rpg:null,preserveExisting:false,saveState:'loaded',RealmAdventure:load('adventure'),RealmBriarOuting:load('briar-outing'),RealmEarthHomecoming:load('earth-homecoming'),RealmEarthGrazerMotion:load('earth-grazer-motion'),RealmEarthGrazerArt:load('earth-grazer-art'),RealmEarthWildSignsData:load('earth-wild-signs-data'),RealmEarthWildSigns:load('earth-wild-signs'),renderStatus:()=>{}};
  const body=extract('earthHomecomingWriter','worldTravel')+'\n'+extract('worldSave','worldCommand')+'\n'+extract('earthHomecomingCommand','hellCampaignCommand');
  Object.assign(scope,vm.compileFunction(body+'\nreturn {earthHomecomingWriter,worldContext,worldSave,earthHomecomingCommand,syncWildSignsOwner,grazerContext,wildSignsContext};',[],{contextExtensions:[scope],filename:path.join(ROOT,'src/app.js')})());
  return{scope,context:()=>scope.worldContext(),command:(type,p)=>scope.earthHomecomingCommand(type,p),save:s=>scope.worldSave(s)};

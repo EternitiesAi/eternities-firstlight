@@ -75,13 +75,21 @@ function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.
  const fox=(x,z,yaw,bonded)=>{
   const base=support(sim,x,z),owner=bonded?r.companion:A.FOX,previous=companionSamples.get(sim);
   const motion=G.RealmCompanionArt.motion(previous?.owner===owner&&previous.bonded===bonded?previous.motion:null,{x,z,time:sim.elapsed,scene:sim.room,paused:sim.paused,reducedMotion:sim.state.settings.reducedMotion});
-  const pose=G.RealmCompanionArt.pose({...motion,bonded}),placement={x,z,base,yaw,bonded};
+  const outing=bonded&&typeof sim.briarContext==='function'?G.RealmBriarOuting?.current(sim.briarContext()):null;
+  const pose=G.RealmCompanionArt.pose({...motion,bonded,carrying:!!outing?.carrying,resting:!!outing?.resting}),placement={x,z,base,yaw,bonded};
   const parts=G.RealmCompanionArt.parts(placement,pose);
   for(const {kind,...item} of parts)out[kind].push(item);
   companionSamples.set(sim,{owner,bonded,motion});companionFrames.set(sim,{placement,motion,pose,parts});
   if(!bonded)add('octa',x,base+1.5,z,.17,.30,.17,0xf1d3a3,{em:.8});
  };
  if(s.companion.bonded){if(r.companion.room===sim.room)fox(r.companion.x,r.companion.z,r.companion.yaw,true);}else if(sim.room==='mine')fox(A.FOX.x,A.FOX.z,Math.PI*.4,false);
+ if(!sim.room&&s.companion.bonded&&G.RealmBriarOuting){
+  const d=G.RealmBriarOuting.definition,record=G.RealmBriarMoments.fromWorld(sim.state),view=typeof sim.briarContext==='function'?G.RealmBriarOuting.current(sim.briarContext()):null;
+  const home=record.moments.includes(G.RealmBriarMoments.CLOTH_HOME),q=home?d.home:d.cloth;
+  const extra=id=>({briarOutingPart:id,appearanceOnly:true,cameraSolid:false,cutaway:false});
+  if(home||!view?.carrying){box(q.x,support(sim,q.x,q.z)+.035,q.z,.38,.03,.27,0x8eb7bd,extra('resting-cloth'));box(q.x+.08,support(sim,q.x,q.z)+.058,q.z,.08,.025,.27,0xc1d5d0,extra('cloth-fold'));}
+  if(home){const y=support(sim,d.rest.x,d.rest.z),x=d.rest.x+.7,z=d.rest.z;box(x,y+.0305,z,.34,.055,.34,0xa7aa94,extra('bowl'));add('disc',x,y+.0586,z,.235,.001,.235,0x546c68,extra('bowl-inner'));for(const sign of [-1,1]){box(x+sign*.1475,y+.063,z,.045,.035,.34,0xbec0a7,extra('bowl-rim-x'+sign));box(x,y+.063,z+sign*.1475,.25,.035,.045,0xbec0a7,extra('bowl-rim-z'+sign));}}
+ }
  if(!sim.room&&s.road.reported){box(2.2,1.8,3,.55,1,.55,0x959a85);add('octa',2.2,2.65,3,.42,.85,.42,0xffd59e,{em:1.4});}
  if(!sim.room&&s.angelSeen){let x=-2.3,z=4.7;add('round',x,2.6,z,.57,1.8,.51,0xebe3c8);box(x,3.55,z,.35,.40,.34,0xe4c7a4);box(x,3.77,z-.02,.40,.16,.37,0xe9cf94);for(const sign of[-1,1])for(let j=0;j<7;j++)box(x+sign*(.4+j*.15),3.22+j*.11,z-.18-j*.025,.23,1.1-j*.065,.12,0xf4ecda,{r:[0,.1,-sign*(.4+j*.09)]});for(let i=0;i<22;i++){let a=i/22*TAU;box(x+Math.cos(a)*.39,4.15,z+Math.sin(a)*.39,.13,.045,.05,0xf3d8a2,{r:[0,-a,0],em:1});}for(let i=0;i<10;i++){let a=t*.45+i*2.4;add('octa',x+Math.cos(a)*1.15,1.7+(t*.25+i*.23)%2.6,z+Math.sin(a)*1.15,.065,.12,.065,i%2?0xf1dba8:0xe4c3d3,{em:1});}}
  const mark=G.RealmClasses.runtime(sim).mark;if(mark){ring(mark.enemy.x,mark.enemy.z,.95,0xa8d68d,base+.08);add('octa',mark.enemy.x,base+2.8,mark.enemy.z,.18,.35,.18,0xa8d68d,{em:.6});}

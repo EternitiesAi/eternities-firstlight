@@ -204,6 +204,10 @@ def require_initial_resume(root, before, after, capture, owner):
         expected['earthWildSigns'] = {'version': 1, 'accepted': False, 'evidence': [],
             'observed': False, 'resolution': None, 'cleared': False, 'claimed': False}
         wild_signs_migration = 'missing-to-fresh-earth-wild-signs-v1'
+    # New completed companion facts are protected. Only an absent owner may
+    # acquire this independent literal empty default; never ignore the field.
+    if 'briarMoments' not in before:
+        expected['briarMoments'] = {'version': 1, 'revision': 0, 'moments': []}
     # Core now conditionally expands this exact legacy catalogue on load. Keep
     # the four raw histories and every other owner protected; do not derive the
     # allowance from Core's output or use its fresh-record builder as an oracle.

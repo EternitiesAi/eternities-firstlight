@@ -235,6 +235,7 @@ class Preparation(unittest.TestCase):
         pair = copy.deepcopy(fixture['before']), copy.deepcopy(fixture['after'])
         # Labelled current boundary copies; the recorded historical file stays exact.
         for world in pair:
+            world['briarMoments'] = {'version': 1, 'revision': 0, 'moments': []}
             world['earthWildSigns'] = {'version': 1, 'accepted': False, 'evidence': [],
                 'observed': False, 'resolution': None, 'cleared': False, 'claimed': False}
         if not legacy:
@@ -638,6 +639,12 @@ console.log(JSON.stringify({trace,after:incoming.snapshot(),armed,runtimeSources
         self.assertEqual(fixture['sourceReport']['sha256'], '3527cd630b8bfefe3a37ef541fc8033392dcc2c80742b7469aed05ae6d957402')
         self.assertEqual(fixture['sourceHead'], '3aa1e0a440a465644410c3942f4277f755c6013a')
         self.assertIn('synthetic-owned native', fixture['scope'])
+        # Current CPU boundary copies of retained historical observations. These
+        # add only the independently specified empty owner; the old native bytes
+        # and their source receipt remain historical and are never rewritten.
+        for world in (fixture['before'], fixture['after'], fixture['capture']['first'], fixture['capture']['final']):
+            self.assertNotIn('briarMoments', world)
+            world['briarMoments'] = {'version': 1, 'revision': 0, 'moments': []}
         return fixture['before'], fixture['after'], fixture['capture']
 
     def test_45_actual_hydrated_remote_capture_matches_exact_initial_and_sequence(self):
