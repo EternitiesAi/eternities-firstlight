@@ -1,3 +1,25 @@
+# Current building-camera observations, 2026-10-13
+
+Camera02's final-build doorway screenshot visibly shows the full traveler and
+shared-house facade. The camera suite passes57 checks including real keyboard
+walking and orbit, actual displayed heading, both views, save/reload and menus.
+The early-blade Briar run passes109 checks and3 whole-browser restarts.
+It captures REST_UNFRAMED_ARRIVAL before preset cycling and checks actual
+submitted player/fox part envelopes against explicit canvas bounds.
+
+These are software-WebGL/Low automated observations. Briar uses accelerated
+accepted movement/ticks; this is not ordinary-time play, pacing or GPU measurement.
+The other four Briar continuations are CPU-only. Projection checks do not alone
+establish pixel visibility or human comfort; retain the actual arrival screenshot.
+
+Dom's pending questions: Can you see both characters on arriving home? Does the
+automatic turn feel comfortable or surprising? Does movement follow the view as
+you expect? Try deliberate orbit, a wall-side approach, open ground and Diorama.
+No human answers have been supplied. No new movie; prior short pier clip remains.
+See [exact source, native evidence and failures](development/BUILDING_CAMERA_QUALIFICATION_2026-10-13.md).
+
+---
+
 # Lantern pier and companion observations, 2026-10-13
 
 Automated native fishing passed44 checks: a fresh character without expedition

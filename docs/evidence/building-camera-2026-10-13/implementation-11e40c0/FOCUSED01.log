@@ -1,0 +1,48 @@
+✔ actual App resolves the house camera without rewriting orbit preference or any world state (11.3074ms)
+✔ every eased camera frame is rechecked against the actual wall, including return to the requested orbit (4.4861ms)
+✔ reduced motion resolves immediately and camera-relative controls use only the displayed perspective heading (1.869ms)
+✔ first real pointer drag begins at the visible corrected orbit and keeps subsequent deltas intentional (0.8335ms)
+✔ supported doorstep and near-wall edge keep a readable, collision-safe perspective distance (0.5826ms)
+✔ an unobstructed requested view remains exact and returns after leaving the wall (0.2378ms)
+✔ retains the current clear side under small doorway movements instead of alternating orbit sides (0.2331ms)
+✔ no safe orbit never forces the eye through enclosed solids or claims readable clearance (0.2596ms)
+✔ opted-in dynamic walls take part in the same camera correction (0.204ms)
+✔ per-view preferences roundtrip without changing progression or creative content (6.0061ms)
+✔ old camera preferences acquire empty view memory and keep their selected mode (0.7738ms)
+✔ invalid optional view profiles cannot inject nonfinite camera state or discard valid peers (0.6428ms)
+✔ unknown view-memory versions fall back while keeping ordinary settings and saves (0.4929ms)
+✔ perspective has depth and the requested vertical field of view (0.6451ms)
+✔ production picking inverts ground projection across orbit, FOV and aspect (2.0443ms)
+✔ perspective sky and behind-camera points never become movement destinations (0.1412ms)
+✔ obstruction sweep pulls in before a wall, ignores a clear ray and handles a grazing near plane (0.2313ms)
+✔ perspective water reflection retains contact UV and actual world mirror (0.1474ms)
+✔ presentation preferences roundtrip without modifying old progression or creative state (7.1079ms)
+✔ clearance bounds preserve rotated wall extents and explicitly exclude foliage and low ground (0.2839ms)
+✔ clearance sees opted-in dynamic construction and keeps actor batches out (0.144ms)
+✔ explicit realm walls keep camera clearance below the legacy floor cutoff (0.1421ms)
+✔ actual third-person Look clears canonical padded wall/cap and preserves current branded view (394.2321ms)
+✔ diorama and wide framing stay inside actual saved camera-profile bounds (264.0674ms)
+✔ desktop and portrait framing contain actual member corners and five receiving sockets (949.7149ms)
+✔ actual framing rejects cloned/expired authority and unrelated recorded-looking characters (69.8593ms)
+✔ actual movement/owner synchronization releases framing while synthetic raw revision observations preserve it (71.4526ms)
+✔ actual App Look retains chosen preset and FOV and frames the authorized tray (299.3849ms)
+✔ copied foreign out-of-range and engine-less Look refuses before any host mutation (7.5872ms)
+✔ movement orbit and elevation release actual App focus without cancelling transient fitting (3.9763ms)
+✔ actual view control clears focus and uses the selected saved camera profile (1.4942ms)
+✔ actual owner refresh, death, travel and character changes revoke camera and private kit (3.9907ms)
+✔ recorded kit remains frameable at glade but paid kit refuses an old tray Look (6.17ms)
+✔ distinct receiving Look frames paid bodies in both views without changing profile or payment (31.6821ms)
+✔ actual renderer projection contains all receiving corners on desktop/portrait and FOV bounds (47.2535ms)
+✔ receiving refusals are atomic and releases preserve private payment and user camera edits (81.4439ms)
+✔ actual wheel/pinch zoom releases receiving inspection before applying ordinary user scale (6.659ms)
+✔ repeated receiving inspection and cold Adventure release retain original valid preferences (8.7803ms)
+✔ receiving perspective fit clears actual canonical Earth scenery in desktop and portrait (717.9181ms)
+✔ actual competing foe frame retains ordinary user distance and refusal retains held inspection (4.0897ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2749.9531

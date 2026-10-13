@@ -1,0 +1,19 @@
+✔ actual App resolves the house camera without rewriting orbit preference or any world state (21.6989ms)
+✔ every eased camera frame is rechecked against the actual wall, including return to the requested orbit (6.9274ms)
+✔ reduced motion resolves immediately and camera-relative controls use only the displayed perspective heading (2.6091ms)
+✔ first real pointer drag begins at the visible corrected orbit and keeps subsequent deltas intentional (1.543ms)
+✔ leaving an actual tour keeps the displayed heading for movement and drag, not a stale perspective correction (2.5497ms)
+✔ clear endpoints around a side wall do not allow a one-frame close-up on the intervening orbit arc (4.5686ms)
+✔ supported doorstep and near-wall edge keep a readable, collision-safe perspective distance (1.2681ms)
+✔ an unobstructed requested view remains exact and returns after leaving the wall (0.479ms)
+✔ retains the current clear side under small doorway movements instead of alternating orbit sides (0.5249ms)
+✔ no safe orbit never forces the eye through enclosed solids or claims readable clearance (0.9886ms)
+✔ opted-in dynamic walls take part in the same camera correction (0.443ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 207.9565

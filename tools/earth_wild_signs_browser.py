@@ -376,7 +376,7 @@ def driver_class(base):
                     d=self.diag();player=d['adventure']['player']
                     self.check('signed bypass stays alive and unpaused',not d['adventure']['paused'] and self.state()['adventure']['hp']>0)
                     if base.distance(player,point)<=1.1:break
-                    keys=base.native_keys(player,point,d['camera']['yaw'])
+                    keys=base.native_keys(player,point,d['camera'].get('heading', d['camera']['yaw']))
                     self.hold_native_keys_for_frames(keys)
                     after=self.diag()['adventure']['player']
                     self.check('actual complete Core bypass walking segment supported',self.ev('p=>RealmWorldFoundations.segment("world-earthlands",p[0],p[1],.31)',[last,after]))

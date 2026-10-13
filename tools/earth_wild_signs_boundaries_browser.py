@@ -20,7 +20,7 @@ import threading
 import time
 import traceback
 
-FROZEN_SUITE_SHA256 = 'ecfa615cbeb243cba38c28d99bda2aff22ed6cc40536209c09fec8a6ccac6f8f'
+FROZEN_SUITE_SHA256 = 'e8516952228fdd645ff7e92cb8983c93eb6f6e328d0c1a8962188d3b62e39e8a'
 ID = 'earth-beast-wrong-name-v1'
 PEST = 'earth-wild-signs-burrow-skitter-v1'
 BASELINE = 'earthlands-coppice-skitter'
@@ -293,7 +293,7 @@ def driver_class(suite, base):
                 point = route[0] if route else target
                 remaining = 240-(time.monotonic()-started)
                 if remaining <= 0: raise TimeoutError('Native approach deadline expired before another input interval')
-                self.hold_native_keys_for_frames(approach_keys(player, point, d['camera']['yaw']), timeout_ms=max(1,min(10000,int(remaining*1000))))
+                self.hold_native_keys_for_frames(approach_keys(player, point, d['camera'].get('heading', d['camera']['yaw'])), timeout_ms=max(1,min(10000,int(remaining*1000))))
                 after = self.diag()['adventure']['player']
                 self.check('complete native approach segment retains actual support', self.ev('p=>RealmWorldFoundations.segment("world-earthlands",p[0],p[1],.31)', [last,after]))
                 last = after

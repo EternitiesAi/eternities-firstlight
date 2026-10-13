@@ -1,0 +1,7 @@
+{
+  "status": "refused-before-verifier",
+  "reason": "Parent advanced before the pending fetch had completed; FETCH_HEAD was unavailable and station still held the earlier head.",
+  "expectedHead": "11e40c065eadd312a42fb52e04098ba193c956ac",
+  "sourceVerifierLaunched": false,
+  "repair": "Wait for the existing fetch; inspect completion before switching and retrying the original admission controller. No second fetch or resource change."
+}

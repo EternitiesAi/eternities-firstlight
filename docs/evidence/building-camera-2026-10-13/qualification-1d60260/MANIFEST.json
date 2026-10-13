@@ -1,0 +1,846 @@
+{
+  "schema": 1,
+  "baseHead": "cf636d211b765aaa59767099d22616fd1faef714",
+  "qualifiedHead": "1d60260f0bc950b9f0e064555ec750ff38324fe3",
+  "htmlSha256": "794fdecde7b750a9d0da5e5d2efea80a1872a4ae4ca63f942f126af2c3faca9c",
+  "completeSourceGatePassed": true,
+  "targetedNativePassed": true,
+  "completeBrowserGatePassed": false,
+  "humanAcceptance": false,
+  "realGPUQualification": false,
+  "scope": "Exact remote source gate; targeted software-WebGL camera, one early-blade Briar native case, cutaway/reflection; preserved failures. Four other Briar cases remain CPU-only. Original report paths identify retained local evidence; no profile or game copy included.",
+  "fileCount": 166,
+  "totalBytes": 10995661,
+  "files": [
+    {
+      "path": "BRIAR02/BRIAR_NATIVE_REPORT.json",
+      "bytes": 246183,
+      "sha256": "2182dd94441e75792aa4cf20879118ce7a01260bc5eff9e557b5862c554709e2"
+    },
+    {
+      "path": "BRIAR02/early-rescued-blade/CARRY_adventure.png",
+      "bytes": 693672,
+      "sha256": "452099a450bd4b7b8c0e0b81cfcde3a0376bfbd71333c48e8bb06f7ff96d0aa6"
+    },
+    {
+      "path": "BRIAR02/early-rescued-blade/CARRY_follow.png",
+      "bytes": 947939,
+      "sha256": "ce6dc62689b6a6e3ccb75c0bafb65bacda68519591ab7326c1b8cb2ca8595122"
+    },
+    {
+      "path": "BRIAR02/early-rescued-blade/COLD_COMPLETED.png",
+      "bytes": 586698,
+      "sha256": "1e54b614c8e582263e48a4bde44cab7d4587ebcc17bf7b6fcbe62684f271cb0f"
+    },
+    {
+      "path": "BRIAR02/early-rescued-blade/FINAL_WORLD.json",
+      "bytes": 26710,
+      "sha256": "c2e4b0660347d04385e3bba515acb146106fcdc61a75899197d37bd9e5045963"
+    },
+    {
+      "path": "BRIAR02/early-rescued-blade/PARTIAL_CLOSED_NATIVE_BYTES.json",
+      "bytes": 23153,
+      "sha256": "a33140db5030d73ad7bf49e1e33ef4698351b342f90318a008e902e63d7ab132"
+    },
+    {
+      "path": "BRIAR02/early-rescued-blade/REMEMBERED_CLOSED_NATIVE_BYTES.json",
+      "bytes": 23508,
+      "sha256": "ca0c0162cc053ae7d775638d889e17bb2fd6887fd08bc4bab5c2af36a70a0272"
+    },
+    {
+      "path": "BRIAR02/early-rescued-blade/REST_UNFRAMED_ARRIVAL.png",
+      "bytes": 886558,
+      "sha256": "90cf497b032c91abf7fa5c58ea4212798cc9fa76ad46c16a3f459d616e597dfc"
+    },
+    {
+      "path": "BRIAR02/early-rescued-blade/REST_adventure.png",
+      "bytes": 884938,
+      "sha256": "906fe781d7acc914ec61da7fff5736f857de71c15eed5adeaff04f4952026e7f"
+    },
+    {
+      "path": "BRIAR02/early-rescued-blade/REST_follow.png",
+      "bytes": 1188578,
+      "sha256": "7558206c7321b1432885f6110608b0b1a6651e98aa40c85057a4f70027539dcd"
+    },
+    {
+      "path": "BRIAR02/early-rescued-blade/TAKEN_CLOSED_NATIVE_BYTES.json",
+      "bytes": 23325,
+      "sha256": "2bd9812ab35c8c9c9c4d2ac07912c989fbabaa1e542d6f89d3290f23b57f0de1"
+    },
+    {
+      "path": "BRIAR02_CONSOLE.log",
+      "bytes": 7006,
+      "sha256": "544ef1193048984406ae7dfd6f450bea120c0fc923481057ac66c7088816e8e4"
+    },
+    {
+      "path": "CAMERA02/DOORSTEP_CLEARANCE.png",
+      "bytes": 641888,
+      "sha256": "ecf282c4056a8c5d2f759e4d1cb36b593f61bce297ba93d38d86bc7a54723d1f"
+    },
+    {
+      "path": "CAMERA02/HOME.png",
+      "bytes": 322453,
+      "sha256": "f97e8321d2bf5b2f84f1023861b3bee5cb0c39410747b4bb68acbd4bd529675b"
+    },
+    {
+      "path": "CAMERA02/NARROW.png",
+      "bytes": 217473,
+      "sha256": "877f0d5db28aa754be8af7aa8bcca831d7fa18c7828d8f5ec038572e1b66d600"
+    },
+    {
+      "path": "CAMERA02/REPORT.json",
+      "bytes": 11658,
+      "sha256": "b314e18492d1ccea6f31be1d7d027b840464db571ad1ed458a6aa8cc6e67d224"
+    },
+    {
+      "path": "CAMERA02_ADMISSION.json",
+      "bytes": 378,
+      "sha256": "4d1b0ac8593130eb0751df0a420329b93caa3c2d5d7cd292e35bae8acccdd161"
+    },
+    {
+      "path": "CAMERA02_CONSOLE.log",
+      "bytes": 3148,
+      "sha256": "7d68d696b79d0d9cc30bdfa7b8fc530550884baee93b1508aa8d8a6e4d38372f"
+    },
+    {
+      "path": "CAMERA02_EXIT.json",
+      "bytes": 519,
+      "sha256": "ddeb983bd355078535cc5cf13bdb5b6c53038489e97f8f461a50699166ccbebc"
+    },
+    {
+      "path": "DIAGNOSTIC_HOST_GREEN01.log",
+      "bytes": 2433,
+      "sha256": "e03a95dbb9ed96e38fb749f58a113d4253e9fcd89517b4cde9cbd787f5b99d0e"
+    },
+    {
+      "path": "HEADING_GREEN01.log",
+      "bytes": 53606,
+      "sha256": "18abc182601a7e4e0ef303dd1369f940d510d10469117a7def89ca617ab38dc7"
+    },
+    {
+      "path": "HEADING_RED01.log",
+      "bytes": 1855,
+      "sha256": "e4f6920b8fbb181773e5a2d68875f1944df1cc8f8e52d84e90311a5872ccf062"
+    },
+    {
+      "path": "PIN_GREEN01.log",
+      "bytes": 6362,
+      "sha256": "bc445a9b216454020ebb169376db8c2347b0dcdb11ece26ef5606ac0db28f81c"
+    },
+    {
+      "path": "PIN_GREEN02.log",
+      "bytes": 120,
+      "sha256": "326abd66b633e4589f7e35888a2da79c216eece12d9e18db5224338238c885f3"
+    },
+    {
+      "path": "REMOTE_SOURCE03/build.log",
+      "bytes": 91,
+      "sha256": "8e7a574fe9eb55ea2f7bfb03d23712f896e880febdf24dcf55c62bd1b9fdec8c"
+    },
+    {
+      "path": "REMOTE_SOURCE03/python.log",
+      "bytes": 174924,
+      "sha256": "2b6f11a9d5922ffb195f568159d9f9da1c0e9f59d48248c5c1861c583a78148a"
+    },
+    {
+      "path": "REMOTE_SOURCE03/rules-command.json",
+      "bytes": 23488,
+      "sha256": "d69293508e7c2037d442c1bce80444d5cb2c0a9681b8e8f3b43e4e56581b658f"
+    },
+    {
+      "path": "REMOTE_SOURCE03/rules.log",
+      "bytes": 542724,
+      "sha256": "8ba01a18391f5732e0946d63d225d28c10c6f31986cdc4bdb7d6ea87c69b00d6"
+    },
+    {
+      "path": "REMOTE_SOURCE03_CONSOLE.log",
+      "bytes": 16467,
+      "sha256": "f0034d616b6696a74b0419de9aa9aa2c1c2b95346a60f16b2e22b20ddf0d1e47"
+    },
+    {
+      "path": "REMOTE_SOURCE03_EXIT.json",
+      "bytes": 1592,
+      "sha256": "99b2a81fac2c03bec58f53acce0173cc05e8dc6bf27f88a8c281346ae02e7fa1"
+    },
+    {
+      "path": "REMOTE_SOURCE04/build.log",
+      "bytes": 91,
+      "sha256": "c3114b931465a635b79fb05a5b5e6136840acda042b79dc784ff49df514483a4"
+    },
+    {
+      "path": "REMOTE_SOURCE04/rules-command.json",
+      "bytes": 23488,
+      "sha256": "d69293508e7c2037d442c1bce80444d5cb2c0a9681b8e8f3b43e4e56581b658f"
+    },
+    {
+      "path": "REMOTE_SOURCE04/rules.log",
+      "bytes": 543528,
+      "sha256": "f09585bafddfa455fa41c194a5627a24f2a1c3c3af7545a949f25e09950569e6"
+    },
+    {
+      "path": "REMOTE_SOURCE04_CONSOLE.log",
+      "bytes": 16374,
+      "sha256": "7af7c57143c588d5136744ecc5b91025a849d8d70bb2f0a6e184873d8938a114"
+    },
+    {
+      "path": "REMOTE_SOURCE04_EXIT.json",
+      "bytes": 1591,
+      "sha256": "16f164d782408a064205a6c53571bd7e9fa63ee7ce03d5751a457cc9050d77c1"
+    },
+    {
+      "path": "REMOTE_SOURCE05/build.log",
+      "bytes": 91,
+      "sha256": "c3114b931465a635b79fb05a5b5e6136840acda042b79dc784ff49df514483a4"
+    },
+    {
+      "path": "REMOTE_SOURCE05/python.log",
+      "bytes": 149384,
+      "sha256": "082c7b2c8ea08e368b169347a5b30a9d6ea1fdddacf0411437cd7f357be5f791"
+    },
+    {
+      "path": "REMOTE_SOURCE05/rules-command.json",
+      "bytes": 23488,
+      "sha256": "d69293508e7c2037d442c1bce80444d5cb2c0a9681b8e8f3b43e4e56581b658f"
+    },
+    {
+      "path": "REMOTE_SOURCE05/rules.log",
+      "bytes": 542698,
+      "sha256": "7524f3c43d3d79ea31c1c4dc58bdb0695b8097c1518038b7560dfd0640de3150"
+    },
+    {
+      "path": "REMOTE_SOURCE05_CONSOLE.log",
+      "bytes": 16464,
+      "sha256": "7150cda5168606236fbdab8af274a4b090cf6324a45f01178b5f7d14787e52f6"
+    },
+    {
+      "path": "REMOTE_SOURCE05_EXIT.json",
+      "bytes": 1591,
+      "sha256": "fd1d2856cac893c4f7b6a93749eb93aee5f415d17964f352690639fa26fe69fd"
+    },
+    {
+      "path": "REMOTE_SOURCE06/atlantis-campaign-blade.log",
+      "bytes": 102,
+      "sha256": "bf5355c8c11cab570ef5447fbf2cb9ae92e03944a4f995011707a348ee714e0f"
+    },
+    {
+      "path": "REMOTE_SOURCE06/atlantis-campaign-bow.log",
+      "bytes": 100,
+      "sha256": "6c82fb5cdf4f3ed355520a90a7ff115892e20aa56c46b9e916ca9b0691fde357"
+    },
+    {
+      "path": "REMOTE_SOURCE06/atlantis-campaign-veteran.log",
+      "bytes": 111,
+      "sha256": "871e099cef3be692c163dd4c848a1a32f98ec981787a1f72554afdfe58fc8686"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/BRIAR_OUTING_JOURNEY_REPORT.json",
+      "bytes": 50000,
+      "sha256": "94cac1d707ef4947cc00fd6ef72d0f1c1ccfc386e92dbf490b9813502bcdda17"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/early-rescued-blade/FINAL_WORLD.json",
+      "bytes": 26513,
+      "sha256": "637c8e9fcc3b562569ae857da99faa10be88225ccf5b9257cff71f3e4c22169e"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/early-rescued-blade/INPUT_WORLD.json",
+      "bytes": 25871,
+      "sha256": "578443eabc38a37333a423dc53e7b65112e84bcaed4bc016ddedbe6e06249fda"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/early-rescued-blade/PARTIAL_WORLD.json",
+      "bytes": 25909,
+      "sha256": "32bb9cb0e147274c253b38f0b45b03f3732733fa8e2e2ec92f97edaf7ad5ed6f"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/early-rescued-blade/REMEMBERED_WORLD.json",
+      "bytes": 26513,
+      "sha256": "637c8e9fcc3b562569ae857da99faa10be88225ccf5b9257cff71f3e4c22169e"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/early-rescued-blade/RETURNED_WORLD.json",
+      "bytes": 26303,
+      "sha256": "2ab4191cf1ddf80d86b475eb4fe00a3ce0684f066dc88a461cf88f806d0ad3a4"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/early-rescued-bow/FINAL_WORLD.json",
+      "bytes": 32158,
+      "sha256": "e0a1fe601d49d57d64ea3c4818f341937c47ca8846a28ac4fb272993bfb5f81a"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/early-rescued-bow/INPUT_WORLD.json",
+      "bytes": 31515,
+      "sha256": "5137ace9f7c5e22c686f54524c7e3bbbbfd0520bfb05c26ae023ad1a0d619236"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/early-rescued-bow/PARTIAL_WORLD.json",
+      "bytes": 31553,
+      "sha256": "8eccb1bd4254122f19c2bec17795300b31532fad4a4c2ac6f6333dfa5c594bb8"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/early-rescued-bow/REMEMBERED_WORLD.json",
+      "bytes": 32158,
+      "sha256": "e0a1fe601d49d57d64ea3c4818f341937c47ca8846a28ac4fb272993bfb5f81a"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/early-rescued-bow/RETURNED_WORLD.json",
+      "bytes": 31945,
+      "sha256": "eba767649c305614360324043b37bbf836a97fef7770ffa0e821bd45939dc259"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/earned-both-sunward-caches/FINAL_WORLD.json",
+      "bytes": 37373,
+      "sha256": "df45c2ea5a7a84723be4195b0e853785f09b8a064a56c44540c8309a2bb28c81"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/earned-both-sunward-caches/INPUT_WORLD.json",
+      "bytes": 36731,
+      "sha256": "2525c0f7cd3b87df7dcd6497095f00e05273fb4d9d17729b39318755f9b9df9a"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/earned-both-sunward-caches/PARTIAL_WORLD.json",
+      "bytes": 36768,
+      "sha256": "cfe386e2b9824cb0d565fdc951960b2b27a4f2183e94b3f154e9957e49b5e2ab"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/earned-both-sunward-caches/REMEMBERED_WORLD.json",
+      "bytes": 37373,
+      "sha256": "df45c2ea5a7a84723be4195b0e853785f09b8a064a56c44540c8309a2bb28c81"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/earned-both-sunward-caches/RETURNED_WORLD.json",
+      "bytes": 37164,
+      "sha256": "576d5a949fbba00e3054e4453a233d88b0088f492f2c6808669ec3b32da7aeee"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/earned-chapter-I-blade/FINAL_WORLD.json",
+      "bytes": 30651,
+      "sha256": "ba6ebfbbe3fedd6dd1336571cfca4d46c78f815ba7320d0d4364e14ef34fa08c"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/earned-chapter-I-blade/INPUT_WORLD.json",
+      "bytes": 30043,
+      "sha256": "d46a579f745788ba71878885fb86fb8986b0dc1cade323c125c1dfb2c2b3cc1c"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/earned-chapter-I-blade/PARTIAL_WORLD.json",
+      "bytes": 30048,
+      "sha256": "59de4641335f437a3f5294ca63142fcf88f5569cc20d898a7d8206fc48167b52"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/earned-chapter-I-blade/REMEMBERED_WORLD.json",
+      "bytes": 30651,
+      "sha256": "ba6ebfbbe3fedd6dd1336571cfca4d46c78f815ba7320d0d4364e14ef34fa08c"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/earned-chapter-I-blade/RETURNED_WORLD.json",
+      "bytes": 30444,
+      "sha256": "32f5e06f6a91a02fd2d804560d51d42d65581700b4e87693f008674ee5549e05"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/earned-chapter-IV-blade-to-bow/FINAL_WORLD.json",
+      "bytes": 50408,
+      "sha256": "a62dd17aeb1c5911b04fc5e7056ac709fa0ce90b0bb0fe0dec61dd735e07dc65"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/earned-chapter-IV-blade-to-bow/INPUT_WORLD.json",
+      "bytes": 49753,
+      "sha256": "4b6f36edeaf8d1f9a797399caeed79dbce6ef0f5430098117a98b29789ce2552"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/earned-chapter-IV-blade-to-bow/PARTIAL_WORLD.json",
+      "bytes": 49805,
+      "sha256": "df2419c67bbdfe5e066f744b565f7b30f39a21da27512ea94105a5e80db04d4d"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/earned-chapter-IV-blade-to-bow/REMEMBERED_WORLD.json",
+      "bytes": 50408,
+      "sha256": "a62dd17aeb1c5911b04fc5e7056ac709fa0ce90b0bb0fe0dec61dd735e07dc65"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-earned/earned-chapter-IV-blade-to-bow/RETURNED_WORLD.json",
+      "bytes": 50195,
+      "sha256": "82822ac06371e86a3dee5022c3e8b1bd8fb6a7558a47eff8e348ce6d627ee5da"
+    },
+    {
+      "path": "REMOTE_SOURCE06/briar-outing-earned.log",
+      "bytes": 493,
+      "sha256": "42a72e5e142fb1aec3934aa4859ae529cda95a6a45d953d5d249a62128df8172"
+    },
+    {
+      "path": "REMOTE_SOURCE06/bridge-community-blade.log",
+      "bytes": 115,
+      "sha256": "5ef9dbac0926b8904107f463f8215323de6ae3cedf3a4ccb99016d2d5078f960"
+    },
+    {
+      "path": "REMOTE_SOURCE06/bridge-community-bow.log",
+      "bytes": 119,
+      "sha256": "81802a66211ae7e69bbb878bb946d487913223602fdc76dfc57bbd93ed927c42"
+    },
+    {
+      "path": "REMOTE_SOURCE06/bridge-community-veteran.log",
+      "bytes": 123,
+      "sha256": "08fddde5b7978d3f70af5950ba7c6d4774ffd2d79cdff0c839c3ece5194e0022"
+    },
+    {
+      "path": "REMOTE_SOURCE06/build.log",
+      "bytes": 91,
+      "sha256": "c3114b931465a635b79fb05a5b5e6136840acda042b79dc784ff49df514483a4"
+    },
+    {
+      "path": "REMOTE_SOURCE06/characters-journey.log",
+      "bytes": 3058,
+      "sha256": "2a32dfe76a378fc1d39519df2a81e7293b1714acc7bb25715dc20406e558a862"
+    },
+    {
+      "path": "REMOTE_SOURCE06/classes-journey.log",
+      "bytes": 4224,
+      "sha256": "714c9112895cd67a55e96f84ca70cc188cfbed9df3e56f5f8640ffcda32d1de7"
+    },
+    {
+      "path": "REMOTE_SOURCE06/cosmos-campaign-blade.log",
+      "bytes": 128,
+      "sha256": "b6e6484740bd267cf826f2796d5db8c5b37a4040d8f78951c8c442f4e711ac46"
+    },
+    {
+      "path": "REMOTE_SOURCE06/cosmos-campaign-bow.log",
+      "bytes": 126,
+      "sha256": "983182702055d1fcf582c12bc1733815d92089bde3479d14b93e88c308b61e18"
+    },
+    {
+      "path": "REMOTE_SOURCE06/cosmos-campaign-veteran.log",
+      "bytes": 136,
+      "sha256": "906a670b557365c6ef2ca4355c5d5b63ca806c63a4603fb4cd398d660aa80126"
+    },
+    {
+      "path": "REMOTE_SOURCE06/cosmos-journey.log",
+      "bytes": 630,
+      "sha256": "5dc63d270d7e3b6d7392989c483d32e84fb2b49e16b2b80b2622416e57385e7c"
+    },
+    {
+      "path": "REMOTE_SOURCE06/crossing-blade.log",
+      "bytes": 625,
+      "sha256": "0b27a5083c98c2983b9d5dd15b33456d395f182b4b299bbf46412b4f244ba956"
+    },
+    {
+      "path": "REMOTE_SOURCE06/crossing-bow.log",
+      "bytes": 649,
+      "sha256": "f1f412fb8081e5e0c9e1c60e5ea9b8d1de892fbc3c23c2a76e5b1470f8c04d4a"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-consignment-cohort.log",
+      "bytes": 181,
+      "sha256": "661a50463745557706117bc0b9e45d32078d5edc937247eb1d0e517f6e526d2a"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-consignment-current-preflight.log",
+      "bytes": 4809,
+      "sha256": "bedadbfc427d6680df6ce3f59d3ef960e8d8ec66beb3fd21af2dcd2f2694a37f"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-expedition-blade.log",
+      "bytes": 834,
+      "sha256": "0d40fa4d22f774d8fc60710d4566f04ab9b914501a25b23237e84f8501ae8488"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-expedition-bow.log",
+      "bytes": 831,
+      "sha256": "fb13bf1983044f4adeb49eaefb1704ad5a8a0c6b6c5522acb305a4b3d6753678"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-expedition-veteran.log",
+      "bytes": 831,
+      "sha256": "060f9480bc7b5721c72ef0d6b53581e05e40b4cb6a25dc1666ad9ee22768f49c"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-homecoming-earned.SOURCE_EPOCH.json",
+      "bytes": 19404,
+      "sha256": "bad585b83ff51e55ef65094578ed2c2ae52743001f3088f5a2f5d9e2da084022"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-homecoming-earned.log",
+      "bytes": 5134,
+      "sha256": "69ce864bac5a1740b3327b64513a3a3b13a17419a27100892dcb94c2f3c7c38e"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-homecoming-native-preflight.log",
+      "bytes": 5040,
+      "sha256": "460f25d328db9dfd2f16f39cf8a9c9ed582d99b9b09aea17788c586db56255d8"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-journey.log",
+      "bytes": 602,
+      "sha256": "29b32546390f37b7a356aa84d6c9b3ec3506242a6c92a9765074a73d58f1fe2b"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-notes-blade.log",
+      "bytes": 2028,
+      "sha256": "e8e20b64e0235fbf83953c02948c73cb8c969eec864a72651add4a4bf133851d"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-notes-bow.log",
+      "bytes": 2030,
+      "sha256": "b59314710ec5af9c65337362dee14922b05605050ee9600a01023a36205a7d34"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-notes-veteran.log",
+      "bytes": 2022,
+      "sha256": "5c3c5c07282c6716785b6da53a6418f43dab63d3618efdfefc17a9355439772e"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-outing-blade.log",
+      "bytes": 5482,
+      "sha256": "be9b2f2c5cc1dc45ed3ada36ba842c06b1e0144b009f341107d3acafb80f6a60"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-outing-bow.log",
+      "bytes": 6715,
+      "sha256": "e4e71e12da6150014a280b35387a3f507522cee791079ddbb89e5805a720d8c6"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-outing-veteran.log",
+      "bytes": 3490,
+      "sha256": "43dfe0e28b98aeff301c43641be7a3b5a49e75cf7401100447929b512d82b008"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-recording-controller-preflight.log",
+      "bytes": 6298,
+      "sha256": "9480904bc520456c36f68510477d13d5359383bf4f08b6bad4ae96c2db50188e"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-road-journey.log",
+      "bytes": 83,
+      "sha256": "5bd02fb1ce55fc4bc4ab0b89d8eedef30dcf3af8ab045b415e5a7f744d50d0bf"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-story-blade.log",
+      "bytes": 3039,
+      "sha256": "b100d906bfddf4644dfee70ffc05def505a952cd946e36bba3cfb8f4d39772a4"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-story-bow.log",
+      "bytes": 3448,
+      "sha256": "e78110fb617bfd1dd48ddb238aa47ae744a0dbbc520de0265cd6817e7d92c6df"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-story-veteran.log",
+      "bytes": 2628,
+      "sha256": "4c7652dea2e4f837126a09cd840e743dc35bfafe847f8e19eae77a8a6f5f1762"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-wild-signs-current-preflight.log",
+      "bytes": 4852,
+      "sha256": "ff9c8645f9acd44e6e228821d030d72117164c68801d8f694bda76e3f524acb6"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-wild-signs-earned.log",
+      "bytes": 49376,
+      "sha256": "1e02634fd2afbd7d03a1190c575e00f370f6ca2081861eaa4c107b08782f9a18"
+    },
+    {
+      "path": "REMOTE_SOURCE06/earth-wild-signs-prerequisites.log",
+      "bytes": 248,
+      "sha256": "dbf028a6d6b752804d063299e98c532710c5c1e814965a1e8b380479beb442ec"
+    },
+    {
+      "path": "REMOTE_SOURCE06/gathering-blade.log",
+      "bytes": 2008,
+      "sha256": "e7a1678f35c8de0d9ab6971936a865fb1a8a396de6955bb2bb796038227c6bf1"
+    },
+    {
+      "path": "REMOTE_SOURCE06/gathering-bow.log",
+      "bytes": 2004,
+      "sha256": "3f58e51bb032845e0b85b394cdbdfc960131eb8f90ab4f91858cd9b0b8f017a7"
+    },
+    {
+      "path": "REMOTE_SOURCE06/gathering-veteran.log",
+      "bytes": 1998,
+      "sha256": "0dd3e18f7bc9ae878b2d68088e73ce7e88b0630ef19d437db4a5516890b139af"
+    },
+    {
+      "path": "REMOTE_SOURCE06/heaven-campaign-blade.log",
+      "bytes": 149,
+      "sha256": "06a4c6fad5039fe2f762ae3bba9f4aded7c5eb2295f7cfa13b554254655ea8b1"
+    },
+    {
+      "path": "REMOTE_SOURCE06/heaven-campaign-bow.log",
+      "bytes": 150,
+      "sha256": "c7daece8db21e67864161cc56d2e3fda89c126c590fc2167a32dd4e140d9b17e"
+    },
+    {
+      "path": "REMOTE_SOURCE06/heaven-campaign-veteran.log",
+      "bytes": 157,
+      "sha256": "57bbc7fa30f7dec4c2ccd610c07bbd97047de4a1e9161b90cad42d7152a4e7f6"
+    },
+    {
+      "path": "REMOTE_SOURCE06/hell-campaign-blade.log",
+      "bytes": 90,
+      "sha256": "afd9305106d14d0ff80b829c769422ab83f1681a5fcc8926a2d96c1e382dd2de"
+    },
+    {
+      "path": "REMOTE_SOURCE06/hell-campaign-bow.log",
+      "bytes": 88,
+      "sha256": "c68d5d118e02d19ff299e64a036ee685639f25a78e472684222729e781e5094e"
+    },
+    {
+      "path": "REMOTE_SOURCE06/hell-campaign-veteran.log",
+      "bytes": 99,
+      "sha256": "b99fa6da12bedd3cc060af639ecb97ed53fdccda85429d7fa7adc911507cb380"
+    },
+    {
+      "path": "REMOTE_SOURCE06/home-history-blade.log",
+      "bytes": 147,
+      "sha256": "67b551344f4ce9c2a7d09fb7e1f609733c67e446b5ac9ec734aa9261bcbb20bd"
+    },
+    {
+      "path": "REMOTE_SOURCE06/home-history-bow.log",
+      "bytes": 145,
+      "sha256": "fc9771880dce1ba439c946001c3dffe04b41ae7de11625a791a300bc61987e13"
+    },
+    {
+      "path": "REMOTE_SOURCE06/home-history-veteran.log",
+      "bytes": 155,
+      "sha256": "25402427c525d6548dd3d1ef6a32544736829662f175eb870b82f27d8ae04018"
+    },
+    {
+      "path": "REMOTE_SOURCE06/local-life-blade.log",
+      "bytes": 1012,
+      "sha256": "982789616d67fd254b72ce9a5a0e8df923d2f9a709205db634b537ff7beb533e"
+    },
+    {
+      "path": "REMOTE_SOURCE06/local-life-bow.log",
+      "bytes": 1009,
+      "sha256": "0ca6e51f77b4d7736125395d0b37a23b4d7fa4ecb4f2090b2fc1dbf070d4e866"
+    },
+    {
+      "path": "REMOTE_SOURCE06/local-life-veteran.log",
+      "bytes": 1019,
+      "sha256": "e73bdada22bd81a4ad8ffc08b4a8f2a243ecab7eca8067b88f0c719e76becb16"
+    },
+    {
+      "path": "REMOTE_SOURCE06/pursuit-blade.log",
+      "bytes": 5483,
+      "sha256": "04029aab268bf30da55bb85ea9cb89e5ab63ecd7f782a59c97aa095529ce4647"
+    },
+    {
+      "path": "REMOTE_SOURCE06/pursuit-bow.log",
+      "bytes": 6710,
+      "sha256": "7954f060cccbda3f5837029b6b177c60db43a02f6d581a5880ed7382a76135d1"
+    },
+    {
+      "path": "REMOTE_SOURCE06/pursuit-veteran.log",
+      "bytes": 3487,
+      "sha256": "bc953ffae9014a52c125235972950267143a1857f1a541a7852c8121ecc9e408"
+    },
+    {
+      "path": "REMOTE_SOURCE06/python.log",
+      "bytes": 142989,
+      "sha256": "2f01ea3093557e1ec2fa7b3374a3c57f0c5a0e0b05daf35fb7aab848128ee93d"
+    },
+    {
+      "path": "REMOTE_SOURCE06/realm-comparator-blade.log",
+      "bytes": 860,
+      "sha256": "d051c505ea0d4762ed40c3b46181cff2ef60ab5dfca172cbdff96e7e26bccab5"
+    },
+    {
+      "path": "REMOTE_SOURCE06/realm-comparator-bow.log",
+      "bytes": 859,
+      "sha256": "a07a5025afb0bff37325955e4fd9fea4c0a5b197b0afaa4f95064ca4a85245d8"
+    },
+    {
+      "path": "REMOTE_SOURCE06/realm-comparator-veteran.log",
+      "bytes": 1380,
+      "sha256": "cd7d65ba1e332d1873a1c022c27938618ef5882d18d668c21bdebd193f12695c"
+    },
+    {
+      "path": "REMOTE_SOURCE06/realm-trails-blade.log",
+      "bytes": 161,
+      "sha256": "8c99875b9853801c2052b9590857b851d349d56ab81580bfb70232c631f73fe1"
+    },
+    {
+      "path": "REMOTE_SOURCE06/realm-trails-bow.log",
+      "bytes": 159,
+      "sha256": "53a69d88317a65523229998ee60c03de091e0a8b8d41a82e5253f340965b78d5"
+    },
+    {
+      "path": "REMOTE_SOURCE06/realm-trails-south-blade.log",
+      "bytes": 5341,
+      "sha256": "89544e61c091be17e2e653b4cfc86e7fe7676c82981ae1391dc18971325aa0ba"
+    },
+    {
+      "path": "REMOTE_SOURCE06/realm-trails-south-bow.log",
+      "bytes": 5339,
+      "sha256": "d0a7f5606b43e2d70795b547c2b310e6c92dfd14ed24888cae3a797aaeafdf32"
+    },
+    {
+      "path": "REMOTE_SOURCE06/road-account-controller-preflight.log",
+      "bytes": 2580,
+      "sha256": "891b7028edbd2dec7813e8fd45a3bd24092c79949b340e1bfd2447d292eeb277"
+    },
+    {
+      "path": "REMOTE_SOURCE06/rules-command.json",
+      "bytes": 23488,
+      "sha256": "d69293508e7c2037d442c1bce80444d5cb2c0a9681b8e8f3b43e4e56581b658f"
+    },
+    {
+      "path": "REMOTE_SOURCE06/rules.log",
+      "bytes": 542891,
+      "sha256": "fae110d4fc88a02227b39fce1553d343651ee6e6499e4600d2730c9550e889c0"
+    },
+    {
+      "path": "REMOTE_SOURCE06/starter-blade.log",
+      "bytes": 507,
+      "sha256": "7bf2c1aedc79943bcdc356237696bf2a1a464841e03520203f7ee7d0f4911dae"
+    },
+    {
+      "path": "REMOTE_SOURCE06/starter-bow.log",
+      "bytes": 503,
+      "sha256": "2496bd1b1ba568c3ff951073bede4e7625f178d4aa75780f9ab122264bf8b37f"
+    },
+    {
+      "path": "REMOTE_SOURCE06/starter-veteran.log",
+      "bytes": 1438,
+      "sha256": "a5ce11e73e32f6a35882e153121d316e4ff0bf6682f0b18001f5e86a2f979be0"
+    },
+    {
+      "path": "REMOTE_SOURCE06/whole-draft-earned.SOURCE_EPOCH.json",
+      "bytes": 20356,
+      "sha256": "c79e7cfca2f10ec14279035eb8e456e3b03a825b94fbb23685702a19a93e50f8"
+    },
+    {
+      "path": "REMOTE_SOURCE06/whole-draft-earned.log",
+      "bytes": 4649,
+      "sha256": "b1c26650e2afced9861669109eb103025df4e2aefb6e0e1127e1a549e3d4297e"
+    },
+    {
+      "path": "REMOTE_SOURCE06/whole-draft-earned/WHOLE_DRAFT_JOURNEY_REPORT.json",
+      "bytes": 45327,
+      "sha256": "ec7695c0a1a6a29f293008424dcdc783e9f7b71a300f53a940f6e055d43e7ae9"
+    },
+    {
+      "path": "REMOTE_SOURCE06/world-foundations-blade.log",
+      "bytes": 115,
+      "sha256": "fc64a7526f2397fe2fd184a12f5b7161198deee503ca08909120d5cee37e8e24"
+    },
+    {
+      "path": "REMOTE_SOURCE06/world-foundations-bow.log",
+      "bytes": 113,
+      "sha256": "672abbfbe7a1d33774e55716e058cae4b29ce9f6c013361f41d6b31a4ad224d6"
+    },
+    {
+      "path": "REMOTE_SOURCE06/world-foundations-veteran.log",
+      "bytes": 111,
+      "sha256": "f67ce6df32a739cda65cf92f5c480d85fc7cf4969a8894534f8f0a9487566137"
+    },
+    {
+      "path": "REMOTE_SOURCE06_CONSOLE.log",
+      "bytes": 14750,
+      "sha256": "2303f6098a1e19f80481a06187b4189d1300f15f4cbf5e8d5217b0f163ed2cd3"
+    },
+    {
+      "path": "REMOTE_SOURCE06_EXIT.json",
+      "bytes": 1590,
+      "sha256": "4ebf5274b0b069482d5ca5e7e0bd046247ddd4c0a8f8aab914253ca99f178dbd"
+    },
+    {
+      "path": "RENDERER01/REPORT.json",
+      "bytes": 2345,
+      "sha256": "83fdf7340b403483a02e29b0995d89410764af4db7e0411975fadddcb9371123"
+    },
+    {
+      "path": "RENDERER01/cutaway/CUTAWAY_BROWSER_REPORT.json",
+      "bytes": 1124,
+      "sha256": "dc0223e05fdaa51c982efee6c6ec095e383f39557f2050861761a56678b8d014"
+    },
+    {
+      "path": "RENDERER01/cutaway/caller.py",
+      "bytes": 3331,
+      "sha256": "179f2376bfdfd49b58e501a8c98ca901bd4764d1de79b8304726977c3a2ad397"
+    },
+    {
+      "path": "RENDERER01/cutaway/console.log",
+      "bytes": 1126,
+      "sha256": "5bfe906d2284e178a1efa940b2994776eded0b15b96423280ccee1862446c37f"
+    },
+    {
+      "path": "RENDERER01/reflection/REFLECTION_ORIENTATION_SPECIMEN.png",
+      "bytes": 158447,
+      "sha256": "9b9a99c62bb232c823a55132d0d9c4ee35bddf8f6cb537f9eb21232fc3c14837"
+    },
+    {
+      "path": "RENDERER01/reflection/REFLECTION_TEST_REPORT.json",
+      "bytes": 1847,
+      "sha256": "ab3a7eed80dacd2e3e2ad62c43fbf9a0e020bf809be311a45cf93de49e488cd9"
+    },
+    {
+      "path": "RENDERER01/reflection/caller.py",
+      "bytes": 2877,
+      "sha256": "42e8e1ad87abb65bcd321740c671758d7476aeebd7591f68c6e6dbb7bec80184"
+    },
+    {
+      "path": "RENDERER01/reflection/console.log",
+      "bytes": 1849,
+      "sha256": "da44a34b7ac48730d2b5a660e86683087d2690be419fab63809263ac0802e6f2"
+    },
+    {
+      "path": "RENDERER01_CONSOLE.log",
+      "bytes": 2401,
+      "sha256": "c1a881d5771ebf96e0dfac140146daa0edab880469d3c4266e31926f66b40cda"
+    },
+    {
+      "path": "RUN_CAMERA02.ps1",
+      "bytes": 2561,
+      "sha256": "6162d52abd78207eb1b89eaf7ce07db950dac53ba30d02bbe0feed0647f46c6b"
+    },
+    {
+      "path": "RUN_REMOTE_SOURCE03.ps1",
+      "bytes": 3641,
+      "sha256": "84334c238c5d055a8fc7039c8f083c43ad0f83ce737d97b79f2e4fbf6a0f90a4"
+    },
+    {
+      "path": "RUN_REMOTE_SOURCE04.ps1",
+      "bytes": 3641,
+      "sha256": "5e1929f3c044cf04bfd48b2323d58e2957a84896a5d0a4fe3191c1ae7d428518"
+    },
+    {
+      "path": "RUN_REMOTE_SOURCE05.ps1",
+      "bytes": 3641,
+      "sha256": "dc0384a6a916c6d5762c5a216fbcb52d3d9988d6cccc3fd05c0f1b9e9849e6b2"
+    },
+    {
+      "path": "RUN_REMOTE_SOURCE06.ps1",
+      "bytes": 3641,
+      "sha256": "c1200755012ba43323c0a4d464832252a5fe13176c7cad54ca1eddba4ee79ccd"
+    },
+    {
+      "path": "SOURCE03_ADMISSION01.json",
+      "bytes": 697,
+      "sha256": "d731972e660cd7fb691816be3dc5e301a9408b82e7aa0496478c857dfd237a7b"
+    },
+    {
+      "path": "SOURCE04_ADMISSION01.json",
+      "bytes": 697,
+      "sha256": "b8458a9477416b08a4ce523e72149fc0550b5c363ed75feebfb41f233d54b8ef"
+    },
+    {
+      "path": "SOURCE05_ADMISSION01.json",
+      "bytes": 696,
+      "sha256": "a3c341fafb3016860a5e92680b757e5573dd9f38b2641a16f870076d8d475c89"
+    },
+    {
+      "path": "SOURCE06_ADMISSION01.json",
+      "bytes": 696,
+      "sha256": "dc867e69288442576582d272f5027428fb894b55fb80b4fa50431688bf1cf1e2"
+    },
+    {
+      "path": "qualify_briar02.py",
+      "bytes": 8623,
+      "sha256": "2e43cfa01876c7cb482ac4a353dcb4654e70b092e521c4b52b16e5a479c49f9b"
+    },
+    {
+      "path": "renderer_checks01.py",
+      "bytes": 3641,
+      "sha256": "5c31c2b8b36545bc42d901e9ba3834ba3c844c24a241b18ed2f6554142a92b04"
+    }
+  ]
+}

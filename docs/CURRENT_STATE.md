@@ -1,3 +1,26 @@
+# A readable return home, 2026-10-13
+
+The third-person camera now moves to a clear side when a wall would push it into
+the player's face. Walking, swimming and directional dodge follow the displayed
+view; deliberate orbit begins there. Preferred saved framing and both camera
+styles remain. Camera02 shows the complete traveler at the shared-house door.
+
+Qualified source1d60260f0bc950b9f0e064555ec750ff38324fe3 is pushed on
+gameplay/building-camera-clearance-20261013 (PR74, stacked on PR73). Complete
+source verification passed223 commands: Node2236/0fail/2skip, Python490 OK/8skip,
+both continuous ten-chapter draft journeys and all five earned Briar cases.
+Native camera57 and early-blade Briar109 checks passed; Briar preserves exact
+save bytes through3 whole-browser restarts. Cutaway/reflection passed too.
+The other four Briar cases remain CPU-only. This is targeted native coverage;
+full current --browser and human comfort remain open.
+
+World9/Adventure12, all old save owners, XP and explicit choices are unchanged.
+See [qualification, retained failures and limits](development/BUILDING_CAMERA_QUALIFICATION_2026-10-13.md).
+The integrated launcher and clean qualification checkout were reused. No VM,
+Claude work or personal saves were accessed. No new movie or full-game copy.
+
+---
+
 # A line on the water, 2026-10-13
 
 The full integrated browser game now includes an optional lantern-pier fishing

@@ -1,0 +1,30 @@
+✔ actual App resolves the house camera without rewriting orbit preference or any world state (10.4866ms)
+✔ every eased camera frame is rechecked against the actual wall, including return to the requested orbit (6.4731ms)
+✔ reduced motion resolves immediately and camera-relative controls use only the displayed perspective heading (2.5355ms)
+✔ first real pointer drag begins at the visible corrected orbit and keeps subsequent deltas intentional (1.1977ms)
+✔ leaving an actual tour keeps the displayed heading for movement and drag, not a stale perspective correction (1.2058ms)
+✔ clear endpoints around a side wall do not allow a one-frame close-up on the intervening orbit arc (1.9333ms)
+✔ supported doorstep and near-wall edge keep a readable, collision-safe perspective distance (0.5914ms)
+✔ an unobstructed requested view remains exact and returns after leaving the wall (0.4942ms)
+✔ retains the current clear side under small doorway movements instead of alternating orbit sides (0.227ms)
+✔ an enclosed focus retains the inherited short fallback and never claims readable clearance (0.5437ms)
+✔ opted-in dynamic walls take part in the same camera correction (0.2453ms)
+✔ full Engine retirement frees exact owned GL objects once and removes decoder/listener ownership (6.4182ms)
+✔ lost Engine retirement performs no invalid-context GL deletions and fences retained completions (1.3147ms)
+✔ a false loss signal cannot retire an alive renderer or invalidate pending timber decodes (73.856ms)
+✔ trusted restore rebuilds actual current scene resources and preserves Simulation/store/camera/UI/audio ownership (137.2218ms)
+✔ restore uses latest real current room and scene dispatch without logical scene/camera re-entry (310.5129ms)
+✔ real Store character changes on the map are retained and restored resources belong to the current Simulation (155.7653ms)
+✔ untrusted, wrong-canvas, pre-loss and duplicate restores cannot allocate; repeated true cycles do not accumulate listeners (315.6073ms)
+✔ failed post-Engine scene allocation retires all newly allocated handles/listeners and keeps map/export facts (105.5702ms)
+✔ restored render dispatch remains exact original and loss handler/restore never acquire authority or create loops (168.962ms)
+✔ pre-event lost renderer alone falls back and continues exactly one ordinary RAF/audio/UI tail (59.2643ms)
+✔ non-loss render and rule exceptions retain identity and historical no-reschedule behavior (97.7663ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1535.9904

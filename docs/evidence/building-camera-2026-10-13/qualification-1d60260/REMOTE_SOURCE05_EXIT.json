@@ -1,0 +1,39 @@
+{
+  "scope": "Complete current source; four Node file workers; original rules180/Python600; no native browser",
+  "command": [
+    "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+    "-B",
+    "tools/verify.py",
+    "--rule-workers",
+    "4",
+    "--output",
+    "D:/07-GAMES/Firstlight/artifacts/building-camera-20261013/REMOTE_SOURCE05",
+    "--cpu-temp",
+    "C:/Users/Dom/AppData/Local/Temp"
+  ],
+  "requestedRuleWorkers": 4,
+  "sourceHead": "1a3668745c7ca0390a5c1bce53df92aedea7e129",
+  "headAfter": "1a3668745c7ca0390a5c1bce53df92aedea7e129",
+  "statusAfter": [],
+  "startedUtc": "2026-10-13T19:01:57.3339738Z",
+  "closedUtc": "2026-10-13T19:04:31.3312745Z",
+  "exitCode": 1,
+  "freeHostKiBBefore": 8698376,
+  "freeHostKiBAfter": 10116520,
+  "admission": {
+    "sha256": "a3c341fafb3016860a5e92680b757e5573dd9f38b2641a16f870076d8d475c89",
+    "path": "D:/07-GAMES/Firstlight/artifacts/building-camera-20261013/SOURCE05_ADMISSION01.json"
+  },
+  "unitChildTemp": "C:/Users/Dom/AppData/Local/Temp",
+  "allOtherChildTemp": "D:/07-GAMES/Firstlight/cache/browser-temp",
+  "console": {
+    "path": "D:/07-GAMES/Firstlight/artifacts/building-camera-20261013/REMOTE_SOURCE05_CONSOLE.log",
+    "bytes": 16464,
+    "sha256": "7150cda5168606236fbdab8af274a4b090cf6324a45f01178b5f7d14787e52f6"
+  },
+  "rulesCommand": {
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\building-camera-20261013\\REMOTE_SOURCE05\\rules-command.json",
+    "bytes": 23488,
+    "sha256": "d69293508e7c2037d442c1bce80444d5cb2c0a9681b8e8f3b43e4e56581b658f"
+  }
+}

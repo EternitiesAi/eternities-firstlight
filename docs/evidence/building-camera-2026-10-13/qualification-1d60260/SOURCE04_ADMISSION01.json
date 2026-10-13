@@ -1,0 +1,21 @@
+{
+  "head": "661e4bdeba2c7754f2af80e11abaa53bfd3e8310",
+  "observedUtc": "2026-10-13T18:58:25.9233631Z",
+  "freeHostKiB": 11471208,
+  "minimumFreeKiB": 6291456,
+  "requestedRuleWorkers": 4,
+  "admitted": true,
+  "controllerSha256": "5e1929f3c044cf04bfd48b2323d58e2957a84896a5d0a4fe3191c1ae7d428518",
+  "scope": "Read host free memory only; no VM/Claude interaction",
+  "command": [
+    "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+    "-B",
+    "tools/verify.py",
+    "--rule-workers",
+    "4",
+    "--output",
+    "D:/07-GAMES/Firstlight/artifacts/building-camera-20261013/REMOTE_SOURCE04",
+    "--cpu-temp",
+    "C:/Users/Dom/AppData/Local/Temp"
+  ]
+}

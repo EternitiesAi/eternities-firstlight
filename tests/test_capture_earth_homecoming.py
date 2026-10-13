@@ -159,8 +159,10 @@ class ActualProductionController(unittest.TestCase):
         inputs=[]
         for yaw in (0,.22,math.pi/2,-.8):
             for dx,dz in ((0,-1),(1,-1),(1,0),(1,1),(0,1),(-1,1),(-1,0),(-1,-1)):
-                snapshot={'adventure':{'player':{'x':1,'z':-32.9}},'camera':{'yaw':yaw}}
-                inputs.append({'yaw':yaw,'dx':dx,'dz':dz,'keys':H.direction_keys({'x':1+dx,'z':-32.9+dz},snapshot)})
+                for correction in (0,1.3):
+                    actual=yaw+correction
+                    snapshot={'adventure':{'player':{'x':1,'z':-32.9}},'camera':{'yaw':yaw,'heading':actual}}
+                    inputs.append({'yaw':yaw,'actualYaw':actual,'dx':dx,'dz':dz,'keys':H.direction_keys({'x':1+dx,'z':-32.9+dz},snapshot)})
         result=self.node(r"""
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict');
 const root=process.argv[1],C=require(path.join(root,'src/core.js'));
@@ -168,15 +170,16 @@ const app=fs.readFileSync(path.join(root,'src/app.js'),'utf8'),frame=app.slice(a
 const start=frame.indexOf('let dx='),end=frame.indexOf(';if(sim.worldDive',start);
 assert.ok(start>=0&&end>start);const declarations=frame.slice(start,end);
 const manual=frame.match(/sim\.manual\([^;]+\);/)[0];const samples=JSON.parse(fs.readFileSync(0,'utf8'));
+const heading=app.split('\n').find(line=>line.startsWith('function cameraHeading('));assert.ok(heading);
 const out=[];for(const input of samples){const sim=new C.Simulation(C.fresh());sim.room='world-earthlands';
 sim.state.player={x:1,z:-32.9,yaw:0};const before={...sim.state.player};
-vm.runInNewContext(declarations+';'+manual,{sim,dt:.08,keys:new Set(input.keys),camera:{yaw:input.yaw},Math});
+vm.runInNewContext(heading+'\n'+declarations+';'+manual,{sim,dt:.08,keys:new Set(input.keys),camera:{preset:'adventure',yaw:input.yaw,actualYaw:input.actualYaw},Math});
 const dx=sim.state.player.x-before.x,dz=sim.state.player.z-before.z;
 assert.ok(C.walkable(sim.state.player.x,sim.state.player.z,sim.navRoom,.31));
 out.push({advance:dx*input.dx+dz*input.dz,angle:Math.acos(Math.min(1,(dx*input.dx+dz*input.dz)/(Math.hypot(dx,dz)*Math.hypot(input.dx,input.dz))))});}
 console.log(JSON.stringify(out));
 """,inputs)
-        self.assertEqual(len(result),32)
+        self.assertEqual(len(result),64)
         for row in result:self.assertGreater(row['advance'],0);self.assertLess(row['angle'],math.pi/8+.001)
 
     def test_brace_consumes_real_production_cooldown_schema(self):
@@ -194,14 +197,14 @@ console.log(JSON.stringify({adventure:{tactics,enemies:[{id:'earth-regent-incurs
     def test_requested_camera_projection_matches_exact_installed_camera_dispatch(self):
         actual=self.node(r"""
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),root=process.argv[1];
-const C=require(path.join(root,'src/core.js')),W=require(path.join(root,'src/world-foundations.js'));
+const C=require(path.join(root,'src/core.js')),W=require(path.join(root,'src/world-foundations.js')),E=require(path.join(root,'src/engine.js'));
 const app=fs.readFileSync(path.join(root,'src/app.js'),'utf8'),start=app.indexOf('function updateCamera(dt)'),end=app.indexOf('function cameraPreset(',start);
 const sim=new C.Simulation(C.fresh());sim.room='world-earthlands';const out={};
 for(const preset of['adventure','follow']){let projection=null;
 const scope={sim,RealmWorldFoundations:W,RealmEarth:require(path.join(root,'src/earth.js')),RealmCosmos:require(path.join(root,'src/cosmos.js')),
  Math,innerWidth:1440,innerHeight:900,follow:null,carrierFrame:null,carrierInspectionView:null,fieldcraftFocus:()=>null,sceneHeight:()=>W.height(sim.room,sim.state.player.x,sim.state.player.z),
  camera:{preset,yaw:.22,elevation:.28,distance:7.5,actualDistance:7.5,fov:60,half:17,center:[0,3,0],tour:false,overview:false},
- engine:{clearCameraDistance:()=>7.5,setCamera:v=>{projection=v.projection||'orthographic';}}};
+ engine:Object.assign(Object.create(E.Engine.prototype),{cameraSolids:[],dynamic:[],setCamera:v=>{projection=v.projection||'orthographic';}})};
 const cameraOwner=app.slice(app.indexOf('const GRAZER_LOOK_POINT='),app.indexOf('function fieldcraftFocus(')),carrierOwner=app.slice(app.indexOf('function carrierFocus(){'),app.indexOf('function frameCarrier(')),wildOwner=app.slice(app.indexOf('let wildSignsOwner='),app.indexOf('function wildSignsCommand('));vm.runInNewContext(cameraOwner+'\n'+carrierOwner+'\n'+wildOwner+'\n'+app.slice(start,end)+';updateCamera(.016)',scope);out[preset]=projection;}
 console.log(JSON.stringify(out));
 """,{})

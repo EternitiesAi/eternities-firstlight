@@ -1,0 +1,53 @@
+✔ actual App resolves the house camera without rewriting orbit preference or any world state (11.4068ms)
+✔ every eased camera frame is rechecked against the actual wall, including return to the requested orbit (4.7564ms)
+✔ supported doorstep and near-wall edge keep a readable, collision-safe perspective distance (1.0463ms)
+✖ an unobstructed requested view remains exact and returns after leaving the wall (1.1002ms)
+✔ retains the current clear side under small doorway movements instead of alternating orbit sides (0.2787ms)
+✔ no safe orbit never forces the eye through enclosed solids or claims readable clearance (0.3705ms)
+✔ opted-in dynamic walls take part in the same camera correction (0.3305ms)
+✔ per-view preferences roundtrip without changing progression or creative content (5.4978ms)
+✔ old camera preferences acquire empty view memory and keep their selected mode (0.8053ms)
+✔ invalid optional view profiles cannot inject nonfinite camera state or discard valid peers (0.686ms)
+✔ unknown view-memory versions fall back while keeping ordinary settings and saves (0.7163ms)
+✔ perspective has depth and the requested vertical field of view (0.5731ms)
+✔ production picking inverts ground projection across orbit, FOV and aspect (1.8714ms)
+✔ perspective sky and behind-camera points never become movement destinations (0.1403ms)
+✔ obstruction sweep pulls in before a wall, ignores a clear ray and handles a grazing near plane (0.2354ms)
+✔ perspective water reflection retains contact UV and actual world mirror (0.2498ms)
+✔ presentation preferences roundtrip without modifying old progression or creative state (7.7723ms)
+✔ clearance bounds preserve rotated wall extents and explicitly exclude foliage and low ground (0.3722ms)
+✔ clearance sees opted-in dynamic construction and keeps actor batches out (0.3437ms)
+✔ explicit realm walls keep camera clearance below the legacy floor cutoff (0.2078ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 19
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 108.0735
+
+✖ failing tests:
+
+test at tests\camera-clearance.test.cjs:49:1
+✖ an unobstructed requested view remains exact and returns after leaving the wall (1.1002ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 7.499999999999999
+  - 7.5
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\camera-clearance.test.cjs:51:31)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 7.499999999999999,
+    expected: 7.5,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

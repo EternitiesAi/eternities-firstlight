@@ -1,0 +1,41 @@
+✔ actual App resolves the house camera without rewriting orbit preference or any world state (19.829ms)
+✔ every eased camera frame is rechecked against the actual wall, including return to the requested orbit (6.8898ms)
+✔ reduced motion resolves immediately and camera-relative controls use only the displayed perspective heading (2.6366ms)
+✔ first real pointer drag begins at the visible corrected orbit and keeps subsequent deltas intentional (0.9524ms)
+✖ leaving an actual tour keeps the displayed heading for movement and drag, not a stale perspective correction (6.7082ms)
+✔ supported doorstep and near-wall edge keep a readable, collision-safe perspective distance (0.8661ms)
+✔ an unobstructed requested view remains exact and returns after leaving the wall (0.3862ms)
+✔ retains the current clear side under small doorway movements instead of alternating orbit sides (0.4728ms)
+✔ no safe orbit never forces the eye through enclosed solids or claims readable clearance (0.6304ms)
+✔ opted-in dynamic walls take part in the same camera correction (0.5831ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 9
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 162.3344
+
+✖ failing tests:
+
+test at tests\camera-clearance.test.cjs:58:1
+✖ leaving an actual tour keeps the displayed heading for movement and drag, not a stale perspective correction (6.7082ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(Math.abs(Math.atan2(Math.sin(f.heading()-shown),Math.cos(f.heading()-shown)))<1e-9)
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\camera-clearance.test.cjs:62:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

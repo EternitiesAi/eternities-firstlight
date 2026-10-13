@@ -377,7 +377,7 @@ def driver_class(suite,base):
   def orbit(self,yaw,elevation):
    # Original native right-drag controls; no camera assignment or frame command.
    for _ in range(12):
-    c=self.diag()['camera'];delta=math.atan2(math.sin(c['yaw']-yaw),math.cos(c['yaw']-yaw));dy=(elevation-c['elevation'])/.004
+    c=self.diag()['camera'];shown=c.get('heading',c['yaw']);delta=math.atan2(math.sin(shown-yaw),math.cos(shown-yaw));dy=(elevation-c['elevation'])/.004
     if abs(delta)<.01 and abs(dy)<1:break
     box=self.page.locator('#world').bounding_box();need(box is not None,'Native actual canvas must be addressable')
     x=box['x']+box['width']*.5;y=box['y']+box['height']*.45;dx=max(-70,min(70,delta/.007));dy=max(-35,min(35,dy))

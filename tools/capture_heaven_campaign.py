@@ -128,7 +128,7 @@ def main():
 
         def key_toward(point, duration=150):
             d = diag()
-            p, yaw = d['adventure']['player'], d['camera']['yaw']
+            p, yaw = d['adventure']['player'], d['camera'].get('heading', d['camera']['yaw'])
             dx, dz = point['x'] - p['x'], point['z'] - p['z']
             x = dx * math.cos(yaw) - dz * math.sin(yaw)
             z = dx * math.sin(yaw) + dz * math.cos(yaw)

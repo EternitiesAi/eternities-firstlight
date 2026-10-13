@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "head": "1d60260f0bc950b9f0e064555ec750ff38324fe3",
+  "engineSha256": "a05dfb26cf6c9151f4968f8f4172bc1d201a59f64c452ff0dd5203baa910857f",
+  "method": "Run installed synthetic pixel checks with only source/output path redirection.\nNo game copy, changed assertion, renderer replacement or personal profile.\n",
+  "cases": [
+    {
+      "suite": "cutaway",
+      "sourceSha256": "d0c408b969d3b9726f91c01b50353694660ab87cdb036f3dc1e82c37a9a78064",
+      "callerSha256": "179f2376bfdfd49b58e501a8c98ca901bd4764d1de79b8304726977c3a2ad397",
+      "changes": "Only original repository/output path expressions; all assertions and launch settings retained",
+      "observedUtc": "2026-10-13T19:23:46.565549+00:00",
+      "admission": {
+        "freeHostKiB": 8221512,
+        "minimumFreeKiB": 6291456
+      },
+      "exitCode": 0,
+      "checks": 6,
+      "browserErrors": [],
+      "outputs": [
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\building-camera-20261013\\RENDERER01\\cutaway\\CUTAWAY_BROWSER_REPORT.json",
+          "bytes": 1124,
+          "sha256": "dc0223e05fdaa51c982efee6c6ec095e383f39557f2050861761a56678b8d014"
+        }
+      ]
+    },
+    {
+      "suite": "reflection",
+      "sourceSha256": "0851a777a3edc04d214a39e166e8c2ec5b6fc11753b20c15d6335cec417739e5",
+      "callerSha256": "42e8e1ad87abb65bcd321740c671758d7476aeebd7591f68c6e6dbb7bec80184",
+      "changes": "Only original repository/output path expressions; all assertions and launch settings retained",
+      "observedUtc": "2026-10-13T19:23:51.430387+00:00",
+      "admission": {
+        "freeHostKiB": 7916624,
+        "minimumFreeKiB": 6291456
+      },
+      "exitCode": 0,
+      "checks": 8,
+      "browserErrors": [],
+      "outputs": [
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\building-camera-20261013\\RENDERER01\\reflection\\REFLECTION_TEST_REPORT.json",
+          "bytes": 1847,
+          "sha256": "ab3a7eed80dacd2e3e2ad62c43fbf9a0e020bf809be311a45cf93de49e488cd9"
+        },
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\building-camera-20261013\\RENDERER01\\reflection\\REFLECTION_ORIENTATION_SPECIMEN.png",
+          "bytes": 158447,
+          "sha256": "9b9a99c62bb232c823a55132d0d9c4ee35bddf8f6cb537f9eb21232fc3c14837"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

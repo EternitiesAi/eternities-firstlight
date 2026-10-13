@@ -34,7 +34,7 @@ INTERACTIONS = ('challenge-regent', 'passage-secured', 'return-verified', 'home-
 MINIMUM = {'regent-repelled', 'passage-secured', 'aftermath'}
 DIAGNOSTICS = '''()=>{const d=Realm.diagnostics;return{scene:d.scene,mode:d.mode,
 renderer:d.renderer,earthHomecoming:d.earthHomecoming,adventure:d.adventure,
-characters:d.characters,camera:{preset:d.camera.preset,yaw:d.camera.yaw,
+characters:d.characters,camera:{preset:d.camera.preset,yaw:d.camera.yaw,heading:d.camera.heading,
 projection:d.camera.projection},saveState:d.saveState,errors:d.errors};}'''
 STARTUP = '''(()=>{try{window.__earthTakeStartupBytes=localStorage.getItem('eternities.realm10.characters.v1');}
 catch(e){window.__earthTakeStartupError=String(e);}})()'''
@@ -114,7 +114,7 @@ def preflight(source,output,root,cohort_sha,caller_root=None,*,windows=None,guar
 
 def direction_keys(point,snapshot):
     """Eight ordinary camera-relative key chords; no axis-only wall scraping."""
-    player,yaw=snapshot['adventure']['player'],snapshot['camera']['yaw']
+    player,yaw=snapshot['adventure']['player'],snapshot['camera'].get('heading', snapshot['camera']['yaw'])
     dx,dz=point['x']-player['x'],point['z']-player['z']
     x,z=dx*math.cos(yaw)-dz*math.sin(yaw),dx*math.sin(yaw)+dz*math.cos(yaw)
     if not all(math.isfinite(v) for v in (x,z)):raise ValueError('Finite diagnostic coordinates/yaw required.')

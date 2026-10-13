@@ -1,3 +1,26 @@
+# Keep displayed orientation separate from saved preference, 2026-10-13
+
+A wall correction owns transient camera.actualYaw. Perspective movement and
+the first deliberate drag use cameraHeading(); diagnostic heading exposes the
+same value to actual native controllers, while yaw retains preferred framing.
+Controller compatibility fallback applies only when older snapshots lack heading.
+Every eased ray is swept; a blocked intervening arc takes the clear endpoint.
+Side hysteresis prevents unnecessary reversals. Both views and saves remain.
+
+Exact extracted test hosts must load the production helper. Historical source
+guards remain frozen: the ART boundary unit fixture explicitly selects the two
+independently reviewed helper hashes in RAM and still refuses further mutations.
+It does not admit a new full-browser epoch or rewrite SOURCE_EXPECTATIONS04.
+
+Source06 and targeted native camera/Briar plus cutaway/reflection now pass.
+No thresholds, original assertions or deadlines were weakened. Human comfort
+of automatic turns remains unresolved; the enclosed-focus0.45m fallback remains
+a limit, not proof of clearance inside a solid. No save field, migration, XP,
+reward, equipment, companion pose or Core collision change follows.
+See [qualified evidence and limits](development/BUILDING_CAMERA_QUALIFICATION_2026-10-13.md).
+
+---
+
 # Ordinary Earth life without a new economy, 2026-10-13
 
 The founder Earth charter informs a bounded catch-and-release activity at the

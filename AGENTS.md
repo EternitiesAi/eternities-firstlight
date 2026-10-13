@@ -1,3 +1,33 @@
+# Building camera qualified on current source, 2026-10-13
+
+Continue gameplay/building-camera-clearance-20261013 / PR74, stacked on PR73
+at cf636d211b765aaa59767099d22616fd1faef714. Qualified source/test head:
+1d60260f0bc950b9f0e064555ec750ff38324fe3. Subsequent delivery changes only
+evidence and continuity. Read docs/development/BUILDING_CAMERA_QUALIFICATION_2026-10-13.md.
+
+Complete Source06 passed223 commands: Node2236/0fail/2skip; Python490 OK/8skip;
+both continuous ten-chapter variants and all five Briar earned continuations.
+Final Camera02 passed57 native checks. One early-blade Briar case passed109
+checks and3 exact-byte whole-browser restarts, including actual unframed
+arrival projection. Other four Briar cases are CPU-only. Current cutaway and
+reflection checks passed. Full current --browser, human comfort and real GPU
+qualification remain open. Earlier failures and their explicit repairs remain.
+
+The transient clear-side camera follows displayed heading for movement and
+deliberate orbit; saved preferred framing and both cameras remain. World9,
+Adventure12, XP, all save owners and collision rules are unchanged. No migration.
+Next product work: character/companion animation in existing inhabited places.
+Road-account full-browser admission still references historical SOURCE_EXPECTATIONS04;
+review a new explicit expectation epoch before that gate, never relax its guards.
+
+Reuse ROOT/STATION on D. Fresh host-only6GiB admission before complete source or
+each whole browser; Node180/Python600/four workers unchanged. VM/Claude/personal
+profiles/unrelated workers remain excluded. Preserve failures and blocked deletion.
+No new full-game copy or movie, automatic merge/deploy or background resume.
+Production remains unfinished. Goal service is ACTIVE; separate heartbeat PAUSED.
+
+---
+
 # Lantern pier and companion presence, 2026-10-13
 
 Current gameplay branch: gameplay/companion-presence-20261013, stacked on PR72.

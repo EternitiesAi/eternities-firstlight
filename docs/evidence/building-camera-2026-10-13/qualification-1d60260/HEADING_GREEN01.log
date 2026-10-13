@@ -1,0 +1,377 @@
+.....s.............s...........................node:assert:152
+  throw new AssertionError(obj);
+  ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
+  {
++   accepted: true,
+-   accepted: false,
+    claimed: false,
+    cleared: false,
++   evidence: [
++     'timber-gouge',
++     'feeding-track'
++   ],
+-   evidence: [],
+    observed: false,
+    resolution: null,
+    version: 1
+  }
+
+    at [eval]:11:8
+    at runScriptInThisContext (node:internal/vm:219:10)
+    at node:internal/process/execution:451:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:449:60)
+    at evalFunction (node:internal/process/execution:283:30)
+    at evalTypeScript (node:internal/process/execution:295:3)
+    at node:internal/main/eval_string:71:3 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: {
+    version: 1,
+    accepted: true,
+    evidence: [ 'timber-gouge', 'feeding-track' ],
+    observed: false,
+    resolution: null,
+    cleared: false,
+    claimed: false
+  },
+  expected: {
+    version: 1,
+    accepted: false,
+    evidence: [],
+    observed: false,
+    resolution: null,
+    cleared: false,
+    claimed: false
+  },
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.18.0
+..node:assert:152
+  throw new AssertionError(obj);
+  ^
+
+AssertionError [ERR_ASSERTION]: Exact deliberately expected checkpoint required
++ actual - expected
+... Skipped lines
+
+  {
+    accepted: true,
+    claimed: false,
+    cleared: false,
+    evidence: [
+...
+    ],
++   observed: false,
+-   observed: true,
+    resolution: null,
+    version: 1
+  }
+
+    at [eval]:14:8
+    at runScriptInThisContext (node:internal/vm:219:10)
+    at node:internal/process/execution:451:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:449:60)
+    at evalFunction (node:internal/process/execution:283:30)
+    at evalTypeScript (node:internal/process/execution:295:3)
+    at node:internal/main/eval_string:71:3 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: {
+    version: 1,
+    accepted: true,
+    evidence: [ 'timber-gouge', 'feeding-track' ],
+    observed: false,
+    resolution: null,
+    cleared: false,
+    claimed: false
+  },
+  expected: {
+    version: 1,
+    accepted: true,
+    evidence: [ 'timber-gouge', 'feeding-track' ],
+    observed: true,
+    resolution: null,
+    cleared: false,
+    claimed: false
+  },
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.18.0
+D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\earth-wild-signs-data.js:27
+const fail=m=>{throw Error('Invalid Earth wild signs: '+m);};
+               ^
+
+Error: Invalid Earth wild signs: unearned payment
+    at fail (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\earth-wild-signs-data.js:27:22)
+    at validate (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\earth-wild-signs-data.js:42:30)
+    at Object.crossValidate (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\earth-wild-signs-data.js:48:43)
+    at [eval]:13:20
+    at runScriptInThisContext (node:internal/vm:219:10)
+    at node:internal/process/execution:451:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:449:60)
+    at evalFunction (node:internal/process/execution:283:30)
+    at evalTypeScript (node:internal/process/execution:295:3)
+
+Node.js v24.18.0
+D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\earth-wild-signs-data.js:27
+const fail=m=>{throw Error('Invalid Earth wild signs: '+m);};
+               ^
+
+Error: Invalid Earth wild signs: resolution prerequisites
+    at fail (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\earth-wild-signs-data.js:27:22)
+    at validate (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\earth-wild-signs-data.js:40:60)
+    at Object.crossValidate (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\earth-wild-signs-data.js:48:43)
+    at [eval]:13:20
+    at runScriptInThisContext (node:internal/vm:219:10)
+    at node:internal/process/execution:451:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:449:60)
+    at evalFunction (node:internal/process/execution:283:30)
+    at evalTypeScript (node:internal/process/execution:295:3)
+
+Node.js v24.18.0
+D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\earth-wild-signs-data.js:27
+const fail=m=>{throw Error('Invalid Earth wild signs: '+m);};
+               ^
+
+Error: Invalid Earth wild signs: version or exact record
+    at fail (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\earth-wild-signs-data.js:27:22)
+    at validate (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\earth-wild-signs-data.js:32:127)
+    at Object.crossValidate (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\earth-wild-signs-data.js:48:43)
+    at [eval]:13:20
+    at runScriptInThisContext (node:internal/vm:219:10)
+    at node:internal/process/execution:451:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:449:60)
+    at evalFunction (node:internal/process/execution:283:30)
+    at evalTypeScript (node:internal/process/execution:295:3)
+
+Node.js v24.18.0
+D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\earth-wild-signs-data.js:27
+const fail=m=>{throw Error('Invalid Earth wild signs: '+m);};
+               ^
+
+Error: Invalid Earth wild signs: clearance owner
+    at fail (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\earth-wild-signs-data.js:27:22)
+    at validate (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\earth-wild-signs-data.js:41:52)
+    at Object.crossValidate (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\earth-wild-signs-data.js:48:43)
+    at [eval]:13:20
+    at runScriptInThisContext (node:internal/vm:219:10)
+    at node:internal/process/execution:451:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:449:60)
+    at evalFunction (node:internal/process/execution:283:30)
+    at evalTypeScript (node:internal/process/execution:295:3)
+
+Node.js v24.18.0
+node:assert:152
+  throw new AssertionError(obj);
+  ^
+
+AssertionError [ERR_ASSERTION]: Exact expected checkpoint record required
++ actual - expected
+
+  [
+    'accepted',
+    'claimed',
+    'cleared',
+    'evidence',
++   'extra',
+    'observed',
+    'resolution',
+    'version'
+  ]
+
+    at [eval]:12:8
+    at runScriptInThisContext (node:internal/vm:219:10)
+    at node:internal/process/execution:451:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:449:60)
+    at evalFunction (node:internal/process/execution:283:30)
+    at evalTypeScript (node:internal/process/execution:295:3)
+    at node:internal/main/eval_string:71:3 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [
+    'accepted',
+    'claimed',
+    'cleared',
+    'evidence',
+    'extra',
+    'observed',
+    'resolution',
+    'version'
+  ],
+  expected: [
+    'accepted',
+    'claimed',
+    'cleared',
+    'evidence',
+    'observed',
+    'resolution',
+    'version'
+  ],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.18.0
+node:assert:152
+  throw new AssertionError(obj);
+  ^
+
+AssertionError [ERR_ASSERTION]: Exact expected checkpoint record required
++ actual - expected
+
+  [
+-   'accepted',
+    'claimed',
+    'cleared',
+    'evidence',
+    'observed',
+    'resolution',
+
+    at [eval]:12:8
+    at runScriptInThisContext (node:internal/vm:219:10)
+    at node:internal/process/execution:451:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:449:60)
+    at evalFunction (node:internal/process/execution:283:30)
+    at evalTypeScript (node:internal/process/execution:295:3)
+    at node:internal/main/eval_string:71:3 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [
+    'claimed',
+    'cleared',
+    'evidence',
+    'observed',
+    'resolution',
+    'version'
+  ],
+  expected: [
+    'accepted',
+    'claimed',
+    'cleared',
+    'evidence',
+    'observed',
+    'resolution',
+    'version'
+  ],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.18.0
+node:assert:152
+  throw new AssertionError(obj);
+  ^
+
+AssertionError [ERR_ASSERTION]: Exact deliberately expected checkpoint required
++ actual - expected
+
+  {
+    accepted: true,
+    claimed: false,
+    cleared: false,
+    evidence: [
++     'timber-gouge',
+      'feeding-track'
+    ],
+    observed: false,
+    resolution: null,
+    version: 1
+
+    at [eval]:14:8
+    at runScriptInThisContext (node:internal/vm:219:10)
+    at node:internal/process/execution:451:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:449:60)
+    at evalFunction (node:internal/process/execution:283:30)
+    at evalTypeScript (node:internal/process/execution:295:3)
+    at node:internal/main/eval_string:71:3 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: {
+    version: 1,
+    accepted: true,
+    evidence: [ 'timber-gouge', 'feeding-track' ],
+    observed: false,
+    resolution: null,
+    cleared: false,
+    claimed: false
+  },
+  expected: {
+    version: 1,
+    accepted: true,
+    evidence: [ 'feeding-track' ],
+    observed: false,
+    resolution: null,
+    cleared: false,
+    claimed: false
+  },
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.18.0
+.node:assert:152
+  throw new AssertionError(obj);
+  ^
+
+AssertionError [ERR_ASSERTION]: Checkpoint admission cannot migrate, discard or change any world byte
++ actual - expected
+
++ '{"adventure":{"angelSeen":true,"arsenal":{"bestTime":null,"gems":{"amber":0,"moonstone":1,"ruby":0},"rangeMedal":false,"sockets":{},"version":1},"beacon":{"attempts":1,"complete":true,"failures":0,"introduced":true,"relic":"renounced","reward":true,"route":"forest","soul":{"corruption":0,"equipped":"aegis","grace":true,"radiance":2,"scars":["cinder-invoked","cinder-renounced"]},"status":"stable","version":1},"chips":[],"classPath":{"choice":null,"readyAt":0,"version":1},"coins":234,"companion":{"bonded":true,"mode":"follow","name":"Briar"},"crossing":{"attuned":true,"clapper":true,"clapperRevealed":true,"complete":true,"entered":true,"inscription":true,"met":true,"projects":[],"repaired":true,"reward":true,"version":1},"deaths":0,"defeated":["briar-1","briar-2","sentinel","hart","road-prowler","road-prism","road-ram","cross-thorn","cross-prism","cross-warden"],"drops":[],"dug":["0,1","2,-2"],"earthBinding":{"kind":null,"version":1,"weapon":null},"earthGathering":{"accepted":false,"prepared":[],"shared":false,"verse":null,"version":1},"earthNotes":{"accepted":false,"compared":false,"interpretation":null,"marks":[],"version":1},"earthStory":{"accepted":true,"arrived":true,"claimed":true,"dispatch":"detour","steps":["detour-ridge","detour-shelter","detour-mark"],"version":1},"elapsed":2294.537352070588,"equipment":{"armor":"keeper_coat","charm":"chime_clasp","weapon":"copper_blade"},"hp":198,"ore":47,"owned":["trail_blade","travel_coat","guard_vest","copper_blade","warden_stone","courier_mantle","wayfarer_band","chime_clasp","keeper_coat"],"pursuit":{"active":null,"claimed":0,"fittings":{},"pinned":null,"version":1},"realmCraft":{"version":1,"weapon":null},"receipts":[{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-22-201","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-25-202","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-27-203","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-29-204","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-32-205","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-34-206","ok":true},{"fp":"[\\"pulse\\",{\\"target\\":\\"cross-warden\\"}]","id":"ch4-27","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"ch4-28","ok":true},{"fp":"[\\"loot\\",{\\"id\\":\\"cross-warden\\"}]","id":"ch4-29","ok":true},{"fp":"[\\"cross-repair\\",{}]","id":"ch4-30","ok":true},{"fp":"[\\"cross-ring\\",{\\"id\\":\\"leaf\\"}]","id":"ch4-31","ok":true},{"fp":"[\\"cross-ring\\",{\\"id\\":\\"wave\\"}]","id":"ch4-32","ok":true},{"fp":"[\\"cross-ring\\",{\\"id\\":\\"sun\\"}]","id":"ch4-33","ok":true},{"fp":"[\\"cross-reward\\",{}]","id":"ch4-34","ok":true},{"fp":"[\\"equip\\",{\\"id\\":\\"chime_clasp\\"}]","id":"ch4-35","ok":true},{"fp":"[\\"cross-trade\\",{\\"offer\\":\\"coat\\"}]","id":"ch4-36","ok":true},{"fp":"[\\"equip\\",{\\"id\\":\\"keeper_coat\\"}]","id":"ch4-37","ok":true},{"fp":"[\\"cross-trade\\",{\\"offer\\":\\"copper\\"}]","id":"ch4-38","ok":true},{"fp":"[\\"cross-rest\\",{}]","id":"ch4-39","ok":true},{"fp":"[\\"waystone-travel\\",{\\"id\\":\\"commons\\"}]","id":"ch4-40","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-1-222-1","ok":true},{"fp":"[\\"earth-story-accept\\",{}]","id":"earned-north-1-222-3","ok":true},{"fp":"[\\"earth-story-step\\",{\\"id\\":\\"detour-ridge\\"}]","id":"earned-north-1-222-4","ok":true},{"fp":"[\\"earth-story-step\\",{\\"id\\":\\"detour-shelter\\"}]","id":"earned-north-1-222-5","ok":true},{"fp":"[\\"earth-story-step\\",{\\"id\\":\\"detour-mark\\"}]","id":"earned-north-1-222-6","ok":true},{"fp":"[\\"earth-story-dispatch\\",{\\"route\\":\\"detour\\"}]","id":"earned-north-1-222-7","ok":true},{"fp":"[\\"earth-story-arrive\\",{}]","id":"earned-north-1-222-8","ok":true},{"fp":"[\\"earth-story-claim\\",{}]","id":"earned-north-1-222-9","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-1-222-10","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"earth-stormfall-crossing-v1\\"}]","id":"earned-north-1-222-16","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-1-222-17","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-1-222-18","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-crossing-v1\\"}]","id":"auto-2-238","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-crossing-v1\\"}]","id":"auto-4-239","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-1-222-19","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"earth-stormfall-root-v1\\"}]","id":"earned-north-1-222-21","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-1-222-22","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-1-222-23","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-root-v1\\"}]","id":"auto-7-246","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-root-v1\\"}]","id":"auto-9-247","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-root-v1\\"}]","id":"auto-12-248","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-root-v1\\"}]","id":"auto-14-249","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-1-222-24","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-1-222-29","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"hell-return-reeve-v1\\"}]","id":"earned-north-2-261-7","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-2-261-8","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-return-reeve-v1\\"}]","id":"auto-1-268","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-return-reeve-v1\\"}]","id":"auto-3-269","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-2-261-9","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-return-reeve-v1\\"}]","id":"auto-5-271","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-2-261-10","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-2-261-15","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"hell-tithe-warden-v1\\"}]","id":"earned-north-2-261-27","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-2-261-28","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-tithe-warden-v1\\"}]","id":"auto-2-293","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-tithe-warden-v1\\"}]","id":"auto-4-294","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-tithe-warden-v1\\"}]","id":"auto-6-295","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-2-261-29","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"heaven-choir-core-v1\\"}]","id":"earned-north-3-302-7","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-3-302-8","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-choir-core-v1\\"}]","id":"auto-2-309","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-choir-core-v1\\"}]","id":"auto-4-310","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-3-302-9","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-3-302-12","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"heaven-glasswing-sentinel-v1\\"}]","id":"earned-north-3-302-21","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-3-302-22","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-glasswing-sentinel-v1\\"}]","id":"auto-1-323","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-glasswing-sentinel-v1\\"}]","id":"auto-4-324","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-3-302-23","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-glasswing-sentinel-v1\\"}]","id":"auto-6-326","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-3-302-24","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"heaven-counterfeit-relay-v1\\"}]","id":"earned-north-3-302-26","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-3-302-27","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-counterfeit-relay-v1\\"}]","id":"auto-2-331","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-counterfeit-relay-v1\\"}]","id":"auto-4-332","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-3-302-28","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-4-343-8","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"atlantis-breakwater-custodian-v1\\"}]","id":"earned-north-4-343-24","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-4-343-25","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-4-343-26","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"atlantis-breakwater-custodian-v1\\"}]","id":"auto-2-364","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"atlantis-breakwater-custodian-v1\\"}]","id":"auto-4-365","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"atlantis-breakwater-custodian-v1\\"}]","id":"auto-7-366","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-4-343-27","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-5-375-9","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"cosmos-optical-reclaimer-v1\\"}]","id":"earned-north-5-375-20","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-5-375-21","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-5-375-22","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cosmos-optical-reclaimer-v1\\"}]","id":"auto-2-391","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cosmos-optical-reclaimer-v1\\"}]","id":"auto-4-392","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cosmos-optical-reclaimer-v1\\"}]","id":"auto-6-393","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-5-375-23","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"cosmos-still-meridian-guardian-v1\\"}]","id":"earned-north-5-375-27","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-5-375-28","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-5-375-29","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-5-375-32","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-5-375-33","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cosmos-still-meridian-guardian-v1\\"}]","id":"auto-11-405","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cosmos-still-meridian-guardian-v1\\"}]","id":"auto-13-406","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-5-375-34","ok":true}],"relic":true,"revision":416,"reward":"warden_stone","road":{"beaconLit":true,"cartRepaired":true,"claimed":["cart-latch","old-surveyor"],"entered":true,"reported":true,"revealed":["cart-latch","old-surveyor"],"version":1},"stamina":100,"started":true,"starter":{"accepted":false,"bundles":[],"re'... 50554 more characters
+- '{"adventure":{"angelSeen":true,"arsenal":{"bestTime":null,"gems":{"amber":0,"moonstone":1,"ruby":0},"rangeMedal":false,"sockets":{},"version":1},"beacon":{"attempts":1,"complete":true,"failures":0,"introduced":true,"relic":"renounced","reward":true,"route":"forest","soul":{"corruption":0,"equipped":"aegis","grace":true,"radiance":2,"scars":["cinder-invoked","cinder-renounced"]},"status":"stable","version":1},"chips":[],"classPath":{"choice":null,"readyAt":0,"version":1},"coins":234,"companion":{"bonded":true,"mode":"follow","name":"Briar"},"crossing":{"attuned":true,"clapper":true,"clapperRevealed":true,"complete":true,"entered":true,"inscription":true,"met":true,"projects":[],"repaired":true,"reward":true,"version":1},"deaths":0,"defeated":["briar-1","briar-2","sentinel","hart","road-prowler","road-prism","road-ram","cross-thorn","cross-prism","cross-warden"],"drops":[],"dug":["0,1","2,-2"],"earthBinding":{"kind":null,"version":1,"weapon":null},"earthGathering":{"accepted":false,"prepared":[],"shared":false,"verse":null,"version":1},"earthNotes":{"accepted":false,"compared":false,"interpretation":null,"marks":[],"version":1},"earthStory":{"accepted":true,"arrived":true,"claimed":true,"dispatch":"detour","steps":["detour-ridge","detour-shelter","detour-mark"],"version":1},"elapsed":2294.537352070588,"equipment":{"armor":"keeper_coat","charm":"chime_clasp","weapon":"copper_blade"},"hp":198,"ore":47,"owned":["trail_blade","travel_coat","guard_vest","copper_blade","warden_stone","courier_mantle","wayfarer_band","chime_clasp","keeper_coat"],"pursuit":{"active":null,"claimed":0,"fittings":{},"pinned":null,"version":1},"realmCraft":{"version":1,"weapon":null},"receipts":[{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-22-201","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-25-202","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-27-203","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-29-204","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-32-205","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-34-206","ok":true},{"fp":"[\\"pulse\\",{\\"target\\":\\"cross-warden\\"}]","id":"ch4-27","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"ch4-28","ok":true},{"fp":"[\\"loot\\",{\\"id\\":\\"cross-warden\\"}]","id":"ch4-29","ok":true},{"fp":"[\\"cross-repair\\",{}]","id":"ch4-30","ok":true},{"fp":"[\\"cross-ring\\",{\\"id\\":\\"leaf\\"}]","id":"ch4-31","ok":true},{"fp":"[\\"cross-ring\\",{\\"id\\":\\"wave\\"}]","id":"ch4-32","ok":true},{"fp":"[\\"cross-ring\\",{\\"id\\":\\"sun\\"}]","id":"ch4-33","ok":true},{"fp":"[\\"cross-reward\\",{}]","id":"ch4-34","ok":true},{"fp":"[\\"equip\\",{\\"id\\":\\"chime_clasp\\"}]","id":"ch4-35","ok":true},{"fp":"[\\"cross-trade\\",{\\"offer\\":\\"coat\\"}]","id":"ch4-36","ok":true},{"fp":"[\\"equip\\",{\\"id\\":\\"keeper_coat\\"}]","id":"ch4-37","ok":true},{"fp":"[\\"cross-trade\\",{\\"offer\\":\\"copper\\"}]","id":"ch4-38","ok":true},{"fp":"[\\"cross-rest\\",{}]","id":"ch4-39","ok":true},{"fp":"[\\"waystone-travel\\",{\\"id\\":\\"commons\\"}]","id":"ch4-40","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-1-222-1","ok":true},{"fp":"[\\"earth-story-accept\\",{}]","id":"earned-north-1-222-3","ok":true},{"fp":"[\\"earth-story-step\\",{\\"id\\":\\"detour-ridge\\"}]","id":"earned-north-1-222-4","ok":true},{"fp":"[\\"earth-story-step\\",{\\"id\\":\\"detour-shelter\\"}]","id":"earned-north-1-222-5","ok":true},{"fp":"[\\"earth-story-step\\",{\\"id\\":\\"detour-mark\\"}]","id":"earned-north-1-222-6","ok":true},{"fp":"[\\"earth-story-dispatch\\",{\\"route\\":\\"detour\\"}]","id":"earned-north-1-222-7","ok":true},{"fp":"[\\"earth-story-arrive\\",{}]","id":"earned-north-1-222-8","ok":true},{"fp":"[\\"earth-story-claim\\",{}]","id":"earned-north-1-222-9","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-1-222-10","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"earth-stormfall-crossing-v1\\"}]","id":"earned-north-1-222-16","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-1-222-17","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-1-222-18","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-crossing-v1\\"}]","id":"auto-2-238","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-crossing-v1\\"}]","id":"auto-4-239","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-1-222-19","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"earth-stormfall-root-v1\\"}]","id":"earned-north-1-222-21","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-1-222-22","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-1-222-23","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-root-v1\\"}]","id":"auto-7-246","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-root-v1\\"}]","id":"auto-9-247","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-root-v1\\"}]","id":"auto-12-248","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-root-v1\\"}]","id":"auto-14-249","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-1-222-24","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-1-222-29","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"hell-return-reeve-v1\\"}]","id":"earned-north-2-261-7","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-2-261-8","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-return-reeve-v1\\"}]","id":"auto-1-268","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-return-reeve-v1\\"}]","id":"auto-3-269","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-2-261-9","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-return-reeve-v1\\"}]","id":"auto-5-271","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-2-261-10","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-2-261-15","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"hell-tithe-warden-v1\\"}]","id":"earned-north-2-261-27","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-2-261-28","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-tithe-warden-v1\\"}]","id":"auto-2-293","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-tithe-warden-v1\\"}]","id":"auto-4-294","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-tithe-warden-v1\\"}]","id":"auto-6-295","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-2-261-29","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"heaven-choir-core-v1\\"}]","id":"earned-north-3-302-7","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-3-302-8","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-choir-core-v1\\"}]","id":"auto-2-309","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-choir-core-v1\\"}]","id":"auto-4-310","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-3-302-9","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-3-302-12","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"heaven-glasswing-sentinel-v1\\"}]","id":"earned-north-3-302-21","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-3-302-22","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-glasswing-sentinel-v1\\"}]","id":"auto-1-323","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-glasswing-sentinel-v1\\"}]","id":"auto-4-324","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-3-302-23","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-glasswing-sentinel-v1\\"}]","id":"auto-6-326","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-3-302-24","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"heaven-counterfeit-relay-v1\\"}]","id":"earned-north-3-302-26","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-3-302-27","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-counterfeit-relay-v1\\"}]","id":"auto-2-331","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-counterfeit-relay-v1\\"}]","id":"auto-4-332","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-3-302-28","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-4-343-8","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"atlantis-breakwater-custodian-v1\\"}]","id":"earned-north-4-343-24","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-4-343-25","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-4-343-26","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"atlantis-breakwater-custodian-v1\\"}]","id":"auto-2-364","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"atlantis-breakwater-custodian-v1\\"}]","id":"auto-4-365","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"atlantis-breakwater-custodian-v1\\"}]","id":"auto-7-366","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-4-343-27","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-5-375-9","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"cosmos-optical-reclaimer-v1\\"}]","id":"earned-north-5-375-20","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-5-375-21","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-5-375-22","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cosmos-optical-reclaimer-v1\\"}]","id":"auto-2-391","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cosmos-optical-reclaimer-v1\\"}]","id":"auto-4-392","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cosmos-optical-reclaimer-v1\\"}]","id":"auto-6-393","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-5-375-23","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"cosmos-still-meridian-guardian-v1\\"}]","id":"earned-north-5-375-27","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-5-375-28","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-5-375-29","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-5-375-32","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-5-375-33","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cosmos-still-meridian-guardian-v1\\"}]","id":"auto-11-405","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cosmos-still-meridian-guardian-v1\\"}]","id":"auto-13-406","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-5-375-34","ok":true}],"relic":true,"revision":416,"reward":"warden_stone","road":{"beaconLit":true,"cartRepaired":true,"claimed":["cart-latch","old-surveyor"],"entered":true,"reported":true,"revealed":["cart-latch","old-surveyor"],"version":1},"stamina":100,"started":true,"starter":{"accepted":false,"bundles":[],"re'... 50425 more characters
+
+    at [eval]:8:8
+    at runScriptInThisContext (node:internal/vm:219:10)
+    at node:internal/process/execution:451:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:449:60)
+    at evalFunction (node:internal/process/execution:283:30)
+    at evalTypeScript (node:internal/process/execution:295:3)
+    at node:internal/main/eval_string:71:3 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: '{"adventure":{"angelSeen":true,"arsenal":{"bestTime":null,"gems":{"amber":0,"moonstone":1,"ruby":0},"rangeMedal":false,"sockets":{},"version":1},"beacon":{"attempts":1,"complete":true,"failures":0,"introduced":true,"relic":"renounced","reward":true,"route":"forest","soul":{"corruption":0,"equipped":"aegis","grace":true,"radiance":2,"scars":["cinder-invoked","cinder-renounced"]},"status":"stable","version":1},"chips":[],"classPath":{"choice":null,"readyAt":0,"version":1},"coins":234,"companion":{"bonded":true,"mode":"follow","name":"Briar"},"crossing":{"attuned":true,"clapper":true,"clapperRevealed":true,"complete":true,"entered":true,"inscription":true,"met":true,"projects":[],"repaired":true,"reward":true,"version":1},"deaths":0,"defeated":["briar-1","briar-2","sentinel","hart","road-prowler","road-prism","road-ram","cross-thorn","cross-prism","cross-warden"],"drops":[],"dug":["0,1","2,-2"],"earthBinding":{"kind":null,"version":1,"weapon":null},"earthGathering":{"accepted":false,"prepared":[],"shared":false,"verse":null,"version":1},"earthNotes":{"accepted":false,"compared":false,"interpretation":null,"marks":[],"version":1},"earthStory":{"accepted":true,"arrived":true,"claimed":true,"dispatch":"detour","steps":["detour-ridge","detour-shelter","detour-mark"],"version":1},"elapsed":2294.537352070588,"equipment":{"armor":"keeper_coat","charm":"chime_clasp","weapon":"copper_blade"},"hp":198,"ore":47,"owned":["trail_blade","travel_coat","guard_vest","copper_blade","warden_stone","courier_mantle","wayfarer_band","chime_clasp","keeper_coat"],"pursuit":{"active":null,"claimed":0,"fittings":{},"pinned":null,"version":1},"realmCraft":{"version":1,"weapon":null},"receipts":[{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-22-201","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-25-202","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-27-203","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-29-204","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-32-205","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-34-206","ok":true},{"fp":"[\\"pulse\\",{\\"target\\":\\"cross-warden\\"}]","id":"ch4-27","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"ch4-28","ok":true},{"fp":"[\\"loot\\",{\\"id\\":\\"cross-warden\\"}]","id":"ch4-29","ok":true},{"fp":"[\\"cross-repair\\",{}]","id":"ch4-30","ok":true},{"fp":"[\\"cross-ring\\",{\\"id\\":\\"leaf\\"}]","id":"ch4-31","ok":true},{"fp":"[\\"cross-ring\\",{\\"id\\":\\"wave\\"}]","id":"ch4-32","ok":true},{"fp":"[\\"cross-ring\\",{\\"id\\":\\"sun\\"}]","id":"ch4-33","ok":true},{"fp":"[\\"cross-reward\\",{}]","id":"ch4-34","ok":true},{"fp":"[\\"equip\\",{\\"id\\":\\"chime_clasp\\"}]","id":"ch4-35","ok":true},{"fp":"[\\"cross-trade\\",{\\"offer\\":\\"coat\\"}]","id":"ch4-36","ok":true},{"fp":"[\\"equip\\",{\\"id\\":\\"keeper_coat\\"}]","id":"ch4-37","ok":true},{"fp":"[\\"cross-trade\\",{\\"offer\\":\\"copper\\"}]","id":"ch4-38","ok":true},{"fp":"[\\"cross-rest\\",{}]","id":"ch4-39","ok":true},{"fp":"[\\"waystone-travel\\",{\\"id\\":\\"commons\\"}]","id":"ch4-40","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-1-222-1","ok":true},{"fp":"[\\"earth-story-accept\\",{}]","id":"earned-north-1-222-3","ok":true},{"fp":"[\\"earth-story-step\\",{\\"id\\":\\"detour-ridge\\"}]","id":"earned-north-1-222-4","ok":true},{"fp":"[\\"earth-story-step\\",{\\"id\\":\\"detour-shelter\\"}]","id":"earned-north-1-222-5","ok":true},{"fp":"[\\"earth-story-step\\",{\\"id\\":\\"detour-mark\\"}]","id":"earned-north-1-222-6","ok":true},{"fp":"[\\"earth-story-dispatch\\",{\\"route\\":\\"detour\\"}]","id":"earned-north-1-222-7","ok":true},{"fp":"[\\"earth-story-arrive\\",{}]","id":"earned-north-1-222-8","ok":true},{"fp":"[\\"earth-story-claim\\",{}]","id":"earned-north-1-222-9","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-1-222-10","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"earth-stormfall-crossing-v1\\"}]","id":"earned-north-1-222-16","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-1-222-17","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-1-222-18","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-crossing-v1\\"}]","id":"auto-2-238","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-crossing-v1\\"}]","id":"auto-4-239","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-1-222-19","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"earth-stormfall-root-v1\\"}]","id":"earned-north-1-222-21","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-1-222-22","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-1-222-23","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-root-v1\\"}]","id":"auto-7-246","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-root-v1\\"}]","id":"auto-9-247","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-root-v1\\"}]","id":"auto-12-248","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-root-v1\\"}]","id":"auto-14-249","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-1-222-24","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-1-222-29","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"hell-return-reeve-v1\\"}]","id":"earned-north-2-261-7","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-2-261-8","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-return-reeve-v1\\"}]","id":"auto-1-268","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-return-reeve-v1\\"}]","id":"auto-3-269","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-2-261-9","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-return-reeve-v1\\"}]","id":"auto-5-271","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-2-261-10","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-2-261-15","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"hell-tithe-warden-v1\\"}]","id":"earned-north-2-261-27","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-2-261-28","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-tithe-warden-v1\\"}]","id":"auto-2-293","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-tithe-warden-v1\\"}]","id":"auto-4-294","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-tithe-warden-v1\\"}]","id":"auto-6-295","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-2-261-29","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"heaven-choir-core-v1\\"}]","id":"earned-north-3-302-7","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-3-302-8","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-choir-core-v1\\"}]","id":"auto-2-309","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-choir-core-v1\\"}]","id":"auto-4-310","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-3-302-9","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-3-302-12","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"heaven-glasswing-sentinel-v1\\"}]","id":"earned-north-3-302-21","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-3-302-22","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-glasswing-sentinel-v1\\"}]","id":"auto-1-323","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-glasswing-sentinel-v1\\"}]","id":"auto-4-324","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-3-302-23","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-glasswing-sentinel-v1\\"}]","id":"auto-6-326","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-3-302-24","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"heaven-counterfeit-relay-v1\\"}]","id":"earned-north-3-302-26","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-3-302-27","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-counterfeit-relay-v1\\"}]","id":"auto-2-331","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-counterfeit-relay-v1\\"}]","id":"auto-4-332","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-3-302-28","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-4-343-8","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"atlantis-breakwater-custodian-v1\\"}]","id":"earned-north-4-343-24","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-4-343-25","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-4-343-26","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"atlantis-breakwater-custodian-v1\\"}]","id":"auto-2-364","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"atlantis-breakwater-custodian-v1\\"}]","id":"auto-4-365","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"atlantis-breakwater-custodian-v1\\"}]","id":"auto-7-366","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-4-343-27","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-5-375-9","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"cosmos-optical-reclaimer-v1\\"}]","id":"earned-north-5-375-20","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-5-375-21","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-5-375-22","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cosmos-optical-reclaimer-v1\\"}]","id":"auto-2-391","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cosmos-optical-reclaimer-v1\\"}]","id":"auto-4-392","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cosmos-optical-reclaimer-v1\\"}]","id":"auto-6-393","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-5-375-23","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"cosmos-still-meridian-guardian-v1\\"}]","id":"earned-north-5-375-27","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-5-375-28","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-5-375-29","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-5-375-32","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-5-375-33","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cosmos-still-meridian-guardian-v1\\"}]","id":"auto-11-405","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cosmos-still-meridian-guardian-v1\\"}]","id":"auto-13-406","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-5-375-34","ok":true}],"relic":true,"revision":416,"reward":"warden_stone","road":{"beaconLit":true,"cartRepaired":true,"claimed":["cart-latch","old-surveyor"],"entered":true,"reported":true,"revealed":["cart-latch","old-surveyor"],"version":1},"stamina":100,"started":true,"starter":{"accepted":false,"bundles":[],"re'... 50554 more characters,
+  expected: '{"adventure":{"angelSeen":true,"arsenal":{"bestTime":null,"gems":{"amber":0,"moonstone":1,"ruby":0},"rangeMedal":false,"sockets":{},"version":1},"beacon":{"attempts":1,"complete":true,"failures":0,"introduced":true,"relic":"renounced","reward":true,"route":"forest","soul":{"corruption":0,"equipped":"aegis","grace":true,"radiance":2,"scars":["cinder-invoked","cinder-renounced"]},"status":"stable","version":1},"chips":[],"classPath":{"choice":null,"readyAt":0,"version":1},"coins":234,"companion":{"bonded":true,"mode":"follow","name":"Briar"},"crossing":{"attuned":true,"clapper":true,"clapperRevealed":true,"complete":true,"entered":true,"inscription":true,"met":true,"projects":[],"repaired":true,"reward":true,"version":1},"deaths":0,"defeated":["briar-1","briar-2","sentinel","hart","road-prowler","road-prism","road-ram","cross-thorn","cross-prism","cross-warden"],"drops":[],"dug":["0,1","2,-2"],"earthBinding":{"kind":null,"version":1,"weapon":null},"earthGathering":{"accepted":false,"prepared":[],"shared":false,"verse":null,"version":1},"earthNotes":{"accepted":false,"compared":false,"interpretation":null,"marks":[],"version":1},"earthStory":{"accepted":true,"arrived":true,"claimed":true,"dispatch":"detour","steps":["detour-ridge","detour-shelter","detour-mark"],"version":1},"elapsed":2294.537352070588,"equipment":{"armor":"keeper_coat","charm":"chime_clasp","weapon":"copper_blade"},"hp":198,"ore":47,"owned":["trail_blade","travel_coat","guard_vest","copper_blade","warden_stone","courier_mantle","wayfarer_band","chime_clasp","keeper_coat"],"pursuit":{"active":null,"claimed":0,"fittings":{},"pinned":null,"version":1},"realmCraft":{"version":1,"weapon":null},"receipts":[{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-22-201","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-25-202","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-27-203","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-29-204","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-32-205","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cross-warden\\"}]","id":"auto-34-206","ok":true},{"fp":"[\\"pulse\\",{\\"target\\":\\"cross-warden\\"}]","id":"ch4-27","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"ch4-28","ok":true},{"fp":"[\\"loot\\",{\\"id\\":\\"cross-warden\\"}]","id":"ch4-29","ok":true},{"fp":"[\\"cross-repair\\",{}]","id":"ch4-30","ok":true},{"fp":"[\\"cross-ring\\",{\\"id\\":\\"leaf\\"}]","id":"ch4-31","ok":true},{"fp":"[\\"cross-ring\\",{\\"id\\":\\"wave\\"}]","id":"ch4-32","ok":true},{"fp":"[\\"cross-ring\\",{\\"id\\":\\"sun\\"}]","id":"ch4-33","ok":true},{"fp":"[\\"cross-reward\\",{}]","id":"ch4-34","ok":true},{"fp":"[\\"equip\\",{\\"id\\":\\"chime_clasp\\"}]","id":"ch4-35","ok":true},{"fp":"[\\"cross-trade\\",{\\"offer\\":\\"coat\\"}]","id":"ch4-36","ok":true},{"fp":"[\\"equip\\",{\\"id\\":\\"keeper_coat\\"}]","id":"ch4-37","ok":true},{"fp":"[\\"cross-trade\\",{\\"offer\\":\\"copper\\"}]","id":"ch4-38","ok":true},{"fp":"[\\"cross-rest\\",{}]","id":"ch4-39","ok":true},{"fp":"[\\"waystone-travel\\",{\\"id\\":\\"commons\\"}]","id":"ch4-40","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-1-222-1","ok":true},{"fp":"[\\"earth-story-accept\\",{}]","id":"earned-north-1-222-3","ok":true},{"fp":"[\\"earth-story-step\\",{\\"id\\":\\"detour-ridge\\"}]","id":"earned-north-1-222-4","ok":true},{"fp":"[\\"earth-story-step\\",{\\"id\\":\\"detour-shelter\\"}]","id":"earned-north-1-222-5","ok":true},{"fp":"[\\"earth-story-step\\",{\\"id\\":\\"detour-mark\\"}]","id":"earned-north-1-222-6","ok":true},{"fp":"[\\"earth-story-dispatch\\",{\\"route\\":\\"detour\\"}]","id":"earned-north-1-222-7","ok":true},{"fp":"[\\"earth-story-arrive\\",{}]","id":"earned-north-1-222-8","ok":true},{"fp":"[\\"earth-story-claim\\",{}]","id":"earned-north-1-222-9","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-1-222-10","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"earth-stormfall-crossing-v1\\"}]","id":"earned-north-1-222-16","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-1-222-17","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-1-222-18","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-crossing-v1\\"}]","id":"auto-2-238","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-crossing-v1\\"}]","id":"auto-4-239","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-1-222-19","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"earth-stormfall-root-v1\\"}]","id":"earned-north-1-222-21","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-1-222-22","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-1-222-23","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-root-v1\\"}]","id":"auto-7-246","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-root-v1\\"}]","id":"auto-9-247","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-root-v1\\"}]","id":"auto-12-248","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"earth-stormfall-root-v1\\"}]","id":"auto-14-249","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-1-222-24","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-1-222-29","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"hell-return-reeve-v1\\"}]","id":"earned-north-2-261-7","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-2-261-8","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-return-reeve-v1\\"}]","id":"auto-1-268","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-return-reeve-v1\\"}]","id":"auto-3-269","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-2-261-9","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-return-reeve-v1\\"}]","id":"auto-5-271","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-2-261-10","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-2-261-15","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"hell-tithe-warden-v1\\"}]","id":"earned-north-2-261-27","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-2-261-28","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-tithe-warden-v1\\"}]","id":"auto-2-293","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-tithe-warden-v1\\"}]","id":"auto-4-294","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"hell-tithe-warden-v1\\"}]","id":"auto-6-295","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-2-261-29","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"heaven-choir-core-v1\\"}]","id":"earned-north-3-302-7","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-3-302-8","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-choir-core-v1\\"}]","id":"auto-2-309","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-choir-core-v1\\"}]","id":"auto-4-310","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-3-302-9","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-3-302-12","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"heaven-glasswing-sentinel-v1\\"}]","id":"earned-north-3-302-21","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-3-302-22","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-glasswing-sentinel-v1\\"}]","id":"auto-1-323","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-glasswing-sentinel-v1\\"}]","id":"auto-4-324","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-3-302-23","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-glasswing-sentinel-v1\\"}]","id":"auto-6-326","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-3-302-24","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"heaven-counterfeit-relay-v1\\"}]","id":"earned-north-3-302-26","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-3-302-27","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-counterfeit-relay-v1\\"}]","id":"auto-2-331","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"heaven-counterfeit-relay-v1\\"}]","id":"auto-4-332","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-3-302-28","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-4-343-8","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"atlantis-breakwater-custodian-v1\\"}]","id":"earned-north-4-343-24","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-4-343-25","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-4-343-26","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"atlantis-breakwater-custodian-v1\\"}]","id":"auto-2-364","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"atlantis-breakwater-custodian-v1\\"}]","id":"auto-4-365","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"atlantis-breakwater-custodian-v1\\"}]","id":"auto-7-366","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-4-343-27","ok":true},{"fp":"[\\"rest\\",{}]","id":"earned-north-5-375-9","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"cosmos-optical-reclaimer-v1\\"}]","id":"earned-north-5-375-20","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-5-375-21","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-5-375-22","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cosmos-optical-reclaimer-v1\\"}]","id":"auto-2-391","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cosmos-optical-reclaimer-v1\\"}]","id":"auto-4-392","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cosmos-optical-reclaimer-v1\\"}]","id":"auto-6-393","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-5-375-23","ok":true},{"fp":"[\\"target-select\\",{\\"id\\":\\"cosmos-still-meridian-guardian-v1\\"}]","id":"earned-north-5-375-27","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-5-375-28","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-5-375-29","ok":true},{"fp":"[\\"guard\\",{}]","id":"earned-north-5-375-32","ok":true},{"fp":"[\\"auto-toggle\\",{}]","id":"earned-north-5-375-33","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cosmos-still-meridian-guardian-v1\\"}]","id":"auto-11-405","ok":true},{"fp":"[\\"attack\\",{\\"target\\":\\"cosmos-still-meridian-guardian-v1\\"}]","id":"auto-13-406","ok":true},{"fp":"[\\"target-clear\\",{}]","id":"earned-north-5-375-34","ok":true}],"relic":true,"revision":416,"reward":"warden_stone","road":{"beaconLit":true,"cartRepaired":true,"claimed":["cart-latch","old-surveyor"],"entered":true,"reported":true,"revealed":["cart-latch","old-surveyor"],"version":1},"stamina":100,"started":true,"starter":{"accepted":false,"bundles":[],"re'... 50425 more characters,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.18.0
+D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\earth-wild-signs-data.js:27
+const fail=m=>{throw Error('Invalid Earth wild signs: '+m);};
+               ^
+
+Error: Invalid Earth wild signs: explicitly claimed supplied load prerequisite
+    at fail (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\earth-wild-signs-data.js:27:22)
+    at Object.crossValidate (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\earth-wild-signs-data.js:48:89)
+    at Object.validate (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\core.js:134:1482)
+    at [eval]:8:23
+    at runScriptInThisContext (node:internal/vm:219:10)
+    at node:internal/process/execution:451:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:449:60)
+    at evalFunction (node:internal/process/execution:283:30)
+    at evalTypeScript (node:internal/process/execution:295:3)
+
+Node.js v24.18.0
+............
+----------------------------------------------------------------------
+Ran 60 tests in 2.341s
+
+OK (skipped=2)

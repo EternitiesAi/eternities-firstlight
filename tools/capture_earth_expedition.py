@@ -518,7 +518,7 @@ def main():
                                         page.wait_for_timeout(80)
                                         continue
                                     frozen = dict(actor['strike'])
-                                    yaw = waiting['diagnostics']['camera']['yaw']
+                                    yaw = waiting['diagnostics']['camera'].get('heading', waiting['diagnostics']['camera']['yaw'])
                                     right = (math.cos(frozen['yaw']), -math.sin(frozen['yaw']))
                                     directions = {'d': (math.cos(yaw), -math.sin(yaw)), 'a': (-math.cos(yaw), math.sin(yaw)),
                                                   's': (math.sin(yaw), math.cos(yaw)), 'w': (-math.sin(yaw), -math.cos(yaw))}

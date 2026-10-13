@@ -48,7 +48,7 @@ def wallet(world):
 
 def swim_keys(point, snapshot):
     """Return one or two ordinary WASD keys for the nearest of eight headings."""
-    player, yaw = snapshot['adventure']['player'], snapshot['camera']['yaw']
+    player, yaw = snapshot['adventure']['player'], snapshot['camera'].get('heading', snapshot['camera']['yaw'])
     dx, dz = point['x'] - player['x'], point['z'] - player['z']
     x = dx * math.cos(yaw) - dz * math.sin(yaw)
     z = dx * math.sin(yaw) + dz * math.cos(yaw)
@@ -159,7 +159,7 @@ def main():
         check('assembled HTML copies identical', sha(ROOT / 'FIRSTLIGHT_VALLEY.html') == report['html_sha256'])
         check('ordinary production interface', page.evaluate('()=>!Reflect.has(Realm,"test")'))
         state = lambda: page.evaluate('()=>Realm.state')
-        diag = lambda: page.evaluate('()=>{const d=Realm.diagnostics;return{scene:d.scene,mode:d.mode,renderer:d.renderer,world:d.world,atlantis:d.atlantis,adventure:d.adventure,characters:d.characters,camera:{preset:d.camera.preset,yaw:d.camera.yaw,projection:d.camera.projection},saveState:d.saveState,errors:d.errors};}')
+        diag = lambda: page.evaluate('()=>{const d=Realm.diagnostics;return{scene:d.scene,mode:d.mode,renderer:d.renderer,world:d.world,atlantis:d.atlantis,adventure:d.adventure,characters:d.characters,camera:{preset:d.camera.preset,yaw:d.camera.yaw,heading:d.camera.heading,projection:d.camera.projection},saveState:d.saveState,errors:d.errors};}')
 
         def click(selector):
             locator = page.locator(selector)
@@ -203,7 +203,7 @@ def main():
             report['screenshots'].append({'path': str(path), 'sha256': sha(path)})
 
         def movement_key(point, snapshot):
-            player, yaw = snapshot['adventure']['player'], snapshot['camera']['yaw']
+            player, yaw = snapshot['adventure']['player'], snapshot['camera'].get('heading', snapshot['camera']['yaw'])
             dx, dz = point['x'] - player['x'], point['z'] - player['z']
             x, z = dx * math.cos(yaw) - dz * math.sin(yaw), dx * math.sin(yaw) + dz * math.cos(yaw)
             return ('d' if x > 0 else 'a') if abs(x) > abs(z) else ('s' if z > 0 else 'w')
@@ -441,7 +441,7 @@ def main():
         if page:
             try:
                 page.screenshot(path=str(out / 'FAILURE.png'))
-                report['failure_diagnostics'] = page.evaluate('()=>{const d=Realm.diagnostics;return{scene:d.scene,world:d.world,atlantis:d.atlantis,adventure:d.adventure,camera:{preset:d.camera.preset,yaw:d.camera.yaw}};}')
+                report['failure_diagnostics'] = page.evaluate('()=>{const d=Realm.diagnostics;return{scene:d.scene,world:d.world,atlantis:d.atlantis,adventure:d.adventure,camera:{preset:d.camera.preset,yaw:d.camera.yaw,heading:d.camera.heading}};}')
             except Exception:
                 report['failure_capture_error'] = traceback.format_exc()
     finally:

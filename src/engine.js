@@ -445,6 +445,24 @@ class Engine{
   if(this.surfacePick)return this.surfacePick(start,ray);
   if(ray[1]>=-.0001)return null;const t=(height-start[1])/ray[1];if(t<=0||t>420)return null;return{x:start[0]+t*ray[0],z:start[2]+t*ray[2]};
  }
+ resolveCameraOrbit(focus,yaw,elevation,distance,previousYaw=yaw){
+  const ce=Math.cos(elevation),se=Math.sin(elevation),readable=Math.min(3.4,distance);
+  const sample=angle=>{const dir=[Math.sin(angle)*ce,se,Math.cos(angle)*ce];return{yaw:angle,distance:this.clearCameraDistance(focus,focus.map((v,i)=>v+dir[i]*distance))};};
+  const preferred=sample(yaw),turn=Math.atan2(Math.sin(previousYaw-yaw),Math.cos(previousYaw-yaw));
+  // A wider release threshold and a retained clear side avoid alternating around
+  // a doorway. Only display orientation changes; the caller owns preferences.
+  if(preferred.distance>=Math.min(distance,readable+.5)||Math.abs(turn)<1e-6&&preferred.distance>=readable)return preferred;
+  const held=sample(previousYaw);if(Math.abs(turn)>1e-6&&held.distance>=readable)return held;
+  let best=preferred;const side=turn<0?-1:1;
+  for(let step=1;step<=12;step++)for(const sign of[side,-side]){
+   const candidate=sample(yaw+sign*step*Math.PI/12);
+   if(candidate.distance>=readable)return candidate;
+   if(candidate.distance>best.distance+.05)best=candidate;
+  }
+  // Enclosed or overlapping focus points still obey the original conservative
+  // sweep. Never manufacture a minimum distance through geometry.
+  return best;
+ }
  clearCameraDistance(focus,eye){
   const delta=sub(eye,focus),length=Math.hypot(...delta);if(length<.001)return length;
   let fraction=1;const solids=[...(this.cameraSolids||[])];for(const b of this.dynamic||[])solids.push(...(b.cameraSolids||[]));

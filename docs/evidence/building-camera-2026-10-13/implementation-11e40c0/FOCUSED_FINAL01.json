@@ -1,0 +1,19 @@
+{
+  "head": "11e40c065eadd312a42fb52e04098ba193c956ac",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=4",
+    "tests/camera-clearance.test.cjs",
+    "tests/camera.test.cjs",
+    "tests/camera-views.test.cjs",
+    "tests/earth_fieldcraft_camera.test.cjs",
+    "tests/earth_patrol_carrier_camera.test.cjs",
+    "tests/graphics_context_recovery.test.cjs"
+  ],
+  "startUtc": "2026-10-13T17:44:08.8972261Z",
+  "endUtc": "2026-10-13T17:44:12.2889423Z",
+  "exitCode": 0,
+  "scope": "Six focused CPU suites; not complete source or native browser",
+  "logSha256": "09f8b5cae32d62ed35452d566f65741abbca84d9eed079520735160e7c9a3dc4"
+}

@@ -1,0 +1,317 @@
+{
+  "status": "passed",
+  "variant": "fresh-bow",
+  "earthRoute": true,
+  "classPath": "magician",
+  "commands": 106,
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedDefeats": 0,
+  "acceleratedTick": true,
+  "source": null,
+  "claimed": 5,
+  "beforeDamage": 13,
+  "afterDamage": 25,
+  "equipped": "copper_bow",
+  "stats": {
+    "level": 1,
+    "attack": 25,
+    "defense": 1,
+    "maxHP": 100
+  },
+  "xp": 0,
+  "economy": {
+    "initial": {
+      "ore": 0,
+      "coins": 0,
+      "fiber": 0,
+      "wood": 0,
+      "stone": 0,
+      "plank": 0
+    },
+    "end": {
+      "ore": 2,
+      "coins": 2,
+      "fiber": 6,
+      "wood": 2,
+      "stone": 8,
+      "plank": 2
+    },
+    "net": {
+      "ore": 2,
+      "coins": 2,
+      "fiber": 6,
+      "wood": 2,
+      "stone": 8,
+      "plank": 2
+    },
+    "surveys": {
+      "count": 5,
+      "ore": 15,
+      "coins": 20,
+      "fiber": 10
+    }
+  },
+  "previews": [
+    {
+      "label": "Unowned longbow project",
+      "project": "copper_bow",
+      "recipe": {
+        "id": "craft:trail_bow",
+        "type": "arsenal-craft",
+        "payload": {
+          "id": "trail_bow"
+        },
+        "name": "Ashwood trail bow",
+        "materials": {
+          "wood": 6,
+          "fiber": 4,
+          "stone": 2
+        },
+        "ore": 0,
+        "coins": 0,
+        "requires": null
+      },
+      "weapon": "trail_bow",
+      "prerequisite": true,
+      "current": {
+        "level": 1,
+        "attack": 16,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "after": {
+        "level": 1,
+        "attack": 13,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "beforeWeapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "afterWeapon": {
+        "style": "bow",
+        "reach": 11,
+        "cooldown": 0.75,
+        "stamina": 6,
+        "primary": "Loose arrow",
+        "special": "Piercing light"
+      },
+      "currentSocket": null,
+      "socket": null
+    },
+    {
+      "label": "Ashwood prerequisite",
+      "project": "copper_bow",
+      "recipe": {
+        "id": "craft:trail_bow",
+        "type": "arsenal-craft",
+        "payload": {
+          "id": "trail_bow"
+        },
+        "name": "Ashwood trail bow",
+        "materials": {
+          "wood": 6,
+          "fiber": 4,
+          "stone": 2
+        },
+        "ore": 0,
+        "coins": 0,
+        "requires": null
+      },
+      "weapon": "trail_bow",
+      "prerequisite": true,
+      "current": {
+        "level": 1,
+        "attack": 16,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "after": {
+        "level": 1,
+        "attack": 13,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "beforeWeapon": {
+        "style": "blade",
+        "reach": 2.65,
+        "cooldown": 0.52,
+        "stamina": 0,
+        "primary": "Sunstrike",
+        "special": "Dawn sweep"
+      },
+      "afterWeapon": {
+        "style": "bow",
+        "reach": 11,
+        "cooldown": 0.75,
+        "stamina": 6,
+        "primary": "Loose arrow",
+        "special": "Piercing light"
+      },
+      "currentSocket": null,
+      "socket": null
+    },
+    {
+      "label": "Base weapon craft",
+      "project": "copper_bow",
+      "recipe": {
+        "id": "craft:copper_bow",
+        "type": "arsenal-craft",
+        "payload": {
+          "id": "copper_bow"
+        },
+        "name": "Copper-limbed longbow",
+        "materials": {
+          "plank": 2
+        },
+        "ore": 4,
+        "coins": 6,
+        "requires": "trail_bow"
+      },
+      "weapon": "copper_bow",
+      "prerequisite": false,
+      "current": {
+        "level": 1,
+        "attack": 13,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "after": {
+        "level": 1,
+        "attack": 21,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "beforeWeapon": {
+        "style": "bow",
+        "reach": 11,
+        "cooldown": 0.75,
+        "stamina": 6,
+        "primary": "Loose arrow",
+        "special": "Piercing light"
+      },
+      "afterWeapon": {
+        "style": "bow",
+        "reach": 11,
+        "cooldown": 0.75,
+        "stamina": 6,
+        "primary": "Loose arrow",
+        "special": "Piercing light"
+      },
+      "currentSocket": null,
+      "socket": null
+    },
+    {
+      "label": "Finite fitting I",
+      "project": "copper_bow",
+      "recipe": {
+        "step": 1,
+        "name": "River fitting I",
+        "attack": 2,
+        "ore": 3,
+        "coins": 4,
+        "materials": {
+          "fiber": 2
+        },
+        "id": "fit:copper_bow:1",
+        "type": "pursuit-fit",
+        "payload": {
+          "weapon": "copper_bow",
+          "step": 1
+        },
+        "requires": null
+      },
+      "weapon": "copper_bow",
+      "prerequisite": false,
+      "current": {
+        "level": 1,
+        "attack": 13,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "after": {
+        "level": 1,
+        "attack": 23,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "beforeWeapon": {
+        "style": "bow",
+        "reach": 11,
+        "cooldown": 0.75,
+        "stamina": 6,
+        "primary": "Loose arrow",
+        "special": "Piercing light"
+      },
+      "afterWeapon": {
+        "style": "bow",
+        "reach": 11,
+        "cooldown": 0.75,
+        "stamina": 6,
+        "primary": "Loose arrow",
+        "special": "Piercing light"
+      },
+      "currentSocket": null,
+      "socket": null
+    },
+    {
+      "label": "Finite fitting II",
+      "project": "copper_bow",
+      "recipe": {
+        "step": 2,
+        "name": "River fitting II",
+        "attack": 4,
+        "ore": 6,
+        "coins": 8,
+        "materials": {
+          "fiber": 4
+        },
+        "id": "fit:copper_bow:2",
+        "type": "pursuit-fit",
+        "payload": {
+          "weapon": "copper_bow",
+          "step": 2
+        },
+        "requires": null
+      },
+      "weapon": "copper_bow",
+      "prerequisite": false,
+      "current": {
+        "level": 1,
+        "attack": 13,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "after": {
+        "level": 1,
+        "attack": 25,
+        "defense": 1,
+        "maxHP": 100
+      },
+      "beforeWeapon": {
+        "style": "bow",
+        "reach": 11,
+        "cooldown": 0.75,
+        "stamina": 6,
+        "primary": "Loose arrow",
+        "special": "Piercing light"
+      },
+      "afterWeapon": {
+        "style": "bow",
+        "reach": 11,
+        "cooldown": 0.75,
+        "stamina": 6,
+        "primary": "Loose arrow",
+        "special": "Piercing light"
+      },
+      "currentSocket": null,
+      "socket": null
+    }
+  ]
+}

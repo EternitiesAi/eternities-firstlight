@@ -118,7 +118,7 @@ def follow_until(h,H,deadline,report,clock=time.monotonic):
         frame=d['consignment']['frame'];walking=walking or bool(frame and frame['walking']);samples+=1
         if clock()-last_sample>=.5:
             report['motionSamples'].append({'player':p,'worker':{'x':v['x'],'z':v['z']},'status':v['status'],'walking':bool(frame and frame['walking']),'camera':d['camera']['preset']});last_sample=clock()
-        keys=H.native_keys(p,v,d['camera']['yaw'])
+        keys=H.native_keys(p,v,d['camera'].get('heading', d['camera']['yaw']))
         remaining=deadline-clock()
         if remaining<=0:break
         try:

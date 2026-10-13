@@ -76,7 +76,7 @@ def main():
      d=diag();ad=d['adventure'];p=ad['player'];e=next((e for e in ad['enemies'] if e['id']==definition['enemy']['id']),None)
      if not e or math.hypot(e['x']-p['x'],e['z']-p['z'])<2.3:return
      if e['mode']!='recover':return
-     yaw=d['camera']['yaw'];x=(e['x']-p['x'])*math.cos(yaw)-(e['z']-p['z'])*math.sin(yaw);z=(e['x']-p['x'])*math.sin(yaw)+(e['z']-p['z'])*math.cos(yaw)
+     yaw=d['camera'].get('heading', d['camera']['yaw']);x=(e['x']-p['x'])*math.cos(yaw)-(e['z']-p['z'])*math.sin(yaw);z=(e['x']-p['x'])*math.sin(yaw)+(e['z']-p['z'])*math.cos(yaw)
      key=('d' if x>0 else 'a') if abs(x)>abs(z) else ('s' if z>0 else 'w')
      page.keyboard.down(key);page.wait_for_timeout(140);page.keyboard.up(key)
    while time.monotonic()-t0<150 and 'warden-resolved' not in state()['hellCampaign']['steps']:

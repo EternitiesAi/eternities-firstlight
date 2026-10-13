@@ -1,0 +1,111 @@
+✖ actual App resolves the house camera without rewriting orbit preference or any world state (8.892ms)
+✖ every eased camera frame is rechecked against the actual wall, including return to the requested orbit (3.7346ms)
+✖ supported doorstep and near-wall edge keep a readable, collision-safe perspective distance (0.4273ms)
+✖ an unobstructed requested view remains exact and returns after leaving the wall (0.2108ms)
+✖ retains the current clear side under small doorway movements instead of alternating orbit sides (0.1879ms)
+✖ no safe orbit never forces the eye through enclosed solids or claims readable clearance (0.2094ms)
+✖ opted-in dynamic walls take part in the same camera correction (0.2344ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 0
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 102.4765
+
+✖ failing tests:
+
+test at tests\camera-clearance.test.cjs:23:1
+✖ actual App resolves the house camera without rewriting orbit preference or any world state (8.892ms)
+  AssertionError [ERR_ASSERTION]: the live caller must not keep the old face-filling boom
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\camera-clearance.test.cjs:26:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\camera-clearance.test.cjs:30:1
+✖ every eased camera frame is rechecked against the actual wall, including return to the requested orbit (3.7346ms)
+  AssertionError [ERR_ASSERTION]: clear space restores requested orientation
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\camera-clearance.test.cjs:37:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\camera-clearance.test.cjs:41:1
+✖ supported doorstep and near-wall edge keep a readable, collision-safe perspective distance (0.4273ms)
+  TypeError: e.resolveCameraOrbit is not a function
+      at resolve (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\camera-clearance.test.cjs:12:61)
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\camera-clearance.test.cjs:44:67)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+
+test at tests\camera-clearance.test.cjs:49:1
+✖ an unobstructed requested view remains exact and returns after leaving the wall (0.2108ms)
+  TypeError: e.resolveCameraOrbit is not a function
+      at resolve (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\camera-clearance.test.cjs:12:61)
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\camera-clearance.test.cjs:50:40)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+
+test at tests\camera-clearance.test.cjs:53:1
+✖ retains the current clear side under small doorway movements instead of alternating orbit sides (0.1879ms)
+  TypeError: e.resolveCameraOrbit is not a function
+      at resolve (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\camera-clearance.test.cjs:12:61)
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\camera-clearance.test.cjs:54:26)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+
+test at tests\camera-clearance.test.cjs:60:1
+✖ no safe orbit never forces the eye through enclosed solids or claims readable clearance (0.2094ms)
+  TypeError: e.resolveCameraOrbit is not a function
+      at resolve (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\camera-clearance.test.cjs:12:61)
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\camera-clearance.test.cjs:62:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+
+test at tests\camera-clearance.test.cjs:65:1
+✖ opted-in dynamic walls take part in the same camera correction (0.2344ms)
+  TypeError: e.resolveCameraOrbit is not a function
+      at resolve (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\camera-clearance.test.cjs:12:61)
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\camera-clearance.test.cjs:67:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
