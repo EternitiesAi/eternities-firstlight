@@ -1,22 +1,23 @@
-# A readable approach to home, 2026-10-13
+# A readable return home, 2026-10-13
 
-The third-person camera now seeks a clear side when a building would squeeze it
-into the player's face, then restores the preferred orbit in open space. Movement
-follows the displayed view and deliberate orbit starts there. Both camera styles,
-saved framing and all gameplay/save owners remain. This addresses the next defect
-found in the prior pier/Briar pictures; it adds no new realm or economy.
+The third-person camera now moves to a clear side when a wall would push it into
+the player's face. Walking, swimming and directional dodge follow the displayed
+view; deliberate orbit begins there. Preferred saved framing and both camera
+styles remain. Camera02 shows the complete traveler at the shared-house door.
 
-Runtime2e90c69 plus test repair11e40c0 are pushed on
-gameplay/building-camera-clearance-20261013, stacked on PR73. Focused final CPU
-checks pass53. Earlier native Camera01 passes56 and visibly shows the whole
-character at the doorway, but predates the last two transition corrections.
-Complete Source01 failed2 host checks (repaired in focused tests); final complete
-verification and unframed Briar native readback remain pending host6GiB admission.
-No complete final gate or human camera-comfort result is claimed.
+Qualified source1d60260f0bc950b9f0e064555ec750ff38324fe3 is pushed on
+gameplay/building-camera-clearance-20261013 (PR74, stacked on PR73). Complete
+source verification passed223 commands: Node2236/0fail/2skip, Python490 OK/8skip,
+both continuous ten-chapter draft journeys and all five earned Briar cases.
+Native camera57 and early-blade Briar109 checks passed; Briar preserves exact
+save bytes through3 whole-browser restarts. Cutaway/reflection passed too.
+The other four Briar cases remain CPU-only. This is targeted native coverage;
+full current --browser and human comfort remain open.
 
-See [exact evidence and remaining checks](development/BUILDING_CAMERA_QUALIFICATION_2026-10-13.md).
-Reuse the integrated launcher and qualification checkout. VM/Claude work and
-personal saves were untouched. No new full-game copy/video or public deployment.
+World9/Adventure12, all old save owners, XP and explicit choices are unchanged.
+See [qualification, retained failures and limits](development/BUILDING_CAMERA_QUALIFICATION_2026-10-13.md).
+The integrated launcher and clean qualification checkout were reused. No VM,
+Claude work or personal saves were accessed. No new movie or full-game copy.
 
 ---
 

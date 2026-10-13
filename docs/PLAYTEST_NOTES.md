@@ -1,21 +1,22 @@
-# Building-camera observations, 2026-10-13
+# Current building-camera observations, 2026-10-13
 
-Initial native Camera01 now shows the entire character and shared-house facade
-at the doorway in third person; the previous face-filling view is reproduced
-and corrected by the real geometry/production-App regression. The native caller
-passes56 checks. Its screenshot is from an earlier build in this same milestone,
-before tour-exit and intermediate-orbit fixes. Final focused CPU tests pass53.
-No fresh final Briar-rest picture or human-comfort conclusion exists yet.
+Camera02's final-build doorway screenshot visibly shows the full traveler and
+shared-house facade. The camera suite passes57 checks including real keyboard
+walking and orbit, actual displayed heading, both views, save/reload and menus.
+The early-blade Briar run passes109 checks and3 whole-browser restarts.
+It captures REST_UNFRAMED_ARRIVAL before preset cycling and checks actual
+submitted player/fox part envelopes against explicit canvas bounds.
 
-The intended next play is an ordinary approach along the shared-house wall,
-without a curated Look/orbit, followed by deliberate dragging and walking back
-into the open. Try both cameras and a remembered rest with Briar. Can you see
-both characters? Does the automatic turn feel comfortable or surprising? Does
-movement still follow the direction you expect? These questions remain unanswered.
+These are software-WebGL/Low automated observations. Briar uses accelerated
+accepted movement/ticks; this is not ordinary-time play, pacing or GPU measurement.
+The other four Briar continuations are CPU-only. Projection checks do not alone
+establish pixel visibility or human comfort; retain the actual arrival screenshot.
 
-Final native checks are deferred by host memory; source failures and the exact
-earlier/final HTML identities are in [the qualification record](development/BUILDING_CAMERA_QUALIFICATION_2026-10-13.md).
-No new movie was recorded; retain the prior short pier clip and bounded new images.
+Dom's pending questions: Can you see both characters on arriving home? Does the
+automatic turn feel comfortable or surprising? Does movement follow the view as
+you expect? Try deliberate orbit, a wall-side approach, open ground and Diorama.
+No human answers have been supplied. No new movie; prior short pier clip remains.
+See [exact source, native evidence and failures](development/BUILDING_CAMERA_QUALIFICATION_2026-10-13.md).
 
 ---
 

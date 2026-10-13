@@ -1,22 +1,23 @@
-# Transient wall clearance preserves deliberate framing, 2026-10-13
+# Keep displayed orientation separate from saved preference, 2026-10-13
 
-Use a nearest clear orbit to preserve a readable third-person character near
-buildings. Raising pitch alone needs nearly80 degrees at the doorway and still
-fails at its closest supported strip; it is not the selected approach. Retain
-side hysteresis and re-sweep eased angles. If an intervening arc is cramped,
-take the clear endpoint immediately instead of allowing a one-frame close-up.
+A wall correction owns transient camera.actualYaw. Perspective movement and
+the first deliberate drag use cameraHeading(); diagnostic heading exposes the
+same value to actual native controllers, while yaw retains preferred framing.
+Controller compatibility fallback applies only when older snapshots lack heading.
+Every eased ray is swept; a blocked intervening arc takes the clear endpoint.
+Side hysteresis prevents unnecessary reversals. Both views and saves remain.
 
-Displayed yaw owns perspective movement conversion and the start of deliberate
-drag. Requested yaw remains the saved preference. Orthographic/tour transitions
-synchronize transient heading. Reduced motion resolves immediately. The existing
-enclosed-focus0.45m clamp remains a limit, not proof of clearance inside solids.
-No new save field, collision-envelope change, reward or campaign consequence.
+Exact extracted test hosts must load the production helper. Historical source
+guards remain frozen: the ART boundary unit fixture explicitly selects the two
+independently reviewed helper hashes in RAM and still refuses further mutations.
+It does not admit a new full-browser epoch or rewrite SOURCE_EXPECTATIONS04.
 
-Source review and focused regression support these decisions; final complete
-source/native qualification remains pending. Do not trade away the6GiB host
-admission rule, VM/Claude isolation or original assertions to obtain a pass.
-Human comfort of automatic orientation changes still needs real play.
-See [implementation evidence](development/BUILDING_CAMERA_QUALIFICATION_2026-10-13.md).
+Source06 and targeted native camera/Briar plus cutaway/reflection now pass.
+No thresholds, original assertions or deadlines were weakened. Human comfort
+of automatic turns remains unresolved; the enclosed-focus0.45m fallback remains
+a limit, not proof of clearance inside a solid. No save field, migration, XP,
+reward, equipment, companion pose or Core collision change follows.
+See [qualified evidence and limits](development/BUILDING_CAMERA_QUALIFICATION_2026-10-13.md).
 
 ---
 

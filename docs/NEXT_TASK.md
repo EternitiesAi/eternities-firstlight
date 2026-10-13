@@ -1,25 +1,27 @@
-# Next: qualify the implemented camera, then animate inhabited moments, 2026-10-13
+# Next: animate inhabited moments and close broad qualification, 2026-10-13
 
-Continue gameplay/building-camera-clearance-20261013 after fetching current work.
-Read [its qualification record](development/BUILDING_CAMERA_QUALIFICATION_2026-10-13.md).
-The camera implementation and53 focused checks are delivered; its full source
-retry and final native qualification are resource-deferred, not passed.
+Continue gameplay/building-camera-clearance-20261013 / PR74 after fetching
+current work. Read [the qualified camera record](development/BUILDING_CAMERA_QUALIFICATION_2026-10-13.md).
+The final source and targeted camera/Briar/cutaway/reflection checks now pass.
 
-1. With fresh host free RAM >=6291456KiB, run prepared Source03 against the exact
-   clean fetched head in reused STATION. Preserve original timeouts/four workers.
-2. Re-run the updated native camera caller and command-earned Briar doorstep rest
-   on that successful source epoch. Inspect actual unframed player/fox visibility,
-   movement/orbit, tour exit, both views and saved framing. Camera01 is earlier
-   evidence, not final runtime qualification. Keep source/native failures visible.
-3. Current full --browser, cutaway/reflection, human comfort and real-GPU gates
-   remain open. Respect resource admission; never stop the VM or Claude to proceed.
-4. Once qualified, refine character/companion animation with the existing rig.
-   Fishing still uses a rod holder; hand casting/reeling and audio are not delivered.
-   Keep the finite realm draft's inhabited places the priority over more breadth.
+1. Improve character/companion animation with the existing rig and a measured
+   art budget. Fishing remains a rod-holder prototype; hand casting/reeling and
+   audio are not delivered. Deepen inhabited places before adding more breadth.
+2. Complete current full --browser separately. Its road-account stage still
+   points to historical SOURCE_EXPECTATIONS04, whose original helper pins
+   intentionally refuse newer reviewed heading helpers. Review a fresh explicit
+   epoch and its inputs; preserve historical guards and negative evidence.
+3. Qualify additional native Briar character variants; four are still CPU-only.
+   Human camera comfort and real GPU measurement remain separate gates.
+4. Keep the fresh/returning pier-and-companion human route pending. Observe an
+   ordinary doorstep approach, automatic wall turn and deliberate orbit in both
+   views. No human answers or AAA/completion claim follows from green automation.
 
-Use the existing fresh/returning pier-and-companion playtest. No human answers
-have arrived. Do not resume the separate PAUSED heartbeat, imply unattended work,
-merge/deploy, create another full-game copy or retry the blocked deletion.
+Reuse ROOT/STATION on D. Fresh host free memory >=6291456KiB before complete
+source or each whole browser; preserve original deadlines and four workers.
+VM/Claude/personal profiles/unrelated workers remain excluded. No cleanup, new
+full-game copy, blocked-deletion retry, automatic merge/deploy or paid work.
+Goal service is ACTIVE, but the separate PAUSED heartbeat is not resumed.
 
 ---
 

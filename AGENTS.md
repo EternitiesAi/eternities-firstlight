@@ -1,25 +1,30 @@
-# Building-camera implementation; final qualification pending, 2026-10-13
+# Building camera qualified on current source, 2026-10-13
 
-Current branch: gameplay/building-camera-clearance-20261013, stacked on PR73
-at cf636d211b765aaa59767099d22616fd1faef714. Runtime2e90c69 and test repair11e40c0
-add a transient readable orbit around walls, displayed-heading controls, deliberate
-drag anchoring and safe tour/arc transitions. Saved framing, both cameras,
-World9/Adventure12, all existing owners and Core rules remain unchanged.
+Continue gameplay/building-camera-clearance-20261013 / PR74, stacked on PR73
+at cf636d211b765aaa59767099d22616fd1faef714. Qualified source/test head:
+1d60260f0bc950b9f0e064555ec750ff38324fe3. Subsequent delivery changes only
+evidence and continuity. Read docs/development/BUILDING_CAMERA_QUALIFICATION_2026-10-13.md.
 
-Read docs/development/BUILDING_CAMERA_QUALIFICATION_2026-10-13.md. Final focused
-CPU checks pass53/0fail/0skip. Earlier Camera01 passes56 native checks and shows a
-readable fresh-character doorway, but predates final tour/arc fixes. Complete
-Source01 FAILED two test-host checks; the exact-helper repair passes focused
-tests. Source02 was not launched: first preflight drift, then low host memory.
-Final complete source, current native camera/Briar, cutaway/reflection and full
---browser remain open. Do not relabel older native results as final qualification.
+Complete Source06 passed223 commands: Node2236/0fail/2skip; Python490 OK/8skip;
+both continuous ten-chapter variants and all five Briar earned continuations.
+Final Camera02 passed57 native checks. One early-blade Briar case passed109
+checks and3 exact-byte whole-browser restarts, including actual unframed
+arrival projection. Other four Briar cases are CPU-only. Current cutaway and
+reflection checks passed. Full current --browser, human comfort and real GPU
+qualification remain open. Earlier failures and their explicit repairs remain.
 
-Reuse ROOT/STATION on D. Prepared Source03 and Briar callers remain in the local
-building-camera-20261013 artifact folder. Fresh host-only6GiB admission before
-complete source or every whole browser; original Node180/Python600/four workers.
-VM/Claude/personal profiles/unrelated work remain excluded. Preserve failures and
-blocked deletion. No new full game or video, merge, deployment or background resume.
-Production unfinished; separate heartbeat PAUSED; goal previously usageLimited.
+The transient clear-side camera follows displayed heading for movement and
+deliberate orbit; saved preferred framing and both cameras remain. World9,
+Adventure12, XP, all save owners and collision rules are unchanged. No migration.
+Next product work: character/companion animation in existing inhabited places.
+Road-account full-browser admission still references historical SOURCE_EXPECTATIONS04;
+review a new explicit expectation epoch before that gate, never relax its guards.
+
+Reuse ROOT/STATION on D. Fresh host-only6GiB admission before complete source or
+each whole browser; Node180/Python600/four workers unchanged. VM/Claude/personal
+profiles/unrelated workers remain excluded. Preserve failures and blocked deletion.
+No new full-game copy or movie, automatic merge/deploy or background resume.
+Production remains unfinished. Goal service is ACTIVE; separate heartbeat PAUSED.
 
 ---
 

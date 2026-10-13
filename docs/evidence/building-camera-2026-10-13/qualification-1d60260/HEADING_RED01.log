@@ -1,0 +1,26 @@
+..F..s...F.........s...............
+======================================================================
+FAIL: test_corrected_displayed_heading_steers_actual_swim_without_using_saved_yaw (tests.test_atlantis_capture_controller.ProductionGeometry.test_corrected_displayed_heading_steers_actual_swim_without_using_saved_yaw)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\test_atlantis_capture_controller.py", line 106, in test_corrected_displayed_heading_steers_actual_swim_without_using_saved_yaw
+    self.assertEqual(set(keys), {'w','d'})
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Items in the first set but not the second:
+'s'
+Items in the second set but not the first:
+'w'
+
+======================================================================
+FAIL: test_steering_chords_advance_actual_core_using_exact_frame_expression (tests.test_capture_earth_homecoming.ActualProductionController.test_steering_chords_advance_actual_core_using_exact_frame_expression)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\test_capture_earth_homecoming.py", line 183, in test_steering_chords_advance_actual_core_using_exact_frame_expression
+    for row in result:self.assertGreater(row['advance'],0);self.assertLess(row['angle'],math.pi/8+.001)
+                                                           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1.2999999999999972 not less than 0.39369908169872414
+
+----------------------------------------------------------------------
+Ran 33 tests in 2.853s
+
+FAILED (failures=2, skipped=2)
