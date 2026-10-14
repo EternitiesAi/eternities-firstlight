@@ -1,7 +1,7 @@
 """Read-only ART boundary regressions with a declared helper fixture view.
 
 The frozen native expectations still refuse the later reviewed helpers. ART
-cases transport a copy with two literal reviewed helper pins in RAM;
+cases transport a copy with two literal declared helper pins in RAM;
 their negative cases change one further declared JSON/module byte operand.
 All validators and other source/page/git reads remain production. These
 synthetic declarations are not native/source admission or a new native epoch.
@@ -25,7 +25,9 @@ HELPER = ROOT / 'tools/earth_consignment_browser.py'
 # actual heading in the same turn; native follow consumes it with legacy fallback.
 # The frozen SOURCE_EXPECTATIONS04 stays unchanged and still refuses this helper.
 # Never derive an accepted pin from unknown current source bytes.
-REVIEWED_HELPER = '9212846db04bf76c1e12ac81219ca3b24ff2b8e85145fc071b986738cdad52bd'
+# PR78 adds only the declared current-cohort Adventure12-to13 predicate.
+# SOURCE_EXPECTATIONS06 documents parent review; independent review is pending.
+DECLARED_CURRENT_HELPER = '10175f12c1c311b1c3e5c3ad11210b46c7d4c6edd26b8fc0fc378ef67727d59f'
 WILD_SIGNS_HELPER = ROOT / 'tools/earth_wild_signs_browser.py'
 REVIEWED_WILD_SIGNS_HELPER = 'e8516952228fdd645ff7e92cb8983c93eb6f6e328d0c1a8962188d3b62e39e8a'
 spec = importlib.util.spec_from_file_location('roadkeeper_actual_source_epoch', ROOT / 'tools/road_account_browser.py')
@@ -62,8 +64,8 @@ class RoadkeeperSourceEpoch(unittest.TestCase):
         with ram_bytes({EXPECTATIONS: json.dumps(self.expectations).encode()}):
             return DRIVER.installed_epoch(ROOT, self.head, EXPECTATIONS)
 
-    def select_reviewed_helper_view(self):
-        self.expectations['helpersLF']['tools/earth_consignment_browser.py'] = REVIEWED_HELPER
+    def select_declared_helper_view(self):
+        self.expectations['helpersLF']['tools/earth_consignment_browser.py'] = DECLARED_CURRENT_HELPER
         self.expectations['helpersLF']['tools/earth_wild_signs_browser.py'] = REVIEWED_WILD_SIGNS_HELPER
 
     def test_frozen_original_still_refuses_the_newer_helper(self):
@@ -71,21 +73,21 @@ class RoadkeeperSourceEpoch(unittest.TestCase):
             DRIVER.installed_epoch(ROOT, self.head, EXPECTATIONS)
 
     def test_unreviewed_changed_helper_is_refused_in_the_selected_view(self):
-        self.select_reviewed_helper_view()
+        self.select_declared_helper_view()
         altered = HELPER.read_bytes() + b'\n# Explicit synthetic unreviewed helper mutation.\n'
         with ram_bytes({HELPER: altered}):
             with self.assertRaisesRegex(ValueError, 'Actual original browser helper text changed: tools/earth_consignment_browser.py'):
                 self.synthetic_expectation_epoch()
 
     def test_unreviewed_helper_pin_is_refused_in_the_selected_view(self):
-        self.select_reviewed_helper_view()
+        self.select_declared_helper_view()
         self.expectations['helpersLF']['tools/earth_consignment_browser.py'] = '0' * 64
         with self.assertRaisesRegex(ValueError, 'Actual original browser helper text changed: tools/earth_consignment_browser.py'):
             self.synthetic_expectation_epoch()
 
     def test_reviewed_current_art_passes_with_selected_synthetic_expectations(self):
-        self.select_reviewed_helper_view()
-        self.assertEqual(DRIVER.lf_sha(HELPER), REVIEWED_HELPER)
+        self.select_declared_helper_view()
+        self.assertEqual(DRIVER.lf_sha(HELPER), DECLARED_CURRENT_HELPER)
         self.assertEqual(DRIVER.lf_sha(WILD_SIGNS_HELPER), REVIEWED_WILD_SIGNS_HELPER)
         epoch = self.synthetic_expectation_epoch()
         self.assertEqual(self.expectations['reviewedModulesLF']['earth-roadkeeper-art.js'], REVIEWED_ART)
@@ -96,33 +98,33 @@ class RoadkeeperSourceEpoch(unittest.TestCase):
         self.assertEqual(epoch['runtimeSources']['src/earth-roadkeeper-art.js'], DRIVER.sha(ART))
 
     def test_unreviewed_wild_signs_bytes_are_refused_in_the_selected_view(self):
-        self.select_reviewed_helper_view()
+        self.select_declared_helper_view()
         altered = WILD_SIGNS_HELPER.read_bytes() + b'\n# Explicit synthetic unreviewed helper mutation.\n'
         with ram_bytes({WILD_SIGNS_HELPER: altered}):
             with self.assertRaisesRegex(ValueError, 'Actual original browser helper text changed: tools/earth_wild_signs_browser.py'):
                 self.synthetic_expectation_epoch()
 
     def test_stale_lf_art_pin_refuses_with_selected_synthetic_expectations(self):
-        self.select_reviewed_helper_view()
+        self.select_declared_helper_view()
         self.expectations['reviewedModulesLF']['earth-roadkeeper-art.js'] = OLD_ART
         with self.assertRaisesRegex(ValueError, 'Reviewed future runtime is not installed: earth-roadkeeper-art.js'):
             self.synthetic_expectation_epoch()
 
     def test_unreviewed_lf_pin_is_not_accepted(self):
-        self.select_reviewed_helper_view()
+        self.select_declared_helper_view()
         self.expectations['reviewedModulesLF']['earth-roadkeeper-art.js'] = '0' * 64
         with self.assertRaisesRegex(ValueError, 'Reviewed future runtime is not installed: earth-roadkeeper-art.js'):
             self.synthetic_expectation_epoch()
 
     def test_unreviewed_changed_art_bytes_are_refused_by_the_hash_guard(self):
-        self.select_reviewed_helper_view()
+        self.select_declared_helper_view()
         altered = ART.read_bytes() + b'\n// Explicit synthetic unreviewed source-identity mutation.\n'
         with ram_bytes({ART: altered}):
             with self.assertRaisesRegex(ValueError, 'Reviewed future runtime is not installed: earth-roadkeeper-art.js'):
                 self.synthetic_expectation_epoch()
 
     def test_retained_historical_raw_fallback_is_not_a_second_accepted_hash(self):
-        self.select_reviewed_helper_view()
+        self.select_declared_helper_view()
         self.expectations.pop('reviewedModulesLF')
         with self.assertRaisesRegex(ValueError, 'Reviewed future runtime is not installed: earth-roadkeeper-art.js'):
             self.synthetic_expectation_epoch()
