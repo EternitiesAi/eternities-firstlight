@@ -72,7 +72,8 @@ class DriverCPU(unittest.TestCase):
     def test_current_cohort_refuses_legacy_or_future_adventure_versions(self):
         row=self.originals['blade']
         self.assertEqual(H.source_check(row['world'],row['receipt'],'blade'),'stormfall')
-        for version in (12,14,None):
+        self.assertEqual(row['world']['adventure']['version'], 14)
+        for version in (12,13,15,None):
             world=copy.deepcopy(row['world']);world['adventure']['version']=version
             with self.subTest(version=version),self.assertRaises(ValueError):
                 H.source_check(world,row['receipt'],'blade')
