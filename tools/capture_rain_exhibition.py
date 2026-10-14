@@ -91,7 +91,7 @@ def main():
                 page = context.pages[0] if context.pages else context.new_page()
                 page.on('pageerror', lambda e: report['browser_errors'].append(str(e)))
                 response = page.goto(origin+'/', wait_until='load')
-                page.wait_for_function('!!window.Realm&&getComputedStyle(document.querySelector("#loading")).pointerEvents==="none"')
+                page.wait_for_function('()=>!!window.Realm&&getComputedStyle(document.querySelector("#loading")).pointerEvents==="none"')
                 check('actual committed HTML and ordinary production entry', response.ok and
                       hashlib.sha256(response.body()).hexdigest() == report['source']['index.html'] and
                       page.evaluate('typeof Realm.test==="undefined"'))
@@ -107,7 +107,7 @@ def main():
                 with page.expect_file_chooser() as chooser: click('[data-rpg="chars-import"]')
                 chooser.value.set_files(str(source))
                 click('[data-rpg="chars-confirm-import"]')
-                page.wait_for_function('Realm.diagnostics.characters.active==="character-2"&&Realm.diagnostics.characters.writer===true')
+                page.wait_for_function('()=>Realm.diagnostics.characters.active==="character-2"&&Realm.diagnostics.characters.writer===true')
                 close(); click('#settings'); page.locator('#quality').select_option('low')
                 page.locator('#camera-mode').select_option('adventure'); click('#close-panel')
                 report['renderer'] = ev('Realm.diagnostics.renderer')
@@ -117,7 +117,7 @@ def main():
                 check('software WebGL capture is labelled honestly', ev('Realm.diagnostics.mode') == 'webgl2' and 'SwiftShader' in report['renderer'])
                 workspace('journal'); click('[data-rpg="earth-invitation"]'); click('[data-rpg="earth-walk"][data-id="gate"]'); wait_near(0,23)
                 page.locator('#world').focus(); page.keyboard.press('e'); click('[data-rpg="earth-confirm"]')
-                page.wait_for_function('Realm.diagnostics.scene==="earth-hearthwater-approach"')
+                page.wait_for_function('()=>Realm.diagnostics.scene==="earth-hearthwater-approach"')
                 workspace('journal'); click('[data-rpg="tournament-open"]'); click('[data-rpg="tournament-walk"]'); wait_near(5,-27.6, 1.4)
                 # Native camera-relative walking, with read-only diagnostics.
                 start=time.monotonic(); held=()
@@ -165,6 +165,7 @@ def main():
             finally:
                 if context is not None: context.close(); context=None; report['contextClosed']=True
     except BaseException:
+        report['status']='failed'
         report['errors'].append(traceback.format_exc())
     finally:
         server.shutdown(); server.server_close(); thread.join(timeout=5); report['serverClosed']=not thread.is_alive()
