@@ -4,6 +4,18 @@
 const R=()=>G.RealmEarthTournament,D=()=>R().definition,TAB='earth-tournament';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const button=(text,action,attrs='')=>'<button data-rpg="tournament-'+action+'" '+attrs+'>'+esc(text)+'</button>';
+// Ordinary drawers are live-time interfaces. Only an active exhibition takes
+// a transient pause hold, so its hidden clock AND in-flight contacts stop.
+// Keep the user's intended pause after close separate from the temporary hold.
+const menus=new WeakMap();
+function heldMenu(sim){const m=menus.get(sim);if(!m)return null;
+ if(m.state!==sim.state||m.adventure!==sim.state.adventure){menus.delete(sim);return null;}return m;}
+function holdMenu(sim){if(heldMenu(sim))return true;if(!R().fighting(sim))return false;
+ menus.set(sim,{state:sim.state,adventure:sim.state.adventure,paused:sim.paused});sim.paused=true;return true;}
+function releaseMenu(sim){const m=heldMenu(sim);menus.delete(sim);if(!m)return false;sim.paused=m.paused;return true;}
+function togglePause(sim){const m=heldMenu(sim);if(m){m.paused=!m.paused;sim.paused=true;return{held:true,paused:m.paused};}
+ sim.paused=!sim.paused;return{held:false,paused:sim.paused};}
+function pauseAction(sim){const m=heldMenu(sim);return m?(m.paused?'Resume after closing menu':'Pause after closing menu'):(sim.paused?'Resume time':'Pause time');}
 function instruction(v){if(!v)return'Watch freely · amber ribbon marks the strike; the white pennant marks the reply.';
  if(v.complete)return'Finished · review and record with the steward before leaving or reloading.';
  if(v.withdrawn)return'Outside the ring · withdraw this attempt to enter again. Earlier medals remain.';
@@ -51,5 +63,5 @@ class TournamentUI{
   if(this.rpg.quest===TAB){for(const[sel,text]of Object.entries({'#tracked-chapter':'EARTH · THE NORTH COMMON','#tracked-title':D().name,'#tracked-detail':v?instruction(v):'Hearthwater north common · read the steward’s terms','#tracked-progress':v?v.score+'/6 · J to review':'Blade '+(this.record.best.blade??'—')+'/6 · bow '+(this.record.best.bow??'—')+'/6 · J to review'})){const e=doc.querySelector(sel);if(e)e.textContent=text;}}
  }
 }
-G.RealmEarthTournamentUI={TournamentUI,instruction};if(typeof module!=='undefined')module.exports=G.RealmEarthTournamentUI;
+G.RealmEarthTournamentUI={TournamentUI,instruction,holdMenu,releaseMenu,togglePause,pauseAction};if(typeof module!=='undefined')module.exports=G.RealmEarthTournamentUI;
 })(globalThis);

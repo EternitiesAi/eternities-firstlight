@@ -24,7 +24,7 @@ import traceback
 
 ROOT = Path(__file__).resolve().parents[1]
 MILESTONES = ('terms', 'interruption', 'gold', 'intentional_replay', 'cold_result',
-              'both_cameras', 'quiet_motion', 'preserved_owners')
+              'both_cameras', 'quiet_motion', 'preserved_owners', 'drawer_pause')
 INIT = """window.__ETERNITIES_TEST_MODE=true;
 window.__ETERNITIES_CAPTURE_MODE=true;
 window.__rainStartup=Object.fromEntries(Object.keys(localStorage).map(k=>[k,localStorage.getItem(k)]));"""
@@ -300,6 +300,28 @@ def main(argv=None):
             before_stamina = state()['adventure']['stamina']
             key('q')
             check('excluded special refuses without cost or point', state()['adventure']['stamina'] == before_stamina and live() == before)
+            page.locator('#settings').click()
+            check('native Settings drawer pauses the hidden exhibition', ev('Realm.diagnostics.adventure.paused') is True)
+            ev('for(let i=0;i<20;i++)Realm.test.tournamentContext().sim.tick(.05)')
+            check('accepted paused ticks cannot advance the Settings-hidden bout', live() == before)
+            page.keyboard.press('p')
+            check('native P in Settings selects a pause after close', page.locator('#drawer [data-action="pause"]').inner_text() == 'Resume after closing menu')
+            page.locator('#close-panel').click()
+            check('explicit paused return is respected', ev('Realm.diagnostics.adventure.paused') is True)
+            key('p')
+            check('native P with visible controls resumes', ev('Realm.diagnostics.adventure.paused') is False)
+            page.locator('#settings').click()
+            page.locator('#drawer [data-action="pause"]').click()
+            page.locator('#drawer [data-action="pause"]').click()
+            check('native resume choice keeps the drawer-hidden world held', ev('Realm.diagnostics.adventure.paused') is True)
+            check('pause control keeps keyboard focus after its text changes', page.locator('#drawer [data-action="pause"]').evaluate('e=>document.activeElement===e'))
+            ev('for(let i=0;i<20;i++)Realm.test.tournamentContext().sim.tick(.05)')
+            page.keyboard.press('j')
+            check('switching to Journal keeps the event paused', page.locator('#rpg-window').evaluate('e=>e.open') and ev('Realm.diagnostics.adventure.paused') is True)
+            ev('for(let i=0;i<20;i++)Realm.test.tournamentContext().sim.tick(.05)')
+            close()
+            check('closing the nested menu releases only temporary holds', ev('Realm.diagnostics.adventure.paused') is False and live() == before)
+            report['milestones']['drawer_pause'] = True
             for index in range(3):
                 until(f'Realm.diagnostics.earthTournament.index==={index}&&Realm.diagnostics.earthTournament.phase==="tell"')
                 if index == 0:
