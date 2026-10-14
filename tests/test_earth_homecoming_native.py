@@ -308,6 +308,7 @@ else:
              const old=read(p.proof.strongest.cohort_row.migration.source.path),expected=structuredClone(old),m=C.validate(old);assert.deepEqual(m.earthHomecoming,H.fresh());delete m.earthHomecoming;
              if(old.adventure.version===12){expected.adventure.version=13;if(!Object.hasOwn(old.adventure,'earthMasterwork'))expected.adventure.earthMasterwork={version:1,accepted:false,evidence:[],compared:false,participation:null,resolution:null,weapon:null,enabled:false};}
              if(expected.adventure.version===13){assert.ok(!Object.hasOwn(expected.adventure,'earthTournament'));expected.adventure.version=14;expected.adventure.earthTournament={version:1,issued:0,closed:0,best:{blade:null,bow:null},finished:{blade:0,bow:0}};}
+             if(expected.adventure.version===14){assert.ok(!Object.hasOwn(expected.adventure,'earthGate'));expected.adventure.version=15;expected.adventure.earthGate={version:1,accepted:false,evidence:[],plan:null,prepared:false,checkpoint:'camp',outcome:null,claimed:false};}
              if(!('earthWildSigns' in old))expected.earthWildSigns={version:1,accepted:false,evidence:[],observed:false,resolution:null,cleared:false,claimed:false};
              if(!Object.hasOwn(old,'briarMoments'))expected.briarMoments={version:1,revision:0,moments:[]};
              const ids=['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1'].sort(),l=expected.localLife;
