@@ -36,7 +36,7 @@ test('production road composition keeps every legacy piece except explicitly loc
  const RA=require('../src/earth-road-art.js'),defs=JSON.stringify([H.PATCHES,H.SOLIDS,H.POINTS]);
  const capture=()=>{const all=[],a={e:{},map:{},begin(){},commit(){},beam(){},bench(){},box(...v){this.add('box',...v);},add(kind,x,y,z,sx,sy,sz,c,opt={}){const p={kind,p:[x,y,z],s:[sx,sy,sz],c,...opt};all.push(p);(this.map[kind]||(this.map[kind]=[])).push(p);}};global.RealmEarthArt.make(a);return{all,a};};
  let baseline;try{global.RealmEarthRoadArt=undefined;baseline=capture();}finally{global.RealmEarthRoadArt=RA;}
- const old=baseline.all.filter(p=>!p.quarryShoulder);assert.equal(old.length,2550);assert.equal(crypto.createHash('sha256').update(JSON.stringify(old)).digest('hex'),'417afdc850951c93253b815e6ad8fd56594fac61dd610271ba34a816c9ae07fd');
+ const old=require('./earth_backdrop_legacy.cjs').legacyTreePlacement(baseline.all.filter(p=>!p.quarryShoulder));assert.equal(old.length,2550);assert.equal(crypto.createHash('sha256').update(JSON.stringify(old)).digest('hex'),'417afdc850951c93253b815e6ad8fd56594fac61dd610271ba34a816c9ae07fd');
  const current=capture(),cleared=current.a.earthRoadCleared,actual=Object.values(current.a.map).flat(),additions=actual.filter(p=>p.earthRoadPart);
  assert.ok(cleared.length<=20,'clearance stays a small local delta');for(const p of cleared){assert.equal(p.kind,'leaf');assert.ok(RA.distance(p.p[0],p.p[2])<1.3);assert.ok(!actual.includes(p));}
  const unchanged=current.all.filter(p=>!p.earthRoadPart);assert.deepEqual(unchanged,baseline.all,'legacy RNG, terrain and distant scenery do not drift');

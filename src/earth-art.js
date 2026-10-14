@@ -99,6 +99,28 @@ function shelter(a){
  a.box(-9.72,b+.14,-25.08,.76,.28,.9,0x757d6c,decor);a.add('round',-9.72,b+.44,-25.08,.43,.43,.43,0x8c6950,decor);a.add('disc',-9.72,b+.65,-25.08,.28,1,.28,0x454d40,decor);
  a.box(-14.68,b+1.84,-24.6,.12,.09,1.2,col.wood,decor);for(let i=0;i<3;i++)a.add('round',-14.6,b+1.52,-25.02+i*.36,.14,.29,.23,0xbbad85,decor);
 }
+function woodlandRoots(hills){
+ // Root sites come from the actual faceted round mesh, not an analytic sphere
+ // hovering over its triangles. Use the upper shoulder, outside the small caps.
+ const mesh=G.RealmEngine.geometry('round'),ring=new Map();
+ for(let i=0;i<mesh.length;i+=6)if(mesh[i+1]>.28&&mesh[i+1]<.31){const v=Array.from(mesh.slice(i,i+3));ring.set(v.map(n=>Math.round(n*1e6)).join(','),v);}
+ const candidates=[];
+ for(const hill of hills.filter(p=>p.primary))for(const v of ring.values()){
+  const p=[hill.x+v[0]*hill.sx,hill.y+v[1]*hill.sy,hill.z+v[2]*hill.sz];
+  if(p[1]<=G.RealmEngine.WATER_HEIGHT+.2)continue;
+  // A conservative enclosing box refuses a site potentially hidden by another
+  // mass. This also keeps roots out of the upper cap rather than inside it.
+  if(hills.some(other=>other!==hill&&Math.abs(p[0]-other.x)<=other.sx/2&&Math.abs(p[2]-other.z)<=other.sz/2&&other.y+other.sy/2>=p[1]-.02))continue;
+  candidates.push({p,hill:hill.index});
+ }
+ const roots=[];
+ for(let i=0;i<30;i++){
+  const local=candidates.filter(q=>q.hill===(i*7)%26),pool=local.length?local:candidates;
+  let site;for(let j=0;j<pool.length;j++){const q=pool[(i*5+j)%pool.length];if(roots.every(p=>Math.hypot(p[0]-q.p[0],p[2]-q.p[2])>3.6)){site=q;break;}}
+  if(site)roots.push([site.p[0],site.p[1]-.02,site.p[2]]);
+ }
+ return roots;
+}
 function terrain(a,rnd){
  for(let z=-52;z<29;z+=.5){let runs=legacyPatches.filter(p=>p.id!=='bridge'&&z+.5>p.z-p.d/2&&z<p.z+p.d/2).map(p=>[p.x-p.w/2,p.x+p.w/2]).sort((u,v)=>u[0]-v[0]),merged=[];
   for(const p of runs){const last=merged[merged.length-1];if(last&&p[0]<=last[1])last[1]=Math.max(last[1],p[1]);else merged.push(p.slice());}
@@ -141,10 +163,12 @@ function terrain(a,rnd){
  }
  for(let i=0;i<30;i++){const side=i%2?1:-1,x=side*(3.45+(i%3)*.12),z=-14.5-Math.floor(i/2)*.65;for(let j=0;j<3;j++){const xx=x+j*.10,y=1.36,ht=.54+(i%4)*.15;a.add('leaf',xx,y,z,.07,ht,.08,0x7e8d60,{...decor,wind:1,r:[0,j*2.3,0]});if(j===1)a.add('round',xx,y+ht*.86,z,.10,.22,.10,0xbab591,decor);}}
  // Distant wooded hills are scenery only.
- for(let i=0;i<26;i++){let a0=i/26*TAU,r=95+rnd()*22,x=Math.cos(a0)*r,z=-12+Math.sin(a0)*r*.8,b=1.0+rnd()*1.5;const sx=14+rnd()*8,sy=8+rnd()*10,sz=14+rnd()*8;a.add('round',x,-1.2,z,sx,sy,sz,i%3?0x60755d:0x75846b,{cameraSolid:false,cutaway:false,rough:1});if(i%2===0)a.add('round',x,-1.2+sy/2-1.1,z,7,4,7,0x647858,{cameraSolid:false,cutaway:false,rough:1});}
+ const hills=[];
+ for(let i=0;i<26;i++){let a0=i/26*TAU,r=95+rnd()*22,x=Math.cos(a0)*r,z=-12+Math.sin(a0)*r*.8,b=1.0+rnd()*1.5;const sx=14+rnd()*8,sy=8+rnd()*10,sz=14+rnd()*8;a.add('round',x,-1.2,z,sx,sy,sz,i%3?0x60755d:0x75846b,{cameraSolid:false,cutaway:false,rough:1});hills.push({x,y:-1.2,z,sx,sy,sz,primary:true,index:i});if(i%2===0){a.add('round',x,-1.2+sy/2-1.1,z,7,4,7,0x647858,{cameraSolid:false,cutaway:false,rough:1});hills.push({x,y:-1.2+sy/2-1.1,z,sx:7,sy:4,sz:7});}}
  // An authored tree line supplies scale below the hill masses; it does not
  // pretend the unqualified distance is a traversable forest.
- for(let i=0;i<30;i++){const side=i%2?1:-1,x=side*(27+(i%5)*2.1),z=-48+Math.floor(i/2)*5.2,base=-.3,s=.75+(i%4)*.16;a.add('cylinder',x,base,z,.28*s,3.1*s,.28*s,0x6d7155,{cameraSolid:false,rough:1});for(let j=0;j<3;j++)a.add('cone',x,base+(1.45+j*.86)*s,z,(3.3-j*.65)*s,2.3*s,(3.3-j*.65)*s,[0x57745a,0x617b5c,0x7b8c68][j],{cameraSolid:false,rough:1,wind:2,cutaway:true});}
+ const roots=woodlandRoots(hills);
+ for(let i=0;i<roots.length;i++){const [x,base,z]=roots[i],s=.75+(i%4)*.16;a.add('cylinder',x,base,z,.28*s,3.1*s,.28*s,0x6d7155,{cameraSolid:false,rough:1,earthBackdropTree:i+1,earthBackdropLayer:-1});for(let j=0;j<3;j++)a.add('cone',x,base+(1.45+j*.86)*s,z,(3.3-j*.65)*s,2.3*s,(3.3-j*.65)*s,[0x57745a,0x617b5c,0x7b8c68][j],{cameraSolid:false,rough:1,wind:2,cutaway:true,earthBackdropTree:i+1,earthBackdropLayer:j});}
 }
 function sign(a,x,z,textColor=col.gold){
  const b=h(x,z);a.box(x,b+.85,z,.18,1.7,.18,col.wood,decor);a.box(x,b+1.55,z,2.3,.75,.12,0x826c4b,decor);
