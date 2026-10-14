@@ -1,0 +1,46 @@
+{
+  "scope": "Complete current source plus 52 native commands; fresh per-allocation host admission; four Node file workers; original rules180/Python600 and unchanged native guards",
+  "command": [
+    "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+    "-B",
+    "tools/verify.py",
+    "--browser",
+    "--rule-workers",
+    "4",
+    "--output",
+    "D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/next-gate/REMOTE_BROWSER03_LOGS",
+    "--browser-output",
+    "D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/next-gate/REMOTE_BROWSER03_NATIVE",
+    "--browser-output-mode",
+    "supported",
+    "--browser-temp",
+    "D:/07-GAMES/Firstlight/cache/browser-temp",
+    "--cpu-temp",
+    "C:/Users/Dom/AppData/Local/Temp"
+  ],
+  "requestedRuleWorkers": 4,
+  "sourceHead": "04fd08ce768cb886abdffa788d8148c0a9068b3d",
+  "headAfter": "04fd08ce768cb886abdffa788d8148c0a9068b3d",
+  "statusAfter": [],
+  "startedUtc": "2026-10-14T02:33:20.0083190Z",
+  "closedUtc": "2026-10-14T02:42:34.7997885Z",
+  "exitCode": 1,
+  "freeHostKiBBefore": 7883360,
+  "freeHostKiBAfter": 4155300,
+  "admission": {
+    "path": "D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/BROWSER03_SOURCE_ADMISSION01.json",
+    "sha256": "b4f2bcefd72d36d31c32d066efe3d6dbcdd6d1f1920c2e2a6e21a212eca8d772"
+  },
+  "unitChildTemp": "C:/Users/Dom/AppData/Local/Temp",
+  "allOtherChildTemp": "D:/07-GAMES/Firstlight/cache/browser-temp",
+  "console": {
+    "sha256": "f5187024bab4cf95ca75a4a2119ef390470651df6680151771453379b0f268b4",
+    "bytes": 21192,
+    "path": "D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/REMOTE_BROWSER03_CONSOLE.log"
+  },
+  "rulesCommand": {
+    "sha256": "cdc4a266adc2c450acb4f113499e2939f25a920fe74925f4d003f797041f1db5",
+    "bytes": 23760,
+    "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\REMOTE_BROWSER03_LOGS\\rules-command.json"
+  }
+}

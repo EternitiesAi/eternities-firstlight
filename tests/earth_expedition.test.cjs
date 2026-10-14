@@ -91,8 +91,8 @@ if(A.VERSION>=12){
  }
  test('real Core migrates Adventure11 only and rejects missing/current/future/crossfield records',()=>{
   const raw=C.fresh(),legacy=copy(raw);legacy.adventure.version=11;delete legacy.adventure.earthBinding;delete legacy.earthExpedition;const migrated=C.validate(legacy);
-  assert.equal(migrated.adventure.version,12);assert.deepEqual(migrated.adventure.earthBinding,E.freshBinding());assert.deepEqual(migrated.earthExpedition,E.fresh());for(const key of Object.keys(legacy.adventure).filter(k=>k!=='version'))assert.deepEqual(migrated.adventure[key],legacy.adventure[key],key+' migration retained');
-  const absent=copy(raw);delete absent.adventure.earthBinding;assert.throws(()=>C.validate(absent));const future=copy(raw);future.adventure.version=13;assert.throws(()=>C.validate(future));const futureLedger=copy(raw);futureLedger.earthExpedition.version=2;assert.throws(()=>C.validate(futureLedger));
+  assert.equal(migrated.adventure.version,13);assert.deepEqual(migrated.adventure.earthBinding,E.freshBinding());assert.deepEqual(migrated.earthExpedition,E.fresh());for(const key of Object.keys(legacy.adventure).filter(k=>k!=='version'))assert.deepEqual(migrated.adventure[key],legacy.adventure[key],key+' migration retained');
+  const absent=copy(raw);delete absent.adventure.earthBinding;assert.throws(()=>C.validate(absent));const future=copy(raw);future.adventure.version=A.VERSION+1;assert.throws(()=>C.validate(future));const futureLedger=copy(raw);futureLedger.earthExpedition.version=2;assert.throws(()=>C.validate(futureLedger));
   const f=fixture(),binding=f.sim.snapshot();binding.adventure.earthBinding={version:1,weapon:'trail_blade',kind:'edge'};assert.throws(()=>C.validate(binding));const noKit=copy(raw);noKit.earthExpedition.story.accepted=true;assert.throws(()=>C.validate(noKit));
  });
  test('real integrated anchor support and objective-to-giver production paths',()=>{

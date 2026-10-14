@@ -32,6 +32,9 @@ class OptionalCatalogueOracle(unittest.TestCase):
 
     def test_exact_legacy_input_preserves_all_facts_and_adds_only_literal_fresh_defaults(self):
         source,old=self.historical();original=copy.deepcopy(old);expected=copy.deepcopy(old)
+        self.assertEqual(old['adventure']['version'],12)
+        expected['adventure']['version']=13
+        expected['adventure']['earthMasterwork']={'version':1,'accepted':False,'evidence':[],'compared':False,'participation':None,'resolution':None,'weapon':None,'enabled':False}
         expected['earthHomecoming']={'version':1,'accepted':False,'steps':[],'choice':None,'claimed':False}
         expected['earthWildSigns']={'version': 1, 'accepted': False, 'evidence': [], 'observed': False, 'resolution': None, 'cleared': False, 'claimed': False}
         expected['briarMoments']={'version': 1, 'revision': 0, 'moments': []}
@@ -82,6 +85,26 @@ class OptionalCatalogueOracle(unittest.TestCase):
             before=copy.deepcopy(old);before['earthHomecoming']=owner;original=copy.deepcopy(before)
             with self.assertRaisesRegex(ValueError,'must lack'):N.expected_optional_defaults(before)
             self.assertEqual(before,original)
+
+    def test_masterwork_migration_changes_only_version_and_missing_empty_record(self):
+        source,old=self.historical()
+        fresh={'version':1,'accepted':False,'evidence':[],'compared':False,'participation':None,'resolution':None,'weapon':None,'enabled':False}
+        for xp in (0,29,30,79,80,149,150,259,260,9999):
+            before=copy.deepcopy(old);before['adventure']['xp']=xp
+            original=copy.deepcopy(before);expected=N.expected_optional_defaults(before)
+            wanted=copy.deepcopy(before['adventure']);wanted.update(version=13,earthMasterwork=copy.deepcopy(fresh))
+            self.assertEqual(expected['adventure'],wanted);self.assertEqual(before,original)
+            for key,value in (('accepted',True),('evidence',['tool-sample']),('compared',True),('participation','coauthor'),('resolution','public'),('weapon','trail_blade'),('enabled',True)):
+                changed=copy.deepcopy(expected);changed['adventure']['earthMasterwork'][key]=value
+                self.assertNotEqual(expected,changed)
+        for record in (None,fresh,{**fresh,'accepted':True},{**fresh,'weapon':'trail_blade','enabled':True}):
+            before=copy.deepcopy(old);before['adventure']['earthMasterwork']=copy.deepcopy(record)
+            wanted=copy.deepcopy(before['adventure']);wanted['version']=13
+            self.assertEqual(N.expected_optional_defaults(before)['adventure'],wanted)
+        for version in (13,14,True,None):
+            before=copy.deepcopy(old);before['adventure']['version']=version
+            self.assertEqual(N.expected_optional_defaults(before)['adventure'],before['adventure'])
+        self.assertEqual(N.sha(source),N.HISTORICAL_INPUTS['blade'][1])
 
 
 if SOURCES is None:
@@ -261,6 +284,7 @@ else:
              const load=n=>require(path.join(p.root,'src',n+'.js'));load('engine');const C=load('core'),H=load('earth-homecoming'),A=load('adventure'),W=load('world-foundations'),UI=load('earth-homecoming-ui'),Art=load('earth-homecoming-art');load('earth-story');
              const read=f=>JSON.parse(fs.readFileSync(f));for(const[k,v]of Object.entries(p.proof)){const seed=read(v.seed),world=C.validate(seed);assert.deepEqual(world,seed);assert.ok(H.eligible(world));assert.deepEqual(world.earthHomecoming,H.fresh());const final=C.validate(read(v.checkpoints.FINAL_WORLD));assert.ok(H.ready(final)&&final.earthHomecoming.claimed);}
              const old=read(p.proof.strongest.cohort_row.migration.source.path),expected=structuredClone(old),m=C.validate(old);assert.deepEqual(m.earthHomecoming,H.fresh());delete m.earthHomecoming;
+             if(old.adventure.version===12){expected.adventure.version=13;if(!Object.hasOwn(old.adventure,'earthMasterwork'))expected.adventure.earthMasterwork={version:1,accepted:false,evidence:[],compared:false,participation:null,resolution:null,weapon:null,enabled:false};}
              if(!('earthWildSigns' in old))expected.earthWildSigns={version:1,accepted:false,evidence:[],observed:false,resolution:null,cleared:false,claimed:false};
              if(!Object.hasOwn(old,'briarMoments'))expected.briarMoments={version:1,revision:0,moments:[]};
              const ids=['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1'].sort(),l=expected.localLife;

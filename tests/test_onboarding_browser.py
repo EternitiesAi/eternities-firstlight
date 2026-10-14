@@ -225,6 +225,7 @@ class Preparation(unittest.TestCase):
         for name, mutate in (
             ('one prior XP', lambda w: w['adventure'].update(xp=1)),
             ('kit acquired', lambda w: w['adventure'].update(started=True)),
+            ('accepted masterwork', lambda w: w['adventure']['earthMasterwork'].update(accepted=True)),
             ('accepted later work', lambda w: w['earthHomecoming'].update(accepted=True))):
             prior = copy.deepcopy(world); mutate(prior)
             with self.subTest(name=name): self.assertFalse(self.m.fresh_start_terms(prior))
@@ -307,6 +308,9 @@ class Preparation(unittest.TestCase):
     def test_24_recorded_whole_resume_pair_matches_actual_production_core(self):
         before, after = self.resume_pair(historical=True)
         predicted = self.production_tick(before, .1, hydrated=False)
+        # Current-schema derivative of the old non-hydrated output only.
+        # The captured historical file and all original events stay unchanged.
+        after = self.literal_masterwork_output(after)
         self.assertEqual(predicted['journal'], after['journal'])
         self.assertEqual(predicted['nextEvent'], after['nextEvent'])
         self.assertEqual(self.m.living_signature(predicted), self.m.living_signature(after))
@@ -645,6 +649,16 @@ console.log(JSON.stringify({trace,after:incoming.snapshot(),armed,runtimeSources
             with self.subTest(name=name), self.assertRaises(AssertionError):
                 self.m.require_resume_sequence(self.m.resolve_root(), before, got['after'], got['trace'], 'character-1')
 
+    def literal_masterwork_output(self, world):
+        result = copy.deepcopy(world)
+        self.assertEqual(result['adventure']['version'], 12)
+        self.assertNotIn('earthMasterwork', result['adventure'])
+        result['adventure']['version'] = 13
+        result['adventure']['earthMasterwork'] = {'version': 1, 'accepted': False,
+            'evidence': [], 'compared': False, 'participation': None,
+            'resolution': None, 'weapon': None, 'enabled': False}
+        return result
+
     def current_resume_capture(self):
         fixture = json.loads((HERE / 'fixtures/onboarding-hydrated-resume-capture.json').read_text(encoding='utf8'))
         self.assertEqual(fixture['sourceReport']['sha256'], '3527cd630b8bfefe3a37ef541fc8033392dcc2c80742b7469aed05ae6d957402')
@@ -656,9 +670,14 @@ console.log(JSON.stringify({trace,after:incoming.snapshot(),armed,runtimeSources
         for world in (fixture['before'], fixture['after'], fixture['capture']['first'], fixture['capture']['final']):
             self.assertNotIn('briarMoments', world)
             world['briarMoments'] = {'version': 1, 'revision': 0, 'moments': []}
+        # Output-only Adventure13 derivative: exact literal empty commission.
+        # This is CPU migration evidence, never a new native observation.
+        fixture['after'] = self.literal_masterwork_output(fixture['after'])
+        for key in ('first', 'final'):
+            fixture['capture'][key] = self.literal_masterwork_output(fixture['capture'][key])
         return fixture['before'], fixture['after'], fixture['capture']
 
-    def test_45_actual_hydrated_remote_capture_matches_exact_initial_and_sequence(self):
+    def test_45_labelled_migration_derivative_of_hydrated_capture_matches_exact_sequence(self):
         before, after, capture = self.current_resume_capture()
         originals = copy.deepcopy((before, after, capture))
         initial = self.m.require_initial_resume(self.m.resolve_root(), before, capture['first'], capture, capture['owner'])
@@ -715,6 +734,44 @@ console.log(JSON.stringify({trace,after:incoming.snapshot(),armed,runtimeSources
             else: trace['ticks'][0]['dt'] += .0000001; trace['activeSeconds'] += .0000001
             with self.subTest(label=label), self.assertRaises(AssertionError):
                 self.m.require_initial_resume(self.m.resolve_root(), before, trace['first'], trace, capture['owner'])
+
+    def test_original_schema12_capture_cannot_be_presented_as_current_native_output(self):
+        fixture = json.loads((HERE / 'fixtures/onboarding-hydrated-resume-capture.json').read_text(encoding='utf8'))
+        original = copy.deepcopy(fixture)
+        trace = fixture['capture']
+        with self.assertRaises(AssertionError):
+            self.m.require_initial_resume(self.m.resolve_root(), fixture['before'], trace['first'], trace, trace['owner'])
+        self.assertEqual(fixture, original)
+
+    def test_masterwork_migration_allows_only_literal_empty_record_and_exact_old_owners(self):
+        before, after = self.resume_pair()
+        self.assertEqual(before['adventure']['version'], 12)
+        self.assertNotIn('earthMasterwork', before['adventure'])
+        expected = {'version': 1, 'accepted': False, 'evidence': [],
+            'compared': False, 'participation': None, 'resolution': None,
+            'weapon': None, 'enabled': False}
+        self.assertEqual(after['adventure']['earthMasterwork'], expected)
+        self.assertEqual(self.initial_resume(before, after)['earthMasterworkMigration'],
+                         'adventure12-to13-empty-masterwork1')
+        for defect in ('missing', 'accepted', 'enabled', 'unknown', 'old-version', 'xp'):
+            bad = copy.deepcopy(after)
+            if defect == 'missing': bad['adventure'].pop('earthMasterwork')
+            elif defect == 'old-version': bad['adventure']['version'] = 12
+            elif defect == 'xp': bad['adventure']['xp'] += 1
+            else: bad['adventure']['earthMasterwork'][defect] = True
+            with self.subTest(defect=defect), self.assertRaises(AssertionError):
+                self.initial_resume(before, bad)
+        current = copy.deepcopy(after)
+        next_world = self.production_tick(current, .1)
+        self.assertIsNone(self.initial_resume(current, next_world)['earthMasterworkMigration'])
+        present = copy.deepcopy(before)
+        present['adventure']['earthMasterwork'] = copy.deepcopy(expected)
+        present['adventure']['earthMasterwork']['accepted'] = True
+        loaded = self.production_tick(present, .1)
+        self.assertEqual(self.initial_resume(present, loaded)['earthMasterworkMigration'],
+                         'adventure12-to13-preserved-masterwork1')
+        bad = copy.deepcopy(loaded); bad['adventure']['earthMasterwork'] = expected
+        with self.assertRaises(AssertionError): self.initial_resume(present, bad)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

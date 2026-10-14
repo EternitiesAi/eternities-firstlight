@@ -26,7 +26,7 @@ import traceback
 sys.dont_write_bytecode = True
 LOCKED_ACTIONS = ('earth-homecoming-open', 'cosmos-campaign-open',
                   'atlantis-campaign-open', 'heaven-campaign-open', 'hell-campaign-open')
-MODULES = ('core.js', 'characters.js', 'app.js', 'rpg-ui.js', 'local-life-ui.js',
+MODULES = ('core.js', 'adventure.js', 'arsenal.js', 'earth-masterwork.js', 'earth-masterwork-ui.js', 'characters.js', 'app.js', 'rpg-ui.js', 'local-life-ui.js',
            'local-life.js', 'realm-trails-ui.js', 'world-foundations-ui.js',
            'earth-consignment-data.js', 'earth-consignment.js',
            'earth-consignment-motion.js', 'earth-consignment-art.js',
@@ -47,6 +47,7 @@ JOURNAL_OBSERVATION = """()=>{const c=document.querySelector('#rpg-content'),
 
 def fresh_start_terms(world):
     return (world['adventure']['started'] is False and world['adventure']['xp'] == 0 and
+            world['adventure']['earthMasterwork']['accepted'] is False and
             all(not r['accepted'] for r in world['realmTrails']['records'].values()) and
             all(not r['accepted'] for r in world['localLife']['records'].values()) and
             all(not world[k]['accepted'] for k in ('hellCampaign', 'heavenCampaign',
@@ -174,7 +175,7 @@ def require_initial_resume(root, before, after, capture, owner):
     """Exactly the captured loaded owner's first unpaused hydrated tick.
 
     Protect the entire journal, nextEvent and every living_signature owner.
-    The exact legacy catalogue and missing WildSigns literal migrations below
+    The exact legacy catalogue and explicit literal owner migrations below
     remain the only owner allowances. The installed Core uses hydrated:true;
     no cue-initialization event or hidden preliminary tick is permitted. The
     actual finite dt/paused/elapsed prefix and complete first snapshot are
@@ -199,6 +200,20 @@ def require_initial_resume(root, before, after, capture, owner):
     predicted = json.loads(result.stdout)
     assert predicted['journal'] == old and predicted['nextEvent'] == before['nextEvent'], 'Actual hydrated Core produced another event; this narrow resume contract does not cover it.'
     expected = living_signature(before)
+    # Adventure12→13 adds only the declared empty commission, preserving a
+    # present record exactly. This is a literal independent migration oracle;
+    # no source builder, changed XP, entitlement or generic field exclusion.
+    masterwork_migration = None
+    old_adventure = expected.get('adventure')
+    if isinstance(old_adventure, dict) and old_adventure.get('version') == 12:
+        old_adventure['version'] = 13
+        if 'earthMasterwork' not in old_adventure:
+            old_adventure['earthMasterwork'] = {'version': 1, 'accepted': False,
+                'evidence': [], 'compared': False, 'participation': None,
+                'resolution': None, 'weapon': None, 'enabled': False}
+            masterwork_migration = 'adventure12-to13-empty-masterwork1'
+        else:
+            masterwork_migration = 'adventure12-to13-preserved-masterwork1'
     wild_signs_migration = None
     if 'earthWildSigns' not in before:
         expected['earthWildSigns'] = {'version': 1, 'accepted': False, 'evidence': [],
@@ -230,6 +245,7 @@ def require_initial_resume(root, before, after, capture, owner):
              'nextEventBefore': before['nextEvent'], 'nextEventAfter': predicted['nextEvent'],
              'coreSha256': sha(root / 'src/core.js'), 'additionalFutureEventsAllowed': False,
              'localLifeCatalogueMigration': catalogue_migration,
+             'earthMasterworkMigration': masterwork_migration,
              'earthWildSignsMigration': wild_signs_migration,
              'briarMomentsMigration': ('missing-to-fresh-briar-moments-v1'
                                        if 'briarMoments' not in before else None)}

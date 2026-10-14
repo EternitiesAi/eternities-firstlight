@@ -8,7 +8,7 @@ const {createHarness,earnedKit}=require('./realm_trails_journey.cjs');
 const ROOT=path.resolve(__dirname,'..'),copy=o=>JSON.parse(JSON.stringify(o)),dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 const hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 function journey({bow=false,veteran=false,output=null}={}){
- assert.equal(A.VERSION,12,'requires real Adventure12/Core/roster integration; no validator substitution');
+ assert.equal(A.VERSION,13,'requires real Adventure13/Core/roster integration; no validator substitution');
  const variant=veteran?'veteran':bow?'fresh-bow':'fresh-blade',source=veteran?path.join(ROOT,'docs/evidence/world-production-2026-10-03/captures/returning-fit-final-01/FINAL_WORLD.json'):null;
  const h=createHarness(source?JSON.parse(fs.readFileSync(source,'utf8')):undefined),events=[],combats=[],claims=[],fieldcraftStages=[],carrierStages=[],ownerTransitions=[];
  const sources=['earth-expedition.js','earth-fieldcraft.js','earth-patrol-carrier.js','core.js','adventure.js','combat.js','arsenal.js','world-foundations.js','elderweald-world.js'];

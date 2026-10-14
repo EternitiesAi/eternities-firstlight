@@ -1,0 +1,445 @@
+{
+  "source_sha256": {
+    "build.py": "b0133e08497bbc08305a2beb94978a8f0acf9b57011c9d045e061e3fd3b4920d",
+    "src/adventure-art.js": "ce70b592d84727b7133dcd8aa1eac2aa8edc10b79895e8fc835f922e17f22536",
+    "src/adventure-ui.js": "a7f402d0b09c88785ceba270bc13056777dd46f74b4d0734298837565de26e9f",
+    "src/adventure.js": "00b15ca258b3cc8e13023bfded49a6d06f022fc2a398ccb40273b3d3248853bd",
+    "src/app.js": "79fb1e6f4f78ccf5fdb171fe3ee7d2abd580ad741cda34cbfad50118b39970ad",
+    "src/arsenal-art.js": "c74c8e40e7cb4e2b0e8cd8751228050416b2ce8af293569790cae38c1839b980",
+    "src/arsenal-ui.js": "f40c582b62782fb05e2102f5d8b2d001a088aea76c71d1846363b62796b2727b",
+    "src/arsenal.js": "9b46d4f11649656607ec0064c54e6fbe9703951332cb6f93b13304a5b1148a7c",
+    "src/atlantis-campaign-art.js": "9ab549df2eeafc8314c95c7c9e488bf80472fcfaac1de7dfe41ebbf8c1830243",
+    "src/atlantis-campaign-data.js": "22496def70bda1c6a6aa15c24cf53bad7bacab4facc54da7856ac693e7384693",
+    "src/atlantis-campaign-ui.js": "3bcf9923c47710bf2d3d876629ed47e46d4b7e4289aa8f7510b9ccac2025cb5d",
+    "src/atlantis-campaign.css": "11d0f42b969895ba4ac0f561067c260b9a3d632b3b7f15a34d617eff8a4b6523",
+    "src/atlantis-campaign.js": "da23cf19fe0fd68ae3f03c040fb3c375b655570bccffd320794cd45bd19067d3",
+    "src/beacon-art.js": "aea9e5d22d23eaf73777636c56c2444edac9b0d6239f9504cc95026585618577",
+    "src/beacon.js": "2aded7272a8d50cbfbdb4421f0140d00401a49788a3bb465260e30f501a2bf13",
+    "src/briar-moments.js": "987fbaa10fe6467c2b065f3234d04280c803dd3b69bb646eb00de244278662d5",
+    "src/briar-outing.js": "722076ab20a18d16bc940ab02b438b7111cd3b0436fb5a3a254027b62b4ec90c",
+    "src/bridge-art.js": "e8f85dd21a0eb6363f674a934c625b22fc29f18fc63a543ebd61ea0a87fa254d",
+    "src/bridge-community-art.js": "202fba58c63a88cffe7ae792325bbdf6bd62d4c070dfd16636beb1a5c11de1c5",
+    "src/bridge-community-ui.js": "cdc8f8552466f00706e4865f30777b7abb6d6ad704365ef0a4367b0998787333",
+    "src/bridge-community.css": "15be66090d836555498d87e00564c5b7b7094c2e3dca5951f9b1fde5023ea29c",
+    "src/bridge-community.js": "4308eecafc47044c3c063b46e4c3aa7cb4e7a30d5d938c64fd518e7f29cb30cc",
+    "src/bridge-moment-view.js": "fe58c7824f96458f2608af4d1cf76c81d2936da89a8cca1ad933974b65e0e03c",
+    "src/characters-ui.js": "58de0cb602479d45eae66f4ccd4077253e34e6e3d843a1505f9eca4d4a1f8f77",
+    "src/characters.css": "48bfb2431b5fb50e530ed334e52cf07c31b8a29bdb5bb4917365210ab9e71815",
+    "src/characters.js": "0881d9d4ab1fc6238eca9ffbc42a5ac416799e177674ff539ef1e1d89f585840",
+    "src/classes-ui.js": "6fb25a35158cf3388485f57016aea745260dea8a057f8d6b4781d3f7a296d22b",
+    "src/classes.css": "4b9b47443b1817efe2b4cd43e7a3d0d34e623738a5b1e6e1cad05bc2ce88e892",
+    "src/classes.js": "15da8e8f26c234a5903e5321d9cbcadea773037c9536911a5dc85cb9da2aaa97",
+    "src/coastward-settlement-art.js": "8f08b152b5205c434ffa7408118e754799eb7ab396b2c0aaec8920cc0029c839",
+    "src/coastward-woodland-art.js": "45b2758d3f8d75457545b24c2cc96f81f70ac8296bf183f57ddd412289f130fc",
+    "src/combat-view.js": "9e674247119cece3bb6a35ca31fa424ed5e8e0187cbd2c149afb6f4aba085d5c",
+    "src/combat.js": "4176bbf57fd761732b5f9d96708ac8ac0d6855ef56c928d06810f06f74315a32",
+    "src/companion-art.js": "53a14620dc045b28d665b328287631d52f96f114a3b8d5e693f276800114c35d",
+    "src/core.js": "db0e1c647c479a32481cc0525b9c7d8d47e013a05eca669345aba63e5ac21118",
+    "src/cosmos-art.js": "d68fb28540196c4d6f39ca60cc99e1eb99fab534fb026578c02e75119cdd17e2",
+    "src/cosmos-campaign-art.js": "3b22a5fe117cb3731a1531a66941fba9e2953b5c23f3816150c184230a631a5e",
+    "src/cosmos-campaign-data.js": "9c7d4d30b863e25812df3651e785bff3f87495b37ede488804ee03178cab93d2",
+    "src/cosmos-campaign-ui.js": "95f8bbb9df5f97ddcb779268e5c28f412914d388c92bff00f5e79ec048e77686",
+    "src/cosmos-campaign.css": "436b9330b2bb190d022698894c76bd6e3b321d014d6e64bc553449c4dcd33ff7",
+    "src/cosmos-campaign.js": "7e03aaad5efe9db475ea82db6e8b9343361a68dec52132cf190e3c055fc681fb",
+    "src/cosmos-ui.js": "2582b2f2f4d894f44a969108af258087cf7f0be8c70dbf73eabca5810d236465",
+    "src/cosmos.css": "4d79807974082aaef0df364d312ae3d4a345ffd40b5eab403ccc55c24f02a63b",
+    "src/cosmos.js": "bf4d9898600b9b5d296f3de934f6f8dd52e343f3b762fd5f0085a09f14ea2090",
+    "src/creative.js": "d0032234d3cab1a6e90c84736011a98631bcc3748de8d5fc23df872367038761",
+    "src/crossing-art.js": "86cd8945194c6437d9ece96a7d0bcac8a4970eb5f3324300e48d08376bb61bcf",
+    "src/crossing-ui.js": "5a2a7f6989a0a7ff0a96fee7aa88ec77dadbfba15440a272f131f17a98d86913",
+    "src/crossing.css": "af6dd51f197dfa1963fc9fa0d92683b2e6f48270903aaea5ba90cbb2833862a2",
+    "src/crossing.js": "b666c4e6e20483ad267293578020876c8791bbbf23f8116803936658400d1a8f",
+    "src/drover-art.js": "0f4dda1af6b05e1c7e0931d835fca2d3faec7960788bc89b9f9b591af19206b0",
+    "src/earth-art.js": "fdcba31d0ae3b43a24a6994a8bd8e07e31c9e731e198285bf83a41138204a8c9",
+    "src/earth-consignment-art.js": "2c7762c9b4e33e689af4a1a21f3aa7a969956214c2bde7d959e28a60dc40270d",
+    "src/earth-consignment-data.js": "1c6d73d27cd2d2b702be79deca21df40e50a1f58090d175a0e5aff8d709f0249",
+    "src/earth-consignment-motion.js": "822e966961dd9889466d06a668abc5bde4e635a5496a019ef042ae6e141557a3",
+    "src/earth-consignment-ui.js": "57501e2e84a483fc69ae40eaf65088b7804b14fa4bcf6dddc48b397d4740fc0a",
+    "src/earth-consignment.js": "1af351fcaa324fa7c2da23fd9e1f4e87ed23a48d6cf5318f3e8cbf9b7aad7292",
+    "src/earth-expedition-art.js": "1a5da68241d9634319ebf859abf890e1aa32000ed69895c16192697225678e42",
+    "src/earth-expedition-beast-art.js": "bf663c1cf48ef65a1c43e42bec63e743686506f3c028b7e72e4f4eac2ef7c0e4",
+    "src/earth-expedition-dialogue.js": "1ba8a7bd0b32d56efa583b5cf1f0d4d1bf24df58e07811d08853e13a56c835ac",
+    "src/earth-expedition-ui.js": "5f8b2a2911527eb3d1125c8f252a2d08c9e4087aa02a8288649b2177f2509c0d",
+    "src/earth-expedition.css": "ad650598df3749417d4953965e72d9a2a802f1bb46c549819305a19a5b95247b",
+    "src/earth-expedition.js": "8d0a066679b49f2ac331ece1175d332dc96a10741909ccfd237f2b2e50b4ecd6",
+    "src/earth-fieldcraft-art.js": "4b7306af76245fe9d7fa55f5e9287565e0dd24048e7364289d49d7553096e55d",
+    "src/earth-fieldcraft-ui.js": "313708ddf1546e974096ddcc5a0bc41070816b1fd6803dd662770d812a8bb0b5",
+    "src/earth-fieldcraft.js": "60dd296ee395f027890cfc6ecb40939b1ee384ce7e7af2f82bf1f926b644c283",
+    "src/earth-grazer-art.js": "df809bdcd8554fdd59bdb51b990046f40680807f72aa9d26aa634d42d31777ec",
+    "src/earth-grazer-habitat-art.js": "3b7e54ba65c024108edb4d4533f80c61ff019c8b9429f7273512926b37b792a8",
+    "src/earth-grazer-motion.js": "0845a58a5d7fd6a98b10f1d5b967832545ccab3d1da37a19c768c3e094d72589",
+    "src/earth-grazer-visibility.js": "276157ce0c7e2d1e0d90e485b3c039d040a9aae379f43e72a9608c00454844da",
+    "src/earth-homecoming-art.js": "2353946d8bb28a2881f3191807fc248f95fea75f16bc585f6588d82742b750ed",
+    "src/earth-homecoming-data.js": "55485996a1651f8b5f0580c9e074f5873ddf45ca26744939238e31516051014f",
+    "src/earth-homecoming-ui.js": "5e57a2367153e516bdab12837db82812de3124a32489b09987dd285be011159d",
+    "src/earth-homecoming.css": "dbfeb49d20278ebeb9b9ae4c1d4d575acc3a806ca59898f20ebb9f8ca8f1661a",
+    "src/earth-homecoming.js": "c16adf4e13bd3a57e9be6aae6cd0cc00a4b78b49106f220ee74dee105fe858c1",
+    "src/earth-masterwork-art.js": "3b908fabe70abc06b9f56db8d2e0bacec45860cff3b7c303b657d78b7d3ae041",
+    "src/earth-masterwork-ui.js": "7b5c9321d330837881dec211b6f31b12ef26c07ba312b7e4103ec4bdc46cd2ff",
+    "src/earth-masterwork.css": "d0e8d16c4267b2134e8c9ee004e32ebbdac70b1b72dd3b4158d516e889ac9d94",
+    "src/earth-masterwork.js": "1800d7826baf46cf78b74e6d5aa44b012392dc74a165988fd5d8d704e59ef43a",
+    "src/earth-notes-art.js": "87fe4682829bfff89978d7046d62f518874a7953808431c5634327c9eb449556",
+    "src/earth-notes-ui.js": "9e0f0df26062b4929e0c3a801e8e857afc269936dbe4932279e935c56274f264",
+    "src/earth-notes.js": "4ab5807020f65086b190591414c871ee76412791ac0c97dca5447c595840e9e0",
+    "src/earth-patrol-carrier-art.js": "1bde299a979e9cb1d8ed96883c9a4f926a3f5d85ff664ce6887099bbc0cc0ca2",
+    "src/earth-patrol-carrier-ui.js": "491aa14c529d2194d6dfb06ab9440d98001bc3a89d86a90d2e9ad82f8abdf233",
+    "src/earth-patrol-carrier.js": "e8f4f33b97f46ddd1abf1b3c757cef8ba63e8f8a4617717b644d4af8478e5645",
+    "src/earth-road-account.js": "c35d9e1f4a12525598514db10b177c323e9ed0cbdac35119bc86c499102ff51c",
+    "src/earth-road-art.js": "e7bd1fbc7b1177327c0756724b1ccf78b1b640568d9121a1ff416736524b1520",
+    "src/earth-road-ui.js": "e4577d03d3b97d271b8374054d34b5afdecbb47b28e74b911b931c2ed8e3c8ad",
+    "src/earth-road.js": "7417a1bdc4ab9eea8e2afc4c013a6890507b5670fca97d1f6ebe9f823390a125",
+    "src/earth-roadkeeper-art.js": "ea1fba39cd658a65487b88a05f1d51c2a45a1724ac6cad31ac9e57657e8eff2c",
+    "src/earth-roadkeeper-motion.js": "40ed91f8435eb4f99237d491db925043fc81fa347a35b5c2e5a682cd017936f3",
+    "src/earth-shoulder-art.js": "422a50a7aeec456b6f75095c53a319d2cbf6ac5e09f773e268ed54034c2ddb8d",
+    "src/earth-story-ui.js": "930b71ef9184a5d7b03cc79ff33d7f9e000eabb9d3934266af9e0fe8713448cb",
+    "src/earth-story.js": "fd0ced6f17f1b15b2aee4e31aa00be249bc8e1fb08c4e735416d95c173fd52d0",
+    "src/earth-ui.js": "9294c4cb9666aa6aec2d36d6eb8e34686bf01f57ead9964322ad8283cc2ba635",
+    "src/earth-wild-signs-art.js": "7f800b7a9307f4be3104f755b673b393fb1c653c78afa81b3677af21e6c80a71",
+    "src/earth-wild-signs-data.js": "c0096aa9e421eae3deb60ed0ff312df5e224413748e4d2d596018b0b6abba5d3",
+    "src/earth-wild-signs-ui.js": "c9de9541ef1a0e49fb67aba42418c0113e1fe08030f6907cf1b563a045e98365",
+    "src/earth-wild-signs.css": "c8f5b8451d066d30b0431fb64e2930b9b78163cd8591941db56ef85efe438f38",
+    "src/earth-wild-signs.js": "cc572066f098db73f9f574e424916673b8aed806c944c67c8407932fe03003e0",
+    "src/earth.css": "1f40093ded67c175c70c730b8518ff928d26db40287515256fc287c45f2a9f3d",
+    "src/earth.js": "cbd5ee90a4b335c66ba096f439f8f3efe6f6f68cba99086485f34fd81866a166",
+    "src/elderweald-trail-art.js": "e978e735ec1ee8048df1777b190959b832cd37755f682c3d51b9ec3f0a7f0491",
+    "src/elderweald-world.js": "576649e890df9cc0ffb5d755565f8911024080cbe09b18a1eea1fefbfddf8d22",
+    "src/engine.js": "a05dfb26cf6c9151f4968f8f4172bc1d201a59f64c452ff0dd5203baa910857f",
+    "src/experience.js": "3b5a178ca757c7b58dcbfcedcc1522887dc6a178faf5e942c6e3894166d60570",
+    "src/gathering-adapter.js": "df41b2b23ae11c6ef2661e48301c488cb26ab753a7beec73349b5c959d5ab564",
+    "src/gathering-art.js": "b693bce2a519bd75e4f99e03b96184f1ed10c9a9a02e25b7affd53e739f5e0eb",
+    "src/gathering-music.js": "5e44106322e01aebc7b87d8eefcd29b2a2577d2162d70fb8f99475c7cc7deb12",
+    "src/gathering-ui.js": "0c347e1da4a897b178c405f35cfef2e6ea518fe5d9e6ba650e48e48895e0445a",
+    "src/gathering.css": "aa2e5381a0ff9fa7e4ceae5053a54a8ab11a784f81ee021e4835d485d3c5f4db",
+    "src/gathering.js": "256a33c52f2b31c2c421f72a74aae543feb6c554ebae863aee55d31f0c68eb54",
+    "src/grounded-footfalls.js": "c85980e73234578c6eb02c07f5f817dc6972d1be15d0bbfe4a3372b02224370f",
+    "src/heaven-campaign-art.js": "25ed9017108ea106579584233cc55b2a1753d62bd36174bb9c023682cb2ad24a",
+    "src/heaven-campaign-data.js": "2495650ded3f74d81d3d53f4d259f29052d3ff64b65a4a6331351b049bdc67eb",
+    "src/heaven-campaign-ui.js": "67723b2f0acf3e52da6177ad98d8a881e3b3e509bfc418bd3031ffbdc9f0383e",
+    "src/heaven-campaign.css": "7cf25161526677ee407ff09596cf8e2ecfeb92246c66c0b7255440b54d041bf0",
+    "src/heaven-campaign.js": "50aa6ff6607f9dfda6f0df1ca2fa473bca36a7513a34d1a915c1a87305e69e26",
+    "src/hell-campaign-art.js": "5ea5b875e32114b07b52ffe0000b7163b340f08adf0eae01552b84a478420f18",
+    "src/hell-campaign-data.js": "745221292e89ed2bcdf455ffc1bf4e0e66259add5671709e77135d5ede3892ff",
+    "src/hell-campaign-ui.js": "d47acd0b9ba992df6ff4c73e1b5f3dfb9c1b2ced0745c8ffe50d6cd34cc80f8c",
+    "src/hell-campaign.css": "146c66cd811e3070367e10a91c30f39cfc630dba1ee929a3b6a540f96142f0d9",
+    "src/hell-campaign.js": "cc8ca64f9515e75f4bf572c3feb5978f07409e4aca5a328901b3322f399f67a1",
+    "src/home-history-art.js": "df3acc85a5191c3938692759e85b7ee76ef5f936f29e65d6a845636600396a1f",
+    "src/home-history-ui.js": "41a330942368c7a4500759f2cbaf1cda224bd5ed25bc284b9e44463fc1f43a8e",
+    "src/home-history.css": "54ef3c501dfda4c3d74c0f17d900bdc5b25c9dcbaeb1840ec36cbcfe0a276bd2",
+    "src/home-history.js": "f002eb64b57343e38e95eafa4cd522c892aab26efc7b0c3d65bea86a45cec6e6",
+    "src/local-life-art.js": "5d8d072e20316e0bce84530f3df1ca5c03c360a9b51aca06cc36aba12bfc73b6",
+    "src/local-life-ui.js": "90e1e229f5be8d40c599473df5d6802c1a23a170c9b804a6756efe7703938c2e",
+    "src/local-life.js": "366b1b5693987564de6962a430f2cf7070d81348ad01120d154bccb202a39ac3",
+    "src/mill-gate-art.js": "fe33cbbd3f180a8d32a0d0a338cde42c40e809af99ed2da1db157ba5c7fbcdd9",
+    "src/millwright-art.js": "bd7397ee2a9f4c47b2b51117e28f3c68533da41de3122bb0a39a5575913a5661",
+    "src/pier-fishing-art.js": "cb3be303e85e4991613058bc24d7eb3a78d33a3fcb09d39ccb62507774e70e46",
+    "src/pier-fishing-ui.js": "9d946421c2cbdf66cc770906633c41d69d96a21048852242147679ec07d9057b",
+    "src/pier-fishing.css": "4fd4c003f3ba802aca101a9fd6e7d55a09e6d9cac1e98b0c463fabce990efdc8",
+    "src/pier-fishing.js": "ace7e8101629d5c3ca8936045f48c57a87a06a15556e7308df863e3ab89ec85b",
+    "src/pursuit-ui.js": "51156864d5b9adedab1208548c1fd39f1649b6ca9ed0f68b02eae8984dac2e61",
+    "src/pursuit.css": "61f36fa917eafba8cfa332f7d233db4c47a6d007bbf84d1843bc25fc17dd63ff",
+    "src/pursuit.js": "b77e1874f8278971f41d4b62551df40c81126f2a35e02958958e802ab9c8b5ff",
+    "src/quarry-art.js": "5bc6d93e99e430e7a460a1a2a510fc69e60c9dd80e758bce7470dae3ae3446f6",
+    "src/realm-art-data.js": "1ac6251a7acf23c78799d96b5554fb3fe572c40e12c54c73f0188c4f8a324435",
+    "src/realm-atlas-ui.js": "26d34bdc7afc9fbf9bb1f0f483aa6bc8312eba8a2186d21c80cab2fc1f68529b",
+    "src/realm-atlas.css": "7ef7a03b8c2a69069c2d65da8d5134c7b7dc4bc2b941e139f818a7ab7011c366",
+    "src/realm-craft.js": "956ee178dc78dc8a297988bda4c9328469a313d3a45f2a539458b2ba5604c8ed",
+    "src/realm-givers-art.js": "8362d7a98f238b77b9afa5eff7346f430c02af6cd249502f146308a3d246fb34",
+    "src/realm-trails-art.js": "99a588e7aee9c7d43b6506de836ab2bab75a9420c6b718369c37e4517ca037e3",
+    "src/realm-trails-cosmos.js": "27854d112e25da3cfaab3ebd851d7f237591f5ef7a04b4592f8ac4fdba9ac6fb",
+    "src/realm-trails-north.js": "a76c2da9850abb0a5a1c1fcd9b33c49fdbcf280cbabd089bcad5f2ca954940b9",
+    "src/realm-trails-south.js": "dc0d5b41bad86d8c52cbc2a0073688b0254fd15c6d4caaa51c6ddcf963ad8dfa",
+    "src/realm-trails-ui.js": "476e29ae44b666b6982f60ca2c8e7b9357b9b625b6b52eb06a1defedb2303def",
+    "src/realm-trails.js": "e5903d90b83dcce6d30f15f3c82644aab745aff1c2a058f2aad3214ce14934b4",
+    "src/resident-art.js": "d2fd8b6017ad3f338d4247200a7a5dbae36da387b4b62280bd77bda7e4d16d33",
+    "src/road-art.js": "0cc12918587f98f4b9ed2b7beb8d1b21219b4a69959742a759f88354942df05d",
+    "src/road.js": "d18106f1a2147d623680b285dc5882cae8d2b74c5ef8b500d75de35d20c86dbc",
+    "src/rpg-ui.js": "fc60181e07747c034e1a3a085ba08e5b8dd980b8f5c9b0dd644d3515959798d9",
+    "src/rpg.css": "34ca5591b22748dbf96754fc0f6a857cbd73f77eb85e50b706e1b484291b11ae",
+    "src/sandbox-art.js": "3c3a8f9ea1a44fb84bdfe07a99b33969f253714c271e91ca3cfeca7eab76474c",
+    "src/sandbox-ui.js": "28d7530e8153ed3c8a6a31b3e204cbc9680484b013cb5880a4f05b76cf83d8f5",
+    "src/sandbox.js": "ad11196c12363b650f2697ab8fb30eb657ff0bf65953274942ce36eb28131e85",
+    "src/shell.html": "38d818cdfdbada309c2e4217fb53b9a3247b2d5ddf5ee6683f9c74d969c2cde9",
+    "src/skitter-art.js": "bd84a78381cf7232a7fb92a868332308c68fcae17d25764c2b5d4bdfefa29903",
+    "src/soundscape.js": "15b7b578886b838ef20e56501940354d33a8ffcd5581332dd4c4b2035692c5af",
+    "src/starter-art.js": "cfc4f672b891fe6d53dec82a97aeac7204b8179b3490ae9df9ce3412c4661fcc",
+    "src/starter-ui.js": "44718b2835207383632d5f33e0748dba9c348041b11f9b404040bdf07a259052",
+    "src/starter.css": "f1501b06a13c2b3ec0030b39bf9d4530740aad2f60cf9608ca32957c9ce2943b",
+    "src/starter.js": "c6debd10295babafdcd714445c2ac18c0ff5ce8fd54b8dfe4f3ff78c9e0a294d",
+    "src/style.css": "de294de870d7554ccd1d8fa0725dd7a954e8a3f3e75bd9cff86530e94a4e4eee",
+    "src/surface-assets.js": "5cb0f81348074edbc0e4f3c7dee4962fac10bbc5e7db0ee07b16216f3b7a1e5f",
+    "src/traveler-art.js": "21b90ce5da89660f4bedf0eac08ccb9eaf7183a037d1a91d5a151d3e7c2237c4",
+    "src/traveler-equipment-art.js": "13537e49de6fdcd670e75875c3b17736b76df53b65709d2b2366aab721dc98dc",
+    "src/woodland-shapes.js": "7f2fba3a9c1f7e01b5ad2bfa6cf1788e47282d40324c6312bc4718f514a97e01",
+    "src/workshop-transactions.js": "115193dc80841b531a14f85a41c8d2d5e44c6169fc4ea4d6c19637eb7a8e8dd4",
+    "src/world-atlantis-earth.js": "a21ac70e5e1b669363a1bdc086d7e2a26ac6969e9384ef35259d30b27999ce4f",
+    "src/world-foundations-art.js": "f38b8b5aacaff894a52e18b3ff1006a17105abb6ada0f9a68bdd8c29af05b56f",
+    "src/world-foundations-ui.js": "a83ecccb689a9556483c3d489bae8f60b26e0521bbb5fc2934f02a7401df2db1",
+    "src/world-foundations.css": "8abcf23f66cde69a92b7f3be6c099a1a2e2088d220bd83a81ea71d78f0564669",
+    "src/world-foundations.js": "6ec902e94da54024cc5a8c198d4b8effc7e55d493fae818fdf27358e9e443d61",
+    "src/world-ground-coalescing.js": "c31024794d5b5db2c28d9aab9ecf8fd0acdf55c2630ff5edf93b988151e5d63d",
+    "src/world-heaven-hell.js": "ce3da0fce6f82abebe9ead604ba3b60dbeffde5b1cc619a25b066e77bc67687f",
+    "src/world.js": "dc5e9877a66075595d72c4dc9b9b683715dead45d762cf1b1ca5effdb1774e29",
+    "tools/masterwork_browser.py": "a311393c276b9b2601abefc26d1ba3edf02542bcdac5887b4e2f2b9e18c25f14"
+  },
+  "save_versions": {
+    "world": 9,
+    "adventure": 13,
+    "masterwork": 1
+  },
+  "method": "ET06 native UI journey on isolated loopback storage.\n\nProduction moveTo and accepted .05s ticks accelerate travel/setup. No pose,\ninventory, health, quest or damage injection. Quest choices and skill/camera\nselection use native controls. Optional short canvas footage uses ordinary RAF\nonly. This is software-WebGL evidence, not human pacing or RTX qualification.\n",
+  "variant": "bow-public",
+  "checks": [
+    {
+      "name": "served exact current HTML",
+      "passed": true
+    },
+    {
+      "name": "fresh character has no accepted masterwork or kit",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 11,9",
+      "passed": true
+    },
+    {
+      "name": "native E earns Oren kit",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk -7.9,-13",
+      "passed": true
+    },
+    {
+      "name": "gather actual timber-1",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk -13.9,-11",
+      "passed": true
+    },
+    {
+      "name": "gather actual timber-2",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 5.1,10",
+      "passed": true
+    },
+    {
+      "name": "gather actual fibre-1",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk -4.9,-10",
+      "passed": true
+    },
+    {
+      "name": "gather actual fibre-2",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 5.1,13",
+      "passed": true
+    },
+    {
+      "name": "gather actual stone-1",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 11,9",
+      "passed": true
+    },
+    {
+      "name": "craft owned bow from gathered materials",
+      "passed": true
+    },
+    {
+      "name": "explicitly equip crafted bow",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 14.5,10.5",
+      "passed": true
+    },
+    {
+      "name": "offer explains physical route and optional reward before acceptance",
+      "passed": true
+    },
+    {
+      "name": "native acceptance owns empty evidence",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 9.8,9.7",
+      "passed": true
+    },
+    {
+      "name": "native sample inspection once",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 0,23",
+      "passed": true
+    },
+    {
+      "name": "native travel reaches Hearthwater",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 0,10",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 12,-26",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 15.2,-27.3",
+      "passed": true
+    },
+    {
+      "name": "all three native evidence actions retained",
+      "passed": true
+    },
+    {
+      "name": "diorama projection selected by native V",
+      "passed": true
+    },
+    {
+      "name": "third projection selected by native V",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 0,24",
+      "passed": true
+    },
+    {
+      "name": "native return reaches existing Firstlight checkpoint",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 14.5,10.5",
+      "passed": true
+    },
+    {
+      "name": "preview does not resolve the commission",
+      "passed": true
+    },
+    {
+      "name": "explicit correction retained",
+      "passed": true
+    },
+    {
+      "name": "lesson preview grants nothing",
+      "passed": true
+    },
+    {
+      "name": "learning stays disabled and never equips",
+      "passed": true
+    },
+    {
+      "name": "native explicit enable updates actual special",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 0,23",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 0,10",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 15.2,-27.3",
+      "passed": true
+    },
+    {
+      "name": "correction survives actual return to quarry",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 0,24",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 15,7",
+      "passed": true
+    },
+    {
+      "name": "enter existing riverbank practice",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk -5,11.5",
+      "passed": true
+    },
+    {
+      "name": "native selected target is practice",
+      "passed": true
+    },
+    {
+      "name": "native Q creates confirmed real practice impact",
+      "passed": true
+    },
+    {
+      "name": "new special label visible",
+      "passed": true
+    },
+    {
+      "name": "quest and practice preserve XP, sockets, old class and soul",
+      "passed": true
+    },
+    {
+      "name": "served exact current HTML",
+      "passed": true
+    },
+    {
+      "name": "whole-browser restart retains exact original stored bytes",
+      "passed": true
+    },
+    {
+      "name": "cold load retains exact commission and equipment",
+      "passed": true
+    },
+    {
+      "name": "legacy browser keys remain absent",
+      "passed": true
+    },
+    {
+      "name": "no unhandled browser errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "browser_errors": [],
+  "accelerated_ticks": true,
+  "manual_state_grants": false,
+  "human_playtest": false,
+  "renderer": "software",
+  "viewport": [
+    1280,
+    800
+  ],
+  "quality": "low",
+  "resources": {
+    "context_closed": true,
+    "server_closed": true
+  },
+  "html_sha256": "7630b6ada6c2e190f74e47017d391e22257828689582e53f4308a637054c98e9",
+  "final_record": {
+    "version": 1,
+    "accepted": true,
+    "evidence": [
+      "tool-sample",
+      "commission-order",
+      "credited-plaque"
+    ],
+    "compared": true,
+    "participation": "coauthor",
+    "resolution": "public-correction",
+    "weapon": "trail_bow",
+    "enabled": true
+  },
+  "source_unchanged": true,
+  "passed": true
+}

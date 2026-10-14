@@ -61,7 +61,7 @@ def validate_supplied(world,store,case,row,original,H):
     r=world.get('localLife',{}).get('records',{}).get(H.JOB)
     suffix=original['suffix'];expected=case.split('-')[-1]+'-'+suffix
     if r!={'accepted':True,'choice':expected,'steps':[],'claimed':False} or r.get('accepted') is not True or r.get('claimed') is not False:raise ValueError('Exact accepted, zero-arrival SUPPLIED record required')
-    if world.get('version')!=9 or world.get('adventure',{}).get('version')!=12 or world['adventure'].get('hp',0)<=0:raise ValueError('Living current supplied world required')
+    if world.get('version')!=9 or world.get('adventure',{}).get('version')!=13 or world['adventure'].get('hp',0)<=0:raise ValueError('Living current supplied world required')
     before=original['world']
     if H.preserved(world)!=H.preserved(before) or world['sandbox']['inventory']!=before['sandbox']['inventory'] or world['adventure']['coins']!=before['adventure']['coins']:raise ValueError('Supplied input changed original owned facts/materials/payment')
     if store.get('version')!=1 or store.get('active')!='character-2':raise ValueError('Exact native imported owner bytes required')

@@ -324,7 +324,7 @@ def road_account_browser_run_specs(root, primary_output, boundary_output, output
             p = Path(name)
             if not p.is_absolute() or not p.is_file() or hashlib.sha256(p.read_bytes()).hexdigest() != digest:
                 raise ValueError('Current prerequisite native input bytes drifted')
-    expectations = root / 'tools/SOURCE_EXPECTATIONS05.json'
+    expectations = root / 'tools/SOURCE_EXPECTATIONS06.json'
     common = {'FIRSTLIGHT_ROOT': str(root), 'PYTHONDONTWRITEBYTECODE': '1',
               'ROAD_ACCOUNT_NATIVE_EXPECTATIONS': str(expectations),
               'ROAD_ACCOUNT_NATIVE_INPUTS': str(manifest), 'ROAD_ACCOUNT_CPU_OUTPUT': str(cpu)}
@@ -441,13 +441,16 @@ def main():
     # the same file runs all mandatory checks after current native gates below.
     run('road-account-controller-preflight', [sys.executable, 'tools/test_road_account_browser.py'],
         extra_env={'FIRSTLIGHT_ROOT': str(ROOT), 'ROAD_ACCOUNT_NATIVE_INPUTS': '',
-                   'ROAD_ACCOUNT_NATIVE_EXPECTATIONS': str(ROOT / 'tools/SOURCE_EXPECTATIONS05.json'),
+                   'ROAD_ACCOUNT_NATIVE_EXPECTATIONS': str(ROOT / 'tools/SOURCE_EXPECTATIONS06.json'),
                    'ROAD_ACCOUNT_CPU_OUTPUT': str(output / 'road-account-source-cpu')})
     run('crossing-blade', ['node', 'tests/crossing_journey.cjs'])
     run('crossing-bow', ['node', 'tests/crossing_journey.cjs', '--bow'])
     run('starter-blade', ['node', 'tests/starter_journey.cjs'])
     run('starter-bow', ['node', 'tests/starter_journey.cjs', '--bow'])
     run('starter-veteran', ['node', 'tests/starter_veteran.cjs'])
+    for family in ('blade', 'bow', 'veteran'):
+        run('masterwork-' + family, ['node', 'tests/masterwork_journey.cjs'] + ([] if family == 'blade' else ['--' + family]),
+            extra_env={'FIRSTLIGHT_MASTERWORK_OUTPUT': str(output / 'masterwork-earned')})
     run('pursuit-blade', ['node', 'tests/pursuit_journey.cjs'])
     run('pursuit-bow', ['node', 'tests/pursuit_journey.cjs', '--bow'])
     run('pursuit-veteran', ['node', 'tests/pursuit_journey.cjs', '--veteran'])
@@ -563,6 +566,8 @@ def main():
         '--whole-draft-report', str(whole_draft_output / 'WHOLE_DRAFT_JOURNEY_REPORT.json'),
         '--output', str(whole_draft_output.parent / 'briar-earned')], extra_env={'FIRSTLIGHT_ROOT': str(ROOT)})
     if args.browser:
+        run('masterwork_browser', [sys.executable, 'tools/masterwork_browser.py', '--both',
+            '--output', str(args.browser_output / 'masterwork_browser')], timeout=600, native=True)
         # Separate native gate, bound to the exact cohort earned above. Only
         # this new command receives its own bounded 30-minute allowance.
         earth_browser_output = ((args.browser_output / 'earth_homecoming_browser')

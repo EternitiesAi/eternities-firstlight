@@ -22,6 +22,7 @@ function epoch(){
 function write(folder,name,value){const p=path.join(folder,name+'.json');fs.writeFileSync(p,JSON.stringify(value,null,2)+'\n',{flag:'wx'});return{path:p,bytes:fs.statSync(p).size,sha256:sha(p)};}
 function assertMigrationPreserved(migrated,raw){
  const expected=copy(raw),catalogue=expected.localLife;
+ if(raw.adventure.version===12){expected.adventure.version=13;if(!Object.hasOwn(raw.adventure,'earthMasterwork'))expected.adventure.earthMasterwork={version:1,accepted:false,evidence:[],compared:false,participation:null,resolution:null,weapon:null,enabled:false};}
  if(!('earthWildSigns' in raw))expected.earthWildSigns={version:1,accepted:false,evidence:[],observed:false,resolution:null,cleared:false,claimed:false};
  if(!Object.hasOwn(raw,'briarMoments'))expected.briarMoments={version:1,revision:0,moments:[]};
  const ids=['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1'].sort();

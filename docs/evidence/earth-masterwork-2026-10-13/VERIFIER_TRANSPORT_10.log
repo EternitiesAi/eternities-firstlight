@@ -1,0 +1,15 @@
+test_actual_main_wraps_all_53_native_suites_and_no_cpu_or_preflight_calls (test_verify_browser_budget.BrowserBudgetVerifier.test_actual_main_wraps_all_53_native_suites_and_no_cpu_or_preflight_calls) ... ok
+test_atomic_log_reservation_refuses_a_directory_created_during_setup (test_verify_browser_budget.BrowserBudgetVerifier.test_atomic_log_reservation_refuses_a_directory_created_during_setup) ... ok
+test_conflicting_roots_and_invalid_temp_refuse_without_reservation (test_verify_browser_budget.BrowserBudgetVerifier.test_conflicting_roots_and_invalid_temp_refuse_without_reservation) ... ok
+test_default_storage_reserves_logs_and_nested_evidence_once (test_verify_browser_budget.BrowserBudgetVerifier.test_default_storage_reserves_logs_and_nested_evidence_once) ... ok
+test_existing_evidence_refuses_before_creating_new_logs (test_verify_browser_budget.BrowserBudgetVerifier.test_existing_evidence_refuses_before_creating_new_logs) ... ok
+test_guard_refusal_and_timeout_stop_before_later_native_suites (test_verify_browser_budget.BrowserBudgetVerifier.test_guard_refusal_and_timeout_stop_before_later_native_suites) ... ok
+test_source_only_main_never_dispatches_budget_runner (test_verify_browser_budget.BrowserBudgetVerifier.test_source_only_main_never_dispatches_budget_runner) ... ok
+test_windows_non_d_storage_refuses_before_any_write (test_verify_browser_budget.BrowserBudgetVerifier.test_windows_non_d_storage_refuses_before_any_write) ... ok
+test_wrapper_preserves_literal_target_arguments_and_separate_admission_output (test_verify_browser_budget.BrowserBudgetVerifier.test_wrapper_preserves_literal_target_arguments_and_separate_admission_output) ... ok
+test_wrapper_refuses_cpu_commands_and_other_interpreters (test_verify_browser_budget.BrowserBudgetVerifier.test_wrapper_refuses_cpu_commands_and_other_interpreters) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.381s
+
+OK

@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tools\earth_consignment_cohort.py", line 28, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tools\earth_consignment_cohort.py", line 27, in main
+    p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--sources',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();v=create(a.root,a.sources,a.output);print(json.dumps({'status':'bound','variants':list(v['variants']),'cohortSha256':sha(a.output),'epoch':v['epoch']['mode']}))
+                                                                                                                                                                                                           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tools\earth_consignment_cohort.py", line 17, in create
+    world=json.loads(source.read_text(encoding='utf-8'));report=json.loads(journey.read_text(encoding='utf-8'));m.source_check(world,report,variant)
+                                                                                                                ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\07-GAMES\Firstlight\verification\current-qualified-game\tools\earth_consignment_browser.py", line 62, in source_check
+    raise ValueError('Exact genuinely claimed original EE story required')
+ValueError: Exact genuinely claimed original EE story required

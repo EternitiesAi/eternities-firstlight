@@ -69,6 +69,11 @@ def expected_optional_defaults(old):
     if 'earthHomecoming' in old:
         raise ValueError('Optional migration input must lack the homecoming owner.')
     expected = json.loads(json.dumps(old))
+    adventure = old.get('adventure')
+    if isinstance(adventure, dict) and type(adventure.get('version')) is int and adventure['version'] == 12:
+        expected['adventure']['version'] = 13
+        if 'earthMasterwork' not in adventure:
+            expected['adventure']['earthMasterwork'] = {'version': 1, 'accepted': False, 'evidence': [], 'compared': False, 'participation': None, 'resolution': None, 'weapon': None, 'enabled': False}
     expected['earthHomecoming'] = json.loads(json.dumps(FRESH))
     if 'earthWildSigns' not in old:
         expected['earthWildSigns'] = {'version': 1, 'accepted': False, 'evidence': [], 'observed': False, 'resolution': None, 'cleared': False, 'claimed': False}

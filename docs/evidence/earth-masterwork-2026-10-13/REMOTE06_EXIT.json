@@ -1,0 +1,21 @@
+{
+  "sourceHead": "e7057553cec50ad9835c7d228636696438911391",
+  "headAfter": "e7057553cec50ad9835c7d228636696438911391",
+  "statusAfter": [],
+  "startedUtc": "2026-10-14T03:37:37.0553344Z",
+  "closedUtc": "2026-10-14T03:43:21.7922491Z",
+  "exitCode": 1,
+  "command": [
+    "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+    "-B",
+    "tools/verify.py",
+    "--rule-workers",
+    "4",
+    "--output",
+    "D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/next-gate/MASTERWORK_REMOTE06_LOGS",
+    "--cpu-temp",
+    "C:/Users/Dom/AppData/Local/Temp"
+  ],
+  "scope": "Complete source gate; four Node workers; original180s/600s; no native browser or VM interaction",
+  "consoleSha256": "6a1e602c036e04a21d1a98d1ec9ac19edf8a8e183a66c3ffe34ae3654442a089"
+}

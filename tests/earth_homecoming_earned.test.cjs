@@ -32,6 +32,9 @@ test('actual optional migration keeps every historical fact and adds only explic
  for(const r of cohort.results){
   J.link(r.migration.source);J.link(r.migration.output);
   const raw=JSON.parse(fs.readFileSync(r.migration.source.path)),expected=P.copy(raw),out=JSON.parse(fs.readFileSync(r.migration.output.path));
+  // Independently specified migration: keep every existing value, adding only
+  // the declared empty owner when an Adventure12 input lacks it.
+  if(raw.adventure.version===12){expected.adventure.version=13;if(!Object.hasOwn(raw.adventure,'earthMasterwork'))expected.adventure.earthMasterwork={version:1,accepted:false,evidence:[],compared:false,participation:null,resolution:null,weapon:null,enabled:false};}
   const wildSignsMissing=!('earthWildSigns' in raw);if(wildSignsMissing)expected.earthWildSigns={version:1,accepted:false,evidence:[],observed:false,resolution:null,cleared:false,claimed:false};
   assert.equal(r.migration.earthWildSignsMigration,wildSignsMissing?'missing-to-fresh-earth-wild-signs-v1':null);
   const briarMissing=!Object.hasOwn(raw,'briarMoments');if(briarMissing)expected.briarMoments={version:1,revision:0,moments:[]};

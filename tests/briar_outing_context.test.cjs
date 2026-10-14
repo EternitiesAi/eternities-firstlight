@@ -47,7 +47,7 @@ test('actual HUD projection shows live guidance, then E arrival and resets its b
  Object.assign(f.env,{C,RealmAdventure:A,RealmWorldFoundations:global.RealmWorldFoundations,
   RealmEarth:global.RealmEarth,RealmCosmos:global.RealmCosmos,RealmBeacon:global.RealmBeacon,
   engine:null,fps:0,mapDraw(){},renderStatus(){}});
- for(const name of ['worlds','earth','cosmos','starter','crossing'])f.env.rpg[name]={context:()=>null};
+ for(const name of ['worlds','earth','cosmos','starter','crossing','masterwork'])f.env.rpg[name]={context:()=>null};
  f.env.adventure.context=()=>null;f.env.sandbox.context=()=>null;
  vm.runInContext(line('refreshUI'),f.env);
  f.h.walk(B.definition.home);f.h.command('start');f.env.refreshUI();
