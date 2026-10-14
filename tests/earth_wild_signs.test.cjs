@@ -48,7 +48,7 @@ function accept(f){const r=f.run('accept');assert.ok(r.ok,r.error);return r;}
 function readPair(f,reverse=false){accept(f);for(const p of reverse?D.evidence.slice(0,2).reverse():D.evidence.slice(0,2)){f.pose(p);const r=f.run('read',{evidence:p.id});assert.ok(r.ok,r.error);}f.pose(D.overlook);}
 function tickPresented(f,visible=true){
  const step=f.tick();assert.ok(step?.ok,step?.error);const gc=f.gc(),view=O.current(gc);assert.ok(view);
- const out={box:[],round:[],octa:[]},submission=Art.draw(out,view,gc,{quality:'low'});assert.ok(submission);
+ const out={box:[],round:[],octa:[],'earth-grazer-body-v1':[]},submission=Art.draw(out,view,gc,{quality:'low'});assert.ok(submission);
  f.sim.grazerPresentedFrame=Object.freeze({});
  const ack=O.acknowledge(f.gc({presentedFrame:f.sim.grazerPresentedFrame,visible,menuOpen:false,camera:'adventure'}),submission);
  return{ack,view};
@@ -215,3 +215,42 @@ test('actual Core movement composition reaches both marks, witnesses browse, sig
  // ledger, gear, companion, XP account and materials except the fee stay exact.
  const after=protectedFacts(f),elapsed=f.sim.elapsed-startElapsed;assert.ok(elapsed>0);for(const clock of ['adventure','sandbox']){assert.ok(Math.abs(after[clock].elapsed-old[clock].elapsed-elapsed)<1e-8,'actual '+clock+' clock advances by the Core tick duration');delete old[clock].elapsed;delete after[clock].elapsed;}for(const k of ['hour','day','weather','residents','player'])delete old[k],delete after[k];assert.deepEqual(after,old);assert.equal(f.sim.state.adventure.xp,xp);assert.equal(f.sim.state.earthWildSigns.claimed,true);
 });
+
+// Original connected mesh: actual WorldArt/Engine with recording GL, no GPU claim.
+{
+for(const name of['traveler-art','resident-art','traveler-equipment-art'])require(path.join(ROOT,'src',name+'.js'));
+const E=globalThis.RealmEngine,V=require(path.join(ROOT,'src/earth-grazer-visibility.js'));
+require(path.join(ROOT,'src/world.js'));
+function engine(){let n=0;const gl={ARRAY_BUFFER:1,STATIC_DRAW:2,DYNAMIC_DRAW:3,FLOAT:4,createBuffer:()=>({id:++n}),createVertexArray:()=>({id:++n}),bindBuffer(){},bindVertexArray(){},enableVertexAttribArray(){},vertexAttribPointer(){},vertexAttribDivisor(){},deleteBuffer(){},deleteVertexArray(){},bufferData(){}};
+ const e=Object.create(E.Engine.prototype);Object.assign(e,{gl,meshes:new Map(),batches:[],dynamic:[],quality:'low',canvas:{clientWidth:1280,clientHeight:800}});
+ e.setCamera({eye:[-157,4,-77],target:[-162,2.3,-79],projection:'perspective',half:6,aspect:1.6,fov:60});return e;}
+function scene(){const f=fixture();readPair(f);const started=O.begin(f.gc());assert.ok(started.ok,started.error);f.sim.grazerPresentation=started.view;f.sim.grazerPresentationContext=f.gc();
+ const e=engine(),a=Object.create(globalThis.RealmArt.WorldArt.prototype);a.e=e;a.map={};a.begin(O.ROOM);a.commit();return{f,e,a};}
+test('actual WorldArt update binds one connected body without writing saved facts',()=>{
+ const {f,e,a}=scene(),saved=f.state(),raw=f.raw();
+ a.update(f.sim,f.sim.elapsed,null);for(const b of e.dynamic)e.updateBatch(b);
+ const b=a.dynamicGrazerBody;assert.ok(b&&e.dynamic.includes(b));assert.equal(b.kind,'earth-grazer-body-v1');assert.equal(b.count,1);assert.equal(b.items[0].grazerPart,'long-body');
+ assert.equal(b.geom.count,2448);assert.deepEqual(b.cameraSolids,[]);assert.ok(Art.isSubmission(f.sim.grazerSubmission,f.gc()));
+ const actor=e.dynamic.flatMap(b=>b.items.filter(i=>i.grazerActor===O.ID));
+ assert.equal(actor.filter(i=>i.grazerPart==='long-body').length,1);assert.equal(actor.filter(i=>['broad-haunch','shoulder','belly'].includes(i.grazerPart)).length,0);
+ assert.equal(f.state(),saved);assert.equal(f.raw(),raw);assert.equal(f.sim.state.earthWildSigns.observed,false);
+});
+test('missing actual body submission cannot pass visibility; distorted receipt cannot remain valid',()=>{
+ const {f,e,a}=scene();a.update(f.sim,f.sim.elapsed,null);for(const b of e.dynamic)e.updateBatch(b);
+ const b=a.dynamicGrazerBody,item=b.items[0],original=item.m[13];item.m[13]+=.05;assert.equal(Art.isSubmission(f.sim.grazerSubmission,f.gc()),false);item.m[13]=original;
+ b.items=[];e.updateBatch(b);const inspected=V.inspect(e,O.ID);assert.equal(inspected.visible,false);assert.equal(inspected.reason,'missing-actual-submission');assert.equal(f.sim.state.earthWildSigns.observed,false);
+});
+test('scene rebuild releases the instance and does not allocate a grazer body batch in another realm',()=>{
+ const {f,e,a}=scene();a.update(f.sim,f.sim.elapsed,null);const previous=a.dynamicGrazerBody;
+ a.begin('world-heaven');a.commit();assert.equal(a.dynamicGrazerBody,null);assert.equal(e.dynamic.includes(previous),false);assert.equal(e.dynamic.some(b=>b.kind==='earth-grazer-body-v1'),false);
+});
+test('rebuilding WorldArt on a fresh renderer uploads a new body buffer and retains saved owners',()=>{
+ const {f,e,a}=scene(),saved=f.state(),raw=f.raw();a.update(f.sim,f.sim.elapsed,null);
+ const first=e.meshes.get('earth-grazer-body-v1'),next=engine();
+ const rebuilt=Object.create(globalThis.RealmArt.WorldArt.prototype);rebuilt.e=next;rebuilt.map={};rebuilt.begin(O.ROOM);rebuilt.commit();rebuilt.update(f.sim,f.sim.elapsed,null);
+ for(const batch of next.dynamic)next.updateBatch(batch);
+ const second=next.meshes.get('earth-grazer-body-v1');assert.notStrictEqual(first.buffer,second.buffer);assert.equal(second.count,2448);assert.equal(rebuilt.dynamicGrazerBody.count,1);
+ assert.ok(Art.isSubmission(f.sim.grazerSubmission,f.gc()));assert.equal(f.state(),saved);assert.equal(f.raw(),raw);
+});
+
+}

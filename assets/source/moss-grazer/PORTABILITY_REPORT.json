@@ -1,0 +1,26 @@
+{
+  "label": "Actual generated Blender source portability",
+  "source": "GRAZER_BODY.blend",
+  "target": "GRAZER_BODY_PORTABLE.blend",
+  "before": {
+    "libraries": [],
+    "materials": [
+      {
+        "name": "Material",
+        "users": 0,
+        "linked": false
+      },
+      {
+        "name": "Slate hide - existing palette",
+        "users": 1,
+        "linked": false
+      }
+    ]
+  },
+  "orphanDatablocksRemoved": 1,
+  "afterLibraries": 0,
+  "geometryUnchanged": true,
+  "externalFileImages": [],
+  "rendered": false,
+  "blender": "5.2.1 LTS"
+}

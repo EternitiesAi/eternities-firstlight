@@ -1,3 +1,31 @@
+# Connected grazer integration in progress, 2026-10-14
+
+ROOT now owns `gameplay/blender-moss-grazer-20261014`, based on PR80's pushed
+`d47587c1acaaf25e26a4d4f3157e69f0325c952d`. The original Blender body is integrated
+in source and rebuilt, with 54 focused CPU passes. Read
+`docs/art/GRAZER_CONNECTED_MESH_2026-10-14.md` for ownership, asset provenance,
+actual triangle counts and required native acceptance. It is no longer merely
+staging; its real in-game appearance and performance are still unqualified.
+
+Both generated pages are 3,522,808 bytes, SHA256
+`2e9468f9c2769fc87a14c5083040a0e64f5966237fc248a8d5e960eb2f2ce383`.
+No save schema, collision reserve, observation/reward rule or stored XP changed.
+The complete current source verifier and native WildSigns browse/visibility
+must qualify this new mesh. Previous source/native passes below belong to the
+exhibition's earlier runtime and do not establish this art integration.
+
+RAIN_FILM03/04 are terminal failed capture attempts, not running: native Journal
+open and Map invitation selection were missing from the new capture script.
+The current script corrects both; no ordinary-time film exists yet. Check exact
+live ownership before using STATION. Keep serial native work and fresh 6 GiB
+RAM admission; never disturb the VM, Claude Code or unrelated processes.
+Both Sol reviewers are still usage-limited; do not reroute. Reuse current D
+checkouts, small original assets and bounded evidence; no cleanup/new full copy,
+blocked-deletion retry, main merge, public deployment or billing change.
+The production goal stays active and unfinished; heartbeat stays paused.
+
+---
+
 # Current exhibition qualification, 2026-10-14
 
 PR80 remains open and stacked on PR79 `ba6fe9fa6a93cfadf075bf085a875dc0f63c6050`.
