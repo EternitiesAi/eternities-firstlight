@@ -8,7 +8,9 @@ are pending. Read docs/development/GROUNDED_EARTH_BACKDROP_2026-10-13.md.
 
 At this checkpoint the separate STATION remains frozen at 88b30bf. Full gate
 MASTERWORK_FULL01 is genuinely running under exec session8043, currently in
-Earth homecoming after passing all230 source commands and masterwork native.
+consignment after passing all230 source commands, masterwork native, Earth
+homecoming (6,205 checks/30 stages) and onboarding. The new standalone
+tools/earth_backdrop_browser.py is prepared and syntax checked, not browser-run.
 Observe that exact live handle and its terminal receipt before changing STATION
 or starting another browser. Its source and output cannot qualify this later
 art change. No heavy parallel verification; exclusive browser execution.

@@ -25,6 +25,42 @@ third person; current build and relevant checks with exact pushed evidence.
 The full baseline browser gate must not be interrupted or relabelled as this
 later art revision's qualification. No extra recording or full checkout needed.
 
+## Native check prepared while the baseline gate owns the browser
+
+`tools/earth_backdrop_browser.py` is a bounded standalone qualification caller.
+It earns Oren's kit and enters Hearthwater through visible controls, walks the
+supported route with accepted accelerated ticks, and selects both cameras with V.
+Four controlled screenshots inspect arrival and a native right-drag view. A wheel
+input widens the diorama view. No body/equipment/quest fixture is injected.
+
+For each frame a synchronous comparison hides only the120 tagged tree pieces,
+then restores them. It records main-framebuffer changed pixels, exact restored
+pixels, tree origins, camera/projection, state/collision equality and GL errors.
+The default diorama need not show the distant horizon; the report retains that
+view's actual count, including zero. At least one sampled view must show real
+tree pixels, and all controls must restore exactly. Visual inspection remains
+required to judge the placement. Ordinary RAF is disabled for these controlled
+frames; this is not normal-time gameplay, persistence or GPU performance proof.
+
+The Python AST and embedded JavaScript parse successfully. **This new caller has
+not run in Chromium yet.** The unchanged53-suite baseline gate at88b30bf still
+owns serial native execution: all230 source commands, masterwork, Earth homecoming
+(6,205 checks/30 stages) and onboarding have passed; consignment is running.
+Wait for its terminal receipt and inspect the result before starting this caller.
+Do not stop it, switch its STATION, or claim its source as this art head.
+
+Run the new caller from the clean exact remote art checkout through the existing
+admission wrapper, with fresh D paths and the established browser environment:
+
+```powershell
+python -B tools/browser_budget.py --root $FirstlightRoot `
+  --output $FreshBudgetOutput --temp-dir D:/07-GAMES/Firstlight/cache/browser-temp `
+  -- tools/earth_backdrop_browser.py --output $FreshFrameOutput
+```
+
+Retain a failed attempt if any, inspect both camera images, and repair a demonstrated
+defect before rerunning. No additional movie or complete game copy is needed.
+
 
 ## Implemented; visible acceptance pending
 

@@ -10,8 +10,10 @@ focused checks now pass. New identical HTML is3,448,051 bytes, SHA256
 
 This is implementation/CPU proof, not yet a visually accepted art delivery.
 The previous PR78 build at88b30bf is independently running the complete browser
-gate in STATION. All230 source commands and the masterwork browser suite passed;
-Earth homecoming is still live at this checkpoint. Do not extrapolate a final
+gate in STATION. All230 source commands, masterwork native, Earth homecoming
+(6,205 checks/30 stages) and onboarding passed; consignment is running. The
+standalone woodland visibility caller is prepared and syntax checked, with its
+first actual browser run pending. Do not extrapolate a final
 result or reuse that run as proof of the new art. No extra movie or full checkout.
 
 ---
