@@ -307,6 +307,9 @@ def main(argv=None):
             a = live()['actors'][1]
             walk(a['x'], a['z'])
             report['milestones']['far_wait'] = True
+            blocked_checkpoint = record()['checkpoint']
+            expected_checkpoint = live()['next']
+            check('quota injection has a real next checkpoint', expected_checkpoint is not None)
             ev("""()=>{window.__gateOriginalSet=Storage.prototype.setItem;
                 Storage.prototype.setItem=function(){throw new DOMException('SYNTHETIC gate quota','QuotaExceededError');};}""")
 
@@ -319,12 +322,13 @@ def main(argv=None):
                     }Realm.test.render();return{ok:ticks<1300,ticks,record:Realm.state.adventure.earthGate,error:Realm.diagnostics.earthGate.error};}""")
 
             result = escort_leg()
-            check('quota failure retains physically reached actors and unadvanced record', result['ok'] and result['error'] and live()['ready'] and record()['checkpoint'] == 'camp')
+            report['quota_observation'] = dict(before=blocked_checkpoint, next=expected_checkpoint, result=result, view=live())
+            check('quota failure retains physically reached actors and unadvanced record', result['ok'] and result['error'] and live()['ready'] and record()['checkpoint'] == blocked_checkpoint)
             ev('Storage.prototype.setItem=window.__gateOriginalSet')
             rules()
             check('visible refusal offers explicit retry', page.locator('[data-rpg="gate-retry"]').count() == 1)
             action('retry')
-            check('native retry adopts the reached stop once', record()['checkpoint'] == 'orchard-turn' and ev('Realm.diagnostics.earthGate.error') is None)
+            check('native retry adopts the reached stop once', record()['checkpoint'] == expected_checkpoint and ev('Realm.diagnostics.earthGate.error') is None)
             report['milestones']['quota_retry'] = True
             expected = restart()
             travel()
