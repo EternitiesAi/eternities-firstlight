@@ -418,8 +418,14 @@ def main(argv=None):
             page.locator('#close-panel').click()
             render()
             check('native reduced-motion choice is retained', state()['settings']['reducedMotion'] is True)
-            check('actual quiet pennant stops decorative rotation', ev(
-                "window.__rainArt.filter(p=>p.tournamentPart==='pennant').length===1&&window.__rainArt.find(p=>p.tournamentPart==='pennant').r[1]===0"))
+            report['quiet_frame'] = ev("""()=>({scene:Realm.diagnostics.scene,mode:Realm.diagnostics.mode,
+                renderer:Realm.diagnostics.renderer,reducedMotion:Realm.state.settings.reducedMotion,
+                canvasDisplay:getComputedStyle(document.querySelector('#world')).display,
+                fallback:document.querySelector('#fallback-banner').textContent,
+                pennants:window.__rainArt.filter(p=>p.tournamentPart==='pennant')})""")
+            pennants = report['quiet_frame']['pennants']
+            check('actual quiet pennant stops decorative rotation',
+                  report['quiet_frame']['mode'] == 'webgl2' and len(pennants) == 1 and pennants[0]['r'][1] == 0)
             ev('Realm.test.step(1);Realm.test.render()')
             check('quiet pennant stays still after accepted world time', ev(
                 "window.__rainArt.find(p=>p.tournamentPart==='pennant').r[1]===0"))
