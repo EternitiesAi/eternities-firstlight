@@ -84,7 +84,7 @@ class Fixture:
         text(self.root/'tools/browser_support.py','# synthetic CPU dependency: never executed\n')
         text(self.root/'tools/earth-homecoming-journey/caller.cjs','// synthetic caller hash only\n')
         self.callers=self.root/'tools/earth-homecoming-journey'
-        modules=('earth-homecoming-data.js','earth-homecoming.js','earth-homecoming-ui.js','earth-homecoming-art.js','core.js','characters.js','adventure.js','adventure-ui.js','adventure-art.js','arsenal.js','combat.js','rpg-ui.js','world-foundations.js','world-foundations-ui.js','world.js','app.js','local-life-ui.js','local-life.js','realm-trails-ui.js',
+        modules=('earth-masterwork.js','earth-masterwork-ui.js','earth-homecoming-data.js','earth-homecoming.js','earth-homecoming-ui.js','earth-homecoming-art.js','core.js','characters.js','adventure.js','adventure-ui.js','adventure-art.js','arsenal.js','combat.js','rpg-ui.js','world-foundations.js','world-foundations-ui.js','world.js','app.js','local-life-ui.js','local-life.js','realm-trails-ui.js',
                  'earth-consignment-data.js','earth-consignment.js','earth-consignment-motion.js','earth-consignment-art.js','earth-consignment-ui.js')
         for name in modules:text(self.root/'src'/name,'// synthetic source token: '+name+'\n')
         html='\n'.join((self.root/'src'/name).read_text().strip() for name in modules)

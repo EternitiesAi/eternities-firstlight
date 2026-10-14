@@ -73,9 +73,9 @@ class OnboardingVerifier(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'embed actual caller'):self.spec()
         self.assertFalse(self.output.exists())
 
-    def test_actual_native_source_validator_requires_each_consignment_module_and_current_embedding(self):
+    def test_actual_native_source_validator_requires_consignment_and_masterwork_modules_and_embedding(self):
         self.spec()
-        for name in ('earth-consignment-data.js','earth-consignment.js',
+        for name in ('earth-masterwork.js','earth-masterwork-ui.js','earth-consignment-data.js','earth-consignment.js',
                      'earth-consignment-motion.js','earth-consignment-art.js',
                      'earth-consignment-ui.js'):
             p=self.f.root/'src'/name;original=p.read_bytes()

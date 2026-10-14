@@ -14,6 +14,16 @@ from browser_support import launch_kwargs
 ROOT = Path(__file__).resolve().parents[1]
 INIT = "window.__ETERNITIES_TEST_MODE=true;window.__ETERNITIES_CAPTURE_MODE=false;window.__masterworkStartup=Object.fromEntries(Object.keys(localStorage).map(k=>[k,localStorage.getItem(k)]));"
 
+def finish_report(report, out):
+    """Write the actual terminal result, and fail the process on incomplete proof."""
+    report['passed']=(bool(report['checks']) and all(c['passed'] is True for c in report['checks'])
+        and not report['errors'] and not report['browser_errors'] and report.get('source_unchanged') is True
+        and all(report['resources'].get(k) is True for k in ('context_closed', 'server_closed')))
+    with (out/'REPORT.json').open('x', encoding='utf-8') as stream:
+        stream.write(json.dumps(report, indent=2)+'\n')
+    print(json.dumps({'passed':report['passed'],'checks':len(report['checks']),'errors':len(report['errors'])}),flush=True)
+    if not report['passed']:raise RuntimeError('Masterwork native qualification is incomplete; see REPORT.json')
+
 def main(argv=None):
     parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True);parser.add_argument('--bow',action='store_true');parser.add_argument('--record',action='store_true');parser.add_argument('--both',action='store_true');args=parser.parse_args(argv)
     out=args.output.resolve()
@@ -100,7 +110,6 @@ def main(argv=None):
         server.shutdown();server.server_close();thread.join(timeout=5);report['resources']['server_closed']=not thread.is_alive()
         report['source_unchanged']=source_identity()==report['source_sha256']
         if not report['source_unchanged']:report['errors'].append('Source changed while native evidence was captured')
-        report['passed']=bool(report['checks']) and all(c['passed'] for c in report['checks']) and not report['errors'] and not report['browser_errors'] and all(report['resources'].values())
-        (out/'REPORT.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8');print(json.dumps({'passed':report['passed'],'checks':len(report['checks']),'errors':len(report['errors'])}),flush=True)
+        finish_report(report, out)
 
 if __name__=='__main__':main()
