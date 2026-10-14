@@ -111,6 +111,9 @@ def main():
                 close(); click('#settings'); page.locator('#quality').select_option('low')
                 page.locator('#camera-mode').select_option('adventure'); click('#close-panel')
                 report['renderer'] = ev('Realm.diagnostics.renderer')
+                report['browser'] = ev('navigator.userAgent')
+                report['viewport'] = page.viewport_size
+                report['quality'] = ev('Realm.state.settings.quality')
                 check('software WebGL capture is labelled honestly', ev('Realm.diagnostics.mode') == 'webgl2' and 'SwiftShader' in report['renderer'])
                 workspace('journal'); click('[data-rpg="earth-invitation"]'); click('[data-rpg="earth-walk"][data-id="gate"]'); wait_near(0,23)
                 page.locator('#world').focus(); page.keyboard.press('e'); click('[data-rpg="earth-confirm"]')
