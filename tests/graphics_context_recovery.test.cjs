@@ -141,7 +141,7 @@ function runFrame(kind){
  const sim=f.env.sim,originalTick=sim.tick.bind(sim);sim.tick=dt=>{calls.push('sim');if(kind==='rule')throw rule;originalTick(dt);};
  f.env.art.update=()=>{calls.push('art');if(kind==='lost'||kind==='render'){f.h.gl.lost=kind==='lost';throw render;}};
  Object.assign(f.env,{lastFrame:0,frames:0,fps:0,fpsStart:0,elapsed:0,lastUi:0,lastSave:0,G_CAPTURE:false,performance:{now:()=>1},document:{...f.env.document,hidden:false},
-  bindWildSignsClearance:()=>calls.push('rules'),tickRoadkeeper:()=>{},tickConsignment:()=>{},tickGrazer:()=>{},switchScene:()=>{},updateCamera:()=>{},experience:null,sandbox:null,adventure:null,arsenal:null,fishing:null,
+  bindWildSignsClearance:()=>calls.push('rules'),tickRoadkeeper:()=>{},tickConsignment:()=>{},gates:()=>({tick(){}}),tickGrazer:()=>{},switchScene:()=>{},updateCamera:()=>{},experience:null,sandbox:null,adventure:null,arsenal:null,fishing:null,
   rpg:{tick:()=>{}},syncFieldcraftOwner:()=>{},consignmentPresentation:()=>{},grazerPresentation:()=>{},prepareWildSignsDiagnostics:()=>{},roadkeeperPresentation:()=>{},prepareRoadkeeperDiagnostics:()=>{},
   acknowledgeOrdinaryGrazer:()=>{},updateLabels:()=>{},mapDraw:()=>calls.push('map'),audio:{tick:()=>calls.push('audio')},refreshUI:()=>calls.push('ui'),save:()=>calls.push('save'),requestAnimationFrame:()=>calls.push('raf')});
  const frameApp=process.env.GRAPHICS_FRAME_SOURCE?fs.readFileSync(process.env.GRAPHICS_FRAME_SOURCE,'utf8'):app;

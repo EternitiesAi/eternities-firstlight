@@ -213,7 +213,7 @@ test('actual complete frame republishes roadkeeper after periodic Store save wit
   document:{hidden:false,querySelector:()=>null},RealmAdventure:require(path.join(ROOT,'src/adventure.js')),RealmBriarOuting:require(path.join(ROOT,'src/briar-outing.js')),RealmEarthRoadkeeperMotion:O,RealmWorldFoundations:W,RealmCombat:globalThis.RealmCombat,
   lastFrame:0,frames:0,fpsStart:0,fps:0,lastUi:0,lastSave:0,elapsed:f.sim.elapsed,target:null,follow:null,keys:new Set(),camera:{yaw:0},
   engine:{render(){}},art:{update(){},makeRetreat(){}},experience:null,sandbox:null,adventure:null,arsenal:null,fishing:null,rpg:null,audio:{tick(){}},G_CAPTURE:true,
-  preserveExisting:false,saveState:'new',rememberCamera(){},renderStatus(){},bindWildSignsClearance(){},tickConsignment(){},tickGrazer(){},switchScene(){},updateCamera(){},
+  preserveExisting:false,saveState:'new',rememberCamera(){},renderStatus(){},bindWildSignsClearance(){},tickConsignment(){},gates:()=>({tick(){}}),tickGrazer(){},switchScene(){},updateCamera(){},
   syncFieldcraftOwner(){},consignmentPresentation(){},grazerPresentation(){},prepareWildSignsDiagnostics(){},acknowledgeOrdinaryGrazer(){},updateLabels(){},refreshUI(){},mapDraw(){},ui:{map:{}},
   tickRoadkeeper:f.api.tickRoadkeeper,
   roadkeeperPresentation(...args){presentationCalls++;return Reflect.apply(f.api.roadkeeperPresentation,f.api,args);},

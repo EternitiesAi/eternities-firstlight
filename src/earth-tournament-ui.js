@@ -10,7 +10,7 @@ const button=(text,action,attrs='')=>'<button data-rpg="tournament-'+action+'" '
 const menus=new WeakMap();
 function heldMenu(sim){const m=menus.get(sim);if(!m)return null;
  if(m.state!==sim.state||m.adventure!==sim.state.adventure){menus.delete(sim);return null;}return m;}
-function holdMenu(sim){if(heldMenu(sim))return true;if(!R().fighting(sim))return false;
+function holdMenu(sim){if(heldMenu(sim))return true;if(!R().fighting(sim)&&!(sim.room===G.RealmEarthGate?.definition.room&&sim.state.adventure.earthGate?.prepared&&!sim.state.adventure.earthGate.outcome))return false;
  menus.set(sim,{state:sim.state,adventure:sim.state.adventure,paused:sim.paused});sim.paused=true;return true;}
 function releaseMenu(sim){const m=heldMenu(sim);menus.delete(sim);if(!m)return false;sim.paused=m.paused;return true;}
 function togglePause(sim){const m=heldMenu(sim);if(m){m.paused=!m.paused;sim.paused=true;return{held:true,paused:m.paused};}

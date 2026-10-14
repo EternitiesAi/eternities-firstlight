@@ -1,3 +1,43 @@
+# Gate Captain implementation; verification handoff, 2026-10-14
+
+ROOT owns `gameplay/earth-gate-captain-20261014`, draft PR82 stacked on PR81
+`950d733a1e714b4a06a6481594a726b5dc190981`. Migration-oracle repair is
+`cbfaffc2c62e3ddc798d1be530485ea045f14931`. Read
+`docs/evidence/gate-captain-2026-10-14/QUALIFICATION02.json` and prior01.
+
+SOURCE02 terminated: 2,400 Node passes / zero failures / two skips and 555
+Python tests / zero failures / eight skips. A later conditional homecoming
+preflight failed one of32 checks because its independent literal migration
+expectation lacked earthGate. cbfaffc adds that exact empty owner; the retained
+current cohort passes all32 focused checks. No assertion or timeout was removed.
+Full source success is still pending. Native01 remains35 passes/one failed
+timing assumption, repaired in ff27c41 but not rerun. Do not pool these as a pass.
+
+The actual Core far-wait/return/quota sequence now has a focused regression for
+both routes in earth-gate-host.test.cjs. All6 host tests pass: returning can save
+orchard-turn, a later refused stop retains its prior record and reached actors,
+and explicit retry adopts exactly the next stop without automatic payment.
+Synthetic prepared entry is labelled; this is CPU evidence, not a native rerun.
+
+No owned source/browser/server is running. SOURCE03/NATIVE02 controllers are
+prepared in the existing next-gate artifact directory for cbfaffc, not launched.
+Fresh free RAM was4,969,984KiB, below6,291,456KiB. Recheck ownership/resources
+before running either, serially with original deadlines and post-driver guard.
+If the clean head changes, pin a fresh controller explicitly. Do not touch the
+VM, Claude, personal profiles or unrelated processes to obtain admission.
+STATION stays clean/frozen d13d067 holding prior grazer cohorts. Two Sol reviewers
+remain usage-limited untilOct20; no reroute. Heartbeat paused; game goal active.
+Keep bounded D storage and all failures. No new full copy, blocked-deletion
+retry, main merge, public deploy, billing or automatic wake.
+
+Runtime/build remains `fbf07c4ada1916f86703e0163cb2d580c379b51f`. Both pages
+are identical, 3,565,334 bytes, SHA256
+`eb0f8bd9aaee6ecd9ecb8ca1844568b85aedc9077a617aac1b3278c95478bb77`.
+World9 / Adventure15 / Arsenal1 / earthGate1; no further migration or runtime
+change in the verification repairs. Personal saves and existing keys stay intact.
+
+---
+
 # Connected grazer source qualified; browser admission pending, 2026-10-14
 
 ROOT owns `gameplay/blender-moss-grazer-20261014`, draft PR81 stacked on PR80's

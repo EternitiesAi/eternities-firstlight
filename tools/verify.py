@@ -324,7 +324,7 @@ def road_account_browser_run_specs(root, primary_output, boundary_output, output
             p = Path(name)
             if not p.is_absolute() or not p.is_file() or hashlib.sha256(p.read_bytes()).hexdigest() != digest:
                 raise ValueError('Current prerequisite native input bytes drifted')
-    expectations = root / 'tools/SOURCE_EXPECTATIONS07.json'
+    expectations = root / 'tools/SOURCE_EXPECTATIONS08.json'
     common = {'FIRSTLIGHT_ROOT': str(root), 'PYTHONDONTWRITEBYTECODE': '1',
               'ROAD_ACCOUNT_NATIVE_EXPECTATIONS': str(expectations),
               'ROAD_ACCOUNT_NATIVE_INPUTS': str(manifest), 'ROAD_ACCOUNT_CPU_OUTPUT': str(cpu)}
@@ -441,7 +441,7 @@ def main():
     # the same file runs all mandatory checks after current native gates below.
     run('road-account-controller-preflight', [sys.executable, 'tools/test_road_account_browser.py'],
         extra_env={'FIRSTLIGHT_ROOT': str(ROOT), 'ROAD_ACCOUNT_NATIVE_INPUTS': '',
-                   'ROAD_ACCOUNT_NATIVE_EXPECTATIONS': str(ROOT / 'tools/SOURCE_EXPECTATIONS07.json'),
+                   'ROAD_ACCOUNT_NATIVE_EXPECTATIONS': str(ROOT / 'tools/SOURCE_EXPECTATIONS08.json'),
                    'ROAD_ACCOUNT_CPU_OUTPUT': str(output / 'road-account-source-cpu')})
     run('crossing-blade', ['node', 'tests/crossing_journey.cjs'])
     run('crossing-bow', ['node', 'tests/crossing_journey.cjs', '--bow'])
@@ -454,6 +454,9 @@ def main():
     for family in ('blade', 'bow', 'veteran'):
         run('tournament-' + family, ['node', 'tests/tournament_journey.cjs'] + ([] if family == 'blade' else ['--' + family]),
             extra_env={'FIRSTLIGHT_TOURNAMENT_OUTPUT': str(output / 'tournament-earned')})
+    for family in ('blade', 'bow', 'veteran'):
+        run('gate-captain-' + family, ['node', 'tests/gate_captain_journey.cjs'] + ([] if family == 'blade' else ['--' + family]),
+            extra_env={'FIRSTLIGHT_GATE_OUTPUT': str(output / 'gate-captain-earned')})
     run('pursuit-blade', ['node', 'tests/pursuit_journey.cjs'])
     run('pursuit-bow', ['node', 'tests/pursuit_journey.cjs', '--bow'])
     run('pursuit-veteran', ['node', 'tests/pursuit_journey.cjs', '--veteran'])
@@ -569,6 +572,8 @@ def main():
         '--whole-draft-report', str(whole_draft_output / 'WHOLE_DRAFT_JOURNEY_REPORT.json'),
         '--output', str(whole_draft_output.parent / 'briar-earned')], extra_env={'FIRSTLIGHT_ROOT': str(ROOT)})
     if args.browser:
+        run('gate_captain_browser', [sys.executable, 'tools/gate_captain_browser.py', '--both',
+            '--output', str(args.browser_output / 'gate_captain_browser')], timeout=600, native=True)
         run('tournament_browser', [sys.executable, 'tools/tournament_browser.py', '--both',
             '--output', str(args.browser_output / 'tournament_browser')], timeout=600, native=True)
         run('masterwork_browser', [sys.executable, 'tools/masterwork_browser.py', '--both',

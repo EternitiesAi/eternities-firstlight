@@ -24,7 +24,7 @@ function installHosts(){
  global.RealmHomeHistoryUI={teaser:()=>''};
  load('briar-outing.js');load('earth-tournament-ui.js');
  load('earth-grazer-motion.js');load('earth-grazer-art.js');load('earth-wild-signs.js');load('earth-wild-signs-ui.js');
- load('starter-ui.js');load('earth-homecoming-ui.js');load('earth-homecoming-art.js');load('world-foundations-ui.js');load('adventure-ui.js');load('adventure-art.js');load('earth-masterwork-ui.js');load('rpg-ui.js');load('world.js');
+ load('starter-ui.js');load('earth-homecoming-ui.js');load('earth-homecoming-art.js');load('world-foundations-ui.js');load('adventure-ui.js');load('adventure-art.js');load('earth-masterwork-ui.js');load('earth-gate-ui.js');load('rpg-ui.js');load('world.js');
 }
 const EARLIER=path.join(__dirname,'fixtures/earth-homecoming-prerequisites/blade/ALL_TWELVE_PREREQUISITES_EARNED.json');
 function seed(){return C.validate(JSON.parse(fs.readFileSync(EARLIER,'utf8')));}

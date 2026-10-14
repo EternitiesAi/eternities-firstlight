@@ -20,7 +20,7 @@ function boot(store){
  return vm.compileFunction(app.slice(start,end)+';return {loaded,sim};',[],{filename:'actual-App-startup',contextExtensions:[{C,characterStore:store,performance:{now:()=>0}}]})();
 }
 function host(store,state){
- const calls=[],env={C,RealmBriarOuting:require('../src/briar-outing.js'),briarOwner:null,characterStore:store,characterLock:{},sim:new C.Simulation(state),engine:null,keys:new Set(['w']),pointers:new Map([[1,{}]]),gesture:{},rpg:null,adventure:null,sandbox:null,experience:null,arsenal:null,
+ const calls=[],env={C,RealmBriarOuting:require('../src/briar-outing.js'),gateHost:null,briarOwner:null,characterStore:store,characterLock:{},sim:new C.Simulation(state),engine:null,keys:new Set(['w']),pointers:new Map([[1,{}]]),gesture:{},rpg:null,adventure:null,sandbox:null,experience:null,arsenal:null,
   document:{body:{classList:{remove:x=>calls.push('remove:'+x),toggle:x=>calls.push('toggle:'+x)}}},audio:{disable:()=>calls.push('audio.disable')},camera:{ready:true,preset:'adventure',fov:60},scene:null,selected:null,follow:null,lastSave:0,elapsed:7,preserveExisting:true,saveState:'new',
   closePanel:()=>calls.push('closePanel'),resize:()=>calls.push('resize'),switchScene:()=>calls.push('switchScene'),renderStatus:()=>calls.push('renderStatus'),toast:s=>calls.push('toast:'+s),rememberCamera:()=>calls.push('rememberCamera'),confirm:()=>true,
   acquireCharacterWriter:async()=>{store.writer=true;return true;}};

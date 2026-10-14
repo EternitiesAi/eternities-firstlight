@@ -1,3 +1,33 @@
+# Gate Captain integration and verification decisions, 2026-10-14
+
+ET08 uses a small existing Hearthwater route. Three named stable actor records
+move on supported paths; a private current-owner arrival proof permits each
+saved checkpoint. Reads/rendering cannot grant progress. Menu pause, far wait,
+explicit leading, checkpoint reload and retry after refused storage are part
+of the gameplay. Inspection costs nothing; shelter preparation explicitly
+spends4 timber/2 fibre. Arrival and the once-only8coin/up-to15XP fee are separate.
+The duplicated seal is unresolved evidence, not automatic guilt or a future
+admission promise. Names and local adaptation are provisional canon presentation.
+
+Adventure14-to15 adds only a literal fresh earthGate1 owner. World9, keys, stored
+XP, equipment/sockets and prior history remain. No main-story gate, new level cap,
+auto-equip or combat escalation was added. The body art reuses the current rig.
+
+Keep independent literal migration oracles. SOURCE02's conditional JavaScript
+oracle omitted the new owner even though the Python oracle had it; cbfaffc adds
+the missing14-to15 step and asserts no pre-schema earthGate field. All32 focused
+checks pass against253 byte-bound source/provenance files. This is a test repair,
+not relaxed save validation or rewritten historical fixtures. Earlier inventory
+and quota-timing caller failures remain in qualification01/02.
+
+Do not equate partial/source/controlled-browser evidence with ordinary play,
+hardware performance, a complete gate or human acceptance. Do not reduce the
+6,291,456KiB RAM floor or original deadlines to get a pass; hold heavy work while
+VM/Claude coexistence leaves insufficient headroom. No extra checkout, footage
+accumulation, provider reroute, main merge or public deployment under this step.
+
+---
+
 # Connected grazer source qualified; browser admission pending, 2026-10-14
 
 ROOT owns `gameplay/blender-moss-grazer-20261014`, draft PR81 stacked on PR80's

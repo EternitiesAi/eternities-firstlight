@@ -49,7 +49,7 @@ function withRules(value,fn){const old=globalThis.RealmEarthFieldcraft;globalThi
 function withSync(fn,run){const old=A.syncScene;A.syncScene=fn;try{return run();}finally{A.syncScene=old;}}
 
 test('real Core/Adventure/schema owners retain existing versions and transient lease stays outside saves',()=>{
- const f=fixture();assert.equal(C.VERSION,9);assert.equal(A.VERSION,14);assert.deepEqual(f.sim.state.adventure.earthTournament,{version:1,issued:0,closed:0,best:{blade:null,bow:null},finished:{blade:0,bow:0}});assert.strictEqual(globalThis.RealmEarthExpedition,E);
+ const f=fixture();assert.equal(C.VERSION,9);assert.equal(A.VERSION,15);assert.deepEqual(f.sim.state.adventure.earthTournament,{version:1,issued:0,closed:0,best:{blade:null,bow:null},finished:{blade:0,bow:0}});assert.strictEqual(globalThis.RealmEarthExpedition,E);
  assert.deepEqual(E.fresh(),{version:1,story:{accepted:false,branch:null,steps:[],claimed:false},patrol:{lastClaim:0,active:null}});
  assert.ok(F.begin(f.ctx()).ok);assert.equal(Object.hasOwn(f.sim.snapshot(),'fieldcraftOwnerLease'),false);
 });

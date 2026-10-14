@@ -4,7 +4,7 @@
 const C=require('../src/core.js'),A=require('../src/adventure.js'),R=require('../src/road.js');let seq=0;
 // Explicit synthetic downgrade: no historic input ever contained this new field.
 const EMPTY_TOURNAMENT={version:1,issued:0,closed:0,best:{blade:null,bow:null},finished:{blade:0,bow:0}};
-function beforeTournament(world){a.deepEqual(world.adventure.earthTournament,EMPTY_TOURNAMENT);delete world.adventure.earthTournament;}
+function beforeTournament(world){require('./helpers/earth-tournament-migration.cjs').removeEmptyGate(world.adventure);a.deepEqual(world.adventure.earthTournament,EMPTY_TOURNAMENT);delete world.adventure.earthTournament;}
 const cmd=(s,t,p={})=>s.adventureCommand('unit-road-'+(++seq),t,p),snap=s=>JSON.stringify(s.snapshot());
 function step(s,t){for(let i=0;i<t*20;i++)s.tick(.05);}
 function ready(){const s=new C.Simulation(JSON.parse(fs.readFileSync(require.resolve('../examples/CHAPTER_COMPLETED_EARNED.json'))));s.state.player={x:44,z:6,yaw:0};return s;}

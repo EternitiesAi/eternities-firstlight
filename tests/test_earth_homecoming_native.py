@@ -33,7 +33,8 @@ class OptionalCatalogueOracle(unittest.TestCase):
     def test_exact_legacy_input_preserves_all_facts_and_adds_only_literal_fresh_defaults(self):
         source,old=self.historical();original=copy.deepcopy(old);expected=copy.deepcopy(old)
         self.assertEqual(old['adventure']['version'],12)
-        expected['adventure']['version']=14
+        expected['adventure']['version'] = 15
+        expected['adventure']['earthGate'] = {'version': 1, 'accepted': False, 'evidence': [], 'plan': None, 'prepared': False, 'checkpoint': 'camp', 'outcome': None, 'claimed': False}
         expected['adventure']['earthTournament']={'version':1,'issued':0,'closed':0,'best':{'blade':None,'bow':None},'finished':{'blade':0,'bow':0}}
         expected['adventure']['earthMasterwork']={'version':1,'accepted':False,'evidence':[],'compared':False,'participation':None,'resolution':None,'weapon':None,'enabled':False}
         expected['earthHomecoming']={'version':1,'accepted':False,'steps':[],'choice':None,'claimed':False}
@@ -93,16 +94,16 @@ class OptionalCatalogueOracle(unittest.TestCase):
         for xp in (0,29,30,79,80,149,150,259,260,9999):
             before=copy.deepcopy(old);before['adventure']['xp']=xp
             original=copy.deepcopy(before);expected=N.expected_optional_defaults(before)
-            wanted=copy.deepcopy(before['adventure']);wanted.update(version=14,earthMasterwork=copy.deepcopy(fresh),earthTournament={'version':1,'issued':0,'closed':0,'best':{'blade':None,'bow':None},'finished':{'blade':0,'bow':0}})
+            wanted=copy.deepcopy(before['adventure']);wanted.update(version=15,earthGate={'version': 1, 'accepted': False, 'evidence': [], 'plan': None, 'prepared': False, 'checkpoint': 'camp', 'outcome': None, 'claimed': False},earthMasterwork=copy.deepcopy(fresh),earthTournament={'version':1,'issued':0,'closed':0,'best':{'blade':None,'bow':None},'finished':{'blade':0,'bow':0}})
             self.assertEqual(expected['adventure'],wanted);self.assertEqual(before,original)
             for key,value in (('accepted',True),('evidence',['tool-sample']),('compared',True),('participation','coauthor'),('resolution','public'),('weapon','trail_blade'),('enabled',True)):
                 changed=copy.deepcopy(expected);changed['adventure']['earthMasterwork'][key]=value
                 self.assertNotEqual(expected,changed)
         for record in (None,fresh,{**fresh,'accepted':True},{**fresh,'weapon':'trail_blade','enabled':True}):
             before=copy.deepcopy(old);before['adventure']['earthMasterwork']=copy.deepcopy(record)
-            wanted=copy.deepcopy(before['adventure']);wanted['version']=14;wanted['earthTournament']={'version':1,'issued':0,'closed':0,'best':{'blade':None,'bow':None},'finished':{'blade':0,'bow':0}}
+            wanted=copy.deepcopy(before['adventure']);wanted['version']=15;wanted['earthGate']={'version': 1, 'accepted': False, 'evidence': [], 'plan': None, 'prepared': False, 'checkpoint': 'camp', 'outcome': None, 'claimed': False};wanted['earthTournament']={'version':1,'issued':0,'closed':0,'best':{'blade':None,'bow':None},'finished':{'blade':0,'bow':0}}
             self.assertEqual(N.expected_optional_defaults(before)['adventure'],wanted)
-        for version in (14,15,True,None):
+        for version in (15,16,True,None):
             before=copy.deepcopy(old);before['adventure']['version']=version
             self.assertEqual(N.expected_optional_defaults(before)['adventure'],before['adventure'])
         self.assertEqual(N.sha(source),N.HISTORICAL_INPUTS['blade'][1])
@@ -114,7 +115,7 @@ class OptionalCatalogueOracle(unittest.TestCase):
             before=copy.deepcopy(old);before['adventure']['version']=13;before['adventure']['xp']=xp
             before['adventure']['earthMasterwork']={'version':1,'accepted':False,'evidence':[],'compared':False,'participation':None,'resolution':None,'weapon':None,'enabled':False}
             original=copy.deepcopy(before);expected=N.expected_optional_defaults(before)
-            wanted=copy.deepcopy(before['adventure']);wanted['version']=14;wanted['earthTournament']={'version':1,'issued':0,'closed':0,'best':{'blade':None,'bow':None},'finished':{'blade':0,'bow':0}}
+            wanted=copy.deepcopy(before['adventure']);wanted['version']=15;wanted['earthGate']={'version': 1, 'accepted': False, 'evidence': [], 'plan': None, 'prepared': False, 'checkpoint': 'camp', 'outcome': None, 'claimed': False};wanted['earthTournament']={'version':1,'issued':0,'closed':0,'best':{'blade':None,'bow':None},'finished':{'blade':0,'bow':0}}
             self.assertEqual(expected['adventure'],wanted);self.assertEqual(before,original)
             for key,value in (('issued',1),('closed',1),('best',{'blade':6,'bow':None}),('finished',{'blade':1,'bow':0})):
                 forged=copy.deepcopy(expected);forged['adventure']['earthTournament'][key]=value
@@ -307,6 +308,7 @@ else:
              const old=read(p.proof.strongest.cohort_row.migration.source.path),expected=structuredClone(old),m=C.validate(old);assert.deepEqual(m.earthHomecoming,H.fresh());delete m.earthHomecoming;
              if(old.adventure.version===12){expected.adventure.version=13;if(!Object.hasOwn(old.adventure,'earthMasterwork'))expected.adventure.earthMasterwork={version:1,accepted:false,evidence:[],compared:false,participation:null,resolution:null,weapon:null,enabled:false};}
              if(expected.adventure.version===13){assert.ok(!Object.hasOwn(expected.adventure,'earthTournament'));expected.adventure.version=14;expected.adventure.earthTournament={version:1,issued:0,closed:0,best:{blade:null,bow:null},finished:{blade:0,bow:0}};}
+             if(expected.adventure.version===14){assert.ok(!Object.hasOwn(expected.adventure,'earthGate'));expected.adventure.version=15;expected.adventure.earthGate={version:1,accepted:false,evidence:[],plan:null,prepared:false,checkpoint:'camp',outcome:null,claimed:false};}
              if(!('earthWildSigns' in old))expected.earthWildSigns={version:1,accepted:false,evidence:[],observed:false,resolution:null,cleared:false,claimed:false};
              if(!Object.hasOwn(old,'briarMoments'))expected.briarMoments={version:1,revision:0,moments:[]};
              const ids=['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1'].sort(),l=expected.localLife;

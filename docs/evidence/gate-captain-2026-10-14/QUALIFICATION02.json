@@ -1,0 +1,155 @@
+{
+  "scope": "Source02 follow-up; implementation remains pending complete source and native qualification",
+  "previousEvidence": "QUALIFICATION01.json",
+  "base": "950d733a1e714b4a06a6481594a726b5dc190981",
+  "runtimeHead": "fbf07c4ada1916f86703e0163cb2d580c379b51f",
+  "repairHead": "cbfaffc2c62e3ddc798d1be530485ea045f14931",
+  "runtimeChangedByRepair": false,
+  "sourceAttempt": {
+    "receipt": {
+      "sourceHead": "1d32b49f12c3834b04764210d27ead832de5d310",
+      "headAfter": "1d32b49f12c3834b04764210d27ead832de5d310",
+      "statusAfter": [],
+      "startedUtc": "2026-10-14T10:05:02.5265382Z",
+      "closedUtc": "2026-10-14T10:10:02.6231257Z",
+      "exitCode": 1,
+      "command": [
+        "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+        "-B",
+        "tools/verify.py",
+        "--rule-workers",
+        "4",
+        "--output",
+        "D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/next-gate/GATE_SOURCE02_LOGS",
+        "--cpu-temp",
+        "C:/Users/Dom/AppData/Local/Temp"
+      ],
+      "scope": "Complete source gate; four Node workers; original180s/600s; no native browser or VM interaction",
+      "consoleSha256": "013521b3d865767e8d5b3311b8445c5648f073d5cb140005f29627b395b5c203"
+    },
+    "node": {
+      "run": 2402,
+      "passed": 2400,
+      "failed": 0,
+      "skipped": 2
+    },
+    "python": {
+      "run": 555,
+      "failed": 0,
+      "skipped": 8
+    },
+    "stoppedAt": "earth-homecoming-native-preflight",
+    "conditionalPreflight": {
+      "run": 32,
+      "failed": 1,
+      "failure": "Independent embedded JavaScript migration oracle omitted the literal empty earthGate record and Adventure14-to15 version change."
+    },
+    "gateEarnedCases": [
+      "blade",
+      "bow",
+      "veteran"
+    ],
+    "notReached": [
+      "earth-recording-controller-preflight",
+      "whole-draft-earned",
+      "briar-outing-earned"
+    ],
+    "completeGatePassed": false
+  },
+  "focusedRepair": {
+    "run": 32,
+    "failed": 0,
+    "skipped": 0,
+    "browserExecuted": false,
+    "testedTree": "1d32b49 plus the one-line test repair subsequently committed verbatim as cbfaffc",
+    "test": {
+      "path": "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\tests\\test_earth_homecoming_native.py",
+      "sha256": "513ae6c8fe24fd7a4924c23e144f644ca038bd1db622afb7c75dae28d79efed2",
+      "bytes": 28871
+    },
+    "cohort": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_SOURCE02_LOGS\\earth-homecoming-earned\\CONNECTED_EARTH_HOMECOMING_REPORT.json",
+      "sha256": "cebef634f39caba16f82d4ee6f910c14c3234f79461f266a3581bb068d747da8",
+      "bytes": 119343
+    },
+    "linkedFilesVerified": 253,
+    "command": "python -B tests/test_earth_homecoming_native.py -v with FIRSTLIGHT_ROOT, EARTH_EARNED_SOURCES, EARTH_EARNED_COHORT_SHA and EARTH_EARNED_CALLER_ROOT bound to the retained SOURCE02 cohort"
+  },
+  "native": {
+    "latestAttempt": "GATE_NATIVE01",
+    "passed": false,
+    "checksPassed": 35,
+    "checksFailed": 1,
+    "callerTimingRepairHead": "ff27c41ac02b81f420b7b91b950e7da5d5263746",
+    "correctedRerunStarted": false
+  },
+  "resourceHold": {
+    "observedUtc": "2026-10-14T10:15:53.0737253Z",
+    "sourceHead": "cbfaffc2c62e3ddc798d1be530485ea045f14931",
+    "freeHostKiB": 4969984,
+    "minimumFreeKiB": 6291456,
+    "admitted": false,
+    "source03Launched": false,
+    "native02Launched": false,
+    "scope": "Read-only host free-memory observation. No VM, Claude or unrelated process changes."
+  },
+  "screenshotsInspected": [
+    "GATE_NATIVE01/blade/01-TERMS.png",
+    "GATE_NATIVE01/blade/02-GROUP-perspective.png",
+    "GATE_NATIVE01/blade/02-GROUP-orthographic.png"
+  ],
+  "logs": {
+    "GATE_SOURCE02_CONSOLE.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_SOURCE02_CONSOLE.log",
+      "sha256": "013521b3d865767e8d5b3311b8445c5648f073d5cb140005f29627b395b5c203",
+      "bytes": 22409
+    },
+    "GATE_SOURCE02_LOGS/rules.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_SOURCE02_LOGS\\rules.log",
+      "sha256": "cb9806a676498f03269da9e669c5ebc6d1a18e2c4f3188d2c10ffcf4c68fd51c",
+      "bytes": 581191
+    },
+    "GATE_SOURCE02_LOGS/python.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_SOURCE02_LOGS\\python.log",
+      "sha256": "b7a12377bea08d0a98f1c3161505f2b022654d8edd22d0a7cfb5af096dfd3d8c",
+      "bytes": 157502
+    },
+    "GATE_SOURCE02_LOGS/earth-homecoming-native-preflight.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_SOURCE02_LOGS\\earth-homecoming-native-preflight.log",
+      "sha256": "e09a29d9dfab736a02d6f953eae09e6f7aa723b2d185cf516e419181d986b9ac",
+      "bytes": 110194
+    },
+    "GATE_HOMECOMING_REPAIR01.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_HOMECOMING_REPAIR01.log",
+      "sha256": "f3ad6de1ecec00fc37e199e66acf2e6a6c1cc211e5f53549d64fb5f028d87674",
+      "bytes": 5432
+    }
+  },
+  "pending": [
+    "Complete clean source rerun",
+    "Corrected both-choice native suite and cold browser persistence",
+    "Exact remote qualification checkout; no fresh clone claim",
+    "Prior grazer native and wider browser gate",
+    "Ordinary gameplay footage, independent review, hardware and human acceptance"
+  ],
+  "ownership": "No owned verifier/browser/server running. Heartbeat paused, game goal active. VM, Claude, personal saves and unrelated processes untouched. Two Sol reviewers usage-limited until October20; no reroute. STATION remains frozen at d13d067.",
+  "returnQuotaRegression": {
+    "command": "node --test --test-concurrency=1 tests/earth-gate-host.test.cjs",
+    "run": 6,
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0,
+    "newTests": 1,
+    "paths": [
+      "inspection-lane",
+      "temporary-shelter"
+    ],
+    "scope": "Actual Core movement and production escort host from labelled synthetic prepared entry. Returning from far wait can save orchard-turn before quota injection; next refusal retains recorded state and reached actors; explicit retry saves exactly the real next checkpoint. No browser or full-suite claim.",
+    "log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_RETURN_QUOTA_REGRESSION01.log",
+      "sha256": "74be515f569d7547ab55c75859300445d4f04d6a207355bc24bc794fa7b4e9aa"
+    },
+    "testSourceSha256": "46b12109f3a8fbe6407a0ea6b2f93fdc591b545c5a429f56a3d17f3e13dd0743",
+    "runtimeChanged": false
+  }
+}

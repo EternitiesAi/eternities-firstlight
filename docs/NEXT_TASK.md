@@ -1,3 +1,31 @@
+# Finish Gate Captain qualification before another quest, 2026-10-14
+
+1. Inspect current branch/ownership, origin and PR82 comments. Migration repair is
+   cbfaffc; runtime is fbf07c4. Read Gate qualification02 and retain prior failures.
+2. SOURCE02 is terminal, not running. Its later homecoming preflight failed one
+   old migration expectation; cbfaffc repairs it, and all32 focused checks pass.
+   Complete a clean source rerun with the unchanged4-worker180s/Python600s bounds.
+3. Run the corrected Gate native caller for blade and bow, serially, under the
+   original600s limit and fresh6,291,456KiB outer/post-driver RAM guards. Native01
+   is35pass/one failed caller timing assumption, not a completed route.
+   The actual Core return/quota sequence now passes a focused regression on both
+   routes (6 host tests, no failures/skips); it does not replace this browser run.
+4. Resolve any actual failures, inspect final arrival/cold-result pixels and
+   preserve complete owner/economy/cold-start evidence. Ordinary footage remains
+   a separate pending check. No invented GPU or human pacing claim.
+5. Reconcile the frozen d13d067 STATION and retained prior grazer cohorts before
+   qualifying the final fetched review head there. No new full clone per attempt.
+   Update PR82, exact receipts and human playtest questions without merging main.
+
+SOURCE03/NATIVE02 controllers exist in the current next-gate evidence directory
+but were not launched. They pin cbfaffc; update their identity deliberately if
+using a later clean commit. Last free RAM4,969,984KiB was below the floor. Do not
+stop/mutate VM, Claude or unrelated processes. No own worker is currently running;
+the two Sol reviewers are usage-limited, and the separate heartbeat is paused.
+The production goal remains active and unfinished.
+
+---
+
 # Connected grazer source qualified; browser admission pending, 2026-10-14
 
 ROOT owns `gameplay/blender-moss-grazer-20261014`, draft PR81 stacked on PR80's

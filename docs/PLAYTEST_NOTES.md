@@ -1,3 +1,30 @@
+# Gate Captain visible prototype and pending human pass, 2026-10-14
+
+Actual Native01 software-WebGL1280x800/low screenshots were inspected: the
+terms panel and the three humanoid travellers in perspective and diorama views.
+The cost/reward and uncertainty are visible before acceptance. Bodies/backpacks
+are readable at the camp. These are controlled-tick pixels, not footage, hardware
+performance evidence or a human judgement of enjoyment. Source runtime fbf07c4.
+
+Command-earned blade, bow and Chapter-IV veteran cases pass both plans, partial
+reload and single payment. Native01 passes35 checks including E acceptance,
+both views, menu pause and distant-player wait, then fails a caller assumption
+that returning to the group leaves its checkpoint at camp. Actual Core movement
+legitimately reaches orchard-turn. ff27c41 repairs the observation, but its native
+rerun and final arrival/cold-result images are pending resource admission.
+
+SOURCE02 passed2,400 Node checks and the555-test Python suite, then failed one
+conditional migration expectation. The repaired32-test preflight passes; this
+does not turn the interrupted run into a complete source/native gate.
+
+When Dom can play: did you know where to meet and lead the group; did they feel
+like people travelling with you; did the two choices and their costs feel honest?
+No answer is recorded yet. Check actual keyboard movement and feel in both
+cameras, then repeat from a returning save created for testing. Do not inspect
+Dom's personal save as an automated fixture.
+
+---
+
 # Connected grazer source qualified; browser admission pending, 2026-10-14
 
 ROOT owns `gameplay/blender-moss-grazer-20261014`, draft PR81 stacked on PR80's

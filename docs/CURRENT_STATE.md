@@ -1,3 +1,42 @@
+# Gate Captain outing implemented; qualification pending, 2026-10-14
+
+Draft PR82 adds the supplied Earth atlas ET08 scenario to Hearthwater. Read the
+register, waybill and shelter screen, choose a free inspection lane or explicitly
+spend4 timber/2 fibre repairing shelter, and lead three physical travellers.
+They wait when you leave them, pause with menus, and save supported checkpoints.
+Both outcomes offer a separate once-only8 sunmarks/up-to15XP fee. Saved progress
+survives reload; no campaign progress or equipment replacement is required.
+Local names/adaptation remain provisional, not a completed Crownfields province.
+
+The exact test repair head is `cbfaffc2c62e3ddc798d1be530485ea045f14931`.
+SOURCE02 at1d32b49 passed2,400 Node checks (two skips), all555 Python tests
+(eight skips), Gate blade/bow/veteran outings and existing earned continuations
+through homecoming. It then stopped at one conditional migration-oracle failure.
+The one-line repair passes all32 preflight checks against the same byte-bound
+cohort. Whole-draft/recording preflight and a full source pass remain unverified
+for this run. See `evidence/gate-captain-2026-10-14/QUALIFICATION02.json`.
+
+A subsequent focused regression runs actual Core movement through far waiting,
+return, automatic checkpoint, refused next save and explicit retry on both paths.
+All6 host tests pass. This adds one test to the suite; the earlier full-suite
+counts above are historical observations, not a new full run. Runtime unchanged.
+
+Native01 produced actual low-quality software-WebGL images of all three bodies
+in both views and a readable terms panel.35 checks passed, one quota-timing
+assumption failed; the repaired caller still awaits execution. No ordinary-time
+clip, complete native gate, exact fresh clone, independent review, hardware
+performance or human acceptance is claimed. No owned verifier is running;
+further heavy work was held at4,969,984KiB free versus6,291,456KiB required.
+VM/Claude/personal saves remain untouched; the full game goal remains unfinished.
+
+Runtime/build remains `fbf07c4ada1916f86703e0163cb2d580c379b51f`. Both pages
+are identical, 3,565,334 bytes, SHA256
+`eb0f8bd9aaee6ecd9ecb8ca1844568b85aedc9077a617aac1b3278c95478bb77`.
+World9 / Adventure15 / Arsenal1 / earthGate1; no further migration or runtime
+change in the verification repairs. Personal saves and existing keys stay intact.
+
+---
+
 # Connected grazer source qualified; browser admission pending, 2026-10-14
 
 ROOT owns `gameplay/blender-moss-grazer-20261014`, draft PR81 stacked on PR80's
