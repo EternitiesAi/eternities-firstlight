@@ -48,7 +48,7 @@ class DriverCPU(unittest.TestCase):
     def setUpClass(cls):
         # Deliberately synthetic small structures exercise the driver's actual
         # validators. No original campaign earning is asserted by unit mocks.
-        w={'version':9,'adventure':{'version':13,'started':True,'hp':100,'xp':45,'ore':3,'coins':18,'elapsed':0,'revision':0,'equipment':{'weapon':'dawn_edge'},'classPath':{},'earthBinding':{},'companion':{}},'earthExpedition':{'version':1,'story':{'accepted':True,'claimed':True,'steps':list(H.STORY),'branch':'stormfall-recovery'},'patrol':{'lastClaim':0,'active':None}},'localLife':{'version':1,'records':{id:copy.deepcopy(H.FRESH) for id in H.OLD_IDS}},'sandbox':{'version':1,'elapsed':0,'inventory':{'wood':8,'fiber':4,'stone':3}}}
+        w={'version':9,'adventure':{'version':14,'started':True,'hp':100,'xp':45,'ore':3,'coins':18,'elapsed':0,'revision':0,'equipment':{'weapon':'dawn_edge'},'classPath':{},'earthBinding':{},'companion':{}},'earthExpedition':{'version':1,'story':{'accepted':True,'claimed':True,'steps':list(H.STORY),'branch':'stormfall-recovery'},'patrol':{'lastClaim':0,'active':None}},'localLife':{'version':1,'records':{id:copy.deepcopy(H.FRESH) for id in H.OLD_IDS}},'sandbox':{'version':1,'elapsed':0,'inventory':{'wood':8,'fiber':4,'stone':3}}}
         for k in ('journeys','realmTrails','hellCampaign','heavenCampaign','atlantisCampaign','cosmosCampaign','earthHomecoming','bridgeCommunity','homeHistory','notes','score','scoreRevision','retreat','visitor','flowers','seed','visited'):w[k]={}
         w['adventure']['receipts']=[{'id':'synthetic-existing-receipt','fp':'synthetic-earlier-command','ok':True}]
         receipt={'status':'passed','sourceDrift':False,'positionEdits':0,'inventoryGrants':0,'manualDamage':0,'plantedDefeats':0,'canonicalPreservation':True,'sourceHashes':{id:'a'*64 for id in H.EARNED_MODULES},'harnessSha256':'b'*64,'branch':'stormfall-recovery'}
@@ -72,7 +72,8 @@ class DriverCPU(unittest.TestCase):
     def test_current_cohort_refuses_legacy_or_future_adventure_versions(self):
         row=self.originals['blade']
         self.assertEqual(H.source_check(row['world'],row['receipt'],'blade'),'stormfall')
-        for version in (12,14,None):
+        self.assertEqual(row['world']['adventure']['version'], 14)
+        for version in (12,13,15,None):
             world=copy.deepcopy(row['world']);world['adventure']['version']=version
             with self.subTest(version=version),self.assertRaises(ValueError):
                 H.source_check(world,row['receipt'],'blade')

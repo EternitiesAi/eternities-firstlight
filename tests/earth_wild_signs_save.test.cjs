@@ -15,7 +15,7 @@ function paid(record=D.fresh()){
 const complete=(resolution='signed-loop',cleared=false,claimed=false)=>({version:1,accepted:true,evidence:['feeding-track','timber-gouge','pest-scrape'],observed:true,resolution,cleared,claimed});
 test('actual Core owns a separate fresh version1 account and retains all existing versions',()=>{
  const a=C.fresh(),b=C.fresh();assert.deepEqual(a.earthWildSigns,{version:1,accepted:false,evidence:[],observed:false,resolution:null,cleared:false,claimed:false});
- a.earthWildSigns.evidence.push('never-shared');assert.deepEqual(b.earthWildSigns.evidence,[]);assert.equal(C.VERSION,9);assert.equal(b.adventure.version,13);assert.equal(b.localLife.version,1);
+ a.earthWildSigns.evidence.push('never-shared');assert.deepEqual(b.earthWildSigns.evidence,[]);assert.equal(C.VERSION,9);assert.equal(b.adventure.version,14);assert.equal(b.localLife.version,1);
 });
 test('missing owner adds only the literal fresh field to an otherwise canonical world',()=>{
  const old=strip(C.fresh());old.adventure.xp=9999;old.notes=[{text:'SYNTHETIC migration note',day:1}];const before=JSON.stringify(old),v=C.validate(old);
@@ -24,7 +24,7 @@ test('missing owner adds only the literal fresh field to an otherwise canonical 
 test('historical command-earned blade bow and strongest fixtures preserve raw owners apart from literal prior and new missing-owner additions',()=>{
  for(const name of ['blade/ALL_TWELVE_PREREQUISITES_EARNED.json','bow/ALL_TWELVE_PREREQUISITES_EARNED.json','strongest/FINAL_WORLD.json']){
   const file=path.join(ROOT,'tests/fixtures/earth-homecoming-prerequisites',name),raw=fs.readFileSync(file),world=JSON.parse(raw),expected=copy(world);
-  expected.adventure.version=13;expected.adventure.earthMasterwork={version:1,accepted:false,evidence:[],compared:false,participation:null,resolution:null,weapon:null,enabled:false};
+  expected.adventure.version=14;expected.adventure.earthTournament={version:1,issued:0,closed:0,best:{blade:null,bow:null},finished:{blade:0,bow:0}};expected.adventure.earthMasterwork={version:1,accepted:false,evidence:[],compared:false,participation:null,resolution:null,weapon:null,enabled:false};
   assert.ok(!Object.hasOwn(world,'earthWildSigns'),'Historical fixture really predates this owner.');
   if(Object.keys(expected.localLife.records).length===4)expected.localLife.records[CD.ID]={accepted:false,choice:null,steps:[],claimed:false};
   if(!Object.hasOwn(expected,'earthHomecoming'))expected.earthHomecoming={version:1,accepted:false,choice:null,steps:[],claimed:false};

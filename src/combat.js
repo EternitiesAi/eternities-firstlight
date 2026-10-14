@@ -15,7 +15,7 @@ function runtime(sim){
  if(r.tactics.scene!==sim.room){r.tactics.scene=sim.room;r.tactics.target=null;r.tactics.auto=false;r.tactics.windup=null;r.tactics.motion=null;r.tactics.hits=[];}
  return r.tactics;
 }
-function canTarget(sim,e){return !!e&&e.hp>0&&!e.hidden&&(!e.earthHomecoming||G.RealmEarthHomecoming?.owned(sim,e))&&dist(sim.state.player,e)<=22;}
+function canTarget(sim,e){return !!e&&e.hp>0&&!e.hidden&&(!e.rainTournament||G.RealmEarthTournament?.owned(sim,e))&&(!e.earthHomecoming||G.RealmEarthHomecoming?.owned(sim,e))&&dist(sim.state.player,e)<=22;}
 function candidates(sim){return G.RealmAdventure.runtime(sim).enemies.filter(e=>canTarget(sim,e)).sort((a,b)=>dist(sim.state.player,a)-dist(sim.state.player,b)||a.id.localeCompare(b.id));}
 function selected(sim){const t=runtime(sim);return G.RealmAdventure.runtime(sim).enemies.find(e=>e.id===t.target&&canTarget(sim,e))||null;}
 function stop(sim,clear=false){const t=runtime(sim);t.auto=false;t.windup=null;if(clear)t.target=null;}
@@ -36,6 +36,7 @@ function readiness(sim){
 function threat(sim){
  const a=sim.state.adventure;if(sim.paused||!a.started||a.hp<=0||!G.RealmAdventure.combatScene(sim))return null;
  const e=selected(sim);if(!e||e.kind==='practice')return null;
+ if(e.rainTournament){const v=G.RealmEarthTournament?.view(sim);return v&&G.RealmEarthTournament.owned(sim,e)&&['tell','opening'].includes(v.phase)?{phase:v.phase==='tell'?'windup':'recover',kind:v.phase==='tell'?'rain-ribbon':'opening',remaining:v.remaining}:null;}
  const known=e.custom==='bell'?e.kind==='bellwarden':e.eventEnemy?['invader','chanter','saboteur','siegeboss'].includes(e.kind):['skitter','sentinel','boss','charger'].includes(e.kind);
  if(!known)return null;
  if(G.RealmAtlantisCampaign?.encounter(e)&&e.mode==='intake'&&e.strike?.kind==='intake'&&Number.isFinite(e.timer)&&e.timer>0)return{phase:'intake',kind:'harbour-intake',remaining:e.timer};
@@ -57,6 +58,7 @@ function threat(sim){
 }
 function handle(sim,type,p={}){
  const A=G.RealmAdventure,a=sim.state.adventure,r=A.runtime(sim),t=runtime(sim),fail=error=>({ok:false,error}),yes=text=>({ok:true,text});
+ if(G.RealmEarthTournament&&!G.RealmEarthTournament.allowed(sim,type))return fail('The exhibition admits primary attacks, Brace and movement only.');
  if(type==='target-cycle'){
   const list=candidates(sim);if(!list.length){t.target=null;t.auto=false;return yes('No enemies within targeting distance.');}
   const old=list.findIndex(e=>e.id===t.target),step=p.reverse?-1:1;

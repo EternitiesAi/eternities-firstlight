@@ -1,3 +1,157 @@
+# Current exhibition qualification, 2026-10-14
+
+PR80 remains open and stacked on PR79 `ba6fe9fa6a93cfadf075bf085a875dc0f63c6050`.
+The complete non-browser verifier **passed at 609169744b2052935b2067548a76a0fd3eb1f635**:
+237 commands; Node 2341 passed/0 failed/2 skipped; Python 551 run/0 failed/8 skips.
+Read `docs/evidence/rain-exhibition-2026-10-14/FULL_SOURCE_QUALIFICATION.json` for
+exact commands, identities, skips and preserved failed attempts. The real
+blade/bow/veteran outings and whole-draft earned route passed. No validator,
+reward prerequisite or deadline was weakened to repair the older test fixtures.
+
+Runtime 55da534 keeps exhibition instructions clear, presents the result and
+record button before long rules, and shows returning medals above collapsible
+rules. First entry still opens all terms. NATIVE04 at 4a2e474 passed 118 blade and
+131 bow checks, all 11 milestones, both cameras, actual contacts, menu pause,
+cold browser readback and closed resources. See `NATIVE_QUALIFICATION02.json` in
+the same evidence directory. Actual images were inspected. This uses controlled
+accepted ticks and software WebGL. NATIVE03's intermittent quiet-pennant failure
+is retained and unexplained; the later pass does not establish its cause.
+
+Current identical HTML: 3,487,412 bytes, SHA256
+`25185a74c8586ccd8dd8876f59234a216cee8598d356022e0e7a5cdba364a5db`.
+World 9 / Adventure 14 / Arsenal 1 / earthTournament 1. The event's 13-to-14 migration adds
+only an empty event record; the later UI polish changes no save fields or rules.
+Stored XP, all prior histories and explicit choices remain with their owners.
+
+The reused remote qualification checkout is clean at the recorded epoch;
+this is **not a newly created fresh clone**. Full 54-suite browser verification
+remains incomplete: older MASTERWORK_FULL01 terminated at the original 1800s
+WildSigns boundary limit. All earlier failures/skips and later-unreached suites
+remain visible. Independent review, current GPU measurement and human acceptance
+are still open. The two Sol reviewers remain usage-limited; do not reroute.
+
+ROOT owns implementation; STATION may be reused only after checking the latest
+terminal receipt/live owner. SOURCE05 is terminal passed; no full gate is live.
+The new ordinary-RAF capture script is committed, but no film was produced by
+RAIN_FILM01 (CSP predicate error) or RAIN_FILM02 (post-driver RAM admission refusal). Commit 4930974
+repairs the script's predicates without changing the game's CSP. Read
+`CAPTURE_ATTEMPTS01.json` in the evidence directory for terminal failures. Any retry must
+respect fresh 6,291,456KiB admission and serial browser ownership.
+
+Keep VM, Claude, personal saves/profiles and unrelated workers untouched. Heavy
+work stays on D; reuse these checkouts and small staging, no new full copies,
+cleanup, blocked-deletion retry, main merge, deployment or billing changes.
+Heartbeat remains paused; the broader production goal remains active/unfinished.
+
+---
+
+# Native exhibition passed; visible polish and full-gate failure retained, 2026-10-14
+
+Exact remote source15de893 passed the exhibition caller:109 blade and122 bow
+checks, zero failures/errors/external requests, both cameras, real contacts,
+menu controls and two whole-browser restarts per family. All owned resources
+closed; source stayed clean. PR79 ba6fe9f separately passed20 backdrop checks.
+These are controlled software-WebGL routes in the reused qualification checkout,
+not fresh-clone proof, ordinary-time footage, GPU qualification or human approval.
+See docs/evidence/rain-exhibition-2026-10-14/NATIVE_QUALIFICATION01.json.
+
+Actual images exposed overlapping decorative route labels and results buried
+below long terms. A small presentation repair now keeps live bout instructions
+clear, presents results first, and lets returning players expand all unchanged
+rules. First entry still expands the full terms.52 focused event checks pass;
+the extended native caller must qualify this later UI/build before delivery.
+No save version, gear, score or reward rule changed.
+
+The older full MASTERWORK_FULL01 gate is TERMINAL FAILED, not live: original
+1800-second WildSigns boundary limit expired in the third capacity-retry case.
+Its230 source commands and earlier native suites passed; all later suites were
+not reached. Original logs/profiles and closure observations are retained in
+GATE. No process was stopped, no deadline enlarged and no case removed. Diagnose
+that full-gate failure separately from these targeted passes. STATION is now
+clean at15de893 and available only after checking any newer active ownership.
+
+The connected Blender grazer remains staged outside the game:44 CPU graph checks
+and an in-memory build, not integrated/native art. Production remains unfinished.
+Preserve VM/Claude/personal data/unrelated workers, serial browser admission,
+6GiB RAM floor, original deadlines, D storage, no new full copies or cleanup,
+no merge/deploy/billing. Usage-limited colleagues are not rerouted; heartbeat paused.
+
+---
+
+# Exhibition settings now hold the bout, 2026-10-14
+
+A targeted source review found that Settings hid the exhibition while its clock
+and an in-flight arrow kept advancing. A real app-drawer regression reproduced
+both failures. Runtime1f559cf now holds the
+whole simulation during an active exhibition drawer, preserves the chosen pause
+on return, and leaves ordinary exploration drawers unchanged. No save field or
+schema changed. Follow-up `8a6c1e82e130f29f42667d1cc2e9da7bb08fb31e` also repairs
+Space activation on focused drawer buttons, preserving ordinary combat keys.
+All52 focused event tests and3 caller-boundary tests pass.
+Identical HTML is3,486,616 bytes, SHA256
+9d264366be0b260c5e02126a3997ecf264ae81546fd20573d5e581b7281bce45.
+Native layout/controls and full current qualification remain pending. The older
+STATION gate is still live in consignment (exec8043); no competing browser ran.
+
+---
+
+# Exhibition browser checks prepared, 2026-10-14
+
+PR80 now includes a bounded native caller for the actual steward UI, both weapon
+families, guarded gold result, deliberate early-contact/movement replay,
+interrupted entry recovery, both cameras, quiet pennant, other-owner preservation
+and exact whole-browser stored-byte restart. It uses accepted accelerated ticks
+with ordinary RAF disabled and records four small screenshots per family when
+run. It creates no movie and makes no human pacing or GPU claim. Three CPU
+evidence-boundary tests pass; the browser route itself has NOT run.
+
+The runtime and identical3,485,103-byte HTML pair are unchanged at SHA256
+d8266f395b46c766c7197c12b84660fb59c778a7b32cc8926b0c2002affff698. Frozen STATION's
+older88b30bf full gate remains live (exec8043, consignment); no second browser or
+full checkout was created. Current-source complete verification, actual native
+acceptance, exact fresh remote qualification, independent review and human feel
+remain pending. See the task note for concrete execution and retained receipts.
+
+---
+
+# Rain exhibition source checkpoint and repaired admission, 2026-10-14
+
+Runtime is committed at `01b44ae4e840d8ab17508d3216982558e239b19b` on
+`gameplay/tournament-after-rain-20261013`, stacked on PR79 ba6fe9f. The earlier
+source-epoch failures are resolved: after committing the unchanged runtime, both
+classes passed22/0/0 in TOURNAMENT_CURRENT_EPOCH02. A subsequent portability
+inspection found epoch07’s prior raw identity bound to checkout CRLF bytes; it
+now binds the immutable epoch06 Git blob instead. The two affected checks passed
+in TOURNAMENT_EPOCH_PORTABILITY03. Earlier negative receipts remain unchanged.
+
+Current partial evidence:47 event checks, three command-earned variants,
+126 selected owner/combat checks, explicit migration cases and identical HTML.
+Read docs/evidence/rain-exhibition-2026-10-14/SOURCE_QUALIFICATION.json and the task
+note; these are overlapping focused runs, not the complete verifier. Native UI,
+current complete source gate, exact fresh remote checkout, independent review,
+human acceptance and real GPU performance remain open. No event video exists.
+
+The genuinely live baseline full gate still owns frozen STATION at88b30bf
+(exec8043, currently consignment). Keep it untouched and browser execution
+serial. Prepare the bounded event native caller and finish new-head source
+qualification only as resource ownership permits. The earlier unresolved-dirty-
+runtime direction below is historical and superseded. Preserve every ownership,
+VM/Claude, storage, personal-save, no-merge/deploy and paused-heartbeat boundary.
+
+---
+
+# The Tournament After the Rain: source integration, 2026-10-14
+
+A new local exhibition is implemented on `gameplay/tournament-after-rain-20261013`, based on PR79 ba6fe9f. The steward on Hearthwater’s north common declares three exchanges against a mechanical practice post. Brace or move clear of its locked amber ribbon, then land a primary reply in the white-pennant opening. Blade and bow retain their equipment; damage does not buy points. Finite bronze/silver/gold distinctions belong to each family. Repeat play can improve a best result, without an economy payout or campaign advance.
+
+The ring was moved to(5,-31.5), with its steward at(5,-27.6), after a regression exposed overlap with the existing hospitality lantern. The final site passes1,088 body/entry-ray samples and keeps prior task sites outside the circle. Its UI, map mark, read-only original art and both-camera controls are wired into the generated browser game. Native layout/art/camera checks remain pending.
+
+Final event checks47/0 failures/0 skips; earned fresh blade, crafted bow and Chapter IV veteran journeys pass using real commands and a labelled in-memory saver. They cover interrupted-run recovery, six-point result, intentional three-point replay and changed-ID refusal, preserving equipment, XP, sockets, inventory and prior histories. Additional migration/owner/combat checks are recorded separately, not summed as a full gate. Adventure14/tournament1; World9/Arsenal1 unchanged. Identical HTML3,485,103 bytes, SHA256 d8266f395b46c766c7197c12b84660fb59c778a7b32cc8926b0c2002affff698.
+
+The native-oracle CPU attempt retained18 failures/2 errors in119 tests because the two source-epoch classes require a clean committed runtime;1 explicit-cohort test skipped. Preserve that guard and rerun after the source commit. The complete new-head source/native/fresh-remote gate is not passed. The earlier PR78 full browser gate is still separately running in the reused STATION; PR79 woodland native acceptance remains pending. No additional movie, full copy or profile was created. [Contract and receipts](development/EARTH_RAIN_TOURNAMENT_2026-10-13.md).
+
+---
+
 # Grounded woodland scenery in progress, 2026-10-13
 
 The authoring branch `gameplay/grounded-earth-backdrop-20261013` fixes the

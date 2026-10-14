@@ -1,0 +1,78 @@
+{
+  "scope": "Ordinary-RAF recording attempts; no film produced",
+  "attempts": [
+    {
+      "tag": "RAIN_FILM01",
+      "sourceHead": "609169744b2052935b2067548a76a0fd3eb1f635",
+      "terminalExit": 1,
+      "reportStatus": "running",
+      "report": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\RAIN_FILM01\\REPORT.json",
+        "sha256": "01e5d32223ee3e3735d982eb2f8ae65143b6fae9884b1983ec3109599a21a872"
+      },
+      "exit": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\RAIN_FILM01_EXIT.json",
+        "sha256": "c80fd1e43c2baf079f5fcf1b3ff2fa824e0f0293cf1504d23e3cc7f210403dbf"
+      },
+      "checks": [
+        {
+          "name": "earned kit checkpoint has no issued bout or fabricated reward",
+          "passed": true
+        }
+      ],
+      "reason": "String predicate conflicts with production CSP; repaired to a function predicate without weakening CSP.",
+      "contextClosed": true,
+      "serverClosed": true,
+      "filmProduced": false,
+      "budgetLogs": [
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\RAIN_FILM01_BUDGET\\process-22632-fba92b9ff4444a0495550646adb6c3b7.jsonl",
+          "sha256": "6983f2e0134804a1d91aac0fb1f857cf391b8d6d7310e4e0ae178cc977ff14c4"
+        },
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\RAIN_FILM01_BUDGET\\SESSION.json",
+          "sha256": "9e4f3451cddb28828c530efbc412997ea06a820c520b702fcb7b5a0fb422f1ef"
+        }
+      ]
+    },
+    {
+      "tag": "RAIN_FILM02",
+      "sourceHead": "493097495520e372bd6d5074718ee5a64904c39f",
+      "terminalExit": 1,
+      "reportStatus": "failed",
+      "report": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\RAIN_FILM02\\REPORT.json",
+        "sha256": "0608149c74ae02be24b397dba6dae4b6ce2c7e173f731120db35eb1ca81505eb"
+      },
+      "exit": {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\RAIN_FILM02_EXIT.json",
+        "sha256": "f55f3a411c85ad76939efae45c8d8318892b71426dfce6b3c52ad47e895d6a14"
+      },
+      "checks": [
+        {
+          "name": "earned kit checkpoint has no issued bout or fabricated reward",
+          "passed": true
+        }
+      ],
+      "reason": "Post-driver memory admission refused at 5583628 KiB, below unchanged 6291456 KiB floor; no browser allocated.",
+      "contextClosed": false,
+      "serverClosed": true,
+      "filmProduced": false,
+      "budgetLogs": [
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\RAIN_FILM02_BUDGET\\process-18388-3a9621be8e7649c086c670a2be5537bb.jsonl",
+          "sha256": "0143c2513e7c19703b4589da6c77ad44569545ba154a918d98692e7c4e73c925"
+        },
+        {
+          "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\RAIN_FILM02_BUDGET\\SESSION.json",
+          "sha256": "9887c2b8998e52e43a334ed33ed39ac37395789facf1c7fd148e17b89758e5b7"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "The first report retained status running despite terminal failure; terminal exit and error establish failure. 4930974 corrects future failure status.",
+    "Second contextClosed=false means no context was allocated, not a remaining browser. Server closed.",
+    "No claim of actual gameplay footage, ordinary-time pacing, GPU performance or human acceptance."
+  ]
+}

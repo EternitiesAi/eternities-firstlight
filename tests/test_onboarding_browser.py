@@ -310,7 +310,7 @@ class Preparation(unittest.TestCase):
         predicted = self.production_tick(before, .1, hydrated=False)
         # Current-schema derivative of the old non-hydrated output only.
         # The captured historical file and all original events stay unchanged.
-        after = self.literal_masterwork_output(after)
+        after = self.literal_current_output(after)
         self.assertEqual(predicted['journal'], after['journal'])
         self.assertEqual(predicted['nextEvent'], after['nextEvent'])
         self.assertEqual(self.m.living_signature(predicted), self.m.living_signature(after))
@@ -649,11 +649,12 @@ console.log(JSON.stringify({trace,after:incoming.snapshot(),armed,runtimeSources
             with self.subTest(name=name), self.assertRaises(AssertionError):
                 self.m.require_resume_sequence(self.m.resolve_root(), before, got['after'], got['trace'], 'character-1')
 
-    def literal_masterwork_output(self, world):
+    def literal_current_output(self, world):
         result = copy.deepcopy(world)
         self.assertEqual(result['adventure']['version'], 12)
         self.assertNotIn('earthMasterwork', result['adventure'])
-        result['adventure']['version'] = 13
+        result['adventure']['version'] = 14
+        result['adventure']['earthTournament'] = {'version':1,'issued':0,'closed':0,'best':{'blade':None,'bow':None},'finished':{'blade':0,'bow':0}}
         result['adventure']['earthMasterwork'] = {'version': 1, 'accepted': False,
             'evidence': [], 'compared': False, 'participation': None,
             'resolution': None, 'weapon': None, 'enabled': False}
@@ -670,11 +671,11 @@ console.log(JSON.stringify({trace,after:incoming.snapshot(),armed,runtimeSources
         for world in (fixture['before'], fixture['after'], fixture['capture']['first'], fixture['capture']['final']):
             self.assertNotIn('briarMoments', world)
             world['briarMoments'] = {'version': 1, 'revision': 0, 'moments': []}
-        # Output-only Adventure13 derivative: exact literal empty commission.
+        # Output-only Adventure14 derivative: exact literal empty commission and tournament.
         # This is CPU migration evidence, never a new native observation.
-        fixture['after'] = self.literal_masterwork_output(fixture['after'])
+        fixture['after'] = self.literal_current_output(fixture['after'])
         for key in ('first', 'final'):
-            fixture['capture'][key] = self.literal_masterwork_output(fixture['capture'][key])
+            fixture['capture'][key] = self.literal_current_output(fixture['capture'][key])
         return fixture['before'], fixture['after'], fixture['capture']
 
     def test_45_labelled_migration_derivative_of_hydrated_capture_matches_exact_sequence(self):
@@ -703,7 +704,7 @@ console.log(JSON.stringify({trace,after:incoming.snapshot(),armed,runtimeSources
 
     def test_47_exact_capture_rejects_clock_reward_migration_and_tick_forgery(self):
         before, after, capture = self.current_resume_capture()
-        for label in ('hour', 'day', 'adventure clock', 'sandbox clock', 'XP', 'coins', 'migration', 'dt', 'paused', 'dropped tick', 'elapsed'):
+        for label in ('hour', 'day', 'adventure clock', 'sandbox clock', 'XP', 'coins', 'migration', 'tournament', 'dt', 'paused', 'dropped tick', 'elapsed'):
             changed = copy.deepcopy(after); trace = copy.deepcopy(capture)
             if label == 'hour': changed['hour'] += .000001
             elif label == 'day': changed['day'] += 1
@@ -712,6 +713,7 @@ console.log(JSON.stringify({trace,after:incoming.snapshot(),armed,runtimeSources
             elif label == 'XP': changed['adventure']['xp'] += 1
             elif label == 'coins': changed['adventure']['coins'] += 1
             elif label == 'migration': changed['localLife']['records']['earth-first-load-through-v1']['accepted'] = True
+            elif label == 'tournament': changed['adventure']['earthTournament'].update(issued=1,closed=1,best={'blade':6,'bow':None},finished={'blade':1,'bow':0})
             elif label == 'dt': trace['ticks'][1]['dt'] = .09; trace['activeSeconds'] -= .01
             elif label == 'paused': trace['ticks'][1]['paused'] = True; trace['activeSeconds'] -= .1
             elif label == 'dropped tick': trace['ticks'].pop(); trace['activeSeconds'] = sum(t['dt'] for t in trace['ticks'] if not t['paused'])

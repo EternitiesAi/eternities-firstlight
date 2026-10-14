@@ -4,6 +4,7 @@
  * Optional --earned-sources reads the separate command-earned journey receipts.
  */
 'use strict';
+const {removeEmptyTournament}=require('./helpers/earth-tournament-migration.cjs');
 require('../src/earth-patrol-carrier.js');require('../src/earth-patrol-carrier-ui.js');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
 const ROOT=path.resolve(__dirname,'..'),C=require('../src/core.js'),A=require('../src/adventure.js'),E=require('../src/earth-expedition.js'),W=require('../src/world-foundations.js');
@@ -167,7 +168,7 @@ test('actual RPG dispatch gives near expedition priority and closing clears an u
 });
 
 test('missing optional ledger migrates to read-only fresh UI while malformed/current/future records never reach it',()=>{
- const f=fixture(),legacy=f.sim.snapshot();legacy.adventure.version=11;delete legacy.adventure.earthBinding;delete legacy.earthExpedition;const restored=new C.Simulation(legacy);assert.equal(restored.state.adventure.version,13);assert.deepEqual(restored.state.earthExpedition,E.fresh());f.sim=restored;f.sim.room='world-earthlands';const before=f.sim.snapshot();assert.ok(f.ui.page('expedition').html.includes('Accept this expedition'));assert.deepEqual(UI.routePoints(f.sim),[]);assert.deepEqual(f.sim.snapshot(),before);
+ const f=fixture(),legacy=f.sim.snapshot();legacy.adventure.version=11;removeEmptyTournament(legacy.adventure);delete legacy.adventure.earthBinding;delete legacy.earthExpedition;const restored=new C.Simulation(legacy);assert.equal(restored.state.adventure.version,14);assert.deepEqual(restored.state.earthExpedition,E.fresh());f.sim=restored;f.sim.room='world-earthlands';const before=f.sim.snapshot();assert.ok(f.ui.page('expedition').html.includes('Accept this expedition'));assert.deepEqual(UI.routePoints(f.sim),[]);assert.deepEqual(f.sim.snapshot(),before);
  const current=copy(before);delete current.adventure.earthBinding;assert.throws(()=>C.validate(current));for(const raw of[null,{}, {...E.fresh(),version:2}]){const bad=copy(before);bad.earthExpedition=raw;assert.throws(()=>C.validate(bad));}const future=copy(before);future.adventure.version=A.VERSION+1;assert.throws(()=>C.validate(future));
 });
 

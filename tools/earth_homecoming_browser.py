@@ -74,6 +74,11 @@ def expected_optional_defaults(old):
         expected['adventure']['version'] = 13
         if 'earthMasterwork' not in adventure:
             expected['adventure']['earthMasterwork'] = {'version': 1, 'accepted': False, 'evidence': [], 'compared': False, 'participation': None, 'resolution': None, 'weapon': None, 'enabled': False}
+    if isinstance(adventure, dict) and type(adventure.get('version')) is int and adventure['version'] in (12, 13):
+        if 'earthTournament' in adventure:
+            raise ValueError('Ambiguous pre-schema tournament data in historical input.')
+        expected['adventure']['version'] = 14
+        expected['adventure']['earthTournament'] = {'version': 1, 'issued': 0, 'closed': 0, 'best': {'blade': None, 'bow': None}, 'finished': {'blade': 0, 'bow': 0}}
     expected['earthHomecoming'] = json.loads(json.dumps(FRESH))
     if 'earthWildSigns' not in old:
         expected['earthWildSigns'] = {'version': 1, 'accepted': False, 'evidence': [], 'observed': False, 'resolution': None, 'cleared': False, 'claimed': False}

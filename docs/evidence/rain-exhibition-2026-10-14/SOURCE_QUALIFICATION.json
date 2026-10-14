@@ -1,0 +1,200 @@
+{
+  "scope": "Partial CPU qualification of the integrated rain exhibition, not native UI or full-gate completion",
+  "runtimeCommit": "01b44ae4e840d8ab17508d3216982558e239b19b",
+  "baseCommit": "ba6fe9fa6a93cfadf075bf085a875dc0f63c6050",
+  "versions": {
+    "world": 9,
+    "adventure": 14,
+    "arsenal": 1,
+    "earthTournament": 1
+  },
+  "html": {
+    "bytes": 3485103,
+    "sha256": "d8266f395b46c766c7197c12b84660fb59c778a7b32cc8926b0c2002affff698",
+    "identicalPair": true
+  },
+  "focusedEvent": {
+    "passed": 47,
+    "failed": 0,
+    "skipped": 0
+  },
+  "otherOwners": {
+    "passed": 126,
+    "failed": 0,
+    "skipped": 0
+  },
+  "migrationAttempt": {
+    "passed": 181,
+    "failed": 1,
+    "skipped": 0,
+    "repair": "Remaining class literal13 advanced to14; all15 class cases passed within INTEGRATION02(59/0/0)"
+  },
+  "nativeOracleAttempt": {
+    "run": 119,
+    "failures": 18,
+    "errors": 2,
+    "skipped": 1,
+    "cause": "Two source-epoch classes required clean committed runtime; no guard weakened",
+    "repair": "Both classes22/0/0 after source commit; subsequent git-blob portability correction2/0/0"
+  },
+  "nativeBrowser": false,
+  "freshRemoteQualification": false,
+  "fullVerifier": false,
+  "independentReview": false,
+  "humanAcceptance": false,
+  "realGPUPerformance": false,
+  "newFullCopies": 0,
+  "newBrowserProfiles": 0,
+  "newVideos": 0,
+  "receipts": {
+    "TOURNAMENT_FOCUSED_FINAL01.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\TOURNAMENT_FOCUSED_FINAL01.log",
+      "bytes": 4580,
+      "sha256": "968f930c53a8e8dfc4d6998f970b6b5910bc96aacb6be5ff2ad10410d6186484"
+    },
+    "TOURNAMENT_PRIOR_OWNERS01.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\TOURNAMENT_PRIOR_OWNERS01.log",
+      "bytes": 13904,
+      "sha256": "e4873abeb12e08ec21146a7684cb725255c2f11989362d1a4fdfc9984c42acf7"
+    },
+    "TOURNAMENT_PRIOR_MIGRATION_RED01.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\TOURNAMENT_PRIOR_MIGRATION_RED01.log",
+      "bytes": 14971,
+      "sha256": "36faacf4a731309cac7acc72ef0815d25c71b90ad3e394fdda62fc37e7eb7179"
+    },
+    "TOURNAMENT_PRIOR_MIGRATION01.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\TOURNAMENT_PRIOR_MIGRATION01.log",
+      "bytes": 21839,
+      "sha256": "b610efdf2c0e0a2f0c8b16c574f5aac726d40656a9915d24b5f01d45109ae6dd"
+    },
+    "TOURNAMENT_INTEGRATION02.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\TOURNAMENT_INTEGRATION02.log",
+      "bytes": 5631,
+      "sha256": "412426e5f1c5bc15a26952b19e78d372f2c61f05431b467fdbaf1f5edb61ece6"
+    },
+    "TOURNAMENT_NATIVE_ORACLES01.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\TOURNAMENT_NATIVE_ORACLES01.log",
+      "bytes": 44491,
+      "sha256": "f39ae241bb0c6dc6f590f8c7de54f0efad39bf87e303a9fd1d83379d38f95778"
+    },
+    "TOURNAMENT_CURRENT_EPOCH02.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\TOURNAMENT_CURRENT_EPOCH02.log",
+      "bytes": 3792,
+      "sha256": "92aeba5fe78febd8ad7b0ecdd2da657e56a7c89bcf750ba117e6ba2cc002c0e3"
+    },
+    "TOURNAMENT_EPOCH_PORTABILITY03.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\TOURNAMENT_EPOCH_PORTABILITY03.log",
+      "bytes": 433,
+      "sha256": "99401920de4c64bc58b20b4508eed8e4550e165ed5339ceb5797dab5c63c466a"
+    },
+    "TOURNAMENT_BUILD03.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\TOURNAMENT_BUILD03.log",
+      "bytes": 91,
+      "sha256": "faa2d682d29fbf10efcf096dedfbe498535942c573e7d8567237348bd8f96e7e"
+    },
+    "TOURNAMENT_COMBAT_RED01.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\TOURNAMENT_COMBAT_RED01.log",
+      "bytes": 8189,
+      "sha256": "1f3b5130d9ab7bcb35ae2730f865d59ac14e4fb1a517f5be73516dd0c62ab932"
+    },
+    "TOURNAMENT_COMBAT_RED02.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\TOURNAMENT_COMBAT_RED02.log",
+      "bytes": 6512,
+      "sha256": "44bf6b5a6665267ef40b5d255734ee1aeba1793b6d0af6d201a6efc584878794"
+    },
+    "TOURNAMENT_GEOGRAPHY_RED01.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\TOURNAMENT_GEOGRAPHY_RED01.log",
+      "bytes": 1297,
+      "sha256": "0b9a8e2a88b596005e5d75844880ed29bf7c2e395aa4b0833b54812b20bb40cf"
+    }
+  },
+  "earned": {
+    "blade": {
+      "status": "passed",
+      "variant": "blade",
+      "family": "blade",
+      "sourceSha256": null,
+      "commands": 11,
+      "positionEdits": 0,
+      "inventoryGrants": 0,
+      "scoreGrants": 0,
+      "damageGrants": 0,
+      "acceleratedTicks": true,
+      "durableStore": "labelled in-memory synchronous canonical writer",
+      "nativeBrowser": false,
+      "record": {
+        "version": 1,
+        "issued": 3,
+        "closed": 3,
+        "best": {
+          "blade": 6,
+          "bow": null
+        },
+        "finished": {
+          "blade": 2,
+          "bow": 0
+        }
+      },
+      "actions": 34,
+      "reportSha256": "aa0c54b54dacaf05cef02e4ffff2ffbc7ef796d0fb9daf127fb0594efb83047d"
+    },
+    "bow": {
+      "status": "passed",
+      "variant": "bow",
+      "family": "bow",
+      "sourceSha256": null,
+      "commands": 27,
+      "positionEdits": 0,
+      "inventoryGrants": 0,
+      "scoreGrants": 0,
+      "damageGrants": 0,
+      "acceleratedTicks": true,
+      "durableStore": "labelled in-memory synchronous canonical writer",
+      "nativeBrowser": false,
+      "record": {
+        "version": 1,
+        "issued": 3,
+        "closed": 3,
+        "best": {
+          "blade": null,
+          "bow": 6
+        },
+        "finished": {
+          "blade": 0,
+          "bow": 2
+        }
+      },
+      "actions": 47,
+      "reportSha256": "e9e6544963d28c3f77504d582a2e2a0ab0b50c056f718a42ba74887b2dc67bcc"
+    },
+    "veteran": {
+      "status": "passed",
+      "variant": "veteran",
+      "family": "blade",
+      "sourceSha256": "eaefe57933fa0cd67d3db08d8a9a1014eab03a92c761418e5e85c8d3332034a2",
+      "commands": 10,
+      "positionEdits": 0,
+      "inventoryGrants": 0,
+      "scoreGrants": 0,
+      "damageGrants": 0,
+      "acceleratedTicks": true,
+      "durableStore": "labelled in-memory synchronous canonical writer",
+      "nativeBrowser": false,
+      "record": {
+        "version": 1,
+        "issued": 3,
+        "closed": 3,
+        "best": {
+          "blade": 6,
+          "bow": null
+        },
+        "finished": {
+          "blade": 2,
+          "bow": 0
+        }
+      },
+      "actions": 32,
+      "reportSha256": "426f937636e7d16cd89a6af0fc4b09084aee7313060d256442fc58b878972075"
+    }
+  }
+}

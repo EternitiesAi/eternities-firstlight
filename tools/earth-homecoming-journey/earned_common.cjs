@@ -23,6 +23,7 @@ function write(folder,name,value){const p=path.join(folder,name+'.json');fs.writ
 function assertMigrationPreserved(migrated,raw){
  const expected=copy(raw),catalogue=expected.localLife;
  if(raw.adventure.version===12){expected.adventure.version=13;if(!Object.hasOwn(raw.adventure,'earthMasterwork'))expected.adventure.earthMasterwork={version:1,accepted:false,evidence:[],compared:false,participation:null,resolution:null,weapon:null,enabled:false};}
+ if(expected.adventure.version===13){assert.ok(!Object.hasOwn(expected.adventure,'earthTournament'),'Historical input must not contain later tournament data');expected.adventure.version=14;expected.adventure.earthTournament={version:1,issued:0,closed:0,best:{blade:null,bow:null},finished:{blade:0,bow:0}};}
  if(!('earthWildSigns' in raw))expected.earthWildSigns={version:1,accepted:false,evidence:[],observed:false,resolution:null,cleared:false,claimed:false};
  if(!Object.hasOwn(raw,'briarMoments'))expected.briarMoments={version:1,revision:0,moments:[]};
  const ids=['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1'].sort();
@@ -38,7 +39,7 @@ function assertMigrationPreserved(migrated,raw){
 function migration(file,expected,folder){
  assert.equal(sha(file),expected,'byte-bound real earned checkpoint');const raw=JSON.parse(fs.readFileSync(file)),C=load('core'),H=load('earth-homecoming'),migrated=C.validate(raw);
  assert.deepEqual(migrated.earthHomecoming,H.fresh());const catalogueMigration=assertMigrationPreserved(migrated,raw);assert.equal(sha(file),expected,'original earned input bytes unchanged');
- const world=write(folder,'MIGRATED_WORLD',migrated),receipt={source:{path:file,bytes:fs.statSync(file).size,sha256:expected},output:world,newOwner:copy(migrated.earthHomecoming),localLifeCatalogueMigration:catalogueMigration,earthWildSignsMigration:!('earthWildSigns' in raw)?'missing-to-fresh-earth-wild-signs-v1':null,briarMomentsMigration:!Object.hasOwn(raw,'briarMoments')?'missing-to-fresh-briar-moments-v1':null,oldWorldUnchanged:true,method:'actual installed Core.validate; missing empty Earth owner, exact old-four to fresh-fifth catalogue, missing-only literal fresh WildSigns and missing-only literal fresh Briar moments; no historical claims transplanted'};
+ const world=write(folder,'MIGRATED_WORLD',migrated),receipt={source:{path:file,bytes:fs.statSync(file).size,sha256:expected},output:world,earthTournamentMigration:[12,13].includes(raw.adventure.version)?'adventure13-to14-empty-tournament1':null,newOwner:copy(migrated.earthHomecoming),localLifeCatalogueMigration:catalogueMigration,earthWildSignsMigration:!('earthWildSigns' in raw)?'missing-to-fresh-earth-wild-signs-v1':null,briarMomentsMigration:!Object.hasOwn(raw,'briarMoments')?'missing-to-fresh-briar-moments-v1':null,oldWorldUnchanged:true,method:'actual installed Core.validate; missing empty Earth owner, exact old-four to fresh-fifth catalogue, missing-only literal fresh WildSigns and missing-only literal fresh Briar moments; no historical claims transplanted'};
  write(folder,'MIGRATION_RECEIPT',receipt);return receipt;
 }
 function preserved(final,before){

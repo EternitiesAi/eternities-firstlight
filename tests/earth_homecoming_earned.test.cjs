@@ -35,6 +35,7 @@ test('actual optional migration keeps every historical fact and adds only explic
   // Independently specified migration: keep every existing value, adding only
   // the declared empty owner when an Adventure12 input lacks it.
   if(raw.adventure.version===12){expected.adventure.version=13;if(!Object.hasOwn(raw.adventure,'earthMasterwork'))expected.adventure.earthMasterwork={version:1,accepted:false,evidence:[],compared:false,participation:null,resolution:null,weapon:null,enabled:false};}
+ if(expected.adventure.version===13){assert.ok(!Object.hasOwn(expected.adventure,'earthTournament'),'Historical input must not contain later tournament data');expected.adventure.version=14;expected.adventure.earthTournament={version:1,issued:0,closed:0,best:{blade:null,bow:null},finished:{blade:0,bow:0}};}
   const wildSignsMissing=!('earthWildSigns' in raw);if(wildSignsMissing)expected.earthWildSigns={version:1,accepted:false,evidence:[],observed:false,resolution:null,cleared:false,claimed:false};
   assert.equal(r.migration.earthWildSignsMigration,wildSignsMissing?'missing-to-fresh-earth-wild-signs-v1':null);
   const briarMissing=!Object.hasOwn(raw,'briarMoments');if(briarMissing)expected.briarMoments={version:1,revision:0,moments:[]};

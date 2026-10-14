@@ -2,6 +2,7 @@
  * synthetic fixtures; they are not evidence of earned story claims. The
  * separate realm_trails_journey uses no position, HP, inventory or death edits. */
 'use strict';
+const {removeEmptyTournament}=require('./helpers/earth-tournament-migration.cjs');
 const {test}=require('node:test'),assert=require('node:assert/strict');
 const C=require('../src/core.js'),A=require('../src/adventure.js'),AR=require('../src/arsenal.js'),T=require('../src/combat.js');
 const W=require('../src/world-foundations.js'),R=require('../src/realm-trails.js'),RC=require('../src/realm-craft.js');
@@ -57,8 +58,8 @@ test('strict escort history rejects impossible arrival/checkpoint records while 
   const bad=copy(raw);edit(bad.realmTrails.records[d.id]);assert.throws(()=>C.validate(bad),/realm trails/);
  }
  const valid=copy(raw);valid.realmTrails.records[d.id].checkpoint=1;assert.doesNotThrow(()=>C.validate(valid));
- const legacy=kit();delete legacy.realmTrails;legacy.adventure.version=10;delete legacy.adventure.realmCraft;
- const migrated=C.validate(legacy);assert.equal(migrated.adventure.version,13);assert.deepEqual(migrated.realmTrails,R.fresh());
+ const legacy=kit();delete legacy.realmTrails;legacy.adventure.version=10;removeEmptyTournament(legacy.adventure);delete legacy.adventure.realmCraft;
+ const migrated=C.validate(legacy);assert.equal(migrated.adventure.version,14);assert.deepEqual(migrated.realmTrails,R.fresh());
  assert.deepEqual(migrated.adventure.realmCraft,RC.fresh());
  for(const key of['xp','coins','ore','owned','equipment','arsenal','pursuit','starter','defeated','drops'])assert.deepEqual(migrated.adventure[key],legacy.adventure[key]);
 });

@@ -1,3 +1,152 @@
+# Current exhibition qualification, 2026-10-14
+
+PR80 remains open and stacked on PR79 `ba6fe9fa6a93cfadf075bf085a875dc0f63c6050`.
+The complete non-browser verifier **passed at 609169744b2052935b2067548a76a0fd3eb1f635**:
+237 commands; Node 2341 passed/0 failed/2 skipped; Python 551 run/0 failed/8 skips.
+Read `docs/evidence/rain-exhibition-2026-10-14/FULL_SOURCE_QUALIFICATION.json` for
+exact commands, identities, skips and preserved failed attempts. The real
+blade/bow/veteran outings and whole-draft earned route passed. No validator,
+reward prerequisite or deadline was weakened to repair the older test fixtures.
+
+Runtime 55da534 keeps exhibition instructions clear, presents the result and
+record button before long rules, and shows returning medals above collapsible
+rules. First entry still opens all terms. NATIVE04 at 4a2e474 passed 118 blade and
+131 bow checks, all 11 milestones, both cameras, actual contacts, menu pause,
+cold browser readback and closed resources. See `NATIVE_QUALIFICATION02.json` in
+the same evidence directory. Actual images were inspected. This uses controlled
+accepted ticks and software WebGL. NATIVE03's intermittent quiet-pennant failure
+is retained and unexplained; the later pass does not establish its cause.
+
+Current identical HTML: 3,487,412 bytes, SHA256
+`25185a74c8586ccd8dd8876f59234a216cee8598d356022e0e7a5cdba364a5db`.
+World 9 / Adventure 14 / Arsenal 1 / earthTournament 1. The event's 13-to-14 migration adds
+only an empty event record; the later UI polish changes no save fields or rules.
+Stored XP, all prior histories and explicit choices remain with their owners.
+
+The reused remote qualification checkout is clean at the recorded epoch;
+this is **not a newly created fresh clone**. Full 54-suite browser verification
+remains incomplete: older MASTERWORK_FULL01 terminated at the original 1800s
+WildSigns boundary limit. All earlier failures/skips and later-unreached suites
+remain visible. Independent review, current GPU measurement and human acceptance
+are still open. The two Sol reviewers remain usage-limited; do not reroute.
+
+ROOT owns implementation; STATION may be reused only after checking the latest
+terminal receipt/live owner. SOURCE05 is terminal passed; no full gate is live.
+The new ordinary-RAF capture script is committed, but no film was produced by
+RAIN_FILM01 (CSP predicate error) or RAIN_FILM02 (post-driver RAM admission refusal). Commit 4930974
+repairs the script's predicates without changing the game's CSP. Read
+`CAPTURE_ATTEMPTS01.json` in the evidence directory for terminal failures. Any retry must
+respect fresh 6,291,456KiB admission and serial browser ownership.
+
+Keep VM, Claude, personal saves/profiles and unrelated workers untouched. Heavy
+work stays on D; reuse these checkouts and small staging, no new full copies,
+cleanup, blocked-deletion retry, main merge, deployment or billing changes.
+Heartbeat remains paused; the broader production goal remains active/unfinished.
+
+---
+
+# Native exhibition passed; visible polish and full-gate failure retained, 2026-10-14
+
+Exact remote source15de893 passed the exhibition caller:109 blade and122 bow
+checks, zero failures/errors/external requests, both cameras, real contacts,
+menu controls and two whole-browser restarts per family. All owned resources
+closed; source stayed clean. PR79 ba6fe9f separately passed20 backdrop checks.
+These are controlled software-WebGL routes in the reused qualification checkout,
+not fresh-clone proof, ordinary-time footage, GPU qualification or human approval.
+See docs/evidence/rain-exhibition-2026-10-14/NATIVE_QUALIFICATION01.json.
+
+Actual images exposed overlapping decorative route labels and results buried
+below long terms. A small presentation repair now keeps live bout instructions
+clear, presents results first, and lets returning players expand all unchanged
+rules. First entry still expands the full terms.52 focused event checks pass;
+the extended native caller must qualify this later UI/build before delivery.
+No save version, gear, score or reward rule changed.
+
+The older full MASTERWORK_FULL01 gate is TERMINAL FAILED, not live: original
+1800-second WildSigns boundary limit expired in the third capacity-retry case.
+Its230 source commands and earlier native suites passed; all later suites were
+not reached. Original logs/profiles and closure observations are retained in
+GATE. No process was stopped, no deadline enlarged and no case removed. Diagnose
+that full-gate failure separately from these targeted passes. STATION is now
+clean at15de893 and available only after checking any newer active ownership.
+
+The connected Blender grazer remains staged outside the game:44 CPU graph checks
+and an in-memory build, not integrated/native art. Production remains unfinished.
+Preserve VM/Claude/personal data/unrelated workers, serial browser admission,
+6GiB RAM floor, original deadlines, D storage, no new full copies or cleanup,
+no merge/deploy/billing. Usage-limited colleagues are not rerouted; heartbeat paused.
+
+---
+
+# Exhibition menu timing repaired, 2026-10-14
+
+Runtime follow-ups1f559cf and `8a6c1e82e130f29f42667d1cc2e9da7bb08fb31e` on PR80
+fix a reproduced Settings clock/projectile leak and blocked Space activation on
+drawer buttons. Read MENU_PAUSE_QUALIFICATION.json under
+docs/evidence/rain-exhibition-2026-10-14. All52 focused event checks and3
+caller-boundary tests pass; new HTML is3,486,616 bytes /9d264366…1bce45.
+This is still NOT native/full/fresh-remote qualification. Native caller now
+includes drawer/P-button/nested-Journal checks but remains unrun. At00:54 Chicago
+exec8043 still owns frozen STATION at88b30bf, now on veteran-north consignment.
+Preserve it, serial browser ownership, all failures and every boundary below.
+
+---
+
+# Rain exhibition native caller prepared, not executed, 2026-10-14
+
+ROOT remains on PR80 `gameplay/tournament-after-rain-20261013`. The new
+`tools/tournament_browser.py` is registered in the browser verifier and has
+three passing CPU evidence-boundary tests. It has NOT allocated a browser or
+produced a native pass, screenshot or movie. Read the task note's caller section.
+The source/HTML runtime is unchanged from dfb4842; the full gate in frozen
+STATION at88b30bf remains genuinely live under exec8043, now on the veteran
+consignment cases after fresh blade/bow routes. Do not overlap browser work,
+touch STATION, restart the gate, or relaunch the usage-limited reviewers.
+After its terminal receipt, inspect the result and qualify the prepared PR79
+woodland and PR80 exhibition callers serially from exact fetched source. Keep
+the6GiB floor, existing deadlines, storage/VM/Claude boundaries, every negative
+receipt and the paused heartbeat. All production/human acceptance remains open.
+
+---
+
+# Rain exhibition source checkpoint and repaired admission, 2026-10-14
+
+Runtime is committed at `01b44ae4e840d8ab17508d3216982558e239b19b` on
+`gameplay/tournament-after-rain-20261013`, stacked on PR79 ba6fe9f. The earlier
+source-epoch failures are resolved: after committing the unchanged runtime, both
+classes passed22/0/0 in TOURNAMENT_CURRENT_EPOCH02. A subsequent portability
+inspection found epoch07’s prior raw identity bound to checkout CRLF bytes; it
+now binds the immutable epoch06 Git blob instead. The two affected checks passed
+in TOURNAMENT_EPOCH_PORTABILITY03. Earlier negative receipts remain unchanged.
+
+Current partial evidence:47 event checks, three command-earned variants,
+126 selected owner/combat checks, explicit migration cases and identical HTML.
+Read docs/evidence/rain-exhibition-2026-10-14/SOURCE_QUALIFICATION.json and the task
+note; these are overlapping focused runs, not the complete verifier. Native UI,
+current complete source gate, exact fresh remote checkout, independent review,
+human acceptance and real GPU performance remain open. No event video exists.
+
+The genuinely live baseline full gate still owns frozen STATION at88b30bf
+(exec8043, currently consignment). Keep it untouched and browser execution
+serial. Prepare the bounded event native caller and finish new-head source
+qualification only as resource ownership permits. The earlier unresolved-dirty-
+runtime direction below is historical and superseded. Preserve every ownership,
+VM/Claude, storage, personal-save, no-merge/deploy and paused-heartbeat boundary.
+
+---
+
+# Active authoring: rain exhibition implemented, qualification open, 2026-10-14
+
+ROOT owns `gameplay/tournament-after-rain-20261013`, based on PR79 ba6fe9fa6a93cfadf075bf085a875dc0f63c6050. Read docs/development/EARTH_RAIN_TOURNAMENT_2026-10-13.md. The real model, owner/writer, combat, UI, art and strict Adventure13-to14 migration are integrated. Generated pages are identical 3,485,103-byte builds, SHA256 d8266f395b46c766c7197c12b84660fb59c778a7b32cc8926b0c2002affff698. This is NOT native-qualified or a full-gate delivery.
+
+Focused final tournament checks:47 passed. Final-site earned blade, crafted bow and historical Chapter IV veteran journeys pass; all use accepted accelerated commands with a labelled in-memory saver, not native storage. Both guarded and actual walking responses score through the real rules. Earlier negative receipts remain. Native-oracle01 has119 tests with18 failures/2 errors/1 skip: every failure/error is the required clean committed runtime guard in the two roadkeeper source-epoch classes. Commit the reviewed source, then rerun those exact classes without weakening that guard. Other checks in that run passed. Broader source/new-head remote/native qualification still required.
+
+STATION remains frozen at88b30bf under the genuinely live MASTERWORK_FULL01 / exec8043 gate, presently in consignment. Do not edit/move STATION or launch a second browser/heavy parallel suite. Only independent ROOT source work and bounded focused CPU checks are admitted. No new full checkout, video, browser profile or cleanup. Both Sol reviewers remain usage-limited. PR79 app attachment returned a3600s tool timeout; GitHub PR79 exists, app attachment is unconfirmed. Heartbeat remains PAUSED.
+
+Preserve the VM/Claude/personal-save/unrelated-worker exclusions and original6GiB RAM floor, four Node workers/full-suite deadlines. No paid provider, billing, merge, deploy, blocked deletion retry or worker reroute.
+
+---
+
 # Active authoring: grounded Earth backdrop, 2026-10-13
 
 ROOT now owns `gameplay/grounded-earth-backdrop-20261013`, based on PR78 delivery

@@ -30,7 +30,14 @@ if(require.main===module&&!process.argv.includes('--veteran')){let r=run({bow:pr
 module.exports={run};
 
 function veteran(){
- const src=path.join(ROOT,'../veteran-source/HOME_AFTER_BELL_EARNED.json');assert.ok(fs.existsSync(src),'earned Chapter IV fixture');const migratedInput=JSON.parse(fs.readFileSync(src));migratedInput.adventure.version=5;delete migratedInput.adventure.starter;let sim=new C.Simulation(migratedInput),n=0,actions=[];for(const k of Object.keys(migratedInput.adventure))if(k!=='version')assert.deepEqual(sim.state.adventure[k],migratedInput.adventure[k],'veteran migration '+k);const out=path.join(ROOT,'veteran');fs.mkdirSync(out,{recursive:true});
+ const src=path.join(ROOT,'../veteran-source/HOME_AFTER_BELL_EARNED.json');assert.ok(fs.existsSync(src),'earned Chapter IV fixture');const migratedInput=JSON.parse(fs.readFileSync(src));
+ // This is a labelled synthetic downgrade of command-earned campaign data.
+ // A schema-5 export could not have a tournament record. Refuse to remove any
+ // event history; the independent helper permits only its literal empty state.
+ require('./helpers/earth-tournament-migration.cjs').removeEmptyTournament(migratedInput.adventure);
+ migratedInput.adventure.version=5;delete migratedInput.adventure.starter;let sim=new C.Simulation(migratedInput),n=0,actions=[];
+ assert.deepEqual(sim.state.adventure.earthTournament,{version:1,issued:0,closed:0,best:{blade:null,bow:null},finished:{blade:0,bow:0}});
+ for(const k of Object.keys(migratedInput.adventure))if(k!=='version')assert.deepEqual(sim.state.adventure[k],migratedInput.adventure[k],'veteran migration '+k);const out=path.join(ROOT,'veteran');fs.mkdirSync(out,{recursive:true});
  const cmd=(t,p={})=>{let r=sim.adventureCommand('starter-veteran-'+(++n),t,p);assert.ok(r.ok,t+': '+r.error);actions.push({type:t,p});return r;};const tick=t=>{for(let i=0;i<Math.ceil(t/.05);i++)sim.tick(.05);};const walk=(x,z)=>{let r=sim.moveTo(x,z);assert.ok(r.ok,'walk '+x+','+z+': '+r.error);for(let i=0;i<7000&&sim.playerPath.length;i++)tick(.05);assert.ok(Math.hypot(sim.state.player.x-x,sim.state.player.z-z)<.25);actions.push({walk:[x,z]});};const snap=name=>fs.writeFileSync(path.join(out,name+'.json'),JSON.stringify(sim.snapshot(),null,2));
  const veteranWeapon=sim.state.adventure.equipment.weapon;assert.ok(veteranWeapon);const before=A.stats(sim.state.adventure);assert.equal(veteranWeapon,'dawn_edge');assert.equal(before.attack,42);const legacy=sim.snapshot();walk(11,9);cmd('starter-accept');sim=new C.Simulation(sim.snapshot());snap('01_ACCEPTED_RELOADED');walk(15,7);cmd('starter-enter');
  for(const b of Q.BUNDLES){walk(b.x,b.z);cmd('starter-pickup',{id:b.id});}

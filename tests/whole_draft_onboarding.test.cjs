@@ -9,7 +9,7 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
 const {test,after}=require('node:test');
 const ROOT=path.resolve(process.env.FIRSTLIGHT_ROOT||path.join(__dirname,'..'));
 const C=require(path.join(ROOT,'src/core.js')),A=global.RealmAdventure,W=global.RealmWorldFoundations,R=global.RealmTrails;
-require(path.join(ROOT,'src/characters.js'));require(path.join(ROOT,'src/gathering-music.js'));global.window=global;global.addEventListener=()=>{};
+require(path.join(ROOT,'src/characters.js'));require(path.join(ROOT,'src/gathering-music.js'));require(path.join(ROOT,'src/earth-tournament-ui.js'));global.window=global;global.addEventListener=()=>{};
 require(path.join(ROOT,'src/earth-grazer-motion.js'));require(path.join(ROOT,'src/earth-wild-signs.js'));require(path.join(ROOT,'src/earth-wild-signs-ui.js'));
 for(const name of ['adventure-ui.js','crossing-ui.js','starter-ui.js','pursuit-ui.js','characters-ui.js','classes-ui.js','cosmos-ui.js','realm-atlas-ui.js','gathering-ui.js','earth-notes-ui.js','earth-story-ui.js','earth-road.js','earth-road-ui.js','earth-ui.js','world-foundations-ui.js','realm-trails-ui.js','hell-campaign-ui.js','heaven-campaign-ui.js','atlantis-campaign-ui.js','cosmos-campaign-ui.js','earth-homecoming-ui.js','bridge-community-ui.js','local-life-ui.js','earth-fieldcraft.js','earth-fieldcraft-ui.js','earth-expedition-ui.js','home-history-ui.js','earth-masterwork-ui.js','rpg-ui.js'])require(path.join(ROOT,'src',name));
 class Node{

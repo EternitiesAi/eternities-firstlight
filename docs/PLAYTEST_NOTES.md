@@ -1,3 +1,127 @@
+# Current exhibition qualification, 2026-10-14
+
+PR80 remains open and stacked on PR79 `ba6fe9fa6a93cfadf075bf085a875dc0f63c6050`.
+The complete non-browser verifier **passed at 609169744b2052935b2067548a76a0fd3eb1f635**:
+237 commands; Node 2341 passed/0 failed/2 skipped; Python 551 run/0 failed/8 skips.
+Read `docs/evidence/rain-exhibition-2026-10-14/FULL_SOURCE_QUALIFICATION.json` for
+exact commands, identities, skips and preserved failed attempts. The real
+blade/bow/veteran outings and whole-draft earned route passed. No validator,
+reward prerequisite or deadline was weakened to repair the older test fixtures.
+
+Runtime 55da534 keeps exhibition instructions clear, presents the result and
+record button before long rules, and shows returning medals above collapsible
+rules. First entry still opens all terms. NATIVE04 at 4a2e474 passed 118 blade and
+131 bow checks, all 11 milestones, both cameras, actual contacts, menu pause,
+cold browser readback and closed resources. See `NATIVE_QUALIFICATION02.json` in
+the same evidence directory. Actual images were inspected. This uses controlled
+accepted ticks and software WebGL. NATIVE03's intermittent quiet-pennant failure
+is retained and unexplained; the later pass does not establish its cause.
+
+Current identical HTML: 3,487,412 bytes, SHA256
+`25185a74c8586ccd8dd8876f59234a216cee8598d356022e0e7a5cdba364a5db`.
+World 9 / Adventure 14 / Arsenal 1 / earthTournament 1. The event's 13-to-14 migration adds
+only an empty event record; the later UI polish changes no save fields or rules.
+Stored XP, all prior histories and explicit choices remain with their owners.
+
+The reused remote qualification checkout is clean at the recorded epoch;
+this is **not a newly created fresh clone**. Full 54-suite browser verification
+remains incomplete: older MASTERWORK_FULL01 terminated at the original 1800s
+WildSigns boundary limit. All earlier failures/skips and later-unreached suites
+remain visible. Independent review, current GPU measurement and human acceptance
+are still open. The two Sol reviewers remain usage-limited; do not reroute.
+
+ROOT owns implementation; STATION may be reused only after checking the latest
+terminal receipt/live owner. SOURCE05 is terminal passed; no full gate is live.
+The new ordinary-RAF capture script is committed, but no film was produced by
+RAIN_FILM01 (CSP predicate error) or RAIN_FILM02 (post-driver RAM admission refusal). Commit 4930974
+repairs the script's predicates without changing the game's CSP. Read
+`CAPTURE_ATTEMPTS01.json` in the evidence directory for terminal failures. Any retry must
+respect fresh 6,291,456KiB admission and serial browser ownership.
+
+Keep VM, Claude, personal saves/profiles and unrelated workers untouched. Heavy
+work stays on D; reuse these checkouts and small staging, no new full copies,
+cleanup, blocked-deletion retry, main merge, deployment or billing changes.
+Heartbeat remains paused; the broader production goal remains active/unfinished.
+
+Human play remains pending. On a fresh blade and a bow, were the amber warning
+and white reply opening understandable? Was an unscored shot explained fairly?
+Were results easy to record, and did replaying for a better distinction feel
+worthwhile? On a returning character, did timing still matter without consuming
+or replacing equipment? Automated checks cannot answer these questions.
+
+---
+
+# Native exhibition passed; visible polish and full-gate failure retained, 2026-10-14
+
+Exact remote source15de893 passed the exhibition caller:109 blade and122 bow
+checks, zero failures/errors/external requests, both cameras, real contacts,
+menu controls and two whole-browser restarts per family. All owned resources
+closed; source stayed clean. PR79 ba6fe9f separately passed20 backdrop checks.
+These are controlled software-WebGL routes in the reused qualification checkout,
+not fresh-clone proof, ordinary-time footage, GPU qualification or human approval.
+See docs/evidence/rain-exhibition-2026-10-14/NATIVE_QUALIFICATION01.json.
+
+Actual images exposed overlapping decorative route labels and results buried
+below long terms. A small presentation repair now keeps live bout instructions
+clear, presents results first, and lets returning players expand all unchanged
+rules. First entry still expands the full terms.52 focused event checks pass;
+the extended native caller must qualify this later UI/build before delivery.
+No save version, gear, score or reward rule changed.
+
+The older full MASTERWORK_FULL01 gate is TERMINAL FAILED, not live: original
+1800-second WildSigns boundary limit expired in the third capacity-retry case.
+Its230 source commands and earlier native suites passed; all later suites were
+not reached. Original logs/profiles and closure observations are retained in
+GATE. No process was stopped, no deadline enlarged and no case removed. Diagnose
+that full-gate failure separately from these targeted passes. STATION is now
+clean at15de893 and available only after checking any newer active ownership.
+
+The connected Blender grazer remains staged outside the game:44 CPU graph checks
+and an in-memory build, not integrated/native art. Production remains unfinished.
+Preserve VM/Claude/personal data/unrelated workers, serial browser admission,
+6GiB RAM floor, original deadlines, D storage, no new full copies or cleanup,
+no merge/deploy/billing. Usage-limited colleagues are not rerouted; heartbeat paused.
+
+---
+
+# Camera/graphics adjustment must not cost an exchange, 2026-10-14
+
+The actual Settings drawer was found to leave the new exhibition clock and
+projectile active behind the hidden HUD. CPU integration reproduced the defect;
+the repaired route now holds both and preserves an explicit paused return.
+The current52 event tests pass, including an additional repair for Space on
+focused drawer buttons. The native caller will inspect this through real
+Settings controls, P/Space and the transition into Journal. That visible run is still
+pending; no new screenshot, video or human response is claimed here.
+
+---
+
+# Exhibition observation prepared, 2026-10-14
+
+The new browser caller will inspect actual displayed terms, target selection,
+amber/white cues, native Brace and primary reply, two camera projections, HUD
+clearance, deliberate recording, quiet motion and cold restart. Accepted body
+walking supplies a movement-response case; native keys supply guard/attack.
+Ordinary RAF is disabled, so this is a controlled acceptance route, not footage
+or a human-speed timing measurement. Its CPU report guards pass3 tests. No
+browser run or new gameplay image/video is claimed at this checkpoint.
+
+Dom's pending questions remain: Is the warning clear? Can you tell when to
+answer? Is improving a personal medal worth returning for? No answer is inferred
+from tests. Existing synthetic/command-earned and historic footage labels remain.
+
+---
+
+# Rain exhibition: command-earned, native/human feel pending, 2026-10-14
+
+Fresh blade, legitimately crafted bow and historical Chapter IV veteran cases walk from Firstlight, enter the exhibition, recover an interrupted attempt, score6/6 through real primary contacts and Brace, return to the steward, record once, and deliberately replay for3/6. Their prior best remains6 and ordinary owners remain intact. These are accelerated accepted rule journeys with an in-memory writer; they are not new gameplay footage or browser persistence evidence.
+
+A separate real-movement rule case walks sideways out of all three locked ribbons and remains within blade reach for each reply, without Brace. Misses, early contacts, unsupported powers and stale owners have negative coverage. The exhibition has27 simulation seconds of declared exchanges. This is not a measured human completion time. Ring geography now avoids the existing hospitality lantern and other roadwork objectives.
+
+Pending native inspection: steward/rules discoverability, chalk/amber/white cues in both cameras, HUD overlap, actual keyboard/mouse controls, reduced motion, cold bytes and one clean versus early reply. Pending Dom: Was the warning readable? Could you tell when to answer? Would improving a personal medal make you return? No human response or enjoyment verdict is supplied.
+
+---
+
 # Masterwork: actual UI and persistence, human feel pending, 2026-10-13
 
 At `e9c5bbc93b7166beabc75d6f911e75ec180e480d`, the freshly fetched clean remote game passes 42 blade/private

@@ -1,3 +1,130 @@
+# Current exhibition qualification, 2026-10-14
+
+PR80 remains open and stacked on PR79 `ba6fe9fa6a93cfadf075bf085a875dc0f63c6050`.
+The complete non-browser verifier **passed at 609169744b2052935b2067548a76a0fd3eb1f635**:
+237 commands; Node 2341 passed/0 failed/2 skipped; Python 551 run/0 failed/8 skips.
+Read `docs/evidence/rain-exhibition-2026-10-14/FULL_SOURCE_QUALIFICATION.json` for
+exact commands, identities, skips and preserved failed attempts. The real
+blade/bow/veteran outings and whole-draft earned route passed. No validator,
+reward prerequisite or deadline was weakened to repair the older test fixtures.
+
+Runtime 55da534 keeps exhibition instructions clear, presents the result and
+record button before long rules, and shows returning medals above collapsible
+rules. First entry still opens all terms. NATIVE04 at 4a2e474 passed 118 blade and
+131 bow checks, all 11 milestones, both cameras, actual contacts, menu pause,
+cold browser readback and closed resources. See `NATIVE_QUALIFICATION02.json` in
+the same evidence directory. Actual images were inspected. This uses controlled
+accepted ticks and software WebGL. NATIVE03's intermittent quiet-pennant failure
+is retained and unexplained; the later pass does not establish its cause.
+
+Current identical HTML: 3,487,412 bytes, SHA256
+`25185a74c8586ccd8dd8876f59234a216cee8598d356022e0e7a5cdba364a5db`.
+World 9 / Adventure 14 / Arsenal 1 / earthTournament 1. The event's 13-to-14 migration adds
+only an empty event record; the later UI polish changes no save fields or rules.
+Stored XP, all prior histories and explicit choices remain with their owners.
+
+The reused remote qualification checkout is clean at the recorded epoch;
+this is **not a newly created fresh clone**. Full 54-suite browser verification
+remains incomplete: older MASTERWORK_FULL01 terminated at the original 1800s
+WildSigns boundary limit. All earlier failures/skips and later-unreached suites
+remain visible. Independent review, current GPU measurement and human acceptance
+are still open. The two Sol reviewers remain usage-limited; do not reroute.
+
+ROOT owns implementation; STATION may be reused only after checking the latest
+terminal receipt/live owner. SOURCE05 is terminal passed; no full gate is live.
+The new ordinary-RAF capture script is committed, but no film was produced by
+RAIN_FILM01 (CSP predicate error) or RAIN_FILM02 (post-driver RAM admission refusal). Commit 4930974
+repairs the script's predicates without changing the game's CSP. Read
+`CAPTURE_ATTEMPTS01.json` in the evidence directory for terminal failures. Any retry must
+respect fresh 6,291,456KiB admission and serial browser ownership.
+
+Keep VM, Claude, personal saves/profiles and unrelated workers untouched. Heavy
+work stays on D; reuse these checkouts and small staging, no new full copies,
+cleanup, blocked-deletion retry, main merge, deployment or billing changes.
+Heartbeat remains paused; the broader production goal remains active/unfinished.
+
+The source failures were fixture/host integration defects, corrected explicitly:
+load the actual event UI in prior UI hosts; advance literal current-schema and
+54-suite membership expectations; remove only a verified empty event record
+from explicitly synthetic old-version inputs. The original earned campaign
+source stays unchanged, and ambiguous real pre-schema event data still refuses.
+Results-first presentation changes information order only. No gear, currency,
+XP, reward, timing or migration behavior changed in this polish.
+
+---
+
+# Native exhibition passed; visible polish and full-gate failure retained, 2026-10-14
+
+Exact remote source15de893 passed the exhibition caller:109 blade and122 bow
+checks, zero failures/errors/external requests, both cameras, real contacts,
+menu controls and two whole-browser restarts per family. All owned resources
+closed; source stayed clean. PR79 ba6fe9f separately passed20 backdrop checks.
+These are controlled software-WebGL routes in the reused qualification checkout,
+not fresh-clone proof, ordinary-time footage, GPU qualification or human approval.
+See docs/evidence/rain-exhibition-2026-10-14/NATIVE_QUALIFICATION01.json.
+
+Actual images exposed overlapping decorative route labels and results buried
+below long terms. A small presentation repair now keeps live bout instructions
+clear, presents results first, and lets returning players expand all unchanged
+rules. First entry still expands the full terms.52 focused event checks pass;
+the extended native caller must qualify this later UI/build before delivery.
+No save version, gear, score or reward rule changed.
+
+The older full MASTERWORK_FULL01 gate is TERMINAL FAILED, not live: original
+1800-second WildSigns boundary limit expired in the third capacity-retry case.
+Its230 source commands and earlier native suites passed; all later suites were
+not reached. Original logs/profiles and closure observations are retained in
+GATE. No process was stopped, no deadline enlarged and no case removed. Diagnose
+that full-gate failure separately from these targeted passes. STATION is now
+clean at15de893 and available only after checking any newer active ownership.
+
+The connected Blender grazer remains staged outside the game:44 CPU graph checks
+and an in-memory build, not integrated/native art. Production remains unfinished.
+Preserve VM/Claude/personal data/unrelated workers, serial browser admission,
+6GiB RAM floor, original deadlines, D storage, no new full copies or cleanup,
+no merge/deploy/billing. Usage-limited colleagues are not rerouted; heartbeat paused.
+
+---
+
+# Keep exhibition menu suspension transient and owner-bound, 2026-10-14
+
+An active exhibition drawer holds the whole simulation so its timing and an
+already released arrow stop together. The desired pause after close is separate
+from that temporary hold; P and the drawer button adjust it without releasing
+the hidden bout. Ordinary live-time drawers retain their behavior. A hold is
+bound to the Simulation/state/adventure identity and cannot resume a replacement.
+Focused drawer buttons also keep native Space/Enter activation, while the
+ordinary world Space control remains available. This introduces no durable
+field, migration or reward change. Native controls
+and human comfort remain unqualified despite the focused CPU repair.
+
+---
+
+# ET07 qualification keeps controlled input and pacing separate, 2026-10-14
+
+Use a dedicated serial native route for visible steward decisions, actual
+combat contacts, both camera styles and whole Chromium restart. Controlled
+accepted ticks make timing boundaries reproducible; they cannot substantiate
+human pacing or GPU performance. Report the actual software renderer, clean
+source/head, full stored-byte equality, retained world, external requests,
+resource closure and incomplete route milestones. Missing milestones cannot
+pass just because earlier assertions succeeded. Keep source receipts separate
+from browser evidence, and do not allocate against the currently owned full gate.
+
+---
+
+# ET07 is a local skill exhibition with finite distinctions, 2026-10-14
+
+Follow the supplied Earth event atlas’s civic tournament: declared rules, honest participation and distinction earned by accepted outcomes. The current bounded realization is a mechanical practice-post exhibition, not simulated online opponents. Three defense/reply pairs produce0–6 points. Blade and bow use existing uniform family primary reach/cadence, retain all gear, sockets and upgrades, and compete in separate personal records. No damage-based scoring, forced class, item payout, XP change or entry fee.
+
+An accepted bout owns a run serial and opaque primary-contact proof bound to the Simulation, state, character context, weapon and Earth scene. Actual melee or swept projectile contact is required. Other powers refuse before costs/story effects; companion attacks do not compete. Completed results use checked candidate saves before adoption. Retry cannot pay twice; explicit new entry starts another run. Unrecorded live proof is intentionally not durable; cold/scene/weapon interruption offers withdrawal without altering retained distinctions or ordinary belongings. This does not settle broader offline-loss policy.
+
+Adventure13→14 adds exactly empty tournament1 when absent. Ambiguous pre-schema data refuses, preserving the export for review. Older synthetic downgrade fixtures now explicitly assert and remove only the exact empty new record; independent migration oracles add its literal default and compare the rest of the full world. Raw historical captures remain unchanged. Epoch07 advances only a declared current-cohort schema predicate and retains epochs04–06; its review is parent-only, not independent approval.
+
+The first proposed ring overlapped the existing hospitality lantern. The final ring(5,-31.5) keeps it and all earlier roadwork sites outside the circle, with1,088 supported-body samples. Original small procedural props add no collision or camera authority. Both cameras and all ordinary controls persist.
+
+---
+
 # A finite lesson and an accountable commission, 2026-10-13
 
 ET06 follows the founder's misattributed commission and apprentice participation,

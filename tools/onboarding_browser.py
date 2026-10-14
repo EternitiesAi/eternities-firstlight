@@ -214,6 +214,13 @@ def require_initial_resume(root, before, after, capture, owner):
             masterwork_migration = 'adventure12-to13-empty-masterwork1'
         else:
             masterwork_migration = 'adventure12-to13-preserved-masterwork1'
+    tournament_migration = None
+    if isinstance(old_adventure, dict) and type(old_adventure.get('version')) is int and old_adventure['version'] == 13:
+        assert 'earthTournament' not in old_adventure, 'Ambiguous pre-schema tournament data cannot be discarded.'
+        old_adventure['version'] = 14
+        old_adventure['earthTournament'] = {'version': 1, 'issued': 0, 'closed': 0,
+            'best': {'blade': None, 'bow': None}, 'finished': {'blade': 0, 'bow': 0}}
+        tournament_migration = 'adventure13-to14-empty-tournament1'
     wild_signs_migration = None
     if 'earthWildSigns' not in before:
         expected['earthWildSigns'] = {'version': 1, 'accepted': False, 'evidence': [],
@@ -246,6 +253,7 @@ def require_initial_resume(root, before, after, capture, owner):
              'coreSha256': sha(root / 'src/core.js'), 'additionalFutureEventsAllowed': False,
              'localLifeCatalogueMigration': catalogue_migration,
              'earthMasterworkMigration': masterwork_migration,
+             'earthTournamentMigration': tournament_migration,
              'earthWildSignsMigration': wild_signs_migration,
              'briarMomentsMigration': ('missing-to-fresh-briar-moments-v1'
                                        if 'briarMoments' not in before else None)}
