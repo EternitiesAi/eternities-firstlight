@@ -1,47 +1,26 @@
-# Gate Captain playable implementation; qualification incomplete, 2026-10-14
+# Finish Gate Captain qualification before another quest, 2026-10-14
 
-ROOT owns `gameplay/earth-gate-captain-20261014`, stacked on PR81 head
-`950d733a1e714b4a06a6481594a726b5dc190981`. Runtime/build is
-`fbf07c4ada1916f86703e0163cb2d580c379b51f`; a2e885c fixes the verifier's new
-suite inventory, and ff27c41 fixes a native caller timing assumption. No runtime
-changed in those two follow-ups. Read `docs/evidence/gate-captain-2026-10-14/QUALIFICATION01.json`.
+1. Inspect current branch/ownership, origin and PR82 comments. Latest repair is
+   cbfaffc; runtime is fbf07c4. Read Gate qualification02 and retain prior failures.
+2. SOURCE02 is terminal, not running. Its later homecoming preflight failed one
+   old migration expectation; cbfaffc repairs it, and all32 focused checks pass.
+   Complete a clean source rerun with the unchanged4-worker180s/Python600s bounds.
+3. Run the corrected Gate native caller for blade and bow, serially, under the
+   original600s limit and fresh6,291,456KiB outer/post-driver RAM guards. Native01
+   is35pass/one failed caller timing assumption, not a completed route.
+4. Resolve any actual failures, inspect final arrival/cold-result pixels and
+   preserve complete owner/economy/cold-start evidence. Ordinary footage remains
+   a separate pending check. No invented GPU or human pacing claim.
+5. Reconcile the frozen d13d067 STATION and retained prior grazer cohorts before
+   qualifying the final fetched review head there. No new full clone per attempt.
+   Update PR82, exact receipts and human playtest questions without merging main.
 
-ET08 now has visible Journal/Map/E/tracker controls, three physical travellers,
-inspection or explicit4-timber/2-fibre shelter preparation, saved supported
-checkpoints, leading/waiting, menu pause and save retry. Both outcomes offer
-8coins and up to15XP once, separately claimed from the captain. Adventure14→15
-adds only empty earthGate1; World9, keys, stored XP and old owners are retained.
-Names and local Hearthwater adaptation remain provisional canon presentation.
-
-The complete rule suite passed2400/failed0/skipped2 at fbf07c4. Full source
-verification then stopped on three Python harness assertions expecting54 native
-suites rather than55 and the old first suite. The explicit inventory repair
-passes all10 targeted checks, but a complete source rerun remains required.
-Command-earned blade/bow/Chapter-IV veteran outings pass both outcomes and
-partial reload with zero pose/material/objective grants.49 initial focused
-checks plus the later dependency check pass; these are CPU evidence.
-
-Native01 at a2e885c made36 checks, passed35 and failed1. Three actors render in
-both cameras; Settings pause and far-player waiting pass. The quota test wrongly
-assumed the group still occupied camp. Actual Core reproduction shows walking
-back legitimately records orchard-turn. ff27c41 now captures the true next leg;
-its rerun is pending. Browser/server/profile closed, source unchanged, no browser
-errors/external requests. Both camera PNGs were personally inspected: actual
-controlled software-WebGL images, not ordinary-time film or hardware proof.
-
-Both pages remain identical3565334bytes, SHA256
-`eb0f8bd9aaee6ecd9ecb8ca1844568b85aedc9077a617aac1b3278c95478bb77`.
-No current complete source/native gate, exact fresh clone, new gameplay video,
-independent review or human acceptance is claimed. The game goal is unfinished.
-
-Next: inspect ownership, then run the corrected native caller and full source
-verifier at the exact clean head, serially under fresh6291456KiB admission and
-original deadlines. Latest free RAM was below that floor; do not disturb the VM
-or Claude to make room. STATION remains clean d13d067 with earlier grazer cohorts;
-its native admission and older WildSigns full-gate timeout remain open. The two
-Sol reviewers are usage-limited, not running; no reroute. Heartbeat remains
-paused. Keep current D checkouts, small evidence and all original failures;
-no new full copy, cleanup, blocked-deletion retry, main merge/deploy or billing.
+SOURCE03/NATIVE02 controllers exist in the current next-gate evidence directory
+but were not launched. They pin cbfaffc; update their identity deliberately if
+using a later clean commit. Last free RAM4,969,984KiB was below the floor. Do not
+stop/mutate VM, Claude or unrelated processes. No own worker is currently running;
+the two Sol reviewers are usage-limited, and the separate heartbeat is paused.
+The production goal remains active and unfinished.
 
 ---
 

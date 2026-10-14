@@ -1,47 +1,34 @@
-# Gate Captain playable implementation; qualification incomplete, 2026-10-14
+# Gate Captain outing implemented; qualification pending, 2026-10-14
 
-ROOT owns `gameplay/earth-gate-captain-20261014`, stacked on PR81 head
-`950d733a1e714b4a06a6481594a726b5dc190981`. Runtime/build is
-`fbf07c4ada1916f86703e0163cb2d580c379b51f`; a2e885c fixes the verifier's new
-suite inventory, and ff27c41 fixes a native caller timing assumption. No runtime
-changed in those two follow-ups. Read `docs/evidence/gate-captain-2026-10-14/QUALIFICATION01.json`.
+Draft PR82 adds the supplied Earth atlas ET08 scenario to Hearthwater. Read the
+register, waybill and shelter screen, choose a free inspection lane or explicitly
+spend4 timber/2 fibre repairing shelter, and lead three physical travellers.
+They wait when you leave them, pause with menus, and save supported checkpoints.
+Both outcomes offer a separate once-only8 sunmarks/up-to15XP fee. Saved progress
+survives reload; no campaign progress or equipment replacement is required.
+Local names/adaptation remain provisional, not a completed Crownfields province.
 
-ET08 now has visible Journal/Map/E/tracker controls, three physical travellers,
-inspection or explicit4-timber/2-fibre shelter preparation, saved supported
-checkpoints, leading/waiting, menu pause and save retry. Both outcomes offer
-8coins and up to15XP once, separately claimed from the captain. Adventure14→15
-adds only empty earthGate1; World9, keys, stored XP and old owners are retained.
-Names and local Hearthwater adaptation remain provisional canon presentation.
+The exact test repair head is `cbfaffc2c62e3ddc798d1be530485ea045f14931`.
+SOURCE02 at1d32b49 passed2,400 Node checks (two skips), all555 Python tests
+(eight skips), Gate blade/bow/veteran outings and existing earned continuations
+through homecoming. It then stopped at one conditional migration-oracle failure.
+The one-line repair passes all32 preflight checks against the same byte-bound
+cohort. Whole-draft/recording preflight and a full source pass remain unverified
+for this run. See `evidence/gate-captain-2026-10-14/QUALIFICATION02.json`.
 
-The complete rule suite passed2400/failed0/skipped2 at fbf07c4. Full source
-verification then stopped on three Python harness assertions expecting54 native
-suites rather than55 and the old first suite. The explicit inventory repair
-passes all10 targeted checks, but a complete source rerun remains required.
-Command-earned blade/bow/Chapter-IV veteran outings pass both outcomes and
-partial reload with zero pose/material/objective grants.49 initial focused
-checks plus the later dependency check pass; these are CPU evidence.
+Native01 produced actual low-quality software-WebGL images of all three bodies
+in both views and a readable terms panel.35 checks passed, one quota-timing
+assumption failed; the repaired caller still awaits execution. No ordinary-time
+clip, complete native gate, exact fresh clone, independent review, hardware
+performance or human acceptance is claimed. No owned verifier is running;
+further heavy work was held at4,969,984KiB free versus6,291,456KiB required.
+VM/Claude/personal saves remain untouched; the full game goal remains unfinished.
 
-Native01 at a2e885c made36 checks, passed35 and failed1. Three actors render in
-both cameras; Settings pause and far-player waiting pass. The quota test wrongly
-assumed the group still occupied camp. Actual Core reproduction shows walking
-back legitimately records orchard-turn. ff27c41 now captures the true next leg;
-its rerun is pending. Browser/server/profile closed, source unchanged, no browser
-errors/external requests. Both camera PNGs were personally inspected: actual
-controlled software-WebGL images, not ordinary-time film or hardware proof.
-
-Both pages remain identical3565334bytes, SHA256
+Runtime/build remains `fbf07c4ada1916f86703e0163cb2d580c379b51f`. Both pages
+are identical, 3,565,334 bytes, SHA256
 `eb0f8bd9aaee6ecd9ecb8ca1844568b85aedc9077a617aac1b3278c95478bb77`.
-No current complete source/native gate, exact fresh clone, new gameplay video,
-independent review or human acceptance is claimed. The game goal is unfinished.
-
-Next: inspect ownership, then run the corrected native caller and full source
-verifier at the exact clean head, serially under fresh6291456KiB admission and
-original deadlines. Latest free RAM was below that floor; do not disturb the VM
-or Claude to make room. STATION remains clean d13d067 with earlier grazer cohorts;
-its native admission and older WildSigns full-gate timeout remain open. The two
-Sol reviewers are usage-limited, not running; no reroute. Heartbeat remains
-paused. Keep current D checkouts, small evidence and all original failures;
-no new full copy, cleanup, blocked-deletion retry, main merge/deploy or billing.
+World9 / Adventure15 / Arsenal1 / earthGate1; no further migration or runtime
+change in the verification repairs. Personal saves and existing keys stay intact.
 
 ---
 
