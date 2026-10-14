@@ -1,7 +1,7 @@
 # Gate Captain implementation; verification handoff, 2026-10-14
 
 ROOT owns `gameplay/earth-gate-captain-20261014`, draft PR82 stacked on PR81
-`950d733a1e714b4a06a6481594a726b5dc190981`. Latest test repair is
+`950d733a1e714b4a06a6481594a726b5dc190981`. Migration-oracle repair is
 `cbfaffc2c62e3ddc798d1be530485ea045f14931`. Read
 `docs/evidence/gate-captain-2026-10-14/QUALIFICATION02.json` and prior01.
 
@@ -12,6 +12,12 @@ expectation lacked earthGate. cbfaffc adds that exact empty owner; the retained
 current cohort passes all32 focused checks. No assertion or timeout was removed.
 Full source success is still pending. Native01 remains35 passes/one failed
 timing assumption, repaired in ff27c41 but not rerun. Do not pool these as a pass.
+
+The actual Core far-wait/return/quota sequence now has a focused regression for
+both routes in earth-gate-host.test.cjs. All6 host tests pass: returning can save
+orchard-turn, a later refused stop retains its prior record and reached actors,
+and explicit retry adopts exactly the next stop without automatic payment.
+Synthetic prepared entry is labelled; this is CPU evidence, not a native rerun.
 
 No owned source/browser/server is running. SOURCE03/NATIVE02 controllers are
 prepared in the existing next-gate artifact directory for cbfaffc, not launched.

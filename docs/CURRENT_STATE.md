@@ -16,6 +16,11 @@ The one-line repair passes all32 preflight checks against the same byte-bound
 cohort. Whole-draft/recording preflight and a full source pass remain unverified
 for this run. See `evidence/gate-captain-2026-10-14/QUALIFICATION02.json`.
 
+A subsequent focused regression runs actual Core movement through far waiting,
+return, automatic checkpoint, refused next save and explicit retry on both paths.
+All6 host tests pass. This adds one test to the suite; the earlier full-suite
+counts above are historical observations, not a new full run. Runtime unchanged.
+
 Native01 produced actual low-quality software-WebGL images of all three bodies
 in both views and a readable terms panel.35 checks passed, one quota-timing
 assumption failed; the repaired caller still awaits execution. No ordinary-time

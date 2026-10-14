@@ -1,6 +1,6 @@
 # Finish Gate Captain qualification before another quest, 2026-10-14
 
-1. Inspect current branch/ownership, origin and PR82 comments. Latest repair is
+1. Inspect current branch/ownership, origin and PR82 comments. Migration repair is
    cbfaffc; runtime is fbf07c4. Read Gate qualification02 and retain prior failures.
 2. SOURCE02 is terminal, not running. Its later homecoming preflight failed one
    old migration expectation; cbfaffc repairs it, and all32 focused checks pass.
@@ -8,6 +8,8 @@
 3. Run the corrected Gate native caller for blade and bow, serially, under the
    original600s limit and fresh6,291,456KiB outer/post-driver RAM guards. Native01
    is35pass/one failed caller timing assumption, not a completed route.
+   The actual Core return/quota sequence now passes a focused regression on both
+   routes (6 host tests, no failures/skips); it does not replace this browser run.
 4. Resolve any actual failures, inspect final arrival/cold-result pixels and
    preserve complete owner/economy/cold-start evidence. Ordinary footage remains
    a separate pending check. No invented GPU or human pacing claim.

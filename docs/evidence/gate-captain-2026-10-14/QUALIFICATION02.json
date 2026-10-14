@@ -132,5 +132,24 @@
     "Prior grazer native and wider browser gate",
     "Ordinary gameplay footage, independent review, hardware and human acceptance"
   ],
-  "ownership": "No owned verifier/browser/server running. Heartbeat paused, game goal active. VM, Claude, personal saves and unrelated processes untouched. Two Sol reviewers usage-limited until October20; no reroute. STATION remains frozen at d13d067."
+  "ownership": "No owned verifier/browser/server running. Heartbeat paused, game goal active. VM, Claude, personal saves and unrelated processes untouched. Two Sol reviewers usage-limited until October20; no reroute. STATION remains frozen at d13d067.",
+  "returnQuotaRegression": {
+    "command": "node --test --test-concurrency=1 tests/earth-gate-host.test.cjs",
+    "run": 6,
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0,
+    "newTests": 1,
+    "paths": [
+      "inspection-lane",
+      "temporary-shelter"
+    ],
+    "scope": "Actual Core movement and production escort host from labelled synthetic prepared entry. Returning from far wait can save orchard-turn before quota injection; next refusal retains recorded state and reached actors; explicit retry saves exactly the real next checkpoint. No browser or full-suite claim.",
+    "log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_RETURN_QUOTA_REGRESSION01.log",
+      "sha256": "74be515f569d7547ab55c75859300445d4f04d6a207355bc24bc794fa7b4e9aa"
+    },
+    "testSourceSha256": "46b12109f3a8fbe6407a0ea6b2f93fdc591b545c5a429f56a3d17f3e13dd0743",
+    "runtimeChanged": false
+  }
 }
