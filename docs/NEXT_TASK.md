@@ -1,3 +1,22 @@
+# Observe the full gate, then qualify grounded scenery, 2026-10-13
+
+1. Check exec session8043 and the exact MASTERWORK_FULL01 terminal receipt under
+   D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/next-gate.
+   The frozen STATION head is88b30bf6e717707def6a81fc544435ca6097d02e. At this
+   checkpoint it passed230 source commands and masterwork native, and is running
+   Earth homecoming. Preserve negative/partial results; repair actual failures.
+2. Authoring ROOT is now gameplay/grounded-earth-backdrop-20261013. Native
+   browser time stays serial; after the existing worker closes, inspect the
+   changed scene in diorama/third person using a labelled isolated profile.
+   Confirm trees are actually visible and grounded, not merely valid coordinates.
+   Complete build/relevant source/native proof and exact fresh remote readback
+   before calling this art delivery ready. No additional movie is needed.
+3. Keep the broader production tasks below in scope. This scenery fix adds no
+   traversable forest, state owner or false open-world claim. Hard quarry terrain
+   edges and broader visual density still require a separate considered pass.
+
+---
+
 # Continue from the qualified masterwork, 2026-10-13
 
 Current gameplay is PR78, `gameplay/earth-masterwork-20261013`. Source/native

@@ -5,8 +5,8 @@ for(const name of ['drover-art','millwright-art','mill-gate-art','quarry-art','b
 function scene(){const all=[],a={e:{},map:{},begin(){},commit(){},beam(){},bench(){},box(...v){this.add('box',...v);},add(kind,x,y,z,sx,sy,sz,c,opt={}){const p={kind,p:[x,y,z],s:[sx,sy,sz],c,...opt};all.push(p);(this.map[kind]||(this.map[kind]=[])).push(p);}};globalThis.RealmEarthArt.make(a);return{all,frame:a.earthShoulderFrame,parts:all.filter(p=>p.quarryShoulder),strips:all.filter(p=>p.terrain&&p.p[0]+p.s[0]/2===18&&p.p[2]>=-23.75&&p.p[2]<=-6.25)};}
 const matrix=p=>p.m||R.M.compose(...p.p,...p.s,...(p.r||[0,0,0])),at=(p,v)=>R.M.transform(matrix(p),v);
 function seamDistance(p,v){const a=at(p,[0,1,-.5]),b=at(p,[0,1,.5]),t=(v[2]-a[2])/(b[2]-a[2]);return Math.hypot(v[0]-a[0],v[1]-a[1]-(b[1]-a[1])*t);}
-test('captured terrain, field random sequence, static scenery, camera solids and bridge remain byte-identical to PR33',()=>{
- const source=scene().all.filter(p=>!p.quarryShoulder);assert.equal(source.length,2550);
+test('PR33 terrain, field random sequence, tree shapes, camera solids and bridge remain exact except declared tree relocation',()=>{
+ const source=require('./earth_backdrop_legacy.cjs').legacyTreePlacement(scene().all.filter(p=>!p.quarryShoulder));assert.equal(source.length,2550);
  assert.equal(crypto.createHash('sha256').update(JSON.stringify(source)).digest('hex'),'417afdc850951c93253b815e6ad8fd56594fac61dd610271ba34a816c9ae07fd');
 });
 test('nine bounded tapering rock sections dress thirty-six actual grass strips in the existing batch',()=>{

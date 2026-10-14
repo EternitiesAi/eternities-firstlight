@@ -1,3 +1,21 @@
+# Grounded woodland scenery in progress, 2026-10-13
+
+The authoring branch `gameplay/grounded-earth-backdrop-20261013` fixes the
+unsupported decorative tree line seen from Hearthwater quarry. All thirty trees
+now take root on actual vertices of the existing distant hills. Primitive counts,
+materials, field RNG, foreground terrain, collision, picking and saves remain.
+The contact regression first failed on the original water-only placement;24
+focused checks now pass. New identical HTML is3,448,051 bytes, SHA256
+`e026f3821e11d678e612affe992e0520e26fd0a6e0402b4ad6bd0a245b342a2b`.
+
+This is implementation/CPU proof, not yet a visually accepted art delivery.
+The previous PR78 build at88b30bf is independently running the complete browser
+gate in STATION. All230 source commands and the masterwork browser suite passed;
+Earth homecoming is still live at this checkpoint. Do not extrapolate a final
+result or reuse that run as proof of the new art. No extra movie or full checkout.
+
+---
+
 # The Masterwork Without a Name is playable, 2026-10-13
 
 Draft [PR78](https://github.com/EternitiesAi/eternities-firstlight/pull/78) adds an

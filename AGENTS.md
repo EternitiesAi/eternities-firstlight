@@ -1,3 +1,23 @@
+# Active authoring: grounded Earth backdrop, 2026-10-13
+
+ROOT now owns `gameplay/grounded-earth-backdrop-20261013`, based on PR78 delivery
+88b30bf6e717707def6a81fc544435ca6097d02e. The art-only change grounds thirty
+background trees on actual existing hill vertices; 24 focused checks and the
+identical HTML rebuild pass. Native visual review and full new-head qualification
+are pending. Read docs/development/GROUNDED_EARTH_BACKDROP_2026-10-13.md.
+
+At this checkpoint the separate STATION remains frozen at 88b30bf. Full gate
+MASTERWORK_FULL01 is genuinely running under exec session8043, currently in
+Earth homecoming after passing all230 source commands and masterwork native.
+Observe that exact live handle and its terminal receipt before changing STATION
+or starting another browser. Its source and output cannot qualify this later
+art change. No heavy parallel verification; exclusive browser execution.
+
+Preserve every ownership, storage, save, VM/Claude and no-merge/no-deploy boundary
+in the delivered record below. Both existing Sol colleagues remain usage-limited.
+
+---
+
 # Masterwork delivery in draft PR78, 2026-10-13
 
 Continue from `gameplay/earth-masterwork-20261013` in the integrated D checkout.
