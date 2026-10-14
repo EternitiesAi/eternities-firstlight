@@ -16778,7 +16778,7 @@ function pointerUp(e){if(!pointers.has(e.pointerId)||!gesture)return;let click=!
 for(let canvas of[ui.canvas,ui.map]){canvas.addEventListener('pointerdown',pointerDown);canvas.addEventListener('pointermove',pointerMove);canvas.addEventListener('pointerup',pointerUp);canvas.addEventListener('pointercancel',e=>{pointers.delete(e.pointerId);gesture=null;});canvas.addEventListener('wheel',e=>{e.preventDefault();zoom(Math.exp(e.deltaY*.001));save();},{passive:false});canvas.addEventListener('contextmenu',e=>e.preventDefault());}
 window.addEventListener('keydown',e=>{
  if(document.querySelector('dialog[open]'))return;
- if(e.target.tagName==='BUTTON'&&e.target.closest?.('#pier-fishing')&&[' ','Enter'].includes(e.key))return;
+ if(e.target.tagName==='BUTTON'&&e.target.closest?.('#pier-fishing,#drawer')&&[' ','Enter'].includes(e.key))return;
  if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)||e.ctrlKey||e.metaKey||e.altKey)return;
  const k=e.key.toLowerCase();
  if(sim.worldDive&&['f','g'].includes(k)){if(!panel){e.preventDefault();keys.add(k);}return;}

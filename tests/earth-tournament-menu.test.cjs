@@ -71,3 +71,21 @@ test('ordinary drawers keep their old live-time semantics and cannot release ano
  const changed=fixture();changed.open('settings');changed.sim.state=C.validate(changed.sim.snapshot());changed.sim.paused=true;
  changed.close();assert.equal(changed.sim.paused,true,'replaced state cannot inherit an old resume');
 });
+
+test('actual native key router leaves drawer Space/Enter activation to the focused button',()=>{
+ const f=fixture(),dispatched=[];f.scope.rpg.key=e=>{dispatched.push(e.key);return true;};
+ f.scope.document.querySelector=()=>null;
+ f.scope.window={addEventListener:(type,handler)=>{assert.equal(type,'keydown');f.scope.keydown=handler;}};
+ const start=app.indexOf("window.addEventListener('keydown',e=>{"),end=app.indexOf('\n});',start);
+ assert.ok(start>=0&&end>start);vm.runInContext(app.slice(start,end+4),f.scope);
+ const press=(key,container)=>{let prevented=false;f.scope.keydown({key,
+  target:{tagName:'BUTTON',closest:selector=>container&&selector.split(',').includes(container)?{}:null},
+  preventDefault(){prevented=true;}});return prevented;};
+ for(const key of [' ','Enter']){
+  assert.equal(press(key,'#drawer'),false,'native '+key+' activation is not cancelled');
+  assert.deepEqual(dispatched,[],'menu activation never dispatches a combat slot');
+ }
+ assert.equal(press(' ','#pier-fishing'),false,'previous fishing button behavior remains');
+ assert.equal(press(' ',null),true,'world Space still reaches the ordinary game control');
+ assert.deepEqual(dispatched,[' ']);
+});
