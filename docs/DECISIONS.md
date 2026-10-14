@@ -1,3 +1,42 @@
+# Connected grazer source qualified; browser admission pending, 2026-10-14
+
+ROOT owns `gameplay/blender-moss-grazer-20261014`, draft PR81 stacked on PR80's
+`d47587c1acaaf25e26a4d4f3157e69f0325c952d`. The original Blender mesh is integrated
+at `24bd531338a394ef07bc89b669fcdbfa76748454`. The complete non-browser verifier
+passed at pushed `d13d067f54e0cb32f176ec246afbdde0ae766119`: 238 commands,
+2,355 Node passes / zero failures / two skips, and 551 Python tests / zero
+failures / eight skips. Current blade, bow, veteran and whole-draft earned
+journeys pass. Read `docs/evidence/connected-grazer-2026-10-14/` for receipts.
+
+SOURCE01's missing mesh channel in the earned wildlife CPU fixture is retained.
+The d13d067 repair declares the channel and checks one actual connected body;
+it removes no prior assertion. Original asset reproduction and a separate Blender
+reopen pass with exact float32 geometry and no external libraries/images.
+
+Both generated pages are 3,522,808 bytes, SHA256
+`2e9468f9c2769fc87a14c5083040a0e64f5966237fc248a8d5e960eb2f2ce383`.
+World9 / Adventure14 / Arsenal1 / earthTournament1 stay unchanged; this branch
+adds no migration, XP, reward, collision or observation-rule change.
+
+GRAZER_NATIVE02 refused outer RAM admission. GRAZER_NATIVE03 admitted its outer
+check but refused the actual post-driver launch at 6,021,544KiB, below6,291,456KiB.
+No browser was allocated; the owned server closed and the suite terminated.
+Inspect live ownership before using STATION. Retry only with materially higher
+fresh headroom, through the unchanged guard, serially with all existing cases,
+ordinary controls and the original1800s limit. No integrated-mesh pixels exist
+yet. The wider54-suite gate remains incomplete after the older WildSigns
+boundary timeout. Source passes are not native/GPU/human qualification.
+
+STATION is the reused exact fetched clean d13d067 checkout, not a fresh clone.
+RAIN_FILM01–04 remain failed/refused attempts; no new ordinary-time film exists.
+Both Sol reviewers remain usage-limited; no reroute. Preserve VM, Claude,
+personal saves, unrelated workers and the blocked deletion. Keep D storage,
+small assets, current checkouts and original evidence; no new full copy, cleanup,
+main merge, deployment or billing change. The production goal remains active
+and unfinished; the separate heartbeat remains paused.
+
+---
+
 # Current exhibition qualification, 2026-10-14
 
 PR80 remains open and stacked on PR79 `ba6fe9fa6a93cfadf075bf085a875dc0f63c6050`.

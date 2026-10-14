@@ -2,7 +2,7 @@
  * live projection returns a private submission receipt, never observed progress. */
 (function(G){'use strict';
 const E=G.RealmEngine,B=G.RealmEarthGrazerMotion;if(!E?.M||!B)throw Error('Load Engine and GrazerMotion before grazer art.');
-const frames=new WeakMap(),latest=new WeakMap(),KIND=['box','round','octa'];
+const frames=new WeakMap(),latest=new WeakMap(),KIND=['box','round','octa','earth-grazer-body-v1'];
 const MATERIALS=Object.freeze({hide:0x647982,belly:0x53656c,head:0x849493,muzzle:0xacb4a1,hoof:0x39434a,moss:0x748b52,eye:0x27383a});
 const unit=a=>{const n=Math.hypot(...a);if(n<1e-9)throw Error('Distinct bone endpoints required.');return a.map(v=>v/n);};
 function shape(pose,options={}){
@@ -15,34 +15,35 @@ function shape(pose,options={}){
    grazerPart:part,grazerActor:B.ID,grazerPhase:pose.phase||'shape-fixture'});
  };
  const identity=M.identity(),body=(kind,p,s,c,id)=>emit(kind,identity,p,s,c,id);
- const bone=(a,b,w,d,c,id)=>{
+ const bone=(a,b,w,d,c,id,kind='box')=>{
   const axis=unit(b.map((v,i)=>v-a[i])),hint=Math.abs(axis[0])>.9?[0,0,1]:[1,0,0];
   const right=unit(hint.map((v,i)=>v-axis[i]*E.dot(hint,axis))),back=E.cross(right,axis),length=Math.hypot(...b.map((v,i)=>v-a[i]));
   const matrix=new Float32Array([...right,0,...axis,0,...back,0,...a.map((v,i)=>(v+b[i])/2),1]);
-  emit('box',matrix,[0,0,0],[w,length,d],c,id);
+  emit(kind,matrix,[0,0,0],[w,length,d],c,id);
  };
- body('round',[0,.79,-.10],[.88,.70,1.30],MATERIALS.hide,'long-body');
- body('round',[0,.80,-.57],[.97,.73,.72],MATERIALS.hide,'broad-haunch');
- body('round',[0,.80,.35],[.77,.65,.48],MATERIALS.head,'shoulder');
- body('round',[0,.57,-.06],[.72,.28,1.04],MATERIALS.belly,'belly');
- body('round',[0,.95,.47],[.29,.50,.30],MATERIALS.head,'neck');
- emit('round',head,[0,.22,.40],[.40,.29,.43],MATERIALS.head,'slender-head');
- emit('round',head,[0,.145,.54],[.29,.17,.32],MATERIALS.muzzle,'feeding-muzzle');
- emit('box',head,[0,.145,.706],[.21,.095,.024],MATERIALS.hoof,'soft-nose');
+ // One original Blender surface joins the shoulder and haunch. Articulation
+ // and the existing observation IDs remain owned by the live presentation.
+ body('earth-grazer-body-v1',[0,0,0],[1,1,1],MATERIALS.hide,'long-body');
+ body('round',[0,.99,.48],[.29,.47,.34],MATERIALS.head,'neck');
+ emit('round',head,[0,.215,.405],[.33,.32,.49],MATERIALS.head,'slender-head');
+ emit('round',head,[0,.145,.57],[.25,.155,.30],MATERIALS.muzzle,'feeding-muzzle');
+ emit('box',head,[0,.145,.718],[.18,.080,.024],MATERIALS.hoof,'soft-nose');
  for(const side of[-1,1]){
-  emit('octa',head,[side*.19,.405,.27],[.13,.19,.12],MATERIALS.belly,(side<0?'left':'right')+'-split-ear');
-  emit('round',head,[side*.171,.26,.43],[.050,.055,.048],MATERIALS.eye,(side<0?'left':'right')+'-eye');
+  const ear=M.mul(head,M.compose(side*.155,.405,.255,1,1,1,0,0,-side*.40));
+  emit('octa',ear,[0,0,0],[.10,.18,.10],MATERIALS.belly,(side<0?'left':'right')+'-split-ear');
+  emit('round',head,[side*.149,.26,.465],[.046,.048,.046],MATERIALS.eye,(side<0?'left':'right')+'-eye');
  }
  const quiet=pose.reducedMotion===true||options.reducedMotion===true;
  for(const side of[-1,1])for(const front of[false,true]){
   const id=(side<0?'left':'right')+(front?'-front':'-rear'),phase=pose.gait+((side<0)===front?0:Math.PI);
   const step=pose.walking&&!quiet?Math.sin(phase)*.04:0,lift=pose.walking&&!quiet?Math.max(0,-Math.cos(phase))*.035:0;
-  const hip=[side*.32,.74,front?.37:-.51],knee=[side*.39,.36+lift*.5,front?.42:-.54],foot=[side*.43,.065+lift,(front?.45:-.56)+step];
-  bone(hip,knee,.11,.12,MATERIALS.hide,id+'-upper');bone(knee,foot,.085,.10,MATERIALS.belly,id+'-lower');
-  body('box',[foot[0],.05+lift,foot[2]],[.17,.10,.20],MATERIALS.hoof,id+'-hoof');
+  const hip=[side*.29,.76,front?.36:-.49],knee=[side*.32,.38+lift*.5,front?.265:-.325],foot=[side*.35,.060+lift,(front?.435:-.575)+step];
+  bone(hip,knee,.19,.21,MATERIALS.hide,id+'-upper','octa');bone(knee,foot,.075,.09,MATERIALS.belly,id+'-lower');
+  body('box',[foot[0],.045+lift,foot[2]],[.15,.09,.19],MATERIALS.hoof,id+'-hoof');
  }
- for(let i=0;i<3;i++)body('round',[(i%2?.11:-.08),1.155,-.49+i*.36],[.62,.23,.42],MATERIALS.moss,'moss-lobe-'+i);
- if((options.quality||'balanced')!=='low')for(const side of[-1,1])body('octa',[side*.24,1.14,-.33],[.13,.13,.16],0x8c9b68,(side<0?'left':'right')+'-moss-tip');
+ const moss=[{p:[-.06,1.155,-.50],s:[.59,.14,.48]},{p:[.06,1.175,-.13],s:[.63,.13,.51]},{p:[-.025,1.16,.265],s:[.47,.12,.39]}];
+ moss.forEach((lobe,i)=>body('round',lobe.p,lobe.s,MATERIALS.moss,'moss-lobe-'+i));
+ if((options.quality||'balanced')!=='low')for(const side of[-1,1])body('octa',[side*.245,1.12,-.30],[.15,.10,.20],0x8c9b68,(side<0?'left':'right')+'-moss-tip');
  bone([0,.82,-.77],[.025,.72,-.99],.055,.06,MATERIALS.belly,'short-tail');
  body('round',[.025,.72,-.99],[.09,.12,.15],MATERIALS.moss,'tail-tuft');
  return out;

@@ -37,7 +37,7 @@ function setLook(e,width,height,mode,fov){e.canvas={clientWidth:width,clientHeig
  E.Engine.prototype.setCamera.call(e,{eye,target:focus,projection:mode==='adventure'?'perspective':'orthographic',half:6,aspect:width/height,fov});
  return fit;
 }
-function actor(e,pose,quality){const out={box:[],round:[],octa:[]};for(const {kind,...item}of Art.shape(pose,{quality,reducedMotion:true}))out[kind].push(item);Art.foliage(out);
+function actor(e,pose,quality){const out={box:[],round:[],octa:[],'earth-grazer-body-v1':[]};for(const {kind,...item}of Art.shape(pose,{quality,reducedMotion:true}))out[kind].push(item);Art.foliage(out);
  for(const b of e.dynamic){b.items=out[b.kind]||[];e.updateBatch(b);}
 }
 test('stable static perimeter groups retain64Low/128Balanced-High and exact source definitions',()=>{

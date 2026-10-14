@@ -116,7 +116,7 @@ def main():
                 report['viewport'] = page.viewport_size
                 report['quality'] = ev('Realm.state.settings.quality')
                 check('software WebGL capture is labelled honestly', ev('Realm.diagnostics.mode') == 'webgl2' and 'SwiftShader' in report['renderer'])
-                workspace('journal'); click('[data-rpg="earth-invitation"]'); click('[data-rpg="earth-walk"][data-id="gate"]'); wait_near(0,23)
+                workspace('atlas'); click('[data-rpg="earth-invitation"]'); click('[data-rpg="earth-walk"][data-id="gate"]'); wait_near(0,23)
                 page.locator('#world').focus(); page.keyboard.press('e'); click('[data-rpg="earth-confirm"]')
                 page.wait_for_function('()=>Realm.diagnostics.scene==="earth-hearthwater-approach"')
                 workspace('journal'); click('[data-rpg="tournament-open"]'); click('[data-rpg="tournament-walk"]'); wait_near(5,-27.6, 1.4)

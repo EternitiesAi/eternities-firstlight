@@ -4,6 +4,10 @@
 *.wav binary
 *.mid binary
 *.bundle binary
+*.blend binary
+
+# Original authored mesh exports and provenance retain their exact hashed bytes.
+assets/source/moss-grazer/*.json -text whitespace=cr-at-eol
 
 # Preserve exact archived filming-harness bytes, including original line endings.
 docs/evidence/realm-outings-2026-10-02/*.snapshot binary

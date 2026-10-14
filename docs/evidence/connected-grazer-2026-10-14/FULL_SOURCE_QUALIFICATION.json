@@ -1,0 +1,137 @@
+{
+  "scope": "Complete non-browser verifier from clean exact fetched source in the reused qualification checkout",
+  "head": "d13d067f54e0cb32f176ec246afbdde0ae766119",
+  "runtimeCommit": "24bd531338a394ef07bc89b669fcdbfa76748454",
+  "base": "d47587c1acaaf25e26a4d4f3157e69f0325c952d",
+  "command": [
+    "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+    "-B",
+    "tools/verify.py",
+    "--rule-workers",
+    "4",
+    "--output",
+    "D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/next-gate/GRAZER_SOURCE02_LOGS",
+    "--cpu-temp",
+    "C:/Users/Dom/AppData/Local/Temp"
+  ],
+  "startedUtc": "2026-10-14T08:43:19.6792952Z",
+  "closedUtc": "2026-10-14T08:50:33.4365671Z",
+  "passedCommands": 238,
+  "node": {
+    "total": 2357,
+    "passed": 2355,
+    "failed": 0,
+    "skipped": 2
+  },
+  "python": {
+    "run": 551,
+    "failed": 0,
+    "skipped": 8
+  },
+  "skipDetails": {
+    "node": [
+      "ok 1263 - explicit current Earth command-earned cohort is required # SKIP Run tools/earth_homecoming_journey.cjs; this generic rules invocation has no cohort path.",
+      "ok 2215 - explicit fresh whole-draft cohort is required # SKIP Run tools/whole_draft_journey.cjs; no whole-draft cohort was supplied to this generic rules invocation."
+    ],
+    "python": [
+      "test_actual_current_complete_earned02_and_all_prepared_links (test_capture_cosmos_campaign.ActualCurrentInputs.test_actual_current_complete_earned02_and_all_prepared_links) ... skipped 'Explicit read-only complete current-cohort path not supplied.'",
+      "setUpClass (test_capture_earth_homecoming.ActualEarnedPreflight) ... skipped 'Capture preflight needs an explicit current earned source and cohort SHA; generic discovery cannot substitute old private inputs.'",
+      "setUpClass (test_capture_earth_homecoming.FailedReportRepair) ... skipped 'Report lifecycle preflight needs explicit current earned source/cohort; no private input substitution.'",
+      "test_symlink_refused (test_checkout_import.ImportRules.test_symlink_refused) ... skipped 'Windows account lacks symlink privilege; real symlink refusal is exercised on Linux CI'",
+      "test_read_only_real_current_cohort_preflight (test_cosmos_campaign_browser_storage.CurrentEarnedEpoch.test_read_only_real_current_cohort_preflight) ... skipped 'explicit actual current-source paths required'",
+      "test_explicit_current_earned_cohort_required (test_earth_homecoming_native.ExplicitCurrentCohortRequired.test_explicit_current_earned_cohort_required) ... skipped 'Run the verifier current Earth earned cohort and explicit native preflight; generic discovery has no cohort.'",
+      "setUpClass (test_earth_wild_signs_browser.CurrentInstalledCohortTests) ... skipped 'Actual current dual cohorts are supplied by the mandatory source verifier command'",
+      "test_windows_data_drive_spec_is_read_only_and_creates_no_output (test_verify_consignment.CurrentNativeRouting.test_windows_data_drive_spec_is_read_only_and_creates_no_output) ... skipped 'Positive Windows D-drive guard needs a miniature fixture on D:'"
+    ]
+  },
+  "commandEarned": {
+    "wildSigns": "All three blade/bow/veteran journeys passed with the actual new body channel; CPU render/input receipts are explicitly fixtures.",
+    "wholeDraft": "Both variants passed; also current original Earth, companion, masterwork, exhibition and existing campaign journeys."
+  },
+  "generatedHTML": {
+    "bytes": 3522808,
+    "sha256": "2e9468f9c2769fc87a14c5083040a0e64f5966237fc248a8d5e960eb2f2ce383",
+    "identical": true
+  },
+  "saveVersions": {
+    "world": 9,
+    "adventure": 14,
+    "arsenal": 1,
+    "earthTournament": 1
+  },
+  "migration": "None in this mesh branch. Existing saves, owner records, XP, rewards, collision and observation rules unchanged.",
+  "receipts": [
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GRAZER_SOURCE02_EXIT.json",
+      "bytes": 810,
+      "sha256": "79c23b022cb02f6eee6befeff8ced946342a85a504c02b883174deb2d3de8999"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GRAZER_SOURCE02_ADMISSION.json",
+      "bytes": 627,
+      "sha256": "b576963d595b9418c30cd8c227697a8330f8d4606532108a0a7429a1ab3b4a9d"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GRAZER_SOURCE02_CONSOLE.log",
+      "bytes": 15774,
+      "sha256": "6b9dd72f398caca09dbaa32644318c374412dcd3f97af6de6d119fb0f75a167e"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GRAZER_SOURCE02_LOGS\\rules.log",
+      "bytes": 570628,
+      "sha256": "a2df1660ddcd5ae9453704b03833817c77307ee9ee2c032e37a4dcb9c640525b"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GRAZER_SOURCE02_LOGS\\python.log",
+      "bytes": 156577,
+      "sha256": "260d516bda9c0800c6c8c71ab59944b81e5cd06887b8ece6142b631582a5bbe4"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GRAZER_SOURCE02_LOGS\\earth-wild-signs-earned.log",
+      "bytes": 51839,
+      "sha256": "8e53cad4fb4cb72babcb59bf5c40cb811f445304fc36a7ab8eb3a741176f9ada"
+    }
+  ],
+  "retainedFailure": {
+    "head": "24bd531338a394ef07bc89b669fcdbfa76748454",
+    "attempt": "GRAZER_SOURCE01",
+    "cause": "Earned WildSigns CPU presentation fixture omitted the new explicit mesh channel; all three journeys correctly refused. Node and Python had passed before this failure.",
+    "repair": "d13d067f54e0cb32f176ec246afbdde0ae766119",
+    "change": "Declare the body channel and assert exactly one long-body on each actual CPU submission; all existing journey assertions preserved.",
+    "receipts": [
+      {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GRAZER_SOURCE01_EXIT.json",
+        "bytes": 810,
+        "sha256": "217743626d0043a1ce7e33bea22dbb8143270037d1fb3430b134260ad7a69fb9"
+      },
+      {
+        "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GRAZER_SOURCE01_LOGS\\earth-wild-signs-earned.log",
+        "bytes": 44391,
+        "sha256": "dedcd9b86bcbaca825fb53994bb5255a150b8c6cf5f85d2015126cde2a3abbb2"
+      }
+    ]
+  },
+  "nativeAttempt": {
+    "attempt": "GRAZER_NATIVE02",
+    "status": "preflight admitted inputs; host RAM refused browser allocation",
+    "observedUtc": "2026-10-14T08:51:05.7631901Z",
+    "freeHostKiB": 5354648,
+    "minimumFreeKiB": 6291456,
+    "browserExecuted": false,
+    "serverStarted": false,
+    "receipt": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GRAZER_NATIVE02_ADMISSION.json",
+      "bytes": 1174,
+      "sha256": "dba000e371144ba4e1d5cd62cc1550a59a61b6c954f0728dba7c65589d5985be"
+    }
+  },
+  "freshClone": false,
+  "remaining": [
+    "Current integrated mesh native appearance and ordinary-RAF suite",
+    "Entire current 54-suite browser gate; prior original 1800s WildSigns boundary timeout retained",
+    "Short ordinary-RAF exhibition footage",
+    "Independent review; both authorized colleagues remain usage-limited",
+    "Real GPU cost and human acceptance"
+  ],
+  "boundaries": "No main merge, public deployment, VM/Claude/personal-save access, unrelated shutdown, paid reroute or new full checkout."
+}

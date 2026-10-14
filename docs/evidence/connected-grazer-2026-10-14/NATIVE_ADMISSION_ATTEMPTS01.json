@@ -1,0 +1,100 @@
+{
+  "head": "d13d067f54e0cb32f176ec246afbdde0ae766119",
+  "scope": "Actual memory refusals, not rendered gameplay or passing native checks",
+  "minimumFreeKiB": 6291456,
+  "browserAllocated": false,
+  "attempts": [
+    {
+      "tag": "GRAZER_NATIVE02",
+      "preflight": "Current source and command-earned cohorts admitted read-only",
+      "observedUtc": "2026-10-14T08:51:05.7631901Z",
+      "freeHostKiB": 5354648,
+      "result": "Outer host admission refused; no suite/browser/server started"
+    },
+    {
+      "tag": "GRAZER_NATIVE03",
+      "outerAdmissionFreeHostKiB": 7728172,
+      "actualLaunchFreeHostKiB": 6021544,
+      "result": "Actual launch guard refused after driver startup; no browser allocated",
+      "terminal": {
+        "sourceHead": "d13d067f54e0cb32f176ec246afbdde0ae766119",
+        "headAfter": "d13d067f54e0cb32f176ec246afbdde0ae766119",
+        "statusAfter": [],
+        "startedUtc": "2026-10-14T08:54:50.0191593Z",
+        "closedUtc": "2026-10-14T08:55:18.5480658Z",
+        "exitCode": 1,
+        "scope": "Complete existing WildSigns native suite; original1800s; softwareWebGL; not entire54-suite gate",
+        "logSha256": "f6543275961f93b7e47095b44b6931e081e030c265532443b1e35824d5c2cadf"
+      },
+      "serverClosed": true,
+      "budget": [
+        {
+          "utc": "2026-10-14T08:54:51.072336+00:00",
+          "pid": 24512,
+          "runId": "ca1ee19198ec4b569c9e21c273156f91",
+          "event": "process-start",
+          "script": "D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game\\tools\\earth_wild_signs_browser.py",
+          "parentPid": 38984
+        },
+        {
+          "utc": "2026-10-14T08:55:16.827121+00:00",
+          "pid": 24512,
+          "runId": "ca1ee19198ec4b569c9e21c273156f91",
+          "event": "admission",
+          "method": "launch_persistent_context",
+          "freeHostKiB": 6021544,
+          "minimumFreeKiB": 6291456,
+          "admitted": false
+        },
+        {
+          "utc": "2026-10-14T08:55:18.006789+00:00",
+          "pid": 24512,
+          "runId": "ca1ee19198ec4b569c9e21c273156f91",
+          "event": "process-finish",
+          "exitCode": 1,
+          "guardFailed": true
+        }
+      ]
+    }
+  ],
+  "retained": [
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GRAZER_NATIVE02_ADMISSION.json",
+      "bytes": 1174,
+      "sha256": "dba000e371144ba4e1d5cd62cc1550a59a61b6c954f0728dba7c65589d5985be"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GRAZER_NATIVE02_PREFLIGHT.json",
+      "bytes": 35070,
+      "sha256": "ae9ab0d44c4a9299dca2ed9cb27d31b81fae11f3a639161bedcf6156eac7c4cf"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GRAZER_NATIVE03_ADMISSION.json",
+      "bytes": 1173,
+      "sha256": "07dd7a0d5ac4f91377ea5c4bf27247c518cf26cc62a0a48815042b6ea10b93ef"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GRAZER_NATIVE03_EXIT.json",
+      "bytes": 458,
+      "sha256": "cf6faf2d9d1a4a60348c8e72456b20b5f1d6032ba4595ad662b7ffeb9ae3c48c"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GRAZER_NATIVE03.log",
+      "bytes": 2250,
+      "sha256": "f6543275961f93b7e47095b44b6931e081e030c265532443b1e35824d5c2cadf"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GRAZER_NATIVE03\\WILD_SIGNS_NATIVE_REPORT.json",
+      "bytes": 37165,
+      "sha256": "51dee8794d3e6fa4dd6caf68b22f840397be2f3432e72d7ae91bfeddcbdfcddc"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GRAZER_NATIVE03_BUDGET\\process-24512-966236ed50ef40a69d161377fa0d4a01.jsonl",
+      "bytes": 664,
+      "sha256": "41ad4e7dbf9355c76611b914f7ea37b0343ee3f7e1aad90454c22908cd759b1e"
+    }
+  ],
+  "next": "Wait for materially higher free RAM before another serial attempt; keep the actual post-driver guard, ordinary controls, all cases and original 1800s limit. Do not disturb VM/Claude/unrelated work.",
+  "humanAcceptance": false,
+  "performanceCertified": false
+}
