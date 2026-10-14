@@ -24,7 +24,8 @@ import traceback
 
 ROOT = Path(__file__).resolve().parents[1]
 MILESTONES = ('terms', 'interruption', 'gold', 'intentional_replay', 'cold_result',
-              'both_cameras', 'quiet_motion', 'preserved_owners', 'drawer_pause')
+              'both_cameras', 'quiet_motion', 'preserved_owners', 'drawer_pause',
+              'readable_result', 'label_clearance')
 INIT = """window.__ETERNITIES_TEST_MODE=true;
 window.__ETERNITIES_CAPTURE_MODE=true;
 window.__rainStartup=Object.fromEntries(Object.keys(localStorage).map(k=>[k,localStorage.getItem(k)]));"""
@@ -261,6 +262,8 @@ def main(argv=None):
             initial = protected()
             travel()
             terms = page.locator('#rpg-content').inner_text()
+            check('first entry expands the complete rules before a decision',
+                  page.locator('.rain-rules').evaluate('(el)=>el.open') is True)
             check('visible terms declare scoring, controls, costs and interruption before entry',
                   all(text in terms for text in ('Three exchanges', 'F strikes once', '3 braces',
                       'no attack bonus, XP, currency or material payout', 'an unrecorded result is not saved',
@@ -336,6 +339,8 @@ def main(argv=None):
                         check('native V selects '+mode, ev('Realm.diagnostics.camera.projection') == mode)
                         check('amber cue is visible in '+mode, page.locator('#rain-tournament-hud').is_visible()
                               and 'Amber ribbon' in page.locator('#rain-instruction').inner_text())
+                        check('decorative route labels cannot cover the live bout in '+mode,
+                              ev('getComputedStyle(document.querySelector("#earth-labels")).display==="none"&&Realm.state.settings.labels===true'))
                         check('event instructions clear the other HUD controls in '+mode, ev("""()=>{
                             const a=document.querySelector('#rain-tournament-hud').getBoundingClientRect();
                             return a.left>=0&&a.right<=innerWidth&&a.top>=0&&a.bottom<=innerHeight&&
@@ -356,10 +361,27 @@ def main(argv=None):
             walk(5, -27.6)
             key('e')
             check('complete result awaits deliberate recording', record()['finished'][family] == 0 and live()['score'] == 6)
+            check('earned score and deliberate recording are visible without scrolling through terms', ev("""()=>{
+                const panel=document.querySelector('#rpg-content').getBoundingClientRect();
+                return ['.rain-result h3','[data-rpg="tournament-record"]'].every(s=>{
+                    const r=document.querySelector(s).getBoundingClientRect();return r.top>=panel.top&&r.bottom<=panel.bottom;});}"""))
             action('record')
             check('native recording retains one gold result', record()['finished'][family] == 1 and record()['best'][family] == 6 and record()['closed'] == 2)
             check('record button disappears after committed result', page.locator('[data-rpg="tournament-record"]').count() == 0)
+            check('retained gold appears before the collapsed optional rules', ev("""()=>{
+                const record=document.querySelector('.rain-records'),rules=document.querySelector('.rain-rules');
+                const r=record.getBoundingClientRect(),panel=document.querySelector('#rpg-content').getBoundingClientRect();
+                return !rules.open&&r.top>=panel.top&&r.bottom<=panel.bottom&&r.bottom<=rules.getBoundingClientRect().top;
+            }"""))
+            check('the saved distinction is actually readable on the result page',
+                  'Gold rain medal' in page.locator('.rain-records').inner_text())
+            page.locator('.rain-rules summary').click()
+            check('returning players can reopen the complete rules', page.locator('.rain-rules').evaluate('(el)=>el.open') is True)
+            page.keyboard.press('Space')
+            check('focused rule summary supports native Space collapse', page.locator('.rain-rules').evaluate('(el)=>el.open') is False)
+            page.locator('#rpg-content').evaluate('(el)=>el.scrollTop=0')
             screenshot('03-GOLD')
+            report['milestones']['readable_result'] = True
             report['milestones']['gold'] = True
 
             # A later intentional run must remain possible. This run deliberately
@@ -388,6 +410,9 @@ def main(argv=None):
             report['milestones']['intentional_replay'] = True
 
             close()
+            check('route labels resume after the recorded bout without changing the label preference',
+                  ev('getComputedStyle(document.querySelector("#earth-labels")).display!=="none"&&Realm.state.settings.labels===true'))
+            report['milestones']['label_clearance'] = True
             page.locator('#settings').click()
             page.locator('#setting-reducedMotion').check()
             page.locator('#close-panel').click()

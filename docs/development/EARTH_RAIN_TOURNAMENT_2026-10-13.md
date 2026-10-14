@@ -243,3 +243,34 @@ MENU_FINAL02 passed52 event checks,3 caller-boundary checks and the rebuild at
 9d264366be0b260c5e02126a3997ecf264ae81546fd20573d5e581b7281bce45.
 The earlier51-check result and its276398ff HTML remain a historical repair
 checkpoint, not the latest page. Native and full/remote gates remain pending.
+
+# Native exhibition passed; visible polish and full-gate failure retained, 2026-10-14
+
+Exact remote source15de893 passed the exhibition caller:109 blade and122 bow
+checks, zero failures/errors/external requests, both cameras, real contacts,
+menu controls and two whole-browser restarts per family. All owned resources
+closed; source stayed clean. PR79 ba6fe9f separately passed20 backdrop checks.
+These are controlled software-WebGL routes in the reused qualification checkout,
+not fresh-clone proof, ordinary-time footage, GPU qualification or human approval.
+See docs/evidence/rain-exhibition-2026-10-14/NATIVE_QUALIFICATION01.json.
+
+Actual images exposed overlapping decorative route labels and results buried
+below long terms. A small presentation repair now keeps live bout instructions
+clear, presents results first, and lets returning players expand all unchanged
+rules. First entry still expands the full terms.52 focused event checks pass;
+the extended native caller must qualify this later UI/build before delivery.
+No save version, gear, score or reward rule changed.
+
+The older full MASTERWORK_FULL01 gate is TERMINAL FAILED, not live: original
+1800-second WildSigns boundary limit expired in the third capacity-retry case.
+Its230 source commands and earlier native suites passed; all later suites were
+not reached. Original logs/profiles and closure observations are retained in
+GATE. No process was stopped, no deadline enlarged and no case removed. Diagnose
+that full-gate failure separately from these targeted passes. STATION is now
+clean at15de893 and available only after checking any newer active ownership.
+
+The connected Blender grazer remains staged outside the game:44 CPU graph checks
+and an in-memory build, not integrated/native art. Production remains unfinished.
+Preserve VM/Claude/personal data/unrelated workers, serial browser admission,
+6GiB RAM floor, original deadlines, D storage, no new full copies or cleanup,
+no merge/deploy/billing. Usage-limited colleagues are not rerouted; heartbeat paused.
