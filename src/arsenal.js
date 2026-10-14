@@ -51,6 +51,7 @@ function weapon(a){const gear=G.RealmAdventure?.GEAR||GEAR;const id=a.equipment.
 function rangeWalkable(x,z,r=.31){return Number.isFinite(x)&&Number.isFinite(z)&&Math.abs(x)<14-r&&Math.abs(z)<13-r&&![...RANGE.pillars,...RANGE.scenery].some(p=>p.r!==undefined?Math.hypot(x-p.x,z-p.z)<p.r+r:Math.abs(x-p.x)<p.w/2+r&&Math.abs(z-p.z)<p.d/2+r);}
 function targetPose(def,t){return{...def,x:def.x+(def.id==='range-east'?Math.sin(t*.7)*1.8:0),z:def.z};}
 function projectileGround(sim,x,z){
+ if(sim.room===G.RealmEarth?.ROOM)return G.RealmEarthTournament?.fighting(sim)===true&&!sim.worldDive&&G.RealmEarth.walkable(x,z,.035);
  if(sim.room===G.RealmCosmos?.ROOM)return !sim.worldDive&&G.RealmCosmos.walkable(x,z,.035);
  if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&G.RealmWorldFoundations.walkable(sim.room,x,z,.035);
  const A=G.RealmAdventure,R=G.RealmRoad;
@@ -82,7 +83,7 @@ function practiceHit(sim,e){const a=sim.state.adventure,r=runtime(sim),q=r.range
  a.revision++;
 }
 function shoot(sim,type,payload={}){const A=G.RealmAdventure,a=sim.state.adventure,r=runtime(sim),p=sim.state.player,w=weapon(a),form=specialProfile(a),special=type==='pulse',cost=special?form.cost:w.stamina,cool=special?'pulse':'attack';
- const fail=error=>({ok:false,error});if(!A.combatScene(sim)||!a.started||w.style!=='bow')return fail('Equip a bow in an expedition or practice court.');
+ const fail=error=>({ok:false,error});if(G.RealmEarthTournament&&!G.RealmEarthTournament.allowed(sim,type))return fail('Only primary replies compete in this exhibition.');if(!A.combatScene(sim)||!a.started||w.style!=='bow')return fail('Equip a bow in an expedition or practice court.');
  if(a.elapsed<r.cooldowns[cool])return fail('The bow is recovering.');if(a.stamina<cost)return fail('The bow needs '+cost+' stamina.');if(r.arrows.length>=24)return fail('Too many arrows in flight.');
  const reachable=e=>e.hp>0&&!e.hidden&&Math.hypot(e.x-p.x,e.z-p.z)<w.reach&&aimClear(sim,p,e);
  const selected=payload.target||(special&&form.learned?G.RealmCombat.runtime(sim).target:null);
@@ -91,7 +92,7 @@ function shoot(sim,type,payload={}){const A=G.RealmAdventure,a=sim.state.adventu
  if(!target)return fail('Choose a clear target within 11 paces.');
  const d=Math.hypot(target.x-p.x,target.z-p.z);if(d<.03)return fail('Step back before drawing.');
  a.stamina-=cost;r.cooldowns[cool]=a.elapsed+(special?form.cooldown:w.cooldown);p.yaw=Math.atan2(target.x-p.x,target.z-p.z);
- r.arrows.push({id:'arrow-'+a.revision,room:sim.room,x:p.x,z:p.z,dx:(target.x-p.x)/d,dz:(target.z-p.z)/d,left:13,age:0,damage:Math.round(A.stats(a).attack*(special?form.multiplier:1)),pierce:special?form.pierce:1,hit:[],special,technique:special?form.id:null,color:activeGem(a)?.color??0xe6c78c});
+ r.arrows.push({id:'arrow-'+a.revision,tournamentContact:!special?G.RealmEarthTournament?.stamp(sim,'primary'):null,room:sim.room,x:p.x,z:p.z,dx:(target.x-p.x)/d,dz:(target.z-p.z)/d,left:13,age:0,damage:Math.round(A.stats(a).attack*(special?form.multiplier:1)),pierce:special?form.pierce:1,hit:[],special,technique:special?form.id:null,color:activeGem(a)?.color??0xe6c78c});
  r.lastShot=a.elapsed;r.aimYaw=p.yaw;if(sim.room==='range'&&r.range.active)r.range.shots++;
  return{ok:true,text:special?form.name+(form.pierce===2?' · two targets in its path':' · first body in its path'):'Arrow released'};
 }
@@ -102,7 +103,7 @@ function update(sim,dt){const A=G.RealmAdventure,a=sim.state.adventure,r=runtime
  const keep=[];
  for(const shot of r.arrows){if(shot.room!==sim.room||a.hp<=0)continue;const step=Math.min(shot.left,dt*22),end={x:shot.x+shot.dx*step,z:shot.z+shot.dz*step},hit=trace(shot,end,r.enemies,(x,z)=>projectileGround(sim,x,z),shot.hit);let stopped=false;
   for(const {e,u}of hit.hits){shot.hit.push(e.id);shot.pierce--;let landed;
-   if(e.kind==='practice'&&sim.room!=='riverbank'){practiceHit(sim,e);landed=true;}else landed=A.damageEnemy(sim,e,shot.damage,'weapon')===true;
+   if(e.kind==='practice'&&sim.room!=='riverbank'){practiceHit(sim,e);landed=true;}else landed=A.damageEnemy(sim,e,shot.damage,'weapon',shot.tournamentContact)===true;
    if(landed){e.awareness=a.elapsed+3;e.lastKnown={x:sim.state.player.x,z:sim.state.player.z};}
    A.fx(sim,landed?'arrow-hit':'arrow-wall',shot.x+(end.x-shot.x)*u,shot.z+(end.z-shot.z)*u,shot.color);
    if(shot.pierce<=0){stopped=true;break;}}

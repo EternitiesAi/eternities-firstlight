@@ -41,7 +41,7 @@ function noWild(h,label){assert.equal(h.pest(),undefined,label);assert.equal(A.r
 function ordinary(h){return A.runtime(h.sim).enemies.find(e=>e.id!==D.enemy.id);}
 
 test('actual saved world retains versions and canonical separate encounter terms',()=>{
- const h=host(),s=h.sim.snapshot();assert.equal(C.VERSION,9);assert.equal(A.VERSION,13);assert.equal(s.version,9);assert.equal(s.adventure.version,13);assert.equal(s.localLife.version,1);
+ const h=host(),s=h.sim.snapshot();assert.equal(C.VERSION,9);assert.equal(A.VERSION,14);assert.equal(s.version,9);assert.equal(s.adventure.version,14);assert.equal(s.localLife.version,1);
  assert.deepEqual(C.validate(s),s);assert.deepEqual(s.earthWildSigns,chosen());
  assert.equal(Object.hasOwn(s,'wildSignsOwnerLease'),false);assert.equal(Object.hasOwn(s,'grazerOwnerLease'),false);assert.equal(Object.hasOwn(s,'adventureRuntime'),false);
  const entry=h.pest();assert.ok(entry);assert.equal(entry.id,D.enemy.id);assert.equal(entry.hp,72);assert.equal(entry.radius,.48);assert.equal(entry.damage,9);assert.equal(entry.xp,0);assert.equal(entry.coins,0);assert.equal(entry.ore,0);

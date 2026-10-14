@@ -1,6 +1,7 @@
 /* Focused catalogue/schema/bonus checks. Adversarial states are validation
  * fixtures, not evidence of command-earned equipment or combat. */
 'use strict';
+const {removeEmptyTournament}=require('./helpers/earth-tournament-migration.cjs');
 const assert=require('node:assert/strict'),E=require('../src/earth-expedition.js');
 const A=require('../src/adventure.js'),C=require('../src/core.js'),F=require('../src/earth-fieldcraft.js');
 const copy=o=>JSON.parse(JSON.stringify(o));let checks=0;
@@ -90,8 +91,8 @@ if(A.VERSION>=12){
   return{sim,ctx:{sim,active,revision:1,ownerLease},save:sim.earthExpeditionSave,get saved(){return saved;}};
  }
  test('real Core migrates Adventure11 only and rejects missing/current/future/crossfield records',()=>{
-  const raw=C.fresh(),legacy=copy(raw);legacy.adventure.version=11;delete legacy.adventure.earthBinding;delete legacy.earthExpedition;const migrated=C.validate(legacy);
-  assert.equal(migrated.adventure.version,13);assert.deepEqual(migrated.adventure.earthBinding,E.freshBinding());assert.deepEqual(migrated.earthExpedition,E.fresh());for(const key of Object.keys(legacy.adventure).filter(k=>k!=='version'))assert.deepEqual(migrated.adventure[key],legacy.adventure[key],key+' migration retained');
+  const raw=C.fresh(),legacy=copy(raw);legacy.adventure.version=11;removeEmptyTournament(legacy.adventure);delete legacy.adventure.earthBinding;delete legacy.earthExpedition;const migrated=C.validate(legacy);
+  assert.equal(migrated.adventure.version,14);assert.deepEqual(migrated.adventure.earthBinding,E.freshBinding());assert.deepEqual(migrated.earthExpedition,E.fresh());for(const key of Object.keys(legacy.adventure).filter(k=>k!=='version'))assert.deepEqual(migrated.adventure[key],legacy.adventure[key],key+' migration retained');
   const absent=copy(raw);delete absent.adventure.earthBinding;assert.throws(()=>C.validate(absent));const future=copy(raw);future.adventure.version=A.VERSION+1;assert.throws(()=>C.validate(future));const futureLedger=copy(raw);futureLedger.earthExpedition.version=2;assert.throws(()=>C.validate(futureLedger));
   const f=fixture(),binding=f.sim.snapshot();binding.adventure.earthBinding={version:1,weapon:'trail_blade',kind:'edge'};assert.throws(()=>C.validate(binding));const noKit=copy(raw);noKit.earthExpedition.story.accepted=true;assert.throws(()=>C.validate(noKit));
  });

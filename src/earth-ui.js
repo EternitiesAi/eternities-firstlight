@@ -13,6 +13,7 @@ function mapSVG(sim){const {scale:s,x:ox,y:oy}=projection(420,540);let html='<re
  for(const p of N.PATCHES)html+='<rect x="'+(ox+(p.x-p.w/2)*s)+'" y="'+(oy+(p.z-p.d/2)*s)+'" width="'+p.w*s+'" height="'+p.d*s+'" fill="#657758"/>';
  for(const p of N.SOLIDS)html+='<rect x="'+(ox+(p.x-p.w/2)*s)+'" y="'+(oy+(p.z-p.d/2)*s)+'" width="'+p.w*s+'" height="'+p.d*s+'" fill="#314239"/>';
  for(const [i,p]of N.POINTS.entries())html+='<circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="10" fill="#263b32" stroke="#dfc38d"/><text x="'+(ox+p.x*s)+'" y="'+(oy+p.z*s+4)+'" text-anchor="middle" fill="#fff2d5">'+(i+1)+'</text>';
+ const ring=G.RealmEarthTournament?.definition.arena;if(ring)html+='<circle cx="'+(ox+ring.x*s)+'" cy="'+(oy+ring.z*s)+'" r="'+ring.radius*s+'" fill="none" stroke="#e7d6ac" stroke-dasharray="2 3"/><text x="'+(ox+(ring.x-7)*s)+'" y="'+(oy+(ring.z+6)*s)+'" fill="#f4e3bc" font-size="11">Rain exhibition</text>';
  const p=sim.state.player;return '<svg id="earth-map" viewBox="0 0 420 540" role="img" aria-label="Hearthwater approach: two real ground routes join at Bellweather west road">'+html+'<circle cx="'+(ox+p.x*s)+'" cy="'+(oy+p.z*s)+'" r="4" fill="white"/><text x="210" y="20" text-anchor="middle" fill="#dfc38d">NORTH · BELLWEATHER WEST ROAD</text></svg>';
 }
 const WORDS={

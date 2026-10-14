@@ -15,7 +15,7 @@ tool=importlib.util.module_from_spec(spec);spec.loader.exec_module(tool)
 
 def synthetic():
     ids=json.loads(subprocess.check_output(['node','-e',"console.log(JSON.stringify(require('./src/earth-expedition.js').definition.steps.slice(0,6).map(s=>s.id)))"],cwd=ROOT,text=True))
-    return {'version':9,'adventure':{'version':13,'started':True,'hp':100,'equipment':{'weapon':'trail_bow'},'owned':['trail_bow']},
+    return {'version':9,'adventure':{'version':14,'started':True,'hp':100,'equipment':{'weapon':'trail_bow'},'owned':['trail_bow']},
             'earthExpedition':{'version':1,'story':{'accepted':True,'claimed':False,'steps':ids,'branch':'managed-coppice'},'patrol':{'lastClaim':0,'active':None}}}
 
 class ShortCapturePreflight(unittest.TestCase):

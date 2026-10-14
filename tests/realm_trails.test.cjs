@@ -4,6 +4,7 @@
  * commands. Storage is an in-memory Store, not native browser persistence.
  */
 'use strict';
+const {removeEmptyTournament}=require('./helpers/earth-tournament-migration.cjs');
 const {test}=require('node:test'),assert=require('node:assert/strict');
 const C=require('../src/core.js'),A=require('../src/adventure.js'),W=require('../src/world-foundations.js');
 const R=require('../src/realm-trails.js'),RC=require('../src/realm-craft.js'),S=require('../src/sandbox.js');
@@ -39,12 +40,12 @@ function bow(sim){assert.ok(sim.adventureCommand('trail-unit-bow-'+(++serial),'a
 test('adventure 10 and missing optional trails preserve all ten XP boundaries and source input',()=>{
  const boundaries=[0,29,30,79,80,149,150,259,260,9999],levels=[1,1,2,2,3,3,4,4,5,5];
  for(let i=0;i<boundaries.length;i++){
-  const raw=kit().snapshot();raw.adventure.version=10;delete raw.adventure.realmCraft;delete raw.realmTrails;
+  const raw=kit().snapshot();raw.adventure.version=10;removeEmptyTournament(raw.adventure);delete raw.adventure.realmCraft;delete raw.realmTrails;
   raw.adventure.xp=boundaries[i];raw.notes=[{text:'Synthetic returning notebook',day:1}];raw.score.title='A kept melody';raw.retreat.wall='rose';
   const before=copy(raw),out=C.validate(raw);assert.deepEqual(raw,before,'migration cannot mutate its source');
-  assert.equal(C.VERSION,9);assert.equal(out.adventure.version,13);assert.equal(out.adventure.xp,boundaries[i]);assert.equal(A.level(out.adventure),levels[i]);
+  assert.equal(C.VERSION,9);assert.equal(out.adventure.version,14);assert.equal(out.adventure.xp,boundaries[i]);assert.equal(A.level(out.adventure),levels[i]);
   assert.deepEqual(out.realmTrails,R.fresh());assert.deepEqual(out.adventure.realmCraft,RC.fresh());
-  const originalAdventure=copy(raw.adventure),migratedAdventure=copy(out.adventure);delete originalAdventure.version;delete migratedAdventure.version;delete migratedAdventure.realmCraft;assert.deepEqual(migratedAdventure,originalAdventure);
+  const originalAdventure=copy(raw.adventure),migratedAdventure=copy(out.adventure);delete originalAdventure.version;delete migratedAdventure.version;delete migratedAdventure.realmCraft;removeEmptyTournament(migratedAdventure);assert.deepEqual(migratedAdventure,originalAdventure);
   for(const key of Object.keys(raw).filter(k=>k!=='adventure'))assert.deepEqual(out[key],raw[key],key);
  }
 });

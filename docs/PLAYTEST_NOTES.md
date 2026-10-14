@@ -1,3 +1,13 @@
+# Rain exhibition: command-earned, native/human feel pending, 2026-10-14
+
+Fresh blade, legitimately crafted bow and historical Chapter IV veteran cases walk from Firstlight, enter the exhibition, recover an interrupted attempt, score6/6 through real primary contacts and Brace, return to the steward, record once, and deliberately replay for3/6. Their prior best remains6 and ordinary owners remain intact. These are accelerated accepted rule journeys with an in-memory writer; they are not new gameplay footage or browser persistence evidence.
+
+A separate real-movement rule case walks sideways out of all three locked ribbons and remains within blade reach for each reply, without Brace. Misses, early contacts, unsupported powers and stale owners have negative coverage. The exhibition has27 simulation seconds of declared exchanges. This is not a measured human completion time. Ring geography now avoids the existing hospitality lantern and other roadwork objectives.
+
+Pending native inspection: steward/rules discoverability, chalk/amber/white cues in both cameras, HUD overlap, actual keyboard/mouse controls, reduced motion, cold bytes and one clean versus early reply. Pending Dom: Was the warning readable? Could you tell when to answer? Would improving a personal medal make you return? No human response or enjoyment verdict is supplied.
+
+---
+
 # Masterwork: actual UI and persistence, human feel pending, 2026-10-13
 
 At `e9c5bbc93b7166beabc75d6f911e75ec180e480d`, the freshly fetched clean remote game passes 42 blade/private

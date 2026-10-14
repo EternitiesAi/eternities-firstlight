@@ -34,7 +34,7 @@ def sample():
 
 
 def supplied():
-    world={'version':9,'adventure':{'version':13,'hp':100,'coins':8,'xp':20,'ore':0,'equipment':{'weapon':'synthetic-owned'},'elapsed':0,'revision':0},'sandbox':{'version':1,'inventory':{'wood':2,'fiber':3,'stone':4},'elapsed':0},'localLife':{'version':1,'records':{k:copy.deepcopy(H.FRESH) for k in H.OLD_IDS}}}
+    world={'version':9,'adventure':{'version':14,'hp':100,'coins':8,'xp':20,'ore':0,'equipment':{'weapon':'synthetic-owned'},'elapsed':0,'revision':0},'sandbox':{'version':1,'inventory':{'wood':2,'fiber':3,'stone':4},'elapsed':0},'localLife':{'version':1,'records':{k:copy.deepcopy(H.FRESH) for k in H.OLD_IDS}}}
     for k in ('journeys','realmTrails','earthExpedition','hellCampaign','heavenCampaign','atlantisCampaign','cosmosCampaign','earthHomecoming','bridgeCommunity','homeHistory','notes','score','scoreRevision','retreat','visitor','flowers','seed','visited'):world[k]={}
     original=copy.deepcopy(world);world['localLife']['records'][H.JOB]={'accepted':True,'choice':'south-stormfall','steps':[],'claimed':False}
     store={'version':1,'active':'character-2','slots':[{'id':'character-2','world':copy.deepcopy(world)}]}

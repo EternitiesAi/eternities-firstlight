@@ -23,13 +23,13 @@ function fixture(d){
  return{sim,place,saved,io,act:(type,payload={},options=io)=>L.command({sim,active:'synthetic-local-boundary'},type,{quest:d.id,...payload},options)};
 }
 test('older world9 migrates optional localLife1 without altering existing histories',()=>{
- const raw=C.fresh();delete raw.localLife;const copy=clone(raw),state=C.validate(raw);assert.deepEqual(raw,copy);assert.deepEqual(state.localLife,L.fresh());for(const k of Object.keys(copy))assert.deepEqual(state[k],copy[k],k);assert.equal(state.version,9);assert.equal(state.adventure.version,13);
+ const raw=C.fresh();delete raw.localLife;const copy=clone(raw),state=C.validate(raw);assert.deepEqual(raw,copy);assert.deepEqual(state.localLife,L.fresh());for(const k of Object.keys(copy))assert.deepEqual(state[k],copy[k],k);assert.equal(state.version,9);assert.equal(state.adventure.version,14);
 });
 test('current malformed/future local work refuses rather than resetting progress',()=>{
  for(const bad of[{version:2,records:{}},{version:1,records:{}},null])assert.throws(()=>L.validate(bad));
  const d=LEGACY_DEFINITIONS[0];for(const change of[r=>r.choice='channel',r=>r.claimed=true,r=>r.steps=['plant-cuttings'],r=>r.steps=['not-a-step']]){const raw=L.fresh();change(raw.records[d.id]);assert.throws(()=>L.validate(raw));}
 });
-test('the new local ledger does not extend or rewrite the old five trail definitions',()=>{assert.equal(R.definitions().length,5);assert.equal(R.fresh().version,1);assert.equal(LEGACY_DEFINITIONS.length,4);assert.equal(L.definitions.length,5);assertFreshConsignment(C.fresh());assert.ok(Object.isFrozen(L.definitions));assert.equal(A.VERSION,13);});
+test('the new local ledger does not extend or rewrite the old five trail definitions',()=>{assert.equal(R.definitions().length,5);assert.equal(R.fresh().version,1);assert.equal(LEGACY_DEFINITIONS.length,4);assert.equal(L.definitions.length,5);assertFreshConsignment(C.fresh());assert.ok(Object.isFrozen(L.definitions));assert.equal(A.VERSION,14);});
 for(const d of LEGACY_DEFINITIONS){
  test(d.id+' rejects offsite acceptance, invalid arrangement and absent prerequisite atomically',()=>{
   const h=fixture(d),before=h.sim.snapshot();h.place({x:0,z:W.definition(d.realm).bounds.maxZ});const offsite=h.sim.snapshot();assert.equal(h.act('accept',{choice:d.choices[0].id}).ok,false);assert.deepEqual(h.sim.snapshot(),offsite);h.place(d.giver);

@@ -16,8 +16,10 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[1]
 OLD = ROOT / 'tools/SOURCE_EXPECTATIONS04.json'
 PREVIOUS = ROOT / 'tools/SOURCE_EXPECTATIONS05.json'
-CANDIDATE = ROOT / 'tools/SOURCE_EXPECTATIONS06.json'
-CURRENT_PIN = '10175f12c1c311b1c3e5c3ad11210b46c7d4c6edd26b8fc0fc378ef67727d59f'
+EPOCH06 = ROOT / 'tools/SOURCE_EXPECTATIONS06.json'
+CANDIDATE = ROOT / 'tools/SOURCE_EXPECTATIONS07.json'
+EPOCH06_PIN = '10175f12c1c311b1c3e5c3ad11210b46c7d4c6edd26b8fc0fc378ef67727d59f'
+CURRENT_PIN = '6f3c12a17c616dd011578fbdf89913c84bf4f842712e174fcf0ac9692c8ea597'
 PINS = {
     'tools/earth_consignment_browser.py': '9212846db04bf76c1e12ac81219ca3b24ff2b8e85145fc071b986738cdad52bd',
     'tools/earth_wild_signs_browser.py': 'e8516952228fdd645ff7e92cb8983c93eb6f6e328d0c1a8962188d3b62e39e8a',
@@ -63,14 +65,14 @@ class ProspectiveEpoch(unittest.TestCase):
             self.assertEqual(after['helpersLF'][path], literal)
             actual = (ROOT / path).read_bytes().replace(b'\r\n',b'\n')
             if path == 'tools/earth_consignment_browser.py':
-                self.assertEqual(actual.count(b"get('version')!=13"),1)
-                actual = actual.replace(b"get('version')!=13",b"get('version')!=12")
+                self.assertEqual(actual.count(b"get('version')!=14"),1)
+                actual = actual.replace(b"get('version')!=14",b"get('version')!=12")
             self.assertEqual(hashlib.sha256(actual).hexdigest(),literal)
             after['helpersLF'][path] = before['helpersLF'][path]
         self.assertEqual(after, before, 'raw historical helpers/report/head/modules/App pins remain exact')
 
     def test_only_declared_version_predicate_and_provenance_advance_epoch06(self):
-        before,after=json.loads(PREVIOUS.read_text()),json.loads(CANDIDATE.read_text())
+        before,after=json.loads(PREVIOUS.read_text()),json.loads(EPOCH06.read_text())
         review=after.pop('source06Review')
         blob=subprocess.check_output(['git','-C',str(ROOT),'show','HEAD:tools/SOURCE_EXPECTATIONS05.json'])
         self.assertEqual(review['previousRawSHA256'],hashlib.sha256(blob).hexdigest())
@@ -79,10 +81,26 @@ class ProspectiveEpoch(unittest.TestCase):
         self.assertEqual((review['oldPredicate'],review['newPredicate'],review['occurrences']),
                          ("get('version')!=12","get('version')!=13",1))
         rel='tools/earth_consignment_browser.py'
-        self.assertEqual(after['helpersLF'][rel],CURRENT_PIN)
-        self.assertEqual(DRIVER.lf_sha(ROOT/rel),CURRENT_PIN)
+        self.assertEqual(after['helpersLF'][rel],EPOCH06_PIN)
+        restored=(ROOT/rel).read_bytes().replace(b'\r\n',b'\n').replace(b"get('version')!=14",b"get('version')!=13")
+        self.assertEqual(hashlib.sha256(restored).hexdigest(),EPOCH06_PIN)
         after['helpersLF'][rel]=before['helpersLF'][rel]
         self.assertEqual(after,before,'Historical helper/module/App/report identities remain exact')
+
+    def test_epoch07_changes_only_the_current_13_to14_predicate(self):
+        before,after=json.loads(EPOCH06.read_text()),json.loads(CANDIDATE.read_text())
+        review=after.pop('source07Review')
+        self.assertEqual(review['previousRawSHA256'],hashlib.sha256(EPOCH06.read_bytes()).hexdigest())
+        self.assertEqual(review['previousLFSHA256'],DRIVER.lf_sha(EPOCH06))
+        self.assertEqual((review['oldPredicate'],review['newPredicate'],review['occurrences']),("get('version')!=13","get('version')!=14",1))
+        self.assertFalse(review['independentReview']);self.assertFalse(after['installationQualified'])
+        rel='tools/earth_consignment_browser.py';actual=(ROOT/rel).read_bytes().replace(b'\r\n',b'\n')
+        self.assertEqual(actual.count(b"get('version')!=14"),1)
+        self.assertEqual(hashlib.sha256(actual.replace(b"get('version')!=14",b"get('version')!=13")).hexdigest(),EPOCH06_PIN)
+        self.assertEqual(after['helpersLF'][rel],CURRENT_PIN);self.assertEqual(DRIVER.lf_sha(ROOT/rel),CURRENT_PIN)
+        after['helpersLF'][rel]=before['helpersLF'][rel];self.assertEqual(after,before)
+        with self.assertRaisesRegex(ValueError,'Actual original browser helper text changed'):
+            DRIVER.installed_epoch(ROOT,self.head,EPOCH06)
 
     def test_frozen_05_refuses_the_changed_current_version_predicate(self):
         with self.assertRaisesRegex(ValueError,'Actual original browser helper text changed'):

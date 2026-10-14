@@ -1,3 +1,15 @@
+# ET07 is a local skill exhibition with finite distinctions, 2026-10-14
+
+Follow the supplied Earth event atlas’s civic tournament: declared rules, honest participation and distinction earned by accepted outcomes. The current bounded realization is a mechanical practice-post exhibition, not simulated online opponents. Three defense/reply pairs produce0–6 points. Blade and bow use existing uniform family primary reach/cadence, retain all gear, sockets and upgrades, and compete in separate personal records. No damage-based scoring, forced class, item payout, XP change or entry fee.
+
+An accepted bout owns a run serial and opaque primary-contact proof bound to the Simulation, state, character context, weapon and Earth scene. Actual melee or swept projectile contact is required. Other powers refuse before costs/story effects; companion attacks do not compete. Completed results use checked candidate saves before adoption. Retry cannot pay twice; explicit new entry starts another run. Unrecorded live proof is intentionally not durable; cold/scene/weapon interruption offers withdrawal without altering retained distinctions or ordinary belongings. This does not settle broader offline-loss policy.
+
+Adventure13→14 adds exactly empty tournament1 when absent. Ambiguous pre-schema data refuses, preserving the export for review. Older synthetic downgrade fixtures now explicitly assert and remove only the exact empty new record; independent migration oracles add its literal default and compare the rest of the full world. Raw historical captures remain unchanged. Epoch07 advances only a declared current-cohort schema predicate and retains epochs04–06; its review is parent-only, not independent approval.
+
+The first proposed ring overlapped the existing hospitality lantern. The final ring(5,-31.5) keeps it and all earlier roadwork sites outside the circle, with1,088 supported-body samples. Original small procedural props add no collision or camera authority. Both cameras and all ordinary controls persist.
+
+---
+
 # A finite lesson and an accountable commission, 2026-10-13
 
 ET06 follows the founder's misattributed commission and apprentice participation,

@@ -1,3 +1,13 @@
+# Qualify the integrated rain exhibition, 2026-10-14
+
+1. Inspect active exec8043 and MASTERWORK_FULL01_EXIT.json before any browser allocation or STATION change. The baseline88b30bf full gate is still in consignment; its current passes cannot qualify this later tournament or PR79 woodland. No competing full verification run.
+2. In ROOT `gameplay/tournament-after-rain-20261013`, commit the inspected integration and rerun the two source-epoch CPU classes which correctly refused the uncommitted runtime in TOURNAMENT_NATIVE_ORACLES01. Keep the clean-source guard and every original negative receipt. SOURCE_EXPECTATIONS07 changes only the current consignment Adventure13-to14 predicate, with old epochs frozen and explicit parent-only review.
+3. Complete the new-head source gate when resource ownership permits. The final47 event checks, three final-site command-earned journeys, and targeted migration/owner checks are useful partial evidence, not the full verifier. Inspect remaining schema assumptions using failures; do not rewrite historical fixtures or generic-drop new data.
+4. Once the exact existing full gate actually closes, inspect its outcome and resolve any failures. Reuse the clean STATION for exact remote qualification. Qualify PR79’s prepared woodland native caller serially, then the exhibition with real visible entry/Tab/F/3/movement/results, both cameras, quiet motion, no miss feedback, interrupted recovery and exact whole-browser stored-byte restart. A new bounded native caller for the exhibition is still needed. Keep recording to one short useful clip only if warranted.
+5. Push a clearly labelled stacked gameplay PR when its source is reviewable; report exact base/head and actual outstanding gates. Independent review remains unavailable with both existing Sol colleagues usage-limited. Human feel and real RTX performance are separate pending acceptance. Do not claim AAA/production completion, merge main, deploy or resume the heartbeat.
+
+---
+
 # Observe the full gate, then qualify grounded scenery, 2026-10-13
 
 1. Check exec session8043 and the exact MASTERWORK_FULL01 terminal receipt under

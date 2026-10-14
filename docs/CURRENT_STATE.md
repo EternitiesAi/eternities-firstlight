@@ -1,3 +1,15 @@
+# The Tournament After the Rain: source integration, 2026-10-14
+
+A new local exhibition is implemented on `gameplay/tournament-after-rain-20261013`, based on PR79 ba6fe9f. The steward on Hearthwater’s north common declares three exchanges against a mechanical practice post. Brace or move clear of its locked amber ribbon, then land a primary reply in the white-pennant opening. Blade and bow retain their equipment; damage does not buy points. Finite bronze/silver/gold distinctions belong to each family. Repeat play can improve a best result, without an economy payout or campaign advance.
+
+The ring was moved to(5,-31.5), with its steward at(5,-27.6), after a regression exposed overlap with the existing hospitality lantern. The final site passes1,088 body/entry-ray samples and keeps prior task sites outside the circle. Its UI, map mark, read-only original art and both-camera controls are wired into the generated browser game. Native layout/art/camera checks remain pending.
+
+Final event checks47/0 failures/0 skips; earned fresh blade, crafted bow and Chapter IV veteran journeys pass using real commands and a labelled in-memory saver. They cover interrupted-run recovery, six-point result, intentional three-point replay and changed-ID refusal, preserving equipment, XP, sockets, inventory and prior histories. Additional migration/owner/combat checks are recorded separately, not summed as a full gate. Adventure14/tournament1; World9/Arsenal1 unchanged. Identical HTML3,485,103 bytes, SHA256 d8266f395b46c766c7197c12b84660fb59c778a7b32cc8926b0c2002affff698.
+
+The native-oracle CPU attempt retained18 failures/2 errors in119 tests because the two source-epoch classes require a clean committed runtime;1 explicit-cohort test skipped. Preserve that guard and rerun after the source commit. The complete new-head source/native/fresh-remote gate is not passed. The earlier PR78 full browser gate is still separately running in the reused STATION; PR79 woodland native acceptance remains pending. No additional movie, full copy or profile was created. [Contract and receipts](development/EARTH_RAIN_TOURNAMENT_2026-10-13.md).
+
+---
+
 # Grounded woodland scenery in progress, 2026-10-13
 
 The authoring branch `gameplay/grounded-earth-backdrop-20261013` fixes the

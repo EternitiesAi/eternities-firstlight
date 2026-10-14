@@ -1,3 +1,15 @@
+# Active authoring: rain exhibition implemented, qualification open, 2026-10-14
+
+ROOT owns `gameplay/tournament-after-rain-20261013`, based on PR79 ba6fe9fa6a93cfadf075bf085a875dc0f63c6050. Read docs/development/EARTH_RAIN_TOURNAMENT_2026-10-13.md. The real model, owner/writer, combat, UI, art and strict Adventure13-to14 migration are integrated. Generated pages are identical 3,485,103-byte builds, SHA256 d8266f395b46c766c7197c12b84660fb59c778a7b32cc8926b0c2002affff698. This is NOT native-qualified or a full-gate delivery.
+
+Focused final tournament checks:47 passed. Final-site earned blade, crafted bow and historical Chapter IV veteran journeys pass; all use accepted accelerated commands with a labelled in-memory saver, not native storage. Both guarded and actual walking responses score through the real rules. Earlier negative receipts remain. Native-oracle01 has119 tests with18 failures/2 errors/1 skip: every failure/error is the required clean committed runtime guard in the two roadkeeper source-epoch classes. Commit the reviewed source, then rerun those exact classes without weakening that guard. Other checks in that run passed. Broader source/new-head remote/native qualification still required.
+
+STATION remains frozen at88b30bf under the genuinely live MASTERWORK_FULL01 / exec8043 gate, presently in consignment. Do not edit/move STATION or launch a second browser/heavy parallel suite. Only independent ROOT source work and bounded focused CPU checks are admitted. No new full checkout, video, browser profile or cleanup. Both Sol reviewers remain usage-limited. PR79 app attachment returned a3600s tool timeout; GitHub PR79 exists, app attachment is unconfirmed. Heartbeat remains PAUSED.
+
+Preserve the VM/Claude/personal-save/unrelated-worker exclusions and original6GiB RAM floor, four Node workers/full-suite deadlines. No paid provider, billing, merge, deploy, blocked deletion retry or worker reroute.
+
+---
+
 # Active authoring: grounded Earth backdrop, 2026-10-13
 
 ROOT now owns `gameplay/grounded-earth-backdrop-20261013`, based on PR78 delivery

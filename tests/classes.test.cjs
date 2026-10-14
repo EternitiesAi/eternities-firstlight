@@ -1,4 +1,5 @@
 'use strict';
+const {removeEmptyTournament}=require('./helpers/earth-tournament-migration.cjs');
 const test=require('node:test'),assert=require('node:assert/strict');
 const C=require('../src/core.js'),A=require('../src/adventure.js'),AR=require('../src/arsenal.js'),T=require('../src/combat.js');
 let seq=0;const act=(s,type,p={})=>s.adventureCommand('class-test-'+(++seq),type,p),K=()=>globalThis.RealmClasses;
@@ -9,8 +10,8 @@ function river(s){s.state.player={x:15,z:7,yaw:0};assert.equal(act(s,'starter-en
 const target=s=>T.selected(s);
 // Labelled synthetic boundaries below; classes_journey separately earns progression.
 test('version6 migrates to current schema with no inferred class and all banked XP intact',()=>{
- assert.equal(A.VERSION,13);
- for(const xp of [0,29,30,79,80,149,150,259,260,9999]){const w=C.fresh();w.adventure.version=6;delete w.adventure.classPath;w.adventure.xp=xp;w.notes=[{text:'intact',day:1}];const bytes=JSON.stringify(w),out=C.validate(w);assert.deepEqual(out.adventure.classPath,{version:1,choice:null,readyAt:0});assert.equal(out.adventure.xp,xp);assert.equal(A.level(out.adventure),1+[30,80,150,260].filter(n=>xp>=n).length);const prior={...out.adventure};delete prior.classPath;prior.version=6;assert.deepEqual(prior,w.adventure);assert.deepEqual(out.notes,w.notes);assert.equal(JSON.stringify(w),bytes);}
+ assert.equal(A.VERSION,14);
+ for(const xp of [0,29,30,79,80,149,150,259,260,9999]){const w=C.fresh();w.adventure.version=6;removeEmptyTournament(w.adventure);delete w.adventure.classPath;w.adventure.xp=xp;w.notes=[{text:'intact',day:1}];const bytes=JSON.stringify(w),out=C.validate(w);assert.deepEqual(out.adventure.classPath,{version:1,choice:null,readyAt:0});assert.equal(out.adventure.xp,xp);assert.equal(A.level(out.adventure),1+[30,80,150,260].filter(n=>xp>=n).length);const prior={...out.adventure};delete prior.classPath;prior.version=6;removeEmptyTournament(prior);assert.deepEqual(prior,w.adventure);assert.deepEqual(out.notes,w.notes);assert.equal(JSON.stringify(w),bytes);}
 });
 test('class choice requires kit, proximity, known ID and explicit confirmation atomically',()=>{
  const raw=new C.Simulation();raw.state.player={x:11,z:9,yaw:0};let before=snap(raw);assert.equal(act(raw,'class-choose',{id:'hunter',confirm:true}).ok,false);assert.equal(snap(raw),before);
