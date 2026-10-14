@@ -64,13 +64,14 @@
   "source07Review": {
     "preparedFromHead": "ba6fe9fa6a93cfadf075bf085a875dc0f63c6050",
     "previousExpectations": "SOURCE_EXPECTATIONS06.json",
-    "previousRawSHA256": "80e228425ad4dc91d810843669be6acb9a37286f342863444090f0620974903c",
+    "previousRawSHA256": "6416620ab69590fd8556dc35cfa3b1a4042c92c9f85f0809beaf24c42272b6ed",
     "previousLFSHA256": "6416620ab69590fd8556dc35cfa3b1a4042c92c9f85f0809beaf24c42272b6ed",
     "helper": "tools/earth_consignment_browser.py",
     "oldPredicate": "get('version')!=13",
     "newPredicate": "get('version')!=14",
     "occurrences": 1,
     "independentReview": false,
-    "scope": "Parent source review of exactly the Adventure13-to14 current-cohort predicate. Reversing it reproduces the immutable epoch06 helper pin. Every historical source/report/module identity remains. This alone is not native qualification or independent review."
+    "scope": "Parent source review of exactly the Adventure13-to14 current-cohort predicate. Reversing it reproduces the immutable epoch06 helper pin. Every historical source/report/module identity remains. This alone is not native qualification or independent review.",
+    "rawIdentityRole": "Git blob bytes of immutable epoch06, independent of checkout newline conversion."
   }
 }

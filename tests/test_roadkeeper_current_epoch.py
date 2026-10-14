@@ -90,7 +90,8 @@ class ProspectiveEpoch(unittest.TestCase):
     def test_epoch07_changes_only_the_current_13_to14_predicate(self):
         before,after=json.loads(EPOCH06.read_text()),json.loads(CANDIDATE.read_text())
         review=after.pop('source07Review')
-        self.assertEqual(review['previousRawSHA256'],hashlib.sha256(EPOCH06.read_bytes()).hexdigest())
+        blob=subprocess.check_output(['git','-C',str(ROOT),'show','HEAD:tools/SOURCE_EXPECTATIONS06.json'])
+        self.assertEqual(review['previousRawSHA256'],hashlib.sha256(blob).hexdigest())
         self.assertEqual(review['previousLFSHA256'],DRIVER.lf_sha(EPOCH06))
         self.assertEqual((review['oldPredicate'],review['newPredicate'],review['occurrences']),("get('version')!=13","get('version')!=14",1))
         self.assertFalse(review['independentReview']);self.assertFalse(after['installationQualified'])

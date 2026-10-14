@@ -1,3 +1,29 @@
+# Rain exhibition source checkpoint and repaired admission, 2026-10-14
+
+Runtime is committed at `01b44ae4e840d8ab17508d3216982558e239b19b` on
+`gameplay/tournament-after-rain-20261013`, stacked on PR79 ba6fe9f. The earlier
+source-epoch failures are resolved: after committing the unchanged runtime, both
+classes passed22/0/0 in TOURNAMENT_CURRENT_EPOCH02. A subsequent portability
+inspection found epoch07’s prior raw identity bound to checkout CRLF bytes; it
+now binds the immutable epoch06 Git blob instead. The two affected checks passed
+in TOURNAMENT_EPOCH_PORTABILITY03. Earlier negative receipts remain unchanged.
+
+Current partial evidence:47 event checks, three command-earned variants,
+126 selected owner/combat checks, explicit migration cases and identical HTML.
+Read docs/evidence/rain-exhibition-2026-10-14/SOURCE_QUALIFICATION.json and the task
+note; these are overlapping focused runs, not the complete verifier. Native UI,
+current complete source gate, exact fresh remote checkout, independent review,
+human acceptance and real GPU performance remain open. No event video exists.
+
+The genuinely live baseline full gate still owns frozen STATION at88b30bf
+(exec8043, currently consignment). Keep it untouched and browser execution
+serial. Prepare the bounded event native caller and finish new-head source
+qualification only as resource ownership permits. The earlier unresolved-dirty-
+runtime direction below is historical and superseded. Preserve every ownership,
+VM/Claude, storage, personal-save, no-merge/deploy and paused-heartbeat boundary.
+
+---
+
 # Qualify the integrated rain exhibition, 2026-10-14
 
 1. Inspect active exec8043 and MASTERWORK_FULL01_EXIT.json before any browser allocation or STATION change. The baseline88b30bf full gate is still in consignment; its current passes cannot qualify this later tournament or PR79 woodland. No competing full verification run.

@@ -139,3 +139,23 @@ for this event. No new complete verifier was run alongside the frozen baseline
 browser gate. Source commit, complete current source gate, native event caller,
 actual UI/camera/persistence footage, exact fresh remote qualification,
 independent review and human acceptance remain separate unfinished work.
+
+
+### Source admission repaired after commit
+
+Runtime commit01b44ae4e840d8ab17508d3216982558e239b19b provides the clean-source
+checkpoint required by the two source-epoch test classes. Their targeted rerun
+passed22/0/0 in TOURNAMENT_CURRENT_EPOCH02. The guard was retained. The subsequent
+portable-identity check found the new review metadata’s previousRawSHA256 tied
+to checkout CRLF bytes(80e22842…) rather than the immutable Git blob(6416620a…).
+Epoch07 now explicitly uses the prior Git blob, with LF identity still separate;
+the two affected tests pass in TOURNAMENT_EPOCH_PORTABILITY03. No runtime or HTML
+changed in this correction. This is local CPU admission, not a fresh clone.
+
+A compact source qualification JSON is published under
+`docs/evidence/rain-exhibition-2026-10-14/SOURCE_QUALIFICATION.json`. The full
+negative logs, two small final earned snapshots per family and command ledgers
+stay in the reused D evidence root. No additional full game, movie or profile.
+The native caller remains to be prepared. Actual event footage, complete verifier,
+serial native acceptance, exact fresh remote, independent review and human feel
+remain open. PR79 app attachment timed out; its GitHub PR remains open/draft.
