@@ -1,0 +1,80 @@
+{
+  "head": "d13d067f54e0cb32f176ec246afbdde0ae766119",
+  "scope": "Actual factory-startup Blender authoring and separate reopened-file geometry verification; no rendering",
+  "blender": "5.2.1 LTS",
+  "threads": 1,
+  "initialFreeHostKiB": 5783684,
+  "original": {
+    "path": "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\assets\\source\\moss-grazer\\GRAZER_BODY.json",
+    "bytes": 148058,
+    "sha256": "6b89390775d4e41024ee855a201c2e90cdbb77072daabfee84c3a3cf3aefedd8"
+  },
+  "regenerated": {
+    "path": "D:\\07-GAMES\\Firstlight\\staging\\moss-grazer-refinement-20261014\\authoring-reproduction01\\GRAZER_BODY.json",
+    "bytes": 148057,
+    "sha256": "c1fc89d1059c8c391c465a0cac3c0fe80e84f8aeb52913c62ab29d5212cde4a6"
+  },
+  "jsonBytesEqualAfterCRLFNormalization": true,
+  "float32ExactIncludingSignedZero": true,
+  "float32Sha256": "810050556e886cae5cdc33e8d354dffdb08c669ee10c194f2e50940b1846b987",
+  "triangleCount": 816,
+  "reopen": {
+    "status": "passed",
+    "blender": "5.2.1 LTS",
+    "source": "D:\\07-GAMES\\Firstlight\\staging\\moss-grazer-refinement-20261014\\authoring-reproduction01\\GRAZER_BODY.blend",
+    "factoryReopen": true,
+    "rendered": false,
+    "geometryFloat32Exact": true,
+    "triangleCount": 816,
+    "float32Sha256": "810050556e886cae5cdc33e8d354dffdb08c669ee10c194f2e50940b1846b987",
+    "libraries": [],
+    "externalImages": [],
+    "materials": [
+      {
+        "name": "Material",
+        "users": 0,
+        "linked": false
+      },
+      {
+        "name": "Slate hide - existing palette",
+        "users": 1,
+        "linked": false
+      }
+    ],
+    "portable": true
+  },
+  "retained": [
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\assets\\source\\moss-grazer\\author.py",
+      "bytes": 5063,
+      "sha256": "7ac1dc635396ed81b1c6201d16e5a1f79df1d5357f57d0b6ab4f65e8039a732f"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\staging\\moss-grazer-refinement-20261014\\check-authoring-reproduction.py",
+      "bytes": 2130,
+      "sha256": "84c3cee3bdd80b996594759cd03091708d8d0db8b16f80d6fde474791d9c339b"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\staging\\moss-grazer-refinement-20261014\\AUTHORING_REPRODUCTION01.log",
+      "bytes": 1175,
+      "sha256": "5dbae5293a1231cf4667caa17f1712b694f598876c6e264c98f02810aa6b2f59"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\staging\\moss-grazer-refinement-20261014\\AUTHORING_REOPEN01.log",
+      "bytes": 795,
+      "sha256": "171e82de6abf3c7f7214ebc225cb19f056652a28e926dcf9a3c2b4206e5a5476"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\staging\\moss-grazer-refinement-20261014\\authoring-reproduction01\\GRAZER_BODY.blend",
+      "bytes": 98386,
+      "sha256": "19bdf528c4663a259fdb40fa6456d62249815f301658e202710fee4c43034ac1"
+    },
+    {
+      "path": "D:\\07-GAMES\\Firstlight\\staging\\moss-grazer-refinement-20261014\\authoring-reproduction01\\REOPEN_REPORT.json",
+      "bytes": 655,
+      "sha256": "833e5ad2b748cf1e5fd51ecf32b91266bfa7a4bea515a727276586ed4ebcbb00"
+    }
+  ],
+  "warning": "Blender emitted a factory brush Material relative-path warning while saving. The separate reopened-file inspection found no linked library or external image. One unlinked zero-user factory Material remains; the used hide material and evaluated geometry are self-contained.",
+  "limits": "This proves editable-source reproduction and portability, not in-game pixels or GPU performance. Original checked-in source asset was not overwritten."
+}

@@ -29,8 +29,16 @@ python build.py
 The packer preserves negative zero and every exported float32 value. Ordinary
 builds need neither Blender nor an asset download. To regenerate the authoring
 study, run `author.py` only in a separate factory-startup background Blender
-process with `--threads 1`, then pass `-- --output <fresh-directory-on-D>`.
-The script refuses existing output. It performs no rendering.
+process with `--threads 1 --python-exit-code 1`, then pass
+`-- --output <fresh-directory-on-D>`. The script refuses existing output and
+performs no rendering. The explicit Python exit code propagates authoring errors.
+
+An actual single-threaded regeneration and separate reopen on2026-10-14 matched
+all816 triangles exactly as float32 values, including signed zero. Export JSON
+differs only by CRLF/LF line endings. The reopened file had no external libraries
+or images; an unused, unlinked factory material is retained in that diagnostic
+copy. See `docs/evidence/connected-grazer-2026-10-14/AUTHORING_REPRODUCTION01.json`
+for source identities, the preserved Blender warning and actual dependency check.
 
 Original exported JSON SHA256:
 `6b89390775d4e41024ee855a201c2e90cdbb77072daabfee84c3a3cf3aefedd8`.

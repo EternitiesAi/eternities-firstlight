@@ -44,11 +44,34 @@ binding, missing-body refusal, scene release and a fresh renderer's buffer.
 The fixture's prior paid work and initial pose are explicitly synthetic. The
 recording GL host supplies no pixels and is not a native gameplay claim.
 
-Two existing test output arrays now declare the real new mesh channel. All
-previous assertions remain. The four new WorldArt checks reuse the existing
-fixture directly within its test file, without source scraping or a validator
-facade. The complete source gate, actual native browse in both cameras,
-ordinary-time visibility, human appearance and remote reproduction remain open.
+Two existing unit-test output arrays and the command-earned wildlife caller now
+declare the real new mesh channel. All previous assertions remain. SOURCE01
+correctly refused that caller's missing channel; d13d067 repairs it and checks
+one actual connected body per CPU presentation receipt. The four new WorldArt
+checks reuse the existing fixture within its test file, without source scraping
+or a validator facade.
+
+The complete source gate passed at `d13d067f54e0cb32f176ec246afbdde0ae766119` in
+the clean exact fetched qualification checkout: 238 commands, Node2,355 passed /
+zero failed / two skipped, Python551 run / zero failed / eight skipped, and all
+current command-earned journeys. This reused checkout is not a new fresh clone.
+See `../evidence/connected-grazer-2026-10-14/FULL_SOURCE_QUALIFICATION.json` for
+counts, skips, exact commands and retained failure identities.
+
+The checked-in authoring script was also run in factory-startup Blender5.2.1LTS
+with one CPU thread and no rendering. Its generated file was reopened in a
+separate Blender process. All816 triangles match the checked-in export exactly
+as float32 values, including signed zero; no external library or image remains.
+Raw JSON differs only by line endings. The original checked-in asset was not
+overwritten. The authoring receipt preserves Blender's factory brush warning
+and the actual reopened dependency inspection.
+
+Current native appearance remains open. GRAZER_NATIVE02 refused the outer RAM
+check; GRAZER_NATIVE03 refused after Playwright driver startup at6,021,544KiB
+against the unchanged6,291,456KiB floor. No browser was allocated. The server
+closed and both attempts are terminal. Keep the original1800s suite and actual
+launch guard. Ordinary-frame mesh visibility, both-camera appearance, frame cost
+and human judgment cannot be inferred from the source or Blender passes.
 
 Earlier staging and failures remain under
 `D:/07-GAMES/Firstlight/staging/moss-grazer-refinement-20261014`. Current evidence
