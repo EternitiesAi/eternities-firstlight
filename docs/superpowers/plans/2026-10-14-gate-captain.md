@@ -29,14 +29,21 @@ Public interface: `definition`, `fresh()`, `validate(raw)`, `route(plan)`,
 `transition(raw,type,payload) -> {ok,state,duplicate?,cost?,reward?,error?}`.
 Transitions are pure proposed records, not world commands or movement proof.
 
-- [ ] Define literal fresh state and independent rejection/boundary cases first.
+- [x] Define literal fresh state and independent rejection/boundary cases first.
   Example: `assert.throws(()=>M.validate({...M.fresh(),claimed:true}))`;
   `assert.deepEqual(M.transition(fresh,'claim',{}).ok,false)`.
-- [ ] Implement strict prerequisites, changeable plan before preparation, exact
+- [x] Implement strict prerequisites, changeable plan before preparation, exact
   shelter costs and terminal outcome/claim consistency; preserve discovery order.
-- [ ] Verify all three parallel paths with actual Earth point/whole-segment
+- [x] Verify all three parallel paths with actual Earth point/whole-segment
   predicates, reject mutated definitions and prove no input mutation.
-- [ ] Run `node --test --test-concurrency=1 tests/earth-gate-model.test.cjs`.
+- [x] Run `node --test --test-concurrency=1 tests/earth-gate-model.test.cjs`.
+
+Eight model/geometry tests pass in `GATE_MODEL02.log` under the existing
+`village-resident-articulation-20261013/next-gate` artifact directory. The first
+implementation run passed seven and failed one: the test passed a room string
+where Core requires `{id: room}`. The corrected test also checks Core's entire
+segment dispatch and player pathfinding. Original failure retained. The model
+is not yet wired into live gameplay; no migration or generated page changed.
 
 ## 2. Physical group and durable command ownership
 
