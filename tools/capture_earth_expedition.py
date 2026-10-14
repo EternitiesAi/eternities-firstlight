@@ -136,7 +136,7 @@ def bounded_history(before, after):
 
 def validate_source(source, variant):
     a = source['adventure']
-    assert a['version'] == 12 and a['started'], 'Use a current command-earned source'
+    assert a['version'] == 13 and a['started'], 'Use a current command-earned source'
     assert source['earthExpedition'] == {
         'version': 1, 'story': {'accepted': False, 'branch': None, 'steps': [], 'claimed': False},
         'patrol': {'lastClaim': 0, 'active': None}}, 'Source must precede this expedition'

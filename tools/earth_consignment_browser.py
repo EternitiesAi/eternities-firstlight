@@ -58,7 +58,7 @@ def source_check(world, receipt, variant):
     if receipt.get('canonicalPreservation') is not True or not receipt.get('sourceHashes') or not receipt.get('harnessSha256'):
         raise ValueError('Original source/caller/preservation receipt required')
     s=world.get('earthExpedition',{}).get('story',{})
-    if world.get('version')!=9 or world.get('adventure',{}).get('version')!=12 or s.get('accepted') is not True or s.get('claimed') is not True or s.get('steps')!=list(STORY):
+    if world.get('version')!=9 or world.get('adventure',{}).get('version')!=13 or s.get('accepted') is not True or s.get('claimed') is not True or s.get('steps')!=list(STORY):
         raise ValueError('Exact genuinely claimed original EE story required')
     if s.get('branch') not in ('stormfall-recovery','managed-coppice') or receipt.get('branch')!=s['branch']:
         raise ValueError('Immutable original source branch differs')
