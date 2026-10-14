@@ -1,0 +1,267 @@
+{
+  "method": "ET06 native UI journey on isolated loopback storage.\n\nProduction moveTo and accepted .05s ticks accelerate travel/setup. No pose,\ninventory, health, quest or damage injection. Quest choices and skill/camera\nselection use native controls. Optional short canvas footage uses ordinary RAF\nonly. This is software-WebGL evidence, not human pacing or RTX qualification.\n",
+  "variant": "bow-public",
+  "checks": [
+    {
+      "name": "served exact current HTML",
+      "passed": true
+    },
+    {
+      "name": "fresh character has no accepted masterwork or kit",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 11,9",
+      "passed": true
+    },
+    {
+      "name": "native E earns Oren kit",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk -7.9,-13",
+      "passed": true
+    },
+    {
+      "name": "gather actual timber-1",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk -13.9,-11",
+      "passed": true
+    },
+    {
+      "name": "gather actual timber-2",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 5.1,10",
+      "passed": true
+    },
+    {
+      "name": "gather actual fibre-1",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk -4.9,-10",
+      "passed": true
+    },
+    {
+      "name": "gather actual fibre-2",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 5.1,13",
+      "passed": true
+    },
+    {
+      "name": "gather actual stone-1",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 11,9",
+      "passed": true
+    },
+    {
+      "name": "craft owned bow from gathered materials",
+      "passed": true
+    },
+    {
+      "name": "explicitly equip crafted bow",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 14.5,10.5",
+      "passed": true
+    },
+    {
+      "name": "offer explains physical route and optional reward before acceptance",
+      "passed": true
+    },
+    {
+      "name": "native acceptance owns empty evidence",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 9.8,9.7",
+      "passed": true
+    },
+    {
+      "name": "native sample inspection once",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 0,23",
+      "passed": true
+    },
+    {
+      "name": "native travel reaches Hearthwater",
+      "passed": true
+    },
+    {
+      "name": "short ordinary-RAF clip has encoded data",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 0,10",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 12,-26",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 15.2,-27.3",
+      "passed": true
+    },
+    {
+      "name": "all three native evidence actions retained",
+      "passed": true
+    },
+    {
+      "name": "diorama projection selected by native V",
+      "passed": true
+    },
+    {
+      "name": "third projection selected by native V",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 0,24",
+      "passed": true
+    },
+    {
+      "name": "native return reaches existing Firstlight checkpoint",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 14.5,10.5",
+      "passed": true
+    },
+    {
+      "name": "preview does not resolve the commission",
+      "passed": true
+    },
+    {
+      "name": "explicit correction retained",
+      "passed": true
+    },
+    {
+      "name": "lesson preview grants nothing",
+      "passed": true
+    },
+    {
+      "name": "learning stays disabled and never equips",
+      "passed": true
+    },
+    {
+      "name": "native explicit enable updates actual special",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 0,23",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 0,10",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 15.2,-27.3",
+      "passed": true
+    },
+    {
+      "name": "correction survives actual return to quarry",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 0,24",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk 15,7",
+      "passed": true
+    },
+    {
+      "name": "enter existing riverbank practice",
+      "passed": true
+    },
+    {
+      "name": "actual supported walk -5,11.5",
+      "passed": true
+    },
+    {
+      "name": "native selected target is practice",
+      "passed": true
+    },
+    {
+      "name": "native Q creates confirmed real practice impact",
+      "passed": true
+    },
+    {
+      "name": "new special label visible",
+      "passed": true
+    },
+    {
+      "name": "quest and practice preserve XP, sockets, old class and soul",
+      "passed": true
+    },
+    {
+      "name": "served exact current HTML",
+      "passed": true
+    },
+    {
+      "name": "whole-browser restart retains exact original stored bytes",
+      "passed": true
+    },
+    {
+      "name": "cold load retains exact commission and equipment",
+      "passed": true
+    },
+    {
+      "name": "legacy browser keys remain absent",
+      "passed": true
+    },
+    {
+      "name": "no unhandled browser errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "browser_errors": [],
+  "accelerated_ticks": true,
+  "manual_state_grants": false,
+  "human_playtest": false,
+  "renderer": "software",
+  "viewport": [
+    1280,
+    800
+  ],
+  "quality": "low",
+  "resources": {
+    "context_closed": true,
+    "server_closed": true
+  },
+  "html_sha256": "7630b6ada6c2e190f74e47017d391e22257828689582e53f4308a637054c98e9",
+  "footage": {
+    "bytes": 293565,
+    "normalRAF": true,
+    "requestedSeconds": 20,
+    "canvasOnly": true
+  },
+  "final_record": {
+    "version": 1,
+    "accepted": true,
+    "evidence": [
+      "tool-sample",
+      "commission-order",
+      "credited-plaque"
+    ],
+    "compared": true,
+    "participation": "coauthor",
+    "resolution": "public-correction",
+    "weapon": "trail_bow",
+    "enabled": true
+  },
+  "passed": true
+}

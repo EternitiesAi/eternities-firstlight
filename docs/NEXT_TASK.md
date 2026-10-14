@@ -1,3 +1,40 @@
+# Continue from the qualified masterwork, 2026-10-13
+
+Current gameplay is PR78, `gameplay/earth-masterwork-20261013`. Source/native
+milestone qualified at `e9c5bbc93b7166beabc75d6f911e75ec180e480d`; a later records-only delivery commit carries
+the evidence. Inspect live status and origin before edits. Do not replace this
+game with main, an archive or an older branch.
+
+1. Close the current full 53-suite browser regression when resource admission
+   permits. The current 230-command source gate and two-family masterwork native
+   gate pass; they do not replace that full gate. Prior PR77 full03 stopped after
+   1,744 checks/7 of30 stages in its first suite at a fresh RAM refusal. Preserve
+   that receipt, all current source failures, exact helpers and original limits.
+2. Obtain independent new-gameplay review when authorized worker capacity returns.
+   Two existing Sol colleagues are usage-limited; no provider/billing reroute.
+   Human acceptance remains pending: route clear, evidence/choice worthwhile,
+   useful situations for both the original and learned specials? Test a fresh
+   and returning character without inspecting Dom's personal saves.
+3. Return to the broader production roadmap after qualification. The next small
+   canon candidate is ET07's civic tournament: fair declared equipment and a
+   readable combat challenge while retaining owned gear and history. This is a
+   candidate, not implemented content or approval to grant/reset equipment.
+   Keep geography, exploration readability and ordinary encounter feel in scope
+   when choosing the next coherent milestone; avoid detached realms or a new
+   catalogue without a playable use.
+   The current Low quarry screenshot also exposes hard terrain edges and sparse,
+   apparently unsupported distant trees. Audit that visible scene ownership and
+   ground presentation before treating further cosmetic detail as final art.
+
+[Masterwork implementation and launch](development/EARTH_MASTERWORK_2026-10-13.md).
+Preserve both cameras, all saves/ledgers and explicit choices. Fresh >=6GiB host
+admission, 4 Node workers, original timeouts and bounded D reuse remain required.
+No VM/Claude/personal-profile interaction, new full copies, cleanup/blocked
+deletion retry, paid providers/billing, main merge/deploy or heartbeat resume.
+Production goal ACTIVE; heartbeat PAUSED.
+
+---
+
 # Continue the masterwork while preserving the open regression gate, 2026-10-13
 
 The complete current gate remains pending. REMOTE_BROWSER01 at1ca07f7 passed

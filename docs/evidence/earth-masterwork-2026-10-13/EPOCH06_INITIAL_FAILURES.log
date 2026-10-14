@@ -1,0 +1,103 @@
+test_changed_actual_app_hook_is_rejected (test_roadkeeper_current_epoch.ProspectiveEpoch.test_changed_actual_app_hook_is_rejected) ... ok
+test_changed_reviewed_module_is_rejected (test_roadkeeper_current_epoch.ProspectiveEpoch.test_changed_reviewed_module_is_rejected) ... ok
+test_current_actual_files_admit_with_reviewed_epoch (test_roadkeeper_current_epoch.ProspectiveEpoch.test_current_actual_files_admit_with_reviewed_epoch) ... ok
+test_different_generated_pages_are_rejected (test_roadkeeper_current_epoch.ProspectiveEpoch.test_different_generated_pages_are_rejected) ... ok
+test_each_unreviewed_helper_mutation_is_rejected (test_roadkeeper_current_epoch.ProspectiveEpoch.test_each_unreviewed_helper_mutation_is_rejected) ... ok
+test_frozen_04_still_refuses_current_helpers (test_roadkeeper_current_epoch.ProspectiveEpoch.test_frozen_04_still_refuses_current_helpers) ... ok
+test_frozen_05_refuses_the_changed_current_version_predicate (test_roadkeeper_current_epoch.ProspectiveEpoch.test_frozen_05_refuses_the_changed_current_version_predicate) ... ok
+test_matching_pages_with_reviewed_module_removed_are_rejected (test_roadkeeper_current_epoch.ProspectiveEpoch.test_matching_pages_with_reviewed_module_removed_are_rejected) ... ok
+test_only_declared_version_predicate_and_provenance_advance_epoch06 (test_roadkeeper_current_epoch.ProspectiveEpoch.test_only_declared_version_predicate_and_provenance_advance_epoch06) ... ok
+test_only_two_reviewed_text_pins_and_provenance_change (test_roadkeeper_current_epoch.ProspectiveEpoch.test_only_two_reviewed_text_pins_and_provenance_change) ... ok
+test_unknown_candidate_pin_is_rejected (test_roadkeeper_current_epoch.ProspectiveEpoch.test_unknown_candidate_pin_is_rejected) ... ok
+test_wrong_installed_head_is_rejected (test_roadkeeper_current_epoch.ProspectiveEpoch.test_wrong_installed_head_is_rejected) ... ok
+test_frozen_original_still_refuses_the_newer_helper (test_roadkeeper_expectations.RoadkeeperSourceEpoch.test_frozen_original_still_refuses_the_newer_helper) ... ok
+test_retained_historical_raw_fallback_is_not_a_second_accepted_hash (test_roadkeeper_expectations.RoadkeeperSourceEpoch.test_retained_historical_raw_fallback_is_not_a_second_accepted_hash) ... FAIL
+test_reviewed_current_art_passes_with_selected_synthetic_expectations (test_roadkeeper_expectations.RoadkeeperSourceEpoch.test_reviewed_current_art_passes_with_selected_synthetic_expectations) ... FAIL
+test_stale_lf_art_pin_refuses_with_selected_synthetic_expectations (test_roadkeeper_expectations.RoadkeeperSourceEpoch.test_stale_lf_art_pin_refuses_with_selected_synthetic_expectations) ... FAIL
+test_unreviewed_changed_art_bytes_are_refused_by_the_hash_guard (test_roadkeeper_expectations.RoadkeeperSourceEpoch.test_unreviewed_changed_art_bytes_are_refused_by_the_hash_guard) ... FAIL
+test_unreviewed_changed_helper_is_refused_in_the_selected_view (test_roadkeeper_expectations.RoadkeeperSourceEpoch.test_unreviewed_changed_helper_is_refused_in_the_selected_view) ... ok
+test_unreviewed_helper_pin_is_refused_in_the_selected_view (test_roadkeeper_expectations.RoadkeeperSourceEpoch.test_unreviewed_helper_pin_is_refused_in_the_selected_view) ... ok
+test_unreviewed_lf_pin_is_not_accepted (test_roadkeeper_expectations.RoadkeeperSourceEpoch.test_unreviewed_lf_pin_is_not_accepted) ... FAIL
+test_unreviewed_wild_signs_bytes_are_refused_in_the_selected_view (test_roadkeeper_expectations.RoadkeeperSourceEpoch.test_unreviewed_wild_signs_bytes_are_refused_in_the_selected_view) ... FAIL
+
+======================================================================
+FAIL: test_retained_historical_raw_fallback_is_not_a_second_accepted_hash (test_roadkeeper_expectations.RoadkeeperSourceEpoch.test_retained_historical_raw_fallback_is_not_a_second_accepted_hash)
+----------------------------------------------------------------------
+ValueError: Actual original browser helper text changed: tools/earth_consignment_browser.py
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\test_roadkeeper_expectations.py", line 127, in test_retained_historical_raw_fallback_is_not_a_second_accepted_hash
+    with self.assertRaisesRegex(ValueError, 'Reviewed future runtime is not installed: earth-roadkeeper-art.js'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "Reviewed future runtime is not installed: earth-roadkeeper-art.js" does not match "Actual original browser helper text changed: tools/earth_consignment_browser.py"
+
+======================================================================
+FAIL: test_reviewed_current_art_passes_with_selected_synthetic_expectations (test_roadkeeper_expectations.RoadkeeperSourceEpoch.test_reviewed_current_art_passes_with_selected_synthetic_expectations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\test_roadkeeper_expectations.py", line 88, in test_reviewed_current_art_passes_with_selected_synthetic_expectations
+    self.assertEqual(DRIVER.lf_sha(HELPER), REVIEWED_HELPER)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '10175f12c1c311b1c3e5c3ad11210b46c7d4c6edd26b8fc0fc378ef67727d59f' != '9212846db04bf76c1e12ac81219ca3b24ff2b8e85145fc071b986738cdad52bd'
+- 10175f12c1c311b1c3e5c3ad11210b46c7d4c6edd26b8fc0fc378ef67727d59f
++ 9212846db04bf76c1e12ac81219ca3b24ff2b8e85145fc071b986738cdad52bd
+
+
+======================================================================
+FAIL: test_stale_lf_art_pin_refuses_with_selected_synthetic_expectations (test_roadkeeper_expectations.RoadkeeperSourceEpoch.test_stale_lf_art_pin_refuses_with_selected_synthetic_expectations)
+----------------------------------------------------------------------
+ValueError: Actual original browser helper text changed: tools/earth_consignment_browser.py
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\test_roadkeeper_expectations.py", line 108, in test_stale_lf_art_pin_refuses_with_selected_synthetic_expectations
+    with self.assertRaisesRegex(ValueError, 'Reviewed future runtime is not installed: earth-roadkeeper-art.js'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "Reviewed future runtime is not installed: earth-roadkeeper-art.js" does not match "Actual original browser helper text changed: tools/earth_consignment_browser.py"
+
+======================================================================
+FAIL: test_unreviewed_changed_art_bytes_are_refused_by_the_hash_guard (test_roadkeeper_expectations.RoadkeeperSourceEpoch.test_unreviewed_changed_art_bytes_are_refused_by_the_hash_guard)
+----------------------------------------------------------------------
+ValueError: Actual original browser helper text changed: tools/earth_consignment_browser.py
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\test_roadkeeper_expectations.py", line 121, in test_unreviewed_changed_art_bytes_are_refused_by_the_hash_guard
+    with self.assertRaisesRegex(ValueError, 'Reviewed future runtime is not installed: earth-roadkeeper-art.js'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "Reviewed future runtime is not installed: earth-roadkeeper-art.js" does not match "Actual original browser helper text changed: tools/earth_consignment_browser.py"
+
+======================================================================
+FAIL: test_unreviewed_lf_pin_is_not_accepted (test_roadkeeper_expectations.RoadkeeperSourceEpoch.test_unreviewed_lf_pin_is_not_accepted)
+----------------------------------------------------------------------
+ValueError: Actual original browser helper text changed: tools/earth_consignment_browser.py
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\test_roadkeeper_expectations.py", line 114, in test_unreviewed_lf_pin_is_not_accepted
+    with self.assertRaisesRegex(ValueError, 'Reviewed future runtime is not installed: earth-roadkeeper-art.js'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "Reviewed future runtime is not installed: earth-roadkeeper-art.js" does not match "Actual original browser helper text changed: tools/earth_consignment_browser.py"
+
+======================================================================
+FAIL: test_unreviewed_wild_signs_bytes_are_refused_in_the_selected_view (test_roadkeeper_expectations.RoadkeeperSourceEpoch.test_unreviewed_wild_signs_bytes_are_refused_in_the_selected_view)
+----------------------------------------------------------------------
+ValueError: Actual original browser helper text changed: tools/earth_consignment_browser.py
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\test_roadkeeper_expectations.py", line 102, in test_unreviewed_wild_signs_bytes_are_refused_in_the_selected_view
+    with self.assertRaisesRegex(ValueError, 'Actual original browser helper text changed: tools/earth_wild_signs_browser.py'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "Actual original browser helper text changed: tools/earth_wild_signs_browser.py" does not match "Actual original browser helper text changed: tools/earth_consignment_browser.py"
+
+----------------------------------------------------------------------
+Ran 21 tests in 3.220s
+
+FAILED (failures=6)

@@ -1,0 +1,198 @@
+{
+  "variant": "veteran-private",
+  "source": "D:\\07-GAMES\\Firstlight\\verification\\current-qualified-game\\evidence10\\veteran-source\\CHAPTER_IV_COMPLETE_EARNED.json",
+  "sourceSha256": "724e034162c3eff339ec6139a7d6428cfaeff880487254408336198b95b34cc9",
+  "status": "passed",
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedObjectives": 0,
+  "acceleratedTicks": true,
+  "durableStore": "labelled in-memory canonical synchronous store",
+  "commands": 5,
+  "record": {
+    "version": 1,
+    "accepted": true,
+    "evidence": [
+      "tool-sample",
+      "commission-order",
+      "credited-plaque"
+    ],
+    "compared": true,
+    "participation": "private",
+    "resolution": "private-correction",
+    "weapon": "dawn_edge",
+    "enabled": false
+  },
+  "weapon": "dawn_edge",
+  "xp": 502,
+  "htmlQualification": false,
+  "actions": [
+    {
+      "walk": [
+        14.5,
+        10.5
+      ],
+      "room": null,
+      "ticks": 206
+    },
+    {
+      "quest": "accept"
+    },
+    {
+      "coldReload": true
+    },
+    {
+      "walk": [
+        9.8,
+        9.7
+      ],
+      "room": null,
+      "ticks": 30
+    },
+    {
+      "quest": "inspect",
+      "evidence": "tool-sample"
+    },
+    {
+      "coldReload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ],
+      "room": null,
+      "ticks": 107
+    },
+    {
+      "walk": [
+        0,
+        10
+      ],
+      "room": "earth-hearthwater-approach",
+      "ticks": 88
+    },
+    {
+      "walk": [
+        12,
+        -26
+      ],
+      "room": "earth-hearthwater-approach",
+      "ticks": 240
+    },
+    {
+      "quest": "inspect",
+      "evidence": "commission-order"
+    },
+    {
+      "walk": [
+        15.2,
+        -27.3
+      ],
+      "room": "earth-hearthwater-approach",
+      "ticks": 22
+    },
+    {
+      "quest": "inspect",
+      "evidence": "credited-plaque"
+    },
+    {
+      "walk": [
+        0,
+        24
+      ],
+      "room": "earth-hearthwater-approach",
+      "ticks": 351
+    },
+    {
+      "walk": [
+        14.5,
+        10.5
+      ],
+      "room": null,
+      "ticks": 122
+    },
+    {
+      "quest": "compare",
+      "finding": "maker-before-stamp"
+    },
+    {
+      "quest": "participation",
+      "participation": "private"
+    },
+    {
+      "quest": "resolve",
+      "resolution": "private-correction"
+    },
+    {
+      "coldReload": true
+    },
+    {
+      "walk": [
+        14.5,
+        10.5
+      ],
+      "room": null,
+      "ticks": 1
+    },
+    {
+      "quest": "learn",
+      "weapon": "dawn_edge"
+    },
+    {
+      "coldReload": true
+    },
+    {
+      "quest": "enable",
+      "enabled": true
+    },
+    {
+      "coldReload": true
+    },
+    {
+      "walk": [
+        15,
+        7
+      ],
+      "room": null,
+      "ticks": 23
+    },
+    {
+      "type": "starter-enter",
+      "p": {}
+    },
+    {
+      "walk": [
+        -5,
+        11.5
+      ],
+      "room": "riverbank",
+      "ticks": 32
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "river-practice"
+      }
+    },
+    {
+      "type": "pulse",
+      "p": {
+        "target": "river-practice"
+      }
+    },
+    {
+      "quest": "enable",
+      "enabled": false
+    },
+    {
+      "type": "pulse",
+      "p": {
+        "target": "river-practice"
+      }
+    },
+    {
+      "coldReload": true
+    }
+  ]
+}

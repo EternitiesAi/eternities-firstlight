@@ -1,0 +1,28 @@
+{
+  "head": "04fd08ce768cb886abdffa788d8148c0a9068b3d",
+  "observedUtc": "2026-10-14T02:33:19.9040863Z",
+  "freeHostKiB": 7883360,
+  "minimumFreeKiB": 6291456,
+  "requestedRuleWorkers": 4,
+  "admitted": true,
+  "controllerSha256": "753ea356324c2e9ec7f94c9fa279a4022142c0d0a5983cc38fefccbe0f3f8f60",
+  "scope": "Read host free memory only; no VM/Claude interaction",
+  "command": [
+    "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+    "-B",
+    "tools/verify.py",
+    "--browser",
+    "--rule-workers",
+    "4",
+    "--output",
+    "D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/next-gate/REMOTE_BROWSER03_LOGS",
+    "--browser-output",
+    "D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/next-gate/REMOTE_BROWSER03_NATIVE",
+    "--browser-output-mode",
+    "supported",
+    "--browser-temp",
+    "D:/07-GAMES/Firstlight/cache/browser-temp",
+    "--cpu-temp",
+    "C:/Users/Dom/AppData/Local/Temp"
+  ]
+}

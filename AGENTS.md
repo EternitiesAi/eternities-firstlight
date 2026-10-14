@@ -1,3 +1,42 @@
+# Masterwork delivery in draft PR78, 2026-10-13
+
+Continue from `gameplay/earth-masterwork-20261013` in the integrated D checkout.
+PR78 is stacked on PR77 at base `8ec3764c7869a9549eb7681cca7746c7142804b2`.
+Runtime implementation: `da2fb385d2d61f84494c9380d71431157bafadd6`.
+Qualified source: `e9c5bbc93b7166beabc75d6f911e75ec180e480d`. Delivery records are a later documentation/evidence
+commit; verify that exact remote head before continuing. Older sections below
+are historical. See `docs/development/EARTH_MASTERWORK_2026-10-13.md`.
+
+The clean reused remote STATION passed all 230 source commands: 154 syntax
+modules, Node 2,286 passed/0 failed/2 skipped, Python 546 run/8 reported skips,
+all required current earned journeys and preflights. Masterwork native03 then
+passed 42 blade/private and 55 bow/public checks, including actual UI,
+both cameras, practice contact, exact whole-browser stored-byte restart and
+closed owned resources. No source drift. Identical HTML is 3,446,508 bytes,
+SHA256 `7630b6ada6c2e190f74e47017d391e22257828689582e53f4308a637054c98e9`.
+
+This is complete source qualification plus the targeted quest native gate.
+The complete 53-suite browser gate, independent new-gameplay review, human
+acceptance and RTX performance remain open. Hosted run 38505831025 did not start
+jobs because of the account billing lock; do not change billing. Both authorized
+Sol colleagues are usage-limited; do not repeatedly relaunch or silently reroute.
+Native travel uses accepted accelerated ticks and software rendering; the one
+18.17-second clip uses normal RAF and is not a device-performance measurement.
+
+Adventure 13/masterwork 1, World 9/Arsenal 1. SOURCE_EXPECTATIONS06 explicitly
+advances only the consignment Adventure schema predicate; old 04/05 pins and
+raw historical receipts remain frozen. Its review is parent-only, not independent.
+Preserve all owners, saved XP, explicit choices, cameras and prior systems.
+
+Before any new worker inspect live ownership and terminal receipts. Keep fresh
+6,291,456 KiB host admission, 4 Node file workers and original 180s/600s/individual
+native deadlines. Reuse ROOT/STATION and D evidence; retain earlier failures.
+VM, Claude's work, personal saves, unrelated workers, new full copies, cleanup,
+blocked deletion retry, paid providers, merge/deploy and heartbeat resume remain
+excluded. The larger production goal is ACTIVE; the heartbeat is PAUSED.
+
+---
+
 # Current verifier repaired; full gate awaiting admission, 2026-10-13
 
 ROOT remains verification/road-account-current-epoch-20261013 / PR77. STATION is

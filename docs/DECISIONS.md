@@ -1,3 +1,37 @@
+# A finite lesson and an accountable commission, 2026-10-13
+
+ET06 follows the founder's misattributed commission and apprentice participation,
+using existing workshop/quarry geography. It is not another material hunt or
+realm. Compare actual records; keep private/public outcomes explicit and equally
+rewarding. Reading, tracking and previews cannot complete the work.
+
+The provisional Codex reward is one optional special technique bound to one
+owned weapon. It trades burst/coverage for lower stamina/recovery; it does not
+create stronger gear, force equipment, choose a class or raise the XP cap. Old
+specials remain selectable and share the existing timer. Actual damage acceptance
+owns hit feedback. Geometry/input alone cannot invent a successful arrow impact.
+
+Adventure12→13 introduces one strict masterwork1 record. Current missing/invalid
+records refuse. Migration adds only its literal empty default; existing records
+and all other facts remain protected. Native resume verification gets the same
+explicit, independently specified migration allowance with negative backfill/XP/
+history tests, never a generic dropped-field comparison. Historical native
+captures stay unchanged; current-schema derivatives are labelled CPU evidence,
+not recertified old footage. [Source and qualification](development/EARTH_MASTERWORK_2026-10-13.md).
+
+The current consignment helper's Adventure12-to13 predicate has a separate
+SOURCE_EXPECTATIONS06 declaration. Historical 04/05 pins are retained; reversing
+only that one predicate reproduces the prior literal hash. Parent source review
+is explicit; independent review and native installation are separate claims.
+The earned/native homecoming oracles independently allow exactly the same empty
+record migration while retaining whole-history equality and negative backfill
+checks. Never drop old fields to make new content pass.
+
+No new external asset/provider, VM/Claude ownership, broad storage copy, automatic
+merge/deploy or recurring-worker activation is part of this decision.
+
+---
+
 # Admit each native allocation and retain fresh evidence, 2026-10-13
 
 Wrap individual synchronous browser suites, including their reviewed Python child

@@ -1,3 +1,35 @@
+# The Masterwork Without a Name is playable, 2026-10-13
+
+Draft [PR78](https://github.com/EternitiesAi/eternities-firstlight/pull/78) adds an
+apprentice commission between the village workshop and Hearthwater quarry.
+Inspect three physical records, compare the maker's marks with the order, and
+choose private acknowledgment or a public correction with the apprentice's
+participation. The quarry and journal retain the outcome. Either choice offers
+one optional lesson for an already-owned blade or bow; enable it deliberately.
+Original specials, equipment, sockets, fittings, XP and prior choices remain.
+
+Source qualified at `e9c5bbc93b7166beabc75d6f911e75ec180e480d` in the freshly fetched, clean existing remote
+checkout. All 230 source commands passed: Node 2,286/0 failures/2 skips;
+Python 546 run/8 reported skips; command-earned blade, bow and veteran journeys,
+whole-draft and Briar continuations. Current native checks passed 42 for
+blade/private and 55 for bow/public, with real UI, cameras, contact and cold
+browser persistence. Adventure 12-to-13 adds only an empty masterwork1 record
+when absent; World9/Arsenal1 remain. Runtime is da2fb385; later repairs are
+verification integration. Identical HTML: 3,446,508 bytes, SHA256 `7630b6ada6c2e190f74e47017d391e22257828689582e53f4308a637054c98e9`.
+
+The full 53-suite browser regression remains open. Earlier source integration
+failures and RAM refusals are retained, not relabelled as success. Independent
+gameplay review, human enjoyment and real-GPU performance are also pending.
+Hosted jobs at fbce08e could not start because of the account billing lock.
+
+[Implementation, exact results and launch](development/EARTH_MASTERWORK_2026-10-13.md).
+[Actual small gameplay clip](evidence/earth-masterwork-2026-10-13/MASTERWORK_OUTING.webm).
+One new clip and two screenshots; no new full checkout, VM/Claude interaction,
+personal-save read, main merge or deployment. The wider production goal remains
+active; this is a playable development milestone, not a completed AAA release.
+
+---
+
 # Browser admission verified; full regression repair preserved, 2026-10-13
 
 The complete current gate remains pending. REMOTE_BROWSER01 at1ca07f7 passed

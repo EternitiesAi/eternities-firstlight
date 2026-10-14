@@ -1,0 +1,19 @@
+{
+  "head": "e7057553cec50ad9835c7d228636696438911391",
+  "observedUtc": "2026-10-14T03:37:36.9673466Z",
+  "freeHostKiB": 8346832,
+  "minimumFreeKiB": 6291456,
+  "admitted": true,
+  "command": [
+    "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+    "-B",
+    "tools/verify.py",
+    "--rule-workers",
+    "4",
+    "--output",
+    "D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/next-gate/MASTERWORK_REMOTE06_LOGS",
+    "--cpu-temp",
+    "C:/Users/Dom/AppData/Local/Temp"
+  ],
+  "controllerSha256": "13ddcd181d56ad5367d3bbffac501aff6ab313b7f658dd2e9a785af324d28904"
+}

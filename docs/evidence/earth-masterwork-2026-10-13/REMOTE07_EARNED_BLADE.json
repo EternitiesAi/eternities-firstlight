@@ -1,0 +1,210 @@
+{
+  "variant": "blade-private",
+  "source": null,
+  "sourceSha256": null,
+  "status": "passed",
+  "positionEdits": 0,
+  "inventoryGrants": 0,
+  "plantedObjectives": 0,
+  "acceleratedTicks": true,
+  "durableStore": "labelled in-memory canonical synchronous store",
+  "commands": 6,
+  "record": {
+    "version": 1,
+    "accepted": true,
+    "evidence": [
+      "tool-sample",
+      "commission-order",
+      "credited-plaque"
+    ],
+    "compared": true,
+    "participation": "private",
+    "resolution": "private-correction",
+    "weapon": "trail_blade",
+    "enabled": false
+  },
+  "weapon": "trail_blade",
+  "xp": 0,
+  "htmlQualification": false,
+  "actions": [
+    {
+      "walk": [
+        11,
+        9
+      ],
+      "room": null,
+      "ticks": 58
+    },
+    {
+      "type": "start",
+      "p": {}
+    },
+    {
+      "walk": [
+        14.5,
+        10.5
+      ],
+      "room": null,
+      "ticks": 24
+    },
+    {
+      "quest": "accept"
+    },
+    {
+      "coldReload": true
+    },
+    {
+      "walk": [
+        9.8,
+        9.7
+      ],
+      "room": null,
+      "ticks": 30
+    },
+    {
+      "quest": "inspect",
+      "evidence": "tool-sample"
+    },
+    {
+      "coldReload": true
+    },
+    {
+      "walk": [
+        0,
+        23
+      ],
+      "room": null,
+      "ticks": 107
+    },
+    {
+      "walk": [
+        0,
+        10
+      ],
+      "room": "earth-hearthwater-approach",
+      "ticks": 88
+    },
+    {
+      "walk": [
+        12,
+        -26
+      ],
+      "room": "earth-hearthwater-approach",
+      "ticks": 240
+    },
+    {
+      "quest": "inspect",
+      "evidence": "commission-order"
+    },
+    {
+      "walk": [
+        15.2,
+        -27.3
+      ],
+      "room": "earth-hearthwater-approach",
+      "ticks": 22
+    },
+    {
+      "quest": "inspect",
+      "evidence": "credited-plaque"
+    },
+    {
+      "walk": [
+        0,
+        24
+      ],
+      "room": "earth-hearthwater-approach",
+      "ticks": 351
+    },
+    {
+      "walk": [
+        14.5,
+        10.5
+      ],
+      "room": null,
+      "ticks": 122
+    },
+    {
+      "quest": "compare",
+      "finding": "maker-before-stamp"
+    },
+    {
+      "quest": "participation",
+      "participation": "private"
+    },
+    {
+      "quest": "resolve",
+      "resolution": "private-correction"
+    },
+    {
+      "coldReload": true
+    },
+    {
+      "walk": [
+        14.5,
+        10.5
+      ],
+      "room": null,
+      "ticks": 1
+    },
+    {
+      "quest": "learn",
+      "weapon": "trail_blade"
+    },
+    {
+      "coldReload": true
+    },
+    {
+      "quest": "enable",
+      "enabled": true
+    },
+    {
+      "coldReload": true
+    },
+    {
+      "walk": [
+        15,
+        7
+      ],
+      "room": null,
+      "ticks": 23
+    },
+    {
+      "type": "starter-enter",
+      "p": {}
+    },
+    {
+      "walk": [
+        -5,
+        11.5
+      ],
+      "room": "riverbank",
+      "ticks": 32
+    },
+    {
+      "type": "target-select",
+      "p": {
+        "id": "river-practice"
+      }
+    },
+    {
+      "type": "pulse",
+      "p": {
+        "target": "river-practice"
+      }
+    },
+    {
+      "quest": "enable",
+      "enabled": false
+    },
+    {
+      "type": "pulse",
+      "p": {
+        "target": "river-practice"
+      }
+    },
+    {
+      "coldReload": true
+    }
+  ]
+}

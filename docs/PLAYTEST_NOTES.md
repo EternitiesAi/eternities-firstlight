@@ -1,3 +1,38 @@
+# Masterwork: actual UI and persistence, human feel pending, 2026-10-13
+
+At `e9c5bbc93b7166beabc75d6f911e75ec180e480d`, the freshly fetched clean remote game passes 42 blade/private
+and 55 bow/public native checks. These use visible accept/inspect/compare/
+choice/confirmation/learn/enable controls, both V-selected cameras, return to the
+changed quarry, native Tab/Q practice contact, and exact original stored bytes
+across whole-browser restart. Each context/server closed with no page errors or
+source drift. Setup/travel uses accepted production moveTo and accelerated ticks;
+there are no pose, inventory, quest or damage grants. Software-WebGL, 1280x800/Low.
+
+The initial layout blade37 and current-layout recorded bow56 remain separately
+labelled historical attempts. The 18.17s/70-frame/293565-byte actual canvas clip
+uses normal RAF and visibly slow software rendering. It is not an RTX/FPS or
+human pacing measurement. Only one new clip and two useful screenshots are
+published. The stand was moved clear of Darric; the corrected plate is a modest
+persistent visual consequence. Both camera styles remain available.
+
+Fresh remote screenshots were inspected in both the diorama scene and bow lesson
+panel. Text and comparisons are readable, and the commission is visible beside
+the NPC. Low-quality quarry scenery still has conspicuous hard terrain edges
+and sparse background silhouettes; inspect the apparently unsupported distant
+trees in a future scenery pass. This milestone does not qualify final art density.
+
+Fresh blade, genuinely crafted bow and returning Chapter IV characters also pass
+command-earned journeys. The whole-draft and Briar journeys pass in the full
+230-command source run. These automated results do not supply a human verdict.
+
+Pending Dom: Was the route clear? Did comparing evidence and choosing the
+correction feel worthwhile? When would you choose the learned special, and when
+the original? Try one fresh and one returning character. Independent gameplay
+review and the broader 53-suite browser regression remain open. The two Sol
+colleagues reached their usage limits. [Evidence and limits](development/EARTH_MASTERWORK_2026-10-13.md).
+
+---
+
 # Targeted persistence smoke passed; broader gate remains open, 2026-10-13
 
 Fresh remote1ca07f7 passed11 native-origin checks, including real Map/Character

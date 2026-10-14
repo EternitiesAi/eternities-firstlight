@@ -1,0 +1,934 @@
+✔ version07 raw save migrates without losing road or creative state (206.5129ms)
+✔ legacy storage key is copied not overwritten (6.4645ms)
+✔ fresh arsenal has no free bows gems or medals (0.4457ms)
+✔ gem records reject invalid quantities and unknown fields (14.0162ms)
+✔ socket validation needs owned weapon and known gem (2.4949ms)
+✔ medal requires bounded completion time and vice versa (5.394ms)
+✔ unstarted record cannot mint loose gems or a medal (0.6018ms)
+✔ craft refuses before supplies, remote bench, paused or unknown recipe (8.5257ms)
+✔ bow recipe consumes exact wood fiber stone and creates a unique item (2.4878ms)
+✔ insufficient material on any ingredient causes no partial charge (2.8529ms)
+✔ longbow requires original bow then keeps it and charges exact components (0.9212ms)
+✔ craft duplicate id never charges twice and changed content is refused (1.3647ms)
+✔ gem crafting charges correct actual material and currency balances (0.3467ms)
+✔ gem capacity, ore and coin refusals are atomic (1.8952ms)
+✔ socket requires actual outdoor workbench and loose gem (2.8631ms)
+✔ fitting replacing reclaiming preserves total gem quantities (0.5123ms)
+✔ socket changes stats only for currently equipped weapon (0.4268ms)
+✔ moonstone raises capacity without healing and removal clamps current HP (0.4432ms)
+✔ socket rejects same setting, wrong slot, foreign weapon, unknown gem (7.1113ms)
+✔ full reclaim pouch prevents swap without consuming new gem (8.6312ms)
+✔ socket duplicate cannot charge, reclaim or alter stats twice (1.3847ms)
+✔ range entry checks workshop proximity and prepared character (2.541ms)
+✔ range collision bounds and pillars affect real walking (1.0517ms)
+✔ range path routes around a pillar, not through it (3.3762ms)
+✔ range south exit requires proximity and restores workshop position (1.3979ms)
+✔ save inside court restores outside without unfinished arrows or round (1.4301ms)
+✔ bow provides ranged profile while all previous blades keep their reach (0.4176ms)
+✔ bows refuse village shots and blades refuse practice target attacks (3.0252ms)
+✔ launch spends exact stamina and damage is delayed until actual travel (10.1506ms)
+✔ cooldown and low stamina refusals do not consume resources (7.4524ms)
+✔ unknown out of range and obstructed targets do not launch (6.0927ms)
+✔ arrow direction is fixed and can miss a moving enemy (3.3938ms)
+✔ damage snapshots the launch gear, not later equipped weapon (4.5979ms)
+✔ incoming arrow grants timed enemy awareness at current world time (1.3462ms)
+✔ line trace chooses first target regardless of requested target order (0.5475ms)
+✔ wall precedes targets behind it and already-hit ids are ignored (0.2177ms)
+✔ swept segments catch a target between endpoints (0.0864ms)
+✔ degenerate and invalid geometry is bounded (0.7269ms)
+✔ projectiles cross road water but not real obstacles (0.6747ms)
+✔ mine stone and court pillars stop arrows (0.8925ms)
+✔ piercing light can hit at most two bodies and each at most once (0.8331ms)
+✔ ordinary arrow only hits first intervening target (0.7562ms)
+✔ leaving and dying discard transient arrows (0.8132ms)
+✔ no arrow follows an enemy forever (4.6463ms)
+✔ a fired arrow reaching zero HP creates one ordinary cache and XP result (3.1209ms)
+✔ target motion is reproducible and only the sun moves (2.5651ms)
+✔ round requires range and bow and cannot restart a running clock (6.6218ms)
+✔ practice arrows hit real targets without XP harm defeat or loot (1.5691ms)
+✔ untimed target hits cannot mint a practice reward (0.452ms)
+✔ known-answer six hits award one medal five coins one amber (0.7685ms)
+✔ repeated completed rounds improve best but never pay again (0.54ms)
+✔ longer round preserves faster recorded time (0.4862ms)
+✔ partial hits and timeout have no reward; new round starts empty (10.3681ms)
+✔ pause freezes timer projectile and moving target (5.7846ms)
+✔ daylight adjustment does not advance practice clock (0.7781ms)
+✔ round stop preserves prior medal and clears arrows (1.2066ms)
+✔ reward overflow does not mark medal or partly pay (2.221ms)
+✔ saved medal sockets and health validate in a cold restart (1.8172ms)
+✔ equipped amber modifies actual fox damage, unequipped amber does not (1.2498ms)
+✔ version6 migrates to current schema with no inferred class and all banked XP intact (17.8505ms)
+✔ class choice requires kit, proximity, known ID and explicit confirmation atomically (12.4882ms)
+✔ hunter is deliberate, one-time, reloadable and grants no gear/history/XP (3.1269ms)
+✔ magician is deliberate, one-time, reloadable and grants no gear/history/XP (2.0454ms)
+✔ invalid class state and impossible unstarted class are refused (0.7864ms)
+✔ technique refuses unassigned, wrong scene, pause, death and absent target (6.9841ms)
+✔ hunter validates range, LOS, stamina and durable cooldown before paying (6.4952ms)
+✔ magician validates range, LOS, stamina and durable cooldown before paying (5.9856ms)
+✔ hunter marks without a hit and only the next actual blade impact gains bounded damage (1.0743ms)
+✔ hunter mark is not consumed by another target, companion or soul damage (0.7868ms)
+✔ bow mark follows swept collision, with no payout on a missed arrow (1.895ms)
+✔ an obstructed arrow cannot consume mark or make confirmed-hit feedback (1.1262ms)
+✔ marks expire and cannot cross scene, run identity or reload (1.5283ms)
+✔ magician creates one actual damage event, faces target and never spawns an arrow (0.5614ms)
+✔ class techniques do not earn the archery medal and leave weapon family free (1.6338ms)
+✔ blade anticipates then repeatedly hits at its actual cadence, without walking (65.8457ms)
+✔ bow anticipates then repeatedly hits at its actual cadence, without walking (14.9341ms)
+✔ pending attack cancels on stop (1.6632ms)
+✔ pending attack cancels on range (8.1918ms)
+✔ pending attack cancels on target (2.5526ms)
+✔ pending attack cancels on pause (1.1238ms)
+✔ pending attack cancels on death (1.1079ms)
+✔ blocked arrow has no confirmed hit number or hit reaction (2.5657ms)
+✔ projectile that misses moving target cannot create confirmed feedback (6.5596ms)
+✔ confirmed hit stamps the damaged target once and scene change clears transient feedback (5.0195ms)
+✔ 09 save migrates without mutating original or losing chapters (86.4134ms)
+✔ new world has no free entry, equipment, attunement or chapter rewards (0.9147ms)
+✔ strict crossing save rejects wrongVersion (4.8386ms)
+✔ strict crossing save rejects missingField (0.4889ms)
+✔ strict crossing save rejects nonbool (0.367ms)
+✔ strict crossing save rejects unvisitedAttune (0.3129ms)
+✔ strict crossing save rejects unvisitedProject (0.2329ms)
+✔ strict crossing save rejects unknownProject (0.3387ms)
+✔ strict crossing save rejects duplicateProject (0.6679ms)
+✔ strict crossing save rejects earlyRepair (0.5656ms)
+✔ strict crossing save rejects earlyComplete (1.1622ms)
+✔ strict crossing save rejects earlyReward (0.2337ms)
+✔ entry requires the defended beacon and actual gate location (31.563ms)
+✔ entry resets target/auto and gives no items or health (4.055ms)
+✔ all named places, bells, encounter homes, clapper and entry are reachable (115.1176ms)
+✔ buildings and outer bounds stop walking and arrows (0.3662ms)
+✔ stream blocks walking except bridge but not travelling arrows (16.2957ms)
+✔ outdoor construction and gathering cannot mutate village geography (2.3969ms)
+✔ public forge is a true workbench; components cost actual material (1.8971ms)
+✔ meeting and clue require local proximity and are single claim (17.4481ms)
+✔ Briar search has real location, bond, follow and route prerequisites (34.471ms)
+✔ manual close inspection works when Briar stays behind (7.304ms)
+✔ search pause keeps discovery and companion motion frozen (6.6248ms)
+✔ new guardian uses distinct ring and circle impact rules (0.2286ms)
+✔ wide ring rewards entering center; next tell alternates to inner strike (70.8141ms)
+✔ new encounters are targetable and respond to real autoattack (18.7924ms)
+✔ clear event caches pay the new roster once and persist separately (9.2716ms)
+✔ bell repair requires clapper and all three clearances (10.3377ms)
+✔ wrong bell order restarts sequence without taking inventory (5.7553ms)
+✔ bell cannot be played remotely or faster than its cooldown (7.7437ms)
+✔ three local ordered tones complete the bell but not the reward (18.088ms)
+✔ Rowan reward is atomic, local and cannot be duplicated (17.0982ms)
+✔ free bell playing after completion cannot reset quest or pay loot (20.9217ms)
+✔ tone entry is transient; repair, kills and clues survive reload (5.7604ms)
+✔ merchant exchanges fail cleanly when funds, quantities or scope fail (11.1726ms)
+✔ merchant armor retains proper slot and does not heal on purchase/equip (3.8349ms)
+✔ ore and berries exchange deduct exactly, overflow is refused (3.7121ms)
+✔ inn restores actual vitals and denies service outside its porch (3.2786ms)
+✔ common works deduct actual materials once and preserve home layout (4.2659ms)
+✔ commission failure leaves supplies and flags untouched (7.1505ms)
+✔ waystone needs discovery and physical origin, does not heal or charge (5.928ms)
+✔ unattuned village cannot be fast-travelled to (2.481ms)
+✔ travel refuses active attack modes and beacon assault (5.3935ms)
+✔ ordinary departure is local and preserves progress (2.7769ms)
+✔ same command receipt cannot be repurposed or pay twice (3.4258ms)
+✔ defeat recovery preserves crossing facts and revives outside (12.9829ms)
+✔ cutaway preference is persisted and old migration defaults on (2.378ms)
+✔ fresh fields and immutable Adventure12 migration preserve banked XP and old systems (32.07ms)
+✔ all interaction points use supported existing ground and a real path (188.6316ms)
+✔ no preacceptance backfill, remote work, wrong finding or missing prerequisites (7.0475ms)
+✔ private-correction is finite, equally unlocks lesson and preserves other owners (5.4526ms)
+✔ public-correction is finite, equally unlocks lesson and preserves other owners (5.4594ms)
+✔ public correction cannot override apprentice private participation (4.0486ms)
+✔ save refused, thrown, async and mutated candidates never adopt state (5.9154ms)
+✔ owner changes, stale envelopes and paused physical work refuse (1.3254ms)
+✔ every accepted stage cold-roundtrips and enablement is separate from learning/equipment (9.1418ms)
+✔ impossible, inherited, extra, missing and future records refuse current saves (25.7392ms)
+✔ one owned canonical weapon only; no implicit craft, forced equipment or second binding (3.7896ms)
+✔ entry requires resolved delivery and physical field table; unpaid arrival is eligible (25.2894ms)
+✔ table and all marks have real connected, walkable approaches (159.8519ms)
+✔ no pre-accept backfill; each accepted physical observation occurs once (4.6512ms)
+✔ table comparison rejects missing clues, obstructed or distant approach and malformed bearings atomically (7.9138ms)
+✔ axis 0 and honest old-road preserve every reward and earlier system (4.2823ms)
+✔ axis 0 and honest waterworks preserve every reward and earlier system (6.8018ms)
+✔ axis 180 and honest old-road preserve every reward and earlier system (4.2708ms)
+✔ axis 180 and honest waterworks preserve every reward and earlier system (7.4085ms)
+✔ each accepted, partly observed, compared and recorded stage survives reload (6.686ms)
+✔ schema8 migration preserves unpaid delivery and all prior fields at XP boundaries without changing input (6.3606ms)
+✔ missing, future, unknown and inconsistent notes refuse without erasing state (4.6511ms)
+✔ array-coerced interpretation cannot masquerade as a stable ID in a completed save (0.897ms)
+✔ inspection and declined job create no progress; acceptance needs kit and proximity (15.7309ms)
+✔ every task uses supported reachable Earth ground (604.1883ms)
+✔ mill prerequisites and timber cost are atomic and charged once (6.2391ms)
+✔ mill completes with one finite payout and no gear, XP or chapter changes (2.6939ms)
+✔ quarry completes with one finite payout and no gear, XP or chapter changes (2.4336ms)
+✔ detour completes with one finite payout and no gear, XP or chapter changes (3.5584ms)
+✔ quarry and detour never consume personal materials; both observations precede lane marking (1.0776ms)
+✔ full ore refuses entire payout and preserves completed entitlement (1.9837ms)
+✔ full coins refuses entire payout and preserves completed entitlement (1.5629ms)
+✔ full fiber refuses entire payout and preserves completed entitlement (1.8423ms)
+✔ all durable stages survive canonical reload with no implicit rewards or reacceptance (7.0292ms)
+✔ schema7 migration preserves banked XP and every older canonical field without mutating input (5.391ms)
+✔ current-schema missing, future and inconsistent story state refuses instead of erasing (5.9438ms)
+✔ other improvements remain available after claim without replaying delivery or payment (1.0342ms)
+PASS deep-frozen finite catalogue and branch allocations
+PASS stable finite IDs, physical anchors, and required ordered DAG
+PASS only optional missing world ledger migrates to fresh
+PASS all story subsets enforce real prerequisites, allocation, acceptance and claim
+PASS patrol accepted identity is exactly lastClaim plus one and follows its own DAG
+PASS progress exposes only reachable next actions and both physical choices without mutation
+PASS required binding validates canonical owned weapons, exact shape and paired nulls
+PASS bonus follows selected equipped weapon and never mutates HP, sockets or old fittings
+PASS enemy catalogue is accepted-phase/run-qualified and never a legacy payout
+PASS Core contract either fails closed before integration or saves before live adoption
+node:assert:152
+  throw new AssertionError(obj);
+  ^
+
+AssertionError [ERR_ASSERTION]: Missing expected exception.
+    at D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\earth_expedition.test.cjs:95:159
+    at test (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\earth_expedition.test.cjs:7:26)
+    at Object.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\earth_expedition.test.cjs:92:2)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: undefined,
+  expected: undefined,
+  operator: 'throws',
+  diff: 'simple'
+}
+
+Node.js v24.18.0
+✖ tests\earth_expedition.test.cjs (128.7548ms)
+PASS tracked glade patrol owns actual E and hint ahead of overlapping unaccepted consignment
+PASS completed unpaid patrol gives one current return instruction
+PASS patrol terms and accepted final action remember either actual allocation
+PASS carrier controls from an older run or generation cannot operate current identical pieces
+PASS native-like intermediate number editing retains the control and last valid world pose
+PASS actual generated tray Look delegates private proof and closes without repaint or command
+PASS paid generated Look is distinct, fenced and readonly; reload and legacy payment get none
+PASS actual feedback describes signed control axes and accepts tolerance instead of demanding exact zero
+PASS old ready run claim refusal retains its checked kit and successful claim settles it once
+PASS fresh invitation exposes both exact allocations, fixed danger, binding cost and deliberate consent
+PASS actual RPG dispatch gives near expedition priority and closing clears an unspent preview
+FAIL missing optional ledger migrates to read-only fresh UI while malformed/current/future records never reach it
+AssertionError [ERR_ASSERTION]: Missing expected exception.
+    at D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\earth_expedition_ui.test.cjs:171:303
+    at test (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\earth_expedition_ui.test.cjs:19:30)
+    at Object.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\earth_expedition_ui.test.cjs:169:1)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+PASS real UI delegates acceptance and physical branch work; remote, premature and forged defeat clicks grant nothing
+PASS all valid story stages expose only current DAG routes; legend never performs remote work
+PASS walk dispatch is current-route filtered, physically supported and never grants objective credit
+PASS ready UI requires explicit local claim and preserves complete reward on save refusal
+PASS rendered patrol metadata fences stale accept/work/claim including missing and malformed run fields
+PASS production comparison retains bow behavior, socket, current XP and earlier fits without auto-equipping
+PASS binding preview refuses changed character, simulation, adventure revision and weapon; cancellation spends nothing
+PASS real CharacterStore saver refuses an external write between binding preview and confirmation atomically
+PASS explicit binding confirmation spends once at actual station, leaves equipment/HP/XP and socket intact
+PASS capped and near-cap acceptance cards disclose actual credit and real claim agrees
+FAIL actual RPG tick leaves expedition ready/paid/patrol tracker last over concurrent survey and trail
+TypeError: Cannot read properties of undefined (reading 'tick')
+    at RPGUI.tick (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\src\rpg-ui.js:362:449)
+    at D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\earth_expedition_ui.test.cjs:262:240
+    at test (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\earth_expedition_ui.test.cjs:19:30)
+    at Object.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\earth_expedition_ui.test.cjs:257:1)
+    at Module._compile (node:internal/modules/cjs/loader:1871:14)
+    at Object..js (node:internal/modules/cjs/loader:2002:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+PASS hydrated expedition restores over an older pinned project once, then respects manual tracking
+PASS actual app applyWorld restore selects accepted or ready expedition and active patrol without losing history
+PASS actual app worldContext installs synchronous savers on fresh restored Sim before active expedition combat
+Earth expedition CPU UI: 24/26 cases passed; 2 failed.
+✖ tests\earth_expedition_ui.test.cjs (647.9918ms)
+✔ real Core/Adventure/schema owners retain existing versions and transient lease stays outside saves (14.8259ms)
+✔ actual integrated E.command rejects bare incomplete brace step without saving (4.1774ms)
+✔ missing fitting module or consume method fails closed before durable saver (13.1242ms)
+✔ forged, copied and incomplete authorities cannot authorize the command (12.997ms)
+✔ wrong root/drain receiving faces and unseated wrong geometry cannot produce command authority (3.4041ms)
+✔ a real complete ticket from another identical synthetic owner cannot cross simulations (6.0542ms)
+✔ existing prerequisite and proximity checks run before the new proof gate (2.7444ms)
+✔ throwing or asynchronous validation is refused without mutation (5.9ms)
+✔ actual command rejects stale fitting: Adventure revision (3.934ms)
+✔ actual command rejects stale fitting: renewed identical-owner lease (4.2898ms)
+✔ actual command rejects stale fitting: missing lease (5.1552ms)
+✔ actual command rejects stale fitting: copied lease (3.5826ms)
+✔ actual command rejects stale fitting: changed active character (4.9414ms)
+✔ actual command rejects stale fitting: changed trip identity (4.5991ms)
+✔ actual command rejects stale fitting: changed original checkpoint (3.2904ms)
+✔ actual command rejects stale fitting: identical imported state identity (4.9798ms)
+✔ actual command rejects stale fitting: job phase (4.0774ms)
+✔ actual command rejects stale fitting: death generation (3.1141ms)
+✔ actual command rejects stale fitting: dead owner (6.5529ms)
+✔ actual command rejects stale fitting: travel away (5.1857ms)
+✔ actual command rejects stale fitting: unsupported work point (6.0698ms)
+✔ cancelled ready ticket rejects and beginning again requires another actual fitting (10.0406ms)
+✔ successful stormfall-recovery fastening saves once, consumes before sync, and pays nothing (8.0546ms)
+✔ successful managed-coppice fastening saves once, consumes before sync, and pays nothing (6.0619ms)
+✔ synchronous real Store quota refusal keeps same ready ticket and retry commits once (6.0451ms)
+✔ throwing saver and promise saver refuse without consuming a valid ticket (4.8014ms)
+✔ record capacity refusal leaves the same ticket ready and makes no saver call (3.32ms)
+✔ real Store saves of time and both camera preferences advance real revisions without ending fitting (6.9365ms)
+✔ actual Store source guard rejects a stale writer independently of a valid fitting ticket (5.5155ms)
+✔ actual Store missing writer lock refuses; restored writer retries the same fitted authority (6.374ms)
+✔ reloaded completed and old paid histories duplicate before fitting availability (3.1045ms)
+✔ first-story delivery and once-only fee remain their existing separate actual commands (7.4855ms)
+✔ existing payment capacity refusal retains complete unpaid work with no fitting dependency (2.0336ms)
+✔ existing accepted patrol glade inspection and payment remain independent of brace fitting (13.5766ms)
+✔ postcommit consume-return preserves actual saved completion and reports a warning (9.2397ms)
+✔ postcommit consume-throw preserves actual saved completion and reports a warning (7.2425ms)
+✔ postcommit sync-return preserves actual saved completion and reports a warning (7.315ms)
+✔ postcommit sync-throw preserves actual saved completion and reports a warning (7.5055ms)
+✔ postcommit both-throw preserves actual saved completion and reports a warning (4.2137ms)
+✔ optional Core owner is canonical and missing-field migration preserves XP1-5/9999 (87.3916ms)
+✖ historical full-world input keeps every old fact and gains only the real optional defaults; no flags transplanted (12.654ms)
+✖ long earned-journey migration oracle requires the exact fresh catalogue addition and every prior field (7.6126ms)
+✔ earned migration oracle never refreshes existing fifth-record history (21.7375ms)
+✔ malformed comma-joined catalogue keys cannot impersonate the four original IDs (9.186ms)
+✔ Core validates every prerequisite before accepted homecoming and rejects absent Open Confluence (50.8477ms)
+✔ strict optional record rejects future fields and reordered consent/work/aftermath history (58.2218ms)
+✔ real snapshots/legacy storage/managed Character Store keep accepted and partial new history (28.2125ms)
+✔ reading/default data helpers are pure and do not grant consent, reward or new actor (7.5233ms)
+✔ acceptance requires current traveller/revision and physical supported home, not menu realm selection (13.0133ms)
+✔ save-before-adopt refuses throws/Promise/candidate mutation and changed traveller/position ownership (43.8646ms)
+✔ actual scene roster/signature creates one canonical anchored model only after deliberate challenge (16.0297ms)
+✔ actual AI locks the 10.5m bow lane before generic 8.5 awareness and never chases (246.4462ms)
+✔ clear beyond maximum reach stays idle; no awareness, invisible reach or pursuit (16.9121ms)
+✔ actual long-warning scheduling remains finite and fully supported in all32 clear headings (579.3848ms)
+✔ broad warning is locked before mode changes; supplied screen changes only future broad tells (23.6482ms)
+✔ target movement leaves frame fixed and a real manual step outside the narrow lane misses (18.5123ms)
+✔ low-HP ring keeps exact rims and quiet center; the same live schedule accepts inside/outside misses (74.3637ms)
+✔ the fixed long lane is selected when an actual low-HP ring cannot reach the bow user (13.3976ms)
+✔ actual Brace halves the scheduled fixed contact through existing defense/mitigation (31.5175ms)
+✔ pause preserves owned frame/timers and rejects damage; unpause resumes the same schedule (32.72ms)
+✔ actual blade attack and bow projectile accept live windup/recovery using canonical owner (42.2963ms)
+✔ actual autoattack uses its existing anticipated command and a real projectile, without direct HP edits (17.1498ms)
+✔ Earth arrows use actual supported/covered geometry with no new projectile dispatch (31.32ms)
+✔ real damage rejects cloned, duplicate, replaced-runtime, departed and changed-state identities (35.3002ms)
+✔ exhaustion saves the local repulse before generic rewards and never records generic loot (19.3585ms)
+✔ refused exhaustion restores actual HP1 with no generic replay; a later actual hit saves once (31.2262ms)
+✔ stale/changed owner at exhaustion cannot adopt or pay; the profile adapter remains Root-owned (60.3228ms)
+✔ leaving discards campaign actors/arrows but preserves companion/cooldowns and old Cosmos behavior (15.0176ms)
+✔ re-entry after unfinished battle creates a fresh actual actor without second acceptance fee or reward (19.7453ms)
+✔ passage safety, explicit lasting aftermath, return verification/home interaction and payout are distinct (33.1464ms)
+✔ both chosen homecomings preserve all prior owners, explicit choices, equipment/sockets and same fixed fee (89.5966ms)
+✔ whole fee capacity or writer refusal leaves unpaid completion and permits exactly one later retry (222.7922ms)
+✔ stored XP cap clips XP only, without gear/HP/heal or altering the original paid owners (28.7069ms)
+✔ every Root input and legitimate earlier world remains byte-frozen after source-overlay tests (20.2259ms)
+✔ old homecoming preservation refuses any mutation of the separate WildSigns owner (7.0713ms)
+✔ unaccepted terms give the objective, exact fixed fee, signals and ordinary return before consent (24.0075ms)
+✔ every signal discloses the actual fixed geometry and warning/recovery terms (6.0401ms)
+✔ junction defense advice respects the actual lack of opaque cover within every possible contact envelope (7.0453ms)
+✔ missing prerequisites use actual titles and places, including separately claimed Open Confluence (2.7794ms)
+✔ reading and actual workspace close leave ineligible fresh interactions to older owners in every tab/quest combination (10.2142ms)
+✔ fresh real Core after reading and closing homecoming reaches the actual initial-kit command (5.2413ms)
+✔ after the real initial kit, unreadable-for-acceptance homecoming does not intercept the actual starter/workbench owner (4.6311ms)
+✔ eligible unaccepted and accepted physical actions remain reachable from either current tab or quest (14.5412ms)
+✔ accepted unpaid and claimed recognition retains both aftermaths and actual home/bridge gates across tabs and trackers (47.1875ms)
+✔ a claimed comparator alone still lists the actual missing Confluence account (7.6494ms)
+✔ retained past choices show only actual saved choice names without changing old owners (6.0302ms)
+✔ journal, map, tracker and ordinary walk create no campaign or payment facts (6.0753ms)
+✔ acceptance carries captured identity/revision and requires the actual physical giver (12.5794ms)
+✔ stale pages refuse changed active/state/context/revision/room/position owners (34.6582ms)
+✔ away routes identify the actual current marker and accepted Earth crossing, never a cross-room Walk (5.0641ms)
+✔ available physical steps have local Walk links while optional prep never displaces main tracking (5.3977ms)
+✔ manual defeat, unavailable work and remote home-arrival cannot dispatch facts (5.2733ms)
+✔ deliberate physical work dispatches its exact step and refusal leaves the workspace (5.1091ms)
+✔ a reported successful physical challenge closes the workspace without the UI granting fight facts (9.0128ms)
+✔ aftermath preview and cancel are pure; confirm binds the exact choice and checkpoint (16.8404ms)
+✔ a moved/stale preview or confirmation of the other aftermath cannot imply consent (20.5644ms)
+✔ bridge verification, immediate free return, real home-return and payment have separate route and command gates (8.3692ms)
+✔ current-person lines are physically gated and paid/unpaid language matches saved facts (5.2504ms)
+✔ unrelated pages never rebind consent; completed tracker returns to the ordinary story (4.3045ms)
+✔ unaccepted and wrong-scene art is empty and cannot produce support or progress (4.8271ms)
+✔ accepted apparatus is finite, modest, appearance-only and responds only to recorded work (5.9162ms)
+✔ every transformed Regent vertex is grounded and stays within the real .65 body radius (33.3428ms)
+✔ real installed lock produces exact broad and narrow lines in the actor-owned frame (17.0234ms)
+✔ synthetic clipped-frame boundary includes zero and very short lengths without protruding caps (113.964ms)
+✔ actual fixed annulus shows both boundaries inside its locked radii and preserves the quiet center (15.6875ms)
+✔ wrong/stale actor identity or recorded repulse cannot draw an active body or warning (5.6024ms)
+✔ paused/reduced-motion and both camera settings keep identical owned warning and geometry (5.7937ms)
+✔ after each saved aftermath one road trace and a later modest home trace persist without fake bodies (9.8247ms)
+✔ both transformed home accounts rest exactly on the real workshop table and clear every existing nearby box (82.7988ms)
+ℹ {"choice":"public-watch","anchor":{"x":12.5,"z":8.55},"tableTop":2.129999950528145,"minimumY":2.130000200122595,"maximumY":2.39040020853281,"minX":12.304700002074242,"maxX":12.695299997925758,"minZ":8.398100197315216,"maxZ":8.70190018415451,"existingBoxClearanceChecks":113}
+ℹ {"choice":"reviewed-custody","anchor":{"x":12.5,"z":8.55},"tableTop":2.129999950528145,"minimumY":2.130000200122595,"maximumY":2.324200229719281,"minX":12.304700002074242,"maxX":12.695299997925758,"minZ":8.398100197315216,"maxZ":8.70190018415451,"existingBoxClearanceChecks":113}
+✔ combined static/body/ring budget is bounded with actual procedural triangle counts (7.8621ms)
+ℹ {"projectionItems":238,"triangles":2836,"batches":2}
+✔ styling provides narrow layouts, keyboard focus and reduced-motion without source changes (2.3032ms)
+✔ actual saved world retains versions and canonical separate encounter terms (29.6435ms)
+✔ canonical pest spawns once only for deliberate unresolved observed pocket and exact current lease/outing (30.0878ms)
+✔ acceptance/choice/clear reconcile only pest: wounded old entry, real arrow, tactics, companion and ordinary ledgers survive (18.5917ms)
+✔ signature appended exactly for Rules without resetting old ordinary fights on harmless clock/camera persistence (3.9656ms)
+✔ clones, foreign/stale leases and forged quest entries cannot receive new-pest damage or generic rewards (4.1579ms)
+✔ actual lethal damage invokes real saved clearance before any generic defeat/drop/XP and preserves other accounts (6.173ms)
+✔ quota refusal keeps exact actual dead identity, never auto-retries, and explicit paused far retry adopts once (13.5514ms)
+✔ missing/throwing/async/refused/bare-success callback leaves no recorded/generic success and retains physical dead entry (21.3289ms)
+✔ outgoing saved-owner result remains truthful and is not claimed as adopted current clearance (3.9996ms)
+✔ lease/state/trip/home/death changes expire pending identity; legitimate reload restarts only unsaved fight (34.2178ms)
+✔ ordinary skitter windup/contact/recovery and radius-aware pursuit run through actual Core tick without new patterns (36.7446ms)
+✔ actual targeting accepts new skitter, excludes dead entry and keeps grazer outside roster (6.3078ms)
+✔ real blade attack and melee pulse earn clearance with original weapon/account authority (57.4222ms)
+✔ real arrows and piercing projectiles earn clearance and are not cleared by the new owner transition (92.9165ms)
+✔ real companion strikes can finish pest through same owned callback without new loot or targeting grazer (56.6269ms)
+✔ old generic mine defeat and existing World foe ownership remain independent and unchanged (3.4589ms)
+✔ actual Road of Light and connected Earth callers can clone runtime and preserve original home and owners (8.3909ms)
+✔ prior actual generic drop and World defeat never replay when the separate signs owner advances (11.1617ms)
+✔ actual Core owns a separate fresh version1 account and retains all existing versions (5.0929ms)
+✔ missing owner adds only the literal fresh field to an otherwise canonical world (5.478ms)
+✖ historical command-earned blade bow and strongest fixtures preserve raw owners apart from literal prior and new missing-owner additions (15.758ms)
+✔ explicit malformed inherited undefined future and contradictory owners are rejected (7.8574ms)
+✔ accepted history requires the claimed exact fifth source and preserves every partial or paid record on snapshot (18.7726ms)
+✔ current and legacy missing-owner loads are read-only and corrupt raw bytes remain untouched (1.8102ms)
+✔ malformed inactive character blocks the whole library and never rewrites its bytes (1.5326ms)
+✔ actual Store validates malformed imports and quota refusals before adopting any current or inactive facts (3.3152ms)
+✔ default descriptors retain old behavior; bound active form leaves all primary stats unchanged (37.6497ms)
+✔ measured cut needs selected, live, visible close target before spending and never falls back (6.7389ms)
+✔ single close target and low stamina favor lesson; grouped targets and reach favor original (3.8439ms)
+✔ switching forms or weapon cannot reset shared recovery or primary cadence (1.1068ms)
+✔ bow lesson freezes actual one-body shot at release; later selection does not rewrite flight (2.196ms)
+✔ ordinary piercing shot retains two-body advantage with original cost and damage (1.8702ms)
+✔ moved target misses, blocked launch spends nothing and no hit flash is invented (1.4775ms)
+✔ offer explains both alternatives, full tradeoffs and route before acceptance, without writes (22.2635ms)
+✔ UI acceptance restores world for command, sends owner/revision and repauses its panel (2.3812ms)
+✔ learning has review, cancel, confirm and separate activation; no autoequip (5.2898ms)
+✔ stale confirmation cannot bind to a changed character or revision (3.8916ms)
+✔ walking and tracking are read-only; evidence stays separate from Fenna work (2.632ms)
+✔ strong owned item comparison is honest and cannot alter sockets or stats (1.1455ms)
+✔ read-only art retains distinct private/public credit without new ground or collision (2.2026ms)
+✔ actual App writer captures current Simulation/store/active and is wired to production UI (1.1045ms)
+✔ new quest state is explicit, versioned and round trips (3.6858ms)
+✔ version-five adventure migrates without altering existing campaign or creative data (8.3563ms)
+✔ all banked XP boundaries retain XP and the existing five-level curve (2.0228ms)
+✔ acceptance requires kit and actual Oren proximity without campaign consent (9.7983ms)
+✔ acceptance is one explicit event and survives cold reload (2.3792ms)
+✔ pre-acceptance pocket has no quest kills or pickups to backfill (2.1007ms)
+✔ room dispatch and each objective use real collision-valid routes (26.7143ms)
+✔ each bundle is unique, proximity checked and never spends ordinary materials (5.6366ms)
+✔ named defeat can precede bundles and stays resolved after returning/re-entry (1.9451ms)
+✔ incomplete, distant and unknown-reward turn-ins refuse atomically (4.4838ms)
+✔ full currency capacity preserves every objective and reward for retry (1.5806ms)
+✔ oren_sunblade is awarded once, deliberately equipped, and saved with correct mechanics (3.2789ms)
+✔ oren_reedbow is awarded once, deliberately equipped, and saved with correct mechanics (2.2676ms)
+✔ single veteran temper preserves weapon identity, socket, cadence and health (1.1869ms)
+✔ temper refuses unknown, unowned and armor targets without a partial payout (3.5861ms)
+✔ new bow really launches primary and piercing projectiles with costs and hit events (7.8953ms)
+✔ practice target supports blade and yields no XP, loot, coins or quest progress (1.1032ms)
+✔ new equipment keeps independent removable socket and validates after reload (3.0282ms)
+✔ named tell locks aim and allows both a guarded hit and a movement response (14.5441ms)
+✔ save validation rejects impossible quest state and reward combinations (3.7908ms)
+✔ kit blade sees the actual ordinary tell and Brace halves its resolved hit (55.8023ms)
+✔ fresh bow sees the actual ordinary tell and Brace halves its resolved hit (57.3207ms)
+✔ movement away from the locked ordinary aim avoids its actual impact with the kit (11.3072ms)
+✔ fixed ordinary health stays easy for stronger gear without scaling or changing banked XP (46.6583ms)
+✔ ordinary fights stay optional and named threat, rewards, cooldown and weapon distinctions retain their rules (1.2601ms)
+✔ optional journeys migrate old world 9 saves without touching banked XP, choices, home or music (9.2482ms)
+✔ new schema rejects forward, malformed, unknown and impossible claim history (6.1015ms)
+✔ five-light gate is supported and separate from existing lake and Cosmos markers (3.1896ms)
+✔ travel checkpoints original state, and rejects changed owner, revision, position or ticket (12.8787ms)
+✔ travel, free return, re-entry and cold reload do not grant or advance accepted work (5.2178ms)
+✔ accepted objectives require physical arrival and current run; repeats remain once-only (2.7855ms)
+✔ save refusal and capacity-blocked turn-in preserve completed objectives, currency and journal atomically (5.7424ms)
+✔ claim fences survive changed request IDs, reload, re-entry and intentional smaller repeat runs (5.227ms)
+✔ reward changes only declared fields and retains explicit classes, gear, sockets, XP ceiling and story history (1.937ms)
+✔ only canonical local enemies use local defeat records and never enter legacy loot history (2.277ms)
+✔ copied or live enemies cannot manufacture a defeat, and a real defeat preserves the revision ceiling (2.3018ms)
+✔ bow targets and actual arrows use new scene ground, while solid cover blocks hits (6.8142ms)
+✔ skipped active run identities are rejected rather than inventing an unknown payout history (0.198ms)
+✔ failure after scene sync restores the original runtime graph as well as position and room (1.5199ms)
+✔ every new realm objective can return to its real giver through production navigation (328.1477ms)
+✔ gallery has actual depth, held release, body/camera medium separation and true blocking air-court walls (3.1189ms)
+✔ companion menu preserves dry waiting position, and an explicit recall uses the dry entry during a dive (2.2394ms)
+ℹ tests 364
+ℹ suites 0
+ℹ pass 359
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9910.4203
+
+✖ failing tests:
+
+test at tests\earth_expedition.test.cjs:1:1
+✖ tests\earth_expedition.test.cjs (128.7548ms)
+  'test failed'
+
+test at tests\earth_expedition_ui.test.cjs:1:1
+✖ tests\earth_expedition_ui.test.cjs (647.9918ms)
+  'test failed'
+
+test at tests\earth_homecoming_installed.test.cjs:61:1
+✖ historical full-world input keeps every old fact and gains only the real optional defaults; no flags transplanted (12.654ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      adventure: {
+        angelSeen: true,
+        arsenal: {
+          bestTime: null,
+  ...
+        },
+  +     earthMasterwork: {
+  +       accepted: false,
+  +       compared: false,
+  +       enabled: false,
+  +       evidence: [],
+  +       participation: null,
+  +       resolution: null,
+  +       version: 1,
+  +       weapon: null
+  +     },
+        earthNotes: {
+          accepted: false,
+          compared: false,
+          interpretation: null,
+          marks: [],
+  ...
+        tonics: 3,
+  +     version: 13,
+  -     version: 12,
+        xp: 878
+      },
+      atlantisCampaign: {
+        accepted: true,
+        approach: 'upper',
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\earth_homecoming_installed.test.cjs:62:724)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: {
+      briarMoments: { version: 1, revision: 0, moments: [] },
+      earthWildSigns: { version: 1, accepted: false, evidence: [], observed: false, resolution: null, cleared: false, claimed: false },
+      cosmosCampaign: { version: 1, accepted: true, steps: [Array], choice: 'public-record', opened: true, claimed: true },
+      atlantisCampaign: { version: 1, accepted: true, steps: [Array], approach: 'upper', choice: 'publish', claimed: true },
+      heavenCampaign: { version: 1, accepted: true, steps: [Array], choice: 'accessible-assist', claimed: true },
+      hellCampaign: { version: 1, accepted: true, steps: [Array], choice: 'unbind', claimed: true },
+      bridgeCommunity: { version: 1, accepted: false, choice: null, steps: [], claimed: false },
+      homeHistory: { version: 1, revision: 0, owned: [], pinned: null },
+      localLife: { version: 1, records: [Object] },
+      earthExpedition: { version: 1, story: [Object], patrol: [Object] },
+      realmTrails: { version: 1, records: [Object] },
+      journeys: { version: 1, realms: [Object] },
+      adventure: { version: 13, earthMasterwork: [Object], earthBinding: [Object], realmCraft: [Object], earthGathering: [Object], earthNotes: [Object], earthStory: [Object], classPath: [Object], pursuit: [Object], starter: [Object], crossing: [Object], beacon: [Object], arsenal: [Object], road: [Object], elapsed: 2294.537352070588, revision: 416, started: true, dug: [Array], chips: [], defeated: [Array], drops: [], ore: 47, coins: 234, xp: 878, hp: 198, stamina: 100, tonics: 3, equipment: [Object], owned: [Array], companion: [Object], relic: true, angelSeen: true, reward: 'warden_stone', deaths: 0, receipts: [Array] },
+      sandbox: { version: 1, elapsed: 2294.537352070588, revision: 24, inventory: [Object], nodes: [Array], bridge: true, placed: [], nextId: 1, stats: [Object], milestones: [Array], recentCommands: [Array], cooldownUntil: 36.500000000000085 },
+      score: { format: 'eternities.score.v1', title: 'A Window Left Open', bpm: 88, voice: 'felt', melody: [Array], bass: [Array], drums: [Array] },
+      scoreRevision: 0,
+      retreat: { version: 1, revision: 0, wall: 'moss', floor: 'oak', items: [Array] },
+      visitor: { name: 'Visitor', skin: 0, cloak: 0, hair: 0 },
+      version: 9,
+      seed: 2317,
+      day: 2,
+      hour: 3.5254180843296643,
+      weather: 'clear',
+      player: { x: 18, z: 6, yaw: 2.2455372690188193 },
+      visited: [ 'market', 'commons', 'home', 'garden', 'retreat', 'lookout' ],
+      flowers: [],
+      notes: [],
+      journal: [
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        ... 100 more items
+      ],
+      nextEvent: 334,
+      residents: [ [Object], [Object], [Object] ],
+      settings: { quality: 'balanced', cameraMode: 'adventure', cameraFov: 60, cameraViews: [Object], cameraCutaway: true, reducedMotion: false, labels: true, timeFlow: true, sound: false }
+    },
+    expected: {
+      cosmosCampaign: { version: 1, accepted: true, steps: [Array], choice: 'public-record', opened: true, claimed: true },
+      atlantisCampaign: { version: 1, accepted: true, steps: [Array], approach: 'upper', choice: 'publish', claimed: true },
+      heavenCampaign: { version: 1, accepted: true, steps: [Array], choice: 'accessible-assist', claimed: true },
+      hellCampaign: { version: 1, accepted: true, steps: [Array], choice: 'unbind', claimed: true },
+      bridgeCommunity: { version: 1, accepted: false, choice: null, steps: [], claimed: false },
+      homeHistory: { version: 1, revision: 0, owned: [], pinned: null },
+      localLife: { version: 1, records: [Object] },
+      earthExpedition: { version: 1, story: [Object], patrol: [Object] },
+      realmTrails: { version: 1, records: [Object] },
+      journeys: { version: 1, realms: [Object] },
+      adventure: { version: 12, earthBinding: [Object], realmCraft: [Object], earthGathering: [Object], earthNotes: [Object], earthStory: [Object], classPath: [Object], pursuit: [Object], starter: [Object], crossing: [Object], beacon: [Object], arsenal: [Object], road: [Object], elapsed: 2294.537352070588, revision: 416, started: true, dug: [Array], chips: [], defeated: [Array], drops: [], ore: 47, coins: 234, xp: 878, hp: 198, stamina: 100, tonics: 3, equipment: [Object], owned: [Array], companion: [Object], relic: true, angelSeen: true, reward: 'warden_stone', deaths: 0, receipts: [Array] },
+      sandbox: { version: 1, elapsed: 2294.537352070588, revision: 24, inventory: [Object], nodes: [Array], bridge: true, placed: [], nextId: 1, stats: [Object], milestones: [Array], recentCommands: [Array], cooldownUntil: 36.500000000000085 },
+      score: { format: 'eternities.score.v1', title: 'A Window Left Open', bpm: 88, voice: 'felt', melody: [Array], bass: [Array], drums: [Array] },
+      scoreRevision: 0,
+      retreat: { version: 1, revision: 0, wall: 'moss', floor: 'oak', items: [Array] },
+      visitor: { name: 'Visitor', skin: 0, cloak: 0, hair: 0 },
+      version: 9,
+      seed: 2317,
+      day: 2,
+      hour: 3.5254180843296643,
+      weather: 'clear',
+      player: { x: 18, z: 6, yaw: 2.2455372690188193 },
+      visited: [ 'market', 'commons', 'home', 'garden', 'retreat', 'lookout' ],
+      flowers: [],
+      notes: [],
+      journal: [
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        ... 100 more items
+      ],
+      nextEvent: 334,
+      residents: [ [Object], [Object], [Object] ],
+      settings: { quality: 'balanced', cameraMode: 'adventure', cameraFov: 60, cameraViews: [Object], cameraCutaway: true, reducedMotion: false, labels: true, timeFlow: true, sound: false },
+      earthWildSigns: { version: 1, accepted: false, evidence: [], observed: false, resolution: null, cleared: false, claimed: false },
+      briarMoments: { version: 1, revision: 0, moments: [] }
+    },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\earth_homecoming_installed.test.cjs:64:1
+✖ long earned-journey migration oracle requires the exact fresh catalogue addition and every prior field (7.6126ms)
+  AssertionError [ERR_ASSERTION]: actual optional defaults preserve EVERY prior field and add only declared literal fresh defaults
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      adventure: {
+        angelSeen: true,
+        arsenal: {
+          bestTime: null,
+  ...
+        },
+  +     earthMasterwork: {
+  +       accepted: false,
+  +       compared: false,
+  +       enabled: false,
+  +       evidence: [],
+  +       participation: null,
+  +       resolution: null,
+  +       version: 1,
+  +       weapon: null
+  +     },
+        earthNotes: {
+          accepted: false,
+          compared: false,
+          interpretation: null,
+          marks: [],
+  ...
+        tonics: 3,
+  +     version: 13,
+  -     version: 12,
+        xp: 878
+      },
+      atlantisCampaign: {
+        accepted: true,
+        approach: 'upper',
+  
+      at Object.assertMigrationPreserved (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tools\earth-homecoming-journey\earned_common.cjs:34:9)
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\earth_homecoming_installed.test.cjs:68:18)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: {
+      briarMoments: { version: 1, revision: 0, moments: [] },
+      earthWildSigns: { version: 1, accepted: false, evidence: [], observed: false, resolution: null, cleared: false, claimed: false },
+      cosmosCampaign: { version: 1, accepted: true, steps: [Array], choice: 'public-record', opened: true, claimed: true },
+      atlantisCampaign: { version: 1, accepted: true, steps: [Array], approach: 'upper', choice: 'publish', claimed: true },
+      heavenCampaign: { version: 1, accepted: true, steps: [Array], choice: 'accessible-assist', claimed: true },
+      hellCampaign: { version: 1, accepted: true, steps: [Array], choice: 'unbind', claimed: true },
+      bridgeCommunity: { version: 1, accepted: false, choice: null, steps: [], claimed: false },
+      homeHistory: { version: 1, revision: 0, owned: [], pinned: null },
+      localLife: { version: 1, records: [Object] },
+      earthExpedition: { version: 1, story: [Object], patrol: [Object] },
+      realmTrails: { version: 1, records: [Object] },
+      journeys: { version: 1, realms: [Object] },
+      adventure: { version: 13, earthMasterwork: [Object], earthBinding: [Object], realmCraft: [Object], earthGathering: [Object], earthNotes: [Object], earthStory: [Object], classPath: [Object], pursuit: [Object], starter: [Object], crossing: [Object], beacon: [Object], arsenal: [Object], road: [Object], elapsed: 2294.537352070588, revision: 416, started: true, dug: [Array], chips: [], defeated: [Array], drops: [], ore: 47, coins: 234, xp: 878, hp: 198, stamina: 100, tonics: 3, equipment: [Object], owned: [Array], companion: [Object], relic: true, angelSeen: true, reward: 'warden_stone', deaths: 0, receipts: [Array] },
+      sandbox: { version: 1, elapsed: 2294.537352070588, revision: 24, inventory: [Object], nodes: [Array], bridge: true, placed: [], nextId: 1, stats: [Object], milestones: [Array], recentCommands: [Array], cooldownUntil: 36.500000000000085 },
+      score: { format: 'eternities.score.v1', title: 'A Window Left Open', bpm: 88, voice: 'felt', melody: [Array], bass: [Array], drums: [Array] },
+      scoreRevision: 0,
+      retreat: { version: 1, revision: 0, wall: 'moss', floor: 'oak', items: [Array] },
+      visitor: { name: 'Visitor', skin: 0, cloak: 0, hair: 0 },
+      version: 9,
+      seed: 2317,
+      day: 2,
+      hour: 3.5254180843296643,
+      weather: 'clear',
+      player: { x: 18, z: 6, yaw: 2.2455372690188193 },
+      visited: [ 'market', 'commons', 'home', 'garden', 'retreat', 'lookout' ],
+      flowers: [],
+      notes: [],
+      journal: [
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        ... 100 more items
+      ],
+      nextEvent: 334,
+      residents: [ [Object], [Object], [Object] ],
+      settings: { quality: 'balanced', cameraMode: 'adventure', cameraFov: 60, cameraViews: [Object], cameraCutaway: true, reducedMotion: false, labels: true, timeFlow: true, sound: false }
+    },
+    expected: {
+      cosmosCampaign: { version: 1, accepted: true, steps: [Array], choice: 'public-record', opened: true, claimed: true },
+      atlantisCampaign: { version: 1, accepted: true, steps: [Array], approach: 'upper', choice: 'publish', claimed: true },
+      heavenCampaign: { version: 1, accepted: true, steps: [Array], choice: 'accessible-assist', claimed: true },
+      hellCampaign: { version: 1, accepted: true, steps: [Array], choice: 'unbind', claimed: true },
+      bridgeCommunity: { version: 1, accepted: false, choice: null, steps: [], claimed: false },
+      homeHistory: { version: 1, revision: 0, owned: [], pinned: null },
+      localLife: { version: 1, records: [Object] },
+      earthExpedition: { version: 1, story: [Object], patrol: [Object] },
+      realmTrails: { version: 1, records: [Object] },
+      journeys: { version: 1, realms: [Object] },
+      adventure: { version: 12, earthBinding: [Object], realmCraft: [Object], earthGathering: [Object], earthNotes: [Object], earthStory: [Object], classPath: [Object], pursuit: [Object], starter: [Object], crossing: [Object], beacon: [Object], arsenal: [Object], road: [Object], elapsed: 2294.537352070588, revision: 416, started: true, dug: [Array], chips: [], defeated: [Array], drops: [], ore: 47, coins: 234, xp: 878, hp: 198, stamina: 100, tonics: 3, equipment: [Object], owned: [Array], companion: [Object], relic: true, angelSeen: true, reward: 'warden_stone', deaths: 0, receipts: [Array] },
+      sandbox: { version: 1, elapsed: 2294.537352070588, revision: 24, inventory: [Object], nodes: [Array], bridge: true, placed: [], nextId: 1, stats: [Object], milestones: [Array], recentCommands: [Array], cooldownUntil: 36.500000000000085 },
+      score: { format: 'eternities.score.v1', title: 'A Window Left Open', bpm: 88, voice: 'felt', melody: [Array], bass: [Array], drums: [Array] },
+      scoreRevision: 0,
+      retreat: { version: 1, revision: 0, wall: 'moss', floor: 'oak', items: [Array] },
+      visitor: { name: 'Visitor', skin: 0, cloak: 0, hair: 0 },
+      version: 9,
+      seed: 2317,
+      day: 2,
+      hour: 3.5254180843296643,
+      weather: 'clear',
+      player: { x: 18, z: 6, yaw: 2.2455372690188193 },
+      visited: [ 'market', 'commons', 'home', 'garden', 'retreat', 'lookout' ],
+      flowers: [],
+      notes: [],
+      journal: [
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        ... 100 more items
+      ],
+      nextEvent: 334,
+      residents: [ [Object], [Object], [Object] ],
+      settings: { quality: 'balanced', cameraMode: 'adventure', cameraFov: 60, cameraViews: [Object], cameraCutaway: true, reducedMotion: false, labels: true, timeFlow: true, sound: false },
+      earthWildSigns: { version: 1, accepted: false, evidence: [], observed: false, resolution: null, cleared: false, claimed: false },
+      briarMoments: { version: 1, revision: 0, moments: [] }
+    },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\earth_wild_signs_save.test.cjs:24:1
+✖ historical command-earned blade bow and strongest fixtures preserve raw owners apart from literal prior and new missing-owner additions (15.758ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      adventure: {
+        angelSeen: true,
+        arsenal: {
+          bestTime: null,
+  ...
+        },
+  +     earthMasterwork: {
+  +       accepted: false,
+  +       compared: false,
+  +       enabled: false,
+  +       evidence: [],
+  +       participation: null,
+  +       resolution: null,
+  +       version: 1,
+  +       weapon: null
+  +     },
+        earthNotes: {
+          accepted: false,
+          compared: false,
+          interpretation: null,
+          marks: [],
+  ...
+        tonics: 3,
+  +     version: 13,
+  -     version: 12,
+        xp: 878
+      },
+      atlantisCampaign: {
+        accepted: true,
+        approach: 'upper',
+  
+      at TestContext.<anonymous> (D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\earth_wild_signs_save.test.cjs:31:39)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: {
+      briarMoments: { version: 1, revision: 0, moments: [] },
+      earthHomecoming: { version: 1, accepted: false, steps: [], choice: null, claimed: false },
+      cosmosCampaign: { version: 1, accepted: true, steps: [Array], choice: 'public-record', opened: true, claimed: true },
+      atlantisCampaign: { version: 1, accepted: true, steps: [Array], approach: 'upper', choice: 'publish', claimed: true },
+      heavenCampaign: { version: 1, accepted: true, steps: [Array], choice: 'accessible-assist', claimed: true },
+      hellCampaign: { version: 1, accepted: true, steps: [Array], choice: 'unbind', claimed: true },
+      bridgeCommunity: { version: 1, accepted: false, choice: null, steps: [], claimed: false },
+      homeHistory: { version: 1, revision: 0, owned: [], pinned: null },
+      localLife: { version: 1, records: [Object] },
+      earthExpedition: { version: 1, story: [Object], patrol: [Object] },
+      realmTrails: { version: 1, records: [Object] },
+      journeys: { version: 1, realms: [Object] },
+      adventure: { version: 13, earthMasterwork: [Object], earthBinding: [Object], realmCraft: [Object], earthGathering: [Object], earthNotes: [Object], earthStory: [Object], classPath: [Object], pursuit: [Object], starter: [Object], crossing: [Object], beacon: [Object], arsenal: [Object], road: [Object], elapsed: 2294.537352070588, revision: 416, started: true, dug: [Array], chips: [], defeated: [Array], drops: [], ore: 47, coins: 234, xp: 878, hp: 198, stamina: 100, tonics: 3, equipment: [Object], owned: [Array], companion: [Object], relic: true, angelSeen: true, reward: 'warden_stone', deaths: 0, receipts: [Array] },
+      sandbox: { version: 1, elapsed: 2294.537352070588, revision: 24, inventory: [Object], nodes: [Array], bridge: true, placed: [], nextId: 1, stats: [Object], milestones: [Array], recentCommands: [Array], cooldownUntil: 36.500000000000085 },
+      score: { format: 'eternities.score.v1', title: 'A Window Left Open', bpm: 88, voice: 'felt', melody: [Array], bass: [Array], drums: [Array] },
+      scoreRevision: 0,
+      retreat: { version: 1, revision: 0, wall: 'moss', floor: 'oak', items: [Array] },
+      visitor: { name: 'Visitor', skin: 0, cloak: 0, hair: 0 },
+      version: 9,
+      seed: 2317,
+      day: 2,
+      hour: 3.5254180843296643,
+      weather: 'clear',
+      player: { x: 18, z: 6, yaw: 2.2455372690188193 },
+      visited: [ 'market', 'commons', 'home', 'garden', 'retreat', 'lookout' ],
+      flowers: [],
+      notes: [],
+      journal: [
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        ... 100 more items
+      ],
+      nextEvent: 334,
+      residents: [ [Object], [Object], [Object] ],
+      settings: { quality: 'balanced', cameraMode: 'adventure', cameraFov: 60, cameraViews: [Object], cameraCutaway: true, reducedMotion: false, labels: true, timeFlow: true, sound: false }
+    },
+    expected: {
+      cosmosCampaign: { version: 1, accepted: true, steps: [Array], choice: 'public-record', opened: true, claimed: true },
+      atlantisCampaign: { version: 1, accepted: true, steps: [Array], approach: 'upper', choice: 'publish', claimed: true },
+      heavenCampaign: { version: 1, accepted: true, steps: [Array], choice: 'accessible-assist', claimed: true },
+      hellCampaign: { version: 1, accepted: true, steps: [Array], choice: 'unbind', claimed: true },
+      bridgeCommunity: { version: 1, accepted: false, choice: null, steps: [], claimed: false },
+      homeHistory: { version: 1, revision: 0, owned: [], pinned: null },
+      localLife: { version: 1, records: [Object] },
+      earthExpedition: { version: 1, story: [Object], patrol: [Object] },
+      realmTrails: { version: 1, records: [Object] },
+      journeys: { version: 1, realms: [Object] },
+      adventure: { version: 12, earthBinding: [Object], realmCraft: [Object], earthGathering: [Object], earthNotes: [Object], earthStory: [Object], classPath: [Object], pursuit: [Object], starter: [Object], crossing: [Object], beacon: [Object], arsenal: [Object], road: [Object], elapsed: 2294.537352070588, revision: 416, started: true, dug: [Array], chips: [], defeated: [Array], drops: [], ore: 47, coins: 234, xp: 878, hp: 198, stamina: 100, tonics: 3, equipment: [Object], owned: [Array], companion: [Object], relic: true, angelSeen: true, reward: 'warden_stone', deaths: 0, receipts: [Array] },
+      sandbox: { version: 1, elapsed: 2294.537352070588, revision: 24, inventory: [Object], nodes: [Array], bridge: true, placed: [], nextId: 1, stats: [Object], milestones: [Array], recentCommands: [Array], cooldownUntil: 36.500000000000085 },
+      score: { format: 'eternities.score.v1', title: 'A Window Left Open', bpm: 88, voice: 'felt', melody: [Array], bass: [Array], drums: [Array] },
+      scoreRevision: 0,
+      retreat: { version: 1, revision: 0, wall: 'moss', floor: 'oak', items: [Array] },
+      visitor: { name: 'Visitor', skin: 0, cloak: 0, hair: 0 },
+      version: 9,
+      seed: 2317,
+      day: 2,
+      hour: 3.5254180843296643,
+      weather: 'clear',
+      player: { x: 18, z: 6, yaw: 2.2455372690188193 },
+      visited: [ 'market', 'commons', 'home', 'garden', 'retreat', 'lookout' ],
+      flowers: [],
+      notes: [],
+      journal: [
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        ... 100 more items
+      ],
+      nextEvent: 334,
+      residents: [ [Object], [Object], [Object] ],
+      settings: { quality: 'balanced', cameraMode: 'adventure', cameraFov: 60, cameraViews: [Object], cameraCutaway: true, reducedMotion: false, labels: true, timeFlow: true, sound: false },
+      earthHomecoming: { version: 1, accepted: false, choice: null, steps: [], claimed: false },
+      briarMoments: { version: 1, revision: 0, moments: [] }
+    },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,10 @@
+{
+  "kind": "transcribed-tool-result",
+  "command": "python -B build.py",
+  "root": "D:/07-GAMES/Firstlight/authoring/atlantis-harbour-campaign-20261004",
+  "observedLocalDate": "2026-10-13",
+  "exitCode": 1,
+  "error": "MemoryError",
+  "source": "build.py line180: text=text.replace(placeholder, body)",
+  "scope": "Tool output retained in conversation; this is a transcribed receipt, not original stdout. The immediate later host read reported3484248KiB free. No VM or other process was inspected or stopped. Later Build02 admission refused; Build03 succeeded."
+}

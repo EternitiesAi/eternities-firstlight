@@ -156,3 +156,18 @@ no02 output directory exists. Preserve the admission receipt and original failed
 01 result. Continue independent lightweight product work; another full attempt
 needs fresh paths and fresh admission. No VM or unrelated process was inspected
 or stopped. Complete qualification remains pending.
+
+
+## Attempt03: source passed; later native allocation refused
+
+Clean reused STATION at04fd08ce768cb886abdffa788d8148c0a9068b3d admitted at
+7,883,360KiB free. All224 source commands passed: Node2257/0fail/2skip and
+Python538run/8skip/no failures. The first Earth homecoming native suite passed
+1744 checks over7/30 earned stages. Its next whole-browser allocation was refused
+at4,109,576KiB against6,291,456KiB; guard exit1 is retained. Browser assertion and
+console/page-error collections were empty; the suite and broader gate remain
+incomplete. Worker closed02:42:34Z on2026-10-14 (localOct13), same head and clean.
+
+Original03 admission, console, terminal receipt and losslessly gzipped native
+report are retained with the [subsequent gameplay evidence](../evidence/earth-masterwork-2026-10-13/EVIDENCE_INDEX.json).
+This adds no PR77 runtime change and is not full native qualification.

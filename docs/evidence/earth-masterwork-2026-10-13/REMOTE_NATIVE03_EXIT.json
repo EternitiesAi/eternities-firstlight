@@ -1,0 +1,27 @@
+{
+  "sourceHead": "e9c5bbc93b7166beabc75d6f911e75ec180e480d",
+  "headAfter": "e9c5bbc93b7166beabc75d6f911e75ec180e480d",
+  "statusAfter": [],
+  "startedUtc": "2026-10-14T03:52:14.1542116Z",
+  "closedUtc": "2026-10-14T03:54:31.7663320Z",
+  "exitCode": 0,
+  "command": [
+    "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+    "-B",
+    "tools/browser_budget.py",
+    "--root",
+    "D:/07-GAMES/Firstlight/verification/current-qualified-game",
+    "--output",
+    "D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/next-gate/MASTERWORK_REMOTE_NATIVE03_ADMISSION",
+    "--temp-dir",
+    "D:/07-GAMES/Firstlight/cache/browser-temp",
+    "--",
+    "tools/masterwork_browser.py",
+    "--both",
+    "--output",
+    "D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/next-gate/MASTERWORK_REMOTE_NATIVE03"
+  ],
+  "scope": "Fresh exact remote two-family native UI and cold browser gate, software, no recording or personal state",
+  "controllerSha256": "9031eee5f36a352d333551a3aeea64831cb225a9436a4c93827b147ff279ed64",
+  "consoleSha256": "7cb985fae7fc9a48d57a268dec7ebc26a914f69d116cdae937ce85811ff52432"
+}

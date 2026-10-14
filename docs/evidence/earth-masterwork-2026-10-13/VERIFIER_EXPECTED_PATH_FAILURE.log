@@ -1,0 +1,38 @@
+test_actual_main_wraps_all_53_native_suites_and_no_cpu_or_preflight_calls (test_verify_browser_budget.BrowserBudgetVerifier.test_actual_main_wraps_all_53_native_suites_and_no_cpu_or_preflight_calls) ... FAIL
+test_atomic_log_reservation_refuses_a_directory_created_during_setup (test_verify_browser_budget.BrowserBudgetVerifier.test_atomic_log_reservation_refuses_a_directory_created_during_setup) ... ok
+test_conflicting_roots_and_invalid_temp_refuse_without_reservation (test_verify_browser_budget.BrowserBudgetVerifier.test_conflicting_roots_and_invalid_temp_refuse_without_reservation) ... ok
+test_default_storage_reserves_logs_and_nested_evidence_once (test_verify_browser_budget.BrowserBudgetVerifier.test_default_storage_reserves_logs_and_nested_evidence_once) ... ok
+test_existing_evidence_refuses_before_creating_new_logs (test_verify_browser_budget.BrowserBudgetVerifier.test_existing_evidence_refuses_before_creating_new_logs) ... ok
+test_guard_refusal_and_timeout_stop_before_later_native_suites (test_verify_browser_budget.BrowserBudgetVerifier.test_guard_refusal_and_timeout_stop_before_later_native_suites) ... ok
+test_source_only_main_never_dispatches_budget_runner (test_verify_browser_budget.BrowserBudgetVerifier.test_source_only_main_never_dispatches_budget_runner) ... ok
+test_windows_non_d_storage_refuses_before_any_write (test_verify_browser_budget.BrowserBudgetVerifier.test_windows_non_d_storage_refuses_before_any_write) ... ok
+test_wrapper_preserves_literal_target_arguments_and_separate_admission_output (test_verify_browser_budget.BrowserBudgetVerifier.test_wrapper_preserves_literal_target_arguments_and_separate_admission_output) ... ok
+test_wrapper_refuses_cpu_commands_and_other_interpreters (test_verify_browser_budget.BrowserBudgetVerifier.test_wrapper_refuses_cpu_commands_and_other_interpreters) ... ok
+
+======================================================================
+FAIL: test_actual_main_wraps_all_53_native_suites_and_no_cpu_or_preflight_calls (test_verify_browser_budget.BrowserBudgetVerifier.test_actual_main_wraps_all_53_native_suites_and_no_cpu_or_preflight_calls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\07-GAMES\Firstlight\authoring\atlantis-harbour-campaign-20261004\tests\test_verify_browser_budget.py", line 183, in test_actual_main_wraps_all_53_native_suites_and_no_cpu_or_preflight_calls
+    self.assertEqual(command[command.index('--') + 1:], ['tools/masterwork_browser.py', '--both', '--output', str(logs.parent / 'native' / 'masterwork_browser')])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['too[105 chars]-browser-dispatch-zmzbjvj7\\logs\\browser\\masterwork_browser'] != ['too[105 chars]-browser-dispatch-zmzbjvj7\\native\\masterwork_browser']
+
+First differing element 3:
+'C:\\[50 chars]y-browser-dispatch-zmzbjvj7\\logs\\browser\\masterwork_browser'
+'C:\\[50 chars]y-browser-dispatch-zmzbjvj7\\native\\masterwork_browser'
+
+  ['tools/masterwork_browser.py',
+   '--both',
+   '--output',
+-  'C:\\Users\\Dom\\AppData\\Local\\Temp\\firstlight-verify-browser-dispatch-zmzbjvj7\\logs\\browser\\masterwork_browser']
+?                                                                                      ^^^^^^^^^^^ -
+
++  'C:\\Users\\Dom\\AppData\\Local\\Temp\\firstlight-verify-browser-dispatch-zmzbjvj7\\native\\masterwork_browser']
+?                                                                                      ^^^^^
+
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.319s
+
+FAILED (failures=1)
