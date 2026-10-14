@@ -37,7 +37,7 @@ function appFixture(){
   art:{update(){}},keys:new Set(),target:null,experience:null,sandbox:null,adventure:null,arsenal:null,fishing:null,rpg:null,
   lastFrame:0,frames:0,fpsStart:0,fps:0,elapsed:0,lastSave:0,lastUi:200,
   grazerLastInspect:-Infinity,grazerLastVisibility:{visible:true,phase:'walk',lower:0,at:100,parts:31,samples:4,span:{width:100,height:80},blocked:[]},
-  bindWildSignsClearance(){},tickConsignment(){},switchScene(){},updateCamera(){},syncFieldcraftOwner(){},consignmentPresentation(){},
+  bindWildSignsClearance(){},tickConsignment(){},gates:()=>({tick(){}}),switchScene(){},updateCamera(){},syncFieldcraftOwner(){},consignmentPresentation(){},
   updateLabels(){},audio:{tick(){}},requestAnimationFrame:f=>queued.push(f),refreshUI(){},save(){throw Error('No CPU host autosave expected');}};
  // The actual new RAF dependencies share native Core/Motion lease identity.
  Object.assign(h,{RealmAdventure:A,RealmBriarOuting:B});

@@ -89,7 +89,7 @@ def main(argv=None):
     report = dict(method=__doc__, family='bow' if args.bow else 'blade',
                   head=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
                   source=identity(), clean_source=not status().strip(),
-                  save_versions=dict(world=9, adventure=14, arsenal=1, earthTournament=1),
+                  save_versions=dict(world=9, adventure=15, arsenal=1, earthTournament=1),
                   checks=[], milestones={}, errors=[], browser_errors=[], external_requests=[],
                   resources=dict(context_closed=False, server_closed=False, profile_removed=False),
                   requested_renderer='software', quality='low', viewport=[1280, 800],

@@ -3,6 +3,7 @@
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict');
 const C=require('../src/core.js'),A=require('../src/adventure.js'),AR=require('../src/arsenal.js'),T=require('../src/combat.js'),E=require('../src/earth.js'),R=require('../src/earth-tournament.js');
+const {removeEmptyGate}=require('./helpers/earth-tournament-migration.cjs');
 const clone=x=>JSON.parse(JSON.stringify(x));
 function fresh(){const s=new C.Simulation();s.state.player={x:11,z:9,yaw:0};assert.equal(A.command(s,'kit','start').ok,true);
  s.room=E.ROOM;s.returnPos={x:0,z:23,yaw:0};s.state.player={x:5,z:-27.6,yaw:Math.PI};return s;}
@@ -75,10 +76,10 @@ test('explicit withdrawal is retryable and revokes the actor only after adoption
 });
 test('schema13 migration adds exactly the empty record at all XP boundaries',()=>{
  for(const xp of[0,29,30,79,80,149,150,259,260,9999]){
-  const old=fresh().snapshot();old.adventure.version=13;old.adventure.xp=xp;delete old.adventure.earthTournament;
+  const old=fresh().snapshot();old.adventure.version=13;old.adventure.xp=xp;removeEmptyGate(old.adventure);delete old.adventure.earthTournament;
   old.notes=[{text:'Synthetic migration boundary — preserve this notebook.',day:1}];const before=clone(old);
-  const upgraded=C.validate(old);assert.equal(upgraded.version,9);assert.equal(upgraded.adventure.version,14);assert.deepEqual(upgraded.adventure.earthTournament,R.fresh());
-  const normalized=clone(upgraded);normalized.adventure.version=13;delete normalized.adventure.earthTournament;
+  const upgraded=C.validate(old);assert.equal(upgraded.version,9);assert.equal(upgraded.adventure.version,15);assert.deepEqual(upgraded.adventure.earthTournament,R.fresh());
+  const normalized=clone(upgraded);normalized.adventure.version=13;removeEmptyGate(normalized.adventure);delete normalized.adventure.earthTournament;
   assert.deepEqual(normalized,before);assert.deepEqual(old,before);assert.equal(upgraded.adventure.xp,xp);
  }
 });

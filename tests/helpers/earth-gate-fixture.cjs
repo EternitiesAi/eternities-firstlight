@@ -1,0 +1,16 @@
+/* Labelled synthetic boundary positions and supplies. Actor motion uses actual
+ * Core ticks; this helper is not a command-earned or native player journey. */
+'use strict';
+const assert=require('node:assert/strict'),C=require('../../src/core.js'),A=require('../../src/adventure.js'),E=require('../../src/earth.js'),Gate=require('../../src/earth-gate.js');
+const active='SYNTHETIC-gate-owner',copy=o=>JSON.parse(JSON.stringify(o));
+function context(sim,current=()=>true){const state=sim.state;return{sim,active,definition:Gate.definition,ownerLease:sim.gateEscortOwnerLease,current:()=>sim.state===state&&current()};}
+function enter(sim){sim.state.player={...E.GATE,yaw:0};const ctx={sim,active,revision:sim.state.adventure.revision},p=E.preview(ctx);assert.ok(p.ok,p.error);const r=E.enter(p.ticket,ctx,{save:world=>({ok:!!C.validate(world)}),build:()=>{}});assert.ok(r.ok,r.error);sim.gateEscortOwnerLease=Object.freeze({});return sim;}
+function fixture(){const sim=new C.Simulation();sim.state.player={x:11,z:9,yaw:0};assert.ok(A.command(sim,'synthetic-gate-kit','start').ok);return enter(sim);}
+function place(sim,p){sim.state.player={x:p.x,z:p.z,yaw:0};assert.ok(E.walkable(p.x,p.z));}
+function call(sim,type,extra={},save=()=>({ok:true}),current=()=>true){const ctx=context(sim,current);return Gate.command(ctx,type,{quest:Gate.definition.id,expectedActive:active,expectedRevision:sim.state.adventure.revision,...extra},{save});}
+function readAll(sim){place(sim,Gate.definition.giver);assert.ok(call(sim,'accept').ok);for(const p of Gate.definition.evidence){place(sim,p);assert.ok(call(sim,'read',{evidence:p.id}).ok);}return sim;}
+function prepared(plan='inspection-lane'){const sim=readAll(fixture());assert.ok(call(sim,'choose',{plan}).ok);if(plan==='temporary-shelter'){sim.state.sandbox.inventory.wood=4;sim.state.sandbox.inventory.fiber=2;}place(sim,Gate.definition.plans[plan].prepare);assert.ok(call(sim,'prepare').ok);return sim;}
+function lead(sim){const v=Gate.motion.current(context(sim)),p=v.actors[1],near=[[0,2],[0,-2],[2,0],[-2,0]].map(([x,z])=>({x:p.x+x,z:p.z+z})).find(p=>E.walkable(p.x,p.z));assert.ok(near,'supported synthetic initial escort position');place(sim,near);const r=Gate.motion.begin(context(sim));assert.ok(r.ok,r.error);}
+function reach(sim){let frames=0,v=Gate.motion.current(context(sim));while(!v.ready&&frames++<1000){const p=sim.state.player,target=v.actors[1];if(Math.hypot(p.x-target.x,p.z-target.z)>2.2){if(E.segment(p,target,.31))sim.manual(target.x-p.x,target.z-p.z,.1);else{const walk=sim.moveTo(target.x,target.z);assert.ok(walk.ok,walk.error);}}sim.tick(.1);const before=JSON.stringify(sim.state),r=Gate.motion.tick(context(sim),.1);assert.ok(r.ok,r.error);assert.equal(JSON.stringify(sim.state),before,'motion cannot mutate a durable field');v=r.view;}assert.ok(v.ready&&frames<1000);return Gate.motion.arrivalTicket(context(sim)).ticket;}
+function finish(sim){lead(sim);while(!sim.state.adventure.earthGate.outcome){const ticket=reach(sim);const r=call(sim,'checkpoint',{ticket});assert.ok(r.ok,r.error);assert.equal(r.warning,undefined);}return sim;}
+module.exports={C,A,E,Gate,active,copy,context,enter,fixture,place,call,readAll,prepared,lead,reach,finish};

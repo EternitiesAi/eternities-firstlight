@@ -221,6 +221,10 @@ def require_initial_resume(root, before, after, capture, owner):
         old_adventure['earthTournament'] = {'version': 1, 'issued': 0, 'closed': 0,
             'best': {'blade': None, 'bow': None}, 'finished': {'blade': 0, 'bow': 0}}
         tournament_migration = 'adventure13-to14-empty-tournament1'
+    if isinstance(old_adventure, dict) and type(old_adventure.get('version')) is int and old_adventure['version'] == 14:
+        assert 'earthGate' not in old_adventure, 'Ambiguous pre-schema gate data cannot be discarded.'
+        old_adventure['version'] = 15
+        old_adventure['earthGate'] = {'version': 1, 'accepted': False, 'evidence': [], 'plan': None, 'prepared': False, 'checkpoint': 'camp', 'outcome': None, 'claimed': False}
     wild_signs_migration = None
     if 'earthWildSigns' not in before:
         expected['earthWildSigns'] = {'version': 1, 'accepted': False, 'evidence': [],

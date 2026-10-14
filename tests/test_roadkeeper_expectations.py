@@ -28,7 +28,7 @@ HELPER = ROOT / 'tools/earth_consignment_browser.py'
 # PR78 adds only the declared current-cohort Adventure12-to13 predicate.
 # SOURCE_EXPECTATIONS07 additionally declares only the 13-to14 predicate.
 # Parent review of that diff is explicit; independent review remains pending.
-DECLARED_CURRENT_HELPER = '6f3c12a17c616dd011578fbdf89913c84bf4f842712e174fcf0ac9692c8ea597'
+DECLARED_CURRENT_HELPER = '1dbb5132de45fb5afbcb6e0080a96383694a35f37b0f421d4bfca8c678247a57'
 WILD_SIGNS_HELPER = ROOT / 'tools/earth_wild_signs_browser.py'
 REVIEWED_WILD_SIGNS_HELPER = 'e8516952228fdd645ff7e92cb8983c93eb6f6e328d0c1a8962188d3b62e39e8a'
 spec = importlib.util.spec_from_file_location('roadkeeper_actual_source_epoch', ROOT / 'tools/road_account_browser.py')

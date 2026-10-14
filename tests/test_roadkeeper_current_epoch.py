@@ -17,7 +17,9 @@ ROOT = Path(__file__).resolve().parents[1]
 OLD = ROOT / 'tools/SOURCE_EXPECTATIONS04.json'
 PREVIOUS = ROOT / 'tools/SOURCE_EXPECTATIONS05.json'
 EPOCH06 = ROOT / 'tools/SOURCE_EXPECTATIONS06.json'
-CANDIDATE = ROOT / 'tools/SOURCE_EXPECTATIONS07.json'
+EPOCH07 = ROOT / 'tools/SOURCE_EXPECTATIONS07.json'
+CANDIDATE = ROOT / 'tools/SOURCE_EXPECTATIONS08.json'
+EPOCH08_PIN = '1dbb5132de45fb5afbcb6e0080a96383694a35f37b0f421d4bfca8c678247a57'
 EPOCH06_PIN = '10175f12c1c311b1c3e5c3ad11210b46c7d4c6edd26b8fc0fc378ef67727d59f'
 CURRENT_PIN = '6f3c12a17c616dd011578fbdf89913c84bf4f842712e174fcf0ac9692c8ea597'
 PINS = {
@@ -65,8 +67,8 @@ class ProspectiveEpoch(unittest.TestCase):
             self.assertEqual(after['helpersLF'][path], literal)
             actual = (ROOT / path).read_bytes().replace(b'\r\n',b'\n')
             if path == 'tools/earth_consignment_browser.py':
-                self.assertEqual(actual.count(b"get('version')!=14"),1)
-                actual = actual.replace(b"get('version')!=14",b"get('version')!=12")
+                self.assertEqual(actual.count(b"get('version')!=15"),1)
+                actual = actual.replace(b"get('version')!=15",b"get('version')!=12")
             self.assertEqual(hashlib.sha256(actual).hexdigest(),literal)
             after['helpersLF'][path] = before['helpersLF'][path]
         self.assertEqual(after, before, 'raw historical helpers/report/head/modules/App pins remain exact')
@@ -82,13 +84,13 @@ class ProspectiveEpoch(unittest.TestCase):
                          ("get('version')!=12","get('version')!=13",1))
         rel='tools/earth_consignment_browser.py'
         self.assertEqual(after['helpersLF'][rel],EPOCH06_PIN)
-        restored=(ROOT/rel).read_bytes().replace(b'\r\n',b'\n').replace(b"get('version')!=14",b"get('version')!=13")
+        restored=(ROOT/rel).read_bytes().replace(b'\r\n',b'\n').replace(b"get('version')!=15",b"get('version')!=13")
         self.assertEqual(hashlib.sha256(restored).hexdigest(),EPOCH06_PIN)
         after['helpersLF'][rel]=before['helpersLF'][rel]
         self.assertEqual(after,before,'Historical helper/module/App/report identities remain exact')
 
     def test_epoch07_changes_only_the_current_13_to14_predicate(self):
-        before,after=json.loads(EPOCH06.read_text()),json.loads(CANDIDATE.read_text())
+        before,after=json.loads(EPOCH06.read_text()),json.loads(EPOCH07.read_text())
         review=after.pop('source07Review')
         blob=subprocess.check_output(['git','-C',str(ROOT),'show','HEAD:tools/SOURCE_EXPECTATIONS06.json'])
         self.assertEqual(review['previousRawSHA256'],hashlib.sha256(blob).hexdigest())
@@ -96,12 +98,28 @@ class ProspectiveEpoch(unittest.TestCase):
         self.assertEqual((review['oldPredicate'],review['newPredicate'],review['occurrences']),("get('version')!=13","get('version')!=14",1))
         self.assertFalse(review['independentReview']);self.assertFalse(after['installationQualified'])
         rel='tools/earth_consignment_browser.py';actual=(ROOT/rel).read_bytes().replace(b'\r\n',b'\n')
-        self.assertEqual(actual.count(b"get('version')!=14"),1)
-        self.assertEqual(hashlib.sha256(actual.replace(b"get('version')!=14",b"get('version')!=13")).hexdigest(),EPOCH06_PIN)
-        self.assertEqual(after['helpersLF'][rel],CURRENT_PIN);self.assertEqual(DRIVER.lf_sha(ROOT/rel),CURRENT_PIN)
+        self.assertEqual(actual.count(b"get('version')!=15"),1)
+        self.assertEqual(hashlib.sha256(actual.replace(b"get('version')!=15",b"get('version')!=13")).hexdigest(),EPOCH06_PIN)
+        self.assertEqual(after['helpersLF'][rel],CURRENT_PIN);self.assertEqual(hashlib.sha256(actual.replace(b"get('version')!=15",b"get('version')!=14")).hexdigest(),CURRENT_PIN)
         after['helpersLF'][rel]=before['helpersLF'][rel];self.assertEqual(after,before)
         with self.assertRaisesRegex(ValueError,'Actual original browser helper text changed'):
             DRIVER.installed_epoch(ROOT,self.head,EPOCH06)
+
+    def test_epoch08_changes_only_the_declared_14_to15_predicate(self):
+        before, after = json.loads(EPOCH07.read_text()), json.loads(CANDIDATE.read_text())
+        review = after.pop('source08Review')
+        self.assertEqual(review['previousLFSHA256'], DRIVER.lf_sha(EPOCH07))
+        self.assertEqual(review['previousRawSHA256'], hashlib.sha256(subprocess.check_output(['git','-C',str(ROOT),'show','HEAD:tools/SOURCE_EXPECTATIONS07.json'])).hexdigest())
+        self.assertEqual((review['oldPredicate'],review['newPredicate'],review['occurrences']), ("get('version')!=14","get('version')!=15",1))
+        self.assertFalse(review['independentReview']);self.assertFalse(after['installationQualified'])
+        rel='tools/earth_consignment_browser.py';actual=(ROOT/rel).read_bytes().replace(b'\r\n',b'\n')
+        self.assertEqual(actual.count(b"get('version')!=15"),1)
+        self.assertEqual(hashlib.sha256(actual.replace(b"get('version')!=15",b"get('version')!=14")).hexdigest(),CURRENT_PIN)
+        self.assertEqual(DRIVER.lf_sha(ROOT/rel),EPOCH08_PIN)
+        self.assertEqual(after['helpersLF'][rel],EPOCH08_PIN)
+        after['helpersLF'][rel]=before['helpersLF'][rel];self.assertEqual(after,before)
+        with self.assertRaisesRegex(ValueError,'Actual original browser helper text changed'):
+            DRIVER.installed_epoch(ROOT,self.head,EPOCH07)
 
     def test_frozen_05_refuses_the_changed_current_version_predicate(self):
         with self.assertRaisesRegex(ValueError,'Actual original browser helper text changed'):

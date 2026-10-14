@@ -47,7 +47,7 @@ def validate_source(world, work='support'):
     expected = ['assess-load','prepare-allocation','read-water','clear-crossing','read-root-load','clear-root-pests']
     ledger = world.get('earthExpedition', {})
     story = ledger.get('story', {})
-    if world.get('version') !=9 or world.get('adventure', {}).get('version') !=14:
+    if world.get('version') !=9 or world.get('adventure', {}).get('version') !=15:
         raise ValueError('Current world9/adventure12 command-earned snapshot required')
     if work not in ['support','carrier']:raise ValueError('Unknown field-work mode')
     if work=='support':

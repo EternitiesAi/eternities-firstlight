@@ -653,7 +653,8 @@ console.log(JSON.stringify({trace,after:incoming.snapshot(),armed,runtimeSources
         result = copy.deepcopy(world)
         self.assertEqual(result['adventure']['version'], 12)
         self.assertNotIn('earthMasterwork', result['adventure'])
-        result['adventure']['version'] = 14
+        result['adventure']['version'] = 15
+        result['adventure']['earthGate'] = {'version': 1, 'accepted': False, 'evidence': [], 'plan': None, 'prepared': False, 'checkpoint': 'camp', 'outcome': None, 'claimed': False}
         result['adventure']['earthTournament'] = {'version':1,'issued':0,'closed':0,'best':{'blade':None,'bow':None},'finished':{'blade':0,'bow':0}}
         result['adventure']['earthMasterwork'] = {'version': 1, 'accepted': False,
             'evidence': [], 'compared': False, 'participation': None,

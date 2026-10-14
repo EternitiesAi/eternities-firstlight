@@ -79,6 +79,11 @@ def expected_optional_defaults(old):
             raise ValueError('Ambiguous pre-schema tournament data in historical input.')
         expected['adventure']['version'] = 14
         expected['adventure']['earthTournament'] = {'version': 1, 'issued': 0, 'closed': 0, 'best': {'blade': None, 'bow': None}, 'finished': {'blade': 0, 'bow': 0}}
+    if expected.get('adventure', {}).get('version') == 14:
+        if 'earthGate' in expected['adventure']:
+            raise ValueError('Ambiguous pre-schema gate data in historical input.')
+        expected['adventure']['version'] = 15
+        expected['adventure']['earthGate'] = {'version': 1, 'accepted': False, 'evidence': [], 'plan': None, 'prepared': False, 'checkpoint': 'camp', 'outcome': None, 'claimed': False}
     expected['earthHomecoming'] = json.loads(json.dumps(FRESH))
     if 'earthWildSigns' not in old:
         expected['earthWildSigns'] = {'version': 1, 'accepted': False, 'evidence': [], 'observed': False, 'resolution': None, 'cleared': False, 'claimed': False}

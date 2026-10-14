@@ -1,3 +1,44 @@
+# Gate Captain implementation in progress, 2026-10-14
+
+ROOT now owns `gameplay/earth-gate-captain-20261014`, based on PR81 head
+`950d733a1e714b4a06a6481594a726b5dc190981`. The separate grazer qualification
+checkout STATION remains frozen at d13d067 with its prior source cohorts. No
+other worker owns this checkout; both authorized Sol reviewers remain
+usage-limited. Do not replace or reroute them, touch the VM/Claude/personal
+saves, or change the separate paused heartbeat.
+
+ET08 is implemented in source: three physically moving travellers, inspection
+or a finite shelter repair, exact supported checkpoint arrival, explicit
+leading/waiting, menu pause, atomic save-before-adoption, explicit save retry,
+and a once-only 8-coin/up-to-15-XP fee. Journal, map invitations, E interaction,
+tracker, projected humanoids and modest lane/screen changes are wired. The
+canon and detailed contract are in `docs/development/EARTH_GATE_CAPTAIN_2026-10-14.md`.
+
+Adventure14 to15 deliberately adds only an empty earthGate1 record. World9 and
+browser keys stay unchanged. Ambiguous pre-schema data refuses; stored XP and
+old histories remain owned by their existing systems. Tests are being updated
+for the new declared schema without changing historical fixtures or evidence.
+
+Current evidence:49 focused CPU/controller/render/menu checks pass, and new
+command-earned blade, crafted-bow and Chapter-IV veteran journeys pass with
+zero position edits, material grants or planted objectives. Both outcomes,
+mid-escort cold reload and one-time payment are exercised. These use accelerated
+accepted ticks and an in-memory canonical saver, not native browser timing.
+The first assembled pages are identical3565334 bytes, SHA256
+`eb0f8bd9aaee6ecd9ecb8ca1844568b85aedc9077a617aac1b3278c95478bb77`.
+The broader rule gate is currently being checked; no current full source or
+native success is claimed. Live status and terminal receipts override this note.
+
+Next: complete schema compatibility checks, native visible-control/persistence
+qualification, exact pushed review branch and remote evidence. Do not call the
+quest delivered, the wider browser gate passed, or the whole game complete.
+All earlier grazer native RAM refusals and older WildSigns timeout remain open.
+Use fresh6,291,456KiB admission, serial browsers, original deadlines and bounded
+D storage. No new full copies, cleanup, blocked-deletion retry, main merge,
+deployment or billing changes.
+
+---
+
 # Connected grazer source qualified; browser admission pending, 2026-10-14
 
 ROOT owns `gameplay/blender-moss-grazer-20261014`, draft PR81 stacked on PR80's

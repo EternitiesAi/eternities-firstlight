@@ -54,36 +54,36 @@ Motion interface: `begin(ctx)`, `tick(ctx,dt)`, `current(ctx)`,
 Command interface: `command(ctx,type,payload,io)`, with exact character/revision
 fences and `io.save(candidate)`; only a branded physical ticket permits checkpoint.
 
-- [ ] Start from actual Core simulations with command-earned initial kits.
+- [x] Start from actual Core simulations with command-earned initial kits.
   Reject `command(ctx,'checkpoint',{ticket:{}},io)` without a write.
-- [ ] Add strict migration, candidate validation and selective adoption. Verify
+- [x] Add strict migration, candidate validation and selective adoption. Verify
   insufficient supplies, 9,999-coin capacity, double claim, async/throw/quota/
   mutation/owner-switch refusals and every partial save/reload state.
-- [ ] Advance all three actors at bounded actual dt on supported segments. Verify
+- [x] Advance all three actors at bounded actual dt on supported segments. Verify
   `distance(next,prior)<=speed*dt`, pause/far waits, stale ticket/owner/death/travel
   invalidation, and exact checkpoint respawn with no fabricated arrival.
-- [ ] Test the command and motion callers together; claims follow actual escort.
+- [x] Test the command and motion callers together; claims follow actual escort.
 
 ## 3. Playable host, readable choices and visible consequences
 
 Files: `src/earth-gate-ui.js`, `src/earth-gate-art.js`, `src/app.js`,
 `src/rpg-ui.js`, `src/world.js`, `src/shell.html`, `build.py`, targeted host tests.
 
-- [ ] Wire current-character commands and actual App ticks. Retain reached motion
+- [x] Wire current-character commands and actual App ticks. Retain reached motion
   on save refusal; expose retry rather than silently moving the saved checkpoint.
-- [ ] Present entry, evidence, exact costs/reward, choice, lead/resume/waiting,
+- [x] Present entry, evidence, exact costs/reward, choice, lead/resume/waiting,
   retry, outcome and fee through the existing Journal/Map/E interaction paths.
-- [ ] Draw three actual projected travellers and distinct final lane/screen using
+- [x] Draw three actual projected travellers and distinct final lane/screen using
   existing humanoid/primitive APIs. Keep navigation clear, quiet motion supported
   and both cameras available. No reward or waypoint from a render callback.
-- [ ] Regenerate identical HTML after integration and verify missing-module refusal.
+- [x] Regenerate identical HTML after integration and verify missing-module refusal.
 
 ## 4. Earned journeys, regression and delivery
 
 Files: `tests/gate_captain_journey.cjs`, `tools/gate_captain_browser.py`,
 `tools/verify.py`, focused browser contract tests, continuity/evidence records.
 
-- [ ] Command-earn fresh blade, crafted bow and completed-story veteran cases;
+- [x] Command-earn fresh blade, crafted bow and completed-story veteran cases;
   follow both supported paths and preserve complete unrelated state. Save/reload
   after preparation, a middle checkpoint, arrival and payment.
 - [ ] Verify real UI/ordinary movement, group pixels, both cameras and whole

@@ -19,7 +19,9 @@ const RC=G.RealmCraft||(typeof require==='function'?require('./realm-craft.js'):
 const EE=G.RealmEarthExpedition||(typeof require==='function'?require('./earth-expedition.js'):null);
 const MW=G.RealmEarthMasterwork||(typeof require==='function'?require('./earth-masterwork.js'):null);
 const TR=G.RealmEarthTournament||(typeof require==='function'?require('./earth-tournament.js'):null);
-const VERSION=14,CELL=2,LIMIT=7,REACH=2.8,dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
+const GT=G.RealmEarthGate||(typeof require==='function'?require('./earth-gate.js'):null);
+if(!GT)throw Error('Load gate captain rules before adventure saves.');
+const VERSION=15,CELL=2,LIMIT=7,REACH=2.8,dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 const MINE={id:'mine',name:'The Rootbound Underways',x:0,z:-48},ENTRANCE={x:0,z:11,yaw:Math.PI},FOX={x:-8,z:2},RELIC={x:9,z:-10};
 const GEAR=Object.freeze({
  ...AR.GEAR,...CROSS.GEAR,...Q.GEAR,
@@ -46,7 +48,7 @@ function mineral(x,z){return!initialFloor(x,z)&&((x*13+z*7)%5===0||x<=-3&&z<=-2)
 function wallHP(x,z){return mineral(x,z)?3:2;}
 function walkable(s,x,z,r=.31){if(!s||!Number.isFinite(x)||!Number.isFinite(z))return false;for(const[dx,dz]of[[-r,-r],[-r,r],[r,-r],[r,r],[0,0]]){const c=cellAt(x+dx,z+dz);if(!isFloor(s,c.gx,c.gz))return false;}return true;}
 function line(s,a,b){const n=Math.ceil(dist(a,b)/.18);for(let i=0;i<=n;i++){const t=n?i/n:0;if(!walkable(s,a.x+(b.x-a.x)*t,a.z+(b.z-a.z)*t,.04))return false;}return true;}
-function fresh(){return{version:VERSION,earthTournament:TR.fresh(),earthMasterwork:MW.fresh(),earthBinding:EE.freshBinding(),realmCraft:RC.fresh(),earthGathering:EG.fresh(),earthNotes:EN.fresh(),earthStory:ES.fresh(),classPath:K.fresh(),pursuit:H.fresh(),starter:Q.fresh(),crossing:CROSS.fresh(),beacon:B.fresh(),arsenal:AR.fresh(),road:ROAD.fresh(),elapsed:0,revision:0,started:false,dug:[],chips:[],defeated:[],drops:[],ore:0,coins:0,xp:0,hp:100,stamina:100,tonics:3,equipment:{weapon:null,armor:null,charm:null},owned:[],companion:{bonded:false,name:'Briar',mode:'follow'},relic:false,angelSeen:false,reward:null,deaths:0,receipts:[]};}
+function fresh(){return{version:VERSION,earthGate:GT.fresh(),earthTournament:TR.fresh(),earthMasterwork:MW.fresh(),earthBinding:EE.freshBinding(),realmCraft:RC.fresh(),earthGathering:EG.fresh(),earthNotes:EN.fresh(),earthStory:ES.fresh(),classPath:K.fresh(),pursuit:H.fresh(),starter:Q.fresh(),crossing:CROSS.fresh(),beacon:B.fresh(),arsenal:AR.fresh(),road:ROAD.fresh(),elapsed:0,revision:0,started:false,dug:[],chips:[],defeated:[],drops:[],ore:0,coins:0,xp:0,hp:100,stamina:100,tonics:3,equipment:{weapon:null,armor:null,charm:null},owned:[],companion:{bonded:false,name:'Briar',mode:'follow'},relic:false,angelSeen:false,reward:null,deaths:0,receipts:[]};}
 function level(s){return 1+[30,80,150,260].filter(n=>s.xp>=n).length;}
 function stats(s){let l=level(s),o={level:l,attack:4+(l-1)*2,defense:0,maxHP:100+(l-1)*10};for(const id of Object.values(s.equipment)){const g=GEAR[id];if(g){o.attack+=g.attack+Q.bonus(s,id)+H.bonus(s,id)+RC.bonus(s,id);const binding=EE.bonus(s,id);o.attack+=binding.attack;o.defense+=g.defense+binding.defense;o.maxHP+=g.hp+binding.maxHP;}}const gem=AR.activeGem(s);if(gem){o.attack+=gem.attack;o.maxHP+=gem.hp;}return o;}
 function validate(raw){
@@ -64,6 +66,7 @@ function validate(raw){
  if(raw&&raw.version===11)raw={...raw,version:12,earthBinding:EE.freshBinding()};
  if(raw&&raw.version===12)raw={...raw,version:13,earthMasterwork:Object.hasOwn(raw,'earthMasterwork')?raw.earthMasterwork:MW.fresh()};
  if(raw&&raw.version===13){if('earthTournament' in raw)throw Error('Ambiguous pre-schema tournament data. Keep this export for review.');raw={...raw,version:14,earthTournament:TR.fresh()};}
+ if(raw&&raw.version===14){if('earthGate' in raw)throw Error('Ambiguous pre-schema gate data. Keep this export for review.');raw={...raw,version:15,earthGate:GT.fresh()};}
  const no=f=>{throw Error('Invalid adventure: '+f);};if(!raw||raw.version!==VERSION)no('version');const s=fresh();
  for(const k of['elapsed','hp','stamina']){if(!Number.isFinite(raw[k])||raw[k]<0||raw[k]>1e9)no(k);s[k]=raw[k];}
  for(const k of['revision','ore','coins','xp','tonics','deaths']){if(!Number.isSafeInteger(raw[k])||raw[k]<0||raw[k]>(k==='revision'?1e9:9999))no(k);s[k]=raw[k];}
@@ -80,6 +83,7 @@ function validate(raw){
  if(raw.reward!==null&&!['dawn_edge','warden_stone'].includes(raw.reward))no('reward');s.reward=raw.reward;
  if(s.relic&&!s.defeated.includes('hart')||s.angelSeen&&!s.relic||s.reward&&(!s.angelSeen||!s.owned.includes(s.reward)))no('story prerequisites');
  if(!s.started&&(s.defeated.length||s.dug.length||s.companion.bonded||s.relic||s.owned.length))no('unstarted progression');
+ s.earthGate=GT.validate(raw.earthGate,s);
  s.earthTournament=TR.validate(raw.earthTournament,s);
  s.earthMasterwork=MW.validate(raw.earthMasterwork,s,GEAR);
  s.realmCraft=RC.validate(raw.realmCraft,s,GEAR);
