@@ -448,6 +448,9 @@ def main():
     run('starter-blade', ['node', 'tests/starter_journey.cjs'])
     run('starter-bow', ['node', 'tests/starter_journey.cjs', '--bow'])
     run('starter-veteran', ['node', 'tests/starter_veteran.cjs'])
+    for family in ('blade', 'bow', 'veteran'):
+        run('masterwork-' + family, ['node', 'tests/masterwork_journey.cjs'] + ([] if family == 'blade' else ['--' + family]),
+            extra_env={'FIRSTLIGHT_MASTERWORK_OUTPUT': str(output / 'masterwork-earned')})
     run('pursuit-blade', ['node', 'tests/pursuit_journey.cjs'])
     run('pursuit-bow', ['node', 'tests/pursuit_journey.cjs', '--bow'])
     run('pursuit-veteran', ['node', 'tests/pursuit_journey.cjs', '--veteran'])
@@ -563,6 +566,8 @@ def main():
         '--whole-draft-report', str(whole_draft_output / 'WHOLE_DRAFT_JOURNEY_REPORT.json'),
         '--output', str(whole_draft_output.parent / 'briar-earned')], extra_env={'FIRSTLIGHT_ROOT': str(ROOT)})
     if args.browser:
+        run('masterwork_browser', [sys.executable, 'tools/masterwork_browser.py', '--both',
+            '--output', str(args.browser_output / 'masterwork_browser')], timeout=600, native=True)
         # Separate native gate, bound to the exact cohort earned above. Only
         # this new command receives its own bounded 30-minute allowance.
         earth_browser_output = ((args.browser_output / 'earth_homecoming_browser')

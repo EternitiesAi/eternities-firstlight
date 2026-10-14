@@ -43,7 +43,11 @@ function validate(raw,a){const bad=m=>{throw Error('Invalid arsenal: '+m);};if(!
  if(a&&!a.started&&(s.rangeMedal||Object.values(s.gems).some(Boolean)||Object.keys(s.sockets).length))bad('unstarted');return s;
 }
 function activeGem(a){const id=a.arsenal?.sockets[a.equipment.weapon];return has(GEMS,id)?GEMS[id]:null;}
-function weapon(a){const gear=G.RealmAdventure?.GEAR||GEAR;const id=a.equipment.weapon;const bow=has(gear,id)&&gear[id].slot==='weapon'&&gear[id].style==='bow';return{style:bow?'bow':'blade',reach:bow?11:2.65,cooldown:bow?.75:.52,stamina:bow?6:0,primary:bow?'Loose arrow':'Sunstrike',special:bow?'Piercing light':'Dawn sweep'};}
+function specialProfile(a,{weapon=a.equipment.weapon,learned}={}){const gear=G.RealmAdventure?.GEAR||GEAR,bow=has(gear,weapon)&&gear[weapon].style==='bow',q=a.earthMasterwork;
+ const active=learned===undefined?!!(q?.resolution&&q.weapon===weapon&&q.enabled):learned===true;
+ return Object.freeze({id:active?(bow?'quick-draw':'measured-cut'):(bow?'piercing-light':'dawn-sweep'),name:active?(bow?'Quick draw':'Measured cut'):(bow?'Piercing light':'Dawn sweep'),label:active?(bow?'Quick draw':'Cut'):(bow?'Pierce':'Sweep'),learned:active,cost:active?(bow?12:16):30,cooldown:active?3.2:5.5,multiplier:active?(bow?1.35:1.25):(bow?1.65:1.5),reach:bow?11:active?2.65:3.6,targets:active?'single':bow?'piercing':'radial',pierce:bow&&!active?2:1});
+}
+function weapon(a){const gear=G.RealmAdventure?.GEAR||GEAR;const id=a.equipment.weapon;const bow=has(gear,id)&&gear[id].slot==='weapon'&&gear[id].style==='bow';return{style:bow?'bow':'blade',reach:bow?11:2.65,cooldown:bow?.75:.52,stamina:bow?6:0,primary:bow?'Loose arrow':'Sunstrike',special:specialProfile(a).name};}
 function rangeWalkable(x,z,r=.31){return Number.isFinite(x)&&Number.isFinite(z)&&Math.abs(x)<14-r&&Math.abs(z)<13-r&&![...RANGE.pillars,...RANGE.scenery].some(p=>p.r!==undefined?Math.hypot(x-p.x,z-p.z)<p.r+r:Math.abs(x-p.x)<p.w/2+r&&Math.abs(z-p.z)<p.d/2+r);}
 function targetPose(def,t){return{...def,x:def.x+(def.id==='range-east'?Math.sin(t*.7)*1.8:0),z:def.z};}
 function projectileGround(sim,x,z){
@@ -77,17 +81,19 @@ function practiceHit(sim,e){const a=sim.state.adventure,r=runtime(sim),q=r.range
  if(first){a.coins+=5;a.arsenal.gems.amber++;G.RealmAdventure.notify(sim,'First archery medal · 5 sunmarks and a Wildwood amber.');sim.event('practice','You earned your first range medal. Repeats improve the time, not the payout.');}
  a.revision++;
 }
-function shoot(sim,type,payload={}){const A=G.RealmAdventure,a=sim.state.adventure,r=runtime(sim),p=sim.state.player,w=weapon(a),special=type==='pulse',cost=special?30:w.stamina,cool=special?'pulse':'attack';
+function shoot(sim,type,payload={}){const A=G.RealmAdventure,a=sim.state.adventure,r=runtime(sim),p=sim.state.player,w=weapon(a),form=specialProfile(a),special=type==='pulse',cost=special?form.cost:w.stamina,cool=special?'pulse':'attack';
  const fail=error=>({ok:false,error});if(!A.combatScene(sim)||!a.started||w.style!=='bow')return fail('Equip a bow in an expedition or practice court.');
  if(a.elapsed<r.cooldowns[cool])return fail('The bow is recovering.');if(a.stamina<cost)return fail('The bow needs '+cost+' stamina.');if(r.arrows.length>=24)return fail('Too many arrows in flight.');
  const reachable=e=>e.hp>0&&!e.hidden&&Math.hypot(e.x-p.x,e.z-p.z)<w.reach&&aimClear(sim,p,e);
- const target=payload.target?r.enemies.find(e=>e.id===payload.target&&reachable(e)):r.enemies.filter(reachable).sort((a,b)=>Math.hypot(a.x-p.x,a.z-p.z)-Math.hypot(b.x-p.x,b.z-p.z))[0];
+ const selected=payload.target||(special&&form.learned?G.RealmCombat.runtime(sim).target:null);
+ if(special&&form.learned&&!selected)return fail('Select a clear target before Quick draw.');
+ const target=selected?r.enemies.find(e=>e.id===selected&&reachable(e)):r.enemies.filter(reachable).sort((a,b)=>Math.hypot(a.x-p.x,a.z-p.z)-Math.hypot(b.x-p.x,b.z-p.z))[0];
  if(!target)return fail('Choose a clear target within 11 paces.');
  const d=Math.hypot(target.x-p.x,target.z-p.z);if(d<.03)return fail('Step back before drawing.');
- a.stamina-=cost;r.cooldowns[cool]=a.elapsed+(special?5.5:w.cooldown);p.yaw=Math.atan2(target.x-p.x,target.z-p.z);
- r.arrows.push({id:'arrow-'+a.revision,room:sim.room,x:p.x,z:p.z,dx:(target.x-p.x)/d,dz:(target.z-p.z)/d,left:13,age:0,damage:Math.round(A.stats(a).attack*(special?1.65:1)),pierce:special?2:1,hit:[],special,color:activeGem(a)?.color??0xe6c78c});
+ a.stamina-=cost;r.cooldowns[cool]=a.elapsed+(special?form.cooldown:w.cooldown);p.yaw=Math.atan2(target.x-p.x,target.z-p.z);
+ r.arrows.push({id:'arrow-'+a.revision,room:sim.room,x:p.x,z:p.z,dx:(target.x-p.x)/d,dz:(target.z-p.z)/d,left:13,age:0,damage:Math.round(A.stats(a).attack*(special?form.multiplier:1)),pierce:special?form.pierce:1,hit:[],special,technique:special?form.id:null,color:activeGem(a)?.color??0xe6c78c});
  r.lastShot=a.elapsed;r.aimYaw=p.yaw;if(sim.room==='range'&&r.range.active)r.range.shots++;
- return{ok:true,text:special?'Piercing light · two targets in its path':'Arrow released'};
+ return{ok:true,text:special?form.name+(form.pierce===2?' · two targets in its path':' · first body in its path'):'Arrow released'};
 }
 function update(sim,dt){const A=G.RealmAdventure,a=sim.state.adventure,r=runtime(sim);if(sim.paused||!Number.isFinite(dt)||dt<0)return;
  if(r.room==='range'){for(const e of r.enemies){const def=RANGE.targets.find(q=>q.id===e.id);if(def){const pos=targetPose(def,a.elapsed);e.x=pos.x;e.z=pos.z;}}
@@ -95,8 +101,10 @@ function update(sim,dt){const A=G.RealmAdventure,a=sim.state.adventure,r=runtime
  }
  const keep=[];
  for(const shot of r.arrows){if(shot.room!==sim.room||a.hp<=0)continue;const step=Math.min(shot.left,dt*22),end={x:shot.x+shot.dx*step,z:shot.z+shot.dz*step},hit=trace(shot,end,r.enemies,(x,z)=>projectileGround(sim,x,z),shot.hit);let stopped=false;
-  for(const {e,u}of hit.hits){const denied=e.earthHomecoming&&!G.RealmEarthHomecoming.canDamage(sim,e)||e.cosmosCampaign&&!G.RealmCosmosCampaign.canDamage(sim,e)||e.atlantisCampaign&&!G.RealmAtlantisCampaign.canDamage(sim,e)||e.heavenCampaign&&!G.RealmHeavenCampaign.canDamage(sim,e)||e.hellCampaign&&!G.RealmHellCampaign.canDamage(sim,e)||e.trailQuest&&!G.RealmTrails.canDamage(sim,e);shot.hit.push(e.id);shot.pierce--;if(e.kind==='practice'&&sim.room!=='riverbank')practiceHit(sim,e);else{A.damageEnemy(sim,e,shot.damage,'weapon');e.awareness=a.elapsed+3;e.lastKnown={x:sim.state.player.x,z:sim.state.player.z};}
-   A.fx(sim,denied?'arrow-wall':'arrow-hit',shot.x+(end.x-shot.x)*u,shot.z+(end.z-shot.z)*u,shot.color);
+  for(const {e,u}of hit.hits){shot.hit.push(e.id);shot.pierce--;let landed;
+   if(e.kind==='practice'&&sim.room!=='riverbank'){practiceHit(sim,e);landed=true;}else landed=A.damageEnemy(sim,e,shot.damage,'weapon')===true;
+   if(landed){e.awareness=a.elapsed+3;e.lastKnown={x:sim.state.player.x,z:sim.state.player.z};}
+   A.fx(sim,landed?'arrow-hit':'arrow-wall',shot.x+(end.x-shot.x)*u,shot.z+(end.z-shot.z)*u,shot.color);
    if(shot.pierce<=0){stopped=true;break;}}
   if(!stopped&&hit.wall!==null){A.fx(sim,'arrow-wall',shot.x+(end.x-shot.x)*hit.wall,shot.z+(end.z-shot.z)*hit.wall,0xb4bab0);stopped=true;}
   shot.x=end.x;shot.z=end.z;shot.left-=step;shot.age+=dt;if(!stopped&&shot.left>1e-5&&shot.age<2)keep.push(shot);
@@ -128,5 +136,5 @@ function handle(sim,type,payload){const A=G.RealmAdventure,a=sim.state.adventure
  default:return null;
  }
 }
-G.RealmArsenal={VERSION,MAX,RANGE,GEAR,GEMS,RECIPES,fresh,validate,activeGem,weapon,rangeWalkable,targetPose,atBench,projectileGround,aimClear,segmentCircle,trace,runtime,practiceHit,shoot,update,handle};if(typeof module!=='undefined')module.exports=G.RealmArsenal;
+G.RealmArsenal={VERSION,MAX,RANGE,GEAR,GEMS,RECIPES,fresh,validate,activeGem,special:specialProfile,weapon,rangeWalkable,targetPose,atBench,projectileGround,aimClear,segmentCircle,trace,runtime,practiceHit,shoot,update,handle};if(typeof module!=='undefined')module.exports=G.RealmArsenal;
 })(globalThis);

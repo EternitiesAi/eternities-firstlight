@@ -16,8 +16,8 @@ V = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(V)
 
 # Independent expected membership: six direct native controllers, four campaign
-# callers and the complete forty-two-suite loop. These are not CPU preflights.
-NATIVE_SUITES = frozenset('''earth_homecoming_browser onboarding_browser
+# callers and the complete forty-two-suite loop, plus the two-family masterwork gate. These are not CPU preflights.
+NATIVE_SUITES = frozenset('''masterwork_browser earth_homecoming_browser onboarding_browser
 earth_consignment_browser earth_wild_signs_browser earth_wild_signs_boundaries_browser
 road_account_browser cosmos_campaign_browser atlantis_campaign_browser
 heaven_campaign_browser hell_campaign_browser earth_road_browser
@@ -168,10 +168,10 @@ class BrowserBudgetVerifier(unittest.TestCase):
                 else: V.main()
             return calls, root, logs, temp
 
-    def test_actual_main_wraps_all_52_native_suites_and_no_cpu_or_preflight_calls(self):
+    def test_actual_main_wraps_all_53_native_suites_and_no_cpu_or_preflight_calls(self):
         calls, root, logs, temp = self.dispatch()
         wrapped = [(c, k) for c, k in calls if c[1:2] == [str(root / 'tools/browser_budget.py')]]
-        self.assertEqual(len(wrapped), 52)
+        self.assertEqual(len(wrapped), 53)
         suites = [Path(c[c.index('--') + 1]).stem for c, _ in wrapped]
         self.assertEqual(len(suites), len(set(suites))); self.assertEqual(set(suites), NATIVE_SUITES)
         for command, kwargs in wrapped:
@@ -179,6 +179,8 @@ class BrowserBudgetVerifier(unittest.TestCase):
             self.assertEqual(command[command.index('--root') + 1], str(root))
             self.assertEqual(command[command.index('--output') + 1], str(logs / 'browser-admission' / suite))
             self.assertEqual(command[command.index('--temp-dir') + 1], str(temp))
+            if suite == 'masterwork_browser':
+                self.assertEqual(command[command.index('--') + 1:], ['tools/masterwork_browser.py', '--both', '--output', str(logs / 'browser' / 'masterwork_browser')])
             expected = {'earth_homecoming_browser': 1800, 'earth_consignment_browser': 7200,
                 'earth_wild_signs_browser': 1800, 'earth_wild_signs_boundaries_browser': 1800,
                 'road_account_browser': 3700}
@@ -206,7 +208,8 @@ class BrowserBudgetVerifier(unittest.TestCase):
                 calls, root, _, _ = self.dispatch(refusal=refusal)
                 wrapped = [c for c, _ in calls if c[1:2] == [str(root / 'tools/browser_budget.py')]]
                 self.assertEqual(len(wrapped), 1)
-                self.assertEqual(Path(wrapped[0][wrapped[0].index('--') + 1]).stem, 'earth_homecoming_browser')
+                self.assertEqual(Path(wrapped[0][wrapped[0].index('--') + 1]).stem, 'masterwork_browser')
+                self.assertIn('--both', wrapped[0])
 
 
 if __name__ == '__main__':

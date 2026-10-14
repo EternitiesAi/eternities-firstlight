@@ -42,7 +42,7 @@ test('adventure 10 and missing optional trails preserve all ten XP boundaries an
   const raw=kit().snapshot();raw.adventure.version=10;delete raw.adventure.realmCraft;delete raw.realmTrails;
   raw.adventure.xp=boundaries[i];raw.notes=[{text:'Synthetic returning notebook',day:1}];raw.score.title='A kept melody';raw.retreat.wall='rose';
   const before=copy(raw),out=C.validate(raw);assert.deepEqual(raw,before,'migration cannot mutate its source');
-  assert.equal(C.VERSION,9);assert.equal(out.adventure.version,12);assert.equal(out.adventure.xp,boundaries[i]);assert.equal(A.level(out.adventure),levels[i]);
+  assert.equal(C.VERSION,9);assert.equal(out.adventure.version,13);assert.equal(out.adventure.xp,boundaries[i]);assert.equal(A.level(out.adventure),levels[i]);
   assert.deepEqual(out.realmTrails,R.fresh());assert.deepEqual(out.adventure.realmCraft,RC.fresh());
   const originalAdventure=copy(raw.adventure),migratedAdventure=copy(out.adventure);delete originalAdventure.version;delete migratedAdventure.version;delete migratedAdventure.realmCraft;assert.deepEqual(migratedAdventure,originalAdventure);
   for(const key of Object.keys(raw).filter(k=>k!=='adventure'))assert.deepEqual(out[key],raw[key],key);

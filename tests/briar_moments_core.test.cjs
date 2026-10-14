@@ -4,7 +4,7 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 const C=require('../src/core.js'),B=require('../src/briar-moments.js'),copy=o=>JSON.parse(JSON.stringify(o));
 test('the real world factory retains an empty distinct Briar owner',()=>{
- const s=C.fresh();assert.deepEqual(s.briarMoments,B.fresh());assert.equal(s.version,9);assert.equal(s.adventure.version,12);
+ const s=C.fresh();assert.deepEqual(s.briarMoments,B.fresh());assert.equal(s.version,9);assert.equal(s.adventure.version,13);
 });
 test('real Core accepts a missing legacy owner without shared-history backfill',()=>{
  const old=C.fresh();delete old.briarMoments;const kept=C.validate(old);assert.deepEqual(kept.briarMoments,B.fresh());
