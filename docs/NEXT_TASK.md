@@ -1,3 +1,23 @@
+# Run the prepared exhibition caller when the owned gate closes, 2026-10-14
+
+1. Observe existing exec8043 and its MASTERWORK_FULL01_EXIT.json terminal receipt.
+   It still owns STATION at88b30bf and serial browser time. Do not cancel/restart
+   it because of buffered output. Consignment is progressing through veteran
+   routes after the fresh blade/bow cases; all later suites still count.
+2. Inspect the terminal outcome and repair real failures. Then reuse the clean
+   STATION at the exact fetched heads, qualifying PR79 woodland first and PR80's
+   new `tools/tournament_browser.py --both --output <fresh bounded D evidence>`
+   through browser_budget.py. Native controls and screenshots must actually be
+   observed; the caller's three passing CPU tests are not browser qualification.
+3. Finish current-head complete source/relevant native verification and exact
+   remote reproducibility, preserving original deadlines and all negatives.
+   Only after inspecting real frames decide on one short useful ordinary-RAF
+   clip. No new full copy, duplicate clip or personal profile. Independent
+   reviewers remain usage-limited; do not reroute. Human/GPU acceptance stays
+   separate. Continue the broader production goal after this playable gate.
+
+---
+
 # Rain exhibition source checkpoint and repaired admission, 2026-10-14
 
 Runtime is committed at `01b44ae4e840d8ab17508d3216982558e239b19b` on

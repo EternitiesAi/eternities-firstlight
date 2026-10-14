@@ -1,3 +1,20 @@
+# Rain exhibition native caller prepared, not executed, 2026-10-14
+
+ROOT remains on PR80 `gameplay/tournament-after-rain-20261013`. The new
+`tools/tournament_browser.py` is registered in the browser verifier and has
+three passing CPU evidence-boundary tests. It has NOT allocated a browser or
+produced a native pass, screenshot or movie. Read the task note's caller section.
+The source/HTML runtime is unchanged from dfb4842; the full gate in frozen
+STATION at88b30bf remains genuinely live under exec8043, now on the veteran
+consignment cases after fresh blade/bow routes. Do not overlap browser work,
+touch STATION, restart the gate, or relaunch the usage-limited reviewers.
+After its terminal receipt, inspect the result and qualify the prepared PR79
+woodland and PR80 exhibition callers serially from exact fetched source. Keep
+the6GiB floor, existing deadlines, storage/VM/Claude boundaries, every negative
+receipt and the paused heartbeat. All production/human acceptance remains open.
+
+---
+
 # Rain exhibition source checkpoint and repaired admission, 2026-10-14
 
 Runtime is committed at `01b44ae4e840d8ab17508d3216982558e239b19b` on

@@ -1,3 +1,22 @@
+# Exhibition browser checks prepared, 2026-10-14
+
+PR80 now includes a bounded native caller for the actual steward UI, both weapon
+families, guarded gold result, deliberate early-contact/movement replay,
+interrupted entry recovery, both cameras, quiet pennant, other-owner preservation
+and exact whole-browser stored-byte restart. It uses accepted accelerated ticks
+with ordinary RAF disabled and records four small screenshots per family when
+run. It creates no movie and makes no human pacing or GPU claim. Three CPU
+evidence-boundary tests pass; the browser route itself has NOT run.
+
+The runtime and identical3,485,103-byte HTML pair are unchanged at SHA256
+d8266f395b46c766c7197c12b84660fb59c778a7b32cc8926b0c2002affff698. Frozen STATION's
+older88b30bf full gate remains live (exec8043, consignment); no second browser or
+full checkout was created. Current-source complete verification, actual native
+acceptance, exact fresh remote qualification, independent review and human feel
+remain pending. See the task note for concrete execution and retained receipts.
+
+---
+
 # Rain exhibition source checkpoint and repaired admission, 2026-10-14
 
 Runtime is committed at `01b44ae4e840d8ab17508d3216982558e239b19b` on

@@ -1,3 +1,16 @@
+# ET07 qualification keeps controlled input and pacing separate, 2026-10-14
+
+Use a dedicated serial native route for visible steward decisions, actual
+combat contacts, both camera styles and whole Chromium restart. Controlled
+accepted ticks make timing boundaries reproducible; they cannot substantiate
+human pacing or GPU performance. Report the actual software renderer, clean
+source/head, full stored-byte equality, retained world, external requests,
+resource closure and incomplete route milestones. Missing milestones cannot
+pass just because earlier assertions succeeded. Keep source receipts separate
+from browser evidence, and do not allocate against the currently owned full gate.
+
+---
+
 # ET07 is a local skill exhibition with finite distinctions, 2026-10-14
 
 Follow the supplied Earth event atlas’s civic tournament: declared rules, honest participation and distinction earned by accepted outcomes. The current bounded realization is a mechanical practice-post exhibition, not simulated online opponents. Three defense/reply pairs produce0–6 points. Blade and bow use existing uniform family primary reach/cadence, retain all gear, sockets and upgrades, and compete in separate personal records. No damage-based scoring, forced class, item payout, XP change or entry fee.

@@ -159,3 +159,39 @@ stay in the reused D evidence root. No additional full game, movie or profile.
 The native caller remains to be prepared. Actual event footage, complete verifier,
 serial native acceptance, exact fresh remote, independent review and human feel
 remain open. PR79 app attachment timed out; its GitHub PR remains open/draft.
+
+### Native caller prepared, not executed (2026-10-14)
+
+`tools/tournament_browser.py --both --output <fresh bounded D directory>` now
+defines serial fresh blade and genuinely crafted bow cases. It follows visible
+terms/observation, an interrupted accepted run and explicit withdrawal, a6-point
+guarded result, a deliberate3-point movement replay with early contact, retained
+medals and two whole Chromium restarts per family. It checks whole saved-world
+equality as well as the exact bytes observed before cold startup. Both V-selected
+cameras, HUD clearance and reduced-motion pennant have explicit checks. Native
+event commands use UI buttons and Tab/F/3; travel/movement and phase advance use
+accepted production moveTo/.05s ticks, with no pose/inventory/score/damage grant.
+An observer records the real art draw's tagged parts without changing them.
+
+Ordinary RAF is disabled. Each family retains four screenshots when executed;
+this tool produces no video and qualifies neither human pacing nor RTX speed.
+The browser must report actual SwiftShader and no external asset requests.
+The caller refuses dirty source, source/head drift, reused evidence and any
+missing route milestone; the isolated profile and owned context/server must close.
+It is registered before masterwork in `verify.py --browser` with its own bounded
+600-second aggregate. Existing suite deadlines and source gates are unchanged.
+
+CPU receipt `TOURNAMENT_CALLER_CPU01.log` in the existing GATE directory records
+3 passed/0 failures/0 skips with8,314,384KiB free at admission. These checks cover
+refusal of partial evidence, resource failures, source drift, dirty source,
+external requests, output overwrite and unsafe evidence locations. Import and
+syntax checking start no browser SDK or server. A preceding ad-hoc read-only
+inspection used the evidence cwd for repository commands and returned path/not-
+a-repository errors; no files were changed by that inspection.
+
+At00:39 Chicago, exec8043 was still live in frozen STATION, and its consignment
+output had advanced to veteran-south after both fresh blade/bow directions.
+No terminal receipt existed. No event browser was launched, no existing gate
+was stopped, and no full copy/profile/movie was added. Runtime/HTML hashes remain
+unchanged. Fresh origin/PR80 inspection found no competing branch change or review.
+All earlier negative evidence and pending production acceptance remain intact.

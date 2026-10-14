@@ -1,3 +1,19 @@
+# Exhibition observation prepared, 2026-10-14
+
+The new browser caller will inspect actual displayed terms, target selection,
+amber/white cues, native Brace and primary reply, two camera projections, HUD
+clearance, deliberate recording, quiet motion and cold restart. Accepted body
+walking supplies a movement-response case; native keys supply guard/attack.
+Ordinary RAF is disabled, so this is a controlled acceptance route, not footage
+or a human-speed timing measurement. Its CPU report guards pass3 tests. No
+browser run or new gameplay image/video is claimed at this checkpoint.
+
+Dom's pending questions remain: Is the warning clear? Can you tell when to
+answer? Is improving a personal medal worth returning for? No answer is inferred
+from tests. Existing synthetic/command-earned and historic footage labels remain.
+
+---
+
 # Rain exhibition: command-earned, native/human feel pending, 2026-10-14
 
 Fresh blade, legitimately crafted bow and historical Chapter IV veteran cases walk from Firstlight, enter the exhibition, recover an interrupted attempt, score6/6 through real primary contacts and Brace, return to the steward, record once, and deliberately replay for3/6. Their prior best remains6 and ordinary owners remain intact. These are accelerated accepted rule journeys with an in-memory writer; they are not new gameplay footage or browser persistence evidence.

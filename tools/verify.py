@@ -569,6 +569,8 @@ def main():
         '--whole-draft-report', str(whole_draft_output / 'WHOLE_DRAFT_JOURNEY_REPORT.json'),
         '--output', str(whole_draft_output.parent / 'briar-earned')], extra_env={'FIRSTLIGHT_ROOT': str(ROOT)})
     if args.browser:
+        run('tournament_browser', [sys.executable, 'tools/tournament_browser.py', '--both',
+            '--output', str(args.browser_output / 'tournament_browser')], timeout=600, native=True)
         run('masterwork_browser', [sys.executable, 'tools/masterwork_browser.py', '--both',
             '--output', str(args.browser_output / 'masterwork_browser')], timeout=600, native=True)
         # Separate native gate, bound to the exact cohort earned above. Only
