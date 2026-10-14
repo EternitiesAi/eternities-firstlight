@@ -100,7 +100,8 @@ def main():
                 def close():
                     if page.locator('#rpg-window').evaluate('e=>e.open'): click('#rpg-close')
                 def workspace(tab):
-                    close(); click('#rpg-tabs [data-rpg="open"][data-id="'+tab+'"]')
+                    close(); page.locator('#world').focus(); page.keyboard.press('j')
+                    click('#rpg-tabs [data-rpg="open"][data-id="'+tab+'"]')
                 def wait_near(x, z, distance=2.4):
                     page.wait_for_function('([x,z,d])=>{const a=Realm.diagnostics.adventure,p=a.player;return !a.paused&&Math.hypot(p.x-x,p.z-z)<d}', arg=[x,z,distance], timeout=180000)
                 workspace('characters')
