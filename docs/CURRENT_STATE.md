@@ -1,3 +1,20 @@
+# Exhibition settings now hold the bout, 2026-10-14
+
+A targeted source review found that Settings hid the exhibition while its clock
+and an in-flight arrow kept advancing. A real app-drawer regression reproduced
+both failures. Runtime1f559cf now holds the
+whole simulation during an active exhibition drawer, preserves the chosen pause
+on return, and leaves ordinary exploration drawers unchanged. No save field or
+schema changed. Follow-up `8a6c1e82e130f29f42667d1cc2e9da7bb08fb31e` also repairs
+Space activation on focused drawer buttons, preserving ordinary combat keys.
+All52 focused event tests and3 caller-boundary tests pass.
+Identical HTML is3,486,616 bytes, SHA256
+9d264366be0b260c5e02126a3997ecf264ae81546fd20573d5e581b7281bce45.
+Native layout/controls and full current qualification remain pending. The older
+STATION gate is still live in consignment (exec8043); no competing browser ran.
+
+---
+
 # Exhibition browser checks prepared, 2026-10-14
 
 PR80 now includes a bounded native caller for the actual steward UI, both weapon

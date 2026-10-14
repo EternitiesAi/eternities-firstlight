@@ -1,3 +1,17 @@
+# Exhibition menu timing repaired, 2026-10-14
+
+Runtime follow-ups1f559cf and `8a6c1e82e130f29f42667d1cc2e9da7bb08fb31e` on PR80
+fix a reproduced Settings clock/projectile leak and blocked Space activation on
+drawer buttons. Read MENU_PAUSE_QUALIFICATION.json under
+docs/evidence/rain-exhibition-2026-10-14. All52 focused event checks and3
+caller-boundary tests pass; new HTML is3,486,616 bytes /9d264366…1bce45.
+This is still NOT native/full/fresh-remote qualification. Native caller now
+includes drawer/P-button/nested-Journal checks but remains unrun. At00:54 Chicago
+exec8043 still owns frozen STATION at88b30bf, now on veteran-north consignment.
+Preserve it, serial browser ownership, all failures and every boundary below.
+
+---
+
 # Rain exhibition native caller prepared, not executed, 2026-10-14
 
 ROOT remains on PR80 `gameplay/tournament-after-rain-20261013`. The new

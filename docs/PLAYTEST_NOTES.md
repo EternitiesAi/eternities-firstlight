@@ -1,3 +1,15 @@
+# Camera/graphics adjustment must not cost an exchange, 2026-10-14
+
+The actual Settings drawer was found to leave the new exhibition clock and
+projectile active behind the hidden HUD. CPU integration reproduced the defect;
+the repaired route now holds both and preserves an explicit paused return.
+The current52 event tests pass, including an additional repair for Space on
+focused drawer buttons. The native caller will inspect this through real
+Settings controls, P/Space and the transition into Journal. That visible run is still
+pending; no new screenshot, video or human response is claimed here.
+
+---
+
 # Exhibition observation prepared, 2026-10-14
 
 The new browser caller will inspect actual displayed terms, target selection,

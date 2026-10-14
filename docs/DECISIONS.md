@@ -1,3 +1,17 @@
+# Keep exhibition menu suspension transient and owner-bound, 2026-10-14
+
+An active exhibition drawer holds the whole simulation so its timing and an
+already released arrow stop together. The desired pause after close is separate
+from that temporary hold; P and the drawer button adjust it without releasing
+the hidden bout. Ordinary live-time drawers retain their behavior. A hold is
+bound to the Simulation/state/adventure identity and cannot resume a replacement.
+Focused drawer buttons also keep native Space/Enter activation, while the
+ordinary world Space control remains available. This introduces no durable
+field, migration or reward change. Native controls
+and human comfort remain unqualified despite the focused CPU repair.
+
+---
+
 # ET07 qualification keeps controlled input and pacing separate, 2026-10-14
 
 Use a dedicated serial native route for visible steward decisions, actual

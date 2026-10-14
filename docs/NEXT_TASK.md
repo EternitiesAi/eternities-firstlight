@@ -1,3 +1,16 @@
+# Include the repaired drawer path in native acceptance, 2026-10-14
+
+Continue from PR80's repaired runtime8a6c1e8, not the preceding693953c caller
+checkpoint. The52 focused event checks pass, including the actual app drawer's
+clock/projectile hold, pause intent and Space key routing; the extended native caller remains unrun.
+Its future browser pass must also exercise native Settings/P/Space pause buttons,
+focus retention and switching into Journal. This does not replace full-source,
+exact-remote, earlier woodland or other pending acceptance. Existing exec8043
+remains live at frozen88b30bf; wait for its terminal result before browser use or
+STATION changes. The broader production goal stays active.
+
+---
+
 # Run the prepared exhibition caller when the owned gate closes, 2026-10-14
 
 1. Observe existing exec8043 and its MASTERWORK_FULL01_EXIT.json terminal receipt.

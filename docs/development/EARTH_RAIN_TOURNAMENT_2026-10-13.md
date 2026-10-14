@@ -195,3 +195,51 @@ No terminal receipt existed. No event browser was launched, no existing gate
 was stopped, and no full copy/profile/movie was added. Runtime/HTML hashes remain
 unchanged. Fresh origin/PR80 inspection found no competing branch change or review.
 All earlier negative evidence and pending production acceptance remain intact.
+
+### Reproduced Settings timing leak and repair (2026-10-14)
+
+Targeted inspection found that app openPanel/closePanel did not pause the world,
+while the exhibition's terms promised that menus stop the event and its CSS hid
+the HUD behind a drawer. `tests/earth-tournament-menu.test.cjs` executes the
+actual app drawer functions against a real Simulation with minimal DOM stubs.
+RED01 retained0 passes/4 failures: a running bout stayed unpaused, an already
+released arrow landed behind Settings, and the two new intent/owner cases found
+the missing APIs. This is CPU app integration, not a rendered browser observation.
+
+Runtime commit `1f559cf221da18ae319faeb860a0c37e8dca17b4` adds a transient menu
+hold only during an active exhibition. It freezes simulation time and arrows
+together, retains the player's desired pause after closing, and refuses to
+restore a stale character/state owner. Both P and the existing drawer pause
+button use that intent. Its text explains when the choice applies; its keyboard
+focus remains after the text redraw. Ordinary exploration retains live drawers.
+World9/Adventure14/Arsenal1/tournament1 and all durable data remain unchanged.
+
+MENU01 passed18 overlapping menu/UI/combat tests. Final MENU_FINAL01 passed all
+51 event tests across six files, the3 Python native-report boundary tests and
+the identical HTML rebuild, with9,066,844KiB free at CPU/build admission. Changed
+JS syntax and diff whitespace also pass. New HTML pair:3,486,608 bytes each,
+SHA256276398ff03fed5ebd6094151c6bd7b6c288a67075c0a74a196fda16d6baa6b84.
+The compact MENU_PAUSE_QUALIFICATION.json binds this evidence to the runtime
+commit; all full logs stay beside the earlier GATE receipts. Do not add18 to51.
+
+The prepared native caller now requires actual Settings/P/button behavior,
+focus retention and a Settings-to-Journal transition before it can pass. It is
+still unrun. Frozen STATION at88b30bf remains under live exec8043; at00:54 Chicago
+consignment had reached veteran-north with no terminal receipt. No second browser,
+new full copy, profile or movie was created. Full current source, exact remote,
+visible native, independent and human qualification remain open.
+
+The follow-up keyboard boundary reproduced a second defect in the actual app
+keydown handler: it cancelled Space activation while a drawer button had focus.
+MENU_KEYS_RED01 preserves4 passes/1 failure. Commit
+`8a6c1e82e130f29f42667d1cc2e9da7bb08fb31e` extends the existing fishing-button
+exception to drawer buttons; native Space/Enter activation stays in the menu,
+and world Space continues through the original gameplay route. The new caller
+now uses actual Space presses on the pause button and checks both resulting
+labels plus retained focus, instead of exercising that button only by mouse.
+
+MENU_FINAL02 passed52 event checks,3 caller-boundary checks and the rebuild at
+8,692,920KiB admission. Current HTML is3,486,616 bytes / SHA256
+9d264366be0b260c5e02126a3997ecf264ae81546fd20573d5e581b7281bce45.
+The earlier51-check result and its276398ff HTML remain a historical repair
+checkpoint, not the latest page. Native and full/remote gates remain pending.

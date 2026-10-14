@@ -1,0 +1,34 @@
+{
+  "status": "focused CPU qualification; native and full gate pending",
+  "runtimeCommit": "8a6c1e82e130f29f42667d1cc2e9da7bb08fb31e",
+  "pauseRepairCommit": "1f559cf221da18ae319faeb860a0c37e8dca17b4",
+  "previousHead": "693953c1dd905fbecd53adc450b0ead18f7705f9",
+  "defect": "Settings hid the exhibition HUD while the bout and admitted arrows continued advancing. The native key router also cancelled Space activation on focused drawer buttons.",
+  "change": "An active exhibition takes a transient drawer pause. Explicit pause choices apply after close. Other scenes keep ordinary live drawer behavior. A replaced character or state cannot inherit an old resume. Focused drawer buttons retain native Space/Enter activation, with world combat keys preserved.",
+  "saveVersions": {"world": 9, "adventure": 14, "arsenal": 1, "earthTournament": 1},
+  "newDurableFields": [],
+  "html": {
+    "files": ["index.html", "FIRSTLIGHT_VALLEY.html"],
+    "identical": true,
+    "bytesEach": 3486616,
+    "sha256": "9d264366be0b260c5e02126a3997ecf264ae81546fd20573d5e581b7281bce45"
+  },
+  "finalFocused": {
+    "receipt": "TOURNAMENT_MENU_FINAL02.log",
+    "admittedHostFreeKiB": 8692920,
+    "node": {"passed": 52, "failed": 0, "skipped": 0, "fileWorkers": 1},
+    "pythonCallerBoundaries": {"run": 3, "failed": 0, "skipped": 0},
+    "build": "passed",
+    "changedJavaScriptSyntax": "passed",
+    "scope": "Six tournament rule/UI/geography/app-menu files and CPU report-boundary tests. These are not the complete verifier."
+  },
+  "retainedAttempts": [
+    {"receipt": "TOURNAMENT_MENU_RED01.log", "passed": 0, "failed": 4, "meaning": "Actual app drawer failed to hold the clock and projectile; two additional cases exposed missing pause-intent APIs."},
+    {"receipt": "TOURNAMENT_MENU01.log", "passed": 18, "failed": 0, "meaning": "Initial menu/combat/UI checks; overlaps later checks and must not be added to them."},
+    {"receipt": "TOURNAMENT_MENU_FINAL01.log", "passed": 51, "failed": 0, "meaning": "Pause-hold repair before the additional keyboard routing defect was covered."},
+    {"receipt": "TOURNAMENT_MENU_KEYS_RED01.log", "passed": 4, "failed": 1, "meaning": "Actual app key handler cancelled native Space activation on a focused drawer button."}
+  ],
+  "receiptRoot": "D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/next-gate",
+  "nativeCaller": "Prepared and extended with Settings, native P/Space pause buttons, retained keyboard focus and a Settings-to-Journal transition; not executed.",
+  "remaining": ["complete current source verifier", "native UI and visible art", "exact fresh remote qualification", "independent review", "human acceptance", "current real-GPU performance"]
+}
