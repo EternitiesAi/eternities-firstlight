@@ -1,0 +1,270 @@
+{
+  "scope": "Gate Captain implementation and incomplete qualification; not production completion",
+  "base": "950d733a1e714b4a06a6481594a726b5dc190981",
+  "runtimeHead": "fbf07c4ada1916f86703e0163cb2d580c379b51f",
+  "latestCallerHead": "ff27c41ac02b81f420b7b91b950e7da5d5263746",
+  "saveVersions": {
+    "world": 9,
+    "adventure": 15,
+    "earthGate": 1,
+    "arsenal": 1
+  },
+  "html": {
+    "bytes": 3565334,
+    "sha256": "eb0f8bd9aaee6ecd9ecb8ca1844568b85aedc9077a617aac1b3278c95478bb77",
+    "outputsIdentical": true
+  },
+  "sourceAttempt": {
+    "receipt": {
+      "sourceHead": "fbf07c4ada1916f86703e0163cb2d580c379b51f",
+      "headAfter": "fbf07c4ada1916f86703e0163cb2d580c379b51f",
+      "statusAfter": [],
+      "startedUtc": "2026-10-14T09:52:53.4882072Z",
+      "closedUtc": "2026-10-14T09:56:53.2359143Z",
+      "exitCode": 1,
+      "command": [
+        "C:/Users/Dom/AppData/Local/Programs/Python/Python313/python.exe",
+        "-B",
+        "tools/verify.py",
+        "--rule-workers",
+        "4",
+        "--output",
+        "D:/07-GAMES/Firstlight/artifacts/village-resident-articulation-20261013/next-gate/GATE_SOURCE01_LOGS",
+        "--cpu-temp",
+        "C:/Users/Dom/AppData/Local/Temp"
+      ],
+      "scope": "Complete source gate; four Node workers; original180s/600s; no native browser or VM interaction",
+      "consoleSha256": "735c378191955c1808cd6fe0b1bcde77e5795b25064e3f7108e43adebc81371f"
+    },
+    "node": {
+      "run": 2402,
+      "passed": 2400,
+      "failed": 0,
+      "skipped": 2
+    },
+    "python": {
+      "run": 555,
+      "failed": 3,
+      "skipped": 8,
+      "failure": "Old verifier inventory expected54 native suites and tournament first; gate expands to55. Commit a2e885c repairs only the explicit test inventory;10 focused verifier tests pass. Full rerun pending."
+    },
+    "completeGatePassed": false
+  },
+  "earnedJourneys": {
+    "blade": {
+      "status": "passed",
+      "variant": "blade",
+      "plan": "inspection-lane",
+      "source": null,
+      "sourceSha256": null,
+      "positionEdits": 0,
+      "actorPositionEdits": 0,
+      "inventoryGrants": 0,
+      "plantedObjectives": 0,
+      "acceleratedTicks": true,
+      "nativeBrowser": false,
+      "durableStore": "labelled in-memory synchronous canonical writer",
+      "commands": 1,
+      "checkpoints": 5,
+      "record": {
+        "version": 1,
+        "accepted": true,
+        "evidence": [
+          "arrival-register",
+          "sealed-waybill",
+          "shelter-screen"
+        ],
+        "plan": "inspection-lane",
+        "prepared": true,
+        "checkpoint": "inspection-point",
+        "outcome": "admitted",
+        "claimed": true
+      },
+      "actionCount": 40
+    },
+    "bow": {
+      "status": "passed",
+      "variant": "bow",
+      "plan": "temporary-shelter",
+      "source": null,
+      "sourceSha256": null,
+      "positionEdits": 0,
+      "actorPositionEdits": 0,
+      "inventoryGrants": 0,
+      "plantedObjectives": 0,
+      "acceleratedTicks": true,
+      "nativeBrowser": false,
+      "durableStore": "labelled in-memory synchronous canonical writer",
+      "commands": 17,
+      "checkpoints": 4,
+      "record": {
+        "version": 1,
+        "accepted": true,
+        "evidence": [
+          "arrival-register",
+          "sealed-waybill",
+          "shelter-screen"
+        ],
+        "plan": "temporary-shelter",
+        "prepared": true,
+        "checkpoint": "shelter-inside",
+        "outcome": "sheltered",
+        "claimed": true
+      },
+      "actionCount": 52
+    },
+    "veteran": {
+      "status": "passed",
+      "variant": "veteran",
+      "plan": "temporary-shelter",
+      "source": "D:\\07-GAMES\\Firstlight\\authoring\\atlantis-harbour-campaign-20261004\\evidence10\\veteran-source\\CHAPTER_IV_COMPLETE_EARNED.json",
+      "sourceSha256": "77699c9eeac09e79126d127b0994ca6bb18f12650616df0fa45b446fa92b4f4e",
+      "positionEdits": 0,
+      "actorPositionEdits": 0,
+      "inventoryGrants": 0,
+      "plantedObjectives": 0,
+      "acceleratedTicks": true,
+      "nativeBrowser": false,
+      "durableStore": "labelled in-memory synchronous canonical writer",
+      "commands": 5,
+      "checkpoints": 4,
+      "record": {
+        "version": 1,
+        "accepted": true,
+        "evidence": [
+          "arrival-register",
+          "sealed-waybill",
+          "shelter-screen"
+        ],
+        "plan": "temporary-shelter",
+        "prepared": true,
+        "checkpoint": "shelter-inside",
+        "outcome": "sheltered",
+        "claimed": true
+      },
+      "actionCount": 41
+    }
+  },
+  "nativeAttempt": {
+    "head": "a2e885cf667041dd156ea2180e86984b16c95815",
+    "passed": false,
+    "checks": 36,
+    "failedChecks": [
+      {
+        "name": "quota failure retains physically reached actors and unadvanced record",
+        "passed": false
+      }
+    ],
+    "milestones": {
+      "terms": true,
+      "preparation": true,
+      "three_actors": true,
+      "both_cameras": true,
+      "menu_pause": true,
+      "far_wait": true
+    },
+    "browserErrors": [],
+    "externalRequests": [],
+    "resources": {
+      "context_closed": true,
+      "server_closed": true,
+      "profile_removed": true
+    },
+    "sourceUnchanged": true,
+    "viewport": [
+      1280,
+      800
+    ],
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "failure": "Quota test assumed camp. CPU reproduction proves walking back from far-wait legitimately saves orchard-turn. ff27c41 captures the actual checkpoint and next leg before injection; native rerun pending.",
+    "ordinaryRAF": false,
+    "humanPlaytest": false
+  },
+  "screenshotsInspected": [
+    "GATE_NATIVE01/blade/02-GROUP-orthographic.png",
+    "GATE_NATIVE01/blade/02-GROUP-perspective.png"
+  ],
+  "logs": {
+    "GATE_HOST01.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_HOST01.log",
+      "sha256": "a80a7b2222cc2ef50bcd0535ffe65ecbf94a2345b0d293229b9527e699e77cc2"
+    },
+    "GATE_UI02.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_UI02.log",
+      "sha256": "d307d377d26bda7dfddd054eba52f8be2d97b9fecee621272b66b816f8991c3b"
+    },
+    "GATE_ALL_RULES01.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_ALL_RULES01.log",
+      "sha256": "451a4ca9709006f0b381695044ae7e9167398668beb52e51cfe978dcbcb96367"
+    },
+    "GATE_COMPAT02.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_COMPAT02.log",
+      "sha256": "2d663906daec75c026f724c0b5a8984b112d54c2d73ecd95de2d0974bb33fc3b"
+    },
+    "GATE_COMPAT03.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_COMPAT03.log",
+      "sha256": "34d2f8f8a1004864e18f8f2b3048f61f0f86c896e956ca34eea66cd9d95a2d93"
+    },
+    "GATE_HOST_COMPAT04.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_HOST_COMPAT04.log",
+      "sha256": "1e27ed4f0ab6b37da9ea67a272feade4dbbe111d391f70da4386739a20e5a7a2"
+    },
+    "GATE_PY_COMPAT01.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_PY_COMPAT01.log",
+      "sha256": "76add4e7c73b9a30b64a58652afc4a0cccb2fe0130d7a001365e97a1d52099ad"
+    },
+    "GATE_PY_COMPAT02.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_PY_COMPAT02.log",
+      "sha256": "1aab7a93babcad4f1967121c9526bc5c33d59be6572d93513ddc7335b6205c0b"
+    },
+    "GATE_PY_SDK03.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_PY_SDK03.log",
+      "sha256": "bf2287fc35d7c188265da28a6c31cef9561a9732bc317b09c75d0671a5ffbec3"
+    },
+    "GATE_SUITE_INVENTORY02.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_SUITE_INVENTORY02.log",
+      "sha256": "54c7a28545887b9ec423d070bc96cf2574be0c0ab46786864f57152b46f04372"
+    },
+    "GATE_SUITE_INVENTORY03.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_SUITE_INVENTORY03.log",
+      "sha256": "c78d7eb2dac610681f49b86c8352e4d8b95eeaf515c852c22c6c873fbe990774"
+    },
+    "GATE_QUOTA_TIMING_REPRO01.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_QUOTA_TIMING_REPRO01.log",
+      "sha256": "656e34d5bc28291a27442a9488aae2d932a4e772f21871892ff610f9070ffb95"
+    },
+    "GATE_NATIVE_CALLER02.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_NATIVE_CALLER02.log",
+      "sha256": "b9542d8cc9a8cc07ddff2ae20db255fb03affed1596410acfcacf65e6b8ea292"
+    },
+    "GATE_SOURCE01_CONSOLE.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_SOURCE01_CONSOLE.log",
+      "sha256": "735c378191955c1808cd6fe0b1bcde77e5795b25064e3f7108e43adebc81371f"
+    },
+    "GATE_SOURCE01_LOGS/rules.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_SOURCE01_LOGS\\rules.log",
+      "sha256": "97416171932827388d3b1ae53ee7d3078fe11dafc3d283fc44fa34faab191dfd"
+    },
+    "GATE_SOURCE01_LOGS/python.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_SOURCE01_LOGS\\python.log",
+      "sha256": "7f12077400b7c25cccd366dc46ba67e2534e9e9e75fa17cf069d265d5b1930e7"
+    },
+    "GATE_NATIVE01.log": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_NATIVE01.log",
+      "sha256": "f0de10f8e59475fff9b643cd806a46c9c2a032d1e778d37c4567077aedcb116b"
+    },
+    "GATE_NATIVE01/blade/REPORT.json": {
+      "path": "D:\\07-GAMES\\Firstlight\\artifacts\\village-resident-articulation-20261013\\next-gate\\GATE_NATIVE01\\blade\\REPORT.json",
+      "sha256": "1281199b243ccff6d6ccf7f91ae9bddf29b19363febae2790356744dbf8caeba"
+    }
+  },
+  "pending": [
+    "Complete source verifier rerun",
+    "Both-choice native completion and cold browser proof",
+    "Ordinary gameplay clip",
+    "Exact remote checkout qualification; no new fresh clone claimed",
+    "Prior grazer native and wider browser gate",
+    "Independent review, hardware measurement and human acceptance"
+  ],
+  "ownership": "VM, Claude, personal saves/profiles and unrelated workers untouched; no merge/deploy/new full copies; STATION remains at d13d067 for earlier grazer native."
+}

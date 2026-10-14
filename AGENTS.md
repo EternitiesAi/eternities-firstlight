@@ -1,41 +1,47 @@
-# Gate Captain implementation in progress, 2026-10-14
+# Gate Captain playable implementation; qualification incomplete, 2026-10-14
 
-ROOT now owns `gameplay/earth-gate-captain-20261014`, based on PR81 head
-`950d733a1e714b4a06a6481594a726b5dc190981`. The separate grazer qualification
-checkout STATION remains frozen at d13d067 with its prior source cohorts. No
-other worker owns this checkout; both authorized Sol reviewers remain
-usage-limited. Do not replace or reroute them, touch the VM/Claude/personal
-saves, or change the separate paused heartbeat.
+ROOT owns `gameplay/earth-gate-captain-20261014`, stacked on PR81 head
+`950d733a1e714b4a06a6481594a726b5dc190981`. Runtime/build is
+`fbf07c4ada1916f86703e0163cb2d580c379b51f`; a2e885c fixes the verifier's new
+suite inventory, and ff27c41 fixes a native caller timing assumption. No runtime
+changed in those two follow-ups. Read `docs/evidence/gate-captain-2026-10-14/QUALIFICATION01.json`.
 
-ET08 is implemented in source: three physically moving travellers, inspection
-or a finite shelter repair, exact supported checkpoint arrival, explicit
-leading/waiting, menu pause, atomic save-before-adoption, explicit save retry,
-and a once-only 8-coin/up-to-15-XP fee. Journal, map invitations, E interaction,
-tracker, projected humanoids and modest lane/screen changes are wired. The
-canon and detailed contract are in `docs/development/EARTH_GATE_CAPTAIN_2026-10-14.md`.
+ET08 now has visible Journal/Map/E/tracker controls, three physical travellers,
+inspection or explicit4-timber/2-fibre shelter preparation, saved supported
+checkpoints, leading/waiting, menu pause and save retry. Both outcomes offer
+8coins and up to15XP once, separately claimed from the captain. Adventure14→15
+adds only empty earthGate1; World9, keys, stored XP and old owners are retained.
+Names and local Hearthwater adaptation remain provisional canon presentation.
 
-Adventure14 to15 deliberately adds only an empty earthGate1 record. World9 and
-browser keys stay unchanged. Ambiguous pre-schema data refuses; stored XP and
-old histories remain owned by their existing systems. Tests are being updated
-for the new declared schema without changing historical fixtures or evidence.
+The complete rule suite passed2400/failed0/skipped2 at fbf07c4. Full source
+verification then stopped on three Python harness assertions expecting54 native
+suites rather than55 and the old first suite. The explicit inventory repair
+passes all10 targeted checks, but a complete source rerun remains required.
+Command-earned blade/bow/Chapter-IV veteran outings pass both outcomes and
+partial reload with zero pose/material/objective grants.49 initial focused
+checks plus the later dependency check pass; these are CPU evidence.
 
-Current evidence:49 focused CPU/controller/render/menu checks pass, and new
-command-earned blade, crafted-bow and Chapter-IV veteran journeys pass with
-zero position edits, material grants or planted objectives. Both outcomes,
-mid-escort cold reload and one-time payment are exercised. These use accelerated
-accepted ticks and an in-memory canonical saver, not native browser timing.
-The first assembled pages are identical3565334 bytes, SHA256
+Native01 at a2e885c made36 checks, passed35 and failed1. Three actors render in
+both cameras; Settings pause and far-player waiting pass. The quota test wrongly
+assumed the group still occupied camp. Actual Core reproduction shows walking
+back legitimately records orchard-turn. ff27c41 now captures the true next leg;
+its rerun is pending. Browser/server/profile closed, source unchanged, no browser
+errors/external requests. Both camera PNGs were personally inspected: actual
+controlled software-WebGL images, not ordinary-time film or hardware proof.
+
+Both pages remain identical3565334bytes, SHA256
 `eb0f8bd9aaee6ecd9ecb8ca1844568b85aedc9077a617aac1b3278c95478bb77`.
-The broader rule gate is currently being checked; no current full source or
-native success is claimed. Live status and terminal receipts override this note.
+No current complete source/native gate, exact fresh clone, new gameplay video,
+independent review or human acceptance is claimed. The game goal is unfinished.
 
-Next: complete schema compatibility checks, native visible-control/persistence
-qualification, exact pushed review branch and remote evidence. Do not call the
-quest delivered, the wider browser gate passed, or the whole game complete.
-All earlier grazer native RAM refusals and older WildSigns timeout remain open.
-Use fresh6,291,456KiB admission, serial browsers, original deadlines and bounded
-D storage. No new full copies, cleanup, blocked-deletion retry, main merge,
-deployment or billing changes.
+Next: inspect ownership, then run the corrected native caller and full source
+verifier at the exact clean head, serially under fresh6291456KiB admission and
+original deadlines. Latest free RAM was below that floor; do not disturb the VM
+or Claude to make room. STATION remains clean d13d067 with earlier grazer cohorts;
+its native admission and older WildSigns full-gate timeout remain open. The two
+Sol reviewers are usage-limited, not running; no reroute. Heartbeat remains
+paused. Keep current D checkouts, small evidence and all original failures;
+no new full copy, cleanup, blocked-deletion retry, main merge/deploy or billing.
 
 ---
 
