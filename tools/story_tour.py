@@ -100,6 +100,11 @@ def scene_run(browser, origin, saves, row, out, frames, report):
         page.evaluate("Realm.test.quality('balanced')")
         state = json.loads((saves / row["file"]).read_text(encoding="utf-8"))
         record["replace"] = page.evaluate("state => Realm.test.replace(state)", state)
+        # the scene's steps are the page's own commands (e.g. waystone-travel into the crossing), run after the home checkpoint.
+        record["steps"] = [page.evaluate("s => Realm.test.act(s.act.id, s.act.type, s.act.payload)", step) for step in row.get("steps", [])]
+        refused = [result for result in record["steps"] if not (isinstance(result, dict) and result.get("ok"))]
+        if refused:
+            raise RuntimeError("a scene step was refused: " + json.dumps(refused)[:400])
         page.evaluate("Realm.test.pause(false)")
         webgl = page.evaluate(WEBGL_JS)
         record["webgl"] = webgl
@@ -110,7 +115,7 @@ def scene_run(browser, origin, saves, row, out, frames, report):
         record["hp"] = page.evaluate("Realm.state.adventure.hp")
         if row["scene"] == "credits":
             # the page's own credits screen, fed by the page's own epilogue data.
-            page.evaluate("window.RealmCredits && window.RealmCredits.show(window.RealmEpilogue.credits())")
+            page.evaluate("window.RealmCredits.show(window.RealmEpilogueData.CREDITS, {onDone: () => {}})")
             page.wait_for_timeout(2500)
         third = out / (row["scene"] + "-third.png")
         page.screenshot(path=str(third))

@@ -42,7 +42,7 @@ function journey(options = {}) {
  }
  assert.ok(reached, 'walked up to the real Briar at ' + habit.id);
  // the real fox is chosen; her return is saved, and the home step follows when it is offered
- act('choose', { fox: 'real' });
+ if (options.beforeChoose) options.beforeChoose(sim); act('choose', { fox: 'real' });
  assert.equal(sim.state.saga.briar.state, 'returned', 'the real Briar came home');
  assert.equal(SG.done(sim.state, 'nearshore'), true);
  if (sim.state.saga.briar.homeDay === null) { const h = N.command(ctx(), 'home', payload(), io); commands++; assert.ok(h.ok || h.error, 'home answered'); }

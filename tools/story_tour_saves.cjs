@@ -54,6 +54,27 @@ function saveEntry(file) {
 }
 
 const manifest = { made: new Date().toISOString(), sources: [] };
+
+// command-level checkpoints. A rule writes the sim's state the first time its predicate holds around a real command, so the
+// writer never edits state: the journey runs the same sim commands the page runs. The methods are restored afterwards.
+function watch(rules, owner, names) {
+  const originals = names.map(name => owner[name]);
+  names.forEach((name, i) => {
+    owner[name] = function (...args) {
+      const type = args[1];
+      for (const rule of rules) if (!rule.done && rule.before && rule.before(this, type)) write(rule, this);
+      const result = originals[i].apply(this, args);
+      for (const rule of rules) if (!rule.done && rule.after && rule.after(this, type)) write(rule, this);
+      return result;
+    };
+  });
+  return () => names.forEach((name, i) => { owner[name] = originals[i]; });
+}
+function write(rule, sim) {
+  rule.done = true;
+  fs.mkdirSync(path.dirname(rule.path), { recursive: true });
+  fs.writeFileSync(rule.path, JSON.stringify(sim.snapshot(), null, 2) + '\n');
+}
 function collect(id, module, dir, run) {
   const entry = { id, module, ok: false, error: null, files: [] };
   try { run(); entry.ok = true; } catch (error) { entry.error = String(error && error.message || error).slice(0, 400); }
@@ -81,12 +102,40 @@ for (const j of JOURNEYS) {
   });
 }
 
-// the night set piece: the lead's frame saves, from the crossing journey's earned chapter IV save.
+// the night set piece, command-driven: the night journey's own commands. Checkpoints are written when the night has begun
+// (lit: device hidden) and after the bite (quiet: device broken), as the game saves them, at home.
 {
   const dir = path.join(root, 'night');
   fs.mkdirSync(dir, { recursive: true });
-  collect('night', 'tools/night_frames_save.cjs', dir, () => {
-    childProcess.execFileSync(process.execPath, [path.join(ROOT, 'tools/night_frames_save.cjs'), dir], { stdio: 'pipe' });
+  const rules = [
+    { path: path.join(dir, 'NIGHT_LIT_AT_HOME.json'), after: sim => sim.state.night?.started === true && sim.state.night?.device === 'hidden' },
+    { path: path.join(dir, 'NIGHT_QUIET_AT_HOME.json'), after: sim => sim.state.night?.device === 'broken' },
+  ];
+  // the night can start on a tick as well as on a command, so the ticks are watched too.
+  const stop = watch(rules, C.Simulation.prototype, ['adventureCommand', 'act', 'sagaCommand', 'tick']);
+  try {
+    collect('night', 'tests/night_journey.cjs', dir, () => { require(path.join(ROOT, 'tests/night_journey.cjs')).journey({ out: dir }); });
+  } finally {
+    stop();
+  }
+}
+
+// the nearshore: the choice is open after the regent offers the faultless fox, before the real choose. The source is the first
+// command-earned save the journeys above wrote where the witness is done and Briar is taken. None means the nearshore is a gap.
+{
+  const dir = path.join(root, 'nearshore');
+  fs.mkdirSync(dir, { recursive: true });
+  const SG = require(path.join(ROOT, 'src/saga.js'));
+  const source = walkJson(root).find(p => {
+    try { const s = C.validate(JSON.parse(fs.readFileSync(p, 'utf8'))); return SG.done(s, 'witness') && s.saga.briar.state === 'taken'; } catch (error) { return false; }
+  });
+  collect('nearshore', 'tests/nearshore_journey.cjs', dir, () => {
+    if (!source) throw Error('no witness-finished save with Briar taken was written by the journeys above');
+    require(path.join(ROOT, 'tests/nearshore_journey.cjs')).journey({
+      out: dir,
+      source,
+      beforeChoose: sim => fs.writeFileSync(path.join(dir, 'NEARSHORE_CHOICE_OPEN.json'), JSON.stringify(sim.snapshot(), null, 2) + '\n'),
+    });
   });
 }
 
@@ -130,19 +179,21 @@ for (const j of JOURNEYS) {
 
 // one save per tour scene, named from the journeys' own checkpoints. The why column says what the saga reports for that
 // save (see the manifest). A scene whose checkpoint did not come out of its journey is reported as unreached, with why.
+// the crossing is a waystone room: the page enters it with the real travel command after the home checkpoint is loaded.
+const TRAVEL_BELL = [{ act: { id: 'tour-travel-bellweather', type: 'waystone-travel', payload: { id: 'bellweather' } } }];
 const SCENES = [
   { scene: 'envoy', file: 'chapter/ENVOY_BEFORE_CHOICE.json', why: 'at the spring before the envoy chooses; envoy and feather done' },
   { scene: 'feather', file: 'chapter/CHAPTER_COMPLETED.json', why: 'after the feather sight at the spring; feather done' },
   { scene: 'beacon', file: 'beacon/BEACON_READY_EARNED.json', why: 'at the beacon before it is lit; beacon is current' },
-  { scene: 'bellweather', file: 'crossing/CROSSING_READY_EARNED.json', why: 'at the crossing; bellweather is current' },
-  { scene: 'night-lit', file: 'night/night-lit.json', why: 'the night has begun; night is current (lead night save)' },
-  { scene: 'night-quiet', file: 'night/night-quiet.json', why: 'after the bite, Briar taken (lead night save)' },
+  { scene: 'bellweather', file: 'crossing/CROSSING_READY_EARNED.json', steps: TRAVEL_BELL, why: 'the Roads of Light travel to the crossing (waystone-travel)' },
+  { scene: 'night-lit', file: 'night/NIGHT_LIT_AT_HOME.json', steps: TRAVEL_BELL, why: 'the night has begun; the crossing is reached by the real travel' },
+  { scene: 'night-quiet', file: 'night/NIGHT_QUIET_AT_HOME.json', steps: TRAVEL_BELL, why: 'after the bite, Briar taken; the crossing is reached by the real travel' },
   { scene: 'hell', file: 'hell/fresh-blade/04_WARDEN_RESOLVED.json', why: 'the foundry warden is resolved' },
   { scene: 'heaven', file: 'heaven/05_ACTUAL_COURIER_ARRIVAL.json', why: 'the courier arrives in heaven' },
   { scene: 'relay', file: 'heaven/03_FALSE_SIGNAL_WATCH.json', why: 'the counterfeit relay signal; the seraph fight itself is not checkpointed' },
   { scene: 'witness', file: 'atlantis/07_ACTUAL_BEARING_EXPOSED.json', why: 'the drowned witness bearing is exposed' },
   { scene: 'cosmos', file: 'cosmos/08_INDEPENDENT_SUPPORT_SETTINGS.json', why: 'independent cosmos anchors; the central link is disabled' },
-  { scene: 'nearshore', file: null, why: 'no checkpoint writer for the nearshore in this build; its path is a test file' },
+  { scene: 'nearshore', file: 'nearshore/NEARSHORE_CHOICE_OPEN.json', why: 'the regent has offered the faultless fox; the choice is open (two foxes)' },
   { scene: 'finale-1', file: 'finale/phase1_rises.json', why: 'the Regent rises at the spring junction; phase 1' },
   { scene: 'finale-2', file: 'finale/phase2_chains.json', why: 'chains broken; phase 2' },
   { scene: 'finale-3', file: 'finale/phase3_merged.json', why: 'the merged valley; phase 3' },
@@ -158,7 +209,7 @@ const index = SCENES.map(spec => {
   if (!spec.file) return { scene: spec.scene, file: null, why: spec.why };
   const parts = spec.file.split('/');
   const found = findSave(parts[0], parts[parts.length - 1]);
-  return found ? { scene: spec.scene, file: found, why: spec.why } : { scene: spec.scene, file: null, why: 'the journey wrote no ' + spec.file };
+  return found ? { scene: spec.scene, file: found, why: spec.why, steps: spec.steps || [] } : { scene: spec.scene, file: null, why: 'the journey wrote no ' + spec.file };
 });
 fs.writeFileSync(path.join(root, 'MANIFEST.json'), JSON.stringify(manifest, null, 2));
 fs.writeFileSync(path.join(root, 'beats-index.json'), JSON.stringify(index, null, 2));
