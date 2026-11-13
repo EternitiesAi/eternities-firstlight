@@ -23,8 +23,9 @@ from browser_support import launch_kwargs  # noqa: E402
 # the frame distribution is measured without the display cap; the page's own loop runs as fast as the GPU lets it.
 UNCAPPED = ["--disable-gpu-vsync", "--disable-frame-rate-limit"]
 
-# scenes whose beat is a held key in the page (the feather's sight is true roads gold, counterfeit roads ash red).
-HOLD = {"feather": "f"}
+# scenes whose beat is a held key in the page. The feather's sight is hold z (src/feather-sight.js): true roads gold,
+# counterfeit roads ash red. Each hold is the page's own feather-use saga command.
+HOLD = {"feather": "z"}
 
 SAMPLE_JS = """({n}) => new Promise((resolve, reject) => {
   const samples = []; let last; let raf; let done = false;
