@@ -65,8 +65,8 @@ def main(list_path, src_root, out_dir):
         if peak <= 0:
             raise SystemExit("silent source: " + source)
         x = x * np.float32(10 ** (float(peak_db) / 20) / peak)
-        fade_in, fade_out = int(0.002 * RATE), int(0.012 * RATE)
-        x[:fade_in] *= np.linspace(0, 1, fade_in, dtype=np.float32)
+        # no fade-in: many hits start at full level, and a ramp would cut their attack.
+        fade_out = int(0.012 * RATE)
         x[-fade_out:] *= np.linspace(1, 0, fade_out, dtype=np.float32)
         sf.write(decoded, x, RATE, subtype="FLOAT")
         out = os.path.join(out_dir, cue + "-" + variant + ".ogg")
