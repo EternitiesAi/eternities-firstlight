@@ -35,6 +35,10 @@ def main():
     pipe = ACEStepPipeline(checkpoint_dir=MODEL, device_id=0, dtype="bfloat16", torch_compile=False,
                            cpu_offload=False, overlapped_decode=False)
     for track in wanted:
+        target = os.path.join(args.out_dir, track["id"] + ".wav")
+        if not args.smoke and os.path.exists(target) and os.path.exists(os.path.join(args.out_dir, track["id"] + ".json")):
+            print("kept", track["id"], "(already generated)", flush=True)
+            continue
         seconds = 20.0 if args.smoke else track["seconds"] + LOOP_FADE
         started = time.time()
         result = pipe(format="wav", audio_duration=seconds, prompt=track["prompt"], lyrics="[inst]",
