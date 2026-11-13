@@ -82,7 +82,7 @@ function journey(options={}){
  step(3);walk(4,18);assert.equal(N.objective(sim).title,'Go home.');
  walk(0,17);cmd('waystone-travel',{id:'commons'});
  walk(1.5,6);step(3.4);assert.equal(N.envoyPos(sim).arrived,true);
- walk(-1.6,4.2);const talk=cmd('night-envoy',{});assert.equal(talk.lines.length,4);assert.equal(N.stage(sim.state),'over');
+ walk(-1.6,4.2);const talk=cmd('night-envoy',{});assert.ok(talk.lines.length>0);assert.deepEqual(talk.lines,N.sceneOf('envoy',sim.state).lines);assert.equal(N.stage(sim.state),'over');
 
  // The final record survives a round trip through the validators.
  const final=JSON.parse(JSON.stringify(sim.snapshot()));C.validate(final);

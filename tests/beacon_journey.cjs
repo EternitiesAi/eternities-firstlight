@@ -33,7 +33,7 @@ function journey(options={}){
     for(const q of opts)if(C.pathfind(p,q,sim.navRoom)){sim.moveTo(q.x,q.z);break;}
    }
    if(d<3.4&&a.stamina>=50&&a.elapsed>=r.cooldowns.pulse)cmd('pulse',{target:e.id});
-   if(e.mode==='windup'&&!e.aimWard&&e.timer<.35&&Math.hypot(p.x-e.aim.x,p.z-e.aim.z)<2.6&&a.stamina>=22&&a.elapsed>=r.cooldowns.dodge)cmd('dodge',{dx:Math.cos(e.yaw),dz:-Math.sin(e.yaw)});
+   if(e.mode==='windup'&&!e.aimWard&&e.timer<.35&&e.aim&&Math.hypot(p.x-e.aim.x,p.z-e.aim.z)<2.6&&a.stamina>=22&&a.elapsed>=r.cooldowns.dodge)cmd('dodge',{dx:Math.cos(e.yaw),dz:-Math.sin(e.yaw)});
    if(e.kind==='siegeboss'&&a.elapsed>=t.cooldowns.guard&&a.stamina>=40)cmd('guard');
    if(a.beacon.soul.equipped==='aegis'&&a.elapsed>=t.cooldowns.spirit&&a.stamina>=45&&a.hp<A.stats(a).maxHP-10)cmd('spirit');
   }
