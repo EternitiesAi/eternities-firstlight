@@ -2503,7 +2503,7 @@ if(typeof module!=='undefined'&&module.exports)module.exports=api;
 const TAU=Math.PI*2,FLOOR=1.57,ROOM='world-heaven';
 // bone is near white with a faint cool cast, so the shadows read blue-grey rather than tan. gold is for trims, arches,
 // rails, domes and inlay only; ruby is for glass and banners.
-const BONE=0xf2f4f7,BONE2=0xe3e8ef,GOLD=0xd4a95c,GOLD2=0xf7dc92,RUBY=0x8f1538,RUBY2=0xc6284f,
+const BONE=0xf1f3f6,BONE2=0xdfe5ed,GOLD=0xd4a95c,GOLD2=0xf7dc92,RUBY=0x8f1538,RUBY2=0xc6284f,
  CLOUD=0xffffff,CLOUD_UNDER=0xdde7f3,CLOUD2=0xe9eef6,SUN=0xfffaea,HALO=0xffe7a8,LIGHT=0xfffbf0,INLAY=0xe6bd66,
  BLOOM=[0xf4b9c8,0xf7da86,0xfdf8ec,0xe9869f,0xfbe9ad];
 const NONSOLID={cameraSolid:false,cutaway:false};
@@ -2522,7 +2522,7 @@ function decorate(art,def,opts={}){
  const h=typeof opts.height==='function'?opts.height:()=>FLOOR,rnd=typeof opts.rng==='function'?opts.rng:Math.random;
  // the grade is cool and clear: a deep blue overhead, a pale cool horizon, and a white sun with no yellow cast, so the
  // white stone reads white. the ambient stays low for contrast. the engine reads these fields for the realm.
- art.e.worldAtmosphere={top:0x3f7fd6,fog:0xe9f0fa,night:.02,power:1.2,sunColor:0xf7f9ff};
+ art.e.worldAtmosphere={top:0x3f7fd6,fog:0xcfe1f2,night:.02,power:1.2,sunColor:0xf7f9ff};
  art.e.ambientOverride=.3;
  const B=(x,y,z,w,hh,d,c,o={})=>art.add('box',x,y,z,w,hh,d,c,{...NONSOLID,...o});
  const C=(x,y,z,r,hh,c,o={})=>art.add('cylinder',x,y,z,r,hh,r,c,{...NONSOLID,...o});
@@ -2667,7 +2667,7 @@ function decorate(art,def,opts={}){
 
  // the envoy's house by the garden gate, the landmark of the arrival: a white house under a gold dome, a small bell tower
  // over it, and a pool of light with four lanterns round it.
- const ex=-16.5,ez=27.5,eb=h(ex,ez);
+ const ex=-5.5,ez=15.5,eb=h(ex,ez);
  C(ex,eb+.05,ez,5.4,.1,LIGHT,{em:.8});
  B(ex,eb+1.3,ez,3.8,2.6,3.4,BONE,{rough:.4});
  B(ex,eb+2.8,ez,4.2,.4,3.8,GOLD,{rough:.35});
