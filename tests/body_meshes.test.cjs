@@ -1,6 +1,6 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
-// Packed human bodies: deterministic from the committed Blender source, budgeted, finite, unit normals.
+// Packed outfit shells: deterministic from the committed Blender source, budgeted, finite, unit normals.
 const E=require('../src/engine.js');
 const B=require('../src/body-meshes.js');
 const {bake}=require('../tools/bake_bodies.cjs');
@@ -8,23 +8,17 @@ const root=path.join(__dirname,'..');
 const source=fs.readFileSync(path.join(root,'assets/source/human-bodies/BODY_PARTS.json'),'utf8');
 const packed=fs.readFileSync(path.join(root,'src/body-meshes.js'),'utf8');
 const sha=text=>crypto.createHash('sha256').update(text).digest('hex');
-const BODY=['body-head','body-neck','body-torso','body-upper-arm','body-forearm','body-hand','body-thigh','body-shin','body-foot'];
-const OUTFIT=['body-coat','body-robe','body-feather'];
-const HIDDEN=['body-hidden']; // empty on purpose: legacy rig parts a baked figure must not draw
+const OUTFIT=['body-coat','body-robe','body-feather']; // the only baked kinds the build packs; the full bodies stay on the lane
 
 test('the packed body module reproduces byte for byte from the committed Blender source',()=>{
  assert.equal(bake(source),packed,'src/body-meshes.js is the deterministic pack of assets/source/human-bodies/BODY_PARTS.json');
  assert.ok(packed.includes('Source SHA256 '+sha(source)+'.'),'the header names the exact source bytes');
- assert.equal(sha(packed),'ab12bf4b15fb8b93d6d6887eed433dc24751a4f8e5f33a01f0bd2f326f3e744a','the generated module hash is pinned');
+ assert.equal(sha(packed),'1b30986113c0b6559bc03431f00734c109507109488288feab66ccc50398514b','the generated module hash is pinned');
 });
 
-test('every body kind stays inside its triangle budget; the whole body is 2,500 triangles at most',()=>{
- // the feet are baked from the body's own feet region and checked against the same budget.
- for(const kind of BODY)assert.ok(B.triangles[kind]>0&&B.triangles[kind]<=(kind==='body-head'?650:kind==='body-foot'?500:350),kind+' '+B.triangles[kind]);
- assert.ok(B.triangles['body-head']>=500,'the head carries the face');
- assert.ok(BODY.reduce((sum,kind)=>sum+B.triangles[kind],0)<=2500,'whole body budget');
+test('every outfit kind stays inside its triangle budget, and the module registers only the outfit kinds',()=>{
  for(const kind of OUTFIT)assert.ok(B.triangles[kind]>0&&B.triangles[kind]<=1100,kind+' '+B.triangles[kind]);
- assert.deepEqual([...B.kinds].sort(),[...BODY,...OUTFIT,...HIDDEN].sort(),'exactly the body and outfit kinds are registered');
+ assert.deepEqual([...B.kinds].sort(),[...OUTFIT].sort(),'exactly the outfit kinds are registered');
 });
 
 test('every baked kind has finite positions and unit smooth normals, and the engine serves the same bytes',()=>{
@@ -40,6 +34,6 @@ test('every baked kind has finite positions and unit smooth normals, and the eng
  }
 });
 
-test('the packed module stays inside the page budget',()=>{
- assert.ok(Buffer.byteLength(packed)<600*1024,'body module bytes '+Buffer.byteLength(packed));
+test('the outfit module adds under 40 KB to the page',()=>{
+ assert.ok(Buffer.byteLength(packed)<40*1024,'outfit module bytes '+Buffer.byteLength(packed));
 });

@@ -5,11 +5,14 @@
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..');
 const source=path.join(root,'assets/source/human-bodies/BODY_PARTS.json'),target=path.join(root,'src/body-meshes.js');
+// only the outfit shells that story figures place over capsule bodies; the full bodies stay off the build.
+const KEEP=['body-coat','body-robe','body-feather'];
 const scalar=v=>Object.is(v,-0)?'-0':String(v);
 function bake(bytes){
  const body=JSON.parse(bytes);
  assert.equal(body.kind,'human-bodies-v1');assert.equal(body.stride,6);
- const kinds=Object.keys(body.kinds).sort(),packed={};
+ for(const kind of KEEP)assert.ok(body.kinds[kind],kind+' is in the source');
+ const kinds=[...KEEP].sort(),packed={};
  for(const kind of kinds){
   const {vertices,indices}=body.kinds[kind];
   assert.equal(vertices.length%6,0,kind+' vertices are whole stride-6 tuples');
