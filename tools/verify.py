@@ -32,6 +32,9 @@ ENV_BROWSER_OUTPUTS = {
 }
 
 
+# The rules step's bounded deadline. 1.0 grew the suite and the box is shared by many lanes, so 180 s became 360 s.
+RULES_TIMEOUT = 360
+
 def legacy_browser_outputs():
     """Read only the portable output helper, never either browser runtime."""
     path = Path(__file__).resolve().parents[1] / 'tests/browser_support.py'
@@ -359,7 +362,7 @@ def main():
     parser.add_argument('--browser-output-mode', choices=('guarded', 'supported'), default='supported', help='The complete browser gate requires supported routing so every suite has fresh evidence; guarded remains a historical run-spec mode.')
     parser.add_argument('--browser-temp', type=Path, help='Existing bounded temporary directory, D: on Windows; defaults to the inherited TEMP/TMPDIR. Set before driver startup.')
     parser.add_argument('--cpu-temp', type=Path, help='Existing absolute directory for lightweight Python unit-test temporary files only. Browser profiles and earned evidence keep their original storage.')
-    parser.add_argument('--rule-workers', type=int, choices=(1, 2, 4), help='Optional Node test-file worker cap for the complete rules suite. Keeps every test and the original 180-second deadline; omission keeps Node scheduling. Does not bound all child processes or memory.')
+    parser.add_argument('--rule-workers', type=int, choices=(1, 2, 4), help='Optional Node test-file worker cap for the complete rules suite. Keeps every test and the rules deadline; omission keeps Node scheduling. Does not bound all child processes or memory.')
     args = parser.parse_args()
     try:
         cpu_env = cpu_test_environment(args.cpu_temp)
@@ -425,13 +428,13 @@ def main():
                     'requestedWorkers': args.rule_workers, 'command': rules_command,
                     'ruleFileCount': len(rules),
                     'ruleFiles': [p.relative_to(ROOT).as_posix() for p in rules],
-                    'rulesTimeoutSeconds': 180, 'pythonTimeoutSeconds': 600}
+                    'rulesTimeoutSeconds': RULES_TIMEOUT, 'pythonTimeoutSeconds': 600}
     rules_record_bytes = (json.dumps(rules_record, indent=2) + '\n').encode('utf-8')
     rules_record_path = output / 'rules-command.json'
     rules_record_path.write_bytes(rules_record_bytes)
     mode = 'Node default' if args.rule_workers is None else str(args.rule_workers)
     print(f'Rule workers: {mode}; command: {rules_record_path}; SHA-256 {hashlib.sha256(rules_record_bytes).hexdigest()}', flush=True)
-    run('rules', rules_command)
+    run('rules', rules_command, timeout=RULES_TIMEOUT)
     print('\n'.join((output / 'rules.log').read_text(encoding='utf-8').splitlines()[-9:]), flush=True)
     # The wrapper cases execute complete command-earned journeys. Allow for
     # their measured disk work on Windows while retaining a bounded failure.
