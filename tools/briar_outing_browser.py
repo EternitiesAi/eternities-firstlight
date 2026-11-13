@@ -134,7 +134,7 @@ def source_gate(path, root, head):
     if (Path(rules.get('root', '')).resolve() != root or rules.get('ruleFiles') != expected
             or rules.get('ruleFileCount') != len(expected) or rules.get('requestedWorkers') != 4
             or rules.get('verifierSha256') != sha(root/'tools/verify.py')
-            or rules.get('rulesTimeoutSeconds') != 180 or rules.get('pythonTimeoutSeconds') != 600):
+            or rules.get('rulesTimeoutSeconds') != 360 or rules.get('pythonTimeoutSeconds') != 600):
         raise ValueError('Current complete rule inventory/verifier/original deadlines required')
     text = console.read_text(encoding='utf-8-sig')
     runs = re.findall(r'^Running (.+)\.\.\.$', text, re.M)

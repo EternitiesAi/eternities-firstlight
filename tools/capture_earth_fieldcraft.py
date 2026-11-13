@@ -134,7 +134,7 @@ def main():
                     while not report.get('download_retained'):
                         if time.monotonic()>=deadline:raise TimeoutError('Recorder download was not confirmed retained')
                         page.wait_for_timeout(100)
-                response=page.goto(origin+'/index.html',wait_until='load');page.wait_for_function('()=>!!window.Realm&&getComputedStyle(document.querySelector("#loading")).opacity==="0"')
+                response=page.goto(origin+'/index.html#play',wait_until='load');page.wait_for_function('()=>!!window.Realm&&getComputedStyle(document.querySelector("#loading")).opacity==="0"')
                 check('Production page without test controls',page.evaluate('()=>typeof Realm.test==="undefined"'))
                 check('Exact served build',hashlib.sha256(response.body()).hexdigest()==report['html_sha256'])
                 def state():return page.evaluate('()=>Realm.state')
