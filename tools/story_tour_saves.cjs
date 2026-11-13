@@ -120,22 +120,16 @@ for (const j of JOURNEYS) {
   }
 }
 
-// the nearshore: the choice is open after the regent offers the faultless fox, before the real choose. The source is the first
-// command-earned save the journeys above wrote where the witness is done and Briar is taken. None means the nearshore is a gap.
+// the nearshore: the bot's own run, stopped at its save point. the bot walks one fresh character through the witness with
+// Briar taken, then writes the live world right before the real choice. a child process keeps the bot's state apart.
 {
   const dir = path.join(root, 'nearshore');
   fs.mkdirSync(dir, { recursive: true });
-  const SG = require(path.join(ROOT, 'src/saga.js'));
-  const source = walkJson(root).find(p => {
-    try { const s = C.validate(JSON.parse(fs.readFileSync(p, 'utf8'))); return SG.done(s, 'witness') && s.saga.briar.state === 'taken'; } catch (error) { return false; }
-  });
-  collect('nearshore', 'tests/nearshore_journey.cjs', dir, () => {
-    if (!source) throw Error('no witness-finished save with Briar taken was written by the journeys above');
-    require(path.join(ROOT, 'tests/nearshore_journey.cjs')).journey({
-      out: dir,
-      source,
-      beforeChoose: sim => fs.writeFileSync(path.join(dir, 'NEARSHORE_CHOICE_OPEN.json'), JSON.stringify(sim.snapshot(), null, 2) + '\n'),
-    });
+  collect('nearshore', 'tools/firstlight_journey.cjs --save-at nearshore', dir, () => {
+    const botOut = path.join(root, '_bot', 'nearshore');
+    const bot = childProcess.spawnSync(process.execPath, [path.join(ROOT, 'tools/firstlight_journey.cjs'), '--save-at', 'nearshore', '--out', botOut], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+    if (bot.status !== 0) throw Error('the bot did not reach its save point: ' + String(bot.stdout || bot.stderr || '').trim().split('\n').slice(-2).join(' | ').slice(0, 300));
+    fs.copyFileSync(path.join(botOut, '11', 'NEARSHORE_CHOICE_OPEN.json'), path.join(dir, 'NEARSHORE_CHOICE_OPEN.json'));
   });
 }
 
@@ -179,8 +173,11 @@ for (const j of JOURNEYS) {
 
 // one save per tour scene, named from the journeys' own checkpoints. The why column says what the saga reports for that
 // save (see the manifest). A scene whose checkpoint did not come out of its journey is reported as unreached, with why.
-// the crossing is a waystone room: the page enters it with the real travel command after the home checkpoint is loaded.
-const TRAVEL_BELL = [{ act: { id: 'tour-travel-bellweather', type: 'waystone-travel', payload: { id: 'bellweather' } } }];
+// the page walks the real way before each entry: to the spring waystone for the crossing, to the valley's Road of Light
+// marker for the campaign realms, to the observatory invitation for the cosmos. the walk is the page's own move command.
+const SPRING = { walk: [0, 3] }, ROAD_MARKER = { walk: [18, 6] }, OBSERVATORY = { walk: [14, -5] };
+const TRAVEL_BELL = [SPRING, { act: { id: 'tour-travel-bellweather', type: 'waystone-travel', payload: { id: 'bellweather' } } }];
+const REALM = (id, gate) => [gate, { realm: id }];
 const SCENES = [
   { scene: 'envoy', file: 'chapter/ENVOY_BEFORE_CHOICE.json', why: 'at the spring before the envoy chooses; envoy and feather done' },
   { scene: 'feather', file: 'chapter/CHAPTER_COMPLETED.json', why: 'after the feather sight at the spring; feather done' },
@@ -188,11 +185,11 @@ const SCENES = [
   { scene: 'bellweather', file: 'crossing/CROSSING_READY_EARNED.json', steps: TRAVEL_BELL, why: 'the Roads of Light travel to the crossing (waystone-travel)' },
   { scene: 'night-lit', file: 'night/NIGHT_LIT_AT_HOME.json', steps: TRAVEL_BELL, why: 'the night has begun; the crossing is reached by the real travel' },
   { scene: 'night-quiet', file: 'night/NIGHT_QUIET_AT_HOME.json', steps: TRAVEL_BELL, why: 'after the bite, Briar taken; the crossing is reached by the real travel' },
-  { scene: 'hell', file: 'hell/fresh-blade/04_WARDEN_RESOLVED.json', why: 'the foundry warden is resolved' },
-  { scene: 'heaven', file: 'heaven/05_ACTUAL_COURIER_ARRIVAL.json', why: 'the courier arrives in heaven' },
-  { scene: 'relay', file: 'heaven/03_FALSE_SIGNAL_WATCH.json', why: 'the counterfeit relay signal; the seraph fight itself is not checkpointed' },
-  { scene: 'witness', file: 'atlantis/07_ACTUAL_BEARING_EXPOSED.json', why: 'the drowned witness bearing is exposed' },
-  { scene: 'cosmos', file: 'cosmos/08_INDEPENDENT_SUPPORT_SETTINGS.json', why: 'independent cosmos anchors; the central link is disabled' },
+  { scene: 'hell', file: 'hell/fresh-blade/04_WARDEN_RESOLVED.json', steps: REALM('hell', ROAD_MARKER), why: 'the foundry warden is resolved; the realm is entered by the real Road of Light travel' },
+  { scene: 'heaven', file: 'heaven/05_ACTUAL_COURIER_ARRIVAL.json', steps: REALM('heaven', ROAD_MARKER), why: 'the courier arrives in heaven; the realm is entered by the real Road of Light travel' },
+  { scene: 'relay', file: 'heaven/03_FALSE_SIGNAL_WATCH.json', steps: REALM('heaven', ROAD_MARKER), why: 'the counterfeit relay signal; the seraph fight itself is not checkpointed' },
+  { scene: 'witness', file: 'atlantis/07_ACTUAL_BEARING_EXPOSED.json', steps: REALM('atlantis', ROAD_MARKER), why: 'the drowned witness bearing is exposed' },
+  { scene: 'cosmos', file: 'cosmos/08_INDEPENDENT_SUPPORT_SETTINGS.json', steps: REALM('cosmos', OBSERVATORY), why: 'independent cosmos anchors; the central link is disabled' },
   { scene: 'nearshore', file: 'nearshore/NEARSHORE_CHOICE_OPEN.json', why: 'the regent has offered the faultless fox; the choice is open (two foxes)' },
   { scene: 'finale-1', file: 'finale/phase1_rises.json', why: 'the Regent rises at the spring junction; phase 1' },
   { scene: 'finale-2', file: 'finale/phase2_chains.json', why: 'chains broken; phase 2' },

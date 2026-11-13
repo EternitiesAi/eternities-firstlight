@@ -5,7 +5,9 @@
  * bellweather crossing, the night, the local realms, then the hell and heaven campaigns (the connected helpers take the
  * live world). Times, levels, hp and gear come from the saved worlds. Beats with no producer print as not wired, with the
  * reason, and the bot stops at the first blocked beat. The bot never plants a defeat, edits a position or a stat.
- * Usage: node tools/firstlight_journey.cjs [--out <dir>]
+ * Usage: node tools/firstlight_journey.cjs [--out <dir>] [--ending <name>] [--save-at nearshore]
+ * --save-at nearshore writes the live world right before the nearshore choice to <out>/11/NEARSHORE_CHOICE_OPEN.json and
+ * ends the run there; that run is judged by its checkpoint, not by the credits.
  * Importable: require('./firstlight_journey.cjs').run({ out, quiet }) returns { rows, creditsRolled, stoppedAt, totals }. */
 const fs = require('node:fs'), os = require('node:os'), path = require('node:path');
 const ROOT = path.resolve(__dirname, '..');
@@ -16,7 +18,7 @@ const BEATS = ['kit', 'hart', 'envoy', 'road', 'beacon', 'bellweather', 'night',
 const NOT_YET = {
  atlantis: 'the atlantis helper runs after heaven; heaven is blocked',
  cosmos: 'the cosmos helper runs after atlantis; not reached',
- nearshore: 'no nearshore producer yet (src/nearshore.js commands are not driven)',
+ nearshore: 'not reached: an earlier beat stopped the chain',
  finale: 'the finale check (tests/finale.test.cjs) uses an earned world; the fresh finale is not reached',
  credits: 'not reached: the chain stops before the finale'
 };
@@ -40,19 +42,31 @@ function ran(rows, beat, from, to, detail, log) {
 }
 function ranNoWorld(rows, beat, detail, log) { const r = { beat, status: 'ran', secs: null, level: null, hp: null, gear: null, detail }; rows.push(r); if (log) log(r); return r; }
 function blocked(rows, beat, why, log) { const r = { beat, status: 'blocked', why: String(why).split('\n')[0].slice(0, 200) }; rows.push(r); if (log) log(r); return r; }
-function notReached(rows, beat, log) { const r = { beat, status: 'not reached', why: NOT_YET[beat] }; rows.push(r); if (log) log(r); return r; }
+function notReached(rows, beat, log, why = NOT_YET[beat]) { const r = { beat, status: 'not reached', why }; rows.push(r); if (log) log(r); return r; }
 function fmt(r) {
  if (r.status !== 'ran') return (r.status === 'blocked' ? 'BLOCKED   ' : 'not reached ') + r.beat.padEnd(11) + ' ' + r.why;
  const time = r.secs === null ? 'n/a' : r.secs + 's';
  return 'ran       ' + r.beat.padEnd(11) + ' ' + time.padStart(8) + '  lv ' + (r.level ?? '-') + '  hp ' + (r.hp ?? '-') + '  ' + (r.gear ?? '-') + '  ' + r.detail;
 }
 
+// the save point: the live world right before the real nearshore choose. the core validator reads it back before it is
+// written, so a checkpoint the collector copies is always a valid save.
+function saveNearshore(file, sim) {
+ const world = sim.snapshot();
+ require(path.join(ROOT, 'src/core.js')).validate(JSON.parse(JSON.stringify(world)));
+ fs.mkdirSync(path.dirname(file), { recursive: true });
+ fs.writeFileSync(file, JSON.stringify(world, null, 2) + '\n');
+}
+
 function run(options = {}) {
+ // an unknown or valueless save point is refused before any folder or journey is started.
+ const saveAt = options.saveAt ?? null;
+ if (saveAt !== null && saveAt !== 'nearshore') throw new Error('--save-at takes nearshore: no other save point is wired');
  TACTICS.install(); TACTICS.reset();
  const out = outFolder(options.out);
  fs.mkdirSync(out, { recursive: true });
  const log = options.quiet ? null : r => console.log(fmt(r));
- const rows = []; let stoppedAt = null, creditsRolled = false;
+ const rows = []; let stoppedAt = null, creditsRolled = false, saved = null;
  const sub = n => path.join(out, n);
  const f = (dir, file) => path.join(sub(dir), file);
  const fresh = { adventure: { elapsed: 0, xp: 0, hp: 100, equipment: {} } };
@@ -126,9 +140,12 @@ function run(options = {}) {
  if (world) {
   const before = readJson(world);
   try {
-   const n = require(path.join(ROOT, 'tests/nearshore_journey.cjs')).journey({ out: sub('11'), source: world });
+   const savePoint = f('11', 'NEARSHORE_CHOICE_OPEN.json');
+   const n = require(path.join(ROOT, 'tests/nearshore_journey.cjs')).journey({ out: sub('11'), source: world, beforeChoose: saveAt !== null ? sim => saveNearshore(savePoint, sim) : undefined });
    world = n.final;
    ran(rows, 'nearshore', before, readJson(world), 'the lantern pier: the real Briar at her habit place is chosen', log);
+   // a save-point run ends at its checkpoint: the finale and the credits are not reached by this run.
+   if (saveAt !== null) { saved = savePoint; stoppedAt = 'nearshore'; world = null; }
   } catch (e) { blocked(rows, 'nearshore', e.message, log); stoppedAt = stoppedAt || 'nearshore'; world = null; }
  }
 
@@ -148,7 +165,8 @@ function run(options = {}) {
   } catch (e) { blocked(rows, 'finale', e.message, log); stoppedAt = stoppedAt || 'finale'; world = null; }
  }
 
- for (const beat of BEATS) if (!rows.some(r => r.beat === beat)) notReached(rows, beat, log);
+ const stopWhy = saved ? 'stopped at the --save-at ' + saveAt + ' save point' : undefined;
+ for (const beat of BEATS) if (!rows.some(r => r.beat === beat)) notReached(rows, beat, log, stopWhy);
 
  const ranRows = rows.filter(r => r.status === 'ran');
  const totals = { beatsRan: ranRows.length, beatsTotal: BEATS.length, simulatedSeconds: +ranRows.reduce((n, r) => n + (r.secs || 0), 0).toFixed(1), creditsRolled };
@@ -156,13 +174,17 @@ function run(options = {}) {
  const fights = TACTICS.table();
  if (log && fights.length) { console.log('--- boss fights: time, player hits, hp lost, tonics used'); for (const f of fights) console.log('  ' + f.boss.padEnd(18) + ' ' + f.outcome.padEnd(7) + ' ' + (f.secs + 's').padStart(8) + '  hits ' + f.hits + '  hp lost ' + f.hpLost + '  tonics ' + f.tonics); }
  if (log) console.log('--- shared fight step: ' + TACTICS.dodges() + ' step-outs from warned spots');
- return { rows, creditsRolled, stoppedAt, totals, out, ending: options.ending || 'open', finalWorld: world, fights, dodges: TACTICS.dodges() };
+ return { rows, creditsRolled, stoppedAt, totals, out, ending: options.ending || 'open', finalWorld: world, fights, dodges: TACTICS.dodges(), saved };
 }
 
 module.exports = { run, BEATS };
 if (require.main === module) {
  const i = process.argv.indexOf('--out');
  const e = process.argv.indexOf('--ending');
- const result = run({ out: i > 0 ? process.argv[i + 1] : null, ending: e > 0 ? process.argv[e + 1] : 'open' });
- process.exitCode = result.creditsRolled ? 0 : 1;
+ const s = process.argv.indexOf('--save-at');
+ // a flag with no value is '' and run() refuses it, so it can never fall through to a full run.
+ const saveAt = s > 0 ? (process.argv[s + 1] || '') : null;
+ const result = run({ out: i > 0 ? process.argv[i + 1] : null, ending: e > 0 ? process.argv[e + 1] : 'open', saveAt });
+ // a save-point run is judged by its checkpoint; a full run is judged by its credits, as before.
+ process.exitCode = saveAt !== null ? (result.saved ? 0 : 1) : (result.creditsRolled ? 0 : 1);
 }
