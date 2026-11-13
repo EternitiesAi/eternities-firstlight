@@ -150,8 +150,8 @@ function retryWildSignsClearance(sim){
  }
  r.wildSignsClearanceResult=result;notify(sim,result.text||result.error||result.warning||'Read the saved field account.');return result;
 }
-function combatScene(sim){if(sim.room===TR.definition.room)return TR.fighting(sim);if(sim.room===CC.definition.room)return !sim.worldDive&&!!CC.enemies(sim).length;if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&(!!G.RealmWorldFoundations.definition(sim.room)?.enemies?.length||!!G.RealmTrails?.enemies(sim).length||!!AT.enemies(sim).length||!!HC.enemies(sim).length||!!HV.enemies(sim).length||!!EH.enemies(sim).length);return sim.room===Q.ROOM||sim.room==='mine'||sim.room==='road'||sim.room==='range'||sim.room==='crossing';}
-function roster(sim){if(sim.room===TR.definition.room)return TR.enemies(sim);if(sim.room===CC.definition.room)return CC.enemies(sim);if(G.RealmWorldFoundations?.handles(sim.room))return[...G.RealmWorldFoundations.enemies(sim),...(G.RealmTrails?.enemies(sim)||[]),...EE.enemies(sim),...AT.enemies(sim),...HC.enemies(sim),...HV.enemies(sim),...EH.enemies(sim),...wildSignsTerms(sim)];return sim.room===Q.ROOM?[Q.PRACTICE,...(sim.state.adventure.pursuit.active?H.enemies(sim.state.adventure):sim.state.adventure.starter.accepted?Q.ENEMIES:[])]:sim.room==='crossing'?CROSS.ENEMIES:sim.room==='range'?AR.RANGE.targets.map(d=>({...d,hp:100,maxHP:100})):sim.room==='road'?ROAD.ENEMIES:sim.room==='mine'?ENEMIES:[];}
+function combatScene(sim){if(sim.room===TR.definition.room)return TR.fighting(sim);if(sim.room===null)return !sim.worldDive&&!!EH.enemies(sim).length;if(sim.room===CC.definition.room)return !sim.worldDive&&!!CC.enemies(sim).length;if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&(!!G.RealmWorldFoundations.definition(sim.room)?.enemies?.length||!!G.RealmTrails?.enemies(sim).length||!!AT.enemies(sim).length||!!HC.enemies(sim).length||!!HV.enemies(sim).length||!!EH.enemies(sim).length);return sim.room===Q.ROOM||sim.room==='mine'||sim.room==='road'||sim.room==='range'||sim.room==='crossing';}
+function roster(sim){if(sim.room===TR.definition.room)return TR.enemies(sim);if(sim.room===null)return EH.enemies(sim);if(sim.room===CC.definition.room)return CC.enemies(sim);if(G.RealmWorldFoundations?.handles(sim.room))return[...G.RealmWorldFoundations.enemies(sim),...(G.RealmTrails?.enemies(sim)||[]),...EE.enemies(sim),...AT.enemies(sim),...HC.enemies(sim),...HV.enemies(sim),...EH.enemies(sim),...wildSignsTerms(sim)];return sim.room===Q.ROOM?[Q.PRACTICE,...(sim.state.adventure.pursuit.active?H.enemies(sim.state.adventure):sim.state.adventure.starter.accepted?Q.ENEMIES:[])]:sim.room==='crossing'?CROSS.ENEMIES:sim.room==='range'?AR.RANGE.targets.map(d=>({...d,hp:100,maxHP:100})):sim.room==='road'?ROAD.ENEMIES:sim.room==='mine'?ENEMIES:[];}
 function visible(sim,a,b){if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&G.RealmWorldFoundations.segment(sim.room,a,b,.04);if(sim.room===G.RealmCosmos?.ROOM)return G.RealmCosmos.line(a,b);return sim.room===Q.ROOM?Q.line(a,b):sim.room==='crossing'?CROSS.line(a,b):sim.room==='range'?AR.aimClear(sim,a,b):sim.room==='road'?ROAD.line(a,b):sim.room==='mine'?line(sim.state.adventure,a,b):G.RealmCore.segment(a,b,sim.navRoom);}
 function ground(sim,x,z,r=.31){if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&G.RealmWorldFoundations.walkable(sim.room,x,z,r);if(sim.room===G.RealmCosmos?.ROOM)return G.RealmCosmos.walkable(x,z,r);return sim.room===Q.ROOM?Q.walkable(x,z,r):sim.room==='crossing'?CROSS.walkable(x,z,r):sim.room==='range'?AR.rangeWalkable(x,z,r):sim.room==='road'?ROAD.walkable(x,z,r):sim.room==='mine'?walkable(sim.state.adventure,x,z,r):G.RealmCore.walkable(x,z,sim.navRoom,r);}
 function safeNear(sim,p,radius=.7){const options=[{x:p.x,z:p.z},...Array.from({length:12},(_,i)=>({x:p.x+Math.sin(i*Math.PI/6)*radius,z:p.z+Math.cos(i*Math.PI/6)*radius}))];return options.find(q=>ground(sim,q.x,q.z))||{x:p.x,z:p.z};}
@@ -313,7 +313,7 @@ function tick(sim,dt){
  if(!s.started)return;
  if(s.hp>0)s.stamina=Math.min(100,s.stamina+dt*15);
  AT.tick(sim,dt);
- HV.tick(sim,dt);
+ HV.tick(sim,dt);EH.tick(sim,dt);
  TR.tick(sim,dt);
  AR.update(sim,dt);
  B.tick(sim,dt);
@@ -342,7 +342,7 @@ function tick(sim,dt){
   if(e.mode==='windup'){
    if(e.timer<=0){
     if(e.kind==='charger'){e.mode='charge';e.chargeLeft=9;e.chargeHit=false;fx(sim,'dodge',e.x,e.z,0xd8ad87);}
-    else if(EH.encounter(e)){e.contactAt=s.elapsed;e.contactHit=EH.canDamage(sim,e)&&EH.strikeContains(e,p)&&visible(sim,e,p)&&takeDamage(sim,e.damage);fx(sim,'impact',e.strike.x,e.strike.z,0xcbb181);e.mode='recover';e.timer=e.recovery;e.path=[];}
+    else if(EH.encounter(e)){e.contactAt=s.elapsed;e.contactHit=EH.canStrike(sim,e)&&EH.strikeContains(e,p)&&visible(sim,e,p)&&takeDamage(sim,e.damage);fx(sim,'impact',e.strike.x,e.strike.z,0xcbb181);e.mode='recover';e.timer=e.recovery;e.path=[];}
     else if(CC.encounter(e)){e.contactAt=s.elapsed;e.contactHit=CC.strikeContains(e,p)&&visible(sim,e,p)&&takeDamage(sim,e.damage);fx(sim,'impact',e.strike.x,e.strike.z,0xb9d5ca);e.mode='recover';e.timer=e.recovery;e.path=[];}
      else if(AT.encounter(e)){e.contactAt=s.elapsed;e.contactHit=false;e.path=[];if(e.strike.kind==='intake'){e.mode='intake';e.timer=AT.patterns.intake.active;}else{e.contactHit=AT.strikeContains(e,p)&&visible(sim,e,p)&&takeDamage(sim,e.damage);fx(sim,'impact',e.strike.x,e.strike.z,0x90cec4);e.mode='recover';e.timer=e.recovery;}}
     else if(HV.encounter(e)){e.contactAt=s.elapsed;e.contactHit=HV.strikeContains(e,p)&&visible(sim,e,p)&&takeDamage(sim,e.damage);fx(sim,'impact',e.strike.x,e.strike.z,0xc5dce3);e.mode='recover';e.timer=e.recovery;e.path=[];}

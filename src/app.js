@@ -531,9 +531,10 @@ function rotateCamera(angle){clearGrazerFocus();camera.yaw=cameraHeading()+angle
 function updateCamera(dt){
  if(!engine)return;if(camera.preset!=='adventure'||camera.tour){updateOrthographicCamera(dt);return;}
  const person=follow?sim.state.residents.find(r=>r.id===follow):sim.state.player,base=sceneHeight(person.x,person.z);
- const desired=grazerFocus()||carrierFocus()||fieldcraftFocus()||[person.x,base+1.5,person.z],still=sim.state.settings.reducedMotion,factor=still?1:1-Math.exp(-Math.max(dt,.001)*9);
+ const rise=RealmEarthHomecoming?.view?.(sim),desired=rise?rise.center:(grazerFocus()||carrierFocus()||fieldcraftFocus()||[person.x,base+1.5,person.z]),still=sim.state.settings.reducedMotion,factor=still?1:1-Math.exp(-Math.max(dt,.001)*9);
  for(let i=0;i<3;i++)camera.center[i]+=(desired[i]-camera.center[i])*factor;
- const d=camera.distance,ce=Math.cos(camera.elevation),previous=camera.actualYaw??camera.yaw;
+ if(rise){if(!camera.riseSaved)camera.riseSaved={elevation:camera.elevation,distance:camera.distance};camera.elevation=rise.elevation;camera.distance=rise.distance;}else if(camera.riseSaved){camera.elevation=camera.riseSaved.elevation;camera.distance=camera.riseSaved.distance;camera.riseSaved=null;}
+const d=camera.distance,ce=Math.cos(camera.elevation),previous=camera.actualYaw??camera.yaw;
  const resolved=engine.resolveCameraOrbit(camera.center,camera.yaw,camera.elevation,d,previous);
  const turn=Math.atan2(Math.sin(resolved.yaw-previous),Math.cos(resolved.yaw-previous));
  const priorEye=camera.center.map((v,i)=>v+[Math.sin(previous)*ce,Math.sin(camera.elevation),Math.cos(previous)*ce][i]*d);
