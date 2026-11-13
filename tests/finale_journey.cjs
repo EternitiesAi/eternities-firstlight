@@ -4,7 +4,7 @@
  * equip the best owned gear first, attack what is in reach, pulse when stamina allows. Reports each fight's numbers. */
 'use strict';
 const fs = require('node:fs'), os = require('node:os'), path = require('node:path'), assert = require('node:assert/strict');
-const C = require('../src/core.js'), AD = require('../src/adventure.js'), EH = require('../src/earth-homecoming.js');
+const C = require('../src/core.js'), AD = require('../src/adventure.js'), EH = require('../src/earth-homecoming.js'), AR = require('../src/arsenal.js');
 const dist = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 
 function journey(options = {}) {
@@ -23,12 +23,15 @@ function journey(options = {}) {
  const step = t => { for (let i = 0; i < Math.round(t / .1); i++) sim.tick(.1); };
  const walk = (x, z) => { sim.moveTo(x, z); for (let i = 0; i < 4000 && sim.playerPath.length; i++) step(.1); return dist(sim.state.player, { x, z }) < 1.6; };
  const threatened = q => rt().enemies.some(e => e.finaleRole === 'regent' && e.strike && EH.strikeContains(e, q));
- const foes = () => rt().enemies.filter(e => e.hp > 0 && e.finaleRole && (e.finaleRole === 'chain' ? ph() === 1 : e.finalePhase === ph()));
+ // only what can be hurt now: the chained first body stands in phase one and takes nothing, so it is never the target.
+ const foes = () => rt().enemies.filter(e => e.hp > 0 && e.finaleRole && (e.finaleRole === 'chain' ? ph() === 1 : e.finalePhase === ph()) && EH.canDamage(sim, e));
  const safeSpot = () => { const p = sim.state.player; for (let k = 0; k < 16; k++) { const t = k / 16 * Math.PI * 2, q = { x: p.x + Math.cos(t) * 2.6, z: p.z + Math.sin(t) * 2.6 }; if (C.walkable(q.x, q.z, sim.navRoom, .31) && !threatened(q)) return q; } return null; };
 
  // the best owned gear for each slot, judged by the table's own numbers
  function equipBest() {
-  const owned = (a().owned || []).filter(id => AD.GEAR[id]);
+  // a weapon is swapped only for one of the same style: a bow character stays a bow character.
+  const style = id => AD.GEAR[id].slot === 'weapon' ? (AR.weapon({ ...a(), equipment: { ...a().equipment, weapon: id } }).style) : null, mine = AR.weapon(a()).style;
+  const owned = (a().owned || []).filter(id => AD.GEAR[id] && (AD.GEAR[id].slot !== 'weapon' || style(id) === mine));
   for (const slot of [...new Set(owned.map(id => AD.GEAR[id].slot))]) {
    const score = id => AD.GEAR[id].attack + AD.GEAR[id].defense + AD.GEAR[id].hp, best = owned.filter(id => AD.GEAR[id].slot === slot).sort((x, y) => score(y) - score(x))[0];
    if (a().equipment[slot] !== best) { const r = cmd('equip', { id: best }); if (!r.ok) throw new Error('equip ' + best + ': ' + r.error); }

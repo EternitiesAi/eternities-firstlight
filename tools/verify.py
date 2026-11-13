@@ -546,6 +546,10 @@ def main():
     whole_draft_output = output / 'whole-draft-earned'
     if os.name == 'nt' and whole_draft_output.drive.upper() != 'D:':
         whole_draft_output = ROOT / 'evidence10/whole-draft-earned'
+    elif os.name != 'nt' and whole_draft_output.resolve().is_relative_to(ROOT.resolve()):
+        # the connected cosmos helper refuses to write inside the game checkout; on the box the output is under it
+        import tempfile
+        whole_draft_output = Path(tempfile.mkdtemp(prefix='whole-draft-')) / 'whole-draft-earned'
     run('whole-draft-earned', ['node', 'tools/whole_draft_journey.cjs', '--output', str(whole_draft_output)], timeout=600,
         extra_env={'FIRSTLIGHT_ROOT': str(ROOT)})
     # Reuse exact current earned chapter edges; do not replay whole campaigns

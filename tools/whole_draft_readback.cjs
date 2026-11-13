@@ -1,7 +1,8 @@
 'use strict';
 /* Strict byte/chronology readback; it does not independently observe play. */
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto');
-const ORDER=['original-I','original-II','original-III','original-IV','local-Earth','hell','heaven','atlantis','cosmos','Earth-homecoming'];
+// the saga's order: the night after the crossing, the nearshore before the finale; the finale replaced the old homecoming quest.
+const ORDER=['original-I','original-II','original-III','original-IV','night','local-Earth','hell','heaven','atlantis','cosmos','nearshore','finale'];
 const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 function inspect(file,{report=JSON.parse(fs.readFileSync(file)),sourceRoot=report.root}={}){
  const root=fs.realpathSync(sourceRoot),base=fs.realpathSync(path.dirname(file));assert.equal(root,fs.realpathSync(report.root));
@@ -14,12 +15,13 @@ function inspect(file,{report=JSON.parse(fs.readFileSync(file)),sourceRoot=repor
  const P=require(path.join(root,'tools/earth-homecoming-journey/earned_common.cjs'));
  for(const r of report.results){assert.equal(r.status,'passed');assert.equal(r.historicalFixtureInputs,0);assert.deepEqual(r.chapters.map(e=>e.chapter),ORDER);assert.equal(r.chapters[0].input,null,'the first chapter starts fresh');
   let previous=null;for(const e of r.chapters){if(previous)assert.deepEqual(e.input,previous,'each full-world input is the previous exact output');const out=link(e.output),details=link(e.report);assert.equal(details.status,'passed');assert.deepEqual(C.validate(out),out,'actual Core accepts every saved chapter');previous=e.output;}
-  assert.deepEqual(r.final,previous);const final=link(r.final),prior=link(r.chapters.at(-1).input);assert.deepEqual(H.missing(final),[]);assert.equal(final.earthHomecoming.claimed,true);assert.equal(final.earthHomecoming.steps.includes('home-return'),true);assert.equal(prior.earthHomecoming.accepted,false);assert.equal(prior.earthHomecoming.claimed,false);
-  assert.equal(final.earthHomecoming.choice,r.variant==='blade'?'public-watch':'reviewed-custody');assert.equal(AR.weapon(final.adventure).style,r.variant==='blade'?'blade':'bow');
-  assert.equal(final.adventure.xp-prior.adventure.xp,Math.min(H.definition.reward.xp,9999-prior.adventure.xp));for(const k of ['coins','ore'])assert.equal(final.adventure[k]-prior.adventure[k],H.definition.reward[k]);for(const[k,n]of Object.entries(H.definition.reward.materials))assert.equal(final.sandbox.inventory[k]-prior.sandbox.inventory[k],n);
-  P.preserved(final,prior);assert.deepEqual(r.finalStats,A.stats(final.adventure));assert.equal(r.finalWeapon,final.adventure.equipment.weapon);
+  assert.deepEqual(r.final,previous);const final=link(r.final),prior=link(r.chapters.at(-1).input);assert.deepEqual(H.missing(final),[]);assert.equal(prior.saga.finale.won,false,'the finale starts unwon');assert.equal(final.saga.finale.won,true);assert.equal(final.saga.credits,true,'the credits rolled');
+  assert.equal(AR.weapon(final.adventure).style,r.variant==='blade'?'blade':'bow');
+  // the finale bot equips the best owned gear (ordinary equip commands); everything else is preserved exactly.
+  for(const id of Object.values(final.adventure.equipment))if(id)assert.ok(final.adventure.owned.includes(id),'only owned gear is equipped: '+id);
+  P.preserved({...final,adventure:{...final.adventure,equipment:prior.adventure.equipment}},prior);assert.deepEqual(r.finalStats,A.stats(final.adventure));assert.equal(r.finalWeapon,final.adventure.equipment.weapon);
   for(const[k,v]of Object.entries(P.ZERO)){assert.equal(r[k],v);assert.equal(report[k],v);}
  }
- return {status:'passed',variants:2,chapterEdges:20,historicalFixtureInputs:0,scope:'Byte/source/chronology readback of accelerated CPU journeys; no new native or human claim.'};
+ return {status:'passed',variants:2,chapterEdges:report.results.reduce((n,r)=>n+r.chapters.length,0),historicalFixtureInputs:0,scope:'Byte/source/chronology readback of accelerated CPU journeys; no new native or human claim.'};
 }
 module.exports={inspect,ORDER};

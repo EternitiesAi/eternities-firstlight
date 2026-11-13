@@ -59,6 +59,9 @@ function projectileGround(sim,x,z){
  if(sim.room==='crossing')return G.RealmCrossing.projectileGround(x,z,.035);
  if(sim.room==='mine')return A.walkable(sim.state.adventure,x,z,.035);
  if(sim.room==='range')return rangeWalkable(x,z,.035);
+ // the home valley is a combat scene only for the finale: arrows fly over its open ground (they had no valley case, so
+ // a bow could not loose a single arrow at the chains or the Regent).
+ if(sim.room===null)return G.RealmCore.walkable(x,z,sim.navRoom,.035);
  if(sim.room==='road')return R.land(x,z,.035)&&![...R.OBSTACLES,...R.TREES.map(t=>({x:t[0],z:t[1],r:.24*t[2]}))].some(o=>o.r!==undefined?Math.hypot(x-o.x,z-o.z)<o.r+.035:Math.abs(x-o.x)<o.w/2+.035&&Math.abs(z-o.z)<o.d/2+.035);
  return false;
 }

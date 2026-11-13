@@ -42,6 +42,10 @@ try{
   input=stage('original-III',input,path.join(beacon,'CHAPTER_III_COMPLETE_EARNED.json'),path.join(beacon,'BEACON_JOURNEY.json'));
   current.chapter='original-IV';const crossing=path.join(base,'original-IV');require(path.join(ROOT,'tests/crossing_journey.cjs')).journey({out:crossing,source:input,bow});
   input=stage('original-IV',input,path.join(crossing,'HOME_AFTER_BELL_EARNED.json'),path.join(crossing,'CROSSING_JOURNEY.json'));
+  // the night the warning failed, played as the bot plays it: the crossing save in, the night's own save out. it opens
+  // the way down that the hell chapter needs.
+  current.chapter='night';const night=path.join(base,'night');fs.mkdirSync(night,{recursive:true});require(path.join(ROOT,'tests/night_journey.cjs')).journey({out:night,source:input});
+  input=stage('night',input,path.join(night,'NIGHT_COMPLETE.json'),path.join(night,'NIGHT_JOURNEY.json'));
   current.chapter='local-Earth';const early=path.join(base,'local-Earth');const er=require(path.join(ROOT,'tools/earth-homecoming-journey/early_realms.cjs')).run({input,bow,folder:early});
   input=stage('local-Earth',input,er.final,path.join(early,'EARLY_REALMS_REPORT.json'));
   for(const realm of ['hell','heaven','atlantis','cosmos']){
@@ -50,11 +54,19 @@ try{
    const r=require(caller).journey({root:ROOT,inheritedWorld:input,connectedVariant:family,bow,output:out});assert.equal(r.status,'passed');
    input=stage(realm,input,path.join(out,family,'FINAL_WORLD.json'),path.join(out,family,realm.toUpperCase()+'_CAMPAIGN_JOURNEY_REPORT.json'));
   }
-  current.chapter='Earth-homecoming';const world=read(input),H=P.load('earth-homecoming');assert.deepEqual(H.missing(world),[],'all twelve preceding claims belong to this fresh continuous character');
-  assert.deepEqual(world.earthHomecoming,H.fresh(),'the final arc was not silently accepted');
-  const before=link(input),r=require(path.join(ROOT,'tools/earth-homecoming-journey/earned_earth_homecoming.cjs')).journey({input,expectedSha:before.sha256,folder:path.join(base,'Earth-homecoming'),variant:bow?'bow':'blade',choice:bow?'reviewed-custody':'public-watch',prepared:bow});
-  assert.equal(r.status,'passed');input=stage('Earth-homecoming',input,r.final.path,path.join(base,'Earth-homecoming/EARTH_HOMECOMING_JOURNEY_REPORT.json'));
-  const final=read(input);assert.equal(final.earthHomecoming.claimed,true);assert.equal(final.earthHomecoming.choice,bow?'reviewed-custody':'public-watch');assert.equal(final.earthHomecoming.steps.includes('home-return'),true);
+  // the nearshore, played as the bot plays it: the witness save walks to the pier and the real Briar is chosen. the
+  // homecoming owner counts it among the claims before it opens.
+  current.chapter='nearshore';const shore=path.join(base,'nearshore'),ns=require(path.join(ROOT,'tests/nearshore_journey.cjs')).journey({out:shore,source:input});
+  assert.equal(ns.status,'passed');fs.writeFileSync(path.join(shore,'NEARSHORE_JOURNEY.json'),JSON.stringify(ns,null,2)+'\n');input=stage('nearshore',input,ns.final,path.join(shore,'NEARSHORE_JOURNEY.json'));
+  // the homecoming is the finale now (the old homecoming quest was replaced by the saga's finale): played as the bot plays
+  // it, with the shared dodge step, from the nearshore save to the credits.
+  current.chapter='finale';const world=read(input),H=P.load('earth-homecoming');assert.deepEqual(H.missing(world),[],'all twelve preceding claims belong to this fresh continuous character');
+  assert.equal(world.saga?.finale?.won===true,false,'the finale was not silently won');
+  const TACTICS=require(path.join(ROOT,'tools/journey_tactics.cjs'));TACTICS.install();TACTICS.reset();TACTICS.setDodge(true);
+  const fin=path.join(base,'finale');fs.mkdirSync(fin,{recursive:true});let fz;try{fz=require(path.join(ROOT,'tests/finale_journey.cjs')).journey({out:fin,source:input,ending:'open'});}finally{TACTICS.setDodge(false);}/* the realm helpers of the next character brace and stand */
+  assert.equal(fz.status,'passed');assert.equal(fz.creditsRolled,true,'the credits roll');fs.writeFileSync(path.join(fin,'FINALE_JOURNEY.json'),JSON.stringify(fz,null,2)+'\n');
+  input=stage('finale',input,fz.final,path.join(fin,'FINALE_JOURNEY.json'));
+  const final=read(input);assert.equal(final.saga.finale.won,true);assert.equal(final.saga.credits,true);
   assert.equal(P.load('arsenal').weapon(final.adventure).style,bow?'bow':'blade');assert.deepEqual(H.missing(final),[]);
   results.push({variant,status:'passed',chapters:edges,final:link(input),finalStats:P.load('adventure').stats(final.adventure),finalWeapon:final.adventure.equipment.weapon,all12PrerequisitesEarned:true,
    note:bow?'This fresh character uses a blade in I–III and explicitly crafts/equips a bow before IV, then keeps that bow through all later arcs. No fresh-bow-I or strongest-fresh claim.':'One fresh blade character earns all original chapters and subsequent realm arcs, then comes home.',
