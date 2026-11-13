@@ -28,7 +28,7 @@ test('saves that already store xp validate under the new cap',()=>{
  for(const xp of[0,365,1680,9999]){const raw=JSON.parse(JSON.stringify({...A.fresh(),xp}));assert.equal(A.validate(raw).xp,xp);assert.equal(A.level(A.validate(raw)),A.level({xp}));}
 });
 test('the main-path boss table rises in hp and damage, and the chapter bosses read it',()=>{
- const order=['hart','ram','herald','keeper','warden','seraph','witness'].map(id=>D.boss(id));
+ const order=['hart','ram','herald','keeper','foundryWarden','relaySeraph','witnessGuardian'].map(id=>D.boss(id));
  for(let i=1;i<order.length;i++){assert.ok(order[i].hp>order[i-1].hp,'hp rises at '+i);assert.ok(order[i].damage>order[i-1].damage,'damage rises at '+i);}
  const reg=D.boss('regent');assert.deepEqual(reg.phases.map(p=>p.hp),[380,400,420]);assert.equal(reg.phases.reduce((n,p)=>n+p.hp,0),1200);
  assert.ok(reg.phases.every((p,i)=>i===0||p.damage>reg.phases[i-1].damage));assert.ok(reg.phases[0].damage>order.at(-1).damage);
@@ -37,6 +37,13 @@ test('the main-path boss table rises in hp and damage, and the chapter bosses re
  const herald=B.WAVES.flat().find(e=>e.id==='herald');assert.equal(herald.hp,350);assert.equal(herald.damage,29);
  const keeper=X.ENEMIES.find(e=>e.id==='cross-warden');assert.equal(keeper.hp,410);assert.equal(keeper.damage,30);
  assert.throws(()=>D.boss('nobody'),/Unknown boss/);
+ // the contract shape: exact keys, each entry hp, damage and windup, and copies that never write back to the table.
+ assert.deepEqual(Object.keys(D.BOSSES),['hart','ram','herald','keeper','foundryWarden','relaySeraph','witnessGuardian','regent']);
+ for(const id of Object.keys(D.BOSSES))for(const f of['hp','damage','windup'])assert.ok(Number.isFinite(D.boss(id)[f]),id+'.'+f);
+ assert.equal(reg.hp,1200);assert.equal(reg.damage,54);assert.ok(reg.phases.every(p=>Array.isArray(p.patterns)&&p.patterns.length>0));
+ assert.equal(D.boss('foundryWarden').hp,520);assert.equal(D.boss('relaySeraph').hp,620);assert.equal(D.boss('witnessGuardian').hp,720);
+ const copy=D.boss('hart');copy.hp=1;assert.equal(D.boss('hart').hp,240);assert.equal(D.BOSSES.hart.hp,240);
+ assert.equal(hart.windup,D.boss('hart').windup);assert.equal(D.BOSSES.hart.windup,1.05);
 });
 test('phases() maps damage dealt to a phase, runs the hook once per change, and refuses bad data',()=>{
  const seen=[];const p=D.phases({...D.boss('regent'),onPhase:(sim,e,next,prev)=>seen.push([next,prev])});

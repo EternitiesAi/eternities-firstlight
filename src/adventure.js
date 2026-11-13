@@ -39,7 +39,7 @@ const ENEMIES=Object.freeze([
  {id:'briar-1',name:'Briar skitter',kind:'skitter',x:-4,z:2,hp:35,damage:9,xp:20,ore:1,coins:3,windup:.75,poise:true},
  {id:'briar-2',name:'Root prowler',kind:'skitter',x:0,z:-3,hp:48,damage:11,xp:25,ore:1,coins:4,windup:.75,poise:true},
  {id:'sentinel',name:'Prism sentinel',kind:'sentinel',x:8,z:-3,hp:70,damage:13,xp:35,ore:2,coins:6,gear:'guard_vest',windup:1.05,poise:true},
- {id:'hart',name:'The Hollow Hart',kind:'boss',boss:true,x:8,z:-10,hp:D.boss('hart').hp,damage:D.boss('hart').damage,xp:D.boss('hart').xp,ore:4,coins:12,windup:1.05,attackOrder:['ring','line','double'],attackSpec:{line:{windup:1.2,length:6,half:.9},double:{windup:1.1,r1:2.4,r2:3.6,gap:.8}}}
+ {id:'hart',name:'The Hollow Hart',kind:'boss',boss:true,x:8,z:-10,hp:D.boss('hart').hp,damage:D.boss('hart').damage,xp:90,ore:4,coins:12,windup:D.boss('hart').windup,attackOrder:['ring','line','double'],attackSpec:{line:{windup:1.2,length:6,half:.9},double:{windup:1.1,r1:2.4,r2:3.6,gap:.8}}}
 ]);
 const key=(x,z)=>x+','+z,cellAt=(x,z)=>({gx:Math.round(x/CELL),gz:Math.round(z/CELL)}),cellPoint=(gx,gz)=>({x:gx*CELL,z:gz*CELL});
 function validCell(x,z){return Number.isInteger(x)&&Number.isInteger(z)&&Math.abs(x)<LIMIT&&Math.abs(z)<LIMIT;}

@@ -42,7 +42,7 @@ const SOLIDS=Object.freeze([
 const ENEMIES=Object.freeze([
  {id:'cross-thorn',name:'Briarback prowler',kind:'skitter',x:-10,z:-7,hp:110,damage:17,xp:25,ore:2,coins:6,windup:.75,poise:true},
  {id:'cross-prism',name:'The fractured tuner',kind:'sentinel',x:8,z:-13,hp:145,damage:19,xp:30,ore:2,coins:8,windup:1.05,poise:true},
- {id:'cross-warden',name:'The Hushbound Keeper',kind:'bellwarden',custom:'bell',boss:true,x:0,z:-23,hp:D.boss('keeper').hp,damage:D.boss('keeper').damage,xp:D.boss('keeper').xp,ore:3,coins:15,windup:1.2,attackOrder:['outer','inner','line','double'],attackSpec:{outer:{windup:1.7},inner:{windup:1.2},line:{windup:1.4,length:7,half:1},double:{windup:1.2,r1:2.8,r2:4.6,gap:.8}}}
+ {id:'cross-warden',name:'The Hushbound Keeper',kind:'bellwarden',custom:'bell',boss:true,x:0,z:-23,hp:D.boss('keeper').hp,damage:D.boss('keeper').damage,xp:80,ore:3,coins:15,windup:D.boss('keeper').windup,attackOrder:['outer','inner','line','double'],attackSpec:{outer:{windup:1.7},inner:{windup:1.2},line:{windup:1.4,length:7,half:1},double:{windup:1.2,r1:2.8,r2:4.6,gap:.8}}}
 ]);
 const GEAR=Object.freeze({
  keeper_coat:{name:'Bellweather keeper’s coat',slot:'armor',attack:0,defense:9,hp:30,tier:'Merchant',color:'#94ada4',desc:'A weatherproof coat from Edda. 24 sunmarks; +9 guard and +30 maximum health.'},

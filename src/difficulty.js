@@ -1,18 +1,22 @@
-/* Main-path boss table. Act lanes read hp, damage and xp from here, never a private copy.
- * phases(def) is the multi-phase helper for the finale: a phase ends when its hp is spent. */
+/* Main-path boss table. Story lanes read BOSSES by key; each entry is {hp, damage, windup} and boss(id) returns a copy.
+ * The regent's three phases carry their own move sets; phases(def) is the multi-phase helper the finale calls. */
 (function(G){'use strict';
-const boss=(hp,damage,xp)=>Object.freeze({hp,damage,xp});
+const phase=(hp,damage,patterns)=>Object.freeze({hp,damage,patterns:Object.freeze(patterns.slice())});
+const REGENT=Object.freeze([phase(380,46,['line','double']),phase(400,50,['line','double','bait']),phase(420,54,['double','bait','line'])]);
+const entry=(hp,damage,windup)=>Object.freeze({hp,damage,windup});
 const BOSSES=Object.freeze({
- hart:boss(240,24,90),
- ram:boss(320,28,55),
- herald:boss(350,29,0),
- keeper:boss(410,30,80),
- warden:boss(520,34,110),
- seraph:boss(620,38,140),
- witness:boss(720,42,170),
- regent:Object.freeze({xp:300,phases:Object.freeze([{hp:380,damage:46},{hp:400,damage:50},{hp:420,damage:54}].map(p=>Object.freeze(p)))})
+ hart:entry(240,24,1.05),
+ ram:entry(320,28,1.2),
+ herald:entry(350,29,1.35),
+ keeper:entry(410,30,1.2),
+ foundryWarden:entry(520,34,1.2),
+ relaySeraph:entry(620,38,1.2),
+ witnessGuardian:entry(720,42,1.35),
+ // the regent's hp is the sum of its phases and its damage the highest phase, so a top-level reader sees the whole fight.
+ regent:Object.freeze({hp:REGENT.reduce((n,p)=>n+p.hp,0),damage:Math.max(...REGENT.map(p=>p.damage)),windup:1.2,phases:REGENT})
 });
-function get(id){if(!Object.hasOwn(BOSSES,id))throw Error('Unknown boss: '+id);return BOSSES[id];}
+// A copy per call: a caller changes its own view, never the table.
+function get(id){if(!Object.hasOwn(BOSSES,id))throw Error('Unknown boss: '+id);return JSON.parse(JSON.stringify(BOSSES[id]));}
 // Ordered phases. index() reads damage dealt; the hook runs once per phase change, never on the same phase twice.
 function phases(def){
  const list=def?.phases;

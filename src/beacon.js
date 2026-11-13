@@ -11,7 +11,7 @@ const WAVES=Object.freeze([
  [{id:'cantor',name:'The ember cantor',kind:'chanter',x:5,z:-16,hp:105,damage:17,wardDamage:9,windup:1,poise:true},
   {id:'veiled',name:'Veiled desecrator',kind:'saboteur',x:-7,z:-16,hp:80,damage:13,wardDamage:7,hidden:true,windup:1,poise:true},
   {id:'second-claw',name:'Ashbound raider',kind:'invader',x:1,z:-14,hp:85,damage:15,wardDamage:6,windup:1,poise:true}],
- [{id:'herald',name:'The Chainbound Herald',kind:'siegeboss',boss:true,x:0,z:-17,hp:D.boss('herald').hp,damage:D.boss('herald').damage,wardDamage:14,windup:1.35,attackOrder:['strike','double','line'],attackSpec:{double:{windup:1.2,r1:2.5,r2:4,gap:.8},line:{windup:1.2,length:7,half:1}}},
+ [{id:'herald',name:'The Chainbound Herald',kind:'siegeboss',boss:true,x:0,z:-17,hp:D.boss('herald').hp,damage:D.boss('herald').damage,wardDamage:14,windup:D.boss('herald').windup,attackOrder:['strike','double','line'],attackSpec:{double:{windup:1.2,r1:2.5,r2:4,gap:.8},line:{windup:1.2,length:7,half:1}}},
   {id:'last-claw',name:'The herald’s attendant',kind:'invader',x:5,z:-15,hp:90,damage:17,wardDamage:6,windup:1,poise:true}]
 ]);
 function fresh(){return{version:1,introduced:false,complete:false,status:'dormant',attempts:0,failures:0,reward:false,relic:'undecided',route:null,soul:{grace:false,equipped:null,radiance:0,corruption:0,scars:[]}};}
