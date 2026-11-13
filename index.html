@@ -25,6 +25,8 @@ body.rain-exhibition-focus #earth-labels{display:none}
 .earth-homecoming-signals dt{font-weight:600;color:var(--return-gold);margin-top:.65rem}.earth-homecoming-signals dd{margin:.2rem 0 .65rem .75rem}
 @media(max-width:600px){.earth-homecoming-aftermaths,.earth-homecoming-prior{grid-template-columns:1fr}.earth-homecoming-prior dd{padding-left:.75rem;margin-bottom:.4rem}.earth-homecoming-steps{padding-left:1.3rem}.earth-homecoming h2{font-size:1.55rem}.earth-homecoming .earth-homecoming-terms,.earth-homecoming .earth-homecoming-confirm,.earth-homecoming .earth-homecoming-payment{padding:.8rem}}
 @media(prefers-reduced-motion:reduce){.earth-homecoming *,.earth-homecoming-invitation *,.earth-homecoming-map *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* story cards sit in the lower third so the scene stays readable above them. */
+#story-dialog{top:auto;bottom:3vh;margin:0 auto;max-height:34vh;overflow:auto}
 
 .cosmos-campaign,.cosmos-campaign-invitation,.cosmos-campaign-map{line-height:1.55}
 .cosmos-campaign-kicker,.cosmos-campaign-invitation small{color:#b9cfba;letter-spacing:.11em;font-size:.75rem}
@@ -1962,55 +1964,55 @@ const definition=freeze({
   {id:'cosmos-avar-senn-v1',name:'Avar Senn · created scholar',x:45,z:-35,appearsAfter:['disable-central-link']}
  ],
  steps:[
-  step('read-local-cost','Read the omitted local support cost','interact',14,-40,[],
+  step('read-local-cost','Read what Avar’s plan leaves out of the local cost','interact',14,-40,[],
    'Anik: Avar’s plan helped people, but his diagram leaves out what each branch has to carry. Raven and I have tested an anchor for every branch. Compare the marks.'),
-  step('material-inspect','Inspect the independent brace shoes','interact',22,-40,['read-local-cost'],
+  step('material-inspect','Check Anik’s brace shoes against the load marks','interact',22,-40,['read-local-cost'],
    'Check the brace shoes against the service load marks. Anik supplies the parts for this job; you do not spend your own materials.',{optional:true,lead:'material'}),
-  step('material-fit','Seat the material support','configure',22,-46,['material-inspect'],
+  step('material-fit','Seat the material anchor with your own struts','configure',22,-46,['material-inspect'],
    'Fit the supplied struts into both independent shoes. The completed brace prepares one distinct material support.',{optional:true,lead:'material',setting:'seat-independent-shoes'}),
-  step('assist-material','Fit the supplied pre-checked material support','configure',22,-46,['read-local-cost'],
+  step('assist-material','Fit the brace Anik checked in advance','configure',22,-46,['read-local-cost'],
    'Seat the brace that Anik has checked in advance. It prepares the material support without an inspection or any cost to you. Choose this brace or fit the other one; either carries the same branch.',{optional:true,lead:'material',alternativeTo:'material-fit',setting:'seat-tested-brace'}),
-  step('living-inspect','Inspect the garden’s adjustable return','interact',26,-27,['read-local-cost'],
+  step('living-inspect','Read the garden return’s marks','interact',26,-27,['read-local-cost'],
    'Read the garden’s return marks. This fitting can be set locally instead of copying the central schedule.',{optional:true,lead:'living'}),
-  step('living-fit','Fit the independent living return','configure',26,-33,['living-inspect'],
+  step('living-fit','Set the garden return on its own adjustment','configure',26,-33,['living-inspect'],
    'Fit the supplied wick-loop to the garden return. Preserve an independent adjustment instead of copying the central schedule.',{optional:true,lead:'living',setting:'retain-local-adjustment'}),
-  step('assist-living','Fit the supplied tested living return','configure',26,-33,['read-local-cost'],
+  step('assist-living','Fit the tested return Anik supplied','configure',26,-33,['read-local-cost'],
    'Fit the tested adaptive return here. It prepares the living support without a rare seed, companion, growth timer or prior garden job.',{optional:true,lead:'living',alternativeTo:'living-fit',setting:'fit-tested-return'}),
-  step('observation-inspect','Read both named local stations','interact',26,-48,['read-local-cost'],
+  step('observation-inspect','Read both named stations and their limits','interact',26,-48,['read-local-cost'],
    'Read the supplied pair of service-station records and their limits. The sky comparator you set still stands; this pair concerns only the local service interval.',{optional:true,lead:'observation'}),
-  step('observation-fit','Fit the named-station interval record','configure',30,-40,['observation-inspect'],
+  step('observation-fit','Keep both station names on the interval record','configure',30,-40,['observation-inspect'],
    'Keep both station names and their limits on the independent instrument. Neither a beautiful picture nor an unnamed average can erase the differing observations.',{optional:true,lead:'observation',setting:'retain-both-stations'}),
-  step('assist-observation','Fit the supplied checked station record','configure',30,-40,['read-local-cost'],
+  step('assist-observation','Fit the checked station record Anik supplied','configure',30,-40,['read-local-cost'],
    'Fit the checked public record of both stations. This prepares the observational support without private history or archive participation.',{optional:true,lead:'observation',alternativeTo:'observation-fit',setting:'fit-checked-stations'}),
-  step('test-service-route','Test the independently supported service approach','interact',30,-40,['read-local-cost'],
+  step('test-service-route','Walk the service road on two anchors of your own','interact',30,-40,['read-local-cost'],
    'Check the clear service approach and any two different anchors. The third is optional. A tested, supplied alternative holds its branch just as an inspected fitting does.',{requiresSupports:2}),
-  step('challenge-reclaimer','Begin the local optical defense','interact',33,-40,['test-service-route'],
+  step('challenge-reclaimer','Draw out the Optical Reclaimer','interact',33,-40,['test-service-route'],
    'Start the Optical Reclaimer deliberately. It marks a narrow attack along the service road; cover can block it. Select the machine with Tab or click, then use your blade or bow.'),
-  step('reclaimer-settled','Disable the Optical Reclaimer','defeat',36,-40,['challenge-reclaimer'],
+  step('reclaimer-settled','Bring the Optical Reclaimer down','defeat',36,-40,['challenge-reclaimer'],
    'Disable the Optical Reclaimer with your blade or bow, then isolate its service feed. Anik gives your reward after the whole operation is checked.'),
-  step('isolate-service-feed','Physically isolate the imposed service feed','configure',40,-40,['reclaimer-settled'],
+  step('isolate-service-feed','Turn the imposed feed to your own setting','configure',40,-40,['reclaimer-settled'],
    'Turn this branch to its independent setting. The public approach stays open. Stopping the machine does not turn the feed for you.',{setting:'isolate-imposed-feed'}),
-  step('challenge-guardian','Begin the Still Meridian Guardian operation','interact',47,-44,['isolate-service-feed'],
+  step('challenge-guardian','Enter the Still Meridian’s court','interact',47,-44,['isolate-service-feed'],
    'Read the ring and cross warnings. The Guardian stays in its court: move into the clear center or a clear quadrant, use cover, or Brace. You may release either feed during the fight or afterward. Avar must still account for the work he imposed.'),
-  step('release-west-feed','Release the transverse-bar feed','configure',49,-49,['challenge-guardian'],
+  step('release-west-feed','Release the west feed, so the crosses stop reaching','configure',49,-49,['challenge-guardian'],
    'Release the west feed to remove the transverse bar from later crosses. If an attack is already marked, that attack still follows its mark. You may make this release during the fight or after the Guardian stops.',{setting:'release-transverse-feed'}),
-  step('release-east-feed','Release the outer-ring feed','configure',59,-39,['challenge-guardian'],
+  step('release-east-feed','Release the east feed, so the rings shrink','configure',59,-39,['challenge-guardian'],
    'Release the east feed. New rings reach 3.2 paces instead of 4.6. The 1.8-pace clear center, damage and timing stay the same. A ring already marked does not change.',{setting:'release-outer-feed'}),
-  step('guardian-settled','Disable the Still Meridian Guardian','defeat',54,-44,['challenge-guardian'],
+  step('guardian-settled','Bring the Still Meridian Guardian down','defeat',54,-44,['challenge-guardian'],
    'Disable the Guardian with your blade or bow. Both feeds must also be released before you disconnect the central link. The account and your anchors still wait.'),
-  step('disable-central-link','Disable the coercive central synchronization','configure',54,-48,['release-west-feed','release-east-feed','guardian-settled'],
+  step('disable-central-link','Hold at one of your anchors until the central link answers','configure',54,-48,['release-west-feed','release-east-feed','guardian-settled'],
    'With the Guardian stopped and both feeds released, disconnect the central synchronization. Avar can no longer impose one setting on every branch. Next, record his responsibility and set your anchors on their own.',{setting:'disconnect-central-synchronization'}),
-  step('accountability','Record the local accountability arrangement','choice',45,-35,['disable-central-link'],
+  step('accountability','Decide how Avar’s part is kept on the record','choice',45,-35,['disable-central-link'],
    'Choose the public mechanical account alone, or keep Avar’s short statement in Anik’s custody as well. Both keep the full service costs and Avar’s responsibility. No personal archive or cosmic verdict is needed.'),
-  step('configure-material','Set the prepared material branch independently','configure',22,-46,['accountability'],
+  step('configure-material','Set the material anchor on its own rating','configure',22,-46,['accountability'],
    'Give the prepared material anchor its own rated setting. Any two anchors must be set by hand; a third is optional.',{optional:true,requiresSupport:'material',setting:'independent-material-interval'}),
-  step('configure-living','Set the prepared garden return independently','configure',26,-33,['accountability'],
+  step('configure-living','Set the garden return on its own interval','configure',26,-33,['accountability'],
    'Give the prepared garden return its own setting, separate from the central schedule.',{optional:true,requiresSupport:'living',setting:'independent-living-interval'}),
-  step('configure-observation','Publish the prepared named interval independently','configure',30,-40,['accountability'],
+  step('configure-observation','Set the observation anchor on its own interval','configure',30,-40,['accountability'],
    'Set the prepared named-station instrument to its independent interval and preserve its limits.',{optional:true,requiresSupport:'observation',setting:'independent-observation-interval'}),
-  step('open-confluence','Open the independent local service interval','configure',32.5,-29,['accountability'],
+  step('open-confluence','Open the Confluence on the anchors you set','configure',32.5,-29,['accountability'],
    'Once at least two anchors hold their own settings, open the independent interval at this public-loop instrument. It keeps those settings and the account you chose. The public road stays open.',{requiresConfiguredSupports:2,setting:'open-independent-interval'}),
-  step('verify-open-bearings','Verify the open apparatus and public account','interact',44,-29,['open-confluence'],
+  step('verify-open-bearings','Check the open Confluence against the account you kept','interact',44,-29,['open-confluence'],
    'Compare the open apparatus with the account and the anchors you set. Each anchor keeps its own setting, and none of them owns the road. That is the Answering in small: many anchors, no master key. Return to Anik for your reward.')
  ],
  choices:[
@@ -3904,13 +3906,13 @@ const record=sim=>sim.state.cosmosCampaign,step=id=>D().steps.find(s=>s.id===id)
 const previousTitle=()=>G.RealmTrails.definition(D().prerequisite).title;
 // Story cards on the adventure's story dialog (the same ids and buttons): one card per line, then done().
 function cards(lines,done){
- const d=document.getElementById('story-dialog');if(!d||!Array.isArray(lines)||!lines.length){if(done)done();return;}
+ const d=typeof document!=='undefined'&&document.getElementById?document.getElementById('story-dialog'):null;if(!d||!Array.isArray(lines)||!lines.length){if(done)done();return;}
  let i=0;const paint=()=>{const q=lines[i];document.getElementById('story-speaker').textContent=q.speaker?String(q.speaker).toUpperCase():'';document.getElementById('story-title').textContent='';document.getElementById('story-body').textContent=q.text||'';const area=document.getElementById('story-buttons');area.replaceChildren();const b=document.createElement('button');b.textContent=i+1<lines.length?'Next':'Continue';b.onclick=()=>{if(i+1<lines.length){i++;paint();return;}d.close();if(done)done();};area.appendChild(b);};
  paint();d.showModal();
 }
 // One choice card: its prompt and one button per option.
 function choiceCard(prompt,options,pick){
- const d=document.getElementById('story-dialog');if(!d||!Array.isArray(options))return;
+ const d=typeof document!=='undefined'&&document.getElementById?document.getElementById('story-dialog'):null;if(!d||!Array.isArray(options))return;
  document.getElementById('story-speaker').textContent='';document.getElementById('story-title').textContent=prompt||'';document.getElementById('story-body').textContent='';
  const area=document.getElementById('story-buttons');area.replaceChildren();
  for(const o of options){const b=document.createElement('button');b.textContent=o.label;b.onclick=()=>{d.close();pick(o);};area.appendChild(b);}
@@ -3919,6 +3921,15 @@ function choiceCard(prompt,options,pick){
 function fee(){const r=D().reward;return'Up to '+r.xp+' XP within the stored cap · '+r.coins+' sunmarks · '+r.ore+' ore'+Object.entries(r.materials).map(([k,n])=>' · '+n+' '+({wood:'timber',fiber:'meadow fibre',crystal:'crystal'}[k]||k)).join('');}
 function routePoints(sim){const r=record(sim);if(sim.room!==D().room||!r?.accepted||r.claimed)return[];return(H().ready(sim.state)?[{...D().giver,id:'claim',kind:'giver',name:'Return to Anik for your reward'}]:H().available(sim.state)).map((p,i)=>({...p,cosmosCampaign:true,mark:'C'+(i+1)}));}
 function legend(sim){const p=routePoints(sim);return p.length?'<section class="cosmos-campaign-map"><h3>The Open Confluence</h3><p>Follow the C labels to the work you can do next. Set any two different anchors; a supplied alternative holds the same branch. The public service loop and road home stay open.</p><ol>'+p.map(s=>'<li><strong>'+s.mark+'</strong> · '+esc(s.name)+' '+button('Walk near this action','walk',s.id)+'</li>').join('')+'</ol>'+button('Read the operation','open')+'</section>':'';}
+const SCRIPT=()=>G.RealmStoryScript||(typeof require==='function'?require('./story-script.js'):null);
+const scriptCards=(step,state)=>{const s=SCRIPT()?.forStep?.('cosmos',step,state);return s?s.lines.map(l=>({speaker:l.speaker,text:l.text})):[];};
+// The script's prompt and option labels for a choice; each button keeps its id and falls back to the term's name.
+function choiceControls(step,choices,act,state){
+ const sc=SCRIPT()?.forStep?.('cosmos',step,state)||null,opts=sc?.choice?.options||[];
+ const label=c=>opts.find(o=>o.id===c.id)?.label||c.name;
+ return(sc?.choice?.prompt?'<p>'+esc(sc.choice.prompt)+'</p>':'')+choices.map(c=>act(label(c),'review',c.id)).join('');
+}
+function advanceCards(){const b=document.getElementById('story-buttons')?.children?.[0];if(b&&b.onclick)b.onclick();}
 class CosmosCampaignUI{
  constructor(rpg){this.rpg=rpg;this.pending=null;this.binding=null;this.serial=0;this.seen=new WeakSet();}
  get sim(){return this.rpg.sim;}
@@ -3937,6 +3948,11 @@ class CosmosCampaignUI{
   });
  }
  // The six-second hold (BRANCHES 5): holdTick each frame, a readout while it runs, and the central-link command once it completes.
+ // Anik frames the accountability choice once it is open (BRANCHES 3.6: the witness.avar scene), once per session.
+ avarFrame(){
+  const s=this.sim;if(!s||this.avarShown||!H().available(s.state).some(p=>p.id==='accountability'))return;
+  this.avarShown=true;cards(scriptCards('accountability',s.state));
+ }
  holdFrame(){
   const s=this.sim,H_=H();if(!s||!H_||!H_.holdTick)return;
   H_.holdTick(s);const h=s.cosmosCampaignRuntime?.hold,readout=document.querySelector('#cosmos-hold-readout');
@@ -3980,7 +3996,7 @@ class CosmosCampaignUI{
   else if(r.claimed)html+='<section class="cosmos-campaign-recorded"><h3>Independent operation · complete</h3><p>'+esc(d.completionText)+'</p></section>';
   else{
    const available=new Set(H().available(s.state).map(p=>p.id)),prepared=B().completedSupports(r.steps),configured=B().configuredSupports(r.steps);
-   const row=p=>{const done=r.steps.includes(p.id),next=available.has(p.id),at=here&&H().at(s,p);let controls='';if(next&&p.id==='disable-central-link'){controls=here?'<p>Stand at one of the anchors you set and press E. Hold for six seconds with the other anchor out of view.</p><p id="cosmos-hold-readout">'+(s.cosmosCampaignRuntime?.hold?'Holding':'')+'</p>':'<p>Revisit the Near Expanse to continue.</p>';}else if(next){if(!here)controls='<p>Revisit the Near Expanse to continue.</p>';else if(!at)controls=button('Walk near this action','walk',p.id);else if(p.kind==='defeat')controls='<p>Select the machine with Tab or click. Use your blade or bow to disable it.</p>';else if(p.kind==='choice')controls=d.choices.map(c=>act('Read '+c.name,'review',c.id)).join('');else controls=act(p.name,p.kind==='configure'?'configure':'step',p.id);}return'<li data-cosmos-step="'+esc(p.id)+'" class="'+(done?'cosmos-campaign-done':next?'cosmos-campaign-next':'')+'"><h4>'+esc(p.name)+(done?' · recorded':p.optional?' · optional route':'')+'</h4><details><summary>Read what to do here</summary><p>'+esc(p.text)+'</p></details>'+controls+'</li>';};
+   const row=p=>{const done=r.steps.includes(p.id),next=available.has(p.id),at=here&&H().at(s,p);let controls='';if(next&&p.id==='disable-central-link'){controls=here?'<p>Stand at one of the anchors you set and press E. Hold for six seconds with the other anchor out of view.</p><p id="cosmos-hold-readout">'+(s.cosmosCampaignRuntime?.hold?'Holding':'')+'</p>':'<p>Revisit the Near Expanse to continue.</p>';}else if(next){if(!here)controls='<p>Revisit the Near Expanse to continue.</p>';else if(!at)controls=button('Walk near this action','walk',p.id);else if(p.kind==='defeat')controls='<p>Select the machine with Tab or click. Use your blade or bow to disable it.</p>';else if(p.kind==='choice')controls=choiceControls('accountability',d.choices,act,s.state);else controls=act(p.name,p.kind==='configure'?'configure':'step',p.id);}return'<li data-cosmos-step="'+esc(p.id)+'" class="'+(done?'cosmos-campaign-done':next?'cosmos-campaign-next':'')+'"><h4>'+esc(p.name)+(done?' · recorded':p.optional?' · optional route':'')+'</h4><details><summary>Read what to do here</summary><p>'+esc(p.text)+'</p></details>'+controls+'</li>';};
    html+='<section><h3>Any two anchors</h3><p>'+prepared.length+' prepared · '+configured.length+' set. Ordinary and supplied work are two ways to the same anchor. A third anchor is optional.</p><div class="cosmos-campaign-supports">'+B().supports.map(lead=>'<section><h4>'+esc(lead.name)+(prepared.includes(lead.id)?' · prepared':'')+'</h4><p>'+esc(lead.mode)+'</p><p>'+esc(lead.supplied)+'</p><ol>'+d.steps.filter(p=>p.lead===lead.id||p.id===lead.configure).map(row).join('')+'</ol></section>').join('')+'</div></section><section><h3>The service work</h3><ol>'+d.steps.filter(p=>!p.lead&&!B().supports.some(lead=>lead.configure===p.id)).map(row).join('')+'</ol></section>';
    if(H().ready(s.state))html+='<section><h3>Open and verified</h3><p>If your pack is full, make room and return to Anik. The apparatus stays open until you collect your reward.</p>'+(here&&H().at(s,d.giver)?act('Collect your reward','claim'):here?button('Walk back to Anik','walk','claim'):'')+'</section>';html+=button('Track this operation','track');
   }
@@ -3990,9 +4006,9 @@ class CosmosCampaignUI{
   return{title:d.title,html:html+'<p class="cosmos-campaign-footer">Follow the marked fittings, select the machines for combat, and return to Anik when the open apparatus is verified.</p></article>'};
  }
  page(tab){return tab==='cosmos-campaign'?this.panel():null;}
- tick(){this.holdFrame();const s=this.sim,r=record(s),toggle=document.querySelector('.tracker-switch [data-id="cosmos-campaign"]');if(toggle)toggle.hidden=!r?.accepted||r.claimed;if(this.pending&&!this.same(this.pending))this.pending=null;if(!this.seen.has(s)){this.seen.add(s);if(r?.accepted&&!r.claimed&&this.rpg.quest==='story')this.rpg.quest='cosmos-campaign';}if(this.rpg.quest!=='cosmos-campaign')return;if(!r?.accepted||r.claimed){this.rpg.quest='story';return;}const next=H().available(s.state).find(p=>!p.optional)||H().available(s.state)[0],ready=H().ready(s.state),detail=s.room!==D().room?'Revisit the Near Expanse · saved work remains':ready?'Return to Anik for your reward':next?.requiresSupports?'Set any two different anchors':next?.requiresConfiguredSupports?'Set any two prepared anchors':next?.name||'Read the support alternatives';for(const[sel,text]of Object.entries({'#tracked-chapter':'COSMOS · THE OPEN CONFLUENCE','#tracked-title':D().title,'#tracked-detail':detail,'#tracked-progress':B().completedSupports(r.steps).length+' prepared · '+B().configuredSupports(r.steps).length+' set · J operation · M routes'})){const el=document.querySelector(sel);if(el)el.textContent=text;}}
+ tick(){this.holdFrame();this.avarFrame();const s=this.sim,r=record(s),toggle=document.querySelector('.tracker-switch [data-id="cosmos-campaign"]');if(toggle)toggle.hidden=!r?.accepted||r.claimed;if(this.pending&&!this.same(this.pending))this.pending=null;if(!this.seen.has(s)){this.seen.add(s);if(r?.accepted&&!r.claimed&&this.rpg.quest==='story')this.rpg.quest='cosmos-campaign';}if(this.rpg.quest!=='cosmos-campaign')return;if(!r?.accepted||r.claimed){this.rpg.quest='story';return;}const next=H().available(s.state).find(p=>!p.optional)||H().available(s.state)[0],ready=H().ready(s.state),detail=s.room!==D().room?'Revisit the Near Expanse · saved work remains':ready?'Return to Anik for your reward':next?.requiresSupports?'Set any two different anchors':next?.requiresConfiguredSupports?'Set any two prepared anchors':next?.name||'Read the support alternatives';for(const[sel,text]of Object.entries({'#tracked-chapter':'COSMOS · THE OPEN CONFLUENCE','#tracked-title':D().title,'#tracked-detail':detail,'#tracked-progress':B().completedSupports(r.steps).length+' prepared · '+B().configuredSupports(r.steps).length+' set · J operation · M routes'})){const el=document.querySelector(sel);if(el)el.textContent=text;}}
 }
-const api={CosmosCampaignUI,routePoints,legend,fee};G.RealmCosmosCampaignUI=api;if(typeof module!=='undefined')module.exports=api;
+const api={CosmosCampaignUI,routePoints,legend,fee,choiceControls,advanceCards};G.RealmCosmosCampaignUI=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* Original service-reach apparatus. No ground, damage, history or collision owner. */
 (function(G){'use strict';
@@ -4026,7 +4042,7 @@ function draw(out,sim){const d=D(),r=q(sim);if(sim.room!==d.room||!r?.accepted)r
 }
 const api={draw,drawEnemy};G.RealmCosmosCampaignArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
-</script><script>/* The stolen pattern: hell's campaign after the Open Cage rescue. The pattern that took Briar was cut in the
+</script><script>/* The stolen pattern: hell's campaign after the Open Cage rescue. The pattern behind the night at Bellweather was cut in the
  * regent's foundry, and its outer gate is kept by Veyr. Step and choice ids are saved, so they stay put even
  * where the words change. Rules and the warden fight live in hell-campaign.js. */
 (function (G) {
@@ -4050,12 +4066,12 @@ const definition=freeze({
  giver:{id:'hell-istra',name:'Istra · return keeper',x:-10,z:24},
  reward:{xp:145,coins:20,ore:4,materials:{wood:3,fiber:2}},
  regent:{x:0,z:-106},
- summary:'Neris’s record names the foundry. The pattern that took Briar was cut in its works, and its trail runs down to the outer gate. Read the foundry’s own measurements, face Veyr, who keeps the gate for the regent, take the pattern back, and decide what becomes of the people the writ still holds. Istra closes the road when it is done.',
+ summary:'Neris’s record names the foundry. The pattern behind the night at Bellweather was cut in its works, and its trail runs down to the outer gate. Read the foundry’s own measurements, face Veyr, who keeps the gate for the regent, take the pattern back, and decide what becomes of the people the writ still holds. Istra closes the road when it is done.',
  danger:'Veyr, the foundry’s warden, is the heaviest fight on this road so far. He has two locked attacks: a broad short sweep and a narrow line. Each has a 1.35-second warning and a 2.2-second recovery. Step beside the marked shape, use real cover or Brace (3), then strike while he recovers. The optional counterweight adds 0.6 seconds to sweep recovery, and the optional brace adds 0.6 seconds to line recovery. Below half health his order changes, and his strikes do not come faster. Sound is optional; shape and text carry the warning. The road home stays open before, during and after the fight. The inner foundry stays shut.',
  completionText:'Istra keeps the record beside Neris’s full measurements. The pattern is back in the valley’s hands, and Veyr no longer keeps the gate. The people the writ held have the road you chose for them, and the works remember it. The regent has seen you at the gate and said your name. The inner foundry and the rest of Hell are still to come.',
  steps:[
   step('witness-record','Hear Neris out at the Refuge','interact',-12,27,[],false,
-   'Neris is at the Kiln Refuge. Her record names the foundry. The pattern that took Briar was cut there, and the mark in its margin is the regent’s. Take the record to Tovan.'),
+   'Neris is at the Kiln Refuge. Her record names the foundry. The pattern behind the night at Bellweather was cut there, and the mark in its margin is the regent’s. Take the record to Tovan.'),
   step('tovan-account','Ask Tovan to check the rivets','interact',-15,16,['witness-record'],false,
    'Tovan knows the foundry’s pattern plates by their rivets, because he set some of them. Compare his count with Neris’s, then go to the outer gate.'),
   step('read-service-writ','Read the writ on the foundry gate','interact',-12,-95,['tovan-account'],false,
@@ -4424,7 +4440,7 @@ const definition=freeze({
  room:'world-atlantis',realm:'atlantis',prerequisite:'atlantis-bellglass-chart-v1',
  giver:{id:'sahra',name:'Sahra · instrument-maker',x:-5,z:-10},
  reward:{xp:148,coins:18,ore:4,materials:{wood:4,fiber:3,crystal:1}},
- summary:'Damar, a stranded carrier, went under the harbour when a counterfeit route took his load. Down there the drowned witness kept what he saw: a sealed record that shows the Regent of Ash taking the pattern from the carrier’s hold. Read Ilyra’s two receipts, keep an Upper or Lower reading, set the inlet, equalizer and outlet in order, then break the Guardian that keeps the record. Choose how the record is kept, and return to Sahra for your reward.',
+ summary:'Damar, a stranded carrier, went under the harbour when a counterfeit route took his load. Down there the drowned witness kept a daybook: forty-one people, written down by the man who kept them. Read Ilyra’s two receipts, keep an Upper or Lower reading, set the inlet, equalizer and outlet in order, then break the Guardian that keeps the record. Choose how the record is kept, and return to Sahra for your reward.',
  danger:'The repair can bring a 0.7-unit-per-second current into the marked shallow water band; ordinary swimming stays at 2.6 units per second. Descend to the quiet lower band, use the manual bypass or retreat. There is no breath timer and no material loss. Bellglass’s air court has no current and no combat. The Drowned Witness Guardian waits on the dry exit quay with '+boss.hp+' health, '+boss.damage+' damage and a 0.75 body radius. A 3.4-radius forward vane sector warns for 1.3 seconds and recovers for 1.9. An intake lane warns for 1.5 seconds, pulls for at most 1.2 seconds at 1.2 units per second, and recovers for 2.1; it is at most 5.5 long with a 1-unit half-width, actual support and opaque cover must clip the locked footprint. Move, Brace, use cover or retreat. Ordinary blade and bow damage remain valid during all live combat phases, with no recovery-only armor or equipment scaling. The warnings stay readable with sound off.',
  completionText:'Damar is safe. The Guardian is stilled, both releases are settled, and the drowned witness’s record is in your keeping. It names the Regent of Ash as the one who took the pattern from Damar’s hold. Sahra gives you 18 sunmarks, 4 ore, 4 timber, 3 fibre and 1 crystal, and up to 48 XP within your stored cap. The timber, fibre and crystal serve any ordinary crafting project you choose. The old Bellglass chart and lamp keep their own records.',
  witnesses:[
@@ -4432,45 +4448,45 @@ const definition=freeze({
   {id:'atlantis-damar-v1',name:'Damar · the drowned witness',x:15,z:-40.5,appearsAfter:['outlet-set']}
  ],
  approaches:[
-  {id:'upper',name:'Upper · read the marked shallow flow',requiredObservation:'upper-reading',
+  {id:'upper',name:'Upper · read the shallow water',requiredObservation:'upper-reading',
    text:'Keep the Upper approach and read the shallow gauge from its real water depth. The visible current is weaker than ordinary swimming. Hold depth deliberately, or use the manual bypass before you operate the repair. A lower reading still counts as evidence.'},
-  {id:'lower',name:'Lower · follow the quiet old-road band',requiredObservation:'lower-reading',
+  {id:'lower',name:'Lower · follow the old road under the current',requiredObservation:'lower-reading',
    text:'Keep the Lower approach and read the old masonry mark from its real water depth. This band lies below the shallow current, so the public envelope covers it without a timer. An upper reading still counts as evidence.'}
  ],
  steps:[
-  step('receipt-conflict','Compare Ilyra’s two receipts','interact',0,-18,[],false,
+  step('receipt-conflict','Compare Ilyra’s two receipts for Damar’s load','interact',0,-18,[],false,
    'Ilyra keeps two receipts for Damar’s load: the earlier shipping seal, and a later instruction that sent the load to a destination he never chose. Read them side by side. The record under the sea was written by the same hand, and it names the stranger who took the pattern.'),
-  step('choose-approach','Keep an Upper or Lower approach','approach',-5,-10,['receipt-conflict'],false,
+  step('choose-approach','Choose how to read the water: upper or lower','approach',-5,-10,['receipt-conflict'],false,
    'Read both approaches and the manual bypass before you confirm. The first approach you keep names the depth reading the repair needs. The other reading stays open as evidence. The choice does not assign a class or an allegiance.'),
-  step('upper-reading','Read the shallow flow gauge','interact',8,-22,['choose-approach'],true,
+  step('upper-reading','Read the shallow gauge at its real depth','interact',8,-22,['choose-approach'],true,
    'Read the upper gauge from this real water depth. It agrees with Sahra’s lamp and disagrees with the official destination setting. It is required when you keep Upper, and supporting evidence when you keep Lower.', 'water',-1.05),
-  step('lower-reading','Read the quiet lower-road mark','interact',8,-28,['choose-approach'],true,
+  step('lower-reading','Read the old lower-road mark at its real depth','interact',8,-28,['choose-approach'],true,
    'Read the older masonry at this real lower depth, below the marked shallow current. Its depth convention names the same redirected outlet. It is required when you keep Lower, and supporting evidence when you keep Upper. Leave the old mark as it is.', 'water',-2.55),
-  step('diagnose-flow','Find the redirected depth setting','interact',8,-35,['choose-approach'],false,
+  step('diagnose-flow','Find the depth setting copied into the wrong record','interact',8,-35,['choose-approach'],false,
    'At Bellglass’s dry visitor desk, use your kept reading to find the depth setting that was copied into the wrong destination record. The repair isolates the redirected inlet, matches the depth bands, then selects Damar’s outlet. Nothing else is needed.', 'court',-2.7),
-  step('manual-bypass','Open the manual bypass','pressure',12,-29,['choose-approach'],true,
+  step('manual-bypass','Open the manual bypass to stop the shallow current','pressure',12,-29,['choose-approach'],true,
    'Operate the supplied manual bypass from the wet east lane. It stops only this repair’s shallow current, and the air court and the visitor supply stay on. The three required inlet, equalizer and outlet stages still need their own correct settings.', 'water',-1.8),
-  step('inlet-set','Isolate the redirected inlet','pressure',8,-22,['diagnose-flow'],false,
+  step('inlet-set','Close the redirected inlet and keep the public supply on','pressure',8,-22,['diagnose-flow'],false,
    'Set isolate-redirect at the shallow inlet. This cuts the counterfeit destination and keeps the public supply running. It has to come first; an outlet setting cannot stand in for it. Wrong or early settings cost nothing and leave your work intact.', 'water',-1.05),
-  step('equalizer-set','Match the two depth bands','pressure',8,-35,['inlet-set'],false,
+  step('equalizer-set','Match the two depth bands on the dry desk','pressure',8,-35,['inlet-set'],false,
    'Set match-depth-bands at the dry control desk, once the inlet is isolated. The reading you kept and the depth chart set the bands. Keep the public air supplied while you work.', 'court',-2.7),
-  step('outlet-set','Select Damar’s outlet','pressure',12,-38.4,['equalizer-set'],false,
+  step('outlet-set','Point Damar’s outlet at the dock he chose','pressure',12,-38.4,['equalizer-set'],false,
    'Set chosen-destination at the wet east outlet, after the bands match. The load now goes where it was meant to go, and the shallow current stops. Leave through the gallery landing for the dry waiting bay.', 'water',-1.4),
   step('secure-carrier','Sit with Damar in the waiting bay','interact',15,-40.5,['outlet-set'],false,
    'Damar waits at this dry service bay with his load accounted for. Hear his account. His boat was never the fault. He can wait here safely through a pause, a reload or a retreat.'),
-  step('challenge-custodian','Face the Drowned Witness Guardian','interact',8,-44,['secure-carrier'],false,
+  step('challenge-custodian','Face the Guardian that keeps the daybook','interact',8,-44,['secure-carrier'],false,
    'Begin the fight on the dry exit quay. The Guardian is a service machine that still holds the witness’s ledger, and it stays anchored at its service foundation; it does not chase you. Read the locked vane sector and intake lane, then move, Brace or use cover.'),
-  step('bearing-exposed','Still the Guardian','defeat',8,-44,['challenge-custodian'],false,
+  step('bearing-exposed','Still the Guardian until it stops answering','defeat',8,-44,['challenge-custodian'],false,
    'Bring the Guardian’s fixed health to zero with real blade or bow damage. It settles into a disabled state; it is not killed or exploded. A button press cannot do this for you.'),
-  step('release-west','Stabilize the west release first','pressure',2,-44,['bearing-exposed'],false,
+  step('release-west','Settle the west release, the first of two','pressure',2,-44,['bearing-exposed'],false,
    'Stabilize the west release now that the Guardian is still. This is the first of two dry service operations, and the settled machine keeps the bay safe.'),
-  step('release-east','Stabilize the east release second','pressure',15,-44,['release-west'],false,
+  step('release-east','Settle the east release, the second','pressure',15,-44,['release-west'],false,
    'Stabilize the east release after the west release is recorded. Both releases count toward this repair, whatever happened in the fight. Repeated or refused attempts cannot change the result.'),
-  step('custodian-stable','Read the drowned witness’s record','interact',8,-44,['release-east'],false,
-   'Verify both releases and the settled tools. With the Guardian stilled, the sealed record can be read. It shows the Regent of Ash taking the pattern from Damar’s hold. The pattern was stolen, and the record says who stole it.'),
-  step('disposition','Choose what becomes of the record','choice',0,-18,['custodian-stable'],false,
+  step('custodian-stable','Read the daybook under the sea','interact',8,-44,['release-east'],false,
+   'Verify both releases and the settled tools. With the Guardian stilled, the sealed record can be read. It is a daybook: forty-one names in one hand, and the road the stolen pattern took beside them.'),
+  step('disposition','Decide what becomes of the daybook','choice',0,-18,['custodian-stable'],false,
    'Read Publish, Limited and License and their exact consequences before you choose. Preview and cancel keep the choice open. Each one keeps Damar safe and keeps his account whole.'),
-  step('verify-passage','Verify the passage and hand the lens over','interact',12,-40.1,['disposition'],false,
+  step('verify-passage','Check the passage and hand the lens to Sahra','interact',12,-40.1,['disposition'],false,
    'At the dry landing, check the controls and the receipts against your choice. Record the supervised release of the lens consignment to Sahra, then return to Sahra for your reward.')
  ],
  choices:[
@@ -4491,7 +4507,7 @@ const definition=freeze({
     {name:'Damar',text:'The manual passage secures this load and keeps my full account. I can wait safely without pretending every destination is now free.'}
    ]},
   {id:'license',name:'License · keep a disclosed personal permit',
-   text:'Keep a personal permit for this load under the office’s disclosed terms, sealed beside the Regent’s mark. Refusing would never hold Damar or your way out hostage. Future patron privileges are not implemented. Damar’s safety and the free home passage remain.',
+   text:'Keep a personal permit for this load under the office’s disclosed terms, sealed beside the Regent’s mark. Refusing would never hold Damar or your way out hostage. His roads open to you, including the one the fox is on. Damar’s safety and the free home passage remain.',
    consequence:'The landing shows the permit seal beside the office’s marker. Sahra, Ilyra and Damar recognize the permit you chose and what it means.',
    recognition:[
     {name:'Sahra',text:'This lens release carries the personal permit you chose. The instrument records it as you chose it.'},
@@ -4515,6 +4531,8 @@ if(typeof module!=='undefined')module.exports=api;
 const DATA=G.RealmAtlantisCampaignData||(typeof require==='function'?require('./atlantis-campaign-data.js'):null);
 const D=DATA.definition,P=DATA.patterns,F=DATA.current,Q=DATA.pressure;
 const SCRIPT=()=>G.RealmStoryScript||(typeof require==='function'?require('./story-script.js'):null);
+// Story cards for a scene: speaker and text per line, so a dialog can show them.
+const scriptCards=(owner,id,state)=>{const s=SCRIPT()?.forStep?.(owner,id,state);return s?s.lines.map(l=>({speaker:l.speaker,text:l.text})):[];};
 const SAGA=()=>G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
 const fail=error=>({ok:false,error}),copy=o=>JSON.parse(JSON.stringify(o)),finite=Number.isFinite,dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 const step=id=>D.steps.find(s=>s.id===id),record=s=>s?.atlantisCampaign||s,locks=new WeakMap(),owners=new WeakMap();
@@ -4673,7 +4691,7 @@ function defeat(sim,e){
  if(sim?.paused||sim?.state?.adventure?.hp<=0||!owned(sim,e,false))return false;
  let candidate;try{candidate=sim.snapshot();}catch(error){e.hp=1;G.RealmAdventure.notify(sim,'Campaign state refused: '+error.message);return false;}candidate.atlantisCampaign.steps.push(D.enemy.defeatStep);
  const result=commit(sim,candidate,{save:sim.atlantisCampaignSave},'The actual Custodian bearing was exhausted through combat. The municipal unit settled; no independent loot or XP was granted. Both sequential releases remain.');
- if(!result.ok){e.hp=1;G.RealmAdventure.notify(sim,result.error);return false;}locks.delete(e);return true;
+ if(!result.ok){e.hp=1;G.RealmAdventure.notify(sim,result.error);return false;}sim.atlantisGuardianCards=scriptCards('atlantis','bearing-exposed',candidate);locks.delete(e);return true;
 }
 function inCurrent(p,y){return Math.abs(p.x-F.x)<=F.w/2&&Math.abs(p.z-F.z)<=F.d/2&&y>=F.minY&&y<=F.maxY;}
 function tick(sim,dt){
@@ -4707,7 +4725,7 @@ const record=sim=>sim.state.atlantisCampaign,step=id=>D().steps.find(s=>s.id===i
 const previousTitle=()=>G.RealmTrails.definition(D().prerequisite).title;
 // Story cards on the adventure's story dialog (the same ids and buttons): one card per line, then done().
 function cards(lines,done){
- const d=document.getElementById('story-dialog');if(!d||!Array.isArray(lines)||!lines.length){if(done)done();return;}
+ const d=typeof document!=='undefined'&&document.getElementById?document.getElementById('story-dialog'):null;if(!d||!Array.isArray(lines)||!lines.length){if(done)done();return;}
  let i=0;const paint=()=>{const q=lines[i];document.getElementById('story-speaker').textContent=q.speaker?String(q.speaker).toUpperCase():'';document.getElementById('story-title').textContent='';document.getElementById('story-body').textContent=q.text||'';const area=document.getElementById('story-buttons');area.replaceChildren();const b=document.createElement('button');b.textContent=i+1<lines.length?'Next':'Continue';b.onclick=()=>{if(i+1<lines.length){i++;paint();return;}d.close();if(done)done();};area.appendChild(b);};
  paint();d.showModal();
 }
@@ -4721,6 +4739,15 @@ function routePoints(sim){const r=record(sim),d=D();if(sim.room!==d.room||!r?.ac
 }
 function legend(sim){const points=routePoints(sim);return points.length?'<section class="atlantis-campaign-map"><h3>The harbour repair · physical routes</h3><p>H labels show accepted harbour work. Dry labels use the supported quay; wet labels require the existing gallery and their real depth. No label creates floor, current, arrival or work.</p><ol>'+points.map(p=>'<li><strong>'+p.mark+'</strong> · '+esc(p.name)+(p.medium==='dry'?' '+button('Walk near this dry action','walk',p.id):' · '+esc(depth(p))+' '+button('Read depth and gallery route','depth',p.id))+'</li>').join('')+'</ol>'+button('Read the current campaign','open')+'</section>':'';}
 function recognition(r){if(!r?.steps.includes('verify-passage')||!r.choice)return'';const c=D().choices.find(c=>c.id===r.choice);return'<section class="atlantis-campaign-recognition"><h3>The verified local record</h3><p>'+esc(c.consequence)+'</p>'+c.recognition.map(l=>'<p><strong>'+esc(l.name)+':</strong> “'+esc(l.text)+'”</p>').join('')+'</section>';}
+const SCRIPT=()=>G.RealmStoryScript||(typeof require==='function'?require('./story-script.js'):null);
+// The script's prompt and option labels for a choice; each button keeps its id and falls back to the term's name.
+function choiceControls(step,choices,act,state){
+ const sc=SCRIPT()?.forStep?.('atlantis',step,state)||null,opts=sc?.choice?.options||[];
+ const label=c=>opts.find(o=>o.id===c.id)?.label||c.name;
+ return(sc?.choice?.prompt?'<p>'+esc(sc.choice.prompt)+'</p>':'')+choices.map(c=>act(label(c),'review',c.id)).join('');
+}
+// The first story-card button, for a bot or a test that has to move the dialog on.
+function advanceCards(){const b=document.getElementById('story-buttons')?.children?.[0];if(b&&b.onclick)b.onclick();}
 class AtlantisCampaignUI{
  constructor(rpg){this.rpg=rpg;this.pending=null;this.binding=null;this.serial=0;this.reading=null;this.seen=new WeakSet();}
  get sim(){return this.rpg.sim;}
@@ -4781,7 +4808,7 @@ class AtlantisCampaignUI{
      else if(!H().at(sim,s))controls=s.medium==='dry'?button('Walk near this dry action','walk',s.id):'<p>'+esc(depth(s))+' · '+(s.medium==='court'?'enter the real Bellglass air-court doorway.':'hold this actual water depth.')+'</p>'+button('Read depth and gallery route','depth',s.id);
      else if(s.kind==='defeat')controls='<p>Close the workspace to resume the dry-quay fight. Select the actual Custodian with Tab; use your owned blade or bow, Brace, supported movement or actual cover. A journal button cannot expose the bearing.</p>';
      else if(s.kind==='approach')controls=d.approaches.map(a=>act('Read '+a.name+' terms','review-approach',a.id)).join('');
-     else if(s.kind==='choice')controls=d.choices.map(c=>act('Read '+c.name+' terms','review',c.id)).join('');
+     else if(s.kind==='choice')controls=choiceControls('disposition',d.choices,act,sim.state);
      else if(s.kind==='pressure')controls=act('Set '+setting(s)+' · '+s.name,'pressure',s.id);
      else controls=act(s.name,'step',s.id);
     }
@@ -4794,14 +4821,14 @@ class AtlantisCampaignUI{
   if(this.pending){const approach=this.pending.kind==='approach',terms=(approach?d.approaches:d.choices).find(t=>t.id===this.pending.value);html+='<section class="atlantis-campaign-confirm"><h3>'+esc(terms.name)+' · confirm this retained record</h3><p>'+esc(terms.text)+'</p>'+(approach?'<p>This approach names the reading needed for diagnosis. The other reading stays optional evidence.</p>':'<p>'+esc(terms.consequence)+'</p><p>This is a lasting choice for the harbour’s record.</p>')+(this.same(this.pending)?act('Confirm '+terms.name,approach?'confirm-approach':'confirm',terms.id):'<p>The traveller or physical checkpoint changed. Cancel and read the current terms.</p>')+button('Cancel · keep this record undecided','cancel')+'</section>';}
   return{title:d.title,html:html+'<p class="atlantis-campaign-footer">Reading, walking and previews grant no work. Physical depth owns wet actions; actual damage owns bearing exhaustion. Your earlier chart, lamp and equipment remain yours.</p></article>'};
  }
- tick(){const sim=this.sim,r=record(sim),toggle=document.querySelector('.tracker-switch [data-id="atlantis-campaign"]');if(toggle)toggle.hidden=!r?.accepted||r.claimed;
+ tick(){if(this.sim?.atlantisGuardianCards){const g=this.sim.atlantisGuardianCards;delete this.sim.atlantisGuardianCards;cards(g);}const sim=this.sim,r=record(sim),toggle=document.querySelector('.tracker-switch [data-id="atlantis-campaign"]');if(toggle)toggle.hidden=!r?.accepted||r.claimed;
   if(this.pending&&!this.same(this.pending))this.pending=null;if(!this.seen.has(sim)){this.seen.add(sim);if(r?.accepted&&!r.claimed&&this.rpg.quest==='story')this.rpg.quest='atlantis-campaign';}
   if(this.rpg.quest!=='atlantis-campaign')return;if(!r?.accepted||r.claimed){this.rpg.quest='story';return;}
   const available=H().available(sim.state),requiredReading=D().approaches.find(a=>a.id===r.approach)?.requiredObservation,next=available.find(s=>!s.optional||s.id===requiredReading)||available[0],ready=H().ready(sim.state),detail=sim.room!==D().room?'Revisit Farwake · retained work stays saved':ready?'Return to Sahra for your reward':next?.medium==='water'||next?.medium==='court'?next.name+' · '+depth(next):next?.name||'Read the current repair';
   for(const[selector,text]of Object.entries({'#tracked-chapter':'ATLANTIS · THE HARBOUR BENEATH THE HARBOUR','#tracked-title':D().title,'#tracked-detail':detail,'#tracked-progress':r.steps.length+' recorded actions · '+(ready?'reward waiting':'J campaign · M physical routes')})){const el=document.querySelector(selector);if(el)el.textContent=text;}
  }
 }
-const api={AtlantisCampaignUI,routePoints,legend,fee,depth};G.RealmAtlantisCampaignUI=api;if(typeof module!=='undefined')module.exports=api;
+const api={AtlantisCampaignUI,routePoints,legend,fee,depth,choiceControls,advanceCards};G.RealmAtlantisCampaignUI=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* Appearance-only Farwake apparatus. The rule owner owns witnesses, currents,
  * health, locked support/cover frames and saved facts. No collision or payout. */
@@ -5423,13 +5450,14 @@ const TIMING=freeze({firstChain:1.5,chainGap:2.6,freedDelay:2.2,riseSeconds:7,sp
 const BODIES=freeze([{id:'chains',hp:380,damage:46},{id:'merged',hp:400,damage:50},{id:'offer',hp:420,damage:54}]);
 // each realm's chain stands on the valley's own ground, near the spring junction. spring is the default chain.
 const SITES=freeze({
- hell:{x:6,z:1,label:'the hell road'},
+ // every site stands on open ground, where an arrow can reach its chain (finale.test pins it).
+ hell:{x:5,z:0,label:'the hell road'},
  heaven:{x:-7,z:3,label:'the heaven stair'},
  atlantis:{x:4,z:9,label:'the drowned harbour'},
  earth:{x:-4,z:9,label:'the Coastward bridge'},
  cosmos:{x:-4,z:-4,label:'the star field'},
  beacon:{x:0,z:-7,label:'the Sunward Beacon'},
- tessa:{x:9,z:4,label:'the lookout road'},
+ tessa:{x:6.5,z:4,label:'the lookout road'},
  device:{x:0,z:5,label:'your own pack'},
  nearshore:{x:0,z:12,label:'the pier road'},
  spring:{x:0,z:7,label:'the spring'}
@@ -5544,14 +5572,17 @@ G.RealmEarthHomecomingData=api;if(typeof module!=='undefined')module.exports=api
 })(globalThis);
 </script><script>/* The finale's owner: the Regent of Ash at the spring junction. The saga owns the phases and the ending. This owner holds
  * what the saga does not: which chains are broken (saved at each break), the offer, the Regent's bodies, the freed
- * allies' clock, the last answer and the camera rise. Old homecoming records still load, and their aftermath choice still
- * feeds the echo ledger. Combat progress is not saved: a reload restarts the body in its phase; broken chains stay broken. */
+ * allies' clock, the last answer, the camera rise, and the story beats the finale plays through the story dialog (each
+ * beat once, and never while the Regent is winding up a strike). Old homecoming records still load. Combat progress is not
+ * saved: a reload restarts the body in its phase; broken chains stay broken. */
 (function(G){'use strict';
 const DATA=G.RealmEarthHomecomingData||(typeof require==='function'?require('./earth-homecoming-data.js'):null),D=DATA.definition,P=DATA.patterns,B=DATA.bands;
 const FIN=()=>G.RealmFinale||(typeof require==='function'?require('./finale.js'):null);
 const SG=()=>G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
+const EPI=()=>G.RealmEpilogue||(typeof require==='function'?require('./epilogue.js'):null);
+const EPID=()=>G.RealmEpilogueData||(typeof require==='function'?require('./epilogue-data.js'):null);
 const finite=Number.isFinite,fail=error=>({ok:false,error}),yes=text=>({ok:true,text});
-const CHAIN_R=.6,REGENT_R=.65,CHAIN_ID=/^chain-[a-z-]{1,40}$/,MAX_BROKEN=16,HOME={x:-11,z:-1.6};
+const CHAIN_R=.6,REGENT_R=.65,CHAIN_ID=/^chain-[a-z-]{1,40}$/,SEEN_ID=/^epilogue\.[a-z]+$/,MAX_BROKEN=16,HOME={x:-11,z:-1.6};
 const locks=new WeakMap();
 const isSim=sim=>!!G.RealmCore&&sim instanceof G.RealmCore.Simulation;
 const phaseOf=st=>st?.saga?.finale?.phase??0;
@@ -5561,20 +5592,24 @@ const live=sim=>!!sim&&sim.room===null&&!sim.worldDive&&!!sim.state&&phaseOf(sim
 const contactReach=p=>Math.min(p.reach,(p.kind==='annulus'?p.outerRadius:p.length)+.24);
 const near=(sim,r)=>Math.hypot(sim.state.player.x-D.spring.x,sim.state.player.z-D.spring.z)<=r;
 const planFor=sim=>FIN().plan(SG().echoLedger(sim.state));
-// a story line as the player reads it: the speaker's name, then the text. empty when the script has no such scene.
-function say(id,state){const s=FIN().scene(id,state);return s&&s.lines.length?s.lines.map(l=>l.speaker+': '+l.text).join(' '):'';}
+// a story line as the player reads it: the speaker's name, then the text; narration carries no speaker and no colon.
+function say(id,state){const s=FIN().scene(id,state);return s&&s.lines.length?s.lines.map(l=>l.speaker?l.speaker+': '+l.text:l.text).join(' '):'';}
 // the route's three marks: the waypoint nearest the heaven site, then two waypoints later.
 function marks(){const R=FIN().route(),S=D.spring&&G.RealmFinaleData?.SITES?.heaven||{x:-7,z:3};let best=0;R.forEach((p,i)=>{if(Math.hypot(p.x-S.x,p.z-S.z)<Math.hypot(R[best].x-S.x,R[best].z-S.z))best=i;});return{stair:best,road:(best+2)%R.length,briar:(best+4)%R.length};}
 
 function fresh(){return{version:1,accepted:false,steps:[],choice:null,claimed:false};}
+// the finale record: the broken chains and the offer; "seen" lists the epilogue scenes already played (written once each).
 function finaleRecord(raw){
  const no=()=>{throw Error('Invalid Earth homecoming: finale');};
- if(!raw||typeof raw!=='object'||Array.isArray(raw)||Object.keys(raw).sort().join('|')!=='broken|offer')no();
+ const keys=raw&&typeof raw==='object'&&!Array.isArray(raw)?Object.keys(raw).sort().join('|'):'';
+ if(keys!=='broken|offer'&&keys!=='broken|offer|seen')no();
  if(!Array.isArray(raw.broken)||raw.broken.length>MAX_BROKEN||new Set(raw.broken).size!==raw.broken.length||raw.broken.some(id=>typeof id!=='string'||!CHAIN_ID.test(id)))no();
  if(raw.offer!==null&&!['refused','taken'].includes(raw.offer))no();
- return{broken:raw.broken.slice(),offer:raw.offer};
+ const out={broken:raw.broken.slice(),offer:raw.offer};
+ if(keys==='broken|offer|seen'){if(!Array.isArray(raw.seen)||raw.seen.length>8||new Set(raw.seen).size!==raw.seen.length||raw.seen.some(id=>typeof id!=='string'||!SEEN_ID.test(id)))no();out.seen=raw.seen.slice();}
+ return out;
 }
-// the record keeps the retired homecoming's keys for old saves; the finale adds one optional key, present only once it runs.
+// the record keeps the retired homecoming's keys for old saves; the finale adds optional keys, present only once it runs.
 function validate(raw){
  if(raw===undefined)return fresh();const no=why=>{throw Error('Invalid Earth homecoming: '+why);};
  const keys=raw&&typeof raw==='object'&&!Array.isArray(raw)?Object.keys(raw).sort().join('|'):'';
@@ -5591,7 +5626,7 @@ function validateWorld(raw){return G.RealmCore.validate(raw);}
 function snapshot(sim){if(!isSim(sim))throw Error('Earth homecoming needs an actual simulation');return sim.snapshot();}
 
 // one transaction. the saga moves on the live state, the record moves on a checked candidate, and a refused save puts
-// the saga back, so the story and the record never disagree. text may be a function, read after the saga has moved.
+// both back, so the story and the record never disagree. text may be a function, read after the saga has moved.
 function persist(sim,io,ctx,text,saga,change){
  const st=sim.state,prior=JSON.stringify({saga:st.saga,record:st.earthHomecoming}),restore=()=>{const p=JSON.parse(prior);st.saga=p.saga;st.earthHomecoming=p.record;};
  if(saga){const moved=saga();if(!moved?.ok){restore();return fail(moved?.error||'The story did not move.');}}
@@ -5608,7 +5643,19 @@ function commit(sim,candidate,io,text,ctx){
  state.earthHomecoming=checked.earthHomecoming;for(const k of['xp','coins','ore','revision'])state.adventure[k]=checked.adventure[k];
  state.adventure.hp=checked.adventure.hp;Object.assign(state.sandbox.inventory,checked.sandbox.inventory);state.journal=checked.journal;state.nextEvent=checked.nextEvent;return yes(text);
 }
-function runtime(sim){let r=sim.earthHomecomingRuntime;if(!r||r.state!==sim.state){r=sim.earthHomecomingRuntime={state:sim.state,t0:null,walk:{phase:0,i:0,pause:0},announced:[],arrived:[],ranNoted:false,eveShown:false,lastOpen:false,rise:null,credits:false,creditsDone:false,chainHP:{},still:{x:null,z:null,t:0}};}return r;}
+// the presentation state of the finale: the beats waiting for the dialog, the allies' and the route's marks, the eve.
+// chainHP and still are the fight lane's: a cut chain keeps its hp, and standing still near the Regent is timed.
+function runtime(sim){let r=sim.earthHomecomingRuntime;if(!r||r.state!==sim.state){r=sim.earthHomecomingRuntime={state:sim.state,t0:null,walk:{phase:0,i:0,pause:0},announced:[],arrived:[],ranNoted:false,eveShown:false,alliesBeat:false,marksShown:[],beats:[],lastOpen:false,rise:null,credits:false,creditsDone:false,chainHP:{},still:{x:null,z:null,t:0}};}return r;}
+
+// the story beats: a script step each, queued in the order they happen, shown once. a choice beat is answered through its command.
+function queueBeat(sim,step,choice=false,owner='finale'){const r=runtime(sim);if(!r.beats.some(b=>b.step===step&&b.owner===owner))r.beats.push({owner,step,choice});}
+function dropBeat(sim,step){const r=runtime(sim);r.beats=r.beats.filter(b=>b.step!==step);}
+function nextBeat(sim){return runtime(sim).beats[0]||null;}
+function takeBeat(sim){return runtime(sim).beats.shift()||null;}
+// the headless listener (the bot and the tests): every waiting beat is heard at once and the queue is cleared.
+function listen(sim){const r=runtime(sim),out=r.beats;r.beats=[];return out;}
+// a strike being wound up or recovered from: no dialog opens, so no line lands mid-strike.
+function windingUp(sim){return !!sim&&G.RealmAdventure.runtime(sim).enemies.some(e=>e.finaleRole==='regent'&&(e.mode==='windup'||e.mode==='recover'));}
 
 // the Regent's bodies and the chains as the adventure fights them. a body is the boss table's phase, not a shared hp pool.
 // a chain's hp lives in the owner's runtime, so a rebuilt enemy list (a new chain appearing) never heals one already cut.
@@ -5654,7 +5701,7 @@ function lock(sim,e){
  if(!Number.isFinite(e.baseDamage))e.baseDamage=e.damage;e.damage=Math.round(e.baseDamage*(p.share??1));
  e.yaw=yaw;e.windup=p.windup;e.recovery=p.recovery;e.followUp=p.id==='closing-ring';if(p.id!=='ash-follow'&&p.id!=='ash-stamp')e.homecomingCycle=(Number.isSafeInteger(e.homecomingCycle)?e.homecomingCycle:0)+1;e.strike=Object.freeze(frame);locks.set(e,{sim,state:sim.state,frame:e.strike});return e.strike;
 }
-// an answered offer of invulnerability is a gift: the Regent still strikes, and nothing lands.
+// a signed offer lands nothing: the Regent's strikes end with the kept ending, so no locked shape touches the player.
 function strikeContains(e,p){
  const entry=locks.get(e),s=e?.strike;if(!entry||entry.frame!==s||entry.state!==entry.sim.state||!canStrike(entry.sim,e)||![p?.x,p?.z].every(finite))return false;
  if(offerOf(entry.sim.state)==='taken')return false;
@@ -5672,37 +5719,45 @@ function breakChain(sim,io,id,text,ctx){
  const rest=planFor(sim).chains.every(c=>c.id===id||broken(st).includes(c.id));
  return persist(sim,io,ctx,text,rest?()=>SG().finalePhase(sim,2):null,rec=>{rec.finale.broken=[...rec.finale.broken,id];});
 }
-// the offer: refuse goes on to the last body; take ends the valley now, as the kept ending, with no third fight.
+// the offer: refuse goes on to the last body; take ends the valley now, as the kept ending, with no third fight. the signed
+// offer is written before the saga reads it, and the saga is moved to phase three first, as its rule asks.
 function chooseOffer(sim,io,ctx,choice){
  if(phaseOf(sim.state)!==3||offerOf(sim.state)!==null)return fail(FIN().text('noOffer',sim.state)||'He has no offer waiting.');
  if(choice==='take'){
-  // a signed offer ends the valley now. the saga wants phase three and the signed offer on the record before it writes the kept ending.
   const st=sim.state;
-  return persist(sim,io,ctx,()=>FIN().text('taken',st),()=>{st.earthHomecoming.finale.offer='taken';const ph=SG().finalePhase(sim,3);if(!ph.ok)return ph;return SG().finaleWon(sim,'kept');},rec=>{rec.finale.offer='taken';});
+  const result=persist(sim,io,ctx,()=>FIN().text('taken',st),()=>{st.earthHomecoming.finale.offer='taken';const ph=SG().finalePhase(sim,3);if(!ph.ok)return ph;return SG().finaleWon(sim,'kept');},rec=>{rec.finale.offer='taken';});
+  if(result.ok){dropBeat(sim,'offer');queueBeat(sim,'taken');queueBeat(sim,'won');runtime(sim).rise={t:0};}
+  return result;
  }
- return persist(sim,io,ctx,()=>FIN().text('refused',sim.state),null,rec=>{rec.finale.offer='refused';});
-}
-// the last answer: after the last body falls, the owner asks; the ending is saved with the win, then the rise begins.
-function finish(sim,io,ending){
- const result=persist(sim,io,null,()=>FIN().text('won',sim.state),()=>SG().finaleWon(sim,ending),()=>{});
- if(result.ok)runtime(sim).rise={t:0};
+ const result=persist(sim,io,ctx,()=>FIN().text('refused',sim.state),null,rec=>{rec.finale.offer='refused';});
+ if(result.ok){dropBeat(sim,'offer');queueBeat(sim,'refused');}
  return result;
 }
-// the answers the last prompt offers, as the script words them; "answered" needs all three sightings heard.
+// the last answer: the owner asks only when more than one answer is open; the ending is saved with the win, then the rise.
+function finish(sim,io,ending){
+ const result=persist(sim,io,null,()=>FIN().text('won',sim.state),()=>SG().finaleWon(sim,ending),()=>{});
+ if(result.ok){runtime(sim).rise={t:0};dropBeat(sim,'last');queueBeat(sim,'won');}
+ return result;
+}
 function lastChoices(sim){return FIN().choices('last',sim.state);}
 
 function defeat(sim,e){
  if(!encounter(e)||!owned(sim,e,false))return false;
- const io={save:sim.earthHomecomingSave};
+ const io={save:sim.earthHomecomingSave},r=runtime(sim);
  if(e.finaleRole==='chain')return breakChain(sim,io,e.chainId,FIN().text('playerBreak',sim.state),null).ok;
  const ph=phaseOf(sim.state);
  if(ph===2){
   // the second body falls: the player is healed to full, and the offer opens with the fight frozen.
   const result=persist(sim,io,null,()=>FIN().text('down',sim.state),()=>SG().finalePhase(sim,3),(rec,cand)=>{rec.finale.offer=null;cand.adventure.hp=G.RealmAdventure.stats(cand.adventure).maxHP;});
-  if(result.ok)runtime(sim).walk={phase:3,i:0,pause:0};
+  if(result.ok){r.walk={phase:3,i:0,pause:0};queueBeat(sim,'offer',true);}
   return result.ok;
  }
- if(ph===3){runtime(sim).lastOpen=true;return true;}
+ if(ph===3){
+  // a single last answer is taken without asking; two or more are put to the player in the dialog.
+  const choices=lastChoices(sim);
+  if(choices.length<=1)return finish(sim,io,choices[0]?.id||'open').ok;
+  r.lastOpen=true;queueBeat(sim,'last',true);return true;
+ }
  return false;
 }
 
@@ -5711,7 +5766,11 @@ function scheduleChains(sim,r,io){
  const st=sim.state,A=G.RealmAdventure,p=planFor(sim),now=st.adventure.elapsed;
  if(r.t0===null)r.t0=now;const el=now-r.t0;
  for(const c of p.chains)if(!r.announced.includes(c.id)&&el>=c.appearAt){r.announced.push(c.id);if(!broken(st).includes(c.id)){const line=say('finale.chain.'+(c.echo||'spring'),st);if(line)A.notify(sim,line);}}
- for(const a of p.allies)if(!r.arrived.includes(a.id)&&el>=a.arriveAt){r.arrived.push(a.id);const line=say('finale.ally.'+a.echo,st);if(line)A.notify(sim,line);}
+ for(const a of p.allies)if(!r.arrived.includes(a.id)&&el>=a.arriveAt){
+  r.arrived.push(a.id);
+  if(!r.alliesBeat){r.alliesBeat=true;queueBeat(sim,'allies');}
+  const line=say('finale.ally.'+a.echo,st);if(line)A.notify(sim,line);
+ }
 }
 // an arrived ally works at their chain: allyDps a second off its hp. the chain breaks in their name only if it falls to them.
 function allyWork(sim,r,io,dt){
@@ -5733,10 +5792,32 @@ function walkRegent(sim,r,dt){
  if(ph===3)return;
  if(w.pause>0){w.pause-=dt;return;}
  const k=w.i%route.length,goal=route[k],dx=goal.x-e.x,dz=goal.z-e.z,d=Math.hypot(dx,dz);
- if(d<.25){w.i++;w.pause=t.pause;const key=k===mk.stair?'merged.stair':k===mk.road?'merged.road':k===mk.briar?'merged.briar':null;if(key){const line=say('finale.'+key,sim.state);if(line)A.notify(sim,line);}return;}
+ if(d<.25){w.i++;w.pause=t.pause;const key=k===mk.stair?'stair':k===mk.road?'road':k===mk.briar?'briar':null;if(key&&!r.marksShown.includes(key)){r.marksShown.push(key);queueBeat(sim,key);}return;}
  const step=Math.min(d,t.speed*dt),nx=e.x+dx/d*step,nz=e.z+dz/d*step;
  if(!G.RealmCore.walkable(nx,nz,sim.navRoom,REGENT_R)){w.i++;return;}
  e.x=nx;e.z=nz;
+}
+
+// the valley's changes, shown as the player reaches them: each scene once, its first line kept in the journal.
+function epiRows(){return EPID()?.CHANGES||[];}
+function rowSpots(row,st){
+ if(row.at)return[row.at];
+ const R=EPID().ROADS,roads=row.kind==='grey-road'?(st.saga.finale.ending==='kept'?[...R.counterfeitRoads,...R.trueRoads]:R.counterfeitRoads):R.trueRoads;
+ return roads.map(q=>({x:(q.a.x+q.b.x)/2,z:(q.a.z+q.b.z)/2}));
+}
+function stepFor(scene){if(!G.RealmStoryScript&&typeof require==='function'){try{require('./story-script.js');}catch{}}const map=G.RealmStoryScript?.STEPS?.epilogue||{};return Object.keys(map).find(k=>map[k]===scene)||null;}
+function epilogueTick(sim,io){
+ const E=EPI(),st=sim.state;if(!E||!EPID())return;
+ const ids=new Set(E.changes(st).map(c=>c.id)),seen=new Set(finaleOf(st).seen||[]),p=st.player;
+ for(const row of epiRows()){
+  if(!ids.has(row.id)||seen.has(row.scene))continue;
+  if(!rowSpots(row,st).some(q=>Math.hypot(q.x-p.x,q.z-p.z)<=7))continue;
+  const step=stepFor(row.scene);if(!step)continue;
+  const first=FIN().scene(row.scene,st)?.lines?.[0]?.text||'';
+  const result=persist(sim,io,null,first,null,rec=>{rec.finale.seen=[...(rec.finale.seen||[]),row.scene];});
+  if(result.ok)queueBeat(sim,step,false,'epilogue');
+  return;
+ }
 }
 
 function tick(sim,dt){
@@ -5744,15 +5825,16 @@ function tick(sim,dt){
  const st=sim.state,r=runtime(sim),ph=phaseOf(st),io={save:sim.earthHomecomingSave},A=G.RealmAdventure,t=FIN().timing();
  if(ph===0){
   // the eve: the first night at the shared house after the nearshore, said once.
-  if(!r.eveShown&&SG().done(st,'nearshore')&&Math.hypot(st.player.x-HOME.x,st.player.z-HOME.z)<=8){r.eveShown=true;const line=say('finale.eve',st);if(line)A.notify(sim,line);}
-  if(!st.saga.credits&&st.adventure.hp>0&&near(sim,t.startRange)&&SG().allowed(st,'finale')&&begin(sim,io).ok){const line=say('finale.rise',st);if(line)A.notify(sim,line);}
+  if(!r.eveShown&&SG().done(st,'nearshore')&&Math.hypot(st.player.x-HOME.x,st.player.z-HOME.z)<=8){r.eveShown=true;queueBeat(sim,'eve');}
+  if(!st.saga.credits&&st.adventure.hp>0&&near(sim,t.startRange)&&SG().allowed(st,'finale')&&begin(sim,io).ok)queueBeat(sim,'begin');
   return;
  }
  if(r.walk.phase!==ph)r.walk={phase:ph,i:0,pause:0};
  const p=st.player,s=r.still;if(s.x===null||Math.hypot(p.x-s.x,p.z-s.z)>.5){s.x=p.x;s.z=p.z;s.t=0;}else s.t+=dt;
  if(ph===1){scheduleChains(sim,r,io);if(phaseOf(st)===1)allyWork(sim,r,io,dt);}
- if(phaseOf(st)===2&&!r.ranNoted){r.ranNoted=true;const line=say('finale.runs',st);if(line)A.notify(sim,line);}
+ if(phaseOf(st)===2&&!r.ranNoted){r.ranNoted=true;queueBeat(sim,'runs');}
  if(ph>=2)walkRegent(sim,r,dt);
+ if(st.saga.finale.won)epilogueTick(sim,io);
  if(st.saga.finale.won&&!st.saga.credits){if(!r.rise)r.rise={t:0};r.rise.t+=dt;if(r.rise.t>=t.riseSeconds&&!r.credits&&persist(sim,io,null,()=>FIN().text('credits',sim.state),()=>SG().rollCredits(sim),()=>{}).ok)r.credits=true;}
 }
 
@@ -5783,7 +5865,8 @@ const api={definition:D,patterns:P,bands:B,fresh,validate,validateWorld,snapshot
  eligible:state=>!!state?.earthHomecoming?.accepted||SG().allowed(state,'finale'),
  missing:state=>SG().BEATS.filter(b=>b.act<5&&!SG().done(state,b.id)).map(b=>b.id),
  ready:state=>SG().done(state,'nearshore'),
- encounter,enemies,signature,pattern,lock,strikeContains,canStrike,canDamage,owned,defeat,command,tick,runtime,view,plan:planFor,begin,lastChoices,marks};
+ encounter,enemies,signature,pattern,lock,strikeContains,canStrike,canDamage,owned,defeat,command,tick,runtime,view,plan:planFor,begin,lastChoices,marks,
+ nextBeat,takeBeat,listen,windingUp,lineText:say};
 G.RealmEarthHomecoming=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* The finale's panel. Reading the page performs no work. The offer and the last answer are the only buttons that change the
@@ -5852,11 +5935,19 @@ class EarthHomecomingUI{
   }
   return{title:d.title,html:html+'<p class="earth-homecoming-footer">Reading this page does nothing. The Regent answers only at the spring junction.</p></article>'};
  }
+ // the finale's story beats play through the story dialog, one at a time. no dialog opens while the Regent is winding up
+ // a strike, and a choice beat answers through its own command.
+ beatTick(s){
+  const d=G.RealmStoryDialog;if(!d||d.busy())return;const b=H().nextBeat(s);if(!b||H().windingUp(s))return;
+  H().takeBeat(s);const binding={...this.owner()};
+  d.open([{owner:b.owner,step:b.step}],{onChoice:option=>{if(!b.choice)return;const type=b.step==='last'?'last':'offer';const result=this.rpg.api.earthHomecomingCommand(type,{quest:D().id,expectedActive:binding.active,expectedRevision:binding.revision,choice:option.id});this.rpg.api.toast(result.text||result.error);this.rpg.paint();}});
+ }
  tick(){
   const s=this.sim,r=H().runtime(s);
-  if(offerPending(s)&&!this.opened){this.opened=true;this.open();}
+  // the offer opens in the story dialog as a beat; the panel stays for reading and for the same answer.
   if(!offerPending(s))this.opened=false;
   if(r.credits&&!this.creditsShown){this.creditsShown=true;showCredits(()=>{r.creditsDone=true;},s.state);}
+  this.beatTick(s);
  }
 }
 const api={EarthHomecomingUI,routePoints:()=>[],legend:()=>'',nearSpring};
@@ -8145,18 +8236,18 @@ function handle(sim,type,p={}){
  switch(type){
  case'cross-leave':if(!near(sim,ENTRY))return fail('Return to the southern Sunward arch.');transition(sim,'road',{...GATE,yaw:0});return yes('Back beside the Sunward Beacon.');
  case'cross-attune':if(!near(sim,WAYSTONES.bellweather))return fail('Approach the village waystone.');if(s.attuned)return fail('This waystone is already attuned.');s.attuned=true;sim.event('travel','Bellweather is now one of your waystones. Travel from any waystone when the road is quiet.');return yes('Waystone attuned. M opens the map; travel from an anchor.');
- case'cross-meet':if(!near(sim,place('keeper')))return fail('Approach Rowan in the square.');if(s.met)return fail('Rowan has already entrusted you with the watch bell.');s.met=true;sim.event('quest','Rowan asked you to find the lost clapper and restore the watch bell. Read the listening stone, then follow the northern trail.');return yes('“The road is open. Now we need a voice to call the lost home.”');
+ case'cross-meet':if(!near(sim,place('keeper')))return fail('Approach Rowan in the square.');if(s.met)return fail('Rowan has already entrusted you with the watch bell.');s.met=true;A.playScene(sim,'crossing','met');return {ok:true};
  case'cross-inspect':if(!near(sim,place('inscription')))return fail('Approach the listening stone.');if(s.inscription)return fail('The inscription is already kept in your journal.');s.inscription=true;return yes('Leaf takes the first breath. Wave carries it onward. Sun answers at last.');
  case'cross-seek':{
   const c=A.runtime(sim).companion;if(!s.met)return fail('Speak with Rowan before searching for the missing bell clapper.');if(s.clapperRevealed)return fail('Briar already marked the clapper on your map.');if(!a.companion.bonded||a.companion.mode!=='follow'||c.room!==sim.room)return fail('Briar needs to be following you.');if(dist(pos,CLAPPER)>12)return fail('Try the old charcoal track north-west of the square.');if(r.seek)return fail('Briar is already following the scent.');if(!G.RealmCore.pathfind(c,CLAPPER,sim.navRoom))return fail('Move to a clear path beside Briar.');r.seek=true;c.path=[];c.nextPath=0;c.status='Following the old charcoal scent';return yes('Briar caught a scent. Follow the fox into the thicket.');}
  case'cross-survey':if(!s.met||!near(sim,CLAPPER,2.5))return fail('Inspect disturbed earth in the north-west thicket.');if(s.clapperRevealed)return fail('This spot is already marked.');s.clapperRevealed=true;return yes('Careful inspection reveals the clapper. Briar could have led you here.');
- case'cross-clapper':if(!s.clapperRevealed||s.clapper||!near(sim,CLAPPER))return fail('Approach the clapper that was uncovered in the thicket.');if(!a.defeated.includes('cross-thorn'))return fail('Drive away the Briarback prowler before reaching into the roots.');s.clapper=true;sim.event('quest','The missing bronze clapper was recovered.');return yes('Clapper recovered. Clear the northern court and repair the watch bell.');
+ case'cross-clapper':if(!s.clapperRevealed||s.clapper||!near(sim,CLAPPER))return fail('Approach the clapper that was uncovered in the thicket.');if(!a.defeated.includes('cross-thorn'))return fail('Drive away the Briarback prowler before reaching into the roots.');s.clapper=true;A.playScene(sim,'crossing','clapper');return {ok:true};
  case'cross-repair':if(!s.met||!s.clapper||s.repaired||!near(sim,place('court'),3.5))return fail('Bring the clapper to the watch-bell court.');if(!ENEMIES.every(e=>a.defeated.includes(e.id)))return fail('Clear the prowler, fractured tuner and Hushbound Keeper first.');s.repaired=true;r.tones=[];return yes('The clapper fits. Ring Leaf, then Wave, then Sun. The inscription stays in your journal.');
  case'cross-ring':{
   const bell=BELLS.find(b=>b.id===p.id);if(!bell||!near(sim,bell,2.3)||!s.repaired)return fail('Repair the watch bell, then stand beside a marked resonator.');if(a.elapsed-r.rangAt<.65)return fail('Let the tone settle.');r.rangAt=a.elapsed;r.tone=bell.id;r.toneSerial++;
   if(s.complete)return yes(bell.name+' rings. The melody is already restored.');
   if(p.id===ORDER[r.tones.length])r.tones.push(p.id);else r.tones=p.id===ORDER[0]?[p.id]:[];
-  if(r.tones.length===3){s.complete=true;sim.event('quest','Leaf, Wave, Sun. The watch bell rang across the valley again. Return to Rowan.');return yes('The bell answers. The village has a voice again. Return to Rowan.');}
+  if(r.tones.length===3){s.complete=true;A.playScene(sim,'crossing','complete');return {ok:true};}
   return yes(r.tones.length?'The melody holds · '+r.tones.length+' / 3.':'The tones disagree. Start again with Leaf. Nothing was lost.');}
  case'cross-reward':if(!near(sim,place('keeper'))||!s.complete||s.reward)return fail('Restore the bell, then return to Rowan for a single reward.');if(a.coins>9999-18)return fail('Make room for 18 sunmarks before accepting.');s.reward=true;a.coins+=18;a.owned.push('chime_clasp');sim.event('quest','Rowan gave you the Clasp of the answering bell and 18 sunmarks. Windbells now hang at Oren’s workshop.');return yes('Chapter IV complete · 18 sunmarks, a new charm, and windbells for home.');
  case'cross-rest':if(!near(sim,place('inn'))||hostile(sim))return fail('Visit Nella on the inn porch after danger has passed.');a.hp=A.stats(a).maxHP;a.stamina=100;a.tonics=3;return yes('A meal and a moment of shelter. Health, stamina and three tonics restored.');
@@ -8264,6 +8355,9 @@ function projectileGround(sim,x,z){
  if(sim.room==='crossing')return G.RealmCrossing.projectileGround(x,z,.035);
  if(sim.room==='mine')return A.walkable(sim.state.adventure,x,z,.035);
  if(sim.room==='range')return rangeWalkable(x,z,.035);
+ // the home valley is a combat scene only for the finale: arrows fly over its open ground (they had no valley case, so
+ // a bow could not loose a single arrow at the chains or the Regent).
+ if(sim.room===null)return G.RealmCore.walkable(x,z,sim.navRoom,.035);
  if(sim.room==='road')return R.land(x,z,.035)&&![...R.OBSTACLES,...R.TREES.map(t=>({x:t[0],z:t[1],r:.24*t[2]}))].some(o=>o.r!==undefined?Math.hypot(x-o.x,z-o.z)<o.r+.035:Math.abs(x-o.x)<o.w/2+.035&&Math.abs(z-o.z)<o.d/2+.035);
  return false;
 }
@@ -8440,7 +8534,7 @@ function nextWave(sim){const A=G.RealmAdventure,r=runtime(sim),ar=A.runtime(sim)
 }
 function fail(sim,why){const b=sim.state.adventure.beacon,r=runtime(sim);if(!['assault','intermission'].includes(r.phase))return;
  if(!r.replay){b.status='corrupted';b.failures=Math.min(9999,b.failures+1);}r.phase=r.replay?'won':'failed';G.RealmCombat.stop(sim,true);G.RealmAdventure.runtime(sim).enemies=G.RealmAdventure.runtime(sim).enemies.filter(e=>!e.eventEnemy);sim.event('beacon',r.replay?'The repeat assault ended. '+why+' The completed chapter and its rewards are unchanged.':'The ward faltered. '+why+' Reclaiming the beacon is possible; your home and earlier progress are untouched.');G.RealmAdventure.notify(sim,r.replay?'Repeat assault ended · the completed chapter remains.':'Beacon contested. Return to its light to reclaim it.');}
-function win(sim){const A=G.RealmAdventure,a=sim.state.adventure,b=a.beacon,r=runtime(sim);if(r.replay){r.phase='won';G.RealmCombat.stop(sim,true);sim.event('beacon','Another breach repelled. No repeat reward was created.');A.notify(sim,'Repeat defense complete · no repeat loot.');return;}b.complete=true;b.status='stable';r.phase='won';r.ward=Math.max(1,r.ward);G.RealmCombat.stop(sim,true);a.revision++;G.RealmSaga?.mark(sim,'beacon');sim.event('quest','The Sunward Beacon held. A map of lost roads answers the envoy. A cinder remains where the herald fell.');A.notify(sim,'Chapter III complete · Speak at the beacon for your reward and the roads beyond.');}
+function win(sim){const A=G.RealmAdventure,a=sim.state.adventure,b=a.beacon,r=runtime(sim);if(r.replay){r.phase='won';G.RealmCombat.stop(sim,true);sim.event('beacon','Another breach repelled. No repeat reward was created.');A.notify(sim,'Repeat defense complete · no repeat loot.');return;}b.complete=true;b.status='stable';r.phase='won';r.ward=Math.max(1,r.ward);G.RealmCombat.stop(sim,true);a.revision++;G.RealmSaga?.mark(sim,'beacon');sim.event('quest','The Sunward Beacon held. A map of lost roads answers the envoy. A cinder remains where the herald fell.');A.notify(sim,'Chapter III complete · Speak at the beacon for your reward and the roads beyond.');A.playScene(sim,'beacon','herald');}
 function damage(sim,e,n){if(!e?.eventEnemy)return false;const a=sim.state.adventure,r=runtime(sim);if(e.hp<=0||e.hidden)return true;
  e.hp=Math.max(0,e.hp-n);e.flash=a.elapsed+.18;G.RealmAdventure.fx(sim,'hit',e.x,e.z);if(e.poise&&e.hp>0&&e.mode==='windup'){e.mode='recover';e.timer=.5;e.omen=null;}if(e.hp===0){e.mode='dead';r.defeats++;G.RealmAdventure.notify(sim,e.name+' banished.');}return true;}
 function handle(sim,type,p={}){
@@ -8457,7 +8551,7 @@ function handle(sim,type,p={}){
  case 'beacon-answer':
   if(b.introduced)return no('The road has already answered. Prepare or continue the defense.');
   if(!a.road.reported){a.road.reported=true;if(!a.owned.includes('wayfarer_band'))a.owned.push('wayfarer_band');a.xp=Math.min(9999,a.xp+20);}
-  b.introduced=true;b.status='awakened';Object.assign(r,{phase:'arrival',time:0,wave:0,ward:100,actors:actors(sim)});sim.playerPath=[];G.RealmCombat.stop(sim,true);sim.event('quest','A road believed dead has answered. The envoy descends through the Sunward Beacon; Oren, Mara and Ilan hurry up the road.');return yes('The beacon was not a lighthouse. It was a door.');
+  b.introduced=true;b.status='awakened';Object.assign(r,{phase:'arrival',time:0,wave:0,ward:100,actors:actors(sim)});sim.playerPath=[];G.RealmCombat.stop(sim,true);A.playScene(sim,'beacon','answer');return {ok:true};
  case 'beacon-grace':
   if(!b.introduced||b.soul.grace||['arrival','assault','intermission'].includes(r.phase))return no('Speak with the envoy between battles.');b.soul.grace=true;b.soul.radiance++;b.soul.equipped='aegis';sim.event('choice','You accepted the envoy’s first Grace. The power is a gift, not a forced allegiance.');return yes('Dawn aegis learned · skill 5. You may unequip it at any time.');
  case 'beacon-replay':
@@ -8474,7 +8568,7 @@ function handle(sim,type,p={}){
   if(!b.complete||b.reward)return no('The defense reward is not available.');if(a.coins>9984||a.arsenal.gems.moonstone>=9999)return no('Make room for 15 sunmarks and a moonstone.');a.coins+=15;a.arsenal.gems.moonstone++;b.reward=true;return yes('Defense reward · 15 sunmarks and a pearl moonstone.');
  case 'beacon-relic':
   if(!b.complete||b.relic!=='undecided'||!['accept','seal'].includes(p.choice))return no('Choose once what to do with the herald’s cinder.');
-  b.relic=p.choice==='accept'?'accepted':'sealed';if(p.choice==='accept')b.soul.equipped='cinder';sim.event('choice',p.choice==='accept'?'You kept the herald’s cinder, knowing its health cost and the consequence of invoking it.':'You sealed the herald’s cinder rather than accepting its power.');return yes(p.choice==='accept'?'Cinder surge learned. Using it records corruption; accepting alone does not.':'The cinder is sealed. No power or corruption was imposed.');
+  b.relic=p.choice==='accept'?'accepted':'sealed';if(p.choice==='accept')b.soul.equipped='cinder';return {ok:true};
  case 'soul-purify':
   if(!b.complete||b.relic!=='accepted')return no('There is no accepted cinder to renounce.');b.relic='renounced';b.soul.corruption=0;b.soul.radiance++;b.soul.scars.push('cinder-renounced');if(b.soul.equipped==='cinder')b.soul.equipped=b.soul.grace?'aegis':null;sim.event('choice','You relinquished the cinder. Its power and current corruption are gone. The history of your choice remains.');return yes('Cinder relinquished. History preserved; current corruption cleared.');
  case 'beacon-sighting':{
@@ -8968,6 +9062,8 @@ const ENEMIES=Object.freeze([
  {id:'sentinel',name:'Prism sentinel',kind:'sentinel',x:8,z:-3,hp:70,damage:13,xp:35,ore:2,coins:6,gear:'guard_vest',windup:1.05,poise:true},
  {id:'hart',name:'The Hollow Hart',kind:'boss',boss:true,x:8,z:-10,hp:D.boss('hart').hp,damage:D.boss('hart').damage,xp:90,ore:4,coins:12,windup:D.boss('hart').windup,attackOrder:['ring','line','double'],attackSpec:{line:{windup:1.2,length:6,half:.9},double:{windup:1.1,r1:2.4,r2:3.6,gap:.8}}}
 ]);
+// defeats that play a scripted scene (story-script STEPS owner and step); every other defeat only notifies.
+const SCENE_ON_DEFEAT=Object.freeze({hart:['adventure','hart'],'road-ram':['adventure','road-ram'],'cross-warden':['crossing','keeper']});
 const key=(x,z)=>x+','+z,cellAt=(x,z)=>({gx:Math.round(x/CELL),gz:Math.round(z/CELL)}),cellPoint=(gx,gz)=>({x:gx*CELL,z:gz*CELL});
 function validCell(x,z){return Number.isInteger(x)&&Number.isInteger(z)&&Math.abs(x)<LIMIT&&Math.abs(z)<LIMIT;}
 function initialFloor(x,z){return(x>=-2&&x<=2&&z>=3&&z<=6)||(x>=-5&&x<=-1&&z>=0&&z<=2)||(x>=-1&&x<=1&&z>=-4&&z<=3&&z!==1)||(x>=2&&x<=6&&z>=-6&&z<=-1&&!(x===2&&z>=-3&&z<=-1));}
@@ -9138,12 +9234,18 @@ function advanceCompanionGuide(sim,c,dt,o){
  if(!G.RealmWorldFoundations.segment(sim.room,c,next,.31)){clearCompanionGuide(c,'Guide route blocked');notify(sim,'The service route is blocked. Use the map or ask again.');return;}
  sim.advance(c,c.path,dt,3.2);c.status='Leading to the service handle';
 }
-function runtime(sim){if(!sim.adventureRuntime)sim.adventureRuntime={room:undefined,enemies:[],fx:[],cooldowns:{attack:0,pulse:0,dodge:0,heal:0,dig:0},invincible:0,companion:newFox(sim),notices:[]};return sim.adventureRuntime;}
+function runtime(sim){if(!sim.adventureRuntime)sim.adventureRuntime={room:undefined,enemies:[],fx:[],cooldowns:{attack:0,pulse:0,dodge:0,heal:0,dig:0},invincible:0,companion:newFox(sim),notices:[],scenes:[]};return sim.adventureRuntime;}
+// a scripted scene the domain asks for: a command's step, a defeat, the beacon's win. The adventure dialog takes them in
+// order, once. Transient like notices; a reload before the dialog shows loses the request, never the story facts.
+// a durable workshop command runs on a candidate simulation and would drop the request, so scene-asking commands stay live.
+function playScene(sim,owner,step){runtime(sim).scenes.push({owner,step});}
+function peekScene(sim){return runtime(sim).scenes[0]||null;}
+function takeScene(sim){return runtime(sim).scenes.shift()||null;}
 function notify(sim,text){let r=runtime(sim);r.notices.push(text);if(r.notices.length>20)r.notices.shift();}
 function syncScene(sim){let r=runtime(sim);if(r.companion.guide&&r.companion.room!==sim.room)clearCompanionGuide(r.companion,'Following');const survey=sim.room===Q.ROOM?sim.state.adventure.pursuit.active?.id:null;const generic=(G.RealmTrails?.signature(sim)||'')+'|'+EE.signature(sim)+'|'+AT.signature(sim)+'|'+HC.signature(sim)+'|'+HV.signature(sim)+'|'+CC.signature(sim)+'|'+EH.signature(sim)+'|'+TR.signature(sim)+'|'+(G.RealmNight?.signature(sim)||''),trail=generic+wildSignsSignature(sim),scope=wildSignsScope(sim),priorScope=wildSignsScopes.get(r),sameRoom=r.room===sim.room,sameRun=sameRoom&&r.pursuitRun===survey;if(sameRoom&&r.pursuitRun===survey&&r.genericTrailSignature===generic){if(r.trailSignature!==trail||!sameWildScope(priorScope,scope)&&!!(priorScope||scope)){r.trailSignature=trail;reconcileWildSigns(sim,r,scope,generic);}for(const e of r.enemies.filter(e=>e.trailQuest)){const terms=G.RealmTrails.enemies(sim).find(v=>v.id===e.id);if(terms)e.recovery=terms.recovery;}return;}const prior=sameRoom?r.enemies:[];r.room=sim.room;r.pursuitRun=survey;r.trailSignature=trail;r.genericTrailSignature=generic;wildSignsScopes.set(r,scope);r.enemies=combatScene(sim)?roster(sim).filter(e=>!sim.state.adventure.defeated.includes(e.id)).map(e=>wildSignsEntry(e)?bindWildSigns(sim,({...e,maxHP:e.hp,mode:'idle',timer:0,yaw:0,aim:null,flash:0,path:[],nextPath:0,awareness:0,home:{x:e.x,z:e.z}}),generic):prior.find(p=>p.id===e.id&&p.hp>0)||({...e,maxHP:e.hp,mode:'idle',timer:0,yaw:0,aim:null,flash:0,path:[],nextPath:0,awareness:0,home:{x:e.x,z:e.z}})):[];if(sameRun)return;r.fx=[];r.arrows=[];r.range={active:false,start:0,hits:{},shots:0,message:'A calm place to learn a different rhythm.'};if(!sim.state.adventure.companion.bonded||sim.state.adventure.companion.mode==='follow')r.companion=newFox(sim);r.invincible=sim.state.adventure.elapsed+1;}
 function fx(sim,kind,x,z,color=0xf2c891){let r=runtime(sim);r.fx.push({kind,x,z,color,at:sim.state.adventure.elapsed});if(r.fx.length>48)r.fx.shift();}
 function awardXP(sim,n){let s=sim.state.adventure,l=level(s);s.xp=Math.min(9999,s.xp+n);if(level(s)>l){s.hp=Math.min(stats(s).maxHP,s.hp+10*(level(s)-l));notify(sim,'Level '+level(s)+' · Your journey is changing you.');sim.event('adventure','You reached level '+level(s)+'.');}}
-function damageEnemy(sim,e,n,source='other',contact=null,weight='light'){let s=sim.state.adventure;if(wildSignsEntry(e)&&!ownedWildSigns(sim,e))return false;if(!e||e.hp<=0||e.hidden||!Number.isFinite(n)||n<=0)return false;if(e.rainTournament)return source==='weapon'&&TR.contact(sim,e,contact);if(e.earthHomecoming&&!EH.canDamage(sim,e))return false;if(e.cosmosCampaign&&!CC.canDamage(sim,e))return false;if(e.atlantisCampaign&&!AT.canDamage(sim,e))return false;if(e.heavenCampaign&&!HV.canDamage(sim,e))return false;if(e.hellCampaign&&!HC.canDamage(sim,e))return false;if(e.trailQuest&&!G.RealmTrails.canDamage(sim,e))return false;n=K.weaponDamage(sim,e,n,source);if(e.kind==='practice'){if(sim.room===Q.ROOM)Q.practiceHit(sim,e,n);else AR.practiceHit(sim,e);return true;}if(e.exposedUntil>s.elapsed)n=Math.round(n*1.2);T.hit(sim,e,n,e.boss?'boss':weight);if(B.damage(sim,e,n))return true;e.hp=Math.max(0,e.hp-n);e.flash=s.elapsed+.16;fx(sim,'hit',e.x,e.z);if(e.poise&&e.hp>0&&e.mode==='windup'){e.mode='recover';e.timer=.5;e.omen=null;}if(e.hp===0&&wildSignsEntry(e)){retryWildSignsClearance(sim);return true;}if(e.hp===0&&e.earthHomecoming){EH.defeat(sim,e);return true;}if(e.hp===0&&e.cosmosCampaign){CC.defeat(sim,e);return true;}if(e.hp===0&&e.atlantisCampaign){AT.defeat(sim,e);return true;}if(e.hp===0&&e.heavenCampaign){HV.defeat(sim,e);return true;}if(e.hp===0&&e.hellCampaign){HC.defeat(sim,e);return true;}if(e.hp===0&&e.expeditionQuest){EE.defeat(sim,e);return true;}if(e.hp===0&&e.trailQuest){G.RealmTrails.defeat(sim,e);return true;}if(e.hp===0&&e.worldRealm){G.RealmWorldFoundations.defeat(sim,e);return true;}if(e.hp===0&&e.contractRun){H.defeat(sim,e);return true;}if(e.hp===0&&e.nightClaim){G.RealmNight.defeat(sim,e);return true;}if(e.hp===0&&!s.defeated.includes(e.id)){s.defeated.push(e.id);s.drops.push(e.id);s.revision++;awardXP(sim,e.xp);sim.event('adventure',e.name+' defeated. A cache remains at its original position.');notify(sim,e.kind==='boss'?'The Hollow Hart is free. The feather is waiting.':e.name+' defeated · +'+e.xp+' experience');}return true;}
+function damageEnemy(sim,e,n,source='other',contact=null,weight='light'){let s=sim.state.adventure;if(wildSignsEntry(e)&&!ownedWildSigns(sim,e))return false;if(!e||e.hp<=0||e.hidden||!Number.isFinite(n)||n<=0)return false;if(e.rainTournament)return source==='weapon'&&TR.contact(sim,e,contact);if(e.earthHomecoming&&!EH.canDamage(sim,e))return false;if(e.cosmosCampaign&&!CC.canDamage(sim,e))return false;if(e.atlantisCampaign&&!AT.canDamage(sim,e))return false;if(e.heavenCampaign&&!HV.canDamage(sim,e))return false;if(e.hellCampaign&&!HC.canDamage(sim,e))return false;if(e.trailQuest&&!G.RealmTrails.canDamage(sim,e))return false;n=K.weaponDamage(sim,e,n,source);if(e.kind==='practice'){if(sim.room===Q.ROOM)Q.practiceHit(sim,e,n);else AR.practiceHit(sim,e);return true;}if(e.exposedUntil>s.elapsed)n=Math.round(n*1.2);T.hit(sim,e,n,e.boss?'boss':weight);if(B.damage(sim,e,n))return true;e.hp=Math.max(0,e.hp-n);e.flash=s.elapsed+.16;fx(sim,'hit',e.x,e.z);if(e.poise&&e.hp>0&&e.mode==='windup'){e.mode='recover';e.timer=.5;e.omen=null;}if(e.hp===0&&wildSignsEntry(e)){retryWildSignsClearance(sim);return true;}if(e.hp===0&&e.earthHomecoming){EH.defeat(sim,e);return true;}if(e.hp===0&&e.cosmosCampaign){CC.defeat(sim,e);return true;}if(e.hp===0&&e.atlantisCampaign){AT.defeat(sim,e);return true;}if(e.hp===0&&e.heavenCampaign){HV.defeat(sim,e);return true;}if(e.hp===0&&e.hellCampaign){HC.defeat(sim,e);return true;}if(e.hp===0&&e.expeditionQuest){EE.defeat(sim,e);return true;}if(e.hp===0&&e.trailQuest){G.RealmTrails.defeat(sim,e);return true;}if(e.hp===0&&e.worldRealm){G.RealmWorldFoundations.defeat(sim,e);return true;}if(e.hp===0&&e.contractRun){H.defeat(sim,e);return true;}if(e.hp===0&&e.nightClaim){G.RealmNight.defeat(sim,e);return true;}if(e.hp===0&&!s.defeated.includes(e.id)){s.defeated.push(e.id);s.drops.push(e.id);s.revision++;awardXP(sim,e.xp);sim.event('adventure',e.name+' defeated. A cache remains at its original position.');notify(sim,e.name+' defeated · +'+e.xp+' experience');if(Object.hasOwn(SCENE_ON_DEFEAT,e.id))playScene(sim,...SCENE_ON_DEFEAT[e.id]);}return true;}
 function takeDamage(sim,n){let s=sim.state.adventure,r=runtime(sim);if(s.hp<=0||s.elapsed<r.invincible)return false;const dealt=T.mitigate(sim,T.armour(n,stats(s).defense));s.hp=Math.max(0,s.hp-dealt);r.invincible=s.elapsed+.28;fx(sim,'hurt',sim.state.player.x,sim.state.player.z,0xd57f88);if(dealt>0)T.hurt(sim,dealt,n>=20);if(s.hp===0){sim.playerPath=[];s.deaths=Math.min(9999,s.deaths+1);sim.event('adventure','You fell on an expedition. Your home and belongings are safe.');notify(sim,'You have fallen. Return to the spring to try again.');}return true;}
 function diggableFrom(s,p,gx,gz){return validCell(gx,gz)&&!isFloor(s,gx,gz)&&dist(p,cellPoint(gx,gz))<=REACH&&[[1,0],[-1,0],[0,1],[0,-1]].some(([dx,dz])=>isFloor(s,gx+dx,gz+dz)&&dist(p,cellPoint(gx+dx,gz+dz))<2.2);}
 function nearbyWall(s,p){let best=null,c=cellAt(p.x,p.z);for(let x=c.gx-2;x<=c.gx+2;x++)for(let z=c.gz-2;z<=c.gz+2;z++)if(diggableFrom(s,p,x,z)){let q=cellPoint(x,z),d=dist(p,q);if(!best||d<best.d)best={gx:x,gz:z,d,...q};}return best;}
@@ -9161,11 +9263,11 @@ function command(sim,id,type,payload={}){
  switch(type){
  case'start':
   if(s.started)return fail('Your expedition supplies were already collected.');if(!surfaceNear(sim,{x:11,z:9}))return fail('Meet Oren at the workshop first.');
-  s.started=true;s.owned=['trail_blade','travel_coat'];s.equipment.weapon='trail_blade';s.equipment.armor='travel_coat';sim.event('quest','Oren packed a trail blade, a lantern, three tonics and a salve for an injured fox. Find the northern mine.');result=yes('Ready to go: a blade, a lantern, three tonics and a salve.');break;
+  s.started=true;s.owned=['trail_blade','travel_coat'];s.equipment.weapon='trail_blade';s.equipment.armor='travel_coat';playScene(sim,'adventure','start');result={ok:true};break;
  case'enter':
   if(!s.started||!sim.state.sandbox.bridge||!surfaceNear(sim,MINE))return fail('Take Oren’s supplies, repair the crossing, and approach the mine entrance.');if(!sim.state.sandbox.inventory.pick)return fail('Craft a stone pickaxe before entering.');
-  sim.returnPos={...p};sim.room='mine';sim.state.player={...ENTRANCE};sim.playerPath=[];syncScene(sim);sim.event('quest','You went down into the Rootbound Underways. What you dig and defeat here stays dug and defeated.');result=yes('The underways · E to mine. F to strike. Space to dodge.');break;
- case'leave':if(sim.room!=='mine'||dist(p,ENTRANCE)>3)return fail('Return to the southern lantern exit.');sim.leave();syncScene(sim);result=yes('Back under the open sky.');break;
+  sim.returnPos={...p};sim.room='mine';sim.state.player={...ENTRANCE};sim.playerPath=[];syncScene(sim);if(!r.mineEntered){r.mineEntered=true;playScene(sim,'adventure','enter');}result=yes('The underways · E to mine. F to strike. Space to dodge.');break;
+ case'leave':if(sim.room!=='mine'||dist(p,ENTRANCE)>3)return fail('Return to the southern lantern exit.');if(!s.companion.bonded)return fail('Help the injured briarfox in the western alcove before you leave.');sim.leave();syncScene(sim);result=yes('Back under the open sky.');break;
  case'dig':{
   if(sim.room!=='mine'||!sim.state.sandbox.inventory.pick)return fail('Use the pickaxe inside the mine.');const {gx,gz}=payload;
   if(!validCell(gx,gz)||isFloor(s,gx,gz))return fail('That is not an excavatable wall.');if(!diggableFrom(s,p,gx,gz))return fail('Stand beside an exposed face of the stone.');if(s.elapsed<r.cooldowns.dig)return fail('The pickaxe is still swinging.');
@@ -9189,13 +9291,13 @@ function command(sim,id,type,payload={}){
  case'heal':if(!s.started||!s.tonics||s.elapsed<r.cooldowns.heal||s.hp>=stats(s).maxHP)return fail('No healing needed, no tonic left, or the tonic is recovering.');s.tonics--;s.hp=Math.min(stats(s).maxHP,s.hp+48);r.cooldowns.heal=s.elapsed+3;fx(sim,'heal',p.x,p.z,0xa3dca2);result=yes('Trail tonic · up to +48 health');break;
  case'rest':if(!s.started||!surfaceNear(sim,{x:0,z:3},4))return fail('Rest at the Firstlight spring.');s.hp=stats(s).maxHP;s.stamina=100;s.tonics=3;result=yes('Rested · Health and three trail tonics restored.');break;
  case'revive':if(s.hp>0)return fail('You have not fallen.');if(sim.room)sim.leave();sim.state.player={x:2.5,z:6,yaw:0};sim.playerPath=[];syncScene(sim);s.hp=stats(s).maxHP;s.stamina=100;s.tonics=3;sim.event('quest','You returned to the spring. Belongings, excavation and completed encounters remain.');result=yes('A new breath. No belongings were lost.');break;
- case'rescue':if(sim.room!=='mine'||s.companion.bonded||dist(p,FOX)>3)return fail('Approach the injured briarfox.');if(!s.defeated.includes('briar-1'))return fail('Drive away the briar skitter first.');s.companion.bonded=true;r.companion={...newFox(sim),x:FOX.x,z:FOX.z};awardXP(sim,10);sim.event('companion','You used the trail salve to help Briar. The fox chose to follow.');result=yes('Briar is coming with you. Follow or Stay is your choice.');break;
+ case'rescue':if(sim.room!=='mine'||s.companion.bonded||dist(p,FOX)>3)return fail('Approach the injured briarfox.');if(!s.defeated.includes('briar-1'))return fail('Drive away the briar skitter first.');s.companion.bonded=true;r.companion={...newFox(sim),x:FOX.x,z:FOX.z};awardXP(sim,10);playScene(sim,'adventure','rescue');result={ok:true};break;
  case'companion-mode':if(!s.companion.bonded||!['follow','stay'].includes(payload.mode))return fail('No valid companion command.');G.RealmBriarOuting?.cancel(sim,'Explicit '+payload.mode+' command · outing released');s.companion.mode=payload.mode;if(payload.mode==='follow'&&r.companion.room!==sim.room)r.companion=newFox(sim);r.companion.path=[];r.companion.seek=null;clearCompanionGuide(r.companion,payload.mode==='stay'?'Waiting here':'Following');r.companion.status=payload.mode==='stay'?'Waiting here':'Following';result=yes(s.companion.name+' will '+payload.mode+'.');break;
  case'rename':if(!s.companion.bonded||typeof payload.name!=='string'||!payload.name.trim()||payload.name.length>24)return fail('Use a companion name of 1–24 characters.');s.companion.name=payload.name.trim();result=yes('Companion name kept in your local world.');break;
  case'loot':{let e=roster(sim).find(e=>e.id===payload.id);if(!combatScene(sim)||!e||!s.drops.includes(e.id)||dist(p,e)>3||!visible(sim,p,e))return fail('Approach a visible, unclaimed cache.');if(s.ore+e.ore>9999||s.coins+e.coins>9999)return fail('Your material pouch is full.');s.drops=s.drops.filter(id=>id!==e.id);s.ore+=e.ore;s.coins+=e.coins;if(e.gear&&!s.owned.includes(e.gear))s.owned.push(e.gear);result=yes('Cache · '+e.ore+' copper, '+e.coins+' sunmarks'+(e.gear?' · '+GEAR[e.gear].name:''));break;}
  case'equip':{let g=Object.hasOwn(GEAR,payload.id)?GEAR[payload.id]:null;if(!g||!s.owned.includes(payload.id))return fail('You do not own that item.');s.equipment[g.slot]=payload.id;s.hp=Math.min(s.hp,stats(s).maxHP);result=yes(g.name+' equipped.');break;}
  case'forge':if(!s.started||!AR.atBench(sim)||s.owned.includes('copper_blade')||s.ore<FORGE.ore||s.coins<FORGE.coins)return fail('Use a workbench with 4 copper and 4 sunmarks. This blade is crafted once.');s.ore-=FORGE.ore;s.coins-=FORGE.coins;s.owned.push('copper_blade');result=yes('Copper-edged blade forged. Equip it in Adventure.');break;
- case'relic':if(sim.room!=='mine'||!s.defeated.includes('hart')||s.relic||dist(p,RELIC)>3)return fail('Free the Hollow Hart and approach the feather’s dais.');s.relic=true;awardXP(sim,20);sim.event('quest','You lifted a white feather from the hart’s dais. Bring it to the Firstlight spring.');result=yes('The feather is warm. Return to the spring.');break;
+ case'relic':if(sim.room!=='mine'||!s.defeated.includes('hart')||s.relic||dist(p,RELIC)>3)return fail('Free the Hollow Hart and approach the feather’s dais.');if(!s.companion.bonded)return fail('Help the injured briarfox in the western alcove first.');s.relic=true;awardXP(sim,20);sim.event('quest','You lifted a white feather from the hart’s dais. Bring it to the Firstlight spring.');result=yes('The feather is warm. Return to the spring.');break;
  case'reveal':if(!s.relic||!surfaceNear(sim,{x:0,z:3},4))return fail('Bring the feather to the Firstlight spring.');if(!s.angelSeen){s.angelSeen=true;sim.event('story','A white-winged envoy stepped out of the light. Heaven is under attack, and broken passages threaten the mortal world.');}result=yes('A visitor from the light.');break;
  case'reward':if(!s.angelSeen||s.reward||!surfaceNear(sim,{x:0,z:3},4)||!['dawn_edge','warden_stone'].includes(payload.id))return fail('Meet the envoy at the spring and choose one gift.');s.reward=payload.id;s.owned.push(payload.id);awardXP(sim,25);sim.event('story','You took '+GEAR[payload.id].name+' from the envoy. The first chapter is done, and the road ahead is open.');result=yes('Chapter complete · '+GEAR[payload.id].name);break;
  case'envoy-prophecy':
@@ -9210,7 +9312,7 @@ function command(sim,id,type,payload={}){
   result={ok:true,text:r.tessaShown?'Tessa has heard you already.':'Tessa looks up from the cart and reaches for the waybill.',scene:r.tessaShown?null:'tessa'};r.tessaShown=true;break;
  case'road-enter':
   if(!s.reward||!surfaceNear(sim,ROAD.GATE))return fail('Accept the envoy’s gift and approach the far-water lookout.');
-  sim.returnPos={...p};sim.room='road';sim.state.player={...ROAD.ENTRY};sim.playerPath=[];s.road.entered=true;syncScene(sim);sim.event('quest','You took the Sunward Road. Tessa’s stranded caravan waits beyond the gate.');result=yes('Chapter II · Ask Briar to find the cart’s missing latch.');break;
+  sim.returnPos={...p};sim.room='road';sim.state.player={...ROAD.ENTRY};sim.playerPath=[];if(!s.road.entered)playScene(sim,'adventure','road-enter');s.road.entered=true;syncScene(sim);result={ok:true};break;
  case'road-leave':
   if(sim.room!=='road'||dist(p,ROAD.ENTRY)>3)return fail('Return to the southern waygate.');sim.leave();syncScene(sim);result=yes('Your valley waits beyond the road.');break;
   case'companion-guide':{
@@ -9229,7 +9331,7 @@ function command(sim,id,type,payload={}){
   if(sim.room!=='road'||!q||!s.road.revealed.includes(q.id)||s.road.claimed.includes(q.id)||dist(p,q)>3||!visible(sim,p,q))return fail('Approach a cache that Briar has revealed.');
   if(s.ore+q.ore>9999||s.coins+q.coins>9999)return fail('Your pouch is full.');s.ore+=q.ore;s.coins+=q.coins;s.road.claimed.push(q.id);result=yes(q.name+' recovered · '+q.ore+' copper, '+q.coins+' sunmarks');break;}
  case'cart-repair':
-  if(sim.room!=='road'||dist(p,ROAD.MERCHANT)>3||s.road.cartRepaired||!s.defeated.includes('road-prowler')||!s.road.claimed.includes('cart-latch')||s.ore<2)return fail('At Tessa’s cart: recover the latch, clear the prowler and bring 2 copper.');s.ore-=2;s.road.cartRepaired=true;sim.event('quest','You fitted the recovered latch and repaired Tessa’s cart. Her road shop is open.');result=yes('Cart repaired. Tessa opens her travelling shop.');break;
+  if(sim.room!=='road'||dist(p,ROAD.MERCHANT)>3||s.road.cartRepaired||!s.defeated.includes('road-prowler')||!s.road.claimed.includes('cart-latch')||s.ore<2)return fail('At Tessa’s cart: recover the latch, clear the prowler and bring 2 copper.');s.ore-=2;s.road.cartRepaired=true;playScene(sim,'adventure','cart-repair');result={ok:true};break;
  case'trade':{
   if(sim.room!=='road'||!s.road.cartRepaired||dist(p,ROAD.MERCHANT)>3)return fail('Visit Tessa’s repaired cart to trade.');
   const offer=payload.offer;
@@ -9353,7 +9455,7 @@ function objectives(s){return[
  {title:'A feather beneath Wildwood',detail:'Recover the feather at the guardian’s dais.',done:s.relic},
  {title:'The envoy at the spring',detail:'Return to the Commons. Hear the warning and choose one gift.',done:!!s.reward}
 ];}
-const api={ROAD,FORGE,envoyTopic,trackerNext,awardXP,combatScene,roster,visible,ground,followPath,companionGuide,VERSION,CELL,LIMIT,REACH,MINE,ENTRANCE,FOX,RELIC,GEAR,ENEMIES,STORY,key,cellAt,cellPoint,validCell,initialFloor,isFloor,mineral,wallHP,walkable,line,fresh,validate,stats,level,runtime,syncScene,command,tick,nearbyWall,diggableFrom,objectives,damageEnemy,retryWildSignsClearance,takeDamage,notify,fx,shakeOffset:sim=>T.shakeOffset(sim)};G.RealmAdventure=api;if(typeof module!=='undefined')module.exports=api;
+const api={ROAD,FORGE,envoyTopic,trackerNext,awardXP,playScene,peekScene,takeScene,combatScene,roster,visible,ground,followPath,companionGuide,VERSION,CELL,LIMIT,REACH,MINE,ENTRANCE,FOX,RELIC,GEAR,ENEMIES,STORY,key,cellAt,cellPoint,validCell,initialFloor,isFloor,mineral,wallHP,walkable,line,fresh,validate,stats,level,runtime,syncScene,command,tick,nearbyWall,diggableFrom,objectives,damageEnemy,retryWildSignsClearance,takeDamage,notify,fx,shakeOffset:sim=>T.shakeOffset(sim)};G.RealmAdventure=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* Firstlight 05 — bounded, offline gathering/crafting/building domain.
  * Quantities are local game state, never authority for an online economy.
@@ -10752,7 +10854,7 @@ const BEATS=freeze([
  {id:'beacon',act:2,title:'The beacon',detail:'Light the beacon on the north ridge and hold it. Watch who comes to stand beside Tessa.',place:{room:'road',x:0,z:-24,label:'The Sunward Beacon'}},
  {id:'bellweather',act:2,title:'Rowan’s bell',detail:'The bell at Bellweather has gone quiet, and the keeper with it. Find out what silenced them.',place:{room:'crossing',x:0,z:-18.5,label:'Bellweather crossing'}},
  {id:'night',act:3,title:'The night the warning failed',detail:'Night has come down wrong over the crossing. Get the travellers out, and keep Briar close.',place:{room:'crossing',x:0,z:24,label:'Bellweather, at night'}},
- {id:'hell',act:4,title:'The stolen pattern',detail:'Whoever took Briar used a pattern that was never theirs. Follow its trail down to the regent’s foundry.',place:{...GATE_PLACE,label:'The world gate · Hell'}},
+ {id:'hell',act:4,title:'The stolen pattern',detail:'Whoever cut the road at Bellweather used a pattern that was never theirs. Follow its trail down to the regent’s foundry.',place:{...GATE_PLACE,label:'The world gate · Hell'}},
  {id:'heaven',act:4,title:'The envoy’s home',detail:'Go up to Heaven in peace. The envoy’s people may read the prophecy better than we did.',place:{...GATE_PLACE,label:'The world gate · Heaven'}},
  {id:'witness',act:4,title:'The drowned witness',detail:'Under the sea there is someone who saw the pattern stolen, and past the stars a cure that needs no master key.',place:{...GATE_PLACE,label:'The world gate · the sea and the stars'}},
  {id:'nearshore',act:4,title:'The nearshore',detail:'The regent says he has Briar. He will offer you one that never strays. You know her better than that.',alone:'The regent waits on the lantern pier with a fox that never strays. He thinks you came all this way for a companion.',place:{room:null,x:0,z:27,label:'The nearshore'}},
@@ -11260,7 +11362,8 @@ const SCENES=freeze({
  'night.device.after':{beat:'night',where:'The bridge, in the morning',lines:[
   l('rowan','Then it hangs under her. Every time she rings, it’ll hear what it failed to stop.',{device:'open'}),
   l('mara','Two locks. I keep one key and Oren the other. That’s not distrust. That’s method.',{device:'sealed'}),
-  n('It goes into your pack. It weighs about what a fox weighs.',{device:'carried'}),
+  n('It goes into your pack. It weighs about what a fox weighs.',{device:'carried',bonded:true}),
+  n('It goes into your pack. It is heavier than iron ought to be.',{device:'carried',bonded:false}),
   l('mara','I won’t argue. I’ll check on you.',{device:'carried'}),
   l('rowan','I rang her and they came to the sound, the way they’re meant to. Straight to the bridge. I keep turning that over.')]},
  // ---- Act IV · the stolen pattern: Hell ----
@@ -11484,9 +11587,12 @@ const SCENES=freeze({
   l('anik','It runs under the sea first. There’s a harbour down there that keeps its records dry. Read what it kept. Then follow this home.',{sea:null})]},
  // ---- Act IV · the nearshore ----
  'nearshore.pier':{beat:'nearshore',where:'The lantern pier',lines:[
-  l('vessa','Every lantern on the pier’s lit. If she’s out there, she’ll see which way is home. That’s all a lantern is for.'),
-  l('vessa','And when he tells you she’s his: a bridge belongs to its crossings, not to whoever can hold a chain across it.'),
-  l('envoy','I can tell a living soul from an echo. I cannot tell you which one is yours. Heaven does not know that. Only you do.'),
+  l('vessa','Every lantern on the pier’s lit. If she’s out there, she’ll see which way is home. That’s all a lantern is for.',{bonded:true}),
+  l('vessa','And when he tells you she’s his: a bridge belongs to its crossings, not to whoever can hold a chain across it.',{bonded:true}),
+  l('envoy','I can tell a living soul from an echo. I cannot tell you which one is yours. Heaven does not know that. Only you do.',{bonded:true}),
+  l('vessa','Every lantern on the pier’s lit. Whoever’s still out tonight will see which way is home. That’s all a lantern is for.',{bonded:false}),
+  l('vessa','And whatever he tells you down there: a bridge belongs to its crossings, not to whoever can hold a chain across it.',{bonded:false}),
+  l('envoy','He will make you an offer here. He likes to do it near water. Hear it or do not. You owe him no answer.',{bonded:false}),
   n('His road opened for you all the way down the shore. Nobody stopped you. Nobody had to. The permit is warm in your pocket.',{sea:'license'})]},
  'nearshore.offer':{beat:'nearshore',where:'The nearshore',lines:[
   l('regent','I kept her for you. She never strays now.'),
@@ -11535,7 +11641,8 @@ const SCENES=freeze({
   l('regent','We have not really spoken. You saw to that. So I will let your own decisions do the talking. I wrote them down as you made them.',{heard:{max:0}}),
   l('regent','You listened to me, a little. More than most. So I will be fair, and use only your own decisions.',{heard:{min:1,max:2}}),
   l('regent','You heard all of it. Three times you let me finish. I want you to know I am sorry it is you.',{heard:{min:3}}),
-  l('regent','This valley loses things. A cart. A song. A fox. I am going to keep it. You may stand in it with me, or you may stand in the way.'),
+  l('regent','This valley loses things. A cart. A song. A fox. I am going to keep it. You may stand in it with me, or you may stand in the way.',{bonded:true}),
+  l('regent','This valley loses things. A cart. A song. Five travellers, very nearly. I am going to keep it. You may stand in it with me, or you may stand in the way.',{bonded:false}),
   l('regent','Look how many. You have been keeping roads my way all along.',{chains:{min:3}}),
   l('regent','One or two. Everyone has one or two. It is how I know we could have understood each other.',{chains:{min:1,max:2}}),
   l('regent','Nothing. Not one. Do you know how rare that is? Then I will hang my own on the spring.',{chains:{max:0}})]},
@@ -11575,8 +11682,9 @@ const SCENES=freeze({
   l('envoy','Go. I will hold the spring.'),
   n('She steps down off the water onto the road. Onto the dirt. Her wings come open for the first time since you have known her. They are not for flying. They are for standing in the way.'),
   l('envoy','I have been late to a great many things. Not this.'),
-  n('{briar} is already ahead of you, nose down, on a trail no feather can show.'),
-  n('She looks back once, to be sure that you are following her and not something quieter.',{falseFirst:true})]},
+  n('{briar} is already ahead of you, nose down, on a trail no feather can show.',{bonded:true}),
+  n('She looks back once, to be sure that you are following her and not something quieter.',{falseFirst:true,bonded:true}),
+  n('You go after him. No feather can show this trail. You have mended every yard of this valley, and that will have to do.',{bonded:false})]},
  'finale.merged.stair':{beat:'finale',where:'the heaven stair',lines:[
   l('calen','Name? No. Thought not. This stair’s for people who can be asked.',{heaven:'accessible-assist'}),
   n('He takes the heaven stair three steps at a time. So do the people coming down it to help you.',{heaven:['broadened-activation',null]})]},
@@ -11585,11 +11693,13 @@ const SCENES=freeze({
   n('His own low road opens for you without being asked. The permit. You cut the corner he meant to lose you on, and you do not feel clever about it.',{sea:'license'}),
   l('regent','You could have kept all of this still.')]},
  'finale.merged.briar':{beat:'finale',where:'The merged valley',lines:[
-  n('He doubles back along a road that is not there. {briar} is sitting on it when he arrives, put upon, as if he were late.')]},
+  n('He doubles back along a road that is not there. {briar} is sitting on it when he arrives, put upon, as if he were late.',{bonded:true}),
+  n('He doubles back along a road that is not there. Fenna’s cart is standing across it, and Fenna is on the cart, eating an apple.',{bonded:false})]},
  'finale.offer':{beat:'finale',where:'The spring junction',lines:[
   n('He is back at the spring, on one knee, the book open. The valley is every world at once, and all of it is shaking the way the sky shook when the wheel stopped. You get your breath. He lets you.'),
   l('regent','Enough. Look at it. Everything you love is in reach of everything that can hurt it. You did that. You opened every door.'),
-  l('regent','So here is the last page I have. A life that cannot be hurt. Yours, the fox’s, everyone in this valley. One signature. I keep the road, and you keep your people.'),
+  l('regent','So here is the last page I have. A life that cannot be hurt. Yours, the fox’s, everyone in this valley. One signature. I keep the road, and you keep your people.',{bonded:true}),
+  l('regent','So here is the last page I have. A life that cannot be hurt. Yours, and everyone’s in this valley. One signature. I keep the road, and you keep your people.',{bonded:false}),
   l('regent','It is what I offered Tessa. You told her what you would do. I am only asking you to take your own advice.',{tessa:'signed'}),
   l('regent','You told Tessa you would tear it up. It is easy to be brave with someone else’s paper. This one is yours.',{tessa:'refused'}),
   l('regent','You have reached for the kept one once already. On the pier. I am not asking you for anything new.',{falseFirst:true}),
@@ -11600,8 +11710,10 @@ const SCENES=freeze({
  'finale.answer':{beat:'finale',where:'The spring junction',lines:[
   n('You shake your head. It costs more than you expected.',{offer:REFUSED}),
   l('regent','Then you will bleed for every yard. I want you to remember that I offered.',{offer:REFUSED}),
-  n('{briar} leans against your leg. She is shaking too. She stays.',{offer:REFUSED}),
-  n('You sign. The ink dries grey. The shaking stops. The wind stops. You can no longer feel the fox against your leg.',{offer:'taken'}),
+  n('{briar} leans against your leg. She is shaking too. She stays.',{offer:REFUSED,bonded:true}),
+  n('Behind you nobody in the valley steps back. You can hear them not stepping back.',{offer:REFUSED,bonded:false}),
+  n('You sign. The ink dries grey. The shaking stops. The wind stops. You can no longer feel the fox against your leg.',{offer:'taken',bonded:true}),
+  n('You sign. The ink dries grey. The shaking stops. The wind stops. You can no longer hear the valley behind you.',{offer:'taken',bonded:false}),
   l('regent','There. Nothing can be taken from you now. Thank you. I mean that.',{offer:'taken'}),
   l('regent','You have been practising for this since the beacon.',{offer:'taken',chains:{min:2}}),
   l('regent','You, of all people. Well. Everyone has a night.',{offer:'taken',chains:{max:1}})]},
@@ -11616,7 +11728,8 @@ const SCENES=freeze({
   n('Then the pages are roads, gold, letting go at both ends, and the Regent of Ash comes apart in the morning light like something finally allowed to.',{ending:['open',null]}),
   n('The view lifts. The spring, the workshop, the beans, the bridge, the pier. Every lamp you lit. It is all still here, and none of it is safe, and all of it is yours to walk.',{ending:['open',null]}),
   n('He closes the book, gently, on your name. He stands. He looks better. He looks like a man whose count came out right.',{ending:'kept'}),
-  n('Received in good order: one traveller, one fox, one valley. Kept safe. Nothing owed.',{ending:'kept'}),
+  n('Received in good order: one traveller, one fox, one valley. Kept safe. Nothing owed.',{ending:'kept',bonded:true}),
+  n('Received in good order: one traveller, one valley. Kept safe. Nothing owed.',{ending:'kept',bonded:false}),
   n('The view lifts. The valley is whole and bright and perfectly still. Nothing will ever be lost here again. He will see to it.',{ending:'kept'}),
   l('envoy','I will not bargain with him for you. I will come to the edge of his road every evening and say your name. I have learned to arrive.',{ending:'kept'}),
   n('You do not bring it down. You pick the book up, and you read him his first page. Forty-one names. You are not good at it. You go slowly.',{ending:'answered'}),
@@ -11678,7 +11791,8 @@ const SCENES=freeze({
   l('neris','Forty came out. I write to the line every week. Some weeks the letters come back opened, and that is something.',{hell:'divert'}),
   n('A grey letter comes at each new moon from the Ninth Office, reporting that conditions are much improved. You have a drawer of them.',{hell:'license'})]},
  'epilogue.concert':{beat:'epilogue',where:'The little amphitheatre',lines:[
-  l('ilan','This is the last song. I changed it one more time. It’s got a rest in it, about a fox long, and you’ll all please be quiet for the whole of it.'),
+  l('ilan','This is the last song. I changed it one more time. It’s got a rest in it, about a fox long, and you’ll all please be quiet for the whole of it.',{bonded:true}),
+  l('ilan','This is the last song. I changed it one more time. It’s got a rest in it, a long one, and you’ll all please be quiet for the whole of it.',{bonded:false}),
   n('From down the valley, faint, a man’s voice is reading names. Ilan waits for him to finish the page. Then he plays.',{ending:'answered'}),
   n('He plays. At the rest, nobody breathes. Then, from the back row, in a silence exactly a fox long, {briar} sneezes.',{ending:FREE,bonded:true}),
   n('Ilan laughs so hard he has to start the bar again.',{ending:FREE,bonded:true}),
@@ -11923,7 +12037,23 @@ function home(sim,io){
  return commit(sim,c,io,lines.join(' '),lines);
 }
 // ctx: { sim, active }. payload carries the revision and the active owner the caller read.
+// Every successful nearshore result carries its story cards: the script's lines for the state the command read.
 function command(ctx,type,payload,io){
+ const st=ctx?.sim?.state,cs=st?cardsFor(type,payload,st):null,out=dispatch(ctx,type,payload,io);
+ if(out.ok&&cs&&cs.length&&!out.duplicate)out.cards=cs;
+ return out;
+}
+function cardsFor(type,payload,state){
+ const c=step=>(SCRIPT()?.forStep?.('nearshore',step,state)?.lines||[]).map(l=>({speaker:l.speaker,text:l.text}));
+ if(type==='arrive')return[...c('pier'),...c('arrive')];
+ if(type==='plain')return[...c('pier'),...c('plain')];
+ if(type==='choose')return payload?.fox==='real'?c('real'):[];
+ if(type==='heel-answer')return payload?.take===true?c('false'):[];
+ if(type==='home')return c('home');
+ if(type==='refuse')return REFUSE.map((text,i)=>({speaker:i===0?'The Regent of Ash':'',text}));
+ return [];
+}
+function dispatch(ctx,type,payload,io){
  const sim=ctx?.sim;
  if(!sim||!(sim instanceof CORE().Simulation)||!payload||typeof payload!=='object'||Array.isArray(payload))return fail('Reach the nearshore while able to act.');
  if(typeof ctx.active!=='string'||!ctx.active||payload.expectedActive!==ctx.active||!Number.isSafeInteger(payload.expectedRevision)||payload.expectedRevision!==sim.state.adventure.revision)return fail('The character or place changed. Read the current place again.');
@@ -11944,6 +12074,12 @@ G.RealmNearshore=api;if(typeof module!=='undefined')module.exports=api;
  * every saved change is a command with the revision and owner the caller read. */
 (function(G){'use strict';
 const N=()=>G.RealmNearshore,S=()=>G.RealmSaga;
+// Story cards on the adventure's story dialog (the same ids and buttons): one card per line, then done().
+function cards(lines,done){
+ const d=typeof document!=='undefined'?document.getElementById('story-dialog'):null;if(!d||!Array.isArray(lines)||!lines.length){if(done)done();return;}
+ let i=0;const paint=()=>{const q=lines[i];document.getElementById('story-speaker').textContent=q.speaker?String(q.speaker).toUpperCase():'';document.getElementById('story-title').textContent='';document.getElementById('story-body').textContent=q.text||'';const area=document.getElementById('story-buttons');area.replaceChildren();const b=document.createElement('button');b.textContent=i+1<lines.length?'Next':'Continue';b.onclick=()=>{if(i+1<lines.length){i++;paint();return;}d.close();if(done)done();};area.appendChild(b);};
+ paint();d.showModal();
+}
 class NearshoreUI{
  constructor(rpg){this.rpg=rpg;this.nextTry=0;}
  get sim(){return this.rpg.sim;}
@@ -11951,7 +12087,8 @@ class NearshoreUI{
  run(type,extra={}){
   const sim=this.sim,c=this.rpg.api.worldContext();
   const result=this.rpg.api.nearshoreCommand(type,{expectedRevision:sim.state.adventure.revision,expectedActive:c.active,...extra});
-  if(result.ok&&result.text)this.rpg.api.toast(result.text);
+  if(result.ok&&result.cards&&result.cards.length)cards(result.cards);
+  else if(result.ok&&result.text&&!result.heel)this.rpg.api.toast(result.text);
   else if(!result.ok&&(type==='choose'||type==='heel-answer'))this.rpg.api.toast(result.error);
   if(result.ok&&!result.duplicate)this.rpg.paint();
   return result;
@@ -14650,7 +14787,7 @@ G.RealmAdventureArt={entrance,cave,draw,supportHeight:support,companionSnapshot:
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const button=(label,act,id='',disabled=false)=>'<button data-action="adv-'+act+'" data-id="'+esc(id)+'" '+(disabled?'disabled':'')+'>'+label+'</button>';
 class AdventureUI{
- constructor(api){this.api=api;this.sequence=0;this.intent=null;this.storyIndex=0;this.storyWasPaused=false;this.labelCache='';
+ constructor(api){this.api=api;globalThis.RealmStoryDialog={open:(f,o)=>this.openDialog(f,o),busy:()=>$('#story-dialog').open};this.sequence=0;this.intent=null;this.storyIndex=0;this.storyWasPaused=false;this.labelCache='';
   $('#chapter-open').onclick=()=>api.openPanel('adventure');$('#battle-strike').onclick=()=>this.run('attack');$('#battle-pulse').onclick=()=>this.run('pulse');$('#battle-dodge').onclick=()=>this.run('dodge',api.direction());$('#battle-heal').onclick=()=>this.run('heal');$('#battle-seek').onclick=()=>this.run('seek');
   $('#revive-button').onclick=()=>{if(this.run('revive').ok)$('#fallen-dialog').close();};$('#fallen-dialog').addEventListener('cancel',e=>e.preventDefault());$('#story-close').onclick=()=>this.closeStory();$('#story-dialog').addEventListener('cancel',e=>{e.preventDefault();this.closeStory();});
  }
@@ -14735,11 +14872,11 @@ class AdventureUI{
   html+='<div class="section-label">Your companion</div>';if(s.companion.bonded)html+='<article class="card"><h3>'+esc(s.companion.name)+' · Briarfox</h3><p>Briar follows your paths and joins fights. Stay keeps her where she is; Follow brings her back to your side.</p><label for="companion-name">Name</label><input id="companion-name" maxlength="24" value="'+esc(s.companion.name)+'"><div class="row">'+button('Keep name','rename')+button('Follow & assist','mode','follow',s.companion.mode==='follow')+button('Stay','mode','stay',s.companion.mode==='stay')+'</div></article>';else html+='<p class="intro">An injured fox is hiding in the western alcove. Oren packed a salve for her. Clear the alcove first, then go gently.</p>';
   return html+'<div class="notice">F strike · Q sweep · Space dodge · G tonic · E interact · Z hold to see the true roads. P pauses the world. If you fall, the spring brings you back, and your home, your digging and your victories stay as they are.</div>';
  }
-openDialog(flow,{fallback=null,finish=null,gift=false,pending={}}={}){this.intent=null;this.api.clearKeys();this.api.closePanel();this.dlg={flow,fallback,finish,gift,pending:{...pending},si:0,li:0,ran:{}};this.storyWasPaused=this.sim.paused;this.sim.paused=true;this.dialogPaint();$('#story-dialog').showModal();}
+openDialog(flow,{fallback=null,finish=null,gift=false,pending={},onChoice=null}={}){this.intent=null;this.api.clearKeys();this.api.closePanel();this.dlg={flow,fallback,finish,gift,onChoice,pending:{...pending},si:0,li:0,ran:{}};this.storyWasPaused=this.sim.paused;this.sim.paused=true;this.dialogPaint();$('#story-dialog').showModal();}
  scripted(flow){const S=G.RealmStoryScript;return!!S&&flow.every(x=>!!S.STEPS[x.owner]?.[x.step]);}
  dialogFacts(){const S=G.RealmStoryScript;return S.facts({...S.facts(this.sim.state),...this.dlg.pending});}
- dialogCommand(cmd){this.sim.paused=false;this.run(cmd,{},true);this.sim.paused=true;}
- dialogAnswer(option){const d=this.dlg;for(const[key,value]of Object.entries(option.sets)){if(key==='saga.heard.beacon')d.pending.heardBeacon=value;else if(key==='saga.choices.tessa')d.pending.tessa=value;}d.si++;d.li=0;this.dialogPaint();}
+ dialogCommand(cmd){this.sim.paused=false;if(typeof cmd==='function')cmd(this.dlg.pending);else this.run(cmd,{},true);this.sim.paused=true;}
+ dialogAnswer(option){const d=this.dlg;d.onChoice?.(option);for(const[key,value]of Object.entries(option.sets)){if(key==='saga.heard.beacon')d.pending.heardBeacon=value;else if(key==='saga.choices.tessa')d.pending.tessa=value;else if(key==='adventure.beacon.relic')d.pending.cinder=value;}d.si++;d.li=0;this.dialogPaint();}
  dialogPaint(){const d=this.dlg,btns=$('#story-buttons');btns.replaceChildren();const btn=(text,fn)=>{const b=document.createElement('button');b.textContent=text;b.onclick=fn;btns.append(b);};const show=(speaker,body,title='')=>{$('#story-speaker').textContent=(speaker||'').toUpperCase();$('#story-title').textContent=title;$('#story-body').textContent=body;};
   if(!this.scripted(d.flow)){const q=(d.fallback||[])[d.li];if(!q){this.dialogEnd();return;}if(q.command&&!d.ran[d.li]){d.ran[d.li]=true;this.dialogCommand(q.command);}show(q.speaker,q.body,q.title);btn('Listen',()=>{d.li++;this.dialogPaint();});return;}
   const step=d.flow[d.si];if(!step){this.dialogEnd();return;}
@@ -14754,8 +14891,13 @@ openDialog(flow,{fallback=null,finish=null,gift=false,pending={}}={}){this.inten
   btn('Continue',()=>this.closeStory());}
  envoy(){const first=!this.state.angelSeen;if(!this.run('reveal').ok)return;const beat=(step,command=null)=>({owner:'adventure',step,command});const flow=first?[beat('envoy'),beat('envoy-prophecy','envoy-prophecy'),beat('envoy-feather','envoy-feather'),beat('reward')]:[beat('envoy-prophecy','envoy-prophecy'),beat('envoy-feather','envoy-feather'),beat('reward')];this.openDialog(flow,{fallback:A.STORY,gift:true});}
  sighting(){this.openDialog([{owner:'beacon',step:'sighting'},{owner:'beacon',step:'sighting-answer'},{owner:'beacon',step:'sighting-tessa'}],{fallback:G.RealmBeacon.SIGHTING,finish:{label:'Watch him go',run:p=>this.run('beacon-sighting',{heard:p.heardBeacon!==false,tessa:p.tessa??null})},pending:{heardBeacon:true,tessa:null}});}
+ // a scene the domain queued plays once the way is clear: no dialog open, and not while the hero is down. the herald's
+ // choice is the beacon's own rule (the hero stands beside it), so that scene waits there instead of failing its choice.
+ playQueuedScene(){if(this.state.hp<=0||$('#story-dialog').open||$('#fallen-dialog').open)return;const q=A.peekScene(this.sim);if(!q)return;if(q.owner==='beacon'&&q.step==='herald'&&!G.RealmBeacon.near(this.sim))return;A.takeScene(this.sim);this.showScene(q);}
+ // one scripted scene as a dialog. The herald asks for the cinder, then plays what the choice did.
+ showScene({owner,step}){const flow=owner==='beacon'&&step==='herald'?[{owner,step},{owner:'beacon',step:'relic',command:p=>this.run('beacon-relic',{choice:p.cinder==='accepted'?'accept':'seal'},true)}]:[{owner,step}];this.openDialog(flow,{finish:{label:'Continue',run:()=>({ok:true})}});}
  closeStory(){if($('#story-dialog').open)$('#story-dialog').close();this.sim.paused=this.storyWasPaused;this.api.clearKeys();}
- tick(){let sim=this.sim,s=this.state,r=A.runtime(sim),mine=A.combatScene(sim);A.syncScene(sim);
+ tick(){let sim=this.sim,s=this.state,r=A.runtime(sim),mine=A.combatScene(sim);A.syncScene(sim);this.playQueuedScene();
  if(!sim.room&&!sim.paused&&s.relic&&!r.homeAsked&&Math.hypot(sim.state.player.x-11,sim.state.player.z-9)<3.5){const res=this.run('home',{},true);if(res.ok)r.homeAsked=true;if(res.scene)this.openDialog([{owner:'adventure',step:'home'}],{finish:{label:'Continue',run:()=>({ok:true})}});}
  if(sim.room==='road'&&!sim.paused&&!r.tessaAsked&&Math.hypot(sim.state.player.x+10,sim.state.player.z-12)<3){const res=this.run('tessa',{},true);if(res.ok)r.tessaAsked=true;if(res.scene)this.openDialog([{owner:'adventure',step:'tessa'}],{finish:{label:'Continue',run:()=>({ok:true})}});}
   if(this.intent&&!sim.paused&&!sim.playerPath.length&&s.hp>0){let i=this.intent;
@@ -15754,7 +15896,7 @@ class RPGUI{
   if(act==='companion'){this.run('companion-mode',{mode:id});return;}
    if(act==='companion-guide'){this.close();this.run('companion-guide');return;}
   if(act==='soul-equip'){this.run('soul-equip',{power:id||null});return;}
-  if(act==='relic'){this.run('beacon-relic',{choice:id});return;}
+  if(act==='herald'){G.RealmAdventure.playScene(this.sim,'beacon','herald');this.close();return;}
   if(act==='chart'){this.run('beacon-route',{route:id});return;}
   if(act==='power'||act==='beacon-command'){
    const result=this.run(id);if(result.ok&&['beacon-answer','beacon-defend','beacon-replay'].includes(id))this.close();return;
@@ -15917,7 +16059,7 @@ class RPGUI{
   if(!near)h+='<div class="notice">Actions require you beside the Sunward Beacon.</div>'+button(this.sim.room==='road'?'Walk to the beacon':'Find the road gate',this.sim.room==='road'?'road-route':'go',this.sim.room==='road'?'beacon':'road');
   if(!b.introduced)return h+button('Answer the beacon','beacon-command','beacon-answer',!near||!available,'class="primary"');
   if(!b.complete){h+='<div class="beacon-choices"><article><h4>“A world we thought lost has opened its door.”</h4><p>Heaven cannot hold this road without you. Hell has felt the light as well.</p><p><strong>Defend three breaches.</strong> The enemy attacks the ward as well as you. E beside the beacon repairs it for 20 stamina. The veiled desecrator can be revealed by Briar; Mara can also expose it.</p></article><article><h4>A first Grace</h4><p>Dawn aegis grants a temporary barrier. Accepting is optional; blade, bow, Brace and Briar are enough to attempt the defense.</p>'+button(b.soul.grace?'Grace accepted':'Accept Dawn aegis','beacon-command','beacon-grace',!near||b.soul.grace||r.phase==='arrival')+'</article></div>'+button(b.status==='corrupted'?'Reclaim the beacon':'Begin the defense','beacon-command','beacon-defend',!near||!['idle','ready','failed'].includes(r.phase)||B.sightingPending(this.sim),'class="primary"')+'<p class="fineprint">Health and tonics refill at the start. Losing begins a reclamation attempt; your home and earlier chapters are safe.</p>';return h;}
-  h+='<div class="beacon-choices"><article><h4>The light held</h4><p>A one-time reward for keeping this road open.</p>'+button(b.reward?'Reward collected':'Claim 15 sunmarks + moonstone','beacon-command','beacon-reward',!near||b.reward)+'</article><article><h4>The herald’s cinder</h4><p>A heavy strike that costs 12 health. The first use leaves a mark on your history, and accepting it alone does not. You can give the power back here later.</p>'+(b.relic==='undecided'?'<div class="button-row">'+button('Keep the cinder','relic','accept',!near)+button('Seal it away','relic','seal',!near)+'</div>':'<p class="choice-record">Cinder: '+esc(b.relic)+'</p>')+'</article></div>';
+  h+='<div class="beacon-choices"><article><h4>The light held</h4><p>A one-time reward for keeping this road open.</p>'+button(b.reward?'Reward collected':'Claim 15 sunmarks + moonstone','beacon-command','beacon-reward',!near||b.reward)+'</article><article><h4>The herald’s cinder</h4><p>A heavy strike that costs 12 health. The first use leaves a mark on your history, and accepting it alone does not. You can give the power back here later.</p>'+(b.relic==='undecided'?'<div class="button-row">'+button('Hear the herald’s cinder','herald','',!near)+'</div>':'<p class="choice-record">Cinder: '+esc(b.relic)+'</p>')+'</article></div>';
   if(!b.soul.grace)h+=button('Accept the first Grace · optional','beacon-command','beacon-grace',!near||!['won','idle'].includes(r.phase));
   h+=button('Invite another breach · no repeat loot','beacon-command','beacon-replay',!near||!['won','idle'].includes(r.phase))+'<p class="fineprint">Repeat assaults let you try weapons and soul techniques. They do not award more money, gems or story completion. Cinder use still records your choice.</p>';
   h+='<h3>The roads beyond</h3><div class="network-map"><svg viewBox="0 0 700 190" aria-label="The roads beyond the Sunward Beacon. They are charted, not walkable yet."><path d="M350 150 125 42M350 150 350 30M350 150 575 42M125 42 52 110M575 42 653 105" fill="none" stroke="#64766f" stroke-width="2" stroke-dasharray="5 7"/><g fill="#3c4c50" stroke="#97a99e"><circle cx="125" cy="42" r="12"/><circle cx="350" cy="30" r="12"/><circle cx="575" cy="42" r="12"/></g><g fill="#a54962"><circle cx="52" cy="110" r="7"/><circle cx="653" cy="105" r="7"/></g><circle cx="350" cy="150" r="16" fill="#efd098"/><g fill="#dfdccb" font-size="13" text-anchor="middle"><text x="125" y="73">Monastery</text><text x="350" y="62">Fallen kingdom</text><text x="575" y="73">Living forest</text><text x="350" y="183">Sunward · restored</text></g></svg></div><div class="button-row">'+Object.entries(B.ROUTES).map(([id,n])=>button((b.route===id?'Charted: ':'Chart: ')+n,'chart',id,!near)).join('')+'</div><p class="fineprint">The monastery, fallen kingdom and living forest remain charted future campaign regions. The five optional local realms are reached separately through Roads of Light.</p>';return h;
@@ -19639,6 +19781,17 @@ function paint(el,f){
 const api={KEYS,TOUCH,visible,rows,mount,paint};
 G.RealmFirstRun=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
+</script><script>/* gate for Realm.tour: the harness global and the exact ?tour=1 flag. its own file so node can test it. */
+(function(G){'use strict';
+// exactly one tour flag, valued 1. a repeated or near-miss flag does not mount the hook.
+const enabled=(win,search)=>{
+ if(!win||!win.__ETERNITIES_TEST_MODE)return false;
+ const flags=new URLSearchParams(search||'').getAll('tour');
+ return flags.length===1&&flags[0]==='1';
+};
+G.RealmTourHook=Object.freeze({enabled});
+})(typeof window!=='undefined'?window:globalThis);
+if(typeof module!=='undefined')module.exports=globalThis.RealmTourHook;
 </script><script>/* Interface, camera and local persistence. Nothing in this file calls a server.
  * Residents use explicit routines and authored dialogue, not a hidden AI API. */
 (function(){'use strict';const C=RealmCore,X=RealmCreative,$=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -20386,6 +20539,12 @@ function frame(now){let dt=lastFrame?Math.min((now-lastFrame)/1000,.1):.016;last
 const G_CAPTURE=!!window.__ETERNITIES_CAPTURE_MODE;
 window.Realm={get state(){return sim.snapshot();},get diagnostics(){let g=engine?.gl,dbg=g?.getExtension('WEBGL_debug_renderer_info');return{briar:RealmBriarOuting.availability(briarContext()),fishing:RealmPierFishing.current(fishing.context()),version:'10.0.0',mode:engine?'webgl2':'map',scene:sim.room||'valley',world:RealmWorldFoundations.definition(sim.room)?{id:RealmWorldFoundations.definition(sim.room).id,height:sceneHeight(),dive:worldDiveStatus(),journey:JSON.parse(JSON.stringify(sim.state.journeys.realms[RealmWorldFoundations.definition(sim.room).id]))}:null,wildSigns:wildSignsDiagnostics(),roadkeeper:roadkeeperDiagnostics(),consignment:sim.room===RealmEarthConsignmentData.ROOM?JSON.parse(JSON.stringify({view:RealmEarthConsignmentMotion.current(consignmentContext()),frame:RealmEarthConsignmentArt.snapshot(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.consignmentPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,atlantis:sim.room===RealmAtlantisCampaign.definition.room?JSON.parse(JSON.stringify({current:RealmAtlantisCampaign.currentStatus(sim),motion:{currentDistance:RealmAtlantisCampaign.runtime(sim).currentDistance,pullDistance:RealmAtlantisCampaign.runtime(sim).pullDistance},witnesses:RealmAtlantisCampaign.runtime(sim).witnesses})):null,heaven:sim.room===RealmHeavenCampaign.definition.room?JSON.parse(JSON.stringify({escort:RealmHeavenCampaign.runtime(sim).escort,activation:RealmHeavenCampaign.runtime(sim).activation,status:RealmHeavenCampaign.escortStatus(sim)})):null,earthGate:gates().status(),earthTournament:RealmEarthTournament.view(sim),earthHomecoming:JSON.parse(JSON.stringify({record:sim.state.earthHomecoming,runtime:[null,RealmEarthHomecoming.definition.room].includes(sim.room)?RealmEarthHomecoming.runtime(sim):null,missing:RealmEarthHomecoming.missing(sim.state),ready:RealmEarthHomecoming.ready(sim.state)})),earth:sim.room===RealmEarth.ROOM?{trip:sim.earthTrip,height:sceneHeight(),walkable:RealmEarth.walkable(sim.state.player.x,sim.state.player.z)}:null,cosmos:sim.room===RealmCosmos.ROOM?{trip:sim.cosmosTrip,height:sceneHeight(),walkable:RealmCosmos.walkable(sim.state.player.x,sim.state.player.z),campaign:JSON.parse(JSON.stringify(RealmCosmosCampaign.runtime(sim)))}:null,networkDependencies:0,liveAI:false,multiplayer:false,adventure:{tactics:JSON.parse(JSON.stringify(RealmCombat.runtime(sim))),beacon:JSON.parse(JSON.stringify(RealmBeacon.runtime(sim))),crossing:JSON.parse(JSON.stringify(RealmCrossing.runtime(sim))),player:{...sim.state.player},paused:sim.paused,intent:adventure?.intent||null,stats:RealmAdventure.stats(sim.state.adventure),weapon:RealmArsenal.weapon(sim.state.adventure),arrows:RealmArsenal.runtime(sim).arrows.map(a=>({...a})),range:{...RealmArsenal.runtime(sim).range},enemies:RealmAdventure.runtime(sim).enemies.map(e=>({id:e.id,x:e.x,z:e.z,hp:e.hp,maxHP:e.maxHP,hidden:!!e.hidden,eventEnemy:!!e.eventEnemy,kind:e.kind,earthHomecoming:e.earthHomecoming||null,ringMode:e.ringMode,custom:e.custom,mode:e.mode,timer:e.timer,aim:e.aim,yaw:e.yaw,strike:e.strike||null,contactAt:e.contactAt??null,contactHit:e.contactHit??null})),companion:{...RealmAdventure.runtime(sim).companion}},sandbox:{bridge:sim.state.sandbox.bridge,objects:sim.state.sandbox.placed.length,elapsed:sim.state.sandbox.elapsed,autoGather:sandbox?.auto||null,buildMode:sandbox?.build||null},saveState,characters:{mode:characterStore.blocked?'blocked':characterStore.managed?'managed':'legacy',active:characterStore.active,revision:characterStore.revision,count:characterStore.record?.slots.length||1,writer:characterStore.writer,error:characterStore.error},fps,errors:errors.slice(),camera:{...camera,heading:cameraHeading(),projection:engine?.camera.projection||'orthographic',eye:engine?.camera.eye,target:engine?.camera.target},metrics:engine?.metrics||null,reflection:engine?.reflectionInfo||null,cutaway:{enabled:!!engine?.cutaway,focus:engine?.cutawayFocus||null},renderer:dbg?g.getParameter(dbg.UNMASKED_RENDERER_WEBGL):null,music:{playing:experience?.playing||false,scoreRevision:sim.state.scoreRevision,playingRevision:experience?.playingRevision,step:experience?.step},gathering:sim.gathering?{...sim.gathering}:null,layoutRevision:sim.state.retreat.revision,roadsideGathering:{status:rpg?.gathering?.player.status||'idle',playing:!!rpg?.gathering?.player.source,pending:!!rpg?.gathering?.pending},audio:{enabled:audio.enabled,state:audio.ctx?.state||'not-created',soundscape:audio.soundscape?.snapshot()||null}};},navigate,export:()=>JSON.stringify(sim.snapshot(),null,2),project:(x,y,z)=>engine?.project(x,y,z)};
 if(window.__ETERNITIES_TEST_MODE||new URLSearchParams(location.search).get('test')==='1')window.Realm.test={consignmentContext,consignmentControl,consignment:()=>({view:RealmEarthConsignmentMotion.current(consignmentContext()),frame:RealmEarthConsignmentArt.snapshot(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.consignmentPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),fieldcraftContext,frameFieldcraft,frameCarrier,carrier:()=>({view:RealmEarthPatrolCarrier.current(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.carrierPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),fieldcraft:()=>({view:RealmEarthFieldcraft.current(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.fieldcraftPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),earthRoad:()=>({route:RealmEarthRoad.endpoint(sim.room),parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.earthRoadPart||i.worldSolidId==='hearthwater-fingerpost').map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),earthRoadTravel,gateContext,gateStatus,gateCommand,gateControl,tournamentContext,tournamentCommand,masterworkContext,masterworkCommand,earthHomecomingCommand,homeCommand,cosmosCampaignCommand,atlantisCampaignCommand,nearshoreCommand,heavenCampaignCommand,hellCampaignCommand,bridgeCommunityCommand,localLifeCommand,bridgeView,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,worldSwim:(...a)=>RealmWorldFoundations.swim(sim,...a),step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){briarContext();bindWildSignsClearance();sim.tick(.05);tickRoadkeeper(.05);tickConsignment(.05);gates().tick(.05);tickGrazer(.05);adventure?.tick();arsenal?.tick();rpg?.tick();fishing?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,bridge:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({definition:RealmEarth.BRIDGE,waterHeight:RealmEngine.WATER_HEIGHT,railCutaway:{eligible:engine?.railCutawayActive===true,enabled:engine?.cutaway===true},parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.bridgePart||i.mountainPart||i.shorelinePart).map(i=>({kind:b.kind,railBatch:b.railCutaway===true,...i,m:i.m?Array.from(i.m):null})))||[]})):null,traveler:()=>art?.travelerSnapshot()||null,family:()=>art?.familySnapshot(sim)||null,companion:()=>RealmAdventureArt.companionSnapshot(sim),skitters:()=>RealmAdventureArt.skitterSnapshot(sim),drover:()=>sim.room===RealmEarth.ROOM&&art?.droverFrame?JSON.parse(JSON.stringify({frame:{...art.droverFrame,root:Array.from(art.droverFrame.root),coilRoot:Array.from(art.droverFrame.coilRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.droverPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,earthShoulder:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({frame:art?.earthShoulderFrame,parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.quarryShoulder||i.terrain).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,quarry:()=>sim.room===RealmEarth.ROOM&&art?.quarryFrame?JSON.parse(JSON.stringify({frame:{actor:{...art.quarryFrame.actor,root:Array.from(art.quarryFrame.actor.root),toolRoot:Array.from(art.quarryFrame.actor.toolRoot)},works:art.quarryFrame.works},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.stoneworkerPart||i.quarryPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))})):null,millwright:()=>sim.room===RealmEarth.ROOM&&art?.millwrightFrame?JSON.parse(JSON.stringify({frame:{...art.millwrightFrame,root:Array.from(art.millwrightFrame.root),toolRoot:Array.from(art.millwrightFrame.toolRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.millwrightPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millGate:()=>sim.room===RealmEarth.ROOM&&art?.millGateFrame?JSON.parse(JSON.stringify({gate:art.millGateFrame,parts:[...engine.batches,...engine.dynamic].flatMap(b=>b.items.filter(i=>i.millPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null}))),wheel:art.dynamicBox.items.filter(i=>i.p[0]===3.55&&i.p[1]===2.71)})):null,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();fishing?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);syncBriarOwner();syncFieldcraftOwner();consignmentPresentation();grazerPresentation();prepareWildSignsDiagnostics();roadkeeperPresentation();prepareRoadkeeperDiagnostics();art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
+// the tour's realm entry, behind RealmTourHook's gate: the same preview and enter the invitation's confirm calls.
+if(RealmTourHook.enabled(window,location.search))window.Realm.tour={enterRealm(id){
+ if(id==='cosmos'){const p=RealmCosmos.preview(cosmosContext());return p.ok?cosmosTravel(p.ticket):p;}
+ if(!['hell','heaven','atlantis'].includes(id))return{ok:false,error:'not a tour realm: '+id};
+ const p=RealmWorldFoundations.preview(worldContext(),id);return p.ok?worldTravel(p.ticket):p;
+}};
 // shell: title, pause, first steps and the settings controls. Test mode skips the title, keeps the old Escape, and mounts no first steps.
 const harnessMode=!!(window.__ETERNITIES_TEST_MODE||window.__ETERNITIES_CAPTURE_MODE||new URLSearchParams(location.search).get('test')==='1');
 let titleDrift=false,titleTourOn=false,firstRunCard=null,shellReturn=null;

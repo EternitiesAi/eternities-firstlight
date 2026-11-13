@@ -3,7 +3,7 @@
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const button=(label,act,id='',disabled=false)=>'<button data-action="adv-'+act+'" data-id="'+esc(id)+'" '+(disabled?'disabled':'')+'>'+label+'</button>';
 class AdventureUI{
- constructor(api){this.api=api;this.sequence=0;this.intent=null;this.storyIndex=0;this.storyWasPaused=false;this.labelCache='';
+ constructor(api){this.api=api;globalThis.RealmStoryDialog={open:(f,o)=>this.openDialog(f,o),busy:()=>$('#story-dialog').open};this.sequence=0;this.intent=null;this.storyIndex=0;this.storyWasPaused=false;this.labelCache='';
   $('#chapter-open').onclick=()=>api.openPanel('adventure');$('#battle-strike').onclick=()=>this.run('attack');$('#battle-pulse').onclick=()=>this.run('pulse');$('#battle-dodge').onclick=()=>this.run('dodge',api.direction());$('#battle-heal').onclick=()=>this.run('heal');$('#battle-seek').onclick=()=>this.run('seek');
   $('#revive-button').onclick=()=>{if(this.run('revive').ok)$('#fallen-dialog').close();};$('#fallen-dialog').addEventListener('cancel',e=>e.preventDefault());$('#story-close').onclick=()=>this.closeStory();$('#story-dialog').addEventListener('cancel',e=>{e.preventDefault();this.closeStory();});
  }
@@ -88,11 +88,11 @@ class AdventureUI{
   html+='<div class="section-label">Your companion</div>';if(s.companion.bonded)html+='<article class="card"><h3>'+esc(s.companion.name)+' · Briarfox</h3><p>Briar follows your paths and joins fights. Stay keeps her where she is; Follow brings her back to your side.</p><label for="companion-name">Name</label><input id="companion-name" maxlength="24" value="'+esc(s.companion.name)+'"><div class="row">'+button('Keep name','rename')+button('Follow & assist','mode','follow',s.companion.mode==='follow')+button('Stay','mode','stay',s.companion.mode==='stay')+'</div></article>';else html+='<p class="intro">An injured fox is hiding in the western alcove. Oren packed a salve for her. Clear the alcove first, then go gently.</p>';
   return html+'<div class="notice">F strike · Q sweep · Space dodge · G tonic · E interact · Z hold to see the true roads. P pauses the world. If you fall, the spring brings you back, and your home, your digging and your victories stay as they are.</div>';
  }
-openDialog(flow,{fallback=null,finish=null,gift=false,pending={}}={}){this.intent=null;this.api.clearKeys();this.api.closePanel();this.dlg={flow,fallback,finish,gift,pending:{...pending},si:0,li:0,ran:{}};this.storyWasPaused=this.sim.paused;this.sim.paused=true;this.dialogPaint();$('#story-dialog').showModal();}
+openDialog(flow,{fallback=null,finish=null,gift=false,pending={},onChoice=null}={}){this.intent=null;this.api.clearKeys();this.api.closePanel();this.dlg={flow,fallback,finish,gift,onChoice,pending:{...pending},si:0,li:0,ran:{}};this.storyWasPaused=this.sim.paused;this.sim.paused=true;this.dialogPaint();$('#story-dialog').showModal();}
  scripted(flow){const S=G.RealmStoryScript;return!!S&&flow.every(x=>!!S.STEPS[x.owner]?.[x.step]);}
  dialogFacts(){const S=G.RealmStoryScript;return S.facts({...S.facts(this.sim.state),...this.dlg.pending});}
- dialogCommand(cmd){this.sim.paused=false;this.run(cmd,{},true);this.sim.paused=true;}
- dialogAnswer(option){const d=this.dlg;for(const[key,value]of Object.entries(option.sets)){if(key==='saga.heard.beacon')d.pending.heardBeacon=value;else if(key==='saga.choices.tessa')d.pending.tessa=value;}d.si++;d.li=0;this.dialogPaint();}
+ dialogCommand(cmd){this.sim.paused=false;if(typeof cmd==='function')cmd(this.dlg.pending);else this.run(cmd,{},true);this.sim.paused=true;}
+ dialogAnswer(option){const d=this.dlg;d.onChoice?.(option);for(const[key,value]of Object.entries(option.sets)){if(key==='saga.heard.beacon')d.pending.heardBeacon=value;else if(key==='saga.choices.tessa')d.pending.tessa=value;else if(key==='adventure.beacon.relic')d.pending.cinder=value;}d.si++;d.li=0;this.dialogPaint();}
  dialogPaint(){const d=this.dlg,btns=$('#story-buttons');btns.replaceChildren();const btn=(text,fn)=>{const b=document.createElement('button');b.textContent=text;b.onclick=fn;btns.append(b);};const show=(speaker,body,title='')=>{$('#story-speaker').textContent=(speaker||'').toUpperCase();$('#story-title').textContent=title;$('#story-body').textContent=body;};
   if(!this.scripted(d.flow)){const q=(d.fallback||[])[d.li];if(!q){this.dialogEnd();return;}if(q.command&&!d.ran[d.li]){d.ran[d.li]=true;this.dialogCommand(q.command);}show(q.speaker,q.body,q.title);btn('Listen',()=>{d.li++;this.dialogPaint();});return;}
   const step=d.flow[d.si];if(!step){this.dialogEnd();return;}
@@ -107,8 +107,13 @@ openDialog(flow,{fallback=null,finish=null,gift=false,pending={}}={}){this.inten
   btn('Continue',()=>this.closeStory());}
  envoy(){const first=!this.state.angelSeen;if(!this.run('reveal').ok)return;const beat=(step,command=null)=>({owner:'adventure',step,command});const flow=first?[beat('envoy'),beat('envoy-prophecy','envoy-prophecy'),beat('envoy-feather','envoy-feather'),beat('reward')]:[beat('envoy-prophecy','envoy-prophecy'),beat('envoy-feather','envoy-feather'),beat('reward')];this.openDialog(flow,{fallback:A.STORY,gift:true});}
  sighting(){this.openDialog([{owner:'beacon',step:'sighting'},{owner:'beacon',step:'sighting-answer'},{owner:'beacon',step:'sighting-tessa'}],{fallback:G.RealmBeacon.SIGHTING,finish:{label:'Watch him go',run:p=>this.run('beacon-sighting',{heard:p.heardBeacon!==false,tessa:p.tessa??null})},pending:{heardBeacon:true,tessa:null}});}
+ // a scene the domain queued plays once the way is clear: no dialog open, and not while the hero is down. the herald's
+ // choice is the beacon's own rule (the hero stands beside it), so that scene waits there instead of failing its choice.
+ playQueuedScene(){if(this.state.hp<=0||$('#story-dialog').open||$('#fallen-dialog').open)return;const q=A.peekScene(this.sim);if(!q)return;if(q.owner==='beacon'&&q.step==='herald'&&!G.RealmBeacon.near(this.sim))return;A.takeScene(this.sim);this.showScene(q);}
+ // one scripted scene as a dialog. The herald asks for the cinder, then plays what the choice did.
+ showScene({owner,step}){const flow=owner==='beacon'&&step==='herald'?[{owner,step},{owner:'beacon',step:'relic',command:p=>this.run('beacon-relic',{choice:p.cinder==='accepted'?'accept':'seal'},true)}]:[{owner,step}];this.openDialog(flow,{finish:{label:'Continue',run:()=>({ok:true})}});}
  closeStory(){if($('#story-dialog').open)$('#story-dialog').close();this.sim.paused=this.storyWasPaused;this.api.clearKeys();}
- tick(){let sim=this.sim,s=this.state,r=A.runtime(sim),mine=A.combatScene(sim);A.syncScene(sim);
+ tick(){let sim=this.sim,s=this.state,r=A.runtime(sim),mine=A.combatScene(sim);A.syncScene(sim);this.playQueuedScene();
  if(!sim.room&&!sim.paused&&s.relic&&!r.homeAsked&&Math.hypot(sim.state.player.x-11,sim.state.player.z-9)<3.5){const res=this.run('home',{},true);if(res.ok)r.homeAsked=true;if(res.scene)this.openDialog([{owner:'adventure',step:'home'}],{finish:{label:'Continue',run:()=>({ok:true})}});}
  if(sim.room==='road'&&!sim.paused&&!r.tessaAsked&&Math.hypot(sim.state.player.x+10,sim.state.player.z-12)<3){const res=this.run('tessa',{},true);if(res.ok)r.tessaAsked=true;if(res.scene)this.openDialog([{owner:'adventure',step:'tessa'}],{finish:{label:'Continue',run:()=>({ok:true})}});}
   if(this.intent&&!sim.paused&&!sim.playerPath.length&&s.hp>0){let i=this.intent;

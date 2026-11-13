@@ -152,7 +152,23 @@ function home(sim,io){
  return commit(sim,c,io,lines.join(' '),lines);
 }
 // ctx: { sim, active }. payload carries the revision and the active owner the caller read.
+// Every successful nearshore result carries its story cards: the script's lines for the state the command read.
 function command(ctx,type,payload,io){
+ const st=ctx?.sim?.state,cs=st?cardsFor(type,payload,st):null,out=dispatch(ctx,type,payload,io);
+ if(out.ok&&cs&&cs.length&&!out.duplicate)out.cards=cs;
+ return out;
+}
+function cardsFor(type,payload,state){
+ const c=step=>(SCRIPT()?.forStep?.('nearshore',step,state)?.lines||[]).map(l=>({speaker:l.speaker,text:l.text}));
+ if(type==='arrive')return[...c('pier'),...c('arrive')];
+ if(type==='plain')return[...c('pier'),...c('plain')];
+ if(type==='choose')return payload?.fox==='real'?c('real'):[];
+ if(type==='heel-answer')return payload?.take===true?c('false'):[];
+ if(type==='home')return c('home');
+ if(type==='refuse')return REFUSE.map((text,i)=>({speaker:i===0?'The Regent of Ash':'',text}));
+ return [];
+}
+function dispatch(ctx,type,payload,io){
  const sim=ctx?.sim;
  if(!sim||!(sim instanceof CORE().Simulation)||!payload||typeof payload!=='object'||Array.isArray(payload))return fail('Reach the nearshore while able to act.');
  if(typeof ctx.active!=='string'||!ctx.active||payload.expectedActive!==ctx.active||!Number.isSafeInteger(payload.expectedRevision)||payload.expectedRevision!==sim.state.adventure.revision)return fail('The character or place changed. Read the current place again.');

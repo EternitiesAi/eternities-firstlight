@@ -1,4 +1,4 @@
-/* The stolen pattern: hell's campaign after the Open Cage rescue. The pattern that took Briar was cut in the
+/* The stolen pattern: hell's campaign after the Open Cage rescue. The pattern behind the night at Bellweather was cut in the
  * regent's foundry, and its outer gate is kept by Veyr. Step and choice ids are saved, so they stay put even
  * where the words change. Rules and the warden fight live in hell-campaign.js. */
 (function (G) {
@@ -22,12 +22,12 @@ const definition=freeze({
  giver:{id:'hell-istra',name:'Istra · return keeper',x:-10,z:24},
  reward:{xp:145,coins:20,ore:4,materials:{wood:3,fiber:2}},
  regent:{x:0,z:-106},
- summary:'Neris’s record names the foundry. The pattern that took Briar was cut in its works, and its trail runs down to the outer gate. Read the foundry’s own measurements, face Veyr, who keeps the gate for the regent, take the pattern back, and decide what becomes of the people the writ still holds. Istra closes the road when it is done.',
+ summary:'Neris’s record names the foundry. The pattern behind the night at Bellweather was cut in its works, and its trail runs down to the outer gate. Read the foundry’s own measurements, face Veyr, who keeps the gate for the regent, take the pattern back, and decide what becomes of the people the writ still holds. Istra closes the road when it is done.',
  danger:'Veyr, the foundry’s warden, is the heaviest fight on this road so far. He has two locked attacks: a broad short sweep and a narrow line. Each has a 1.35-second warning and a 2.2-second recovery. Step beside the marked shape, use real cover or Brace (3), then strike while he recovers. The optional counterweight adds 0.6 seconds to sweep recovery, and the optional brace adds 0.6 seconds to line recovery. Below half health his order changes, and his strikes do not come faster. Sound is optional; shape and text carry the warning. The road home stays open before, during and after the fight. The inner foundry stays shut.',
  completionText:'Istra keeps the record beside Neris’s full measurements. The pattern is back in the valley’s hands, and Veyr no longer keeps the gate. The people the writ held have the road you chose for them, and the works remember it. The regent has seen you at the gate and said your name. The inner foundry and the rest of Hell are still to come.',
  steps:[
   step('witness-record','Hear Neris out at the Refuge','interact',-12,27,[],false,
-   'Neris is at the Kiln Refuge. Her record names the foundry. The pattern that took Briar was cut there, and the mark in its margin is the regent’s. Take the record to Tovan.'),
+   'Neris is at the Kiln Refuge. Her record names the foundry. The pattern behind the night at Bellweather was cut there, and the mark in its margin is the regent’s. Take the record to Tovan.'),
   step('tovan-account','Ask Tovan to check the rivets','interact',-15,16,['witness-record'],false,
    'Tovan knows the foundry’s pattern plates by their rivets, because he set some of them. Compare his count with Neris’s, then go to the outer gate.'),
   step('read-service-writ','Read the writ on the foundry gate','interact',-12,-95,['tovan-account'],false,

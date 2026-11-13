@@ -1,92 +1,109 @@
 # Firstlight 1.0 story tour
 
-A tour of the main beats on the box GPU. It lives in `tools/story_tour_saves.cjs` (checkpoints) and `tools/story_tour.py` (the browser tour). Lane: look. Final run: `look-tour-4`, commit `205299c`, served page `0973a17` (the lane build).
+A tour of the main beats on the box GPU. Checkpoints come from the journeys' own commands (`tools/story_tour_saves.cjs`). The finale and the nearshore start from the bot's own world after the nearshore choice (`tools/firstlight_journey.cjs --save-at nearshore`). The browser tour is `tools/story_tour.py`, run from `tools/story_tour_box.sh`. Lane: look.
 
-## Method
+## The run
 
-- **Checkpoints.** Each beat's save comes from the owning journey's own commands (the node journeys in `tests/`), written to a folder and read back through the save validator. The beat each save is on is recorded from the saga (`SG.current`, `SG.done`). Nothing is edited by hand, except the night set piece, see limits.
-- **Loading.** The page loads a checkpoint through its own restore path, `Realm.test.replace`, under the existing test-mode gate (`window.__ETERNITIES_TEST_MODE`, set only by the harness init script).
-- **Camera.** Third person and diorama are the page's own camera buttons (`data-id` `adventure` and `follow`), clicked in the DOM so a pointer overlay cannot fail the frame.
-- **Feather's sight.** Held on `z` (`src/feather-sight.js`), which runs the page's own `feather-use` saga command.
-- **Frames and speed.** 1920 by 1080, balanced, Chromium 143 on the NVIDIA L4 (ANGLE over Vulkan, checked in every report). Each scene has 600 uncapped frame intervals from the third-person framing, after a 2.5 second settle.
+- Final run: `look-tour-8` on box B, from commit `6364b83`. Build: `8a9a729`, the release candidate, fast-forwarded into the lane.
+- Page: SHA-256 `79baeb267cfe5c01951ace970dbc243967915690f52ec1c719a48a161cf00e38`.
+- Renderer: NVIDIA L4 (ANGLE, Vulkan). Chromium 143.0.7499.4. 1920 by 1080, balanced.
+- Result: exit 0, 17 of 17 scenes reached, 36 frames, no page errors.
+- Tour gate, in a real page: the hook is absent with no flag, with the flag alone, and with the harness global alone. It is present only with both.
+- Title screen: reached, in its own page in normal play.
+- Frame paths are under `D:/firstlight/runs/look-tour-8/frames-tour/tour/`.
+- fps is the frame interval in milliseconds over 600 uncapped intervals per scene. Lower is faster.
 
-## Scenes
+## Frames
 
-Frame paths are under `D:/firstlight/runs/`. Third-person and diorama frames were reviewed in `look-tour-2` (`5a36d91`), which ran the same saves and capture code; the sight frame and the speed numbers are from `look-tour-4`.
+One row per frame. The verdict is for that frame.
 
-| scene | saga beat | checkpoint | third person | diorama | fps p50 / p95 (ms) |
-|---|---|---|---|---|---|
-| envoy | the envoy at the spring | chapter/ENVOY_BEFORE_CHOICE | look-tour-2/frames-tour/tour/envoy-third.png | look-tour-2/frames-tour/tour/envoy-diorama.png | 2.6 / 3.5 |
-| feather | the feather's sight | chapter/CHAPTER_COMPLETED | look-tour-2/frames-tour/tour/feather-third.png | look-tour-2/frames-tour/tour/feather-diorama.png | 2.4 / 3.4 |
-| feather sight | the feather's sight, held | same | look-tour-4/frames-tour/tour/feather-sight.png | | |
-| beacon | the beacon stranger | beacon/BEACON_READY_EARNED | look-tour-2/frames-tour/tour/beacon-third.png | look-tour-2/frames-tour/tour/beacon-diorama.png | 2.4 / 3.1 |
-| bellweather | Rowan's bell | crossing/CROSSING_READY_EARNED | look-tour-2/frames-tour/tour/bellweather-third.png | look-tour-2/frames-tour/tour/bellweather-diorama.png | 2.3 / 3.1 |
-| night-lit | the night set piece | night/night-lit (lead save) | look-tour-2/frames-tour/tour/night-lit-third.png | look-tour-2/frames-tour/tour/night-lit-diorama.png | 2.0 / 2.9 |
-| night-quiet | after the bite | night/night-quiet (lead save) | look-tour-2/frames-tour/tour/night-quiet-third.png | look-tour-2/frames-tour/tour/night-quiet-diorama.png | 1.9 / 2.3 |
-| hell | the stolen pattern | hell/fresh-blade/04_WARDEN_RESOLVED | look-tour-2/frames-tour/tour/hell-third.png | look-tour-2/frames-tour/tour/hell-diorama.png | 2.4 / 3.1 |
-| heaven | the envoy's home | heaven/fresh-blade/05_ACTUAL_COURIER_ARRIVAL | look-tour-2/frames-tour/tour/heaven-third.png | look-tour-2/frames-tour/tour/heaven-diorama.png | 2.3 / 3.1 |
-| relay | the relay fight | heaven/fresh-blade/03_FALSE_SIGNAL_WATCH | look-tour-2/frames-tour/tour/relay-third.png | look-tour-2/frames-tour/tour/relay-diorama.png | 2.4 / 2.9 |
-| witness | the drowned witness | atlantis/fresh-blade/07_ACTUAL_BEARING_EXPOSED | look-tour-2/frames-tour/tour/witness-third.png | look-tour-2/frames-tour/tour/witness-diorama.png | 2.5 / 3.4 |
-| cosmos | the cosmos confluence | cosmos/fresh-blade/08_INDEPENDENT_SUPPORT_SETTINGS | look-tour-2/frames-tour/tour/cosmos-third.png | look-tour-2/frames-tour/tour/cosmos-diorama.png | 2.2 / 2.9 |
-| finale 1 | the Regent rises | finale/phase1_rises | look-tour-2/frames-tour/tour/finale-1-third.png | look-tour-2/frames-tour/tour/finale-1-diorama.png | 2.9 / 3.7 |
-| finale 2 | chains broken | finale/phase2_chains | look-tour-2/frames-tour/tour/finale-2-third.png | look-tour-2/frames-tour/tour/finale-2-diorama.png | 2.9 / 3.9 |
-| finale 3 | the merged valley, the gift | finale/phase3_merged | look-tour-2/frames-tour/tour/finale-3-third.png | look-tour-2/frames-tour/tour/finale-3-diorama.png | 2.6 / 3.5 |
-| epilogue | the valley after | finale/epilogue_credits | look-tour-2/frames-tour/tour/epilogue-third.png | look-tour-2/frames-tour/tour/epilogue-diorama.png | 2.2 / 3.4 |
-| credits | the credits roll | finale/epilogue_credits | look-tour-2/frames-tour/tour/credits-third.png | look-tour-2/frames-tour/tour/credits-diorama.png | 2.2 / 3.0 |
-| nearshore | two foxes | none | not reached | not reached | not measured |
+| frame | verdict |
+|---|---|
+| title.png | Reads well: the wordmark, the tagline, four menu entries, and the valley behind. The left panel is dark enough to read. |
+| envoy-third.png | The commons at the envoy's moment. The journal says the sunward road (5 of 6) while the prompt still says speak with the envoy. The envoy's wings read flat. |
+| envoy-diorama.png | A clear overview with labels. The same journal and prompt mismatch. |
+| feather-third.png | The commons after the envoy. Journal and prompt agree (rest). The envoy still stands in frame. |
+| feather-diorama.png | The overview at 0 of 6, with the rest prompt. Readable. |
+| feather-sight.png | The sight reads: the true roads turn gold from the spring and the rest desaturates. |
+| beacon-third.png | The lake lookout reads well. The Lookout label sits on Briar's head, the beacon is small, and the journal says return to the lit beacon before it is lit. |
+| beacon-diorama.png | The island overview reads. A realm tooltip sits over the Journal button in the top bar. |
+| bellweather-third.png | Poor framing: the camera is pressed against a figure's head, likely Rowan, so the frame is mostly brown and only the waystone shows below. |
+| bellweather-diorama.png | The crossing reads well: Rowan, the waystone, the arch and the square. The journal still says attune the waystone, which the run has already done. |
+| night-lit-third.png | The camera is pressed against the Sunward arch. A brown mass fills the centre and no travellers show. |
+| night-lit-diorama.png | The set piece is covered by the centred story card "The night the warning failed", with the world paused. |
+| night-quiet-third.png | The same arch close-up. The journal line "Go home" reads, and Briar's slot is greyed. |
+| night-quiet-diorama.png | The crossing at night reads: Rowan, the waystone, the arch, the gathered travellers, and Briar's slot greyed. |
+| hell-third.png | The Kiln Refuge reads as a realm, not the valley. The journal still says take the pattern back with 7 done. |
+| hell-diorama.png | A sparse overview: a flat floor and one long building. The same stale journal line. |
+| heaven-third.png | The Garden of Voices reads. The rewritten step title "Set up a welcome for tired hands" is repeated in a tooltip at the left edge. |
+| heaven-diorama.png | A readable garden overview at 9 done, with Calen, the envoy, and the road home. |
+| relay-third.png | The garden again, not the relay. The seraph fight is not checkpointed, so the beat is not shown. |
+| relay-diorama.png | The same garden overview, "Ground the warning mirror" at 4 done. The relay is not shown. |
+| witness-third.png | The harbour pier at night reads. The drowned witness is absent, and a Nereme label clips over the journal card's text. |
+| witness-diorama.png | A clean pier overview. The pier is a plain slab and the witness is absent. |
+| cosmos-third.png | The Near Expanse reads: three lamps, the rise, and dusk. The journal card's top is blank. The central link is not shown. |
+| cosmos-diorama.png | The floating island reads well in overview. The card's top is blank again. |
+| nearshore-third.png | The lantern pier in daylight with both foxes in frame. The faultless fox is dithered. The choice is open ("Choose a pier activity"). |
+| nearshore-diorama.png | The pier overview reads. The "Roads of Light, five realm openings" tooltip wraps into a narrow four-line box. |
+| finale-1-third.png | The Regent of Ash in the commons with Briar helping. The story dialog card sits in the lower third and reads clearly. |
+| finale-1-diorama.png | A centred choice card ("There are people coming down every road...", Listen or Continue another time) covers the lower half over the blurred scene. |
+| finale-2-third.png | The second fight: the Regent and Briar in combat, with floating damage numbers. No card in this frame. The journal still says he waits at the spring junction. |
+| finale-2-diorama.png | A centred choice card ("The last chain parts...") covers the lower half over the blurred overview. It reads, but it hides the scene. |
+| finale-3-third.png | The Regent with Briar at the commons after phase three. A dithered column crosses the frame. The offer is not yet on screen. |
+| finale-3-diorama.png | The overview with the Regent at the commons. The journal still says he waits at the spring junction. |
+| epilogue-third.png | The postgame card reads cleanly ("The roads stay open"). The commons with the envoy and Briar. A dithered column stands by the lantern pillar. |
+| epilogue-diorama.png | The postgame overview reads, and the side work card is clean. |
+| credits-third.png | The credits roll has barely started: a black screen with the title and Skip. No names are visible. |
+| credits-diorama.png | The same early frame. The first credit line is cut by the gold rule. No names are visible. |
 
-Speed is the frame interval in milliseconds for 600 uncapped frames at 1920 by 1080, balanced. The full p99 and max values are in `look-tour-4/frames-tour/tour.json`; p99 runs from 2.5 to 6.2 ms and the largest single frame is 12.2 ms (finale 1).
+## Frame rate
 
-## Verdicts, one per frame
+| scene | p50 (ms) | p95 (ms) | p99 (ms) | max (ms) |
+|---|---|---|---|---|
+| envoy | 2.5 | 3.2 | 3.7 | 9.0 |
+| feather | 2.4 | 3.3 | 4.0 | 7.7 |
+| beacon | 2.5 | 3.2 | 3.8 | 4.4 |
+| bellweather | 3.4 | 3.9 | 4.2 | 4.6 |
+| night-lit | 2.8 | 3.5 | 4.4 | 7.8 |
+| night-quiet | 2.8 | 3.3 | 4.4 | 8.9 |
+| hell | 2.4 | 3.1 | 3.2 | 7.0 |
+| heaven | 2.9 | 3.7 | 4.3 | 7.1 |
+| relay | 2.8 | 3.4 | 3.9 | 8.3 |
+| witness | 2.5 | 3.1 | 3.4 | 3.7 |
+| cosmos | 2.4 | 9.2 | 17.6 | 248.5 |
+| nearshore | 2.5 | 3.3 | 4.4 | 10.7 |
+| finale-1 | 3.4 | 4.2 | 4.6 | 5.1 |
+| finale-2 | 2.9 | 3.4 | 4.5 | 8.9 |
+| finale-3 | 3.2 | 3.9 | 6.1 | 9.2 |
+| epilogue | 2.8 | 3.6 | 4.4 | 8.2 |
+| credits | 2.9 | 3.6 | 4.2 | 8.0 |
 
-- **envoy-third.** Reads well: warm light, the lobed crowns, Briar and the traveller are clear. The envoy's bone-white wings look flat and unfinished.
-- **envoy-diorama.** A clear valley overview with labels. The envoy is small, and the journal says sunward road while the prompt still says speak with the envoy.
-- **feather-third.** The same valley view, with no sight visible because the key is not held in this frame.
-- **feather-diorama.** The commons and workshop from above. No sight visible in this capture.
-- **feather-sight (look-tour-4).** Reads well: true roads turn gold from the spring across the commons while the rest of the valley desaturates. No ash-red counterfeit roads are in this framing.
-- **beacon-third.** A strong landscape: the lake, the mountains and the warm lantern read well. The "Lookout" label sits on Briar's head, and the beacon stone is small.
-- **beacon-diorama.** The island overview with blossom trees. The beacon itself is too small to read.
-- **bellweather-third.** Shows the valley commons, not the crossing. The chapter IV quest does not match the frame.
-- **bellweather-diorama.** Valley overview again; the bell crossing is not in frame.
-- **night-lit-third.** The night palette, warm lanterns and rim light work. The setting is the lookout, with no travellers or claimants for "lead the travellers out".
-- **night-lit-diorama.** The lookout island at night with lit paths. The mood reads, but the set piece is absent.
-- **night-quiet-third.** Briar's absence reads as quiet: the traveller alone by the lantern. It is still the lookout.
-- **night-quiet-diorama.** A quiet island at night. It reads as a pause rather than a set piece.
-- **hell-third.** The valley refuge, not the foundry. The journal says go back to the refuge, and there is no hell palette.
-- **hell-diorama.** Valley overview; no hell realm.
-- **heaven-third.** The valley garden, not heaven. The journal says go back to the garden.
-- **heaven-diorama.** Valley overview; no heaven realm.
-- **relay-third.** The valley again. The seraph fight is not in the checkpoint.
-- **relay-diorama.** Valley overview; no relay realm.
-- **witness-third.** The valley again ("revisit Farwake"). The drowned witness is not shown.
-- **witness-diorama.** Valley overview; no harbour depth.
-- **cosmos-third.** The valley again ("revisit the Near Expanse"). No confluence is shown.
-- **cosmos-diorama.** Valley overview; no cosmos realm.
-- **finale-1-third.** Night at the spring: the Regent, Briar fighting and the chain line. The Regent reads as a pale, ghostly silhouette.
-- **finale-1-diorama.** The spring at night from above. The Regent is labelled "The envoy".
-- **finale-2-third.** Almost the same as phase one, with damage numbers and Briar fighting. Little visible change.
-- **finale-2-diorama.** Overhead view of phase two. No visible chain change.
-- **finale-3-third.** The gift panel covers the scene, with the world paused behind it. The merged valley is not visible.
-- **finale-3-diorama.** The same panel. The phase three world is hidden.
-- **epilogue-third.** The valley has changed: a new timber arch with hanging windbells in the commons reads well. The journal still says chapter 3, and the envoy prompt remains.
-- **epilogue-diorama.** The new arch shows from above. The journal and prompt are stale.
-- **credits-third.** No credits screen (see limits). It shows the epilogue valley.
-- **credits-diorama.** The same: no credits screen.
+The cosmos scene has a recurring hitch: its max was about 250 ms in look-tour-6, look-tour-7 and look-tour-8. The cause is not yet explained.
 
-## Not reached, and why
+## Story dialog card
 
-- **nearshore (two foxes).** No checkpoint writer for the nearshore in this build; its path is a test file (`tests/witness_nearshore.test.cjs`).
-- **bellweather, the crossing.** The crossing checkpoint sits in the valley commons. The crossing room is not reached from the save.
-- **hell, heaven, relay, witness, cosmos (the realms).** The campaign checkpoints save the player back in the valley, at the refuge, the garden, Farwake or the Near Expanse. Their realm rooms are not in the saves. Reaching them needs the realm-entry command inside the journey.
-- **credits screen.** `RealmCredits` is not defined anywhere in the build. The only reference is a guarded call in `src/earth-homecoming-ui.js`, so no credits screen can appear.
-- **finale phase three.** The Regent's gift panel covers the scene, with the world paused behind it.
+finale-1-third.png: the story card "The Regent of Ash: You never once handed me a chain. So this one is mine, and it is the oldest I have." sits in the lower third (about 77 to 83 percent of the frame height), centred, white text on a dark panel. It reads cleanly.
 
-## Findings for the lead
+The choice cards in finale-1-diorama and finale-2-diorama are different: centred modals across the lower half over a blurred scene. They read, but they cover the scene.
 
-1. Campaign checkpoints do not hold the realm rooms (see above). Five of the beats the brief names show the valley instead.
-2. `RealmCredits` is absent from the build, so the credits screen never appears.
-3. HUD and prompt disagree: the envoy and feather frames say speak with the envoy while the journal says the sunward road; the epilogue journal reads chapter 3 with the envoy prompt.
-4. In the phase one diorama the Regent is labelled "The envoy".
-5. The night frames use the lead's `tools/night_frames_save.cjs`, which writes the night object onto a command-earned chapter save. The night is therefore not a command-driven night, and it sits at the lookout, not the crossing.
-6. Not changed by this lane: `src/app.js` line 747 enables `Realm.test` when `location.search` contains "test". Any URL containing "test" exposes the test hooks in normal play.
-7. The tour sets no positions. Each frame is the checkpoint's own position and camera, so framing is not optimised.
+## What still looks unfinished
+
+- The journal and the prompt disagree in the envoy frames: the journal says the sunward road while the prompt says speak with the envoy.
+- Journal lines are stale after their beat. Hell still says take the pattern back with 7 done. Bellweather still asks to attune the waystone after the attune. Beacon says return to the lit beacon before it is lit. The finale frames say the Regent waits at the spring junction, but he stands in the commons.
+- Third-person framing: the bellweather, night-lit and night-quiet third-person frames are pressed against a figure or the arch.
+- The night set piece is hidden: the night-lit diorama sits under the story card, and no travellers show in the third-person frames.
+- Relay shows the garden, not the relay. The seraph fight is not checkpointed.
+- Witness: the drowned witness is absent, the pier is a plain slab, and a label clips over the journal card.
+- Hell: the Kiln Refuge is sparse.
+- Cosmos: the journal card's top is blank, and the recurring hitch above is unexplained.
+- Finale-3 and the epilogue: a dithered column crosses the frame, which may be an effect or a glitch.
+- Credits: the roll had barely started at the capture point, so no names are on screen.
+- Tooltips: the heaven step title is repeated at the left edge, and the realm tooltip overlaps the Journal button in the beacon overview.
+- The collector's road journey fails on a missing `chapter1` folder. This predates the run, and road is not a tour scene.
+
+## Runs
+
+- `look-tour-5` (`8d86f47`): 9 of 17. Bellweather and both night scenes refused the crossing travel, which called the wrong command. The finale waited on the clock for phase 2.
+- `look-tour-6` (`c480cc2`): 13 of 17. The bot stopped at its cosmos stage on the box, which refuses output inside the checkout. The finale started from an earned fixture that was too weak for the second body.
+- `look-tour-7` (`e62d4e2`): 16 of 17. The finale now starts from the bot's world and fights for real. Bellweather failed because the walk check read the home snapshot inside the road room.
+- `look-tour-8` (`6364b83`): 17 of 17, the run above.

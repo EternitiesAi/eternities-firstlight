@@ -4,6 +4,12 @@
  * every saved change is a command with the revision and owner the caller read. */
 (function(G){'use strict';
 const N=()=>G.RealmNearshore,S=()=>G.RealmSaga;
+// Story cards on the adventure's story dialog (the same ids and buttons): one card per line, then done().
+function cards(lines,done){
+ const d=typeof document!=='undefined'?document.getElementById('story-dialog'):null;if(!d||!Array.isArray(lines)||!lines.length){if(done)done();return;}
+ let i=0;const paint=()=>{const q=lines[i];document.getElementById('story-speaker').textContent=q.speaker?String(q.speaker).toUpperCase():'';document.getElementById('story-title').textContent='';document.getElementById('story-body').textContent=q.text||'';const area=document.getElementById('story-buttons');area.replaceChildren();const b=document.createElement('button');b.textContent=i+1<lines.length?'Next':'Continue';b.onclick=()=>{if(i+1<lines.length){i++;paint();return;}d.close();if(done)done();};area.appendChild(b);};
+ paint();d.showModal();
+}
 class NearshoreUI{
  constructor(rpg){this.rpg=rpg;this.nextTry=0;}
  get sim(){return this.rpg.sim;}
@@ -11,7 +17,8 @@ class NearshoreUI{
  run(type,extra={}){
   const sim=this.sim,c=this.rpg.api.worldContext();
   const result=this.rpg.api.nearshoreCommand(type,{expectedRevision:sim.state.adventure.revision,expectedActive:c.active,...extra});
-  if(result.ok&&result.text)this.rpg.api.toast(result.text);
+  if(result.ok&&result.cards&&result.cards.length)cards(result.cards);
+  else if(result.ok&&result.text&&!result.heel)this.rpg.api.toast(result.text);
   else if(!result.ok&&(type==='choose'||type==='heel-answer'))this.rpg.api.toast(result.error);
   if(result.ok&&!result.duplicate)this.rpg.paint();
   return result;

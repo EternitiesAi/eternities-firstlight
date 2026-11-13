@@ -8,6 +8,8 @@
 const DATA=G.RealmAtlantisCampaignData||(typeof require==='function'?require('./atlantis-campaign-data.js'):null);
 const D=DATA.definition,P=DATA.patterns,F=DATA.current,Q=DATA.pressure;
 const SCRIPT=()=>G.RealmStoryScript||(typeof require==='function'?require('./story-script.js'):null);
+// Story cards for a scene: speaker and text per line, so a dialog can show them.
+const scriptCards=(owner,id,state)=>{const s=SCRIPT()?.forStep?.(owner,id,state);return s?s.lines.map(l=>({speaker:l.speaker,text:l.text})):[];};
 const SAGA=()=>G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
 const fail=error=>({ok:false,error}),copy=o=>JSON.parse(JSON.stringify(o)),finite=Number.isFinite,dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 const step=id=>D.steps.find(s=>s.id===id),record=s=>s?.atlantisCampaign||s,locks=new WeakMap(),owners=new WeakMap();
@@ -166,7 +168,7 @@ function defeat(sim,e){
  if(sim?.paused||sim?.state?.adventure?.hp<=0||!owned(sim,e,false))return false;
  let candidate;try{candidate=sim.snapshot();}catch(error){e.hp=1;G.RealmAdventure.notify(sim,'Campaign state refused: '+error.message);return false;}candidate.atlantisCampaign.steps.push(D.enemy.defeatStep);
  const result=commit(sim,candidate,{save:sim.atlantisCampaignSave},'The actual Custodian bearing was exhausted through combat. The municipal unit settled; no independent loot or XP was granted. Both sequential releases remain.');
- if(!result.ok){e.hp=1;G.RealmAdventure.notify(sim,result.error);return false;}locks.delete(e);return true;
+ if(!result.ok){e.hp=1;G.RealmAdventure.notify(sim,result.error);return false;}sim.atlantisGuardianCards=scriptCards('atlantis','bearing-exposed',candidate);locks.delete(e);return true;
 }
 function inCurrent(p,y){return Math.abs(p.x-F.x)<=F.w/2&&Math.abs(p.z-F.z)<=F.d/2&&y>=F.minY&&y<=F.maxY;}
 function tick(sim,dt){

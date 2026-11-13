@@ -546,6 +546,10 @@ def main():
     whole_draft_output = output / 'whole-draft-earned'
     if os.name == 'nt' and whole_draft_output.drive.upper() != 'D:':
         whole_draft_output = ROOT / 'evidence10/whole-draft-earned'
+    elif os.name != 'nt' and whole_draft_output.resolve().is_relative_to(ROOT.resolve()):
+        # the connected cosmos helper refuses to write inside the game checkout; on the box the output is under it
+        import tempfile
+        whole_draft_output = Path(tempfile.mkdtemp(prefix='whole-draft-')) / 'whole-draft-earned'
     run('whole-draft-earned', ['node', 'tools/whole_draft_journey.cjs', '--output', str(whole_draft_output)], timeout=600,
         extra_env={'FIRSTLIGHT_ROOT': str(ROOT)})
     # Reuse exact current earned chapter edges; do not replay whole campaigns
@@ -555,7 +559,12 @@ def main():
         '--output', str(whole_draft_output.parent / 'briar-earned')], extra_env={'FIRSTLIGHT_ROOT': str(ROOT)})
     # Title to credits: one fresh character through every beat on real commands. The bot exits nonzero unless it
     # printed "credits rolled" (tools/firstlight_journey.cjs sets its exit code from creditsRolled).
-    run('firstlight-journey', ['node', 'tools/firstlight_journey.cjs', '--out', str(output / 'firstlight-journey')], timeout=900)
+    bot_output = output / 'firstlight-journey'
+    if os.name != 'nt' and bot_output.resolve().is_relative_to(ROOT.resolve()):
+        # as for the whole draft: the connected cosmos helper refuses to write inside the game checkout
+        import tempfile
+        bot_output = Path(tempfile.mkdtemp(prefix='firstlight-journey-')) / 'firstlight-journey'
+    run('firstlight-journey', ['node', 'tools/firstlight_journey.cjs', '--out', str(bot_output)], timeout=900)
     if args.browser:
         run('gate_captain_browser', [sys.executable, 'tools/gate_captain_browser.py', '--both',
             '--output', str(args.browser_output / 'gate_captain_browser')], timeout=600, native=True)

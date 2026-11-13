@@ -75,7 +75,7 @@ if(missing.length){
  test('installed contracts and globals are the actual Core/Adventure/World/Cosmos owners',()=>{
   assert.strictEqual(globalThis.RealmCore,C);assert.strictEqual(globalThis.RealmAdventure,A);assert.strictEqual(globalThis.RealmWorldFoundations,W);assert.strictEqual(globalThis.RealmCosmos,N);assert.strictEqual(globalThis.RealmCosmosCampaign,H);
   assert.equal(D.id,'cosmos-open-confluence-v1');assert.equal(D.room,N.ROOM);assert.deepEqual(D.reward,FEE);assert.deepEqual(C.fresh().cosmosCampaign,H.fresh());assert.equal(C.fresh().cosmosCampaign.version,1);
-  assert.equal(initialHashes['src/cosmos-campaign-data.js'],'15ee56a468c0b4bb9cf380db10f053511726b3e446b1415b1476040140f51466');
+  assert.equal(initialHashes['src/cosmos-campaign-data.js'],'8a9220fc4055f1fc0d0814db7073a1db9ffb05a46087be12b51a7448dc29ddbb');
  });
  test('optional version-one Core migration adds only empty Cosmos state and preserves prior owners',()=>{
   for(const xp of[1,2,3,4,5,9999]){

@@ -54,6 +54,27 @@ function saveEntry(file) {
 }
 
 const manifest = { made: new Date().toISOString(), sources: [] };
+
+// command-level checkpoints. A rule writes the sim's state the first time its predicate holds around a real command, so the
+// writer never edits state: the journey runs the same sim commands the page runs. The methods are restored afterwards.
+function watch(rules, owner, names) {
+  const originals = names.map(name => owner[name]);
+  names.forEach((name, i) => {
+    owner[name] = function (...args) {
+      const type = args[1];
+      for (const rule of rules) if (!rule.done && rule.before && rule.before(this, type)) write(rule, this);
+      const result = originals[i].apply(this, args);
+      for (const rule of rules) if (!rule.done && rule.after && rule.after(this, type)) write(rule, this);
+      return result;
+    };
+  });
+  return () => names.forEach((name, i) => { owner[name] = originals[i]; });
+}
+function write(rule, sim) {
+  rule.done = true;
+  fs.mkdirSync(path.dirname(rule.path), { recursive: true });
+  fs.writeFileSync(rule.path, JSON.stringify(sim.snapshot(), null, 2) + '\n');
+}
 function collect(id, module, dir, run) {
   const entry = { id, module, ok: false, error: null, files: [] };
   try { run(); entry.ok = true; } catch (error) { entry.error = String(error && error.message || error).slice(0, 400); }
@@ -81,12 +102,39 @@ for (const j of JOURNEYS) {
   });
 }
 
-// the night set piece: the lead's frame saves, from the crossing journey's earned chapter IV save.
+// the night set piece, command-driven: the night journey's own commands. Checkpoints are written when the night has begun
+// (lit: device hidden) and after the bite (quiet: device broken), as the game saves them, at home.
 {
   const dir = path.join(root, 'night');
   fs.mkdirSync(dir, { recursive: true });
-  collect('night', 'tools/night_frames_save.cjs', dir, () => {
-    childProcess.execFileSync(process.execPath, [path.join(ROOT, 'tools/night_frames_save.cjs'), dir], { stdio: 'pipe' });
+  const rules = [
+    { path: path.join(dir, 'NIGHT_LIT_AT_HOME.json'), after: sim => sim.state.night?.started === true && sim.state.night?.device === 'hidden' },
+    { path: path.join(dir, 'NIGHT_QUIET_AT_HOME.json'), after: sim => sim.state.night?.device === 'broken' },
+  ];
+  // the night can start on a tick as well as on a command, so the ticks are watched too.
+  const stop = watch(rules, C.Simulation.prototype, ['adventureCommand', 'act', 'sagaCommand', 'tick']);
+  try {
+    collect('night', 'tests/night_journey.cjs', dir, () => { require(path.join(ROOT, 'tests/night_journey.cjs')).journey({ out: dir }); });
+  } finally {
+    stop();
+  }
+}
+
+let nearshoreWorld = null; // the bot's world after the nearshore choice; the finale starts from it.
+// the nearshore: the bot's own run, stopped at its save point. the bot walks one fresh character through the witness with
+// Briar taken, then writes the live world right before the real choice. a child process keeps the bot's state apart.
+{
+  const dir = path.join(root, 'nearshore');
+  fs.mkdirSync(dir, { recursive: true });
+  collect('nearshore', 'tools/firstlight_journey.cjs --save-at nearshore', dir, () => {
+    // outside the checkout: the cosmos helper refuses explicit outputs inside it.
+    const botOut = fs.mkdtempSync(path.join(os.tmpdir(), 'tour-bot-nearshore-'));
+    const bot = childProcess.spawnSync(process.execPath, [path.join(ROOT, 'tools/firstlight_journey.cjs'), '--save-at', 'nearshore', '--out', botOut], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+    // the bot's BLOCKED row names the beat and the reason; its last lines alone only show the boss table.
+    const blocked = String(bot.stdout || '').split('\n').find(l => l.startsWith('BLOCKED')) || '';
+    if (bot.status !== 0) throw Error('the bot did not reach its save point: ' + (blocked || String(bot.stdout || bot.stderr || '').trim().split('\n').slice(-2).join(' | ')).slice(0, 400));
+    fs.copyFileSync(path.join(botOut, '11', 'NEARSHORE_CHOICE_OPEN.json'), path.join(dir, 'NEARSHORE_CHOICE_OPEN.json'));
+    nearshoreWorld = JSON.parse(fs.readFileSync(path.join(botOut, '11', 'NEARSHORE_COMPLETE.json'), 'utf8'));
   });
 }
 
@@ -95,13 +143,11 @@ for (const j of JOURNEYS) {
 {
   const dir = path.join(root, 'finale');
   fs.mkdirSync(dir, { recursive: true });
-  const LATE = 'tests/fixtures/earth-homecoming-prerequisites/blade/ALL_TWELVE_PREREQUISITES_EARNED.json';
-  collect('finale', LATE, dir, () => {
-    const raw = JSON.parse(fs.readFileSync(path.join(ROOT, LATE), 'utf8')); delete raw.saga;
-    const w = C.validate(raw);
-    w.saga = { ...SG.infer(w), beats: { night: { day: 10 } }, briar: { state: 'returned', habit: {}, takenDay: 10, returnedDay: 10 } };
-    const sim = new C.Simulation(C.validate(JSON.parse(JSON.stringify(w))));
-    const EH = globalThis.RealmEarthHomecoming;
+  collect('finale', 'the bot world after the nearshore choice', dir, () => {
+    // the finale starts from the bot's own world after the nearshore choice, as tools/firstlight_journey.cjs does.
+    if (!nearshoreWorld) throw Error('no nearshore world: the bot did not finish the nearshore');
+    const sim = new C.Simulation(C.validate(JSON.parse(JSON.stringify(nearshoreWorld))));
+    const EH = require(path.join(ROOT, 'src/earth-homecoming.js'));
     const io = { save: v => { sim.saved = JSON.parse(JSON.stringify(v)); return { ok: true }; } };
     sim.earthHomecomingSave = io.save;
     const phase = () => sim.state.saga.finale.phase;
@@ -109,17 +155,57 @@ for (const j of JOURNEYS) {
     const walkTo = (x, z, cap = 60) => { sim.moveTo(x, z); for (let t = 0; t < cap; t += .1) { sim.tick(.1); if (Math.hypot(sim.state.player.x - x, sim.state.player.z - z) < .6) return true; } return false; };
     const bodyOf = ph => globalThis.RealmAdventure.runtime(sim).enemies.find(e => e.finaleRole === 'regent' && e.finalePhase === ph);
     const save = name => { const p = path.join(dir, name + '.json'); fs.writeFileSync(p, JSON.stringify(sim.snapshot(), null, 2) + '\n'); };
-    if (!(walkTo(0, 6) && (tick(.3), phase() === 1))) throw Error('the finale did not begin at the spring (phase ' + phase() + ')');
+    if (!(walkTo(0, 8) && (tick(.3), phase() === 1))) throw Error('the finale did not begin at the spring (phase ' + phase() + ')');
     save('phase1_rises');
-    let guard = 0; while (phase() < 2 && guard++ < 600) tick(.1);
+    // the finale's fights run as tests/finale_journey.cjs runs them: real commands, dodges and tactics; no body is damaged by hand.
+    const AD = require(path.join(ROOT, 'src/adventure.js')), AR = require(path.join(ROOT, 'src/arsenal.js'));
+    let seq = 0;
+    const cmd = (type, p = {}) => sim.adventureCommand('finale-tour-' + (++seq), type, p);
+    const step = t => { for (let i = 0; i < Math.round(t / .1); i++) sim.tick(.1); };
+    const dist = (p, q) => Math.hypot(p.x - q.x, p.z - q.z);
+    const rt = () => AD.runtime(sim);
+    const threatened = q => rt().enemies.some(e => e.finaleRole === 'regent' && e.strike && EH.strikeContains(e, q));
+    const foes = () => rt().enemies.filter(e => e.hp > 0 && e.finaleRole && (e.finaleRole === 'chain' ? phase() === 1 : e.finalePhase === phase()) && EH.canDamage(sim, e));
+    const safeSpot = () => { const p = sim.state.player; for (let k = 0; k < 16; k++) { const t = k / 16 * Math.PI * 2, q = { x: p.x + Math.cos(t) * 2.6, z: p.z + Math.sin(t) * 2.6 }; if (C.walkable(q.x, q.z, sim.navRoom, .31) && !threatened(q)) return q; } return null; };
+    function equipBest() {
+      const a = () => sim.state.adventure;
+      const style = id => AD.GEAR[id].slot === 'weapon' ? AR.weapon({ ...a(), equipment: { ...a().equipment, weapon: id } }).style : null, mine = AR.weapon(a()).style;
+      const owned = (a().owned || []).filter(id => AD.GEAR[id] && (AD.GEAR[id].slot !== 'weapon' || style(id) === mine));
+      for (const slot of [...new Set(owned.map(id => AD.GEAR[id].slot))]) {
+        const score = id => AD.GEAR[id].attack + AD.GEAR[id].defense + AD.GEAR[id].hp, best = owned.filter(id => AD.GEAR[id].slot === slot).sort((x, y) => score(y) - score(x))[0];
+        if (a().equipment[slot] !== best) { const r = cmd('equip', { id: best }); if (!r.ok) throw Error('equip ' + best + ': ' + r.error); }
+      }
+    }
+    function fight(until, limit = 3000) {
+      for (let i = 0; i < limit && !until(); i++) {
+        const s = sim.state.adventure, p = sim.state.player, stats = AD.stats(s);
+        EH.listen(sim);
+        if (s.hp < stats.maxHP * .35 && s.tonics > 0 && s.elapsed >= rt().cooldowns.heal) cmd('heal');
+        if (threatened(p)) { const q = safeSpot(); if (q) sim.moveTo(q.x, q.z); }
+        const list = foes().sort((x, y) => dist(x, p) - dist(y, p)), t = list[0];
+        if (t) {
+          if (dist(t, p) <= 2.4 && s.elapsed >= rt().cooldowns.attack && !threatened(p)) cmd('attack', { target: t.id });
+          if (dist(t, p) <= 2.6 && s.stamina >= 30 && s.elapsed >= rt().cooldowns.pulse) cmd('pulse');
+          if (dist(t, p) > 2.2 && !sim.playerPath.length) { const d = Math.max(.01, dist(t, p)), k = 1.8 / d; sim.moveTo(t.x + (p.x - t.x) * k, t.z + (p.z - t.z) * k); }
+        }
+        step(.1);
+      }
+    }
+    equipBest();
+    fight(() => phase() >= 2);
     if (phase() !== 2) throw Error('phase 2 was not reached');
     save('phase2_chains');
-    tick(.3); globalThis.RealmAdventure.damageEnemy(sim, bodyOf(2), 100000); tick(.2);
+    fight(() => phase() >= 3);
     if (phase() !== 3) throw Error('phase 3 was not reached');
     save('phase3_merged');
+    if (!walkTo(0, 7)) throw Error('walked back to the spring for the offer');
     const r = EH.command({ sim, active: 'journey' }, 'offer', { quest: EH.definition.id, expectedActive: 'journey', expectedRevision: sim.state.adventure.revision, choice: 'refuse' }, io);
     if (r.ok !== true) throw Error('the refusal was refused: ' + r.error);
-    tick(.2); globalThis.RealmAdventure.damageEnemy(sim, bodyOf(3), 100000); tick(.2);
+    fight(() => EH.runtime(sim).lastOpen === true || sim.state.saga.finale.won === true);
+    if (sim.state.saga.finale.won !== true) {
+      const answer = EH.command({ sim, active: 'journey' }, 'last', { quest: EH.definition.id, expectedActive: 'journey', expectedRevision: sim.state.adventure.revision, choice: 'open' }, io);
+      if (answer.ok !== true) throw Error('the last answer was refused: ' + answer.error);
+    }
     if (sim.state.saga.finale.won !== true) throw Error('the last hit did not land');
     save('won');
     tick(8.5);
@@ -130,19 +216,26 @@ for (const j of JOURNEYS) {
 
 // one save per tour scene, named from the journeys' own checkpoints. The why column says what the saga reports for that
 // save (see the manifest). A scene whose checkpoint did not come out of its journey is reported as unreached, with why.
+// the page walks the real way before each entry: to the spring waystone for the crossing, to the valley's Road of Light
+// marker for the campaign realms, to the observatory invitation for the cosmos. the walk is the page's own move command.
+const SPRING = { walk: [0, 3] }, ROAD_MARKER = { walk: [18, 6] }, OBSERVATORY = { walk: [14, -5] };
+const TRAVEL_BELL = [SPRING, { adventure: { id: 'tour-travel-bellweather', type: 'waystone-travel', payload: { id: 'bellweather' } } }];
+// the crossing is entered as its journey enters it: the sunward road, the north arch, then the bellweather waystone is attuned inside.
+const ENTER_CROSSING = [SPRING, { adventure: { id: 'tour-travel-sunward', type: 'waystone-travel', payload: { id: 'sunward' } } }, { walk: [0, -27] }, { adventure: { id: 'tour-enter-crossing', type: 'cross-enter', payload: {} } }, { walk: [0, 17] }, { adventure: { id: 'tour-attune-bellweather', type: 'cross-attune', payload: {} } }];
+const REALM = (id, gate) => [gate, { realm: id }];
 const SCENES = [
   { scene: 'envoy', file: 'chapter/ENVOY_BEFORE_CHOICE.json', why: 'at the spring before the envoy chooses; envoy and feather done' },
   { scene: 'feather', file: 'chapter/CHAPTER_COMPLETED.json', why: 'after the feather sight at the spring; feather done' },
   { scene: 'beacon', file: 'beacon/BEACON_READY_EARNED.json', why: 'at the beacon before it is lit; beacon is current' },
-  { scene: 'bellweather', file: 'crossing/CROSSING_READY_EARNED.json', why: 'at the crossing; bellweather is current' },
-  { scene: 'night-lit', file: 'night/night-lit.json', why: 'the night has begun; night is current (lead night save)' },
-  { scene: 'night-quiet', file: 'night/night-quiet.json', why: 'after the bite, Briar taken (lead night save)' },
-  { scene: 'hell', file: 'hell/fresh-blade/04_WARDEN_RESOLVED.json', why: 'the foundry warden is resolved' },
-  { scene: 'heaven', file: 'heaven/05_ACTUAL_COURIER_ARRIVAL.json', why: 'the courier arrives in heaven' },
-  { scene: 'relay', file: 'heaven/03_FALSE_SIGNAL_WATCH.json', why: 'the counterfeit relay signal; the seraph fight itself is not checkpointed' },
-  { scene: 'witness', file: 'atlantis/07_ACTUAL_BEARING_EXPOSED.json', why: 'the drowned witness bearing is exposed' },
-  { scene: 'cosmos', file: 'cosmos/08_INDEPENDENT_SUPPORT_SETTINGS.json', why: 'independent cosmos anchors; the central link is disabled' },
-  { scene: 'nearshore', file: null, why: 'no checkpoint writer for the nearshore in this build; its path is a test file' },
+  { scene: 'bellweather', file: 'crossing/CROSSING_READY_EARNED.json', steps: ENTER_CROSSING, why: 'the sunward road, the north arch, then the crossing with the bellweather waystone attuned' },
+  { scene: 'night-lit', file: 'night/NIGHT_LIT_AT_HOME.json', steps: TRAVEL_BELL, why: 'the night has begun; the crossing is reached by the real travel' },
+  { scene: 'night-quiet', file: 'night/NIGHT_QUIET_AT_HOME.json', steps: TRAVEL_BELL, why: 'after the bite, Briar taken; the crossing is reached by the real travel' },
+  { scene: 'hell', file: 'hell/fresh-blade/04_WARDEN_RESOLVED.json', steps: REALM('hell', ROAD_MARKER), why: 'the foundry warden is resolved; the realm is entered by the real Road of Light travel' },
+  { scene: 'heaven', file: 'heaven/05_ACTUAL_COURIER_ARRIVAL.json', steps: REALM('heaven', ROAD_MARKER), why: 'the courier arrives in heaven; the realm is entered by the real Road of Light travel' },
+  { scene: 'relay', file: 'heaven/03_FALSE_SIGNAL_WATCH.json', steps: REALM('heaven', ROAD_MARKER), why: 'the counterfeit relay signal; the seraph fight itself is not checkpointed' },
+  { scene: 'witness', file: 'atlantis/07_ACTUAL_BEARING_EXPOSED.json', steps: REALM('atlantis', ROAD_MARKER), why: 'the drowned witness bearing is exposed' },
+  { scene: 'cosmos', file: 'cosmos/08_INDEPENDENT_SUPPORT_SETTINGS.json', steps: REALM('cosmos', OBSERVATORY), why: 'independent cosmos anchors; the central link is disabled' },
+  { scene: 'nearshore', file: 'nearshore/NEARSHORE_CHOICE_OPEN.json', why: 'the regent has offered the faultless fox; the choice is open (two foxes)' },
   { scene: 'finale-1', file: 'finale/phase1_rises.json', why: 'the Regent rises at the spring junction; phase 1' },
   { scene: 'finale-2', file: 'finale/phase2_chains.json', why: 'chains broken; phase 2' },
   { scene: 'finale-3', file: 'finale/phase3_merged.json', why: 'the merged valley; phase 3' },
@@ -158,7 +251,7 @@ const index = SCENES.map(spec => {
   if (!spec.file) return { scene: spec.scene, file: null, why: spec.why };
   const parts = spec.file.split('/');
   const found = findSave(parts[0], parts[parts.length - 1]);
-  return found ? { scene: spec.scene, file: found, why: spec.why } : { scene: spec.scene, file: null, why: 'the journey wrote no ' + spec.file };
+  return found ? { scene: spec.scene, file: found, why: spec.why, steps: spec.steps || [] } : { scene: spec.scene, file: null, why: 'the journey wrote no ' + spec.file };
 });
 fs.writeFileSync(path.join(root, 'MANIFEST.json'), JSON.stringify(manifest, null, 2));
 fs.writeFileSync(path.join(root, 'beats-index.json'), JSON.stringify(index, null, 2));

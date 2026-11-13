@@ -1,4 +1,31 @@
-# Firstlight — a connected finite browser draft
+# Firstlight
+
+An action RPG in your browser: a small valley, a fox named Briar, a feather that shows which roads are true, and a patient man in a grey coat who is replacing the roads between the worlds with roads that never lose anyone and never let anyone leave.
+
+Firstlight 1.0 (2026-11-13) is a complete game, title screen to credits: five acts across the valley, the Sunward Road, Bellweather, Hell, Heaven, the drowned harbour of Atlantis and the stars, eight choices that the story remembers, and three endings. Third person and the diorama view switch at any time.
+
+## Play
+
+- **Windows:** open `PLAY_FIRSTLIGHT_WINDOWS.cmd`.
+- **Any desktop with Python 3:** `python tools/play_local.py`, then play at http://127.0.0.1:8780/ (keep the window open).
+- The game is one offline page (`index.html`, the same bytes as `FIRSTLIGHT_VALLEY.html`). No account, no network, no AI service. Saves stay in your browser on this device; **More → Characters** keeps up to three lives and exports them.
+
+**Keys:** WASD move · drag to look · Tab target · 1 attack · 2-6 skills (6 is a tonic) · Space dodge · E interact · **Z hold the feather's sight** · V third person / diorama · J journal · M map · C character · Esc pause and settings (volume, text size, the key table, reduced motion).
+
+## What is in 1.0
+
+- **The story:** the Regent of Ash, Hollis Wick, met three times before the end; the prophecy spoken at the spring and reread in Heaven; the night the warning failed; the nearshore, where you know Briar because she never heels; a three-phase finale at your own spring where he quotes your choices back as chains and the people you freed break them. Endings: the open road, the first answer, the kept valley. ([docs/1.0/STORY.md](docs/1.0/STORY.md), [BRANCHES.md](docs/1.0/BRANCHES.md))
+- **The fight:** weighty hits (hit-stop, shake, damage numbers, poise), readable telegraphs, bosses that rise from the Hollow Hart to the Regent, levels to 12, a real upgrade from every realm's warden.
+- **The look and sound:** warmer light, rim and bounce, soft shadows, antialiasing, better water and trees; faces on everyone; an original score (nine tracks) and real recorded effects ([assets/audio/SOURCES.md](assets/audio/SOURCES.md)).
+- **The house:** a title screen, continue, pause, settings, a first-steps card that teaches by doing, phones that work, credits.
+
+## How it was made and checked
+
+Built on 2026-11-13 by Claude (Opus 5.5) as lead with ten Claude Haiku 5.5 builders, an Opus 5.5 aide and a Fable 5.2 story architect, on the September-October draft Codex built. The brief, the spine and the lanes are in [docs/1.0/](docs/1.0/BRIEF.md). `python tools/verify.py` runs the whole gate: the build, every rule test, the python suites, every journey and `tools/firstlight_journey.cjs`, a bot that plays a fresh character from new game to the credits through the game's own commands (`--ending answered|kept` for the other endings). [docs/1.0/TOUR.md](docs/1.0/TOUR.md) has a frame of every beat on a real GPU.
+
+---
+
+# Before 1.0: the connected finite browser draft
 
 Firstlight now connects the original four chapters, useful equipment projects
 and repeat outings, local Earth roads, distinct Hell, Heaven, Atlantis and Cosmos
