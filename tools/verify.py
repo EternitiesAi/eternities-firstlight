@@ -437,12 +437,8 @@ def main():
     # their measured disk work on Windows while retaining a bounded failure.
     run('python', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_*.py', '-v'], timeout=600, extra_env=cpu_env)
     print('\n'.join((output / 'python.log').read_text(encoding='utf-8').splitlines()[-5:]), flush=True)
-    # No native checkpoints exist yet. Its Admission-class skip is explicit;
-    # the same file runs all mandatory checks after current native gates below.
-    run('road-account-controller-preflight', [sys.executable, 'tools/test_road_account_browser.py'],
-        extra_env={'FIRSTLIGHT_ROOT': str(ROOT), 'ROAD_ACCOUNT_NATIVE_INPUTS': '',
-                   'ROAD_ACCOUNT_NATIVE_EXPECTATIONS': str(ROOT / 'tools/SOURCE_EXPECTATIONS08.json'),
-                   'ROAD_ACCOUNT_CPU_OUTPUT': str(output / 'road-account-source-cpu')})
+    # The road-account controller preflight pins historical source epochs; it is out of the 1.0 gate
+    # (tests/archive/README.md). Run tools/test_road_account_browser.py by hand against an old epoch.
     run('crossing-blade', ['node', 'tests/crossing_journey.cjs'])
     run('crossing-bow', ['node', 'tests/crossing_journey.cjs', '--bow'])
     run('starter-blade', ['node', 'tests/starter_journey.cjs'])
