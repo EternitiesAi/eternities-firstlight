@@ -72,7 +72,7 @@ def main():
                 blank.close()
         context.route('**/*', lambda route: route.continue_() if route.request.url.startswith(origin + '/') else route.abort())
         page.on('pageerror', lambda e: report['errors'].append(str(e)))
-        response = page.goto(origin + '/index.html', wait_until='load')
+        response = page.goto(origin + '/index.html#play', wait_until='load')
         page.wait_for_function('()=>!!window.Realm')
         page.wait_for_function('()=>getComputedStyle(document.querySelector("#loading")).opacity==="0"')
         check('exact served build', hashlib.sha256(response.body()).hexdigest() == report['html_sha256'])

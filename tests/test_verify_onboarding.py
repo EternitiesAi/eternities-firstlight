@@ -168,9 +168,8 @@ class OnboardingVerifier(unittest.TestCase):
         calls,target=self.main_requests();by={c[1]:(c,k)for c,k in calls if len(c)>1}
         onboarding=[(c,k)for c,k in calls if len(c)>1 and c[1]=='tools/onboarding_browser.py'];self.assertEqual(len(onboarding),1)
         c,k=onboarding[0];self.assertEqual(k['timeout'],600);self.assertEqual(c[c.index('--root')+1],str(self.f.root));self.assertEqual(c[c.index('--output')+1],str(target/'onboarding_browser'));self.assertEqual(c[c.index('--renderer')+1],'software')
-        earth,ek=by['tools/earth_homecoming_browser.py'];self.assertEqual(ek['timeout'],1800);self.assertEqual(earth[earth.index('--cohort-sha')+1],self.f.cohort_sha);self.assertEqual(earth[earth.index('--sources')+1],str(self.f.sources))
-        self.assertNotEqual(c[c.index('--output')+1],earth[earth.index('--output')+1])
-        labels=[c[1]for c,k in calls if len(c)>1];self.assertLess(labels.index('tools/earth_homecoming_journey.cjs'),labels.index('tests/test_earth_homecoming_native.py'));self.assertLess(labels.index('tests/test_earth_homecoming_native.py'),labels.index('tools/earth_homecoming_browser.py'));self.assertLess(labels.index('tools/earth_homecoming_browser.py'),labels.index('tools/onboarding_browser.py'))
+        # the retired homecoming's native gate is out of 1.0 (tests/archive/README.md): 45 legacy + onboarding = 46
+        labels=[c[1]for c,k in calls if len(c)>1];self.assertNotIn('tools/earth_homecoming_browser.py',labels)
         # Count the 45 legacy native suites separately from the new CPU preflight.
         existing=[(c,k)for c,k in calls if len(c)>1 and c[1].startswith('tests/') and c[1].endswith('_browser.py') and c[1]not in ('tests/earth_road_browser.py','tests/test_earth_consignment_browser.py','tests/test_earth_wild_signs_browser.py')];self.assertEqual(len(existing),45)
         roads=[(c,k) for c,k in calls if len(c)>1 and c[1]=='tests/earth_road_browser.py'];self.assertEqual(len(roads),1)
@@ -179,7 +178,7 @@ class OnboardingVerifier(unittest.TestCase):
         for c,k in existing:
             suite=Path(c[1]).stem;want=1200 if suite in ('cosmos_campaign_browser','atlantis_campaign_browser','heaven_campaign_browser','hell_campaign_browser','realm_givers_browser','local_life_browser') else 600
             self.assertEqual(k['timeout'],want,suite);expected,env=V.browser_run_spec(suite,target,'supported');self.assertEqual(c,expected);self.assertTrue(env.items()<=k['env'].items())
-        self.assertEqual(len(existing)+len(onboarding)+1,47);self.assertEqual(len(existing)+len(onboarding)+len(roads)+1,48);self.assertFalse((target/'onboarding_browser').exists());self.assertFalse(any(len(c)>1 and c[1].startswith('tools/capture_') for c,k in calls))
+        self.assertEqual(len(existing)+len(onboarding),46);self.assertEqual(len(existing)+len(onboarding)+len(roads),47);self.assertFalse((target/'onboarding_browser').exists());self.assertFalse(any(len(c)>1 and c[1].startswith('tools/capture_') for c,k in calls))
 
     def test_new_consignment_is_required_once_after_current_preflight_and_retains_48_older_suites(self):
         calls,target=self.main_requests();labels=[c[1]for c,k in calls if len(c)>1]
@@ -201,21 +200,11 @@ class OnboardingVerifier(unittest.TestCase):
         calls,_=self.main_requests(browser=False)
         self.assertFalse(any(len(c)>1 and c[1]=='tools/onboarding_browser.py' for c,k in calls))
 
-    def test_recording_cpu_uses_same_current_cohort_without_launching_a_take(self):
-        calls,_=self.main_requests(browser=False)
-        rows=[(c,k) for c,k in calls if len(c)>1 and c[1]=='tests/test_capture_earth_homecoming.py']
-        self.assertEqual(len(rows),1);c,k=rows[0]
-        self.assertEqual(k['timeout'],180)
-        self.assertEqual(k['env']['FIRSTLIGHT_ROOT'],str(self.f.root))
-        self.assertEqual(k['env']['FIRSTLIGHT_EARTH_CAPTURE_SOURCE'],str(self.f.sources/'blade/earth/02_RELAYS.json'))
-        self.assertEqual(k['env']['FIRSTLIGHT_EARTH_CAPTURE_COHORT_SHA'],self.f.cohort_sha)
-        self.assertEqual(k['env']['FIRSTLIGHT_EARTH_EARNED_CALLER_ROOT'],str(self.f.root/'tools/earth-homecoming-journey'))
-        labels=[c[1] for c,k in calls if len(c)>1]
-        self.assertLess(labels.index('tools/earth_homecoming_journey.cjs'),labels.index('tests/test_capture_earth_homecoming.py'))
-        self.assertFalse(any(len(c)>1 and c[1].startswith('tools/capture_') for c,k in calls))
-
-    def test_required_recording_cpu_failure_stops_the_invocation(self):
-        with self.assertRaisesRegex(SystemExit,'FAILED: earth-recording-controller-preflight'):
-            self.main_requests(capture_cpu_exit=1)
+    def test_retired_homecoming_chain_is_never_requested(self):
+        # The finale replaced the Earth homecoming; its journey, native and capture preflights left the gate.
+        for browser in (False,True):
+            calls,_=self.main_requests(browser=browser);labels=[c[1] for c,k in calls if len(c)>1]
+            for leaf in ('tools/earth_homecoming_journey.cjs','tests/test_earth_homecoming_native.py','tests/test_capture_earth_homecoming.py','tools/earth_homecoming_browser.py'):
+                self.assertNotIn(leaf,labels)
 
 if __name__=='__main__':unittest.main(verbosity=2)

@@ -537,26 +537,9 @@ def main():
     run('cosmos-campaign-blade', ['node', 'tests/cosmos_campaign_journey.cjs', '--output', str(cosmos_output)])
     run('cosmos-campaign-bow', ['node', 'tests/cosmos_campaign_journey.cjs', '--output', str(cosmos_output), '--bow'])
     run('cosmos-campaign-veteran', ['node', 'tests/cosmos_campaign_journey.cjs', '--output', str(cosmos_output), '--veteran'])
-    # One portable cohort earns all three Earth continuations and then checks
-    # its exact checkpoints. Historical prerequisite worlds are labelled;
-    # this does not claim a new beginning-to-ending or native-browser run.
-    homecoming_output = output / 'earth-homecoming-earned'
-    if os.name == 'nt' and homecoming_output.drive.upper() != 'D:':
-        homecoming_output = ROOT / 'evidence10/earth-homecoming-earned'
-    run('earth-homecoming-earned', ['node', 'tools/earth_homecoming_journey.cjs', '--output', str(homecoming_output)], timeout=600)
-    cohort_path = homecoming_output / 'CONNECTED_EARTH_HOMECOMING_REPORT.json'
-    homecoming_cohort_sha = hashlib.sha256(cohort_path.read_bytes()).hexdigest()
-    run('earth-homecoming-native-preflight', [sys.executable, 'tests/test_earth_homecoming_native.py', '-v'], timeout=180,
-        extra_env={'FIRSTLIGHT_ROOT': str(ROOT), 'EARTH_EARNED_SOURCES': str(homecoming_output),
-                   'EARTH_EARNED_COHORT_SHA': homecoming_cohort_sha,
-                   'EARTH_EARNED_CALLER_ROOT': str(ROOT / 'tools/earth-homecoming-journey')})
-    # CPU controller/provenance checks need this invocation's real cohort too.
-    # This does not launch a recording or register footage as a gameplay gate.
-    run('earth-recording-controller-preflight', [sys.executable, 'tests/test_capture_earth_homecoming.py', '-v'], timeout=180,
-        extra_env={'FIRSTLIGHT_ROOT': str(ROOT),
-                   'FIRSTLIGHT_EARTH_CAPTURE_SOURCE': str(homecoming_output / 'blade/earth/02_RELAYS.json'),
-                   'FIRSTLIGHT_EARTH_CAPTURE_COHORT_SHA': homecoming_cohort_sha,
-                   'FIRSTLIGHT_EARTH_EARNED_CALLER_ROOT': str(ROOT / 'tools/earth-homecoming-journey')})
+    # The retired Earth homecoming (the twelve-claim gate and the 168 hp repulse) and its earned cohort, native and
+    # capture preflights are out of the 1.0 gate: the finale replaced it (tests/archive/README.md). The finale's own
+    # tests run in the rules step.
     whole_draft_output = output / 'whole-draft-earned'
     if os.name == 'nt' and whole_draft_output.drive.upper() != 'D:':
         whole_draft_output = ROOT / 'evidence10/whole-draft-earned'
@@ -574,13 +557,6 @@ def main():
             '--output', str(args.browser_output / 'tournament_browser')], timeout=600, native=True)
         run('masterwork_browser', [sys.executable, 'tools/masterwork_browser.py', '--both',
             '--output', str(args.browser_output / 'masterwork_browser')], timeout=600, native=True)
-        # Separate native gate, bound to the exact cohort earned above. Only
-        # this new command receives its own bounded 30-minute allowance.
-        earth_browser_output = ((args.browser_output / 'earth_homecoming_browser')
-                                if args.browser_output is not None else output / 'earth-homecoming-browser')
-        command, extra_env = earth_homecoming_browser_run_spec(
-            ROOT, homecoming_output, cohort_path, homecoming_cohort_sha, earth_browser_output)
-        run('earth_homecoming_browser', command, timeout=1800, extra_env=extra_env, native=True)
         # Twelve onboarding stages, two fresh characters and one cold restart.
         # Ten minutes is a provisional controller allowance, not measured pacing.
         onboarding_output = ((args.browser_output / 'onboarding_browser')
