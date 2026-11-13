@@ -553,6 +553,9 @@ def main():
     run('briar-outing-earned', ['node', 'tests/briar_outing_journey.cjs',
         '--whole-draft-report', str(whole_draft_output / 'WHOLE_DRAFT_JOURNEY_REPORT.json'),
         '--output', str(whole_draft_output.parent / 'briar-earned')], extra_env={'FIRSTLIGHT_ROOT': str(ROOT)})
+    # Title to credits: one fresh character through every beat on real commands. The bot exits nonzero unless it
+    # printed "credits rolled" (tools/firstlight_journey.cjs sets its exit code from creditsRolled).
+    run('firstlight-journey', ['node', 'tools/firstlight_journey.cjs', '--out', str(output / 'firstlight-journey')], timeout=900)
     if args.browser:
         run('gate_captain_browser', [sys.executable, 'tools/gate_captain_browser.py', '--both',
             '--output', str(args.browser_output / 'gate_captain_browser')], timeout=600, native=True)
