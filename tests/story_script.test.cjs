@@ -172,3 +172,33 @@ test('the lines the saga and the first envoy scene already fixed are kept word f
  for(const id of['beacon.stranger','hell.pattern','hell.regent'])assert.ok(S.SCENES[id].lines.every(l=>l.speaker!=='regent'),id);
  assert.ok(S.SCENES['witness.confluence'].lines.some(l=>l.speaker==='regent'));
 });
+
+test('a save that never met the fox is never told about her',()=>{
+ // scenes that cannot play without a bonded fox: her rescue, her spot, the two foxes, her return, and the chain for the kept fox
+ const NEEDS_FOX=new Set(['hart.briar','road.spot','nearshore.offer','nearshore.heel','nearshore.false','nearshore.real','nearshore.home','finale.chain.nearshore-false']);
+ const FOX=/Briar|Juniper|\bfox|\bbowl|\bglove|\bher (spot|old spot|place)\b|she’s (out there|his)/i;
+ let checked=0;
+ for(const id of IDS){
+  if(NEEDS_FOX.has(id))continue;
+  const keys=baseFacts(S.SCENES[id]).filter(k=>k!=='bonded'&&k!=='falseFirst');
+  for(const f of combos(keys)){
+   const r=S.scene(id,{...f,bonded:false,falseFirst:false,briarName:'Juniper'});checked++;
+   assert.ok(r.lines.length>0,id+' is silent without the fox for '+JSON.stringify(f));
+   for(const l of r.lines)assert.doesNotMatch(l.text,FOX,id+': '+l.text);
+  }
+ }
+ assert.ok(checked>IDS.length);
+ // the same scenes still speak of her when she is there
+ const said=(id,f)=>S.scene(id,f).lines.map(l=>l.text).join(' ');
+ for(const[id,f,re]of[['nearshore.pier',{},/If she’s out there/],['finale.rise',{},/A fox\./],['finale.runs',{},/Briar is already ahead/],['finale.merged.briar',{},/Briar is sitting on it/],['finale.offer',{},/the fox’s/],['finale.answer',{offer:'refused'},/Briar leans against your leg/],['finale.answer',{offer:'taken'},/feel the fox/],['finale.ending',{ending:'kept'},/one traveller, one fox, one valley/],['epilogue.concert',{},/about a fox long/]]){
+  assert.match(said(id,{...f,bonded:true}),re,id);assert.doesNotMatch(said(id,{...f,bonded:false}),re,id);
+ }
+ assert.match(said('nearshore.pier',{bonded:false}),/You owe him no answer/);assert.match(said('finale.merged.briar',{bonded:false}),/Fenna’s cart/);
+ assert.match(said('finale.ending',{ending:'kept',bonded:false}),/one traveller, one valley\./);
+ // a real never-bonded save, read through facts()
+ const w=C.fresh();assert.equal(w.adventure.companion.bonded,false);assert.equal(S.facts(w).bonded,false);
+ for(const id of IDS)if(!NEEDS_FOX.has(id))for(const l of S.scene(id,w).lines)assert.doesNotMatch(l.text,FOX,id+': '+l.text);
+ // hell's own summary and first step no longer name her either
+ const H=require(path.join(ROOT,'src/hell-campaign-data.js')),flat=JSON.stringify(H);
+ assert.doesNotMatch(flat,/Briar|\bfox\b/);assert.match(flat,/The pattern behind the night at Bellweather/);
+});
