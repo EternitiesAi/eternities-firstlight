@@ -53,8 +53,8 @@ function appAudio(sim,opts={}){
  const $=s=>buttons[s]||(buttons[s]={setAttribute(){},textContent:''}),source=appText(),begin=source.indexOf('const audio={ctx:null'),end=source.indexOf('experience=new RealmExperience.Experience',begin);
  assert.ok(begin>=0&&end>begin,'Actual App audio and lifecycle block');const block=source.slice(begin,end);
  const win={addEventListener(k,fn){listeners[k]=fn;}};
- const app=vm.compileFunction(block+';return {audio,setElapsed(t){elapsed=t},setSim(s){sim=s},setPanel(p){panel=p}};',['RealmAudio','RealmSoundscape','RealmGroundedFootfalls','C','document','$','toast','rpg','experience','sim','elapsed','panel','characterStore','RealmCombat','window'])
- (RA,S,F,C,document,$,opts.toast||(s=>toasts.push(s)),null,null,sim,sim.elapsed,null,{active:null,revision:0},{selected:()=>null},win);
+ const app=vm.compileFunction(block+';return {audio,setElapsed(t){elapsed=t},setSim(s){sim=s},setPanel(p){panel=p}};',['RealmAudio','RealmSoundscape','RealmGroundedFootfalls','C','document','$','toast','rpg','experience','sim','elapsed','panel','characterStore','RealmCombat','RealmStoryAudio','window'])
+ (RA,S,F,C,document,$,opts.toast||(s=>toasts.push(s)),null,null,sim,sim.elapsed,null,{active:null,revision:0},{selected:()=>null},{tick(){}},win);
  return{...h,...app,RA,document,listeners,toasts,source,step(frames=12){for(let i=0;i<frames;i++){sim.manual(1,0,.05);sim.tick(.05);h.advance(.05);app.setElapsed(sim.elapsed);app.audio.tick(sim.elapsed);}}};
 }
 module.exports={ROOT,C,S,candidate,audioHost,stubAudio,installAudio,actualSim,input,walk,appAudio,appText,sha,snapshot};
