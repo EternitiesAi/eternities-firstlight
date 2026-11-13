@@ -48,7 +48,10 @@ const LINES=freeze({
  phaseDetail1:'Each chain is tied to a place you chose. The people you freed will break some of them for you.',
  phaseDetail2:'He stops at each turn of the valley to strike. Stand outside his lines and hit him while he runs.',
  phaseDetail3:'Answer his offer. Nothing he does lands while it waits.',
- wonDetail:'The valley is yours again. Walk it and see what changed.'
+ wonDetail:'The valley is yours again. Walk it and see what changed.',
+ postgameTitle:'Firstlight',
+ postgameDetail:'The roads stay open. Walk them as long as you like. The side work stays open too: the gate, the tournament, the masterwork and the fishing.',
+ postgameProgress:'Free roads · side work open'
 });
 const api=freeze({TIMING,BODIES,SITES,ALLY_CARDS,ROUTE,LINES});
 G.RealmFinaleData=api;if(typeof module!=='undefined')module.exports=api;

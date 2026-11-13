@@ -32,6 +32,10 @@ function choices(key,state){const s=scene(SCENE[key]||key,state);return s&&s.cho
 // a chain or an ally, by its echo id: the script's own line when it has one, else the given fallback (empty by default).
 function chainText(echo,state,fallback=''){return joined(scene('finale.chain.'+(echo||'spring'),state))||fallback;}
 function allyText(echo,state,fallback=''){return joined(scene('finale.ally.'+echo,state))||fallback;}
-const api=Object.freeze({phases,plan,anchors,timing:()=>T().TIMING,route:()=>T().ROUTE,text,choices,scene,chainText,allyText,group});
+// the finale is on while the Regent is up: the valley's envoy steps off the spring for the fight.
+function fighting(state){const s=state?.saga?.finale;return !!s&&s.phase>=1&&s.phase<=3&&!s.won&&!state.saga.credits;}
+// after the credits the tracker reads this card in place of any chapter: the roads stay open, and the side work is still there.
+function postgameCard(state){if(!state?.saga?.postgame)return null;const L=T().LINES;return{title:L.postgameTitle,detail:L.postgameDetail,progress:L.postgameProgress};}
+const api=Object.freeze({phases,plan,anchors,timing:()=>T().TIMING,route:()=>T().ROUTE,text,choices,scene,chainText,allyText,group,fighting,postgameCard});
 G.RealmFinale=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
