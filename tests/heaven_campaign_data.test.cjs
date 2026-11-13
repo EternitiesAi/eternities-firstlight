@@ -178,9 +178,9 @@ test('Heaven reward and choices: one common finite material fee, explicit public
  assert.match(d.choices[0].text,/low lever with a request plate/);assert.match(d.choices[1].text,/broad plate that anyone can press/);
  assert.notEqual(d.choices[0].recognition[0].text,d.choices[1].recognition[0].text);
  assert.notEqual(d.choices[0].recognition.at(-1).text,d.choices[1].recognition.at(-1).text,'the courier has an actual distinct line in both choices');
- assert.match(d.completionText,/fixed 16 sunmarks, 3 ore, 4 timber and 3 fibre once; XP credits up to 40 within the existing stored cap/);
+ assert.match(d.completionText,/gives you 16 sunmarks, 3 ore, 4 timber and 3 fibre, and XP up to 40 within the stored cap/);
  assert.doesNotMatch(d.completionText,/has paid (?:the declared )?40 XP/);
- assert.match(d.completionText,/not a promised upgrade for every veteran/);assert.match(d.completionText,/No gear was fitted, equipped or granted/);
+ assert.match(d.completionText,/go toward a project you choose/);assert.match(d.completionText,/No gear was fitted or granted/);
  const contract=fs.readFileSync(path.join(__dirname,'../docs/development/HEAVEN_APPROACH_CONTRACT_2026-10-04.md'),'utf8');
  assert.match(contract,/displayed only after actual\s+`verify-welcome`/);
  assert.match(contract,/\{version:1,accepted:false,steps:\[\],choice:null,claimed:false\}/);
