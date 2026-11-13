@@ -97,7 +97,9 @@ const ALREADY=freeze({
  nearshore:(w,s)=>s.briar.state==='nearshore'||s.briar.state==='returned',
  finale:(w,s)=>s.finale.phase>0||s.finale.won
 });
-function allowed(world,gate){if(!own(GATES,gate))return false;const s=sagaOf(world);return doneWith(world,s,GATES[gate])||ALREADY[gate](world,s);}
+// the hell gate holds until the quiet engine is placed (BRANCHES 3.3; the audit's edge). a save that already accepted the road keeps it.
+const HOLDS=freeze({hell:(w,s)=>s.choices.device!==null});
+function allowed(world,gate){if(!own(GATES,gate))return false;const s=sagaOf(world);return doneWith(world,s,GATES[gate])&&(!own(HOLDS,gate)||HOLDS[gate](world,s))||ALREADY[gate](world,s);}
 // What a sighting or a reading needs from the world when it happens. Once witnessed it stays part of the story.
 const REGENT_NEEDS=freeze({beacon:w=>w?.adventure?.beacon?.introduced===true,foundry:w=>w?.hellCampaign?.accepted===true,confluence:w=>w?.cosmosCampaign?.accepted===true});
 const PROPHECY_NEEDS=freeze({spring:w=>w?.adventure?.angelSeen===true,heaven:w=>w?.heavenCampaign?.accepted===true});
