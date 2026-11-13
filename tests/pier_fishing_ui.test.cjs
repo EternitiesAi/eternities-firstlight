@@ -40,7 +40,7 @@ test('a non-pausing drawer freezes the fishing clock and discards elapsed menu t
 });
 test('App native fishing buttons retain Space and Enter without invoking dodge',()=>{
  const fs=require('node:fs'),vm=require('node:vm'),s=fs.readFileSync(require.resolve('../src/app.js'),'utf8');let callback,combat=0;
- const env={window:{addEventListener:(n,f)=>callback=f},document:{querySelector:()=>null},sim:{},panel:null,rpg:{key(){combat++;return true;}}};
+ const env={window:{addEventListener:(n,f)=>callback=f},document:{querySelector:()=>null},sim:{},panel:null,guide(){},rpg:{key(){combat++;return true;}}};
  vm.createContext(env);vm.runInContext(s.slice(s.indexOf("window.addEventListener('keydown',e=>{"),s.indexOf("window.addEventListener('keyup'")),env);
  for(const key of [' ','Enter']){let prevented=false;callback({key,target:{tagName:'BUTTON',closest:()=>({})},preventDefault(){prevented=true;}});assert.equal(prevented,false);}
  assert.equal(combat,0);
@@ -82,7 +82,7 @@ test('the actual App boundary gives photo mode its controls and suspends the hid
 test('global App E cannot act on a line hidden behind photo or menu controls',()=>{
  const h=fixture(),fs=require('node:fs'),vm=require('node:vm'),s=fs.readFileSync(require.resolve('../src/app.js'),'utf8');let callback;
  const env={window:{addEventListener:(n,f)=>callback=f},document:{querySelector:()=>null},sim:h.sim,panel:null,fishing:h.ui,
-  briarInteract:()=>false,rpg:{key:()=>false},adventure:{key:()=>false},sandbox:{key:()=>false}};
+  briarInteract:()=>false,guide(){},rpg:{key:()=>false},adventure:{key:()=>false},sandbox:{key:()=>false}};
  vm.createContext(env);vm.runInContext(s.split('\n').find(l=>l.startsWith('function interact(){')),env);
  vm.runInContext(s.slice(s.indexOf("window.addEventListener('keydown',e=>{"),s.indexOf("window.addEventListener('keyup'")),env);
  const press=()=>callback({key:'e',target:{tagName:'CANVAS'},preventDefault(){}});

@@ -528,7 +528,7 @@ body.title-open #hud,body.title-open #labels{display:none!important}
 .credits-end{margin:120px 0 0;font:italic 22px Georgia,serif;color:#e7d6a8}
 #credits-screen.still .credits-roll{overflow:auto}
 #credits-screen.still .credits-track{position:relative;padding:72px 24px 120px}
-.credits-skip{position:absolute;right:20px;bottom:20px;min-height:44px;padding:10px 16px;background:rgba(14,30,35,.7);border:1px solid rgba(219,193,140,.4);color:#efe6cf;border-radius:10px}
+.credits-skip{position:absolute;left:0;right:0;bottom:0;min-height:52px;padding:12px 16px;background:#0b161b;border:0;border-top:1px solid rgba(219,193,140,.3);border-radius:0;color:#efe6cf}
 
 #first-run{position:absolute;top:118px;left:50%;transform:translateX(-50%);width:min(380px,calc(100vw - 32px));padding:14px 16px 12px;background:rgba(17,31,37,.94);border:1px solid #c6a572;border-radius:12px;color:#edeadd;box-shadow:0 10px 34px rgba(0,0,0,.35);z-index:50}
 body.panel-open #first-run{display:none}
@@ -10526,18 +10526,32 @@ const ECHO=freeze([
  {id:'atlantis-limited',source:['atlantisCampaign','choice'],value:'limited',kind:'freeing',ally:'Damar',line:'You kept a passage under the sea that no office can close.'},
  {id:'atlantis-license',source:['atlantisCampaign','choice'],value:'license',kind:'coercive',line:'You kept a permit for yourself and left the office’s marker standing.'},
  {id:'cosmos-public',source:['cosmosCampaign','choice'],value:'public-record',kind:'freeing',ally:'Anik',line:'You told the stars plainly how the feed was turned against them.'},
- {id:'cosmos-bounded',source:['cosmosCampaign','choice'],value:'bounded-account',kind:'freeing',ally:'Anik',line:'You let Avar speak for himself and still told the truth about the feed.'},
+ {id:'cosmos-bounded',source:['cosmosCampaign','choice'],value:'bounded-account',kind:'freeing',ally:'Avar',line:'You let Avar speak for himself and still told the truth about the feed.'},
  {id:'earth-watch',source:['earthHomecoming','choice'],value:'public-watch',kind:'freeing',ally:'Vessa',line:'You left the quiet engine out in the open where the valley can watch it.'},
  {id:'earth-custody',source:['earthHomecoming','choice'],value:'reviewed-custody',kind:'coercive',line:'You sealed my engine in a box at the bridge. Just in case, you said.'},
  {id:'beacon-cinder',source:['adventure','beacon','relic'],value:'accepted',kind:'coercive',line:'You took the herald’s cinder when it was offered, and it felt good.'},
- {id:'beacon-sealed',source:['adventure','beacon','relic'],value:'sealed',kind:'freeing',ally:'Tessa',line:'You sealed the herald’s cinder away and kept the road honest.'},
- {id:'beacon-renounced',source:['adventure','beacon','relic'],value:'renounced',kind:'freeing',ally:'Tessa',line:'You held the cinder once, and then you let it go.'}
+ {id:'beacon-sealed',source:['adventure','beacon','relic'],value:'sealed',kind:'freeing',ally:'Mara',line:'You sealed the herald’s cinder away and kept the road honest.'},
+ {id:'beacon-renounced',source:['adventure','beacon','relic'],value:'renounced',kind:'freeing',ally:'Mara',line:'You held the cinder once, and then you let it go.'},
+ {id:'tessa-refused',source:['saga','choices','tessa'],value:'refused',kind:'freeing',ally:'Tessa',line:'You told Tessa to tear up my road, and she did.'},
+ {id:'tessa-hers',source:['saga','choices','tessa'],value:'hers',kind:'freeing',ally:'Tessa',line:'You left Tessa her own road to choose.'},
+ {id:'tessa-signed',source:['saga','choices','tessa'],value:'signed',kind:'coercive',line:'You told Tessa to sign my road.'},
+ {id:'device-open',source:['saga','choices','device'],value:'open',kind:'freeing',ally:'Rowan',line:'You hung my engine under the bell where anyone can see it.'},
+ {id:'device-sealed',source:['saga','choices','device'],value:'sealed',kind:'freeing',ally:'Oren',line:'You locked my engine away and gave the keys to two people.'},
+ {id:'device-carried',source:['saga','choices','device'],value:'carried',kind:'coercive',line:'You carried my engine so you would always know where it was.'},
+ {id:'nearshore-false',source:['saga','briar','falseTrusted'],value:true,kind:'coercive',line:'On the pier you told the quiet one to come home.'}
 ]);
 const ECHO_IDS=ECHO.map(e=>e.id);
+// BRANCHES.md 2.1: the lasting choices, the three hearings and the three endings.
+const CHOICES=freeze({tessa:['refused','hers','signed'],device:['open','sealed','carried']}),ENDINGS=freeze(['open','kept','answered']);
+const CHOICE_SCENES=freeze({tessa:'beacon.stranger.answer',device:'night.device'});
+const Script=()=>G.RealmStoryScript||(typeof require==='function'?(()=>{try{return require('./story-script.js');}catch{return null;}})():null);
+// The first line a scene speaks for this world, or null when the script is absent. The table lines above are fallbacks.
+function scriptLine(id,world){try{return Script()?.scene?.(id,world)?.lines?.[0]?.text||null;}catch{return null;}}
+const offerOf=w=>w?.earthHomecoming?.finale?.offer??null;
 const read=(o,path)=>path.reduce((v,k)=>v?.[k],o);
 const own=Object.hasOwn,isObj=v=>!!v&&typeof v==='object'&&!Array.isArray(v),day=v=>Number.isSafeInteger(v)&&v>=1&&v<=MAX_DAY;
-function fresh(){return{version:VERSION,beats:{},regent:[],prophecy:[],feather:{unlocked:false,uses:0},briar:{state:'with',habit:{},takenDay:null,returnedDay:null,homeDay:null},echo:{coercive:[],freeing:[]},finale:{phase:0,won:false},credits:false,postgame:false};}
-function clone(s){return{version:VERSION,beats:Object.fromEntries(IDS.filter(id=>own(s.beats,id)).map(id=>[id,{day:s.beats[id].day}])),regent:REGENT.filter(id=>s.regent.includes(id)),prophecy:PROPHECY.filter(id=>s.prophecy.includes(id)),feather:{unlocked:s.feather.unlocked,uses:s.feather.uses},briar:{state:s.briar.state,habit:{...s.briar.habit},takenDay:s.briar.takenDay,returnedDay:s.briar.returnedDay??null,homeDay:s.briar.homeDay??null},echo:{coercive:s.echo.coercive.slice(),freeing:s.echo.freeing.slice()},finale:{phase:s.finale.phase,won:s.finale.won},credits:s.credits,postgame:s.postgame};}
+function fresh(){return{version:VERSION,beats:{},regent:[],prophecy:[],feather:{unlocked:false,uses:0},briar:{state:'with',habit:{},takenDay:null,returnedDay:null,homeDay:null,falseTrusted:false},choices:{tessa:null,device:null},heard:{beacon:null,foundry:null,confluence:null},echo:{coercive:[],freeing:[]},finale:{phase:0,won:false,ending:null},credits:false,postgame:false};}
+function clone(s){return{version:VERSION,beats:Object.fromEntries(IDS.filter(id=>own(s.beats,id)).map(id=>[id,{day:s.beats[id].day}])),regent:REGENT.filter(id=>s.regent.includes(id)),prophecy:PROPHECY.filter(id=>s.prophecy.includes(id)),feather:{unlocked:s.feather.unlocked,uses:s.feather.uses},briar:{state:s.briar.state,habit:{...s.briar.habit},takenDay:s.briar.takenDay,returnedDay:s.briar.returnedDay??null,homeDay:s.briar.homeDay??null,falseTrusted:s.briar.falseTrusted===true},choices:{tessa:s.choices?.tessa??null,device:s.choices?.device??null},heard:{beacon:s.heard?.beacon??null,foundry:s.heard?.foundry??null,confluence:s.heard?.confluence??null},echo:{coercive:s.echo.coercive.slice(),freeing:s.echo.freeing.slice()},finale:{phase:s.finale.phase,won:s.finale.won,ending:s.finale.ending??null},credits:s.credits,postgame:s.postgame};}
 // Live predicates over the rest of the world; `s` is the saga record being judged.
 const DERIVE=freeze({
  kit:w=>w?.adventure?.started===true,
@@ -10551,7 +10565,7 @@ const DERIVE=freeze({
  hell:(w,s)=>w?.hellCampaign?.claimed===true&&s.regent.includes('foundry'),
  heaven:(w,s)=>w?.heavenCampaign?.claimed===true&&s.prophecy.includes('heaven'),
  witness:(w,s)=>w?.atlantisCampaign?.claimed===true&&w?.cosmosCampaign?.claimed===true&&s.regent.includes('confluence'),
- // a player who never took Briar home finishes it by refusing the regent's faultless fox (refuseCompanion).
+ // BRANCHES.md 6: Briar brought home, or (never bonded) the beat marked at the pier while she was never taken.
  nearshore:(w,s)=>s.briar.state==='returned'||own(s.beats,'nearshore')&&s.briar.state==='with',
  finale:(w,s)=>s.finale.won,
  epilogue:(w,s)=>s.credits
@@ -10576,29 +10590,38 @@ const REGENT_NEEDS=freeze({beacon:w=>w?.adventure?.beacon?.introduced===true,fou
 const PROPHECY_NEEDS=freeze({spring:w=>w?.adventure?.angelSeen===true,heaven:w=>w?.heavenCampaign?.accepted===true});
 function validate(raw,world){
  const no=f=>{throw Error('Invalid saga: '+f);},exact=(o,keys)=>isObj(o)&&Object.keys(o).length===keys.length&&keys.every(k=>own(o,k));
- if(!exact(raw,['version','beats','regent','prophecy','feather','briar','echo','finale','credits','postgame']))no('shape');
+ const KEYS=['version','beats','regent','prophecy','feather','briar','echo','finale','credits','postgame'];
+ if(!isObj(raw)||!KEYS.every(k=>own(raw,k))||Object.keys(raw).some(k=>!KEYS.includes(k)&&k!=='choices'&&k!=='heard'))no('shape');
  if(raw.version!==VERSION)no('version');
  if(!isObj(raw.beats)||Object.keys(raw.beats).some(id=>!IDS.includes(id)))no('beats');
  for(const id of Object.keys(raw.beats)){const b=raw.beats[id];if(!exact(b,['day'])||!day(b.day))no('beat '+id);}
  const list=(v,allowedIds,f)=>{if(!Array.isArray(v)||v.length>allowedIds.length||new Set(v).size!==v.length||v.some(id=>!allowedIds.includes(id)))no(f);return v;};
  list(raw.regent,REGENT,'regent');list(raw.prophecy,PROPHECY,'prophecy');
  const f=raw.feather;if(!exact(f,['unlocked','uses'])||typeof f.unlocked!=='boolean'||!Number.isSafeInteger(f.uses)||f.uses<0||f.uses>MAX_COUNT||f.uses>0&&!f.unlocked)no('feather');
- const b=raw.briar;if(!isObj(b)||!['state','habit','takenDay'].every(k=>own(b,k))||Object.keys(b).some(k=>!['state','habit','takenDay','returnedDay','homeDay'].includes(k))||!BRIAR.includes(b.state))no('briar');
+ const b=raw.briar;if(!isObj(b)||!['state','habit','takenDay'].every(k=>own(b,k))||Object.keys(b).some(k=>!['state','habit','takenDay','returnedDay','homeDay','falseTrusted'].includes(k))||!BRIAR.includes(b.state))no('briar');
  if(!isObj(b.habit)||Object.keys(b.habit).length>MAX_PLACES||Object.entries(b.habit).some(([k,v])=>!PLACE_ID.test(k)||!Number.isSafeInteger(v)||v<1||v>MAX_COUNT))no('briar habit');
  if(b.takenDay!==null&&!day(b.takenDay)||(b.state==='with')!==(b.takenDay===null))no('briar taken day');
  // returned and home days are optional on old saves (absent = null); home needs a return first.
  const rd=b.returnedDay??null,hd=b.homeDay??null;
  if(rd!==null&&!day(rd)||(b.state==='returned')!==(rd!==null))no('briar returned day');
  if(hd!==null&&(!day(hd)||rd===null||hd<rd||b.state!=='returned'))no('briar home day');
+ if(own(b,'falseTrusted')&&typeof b.falseTrusted!=='boolean'||b.falseTrusted===true&&!['nearshore','returned'].includes(b.state))no('briar false trust');
+ if(own(raw,'choices')){const c=raw.choices;if(!exact(c,['tessa','device'])||Object.keys(CHOICES).some(k=>c[k]!==null&&!CHOICES[k].includes(c[k]))||c.tessa!==null&&!raw.regent.includes('beacon')||c.device!==null&&!own(raw.beats,'night'))no('choices');}
+ if(own(raw,'heard')){const h=raw.heard;if(!exact(h,REGENT)||REGENT.some(k=>![null,true,false].includes(h[k])||h[k]!==null&&!raw.regent.includes(k)))no('heard');}
  const e=raw.echo;if(!exact(e,['coercive','freeing']))no('echo');
  list(e.coercive,ECHO_IDS,'echo coercive');list(e.freeing,ECHO_IDS,'echo freeing');
  if(e.coercive.some(id=>ECHO.find(x=>x.id===id).kind!=='coercive')||e.freeing.some(id=>ECHO.find(x=>x.id===id).kind!=='freeing'))no('echo kind');
- const fin=raw.finale;if(!exact(fin,['phase','won'])||!Number.isInteger(fin.phase)||fin.phase<0||fin.phase>3||typeof fin.won!=='boolean'||fin.won&&fin.phase!==3)no('finale');
+ const fin=raw.finale;if(!isObj(fin)||!own(fin,'phase')||!own(fin,'won')||Object.keys(fin).some(k=>!['phase','won','ending'].includes(k))||!Number.isInteger(fin.phase)||fin.phase<0||fin.phase>3||typeof fin.won!=='boolean'||fin.won&&fin.phase!==3)no('finale');
  if((e.coercive.length||e.freeing.length)&&fin.phase<1)no('echo before finale');
  if(typeof raw.credits!=='boolean'||raw.credits&&!fin.won)no('credits');
  if(typeof raw.postgame!=='boolean'||raw.postgame!==raw.credits)no('postgame');
+ if(own(fin,'ending')&&fin.ending!==null&&(!ENDINGS.includes(fin.ending)||!fin.won))no('finale ending');
  const s=clone(raw);
+ // a save that won before the ending existed reads it from the offer (BRANCHES.md 2.1)
+ if(s.finale.won&&s.finale.ending===null)s.finale.ending=offerOf(world)==='taken'?'kept':'open';
  if(world){
+  // only a stored ending is checked against the offer; one read in from an old won save never fails
+  const en=fin.ending??null;if(en!==null&&(en==='kept'?offerOf(world)!=='taken':offerOf(world)!=='refused'||en==='answered'&&!REGENT.every(k=>s.heard[k]===true)))no('finale ending');
   if(s.feather.unlocked&&!s.prophecy.includes('spring'))no('feather before prophecy');
   if(s.briar.state!=='with'&&(world.adventure?.companion?.bonded!==true||!doneWith(world,s,'bellweather')))no('briar taken before bellweather');
   if(['nearshore','returned'].includes(s.briar.state)&&!doneWith(world,s,'witness'))no('briar nearshore before witness');
@@ -10626,7 +10649,7 @@ const yes=(text,extra)=>({ok:true,text,...extra}),fail=error=>({ok:false,error})
 function saga(sim){if(!sim?.state?.saga)throw Error('A simulation with a saga is required.');return sim.state.saga;}
 function mark(sim,beatId){
  const s=saga(sim),w=sim.state;if(!own(DERIVE,beatId))return fail('Unknown story beat.');
- if(beatId==='nearshore'&&!own(s.beats,beatId))return fail('The nearshore ends with Briar home, or with the regent refused.');
+ if(beatId==='nearshore'&&!own(s.beats,beatId)&&(w.adventure?.companion?.bonded===true||s.briar.state!=='with'))return fail('The nearshore ends with Briar home.');
  if(own(s.beats,beatId))return yes('Already part of your story.',{already:true});
  if(!priorDone(w,s,beatId))return fail('That part of the story has not come yet.');
  const candidate={...s,beats:{...s.beats,[beatId]:{day:w.day}}};if(!DERIVE[beatId](w,candidate))return fail('That part of the story is not finished yet.');
@@ -10645,13 +10668,8 @@ function unlockFeather(sim){
  if(!s.prophecy.includes('spring'))return fail('Hear the envoy out first.');s.feather.unlocked=true;sim.event('saga','The feather shows true roads in gold and false ones in ash red.');return yes('Hold the feather up to see the roads as they are.');
 }
 function featherUse(sim){const s=saga(sim);if(!s.feather.unlocked)return fail('The feather has not opened its sight to you yet.');if(s.feather.uses<MAX_COUNT)s.feather.uses++;return yes('The roads show themselves.',{uses:s.feather.uses});}
-// Never bonded: there is no Briar to bring home, so the nearshore is the regent's offer of a companion who never strays, refused.
-function refuseCompanion(sim){
- const s=saga(sim),w=sim.state;if(own(s.beats,'nearshore'))return yes('You already told him no.',{already:true});
- if(w.adventure?.companion?.bonded===true||s.briar.state!=='with')return fail('Briar is the one you came for.');
- if(!priorDone(w,s,'nearshore'))return fail('That part of the story has not come yet.');
- s.beats.nearshore={day:w.day};sim.event('saga','You refused the regent’s fox. Nothing that cannot stray is a companion.');return yes('You refused the regent’s fox.');
-}
+// Kept for callers of 'refuse-companion': the never-bonded nearshore is the beat marked at the pier (BRANCHES.md 6).
+function refuseCompanion(sim){if(own(saga(sim).beats,'nearshore'))return yes('You already told him no.',{already:true});return mark(sim,'nearshore');}
 function briarTaken(sim){
  const s=saga(sim),w=sim.state;if(s.briar.state==='taken')return yes('Briar is gone.',{already:true});if(s.briar.state!=='with')return fail('Briar is not with you to be taken.');
  if(w.adventure?.companion?.bonded!==true||!doneWith(w,s,'bellweather'))return fail('Not yet.');if(own(s.beats,'nearshore'))return fail('The nearshore is behind you. Briar stays with you.');
@@ -10683,7 +10701,8 @@ function habitPlace(world){
 function rank(order,id){const i=order.indexOf(id);return i<0?order.length+id.charCodeAt(0):i;}
 function echoLedger(world){
  const s=sagaOf(world),frozen=s.finale.phase>0,out={coercive:[],freeing:[]};
- for(const e of ECHO){const chosen=frozen?s.echo[e.kind].includes(e.id):read(world,e.source)===e.value;if(!chosen)continue;out[e.kind].push(e.kind==='freeing'?{id:e.id,ally:e.ally,line:e.line}:{id:e.id,line:e.line});}
+ for(const e of ECHO){const chosen=frozen?s.echo[e.kind].includes(e.id):read(e.source[0]==='saga'?{saga:s}:world,e.source)===e.value;if(!chosen)continue;
+  const line=scriptLine((e.kind==='freeing'?'finale.ally.':'finale.chain.')+e.id,world)||e.line;out[e.kind].push(e.kind==='freeing'?{id:e.id,ally:e.ally,line}:{id:e.id,line});}
  return out;
 }
 function finalePhase(sim,phase){
@@ -10692,15 +10711,42 @@ function finalePhase(sim,phase){
  if(phase===1){const ledger=echoLedger(w);s.echo={coercive:ledger.coercive.map(e=>e.id),freeing:ledger.freeing.map(e=>e.id)};}
  s.finale.phase=phase;sim.event('saga',['','The Regent of Ash rises at the spring junction.','The valley comes apart into every world at once.','He offers you a life that cannot be hurt.'][phase]);return yes('Phase '+phase+'.');
 }
-function finaleWon(sim){
- const s=saga(sim);if(s.finale.won)return yes('He is gone.',{already:true});if(s.finale.phase!==3)return fail('He is not finished with you yet.');
- s.finale.won=true;sim.event('saga','You refused him, and the Regent of Ash came apart in the morning light.');return yes('He is gone.');
+function finaleWon(sim,want){
+ const s=saga(sim),w=sim.state;if(s.finale.won)return yes('He is gone.',{already:true,ending:s.finale.ending});if(s.finale.phase!==3)return fail('He is not finished with you yet.');
+ const end=want===undefined||want===null?(offerOf(w)==='taken'?'kept':'open'):want;
+ if(!ENDINGS.includes(end))return fail('Unknown ending.');
+ if(end==='kept'?offerOf(w)!=='taken':offerOf(w)!=='refused')return fail(end==='kept'?'You did not sign.':'Answer his offer first.');
+ if(end==='answered'&&!REGENT.every(k=>s.heard[k]===true))return fail('You never heard him out.');
+ s.finale.won=true;s.finale.ending=end;
+ sim.event('saga',scriptLine('finale.ending',{...w,saga:s})||'The Regent of Ash came apart in the morning light.');return yes('He is gone.',{ending:end});
+}
+function ending(world){return sagaOf(world).finale.ending??null;}
+// BRANCHES.md 2.2: a lasting choice, asked once. The same answer replays; a different one is refused.
+function choose(sim,key,value){
+ const s=saga(sim);if(!own(CHOICES,key))return fail('Unknown choice.');if(!CHOICES[key].includes(value))return fail('Unknown answer.');
+ if(s.choices[key]!==null)return s.choices[key]===value?yes('Already chosen.',{already:true}):fail('That is done, and it stays done.');
+ if(key==='tessa'&&!s.regent.includes('beacon'))return fail('Nobody has asked you yet.');
+ if(key==='device'&&!own(s.beats,'night'))return fail('Nobody has asked you yet.');
+ s.choices[key]=value;let label=value;try{label=Script()?.scene?.(CHOICE_SCENES[key],sim.state)?.choice?.options?.find(o=>o.id===value)?.label||value;}catch{}
+ sim.event('saga',label+'.');return yes(label+'.');
+}
+function regentHeard(sim,id,heard){
+ const s=saga(sim);if(!REGENT.includes(id))return fail('Unknown sighting.');if(typeof heard!=='boolean')return fail('Heard him out, or not.');
+ if(s.heard[id]!==null)return s.heard[id]===heard?yes('Already answered.',{already:true}):fail('That is done, and it stays done.');
+ if(!s.regent.includes(id))return fail('He is not there yet.');
+ s.heard[id]=heard;return yes(heard?'You let him finish.':'You cut him off.');
+}
+function briarFalse(sim){
+ const s=saga(sim);if(s.briar.falseTrusted)return yes('She came when you called.',{already:true});
+ // only on the pier: validate holds falseTrusted to nearshore or returned (BRANCHES.md 2.1)
+ if(s.briar.state!=='nearshore'||!doneWith(sim.state,s,'witness'))return fail('There is no other fox to call.');
+ s.briar.falseTrusted=true;sim.event('saga','You told the fox at your heel to come home.');return yes('She came when you called.');
 }
 function rollCredits(sim){
  const s=saga(sim);if(s.credits)return yes('The story is told.',{already:true});if(!s.finale.won)return fail('The story is not over.');
- s.credits=true;s.postgame=true;sim.event('saga','Firstlight. The roads stay open.');return yes('The roads stay open.');
+ s.credits=true;s.postgame=true;const line=scriptLine('epilogue.credits',sim.state)||'Firstlight. The roads stay open.';sim.event('saga',line);return yes(line);
 }
-const COMMANDS=freeze({mark:(sim,p)=>mark(sim,p.beat),regent:(sim,p)=>regentSeen(sim,p.id),prophecy:(sim,p)=>prophecyHeard(sim,p.id),'feather-unlock':unlockFeather,'feather-use':featherUse,'briar-taken':briarTaken,'briar-nearshore':briarAtNearshore,'briar-returned':briarReturned,'briar-home':briarHome,'refuse-companion':refuseCompanion,habit:(sim,p)=>recordHabit(sim,p.place),'finale-phase':(sim,p)=>finalePhase(sim,p.phase),'finale-won':finaleWon,credits:rollCredits});
+const COMMANDS=freeze({mark:(sim,p)=>mark(sim,p.beat),regent:(sim,p)=>regentSeen(sim,p.id),prophecy:(sim,p)=>prophecyHeard(sim,p.id),'feather-unlock':unlockFeather,'feather-use':featherUse,'briar-taken':briarTaken,'briar-nearshore':briarAtNearshore,'briar-returned':briarReturned,'briar-home':briarHome,'refuse-companion':refuseCompanion,habit:(sim,p)=>recordHabit(sim,p.place),'finale-phase':(sim,p)=>finalePhase(sim,p.phase),'finale-won':(sim,p)=>finaleWon(sim,p.ending),choose:(sim,p)=>choose(sim,p.key,p.value),'regent-heard':(sim,p)=>regentHeard(sim,p.id,p.heard),'briar-false':briarFalse,credits:rollCredits});
 // Same command-identity rule as the adventure: a reused id with the same content replays its result; different content is refused.
 function command(sim,id,type,payload={}){
  if(typeof id!=='string'||!id||id.length>100||!isObj(payload))return fail('Invalid command envelope.');
@@ -10719,7 +10765,7 @@ function tick(sim,dt){
  if(r.place!==l.id){r.place=l.id;r.t=0;r.counted=false;}
  r.t+=dt;if(!r.counted&&r.t>=HABIT_SECONDS){r.counted=true;recordHabit(sim,l.id);}
 }
-const api=freeze({VERSION,ACTS,BEATS,GATES,ECHO,REGENT,PROPHECY,PROPHECY_LINES,HABIT_RADIUS,HABIT_SECONDS,fresh,validate,infer,done,act,current,allowed,mark,regentSeen,prophecyHeard,unlockFeather,featherUse,briarTaken,briarAtNearshore,briarReturned,briarHome,refuseCompanion,recordHabit,habitPlace,echoLedger,finalePhase,finaleWon,rollCredits,command,tick});
+const api=freeze({VERSION,ACTS,BEATS,GATES,ECHO,REGENT,PROPHECY,PROPHECY_LINES,HABIT_RADIUS,HABIT_SECONDS,fresh,validate,infer,done,act,current,allowed,mark,regentSeen,prophecyHeard,unlockFeather,featherUse,briarTaken,briarAtNearshore,briarReturned,briarHome,refuseCompanion,recordHabit,habitPlace,echoLedger,finalePhase,finaleWon,ending,choose,regentHeard,briarFalse,CHOICES,ENDINGS,rollCredits,command,tick});
 G.RealmSaga=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* Firstlight's story script: every main-path scene's dialogue as data. Scenes are keyed `<beat>.<scene>` in story
@@ -14692,7 +14738,7 @@ class RealmVisualAtlas{
  reset(){this.selected='earth';this.study=false;}
  action(b){const id=b.dataset.realmArt;if(!id)return false;if(id==='study')this.study=!this.study;else if(REALMS.some(r=>r.id===id)){this.selected=id;this.study=false;}else return true;this.rpg.paint();const focused=this.rpg.dialog.querySelector('[data-realm-art="'+id+'"]');focused?.focus({preventScroll:true});return true;}
  page(tab){if(tab!=='realms')return '';const r=REALMS.find(r=>r.id===this.selected)||REALMS[0],art=G.RealmArtData;
- return '<article class="realm-atlas"><header><small>ETERNITIES · A WORLD TO GROW INTO</small><h2>Five worlds. Places worth belonging to.</h2><p>Concept paintings show where the game is heading. The prototype’s available journeys are marked below.</p></header><figure class="realm-board"><img src="'+art.worlds+'" alt="Five original concept panels, left to right: Earth village, Heaven gardens, Hell refuge, Atlantis city and Cosmos lamps." width="2044" height="770"><figcaption>Concept art · visual direction, not gameplay footage</figcaption></figure><nav class="realm-choices" aria-label="Choose a realm to read">'+REALMS.map(x=>'<button data-realm-art="'+x.id+'" aria-pressed="'+(x.id===r.id)+'" style="--realm-color:'+x.color+'">'+x.name+'</button>').join('')+'</nav><section class="realm-detail" style="--realm-color:'+r.color+'"><div class="realm-focus" role="img" aria-label="'+r.name+' concept detail" style="background-image:url('+art.worlds+');background-position:'+r.position+'% center"></div><div><small>'+r.status+'</small><h3>'+r.promise+'</h3><p>'+r.text+'</p>'+(r.action?'<button class="realm-travel" data-rpg="'+r.action+'" data-id="'+r.id+'">'+r.button+'</button>':'<p class="realm-future">No travel or progression choice is made by viewing this concept.</p>')+(r.id==='earth'?'<button data-realm-art="study" aria-expanded="'+this.study+'">'+(this.study?'Close':'View')+' Hearthwater material study</button>':'')+'</div></section>'+(this.study?'<figure class="realm-study"><img src="'+art.hearthwater+'" alt="Hearthwater concept study: a working timber watermill, stone building corner, orchard tree and sheltered table." width="1536" height="1024"><figcaption>Timber, riverstone, clay roofs and worked ground. Material reference for the prototype’s procedural scenery.</figcaption></figure>':'')+'<p class="realm-footer">Coastward Earth and accepted Cosmos field work are also available through the Roads menu. Both camera styles stay available during play: V changes the view. The paintings grant no items, XP, class, allegiance or story completion.</p></article>';}
+ return '<article class="realm-atlas"><header><small>ETERNITIES · A WORLD TO GROW INTO</small><h2>Five worlds. Places worth belonging to.</h2><p>Concept paintings show where the game is heading. The journeys open to you are marked below.</p></header><figure class="realm-board"><img src="'+art.worlds+'" alt="Five original concept panels, left to right: Earth village, Heaven gardens, Hell refuge, Atlantis city and Cosmos lamps." width="2044" height="770"><figcaption>Concept art · visual direction, not gameplay footage</figcaption></figure><nav class="realm-choices" aria-label="Choose a realm to read">'+REALMS.map(x=>'<button data-realm-art="'+x.id+'" aria-pressed="'+(x.id===r.id)+'" style="--realm-color:'+x.color+'">'+x.name+'</button>').join('')+'</nav><section class="realm-detail" style="--realm-color:'+r.color+'"><div class="realm-focus" role="img" aria-label="'+r.name+' concept detail" style="background-image:url('+art.worlds+');background-position:'+r.position+'% center"></div><div><small>'+r.status+'</small><h3>'+r.promise+'</h3><p>'+r.text+'</p>'+(r.action?'<button class="realm-travel" data-rpg="'+r.action+'" data-id="'+r.id+'">'+r.button+'</button>':'<p class="realm-future">No travel or progression choice is made by viewing this concept.</p>')+(r.id==='earth'?'<button data-realm-art="study" aria-expanded="'+this.study+'">'+(this.study?'Close':'View')+' Hearthwater material study</button>':'')+'</div></section>'+(this.study?'<figure class="realm-study"><img src="'+art.hearthwater+'" alt="Hearthwater concept study: a working timber watermill, stone building corner, orchard tree and sheltered table." width="1536" height="1024"><figcaption>Timber, riverstone, clay roofs and worked ground. Material reference for the valley’s scenery.</figcaption></figure>':'')+'<p class="realm-footer">Coastward Earth and accepted Cosmos field work are also available through the Roads menu. Both camera styles stay available during play: V changes the view. The paintings grant no items, XP, class, allegiance or story completion.</p></article>';}
 }
 G.RealmVisualAtlas=RealmVisualAtlas;G.RealmVisualAtlasDefinitions=REALMS;
 })(window);
@@ -19065,6 +19111,7 @@ const KEY_ROWS=[
  ['Journal, crafting, map','<kbd>J</kbd> journal · <kbd>K</kbd> crafting · <kbd>M</kbd> map'],
  ['Build and inhabitants','<kbd>B</kbd> construction · <kbd>O</kbd> inhabitants'],
  ['Pause','<kbd>Esc</kbd> opens the pause menu · <kbd>P</kbd> freezes the world'],
+ ['Feather’s sight','<kbd>Z</kbd> hold to see true roads in gold and counterfeit roads in ash red'],
  ['Photo','<kbd>H</kbd> hides the interface']
 ];
 const CREDITS=[
@@ -19126,8 +19173,10 @@ function ensure(){
  dialog.addEventListener('keydown',e=>{if(['Escape','Enter',' '].includes(e.key)){e.preventDefault();finisher&&finisher();}});
  return dialog;
 }
+// every roll ends with the score and effects sources, whichever module calls show.
+const AUDIO=[{title:'Music and sound',lines:['Score generated with ACE-Step, Apache-2.0 code and model weights.','Sound effects from kenney.nl audio packs, CC0 1.0.','Birds and ambience are made by the game code.']}];
 function show(sections,opts={}){
- const d=ensure(),list=normalize(sections),track=d.querySelector('.credits-track');
+ const d=ensure(),base=Array.isArray(sections)?sections:[],list=normalize(opts.audio===false?base:base.concat(AUDIO)),track=d.querySelector('.credits-track');
  track.innerHTML=list.map(s=>'<section class="credits-section">'+(s.title?'<h2>'+esc(s.title)+'</h2>':'')+s.lines.map(l=>'<p>'+esc(l)+'</p>').join('')+'</section>').join('')+'<p class="credits-end">Thank you for playing.</p>';
  const still=!!opts.still||(typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches);
  let raf=0,start=0,done=false;

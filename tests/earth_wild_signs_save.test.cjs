@@ -30,8 +30,12 @@ test('historical command-earned blade bow and strongest fixtures preserve raw ow
   if(!Object.hasOwn(expected,'earthHomecoming'))expected.earthHomecoming={version:1,accepted:false,choice:null,steps:[],claimed:false};
   if(!Object.hasOwn(expected,'briarMoments'))expected.briarMoments={version:1,revision:0,moments:[]};
   // the saga is inferred from what each historical world already finished (all twelve: every realm claimed)
+  // the shell lane's first steps (skipped for a save made before them) and its two new settings
+  if(!Object.hasOwn(expected,'firstRun'))expected.firstRun={move:true,camera:true,attack:true,interact:true,dismissed:true};
+  if(!Object.hasOwn(expected.settings,'textScale'))expected.settings.textScale='standard';
+  if(!Object.hasOwn(expected.settings,'volume'))expected.settings.volume={music:.8,effects:.8,ambience:.8,ui:.8};
   if(!Object.hasOwn(expected,'night'))expected.night={version:1,started:false,safe:[],device:'hidden',envoy:false};
-  if(!Object.hasOwn(expected,'saga'))expected.saga=name.startsWith('strongest')?{version:1,beats:{},regent:['beacon'],prophecy:['spring'],feather:{unlocked:true,uses:0},briar:{state:'with',habit:{},takenDay:null,returnedDay:null,homeDay:null},echo:{coercive:[],freeing:[]},finale:{phase:0,won:false},credits:false,postgame:false}:{version:1,beats:{},regent:['beacon','foundry','confluence'],prophecy:['spring','heaven'],feather:{unlocked:true,uses:0},briar:{state:'with',habit:{},takenDay:null,returnedDay:null,homeDay:null},echo:{coercive:[],freeing:[]},finale:{phase:0,won:false},credits:false,postgame:false};
+  if(!Object.hasOwn(expected,'saga'))expected.saga=name.startsWith('strongest')?{version:1,beats:{},regent:['beacon'],prophecy:['spring'],feather:{unlocked:true,uses:0},briar:{state:'with',habit:{},takenDay:null,returnedDay:null,homeDay:null,falseTrusted:false},choices:{tessa:null,device:null},heard:{beacon:null,foundry:null,confluence:null},echo:{coercive:[],freeing:[]},finale:{phase:0,won:false,ending:null},credits:false,postgame:false}:{version:1,beats:{},regent:['beacon','foundry','confluence'],prophecy:['spring','heaven'],feather:{unlocked:true,uses:0},briar:{state:'with',habit:{},takenDay:null,returnedDay:null,homeDay:null,falseTrusted:false},choices:{tessa:null,device:null},heard:{beacon:null,foundry:null,confluence:null},echo:{coercive:[],freeing:[]},finale:{phase:0,won:false,ending:null},credits:false,postgame:false};
   const next=C.validate(world);assert.deepEqual(strip(next),expected);assert.deepEqual(next.earthWildSigns,D.fresh());assert.ok(fs.readFileSync(file).equals(raw));
  }
 });
