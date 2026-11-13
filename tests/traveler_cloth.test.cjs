@@ -37,7 +37,7 @@ test('original centered cloth geometry has finite closed outward bevels inside t
 // The face and torso sides are reshaped on purpose by the people lane. Their new forms are
 // pinned here; every other body part still matches the pre-fishing oracle exactly.
 const faceParts=['left-pupil','right-pupil','left-catchlight','right-catchlight','mouth'];
-const reshaped={'left-eye':{kind:'round',s:[.05,.034,.03]},'right-eye':{kind:'round',s:[.05,.034,.03]},'jacket-left-side':{kind:'capsule',s:[.155,.44,.245]},'jacket-right-side':{kind:'capsule',s:[.155,.44,.245]}};
+const reshaped={'left-eye':{kind:'round',s:[.04,.04,.04]},'right-eye':{kind:'round',s:[.04,.04,.04]},'left-brow':{kind:'box',s:[.04,.008,.012]},'right-brow':{kind:'box',s:[.04,.008,.012]},'nose':{kind:'round',s:[.034,.038,.034]},'left-hand':{kind:'body-hand',s:[.10,.19,.085]},'right-hand':{kind:'body-hand',s:[.10,.19,.085]},'jacket-left-side':{kind:'capsule',s:[.155,.44,.245]},'jacket-right-side':{kind:'capsule',s:[.155,.44,.245]}};
 test('only three coat pieces change mesh; reshaped parts are pinned; the other body parts, matrices, materials and pose functions remain exact',()=>{
  assert.equal(T.motion.toString(),Old.motion.toString());// Pre-fishing immutable rig remains the comparison oracle for ordinary poses.
  for(const style of ['none','blade','bow'])for(const phase of ['idle','anticipate','recover','withdraw'])for(const reducedMotion of [false,true]){

@@ -38,7 +38,7 @@ test('submitted body vertices stay finite and grounded; solved limb endpoints co
    for(const v of verts(p)){assert.ok(v.every(Number.isFinite));assert.ok(v[1]>=1.2-2e-6&&v[1]<2.85,p.residentPart+' support/height');}
    if(p.residentJoints){near(E.M.transform(p.m,[0,-.5,0]),p.residentJoints[0]);near(E.M.transform(p.m,[0,.5,0]),p.residentJoints[1]);}
   }
-  for(const side of ['left','right'])near(r.parts.find(p=>p.residentPart===side+'-hand').p,E.M.transform(r.frame.root,r.frame.joints[side+'Hand']));
+  for(const side of ['left','right']){const h=r.frame.joints[side+'Hand'];near(r.parts.find(p=>p.residentPart===side+'-hand').p,E.M.transform(r.frame.root,[h[0],h[1]-.095,h[2]]));}
   if(i===0)for(const side of ['left','right'])assert.ok(Math.abs(Math.min(...verts(r.parts.find(p=>p.residentPart===side+'-sole')).map(v=>v[1]))-1.2)<2e-6);
  }
 });

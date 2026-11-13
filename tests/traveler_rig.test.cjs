@@ -157,8 +157,9 @@ test('draw segments actually connect the named joints under root translation and
    vclose(E.M.transform(item.m,[0,-.5,0]),E.M.transform(frame.root,posed.joints[side+a]),1e-6);
    vclose(E.M.transform(item.m,[0,.5,0]),E.M.transform(frame.root,posed.joints[side+b]),1e-6);
   }
-  const hand=out.round.find(it=>it.travelerPart==='right-hand');
-  vclose(hand.p,E.M.transform(frame.root,frame.joints.rightHand));
+  // the baked hand hangs from the wrist, so its centre sits 9.5 cm below the joint.
+  const hand=out['body-hand'].find(it=>it.travelerPart==='right-hand'),wrist=frame.joints.rightHand;
+  vclose(hand.p,E.M.transform(frame.root,[wrist[0],wrist[1]-.095,wrist[2]]));
   vclose(frame.joints.rightHand,posed.joints.rightHand);
   vclose(E.M.transform(frame.root,[0,0,1]),[9,2.7,-3]);
  }
@@ -166,12 +167,12 @@ test('draw segments actually connect the named joints under root translation and
 test('palette choices and explicitly supplied armor colour are retained',()=>{
  for(let i=0;i<X.SKINS.length;i++){
   const out=empty();T.draw(out,{profile:{skin:i,hair:i,cloak:i}});
-  assert.deepEqual(out.round.find(it=>it.travelerPart==='head').c,E.hex(X.SKINS[i]));
+  assert.deepEqual(out['body-head'].find(it=>it.travelerPart==='head').c,E.hex(X.SKINS[i]));
   assert.deepEqual(out.round.find(it=>it.travelerPart==='hair-crown').c,E.hex(X.HAIR[i]));
   assert.deepEqual(out.box.find(it=>it.travelerPart==='cloak-left').c,E.hex(X.CLOAKS[i]));
  }
  const out=empty();T.draw(out,{armorColor:'#8bad91',color:'#955e73',profile:{cloak:3}});
- assert.deepEqual(out.round.find(it=>it.travelerPart==='jacket-chest').c,E.hex('#8bad91'));
+ assert.deepEqual(out['body-torso'].find(it=>it.travelerPart==='jacket-chest').c,E.hex('#8bad91'));
  assert.deepEqual(out.box.find(it=>it.travelerPart==='cloak-left').c,E.hex(X.CLOAKS[3]));
 });
 test('all transforms stay finite, actor geometry has no camera authority, and budget stays bounded',()=>{
@@ -199,7 +200,7 @@ test('all transforms stay finite, actor geometry has no camera authority, and bu
   }
  }
  const posed=T.pose(),out=empty();T.draw(out,{},posed);
- const head=out.round.find(it=>it.travelerPart==='head');
+ const head=out['body-head'].find(it=>it.travelerPart==='head');
  close(head.p[1]+head.s[1]/2,1.745,.004);
  assert.ok(head.s[0]<.26);assert.ok(head.s[1]<.29);
  const cloak=out.box.filter(it=>it.travelerPart.startsWith('cloak-')&&it.travelerPart!=='cloak-clasp');
@@ -222,9 +223,11 @@ test('sampling, posing and drawing leave input rules, motion and profiles immuta
  assert.equal(JSON.stringify({options,posed,drawInput}),untouched);
  frame.joints.rightHand[0]+=4;assert.notDeepEqual(frame.joints.rightHand,posed.joints.rightHand,'frame owns copies of anchors');
 });
-test('limbs ride the capsule kind and the face is a separate path bound to the head',()=>{
+test('limbs ride the baked body kinds and the face is a separate path bound to the head',()=>{
  const out=empty();T.draw(out,{},T.pose());
- assert.deepEqual(out.capsule.filter(it=>!it.travelerFace).map(it=>it.travelerPart).sort(),['jacket-left-side','jacket-right-side','left-forearm','left-shin','left-thigh','left-upper-arm','right-forearm','right-shin','right-thigh','right-upper-arm']);
+ // the jacket sides stay capsules; the limbs now ride the baked human segment kinds, one per side.
+ assert.deepEqual(out.capsule.filter(it=>!it.travelerFace).map(it=>it.travelerPart).sort(),['jacket-left-side','jacket-right-side']);
+ assert.deepEqual(['body-upper-arm','body-forearm','body-thigh','body-shin'].map(k=>out[k].map(it=>it.travelerPart).sort().join()),['left-upper-arm,right-upper-arm','left-forearm,right-forearm','left-thigh,right-thigh','left-shin,right-shin']);
  assert.ok(out.round.some(it=>it.travelerPart==='left-eye')&&out.round.some(it=>it.travelerPart==='right-eye'),'eye whites are body parts');
  const faces=all(out).filter(it=>it.travelerFace);
  assert.deepEqual(faces.map(it=>it.travelerPart).sort(),['left-catchlight','left-pupil','mouth','right-catchlight','right-pupil']);

@@ -6,7 +6,7 @@ require('../src/traveler-art.js');require('../src/companion-art.js');
 const S=require('../src/story-art.js');
 const C=global.RealmCompanionArt;
 // traveler-cloth is the rig's own coat batch, which the world already submits.
-const KINDS=new Set(['box','round','octa','disc','ring','capsule','traveler-cloth']);
+const KINDS=new Set(['box','round','octa','disc','ring','capsule','traveler-cloth',...global.RealmBodyMeshes.kinds]);
 const BUDGET=120;
 const plain=v=>JSON.parse(JSON.stringify(v,(k,x)=>ArrayBuffer.isView(x)?Array.from(x):x));
 const dist=(a,b)=>Math.hypot(...a.map((v,i)=>v-b[i]));
