@@ -1,4 +1,5 @@
 'use strict';
+require('./hellheaven_night_gate.cjs');
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
@@ -86,15 +87,15 @@ test('north trails: exact frozen catalogue contract and distinct persistent name
  assert.deepEqual(definitions.map(d=>d.id),['heaven-broken-choir-v1','hell-open-cage-v1']);
  assert.strictEqual(globalThis.RealmTrailsNorth.definitions,definitions);deepFrozen(globalThis.RealmTrailsNorth);
  for(const def of definitions){
-  keys(def,['id','realm','title','summary','danger','giver','reward','completionText','steps','enemy',...(def.realm==='hell'?['escort']:[])]);
+  keys(def,['id','realm','title','gate','gateText','summary','danger','giver','reward','completionText','steps','enemy',...(def.realm==='hell'?['escort']:[])]);
   assert.ok(ID.test(def.id)&&def.id.length<=50);assert.ok(def.title&&def.summary&&def.danger&&def.completionText);
-  assert.match(def.summary,/provisional/);assert.match(def.summary,/Accept .* explicitly/);
-  assert.match(def.summary,/once-only fee/);assert.match(def.summary,/claimed from/);
+  assert.doesNotMatch(def.summary+def.danger+def.completionText,/provisional|not a claim|\bfee\b/i);assert.match(def.summary,/Accept the/);
+  assert.match(def.summary,/gives you \d+ XP/);
   assert.match(def.danger,/road home.*free|free road home/);
   // The completion paragraph is shown only after the explicit once-only claim.
   // It must name the actual paid terms, rather than inviting another payout.
   const payer=def.giver.name.split(' · ')[0];
-  assert.ok(def.completionText.includes(`${payer} has paid the declared ${def.reward.xp} XP, ${def.reward.coins} coins and ${def.reward.ore} ore`));
+  assert.ok(def.completionText.includes(`${payer} gives you ${def.reward.xp} XP, ${def.reward.coins} sunmarks and ${def.reward.ore} ore`));
   assert.doesNotMatch(def.completionText,/Claim the declared/);
   keys(def.giver,['id','name','x','z']);assert.ok(def.giver.name);
   const old=W.definition(def.realm),person=old.points.find(p=>p.id===def.giver.id);
@@ -125,10 +126,10 @@ test('Heaven: three independent relay actions, optional real opening and post-de
  assert.deepEqual(d.enemy.spawnAfter,['relay-west','relay-east','relay-crown']);
  for(const id of d.enemy.spawnAfter){assert.equal(steps.get(id).kind,'interact');assert.deepEqual(steps.get(id).requires,[]);}
  const spillway=steps.get(d.enemy.openingBonusStep);assert.equal(spillway.id,'spillway');assert.deepEqual(spillway.requires,[]);
- assert.match(spillway.text,/0\.8 seconds/);assert.match(d.danger,/outside recovery do not damage/);
+ assert.match(spillway.text,/0\.8 seconds/);assert.match(d.danger,/Strikes outside the recovery do nothing/);
  const repair=steps.get('garden-repair');assert.equal(repair.kind,'interact');assert.deepEqual(repair.requires,['disable-core']);
  assert.equal(d.steps.some(s=>s.kind==='escort'),false);assert.ok(!('escort' in d));
- assert.match(d.completionText,/summit.*remain ahead/);
+ assert.match(d.completionText,/summit.*still to come/);
 });
 
 test('Hell: all route safety is required; actual ally arrival follows separate defeat and explicit invitation',()=>{
@@ -145,9 +146,9 @@ test('Hell: all route safety is required; actual ally arrival follows separate d
  assert.equal(arrival.kind,'escort');assert.deepEqual(arrival.requires,[start.id]);
  assert.equal(distance(d.escort.route[0],start),0);assert.equal(distance(d.escort.route.at(-1),arrival),0);
  assert.equal(distance(steps.get('contact-neris'),start),0,'invitation returns to the real witness anchor');
- assert.match(arrival.text,/Neris herself/);assert.match(arrival.text,/Your arrival alone cannot/);
+ assert.match(arrival.text,/Only Neris’s own arrival/);assert.match(arrival.text,/Your arrival alone does not count/);
  assert.match(start.text,/explicit assisted-extraction fallback/);assert.match(d.danger,/never pretend she walked/);
- assert.match(d.completionText,/Safety is not a verdict/);assert.match(d.completionText,/allegiance.*remain unresolved/);
+ assert.match(d.completionText,/Safety is not a verdict/);assert.match(d.completionText,/allegiance.*still to come/);
  const old=W.definition('hell').enemies.find(e=>e.id==='hell-salvage-sentinel');
  assert.ok(distance(old,d.enemy)>70,'new Reeve is outside the old optional salvage pocket');
  for(const p of d.escort.route){keys(p,['x','z']);assert.ok([p.x,p.z].every(Number.isFinite));}

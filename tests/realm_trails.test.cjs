@@ -4,6 +4,7 @@
  * commands. Storage is an in-memory Store, not native browser persistence.
  */
 'use strict';
+require('./hellheaven_night_gate.cjs');
 const {removeEmptyTournament}=require('./helpers/earth-tournament-migration.cjs');
 const {test}=require('node:test'),assert=require('node:assert/strict');
 const C=require('../src/core.js'),A=require('../src/adventure.js'),W=require('../src/world-foundations.js');
