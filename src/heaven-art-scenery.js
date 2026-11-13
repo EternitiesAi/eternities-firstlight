@@ -6,14 +6,15 @@
 (function(G){'use strict';
 const TAU=Math.PI*2,FLOOR=1.57,ROOM='world-heaven';
 const BONE=0xf4eee2,BONE2=0xe6dcc6,GOLD=0xd4a95c,GOLD2=0xf7dc92,RUBY=0x8f1538,RUBY2=0xc6284f,
- CLOUD=0xfffdf8,CLOUD2=0xefe6d0,SUN=0xfffaea,HALO=0xffe7a8,LIGHT=0xfff4d6,INLAY=0xc39a48,
+ CLOUD=0xfffdf8,CLOUD2=0xefe6d0,SUN=0xfffaea,HALO=0xffe7a8,LIGHT=0xfff4d6,INLAY=0xe6bd66,
  BLOOM=[0xf4b9c8,0xf7da86,0xfdf8ec,0xe9869f,0xfbe9ad];
 const NONSOLID={cameraSolid:false,cutaway:false};
 // the walking ground is x -60..60, z -120..40 (both patches together). the terraces stand outside it.
 const FOOT={x:0,z:-40,w:120,d:160};
-// three tiers step down and out from the walking ground into the clouds; BOT is the bottom of every tier.
-const TIERS=[{o:0,w:7,top:FLOOR-.5},{o:7,w:7,top:FLOOR-1.5},{o:14,w:9,top:FLOOR-2.6}];
-const BOT=-2.4;
+// three tiers step down and out from the walking ground into the clouds, deep enough to read from the edge.
+// BOT is the bottom of every tier, sunk into the cloud sea; CLOUD_Y is where the terraces of the north city stand.
+const TIERS=[{o:0,w:7,top:FLOOR-1},{o:7,w:7,top:FLOOR-2.4},{o:14,w:9,top:FLOOR-3.6}];
+const BOT=-5.2,CLOUD_Y=-4.2;
 // the motes: a fixed scatter from a seeded generator, so every run starts from the same sky.
 const MOTES=(()=>{let s=20261113;const r=()=>(s=(Math.imul(1664525,s)+1013904223)>>>0)/4294967296;const out=[];
  for(let i=0;i<110;i++)out.push({x:-52+r()*104,z:-46+r()*90,y:1.9+r()*4.4,p:r()*TAU,k:.07+r()*.11,s:.07+r()*.05,c:i%5?GOLD2:0xfff6dc});
@@ -105,26 +106,28 @@ function decorate(art,def,opts={}){
   B(FOOT.x+FOOT.w/2+t.o+t.w/2,cy,FOOT.z,t.w,hh,span,BONE2,{rough:.4});
   B(FOOT.x,cy,FOOT.z-FOOT.d/2-t.o-t.w/2,across,hh,t.w,BONE2,{rough:.4});
   B(FOOT.x,cy,FOOT.z+FOOT.d/2+t.o+t.w/2,across,hh,t.w,BONE2,{rough:.4});
-  B(FOOT.x-FOOT.w/2-reach+.2,t.top+.05,FOOT.z,.4,.1,span,GOLD,{rough:.35});
-  B(FOOT.x+FOOT.w/2+reach-.2,t.top+.05,FOOT.z,.4,.1,span,GOLD,{rough:.35});
-  B(FOOT.x,t.top+.05,FOOT.z-FOOT.d/2-reach+.2,across,.1,.4,GOLD,{rough:.35});
-  B(FOOT.x,t.top+.05,FOOT.z+FOOT.d/2+reach-.2,across,.1,.4,GOLD,{rough:.35});
+  B(FOOT.x-FOOT.w/2-reach+.4,t.top+.06,FOOT.z,.8,.12,span,GOLD,{rough:.35});
+  B(FOOT.x+FOOT.w/2+reach-.4,t.top+.06,FOOT.z,.8,.12,span,GOLD,{rough:.35});
+  B(FOOT.x,t.top+.06,FOOT.z-FOOT.d/2-reach+.4,across,.12,.8,GOLD,{rough:.35});
+  B(FOOT.x,t.top+.06,FOOT.z+FOOT.d/2+reach-.4,across,.12,.8,GOLD,{rough:.35});
  }
 
- // the cloud sea: a plate under the terraces, billows along their foot and banks on the far horizon.
- B(FOOT.x,-4.6,FOOT.z,260,.6,260,CLOUD2,{em:.06});
+ // the cloud sea: a plate under the terraces, billows along their foot and banks on the far horizon. the clouds glow,
+ // so they read as light rather than as grey shapes in the shade.
+ B(FOOT.x,-6.4,FOOT.z,260,.6,260,CLOUD2,{em:.06});
  for(let i=0;i<72;i++){
   const[x,z]=sidePoint(i%4,18+rnd()*40,rnd());
-  R(x,-2.6+rnd()*.8,z,5+rnd()*4,CLOUD,{em:.3,rough:.95});
+  R(x,-4.2+rnd()*1.4,z,5+rnd()*4,CLOUD,{em:.5,rough:.95});
  }
- for(let i=0;i<14;i++){const[x,z]=sidePoint(i%4,88+rnd()*34,rnd());R(x,1+rnd()*3,z,11+rnd()*4,CLOUD,{em:.3,rough:.95});}
+ for(let i=0;i<14;i++){const[x,z]=sidePoint(i%4,88+rnd()*34,rnd());R(x,-1+rnd()*2,z,9+rnd()*4,CLOUD,{em:.5,rough:.95});}
 
  // the city on the north horizon: a great terrace with its bell tower, lesser terraces beside it, plinth towers at its wings.
- belltower(0,-168,terrace(0,-168,-1.6,6,50,7,true),26,11);
- belltower(-46,-160,terrace(-46,-160,-1.6,4,28,6),18,9);
- belltower(46,-160,terrace(46,-160,-1.6,4,28,6),18,9);
- belltower(-82,-178,terrace(-82,-178,-1.6,2,18,5),20,7);
- belltower(82,-178,terrace(82,-178,-1.6,2,18,5),20,7);
+ // the north city stands in the cloud sea, so its bases sit at CLOUD_Y.
+ belltower(0,-168,terrace(0,-168,CLOUD_Y,6,50,7,true),26,11);
+ belltower(-46,-160,terrace(-46,-160,CLOUD_Y,4,28,6),18,9);
+ belltower(46,-160,terrace(46,-160,CLOUD_Y,4,28,6),18,9);
+ belltower(-82,-178,terrace(-82,-178,CLOUD_Y,2,18,5),20,7);
+ belltower(82,-178,terrace(82,-178,CLOUD_Y,2,18,5),20,7);
  // bell towers on the outer tier: the corners and the midpoints of both flanks, and the south corners.
  const T=TIERS[2].top;
  for(const[x,z,hh,plan]of[[-78.5,-138.5,22,8],[78.5,-138.5,22,8],[-78.5,-88,18,8],[78.5,-88,18,8],[-78.5,-40,16,8],[78.5,-40,16,8],[-78.5,58.5,18,8],[78.5,58.5,18,8]])belltower(x,z,T,hh,plan);
@@ -162,7 +165,7 @@ function decorate(art,def,opts={}){
  for(let i=0;i<120;i++){const x=-50+rnd()*100,z=-44+rnd()*76,b=h(x,z);O(x,b+.2+rnd()*.25,z,.16,BLOOM[i%BLOOM.length],{em:.12});}
 
  // light shafts down into the garden, each with a pool of light where it lands.
- for(const[x,z]of[[-40,-10],[40,-10],[-30,-30],[30,-30],[-14,-62],[14,-62]]){const b=h(x,z);B(x,b+9,z,1.4,18,1.4,LIGHT,{em:.55,rough:.4});C(x,b+.05,z,2.8,.1,LIGHT,{em:.6});}
+ for(const[x,z]of[[-40,-10],[40,-10],[-30,-30],[30,-30],[-14,-62],[14,-62]]){const b=h(x,z);B(x,b+7,z,1,14,1,LIGHT,{em:.9,rough:.4});C(x,b+.05,z,2.8,.1,LIGHT,{em:.6});}
 
  // the envoy's house by the garden gate, the landmark of the arrival: a bone house under a gold dome, a small bell tower
  // over it, and a pool of light with four lanterns round it.
@@ -179,9 +182,9 @@ function decorate(art,def,opts={}){
  B(ex-1.1,eb+1.6,ez+1.72,.7,.7,.06,GOLD2,{em:.6});
  B(ex+1.1,eb+1.6,ez+1.72,.7,.7,.06,GOLD2,{em:.6});
 
- // the sun low over the north city, rising above the great terrace so the towers stand against its light.
- R(0,46,-200,13,SUN,{em:1});
- R(0,46,-200,24,HALO,{em:.7});
+ // the sun in the north-west sky, high over the flank towers, so the arrival sees its light beside the city.
+ R(-70,40,-130,12,SUN,{em:1});
+ R(-70,40,-130,22,HALO,{em:.8});
  return{realmId:def?.id||null};
 }
 

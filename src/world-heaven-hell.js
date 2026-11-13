@@ -87,7 +87,7 @@ const realms=[{
  quest:{id:'heaven-opening-v1',title:'Three ordinary answers',giverId:'heaven-rielle',
   objectives:[{id:'first',pointId:'heaven-garden-response',text:'Compare the Garden response plate',kind:'interact'},{id:'second',pointId:'heaven-arcade-response',text:'Compare the Ruby Arcade response plate',kind:'interact'},{id:'third',pointId:'heaven-causeway-response',text:'Compare the Mirror Causeway response plate',kind:'interact'}],
   reward:{xp:18,coins:7,ore:0},completionText:'Rielle records the uneven return instead of polishing it away. She gives the survey reward once. The Broken Choir and the upper road are separate work.'},
- palette:{ground:0xf1ead8,stone:0xf7f2e6,trim:0xd4a95c,sky:0x4a85d2},theme:'cosmos',water:false
+ palette:{ground:0xfbf6ea,stone:0xf7f2e6,trim:0xd4a95c,sky:0x3d78d0},theme:'cosmos',water:false
 },{
  id:'hell',room:'world-hell',name:'Hell · Kiln Refuge',
  description:'A decommissioned kiln shelter holds an honest return light. Scout Tithe Mile and Moth Cut to Bell Yard; the salvage sentinel in the eastern side pocket is optional.',
