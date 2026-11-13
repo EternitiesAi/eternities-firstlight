@@ -50,7 +50,7 @@ function coastBanks(cells){
   return !W.patchContains(x+e.nx*eps,z+e.nz*eps,shore);
  });
 }
-function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isInterior=false;a.e.worldFog=def.id==='earthlands'?{clear:30,span:130}:null;a.e.theme=def.theme||null;a.e.noWater=!def.water;a.e.ambientOverride=def.id==='hell'?.6:def.id==='heaven'?.87:.76;a.e.worldAtmosphere=def.id==='heaven'?{top:0x9fb8bd,fog:0xe4cdbd,night:.12,power:.85,sunColor:0xffe5c2}:def.id==='hell'?{top:0x32292f,fog:0x75605a,night:.38,power:.68,sunColor:0xffc185}:null;
+function make(a,sim){const def=W.definition(sim.room);a.begin(def.room);a.e.isInterior=false;a.e.worldFog=def.id==='earthlands'?{clear:30,span:130}:null;a.e.theme=def.theme||null;a.e.noWater=!def.water;a.e.ambientOverride=def.id==='hell'?.6:def.id==='heaven'?.87:.76;a.e.worldAtmosphere=def.id==='heaven'?{top:0x9fb8bd,fog:0xe4cdbd,night:.12,power:.85,sunColor:0xffe5c2}:def.id==='hell'?def.atmosphere||null:null;
  // Coastward floor paint shares the existing apron palette at Balanced/High.
  // Canonical partition colors, owners and Low material remain unchanged.
  const cells=partitions(def),shorePaint=def.id==='earthlands'&&['balanced','high'].includes(sim.state.settings.quality)?def.patches.find(p=>p.id==='shore-overlook').color:null;

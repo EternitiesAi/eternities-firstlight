@@ -63,7 +63,7 @@ for(let i=0;i<8;i++){const x=i%2?-54:54,z=15-Math.floor(i/2)*30;hellSolids.push(
 // Shared box rendering accepts these material bases. Tiny surface inlays below
 // extend by at most .025 units; all consequential cover retains these boxes.
 for(const s of heavenSolids)s.color=s.id.includes('tree')?0x967d61:s.id.includes('bench')||s.id.includes('seat')||s.id.includes('table')?0xbd9d6a:s.id.includes('lamp')||s.id.includes('return-post')?0xbe914c:0xe8dfc9;
-for(const s of hellSolids)s.color=s.id.includes('ash-tree')?0x49494a:s.id.includes('bench')||s.id.includes('chair')?0x796854:s.id.includes('refuge')?0x6d6860:s.id.includes('lamp')||s.id.includes('return-post')||s.id.includes('support')?0x5b6268:s.id.includes('spine')?0x303337:0x55565a;
+for(const s of hellSolids)s.color=s.id.includes('ash-tree')?0x2b2222:s.id.includes('bench')||s.id.includes('chair')?0x796854:s.id.includes('refuge')?0x3e2c27:s.id.includes('lamp')||s.id.includes('return-post')||s.id.includes('support')?0x4d2b24:s.id.includes('spine')?0x1e1c21:0x2e2b30;
 
 const realms=[{
  id:'heaven',room:'world-heaven',name:'Heaven · Garden of Voices',
@@ -109,7 +109,7 @@ const realms=[{
   objectives:[{id:'first',pointId:'hell-tithe-mark',text:'Inspect the Tithe Mile support mark',kind:'interact'},{id:'second',pointId:'hell-moth-mark',text:'Inspect the Moth Cut service mark',kind:'interact'},{id:'third',pointId:'hell-bell-yard-plate',text:'Read the grounded Bell Yard route plate',kind:'interact'}],
   reward:{xp:22,coins:9,ore:2},completionText:'Tovan keeps the measured route marks in the refuge, and Istra gives the survey reward once. A useful record is made. The road to the foundry is still to come.'},
  enemies:[{id:'hell-salvage-sentinel',name:'Salvage sentinel',kind:'sentinel',x:44,z:-94,hp:90,damage:9,xp:0,ore:0,coins:0}],
- palette:{ground:0x696961,stone:0x303337,trim:0x5b6268,sky:0x573d42},theme:'cosmos',water:false
+ palette:{ground:0x2a1b18,stone:0x1d1a1e,trim:0xa8502a,sky:0x2a0c08},atmosphere:{top:0x1a0504,fog:0x5c2214,night:.42,power:.72,sunColor:0xff7a3a},theme:'cosmos',water:false
 }];
 function freeze(value){if(value&&typeof value==='object'){Object.values(value).forEach(freeze);Object.freeze(value);}return value;}
 freeze(realms);
@@ -122,6 +122,34 @@ function fallbackRng(seed){return()=>{seed=(Math.imul(1664525,seed)+1013904223)>
 function onGround(def,x,z,r=0){return def.patches.some(p=>Math.abs(x-p.x)<=p.w/2-r&&Math.abs(z-p.z)<=p.d/2-r);}
 function clear(def,x,z,r=0){return onGround(def,x,z,r)&&!def.solids.some(s=>Math.abs(x-s.x)<s.w/2+r&&Math.abs(z-s.z)<s.d/2+r);}
 function routeDistance(def,x,z){let best=Infinity;for(const line of routes[def.id])for(let i=1;i<line.length;i++){const a=line[i-1],b=line[i],dx=b[0]-a[0],dz=b[1]-a[1],t=Math.max(0,Math.min(1,((x-a[0])*dx+(z-a[1])*dz)/(dx*dx+dz*dz)));best=Math.min(best,Math.hypot(x-a[0]-dx*t,z-a[1]-dz*t));}return best;}
+// hell's dressing: the ember ground, iron towers and chain gantries, braziers, the foundry's glow, the refuge's warm
+// windows and the falling ash. instances only: no solids, no collision, no step points, and the roads stay clear.
+function hellSet(art,def,ctx){
+ const{at,h,rnd}=ctx,ember=0xff6a1f,glow=0xffa24a,iron=0x2c2a30,rust=0x4d2b24,dark=0x1d1a1e,ash=0x6c6661,far={skyImage:true,distantArt:true};
+ const open=(x,z,r=1)=>clear(def,x,z,r)&&routeDistance(def,x,z)>2.4&&!def.points.some(p=>Math.hypot(x-p.x,z-p.z)<3.4);
+ const bx=()=>def.bounds.minX+4+rnd()*(def.bounds.maxX-def.bounds.minX-8),bz=()=>def.bounds.minZ+4+rnd()*(def.bounds.maxZ-def.bounds.minZ-8);
+ for(let i=0;i<80;i++){const x=bx(),z=bz();if(open(x,z,.6))at('box',x,h(x,z)+.02,z,.1,.02,2+rnd()*4,ember,{em:.9,r:[0,rnd()*Math.PI,0],rough:.6});}
+ for(const line of routes.hell)for(let i=1;i<line.length;i++){const a=line[i-1],b=line[i],len=Math.hypot(b[0]-a[0],b[1]-a[1]),yaw=Math.atan2(b[0]-a[0],b[1]-a[1]);
+  for(let d=0;d<len;d+=3.4)for(const side of[-1,1]){const t=d/len,x=a[0]+(b[0]-a[0])*t-Math.cos(yaw)*2.7*side,z=a[1]+(b[1]-a[1])*t+Math.sin(yaw)*2.7*side;if(open(x,z,.4))at('box',x,h(x,z)+.02,z,.35,.02,2.2,glow,{em:.8,r:[0,yaw,0],rough:.7});}}
+ const tower=(x,z)=>{const b=h(x,z);at('box',x,b+.2,z,1.8,.4,1.8,dark,{rough:.9});at('box',x,b+3.3,z,.55,6.2,.55,iron,{rough:.9});at('box',x,b+6.5,z,1.5,.35,1.5,rust,{rough:.9});at('cylinder',x,b+6.8,z,.6,.3,.6,iron,{rough:.9});at('octa',x,b+7.5,z,.38,.5,.38,ember,{em:1,rough:.7});at('disc',x,b+.04,z,4,.03,4,glow,{em:.25});};
+ for(const[x,z]of[[-45,-90],[45,-90],[-45,-40],[45,-40],[-45,10],[45,10],[-38,-64],[38,-64]])if(open(x,z,1.2))tower(x,z);
+ // a chain gantry over the Tithe Mile: its posts stand off the road and the beam clears a walker's head.
+ for(const x of[14,34])at('box',x,h(x,-50)+3.4,-50,.6,6.8,.6,iron,{rough:.9});
+ at('box',24,h(24,-50)+6.9,-50,20.6,.5,.6,rust,{rough:.9});
+ for(let x=18;x<=30;x+=3)for(let k=0;k<3;k++)at('ring',x,h(x,-50)+6.1-k*.42,-50,.3,.42,.12,iron,{ornament:true,r:[0,0,0]});
+ for(const[x,z]of[[-4,-30],[12,-62],[-30,-62],[6,-20],[-20,24],[10,24],[-6,44],[16,-88]])if(open(x,z,.8)){const b=h(x,z);at('cylinder',x,b+.9,z,.14,1.8,.14,iron,{rough:.9});at('cylinder',x,b+1.9,z,.5,.25,.5,rust,{rough:.9});at('octa',x,b+2.25,z,.35,.5,.35,ember,{em:1,rough:.5});at('disc',x,b+.04,z,2.2,.03,2.2,glow,{em:.35});}
+ // the foundry beyond the closed works: a dark mass with molten seams and a chimney, and the light it throws on the yard.
+ at('box',0,14,-152,64,28,20,0x221c20,{...far,rough:1});at('box',-6,36,-152,10,6,8,0x2b2327,{...far,rough:1});
+ at('cylinder',16,30,-150,3.4,42,3.4,0x2a2326,{...far,rough:1});at('octa',16,52,-150,2.6,1.6,2.6,ember,{...far,em:1});
+ for(let x=-24;x<=24;x+=6)at('box',x,12,-142.3,.5,16,.3,ember,{...far,em:1});
+ at('disc',0,h(0,-104)+.04,-104,8,.03,4,glow,{em:.55});
+ // the refuge is a lit shelter: warm windows in its front and a warm pool on the approach.
+ for(const x of[-17,-11,-5])at('box',x,h(x,9)+1.9,10.75,.9,1.1,.06,0xffb050,{em:1,rough:.5});
+ at('disc',-10,h(-10,22)+.035,22,6,.03,4,0xffa24a,{em:.45});
+ // falling ash and drifting embers: static flecks in the air, no motion and no collision.
+ for(let i=0;i<180;i++){const x=bx(),z=bz(),s=.05+rnd()*.07;at('octa',x,h(x,z)+1.2+rnd()*8,z,s,s,s,ash,{rough:1});}
+ for(let i=0;i<110;i++){const x=bx(),z=bz(),s=.04+rnd()*.05;at('octa',x,h(x,z)+.8+rnd()*7,z,s,s,s,rnd()<.5?ember:glow,{em:1,rough:.5});}
+}
 function decorate(art,def,options={}){
  if(!def||!realms.some(r=>r.id===def.id))return{realmId:null,instances:0,distantInstances:0};
  const h=typeof options.height==='function'?options.height:()=>FLOOR,rnd=typeof options.rng==='function'?options.rng:fallbackRng(def.id==='heaven'?100220261:100220262),isHeaven=def.id==='heaven';
@@ -244,12 +272,12 @@ function decorate(art,def,options={}){
  }
  // Distant artwork has no route, camera clearance or quest authority. Its
  // silhouette is explicitly beyond the closed northern walking boundary.
- for(let i=0;i<17;i++){const x=-100+i*12,z=-166-(i%4)*9,height=19+(i*17%28),color=isHeaven?(i%3?0xc4baa4:0xa7a5ae):(i%3?0x494448:0x655053);
+ for(let i=0;i<17;i++){const x=-100+i*12,z=-166-(i%4)*9,height=19+(i*17%28),color=isHeaven?(i%3?0xc4baa4:0xa7a5ae):(i%3?0x2e1d1b:0x3d2420);
   box(x,height/2-7,z,7+(i%3)*2,height,9,color,{skyImage:true,distantArt:true});
   if(isHeaven){at('cone',x,height-7,z,9+(i%3)*2,5.5,11,0xcab991,{skyImage:true,distantArt:true});box(x,height-1.4,z,.4,3,.4,gold,{skyImage:true,distantArt:true});}
   else{box(x,height-7,z,8+(i%3)*2,.8,10,iron,{skyImage:true,distantArt:true});box(x,height-5.7,z,2.5,.9,2.5,0x9e251f,{em:.45,skyImage:true,distantArt:true});}
  }
- for(let i=0;i<12;i++){const x=-118+i*22,z=-185-(i%3)*10;at('mountain-ridge',x,-13,z,38,30+(i%4)*8,45,isHeaven?0xa5a3a3:0x4d474b,{skyImage:true,distantArt:true,rough:1});}
+ for(let i=0;i<12;i++){const x=-118+i*22,z=-185-(i%3)*10;at('mountain-ridge',x,-13,z,38,30+(i%4)*8,45,isHeaven?0xa5a3a3:0x2a1a18,{skyImage:true,distantArt:true,rough:1});}
  if(isHeaven){for(let i=0;i<7;i++)at('round',-72+i*23,23+(i%3)*3,-151,34,9,15,[0xd2bbc1,0xdcccbf,0xc5bbc8][i%3],{skyImage:true,distantArt:true});
   at('cylinder',8,22,-188,.5,73,.5,0xf0cd80,{skyImage:true,distantArt:true,em:.55});for(let i=0;i<3;i++)at('ring',8,50+i*15,-188,15+i*7,15+i*7,.5,gold,{skyImage:true,distantArt:true,em:.1});
  }else{
@@ -276,6 +304,7 @@ function decorate(art,def,options={}){
    }
   }
   // End authored lower-garden planting.
+ if(!isHeaven)hellSet(art,def,{at,h,rnd});
  return{realmId:def.id,instances,distantInstances,localInstances:instances-distantInstances};
 }
 const api={realms,decorate};G.RealmWorldHeavenHell=api;
