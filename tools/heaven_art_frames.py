@@ -67,6 +67,9 @@ def run_case(browser, origin, saves, save_name, spots, out, report):
                 page.wait_for_timeout(2500)
                 report["timing"] = st.summary(page.evaluate(st.SAMPLE_JS, {"n": 300}))
             else:
+                if name == "edge":
+                    # come in from the east, so the camera faces west over the edge of the walking ground.
+                    walk(page, -20.0, -5.0)
                 walk(page, *SPOTS[name])
             st.camera(page, "adventure")
             report["frames"][name + "-third"] = shoot(page, out, "heaven-" + name + "-third")

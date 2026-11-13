@@ -15,7 +15,7 @@ test('the scenery sets the grade and adds only non-solid art in known kinds', ()
   const def = { id: 'heaven' };
   scenery.decorate(art, def, { height: () => 1.57, rng: () => 0.5 });
   assert.equal(typeof art.e.worldAtmosphere.top, 'number');
-  assert.equal(art.e.ambientOverride, 0.36);
+  assert.equal(art.e.ambientOverride, 0.3);
   assert.ok(art.items.length > 500, 'dense: ' + art.items.length);
   for (const it of art.items) {
     assert.ok(['box', 'cylinder', 'octa', 'round'].includes(it.kind), it.kind);

@@ -6,7 +6,7 @@
 (function(G){'use strict';
 const TAU=Math.PI*2,FLOOR=1.57,ROOM='world-heaven';
 const BONE=0xf4eee2,BONE2=0xe6dcc6,GOLD=0xd4a95c,GOLD2=0xf7dc92,RUBY=0x8f1538,RUBY2=0xc6284f,
- CLOUD=0xfdfaf3,CLOUD2=0xefe6d0,SUN=0xfffaea,HALO=0xffe7a8,LIGHT=0xfff4d6,INLAY=0xc39a48,
+ CLOUD=0xfffdf8,CLOUD2=0xefe6d0,SUN=0xfffaea,HALO=0xffe7a8,LIGHT=0xfff4d6,INLAY=0xc39a48,
  BLOOM=[0xf4b9c8,0xf7da86,0xfdf8ec,0xe9869f,0xfbe9ad];
 const NONSOLID={cameraSolid:false,cutaway:false};
 // the walking ground is x -60..60, z -120..40 (both patches together). the terraces stand outside it.
@@ -31,8 +31,8 @@ function decorate(art,def,opts={}){
  const h=typeof opts.height==='function'?opts.height:()=>FLOOR,rnd=typeof opts.rng==='function'?opts.rng:Math.random;
  // the grade: a clear deep blue overhead, gold at the horizon, a warm white sun, and less ambient light than the
  // cosmos default so the stone and the shadows keep their contrast. the engine reads these fields for the realm.
- art.e.worldAtmosphere={top:0x4a85d2,fog:0xfbe3a8,night:.02,power:1.12,sunColor:0xfff7e6};
- art.e.ambientOverride=.36;
+ art.e.worldAtmosphere={top:0x3d78d0,fog:0xf9e4b5,night:.02,power:1.25,sunColor:0xfff3dc};
+ art.e.ambientOverride=.3;
  const B=(x,y,z,w,hh,d,c,o={})=>art.add('box',x,y,z,w,hh,d,c,{...NONSOLID,...o});
  const C=(x,y,z,r,hh,c,o={})=>art.add('cylinder',x,y,z,r,hh,r,c,{...NONSOLID,...o});
  const O=(x,y,z,s,c,o={})=>art.add('octa',x,y,z,s,s,s,c,{...NONSOLID,...o});
@@ -66,14 +66,14 @@ function decorate(art,def,opts={}){
   O(x,top+5.3,z,.42,GOLD2,{em:.8});
   if(crown)O(x,top+6.4,z,.22,RUBY2,{em:1});
  };
- // a gold arch over a path; the walk passes beneath it. the gate keeps two ruby banners.
+ // a gold arch over a path; the walk passes beneath it. the optional banners hang from its two legs.
  const arch=(x,z,base,span,banners)=>{
   const half=span/2;
   for(const s of[-1,1])C(x+s*half,base+3,z,.2,6,GOLD);
   B(x,base+6,z,span+.9,.46,.6,GOLD2,{em:.3});
   B(x,base+6.7,z,span*.6,.36,.5,BONE2,{rough:.4});
   O(x,base+6.4,z,.3,RUBY2,{em:.8});
-  if(banners)for(const s of[-1,1])B(x+s*half*.5,base+3.6,z,.12,2.2,.7,RUBY2,{em:.2});
+  if(banners)for(const s of[-1,1])B(x+s*half*.5,base+3.9,z,.08,1.7,.5,RUBY2,{em:.25});
  };
  // a colonnade of bone columns with gold capitals under one lintel. it runs along x when z is fixed, else along z.
  // gap skips the columns near one along-coordinate, so a bridge can pass through.
@@ -115,19 +115,19 @@ function decorate(art,def,opts={}){
  B(FOOT.x,-4.6,FOOT.z,260,.6,260,CLOUD2,{em:.06});
  for(let i=0;i<72;i++){
   const[x,z]=sidePoint(i%4,18+rnd()*40,rnd());
-  R(x,-2.6+rnd()*.8,z,6+rnd()*5,CLOUD,{em:.14,rough:.95});
+  R(x,-2.6+rnd()*.8,z,5+rnd()*4,CLOUD,{em:.3,rough:.95});
  }
- for(let i=0;i<14;i++){const[x,z]=sidePoint(i%4,88+rnd()*34,rnd());R(x,1+rnd()*3,z,12+rnd()*5,CLOUD,{em:.12,rough:.95});}
+ for(let i=0;i<14;i++){const[x,z]=sidePoint(i%4,88+rnd()*34,rnd());R(x,1+rnd()*3,z,11+rnd()*4,CLOUD,{em:.3,rough:.95});}
 
  // the city on the north horizon: a great terrace with its bell tower, lesser terraces beside it, plinth towers at its wings.
- belltower(0,-168,terrace(0,-168,-1.6,5,40,6,true),18,9);
- belltower(-46,-160,terrace(-46,-160,-1.6,3,26,6),14,8);
- belltower(46,-160,terrace(46,-160,-1.6,3,26,6),14,8);
+ belltower(0,-168,terrace(0,-168,-1.6,6,50,7,true),26,11);
+ belltower(-46,-160,terrace(-46,-160,-1.6,4,28,6),18,9);
+ belltower(46,-160,terrace(46,-160,-1.6,4,28,6),18,9);
  belltower(-82,-178,terrace(-82,-178,-1.6,2,18,5),20,7);
  belltower(82,-178,terrace(82,-178,-1.6,2,18,5),20,7);
  // bell towers on the outer tier: the corners and the midpoints of both flanks, and the south corners.
  const T=TIERS[2].top;
- for(const[x,z,hh,plan]of[[-78.5,-138.5,22,8],[78.5,-138.5,22,8],[-78.5,-40,16,8],[78.5,-40,16,8],[-78.5,58.5,18,8],[78.5,58.5,18,8]])belltower(x,z,T,hh,plan);
+ for(const[x,z,hh,plan]of[[-78.5,-138.5,22,8],[78.5,-138.5,22,8],[-78.5,-88,18,8],[78.5,-88,18,8],[-78.5,-40,16,8],[78.5,-40,16,8],[-78.5,58.5,18,8],[78.5,58.5,18,8]])belltower(x,z,T,hh,plan);
  // gold bridges from the walking ground's flanks out to the midpoint towers.
  bridge(60,74.5,-40,FLOOR);
  bridge(-74.5,-60,-40,FLOOR);
@@ -141,8 +141,7 @@ function decorate(art,def,opts={}){
  // ruby banners hang from the north colonnade.
  for(const x of[-30,0,30])B(x,T1+5.3,-123.5,.12,2.6,.9,RUBY2,{em:.2});
 
- // the gate that remained open on the arrival path, and gold arches over the causeway.
- arch(0,22,h(0,22),8,true);
+ // gold arches over the causeway, low enough not to hide the sky from the arrival.
  for(const z of[12,-8,-30])arch(0,z,h(0,z),5,false);
 
  // gold inlay lines set flush in the walking ground, and gold edges round it.
@@ -153,22 +152,22 @@ function decorate(art,def,opts={}){
  B(0,h(0,-120)+.03,-119.4,120,.02,.8,GOLD,{rough:.35});
 
  // flower beds in the garden, a bone rim under each, blooming in rose, gold and white.
- for(const[cx,cz]of[[-20,12],[20,12],[-22,-22],[22,-22]]){
+ for(const[cx,cz]of[[-20,12],[20,12],[-22,-22],[22,-22],[-34,12],[34,12],[-34,-62],[34,-62]]){
   const b=h(cx,cz);
   B(cx,b+.07,cz,7.6,.14,5.6,BONE2,{rough:.4});
   let k=0;
   for(let ix=-2;ix<=2;ix++)for(let iz=-1;iz<=1;iz++)O(cx+ix*1.4,b+.36,cz+iz*1.5,.26,BLOOM[k++%BLOOM.length],{em:.14});
  }
  // blossoms through the garden, so it reads as a garden in flower from the arrival.
- for(let i=0;i<80;i++){const x=-50+rnd()*100,z=-44+rnd()*76,b=h(x,z);O(x,b+.2+rnd()*.25,z,.16,BLOOM[i%BLOOM.length],{em:.12});}
+ for(let i=0;i<120;i++){const x=-50+rnd()*100,z=-44+rnd()*76,b=h(x,z);O(x,b+.2+rnd()*.25,z,.16,BLOOM[i%BLOOM.length],{em:.12});}
 
  // light shafts down into the garden, each with a pool of light where it lands.
- for(const[x,z]of[[-40,-10],[40,-10],[-30,-30],[30,-30],[-14,-62],[14,-62]]){const b=h(x,z);B(x,b+12,z,1,24,1,LIGHT,{em:.9,rough:.4});C(x,b+.05,z,2.4,.1,LIGHT,{em:.8});}
+ for(const[x,z]of[[-40,-10],[40,-10],[-30,-30],[30,-30],[-14,-62],[14,-62]]){const b=h(x,z);B(x,b+9,z,1.4,18,1.4,LIGHT,{em:.55,rough:.4});C(x,b+.05,z,2.8,.1,LIGHT,{em:.6});}
 
  // the envoy's house by the garden gate, the landmark of the arrival: a bone house under a gold dome, a small bell tower
  // over it, and a pool of light with four lanterns round it.
  const ex=-16.5,ez=27.5,eb=h(ex,ez);
- C(ex,eb+.05,ez,4.4,.1,LIGHT,{em:.7});
+ C(ex,eb+.05,ez,5.4,.1,LIGHT,{em:.8});
  B(ex,eb+1.3,ez,3.8,2.6,3.4,BONE,{rough:.4});
  B(ex,eb+2.8,ez,4.2,.4,3.8,GOLD,{rough:.35});
  R(ex,eb+3.5,ez,1.9,GOLD2,{em:.25,rough:.3});
@@ -180,9 +179,9 @@ function decorate(art,def,opts={}){
  B(ex-1.1,eb+1.6,ez+1.72,.7,.7,.06,GOLD2,{em:.6});
  B(ex+1.1,eb+1.6,ez+1.72,.7,.7,.06,GOLD2,{em:.6});
 
- // the sun low over the north city, its disc behind the great tower, so the towers stand against the light.
- R(0,44,-196,14,SUN,{em:1});
- R(0,44,-196,26,HALO,{em:.45});
+ // the sun low over the north city, rising above the great terrace so the towers stand against its light.
+ R(0,46,-200,13,SUN,{em:1});
+ R(0,46,-200,24,HALO,{em:.7});
  return{realmId:def?.id||null};
 }
 
