@@ -3709,6 +3709,10 @@ const api={definitions,definition,required,fresh,validate,at,commit,setting,adju
 (function(G){'use strict';
 const DATA=G.RealmCosmosCampaignData||(typeof require==='function'?require('./cosmos-campaign-data.js'):null);
 const D=DATA.definition,P=DATA.patterns,SUPPORTS=DATA.supports;
+const SCRIPT=()=>G.RealmStoryScript||(typeof require==='function'?require('./story-script.js'):null);
+const sceneOf=(id,state)=>SCRIPT()?.forStep?.('cosmos',id,state)||null;
+// The six-second hold at the central link (BRANCHES 5). Transient, never saved: leaving the anchor or bringing the other into view resets it.
+const HOLD_SECONDS=6,HOLD_REACH=2.5,OFF_SCREEN=7;
 const SAGA=()=>G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
 // The saga writes into the candidate save, so a sighting lands in the same save as the acceptance.
 const candidateSim=c=>({state:c,event:(kind,text)=>{c.journal.push({seq:c.nextEvent++,day:c.day,hour:c.hour,kind,text:text.slice(0,350)});if(c.journal.length>200)c.journal.shift();}});
@@ -3760,6 +3764,24 @@ function commit(sim,candidate,io,text,ctx){
  sim.state.cosmosCampaign=checked.cosmosCampaign;sim.state.saga=checked.saga;for(const k of['xp','coins','ore','revision'])sim.state.adventure[k]=checked.adventure[k];
  Object.assign(sim.state.sandbox.inventory,checked.sandbox.inventory);sim.state.journal=checked.journal;sim.state.nextEvent=checked.nextEvent;return{ok:true,text};
 }
+// Where the prepared anchors stand: the fit or assist step of each support you have set.
+function anchorsOf(r){return DATA.supports.filter(l=>r.steps.includes(l.complete)||r.steps.includes(l.assistance)).map(l=>{const s=step(r.steps.includes(l.complete)?l.complete:l.assistance);return{id:l.id,x:s.x,z:s.z};});}
+function heldComplete(sim){return sim.cosmosCampaignRuntime?.hold?.complete===true;}
+function holdStart(sim){
+ const r=record(sim.state),rt=runtime(sim);
+ if(!r?.accepted||r.claimed||r.steps.includes('disable-central-link')||!['release-west-feed','release-east-feed','guardian-settled'].every(id=>r.steps.includes(id)))return fail('Settle both machines and release both feeds before the central link.');
+ const anchors=anchorsOf(r),p=sim.state.player,near=anchors.filter(a=>Math.hypot(p.x-a.x,p.z-a.z)<=HOLD_REACH);
+ if(!near.length)return fail('Stand at one of the anchors you set.');
+ if(anchors.some(a=>a.id!==near[0].id&&Math.hypot(p.x-a.x,p.z-a.z)<=OFF_SCREEN))return fail('Move the other anchor out of view first.');
+ rt.hold={anchor:near[0].id,startedAt:sim.elapsed||0,complete:false};
+ return{ok:true,text:'Hold here. The central link answers after six seconds.'};
+}
+function holdTick(sim){
+ const h=sim.cosmosCampaignRuntime?.hold;if(!h||h.complete)return;
+ const anchors=record(sim.state)?anchorsOf(record(sim.state)):[],p=sim.state.player,a=anchors.find(x=>x.id===h.anchor);
+ if(!a||Math.hypot(p.x-a.x,p.z-a.z)>HOLD_REACH||anchors.some(x=>x.id!==a.id&&Math.hypot(p.x-x.x,p.z-x.z)<=OFF_SCREEN)){delete sim.cosmosCampaignRuntime.hold;return;}
+ if((sim.elapsed||0)-h.startedAt>=HOLD_SECONDS)h.complete=true;
+}
 function runtime(sim){
  let r=sim.cosmosCampaignRuntime;if(!r||r.room!==sim.room||runtimeOwners.get(r)!==sim.state){r=sim.cosmosCampaignRuntime={room:sim.room,witnesses:Object.freeze([])};runtimeOwners.set(r,sim.state);}
  const q=sim.state.cosmosCampaign,present=sim.room===D.room&&!sim.worldDive&&eligible(sim.state)&&q?.accepted;
@@ -3774,7 +3796,7 @@ function command(ctx,type,payload,io){
  if(type==='claim'&&r.claimed)return{ok:true,duplicate:true,text:'This Confluence is already complete. Its apparatus and account remain.'};
  if(type==='accept'&&r.accepted)return{ok:true,duplicate:true,text:'This operation is already accepted; its saved work remains.'};
  let candidate;try{candidate=sim.snapshot();if(!candidate.cosmosCampaign)return fail('The Cosmos snapshot owner is not installed. No history or fee was changed.');candidate.cosmosCampaign=validate(candidate.cosmosCampaign);}catch(e){return fail('Campaign state refused: '+e.message);}
- const q=candidate.cosmosCampaign;let text,reward=null;
+ const q=candidate.cosmosCampaign;let text,reward=null,scene=null;
  if(type==='accept'){
   if(!eligible(candidate)||!at(sim,D.giver))return fail('The Confluence is not open to you yet. Finish the story before it, then speak to Anik.');
   q.accepted=true;const seen=SAGA().regentSeen(candidateSim(candidate),'confluence');if(!seen.ok)return fail(seen.error);
@@ -3782,25 +3804,31 @@ function command(ctx,type,payload,io){
  }else if(type==='step'||type==='configure'){
   const s=step(payload.step);if(!q.accepted||q.claimed||!s||s.kind!==(type==='configure'?'configure':'interact'))return fail('Only accepted physical work of this kind can be recorded. Actual combat owns machine exhaustion.');
   if(type==='configure'&&payload.setting!==s.setting)return fail('Read and choose the exact named setting. Wrong settings have no material cost or penalty.');
-  if(!at(sim,s))return fail('Reach '+s.name+' on its actual supported dry approach.');
+  if(!(s.id==='disable-central-link'&&heldComplete(sim))&&!at(sim,s))return fail(s.id==='disable-central-link'?'Hold at one of the anchors you set until the central link answers.':'Reach '+s.name+' on its actual supported dry approach.');
   if(q.steps.includes(s.id))return{ok:true,duplicate:true,text:'This physical action is already recorded.'};
   if(!allowed(q,s))return fail('Complete the stated predecessors and distinct prepared supports before '+s.name+'.');
-  q.steps.push(s.id);if(s.id==='open-confluence')q.opened=true;text=s.text;
+  q.steps.push(s.id);if(s.id==='open-confluence')q.opened=true;text=s.text;scene=sceneOf(s.id,candidate);
  }else if(type==='choose'){
   const s=step('accountability'),choice=D.choices.find(c=>c.id===payload.choice);
   if(!q.accepted||q.claimed||!choice||!at(sim,s))return fail('Reach the local accountability marker after disabling the actual central link.');
   if(q.choice!==null)return q.choice===choice.id?{ok:true,duplicate:true,text:'That bounded local account is already retained.'}:fail('The recorded local accountability choice cannot be overwritten.');
   if(!allowed(q,s))return fail('Settle both actual machines, release both feeds and physically disable the central link before choosing.');
-  q.choice=choice.id;q.steps.push(s.id);text=choice.name+' recorded. '+choice.consequence;
+  q.choice=choice.id;q.steps.push(s.id);text=choice.name+' recorded. '+choice.consequence;scene=sceneOf('recognition',candidate);
  }else if(type==='claim'){
   if(!ready(candidate)||!at(sim,D.giver))return fail('Verify the open apparatus, then return to Anik for your reward.');
   const a=candidate.adventure,inv=candidate.sandbox.inventory,fee=D.reward;
   if(a.coins+fee.coins>9999||a.ore+fee.ore>9999||Object.entries(fee.materials).some(([k,n])=>!Object.hasOwn(inv,k)||inv[k]+n>G.RealmSandbox.MAX))return fail('Make room for the reward, including crystal. Nothing was changed.');
   reward={...copy(fee),xp:Math.min(fee.xp,9999-a.xp)};a.xp+=reward.xp;a.coins+=fee.coins;a.ore+=fee.ore;for(const[k,n]of Object.entries(fee.materials))inv[k]+=n;
   q.claimed=true;text=D.title+' complete · '+D.choices.find(c=>c.id===q.choice).name+' · '+reward.xp+' XP, '+fee.coins+' sunmarks, '+fee.ore+' ore, '+fee.materials.wood+' timber, '+fee.materials.fiber+' fibre and '+fee.materials.crystal+' crystal. Complete.'+(reward.xp<fee.xp?' Existing stored XP cap retained.':'');
+ }else if(type==='sighting'){
+  // The Regent across the gap (BRANCHES 3.7): the saga records whether you heard him out, once.
+  if(!q.accepted||q.claimed||q.opened!==true||typeof payload.heard!=='boolean')return fail('Hear the Regent out once the apparatus is open.');
+  const res=SAGA().command(candidateSim(candidate),'sighting-confluence','regent-heard',{id:'confluence',heard:payload.heard});
+  if(!res.ok)return fail(res.error);
+  scene=sceneOf('sighting',candidate);text=payload.heard?'You let him finish.':'You cut him off.';
  }else return fail('Unknown Cosmos campaign action.');
  const before=G.RealmAdventure.level(sim.state.adventure),result=commit(sim,candidate,io,text,ctx);
- if(result.ok){runtime(sim);if(reward)result.reward=reward;G.RealmAdventure.syncScene(sim);if(G.RealmAdventure.level(sim.state.adventure)>before)G.RealmAdventure.notify(sim,'Level '+G.RealmAdventure.level(sim.state.adventure)+' · independent local service remains.');}return result;
+ if(result.ok){runtime(sim);if(reward)result.reward=reward;if(scene){result.lines=scene.lines.map(l=>l.text);result.choice=scene.choice;}if(type==='configure'&&payload.step==='disable-central-link')delete sim.cosmosCampaignRuntime.hold;G.RealmAdventure.syncScene(sim);if(G.RealmAdventure.level(sim.state.adventure)>before)G.RealmAdventure.notify(sim,'Level '+G.RealmAdventure.level(sim.state.adventure)+' · independent local service remains.');}return result;
 }
 function enemies(sim){const r=sim?.state?.cosmosCampaign;return sim?.room===D.room&&!sim.worldDive&&eligible(sim.state)&&r?.accepted?D.enemies.filter(e=>e.spawnAfter.every(id=>r.steps.includes(id))&&!r.steps.includes(e.defeatStep)).map(e=>({...e,originX:e.x,originZ:e.z,cosmosCampaign:D.id,xp:0,coins:0,ore:0,windup:(e.pattern==='reclaimer'?P.reclaimer.line:P.guardian.ring).windup,recovery:(e.pattern==='reclaimer'?P.reclaimer.line:P.guardian.ring).recovery,telegraphRadius:0})):[];}
 const signature=sim=>enemies(sim).map(e=>e.id).join('|');
@@ -3864,7 +3892,7 @@ function defeat(sim,e){
  const result=commit(sim,candidate,{save:sim.cosmosCampaignSave},t.name+' settled through actual combat exhaustion. No independent loot, XP or central project completion was granted.');
  if(!result.ok){e.hp=1;G.RealmAdventure.notify(sim,result.error);return false;}locks.delete(e);return true;
 }
-const api={definition:D,patterns:P,supports:SUPPORTS,fresh,validate,eligible,required,available,ready,at,command,runtime,enemies,signature,encounter,owned,canDamage,pattern,lock,strikeContains,defeat};
+const api={definition:D,patterns:P,supports:SUPPORTS,fresh,validate,eligible,required,available,ready,at,command,runtime,enemies,signature,encounter,owned,canDamage,pattern,lock,strikeContains,defeat,holdStart,holdTick,heldComplete,HOLD_SECONDS};
 G.RealmCosmosCampaign=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* Project the Open Confluence owner. Routes, reading and previews grant nothing. */
@@ -4015,19 +4043,6 @@ const definition=freeze({
    text:'Give the held people’s road to a rival office under a named concession. Paired seals go on the gate, and the other writs stay where they are. Neris stays safe and her record stays whole. It is mercy on paper, and everyone knows whose paper it is.',
    consequence:'The gate shows paired seals and the licensing writ. Istra, Tovan and Neris recognize the concession and what it leaves in place. It is kept for good. The other offices keep their hold.'}
  ],
- // spoken lines live apart from the step narration so a script can replace them scene by scene.
- lines:{
-  scenes:{
-   'witness-record':[{speaker:'Neris',text:'Keep the measurements as they are, including the ones I once helped conceal.'}],
-   'tovan-account':[{speaker:'Tovan',text:'Knowing the rivets is useful. Leaving my own name out would make it a worse record.'}],
-   'challenge-veyr':[{speaker:'Veyr',text:'Everyone who came for the pattern left it in my yard. Come and try.'}]
-  },
-  recognition:{
-   unbind:[{speaker:'Istra',text:'The gate is open. Nobody on this road owes the writ anything now.'},{speaker:'Tovan',text:'The writ is cut. My old rivets belong in the record, and they should stay there.'},{speaker:'Neris',text:'You opened it for everyone. Keep the measurements whole, and keep my name beside what I did.'}],
-   divert:[{speaker:'Istra',text:'The hooded marker shelters the few you took out. The writ still stands over the rest.'},{speaker:'Tovan',text:'A few walked free. Do not call the rest a repair.'},{speaker:'Neris',text:'I am safe. My record stays whole beside the choice you made.'}],
-   license:[{speaker:'Istra',text:'The paired seals name the crew this concession covers. I will record what it leaves in place.'},{speaker:'Tovan',text:'Another office holds their road now. The machinery and our part in it are still here.'},{speaker:'Neris',text:'The named crew has its concession. Keep the true measurements, and do not let them become absolution.'}]
-  }
- },
  enemy:{id:'hell-foundry-warden-v1',name:'Veyr, the foundry’s warden',kind:'sentinel',x:0,z:-99,hp:520,damage:34,radius:.65,spawnAfter:['challenge-veyr'],defeatStep:'warden-resolved'}
 });
 const api=freeze({definition,patterns});
@@ -4064,6 +4079,8 @@ function at(sim,p){return sim.room===D.room&&!sim.worldDive&&G.RealmTrails.at(si
 function journal(candidate,kind,text){candidate.journal.push({seq:candidate.nextEvent++,day:candidate.day,hour:candidate.hour,kind,text:text.slice(0,350)});if(candidate.journal.length>200)candidate.journal.shift();}
 // the saga writes its sighting into the candidate, so the regent's line saves with the campaign's own record.
 function saw(candidate){return G.RealmSaga.regentSeen({state:candidate,event:(kind,text)=>journal(candidate,kind,text)},'foundry');}
+// the hear or cut answer is the saga's regent-heard (BRANCHES.md 2.2), written after the sighting in the same save.
+function heard(candidate,value){return G.RealmSaga.regentHeard({state:candidate,event:(kind,text)=>journal(candidate,kind,text)},'foundry',value);}
 function commit(sim,candidate,io,text){
  if(candidate.adventure.revision>=1e9||candidate.nextEvent>=Number.MAX_SAFE_INTEGER-1)return fail('Export this character before continuing: record limit reached.');
  candidate.adventure.revision++;
@@ -4090,9 +4107,12 @@ function command(ctx,type,payload,io){
   if(!q.accepted||q.claimed||!s||s.kind!=='interact')return fail('Only unfinished work on this road can be recorded.');
   if(q.steps.includes(s.id))return{ok:true,duplicate:true,text:'This is already done.'};
   if(!available(candidate).some(p=>p.id===s.id)||!at(sim,s))return fail('Reach '+s.name+' and finish what it asks first.');
+  if(s.id==='stabilize-service-engine'&&typeof payload.heard!=='boolean')return fail('He is waiting for your answer. Hear him out, or cut him off.');
   q.steps.push(s.id);text=s.text;
   // the regent is seen at the gate once the pattern is taken back; a save that passed the gate before the sighting existed sees him at the plate.
-  if(s.id==='stabilize-service-engine'||s.id==='verify-route'){const seen=saw(candidate);if(!seen.ok)return fail(seen.error);}
+  // the answer is written after the sighting, in the same save, as the spec orders it.
+  if(s.id==='stabilize-service-engine'||s.id==='verify-route'){const seen=saw(candidate);if(!seen.ok)return fail(seen.error);
+   if(s.id==='stabilize-service-engine'){const h=heard(candidate,payload.heard);if(!h.ok)return fail(h.error);}}
  }else if(type==='choose'){
   const s=D.steps.find(s=>s.id==='disposition'),choice=D.choices.find(c=>c.id===payload.choice);
   if(q.choice!==null)return q.choice===payload.choice?{ok:true,duplicate:true,text:'That choice is already kept.'}:fail('The choice is kept for good. It cannot be changed by opening this page again.');
@@ -4142,7 +4162,9 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const button=(label,type,id='',extra='')=>'<button data-rpg="hell-campaign-'+type+'" data-id="'+esc(id)+'" '+extra+'>'+esc(label)+'</button>';
 const record=sim=>sim.state.hellCampaign;
 // a story script, when it lands, owns the spoken lines; until then the data table answers.
-const spoken=(d,id,state)=>{const s=G.RealmStoryScript?.scene?.(id,state);return Array.isArray(s?.lines)?s.lines:(d.lines?.scenes?.[id]||[]);};
+// the story script speaks every line; a scene that is absent for this state simply has no lines.
+const sceneOf=(owner,id,state)=>G.RealmStoryScript?.forStep?.(owner,id,state)||null,linesOf=s=>Array.isArray(s?.lines)?s.lines:[];
+const sceneSection=(cls,title,s)=>linesOf(s).length?'<section class="'+cls+'"><h3>'+esc(title)+'</h3>'+speech(linesOf(s))+'</section>':'';
 const speech=lines=>lines.map(l=>'<p><strong>'+esc(l.speaker)+':</strong> “'+esc(l.text)+'”</p>').join('');
 function reward(d=def()){return d.reward.xp+' XP · '+d.reward.coins+' sunmarks · '+d.reward.ore+' ore'+Object.entries(d.reward.materials||{}).map(([k,n])=>' · '+n+' '+({wood:'timber',fiber:'fibre'}[k]||k)).join('');}
 function routePoints(sim){const d=def(),r=record(sim);if(sim.room!==d.room||!r?.accepted||r.claimed)return[];
@@ -4150,8 +4172,8 @@ function routePoints(sim){const d=def(),r=record(sim);if(sim.room!==d.room||!r?.
  return points.map((p,i)=>({...p,hellCampaign:true,mark:'W'+(i+1)}));
 }
 function legend(sim){const points=routePoints(sim);return points.length?'<section class="hell-campaign-map"><h3>The stolen pattern</h3><p>W labels show this road. The outer works are open from here; the inner foundry stays shut. Walking records nothing.</p><ol>'+points.map(p=>'<li><strong>'+p.mark+'</strong> · '+esc(p.name)+(p.optional?' · optional preparation':'')+' '+button('Walk near this action','walk',p.id)+'</li>').join('')+'</ol>'+button('Read the road and your choice','open')+'</section>':'';}
-function recognition(r,d=def()){if(!r?.steps.includes('verify-route')||!r.choice)return'';
- return'<section class="hell-campaign-local-recognition"><h3>The choice is remembered</h3>'+speech(d.lines.recognition[r.choice])+'</section>';}
+function recognition(r,d=def(),state){if(!r?.steps.includes('verify-route')||!r.choice)return'';
+ return'<section class="hell-campaign-local-recognition"><h3>The choice is remembered</h3>'+speech(linesOf(sceneOf('hell','verify-route',state)))+'</section>';}
 class HellCampaignUI{
  constructor(rpg){this.rpg=rpg;this.pending=null;this.binding=null;this.serial=0;this.seen=new WeakSet();}
  get sim(){return this.rpg.sim;}
@@ -4183,7 +4205,7 @@ class HellCampaignUI{
    this.pending={...this.owner(),choice:choice.id,step:step.id};this.rpg.paint();return true;
   }
   const payload={quest:d.id,expectedRevision:this.binding.adventureRevision,expectedActive:this.binding.active};let command=type;
-  if(type==='step')payload.step=id;
+  if(type==='step'){payload.step=id;if(el.dataset.heard!==undefined)payload.heard=el.dataset.heard==='true';}
   if(type==='confirm'){
    if(!this.same(this.pending,true)||id!==this.pending.choice){this.pending=null;this.rpg.api.toast('This preview belongs to an earlier checkpoint. Read the choice again.');this.rpg.paint();return true;}
    Object.assign(payload,{step:this.pending.step,choice:this.pending.choice});command='choose';
@@ -4203,21 +4225,22 @@ class HellCampaignUI{
    html+='<section><h3>Begin with Neris</h3><p>'+(!eligible?(G.RealmSaga.allowed(sim.state,'hell')?'Finish the Open Cage rescue first. Neris’s way out of the cell is the way in.':'The road to the foundry is not open yet. The night at Bellweather has to come first.'):'Istra has the road. Take it up when you are ready.')+'</p>'+(here&&eligible&&H().at(sim,d.giver)?act('Begin the road','accept'):here?button('Walk to Istra in the Refuge','walk','giver'):'')+'<ol>'+d.steps.filter(s=>!s.optional).map(s=>'<li>'+esc(s.name)+'</li>').join('')+'</ol></section>';
   }else{
    if(r.claimed)html+='<section class="hell-campaign-recognition"><h3>Istra keeps the road honest</h3><p>'+esc(d.completionText)+'</p></section>';
-   html+='<section><h3>Your road so far</h3><ol class="hell-campaign-steps">'+d.steps.map(s=>{
+   html+=r.steps.length?'':sceneSection('hell-campaign-arrival','Arrival',sceneOf('hell','arrive',sim.state));html+='<section><h3>Your road so far</h3><ol class="hell-campaign-steps">'+d.steps.map(s=>{
     const done=r.steps.includes(s.id),next=ids.has(s.id);let controls='';
     if(!r.claimed&&next){
      if(!here)controls='<p>Go back to Hell to reach this step.</p>';
      else if(!H().at(sim,s))controls=button('Walk near this action','walk',s.id);
      else if(s.kind==='defeat')controls='<p>Close this page to fight. Tab selects Veyr. Use your blade or bow, move or Brace through the marked shape, and strike while he recovers.</p>';
      else if(s.kind==='choice')controls=d.choices.map(c=>act('Read this choice','review',c.id)).join('');
+     else if(s.id==='stabilize-service-engine'){const prompt=sceneOf('hell',s.id,sim.state)?.choice?.prompt||'';const answer=(heard,label)=>button(label,'step',s.id,'data-binding="'+this.binding.id+'" data-revision="'+this.binding.adventureRevision+'" data-heard="'+heard+'"');controls='<p>'+esc(prompt)+'</p>'+answer(true,'Let him talk')+answer(false,'I am not here to listen');}
      else controls=act(s.id==='challenge-veyr'?'Challenge Veyr':s.name,'step',s.id);
     }
-    return'<li class="'+(done?'hell-campaign-done':next?'hell-campaign-next':'')+'" data-hell-step="'+esc(s.id)+'"><h4>'+esc(s.name)+(s.optional?' · optional':'')+(done?' · recorded':'')+'</h4><p>'+esc(s.text)+'</p>'+speech(spoken(d,s.id,sim.state))+'<div class="world-actions">'+controls+'</div></li>';
+    return'<li class="'+(done?'hell-campaign-done':next?'hell-campaign-next':'')+'" data-hell-step="'+esc(s.id)+'"><h4>'+esc(s.name)+(s.optional?' · optional':'')+(done?' · recorded':'')+'</h4><p>'+esc(s.text)+'</p>'+speech(linesOf(sceneOf('hell',s.id,sim.state)))+'<div class="world-actions">'+controls+'</div></li>';
    }).join('')+'</ol></section>';
    if(!r.claimed&&H().ready(sim.state))html+='<section class="hell-campaign-ready"><h3>Complete</h3><p>Return to Istra to close the road. A full pouch never stops it; anything that does not fit stays in the works.</p>'+(here&&H().at(sim,d.giver)?act('Return to Istra and close the road','claim'):here?button('Walk back to Istra','walk','claim'):'')+'</section>';
    if(!r.claimed)html+=button('Track this road','track');
   }
-  html+='<section class="hell-campaign-dispositions"><h3>Three choices for the people held here</h3><p>Your choice changes the gate and the road it leaves. The regent remembers what you choose.</p><div class="hell-campaign-choice-grid">'+d.choices.map(c=>'<article data-hell-choice="'+esc(c.id)+'"'+(r?.choice===c.id?' class="hell-campaign-chosen"':'')+'><h4>'+esc(c.name)+(r?.choice===c.id?' · your choice':'')+'</h4><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p></article>').join('')+'</div></section>'+recognition(r,d,sim.state);
+  html+=H().sighted(sim.state)?sceneSection('hell-campaign-regent','The regent',sceneOf('hell','sighting',sim.state)):'';html+='<section class="hell-campaign-dispositions"><h3>Three choices for the people held here</h3><p>Your choice changes the gate and the road it leaves. The regent remembers what you choose.</p><div class="hell-campaign-choice-grid">'+d.choices.map(c=>'<article data-hell-choice="'+esc(c.id)+'"'+(r?.choice===c.id?' class="hell-campaign-chosen"':'')+'><h4>'+esc(c.name)+(r?.choice===c.id?' · your choice':'')+'</h4><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p></article>').join('')+'</div></section>'+recognition(r,d,sim.state);
   if(this.pending){const c=d.choices.find(c=>c.id===this.pending.choice),valid=this.same(this.pending,true);html+='<section class="hell-campaign-confirm" aria-label="Confirm this choice"><h3>'+esc(c?.name)+' · confirm this choice</h3><p>'+esc(c?.consequence)+'</p><p>This choice is kept for good. The reward is the same whichever you pick. It assigns no class and no allegiance.</p>'+(valid?act('Confirm this choice','confirm',c.id):'<p>Your checkpoint changed. Cancel this preview and read the choice again.</p>')+button('Cancel · decide later','cancel')+'</section>';}
   html+='<p class="hell-campaign-footer">Reading and walking record nothing. Both camera styles stay available. Your steps, your choice and a finished road survive a reload.</p></article>';
   return{title:d.title,html};
@@ -4230,7 +4253,7 @@ class HellCampaignUI{
   for(const[selector,value]of Object.entries(text)){const e=document.querySelector(selector);if(e)e.textContent=value;}
  }
 }
-const api={HellCampaignUI,routePoints,legend,reward,spoken};G.RealmHellCampaignUI=api;if(typeof module!=='undefined')module.exports=api;
+const api={HellCampaignUI,routePoints,legend,reward,sceneOf};G.RealmHellCampaignUI=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* Original service machinery. State and actual actors own every visible fact. */
 (function(G){'use strict';
@@ -4446,6 +4469,7 @@ if(typeof module!=='undefined')module.exports=api;
 (function(G){'use strict';
 const DATA=G.RealmAtlantisCampaignData||(typeof require==='function'?require('./atlantis-campaign-data.js'):null);
 const D=DATA.definition,P=DATA.patterns,F=DATA.current,Q=DATA.pressure;
+const SCRIPT=()=>G.RealmStoryScript||(typeof require==='function'?require('./story-script.js'):null);
 const SAGA=()=>G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
 const fail=error=>({ok:false,error}),copy=o=>JSON.parse(JSON.stringify(o)),finite=Number.isFinite,dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 const step=id=>D.steps.find(s=>s.id===id),record=s=>s?.atlantisCampaign||s,locks=new WeakMap(),owners=new WeakMap();
@@ -4514,7 +4538,7 @@ function command(ctx,type,payload,io){
  if(type==='claim'&&r.claimed)return{ok:true,duplicate:true,text:'This harbour repair is already complete. Its choice remains on the record.'};
  if(type==='accept'&&r.accepted)return{ok:true,duplicate:true,text:'This campaign is already accepted; its saved approach and work remain.'};
  let candidate;try{candidate=sim.snapshot();}catch(e){return fail('Campaign state refused: '+e.message);}
- const q=candidate.atlantisCampaign;let text,reward=null;
+ const q=candidate.atlantisCampaign;let text,reward=null,scene=null;
  if(type==='accept'){
   if(!eligible(candidate)||!at(sim,D.giver))return fail('The harbour repair is not open to you yet. Finish the story before it, then speak to Sahra.');
   q.accepted=true;text=D.title+' accepted. The earlier chart, lamp, equipment and free home passage retain their own history.';
@@ -4531,13 +4555,13 @@ function command(ctx,type,payload,io){
   if(!at(sim,s))return fail('Reach '+s.name+' at its actual supported medium and depth.');
   if(q.steps.includes(s.id))return{ok:true,duplicate:true,text:'This action is already recorded for this campaign.'};
   if(!available(candidate).some(v=>v.id===s.id))return fail('Complete '+s.name+' in its stated order, with the retained approach’s actual reading.');
-  q.steps.push(s.id);text=s.text;
+  q.steps.push(s.id);text=s.text;scene=SCRIPT()?.forStep?.('atlantis',s.id,candidate)||null;
  }else if(type==='choose'){
   const s=step('disposition'),choice=D.choices.find(c=>c.id===payload.choice);
   if(!q.accepted||q.claimed||!choice||!at(sim,s))return fail('Reach Ilyra’s registry after actual Custodian stabilization to choose the local disposition.');
   if(q.choice!==null)return q.choice===choice.id?{ok:true,duplicate:true,text:'That disposition is already recorded.'}:fail('The local disposition is a lasting deed and cannot be overwritten.');
   if(!available(candidate).some(v=>v.id===s.id))return fail('Secure the carrier, exhaust the actual bearing and stabilize both sequential releases before choosing.');
-  q.choice=choice.id;q.steps.push(s.id);text=choice.name+' recorded. '+choice.consequence;
+  q.choice=choice.id;q.steps.push(s.id);text=choice.name+' recorded. '+choice.consequence;scene=SCRIPT()?.forStep?.('atlantis','disposition',candidate)||null;
  }else if(type==='claim'){
   if(!q.accepted||!ready(candidate)||!at(sim,D.giver))return fail('Verify the passage and the handoff, then return to Sahra for your reward.');
   const a=candidate.adventure,inv=candidate.sandbox.inventory,fee=D.reward;
@@ -4546,7 +4570,7 @@ function command(ctx,type,payload,io){
   q.claimed=true;text=D.title+' complete · '+D.choices.find(c=>c.id===q.choice).name+' · '+reward.xp+' XP, '+fee.coins+' sunmarks, '+fee.ore+' ore, '+fee.materials.wood+' timber, '+fee.materials.fiber+' fibre and '+fee.materials.crystal+' crystal. Complete.'+(reward.xp<fee.xp?' Existing stored XP cap retained.':'');
  }else return fail('Unknown Atlantis campaign action.');
  const before=G.RealmAdventure.level(sim.state.adventure),result=commit(sim,candidate,io,text,ctx);
- if(result.ok){runtime(sim);if(reward)result.reward=reward;G.RealmAdventure.syncScene(sim);if(G.RealmAdventure.level(sim.state.adventure)>before)G.RealmAdventure.notify(sim,'Level '+G.RealmAdventure.level(sim.state.adventure)+' · a local passage remains.');}return result;
+ if(result.ok){runtime(sim);if(reward)result.reward=reward;if(scene){result.lines=scene.lines.map(l=>l.text);result.choice=scene.choice;}G.RealmAdventure.syncScene(sim);if(G.RealmAdventure.level(sim.state.adventure)>before)G.RealmAdventure.notify(sim,'Level '+G.RealmAdventure.level(sim.state.adventure)+' · a local passage remains.');}return result;
 }
 function enemies(sim){const r=sim?.state?.atlantisCampaign;return sim?.room===D.room&&!sim.worldDive&&eligible(sim.state)&&r?.accepted&&D.enemy.spawnAfter.every(id=>r.steps.includes(id))&&!r.steps.includes(D.enemy.defeatStep)?[{...D.enemy,originX:D.enemy.x,originZ:D.enemy.z,atlantisCampaign:D.id,xp:0,coins:0,ore:0,windup:P.sweep.windup,recovery:P.sweep.recovery,telegraphRadius:0}]:[];}
 const signature=sim=>enemies(sim).map(e=>e.id).join('|');
@@ -4895,21 +4919,11 @@ const definition=freeze({
   {id:'accessible-assist',name:'Accessible assist · keep the ceremony, add an easy lever',
    text:'Keep the three-notch ceremony and add a low lever with a request plate. Anyone who likes the ceremony keeps it. Anyone with tired hands uses the lever. The repaired stroke, the courier’s arrival and the true account all stay, and the garden stays open to everyone.',
    consequence:'The garden fitting keeps its notches and gains a low lever and a request plate. A deliberate press moves the assist stroke, and at rest it stays quiet. A small inscription invites visitors to ask. Rielle, Calen and the courier recognize it. It is kept for good. It grants no exclusive service, gear or class, and it passes no verdict on anyone.',
-   recognition:[
-    {name:'Rielle',text:'The familiar ceremony can stay. The low lever gives tired hands an easy way to ask.'},
-    {name:'Calen',text:'The courier came up the marked road. I will keep the wrong signal in our account.'},
-    {name:'Yselle',text:'The request plate leaves room for another pair of hands. The beds can stay planted.'},
-    {name:'Wayfarer',text:'I reached the garden on the marked road. The lever lets me answer with tired hands, and I can keep the ceremony if I want it.'}
-   ]},
+   },
   {id:'broadened-activation',name:'Broadened activation · make the broad plate ordinary',
    text:'Fit a broad plate that anyone can press. The ceremonial notches stay beside it as an optional sequence. Ordinary pressing no longer needs the sequence, though visitors may still do it by choice. The repaired stroke, the courier’s arrival and the true account all stay, and the garden stays open to everyone.',
    consequence:'The garden fitting shows a broad plate beside its retained notches. A deliberate press moves the plate, and at rest it stays quiet. A small inscription records that the plate is open to all. Rielle, Calen and the courier recognize it. It is kept for good. It grants no exclusive service, gear or class, and it passes no verdict on anyone.',
-   recognition:[
-    {name:'Rielle',text:'The broad plate answers an ordinary press. The old notches are still there for anyone who likes the sequence.'},
-    {name:'Calen',text:'The courier came up the marked road. Our corrected route now ends at an open plate.'},
-    {name:'Yselle',text:'A broad press leaves room for visitors who move differently. The beds can stay planted.'},
-    {name:'Wayfarer',text:'I reached the garden on the marked road. I can use the broad plate now, and the old sequence is there when I want to learn it.'}
-   ]}
+   }
  ],
  enemies:[
   {id:'heaven-glasswing-sentinel-v1',name:'Glasswing approach construct',kind:'sentinel',x:0,z:-61,hp:110,damage:12,radius:.55,damageWindow:'all-live-phases',spawnAfter:['begin-watch'],defeatStep:'beam-disabled',
@@ -5096,6 +5110,10 @@ const def=()=>typeof H()?.definition==='function'?H().definition():H()?.definiti
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const button=(label,type,id='',attrs='')=>'<button data-rpg="'+PREFIX+type+'" data-id="'+esc(id)+'" '+attrs+'>'+esc(label)+'</button>';
 const record=sim=>sim.state.heavenCampaign,step=id=>def().steps.find(s=>s.id===id);
+// the story script speaks every line; a scene absent for this state has none.
+const sceneOf=(owner,id,state)=>G.RealmStoryScript?.forStep?.(owner,id,state)||null,linesOf=s=>Array.isArray(s?.lines)?s.lines:[];
+const speech=lines=>lines.map(l=>'<p><strong>'+esc(l.speaker)+':</strong> “'+esc(l.text)+'”</p>').join('');
+const sceneSection=(cls,title,s)=>linesOf(s).length?'<section class="'+cls+'"><h3>'+esc(title)+'</h3>'+speech(linesOf(s))+'</section>':'';
 function reward(d=def()){return'Up to '+d.reward.xp+' XP within the stored cap · '+d.reward.coins+' sunmarks · '+d.reward.ore+' ore'+Object.entries(d.reward.materials).map(([k,n])=>' · '+n+' '+({wood:'timber',fiber:'fibre'}[k]||k)).join('');}
 function escortStatus(sim){const raw=H().escortStatus(sim),status=typeof raw==='string'?raw:raw?.status||raw?.phase||'inactive';return{status,help:typeof raw==='object'?raw.help||raw.text||'':''};}
 function escortPending(sim){const r=record(sim);return r?.accepted&&r.steps.includes('secure-service-route')&&!r.steps.includes(def().escort.arrivalStep);}
@@ -5111,7 +5129,7 @@ function routePoints(sim){const d=def(),r=record(sim);if(sim.room!==d.room||!r?.
  return points.map((p,i)=>({...p,heavenCampaign:true,mark:'G'+(i+1)}));
 }
 function legend(sim){const points=routePoints(sim);return points.length?'<section class="heaven-campaign-map"><h3>The gate that remained open</h3><p>G labels show this road. The service walk and the road home stay open; the upper terrace stays closed. Walking to a label records nothing.</p><ol>'+points.map(p=>'<li><strong>'+p.mark+'</strong> · '+esc(p.name)+(p.optional?' · optional preparation':'')+(p.informative?' · live location':'')+' '+button('Walk near this point','walk',p.id)+'</li>').join('')+'</ol>'+button('Read the road and the courier','open')+'</section>':'';}
-function recognition(r){const d=def();if(!r?.steps.includes('verify-welcome')||!r.choice)return'';const c=d.choices.find(c=>c.id===r.choice);return'<section class="heaven-campaign-local-recognition"><h3>The welcome is remembered</h3><p>'+esc(c.consequence)+'</p>'+(c.recognition||[]).map(line=>'<p><strong>'+esc(line.name)+':</strong> “'+esc(line.text)+'”</p>').join('')+'</section>';}
+function recognition(r,state){const d=def();if(!r?.steps.includes('verify-welcome')||!r.choice)return'';const c=d.choices.find(c=>c.id===r.choice);return'<section class="heaven-campaign-local-recognition"><h3>The welcome is remembered</h3><p>'+esc(c.consequence)+'</p>'+speech(linesOf(sceneOf('heaven','verify-welcome',state)))+'</section>';}
 class HeavenCampaignUI{
  constructor(rpg){this.rpg=rpg;this.pending=null;this.binding=null;this.serial=0;this.seen=new WeakSet();}
  get sim(){return this.rpg.sim;}
@@ -5161,7 +5179,7 @@ class HeavenCampaignUI{
  }
  invitation(){return this.journal();}
  envoySection(act){const d=def(),sim=this.sim,here=sim.room===d.room;
-  return'<section class="heaven-campaign-envoy"><h3>The envoy’s home</h3><p>The envoy keeps a house in this garden. The reading comes before the walk on the Arcade road: nothing is watching for you there until it is heard.</p>'+(here&&H().at(sim,d.envoy)?act('Hear the envoy’s reading','envoy'):here?button('Walk to the envoy','walk','envoy'):'<p>Go back to the garden to hear the reading.</p>')+'</section>';
+  return'<section class="heaven-campaign-envoy"><h3>The envoy’s home</h3><p>The envoy keeps a house in this garden. The reading comes before the walk on the Arcade road: nothing is watching for you there until it is heard.</p>'+speech(linesOf(sceneOf('heaven','envoy',sim.state)))+(here&&H().at(sim,d.envoy)?act('Hear the envoy’s reading','envoy'):here?button('Walk to the envoy','walk','envoy'):'<p>Go back to the garden to hear the reading.</p>')+'</section>';
  }
  escortSection(act){if(!escortPending(this.sim))return'';const sim=this.sim,d=def(),status=escortStatus(sim),active=['following','lagging'].includes(status.status),awaiting=status.status==='awaiting-save',near=H().at(sim,staging());
   const fallback=awaiting?'The courier reached Calen, but the arrival would not save. Stay beside Calen and close this page so the arrival can retry. It is not recorded until the save works.':active?'Close this page and walk the marked loop with the courier. Stay within '+d.escort.followRange+' units; it waits when you wander off.':'An unfinished walk resets after you leave or reload. The invitation stays. Come back to the waiting place and invite the courier again.';
@@ -5174,7 +5192,8 @@ class HeavenCampaignUI{
   if(!r?.accepted){html+='<section><h3>The Broken Choir is mended</h3><p>'+(!H().eligible(sim.state)?(G.RealmSaga.allowed(sim.state,'heaven')?'Finish the Broken Choir repair first. Its garden answer stays true.':'The garden gate opens after the foundry. Finish that road first.'):'Rielle has the road. Take it up when you are ready.')+'</p>'+(here&&H().eligible(sim.state)&&H().at(sim,d.giver)?act('Begin the road','accept'):here?button('Walk to Rielle','walk','giver'):'')+'<ol>'+d.steps.filter(s=>!s.optional).map(s=>'<li>'+esc(s.name)+'</li>').join('')+'</ol></section>';
   }else{
    if(r.claimed)html+='<section><h3>The welcome remains</h3><p>'+esc(d.completionText)+'</p></section>';
-   if(!H().heard(sim.state)&&!r.claimed)html+=this.envoySection(act);
+   if(!r.steps.length&&!r.claimed)html+=sceneSection('heaven-campaign-arrival','Arrival',sceneOf('heaven','arrive',sim.state));
+   if(!H().heard(sim.state)&&!r.claimed)html+=this.envoySection(act);else if(!r.claimed)html+=sceneSection('heaven-campaign-reading','The reading',sceneOf('heaven','reading',sim.state));
    html+='<section><h3>Your road so far</h3><ol class="heaven-campaign-steps">'+d.steps.map(s=>{
     const done=r.steps.includes(s.id),next=ids.has(s.id);let controls='';
     if(!r.claimed&&next){if(!here)controls='<p>Go back to the garden to reach this step.</p>';
@@ -5185,12 +5204,12 @@ class HeavenCampaignUI{
      else if(s.id===d.escort.startStep)controls=act('Invite the courier','invite',s.id);
      else controls=act(s.name,'step',s.id);
     }
-    return'<li class="'+(done?'heaven-campaign-done':next?'heaven-campaign-next':'')+'" data-heaven-step="'+esc(s.id)+'"><h4>'+esc(s.name)+(s.optional?' · optional':'')+(done?' · recorded':'')+'</h4><p>'+esc(s.text)+'</p><div class="world-actions">'+controls+'</div></li>';
+    return'<li class="'+(done?'heaven-campaign-done':next?'heaven-campaign-next':'')+'" data-heaven-step="'+esc(s.id)+'"><h4>'+esc(s.name)+(s.optional?' · optional':'')+(done?' · recorded':'')+'</h4><p>'+esc(s.text)+'</p>'+speech(linesOf(sceneOf('heaven',s.id,sim.state)))+'<div class="world-actions">'+controls+'</div></li>';
    }).join('')+'</ol></section>'+this.escortSection(act);
    if(!r.claimed&&H().ready(sim.state))html+='<section class="heaven-campaign-ready"><h3>Complete</h3><p>Return to Rielle to close the work. A full pouch never stops it; anything that does not fit stays in the garden.</p>'+(here&&H().at(sim,d.giver)?act('Return to Rielle and close the work','claim'):here?button('Walk back to Rielle','walk','claim'):'')+'</section>';
    if(!r.claimed)html+=button('Track this road','track');
   }
-  html+='<section><h3>Two welcome arrangements</h3><p>Both keep the garden open, the true account and the old return stroke. Your choice changes this one fitting and is kept for good.</p><div class="heaven-campaign-choice-grid">'+d.choices.map(c=>'<article data-heaven-choice="'+esc(c.id)+'"'+(r?.choice===c.id?' class="heaven-campaign-chosen"':'')+'><h4>'+esc(c.name)+(r?.choice===c.id?' · your welcome':'')+'</h4><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p></article>').join('')+'</div></section>'+recognition(r);
+  html+='<section><h3>Two welcome arrangements</h3><p>Both keep the garden open, the true account and the old return stroke. Your choice changes this one fitting and is kept for good.</p><div class="heaven-campaign-choice-grid">'+d.choices.map(c=>'<article data-heaven-choice="'+esc(c.id)+'"'+(r?.choice===c.id?' class="heaven-campaign-chosen"':'')+'><h4>'+esc(c.name)+(r?.choice===c.id?' · your welcome':'')+'</h4><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p></article>').join('')+'</div></section>'+recognition(r,sim.state);
   if(r?.choice)html+='<section><h3>Try your welcome</h3><p>Trying it changes nothing you have recorded. It only shows the arrangement you kept.</p>'+(here&&H().at(sim,step('fit-arrival-assist'))?act('Try the welcome','activate'):here?button('Walk near the welcome instrument','walk','instrument'):'<p>Go back to the garden to try it.</p>')+'</section>';
   if(this.pending){const c=d.choices.find(c=>c.id===this.pending.choice);html+='<section class="heaven-campaign-confirm" aria-label="Confirm welcome arrangement"><h3>'+esc(c.name)+' · confirm this welcome</h3><p>'+esc(c.consequence)+'</p><p>This is kept for good. Both arrangements keep the garden open and carry the same reward.</p>'+(this.same(this.pending,true)?act('Confirm this welcome','confirm',c.id):'<p>Your checkpoint changed. Cancel this preview and read the terms again.</p>')+button('Cancel · decide later','cancel')+'</section>';}
   html+='<p class="heaven-campaign-footer">Reading and walking record nothing. Arrival belongs to the courier. Both camera styles stay available. Your steps, your welcome and a finished road survive a reload.</p></article>';
@@ -11519,43 +11538,31 @@ const beatScenes=beat=>ids().filter(id=>SCENES[id].beat===beat);
 const api=freeze({CAST,FACTS,DERIVED,SETS,SCENES,STEPS,facts,holds,scene,forStep,ids,beatScenes});
 G.RealmStoryScript=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
-</script><script>/* The nearshore: the regent's faultless briar and the real one, at the lantern pier. The saga owns the truth
- * (briar.state, returnedDay, homeDay). This owner runs the two foxes, the real one's walk to her habit, the
- * answer and the soft failure. Runtime is never saved; every saved change is a candidate save, adopted only
- * after the writer says ok. The spoken lines live in SCENES, one small table per scene, for the story script. */
+</script><script>/* The nearshore: Briar's two foxes at the lantern pier. The saga owns the truth (briar.state, falseTrusted,
+ * returnedDay, homeDay, the nearshore beat). This owner runs the foxes, the real one's walk to her habit, the heel
+ * prompt and the answers. Every line comes from the story script (forStep); runtime is never saved; each saved
+ * change is a candidate save, adopted only after the writer says ok. BRANCHES.md 3.8, 5 and 6. */
 (function(G){'use strict';
 const SAGA=()=>G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
 const CORE=()=>G.RealmCore||(typeof require==='function'?require('./core.js'):null);
+const SCRIPT=()=>G.RealmStoryScript||(typeof require==='function'?require('./story-script.js'):null);
 const PLACE=Object.freeze({x:0,z:27}),REAL_START=Object.freeze({x:-.6,z:26.4});
-const WAIT=2,WALK=2.4,SIDE=.5,HEEL=1.1,COLD=1.8,RETRY=3,REACH=2.8,NEAR=9,GROUND=1.31;
+const WAIT=2,WALK=2.4,SIDE=.5,HEEL=1.1,REACH=2.8,NEAR=9,GROUND=1.31;
 const fail=error=>({ok:false,error}),finite=Number.isFinite,dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
-const SCENES=Object.freeze({
- arrive:Object.freeze([
-  {speaker:'The Regent of Ash',text:'I kept her for you. She never strays now.'},
-  {speaker:'',text:'Two foxes stand on the boards. One of them is looking past you.'}]),
- real:Object.freeze([
-  {speaker:'',text:'She leans into your leg, and the habit she had comes back with her.'},
-  {speaker:'',text:'Briar is home.'}]),
- false:Object.freeze([
-  {speaker:'',text:'The fox at your heel goes cold and comes apart like ash on the water.'},
-  {speaker:'The Regent of Ash',text:'Ha. You knew her too late.'}]),
- refuse:Object.freeze([
-  {speaker:'The Regent of Ash',text:'You came all this way alone. Take this one. She will never stray from you.'},
-  {speaker:'',text:'The fox at his feet is perfect, and it is not looking at anything.'},
-  {speaker:'',text:'You walk past it. Nothing that cannot leave you is a companion.'}]),
- home:Object.freeze([
-  {speaker:'',text:'That evening Briar settles in her old spot by the door, beside her bowl.'}])
-});
-const text=lines=>lines.map(l=>l.text).join(' ');
+// The script is the source of every spoken line; a missing script speaks nothing rather than inventing text.
+const spoken=(step,state)=>{const s=SCRIPT()?.forStep?.('nearshore',step,state);return s?s.lines.map(l=>l.text):[];};
+const sceneOf=(step,state)=>SCRIPT()?.forStep?.('nearshore',step,state)||null;
 // Each saga write lands in a candidate's journal the way Simulation.event would.
 const journalOn=c=>(kind,t)=>{c.journal.push({seq:c.nextEvent++,day:c.day,hour:c.hour,kind,text:t.slice(0,350)});if(c.journal.length>200)c.journal.shift();};
 const simOn=c=>({state:c,event:journalOn(c)});
 const runtimes=new WeakMap();
 // Live only outdoors, with Briar taken to the nearshore and the witness finished.
 function active(sim){const s=sim?.state;return !!s&&sim.room===null&&!sim.worldDive&&s.saga?.briar?.state==='nearshore'&&SAGA().done(s,'witness');}
+// The faultless fox leaves the scene for good once it has been taken home (falseTrusted is saved).
+const hasFalse=state=>state?.saga?.briar?.falseTrusted===true;
 function runtime(sim){
  let r=runtimes.get(sim);
- if(!r||r.owner!==sim.state){r={owner:sim.state,last:sim.elapsed||0,real:{x:REAL_START.x,z:REAL_START.z,yaw:0,path:null,started:false,sit:false,t:0,motion:null},fake:{state:'heel',t:0,x:0,z:0,yaw:0,motion:null}};runtimes.set(sim,r);}
+ if(!r||r.owner!==sim.state){r={owner:sim.state,last:sim.elapsed||0,real:{x:REAL_START.x,z:REAL_START.z,yaw:0,path:null,started:false,sit:false,t:0,motion:null,spot:null},fake:{x:0,z:0,yaw:0,motion:null}};runtimes.set(sim,r);}
  return r;
 }
 function heelAt(sim){
@@ -11593,23 +11600,22 @@ function stepReal(sim,f,dt){
 function step(sim){
  const r=runtime(sim),now=finite(sim.elapsed)?sim.elapsed:0,dt=Math.min(.1,Math.max(0,now-r.last));r.last=now;
  r.real.t+=dt;stepReal(sim,r.real,dt);
- const f=r.fake;
- if(f.state==='heel'){const h=heelAt(sim);f.x=h.x;f.z=h.z;f.yaw=sim.state.player.yaw||0;}
- else{f.t+=dt;if(f.state==='cold'&&f.t>=COLD){f.state='gone';f.t=0;}else if(f.state==='gone'&&f.t>=RETRY){f.state='heel';f.t=0;}}
+ if(!hasFalse(sim.state)){const h=heelAt(sim);r.fake.x=h.x;r.fake.z=h.z;r.fake.yaw=sim.state.player.yaw||0;}
  return r;
 }
-function view(sim){if(!active(sim)){runtimes.delete(sim);return null;}return step(sim);}
+// The view the art and the interaction read: the real fox always; the faultless fox only while she is not yet taken home.
+function view(sim){if(!active(sim)){runtimes.delete(sim);return null;}const r=step(sim);return{real:r.real,fake:hasFalse(sim.state)?null:r.fake};}
 function foxAt(sim){
- const r=view(sim);if(!r)return null;const p=sim.state.player,cands=[];
- if(dist(p,r.real)<=REACH)cands.push(['real',dist(p,r.real)]);
- if(r.fake.state==='heel'&&dist(p,r.fake)<=REACH)cands.push(['false',dist(p,r.fake)]);
+ const v=view(sim);if(!v)return null;const p=sim.state.player,cands=[];
+ if(dist(p,v.real)<=REACH)cands.push(['real',dist(p,v.real)]);
+ if(v.fake&&dist(p,v.fake)<=REACH)cands.push(['false',dist(p,v.fake)]);
  cands.sort((a,b)=>a[1]-b[1]);return cands[0]?cands[0][0]:null;
 }
 function commit(sim,candidate,io,line,lines){
  const state=sim.state,room=sim.room,before=JSON.stringify(state);
  if(candidate.adventure.revision>=1e9||candidate.nextEvent>=Number.MAX_SAFE_INTEGER-1)return fail('Export this character before continuing: record limit reached.');
  candidate.adventure.revision++;
- candidate.journal.push({seq:candidate.nextEvent++,day:candidate.day,hour:candidate.hour,kind:'nearshore',text:line.slice(0,350)});if(candidate.journal.length>200)candidate.journal.shift();
+ candidate.journal.push({seq:candidate.nextEvent++,day:candidate.day,hour:candidate.hour,kind:'nearshore',text:String(line).slice(0,350)});if(candidate.journal.length>200)candidate.journal.shift();
  let checked,saved;try{checked=CORE().validate(candidate);saved=io?.save?.(checked);}catch(e){return fail('Nearshore save refused: '+e.message);}
  if(!saved?.ok)return fail(saved?.error||'Nearshore save refused. Nothing was changed.');
  if(sim.state!==state||sim.room!==room||JSON.stringify(sim.state)!==before)return fail('The character changed during saving. The saved candidate was not adopted.');
@@ -11617,6 +11623,7 @@ function commit(sim,candidate,io,line,lines){
  sim.state.journal=checked.journal;sim.state.nextEvent=checked.nextEvent;
  return{ok:true,text:line,lines};
 }
+// The pier, then the offer: the regent's first words once Briar is taken to the nearshore.
 function arrive(sim,io){
  const s=sim.state.saga;
  if(s.briar.state==='nearshore'||s.briar.state==='returned')return{ok:true,duplicate:true,text:''};
@@ -11625,35 +11632,64 @@ function arrive(sim,io){
  if(!SAGA().done(sim.state,'witness'))return fail('The witness is not finished yet.');
  if(dist(sim.state.player,PLACE)>NEAR)return fail('Walk out onto the lantern pier first.');
  const c=sim.snapshot(),res=SAGA().briarAtNearshore(simOn(c));if(!res.ok)return fail(res.error);
- return commit(sim,c,io,text(SCENES.arrive),SCENES.arrive);
+ const lines=[...spoken('pier',sim.state),...spoken('arrive',c)];
+ return commit(sim,c,io,lines.join(' '),lines);
 }
-function choose(sim,payload,io){
- const fox=payload.fox;if(fox!=='real'&&fox!=='false')return fail('Choose one of the two foxes.');
- const r=view(sim);if(!r)return fail('Nobody is waiting on the pier.');
- if(foxAt(sim)!==fox)return fail('Walk up to the fox you mean, then answer it.');
- if(fox==='false'){r.fake.state='cold';r.fake.t=0;return{ok:true,soft:true,text:text(SCENES.false),lines:SCENES.false};}
- const c=sim.snapshot();if(c.adventure.companion?.bonded!==true)return fail('Briar is not yours to call.');
- const res=SAGA().briarReturned(simOn(c));if(!res.ok)return fail(res.error);
- c.adventure.companion.mode='follow';
- const out=commit(sim,c,io,text(SCENES.real),SCENES.real);
- if(out.ok){runtimes.delete(sim);G.RealmAdventure?.syncScene?.(sim);}
- return out;
+// Never bonded (BRANCHES 6): arriving at the pier plays the pier and then the plain scene, and the nearshore beat is marked.
+function plain(sim,io){
+ const s=sim.state.saga;
+ if(sim.room!==null||sim.worldDive)return fail('Walk out onto the lantern pier first.');
+ if(sim.state.adventure.companion?.bonded===true)return fail('Briar is yours to bring home.');
+ if(!SAGA().done(sim.state,'witness'))return fail('The witness is not finished yet.');
+ if(s.beats&&Object.prototype.hasOwnProperty.call(s.beats,'nearshore'))return{ok:true,duplicate:true,text:''};
+ if(dist(sim.state.player,PLACE)>NEAR)return fail('Walk out onto the lantern pier first.');
+ // the pier path is for a save where Briar was never taken; a taken Briar is answered at the nearshore instead.
+ if(s.briar.state!=='with'||s.briar.takenDay!==null)return fail('Briar was taken. Answer the foxes at the nearshore.');
+ const c=sim.snapshot(),res=SAGA().mark(simOn(c),'nearshore');if(!res.ok)return fail(res.error);
+ const lines=[...spoken('pier',sim.state),...spoken('plain',c)];
+ return commit(sim,c,io,lines.join(' '),lines);
 }
 // A player who never took Briar home meets the same offer with nobody to compare it to, and says no.
+const REFUSE=Object.freeze(['You came all this way alone. Take this one. She will never stray from you.','The fox at his feet is perfect, and it is not looking at anything.','You walk past it. Nothing that cannot leave you is a companion.']);
 function refusable(sim){const s=sim?.state;return !!s&&sim.room===null&&!sim.worldDive&&s.adventure?.companion?.bonded!==true&&s.saga?.briar?.state==='with'&&!Object.hasOwn(s.saga.beats,'nearshore')&&Object.hasOwn(s.saga.beats,'night')&&SAGA().done(s,'witness');}
 function refuse(sim,io){
  if(Object.hasOwn(sim.state.saga.beats,'nearshore'))return{ok:true,duplicate:true,text:''};
  if(!refusable(sim))return fail('Nobody is waiting on the pier for you.');
  if(dist(sim.state.player,PLACE)>REACH+1)return fail('Walk out onto the lantern pier first.');
  const c=sim.snapshot(),res=SAGA().refuseCompanion(simOn(c));if(!res.ok)return fail(res.error);
- return commit(sim,c,io,text(SCENES.refuse),SCENES.refuse);
+ return commit(sim,c,io,REFUSE.join(' '),REFUSE);
+}
+// Answering the real fox: no prompt; her habit is in the lines.
+function choose(sim,payload,io){
+ const fox=payload.fox;if(fox!=='real'&&fox!=='false')return fail('Choose one of the two foxes.');
+ const v=view(sim);if(!v)return fail('Nobody is waiting on the pier.');
+ if(foxAt(sim)!==fox)return fail('Walk up to the fox you mean, then answer it.');
+ if(fox==='false'){const sc=sceneOf('heel',sim.state);return{ok:true,heel:true,prompt:sc?.choice?.prompt||'',options:sc?.choice?.options||[],lines:spoken('heel',sim.state),text:spoken('heel',sim.state).join(' ')};}
+ const c=sim.snapshot();if(c.adventure.companion?.bonded!==true)return fail('Briar is not yours to call.');
+ const res=SAGA().briarReturned(simOn(c));if(!res.ok)return fail(res.error);
+ c.adventure.companion.mode='follow';
+ const lines=spoken('real',c);
+ const out=commit(sim,c,io,lines.join(' '),lines);
+ if(out.ok){runtimes.delete(sim);G.RealmAdventure?.syncScene?.(sim);}
+ return out;
+}
+// The heel prompt's answer. Only take saves anything: briar-false (BRANCHES 2.2) and the faultless fox leaves.
+function heelAnswer(sim,payload,io){
+ if(typeof payload.take!=='boolean')return fail('Answer the fox at your heel.');
+ if(!active(sim))return fail('Nobody is waiting on the pier.');
+ if(payload.take!==true)return{ok:true,text:'',lines:[]};
+ if(hasFalse(sim.state))return{ok:true,duplicate:true,text:''};
+ const c=sim.snapshot(),res=SAGA().command(simOn(c),'nearshore-briar-false','briar-false',{});if(!res.ok)return fail(res.error);
+ const lines=spoken('false',c);
+ return commit(sim,c,io,lines.join(' '),lines);
 }
 function home(sim,io){
  const s=sim.state.saga;
  if(s.briar.state!=='returned')return fail('Briar is not with you yet.');
  if(s.briar.homeDay!==null)return{ok:true,duplicate:true,text:''};
  const c=sim.snapshot(),res=SAGA().briarHome(simOn(c));if(!res.ok)return fail(res.error);
- return commit(sim,c,io,text(SCENES.home),SCENES.home);
+ const lines=spoken('home',c);
+ return commit(sim,c,io,lines.join(' '),lines);
 }
 // ctx: { sim, active }. payload carries the revision and the active owner the caller read.
 function command(ctx,type,payload,io){
@@ -11661,16 +11697,19 @@ function command(ctx,type,payload,io){
  if(!sim||!(sim instanceof CORE().Simulation)||!payload||typeof payload!=='object'||Array.isArray(payload))return fail('Reach the nearshore while able to act.');
  if(typeof ctx.active!=='string'||!ctx.active||payload.expectedActive!==ctx.active||!Number.isSafeInteger(payload.expectedRevision)||payload.expectedRevision!==sim.state.adventure.revision)return fail('The character or place changed. Read the current place again.');
  if(type==='arrive')return arrive(sim,io);
- if(type==='choose')return choose(sim,payload,io);
- if(type==='home')return home(sim,io);
+ if(type==='plain')return plain(sim,io);
  if(type==='refuse')return refuse(sim,io);
+ if(type==='choose')return choose(sim,payload,io);
+ if(type==='heel-answer')return heelAnswer(sim,payload,io);
+ if(type==='home')return home(sim,io);
  return fail('Unknown nearshore action.');
 }
-const api=Object.freeze({PLACE,REAL_START,WAIT,WALK,HEEL,COLD,RETRY,REACH,NEAR,SCENES,active,view,foxAt,habitSpot,refusable,hidesBriar:active,command});
+const api=Object.freeze({PLACE,REAL_START,WAIT,WALK,HEEL,REACH,NEAR,active,view,foxAt,habitSpot,refusable,hidesBriar:active,spoken,command});
 G.RealmNearshore=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
-</script><script>/* Presents the nearshore. The arrival and the first-evening home are called from the frame when their
- * conditions hold; answering a fox is a physical interaction with the nearest one. Reading grants nothing:
+</script><script>/* Presents the nearshore. The pier, the arrival, the never-bonded plain scene and the first-evening home are called
+ * from the frame when their conditions hold. A fox is a physical interaction: E on the real fox answers at once;
+ * E on the fox at your heel opens the story dialog's take-or-wait prompt (BRANCHES 3.8). Reading grants nothing;
  * every saved change is a command with the revision and owner the caller read. */
 (function(G){'use strict';
 const N=()=>G.RealmNearshore,S=()=>G.RealmSaga;
@@ -11682,26 +11721,38 @@ class NearshoreUI{
   const sim=this.sim,c=this.rpg.api.worldContext();
   const result=this.rpg.api.nearshoreCommand(type,{expectedRevision:sim.state.adventure.revision,expectedActive:c.active,...extra});
   if(result.ok&&result.text)this.rpg.api.toast(result.text);
-  else if(!result.ok&&type==='choose')this.rpg.api.toast(result.error);
+  else if(!result.ok&&(type==='choose'||type==='heel-answer'))this.rpg.api.toast(result.error);
   if(result.ok&&!result.duplicate)this.rpg.paint();
   return result;
  }
  tick(){
   const sim=this.sim;if(!sim||sim.worldDive||!N()||!S())return;
   const now=sim.elapsed||0;if(now<this.nextTry)return;
-  const s=sim.state.saga,p=sim.state.player,hour=sim.state.hour;
-  const arrive=sim.room===null&&s.briar.state==='taken'&&S().done(sim.state,'witness')&&Math.hypot(p.x-N().PLACE.x,p.z-N().PLACE.z)<=N().NEAR;
+  const s=sim.state.saga,p=sim.state.player,hour=sim.state.hour,near=Math.hypot(p.x-N().PLACE.x,p.z-N().PLACE.z)<=N().NEAR;
+  const arrive=sim.room===null&&s.briar.state==='taken'&&S().done(sim.state,'witness')&&near;
+  const plain=sim.room===null&&sim.state.adventure.companion?.bonded!==true&&s.briar.state==='with'&&S().done(sim.state,'witness')&&!Object.hasOwn(s.beats,'nearshore')&&near;
   const evening=s.briar.state==='returned'&&s.briar.homeDay===null&&hour>=18&&hour<22&&sim.state.day>=s.briar.returnedDay;
-  if(!arrive&&!evening)return;
+  if(!arrive&&!plain&&!evening)return;
   this.nextTry=now+1;
-  this.run(arrive?'arrive':'home');
+  this.run(arrive?'arrive':plain?'plain':'home');
  }
  lone(){const sim=this.sim;return !!sim&&!!N()?.refusable?.(sim)&&Math.hypot(sim.state.player.x-N().PLACE.x,sim.state.player.z-N().PLACE.z)<=N().REACH+1;}
+ // The heel prompt: take or wait. Only take reaches the saga (briar-false) through the heel-answer command.
+ heel(r){
+  const dlg=typeof document!=='undefined'?document.getElementById('story-dialog'):null;if(!dlg||!Array.isArray(r.options))return;
+  document.getElementById('story-speaker').textContent='THE FOX AT YOUR HEEL';
+  document.getElementById('story-title').textContent=r.prompt;
+  document.getElementById('story-body').textContent=r.text;
+  const box=document.getElementById('story-buttons');box.innerHTML='';
+  for(const o of r.options){const b=document.createElement('button');b.textContent=o.label;b.onclick=()=>{dlg.close();this.run('heel-answer',{take:o.id==='take'});};box.appendChild(b);}
+  dlg.showModal();
+ }
  interact(){
   const sim=this.sim;if(this.lone()){const r=this.run('refuse');if(!r.ok)this.rpg.api.toast(r.error);return true;}
   if(!sim||!N()||!N().active(sim))return false;
   const fox=N().foxAt(sim);if(!fox)return false;
-  this.run('choose',{fox});
+  const r=this.run('choose',{fox});
+  if(r.ok&&r.heel)this.heel(r);
   return true;
  }
  context(){const sim=this.sim;if(this.lone())return 'E · Refuse the Regent';return sim&&N()&&N().active(sim)&&N().foxAt(sim)?'E · Answer the fox':null;}
@@ -11727,7 +11778,7 @@ function draw(out,sim){
   }
  };
  one(r.real,false);
- if(r.fake.state!=='gone')one(r.fake,r.fake.state==='cold');
+ if(r.fake)one(r.fake,false);
 }
 const api={draw};G.RealmNearshoreArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
