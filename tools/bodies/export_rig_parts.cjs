@@ -7,6 +7,8 @@ const root=path.resolve(__dirname,'../..');
 require(path.join(root,'src/engine.js'));require(path.join(root,'src/creative.js'));
 const T=require(path.join(root,'src/traveler-art.js'));
 const out={box:[],round:[],octa:[],disc:[],capsule:[],'traveler-cloth':[]};
+// the rig draws into every baked kind; create them here so the export works before the module is repacked.
+for(const k of ['body-head','body-neck','body-torso','body-upper-arm','body-forearm','body-hand','body-thigh','body-shin','body-foot','body-hidden'])out[k]=[];
 T.draw(out,{x:0,z:0,base:0,yaw:0},T.pose({}));
 const r=v=>Number(Number(v).toFixed(9));
 const parts=[];
