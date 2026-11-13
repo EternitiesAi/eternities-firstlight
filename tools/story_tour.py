@@ -104,7 +104,8 @@ def run_step(page, step):
             page.evaluate("Realm.test.step(5)")
         else:
             return {"ok": False, "step": "walk", "error": "the walk did not finish in 2000 simulated seconds"}
-        gap = page.evaluate("p => Math.hypot(Realm.state.player.x - p[0], Realm.state.player.z - p[1])", target)
+        # the snapshot (Realm.state) reports the home position inside a realm room; the live player is in diagnostics.
+        gap = page.evaluate("p => Math.hypot(Realm.diagnostics.adventure.player.x - p[0], Realm.diagnostics.adventure.player.z - p[1])", target)
         return {"ok": gap < 1.6, "step": "walk", "gap": gap}
     if "realm" in step:
         return page.evaluate("id => Realm.tour.enterRealm(id)", step["realm"])
