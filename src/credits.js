@@ -16,8 +16,10 @@ function ensure(){
  dialog.addEventListener('keydown',e=>{if(['Escape','Enter',' '].includes(e.key)){e.preventDefault();finisher&&finisher();}});
  return dialog;
 }
+// every roll ends with the score and effects sources, whichever module calls show.
+const AUDIO=[{title:'Music and sound',lines:['Score generated with ACE-Step, Apache-2.0 code and model weights.','Sound effects from kenney.nl audio packs, CC0 1.0.','Birds and ambience are made by the game code.']}];
 function show(sections,opts={}){
- const d=ensure(),list=normalize(sections),track=d.querySelector('.credits-track');
+ const d=ensure(),base=Array.isArray(sections)?sections:[],list=normalize(opts.audio===false?base:base.concat(AUDIO)),track=d.querySelector('.credits-track');
  track.innerHTML=list.map(s=>'<section class="credits-section">'+(s.title?'<h2>'+esc(s.title)+'</h2>':'')+s.lines.map(l=>'<p>'+esc(l)+'</p>').join('')+'</section>').join('')+'<p class="credits-end">Thank you for playing.</p>';
  const still=!!opts.still||(typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches);
  let raf=0,start=0,done=false;

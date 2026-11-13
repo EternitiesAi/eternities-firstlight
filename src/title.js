@@ -15,6 +15,7 @@ const KEY_ROWS=[
  ['Journal, crafting, map','<kbd>J</kbd> journal · <kbd>K</kbd> crafting · <kbd>M</kbd> map'],
  ['Build and inhabitants','<kbd>B</kbd> construction · <kbd>O</kbd> inhabitants'],
  ['Pause','<kbd>Esc</kbd> opens the pause menu · <kbd>P</kbd> freezes the world'],
+ ['Feather’s sight','<kbd>Z</kbd> hold to see true roads in gold and counterfeit roads in ash red'],
  ['Photo','<kbd>H</kbd> hides the interface']
 ];
 const CREDITS=[
