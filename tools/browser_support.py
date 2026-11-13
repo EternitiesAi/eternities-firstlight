@@ -1,9 +1,13 @@
 import os
+import sys
 
 def launch_kwargs(renderer="software"):
     args = ["--no-sandbox", "--disable-dev-shm-usage", "--enable-webgl", "--ignore-gpu-blocklist"]
     if renderer == "software":
         args += ["--disable-gpu-sandbox", "--use-angle=swiftshader"]
+    elif sys.platform.startswith("linux"):
+        # Linux GPU hosts (the aws build box, nvidia l4): ANGLE over Vulkan reaches the real GPU; the default is SwiftShader.
+        args += ["--use-angle=vulkan", "--enable-gpu", "--enable-features=Vulkan"]
     else:
         args += ["--use-angle=d3d11"]
     result = {"headless": True, "args": args}
