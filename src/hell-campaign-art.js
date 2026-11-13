@@ -38,7 +38,21 @@ function service(out,sim,step){const r=sim.state.hellCampaign,{box,emit}=painter
   for(const x of[-.16,.16])emit('disc',[x,1.08,.32],[.23,.026,.23],0xd2b177,'named-crew-seal',{r:[Math.PI/2,0,0]});
  }
 }
-function draw(out,sim,time){const d=definition(),r=sim.state.hellCampaign;if(!d||sim.room!==d.room||!r?.accepted)return;
+// the regent of ash stands at the gate once he has been seen there. the story art owns the figure when it lands;
+// the fallback keeps the sighting visible on its own primitives until then.
+function regent(out,sim,anchor,yaw){
+ const story=G.RealmStoryArt?.regent;
+ if(typeof story==='function'){const got=story(out,anchor,yaw,sim);if(Array.isArray(got))for(const i of got)if(i&&out[i.kind])out[i.kind].push(i);return;}
+ const{box,emit}=painter(out,sim,anchor,yaw,{hellCampaignActor:'regent'}),ash=0x5d5a57,ember=0xe0683a;
+ box(0,.22,0,.9,.44,.56,0x4a4745,'regent-hem');box(0,1.05,0,.82,1.66,.5,ash,'regent-coat');box(0,2.02,0,.9,.22,.44,ash,'regent-shoulders');
+ for(const x of[-.22,.22])box(x,1.05,.262,.035,1.6,.02,ember,'regent-ember-seam',{em:.6});
+ box(-.5,1.2,0,.14,.9,.14,0x3a3838,'regent-arm');box(.5,1.2,0,.14,.9,.14,0x3a3838,'regent-arm');
+ emit('round',[0,2.28,0],[.36,.42,.34],0xb3aba0,'regent-face');
+ box(0,2.2,.17,.22,.04,.03,0x6b2b1f,'regent-smile');
+ for(const x of[-.1,.1])box(x,2.32,.16,.05,.05,.03,0xe0a25a,'regent-eye',{em:.5});
+ for(let i=0;i<6;i++){const a=i*Math.PI/3;emit('octa',[Math.cos(a)*.3,2.66,Math.sin(a)*.3],[.12,.16,.12],i%2?0x2a2624:0x3b2f2a,'regent-cinder',{em:i%2?0:.25});}
+}
+function draw(out,sim,time){const d=definition(),r=sim.state.hellCampaign;if(!d||sim.room!==d.room)return;if(sim.state.saga?.regent?.includes('foundry'))regent(out,sim,d.regent,0);if(!r?.accepted)return;
  const steps=new Set(r.steps),byId=id=>d.steps.find(s=>s.id===id);
  if(steps.has('witness-record')){const p=byId('witness-record'),{box}=painter(out,sim,{x:p.x-.95,z:p.z});box(0,.43,0,.76,.86,.48,0x857b66,'witness-record-stand');box(0,.88,0,.66,.04,.41,0xe0cba7,'preserved-witness-account');for(let i=0;i<3;i++)box(-.08,.907,-.11+i*.10,.42,.012,.026,0x6e7d70,'witness-measurement-line');}
  if(steps.has('tovan-account')){const p=byId('tovan-account'),{box}=painter(out,sim,{x:p.x+.95,z:p.z+.8});box(0,.13,0,.76,.26,.50,0x626961,'riveter-record-box');box(0,.277,0,.60,.026,.38,0xd0be94,'riveter-measurement-copy');for(const x of[-.2,0,.2])box(x,.30,0,.04,.04,.22,0x8b997d,'riveter-reference-notch');}

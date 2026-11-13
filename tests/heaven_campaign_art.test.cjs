@@ -2,6 +2,7 @@
  * Actual rules are tested separately. These checks do not prove earned play,
  * escort movement, native persistence, browser pixels or device performance. */
 'use strict';
+require('./hellheaven_night_gate.cjs');
 const test=require('node:test'),assert=require('node:assert/strict');
 const C=require('../src/core.js'),A=require('../src/adventure.js'),W=require('../src/world-foundations.js'),E=require('../src/engine.js');
 const Trails=require('../src/realm-trails.js');require('../src/realm-trails-ui.js');
@@ -11,7 +12,8 @@ const D=require('../src/heaven-campaign-data.js').definition,live=new WeakMap();
 const H=global.RealmHeavenCampaign={definition:D,
  eligible:state=>!!state.realmTrails.records[D.prerequisite]?.claimed,
  available:state=>{const r=state.heavenCampaign;return r?.accepted&&!r.claimed?D.steps.filter(s=>!r.steps.includes(s.id)&&s.requires.every(id=>r.steps.includes(id))):[];},
- ready:state=>!!state.heavenCampaign?.accepted&&D.steps.filter(s=>!s.optional).every(s=>state.heavenCampaign.steps.includes(s.id)),
+ heard:state=>(state.saga?.prophecy||[]).includes('heaven'),
+ ready:state=>!!state.heavenCampaign?.accepted&&(state.saga?.prophecy||[]).includes('heaven')&&D.steps.filter(s=>!s.optional).every(s=>state.heavenCampaign.steps.includes(s.id)),
  at:Trails.at,runtime:sim=>live.get(sim),beamLength:(_sim,e)=>e.strike?.length??0,
  escortStatus:sim=>{const r=live.get(sim);return r.escort?{status:r.escort.phase,help:'Owned courier '+r.escort.phase+' on the supported service loop.'}:{status:r.status||'reset',help:''};}
 };
@@ -36,7 +38,7 @@ function button(html,type,id=''){const m=html.match(new RegExp('<button data-rpg
 function at(sim,id){const s=D.steps.find(s=>s.id===id);sim.state.player.x=s.x;sim.state.player.z=s.z;assert.ok(H.at(sim,s),'actual authored anchor reachable');}
 
 test('accepted recorded facts alone project static work; reading and art preserve every stored field',()=>{
- const sim=specimen(),before=JSON.stringify(sim.state),out=empty();Art.draw(out,sim,1);assert.deepEqual(all(out),[]);assert.equal(JSON.stringify(sim.state),before);
+ const sim=specimen(),before=JSON.stringify(sim.state),out=empty();Art.draw(out,sim,1);assert.ok(all(out).every(i=>String(i.heavenCampaignPart||'').startsWith('envoy-')),'only the standing envoy draws before any work');assert.equal(JSON.stringify(sim.state),before);
  sim.state.heavenCampaign.steps=['witness-account'];Art.draw(out,sim,2);assert.ok(all(out).some(p=>p.heavenCampaignPart==='preserved-witness-account'));assert.ok(all(out).every(p=>!p.person&&!p.actor&&!p.heavenCampaignEscort));
  sim.state.heavenCampaign.accepted=false;const unaccepted=empty();Art.draw(unaccepted,sim,0);assert.deepEqual(all(unaccepted),[]);
  sim.state.heavenCampaign.accepted=true;sim.room=null;const home=empty();Art.draw(home,sim,0);assert.deepEqual(all(home),[]);
@@ -180,15 +182,15 @@ test('worst-case union of all fittings, separately owned encounter frames and co
 });
 
 test('journal, map, legend and page are pure; defeats and actual courier arrival have no completion buttons',()=>{
- const sim=specimen(),h=harness(sim),before=JSON.stringify(sim.state);h.ui.journal();h.ui.page('heaven-campaign');UI.legend(sim);assert.deepEqual(UI.routePoints(sim).map(p=>p.id),['witness-account']);assert.equal(JSON.stringify(sim.state),before);assert.deepEqual(h.commands,[]);
- for(const enemy of D.enemies){sim.state.heavenCampaign.steps=required.slice(0,required.indexOf(enemy.defeatStep));at(sim,enemy.defeatStep);const html=h.ui.page('heaven-campaign').html;assert.ok(html.includes('Close this workspace to resume combat'));assert.ok(!html.includes('data-rpg="heaven-campaign-step" data-id="'+enemy.defeatStep+'"'));}
- sim.state.heavenCampaign.steps=required.slice(0,required.indexOf(D.escort.arrivalStep));at(sim,D.escort.arrivalStep);const html=h.ui.page('heaven-campaign').html;assert.ok(html.includes('there is no arrival button'));assert.ok(!html.includes('data-rpg="heaven-campaign-step" data-id="'+D.escort.arrivalStep+'"'));assert.ok(!html.includes('data-rpg="heaven-campaign-arrive"'));
+ const sim=specimen(),h=harness(sim),before=JSON.stringify(sim.state);h.ui.journal();h.ui.page('heaven-campaign');UI.legend(sim);assert.deepEqual(UI.routePoints(sim).map(p=>p.id),['envoy','witness-account']);assert.equal(JSON.stringify(sim.state),before);assert.deepEqual(h.commands,[]);
+ for(const enemy of D.enemies){sim.state.heavenCampaign.steps=required.slice(0,required.indexOf(enemy.defeatStep));at(sim,enemy.defeatStep);const html=h.ui.page('heaven-campaign').html;assert.ok(html.includes('Close this page to fight'));assert.ok(!html.includes('data-rpg="heaven-campaign-step" data-id="'+enemy.defeatStep+'"'));}
+ sim.state.heavenCampaign.steps=required.slice(0,required.indexOf(D.escort.arrivalStep));at(sim,D.escort.arrivalStep);const html=h.ui.page('heaven-campaign').html;assert.ok(html.includes('there is no button for it'));assert.ok(!html.includes('data-rpg="heaven-campaign-step" data-id="'+D.escort.arrivalStep+'"'));assert.ok(!html.includes('data-rpg="heaven-campaign-arrive"'));
 });
 
 test('remote first invite and a reset escort walk link both reach the real staging anchor without work or actor creation',()=>{
  const sim=specimen(required.slice(0,required.indexOf(D.escort.startStep))),h=harness(sim);sim.state.player.x=7;sim.state.player.z=17;const before=JSON.stringify(sim.state),html=h.ui.page('heaven-campaign').html;
  h.ui.action(button(html,'walk','escort-staging'));assert.equal(h.walks.length,1);assert.ok(Math.hypot(h.walks[0].x-D.escort.x,h.walks[0].z-D.escort.z)<2.8);assert.ok(W.walkable(D.room,h.walks[0].x,h.walks[0].z));assert.equal(JSON.stringify(sim.state),before);assert.deepEqual(h.commands,[]);assert.equal(H.runtime(sim).escort,null);
- sim.state.heavenCampaign.steps.push(D.escort.startStep);const recorded=JSON.stringify(sim.state),reset=h.ui.page('heaven-campaign').html;assert.ok(reset.includes('unfinished escort resets'));assert.ok(reset.includes('deliberately invite again'));h.ui.action(button(reset,'walk','escort-staging'));assert.equal(h.walks.length,2);assert.equal(JSON.stringify(sim.state),recorded);
+ sim.state.heavenCampaign.steps.push(D.escort.startStep);const recorded=JSON.stringify(sim.state),reset=h.ui.page('heaven-campaign').html;assert.ok(reset.includes('unfinished walk reset'));assert.ok(reset.includes('invite the courier again'));h.ui.action(button(reset,'walk','escort-staging'));assert.equal(h.walks.length,2);assert.equal(JSON.stringify(sim.state),recorded);
  at(sim,D.escort.startStep);const invitedBefore=JSON.stringify(sim.state),here=h.ui.page('heaven-campaign').html;h.ui.action(button(here,'invite',D.escort.startStep));assert.equal(h.commands.length,1);assert.equal(h.commands[0].type,'escort-invite');assert.equal(h.commands[0].payload.step,D.escort.startStep);assert.equal(h.commands[0].payload.expectedActive,'synthetic-garden-traveller');assert.equal(h.commands[0].payload.expectedRevision,sim.state.adventure.revision);assert.equal(JSON.stringify(sim.state),invitedBefore);
 });
 
@@ -203,7 +205,7 @@ test('arrival save refusal keeps the exact courier visible at its real destinati
  try{
   const before=JSON.stringify({state:sim.state,actor:e}),out=empty(),frame=Art.drawEscort(out,sim,e,999);assert.equal(frame.phase,'awaiting-save');assert.equal(frame.x,destination.x);assert.equal(frame.z,destination.z);assert.ok(all(out).length);
   assert.equal(Art.drawEscort(empty(),sim,{...e},999),false);const points=UI.routePoints(sim),livePoint=points.find(p=>p.id==='escort-position');assert.equal(livePoint.x,destination.x);assert.equal(livePoint.z,destination.z);assert.ok(!points.some(p=>p.id==='escort-staging'));
-  const h=harness(sim),html=h.ui.page('heaven-campaign').html;assert.ok(html.includes('data-status="awaiting-save"'));assert.ok(html.includes('arrival save was refused'));assert.ok(html.includes('automatic retries of the actual arrival save'));assert.ok(!html.includes('data-rpg="heaven-campaign-invite"'));assert.ok(!html.includes('data-rpg="heaven-campaign-step" data-id="'+D.escort.arrivalStep+'"'));assert.ok(!html.includes('data-rpg="heaven-campaign-claim"'));assert.ok(!html.includes('Complete · unpaid'));assert.deepEqual(h.commands,[]);assert.equal(JSON.stringify({state:sim.state,actor:e}),before);
+  const h=harness(sim),html=h.ui.page('heaven-campaign').html;assert.ok(html.includes('data-status="awaiting-save"'));assert.ok(html.includes('Stay beside Calen'));assert.ok(html.includes('The arrival retries by itself'));assert.ok(!html.includes('data-rpg="heaven-campaign-invite"'));assert.ok(!html.includes('data-rpg="heaven-campaign-step" data-id="'+D.escort.arrivalStep+'"'));assert.ok(!html.includes('data-rpg="heaven-campaign-claim"'));assert.ok(!html.includes('Complete · unpaid'));assert.deepEqual(h.commands,[]);assert.equal(JSON.stringify({state:sim.state,actor:e}),before);
   const nodes=new Map(),previous=global.document;global.document={querySelector:selector=>{if(!nodes.has(selector))nodes.set(selector,{});return nodes.get(selector);}};try{h.ui.tick();assert.ok(nodes.get('#tracked-detail').textContent.includes('awaiting-save'));}finally{if(previous===undefined)delete global.document;else global.document=previous;}
   assert.equal(JSON.stringify({state:sim.state,actor:e}),before);assert.ok(!sim.state.heavenCampaign.steps.includes(D.escort.arrivalStep));assert.equal(sim.state.heavenCampaign.claimed,false);
  }finally{H.escortStatus=original;}
@@ -230,8 +232,8 @@ test('successful deliberate activation closes the workspace; refusals and stale 
 });
 
 test('verified choice recognition quotes the actual catalogue callers including the courier, without claiming an unpaid or clipped fee',()=>{
- for(const choice of D.choices){const sim=specimen(required,choice.id),h=harness(sim),before=JSON.stringify(sim.state),html=h.ui.page('heaven-campaign').html;
-  assert.ok(html.includes('heaven-campaign-local-recognition'));for(const line of choice.recognition)assert.ok(html.includes('<strong>'+line.name+':</strong>'));assert.ok(html.includes('<strong>Wayfarer:</strong>'));assert.ok(html.includes('Complete · unpaid'));assert.ok(html.includes('Up to 40 XP within the stored cap'));assert.ok(html.includes('16 sunmarks · 3 ore · 4 timber · 3 meadow fibre'));assert.equal(JSON.stringify(sim.state),before);
+ for(const choice of D.choices){const sim=specimen(required,choice.id),h=harness(sim);sim.state.saga.prophecy=['heaven'];const before=JSON.stringify(sim.state),html=h.ui.page('heaven-campaign').html;
+  assert.ok(html.includes('heaven-campaign-local-recognition'));for(const line of choice.recognition)assert.ok(html.includes('<strong>'+line.name+':</strong>'));assert.ok(html.includes('<strong>Wayfarer:</strong>'));assert.ok(html.includes('<h3>Complete</h3>'));assert.ok(html.includes('Up to 40 XP within the stored cap'));assert.ok(html.includes('16 sunmarks · 3 ore · 4 timber · 3 fibre'));assert.equal(JSON.stringify(sim.state),before);
   sim.state.heavenCampaign.steps=required.filter(id=>id!=='verify-welcome');assert.ok(!h.ui.page('heaven-campaign').html.includes('heaven-campaign-local-recognition'));sim.state.heavenCampaign.steps=required.slice();sim.state.heavenCampaign.claimed=true;assert.ok(h.ui.page('heaven-campaign').html.includes(D.completionText));assert.ok(!h.ui.page('heaven-campaign').html.includes('data-rpg="heaven-campaign-claim"'));
  }
 });

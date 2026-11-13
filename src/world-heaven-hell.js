@@ -1,6 +1,6 @@
 /* Original Heaven/Hell opening content. Shared world rules own movement,
  * interaction, combat, save checkpoints and every reward. Names from the
- * 2026-09-14 design packages remain provisional game-fiction labels. */
+ * the names are the game's own. */
 (function(G){'use strict';
 const FLOOR=1.57,TAU=Math.PI*2;
 const solid=(id,x,z,w,d,h)=>({id,x,z,w,d,h});
@@ -68,7 +68,7 @@ for(const s of hellSolids)s.color=s.id.includes('ash-tree')?0x49494a:s.id.includ
 const realms=[{
  id:'heaven',room:'world-heaven',name:'Heaven · Garden of Voices',
  description:'A welcoming garden below the Aureate skyline. Walk the Ruby Arcade and Mirror Causeway, compare three public instruments, and return to Earth whenever you choose.',
- kicker:'Bone stone, ruby craft and an ordinary welcome. Regional names remain provisional.',
+ kicker:'Bone stone, ruby craft and an ordinary welcome.',
  entry:{x:0,z:27,yaw:Math.PI},bounds:{minX:-60,maxX:60,minZ:-120,maxZ:40},
  patches:[patch('heaven-garden-ground',0,-5,120,90),patch('heaven-north-ground',0,-78,118,84)],
  solids:heavenSolids,
@@ -76,37 +76,38 @@ const realms=[{
   point('heaven-home','Road home',0,31,'return','The Earth road remains open. Leaving costs nothing and makes no pledge.','Return to your familiar Earth home. A departure confirmation keeps the choice deliberate.'),
   point('heaven-rielle','Rielle · bellwright',-14,5,'person','Polish is easy. A public instrument must answer someone with tired hands as readily as a practiced musician. Will you compare the three response plates for me?','Rielle wants usable craft, not a flawless showpiece. This small survey does not repair the upper Broken Choir or settle its cause.',{color:'#b57b77',role:'keeper'}),
   point('heaven-calen','Calen · field guide',7,20,'person','The central causeway is broad. The Ruby Arcade makes a longer loop on the west. Both meet at the northern overlook, and both bring you back here.','Calen knows these lower paths. The summit beyond the closed terrace remains closed; his route advice leaves you free to explore on foot.',{color:'#b7ac87',role:'researcher'}),
-  point('heaven-yselle','Yselle · gardener',25,5,'person','These public beds stay planted. If you want a cutting, we will grow one for that purpose; a garden need not be stripped to be useful.','Yselle tends the sage and pale blossoms beside her worktable. Her future cultivation and water-shutter commissions remain separate.',{color:'#85a692',role:'researcher'}),
+  point('heaven-yselle','Yselle · gardener',25,5,'person','These public beds stay planted. If you want a cutting, we will grow one for that purpose; a garden need not be stripped to be useful.','Yselle tends the sage and pale blossoms beside her worktable. Her cultivation and water-shutter work are separate.',{color:'#85a692',role:'researcher'}),
   point('heaven-garden-response','Garden response plate',0,-1,'objective','The lower chime answers clearly. Its broad plate can be pressed by hand; three visible notches mark the return stroke.','Observe the named shape and engraved stroke. Sound is optional; no perfect-pitch check, material cost or inventory item is required.'),
   point('heaven-arcade-response','Ruby Arcade response plate',-35,-31,'objective','The maker has set one ruby line into a worn bone frame. The plate returns evenly; a repaired hinge remains visible.','Reach this bench through the open colonnade. The ruby denotes craft and cloth, with no premium currency or allegiance.'),
-  point('heaven-causeway-response','Mirror Causeway response plate',0,-79,'objective','The mirror frame holds a steady pale mark against the distant city. Its return arm stops short of the last notch.','Record the observable mismatch. This is evidence for Rielle, not a declaration that the city has been restored or its machinery explained.'),
+  point('heaven-causeway-response','Mirror Causeway response plate',0,-79,'objective','The mirror frame holds a steady pale mark against the distant city. Its return arm stops short of the last notch.','Record the observable mismatch. This is evidence for Rielle. The city is not restored, and its machinery is not explained yet.'),
   point('heaven-north-overlook','Northern overlook',0,-99,'view','Bone towers rise behind a rose-colored cloudbank. The upper road remains closed; the garden and both lower routes are open.','The broad grounded overlook is reachable on foot. Distant city geometry is a vista, with no hidden summit destination.'),
-  point('heaven-service-loop','Arcade service walk',-24,-76,'view','A low service path turns beneath the city-facing arcade. You can return along the garden’s west edge.','This ordinary ground loop remains available before and after the survey, without a guide, class, reward or combat requirement.')
+  point('heaven-service-loop','Arcade service walk',-24,-76,'view','A low service path turns beneath the city-facing arcade. You can return along the garden’s west edge.','This ordinary ground loop remains available before and after the survey, without a guide, class, reward or combat requirement.'),
+  point('heaven-envoy','The envoy',-8,22,'person','You came up in peace, and that is the right way to come. When you are ready to hear the reading, I keep the house by the garden gate.','The envoy’s reading is heard here once the garden road is open to you. Reading this text records nothing.',{color:'#e6d7a8',role:'envoy'})
  ],
  quest:{id:'heaven-opening-v1',title:'Three ordinary answers',giverId:'heaven-rielle',
   objectives:[{id:'first',pointId:'heaven-garden-response',text:'Compare the Garden response plate',kind:'interact'},{id:'second',pointId:'heaven-arcade-response',text:'Compare the Ruby Arcade response plate',kind:'interact'},{id:'third',pointId:'heaven-causeway-response',text:'Compare the Mirror Causeway response plate',kind:'interact'}],
-  reward:{xp:18,coins:7,ore:0},completionText:'Rielle records the uneven return instead of polishing it away. She pays the declared survey fee once. The Broken Choir and the upper road remain separate work.'},
+  reward:{xp:18,coins:7,ore:0},completionText:'Rielle records the uneven return instead of polishing it away. She gives the survey reward once. The Broken Choir and the upper road are separate work.'},
  palette:{ground:0x8eaa92,stone:0xe8dfc9,trim:0xbe914c,sky:0xe79aad},theme:'cosmos',water:false
 },{
  id:'hell',room:'world-hell',name:'Hell · Kiln Refuge',
  description:'A decommissioned kiln shelter holds an honest return light. Scout Tithe Mile and Moth Cut to Bell Yard; the salvage sentinel in the eastern side pocket is optional.',
- kicker:'Coal has weight, iron has purpose, and somebody kept a light. Regional names remain provisional.',
+ kicker:'Coal has weight, iron has purpose, and somebody kept a light.',
  entry:{x:0,z:31,yaw:Math.PI},bounds:{minX:-60,maxX:60,minZ:-116,maxZ:44},
  patches:[patch('hell-refuge-ground',0,9,120,70),patch('hell-marches-ground',0,-56,120,80),patch('hell-yard-ground',0,-97,100,38)],
  solids:hellSolids,
  points:[
   point('hell-home','Road home',0,35,'return','This return road is real and free. No toll, pledge, boss victory or salvage is required to leave.','Istra keeps the route honest. Confirm departure to return to your familiar Earth home.'),
-  point('hell-istra','Istra · return keeper',-10,24,'person','I can promise this road home. I cannot promise what lies beyond the closed works. Will you check Tovan’s two route marks and the Bell Yard plate?','The survey is voluntary and names its finite fee. The eastern salvage sentinel is optional; both ordinary approaches and the refuge stay available.',{color:'#c5a473',role:'keeper'}),
+  point('hell-istra','Istra · return keeper',-10,24,'person','I can promise this road home. I cannot promise what lies beyond the closed works. Will you check Tovan’s two route marks and the Bell Yard plate?','The survey is voluntary, and it pays a small reward. The eastern salvage sentinel is optional; both ordinary approaches and the refuge stay available.',{color:'#c5a473',role:'keeper'}),
   point('hell-tovan','Tovan · riveter',-15,16,'person','I used to fit their claim machinery. Knowing where it fails is useful; pretending I never helped it work would not be. The marks I need checked are on the ground.','Tovan offers measurements, not absolution or free gear. Tithe Mile runs east of the central works; Moth Cut runs west. The survey creates no patron contract.',{color:'#8e9aa3',role:'researcher'}),
-  point('hell-tithe-mark','Tithe Mile inspection mark',24,-41,'objective','The exposed road passes an iron inspection frame. The old plate claims departure can be reviewed; Istra’s declared return remains unconditional.','Check the actual rivets and support, not the inscription’s promise. The central industrial spine is solid; a broad road runs along its east side.'),
+  point('hell-tithe-mark','Tithe Mile inspection mark',24,-41,'objective','The exposed road passes an iron inspection frame. The old plate says departure can be reviewed. Istra’s road home is not conditional.','Check the actual rivets and support, not the inscription’s promise. The central industrial spine is solid; a broad road runs along its east side.'),
   point('hell-moth-mark','Moth Cut service mark',-31,-43,'objective','Soot moths gather near a cooled service mouth. Its three rivets match Tovan’s sketch; the maintenance path continues to Slag Quay.','Follow the dry service approach without fighting. The old culvert mouth is closed; the open path runs beside it and joins the exposed road at Slag Quay.'),
-  point('hell-bell-yard-plate','Bell Yard route plate',-12,-95,'objective','A burden bell hangs between heavy supports. The plate records a path through the yard, but the inner foundry doors remain closed.','Measure the approach and return. This opening does not release a Bell-Bearer, extract Neris, resolve Veyr or alter the realm’s claim system.'),
+  point('hell-bell-yard-plate','Bell Yard route plate',-12,-95,'objective','A burden bell hangs between heavy supports. The plate records a path through the yard, but the inner foundry doors remain closed.','Measure the approach and return. This opening does not free anyone, resolve Veyr or change the realm’s writs.'),
   point('hell-slag-quay','Slag Quay junction',0,-80,'view','Both roads meet beyond the industrial spine. Loading blocks and a distant foundry make the direction legible.','Take either already-open road back to the Kiln Refuge. The works do not seal a combat door behind you.'),
   point('hell-watch-pocket','Eastern salvage pocket',30,-93,'view','A salvage sentinel waits beyond the iron stock. You can inspect this side pocket or keep to the Bell Yard survey route.','The sentinel is an optional real combat target under shared combat rules. It grants no independent enemy loot and does not guard an objective or the road home.')
  ],
  quest:{id:'hell-opening-v1',title:'Marks on a road that returns',giverId:'hell-istra',
   objectives:[{id:'first',pointId:'hell-tithe-mark',text:'Inspect the Tithe Mile support mark',kind:'interact'},{id:'second',pointId:'hell-moth-mark',text:'Inspect the Moth Cut service mark',kind:'interact'},{id:'third',pointId:'hell-bell-yard-plate',text:'Read the grounded Bell Yard route plate',kind:'interact'}],
-  reward:{xp:22,coins:9,ore:2},completionText:'Tovan keeps the measured route marks in the refuge; Istra pays the declared survey fee once. A useful record is made. The main foundry expedition, witness and local disposition remain ahead.'},
+  reward:{xp:22,coins:9,ore:2},completionText:'Tovan keeps the measured route marks in the refuge, and Istra gives the survey reward once. A useful record is made. The road to the foundry is still to come.'},
  enemies:[{id:'hell-salvage-sentinel',name:'Salvage sentinel',kind:'sentinel',x:44,z:-94,hp:90,damage:9,xp:0,ore:0,coins:0}],
  palette:{ground:0x696961,stone:0x303337,trim:0x5b6268,sky:0x573d42},theme:'cosmos',water:false
 }];

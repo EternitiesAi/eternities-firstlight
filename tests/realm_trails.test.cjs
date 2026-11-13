@@ -4,6 +4,7 @@
  * commands. Storage is an in-memory Store, not native browser persistence.
  */
 'use strict';
+require('./hellheaven_night_gate.cjs');
 const {removeEmptyTournament}=require('./helpers/earth-tournament-migration.cjs');
 const {test}=require('node:test'),assert=require('node:assert/strict');
 const C=require('../src/core.js'),A=require('../src/adventure.js'),W=require('../src/world-foundations.js');
@@ -13,7 +14,9 @@ const copy=structuredClone,success={save:()=>({ok:true})};let serial=0;
 const ctx=sim=>({sim,active:'labelled-trail-unit-character',revision:0});
 const definition=realm=>R.definitions().find(d=>d.realm===realm);
 function kit(){const sim=new C.Simulation();sim.state.player={x:11,z:9,yaw:0};assert.ok(sim.adventureCommand('trail-unit-kit-'+(++serial),'start').ok);return sim;}
-function enter(realm,sim=kit()){
+// The Atlantis and Cosmos doors open only after heaven; their tests start from a kit with heaven finished.
+function heavenKit(){const k=kit();return new C.Simulation(require('./witness_prereq.cjs').heavenFinished(k.snapshot()));}
+function enter(realm,sim=(realm==='atlantis'||realm==='cosmos'?heavenKit():kit())){
  assert.equal(sim.room,null);sim.state.player={...W.GATE,yaw:0};const preview=W.preview(ctx(sim),realm);assert.ok(preview.ok,preview.error);
  const result=W.enter(preview.ticket,ctx(sim),{save:()=>({ok:true}),build:()=>{}});assert.ok(result.ok,result.error);return sim;
 }
@@ -38,7 +41,7 @@ function memory(world){
 function bow(sim){assert.ok(sim.adventureCommand('trail-unit-bow-'+(++serial),'arsenal-craft',{id:'trail_bow'}).ok);return sim;}
 
 test('adventure 10 and missing optional trails preserve all ten XP boundaries and source input',()=>{
- const boundaries=[0,29,30,79,80,149,150,259,260,9999],levels=[1,1,2,2,3,3,4,4,5,5];
+ const boundaries=[0,29,30,79,80,149,150,259,260,9999],levels=[1,1,2,2,3,3,4,4,5,12];
  for(let i=0;i<boundaries.length;i++){
   const raw=kit().snapshot();raw.adventure.version=10;removeEmptyTournament(raw.adventure);delete raw.adventure.realmCraft;delete raw.realmTrails;
   raw.adventure.xp=boundaries[i];raw.notes=[{text:'Synthetic returning notebook',day:1}];raw.score.title='A kept melody';raw.retreat.wall='rose';
@@ -127,8 +130,8 @@ test('claim validates/saves the full paid candidate before applying it and retai
  assert.ok(result.ok);assert.equal(saves,1);assert.equal(sim.state.adventure,adv);assert.equal(sim.state.sandbox,sandbox);assert.deepEqual(sim.snapshot(),persisted);
  for(const save of[()=>({ok:false,error:'labelled refusal'}),()=>{throw Error('labelled quota');}]){const r=ready();unchanged(r.sim,()=>action(r.sim,r.d,'claim',{}, {save}));assert.equal(r.sim.state.realmTrails.records[r.d.id].claimed,false);}
 });
-test('claim clamps XP at 9999 without replacing the retained five-level curve',()=>{
- for(const realm of['earthlands','atlantis']){const{sim,d}=ready(realm);sim.state.adventure.xp=9999;assert.ok(action(sim,d,'claim').ok);assert.equal(sim.state.adventure.xp,9999);assert.equal(A.level(sim.state.adventure),5);}
+test('claim clamps XP at 9999 without replacing the retained level curve, which now reaches twelve',()=>{
+ for(const realm of['earthlands','atlantis']){const{sim,d}=ready(realm);sim.state.adventure.xp=9999;assert.ok(action(sim,d,'claim').ok);assert.equal(sim.state.adventure.xp,9999);assert.equal(A.level(sim.state.adventure),12);}
 });
 test('partial, ready and paid records survive snapshot/reload without accepting or paying again',()=>{
  const sim=enter('earthlands'),d=definition('earthlands');assert.ok(accept(sim,d).ok);pose(sim,d.steps[0]);assert.ok(action(sim,d,'step',{step:d.steps[0].id}).ok);
@@ -193,7 +196,7 @@ test('returning finite starter/river work, ruby, pinned project, banked XP and w
  a.xp=9999;a.defeated.push('river-old-bristle');a.starter={version:1,accepted:true,bundles:Q.BUNDLES.map(b=>b.id),reward:{choice:'temper',weapon:'trail_blade'}};
  a.pursuit.fittings.trail_blade=2;a.pursuit.pinned='trail_blade';a.arsenal.sockets.trail_blade='ruby';a.ore=3;a.coins=8;
  assert.doesNotThrow(()=>C.validate(sim.snapshot()));const before=copy(a),stats=A.stats(a),weapon=AR.weapon(a),identity=a;
- assert.ok(RC.command(ctx(sim),'trail_blade',success).ok);assert.equal(sim.state.adventure,identity);assert.equal(a.xp,9999);assert.equal(A.level(a),5);assert.equal(Q.bonus(a,'trail_blade'),2);assert.equal(H.bonus(a,'trail_blade'),4);assert.equal(a.arsenal.sockets.trail_blade,'ruby');
+ assert.ok(RC.command(ctx(sim),'trail_blade',success).ok);assert.equal(sim.state.adventure,identity);assert.equal(a.xp,9999);assert.equal(A.level(a),12);assert.equal(Q.bonus(a,'trail_blade'),2);assert.equal(H.bonus(a,'trail_blade'),4);assert.equal(a.arsenal.sockets.trail_blade,'ruby');
  assert.deepEqual(a.starter,before.starter);assert.deepEqual(a.pursuit,before.pursuit);assert.deepEqual(a.arsenal,before.arsenal);assert.deepEqual(a.equipment,before.equipment);assert.deepEqual(AR.weapon(a),weapon);assert.deepEqual(A.stats(a),{...stats,attack:stats.attack+3});
  const cold=new C.Simulation(sim.snapshot());assert.deepEqual(cold.state.adventure.realmCraft,{version:1,weapon:'trail_blade'});assert.deepEqual(A.stats(cold.state.adventure),A.stats(a));
 });

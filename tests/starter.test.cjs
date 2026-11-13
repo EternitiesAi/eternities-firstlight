@@ -27,7 +27,7 @@ test('version-five adventure migrates without altering existing campaign or crea
  assert.equal(JSON.stringify(raw),before);
 });
 test('all banked XP boundaries retain XP and the existing five-level curve',()=>{
- for(const xp of [0,29,30,79,80,149,150,259,260,9999]){const a=A.fresh();a.version=5;removeEmptyTournament(a);delete a.starter;a.xp=xp;const out=A.validate(a);assert.equal(out.xp,xp);assert.equal(out.version,15);assert.equal(A.level(out),1+[30,80,150,260].filter(n=>xp>=n).length);}
+ for(const xp of [0,29,30,79,80,149,150,259,260,9999]){const a=A.fresh();a.version=5;removeEmptyTournament(a);delete a.starter;a.xp=xp;const out=A.validate(a);assert.equal(out.xp,xp);assert.equal(out.version,15);assert.equal(A.level(out),1+[30,80,150,260,400,560,740,940,1160,1400,1680].filter(n=>xp>=n).length);}
 });
 test('acceptance requires kit and actual Oren proximity without campaign consent',()=>{
  const raw=new C.Simulation();raw.state.player={x:11,z:9,yaw:0};const before=snapshot(raw);assert.equal(act(raw,'starter-accept').ok,false);assert.equal(snapshot(raw),before);

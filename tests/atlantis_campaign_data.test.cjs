@@ -37,7 +37,7 @@ test('Atlantis catalogue: immutable exact imports grant no progress, actor, supp
  assert.deepEqual(Object.keys(sandbox).filter(k=>!before.has(k)),['RealmAtlantisCampaignData']);
  assert.strictEqual(sandbox.module.exports,sandbox.RealmAtlantisCampaignData);frozen(sandbox.RealmAtlantisCampaignData);
  assert.throws(()=>{d.reward.materials.crystal=9999;},TypeError);
- assert.match(d.summary,/provisional authored adaptations/);assert.match(d.completionText,/Original Heaven01 and the protected sanctuary remain separate/);
+ assert.match(d.summary,/drowned witness/);assert.match(d.completionText,/The old Bellglass chart and lamp keep their own records/);
 });
 
 test('Atlantis entry and witnesses: existing chart and giver stay distinct; new accepted witnesses do not duplicate residents',()=>{
@@ -54,7 +54,7 @@ test('Atlantis entry and witnesses: existing chart and giver stay distinct; new 
  assert.equal(distance(d.witnesses[0],steps.get('receipt-conflict')),0);assert.deepEqual(d.witnesses[0].appearsAfter,[]);
  assert.equal(distance(d.witnesses[1],steps.get('secure-carrier')),0);assert.deepEqual(d.witnesses[1].appearsAfter,['outlet-set']);
  assert.equal(d.witnesses.some(w=>/Pelan/.test(w.name)),false,'there is no fabricated keeper visit');
- assert.match(steps.get('verify-passage').text,/not a simulated voyage/);assert.match(steps.get('verify-passage').text,/Pelan witnessed a delivery/);
+ assert.match(steps.get('verify-passage').text,/lens consignment to Sahra/);assert.match(steps.get('verify-passage').text,/return to Sahra for your reward/);
 });
 
 test('Atlantis graph: named pressure order, retained approach and real exhaustion guard all mandatory edges',()=>{
@@ -77,7 +77,7 @@ test('Atlantis graph: named pressure order, retained approach and real exhaustio
  assert.deepEqual(steps.get('release-west').requires,['bearing-exposed']);assert.deepEqual(steps.get('release-east').requires,['release-west']);
  assert.deepEqual(steps.get('custodian-stable').requires,['release-east']);assert.deepEqual(steps.get('disposition').requires,['custodian-stable']);
  assert.deepEqual(steps.get('verify-passage').requires,['disposition']);assert.equal(d.steps.some(s=>s.id==='claim'),false);
- assert.equal(steps.get('bearing-exposed').kind,'defeat');assert.match(steps.get('bearing-exposed').text,/manual completion button cannot substitute/);
+ assert.equal(steps.get('bearing-exposed').kind,'defeat');assert.match(steps.get('bearing-exposed').text,/A button press cannot do this for you/);
  assert.match(steps.get('manual-bypass').text,/three required inlet, equalizer and outlet stages still need/);
  const missing={approach:'upper',steps:new Set(['receipt-conflict','choose-approach','lower-reading'])};
  assert.equal(canAdvance(missing,steps.get('diagnose-flow')),false,'the other reading never backfills selected evidence');
@@ -150,13 +150,13 @@ test('Atlantis current: marked shallow region is entirely water; lower reading, 
  // A synthetic primitive fixture measures the existing control speed, not new campaign behavior.
  const sim={room:d.room,paused:false,worldDive:{y:-1.05,hold:true},state:{player:{x:8,z:-24,yaw:0},adventure:{hp:100}},playerPath:[]};
  assert.equal(W.swim(sim,1,0,0,.1),true);const controlSpeed=(sim.state.player.x-8)/.1;assert.ok(Math.abs(controlSpeed-2.6)<1e-8);assert.ok(current.speed<controlSpeed);
- assert.match(d.danger,/no breath timer, hidden timing penalty or material loss/);assert.match(d.danger,/air court has no current and no combat/);
+ assert.match(d.danger,/There is no breath timer and no material loss/);assert.match(d.danger,/air court has no current and no combat/);
 });
 
 test('Atlantis encounter: grounded sweep fits; intake exposes the real south-edge clipping requirement',()=>{
  keys(d.enemy,['id','name','kind','x','z','hp','damage','radius','anchored','damageWindow','spawnAfter','defeatStep']);
  assert.equal(d.enemy.anchored,true,'municipal service machine stays at its supported foundation');
- assert.equal(d.enemy.id,'atlantis-breakwater-custodian-v1');assert.equal(d.enemy.kind,'sentinel');assert.equal(d.enemy.hp,128);assert.equal(d.enemy.damage,10);assert.equal(d.enemy.radius,.75);assert.equal(d.enemy.damageWindow,'all-live-phases');
+ assert.equal(d.enemy.id,'atlantis-breakwater-custodian-v1');assert.equal(d.enemy.kind,'sentinel');assert.equal(d.enemy.hp,720);assert.equal(d.enemy.damage,42);assert.equal(d.enemy.radius,.75);assert.equal(d.enemy.damageWindow,'all-live-phases');
  assert.deepEqual(d.enemy.spawnAfter,['challenge-custodian']);assert.equal(d.enemy.defeatStep,'bearing-exposed');assert.equal((world.enemies||[]).length,0);
  assert.ok(!old.definitions.some(v=>v.enemy?.id===d.enemy.id));assert.equal('xp' in d.enemy,false);assert.equal('gear' in d.enemy,false);
  keys(patterns,['sweep','intake']);assert.deepEqual(patterns.sweep,{kind:'sweep',reach:3.6,radius:3.4,halfAngle:Math.PI/3,windup:1.3,contact:.18,recovery:1.9});
@@ -180,10 +180,10 @@ test('Atlantis fee and dispositions: fixed complete payload contributes to actua
  for(const[k,n]of Object.entries(lamp.cost))assert.ok((d.reward.materials[k]||0)>=n);
  assert.deepEqual(d.choices.map(c=>c.id),['publish','limited','license']);
  for(const c of d.choices){
-  keys(c,['id','name','text','consequence','recognition']);assert.ok(stable.test(c.id));assert.match(c.text,/Damar’s safety and the free home passage remain/);assert.match(c.consequence,/permanent local/);assert.match(c.consequence,/stated fee remains unchanged/);
+  keys(c,['id','name','text','consequence','recognition']);assert.ok(stable.test(c.id));assert.match(c.text,/Damar’s safety and the free home passage remain/);assert.match(c.consequence,/Sahra, Ilyra and Damar recognize/);assert.doesNotMatch(c.consequence,/fee/);
   assert.deepEqual(c.recognition.map(r=>r.name),['Sahra','Ilyra','Damar']);for(const line of c.recognition){keys(line,['name','text']);assert.ok(line.text.length>30&&line.text.length<220);}
  }
  assert.equal(new Set(d.choices.map(c=>c.recognition.at(-1).text)).size,3,'real carrier recognition differs with the disposition');
- assert.match(d.choices[2].text,/Future patron privileges are not implemented/);assert.match(steps.get('disposition').text,/no choice changes Grace, Cinder, renunciation, class or global allegiance/);
- assert.match(d.completionText,/XP credits up to 48 within the existing stored cap/);assert.match(d.completionText,/not a universal weapon upgrade/);assert.match(d.completionText,/Tideglass Fitting remain pending/);
+ assert.match(d.choices[2].text,/Future patron privileges are not implemented/);assert.match(steps.get('disposition').text,/Each one keeps Damar safe and keeps his account whole/);
+ assert.match(d.completionText,/up to 48 XP within your stored cap/);assert.match(d.completionText,/ordinary crafting project/);assert.match(d.completionText,/The old Bellglass chart and lamp keep their own records/);
 });

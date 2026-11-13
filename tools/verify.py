@@ -444,6 +444,7 @@ def main():
     run('starter-blade', ['node', 'tests/starter_journey.cjs'])
     run('starter-bow', ['node', 'tests/starter_journey.cjs', '--bow'])
     run('starter-veteran', ['node', 'tests/starter_veteran.cjs'])
+    run('night-journey', ['node', 'tests/night_journey.cjs'])
     for family in ('blade', 'bow', 'veteran'):
         run('masterwork-' + family, ['node', 'tests/masterwork_journey.cjs'] + ([] if family == 'blade' else ['--' + family]),
             extra_env={'FIRSTLIGHT_MASTERWORK_OUTPUT': str(output / 'masterwork-earned')})
@@ -531,9 +532,8 @@ def main():
     run('atlantis-campaign-blade', ['node', 'tests/atlantis_campaign_journey.cjs', '--output', str(atlantis_output)])
     run('atlantis-campaign-bow', ['node', 'tests/atlantis_campaign_journey.cjs', '--output', str(atlantis_output), '--bow'])
     run('atlantis-campaign-veteran', ['node', 'tests/atlantis_campaign_journey.cjs', '--output', str(atlantis_output), '--veteran'])
-    cosmos_output = output / 'cosmos-campaign-earned'
-    if os.name == 'nt' and cosmos_output.drive.upper() != 'D:':
-        cosmos_output = ROOT / 'evidence10/cosmos-campaign-earned'
+    # the cosmos journey refuses any output inside the checkout except its canonical folder, on every host
+    cosmos_output = ROOT / 'evidence10/cosmos-campaign-earned'
     run('cosmos-campaign-blade', ['node', 'tests/cosmos_campaign_journey.cjs', '--output', str(cosmos_output)])
     run('cosmos-campaign-bow', ['node', 'tests/cosmos_campaign_journey.cjs', '--output', str(cosmos_output), '--bow'])
     run('cosmos-campaign-veteran', ['node', 'tests/cosmos_campaign_journey.cjs', '--output', str(cosmos_output), '--veteran'])

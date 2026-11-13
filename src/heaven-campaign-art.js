@@ -39,7 +39,19 @@ function welcome(out,sim,anchor){const r=sim.state.heavenCampaign,d=definition()
  }else box(0,.52,0,.52,.14,.41,colors.sage,'supplied-arrival-fitting');
  emit('octa',[0,1.39,0],[.22,.20,.22],colors.pale,'arrival-status',{em:.12});
 }
-function draw(out,sim,time){const d=definition(),r=sim.state.heavenCampaign;if(!d||sim.room!==d.room||!r?.accepted)return;
+// the envoy keeps a house in the garden; the story art owns the figure when it lands, and this fallback
+// stands on the same primitives until then.
+function envoy(out,sim,anchor){
+ const story=G.RealmStoryArt?.envoy;
+ if(typeof story==='function'){const got=story(out,anchor,0,sim);if(Array.isArray(got))for(const i of got)if(i&&out[i.kind])out[i.kind].push(i);return;}
+ const p=painter(out,sim,anchor,0,{heavenCampaignActor:'envoy'}),bone=colors.bone,gold=colors.gold;
+ p.box(0,.12,0,.5,.24,.4,bone,'envoy-hem');p.box(0,.95,0,.44,1.4,.32,bone,'envoy-robe');p.box(0,1.66,0,.46,.14,.3,gold,'envoy-collar');
+ p.emit('round',[0,1.86,0],[.3,.34,.28],0xf1e3c8,'envoy-face');
+ for(const x of[-.09,.09])p.box(x,1.9,.14,.05,.03,.02,colors.ink,'envoy-eye');
+ for(const s of[-1,1]){p.box(s*.42,1.22,-.1,.08,1.1,.08,gold,'envoy-wing-spar',{r:[0,0,s*.25]});for(let i=0;i<3;i++)p.box(s*(.62+i*.06),1.28-i*.22,-.12,.2,.46-i*.06,.03,0xf0cd80,'envoy-wing-feather',{em:.35,r:[0,0,s*(.3+i*.12)]});}
+ p.emit('disc',[0,2.2,0],[.28,.05,.28],gold,'envoy-halo',{em:.4});
+}
+function draw(out,sim,time){const d=definition(),r=sim.state.heavenCampaign;if(!d||sim.room!==d.room||!r?.accepted)return;envoy(out,sim,d.envoy);
  const steps=new Set(r.steps),byId=id=>d.steps.find(s=>s.id===id);
  if(steps.has('witness-account')){const s=byId('witness-account');recordStand(out,sim,{x:s.x-.95,z:s.z},'witness-record','preserved-witness-account');}
  if(steps.has('compare-arrival-marks')){const s=byId('compare-arrival-marks');recordStand(out,sim,{x:s.x+1.1,z:s.z},'arrival-marks','compared-arrival-marks');}
@@ -91,8 +103,7 @@ function drawEnemy(out,sim,e,time){const d=definition(),r=sim.state.heavenCampai
   p.box(0,1.55,0,.82,.17,.36,colors.gold,'relay-connected-arch');p.box(0,.62,0,.68,.13,.28,ink,'relay-crossbrace');
   p.box(0,1.12,0,.10,.92,.16,colors.gold,'relay-signal-stem');p.emit('octa',[0,1.19,0],[.39,.40,.34],windup?colors.pulse:colors.pale,'relay-counterfeit-signal',{em:windup?.35:.08});
   for(const z of[-.23,.23]){p.box(0,1.72,z,.64,.10,.10,colors.ruby,'relay-borrowed-road-sign');p.box(0,1.72,z*1.26,.42,.036,.024,windup?colors.pulse:colors.bone,'relay-repeating-signal-line');}
-  p.box(0,.78-lean*.05,.18,.26,.08,.10,recover?colors.sage:colors.ruby,'relay-phase-tab');
- }
+  p.box(0,.78-lean*.05,.18,.26,.08,.10,recover?colors.sage:colors.ruby,'relay-phase-tab'); }
  if(windup&&e.strike){if(terms.attack.kind==='beam')beamWarning(out,sim,e,e.strike);else pulseWarning(out,sim,e,e.strike);}
  return{actor:e.id,root:Array.from(p.root),base:FLOOR,x:e.x,z:e.z,yaw:e.yaw??0,mode:e.mode,pattern:terms.attack.kind};
 }
