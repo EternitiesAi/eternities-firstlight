@@ -150,7 +150,7 @@ test('Heaven encounters: directed beam and local pulse differ, admit ordinary da
  }
  const[beam,relay]=d.enemies;
  assert.deepEqual({hp:beam.hp,damage:beam.damage,radius:beam.radius},{hp:110,damage:12,radius:.55});
- assert.deepEqual({hp:relay.hp,damage:relay.damage,radius:relay.radius},{hp:2470,damage:34,radius:.6});
+ assert.deepEqual({hp:relay.hp,damage:relay.damage,radius:relay.radius},{hp:2470,damage:27,radius:.6});
  assert.deepEqual(beam.attack,{kind:'beam',reach:9,length:9,halfWidth:.65,windup:1.2,recovery:1.7,support:{step:'ground-mirror',windupBonus:.4}});
  assert.deepEqual(relay.attack,{kind:'pulse',reach:5.5,radius:3.4,windup:1.4,recovery:2});
  assert.ok(steps.get(beam.attack.support.step).optional);assert.equal('support' in relay.attack,false);
@@ -162,7 +162,7 @@ test('Heaven encounters: directed beam and local pulse differ, admit ordinary da
 });
 
 test('Heaven reward and choices: one common finite material fee, explicit public usability and earned recognition',()=>{
- assert.deepEqual(d.reward,{xp:40,coins:16,ore:3,materials:{wood:4,fiber:3}});keys(d.reward,['xp','coins','ore','materials']);
+ assert.deepEqual(d.reward,{xp:140,coins:16,ore:3,materials:{wood:4,fiber:3}});keys(d.reward,['xp','coins','ore','materials']);
  assert.deepEqual(d.choices.map(c=>c.id),['accessible-assist','broadened-activation']);
  for(const c of d.choices){
   keys(c,['id','name','text','consequence']);assert.ok(stable.test(c.id));

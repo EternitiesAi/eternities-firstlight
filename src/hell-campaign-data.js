@@ -58,7 +58,7 @@ const definition=freeze({
    text:'Give the held people’s road to a rival office under a named concession. Paired seals go on the gate, and the other writs stay where they are. Neris stays safe and her record stays whole. It is mercy on paper, and everyone knows whose paper it is.',
    consequence:'The gate shows paired seals and the licensing writ. Istra, Tovan and Neris recognize the concession and what it leaves in place. It is kept for good. The other offices keep their hold.'}
  ],
- enemy:{id:'hell-foundry-warden-v1',name:'Veyr, the foundry’s warden',kind:'sentinel',x:0,z:-99,hp:(G.RealmDifficulty?.boss?.('foundryWarden')?.hp??2080),damage:(G.RealmDifficulty?.boss?.('foundryWarden')?.damage??32),radius:.65,spawnAfter:['challenge-veyr'],defeatStep:'warden-resolved'}
+ enemy:{id:'hell-foundry-warden-v1',name:'Veyr, the foundry’s warden',kind:'sentinel',x:0,z:-99,hp:(G.RealmDifficulty?.boss?.('foundryWarden')?.hp??2080),damage:(G.RealmDifficulty?.boss?.('foundryWarden')?.damage??26),radius:.65,spawnAfter:['challenge-veyr'],defeatStep:'warden-resolved'}
 });
 const api=freeze({definition,patterns});
 G.RealmHellCampaignData=api;

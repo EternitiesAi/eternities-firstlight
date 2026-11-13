@@ -5,7 +5,7 @@
 function freeze(value){if(value&&typeof value==='object'){Object.values(value).forEach(freeze);Object.freeze(value);}return value;}
 const step=(id,name,kind,x,z,requires,optional,text,medium='dry',y)=>({id,name,x,z,medium,...(y===undefined?{}:{y}),kind,requires,optional,text});
 // The witness guardian is the act's one boss. The difficulty table owns its numbers when it is loaded.
-const boss=(()=>{const b=G.RealmDifficulty?.boss?.('witnessGuardian');return b&&Number.isFinite(b.hp)&&Number.isFinite(b.damage)?b:{hp:2860,damage:36};})();
+const boss=(()=>{const b=G.RealmDifficulty?.boss?.('witnessGuardian');return b&&Number.isFinite(b.hp)&&Number.isFinite(b.damage)?b:{hp:2860,damage:28};})();
 const patterns=freeze({
  sweep:{kind:'sweep',reach:3.6,radius:3.4,halfAngle:Math.PI/3,windup:1.3,contact:.18,recovery:1.9},
  intake:{kind:'intake',reach:6,length:5.5,halfWidth:1,windup:1.5,active:1.2,recovery:2.1,pullSpeed:1.2,stopRadius:1.2}

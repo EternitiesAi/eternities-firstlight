@@ -23,7 +23,7 @@ if(missing.length){
  const sourceFiles=[...requiredFiles,'src/realm-trails.js','src/realm-trails-cosmos.js','src/sandbox.js','src/combat.js','src/arsenal.js','src/hell-campaign.js','src/heaven-campaign.js','src/atlantis-campaign.js'];
  const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
  const initialHashes=Object.fromEntries(sourceFiles.map(p=>[p,sha(path.join(ROOT,p))]));
- const FEE={xp:50,coins:20,ore:5,materials:{wood:4,fiber:3,crystal:2}};
+ const FEE={xp:150,coins:20,ore:5,materials:{wood:4,fiber:3,crystal:2}};
  function seed(){
   const raw=C.fresh();raw.adventure.started=true;
   raw.adventure.owned=['trail_blade','trail_bow','travel_coat'];
@@ -75,7 +75,7 @@ if(missing.length){
  test('installed contracts and globals are the actual Core/Adventure/World/Cosmos owners',()=>{
   assert.strictEqual(globalThis.RealmCore,C);assert.strictEqual(globalThis.RealmAdventure,A);assert.strictEqual(globalThis.RealmWorldFoundations,W);assert.strictEqual(globalThis.RealmCosmos,N);assert.strictEqual(globalThis.RealmCosmosCampaign,H);
   assert.equal(D.id,'cosmos-open-confluence-v1');assert.equal(D.room,N.ROOM);assert.deepEqual(D.reward,FEE);assert.deepEqual(C.fresh().cosmosCampaign,H.fresh());assert.equal(C.fresh().cosmosCampaign.version,1);
-  assert.equal(initialHashes['src/cosmos-campaign-data.js'],'b545981b532ebb6462d01a372de9fe50cdabc5bfcdbcccb61a1318b0600ed926');
+  assert.equal(initialHashes['src/cosmos-campaign-data.js'],'15ee56a468c0b4bb9cf380db10f053511726b3e446b1415b1476040140f51466');
  });
  test('optional version-one Core migration adds only empty Cosmos state and preserves prior owners',()=>{
   for(const xp of[1,2,3,4,5,9999]){
@@ -148,7 +148,7 @@ if(missing.length){
   const f=fixture();finish(f);f.at(D.giver);const before=f.sim.snapshot();assert.equal(f.act('claim',{}, {save:s=>{C.validate(s);f.ctx.active='other-character';return{ok:true};}}).ok,false);assert.deepEqual(f.sim.snapshot(),before);f.ctx.active='synthetic-installed-cosmos-character';assert.ok(f.act('claim').ok);assert.equal(f.sim.state.adventure.coins-before.adventure.coins,FEE.coins);
  });
  test('stored XP one through five and cap retain health, sockets, equipment, cameras and prior claims',()=>{
-  for(const xp of[1,2,3,4,5,9999]){const raw=seed();raw.adventure.xp=xp;raw.adventure.hp=21;raw.adventure.stamina=17;raw.adventure.tonics=1;const f=fixture(raw),before=f.sim.snapshot();finish(f,['living','observation'],{living:'assisted'},'bounded-account');f.at(D.giver);const result=f.act('claim');assert.ok(result.ok);assert.equal(result.reward.xp,Math.min(50,9999-xp));assert.deepEqual(retained(f.sim.snapshot()),retained(before));assert.equal(f.sim.state.adventure.hp,21);assert.equal(f.sim.state.adventure.stamina,17);assert.equal(f.sim.state.adventure.tonics,1);}
+  for(const xp of[1,2,3,4,5,9999]){const raw=seed();raw.adventure.xp=xp;raw.adventure.hp=21;raw.adventure.stamina=17;raw.adventure.tonics=1;const f=fixture(raw),before=f.sim.snapshot();finish(f,['living','observation'],{living:'assisted'},'bounded-account');f.at(D.giver);const result=f.act('claim');assert.ok(result.ok);assert.equal(result.reward.xp,Math.min(FEE.xp,9999-xp));assert.deepEqual(retained(f.sim.snapshot()),retained(before));assert.equal(f.sim.state.adventure.hp,21);assert.equal(f.sim.state.adventure.stamina,17);assert.equal(f.sim.state.adventure.tonics,1);}
  });
  test('accepted witness reads are pure; exact roster identity, anchor, body and character own damage',()=>{
   const f=fixture(),before=f.sim.snapshot();assert.equal(H.runtime(f.sim).witnesses.length,0);accept(f);const witness=H.runtime(f.sim).witnesses;assert.deepEqual(witness.map(w=>w.id),['cosmos-raven-service-v1']);assert.ok(Object.isFrozen(witness)&&Object.isFrozen(witness[0]));const accepted=f.sim.snapshot();H.available(f.sim.state);H.ready(f.sim.state);H.runtime(f.sim);assert.deepEqual(f.sim.snapshot(),accepted);

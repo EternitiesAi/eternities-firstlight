@@ -1953,7 +1953,7 @@ const definition=freeze({
  id:'cosmos-open-confluence-v1',title:'The Open Confluence',room:'cosmos-near-expanse',realm:'cosmos',
  prerequisite:'cosmos-split-bearing-v1',entry:{kit:'adventure.started',prior:'claimed realmTrails record'},
  giver:{id:'anik',name:'Anik · observer',x:3,z:-43,y:4.77},
- reward:{xp:50,coins:20,ore:5,materials:{wood:4,fiber:3,crystal:2}},
+ reward:{xp:150,coins:20,ore:5,materials:{wood:4,fiber:3,crystal:2}},
  summary:'Anik: Avar’s plan asks every branch to follow one setting, and the Confluence has no owner but him. Read what that costs, then help Raven fit any two anchors. Each has a tested, supplied alternative. Disable the Optical Reclaimer, isolate its feed, and face the Still Meridian Guardian. Release both feeds, disconnect the central link, and record Avar’s responsibility. Set two anchors on their own, check the open apparatus, then return to Anik.',
  danger:'Both anchored machines can be fought with blade or bow. Move beside the marked attacks, use cover, or Brace. The Optical Reclaimer has 84 health and 8 damage. The Still Meridian Guardian has 168 health and 12 damage; it marks rings with a clear center or crosses with clear quadrants. The east feed shrinks later rings; the west feed removes the transverse bar from later crosses. Health, damage and timing stay the same for every weapon. An attack already marked stays as it is. You may release the feeds during the fight or afterward. There is no deadline and no material loss, and the road home stays open.',
  completionText:'Avar’s central synchronization is stopped. Two anchors now hold their own settings, and the instrument keeps the account you chose. The public service loop and the road home stay open. Anik gives you 20 sunmarks, 5 ore, 4 timber, 3 fibre and 2 crystal, plus up to 50 XP within your stored cap. Use the materials for projects you choose; your equipment is unchanged. The comparator and the drawing shelf keep their own records. Sidereth, Elaris and the Far Confluence are still ahead.',
@@ -4048,7 +4048,7 @@ const definition=freeze({
  title:'The Stolen Pattern',
  room:'world-hell',realm:'hell',prerequisite:'hell-open-cage-v1',
  giver:{id:'hell-istra',name:'Istra · return keeper',x:-10,z:24},
- reward:{xp:45,coins:20,ore:4,materials:{wood:3,fiber:2}},
+ reward:{xp:145,coins:20,ore:4,materials:{wood:3,fiber:2}},
  regent:{x:0,z:-106},
  summary:'Neris’s record names the foundry. The pattern that took Briar was cut in its works, and its trail runs down to the outer gate. Read the foundry’s own measurements, face Veyr, who keeps the gate for the regent, take the pattern back, and decide what becomes of the people the writ still holds. Istra closes the road when it is done.',
  danger:'Veyr, the foundry’s warden, is the heaviest fight on this road so far. He has two locked attacks: a broad short sweep and a narrow line. Each has a 1.35-second warning and a 2.2-second recovery. Step beside the marked shape, use real cover or Brace (3), then strike while he recovers. The optional counterweight adds 0.6 seconds to sweep recovery, and the optional brace adds 0.6 seconds to line recovery. Below half health his order changes, and his strikes do not come faster. Sound is optional; shape and text carry the warning. The road home stays open before, during and after the fight. The inner foundry stays shut.',
@@ -4086,7 +4086,7 @@ const definition=freeze({
    text:'Give the held people’s road to a rival office under a named concession. Paired seals go on the gate, and the other writs stay where they are. Neris stays safe and her record stays whole. It is mercy on paper, and everyone knows whose paper it is.',
    consequence:'The gate shows paired seals and the licensing writ. Istra, Tovan and Neris recognize the concession and what it leaves in place. It is kept for good. The other offices keep their hold.'}
  ],
- enemy:{id:'hell-foundry-warden-v1',name:'Veyr, the foundry’s warden',kind:'sentinel',x:0,z:-99,hp:(G.RealmDifficulty?.boss?.('foundryWarden')?.hp??2080),damage:(G.RealmDifficulty?.boss?.('foundryWarden')?.damage??32),radius:.65,spawnAfter:['challenge-veyr'],defeatStep:'warden-resolved'}
+ enemy:{id:'hell-foundry-warden-v1',name:'Veyr, the foundry’s warden',kind:'sentinel',x:0,z:-99,hp:(G.RealmDifficulty?.boss?.('foundryWarden')?.hp??2080),damage:(G.RealmDifficulty?.boss?.('foundryWarden')?.damage??26),radius:.65,spawnAfter:['challenge-veyr'],defeatStep:'warden-resolved'}
 });
 const api=freeze({definition,patterns});
 G.RealmHellCampaignData=api;
@@ -4401,7 +4401,7 @@ const api={draw,drawEnemy};G.RealmHellCampaignArt=api;if(typeof module!=='undefi
 function freeze(value){if(value&&typeof value==='object'){Object.values(value).forEach(freeze);Object.freeze(value);}return value;}
 const step=(id,name,kind,x,z,requires,optional,text,medium='dry',y)=>({id,name,x,z,medium,...(y===undefined?{}:{y}),kind,requires,optional,text});
 // The witness guardian is the act's one boss. The difficulty table owns its numbers when it is loaded.
-const boss=(()=>{const b=G.RealmDifficulty?.boss?.('witnessGuardian');return b&&Number.isFinite(b.hp)&&Number.isFinite(b.damage)?b:{hp:2860,damage:36};})();
+const boss=(()=>{const b=G.RealmDifficulty?.boss?.('witnessGuardian');return b&&Number.isFinite(b.hp)&&Number.isFinite(b.damage)?b:{hp:2860,damage:28};})();
 const patterns=freeze({
  sweep:{kind:'sweep',reach:3.6,radius:3.4,halfAngle:Math.PI/3,windup:1.3,contact:.18,recovery:1.9},
  intake:{kind:'intake',reach:6,length:5.5,halfWidth:1,windup:1.5,active:1.2,recovery:2.1,pullSpeed:1.2,stopRadius:1.2}
@@ -4422,7 +4422,7 @@ const definition=freeze({
  id:'atlantis-harbour-beneath-v1',title:'The Harbour Beneath the Harbour',
  room:'world-atlantis',realm:'atlantis',prerequisite:'atlantis-bellglass-chart-v1',
  giver:{id:'sahra',name:'Sahra · instrument-maker',x:-5,z:-10},
- reward:{xp:48,coins:18,ore:4,materials:{wood:4,fiber:3,crystal:1}},
+ reward:{xp:148,coins:18,ore:4,materials:{wood:4,fiber:3,crystal:1}},
  summary:'Damar, a stranded carrier, went under the harbour when a counterfeit route took his load. Down there the drowned witness kept what he saw: a sealed record that shows the Regent of Ash taking the pattern from the carrier’s hold. Read Ilyra’s two receipts, keep an Upper or Lower reading, set the inlet, equalizer and outlet in order, then break the Guardian that keeps the record. Choose how the record is kept, and return to Sahra for your reward.',
  danger:'The repair can bring a 0.7-unit-per-second current into the marked shallow water band; ordinary swimming stays at 2.6 units per second. Descend to the quiet lower band, use the manual bypass or retreat. There is no breath timer and no material loss. Bellglass’s air court has no current and no combat. The Drowned Witness Guardian waits on the dry exit quay with '+boss.hp+' health, '+boss.damage+' damage and a 0.75 body radius. A 3.4-radius forward vane sector warns for 1.3 seconds and recovers for 1.9. An intake lane warns for 1.5 seconds, pulls for at most 1.2 seconds at 1.2 units per second, and recovers for 2.1; it is at most 5.5 long with a 1-unit half-width, actual support and opaque cover must clip the locked footprint. Move, Brace, use cover or retreat. Ordinary blade and bow damage remain valid during all live combat phases, with no recovery-only armor or equipment scaling. The warnings stay readable with sound off.',
  completionText:'Damar is safe. The Guardian is stilled, both releases are settled, and the drowned witness’s record is in your keeping. It names the Regent of Ash as the one who took the pattern from Damar’s hold. Sahra gives you 18 sunmarks, 4 ore, 4 timber, 3 fibre and 1 crystal, and up to 48 XP within your stored cap. The timber, fibre and crystal serve any ordinary crafting project you choose. The old Bellglass chart and lamp keep their own records.',
@@ -4935,7 +4935,7 @@ const definition=freeze({
  id:'heaven-gate-remained-open-v1',title:'The Gate That Remained Open',
  room:'world-heaven',realm:'heaven',prerequisite:'heaven-broken-choir-v1',
  giver:{id:'heaven-rielle',name:'Rielle · bellwright',x:-14,z:5},
- reward:{xp:40,coins:16,ore:3,materials:{wood:4,fiber:3}},
+ reward:{xp:140,coins:16,ore:3,materials:{wood:4,fiber:3}},
  envoy:{name:'The envoy',x:-8,z:22,reading:'heaven'},
  summary:'The Broken Choir is mended, and its garden answer is true. Come up in peace: the bells are ringing and the beds are planted. The envoy keeps a house in this garden, and the envoy has a reading for you. Hear it first. Then a false rescue signal, borrowed from a relay, sends travellers up a road that is closed. Break the apparatus that guards it and the relay seraph behind it, then walk the bell courier home. Rielle closes the work when it is done.',
  danger:'The Glasswing approach construct has 110 health and a locked directed beam: 9 units of reach, a 0.65 half-width, a 1.2-second warning and a 1.7-second recovery. The supplied warning mirror adds 0.4 seconds to that warning only. The relay seraph has a radial pulse with a 5.5-unit reach, a 3.4-unit radius, a 1.4-second warning and a 2-second recovery, and it hits harder than anything else in the garden. Real opaque cover blocks the beam. Both can be hurt during every live phase. Use your blade or bow, move, Brace or retreat. Shape and text carry every warning with sound off. The road home stays open. The courier is a traveller to welcome, not an enemy. No class, technique or companion is required. The upper terrace stays closed.',
@@ -4982,7 +4982,7 @@ const definition=freeze({
   {id:'heaven-glasswing-sentinel-v1',name:'Glasswing approach construct',kind:'sentinel',x:0,z:-61,hp:110,damage:12,radius:.55,damageWindow:'all-live-phases',spawnAfter:['begin-watch'],defeatStep:'beam-disabled',
    objective:'Break the apparatus that guards the false signal. Its defeat lets the relay wake; it pays no reward.',
    attack:{kind:'beam',reach:9,length:9,halfWidth:.65,windup:1.2,recovery:1.7,support:{step:'ground-mirror',windupBonus:.4}}},
-  {id:'heaven-relay-seraph-v1',name:'Relay seraph',kind:'sentinel',x:7,z:-99,hp:(G.RealmDifficulty?.boss?.('relaySeraph')?.hp??2470),damage:(G.RealmDifficulty?.boss?.('relaySeraph')?.damage??34),radius:.6,damageWindow:'all-live-phases',spawnAfter:['beam-disabled'],defeatStep:'relay-disabled',boss:'relaySeraph',
+  {id:'heaven-relay-seraph-v1',name:'Relay seraph',kind:'sentinel',x:7,z:-99,hp:(G.RealmDifficulty?.boss?.('relaySeraph')?.hp??2470),damage:(G.RealmDifficulty?.boss?.('relaySeraph')?.damage??27),radius:.6,damageWindow:'all-live-phases',spawnAfter:['beam-disabled'],defeatStep:'relay-disabled',boss:'relaySeraph',
    objective:'Break the relay that repeats the false route, so the marked walk and the courier’s passage can be trusted.',
    attack:{kind:'pulse',reach:5.5,radius:3.4,windup:1.4,recovery:2}}
  ],
@@ -7943,9 +7943,9 @@ const BOSSES=Object.freeze({
  herald:entry(1200,36,1.35),
  keeper:entry(1440,38,1.2),
  // realm hp is up about 30% so these fights run long. realm damage is held below the keeper's on purpose, so a realm loss stays under the 60% ceiling; the rising rule covers chapter damage only.
- foundryWarden:entry(2080,32,1.2),
- relaySeraph:entry(2470,34,1.2),
- witnessGuardian:entry(2860,36,1.35),
+ foundryWarden:entry(2080,26,1.2),
+ relaySeraph:entry(2470,27,1.2),
+ witnessGuardian:entry(2860,28,1.35),
  // the regent's hp is the sum of its phases and its damage the highest phase, so a top-level reader sees the whole fight.
  regent:Object.freeze({hp:REGENT.reduce((n,p)=>n+p.hp,0),damage:Math.max(...REGENT.map(p=>p.damage)),windup:1.2,phases:REGENT})
 });

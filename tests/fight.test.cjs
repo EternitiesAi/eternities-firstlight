@@ -32,7 +32,7 @@ test('the main-path boss table rises in hp, chapter damage rises, and realm dama
  for(let i=1;i<order.length;i++)assert.ok(order[i].hp>order[i-1].hp,'hp rises at '+i);
  // realm damage is held below the keeper's on purpose (the realm hp keeps those fights long), so the damage rise is checked over the chapter bosses only.
  for(let i=1;i<4;i++)assert.ok(order[i].damage>order[i-1].damage,'chapter damage rises at '+i);
- assert.deepEqual(order.slice(4).map(b=>b.damage),[32,34,36]);
+ assert.deepEqual(order.slice(4).map(b=>b.damage),[26,27,28]);
  // the regent is the hardest fight (lead, 1.0 rebalance): every body outlasts every boss before him, and his bodies that
  // fight hit harder than any of them. the first body is the chained one (the chains carry phase one), so it hits softest.
  const reg=D.boss('regent');assert.equal(reg.phases.length,3);assert.ok(reg.phases.every(p=>p.hp>order.at(-1).hp));
