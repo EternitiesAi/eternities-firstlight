@@ -59,9 +59,10 @@ def decimated(obj, target):
     mesh.calc_loop_triangles()
     verts = [Vector(v.co) for v in mesh.vertices]
     tris = [tuple(t.vertices) for t in mesh.loop_triangles]
+    copy_data = copy.data
     bpy.context.scene.collection.objects.unlink(copy)
-    bpy.data.meshes.remove(copy.data)
-    bpy.data.objects.remove(copy)
+    bpy.data.objects.remove(copy, do_unlink=True)  # the object goes before its data in Blender 5
+    bpy.data.meshes.remove(copy_data)
     bpy.data.meshes.remove(mesh)
     return verts, tris, before, len(tris)
 
