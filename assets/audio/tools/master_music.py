@@ -24,8 +24,8 @@ TRUE_PEAK_CEILING = -1.5
 BITRATE = "40k"
 
 
-def loop(x):
-    fade = int(round(LOOP_FADE * RATE))
+def loop(x, fold):
+    fade = int(round(fold * RATE))
     cut = len(x) - fade
     theta = np.linspace(0.0, np.pi / 2, fade, dtype=np.float32)
     y = x[:cut].copy()
@@ -44,11 +44,11 @@ def sha256(path):
         return hashlib.sha256(f.read()).hexdigest()
 
 
-def master(raw_path, out_dir, track_id):
+def master(raw_path, out_dir, track_id, fold):
     x, rate = sf.read(raw_path, dtype="float32", always_2d=True)
     if rate != RATE:
         raise SystemExit("unexpected rate %d in %s" % (rate, raw_path))
-    y = loop(x.mean(axis=1))
+    y = loop(x.mean(axis=1), fold)
     tmp = os.path.join(out_dir, "..", "tmp", track_id + ".wav")
     os.makedirs(os.path.dirname(tmp), exist_ok=True)
     sf.write(tmp, y, RATE, subtype="FLOAT")
@@ -66,7 +66,7 @@ def master(raw_path, out_dir, track_id):
     subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", ogg, "-c:a", "pcm_f32le",
                     decoded], check=True)
     measured = stats(decoded)
-    measured.update({"id": track_id, "gain_db": round(gain_db, 2), "seam_ratio": round(seam_ratio(y), 3),
+    measured.update({"id": track_id, "fold_seconds": fold, "gain_db": round(gain_db, 2), "seam_ratio": round(seam_ratio(y), 3),
                      "ogg_bytes": os.path.getsize(ogg), "ogg_sha256": sha256(ogg),
                      "raw_sha256": sha256(raw_path), "target_lufs": LUFS_TARGET,
                      "ceiling_dbtp": TRUE_PEAK_CEILING})
@@ -75,13 +75,15 @@ def master(raw_path, out_dir, track_id):
 
 def main():
     raw_dir, out_dir = sys.argv[1], sys.argv[2]
+    spec = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "tracks.json"), encoding="utf-8"))
+    folds = {t["id"]: float(t.get("fold", LOOP_FADE)) for t in spec}
     os.makedirs(out_dir, exist_ok=True)
     rows = []
     for raw in sorted(glob.glob(os.path.join(raw_dir, "*.wav"))):
         track_id = os.path.splitext(os.path.basename(raw))[0]
         if track_id.startswith("smoke"):
             continue
-        row = master(raw, out_dir, track_id)
+        row = master(raw, out_dir, track_id, folds.get(track_id, LOOP_FADE))
         rows.append(row)
         meta_src = os.path.join(raw_dir, track_id + ".json")
         if os.path.exists(meta_src):
