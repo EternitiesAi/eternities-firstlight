@@ -7862,7 +7862,7 @@ const GATE=Object.freeze({x:0,z:-27}), ENTRY=Object.freeze({x:0,z:24,yaw:Math.PI
 const PLACES=Object.freeze([
  {id:'exit',name:'The Sunward arch',x:0,z:24,kind:'gate',detail:'Walk back to the Sunward Beacon.'},
  {id:'waystone',name:'Bellweather waystone',x:0,z:17,kind:'waystone',detail:'Attune here to reopen the journey home.'},
- {id:'keeper',name:'Rowan, the bell keeper',x:-2,z:9,kind:'person',detail:'The watch bell has not answered for a generation.'},
+ {id:'keeper',name:'Rowan, the bell keeper',x:-2,z:9,kind:'person',detail:'The watch bell has not answered in a hundred years.'},
  {id:'inn',name:'The Wayfarer’s Rest',x:9,z:14,kind:'rest',detail:'Nella keeps the porch. Rest here, and take as long as you like.'},
  {id:'shop',name:'Edda’s provisions',x:-9,z:15,kind:'shop',detail:'Coats, trail tonics and a fair bargain.'},
  {id:'board',name:'The common works board',x:7,z:7,kind:'project',detail:'Two village commissions. Bring the supplies and the village changes a little.'},
@@ -8175,6 +8175,7 @@ G.RealmRoad={TREES,GATE,ENTRY,MERCHANT,BEACON,ENEMIES,CACHES,OBSTACLES,land,rive
 const D=G.RealmDifficulty||(typeof require==='function'?require('./difficulty.js'):null);
 const POINT={x:0,z:-24},dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 // Tessa and a stranger wait at the mouth of his spur until he has been heard: the regent's first sighting.
+let sightingSerial=0;
 const SCENE=Object.freeze({tessa:Object.freeze({x:-3.4,z:-15.6,yaw:Math.PI/2}),stranger:Object.freeze({x:4.2,z:-15.4,yaw:-Math.PI/2})});
 const SIGHTING=Object.freeze([
  {speaker:'Tessa',title:'You made it up the ridge',body:'Stand with us a moment. This gentleman came up the spur from the east and offered to help me with the road.'},
@@ -8272,8 +8273,17 @@ function handle(sim,type,p={}){
   b.relic=p.choice==='accept'?'accepted':'sealed';if(p.choice==='accept')b.soul.equipped='cinder';sim.event('choice',p.choice==='accept'?'You kept the herald’s cinder, knowing its health cost and the consequence of invoking it.':'You sealed the herald’s cinder rather than accepting its power.');return yes(p.choice==='accept'?'Cinder surge learned. Using it records corruption; accepting alone does not.':'The cinder is sealed. No power or corruption was imposed.');
  case 'soul-purify':
   if(!b.complete||b.relic!=='accepted')return no('There is no accepted cinder to renounce.');b.relic='renounced';b.soul.corruption=0;b.soul.radiance++;b.soul.scars.push('cinder-renounced');if(b.soul.equipped==='cinder')b.soul.equipped=b.soul.grace?'aegis':null;sim.event('choice','You relinquished the cinder. Its power and current corruption are gone. The history of your choice remains.');return yes('Cinder relinquished. History preserved; current corruption cleared.');
- case 'beacon-sighting':
-  if(!sightingReady(sim)&&!seenStranger(sim))return no('Nothing is waiting at the beacon for you yet.');{const res=G.RealmSaga.regentSeen(sim,'beacon');return res.ok?yes(res.text):no(res.error);}
+ case 'beacon-sighting':{
+  if(seenStranger(sim))return yes('He has been heard, and he is gone.');
+  if(!sightingReady(sim))return no('Nothing is waiting at the beacon for you yet.');
+  const heard=p.heard!==false,tessa=p.tessa??null;
+  if(tessa!==null&&!['refused','hers','signed'].includes(tessa))return no('Unknown answer.');
+  // BRANCHES.md 2.2: one save, in this order: the sighting, whether he was heard, then Tessa's waybill.
+  const k='sighting-'+(++sightingSerial);
+  const a=sim.sagaCommand(k+'-regent','regent',{id:'beacon'});if(!a.ok)return no(a.error);
+  const b=sim.sagaCommand(k+'-heard','regent-heard',{id:'beacon',heard});if(!b.ok)return no(b.error);
+  if(tessa!==null){const c=sim.sagaCommand(k+'-tessa','choose',{key:'tessa',value:tessa});if(!c.ok)return no(c.error);}
+  return yes(heard?'You let him finish.':'You cut him off.');}
  case 'beacon-route':
   if(!b.complete||!Object.hasOwn(ROUTES,p.route))return no('The lost-road projection is not ready.');b.route=p.route;return yes('Charted: '+ROUTES[p.route]+'. You can see the road on the map now; walking it comes later.');
  default:return no('Unknown beacon action.');
@@ -8985,6 +8995,12 @@ function command(sim,id,type,payload={}){
   if(!s.angelSeen||!surfaceNear(sim,{x:0,z:3},4))return fail('Meet the envoy at the spring first.');{const r=sim.sagaCommand('envoy-prophecy-'+id,'prophecy',{id:'spring'});if(!r.ok)return fail(r.error);G.RealmSaga.mark(sim,'envoy');result=yes(r.text);}break;
  case'envoy-feather':
   if(!s.angelSeen||!surfaceNear(sim,{x:0,z:3},4))return fail('Meet the envoy at the spring first.');{const r=sim.sagaCommand('envoy-feather-'+id,'feather-unlock',{});if(!r.ok)return fail(r.error);G.RealmSaga.mark(sim,'feather');result=yes(r.text);}break;
+ case'home':
+  if(sim.room||!s.relic||dist(p,{x:11,z:9})>3.5)return fail('Bring the feather back to Oren’s workshop.');
+  result={ok:true,text:r.homeShown?'Oren has heard the feather’s story.':'Oren puts the kettle on and asks for the whole story.',scene:r.homeShown?null:'home'};r.homeShown=true;break;
+ case'tessa':
+  if(sim.room!=='road'||dist(p,ROAD.MERCHANT)>3)return fail('Walk over to Tessa’s cart.');
+  result={ok:true,text:r.tessaShown?'Tessa has heard you already.':'Tessa looks up from the cart and reaches for the waybill.',scene:r.tessaShown?null:'tessa'};r.tessaShown=true;break;
  case'road-enter':
   if(!s.reward||!surfaceNear(sim,ROAD.GATE))return fail('Accept the envoy’s gift and approach the far-water lookout.');
   sim.returnPos={...p};sim.room='road';sim.state.player={...ROAD.ENTRY};sim.playerPath=[];s.road.entered=true;syncScene(sim);sim.event('quest','You took the Sunward Road. Tessa’s stranded caravan waits beyond the gate.');result=yes('Chapter II · Ask Briar to find the cart’s missing latch.');break;
@@ -9023,6 +9039,9 @@ function command(sim,id,type,payload={}){
  }
  s.revision++;s.receipts.push({id,fp,ok:true});if(s.receipts.length>100)s.receipts.shift();return result;
 }
+// The first time any of Briar's favourite places reaches three, the valley says so once. Counts persist in the saga, so a
+// save already past three stays quiet; the first tick of a session only reads the state.
+function habitNotice(sim,r){const top=Math.max(0,...Object.values(sim.state.saga?.briar?.habit||{}));if(r.habitNoticed===undefined){r.habitNoticed=top>=3;return;}if(!r.habitNoticed&&top>=3){r.habitNoticed=true;notify(sim,sceneText('adventure','habit',sim.state)||'Briar has a favourite place now.');}}
 function tick(sim,dt){
  const s=sim.state.adventure,r=runtime(sim);syncScene(sim);
  if(!Number.isFinite(dt)||dt<0||sim.paused)return;
@@ -9034,7 +9053,7 @@ function tick(sim,dt){
  TR.tick(sim,dt);
  AR.update(sim,dt);
  B.tick(sim,dt);
- CROSS.tick(sim,dt);
+ CROSS.tick(sim,dt);habitNotice(sim,r);
  const p=sim.state.player;
  if(combatScene(sim)&&s.hp>0)for(const e of r.enemies){
   if(e.hp<=0||e.kind==='practice'||e.eventEnemy||e.custom==='bell')continue;
@@ -9111,6 +9130,14 @@ const STORY=[
  {speaker:'The envoy',title:'Hold the feather up.',body:'Hold Z, or the feather button on a phone, and the roads show what they are. True roads burn gold; counterfeit roads burn ash red. The valley is all true, so try it now.',command:'envoy-feather'},
  {speaker:'The envoy',title:'A life worth returning to.',body:'Do not abandon what you have made here. It is why the journey matters. Others will bear this light as well. Choose a gift, and when the road is ready, we will walk it together.'}
 ];
+// A scripted scene's lines as one line of text (the habit toast). The table above is the fallback when the script lacks it.
+function sceneText(owner,step,world){const sc=G.RealmStoryScript?.forStep(owner,step,world);return sc?sc.lines.map(x=>x.text).join(' '):null;}
+// The envoy at the spring has something to say only while a beat waits on him: the warning and the gift (the feather in
+// hand, no gift taken yet), or the road's report once the beacon is lit and the cart mended. The prompt, the spring
+// interaction and the tracker card all read this, so they agree.
+function envoyTopic(s){if(s.relic&&!s.reward)return'hear';if(s.reward&&s.road.beaconLit&&s.road.cartRepaired&&!s.road.reported)return'report';return null;}
+// The tracker card's next objective: the same rule the adventure card has always shown.
+function trackerNext(s){return(s.reward?ROAD.objectives(s):objectives(s)).find(q=>!q.done)||null;}
 function objectives(s){return[
  {title:'Take the road’s tools',detail:'Collect expedition supplies at Oren’s workshop.',done:s.started},
  {title:'A passage through stone',detail:'Enter the northern mine with a pickaxe. Chip an exposed wall.',done:s.dug.length>0},
@@ -9119,7 +9146,7 @@ function objectives(s){return[
  {title:'A feather beneath Wildwood',detail:'Recover the feather at the guardian’s dais.',done:s.relic},
  {title:'The envoy at the spring',detail:'Return to the Commons. Hear the warning and choose one gift.',done:!!s.reward}
 ];}
-const api={ROAD,FORGE,awardXP,combatScene,roster,visible,ground,followPath,companionGuide,VERSION,CELL,LIMIT,REACH,MINE,ENTRANCE,FOX,RELIC,GEAR,ENEMIES,STORY,key,cellAt,cellPoint,validCell,initialFloor,isFloor,mineral,wallHP,walkable,line,fresh,validate,stats,level,runtime,syncScene,command,tick,nearbyWall,diggableFrom,objectives,damageEnemy,retryWildSignsClearance,takeDamage,notify,fx,shakeOffset:sim=>T.shakeOffset(sim)};G.RealmAdventure=api;if(typeof module!=='undefined')module.exports=api;
+const api={ROAD,FORGE,envoyTopic,trackerNext,awardXP,combatScene,roster,visible,ground,followPath,companionGuide,VERSION,CELL,LIMIT,REACH,MINE,ENTRANCE,FOX,RELIC,GEAR,ENEMIES,STORY,key,cellAt,cellPoint,validCell,initialFloor,isFloor,mineral,wallHP,walkable,line,fresh,validate,stats,level,runtime,syncScene,command,tick,nearbyWall,diggableFrom,objectives,damageEnemy,retryWildSignsClearance,takeDamage,notify,fx,shakeOffset:sim=>T.shakeOffset(sim)};G.RealmAdventure=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* Firstlight 05 — bounded, offline gathering/crafting/building domain.
  * Quantities are local game state, never authority for an online economy.
@@ -14383,18 +14410,18 @@ class AdventureUI{
  }
  context(){let sim=this.sim,s=this.state,p=sim.state.player;if(s.hp<=0)return'Return to the spring';if(sim.room==='range')return Math.hypot(p.x,p.z-9)<3.2?'Leave the archery court':'Tab selects · 1 autoattack · 2 '+AR.special(s).name;if(sim.room==='road')return G.RealmBeacon.near(sim)&&s.road.beaconLit?(G.RealmBeacon.sightingReady(sim)?'Listen to Tessa and the stranger':G.RealmBeacon.runtime(sim).phase==='assault'?'Repair the ward · 20 stamina':'Speak with the envoy at the beacon'):this.roadContext();if(!sim.room&&s.reward&&Math.hypot(p.x-R.GATE.x,p.z-R.GATE.z)<3.5)return'Take the Sunward Road';if(!sim.room&&s.road.beaconLit&&s.road.cartRepaired&&!s.road.reported&&Math.hypot(p.x,p.z-3)<4)return'Tell the envoy: the beacon is alight';
   if(sim.room==='mine'){if(Math.hypot(p.x,p.z-11)<3)return'Leave the underways';if(!s.companion.bonded&&Math.hypot(p.x+8,p.z-2)<3)return'Help the briarfox';if(s.defeated.includes('hart')&&!s.relic&&Math.hypot(p.x-9,p.z+10)<3)return'Recover the white feather';if(s.drops.some(id=>{let e=A.ENEMIES.find(e=>e.id===id);return !!e&&Math.hypot(p.x-e.x,p.z-e.z)<3;}))return'Collect nearby cache';if(A.nearbyWall(s,p))return'Chip nearby stone';return'Tab selects · 1 autoattack · 2–6 skills';}
-  if(sim.room)return null;if(s.started&&Math.hypot(p.x-11,p.z-9)<3.5)return'Oren’s workbench · bows, gems & practice';if(Math.hypot(p.x-A.MINE.x,p.z-A.MINE.z)<3.3&&sim.state.sandbox.bridge)return'Enter the Rootbound Underways';if(Math.hypot(p.x-11,p.z-9)<3.5&&!s.started)return'Take Oren’s expedition supplies';if(Math.hypot(p.x,p.z-3)<4&&s.started)return s.relic?'Speak with the envoy':'Rest · refill health and tonics';return null;
+  if(sim.room)return null;if(s.started&&Math.hypot(p.x-11,p.z-9)<3.5)return'Oren’s workbench · bows, gems & practice';if(Math.hypot(p.x-A.MINE.x,p.z-A.MINE.z)<3.3&&sim.state.sandbox.bridge)return'Enter the Rootbound Underways';if(Math.hypot(p.x-11,p.z-9)<3.5&&!s.started)return'Take Oren’s expedition supplies';if(Math.hypot(p.x,p.z-3)<4&&s.started){const topic=A.envoyTopic(s);return topic==='hear'?'Speak with the envoy':topic==='report'?'Tell the envoy: the beacon is alight':'Rest · refill health and tonics';}return null;
  }
  interact(){let sim=this.sim,s=this.state,p=sim.state.player;if(sim.room==='range'){if(Math.hypot(p.x,p.z-9)<3.2)this.run('range-leave');else this.api.openPanel('armory');return true;}if(sim.room==='road')return this.roadInteract();if(!sim.room&&s.reward&&Math.hypot(p.x-R.GATE.x,p.z-R.GATE.z)<3.5){this.run('road-enter');return true;}if(!sim.room&&s.road.beaconLit&&s.road.cartRepaired&&!s.road.reported&&Math.hypot(p.x,p.z-3)<4){this.run('road-report');return true;}if(s.hp<=0){this.run('revive');return true;}
   if(sim.room==='mine'){this.intent=null;if(Math.hypot(p.x,p.z-11)<3){this.run('leave');return true;}if(!s.companion.bonded&&Math.hypot(p.x+8,p.z-2)<3){this.run('rescue');return true;}if(s.defeated.includes('hart')&&!s.relic&&Math.hypot(p.x-9,p.z+10)<3){this.run('relic');return true;}
    const drop=s.drops.find(id=>{let e=A.ENEMIES.find(e=>e.id===id);return !!e&&Math.hypot(p.x-e.x,p.z-e.z)<3;});if(drop){this.run('loot',{id:drop});return true;}const wall=A.nearbyWall(s,p);if(wall){this.run('dig',{gx:wall.gx,gz:wall.gz});return true;}this.api.toast('Click a stone face to mine, or click an enemy to approach and strike.');return true;}
-  if(sim.room)return false;if(s.started&&Math.hypot(p.x-11,p.z-9)<3.5){this.api.openPanel('armory');return true;}if(Math.hypot(p.x-A.MINE.x,p.z-A.MINE.z)<3.3&&sim.state.sandbox.bridge){this.run('enter');return true;}if(Math.hypot(p.x-11,p.z-9)<3.5&&!s.started){this.run('start');return true;}if(Math.hypot(p.x,p.z-3)<4&&s.started){if(s.relic){if(this.run('reveal').ok)this.openStory();}else this.run('rest');return true;}return false;
+  if(sim.room)return false;if(s.started&&Math.hypot(p.x-11,p.z-9)<3.5){this.api.openPanel('armory');return true;}if(Math.hypot(p.x-A.MINE.x,p.z-A.MINE.z)<3.3&&sim.state.sandbox.bridge){this.run('enter');return true;}if(Math.hypot(p.x-11,p.z-9)<3.5&&!s.started){this.run('start');return true;}if(Math.hypot(p.x,p.z-3)<4&&s.started){const topic=A.envoyTopic(s);if(topic==='hear')this.envoy();else if(topic==='report')this.run('road-report');else this.run('rest');return true;}return false;
  }
  key(k){if($('#story-dialog').open||$('#fallen-dialog').open)return true;if(k==='8'||k==='u'){this.api.openPanel('adventure');return true;}if(A.combatScene(this.sim)&&['f','q',' ','g'].includes(k)){this.intent=null;this.run(({f:'attack',q:'pulse',' ':'dodge',g:'heal'})[k],k===' '?this.api.direction():{});return true;}if(k==='l'&&this.sim.room==='road'){this.run('seek');return true;}if(k==='escape'&&A.combatScene(this.sim)&&!this.api.panel()){this.run(this.sim.room==='riverbank'?'starter-leave':this.sim.room==='range'?'range-leave':this.sim.room==='road'?'road-leave':'leave');return true;}return false;}
  action(b){let act=b.dataset.action;if(!act?.startsWith('adv-'))return false;act=act.slice(4);const id=b.dataset.id;
   if(act==='trade')this.run('trade',{offer:b.dataset.offer});else if(act==='road-route')this.roadRoute(id);else if(act==='go')this.go(id);else if(act==='mode')this.run('companion-mode',{mode:id});else if(act==='rename')this.run('rename',{name:$('#companion-name').value});else if(act==='equip')this.run('equip',{id});
   else if(act==='seek'){if(this.sim.room==='road'){this.run('seek');return true;}if(this.sim.room!=='mine'){this.api.toast('Enter the mine first.');return true;}if(id==='fox')this.approach(A.FOX,'rescue');else if(id==='relic')this.approach(A.RELIC,'relic');else if(id==='exit')this.approach(A.ENTRANCE,'leave');else{let e=A.runtime(this.sim).enemies.find(e=>e.id===id&&e.hp>0);if(e)this.approach(e,'attack',id);else if(this.state.drops.includes(id)){const item=A.ENEMIES.find(e=>e.id===id);if(item)this.approach(item,'loot',id);}}}
-  else if(act==='story'){if(this.run('reveal').ok)this.openStory();}else this.run(act);return true;
+  else if(act==='story'){this.envoy();}else this.run(act);return true;
  }
  roadContext(){
   const s=this.state,p=this.sim.state.player,near=(q,n=3)=>Math.hypot(p.x-q.x,p.z-q.z)<n;
@@ -14431,11 +14458,29 @@ class AdventureUI{
   html+='<div class="section-label">Your companion</div>';if(s.companion.bonded)html+='<article class="card"><h3>'+esc(s.companion.name)+' · Briarfox</h3><p>Briar follows your paths and joins fights. Stay keeps her where she is; Follow brings her back to your side.</p><label for="companion-name">Name</label><input id="companion-name" maxlength="24" value="'+esc(s.companion.name)+'"><div class="row">'+button('Keep name','rename')+button('Follow & assist','mode','follow',s.companion.mode==='follow')+button('Stay','mode','stay',s.companion.mode==='stay')+'</div></article>';else html+='<p class="intro">An injured fox is hiding in the western alcove. Oren packed a salve for her. Clear the alcove first, then go gently.</p>';
   return html+'<div class="notice">F strike · Q sweep · Space dodge · G tonic · E interact · Z hold to see the true roads. P pauses the world. If you fall, the spring brings you back, and your home, your digging and your victories stay as they are.</div>';
  }
- openStory(lines=A.STORY,end=null){this.intent=null;this.api.clearKeys();this.api.closePanel();this.storyLines=lines;this.storyEnd=end;this.storyIndex=0;this.storyWasPaused=this.sim.paused;this.sim.paused=true;this.paintStory();$('#story-dialog').showModal();}
- paintStory(){let lines=this.storyLines||A.STORY,q=lines[this.storyIndex];if(q.command){this.sim.paused=false;this.run(q.command,{},true);this.sim.paused=true;}$('#story-speaker').textContent=q.speaker.toUpperCase();$('#story-title').textContent=q.title;$('#story-body').textContent=q.body;let area=$('#story-buttons');area.replaceChildren();const btn=(text,fn)=>{let b=document.createElement('button');b.textContent=text;b.onclick=fn;area.append(b);};if(this.storyIndex<lines.length-1)btn('Listen',()=>{this.storyIndex++;this.paintStory();});else if(this.storyEnd)btn(this.storyEnd.label,()=>{this.sim.paused=false;const res=this.storyEnd.run();this.sim.paused=true;if(res.ok)this.closeStory();});else if(this.state.reward)btn('Return to the valley',()=>this.closeStory());else for(const id of['dawn_edge','warden_stone'])btn(A.GEAR[id].name+' · '+(id==='dawn_edge'?'Power':'Endurance'),()=>{this.sim.paused=false;const res=this.run('reward',{id});this.sim.paused=true;if(res.ok)this.closeStory();});}
- sighting(){this.openStory(G.RealmBeacon.SIGHTING,{label:'Watch him go',run:()=>this.run('beacon-sighting')});}
+openDialog(flow,{fallback=null,finish=null,gift=false,pending={}}={}){this.intent=null;this.api.clearKeys();this.api.closePanel();this.dlg={flow,fallback,finish,gift,pending:{...pending},si:0,li:0,ran:{}};this.storyWasPaused=this.sim.paused;this.sim.paused=true;this.dialogPaint();$('#story-dialog').showModal();}
+ scripted(flow){const S=G.RealmStoryScript;return!!S&&flow.every(x=>!!S.STEPS[x.owner]?.[x.step]);}
+ dialogFacts(){const S=G.RealmStoryScript;return S.facts({...S.facts(this.sim.state),...this.dlg.pending});}
+ dialogCommand(cmd){this.sim.paused=false;this.run(cmd,{},true);this.sim.paused=true;}
+ dialogAnswer(option){const d=this.dlg;for(const[key,value]of Object.entries(option.sets)){if(key==='saga.heard.beacon')d.pending.heardBeacon=value;else if(key==='saga.choices.tessa')d.pending.tessa=value;}d.si++;d.li=0;this.dialogPaint();}
+ dialogPaint(){const d=this.dlg,btns=$('#story-buttons');btns.replaceChildren();const btn=(text,fn)=>{const b=document.createElement('button');b.textContent=text;b.onclick=fn;btns.append(b);};const show=(speaker,body,title='')=>{$('#story-speaker').textContent=(speaker||'').toUpperCase();$('#story-title').textContent=title;$('#story-body').textContent=body;};
+  if(!this.scripted(d.flow)){const q=(d.fallback||[])[d.li];if(!q){this.dialogEnd();return;}if(q.command&&!d.ran[d.li]){d.ran[d.li]=true;this.dialogCommand(q.command);}show(q.speaker,q.body,q.title);btn('Listen',()=>{d.li++;this.dialogPaint();});return;}
+  const step=d.flow[d.si];if(!step){this.dialogEnd();return;}
+  const sc=G.RealmStoryScript.forStep(step.owner,step.step,this.dialogFacts());
+  if(d.li===0&&step.command&&!d.ran[d.si]){d.ran[d.si]=true;this.dialogCommand(step.command);}
+  if(d.li<sc.lines.length){const q=sc.lines[d.li];show(q.speaker,q.text);btn('Listen',()=>{d.li++;this.dialogPaint();});return;}
+  if(sc.choice){show('',sc.choice.prompt);for(const o of sc.choice.options)btn(o.label,()=>this.dialogAnswer(o));return;}
+  d.si++;d.li=0;this.dialogPaint();}
+ dialogEnd(){const d=this.dlg,btns=$('#story-buttons');btns.replaceChildren();const btn=(text,fn)=>{const b=document.createElement('button');b.textContent=text;b.onclick=fn;btns.append(b);};
+  if(d.finish){btn(d.finish.label,()=>{this.sim.paused=false;const res=d.finish.run(d.pending);this.sim.paused=true;if(res.ok)this.closeStory();});return;}
+  if(d.gift){if(this.state.reward)btn('Return to the valley',()=>this.closeStory());else for(const id of['dawn_edge','warden_stone'])btn(A.GEAR[id].name+' · '+(id==='dawn_edge'?'Power':'Endurance'),()=>{this.sim.paused=false;const res=this.run('reward',{id});this.sim.paused=true;if(res.ok)this.closeStory();});return;}
+  btn('Continue',()=>this.closeStory());}
+ envoy(){const first=!this.state.angelSeen;if(!this.run('reveal').ok)return;const beat=(step,command=null)=>({owner:'adventure',step,command});const flow=first?[beat('envoy'),beat('envoy-prophecy','envoy-prophecy'),beat('envoy-feather','envoy-feather'),beat('reward')]:[beat('envoy-prophecy','envoy-prophecy'),beat('envoy-feather','envoy-feather'),beat('reward')];this.openDialog(flow,{fallback:A.STORY,gift:true});}
+ sighting(){this.openDialog([{owner:'beacon',step:'sighting'},{owner:'beacon',step:'sighting-answer'},{owner:'beacon',step:'sighting-tessa'}],{fallback:G.RealmBeacon.SIGHTING,finish:{label:'Watch him go',run:p=>this.run('beacon-sighting',{heard:p.heardBeacon!==false,tessa:p.tessa??null})},pending:{heardBeacon:true,tessa:null}});}
  closeStory(){if($('#story-dialog').open)$('#story-dialog').close();this.sim.paused=this.storyWasPaused;this.api.clearKeys();}
  tick(){let sim=this.sim,s=this.state,r=A.runtime(sim),mine=A.combatScene(sim);A.syncScene(sim);
+ if(!sim.room&&!sim.paused&&s.relic&&!r.homeAsked&&Math.hypot(sim.state.player.x-11,sim.state.player.z-9)<3.5){const res=this.run('home',{},true);if(res.ok)r.homeAsked=true;if(res.scene)this.openDialog([{owner:'adventure',step:'home'}],{finish:{label:'Continue',run:()=>({ok:true})}});}
+ if(sim.room==='road'&&!sim.paused&&!r.tessaAsked&&Math.hypot(sim.state.player.x+10,sim.state.player.z-12)<3){const res=this.run('tessa',{},true);if(res.ok)r.tessaAsked=true;if(res.scene)this.openDialog([{owner:'adventure',step:'tessa'}],{finish:{label:'Continue',run:()=>({ok:true})}});}
   if(this.intent&&!sim.paused&&!sim.playerPath.length&&s.hp>0){let i=this.intent;
    if(i.kind==='attack'){let e=r.enemies.find(e=>e.id===i.id&&e.hp>0);if(!e)this.intent=null;else if(Math.hypot(e.x-sim.state.player.x,e.z-sim.state.player.z)>=AR.weapon(s).reach||!(AR.weapon(s).style==='bow'?AR.aimClear(sim,sim.state.player,e):A.visible(sim,sim.state.player,e))){if(s.elapsed>(this.nextApproach||0)){this.nextApproach=s.elapsed+.8;this.approach(e,'attack',e.id);}}else{const t=G.RealmCombat.runtime(sim);t.target=e.id;t.auto=true;this.intent=null;}}
    else if(i.kind==='dig'){if(A.isFloor(s,i.q.gx,i.q.gz))this.intent=null;else if(s.elapsed>=r.cooldowns.dig){if(!this.run('dig',{gx:i.q.gx,gz:i.q.gz},true).ok)this.intent=null;}}
@@ -14443,7 +14488,7 @@ class AdventureUI{
   }
   while(r.notices.length)this.api.toast(r.notices.shift());if(s.hp<=0){this.intent=null;if(!$('#fallen-dialog').open)$('#fallen-dialog').showModal();}
   document.body.classList.toggle('in-mine',mine);$('#battle-hud').hidden=!mine;$('#battle-seek').hidden=sim.room!=='road';$('#battle-seek').disabled=!s.companion.bonded||s.companion.mode!=='follow'||!!r.companion.seek;let st=A.stats(s);$('#hp-label').textContent=Math.ceil(s.hp)+' / '+st.maxHP+' HEALTH';$('#hp-fill').style.width=(s.hp/st.maxHP*100)+'%';$('#stamina-fill').style.width=s.stamina+'%';$('#battle-level').textContent=st.level;$('#battle-stats').textContent=st.attack+' ATK · '+st.defense+' GUARD · '+s.xp+' XP';$('#tonic-label').textContent=s.tonics+' tonics · G';$('#battle-pulse').disabled=s.elapsed<r.cooldowns.pulse||s.stamina<AR.special(s).cost;$('#battle-dodge').disabled=s.elapsed<r.cooldowns.dodge||s.stamina<22;$('#battle-heal').disabled=!s.tonics||s.hp>=st.maxHP||s.elapsed<r.cooldowns.heal;
-  let next=(s.reward?R.objectives(s):A.objectives(s)).find(q=>!q.done);$('#chapter-next').textContent=next?next.title:'A road restored; a home kept';$('#chapter-open > span').textContent=s.reward?'CHAPTER II':'CHAPTER I';$('#chapter-open > strong').textContent=s.reward?'The Sunward Road':'The feather beneath Wildwood';
+  let next=A.trackerNext(s);$('#chapter-next').textContent=next?next.title:'A road restored; a home kept';$('#chapter-open > span').textContent=s.reward?'CHAPTER II':'CHAPTER I';$('#chapter-open > strong').textContent=s.reward?'The Sunward Road':'The feather beneath Wildwood';
   // Keep the selected dig target visible through unrelated music/UI refreshes.
   if(sim.presentation){sim.presentation.attackTarget=this.intent?.kind==='attack'?this.intent.id:null;const w=this.intent?.kind==='dig'?this.intent.q:null;sim.presentation.digCell=w?{gx:w.gx,gz:w.gz,valid:A.diggableFrom(s,sim.state.player,w.gx,w.gz)}:null;}
   this.labels();
@@ -14463,31 +14508,64 @@ G.RealmAdventureUI={AdventureUI};})(globalThis);
  * only: each hold is a saga command (feather-use). Which roads are true is data here, never save state. */
 (function(G){'use strict';
 const KEY='z',GOLD=0xffc23a,ASH_RED=0x9c2f26,QUIET='saturate(0.42)',STEP=1.2,DASH=[.34,.035,.9];
+// The two campaign realms are world-foundations rooms.
+const HELL_ROOM='world-hell',HEAVEN_ROOM='world-heaven';
+// The nearshore is the valley within reach of the lantern pier (the nearshore module's PLACE and its nine-pace reach).
+const PIER={x:0,z:27},PIER_REACH=9;
+const dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 // The valley floor sits lower than the road and crossing paths, so the glow needs its own height per area.
-const GROUND=Object.freeze({valley:1.31,road:1.59,crossing:1.59});
+// Hell and heaven read their height from world-foundations per point.
+const GROUND=Object.freeze({valley:1.31,nearshore:1.31,road:1.59,crossing:1.59});
 // Markers only go where the area's own ground is walkable, so no glow floats over water or into a wall.
 const WALK=Object.freeze({
  valley:(x,z)=>!!G.RealmCore&&G.RealmCore.walkable(x,z,null,.05),
+ nearshore:(x,z)=>!!G.RealmCore&&G.RealmCore.walkable(x,z,null,.05),
  road:(x,z)=>!!G.RealmRoad&&G.RealmRoad.walkable(x,z,.05),
  crossing:(x,z)=>!!G.RealmCrossing&&G.RealmCrossing.walkable(x,z,.05)
 });
-// Every road is a polyline on one area. A road with `after` waits for that fact in the world (the stranger's spur).
+// Every road is a polyline on one area. `after` names a world fact the road waits for; `when` names a check (below).
 const ROADS=Object.freeze([
  {id:'valley-workshop',area:'valley',truth:'true',points:[[0,3],[5,6],[11,9]]},
+ {id:'valley-stage',area:'valley',truth:'true',points:[[0,3],[0,-11.6]]},
  {id:'valley-mine',area:'valley',truth:'true',points:[[0,3],[-4,0],[-5,-6],[-5,-12],[-5,-20],[-2,-24]]},
  {id:'valley-lookout',area:'valley',truth:'true',points:[[0,3],[20,4],[37,3],[44,6]]},
  {id:'valley-house',area:'valley',truth:'true',points:[[0,3],[-6,0],[-11,-1.6]]},
+ // the track the fox has worn from the commons to the shared house door: thin, and only once she is bonded.
+ {id:'valley-briar-track',area:'valley',truth:'true',thin:true,after:'bonded',points:[[0,3],[-5,4.5],[-10,2.5]]},
  {id:'valley-garden',area:'valley',truth:'true',points:[[0,3],[-6,8],[-6,13]]},
  {id:'valley-shore',area:'valley',truth:'true',points:[[0,3],[0,15],[0,27]]},
  {id:'sunward-road',area:'road',truth:'true',points:[[0,17],[-1,6],[2,3],[2,-4],[3,-12],[0,-24]]},
  {id:'sunward-spur',area:'road',truth:'counterfeit',after:'beacon',points:[[3,-12],[7,-14],[10,-18],[6,-22],[2,-23]]},
  {id:'bellweather-main',area:'crossing',truth:'true',points:[[0,24],[0,17],[0,9],[0,0],[0,-9],[0,-18]]},
  {id:'bellweather-shop',area:'crossing',truth:'true',points:[[0,9],[-9,15]]},
- {id:'bellweather-severing',area:'crossing',truth:'counterfeit',points:[[-10,-8],[-6,0],[-1,6],[4,12],[3,18],[0,24]]}
+ // a faint red road, old as the flagstones: it stays by day and ends at the night's device (night.js DEVICE 16.4, 18).
+ {id:'bellweather-severing',area:'crossing',truth:'counterfeit',points:[[-10,-8],[-6,0],[-1,6],[4,12],[10,15],[16.4,18]]},
+ {id:'hell-master-die',area:'hell',truth:'true',points:[[-12,-95],[0,-105]]},
+ {id:'hell-line-west',area:'hell',truth:'counterfeit',points:[[-18,-90],[-12,-95]]},
+ {id:'hell-line-east',area:'hell',truth:'counterfeit',points:[[17,-90],[0,-91]]},
+ // the borrowed rescue road: shown from the false relay's reading until the relay seraph is broken.
+ {id:'heaven-causeway',area:'heaven',truth:'counterfeit',when:'causeway',points:[[0,-79],[0,-53]]},
+ // at the nearshore both foxes are marked true: the sight cannot tell them apart, the habit can (BRANCHES.md 3.8).
+ {id:'nearshore-fox-real',area:'nearshore',truth:'true',points:[[-0.6,26.4],[0.7,26.4]]},
+ {id:'nearshore-fox-false',area:'nearshore',truth:'true',points:[[-0.2,27.6],[0.6,27.6]]}
 ]);
-function areaOf(sim){const r=sim?.room;if(!r)return'valley';return r==='road'||r==='crossing'?r:null;}
+function areaOf(sim){
+ const r=sim?.room;
+ if(!r)return sim?.state?.player&&dist(sim.state.player,PIER)<=PIER_REACH?'nearshore':'valley';
+ if(r==='road'||r==='crossing')return r;
+ if(r===HELL_ROOM)return'hell';
+ if(r===HEAVEN_ROOM)return'heaven';
+ return null;
+}
 function unlocked(sim){return sim?.state?.saga?.feather?.unlocked===true;}
-function visible(world,road){return!road.after||(road.after==='beacon'&&world?.adventure?.beacon?.introduced===true);}
+// A road shows when its world fact holds: the stranger's spur after the beacon, the briar track once she is bonded,
+// and the causeway from the false relay's reading until the relay is broken.
+function visible(world,road){
+ if(road.after==='beacon')return world?.adventure?.beacon?.introduced===true;
+ if(road.after==='bonded')return world?.adventure?.companion?.bonded===true;
+ if(road.when==='causeway'){const st=world?.heavenCampaign?.steps||[];return st.includes('inspect-false-relay')&&!st.includes('relay-disabled');}
+ return true;
+}
 function roadsFor(sim){const area=areaOf(sim);return area?ROADS.filter(r=>r.area===area&&visible(sim.state,r)):[];}
 const state={held:false,sim:null,serial:0,filter:'',button:null};
 // A new hold is one use of the feather. Holding again without letting go is not another use.
@@ -14517,28 +14595,31 @@ function draw(out,sim,t,artist){
  if(state.button)state.button.hidden=!ok;
  if(!ok&&state.held)hold(sim,false);
  const active=state.held&&ok;paint(active);if(!active)return;
- const base=GROUND[area],walk=WALK[area],reduced=!!sim.state.settings?.reducedMotion,clock=reduced?0:t;let n=0;
+ const realm=area==='hell'||area==='heaven',W=G.RealmWorldFoundations,reduced=!!sim.state.settings?.reducedMotion,clock=reduced?0:t;let n=0;
+ const ground=(x,z)=>realm?W.height(sim.room,x,z):GROUND[area];
+ const walk=realm?(x,z)=>W.walkable(sim.room,x,z,.05):WALK[area];
  for(const road of roadsFor(sim)){
-  const color=road.truth==='true'?GOLD:ASH_RED;
+  const color=road.truth==='true'?GOLD:ASH_RED,thin=road.thin?.4:1;
   for(let k=0;k<road.points.length-1;k++){
    const[ax,az]=road.points[k],[bx,bz]=road.points[k+1],dx=bx-ax,dz=bz-az,count=Math.max(1,Math.round(Math.hypot(dx,dz)/STEP)),yaw=Math.atan2(dx,dz);
    for(let i=0;i<count;i++){
     const u=(i+.5)/count,x=ax+dx*u,z=az+dz*u;
     if(!walk(x,z))continue;
-    const em=reduced?1.8:1.6+.5*Math.sin(clock*2.4+n*.55);n++;
-    out.box.push({p:[x,base+.16,z],s:[DASH[0],DASH[1],DASH[2]],c:color,r:[0,yaw,0],em,rough:.5});out.box.push({p:[x,base+.13,z],s:[DASH[0]*1.7,.012,DASH[2]*1.25],c:color,r:[0,yaw,0],em:em*.35,rough:.9});
+    const base=ground(x,z),em=reduced?1.8:1.6+.5*Math.sin(clock*2.4+n*.55);n++;
+    out.box.push({p:[x,base+.16,z],s:[DASH[0]*thin,DASH[1],DASH[2]],c:color,r:[0,yaw,0],em,rough:.5});
+    out.box.push({p:[x,base+.13,z],s:[DASH[0]*1.7*thin,.012,DASH[2]*1.25],c:color,r:[0,yaw,0],em:em*.35,rough:.9});
    }
   }
  }
 }
-// Keyboard hold, with the key's own events only. Holding repeats are ignored; blur and a open dialog let go.
+// Keyboard hold, with the key's own events only. Holding repeats are ignored; blur and an open dialog let go.
 if(typeof window!=='undefined'&&typeof document!=='undefined'){
  const isKey=e=>typeof e.key==='string'&&e.key.toLowerCase()===KEY;
  window.addEventListener('keydown',e=>{if(!isKey(e)||e.repeat||e.ctrlKey||e.metaKey||e.altKey)return;if(/INPUT|TEXTAREA|SELECT/.test(e.target?.tagName||'')||document.querySelector('dialog[open]'))return;hold(state.sim,true);});
  window.addEventListener('keyup',e=>{if(isKey(e))hold(state.sim,false);});
  window.addEventListener('blur',()=>hold(state.sim,false));
 }
-const api=Object.freeze({KEY,GOLD,ASH_RED,ROADS,GROUND,areaOf,roadsFor,visible,unlocked,hold,held:()=>state.held,draw});
+const api=Object.freeze({KEY,GOLD,ASH_RED,ROADS,GROUND,PIER,PIER_REACH,areaOf,roadsFor,visible,unlocked,hold,held:()=>state.held,draw});
 G.RealmFeatherSight=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* Read-only rendering of the court, bows, travelling arrows and their impacts. */
