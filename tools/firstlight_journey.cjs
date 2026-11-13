@@ -1,81 +1,123 @@
 #!/usr/bin/env node
 'use strict';
-/* The firstlight journey: title to credits, through the owners' commands. The beat list is data. A beat whose module is
- * not in this build prints as skipped with the module's path; a beat with no command wired here prints as skipped with
- * why. The finale segment starts from an earned late world (not a fresh character) and says so. Usage:
- *   node tools/firstlight_journey.cjs            (prints every beat and the simulated time)
- *   node tools/firstlight_journey.cjs --finale   (only the finale segment) */
-const fs = require('node:fs'), path = require('node:path');
+/* The firstlight journey bot. One fresh character runs the producers' real-command journeys in story order, each stage
+ * starting from the previous stage's saved world (the same chain the whole-draft tool uses). Times, levels, hp and gear
+ * are read from the saved worlds. A beat with no producer wired here is printed as not wired, with the reason; the bot
+ * never plants a defeat, edits a position or a stat. Usage:
+ *   node tools/firstlight_journey.cjs [--out <dir>]
+ * Importable: require('./firstlight_journey.cjs').run({ out }) returns { rows, creditsRolled, stoppedAt }. */
+const fs = require('node:fs'), os = require('node:os'), path = require('node:path');
 const ROOT = path.resolve(__dirname, '..');
-const C = require(path.join(ROOT, 'src/core.js')), SG = require(path.join(ROOT, 'src/saga.js'));
-const LATE = 'tests/fixtures/earth-homecoming-prerequisites/blade/ALL_TWELVE_PREREQUISITES_EARNED.json';
-const here = p => fs.existsSync(path.join(ROOT, p));
+process.env.FIRSTLIGHT_ROOT = process.env.FIRSTLIGHT_ROOT || ROOT;
+const AD = require(path.join(ROOT, 'src/adventure.js'));
 
-// the story, in order. owner is the module the beat needs; cmd says which command this journey runs for it.
-const BEATS = [
- { id: 'title', owner: 'src/title.js', cmd: 'browser title screen' },
- { id: 'kit', owner: 'src/adventure.js', cmd: null },
- { id: 'hart', owner: 'src/adventure.js', cmd: null },
- { id: 'envoy', owner: 'src/adventure.js', cmd: null },
- { id: 'road', owner: 'src/road.js', cmd: null },
- { id: 'beacon', owner: 'src/beacon.js', cmd: null },
- { id: 'bellweather', owner: 'src/crossing.js', cmd: null },
- { id: 'night', owner: 'src/night.js', cmd: null },
- { id: 'hell', owner: 'src/hell-campaign.js', cmd: null, note: 'needs the hell rewrite' },
- { id: 'heaven', owner: 'src/heaven-campaign.js', cmd: null, note: 'needs the heaven rewrite' },
- { id: 'witness', owner: 'src/atlantis-campaign.js', cmd: null, note: 'needs the witness and cosmos rewrite' },
- { id: 'nearshore', owner: 'src/nearshore.js', cmd: null },
- { id: 'finale', owner: 'src/finale.js', cmd: 'finale owner commands' },
- { id: 'epilogue', owner: 'src/epilogue.js', cmd: 'epilogue and credits' },
-];
+// the story in order. a beat with no producer says why it is not wired.
+const NOT_WIRED = {
+ hell: 'the realm trail and the hell campaign need their own inputs; not chained here yet',
+ heaven: 'the realm trail and the heaven campaign need their own inputs; not chained here yet',
+ atlantis: 'the atlantis producer reads a historical fixture, not a fresh save',
+ cosmos: 'the cosmos producer reads a historical fixture, not a fresh save',
+ nearshore: 'no producer for the nearshore choice in this build',
+ finale: 'the finale is checked separately from an earned late world (tests/finale.test.cjs); not reached fresh',
+ credits: 'not reached: the chain stops before the finale'
+};
 
-const log = [];
-let t0 = 0, sim = null;
-function beat(id, ok, text) { const at = sim ? sim.state.adventure.elapsed - t0 : 0; log.push({ id, ok, text, at }); console.log((ok ? 'ran    ' : 'skipped') + ' ' + id.padEnd(12) + ' ' + text + '  [' + at.toFixed(1) + 's]'); }
-function skip(b) { beat(b.id, false, 'owner ' + b.owner + ' is not in this build' + (b.note ? ' (' + b.note + ')' : '') + '; the beat is not played'); }
-
-// the finale segment runs on an earned late world with the saga at the nearshore. the beats before it are the skipped list above.
-function lateWorld() {
- const raw = JSON.parse(fs.readFileSync(path.join(ROOT, LATE), 'utf8')); delete raw.saga;
- const w = C.validate(raw); w.saga = { ...SG.infer(w), beats: { night: { day: 10 } }, briar: { state: 'returned', habit: {}, takenDay: 10, returnedDay: 10 } };
- return C.validate(JSON.parse(JSON.stringify(w)));
+function readJson(file) { return JSON.parse(fs.readFileSync(file, 'utf8')); }
+// the state a beat leaves: simulated time, level, hp, and the gear the saved world wears.
+function state(world) {
+ const a = world.adventure, s = AD.stats(a);
+ return { t: a.elapsed, level: AD.level(a), hp: a.hp, maxHP: s.maxHP, gear: Object.values(a.equipment || {}).filter(Boolean).join(' + ') || 'none' };
 }
-function walkTo(x, z, cap = 60) { sim.moveTo(x, z); for (let t = 0; t < cap; t += .1) { sim.tick(.1); if (Math.hypot(sim.state.player.x - x, sim.state.player.z - z) < .6) return true; } return false; }
-const tick = s => { for (let i = 0; i < s * 10; i++) sim.tick(.1); };
-const bodyOf = ph => globalThis.RealmAdventure.runtime(sim).enemies.find(e => e.finaleRole === 'regent' && e.finalePhase === ph);
-const phase = () => sim.state.saga.finale.phase;
+function row(rows, beat, from, to, log, detail) {
+ const a = to ? state(to) : null, b = from ? state(from) : { t: 0 };
+ const r = { beat, status: 'ran', secs: a ? +(a.t - b.t).toFixed(1) : 0, level: a ? a.level : null, hp: a ? a.hp + '/' + a.maxHP : null, gear: a ? a.gear : null, detail: detail || '' };
+ rows.push(r); if (log) log(r);
+ return r;
+}
+function blocked(rows, beat, why, log) { const r = { beat, status: 'blocked', why: String(why).slice(0, 220) }; rows.push(r); if (log) log(r); return r; }
+function notWired(rows, beat, log) { const r = { beat, status: 'not wired', why: NOT_WIRED[beat] }; rows.push(r); if (log) log(r); return r; }
 
-function finaleSegment() {
- const EH = globalThis.RealmEarthHomecoming, E = require(path.join(ROOT, 'src/epilogue.js'));
- sim = new C.Simulation(lateWorld()); sim.earthHomecomingSave = io => { sim.saved = JSON.parse(JSON.stringify(io)); return { ok: true }; };
- t0 = sim.state.adventure.elapsed;
- beat('start', walkTo(0, 6) && (tick(.3), phase() === 1), 'walked to the spring; the Regent rises (phase ' + phase() + ')');
- let guard = 0; while (phase() < 2 && guard++ < 600) tick(.1);
- beat('chains', phase() === 2, 'chains broken: ' + (sim.saved?.earthHomecoming?.finale?.broken || []).join(', ') + '; the freed allies broke them; phase ' + phase());
- tick(.3); const b2 = bodyOf(2);
- globalThis.RealmAdventure.damageEnemy(sim, b2, 100000); tick(.2);
- beat('merged', phase() === 3, 'the second body fell; the Regent falls back and offers a gift (phase ' + phase() + ')');
- const ctx = { sim, active: 'journey' };
- const r = EH.command(ctx, 'offer', { quest: EH.definition.id, expectedActive: 'journey', expectedRevision: sim.state.adventure.revision, choice: 'refuse' }, { save: io => { sim.saved = JSON.parse(JSON.stringify(io)); return { ok: true }; } });
- beat('offer', r.ok === true, r.ok ? 'refused the gift; the last fight is open' : 'refusal refused: ' + r.error);
- tick(.2); globalThis.RealmAdventure.damageEnemy(sim, bodyOf(3), 100000); tick(.2);
- beat('won', sim.state.saga.finale.won === true, 'the last hit landed; the camera rises (view ' + (EH.view(sim) ? 'on' : 'off') + ')');
- tick(8.5);
- beat('credits', sim.state.saga.credits === true && sim.state.saga.postgame === true, 'credits rolled; postgame ' + sim.state.saga.postgame);
- const changes = E.changes(sim.state).map(c => c.id);
- beat('epilogue', changes.length >= 5, 'the valley changed in ' + changes.length + ' places: ' + changes.join(', '));
- const credits = E.credits().flatMap(s => s.lines);
- beat('lines', credits.includes('made by Dom (Eternities) with Claude'), 'credits read: ' + credits[0]);
+function run(options = {}) {
+ const out = options.out || fs.mkdtempSync(path.join(os.tmpdir(), 'firstlight-journey-'));
+ fs.mkdirSync(out, { recursive: true });
+ const log = options.quiet ? null : r => console.log(fmt(r));
+ const rows = []; let creditsRolled = false, stoppedAt = null;
+ const fresh = { adventure: { elapsed: 0, xp: 0, hp: 100, equipment: {} } };
+ let world = null;
+
+ // chapter one: kit, the hollow hart and the envoy, from the first fresh save
+ const c1 = path.join(out, '01-chapter-one');
+ try {
+  require(path.join(ROOT, 'tests/chapter_journey.cjs')).journey({ out: c1, reward: 'warden_stone' });
+  const start = readJson(path.join(c1, 'OPTIONAL_CHAPTER_START.json')), before = readJson(path.join(c1, 'ENVOY_BEFORE_CHOICE.json'));
+  world = readJson(path.join(c1, 'CHAPTER_COMPLETED.json'));
+  row(rows, 'kit', fresh, start, log, 'workshop supplies, the pickaxe and the repaired crossing');
+  row(rows, 'hart', start, before, log, 'the underways, Briar rescued, the hart freed, the relic');
+  row(rows, 'envoy', before, world, log, 'prophecy and the feather sight; the warden stone chosen');
+ } catch (e) { blocked(rows, 'kit', e.message, log); stoppedAt = 'kit'; }
+
+ // act II: the road, with Tessa's caravan and the sunscar ram
+ if (world) {
+  const c2 = path.join(out, '02-road');
+  try {
+   const prev = world;
+   require(path.join(ROOT, 'tests/road_journey.cjs')).journey({ out: c2, start: prev });
+   world = readJson(path.join(c2, 'CHAPTER_II_COMPLETE_EARNED.json'));
+   row(rows, 'road', prev, world, log, 'the sunward road, Tessa, the ram');
+  } catch (e) { blocked(rows, 'road', e.message, log); stoppedAt = 'road'; world = null; }
+ }
+
+ // act III: the beacon, the stranger, the herald's defence
+ if (world) {
+  const c3 = path.join(out, '03-beacon');
+  try {
+   const prev = world;
+   require(path.join(ROOT, 'tests/beacon_journey.cjs')).journey({ out: c3, source: path.join(out, '02-road', 'CHAPTER_II_COMPLETE_EARNED.json') });
+   world = readJson(path.join(c3, 'CHAPTER_III_COMPLETE_EARNED.json'));
+   row(rows, 'beacon', prev, world, log, 'the sighting, then the defence of the beacon');
+  } catch (e) { blocked(rows, 'beacon', e.message, log); stoppedAt = 'beacon'; world = null; }
+ }
+
+ // the bellweather crossing: Rowan's bell and the hushbound keeper
+ if (world) {
+  const c4 = path.join(out, '04-bellweather');
+  try {
+   const prev = world;
+   require(path.join(ROOT, 'tests/crossing_journey.cjs')).journey({ out: c4, source: path.join(out, '03-beacon', 'CHAPTER_III_COMPLETE_EARNED.json') });
+   world = readJson(path.join(c4, 'HOME_AFTER_BELL_EARNED.json'));
+   row(rows, 'bellweather', prev, world, log, 'the crossing, the keeper, Rowan\'s bell');
+  } catch (e) { blocked(rows, 'bellweather', e.message, log); stoppedAt = 'bellweather'; world = null; }
+ }
+
+ // the rest of the story has no wired producer here; each beat says why.
+ // the night the warning failed: its producer replays the crossing from a fresh start, then runs the night's commands.
+ if (!stoppedAt) {
+  try {
+   const dir = path.join(out, '05-night');
+   fs.mkdirSync(dir, { recursive: true });
+   const n = require(path.join(ROOT, 'tests/night_journey.cjs')).journey({ out: dir });
+   const r = { beat: 'night', status: 'ran', secs: null, level: null, hp: null, gear: null, detail: 'own fresh run: the producer replays the crossing, then the night commands (' + n.commands + ' commands, ' + n.status + ')' };
+   rows.push(r); if (log) log(r);
+   stoppedAt = 'hell';
+  } catch (e) { blocked(rows, 'night', e.message, log); stoppedAt = 'night'; }
+ }
+ for (const beat of ['hell', 'heaven', 'atlantis', 'cosmos', 'nearshore', 'finale', 'credits']) notWired(rows, beat, log);
+
+ const ran = rows.filter(r => r.status === 'ran');
+ const totals = { beatsRan: ran.length, beatsTotal: rows.length, simulatedSeconds: ran.length ? +ran.reduce((n, r) => n + r.secs, 0).toFixed(1) : 0, creditsRolled };
+ if (log) console.log('--- ' + totals.beatsRan + ' of ' + totals.beatsTotal + ' beats ran; ' + totals.simulatedSeconds + 's simulated; credits ' + (creditsRolled ? 'rolled' : 'not reached (stopped before ' + stoppedAt + ')'));
+ return { rows, creditsRolled, stoppedAt, totals, out };
 }
 
-function main() {
- const only = process.argv.includes('--finale');
- const start = Date.now();
- if (!only) for (const b of BEATS) { if (!here(b.owner)) skip(b); else beat(b.id, false, 'owner present; no command is wired in this journey yet'); }
- console.log('--- finale segment: an earned late world, not a fresh character ---');
- finaleSegment();
- const ran = log.filter(x => x.ok).length, total = log.length;
- console.log('--- ' + ran + ' of ' + total + ' beats ran; simulated ' + (sim ? (sim.state.adventure.elapsed - t0).toFixed(1) : '0') + 's; wall ' + ((Date.now() - start) / 1000).toFixed(1) + 's');
- if (log.some(x => !x.ok)) process.exitCode = 1;
+function fmt(r) {
+ if (r.status !== 'ran') return (r.status === 'blocked' ? 'BLOCKED ' : 'not wired ') + r.beat.padEnd(11) + ' ' + r.why;
+ const time = r.secs === null ? 'n/a' : r.secs + 's';
+ return 'ran     ' + r.beat.padEnd(11) + ' ' + time.padStart(8) + '  lv ' + (r.level ?? '-') + '  hp ' + (r.hp ?? '-') + '  ' + (r.gear ?? '-') + '  ' + r.detail;
 }
-main();
+
+module.exports = { run };
+if (require.main === module) {
+ const i = process.argv.indexOf('--out');
+ const result = run({ out: i > 0 ? process.argv[i + 1] : null });
+ process.exitCode = result.creditsRolled ? 0 : 1;
+}
