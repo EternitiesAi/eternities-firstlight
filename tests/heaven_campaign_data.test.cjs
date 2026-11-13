@@ -175,7 +175,7 @@ test('Heaven reward and choices: one common finite material fee, explicit public
   assert.match(courier.text,/I reached the garden on the marked road/,'the promised courier recognition acknowledges actual arrival');
   assert.match(courier.text,c.id==='accessible-assist'?/lever/:/broad plate/,'recognition names the actual selected arrangement');
  }
- assert.match(d.choices[0].text,/low lever with a request plate/);assert.match(d.choices[1].text,/broad activation plate/);
+ assert.match(d.choices[0].text,/low lever with a request plate/);assert.match(d.choices[1].text,/broad plate that anyone can press/);
  assert.notEqual(d.choices[0].recognition[0].text,d.choices[1].recognition[0].text);
  assert.notEqual(d.choices[0].recognition.at(-1).text,d.choices[1].recognition.at(-1).text,'the courier has an actual distinct line in both choices');
  assert.match(d.completionText,/fixed 16 sunmarks, 3 ore, 4 timber and 3 fibre once; XP credits up to 40 within the existing stored cap/);
