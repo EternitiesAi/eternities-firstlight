@@ -111,6 +111,16 @@ def seg_dist(p, a, b):
     return (p - (a + ab * t)).length
 
 
+def drop_slivers(points, tris, limit=0.6):
+    """Faces whose longest edge spans more than the whole rig envelope are the spikes; keep the rest."""
+    kept = []
+    for a, b, c in tris:
+        longest = max((points[a] - points[b]).length, (points[b] - points[c]).length, (points[c] - points[a]).length)
+        if longest <= limit:
+            kept.append((a, b, c))
+    return kept
+
+
 def mesh_out(kind, verts, tris, size=(1.0, 1.0, 1.0), source=''):
     """Unit-space triangles with smooth per-vertex normals from the final connectivity."""
     bm = bmesh.new()
@@ -273,15 +283,21 @@ def main():
             ftris = [t for t in ftris if all(i in keep for i in t)]
             verts, ftris = pack(ftris, verts)
             fitted = fit_box(verts)
-            out['kinds']['body-torso'] = mesh_out('body-torso', [tuple(fitted(p)) for p in verts], ftris, source=SOURCE['body'])
+            upts = [fitted(p) for p in verts]
+            ftris = drop_slivers(upts, ftris)
+            out['kinds']['body-torso'] = mesh_out('body-torso', [tuple(u) for u in upts], ftris, source=SOURCE['body'])
         elif who == 'neck':
             fitted = fit_box(verts)
-            out['kinds']['body-neck'] = mesh_out('body-neck', [tuple(fitted(p)) for p in verts], ftris, source=SOURCE['body'])
+            upts = [fitted(p) for p in verts]
+            ftris = drop_slivers(upts, ftris)
+            out['kinds']['body-neck'] = mesh_out('body-neck', [tuple(u) for u in upts], ftris, source=SOURCE['body'])
         elif who in ('upper_arm', 'forearm', 'thigh', 'shin'):
             a, b = labels_seg[who]
             fitted = fit_limb(verts, a, b)
             kind = {'upper_arm': 'body-upper-arm', 'forearm': 'body-forearm', 'thigh': 'body-thigh', 'shin': 'body-shin'}[who]
-            out['kinds'][kind] = mesh_out(kind, [tuple(fitted(p)) for p in verts], ftris, source=SOURCE['body'])
+            upts = [fitted(p) for p in verts]
+            ftris = drop_slivers(upts, ftris)
+            out['kinds'][kind] = mesh_out(kind, [tuple(u) for u in upts], ftris, source=SOURCE['body'])
 
     head_obj = find_object(SOURCE['head'])
     hv, ht, hb, ha = decimated(head_obj, TARGET_TRIS['head'])
