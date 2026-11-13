@@ -1,0 +1,25 @@
+{
+  "id": "finale",
+  "seed": 1108,
+  "prompt": "full orchestra building to triumph, strings, brass, timpani, choir, bells, climactic, hopeful, instrumental, 96 bpm, major key",
+  "lyrics": "[inst]",
+  "generated_seconds": 123.0,
+  "loop_fade_seconds": 3.0,
+  "model": "ACE-Step/ACE-Step-v1-3.5B",
+  "model_revision": "82cd0d7b6322bd28cd4e830fe675ddb6180ce36c",
+  "guidance": {
+    "infer_step": 60,
+    "guidance_scale": 15.0,
+    "scheduler_type": "euler",
+    "cfg_type": "apg",
+    "omega_scale": 10.0,
+    "guidance_interval": 0.5,
+    "guidance_interval_decay": 0.0,
+    "min_guidance_scale": 3.0,
+    "use_erg_tag": true,
+    "use_erg_lyric": true,
+    "use_erg_diffusion": true
+  },
+  "elapsed_seconds": 22.0,
+  "gpu": "NVIDIA L4"
+}

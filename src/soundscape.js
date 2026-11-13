@@ -39,7 +39,7 @@ class Soundscape{
    this.noiseGain.gain.setTargetAtTime(state.profile.noise,now,.35);
    this.bus.gain.setTargetAtTime(state.quiet?0:state.profile.level,now,state.quiet?.06:.35);
    for(const v of this.voices){v.oscillator.frequency.setTargetAtTime(state.profile.frequency*v.ratio,now,.35);v.gain.gain.setTargetAtTime(state.profile.tone,now,.35);}
-   this.key=state.key;this.profile=state.profile.id;this.quiet=state.quiet;this.nextBird=t+8;
+   this.key=state.key;this.profile=state.profile.id;this.quiet=state.quiet;this.nextBird=t+8;G.RealmAudio?.ambience(state.profile.id);
   }
   if(this.lastTime!==null&&(t<this.lastTime||t-this.lastTime>.75))this.nextBird=t+8;
   this.lastTime=t;

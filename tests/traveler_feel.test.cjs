@@ -140,7 +140,7 @@ test('rendered palms, balanced torso and canonical gear share one frame through 
   const grip=parts.find(p=>p.weaponPart==='grip');near(grip.p,E.M.transform(frame.root,p.joints.rightHand),'rendered grip at actual palm');
   const head=out.round.find(p=>p.travelerPart==='head');near(head.p,E.M.transform(frame.root,p.joints.head),'submitted head follows upper body');
   assert.equal(out.box.some(p=>p.travelerPart==='ground-marker'),false);near(out.disc.find(p=>p.travelerPart==='ground-marker').p,[2,1.583,8],'physical ground marker');
-  assert.equal(parts.filter(p=>p.travelerPart!=='equipment').length,49);assert.ok(parts.filter(p=>p.travelerPart==='equipment').length<40);
+  assert.equal(parts.filter(p=>p.travelerPart!=='equipment'&&!p.travelerFace).length,49);assert.ok(parts.filter(p=>p.travelerPart==='equipment').length<40);
   for(const part of parts)assert.ok(Array.from(part.m).every(Number.isFinite));
  }
  assert.equal(JSON.stringify(sim.snapshot()),saved,'presentation cannot change canonical progression');

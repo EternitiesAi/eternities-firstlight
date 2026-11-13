@@ -1,7 +1,7 @@
 /* Bounded once-only realm stories. Presentation never manufactures accepted facts. */
 (function(G){'use strict';
 const clone=o=>JSON.parse(JSON.stringify(o)),actors=new WeakMap(),dials=new WeakMap(),dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
-const fail=error=>({ok:false,error});
+const fail=error=>({ok:false,error}),SAGA=()=>G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
 function definitions(){const north=G.RealmTrailsNorth||(typeof require==='function'?require('./realm-trails-north.js'):null),south=G.RealmTrailsSouth||(typeof require==='function'?require('./realm-trails-south.js'):null),cosmos=G.RealmTrailsCosmos||(typeof require==='function'?require('./realm-trails-cosmos.js'):null);return[...north.definitions,...south.definitions,...cosmos.definitions];}
 const definition=id=>definitions().find(d=>d.id===id)||null;
 const record=()=>({accepted:false,steps:[],settings:{},checkpoint:0,escortMode:'follow',assisted:false,claimed:false});
@@ -57,6 +57,8 @@ function command(ctx,type,payload,io){
  if(type==='accept'){
   if(!at(sim,{...d.giver,medium:'dry'}))return fail('Speak to '+d.giver.name+' to accept this work.');
   if(r.accepted)return{ok:true,duplicate:true,text:'This trail is already accepted. Its progress is retained.'};
+  // the saga decides when a realm's door opens; a save that already accepted this trail never reaches this line.
+  if(d.gate&&!G.RealmSaga.allowed(sim.state,d.gate))return fail(d.gateText||'This way is not open yet.');
   r.accepted=true;text=d.title+' accepted. Read the route, danger and fixed reward.';
  }else if(type==='step'){
   const s=d.steps.find(s=>s.id===payload.step);if(!r.accepted||!s||s.kind!=='interact')return fail('Only an accepted physical interaction can be recorded here.');

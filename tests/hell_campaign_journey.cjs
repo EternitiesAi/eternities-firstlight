@@ -1,4 +1,5 @@
 'use strict';
+require('./hellheaven_night_gate.cjs');
 /* Legitimate kit, gear, Open Cage rescue and campaign. Accelerated production
  * movement/combat and an in-memory saver are not native-browser or human play. */
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto');

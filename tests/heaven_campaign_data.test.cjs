@@ -22,7 +22,7 @@ function route(a,b,radius=.31){
 
 test('Heaven catalogue: frozen exact API imports without starting gameplay or changing older owners',()=>{
  keys(globalThis.RealmHeavenCampaignData,['definition']);frozen(globalThis.RealmHeavenCampaignData);
- keys(d,['id','title','room','realm','prerequisite','giver','reward','summary','danger','completionText','steps','choices','enemies','escort']);
+ keys(d,['id','title','room','realm','prerequisite','giver','reward','summary','danger','completionText','steps','choices','enemies','escort','envoy']);
  assert.equal(d.id,'heaven-gate-remained-open-v1');assert.equal(d.room,'world-heaven');assert.equal(d.realm,'heaven');
  const sentinel={untouched:true},sandbox={RealmTrailsNorth:sentinel,RealmWorldFoundations:sentinel,RealmCore:sentinel,module:{exports:{}}};
  const before=new Set(Object.keys(sandbox));
@@ -31,8 +31,8 @@ test('Heaven catalogue: frozen exact API imports without starting gameplay or ch
  assert.deepEqual(Object.keys(sandbox).filter(k=>!before.has(k)),['RealmHeavenCampaignData']);
  assert.strictEqual(sandbox.module.exports,sandbox.RealmHeavenCampaignData);
  assert.throws(()=>{d.enemies[0].hp=1;},TypeError);assert.throws(()=>{d.escort.route.push({x:0,z:0});},TypeError);
- assert.match(d.summary,/provisional authored adaptations/);assert.match(d.summary,/repaired and claimed/);
- assert.match(d.completionText,/original Heaven01 trial and protected sanctuary remain separate/);
+ assert.doesNotMatch(d.summary+d.danger+d.completionText,/provisional|not a claim|\bfee\b|prototype|epoch|luna|realm 10/i);assert.match(d.summary,/The Broken Choir is mended/);
+ assert.match(d.completionText,/the Heaven trial stay separate/);
 });
 
 test('Heaven entry: exact existing Broken Choir owner, ordinary source anchors and independent identities',()=>{
@@ -43,9 +43,9 @@ test('Heaven entry: exact existing Broken Choir owner, ordinary source anchors a
  assert.notEqual(d.id,old.id);assert.notEqual(d.id,world.quest.id);
  for(const e of d.enemies){assert.ok(!(world.enemies||[]).some(v=>v.id===e.id));assert.ok(!north.definitions.some(v=>v.enemy?.id===e.id));}
  assert.notEqual(d.escort.id,'hell-neris');assert.notEqual(d.escort.id,'heaven-calen');
- assert.match(steps.get('fit-arrival-assist').text,/already repaired/);assert.match(steps.get('fit-arrival-assist').text,/not a replay/);
- assert.match(d.danger,/No class, soul technique or companion is mandatory/);
- assert.match(d.danger,/Road home remains free/);
+ assert.match(steps.get('fit-arrival-assist').text,/does not repeat the old repair/);assert.match(steps.get('fit-arrival-assist').text,/cost nothing/);
+ assert.match(d.danger,/No class, technique or companion is required/);
+ assert.match(d.danger,/The road home stays open/);
 });
 
 test('Heaven graph: all deliberate branches are acyclic and no preparation, defeat or escort is a fake button',()=>{
@@ -67,8 +67,8 @@ test('Heaven graph: all deliberate branches are acyclic and no preparation, defe
  assert.equal(steps.get(d.escort.arrivalStep).kind,'escort');assert.deepEqual(steps.get(d.escort.arrivalStep).requires,[d.escort.startStep]);
  assert.deepEqual(steps.get('fit-arrival-assist').requires,[d.escort.arrivalStep]);assert.equal(steps.get('arrangement').kind,'choice');
  assert.deepEqual(steps.get('verify-welcome').requires,['arrangement']);assert.equal(d.steps.some(s=>s.id==='claim'),false);
- assert.match(steps.get(d.escort.arrivalStep).text,/manual completion button cannot substitute/);
- assert.match(steps.get('arrangement').text,/Preview and cancel keep the choice undecided/);
+ assert.match(steps.get(d.escort.arrivalStep).text,/no button stands in for the walk/);
+ assert.match(steps.get('arrangement').text,/Preview and cancel keep the choice open/);
 });
 
 test('Heaven branches: exhaust every legal fact set and both arrangements with and without supplied preparation',()=>{
@@ -105,7 +105,7 @@ test('Heaven geography: every action, branch and return uses complete production
  const closed=world.solids.find(s=>s.id==='heaven-north-closed-terrace');assert.ok(closed);
  assert.equal(W.segment(d.room,{x:0,z:-109},{x:0,z:-115}),false,'the original closed terrace is still a real obstruction');
  assert.ok(d.enemies.every(e=>e.z>closed.z+closed.d/2+e.radius),'new encounter centers stay on the lower exterior side');
- assert.match(d.danger,/upper terrace remains closed/);
+ assert.match(d.danger,/upper terrace stays closed/);
 });
 
 test('Heaven enemy bodies: fixed body-qualified routes clear actual cover and reject player-only narrow clearance',()=>{
@@ -133,15 +133,15 @@ test('Heaven escort: the actual seven-point service loop clears the full courier
  }
  assert.equal(W.segment(d.room,e.route[4],e.route[6],e.radius),false,'the direct shortcut would cross real cover');
  assert.ok(distance(e.route.at(-1),steps.get('verify-welcome'))===3,'courier arrival is beside Calen, not the same occupied person anchor');
- assert.match(steps.get(e.startStep).text,/Leaving or reloading resets an unfinished walk while retaining the invitation/);
- assert.match(steps.get(e.startStep).text,/deliberately invite again/);assert.match(steps.get(e.arrivalStep).text,/actual complete supported-route arrival/);
- assert.match(steps.get(e.arrivalStep).text,/Unfinished route progress is transient/);
+ assert.match(steps.get(e.startStep).text,/Leaving or reloading resets an unfinished walk, and the invitation stays/);
+ assert.match(steps.get(e.startStep).text,/invite it again from the same place/);assert.match(steps.get(e.arrivalStep).text,/by its own steps/);
+ assert.match(steps.get(e.arrivalStep).text,/an unfinished walk resets/);
 });
 
 test('Heaven encounters: directed beam and local pulse differ, admit ordinary damage and grant no separate rewards',()=>{
  assert.equal(d.enemies.length,2);
  for(const e of d.enemies){
-  keys(e,['id','name','kind','x','z','hp','damage','radius','damageWindow','spawnAfter','defeatStep','objective','attack']);
+  keys(e,['id','name','kind','x','z','hp','damage','radius','damageWindow','spawnAfter','defeatStep','objective','attack',...(e.boss?['boss']:[])]);
   assert.ok(stable.test(e.id));assert.equal(e.kind,'sentinel');assert.equal(e.damageWindow,'all-live-phases');assert.ok(e.objective);
   assert.ok([e.hp,e.damage].every(v=>Number.isSafeInteger(v)&&v>0));assert.ok(e.radius>0&&e.radius<1);
   for(const id of e.spawnAfter)assert.ok(steps.has(id));assert.equal(steps.get(e.defeatStep).kind,'defeat');
@@ -150,15 +150,15 @@ test('Heaven encounters: directed beam and local pulse differ, admit ordinary da
  }
  const[beam,relay]=d.enemies;
  assert.deepEqual({hp:beam.hp,damage:beam.damage,radius:beam.radius},{hp:110,damage:12,radius:.55});
- assert.deepEqual({hp:relay.hp,damage:relay.damage,radius:relay.radius},{hp:75,damage:9,radius:.6});
+ assert.deepEqual({hp:relay.hp,damage:relay.damage,radius:relay.radius},{hp:620,damage:38,radius:.6});
  assert.deepEqual(beam.attack,{kind:'beam',reach:9,length:9,halfWidth:.65,windup:1.2,recovery:1.7,support:{step:'ground-mirror',windupBonus:.4}});
  assert.deepEqual(relay.attack,{kind:'pulse',reach:5.5,radius:3.4,windup:1.4,recovery:2});
  assert.ok(steps.get(beam.attack.support.step).optional);assert.equal('support' in relay.attack,false);
  assert.match(steps.get('ground-mirror').text,/adds exactly 0\.4 seconds to its warning/);
- assert.match(steps.get('ground-mirror').text,/no recovery interval, and no relay pulse/);
- assert.match(d.danger,/during all live phases/);assert.match(d.danger,/neither has recovery-only armor or equipment scaling/);
- assert.match(steps.get('beam-disabled').text,/no independent loot or XP/);
- assert.match(steps.get('secure-service-route').text,/after both apparatuses are disabled/);
+ assert.match(steps.get('ground-mirror').text,/touches no recovery and no relay pulse/);
+ assert.match(d.danger,/during every live phase/);assert.match(d.danger,/Real opaque cover blocks the beam/);
+ assert.match(steps.get('beam-disabled').text,/grants no loot or XP/);
+ assert.match(steps.get('secure-service-route').text,/now that both apparatuses are down/);
 });
 
 test('Heaven reward and choices: one common finite material fee, explicit public usability and earned recognition',()=>{
@@ -166,21 +166,21 @@ test('Heaven reward and choices: one common finite material fee, explicit public
  assert.deepEqual(d.choices.map(c=>c.id),['accessible-assist','broadened-activation']);
  for(const c of d.choices){
   keys(c,['id','name','text','consequence','recognition']);assert.ok(stable.test(c.id));
-  assert.match(c.text,/keeps public service usable/);assert.match(c.text,/does not gate anyone’s right to pass/);
-  assert.match(c.text,/courier arrival and truthful account remain/);assert.match(c.consequence,/permanent/);assert.match(c.consequence,/stated fee remains unchanged/);
-  assert.match(c.consequence,/A deliberate activation briefly moves/);assert.match(c.consequence,/at rest the fitting stays quiet/);
+  assert.match(c.text,/garden stays open to everyone/);
+  assert.match(c.text,/the courier’s arrival and the true account all stay/);assert.match(c.consequence,/kept for good/);assert.doesNotMatch(c.text+c.consequence,/\bfee\b|\bclaim/i);
+  assert.match(c.consequence,/A deliberate press moves/);assert.match(c.consequence,/at rest it stays quiet/);
   assert.deepEqual(c.recognition.map(r=>r.name),['Rielle','Calen','Yselle','Wayfarer']);
   for(const line of c.recognition){keys(line,['name','text']);assert.ok(line.text.length>20&&line.text.length<220);}
   const courier=c.recognition.find(r=>r.name==='Wayfarer');
-  assert.match(courier.text,/I reached the Garden on the marked service loop/,'the promised courier recognition acknowledges actual arrival');
-  assert.match(courier.text,c.id==='accessible-assist'?/lower lever/:/broad plate/,'recognition names the actual selected arrangement');
+  assert.match(courier.text,/I reached the garden on the marked road/,'the promised courier recognition acknowledges actual arrival');
+  assert.match(courier.text,c.id==='accessible-assist'?/lever/:/broad plate/,'recognition names the actual selected arrangement');
  }
- assert.match(d.choices[0].text,/lower assist lever plus a request plate/);assert.match(d.choices[1].text,/broad activation plate/);
+ assert.match(d.choices[0].text,/low lever with a request plate/);assert.match(d.choices[1].text,/broad plate that anyone can press/);
  assert.notEqual(d.choices[0].recognition[0].text,d.choices[1].recognition[0].text);
  assert.notEqual(d.choices[0].recognition.at(-1).text,d.choices[1].recognition.at(-1).text,'the courier has an actual distinct line in both choices');
- assert.match(d.completionText,/fixed 16 sunmarks, 3 ore, 4 timber and 3 fibre once; XP credits up to 40 within the existing stored cap/);
+ assert.match(d.completionText,/gives you 16 sunmarks, 3 ore, 4 timber and 3 fibre, and XP up to 40 within the stored cap/);
  assert.doesNotMatch(d.completionText,/has paid (?:the declared )?40 XP/);
- assert.match(d.completionText,/not a promised upgrade for every veteran/);assert.match(d.completionText,/No gear was fitted, equipped or granted/);
+ assert.match(d.completionText,/go toward a project you choose/);assert.match(d.completionText,/No gear was fitted or granted/);
  const contract=fs.readFileSync(path.join(__dirname,'../docs/development/HEAVEN_APPROACH_CONTRACT_2026-10-04.md'),'utf8');
  assert.match(contract,/displayed only after actual\s+`verify-welcome`/);
  assert.match(contract,/\{version:1,accepted:false,steps:\[\],choice:null,claimed:false\}/);

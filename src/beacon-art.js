@@ -29,6 +29,9 @@ function draw(out,sim,t,art){
   if(q.id==='oren'&&!q.path.length){box(q.x+.6,1.9,q.z,.65,.65,.7,0xb29363);box(q.x+.6,2.25,q.z,.80,.10,.82,0xccc2a2);}
   if(q.id==='mara'&&!q.path.length){add('octa',q.x-.55,2.95,q.z,.35,.75,.35,0xb1d2d5,{em:.8,r:[0,clock*.3,0]});}
  }
+ if(B.sightingPending(sim)){const S=B.SCENE;art.person(out,S.tessa.x,S.tessa.z,S.tessa.yaw,'#699e9a',clock,false,'trader',false,1.57);
+  if(G.RealmStoryArt?.regent)G.RealmStoryArt.draw(out,G.RealmStoryArt.regent(S.stranger.x,1.57,S.stranger.z,S.stranger.yaw,clock));
+  else{art.person(out,S.stranger.x,S.stranger.z,S.stranger.yaw,'#8b8689',clock,false,'stranger',false,1.57);add('octa',S.stranger.x,2.95,S.stranger.z+.18,.2,.3,.2,0xe0743a,{em:1.5});}}
  if(fought&&r.phase!=='failed')for(const[x,z]of[[-6,-18],[6,-17]]){
   for(let j=0;j<18;j++){let u=j/18*TAU;add('octa',x+Math.sin(u)*.9,2.9+Math.cos(u)*1.6,z,.16,.36,.13,j%3?0x9c445a:0xdd956b,{em:.8});}
  }

@@ -38,8 +38,7 @@ test('fixed ordinary health stays easy for stronger gear without scaling or chan
  const a=s.state.adventure;a.xp=9999; // Explicit banked-XP boundary on real earned gear/history.
  s.state.player={x:11,z:9,yaw:0};cmd(s,'starter-accept');s.state.player={x:15,z:7,yaw:0};cmd(s,'starter-enter');
  const e=A.runtime(s).enemies.find(e=>e.id==='river-skitter-west');s.state.player={x:e.x,z:e.z+1.2,yaw:Math.PI};
- assert.equal(e.maxHP,40);assert.equal(A.stats(a).attack,35);cmd(s,'attack',{target:e.id});assert.equal(e.hp,5);
- for(let n=0;n<22;n++)s.tick(.025);cmd(s,'attack',{target:e.id});assert.equal(e.hp,0);assert.equal(a.xp,9999);
+ assert.equal(e.maxHP,40);assert.equal(A.stats(a).attack,49);cmd(s,'attack',{target:e.id});assert.equal(e.hp,0);assert.equal(a.xp,9999);
  const completed=new C.Simulation(s.snapshot());completed.state.player={x:15,z:7,yaw:0};cmd(completed,'starter-enter');assert.equal(A.runtime(completed).enemies.some(v=>v.id===e.id),false,'saved prior defeated identity stays resolved');
 });
 test('ordinary fights stay optional and named threat, rewards, cooldown and weapon distinctions retain their rules',()=>{

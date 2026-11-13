@@ -27,7 +27,7 @@ test('explicit survey acceptance uses kit and the next expected sequence',()=>{
 test('older saves acquire empty project data without changing XP or creative work',()=>{
  for(const xp of [0,29,30,79,80,149,150,259,260,9999]){
   const raw=kit().snapshot();delete raw.adventure.pursuit;raw.adventure.xp=xp;raw.notes=[{text:'my melody stays',day:1}];raw.score.title='A kept tune';
-  const before=JSON.stringify(raw),s=C.validate(raw);assert.equal(s.adventure.xp,xp);assert.equal(A.level(s.adventure),[1,1,2,2,3,3,4,4,5,5][[0,29,30,79,80,149,150,259,260,9999].indexOf(xp)]);
+  const before=JSON.stringify(raw),s=C.validate(raw);assert.equal(s.adventure.xp,xp);assert.equal(A.level(s.adventure),[1,1,2,2,3,3,4,4,5,12][[0,29,30,79,80,149,150,259,260,9999].indexOf(xp)]);
   assert.deepEqual(s.adventure.pursuit,{version:1,pinned:null,claimed:0,active:null,fittings:{}});
   for(const k of Object.keys(raw.adventure))assert.deepEqual(s.adventure[k],raw.adventure[k],k);
   for(const k of Object.keys(raw))if(k!=='adventure')assert.deepEqual(s[k],raw[k],k);assert.equal(JSON.stringify(raw),before);

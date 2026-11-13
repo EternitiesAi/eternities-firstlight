@@ -179,7 +179,9 @@ test('all transforms stay finite, actor geometry has no camera authority, and bu
   const posed=T.pose({phase:i*.91,blend:i/19,time:i,style,combatScene:true,reducedMotion,
    combatPhase:i%2?'anticipate':'recover',combatProgress:i/19,guarded:i%5===0});
   const out=empty();T.draw(out,{x:3,z:2,base:1.5,yaw:i*.33},posed);
-  assert.equal(all(out).length,49);assert.ok(all(out).length<65);
+  // the 49-part body is the pinned rig; the five expression parts ride its batches outside that pin.
+  const body=all(out).filter(it=>!it.travelerFace);
+  assert.equal(body.length,49);assert.equal(all(out).length-body.length,5);assert.ok(all(out).length<65);
   for(const item of all(out)){
    assert.ok([...item.m,...item.p,...item.s,...E.hex(item.c)].every(Number.isFinite));
    assert.ok(item.s.every(n=>n>0));assert.equal(item.cameraSolid,false);assert.equal(item.cutaway,false);
@@ -219,4 +221,15 @@ test('sampling, posing and drawing leave input rules, motion and profiles immuta
  const untouched=JSON.stringify({options,posed,drawInput}),frame=T.draw(empty(),drawInput,posed);
  assert.equal(JSON.stringify({options,posed,drawInput}),untouched);
  frame.joints.rightHand[0]+=4;assert.notDeepEqual(frame.joints.rightHand,posed.joints.rightHand,'frame owns copies of anchors');
+});
+test('limbs ride the capsule kind and the face is a separate path bound to the head',()=>{
+ const out=empty();T.draw(out,{},T.pose());
+ assert.deepEqual(out.capsule.filter(it=>!it.travelerFace).map(it=>it.travelerPart).sort(),['jacket-left-side','jacket-right-side','left-forearm','left-shin','left-thigh','left-upper-arm','right-forearm','right-shin','right-thigh','right-upper-arm']);
+ assert.ok(out.round.some(it=>it.travelerPart==='left-eye')&&out.round.some(it=>it.travelerPart==='right-eye'),'eye whites are body parts');
+ const faces=all(out).filter(it=>it.travelerFace);
+ assert.deepEqual(faces.map(it=>it.travelerPart).sort(),['left-catchlight','left-pupil','mouth','right-catchlight','right-pupil']);
+ // head ellipsoid from its box, widened by 3 cm: every expression part sits on its front.
+ const inside=p=>(p[0]/.1525)**2+((p[1]-1.61)/.165)**2+((p[2]-.008)/.1475)**2<=1;
+ for(const f of faces)assert.ok(inside(f.p),f.travelerPart+' sits on the head');
+ assert.ok(faces.every(f=>f.cameraSolid===false&&f.cutaway===false));
 });
