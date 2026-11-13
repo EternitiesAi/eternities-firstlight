@@ -13,7 +13,7 @@ function journey(options={}){
  function walk(x,z){assert.ok(sim.moveTo(x,z).ok,'valid path '+x+','+z);let i=0;while(sim.playerPath.length&&i++<6000)step(.05);assert.ok(Math.hypot(sim.state.player.x-x,sim.state.player.z-z)<.15,'arrived '+x+','+z);}
  walk(0,3);cmd('rest');walk(44,6);cmd('road-enter');walk(2,3.4);walk(2,-4);walk(0,-24);
  fs.writeFileSync(path.join(out,'BEACON_READY_EARNED.json'),JSON.stringify(sim.snapshot(),null,2));
- cmd('beacon-answer');step(18);assert.equal(B.runtime(sim).phase,'ready');assert.equal(B.runtime(sim).actors.length,3);assert.ok(B.runtime(sim).actors.every(a=>Math.hypot(a.x-a.goal.x,a.z-a.goal.z)<.1));
+ cmd('beacon-answer');step(18);assert.equal(B.runtime(sim).phase,'ready');assert.equal(B.runtime(sim).actors.length,3);assert.ok(B.runtime(sim).actors.every(a=>Math.hypot(a.x-a.goal.x,a.z-a.goal.z)<.1));cmd('beacon-sighting');assert.ok(sim.state.saga.regent.includes('beacon'));{const sight=sim.sagaCommand('journey-sight-beacon','feather-use',{});assert.ok(sight.ok,sight.error);}
  if(options.grace!==false)cmd('beacon-grace');cmd('beacon-defend');const startXP=sim.state.adventure.xp,startDrops=JSON.stringify(sim.state.adventure.drops);
  let lastWave=0;const capture=()=>{const a=sim.state.adventure,r=B.runtime(sim);phases.push({wave:r.wave,ward:r.ward,health:a.hp});};
  function fight(){
@@ -40,7 +40,7 @@ function journey(options={}){
   if(br.ward<60&&B.near(sim)&&br.phase==='assault'&&br.time>=br.playerRepairAt&&a.stamina>=40)cmd('beacon-repair');
   step(.1);
  }
- assert.equal(B.runtime(sim).phase,'won','three breaches repelled: '+JSON.stringify(B.runtime(sim)));capture();
+ assert.equal(B.runtime(sim).phase,'won','three breaches repelled: '+JSON.stringify(B.runtime(sim)));capture();assert.equal(require('../src/saga.js').done(sim.state,'beacon'),true,'the defense held and the saga marks the beacon');
  }
  fight();assert.equal(sim.state.adventure.xp,startXP);assert.equal(JSON.stringify(sim.state.adventure.drops),startDrops);
  walk(0,-24);cmd('beacon-reward');beforeSoul=sim.snapshot();fs.writeFileSync(path.join(out,'BEACON_VICTORY_EARNED.json'),JSON.stringify(beforeSoul,null,2));
