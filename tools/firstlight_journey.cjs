@@ -84,7 +84,7 @@ function run(options = {}) {
  stage('night', '05', 'NIGHT_COMPLETE.json', () => require(path.join(ROOT, 'tests/night_journey.cjs')).journey({ out: sub('05'), source: world }), 'Briar bites the device; the travellers are called out; the envoy speaks');
 
  // the local realms (Earth side) and the hell campaign: the connected helper takes the live world
- TACTICS.setDodge(false); // the connected realm helpers brace and stand; see journey_tactics.cjs
+ TACTICS.setDodge(false); // the realm helpers brace and stand: with the step on, the hell helper stops in its warden loop
  let hellRaw = null;
  if (world) {
   const before = readJson(world);
