@@ -7,7 +7,7 @@ const D=DATA.definition,P=DATA.patterns,SUPPORTS=DATA.supports;
 const SCRIPT=()=>G.RealmStoryScript||(typeof require==='function'?require('./story-script.js'):null);
 const sceneOf=(id,state)=>SCRIPT()?.forStep?.('cosmos',id,state)||null;
 // The six-second hold at the central link (BRANCHES 5). Transient, never saved: leaving the anchor or bringing the other into view resets it.
-const HOLD_SECONDS=6,HOLD_REACH=2.5,OFF_SCREEN=12;
+const HOLD_SECONDS=6,HOLD_REACH=2.5,OFF_SCREEN=7;
 const SAGA=()=>G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
 // The saga writes into the candidate save, so a sighting lands in the same save as the acceptance.
 const candidateSim=c=>({state:c,event:(kind,text)=>{c.journal.push({seq:c.nextEvent++,day:c.day,hour:c.hour,kind,text:text.slice(0,350)});if(c.journal.length>200)c.journal.shift();}});

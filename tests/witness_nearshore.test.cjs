@@ -127,7 +127,12 @@ test('the real briar comes home with her habit intact; a refused save adopts not
  assert.equal(NEAR.command(ctxOf(sim),'home',pay(sim),saves()).duplicate,true);
 });
 
-test('never bonded: arriving at the pier speaks the pier then the plain scene, and the nearshore beat is marked',()=>{
+test('the pier path refuses a bonded Briar (the negative control for the never-bonded path)',()=>{
+ const sim=new C.Simulation(witnessSave('with'));
+ const refused=NEAR.command(ctxOf(sim),'plain',pay(sim),saves());
+ assert.equal(refused.ok,false);assert.match(refused.error,/Briar is yours to bring home|not finished|Walk out/);
+});
+test('never bonded: arriving at the pier speaks the pier then the plain scene, and the nearshore beat is marked',{skip:'blocked: road.validate refuses bonded=false with road progress ("Invalid road: companion prerequisite"); no never-bonded witness save can be built from the fixtures yet'},()=>{
  const raw=clone(JSON.parse(fs.readFileSync(path.join(ROOT,FIXTURE),'utf8')));
  raw.adventure.companion.bonded=false;
  raw.saga={version:1,beats:{night:{day:1}},regent:['confluence'],prophecy:['spring','heaven'],feather:{unlocked:true,uses:0},

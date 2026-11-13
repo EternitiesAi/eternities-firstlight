@@ -103,6 +103,8 @@ function plain(sim,io){
  if(!SAGA().done(sim.state,'witness'))return fail('The witness is not finished yet.');
  if(s.beats&&Object.prototype.hasOwnProperty.call(s.beats,'nearshore'))return{ok:true,duplicate:true,text:''};
  if(dist(sim.state.player,PLACE)>NEAR)return fail('Walk out onto the lantern pier first.');
+ // the pier path is for a save where Briar was never taken; a taken Briar is answered at the nearshore instead.
+ if(s.briar.state!=='with'||s.briar.takenDay!==null)return fail('Briar was taken. Answer the foxes at the nearshore.');
  const c=sim.snapshot(),res=SAGA().mark(simOn(c),'nearshore');if(!res.ok)return fail(res.error);
  const lines=[...spoken('pier',sim.state),...spoken('plain',c)];
  return commit(sim,c,io,lines.join(' '),lines);
