@@ -182,7 +182,7 @@ test('all transforms stay finite, actor geometry has no camera authority, and bu
   const out=empty();T.draw(out,{x:3,z:2,base:1.5,yaw:i*.33},posed);
   // the 49-part body is the pinned rig; the five expression parts ride its batches outside that pin.
   const body=all(out).filter(it=>!it.travelerFace);
-  assert.equal(body.length,49);assert.equal(all(out).length-body.length,5);assert.ok(all(out).length<65);
+  assert.equal(body.length,49);assert.equal(all(out).length-body.length,7);assert.ok(all(out).length<65);
   for(const item of all(out)){
    assert.ok([...item.m,...item.p,...item.s,...E.hex(item.c)].every(Number.isFinite));
    assert.ok(item.s.every(n=>n>0));assert.equal(item.cameraSolid,false);assert.equal(item.cutaway,false);
@@ -226,11 +226,13 @@ test('sampling, posing and drawing leave input rules, motion and profiles immuta
 test('limbs ride the baked body kinds and the face is a separate path bound to the head',()=>{
  const out=empty();T.draw(out,{},T.pose());
  // the jacket sides stay capsules; the limbs now ride the baked human segment kinds, one per side.
- assert.deepEqual(out.capsule.filter(it=>!it.travelerFace).map(it=>it.travelerPart).sort(),['jacket-left-side','jacket-right-side']);
+ // no legacy capsule survives: the jacket sides move to the empty hidden kind, which keeps the count.
+ assert.equal(out.capsule.filter(it=>!it.travelerFace).length,0,'no legacy capsules remain');
+ assert.deepEqual(out['body-hidden'].map(it=>it.travelerPart).sort(),['collar-left','collar-right','jacket-front-seam','jacket-left-side','jacket-right-side','left-boot-cuff','left-elbow','left-ear','left-knee','left-shoulder','left-sole','right-boot-cuff','right-elbow','right-ear','right-knee','right-shoulder','right-sole']);
  assert.deepEqual(['body-upper-arm','body-forearm','body-thigh','body-shin'].map(k=>out[k].map(it=>it.travelerPart).sort().join()),['left-upper-arm,right-upper-arm','left-forearm,right-forearm','left-thigh,right-thigh','left-shin,right-shin']);
  assert.ok(out.round.some(it=>it.travelerPart==='left-eye')&&out.round.some(it=>it.travelerPart==='right-eye'),'eye whites are body parts');
  const faces=all(out).filter(it=>it.travelerFace);
- assert.deepEqual(faces.map(it=>it.travelerPart).sort(),['left-catchlight','left-pupil','mouth','right-catchlight','right-pupil']);
+ assert.deepEqual(faces.map(it=>it.travelerPart).sort(),['left-catchlight','left-lid','left-pupil','mouth','right-catchlight','right-lid','right-pupil']);
  // head ellipsoid from its box, widened by 3 cm: every expression part sits on its front.
  const inside=p=>(p[0]/.1525)**2+((p[1]-1.61)/.165)**2+((p[2]-.008)/.1475)**2<=1;
  for(const f of faces)assert.ok(inside(f.p),f.travelerPart+' sits on the head');

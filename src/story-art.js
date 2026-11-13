@@ -29,6 +29,11 @@ function put(list,R,kind,name,c,s,ax,color,o={}){
  const {M}=G.RealmEngine;
  list.push({kind,p:M.transform(R,c),s:s.slice(),m:M.mul(R,frameOf(c,s,ax)),c:color,rough:o.rough??.84,em:o.em??0,cameraSolid:false,cutaway:false,storyPart:name});
 }
+// a baked shell already in rig metres: placed with the figure root alone.
+function place(list,R,kind,name,color,o={}){
+ const {M}=G.RealmEngine;
+ list.push({kind,p:M.transform(R,[0,0,0]),s:[1,1,1],m:new Float32Array(R),c:color,rough:o.rough??.84,em:o.em??0,cameraSolid:false,cutaway:false,storyPart:name});
+}
 // a capsule, box or round laid from a to b, cross-section width by depth.
 function beam(list,R,kind,name,a,b,width,depth,color,o){
  const d=vsub(b,a),len=Math.hypot(...d),up=d.map(v=>v/len),ref=Math.abs(up[1])<.9?[0,1,0]:[1,0,0];
@@ -66,7 +71,7 @@ function regent(x,y,z,yaw,t){
  // a smaller swept mass over the crown, so the head reads as hair rather than a helmet.
  beam(parts,R,'capsule','hair-swept',[0,1.715,.02],[0,1.64,-.10],.22,.19,ASH.hair);
  // the baked long coat: a flared shell from the chest to below the knee, closed at the front.
- put(parts,R,'body-coat','coat',[sway*.4,0.835,0],G.RealmBodyMeshes.sizes['body-coat'],IDENT,ASH.coat,{rough:.8});
+ place(parts,R,'body-coat','coat',ASH.coat,{rough:.8});
  // ember piping down the coat's front edge, lit from within; it follows the shell's front.
  for(const s of[-1,1])beam(parts,R,'box','seam-'+(s<0?'left':'right'),[s*.05,1.12,.14],[s*.055+sway*.3,.36,.25],.006,.008,ASH.seam,{em:.34+.08*Math.sin(k*.9+s),rough:.5});
  // a thin dark circlet on the brow with small glowing ember points: one side still warm, the back gone grey.
@@ -89,14 +94,14 @@ function envoy(x,y,z,yaw,t){
   'left-thigh':BONE.robeShade,'right-thigh':BONE.robeShade,'left-shin':BONE.robeShade,'right-shin':BONE.robeShade,'left-knee':BONE.robeShade,'right-knee':BONE.robeShade,'left-boot-cuff':BONE.robeShade,'right-boot-cuff':BONE.robeShade,'left-boot':0x6b5a3e,'right-boot':0x6b5a3e});
  for(const it of parts)it.em=Math.max(it.em,/pupil|catchlight/.test(it.storyPart)?.2:.12);
  // the baked robe: a flared shell from the shoulders to the ankle.
- put(parts,R,'body-robe','robe',[0,0.695,0],G.RealmBodyMeshes.sizes['body-robe'],IDENT,BONE.robe,{rough:.7});
+ place(parts,R,'body-robe','robe',BONE.robe,{rough:.7});
  ring(parts,R,'hem-gold',[0,.12,0],.26,.022,flat(0),BONE.gold,{em:.35,rough:.4});
- // wings of light: the baked feather planes rise from the shoulder blades, breathing with the body; a soft glow sits behind each.
+ // wings of light: six layered tapered feathers a side fan from the shoulder blades, bone-white at the top and gold at the tips.
  const breath=Math.sin(k*.8)*.03;
- for(const s of[-1,1]){
-  const side=s<0?'left':'right',dims=G.RealmBodyMeshes.sizes['body-wing-'+side],c=[s*.255,1.51+breath*.5,-.26];
-  put(parts,R,'body-wing-'+side,'wing-'+side,c,dims,IDENT,BONE.feather,{em:.8,rough:.4});
-  put(parts,R,'body-wing-'+side,'wing-'+side+'-glow',c,dims.map(v=>v*1.06),IDENT,BONE.glow,{em:.45,rough:.6});
+ for(const s of[-1,1])for(let i=0;i<6;i++){
+  const u=i/5,a=1.05-1.25*u,len=.50-.10*u,base=[s*.07,1.44-.06*i,-.16];
+  const tip=[base[0]+s*len*Math.cos(a)*(1+breath),base[1]+len*Math.sin(a)+breath*.5,base[2]-.14*u];
+  beam(parts,R,'body-feather','feather-'+(s<0?'left':'right')+'-'+i,base,tip,.14-.06*u,.035,mixHex(BONE.feather,BONE.gold,u),{em:.75,rough:.4});
  }
  // a halo above the head, a soft glow on the ground, and motes turning around her.
  ring(parts,R,'halo',[0,2.00+.01*Math.sin(k*.9),0],.22,.02,flat(0),BONE.halo,{em:.9,rough:.4});

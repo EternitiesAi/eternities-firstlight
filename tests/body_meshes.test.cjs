@@ -8,8 +8,9 @@ const root=path.join(__dirname,'..');
 const source=fs.readFileSync(path.join(root,'assets/source/human-bodies/BODY_PARTS.json'),'utf8');
 const packed=fs.readFileSync(path.join(root,'src/body-meshes.js'),'utf8');
 const sha=text=>crypto.createHash('sha256').update(text).digest('hex');
-const BODY=['body-head','body-neck','body-torso','body-upper-arm','body-forearm','body-hand','body-thigh','body-shin'];
-const OUTFIT=['body-coat','body-robe','body-wing-left','body-wing-right'];
+const BODY=['body-head','body-neck','body-torso','body-upper-arm','body-forearm','body-hand','body-thigh','body-shin','body-foot'];
+const OUTFIT=['body-coat','body-robe','body-feather'];
+const HIDDEN=['body-hidden']; // empty on purpose: legacy rig parts a baked figure must not draw
 
 test('the packed body module reproduces byte for byte from the committed Blender source',()=>{
  assert.equal(bake(source),packed,'src/body-meshes.js is the deterministic pack of assets/source/human-bodies/BODY_PARTS.json');
@@ -18,12 +19,12 @@ test('the packed body module reproduces byte for byte from the committed Blender
 });
 
 test('every body kind stays inside its triangle budget; the whole body is 2,500 triangles at most',()=>{
- // feet stay the rig's boot boxes: the baked foot read as a ball, so no foot kind is registered.
- for(const kind of BODY)assert.ok(B.triangles[kind]>0&&B.triangles[kind]<=(kind==='body-head'?650:350),kind+' '+B.triangles[kind]);
+ // the feet are baked from the body's own feet region and checked against the same budget.
+ for(const kind of BODY)assert.ok(B.triangles[kind]>0&&B.triangles[kind]<=(kind==='body-head'?650:kind==='body-foot'?500:350),kind+' '+B.triangles[kind]);
  assert.ok(B.triangles['body-head']>=500,'the head carries the face');
  assert.ok(BODY.reduce((sum,kind)=>sum+B.triangles[kind],0)<=2500,'whole body budget');
  for(const kind of OUTFIT)assert.ok(B.triangles[kind]>0&&B.triangles[kind]<=1100,kind+' '+B.triangles[kind]);
- assert.deepEqual([...B.kinds].sort(),[...BODY,...OUTFIT].sort(),'exactly the body and outfit kinds are registered');
+ assert.deepEqual([...B.kinds].sort(),[...BODY,...OUTFIT,...HIDDEN].sort(),'exactly the body and outfit kinds are registered');
 });
 
 test('every baked kind has finite positions and unit smooth normals, and the engine serves the same bytes',()=>{

@@ -36,13 +36,13 @@ test('original centered cloth geometry has finite closed outward bevels inside t
 });
 // The face and torso sides are reshaped on purpose by the people lane. Their new forms are
 // pinned here; every other body part still matches the pre-fishing oracle exactly.
-const faceParts=['left-pupil','right-pupil','left-catchlight','right-catchlight','mouth'];
-const reshaped={'left-eye':{kind:'round',s:[.032,.032,.032]},'right-eye':{kind:'round',s:[.032,.032,.032]},'left-knee':{kind:'round',s:[.13,.12,.13]},'right-knee':{kind:'round',s:[.13,.12,.13]},'left-elbow':{kind:'round',s:[.11,.11,.11]},'right-elbow':{kind:'round',s:[.11,.11,.11]},'left-brow':{kind:'box',s:[.04,.008,.012]},'right-brow':{kind:'box',s:[.04,.008,.012]},'nose':{kind:'round',s:[.034,.038,.034]},'left-hand':{kind:'body-hand',s:[.10,.19,.085]},'right-hand':{kind:'body-hand',s:[.10,.19,.085]},'jacket-left-side':{kind:'capsule',s:[.155,.44,.245]},'jacket-right-side':{kind:'capsule',s:[.155,.44,.245]}};
+const faceParts=['left-pupil','right-pupil','left-catchlight','right-catchlight','left-lid','right-lid','mouth'];
+const reshaped={'left-eye':{kind:'round',s:[.024,.024,.024]},'right-eye':{kind:'round',s:[.024,.024,.024]},'left-knee':{kind:'body-hidden',s:[.13,.12,.13]},'right-knee':{kind:'body-hidden',s:[.13,.12,.13]},'left-elbow':{kind:'body-hidden',s:[.11,.11,.11]},'right-elbow':{kind:'body-hidden',s:[.11,.11,.11]},'left-brow':{kind:'box',s:[.036,.007,.011]},'right-brow':{kind:'box',s:[.036,.007,.011]},'nose':{kind:'round',s:[.034,.038,.034]},'left-hand':{kind:'body-hand',s:[.10,.19,.085]},'right-hand':{kind:'body-hand',s:[.10,.19,.085]},'jacket-left-side':{kind:'body-hidden',s:[.155,.44,.245]},'jacket-right-side':{kind:'body-hidden',s:[.155,.44,.245]}};
 test('only three coat pieces change mesh; reshaped parts are pinned; the other body parts, matrices, materials and pose functions remain exact',()=>{
  assert.equal(T.motion.toString(),Old.motion.toString());// Pre-fishing immutable rig remains the comparison oracle for ordinary poses.
  for(const style of ['none','blade','bow'])for(const phase of ['idle','anticipate','recover','withdraw'])for(const reducedMotion of [false,true]){
   const opts={style,combatScene:true,combatPhase:phase,combatProgress:.45,withdrawFrom:.85,phase:.9,blend:.7,time:2,reducedMotion};
-  const a=draw(Old,opts),b=draw(T,opts);assert.deepEqual(plain({...a.frame,fishing:null}),plain(b.frame));assert.equal(a.parts.length,49);assert.equal(b.parts.filter(p=>!p.travelerFace).length,49);assert.equal(b.parts.filter(p=>p.travelerFace).length,5);
+  const a=draw(Old,opts),b=draw(T,opts);assert.deepEqual(plain({...a.frame,fishing:null}),plain(b.frame));assert.equal(a.parts.length,49);assert.equal(b.parts.filter(p=>!p.travelerFace).length,49);assert.equal(b.parts.filter(p=>p.travelerFace).length,7);
   assert.deepEqual(b.out['traveler-cloth'].map(p=>p.travelerPart),cloth);
   const before=new Map(a.parts.map(p=>[p.travelerPart,p]));
   for(const part of b.parts.filter(p=>!p.travelerFace)){const old=before.get(part.travelerPart);assert.ok(old);assert.equal(part.cameraSolid,false);assert.equal(E.solidBounds(part.kind,part),null);assert.equal(part.cutaway,false);
@@ -70,7 +70,7 @@ test('real WorldArt commits one ordinary cloth batch and retains traveler owner/
  assert.equal(batches.filter(b=>b.kind==='traveler-cloth').length,1);assert.equal(art.dynamicTravelerCloth.dynamic,true);
  const sim=new C.Simulation();globalThis.RealmArsenal.runtime(sim);const saved=JSON.stringify(sim.snapshot()),out=empty();art.room=null;art.time=0;art.traveler(out,sim);
  assert.equal(JSON.stringify(sim.snapshot()),saved,'actual rules/store state untouched');const snap=art.travelerSnapshot();
- assert.equal(snap.parts.filter(p=>!faceParts.includes(p.part)).length,49);assert.equal(snap.parts.length,54,'49 body parts plus five expression parts');assert.equal(snap.parts.filter(p=>p.kind==='traveler-cloth').length,3);assert.equal(snap.frame.combatPhase,'idle');
+ assert.equal(snap.parts.filter(p=>!faceParts.includes(p.part)).length,49);assert.equal(snap.parts.length,56,'49 body parts plus seven expression parts');assert.equal(snap.parts.filter(p=>p.kind==='traveler-cloth').length,3);assert.equal(snap.frame.combatPhase,'idle');
  art.update(sim,0,null);assert.deepEqual(art.dynamicTravelerCloth.items.filter(p=>p.travelerPart).map(p=>p.travelerPart),cloth,'actual ordinary update submits exactly three cloth instances');assert.equal(JSON.stringify(sim.snapshot()),saved);
 });
 test('actual Engine batch packs the same three transforms in one supported 6-float mesh',()=>{

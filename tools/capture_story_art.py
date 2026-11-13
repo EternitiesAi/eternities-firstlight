@@ -32,15 +32,15 @@ def frame(name, figure, centre, dist, lift, fov, hour=DAY, base=0.0, off=0.0, ya
 
 FRAMES = [
     frame('traveler-close', 'traveler', [0, 1.56, 0], 1.15, 0.05, 24),
-    frame('traveler-third', 'traveler', [0, 1.0, 0], 3.4, 1.1, 34, off=-0.5),
+    frame('traveler-third', 'traveler', [0, 1.0, 0], 7.26, 2.07, 40, off=-0.5),
     frame('traveler-diorama', 'traveler', [0, 1.3, 0], 8.2, 6.2, 32, base=0.4, off=-0.2, plinth=True),
     frame('ilan-close', 'ilan', [0, 1.55, 0], 1.15, 0.05, 24),
     frame('regent-close', 'regent', [0, 2.0, 0], 1.45, 0.05, 24),
-    frame('regent-third', 'regent', [0, 1.25, 0], 4.6, 1.2, 34, off=-0.5),
+    frame('regent-third', 'regent', [0, 1.25, 0], 7.26, 2.07, 40, off=-0.5),
     frame('regent-diorama', 'regent', [0, 1.6, 0], 9.5, 7.0, 30, base=0.4, off=-0.2, plinth=True),
     frame('regent-night', 'regent', [0, 1.25, 0], 4.6, 1.2, 34, hour=DUSK, off=-0.5),
     frame('envoy-close', 'envoy', [0, 1.8, 0], 1.3, 0.05, 24),
-    frame('envoy-third', 'envoy', [0, 1.05, 0], 4.2, 1.1, 34, off=-0.5),
+    frame('envoy-third', 'envoy', [0, 1.05, 0], 7.26, 2.07, 40, off=-0.5),
     frame('envoy-diorama', 'envoy', [0, 1.4, 0], 8.6, 6.4, 30, base=0.4, off=-0.2, plinth=True),
     frame('envoy-night', 'envoy', [0, 1.05, 0], 4.2, 1.1, 34, hour=DUSK, off=-0.5),
     frame('briarFalse-close', 'briarFalse', [0, 0.42, 0], 0.95, 0.12, 24),

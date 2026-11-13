@@ -94,10 +94,10 @@ test('the regent carries the coat, the cinder crown, the seams and the smile',()
 
 test('the envoy carries folded wings of light, a halo and motes',()=>{
  const parts=builders.envoy(0);
- assert.equal(parts.filter(it=>/^wing-/.test(it.storyPart)).length,4,'two baked planes and their glows');
+ assert.equal(parts.filter(it=>/^feather-/.test(it.storyPart)).length,12,'six layered feathers a side');
  assert.equal(parts.filter(it=>it.storyPart==='halo').length,1);
  assert.equal(parts.filter(it=>/^mote-/.test(it.storyPart)).length,6);
- assert.ok(parts.filter(it=>/^wing-/.test(it.storyPart)&&!/glow$/.test(it.storyPart)).every(it=>it.em>=.8),'the wings glow');
+ assert.ok(parts.filter(it=>/^feather-/.test(it.storyPart)).every(it=>it.em>=.7),'the feathers glow');
 });
 
 test('briarFalse is the real Briar with a cleaner coat, a cold glow and no wear',()=>{

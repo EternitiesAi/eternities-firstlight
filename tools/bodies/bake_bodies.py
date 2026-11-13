@@ -3,32 +3,34 @@
 blender -b human_base_meshes_bundle.blend --python tools/bodies/bake_bodies.py -- \
     RIG_PARTS.json BODY_PARTS.json REPORT.json
 
-RIG_PARTS.json comes from tools/bodies/export_rig_parts.cjs (the rig's rest parts and limb joints).
-The stylized male body, head and hand are decimated (the feet stay the rig's boot boxes), the body is split along the rig's joints,
-and every piece is fitted into its envelope in the rig's own axes (+X right, +Y up, +Z forward).
-Outfit shells (coat, robe, wings) are generated in the same unit space. BODY_PARTS.json is the
-committed source; tools/bake_bodies.cjs packs it into src/body-meshes.js without Blender.
+RIG_PARTS.json comes from tools/bodies/export_rig_parts.cjs. The stylized male body is decimated and
+split into parts per FACE: each face joins the segment it is nearest to, and also any neighbouring
+segment within MARGIN, so seams overlap and close when a joint bends. The source has no bone weights,
+so the nearest joint segment per face stands in for majority bone weight. Head and hands come from
+their own objects. The coat and robe are offset shells of the baked torso and legs (arms excluded).
+Wing feathers are a tapered curved plane. 'body-hidden' is an empty kind: legacy rig parts that a baked
+figure must not draw are moved to it, which keeps the 49-part pin. Everything is in the rig's own axes
+(+X right, +Y up, +Z forward); the body is scaled so the feet sit on y=0 and the crown on HEAD_TOP.
 """
 import bpy
 import bmesh
 import hashlib
 import json
 import math
+import random
 import sys
 from mathutils import Vector
 
+random.seed(0)  # the bake uses no randomness; the seed pins any future use
 argv = sys.argv[sys.argv.index('--') + 1:]
 RIG_PATH, OUT_PATH, REPORT_PATH = argv[0], argv[1], argv[2]
 RIG = json.load(open(RIG_PATH))
 PARTS = {p['name']: p for p in RIG['parts']}
-HEAD_TOP = 1.745  # the rig's hair top; the body is scaled so its feet sit on y=0 and its crown here
-
-SOURCE = {
-    'body': 'GEO-body_male_stylized',
-    'head': 'GEO-head_stylized',
-    'hand': 'Hand - Stylized',
-}
-TARGET_TRIS = {'body': 1900, 'head': 600, 'hand': 90}
+HEAD_TOP = 1.745
+MARGIN = 0.012  # metres: a face this close to a second joint segment joins that part too
+LIMBS = ('upper_arm', 'forearm', 'thigh', 'shin')
+SOURCE = {'body': 'GEO-body_male_stylized', 'head': 'GEO-head_stylized', 'hand': 'Hand - Stylized'}
+TARGET_TRIS = {'body': 2000, 'head': 600, 'hand': 90}
 
 
 def find_object(name):
@@ -112,7 +114,7 @@ def seg_dist(p, a, b):
 
 
 def drop_slivers(points, tris, limit=0.6):
-    """Faces whose longest edge spans more than the whole rig envelope are the spikes; keep the rest."""
+    """Faces whose longest edge spans more than the whole rig envelope are spikes; keep the rest."""
     kept = []
     for a, b, c in tris:
         longest = max((points[a] - points[b]).length, (points[b] - points[c]).length, (points[c] - points[a]).length)
@@ -121,55 +123,18 @@ def drop_slivers(points, tris, limit=0.6):
     return kept
 
 
-def mesh_out(kind, verts, tris, size=(1.0, 1.0, 1.0), source=''):
-    """Unit-space triangles with smooth per-vertex normals from the final connectivity."""
+def vertex_normals(points, tris):
     bm = bmesh.new()
-    bverts = [bm.verts.new(tuple(v)) for v in verts]
+    bv = [bm.verts.new(tuple(p)) for p in points]
     for a, b, c in tris:
         try:
-            bm.faces.new((bverts[a], bverts[b], bverts[c]))
+            bm.faces.new((bv[a], bv[b], bv[c]))
         except ValueError:
-            pass  # a duplicate face from the decimation; the first copy stays
-    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+            pass
     bm.normal_update()
-    flat, index = [], []
-    for v in bm.verts:
-        flat.extend([round(v.co.x, 6), round(v.co.y, 6), round(v.co.z, 6),
-                     round(v.normal.x, 6), round(v.normal.y, 6), round(v.normal.z, 6)])
-    for f in bm.faces:
-        if len(f.verts) != 3:
-            continue
-        index.extend([v.index for v in f.verts])
+    out = [Vector(v.normal) for v in bv]
     bm.free()
-    return {'kind': kind, 'vertices': flat, 'indices': index, 'size': [round(s, 6) for s in size],
-            'triangles': len(index) // 3, 'source': source}
-
-
-def shell(kind, profile, rings=20, segments=24, source='procedural'):
-    """A closed bell shell: rings of ellipses from the shoulder (t=0) down to the hem (t=1)."""
-    verts, tris = [], []
-    rows = []
-    for i in range(rings + 1):
-        t = i / rings
-        y, rx, rz = profile(t)
-        row = []
-        for j in range(segments):
-            a = 2 * math.pi * j / segments
-            row.append(len(verts))
-            verts.append((rx * math.cos(a), y, rz * math.sin(a)))
-        rows.append(row)
-    for i in range(rings):
-        for j in range(segments):
-            a, b = rows[i][j], rows[i][(j + 1) % segments]
-            c, d = rows[i + 1][(j + 1) % segments], rows[i + 1][j]
-            tris.append((a, b, c))
-            tris.append((a, c, d))
-    top = rows[0]
-    centre = len(verts)
-    verts.append((0.0, profile(0)[0], 0.0))
-    for j in range(segments):
-        tris.append((centre, top[(j + 1) % segments], top[j]))
-    return verts, tris
+    return out
 
 
 def normalise(verts):
@@ -181,48 +146,53 @@ def normalise(verts):
     return unit, [size.x, size.y, size.z]
 
 
-def wing(side):
-    """A curved feather plane from the shoulder blade outward and up, two-sided by construction."""
-    root = Vector((side * 0.05, 1.40, -0.18))
-    tip = Vector((side * 0.46, 1.62, -0.34))
-    span = (tip - root)
-    n_span = 14
-    verts, tris = [], []
-    rows = []
-    for i in range(n_span + 1):
-        u = i / n_span
-        width = 0.20 * (1.0 - u) ** 0.6 + 0.03
-        base = root + span * u
-        bend = Vector((0.0, 0.0, -0.05 * u * u))
-        row = []
-        for j in range(3):
-            v = (j - 1) * 0.5
-            row.append(len(verts))
-            verts.append(tuple(base + Vector((0.0, v * width, 0.0)) + bend))
-        rows.append(row)
-    for i in range(n_span):
-        for j in range(2):
-            a, b = rows[i][j], rows[i][j + 1]
-            c, d = rows[i + 1][j + 1], rows[i + 1][j]
-            tris.append((a, b, c))
-            tris.append((a, c, d))
-    return verts, tris
+def mesh_out(kind, verts, tris, size=(1.0, 1.0, 1.0), source=''):
+    """Triangles with smooth per-vertex normals from the final connectivity."""
+    bm = bmesh.new()
+    bverts = [bm.verts.new(tuple(v)) for v in verts]
+    for a, b, c in tris:
+        try:
+            bm.faces.new((bverts[a], bverts[b], bverts[c]))
+        except ValueError:
+            pass
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    bm.normal_update()
+    flat, index = [], []
+    for v in bm.verts:
+        flat.extend([round(v.co.x, 6), round(v.co.y, 6), round(v.co.z, 6),
+                     round(v.normal.x, 6), round(v.normal.y, 6), round(v.normal.z, 6)])
+    for f in bm.faces:
+        if len(f.verts) == 3:
+            index.extend([v.index for v in f.verts])
+    bm.free()
+    return {'kind': kind, 'vertices': flat, 'indices': index, 'size': [round(s, 6) for s in size],
+            'triangles': len(index) // 3, 'source': source}
 
 
-def coat_profile(t):
-    return (1.33 - 0.99 * t, 0.185 + 0.02 * t + 0.105 * t ** 2.2, 0.13 + 0.015 * t + 0.08 * t ** 2.2)
-
-
-def robe_profile(t):
-    return (1.36 - 1.33 * t, 0.19 + 0.03 * t + 0.17 * t ** 2.5, 0.13 + 0.02 * t + 0.13 * t ** 2.5)
+def feather_mesh():
+    """A tapered, bowed feather plane: one kind, instanced per feather with its own colour."""
+    n = 8
+    verts, tris, rows = [], [], []
+    for i in range(n + 1):
+        u = i / n
+        w = 0.13 * (1.0 - u) ** 0.8 + 0.012
+        rows.append(len(verts))
+        verts.append((-w * 0.5, u, 0.09 * u * u))
+        verts.append((w * 0.5, u, 0.09 * u * u))
+    for i in range(n):
+        a, b = rows[i], rows[i + 1]
+        tris.append((a, a + 1, b + 1))
+        tris.append((a, b + 1, b))
+    unit, dims = normalise(verts)
+    return mesh_out('body-feather', unit, tris, size=dims, source='procedural tapered feather')
 
 
 def main():
+    random.seed(0)
     out = {'kind': 'human-bodies-v1', 'stride': 6, 'bundle': 'Human Base Meshes v1.4.1 (CC0 per the README in the file)',
            'blender': bpy.app.version_string, 'source_objects': SOURCE, 'kinds': {}}
     report = {'objects': {}, 'kinds': {}}
 
-    # the body: decimated, moved to the rig's axes, scaled so the feet sit on y=0 and the crown on HEAD_TOP.
     body_obj = find_object(SOURCE['body'])
     bverts, btris, before, after = decimated(body_obj, TARGET_TRIS['body'])
     rig_pts = [to_rig(v) for v in bverts]
@@ -234,7 +204,7 @@ def main():
     body = [Vector(((p.x - xc) * s, (p.y - ymin) * s, (p.z - zc) * s)) for p in rig_pts]
     report['objects']['body'] = {'name': body_obj.name, 'tris_before': before, 'tris_after': after, 'scale': round(s, 6)}
 
-    labels_seg = {
+    segs = {
         'upper_arm': (joint('left-upper-arm', 0), joint('left-upper-arm', 1)),
         'forearm': (joint('left-forearm', 0), joint('left-forearm', 1)),
         'thigh': (joint('left-thigh', 0), joint('left-thigh', 1)),
@@ -244,36 +214,34 @@ def main():
     }
     hand_joint = joint('left-forearm', 1)
 
-    def label(p):
-        if p.y < 0.10 or p.y > 1.50 or (p - hand_joint).length < 0.11:
-            return None  # feet, head and hands come from their own objects
-        best, who = None, None
-        for name, (a, b) in labels_seg.items():
-            d = seg_dist(p, a, b)
-            if best is None or d < best:
-                best, who = d, name
-        return who if best is not None and best < 0.30 else None
-
-    faces_by = {}
-    for tri in btris:
+    # per face: the nearest segment is its primary; every segment within MARGIN of it also takes the face.
+    faces_by, primary = {}, {}
+    for ti, tri in enumerate(btris):
         pts = [body[i] for i in tri]
         c = (pts[0] + pts[1] + pts[2]) / 3.0
-        who = label(c)
-        # the left limbs stand for both sides (the rig mirrors them); torso and neck keep both halves.
-        if who is None or (who in ('upper_arm', 'forearm', 'thigh', 'shin') and c.x > 0.0):
+        if c.y < 0.12:
+            if c.x <= 0.0:
+                faces_by.setdefault('foot', []).append(tri)
+                primary[ti] = 'foot'
             continue
-        # long slivers join the torso or neck to the shoulder or arm; they read as spikes, so drop them.
-        if who in ('torso', 'neck'):
-            longest = max((pts[i] - pts[(i + 1) % 3]).length for i in range(3))
-            if longest > 0.18 or (who == 'neck' and any(abs(p.x) > 0.10 for p in pts)):
+        if c.y > 1.50 or (c - hand_joint).length < 0.11:
+            continue
+        ds = sorted((seg_dist(c, a, b), name) for name, (a, b) in segs.items())
+        best = ds[0][0]
+        if best > 0.30:
+            continue
+        primary[ti] = ds[0][1]
+        for d, name in ds:
+            if d > 0.30 or d - best > MARGIN:
                 continue
-        faces_by.setdefault(who, []).append(tri)
+            if name in LIMBS and c.x > 0.0:
+                continue
+            faces_by.setdefault(name, []).append(tri)
 
     def pack(tris, source_pts):
         used = sorted({i for t in tris for i in t})
         remap = {old: new for new, old in enumerate(used)}
-        verts = [source_pts[i] for i in used]
-        return verts, [(remap[a], remap[b], remap[c]) for a, b, c in tris]
+        return [source_pts[i] for i in used], [(remap[a], remap[b], remap[c]) for a, b, c in tris]
 
     for who, tris in sorted(faces_by.items()):
         verts, ftris = pack(tris, body)
@@ -284,20 +252,25 @@ def main():
             verts, ftris = pack(ftris, verts)
             fitted = fit_box(verts)
             upts = [fitted(p) for p in verts]
-            ftris = drop_slivers(upts, ftris)
-            out['kinds']['body-torso'] = mesh_out('body-torso', [tuple(u) for u in upts], ftris, source=SOURCE['body'])
+            out['kinds']['body-torso'] = mesh_out('body-torso', [tuple(u) for u in upts], drop_slivers(upts, ftris), source=SOURCE['body'])
         elif who == 'neck':
+            verts2 = [p for p in verts]
+            keep = [i for i, p in enumerate(verts2) if abs(p.x) <= 0.10]
+            ftris = [t for t in ftris if all(i in keep for i in t)]
+            verts, ftris = pack(ftris, verts2)
             fitted = fit_box(verts)
             upts = [fitted(p) for p in verts]
-            ftris = drop_slivers(upts, ftris)
-            out['kinds']['body-neck'] = mesh_out('body-neck', [tuple(u) for u in upts], ftris, source=SOURCE['body'])
-        elif who in ('upper_arm', 'forearm', 'thigh', 'shin'):
-            a, b = labels_seg[who]
+            out['kinds']['body-neck'] = mesh_out('body-neck', [tuple(u) for u in upts], drop_slivers(upts, ftris), source=SOURCE['body'])
+        elif who in LIMBS:
+            a, b = segs[who]
             fitted = fit_limb(verts, a, b)
             kind = {'upper_arm': 'body-upper-arm', 'forearm': 'body-forearm', 'thigh': 'body-thigh', 'shin': 'body-shin'}[who]
             upts = [fitted(p) for p in verts]
-            ftris = drop_slivers(upts, ftris)
-            out['kinds'][kind] = mesh_out(kind, [tuple(u) for u in upts], ftris, source=SOURCE['body'])
+            out['kinds'][kind] = mesh_out(kind, [tuple(u) for u in upts], drop_slivers(upts, ftris), source=SOURCE['body'])
+        elif who == 'foot':
+            fitted = fit_box(verts)
+            upts = [fitted(p) for p in verts]
+            out['kinds']['body-foot'] = mesh_out('body-foot', [tuple(u) for u in upts], drop_slivers(upts, ftris), source=SOURCE['body'])
 
     head_obj = find_object(SOURCE['head'])
     hv, ht, hb, ha = decimated(head_obj, TARGET_TRIS['head'])
@@ -313,30 +286,41 @@ def main():
     out['kinds']['body-hand'] = mesh_out('body-hand', [tuple(fitted(p)) for p in np_], nt, source=SOURCE['hand'])
     report['objects']['hand'] = {'name': hand_obj.name, 'tris_before': nb, 'tris_after': na}
 
+    # shells: offsets of the baked torso and legs in rig metres, flared at the hem; the arms are left out.
+    normals = vertex_normals(body, btris)
 
-    for kind, (verts, tris, size) in {
-        'body-coat': (*shell('body-coat', coat_profile), None),
-        'body-robe': (*shell('body-robe', robe_profile), None),
-    }.items():
-        unit, dims = normalise(verts)
-        out['kinds'][kind] = mesh_out(kind, unit, tris, size=dims, source='procedural bell shell')
-    for side, kind in ((-1, 'body-wing-left'), (1, 'body-wing-right')):
-        verts, tris = wing(side)
-        unit, dims = normalise(verts)
-        out['kinds'][kind] = mesh_out(kind, unit, tris, size=dims, source='procedural feather plane')
+    def shell(kind, names, y_lo, y_hi, flare_top, flare, offset):
+        keep = [ti for ti, name in primary.items() if name in names
+                and y_lo <= (body[btris[ti][0]].y + body[btris[ti][1]].y + body[btris[ti][2]].y) / 3.0 <= y_hi]
+        used = sorted({i for ti in keep for i in btris[ti]})
+        remap = {old: new for new, old in enumerate(used)}
+        verts = []
+        for i in used:
+            q = body[i] + normals[i] * offset
+            if q.y < flare_top:
+                f = 1.0 + flare * (flare_top - q.y) / max(1e-6, flare_top - y_lo)
+                q = Vector((q.x * f, q.y, q.z * f))
+            verts.append(tuple(q))
+        tris = [tuple(remap[i] for i in btris[ti]) for ti in keep]
+        return mesh_out(kind, verts, tris, source='offset shell of the baked body')
+
+    out['kinds']['body-coat'] = shell('body-coat', ('torso', 'thigh', 'shin'), 0.34, 1.36, 0.62, 0.22, 0.028)
+    out['kinds']['body-robe'] = shell('body-robe', ('torso', 'thigh', 'shin', 'neck'), 0.03, 1.40, 0.55, 0.30, 0.034)
+    out['kinds']['body-feather'] = feather_mesh()
+    out['kinds']['body-hidden'] = mesh_out('body-hidden', [], [], source='empty: legacy rig parts drawn for baked figures')
 
     out['kinds'] = {k: out['kinds'][k] for k in sorted(out['kinds'])}
-    body_tris = sum(out['kinds'][k]['triangles'] for k in ('body-head', 'body-neck', 'body-torso', 'body-upper-arm',
-                                                             'body-forearm', 'body-thigh', 'body-shin', 'body-hand'))
-    report['body_unique_triangles'] = body_tris
+    report['kind_triangles'] = {k: v['triangles'] for k, v in out['kinds'].items()}
+    body_kinds = ('body-head', 'body-neck', 'body-torso', 'body-upper-arm', 'body-forearm', 'body-hand',
+                  'body-thigh', 'body-shin', 'body-foot')
+    report['body_unique_triangles'] = sum(out['kinds'][k]['triangles'] for k in body_kinds)
     text = json.dumps(out, sort_keys=True, separators=(',', ':'))
     with open(OUT_PATH, 'w', encoding='utf-8') as fh:
         fh.write(text + '\n')
     report['sha256'] = hashlib.sha256((text + '\n').encode('utf-8')).hexdigest()
-    report['kind_triangles'] = {k: v['triangles'] for k, v in out['kinds'].items()}
     with open(REPORT_PATH, 'w', encoding='utf-8') as fh:
         json.dump(report, fh, indent=1, sort_keys=True)
-    print('BAKE_OK', report['sha256'], 'body triangles', body_tris, flush=True)
+    print('BAKE_OK', report['sha256'], 'body triangles', report['body_unique_triangles'], flush=True)
 
 
 main()
